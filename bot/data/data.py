@@ -6,6 +6,7 @@ from enum import Enum
 import psycopg2 as psy
 from cachetools import LRUCache
 
+from utils.lib import DotDict
 from meta import log, conf
 from constants import DATA_VERSION
 from .custom_cursor import DictLoggingCursor
@@ -49,6 +50,7 @@ class Table:
     Intended to be subclassed to provide more derivative access for specific tables.
     """
     conn = conn
+    queries = DotDict()
 
     def __init__(self, name):
         self.name = name
@@ -81,6 +83,12 @@ class Table:
     def upsert(self, *args, **kwargs):
         with self.conn:
             return upsert(self.name, *args, **kwargs)
+
+    def save_query(self, func):
+        """
+        Decorator to add a saved query to the table.
+        """
+        self.queries[func.__name__] = func
 
 
 class Row:
@@ -386,6 +394,44 @@ class fieldConstants(Enum):
     NOTNULL = "IS NOT NULL"
 
 
+class _updateField:
+    __slots__ = ()
+    _EMPTY = object()  # Return value for `value` indicating no value should be added
+
+    def key_field(self, key):
+        raise NotImplementedError
+
+    def value_field(self, key):
+        raise NotImplementedError
+
+
+class UpdateValue(_updateField):
+    __slots__ = ('key_str', 'value')
+
+    def __init__(self, key_str, value=_updateField._EMPTY):
+        self.key_str = key_str
+        self.value = value
+
+    def key_field(self, key):
+        return self.key_str.format(key=key, value=_replace_char, replace=_replace_char)
+
+    def value_field(self, key):
+        return self.value
+
+
+class UpdateValueAdd(_updateField):
+    __slots__ = ('value',)
+
+    def __init__(self, value):
+        self.value = value
+
+    def key_field(self, key):
+        return "{key} = {key} + {replace}".format(key=key, replace=_replace_char)
+
+    def value_field(self, key):
+        return self.value
+
+
 def _format_conditions(conditions):
     """
     Formats a dictionary of conditions into a string suitable for 'WHERE' clauses.
@@ -443,8 +489,17 @@ def _format_updatestr(valuedict):
     """
     if not valuedict:
         return ("", tuple())
-    keys, values = zip(*valuedict.items())
 
-    set_str = ", ".join("{} = {}".format(key, _replace_char) for key in keys)
+    key_fields = []
+    values = []
+    for key, value in valuedict.items():
+        if isinstance(value, _updateField):
+            key_fields.append(value.key_field(key))
+            v = value.value_field(key)
+            if v is not _updateField._EMPTY:
+                values.append(value.value_field(key))
+        else:
+            key_fields.append("{} = {}".format(key, _replace_char))
+            values.append(value)
 
-    return (set_str, values)
+    return (', '.join(key_fields), values)

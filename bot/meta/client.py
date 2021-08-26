@@ -1,3 +1,4 @@
+from discord import Intents
 from cmdClient.cmdClient import cmdClient
 
 from .config import Conf
@@ -9,5 +10,5 @@ conf = Conf(CONFIG_FILE)
 
 # Initialise client
 owners = [int(owner) for owner in conf.bot.getlist('owners')]
-client = cmdClient(prefix=conf.bot['prefix'], owners=owners)
+client = cmdClient(prefix=conf.bot['prefix'], owners=owners, intents=Intents.all())
 client.conf = conf

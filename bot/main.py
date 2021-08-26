@@ -2,6 +2,8 @@ from meta import client, conf, log
 
 import data  # noqa
 
+import core # noqa
+
 import modules  # noqa
 
 # Initialise all modules
