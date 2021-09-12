@@ -1,6 +1,8 @@
-from core import User
-from core.tables import users
+from cmdClient.checks import in_guild
 
+import data
+from data import tables
+from core import Lion
 from utils import interactive  # noqa
 
 from .module import module
@@ -11,17 +13,19 @@ second_emoji = "🥈"
 third_emoji = "🥉"
 
 
-# TODO: in_guild ward
 @module.cmd(
-    "topcoin",
-    short_help="View the LionCoin leaderboard.",
-    aliases=('topc', 'ctop')
+    "cointop",
+    group="Statistics",
+    desc="View the LionCoin leaderboard.",
+    aliases=('topc', 'ctop', 'topcoins', 'topcoin', 'cointop100'),
+    help_aliases={'cointop100': "View the LionCoin top 100."}
 )
+@in_guild()
 async def cmd_topcoin(ctx):
     """
     Usage``:
-        {prefix}topcoin
-        {prefix}topcoin 100
+        {prefix}cointop
+        {prefix}cointop 100
     Description:
         Display the LionCoin leaderboard, or top 100.
 
@@ -30,15 +34,17 @@ async def cmd_topcoin(ctx):
     # Handle args
     if ctx.args and not ctx.args == "100":
         return await ctx.error_reply(
-            "**Usage:**`{prefix}topcoin` or `{prefix}topcoin100`.".format(prefix=ctx.client.prefix)
+            "**Usage:**`{prefix}topcoin` or `{prefix}topcoin100`.".format(prefix=ctx.best_prefix)
         )
-    top100 = ctx.args == "100"
+    top100 = (ctx.args == "100" or ctx.alias == "contop100")
 
     # Flush any pending coin transactions
-    User.sync()
+    Lion.sync()
 
     # Fetch the leaderboard
-    user_data = users.select_where(
+    user_data = tables.lions.select_where(
+        guildid=ctx.guild.id,
+        userid=data.NOT([m.id for m in ctx.guild_settings.unranked_roles.members]),
         select_columns=('userid', 'coins'),
         _extra="ORDER BY coins DESC " + ("LIMIT 100" if top100 else "")
     )

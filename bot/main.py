@@ -6,6 +6,9 @@ import core # noqa
 
 import modules  # noqa
 
+# Load and attach app specific data
+client.appdata = core.data.meta.fetch_or_create(conf.bot['data_appid'])
+
 # Initialise all modules
 client.initialise_modules()
 

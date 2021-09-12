@@ -5,35 +5,45 @@ import asyncio
 
 from cmdClient import cmd, checks
 
+from core import Lion
+from LionModule import LionModule
+
 """
 Exec level commands to manage the bot.
 
 Commands provided:
     async:
         Executes provided code in an async executor
-    exec:
-        Executes code using standard python exec
     eval:
         Executes code and awaits it if required
 """
 
 
-@cmd("reboot")
+@cmd("shutdown",
+     desc="Sync data and shutdown.",
+     group="Bot Admin",
+     aliases=('restart', 'reboot'))
 @checks.is_owner()
-async def cmd_reboot(ctx):
+async def cmd_shutdown(ctx):
     """
     Usage``:
         reboot
     Description:
-        Update the timer status save file and reboot the client.
+        Run unload tasks and shutdown/reboot.
     """
-    ctx.client.interface.update_save("reboot")
-    ctx.client.interface.shutdown()
-    await ctx.reply("Saved state. Rebooting now!")
+    # Run module logout tasks
+    for module in ctx.client.modules:
+        if isinstance(module, LionModule):
+            await module.unload(ctx.client)
+
+    # Reply and logout
+    await ctx.reply("All modules synced. Shutting down!")
     await ctx.client.close()
 
 
-@cmd("async")
+@cmd("async",
+     desc="Execute arbitrary code with `async`.",
+     group="Bot Admin")
 @checks.is_owner()
 async def cmd_async(ctx):
     """
@@ -55,7 +65,9 @@ async def cmd_async(ctx):
                                  output))
 
 
-@cmd("eval")
+@cmd("eval",
+     desc="Execute arbitrary code with `eval`.",
+     group="Bot Admin")
 @checks.is_owner()
 async def cmd_eval(ctx):
     """

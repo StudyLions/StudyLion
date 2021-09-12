@@ -1,4 +1,4 @@
-from cmdClient import Module
+from LionModule import LionModule
 
 
-module = Module("Economy")
+module = LionModule("Economy")

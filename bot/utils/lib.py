@@ -4,6 +4,8 @@ import re
 
 import discord
 
+from cmdClient.lib import SafeCancellation
+
 
 def prop_tabulate(prop_list, value_list, indent=True):
     """
@@ -193,6 +195,25 @@ def parse_dur(time_str):
     return seconds
 
 
+def strfdur(duration):
+    """
+    Convert a duration given in seconds to a number of hours, minutes, and seconds.
+    """
+    hours = duration // 3600
+    minutes = duration // 60 % 60
+    seconds = duration % 60
+
+    parts = []
+    if hours:
+        parts.append('{}h'.format(hours))
+    if minutes:
+        parts.append('{}m'.format(minutes))
+    if seconds or duration == 0:
+        parts.append('{}s'.format(seconds))
+
+    return ' '.join(parts)
+
+
 def substitute_ranges(ranges_str, max_match=20, max_range=1000, separator=','):
     """
     Substitutes a user provided list of numbers and ranges,
@@ -213,10 +234,26 @@ def substitute_ranges(ranges_str, max_match=20, max_range=1000, separator=','):
         n1 = int(match.group(1))
         n2 = int(match.group(2))
         if n2 - n1 > max_range:
-            raise ValueError("Provided range exceeds the allowed maximum.")
+            raise SafeCancellation("Provided range is too large!")
         return separator.join(str(i) for i in range(n1, n2 + 1))
 
     return re.sub(r'(\d+)\s*-\s*(\d+)', _repl, ranges_str, max_match)
+
+
+def parse_ranges(ranges_str, ignore_errors=False, separator=',', **kwargs):
+    """
+    Parses a user provided range string into a list of numbers.
+    Extra keyword arguments are transparently passed to the underlying parser `substitute_ranges`.
+    """
+    substituted = substitute_ranges(ranges_str, separator=separator, **kwargs)
+    numbers = (item.strip() for item in substituted.split(','))
+    numbers = [item for item in numbers if item]
+    integers = [int(item) for item in numbers if item.isdigit()]
+
+    if not ignore_errors and len(integers) != len(numbers):
+        raise SafeCancellation("Couldn't parse the provided selection!")
+
+    return integers
 
 
 def msg_string(msg, mask_link=False, line_break=False, tz=None, clean=True):
