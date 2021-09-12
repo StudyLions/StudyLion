@@ -1,13 +1,16 @@
 import re
 import asyncio
 import discord
+import datetime
 
 from cmdClient.checks import in_guild
 from cmdClient.lib import SafeCancellation
 
+from data import NULL
 from utils.lib import parse_dur, strfdur, parse_ranges
 from wards import is_guild_admin
 from core.data import lions
+from settings import GuildSettings
 
 from .module import module
 from .data import study_badges, guild_role_cache, new_study_badges
@@ -34,12 +37,22 @@ async def cmd_studybadges(ctx, flags):
         {prefix}studybadges
         {prefix}studybadges [--add] <role>, <duration>
         {prefix}studybadges --remove
+        {prefix}studybadges --remove <role>
+        {prefix}studybadges --remove <badge index>
         {prefix}studybadges --clear
         {prefix}studybadges --refresh
     Description:
         View or modify the study badges in this guild.
 
         *Modification requires administrator permissions.*
+    Flags::
+        add: Add new studybadges (each line is added as a separate badge).
+        remove: Remove badges. With no arguments, opens a selection menu.
+        clear: Remove all study badges.
+        refresh: Make sure everyone's study badges are up to date.
+    Examples``:
+        {prefix}studybadges Lion Cub, 100h
+        {prefix}studybadges --remove Lion Cub
     """
     if flags['refresh']:
         await ensure_admin(ctx)
@@ -74,62 +87,168 @@ async def cmd_studybadges(ctx, flags):
         await _update_guild_badges(ctx.guild, update_rows)
 
         await out_msg.edit("Refresh complete! All study badges are up to date.")
-    elif flags['clear']:
+    elif flags['clear'] or flags['remove']:
+        # Make sure that the author is an admin before modifying the roles
         await ensure_admin(ctx)
-        if not await ctx.input("Are you sure you want to delete **all** study badges in this server?"):
-            return
-        study_badges.delete_where(guildid=ctx.guild.id)
-        await ctx.reply("All study badges have been removed.")
-        # TODO: Offer to delete roles
-    elif flags['remove']:
-        await ensure_admin(ctx)
+
+        # Pre-fetch the list of roles
         guild_roles = study_badges.fetch_rows_where(guildid=ctx.guild.id, _extra="ORDER BY required_time ASC")
-        if ctx.args:
-            # TODO: Handle role input
-            ...
-        else:
-            # TODO: Interactive multi-selector
-            out_msg = await show_badge_list(
-                ctx,
-                desc="Please select the badge(s) to delete, or type `c` to cancel.",
-                guild_roles=guild_roles
+
+        # Input handling, parse or get the list of rows to delete
+        to_delete = []
+        if flags['remove']:
+            if ctx.args:
+                if ctx.args.isdigit() and 0 < int(ctx.args) <= len(guild_roles):
+                    # Assume it is a badge index
+                    row = guild_roles[int(ctx.args) - 1]
+                else:
+                    # Assume the input is a role string
+                    # Get the collection of roles to search
+                    roleids = (row.roleid for row in guild_roles)
+                    roles = (ctx.guild.get_role(roleid) for roleid in roleids)
+                    roles = [role for role in roles if role is not None]
+                    role = await ctx.find_role(ctx.args, interactive=True, collection=roles, allow_notfound=False)
+                    index = roles.index(role)
+                    row = guild_roles[index]
+
+                # We now have a row to delete
+                to_delete = [row]
+            else:
+                # Multi-select the badges to remove
+                out_msg = await show_badge_list(
+                    ctx,
+                    desc="Please select the badge(s) to delete, or type `c` to cancel.",
+                    guild_roles=guild_roles
+                )
+
+                def check(msg):
+                    valid = msg.channel == ctx.ch and msg.author == ctx.author
+                    valid = valid and (re.search(_multiselect_regex, msg.content) or msg.content.lower() == 'c')
+                    return valid
+
+                try:
+                    message = await ctx.client.wait_for('message', check=check, timeout=60)
+                except asyncio.TimeoutError:
+                    await out_msg.delete()
+                    await ctx.error_reply("Session timed out. No study badges were deleted.")
+                    return
+
+                try:
+                    await out_msg.delete()
+                    await message.delete()
+                except discord.HTTPException:
+                    pass
+
+                if message.content.lower() == 'c':
+                    return
+
+                to_delete = [
+                    guild_roles[index-1]
+                    for index in parse_ranges(message.content) if index <= len(guild_roles)
+                ]
+        elif flags['clear']:
+            if not await ctx.ask("Are you sure you want to delete **all** study badges in this server?"):
+                return
+            to_delete = guild_roles
+
+        # In some cases we may come out with no valid rows, in this case cancel.
+        if not to_delete:
+            return await ctx.error_reply("No matching badges, nothing to do!")
+
+        # Count the affected users
+        affected_count = lions.select_one_where(
+            guildid=ctx.guild.id,
+            last_study_badgeid=[row.badgeid for row in to_delete],
+            select_columns=('COUNT(*)',)
+        )[0]
+
+        # Delete the rows
+        study_badges.delete_where(badgeid=[row.badgeid for row in to_delete])
+
+        # Immediately refresh the member data, only for members with NULL badgeid
+        update_rows = new_study_badges.select_where(
+            guildid=ctx.guild.id,
+            last_study_badgeid=NULL
+        )
+
+        if update_rows:
+            lions.update_many(
+                *((row['current_study_badgeid'], ctx.guild.id, row['userid']) for row in update_rows),
+                set_keys=('last_study_badgeid',),
+                where_keys=('guildid', 'userid')
             )
 
-            def check(msg):
-                valid = msg.channel == ctx.ch and msg.author == ctx.author
-                valid = valid and (re.search(_multiselect_regex, msg.content) or msg.content.lower() == 'c')
-                return valid
+            # Launch the update task for these members, so that they get the correct new roles
+            asyncio.create_task(_update_guild_badges(ctx.guild, update_rows, notify=False, log=False))
 
-            try:
-                message = await ctx.client.wait_for('message', check=check, timeout=60)
-            except asyncio.TimeoutError:
-                await out_msg.delete()
-                await ctx.error_reply("Session timed out. No study badges were deleted.")
-
-            try:
-                await out_msg.delete()
-                await message.delete()
-            except discord.HTTPException:
-                pass
-
-            if message.content.lower() == 'c':
-                return
-
-            rows = [guild_roles[index-1] for index in parse_ranges(message.content) if index <= len(guild_roles)]
-            if rows:
-                study_badges.delete_where(badgeid=[row.badgeid for row in rows])
-            else:
-                return await ctx.error_reply("Nothing to delete!")
-
-            if len(rows) == len(guild_roles):
-                await ctx.reply("All study badges deleted.")
-            else:
-                await show_badge_list(
-                    ctx,
-                    desc="`{}` badge{} removed.".format(len(rows), 's' if len(rows) > 1 else '')
+        # Ack the deletion
+        count = len(to_delete)
+        roles = [ctx.guild.get_role(row.roleid) for row in to_delete]
+        if count == len(guild_roles):
+            await ctx.embed_reply("All study badges deleted.")
+            log_embed = discord.Embed(
+                title="Study badges cleared!",
+                description="{} cleared the guild study badges. `{}` members affected.".format(
+                    ctx.author.mention,
+                    affected_count
                 )
-            # TODO: Offer to delete roles
-            # TODO: Offer to refresh
+            )
+        elif count == 1:
+            badge_name = roles[0].name if roles[0] else strfdur(to_delete[0].required_time)
+            await show_badge_list(
+                ctx,
+                desc="✅ Removed the **{}** badge.".format(badge_name)
+            )
+            log_embed = discord.Embed(
+                title="Study badge removed!",
+                description="{} removed the badge **{}**. `{}` members affected.".format(
+                    ctx.author.mention,
+                    badge_name,
+                    affected_count
+                )
+            )
+        else:
+            await show_badge_list(
+                ctx,
+                desc="✅ `{}` badges removed.".format(count)
+            )
+            log_embed = discord.Embed(
+                title="Study badges removed!",
+                description="{} removed `{}` badges. `{}` members affected.".format(
+                    ctx.author.mention,
+                    count,
+                    affected_count
+                )
+            )
+
+        # Post to the event log
+        event_log = GuildSettings(ctx.guild.id).event_log.value
+        if event_log:
+            # TODO Error handling? Or improve the post method?
+            log_embed.timestamp = datetime.datetime.utcnow()
+            log_embed.colour = discord.Colour.orange()
+            await event_log.send(embed=log_embed)
+
+        # Delete the roles (after asking first)
+        roles = [role for role in roles if role is not None]
+        if roles:
+            if await ctx.ask("Do you also want to remove the associated guild roles?"):
+                tasks = [
+                    asyncio.create_task(role.delete()) for role in roles
+                ]
+                results = await asyncio.gather(
+                    *tasks,
+                    return_exceptions=True
+                )
+                bad_roles = [role for role, task in zip(roles, tasks) if task.exception()]
+                if bad_roles:
+                    await ctx.embed_reply(
+                        "Couldn't delete the following roles:\n{}".format(
+                            '\n'.join(bad_role.mention for bad_role in bad_roles)
+                        )
+                    )
+                else:
+                    await ctx.embed_reply("Deleted `{}` roles.".format(len(roles)))
     elif ctx.args:
         # Ensure admin perms for modification
         await ensure_admin(ctx)
@@ -191,7 +310,7 @@ async def cmd_studybadges(ctx, flags):
 
         if update_count > 20:
             # Confirm whether we want to update now
-            resp = await ctx.input(
+            resp = await ctx.ask(
                 "`{}` members need their study badge roles updated, "
                 "which will occur automatically for each member when they next study.\n"
                 "Do you want to refresh the roles immediately instead? This may take a while!"
@@ -230,14 +349,6 @@ async def cmd_studybadges(ctx, flags):
 async def parse_level(ctx, line):
     line = line.strip()
 
-    # if line.startswith('"') and '"' in line[1:]:
-    #     splits = [split.strip() for split in line[1:].split('"', maxsplit=1)]
-    # else:
-    #     splits = [split.strip() for split in line.split(maxsplit=1)]
-    # if not line or len(splits) != 2 or not splits[1][0].isdigit():
-    #     raise SafeCancellation(
-    #         "**Level Syntax:** `<role> <required_time>`, for example `Cub 200h`."
-    #     )
     if ',' in line:
         splits = [split.strip() for split in line.split(',', maxsplit=1)]
     elif line.startswith('"') and '"' in line[1:]:
@@ -250,7 +361,11 @@ async def parse_level(ctx, line):
             "**Level Syntax:** `<role>, <required_time>`, for example `Lion Cub, 200h`."
         )
 
-    time = parse_dur(splits[1])
+    if splits[1].isdigit():
+        # No units! Assume hours
+        time = int(splits[1]) * 3600
+    else:
+        time = parse_dur(splits[1])
 
     role_str = splits[0]
     # TODO maybe add Y.. yes to all

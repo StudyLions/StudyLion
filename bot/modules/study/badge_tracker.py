@@ -101,12 +101,11 @@ async def update_study_badges(full=False):
     client.appdata.last_study_badge_scan = datetime.datetime.utcnow()
 
 
-async def _update_guild_badges(guild, member_rows):
+async def _update_guild_badges(guild, member_rows, notify=True, log=True):
     """
     Notify, update, and log role changes for a single guild.
     Expects a valid `guild` and a list of Rows of `new_study_badges`.
     """
-    # TODO: Locking
     async with guild_lock(guild.id):
         client.log(
             "Running guild badge update for guild '{guild.name}' (gid:{guild.id}) "
@@ -135,7 +134,9 @@ async def _update_guild_badges(guild, member_rows):
 
             if member:
                 tasks.append(
-                    asyncio.create_task(_update_member_roles(row, member, guild_roles, log_lines, flags_used))
+                    asyncio.create_task(
+                        _update_member_roles(row, member, guild_roles, log_lines, flags_used, notify)
+                    )
                 )
 
         # Post to the event log, in multiple pages if required
@@ -147,7 +148,7 @@ async def _update_guild_badges(guild, member_rows):
                 await asyncio.gather(*task_block)
 
                 # Post to the log if needed
-                if event_log:
+                if log and event_log:
                     desc = "\n".join(log_lines)
                     embed = discord.Embed(
                         title="Study badge{} earned!".format('s' if len(log_lines) > 1 else ''),
@@ -159,7 +160,7 @@ async def _update_guild_badges(guild, member_rows):
                         flag_desc = {
                             '!': "`!` Could not add/remove badge role. **Check permissions!**",
                             '*': "`*` Could not message member.",
-                            'x': "`x` Study role doesn't exist!"
+                            'x': "`x` Couldn't find role to add/remove!"
                         }
                         flag_lines = '\n'.join(desc for flag, desc in flag_desc.items() if flag in flags_used)
                         embed.add_field(
@@ -190,7 +191,7 @@ async def _update_guild_badges(guild, member_rows):
     )
 
 
-async def _update_member_roles(row, member, guild_roles, log_lines, flags_used):
+async def _update_member_roles(row, member, guild_roles, log_lines, flags_used, notify):
     guild = member.guild
 
     # Logging flag chars
@@ -249,7 +250,7 @@ async def _update_member_roles(row, member, guild_roles, log_lines, flags_used):
 
     # Send notification to member
     # TODO: Config customisation
-    if new_row and (old_row is None or new_row.required_time > old_row.required_time):
+    if notify and new_row and (old_row is None or new_row.required_time > old_row.required_time):
         embed = discord.Embed(
             title="New Study Badge!",
             description="Congratulations! You have earned {}!".format(
