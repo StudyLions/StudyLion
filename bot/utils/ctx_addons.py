@@ -7,14 +7,17 @@ from settings import GuildSettings, UserSettings
 
 
 @Context.util
-async def embed_reply(ctx, desc, colour=discord.Colour(0x9b59b6), **kwargs):
+async def embed_reply(ctx, desc, colour=discord.Colour.orange(), **kwargs):
     """
     Simple helper to embed replies.
     All arguments are passed to the embed constructor.
     `desc` is passed as the `description` kwarg.
     """
     embed = discord.Embed(description=desc, colour=colour, **kwargs)
-    return await ctx.reply(embed=embed)
+    try:
+        return await ctx.reply(embed=embed, reference=ctx.msg)
+    except discord.NotFound:
+        return await ctx.reply(embed=embed)
 
 
 @Context.util
@@ -27,14 +30,17 @@ async def error_reply(ctx, error_str, **kwargs):
         colour=discord.Colour.red(),
         description=error_str
     )
+    message = None
     try:
         message = await ctx.ch.send(embed=embed, reference=ctx.msg, **kwargs)
-        ctx.sent_messages.append(message)
-        return message
+    except discord.NotFound:
+        message = await ctx.ch.send(embed=embed, **kwargs)
     except discord.Forbidden:
         message = await ctx.reply(error_str)
-        ctx.sent_messages.append(message)
-        return message
+    finally:
+        if message:
+            ctx.sent_messages.append(message)
+            return message
 
 
 def context_property(func):
