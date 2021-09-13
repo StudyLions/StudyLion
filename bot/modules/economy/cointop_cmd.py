@@ -46,7 +46,7 @@ async def cmd_topcoin(ctx):
         guildid=ctx.guild.id,
         userid=data.NOT([m.id for m in ctx.guild_settings.unranked_roles.members]),
         select_columns=('userid', 'coins'),
-        _extra="ORDER BY coins DESC " + ("LIMIT 100" if top100 else "")
+        _extra="AND coins > 0 ORDER BY coins DESC " + ("LIMIT 100" if top100 else "")
     )
 
     # Quit early if the leaderboard is empty

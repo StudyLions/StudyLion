@@ -46,7 +46,7 @@ async def cmd_top(ctx):
         guildid=ctx.guild.id,
         userid=data.NOT([m.id for m in ctx.guild_settings.unranked_roles.members]),
         select_columns=('userid', 'tracked_time'),
-        _extra="ORDER BY tracked_time DESC " + ("LIMIT 100" if top100 else "")
+        _extra="AND tracked_time > 0 ORDER BY tracked_time DESC " + ("LIMIT 100" if top100 else "")
     )
 
     # Quit early if the leaderboard is empty
