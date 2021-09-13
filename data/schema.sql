@@ -207,6 +207,13 @@ CREATE TRIGGER update_members_timstamp BEFORE UPDATE
 ON members FOR EACH ROW EXECUTE PROCEDURE 
 update_timestamp_column();
 
+CREATE VIEW member_ranks AS
+  SELECT
+    *,
+    row_number() OVER (PARTITION BY guildid ORDER BY tracked_time DESC, userid ASC) AS time_rank,
+    row_number() OVER (PARTITION BY guildid ORDER BY coins DESC, userid ASC) AS coin_rank
+  FROM members;
+
 
 CREATE VIEW current_study_badges AS
   SELECT

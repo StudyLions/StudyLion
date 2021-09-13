@@ -79,3 +79,5 @@ lions = RowTable(
     cache=TTLCache(5000, ttl=60*5),
     attach_as='lions'
 )
+
+lion_ranks = Table('member_ranks', attach_as='lion_ranks')

@@ -31,13 +31,9 @@ async def cmd_stats(ctx):
 
     # Collect the required target data
     lion = Lion.fetch(ctx.guild.id, target.id)
-    rank_data = tables.lions.select_one_where(
+    rank_data = tables.lion_ranks.select_one_where(
         userid=target.id,
-        guildid=ctx.guild.id,
-        select_columns=(
-            "row_number() OVER (PARTITION BY guildid ORDER BY tracked_time DESC, userid ASC) AS time_rank",
-            "row_number() OVER (PARTITION BY guildid ORDER BY coins DESC, userid ASC) AS coin_rank",
-        )
+        guildid=ctx.guild.id
     )
 
     # Extract and format data
