@@ -2,6 +2,7 @@ import discord
 import datetime
 from cmdClient.checks import in_guild
 
+from settings import GuildSettings
 from core import Lion
 
 from .module import module
@@ -27,7 +28,7 @@ async def cmd_send(ctx):
     splits = ctx.args.split()
     digits = [split.isdigit() for split in splits]
     mentions = ctx.msg.mentions
-    if len(splits) != 2 or not any(digits) or not (all(digits) or mentions):
+    if len(splits) < 2 or not any(digits) or not (all(digits) or mentions):
         return await _send_usage(ctx)
 
     if all(digits):
@@ -70,6 +71,14 @@ async def cmd_send(ctx):
     ).set_footer(text=str(ctx.author), icon_url=ctx.author.avatar_url)
 
     await ctx.reply(embed=embed, reference=ctx.msg)
+    await GuildSettings(ctx.guild.id).event_log.post(
+        "{} sent {} `{}` LionCoins.".format(
+            ctx.author.mention,
+            target.mention,
+            amount
+        ),
+        title="Funds transferred"
+    )
 
 
 async def _send_usage(ctx):
