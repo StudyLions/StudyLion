@@ -36,7 +36,7 @@ async def cmd_topcoin(ctx):
         return await ctx.error_reply(
             "**Usage:**`{prefix}topcoin` or `{prefix}topcoin100`.".format(prefix=ctx.best_prefix)
         )
-    top100 = (ctx.args == "100" or ctx.alias == "contop100")
+    top100 = (ctx.args == "100" or ctx.alias == "cointop100")
 
     # Flush any pending coin transactions
     Lion.sync()
