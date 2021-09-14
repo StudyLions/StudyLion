@@ -79,7 +79,6 @@ CREATE TABLE workout_sessions(
 CREATE INDEX workout_sessions_members ON workout_sessions (guildid, userid);
 -- }}}
 
-
 -- Tasklist data {{{
 CREATE TABLE tasklist(
   taskid SERIAL PRIMARY KEY,
@@ -130,6 +129,56 @@ CREATE VIEW study_badge_roles AS
   FROM
     study_badges
   ORDER BY guildid, required_time ASC;
+-- }}}
+
+-- Shop data {{{
+CREATE TYPE ShopItemType AS ENUM (
+  'COLOUR_ROLE'
+);
+
+CREATE TABLE shop_items(
+  itemid SERIAL PRIMARY KEY,
+  guildid BIGINT NOT NULL,
+  item_type ShopItemType NOT NULL,
+  price INTEGER NOT NULL,
+  purchasable BOOLEAN DEFAULT TRUE,
+  deleted BOOLEAN DEFAULT FALSE,
+  created_at TIMESTAMP DEFAULT (now() at time zone 'utc')
+);
+CREATE INDEX guild_shop_items ON shop_items (guildid);
+
+CREATE TABLE shop_items_colour_roles(
+  itemid INTEGER PRIMARY KEY REFERENCES shop_items(itemid) ON DELETE CASCADE,
+  roleid BIGINT NOT NULL
+);
+
+CREATE TABLE member_inventory(
+  guildid BIGINT NOT NULL,
+  userid BIGINT NOT NULL,
+  itemid INTEGER NOT NULL REFERENCES shop_items(itemid) ON DELETE CASCADE,
+  count INTEGER DEFAULT 1,
+  PRIMARY KEY(guildid, userid)
+);
+
+
+CREATE VIEW shop_item_info AS
+  SELECT
+    *,
+    row_number() OVER (PARTITION BY guildid ORDER BY itemid) AS guild_itemid
+  FROM
+    shop_items
+  LEFT JOIN shop_items_colour_roles USING (itemid)
+  ORDER BY itemid ASC;
+
+/*
+-- Shop config, not implemented
+CREATE TABLE guild_shop_config(
+  guildid BIGINT PRIMARY KEY
+);
+
+CREATE TABLE guild_colourroles_config(
+);
+*/
 -- }}}
 
 -- Moderation data {{{
@@ -234,4 +283,4 @@ CREATE VIEW new_study_badges AS
   ORDER BY guildid;
 -- }}}
 
--- vim: set fdm=marker
+-- vim: set fdm=marker:

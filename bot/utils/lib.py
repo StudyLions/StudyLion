@@ -1,8 +1,10 @@
 import datetime
 import iso8601
 import re
+from enum import Enum
 
 import discord
+from psycopg2.extensions import QuotedString
 
 from cmdClient.lib import SafeCancellation
 
@@ -487,3 +489,24 @@ class DotDict(dict):
     __getattr__ = dict.get
     __setattr__ = dict.__setitem__
     __delattr__ = dict.__delitem__
+
+
+class FieldEnum(str, Enum):
+    """
+    String enum with description conforming to the ISQLQuote protocol.
+    Allows processing by psycog
+    """
+    def __new__(cls, value, desc):
+        obj = str.__new__(cls, value)
+        obj._value_ = value
+        obj.desc = desc
+        return obj
+
+    def __repr__(self):
+        return '<%s.%s>' % (self.__class__.__name__, self.name)
+
+    def __bool__(self):
+        return True
+
+    def __conform__(self, proto):
+        return QuotedString(self.value)
