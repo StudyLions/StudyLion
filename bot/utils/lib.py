@@ -253,7 +253,10 @@ def parse_ranges(ranges_str, ignore_errors=False, separator=',', **kwargs):
     integers = [int(item) for item in numbers if item.isdigit()]
 
     if not ignore_errors and len(integers) != len(numbers):
-        raise SafeCancellation("Couldn't parse the provided selection!")
+        raise SafeCancellation(
+            "Couldn't parse the provided selection!\n"
+            "Please provide comma separated numbers and ranges, e.g. `1, 5, 6-9`."
+        )
 
     return integers
 

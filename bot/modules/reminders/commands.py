@@ -34,12 +34,11 @@ async def cmd_remindme(ctx, flags):
     Usage``:
         {prefix}remindme in <duration> to <task>
         {prefix}remindme every <duration> to <task>
-
         {prefix}reminders
         {prefix}reminders --clear
-        {prefix}reminders --remove <ids>
+        {prefix}reminders --remove
     Description:
-        Ask LionBot to remind you about important tasks.
+        Ask {ctx.client.user.name} to remind you about important tasks.
     Examples``:
         {prefix}remindme in 2h 20m, Revise chapter 1
         {prefix}remindme every hour, Drink water!
@@ -58,58 +57,65 @@ async def cmd_remindme(ctx, flags):
 
         live = Reminder.fetch(*(row.reminderid for row in rows))
 
-        lines = []
-        num_field = len(str(len(live) - 1))
-        for i, reminder in enumerate(live):
-            lines.append(
-                "`[{:{}}]` | {}".format(
-                    i,
-                    num_field,
-                    reminder.formatted
+        if not ctx.args:
+            lines = []
+            num_field = len(str(len(live) - 1))
+            for i, reminder in enumerate(live):
+                lines.append(
+                    "`[{:{}}]` | {}".format(
+                        i,
+                        num_field,
+                        reminder.formatted
+                    )
                 )
+
+            description = '\n'.join(lines)
+            description += (
+                "\n\nPlease select the reminders to remove, or type `c` to cancel.\n"
+                "(For example, respond with `1, 2, 3` or `1-3`.)"
+            )
+            embed = discord.Embed(
+                description=description,
+                colour=discord.Colour.orange(),
+                timestamp=datetime.datetime.utcnow()
+            ).set_author(
+                name="Reminders for {}".format(ctx.author.display_name),
+                icon_url=ctx.author.avatar_url
             )
 
-        description = '\n'.join(lines)
-        description += (
-            "\n\nPlease select the reminders to remove, or type `c` to cancel.\n"
-            "(For example, respond with `1, 2, 3` or `1-3`.)"
-        )
-        embed = discord.Embed(
-            description=description,
-            colour=discord.Colour.orange(),
-            timestamp=datetime.datetime.utcnow()
-        ).set_author(
-            name="Reminders for {}".format(ctx.author.display_name),
-            icon_url=ctx.author.avatar_url
-        )
+            out_msg = await ctx.reply(embed=embed)
 
-        out_msg = await ctx.reply(embed=embed)
+            def check(msg):
+                valid = msg.channel == ctx.ch and msg.author == ctx.author
+                valid = valid and (re.search(multiselect_regex, msg.content) or msg.content.lower() == 'c')
+                return valid
 
-        def check(msg):
-            valid = msg.channel == ctx.ch and msg.author == ctx.author
-            valid = valid and (re.search(multiselect_regex, msg.content) or msg.content.lower() == 'c')
-            return valid
+            try:
+                message = await ctx.client.wait_for('message', check=check, timeout=60)
+            except asyncio.TimeoutError:
+                await out_msg.delete()
+                await ctx.error_reply("Session timed out. No reminders were deleted.")
+                return
 
-        try:
-            message = await ctx.client.wait_for('message', check=check, timeout=60)
-        except asyncio.TimeoutError:
-            await out_msg.delete()
-            await ctx.error_reply("Session timed out. No reminders were deleted.")
-            return
+            try:
+                await out_msg.delete()
+                await message.delete()
+            except discord.HTTPException:
+                pass
 
-        try:
-            await out_msg.delete()
-            await message.delete()
-        except discord.HTTPException:
-            pass
+            if message.content.lower() == 'c':
+                return
 
-        if message.content.lower() == 'c':
-            return
+            to_delete = [
+                live[index].reminderid
+                for index in parse_ranges(message.content) if index < len(live)
+            ]
+        else:
+            to_delete = [
+                live[index].reminderid
+                for index in parse_ranges(ctx.args) if index < len(live)
+            ]
 
-        to_delete = [
-            live[index].reminderid
-            for index in parse_ranges(message.content) if index < len(live)
-        ]
         if not to_delete:
             return await ctx.error_reply("Nothing to delete!")
 
@@ -247,7 +253,10 @@ async def cmd_remindme(ctx, flags):
             name="{}'s reminders".format(ctx.author.display_name),
             icon_url=ctx.author.avatar_url
         ).set_footer(
-            text="For examples and usage see {}help reminders".format(ctx.best_prefix)
+            text=(
+                "Click a reminder twice to jump to the context!\n"
+                "For more usage and examples see {}help reminders"
+            ).format(ctx.best_prefix)
         )
 
         await ctx.reply(embed=embed)
