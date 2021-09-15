@@ -107,6 +107,19 @@ CREATE TABLE tasklist_reward_history(
 CREATE INDEX tasklist_reward_history_members ON tasklist_reward_history (guildid, userid, reward_time);
 -- }}}
 
+-- Reminder data {{{
+CREATE TABLE reminders(
+  reminderid SERIAL PRIMARY KEY,
+  userid BIGINT NOT NULL,
+  remind_at TIMESTAMP NOT NULL,
+  content TEXT NOT NULL,
+  message_link TEXT,
+  interval INTEGER,
+  created_at TIMESTAMP DEFAULT (now() at time zone 'utc')
+);
+CREATE INDEX reminder_users ON reminders (userid);
+-- }}}
+
 -- Study tracking data {{{
 CREATE TABLE untracked_channels(
   guildid BIGINT NOT NULL,
