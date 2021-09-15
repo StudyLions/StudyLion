@@ -510,3 +510,9 @@ class FieldEnum(str, Enum):
 
     def __conform__(self, proto):
         return QuotedString(self.value)
+
+
+multiselect_regex = re.compile(
+    r"^([0-9, -]+)$",
+    re.DOTALL | re.IGNORECASE | re.VERBOSE
+)

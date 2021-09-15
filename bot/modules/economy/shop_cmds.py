@@ -5,7 +5,8 @@ from collections import defaultdict
 from cmdClient.checks import in_guild
 
 from .module import module
-from .shop_core import ShopItem
+from .shop_core import ShopItem, ShopItemType, ColourRole
+from wards import is_guild_admin
 
 
 class ShopSession:
@@ -80,23 +81,36 @@ class ShopSession:
     'shop',
     group="Economy",
     desc="Open the guild shop.",
-    flags=('add', 'remove', 'clear')
+    flags=('add==', 'remove==', 'clear')
 )
 @in_guild()
 async def cmd_shop(ctx, flags):
     """
     Usage``:
         {prefix}shop
-        {prefix}shop <category>
+        {prefix}shop --add <price>, <item>
+        {prefix}shop --remove
+        {prefix}shop --remove itemid, itemid, ...
+        {prefix}shop --remove itemname, itemname, ...
+        {prefix}shop --clear
     Description:
-        Opens the guild shop.
+        Opens the guild shop. Visible items may be bought using `{prefix}buy`.
+
+        *Modifying the guild shop requires administrator permissions.*
     """
     # TODO: (FUTURE) Register session (and cancel previous sessions) so we can track for buy
+
+    # Whether we are modifying the shop
+    modifying = any(value is not False for value in flags.values())
+    if modifying and not is_guild_admin(ctx.author):
+        return await ctx.error_reply(
+            "You need to be a guild admin to modify the shop!"
+        )
 
     # Fetch all purchasable elements, this also populates the cache
     shop_items = ShopItem.fetch_where(guildid=ctx.guild.id, deleted=False, purchasable=True)
 
-    if not shop_items:
+    if not shop_items and not modifying:
         # TODO: (FUTURE) Add tip for guild admins about setting up
         return await ctx.error_reply(
             "Nothing to buy! Please come back later."
@@ -108,20 +122,37 @@ async def cmd_shop(ctx, flags):
         item_cats[item.item_type].append(item)
 
     # If there is more than one category, ask for which category they want
-    item_type = None
-    if len(item_cats) > 1:
-        # TODO
-        item_type = ...
-        ...
-    else:
-        item_type = next(iter(item_cats))
+    # All FUTURE TODO stuff, to be refactored into a shop widget
+    # item_type = None
+    # if ctx.args:
+    #     # Assume category has been entered
+    #     ...
+    # elif len(item_cats) > 1:
+    #     # TODO: Show selection menu
+    #     item_type = ...
+    #     ...
+    # else:
+    #     # Pick the next one automatically
+    #     item_type = next(iter(item_cats))
+
+    item_type = ShopItemType.COLOUR_ROLE
+    item_class = ColourRole
 
     if item_type is not None:
         items = [item for item in item_cats[item_type]]
-        embeds = items[0].cat_shop_embeds(
+        embeds = item_class.cat_shop_embeds(
             ctx.guild.id,
             [item.itemid for item in items]
         )
+
+        if modifying:
+            if flags['add']:
+                await item_class.parse_add(ctx, flags['add'])
+            elif flags['remove'] is not False:
+                await item_class.parse_remove(ctx, flags['remove'], items)
+            elif flags['clear']:
+                await item_class.parse_clear(ctx)
+            return
 
         # Present shop pages
         out_msg = await ctx.pager(embeds, add_cancel=True)

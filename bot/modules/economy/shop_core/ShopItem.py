@@ -27,7 +27,7 @@ class ShopItem:
     item_type = None  # type: ShopItemType
 
     # Format string to use for each item of this type in the shop embed
-    shop_fmt = "`[{num:<{num_len}}]` | `{item.price:<{price_len}}` {item.display_name}"
+    shop_fmt = "`[{num:<{num_len}}]` | `{item.price:<{price_len}} LC` {item.display_name}"
 
     # Shop input modifiers
     allow_multi_select = True
@@ -248,7 +248,7 @@ class ShopItem:
             # Ensure cache is populated
             shop_item_info.fetch_rows_where(itemid=itemids)
 
-        return cls._cat_shop_embed_items([cls(itemid) for itemid in itemids])
+        return cls._cat_shop_embed_items([cls(itemid) for itemid in itemids], **kwargs)
 
     async def buy(self, ctx):
         """
