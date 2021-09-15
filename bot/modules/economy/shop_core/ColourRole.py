@@ -260,7 +260,7 @@ class ColourRole(ShopItem):
             embeds = cls.cat_shop_embeds(
                 ctx.guild.id,
                 itemids,
-                hint=("Please select colour(s) ids to remove, or `c` to cancel.\n"
+                hint=("Please select colour(s) to remove, or `c` to cancel.\n"
                       "(Respond with e.g. `1, 2, 3` or `1-3`.)")
             )
             out_msg = await ctx.pager(embeds)
