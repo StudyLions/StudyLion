@@ -82,7 +82,7 @@ class Reminder:
                 interval_str = "hour"
             elif interval % (24 * 60 * 60) == 0:
                 interval_str = "`{}` days".format(interval // (24 * 60 * 60))
-            elif interval % 60 * 60 == 0:
+            elif interval % (60 * 60) == 0:
                 interval_str = "`{}` hours".format(interval // (60 * 60))
             else:
                 interval_str = "`{}`".format(strfdur(interval))
