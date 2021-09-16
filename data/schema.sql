@@ -45,7 +45,12 @@ CREATE TABLE guild_config(
   task_reward INTEGER,
   task_reward_limit INTEGER,
   study_hourly_reward INTEGER,
-  study_hourly_live_bonus INTEGER
+  study_hourly_live_bonus INTEGER,
+  renting_price INTEGER,
+  renting_category BIGINT,
+  renting_cap INTEGER,
+  renting_role BIGINT,
+  renting_sync_perms BOOLEAN
 );
 
 CREATE TABLE unranked_roles(
@@ -296,4 +301,21 @@ CREATE VIEW new_study_badges AS
   ORDER BY guildid;
 -- }}}
 
+-- Rented Room data {{{
+CREATE TABLE rented(
+  channelid BIGINT PRIMARY KEY,
+  guildid BIGINT NOT NULL,
+  ownerid BIGINT NOT NULL,
+  expires_at TIMESTAMP DEFAULT ((now() at time zone 'utc') + INTERVAL '1 day'),
+  created_at TIMESTAMP DEFAULT (now() at time zone 'utc'),
+  FOREIGN KEY (guildid, ownerid) REFERENCES members (guildid, userid) ON DELETE CASCADE
+);
+CREATE UNIQUE INDEX rented_owners ON rented (guildid, ownerid);
+
+CREATE TABLE rented_members(
+  channelid BIGINT NOT NULL REFERENCES rented(channelid) ON DELETE CASCADE,
+  userid BIGINT NOT NULL
+);
+CREATE INDEX rented_members_channels ON rented_members (channelid);
+-- }}}
 -- vim: set fdm=marker:

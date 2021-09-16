@@ -7,4 +7,5 @@ from .user_config import *
 from .workout import *
 from .todo import *
 from .reminders import *
+from .renting import *
 # from .moderation import *
