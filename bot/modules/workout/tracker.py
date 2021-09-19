@@ -142,7 +142,7 @@ async def workout_complete(member, workout):
     embed = discord.Embed(
         description=(
             "Congratulations on completing your daily workout!\n"
-            "You have been rewarded with `350` LionCoins. Good job!"
+            "You have been rewarded with `{}` LionCoins. Good job!".format(reward)
         ),
         timestamp=dt.datetime.utcnow(),
         colour=discord.Color.orange()
