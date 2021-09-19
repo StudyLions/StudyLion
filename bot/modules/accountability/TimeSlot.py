@@ -170,7 +170,7 @@ class TimeSlot:
                 "Attended": [],
                 "Missing": []
             }
-            for memid, mem in self.members.items():
+            for memid, mem in sorted(self.members.items(), key=lambda mem: mem.data.duration, reverse=True):
                 mention = '<@{}>'.format(memid)
                 if mem.has_attended:
                     classifications["Attended"].append(

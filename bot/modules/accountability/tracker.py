@@ -205,7 +205,7 @@ async def turnover():
 
         # Update session data of all members in new channels
         member_session_data = [
-            (0, slot.start_at, mem.slotid, mem.userid)
+            (0, slot.start_time, mem.slotid, mem.userid)
             for slot in current_slots
             for mem in slot.members.values()
             if mem.member.voice and mem.member.voice.channel == slot.channel
