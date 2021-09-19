@@ -196,7 +196,7 @@ async def cmd_rent(ctx):
                 "friends by mentioning them with this command! (Rooms cost `{}` LionCoins.)\n"
                 "`{}rent @user1 @user2 ...`".format(
                     ctx.guild_settings.rent_member_limit.value,
-                    ctx.best_prefix,
                     ctx.guild_settings.rent_room_price.value,
+                    ctx.best_prefix,
                 )
             )
