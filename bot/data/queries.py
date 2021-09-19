@@ -126,7 +126,7 @@ def upsert(table, constraint, cursor=None, **values):
     return cursor.fetchone()
 
 
-def update_many(table, *values, set_keys=None, where_keys=None, cursor=None):
+def update_many(table, *values, set_keys=None, where_keys=None, cast_row=None, cursor=None):
     cursor = cursor or conn.cursor()
 
     return execute_values(
@@ -134,13 +134,14 @@ def update_many(table, *values, set_keys=None, where_keys=None, cursor=None):
         """
         UPDATE {table}
         SET {set_clause}
-        FROM (VALUES %s)
+        FROM (VALUES {cast_row}%s)
         AS {temp_table}
         WHERE {where_clause}
         RETURNING *
         """.format(
             table=table,
             set_clause=', '.join("{0} = _t.{0}".format(key) for key in set_keys),
+            cast_row=cast_row + ',' if cast_row else '',
             where_clause=' AND '.join("{1}.{0} = _t.{0}".format(key, table) for key in where_keys),
             temp_table="_t ({})".format(', '.join(set_keys + where_keys))
         ),

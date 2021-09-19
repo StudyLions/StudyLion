@@ -45,6 +45,21 @@ class GEQ(Condition):
             values.append(item)
 
 
+class LEQ(Condition):
+    __slots__ = ('value',)
+
+    def __init__(self, value):
+        self.value = value
+
+    def apply(self, key, values, conditions):
+        item = self.value
+        if isinstance(item, (list, tuple)):
+            raise ValueError("Cannot apply LEQ condition to a list!")
+        else:
+            conditions.append("{} <= {}".format(key, _replace_char))
+            values.append(item)
+
+
 class Constant(Condition):
     __slots__ = ('value',)
 

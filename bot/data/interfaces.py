@@ -113,7 +113,8 @@ class Row:
         try:
             yield self._pending
         finally:
-            self.update(**self._pending)
+            if self._pending:
+                self.update(**self._pending)
             self._pending = None
 
     def _refresh(self):
