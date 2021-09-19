@@ -71,7 +71,7 @@ async def cmd_send(ctx):
     ).set_footer(text=str(ctx.author), icon_url=ctx.author.avatar_url)
 
     await ctx.reply(embed=embed, reference=ctx.msg)
-    await GuildSettings(ctx.guild.id).event_log.post(
+    await GuildSettings(ctx.guild.id).event_log.log(
         "{} sent {} `{}` LionCoins.".format(
             ctx.author.mention,
             target.mention,
