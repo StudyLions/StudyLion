@@ -42,12 +42,20 @@ async def cmd_top(ctx):
     Lion.sync()
 
     # Fetch the leaderboard
-    user_data = tables.lions.select_where(
-        guildid=ctx.guild.id,
-        userid=data.NOT([m.id for m in ctx.guild_settings.unranked_roles.members]),
-        select_columns=('userid', 'tracked_time'),
-        _extra="AND tracked_time > 0 ORDER BY tracked_time DESC " + ("LIMIT 100" if top100 else "")
-    )
+    exclude = [m.id for m in ctx.guild_settings.unranked_roles.members]
+    if exclude:
+        user_data = tables.lions.select_where(
+            guildid=ctx.guild.id,
+            userid=data.NOT(exclude),
+            select_columns=('userid', 'tracked_time'),
+            _extra="AND tracked_time > 0 ORDER BY tracked_time DESC " + ("LIMIT 100" if top100 else "")
+        )
+    else:
+        user_data = tables.lions.select_where(
+            guildid=ctx.guild.id,
+            select_columns=('userid', 'tracked_time'),
+            _extra="AND tracked_time > 0 ORDER BY tracked_time DESC " + ("LIMIT 100" if top100 else "")
+        )
 
     # Quit early if the leaderboard is empty
     if not user_data:
