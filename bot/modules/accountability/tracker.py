@@ -196,7 +196,7 @@ async def turnover():
 
         # Close all completed rooms, update data
         await asyncio.gather(*(slot.close() for slot in last_slots))
-        update_slots = [slot.slotid for slot in last_slots if slot.data]
+        update_slots = [slot.data.slotid for slot in last_slots if slot.data]
         if update_slots:
             accountability_rooms.update_where(
                 {'closed_at': utc_now()},
@@ -276,6 +276,7 @@ async def _accountability_loop():
         # TODO: (FUTURE) handle cases where we actually execute much late than expected
         await sleep_until(next_time)
         if next_time.minute == 55:
+            next_time = next_time + datetime.timedelta(minutes=5)
             # Open next sessions
             try:
                 await open_next(next_time)
@@ -289,7 +290,6 @@ async def _accountability_loop():
                     context="ACCOUNTABILITY_LOOP",
                     level=logging.ERROR
                 )
-            next_time = next_time + datetime.timedelta(minutes=5)
         elif next_time.minute == 0:
             # Start new sessions
             try:
@@ -304,7 +304,7 @@ async def _accountability_loop():
                     context="ACCOUNTABILITY_LOOP",
                     level=logging.ERROR
                 )
-            next_time = next_time + datetime.timedelta(minute=55)
+            next_time = next_time + datetime.timedelta(minutes=55)
 
 
 async def _accountability_system_resume():

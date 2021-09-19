@@ -15,7 +15,7 @@ third_emoji = "🥉"
 
 @module.cmd(
     "cointop",
-    group="Statistics",
+    group="Economy",
     desc="View the LionCoin leaderboard.",
     aliases=('topc', 'ctop', 'topcoins', 'topcoin', 'cointop100'),
     help_aliases={'cointop100': "View the LionCoin top 100."}

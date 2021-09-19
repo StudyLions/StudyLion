@@ -11,7 +11,8 @@ from .module import module
 
 @module.cmd(
     "stats",
-    desc="View your study statistics!"
+    group="Statistics",
+    desc="View a summary of your study statistics!"
 )
 @in_guild()
 async def cmd_stats(ctx):

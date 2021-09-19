@@ -11,23 +11,24 @@ from .module import module
 group_hints = {
     'Productivity': "*Various productivity tools.*",
     'Statistics': "*StudyLion leaderboards and study statistics.*",
+    'Economy': "*Buy, sell, and trade with your hard-earned coins!*",
     'Personal Settings': "*Tell me about yourself!*",
     'Guild Configuration': "*Control how I behave in your server.*",
     'Meta': "*Information about me!*"
 }
 
 standard_group_order = (
-    ('Productivity', 'Statistics', 'Personal Settings', 'Meta')
+    ('Productivity', 'Statistics', 'Economy', 'Personal Settings', 'Meta'),
 )
 
 mod_group_order = (
     ('Moderation', 'Meta'),
-    ('Productivity', 'Statistics', 'Personal Settings')
+    ('Productivity', 'Statistics', 'Economy', 'Personal Settings')
 )
 
 admin_group_order = (
     ('Guild Configuration', 'Moderation', 'Meta'),
-    ('Productivity', 'Statistics', 'Personal Settings')
+    ('Productivity', 'Statistics', 'Economy', 'Personal Settings')
 )
 
 # Help embed format
