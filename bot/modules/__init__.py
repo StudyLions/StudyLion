@@ -9,3 +9,4 @@ from .todo import *
 from .reminders import *
 from .renting import *
 # from .moderation import *
+from .accountability import *

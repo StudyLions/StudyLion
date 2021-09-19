@@ -519,3 +519,5 @@ multiselect_regex = re.compile(
     r"^([0-9, -]+)$",
     re.DOTALL | re.IGNORECASE | re.VERBOSE
 )
+tick = '✅'
+cross = '❌'

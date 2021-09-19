@@ -50,7 +50,12 @@ CREATE TABLE guild_config(
   renting_category BIGINT,
   renting_cap INTEGER,
   renting_role BIGINT,
-  renting_sync_perms BOOLEAN
+  renting_sync_perms BOOLEAN,
+  accountability_category BIGINT,
+  accountability_lobby BIGINT,
+  accountability_bonus INTEGER,
+  accountability_reward INTEGER,
+  accountability_price INTEGER
 );
 
 CREATE TABLE unranked_roles(
@@ -317,5 +322,43 @@ CREATE TABLE rented_members(
   userid BIGINT NOT NULL
 );
 CREATE INDEX rented_members_channels ON rented_members (channelid);
+-- }}}
+
+-- Accountability Rooms {{{
+CREATE TABLE accountability_slots(
+  slotid SERIAL PRIMARY KEY,
+  guildid BIGINT NOT NULL REFERENCES guild_config(guildid),
+  channelid BIGINT,
+  start_at TIMESTAMPTZ (0) NOT NULL,
+  messageid BIGINT,
+  closed_at TIMESTAMPTZ
+);
+CREATE UNIQUE INDEX slot_channels ON accountability_slots(channelid);
+CREATE UNIQUE INDEX slot_guilds ON accountability_slots(guildid, start_at);
+CREATE INDEX slot_times ON accountability_slots(start_at);
+
+CREATE TABLE accountability_members(
+  slotid INTEGER NOT NULL REFERENCES accountability_slots(slotid) ON DELETE CASCADE,
+  userid BIGINT NOT NULL,
+  paid INTEGER NOT NULL,
+  duration INTEGER DEFAULT 0,
+  last_joined_at TIMESTAMPTZ,
+  PRIMARY KEY (slotid, userid)
+);
+CREATE INDEX slot_members ON accountability_members(userid);
+CREATE INDEX slot_members_slotid ON accountability_members(slotid);
+
+CREATE VIEW accountability_member_info AS
+  SELECT
+    *
+  FROM accountability_members
+  JOIN accountability_slots USING (slotid);
+
+CREATE VIEW accountability_open_slots AS
+  SELECT
+    *
+  FROM accountability_slots
+  WHERE closed_at IS NULL
+  ORDER BY start_at ASC;
 -- }}}
 -- vim: set fdm=marker:
