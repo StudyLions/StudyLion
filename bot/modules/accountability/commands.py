@@ -193,6 +193,7 @@ async def cmd_rooms(ctx):
             )
 
         slot_rows = accountability_rooms.fetch_rows_where(
+            guildid=ctx.guild.id,
             start_at=to_book
         )
         slotids = [row.slotid for row in slot_rows]
