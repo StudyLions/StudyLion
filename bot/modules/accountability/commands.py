@@ -129,7 +129,7 @@ async def cmd_rooms(ctx):
         start_time = utc_now().replace(minute=0, second=0, microsecond=0)
         times = (
             start_time + datetime.timedelta(hours=n)
-            for n in range(3, 28)
+            for n in range(1, 25)
         )
         times = list(time for time in times if time not in already_joined_times)
         lines = [
