@@ -198,13 +198,14 @@ class Room:
         guild_settings = GuildSettings(self.data.guildid)
 
         # Update overwrites
-        new_overwrites = {member: self.member_overwrite for member in members}
+        existing_overwrites = self.channel.overwrites
+        new_overwrites = existing_overwrites.update({member: self.member_overwrite for member in members})
         try:
             await self.channel.edit(overwrites=new_overwrites)
         except discord.HTTPException:
             guild_settings.event_log.log(
                 title="Failed to update study room permissions!",
-                description="An error occured while adding the following users to the private room {}.\n{}".format(
+                description="An error occurred while adding the following users to the private room {}.\n{}".format(
                     self.channel.mention,
                     ', '.join(member.mention for member in members)
                 ),
