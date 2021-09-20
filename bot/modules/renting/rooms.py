@@ -198,10 +198,10 @@ class Room:
         guild_settings = GuildSettings(self.data.guildid)
 
         # Update overwrites
-        existing_overwrites = self.channel.overwrites
-        new_overwrites = existing_overwrites.update({member: self.member_overwrite for member in members})
+        overwrites = self.channel.overwrites
+        overwrites.update({member: self.member_overwrite for member in members})
         try:
-            await self.channel.edit(overwrites=new_overwrites)
+            await self.channel.edit(overwrites=overwrites)
         except discord.HTTPException:
             guild_settings.event_log.log(
                 title="Failed to update study room permissions!",
