@@ -29,7 +29,7 @@ def _scan(guild):
     finally:
         last_scan[guild.id] = now
 
-    # Calculuate time since last scan
+    # Calculate time since last scan
     interval = now - last
 
     # Discard if it has been more than 20 minutes (discord outage?)
@@ -48,6 +48,8 @@ def _scan(guild):
     # TODO filter out blacklisted users
 
     for member in members:
+        if member.bot:
+            continue
         lion = Lion.fetch(guild.id, member.id)
 
         # Add time

@@ -168,6 +168,9 @@ async def workout_voice_tracker(client, member, before, after):
     while not module.ready:
         asyncio.sleep(0.1)
 
+    if member.bot:
+        return
+
     # Check whether we are moving to/from a workout channel
     settings = GuildSettings(member.guild.id)
     channels = settings.workout_channels.value
