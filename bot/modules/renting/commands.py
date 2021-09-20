@@ -134,16 +134,16 @@ async def cmd_rent(ctx):
         if ctx.args:
             # Rent a new room
 
-            # Check that they provided at least one member
-            if not ctx.msg.mentions:
-                return await ctx.error_reply(
-                    "Please mention at least one user to add to your new room."
-                )
-
             to_add = (
                 member for member in ctx.msg.mentions if member != ctx.author
             )
             to_add = list(set(to_add))
+
+            # Check that they provided at least one member
+            if not to_add:
+                return await ctx.error_reply(
+                    "Please mention at least one user to add to your new room."
+                )
 
             # Check that they didn't provide too many members
             limit = ctx.guild_settings.rent_member_limit.value
