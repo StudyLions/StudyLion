@@ -166,7 +166,7 @@ async def workout_complete(member, workout):
 async def workout_voice_tracker(client, member, before, after):
     # Wait until launch tasks are complete
     while not module.ready:
-        asyncio.sleep(0.1)
+        await asyncio.sleep(0.1)
 
     if member.bot:
         return
