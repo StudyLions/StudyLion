@@ -68,7 +68,8 @@ class TimeSlot:
     )
 
     _everyone_overwrite = discord.PermissionOverwrite(
-        view_channel=False
+        view_channel=False,
+        connect=False
     )
 
     def __init__(self, guild, start_time, data=None):
@@ -308,7 +309,7 @@ class TimeSlot:
         """
         if self.channel:
             await self.channel.edit(name="Accountability Study Room")
-            await self.channel.set_permissions(self.guild.default_role, view_channel=True)
+            await self.channel.set_permissions(self.guild.default_role, view_channel=True, connect=False)
             asyncio.create_task(self.dm_reminder(delay=60))
         await self.message.edit(embed=self.status_embed)
 
