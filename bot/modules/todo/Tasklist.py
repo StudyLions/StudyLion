@@ -129,7 +129,6 @@ class Tasklist:
         Update the in-memory tasklist from data and regenerate the pages
         """
         self.tasklist = data.tasklist.fetch_rows_where(
-            guildid=self.member.guild.id,
             userid=self.member.id,
             _extra=("AND last_updated_at > timezone('utc', NOW()) - INTERVAL '24h' "
                     "ORDER BY created_at ASC, taskid ASC")
@@ -331,7 +330,7 @@ class Tasklist:
 
         if unrewarded:
             # Select tasks to reward up to the limit of rewards
-            recent_rewards = data.tasklist_rewards.queries.count_recent_for(self.member.guild.id, self.member.id)
+            recent_rewards = data.tasklist_rewards.queries.count_recent_for(self.member.id)
             max_to_reward = max((task_reward_limit - recent_rewards, 0))
             reward_tasks = unrewarded[:max_to_reward]
 
@@ -354,7 +353,6 @@ class Tasklist:
 
                 # Track reward
                 data.tasklist_rewards.insert(
-                    guildid=self.member.guild.id,
                     userid=self.member.id,
                     reward_count=rewarding_count
                 )
@@ -376,12 +374,12 @@ class Tasklist:
         Add provided tasks to the task list
         """
         insert = [
-            (self.member.guild.id, self.member.id, task)
+            (self.member.id, task)
             for task in tasks
         ]
         return data.tasklist.insert_many(
             *insert,
-            insert_keys=('guildid', 'userid', 'content')
+            insert_keys=('userid', 'content')
         )
 
     def _delete_tasks(self, *indexes):
@@ -460,7 +458,6 @@ class Tasklist:
         # Fetch accurate count of current tasks
         count = data.tasklist.select_one_where(
             select_columns=("COUNT(*)",),
-            guildid=self.member.guild.id,
             userid=self.member.id
         )[0]
 

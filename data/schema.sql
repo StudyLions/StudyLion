@@ -92,7 +92,6 @@ CREATE INDEX workout_sessions_members ON workout_sessions (guildid, userid);
 -- Tasklist data {{{
 CREATE TABLE tasklist(
   taskid SERIAL PRIMARY KEY,
-  guildid BIGINT NOT NULL,
   userid BIGINT NOT NULL,
   content TEXT NOT NULL,
   complete BOOL DEFAULT FALSE,
@@ -100,7 +99,7 @@ CREATE TABLE tasklist(
   created_at TIMESTAMP DEFAULT (now() at time zone 'utc'),
   last_updated_at TIMESTAMP DEFAULT (now() at time zone 'utc')
 );
-CREATE INDEX tasklist_members ON tasklist (guildid, userid);
+CREATE INDEX tasklist_users ON tasklist (userid);
 
 CREATE TABLE tasklist_channels(
   guildid BIGINT NOT NULL,
@@ -109,12 +108,11 @@ CREATE TABLE tasklist_channels(
 CREATE INDEX tasklist_channels_guilds ON tasklist_channels (guildid);
 
 CREATE TABLE tasklist_reward_history(
-  guildid BIGINT NOT NULL,
   userid BIGINT NOT NULL,
   reward_time TIMESTAMP DEFAULT (now() at time zone 'utc'),
   reward_count INTEGER
 );
-CREATE INDEX tasklist_reward_history_members ON tasklist_reward_history (guildid, userid, reward_time);
+CREATE INDEX tasklist_reward_history_users ON tasklist_reward_history (userid, reward_time);
 -- }}}
 
 -- Reminder data {{{
