@@ -231,7 +231,7 @@ async def cmd_rooms(ctx):
                         slotid=slot.data.slotid
                     )
                 else:
-                    slot.members.append(SlotMember(slot.data.slotid, ctx.author.id, ctx.guild))
+                    slot.members[ctx.author.id] = SlotMember(slot.data.slotid, ctx.author.id, ctx.guild)
                 await slot.update_status()
         ctx.alion.addCoins(-cost)
         await ctx.embed_reply(
