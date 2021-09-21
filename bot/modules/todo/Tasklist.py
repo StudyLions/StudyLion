@@ -650,7 +650,7 @@ class Tasklist:
 
         # If we were updated in that time, go back to sleep
         if datetime.datetime.utcnow().timestamp() - self._refreshed_at.timestamp() < delay:
-            asyncio.create_task(self._schedule_deactivation)
+            asyncio.create_task(self._schedule_deactivation())
             return
 
         # Check if lots of content has been sent since
