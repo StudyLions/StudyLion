@@ -38,3 +38,10 @@ with conn:
 
 
 log("Established connection.", "DB_INIT")
+
+
+def reset_connection():
+    log("Re-establishing connection.", "DB_INIT", level=logging.DEBUG)
+    global conn
+    conn = psy.connect(conf.bot['database'], cursor_factory=DictLoggingCursor)
+    log("Re-established connection.", "DB_INIT")
