@@ -10,6 +10,8 @@ from data.conditions import GEQ
 
 from .module import module
 from .lib import utc_now
+from .tracker import AccountabilityGuild as AGuild
+from .TimeSlot import SlotMember
 from .data import accountability_members, accountability_member_info, accountability_open_slots, accountability_rooms
 
 
@@ -77,8 +79,11 @@ async def cmd_rooms(ctx):
         try:
             message = await ctx.client.wait_for('message', check=check, timeout=60)
         except asyncio.TimeoutError:
-            await out_msg.delete()
-            await ctx.error_reply("Session timed out. No accountability bookings were cancelled.")
+            try:
+                await out_msg.delete()
+                await ctx.error_reply("Session timed out. No accountability bookings were cancelled.")
+            except discord.HTTPException:
+                pass
             return
 
         try:
@@ -163,8 +168,11 @@ async def cmd_rooms(ctx):
         try:
             message = await ctx.client.wait_for('message', check=check, timeout=60)
         except asyncio.TimeoutError:
-            await out_msg.delete()
-            await ctx.error_reply("Session timed out. No accountability slots were booked.")
+            try:
+                await out_msg.delete()
+                await ctx.error_reply("Session timed out. No accountability slots were booked.")
+            except discord.HTTPException:
+                pass
             return
 
         try:
@@ -192,6 +200,7 @@ async def cmd_rooms(ctx):
                 )
             )
 
+        # Add the member to data, creating the row if required
         slot_rows = accountability_rooms.fetch_rows_where(
             guildid=ctx.guild.id,
             start_at=to_book
@@ -207,6 +216,23 @@ async def cmd_rooms(ctx):
             *((slotid, ctx.author.id, ctx.guild_settings.accountability_price.value) for slotid in slotids),
             insert_keys=('slotid', 'userid', 'paid')
         )
+
+        # Handle case where the slot has already opened
+        aguild = AGuild.cache.get(ctx.guild.id, None)
+        if aguild:
+            if aguild.upcoming_slot and aguild.upcoming_slot.start_time in to_book:
+                slot = aguild.upcoming_slot
+                if not slot.data:
+                    # Handle slot activation
+                    slot._refresh()
+                    channelid, messageid = await slot.open()
+                    accountability_rooms.update_where(
+                        {'channelid': channelid, 'messageid': messageid},
+                        slotid=slot.data.slotid
+                    )
+                else:
+                    slot.members.append(SlotMember(slot.data.slotid, ctx.author.id, ctx.guild))
+                await slot.update_status()
         ctx.alion.addCoins(-cost)
         await ctx.embed_reply(
             "You have booked the following accountability sessions.\n{}".format(

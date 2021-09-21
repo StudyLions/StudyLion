@@ -60,7 +60,6 @@ class TimeSlot:
     )
 
     slots = {}
-    channel_slots = {}
 
     _member_overwrite = discord.PermissionOverwrite(
         view_channel=True,
@@ -233,11 +232,19 @@ class TimeSlot:
         """
         Refresh the stored data row and reload.
         """
-        self.data = next(accountability_rooms.fetch_rows_where(
+        rows = accountability_rooms.fetch_rows_where(
             guildid=self.guild.id,
-            open_at=self.start_time
-        ), None)
-        self.load()
+            start_at=self.start_time
+        )
+        self.data = rows[0] if rows else None
+
+        memberids = []
+        if self.data:
+            member_rows = accountability_members.fetch_rows_where(
+                slotid=self.data.slotid
+            )
+            memberids = [row.userid for row in member_rows]
+        self.load(memberids=memberids)
 
     async def open(self):
         """
