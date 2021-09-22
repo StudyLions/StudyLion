@@ -143,8 +143,16 @@ class ColourRole(ShopItem):
                 desc = "You have bought {}. Enjoy!".format(to_add.mention)
                 log_str = "{} bought {}.".format(member.mention, to_add.mention)
         else:
-            desc = "Something went wrong! Please try again later."
-            log_str = "{} bought `{}`, but I couldn't add the role!".format(member.mention, self.roleid)
+            desc = (
+                "Something went wrong! Please try again later.\n"
+                "(I don't have the server permissions to give this role to you!)"
+            )
+            log_str = (
+                "{} bought `{}`, but I couldn't add the role!\n"
+                "Please ensure that I have permission to manage this role.\n"
+                "(I need to have the `manage_roles` permission, "
+                "and my top role needs to be above the colour roles.)"
+            ).format(member.mention, self.roleid)
             log_error = True
 
         # Build and send embeds
@@ -365,5 +373,5 @@ class ColourRole(ShopItem):
         """
         if await ctx.ask("Are you sure you want to remove all colour roles from the shop?"):
             shop_items.delete_where(guildid=ctx.guild.id, item_type=cls.item_type)
-            await ctx.reply("All colour roles deleted.")
-            await ctx.guild_settings.event_log.log("{} cleared the colour role shop.".format(ctx.author.mention))
+            await ctx.reply("All colour roles removed from the shop.")
+            ctx.guild_settings.event_log.log("{} cleared the colour role shop.".format(ctx.author.mention))
