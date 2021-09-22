@@ -103,10 +103,29 @@ async def cmd_rooms(ctx):
             return await ctx.error_reply("No valid bookings selected for cancellation.")
         cost = len(to_cancel) * ctx.guild_settings.accountability_price.value
 
+        slotids = [row['slotid'] for row in to_cancel]
         accountability_members.delete_where(
             userid=ctx.author.id,
-            slotid=[row['slotid'] for row in to_cancel]
+            slotid=slotids
         )
+
+        # Handle case where the slot has already opened
+        for row in to_cancel:
+            aguild = AGuild.cache.get(row['guildid'], None)
+            if aguild:
+                if aguild.upcoming_slot and aguild.upcoming_slot.data and (aguild.upcoming_slot.data.slotid in slotids):
+                    aguild.upcoming_slot.members.pop(ctx.author.id, None)
+                    if aguild.upcoming_slot.channel:
+                        try:
+                            await aguild.upcoming_slot.channel.set_permissions(
+                                ctx.author,
+                                overwrite=None
+                            )
+                        except discord.HTTPException:
+                            pass
+                    await aguild.upcoming_slot.update_status()
+                    break
+
         ctx.alion.addCoins(-cost)
         await ctx.embed_reply(
             "Successfully canceled your bookings."
@@ -232,6 +251,11 @@ async def cmd_rooms(ctx):
                     )
                 else:
                     slot.members[ctx.author.id] = SlotMember(slot.data.slotid, ctx.author.id, ctx.guild)
+                    # Also update the channel permissions
+                    try:
+                        await slot.channel.set_permissions(ctx.author, view_channel=True, connect=True)
+                    except discord.HTTPException:
+                        pass
                 await slot.update_status()
         ctx.alion.addCoins(-cost)
         await ctx.embed_reply(
