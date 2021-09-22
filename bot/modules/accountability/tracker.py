@@ -153,7 +153,7 @@ async def turnover():
         ]
 
         to_update = [
-            (mem.data.duration + (now - mem.data.last_joined_at).total_seconds(), None, mem.slotid, mem.userid)
+            (mem.data.duration + int((now - mem.data.last_joined_at).total_seconds()), None, mem.slotid, mem.userid)
             for slot in last_slots for mem in slot.members.values()
             if mem.data.last_joined_at
         ]
@@ -245,7 +245,7 @@ async def room_watchdog(client, member, before, after):
                 if before.channel and before.channel.id == slot.channel.id:
                     # Left accountability room
                     with data.batch_update():
-                        data.duration += (utc_now() - data.last_joined_at).total_seconds()
+                        data.duration += int((utc_now() - data.last_joined_at).total_seconds())
                         data.last_joined_at = None
                     await slot.update_status()
                 elif after.channel and after.channel.id == slot.channel.id:
@@ -355,7 +355,8 @@ async def _accountability_system_resume():
                 # If the rooms were opened and maybe started, make optimistic guesses on session data and close.
                 session_end = row.start_at + datetime.timedelta(hours=1)
                 session_updates.extend(
-                    (mow.duration + (session_end - mow.last_joined_at).total_seconds(), None, mow.slotid, mow.userid)
+                    (mow.duration + int((session_end - mow.last_joined_at).total_seconds()),
+                     None, mow.slotid, mow.userid)
                     for mow in slot_members[row.slotid] if mow.last_joined_at
                 )
                 slot = TimeSlot(client.get_guild(row.guildid), row.start_at, data=row).load(
@@ -381,7 +382,7 @@ async def _accountability_system_resume():
                 ]
 
                 session_updates.extend(
-                    (mem.data.duration + (now - mem.data.last_joined_at).total_seconds(),
+                    (mem.data.duration + int((now - mem.data.last_joined_at).total_seconds()),
                         None, mem.slotid, mem.userid)
                     for slot in current_slots
                     for mem in slot.members.values()
