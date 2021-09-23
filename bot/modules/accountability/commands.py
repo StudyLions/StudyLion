@@ -50,7 +50,7 @@ async def cmd_rooms(ctx):
 
         # Show unbooking menu
         lines = [
-            "`[{:>2}]` | <t:{}:d><t:{}:t> - <t:{}:t>".format(
+            "`[{:>2}]` | <t:{}:d> <t:{}:t> - <t:{}:t>".format(
                 i,
                 int(row['start_at'].timestamp()),
                 int(row['start_at'].timestamp()),
@@ -157,7 +157,7 @@ async def cmd_rooms(ctx):
         )
         times = list(time for time in times if time not in already_joined_times)
         lines = [
-            "`[{:>2}]` | `{:>{}}` attending | <t:{}:d><t:{}:t> - <t:{}:t>".format(
+            "`[{:>2}]` | `{:>{}}` attending | <t:{}:d> <t:{}:t> - <t:{}:t>".format(
                 i,
                 attendees.get(time, 0), attendee_pad,
                 int(time.timestamp()), int(time.timestamp()), int(time.timestamp()) + 3600
@@ -261,7 +261,7 @@ async def cmd_rooms(ctx):
         await ctx.embed_reply(
             "You have booked the following accountability sessions.\n{}".format(
                 '\n'.join(
-                    "<t:{}:d><t:{}:t> - <t:{}:t>".format(
+                    "<t:{}:d> <t:{}:t> - <t:{}:t>".format(
                         int(time.timestamp()), int(time.timestamp()), int(time.timestamp() + 3600)
                     ) for time in to_book
                 )
