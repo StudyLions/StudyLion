@@ -458,7 +458,8 @@ class Tasklist:
         # Fetch accurate count of current tasks
         count = data.tasklist.select_one_where(
             select_columns=("COUNT(*)",),
-            userid=self.member.id
+            userid=self.member.id,
+            _extra="AND last_updated_at > timezone('utc', NOW()) - INTERVAL '24h'"
         )[0]
 
         # Fetch maximum allowed count
