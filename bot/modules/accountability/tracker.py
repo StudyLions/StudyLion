@@ -66,7 +66,7 @@ async def open_next(start_time):
 
     # Open a new slot in each accountability guild
     to_update = []  # Cache of slot update data to be applied at the end
-    for aguild in AccountabilityGuild.cache.values():
+    for aguild in list(AccountabilityGuild.cache.values()):
         guild = aguild.guild
         if guild:
             # Initialise next TimeSlot
