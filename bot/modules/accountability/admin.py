@@ -40,8 +40,8 @@ class accountability_category(settings.Channel, settings.GuildSetting):
                 aguild = AG.cache[self.id]
                 if aguild.current_slot:
                     aguild.current_lost.cancel()
-                if aguild.next_slot:
-                    aguild.next_slot.cancel()
+                if aguild.upcoming_slot:
+                    aguild.upcoming_slot.cancel()
                 return "The accountability system has been stopped."
             else:
                 return "The accountability category has been unset."
