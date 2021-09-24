@@ -19,6 +19,19 @@ from .module import module
 
 
 voice_ignore_lock = asyncio.Lock()
+room_lock = asyncio.Lock()
+
+
+def locker(lock):
+    """
+    Function decorator to wrap the function in a provided Lock
+    """
+    def decorator(func):
+        async def wrapped(*args, **kwargs):
+            async with lock:
+                return await func(*args, **kwargs)
+        return wrapped
+    return decorator
 
 
 class AccountabilityGuild:
@@ -184,7 +197,7 @@ async def turnover():
             )
             for slot in current_slots
             for mem in slot.members.values()
-            if mem.member.voice and mem.member.voice.channel != slot.channel
+            if mem.data and mem.member and mem.member.voice and mem.member.voice.channel != slot.channel
         )
         # We return exceptions here to ignore any permission issues that occur with moving members.
         # It's also possible (likely) that members will move while we are moving other members
@@ -279,7 +292,8 @@ async def _accountability_loop():
             next_time = next_time + datetime.timedelta(minutes=5)
             # Open next sessions
             try:
-                await open_next(next_time)
+                async with room_lock:
+                    await open_next(next_time)
             except Exception:
                 # Unknown exception. Catch it so the loop doesn't die.
                 client.log(
@@ -293,7 +307,8 @@ async def _accountability_loop():
         elif next_time.minute == 0:
             # Start new sessions
             try:
-                await turnover()
+                async with room_lock:
+                    await turnover()
             except Exception:
                 # Unknown exception. Catch it so the loop doesn't die.
                 client.log(

@@ -37,7 +37,7 @@ class SlotMember:
 
     @property
     def member(self):
-        return self.guild.get_member(self.data.userid)
+        return self.guild.get_member(self.userid)
 
     @property
     def has_attended(self):
@@ -254,6 +254,11 @@ class TimeSlot:
         Adds the TimeSlot to cache.
         Returns the (channelid, messageid).
         """
+        # Cleanup any non-existent members
+        for memid, mem in list(self.members.items()):
+            if not mem.data or not mem.member:
+                self.members.pop(memid)
+
         # Calculate overwrites
         overwrites = {
             mem.member: self._member_overwrite

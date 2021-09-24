@@ -11,8 +11,9 @@ from data.conditions import GEQ
 from .module import module
 from .lib import utc_now
 from .tracker import AccountabilityGuild as AGuild
+from .tracker import room_lock
 from .TimeSlot import SlotMember
-from .data import accountability_members, accountability_member_info, accountability_open_slots, accountability_rooms
+from .data import accountability_members, accountability_member_info, accountability_rooms
 
 
 @module.cmd(
@@ -104,29 +105,30 @@ async def cmd_rooms(ctx):
         cost = len(to_cancel) * ctx.guild_settings.accountability_price.value
 
         slotids = [row['slotid'] for row in to_cancel]
-        accountability_members.delete_where(
-            userid=ctx.author.id,
-            slotid=slotids
-        )
+        async with room_lock:
+            accountability_members.delete_where(
+                userid=ctx.author.id,
+                slotid=slotids
+            )
 
-        # Handle case where the slot has already opened
-        for row in to_cancel:
-            aguild = AGuild.cache.get(row['guildid'], None)
-            if aguild:
-                if aguild.upcoming_slot and aguild.upcoming_slot.data and (aguild.upcoming_slot.data.slotid in slotids):
-                    aguild.upcoming_slot.members.pop(ctx.author.id, None)
-                    if aguild.upcoming_slot.channel:
-                        try:
-                            await aguild.upcoming_slot.channel.set_permissions(
-                                ctx.author,
-                                overwrite=None
-                            )
-                        except discord.HTTPException:
-                            pass
-                    await aguild.upcoming_slot.update_status()
-                    break
+            # Handle case where the slot has already opened
+            for row in to_cancel:
+                aguild = AGuild.cache.get(row['guildid'], None)
+                if aguild and aguild.upcoming_slot and aguild.upcoming_slot.data:
+                    if aguild.upcoming_slot.data.slotid in slotids:
+                        aguild.upcoming_slot.members.pop(ctx.author.id, None)
+                        if aguild.upcoming_slot.channel:
+                            try:
+                                await aguild.upcoming_slot.channel.set_permissions(
+                                    ctx.author,
+                                    overwrite=None
+                                )
+                            except discord.HTTPException:
+                                pass
+                        await aguild.upcoming_slot.update_status()
+                        break
 
-        ctx.alion.addCoins(-cost)
+        ctx.alion.addCoins(cost)
         await ctx.embed_reply(
             "Successfully canceled your bookings."
         )
