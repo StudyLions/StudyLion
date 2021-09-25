@@ -39,7 +39,7 @@ class video_channels(settings.ChannelList, settings.ListData, settings.Setting):
     @property
     def success_response(self):
         if self.value:
-            return "Membrs must enable their video in the following channels:\n{}".format(self.formatted)
+            return "Members must enable their video in the following channels:\n{}".format(self.formatted)
         else:
             return "There are no video-required channels set up."
 
