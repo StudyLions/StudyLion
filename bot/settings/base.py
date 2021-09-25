@@ -218,6 +218,18 @@ class Setting:
                         Colour=discord.Colour.green()
                     ))
 
+    @classmethod
+    def init_task(self, client):
+        """
+        Initialisation task to be excuted during client initialisation.
+        May be used for e.g. populating a cache or required client setup.
+
+        Main application must execute the initialisation task before the setting is used.
+        Further, the task must always be executable, if the setting is loaded.
+        Conditional initalisation should go in the relevant module's init tasks.
+        """
+        return None
+
 
 class ObjectSettings:
     """

@@ -1,3 +1,4 @@
+import datetime
 import itertools
 from enum import IntEnum
 from typing import Any, Optional
@@ -8,6 +9,7 @@ from cmdClient.Context import Context
 from cmdClient.lib import SafeCancellation
 
 from meta import client
+from utils.lib import parse_dur, strfdur, strfdelta
 
 from .base import UserInputError
 
@@ -594,6 +596,73 @@ class IntegerEnum(SettingType):
                 return cls._output_map[value]
             else:
                 return "`{}`".format(value.name)
+
+
+class Duration(SettingType):
+    """
+    Duration type, stores a time duration in seconds.
+
+    Types:
+        data: Optional[int]
+            The stored number of seconds.
+        value: Optional[int]
+            The stored number of seconds.
+    """
+    accepts = "A number of days, hours, minutes, and seconds, e.g. `2d 4h 10s`."
+
+    # Set an upper limit on the duration
+    _max = 60 * 60 * 24 * 365
+    _min = None
+
+    # Whether to allow empty durations
+    # This is particularly useful since the duration parser will return 0 for most non-duration strings
+    allow_zero = False
+
+    @classmethod
+    def _data_from_value(cls, id: int, value: Optional[bool], **kwargs):
+        """
+        Both data and value are of type Optional[int].
+        Directly return the provided value as data.
+        """
+        return value
+
+    @classmethod
+    def _data_to_value(cls, id: int, data: Optional[bool], **kwargs):
+        """
+        Both data and value are of type Optional[int].
+        Directly return the internal data as the value.
+        """
+        return data
+
+    @classmethod
+    async def _parse_userstr(cls, ctx: Context, id: int, userstr: str, **kwargs):
+        """
+        Parse the provided duration.
+        """
+        if userstr.lower() == "none":
+            return None
+
+        num = parse_dur(userstr)
+
+        if num == 0 and not cls.allow_zero:
+            raise UserInputError("The provided duration cannot be `0`!")
+
+        if cls._max is not None and num > cls._max:
+            raise UserInputError("Duration cannot be longer than `{}`!".format(strfdur(cls._max)))
+        if cls._min is not None and num < cls._min:
+            raise UserInputError("Duration connot be shorter than `{}`!".format(strfdur(cls._min)))
+
+        return num
+
+    @classmethod
+    def _format_data(cls, id: int, data: Optional[int], **kwargs):
+        """
+        Return the string version of the data.
+        """
+        if data is None:
+            return None
+        else:
+            return "`{}`".format(strfdelta(datetime.timedelta(seconds=data)))
 
 
 class SettingList(SettingType):

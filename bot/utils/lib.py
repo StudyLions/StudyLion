@@ -9,6 +9,14 @@ from psycopg2.extensions import QuotedString
 from cmdClient.lib import SafeCancellation
 
 
+multiselect_regex = re.compile(
+    r"^([0-9, -]+)$",
+    re.DOTALL | re.IGNORECASE | re.VERBOSE
+)
+tick = '✅'
+cross = '❌'
+
+
 def prop_tabulate(prop_list, value_list, indent=True):
     """
     Turns a list of properties and corresponding list of values into
@@ -515,9 +523,8 @@ class FieldEnum(str, Enum):
         return QuotedString(self.value)
 
 
-multiselect_regex = re.compile(
-    r"^([0-9, -]+)$",
-    re.DOTALL | re.IGNORECASE | re.VERBOSE
-)
-tick = '✅'
-cross = '❌'
+def utc_now():
+    """
+    Return the current timezone-aware utc timestamp.
+    """
+    return datetime.datetime.utcnow().replace(tzinfo=datetime.timezone.utc)

@@ -168,3 +168,30 @@ class donator_roles(settings.RoleList, settings.ListData, settings.Setting):
             return "The donator badges are now:\n{}".format(self.formatted)
         else:
             return "The donator badges have been removed."
+
+
+@GuildSettings.attach_setting
+class alert_channel(settings.Channel, GuildSetting):
+    category = "Meta"
+
+    attr_name = 'alert_channel'
+    _data_column = 'alert_channel'
+
+    display_name = "alert_channel"
+    desc = "Channel to display global user alerts."
+
+    long_desc = (
+        "This channel will be used for group notifications, "
+        "for example group timers and anti-cheat messages, "
+        "as well as for critical alerts to users that have their direct messages disapbled.\n"
+        "It should be visible to all members."
+    )
+
+    _chan_type = discord.ChannelType.text
+
+    @property
+    def success_response(self):
+        if self.value:
+            return "The alert channel is now {}.".format(self.formatted)
+        else:
+            return "The alert channel has been unset."

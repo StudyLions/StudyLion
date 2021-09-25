@@ -53,7 +53,7 @@ def add_pending(pending):
 
 guild_config = RowTable(
     'guild_config',
-    ('guildid', 'admin_role', 'mod_role', 'event_log_channel',
+    ('guildid', 'admin_role', 'mod_role', 'event_log_channel', 'alert_channel',
      'min_workout_length', 'workout_reward',
      'max_tasks', 'task_reward', 'task_reward_limit',
      'study_hourly_reward', 'study_hourly_live_bonus',
@@ -73,7 +73,7 @@ lions = RowTable(
      'tracked_time', 'coins',
      'workout_count', 'last_workout_start',
      'last_study_badgeid',
-     'study_ban_count',
+     'video_warned',
      ),
     ('guildid', 'userid'),
     cache=TTLCache(5000, ttl=60*5),

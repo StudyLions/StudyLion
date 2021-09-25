@@ -2,6 +2,8 @@ import logging
 import asyncio
 
 from meta import client, conf
+from settings import GuildSettings, UserSettings
+
 from LionModule import LionModule
 
 from .lion import Lion
@@ -24,6 +26,18 @@ async def _lion_sync_loop():
 
         Lion.sync()
         await asyncio.sleep(conf.bot.getint("lion_sync_period"))
+
+
+@module.init_task
+def setting_initialisation(client):
+    """
+    Execute all Setting initialisation tasks from GuildSettings and UserSettings.
+    """
+    for setting in GuildSettings.settings.values():
+        setting.init_task(client)
+
+    for setting in UserSettings.settings.values():
+        setting.init_task(client)
 
 
 @module.launch_task
