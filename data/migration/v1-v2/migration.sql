@@ -7,11 +7,11 @@ ALTER TABLE members ADD COLUMN
 
 ALTER TABLE guild_config DROP COLUMN study_ban_role;
 
-ALTER TABLE guild_config ADD COLUMN
-  alert_channel BIGINT,
-  video_studyban BOOLEAN,
-  video_grace_period INTEGER
-  studyban_role BIGINT;
+ALTER TABLE guild_config
+  ADD COLUMN alert_channel BIGINT,
+  ADD COLUMN video_studyban BOOLEAN,
+  ADD COLUMN video_grace_period INTEGER,
+  ADD COLUMN studyban_role BIGINT;
 
 
 CREATE TYPE TicketState AS ENUM (
