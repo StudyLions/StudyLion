@@ -1,2 +1,2 @@
 CONFIG_FILE = "config/bot.conf"
-DATA_VERSION = 1
+DATA_VERSION = 2

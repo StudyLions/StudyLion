@@ -5,7 +5,7 @@ from wards import guild_admin
 
 import settings
 
-from .data import video_channels, studyban_durations
+from .data import studyban_durations
 
 
 @GuildSettings.attach_setting
@@ -62,7 +62,7 @@ class studyban_role(settings.Role, GuildSetting):
 class studyban_durations(settings.SettingList, settings.ListData, settings.Setting):
     category = "Moderation"
 
-    attr_name = 'studyban_auto_durations'
+    attr_name = 'studyban_durations'
 
     _table_interface = studyban_durations
     _id_column = 'guildid'
@@ -72,7 +72,7 @@ class studyban_durations(settings.SettingList, settings.ListData, settings.Setti
     _setting = settings.Duration
 
     write_ward = guild_admin
-    display_name = "studyban_auto_durations"
+    display_name = "studyban_durations"
     desc = "Sequence of durations for automatic study bans."
 
     long_desc = (
@@ -98,35 +98,3 @@ class studyban_durations(settings.SettingList, settings.ListData, settings.Setti
             return "Automatic study bans will never be reverted."
 
 
-@GuildSettings.attach_setting
-class video_channels(settings.ChannelList, settings.ListData, settings.Setting):
-    category = "Moderation "
-
-    attr_name = 'video_channels'
-
-    _table_interface = video_channels
-    _id_column = 'guildid'
-    _data_column = 'channelid'
-    _setting = settings.VoiceChannel
-
-    write_ward = guild_admin
-    display_name = "video_channels"
-    desc = "Channels where members are required to enable their video."
-
-    _force_unique = True
-
-    long_desc = (
-        "Members must keep their video enabled in these channels.\n"
-        "If they do not keep their video enable (excepting 30 second periods, where they will be warned), "
-        "they will be kicked from the channel, and, if the `studyban_role` is set, automatically study-banned."
-    )
-
-    # Flat cache, no need to expire objects
-    _cache = {}
-
-    @property
-    def success_response(self):
-        if self.value:
-            return "Membrs must enable their video in the following channels:\n{}".format(self.formatted)
-        else:
-            return "There are no video-required channels set up."
