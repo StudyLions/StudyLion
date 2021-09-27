@@ -94,6 +94,9 @@ async def cmd_studybadges(ctx, flags):
         # Pre-fetch the list of roles
         guild_roles = study_badges.fetch_rows_where(guildid=ctx.guild.id, _extra="ORDER BY required_time ASC")
 
+        if not guild_roles:
+            return await ctx.error_reply("There are no studybadges to remove!")
+
         # Input handling, parse or get the list of rows to delete
         to_delete = []
         if flags['remove']:
