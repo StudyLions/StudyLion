@@ -135,7 +135,7 @@ async def find_role(ctx, userstr, create=False, interactive=False, collection=No
 
 
 @Context.util
-async def find_channel(ctx, userstr, interactive=False, collection=None, chan_type=None):
+async def find_channel(ctx, userstr, interactive=False, collection=None, chan_type=None, type_name=None):
     """
     Find a guild channel given a partial matching string,
     allowing custom channel collections and several behavioural switches.
@@ -153,6 +153,9 @@ async def find_channel(ctx, userstr, interactive=False, collection=None, chan_ty
         If none, uses the full guild channel list.
     chan_type: discord.ChannelType
         Type of channel to restrict the collection to.
+    type_name: str
+        Optional name to use for the channel type if it is not found.
+        Used particularly with custom collections.
 
     Returns
     -------
@@ -224,9 +227,29 @@ async def find_channel(ctx, userstr, interactive=False, collection=None, chan_ty
             chan = channels[0]
 
     if chan is None:
-        await ctx.error_reply("Couldn't find a channel matching `{}`!".format(userstr))
+        typestr = type_name
+        addendum = ""
+        if chan_type and not type_name:
+            chan_type_strings = {
+                discord.ChannelType.category: "category",
+                discord.ChannelType.text: "text channel",
+                discord.ChannelType.voice: "voice channel",
+                discord.ChannelType.stage_voice: "stage channel",
+            }
+            typestr = chan_type_strings.get(chan_type, None)
+            if typestr and chanid:
+                actual = ctx.guild.get_channel(chanid)
+                if actual and actual.type in chan_type_strings:
+                    addendum = "\n{} appears to be a {} instead.".format(
+                        actual.mention,
+                        chan_type_strings[actual.type]
+                    )
+        typestr = typestr or "channel"
+
+        await ctx.error_reply("Couldn't find a {} matching `{}`!{}".format(typestr, userstr, addendum))
 
     return chan
+
 
 @Context.util
 async def find_member(ctx, userstr, interactive=False, collection=None, silent=False):
