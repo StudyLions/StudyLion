@@ -21,3 +21,14 @@ accountability_members = RowTable(
 
 accountability_member_info = Table('accountability_member_info')
 accountability_open_slots = Table('accountability_open_slots')
+
+# @accountability_member_info.save_query
+# def user_streaks(userid, min_duration):
+#     with accountability_member_info.conn as conn:
+#         cursor = conn.cursor()
+#         with cursor:
+#             cursor.execute(
+#                 """
+
+#                 """
+#             )

@@ -6,6 +6,7 @@ import asyncio
 from settings import GuildSettings
 from utils.lib import tick, cross
 from core import Lion
+from meta import client
 
 from .lib import utc_now
 from .data import accountability_members, accountability_rooms
@@ -94,7 +95,9 @@ class TimeSlot:
             ),
             colour=discord.Colour.orange(),
             timestamp=self.start_time
-        ).set_footer(text="About to start!")
+        ).set_footer(
+            text="About to start!\nJoin the session with {}rooms book".format(client.prefix)
+        )
 
         if self.members:
             embed.description = "Starting <t:{}:R>.".format(timestamp)
@@ -119,7 +122,7 @@ class TimeSlot:
             description="Finishing <t:{}:R>.".format(timestamp + 3600),
             colour=discord.Colour.orange(),
             timestamp=self.start_time
-        ).set_footer(text="Running")
+        ).set_footer(text="Join the next session using {}rooms book".format(client.prefix))
 
         if self.members:
             classifications = {
