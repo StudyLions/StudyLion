@@ -461,8 +461,8 @@ async def cmd_rooms(ctx):
                         (attended_count * 100) / total_count,
                     ),
                     "Time": "**{:02}:{:02}** spent in accountability rooms.".format(
-                        total_duration // 60,
-                        total_duration % 60
+                        total_duration // 3600,
+                        total_duration % 3600
                     ),
                     "Streak": "**{}** day{} with no missed sessions! (Longest: **{}** day{}.)".format(
                         current_streak,
