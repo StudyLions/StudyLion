@@ -253,7 +253,6 @@ async def cmd_rooms(ctx):
                 pass
             return
 
-        print(message)
         try:
             await out_msg.delete()
             await message.delete()
@@ -411,7 +410,6 @@ async def cmd_rooms(ctx):
                 i = 0
                 while i < len(history):
                     row = history[i]
-                    print(date, row['start_at'])
                     i += 1
                     if not row['attended']:
                         # Not attended, streak broken
@@ -462,7 +460,7 @@ async def cmd_rooms(ctx):
                     ),
                     "Time": "**{:02}:{:02}** spent in accountability rooms.".format(
                         total_duration // 3600,
-                        total_duration % 3600
+                        (total_duration % 3600) // 60
                     ),
                     "Streak": "**{}** day{} with no missed sessions! (Longest: **{}** day{}.)".format(
                         current_streak,
