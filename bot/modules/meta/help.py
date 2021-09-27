@@ -35,7 +35,7 @@ admin_group_order = (
 # TODO: Add config fields for this
 title = "LionBot Command List"
 header = """
-For more detailed information about each command use `{ctx.best_prefix}help <cmd>`.
+Use `{ctx.best_prefix}help <cmd>` (e.g. `{ctx.best_prefix}help send`) to see how to use each command.
 """
 
 
