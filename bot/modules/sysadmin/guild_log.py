@@ -70,7 +70,6 @@ async def log_joined_guild(client, guild):
         timestamp=datetime.datetime.utcnow()
     )
     embed.set_author(name="Joined guild!")
-    embed.set_thumbnail(url=icon)
 
     embed.add_field(name="Owner", value="{0} (ID: {0.id})".format(owner), inline=False)
     embed.add_field(name="Region", value=region, inline=False)
