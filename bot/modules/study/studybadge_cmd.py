@@ -165,6 +165,10 @@ async def cmd_studybadges(ctx, flags):
         # Delete the rows
         study_badges.delete_where(badgeid=[row.badgeid for row in to_delete])
 
+        # Also update the cached guild roles
+        guild_role_cache.pop((ctx.guild.id, ), None)
+        study_badges.queries.for_guild(ctx.guild.id)
+
         # Immediately refresh the member data, only for members with NULL badgeid
         update_rows = new_study_badges.select_where(
             guildid=ctx.guild.id,
@@ -278,7 +282,7 @@ async def cmd_studybadges(ctx, flags):
             )
 
         # Also update the cached guild roles
-        guild_role_cache.pop(ctx.guild.id, None)
+        guild_role_cache.pop((ctx.guild.id, ), None)
         study_badges.queries.for_guild(ctx.guild.id)
 
         # Ack changes
