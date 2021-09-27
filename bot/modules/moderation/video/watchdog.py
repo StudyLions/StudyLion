@@ -198,7 +198,7 @@ async def _join_video_channel(member, channel):
                 title="You have been studybanned!",
                 description=(
                     "You have been banned from studying in **{}**.\n"
-                    "Study features, including **study voice channels** and **study text channels**, "
+                    "Study features, including access to the server **study channels**, "
                     "will ***not be available to you until this ban is lifted.***".format(
                         member.guild.name,
                     )
