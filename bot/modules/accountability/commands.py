@@ -4,6 +4,7 @@ import discord
 import asyncio
 from cmdClient.checks import in_guild
 
+from meta import client
 from utils.lib import multiselect_regex, parse_ranges, prop_tabulate
 from data import NOTNULL
 from data.conditions import GEQ, LEQ
@@ -485,22 +486,29 @@ async def cmd_rooms(ctx):
                     userid=NOTNULL,
                     select_columns=(
                         'slotid',
+                        'guildid',
                         'start_at',
                         'COUNT(*) as num'
                     ),
-                    _extra="GROUP BY start_at, slotid ORDER BY start_at ASC"
+                    _extra="GROUP BY start_at, slotid, guildid ORDER BY start_at ASC"
                 )
-                attendees = {row['start_at']: row['num'] for row in rows}
-                attendee_pad = max((len(str(num)) for num in attendees.values()), default=1)
+                attendees = {row['start_at']: (row['num'], client.get_guild(row['guildid'])) for row in rows}
+                attendee_pad = max((len(str(num)) for num, _ in attendees.values()), default=1)
 
                 # TODO: Allow cancel to accept multiselect keys as args
+                show_guild = any(guild != ctx.guild for _, guild in attendees.values())
 
                 booked_list = '\n'.join(
-                    "`{:>{}}` attendees | {}".format(
+                    "`{:>{}}` attendees | {} {}".format(
                         num,
                         attendee_pad,
-                        time_format(start)
-                    ) for start, num in attendees.items()
+                        time_format(start),
+                        "" if not show_guild else (
+                            "on this server" if guild == ctx.guild else "in **{}**".format(
+                                guild.name
+                            )
+                        )
+                    ) for start, (num, guild) in attendees.items()
                 )
                 booked_field = (
                     "{}\n\n"
