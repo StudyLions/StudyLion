@@ -614,6 +614,10 @@ class Duration(SettingType):
     _max = 60 * 60 * 24 * 365
     _min = None
 
+    # Default multiplier when the number is provided alone
+    # 1 for seconds, 60 from minutes, etc
+    _default_multiplier = None
+
     # Whether to allow empty durations
     # This is particularly useful since the duration parser will return 0 for most non-duration strings
     allow_zero = False
@@ -642,10 +646,13 @@ class Duration(SettingType):
         if userstr.lower() == "none":
             return None
 
-        num = parse_dur(userstr)
+        if cls._default_multiplier and userstr.isdigit():
+            num = int(userstr) * cls._default_multiplier
+        else:
+            num = parse_dur(userstr)
 
         if num == 0 and not cls.allow_zero:
-            raise UserInputError("The provided duration cannot be `0`!")
+            raise UserInputError("The provided duration cannot be `0`! (Please enter in the format `1d 2h 3m 4s`.)")
 
         if cls._max is not None and num > cls._max:
             raise UserInputError("Duration cannot be longer than `{}`!".format(strfdur(cls._max)))

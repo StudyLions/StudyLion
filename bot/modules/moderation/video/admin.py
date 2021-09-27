@@ -107,6 +107,7 @@ class video_grace_period(settings.Duration, GuildSetting):
     )
 
     _default = 45
+    _default_multiplier = 1
 
     @classmethod
     def _format_data(cls, id: int, data, **kwargs):
