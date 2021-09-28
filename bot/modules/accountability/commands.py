@@ -136,6 +136,7 @@ async def cmd_rooms(ctx):
 
         slotids = [row['slotid'] for row in to_cancel]
         async with room_lock:
+            # TODO: Use the return from this to calculate the cost!
             accountability_members.delete_where(
                 userid=ctx.author.id,
                 slotid=slotids
@@ -505,7 +506,7 @@ async def cmd_rooms(ctx):
                         time_format(start),
                         "" if not show_guild else (
                             "on this server" if guild == ctx.guild else "in **{}**".format(
-                                guild.name
+                                guild.name if guild else guild.id
                             )
                         )
                     ) for start, (num, guild) in attendees.items()

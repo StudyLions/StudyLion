@@ -75,7 +75,6 @@ async def open_next(start_time):
     slot_memberids = collections.defaultdict(list)
     for row in member_data:
         slot_memberids[row.slotid].append(row.userid)
-    print(room_data, member_data)
 
     # Open a new slot in each accountability guild
     to_update = []  # Cache of slot update data to be applied at the end

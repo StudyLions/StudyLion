@@ -293,7 +293,6 @@ class TimeSlot:
                     embed=self.open_embed
                 )
             except discord.HTTPException as e:
-                print(e)
                 GuildSettings(self.guild.id).event_log.log(
                     "Failed to post the status message in the accountability lobby {}.\n"
                     "Skipping this session.".format(self.lobby.mention),
