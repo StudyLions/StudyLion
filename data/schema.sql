@@ -4,7 +4,7 @@ CREATE TABLE VersionHistory(
   time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
   author TEXT
 );
-INSERT INTO VersionHistory (version, author) VALUES (2, 'Initial Creation');
+INSERT INTO VersionHistory (version, author) VALUES (3, 'Initial Creation');
 
 
 CREATE OR REPLACE FUNCTION update_timestamp_column()
@@ -20,6 +20,20 @@ $$ language 'plpgsql';
 CREATE TABLE AppData(
   appid TEXT PRIMARY KEY,
   last_study_badge_scan TIMESTAMP 
+);
+
+CREATE TABLE global_user_blacklist(
+  userid BIGINT PRIMARY KEY,
+  ownerid BIGINT NOT NULL,
+  reason TEXT NOT NULL,
+  created_at TIMESTAMPTZ DEFAULT now()
+);
+
+CREATE TABLE global_guild_blacklist(
+  guildid BIGINT PRIMARY KEY,
+  ownerid BIGINT NOT NULL,
+  reason TEXT NOT NULL,
+  created_at TIMESTAMPTZ DEFAULT now()
 );
 -- }}}
 
@@ -60,6 +74,12 @@ CREATE TABLE guild_config(
   video_studyban BOOLEAN,
   video_grace_period INTEGER
 );
+
+CREATE TABLE ignored_members(
+  guildid BIGINT NOT NULL,
+  userid BIGINT NOT NULL
+);
+CREATE INDEX ignored_member_guilds ON ignored_members (guildid);
 
 CREATE TABLE unranked_roles(
   guildid BIGINT NOT NULL,

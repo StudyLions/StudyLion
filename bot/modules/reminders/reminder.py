@@ -134,6 +134,10 @@ class Reminder:
         """
         Execute the reminder.
         """
+        if self.data.userid in client.objects['blacklisted_users']:
+            self.delete(self.reminderid)
+            return
+
         # Build the message embed
         embed = discord.Embed(
             title="You asked me to remind you!",

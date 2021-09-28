@@ -81,3 +81,8 @@ lions = RowTable(
 )
 
 lion_ranks = Table('member_ranks', attach_as='lion_ranks')
+
+
+global_guild_blacklist = Table('global_guild_blacklist')
+global_user_blacklist = Table('global_user_blacklist')
+ignored_members = Table('ignored_members')

@@ -170,6 +170,10 @@ async def workout_voice_tracker(client, member, before, after):
 
     if member.bot:
         return
+    if member.id in client.objects['blacklisted_users']:
+        return
+    if member.id in client.objcts['ignored_members'][member.guild.id]:
+        return
 
     # Check whether we are moving to/from a workout channel
     settings = GuildSettings(member.guild.id)

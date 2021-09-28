@@ -1,4 +1,5 @@
 from cmdClient import Command, Module
+from cmdClient.lib import SafeCancellation
 
 from meta import log
 
@@ -66,5 +67,15 @@ class LionModule(Module):
         """
         Lion pre-command hook.
         """
-        # TODO: Add blacklist and auto-fetch of lion here.
-        ...
+        # Check global guild blacklist
+        if ctx.guild.id in ctx.client.objects['blacklisted_guilds']:
+            raise SafeCancellation
+
+        # Check global user blacklist
+        if ctx.author.id in ctx.client.objects['blacklisted_users']:
+            raise SafeCancellation
+
+        if ctx.guild:
+            # Check guild's own member blacklist
+            if ctx.author.id in ctx.client.objects['ignored_members'][ctx.guild.id]:
+                raise SafeCancellation

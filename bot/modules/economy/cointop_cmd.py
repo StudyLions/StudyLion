@@ -42,11 +42,14 @@ async def cmd_topcoin(ctx):
     Lion.sync()
 
     # Fetch the leaderboard
-    exclude = [m.id for m in ctx.guild_settings.unranked_roles.members]
+    exclude = set(m.id for m in ctx.guild_settings.unranked_roles.members)
+    exclude.update(ctx.client.objects['blacklisted_users'])
+    exclude.update(ctx.client.objects['ignored_members'][ctx.guild.id])
+
     if exclude:
         user_data = tables.lions.select_where(
             guildid=ctx.guild.id,
-            userid=data.NOT(exclude),
+            userid=data.NOT(list(exclude)),
             select_columns=('userid', 'coins'),
             _extra="AND coins > 0 ORDER BY coins DESC " + ("LIMIT 100" if top100 else "")
         )

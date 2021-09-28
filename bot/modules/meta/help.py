@@ -1,4 +1,5 @@
 import discord
+from cmdClient.checks import is_owner
 
 from utils.lib import prop_tabulate
 from utils import interactive, ctx_addons  # noqa
@@ -28,6 +29,11 @@ mod_group_order = (
 
 admin_group_order = (
     ('Guild Configuration', 'Moderation', 'Meta'),
+    ('Productivity', 'Statistics', 'Economy', 'Personal Settings')
+)
+
+bot_admin_group_order = (
+    ('Bot Admin', 'Guild Configuration', 'Moderation', 'Meta'),
     ('Productivity', 'Statistics', 'Economy', 'Personal Settings')
 )
 
@@ -153,10 +159,17 @@ async def cmd_help(ctx):
             stringy_cmd_groups[group_name] = prop_tabulate(*zip(*cmd_group))
 
         # Now put everything into a bunch of embeds
-        if ctx.guild and is_guild_admin(ctx.author):
-            group_order = admin_group_order
+        if await is_owner.run(ctx):
+            group_order = bot_admin_group_order
+        elif ctx.guild:
+            if is_guild_admin(ctx.author):
+                group_order = admin_group_order
+            elif ctx.guild_settings.mod_role.value in ctx.author.roles:
+                group_order = mod_group_order
+            else:
+                group_order = standard_group_order
         else:
-            group_order = standard_group_order
+            group_order = admin_group_order
 
         help_embeds = []
         for page_groups in group_order:

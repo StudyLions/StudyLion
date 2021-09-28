@@ -47,8 +47,13 @@ def _scan(guild):
     members = itertools.chain(*channel_members)
     # TODO filter out blacklisted users
 
+    blacklist = client.objects['blacklisted_users']
+    guild_blacklist = client.objects['ignored_members'][guild.id]
+
     for member in members:
         if member.bot:
+            continue
+        if member.id in blacklist or member.id in guild_blacklist:
             continue
         lion = Lion.fetch(guild.id, member.id)
 
