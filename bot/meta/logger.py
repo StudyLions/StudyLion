@@ -71,7 +71,10 @@ def log(message, context="GLOBAL", level=logging.INFO, post=True):
 # Live logger that posts to the logging channels
 async def live_log(message, context, level):
     if level >= logging.INFO:
-        log_chid = conf.bot.getint('log_channel')
+        if level >= logging.WARNING:
+            log_chid = conf.bot.getint('error_channel') or conf.bot.getint('log_channel')
+        else:
+            log_chid = conf.bot.getint('log_channel')
 
         # Generate the log messages
         header = "[{}][{}]".format(logging.getLevelName(level), str(context))
