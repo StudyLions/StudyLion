@@ -73,7 +73,9 @@ async def cmd_rooms(ctx):
         {prefix}rooms book
         {prefix}rooms cancel
     Description:
-        View, book, or cancel your accountability sessions.
+        View your accountability profile with `{prefix}rooms`.
+        Use `{prefix}rooms book` to book an accountability session!
+        Use `{prefix}rooms cancel` to cancel a booked session.
     """
     lower = ctx.args.lower()
     splits = lower.split()
@@ -154,12 +156,12 @@ async def cmd_rooms(ctx):
             ]
             if not to_cancel:
                 return await ctx.error_reply("No valid bookings selected for cancellation.")
-            cost = len(to_cancel) * ctx.guild_settings.accountability_price.value
+            elif any(row['start_at'] < utc_now() for row in to_cancel):
+                return await ctx.error_reply("You can't cancel a running session!")
 
             slotids = [row['slotid'] for row in to_cancel]
             async with room_lock:
-                # TODO: Use the return from this to calculate the cost!
-                accountability_members.delete_where(
+                deleted = accountability_members.delete_where(
                     userid=ctx.author.id,
                     slotid=slotids
                 )
@@ -182,7 +184,7 @@ async def cmd_rooms(ctx):
                             await aguild.upcoming_slot.update_status()
                             break
 
-            ctx.alion.addCoins(cost)
+            ctx.alion.addCoins(sum(row[2] for row in deleted))
 
             remaining = [row for row in joined_rows if row['slotid'] not in slotids]
             if not remaining:
@@ -293,6 +295,8 @@ async def cmd_rooms(ctx):
             ]
             if not to_book:
                 return await ctx.error_reply("No valid sessions selected.")
+            elif any(time < utc_now() for time in to_book):
+                return await ctx.error_reply("You can't book a running session!")
             cost = len(to_book) * ctx.guild_settings.accountability_price.value
             if cost > ctx.alion.coins:
                 return await ctx.error_reply(
