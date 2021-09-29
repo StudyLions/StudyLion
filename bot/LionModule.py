@@ -67,15 +67,15 @@ class LionModule(Module):
         """
         Lion pre-command hook.
         """
-        # Check global guild blacklist
-        if ctx.guild.id in ctx.client.objects['blacklisted_guilds']:
-            raise SafeCancellation
-
         # Check global user blacklist
         if ctx.author.id in ctx.client.objects['blacklisted_users']:
             raise SafeCancellation
 
         if ctx.guild:
+            # Check global guild blacklist
+            if ctx.guild.id in ctx.client.objects['blacklisted_guilds']:
+                raise SafeCancellation
+
             # Check guild's own member blacklist
             if ctx.author.id in ctx.client.objects['ignored_members'][ctx.guild.id]:
                 raise SafeCancellation
