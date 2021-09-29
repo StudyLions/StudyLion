@@ -22,3 +22,14 @@ def is_guild_admin(member):
 )
 async def guild_admin(ctx, *args, **kwargs):
     return is_guild_admin(ctx.author)
+
+
+@check(
+    name="MODERATOR",
+    msg=("You need to be a server moderator to do this!"),
+    requires=[in_guild],
+    parents=(guild_admin,)
+)
+async def guild_moderator(ctx, *args, **kwargs):
+    modrole = ctx.guild_settings.mod_role.value
+    return (modrole and (modrole in ctx.author.roles))

@@ -5,3 +5,5 @@ from . import admin
 
 from . import tickets
 from . import video
+
+from . import commands
