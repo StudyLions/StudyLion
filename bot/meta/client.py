@@ -10,5 +10,7 @@ conf = Conf(CONFIG_FILE)
 
 # Initialise client
 owners = [int(owner) for owner in conf.bot.getlist('owners')]
-client = cmdClient(prefix=conf.bot['prefix'], owners=owners, intents=Intents.all())
+intents = Intents.all()
+intents.presences = False
+client = cmdClient(prefix=conf.bot['prefix'], owners=owners, intents=intents)
 client.conf = conf
