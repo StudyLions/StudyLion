@@ -94,7 +94,8 @@ async def update_study_badges(full=False):
         *((row['current_study_badgeid'], row['guildid'], row['userid'])
           for row in update_rows if row['guildid'] in updated_guilds),
         set_keys=('last_study_badgeid',),
-        where_keys=('guildid', 'userid')
+        where_keys=('guildid', 'userid'),
+        cast_row='(NULL::int, NULL::int, NULL::int)'
     )
 
     # Update the app scan time
