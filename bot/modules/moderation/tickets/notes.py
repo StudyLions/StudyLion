@@ -46,7 +46,6 @@ class NoteTicket(Ticket):
         return ticket
 
 
-# TODO: Remember the moderator ward!!
 @module.cmd(
     "note",
     group="Moderation",
@@ -63,7 +62,7 @@ async def cmd_note(ctx):
         The note will appear in the moderation log and in the `tickets` command.
 
         The `target` must be specificed by mention or user id.
-        If the `note` is not given, it will be prompted for.
+        If the `content` is not given, it will be prompted for.
     Example:
         {prefix}note {ctx.author.mention} Seen reading the `note` documentation.
     """

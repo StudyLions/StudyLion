@@ -5,6 +5,7 @@ import asyncio
 from collections import defaultdict
 import discord
 
+from cmdClient.lib import ResponseTimedOut
 from wards import guild_moderator
 
 from .module import module
@@ -41,6 +42,14 @@ state_formatted = {
     TicketState.PARDONED: 'PARDONED'
 }
 
+state_summary_formatted = {
+    TicketState.OPEN: 'Active',
+    TicketState.EXPIRING: 'Temporary',
+    TicketState.EXPIRED: 'Expired',
+    TicketState.REVERTED: 'Manually Reverted',
+    TicketState.PARDONED: 'Pardoned'
+}
+
 
 @module.cmd(
     "tickets",
@@ -57,12 +66,18 @@ async def cmd_tickets(ctx, flags):
         Display and optionally filter the moderation event history in this guild.
     Flags::
         type: Filter by ticket type. See **Ticket Types** below.
-        active: Only show active tickets (i.e. hide expired and pardoned ones).
+        active: Only show in-effect tickets (i.e. hide expired and pardoned ones).
     Ticket Types::
         note: Moderation notes.
         warn: Moderation warnings, both manual and automatic.
         studyban: Bans from using study features from abusing the study system.
         blacklist: Complete blacklisting from using my commands.
+    Ticket States::
+        Active: Active tickets that will not automatically expire.
+        Temporary: Active tickets that will automatically expire after a set duration.
+        Expired: Tickets that have automatically expired.
+        Reverted: Tickets with actions that have been reverted.
+        Pardoned: Tickets that have been pardoned and no longer apply to the user.
     Examples:
         {prefix}tickets {ctx.guild.owner.mention} --type warn --active
     """
@@ -170,7 +185,7 @@ async def cmd_tickets(ctx, flags):
         # Combine lines and add page to pages
         ticket_pages.append('\n'.join(ticket_page))
 
-    # Build summary
+    # Build active ticket type summary
     freq = defaultdict(int)
     for ticket in tickets:
         if ticket.state != TicketState.PARDONED:
@@ -181,10 +196,22 @@ async def cmd_tickets(ctx, flags):
     ]
     summary_pairs.sort(key=lambda pair: pair[0])
     # num_len = max(len(str(num)) for num in freq.values())
-    # summary = '\n'.join(
-    #     "**{}** {}".format(*pair)
+    # type_summary = '\n'.join(
+    #     "**`{:<{}}`** {}".format(pair[0], num_len, pair[1])
     #     for pair in summary_pairs
     # )
+
+    # # Build status summary
+    # freq = defaultdict(int)
+    # for ticket in tickets:
+    #     freq[ticket.state] += 1
+    # num_len = max(len(str(num)) for num in freq.values())
+    # status_summary = '\n'.join(
+    #     "**`{:<{}}`** {}".format(freq[state], num_len, state_str)
+    #     for state, state_str in state_summary_formatted.items()
+    #     if state in freq
+    # )
+
     summary_strings = [
         "**`{}`** {}".format(*pair) for pair in summary_pairs
     ]
@@ -272,3 +299,144 @@ async def _ticket_display(ctx, ticket_map):
                 await current_ticket_msg.delete()
             except discord.HTTPException:
                 pass
+
+
+
+@module.cmd(
+    "pardon",
+    group="Moderation",
+    desc="Pardon a ticket, or clear a member's moderation history.",
+    flags=('type=',)
+)
+@guild_moderator()
+async def cmd_pardon(ctx, flags):
+    """
+    Usage``:
+        {prefix}pardon ticketid, ticketid, ticketid
+        {prefix}pardon @user [--type <type>]
+    Description:
+        Marks the given tickets as no longer applicable.
+        These tickets will not be considered when calculating automod actions such as automatic study bans.
+
+        This may be used to mark warns or other tickets as no longer in-effect.
+        If the ticket is active when it is pardoned, it will be reverted, and any expiry cancelled.
+
+        Use the `{prefix}tickets` command to view the relevant tickets.
+    Flags::
+        type: Filter by ticket type. See **Ticket Types** in `{prefix}help tickets`.
+    Examples:
+        {prefix}pardon 21
+        {prefix}pardon {ctx.guild.owner.mention} --type warn
+    """
+    usage = "**Usage**: `{prefix}pardon ticketid` or `{prefix}pardon @user`.".format(prefix=ctx.best_prefix)
+    if not ctx.args:
+        return await ctx.error_reply(
+            usage
+        )
+
+    # Parse provided tickets or filters
+    targetid = None
+    ticketids = []
+    if ',' in ctx.args:
+        # Assume provided numbers are ticketids.
+        items = [item.strip() for item in ctx.args.split(',')]
+        if not all(item.isdigit() for item in items):
+            return await ctx.error_reply(usage)
+        ticketids = [int(item) for item in items]
+        args = {'guild_ticketid': ticketids}
+    else:
+        # Guess whether the provided numbers were ticketids or not
+        idstr = ctx.args.strip('<@!&> ')
+        if not idstr.isdigit():
+            return await ctx.error_reply(usage)
+
+        maybe_id = int(idstr)
+        if maybe_id > 4194304:  # Testing whether it is greater than the minimum snowflake id
+            # Assume userid
+            targetid = maybe_id
+            args = {'targetid': maybe_id}
+
+            # Add the type filter if provided
+            if flags['type']:
+                typestr = flags['type'].lower()
+                if typestr not in type_accepts:
+                    return await ctx.error_reply(
+                        "Please see `{prefix}help tickets` for the valid ticket types!".format(prefix=ctx.best_prefix)
+                    )
+                args['ticket_type'] = type_accepts[typestr]
+        else:
+            # Assume guild ticketid
+            ticketids = [maybe_id]
+            args = {'guild_ticketid': maybe_id}
+
+    # Fetch the matching tickets
+    tickets = Ticket.fetch_tickets(**args)
+
+    # Check whether we have the right selection of tickets
+    if targetid and not tickets:
+        return await ctx.error_reply(
+            "<@{}> has no matching tickets to pardon!"
+        )
+    if ticketids and len(ticketids) != len(tickets):
+        # Not all of the ticketids were valid
+        difference = list(set(ticketids).difference(ticket.ticketid for ticket in tickets))
+        if len(difference) == 1:
+            return await ctx.error_reply(
+                "Couldn't find ticket `{}`!".format(difference[0])
+            )
+        else:
+            return await ctx.error_reply(
+                "Couldn't find any of the following tickets:\n`{}`".format(
+                    '`, `'.join(difference)
+                )
+            )
+
+    # Check whether there are any tickets left to pardon
+    to_pardon = [ticket for ticket in tickets if ticket.state != TicketState.PARDONED]
+    if not to_pardon:
+        if ticketids and len(tickets) == 1:
+            ticket = tickets[0]
+            return await ctx.error_reply(
+                "[Ticket #{}]({}) is already pardoned!".format(ticket.data.guild_ticketid, ticket.link)
+            )
+        else:
+            return await ctx.error_reply(
+                "All of these tickets are already pardoned!"
+            )
+
+    # We now know what tickets we want to pardon
+    # Request the pardon reason
+    try:
+        reason = await ctx.input("Please provide a reason for the pardon.")
+    except ResponseTimedOut:
+        raise ResponseTimedOut("Prompt timed out, no tickets were pardoned.")
+
+    # Pardon the tickets
+    for ticket in to_pardon:
+        await ticket.pardon(ctx.author, reason)
+
+    # Finally, ack the pardon
+    if targetid:
+        await ctx.embed_reply(
+            "The active {}s for <@{}> have been cleared.".format(
+                type_summary_formatted[args['ticket_type']] if flags['type'] else 'ticket',
+                targetid
+            )
+        )
+    elif len(to_pardon) == 1:
+        ticket = to_pardon[0]
+        await ctx.embed_reply(
+            "[Ticket #{}]({}) was pardoned.".format(
+                ticket.data.guild_ticketid,
+                ticket.link
+            )
+        )
+    else:
+        await ctx.embed_reply(
+            "The following tickets were pardoned.\n{}".format(
+                ", ".join(
+                    "[#{}]({})".format(ticket.data.guild_ticketid, ticket.link)
+                    for ticket in to_pardon
+                )
+            )
+        )
