@@ -32,6 +32,7 @@ class TicketState(FieldEnum):
     EXPIRING = 'EXPIRING', "Active"
     EXPIRED = 'EXPIRED', "Expired"
     PARDONED = 'PARDONED', "Pardoned"
+    REVERTED = 'REVERTED', "Reverted"
 
 
 class Ticket:
@@ -199,6 +200,10 @@ class Ticket:
     @property
     def state(self):
         return TicketState(self.data.ticket_state)
+
+    @property
+    def type(self):
+        return TicketType(self.data.ticket_type)
 
     async def update(self, **kwargs):
         """
