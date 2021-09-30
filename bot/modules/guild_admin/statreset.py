@@ -8,25 +8,25 @@ from core import Lion
 from .module import module
 
 
-@module.cmd("statreset",
-            desc="Perform a complete reset of the server's study statistics.",
+@module.cmd("studyreset",
+            desc="Perform a reset of the server's study statistics.",
             group="Guild Admin")
 @guild_admin()
 async def cmd_statreset(ctx):
     """
     Usage``:
-        {prefix}statreset
+        {prefix}studyreset
     Description:
-        Perform a complete reset of the server's member statistics.
-        This includes tracked time, coins, and workout counts.
+        Perform a complete reset of the server's study statistics.
+        That is, deletes the tracked time of all members and removes their study badges.
 
         This may be used to set "seasons" of study.
 
-        Before the reset, I will send a csv file with the previous member statistics.
+        Before the reset, I will send a csv file with the current member statistics.
 
         **This is not reversible.**
     """
-    if not await ctx.ask("Are you sure you want to completely reset the member statistics? "
+    if not await ctx.ask("Are you sure you want to reset the study time and badges for all members? "
                          "**THIS IS NOT REVERSIBLE!**"):
         return
     # Build the data csv
@@ -39,7 +39,7 @@ async def cmd_statreset(ctx):
     )
     header = "userid, tracked_time, coins, workouts, rank_roleid\n"
     csv_rows = [
-        ', '.join(str(data) for data in row)
+        ','.join(str(data) for data in row)
         for row in rows
     ]
 
@@ -48,18 +48,18 @@ async def cmd_statreset(ctx):
         stats_file.write('\n'.join(csv_rows))
         stats_file.seek(0)
 
-        out_file = discord.File(stats_file, filename="member_statistics.csv")
+        out_file = discord.File(stats_file, filename="guild_{}_member_statistics.csv".format(ctx.guild.id))
         await ctx.reply(file=out_file)
 
     # Reset the statistics
     tables.lions.update_where(
-        {'tracked_time': 0, 'coins': 0, 'workout_count': 0},
+        {'tracked_time': 0},
         guildid=ctx.guild.id
     )
 
     Lion.sync()
 
     await ctx.embed_reply(
-        "The server member statistics have been reset!\n"
-        "(It may take a while for the member studybadges to update.)"
+        "The member study times have been reset!\n"
+        "(It may take a while for the studybadges to update.)"
     )
