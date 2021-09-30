@@ -14,6 +14,7 @@ group_hints = {
     'Statistics': "*StudyLion leaderboards and study statistics.*",
     'Economy': "*Buy, sell, and trade with your hard-earned coins!*",
     'Personal Settings': "*Tell me about yourself!*",
+    'Guild Admin': "*Dangerous administration commands!*",
     'Guild Configuration': "*Control how I behave in your server.*",
     'Meta': "*Information about me!*"
 }
@@ -28,7 +29,7 @@ mod_group_order = (
 )
 
 admin_group_order = (
-    ('Guild Configuration', 'Moderation', 'Meta'),
+    ('Guild Admin', 'Guild Configuration', 'Moderation', 'Meta'),
     ('Productivity', 'Statistics', 'Economy', 'Personal Settings')
 )
 
