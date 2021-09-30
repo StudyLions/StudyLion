@@ -33,7 +33,6 @@ class WarnTicket(Ticket):
             ticket_type=cls._ticket_type,
             ticket_state=TicketState.OPEN,
             moderator_id=moderatorid,
-            auto=False,
             content=content,
             **kwargs
         )

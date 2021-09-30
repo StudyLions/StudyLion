@@ -11,7 +11,7 @@ from core import Lion
 from utils.lib import strfdelta
 from settings import GuildSettings
 
-from ..tickets import StudyBanTicket
+from ..tickets import StudyBanTicket, WarnTicket
 from ..module import module
 
 
@@ -183,6 +183,13 @@ async def _join_video_channel(member, channel):
             text=member.guild.name
         )
         await _send_alert(member, embed, alert_channel)
+        await WarnTicket.create(
+            member.guild.id,
+            member.id,
+            client.user.id,
+            "Failed to enable their video in time in the video channel {}.".format(channel.mention),
+            auto=True
+        )
         # TODO: Warning ticket and related embed.
         lion.data.video_warned = True
     else:
