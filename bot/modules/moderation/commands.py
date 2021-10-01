@@ -107,7 +107,7 @@ async def cmd_tickets(ctx, flags):
     filter_active = flags['active']
 
     # Build the filter arguments
-    filters = {}
+    filters = {'guildid': ctx.guild.id}
     if filter_userid:
         filters['targetid'] = filter_userid
     if filter_type:
@@ -248,11 +248,15 @@ async def cmd_tickets(ctx, flags):
 
     # Run output with cancellation and listener
     out_msg = await ctx.pager(embeds, add_cancel=True)
-    display_task = asyncio.create_task(_ticket_display(ctx, ticket_map))
+    old_task = _displays.pop((ctx.ch.id, ctx.author.id), None)
+    if old_task:
+        old_task.cancel()
+    _displays[(ctx.ch.id, ctx.author.id)] = display_task = asyncio.create_task(_ticket_display(ctx, ticket_map))
     ctx.tasks.append(display_task)
     await ctx.cancellable(out_msg, add_reaction=False)
 
 
+_displays = {}  # (channelid, userid) -> Task
 async def _ticket_display(ctx, ticket_map):
     """
     Display tickets when the ticket number is entered.
@@ -268,7 +272,8 @@ async def _ticket_display(ctx, ticket_map):
                     check=lambda msg: (msg.author == ctx.author
                                        and msg.channel == ctx.ch
                                        and msg.content.isdigit()
-                                       and int(msg.content) in ticket_map)
+                                       and int(msg.content) in ticket_map),
+                    timeout=60
                 )
             except asyncio.TimeoutError:
                 return
@@ -337,13 +342,14 @@ async def cmd_pardon(ctx, flags):
     # Parse provided tickets or filters
     targetid = None
     ticketids = []
+    args = {'guildid': ctx.guild.id}
     if ',' in ctx.args:
         # Assume provided numbers are ticketids.
         items = [item.strip() for item in ctx.args.split(',')]
         if not all(item.isdigit() for item in items):
             return await ctx.error_reply(usage)
         ticketids = [int(item) for item in items]
-        args = {'guild_ticketid': ticketids}
+        args['guild_ticketid'] = ticketids
     else:
         # Guess whether the provided numbers were ticketids or not
         idstr = ctx.args.strip('<@!&> ')
@@ -354,7 +360,7 @@ async def cmd_pardon(ctx, flags):
         if maybe_id > 4194304:  # Testing whether it is greater than the minimum snowflake id
             # Assume userid
             targetid = maybe_id
-            args = {'targetid': maybe_id}
+            args['targetid'] = maybe_id
 
             # Add the type filter if provided
             if flags['type']:
@@ -367,7 +373,7 @@ async def cmd_pardon(ctx, flags):
         else:
             # Assume guild ticketid
             ticketids = [maybe_id]
-            args = {'guild_ticketid': maybe_id}
+            args['guild_ticketid'] = maybe_id
 
     # Fetch the matching tickets
     tickets = Ticket.fetch_tickets(**args)
