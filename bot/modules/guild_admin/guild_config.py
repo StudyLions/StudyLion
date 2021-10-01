@@ -9,6 +9,18 @@ import utils.ctx_addons  # noqa
 from .module import module
 
 
+# Pages of configuration categories to display
+cat_pages = {
+    'Administration': ('Meta', 'Guild Roles'),
+    'Moderation': ('Moderation', 'Video Channels'),
+    'Productivity': ('Study Tracking', 'TODO List', 'Workout'),
+    'Study Rooms': ('Rented Rooms', 'Accountability Rooms'),
+}
+
+# Descriptions of each configuration category
+descriptions = {
+}
+
 @module.cmd("config",
             desc="View and modify the server settings.",
             flags=('add', 'remove'),
@@ -19,28 +31,53 @@ async def cmd_config(ctx, flags):
     setting_displaynames = {setting.display_name.lower(): setting for setting in GuildSettings.settings.values()}
 
     if not ctx.args or ctx.args.lower() == 'help':
+        # Fill the setting cats
         cats = {}
         for setting in GuildSettings.settings.values():
             cat = cats.get(setting.category, [])
             cat.append(setting)
             cats[setting.category] = cat
 
+        # Format the cats
         sections = {}
         for catname, cat in cats.items():
             catprops = {
                 setting.display_name: setting.get(ctx.guild.id).summary if not ctx.args else setting.desc
                 for setting in cat
             }
+            # TODO: Add cat description here
             sections[catname] = prop_tabulate(*zip(*catprops.items()))
 
-        # Display the current configuration, with either values or descriptions
-        embed = discord.Embed(
-            title="Admin Settings"
-        )
-        for name, body in sections.items():
-            embed.add_field(name=name, value=body, inline=False)
+        # Put the cats on the correct pages
+        pages = []
+        for page_name, cat_names in cat_pages.items():
+            page = {
+                cat_name: sections[cat_name] for cat_name in cat_names if cat_name in sections
+            }
+            if page:
+                embed = discord.Embed(
+                    colour=discord.Colour.orange(),
+                    title=page_name,
+                    description=(
+                        "View brief setting descriptions with `{prefix}config help`.\n"
+                        "See `{prefix}help config` for more general usage.".format(prefix=ctx.best_prefix)
+                    )
+                )
+                for name, value in page.items():
+                    embed.add_field(name=name, value=value, inline=False)
 
-        await ctx.reply(embed=embed)
+                pages.append(embed)
+
+        if len(pages) > 1:
+            [
+                embed.set_footer(text="Page {}/{}".format(i+1, len(pages)))
+                for i, embed in enumerate(pages)
+            ]
+            await ctx.pager(pages)
+        elif pages:
+            await ctx.reply(embed=pages[0])
+        else:
+            await ctx.reply("No configuration options set up yet!")
     else:
         # Some args were given
         parts = ctx.args.split(maxsplit=1)

@@ -141,7 +141,7 @@ class unranked_roles(settings.RoleList, settings.ListData, settings.Setting):
 
 @GuildSettings.attach_setting
 class donator_roles(settings.RoleList, settings.ListData, settings.Setting):
-    category = "Guild Roles"
+    category = "Hidden"
 
     attr_name = 'donator_roles'
 
