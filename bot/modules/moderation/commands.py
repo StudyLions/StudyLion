@@ -120,9 +120,9 @@ async def cmd_tickets(ctx, flags):
 
     if not tickets:
         if filters:
-            return ctx.embed_reply("There are no tickets with these criteria!")
+            return await ctx.embed_reply("There are no tickets with these criteria!")
         else:
-            return ctx.embed_reply("There are no moderation tickets in this server!")
+            return await ctx.embed_reply("There are no moderation tickets in this server!")
 
     tickets = sorted(tickets, key=lambda ticket: ticket.data.guild_ticketid, reverse=True)
     ticket_map = {ticket.data.guild_ticketid: ticket for ticket in tickets}
