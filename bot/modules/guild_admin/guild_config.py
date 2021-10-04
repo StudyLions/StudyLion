@@ -11,7 +11,7 @@ from .module import module
 
 # Pages of configuration categories to display
 cat_pages = {
-    'Administration': ('Meta', 'Guild Roles'),
+    'Administration': ('Meta', 'Guild Roles', 'Greetings', 'Farewells'),
     'Moderation': ('Moderation', 'Video Channels'),
     'Productivity': ('Study Tracking', 'TODO List', 'Workout'),
     'Study Rooms': ('Rented Rooms', 'Accountability Rooms'),
@@ -20,6 +20,7 @@ cat_pages = {
 # Descriptions of each configuration category
 descriptions = {
 }
+
 
 @module.cmd("config",
             desc="View and modify the server settings.",
@@ -91,27 +92,27 @@ async def cmd_config(ctx, flags):
                 )
             )
 
-        if len(parts) == 1:
+        if len(parts) == 1 and not ctx.msg.attachments:
             # config <setting>
             # View config embed for provided setting
-            await ctx.reply(embed=setting.get(ctx.guild.id).embed)
+            await setting.get(ctx.guild.id).widget(ctx, flags=flags)
         else:
             # config <setting> <value>
             # Check the write ward
             if not await setting.write_ward.run(ctx):
-                await ctx.error_reply(setting.msg)
+                await ctx.error_reply(setting.write_ward.msg)
 
             # Attempt to set config setting
             try:
-                parsed = await setting.parse(ctx.guild.id, ctx, parts[1])
+                parsed = await setting.parse(ctx.guild.id, ctx, parts[1] if len(parts) > 1 else '')
                 parsed.write(add_only=flags['add'], remove_only=flags['remove'])
             except UserInputError as e:
                 await ctx.reply(embed=discord.Embed(
                     description="{} {}".format('❌', e.msg),
-                    Colour=discord.Colour.red()
+                    colour=discord.Colour.red()
                 ))
             else:
                 await ctx.reply(embed=discord.Embed(
                     description="{} {}".format('✅', setting.get(ctx.guild.id).success_response),
-                    Colour=discord.Colour.green()
+                    colour=discord.Colour.green()
                 ))

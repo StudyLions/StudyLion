@@ -72,7 +72,11 @@ CREATE TABLE guild_config(
   accountability_reward INTEGER,
   accountability_price INTEGER,
   video_studyban BOOLEAN,
-  video_grace_period INTEGER
+  video_grace_period INTEGER,
+  greeting_channel BIGINT,
+  greeting_message TEXT,
+  returning_message TEXT,
+  starting_funds INTEGER
 );
 
 CREATE TABLE ignored_members(
