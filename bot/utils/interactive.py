@@ -437,7 +437,7 @@ async def ask(ctx, msg, timeout=30, use_msg=None, del_on_timeout=False):
     out = "{} {}".format(msg, "`y(es)`/`n(o)`")
 
     offer_msg = use_msg or await ctx.reply(out)
-    if use_msg:
+    if use_msg and msg:
         await use_msg.edit(content=msg)
 
     result_msg = await ctx.listen_for(["y", "yes", "n", "no"], timeout=timeout)

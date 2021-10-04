@@ -1,3 +1,4 @@
+import asyncio
 import discord
 
 from cmdClient import Context
@@ -352,3 +353,71 @@ async def find_member(ctx, userstr, interactive=False, collection=None, silent=F
         await ctx.error_reply("Couldn't find a member matching `{}`!".format(userstr))
 
     return member
+
+
+@Context.util
+async def find_message(ctx, msgid, chlist=None, ignore=[]):
+    """
+    Searches for the given message id in the guild channels.
+
+    Parameters
+    -------
+    msgid: int
+        The `id` of the message to search for.
+    chlist: Optional[List[discord.TextChannel]]
+        List of channels to search in.
+        If `None`, searches all the text channels that the `ctx.author` can read.
+    ignore: list
+        A list of channelids to explicitly ignore in the search.
+
+    Returns
+    -------
+    Optional[discord.Message]:
+        If a message is found, returns the message.
+        Otherwise, returns `None`.
+    """
+    if not ctx.guild:
+        raise InvalidContext("Cannot use this seeker outside of a guild!")
+
+    msgid = int(msgid)
+
+    # Build the channel list to search
+    if chlist is None:
+        chlist = [ch for ch in ctx.guild.text_channels if ch.permissions_for(ctx.author).read_messages]
+
+    # Remove any channels we are ignoring
+    chlist = [ch for ch in chlist if ch.id not in ignore]
+
+    tasks = set()
+
+    i = 0
+    while True:
+        done = set((task for task in tasks if task.done()))
+        tasks = tasks.difference(done)
+
+        results = [task.result() for task in done]
+
+        result = next((result for result in results if result is not None), None)
+        if result:
+            [task.cancel() for task in tasks]
+            return result
+
+        if i < len(chlist):
+            task = asyncio.create_task(_search_in_channel(chlist[i], msgid))
+            tasks.add(task)
+            i += 1
+        elif len(tasks) == 0:
+            return None
+
+        await asyncio.sleep(0.1)
+
+
+async def _search_in_channel(channel: discord.TextChannel, msgid: int):
+    if channel.type != discord.ChannelType.text:
+        return
+    try:
+        message = await channel.fetch_message(msgid)
+    except Exception:
+        return None
+    else:
+        return message
