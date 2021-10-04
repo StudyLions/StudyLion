@@ -438,6 +438,7 @@ CREATE TABLE rented_members(
   userid BIGINT NOT NULL
 );
 CREATE INDEX rented_members_channels ON rented_members (channelid);
+CREATE INDEX rented_members_users ON rented_members (userid);
 -- }}}
 
 -- Accountability Rooms {{{
