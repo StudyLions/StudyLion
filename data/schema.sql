@@ -4,7 +4,7 @@ CREATE TABLE VersionHistory(
   time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
   author TEXT
 );
-INSERT INTO VersionHistory (version, author) VALUES (3, 'Initial Creation');
+INSERT INTO VersionHistory (version, author) VALUES (4, 'Initial Creation');
 
 
 CREATE OR REPLACE FUNCTION update_timestamp_column()
@@ -76,7 +76,8 @@ CREATE TABLE guild_config(
   greeting_channel BIGINT,
   greeting_message TEXT,
   returning_message TEXT,
-  starting_funds INTEGER
+  starting_funds INTEGER,
+  persist_roles BOOLEAN
 );
 
 CREATE TABLE ignored_members(
@@ -96,6 +97,18 @@ CREATE TABLE donator_roles(
   roleid BIGINT NOT NULL
 );
 CREATE INDEX donator_roles_guilds ON donator_roles (guildid);
+
+CREATE TABLE autoroles(
+  guildid BIGINT NOT NULL,
+  roleid BIGINT NOT NULL
+);
+CREATE INDEX autoroles_guilds ON autoroles (guildid);
+
+CREATE TABLE bot_autoroles(
+  guildid BIGINT NOT NULL ,
+  roleid BIGINT NOT NULL
+);
+CREATE INDEX bot_autoroles_guilds ON bot_autoroles (guildid);
 -- }}}
 
 -- Workout data {{{
@@ -477,5 +490,16 @@ CREATE VIEW accountability_open_slots AS
   FROM accountability_slots
   WHERE closed_at IS NULL
   ORDER BY start_at ASC;
+-- }}}
+
+-- Member Role Data {{{
+CREATE TABLE past_member_roles(
+  guildid BIGINT NOT NULL,
+  userid BIGINT NOT NULL,
+  roleid BIGINT NOT NULL,
+  _timestamp TIMESTAMPTZ DEFAULT now(),
+  FOREIGN KEY (guildid, userid) REFERENCES members (guildid, userid)
+);
+CREATE INDEX member_role_persistence_members ON past_member_roles (guildid, userid);
 -- }}}
 -- vim: set fdm=marker:

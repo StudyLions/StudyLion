@@ -11,7 +11,7 @@ from .module import module
 
 # Pages of configuration categories to display
 cat_pages = {
-    'Administration': ('Meta', 'Guild Roles', 'Greetings', 'Farewells'),
+    'Administration': ('Meta', 'Guild Roles', 'New Members'),
     'Moderation': ('Moderation', 'Video Channels'),
     'Productivity': ('Study Tracking', 'TODO List', 'Workout'),
     'Study Rooms': ('Rented Rooms', 'Accountability Rooms'),

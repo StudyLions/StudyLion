@@ -1,8 +1,12 @@
 import datetime
 import discord
 
+import settings
 from settings import GuildSettings, GuildSetting
 import settings.setting_types as stypes
+from wards import guild_admin
+
+from .data import autoroles, bot_autoroles
 
 
 @GuildSettings.attach_setting
@@ -16,7 +20,7 @@ class greeting_channel(stypes.Channel, GuildSetting):
     """
     DMCHANNEL = object()
 
-    category = "Greetings"
+    category = "New Members"
 
     attr_name = 'greeting_channel'
     _data_column = 'greeting_channel'
@@ -83,7 +87,7 @@ class greeting_channel(stypes.Channel, GuildSetting):
 
 @GuildSettings.attach_setting
 class greeting_message(stypes.Message, GuildSetting):
-    category = "Greetings"
+    category = "New Members"
 
     attr_name = 'greeting_message'
     _data_column = 'greeting_message'
@@ -134,7 +138,7 @@ class greeting_message(stypes.Message, GuildSetting):
 
 @GuildSettings.attach_setting
 class returning_message(stypes.Message, GuildSetting):
-    category = "Greetings"
+    category = "New Members"
 
     attr_name = 'returning_message'
     _data_column = 'returning_message'
@@ -187,7 +191,7 @@ class returning_message(stypes.Message, GuildSetting):
 
 @GuildSettings.attach_setting
 class starting_funds(stypes.Integer, GuildSetting):
-    category = "Greetings"
+    category = "New Members"
 
     attr_name = 'starting_funds'
     _data_column = 'starting_funds'
@@ -204,3 +208,96 @@ class starting_funds(stypes.Integer, GuildSetting):
     @property
     def success_response(self):
         return "Members will be given `{}` coins when they first join the server.".format(self.formatted)
+
+
+@GuildSettings.attach_setting
+class autoroles(stypes.RoleList, settings.ListData, settings.Setting):
+    category = "New Members"
+    write_ward = guild_admin
+
+    attr_name = 'autoroles'
+
+    _table_interface = autoroles
+    _id_column = 'guildid'
+    _data_column = 'roleid'
+
+    display_name = "autoroles"
+    desc = "Roles to give automatically to new members."
+
+    _force_unique = True
+
+    long_desc = (
+        "These roles will be given automatically to users when they join the server. "
+        "If `role_persistence` is enabled, the roles will only be given the first time a user joins the server."
+    )
+
+    # Flat cache, no need to expire
+    _cache = {}
+
+    @property
+    def success_response(self):
+        if self.value:
+            return "New members will be given the following roles:\n{}".format(self.formatted)
+        else:
+            return "New members will not automatically be given any roles."
+
+
+@GuildSettings.attach_setting
+class bot_autoroles(stypes.RoleList, settings.ListData, settings.Setting):
+    category = "New Members"
+    write_ward = guild_admin
+
+    attr_name = 'bot_autoroles'
+
+    _table_interface = bot_autoroles
+    _id_column = 'guildid'
+    _data_column = 'roleid'
+
+    display_name = "bot_autoroles"
+    desc = "Roles to give automatically to new bots."
+
+    _force_unique = True
+
+    long_desc = (
+        "These roles will be given automatically to bots when they join the server. "
+        "If `role_persistence` is enabled, the roles will only be given the first time a bot joins the server."
+    )
+
+    # Flat cache, no need to expire
+    _cache = {}
+
+    @property
+    def success_response(self):
+        if self.value:
+            return "New bots will be given the following roles:\n{}".format(self.formatted)
+        else:
+            return "New bots will not automatically be given any roles."
+
+
+@GuildSettings.attach_setting
+class role_persistence(stypes.Boolean, GuildSetting):
+    category = "New Members"
+
+    attr_name = "role_persistence"
+
+    _data_column = 'persist_roles'
+
+    display_name = "role_persistence"
+    desc = "Whether to remember member roles when they leave the server."
+    _outputs = {True: "Enabled", False: "Disabled"}
+    _default = True
+
+    long_desc = (
+        "When enabled, restores member roles when they rejoin the server.\n"
+        "This enables profile roles and purchased roles, such as field of study and colour roles, "
+        "as well as moderation roles, "
+        "such as the studyban and mute roles, to persist even when a member leaves and rejoins.\n"
+        "Note: Members who leave while this is disabled will not have their roles restored."
+    )
+
+    @property
+    def success_response(self):
+        if self.value:
+            return "Roles will now be restored when a member rejoins."
+        else:
+            return "Member roles will no longer be saved or restored."
