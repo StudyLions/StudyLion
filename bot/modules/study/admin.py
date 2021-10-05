@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 import settings
 from settings import GuildSettings
 from wards import guild_admin
@@ -36,6 +38,34 @@ class untracked_channels(settings.ChannelList, settings.ListData, settings.Setti
             return "The untracked channels have been updated:\n{}".format(self.formatted)
         else:
             return "Study time will now be counted in all channels."
+
+    @classmethod
+    async def launch_task(cls, client):
+        """
+        Launch initialisation step for the `untracked_channels` setting.
+
+        Pre-fill cache for the guilds with currently active voice channels.
+        """
+        active_guildids = [
+            guild.id
+            for guild in client.guilds
+            if any(channel.members for channel in guild.voice_channels)
+        ]
+        if active_guildids:
+            rows = cls._table_interface.select_where(
+                guildid=active_guildids
+            )
+            cache = defaultdict(list)
+            for row in rows:
+                cache[row['guildid']].append(row['channelid'])
+            cls._cache.update(cache)
+            client.log(
+                "Cached {} untracked channels for {} active guilds.".format(
+                    len(rows),
+                    len(cache)
+                ),
+                context="UNTRACKED_CHANNELS"
+            )
 
 
 @GuildSettings.attach_setting
