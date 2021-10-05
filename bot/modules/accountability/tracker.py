@@ -8,6 +8,7 @@ from typing import Dict
 from discord.utils import sleep_until
 
 from meta import client
+from utils.interactive import discord_shield
 from data import NULL, NOTNULL, tables
 from data.conditions import LEQ
 from settings import GuildSettings
@@ -460,3 +461,31 @@ async def unload_accountability(client):
     Save the current sessions and cancel the runloop in preparation for client shutdown.
     """
     ...
+
+
+@client.add_after_event('member_join')
+async def restore_accountability(client, member):
+    """
+    Restore accountability channel permissions when a member rejoins the server, if applicable.
+    """
+    aguild = AccountabilityGuild.cache.get(member.guild.id, None)
+    if aguild:
+        if aguild.current_slot and member.id in aguild.current_slot.members:
+            # Restore member permission for current slot
+            slot = aguild.current_slot
+            if slot.channel:
+                asyncio.create_task(discord_shield(
+                    slot.channel.set_permissions(
+                        member,
+                        overwrite=slot._member_overwrite
+                    )
+                ))
+        if aguild.upcoming_slot and member.id in aguild.upcoming_slot.members:
+            slot = aguild.upcoming_slot
+            if slot.channel:
+                asyncio.create_task(discord_shield(
+                    slot.channel.set_permissions(
+                        member,
+                        overwrite=slot._member_overwrite
+                    )
+                ))

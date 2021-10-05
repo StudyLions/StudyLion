@@ -74,6 +74,7 @@ lions = RowTable(
      'workout_count', 'last_workout_start',
      'last_study_badgeid',
      'video_warned',
+     '_timestamp'
      ),
     ('guildid', 'userid'),
     cache=TTLCache(5000, ttl=60*5),
