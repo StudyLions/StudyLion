@@ -2,4 +2,4 @@ from .module import module
 
 from . import guild_config
 from . import statreset
-from . import utils
+from . import new_members
