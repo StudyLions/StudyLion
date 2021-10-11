@@ -40,15 +40,15 @@ bot_admin_group_order = (
 
 # Help embed format
 # TODO: Add config fields for this
-title = "LionBot Command List"
+title = "StudyLion Command List"
 header = """
-Use `{ctx.best_prefix}help <cmd>` (e.g. `{ctx.best_prefix}help send`) to see how to use each command.
+Use `{ctx.best_prefix}help <command>` (e.g. `{ctx.best_prefix}help send`) to see how to use each command.
 """
 
 
 @module.cmd("help",
             group="Meta",
-            desc="LionBot command list.")
+            desc="StudyLion command list.")
 async def cmd_help(ctx):
     """
     Usage``:

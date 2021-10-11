@@ -62,7 +62,7 @@ def ensure_exclusive(ctx):
 
 @module.cmd(
     name="rooms",
-    desc="Book an accountability timeslot",
+    desc="Schedule an accountability study session.",
     group="Productivity"
 )
 @in_guild()

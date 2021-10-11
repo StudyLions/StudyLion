@@ -7,7 +7,7 @@ from .rooms import Room
 
 @module.cmd(
     name="rent",
-    desc="Rent a private study room!",
+    desc="Rent a private study room with your friends!",
     group="Productivity",
     aliases=('add',)
 )

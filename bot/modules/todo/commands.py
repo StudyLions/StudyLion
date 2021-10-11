@@ -9,7 +9,7 @@ from .Tasklist import Tasklist
 
 @module.cmd(
     name="todo",
-    desc="Display and edit your personal TODO list.",
+    desc="Display and edit your personal To-Do list.",
     group="Productivity",
     flags=('add==', 'delete==', 'check==', 'uncheck==', 'edit==')
 )
