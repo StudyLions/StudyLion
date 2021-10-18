@@ -18,17 +18,17 @@ from .data import reaction_role_messages, reaction_role_reactions  # , reaction_
 from .settings import RoleMessageSettings, ReactionSettings
 
 
-class ReactionRoleReaction(PartialEmoji):
+class ReactionRoleReaction:
     """
     Light data class representing a reaction role reaction.
-    Extends PartialEmoji for comparison with discord Emojis.
     """
-    __slots__ = ('reactionid', '_message', '_role')
+    __slots__ = ('reactionid', '_emoji', '_message', '_role')
 
     def __init__(self, reactionid, message=None, **kwargs):
         self.reactionid = reactionid
         self._message: ReactionRoleMessage = None
         self._role = None
+        self._emoji = None
 
     @classmethod
     def create(cls, messageid, roleid, emoji: PartialEmoji, message=None, **kwargs) -> 'ReactionRoleReaction':
@@ -46,6 +46,17 @@ class ReactionRoleReaction(PartialEmoji):
             **kwargs
         )
         return cls(row.reactionid, message=message)
+
+    @property
+    def emoji(self) -> PartialEmoji:
+        if self._emoji is None:
+            data = self.data
+            self._emoji = PartialEmoji(
+                name=data.emoji_name,
+                animated=data.emoji_animated,
+                id=data.emoji_id,
+            )
+        return self._emoji
 
     @property
     def data(self) -> Row:
@@ -68,31 +79,6 @@ class ReactionRoleReaction(PartialEmoji):
             if guild:
                 self._role = guild.get_role(self.data.roleid)
         return self._role
-
-    # PartialEmoji properties
-    @property
-    def animated(self) -> bool:
-        return self.data.emoji_animated
-
-    @property
-    def name(self) -> str:
-        return self.data.emoji_name
-
-    @name.setter
-    def name(self, value):
-        """
-        Name setter.
-        The emoji name may get updated while the emoji itself remains the same.
-        """
-        self.data.emoji_name = value
-
-    @property
-    def id(self) -> Optional[int]:
-        return self.data.emoji_id
-
-    @property
-    def _state(self):
-        return client._connection
 
 
 class ReactionRoleMessage:
@@ -146,6 +132,20 @@ class ReactionRoleMessage:
 
         # Return the constructed ReactionRoleMessage
         return rmsg
+
+    def delete(self):
+        """
+        Delete this ReactionRoleMessage.
+        """
+        # Remove message from cache
+        self._messages.pop(self.messageid, None)
+
+        # Remove reactions from cache
+        reactionids = [reaction.reactionid for reaction in self.reactions]
+        [self._reactions.pop(reactionid, None) for reactionid in reactionids]
+
+        # Remove message from data
+        reaction_role_messages.delete_where(messageid=self.messageid)
 
     @property
     def data(self) -> Row:
@@ -242,7 +242,7 @@ class ReactionRoleMessage:
         """
         event_log = GuildSettings(self.guild.id).event_log
         async with self._locks[payload.user_id]:
-            reaction = next((reaction for reaction in self.reactions if reaction == payload.emoji), None)
+            reaction = next((reaction for reaction in self.reactions if reaction.emoji == payload.emoji), None)
             if reaction:
                 # User pressed a live reaction. Process!
                 member = payload.member
@@ -428,7 +428,7 @@ class ReactionRoleMessage:
         if self.settings.removable.value:
             event_log = GuildSettings(self.guild.id).event_log
             async with self._locks[payload.user_id]:
-                reaction = next((reaction for reaction in self.reactions if reaction == payload.emoji), None)
+                reaction = next((reaction for reaction in self.reactions if reaction.emoji == payload.emoji), None)
                 if reaction:
                     # User removed a live reaction. Process!
                     member = self.guild.get_member(payload.user_id)

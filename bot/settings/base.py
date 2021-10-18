@@ -257,6 +257,16 @@ class ObjectSettings:
         cls.settings[name] = setting
         return setting
 
+    def tabulated(self):
+        """
+        Convenience method to provide a complete setting property-table.
+        """
+        formatted = {
+            setting.display_name: setting.get(self.id, **dict(self.params)).formatted
+            for name, setting in self.settings.items()
+        }
+        return prop_tabulate(*zip(*formatted.items()))
+
 
 class ColumnData:
     """

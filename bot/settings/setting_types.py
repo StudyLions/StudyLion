@@ -327,6 +327,8 @@ class Role(SettingType):
     # Whether to disallow returning roles which don't exist as `discord.Object`s
     _strict = True
 
+    _parse_create = False
+
     @classmethod
     def _data_from_value(cls, id: int, value: Optional[discord.Role], **kwargs):
         """
@@ -370,7 +372,7 @@ class Role(SettingType):
         if userstr.lower() in ('0', 'none'):
             return None
         else:
-            role = await ctx.find_role(userstr, create=False, interactive=True)
+            role = await ctx.find_role(userstr, create=cls._parse_create, interactive=True)
             if role is None:
                 raise SafeCancellation
             else:

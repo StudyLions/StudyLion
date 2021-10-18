@@ -78,15 +78,17 @@ async def cmd_help(ctx):
         help_map = {field_name: i for i, (field_name, _) in enumerate(help_fields)}
 
         if not help_map:
-            await ctx.reply("No documentation has been written for this command yet!")
+            return await ctx.reply("No documentation has been written for this command yet!")
 
+        field_pages = [[]]
+        page_fields = field_pages[0]
         for name, pos in help_map.items():
             if name.endswith("``"):
                 # Handle codeline help fields
-                help_fields[pos] = (
+                page_fields.append((
                     name.strip("`"),
                     "`{}`".format('`\n`'.join(help_fields[pos][1].splitlines()))
-                )
+                ))
             elif name.endswith(":"):
                 # Handle property/value help fields
                 lines = help_fields[pos][1].splitlines()
@@ -98,10 +100,10 @@ async def cmd_help(ctx):
                     names.append(split[0] if len(split) > 1 else "")
                     values.append(split[-1])
 
-                help_fields[pos] = (
+                page_fields.append((
                     name.strip(':'),
                     prop_tabulate(names, values)
-                )
+                ))
             elif name == "Related":
                 # Handle the related field
                 names = [cmd_name.strip() for cmd_name in help_fields[pos][1].split(',')]
@@ -110,32 +112,46 @@ async def cmd_help(ctx):
                     (getattr(ctx.client.cmd_names.get(cmd_name, None), 'desc', '') or '').format(ctx=ctx)
                     for cmd_name in names
                 ]
-                help_fields[pos] = (
+                page_fields.append((
                     name,
                     prop_tabulate(names, values)
-                )
+                ))
+            elif name == "PAGEBREAK":
+                page_fields = []
+                field_pages.append(page_fields)
+            else:
+                page_fields.append((name, help_fields[pos][1]))
 
+        # Build the aliases
         aliases = getattr(command, 'aliases', [])
         alias_str = "(Aliases `{}`.)".format("`, `".join(aliases)) if aliases else ""
 
-        # Build the embed
-        embed = discord.Embed(
-            title="`{}` command documentation. {}".format(command.name, alias_str),
-            colour=discord.Colour(0x9b59b6)
-        )
-        for fieldname, fieldvalue in help_fields:
-            embed.add_field(
-                name=fieldname,
-                value=fieldvalue.format(ctx=ctx, prefix=ctx.best_prefix),
-                inline=False
+        # Build the embeds
+        pages = []
+        for i, page_fields in enumerate(field_pages):
+            embed = discord.Embed(
+                title="`{}` command documentation. {}".format(
+                    command.name,
+                    alias_str
+                ),
+                colour=discord.Colour(0x9b59b6)
             )
+            for fieldname, fieldvalue in page_fields:
+                embed.add_field(
+                    name=fieldname,
+                    value=fieldvalue.format(ctx=ctx, prefix=ctx.best_prefix),
+                    inline=False
+                )
 
-        embed.set_footer(
-            text="[optional] and <required> denote optional and required arguments, respectively."
-        )
+            embed.set_footer(
+                text="{}\n[optional] and <required> denote optional and required arguments, respectively.".format(
+                    "Page {} of {}".format(i + 1, len(field_pages)) if len(field_pages) > 1 else '',
+                )
+            )
+            pages.append(embed)
 
         # Post the embed
-        await ctx.reply(embed=embed)
+        await ctx.pager(pages)
     else:
         # Build the command groups
         cmd_groups = {}

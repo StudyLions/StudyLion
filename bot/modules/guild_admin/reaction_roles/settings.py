@@ -37,6 +37,10 @@ class required_role(setting_types.Role, RoleMessageSetting):
         else:
             return "All members can now use these reaction roles."
 
+    @classmethod
+    def _get_guildid(cls, id: int, **kwargs):
+        return reaction_role_messages.fetch(id).guildid
+
 
 @RoleMessageSettings.attach_setting
 class removable(setting_types.Boolean, RoleMessageSetting):
@@ -88,7 +92,7 @@ class maximum(setting_types.Integer, RoleMessageSetting):
     @property
     def success_response(self):
         if self.value:
-            return "Members can get a maximum of `{}` roles from this message."
+            return "Members can get a maximum of `{}` roles from this message.".format(self.value)
         else:
             return "Members can now get all the roles from this mesage."
 
@@ -205,7 +209,7 @@ class price(setting_types.Integer, ReactionSetting):
 
     @classmethod
     def _format_data(cls, id, data, **kwargs):
-        if data is None:
+        if not data:
             return "Free"
         else:
             return "`{}` coins".format(data)
@@ -213,9 +217,9 @@ class price(setting_types.Integer, ReactionSetting):
     @property
     def success_response(self):
         if self.value is not None:
-            return "This role now costs `{}` coins.".format(self.value)
+            return "{{reaction.emoji}} {{reaction.role.mention}} now costs `{}` coins.".format(self.value)
         else:
-            return "This role is free."
+            return "{reaction.emoji} {reaction.role.mention} is now free."
 
 
 @ReactionSettings.attach_setting
@@ -243,6 +247,8 @@ class timeout(setting_types.Duration, ReactionSetting):
     @property
     def success_response(self):
         if self.value is not None:
-            return "Roles will timeout `{}` after selection.".format(self.formatted)
+            return "{{reaction.emoji}} {{reaction.role.mention}} will timeout `{}` after selection.".format(
+                self.formatted
+            )
         else:
-            return "Roles will never timeout after selection."
+            return "{reaction.emoji} {reaction.role.mention} will never timeout after selection."
