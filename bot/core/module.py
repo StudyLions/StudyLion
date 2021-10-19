@@ -46,11 +46,12 @@ async def preload_guild_configuration(client):
     Loads the plain guild configuration for all guilds the client is part of into data.
     """
     guildids = [guild.id for guild in client.guilds]
-    rows = client.data.guild_config.fetch_rows_where(guildid=guildids)
-    client.log(
-        "Preloaded guild configuration for {} guilds.".format(len(rows)),
-        context="CORE_LOADING"
-    )
+    if guildids:
+        rows = client.data.guild_config.fetch_rows_where(guildid=guildids)
+        client.log(
+            "Preloaded guild configuration for {} guilds.".format(len(rows)),
+            context="CORE_LOADING"
+        )
 
 
 @module.launch_task
@@ -59,11 +60,12 @@ async def preload_studying_members(client):
     Loads the member data for all members who are currently in voice channels.
     """
     userids = list(set(member.id for guild in client.guilds for ch in guild.voice_channels for member in ch.members))
-    rows = client.data.lions.fetch_rows_where(userid=userids)
-    client.log(
-        "Preloaded member data for {} members.".format(len(rows)),
-        context="CORE_LOADING"
-    )
+    if userids:
+        rows = client.data.lions.fetch_rows_where(userid=userids)
+        client.log(
+            "Preloaded member data for {} members.".format(len(rows)),
+            context="CORE_LOADING"
+        )
 
 
 @module.launch_task
