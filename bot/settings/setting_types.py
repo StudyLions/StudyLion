@@ -1,6 +1,5 @@
 import json
 import asyncio
-import datetime
 import itertools
 from io import StringIO
 from enum import IntEnum
@@ -12,7 +11,7 @@ from cmdClient.Context import Context
 from cmdClient.lib import SafeCancellation
 
 from meta import client
-from utils.lib import parse_dur, strfdur, strfdelta, prop_tabulate, multiple_replace
+from utils.lib import parse_dur, strfdur, prop_tabulate, multiple_replace
 
 from .base import UserInputError
 
@@ -100,7 +99,7 @@ class Boolean(SettingType):
         Looks up the provided string in the truthy and falsey tables.
         """
         _userstr = userstr.lower()
-        if _userstr == "none":
+        if not _userstr or _userstr == "none":
             return None
         if _userstr in cls._truthy:
             return True
@@ -154,7 +153,7 @@ class Integer(SettingType):
         """
         Relies on integer casting to convert the user string
         """
-        if userstr.lower() == "none":
+        if not userstr or userstr.lower() == "none":
             return None
 
         try:
@@ -222,7 +221,7 @@ class String(SettingType):
         Check that the user-entered string is of the correct length.
         Accept "None" to unset.
         """
-        if userstr.lower() == "none":
+        if not userstr or userstr.lower() == "none":
             # Unsetting case
             return None
         elif cls._maxlen is not None and len(userstr) > cls._maxlen:
@@ -284,7 +283,7 @@ class Channel(SettingType):
         Pass to the channel seeker utility to find the requested channel.
         Handle `0` and variants of `None` to unset.
         """
-        if userstr.lower() in ('0', 'none'):
+        if userstr.lower() in ('', '0', 'none'):
             return None
         else:
             channel = await ctx.find_channel(userstr, interactive=True, chan_type=cls._chan_type)
@@ -375,7 +374,7 @@ class Role(SettingType):
         Pass to the role seeker utility to find the requested role.
         Handle `0` and variants of `None` to unset.
         """
-        if userstr.lower() in ('0', 'none'):
+        if userstr.lower() in ('', '0', 'none'):
             return None
         else:
             role = await ctx.find_role(userstr, create=cls._parse_create, interactive=True)
@@ -452,7 +451,7 @@ class Emoji(SettingType):
         Pass to the emoji string parser to get the emoji.
         Handle `0` and variants of `None` to unset.
         """
-        if userstr.lower() in ('0', 'none'):
+        if userstr.lower() in ('', '0', 'none'):
             return None
         else:
             return cls._parse_emoji(userstr)
@@ -505,7 +504,7 @@ class Timezone(SettingType):
         Check that the user-entered string is of the correct length.
         Accept "None" to unset.
         """
-        if userstr.lower() == "none":
+        if not userstr or userstr.lower() == "none":
             # Unsetting case
             return None
         try:
@@ -585,7 +584,7 @@ class IntegerEnum(SettingType):
 
         options = {name.lower(): mem.value for name, mem in cls._enum.__members__.items()}
 
-        if userstr == "none":
+        if not userstr or userstr == "none":
             # Unsetting case
             return None
         elif userstr not in options:
@@ -654,7 +653,7 @@ class Duration(SettingType):
         """
         Parse the provided duration.
         """
-        if userstr.lower() == "none":
+        if not userstr or userstr.lower() == "none":
             return None
 
         if cls._default_multiplier and userstr.isdigit():
@@ -949,12 +948,13 @@ class SettingList(SettingType):
         Splits the user string across `,` to break up the list.
         Handle `0` and variants of `None` to unset.
         """
-        if userstr.lower() in ('0', 'none'):
+        if userstr.lower() in ('', '0', 'none'):
             return []
         else:
             data = []
-            for item in userstr.split(','):
-                data.append(await cls._setting._parse_userstr(ctx, id, item.strip()))
+            items = (item.strip() for item in userstr.split(','))
+            items = (item for item in items if item)
+            data = [await cls._setting._parse_userstr(ctx, id, item, **kwargs) for item in items]
 
             if cls._force_unique:
                 data = list(set(data))
