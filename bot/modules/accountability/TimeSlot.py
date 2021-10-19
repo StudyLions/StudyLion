@@ -72,6 +72,9 @@ class TimeSlot:
         connect=False
     )
 
+    happy_lion = "https://media.discordapp.net/stickers/898266283559227422.png"
+    sad_lion = "https://media.discordapp.net/stickers/898266548421148723.png"
+
     def __init__(self, guild, start_time, data=None):
         self.guild: discord.Guild = guild
         self.start_time: datetime.datetime = start_time
@@ -139,13 +142,16 @@ class TimeSlot:
                 else:
                     classifications["Attended"].append(mention)
 
+            all_attended = all(mem.has_attended for mem in self.members.values())
             bonus_line = (
-                "{tick} All members attended, and will get a `{bonus} LC` completion bonus!".format(
+                "{tick} Everyone attended, and will get a `{bonus} LC` bonus!".format(
                     tick=tick,
                     bonus=GuildSettings(self.guild.id).accountability_bonus.value
                 )
-                if all(mem.has_attended for mem in self.members.values()) else ""
+                if all_attended else ""
             )
+            if all_attended:
+                embed.set_thumbnail(url=self.happy_lion)
 
             embed.description += "\n" + bonus_line
             for field, value in classifications.items():
@@ -182,16 +188,22 @@ class TimeSlot:
                 else:
                     classifications["Missing"].append(mention)
 
+            all_attended = all(mem.has_attended for mem in self.members.values())
+
             bonus_line = (
-                "{tick} All members attended, and received a `{bonus} LC` completion bonus!".format(
+                "{tick} Everyone attended, and received a `{bonus} LC` bonus!".format(
                     tick=tick,
                     bonus=GuildSettings(self.guild.id).accountability_bonus.value
                 )
-                if all(mem.has_attended for mem in self.members.values()) else
+                if all_attended else
                 "{cross} Some members missed the session, so everyone missed out on the bonus!".format(
                     cross=cross
                 )
             )
+            if all_attended:
+                embed.set_thumbnail(url=self.happy_lion)
+            else:
+                embed.set_thumbnail(url=self.sad_lion)
 
             embed.description += "\n" + bonus_line
             for field, value in classifications.items():
@@ -292,7 +304,7 @@ class TimeSlot:
                 self.message = await self.lobby.send(
                     embed=self.open_embed
                 )
-            except discord.HTTPException as e:
+            except discord.HTTPException:
                 GuildSettings(self.guild.id).event_log.log(
                     "Failed to post the status message in the accountability lobby {}.\n"
                     "Skipping this session.".format(self.lobby.mention),
