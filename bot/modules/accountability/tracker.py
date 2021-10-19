@@ -232,7 +232,8 @@ async def turnover():
 
     # Start all the current rooms
     await asyncio.gather(
-        *(slot.start() for slot in current_slots)
+        *(slot.start() for slot in current_slots),
+        return_exceptions=True
     )
 
 

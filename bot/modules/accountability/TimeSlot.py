@@ -334,10 +334,21 @@ class TimeSlot:
         Update the status message, and launch the DM reminder.
         """
         if self.channel:
-            await self.channel.edit(name="Accountability Study Room")
-            await self.channel.set_permissions(self.guild.default_role, view_channel=True, connect=False)
+            try:
+                await self.channel.edit(name="Accountability Study Room")
+                await self.channel.set_permissions(self.guild.default_role, view_channel=True, connect=False)
+            except discord.HTTPException:
+                pass
             asyncio.create_task(self.dm_reminder(delay=60))
-        await self.message.edit(embed=self.status_embed)
+        try:
+            await self.message.edit(embed=self.status_embed)
+        except discord.NotFound:
+            try:
+                self.message = await self.lobby.send(
+                    embed=self.status_embed
+                )
+            except discord.HTTPException:
+                self.message = None
 
     async def dm_reminder(self, delay=60):
         """
