@@ -295,13 +295,17 @@ class Channel(SettingType):
     @classmethod
     def _format_data(cls, id: int, data: Optional[int], **kwargs):
         """
-        Retrieve an artificially created channel mention.
-        If the channel does not exist, this will show up as invalid-channel.
+        Retrieve the channel mention, if the channel still exists.
+        If the channel no longer exists, or cannot be seen by the client, returns None.
         """
         if data is None:
             return None
         else:
-            return "<#{}>".format(data)
+            channel = client.get_channel(data)
+            if channel:
+                return channel.mention
+            else:
+                return None
 
 
 class VoiceChannel(Channel):
