@@ -10,7 +10,7 @@ from .module import module
 
 # Set the command groups to appear in the help
 group_hints = {
-    'Productivity': "*Various productivity tools.*",
+    'Productivity': "*Use these to help you stay focused and productive!*",
     'Statistics': "*StudyLion leaderboards and study statistics.*",
     'Economy': "*Buy, sell, and trade with your hard-earned coins!*",
     'Personal Settings': "*Tell me about yourself!*",
@@ -34,7 +34,7 @@ admin_group_order = (
 )
 
 bot_admin_group_order = (
-    ('Bot Admin', 'Guild Configuration', 'Moderation', 'Meta'),
+    ('Bot Admin', 'Guild Admin', 'Guild Configuration', 'Moderation', 'Meta'),
     ('Productivity', 'Statistics', 'Economy', 'Personal Settings')
 )
 

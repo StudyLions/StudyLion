@@ -1,6 +1,5 @@
 import asyncio
 import discord
-from collections import defaultdict
 from discord import PartialEmoji
 
 from cmdClient.lib import ResponseTimedOut, UserCancelled
@@ -8,8 +7,7 @@ from wards import guild_admin
 from settings import UserInputError
 from utils.lib import tick, cross
 
-from ..module import module
-
+from .module import module
 from .tracker import ReactionRoleMessage
 from .data import reaction_role_reactions, reaction_role_messages
 from . import settings
@@ -176,20 +174,20 @@ _message_setting_flags = {
 }
 _reaction_setting_flags = {
     'price': settings.price,
-    'timeout': settings.timeout
+    'duration': settings.duration
 }
 
 
 @module.cmd(
     "reactionroles",
-    group="Guild Admin",
-    desc="Create or configure reaction role messages.",
+    group="Guild Configuration",
+    desc="Create and configure reaction role messages.",
     aliases=('rroles',),
     flags=(
         'delete', 'remove==',
         'enable', 'disable',
         'required_role==', 'removable=', 'maximum=', 'refunds=', 'log=', 'default_price=',
-        'price=', 'timeout=='
+        'price=', 'duration=='
     )
 )
 @guild_admin()
@@ -238,12 +236,13 @@ async def cmd_reactionroles(ctx, flags):
         required_role: The role required to use these reactions roles.
     Reaction Settings::
         price: The price of this reaction role.
-        timeout: The amount of time the role lasts. (TBD)
+        tduration: How long this role will last after being selected or bought.
     Configuration Examples``:
         {prefix}rroles {ctx.msg.id} --maximum 5
         {prefix}rroles {ctx.msg.id} --default_price 20
         {prefix}rroles {ctx.msg.id} --required_role None
         {prefix}rroles {ctx.msg.id} 🧮 --price 1024
+        {prefix}rroles {ctx.msg.id} 🧮 --duration 7 days
     """
     if not ctx.args:
         # No target message provided, list the current reaction messages
@@ -909,7 +908,7 @@ async def cmd_reactionroles(ctx, flags):
         "{settings_table}\n"
         "To update a message setting: `{prefix}rroles messageid --setting value`\n"
         "To update an emoji setting: `{prefix}rroles messageid emoji --setting value`\n"
-        "See more usage information and examples with `{prefix}help rroles`."
+        "See examples and more usage information with `{prefix}help rroles`."
     ).format(
         prefix=ctx.best_prefix,
         settings_table=target.settings.tabulated()

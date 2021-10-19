@@ -501,14 +501,14 @@ CREATE TABLE reaction_role_reactions(
 );
 CREATE INDEX reaction_role_reaction_messages ON reaction_role_reactions (messageid);
 
-CREATE TABLE reaction_role_expiry(
+CREATE TABLE reaction_role_expiring(
   guildid BIGINT NOT NULL,
   userid BIGINT NOT NULL,
   roleid BIGINT NOT NULL,
   expiry TIMESTAMPTZ NOT NULL,
   reactionid INTEGER REFERENCES reaction_role_reactions (reactionid) ON DELETE SET NULL
 );
-CREATE INDEX reaction_role_expiry_members ON reaction_role_expiry (guildid, userid, roleid);
+CREATE UNIQUE INDEX reaction_role_expiry_members ON reaction_role_expiring (guildid, userid, roleid);
 
 -- }}}
 -- vim: set fdm=marker:

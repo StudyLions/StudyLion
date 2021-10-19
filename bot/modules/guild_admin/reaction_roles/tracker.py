@@ -1,6 +1,7 @@
 import asyncio
 import logging
 import traceback
+import datetime
 from collections import defaultdict
 from typing import List, Mapping, Optional
 from cachetools import LFUCache
@@ -11,11 +12,13 @@ from discord import PartialEmoji
 from meta import client
 from core import Lion
 from data import Row
+from utils.lib import utc_now
 from settings import GuildSettings
 
 from ..module import module
-from .data import reaction_role_messages, reaction_role_reactions  # , reaction_role_expiry
+from .data import reaction_role_messages, reaction_role_reactions
 from .settings import RoleMessageSettings, ReactionSettings
+from .expiry import schedule_expiry, cancel_expiry
 
 
 class ReactionRoleReaction:
@@ -404,22 +407,29 @@ class ReactionRoleMessage:
                             except discord.HTTPException:
                                 pass
 
+                        # Schedule the expiry, if required
+                        duration = reaction.settings.duration.value
+                        if duration:
+                            expiry = utc_now() + datetime.timedelta(seconds=duration)
+                            schedule_expiry(self.guild.id, member.id, role.id, expiry, reaction.reactionid)
+                        else:
+                            expiry = None
+
                         # Log the role modification if required
                         if self.settings.log.value:
                             event_log.log(
                                 "Added [reaction role]({}) {} "
-                                "to {}{}.".format(
+                                "to {}{}.{}".format(
                                     self.message_link,
                                     role.mention,
                                     member.mention,
-                                    " for `{}` coins.".format(price) if price else ''
+                                    " for `{}` coins.".format(price) if price else '',
+                                    "\nThis role will expire at <t:{:.0f}>.".format(
+                                        expiry.timestamp()
+                                    ) if expiry else ''
                                 ),
                                 title="Reaction Role Added"
                             )
-
-                        # Start the timeout, if required
-                        # TODO: timeout system
-                        ...
 
     async def process_raw_reaction_remove(self, payload):
         """
@@ -519,18 +529,17 @@ class ReactionRoleMessage:
                                     "Removed [reaction role]({}) {} "
                                     "from {}.".format(
                                         self.message_link,
-                                        reaction.role.mention,
+                                        role.mention,
                                         member.mention
                                     ),
                                     title="Reaction Role Removed"
                                 )
 
-                            # TODO: Cancel timeout
-                            ...
+                            # Cancel any existing expiry
+                            cancel_expiry(self.guild.id, member.id, role.id)
 
 
 # TODO: Make all the embeds a bit nicer, and maybe make a consistent interface for them
-# We could use the reaction url as the author url! At least for the non-builtin emojis.
 # TODO: Handle RawMessageDelete event
 # TODO: Handle permission errors when fetching message in config
 

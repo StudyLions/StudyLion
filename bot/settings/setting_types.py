@@ -624,6 +624,9 @@ class Duration(SettingType):
     # This is particularly useful since the duration parser will return 0 for most non-duration strings
     allow_zero = False
 
+    # Whether to show days on the output
+    _show_days = False
+
     @classmethod
     def _data_from_value(cls, id: int, value: Optional[bool], **kwargs):
         """
@@ -654,12 +657,22 @@ class Duration(SettingType):
             num = parse_dur(userstr)
 
         if num == 0 and not cls.allow_zero:
-            raise UserInputError("The provided duration cannot be `0`! (Please enter in the format `1d 2h 3m 4s`.)")
+            raise UserInputError(
+                "The provided duration cannot be `0`! (Please enter in the format `1d 2h 3m 4s`, or `None` to unset.)"
+            )
 
         if cls._max is not None and num > cls._max:
-            raise UserInputError("Duration cannot be longer than `{}`!".format(strfdur(cls._max)))
+            raise UserInputError(
+                "Duration cannot be longer than `{}`!".format(
+                    strfdur(cls._max, short=False, show_days=cls._show_days)
+                )
+            )
         if cls._min is not None and num < cls._min:
-            raise UserInputError("Duration connot be shorter than `{}`!".format(strfdur(cls._min)))
+            raise UserInputError(
+                "Duration connot be shorter than `{}`!".format(
+                    strfdur(cls._min, short=False, show_days=cls._show_days)
+                )
+            )
 
         return num
 
@@ -671,7 +684,7 @@ class Duration(SettingType):
         if data is None:
             return None
         else:
-            return "`{}`".format(strfdelta(datetime.timedelta(seconds=data)))
+            return "`{}`".format(strfdur(data, short=False, show_days=cls._show_days))
 
 
 class SettingList(SettingType):

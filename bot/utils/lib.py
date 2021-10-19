@@ -205,23 +205,35 @@ def parse_dur(time_str):
     return seconds
 
 
-def strfdur(duration):
+def strfdur(duration, short=True, show_days=False):
     """
     Convert a duration given in seconds to a number of hours, minutes, and seconds.
     """
+    days = duration // (3600 * 24) if show_days else 0
     hours = duration // 3600
+    if days:
+        hours %= 24
     minutes = duration // 60 % 60
     seconds = duration % 60
 
     parts = []
+    if days:
+        unit = 'd' if short else (' days' if days != 1 else ' day')
+        parts.append('{}{}'.format(days, unit))
     if hours:
-        parts.append('{}h'.format(hours))
+        unit = 'h' if short else (' hours' if hours != 1 else ' hour')
+        parts.append('{}{}'.format(hours, unit))
     if minutes:
-        parts.append('{}m'.format(minutes))
+        unit = 'm' if short else (' minutes' if minutes != 1 else ' minute')
+        parts.append('{}{}'.format(minutes, unit))
     if seconds or duration == 0:
-        parts.append('{}s'.format(seconds))
+        unit = 's' if short else (' seconds' if seconds != 1 else ' second')
+        parts.append('{}{}'.format(seconds, unit))
 
-    return ' '.join(parts)
+    if short:
+        return ' '.join(parts)
+    else:
+        return ', '.join(parts)
 
 
 def substitute_ranges(ranges_str, max_match=20, max_range=1000, separator=','):

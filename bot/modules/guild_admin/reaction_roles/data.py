@@ -1,4 +1,4 @@
-from data import RowTable
+from data import Table, RowTable
 
 
 reaction_role_messages = RowTable(
@@ -17,3 +17,6 @@ reaction_role_reactions = RowTable(
     ('reactionid', 'messageid', 'roleid', 'emoji_name', 'emoji_id', 'emoji_animated', 'price', 'timeout'),
     'reactionid'
 )
+
+
+reaction_role_expiring = Table('reaction_role_expiring')

@@ -223,11 +223,11 @@ class price(setting_types.Integer, ReactionSetting):
 
 
 @ReactionSettings.attach_setting
-class timeout(setting_types.Duration, ReactionSetting):
-    attr_name = 'timeout'
+class duration(setting_types.Duration, ReactionSetting):
+    attr_name = 'duration'
     _data_column = 'timeout'
 
-    display_name = "timeout"
+    display_name = "duration"
     desc = "How long this reaction role will last."
 
     long_desc = (
@@ -235,20 +235,22 @@ class timeout(setting_types.Duration, ReactionSetting):
         "Note that this does not affect existing members with the role, or existing expiries."
     )
 
-    _default_multiplier = 1
+    _default_multiplier = 3600
+    _show_days = True
+    _min = 600
 
     @classmethod
     def _format_data(cls, id, data, **kwargs):
         if data is None:
-            return "Never"
+            return "Permanent"
         else:
             return super()._format_data(id, data, **kwargs)
 
     @property
     def success_response(self):
         if self.value is not None:
-            return "{{reaction.emoji}} {{reaction.role.mention}} will timeout `{}` after selection.".format(
+            return "{{reaction.emoji}} {{reaction.role.mention}} will expire `{}` after selection.".format(
                 self.formatted
             )
         else:
-            return "{reaction.emoji} {reaction.role.mention} will never timeout after selection."
+            return "{reaction.emoji} {reaction.role.mention} will not expire."
