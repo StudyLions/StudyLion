@@ -47,6 +47,6 @@ Punish cheaters, audit-log, welcome message, and so much more using our full-sca
 
 ### ❓ Tutorials
 ------------
-A command list and general documentation for StudyLion may be found using the `help` command. Documentation for a specific command, say congif, may be found with `help config`. Full documentation as well as user tutorials are a work in progress, new information will be added constantly.
-Make sure to join the [main server](http://discord.gg/studylions "main server") to stay updated.
+A command list and general documentation for StudyLion may be found using the `help` command. Documentation for a specific command, say congif, may be found with `help config`. 
+Make sure to check the full documentation [here](https://www.notion.so/izabellakis/StudyLion-Bot-Tutorials-f493268fcd12436c9674afef2e151707") to stay updated.
 
