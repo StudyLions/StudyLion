@@ -8,6 +8,7 @@ from typing import Dict
 from discord.utils import sleep_until
 
 from meta import client
+from utils.interactive import discord_shield
 from data import NULL, NOTNULL, tables
 from data.conditions import LEQ
 from settings import GuildSettings
@@ -167,7 +168,7 @@ async def turnover():
         to_update = [
             (mem.data.duration + int((now - mem.data.last_joined_at).total_seconds()), None, mem.slotid, mem.userid)
             for slot in last_slots for mem in slot.members.values()
-            if mem.data.last_joined_at
+            if mem.data and mem.data.last_joined_at
         ]
         if to_update:
             accountability_members.update_many(
@@ -177,6 +178,15 @@ async def turnover():
                 cast_row='(NULL::int, NULL::timestamptz, NULL::int, NULL::int)'
             )
 
+        # Close all completed rooms, update data
+        await asyncio.gather(*(slot.close() for slot in last_slots), return_exceptions=True)
+        update_slots = [slot.data.slotid for slot in last_slots if slot.data]
+        if update_slots:
+            accountability_rooms.update_where(
+                {'closed_at': utc_now()},
+                slotid=update_slots
+            )
+
         # Rotate guild sessions
         [aguild.advance() for aguild in AccountabilityGuild.cache.values()]
 
@@ -184,7 +194,6 @@ async def turnover():
         # We could break up the session starting?
 
         # Move members of the next session over to the session channel
-        # This includes any members of the session just complete
         current_slots = [
             aguild.current_slot for aguild in AccountabilityGuild.cache.values()
             if aguild.current_slot is not None
@@ -206,21 +215,12 @@ async def turnover():
             return_exceptions=True
         )
 
-        # Close all completed rooms, update data
-        await asyncio.gather(*(slot.close() for slot in last_slots))
-        update_slots = [slot.data.slotid for slot in last_slots if slot.data]
-        if update_slots:
-            accountability_rooms.update_where(
-                {'closed_at': utc_now()},
-                slotid=update_slots
-            )
-
         # Update session data of all members in new channels
         member_session_data = [
             (0, slot.start_time, mem.slotid, mem.userid)
             for slot in current_slots
             for mem in slot.members.values()
-            if mem.member.voice and mem.member.voice.channel == slot.channel
+            if mem.data and mem.member and mem.member.voice and mem.member.voice.channel == slot.channel
         ]
         if member_session_data:
             accountability_members.update_many(
@@ -460,3 +460,31 @@ async def unload_accountability(client):
     Save the current sessions and cancel the runloop in preparation for client shutdown.
     """
     ...
+
+
+@client.add_after_event('member_join')
+async def restore_accountability(client, member):
+    """
+    Restore accountability channel permissions when a member rejoins the server, if applicable.
+    """
+    aguild = AccountabilityGuild.cache.get(member.guild.id, None)
+    if aguild:
+        if aguild.current_slot and member.id in aguild.current_slot.members:
+            # Restore member permission for current slot
+            slot = aguild.current_slot
+            if slot.channel:
+                asyncio.create_task(discord_shield(
+                    slot.channel.set_permissions(
+                        member,
+                        overwrite=slot._member_overwrite
+                    )
+                ))
+        if aguild.upcoming_slot and member.id in aguild.upcoming_slot.members:
+            slot = aguild.upcoming_slot
+            if slot.channel:
+                asyncio.create_task(discord_shield(
+                    slot.channel.set_permissions(
+                        member,
+                        overwrite=slot._member_overwrite
+                    )
+                ))

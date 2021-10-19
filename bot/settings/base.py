@@ -51,6 +51,14 @@ class Setting:
         embed.description = "{}\n{}".format(self.long_desc.format(self=self, client=self.client), table)
         return embed
 
+    async def widget(self, ctx: Context, **kwargs):
+        """
+        Show the setting widget for this setting.
+        By default this displays the setting embed.
+        Settings may override this if they need more complex widget context or logic.
+        """
+        return await ctx.reply(embed=self.embed)
+
     @property
     def summary(self):
         """

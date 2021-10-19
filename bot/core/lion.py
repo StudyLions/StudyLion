@@ -2,7 +2,7 @@ import pytz
 
 from meta import client
 from data import tables as tb
-from settings import UserSettings
+from settings import UserSettings, GuildSettings
 
 
 class Lion:
@@ -41,7 +41,13 @@ class Lion:
         if key in cls._lions:
             return cls._lions[key]
         else:
-            tb.lions.fetch_or_create(key)
+            lion = tb.lions.fetch(key)
+            if not lion:
+                tb.lions.create_row(
+                    guildid=guildid,
+                    userid=userid,
+                    coins=GuildSettings(guildid).starting_funds.value
+                )
             return cls(guildid, userid)
 
     @property

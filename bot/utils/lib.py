@@ -17,7 +17,7 @@ tick = '✅'
 cross = '❌'
 
 
-def prop_tabulate(prop_list, value_list, indent=True):
+def prop_tabulate(prop_list, value_list, indent=True, colon=True):
     """
     Turns a list of properties and corresponding list of values into
     a pretty string with one `prop: value` pair each line,
@@ -39,7 +39,7 @@ def prop_tabulate(prop_list, value_list, indent=True):
     max_len = max(len(prop) for prop in prop_list)
     return "".join(["`{}{}{}`\t{}{}".format("​ " * (max_len - len(prop)) if indent else "",
                                             prop,
-                                            ":" if len(prop) else "​ " * 2,
+                                            (":" if len(prop) else "​ " * 2) if colon else '',
                                             value_list[i],
                                             '' if str(value_list[i]).endswith("```") else '\n')
                     for i, prop in enumerate(prop_list)])
@@ -540,3 +540,14 @@ def utc_now():
     Return the current timezone-aware utc timestamp.
     """
     return datetime.datetime.utcnow().replace(tzinfo=datetime.timezone.utc)
+
+
+def multiple_replace(string, rep_dict):
+    if rep_dict:
+        pattern = re.compile(
+            "|".join([re.escape(k) for k in sorted(rep_dict, key=len, reverse=True)]),
+            flags=re.DOTALL
+        )
+        return pattern.sub(lambda x: str(rep_dict[x.group(0)]), string)
+    else:
+        return string

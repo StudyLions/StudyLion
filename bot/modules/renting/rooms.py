@@ -243,7 +243,7 @@ class Room:
                 guild_settings.event_log.log(
                     title="Failed to update study room permissions!",
                     description=("An error occured while removing the "
-                                "following members from the private room {}.\n{}").format(
+                                 "following members from the private room {}.\n{}").format(
                                     self.channel.mention,
                                     ', '.join(member.mention for member in members)
                                 ),
@@ -282,3 +282,38 @@ async def load_rented_rooms(client):
         "Loaded {} private study channels.".format(len(rows)),
         context="LOAD_RENTED_ROOMS"
     )
+
+
+@client.add_after_event('member_join')
+async def restore_room_permission(client, member):
+    """
+    If a member has, or is part of, a private room when they rejoin, restore their permissions.
+    """
+    # First check whether they own a room
+    owned = Room.fetch(member.guild.id, member.id)
+    if owned and owned.channel:
+        # Restore their room permissions
+        try:
+            await owned.channel.set_permissions(
+                member,
+                overwrite=Room.owner_overwrite
+            )
+        except discord.HTTPException:
+            pass
+
+    # Then check if they are in any other rooms
+    in_room_rows = rented_members.select_where(
+        _extra="LEFT JOIN rented USING (channelid) WHERE userid={} AND guildid={}".format(
+            member.id, member.guild.id
+        )
+    )
+    for row in in_room_rows:
+        room = Room.fetch(member.guild.id, row['ownerid'])
+        if room and row['ownerid'] != member.id and room.channel:
+            try:
+                await room.channel.set_permissions(
+                    member,
+                    overwrite=Room.member_overwrite
+                )
+            except discord.HTTPException:
+                pass

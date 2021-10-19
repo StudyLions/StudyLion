@@ -101,6 +101,8 @@ async def _study_tracker():
 
 @module.launch_task
 async def launch_study_tracker(client):
+    # First pre-load the untracked channels
+    await admin.untracked_channels.launch_task(client)
     asyncio.create_task(_study_tracker())
 
 

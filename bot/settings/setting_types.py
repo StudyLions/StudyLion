@@ -1,5 +1,8 @@
+import json
+import asyncio
 import datetime
 import itertools
+from io import StringIO
 from enum import IntEnum
 from typing import Any, Optional
 
@@ -9,9 +12,12 @@ from cmdClient.Context import Context
 from cmdClient.lib import SafeCancellation
 
 from meta import client
-from utils.lib import parse_dur, strfdur, strfdelta
+from utils.lib import parse_dur, strfdur, strfdelta, prop_tabulate, multiple_replace
 
 from .base import UserInputError
+
+
+preview_emoji = '🔍'
 
 
 class SettingType:
@@ -685,6 +691,209 @@ class Duration(SettingType):
             return None
         else:
             return "`{}`".format(strfdur(data, short=False, show_days=cls._show_days))
+
+
+class Message(SettingType):
+    """
+    Message type storing json-encoded message arguments.
+    Messages without an embed are displayed differently from those with an embed.
+
+    Types:
+        data: str
+            A json dictionary with the fields `content` and `embed`.
+        value: dict
+            An argument dictionary suitable for `Message.send` or `Message.edit`.
+    """
+
+    _substitution_desc = {
+    }
+
+    @classmethod
+    def _data_from_value(cls, id, value, **kwargs):
+        if value is None:
+            return None
+
+        return json.dumps(value)
+
+    @classmethod
+    def _data_to_value(cls, id, data, **kwargs):
+        if data is None:
+            return None
+
+        return json.loads(data)
+
+    @classmethod
+    async def parse(cls, id: int, ctx: Context, userstr: str, **kwargs):
+        """
+        Return a setting instance initialised from a parsed user string.
+        """
+        if ctx.msg.attachments:
+            attachment = ctx.msg.attachments[0]
+            if 'text' in attachment.content_type or 'json' in attachment.content_type:
+                userstr = (await attachment.read()).decode()
+                data = await cls._parse_userstr(ctx, id, userstr, as_json=True, **kwargs)
+            else:
+                raise UserInputError("Can't read the attached file!")
+        else:
+            data = await cls._parse_userstr(ctx, id, userstr, **kwargs)
+        return cls(id, data, **kwargs)
+
+    @classmethod
+    async def _parse_userstr(cls, ctx, id, userstr, as_json=False, **kwargs):
+        """
+        Parse the provided string as either a content-only string, or json-format arguments.
+        Provided string is not trusted, and is parsed in a safe manner.
+        """
+        if userstr.lower() == 'none':
+            return None
+
+        if as_json:
+            try:
+                args = json.loads(userstr)
+            except json.JSONDecodeError:
+                raise UserInputError(
+                    "Couldn't parse your message! "
+                    "You can test and fix it on the embed builder "
+                    "[here](https://glitchii.github.io/embedbuilder/?editor=json)."
+                )
+            if 'embed' in args and 'timestamp' in args['embed']:
+                args['embed'].pop('timestamp')
+            return json.dumps(args)
+        else:
+            return json.dumps({'content': userstr})
+
+    @classmethod
+    def _format_data(cls, id, data, **kwargs):
+        if data is None:
+            return "Empty"
+        value = cls._data_to_value(id, data, **kwargs)
+        if 'embed' not in value and len(value['content']) < 100:
+            return "`{}`".format(value['content'])
+        else:
+            return "Too long to display here!"
+
+    def substitution_keys(self, ctx, **kwargs):
+        """
+        Instances should override this to provide their own substitution implementation.
+        """
+        return {}
+
+    def args(self, ctx, **kwargs):
+        """
+        Applies the substitutions with the given context to generate the final message args.
+        """
+        value = self.value
+        substitutions = self.substitution_keys(ctx, **kwargs)
+        args = {}
+        if 'content' in value:
+            args['content'] = multiple_replace(value['content'], substitutions)
+        if 'embed' in value:
+            args['embed'] = discord.Embed.from_dict(
+                json.loads(multiple_replace(json.dumps(value['embed']), substitutions))
+            )
+        return args
+
+    async def widget(self, ctx, **kwargs):
+        value = self.value
+        args = self.args(ctx, **kwargs)
+
+        if not value:
+            return await ctx.reply(embed=self.embed)
+
+        current_str = None
+        preview = None
+        file_content = None
+        if 'embed' in value or len(value['content']) > 1024:
+            current_str = "See attached file."
+            file_content = json.dumps(value, indent=4)
+        elif "`" in value['content']:
+            current_str = "```{}```".format(value['content'])
+            if len(args['content']) < 1000:
+                preview = args['content']
+        else:
+            current_str = "`{}`".format(value['content'])
+            if len(args['content']) < 1000:
+                preview = args['content']
+
+        description = "{}\n\n**Current Value**: {}".format(
+            self.long_desc.format(self=self, client=self.client),
+            current_str
+        )
+
+        embed = discord.Embed(
+            title="Configuration options for `{}`".format(self.display_name),
+            description=description
+        )
+        if preview:
+            embed.add_field(name="Message Preview", value=preview, inline=False)
+        embed.add_field(
+            name="Setting Guide",
+            value=(
+                "• For plain text without an embed, use `{prefix}config {setting} <text>`.\n"
+                "• To include an embed, build the message [here]({builder}) "
+                "and upload the json code as a file with the `{prefix}config {setting}` command.\n"
+                "• To reset the message to the default, use `{prefix}config {setting} None`."
+            ).format(
+                prefix=ctx.best_prefix,
+                setting=self.display_name,
+                builder="https://glitchii.github.io/embedbuilder/?editor=gui"
+            ),
+            inline=False
+        )
+        if self._substitution_desc:
+            embed.add_field(
+                name="Substitution Keys",
+                value=(
+                    "*The following keys will be substituted for their current values.*\n{}"
+                ).format(
+                    prop_tabulate(*zip(*self._substitution_desc.items()), colon=False)
+                ),
+                inline=False
+            )
+        embed.set_footer(
+            text="React with {} to preview the message.".format(preview_emoji)
+        )
+        if file_content:
+            with StringIO() as message_file:
+                message_file.write(file_content)
+                message_file.seek(0)
+                out_file = discord.File(message_file, filename="{}.json".format(self.display_name))
+                out_msg = await ctx.reply(embed=embed, file=out_file)
+        else:
+            out_msg = await ctx.reply(embed=embed)
+
+        # Add the preview reaction and send the preview when requested
+        try:
+            await out_msg.add_reaction(preview_emoji)
+        except discord.HTTPException:
+            return
+
+        try:
+            await ctx.client.wait_for(
+                'reaction_add',
+                check=lambda r, u: r.message.id == out_msg.id and r.emoji == preview_emoji and u == ctx.author,
+                timeout=180
+            )
+        except asyncio.TimeoutError:
+            try:
+                await out_msg.remove_reaction(preview_emoji, ctx.client.user)
+            except discord.HTTPException:
+                pass
+        else:
+            try:
+                await ctx.offer_delete(
+                    await ctx.reply(**args, allowed_mentions=discord.AllowedMentions.none())
+                )
+            except discord.HTTPException as e:
+                await ctx.reply(
+                    embed=discord.Embed(
+                        colour=discord.Colour.red(),
+                        title="Preview failed! Error below",
+                        description="```{}```".format(
+                            e
+                        )
+                    )
+                )
 
 
 class SettingList(SettingType):
