@@ -353,9 +353,10 @@ class Ticket:
         Method used to revert the ticket action, e.g. unban or remove mute role.
         Generally called by `pardon` and `_expire`.
 
-        Must be overriden by the Ticket type, if they implement any revert logic.
+        May be overriden by the Ticket type, if they implement any revert logic.
+        Is a no-op by default.
         """
-        raise NotImplementedError
+        return
 
     async def _expire(self):
         """

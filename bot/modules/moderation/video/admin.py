@@ -87,9 +87,9 @@ class video_studyban(settings.Boolean, GuildSetting):
     @property
     def success_response(self):
         if self.value:
-            "Members will now be study banned if they don't enable their video in the configured video channels."
+            return "Members will now be study-banned if they don't enable their video in the configured video channels."
         else:
-            "Members will not be studybanned if they don't enable their video in video channels."
+            return "Members will not be study-banned if they don't enable their video in video channels."
 
 
 @GuildSettings.attach_setting

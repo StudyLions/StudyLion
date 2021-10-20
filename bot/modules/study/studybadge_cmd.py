@@ -265,6 +265,13 @@ async def cmd_studybadges(ctx, flags):
         # Parse the input
         lines = ctx.args.splitlines()
         results = [await parse_level(ctx, line) for line in lines]
+        # Check for duplicates
+        _set = set()
+        duplicate = next((time for time, _ in results if time in _set or _set.add(time)), None)
+        if duplicate:
+            return await ctx.error_reply(
+                "Level `{}` provided twice!".format(strfdur(duplicate, short=False))
+            )
         current_times = set(row.required_time for row in guild_roles)
 
         # Split up the provided lines into levels to add and levels to edit
