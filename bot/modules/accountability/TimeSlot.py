@@ -409,12 +409,13 @@ class TimeSlot:
         if self.channel:
             try:
                 await self.channel.delete()
+                self.channel = None
             except discord.HTTPException:
                 pass
 
         if self.message:
             try:
-                timestamp = self.start_time.timestamp()
+                timestamp = int(self.start_time.timestamp())
                 embed = discord.Embed(
                     title="Session <t:{}:t> - <t:{}:t>".format(
                         timestamp, timestamp + 3600

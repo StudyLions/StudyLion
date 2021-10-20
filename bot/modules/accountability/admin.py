@@ -1,3 +1,4 @@
+import asyncio
 import discord
 
 import settings
@@ -37,12 +38,12 @@ class accountability_category(settings.Channel, settings.GuildSetting):
                 return "The accountability system has been started in **{}**.".format(self.value.name)
         else:
             if self.id in AG.cache:
-                aguild = AG.cache[self.id]
+                aguild = AG.cache.pop(self.id)
                 if aguild.current_slot:
-                    aguild.current_lost.cancel()
+                    asyncio.create_task(aguild.current_slot.cancel())
                 if aguild.upcoming_slot:
-                    aguild.upcoming_slot.cancel()
-                return "The accountability system has been stopped."
+                    asyncio.create_task(aguild.upcoming_slot.cancel())
+                return "The accountability system has been shut down."
             else:
                 return "The accountability category has been unset."
 
