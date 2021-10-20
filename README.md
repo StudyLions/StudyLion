@@ -1,4 +1,4 @@
-# StudyLion - Discord Productivity Bot
+# StudyLion - Discord Study & Productivity Bot
 StudyLion is a Discord bot that tracks members' study and work time while offering members the ability to view their statistics and use productivity tools such as: To-do lists, pomodoro timers, reminders, and much more. 
 
 [**Invite StudyLion here**](https://discord.studylions.com/invite "here"), and get started with `!help`.
