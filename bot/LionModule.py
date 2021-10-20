@@ -1,4 +1,9 @@
-from cmdClient import Command, Module
+import asyncio
+import traceback
+import logging
+import discord
+
+from cmdClient import Command, Module, FailedCheck
 from cmdClient.lib import SafeCancellation
 
 from meta import log
@@ -79,3 +84,77 @@ class LionModule(Module):
             # Check guild's own member blacklist
             if ctx.author.id in ctx.client.objects['ignored_members'][ctx.guild.id]:
                 raise SafeCancellation
+
+    async def on_exception(self, ctx, exception):
+        try:
+            raise exception
+        except (FailedCheck, SafeCancellation):
+            # cmdClient generated and handled exceptions
+            raise exception
+        except (asyncio.CancelledError, asyncio.TimeoutError):
+            # Standard command and task exceptions, cmdClient will also handle these
+            raise exception
+        except discord.Forbidden:
+            # Unknown uncaught Forbidden
+            try:
+                # Attempt a general error reply
+                await ctx.reply("I don't have enough channel or server permissions to complete that command here!")
+            except discord.Forbidden:
+                # We can't send anything at all. Exit quietly, but log.
+                full_traceback = traceback.format_exc()
+                log(("Caught an unhandled 'Forbidden' while "
+                     "executing command '{cmdname}' from module '{module}' "
+                     "from user '{message.author}' (uid:{message.author.id}) "
+                     "in guild '{message.guild}' (gid:{guildid}) "
+                     "in channel '{message.channel}' (cid:{message.channel.id}).\n"
+                     "Message Content:\n"
+                     "{content}\n"
+                     "{traceback}\n\n"
+                     "{flat_ctx}").format(
+                         cmdname=ctx.cmd.name,
+                         module=ctx.cmd.module.name,
+                         message=ctx.msg,
+                         guildid=ctx.guild.id if ctx.guild else None,
+                         content='\n'.join('\t' + line for line in ctx.msg.content.splitlines()),
+                         traceback=full_traceback,
+                         flat_ctx=ctx.flatten()
+                     ),
+                    context="mid:{}".format(ctx.msg.id),
+                    level=logging.WARNING)
+        except Exception as e:
+            # Unknown exception!
+            full_traceback = traceback.format_exc()
+            only_error = "".join(traceback.TracebackException.from_exception(e).format_exception_only())
+
+            log(("Caught an unhandled exception while "
+                 "executing command '{cmdname}' from module '{module}' "
+                 "from user '{message.author}' (uid:{message.author.id}) "
+                 "in guild '{message.guild}' (gid:{guildid}) "
+                 "in channel '{message.channel}' (cid:{message.channel.id}).\n"
+                 "Message Content:\n"
+                 "{content}\n"
+                 "{traceback}\n\n"
+                 "{flat_ctx}").format(
+                     cmdname=ctx.cmd.name,
+                     module=ctx.cmd.module.name,
+                     message=ctx.msg,
+                     guildid=ctx.guild.id if ctx.guild else None,
+                     content='\n'.join('\t' + line for line in ctx.msg.content.splitlines()),
+                     traceback=full_traceback,
+                     flat_ctx=ctx.flatten()
+                 ),
+                context="mid:{}".format(ctx.msg.id),
+                level=logging.ERROR)
+
+            error_embed = discord.Embed(title="Something went wrong!")
+            error_embed.description = (
+                "An unexpected error occurred while processing your command!\n"
+                "Our development team has been notified, and the issue should be fixed soon.\n"
+            )
+            if logging.getLogger().getEffectiveLevel() < logging.INFO:
+                error_embed.add_field(
+                    name="Exception",
+                    value="`{}`".format(only_error)
+                )
+
+            await ctx.reply(embed=error_embed)
