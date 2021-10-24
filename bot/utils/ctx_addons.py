@@ -1,6 +1,7 @@
 import asyncio
 import discord
 from cmdClient import Context
+from cmdClient.lib import SafeCancellation
 
 from data import tables
 from core import Lion
@@ -17,9 +18,11 @@ async def embed_reply(ctx, desc, colour=discord.Colour.orange(), **kwargs):
     """
     embed = discord.Embed(description=desc, colour=colour, **kwargs)
     try:
-        return await ctx.reply(embed=embed, reference=ctx.msg)
-    except discord.NotFound:
-        return await ctx.reply(embed=embed)
+        return await ctx.reply(embed=embed, reference=ctx.msg.to_reference(fail_if_not_exists=False))
+    except discord.Forbidden:
+        if not ctx.guild or ctx.ch.permissions_for(ctx.guild.me).send_mssages:
+            await ctx.reply("Command failed, I don't have permission to send embeds in this channel!")
+        raise SafeCancellation
 
 
 @Context.util
@@ -34,15 +37,17 @@ async def error_reply(ctx, error_str, **kwargs):
     )
     message = None
     try:
-        message = await ctx.ch.send(embed=embed, reference=ctx.msg, **kwargs)
-    except discord.NotFound:
-        message = await ctx.ch.send(embed=embed, **kwargs)
+        message = await ctx.ch.send(
+            embed=embed,
+            reference=ctx.msg.to_reference(fail_if_not_exists=False),
+            **kwargs
+        )
+        ctx.sent_messages.append(message)
+        return message
     except discord.Forbidden:
-        message = await ctx.reply(error_str)
-    finally:
-        if message:
-            ctx.sent_messages.append(message)
-            return message
+        if not ctx.guild or ctx.ch.permissions_for(ctx.guild.me).send_mssages:
+            await ctx.reply("Command failed, I don't have permission to send embeds in this channel!")
+        raise SafeCancellation
 
 
 @Context.util

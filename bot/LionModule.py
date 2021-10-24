@@ -85,6 +85,16 @@ class LionModule(Module):
             if ctx.author.id in ctx.client.objects['ignored_members'][ctx.guild.id]:
                 raise SafeCancellation
 
+            # Check channel permissions are sane
+            if not ctx.ch.permissions_for(ctx.guild.me).send_messages:
+                raise SafeCancellation
+            if not ctx.ch.permissions_for(ctx.guild.me).embed_links:
+                await ctx.reply("I need permission to send embeds in this channel before I can run any commands!")
+                raise SafeCancellation
+
+        # Start typing
+        await ctx.ch.trigger_typing()
+
     async def on_exception(self, ctx, exception):
         try:
             raise exception
