@@ -42,7 +42,11 @@ bot_admin_group_order = (
 # TODO: Add config fields for this
 title = "StudyLion Command List"
 header = """
-Use `{ctx.best_prefix}help <command>` (e.g. `{ctx.best_prefix}help send`) to see how to use each command.
+[StudyLion](https://bot.studylions.com/) is a fully featured study assistant \
+    that tracks your study time and offers productivity tools \
+    such as to-do lists, task reminders, private study rooms, group accountability sessions, and much much more.\n
+Use `{ctx.best_prefix}help <command>` (e.g. `{ctx.best_prefix}help send`) to learn how to use each command, \
+    or [click here](https://discord.studylions.com/tutorial) for a comprehensive tutorial.
 """
 
 
