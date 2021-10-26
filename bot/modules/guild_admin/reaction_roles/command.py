@@ -732,7 +732,8 @@ async def cmd_reactionroles(ctx, flags):
 
         # Add the reactions to the message, if possible
         existing_reactions = set(
-            reaction.emoji.name if reaction.emoji.id is None else reaction.emoji.id
+            reaction.emoji if not reaction.custom_emoji else
+            (reaction.emoji.name if reaction.emoji.id is None else reaction.emoji.id)
             for reaction in message.reactions
         )
         missing = [

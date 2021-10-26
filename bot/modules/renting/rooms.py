@@ -112,7 +112,8 @@ class Room:
     @property
     def owner(self):
         """
-        The Member owning the room, if we can find them
+        The Member owning the room.
+        May be `None` if the member is no longer in the guild, or is otherwise not visible.
         """
         guild = client.get_guild(self.data.guildid)
         if guild:
@@ -122,6 +123,7 @@ class Room:
     def channel(self):
         """
         The Channel corresponding to this rented room.
+        May be `None` if the channel was already deleted.
         """
         guild = client.get_guild(self.data.guildid)
         if guild:
@@ -176,9 +178,6 @@ class Room:
         """
         Expire the room.
         """
-        owner = self.owner
-        guild_settings = GuildSettings(owner.guild.id)
-
         if self.channel:
             # Delete the discord channel
             try:
@@ -189,9 +188,10 @@ class Room:
         # Delete the room from data (cascades to member deletion)
         self.delete()
 
+        guild_settings = GuildSettings(self.data.guildid)
         guild_settings.event_log.log(
             title="Private study room expired!",
-            description="{}'s private study room expired.".format(owner.mention)
+            description="<@{}>'s private study room expired.".format(self.data.ownerid)
         )
 
     async def add_members(self, *members):

@@ -37,6 +37,15 @@ async def cmd_rent(ctx):
     # Fetch the members' room, if it exists
     room = Room.fetch(ctx.guild.id, ctx.author.id)
 
+    # Handle pre-deletion of the room
+    if room and not room.channel:
+        ctx.guild_settings.event_log.log(
+            title="Private study room not found!",
+            description="{}'s study room was deleted before it expired!".format(ctx.author.mention)
+        )
+        room.delete()
+        room = None
+
     if room:
         # Show room status, or add/remove remebers
         lower = ctx.args.lower()

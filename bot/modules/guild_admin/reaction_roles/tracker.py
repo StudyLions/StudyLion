@@ -546,7 +546,7 @@ class ReactionRoleMessage:
 @client.add_after_event('raw_reaction_add')
 async def reaction_role_add(client, payload):
     reaction_message = ReactionRoleMessage.fetch(payload.message_id)
-    if not payload.member.bot and reaction_message and reaction_message.enabled:
+    if payload.guild_id and not payload.member.bot and reaction_message and reaction_message.enabled:
         try:
             await reaction_message.process_raw_reaction_add(payload)
         except Exception:
@@ -564,7 +564,7 @@ async def reaction_role_add(client, payload):
 @client.add_after_event('raw_reaction_remove')
 async def reaction_role_remove(client, payload):
     reaction_message = ReactionRoleMessage.fetch(payload.message_id)
-    if reaction_message and reaction_message.enabled:
+    if payload.guild_id and reaction_message and reaction_message.enabled:
         try:
             await reaction_message.process_raw_reaction_remove(payload)
         except Exception:

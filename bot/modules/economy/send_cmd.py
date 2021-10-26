@@ -26,7 +26,7 @@ async def cmd_send(ctx):
     # Extract target and amount
     # Handle a slightly more flexible input than stated
     splits = ctx.args.split()
-    digits = [split.isdigit() for split in splits]
+    digits = [split.isdigit() for split in splits[:2]]
     mentions = ctx.msg.mentions
     if len(splits) < 2 or not any(digits) or not (all(digits) or mentions):
         return await _send_usage(ctx)

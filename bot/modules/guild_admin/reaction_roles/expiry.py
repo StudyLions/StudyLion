@@ -40,7 +40,7 @@ def schedule_expiry(guildid, userid, roleid, expiry, reactionid=None):
     _wakeup_event.set()
 
 
-def cancel_expiry(key):
+def cancel_expiry(*key):
     """
     Cancel expiry for the given member and role, if it exists.
     """

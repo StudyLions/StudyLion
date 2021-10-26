@@ -1,6 +1,7 @@
 import json
 import asyncio
 import itertools
+import traceback
 from io import StringIO
 from enum import IntEnum
 from typing import Any, Optional
@@ -753,11 +754,19 @@ class Message(SettingType):
         if as_json:
             try:
                 args = json.loads(userstr)
-            except json.JSONDecodeError:
+                if not isinstance(args, dict) or (not args.get('content', None) and not args.get('embed', None)):
+                    raise ValueError("At least one of the 'content' or 'embed' data fields are required.")
+                if 'embed' in args:
+                    discord.Embed.from_dict(
+                        args['embed']
+                    )
+            except Exception as e:
+                only_error = "".join(traceback.TracebackException.from_exception(e).format_exception_only())
                 raise UserInputError(
                     "Couldn't parse your message! "
                     "You can test and fix it on the embed builder "
-                    "[here](https://glitchii.github.io/embedbuilder/?editor=json)."
+                    "[here](https://glitchii.github.io/embedbuilder/?editor=json).\n"
+                    "```{}```".format(only_error)
                 )
             if 'embed' in args and 'timestamp' in args['embed']:
                 args['embed'].pop('timestamp')
@@ -770,6 +779,8 @@ class Message(SettingType):
         if data is None:
             return "Empty"
         value = cls._data_to_value(id, data, **kwargs)
+        if 'embed' not in value and 'content' not in value:
+            return "Invalid"
         if 'embed' not in value and len(value['content']) < 100:
             return "`{}`".format(value['content'])
         else:
@@ -788,9 +799,9 @@ class Message(SettingType):
         value = self.value
         substitutions = self.substitution_keys(ctx, **kwargs)
         args = {}
-        if 'content' in value:
+        if value.get('content', None):
             args['content'] = multiple_replace(value['content'], substitutions)
-        if 'embed' in value:
+        if value.get('embed', None):
             args['embed'] = discord.Embed.from_dict(
                 json.loads(multiple_replace(json.dumps(value['embed']), substitutions))
             )
@@ -800,7 +811,7 @@ class Message(SettingType):
         value = self.value
         args = self.args(ctx, **kwargs)
 
-        if not value:
+        if not value or not args:
             return await ctx.reply(embed=self.embed)
 
         current_str = None
