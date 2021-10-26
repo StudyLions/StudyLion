@@ -13,7 +13,7 @@ from core.data import lions
 from utils.lib import strfdur
 from settings import GuildSettings
 
-from .module import module
+from ..module import module
 from .data import new_study_badges, study_badges
 
 
@@ -287,6 +287,7 @@ async def study_badge_tracker():
     """
     while True:
         try:
+            Lion.sync()
             await update_study_badges()
         except Exception:
             # Unknown exception. Catch it so the loop doesn't die.

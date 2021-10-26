@@ -68,9 +68,10 @@ async def preload_studying_members(client):
         )
 
 
-@module.launch_task
-async def launch_lion_sync_loop(client):
-    asyncio.create_task(_lion_sync_loop())
+# Removing the sync loop in favour of the studybadge sync.
+# @module.launch_task
+# async def launch_lion_sync_loop(client):
+#     asyncio.create_task(_lion_sync_loop())
 
 
 @module.unload_task

@@ -7,8 +7,8 @@ from time import time
 from meta import client
 from core import Lion
 
-from .module import module
-from . import admin
+from ..module import module
+from .settings import untracked_channels, hourly_reward, hourly_live_bonus
 
 
 last_scan = {}  # guildid -> timestamp
@@ -36,9 +36,9 @@ def _scan(guild):
     if interval > 60 * 20:
         return
 
-    untracked = admin.untracked_channels.get(guild.id).data
-    hourly_reward = admin.hourly_reward.get(guild.id).data
-    hourly_live_bonus = admin.hourly_live_bonus.get(guild.id).data
+    untracked = untracked_channels.get(guild.id).data
+    guild_hourly_reward = hourly_reward.get(guild.id).data
+    guild_hourly_live_bonus = hourly_live_bonus.get(guild.id).data
 
     channel_members = (
         channel.members for channel in guild.voice_channels if channel.id not in untracked
@@ -61,9 +61,9 @@ def _scan(guild):
         lion.addTime(interval, flush=False)
 
         # Add coins
-        hour_reward = hourly_reward
+        hour_reward = guild_hourly_reward
         if member.voice.self_stream or member.voice.self_video:
-            hour_reward += hourly_live_bonus
+            hour_reward += guild_hourly_live_bonus
 
         lion.addCoins(hour_reward * interval / (3600), flush=False)
 
@@ -102,7 +102,7 @@ async def _study_tracker():
 @module.launch_task
 async def launch_study_tracker(client):
     # First pre-load the untracked channels
-    await admin.untracked_channels.launch_task(client)
+    await untracked_channels.launch_task(client)
     asyncio.create_task(_study_tracker())
 
 

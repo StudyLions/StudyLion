@@ -12,7 +12,7 @@ from wards import is_guild_admin
 from core.data import lions
 from settings import GuildSettings
 
-from .module import module
+from ..module import module
 from .data import study_badges, guild_role_cache, new_study_badges
 from .badge_tracker import _update_guild_badges
 
