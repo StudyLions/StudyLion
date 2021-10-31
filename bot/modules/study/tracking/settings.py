@@ -111,3 +111,14 @@ class hourly_live_bonus(settings.Integer, settings.GuildSetting):
     @property
     def success_response(self):
         return "Members will be rewarded an extra `{}` LionCoins per hour if they stream.".format(self.formatted)
+
+
+@GuildSettings.attach_setting
+class max_daily_study(settings.Duration, settings.GuildSetting):
+    category = "Study Tracking"
+
+    attr_name = "max_daily_study"
+    _data_column = "max_daily_study"
+
+    display_name = "max_daily_study"
+    desc = "Maximum amount of study time ..."
