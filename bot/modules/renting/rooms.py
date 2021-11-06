@@ -178,6 +178,8 @@ class Room:
         """
         Expire the room.
         """
+        guild_settings = GuildSettings(self.data.guildid)
+
         if self.channel:
             # Delete the discord channel
             try:
@@ -188,7 +190,6 @@ class Room:
         # Delete the room from data (cascades to member deletion)
         self.delete()
 
-        guild_settings = GuildSettings(self.data.guildid)
         guild_settings.event_log.log(
             title="Private study room expired!",
             description="<@{}>'s private study room expired.".format(self.data.ownerid)
