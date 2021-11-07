@@ -485,7 +485,7 @@ async def cmd_reactionroles(ctx, flags):
                 await ctx.error_reply(
                     "The provided channel no longer exists!"
                 )
-            elif channel.type != discord.ChannelType.text:
+            elif not isinstance(channel, discord.TextChannel):
                 await ctx.error_reply(
                     "The provided channel is not a text channel!"
                 )
