@@ -821,8 +821,8 @@ async def cmd_reactionroles(ctx, flags):
                 setting = await setting_class.parse(target.messageid, ctx, flags[flag])
             except UserInputError as e:
                 return await ctx.error_reply(
-                    title="Couldn't save settings!",
-                    description="{} {}\nNo settings were modified.".format(cross, e.msg)
+                    "{} {}\nNo settings were modified.".format(cross, e.msg),
+                    title="Couldn't save settings!"
                 )
             else:
                 update_lines.append(
@@ -861,8 +861,8 @@ async def cmd_reactionroles(ctx, flags):
                     setting = await setting_class.parse(reaction.reactionid, ctx, flags[flag])
                 except UserInputError as e:
                     return await ctx.error_reply(
+                        "{} {}\nNo reaction roles were modified.".format(cross, e.msg),
                         title="Couldn't save reaction role settings!",
-                        description="{} {}\nNo reaction roles were modified.".format(cross, e.msg)
                     )
                 else:
                     update_lines.append(
