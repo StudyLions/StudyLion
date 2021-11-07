@@ -69,7 +69,8 @@ class TimeSlot:
 
     _everyone_overwrite = discord.PermissionOverwrite(
         view_channel=False,
-        connect=False
+        connect=False,
+        speak=False
     )
 
     happy_lion = "https://media.discordapp.net/stickers/898266283559227422.png"
