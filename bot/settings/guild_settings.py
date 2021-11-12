@@ -195,3 +195,37 @@ class alert_channel(settings.Channel, GuildSetting):
             return "The alert channel is now {}.".format(self.formatted)
         else:
             return "The alert channel has been unset."
+
+@GuildSettings.attach_setting
+class coin_alert_channel(settings.Channel, GuildSetting):
+    category = "Meta"
+
+    attr_name = 'coin_alert_channel'
+    _data_column = 'coin_alert_channel'
+
+    display_name = "coin_alert_channel"
+    desc = "Channel to display information when a user receives some coins."
+
+    long_desc = (
+        "Channel to post reasons, when, how many and why when a user receives coins."
+    )
+
+    _chan_type = discord.ChannelType.text
+
+    @property
+    def success_response(self):
+        if self.value:
+            return "The coin alert channel is now {}.".format(self.formatted)
+        else:
+            return "The coin alert channel has been unset."
+
+    def log(self, description="", colour=discord.Color.orange(), **kwargs):
+        channel = self.value
+        if channel:
+            embed = discord.Embed(
+                description=description,
+                colour=colour,
+                timestamp=datetime.datetime.utcnow(),
+                **kwargs
+            )
+            asyncio.create_task(channel.send(embed=embed))
