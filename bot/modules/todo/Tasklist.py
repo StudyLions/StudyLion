@@ -365,6 +365,14 @@ class Tasklist:
                         self.member.id
                     )
                 )
+                
+                # Log reward to coin_alert_channel
+                GuildSettings(self.member.guild.id).coin_alert_channel.log(
+                    "{} has completed a todo and was rewarded with `{}` coins!".format(
+                        self.member.mention,
+                        reward_coins,
+                    ), title="TODO Completion Reward"
+                )
 
                 # TODO: Message in channel? Might be too spammy?
                 pass
