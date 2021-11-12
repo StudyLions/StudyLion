@@ -131,13 +131,29 @@ async def workout_complete(member, workout):
     reward = settings.workout_reward.value
     user.addCoins(reward)
 
-    settings.event_log.log(
-        "{} completed their daily workout and was rewarded `{}` coins! (`{:.2f}` minutes)".format(
-            member.mention,
-            reward,
-            workout.duration / 60,
-        ), title="Workout Completed"
-    )
+    if settings.coin_alert_channel is None:
+        settings.event_log.log(
+            "{} completed their daily workout and was rewarded `{}` coins! (`{:.2f}` minutes)".format(
+                member.mention,
+                reward,
+                workout.duration / 60,
+            ), title="Workout Completed"
+        )
+    else:
+        settings.event_log.log(
+            "{} completed their daily workout ! (`{:.2f}` minutes)".format(
+                member.mention,
+                workout.duration / 60,
+            ), title="Workout Completed"
+        )
+        settings.coin_alert_channel.log(
+            "{} completed their daily workout and was rewarded `{}` coins! (`{:.2f}` minutes)".format(
+                member.mention,
+                reward,
+                workout.duration / 60,
+            ), title="Workout Complete Reward"
+        )
+        
 
     embed = discord.Embed(
         description=(
