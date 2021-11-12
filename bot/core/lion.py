@@ -105,6 +105,7 @@ class Lion:
     def addCoins(self, amount, flush=True):
         """
         Add coins to the user, optionally store the transaction in pending.
+        Removes coins from user if amount is negative.
         """
         self._pending_coins += amount
         self._pending[self.key] = self

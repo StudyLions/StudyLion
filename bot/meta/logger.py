@@ -48,14 +48,14 @@ logger.addHandler(logging_handler_err)
 @cmd_log_handler
 def log(message, context="GLOBAL", level=logging.INFO, post=True):
     # Add prefixes to lines for better parsing capability
-    lines = message.splitlines()
+    lines = message.splitlines() if message is not None else []
     if len(lines) > 1:
         lines = [
             '┌ ' * (i == 0) + '│ ' * (0 < i < len(lines) - 1) + '└ ' * (i == len(lines) - 1) + line
             for i, line in enumerate(lines)
         ]
     else:
-        lines = ['─ ' + message]
+        lines = ['─ ' + message if message is not None else 'NoneType']
 
     for line in lines:
         logger.log(level, '\b[{}] {}'.format(
