@@ -20,37 +20,6 @@ user_config = RowTable(
 )
 
 
-@user_config.save_query
-def add_pending(pending):
-    """
-    pending:
-        List of tuples of the form `(userid, pending_coins, pending_time)`.
-    """
-    with lions.conn:
-        cursor = lions.conn.cursor()
-        data = execute_values(
-            cursor,
-            """
-            UPDATE members
-            SET
-                coins = coins + t.coin_diff,
-                tracked_time = tracked_time + t.time_diff
-            FROM
-                (VALUES %s)
-            AS
-                t (guildid, userid, coin_diff, time_diff)
-            WHERE
-                members.guildid = t.guildid
-                AND
-                members.userid = t.userid
-            RETURNING *
-            """,
-            pending,
-            fetch=True
-        )
-        return lions._make_rows(*data)
-
-
 guild_config = RowTable(
     'guild_config',
     ('guildid', 'admin_role', 'mod_role', 'event_log_channel', 'alert_channel',
@@ -82,6 +51,37 @@ lions = RowTable(
 )
 
 lion_ranks = Table('member_ranks', attach_as='lion_ranks')
+
+
+@lions.save_query
+def add_pending(pending):
+    """
+    pending:
+        List of tuples of the form `(userid, pending_coins, pending_time)`.
+    """
+    with lions.conn:
+        cursor = lions.conn.cursor()
+        data = execute_values(
+            cursor,
+            """
+            UPDATE members
+            SET
+                coins = coins + t.coin_diff,
+                tracked_time = tracked_time + t.time_diff
+            FROM
+                (VALUES %s)
+            AS
+                t (guildid, userid, coin_diff, time_diff)
+            WHERE
+                members.guildid = t.guildid
+                AND
+                members.userid = t.userid
+            RETURNING *
+            """,
+            pending,
+            fetch=True
+        )
+        return lions._make_rows(*data)
 
 
 global_guild_blacklist = Table('global_guild_blacklist')

@@ -1,4 +1,5 @@
 import pytz
+import datetime
 
 from meta import client
 from data import tables as tb
@@ -41,6 +42,7 @@ class Lion:
         if key in cls._lions:
             return cls._lions[key]
         else:
+            # TODO: Debug log
             lion = tb.lions.fetch(key)
             if not lion:
                 tb.lions.create_row(
@@ -94,6 +96,39 @@ class Lion:
         Number of coins the user has, accounting for the pending value.
         """
         return int(self.data.coins + self._pending_coins)
+
+    @property
+    def session(self):
+        """
+        The current study session the user is in, if any.
+        """
+        if 'sessions' not in client.objects:
+            raise ValueError("Cannot retrieve session before Study module is initialised!")
+        return client.objects['sessions'][self.guildid].get(self.userid, None)
+
+    @property
+    def timezone(self):
+        """
+        The user's configured timezone.
+        Shortcut to `Lion.settings.timezone.value`.
+        """
+        return self.settings.timezone.value
+
+    @property
+    def day_start(self):
+        """
+        A timezone aware datetime representing the start of the user's day (in their configured timezone).
+        """
+        now = datetime.datetime.now(tz=self.timezone)
+        return now.replace(hour=0, minute=0, second=0, microsecond=0)
+
+    @property
+    def studied_today(self):
+        """
+        The amount of time, in seconds, that the member has studied today.
+        Extracted from the session history.
+        """
+        return tb.session_history.queries.study_time_since(self.guildid, self.userid, self.day_start)
 
     def localize(self, naive_utc_dt):
         """

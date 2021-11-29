@@ -412,11 +412,12 @@ update_timestamp_column();
 
 -- Study Session Data {{{
 CREATE TYPE SessionChannelType AS ENUM (
+  'STANDARD',
   'ACCOUNTABILITY',
   'RENTED',
   'EXTERNAL',
-  'MIGRATED'
 );
+
 
 CREATE TABLE session_history(
   sessionid SERIAL PRIMARY KEY,
@@ -451,6 +452,43 @@ CREATE TABLE current_sessions(
   FOREIGN KEY (guildid, userid) REFERENCES members (guildid, userid) ON DELETE CASCADE
 );
 CREATE UNIQUE INDEX current_session_members ON current_sessions (guildid, userid);
+
+
+CREATE FUNCTION study_time_since(_guildid BIGINT, _userid BIGINT, _timestamp TIMESTAMPTZ)
+  RETURNS INTEGER
+AS $$
+  BEGIN
+    RETURN (
+      SELECT
+          SUM(
+            CASE
+              WHEN start_time >= _timestamp THEN duration
+              ELSE EXTRACT(EPOCH FROM (end_time - _timestamp))
+            END
+          )
+      FROM (
+        SELECT
+          start_time,
+          duration,
+          (start_time + duration * interval '1 second') AS end_time
+        FROM session_history
+        WHERE
+          guildid=_guildid
+          AND userid=_userid
+          AND (start_time + duration * interval '1 second') >= _timestamp
+        UNION
+        SELECT
+          start_time,
+          EXTRACT(EPOCH FROM (NOW() - start_time)) AS duration,
+          NOW() AS end_time
+        FROM current_sessions
+        WHERE
+          guildid=_guildid
+          AND userid=_userid
+      ) AS sessions
+    );
+  END;
+$$ LANGUAGE PLPGSQL;
 
 
 CREATE FUNCTION close_study_session(_guildid BIGINT, _userid BIGINT)

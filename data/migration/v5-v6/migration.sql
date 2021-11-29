@@ -1,19 +1,22 @@
-/* DROP TYPE IF EXISTS SessionChannelType CASCADE; */
-/* DROP TABLE IF EXISTS session_history CASCADE; */
-/* DROP TABLE IF EXISTS current_sessions CASCADE; */
-/* DROP FUNCTION IF EXISTS close_study_session; */
+DROP TYPE IF EXISTS SessionChannelType CASCADE;
+DROP TABLE IF EXISTS session_history CASCADE;
+DROP TABLE IF EXISTS current_sessions CASCADE;
+DROP FUNCTION IF EXISTS close_study_session;
 
-/* DROP VIEW IF EXISTS current_sessions_totals CASCADE; */
-/* DROP VIEW IF EXISTS member_totals CASCADE; */
-/* DROP VIEW IF EXISTS member_ranks CASCADE; */
-/* DROP VIEW IF EXISTS current_study_badges CASCADE; */
-/* DROP VIEW IF EXISTS new_study_badges CASCADE; */
+DROP VIEW IF EXISTS current_sessions_totals CASCADE;
+DROP VIEW IF EXISTS member_totals CASCADE;
+DROP VIEW IF EXISTS member_ranks CASCADE;
+DROP VIEW IF EXISTS current_study_badges CASCADE;
+DROP VIEW IF EXISTS new_study_badges CASCADE;
+
+DROP FUNCTION IF EXISTS study_time_since;
+
 
 CREATE TYPE SessionChannelType AS ENUM (
+  'STANDARD',
   'ACCOUNTABILITY',
   'RENTED',
-  'EXTERNAL',
-  'MIGRATED'
+  'EXTERNAL'
 );
 
 CREATE TABLE session_history(
@@ -134,3 +137,40 @@ CREATE VIEW new_study_badges AS
   WHERE
     last_study_badgeid IS DISTINCT FROM current_study_badgeid
   ORDER BY guildid;
+
+
+CREATE FUNCTION study_time_since(_guildid BIGINT, _userid BIGINT, _timestamp TIMESTAMPTZ)
+  RETURNS INTEGER
+AS $$
+  BEGIN
+    RETURN (
+      SELECT
+          SUM(
+            CASE
+              WHEN start_time >= _timestamp THEN duration
+              ELSE EXTRACT(EPOCH FROM (end_time - _timestamp))
+            END
+          )
+      FROM (
+        SELECT
+          start_time,
+          duration,
+          (start_time + duration * interval '1 second') AS end_time
+        FROM session_history
+        WHERE
+          guildid=_guildid
+          AND userid=_userid
+          AND (start_time + duration * interval '1 second') >= _timestamp
+        UNION
+        SELECT
+          start_time,
+          EXTRACT(EPOCH FROM (NOW() - start_time)) AS duration,
+          NOW() AS end_time
+        FROM current_sessions
+        WHERE
+          guildid=_guildid
+          AND userid=_userid
+      ) AS sessions
+    );
+  END;
+$$ LANGUAGE PLPGSQL;
