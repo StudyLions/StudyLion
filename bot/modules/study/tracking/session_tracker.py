@@ -296,6 +296,63 @@ async def session_voice_tracker(client, member, before, after):
                 session = Session.start(member, after)
 
 
+async def leave_guild_sessions(client, guild):
+    """
+    `guild_leave` hook.
+    Close all sessions in the guild when we leave.
+    """
+    sessions = list(Session.sessions[guild.id].values())
+    for session in sessions:
+        session.finish()
+    client.log(
+        "Left {} (gid:{}) and closed {} ongoing study sessions.".format(guild.name, guild.id, len(sessions)),
+        context="SESSION_TRACKER"
+    )
+
+
+async def join_guild_sessions(client, guild):
+    """
+    `guild_join` hook.
+    Refresh all sessions for the guild when we rejoin.
+    """
+    # Delete existing current sessions, which should have been closed when we left
+    # It is possible we were removed from the guild during an outage
+    current_sessions.delete_where(guildid=guild.id)
+
+    untracked = untracked_channels.get(guild.id).data
+    members = [
+        member
+        for channel in guild.voice_channels
+        for member in channel.members
+        if channel.members and channel.id not in untracked
+    ]
+    for member in members:
+        client.log(
+            "Starting new session for '{}' (uid: {}) in '{}' (cid: {}) of '{}' (gid: {})".format(
+                member.name,
+                member.id,
+                member.voice.channel.name,
+                member.voice.channel.id,
+                member.guild.name,
+                member.guild.id
+            ),
+            context="SESSION_TRACKER",
+            level=logging.INFO,
+            post=False
+        )
+        Session.start(member, member.voice)
+
+    # Log newly started sessions
+    client.log(
+        "Joined {} (gid:{}) and started {} new study sessions from current voice channel members.".format(
+            guild.name,
+            guild.id,
+            len(members)
+        ),
+        context="SESSION_TRACKER",
+    )
+
+
 async def _init_session_tracker(client):
     """
     Load ongoing saved study sessions into the session cache,
@@ -405,6 +462,8 @@ async def _init_session_tracker(client):
 
     # Now that we are in a valid initial state, attach the session event handler
     client.add_after_event("voice_state_update", session_voice_tracker)
+    client.add_after_event("guild_remove", leave_guild_sessions)
+    client.add_after_event("guild_join", join_guild_sessions)
 
 
 @module.launch_task
