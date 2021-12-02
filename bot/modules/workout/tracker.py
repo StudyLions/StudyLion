@@ -131,7 +131,7 @@ async def workout_complete(member, workout):
     reward = settings.workout_reward.value
     user.addCoins(reward)
 
-    if settings.coin_alert_channel is None:
+    if settings.coin_alert_channel.value is None:
         settings.event_log.log(
             "{} completed their daily workout and was rewarded `{}` coins! (`{:.2f}` minutes)".format(
                 member.mention,
