@@ -174,3 +174,5 @@ AS $$
     );
   END;
 $$ LANGUAGE PLPGSQL;
+
+ALTER TABLE guild_config ADD COLUMN daily_study_cap INTEGER;

@@ -78,7 +78,7 @@ CREATE TABLE guild_config(
   returning_message TEXT,
   starting_funds INTEGER,
   persist_roles BOOLEAN,
-  max_daily_study INTEGER
+  daily_study_cap INTEGER
 );
 
 CREATE TABLE ignored_members(

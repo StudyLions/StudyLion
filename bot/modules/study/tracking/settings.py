@@ -1,5 +1,3 @@
-from collections import defaultdict
-
 import settings
 from settings import GuildSettings
 from wards import guild_admin
@@ -52,10 +50,10 @@ class untracked_channels(settings.ChannelList, settings.ListData, settings.Setti
             if any(channel.members for channel in guild.voice_channels)
         ]
         if active_guildids:
+            cache = {guildid: [] for guildid in active_guildids}
             rows = cls._table_interface.select_where(
                 guildid=active_guildids
             )
-            cache = defaultdict(list)
             for row in rows:
                 cache[row['guildid']].append(row['channelid'])
             cls._cache.update(cache)
@@ -114,11 +112,13 @@ class hourly_live_bonus(settings.Integer, settings.GuildSetting):
 
 
 @GuildSettings.attach_setting
-class max_daily_study(settings.Duration, settings.GuildSetting):
+class daily_study_cap(settings.Duration, settings.GuildSetting):
     category = "Study Tracking"
 
-    attr_name = "max_daily_study"
-    _data_column = "max_daily_study"
+    attr_name = "daily_study_cap"
+    _data_column = "daily_study_cap"
 
-    display_name = "max_daily_study"
+    display_name = "daily_study_cap"
     desc = "Maximum amount of study time ..."
+
+    _default = 16 * 60 * 60

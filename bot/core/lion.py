@@ -1,5 +1,5 @@
 import pytz
-import datetime
+from datetime import datetime, timedelta
 
 from meta import client
 from data import tables as tb
@@ -79,9 +79,16 @@ class Lion:
     @property
     def settings(self):
         """
-        The UserSettings object for this user.
+        The UserSettings interface for this member.
         """
         return UserSettings(self.userid)
+
+    @property
+    def guild_settings(self):
+        """
+        The GuildSettings interface for this member.
+        """
+        return GuildSettings(self.guildid)
 
     @property
     def time(self):
@@ -118,9 +125,14 @@ class Lion:
     def day_start(self):
         """
         A timezone aware datetime representing the start of the user's day (in their configured timezone).
+        NOTE: This might not be accurate over DST boundaries.
         """
-        now = datetime.datetime.now(tz=self.timezone)
+        now = datetime.now(tz=self.timezone)
         return now.replace(hour=0, minute=0, second=0, microsecond=0)
+
+    @property
+    def remaining_in_day(self):
+        return ((self.day_start + timedelta(days=1)) - datetime.now(self.timezone)).total_seconds()
 
     @property
     def studied_today(self):
@@ -129,6 +141,24 @@ class Lion:
         Extracted from the session history.
         """
         return tb.session_history.queries.study_time_since(self.guildid, self.userid, self.day_start)
+
+    @property
+    def remaining_study_today(self):
+        """
+        Maximum remaining time (in seconds) this member can study today.
+
+        May not account for DST boundaries and leap seconds.
+        """
+        studied_today = self.studied_today
+        study_cap = self.guild_settings.daily_study_cap.value
+
+        remaining_in_day = self.remaining_in_day
+        if remaining_in_day >= (study_cap - studied_today):
+            remaining = study_cap - studied_today
+        else:
+            remaining = remaining_in_day + study_cap
+
+        return remaining
 
     def localize(self, naive_utc_dt):
         """

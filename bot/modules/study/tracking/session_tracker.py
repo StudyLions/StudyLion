@@ -2,29 +2,42 @@ import asyncio
 import discord
 import logging
 import traceback
+from typing import Dict
 from collections import defaultdict
 
 from utils.lib import utc_now
 from data import tables
 from core import Lion
+from meta import client
 
 from ..module import module
 from .data import current_sessions, SessionChannelType
-from .settings import untracked_channels, hourly_reward, hourly_live_bonus, max_daily_study
+from .settings import untracked_channels, hourly_reward, hourly_live_bonus
 
 
 class Session:
     """
-    A `Session` is a guild member that is currently studying (i.e. that is in a tracked voice channel).
+    A `Session` describes an ongoing study session by a single guild member.
+    A member is counted as studying when they are in a tracked voice channel.
+
     This class acts as an opaque interface to the corresponding `sessions` data row.
     """
-    # TODO: Slots
-    sessions = defaultdict(dict)
+    __slots__ = (
+        'guildid',
+        'userid',
+        '_expiry_task'
+    )
+    # Global cache of ongoing sessions
+    sessions: Dict[int, Dict[int, 'Session']] = defaultdict(dict)
+
+    # Global cache of members pending session start (waiting for daily cap reset)
+    members_pending: Dict[int, Dict[int, asyncio.Task]] = defaultdict(dict)
 
     def __init__(self, guildid, userid):
         self.guildid = guildid
         self.userid = userid
-        self.key = (guildid, userid)
+
+        self._expiry_task: asyncio.Task = None
 
     @classmethod
     def get(cls, guildid, userid):
@@ -45,7 +58,22 @@ class Session:
 
         if userid in cls.sessions[guildid]:
             raise ValueError("A session for this member already exists!")
-        # TODO: Handle daily study cap
+
+        # If the user is study capped, schedule the session start for the next day
+        if (lion := Lion.fetch(guildid, userid)).remaining_study_today <= 0:
+            if pending := cls.members_pending[guildid].pop(userid, None):
+                pending.cancel()
+            task = asyncio.create_task(cls._delayed_start(guildid, userid, member, state))
+            cls.members_pending[guildid][userid] = task
+            client.log(
+                "Member (uid:{}) in (gid:{}) is study capped, "
+                "delaying session start for {} seconds until start of next day.".format(
+                    userid, guildid, lion.remaining_in_day
+                ),
+                context="SESSION_TRACKER",
+                level=logging.DEBUG
+            )
+            return
 
         # TODO: More reliable channel type determination
         if state.channel.id in tables.rented.row_cache:
@@ -67,22 +95,103 @@ class Session:
             hourly_coins=hourly_reward.get(guildid).value,
             hourly_live_coins=hourly_live_bonus.get(guildid).value
         )
-        session = cls(guildid, userid)
-        cls.sessions[guildid][userid] = session
-        return session
+        session = cls(guildid, userid).activate()
+        client.log(
+            "Started session: {}".format(session.data),
+            context="SESSION_TRACKER",
+            level=logging.DEBUG,
+        )
+
+    @classmethod
+    async def _delayed_start(cls, guildid, userid, *args):
+        delay = Lion.fetch(guildid, userid).remaining_in_day
+        try:
+            await asyncio.sleep(delay)
+        except asyncio.CancelledError:
+            pass
+        else:
+            cls.start(*args)
+
+    @property
+    def key(self):
+        """
+        RowTable Session identification key.
+        """
+        return (self.guildid, self.userid)
+
+    @property
+    def lion(self):
+        """
+        The Lion member object associated with this member.
+        """
+        return Lion.fetch(self.guildid, self.userid)
 
     @property
     def data(self):
         return current_sessions.fetch(self.key)
 
+    def activate(self):
+        """
+        Activate the study session.
+        This adds the session to the studying members cache,
+        and schedules the session expiry, based on the daily study cap.
+        """
+        # Add to the active cache
+        self.sessions[self.guildid][self.userid] = self
+
+        # Schedule the session expiry
+        self.schedule_expiry()
+
+        # Return self for easy chaining
+        return self
+
+    def schedule_expiry(self):
+        """
+        Schedule session termination when the user reaches the maximum daily study time.
+        """
+        asyncio.create_task(self._schedule_expiry())
+
+    async def _schedule_expiry(self):
+        # Cancel any existing expiry
+        if self._expiry_task and not self._expiry_task.done():
+            self._expiry_task.cancel()
+
+        # Wait for the maximum session length
+        try:
+            self._expiry_task = await asyncio.sleep(self.lion.remaining_study_today)
+        except asyncio.CancelledError:
+            pass
+        else:
+            if self.lion.remaining_study_today <= 0:
+                # End the session
+                # Note that the user will not automatically start a new session when the day starts
+                # TODO: Notify user? Disconnect them?
+                client.log(
+                    "Session for (uid:{}) in (gid:{}) reached daily guild study cap.\n{}".format(
+                        self.userid, self.guildid, self.data
+                    ),
+                    context="SESSION_TRACKER"
+                )
+                self.finish()
+            else:
+                # It's possible the expiry time was pushed forwards while waiting
+                # If so, reschedule
+                self.schedule_expiry()
+
     def finish(self):
         """
         Close the study session.
         """
-        self.sessions[self.guildid].pop(self.userid, None)
         # Note that save_live_status doesn't need to be called here
         # The database saving procedure will account for the values.
         current_sessions.queries.close_study_session(*self.key)
+
+        # Remove session from active cache
+        self.sessions[self.guildid].pop(self.userid, None)
+
+        # Cancel any existing expiry task
+        if self._expiry_task and not self._expiry_task.done():
+            self._expiry_task.cancel()
 
     def save_live_status(self, state: discord.VoiceState):
         """
@@ -128,11 +237,43 @@ async def session_voice_tracker(client, member, before, after):
     else:
         # Member changed channel
         # End the current session and start a new one, if applicable
-        # TODO: Max daily study session tasks
-        # TODO: Error if before is None but we have a current session
         if session:
+            if (scid := session.data.channelid) and (not before.channel or scid != before.channel.id):
+                client.log(
+                    "The previous voice state for "
+                    "member {member.name} (uid:{member.id}) in {guild.name} (gid:{guild.id}) "
+                    "does not match their current study session!\n"
+                    "Session channel is (cid:{scid}), but the previous channel is {previous}.".format(
+                        member=member,
+                        guild=member.guild,
+                        scid=scid,
+                        previous="{0.name} (cid:{0.id})".format(before.channel) if before.channel else "None"
+                    ),
+                    context="SESSION_TRACKER",
+                    level=logging.ERROR
+                )
+            client.log(
+                "Ending study session for {member.name} (uid:{member.id}) "
+                "in {member.guild.id} (gid:{member.guild.id}) since they left the voice channel.\n{session}".format(
+                    member=member,
+                    session=session.data
+                ),
+                context="SESSION_TRACKER",
+                post=False
+            )
             # End the current session
             session.finish()
+        elif pending := Session.members_pending[guild.id].pop(member.id, None):
+            client.log(
+                "Cancelling pending study session for {member.name} (uid:{member.id}) "
+                "in {member.guild.name} (gid:{member.guild.id}) since they left the voice channel.".format(
+                    member=member
+                ),
+                context="SESSION_TRACKER",
+                post=False
+            )
+            pending.cancel()
+
         if after.channel:
             blacklist = client.objects['blacklisted_users']
             guild_blacklist = client.objects['ignored_members'][guild.id]
@@ -144,7 +285,15 @@ async def session_voice_tracker(client, member, before, after):
             )
             if start_session:
                 # Start a new session for the member
-                Session.start(member, after)
+                client.log(
+                    "Starting a new voice channel study session for {member.name} (uid:{member.id}) "
+                    "in {member.guild.name} (gid:{member.guild.id}).".format(
+                        member=member,
+                    ),
+                    context="SESSION_TRACKER",
+                    post=False
+                )
+                session = Session.start(member, after)
 
 
 async def _init_session_tracker(client):
@@ -190,7 +339,7 @@ async def _init_session_tracker(client):
                         context="SESSION_INIT",
                         level=logging.DEBUG
                     )
-                    Session.sessions[row.guildid][row.userid] = session
+                    session.activate()
                     session.save_live_status(voice)
                     resumed += 1
                 else:

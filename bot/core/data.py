@@ -25,7 +25,7 @@ guild_config = RowTable(
     ('guildid', 'admin_role', 'mod_role', 'event_log_channel', 'alert_channel',
      'min_workout_length', 'workout_reward',
      'max_tasks', 'task_reward', 'task_reward_limit',
-     'study_hourly_reward', 'study_hourly_live_bonus',
+     'study_hourly_reward', 'study_hourly_live_bonus', 'daily_study_cap',
      'study_ban_role', 'max_study_bans'),
     'guildid',
     cache=TTLCache(1000, ttl=60*5)
