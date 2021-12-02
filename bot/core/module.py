@@ -61,9 +61,10 @@ async def preload_studying_members(client):
     """
     userids = list(set(member.id for guild in client.guilds for ch in guild.voice_channels for member in ch.members))
     if userids:
-        rows = client.data.lions.fetch_rows_where(userid=userids)
+        users = client.data.user_config.fetch_rows_where(userid=userids)
+        members = client.data.lions.fetch_rows_where(userid=userids)
         client.log(
-            "Preloaded member data for {} members.".format(len(rows)),
+            "Preloaded data for {} user with {} members.".format(len(users), len(members)),
             context="CORE_LOADING"
         )
 

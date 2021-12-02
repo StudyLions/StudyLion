@@ -56,10 +56,10 @@ class video_channels(settings.ChannelList, settings.ListData, settings.Setting):
             if any(channel.members for channel in guild.voice_channels)
         ]
         if active_guildids:
+            cache = {guildid: [] for guildid in active_guildids}
             rows = cls._table_interface.select_where(
                 guildid=active_guildids
             )
-            cache = defaultdict(list)
             for row in rows:
                 cache[row['guildid']].append(row['channelid'])
             cls._cache.update(cache)
