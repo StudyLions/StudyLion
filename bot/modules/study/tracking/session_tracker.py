@@ -128,7 +128,30 @@ class Session:
 
     @property
     def data(self):
+        """
+        Row of the `current_sessions` table corresponding to this session.
+        """
         return current_sessions.fetch(self.key)
+
+    @property
+    def duration(self):
+        """
+        Current duration of the session.
+        """
+        return (utc_now() - self.data.start_time).total_seconds()
+
+    @property
+    def coins_earned(self):
+        """
+        Number of coins earned so far.
+        """
+        data = self.data
+
+        coins = self.duration * data.hourly_coins
+        coins += data.live_duration * data.hourly_live_coins
+        if data.live_start:
+            coins += (utc_now() - data.live_start).total_seconds() * data.hourly_live_coins
+        return coins // 3600
 
     def activate(self):
         """

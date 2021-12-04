@@ -12,7 +12,7 @@ class Lion:
     Mostly acts as a transparent interface to the corresponding Row,
     but also adds some transaction caching logic to `coins` and `tracked_time`.
     """
-    __slots__ = ('guildid', 'userid', '_pending_coins', '_pending_time', '_member')
+    __slots__ = ('guildid', 'userid', '_pending_coins', '_member')
 
     # Members with pending transactions
     _pending = {}  # userid -> User
@@ -25,7 +25,6 @@ class Lion:
         self.userid = userid
 
         self._pending_coins = 0
-        self._pending_time = 0
 
         self._member = None
 
@@ -93,16 +92,33 @@ class Lion:
     @property
     def time(self):
         """
-        Amount of time the user has spent studying, accounting for pending values.
+        Amount of time the user has spent studying, accounting for a current session.
         """
-        return int(self.data.tracked_time + self._pending_time)
+        # Base time from cached member data
+        time = self.data.tracked_time
+
+        # Add current session time if it exists
+        if session := self.session:
+            time += session.duration
+
+        return int(time)
 
     @property
     def coins(self):
         """
-        Number of coins the user has, accounting for the pending value.
+        Number of coins the user has, accounting for the pending value and current session.
         """
-        return int(self.data.coins + self._pending_coins)
+        # Base coin amount from cached member data
+        coins = self.data.coins
+
+        # Add pending coin amount
+        coins += self._pending_coins
+
+        # Add current session coins if applicable
+        if session := self.session:
+            coins += session.coins_earned
+
+        return int(coins)
 
     @property
     def session(self):
@@ -176,15 +192,6 @@ class Lion:
         if flush:
             self.flush()
 
-    def addTime(self, amount, flush=True):
-        """
-        Add time to a user (in seconds), optionally storing the transaction in pending.
-        """
-        self._pending_time += amount
-        self._pending[self.key] = self
-        if flush:
-            self.flush()
-
     def flush(self):
         """
         Flush any pending transactions to the database.
@@ -202,7 +209,7 @@ class Lion:
         if lions:
             # Build userid to pending coin map
             pending = [
-                (lion.guildid, lion.userid, int(lion._pending_coins), int(lion._pending_time))
+                (lion.guildid, lion.userid, int(lion._pending_coins))
                 for lion in lions
             ]
 
@@ -212,5 +219,4 @@ class Lion:
             # Cleanup pending users
             for lion in lions:
                 lion._pending_coins -= int(lion._pending_coins)
-                lion._pending_time -= int(lion._pending_time)
                 cls._pending.pop(lion.key, None)

@@ -57,7 +57,7 @@ lion_ranks = Table('member_ranks', attach_as='lion_ranks')
 def add_pending(pending):
     """
     pending:
-        List of tuples of the form `(userid, pending_coins, pending_time)`.
+        List of tuples of the form `(guildid, userid, pending_coins)`.
     """
     with lions.conn:
         cursor = lions.conn.cursor()
@@ -66,12 +66,11 @@ def add_pending(pending):
             """
             UPDATE members
             SET
-                coins = coins + t.coin_diff,
-                tracked_time = tracked_time + t.time_diff
+                coins = coins + t.coin_diff
             FROM
                 (VALUES %s)
             AS
-                t (guildid, userid, coin_diff, time_diff)
+                t (guildid, userid, coin_diff)
             WHERE
                 members.guildid = t.guildid
                 AND
