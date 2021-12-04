@@ -8,7 +8,6 @@ import discord
 
 from meta import client
 from data.conditions import GEQ
-from core import Lion
 from core.data import lions
 from utils.lib import strfdur
 from settings import GuildSettings
@@ -56,7 +55,8 @@ async def update_study_badges(full=False):
     # Retrieve member rows with out of date study badges
     if not full and client.appdata.last_study_badge_scan is not None:
         update_rows = new_study_badges.select_where(
-            _timestamp=GEQ(client.appdata.last_study_badge_scan or 0)
+            _timestamp=GEQ(client.appdata.last_study_badge_scan or 0),
+            _extra="OR session_start IS NOT NULL"
         )
     else:
         update_rows = new_study_badges.select_where()
@@ -287,7 +287,6 @@ async def study_badge_tracker():
     """
     while True:
         try:
-            Lion.sync()
             await update_study_badges()
         except Exception:
             # Unknown exception. Catch it so the loop doesn't die.
@@ -304,11 +303,10 @@ async def study_badge_tracker():
         await asyncio.sleep(60)
 
 
-async def _update_member_studybadge(member):
+async def update_member_studybadge(member):
     """
     Checks and (if required) updates the study badge for a single member.
     """
-    Lion.fetch(member.guild.id, member.id).flush()
     update_rows = new_study_badges.select_where(
         guildid=member.guild.id,
         userid=member.id
@@ -330,16 +328,6 @@ async def _update_member_studybadge(member):
 
         # Run the update task
         await _update_guild_badges(member.guild, update_rows)
-
-
-@client.add_after_event("voice_state_update")
-async def voice_studybadge_updater(client, member, before, after):
-    if not client.is_ready():
-        # The poll loop will pick it up
-        return
-
-    if before.channel and not after.channel:
-        await _update_member_studybadge(member)
 
 
 @module.launch_task

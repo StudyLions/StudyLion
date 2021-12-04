@@ -125,7 +125,7 @@ CREATE VIEW current_study_badges AS
     *,
     (SELECT r.badgeid
       FROM study_badges r
-      WHERE r.guildid = members_totals.guildid AND members_totals.tracked_time > r.required_time
+      WHERE r.guildid = members_totals.guildid AND members_totals.total_tracked_time > r.required_time
       ORDER BY r.required_time DESC
       LIMIT 1) AS current_study_badgeid
     FROM members_totals;
