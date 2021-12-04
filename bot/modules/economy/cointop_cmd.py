@@ -46,19 +46,15 @@ async def cmd_topcoin(ctx):
     exclude.update(ctx.client.objects['blacklisted_users'])
     exclude.update(ctx.client.objects['ignored_members'][ctx.guild.id])
 
+    args = {
+        'guildid': ctx.guild.id,
+        'select_columns': ('userid', 'total_coins::INTEGER'),
+        '_extra': "AND total_coins > 0 ORDER BY total_coins DESC " + ("LIMIT 100" if top100 else "")
+    }
     if exclude:
-        user_data = tables.lions.select_where(
-            guildid=ctx.guild.id,
-            userid=data.NOT(list(exclude)),
-            select_columns=('userid', 'coins'),
-            _extra="AND coins > 0 ORDER BY coins DESC " + ("LIMIT 100" if top100 else "")
-        )
-    else:
-        user_data = tables.lions.select_where(
-            guildid=ctx.guild.id,
-            select_columns=('userid', 'coins'),
-            _extra="AND coins > 0 ORDER BY coins DESC " + ("LIMIT 100" if top100 else "")
-        )
+        args['userid'] = data.NOT(list(exclude))
+
+    user_data = tables.members_totals.select_where(**args)
 
     # Quit early if the leaderboard is empty
     if not user_data:

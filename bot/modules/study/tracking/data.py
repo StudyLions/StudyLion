@@ -57,3 +57,6 @@ def study_time_since(guildid, userid, timestamp):
         cursor.callproc('study_time_since', (guildid, userid, timestamp))
         rows = cursor.fetchall()
     return (rows[0][0] if rows else None) or 0
+
+
+members_totals = Table('members_totals')
