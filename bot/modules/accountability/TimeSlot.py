@@ -69,7 +69,8 @@ class TimeSlot:
 
     _everyone_overwrite = discord.PermissionOverwrite(
         view_channel=False,
-        connect=False
+        connect=False,
+        speak=False
     )
 
     happy_lion = "https://media.discordapp.net/stickers/898266283559227422.png"
@@ -218,6 +219,9 @@ class TimeSlot:
         """
         Load data and update applicable caches.
         """
+        if not self.guild:
+            return self
+
         # Load setting data
         self.category = GuildSettings(self.guild.id).accountability_category.value
         self.lobby = GuildSettings(self.guild.id).accountability_lobby.value
@@ -389,13 +393,14 @@ class TimeSlot:
                 pass
 
         # Reward members appropriately
-        guild_settings = GuildSettings(self.guild.id)
-        reward = guild_settings.accountability_reward.value
-        if all(mem.has_attended for mem in self.members.values()):
-            reward += guild_settings.accountability_bonus.value
+        if self.guild:
+            guild_settings = GuildSettings(self.guild.id)
+            reward = guild_settings.accountability_reward.value
+            if all(mem.has_attended for mem in self.members.values()):
+                reward += guild_settings.accountability_bonus.value
 
-        for memid in self.members:
-            Lion.fetch(self.guild.id, memid).addCoins(reward)
+            for memid in self.members:
+                Lion.fetch(self.guild.id, memid).addCoins(reward)
 
     async def cancel(self):
         """

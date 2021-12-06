@@ -272,7 +272,7 @@ class ReactionRoleMessage:
                         # Fetch the number of applicable roles the user has
                         roleids = set(reaction.data.roleid for reaction in self.reactions)
                         member_roleids = set(role.id for role in member.roles)
-                        if len(roleids.intersection(member_roleids)) > maximum:
+                        if len(roleids.intersection(member_roleids)) >= maximum:
                             # Notify the user
                             embed = discord.Embed(
                                 title="Maximum group roles reached!",
