@@ -1,6 +1,6 @@
 import discord
 import datetime
-from cmdClient.checks import in_guild
+from wards import guild_admin
 
 from settings import GuildSettings
 from core import Lion
@@ -14,7 +14,7 @@ POSTGRES_INT_MAX = 2147483647
     group="Guild Admin",
     desc="Set coins on a member."
 )
-@in_guild()
+@guild_admin()
 async def cmd_set(ctx):
     """
     Usage``:
