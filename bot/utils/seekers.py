@@ -182,7 +182,11 @@ async def find_channel(ctx, userstr, interactive=False, collection=None, chan_ty
     # Create the collection to search from args or guild channels
     collection = collection if collection else ctx.guild.channels
     if chan_type is not None:
-        collection = [chan for chan in collection if chan.type == chan_type]
+        if chan_type == discord.ChannelType.text:
+            # Hack to support news channels as text channels
+            collection = [chan for chan in collection if isinstance(chan, discord.TextChannel)]
+        else:
+            collection = [chan for chan in collection if chan.type == chan_type]
 
     # If the user input was a number or possible channel mention, extract it
     chanid = userstr.strip('<#@&!>')
@@ -413,7 +417,7 @@ async def find_message(ctx, msgid, chlist=None, ignore=[]):
 
 
 async def _search_in_channel(channel: discord.TextChannel, msgid: int):
-    if channel.type != discord.ChannelType.text:
+    if not isinstance(channel, discord.TextChannel):
         return
     try:
         message = await channel.fetch_message(msgid)

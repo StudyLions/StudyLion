@@ -53,13 +53,19 @@ def add_pending(pending):
 
 guild_config = RowTable(
     'guild_config',
-    ('guildid', 'admin_role', 'mod_role', 'event_log_channel', 'alert_channel',
-     'coin_alert_channel', 'min_workout_length', 'workout_reward',
+    ('guildid', 'admin_role', 'mod_role', 'event_log_channel', 'mod_log_channel', 'alert_channel',
+     'coin_alert_channel', 'studyban_role',
+     'min_workout_length', 'workout_reward',
      'max_tasks', 'task_reward', 'task_reward_limit',
      'study_hourly_reward', 'study_hourly_live_bonus',
-     'study_ban_role', 'max_study_bans'),
+     'renting_price', 'renting_category', 'renting_cap', 'renting_role', 'renting_sync_perms',
+     'accountability_category', 'accountability_lobby', 'accountability_bonus',
+     'accountability_reward', 'accountability_price',
+     'video_studyban', 'video_grace_period',
+     'greeting_channel', 'greeting_message', 'returning_message',
+     'starting_funds', 'persist_roles'),
     'guildid',
-    cache=TTLCache(1000, ttl=60*5)
+    cache=TTLCache(2500, ttl=60*5)
 )
 
 unranked_roles = Table('unranked_roles')
@@ -72,7 +78,8 @@ lions = RowTable(
     ('guildid', 'userid',
      'tracked_time', 'coins',
      'workout_count', 'last_workout_start', 'last_study_session_start',
-     'session_start_coins', 'last_study_badgeid',
+     'session_start_coins', 'revision_mute_count',
+     'last_study_badgeid',
      'video_warned',
      '_timestamp'
      ),
