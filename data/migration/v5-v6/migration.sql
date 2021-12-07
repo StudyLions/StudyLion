@@ -1,15 +1,15 @@
-DROP TYPE IF EXISTS SessionChannelType CASCADE;
-DROP TABLE IF EXISTS session_history CASCADE;
-DROP TABLE IF EXISTS current_sessions CASCADE;
-DROP FUNCTION IF EXISTS close_study_session;
+-- DROP TYPE IF EXISTS SessionChannelType CASCADE;
+-- DROP TABLE IF EXISTS session_history CASCADE;
+-- DROP TABLE IF EXISTS current_sessions CASCADE;
+-- DROP FUNCTION IF EXISTS close_study_session(_guildid BIGINT, _userid BIGINT);
+-- DROP FUNCTION IF EXISTS study_time_since(_guildid BIGINT, _userid BIGINT, _timestamp TIMESTAMPTZ)
 
-DROP VIEW IF EXISTS current_sessions_totals CASCADE;
+-- DROP VIEW IF EXISTS current_sessions_totals CASCADE;
+
 DROP VIEW IF EXISTS member_totals CASCADE;
 DROP VIEW IF EXISTS member_ranks CASCADE;
 DROP VIEW IF EXISTS current_study_badges CASCADE;
 DROP VIEW IF EXISTS new_study_badges CASCADE;
-
-DROP FUNCTION IF EXISTS study_time_since;
 
 
 CREATE TYPE SessionChannelType AS ENUM (
@@ -176,3 +176,5 @@ AS $$
 $$ LANGUAGE PLPGSQL;
 
 ALTER TABLE guild_config ADD COLUMN daily_study_cap INTEGER;
+
+INSERT INTO VersionHistory (version, author) VALUES (6, 'v5-v6 Migration');
