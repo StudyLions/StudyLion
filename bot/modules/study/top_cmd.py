@@ -61,7 +61,6 @@ async def cmd_top(ctx):
     author_index = None
     entries = []
     for i, (userid, time) in enumerate(user_data):
-        time = int(time)
         member = ctx.guild.get_member(userid)
         name = member.display_name if member else str(userid)
         name = name.replace('*', ' ').replace('_', ' ')

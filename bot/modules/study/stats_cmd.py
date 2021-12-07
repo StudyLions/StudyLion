@@ -2,12 +2,12 @@ from datetime import datetime, timedelta
 import discord
 from cmdClient.checks import in_guild
 
-from utils.lib import strfdur, prop_tabulate, utc_now
+from utils.lib import prop_tabulate, utc_now
 from data import tables
 from data.conditions import LEQ
 from core import Lion
 
-from .tracking.data import study_time_since, session_history
+from .tracking.data import session_history
 
 from .module import module
 
@@ -15,7 +15,7 @@ from .module import module
 @module.cmd(
     "stats",
     group="Statistics",
-    desc="View a summary of your study statistics!",
+    desc="View your personal server study statistics!",
     aliases=('profile',)
 )
 @in_guild()
@@ -227,7 +227,7 @@ async def cmd_stats(ctx):
             acc_rate
         )
     stats['Study Streak'] = "**{}** days{}".format(
-        streak,
+        current_streak,
         " (longest **{}** days)".format(max_streak) if max_streak else ''
     )
 
@@ -250,7 +250,7 @@ async def cmd_stats(ctx):
     # Add the study league field
     if current_badge or next_badge:
         current_str = (
-            "You are currently in <@&{}>!".format(current_badge.roleid) if current_badge else "Not league yet!"
+            "You are currently in <@&{}>!".format(current_badge.roleid) if current_badge else "No league yet!"
         )
         if next_badge:
             needed = max(next_badge.required_time - season_time, 0)
