@@ -374,14 +374,15 @@ async def _accountability_system_resume():
                      None, mow.slotid, mow.userid)
                     for mow in slot_members[row.slotid] if mow.last_joined_at
                 )
-                slot = TimeSlot(client.get_guild(row.guildid), row.start_at, data=row).load(
-                    memberids=[mow.userid for mow in slot_members[row.slotid]]
-                )
+                if client.get_guild(row.guildid):
+                    slot = TimeSlot(client.get_guild(row.guildid), row.start_at, data=row).load(
+                        memberids=[mow.userid for mow in slot_members[row.slotid]]
+                    )
+                    try:
+                        await slot.close()
+                    except discord.HTTPException:
+                        pass
                 row.closed_at = now
-                try:
-                    await slot.close()
-                except discord.HTTPException:
-                    pass
 
         # Load the in-progress room data
         if current_room_data:
@@ -451,7 +452,7 @@ async def launch_accountability_system(client):
     guilds = tables.guild_config.fetch_rows_where(
         accountability_category=NOTNULL
     )
-    [AccountabilityGuild(guild.guildid) for guild in guilds]
+    [AccountabilityGuild(guild.guildid) for guild in guilds if client.get_guild(guild.guildid)]
     await _accountability_system_resume()
     asyncio.create_task(_accountability_loop())
 
