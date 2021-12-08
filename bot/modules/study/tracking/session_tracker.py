@@ -78,7 +78,7 @@ class Session:
         # TODO: More reliable channel type determination
         if state.channel.id in tables.rented.row_cache:
             channel_type = SessionChannelType.RENTED
-        elif state.channel.id in tables.accountability_rooms.row_cache:
+        elif state.channel.category and state.channel.category.id == lion.guild_settings.accountability_category.data:
             channel_type = SessionChannelType.ACCOUNTABILITY
         else:
             channel_type = SessionChannelType.STANDARD
