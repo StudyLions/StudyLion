@@ -38,27 +38,20 @@ async def cmd_top(ctx):
         )
     top100 = (ctx.args == "100" or ctx.alias == "top100")
 
-    # Flush any pending coin transactions
-    Lion.sync()
-
     # Fetch the leaderboard
     exclude = set(m.id for m in ctx.guild_settings.unranked_roles.members)
     exclude.update(ctx.client.objects['blacklisted_users'])
     exclude.update(ctx.client.objects['ignored_members'][ctx.guild.id])
 
+    args = {
+        'guildid': ctx.guild.id,
+        'select_columns': ('userid', 'total_tracked_time::INTEGER'),
+        '_extra': "AND total_tracked_time > 0 ORDER BY total_tracked_time DESC " + ("LIMIT 100" if top100 else "")
+    }
     if exclude:
-        user_data = tables.lions.select_where(
-            guildid=ctx.guild.id,
-            userid=data.NOT(list(exclude)),
-            select_columns=('userid', 'tracked_time'),
-            _extra="AND tracked_time > 0 ORDER BY tracked_time DESC " + ("LIMIT 100" if top100 else "")
-        )
-    else:
-        user_data = tables.lions.select_where(
-            guildid=ctx.guild.id,
-            select_columns=('userid', 'tracked_time'),
-            _extra="AND tracked_time > 0 ORDER BY tracked_time DESC " + ("LIMIT 100" if top100 else "")
-        )
+        args['userid'] = data.NOT(list(exclude))
+
+    user_data = tables.members_totals.select_where(**args)
 
     # Quit early if the leaderboard is empty
     if not user_data:

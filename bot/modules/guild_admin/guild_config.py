@@ -1,3 +1,4 @@
+import difflib
 import discord
 from cmdClient.lib import SafeCancellation
 
@@ -121,9 +122,15 @@ async def cmd_config(ctx, flags):
         name = parts[0]
         setting = setting_displaynames.get(name.lower(), None)
         if setting is None:
+            matches = difflib.get_close_matches(name, setting_displaynames.keys(), n=2)
+            match = "`{}`".format('` or `'.join(matches)) if matches else None
             return await ctx.error_reply(
-                "Server setting `{}` doesn't exist! Use `{}config` to see all server settings".format(
-                    name, ctx.best_prefix
+                "Couldn't find a setting called `{}`!\n"
+                "{}"
+                "Use `{}config info` to see all the server settings.".format(
+                    name,
+                    "Maybe you meant {}?\n".format(match) if match else "",
+                    ctx.best_prefix
                 )
             )
 

@@ -45,10 +45,10 @@ class Table:
     Intended to be subclassed to provide more derivative access for specific tables.
     """
     conn = conn
-    queries = DotDict()
 
     def __init__(self, name, attach_as=None):
         self.name = name
+        self.queries = DotDict()
         tables[attach_as or name] = self
 
     @_connection_guard

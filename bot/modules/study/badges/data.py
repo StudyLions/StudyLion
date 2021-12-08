@@ -2,8 +2,6 @@ from cachetools import cached
 
 from data import Table, RowTable
 
-untracked_channels = Table('untracked_channels')
-
 study_badges = RowTable(
     'study_badges',
     ('badgeid', 'guildid', 'roleid', 'required_time'),

@@ -1,5 +1,3 @@
-from collections import defaultdict
-
 import settings
 from settings import GuildSettings
 from wards import guild_admin
@@ -52,10 +50,10 @@ class untracked_channels(settings.ChannelList, settings.ListData, settings.Setti
             if any(channel.members for channel in guild.voice_channels)
         ]
         if active_guildids:
+            cache = {guildid: [] for guildid in active_guildids}
             rows = cls._table_interface.select_where(
                 guildid=active_guildids
             )
-            cache = defaultdict(list)
             for row in rows:
                 cache[row['guildid']].append(row['channelid'])
             cls._cache.update(cache)
@@ -111,3 +109,33 @@ class hourly_live_bonus(settings.Integer, settings.GuildSetting):
     @property
     def success_response(self):
         return "Members will be rewarded an extra `{}` LionCoins per hour if they stream.".format(self.formatted)
+
+
+@GuildSettings.attach_setting
+class daily_study_cap(settings.Duration, settings.GuildSetting):
+    category = "Study Tracking"
+
+    attr_name = "daily_study_cap"
+    _data_column = "daily_study_cap"
+
+    display_name = "daily_study_cap"
+    desc = "Maximum amount of recorded study time per member per day."
+
+    _default = 16 * 60 * 60
+    _default_multiplier = 60 * 60
+
+    _max = 25 * 60 * 60
+
+    long_desc = (
+        "The maximum amount of study time that can be recorded for a member per day, "
+        "intended to remove system encouragement for unhealthy or obsessive behaviour.\n"
+        "The member may study for longer, but their sessions will not be tracked. "
+        "The start and end of the day are determined by the member's configured timezone."
+    )
+
+    @property
+    def success_response(self):
+        # Refresh expiry for all sessions in the guild
+        [session.schedule_expiry() for session in self.client.objects['sessions'][self.id].values()]
+
+        return "The maximum tracked daily study time is now {}.".format(self.formatted)
