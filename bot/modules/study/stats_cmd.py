@@ -188,7 +188,7 @@ async def cmd_stats(ctx):
 
     # Set the description based on season time and server rank
     if season_time:
-        time_str = "**{}:{}**".format(
+        time_str = "**{}:{:02}**".format(
             season_time // 3600,
             (season_time // 60) % 60
         )
