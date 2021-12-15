@@ -202,7 +202,7 @@ async def cmd_stats(ctx):
         elif time_rank == 3:
             rank_str = "3rd"
         else:
-            time_rank = "{}th".format(time_rank)
+            rank_str = "{}th".format(time_rank)
 
         embed.description = "{} has studied for **{}**{}{}".format(
             target.mention,
