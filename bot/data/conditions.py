@@ -70,5 +70,17 @@ class Constant(Condition):
         conditions.append("{} {}".format(key, self.value))
 
 
+class SHARDID(Condition):
+    __slots__ = ('shardid', 'shard_count')
+
+    def __init__(self, shardid, shard_count):
+        self.shardid = shardid
+        self.shard_count = shard_count
+
+    def apply(self, key, values, conditions):
+        conditions.append("({} >> 22) %% {} = {}".format(key, self.shard_count, _replace_char))
+        values.append(self.shardid)
+
+
 NULL = Constant('IS NULL')
 NOTNULL = Constant('IS NOT NULL')
