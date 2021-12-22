@@ -80,8 +80,9 @@ class SHARDID(Condition):
         self.shard_count = shard_count
 
     def apply(self, key, values, conditions):
-        conditions.append("({} >> 22) %% {} = {}".format(key, self.shard_count, _replace_char))
-        values.append(self.shardid)
+        if self.shard_count > 1:
+            conditions.append("({} >> 22) %% {} = {}".format(key, self.shard_count, _replace_char))
+            values.append(self.shardid)
 
 
 THIS_SHARD = SHARDID(sharding.shard_number, sharding.shard_count)
