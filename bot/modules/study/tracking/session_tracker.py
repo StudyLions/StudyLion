@@ -7,6 +7,7 @@ from collections import defaultdict
 
 from utils.lib import utc_now
 from data import tables
+from data.conditions import THIS_SHARD
 from core import Lion
 from meta import client
 
@@ -398,7 +399,7 @@ async def _init_session_tracker(client):
     ended = 0
 
     # Grab all ongoing sessions from data
-    rows = current_sessions.fetch_rows_where()
+    rows = current_sessions.fetch_rows_where(guildid=THIS_SHARD)
 
     # Iterate through, resume or end as needed
     for row in rows:

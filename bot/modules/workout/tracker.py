@@ -7,6 +7,7 @@ from core import Lion
 from settings import GuildSettings
 from meta import client
 from data import NULL, tables
+from data.conditions import THIS_SHARD
 
 from .module import module
 from .data import workout_sessions
@@ -226,7 +227,8 @@ async def load_workouts(client):
     client.objects['current_workouts'] = {}  # (guildid, userid) -> Row
     # Process any incomplete workouts
     workouts = workout_sessions.fetch_rows_where(
-        duration=NULL
+        duration=NULL,
+        guildid=THIS_SHARD
     )
     count = 0
     for workout in workouts:

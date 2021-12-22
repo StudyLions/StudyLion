@@ -12,6 +12,7 @@ from discord import PartialEmoji
 from meta import client
 from core import Lion
 from data import Row
+from data.conditions import THIS_SHARD
 from utils.lib import utc_now
 from settings import GuildSettings
 
@@ -584,5 +585,5 @@ def load_reaction_roles(client):
     """
     Load the ReactionRoleMessages.
     """
-    rows = reaction_role_messages.fetch_rows_where()
+    rows = reaction_role_messages.fetch_rows_where(guildid=THIS_SHARD)
     ReactionRoleMessage._messages = {row.messageid: ReactionRoleMessage(row.messageid) for row in rows}

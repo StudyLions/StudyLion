@@ -17,7 +17,7 @@ logger = logging.getLogger()
 log_fmt = logging.Formatter(
     fmt=('[{asctime}][{levelname:^8}]' +
          '[SHARD {}]'.format(sharding.shard_number) +
-         '{message}'),
+         ' {message}'),
     datefmt='%d/%m | %H:%M:%S',
     style='{'
 )
