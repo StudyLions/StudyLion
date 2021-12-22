@@ -9,11 +9,18 @@ from utils.lib import mail, split_text
 
 from .client import client
 from .config import conf
+from . import sharding
 
 
 # Setup the logger
 logger = logging.getLogger()
-log_fmt = logging.Formatter(fmt='[{asctime}][{levelname:^8}] {message}', datefmt='%d/%m | %H:%M:%S', style='{')
+log_fmt = logging.Formatter(
+    fmt=('[{asctime}][{levelname:^8}]' +
+         '[SHARD {}]'.format(sharding.shard_number) +
+         ' {message}'),
+    datefmt='%d/%m | %H:%M:%S',
+    style='{'
+)
 # term_handler = logging.StreamHandler(sys.stdout)
 # term_handler.setFormatter(log_fmt)
 # logger.addHandler(term_handler)
@@ -77,7 +84,11 @@ async def live_log(message, context, level):
             log_chid = conf.bot.getint('log_channel')
 
         # Generate the log messages
-        header = "[{}][{}]".format(logging.getLevelName(level), str(context))
+        if sharding.sharded:
+            header = f"[{logging.getLevelName(level)}][SHARD {sharding.shard_number}][{context}]"
+        else:
+            header = f"[{logging.getLevelName(level)}][{context}]"
+
         if len(message) > 1900:
             blocks = split_text(message, blocksize=1900, code=False)
         else:

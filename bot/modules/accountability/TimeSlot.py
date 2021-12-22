@@ -90,7 +90,6 @@ class TimeSlot:
 
     @property
     def open_embed(self):
-        # TODO Consider adding hint to footer
         timestamp = int(self.start_time.timestamp())
 
         embed = discord.Embed(
@@ -246,6 +245,34 @@ class TimeSlot:
                 }
 
         return self
+
+    async def _reload_members(self, memberids=None):
+        """
+        Reload the timeslot members from the provided list, or data.
+        Also updates the channel overwrites if required.
+        To be used before the session has started.
+        """
+        if self.data:
+            if memberids is None:
+                member_rows = accountability_members.fetch_rows_where(slotid=self.data.slotid)
+                memberids = [row.userid for row in member_rows]
+
+            self.members = members = {
+                memberid: SlotMember(self.data.slotid, memberid, self.guild)
+                for memberid in memberids
+            }
+
+            if self.channel:
+                # Check and potentially update overwrites
+                current_overwrites = self.channel.overwrites
+                overwrites = {
+                    mem.member: self._member_overwrite
+                    for mem in members.values()
+                    if mem.member
+                }
+                overwrites[self.guild.default_role] = self._everyone_overwrite
+                if current_overwrites != overwrites:
+                    await self.channel.edit(overwrites=overwrites)
 
     def _refresh(self):
         """

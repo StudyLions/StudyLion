@@ -43,7 +43,7 @@ async def cmd_topcoin(ctx):
 
     # Fetch the leaderboard
     exclude = set(m.id for m in ctx.guild_settings.unranked_roles.members)
-    exclude.update(ctx.client.objects['blacklisted_users'])
+    exclude.update(ctx.client.user_blacklist())
     exclude.update(ctx.client.objects['ignored_members'][ctx.guild.id])
 
     args = {
