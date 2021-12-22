@@ -1,5 +1,7 @@
 from .connection import _replace_char
 
+from meta import sharding
+
 
 class Condition:
     """
@@ -80,6 +82,9 @@ class SHARDID(Condition):
     def apply(self, key, values, conditions):
         conditions.append("({} >> 22) %% {} = {}".format(key, self.shard_count, _replace_char))
         values.append(self.shardid)
+
+
+THIS_SHARD = SHARDID(sharding.shard_number, sharding.shard_count)
 
 
 NULL = Constant('IS NULL')
