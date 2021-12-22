@@ -240,13 +240,9 @@ async def cmd_stats(ctx):
         ["{:02}:{:02}".format(t // 3600, (t // 60) % 60) for t in reversed(study_times)]
     )
 
-    # The order they are added depends on the size of the stats table
-    if len(stats) >= 4:
-        embed.add_field(name="Statistics", value=stats_table)
-        embed.add_field(name="Study Time", value=time_table)
-    else:
-        embed.add_field(name="Study Time", value=time_table)
-        embed.add_field(name="Statistics", value=stats_table)
+    # Populate the embed
+    embed.add_field(name="Study Time", value=time_table)
+    embed.add_field(name="Statistics", value=stats_table)
 
     # Add the study league field
     if current_badge or next_badge:
