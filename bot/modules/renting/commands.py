@@ -54,9 +54,13 @@ async def cmd_rent(ctx):
 
             # Extract members to remove
             current_memberids = set(room.memberids)
+            if ctx.author in ctx.msg.mentions:
+                return await ctx.error_reply(
+                    "You can't remove yourself from your own room!"
+                )
             to_remove = (
                 member for member in ctx.msg.mentions
-                if member.id in current_memberids
+                if member.id in current_memberids and member.id != ctx.author.id
             )
             to_remove = list(set(to_remove))  # Remove duplicates
 
@@ -86,7 +90,7 @@ async def cmd_rent(ctx):
             current_memberids = set(room.memberids)
             to_add = (
                 member for member in ctx.msg.mentions
-                if member.id not in current_memberids and member.id != ctx.author
+                if member.id not in current_memberids and member.id != ctx.author.id
             )
             to_add = list(set(to_add))  # Remove duplicates
 

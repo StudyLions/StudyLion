@@ -187,13 +187,13 @@ class Room:
             except discord.HTTPException:
                 pass
 
-        # Delete the room from data (cascades to member deletion)
-        self.delete()
-
         guild_settings.event_log.log(
             title="Private study room expired!",
             description="<@{}>'s private study room expired.".format(self.data.ownerid)
         )
+
+        # Delete the room from data (cascades to member deletion)
+        self.delete()
 
     async def add_members(self, *members):
         guild_settings = GuildSettings(self.data.guildid)
