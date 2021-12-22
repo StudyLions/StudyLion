@@ -298,7 +298,7 @@ async def session_voice_tracker(client, member, before, after):
             pending.cancel()
 
         if after.channel:
-            blacklist = client.objects['blacklisted_users']
+            blacklist = client.user_blacklist()
             guild_blacklist = client.objects['ignored_members'][guild.id]
             untracked = untracked_channels.get(guild.id).data
             start_session = (

@@ -134,7 +134,7 @@ class Reminder:
         """
         Execute the reminder.
         """
-        if self.data.userid in client.objects['blacklisted_users']:
+        if self.data.userid in client.user_blacklist():
             self.delete(self.reminderid)
             return
 
