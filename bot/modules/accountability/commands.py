@@ -39,6 +39,7 @@ def time_format(time):
         time.timestamp() + 3600,
     )
 
+
 user_locks = {}  # Map userid -> ctx
 
 
@@ -229,7 +230,10 @@ async def cmd_rooms(ctx):
             start_time + datetime.timedelta(hours=n)
             for n in range(1, 25)
         )
-        times = [time for time in times if time not in already_joined_times]
+        times = [
+            time for time in times
+            if time not in already_joined_times and (time - utc_now()).total_seconds() > 660
+        ]
         lines = [
             "`[{num:>2}]` | `{count:>{count_pad}}` attending | {time}".format(
                 num=i,
@@ -255,7 +259,7 @@ async def cmd_rooms(ctx):
         await ctx.cancellable(
             out_msg,
             cancel_message="Booking menu cancelled, no sessions were booked.",
-            timeout=70
+            timeout=60
         )
 
         def check(msg):
@@ -265,7 +269,7 @@ async def cmd_rooms(ctx):
 
         with ensure_exclusive(ctx):
             try:
-                message = await ctx.client.wait_for('message', check=check, timeout=60)
+                message = await ctx.client.wait_for('message', check=check, timeout=30)
             except asyncio.TimeoutError:
                 try:
                     await out_msg.edit(
@@ -325,6 +329,7 @@ async def cmd_rooms(ctx):
             )
 
             # Handle case where the slot has already opened
+            # TODO: Fix this, doesn't always work
             aguild = AGuild.cache.get(ctx.guild.id, None)
             if aguild:
                 if aguild.upcoming_slot and aguild.upcoming_slot.start_time in to_book:
