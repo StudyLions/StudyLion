@@ -5,6 +5,7 @@ import datetime
 from cmdClient.lib import SafeCancellation
 
 from meta import client
+from data.conditions import THIS_SHARD
 from settings import GuildSettings
 
 from .data import rented, rented_members
@@ -187,13 +188,13 @@ class Room:
             except discord.HTTPException:
                 pass
 
-        # Delete the room from data (cascades to member deletion)
-        self.delete()
-
         guild_settings.event_log.log(
             title="Private study room expired!",
             description="<@{}>'s private study room expired.".format(self.data.ownerid)
         )
+
+        # Delete the room from data (cascades to member deletion)
+        self.delete()
 
     async def add_members(self, *members):
         guild_settings = GuildSettings(self.data.guildid)
@@ -276,7 +277,7 @@ class Room:
 
 @module.launch_task
 async def load_rented_rooms(client):
-    rows = rented.fetch_rows_where()
+    rows = rented.fetch_rows_where(guildid=THIS_SHARD)
     for row in rows:
         Room(row.channelid).schedule()
     client.log(

@@ -1,4 +1,5 @@
 import pytz
+from datetime import datetime, timedelta
 
 from meta import client
 from data import tables as tb
@@ -11,7 +12,7 @@ class Lion:
     Mostly acts as a transparent interface to the corresponding Row,
     but also adds some transaction caching logic to `coins` and `tracked_time`.
     """
-    __slots__ = ('guildid', 'userid', '_pending_coins', '_pending_time', '_member')
+    __slots__ = ('guildid', 'userid', '_pending_coins', '_member')
 
     # Members with pending transactions
     _pending = {}  # userid -> User
@@ -24,7 +25,6 @@ class Lion:
         self.userid = userid
 
         self._pending_coins = 0
-        self._pending_time = 0
 
         self._member = None
 
@@ -41,6 +41,7 @@ class Lion:
         if key in cls._lions:
             return cls._lions[key]
         else:
+            # TODO: Debug log
             lion = tb.lions.fetch(key)
             if not lion:
                 tb.lions.create_row(
@@ -77,23 +78,103 @@ class Lion:
     @property
     def settings(self):
         """
-        The UserSettings object for this user.
+        The UserSettings interface for this member.
         """
         return UserSettings(self.userid)
 
     @property
+    def guild_settings(self):
+        """
+        The GuildSettings interface for this member.
+        """
+        return GuildSettings(self.guildid)
+
+    @property
     def time(self):
         """
-        Amount of time the user has spent studying, accounting for pending values.
+        Amount of time the user has spent studying, accounting for a current session.
         """
-        return int(self.data.tracked_time + self._pending_time)
+        # Base time from cached member data
+        time = self.data.tracked_time
+
+        # Add current session time if it exists
+        if session := self.session:
+            time += session.duration
+
+        return int(time)
 
     @property
     def coins(self):
         """
-        Number of coins the user has, accounting for the pending value.
+        Number of coins the user has, accounting for the pending value and current session.
         """
-        return int(self.data.coins + self._pending_coins)
+        # Base coin amount from cached member data
+        coins = self.data.coins
+
+        # Add pending coin amount
+        coins += self._pending_coins
+
+        # Add current session coins if applicable
+        if session := self.session:
+            coins += session.coins_earned
+
+        return int(coins)
+
+    @property
+    def session(self):
+        """
+        The current study session the user is in, if any.
+        """
+        if 'sessions' not in client.objects:
+            raise ValueError("Cannot retrieve session before Study module is initialised!")
+        return client.objects['sessions'][self.guildid].get(self.userid, None)
+
+    @property
+    def timezone(self):
+        """
+        The user's configured timezone.
+        Shortcut to `Lion.settings.timezone.value`.
+        """
+        return self.settings.timezone.value
+
+    @property
+    def day_start(self):
+        """
+        A timezone aware datetime representing the start of the user's day (in their configured timezone).
+        NOTE: This might not be accurate over DST boundaries.
+        """
+        now = datetime.now(tz=self.timezone)
+        return now.replace(hour=0, minute=0, second=0, microsecond=0)
+
+    @property
+    def remaining_in_day(self):
+        return ((self.day_start + timedelta(days=1)) - datetime.now(self.timezone)).total_seconds()
+
+    @property
+    def studied_today(self):
+        """
+        The amount of time, in seconds, that the member has studied today.
+        Extracted from the session history.
+        """
+        return tb.session_history.queries.study_time_since(self.guildid, self.userid, self.day_start)
+
+    @property
+    def remaining_study_today(self):
+        """
+        Maximum remaining time (in seconds) this member can study today.
+
+        May not account for DST boundaries and leap seconds.
+        """
+        studied_today = self.studied_today
+        study_cap = self.guild_settings.daily_study_cap.value
+
+        remaining_in_day = self.remaining_in_day
+        if remaining_in_day >= (study_cap - studied_today):
+            remaining = study_cap - studied_today
+        else:
+            remaining = remaining_in_day + study_cap
+
+        return remaining
 
     def localize(self, naive_utc_dt):
         """
@@ -107,15 +188,6 @@ class Lion:
         Add coins to the user, optionally store the transaction in pending.
         """
         self._pending_coins += amount
-        self._pending[self.key] = self
-        if flush:
-            self.flush()
-
-    def addTime(self, amount, flush=True):
-        """
-        Add time to a user (in seconds), optionally storing the transaction in pending.
-        """
-        self._pending_time += amount
         self._pending[self.key] = self
         if flush:
             self.flush()
@@ -137,7 +209,7 @@ class Lion:
         if lions:
             # Build userid to pending coin map
             pending = [
-                (lion.guildid, lion.userid, int(lion._pending_coins), int(lion._pending_time))
+                (lion.guildid, lion.userid, int(lion._pending_coins))
                 for lion in lions
             ]
 
@@ -147,5 +219,4 @@ class Lion:
             # Cleanup pending users
             for lion in lions:
                 lion._pending_coins -= int(lion._pending_coins)
-                lion._pending_time -= int(lion._pending_time)
                 cls._pending.pop(lion.key, None)

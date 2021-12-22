@@ -1,5 +1,7 @@
 from .connection import _replace_char
 
+from meta import sharding
+
 
 class Condition:
     """
@@ -68,6 +70,22 @@ class Constant(Condition):
 
     def apply(self, key, values, conditions):
         conditions.append("{} {}".format(key, self.value))
+
+
+class SHARDID(Condition):
+    __slots__ = ('shardid', 'shard_count')
+
+    def __init__(self, shardid, shard_count):
+        self.shardid = shardid
+        self.shard_count = shard_count
+
+    def apply(self, key, values, conditions):
+        if self.shard_count > 1:
+            conditions.append("({} >> 22) %% {} = {}".format(key, self.shard_count, _replace_char))
+            values.append(self.shardid)
+
+
+THIS_SHARD = SHARDID(sharding.shard_number, sharding.shard_count)
 
 
 NULL = Constant('IS NULL')

@@ -81,17 +81,17 @@ class LionModule(Module):
                 pass
             raise SafeCancellation(details="Module '{}' is not ready.".format(self.name))
 
-        # Check that the channel and guild still exists
-        if not ctx.client.get_guild(ctx.guild.id) or not ctx.guild.get_channel(ctx.ch.id):
-            raise SafeCancellation(details='Command channel is no longer reachable.')
-
         # Check global user blacklist
-        if ctx.author.id in ctx.client.objects['blacklisted_users']:
+        if ctx.author.id in ctx.client.user_blacklist():
             raise SafeCancellation(details='User is blacklisted.')
 
         if ctx.guild:
+            # Check that the channel and guild still exists
+            if not ctx.client.get_guild(ctx.guild.id) or not ctx.guild.get_channel(ctx.ch.id):
+                raise SafeCancellation(details='Command channel is no longer reachable.')
+
             # Check global guild blacklist
-            if ctx.guild.id in ctx.client.objects['blacklisted_guilds']:
+            if ctx.guild.id in ctx.client.guild_blacklist():
                 raise SafeCancellation(details='Guild is blacklisted.')
 
             # Check guild's own member blacklist
