@@ -6,8 +6,8 @@ import contextlib
 
 import discord
 
-from meta import client
-from data.conditions import GEQ
+from meta import client, sharding
+from data.conditions import GEQ, THIS_SHARD
 from core.data import lions
 from utils.lib import strfdur
 from settings import GuildSettings
@@ -54,12 +54,16 @@ async def update_study_badges(full=False):
 
     # Retrieve member rows with out of date study badges
     if not full and client.appdata.last_study_badge_scan is not None:
+        # TODO: _extra here is a hack to cover for inflexible conditionals
         update_rows = new_study_badges.select_where(
+            guildid=THIS_SHARD,
             _timestamp=GEQ(client.appdata.last_study_badge_scan or 0),
-            _extra="OR session_start IS NOT NULL"
+            _extra="OR session_start IS NOT NULL AND (guildid >> 22) %% {} = {}".format(
+                sharding.shard_count, sharding.shard_number
+            )
         )
     else:
-        update_rows = new_study_badges.select_where()
+        update_rows = new_study_badges.select_where(guildid=THIS_SHARD)
 
     if not update_rows:
         client.appdata.last_study_badge_scan = datetime.datetime.utcnow()

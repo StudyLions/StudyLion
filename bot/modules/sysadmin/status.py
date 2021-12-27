@@ -13,19 +13,13 @@ async def update_status():
     # TODO: Make globally configurable and saveable
     global _last_update
 
-    if time.time() - _last_update < 30:
+    if time.time() - _last_update < 60:
         return
 
     _last_update = time.time()
 
-    student_count = sum(
-        len(ch.members)
-        for guild in client.guilds
-        for ch in guild.voice_channels
-    )
-    room_count = sum(
-        len([vc for vc in guild.voice_channels if vc.members])
-        for guild in client.guilds
+    student_count, room_count = client.data.current_sessions.select_one_where(
+        select_columns=("COUNT(*) AS studying_count", "COUNT(DISTINCT(channelid)) AS channel_count"),
     )
     status = "{} students in {} study rooms!".format(student_count, room_count)
 

@@ -7,6 +7,8 @@ import discord
 from cmdClient.checks import is_owner
 from cmdClient.lib import ResponseTimedOut
 
+from meta.sharding import sharded
+
 from .module import module
 
 
@@ -26,14 +28,14 @@ async def cmd_guildblacklist(ctx, flags):
     Description:
         View, add, or remove guilds from the blacklist.
     """
-    blacklist = ctx.client.objects['blacklisted_guilds']
+    blacklist = ctx.client.guild_blacklist()
 
     if ctx.args:
         # guildid parsing
         items = [item.strip() for item in ctx.args.split(',')]
         if any(not item.isdigit() for item in items):
             return await ctx.error_reply(
-                "Please provide guilds as comma seprated guild ids."
+                "Please provide guilds as comma separated guild ids."
             )
 
         guildids = set(int(item) for item in items)
@@ -80,9 +82,18 @@ async def cmd_guildblacklist(ctx, flags):
                 insert_keys=('guildid', 'ownerid', 'reason')
             )
 
-            # Check if we are in any of these guilds
-            to_leave = (ctx.client.get_guild(guildid) for guildid in to_add)
-            to_leave = [guild for guild in to_leave if guild is not None]
+            # Leave freshly blacklisted guilds, accounting for shards
+            to_leave = []
+            for guildid in to_add:
+                guild = ctx.client.get_guild(guildid)
+                if not guild and sharded:
+                    try:
+                        guild = await ctx.client.fetch_guild(guildid)
+                    except discord.HTTPException:
+                        pass
+                if guild:
+                    to_leave.append(guild)
+
             for guild in to_leave:
                 await guild.leave()
 
@@ -102,9 +113,8 @@ async def cmd_guildblacklist(ctx, flags):
             )
 
         # Refresh the cached blacklist after modification
-        ctx.client.objects['blacklisted_guilds'] = set(
-            row['guildid'] for row in ctx.client.data.global_guild_blacklist.select_where()
-        )
+        ctx.client.guild_blacklist.cache_clear()
+        ctx.client.guild_blacklist()
     else:
         # Display the current blacklist
         # First fetch the full blacklist data
@@ -183,7 +193,7 @@ async def cmd_userblacklist(ctx, flags):
     Description:
         View, add, or remove users from the blacklist.
     """
-    blacklist = ctx.client.objects['blacklisted_users']
+    blacklist = ctx.client.user_blacklist()
 
     if ctx.args:
         # userid parsing
@@ -245,9 +255,8 @@ async def cmd_userblacklist(ctx, flags):
             )
 
         # Refresh the cached blacklist after modification
-        ctx.client.objects['blacklisted_users'] = set(
-            row['userid'] for row in ctx.client.data.global_user_blacklist.select_where()
-        )
+        ctx.client.user_blacklist.cache_clear()
+        ctx.client.user_blacklist()
     else:
         # Display the current blacklist
         # First fetch the full blacklist data

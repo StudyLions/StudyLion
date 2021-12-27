@@ -3,6 +3,7 @@ import asyncio
 import datetime
 import discord
 
+from meta import sharding
 from utils.lib import parse_dur, parse_ranges, multiselect_regex
 
 from .module import module
@@ -55,7 +56,7 @@ async def cmd_remindme(ctx, flags):
         if not rows:
             return await ctx.reply("You have no reminders to remove!")
 
-        live = Reminder.fetch(*(row.reminderid for row in rows))
+        live = [Reminder(row.reminderid) for row in rows]
 
         if not ctx.args:
             lines = []
@@ -209,7 +210,8 @@ async def cmd_remindme(ctx, flags):
         )
 
         # Schedule reminder
-        reminder.schedule()
+        if sharding.shard_number == 0:
+            reminder.schedule()
 
         # Ack
         embed = discord.Embed(
@@ -231,7 +233,7 @@ async def cmd_remindme(ctx, flags):
         if not rows:
             return await ctx.reply("You have no reminders!")
 
-        live = Reminder.fetch(*(row.reminderid for row in rows))
+        live = [Reminder(row.reminderid) for row in rows]
 
         lines = []
         num_field = len(str(len(live) - 1))

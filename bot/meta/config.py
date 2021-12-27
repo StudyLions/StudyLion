@@ -1,9 +1,6 @@
 import configparser as cfgp
 
-
-conf = None  # type: Conf
-
-CONF_FILE = "bot/bot.conf"
+from .args import args
 
 
 class Conf:
@@ -57,3 +54,6 @@ class Conf:
     def write(self):
         with open(self.configfile, 'w') as conffile:
             self.config.write(conffile)
+
+
+conf = Conf(args.config)

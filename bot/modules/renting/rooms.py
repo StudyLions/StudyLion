@@ -5,6 +5,7 @@ import datetime
 from cmdClient.lib import SafeCancellation
 
 from meta import client
+from data.conditions import THIS_SHARD
 from settings import GuildSettings
 
 from .data import rented, rented_members
@@ -276,7 +277,7 @@ class Room:
 
 @module.launch_task
 async def load_rented_rooms(client):
-    rows = rented.fetch_rows_where()
+    rows = rented.fetch_rows_where(guildid=THIS_SHARD)
     for row in rows:
         Room(row.channelid).schedule()
     client.log(
