@@ -135,7 +135,7 @@ class Tasklist:
         )
         self._refreshed_at = datetime.datetime.utcnow()
 
-    def _format_tasklist(self):
+    async def _format_tasklist(self):
         """
         Generates a sequence of pages from the tasklist
         """
@@ -176,7 +176,7 @@ class Tasklist:
             hint = "Type `add <task>` to start adding tasks! E.g. `add Revise Maths Paper 1`."
             task_blocks = [""]  # Empty page so we can post
 
-        # Create formtted page embeds, adding help if required
+        # Create formatted page embeds, adding help if required
         pages = []
         for i, block in enumerate(task_blocks):
             embed = discord.Embed(
@@ -233,6 +233,12 @@ class Tasklist:
         self.message = message
         self.messages[message.id] = self
 
+    async def _update(self):
+        """
+        Update the current message with the current page.
+        """
+        await self.message.edit(embed=self.pages[self.current_page])
+
     async def update(self, repost=None):
         """
         Update the displayed tasklist.
@@ -243,7 +249,7 @@ class Tasklist:
 
         # Update data and make page list
         self._refresh()
-        self._format_tasklist()
+        await self._format_tasklist()
         self._adjust_current_page()
 
         if self.message and not repost:
@@ -266,7 +272,8 @@ class Tasklist:
 
             if not repost:
                 try:
-                    await self.message.edit(embed=self.pages[self.current_page])
+                    # TODO: Refactor into update method
+                    await self._update()
                     # Add or remove paging reactions as required
                     should_have_paging = len(self.pages) > 1
 
@@ -572,21 +579,21 @@ class Tasklist:
                 self.current_page %= len(self.pages)
                 if self.show_help:
                     self.show_help = False
-                    self._format_tasklist()
-                await self.message.edit(embed=self.pages[self.current_page])
+                    await self._format_tasklist()
+                await self._update()
             elif str_emoji == self.prev_emoji and user.id == self.member.id:
                 self.current_page -= 1
                 self.current_page %= len(self.pages)
                 if self.show_help:
                     self.show_help = False
-                    self._format_tasklist()
-                await self.message.edit(embed=self.pages[self.current_page])
+                    await self._format_tasklist()
+                await self._update()
             elif str_emoji == self.cancel_emoji and user.id == self.member.id:
                 await self.deactivate(delete=True)
             elif str_emoji == self.question_emoji and user.id == self.member.id:
                 self.show_help = not self.show_help
-                self._format_tasklist()
-                await self.message.edit(embed=self.pages[self.current_page])
+                await self._format_tasklist()
+                await self._update()
             elif str_emoji == self.refresh_emoji and user.id == self.member.id:
                 await self.update()
 
