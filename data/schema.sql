@@ -135,10 +135,11 @@ CREATE TABLE tasklist(
   taskid SERIAL PRIMARY KEY,
   userid BIGINT NOT NULL,
   content TEXT NOT NULL,
-  complete BOOL DEFAULT FALSE,
   rewarded BOOL DEFAULT FALSE,
-  created_at TIMESTAMP DEFAULT (now() at time zone 'utc'),
-  last_updated_at TIMESTAMP DEFAULT (now() at time zone 'utc')
+  deleted_at TIMESTAMPTZ,
+  completed_at TIMESTAMPTZ,
+  created_at TIMESTAMPTZ,
+  last_updated_at TIMESTAMPTZ
 );
 CREATE INDEX tasklist_users ON tasklist (userid);
 
