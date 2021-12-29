@@ -144,6 +144,9 @@ async def cmd_setprofile(ctx, flags):
             # Parse and validate
             to_add = [split.strip().upper() for line in ctx.args.splitlines() for split in line.split(',')]
             to_add = [split.replace('<3', '❤️') for split in to_add if split]
+            if not to_add:
+                return await ctx.error_reply("No valid tags given, nothing to do!")
+
             validate_tag(*to_add)
 
             if len(to_add) > MAX_TAGS:
