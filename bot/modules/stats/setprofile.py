@@ -12,7 +12,7 @@ from .data import profile_tags
 from .module import module
 
 
-MAX_TAGS = 5
+MAX_TAGS = 10
 MAX_LENGTH = 30
 
 
@@ -32,8 +32,6 @@ async def cmd_setprofile(ctx, flags):
         {prefix}setprofile --clear [--for @user]
     Description:
         Set or update the tags appearing in your study server profile.
-
-        You can have at most `5` tags at once.
 
         Moderators can clear a user's tags with `--clear --for @user`.
     Examples``:
@@ -147,6 +145,9 @@ async def cmd_setprofile(ctx, flags):
             to_add = [split.strip().upper() for split in ctx.args.split(',')]
             validate_tag(*to_add)
 
+            if len(to_add) > MAX_TAGS:
+                return await ctx.error_reply(f"You can have a maximum of {MAX_TAGS} tags!")
+
             # Remove the existing badges
             deleted_rows = profile_tags.delete_where(
                 guildid=ctx.guild.id,
@@ -181,7 +182,7 @@ async def cmd_setprofile(ctx, flags):
         embed = discord.Embed(
             colour=discord.Colour.red(),
             description=(
-                "Use this command to edit your study profile "
+                "Edit your study profile "
                 "tags so other people can see what you do!"
             )
         )
