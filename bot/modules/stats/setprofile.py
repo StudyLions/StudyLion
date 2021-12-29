@@ -142,7 +142,8 @@ async def cmd_setprofile(ctx, flags):
         else:
             # Assume the arguments are a comma separated list of badges
             # Parse and validate
-            to_add = [split.strip().upper() for split in ctx.args.split(',')]
+            to_add = [split.strip().upper() for line in ctx.args.splitlines() for split in line.split(',')]
+            to_add = [split.replace('<3', '❤️') for split in to_add if split]
             validate_tag(*to_add)
 
             if len(to_add) > MAX_TAGS:
@@ -206,7 +207,7 @@ async def cmd_setprofile(ctx, flags):
 
 def validate_tag(*content):
     for content in content:
-        if not set(content).issubset(string.printable):
+        if not set(content.replace('❤️', '')).issubset(string.printable):
             raise SafeCancellation(
                 f"Invalid tag `{content}`!\n"
                 "Tags may only contain alphanumeric and punctuation characters."
