@@ -1,7 +1,4 @@
--- Add deletion column to tasklist entries
--- Add completed_at column to the tasklist entries, replacing complete
-
-
+-- Improved tasklist statistics
 ALTER TABLE tasklist
   ADD COLUMN completed_at TIMESTAMPTZ,
   ADD COLUMN deleted_at TIMESTAMPTZ,
@@ -15,4 +12,15 @@ ALTER TABLE tasklist
   DROP COLUMN complete;
 
 
--- Mark all tasklist entries older than a day as deleted
+-- New member profile tags
+CREATE TABLE member_profile_tags(
+  tagid SERIAL PRIMARY KEY,
+  guildid BIGINT NOT NULL,
+  userid BIGINT NOT NULL,
+  tag TEXT NOT NULL,
+  _timestamp TIMESTAMPTZ DEFAULT now(),
+  FOREIGN KEY (guildid, userid) REFERENCES members (guildid, userid)
+);
+
+
+INSERT INTO VersionHistory (version, author) VALUES (7, 'v6-v7 migration');

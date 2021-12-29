@@ -4,7 +4,7 @@ CREATE TABLE VersionHistory(
   time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
   author TEXT
 );
-INSERT INTO VersionHistory (version, author) VALUES (6, 'Initial Creation');
+INSERT INTO VersionHistory (version, author) VALUES (7, 'Initial Creation');
 
 
 CREATE OR REPLACE FUNCTION update_timestamp_column()
@@ -681,6 +681,21 @@ CREATE TABLE past_member_roles(
   FOREIGN KEY (guildid, userid) REFERENCES members (guildid, userid)
 );
 CREATE INDEX member_role_persistence_members ON past_member_roles (guildid, userid);
+-- }}}
+
+-- Member profile tags {{{
+CREATE TABLE member_profile_tags(
+  tagid SERIAL PRIMARY KEY,
+  guildid BIGINT NOT NULL,
+  userid BIGINT NOT NULL,
+  tag TEXT NOT NULL,
+  _timestamp TIMESTAMPTZ DEFAULT now(),
+  FOREIGN KEY (guildid, userid) REFERENCES members (guildid, userid)
+);
+-- }}}
+
+-- Member goals {{{
+
 -- }}}
 
 -- vim: set fdm=marker:
