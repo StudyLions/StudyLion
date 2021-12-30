@@ -238,7 +238,7 @@ async def goals_command(ctx, flags, goal_type):
                 )
 
             # Passed all checks, edit task
-            task_table.update_were(
+            task_table.update_where(
                 {'content': new_content},
                 taskid=tasklist[index]['taskid']
             )
