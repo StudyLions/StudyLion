@@ -14,7 +14,7 @@ from .data import weekly_goals, weekly_tasks, monthly_goals, monthly_tasks
 
 
 MAX_LENGTH = 200
-MAX_TASKS = 5
+MAX_TASKS = 10
 
 
 class GoalType(Enum):
@@ -160,6 +160,10 @@ async def goals_command(ctx, flags, goal_type):
             return await ctx.error_reply(
                 f"Please provide the number of tasks you want to complete this {name}!\n"
                 f"For example, `{prefix}{ctx.alias} --tasks 300`"
+            )
+        if int(count) > 2048:
+            return await ctx.error_reply(
+                "Your task goal is too high!"
             )
         goal_row.task_goal = int(count)
 
