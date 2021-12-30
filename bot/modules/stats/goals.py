@@ -113,7 +113,8 @@ async def goals_command(ctx, flags, goal_type):
         tasklist = task_table.select_where(
             guildid=ctx.guild.id,
             userid=ctx.author.id,
-            weekid=rowid
+            weekid=rowid,
+            _extra="ORDER BY taskid ASC"
         )
 
         max_time = 7 * 16
@@ -127,7 +128,8 @@ async def goals_command(ctx, flags, goal_type):
         tasklist = task_table.select_where(
             guildid=ctx.guild.id,
             userid=ctx.author.id,
-            monthid=rowid
+            monthid=rowid,
+            _extra="ORDER BY taskid ASC"
         )
 
         max_time = 31 * 16
