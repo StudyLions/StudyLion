@@ -167,7 +167,7 @@ async def cmd_setprofile(ctx, flags):
             # Ack with user
             embed = discord.Embed(
                 colour=discord.Colour.green(),
-                description="Profile tags updated!"
+                title="Profile tags updated!"
             )
             embed.add_field(
                 name="New tags",
@@ -175,9 +175,13 @@ async def cmd_setprofile(ctx, flags):
             )
             if deleted_rows:
                 embed.add_field(
-                    name="Previous tags",
+                    name="Replaced tags",
                     value='\n'.join(row['tag'].upper() for row in deleted_rows),
                     inline=False
+                )
+            if len(to_add) == 1:
+                embed.set_footer(
+                    text=f"TIP: Add multiple tags with {ctx.best_prefix}setprofile tag1, tag2, ..."
                 )
             await ctx.reply(embed=embed)
     else:
