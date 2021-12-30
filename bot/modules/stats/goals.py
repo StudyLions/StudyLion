@@ -51,7 +51,7 @@ async def cmd_weeklygoals(ctx, flags):
         {prefix}weeklygoals check <taskids>
         {prefix}weeklygoals remove <taskids>
     Description:
-        Set yourself up to `5` goals for this week and keep yourself accountable!
+        Set yourself up to `10` goals for this week and keep yourself accountable!
         Use `add/edit/check/remove` to edit your goals, similarly to `{prefix}todo`.
         You can also add multiple tasks at once by writing them on multiple lines.
 
@@ -85,7 +85,7 @@ async def cmd_monthlygoals(ctx, flags):
         {prefix}monthlygoals uncheck <taskids>
         {prefix}monthlygoals remove <taskids>
     Description:
-        Set yourself up to `5` goals for this month and keep yourself accountable!
+        Set yourself up to `10` goals for this month and keep yourself accountable!
         Use `add/edit/check/remove` to edit your goals, similarly to `{prefix}todo`.
         You can also add multiple tasks at once by writing them on multiple lines.
 
@@ -293,7 +293,7 @@ async def goals_command(ctx, flags, goal_type):
             inline=False
         )
         embed.add_field(
-            name=f"Set up to 5 custom goals for the {name}!",
+            name=f"Set up to 10 custom goals for the {name}!",
             value=(
                 f"`{prefix}{ctx.alias} add Write a 200 page thesis.`\n"
                 f"`{prefix}{ctx.alias} edit 1 Write 2 pages of the 200 page thesis.`\n"
