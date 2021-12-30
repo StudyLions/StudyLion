@@ -479,7 +479,7 @@ class Tasklist:
         count = data.tasklist.select_one_where(
             select_columns=("COUNT(*)",),
             userid=self.member.id,
-            deleted_at=NOTNULL
+            deleted_at=NULL
         )[0]
 
         # Fetch maximum allowed count
