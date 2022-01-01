@@ -147,6 +147,37 @@ class Lion:
         return now.replace(hour=0, minute=0, second=0, microsecond=0)
 
     @property
+    def day_timestamp(self):
+        """
+        EPOCH timestamp representing the current day for the user.
+        NOTE: This is the timestamp of the start of the current UTC day with the same date as the user's day.
+        This is *not* the start of the current user's day, either in UTC or their own timezone.
+        This may also not be the start of the current day in UTC (consider 23:00 for a user in UTC-2).
+        """
+        now = datetime.now(tz=self.timezone)
+        day_start = now.replace(hour=0, minute=0, second=0, microsecond=0)
+        return int(day_start.replace(tzinfo=pytz.utc).timestamp())
+
+    @property
+    def week_timestamp(self):
+        """
+        EPOCH timestamp representing the current week for the user.
+        """
+        now = datetime.now(tz=self.timezone)
+        day_start = now.replace(hour=0, minute=0, second=0, microsecond=0)
+        week_start = day_start - timedelta(days=day_start.weekday())
+        return int(week_start.replace(tzinfo=pytz.utc).timestamp())
+
+    @property
+    def month_timestamp(self):
+        """
+        EPOCH timestamp representing the current month for the user.
+        """
+        now = datetime.now(tz=self.timezone)
+        month_start = now.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+        return int(month_start.replace(tzinfo=pytz.utc).timestamp())
+
+    @property
     def remaining_in_day(self):
         return ((self.day_start + timedelta(days=1)) - datetime.now(self.timezone)).total_seconds()
 

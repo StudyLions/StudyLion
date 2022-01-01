@@ -231,7 +231,7 @@ class TimeSlot:
                 self.channel = self.guild.get_channel(self.data.channelid)
 
             # Load message
-            if self.data.messageid:
+            if self.data.messageid and self.lobby:
                 self.message = discord.PartialMessage(
                     channel=self.lobby,
                     id=self.data.messageid

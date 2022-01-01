@@ -1,4 +1,4 @@
 from LionModule import LionModule
 
 
-module = LionModule("Study_Stats")
+module = LionModule("Study_Tracking")
