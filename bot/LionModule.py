@@ -13,7 +13,7 @@ class LionCommand(Command):
     """
     Subclass to allow easy attachment of custom hooks and structure to commands.
     """
-    ...
+    allow_before_ready = False
 
 
 class LionModule(Module):
@@ -72,25 +72,38 @@ class LionModule(Module):
         """
         Lion pre-command hook.
         """
+        if not self.ready and not ctx.cmd.allow_before_ready:
+            try:
+                await ctx.embed_reply(
+                    "I am currently restarting! Please try again in a couple of minutes."
+                )
+            except discord.HTTPException:
+                pass
+            raise SafeCancellation(details="Module '{}' is not ready.".format(self.name))
+
         # Check global user blacklist
-        if ctx.author.id in ctx.client.objects['blacklisted_users']:
-            raise SafeCancellation
+        if ctx.author.id in ctx.client.user_blacklist():
+            raise SafeCancellation(details='User is blacklisted.')
 
         if ctx.guild:
+            # Check that the channel and guild still exists
+            if not ctx.client.get_guild(ctx.guild.id) or not ctx.guild.get_channel(ctx.ch.id):
+                raise SafeCancellation(details='Command channel is no longer reachable.')
+
             # Check global guild blacklist
-            if ctx.guild.id in ctx.client.objects['blacklisted_guilds']:
-                raise SafeCancellation
+            if ctx.guild.id in ctx.client.guild_blacklist():
+                raise SafeCancellation(details='Guild is blacklisted.')
 
             # Check guild's own member blacklist
             if ctx.author.id in ctx.client.objects['ignored_members'][ctx.guild.id]:
-                raise SafeCancellation
+                raise SafeCancellation(details='User is ignored in this guild.')
 
             # Check channel permissions are sane
             if not ctx.ch.permissions_for(ctx.guild.me).send_messages:
-                raise SafeCancellation
+                raise SafeCancellation(details='I cannot send messages in this channel.')
             if not ctx.ch.permissions_for(ctx.guild.me).embed_links:
                 await ctx.reply("I need permission to send embeds in this channel before I can run any commands!")
-                raise SafeCancellation
+                raise SafeCancellation(details='I cannot send embeds in this channel.')
 
         # Start typing
         await ctx.ch.trigger_typing()

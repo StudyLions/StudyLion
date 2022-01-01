@@ -199,6 +199,7 @@ class price(setting_types.Integer, ReactionSetting):
     )
 
     accepts = "An integer number of coins. Use `0` to make the role free, or `None` to use the message default."
+    _max = 2 ** 20
 
     @property
     def default(self):

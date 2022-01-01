@@ -26,21 +26,22 @@ async def embed_reply(ctx, desc, colour=discord.Colour.orange(), **kwargs):
 
 
 @Context.util
-async def error_reply(ctx, error_str, **kwargs):
+async def error_reply(ctx, error_str, send_args={}, **kwargs):
     """
     Notify the user of a user level error.
     Typically, this will occur in a red embed, posted in the command channel.
     """
     embed = discord.Embed(
         colour=discord.Colour.red(),
-        description=error_str
+        description=error_str,
+        **kwargs
     )
     message = None
     try:
         message = await ctx.ch.send(
             embed=embed,
             reference=ctx.msg.to_reference(fail_if_not_exists=False),
-            **kwargs
+            **send_args
         )
         ctx.sent_messages.append(message)
         return message

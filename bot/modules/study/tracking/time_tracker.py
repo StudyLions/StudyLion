@@ -47,7 +47,7 @@ def _scan(guild):
     members = itertools.chain(*channel_members)
     # TODO filter out blacklisted users
 
-    blacklist = client.objects['blacklisted_users']
+    blacklist = client.user_blacklist()
     guild_blacklist = client.objects['ignored_members'][guild.id]
 
     for member in members:

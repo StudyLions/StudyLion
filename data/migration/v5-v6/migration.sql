@@ -1,19 +1,22 @@
-/* DROP TYPE IF EXISTS SessionChannelType CASCADE; */
-/* DROP TABLE IF EXISTS session_history CASCADE; */
-/* DROP TABLE IF EXISTS current_sessions CASCADE; */
-/* DROP FUNCTION IF EXISTS close_study_session; */
+-- DROP TYPE IF EXISTS SessionChannelType CASCADE;
+-- DROP TABLE IF EXISTS session_history CASCADE;
+-- DROP TABLE IF EXISTS current_sessions CASCADE;
+-- DROP FUNCTION IF EXISTS close_study_session(_guildid BIGINT, _userid BIGINT);
+-- DROP FUNCTION IF EXISTS study_time_since(_guildid BIGINT, _userid BIGINT, _timestamp TIMESTAMPTZ)
 
-/* DROP VIEW IF EXISTS current_sessions_totals CASCADE; */
-/* DROP VIEW IF EXISTS member_totals CASCADE; */
-/* DROP VIEW IF EXISTS member_ranks CASCADE; */
-/* DROP VIEW IF EXISTS current_study_badges CASCADE; */
-/* DROP VIEW IF EXISTS new_study_badges CASCADE; */
+-- DROP VIEW IF EXISTS current_sessions_totals CASCADE;
+
+DROP VIEW IF EXISTS member_totals CASCADE;
+DROP VIEW IF EXISTS member_ranks CASCADE;
+DROP VIEW IF EXISTS current_study_badges CASCADE;
+DROP VIEW IF EXISTS new_study_badges CASCADE;
+
 
 CREATE TYPE SessionChannelType AS ENUM (
+  'STANDARD',
   'ACCOUNTABILITY',
   'RENTED',
-  'EXTERNAL',
-  'MIGRATED'
+  'EXTERNAL'
 );
 
 CREATE TABLE session_history(
@@ -74,7 +77,7 @@ AS $$
         ) SELECT
           guildid, userid, channelid, channel_type, start_time,
           total_duration, total_stream_duration, total_video_duration, total_live_duration,
-          (total_duration * hourly_coins + live_duration * hourly_live_coins) / 60
+          (total_duration * hourly_coins + live_duration * hourly_live_coins) / 3600
         FROM current_sesh
         RETURNING *
       )
@@ -105,7 +108,7 @@ CREATE VIEW members_totals AS
     *,
     sesh.start_time AS session_start,
     tracked_time + COALESCE(sesh.total_duration, 0) AS total_tracked_time,
-    coins + COALESCE((sesh.total_duration * sesh.hourly_coins + sesh.live_duration * sesh.hourly_live_coins) / 60, 0) AS total_coins
+    coins + COALESCE((sesh.total_duration * sesh.hourly_coins + sesh.live_duration * sesh.hourly_live_coins) / 3600, 0) AS total_coins
   FROM members
   LEFT JOIN current_sessions_totals sesh USING (guildid, userid);
 
@@ -122,7 +125,7 @@ CREATE VIEW current_study_badges AS
     *,
     (SELECT r.badgeid
       FROM study_badges r
-      WHERE r.guildid = members_totals.guildid AND members_totals.tracked_time > r.required_time
+      WHERE r.guildid = members_totals.guildid AND members_totals.total_tracked_time > r.required_time
       ORDER BY r.required_time DESC
       LIMIT 1) AS current_study_badgeid
     FROM members_totals;
@@ -134,3 +137,44 @@ CREATE VIEW new_study_badges AS
   WHERE
     last_study_badgeid IS DISTINCT FROM current_study_badgeid
   ORDER BY guildid;
+
+
+CREATE FUNCTION study_time_since(_guildid BIGINT, _userid BIGINT, _timestamp TIMESTAMPTZ)
+  RETURNS INTEGER
+AS $$
+  BEGIN
+    RETURN (
+      SELECT
+          SUM(
+            CASE
+              WHEN start_time >= _timestamp THEN duration
+              ELSE EXTRACT(EPOCH FROM (end_time - _timestamp))
+            END
+          )
+      FROM (
+        SELECT
+          start_time,
+          duration,
+          (start_time + duration * interval '1 second') AS end_time
+        FROM session_history
+        WHERE
+          guildid=_guildid
+          AND userid=_userid
+          AND (start_time + duration * interval '1 second') >= _timestamp
+        UNION
+        SELECT
+          start_time,
+          EXTRACT(EPOCH FROM (NOW() - start_time)) AS duration,
+          NOW() AS end_time
+        FROM current_sessions
+        WHERE
+          guildid=_guildid
+          AND userid=_userid
+      ) AS sessions
+    );
+  END;
+$$ LANGUAGE PLPGSQL;
+
+ALTER TABLE guild_config ADD COLUMN daily_study_cap INTEGER;
+
+INSERT INTO VersionHistory (version, author) VALUES (6, 'v5-v6 Migration');

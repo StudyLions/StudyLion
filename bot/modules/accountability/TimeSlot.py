@@ -69,7 +69,8 @@ class TimeSlot:
 
     _everyone_overwrite = discord.PermissionOverwrite(
         view_channel=False,
-        connect=False
+        connect=False,
+        speak=False
     )
 
     happy_lion = "https://media.discordapp.net/stickers/898266283559227422.png"
@@ -89,7 +90,6 @@ class TimeSlot:
 
     @property
     def open_embed(self):
-        # TODO Consider adding hint to footer
         timestamp = int(self.start_time.timestamp())
 
         embed = discord.Embed(
@@ -218,6 +218,9 @@ class TimeSlot:
         """
         Load data and update applicable caches.
         """
+        if not self.guild:
+            return self
+
         # Load setting data
         self.category = GuildSettings(self.guild.id).accountability_category.value
         self.lobby = GuildSettings(self.guild.id).accountability_lobby.value
@@ -228,7 +231,7 @@ class TimeSlot:
                 self.channel = self.guild.get_channel(self.data.channelid)
 
             # Load message
-            if self.data.messageid:
+            if self.data.messageid and self.lobby:
                 self.message = discord.PartialMessage(
                     channel=self.lobby,
                     id=self.data.messageid
@@ -242,6 +245,34 @@ class TimeSlot:
                 }
 
         return self
+
+    async def _reload_members(self, memberids=None):
+        """
+        Reload the timeslot members from the provided list, or data.
+        Also updates the channel overwrites if required.
+        To be used before the session has started.
+        """
+        if self.data:
+            if memberids is None:
+                member_rows = accountability_members.fetch_rows_where(slotid=self.data.slotid)
+                memberids = [row.userid for row in member_rows]
+
+            self.members = members = {
+                memberid: SlotMember(self.data.slotid, memberid, self.guild)
+                for memberid in memberids
+            }
+
+            if self.channel:
+                # Check and potentially update overwrites
+                current_overwrites = self.channel.overwrites
+                overwrites = {
+                    mem.member: self._member_overwrite
+                    for mem in members.values()
+                    if mem.member
+                }
+                overwrites[self.guild.default_role] = self._everyone_overwrite
+                if current_overwrites != overwrites:
+                    await self.channel.edit(overwrites=overwrites)
 
     def _refresh(self):
         """
@@ -389,13 +420,14 @@ class TimeSlot:
                 pass
 
         # Reward members appropriately
-        guild_settings = GuildSettings(self.guild.id)
-        reward = guild_settings.accountability_reward.value
-        if all(mem.has_attended for mem in self.members.values()):
-            reward += guild_settings.accountability_bonus.value
+        if self.guild:
+            guild_settings = GuildSettings(self.guild.id)
+            reward = guild_settings.accountability_reward.value
+            if all(mem.has_attended for mem in self.members.values()):
+                reward += guild_settings.accountability_bonus.value
 
-        for memid in self.members:
-            Lion.fetch(self.guild.id, memid).addCoins(reward)
+            for memid in self.members:
+                Lion.fetch(self.guild.id, memid).addCoins(reward)
 
     async def cancel(self):
         """

@@ -1,9 +1,8 @@
 """
 Guild, user, and member blacklists.
-
-NOTE: The pre-loading methods are not shard-optimised.
 """
 from collections import defaultdict
+import cachetools.func
 
 from data import tables
 from meta import client
@@ -11,32 +10,22 @@ from meta import client
 from .module import module
 
 
-@module.init_task
-def load_guild_blacklist(client):
+@cachetools.func.ttl_cache(ttl=300)
+def guild_blacklist():
     """
-    Load the blacklisted guilds.
+    Get the guild blacklist
     """
     rows = tables.global_guild_blacklist.select_where()
-    client.objects['blacklisted_guilds'] = set(row['guildid'] for row in rows)
-    if rows:
-        client.log(
-            "Loaded {} blacklisted guilds.".format(len(rows)),
-            context="GUILD_BLACKLIST"
-        )
+    return set(row['guildid'] for row in rows)
 
 
-@module.init_task
-def load_user_blacklist(client):
+@cachetools.func.ttl_cache(ttl=300)
+def user_blacklist():
     """
-    Load the blacklisted users.
+    Get the global user blacklist.
     """
     rows = tables.global_user_blacklist.select_where()
-    client.objects['blacklisted_users'] = set(row['userid'] for row in rows)
-    if rows:
-        client.log(
-            "Loaded {} globally blacklisted users.".format(len(rows)),
-            context="USER_BLACKLIST"
-        )
+    return set(row['userid'] for row in rows)
 
 
 @module.init_task
@@ -62,18 +51,20 @@ def load_ignored_members(client):
         )
 
 
+@module.init_task
+def attach_client_blacklists(client):
+    client.guild_blacklist = guild_blacklist
+    client.user_blacklist = user_blacklist
+
+
 @module.launch_task
 async def leave_blacklisted_guilds(client):
     """
     Launch task to leave any blacklisted guilds we are in.
-    Assumes that the blacklisted guild list has been initialised.
     """
-    # Cache to avoic repeated lookups
-    blacklisted = client.objects['blacklisted_guilds']
-
     to_leave = [
         guild for guild in client.guilds
-        if guild.id in blacklisted
+        if guild.id in guild_blacklist()
     ]
 
     for guild in to_leave:
@@ -92,7 +83,8 @@ async def check_guild_blacklist(client, guild):
     Guild join event handler to check whether the guild is blacklisted.
     If so, leaves the guild.
     """
-    if guild.id in client.objects['blacklisted_guilds']:
+    # First refresh the blacklist cache
+    if guild.id in guild_blacklist():
         await guild.leave()
         client.log(
             "Automatically left blacklisted guild '{}' (gid:{}) upon join.".format(guild.name, guild.id),

@@ -6,6 +6,7 @@ import datetime
 import discord
 
 from meta import client
+from data.conditions import THIS_SHARD
 from settings import GuildSettings
 from utils.lib import FieldEnum, strfdelta, utc_now
 
@@ -283,7 +284,8 @@ class Ticket:
 
         # Get all expiring tickets
         expiring_rows = data.tickets.select_where(
-            ticket_state=TicketState.EXPIRING
+            ticket_state=TicketState.EXPIRING,
+            guildid=THIS_SHARD
         )
 
         # Create new expiry tasks

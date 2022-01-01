@@ -20,46 +20,21 @@ user_config = RowTable(
 )
 
 
-@user_config.save_query
-def add_pending(pending):
-    """
-    pending:
-        List of tuples of the form `(userid, pending_coins, pending_time)`.
-    """
-    with lions.conn:
-        cursor = lions.conn.cursor()
-        data = execute_values(
-            cursor,
-            """
-            UPDATE members
-            SET
-                coins = coins + t.coin_diff,
-                tracked_time = tracked_time + t.time_diff
-            FROM
-                (VALUES %s)
-            AS
-                t (guildid, userid, coin_diff, time_diff)
-            WHERE
-                members.guildid = t.guildid
-                AND
-                members.userid = t.userid
-            RETURNING *
-            """,
-            pending,
-            fetch=True
-        )
-        return lions._make_rows(*data)
-
-
 guild_config = RowTable(
     'guild_config',
-    ('guildid', 'admin_role', 'mod_role', 'event_log_channel', 'alert_channel',
+    ('guildid', 'admin_role', 'mod_role', 'event_log_channel', 'mod_log_channel', 'alert_channel',
+     'studyban_role', 'max_study_bans',
      'min_workout_length', 'workout_reward',
      'max_tasks', 'task_reward', 'task_reward_limit',
-     'study_hourly_reward', 'study_hourly_live_bonus',
-     'study_ban_role', 'max_study_bans'),
+     'study_hourly_reward', 'study_hourly_live_bonus', 'daily_study_cap',
+     'renting_price', 'renting_category', 'renting_cap', 'renting_role', 'renting_sync_perms',
+     'accountability_category', 'accountability_lobby', 'accountability_bonus',
+     'accountability_reward', 'accountability_price',
+     'video_studyban', 'video_grace_period',
+     'greeting_channel', 'greeting_message', 'returning_message',
+     'starting_funds', 'persist_roles'),
     'guildid',
-    cache=TTLCache(1000, ttl=60*5)
+    cache=TTLCache(2500, ttl=60*5)
 )
 
 unranked_roles = Table('unranked_roles')
@@ -72,6 +47,7 @@ lions = RowTable(
     ('guildid', 'userid',
      'tracked_time', 'coins',
      'workout_count', 'last_workout_start',
+     'revision_mute_count',
      'last_study_badgeid',
      'video_warned',
      '_timestamp'
@@ -81,7 +57,64 @@ lions = RowTable(
     attach_as='lions'
 )
 
+
+@lions.save_query
+def add_pending(pending):
+    """
+    pending:
+        List of tuples of the form `(guildid, userid, pending_coins)`.
+    """
+    with lions.conn:
+        cursor = lions.conn.cursor()
+        data = execute_values(
+            cursor,
+            """
+            UPDATE members
+            SET
+                coins = coins + t.coin_diff
+            FROM
+                (VALUES %s)
+            AS
+                t (guildid, userid, coin_diff)
+            WHERE
+                members.guildid = t.guildid
+                AND
+                members.userid = t.userid
+            RETURNING *
+            """,
+            pending,
+            fetch=True
+        )
+        return lions._make_rows(*data)
+
+
 lion_ranks = Table('member_ranks', attach_as='lion_ranks')
+
+
+@lions.save_query
+def get_member_rank(guildid, userid, untracked):
+    """
+    Get the time and coin ranking for the given member, ignoring the provided untracked members.
+    """
+    with lions.conn as conn:
+        with conn.cursor() as curs:
+            curs.execute(
+                """
+                SELECT
+                  time_rank, coin_rank
+                FROM (
+                  SELECT
+                    userid,
+                    row_number() OVER (ORDER BY total_tracked_time DESC, userid ASC) AS time_rank,
+                    row_number() OVER (ORDER BY total_coins DESC, userid ASC) AS coin_rank
+                  FROM members_totals
+                  WHERE
+                    guildid=%s AND userid NOT IN %s
+                ) AS guild_ranks WHERE userid=%s
+                """,
+                (guildid, tuple(untracked), userid)
+            )
+            return curs.fetchone() or (None, None)
 
 
 global_guild_blacklist = Table('global_guild_blacklist')

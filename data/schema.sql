@@ -4,7 +4,7 @@ CREATE TABLE VersionHistory(
   time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
   author TEXT
 );
-INSERT INTO VersionHistory (version, author) VALUES (5, 'Initial Creation');
+INSERT INTO VersionHistory (version, author) VALUES (7, 'Initial Creation');
 
 
 CREATE OR REPLACE FUNCTION update_timestamp_column()
@@ -78,7 +78,7 @@ CREATE TABLE guild_config(
   returning_message TEXT,
   starting_funds INTEGER,
   persist_roles BOOLEAN,
-  max_daily_study INTEGER
+  daily_study_cap INTEGER
 );
 
 CREATE TABLE ignored_members(
@@ -135,10 +135,11 @@ CREATE TABLE tasklist(
   taskid SERIAL PRIMARY KEY,
   userid BIGINT NOT NULL,
   content TEXT NOT NULL,
-  complete BOOL DEFAULT FALSE,
   rewarded BOOL DEFAULT FALSE,
-  created_at TIMESTAMP DEFAULT (now() at time zone 'utc'),
-  last_updated_at TIMESTAMP DEFAULT (now() at time zone 'utc')
+  deleted_at TIMESTAMPTZ,
+  completed_at TIMESTAMPTZ,
+  created_at TIMESTAMPTZ,
+  last_updated_at TIMESTAMPTZ
 );
 CREATE INDEX tasklist_users ON tasklist (userid);
 
@@ -412,11 +413,12 @@ update_timestamp_column();
 
 -- Study Session Data {{{
 CREATE TYPE SessionChannelType AS ENUM (
+  'STANDARD',
   'ACCOUNTABILITY',
   'RENTED',
   'EXTERNAL',
-  'MIGRATED'
 );
+
 
 CREATE TABLE session_history(
   sessionid SERIAL PRIMARY KEY,
@@ -453,6 +455,43 @@ CREATE TABLE current_sessions(
 CREATE UNIQUE INDEX current_session_members ON current_sessions (guildid, userid);
 
 
+CREATE FUNCTION study_time_since(_guildid BIGINT, _userid BIGINT, _timestamp TIMESTAMPTZ)
+  RETURNS INTEGER
+AS $$
+  BEGIN
+    RETURN (
+      SELECT
+          SUM(
+            CASE
+              WHEN start_time >= _timestamp THEN duration
+              ELSE EXTRACT(EPOCH FROM (end_time - _timestamp))
+            END
+          )
+      FROM (
+        SELECT
+          start_time,
+          duration,
+          (start_time + duration * interval '1 second') AS end_time
+        FROM session_history
+        WHERE
+          guildid=_guildid
+          AND userid=_userid
+          AND (start_time + duration * interval '1 second') >= _timestamp
+        UNION
+        SELECT
+          start_time,
+          EXTRACT(EPOCH FROM (NOW() - start_time)) AS duration,
+          NOW() AS end_time
+        FROM current_sessions
+        WHERE
+          guildid=_guildid
+          AND userid=_userid
+      ) AS sessions
+    );
+  END;
+$$ LANGUAGE PLPGSQL;
+
+
 CREATE FUNCTION close_study_session(_guildid BIGINT, _userid BIGINT)
   RETURNS SETOF members
 AS $$
@@ -476,7 +515,7 @@ AS $$
         ) SELECT
           guildid, userid, channelid, channel_type, start_time,
           total_duration, total_stream_duration, total_video_duration, total_live_duration,
-          (total_duration * hourly_coins + live_duration * hourly_live_coins) / 60
+          (total_duration * hourly_coins + live_duration * hourly_live_coins) / 3600
         FROM current_sesh
         RETURNING *
       )
@@ -506,7 +545,7 @@ CREATE VIEW members_totals AS
     *,
     sesh.start_time AS session_start,
     tracked_time + COALESCE(sesh.total_duration, 0) AS total_tracked_time,
-    coins + COALESCE((sesh.total_duration * sesh.hourly_coins + sesh.live_duration * sesh.hourly_live_coins) / 60, 0) AS total_coins
+    coins + COALESCE((sesh.total_duration * sesh.hourly_coins + sesh.live_duration * sesh.hourly_live_coins) / 3600, 0) AS total_coins
   FROM members
   LEFT JOIN current_sessions_totals sesh USING (guildid, userid);
 
@@ -525,7 +564,7 @@ CREATE VIEW current_study_badges AS
     *,
     (SELECT r.badgeid
       FROM study_badges r
-      WHERE r.guildid = members_totals.guildid AND members_totals.tracked_time > r.required_time
+      WHERE r.guildid = members_totals.guildid AND members_totals.total_tracked_time > r.required_time
       ORDER BY r.required_time DESC
       LIMIT 1) AS current_study_badgeid
     FROM members_totals;
@@ -642,6 +681,69 @@ CREATE TABLE past_member_roles(
   FOREIGN KEY (guildid, userid) REFERENCES members (guildid, userid)
 );
 CREATE INDEX member_role_persistence_members ON past_member_roles (guildid, userid);
+-- }}}
+
+-- Member profile tags {{{
+CREATE TABLE member_profile_tags(
+  tagid SERIAL PRIMARY KEY,
+  guildid BIGINT NOT NULL,
+  userid BIGINT NOT NULL,
+  tag TEXT NOT NULL,
+  _timestamp TIMESTAMPTZ DEFAULT now(),
+  FOREIGN KEY (guildid, userid) REFERENCES members (guildid, userid)
+);
+CREATE INDEX member_profile_tags_members ON member_profile_tags (guildid, userid);
+-- }}}
+
+-- Member goals {{{
+CREATE TABLE member_weekly_goals(
+  guildid BIGINT NOT NULL,
+  userid BIGINT NOT NULL,
+  weekid INTEGER NOT NULL, -- Epoch time of the start of the UTC week
+  study_goal INTEGER,
+  task_goal INTEGER,
+  _timestamp TIMESTAMPTZ DEFAULT now(),
+  PRIMARY KEY (guildid, userid, weekid),
+  FOREIGN KEY (guildid, userid) REFERENCES members (guildid, userid) ON DELETE CASCADE
+);
+CREATE INDEX member_weekly_goals_members ON member_weekly_goals (guildid, userid);
+
+CREATE TABLE member_weekly_goal_tasks(
+  taskid SERIAL PRIMARY KEY,
+  guildid BIGINT NOT NULL,
+  userid BIGINT NOT NULL,
+  weekid INTEGER NOT NULL,
+  content TEXT NOT NULL,
+  completed BOOLEAN NOT NULL DEFAULT FALSE,
+  _timestamp TIMESTAMPTZ DEFAULT now(),
+  FOREIGN KEY (weekid, guildid, userid) REFERENCES member_weekly_goals (weekid, guildid, userid) ON DELETE CASCADE
+);
+CREATE INDEX member_weekly_goal_tasks_members_weekly ON member_weekly_goal_tasks (guildid, userid, weekid);
+
+CREATE TABLE member_monthly_goals(
+  guildid BIGINT NOT NULL,
+  userid BIGINT NOT NULL,
+  monthid INTEGER NOT NULL, -- Epoch time of the start of the UTC month
+  study_goal INTEGER,
+  task_goal INTEGER,
+  _timestamp TIMESTAMPTZ DEFAULT now(),
+  PRIMARY KEY (guildid, userid, monthid),
+  FOREIGN KEY (guildid, userid) REFERENCES members (guildid, userid) ON DELETE CASCADE
+);
+CREATE INDEX member_monthly_goals_members ON member_monthly_goals (guildid, userid);
+
+CREATE TABLE member_monthly_goal_tasks(
+  taskid SERIAL PRIMARY KEY,
+  guildid BIGINT NOT NULL,
+  userid BIGINT NOT NULL,
+  monthid INTEGER NOT NULL,
+  content TEXT NOT NULL,
+  completed BOOLEAN NOT NULL DEFAULT FALSE,
+  _timestamp TIMESTAMPTZ DEFAULT now(),
+  FOREIGN KEY (monthid, guildid, userid) REFERENCES member_monthly_goals (monthid, guildid, userid) ON DELETE CASCADE
+);
+CREATE INDEX member_monthly_goal_tasks_members_monthly ON member_monthly_goal_tasks (guildid, userid, monthid);
+
 -- }}}
 
 -- vim: set fdm=marker:

@@ -6,8 +6,9 @@ import asyncio
 from cmdClient.lib import SafeCancellation
 from meta import client
 from core import Lion
+from data import NULL, NOTNULL
 from settings import GuildSettings
-from utils.lib import parse_ranges
+from utils.lib import parse_ranges, utc_now
 
 from . import data
 # from .module import module
@@ -130,12 +131,12 @@ class Tasklist:
         """
         self.tasklist = data.tasklist.fetch_rows_where(
             userid=self.member.id,
-            _extra=("AND last_updated_at > timezone('utc', NOW()) - INTERVAL '24h' "
-                    "ORDER BY created_at ASC, taskid ASC")
+            deleted_at=NULL,
+            _extra="ORDER BY created_at ASC, taskid ASC"
         )
         self._refreshed_at = datetime.datetime.utcnow()
 
-    def _format_tasklist(self):
+    async def _format_tasklist(self):
         """
         Generates a sequence of pages from the tasklist
         """
@@ -144,7 +145,7 @@ class Tasklist:
             "{num:>{numlen}}. [{mark}] {content}".format(
                 num=i,
                 numlen=((self.block_size * (i // self.block_size + 1) - 1) // 10) + 1,
-                mark=self.checkmark if task.complete else ' ',
+                mark=self.checkmark if task.completed_at else ' ',
                 content=task.content
             )
             for i, task in enumerate(self.tasklist)
@@ -159,7 +160,7 @@ class Tasklist:
         # Formatting strings and data
         page_count = len(task_blocks) or 1
         task_count = len(task_strings)
-        complete_count = len([task for task in self.tasklist if task.complete])
+        complete_count = len([task for task in self.tasklist if task.completed_at])
 
         if task_count > 0:
             title = "TODO list ({}/{} complete)".format(
@@ -176,7 +177,7 @@ class Tasklist:
             hint = "Type `add <task>` to start adding tasks! E.g. `add Revise Maths Paper 1`."
             task_blocks = [""]  # Empty page so we can post
 
-        # Create formtted page embeds, adding help if required
+        # Create formatted page embeds, adding help if required
         pages = []
         for i, block in enumerate(task_blocks):
             embed = discord.Embed(
@@ -205,7 +206,7 @@ class Tasklist:
         # Calculate or adjust the current page number
         if self.current_page is None:
             # First page with incomplete task, or the first page
-            first_incomplete = next((i for i, task in enumerate(self.tasklist) if not task.complete), 0)
+            first_incomplete = next((i for i, task in enumerate(self.tasklist) if not task.completed_at), 0)
             self.current_page = first_incomplete // self.block_size
         elif self.current_page >= len(self.pages):
             self.current_page = len(self.pages) - 1
@@ -233,6 +234,12 @@ class Tasklist:
         self.message = message
         self.messages[message.id] = self
 
+    async def _update(self):
+        """
+        Update the current message with the current page.
+        """
+        await self.message.edit(embed=self.pages[self.current_page])
+
     async def update(self, repost=None):
         """
         Update the displayed tasklist.
@@ -243,7 +250,7 @@ class Tasklist:
 
         # Update data and make page list
         self._refresh()
-        self._format_tasklist()
+        await self._format_tasklist()
         self._adjust_current_page()
 
         if self.message and not repost:
@@ -266,7 +273,8 @@ class Tasklist:
 
             if not repost:
                 try:
-                    await self.message.edit(embed=self.pages[self.current_page])
+                    # TODO: Refactor into update method
+                    await self._update()
                     # Add or remove paging reactions as required
                     should_have_paging = len(self.pages) > 1
 
@@ -387,8 +395,14 @@ class Tasklist:
         Delete tasks from the task list
         """
         taskids = [self.tasklist[i].taskid for i in indexes]
-        return data.tasklist.delete_where(
-            taskid=taskids
+
+        now = utc_now()
+        return data.tasklist.update_where(
+            {
+                'deleted_at': now,
+                'last_updated_at': now
+            },
+            taskid=taskids,
         )
 
     def _edit_task(self, index, new_content):
@@ -396,10 +410,12 @@ class Tasklist:
         Update the provided task with the new content
         """
         taskid = self.tasklist[index].taskid
+
+        now = utc_now()
         return data.tasklist.update_where(
             {
                 'content': new_content,
-                'last_updated_at': datetime.datetime.utcnow()
+                'last_updated_at': now
             },
             taskid=taskid,
         )
@@ -409,13 +425,15 @@ class Tasklist:
         Mark provided tasks as complete
         """
         taskids = [self.tasklist[i].taskid for i in indexes]
+
+        now = utc_now()
         return data.tasklist.update_where(
             {
-                'complete': True,
-                'last_updated_at': datetime.datetime.utcnow()
+                'completed_at': now,
+                'last_updated_at': now
             },
             taskid=taskids,
-            complete=False,
+            completed_at=NULL,
         )
 
     def _uncheck_tasks(self, *indexes):
@@ -423,13 +441,15 @@ class Tasklist:
         Mark provided tasks as incomplete
         """
         taskids = [self.tasklist[i].taskid for i in indexes]
+
+        now = utc_now()
         return data.tasklist.update_where(
             {
-                'complete': False,
-                'last_updated_at': datetime.datetime.utcnow()
+                'completed_at': None,
+                'last_updated_at': now
             },
             taskid=taskids,
-            complete=True,
+            completed_at=NOTNULL,
         )
 
     def _index_range_parser(self, userstr):
@@ -459,7 +479,7 @@ class Tasklist:
         count = data.tasklist.select_one_where(
             select_columns=("COUNT(*)",),
             userid=self.member.id,
-            _extra="AND last_updated_at > timezone('utc', NOW()) - INTERVAL '24h'"
+            deleted_at=NULL
         )[0]
 
         # Fetch maximum allowed count
@@ -496,8 +516,8 @@ class Tasklist:
         # Parse provided ranges
         indexes = self._index_range_parser(userstr)
 
-        to_check = [index for index in indexes if not self.tasklist[index].complete]
-        to_uncheck = [index for index in indexes if self.tasklist[index].complete]
+        to_check = [index for index in indexes if not self.tasklist[index].completed_at]
+        to_uncheck = [index for index in indexes if self.tasklist[index].completed_at]
 
         if to_uncheck:
             self._uncheck_tasks(*to_uncheck)
@@ -572,21 +592,21 @@ class Tasklist:
                 self.current_page %= len(self.pages)
                 if self.show_help:
                     self.show_help = False
-                    self._format_tasklist()
-                await self.message.edit(embed=self.pages[self.current_page])
+                    await self._format_tasklist()
+                await self._update()
             elif str_emoji == self.prev_emoji and user.id == self.member.id:
                 self.current_page -= 1
                 self.current_page %= len(self.pages)
                 if self.show_help:
                     self.show_help = False
-                    self._format_tasklist()
-                await self.message.edit(embed=self.pages[self.current_page])
+                    await self._format_tasklist()
+                await self._update()
             elif str_emoji == self.cancel_emoji and user.id == self.member.id:
                 await self.deactivate(delete=True)
             elif str_emoji == self.question_emoji and user.id == self.member.id:
                 self.show_help = not self.show_help
-                self._format_tasklist()
-                await self.message.edit(embed=self.pages[self.current_page])
+                await self._format_tasklist()
+                await self._update()
             elif str_emoji == self.refresh_emoji and user.id == self.member.id:
                 await self.update()
 
@@ -687,15 +707,3 @@ async def tasklist_message_handler(client, message):
 async def tasklist_reaction_add_handler(client, reaction, user):
     if user != client.user and reaction.message.id in Tasklist.messages:
         await Tasklist.messages[reaction.message.id].handle_reaction(reaction, user, True)
-
-
-# @module.launch_task
-# Commented because we don't actually need to expire these
-async def tasklist_expiry_watchdog(client):
-    removed = data.tasklist.queries.expire_old_tasks()
-    if removed:
-        client.log(
-            "Remove {} stale todo tasks.".format(len(removed)),
-            context="TASKLIST_EXPIRY",
-            post=True
-        )
