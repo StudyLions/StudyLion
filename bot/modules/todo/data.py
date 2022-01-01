@@ -2,21 +2,9 @@ from data import RowTable, Table
 
 tasklist = RowTable(
     'tasklist',
-    ('taskid', 'userid', 'content', 'complete', 'rewarded', 'created_at', 'last_updated_at'),
+    ('taskid', 'userid', 'content', 'rewarded', 'created_at', 'completed_at', 'deleted_at', 'last_updated_at'),
     'taskid'
 )
-
-
-@tasklist.save_query
-def expire_old_tasks():
-    with tasklist.conn:
-        with tasklist.conn.cursor() as curs:
-            curs.execute(
-                "DELETE FROM tasklist WHERE "
-                "last_updated_at < timezone('utc', NOW()) - INTERVAL '7d' "
-                "RETURNING *"
-            )
-            return curs.fetchall()
 
 
 tasklist_channels = Table('tasklist_channels')
