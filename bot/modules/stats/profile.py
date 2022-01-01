@@ -7,7 +7,7 @@ from data import tables
 from data.conditions import LEQ
 from core import Lion
 
-from .tracking.data import session_history
+from modules.study.tracking.data import session_history
 
 from .module import module
 
