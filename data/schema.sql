@@ -746,4 +746,19 @@ CREATE INDEX member_monthly_goal_tasks_members_monthly ON member_monthly_goal_ta
 
 -- }}}
 
+-- Timer Data {{{
+create TABLE timers(
+  channelid BIGINT PRIMARY KEY,
+  guildid BIGINT NOT NULL REFERENCES guild_config (guildid),
+  text_channelid BIGINT,
+  focus_length INTEGER NOT NULL,
+  break_length INTEGER NOT NULL,
+  last_started TIMESTAMPTZ NOT NULL,
+  inactivity_threshold INTEGER,
+  channel_name TEXT,
+  pretty_name TEXT
+);
+CREATE INDEX timers_guilds ON timers (guildid);
+-- }}}
+
 -- vim: set fdm=marker:
