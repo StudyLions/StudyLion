@@ -49,49 +49,57 @@ async def cmd_timer(ctx: Context, flags):
     if channel is None:
         # Author is not in a voice channel, and they did not select a channel
         # Display the server timers they can see
-        # TODO: Write UI
         timers = Timer.fetch_guild_timers(ctx.guild.id)
         timers = [
             timer for timer in timers
             if timer.channel and timer.channel.permissions_for(ctx.author).view_channel
         ]
         if not timers:
-            return await ctx.error_reply(
-                "There are no available timers!"
-            )
+            if await guild_admin.run(ctx):
+                return await ctx.error_reply(
+                    "No timers are running yet!\n"
+                    f"Start a timer by joining a voice channel and running e.g. `{ctx.best_prefix}pomodoro 50, 10`.\n"
+                    f"See `{ctx.best_prefix}help pomodoro for detailed usage."
+                )
+            else:
+                return await ctx.error_reply(
+                    "No timers are running!\n"
+                    f"You can ask an admin to start one using `{ctx.best_prefix}pomodoro`."
+                )
         # Build a summary list
         timer_strings = []
         for timer in timers:
             stage = timer.current_stage
-            stage_str = "**{}** minutes focus with **{}** minutes break".format(
-                timer.focus_length // 60, timer.break_length // 60
+            stage_str = "(**`{}m`** focus, **`{}m`** break)".format(
+                int(timer.focus_length // 60), int(timer.break_length // 60)
             )
+            if len(timer.members) > 1:
+                member_str = "**{}** members are ".format(len(timer.members))
+            elif len(timer.members) == 1:
+                member_str = "{} is ".format(timer.members[0].mention)
+            else:
+                member_str = ""
             remaining = (stage.end - utc_now()).total_seconds()
 
-            memberstr = ', '.join(member.mention for member in timer.members[:20])
-            if len(timer.members) > 20:
-                memberstr += '...'
-
             timer_strings.append(
-                ("{}: {}\n"
-                 "Currently in `{}`, with `{:02}:{:02}` remaining.\n"
-                 "{}").format(
+                ("{} {}\n"
+                 "{}urrently **{}** with `{:02}:{:02}` left.").format(
                      timer.channel.mention,
                      stage_str,
-                     stage.name,
+                     member_str + 'c' if member_str else 'C',
+                     "focusing" if stage.name == "FOCUS" else "resting",
                      int(remaining // 3600),
                      int((remaining // 60) % 60),
-                     memberstr
                  )
             )
 
         blocks = [
-            '\n\n'.join(timer_strings[i:i+4])
-            for i in range(0, len(timer_strings), 4)
+            '\n\n'.join(timer_strings[i:i+10])
+            for i in range(0, len(timer_strings), 10)
         ]
         embeds = [
             discord.Embed(
-                title="Pomodoro Timers",
+                title="Study Timers",
                 description=block,
                 colour=discord.Colour.orange()
             )
@@ -105,7 +113,7 @@ async def cmd_timer(ctx: Context, flags):
         if timer is None:
             # No timer in this channel
             return await ctx.error_reply(
-                f"{channel.mention} doesn't have a timer!"
+                f"{channel.mention} doesn't have a timer running!"
             )
         else:
             # We have a timer
@@ -162,7 +170,7 @@ async def _pomo_admin(ctx, flags):
     args = ctx.args
     if ctx.args:
         splits = ctx.args.split(maxsplit=1)
-        assume_channel = not splits[0].endswith(',')
+        assume_channel = not splits[0].contains(',')
         assume_channel = assume_channel and not (channel and len(splits[0]) < 5)
         assume_channel = assume_channel and (splits[0].strip('#<>').isdigit() or len(splits[0]) > 10)
         if assume_channel:
