@@ -13,6 +13,7 @@ from .Timer import Timer
 
 
 config_flags = ('name==', 'threshold=', 'channelname==', 'text==')
+MAX_TIMERS_PER_GUILD = 10
 
 
 @module.cmd(
@@ -270,6 +271,13 @@ async def _pomo_admin(ctx, flags):
             # Create or update the timer
             if not timer:
                 # Create timer
+                # First check number of timers
+                timers = Timer.fetch_guild_timers(ctx.guild.id)
+                if len(timers) >= MAX_TIMERS_PER_GUILD:
+                    return ctx.error_reply(
+                        "Cannot create another timer!\n"
+                        "This server already has the maximum of `{}` timers.".format(MAX_TIMERS_PER_GUILD)
+                    )
                 # First check permissions
                 if not channel.permissions_for(ctx.guild.me).send_messages:
                     embed = discord.Embed(
@@ -297,7 +305,8 @@ async def _pomo_admin(ctx, flags):
                 await timer.update_last_status()
 
                 await ctx.embed_reply(
-                    f"Started a new `{focus_length}, {break_length}` pomodoro timer in {channel.mention}."
+                    f"Started a timer in {channel.mention} with **{focus_length}** minutes focus "
+                    f"and **{break_length}** minutes break."
                 )
             else:
                 # Update timer and restart
