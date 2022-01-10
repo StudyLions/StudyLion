@@ -78,7 +78,8 @@ CREATE TABLE guild_config(
   returning_message TEXT,
   starting_funds INTEGER,
   persist_roles BOOLEAN,
-  daily_study_cap INTEGER
+  daily_study_cap INTEGER,
+  pomodoro_channel BIGINT
 );
 
 CREATE TABLE ignored_members(

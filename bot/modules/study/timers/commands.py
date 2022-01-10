@@ -1,9 +1,8 @@
+import asyncio
 import discord
 from cmdClient import Context
 from cmdClient.checks import in_guild
 from cmdClient.lib import SafeCancellation
-
-from datetime import timedelta
 
 from wards import guild_admin
 from utils.lib import utc_now, tick
@@ -13,12 +12,13 @@ from ..module import module
 from .Timer import Timer
 
 
-config_flags = ('name==', 'threshold=', 'channelname==')
+config_flags = ('name==', 'threshold=', 'channelname==', 'text==')
+
 
 @module.cmd(
     "timer",
     group="Productivity",
-    desc="Display your study room pomodoro timer.",
+    desc="View your study room timer.",
     flags=config_flags
 )
 @in_guild()
@@ -32,7 +32,7 @@ async def cmd_timer(ctx: Context, flags):
     """
     channel = ctx.author.voice.channel if ctx.author.voice else None
     if ctx.args:
-        if len(splits := ctx.args.split()) > 1:
+        if len(ctx.args.split()) > 1:
             # Multiple arguments provided
             # Assume configuration attempt
             return await _pomo_admin(ctx, flags)
@@ -48,6 +48,7 @@ async def cmd_timer(ctx: Context, flags):
     if channel is None:
         # Author is not in a voice channel, and they did not select a channel
         # Display the server timers they can see
+        # TODO: Write UI
         timers = Timer.fetch_guild_timers(ctx.guild.id)
         timers = [
             timer for timer in timers
@@ -114,24 +115,38 @@ async def cmd_timer(ctx: Context, flags):
 @module.cmd(
     "pomodoro",
     group="Guild Admin",
-    desc="Create and modify the voice channel pomodoro timers.",
+    desc="Add and configure timers for your study rooms.",
     flags=config_flags
 )
-async def ctx_pomodoro(ctx, flags):
+async def cmd_pomodoro(ctx, flags):
     """
     Usage``:
-        {prefix}pomodoro [channelid] <work time>, <break time> [channel name] [options]
+        {prefix}pomodoro [channelid] <focus time>, <break time> [channel name]
         {prefix}pomodoro [channelid] [options]
         {prefix}pomodoro [channelid] delete
     Description:
-        ...
+        Get started by joining a study voice channel and writing e.g. `{prefix}pomodoro 50, 10`.
+        The timer will start automatically and continue forever.
+        See the options and examples below for configuration.
     Options::
-        --name: The name of the timer as shown in the timer status.
-        --channelname: The voice channel name template.
-        --threshold: How many work+break sessions before a user is removed.
-    Examples``:
-        {prefix}pomodoro 50, 10
-        ...
+        --name: The timer name (as shown in alerts and `{prefix}timer`).
+        --channelname: The name of the voice channel, see below for substitutions.
+        --threshold: How many focus+break cycles before a member is kicked.
+        --text: Text channel to send timer alerts in (defaults to value of `{prefix}config pomodoro_channel`).
+    Channel name substitutions::
+        {{remaining}}: The time left in the current focus or break session, e.g. `10m left`.
+        {{stage}}: The name of the current stage (`FOCUS` or `BREAK`).
+        {{name}}: The configured timer name.
+        {{pattern}}: The timer pattern in the form `focus/break` (e.g. `50/10`).
+    Examples:
+        Add a timer to your study room with `50` minutes focus, `10` minutes break.
+        > `{prefix}pomodoro 50, 10`
+        Add a timer with a custom updating channel name
+        > `{prefix}pomodoro 50, 10 {{stage}} {{remaining}} -- {{pattern}} room`
+        Change the name on the `{prefix}timer` status
+        > `{prefix}pomodoro --name 50/10 study room`
+        Change the updating channel name
+        > `{prefix}pomodoro --channelname {{remaining}} -- {{name}}`
     """
     await _pomo_admin(ctx, flags)
 
@@ -146,7 +161,10 @@ async def _pomo_admin(ctx, flags):
     args = ctx.args
     if ctx.args:
         splits = ctx.args.split(maxsplit=1)
-        if splits[0].strip('#<>').isdigit() or len(splits[0]) > 10:
+        assume_channel = not splits[0].endswith(',')
+        assume_channel = assume_channel and not (channel and len(splits[0]) < 5)
+        assume_channel = assume_channel and (splits[0].strip('#<>').isdigit() or len(splits[0]) > 10)
+        if assume_channel:
             # Assume first argument is a channel specifier
             channel = await ctx.find_channel(
                 splits[0], interactive=True, chan_type=discord.ChannelType.voice
@@ -167,8 +185,8 @@ async def _pomo_admin(ctx, flags):
     if not channel:
         return await ctx.error_reply(
             f"No channel specified!\n"
-            "Please join a voice channel or pass the id as the first argument.\n"
-            f"See `{ctx.best_prefix}help pomodoro` for more usage information."
+            "Please join a voice channel or pass the channel id as the first argument.\n"
+            f"See `{ctx.best_prefix}help pomodoro` for usage and examples."
         )
 
     # Now we have a channel and configuration arguments
@@ -196,6 +214,13 @@ async def _pomo_admin(ctx, flags):
     elif args or timer:
         if args:
             # Any provided arguments should be for setting up a new timer pattern
+            # Check the pomodoro channel exists
+            if not (timer and timer.text_channel) and not ctx.guild_settings.pomodoro_channel.value:
+                return await ctx.error_reply(
+                    "Please set the pomodoro alerts channel first, "
+                    f"with `{ctx.best_prefix}config pomodoro_channel <channel>`.\n"
+                    f"For example: {ctx.best_prefix}config pomodoro_channel {ctx.ch.mention}"
+                )
             # First validate input
             try:
                 # Ensure no trailing commas
@@ -294,7 +319,8 @@ async def _pomo_admin(ctx, flags):
                 timer.runloop()
 
                 await ctx.embed_reply(
-                    f"Restarted the pomodoro timer in {channel.mention} as `{focus_length}, {break_length}`."
+                    f"Started a timer in {channel.mention} with **{focus_length}** "
+                    f"minutes focus and **{break_length}** minutes break."
                 )
 
         to_set = []
@@ -325,6 +351,50 @@ async def _pomo_admin(ctx, flags):
                 flags['channelname'],
                 f"The voice channel name template is now `{flags['channelname']}`."
             ))
+        if flags['text']:
+            # Handle text channel update
+            flag = flags['text']
+            if flag.lower() == 'none':
+                # Check if there is a default channel
+                channel = ctx.guild_settings.pomodoro_channel.value
+                if channel:
+                    # Unset the channel to the default
+                    msg = f"The custom text channel has been unset! (Alerts will be sent to {channel.mention})"
+                    to_set.append((
+                        'text_channelid',
+                        None,
+                        msg
+                    ))
+                    # Remove the last reaction message and send a new one
+                    timer.reaction_message = None
+                    # Ensure this happens after the data update
+                    asyncio.create_task(timer.update_last_status())
+                else:
+                    return await ctx.error_reply(
+                        "The text channel cannot be unset because there is no `pomodoro_channel` set up!\n"
+                        f"See `{ctx.best_prefix}config pomodoro_channel` for setting a default pomodoro channel."
+                    )
+            else:
+                # Attempt to parse the provided channel
+                channel = await ctx.find_channel(flag, interactive=True, chan_type=discord.ChannelType.text)
+                if channel:
+                    if not channel.permissions_for(ctx.guild.me.send_messages):
+                        return await ctx.error_reply(
+                            f"Cannot send pomodoro alerts to {channel.mention}! "
+                            "I don't have permission to send messages there."
+                        )
+                    to_set.append((
+                        'text_channelid',
+                        channel.id,
+                        f"Timer alerts and updates will now be sent to {channel.mention}."
+                    ))
+                    # Remove the last reaction message and send a new one
+                    timer.reaction_message = None
+                    # Ensure this happens after the data update
+                    asyncio.create_task(timer.update_last_status())
+                else:
+                    # Ack has already been sent, just ignore
+                    return
 
         if to_set:
             to_update = {item[0]: item[1] for item in to_set}
@@ -343,4 +413,3 @@ async def _pomo_admin(ctx, flags):
             f"Create one with, for example, ```{ctx.best_prefix}pomodoro {channel.id} 50, 10```"
             f"See `{ctx.best_prefix}help pomodoro` for more examples and usage."
         )
-

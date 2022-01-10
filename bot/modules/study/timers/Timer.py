@@ -1,3 +1,4 @@
+import math
 import asyncio
 import discord
 from collections import namedtuple
@@ -110,12 +111,15 @@ class Timer:
 
     @property
     def text_channel(self):
-        return GuildSettings(self.data.guildid).alert_channel.value
+        if (channelid := self.data.text_channelid) and (channel := self.guild.get_channel(channelid)):
+            return channel
+        else:
+            return GuildSettings(self.data.guildid).pomodoro_channel.value
 
     @property
     def members(self):
         if (channel := self.channel):
-            return channel.members
+            return [member for member in channel.members if not member.bot]
         else:
             return []
 
@@ -127,17 +131,26 @@ class Timer:
         stage = self.current_stage
         name_format = self.data.channel_name or "{remaining} -- {name}"
         return name_format.replace(
-            '{remaining}', "{:02}:{:02}".format(
-                int((stage.end - utc_now()).total_seconds() // 60),
-                int((stage.end - utc_now()).total_seconds() % 60),
+            '{remaining}', "{}m left".format(
+                int(5 * math.ceil((stage.end - utc_now()).total_seconds() / 300)),
             )
+        ).replace(
+            '{stage}', stage.name
         ).replace(
             '{members}', str(len(self.channel.members))
         ).replace(
             '{name}', self.data.pretty_name or "WORK ROOM"
+        ).replace(
+            '{pattern}',
+            "{}/{}".format(
+                int(self.focus_length // 60), int(self.break_length // 60)
+            )
         )
 
     async def notify_change_stage(self, old_stage, new_stage):
+        # Update channel name
+        asyncio.create_task(self._update_channel_name())
+
         # Kick people if they need kicking
         to_warn = []
         to_kick = []
@@ -174,7 +187,13 @@ class Timer:
             )
             content.append(warn_string)
 
+        # Send a new status/reaction message
         if self.text_channel and self.members:
+            if self.reaction_message:
+                try:
+                    await self.reaction_message.delete()
+                except discord.HTTPException:
+                    pass
             # Send status image, add reaction
             self.reaction_message = await self.text_channel.send(
                 content='\n'.join(content),
@@ -192,6 +211,8 @@ class Timer:
                 *(self.text_channel.send(block, delete_after=0.5) for block in blocks),
                 return_exceptions=True
             )
+        elif not self.members:
+            await self.update_last_status()
         # TODO: DM task if anyone has notifications on
 
         # Mute or unmute everyone in the channel as needed
@@ -205,9 +226,6 @@ class Timer:
         #     )
         # except discord.HTTPException:
         #     pass
-
-        # Update channel name
-        asyncio.create_task(self._update_channel_name())
 
         # Run the notify hook
         await self.notify_hook(old_stage, new_stage)
@@ -294,7 +312,7 @@ class Timer:
             else:
                 repost = False
 
-        if repost:
+        if repost and self.text_channel:
             try:
                 self.reaction_message = await self.text_channel.send(**args)
                 await self.reaction_message.add_reaction('✅')
@@ -338,7 +356,8 @@ class Timer:
             stage = self._state = self.current_stage
             to_next_stage = (stage.end - utc_now()).total_seconds()
 
-            if to_next_stage > 10 * 60:
+            # Allow updating with 10 seconds of drift to stage change
+            if to_next_stage > 10 * 60 - 10:
                 time_to_sleep = 5 * 60
             else:
                 time_to_sleep = to_next_stage
@@ -353,6 +372,7 @@ class Timer:
                 asyncio.create_task(self.notify_change_stage(self._state, self.current_stage))
             else:
                 asyncio.create_task(self._update_channel_name())
+                asyncio.create_task(self.update_last_status())
 
     def runloop(self):
         self._runloop_task = asyncio.create_task(self.run())
@@ -392,7 +412,7 @@ async def load_timers(client):
 async def reaction_tracker(client, payload):
     if payload.guild_id and payload.member and not payload.member.bot and payload.member.voice:
         if (channel := payload.member.voice.channel) and (timer := Timer.fetch_timer(channel.id)):
-            if payload.message_id == timer.reaction_message.id:
+            if timer.reaction_message and payload.message_id == timer.reaction_message.id:
                 timer.last_seen[payload.member.id] = utc_now()
 
 
