@@ -170,7 +170,7 @@ async def _pomo_admin(ctx, flags):
     args = ctx.args
     if ctx.args:
         splits = ctx.args.split(maxsplit=1)
-        assume_channel = not splits[0].contains(',')
+        assume_channel = not (',' in splits[0])
         assume_channel = assume_channel and not (channel and len(splits[0]) < 5)
         assume_channel = assume_channel and (splits[0].strip('#<>').isdigit() or len(splits[0]) > 10)
         if assume_channel:
