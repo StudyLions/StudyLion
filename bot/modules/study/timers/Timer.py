@@ -325,6 +325,9 @@ class Timer:
         """
         Remove the timer.
         """
+        # Remove timer from cache
+        self.timers.pop(self.channelid)
+
         # Cancel the loop
         if self._run_task:
             self._run_task.cancel()
@@ -424,5 +427,5 @@ async def touch_member(client, member, before, after):
             await timer.update_last_status()
 
         if before.channel and (timer := Timer.fetch_timer(before.channel.id)):
-            timer.last_seen.pop(member.id)
+            timer.last_seen.pop(member.id, None)
             await timer.update_last_status()

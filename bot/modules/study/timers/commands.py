@@ -172,7 +172,7 @@ async def _pomo_admin(ctx, flags):
         splits = ctx.args.split(maxsplit=1)
         assume_channel = not (',' in splits[0])
         assume_channel = assume_channel and not (channel and len(splits[0]) < 5)
-        assume_channel = assume_channel and (splits[0].strip('#<>').isdigit() or len(splits[0]) > 10)
+        assume_channel = assume_channel or (splits[0].strip('#<>').isdigit() and len(splits[0]) > 10)
         if assume_channel:
             # Assume first argument is a channel specifier
             channel = await ctx.find_channel(
@@ -269,7 +269,7 @@ async def _pomo_admin(ctx, flags):
                 )
                 if e.msg:
                     usage.description = e.msg
-                return ctx.reply(embed=usage)
+                return await ctx.reply(embed=usage)
 
             # Input validation complete, assign values
             focus_length = int(timesplits[0])
@@ -282,7 +282,7 @@ async def _pomo_admin(ctx, flags):
                 # First check number of timers
                 timers = Timer.fetch_guild_timers(ctx.guild.id)
                 if len(timers) >= MAX_TIMERS_PER_GUILD:
-                    return ctx.error_reply(
+                    return await ctx.error_reply(
                         "Cannot create another timer!\n"
                         "This server already has the maximum of `{}` timers.".format(MAX_TIMERS_PER_GUILD)
                     )
