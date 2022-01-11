@@ -20,18 +20,21 @@ MAX_TIMERS_PER_GUILD = 10
     "timer",
     group="Productivity",
     desc="View your study room timer.",
-    flags=config_flags
+    flags=config_flags,
+    aliases=('timers',)
 )
 @in_guild()
 async def cmd_timer(ctx: Context, flags):
     """
     Usage``:
         {prefix}timer
+        {prefix}timers
     Description:
         Display your current study room timer status.
         If you aren't in a study room, instead shows a list of timers you can join.
+        Use `{prefix}timers` to always show the list of timers instead.
     """
-    channel = ctx.author.voice.channel if ctx.author.voice else None
+    channel = ctx.author.voice.channel if ctx.author.voice and ctx.alias.lower() != 'timers' else None
     if ctx.args:
         if len(ctx.args.split()) > 1:
             # Multiple arguments provided
