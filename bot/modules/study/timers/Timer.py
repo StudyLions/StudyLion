@@ -5,6 +5,7 @@ from collections import namedtuple
 from datetime import timedelta
 
 from utils.lib import utc_now
+from utils.interactive import discord_shield
 from meta import client
 from settings import GuildSettings
 from data.conditions import THIS_SHARD
@@ -189,17 +190,17 @@ class Timer:
 
         # Send a new status/reaction message
         if self.text_channel and self.members:
-            if self.reaction_message:
-                try:
-                    await self.reaction_message.delete()
-                except discord.HTTPException:
-                    pass
+            old_reaction_message = self.reaction_message
+
             # Send status image, add reaction
             self.reaction_message = await self.text_channel.send(
                 content='\n'.join(content),
                 **(await self.status())
             )
             await self.reaction_message.add_reaction('✅')
+
+            if old_reaction_message:
+                asyncio.create_task(discord_shield(old_reaction_message.delete()))
 
             # Ping people
             members = self.members
