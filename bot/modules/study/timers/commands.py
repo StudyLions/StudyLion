@@ -276,6 +276,12 @@ async def _pomo_admin(ctx, flags):
             break_length = int(breaksplits[0])
             channelname = breaksplits[1].strip() if len(breaksplits) > 1 else None
 
+            # Check the stages aren't too short
+            if focus_length < 5:
+                return await ctx.error_reply("The focus duration must be at least 5 minutes!")
+            if break_length < 5:
+                return await ctx.error_reply("The break duration must be at least 5 minutes!")
+
             # Create or update the timer
             if not timer:
                 # Create timer
