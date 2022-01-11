@@ -129,13 +129,13 @@ class Timer:
         Current name for the voice channel
         """
         stage = self.current_stage
-        name_format = self.data.channel_name or "{remaining} -- {name}"
+        name_format = self.data.channel_name or "{remaining} {stage} -- {name}"
         return name_format.replace(
-            '{remaining}', "{}m left".format(
+            '{remaining}', "{}m".format(
                 int(5 * math.ceil((stage.end - utc_now()).total_seconds() / 300)),
             )
         ).replace(
-            '{stage}', stage.name
+            '{stage}', stage.name.lower()
         ).replace(
             '{members}', str(len(self.channel.members))
         ).replace(

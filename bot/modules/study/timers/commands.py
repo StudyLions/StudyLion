@@ -143,19 +143,19 @@ async def cmd_pomodoro(ctx, flags):
         --threshold: How many focus+break cycles before a member is kicked.
         --text: Text channel to send timer alerts in (defaults to value of `{prefix}config pomodoro_channel`).
     Channel name substitutions::
-        {{remaining}}: The time left in the current focus or break session, e.g. `10m left`.
-        {{stage}}: The name of the current stage (`FOCUS` or `BREAK`).
+        {{remaining}}: The time left in the current focus or break session, e.g. `10m`.
+        {{stage}}: The name of the current stage (`focus` or `break`).
         {{name}}: The configured timer name.
         {{pattern}}: The timer pattern in the form `focus/break` (e.g. `50/10`).
     Examples:
         Add a timer to your study room with `50` minutes focus, `10` minutes break.
         > `{prefix}pomodoro 50, 10`
         Add a timer with a custom updating channel name
-        > `{prefix}pomodoro 50, 10 {{stage}} {{remaining}} -- {{pattern}} room`
+        > `{prefix}pomodoro 50, 10 {{remaining}} {{stage}} -- {{pattern}} room`
         Change the name on the `{prefix}timer` status
         > `{prefix}pomodoro --name 50/10 study room`
         Change the updating channel name
-        > `{prefix}pomodoro --channelname {{remaining}} -- {{name}}`
+        > `{prefix}pomodoro --channelname {{remaining}} left -- {{name}}`
     """
     await _pomo_admin(ctx, flags)
 
