@@ -24,7 +24,7 @@ ALTER TABLE session_history
   ADD COLUMN rating INTEGER,
   ADD COLUMN tag TEXT;
 
-DROP FUNCTION close_study_session;
+DROP FUNCTION close_study_session(_guildid BIGINT, _userid BIGINT);
 
 CREATE FUNCTION close_study_session(_guildid BIGINT, _userid BIGINT)
   RETURNS SETOF members
