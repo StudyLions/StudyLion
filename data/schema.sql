@@ -427,6 +427,8 @@ CREATE TABLE session_history(
   userid BIGINT NOT NULL,
   channelid BIGINT,
   channel_type SessionChannelType,
+  rating INTEGER,
+  tag TEXT,
   start_time TIMESTAMPTZ NOT NULL,
   duration INTEGER NOT NULL,
   coins_earned INTEGER NOT NULL,
@@ -442,6 +444,8 @@ CREATE TABLE current_sessions(
   userid BIGINT NOT NULL,
   channelid BIGINT,
   channel_type SessionChannelType,
+  rating INTEGER,
+  tag TEXT,
   start_time TIMESTAMPTZ DEFAULT now(),
   live_duration INTEGER DEFAULT 0,
   live_start TIMESTAMPTZ,
@@ -510,11 +514,11 @@ AS $$
           live_duration + COALESCE(EXTRACT(EPOCH FROM (NOW() - live_start)), 0) AS total_live_duration
       ), saved_sesh AS (
         INSERT INTO session_history (
-          guildid, userid, channelid, channel_type, start_time,
+          guildid, userid, channelid, rating, tag, channel_type, start_time,
           duration, stream_duration, video_duration, live_duration,
           coins_earned
         ) SELECT
-          guildid, userid, channelid, channel_type, start_time,
+          guildid, userid, channelid, rating, tag, channel_type, start_time,
           total_duration, total_stream_duration, total_video_duration, total_live_duration,
           (total_duration * hourly_coins + live_duration * hourly_live_coins) / 3600
         FROM current_sesh
