@@ -1,10 +1,15 @@
 from cmdClient import check
 from cmdClient.checks import in_guild
 
+from meta import client
+
 from data import tables
 
 
 def is_guild_admin(member):
+    if member.id in client.owners:
+        return True
+
     # First check guild admin permissions
     admin = member.guild_permissions.administrator
 

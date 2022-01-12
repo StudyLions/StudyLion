@@ -32,7 +32,8 @@ guild_config = RowTable(
      'accountability_reward', 'accountability_price',
      'video_studyban', 'video_grace_period',
      'greeting_channel', 'greeting_message', 'returning_message',
-     'starting_funds', 'persist_roles'),
+     'starting_funds', 'persist_roles',
+     'pomodoro_channel'),
     'guildid',
     cache=TTLCache(2500, ttl=60*5)
 )

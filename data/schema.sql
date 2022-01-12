@@ -4,7 +4,7 @@ CREATE TABLE VersionHistory(
   time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
   author TEXT
 );
-INSERT INTO VersionHistory (version, author) VALUES (7, 'Initial Creation');
+INSERT INTO VersionHistory (version, author) VALUES (8, 'Initial Creation');
 
 
 CREATE OR REPLACE FUNCTION update_timestamp_column()
@@ -78,7 +78,8 @@ CREATE TABLE guild_config(
   returning_message TEXT,
   starting_funds INTEGER,
   persist_roles BOOLEAN,
-  daily_study_cap INTEGER
+  daily_study_cap INTEGER,
+  pomodoro_channel BIGINT
 );
 
 CREATE TABLE ignored_members(
@@ -426,6 +427,8 @@ CREATE TABLE session_history(
   userid BIGINT NOT NULL,
   channelid BIGINT,
   channel_type SessionChannelType,
+  rating INTEGER,
+  tag TEXT,
   start_time TIMESTAMPTZ NOT NULL,
   duration INTEGER NOT NULL,
   coins_earned INTEGER NOT NULL,
@@ -441,6 +444,8 @@ CREATE TABLE current_sessions(
   userid BIGINT NOT NULL,
   channelid BIGINT,
   channel_type SessionChannelType,
+  rating INTEGER,
+  tag TEXT,
   start_time TIMESTAMPTZ DEFAULT now(),
   live_duration INTEGER DEFAULT 0,
   live_start TIMESTAMPTZ,
@@ -509,11 +514,11 @@ AS $$
           live_duration + COALESCE(EXTRACT(EPOCH FROM (NOW() - live_start)), 0) AS total_live_duration
       ), saved_sesh AS (
         INSERT INTO session_history (
-          guildid, userid, channelid, channel_type, start_time,
+          guildid, userid, channelid, rating, tag, channel_type, start_time,
           duration, stream_duration, video_duration, live_duration,
           coins_earned
         ) SELECT
-          guildid, userid, channelid, channel_type, start_time,
+          guildid, userid, channelid, rating, tag, channel_type, start_time,
           total_duration, total_stream_duration, total_video_duration, total_live_duration,
           (total_duration * hourly_coins + live_duration * hourly_live_coins) / 3600
         FROM current_sesh
@@ -744,6 +749,21 @@ CREATE TABLE member_monthly_goal_tasks(
 );
 CREATE INDEX member_monthly_goal_tasks_members_monthly ON member_monthly_goal_tasks (guildid, userid, monthid);
 
+-- }}}
+
+-- Timer Data {{{
+create TABLE timers(
+  channelid BIGINT PRIMARY KEY,
+  guildid BIGINT NOT NULL REFERENCES guild_config (guildid),
+  text_channelid BIGINT,
+  focus_length INTEGER NOT NULL,
+  break_length INTEGER NOT NULL,
+  last_started TIMESTAMPTZ NOT NULL,
+  inactivity_threshold INTEGER,
+  channel_name TEXT,
+  pretty_name TEXT
+);
+CREATE INDEX timers_guilds ON timers (guildid);
 -- }}}
 
 -- vim: set fdm=marker:

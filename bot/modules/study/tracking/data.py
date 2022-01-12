@@ -20,6 +20,7 @@ session_history = Table('session_history')
 current_sessions = RowTable(
     'current_sessions',
     ('guildid', 'userid', 'channelid', 'channel_type',
+     'rating', 'tag',
      'start_time',
      'live_duration', 'live_start',
      'stream_duration', 'stream_start',

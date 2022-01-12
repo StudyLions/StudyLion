@@ -10,6 +10,7 @@ from .module import module
 
 # Set the command groups to appear in the help
 group_hints = {
+    '🆕 Pomodoro': "*Stay in sync with your friends using our timers!*",
     'Productivity': "*Use these to help you stay focused and productive!*",
     'Statistics': "*StudyLion leaderboards and study statistics.*",
     'Economy': "*Buy, sell, and trade with your hard-earned coins!*",
@@ -20,22 +21,22 @@ group_hints = {
 }
 
 standard_group_order = (
-    ('Productivity', 'Statistics', 'Economy', 'Personal Settings', 'Meta'),
+    ('🆕 Pomodoro', 'Productivity', 'Statistics', 'Economy', 'Personal Settings', 'Meta')
 )
 
 mod_group_order = (
     ('Moderation', 'Meta'),
-    ('Productivity', 'Statistics', 'Economy', 'Personal Settings')
+    ('🆕 Pomodoro', 'Productivity', 'Statistics', 'Economy', 'Personal Settings')
 )
 
 admin_group_order = (
     ('Guild Admin', 'Guild Configuration', 'Moderation', 'Meta'),
-    ('Productivity', 'Statistics', 'Economy', 'Personal Settings')
+    ('🆕 Pomodoro', 'Productivity', 'Statistics', 'Economy', 'Personal Settings')
 )
 
 bot_admin_group_order = (
     ('Bot Admin', 'Guild Admin', 'Guild Configuration', 'Moderation', 'Meta'),
-    ('Productivity', 'Statistics', 'Economy', 'Personal Settings')
+    ('🆕 Pomodoro', 'Productivity', 'Statistics', 'Economy', 'Personal Settings')
 )
 
 # Help embed format
