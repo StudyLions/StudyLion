@@ -417,7 +417,7 @@ CREATE TYPE SessionChannelType AS ENUM (
   'STANDARD',
   'ACCOUNTABILITY',
   'RENTED',
-  'EXTERNAL',
+  'EXTERNAL'
 );
 
 
