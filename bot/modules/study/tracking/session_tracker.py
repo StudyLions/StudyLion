@@ -249,6 +249,9 @@ async def session_voice_tracker(client, member, before, after):
     """
     Voice update event dispatcher for study session tracking.
     """
+    if member.bot:
+        return
+
     guild = member.guild
     Lion.fetch(guild.id, member.id)
     session = Session.get(guild.id, member.id)
@@ -348,7 +351,7 @@ async def join_guild_sessions(client, guild):
         member
         for channel in guild.voice_channels
         for member in channel.members
-        if channel.members and channel.id not in untracked
+        if channel.members and channel.id not in untracked and not member.bot
     ]
     for member in members:
         client.log(
@@ -460,7 +463,7 @@ async def _init_session_tracker(client):
         member
         for channel in tracked_channels
         for member in channel.members
-        if not Session.get(member.guild.id, member.id)
+        if not member.bot and not Session.get(member.guild.id, member.id)
     ]
     for member in new_members:
         client.log(

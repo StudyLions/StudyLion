@@ -126,7 +126,7 @@ async def _expiry_tracker(client):
     while True:
         try:
             key = _next()
-            diff = utc_now().timestamp() - _expiring[key] if key else None
+            diff = _expiring[key] - utc_now().timestamp() if key else None
             await asyncio.wait_for(_wakeup_event.wait(), timeout=diff)
         except asyncio.TimeoutError:
             # Timeout means next doesn't exist or is ready to expire

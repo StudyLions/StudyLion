@@ -20,7 +20,7 @@ async def embed_reply(ctx, desc, colour=discord.Colour.orange(), **kwargs):
     try:
         return await ctx.reply(embed=embed, reference=ctx.msg.to_reference(fail_if_not_exists=False))
     except discord.Forbidden:
-        if not ctx.guild or ctx.ch.permissions_for(ctx.guild.me).send_mssages:
+        if not ctx.guild or ctx.ch.permissions_for(ctx.guild.me).send_messages:
             await ctx.reply("Command failed, I don't have permission to send embeds in this channel!")
         raise SafeCancellation
 
