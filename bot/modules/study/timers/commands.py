@@ -404,7 +404,7 @@ async def _pomo_admin(ctx, flags):
                 # Attempt to parse the provided channel
                 channel = await ctx.find_channel(flag, interactive=True, chan_type=discord.ChannelType.text)
                 if channel:
-                    if not channel.permissions_for(ctx.guild.me.send_messages):
+                    if not channel.permissions_for(ctx.guild.me).send_messages:
                         return await ctx.error_reply(
                             f"Cannot send pomodoro alerts to {channel.mention}! "
                             "I don't have permission to send messages there."
