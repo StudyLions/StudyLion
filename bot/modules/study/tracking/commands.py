@@ -12,7 +12,7 @@ MAX_TAG_LENGTH = 10
 
 @module.cmd(
     "now",
-    group="Statistics",
+    group="🆕 Pomodoro",
     desc="What are you working on?",
     aliases=('studying', 'workingon'),
     flags=('clear', 'new')

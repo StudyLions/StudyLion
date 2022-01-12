@@ -18,7 +18,7 @@ MAX_TIMERS_PER_GUILD = 10
 
 @module.cmd(
     "timer",
-    group="Productivity",
+    group="🆕 Pomodoro",
     desc="View your study room timer.",
     flags=config_flags,
     aliases=('timers',)
@@ -126,7 +126,7 @@ async def cmd_timer(ctx: Context, flags):
 
 @module.cmd(
     "pomodoro",
-    group="Guild Admin",
+    group="🆕 Pomodoro",
     desc="Add and configure timers for your study rooms.",
     flags=config_flags
 )
