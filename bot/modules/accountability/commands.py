@@ -525,11 +525,24 @@ async def cmd_rooms(ctx):
                     ),
                     _extra="GROUP BY start_at, slotid, guildid ORDER BY start_at ASC"
                 )
-                attendees = {row['start_at']: (row['num'], client.get_guild(row['guildid'])) for row in rows}
+                attendees = {
+                    row['start_at']: (row['num'], row['guildid']) for row in rows
+                }
                 attendee_pad = max((len(str(num)) for num, _ in attendees.values()), default=1)
 
                 # TODO: Allow cancel to accept multiselect keys as args
-                show_guild = any(guild != ctx.guild for _, guild in attendees.values())
+                show_guild = any(guildid != ctx.guild.id for _, guildid in attendees.values())
+                guild_map = {}
+                if show_guild:
+                    for _, guildid in attendees.values():
+                        if guildid not in guild_map:
+                            guild = ctx.client.get_guild(guildid)
+                            if not guild:
+                                try:
+                                    guild = await ctx.client.fetch_guild(guildid)
+                                except discord.HTTPException:
+                                    guild = None
+                            guild_map[guildid] = guild
 
                 booked_list = '\n'.join(
                     "`{:>{}}` attendees | {} {}".format(
@@ -537,11 +550,11 @@ async def cmd_rooms(ctx):
                         attendee_pad,
                         time_format(start),
                         "" if not show_guild else (
-                            "on this server" if guild == ctx.guild else "in **{}**".format(
-                                guild.name if guild else guild.id
+                            "on this server" if guildid == ctx.guild.id else "in **{}**".format(
+                                guild_map[guildid] or "Unknown"
                             )
                         )
-                    ) for start, (num, guild) in attendees.items()
+                    ) for start, (num, guildid) in attendees.items()
                 )
                 booked_field = (
                     "{}\n\n"
