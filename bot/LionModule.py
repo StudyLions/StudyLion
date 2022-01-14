@@ -105,6 +105,9 @@ class LionModule(Module):
                 await ctx.reply("I need permission to send embeds in this channel before I can run any commands!")
                 raise SafeCancellation(details='I cannot send embeds in this channel.')
 
+        # Ensure Lion exists
+        ctx.alion
+
         # Start typing
         await ctx.ch.trigger_typing()
 
