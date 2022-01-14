@@ -16,7 +16,7 @@ class task_limit(settings.Integer, GuildSetting):
     display_name = "task_limit"
     desc = "Maximum number of tasks each user may have."
 
-    _default = 30
+    _default = 99
 
     long_desc = (
         "Maximum number of tasks each user may have in the todo system."

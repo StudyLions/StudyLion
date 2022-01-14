@@ -107,7 +107,7 @@ class video_grace_period(settings.Duration, GuildSetting):
         "before they will be kicked from the channel, and warned or studybanned (if enabled)."
     )
 
-    _default = 45
+    _default = 90
     _default_multiplier = 1
 
     @classmethod
