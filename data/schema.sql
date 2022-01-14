@@ -144,6 +144,15 @@ CREATE TABLE tasklist(
 );
 CREATE INDEX tasklist_users ON tasklist (userid);
 
+-- Topgg Data {{{
+create TABLE topgg(
+  voteid SERIAL PRIMARY KEY,
+  userid BIGINT NOT NULL,
+  boostedTimestamp TIMESTAMPTZ NOT NULL
+);
+CREATE INDEX topgg_member ON topgg (guildid, userid);
+-- }}}
+
 CREATE TABLE tasklist_channels(
   guildid BIGINT NOT NULL,
   channelid BIGINT NOT NULL
