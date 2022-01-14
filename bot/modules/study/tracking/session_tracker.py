@@ -61,7 +61,7 @@ class Session:
             raise ValueError("A session for this member already exists!")
 
         # If the user is study capped, schedule the session start for the next day
-        if (lion := Lion.fetch(guildid, userid)).remaining_study_today <= 0:
+        if (lion := Lion.fetch(guildid, userid)).remaining_study_today <= 10:
             if pending := cls.members_pending[guildid].pop(userid, None):
                 pending.cancel()
             task = asyncio.create_task(cls._delayed_start(guildid, userid, member, state))
@@ -181,12 +181,13 @@ class Session:
             self._expiry_task.cancel()
 
         # Wait for the maximum session length
+        self._expiry_task = asyncio.create_task(asyncio.sleep(self.lion.remaining_study_today))
         try:
-            self._expiry_task = await asyncio.sleep(self.lion.remaining_study_today)
+            await self._expiry_task
         except asyncio.CancelledError:
             pass
         else:
-            if self.lion.remaining_study_today <= 0:
+            if self.lion.remaining_study_today <= 10:
                 # End the session
                 # Note that the user will not automatically start a new session when the day starts
                 # TODO: Notify user? Disconnect them?
