@@ -98,6 +98,8 @@ async def cmd_setprofile(ctx, flags):
                 return await ctx.error_reply(
                     f"Sorry, you can have a maximum of `{MAX_TAGS}` tags!"
                 )
+            if tagid == 0:
+                return await ctx.error_reply("Tags start at `1`!")
 
             # Retrieve the user's current taglist
             rows = profile_tags.select_where(
