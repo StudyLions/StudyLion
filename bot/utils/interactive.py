@@ -1,8 +1,10 @@
 import asyncio
 import discord
-from cmdClient import Context
+from LionContext import LionContext
 from cmdClient.lib import UserCancelled, ResponseTimedOut
 
+import datetime
+from cmdClient import lib
 from .lib import paginate_list
 
 # TODO: Interactive locks
@@ -19,7 +21,7 @@ async def discord_shield(coro):
         pass
 
 
-@Context.util
+@LionContext.util
 async def cancellable(ctx, msg, add_reaction=True, cancel_message=None, timeout=300):
     """
     Add a cancellation reaction to the given message.
@@ -62,7 +64,7 @@ async def cancellable(ctx, msg, add_reaction=True, cancel_message=None, timeout=
     return task
 
 
-@Context.util
+@LionContext.util
 async def listen_for(ctx, allowed_input=None, timeout=120, lower=True, check=None):
     """
     Listen for a one of a particular set of input strings,
@@ -114,7 +116,7 @@ async def listen_for(ctx, allowed_input=None, timeout=120, lower=True, check=Non
     return message
 
 
-@Context.util
+@LionContext.util
 async def selector(ctx, header, select_from, timeout=120, max_len=20):
     """
     Interactive routine to prompt the `ctx.author` to select an item from a list.
@@ -214,7 +216,7 @@ async def selector(ctx, header, select_from, timeout=120, max_len=20):
     return result
 
 
-@Context.util
+@LionContext.util
 async def pager(ctx, pages, locked=True, start_at=0, add_cancel=False, **kwargs):
     """
     Shows the user each page from the provided list `pages` one at a time,
@@ -371,7 +373,7 @@ async def _pager(ctx, out_msg, pages, locked, start_at, add_cancel, **kwargs):
         pass
 
 
-@Context.util
+@LionContext.util
 async def input(ctx, msg="", timeout=120):
     """
     Listen for a response in the current channel, from ctx.author.
@@ -413,7 +415,7 @@ async def input(ctx, msg="", timeout=120):
     return result
 
 
-@Context.util
+@LionContext.util
 async def ask(ctx, msg, timeout=30, use_msg=None, del_on_timeout=False):
     """
     Ask ctx.author a yes/no question.
@@ -459,3 +461,41 @@ async def ask(ctx, msg, timeout=30, use_msg=None, del_on_timeout=False):
     if result in ["n", "no"]:
         return 0
     return 1
+
+# this reply() will be overide baseContext's reply with LionContext's, whcih can 
+# hook pre_execution of any util.
+# Using this system, Module now have much power to change Context's utils
+@LionContext.util
+async def reply(ctx, content=None, allow_everyone=False, **kwargs):
+    """
+    Helper function to reply in the current channel.
+    """
+    if not allow_everyone:
+        if content:
+            content = lib.sterilise_content(content)
+        
+    message = await ctx.ch.send(content=content, **kwargs)
+    ctx.sent_messages.append(message)
+    return message
+
+
+# this reply() will be overide baseContext's reply
+@LionContext.util
+async def error_reply(ctx, error_str):
+    """
+    Notify the user of a user level error.
+    Typically, this will occur in a red embed, posted in the command channel.
+    """
+    embed = discord.Embed(
+        colour=discord.Colour.red(),
+        description=error_str,
+        timestamp=datetime.datetime.utcnow()
+    )
+    try:
+        message = await ctx.ch.send(embed=embed)
+        ctx.sent_messages.append(message)
+        return message
+    except discord.Forbidden:
+        message = await ctx.reply(error_str)
+        ctx.sent_messages.append(message)
+        return message
