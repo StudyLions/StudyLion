@@ -1,3 +1,4 @@
+from bot.cmdClient.checks.global_perms import in_guild
 from meta import client
 import discord
 import topgg
@@ -7,6 +8,7 @@ from .module import module
 from wards import guild_admin
 from cmdClient.Context import Context
 from . import data as db
+from data.conditions import GEQ
 
 # This example uses topggpy's webhook system.
 client.topgg_webhook = topgg.WebhookManager(client).dbl_webhook("/dblwebhook", "nopassword123")
@@ -26,6 +28,7 @@ async def on_dbl_vote(data):
     )
 
     await send_user_dm(data['user'])
+    check_remainder_settings(data['user'])
 
     if data["type"] == "test":
         return client.dispatch("dbl_test", data)
@@ -72,25 +75,34 @@ def reply(util_func, *args, **kwargs):
     # *args will have LionContext
     # **kwargs should have the actual reply() call's extra arguments
 
-    args = list(args)
+    author = args[0].author.id
 
-    if 'embed' in kwargs:
-        kwargs['embed'].add_field(
-            name="\u200b",
-            value=(
-                f"Upvote me to get 🌟**+25% Economy Boost**🌟 - Use `!vote`"
-            ),
-            inline=False        
-        )
-    elif 'content' in args and args['content']:
-        args['content'] += "\n\nUpvote me to get 🌟**+25% Economy Boost**🌟 - Use `!vote`"
-    elif len(args) > 1:
-        args[1] += "\n\nUpvote me to get 🌟**+25% Economy Boost**🌟 - Use `!vote`"
-    else:
-        args['content'] = "\n\nUpvote me to get 🌟**+25% Economy Boost**🌟 - Use `!vote`"
+    if not db.topggvotes.select_one_where(
+        userid=author,
+        # start_at=LEQ(utc_now() - datetime.timedelta(hours=1)),
+        # start_at=LEQ(utc_now()),
+        select_columns="boostedTimestamp", 
+        boostedTimestamp=GEQ(datetime.datetime.utcnow() - datetime.timedelta(hours=12.5)),
+        _extra="ORDER BY boostedTimestamp DESC LIMIT 1"
+    ):
+        args = list(args)
+        if 'embed' in kwargs:
+            kwargs['embed'].add_field(
+                name="\u200b",
+                value=(
+                    f"Upvote me to get 🌟**+25% Economy Boost**🌟 - Use `!vote`"
+                ),
+                inline=False        
+            )
+        elif 'content' in args and args['content']:
+            args['content'] += "\n\nUpvote me to get 🌟**+25% Economy Boost**🌟 - Use `!vote`"
+        elif len(args) > 1:
+            args[1] += "\n\nUpvote me to get 🌟**+25% Economy Boost**🌟 - Use `!vote`"
+        else:
+            args['content'] = "\n\nUpvote me to get 🌟**+25% Economy Boost**🌟 - Use `!vote`"
 
-    args = tuple(args)
-    client.log('test')
+        args = tuple(args)
+        client.log('test')
 
     return [args, kwargs]
 
@@ -121,4 +133,39 @@ async def cmd_forcevote(ctx):
 
     await on_dbl_vote({"user": target.id, "type": "test"})
     return await ctx.reply('Topgg vote simulation successful on {}'.format(target))
-    
+
+
+@module.cmd(
+    "vote",
+    desc="Get Top.gg bot's link for Economy boost.",
+    group="Economy",
+    aliases=('topgg', 'topggvote', 'upvote')
+)
+@in_guild()
+async def cmd_vote(ctx):
+    """
+    Usage``:
+        {prefix}vote
+    Description:
+        Get Top.gg bot's link for +25% Economy boost.
+    """
+    target = ctx.author
+
+    return await ctx.reply('My Top.gg vote link is here: https://top.gg/bot/889078613817831495/vote \nThanks!')
+
+
+@module.cmd(
+    "remind_vote",
+    group="Personal Settings",
+    desc="Turn on/off DM Remainder to Upvote me.",
+    long_help="Use this setting to enable/disable DM remainders from me to upvote on Top.gg."
+)
+async def cmd_remind_vote(ctx):
+    """
+    Usage``:
+        {prefix}remind_vote on
+        {prefix}remind_vote off
+
+    Use this setting to enable/disable DM remainders from me to upvote on Top.gg.
+    """
+    pass
