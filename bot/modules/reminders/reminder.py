@@ -155,7 +155,9 @@ class Reminder:
             description=self.data.content,
             timestamp=datetime.datetime.utcnow()
         )
-        embed.add_field(name="Context?", value="[Click here]({})".format(self.data.message_link))
+        
+        if self.data.message_link:
+            embed.add_field(name="Context?", value="[Click here]({})".format(self.data.message_link))
 
         if self.data.interval:
             embed.add_field(
