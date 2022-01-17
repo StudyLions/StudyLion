@@ -14,7 +14,7 @@ meta = RowTable(
 
 user_config = RowTable(
     'user_config',
-    ('userid', 'timezone'),
+    ('userid', 'timezone', 'remaind_upvote'),
     'userid',
     cache=TTLCache(5000, ttl=60*5)
 )

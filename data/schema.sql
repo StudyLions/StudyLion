@@ -41,7 +41,8 @@ CREATE TABLE global_guild_blacklist(
 -- User configuration data {{{
 CREATE TABLE user_config(
   userid BIGINT PRIMARY KEY,
-  timezone TEXT
+  timezone TEXT,
+  remaind_upvote BOOLEAN DEFAULT TRUE
 );
 -- }}}
 
@@ -143,15 +144,6 @@ CREATE TABLE tasklist(
   last_updated_at TIMESTAMPTZ
 );
 CREATE INDEX tasklist_users ON tasklist (userid);
-
--- Topgg Data {{{
-create TABLE topgg(
-  voteid SERIAL PRIMARY KEY,
-  userid BIGINT NOT NULL,
-  boostedTimestamp TIMESTAMPTZ NOT NULL
-);
-CREATE INDEX topgg_member ON topgg (guildid, userid);
--- }}}
 
 CREATE TABLE tasklist_channels(
   guildid BIGINT NOT NULL,
@@ -521,6 +513,25 @@ AS $$
           stream_duration + COALESCE(EXTRACT(EPOCH FROM (NOW() - stream_start)), 0) AS total_stream_duration,
           video_duration + COALESCE(EXTRACT(EPOCH FROM (NOW() - video_start)), 0) AS total_video_duration,
           live_duration + COALESCE(EXTRACT(EPOCH FROM (NOW() - live_start)), 0) AS total_live_duration
+      ), bonus_userid AS (
+        SELECT COUNT(boostedTimestamp), 
+          CASE WHEN EXISTS (
+            SELECT 1 FROM Topgg
+            WHERE Topgg.userid=_userid AND EXTRACT(EPOCH FROM (NOW() - boostedTimestamp)) < 12.5*60*60
+          ) THEN
+          (array_agg( 
+            CASE WHEN boostedTimestamp <= current_sesh.start_time THEN
+              1.25
+            ELSE
+              (((current_sesh.total_duration - EXTRACT(EPOCH FROM (boostedTimestamp - current_sesh.start_time)))/current_sesh.total_duration)*0.25)+1
+            END))[1]
+          ELSE
+            1
+          END
+          AS bonus
+        FROM Topgg, current_sesh 
+        WHERE Topgg.userid=_userid AND EXTRACT(EPOCH FROM (NOW() - boostedTimestamp)) < 12.5*60*60
+        ORDER BY (array_agg(boostedTimestamp))[1] DESC LIMIT 1         
       ), saved_sesh AS (
         INSERT INTO session_history (
           guildid, userid, channelid, rating, tag, channel_type, start_time,
@@ -529,8 +540,8 @@ AS $$
         ) SELECT
           guildid, userid, channelid, rating, tag, channel_type, start_time,
           total_duration, total_stream_duration, total_video_duration, total_live_duration,
-          (total_duration * hourly_coins + live_duration * hourly_live_coins) / 3600
-        FROM current_sesh
+          ((total_duration * hourly_coins + live_duration * hourly_live_coins) * bonus_userid.bonus )/ 3600
+        FROM current_sesh, bonus_userid
         RETURNING *
       )
     UPDATE members
@@ -773,6 +784,15 @@ create TABLE timers(
   pretty_name TEXT
 );
 CREATE INDEX timers_guilds ON timers (guildid);
+-- }}}
+
+-- Topgg Data {{{
+create TABLE topgg(
+  voteid SERIAL PRIMARY KEY,
+  userid BIGINT NOT NULL,
+  boostedTimestamp TIMESTAMPTZ NOT NULL
+);
+CREATE INDEX topgg_member ON topgg (guildid, userid);
 -- }}}
 
 -- vim: set fdm=marker:

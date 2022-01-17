@@ -1,4 +1,4 @@
-from data import RowTable
+from data.interfaces import RowTable
 
 
 reminders = RowTable(

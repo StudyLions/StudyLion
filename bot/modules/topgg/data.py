@@ -1,4 +1,4 @@
-from data.interfaces import RowTable, Table
+from data.interfaces import RowTable
 
 topggvotes = RowTable(
     'topgg',
