@@ -792,7 +792,7 @@ create TABLE topgg(
   userid BIGINT NOT NULL,
   boostedTimestamp TIMESTAMPTZ NOT NULL
 );
-CREATE INDEX topgg_member ON topgg (guildid, userid);
+CREATE INDEX topgg_member ON topgg (userid);
 -- }}}
 
 -- vim: set fdm=marker:
