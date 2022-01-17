@@ -1,0 +1,75 @@
+import discord
+from .module import module
+from wards import guild_admin
+from bot.cmdClient.checks.global_perms import in_guild
+from settings.user_settings import UserSettings
+
+from .webhook import on_dbl_vote
+
+@module.cmd(
+    "forcevote",
+    desc="Simulate Topgg Vote.",
+    group="Guild Admin",
+    aliases=('debugvote', 'topggvote')
+)
+@guild_admin()
+async def cmd_forcevote(ctx):
+    """
+    Usage``:
+        {prefix}forcevote
+    Description:
+        Simulate Topgg Vote without actually a confirmation from Topgg site.
+
+        Can be used for force a vote for testing or if topgg has an error or production time bot error.
+    """
+    target = ctx.author
+    # Identify the target
+    if ctx.args:
+        if not ctx.msg.mentions:
+            return await ctx.error_reply("Please mention a user to simulate a vote!")
+        target = ctx.msg.mentions[0]
+
+    await on_dbl_vote({"user": target.id, "type": "test"})
+    return await ctx.reply('Topgg vote simulation successful on {}'.format(target))
+
+
+@module.cmd(
+    "vote",
+    desc="Get Top.gg bot's link for Economy boost.",
+    group="Economy",
+    aliases=('topgg', 'topggvote', 'upvote')
+)
+@in_guild()
+async def cmd_vote(ctx):
+    """
+    Usage``:
+        {prefix}vote
+    Description:
+        Get Top.gg bot's link for +25% Economy boost.
+    """
+    target = ctx.author
+
+    embed=discord.Embed(
+        title="Topgg Upvote",
+        description='Please click [here](https://top.gg/bot/889078613817831495/vote) to upvote.\n\nThanks.',
+        colour=discord.Colour.orange()
+    ).set_thumbnail(
+        url="https://cdn.discordapp.com/attachments/908283085999706153/930851470994182144/lionlogo.png"
+    )
+    return await ctx.reply(embed=embed)
+
+
+@module.cmd(
+    "vote_remainder",
+    group="Personal Settings",
+    desc="Turn on/off DM Remainder to Upvote me."
+)
+async def cmd_remind_vote(ctx):
+    """
+    Usage``:
+        {prefix}vote_remainder on
+        {prefix}vote_remainder off
+
+    Use this setting to enable/disable DM remainders from me to upvote on Top.gg.
+    """    
+    await UserSettings.settings.vote_remainder.command(ctx, ctx.author.id)
