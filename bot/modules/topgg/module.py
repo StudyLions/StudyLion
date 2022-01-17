@@ -1,3 +1,4 @@
+from multiprocessing import context
 from LionModule import LionModule
 from LionContext import register_reply_callback, unregister_reply_callback
 from meta.client import client
@@ -9,16 +10,16 @@ module = LionModule("Topgg")
 
 @module.launch_task
 async def register_hook(client):
-    client.log("register_reply_hook " )
-
     init_webhook()
     register_reply_callback(reply)
+    
+    client.log("Registered LionContext reply util hook.", context="Topgg" )
 
 @module.unload_task
 async def unregister_hook(client):
-    client.log("register_reply_hook " )
-
     unregister_reply_callback(reply)
+    
+    client.log("Unregistered LionContext reply util hook.", context="Topgg" )
 
 
 def reply(util_func, *args, **kwargs):
@@ -43,6 +44,5 @@ def reply(util_func, *args, **kwargs):
             args['content'] = "\n\nUpvote me to get 🌟**+25% Economy Boost**🌟 - Use `!vote`"
 
         args = tuple(args)
-        client.log('test')
 
     return [args, kwargs]
