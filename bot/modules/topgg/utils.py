@@ -12,7 +12,10 @@ from . import data as db
 from data.conditions import GEQ
 
 topgg_upvote_link = 'https://top.gg/bot/889078613817831495/vote'
-remainder_content = "You can now Upvote me again in Top.gg. \nMy Upvote link is {}".format(topgg_upvote_link)
+remainder_content = "You can now Upvote me again in Top.gg. \nMy Upvote link is [here]({})".format(topgg_upvote_link)
+
+lion_loveemote = '<:lionloveemote:933003977656795136>'
+lion_yayemote = '<:lionyayemote:933003929229352990>'
 
 # Will return None if user has not voted in [-12.5hrs till now]
 # else will return a Tuple containing timestamp of when exactly she voted
@@ -37,11 +40,14 @@ def create_remainder(userid):
         # if no, Create reminder
         reminder = Reminder.create(
             userid=userid,
+            # TODO using content as a selector is not a good method
             content=remainder_content,
             message_link=None,
             interval=None,
-            #remind_at=datetime.datetime.utcnow() + datetime.timedelta(minutes=2)
-            remind_at=last_vote_time[0] + datetime.timedelta(hours=12.5) if last_vote_time else datetime.datetime.utcnow() + datetime.timedelta(minutes=5)
+            title="Your boost is now available! {}".format(lion_yayemote),
+            footer="to stop reminders, use `{}vote_reminder off` command",
+            # remind_at=last_vote_time[0] + datetime.timedelta(hours=12.5) if last_vote_time else datetime.datetime.utcnow() + datetime.timedelta(minutes=5)
+            remind_at=datetime.datetime.utcnow() + datetime.timedelta(minutes=2)
         )
         
         # Schedule reminder
@@ -59,11 +65,12 @@ async def send_user_dm(userid):
     if user:
         try:
             embed=discord.Embed(
-                title="Thankyou.",
-                description='Thankyou for upvoting.',
+                title="Thank you for supporting our bot on Top.gg! {}".format(lion_yayemote),
+                description="By voting every 12 hours you will allow us to reach and help even more students all over the world.\n  \
+                            Thank you for supporting us, enjoy your LionCoins boost!",
                 colour=discord.Colour.orange()
             ).set_image(
-                url="https://cdn.discordapp.com/attachments/908283085999706153/930559064323268618/unknown.png"
+                url="https://cdn.discordapp.com/attachments/908283085999706153/932737228440993822/lion-yay.png"
             )
 
             await user.send(embed=embed)

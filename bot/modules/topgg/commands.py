@@ -5,6 +5,7 @@ from bot.cmdClient.checks.global_perms import in_guild
 from settings.user_settings import UserSettings
 
 from .webhook import on_dbl_vote
+from .utils import *
 
 @module.cmd(
     "forcevote",
@@ -50,11 +51,11 @@ async def cmd_vote(ctx):
     target = ctx.author
 
     embed=discord.Embed(
-        title="Topgg Upvote",
-        description='Please click [here](https://top.gg/bot/889078613817831495/vote) to upvote.\n\nThanks.',
+        title="Claim your boost!",
+        description='Please click [here](https://top.gg/bot/889078613817831495/vote) vote and support our bot!\n\nThank you! {}.'.format(lion_loveemote),
         colour=discord.Colour.orange()
     ).set_thumbnail(
-        url="https://cdn.discordapp.com/attachments/908283085999706153/930851470994182144/lionlogo.png"
+        url="https://cdn.discordapp.com/attachments/908283085999706153/933012309532614666/lion-love.png"
     )
     return await ctx.reply(embed=embed)
 

@@ -8,6 +8,8 @@ from .webhook import init_webhook
 
 module = LionModule("Topgg")
 
+upvote_info = "You have a boost available {}, to support our project and earn **25% more LionCoins** type `{}vote` {}"
+
 @module.launch_task
 async def register_hook(client):
     init_webhook()
@@ -28,20 +30,23 @@ def reply(util_func, *args, **kwargs):
 
     if not get_last_voted_timestamp(args[0].author.id):
         args = list(args)
+
+        upvote_info_formatted = upvote_info.format(lion_yayemote, args[0].best_prefix, lion_loveemote)
+
         if 'embed' in kwargs:
             kwargs['embed'].add_field(
                 name="\u200b",
                 value=(
-                    f"Upvote me to get 🌟**+25% Economy Boost**🌟 - Use `!vote`"
+                    upvote_info_formatted
                 ),
                 inline=False        
             )
         elif 'content' in args and args['content']:
-            args['content'] += "\n\nUpvote me to get 🌟**+25% Economy Boost**🌟 - Use `!vote`"
+            args['content'] += '\n\n' + upvote_info_formatted
         elif len(args) > 1:
-            args[1] += "\n\nUpvote me to get 🌟**+25% Economy Boost**🌟 - Use `!vote`"
+            args[1] += '\n\n' + upvote_info_formatted
         else:
-            args['content'] = "\n\nUpvote me to get 🌟**+25% Economy Boost**🌟 - Use `!vote`"
+            args['content'] = '\n\n' + upvote_info_formatted
 
         args = tuple(args)
 
