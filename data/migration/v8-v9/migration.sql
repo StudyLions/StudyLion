@@ -1,6 +1,10 @@
 ALTER TABLE user_config
   ADD COLUMN remaind_upvote BOOLEAN DEFAULT TRUE
 
+ALTER TABLE reminders
+  ADD COLUMN title TEXT DEFAULT NULL,
+  ADD COLUMN footer TEXT DEFAULT NULL
+
 -- Topgg Data {{{
 CREATE TABLE IF NOT EXISTS topgg(
   voteid SERIAL PRIMARY KEY,

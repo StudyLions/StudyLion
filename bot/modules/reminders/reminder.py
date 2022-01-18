@@ -150,7 +150,7 @@ class Reminder:
 
         # Build the message embed
         embed = discord.Embed(
-            title="You asked me to remind you!",
+            title="You asked me to remind you!" if self.data.title is None else self.data.title,
             colour=discord.Colour.orange(),
             description=self.data.content,
             timestamp=datetime.datetime.utcnow()
@@ -166,6 +166,9 @@ class Reminder:
                     self.timestamp + self.data.interval
                 )
             )
+
+        if self.data.footer:
+            embed.set_footer(text=self.data.footer)
 
         # Update the reminder data, and reschedule if required
         if self.data.interval:

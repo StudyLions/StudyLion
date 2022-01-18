@@ -167,7 +167,9 @@ CREATE TABLE reminders(
   content TEXT NOT NULL,
   message_link TEXT,
   interval INTEGER,
-  created_at TIMESTAMP DEFAULT (now() at time zone 'utc')
+  created_at TIMESTAMP DEFAULT (now() at time zone 'utc'),
+  title TEXT DEFAULT NULL,
+  footer TEXT DEFAULT NULL
 );
 CREATE INDEX reminder_users ON reminders (userid);
 -- }}}
