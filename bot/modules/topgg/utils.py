@@ -45,7 +45,7 @@ def create_remainder(userid):
             message_link=None,
             interval=None,
             title="Your boost is now available! {}".format(lion_yayemote),
-            footer="Use `{}vote_reminder off` to stop receiving reminders.",
+            footer="Use `{}vote_reminder off` to stop receiving reminders.".format(client.prefix),
             remind_at=last_vote_time[0] + datetime.timedelta(hours=12.5) if last_vote_time else datetime.datetime.utcnow() + datetime.timedelta(minutes=5)
             # remind_at=datetime.datetime.utcnow() + datetime.timedelta(minutes=2)
         )
