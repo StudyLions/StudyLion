@@ -36,7 +36,7 @@ async def cmd_forcevote(ctx):
 
 @module.cmd(
     "vote",
-    desc="Get Top.gg bot's link for Economy boost.",
+    desc="Get top.gg boost for 25% more LCs.",
     group="Economy",
     aliases=('topgg', 'topggvote', 'upvote')
 )
@@ -61,16 +61,16 @@ async def cmd_vote(ctx):
 
 
 @module.cmd(
-    "vote_remainder",
+    "vote_reminder",
     group="Personal Settings",
-    desc="Turn on/off DM Remainder to Upvote me."
+    desc="Turn on/off boost reminders."
 )
 async def cmd_remind_vote(ctx):
     """
-    Usage``:
-        {prefix}vote_remainder on
-        {prefix}vote_remainder off
+    Usage:
+        `{prefix}vote_reminder on`
+        `{prefix}vote_reminder off`
 
-    Use this setting to enable/disable DM remainders from me to upvote on Top.gg.
+    Enable or disable DM boost reminders.
     """    
     await UserSettings.settings.vote_remainder.command(ctx, ctx.author.id)

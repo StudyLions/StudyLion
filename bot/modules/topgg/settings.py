@@ -13,9 +13,9 @@ class topgg_vote_remainder(Boolean, UserSetting):
 
     _default = True
 
-    display_name = 'Upvote Remainder'
-    desc = "Turn on/off DM Remainders to Upvote me."
-    long_desc = "Use this setting to enable/disable DM remainders from me to upvote on Top.gg."
+    display_name = 'Upvote Reminder'
+    desc = "Turn on/off DM Reminders to Upvote me."
+    long_desc = ("Enable or disable DM boost reminders.",)
 
     @property
     def success_response(self):
@@ -24,9 +24,9 @@ class topgg_vote_remainder(Boolean, UserSetting):
             create_remainder(self.id)
 
             return (
-                "Remainder, in your DMs, to upvote me are {}.\n\n"
-                "`Do make sure that I can DM you.`"
-            ).format(self.formatted)
+                " I will send you boost reminders.\n\n"
+                "`Please make sure your DMs are open.`"
+            )
         else:
             # Check if reminder is already running and get its id
             r = reminders.select_one_where(
@@ -41,5 +41,5 @@ class topgg_vote_remainder(Boolean, UserSetting):
                 Reminder.delete(r['reminderid'])
 
             return (
-                "Remainder, in your DMs, to upvote me are Off."
-            ).format(self.formatted)
+                " I won't send you boost reminders."
+            )

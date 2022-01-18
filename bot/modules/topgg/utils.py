@@ -12,7 +12,7 @@ from . import data as db
 from data.conditions import GEQ
 
 topgg_upvote_link = 'https://top.gg/bot/889078613817831495/vote'
-remainder_content = "You can now Upvote me again in Top.gg. \nMy Upvote link is [here]({})".format(topgg_upvote_link)
+remainder_content = "You can now vote again on top.gg!\nClick [here]({}) to vote, thank you for the support!".format(topgg_upvote_link)
 
 lion_loveemote = '<:lionloveemote:933003977656795136>'
 lion_yayemote = '<:lionyayemote:933003929229352990>'
@@ -45,9 +45,9 @@ def create_remainder(userid):
             message_link=None,
             interval=None,
             title="Your boost is now available! {}".format(lion_yayemote),
-            footer="to stop reminders, use `{}vote_reminder off` command",
-            # remind_at=last_vote_time[0] + datetime.timedelta(hours=12.5) if last_vote_time else datetime.datetime.utcnow() + datetime.timedelta(minutes=5)
-            remind_at=datetime.datetime.utcnow() + datetime.timedelta(minutes=2)
+            footer="Use `{}vote_reminder off` to stop receiving reminders.",
+            remind_at=last_vote_time[0] + datetime.timedelta(hours=12.5) if last_vote_time else datetime.datetime.utcnow() + datetime.timedelta(minutes=5)
+            # remind_at=datetime.datetime.utcnow() + datetime.timedelta(minutes=2)
         )
         
         # Schedule reminder
