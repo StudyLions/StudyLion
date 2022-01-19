@@ -5,6 +5,8 @@ from meta import client
 from data import tables as tb
 from settings import UserSettings, GuildSettings
 
+# Give modules the ability to intercept addCoin() calls
+_lion_add_coins_callbacks: list = []
 
 class Lion:
     """
@@ -214,10 +216,13 @@ class Lion:
         timezone = self.settings.timezone.value
         return naive_utc_dt.replace(tzinfo=pytz.UTC).astimezone(timezone)
 
-    def addCoins(self, amount, flush=True):
+    def addCoins(self, amount, flush=True, ignorebonus=False):
         """
         Add coins to the user, optionally store the transaction in pending.
         """
+        for cb in _lion_add_coins_callbacks:
+            [self, amount, flush, ignorebonus] = cb(self, amount, flush, ignorebonus)
+
         self._pending_coins += amount
         self._pending[self.key] = self
         if flush:
@@ -251,3 +256,12 @@ class Lion:
             for lion in lions:
                 lion._pending_coins -= int(lion._pending_coins)
                 cls._pending.pop(lion.key, None)
+
+
+# TODO Expand this callback system to other functions
+# Note: callbacks MUST return [self, amount, flush, ignorebonus] modified/unmodified
+def register_addcoins_callback(func):
+    _lion_add_coins_callbacks.append(func)
+
+def unregister_addcoins_callback(func):
+    _lion_add_coins_callbacks.remove(func)

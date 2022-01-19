@@ -69,6 +69,8 @@ def _format_selectkeys(keys):
     """
     if not keys:
         return "*"
+    elif type(keys) is str:
+        return keys
     else:
         return ", ".join(keys)
 

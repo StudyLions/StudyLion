@@ -61,10 +61,10 @@ async def cmd_set(ctx):
     # Postgres `coins` column is `integer`, sanity check postgres int limits - which are smalled than python int range
     target_coins_to_set = target_lion.coins + amount
     if target_coins_to_set >= 0 and target_coins_to_set <= POSTGRES_INT_MAX:
-        target_lion.addCoins(amount)
+        target_lion.addCoins(amount, ignorebonus=True)
     elif target_coins_to_set < 0:
         target_coins_to_set = -target_lion.coins # Coins cannot go -ve, cap to 0
-        target_lion.addCoins(target_coins_to_set)
+        target_lion.addCoins(target_coins_to_set, ignorebonus=True)
         target_coins_to_set = 0
     else:
         return await ctx.embed_reply("Member coins cannot be more than {}".format(POSTGRES_INT_MAX))
