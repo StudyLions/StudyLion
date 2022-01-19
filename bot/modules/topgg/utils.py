@@ -1,9 +1,9 @@
-from email.mime import image
 import discord
 import datetime
 from meta.client import client
 from bot.settings.setting_types import Integer
 from meta import sharding
+from utils.lib import utc_now
 
 from modules.reminders.reminder import Reminder
 from modules.reminders.data import reminders
@@ -29,7 +29,7 @@ def get_last_voted_timestamp(userid: Integer):
     return db.topggvotes.select_one_where(
         userid=userid,
         select_columns="boostedTimestamp",
-        boostedTimestamp=GEQ(datetime.datetime.utcnow() - datetime.timedelta(hours=12.5)),
+        boostedTimestamp=GEQ(utc_now() - datetime.timedelta(hours=12.5)),
         _extra="ORDER BY boostedTimestamp DESC LIMIT 1"
     )
 
@@ -58,7 +58,7 @@ def create_remainder(userid):
             remind_at=(
                 last_vote_time[0] + datetime.timedelta(hours=12.5)
                 if last_vote_time else
-                datetime.datetime.utcnow() + datetime.timedelta(minutes=5)
+                utc_now() + datetime.timedelta(minutes=5)
             )
             # remind_at=datetime.datetime.utcnow() + datetime.timedelta(minutes=2)
         )
