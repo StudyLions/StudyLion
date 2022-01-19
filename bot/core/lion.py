@@ -1,12 +1,11 @@
 import pytz
+from functools import reduce
 from datetime import datetime, timedelta
 
 from meta import client
 from data import tables as tb
 from settings import UserSettings, GuildSettings
 
-# Give modules the ability to intercept addCoin() calls
-_lion_add_coins_callbacks: list = []
 
 class Lion:
     """
@@ -21,6 +20,9 @@ class Lion:
 
     # Lion cache. Currently lions don't expire
     _lions = {}  # (guildid, userid) -> Lion
+
+    # Extra methods supplying an economy bonus
+    _economy_bonuses = []
 
     def __init__(self, guildid, userid):
         self.guildid = guildid
@@ -123,6 +125,24 @@ class Lion:
         return int(coins)
 
     @property
+    def economy_bonus(self):
+        """
+        Economy multiplier
+        """
+        return reduce(
+            lambda x, y: x * y,
+            [func(self) for func in self._economy_bonuses]
+        )
+
+    @classmethod
+    def register_economy_bonus(cls, func):
+        cls._economy_bonuses.append(func)
+
+    @classmethod
+    def unregister_economy_bonus(cls, func):
+        cls._economy_bonuses.remove(func)
+
+    @property
     def session(self):
         """
         The current study session the user is in, if any.
@@ -220,10 +240,7 @@ class Lion:
         """
         Add coins to the user, optionally store the transaction in pending.
         """
-        for cb in _lion_add_coins_callbacks:
-            [self, amount, flush, ignorebonus] = cb(self, amount, flush, ignorebonus)
-
-        self._pending_coins += amount
+        self._pending_coins += amount * (1 if ignorebonus else self.economy_bonus)
         self._pending[self.key] = self
         if flush:
             self.flush()
@@ -256,12 +273,3 @@ class Lion:
             for lion in lions:
                 lion._pending_coins -= int(lion._pending_coins)
                 cls._pending.pop(lion.key, None)
-
-
-# TODO Expand this callback system to other functions
-# Note: callbacks MUST return [self, amount, flush, ignorebonus] modified/unmodified
-def register_addcoins_callback(func):
-    _lion_add_coins_callbacks.append(func)
-
-def unregister_addcoins_callback(func):
-    _lion_add_coins_callbacks.remove(func)

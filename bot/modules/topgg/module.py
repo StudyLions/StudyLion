@@ -3,7 +3,7 @@ from LionModule import LionModule
 from LionContext import register_reply_callback, unregister_reply_callback
 from bot.data.conditions import NOT
 from meta.client import client
-from core.lion import register_addcoins_callback, unregister_addcoins_callback
+from core.lion import Lion
 
 from .utils import *
 from .webhook import init_webhook
@@ -16,15 +16,15 @@ upvote_info = "You have a boost available {}, to support our project and earn **
 async def register_hook(client):
     init_webhook()
     register_reply_callback(reply)
-    register_addcoins_callback(cb_addCoins)
+    Lion.register_economy_bonus(economy_bonus)
 
     client.log("Registered LionContext reply util hook.", context="Topgg" )
 
 @module.unload_task
 async def unregister_hook(client):
     unregister_reply_callback(reply)
-    unregister_addcoins_callback(cb_addCoins)
-    
+    Lion.unregister_economy_bonus(economy_bonus)
+
     client.log("Unregistered LionContext reply util hook.", context="Topgg" )
 
 
@@ -43,7 +43,7 @@ def reply(util_func, *args, **kwargs):
                 value=(
                     upvote_info_formatted
                 ),
-                inline=False        
+                inline=False
             )
         elif 'content' in args and args['content']:
             args['content'] += '\n\n' + upvote_info_formatted
@@ -57,12 +57,5 @@ def reply(util_func, *args, **kwargs):
     return [args, kwargs]
 
 
-def cb_addCoins(self, amount, flush, ignorebonus):
-
-    client.log('cb_addCoins hook with amount={} ignorebonux={}'.format(amount, ignorebonus), context='Topgg')
-
-    if not ignorebonus and amount > 0 and get_last_voted_timestamp(self.userid):
-        amount *= 1.25
-        client.log('cb_addCoins with bonus={}'.format(amount), context='Topgg')
-
-    return [self, amount, flush, ignorebonus]
+def economy_bonus(lion):
+    return 1.25 if get_last_voted_timestamp(lion.userid) else 1
