@@ -7,6 +7,7 @@ from .stats import *
 from .user_config import *
 from .workout import *
 from .todo import *
+from .topgg import *
 from .reminders import *
 from .renting import *
 from .moderation import *
