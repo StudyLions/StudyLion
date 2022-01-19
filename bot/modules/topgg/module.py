@@ -44,9 +44,9 @@ def reply(util_func, *args, **kwargs):
                 ),
                 inline=False
             )
-        elif 'content' in args and args['content']:
+        elif 'content' in args and args['content'] and len(args['content']) + len(upvote_info_formatted) < 1998:
             args['content'] += '\n\n' + upvote_info_formatted
-        elif len(args) > 1:
+        elif len(args) > 1 and len(args[1]) + len(upvote_info_formatted) < 1998:
             args[1] += '\n\n' + upvote_info_formatted
         else:
             args['content'] = '\n\n' + upvote_info_formatted
