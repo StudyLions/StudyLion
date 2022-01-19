@@ -4,7 +4,8 @@ from utils.lib import utc_now
 from meta.config import conf
 
 import topgg
-from .utils import *
+from .utils import db, send_user_dm, create_remainder
+
 
 @client.event
 async def on_dbl_vote(data):
@@ -13,17 +14,17 @@ async def on_dbl_vote(data):
 
     db.topggvotes.insert(
         userid=data['user'],
-        boostedTimestamp = utc_now()
+        boostedTimestamp=utc_now()
     )
 
     await send_user_dm(data['user'])
-    
+
     if UserSettings.settings.vote_remainder.value:
         create_remainder(data['user'])
 
     if data["type"] == "test":
         return client.dispatch("dbl_test", data)
-    
+
 
 @client.event
 async def on_dbl_test(data):
@@ -32,5 +33,8 @@ async def on_dbl_test(data):
 
 
 def init_webhook():
-    client.topgg_webhook = topgg.WebhookManager(client).dbl_webhook(conf.bot.get("topgg_route"), conf.bot.get("topgg_password"))
-    client.topgg_webhook.run(conf.bot.get("topgg_port"))    
+    client.topgg_webhook = topgg.WebhookManager(client).dbl_webhook(
+        conf.bot.get("topgg_route"),
+        conf.bot.get("topgg_password")
+    )
+    client.topgg_webhook.run(conf.bot.get("topgg_port"))

@@ -12,24 +12,33 @@ from . import data as db
 from data.conditions import GEQ
 
 topgg_upvote_link = 'https://top.gg/bot/889078613817831495/vote'
-remainder_content = "You can now vote again on top.gg!\nClick [here]({}) to vote, thank you for the support!".format(topgg_upvote_link)
+remainder_content = (
+    "You can now vote again on top.gg!\n"
+    "Click [here]({}) to vote, thank you for the support!"
+).format(topgg_upvote_link)
 
 lion_loveemote = '<:lionloveemote:933003977656795136>'
 lion_yayemote = '<:lionyayemote:933003929229352990>'
 
-# Will return None if user has not voted in [-12.5hrs till now]
-# else will return a Tuple containing timestamp of when exactly she voted
+
 def get_last_voted_timestamp(userid: Integer):
+    """
+    Will return None if user has not voted in [-12.5hrs till now]
+    else will return a Tuple containing timestamp of when exactly she voted
+    """
     return db.topggvotes.select_one_where(
         userid=userid,
-        select_columns="boostedTimestamp", 
+        select_columns="boostedTimestamp",
         boostedTimestamp=GEQ(datetime.datetime.utcnow() - datetime.timedelta(hours=12.5)),
         _extra="ORDER BY boostedTimestamp DESC LIMIT 1"
     )
 
-# Checks if a remainder is already running (immaterial of remind_at time)
-# If no remainder exists creates a new remainder and schedules it
+
 def create_remainder(userid):
+    """
+    Checks if a remainder is already running (immaterial of remind_at time)
+    If no remainder exists creates a new remainder and schedules it
+    """
     if not reminders.select_one_where(
         userid=userid,
         content=remainder_content,
@@ -46,10 +55,14 @@ def create_remainder(userid):
             interval=None,
             title="Your boost is now available! {}".format(lion_yayemote),
             footer="Use `{}vote_reminder off` to stop receiving reminders.".format(client.prefix),
-            remind_at=last_vote_time[0] + datetime.timedelta(hours=12.5) if last_vote_time else datetime.datetime.utcnow() + datetime.timedelta(minutes=5)
+            remind_at=(
+                last_vote_time[0] + datetime.timedelta(hours=12.5)
+                if last_vote_time else
+                datetime.datetime.utcnow() + datetime.timedelta(minutes=5)
+            )
             # remind_at=datetime.datetime.utcnow() + datetime.timedelta(minutes=2)
         )
-        
+
         # Schedule reminder
         if sharding.shard_number == 0:
             reminder.schedule()
@@ -64,10 +77,13 @@ async def send_user_dm(userid):
             pass
     if user:
         try:
-            embed=discord.Embed(
+            embed = discord.Embed(
                 title="Thank you for supporting our bot on Top.gg! {}".format(lion_yayemote),
-                description="By voting every 12 hours you will allow us to reach and help even more students all over the world.\n  \
-                            Thank you for supporting us, enjoy your LionCoins boost!",
+                description=(
+                    "By voting every 12 hours you will allow us to reach and help "
+                    "even more students all over the world.\n"
+                    "Thank you for supporting us, enjoy your LionCoins boost!"
+                ),
                 colour=discord.Colour.orange()
             ).set_image(
                 url="https://cdn.discordapp.com/attachments/908283085999706153/932737228440993822/lion-yay.png"

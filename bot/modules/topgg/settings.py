@@ -4,7 +4,8 @@ from settings.setting_types import Boolean
 from modules.reminders.reminder import Reminder
 from modules.reminders.data import reminders
 
-from .utils import *
+from .utils import create_remainder, remainder_content
+
 
 @UserSettings.attach_setting
 class topgg_vote_remainder(Boolean, UserSetting):

@@ -1,16 +1,14 @@
-from multiprocessing import context
 from LionModule import LionModule
 from LionContext import register_reply_callback, unregister_reply_callback
-from bot.data.conditions import NOT
-from meta.client import client
 from core.lion import Lion
 
-from .utils import *
+from .utils import get_last_voted_timestamp, lion_loveemote, lion_yayemote
 from .webhook import init_webhook
 
 module = LionModule("Topgg")
 
 upvote_info = "You have a boost available {}, to support our project and earn **25% more LionCoins** type `{}vote` {}"
+
 
 @module.launch_task
 async def register_hook(client):
@@ -18,14 +16,15 @@ async def register_hook(client):
     register_reply_callback(reply)
     Lion.register_economy_bonus(economy_bonus)
 
-    client.log("Registered LionContext reply util hook.", context="Topgg" )
+    client.log("Registered LionContext reply util hook.", context="Topgg")
+
 
 @module.unload_task
 async def unregister_hook(client):
     unregister_reply_callback(reply)
     Lion.unregister_economy_bonus(economy_bonus)
 
-    client.log("Unregistered LionContext reply util hook.", context="Topgg" )
+    client.log("Unregistered LionContext reply util hook.", context="Topgg")
 
 
 def reply(util_func, *args, **kwargs):
