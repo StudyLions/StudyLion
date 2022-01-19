@@ -4,7 +4,7 @@ CREATE TABLE VersionHistory(
   time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
   author TEXT
 );
-INSERT INTO VersionHistory (version, author) VALUES (8, 'Initial Creation');
+INSERT INTO VersionHistory (version, author) VALUES (9, 'Initial Creation');
 
 
 CREATE OR REPLACE FUNCTION update_timestamp_column()
@@ -794,7 +794,7 @@ create TABLE topgg(
   userid BIGINT NOT NULL,
   boostedTimestamp TIMESTAMPTZ NOT NULL
 );
-CREATE INDEX topgg_member ON topgg (userid);
+CREATE INDEX topgg_userid_timestamp ON topgg (userid, boostedTimestamp);
 -- }}}
 
 -- vim: set fdm=marker:

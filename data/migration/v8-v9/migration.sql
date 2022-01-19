@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS topgg(
   userid BIGINT NOT NULL,
   boostedTimestamp TIMESTAMPTZ NOT NULL
 );
-CREATE INDEX topgg_member ON topgg (userid);
+CREATE INDEX topgg_userid_timestamp ON topgg (userid, boostedTimestamp);
 -- }}}
 
 DROP FUNCTION close_study_session(_guildid BIGINT, _userid BIGINT);
@@ -73,4 +73,4 @@ AS $$
 $$ LANGUAGE PLPGSQL;
 -- }}}
 
-INSERT INTO VersionHistory (version, author) VALUES (8, 'v8-v9 migration');
+INSERT INTO VersionHistory (version, author) VALUES (9, 'v8-v9 migration');
