@@ -8,6 +8,8 @@ class LionContext(Context):
     """
     Subclass to allow easy attachment of custom hooks and structure to contexts.
     """
+    __slots__ = ()
+
     @classmethod
     def util(cls, util_func):
         """
@@ -30,7 +32,7 @@ class LionContext(Context):
 
 
 class Wrappable:
-    __slots = ('_func', 'wrappers')
+    __slots__ = ('_func', 'wrappers')
 
     def __init__(self, func):
         self._func = func
