@@ -1,48 +1,87 @@
-import datetime
+import types
 
-import discord
 from cmdClient import Context
 from cmdClient.logger import log
 
-reply_callbacks: list = [] # TODO Extend to all cmdClient.Context.Utils to give flexibility to modules
 
 class LionContext(Context):
     """
     Subclass to allow easy attachment of custom hooks and structure to contexts.
     """
-
-    def __init__(self, client, **kwargs):
-        super().__init__(client, **kwargs)
-    
     @classmethod
-    def util(self, util_func):
+    def util(cls, util_func):
         """
-        Decorator to make a utility function available as a Context instance method
+        Decorator to make a utility function available as a Context instance method.
+        Extends the default Context method to add logging and to return the utility function.
         """
-        log('added util_function: ' + util_func.__name__)
-
-        def util_fun_wrapper(*args, **kwargs):
-            [args, kwargs] = self.util_pre(util_func, *args, **kwargs)            
-            return util_func(*args, **kwargs)
-
-        util_fun_wrapper.__name__ = util_func.__name__      # Hack
-
-        super().util(util_fun_wrapper)
+        super().util(util_func)
+        log(f"Attached context utility function: {util_func.__name__}")
+        return util_func
 
     @classmethod
-    def util_pre(self, util_func, *args, **kwargs):
-
-        if util_func.__name__ == 'reply':
-            for cb in reply_callbacks:
-                [args, kwargs] = cb(util_func, *args, **kwargs)    # Nesting handlers. Note: args and kwargs are mutable
-                
-        return [args, kwargs]
-
-
-def register_reply_callback(func):
-    reply_callbacks.append(func)
-
-def unregister_reply_callback(func):
-    reply_callbacks.remove(func)
+    def wrappable_util(cls, util_func):
+        """
+        Decorator to add a Wrappable utility function as a Context instance method.
+        """
+        wrappable = Wrappable(util_func)
+        super().util(wrappable)
+        log(f"Attached wrappable context utility function: {util_func.__name__}")
+        return wrappable
 
 
+class Wrappable:
+    __slots = ('_func', 'wrappers')
+
+    def __init__(self, func):
+        self._func = func
+        self.wrappers = None
+
+    @property
+    def __name__(self):
+        return self._func.__name__
+
+    def add_wrapper(self, func, name=None):
+        self.wrappers = self.wrappers or {}
+        name = name or func.__name__
+        self.wrappers[name] = func
+        log(
+            f"Added wrapper '{name}' to Wrappable '{self._func.__name__}'.",
+            context="Wrapping"
+        )
+
+    def remove_wrapper(self, name):
+        if not self.wrappers or name not in self.wrappers:
+            raise ValueError(
+                f"Cannot remove non-existent wrapper '{name}' from Wrappable '{self._func.__name__}'"
+            )
+        self.wrappers.pop(name)
+        log(
+            f"Removed wrapper '{name}' from Wrappable '{self._func.__name__}'.",
+            context="Wrapping"
+        )
+
+    def __call__(self, *args, **kwargs):
+        print(args, kwargs)
+        if self.wrappers:
+            return self._wrapped(iter(self.wrappers.values()))(*args, **kwargs)
+        else:
+            return self._func(*args, **kwargs)
+
+    def _wrapped(self, iter_wraps):
+        next_wrap = next(iter_wraps, None)
+        if next_wrap:
+            def _func(*args, **kwargs):
+                return next_wrap(self._wrapped(iter_wraps), *args, **kwargs)
+        else:
+            _func = self._func
+        return _func
+
+    def __get__(self, instance, cls=None):
+        if instance is None:
+            return self
+        else:
+            return types.MethodType(self, instance)
+
+
+# Override the original Context.reply with a wrappable utility
+reply = LionContext.wrappable_util(Context.reply)

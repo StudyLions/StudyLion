@@ -1,5 +1,5 @@
 from LionModule import LionModule
-from LionContext import register_reply_callback, unregister_reply_callback
+from LionContext import LionContext
 from core.lion import Lion
 
 from .utils import get_last_voted_timestamp, lion_loveemote, lion_yayemote
@@ -11,32 +11,33 @@ upvote_info = "You have a boost available {}, to support our project and earn **
 
 
 @module.launch_task
+async def attach_topgg_webhook(client):
+    if client.shard_id == 0:
+        init_webhook()
+        client.log("Attached top.gg voiting webhook.", context="TOPGG")
+
+@module.launch_task
 async def register_hook(client):
-    init_webhook()
-    register_reply_callback(reply)
+    LionContext.reply.add_wrapper(topgg_reply_wrapper)
     Lion.register_economy_bonus(economy_bonus)
 
-    client.log("Registered LionContext reply util hook.", context="Topgg")
+    client.log("Loaded top.gg hooks.", context="TOPGG")
 
 
 @module.unload_task
 async def unregister_hook(client):
-    unregister_reply_callback(reply)
     Lion.unregister_economy_bonus(economy_bonus)
+    LionContext.reply.remove_wrapper(topgg_reply_wrapper.__name__)
 
-    client.log("Unregistered LionContext reply util hook.", context="Topgg")
+    client.log("Unloaded top.gg hooks.", context="TOPGG")
 
 
-def reply(util_func, *args, **kwargs):
-    # *args will have LionContext
-    # **kwargs should have the actual reply() call's extra arguments
-
-    if not get_last_voted_timestamp(args[0].author.id):
-        args = list(args)
-
+async def topgg_reply_wrapper(func, *args, suggest_vote=True, **kwargs):
+    if suggest_vote and not get_last_voted_timestamp(args[0].author.id):
         upvote_info_formatted = upvote_info.format(lion_yayemote, args[0].best_prefix, lion_loveemote)
 
         if 'embed' in kwargs:
+            # Add message as an extra embed field
             kwargs['embed'].add_field(
                 name="\u200b",
                 value=(
@@ -44,16 +45,17 @@ def reply(util_func, *args, **kwargs):
                 ),
                 inline=False
             )
-        elif 'content' in args and args['content'] and len(args['content']) + len(upvote_info_formatted) < 1998:
-            args['content'] += '\n\n' + upvote_info_formatted
-        elif len(args) > 1 and len(args[1]) + len(upvote_info_formatted) < 1998:
-            args[1] += '\n\n' + upvote_info_formatted
         else:
-            args['content'] = '\n\n' + upvote_info_formatted
+            # Add message to content
+            if 'content' in kwargs and kwargs['content'] and len(kwargs['content']) + len(upvote_info_formatted) < 1998:
+                kwargs['content'] += '\n\n' + upvote_info_formatted
+            elif len(args) > 1 and len(args[1]) + len(upvote_info_formatted) < 1998:
+                args = list(args)
+                args[1] += '\n\n' + upvote_info_formatted
+            else:
+                kwargs['content'] = upvote_info_formatted
 
-        args = tuple(args)
-
-    return [args, kwargs]
+    return await func(*args, **kwargs)
 
 
 def economy_bonus(lion):
