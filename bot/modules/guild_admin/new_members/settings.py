@@ -25,12 +25,12 @@ class greeting_channel(stypes.Channel, GuildSetting):
     attr_name = 'greeting_channel'
     _data_column = 'greeting_channel'
 
-    display_name = "greeting_channel"
-    desc = "Channel to send the greeting message in"
+    display_name = "welcome_channel"
+    desc = "Channel to send the welcome message in"
 
     long_desc = (
-        "Channel to post the `greeting_message` in when a new user joins the server. "
-        "Accepts `DM` to indicate the greeting should be direct messaged to the new member."
+        "Channel to post the `welcome_message` in when a new user joins the server. "
+        "Accepts `DM` to indicate the welcome should be sent via direct message."
     )
     _accepts = (
         "Text Channel name/id/mention, or `DM`, or `None` to disable."
@@ -78,11 +78,11 @@ class greeting_channel(stypes.Channel, GuildSetting):
     def success_response(self):
         value = self.value
         if not value:
-            return "Greeting messages are disabled."
+            return "Welcome messages are disabled."
         elif value == self.DMCHANNEL:
-            return "Greeting messages will be sent via direct message."
+            return "Welcome messages will be sent via direct message."
         else:
-            return "Greeting messages will be posted in {}".format(self.formatted)
+            return "Welcome messages will be posted in {}".format(self.formatted)
 
 
 @GuildSettings.attach_setting
@@ -92,11 +92,11 @@ class greeting_message(stypes.Message, GuildSetting):
     attr_name = 'greeting_message'
     _data_column = 'greeting_message'
 
-    display_name = 'greeting_message'
-    desc = "Greeting message sent to welcome new members."
+    display_name = 'welcome_message'
+    desc = "Welcome message sent to welcome new members."
 
     long_desc = (
-        "Message to send to the configured `greeting_channel` when a member joins the server for the first time."
+        "Message to send to the configured `welcome_channel` when a member joins the server for the first time."
     )
 
     _default = r"""
@@ -133,7 +133,7 @@ class greeting_message(stypes.Message, GuildSetting):
 
     @property
     def success_response(self):
-        return "The greeting message has been set!"
+        return "The welcome message has been set!"
 
 
 @GuildSettings.attach_setting
@@ -144,10 +144,10 @@ class returning_message(stypes.Message, GuildSetting):
     _data_column = 'returning_message'
 
     display_name = 'returning_message'
-    desc = "Greeting message sent to returning members."
+    desc = "Welcome message sent to returning members."
 
     long_desc = (
-        "Message to send to the configured `greeting_channel` when a member returns to the server."
+        "Message to send to the configured `welcome_channel` when a member returns to the server."
     )
 
     _default = r"""
