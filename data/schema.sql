@@ -42,7 +42,7 @@ CREATE TABLE global_guild_blacklist(
 CREATE TABLE user_config(
   userid BIGINT PRIMARY KEY,
   timezone TEXT,
-  remaind_upvote BOOLEAN DEFAULT TRUE
+  topgg_vote_reminder
 );
 -- }}}
 
@@ -168,8 +168,8 @@ CREATE TABLE reminders(
   message_link TEXT,
   interval INTEGER,
   created_at TIMESTAMP DEFAULT (now() at time zone 'utc'),
-  title TEXT DEFAULT NULL,
-  footer TEXT DEFAULT NULL
+  title TEXT,
+  footer TEXT
 );
 CREATE INDEX reminder_users ON reminders (userid);
 -- }}}

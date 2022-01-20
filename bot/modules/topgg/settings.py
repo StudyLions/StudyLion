@@ -4,19 +4,23 @@ from settings.setting_types import Boolean
 from modules.reminders.reminder import Reminder
 from modules.reminders.data import reminders
 
-from .utils import create_remainder, remainder_content
+from .utils import create_remainder, remainder_content, topgg_upvote_link
 
 
 @UserSettings.attach_setting
 class topgg_vote_remainder(Boolean, UserSetting):
     attr_name = 'vote_remainder'
-    _data_column = 'remaind_upvote'
+    _data_column = 'topgg_vote_reminder'
 
     _default = True
 
-    display_name = 'Upvote Reminder'
-    desc = "Turn on/off DM Reminders to Upvote me."
-    long_desc = ("Enable or disable DM boost reminders.",)
+    display_name = 'vote_reminder'
+    desc = r"Toggle automatic reminders to support me for a 25% LionCoin boost."
+    long_desc = (
+        "Did you know that you can [vote for me]({vote_link}) to help me help other people reach their goals? "
+        "And you get a **25% boost** to all LionCoin income you make across all servers!\n"
+        "Enable this setting if you want me to let you know when you can vote again!"
+    ).format(vote_link=topgg_upvote_link)
 
     @property
     def success_response(self):
@@ -25,8 +29,8 @@ class topgg_vote_remainder(Boolean, UserSetting):
             create_remainder(self.id)
 
             return (
-                " I will send you boost reminders.\n\n"
-                "`Please make sure your DMs are open.`"
+                "Thank you for supporting me! I will remind in your DMs when you can vote next! "
+                "(Please make sue your DMs are open, otherwise I can't reach you!)"
             )
         else:
             # Check if reminder is already running and get its id
@@ -42,5 +46,5 @@ class topgg_vote_remainder(Boolean, UserSetting):
                 Reminder.delete(r['reminderid'])
 
             return (
-                " I won't send you boost reminders."
+                "I will no longer send you voting reminders."
             )
