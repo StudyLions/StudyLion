@@ -30,7 +30,7 @@ class topgg_vote_remainder(Boolean, UserSetting):
 
             return (
                 "Thank you for supporting me! I will remind in your DMs when you can vote next! "
-                "(Please make sue your DMs are open, otherwise I can't reach you!)"
+                "(Please make sure your DMs are open, otherwise I can't reach you!)"
             )
         else:
             # Check if reminder is already running and get its id
