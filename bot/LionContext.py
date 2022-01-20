@@ -61,7 +61,6 @@ class Wrappable:
         )
 
     def __call__(self, *args, **kwargs):
-        print(args, kwargs)
         if self.wrappers:
             return self._wrapped(iter(self.wrappers.values()))(*args, **kwargs)
         else:
