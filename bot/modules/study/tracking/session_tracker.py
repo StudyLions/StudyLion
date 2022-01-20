@@ -254,7 +254,7 @@ async def session_voice_tracker(client, member, before, after):
         return
 
     guild = member.guild
-    Lion.fetch(guild.id, member.id)
+    Lion.fetch(guild.id, member.id).update_saved_data(member)
     session = Session.get(guild.id, member.id)
 
     if before.channel == after.channel:

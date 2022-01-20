@@ -1,4 +1,5 @@
 import pytz
+import discord
 from functools import reduce
 from datetime import datetime, timedelta
 
@@ -48,6 +49,8 @@ class Lion:
             # TODO: Debug log
             lion = tb.lions.fetch(key)
             if not lion:
+                tb.user_config.fetch_or_create(userid)
+                tb.guild_config.fetch_or_create(guildid)
                 tb.lions.create_row(
                     guildid=guildid,
                     userid=userid,
@@ -75,9 +78,23 @@ class Lion:
     @property
     def data(self):
         """
-        The Row corresponding to this user.
+        The Row corresponding to this member.
         """
         return tb.lions.fetch(self.key)
+
+    @property
+    def user_data(self):
+        """
+        The Row corresponding to this user.
+        """
+        return tb.user_config.fetch_or_create(self.userid)
+
+    @property
+    def guild_data(self):
+        """
+        The Row corresponding to this guild.
+        """
+        return tb.guild_config.fetch_or_create(self.guildid)
 
     @property
     def settings(self):
@@ -228,6 +245,33 @@ class Lion:
             remaining = remaining_in_day + study_cap
 
         return remaining
+
+    @property
+    def name(self):
+        """
+        Returns the best local name possible.
+        """
+        if self.member:
+            name = self.member.display_name
+        elif self.data.display_name:
+            name = self.data.display_name
+        else:
+            name = str(self.userid)
+
+        return name
+
+
+    def update_saved_data(self, member: discord.Member):
+        """
+        Update the stored discord data from the givem member.
+        Intended to be used when we get member data from events that may not be available in cache.
+        """
+        if self.guild_data.name != member.guild.name:
+            self.guild_data.name = member.guild.name
+        if self.user_data.avatar_hash != member.avatar:
+            self.user_data.avatar_hash = member.avatar
+        if self.data.display_name != member.display_name:
+            self.data.display_name = member.display_name
 
     def localize(self, naive_utc_dt):
         """

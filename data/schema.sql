@@ -42,7 +42,8 @@ CREATE TABLE global_guild_blacklist(
 CREATE TABLE user_config(
   userid BIGINT PRIMARY KEY,
   timezone TEXT,
-  topgg_vote_reminder
+  topgg_vote_reminder,
+  avatar_hash TEXT
 );
 -- }}}
 
@@ -80,7 +81,8 @@ CREATE TABLE guild_config(
   starting_funds INTEGER,
   persist_roles BOOLEAN,
   daily_study_cap INTEGER,
-  pomodoro_channel BIGINT
+  pomodoro_channel BIGINT,
+  name TEXT
 );
 
 CREATE TABLE ignored_members(
@@ -405,6 +407,7 @@ CREATE TABLE members(
   last_workout_start TIMESTAMP,
   last_study_badgeid INTEGER REFERENCES study_badges ON DELETE SET NULL,
   video_warned BOOLEAN DEFAULT FALSE,
+  display_name TEXT,
   _timestamp TIMESTAMP DEFAULT (now() at time zone 'utc'),
   PRIMARY KEY(guildid, userid)
 );

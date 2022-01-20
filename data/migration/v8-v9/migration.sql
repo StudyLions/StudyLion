@@ -73,4 +73,15 @@ AS $$
 $$ LANGUAGE PLPGSQL;
 -- }}}
 
+
+ALTER TABLE user_config
+  ADD COLUMN avatar_hash TEXT;
+
+ALTER TABLE guild_config
+  ADD COLUMN name TEXT;
+
+ALTER TABLE members
+  ADD COLUMN display_name TEXT;
+
+
 INSERT INTO VersionHistory (version, author) VALUES (9, 'v8-v9 migration');
