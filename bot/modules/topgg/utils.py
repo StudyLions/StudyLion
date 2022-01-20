@@ -1,9 +1,11 @@
 import discord
 import datetime
-from meta.client import client
-from bot.settings.setting_types import Integer
+
 from meta import sharding
+from meta import conf
+from meta.client import client
 from utils.lib import utc_now
+from settings.setting_types import Integer
 
 from modules.reminders.reminder import Reminder
 from modules.reminders.data import reminders
@@ -17,8 +19,8 @@ remainder_content = (
     "Click [here]({}) to vote, thank you for the support!"
 ).format(topgg_upvote_link)
 
-lion_loveemote = '<:lionloveemote:933003977656795136>'
-lion_yayemote = '<:lionyayemote:933003929229352990>'
+lion_loveemote = conf.emojis.getemoji('lionlove')
+lion_yayemote = conf.emojis.getemoji('lionyay')
 
 
 def get_last_voted_timestamp(userid: Integer):
