@@ -1,10 +1,8 @@
 import asyncio
 import discord
-from LionContext import LionContext
+from LionContext import LionContext as Context
 from cmdClient.lib import UserCancelled, ResponseTimedOut
 
-import datetime
-from cmdClient import lib
 from .lib import paginate_list
 
 # TODO: Interactive locks
@@ -21,7 +19,7 @@ async def discord_shield(coro):
         pass
 
 
-@LionContext.util
+@Context.util
 async def cancellable(ctx, msg, add_reaction=True, cancel_message=None, timeout=300):
     """
     Add a cancellation reaction to the given message.
@@ -64,7 +62,7 @@ async def cancellable(ctx, msg, add_reaction=True, cancel_message=None, timeout=
     return task
 
 
-@LionContext.util
+@Context.util
 async def listen_for(ctx, allowed_input=None, timeout=120, lower=True, check=None):
     """
     Listen for a one of a particular set of input strings,
@@ -116,7 +114,7 @@ async def listen_for(ctx, allowed_input=None, timeout=120, lower=True, check=Non
     return message
 
 
-@LionContext.util
+@Context.util
 async def selector(ctx, header, select_from, timeout=120, max_len=20):
     """
     Interactive routine to prompt the `ctx.author` to select an item from a list.
@@ -216,7 +214,7 @@ async def selector(ctx, header, select_from, timeout=120, max_len=20):
     return result
 
 
-@LionContext.util
+@Context.util
 async def pager(ctx, pages, locked=True, start_at=0, add_cancel=False, **kwargs):
     """
     Shows the user each page from the provided list `pages` one at a time,
@@ -373,7 +371,7 @@ async def _pager(ctx, out_msg, pages, locked, start_at, add_cancel, **kwargs):
         pass
 
 
-@LionContext.util
+@Context.util
 async def input(ctx, msg="", timeout=120):
     """
     Listen for a response in the current channel, from ctx.author.
@@ -415,7 +413,7 @@ async def input(ctx, msg="", timeout=120):
     return result
 
 
-@LionContext.util
+@Context.util
 async def ask(ctx, msg, timeout=30, use_msg=None, del_on_timeout=False):
     """
     Ask ctx.author a yes/no question.

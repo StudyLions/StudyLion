@@ -1,8 +1,8 @@
 import discord
 from .module import module
-from wards import guild_admin
 from bot.cmdClient.checks import in_guild, is_owner
 from settings.user_settings import UserSettings
+from LionContext import LionContext
 
 from .webhook import on_dbl_vote
 from .utils import lion_loveemote
@@ -14,7 +14,7 @@ from .utils import lion_loveemote
     group="Bot Admin",
 )
 @is_owner()
-async def cmd_forcevote(ctx):
+async def cmd_forcevote(ctx: LionContext):
     """
     Usage``:
         {prefix}forcevote
@@ -42,7 +42,7 @@ async def cmd_forcevote(ctx):
     aliases=('topgg', 'topggvote', 'upvote')
 )
 @in_guild()
-async def cmd_vote(ctx):
+async def cmd_vote(ctx: LionContext):
     """
     Usage``:
         {prefix}vote
@@ -67,7 +67,7 @@ async def cmd_vote(ctx):
     group="Personal Settings",
     desc="Turn on/off boost reminders."
 )
-async def cmd_remind_vote(ctx):
+async def cmd_remind_vote(ctx: LionContext):
     """
     Usage:
         `{prefix}vote_reminder on`
