@@ -32,7 +32,7 @@ async def cmd_forcevote(ctx: LionContext):
         target = ctx.msg.mentions[0]
 
     await on_dbl_vote({"user": target.id, "type": "test"})
-    return await ctx.reply('Topgg vote simulation successful on {}'.format(target))
+    return await ctx.reply('Topgg vote simulation successful on {}'.format(target), suggest_vote=False)
 
 
 @module.cmd(
@@ -59,7 +59,7 @@ async def cmd_vote(ctx: LionContext):
     ).set_thumbnail(
         url="https://cdn.discordapp.com/attachments/908283085999706153/933012309532614666/lion-love.png"
     )
-    return await ctx.reply(embed=embed)
+    return await ctx.reply(embed=embed, suggest_vote=False)
 
 
 @module.cmd(
