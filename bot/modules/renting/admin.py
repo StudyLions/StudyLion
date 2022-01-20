@@ -42,7 +42,7 @@ class rent_member_limit(settings.Integer, GuildSetting):
     display_name = "rent_member_limit"
     desc = "Maximum number of people that can be added to a rented room."
 
-    _default = 10
+    _default = 24
 
     long_desc = (
         "Maximum number of people a member can add to a rented private voice channel."

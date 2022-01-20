@@ -4,7 +4,7 @@ CREATE TABLE VersionHistory(
   time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
   author TEXT
 );
-INSERT INTO VersionHistory (version, author) VALUES (8, 'Initial Creation');
+INSERT INTO VersionHistory (version, author) VALUES (9, 'Initial Creation');
 
 
 CREATE OR REPLACE FUNCTION update_timestamp_column()
@@ -41,7 +41,9 @@ CREATE TABLE global_guild_blacklist(
 -- User configuration data {{{
 CREATE TABLE user_config(
   userid BIGINT PRIMARY KEY,
-  timezone TEXT
+  timezone TEXT,
+  topgg_vote_reminder,
+  avatar_hash TEXT
 );
 -- }}}
 
@@ -79,7 +81,8 @@ CREATE TABLE guild_config(
   starting_funds INTEGER,
   persist_roles BOOLEAN,
   daily_study_cap INTEGER,
-  pomodoro_channel BIGINT
+  pomodoro_channel BIGINT,
+  name TEXT
 );
 
 CREATE TABLE ignored_members(
@@ -166,7 +169,9 @@ CREATE TABLE reminders(
   content TEXT NOT NULL,
   message_link TEXT,
   interval INTEGER,
-  created_at TIMESTAMP DEFAULT (now() at time zone 'utc')
+  created_at TIMESTAMP DEFAULT (now() at time zone 'utc'),
+  title TEXT,
+  footer TEXT
 );
 CREATE INDEX reminder_users ON reminders (userid);
 -- }}}
@@ -402,6 +407,7 @@ CREATE TABLE members(
   last_workout_start TIMESTAMP,
   last_study_badgeid INTEGER REFERENCES study_badges ON DELETE SET NULL,
   video_warned BOOLEAN DEFAULT FALSE,
+  display_name TEXT,
   _timestamp TIMESTAMP DEFAULT (now() at time zone 'utc'),
   PRIMARY KEY(guildid, userid)
 );
@@ -417,7 +423,7 @@ CREATE TYPE SessionChannelType AS ENUM (
   'STANDARD',
   'ACCOUNTABILITY',
   'RENTED',
-  'EXTERNAL',
+  'EXTERNAL'
 );
 
 
@@ -512,6 +518,25 @@ AS $$
           stream_duration + COALESCE(EXTRACT(EPOCH FROM (NOW() - stream_start)), 0) AS total_stream_duration,
           video_duration + COALESCE(EXTRACT(EPOCH FROM (NOW() - video_start)), 0) AS total_video_duration,
           live_duration + COALESCE(EXTRACT(EPOCH FROM (NOW() - live_start)), 0) AS total_live_duration
+      ), bonus_userid AS (
+        SELECT COUNT(boostedTimestamp), 
+          CASE WHEN EXISTS (
+            SELECT 1 FROM Topgg
+            WHERE Topgg.userid=_userid AND EXTRACT(EPOCH FROM (NOW() - boostedTimestamp)) < 12.5*60*60
+          ) THEN
+          (array_agg( 
+            CASE WHEN boostedTimestamp <= current_sesh.start_time THEN
+              1.25
+            ELSE
+              (((current_sesh.total_duration - EXTRACT(EPOCH FROM (boostedTimestamp - current_sesh.start_time)))/current_sesh.total_duration)*0.25)+1
+            END))[1]
+          ELSE
+            1
+          END
+          AS bonus
+        FROM Topgg, current_sesh 
+        WHERE Topgg.userid=_userid AND EXTRACT(EPOCH FROM (NOW() - boostedTimestamp)) < 12.5*60*60
+        ORDER BY (array_agg(boostedTimestamp))[1] DESC LIMIT 1         
       ), saved_sesh AS (
         INSERT INTO session_history (
           guildid, userid, channelid, rating, tag, channel_type, start_time,
@@ -520,8 +545,8 @@ AS $$
         ) SELECT
           guildid, userid, channelid, rating, tag, channel_type, start_time,
           total_duration, total_stream_duration, total_video_duration, total_live_duration,
-          (total_duration * hourly_coins + live_duration * hourly_live_coins) / 3600
-        FROM current_sesh
+          ((total_duration * hourly_coins + live_duration * hourly_live_coins) * bonus_userid.bonus )/ 3600
+        FROM current_sesh, bonus_userid
         RETURNING *
       )
     UPDATE members
@@ -764,6 +789,15 @@ create TABLE timers(
   pretty_name TEXT
 );
 CREATE INDEX timers_guilds ON timers (guildid);
+-- }}}
+
+-- Topgg Data {{{
+create TABLE topgg(
+  voteid SERIAL PRIMARY KEY,
+  userid BIGINT NOT NULL,
+  boostedTimestamp TIMESTAMPTZ NOT NULL
+);
+CREATE INDEX topgg_userid_timestamp ON topgg (userid, boostedTimestamp);
 -- }}}
 
 -- vim: set fdm=marker:

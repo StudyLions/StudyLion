@@ -21,7 +21,7 @@ group_hints = {
 }
 
 standard_group_order = (
-    ('🆕 Pomodoro', 'Productivity', 'Statistics', 'Economy', 'Personal Settings', 'Meta')
+    ('🆕 Pomodoro', 'Productivity', 'Statistics', 'Economy', 'Personal Settings', 'Meta'),
 )
 
 mod_group_order = (

@@ -327,7 +327,7 @@ class Timer:
         Remove the timer.
         """
         # Remove timer from cache
-        self.timers.pop(self.channelid)
+        self.timers.pop(self.channelid, None)
 
         # Cancel the loop
         if self._run_task:
@@ -370,6 +370,11 @@ class Timer:
             try:
                 await self._run_task
             except asyncio.CancelledError:
+                break
+
+            # Destroy the timer if our voice channel no longer exists
+            if not self.channel:
+                await self.destroy()
                 break
 
             if self._state.end < utc_now():

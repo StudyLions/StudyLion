@@ -94,9 +94,9 @@ async def open_next(start_time):
             if not slot.category:
                 # Log and unload guild
                 aguild.guild_settings.event_log.log(
-                    "The accountability category couldn't be found!\n"
-                    "Shutting down the accountability system in this server.\n"
-                    "To re-activate, please reconfigure `config accountability_category`."
+                    "The scheduled session category couldn't be found!\n"
+                    "Shutting down the scheduled session system in this server.\n"
+                    "To re-activate, please reconfigure `config session_category`."
                 )
                 AccountabilityGuild.cache.pop(aguild.guildid, None)
                 await slot.cancel()
@@ -106,16 +106,16 @@ async def open_next(start_time):
                 # Create a new lobby
                 try:
                     channel = await guild.create_text_channel(
-                        name="accountability-lobby",
+                        name="session-lobby",
                         category=slot.category,
-                        reason="Automatic creation of accountability lobby."
+                        reason="Automatic creation of scheduled session lobby."
                     )
                     aguild.guild_settings.accountability_lobby.value = channel
                     slot.lobby = channel
                 except discord.HTTPException:
                     # Event log failure and skip session
                     aguild.guild_settings.event_log.log(
-                        "Failed to create the accountability lobby text channel.\n"
+                        "Failed to create the scheduled session lobby text channel.\n"
                         "Please set the lobby channel manually with `config`."
                     )
                     await slot.cancel()
@@ -123,7 +123,7 @@ async def open_next(start_time):
 
                 # Event log creation
                 aguild.guild_settings.event_log.log(
-                    "Automatically created an accountability lobby channel {}.".format(channel.mention)
+                    "Automatically created a scheduled session lobby channel {}.".format(channel.mention)
                 )
 
             results = await slot.open()
@@ -221,7 +221,7 @@ async def turnover():
         movement_tasks = (
             mem.member.edit(
                 voice_channel=slot.channel,
-                reason="Moving to booked accountability session."
+                reason="Moving to scheduled session."
             )
             for slot in current_slots
             for mem in slot.members.values()
@@ -317,7 +317,7 @@ async def _accountability_loop():
             except Exception:
                 # Unknown exception. Catch it so the loop doesn't die.
                 client.log(
-                    "Error while opening new accountability rooms! "
+                    "Error while opening new scheduled sessions! "
                     "Exception traceback follows.\n{}".format(
                         traceback.format_exc()
                     ),
@@ -332,7 +332,7 @@ async def _accountability_loop():
             except Exception:
                 # Unknown exception. Catch it so the loop doesn't die.
                 client.log(
-                    "Error while starting accountability rooms! "
+                    "Error while starting scheduled sessions! "
                     "Exception traceback follows.\n{}".format(
                         traceback.format_exc()
                     ),

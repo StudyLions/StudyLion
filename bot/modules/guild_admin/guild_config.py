@@ -16,7 +16,7 @@ cat_pages = {
     'Administration': ('Meta', 'Guild Roles', 'New Members'),
     'Moderation': ('Moderation', 'Video Channels'),
     'Productivity': ('Study Tracking', 'TODO List', 'Workout'),
-    'Study Rooms': ('Rented Rooms', 'Accountability Rooms'),
+    'Study Rooms': ('Rented Rooms', 'Scheduled Sessions'),
 }
 
 # Descriptions of each configuration category

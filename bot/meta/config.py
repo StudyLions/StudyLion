@@ -1,6 +1,36 @@
+from discord import PartialEmoji
 import configparser as cfgp
 
 from .args import args
+
+
+class configEmoji(PartialEmoji):
+    __slots__ = ('fallback',)
+
+    def __init__(self, *args, fallback=None, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fallback = fallback
+
+    @classmethod
+    def from_str(cls, emojistr: str):
+        """
+        Parses emoji strings of one of the following forms
+            `<a:name:id> or fallback`
+            `<:name:id> or fallback`
+            `<a:name:id>`
+            `<:name:id>`
+        """
+        splits = emojistr.rsplit(' or ', maxsplit=1)
+
+        fallback = splits[1] if len(splits) > 1 else None
+        emojistr = splits[0].strip('<> ')
+        animated, name, id = emojistr.split(':')
+        return cls(
+            name=name,
+            fallback=PartialEmoji(name=fallback),
+            animated=bool(animated),
+            id=int(id)
+        )
 
 
 class Conf:
@@ -11,6 +41,7 @@ class Conf:
             converters={
                 "intlist": self._getintlist,
                 "list": self._getlist,
+                "emoji": configEmoji.from_str,
             }
         )
         self.config.read(configfile)
@@ -20,6 +51,7 @@ class Conf:
         self.default = self.config["DEFAULT"]
         self.section = self.config[self.section_name]
         self.bot = self.section
+        self.emojis = self.config['EMOJIS'] if 'EMOJIS' in self.config else self.section
 
         # Config file recursion, read in configuration files specified in every "ALSO_READ" key.
         more_to_read = self.section.getlist("ALSO_READ", [])

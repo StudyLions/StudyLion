@@ -1,6 +1,6 @@
 import asyncio
 import discord
-from cmdClient import Context
+from LionContext import LionContext as Context
 from cmdClient.lib import UserCancelled, ResponseTimedOut
 
 from .lib import paginate_list

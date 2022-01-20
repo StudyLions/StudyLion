@@ -130,8 +130,8 @@ class Integer(SettingType):
     accepts = "An integer."
 
     # Set limits on the possible integers
-    _min = -4096
-    _max = 4096
+    _min = -2147483647
+    _max = 2147483647
 
     @classmethod
     def _data_from_value(cls, id: int, value: Optional[bool], **kwargs):

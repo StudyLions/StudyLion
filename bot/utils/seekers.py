@@ -1,9 +1,9 @@
 import asyncio
 import discord
 
-from cmdClient import Context
+from LionContext import LionContext as Context
 from cmdClient.lib import InvalidContext, UserCancelled, ResponseTimedOut, SafeCancellation
-from . import interactive
+from . import interactive as _interactive
 
 
 @Context.util

@@ -62,28 +62,29 @@ def ensure_exclusive(ctx):
 
 
 @module.cmd(
-    name="rooms",
-    desc="Schedule an accountability study session.",
-    group="Productivity"
+    name="schedule",
+    desc="View your schedule, and get rewarded for attending scheduled sessions!",
+    group="Productivity",
+    aliases=('rooms', 'sessions')
 )
 @in_guild()
 async def cmd_rooms(ctx):
     """
     Usage``:
-        {prefix}rooms
-        {prefix}rooms book
-        {prefix}rooms cancel
+        {prefix}schedule
+        {prefix}schedule book
+        {prefix}schedule cancel
     Description:
-        View your accountability profile with `{prefix}rooms`.
-        Use `{prefix}rooms book` to book an accountability session!
-        Use `{prefix}rooms cancel` to cancel a booked session.
+        View your schedule with `{prefix}schedule`.
+        Use `{prefix}schedule book` to schedule a session at a selected time..
+        Use `{prefix}schedule cancel` to cancel a scheduled session.
     """
     lower = ctx.args.lower()
     splits = lower.split()
     command = splits[0] if splits else None
 
     if not ctx.guild_settings.accountability_category.value:
-        return await ctx.error_reply("The accountability system isn't set up!")
+        return await ctx.error_reply("The scheduled session system isn't set up!")
 
     # First grab the sessions the member is booked in
     joined_rows = accountability_member_info.select_where(
@@ -94,7 +95,7 @@ async def cmd_rooms(ctx):
 
     if command == 'cancel':
         if not joined_rows:
-            return await ctx.error_reply("You have no bookings to cancel!")
+            return await ctx.error_reply("You have no scheduled sessions to cancel!")
 
         # Show unbooking menu
         lines = [
@@ -102,9 +103,9 @@ async def cmd_rooms(ctx):
             for i, row in enumerate(joined_rows)
         ]
         out_msg = await ctx.reply(
-            content="Please reply with the number(s) of the rooms you want to cancel. E.g. `1, 3, 5` or `1-3, 7-8`.",
+            content="Please reply with the number(s) of the sessions you want to cancel. E.g. `1, 3, 5` or `1-3, 7-8`.",
             embed=discord.Embed(
-                title="Please choose the bookings you want to cancel.",
+                title="Please choose the sessions you want to cancel.",
                 description='\n'.join(lines),
                 colour=discord.Colour.orange()
             ).set_footer(
@@ -116,7 +117,7 @@ async def cmd_rooms(ctx):
 
         await ctx.cancellable(
             out_msg,
-            cancel_message="Cancel menu closed, no accountability sessions were cancelled.",
+            cancel_message="Cancel menu closed, no scheduled sessions were cancelled.",
             timeout=70
         )
 
@@ -133,7 +134,7 @@ async def cmd_rooms(ctx):
                     await out_msg.edit(
                         content=None,
                         embed=discord.Embed(
-                            description="Cancel menu timed out, no accountability sessions were cancelled.",
+                            description="Cancel menu timed out, no scheduled sessions were cancelled.",
                             colour=discord.Colour.red()
                         )
                     )
@@ -156,7 +157,7 @@ async def cmd_rooms(ctx):
                 for index in parse_ranges(message.content) if index < len(joined_rows)
             ]
             if not to_cancel:
-                return await ctx.error_reply("No valid bookings selected for cancellation.")
+                return await ctx.error_reply("No valid sessions selected for cancellation.")
             elif any(row['start_at'] < utc_now() for row in to_cancel):
                 return await ctx.error_reply("You can't cancel a running session!")
 
@@ -189,7 +190,7 @@ async def cmd_rooms(ctx):
 
             remaining = [row for row in joined_rows if row['slotid'] not in slotids]
             if not remaining:
-                await ctx.embed_reply("Cancelled all your upcoming accountability sessions!")
+                await ctx.embed_reply("Cancelled all your upcoming scheduled sessions!")
             else:
                 next_booked_time = min(row['start_at'] for row in remaining)
                 if len(to_cancel) > 1:
@@ -245,9 +246,11 @@ async def cmd_rooms(ctx):
         # TODO: Nicer embed
         # TODO: Don't allow multi bookings if the member has a bad attendance rate
         out_msg = await ctx.reply(
-            content="Please reply with the number(s) of the rooms you want to join. E.g. `1, 3, 5` or `1-3, 7-8`.",
+            content=(
+                "Please reply with the number(s) of the sessions you want to book. E.g. `1, 3, 5` or `1-3, 7-8`."
+            ),
             embed=discord.Embed(
-                title="Please choose the sessions you want to book.",
+                title="Please choose the sessions you want to schedule.",
                 description='\n'.join(lines),
                 colour=discord.Colour.orange()
             ).set_footer(
@@ -354,10 +357,10 @@ async def cmd_rooms(ctx):
 
         # Ack purchase
         embed = discord.Embed(
-            title="You have booked the following session{}!".format('s' if len(to_book) > 1 else ''),
+            title="You have scheduled the following session{}!".format('s' if len(to_book) > 1 else ''),
             description=(
-                "*Please attend all your booked sessions!*\n"
-                "*If you can't attend, cancel with* `{}rooms cancel`\n\n{}"
+                "*Please attend all your scheduled sessions!*\n"
+                "*If you can't attend, cancel with* `{}schedule cancel`\n\n{}"
             ).format(
                 ctx.best_prefix,
                 '\n'.join(time_format(time) for time in to_book),
@@ -365,7 +368,7 @@ async def cmd_rooms(ctx):
             colour=discord.Colour.orange()
         ).set_footer(
             text=(
-                "Use {prefix}rooms to see your current bookings.\n"
+                "Use {prefix}schedule to see your current schedule.\n"
             ).format(prefix=ctx.best_prefix)
         )
         try:
@@ -400,10 +403,10 @@ async def cmd_rooms(ctx):
         if not (history or joined_rows):
             # First-timer information
             about = (
-                "You haven't joined any accountability sessions yet!\n"
-                "Book a session by typing **`{}rooms book`** and selecting "
+                "You haven't scheduled any study sessions yet!\n"
+                "Schedule a session by typing **`{}schedule book`** and selecting "
                 "the hours you intend to study, "
-                "then attend by joining the accountability voice channel when the session starts!\n"
+                "then attend by joining the session voice channel when it starts!\n"
                 "Only if everyone attends will they get the bonus of `{}` LionCoins!\n"
                 "Let's all do our best and keep each other accountable 🔥"
             ).format(
@@ -492,7 +495,7 @@ async def cmd_rooms(ctx):
                         total_count,
                         (attended_count * 100) / total_count,
                     ),
-                    "Time": "**{:02}:{:02}** spent in accountability rooms.".format(
+                    "Time": "**{:02}:{:02}** in scheduled sessions.".format(
                         total_duration // 3600,
                         (total_duration % 3600) // 60
                     ),
@@ -525,11 +528,24 @@ async def cmd_rooms(ctx):
                     ),
                     _extra="GROUP BY start_at, slotid, guildid ORDER BY start_at ASC"
                 )
-                attendees = {row['start_at']: (row['num'], client.get_guild(row['guildid'])) for row in rows}
+                attendees = {
+                    row['start_at']: (row['num'], row['guildid']) for row in rows
+                }
                 attendee_pad = max((len(str(num)) for num, _ in attendees.values()), default=1)
 
                 # TODO: Allow cancel to accept multiselect keys as args
-                show_guild = any(guild != ctx.guild for _, guild in attendees.values())
+                show_guild = any(guildid != ctx.guild.id for _, guildid in attendees.values())
+                guild_map = {}
+                if show_guild:
+                    for _, guildid in attendees.values():
+                        if guildid not in guild_map:
+                            guild = ctx.client.get_guild(guildid)
+                            if not guild:
+                                try:
+                                    guild = await ctx.client.fetch_guild(guildid)
+                                except discord.HTTPException:
+                                    guild = None
+                            guild_map[guildid] = guild
 
                 booked_list = '\n'.join(
                     "`{:>{}}` attendees | {} {}".format(
@@ -537,24 +553,24 @@ async def cmd_rooms(ctx):
                         attendee_pad,
                         time_format(start),
                         "" if not show_guild else (
-                            "on this server" if guild == ctx.guild else "in **{}**".format(
-                                guild.name if guild else guild.id
+                            "on this server" if guildid == ctx.guild.id else "in **{}**".format(
+                                guild_map[guildid] or "Unknown"
                             )
                         )
-                    ) for start, (num, guild) in attendees.items()
+                    ) for start, (num, guildid) in attendees.items()
                 )
                 booked_field = (
                     "{}\n\n"
-                    "*If you can't make your booking, please cancel using `{}rooms cancel`!*"
+                    "*If you can't make your session, please cancel using `{}schedule cancel`!*"
                 ).format(booked_list, ctx.best_prefix)
 
                 # Temporary footer for acclimatisation
                 # footer = "All times are displayed in your own timezone!"
-                footer = "Book another session using {}rooms book".format(ctx.best_prefix)
+                footer = "Book another session using {}schedule book".format(ctx.best_prefix)
             else:
                 booked_field = (
                     "Your schedule is empty!\n"
-                    "Book another session using `{}rooms book`."
+                    "Book another session using `{}schedule book`."
                 ).format(ctx.best_prefix)
                 footer = "Please keep your DMs open for notifications!"
 
@@ -563,7 +579,7 @@ async def cmd_rooms(ctx):
                 colour=discord.Colour.orange(),
                 description=desc,
             ).set_author(
-                name="Accountability profile for {}".format(ctx.author.name),
+                name="Schedule statistics for {}".format(ctx.author.name),
                 icon_url=ctx.author.avatar_url
             ).set_footer(
                 text=footer,

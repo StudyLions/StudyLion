@@ -1,6 +1,6 @@
 import asyncio
 import discord
-from cmdClient import Context
+from LionContext import LionContext as Context
 from cmdClient.lib import SafeCancellation
 
 from data import tables
