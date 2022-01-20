@@ -33,7 +33,15 @@ async def unregister_hook(client):
 
 
 async def topgg_reply_wrapper(func, *args, suggest_vote=True, **kwargs):
-    if suggest_vote and not get_last_voted_timestamp(args[0].author.id):
+    ctx = args[0]
+
+    if not suggest_vote:
+        pass
+    elif ctx.cmd and ctx.cmd.name == 'config':
+        pass
+    elif ctx.cmd and ctx.cmd.name == 'help' and ctx.args and ctx.args.split(maxsplit=1)[0].lower() == 'vote':
+        pass
+    elif not get_last_voted_timestamp(args[0].author.id):
         upvote_info_formatted = upvote_info.format(lion_yayemote, args[0].best_prefix, lion_loveemote)
 
         if 'embed' in kwargs:
