@@ -99,7 +99,7 @@ class TimeSlot:
             colour=discord.Colour.orange(),
             timestamp=self.start_time
         ).set_footer(
-            text="About to start!\nJoin the session with {}rooms book".format(client.prefix)
+            text="About to start!\nJoin the session with {}schedule book".format(client.prefix)
         )
 
         if self.members:
@@ -111,7 +111,7 @@ class TimeSlot:
                 )
             )
         else:
-            embed.description = "No members booked for this session!"
+            embed.description = "No members scheduled this session!"
 
         return embed
 
@@ -125,7 +125,7 @@ class TimeSlot:
             description="Finishing <t:{}:R>.".format(timestamp + 3600),
             colour=discord.Colour.orange(),
             timestamp=self.start_time
-        ).set_footer(text="Join the next session using {}rooms book".format(client.prefix))
+        ).set_footer(text="Join the next session using {}schedule book".format(client.prefix))
 
         if self.members:
             classifications = {
@@ -158,7 +158,7 @@ class TimeSlot:
                 if value:
                     embed.add_field(name=field, value='\n'.join(value))
         else:
-            embed.description = "No members booked for this session!"
+            embed.description = "No members scheduled this session!"
 
         return embed
 
@@ -210,7 +210,7 @@ class TimeSlot:
                 if value:
                     embed.add_field(name=field, value='\n'.join(value))
         else:
-            embed.description = "No members booked this session!"
+            embed.description = "No members scheduled this session!"
 
         return embed
 
@@ -316,13 +316,13 @@ class TimeSlot:
         if self.data and not self.channel:
             try:
                 self.channel = await self.guild.create_voice_channel(
-                    "Upcoming Accountability Study Room",
+                    "Upcoming Scheduled Session",
                     overwrites=overwrites,
                     category=self.category
                 )
             except discord.HTTPException:
                 GuildSettings(self.guild.id).event_log.log(
-                    "Failed to create the accountability voice channel. Skipping this session.",
+                    "Failed to create the scheduled session voice channel. Skipping this session.",
                     colour=discord.Colour.red()
                 )
                 return None
@@ -337,7 +337,7 @@ class TimeSlot:
                 )
             except discord.HTTPException:
                 GuildSettings(self.guild.id).event_log.log(
-                    "Failed to post the status message in the accountability lobby {}.\n"
+                    "Failed to post the status message in the scheduled session lobby {}.\n"
                     "Skipping this session.".format(self.lobby.mention),
                     colour=discord.Colour.red()
                 )
@@ -351,7 +351,7 @@ class TimeSlot:
         Ghost pings the session members in the lobby channel.
         """
         if self.members:
-            content = content or "Your accountability session has opened! Please join!"
+            content = content or "Your scheduled session has started! Please join!"
             out = "{}\n\n{}".format(
                 content,
                 ' '.join('<@{}>'.format(memid) for memid, mem in self.members.items() if not mem.has_attended)
@@ -366,7 +366,7 @@ class TimeSlot:
         """
         if self.channel:
             try:
-                await self.channel.edit(name="Accountability Study Room")
+                await self.channel.edit(name="Scheduled Session Room")
                 await self.channel.set_permissions(self.guild.default_role, view_channel=True, connect=False)
             except discord.HTTPException:
                 pass
@@ -388,7 +388,7 @@ class TimeSlot:
         await asyncio.sleep(delay)
 
         embed = discord.Embed(
-            title="Your accountability session has started!",
+            title="The scheduled session you booked has started!",
             description="Please join {}.".format(self.channel.mention),
             colour=discord.Colour.orange()
         ).set_footer(
