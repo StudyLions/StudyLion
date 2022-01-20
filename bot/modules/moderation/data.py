@@ -13,6 +13,7 @@ ticket_info = RowTable(
      'expiry',
      'pardoned_by', 'pardoned_at', 'pardoned_reason'),
     'ticketid',
+    cache_size=20000
 )
 
 tickets = Table('tickets')
