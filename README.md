@@ -31,7 +31,7 @@ This feature allows the users to use their coins to schedule a time to study at.
 Not attending prevents everyone in the room from getting the bonus.
 - **Study and Work Statistics**
 Users can view their daily, weekly, monthly and all-time stats, as well as their study streak.
-- `Coming Soon` **Pomodoro Timers**
+- **Pomodoro Timers**
 The bot will show the timer in the title of the study room and play a sound at the start and end of each session.
 - **Private Study Rooms** 
 Allows the members to create their own private study rooms and invite their friends to join!
