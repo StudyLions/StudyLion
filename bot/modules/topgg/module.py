@@ -32,17 +32,15 @@ async def unregister_hook(client):
     client.log("Unloaded top.gg hooks.", context="TOPGG")
 
 
-async def topgg_reply_wrapper(func, *args, suggest_vote=True, **kwargs):
-    ctx = args[0]
-
+async def topgg_reply_wrapper(func, ctx: LionContext, *args, suggest_vote=True, **kwargs):
     if not suggest_vote:
         pass
     elif ctx.cmd and ctx.cmd.name == 'config':
         pass
     elif ctx.cmd and ctx.cmd.name == 'help' and ctx.args and ctx.args.split(maxsplit=1)[0].lower() == 'vote':
         pass
-    elif not get_last_voted_timestamp(args[0].author.id):
-        upvote_info_formatted = upvote_info.format(lion_yayemote, args[0].best_prefix, lion_loveemote)
+    elif not get_last_voted_timestamp(ctx.author.id):
+        upvote_info_formatted = upvote_info.format(lion_yayemote, ctx.best_prefix, lion_loveemote)
 
         if 'embed' in kwargs:
             # Add message as an extra embed field
@@ -57,13 +55,13 @@ async def topgg_reply_wrapper(func, *args, suggest_vote=True, **kwargs):
             # Add message to content
             if 'content' in kwargs and kwargs['content'] and len(kwargs['content']) + len(upvote_info_formatted) < 1998:
                 kwargs['content'] += '\n\n' + upvote_info_formatted
-            elif len(args) > 1 and len(args[1]) + len(upvote_info_formatted) < 1998:
+            elif args and len(args[0]) + len(upvote_info_formatted) < 1998:
                 args = list(args)
-                args[1] += '\n\n' + upvote_info_formatted
+                args[0] += '\n\n' + upvote_info_formatted
             else:
                 kwargs['content'] = upvote_info_formatted
 
-    return await func(*args, **kwargs)
+    return await func(ctx, *args, **kwargs)
 
 
 def economy_bonus(lion):
