@@ -1,5 +1,5 @@
-from cmdClient import Context
 from cmdClient.checks import in_guild
+from LionContext import LionContext as Context
 
 from core import Lion
 from wards import is_guild_admin

@@ -1,9 +1,11 @@
 import discord
-from cmdClient.cmdClient import cmdClient, Context
+from cmdClient.cmdClient import cmdClient
 from cmdClient.lib import SafeCancellation
 from cmdClient.Check import Check
 
 from utils.lib import prop_tabulate, DotDict
+
+from LionContext import LionContext as Context
 
 from meta import client
 from data import Table, RowTable

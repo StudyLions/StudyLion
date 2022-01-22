@@ -8,11 +8,12 @@ from typing import Any, Optional
 
 import pytz
 import discord
-from cmdClient.Context import Context
 from cmdClient.lib import SafeCancellation
 
 from meta import client
 from utils.lib import parse_dur, strfdur, prop_tabulate, multiple_replace
+
+from LionContext import LionContext as Context
 
 from .base import UserInputError
 

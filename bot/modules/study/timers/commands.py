@@ -1,8 +1,9 @@
 import asyncio
 import discord
-from cmdClient import Context
 from cmdClient.checks import in_guild
 from cmdClient.lib import SafeCancellation
+
+from LionContext import LionContext as Context
 
 from wards import guild_admin
 from utils.lib import utc_now, tick
