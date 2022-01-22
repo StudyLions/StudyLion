@@ -174,7 +174,7 @@ class ReactionRoleMessage:
         Returns the generated `ReactionRoleReaction`s for convenience.
         """
         # Fetch reactions and pre-populate reaction cache
-        rows = reaction_role_reactions.fetch_rows_where(messageid=self.messageid)
+        rows = reaction_role_reactions.fetch_rows_where(messageid=self.messageid, _extra="ORDER BY reactionid ASC")
         reactions = [ReactionRoleReaction(row.reactionid) for row in rows]
         self._reactions[self.messageid] = reactions
         return reactions
