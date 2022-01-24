@@ -280,11 +280,11 @@ class Lion:
         timezone = self.settings.timezone.value
         return naive_utc_dt.replace(tzinfo=pytz.UTC).astimezone(timezone)
 
-    def addCoins(self, amount, flush=True, ignorebonus=False):
+    def addCoins(self, amount, flush=True, bonus=False):
         """
         Add coins to the user, optionally store the transaction in pending.
         """
-        self._pending_coins += amount * (1 if ignorebonus else self.economy_bonus)
+        self._pending_coins += amount * (self.economy_bonus if bonus else 1)
         self._pending[self.key] = self
         if flush:
             self.flush()

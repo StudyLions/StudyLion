@@ -60,7 +60,7 @@ async def cmd_send(ctx):
         return await ctx.embed_reply("We are still waiting for {} to open an account.".format(target.mention))
 
     # Finally, send the amount and the ack message
-    target_lion.addCoins(amount, ignorebonus=True)
+    target_lion.addCoins(amount)
     source_lion.addCoins(-amount)
 
     embed = discord.Embed(

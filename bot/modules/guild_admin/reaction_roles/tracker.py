@@ -501,7 +501,7 @@ class ReactionRoleMessage:
                             if price and refund:
                                 # Give the user the refund
                                 lion = Lion.fetch(self.guild.id, member.id)
-                                lion.addCoins(price, ignorebonus=True)
+                                lion.addCoins(price)
 
                                 # Notify the user
                                 embed = discord.Embed(
