@@ -552,7 +552,7 @@ AS $$
     UPDATE members
       SET
         tracked_time=(tracked_time + saved_sesh.duration),
-        coins=(coins + saved_sesh.coins_earned)
+        coins=LEAST(coins + saved_sesh.coins_earned, 2147483647)
       FROM saved_sesh
       WHERE members.guildid=saved_sesh.guildid AND members.userid=saved_sesh.userid
       RETURNING members.*;
