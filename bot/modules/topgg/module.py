@@ -53,11 +53,13 @@ async def topgg_reply_wrapper(func, ctx: LionContext, *args, suggest_vote=True, 
             )
         else:
             # Add message to content
-            if 'content' in kwargs and kwargs['content'] and len(kwargs['content']) + len(upvote_info_formatted) < 1998:
-                kwargs['content'] += '\n\n' + upvote_info_formatted
-            elif args and len(args[0]) + len(upvote_info_formatted) < 1998:
-                args = list(args)
-                args[0] += '\n\n' + upvote_info_formatted
+            if 'content' in kwargs and kwargs['content']:
+                if len(kwargs['content']) + len(upvote_info_formatted) < 1998:
+                    kwargs['content'] += '\n\n' + upvote_info_formatted
+            elif args:
+                if len(args[0]) + len(upvote_info_formatted) < 1998:
+                    args = list(args)
+                    args[0] += '\n\n' + upvote_info_formatted
             else:
                 kwargs['content'] = upvote_info_formatted
 
