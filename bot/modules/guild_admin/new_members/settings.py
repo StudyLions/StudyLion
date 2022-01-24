@@ -203,7 +203,7 @@ class starting_funds(stypes.Integer, GuildSetting):
         "Members will be given this number of coins the first time they join the server."
     )
 
-    _default = 0
+    _default = 1000
 
     @property
     def success_response(self):

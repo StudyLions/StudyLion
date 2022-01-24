@@ -99,7 +99,7 @@ class hourly_live_bonus(settings.Integer, settings.GuildSetting):
     display_name = "hourly_live_bonus"
     desc = "Number of extra LionCoins given for a full hour of streaming (via go live or video)."
 
-    _default = 10
+    _default = 150
     _max = 32767
 
     long_desc = (
