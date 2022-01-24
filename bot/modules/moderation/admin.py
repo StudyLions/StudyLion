@@ -69,6 +69,15 @@ class studyban_durations(settings.SettingList, settings.ListData, settings.Setti
     _data_column = 'duration'
     _order_column = "rowid"
 
+    _default = [
+        5 * 60,
+        60 * 60,
+        6 * 60 * 60,
+        24 * 60 * 60,
+        168 * 60 * 60,
+        720 * 60 * 60
+    ]
+
     _setting = settings.Duration
 
     write_ward = guild_admin
