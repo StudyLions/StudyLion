@@ -227,6 +227,8 @@ async def cmd_reactionroles(ctx, flags):
         For example to disable event logging, run `{prefix}rroles link --log off`.
 
         For per-reaction settings, instead use `{prefix}rroles link emoji --setting value`.
+
+        *(!) Replace `setting` with one of the settings below!*
     Message Settings::
         maximum: Maximum number of roles obtainable from this message.
         log: Whether to log reaction role usage into the event log.
@@ -909,7 +911,8 @@ async def cmd_reactionroles(ctx, flags):
         "{settings_table}\n"
         "To update a message setting: `{prefix}rroles messageid --setting value`\n"
         "To update an emoji setting: `{prefix}rroles messageid emoji --setting value`\n"
-        "See examples and more usage information with `{prefix}help rroles`."
+        "See examples and more usage information with `{prefix}help rroles`.\n"
+        "*(!) Replace the `setting` with one of the settings on this page.*\n"
     ).format(
         prefix=ctx.best_prefix,
         settings_table=target.settings.tabulated()
