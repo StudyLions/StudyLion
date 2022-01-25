@@ -53,7 +53,8 @@ Use `{ctx.best_prefix}help <command>` (e.g. `{ctx.best_prefix}help send`) to lea
 
 @module.cmd("help",
             group="Meta",
-            desc="StudyLion command list.")
+            desc="StudyLion command list.",
+            aliases=('man', 'ls', 'list'))
 async def cmd_help(ctx):
     """
     Usage``:
@@ -178,7 +179,12 @@ async def cmd_help(ctx):
         stringy_cmd_groups = {}
         for group_name, cmd_group in cmd_groups.items():
             cmd_group.sort(key=lambda tup: len(tup[0]))
-            stringy_cmd_groups[group_name] = prop_tabulate(*zip(*cmd_group))
+            if ctx.alias == 'ls':
+                stringy_cmd_groups[group_name] = ', '.join(
+                    f"`{name}`" for name, _ in cmd_group
+                )
+            else:
+                stringy_cmd_groups[group_name] = prop_tabulate(*zip(*cmd_group))
 
         # Now put everything into a bunch of embeds
         if await is_owner.run(ctx):
