@@ -43,13 +43,13 @@ We do not offer support for self-hosted bots, the code is provided as is without
 
 Allow users to create their own private student profile cards and set customs study field tags by using `!stats` and `!setprofile`
 
-![Discord Study Bot Profile Card](https://entermedschool.com/wp-content/uploads/2022/01/Aris-Profile.png)
+![Discord Study Bot Profile Card](https://i.imgur.com/dEZvawb.png)
 
 - **Camera only study rooms**
 
 Set specific channels to force users to use their webcam to study.
 
-![discord study rooms](https://entermedschool.com/wp-content/uploads/2022/01/discord-study-rooms.png)
+![discord study rooms](https://i.imgur.com/rlsH8a6.png)
 
 - **To-Do List**
 
@@ -61,7 +61,7 @@ Users can set their own private reminders, to drink water, stretch, or anything 
 
 Example: `!remindme to drink water every 3h` will send you a reminder every 3 hours to drink water. 
 
-![discord bot to do lists and reminders](https://entermedschool.com/wp-content/uploads/2022/01/to-do-3.png)
+![discord bot to do lists and reminders](https://i.imgur.com/BMFK2gJ.png)
 
 - **Scheduled Sessions**
 
@@ -69,20 +69,20 @@ This feature allows the users to use their coins to schedule a time to study at.
 
 Not attending prevents everyone in the room from getting the bonus.
 
-![scheuduled study rooms discord](https://entermedschool.com/wp-content/uploads/2022/01/accountability-1.png)
+![scheuduled study rooms discord](https://i.imgur.com/6dMSqDh.png)
 
 - **Study and Work Statistics**
 
 In addition to the profile cards, users can view their daily, weekly, monthly and all-time stats, as well as their study streak. Use `!weekly` and `!monthly` to view your revision statistics in more detail.
 
-![weekly and monthly statistics discord study](https://entermedschool.com/wp-content/uploads/2022/01/statistics-discord.png)
+![weekly and monthly statistics discord study](https://i.imgur.com/i7JutEh.png)
 
 - **Pomodoro Timers**
 
 The bot will show the timer in the title of the study room and play a sound at the start and end of each session. 
 Commands:  `!timer` , `!pomodoro`
 
-![Pomodoro timer Discord](https://entermedschool.com/wp-content/uploads/2022/01/pomodortimersdone.png)
+![Pomodoro timer Discord](https://i.imgur.com/UcNXpv3.png)
 
 - **Private Study Rooms**
 
@@ -97,7 +97,6 @@ Allows the Admins to create workout rooms with a bonus for people who workout.
 
 Reward users based on their total study time, allow them to get better ranks, and show off how long they've been working.
 
-![to do lists](https://entermedschool.com/wp-content/uploads/2022/01/leaderboard-discord.png)
 
 - **Full-Scale Economy System**
 
@@ -112,3 +111,5 @@ Punish cheaters, audit-log, welcome message, and so much more using our full-sca
 A command list and general documentation for StudyLion may be found using the `!help` command, and documentation for a specific command, e.g. `config`, may be found with `!help config`.
 
 Make sure to check the [full documentation](https://www.notion.so/izabellakis/StudyLion-Bot-Tutorials-f493268fcd12436c9674afef2e151707 "StudyLion Tutorial") to stay updated.
+
+<a href="https://imgur.com/ziPdJGw"><img src="https://i.imgur.com/ziPdJGws.png" title="source: imgur.com" /></a>
