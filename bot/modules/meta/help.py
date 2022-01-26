@@ -6,6 +6,7 @@ from utils import interactive, ctx_addons  # noqa
 from wards import is_guild_admin
 
 from .module import module
+from .lib import guide_link
 
 
 # Set the command groups to appear in the help
@@ -46,9 +47,9 @@ header = """
 [StudyLion](https://bot.studylions.com/) is a fully featured study assistant \
     that tracks your study time and offers productivity tools \
     such as to-do lists, task reminders, private study rooms, group accountability sessions, and much much more.\n
-Use `{ctx.best_prefix}help <command>` (e.g. `{ctx.best_prefix}help send`) to learn how to use each command, \
-    or [click here](https://discord.studylions.com/tutorial) for a comprehensive tutorial.
-"""
+Use `{{ctx.best_prefix}}help <command>` (e.g. `{{ctx.best_prefix}}help send`) to learn how to use each command, \
+    or [click here]({guide_link}) for a comprehensive tutorial.
+""".format(guide_link=guide_link)
 
 
 @module.cmd("help",

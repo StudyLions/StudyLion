@@ -5,6 +5,7 @@ from meta import conf
 from LionContext import LionContext as Context
 
 from .module import module
+from .lib import guide_link
 
 
 @module.cmd(
@@ -38,7 +39,7 @@ async def cmd_invite(ctx: Context):
     """
     embed = discord.Embed(
         colour=discord.Colour.orange(),
-        description=f"Click here] to add me to your server: {conf.bot.get('invite_link')}"
+        description=f"Click here to add me to your server: {conf.bot.get('invite_link')}"
     )
     embed.add_field(
         name="Setup tips",
@@ -50,7 +51,7 @@ async def cmd_invite(ctx: Context):
         ).format(
             prefix=ctx.best_prefix,
             support=conf.bot.get('support_link'),
-            guide="https://discord.studylions.com/tutorial"
+            guide=guide_link
         )
     )
     await ctx.reply(embed=embed)
