@@ -7,7 +7,7 @@ import discord
 from cmdClient.checks import in_guild
 from LionContext import LionContext
 
-from meta import client
+from meta import client, conf
 from core import Lion
 from data.conditions import NOTNULL, LEQ
 from utils.lib import utc_now
@@ -40,6 +40,61 @@ class Achievement:
 
         # Current level index in levels. None until calculated by `update`.
         self.level_id: int = None
+
+    @staticmethod
+    def progress_bar(value, minimum, maximum, width=15) -> str:
+        """
+        Build a text progress bar representing `value` between `minimum` and `maximum`.
+        """
+        emojis = conf.emojis
+
+        proportion = (value - minimum) / (maximum - minimum)
+        sections = max(int(proportion * width), 0)
+
+        bar = []
+        # Starting segment
+        bar.append(str(emojis.progress_left_empty) if sections == 0 else str(emojis.progress_left_full))
+
+        # Full segments up to transition or end
+        if sections >= 2:
+            bar.append(str(emojis.progress_middle_full) * (sections - 2))
+
+        # Transition, if required
+        if 1 < sections < width:
+            bar.append(str(emojis.progress_middle_transition))
+
+        # Empty sections up to end
+        bar.append(str(emojis.progress_middle_empty) * (width - max(sections, 1)))
+
+        # End section
+        bar.append(str(emojis.progress_right_empty) if sections < width else str(emojis.progress_right_full))
+
+        # Join all the sections together and return
+        return ''.join(bar)
+
+    @property
+    def progress_text(self) -> str:
+        """
+        A brief textual description of the current progress.
+        Intended to be overridden by achievement implementations.
+        """
+        if self.next_level:
+            return f"{int(self.value)}/{self.next_level.threshold}"
+        else:
+            return f"{int(self.value)}, at the maximum level!"
+
+    def progress_field(self) -> tuple[str, str]:
+        """
+        Builds the progress field for the achievement display.
+        """
+        # TODO: Not adjusted for levels
+        # TODO: Add hint if progress is empty?
+        name = f"{self.levels[1].emoji} {self.name} ({self.progress_text})"
+        value = "**0** {progress_bar} **{threshold}**".format(
+            progress_bar=self.progress_bar(self.value, self.levels[0].threshold, self.levels[1].threshold),
+            threshold=self.levels[1].threshold
+        )
+        return (name, value)
 
     @classmethod
     async def fetch(cls, guildid: int, userid: int) -> 'Achievement':
@@ -102,7 +157,7 @@ class Workout(Achievement):
 
     levels = [
         AchievementLevel("Level 0", 0, None),
-        AchievementLevel("Level 1", 50, None),
+        AchievementLevel("Level 1", 50, conf.emojis.active_achievement_1),
     ]
 
     async def _calculate_value(self) -> int:
@@ -120,7 +175,7 @@ class StudyHours(Achievement):
 
     levels = [
         AchievementLevel("Level 0", 0, None),
-        AchievementLevel("Level 1", 1000, None),
+        AchievementLevel("Level 1", 1000, conf.emojis.active_achievement_2),
     ]
 
     async def _calculate_value(self) -> float:
@@ -146,7 +201,7 @@ class StudyStreak(Achievement):
 
     levels = [
         AchievementLevel("Level 0", 0, None),
-        AchievementLevel("Level 1", 100, None)
+        AchievementLevel("Level 1", 100, conf.emojis.active_achievement_3)
     ]
 
     async def _calculate_value(self) -> int:
@@ -225,7 +280,7 @@ class Voting(Achievement):
 
     levels = [
         AchievementLevel("Level 0", 0, None),
-        AchievementLevel("Level 1", 100, None)
+        AchievementLevel("Level 1", 100, conf.emojis.active_achievement_4)
     ]
 
     async def _calculate_value(self) -> int:
@@ -243,7 +298,7 @@ class DaysStudying(Achievement):
 
     levels = [
         AchievementLevel("Level 0", 0, None),
-        AchievementLevel("Level 1", 90, None)
+        AchievementLevel("Level 1", 90, conf.emojis.active_achievement_5)
     ]
 
     async def _calculate_value(self) -> int:
@@ -276,7 +331,7 @@ class TasksComplete(Achievement):
 
     levels = [
         AchievementLevel("Level 0", 0, None),
-        AchievementLevel("Level 1", 1000, None)
+        AchievementLevel("Level 1", 1000, conf.emojis.active_achievement_6)
     ]
 
     async def _calculate_value(self) -> int:
@@ -294,7 +349,7 @@ class ScheduledSessions(Achievement):
 
     levels = [
         AchievementLevel("Level 0", 0, None),
-        AchievementLevel("Level 1", 500, None)
+        AchievementLevel("Level 1", 500, conf.emojis.active_achievement_7)
     ]
 
     async def _calculate_value(self) -> int:
@@ -314,7 +369,7 @@ class MonthlyHours(Achievement):
 
     levels = [
         AchievementLevel("Level 0", 0, None),
-        AchievementLevel("Level 1", 100, None)
+        AchievementLevel("Level 1", 100, conf.emojis.active_achievement_8)
     ]
 
     async def _calculate_value(self) -> float:
@@ -347,7 +402,6 @@ class MonthlyHours(Achievement):
             self.guildid, self.userid, *months
         )
         cumulative_times = [row[0] for row in data]
-        print(cumulative_times)
         times = [nxt - crt for nxt, crt in zip(cumulative_times[1:], cumulative_times[0:])]
         max_time = max(cumulative_times[0], *times) if len(months) > 1 else cumulative_times[0]
 
@@ -377,10 +431,26 @@ async def get_achievements_for(member):
 
 @module.cmd(
     name="achievements",
-    desc="View your achievement progress!",
+    desc="View your progress towards the achievements!",
     group="Statistics",
 )
 @in_guild()
 async def cmd_achievements(ctx: LionContext):
-    achs = await get_achievements_for(ctx.author)
-    await ctx.reply('\n'.join(f"{ach.name}: {ach.level_id}, {ach.value}" for ach in achs))
+    """
+    Usage``:
+        {prefix}achievements
+    Description:
+        View your progress towards attaining the achievement badges shown on your `profile`.
+    """
+    status = await get_achievements_for(ctx.author)
+
+    embed = discord.Embed(
+        title="Achievements",
+        colour=discord.Colour.orange()
+    )
+    for achievement in status:
+        name, value = achievement.progress_field()
+        embed.add_field(
+            name=name, value=value, inline=False
+        )
+    await ctx.reply(embed=embed)
