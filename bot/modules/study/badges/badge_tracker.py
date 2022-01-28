@@ -256,10 +256,20 @@ async def _update_member_roles(row, member, guild_roles, log_lines, flags_used, 
     # Send notification to member
     # TODO: Config customisation
     if notify and new_row and (old_row is None or new_row.required_time > old_row.required_time):
+        req = new_row.required_time
+        if req < 3600:
+            timestr = "{} minutes".format(int(req // 60))
+        elif req == 3600:
+            timestr = "1 hour"
+        elif req % 3600:
+            timestr = "{:.1f} hours".format(req / 3600)
+        else:
+            timestr = "{} hours".format(int(req // 3600))
         embed = discord.Embed(
             title="New Study Badge!",
-            description="Congratulations! You have earned {}!".format(
-                "**{}**".format(to_add.name) if to_add else "a new study badge!"
+            description="Congratulations! You have earned {} for studying **{}**!".format(
+                "**{}**".format(to_add.name) if to_add else "a new study badge!",
+                timestr
             ),
             timestamp=datetime.datetime.utcnow(),
             colour=discord.Colour.orange()
