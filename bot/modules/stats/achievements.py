@@ -42,14 +42,14 @@ class Achievement:
         self.level_id: int = None
 
     @staticmethod
-    def progress_bar(value, minimum, maximum, width=15) -> str:
+    def progress_bar(value, minimum, maximum, width=10) -> str:
         """
         Build a text progress bar representing `value` between `minimum` and `maximum`.
         """
         emojis = conf.emojis
 
         proportion = (value - minimum) / (maximum - minimum)
-        sections = max(int(proportion * width), 0)
+        sections = min(max(int(proportion * width), 0), width)
 
         bar = []
         # Starting segment
