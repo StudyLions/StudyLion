@@ -156,6 +156,7 @@ class Achievement:
 
 class Workout(Achievement):
     sorting_index = 8
+    emoji_index = 4
     name = "It's about Power"
 
     levels = [
@@ -175,6 +176,7 @@ class Workout(Achievement):
 
 class StudyHours(Achievement):
     sorting_index = 1
+    emoji_index = 1
     name = "Dream Big"
 
     levels = [
@@ -202,6 +204,7 @@ class StudyHours(Achievement):
 
 class StudyStreak(Achievement):
     sorting_index = 2
+    emoji_index = 2
     name = "Consistency is Key"
 
     levels = [
@@ -282,6 +285,7 @@ class StudyStreak(Achievement):
 
 class Voting(Achievement):
     sorting_index = 7
+    emoji_index = 7
     name = "We're a Team"
 
     levels = [
@@ -301,6 +305,7 @@ class Voting(Achievement):
 
 class DaysStudying(Achievement):
     sorting_index = 3
+    emoji_index = 3
     name = "Aim For The Moon"
 
     levels = [
@@ -335,6 +340,7 @@ class DaysStudying(Achievement):
 
 class TasksComplete(Achievement):
     sorting_index = 4
+    emoji_index = 8
     name = "One Step at a Time"
 
     levels = [
@@ -355,6 +361,7 @@ class TasksComplete(Achievement):
 
 class ScheduledSessions(Achievement):
     sorting_index = 5
+    emoji_index = 5
     name = "Be Accountable"
 
     levels = [
@@ -376,6 +383,7 @@ class ScheduledSessions(Achievement):
 
 class MonthlyHours(Achievement):
     sorting_index = 6
+    emoji_index = 6
     name = "The 30 Days Challenge"
 
     levels = [
@@ -430,13 +438,12 @@ achievements = [
     ScheduledSessions,
     MonthlyHours
 ]
-achievements.sort(key=lambda cls: cls.sorting_index)
 
 
-async def get_achievements_for(member):
+async def get_achievements_for(member, panel_sort=False):
     status = [
         await ach.fetch(member.guild.id, member.id)
-        for ach in achievements
+        for ach in sorted(achievements, key=lambda cls: (cls.sorting_index if panel_sort else cls.emoji_index))
     ]
     return status
 
@@ -454,7 +461,7 @@ async def cmd_achievements(ctx: LionContext):
     Description:
         View your progress towards attaining the achievement badges shown on your `profile`.
     """
-    status = await get_achievements_for(ctx.author)
+    status = await get_achievements_for(ctx.author, panel_sort=True)
 
     embed = discord.Embed(
         title="Achievements",
