@@ -348,7 +348,8 @@ class TasksComplete(Achievement):
         """
         return client.data.tasklist.select_one_where(
             userid=self.userid,
-            completed_at=NOTNULL
+            completed_at=NOTNULL,
+            select_columns="COUNT(*)"
         )[0]
 
 
