@@ -82,7 +82,7 @@ class Achievement:
         A brief textual description of the current progress.
         Intended to be overridden by achievement implementations.
         """
-        return f"{int(self.value)}/{self.next_level.threshold}"
+        return f"{int(self.value)}/{self.next_level.threshold if self.next_level else self.level.threshold}"
 
     def progress_field(self) -> tuple[str, str]:
         """
@@ -160,7 +160,7 @@ class Workout(Achievement):
 
     levels = [
         AchievementLevel("Level 0", 0, None),
-        AchievementLevel("Level 1", 50, conf.emojis.active_achievement_8),
+        AchievementLevel("Level 1", 50, conf.emojis.active_achievement_4),
     ]
 
     async def _calculate_value(self) -> int:
@@ -339,7 +339,7 @@ class TasksComplete(Achievement):
 
     levels = [
         AchievementLevel("Level 0", 0, None),
-        AchievementLevel("Level 1", 1000, conf.emojis.active_achievement_4)
+        AchievementLevel("Level 1", 1000, conf.emojis.active_achievement_8)
     ]
 
     async def _calculate_value(self) -> int:
