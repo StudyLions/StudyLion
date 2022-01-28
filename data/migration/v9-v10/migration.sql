@@ -149,3 +149,6 @@ CREATE VIEW new_study_badges AS
 
 -- API changes
 ALTER TABLE user_config ADD COLUMN API_timestamp BIGINT;
+
+
+INSERT INTO VersionHistory (version, author) VALUES (10, 'v9-v10 migration');
