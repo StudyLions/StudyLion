@@ -412,7 +412,7 @@ class MonthlyHours(Achievement):
         data = client.data.session_history.queries.study_times_since(
             self.guildid, self.userid, *months
         )
-        cumulative_times = [row[0] for row in data]
+        cumulative_times = [row[0] or 0 for row in data]
         times = [nxt - crt for nxt, crt in zip(cumulative_times[1:], cumulative_times[0:])]
         max_time = max(cumulative_times[0], *times) if len(months) > 1 else cumulative_times[0]
 
