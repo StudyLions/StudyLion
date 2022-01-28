@@ -28,8 +28,12 @@ class Achievement:
     # Name of the achievement
     name: str = None
 
+    subtext: str = None
+    congrats_text: str = None
+
     # List of levels for the achievement. Must always contain a 0 level!
     levels: list[AchievementLevel] = None
+
 
     def __init__(self, guildid: int, userid: int):
         self.guildid = guildid
@@ -78,10 +82,7 @@ class Achievement:
         A brief textual description of the current progress.
         Intended to be overridden by achievement implementations.
         """
-        if self.next_level:
-            return f"{int(self.value)}/{self.next_level.threshold}"
-        else:
-            return f"{int(self.value)}, at the maximum level!"
+        return f"{int(self.value)}/{self.next_level.threshold}"
 
     def progress_field(self) -> tuple[str, str]:
         """
@@ -90,7 +91,8 @@ class Achievement:
         # TODO: Not adjusted for levels
         # TODO: Add hint if progress is empty?
         name = f"{self.levels[1].emoji} {self.name} ({self.progress_text})"
-        value = "**0** {progress_bar} **{threshold}**".format(
+        value = "{subtext}\n**0** {progress_bar} **{threshold}**".format(
+            subtext=(self.subtext if self.next_level else self.congrats_text) or '',
             progress_bar=self.progress_bar(self.value, self.levels[0].threshold, self.levels[1].threshold),
             threshold=self.levels[1].threshold
         )
@@ -153,11 +155,12 @@ class Achievement:
 
 
 class Workout(Achievement):
-    name = "Workouts"
+    sorting_index = 8
+    name = "It's about Power"
 
     levels = [
         AchievementLevel("Level 0", 0, None),
-        AchievementLevel("Level 1", 50, conf.emojis.active_achievement_1),
+        AchievementLevel("Level 1", 50, conf.emojis.active_achievement_8),
     ]
 
     async def _calculate_value(self) -> int:
@@ -171,11 +174,12 @@ class Workout(Achievement):
 
 
 class StudyHours(Achievement):
-    name = "Study Hours"
+    sorting_index = 1
+    name = "Dream Big"
 
     levels = [
         AchievementLevel("Level 0", 0, None),
-        AchievementLevel("Level 1", 1000, conf.emojis.active_achievement_2),
+        AchievementLevel("Level 1", 1000, conf.emojis.active_achievement_1),
     ]
 
     async def _calculate_value(self) -> float:
@@ -197,11 +201,12 @@ class StudyHours(Achievement):
 
 
 class StudyStreak(Achievement):
-    name = "Study Streak"
+    sorting_index = 2
+    name = "Consistency is Key"
 
     levels = [
         AchievementLevel("Level 0", 0, None),
-        AchievementLevel("Level 1", 100, conf.emojis.active_achievement_3)
+        AchievementLevel("Level 1", 100, conf.emojis.active_achievement_2)
     ]
 
     async def _calculate_value(self) -> int:
@@ -276,11 +281,12 @@ class StudyStreak(Achievement):
 
 
 class Voting(Achievement):
-    name = "Voting"
+    sorting_index = 7
+    name = "We're a Team"
 
     levels = [
         AchievementLevel("Level 0", 0, None),
-        AchievementLevel("Level 1", 100, conf.emojis.active_achievement_4)
+        AchievementLevel("Level 1", 100, conf.emojis.active_achievement_7)
     ]
 
     async def _calculate_value(self) -> int:
@@ -294,11 +300,12 @@ class Voting(Achievement):
 
 
 class DaysStudying(Achievement):
-    name = "Days Studied"
+    sorting_index = 3
+    name = "Aim For The Moon"
 
     levels = [
         AchievementLevel("Level 0", 0, None),
-        AchievementLevel("Level 1", 90, conf.emojis.active_achievement_5)
+        AchievementLevel("Level 1", 90, conf.emojis.active_achievement_3)
     ]
 
     async def _calculate_value(self) -> int:
@@ -327,11 +334,12 @@ class DaysStudying(Achievement):
 
 
 class TasksComplete(Achievement):
-    name = "Completed Tasks"
+    sorting_index = 4
+    name = "One Step at a Time"
 
     levels = [
         AchievementLevel("Level 0", 0, None),
-        AchievementLevel("Level 1", 1000, conf.emojis.active_achievement_6)
+        AchievementLevel("Level 1", 1000, conf.emojis.active_achievement_4)
     ]
 
     async def _calculate_value(self) -> int:
@@ -345,11 +353,12 @@ class TasksComplete(Achievement):
 
 
 class ScheduledSessions(Achievement):
-    name = "Scheduled Sessions Attended"
+    sorting_index = 5
+    name = "Be Accountable"
 
     levels = [
         AchievementLevel("Level 0", 0, None),
-        AchievementLevel("Level 1", 500, conf.emojis.active_achievement_7)
+        AchievementLevel("Level 1", 500, conf.emojis.active_achievement_5)
     ]
 
     async def _calculate_value(self) -> int:
@@ -365,11 +374,12 @@ class ScheduledSessions(Achievement):
 
 
 class MonthlyHours(Achievement):
-    name = "Maximum Monthly Hours"
+    sorting_index = 6
+    name = "The 30 Days Challenge"
 
     levels = [
         AchievementLevel("Level 0", 0, None),
-        AchievementLevel("Level 1", 100, conf.emojis.active_achievement_8)
+        AchievementLevel("Level 1", 100, conf.emojis.active_achievement_6)
     ]
 
     async def _calculate_value(self) -> float:
@@ -419,6 +429,7 @@ achievements = [
     ScheduledSessions,
     MonthlyHours
 ]
+achievements.sort(key=lambda cls: cls.sorting_index)
 
 
 async def get_achievements_for(member):
