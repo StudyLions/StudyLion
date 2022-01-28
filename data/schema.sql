@@ -486,7 +486,7 @@ AS $$
           (start_time + duration * interval '1 second') AS end_time
         FROM session_history
         WHERE
-          guildid=_guildid
+          (_guildid IS NULL OR guildid=_guildid)
           AND userid=_userid
           AND (start_time + duration * interval '1 second') >= _timestamp
         UNION
@@ -496,7 +496,7 @@ AS $$
           NOW() AS end_time
         FROM current_sessions
         WHERE
-          guildid=_guildid
+          (_guildid IS NULL OR guildid=_guildid)
           AND userid=_userid
       ) AS sessions
     );

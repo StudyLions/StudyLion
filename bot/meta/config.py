@@ -33,6 +33,33 @@ class configEmoji(PartialEmoji):
         )
 
 
+class MapDotProxy:
+    """
+    Allows dot access to an underlying Mappable object.
+    """
+    __slots__ = ("_map", "_converter")
+
+    def __init__(self, mappable, converter=None):
+        self._map = mappable
+        self._converter = converter
+
+    def __getattribute__(self, key):
+        _map = object.__getattribute__(self, '_map')
+        if key == '_map':
+            return _map
+        if key in _map:
+            _converter = object.__getattribute__(self, '_converter')
+            if _converter:
+                return _converter(_map[key])
+            else:
+                return _map[key]
+        else:
+            return object.__getattribute__(_map, key)
+
+    def __getitem__(self, key):
+        return self._map.__getitem__(key)
+
+
 class Conf:
     def __init__(self, configfile, section_name="DEFAULT"):
         self.configfile = configfile
@@ -49,9 +76,12 @@ class Conf:
         self.section_name = section_name if section_name in self.config else 'DEFAULT'
 
         self.default = self.config["DEFAULT"]
-        self.section = self.config[self.section_name]
+        self.section = MapDotProxy(self.config[self.section_name])
         self.bot = self.section
-        self.emojis = self.config['EMOJIS'] if 'EMOJIS' in self.config else self.section
+        self.emojis = MapDotProxy(
+            self.config['EMOJIS'] if 'EMOJIS' in self.config else self.section,
+            converter=configEmoji.from_str
+        )
 
         # Config file recursion, read in configuration files specified in every "ALSO_READ" key.
         more_to_read = self.section.getlist("ALSO_READ", [])
