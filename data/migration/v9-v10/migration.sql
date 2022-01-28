@@ -105,3 +105,7 @@ CREATE VIEW new_study_badges AS
   WHERE
     last_study_badgeid IS DISTINCT FROM current_study_badgeid
   ORDER BY guildid;
+
+
+-- API changes
+ALTER TABLE user_config ADD COLUMN API_timestamp BIGINT;

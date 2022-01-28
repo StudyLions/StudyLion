@@ -43,7 +43,8 @@ CREATE TABLE user_config(
   userid BIGINT PRIMARY KEY,
   timezone TEXT,
   topgg_vote_reminder,
-  avatar_hash TEXT
+  avatar_hash TEXT,
+  API_timestamp BIGINT
 );
 -- }}}
 
