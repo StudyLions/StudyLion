@@ -16,6 +16,7 @@ async def attach_topgg_webhook(client):
         init_webhook()
         client.log("Attached top.gg voiting webhook.", context="TOPGG")
 
+
 @module.launch_task
 async def register_hook(client):
     LionContext.reply.add_wrapper(topgg_reply_wrapper)
@@ -31,13 +32,14 @@ async def unregister_hook(client):
 
     client.log("Unloaded top.gg hooks.", context="TOPGG")
 
+boostfree_groups = {'Meta'}
+boostfree_commands = {'config', 'pomodoro'}
+
 
 async def topgg_reply_wrapper(func, ctx: LionContext, *args, suggest_vote=True, **kwargs):
     if not suggest_vote:
         pass
-    elif ctx.cmd and ctx.cmd.name == 'config':
-        pass
-    elif ctx.cmd and ctx.cmd.name == 'help' and ctx.args and ctx.args.split(maxsplit=1)[0].lower() == 'vote':
+    elif ctx.cmd and (ctx.cmd.name in boostfree_commands or ctx.cmd.group in boostfree_groups):
         pass
     elif not get_last_voted_timestamp(ctx.author.id):
         upvote_info_formatted = upvote_info.format(lion_yayemote, ctx.best_prefix, lion_loveemote)
