@@ -34,7 +34,7 @@ async def post_join_message(client: cmdClient, guild: discord.Guild):
             description=message
         )
         embed.set_author(
-            name="Hello! My name is Leo",
+            name="Hello everyone! My name is Leo, the StudyLion!",
             icon_url="https://cdn.discordapp.com/emojis/933610591459872868.webp"
         )
         embed.set_image(url=animation_link)
