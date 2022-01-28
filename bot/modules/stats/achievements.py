@@ -31,11 +31,10 @@ class Achievement:
     name: str = None
 
     subtext: str = None
-    congrats_text: str = None
+    congrats_text: str = "Congratulations, you completed this challenge!"
 
     # List of levels for the achievement. Must always contain a 0 level!
     levels: list[AchievementLevel] = None
-
 
     def __init__(self, guildid: int, userid: int):
         self.guildid = guildid
@@ -70,7 +69,8 @@ class Achievement:
             bar.append(str(emojis.progress_middle_transition))
 
         # Empty sections up to end
-        bar.append(str(emojis.progress_middle_empty) * (width - max(sections, 1)))
+        if sections < width:
+            bar.append(str(emojis.progress_middle_empty) * (width - max(sections, 1) - 1))
 
         # End section
         bar.append(str(emojis.progress_right_empty) if sections < width else str(emojis.progress_right_full))
