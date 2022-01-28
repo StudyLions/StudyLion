@@ -6,7 +6,7 @@ from cmdClient.lib import SafeCancellation
 from LionContext import LionContext as Context
 
 from wards import guild_admin
-from utils.lib import utc_now, tick
+from utils.lib import utc_now, tick, prop_tabulate
 
 from ..module import module
 
@@ -15,6 +15,14 @@ from .Timer import Timer
 
 config_flags = ('name==', 'threshold=', 'channelname==', 'text==')
 MAX_TIMERS_PER_GUILD = 10
+
+options = {
+    "--name": "The timer name (as shown in alerts and `{prefix}timer`).",
+    "--channelname": "The name of the voice channel, see below for substitutions.",
+    "--threshold": "How many focus+break cycles before a member is kicked.",
+    "--text": "Text channel to send timer alerts in (defaults to value of `{prefix}config pomodoro_channel`)."
+}
+options_str = prop_tabulate(*zip(*options.items()))
 
 
 @module.cmd(
@@ -127,7 +135,7 @@ async def cmd_timer(ctx: Context, flags):
 
 @module.cmd(
     "pomodoro",
-    group="🆕 Pomodoro",
+    group="Pomodoro",
     desc="Add and configure timers for your study rooms.",
     flags=config_flags
 )
@@ -321,11 +329,6 @@ async def _pomo_admin(ctx, flags):
 
                 # Post a new status message
                 await timer.update_last_status()
-
-                await ctx.embed_reply(
-                    f"Started a timer in {channel.mention} with **{focus_length}** minutes focus "
-                    f"and **{break_length}** minutes break."
-                )
             else:
                 # Update timer and restart
                 stage = timer.current_stage
@@ -345,10 +348,25 @@ async def _pomo_admin(ctx, flags):
                 await timer.notify_change_stage(stage, timer.current_stage)
                 timer.runloop()
 
-                await ctx.embed_reply(
+            # Ack timer creation
+            embed = discord.Embed(
+                colour=discord.Colour.orange(),
+                title="Timer Started!",
+                description=(
                     f"Started a timer in {channel.mention} with **{focus_length}** "
                     f"minutes focus and **{break_length}** minutes break."
                 )
+            )
+            embed.add_field(
+                name="Further configuration",
+                value=(
+                    "Use `{prefix}{ctx.alias} --setting value` to configure your new timer.\n"
+                    "*Replace `--setting` with one of the below settings, "
+                    "please see `{prefix}help pomodoro` for examples.*\n"
+                    f"{options_str.format(prefix=ctx.best_prefix)}"
+                ).format(prefix=ctx.best_prefix, ctx=ctx, channel=channel)
+            )
+            await ctx.reply(embed=embed)
 
         to_set = []
         if flags['name']:
