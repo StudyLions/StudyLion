@@ -9,9 +9,12 @@ from .module import module
 from .lib import guide_link
 
 
+new_emoji = " 🆕"
+new_commands = {'achievements', 'nerd', 'invite', 'support'}
+
 # Set the command groups to appear in the help
 group_hints = {
-    '🆕 Pomodoro': "*Stay in sync with your friends using our timers!*",
+    'Pomodoro': "*Stay in sync with your friends using our timers!*",
     'Productivity': "*Use these to help you stay focused and productive!*",
     'Statistics': "*StudyLion leaderboards and study statistics.*",
     'Economy': "*Buy, sell, and trade with your hard-earned coins!*",
@@ -22,22 +25,22 @@ group_hints = {
 }
 
 standard_group_order = (
-    ('🆕 Pomodoro', 'Productivity', 'Statistics', 'Economy', 'Personal Settings', 'Meta'),
+    ('Pomodoro', 'Productivity', 'Statistics', 'Economy', 'Personal Settings', 'Meta'),
 )
 
 mod_group_order = (
     ('Moderation', 'Meta'),
-    ('🆕 Pomodoro', 'Productivity', 'Statistics', 'Economy', 'Personal Settings')
+    ('Pomodoro', 'Productivity', 'Statistics', 'Economy', 'Personal Settings')
 )
 
 admin_group_order = (
     ('Guild Admin', 'Guild Configuration', 'Moderation', 'Meta'),
-    ('🆕 Pomodoro', 'Productivity', 'Statistics', 'Economy', 'Personal Settings')
+    ('Pomodoro', 'Productivity', 'Statistics', 'Economy', 'Personal Settings')
 )
 
 bot_admin_group_order = (
     ('Bot Admin', 'Guild Admin', 'Guild Configuration', 'Moderation', 'Meta'),
-    ('🆕 Pomodoro', 'Productivity', 'Statistics', 'Economy', 'Personal Settings')
+    ('Pomodoro', 'Productivity', 'Statistics', 'Economy', 'Personal Settings')
 )
 
 # Help embed format
@@ -170,7 +173,9 @@ async def cmd_help(ctx):
                 cmd_groups[group] = cmd_group
 
             # Add the command name and description to the group
-            cmd_group.append((command.name, getattr(command, 'desc', '')))
+            cmd_group.append(
+                (command.name, (getattr(command, 'desc', '') + (new_emoji if command.name in new_commands else '')))
+            )
 
             # Add any required aliases
             for alias, desc in getattr(command, 'help_aliases', {}).items():
