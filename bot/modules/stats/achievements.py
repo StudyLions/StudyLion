@@ -12,6 +12,8 @@ from core import Lion
 from data.conditions import NOTNULL, LEQ
 from utils.lib import utc_now
 
+from modules.topgg.utils import topgg_upvote_link
+
 from .module import module
 
 
@@ -91,7 +93,7 @@ class Achievement:
         # TODO: Not adjusted for levels
         # TODO: Add hint if progress is empty?
         name = f"{self.levels[1].emoji} {self.name} ({self.progress_text})"
-        value = "{subtext}\n**0** {progress_bar} **{threshold}**".format(
+        value = "**0** {progress_bar} **{threshold}**\n*{subtext}*".format(
             subtext=(self.subtext if self.next_level else self.congrats_text) or '',
             progress_bar=self.progress_bar(self.value, self.levels[0].threshold, self.levels[1].threshold),
             threshold=self.levels[1].threshold
@@ -158,6 +160,7 @@ class Workout(Achievement):
     sorting_index = 8
     emoji_index = 4
     name = "It's about Power"
+    subtext = "Workout 50 times"
 
     levels = [
         AchievementLevel("Level 0", 0, None),
@@ -178,6 +181,7 @@ class StudyHours(Achievement):
     sorting_index = 1
     emoji_index = 1
     name = "Dream Big"
+    subtext = "Study a total of 1000 hours"
 
     levels = [
         AchievementLevel("Level 0", 0, None),
@@ -206,6 +210,7 @@ class StudyStreak(Achievement):
     sorting_index = 2
     emoji_index = 2
     name = "Consistency is Key"
+    subtext = "Reach a 100-day study streak"
 
     levels = [
         AchievementLevel("Level 0", 0, None),
@@ -287,6 +292,7 @@ class Voting(Achievement):
     sorting_index = 7
     emoji_index = 7
     name = "We're a Team"
+    subtext = "[Vote]({}) 100 times on top.gg".format(topgg_upvote_link)
 
     levels = [
         AchievementLevel("Level 0", 0, None),
@@ -307,6 +313,7 @@ class DaysStudying(Achievement):
     sorting_index = 3
     emoji_index = 3
     name = "Aim For The Moon"
+    subtext = "Study on 90 different days"
 
     levels = [
         AchievementLevel("Level 0", 0, None),
@@ -342,6 +349,7 @@ class TasksComplete(Achievement):
     sorting_index = 4
     emoji_index = 8
     name = "One Step at a Time"
+    subtext = "Complete 1000 tasks"
 
     levels = [
         AchievementLevel("Level 0", 0, None),
@@ -363,6 +371,7 @@ class ScheduledSessions(Achievement):
     sorting_index = 5
     emoji_index = 5
     name = "Be Accountable"
+    subtext = "Attend 500 scheduled sessions"
 
     levels = [
         AchievementLevel("Level 0", 0, None),
@@ -385,6 +394,7 @@ class MonthlyHours(Achievement):
     sorting_index = 6
     emoji_index = 6
     name = "The 30 Days Challenge"
+    subtext = "Study 100 hours in 30 days"
 
     levels = [
         AchievementLevel("Level 0", 0, None),
