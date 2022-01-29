@@ -1,3 +1,5 @@
+from psycopg2.extras import execute_values
+
 from data import Table, RowTable, tables
 from utils.lib import FieldEnum
 
@@ -58,6 +60,27 @@ def study_time_since(guildid, userid, timestamp):
         cursor.callproc('study_time_since', (guildid, userid, timestamp))
         rows = cursor.fetchall()
     return (rows[0][0] if rows else None) or 0
+
+
+@session_history.save_query
+def study_times_since(guildid, userid, *timestamps):
+    """
+    Retrieve the total member study time (in seconds) since the given timestamps.
+    Includes the current session, if it exists.
+    """
+    with session_history.conn as conn:
+        cursor = conn.cursor()
+        data = execute_values(
+            cursor,
+            """
+            SELECT study_time_since(t.guildid, t.userid, t.timestamp)
+            FROM (VALUES %s)
+            AS t (guildid, userid, timestamp)
+            """,
+            [(guildid, userid, timestamp) for timestamp in timestamps],
+            fetch=True
+        )
+    return data
 
 
 members_totals = Table('members_totals')

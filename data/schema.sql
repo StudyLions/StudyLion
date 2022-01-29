@@ -4,7 +4,7 @@ CREATE TABLE VersionHistory(
   time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
   author TEXT
 );
-INSERT INTO VersionHistory (version, author) VALUES (9, 'Initial Creation');
+INSERT INTO VersionHistory (version, author) VALUES (10, 'Initial Creation');
 
 
 CREATE OR REPLACE FUNCTION update_timestamp_column()
@@ -43,7 +43,8 @@ CREATE TABLE user_config(
   userid BIGINT PRIMARY KEY,
   timezone TEXT,
   topgg_vote_reminder,
-  avatar_hash TEXT
+  avatar_hash TEXT,
+  API_timestamp BIGINT
 );
 -- }}}
 
@@ -485,7 +486,7 @@ AS $$
           (start_time + duration * interval '1 second') AS end_time
         FROM session_history
         WHERE
-          guildid=_guildid
+          (_guildid IS NULL OR guildid=_guildid)
           AND userid=_userid
           AND (start_time + duration * interval '1 second') >= _timestamp
         UNION
@@ -495,7 +496,7 @@ AS $$
           NOW() AS end_time
         FROM current_sessions
         WHERE
-          guildid=_guildid
+          (_guildid IS NULL OR guildid=_guildid)
           AND userid=_userid
       ) AS sessions
     );
@@ -552,7 +553,7 @@ AS $$
     UPDATE members
       SET
         tracked_time=(tracked_time + saved_sesh.duration),
-        coins=(coins + saved_sesh.coins_earned)
+        coins=LEAST(coins + saved_sesh.coins_earned, 2147483647)
       FROM saved_sesh
       WHERE members.guildid=saved_sesh.guildid AND members.userid=saved_sesh.userid
       RETURNING members.*;

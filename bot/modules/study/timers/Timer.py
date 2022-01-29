@@ -131,7 +131,7 @@ class Timer:
         """
         stage = self.current_stage
         name_format = self.data.channel_name or "{remaining} {stage} -- {name}"
-        return name_format.replace(
+        name = name_format.replace(
             '{remaining}', "{}m".format(
                 int(5 * math.ceil((stage.end - utc_now()).total_seconds() / 300)),
             )
@@ -147,6 +147,7 @@ class Timer:
                 int(self.focus_length // 60), int(self.break_length // 60)
             )
         )
+        return name[:100]
 
     async def notify_change_stage(self, old_stage, new_stage):
         # Update channel name
@@ -245,7 +246,13 @@ class Timer:
         if self._voice_update_task:
             self._voice_update_task.cancel()
 
+        if not self.channel:
+            return
+
         if self.channel.name == self.channel_name:
+            return
+
+        if not self.channel.permissions_for(self.channel.guild.me).manage_channels:
             return
 
         if self._last_voice_update:

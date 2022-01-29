@@ -227,6 +227,8 @@ async def cmd_reactionroles(ctx, flags):
         For example to disable event logging, run `{prefix}rroles link --log off`.
 
         For per-reaction settings, instead use `{prefix}rroles link emoji --setting value`.
+
+        *(!) Replace `setting` with one of the settings below!*
     Message Settings::
         maximum: Maximum number of roles obtainable from this message.
         log: Whether to log reaction role usage into the event log.
@@ -235,7 +237,7 @@ async def cmd_reactionroles(ctx, flags):
         default_price: The default price of each role on this message.
         required_role: The role required to use these reactions roles.
     Reaction Settings::
-        price: The price of this reaction role.
+        price: The price of this reaction role. (May be negative for a reward.)
         tduration: How long this role will last after being selected or bought.
     Configuration Examples``:
         {prefix}rroles {ctx.msg.id} --maximum 5
@@ -350,6 +352,7 @@ async def cmd_reactionroles(ctx, flags):
             elif not target_id:
                 # Confirm enabling of all reaction messages
                 await reaction_ask(
+                    ctx,
                     "Are you sure you want to enable all reaction role messages in this server?",
                     timeout_msg="Prompt timed out, no reaction roles enabled.",
                     cancel_msg="User cancelled, no reaction roles enabled."
@@ -390,6 +393,7 @@ async def cmd_reactionroles(ctx, flags):
             elif not target_id:
                 # Confirm disabling of all reaction messages
                 await reaction_ask(
+                    ctx,
                     "Are you sure you want to disable all reaction role messages in this server?",
                     timeout_msg="Prompt timed out, no reaction roles disabled.",
                     cancel_msg="User cancelled, no reaction roles disabled."
@@ -429,6 +433,7 @@ async def cmd_reactionroles(ctx, flags):
             elif not target_id:
                 # Confirm disabling of all reaction messages
                 await reaction_ask(
+                    ctx,
                     "Are you sure you want to remove all reaction role messages in this server?",
                     timeout_msg="Prompt timed out, no messages removed.",
                     cancel_msg="User cancelled, no messages removed."
@@ -909,7 +914,8 @@ async def cmd_reactionroles(ctx, flags):
         "{settings_table}\n"
         "To update a message setting: `{prefix}rroles messageid --setting value`\n"
         "To update an emoji setting: `{prefix}rroles messageid emoji --setting value`\n"
-        "See examples and more usage information with `{prefix}help rroles`."
+        "See examples and more usage information with `{prefix}help rroles`.\n"
+        "**(!) Replace the `setting` with one of the settings on this page.**\n"
     ).format(
         prefix=ctx.best_prefix,
         settings_table=target.settings.tabulated()

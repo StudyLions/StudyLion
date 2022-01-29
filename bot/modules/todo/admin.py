@@ -38,7 +38,7 @@ class task_reward(settings.Integer, GuildSetting):
     display_name = "task_reward"
     desc = "Number of LionCoins given for each completed TODO task."
 
-    _default = 250
+    _default = 50
 
     long_desc = (
         "LionCoin reward given for completing each task on the TODO list."

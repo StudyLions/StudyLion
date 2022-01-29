@@ -427,7 +427,7 @@ class TimeSlot:
                 reward += guild_settings.accountability_bonus.value
 
             for memid in self.members:
-                Lion.fetch(self.guild.id, memid).addCoins(reward)
+                Lion.fetch(self.guild.id, memid).addCoins(reward, bonus=True)
 
     async def cancel(self):
         """

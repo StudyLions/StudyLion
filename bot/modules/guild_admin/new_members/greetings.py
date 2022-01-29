@@ -1,5 +1,5 @@
 import discord
-from cmdClient.Context import Context
+from LionContext import LionContext as Context
 
 from meta import client
 

@@ -188,7 +188,7 @@ class RowTable(Table):
         self.columns = columns
         self.id_col = id_col
         self.multi_key = isinstance(id_col, tuple)
-        self.row_cache = (cache or LRUCache(cache_size)) if use_cache else None
+        self.row_cache = (cache if cache is not None else LRUCache(cache_size)) if use_cache else None
 
     def id_from_row(self, row):
         if self.multi_key:

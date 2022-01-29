@@ -65,7 +65,7 @@ def _scan(guild):
         if member.voice.self_stream or member.voice.self_video:
             hour_reward += guild_hourly_live_bonus
 
-        lion.addCoins(hour_reward * interval / (3600), flush=False)
+        lion.addCoins(hour_reward * interval / (3600), flush=False, bonus=True)
 
 
 async def _study_tracker():

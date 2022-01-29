@@ -174,7 +174,7 @@ class ReactionRoleMessage:
         Returns the generated `ReactionRoleReaction`s for convenience.
         """
         # Fetch reactions and pre-populate reaction cache
-        rows = reaction_role_reactions.fetch_rows_where(messageid=self.messageid)
+        rows = reaction_role_reactions.fetch_rows_where(messageid=self.messageid, _extra="ORDER BY reactionid ASC")
         reactions = [ReactionRoleReaction(row.reactionid) for row in rows]
         self._reactions[self.messageid] = reactions
         return reactions
@@ -425,7 +425,7 @@ class ReactionRoleMessage:
                                     self.message_link,
                                     role.mention,
                                     member.mention,
-                                    " for `{}` coins.".format(price) if price else '',
+                                    " for `{}` coins".format(price) if price else '',
                                     "\nThis role will expire at <t:{:.0f}>.".format(
                                         expiry.timestamp()
                                     ) if expiry else ''
@@ -501,7 +501,7 @@ class ReactionRoleMessage:
                             if price and refund:
                                 # Give the user the refund
                                 lion = Lion.fetch(self.guild.id, member.id)
-                                lion.addCoins(price, ignorebonus=True)
+                                lion.addCoins(price)
 
                                 # Notify the user
                                 embed = discord.Embed(
@@ -548,7 +548,7 @@ class ReactionRoleMessage:
 @client.add_after_event('raw_reaction_add')
 async def reaction_role_add(client, payload):
     reaction_message = ReactionRoleMessage.fetch(payload.message_id)
-    if payload.guild_id and not payload.member.bot and reaction_message and reaction_message.enabled:
+    if payload.guild_id and payload.user_id != client.user.id and reaction_message and reaction_message.enabled:
         try:
             await reaction_message.process_raw_reaction_add(payload)
         except Exception:

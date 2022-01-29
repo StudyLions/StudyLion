@@ -130,12 +130,12 @@ async def workout_complete(member, workout):
 
     settings = GuildSettings(member.guild.id)
     reward = settings.workout_reward.value
-    user.addCoins(reward)
+    user.addCoins(reward, bonus=True)
 
     settings.event_log.log(
         "{} completed their daily workout and was rewarded `{}` coins! (`{:.2f}` minutes)".format(
             member.mention,
-            reward,
+            int(reward * user.economy_bonus),
             workout.duration / 60,
         ), title="Workout Completed"
     )
@@ -143,7 +143,7 @@ async def workout_complete(member, workout):
     embed = discord.Embed(
         description=(
             "Congratulations on completing your daily workout!\n"
-            "You have been rewarded with `{}` LionCoins. Good job!".format(reward)
+            "You have been rewarded with `{}` LionCoins. Good job!".format(int(reward * user.economy_bonus))
         ),
         timestamp=dt.datetime.utcnow(),
         colour=discord.Color.orange()

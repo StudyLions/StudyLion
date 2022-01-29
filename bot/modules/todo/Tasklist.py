@@ -350,7 +350,7 @@ class Tasklist:
                 # Rewarding process, now that we know what we need to reward
                 # Add coins
                 user = Lion.fetch(self.member.guild.id, self.member.id)
-                user.addCoins(reward_coins)
+                user.addCoins(reward_coins, bonus=True)
 
                 # Mark tasks as rewarded
                 taskids = [task['taskid'] for task in reward_tasks]

@@ -1,6 +1,6 @@
 import discord
 from .module import module
-from bot.cmdClient.checks import in_guild, is_owner
+from cmdClient.checks import is_owner
 from settings.user_settings import UserSettings
 from LionContext import LionContext
 
@@ -41,7 +41,6 @@ async def cmd_forcevote(ctx: LionContext):
     group="Economy",
     aliases=('topgg', 'topggvote', 'upvote')
 )
-@in_guild()
 async def cmd_vote(ctx: LionContext):
     """
     Usage``:

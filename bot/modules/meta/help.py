@@ -6,11 +6,15 @@ from utils import interactive, ctx_addons  # noqa
 from wards import is_guild_admin
 
 from .module import module
+from .lib import guide_link
 
+
+new_emoji = " 🆕"
+new_commands = {'achievements', 'nerd', 'invite', 'support'}
 
 # Set the command groups to appear in the help
 group_hints = {
-    '🆕 Pomodoro': "*Stay in sync with your friends using our timers!*",
+    'Pomodoro': "*Stay in sync with your friends using our timers!*",
     'Productivity': "*Use these to help you stay focused and productive!*",
     'Statistics': "*StudyLion leaderboards and study statistics.*",
     'Economy': "*Buy, sell, and trade with your hard-earned coins!*",
@@ -21,22 +25,22 @@ group_hints = {
 }
 
 standard_group_order = (
-    ('🆕 Pomodoro', 'Productivity', 'Statistics', 'Economy', 'Personal Settings', 'Meta'),
+    ('Pomodoro', 'Productivity', 'Statistics', 'Economy', 'Personal Settings', 'Meta'),
 )
 
 mod_group_order = (
     ('Moderation', 'Meta'),
-    ('🆕 Pomodoro', 'Productivity', 'Statistics', 'Economy', 'Personal Settings')
+    ('Pomodoro', 'Productivity', 'Statistics', 'Economy', 'Personal Settings')
 )
 
 admin_group_order = (
     ('Guild Admin', 'Guild Configuration', 'Moderation', 'Meta'),
-    ('🆕 Pomodoro', 'Productivity', 'Statistics', 'Economy', 'Personal Settings')
+    ('Pomodoro', 'Productivity', 'Statistics', 'Economy', 'Personal Settings')
 )
 
 bot_admin_group_order = (
     ('Bot Admin', 'Guild Admin', 'Guild Configuration', 'Moderation', 'Meta'),
-    ('🆕 Pomodoro', 'Productivity', 'Statistics', 'Economy', 'Personal Settings')
+    ('Pomodoro', 'Productivity', 'Statistics', 'Economy', 'Personal Settings')
 )
 
 # Help embed format
@@ -46,14 +50,15 @@ header = """
 [StudyLion](https://bot.studylions.com/) is a fully featured study assistant \
     that tracks your study time and offers productivity tools \
     such as to-do lists, task reminders, private study rooms, group accountability sessions, and much much more.\n
-Use `{ctx.best_prefix}help <command>` (e.g. `{ctx.best_prefix}help send`) to learn how to use each command, \
-    or [click here](https://discord.studylions.com/tutorial) for a comprehensive tutorial.
-"""
+Use `{{ctx.best_prefix}}help <command>` (e.g. `{{ctx.best_prefix}}help send`) to learn how to use each command, \
+    or [click here]({guide_link}) for a comprehensive tutorial.
+""".format(guide_link=guide_link)
 
 
 @module.cmd("help",
             group="Meta",
-            desc="StudyLion command list.")
+            desc="StudyLion command list.",
+            aliases=('man', 'ls', 'list'))
 async def cmd_help(ctx):
     """
     Usage``:
@@ -168,7 +173,9 @@ async def cmd_help(ctx):
                 cmd_groups[group] = cmd_group
 
             # Add the command name and description to the group
-            cmd_group.append((command.name, getattr(command, 'desc', '')))
+            cmd_group.append(
+                (command.name, (getattr(command, 'desc', '') + (new_emoji if command.name in new_commands else '')))
+            )
 
             # Add any required aliases
             for alias, desc in getattr(command, 'help_aliases', {}).items():
@@ -178,7 +185,12 @@ async def cmd_help(ctx):
         stringy_cmd_groups = {}
         for group_name, cmd_group in cmd_groups.items():
             cmd_group.sort(key=lambda tup: len(tup[0]))
-            stringy_cmd_groups[group_name] = prop_tabulate(*zip(*cmd_group))
+            if ctx.alias == 'ls':
+                stringy_cmd_groups[group_name] = ', '.join(
+                    f"`{name}`" for name, _ in cmd_group
+                )
+            else:
+                stringy_cmd_groups[group_name] = prop_tabulate(*zip(*cmd_group))
 
         # Now put everything into a bunch of embeds
         if await is_owner.run(ctx):

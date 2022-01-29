@@ -191,7 +191,7 @@ class price(setting_types.Integer, ReactionSetting):
     _data_column = 'price'
 
     display_name = "price"
-    desc = "Price of this reaction role."
+    desc = "Price of this reaction role (may be negative)."
 
     long_desc = (
         "The number of coins that will be deducted from the user when this reaction is used.\n"

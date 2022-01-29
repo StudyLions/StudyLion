@@ -7,6 +7,8 @@ from meta import client
 from data import tables as tb
 from settings import UserSettings, GuildSettings
 
+from LionContext import LionContext
+
 
 class Lion:
     """
@@ -63,7 +65,11 @@ class Lion:
         return (self.guildid, self.userid)
 
     @property
-    def member(self):
+    def guild(self) -> discord.Guild:
+        return client.get_guild(self.guildid)
+
+    @property
+    def member(self) -> discord.Member:
         """
         The discord `Member` corresponding to this user.
         May be `None` if the member is no longer in the guild or the caches aren't populated.
@@ -109,6 +115,15 @@ class Lion:
         The GuildSettings interface for this member.
         """
         return GuildSettings(self.guildid)
+
+    @property
+    def ctx(self) -> LionContext:
+        """
+        Manufacture a `LionContext` with the lion member as an author.
+        Useful for accessing member context utilities.
+        Be aware that `author` may be `None` if the member was not cached.
+        """
+        return LionContext(client, guild=self.guild, author=self.member)
 
     @property
     def time(self):
@@ -247,6 +262,20 @@ class Lion:
         return remaining
 
     @property
+    def profile_tags(self):
+        """
+        Returns a list of profile tags, or the default tags.
+        """
+        tags = tb.profile_tags.queries.get_tags_for(self.guildid, self.userid)
+        prefix = self.ctx.best_prefix
+        return tags or [
+            f"Use {prefix}setprofile",
+            "and add your tags",
+            "to this section",
+            f"See {prefix}help setprofile for more"
+        ]
+
+    @property
     def name(self):
         """
         Returns the best local name possible.
@@ -259,7 +288,6 @@ class Lion:
             name = str(self.userid)
 
         return name
-
 
     def update_saved_data(self, member: discord.Member):
         """
@@ -280,11 +308,11 @@ class Lion:
         timezone = self.settings.timezone.value
         return naive_utc_dt.replace(tzinfo=pytz.UTC).astimezone(timezone)
 
-    def addCoins(self, amount, flush=True, ignorebonus=False):
+    def addCoins(self, amount, flush=True, bonus=False):
         """
         Add coins to the user, optionally store the transaction in pending.
         """
-        self._pending_coins += amount * (1 if ignorebonus else self.economy_bonus)
+        self._pending_coins += amount * (self.economy_bonus if bonus else 1)
         self._pending[self.key] = self
         if flush:
             self.flush()

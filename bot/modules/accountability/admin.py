@@ -84,7 +84,7 @@ class accountability_price(settings.Integer, GuildSetting):
     display_name = "session_price"
     desc = "Cost of booking a scheduled session."
 
-    _default = 100
+    _default = 500
 
     long_desc = (
         "The price of booking each one hour scheduled session slot."
@@ -106,7 +106,7 @@ class accountability_bonus(settings.Integer, GuildSetting):
     display_name = "session_bonus"
     desc = "Bonus given when everyone attends a scheduled session slot."
 
-    _default = 1000
+    _default = 750
 
     long_desc = (
         "The extra bonus given to each scheduled session member when everyone who booked attended the session."
@@ -128,7 +128,7 @@ class accountability_reward(settings.Integer, GuildSetting):
     display_name = "session_reward"
     desc = "The individual reward given when a member attends their booked scheduled session."
 
-    _default = 200
+    _default = 500
 
     long_desc = (
         "Reward given to a member who attends a booked scheduled session."

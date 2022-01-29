@@ -77,6 +77,7 @@ class hourly_reward(settings.Integer, settings.GuildSetting):
     desc = "Number of LionCoins given per hour of study."
 
     _default = 50
+    _max = 32767
 
     long_desc = (
         "Each spent in a voice channel will reward this number of LionCoins."
@@ -98,7 +99,8 @@ class hourly_live_bonus(settings.Integer, settings.GuildSetting):
     display_name = "hourly_live_bonus"
     desc = "Number of extra LionCoins given for a full hour of streaming (via go live or video)."
 
-    _default = 10
+    _default = 150
+    _max = 32767
 
     long_desc = (
         "LionCoin bonus earnt for every hour a member streams in a voice channel, including video. "
