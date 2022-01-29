@@ -237,7 +237,7 @@ async def cmd_reactionroles(ctx, flags):
         default_price: The default price of each role on this message.
         required_role: The role required to use these reactions roles.
     Reaction Settings::
-        price: The price of this reaction role.
+        price: The price of this reaction role. (May be negative for a reward.)
         tduration: How long this role will last after being selected or bought.
     Configuration Examples``:
         {prefix}rroles {ctx.msg.id} --maximum 5
@@ -915,7 +915,7 @@ async def cmd_reactionroles(ctx, flags):
         "To update a message setting: `{prefix}rroles messageid --setting value`\n"
         "To update an emoji setting: `{prefix}rroles messageid emoji --setting value`\n"
         "See examples and more usage information with `{prefix}help rroles`.\n"
-        "*(!) Replace the `setting` with one of the settings on this page.*\n"
+        "**(!) Replace the `setting` with one of the settings on this page.**\n"
     ).format(
         prefix=ctx.best_prefix,
         settings_table=target.settings.tabulated()

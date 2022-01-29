@@ -425,7 +425,7 @@ class ReactionRoleMessage:
                                     self.message_link,
                                     role.mention,
                                     member.mention,
-                                    " for `{}` coins.".format(price) if price else '',
+                                    " for `{}` coins".format(price) if price else '',
                                     "\nThis role will expire at <t:{:.0f}>.".format(
                                         expiry.timestamp()
                                     ) if expiry else ''
