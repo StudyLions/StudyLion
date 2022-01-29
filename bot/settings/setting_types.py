@@ -680,7 +680,7 @@ class Duration(SettingType):
             )
         if cls._min is not None and num < cls._min:
             raise UserInputError(
-                "Duration connot be shorter than `{}`!".format(
+                "Duration cannot be shorter than `{}`!".format(
                     strfdur(cls._min, short=False, show_days=cls._show_days)
                 )
             )
