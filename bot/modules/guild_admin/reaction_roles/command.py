@@ -352,6 +352,7 @@ async def cmd_reactionroles(ctx, flags):
             elif not target_id:
                 # Confirm enabling of all reaction messages
                 await reaction_ask(
+                    ctx,
                     "Are you sure you want to enable all reaction role messages in this server?",
                     timeout_msg="Prompt timed out, no reaction roles enabled.",
                     cancel_msg="User cancelled, no reaction roles enabled."
@@ -392,6 +393,7 @@ async def cmd_reactionroles(ctx, flags):
             elif not target_id:
                 # Confirm disabling of all reaction messages
                 await reaction_ask(
+                    ctx,
                     "Are you sure you want to disable all reaction role messages in this server?",
                     timeout_msg="Prompt timed out, no reaction roles disabled.",
                     cancel_msg="User cancelled, no reaction roles disabled."
@@ -431,6 +433,7 @@ async def cmd_reactionroles(ctx, flags):
             elif not target_id:
                 # Confirm disabling of all reaction messages
                 await reaction_ask(
+                    ctx,
                     "Are you sure you want to remove all reaction role messages in this server?",
                     timeout_msg="Prompt timed out, no messages removed.",
                     cancel_msg="User cancelled, no messages removed."
