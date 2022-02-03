@@ -114,7 +114,7 @@ Make sure to check the [full documentation](https://www.notion.so/izabellakis/St
 
 ## Developers/Contributors/Project Watchers
 
-You can follow the Project's Kanban board for(planned features, what the team is currently working on, bug/issue-traker, ideas, etc..) on Trello [here](https://trello.com/b/0zOxkqyO/studylion-bot-dev).
+You can follow the Project's Kanban board (for planned features, what the team is currently working on, bug/issue-traker, ideas, etc..) on Trello [here](https://trello.com/b/0zOxkqyO/studylion-bot-dev).
 
 <br>
 <a href="https://imgur.com/ziPdJGw"><img src="https://i.imgur.com/ziPdJGws.png" title="source: imgur.com" /></a>
