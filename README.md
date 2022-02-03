@@ -106,10 +106,15 @@ Reward users for studying, allow them to use the coins to buy private study room
 
 Punish cheaters, audit-log, welcome message, and so much more using our full-scale moderation system.
 
-### Tutorials
+## Tutorials
 
 A command list and general documentation for StudyLion may be found using the `!help` command, and documentation for a specific command, e.g. `config`, may be found with `!help config`.
 
 Make sure to check the [full documentation](https://www.notion.so/izabellakis/StudyLion-Bot-Tutorials-f493268fcd12436c9674afef2e151707 "StudyLion Tutorial") to stay updated.
 
+## Developers/Contributors/Project Watchers
+
+You can follow the Project's Kanban board for(planned features, what the team is currently working on, bug/issue-traker, ideas, etc..) on Trello [here](https://trello.com/b/0zOxkqyO/studylion-bot-dev).
+
+<br>
 <a href="https://imgur.com/ziPdJGw"><img src="https://i.imgur.com/ziPdJGws.png" title="source: imgur.com" /></a>
