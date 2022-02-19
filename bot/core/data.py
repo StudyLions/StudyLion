@@ -14,7 +14,7 @@ meta = RowTable(
 
 user_config = RowTable(
     'user_config',
-    ('userid', 'timezone', 'topgg_vote_reminder', 'avatar_hash'),
+    ('userid', 'timezone', 'topgg_vote_reminder', 'avatar_hash', 'gems'),
     'userid',
     cache=TTLCache(5000, ttl=60*5)
 )
@@ -118,6 +118,19 @@ def get_member_rank(guildid, userid, untracked):
                 (guildid, tuple(untracked), userid)
             )
             return curs.fetchone() or (None, None)
+
+
+@user_config.save_query
+def set_gems(userid, amount):
+    with user_config.conn as conn:
+        cursor = conn.cursor()
+        cursor.execute(
+            "UPDATE user_config SET gems = %s WHERE userid = %s RETURNING *",
+            (amount, userid)
+        )
+        data = cursor.fetchone()
+        if data:
+            return user_config._make_rows(data)[0]
 
 
 global_guild_blacklist = Table('global_guild_blacklist')

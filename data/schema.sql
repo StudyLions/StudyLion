@@ -42,9 +42,10 @@ CREATE TABLE global_guild_blacklist(
 CREATE TABLE user_config(
   userid BIGINT PRIMARY KEY,
   timezone TEXT,
-  topgg_vote_reminder,
+  topgg_vote_reminder BOOLEAN,
   avatar_hash TEXT,
-  API_timestamp BIGINT
+  API_timestamp BIGINT,
+  gems INTEGER DEFAULT 0
 );
 -- }}}
 
