@@ -35,7 +35,7 @@ async def cmd_setprofile(ctx, flags):
 
         Moderators can clear a user's tags with `--clear --for @user`.
     Examples``:
-        {prefix}setprofile Mathematics, Bioloyg, Medicine, Undergraduate, Europe
+        {prefix}setprofile Mathematics, Biology, Medicine, Undergraduate, Europe
         {prefix}setprofile 2 Biology
         {prefix}setprofile --clear
     """
@@ -206,7 +206,7 @@ async def cmd_setprofile(ctx, flags):
         embed.add_field(
             name="Examples",
             value=(
-                f"`{ctx.best_prefix}setprofile Mathematics, Bioloyg, Medicine, Undergraduate, Europe`\n"
+                f"`{ctx.best_prefix}setprofile Mathematics, Biology, Medicine, Undergraduate, Europe`\n"
                 f"`{ctx.best_prefix}setprofile 2 Biology`"
             ),
             inline=False
