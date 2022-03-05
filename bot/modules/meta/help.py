@@ -36,12 +36,12 @@ mod_group_order = (
 
 admin_group_order = (
     ('Guild Admin', 'Guild Configuration', 'Moderation', 'Meta'),
-    ('Pomodoro', 'Productivity', 'Premium', 'Statistics', 'Economy', 'Personal Settings', 'LionGems')
+    ('Pomodoro', 'Productivity', 'Premium', 'Statistics', 'Economy', 'Personal Settings')
 )
 
 bot_admin_group_order = (
     ('Bot Admin', 'Guild Admin', 'Guild Configuration', 'Moderation', 'Meta'),
-    ('Pomodoro', 'Productivity', 'Premium', 'Statistics', 'Economy', 'Personal Settings', 'LionGems')
+    ('Pomodoro', 'Productivity', 'Premium', 'Statistics', 'Economy', 'Personal Settings')
 )
 
 # Help embed format
