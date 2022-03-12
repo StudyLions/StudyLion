@@ -4,7 +4,7 @@ CREATE TABLE VersionHistory(
   time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
   author TEXT
 );
-INSERT INTO VersionHistory (version, author) VALUES (10, 'Initial Creation');
+INSERT INTO VersionHistory (version, author) VALUES (11, 'Initial Creation');
 
 
 CREATE OR REPLACE FUNCTION update_timestamp_column()
@@ -34,6 +34,15 @@ CREATE TABLE global_guild_blacklist(
   ownerid BIGINT NOT NULL,
   reason TEXT NOT NULL,
   created_at TIMESTAMPTZ DEFAULT now()
+);
+-- }}}
+
+
+-- Sponsor Data {{{
+CREATE TABLE sponsor_text(
+  ID INTEGER PRIMARY KEY DEFAULT 0,
+  prompt_text TEXT,
+  command_response TEXT
 );
 -- }}}
 

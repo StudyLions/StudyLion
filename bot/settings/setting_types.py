@@ -713,6 +713,8 @@ class Message(SettingType):
     _substitution_desc = {
     }
 
+    _cmd_str = '{prefix} config {setting}'
+
     @classmethod
     def _data_from_value(cls, id, value, **kwargs):
         if value is None:
@@ -844,14 +846,16 @@ class Message(SettingType):
         embed.add_field(
             name="Setting Guide",
             value=(
-                "• For plain text without an embed, use `{prefix}config {setting} <text>`.\n"
+                "• For plain text without an embed, use `{cmd_str} <text>`.\n"
                 "• To include an embed, build the message [here]({builder}) "
-                "and upload the json code as a file with the `{prefix}config {setting}` command.\n"
-                "• To reset the message to the default, use `{prefix}config {setting} None`."
+                "and upload the json code as a file with the `{cmd_str}` command.\n"
+                "• To reset the message to the default, use `{cmd_str} None`."
+            ).format(
+                cmd_str=self._cmd_str,
+                builder="https://glitchii.github.io/embedbuilder/?editor=gui"
             ).format(
                 prefix=ctx.best_prefix,
                 setting=self.display_name,
-                builder="https://glitchii.github.io/embedbuilder/?editor=gui"
             ),
             inline=False
         )

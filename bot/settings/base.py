@@ -201,13 +201,13 @@ class Setting:
         raise NotImplementedError
 
     @classmethod
-    async def command(cls, ctx, id):
+    async def command(cls, ctx, id, flags=()):
         """
         Standardised command viewing/setting interface for the setting.
         """
-        if not ctx.args:
+        if not ctx.args and not ctx.msg.attachments:
             # View config embed for provided cls
-            await ctx.reply(embed=cls.get(id).embed)
+            await cls.get(id).widget(ctx, flags=flags)
         else:
             # Check the write ward
             if cls.write_ward and not await cls.write_ward.run(ctx):
