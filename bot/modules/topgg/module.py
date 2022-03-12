@@ -2,6 +2,8 @@ from LionModule import LionModule
 from LionContext import LionContext
 from core.lion import Lion
 
+from modules.sponsors.module import sponsored_commands
+
 from .utils import get_last_voted_timestamp, lion_loveemote, lion_yayemote
 from .webhook import init_webhook
 
@@ -39,12 +41,14 @@ boostfree_commands = {'config', 'pomodoro'}
 async def topgg_reply_wrapper(func, ctx: LionContext, *args, suggest_vote=True, **kwargs):
     if not suggest_vote:
         pass
-    elif ctx.cmd and (ctx.cmd.name in boostfree_commands or ctx.cmd.group in boostfree_groups):
+    elif not ctx.cmd:
+        pass
+    elif ctx.cmd.name in boostfree_commands or ctx.cmd.group in boostfree_groups:
         pass
     elif not get_last_voted_timestamp(ctx.author.id):
         upvote_info_formatted = upvote_info.format(lion_yayemote, ctx.best_prefix, lion_loveemote)
 
-        if 'embed' in kwargs:
+        if 'embed' in kwargs and ctx.cmd.name not in sponsored_commands:
             # Add message as an extra embed field
             kwargs['embed'].add_field(
                 name="\u200b",
