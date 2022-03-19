@@ -5,8 +5,6 @@ from LionContext import LionContext
 
 from meta import client
 
-from .config import settings
-
 
 module = LionModule("Sponsor")
 
@@ -18,7 +16,7 @@ sponsored_commands = {'profile', 'stats', 'weekly', 'monthly'}
 async def sponsor_reply_wrapper(func, ctx: LionContext, *args, **kwargs):
     if ctx.cmd and ctx.cmd.name in sponsored_commands:
         sponsor_hint = discord.Embed(
-            description=settings.sponsor_prompt.value,
+            description=ctx.client.settings.sponsor_prompt.value,
             colour=discord.Colour.dark_theme()
         )
         if 'embed' not in kwargs:

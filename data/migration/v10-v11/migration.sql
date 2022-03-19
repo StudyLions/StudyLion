@@ -1,8 +1,22 @@
+-- App Config Data {{{
+CREATE TABLE AppConfig(
+  appid TEXT,
+  key TEXT,
+  value TEXT,
+  PRIMARY KEY(appid, key)
+);
+-- }}}
+
+
 -- Sponsor Data {{{
-CREATE TABLE sponsor_text(
-  ID INTEGER PRIMARY KEY DEFAULT 0,
-  prompt_text TEXT,
-  command_response TEXT
+CREATE TABLE sponsor_guild_whitelist(
+  guildid INTEGER PRIMARY KEY
+);
+-- }}}
+
+-- Topgg Data {{{
+CREATE TABLE topgg_guild_whitelist(
+  guildid INTEGER PRIMARY KEY
 );
 -- }}}
 

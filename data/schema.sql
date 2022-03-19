@@ -22,6 +22,13 @@ CREATE TABLE AppData(
   last_study_badge_scan TIMESTAMP 
 );
 
+CREATE TABLE AppConfig(
+  appid TEXT,
+  key TEXT,
+  value TEXT,
+  PRIMARY KEY(appid, key)
+);
+
 CREATE TABLE global_user_blacklist(
   userid BIGINT PRIMARY KEY,
   ownerid BIGINT NOT NULL,
@@ -36,16 +43,6 @@ CREATE TABLE global_guild_blacklist(
   created_at TIMESTAMPTZ DEFAULT now()
 );
 -- }}}
-
-
--- Sponsor Data {{{
-CREATE TABLE sponsor_text(
-  ID INTEGER PRIMARY KEY DEFAULT 0,
-  prompt_text TEXT,
-  command_response TEXT
-);
--- }}}
-
 
 -- User configuration data {{{
 CREATE TABLE user_config(
@@ -808,6 +805,16 @@ create TABLE topgg(
   boostedTimestamp TIMESTAMPTZ NOT NULL
 );
 CREATE INDEX topgg_userid_timestamp ON topgg (userid, boostedTimestamp);
+
+CREATE TABLE topgg_guild_whitelist(
+  guildid INTEGER PRIMARY KEY
+);
+-- }}}
+
+-- Sponsor Data {{{
+CREATE TABLE sponsor_guild_whitelist(
+  guildid INTEGER PRIMARY KEY
+);
 -- }}}
 
 -- vim: set fdm=marker:

@@ -1,23 +1,16 @@
 from cmdClient.checks import is_owner
 
-from settings.base import Setting, ColumnData, ObjectSettings
+from settings import AppSettings, Setting, KeyValueData, ListData
 from settings.setting_types import Message, String
 
 from meta import client
-from utils.lib import DotDict
-
-from .data import sponsor_text
+from core.data import app_config
 
 
-class SponsorSettings(ObjectSettings):
-    settings = DotDict()
-    pass
-
-
-@SponsorSettings.attach_setting
-class sponsor_prompt(String, ColumnData, Setting):
+@AppSettings.attach_setting
+class sponsor_prompt(String, KeyValueData, Setting):
     attr_name = 'sponsor_prompt'
-    _default = "Type {prefix}sponsors to check our wonderful partners!"
+    _default = None
 
     write_ward = is_owner
 
@@ -30,11 +23,11 @@ class sponsor_prompt(String, ColumnData, Setting):
 
     _quote = False
 
-    _data_column = 'prompt_text'
-    _table_interface = sponsor_text
-    _id_column = 'ID'
-    _upsert = True
-    _create_row = True
+    _table_interface = app_config
+    _id_column = 'appid'
+    _key_column = 'key'
+    _value_column = 'value'
+    _key = 'sponsor_prompt'
 
     @classmethod
     def _data_to_value(cls, id, data, **kwargs):
@@ -44,8 +37,8 @@ class sponsor_prompt(String, ColumnData, Setting):
             return None
 
 
-@SponsorSettings.attach_setting
-class sponsor_message(Message, ColumnData, Setting):
+@AppSettings.attach_setting
+class sponsor_message(Message, KeyValueData, Setting):
     attr_name = 'sponsor_message'
     _default = '{"content": "Coming Soon!"}'
 
@@ -58,13 +51,10 @@ class sponsor_message(Message, ColumnData, Setting):
         "Message to reply with when a user runs the `sponsors` command."
     )
 
-    _data_column = 'command_response'
-    _table_interface = sponsor_text
-    _id_column = 'ID'
-    _upsert = True
-    _create_row = True
+    _table_interface = app_config
+    _id_column = 'appid'
+    _key_column = 'key'
+    _value_column = 'value'
+    _key = 'sponsor_message'
 
     _cmd_str = "{prefix}sponsors --edit"
-
-
-settings = SponsorSettings(0)
