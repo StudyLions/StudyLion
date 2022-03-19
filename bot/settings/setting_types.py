@@ -757,12 +757,17 @@ class Message(SettingType):
         if as_json:
             try:
                 args = json.loads(userstr)
-                if not isinstance(args, dict) or (not args.get('content', None) and not args.get('embed', None)):
-                    raise ValueError("At least one of the 'content' or 'embed' data fields are required.")
+                if not isinstance(args, dict) or (not {'content', 'embed', 'embeds'}.intersection(args.keys())):
+                    raise ValueError("At least one of the 'content', 'embed', or 'embeds' fields are required.")
                 if 'embed' in args:
                     discord.Embed.from_dict(
                         args['embed']
                     )
+                if 'embeds' in args:
+                    for embed in args['embeds']:
+                        discord.Embed.from_dict(
+                            embed
+                        )
             except Exception as e:
                 only_error = "".join(traceback.TracebackException.from_exception(e).format_exception_only())
                 raise UserInputError(
@@ -773,6 +778,8 @@ class Message(SettingType):
                 )
             if 'embed' in args and 'timestamp' in args['embed']:
                 args['embed'].pop('timestamp')
+            if 'embeds' in args:
+                [embed.pop('timestamp', None) for embed in args['embeds']]
             return json.dumps(args)
         else:
             return json.dumps({'content': userstr})
@@ -782,9 +789,9 @@ class Message(SettingType):
         if data is None:
             return "Empty"
         value = cls._data_to_value(id, data, **kwargs)
-        if 'embed' not in value and 'content' not in value:
+        if not {'embed', 'content', 'embeds'}.intersection(value.keys()):
             return "Invalid"
-        if 'embed' not in value and len(value['content']) < 100:
+        if 'content' in value and 'embed' not in value and 'embeds' not in value and len(value['content']) < 100:
             return "`{}`".format(value['content'])
         else:
             return "Too long to display here!"
@@ -808,6 +815,13 @@ class Message(SettingType):
             args['embed'] = discord.Embed.from_dict(
                 json.loads(multiple_replace(json.dumps(value['embed']), substitutions))
             )
+        if value.get('embeds', None):
+            args['embeds'] = [
+                discord.Embed.from_dict(
+                    json.loads(multiple_replace(json.dumps(embed), substitutions))
+                )
+                for embed in value['embeds']
+            ]
         return args
 
     async def widget(self, ctx, **kwargs):
@@ -820,7 +834,7 @@ class Message(SettingType):
         current_str = None
         preview = None
         file_content = None
-        if 'embed' in value or len(value['content']) > 1024:
+        if 'embed' in value or 'embeds' in value or len(value['content']) > 1024:
             current_str = "See attached file."
             file_content = json.dumps(value, indent=4)
         elif "`" in value['content']:
