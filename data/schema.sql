@@ -4,7 +4,7 @@ CREATE TABLE VersionHistory(
   time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
   author TEXT
 );
-INSERT INTO VersionHistory (version, author) VALUES (10, 'Initial Creation');
+INSERT INTO VersionHistory (version, author) VALUES (11, 'Initial Creation');
 
 
 CREATE OR REPLACE FUNCTION update_timestamp_column()
@@ -22,6 +22,13 @@ CREATE TABLE AppData(
   last_study_badge_scan TIMESTAMP 
 );
 
+CREATE TABLE AppConfig(
+  appid TEXT,
+  key TEXT,
+  value TEXT,
+  PRIMARY KEY(appid, key)
+);
+
 CREATE TABLE global_user_blacklist(
   userid BIGINT PRIMARY KEY,
   ownerid BIGINT NOT NULL,
@@ -36,7 +43,6 @@ CREATE TABLE global_guild_blacklist(
   created_at TIMESTAMPTZ DEFAULT now()
 );
 -- }}}
-
 
 -- User configuration data {{{
 CREATE TABLE user_config(
@@ -799,6 +805,20 @@ create TABLE topgg(
   boostedTimestamp TIMESTAMPTZ NOT NULL
 );
 CREATE INDEX topgg_userid_timestamp ON topgg (userid, boostedTimestamp);
+
+CREATE TABLE topgg_guild_whitelist(
+  appid TEXT,
+  guildid BIGINT,
+  PRIMARY KEY(appid, guildid)
+);
+-- }}}
+
+-- Sponsor Data {{{
+CREATE TABLE sponsor_guild_whitelist(
+  appid TEXT,
+  guildid BIGINT,
+  PRIMARY KEY(appid, guildid)
+);
 -- }}}
 
 -- vim: set fdm=marker:

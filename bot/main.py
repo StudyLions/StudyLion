@@ -4,6 +4,9 @@ from data import tables
 
 import core # noqa
 
+# Note: This MUST be imported after core, due to table definition orders
+from settings import AppSettings
+
 import modules  # noqa
 
 # Load and attach app specific data
@@ -14,6 +17,8 @@ else:
 client.appdata = core.data.meta.fetch_or_create(appname)
 
 client.data = tables
+
+client.settings = AppSettings(conf.bot['data_appid'])
 
 # Initialise all modules
 client.initialise_modules()
