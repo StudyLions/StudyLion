@@ -11,6 +11,9 @@ meta = RowTable(
     attach_as='meta',
 )
 
+# TODO: Consider converting to RowTable for per-shard config caching
+app_config = Table('AppConfig')
+
 
 user_config = RowTable(
     'user_config',

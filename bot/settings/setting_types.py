@@ -473,6 +473,64 @@ class Emoji(SettingType):
             return str(data)
 
 
+class GuildID(SettingType):
+    """
+    Integer type for storing Guild IDs. Stores any snowflake.
+
+    Types:
+        data: Optional[int]
+            The stored integer value.
+        value: Optional[int]
+            The stored integer value.
+    """
+    accepts = "Any snowflake id."
+
+    @classmethod
+    def _data_from_value(cls, id: int, value: Optional[bool], **kwargs):
+        """
+        Both data and value are of type Optional[int].
+        Directly return the provided value as data.
+        """
+        return value
+
+    @classmethod
+    def _data_to_value(cls, id: int, data: Optional[bool], **kwargs):
+        """
+        Both data and value are of type Optional[int].
+        Directly return the internal data as the value.
+        """
+        return data
+
+    @classmethod
+    async def _parse_userstr(cls, ctx: Context, id: int, userstr: str, **kwargs):
+        """
+        Relies on integer casting to convert the user string
+        """
+        if not userstr or userstr.lower() == "none":
+            return None
+
+        try:
+            num = int(userstr)
+        except Exception:
+            raise UserInputError("Couldn't parse provided guild id.") from None
+
+        return num
+
+    @classmethod
+    def _format_data(cls, id: int, data: Optional[int], **kwargs):
+        """
+        Return the string version of the data.
+        """
+        if data is None:
+            return None
+        elif (guild := client.get_guild(data)):
+            return f"`{data}` ({guild.name})"
+        elif (row := client.data.guild_config.fetch(data)):
+            return f"`{data}` ({row.name})"
+        else:
+            return f"`{data}`"
+
+
 class Timezone(SettingType):
     """
     Timezone type, storing a valid timezone string.
@@ -757,12 +815,17 @@ class Message(SettingType):
         if as_json:
             try:
                 args = json.loads(userstr)
-                if not isinstance(args, dict) or (not args.get('content', None) and not args.get('embed', None)):
-                    raise ValueError("At least one of the 'content' or 'embed' data fields are required.")
+                if not isinstance(args, dict) or (not {'content', 'embed', 'embeds'}.intersection(args.keys())):
+                    raise ValueError("At least one of the 'content', 'embed', or 'embeds' fields are required.")
                 if 'embed' in args:
                     discord.Embed.from_dict(
                         args['embed']
                     )
+                if 'embeds' in args:
+                    for embed in args['embeds']:
+                        discord.Embed.from_dict(
+                            embed
+                        )
             except Exception as e:
                 only_error = "".join(traceback.TracebackException.from_exception(e).format_exception_only())
                 raise UserInputError(
@@ -773,6 +836,8 @@ class Message(SettingType):
                 )
             if 'embed' in args and 'timestamp' in args['embed']:
                 args['embed'].pop('timestamp')
+            if 'embeds' in args:
+                [embed.pop('timestamp', None) for embed in args['embeds']]
             return json.dumps(args)
         else:
             return json.dumps({'content': userstr})
@@ -782,9 +847,9 @@ class Message(SettingType):
         if data is None:
             return "Empty"
         value = cls._data_to_value(id, data, **kwargs)
-        if 'embed' not in value and 'content' not in value:
+        if not {'embed', 'content', 'embeds'}.intersection(value.keys()):
             return "Invalid"
-        if 'embed' not in value and len(value['content']) < 100:
+        if 'content' in value and 'embed' not in value and 'embeds' not in value and len(value['content']) < 100:
             return "`{}`".format(value['content'])
         else:
             return "Too long to display here!"
@@ -808,6 +873,13 @@ class Message(SettingType):
             args['embed'] = discord.Embed.from_dict(
                 json.loads(multiple_replace(json.dumps(value['embed']), substitutions))
             )
+        if value.get('embeds', None):
+            args['embeds'] = [
+                discord.Embed.from_dict(
+                    json.loads(multiple_replace(json.dumps(embed), substitutions))
+                )
+                for embed in value['embeds']
+            ]
         return args
 
     async def widget(self, ctx, **kwargs):
@@ -820,7 +892,7 @@ class Message(SettingType):
         current_str = None
         preview = None
         file_content = None
-        if 'embed' in value or len(value['content']) > 1024:
+        if 'embed' in value or 'embeds' in value or len(value['content']) > 1024:
             current_str = "See attached file."
             file_content = json.dumps(value, indent=4)
         elif "`" in value['content']:
@@ -1032,3 +1104,16 @@ class StringList(SettingList):
         "Write `--add` or `--remove` to add or remove strings."
     )
     _setting = String
+
+
+class GuildIDList(SettingList):
+    """
+    List of guildids.
+    """
+    accepts = (
+        "Comma separated list of guild ids. Use `None` to unset. "
+        "Write `--add` or `--remove` to add or remove ids. "
+        "The provided ids are not verified in any way."
+    )
+
+    _setting = GuildID
