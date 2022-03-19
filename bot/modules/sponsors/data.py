@@ -1,4 +1,4 @@
 from data import Table
 
 
-sponsor_text = Table("sponsor_text")
+guild_whitelist = Table("sponsor_guild_whitelist")

@@ -807,13 +807,17 @@ create TABLE topgg(
 CREATE INDEX topgg_userid_timestamp ON topgg (userid, boostedTimestamp);
 
 CREATE TABLE topgg_guild_whitelist(
-  guildid INTEGER PRIMARY KEY
+  appid TEXT,
+  guildid BIGINT,
+  PRIMARY KEY(appid, guildid)
 );
 -- }}}
 
 -- Sponsor Data {{{
 CREATE TABLE sponsor_guild_whitelist(
-  guildid INTEGER PRIMARY KEY
+  appid TEXT,
+  guildid BIGINT,
+  PRIMARY KEY(appid, guildid)
 );
 -- }}}
 

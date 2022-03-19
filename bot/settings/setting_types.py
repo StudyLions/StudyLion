@@ -473,6 +473,64 @@ class Emoji(SettingType):
             return str(data)
 
 
+class GuildID(SettingType):
+    """
+    Integer type for storing Guild IDs. Stores any snowflake.
+
+    Types:
+        data: Optional[int]
+            The stored integer value.
+        value: Optional[int]
+            The stored integer value.
+    """
+    accepts = "Any snowflake id."
+
+    @classmethod
+    def _data_from_value(cls, id: int, value: Optional[bool], **kwargs):
+        """
+        Both data and value are of type Optional[int].
+        Directly return the provided value as data.
+        """
+        return value
+
+    @classmethod
+    def _data_to_value(cls, id: int, data: Optional[bool], **kwargs):
+        """
+        Both data and value are of type Optional[int].
+        Directly return the internal data as the value.
+        """
+        return data
+
+    @classmethod
+    async def _parse_userstr(cls, ctx: Context, id: int, userstr: str, **kwargs):
+        """
+        Relies on integer casting to convert the user string
+        """
+        if not userstr or userstr.lower() == "none":
+            return None
+
+        try:
+            num = int(userstr)
+        except Exception:
+            raise UserInputError("Couldn't parse provided guild id.") from None
+
+        return num
+
+    @classmethod
+    def _format_data(cls, id: int, data: Optional[int], **kwargs):
+        """
+        Return the string version of the data.
+        """
+        if data is None:
+            return None
+        elif (guild := client.get_guild(data)):
+            return f"`{data}` ({guild.name})"
+        elif (row := client.data.guild_config.fetch(data)):
+            return f"`{data}` ({row.name})"
+        else:
+            return f"`{data}`"
+
+
 class Timezone(SettingType):
     """
     Timezone type, storing a valid timezone string.
@@ -1046,3 +1104,16 @@ class StringList(SettingList):
         "Write `--add` or `--remove` to add or remove strings."
     )
     _setting = String
+
+
+class GuildIDList(SettingList):
+    """
+    List of guildids.
+    """
+    accepts = (
+        "Comma separated list of guild ids. Use `None` to unset. "
+        "Write `--add` or `--remove` to add or remove ids. "
+        "The provided ids are not verified in any way."
+    )
+
+    _setting = GuildID

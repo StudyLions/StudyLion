@@ -10,13 +10,17 @@ CREATE TABLE AppConfig(
 
 -- Sponsor Data {{{
 CREATE TABLE sponsor_guild_whitelist(
-  guildid INTEGER PRIMARY KEY
+  appid TEXT,
+  guildid BIGINT,
+  PRIMARY KEY(appid, guildid)
 );
 -- }}}
 
 -- Topgg Data {{{
 CREATE TABLE topgg_guild_whitelist(
-  guildid INTEGER PRIMARY KEY
+  appid TEXT,
+  guildid BIGINT,
+  PRIMARY KEY(appid, guildid)
 );
 -- }}}
 
