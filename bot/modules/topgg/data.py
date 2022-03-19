@@ -1,4 +1,4 @@
-from data.interfaces import RowTable
+from data.interfaces import RowTable, Table
 
 topggvotes = RowTable(
     'topgg',
@@ -6,3 +6,4 @@ topggvotes = RowTable(
     'voteid'
 )
 
+guild_whitelist = Table('topgg_guild_whitelist')
