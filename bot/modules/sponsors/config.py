@@ -15,6 +15,7 @@ class sponsor_prompt(String, KeyValueData, Setting):
     write_ward = is_owner
 
     display_name = 'sponsor_prompt'
+    category = 'Sponsors'
     desc = "Text to send after core commands to encourage checking `sponsors`."
     long_desc = (
         "Text posted after several commands to encourage users to check the `sponsors` command. "
@@ -45,6 +46,7 @@ class sponsor_message(Message, KeyValueData, Setting):
     write_ward = is_owner
 
     display_name = 'sponsor_message'
+    category = 'Sponsors'
     desc = "`sponsors` command response."
 
     long_desc = (
