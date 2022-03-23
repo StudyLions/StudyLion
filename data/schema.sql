@@ -802,4 +802,18 @@ create TABLE topgg(
 CREATE INDEX topgg_userid_timestamp ON topgg (userid, boostedTimestamp);
 -- }}}
 
+-- LionGem audit log {{{
+CREATE TABLE gem_transactions(
+  transactionid SERIAL PRIMARY KEY,
+  actorid BIGINT NOT NULL,
+  targetid BIGINT NOT NULL,
+  amount INTEGER NOT NULL,
+  total INTEGER NOT NULL,
+  reason TEXT NOT NULL,
+  note TEXT,
+  gift BOOLEAN DEFAULT FALSE,
+  _timestamp TIMESTAMPTZ DEFAULT now()
+);
+-- }}}
+
 -- vim: set fdm=marker:
