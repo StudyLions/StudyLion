@@ -1,3 +1,4 @@
+import json
 import discord
 from cmdClient.cmdClient import cmdClient
 from cmdClient.lib import SafeCancellation
@@ -201,13 +202,13 @@ class Setting:
         raise NotImplementedError
 
     @classmethod
-    async def command(cls, ctx, id):
+    async def command(cls, ctx, id, flags=()):
         """
         Standardised command viewing/setting interface for the setting.
         """
-        if not ctx.args:
+        if not ctx.args and not ctx.msg.attachments:
             # View config embed for provided cls
-            await ctx.reply(embed=cls.get(id).embed)
+            await cls.get(id).widget(ctx, flags=flags)
         else:
             # Check the write ward
             if cls.write_ward and not await cls.write_ward.run(ctx):
@@ -457,6 +458,56 @@ class ListData:
 
             if cls._cache is not None:
                 cls._cache[id] = data
+
+
+class KeyValueData:
+    """
+    Mixin for settings implemented in a Key-Value table.
+    The underlying table should have a Unique constraint on the `(_id_column, _key_column)` pair.
+    """
+    _table_interface: Table = None
+
+    _id_column: str = None
+
+    _key_column: str = None
+
+    _value_column: str = None
+
+    _key: str = None
+
+    @classmethod
+    def _reader(cls, id: ..., **kwargs):
+        params = {
+            "select_columns": (cls._value_column, ),
+            cls._id_column: id,
+            cls._key_column: cls._key
+        }
+
+        row = cls._table_interface.select_one_where(**params)
+        data = row[cls._value_column] if row else None
+
+        if data is not None:
+            data = json.loads(data)
+
+        return data
+
+    @classmethod
+    def _writer(cls, id: ..., data: ..., **kwargs):
+        params = {
+            cls._id_column: id,
+            cls._key_column: cls._key
+        }
+        if data is not None:
+            values = {
+                cls._value_column: json.dumps(data)
+            }
+            cls._table_interface.upsert(
+                constraint=f"{cls._id_column}, {cls._key_column}",
+                **params,
+                **values
+            )
+        else:
+            cls._table_interface.delete_where(**params)
 
 
 class UserInputError(SafeCancellation):

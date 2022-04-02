@@ -1,10 +1,14 @@
-from settings.user_settings import UserSettings, UserSetting
-from settings.setting_types import Boolean
+from cmdClient.checks import is_owner
+
+from settings import UserSettings, UserSetting, AppSettings
+from settings.base import ListData, Setting
+from settings.setting_types import Boolean, GuildIDList
 
 from modules.reminders.reminder import Reminder
 from modules.reminders.data import reminders
 
 from .utils import create_remainder, remainder_content, topgg_upvote_link
+from .data import guild_whitelist
 
 
 @UserSettings.attach_setting
@@ -48,3 +52,21 @@ class topgg_vote_remainder(Boolean, UserSetting):
             return (
                 "I will no longer send you voting reminders."
             )
+
+
+@AppSettings.attach_setting
+class topgg_guild_whitelist(GuildIDList, ListData, Setting):
+    attr_name = 'topgg_guild_whitelist'
+    write_ward = is_owner
+
+    category = 'Topgg Voting'
+    display_name = 'topgg_hidden_in'
+    desc = "Guilds where the topgg vote prompt is not displayed."
+    long_desc = (
+        "A list of guilds where the topgg vote prompt will be hidden."
+    )
+
+    _table_interface = guild_whitelist
+    _id_column = 'appid'
+    _data_column = 'guildid'
+    _force_unique = True

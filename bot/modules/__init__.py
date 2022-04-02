@@ -13,3 +13,4 @@ from .renting import *
 from .moderation import *
 from .accountability import *
 from .plugins import *
+from .sponsors import *
