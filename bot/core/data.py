@@ -123,19 +123,6 @@ def get_member_rank(guildid, userid, untracked):
             return curs.fetchone() or (None, None)
 
 
-@user_config.save_query
-def set_gems(userid, amount):
-    with user_config.conn as conn:
-        cursor = conn.cursor()
-        cursor.execute(
-            "UPDATE user_config SET gems = %s WHERE userid = %s RETURNING *",
-            (amount, userid)
-        )
-        data = cursor.fetchone()
-        if data:
-            return user_config._make_rows(data)[0]
-
-
 global_guild_blacklist = Table('global_guild_blacklist')
 global_user_blacklist = Table('global_user_blacklist')
 ignored_members = Table('ignored_members')

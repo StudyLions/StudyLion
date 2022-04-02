@@ -4,7 +4,7 @@ CREATE TABLE VersionHistory(
   time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
   author TEXT
 );
-INSERT INTO VersionHistory (version, author) VALUES (11, 'Initial Creation');
+INSERT INTO VersionHistory (version, author) VALUES (12, 'Initial Creation');
 
 
 CREATE OR REPLACE FUNCTION update_timestamp_column()
@@ -823,17 +823,26 @@ CREATE TABLE sponsor_guild_whitelist(
 -- }}}
 
 -- LionGem audit log {{{
+CREATE TYPE GemTransactionType AS ENUM (
+  'ADMIN',
+  'GIFT',
+  'PURCHASE',
+  'AUTOMATIC'
+);
+
 CREATE TABLE gem_transactions(
   transactionid SERIAL PRIMARY KEY,
+  transaction_type GemTransactionType NOT NULL,
   actorid BIGINT NOT NULL,
-  targetid BIGINT NOT NULL,
+  from_account BIGINT,
+  to_account BIGINT,
   amount INTEGER NOT NULL,
-  total INTEGER NOT NULL,
-  reason TEXT NOT NULL,
+  description TEXT NOT NULL,
   note TEXT,
-  gift BOOLEAN DEFAULT FALSE,
+  reference TEXT,
   _timestamp TIMESTAMPTZ DEFAULT now()
 );
+CREATE INDEX gem_transactions_from ON gem_transactions (from_account);
 -- }}}
 
 -- vim: set fdm=marker:
