@@ -29,6 +29,10 @@ Best of luck with your studies!
 
 @client.add_after_event('guild_join', priority=0)
 async def post_join_message(client: cmdClient, guild: discord.Guild):
+    try:
+        await guild.me.edit(nick="Leo")
+    except discord.HTTPException:
+        pass
     if (channel := guild.system_channel) and channel.permissions_for(guild.me).embed_links:
         embed = discord.Embed(
             description=message
