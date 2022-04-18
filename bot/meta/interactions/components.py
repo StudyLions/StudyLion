@@ -4,40 +4,11 @@ import uuid
 from .enums import ButtonStyle, InteractionType
 
 
-"""
-Notes:
-    When interaction is sent, add message info
-    Add wait_for to Button and SelectMenu
-    wait_for_interaction for generic
-    listen=True for the listenables, register with a listener
-    Need a deregister then as well
-
-    send(..., components=[ActionRow(Button(...))])
-
-    Automatically ack interaction? DEFERRED_UPDATE_MESSAGE
-
-    async def Button.wait_for(timeout=None, ack=False)
-        Blocks until the button is pressed. Returns a ButtonPress (Interaction).
-    def MessageComponent.add_callback(timeout)
-        Adds an async callback function to the Component.
-
-    Construct the response independent of the original component.
-    Original component has a convenience wait_for that runs wait_for_interaction(custom_id=self.custom_id)...
-    The callback? Just add a wait_for
-"""
-
-
 class MessageComponent:
     _type = None
 
     def __init_(self, *args, **kwargs):
         self.message = None
-
-    def listen(self):
-        ...
-
-    def close(self):
-        ...
 
 
 class ActionRow(MessageComponent):
@@ -54,7 +25,37 @@ class ActionRow(MessageComponent):
         return data
 
 
-class Button(MessageComponent):
+class AwaitableComponent:
+    async def wait_for(self, timeout=None, check=None):
+        from meta import client
+
+        def _check(interaction):
+            valid = True
+            print(interaction.custom_id)
+            valid = valid and interaction.interaction_type == InteractionType.MESSAGE_COMPONENT
+            valid = valid and interaction.custom_id == self.custom_id
+            valid = valid and (check is None or check(interaction))
+            return valid
+
+        return await client.wait_for('interaction_create', timeout=timeout, check=_check)
+
+    def add_callback(self, timeout=None, repeat=True, pass_args=(), pass_kwargs={}):
+        def wrapper(func):
+            async def wrapped():
+                while True:
+                    try:
+                        button_press = await self.wait_for(timeout=timeout)
+                    except asyncio.TimeoutError:
+                        break
+                    asyncio.create_task(func(button_press, *pass_args, **pass_kwargs))
+                    if not repeat:
+                        break
+            future = asyncio.create_task(wrapped())
+            return future
+        return wrapper
+
+
+class Button(MessageComponent, AwaitableComponent):
     _type = 2
 
     def __init__(self, label, style=ButtonStyle.PRIMARY, custom_id=None, url=None, emoji=None, disabled=False):
@@ -63,7 +64,7 @@ class Button(MessageComponent):
                 raise ValueError("Link buttons must have a url")
             custom_id = None
         elif custom_id is None:
-            custom_id = uuid.uuid4()
+            custom_id = str(uuid.uuid4())
 
         self.label = label
         self.style = style
@@ -88,38 +89,52 @@ class Button(MessageComponent):
             data['emoji'] = self.emoji.to_dict()
         return data
 
-    async def wait_for_press(self, timeout=None, check=None):
-        from meta import client
 
-        def _check(interaction):
-            valid = True
-            print(interaction.custom_id)
-            valid = valid and interaction.interaction_type == InteractionType.MESSAGE_COMPONENT
-            valid = valid and interaction.custom_id == self.custom_id
-            valid = valid and (check is None or check(interaction))
-            return valid
+class SelectOption:
+    def __init__(self, label, value, description, emoji=None, default=False):
+        self.label = label
+        self.value = value
+        self.description = description
+        self.emoji = emoji
+        self.default = default
 
-        return await client.wait_for('interaction_create', timeout=timeout, check=_check)
+    def to_dict(self):
+        data = {
+            "label": self.label,
+            "value": self.value,
+            "description": self.description,
+        }
+        if self.emoji:
+            data['emoji'] = self.emoji.to_dict()
+        if self.default:
+            data['default'] = self.default
 
-    def on_press(self, timeout=None, repeat=True, pass_args=(), pass_kwargs={}):
-        def wrapper(func):
-            async def wrapped():
-                while True:
-                    try:
-                        button_press = await self.wait_for_press(timeout=timeout)
-                    except asyncio.TimeoutError:
-                        break
-                    asyncio.create_task(func(button_press, *pass_args, **pass_kwargs))
-                    if not repeat:
-                        break
-            future = asyncio.create_task(wrapped())
-            return future
-        return wrapper
+        return data
 
 
-class SelectMenu(MessageComponent):
+class SelectMenu(MessageComponent, AwaitableComponent):
     _type = 3
 
+    def __init__(self, *options, custom_id=None, placeholder=None, min_values=None, max_values=None, disabled=False):
+        self.options = options
+        self.custom_id = custom_id or str(uuid.uuid4())
+        self.placeholder = placeholder
+        self.min_values = min_values
+        self.max_values = max_values
+        self.disabled = disabled
 
-# MessageComponent listener
-live_components = {}
+    def to_dict(self):
+        data = {
+            "type": self._type,
+            'custom_id': self.custom_id,
+            'options': [option.to_dict() for option in self.options],
+        }
+        if self.placeholder:
+            data['placeholder'] = self.placeholder
+        if self.min_values:
+            data['min_values'] = self.min_values
+        if self.max_values:
+            data['max_values'] = self.max_values
+        if self.disabled:
+            data['disabled'] = self.disabled
+        return data

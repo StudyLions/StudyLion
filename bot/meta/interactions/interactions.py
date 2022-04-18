@@ -43,10 +43,20 @@ class ButtonPress(ComponentInteraction):
     __slots__ = ()
 
 
+class Selection(ComponentInteraction):
+    __slots__ = ('values',)
+
+    def _from_data(self, data):
+        super()._from_data(data)
+        self.values = data['data']['values']
+
+
 def _component_interaction_factory(data):
     component_type = data['data']['component_type']
 
     if component_type == ComponentType.BUTTON:
         return ButtonPress
+    elif component_type == ComponentType.SELECTMENU:
+        return Selection
     else:
         return None
