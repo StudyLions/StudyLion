@@ -1,6 +1,7 @@
 from discord import Intents
 from cmdClient.cmdClient import cmdClient
 
+from . import patches
 from .config import conf
 from .sharding import shard_number, shard_count
 from LionContext import LionContext
