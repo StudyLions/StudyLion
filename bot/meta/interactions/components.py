@@ -1,14 +1,22 @@
 import asyncio
 import uuid
+import json
 
 from .enums import ButtonStyle, InteractionType
 
 
 class MessageComponent:
     _type = None
+    interaction_type = InteractionType.MESSAGE_COMPONENT
 
     def __init_(self, *args, **kwargs):
         self.message = None
+
+    def to_dict(self):
+        raise NotImplementedError
+
+    def to_json(self):
+        return json.dumps(self.to_dict())
 
 
 class ActionRow(MessageComponent):
@@ -26,13 +34,15 @@ class ActionRow(MessageComponent):
 
 
 class AwaitableComponent:
+    interaction_type: InteractionType = None
+
     async def wait_for(self, timeout=None, check=None):
         from meta import client
 
         def _check(interaction):
             valid = True
             print(interaction.custom_id)
-            valid = valid and interaction.interaction_type == InteractionType.MESSAGE_COMPONENT
+            valid = valid and interaction.interaction_type == self.interaction_type
             valid = valid and interaction.custom_id == self.custom_id
             valid = valid and (check is None or check(interaction))
             return valid

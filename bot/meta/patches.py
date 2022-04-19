@@ -3,17 +3,27 @@ Temporary patches for the discord.py library to support new features of the disc
 """
 import logging
 
+from json import JSONEncoder
+
 from discord.state import ConnectionState
 from discord.http import Route, HTTPClient
 from discord.abc import Messageable
-from discord.utils import InvalidArgument, _get_as_snowflake
+from discord.utils import InvalidArgument, _get_as_snowflake, to_json
 from discord import File, AllowedMentions, Member, User, Message
 
-from .interactions import _component_interaction_factory
+from .interactions import _component_interaction_factory, ModalResponse
 from .interactions.enums import InteractionType
 
 
 log = logging.getLogger(__name__)
+
+
+def _default(self, obj):
+    return getattr(obj.__class__, "to_json", _default.default)(obj)
+
+
+_default.default = JSONEncoder().default
+JSONEncoder.default = _default
 
 
 def send_message(self, channel_id, content, *, tts=False, embeds=None,
@@ -39,10 +49,57 @@ def send_message(self, channel_id, content, *, tts=False, embeds=None,
     if message_reference:
         payload['message_reference'] = message_reference
 
-    if components is not None:
+    if components:
         payload['components'] = components
 
     return self.request(r, json=payload)
+
+
+def send_files(
+    self,
+    channel_id, *,
+    files,
+    content=None, tts=False, embed=None, embeds=None, nonce=None, allowed_mentions=None, message_reference=None,
+    components=None
+):
+    r = Route('POST', '/channels/{channel_id}/messages', channel_id=channel_id)
+    form = []
+
+    payload = {'tts': tts}
+    if content:
+        payload['content'] = content
+    if embed:
+        payload['embed'] = embed
+    if embeds:
+        payload['embeds'] = embeds
+    if nonce:
+        payload['nonce'] = nonce
+    if allowed_mentions:
+        payload['allowed_mentions'] = allowed_mentions
+    if message_reference:
+        payload['message_reference'] = message_reference
+    if components:
+        payload['components'] = components
+
+    form.append({'name': 'payload_json', 'value': to_json(payload)})
+    if len(files) == 1:
+        file = files[0]
+        form.append({
+            'name': 'file',
+            'value': file.fp,
+            'filename': file.filename,
+            'content_type': 'application/octet-stream'
+        })
+    else:
+        for index, file in enumerate(files):
+            form.append({
+                'name': 'file%s' % index,
+                'value': file.fp,
+                'filename': file.filename,
+                'content_type': 'application/octet-stream'
+            })
+
+    return self.request(r, form=form, files=files)
 
 
 def interaction_callback(self, interaction_id, interaction_token, callback_type, callback_data=None):
@@ -62,7 +119,16 @@ def interaction_callback(self, interaction_id, interaction_token, callback_type,
     return self.request(r, json=payload)
 
 
+def edit_message(self, channel_id, message_id, components=None, **fields):
+    r = Route('PATCH', '/channels/{channel_id}/messages/{message_id}', channel_id=channel_id, message_id=message_id)
+    if components is not None:
+        fields['components'] = [comp.to_dict() for comp in components]
+    return self.request(r, json=fields)
+
+
+HTTPClient.send_files = send_files
 HTTPClient.send_message = send_message
+HTTPClient.edit_message = edit_message
 HTTPClient.interaction_callback = interaction_callback
 
 
@@ -114,7 +180,7 @@ async def send(self, content=None, *, tts=False, embed=None, embeds=None, file=N
         try:
             data = await state.http.send_files(channel.id, files=[file], allowed_mentions=allowed_mentions,
                                                content=content, tts=tts, embed=embed, nonce=nonce,
-                                               message_reference=reference)
+                                               message_reference=reference, components=components)
         finally:
             file.close()
 
@@ -126,8 +192,8 @@ async def send(self, content=None, *, tts=False, embed=None, embeds=None, file=N
 
         try:
             data = await state.http.send_files(channel.id, files=files, content=content, tts=tts,
-                                               embed=embed, nonce=nonce, allowed_mentions=allowed_mentions,
-                                               message_reference=reference)
+                                               embeds=embeds, nonce=nonce, allowed_mentions=allowed_mentions,
+                                               message_reference=reference, components=components)
         finally:
             for f in files:
                 f.close()
@@ -181,8 +247,11 @@ def parse_interaction_create(self, data):
                 'INTERACTION_CREATE recieved unhandled message component interaction type: %s',
                 data['data']['component_type']
             )
+    elif data['type'] == InteractionType.MODAL_SUBMIT:
+        interaction = ModalResponse(message, user, data, self)
     else:
         log.debug('INTERACTION_CREATE recieved unhandled interaction type: %s', data['type'])
+        log.debug(data)
         interaction = None
 
     if interaction:
