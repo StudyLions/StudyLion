@@ -41,7 +41,6 @@ class AwaitableComponent:
 
         def _check(interaction):
             valid = True
-            print(interaction.custom_id)
             valid = valid and interaction.interaction_type == self.interaction_type
             valid = valid and interaction.custom_id == self.custom_id
             valid = valid and (check is None or check(interaction))

@@ -9,6 +9,27 @@ class Interaction:
         '_state'
     )
 
+    async def response(self, content=None, embeds=None, components=None, ephemeral=None):
+        data = {}
+        if content is not None:
+            data['content'] = str(content)
+
+        if embeds is not None:
+            data['embeds'] = [embed.to_dict() for embed in embeds]
+
+        if components is not None:
+            data['components'] = [component.to_dict() for component in components]
+
+        if ephemeral is not None:
+            data['flags'] = 1 << 6
+
+        return await self._state.http.interaction_callback(
+            self.id,
+            self.token,
+            InteractionCallback.CHANNEL_MESSAGE_WITH_SOURCE,
+            data
+        )
+
     async def response_deferred(self):
         return await self._state.http.interaction_callback(
             self.id,
