@@ -21,26 +21,27 @@ group_hints = {
     'Personal Settings': "*Tell me about yourself!*",
     'Guild Admin': "*Dangerous administration commands!*",
     'Guild Configuration': "*Control how I behave in your server.*",
-    'Meta': "*Information about me!*"
+    'Meta': "*Information about me!*",
+    'Premium': "*Support the team and keep the project alive by using LionGems!*"
 }
 
 standard_group_order = (
-    ('Pomodoro', 'Productivity', 'Statistics', 'Economy', 'Personal Settings', 'Meta'),
+    ('Pomodoro', 'Productivity', 'Premium', 'Statistics', 'Economy', 'Personal Settings', 'Meta'),
 )
 
 mod_group_order = (
     ('Moderation', 'Meta'),
-    ('Pomodoro', 'Productivity', 'Statistics', 'Economy', 'Personal Settings')
+    ('Pomodoro', 'Productivity', 'Premium', 'Statistics', 'Economy', 'Personal Settings')
 )
 
 admin_group_order = (
     ('Guild Admin', 'Guild Configuration', 'Moderation', 'Meta'),
-    ('Pomodoro', 'Productivity', 'Statistics', 'Economy', 'Personal Settings')
+    ('Pomodoro', 'Productivity', 'Premium', 'Statistics', 'Economy', 'Personal Settings')
 )
 
 bot_admin_group_order = (
     ('Bot Admin', 'Guild Admin', 'Guild Configuration', 'Moderation', 'Meta'),
-    ('Pomodoro', 'Productivity', 'Statistics', 'Economy', 'Personal Settings')
+    ('Pomodoro', 'Productivity', 'Premium', 'Statistics', 'Economy', 'Personal Settings')
 )
 
 # Help embed format

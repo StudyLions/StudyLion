@@ -149,7 +149,7 @@ class Row:
             self._pending = None
 
     def _refresh(self):
-        row = self.table.select_one_where(self.table.dict_from_id(self.rowid))
+        row = self.table.select_one_where(**self.table.dict_from_id(self.rowid))
         if not row:
             raise ValueError("Refreshing a {} which no longer exists!".format(type(self).__name__))
         self.data = row
