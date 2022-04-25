@@ -229,13 +229,16 @@ def parse_interaction_create(self, data):
         # Assume user
         user = self.get_user(_get_as_snowflake(data['user'], 'id')) or User(data=data['user'], state=self)
 
-    message = self._get_message(_get_as_snowflake(data['message'], 'id'))
-    if not message:
-        message_data = data['message']
-        channel, _ = self._get_guild_channel(message_data)
-        message = Message(data=message_data, channel=channel, state=self)
-        if self._messages is not None:
-            self._messages.append(message)
+    if 'message' in data:
+        message = self._get_message(_get_as_snowflake(data['message'], 'id'))
+        if not message:
+            message_data = data['message']
+            channel, _ = self._get_guild_channel(message_data)
+            message = Message(data=message_data, channel=channel, state=self)
+            if self._messages is not None:
+                self._messages.append(message)
+    else:
+        message = None
 
     interaction = None
     if data['type'] == InteractionType.MESSAGE_COMPONENT:
