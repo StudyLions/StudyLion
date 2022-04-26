@@ -9,10 +9,14 @@ class Interaction:
         '_state'
     )
 
-    async def response(self, content=None, embeds=None, components=None, ephemeral=None):
+    async def response(self, content=None, embed=None, embeds=None, components=None, ephemeral=None):
         data = {}
         if content is not None:
             data['content'] = str(content)
+
+        if embed is not None:
+            embeds = embeds or []
+            embeds.append(embed)
 
         if embeds is not None:
             data['embeds'] = [embed.to_dict() for embed in embeds]
@@ -27,6 +31,28 @@ class Interaction:
             self.id,
             self.token,
             InteractionCallback.CHANNEL_MESSAGE_WITH_SOURCE,
+            data
+        )
+
+    async def response_update(self,  content=None, embed=None, embeds=None, components=None):
+        data = {}
+        if content is not None:
+            data['content'] = str(content)
+
+        if embed is not None:
+            embeds = embeds or []
+            embeds.append(embed)
+
+        if embeds is not None:
+            data['embeds'] = [embed.to_dict() for embed in embeds]
+
+        if components is not None:
+            data['components'] = [component.to_dict() for component in components]
+
+        return await self._state.http.interaction_callback(
+            self.id,
+            self.token,
+            InteractionCallback.UPDATE_MESSAGE,
             data
         )
 
