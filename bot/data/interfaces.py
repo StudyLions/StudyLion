@@ -95,6 +95,7 @@ class Table:
         Decorator to add a saved query to the table.
         """
         self.queries[func.__name__] = func
+        return func
 
 
 class Row:
