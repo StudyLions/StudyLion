@@ -878,7 +878,7 @@ CREATE VIEW customised_skin_data AS
     skins.custom_skin_id AS custom_skin_id,
     skins.base_skin_id AS base_skin_id,
     properties.property_id AS property_id,
-    properties.card_id AS card_id,
+    prop_ids.card_id AS card_id,
     prop_ids.property_name AS property_name,
     properties.value AS value
   FROM
