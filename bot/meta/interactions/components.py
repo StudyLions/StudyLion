@@ -48,12 +48,12 @@ class AwaitableComponent:
 
         return await client.wait_for('interaction_create', timeout=timeout, check=_check)
 
-    def add_callback(self, timeout=None, repeat=True, pass_args=(), pass_kwargs={}):
+    def add_callback(self, timeout=None, repeat=True, check=None, pass_args=(), pass_kwargs={}):
         def wrapper(func):
             async def wrapped():
                 while True:
                     try:
-                        button_press = await self.wait_for(timeout=timeout)
+                        button_press = await self.wait_for(timeout=timeout, check=check)
                     except asyncio.TimeoutError:
                         break
                     asyncio.create_task(func(button_press, *pass_args, **pass_kwargs))
