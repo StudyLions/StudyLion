@@ -1,4 +1,5 @@
 import asyncio
+import logging
 from datetime import datetime, timedelta
 
 
@@ -18,15 +19,15 @@ class InteractionManager:
         self.cleaned_up = asyncio.Event()
 
     async def _timeout_loop(self):
-        diff = self.expires_at - datetime.now()
+        diff = (self.expires_at - datetime.now()).total_seconds()
         while True:
             try:
                 await asyncio.sleep(diff)
             except asyncio.CancelledError:
                 break
-            diff = self.expires_at - datetime.now()
+            diff = (self.expires_at - datetime.now()).total_seconds()
             if diff <= 0:
-                asyncio.create_task(self.timeout())
+                asyncio.create_task(self.run_timeout())
                 break
 
     def extend_timeout(self):
@@ -45,7 +46,9 @@ class InteractionManager:
     async def __aenter__(self):
         if self.timeout is not None:
             self.expires_at = datetime.now() + timedelta(seconds=self.timeout)
-            self.self_futures.append(asyncio.create_task(self._timeout_loop()))
+            self.self_futures.append(
+                asyncio.create_task(self._timeout_loop())
+            )
         return self
 
     async def __aexit__(self, *args):
@@ -64,7 +67,10 @@ class InteractionManager:
         return func
 
     async def cleanup(self, **kwargs):
-        await self.cleanup_function(self, **kwargs)
+        try:
+            await self.cleanup_function(self, **kwargs)
+        except Exception:
+            logging.debug("An error occurred while cleaning up the InteractionManager", exc_info=True)
 
     async def _timeout(self, manager, **kwargs):
         await self.cleanup(timeout=True, **kwargs)
@@ -73,14 +79,20 @@ class InteractionManager:
         self.timeout_function = func
         return func
 
-    async def timeout(self):
-        await self.timeout_function(self)
+    async def run_timeout(self):
+        try:
+            await self.timeout_function(self)
+        except Exception:
+            logging.debug("An error occurred while timing out the InteractionManager", exc_info=True)
 
     async def close(self, **kwargs):
         """
         Request closure of the manager.
         """
-        await self.close_function(self, **kwargs)
+        try:
+            await self.close_function(self, **kwargs)
+        except Exception:
+            logging.debug("An error occurred while closing the InteractionManager", exc_info=True)
 
     def on_close(self, func):
         self.close_function = func
