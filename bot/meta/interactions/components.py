@@ -96,6 +96,8 @@ class Button(MessageComponent, AwaitableComponent):
         if self.emoji is not None:
             # TODO: This only supports PartialEmoji, not Emoji
             data['emoji'] = self.emoji.to_dict()
+        if self.disabled:
+            data['disabled'] = self.disabled
         return data
 
 
