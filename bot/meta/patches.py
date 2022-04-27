@@ -119,6 +119,30 @@ def interaction_callback(self, interaction_id, interaction_token, callback_type,
     return self.request(r, json=payload)
 
 
+def interaction_edit(self, application_id, interaction_token, content=None, embed=None, embeds=None, components=None):
+    r = Route(
+        'PATCH',
+        '/webhooks/{application_id}/{interaction_token}/messages/@original',
+        application_id=application_id,
+        interaction_token=interaction_token
+    )
+    payload = {}
+    if content is not None:
+        payload['content'] = str(content)
+
+    if embed is not None:
+        embeds = embeds or []
+        embeds.append(embed)
+
+    if embeds is not None:
+        payload['embeds'] = [embed.to_dict() for embed in embeds]
+
+    if components is not None:
+        payload['components'] = [component.to_dict() for component in components]
+
+    return self.request(r, json=payload)
+
+
 def edit_message(self, channel_id, message_id, components=None, **fields):
     r = Route('PATCH', '/channels/{channel_id}/messages/{message_id}', channel_id=channel_id, message_id=message_id)
     if components is not None:
@@ -130,6 +154,7 @@ HTTPClient.send_files = send_files
 HTTPClient.send_message = send_message
 HTTPClient.edit_message = edit_message
 HTTPClient.interaction_callback = interaction_callback
+HTTPClient.interaction_edit = interaction_edit
 
 
 async def send(self, content=None, *, tts=False, embed=None, embeds=None, file=None,
