@@ -22,8 +22,6 @@ This bot was founder by [Ari Horesh](https://www.youtube.com/arihoresh) (Ari Hor
 
 ### Self Hosting
 
-We offer private instances based on availablity (a private bot for your community) to server owners who want their own branding (logo, color scheme, private and seperate database, better response-rate, and customizability to the text itself). 
-If you are intrested, contact the founder at contact@arihoresh.com . 
 
 You can self-host and fork the bot using the following steps, but beware that this version **does not include** our visual graphical user interface, which is only include in the custom private instances or our the public instance.
 
@@ -37,7 +35,6 @@ Follow the steps below to self-host the bot.
 We do not offer support for self-hosted bots, the code is provided as is without warranty of any kind. 
 
 ## Features
-
 
 - **Students Cards and Statistics**
 
