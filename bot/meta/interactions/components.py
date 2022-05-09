@@ -134,6 +134,22 @@ class SelectMenu(MessageComponent, AwaitableComponent):
         self.max_values = max_values
         self.disabled = disabled
 
+    def set_default(self, value=None, index=None):
+        """
+        Convenience method to set the default option.
+        """
+        if index is not None and value is not None:
+            raise ValueError("Both index and value were supplied for the default.")
+        if index is not None:
+            for i, option in enumerate(self.options):
+                option.default = (i == index)
+        elif value is not None:
+            for option in self.options:
+                option.default = (option.value == value)
+        else:
+            for option in self.options:
+                option.default = False
+
     def to_dict(self):
         data = {
             "type": self._type,
