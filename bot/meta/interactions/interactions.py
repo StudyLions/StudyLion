@@ -109,6 +109,15 @@ class Selection(ComponentInteraction):
         super()._from_data(data)
         self.values = data['data']['values']
 
+    @property
+    def value(self):
+        if len(self.values) > 1:
+            raise ValueError("Cannot use 'value' property on multi-selection.")
+        elif len(self.values) == 1:
+            return self.values[0]
+        else:
+            return None
+
 
 class ModalResponse(Interaction):
     __slots__ = (
