@@ -104,3 +104,11 @@ class InteractionManager:
     def add_future(self, future):
         self.futures.append(future)
         return future
+
+    def register(self, component, callback, *args, **kwargs):
+        """
+        Attaches the given awaitable interaction and adds the given callback.
+        """
+        future = component.add_callback(*args, **kwargs)(callback)
+        self.add_future(future)
+        return component
