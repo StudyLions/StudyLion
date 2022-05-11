@@ -910,13 +910,19 @@ CREATE VIEW user_active_skins AS
 -- Premium Guild Data {{{
 CREATE TABLE premium_guilds(
   guildid BIGINT PRIMARY KEY REFERENCES guild_config,
-  premium_since TIMESTAMPTZ NOT NULL,
-  premium_until TIMESTAMPTZ NOT NULL,
+  premium_since TIMESTAMPTZ NOT NULL DEFAULT now(),
+  premium_until TIMESTAMPTZ NOT NULL DEFAULT now(),
   custom_skin_id INTEGER REFERENCES customised_skins
 );
 
 -- Contributions members have made to guild premium funds
 CREATE TABLE premium_guild_contributions(
+  contributionid SERIAL PRIMARY KEY,
+  userid BIGINT NOT NULL REFERENCES user_config,
+  guildid BIGINT NOT NULL REFERENCES premium_guilds,
+  transactionid INTEGER REFERENCES gem_transactions,
+  duration INTEGER NOT NULL,
+  _timestamp TIMESTAMPTZ DEFAULT now()
 );
 -- }}}
 
