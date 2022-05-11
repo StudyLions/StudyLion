@@ -47,6 +47,8 @@ async def topgg_reply_wrapper(func, ctx: LionContext, *args, suggest_vote=True, 
         pass
     elif ctx.guild and ctx.guild.id in ctx.client.settings.topgg_guild_whitelist.value:
         pass
+    elif ctx.guild and ctx.client.data.premium_guilds.queries.fetch_guild(ctx.guild.id):
+        pass
     elif not get_last_voted_timestamp(ctx.author.id):
         upvote_info_formatted = upvote_info.format(lion_yayemote, ctx.best_prefix, lion_loveemote)
 

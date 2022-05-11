@@ -16,7 +16,13 @@ sponsored_commands = {'profile', 'stats', 'weekly', 'monthly'}
 async def sponsor_reply_wrapper(func, ctx: LionContext, *args, **kwargs):
     if ctx.cmd and ctx.cmd.name in sponsored_commands:
         if (prompt := ctx.client.settings.sponsor_prompt.value):
-            if not ctx.guild or ctx.guild.id not in ctx.client.settings.sponsor_guild_whitelist.value:
+            if ctx.guild:
+                show = ctx.guild.id not in ctx.client.settings.sponsor_guild_whitelist.value
+                show = show and not ctx.client.data.premium_guilds.queries.fetch_guild(ctx.guild.id)
+            else:
+                show = True
+
+            if show:
                 sponsor_hint = discord.Embed(
                     description=prompt,
                     colour=discord.Colour.dark_theme()
