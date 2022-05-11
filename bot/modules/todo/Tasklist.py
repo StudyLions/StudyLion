@@ -121,7 +121,7 @@ class Tasklist:
             self.active[(member.id, channel.id)] = self
 
     @classmethod
-    def fetch_or_create(cls, member, channel):
+    def fetch_or_create(cls, ctx, flags, member, channel):
         tasklist = cls.active.get((member.id, channel.id), None)
         return tasklist if tasklist is not None else cls(member, channel)
 
