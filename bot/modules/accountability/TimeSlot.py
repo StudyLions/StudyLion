@@ -2,6 +2,7 @@ from typing import List, Dict
 import datetime
 import discord
 import asyncio
+import random
 
 from settings import GuildSettings
 from utils.lib import tick, cross
@@ -364,6 +365,8 @@ class TimeSlot:
         Start the accountability room slot.
         Update the status message, and launch the DM reminder.
         """
+        dither = 15 * random.random()
+        await asyncio.sleep(dither)
         if self.channel:
             try:
                 await self.channel.edit(name="Scheduled Session Room")
@@ -408,6 +411,8 @@ class TimeSlot:
         Delete the channel and update the status message to display a session summary.
         Unloads the TimeSlot from cache.
         """
+        dither = 15 * random.random()
+        await asyncio.sleep(dither)
         if self.channel:
             try:
                 await self.channel.delete()
