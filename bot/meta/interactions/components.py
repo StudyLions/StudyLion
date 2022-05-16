@@ -1,3 +1,5 @@
+import logging
+import traceback
 import asyncio
 import uuid
 import json
@@ -50,13 +52,30 @@ class AwaitableComponent:
 
     def add_callback(self, timeout=None, repeat=True, check=None, pass_args=(), pass_kwargs={}):
         def wrapper(func):
+            async def _func(*args, **kwargs):
+                try:
+                    return await func(*args, **kwargs)
+                except Exception:
+                    from meta import client
+                    full_traceback = traceback.format_exc()
+
+                    client.log(
+                        f"Caught an unhandled exception while executing interaction callback "
+                        f"for interaction type '{self.interaction_type.name}' with id '{self.custom_id}'.\n"
+                        f"{self!r}\n"
+                        f"{func!r}\n"
+                        f"{full_traceback}",
+                        context=f"cid:{self.custom_id}",
+                        level=logging.ERROR
+                    )
+
             async def wrapped():
                 while True:
                     try:
                         button_press = await self.wait_for(timeout=timeout, check=check)
                     except asyncio.TimeoutError:
                         break
-                    asyncio.create_task(func(button_press, *pass_args, **pass_kwargs))
+                    asyncio.create_task(_func(button_press, *pass_args, **pass_kwargs))
                     if not repeat:
                         break
             future = asyncio.create_task(wrapped())
