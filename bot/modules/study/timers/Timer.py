@@ -170,6 +170,18 @@ class Timer:
                 self.last_seen[member.id] = utc_now()
 
         content = []
+
+        current_stage = self.current_stage
+        next_starts = int(current_stage.start.timestamp())
+        if current_stage.name == 'BREAK':
+            content.append(
+                f"**Have a rest!** Break finishes <t:{next_starts}:R>."
+            )
+        else:
+            content.append(
+                f"**Focus!** Session ends <t:{next_starts}:R>."
+            )
+
         if to_kick:
             # Do kick
             await asyncio.gather(
@@ -386,7 +398,7 @@ class Timer:
 
             if self._state.end < utc_now():
                 asyncio.create_task(self.notify_change_stage(self._state, self.current_stage))
-            else:
+            elif self.members:
                 asyncio.create_task(self._update_channel_name())
                 asyncio.create_task(self.update_last_status())
 
