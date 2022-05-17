@@ -4,7 +4,7 @@ import discord
 import asyncio
 
 from cmdClient.lib import SafeCancellation
-from meta import client
+from meta import client, conf
 from core import Lion
 from data import NULL, NOTNULL
 from settings import GuildSettings
@@ -26,11 +26,11 @@ class Tasklist:
     checkmark = "✔"
     block_size = 15
 
-    next_emoji = "▶"
-    prev_emoji = "◀"
-    question_emoji = "❔"
-    cancel_emoji = "❌"
-    refresh_emoji = "🔄"
+    next_emoji = conf.emojis.forward
+    prev_emoji = conf.emojis.backward
+    question_emoji = conf.emojis.question
+    cancel_emoji = conf.emojis.cancel
+    refresh_emoji = conf.emojis.refresh
 
     paged_reaction_order = (
         prev_emoji, cancel_emoji, question_emoji, refresh_emoji, next_emoji
@@ -574,7 +574,7 @@ class Tasklist:
         """
         Reaction handler for reactions on our message.
         """
-        str_emoji = str(reaction.emoji)
+        str_emoji = reaction.emoji
         if added and str_emoji in self.paged_reaction_order:
             # Attempt to remove reaction
             try:
