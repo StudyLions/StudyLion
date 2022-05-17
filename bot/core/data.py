@@ -17,7 +17,7 @@ app_config = Table('AppConfig')
 
 user_config = RowTable(
     'user_config',
-    ('userid', 'timezone', 'topgg_vote_reminder', 'avatar_hash'),
+    ('userid', 'timezone', 'topgg_vote_reminder', 'avatar_hash', 'gems'),
     'userid',
     cache=TTLCache(5000, ttl=60*5)
 )

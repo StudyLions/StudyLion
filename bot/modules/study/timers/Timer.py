@@ -170,6 +170,7 @@ class Timer:
                 self.last_seen[member.id] = utc_now()
 
         content = []
+
         if to_kick:
             # Do kick
             await asyncio.gather(
@@ -194,9 +195,12 @@ class Timer:
             old_reaction_message = self.reaction_message
 
             # Send status image, add reaction
+            args = await self.status()
+            if status_content := args.pop('content', None):
+                content.append(status_content)
             self.reaction_message = await self.text_channel.send(
                 content='\n'.join(content),
-                **(await self.status())
+                **args
             )
             await self.reaction_message.add_reaction('✅')
 
@@ -386,7 +390,7 @@ class Timer:
 
             if self._state.end < utc_now():
                 asyncio.create_task(self.notify_change_stage(self._state, self.current_stage))
-            else:
+            elif self.members:
                 asyncio.create_task(self._update_channel_name())
                 asyncio.create_task(self.update_last_status())
 

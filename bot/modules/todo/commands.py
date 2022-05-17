@@ -11,7 +11,7 @@ from .Tasklist import Tasklist
     name="todo",
     desc="Display and edit your personal To-Do list.",
     group="Productivity",
-    flags=('add==', 'delete==', 'check==', 'uncheck==', 'edit==')
+    flags=('add==', 'delete==', 'check==', 'uncheck==', 'edit==', 'text')
 )
 @in_guild()
 async def cmd_todo(ctx, flags):
@@ -69,7 +69,7 @@ async def cmd_todo(ctx, flags):
         return
 
     # TODO: Custom module, with pre-command hooks
-    tasklist = Tasklist.fetch_or_create(ctx.author, ctx.ch)
+    tasklist = Tasklist.fetch_or_create(ctx, flags, ctx.author, ctx.ch)
 
     keys = {
         'add': (('add', ), tasklist.parse_add),

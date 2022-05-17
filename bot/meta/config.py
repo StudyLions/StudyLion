@@ -78,10 +78,6 @@ class Conf:
         self.default = self.config["DEFAULT"]
         self.section = MapDotProxy(self.config[self.section_name])
         self.bot = self.section
-        self.emojis = MapDotProxy(
-            self.config['EMOJIS'] if 'EMOJIS' in self.config else self.section,
-            converter=configEmoji.from_str
-        )
 
         # Config file recursion, read in configuration files specified in every "ALSO_READ" key.
         more_to_read = self.section.getlist("ALSO_READ", [])
@@ -93,6 +89,11 @@ class Conf:
             new_paths = [path for path in self.section.getlist("ALSO_READ", [])
                          if path not in read and path not in more_to_read]
             more_to_read.extend(new_paths)
+
+        self.emojis = MapDotProxy(
+            self.config['EMOJIS'] if 'EMOJIS' in self.config else self.section,
+            converter=configEmoji.from_str
+        )
 
         global conf
         conf = self
