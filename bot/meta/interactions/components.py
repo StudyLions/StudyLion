@@ -55,6 +55,10 @@ class AwaitableComponent:
             async def _func(*args, **kwargs):
                 try:
                     return await func(*args, **kwargs)
+                except asyncio.CancelledError:
+                    pass
+                except asyncio.TimeoutError:
+                    pass
                 except Exception:
                     from meta import client
                     full_traceback = traceback.format_exc()
