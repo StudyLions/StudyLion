@@ -10,7 +10,7 @@ from .lib import guide_link
 
 
 new_emoji = " 🆕"
-new_commands = {'botconfig', 'sponsors'}
+new_commands = {'brand', 'free', 'premium', 'gift', 'skin', 'addgems', 'removegems'}
 
 # Set the command groups to appear in the help
 group_hints = {
