@@ -171,17 +171,6 @@ class Timer:
 
         content = []
 
-        current_stage = self.current_stage
-        next_starts = int(current_stage.start.timestamp())
-        if current_stage.name == 'BREAK':
-            content.append(
-                f"**Have a rest!** Break finishes <t:{next_starts}:R>."
-            )
-        else:
-            content.append(
-                f"**Focus!** Session ends <t:{next_starts}:R>."
-            )
-
         if to_kick:
             # Do kick
             await asyncio.gather(
@@ -206,9 +195,12 @@ class Timer:
             old_reaction_message = self.reaction_message
 
             # Send status image, add reaction
+            args = await self.status()
+            if status_content := args.pop('content', None):
+                content.append(status_content)
             self.reaction_message = await self.text_channel.send(
                 content='\n'.join(content),
-                **(await self.status())
+                **args
             )
             await self.reaction_message.add_reaction('✅')
 
