@@ -470,7 +470,8 @@ class Tasklist:
         """
         Process arguments to an `add` request
         """
-        tasks = [line for line in userstr.splitlines() if line]
+        tasks = (line.strip() for line in userstr.splitlines())
+        tasks = [task for task in tasks if task]
         if not tasks:
             # TODO: Maybe have interactive input here
             return
