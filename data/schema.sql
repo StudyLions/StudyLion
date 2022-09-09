@@ -544,7 +544,7 @@ AS $$
           AS bonus
         FROM Topgg, current_sesh 
         WHERE Topgg.userid=_userid AND EXTRACT(EPOCH FROM (NOW() - boostedTimestamp)) < 12.5*60*60
-        ORDER BY (array_agg(boostedTimestamp))[1] DESC LIMIT 1         
+        ORDER BY (array_agg(boostedTimestamp))[1] DESC LIMIT 1
       ), saved_sesh AS (
         INSERT INTO session_history (
           guildid, userid, channelid, rating, tag, channel_type, start_time,
@@ -553,14 +553,14 @@ AS $$
         ) SELECT
           guildid, userid, channelid, rating, tag, channel_type, start_time,
           total_duration, total_stream_duration, total_video_duration, total_live_duration,
-          ((total_duration * hourly_coins + live_duration * hourly_live_coins) * bonus_userid.bonus )/ 3600
+          LEAST(((total_duration * hourly_coins::bigint + live_duration * hourly_live_coins::bigint) * bonus_userid.bonus )/ 3600, 2147483647)
         FROM current_sesh, bonus_userid
         RETURNING *
       )
     UPDATE members
       SET
         tracked_time=(tracked_time + saved_sesh.duration),
-        coins=LEAST(coins + saved_sesh.coins_earned, 2147483647)
+        coins=LEAST(coins::bigint + saved_sesh.coins_earned::bigint, 2147483647)
       FROM saved_sesh
       WHERE members.guildid=saved_sesh.guildid AND members.userid=saved_sesh.userid
       RETURNING members.*;
