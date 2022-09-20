@@ -77,7 +77,7 @@ def add_pending(pending):
             """
             UPDATE members
             SET
-                coins = LEAST(coins + t.coin_diff, 2147483647)
+            coins = LEAST(coins::bigint + t.coin_diff::bigint, 2147483647)
             FROM
                 (VALUES %s)
             AS
