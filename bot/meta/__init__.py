@@ -1,9 +1,5 @@
-from .logger import log, logger
-
-from . import interactions
-from . import patches
-
-from .client import client
+from .LionBot import LionBot
 from .config import conf
 from .args import args
 from . import sharding
+from . import logger

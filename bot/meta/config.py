@@ -27,7 +27,7 @@ class configEmoji(PartialEmoji):
         animated, name, id = emojistr.split(':')
         return cls(
             name=name,
-            fallback=PartialEmoji(name=fallback),
+            fallback=PartialEmoji(name=fallback) if fallback is not None else None,
             animated=bool(animated),
             id=int(id)
         )
@@ -60,11 +60,26 @@ class MapDotProxy:
         return self._map.__getitem__(key)
 
 
+class ConfigParser(cfgp.ConfigParser):
+    """
+    Extension of base ConfigParser allowing optional
+    section option retrieval without defaults.
+    """
+    def options(self, section, no_defaults=False, **kwargs):
+        if no_defaults:
+            try:
+                return list(self._sections[section].keys())
+            except KeyError:
+                raise cfgp.NoSectionError(section)
+        else:
+            return super().options(section, **kwargs)
+
+
 class Conf:
     def __init__(self, configfile, section_name="DEFAULT"):
         self.configfile = configfile
 
-        self.config = cfgp.ConfigParser(
+        self.config = ConfigParser(
             converters={
                 "intlist": self._getintlist,
                 "list": self._getlist,
@@ -102,7 +117,7 @@ class Conf:
         return self.section[key].strip()
 
     def __getattr__(self, section):
-        return self.config[section]
+        return self.config[section.upper()]
 
     def get(self, name, fallback=None):
         result = self.section.get(name, fallback)
@@ -119,4 +134,4 @@ class Conf:
             self.config.write(conffile)
 
 
-conf = Conf(args.config)
+conf = Conf(args.config, 'STUDYLION')
