@@ -18,6 +18,7 @@ class LionBot(commands.Bot):
         config: Conf,
         initial_extensions: List[str],
         web_client: ClientSession,
+        app_ipc,
         testing_guilds: List[int] = [],
         **kwargs,
     ):
@@ -29,8 +30,11 @@ class LionBot(commands.Bot):
         self.appname = appname
 #        self.appdata = appdata
         self.config = config
+        self.app_ipc = app_ipc
 
     async def setup_hook(self) -> None:
+        await self.app_ipc.connect()
+
         for extension in self.initial_extensions:
             await self.load_extension(extension)
 

@@ -4,7 +4,7 @@ import logging
 import discord
 from discord.ext import commands
 
-from meta import LionBot, conf, sharding
+from meta import LionBot, conf, sharding, appname, shard_talk
 from meta.logger import log_context, log_action
 
 from data import Database
@@ -15,12 +15,6 @@ from constants import DATA_VERSION
 
 # Note: This MUST be imported after core, due to table definition orders
 # from settings import AppSettings
-
-# Load and attach app specific data
-if sharding.sharded:
-    appname = f"{conf.data['appid']}_{sharding.shard_count}_{sharding.shard_number}"
-else:
-    appname = conf.data['appid']
 log_context.set(f"APP: {appname}")
 
 # client.appdata = core.data.meta.fetch_or_create(appname)
@@ -62,6 +56,7 @@ async def main():
             config=conf,
             initial_extensions=['modules'],
             web_client=None,
+            app_ipc=shard_talk,
             testing_guilds=[889875661848723456]
         ) as lionbot:
             log_action.set("Launching")
