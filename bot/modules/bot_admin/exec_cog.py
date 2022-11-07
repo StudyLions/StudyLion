@@ -14,8 +14,14 @@ from enum import Enum
 
 import discord
 from discord.ext import commands
+from discord.app_commands import command
 from discord.ui import Modal, TextInput, View
 from discord.ui.button import button
+
+from meta.logger import logging_context
+from meta.app import shard_talk
+from meta.context import context
+from meta.context import Context
 
 
 logger = logging.getLogger(__name__)
@@ -145,7 +151,7 @@ class ExecUI(View):
 
     async def compile(self):
         # Call _async
-        result = await _async(self.ctx, self.code, style=self.style.value)
+        result = await _async(self.code, style=self.style.value)
 
         # Display output
         await self.show_output(result)
@@ -180,19 +186,31 @@ def mk_print(fp: io.StringIO) -> Callable[..., None]:
     return _print
 
 
-async def _async(ctx: commands.Context, to_eval, style='exec'):
+async def _async(to_eval, style='exec'):
     output = io.StringIO()
     _print = mk_print(output)
 
-    scope = dict(sys.modules)
+    scope: dict[str, Any] = dict(sys.modules)
     scope['__builtins__'] = builtins
     scope.update(builtins.__dict__)
-    scope['ctx'] = ctx
+    scope['ctx'] = ctx = context.get()
     scope['bot'] = ctx.bot
     scope['print'] = _print  # type: ignore
 
     try:
-        code = compile(to_eval, f"<msg: {ctx.message.id}>", style, ast.PyCF_ALLOW_TOP_LEVEL_AWAIT)
+        if ctx.message:
+            source_str = f"<msg: {ctx.message.id}>"
+        elif ctx.interaction:
+            source_str = f"<iid: {ctx.interaction.id}>"
+        else:
+            source_str = "Unknown async"
+
+        code = compile(
+            to_eval,
+            source_str,
+            style,
+            ast.PyCF_ALLOW_TOP_LEVEL_AWAIT
+        )
         func = types.FunctionType(code, scope)
 
         ret = func()
@@ -203,7 +221,7 @@ async def _async(ctx: commands.Context, to_eval, style='exec'):
     except Exception:
         _, exc, tb = sys.exc_info()
         _print("".join(traceback.format_tb(tb)))
-        _print(repr(exc))
+        _print(f"{type(exc).__name__}: {exc}")
 
     result = output.getvalue()
     logger.info(
@@ -219,8 +237,34 @@ class Exec(commands.Cog):
 
     @commands.hybrid_command(name='async')
     async def async_cmd(self, ctx, *, string: str = None):
-        await ExecUI(ctx, string, ExecStyle.EXEC).run()
+        context.set(Context(bot=self.bot, interaction=ctx.interaction))
+        with logging_context(context=f"mid:{ctx.message.id}", action="CMD ASYNC"):
+            logger.info("Running command")
+            await ExecUI(ctx, string, ExecStyle.EXEC).run()
 
     @commands.hybrid_command(name='eval')
     async def eval_cmd(self, ctx, *, string: str):
         await ExecUI(ctx, string, ExecStyle.EVAL).run()
+
+    @command(name='test')
+    async def test_cmd(self, interaction: discord.Interaction, *, channel: discord.TextChannel = None):
+        if channel is None:
+            await interaction.response.send_message("Setting widget")
+        else:
+            await interaction.response.send_message(
+                f"Set channel to {channel} and then setting widget or update existing widget."
+            )
+
+    @command(name='shardeval')
+    async def shardeval_cmd(self, interaction: discord.Interaction, string: str):
+        await interaction.response.defer(thinking=True)
+        results = await shard_talk.requestall(exec_route(string))
+        blocks = []
+        for appid, result in results.items():
+            blocks.append(f"```md\n[{appid}]\n{result}```")
+        await interaction.edit_original_response(content='\n'.join(blocks))
+
+
+@shard_talk.register_route('exec')
+async def exec_route(string):
+    return await _async(string)

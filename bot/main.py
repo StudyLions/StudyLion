@@ -6,6 +6,7 @@ from discord.ext import commands
 
 from meta import LionBot, conf, sharding, appname, shard_talk
 from meta.logger import log_context, log_action
+from meta.context import context
 
 from data import Database
 
@@ -57,8 +58,14 @@ async def main():
             initial_extensions=['modules'],
             web_client=None,
             app_ipc=shard_talk,
-            testing_guilds=[889875661848723456]
+            testing_guilds=[889875661848723456],
+            shard_id=sharding.shard_number,
+            shard_count=sharding.shard_count
         ) as lionbot:
+            context.get().bot = lionbot
+            @lionbot.before_invoke
+            async def before_invoke(ctx):
+                print(ctx)
             log_action.set("Launching")
             await lionbot.start(conf.bot['TOKEN'])
 

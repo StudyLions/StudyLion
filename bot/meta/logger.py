@@ -7,12 +7,13 @@ from contextlib import contextmanager
 from io import StringIO
 
 from contextvars import ContextVar
-from discord import AllowedMentions, Webhook, File
+from discord import Webhook, File
 import aiohttp
 
 from .config import conf
 from . import sharding
-from utils.lib import split_text, utc_now
+from .context import context
+from utils.lib import utc_now
 
 
 log_context: ContextVar[str] = ContextVar('logging_context', default='CTX: ROOT CONTEXT')
@@ -40,6 +41,7 @@ COLOR_SEQ = "\033[3%dm"
 BOLD_SEQ = "\033[1m"
 "]]]"
 BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE = range(8)
+
 
 def colour_escape(fmt: str) -> str:
     cmap = {
@@ -94,6 +96,7 @@ class ContextInjection(logging.Filter):
         if not hasattr(record, 'action'):
             record.action = log_action.get()
         record.app = log_app.get()
+        record.ctx = context.get().log_string()
         return True
 
 
@@ -149,8 +152,9 @@ class WebHookHandler(logging.StreamHandler):
     async def post(self, record):
         try:
             timestamp = utc_now().strftime("%d/%m/%Y, %H:%M:%S")
-            header = f"[{timestamp}][{record.levelname}][{record.app}][{record.action}][{record.context}]\n"
-            message = header+record.msg
+            header = f"[{timestamp}][{record.levelname}][{record.app}][{record.action}][{record.context}]"
+            context = f"\n# Context: {record.ctx}" if record.ctx else ""
+            message = f"{header}\n{record.msg}{context}"
 
             if len(message) > 1900:
                 as_file = True
