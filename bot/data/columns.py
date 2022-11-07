@@ -115,7 +115,7 @@ class Column(ColumnExpr, Generic[T]):
         self.expr = sql.Identifier(owner._tablename_, self.name)
 
     @overload
-    def __get__(self: 'Column[T]', obj: None, objtype: None) -> 'Column[T]':
+    def __get__(self: 'Column[T]', obj: None, objtype: "None | Type['RowModel']") -> 'Column[T]':
         ...
 
     @overload

@@ -1,4 +1,4 @@
-from typing import TypeVar, Type, Any, Optional, Generic, Union, Mapping
+from typing import TypeVar, Type, Optional, Generic, Union
 # from typing_extensions import Self
 from weakref import WeakValueDictionary
 from collections.abc import MutableMapping
@@ -169,6 +169,12 @@ class RowModel:
 
     def __init__(self, data):
         self.data = data
+
+    def __getitem__(self, key):
+        return self.data[key]
+
+    def __setitem__(self, key, value):
+        self.data[key] = value
 
     @classmethod
     def bind(cls, connector: Connector):
