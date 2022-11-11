@@ -169,11 +169,11 @@ class JoinMixin(TableQuery[QueryResult]):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self._joins: list[Expression, ...] = []
+        self._joins: list[Expression] = []
 
     def join(self,
              target: Union[str, Expression],
-             on: Optional[Condition] = None, using: Union[Expression, tuple[str, ...]] = None,
+             on: Optional[Condition] = None, using: Optional[Union[Expression, tuple[str, ...]]] = None,
              natural=False):
         available = (on is not None) + (using is not None) + natural
         if available == 0:
@@ -304,9 +304,10 @@ class OrderMixin(TableQuery[QueryResult]):
 
     @property
     def _order_section(self) -> Optional[Expression]:
-        if self._order is not None:
+        if self._order:
             expr = RawExpr.join(*self._order, joiner=sql.SQL(', '))
-            expr.expr = sql.SQL("ORDER BY {}").formt(expr.expr)
+            expr.expr = sql.SQL("ORDER BY {}").format(expr.expr)
+            return expr
         else:
             return None
 

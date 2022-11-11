@@ -24,8 +24,8 @@ class Registry:
         cls._name = name or cls.__name__
 
     def __init__(self, name=None):
-        self._conn: Connector = None
-        self.name: str = name or self._name
+        self._conn: Optional[Connector] = None
+        self.name: str = name if name is not None else self._name
         if self.name is None:
             raise ValueError("A Registry must have a name!")
 

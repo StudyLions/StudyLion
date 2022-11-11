@@ -131,7 +131,7 @@ class RowModel:
     # TODO: Proper typing for a classvariable which gets dynamically assigned in subclass
     table: RowTable
 
-    def __init_subclass__(cls: Type[RowT], table: str = None):
+    def __init_subclass__(cls: Type[RowT], table: Optional[str] = None):
         """
         Set table, _columns_, and _key_.
         """

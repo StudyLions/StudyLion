@@ -103,9 +103,9 @@ if TYPE_CHECKING:
 
 
 class Column(ColumnExpr, Generic[T]):
-    def __init__(self, name: str = None, primary: bool = False):
+    def __init__(self, name: str = None, primary: bool = False):  # type: ignore
         self.primary = primary
-        self.name: str = name  # type: ignore
+        self.name: str = name
 
         self.expr = sql.Identifier(name) if name else sql.SQL('')
         self.values = ()

@@ -20,7 +20,10 @@ class RegisterEnum(Attachable):
         return self
 
     async def on_init(self, registry: Registry):
-        connection = await registry._conn.get_connection()
+        connector = registry._conn
+        if connector is None:
+            raise ValueError("Cannot initialise without connector!")
+        connection = await connector.get_connection()
         if connection is None:
             raise ValueError("Cannot Init without connection.")
         info = await EnumInfo.fetch(connection, self.name)
