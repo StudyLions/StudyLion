@@ -1,6 +1,7 @@
 import datetime
 import iso8601  # type: ignore
 import re
+from contextvars import Context
 
 import discord
 
@@ -439,15 +440,6 @@ def jumpto(guildid: int, channeldid: int, messageid: int) -> str:
     )
 
 
-class DotDict(dict):
-    """
-    Dict-type allowing dot access to keys.
-    """
-    __getattr__ = dict.get
-    __setattr__ = dict.__setitem__
-    __delattr__ = dict.__delitem__
-
-
 def utc_now() -> datetime.datetime:
     """
     Return the current timezone-aware utc timestamp.
@@ -464,3 +456,8 @@ def multiple_replace(string: str, rep_dict: dict[str, str]) -> str:
         return pattern.sub(lambda x: str(rep_dict[x.group(0)]), string)
     else:
         return string
+
+
+def recover_context(context: Context):
+    for var in context:
+        var.set(context[var])

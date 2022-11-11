@@ -5,8 +5,8 @@ import discord
 from discord.ext import commands
 
 from meta import LionBot, conf, sharding, appname, shard_talk
-from meta.logger import log_context, log_action
-from meta.context import context
+from meta.logger import log_context, log_action_stack, logging_context
+from meta.context import ctx_bot
 
 from data import Database
 
@@ -16,7 +16,7 @@ from constants import DATA_VERSION
 
 # Note: This MUST be imported after core, due to table definition orders
 # from settings import AppSettings
-log_context.set(f"APP: {appname}")
+# log_context.set(f"APP: {appname}")
 
 # client.appdata = core.data.meta.fetch_or_create(appname)
 
@@ -36,7 +36,7 @@ db = Database(conf.data['args'])
 
 
 async def main():
-    log_action.set("Initialising")
+    log_action_stack.set(["Initialising"])
     logger.info("Initialising StudyLion")
 
     intents = discord.Intents.all()
@@ -49,6 +49,7 @@ async def main():
             error = f"Data model version is {version}, required version is {DATA_VERSION}! Please migrate."
             logger.critical(error)
             raise RuntimeError(error)
+
         async with LionBot(
             command_prefix=commands.when_mentioned,
             intents=intents,
@@ -58,15 +59,33 @@ async def main():
             initial_extensions=['modules'],
             web_client=None,
             app_ipc=shard_talk,
-            testing_guilds=[889875661848723456],
+            testing_guilds=[889875661848723456, 879411098384752672],
             shard_id=sharding.shard_number,
             shard_count=sharding.shard_count
         ) as lionbot:
-            context.get().bot = lionbot
-            @lionbot.before_invoke
-            async def before_invoke(ctx):
-                print(ctx)
-            log_action.set("Launching")
-            await lionbot.start(conf.bot['TOKEN'])
+            ctx_bot.set(lionbot)
+            try:
+                with logging_context(context=f"APP: {appname}"):
+                    logger.info("StudyLion initialised, starting!", extra={'action': 'Starting'})
+                    await lionbot.start(conf.bot['TOKEN'])
+            except asyncio.CancelledError:
+                with logging_context(context=f"APP: {appname}", action="Shutting Down"):
+                    logger.info("StudyLion closed, shutting down.", exc_info=True)
 
-asyncio.run(main())
+
+def _main():
+    from signal import SIGINT, SIGTERM
+
+    loop = asyncio.get_event_loop()
+    main_task = asyncio.ensure_future(main())
+    for signal in [SIGINT, SIGTERM]:
+        loop.add_signal_handler(signal, main_task.cancel)
+    try:
+        loop.run_until_complete(main_task)
+    finally:
+        loop.close()
+        logging.shutdown()
+
+
+if __name__ == '__main__':
+    _main()

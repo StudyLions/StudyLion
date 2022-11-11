@@ -4,7 +4,7 @@ import logging
 import string
 import random
 
-from ..logger import log_action, log_context, log_app
+from ..logger import log_context, log_app, logging_context
 
 logger = logging.getLogger(__name__)
 
@@ -71,46 +71,45 @@ class AppServer:
         """
         Register and hold a new client connection.
         """
-        log_action.set("CONN " + appid)
-        reader, writer = connection
-        # Add the new client
-        self.clients[appid] = (address, connection)
+        with logging_context(action=f"CONN {appid}"):
+            reader, writer = connection
+            # Add the new client
+            self.clients[appid] = (address, connection)
 
-        # Send the new client a client list
-        peers = self.peer_list()
-        writer.write(pickle.dumps(peers))
-        writer.write(b'\n')
-        await writer.drain()
+            # Send the new client a client list
+            peers = self.peer_list()
+            writer.write(pickle.dumps(peers))
+            writer.write(b'\n')
+            await writer.drain()
 
-        # Announce the new client to everyone
-        await self.broadcast('new_peer', (), {'appid': appid, 'address': address})
+            # Announce the new client to everyone
+            await self.broadcast('new_peer', (), {'appid': appid, 'address': address})
 
-        # Keep the connection open until socket closed or EOF (indicating client death)
-        try:
-            await reader.read()
-        finally:
-            # Connection ended or it broke
-            logger.info(f"Lost client '{appid}'")
-            await self.deregister_client(appid)
+            # Keep the connection open until socket closed or EOF (indicating client death)
+            try:
+                await reader.read()
+            finally:
+                # Connection ended or it broke
+                logger.info(f"Lost client '{appid}'")
+                await self.deregister_client(appid)
 
     async def handle_connection(self, reader, writer):
         data = await reader.readline()
         route, args, kwargs = pickle.loads(data)
 
         rqid = short_uuid()
-        log_context.set("RQID:" + rqid)
-        log_action.set("SERV ROUTE " + route)
 
-        logger.info(f"AppServer handling request on route '{route}' with args {args} and kwargs {kwargs}")
+        with logging_context(context=f"RQID: {rqid}", action=f"ROUTE {route}"):
+            logger.info(f"AppServer handling request on route '{route}' with args {args} and kwargs {kwargs}")
 
-        if route in self.routes:
-            # Execute route
-            try:
-                await self.routes[route]((reader, writer), *args, **kwargs)
-            except Exception:
-                logger.exception(f"AppServer recieved exception during route '{route}'")
-        else:
-            logger.warning(f"AppServer recieved unknown route '{route}'. Ignoring.")
+            if route in self.routes:
+                # Execute route
+                try:
+                    await self.routes[route]((reader, writer), *args, **kwargs)
+                except Exception:
+                    logger.exception(f"AppServer recieved exception during route '{route}'")
+            else:
+                logger.warning(f"AppServer recieved unknown route '{route}'. Ignoring.")
 
     def peer_list(self):
         return {appid: address for appid, (address, _) in self.clients.items()}
@@ -120,24 +119,26 @@ class AppServer:
         await self.broadcast('drop_peer', (), {'appid': appid})
 
     async def broadcast(self, route, args, kwargs):
-        logger.debug(f"Sending broadcast on route '{route}' with args {args} and kwargs {kwargs}.")
-        payload = pickle.dumps((route, args, kwargs))
-        if self.clients:
-            await asyncio.gather(
-                *(self._send(appid, payload) for appid in self.clients),
-                return_exceptions=True
-            )
+        with logging_context(action="broadcast"):
+            logger.debug(f"Sending broadcast on route '{route}' with args {args} and kwargs {kwargs}.")
+            payload = pickle.dumps((route, args, kwargs))
+            if self.clients:
+                await asyncio.gather(
+                    *(self._send(appid, payload) for appid in self.clients),
+                    return_exceptions=True
+                )
 
     async def message_client(self, appid, route, args, kwargs):
         """
         Send a message to client `appid` along `route` with given arguments.
         """
-        logger.debug(f"Sending '{route}' to '{appid}' with args {args} and kwargs {kwargs}.")
-        if appid not in self.clients:
-            raise ValueError(f"Client '{appid}' is not connected.")
+        with logging_context(action=f"MSG {appid}"):
+            logger.debug(f"Sending '{route}' to '{appid}' with args {args} and kwargs {kwargs}.")
+            if appid not in self.clients:
+                raise ValueError(f"Client '{appid}' is not connected.")
 
-        payload = pickle.dumps((route, args, kwargs))
-        return await self._send(appid, payload)
+            payload = pickle.dumps((route, args, kwargs))
+            return await self._send(appid, payload)
 
     async def _send(self, appid, payload):
         """
@@ -157,10 +158,11 @@ class AppServer:
 
     async def start(self, address):
         log_app.set("APPSERVER")
-        server = await asyncio.start_server(self.handle_connection, **address)
-        logger.info(f"Serving on {address}")
-        async with server:
-            await server.serve_forever()
+        with logging_context(stack=["SERV"]):
+            server = await asyncio.start_server(self.handle_connection, **address)
+            logger.info(f"Serving on {address}")
+            async with server:
+                await server.serve_forever()
 
 
 async def start_server():

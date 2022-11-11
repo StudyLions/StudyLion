@@ -29,7 +29,7 @@ class configEmoji(PartialEmoji):
             name=name,
             fallback=PartialEmoji(name=fallback) if fallback is not None else None,
             animated=bool(animated),
-            id=int(id)
+            id=int(id) if id else None
         )
 
 

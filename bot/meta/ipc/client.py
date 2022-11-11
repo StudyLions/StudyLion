@@ -1,17 +1,19 @@
-from typing import Optional
+from typing import Optional, TypeAlias, Any
 import asyncio
 import logging
 import pickle
 
 
-logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 
-class AppClient:
-    routes = {}  # route_name -> Callable[Any, Awaitable[Any]]
+Address: TypeAlias = dict[str, Any]
 
-    def __init__(self, appid, client_address, server_address):
+
+class AppClient:
+    routes: dict[str, 'AppRoute'] = {}  # route_name -> Callable[Any, Awaitable[Any]]
+
+    def __init__(self, appid: str, client_address: Address, server_address: Address):
         self.appid = appid
         self.address = client_address
         self.server_address = server_address

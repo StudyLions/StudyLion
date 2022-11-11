@@ -1,6 +1,7 @@
 import sys
 import logging
 import asyncio
+from typing import List
 from logging.handlers import QueueListener, QueueHandler
 from queue import SimpleQueue
 from contextlib import contextmanager
@@ -16,24 +17,33 @@ from .context import context
 from utils.lib import utc_now
 
 
+log_logger = logging.getLogger(__name__)
+log_logger.propagate = False
+
+
 log_context: ContextVar[str] = ContextVar('logging_context', default='CTX: ROOT CONTEXT')
-log_action: ContextVar[str] = ContextVar('logging_action', default='UNKNOWN ACTION')
+log_action_stack: ContextVar[List[str]] = ContextVar('logging_action_stack', default=[])
 log_app: ContextVar[str] = ContextVar('logging_shard', default="SHARD {:03}".format(sharding.shard_number))
 
 
 @contextmanager
-def logging_context(context=None, action=None):
+def logging_context(context=None, action=None, stack=None):
     if context is not None:
         context_t = log_context.set(context)
     if action is not None:
-        action_t = log_action.set(action)
+        astack = log_action_stack.get()
+        log_action_stack.set(astack + [action])
+    if stack is not None:
+        actions_t = log_action_stack.set(stack)
     try:
         yield
     finally:
         if context is not None:
             log_context.reset(context_t)
+        if stack is not None:
+            log_action_stack.reset(actions_t)
         if action is not None:
-            log_action.reset(action_t)
+            log_action_stack.set(astack)
 
 
 RESET_SEQ = "\033[0m"
@@ -63,10 +73,10 @@ def colour_escape(fmt: str) -> str:
 
 log_format = ('[%(green)%(asctime)-19s%(reset)][%(red)%(levelname)-8s%(reset)]' +
               '[%(cyan)%(app)-15s%(reset)]' +
-              '[%(cyan)%(context)-22s%(reset)]' +
-              '[%(cyan)%(action)-22s%(reset)]' +
+              '[%(cyan)%(context)-24s%(reset)]' +
+              '[%(cyan)%(actionstr)-22s%(reset)]' +
               ' %(bold)%(cyan)%(name)s:%(reset)' +
-              ' %(white)%(message)s%(reset)')
+              ' %(white)%(message)s%(ctxstr)s%(reset)')
 log_format = colour_escape(log_format)
 
 
@@ -74,7 +84,7 @@ log_format = colour_escape(log_format)
 logger = logging.getLogger()
 log_fmt = logging.Formatter(
     fmt=log_format,
-    datefmt='%Y-%m-%d %H:%M:%S'
+    # datefmt='%Y-%m-%d %H:%M:%S'
 )
 logger.setLevel(logging.NOTSET)
 
@@ -89,14 +99,45 @@ class LessThanFilter(logging.Filter):
         return 1 if record.levelno < self.max_level else 0
 
 
+class ThreadFilter(logging.Filter):
+    def __init__(self, thread_name):
+        super().__init__("")
+        self.thread = thread_name
+
+    def filter(self, record):
+        # non-zero return means we log this message
+        return 1 if record.threadName == self.thread else 0
+
+
 class ContextInjection(logging.Filter):
     def filter(self, record):
+        # These guards are to allow override through _extra
+        # And to ensure the injection is idempotent
         if not hasattr(record, 'context'):
             record.context = log_context.get()
-        if not hasattr(record, 'action'):
-            record.action = log_action.get()
-        record.app = log_app.get()
-        record.ctx = context.get().log_string()
+
+        if not hasattr(record, 'actionstr'):
+            action_stack = log_action_stack.get()
+            if hasattr(record, 'action'):
+                action_stack = (*action_stack, record.action)
+            if action_stack:
+                record.actionstr = ' ➔ '.join(action_stack)
+            else:
+                record.actionstr = "Unknown Action"
+
+        if not hasattr(record, 'app'):
+            record.app = log_app.get()
+
+        if not hasattr(record, 'ctx'):
+            if ctx := context.get():
+                record.ctx = repr(ctx)
+            else:
+                record.ctx = None
+
+        if getattr(record, 'with_ctx', False) and record.ctx:
+            record.ctxstr = '\n' + record.ctx
+        else:
+            record.ctxstr = ""
         return True
 
 
@@ -106,12 +147,14 @@ logging_handler_out.setFormatter(log_fmt)
 logging_handler_out.addFilter(LessThanFilter(logging.WARNING))
 logging_handler_out.addFilter(ContextInjection())
 logger.addHandler(logging_handler_out)
+log_logger.addHandler(logging_handler_out)
 
 logging_handler_err = logging.StreamHandler(sys.stderr)
 logging_handler_err.setLevel(logging.WARNING)
 logging_handler_err.setFormatter(log_fmt)
 logging_handler_err.addFilter(ContextInjection())
 logger.addHandler(logging_handler_err)
+log_logger.addHandler(logging_handler_err)
 
 
 class LocalQueueHandler(QueueHandler):
@@ -127,7 +170,7 @@ class LocalQueueHandler(QueueHandler):
 
 class WebHookHandler(logging.StreamHandler):
     def __init__(self, webhook_url, batch=False, loop=None):
-        super().__init__(self)
+        super().__init__()
         self.webhook_url = webhook_url
         self.batched = ""
         self.batch = batch
@@ -150,9 +193,13 @@ class WebHookHandler(logging.StreamHandler):
         asyncio.create_task(self.post(record))
 
     async def post(self, record):
+        log_context.set("Webhook Logger")
+        log_action_stack.set(["Logging"])
+        log_app.set(record.app)
+
         try:
             timestamp = utc_now().strftime("%d/%m/%Y, %H:%M:%S")
-            header = f"[{timestamp}][{record.levelname}][{record.app}][{record.action}][{record.context}]"
+            header = f"[{record.asctime}][{record.levelname}][{record.app}][{record.actionstr}] <{record.context}>"
             context = f"\n# Context: {record.ctx}" if record.ctx else ""
             message = f"{header}\n{record.msg}{context}"
 
@@ -164,12 +211,12 @@ class WebHookHandler(logging.StreamHandler):
 
             # Post the log message(s)
             if self.batch:
-                if len(message) > 1000:
+                if len(message) > 1500:
                     await self._send_batched_now()
                     await self._send(message, as_file=as_file)
                 else:
                     self.batched += message
-                    if len(self.batched) + len(message) > 1000:
+                    if len(self.batched) + len(message) > 1500:
                         await self._send_batched_now()
                     else:
                         asyncio.create_task(self._schedule_batched())
@@ -209,9 +256,12 @@ class WebHookHandler(logging.StreamHandler):
             if as_file or len(message) > 2000:
                 with StringIO(message) as fp:
                     fp.seek(0)
-                    await webhook.send(file=File(fp, filename="logs.md"))
+                    await webhook.send(
+                        file=File(fp, filename="logs.md"),
+                        username=log_app.get()
+                    )
             else:
-                await webhook.send(message)
+                await webhook.send(message, username=log_app.get())
 
 
 handlers = []
@@ -254,6 +304,7 @@ if handlers:
     qhandler = QueueHandler(queue)
     qhandler.setLevel(logging.INFO)
     qhandler.addFilter(ContextInjection())
+    # qhandler.addFilter(ThreadFilter('MainThread'))
     logger.addHandler(qhandler)
 
     listener = QueueListener(
