@@ -8,7 +8,7 @@ from discord.ui.button import ButtonStyle, Button, button
 from discord.ui.modal import Modal
 from discord.ui.text_input import TextInput
 
-from utils.lib import prop_tabulate, recover_context
+from utils.lib import tabulate, recover_context
 from utils.ui import FastModal
 from meta.config import conf
 
@@ -214,6 +214,15 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
         else:
             return f"Setting Updated! New value: {self.formatted}"
 
+    @property
+    def hover_desc(self):
+        return '\n'.join((
+            self.display_name,
+            '=' * len(self.display_name),
+            self.long_desc,
+            f"\nAccepts: {self.accepts}"
+        ))
+
     async def update_response(self, interaction: discord.Interaction, **kwargs):
         """
         Respond to an interaction which triggered a setting update.
@@ -256,10 +265,10 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
 
     @property
     def desc_table(self):
-        fields = ("Current value", "Default value")
-        values = (self.formatted or "Not Set",
-                  self._format_data(self.parent_id, self.default) or "None")
-        return prop_tabulate(fields, values)
+        return tabulate(
+            ("Current Value", self.formatted or "Not Set"),
+            ("Default Value", self._format_data(self.parent_id, self.default) or "None"),
+        )
 
     @property
     def input_field(self) -> TextInput:

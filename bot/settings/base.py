@@ -66,11 +66,11 @@ class BaseSetting(Generic[ParentID, SettingData, SettingValue]):
         return self._default
 
     @property
-    def value(self) -> Optional[SettingValue]:
+    def value(self) -> SettingValue:  # Actually optional *if* _default is None
         """
         Context-aware object or objects associated with the setting.
         """
-        return self._data_to_value(self.parent_id, self.data)
+        return self._data_to_value(self.parent_id, self.data)  # type: ignore
 
     @value.setter
     def value(self, new_value: Optional[SettingValue]):

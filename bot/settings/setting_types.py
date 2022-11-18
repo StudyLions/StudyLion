@@ -749,7 +749,7 @@ class EnumSetting(InteractiveSetting[ParentID, ET, ET]):
         This should almost always include the strings from `_outputs`.
     """
 
-    _enum: ET
+    _enum: Type[ET]
     _outputs: dict[ET, str]
     _inputs: dict[str, ET]
 
