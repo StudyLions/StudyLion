@@ -113,13 +113,13 @@ class TableQuery(Query[QueryResult]):
     ABC for an executable query statement expected to be run on a single table.
     """
     __slots__ = (
-        'table',
+        'tableid',
         'condition', '_extra', '_limit', '_order', '_joins'
     )
 
-    def __init__(self, table, *args, **kwargs):
+    def __init__(self, tableid, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.table: str = table
+        self.tableid: sql.Identifier = tableid
 
     def options(self, **kwargs):
         """
@@ -367,7 +367,7 @@ class Insert(ExtraMixin, TableQuery[QueryResult]):
         # TODO: Check efficiency of inserting multiple values like this
         # Also implement a Copy query
         base = sql.SQL("INSERT INTO {table} ({columns}) VALUES {values_str}").format(
-            table=sql.Identifier(self.table),
+            table=self.tableid,
             columns=columns,
             values_str=values_str
         )
@@ -428,7 +428,7 @@ class Select(WhereMixin, ExtraMixin, OrderMixin, LimitMixin, JoinMixin, TableQue
 
         base = sql.SQL("SELECT {columns} FROM {table}").format(
             columns=columns,
-            table=sql.Identifier(self.table)
+            table=self.tableid
         )
 
         sections = [
@@ -453,7 +453,7 @@ class Delete(WhereMixin, ExtraMixin, TableQuery[QueryResult]):
 
     def build(self):
         base = sql.SQL("DELETE FROM {table}").format(
-            table=sql.Identifier(self.table),
+            table=self.tableid,
         )
         sections = [
             RawExpr(base),
@@ -500,7 +500,7 @@ class Update(LimitMixin, WhereMixin, ExtraMixin, TableQuery[QueryResult]):
         set_expr, set_values = RawExpr.join(*self._set, joiner=sql.SQL(', ')).as_tuple()
 
         base = sql.SQL("UPDATE {table} SET {set}").format(
-            table=sql.Identifier(self.table),
+            table=self.tableid,
             set=set_expr
         )
         sections = [

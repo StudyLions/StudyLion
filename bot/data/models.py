@@ -63,7 +63,7 @@ class RowTable(Table, Generic[RowT]):
     def fetch_rows_where(self, *args, **kwargs) -> q.Select[list[RowT]]:
         # TODO: Handle list of rowids here?
         return q.Select(
-            self.name,
+            self.identifier,
             row_adapter=self.model._make_rows,
             connector=self.connector
         ).where(*args, **kwargs)
@@ -118,6 +118,7 @@ class WeakCache(MutableMapping):
 class RowModel:
     __slots__ = ('data',)
 
+    _schema_: str = 'public'
     _tablename_: Optional[str] = None
     _columns_: dict[str, Column] = {}
 
@@ -147,7 +148,7 @@ class RowModel:
             cls._columns_ = columns
             if not cls._key_:
                 cls._key_ = tuple(column.name for column in columns.values() if column.primary)
-            cls.table = RowTable(cls._tablename_, cls)
+            cls.table = RowTable(cls._tablename_, cls, schema=cls._schema_)
             if cls._cache_ is None:
                 cls._cache_ = WeakValueDictionary()
 
@@ -199,7 +200,8 @@ class RowModel:
         return tuple(self.data[key] for key in self._key_)
 
     def __repr__(self):
-        return "{}({})".format(
+        return "{}.{}({})".format(
+            self.table.schema,
             self.table.name,
             ', '.join(repr(column.__get__(self)) for column in self._columns_.values())
         )

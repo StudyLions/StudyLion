@@ -4,6 +4,7 @@ from datetime import datetime
 
 from .base import RawExpr, Expression
 from .conditions import Condition, Joiner
+from .table import Table
 
 
 class ColumnExpr(RawExpr):
@@ -111,7 +112,6 @@ class Column(ColumnExpr, Generic[T]):
         self.references = references
         self.name: str = name  # type: ignore
         self.owner: Optional['RowModel'] = None
-        self.tablename: Optional[str] = None
         self._type = type
 
         self.expr = sql.Identifier(name) if name else sql.SQL('')
@@ -122,8 +122,7 @@ class Column(ColumnExpr, Generic[T]):
         if self.owner is None:
             self.name = self.name or name
             self.owner = owner
-            self.tablename = owner._tablename_
-            self.expr = sql.Identifier(self.tablename, self.name)
+            self.expr = sql.Identifier(self.owner._schema_, self.owner._tablename_, self.name)
 
     @overload
     def __get__(self: 'Column[T]', obj: None, objtype: "None | Type['RowModel']") -> 'Column[T]':
