@@ -17,7 +17,7 @@ class Registry:
 
     def __init_subclass__(cls, name=None):
         attached = []
-        for name, member in cls.__dict__.items():
+        for _, member in cls.__dict__.items():
             if isinstance(member, _Attachable):
                 attached.append(member)
         cls._attached = attached

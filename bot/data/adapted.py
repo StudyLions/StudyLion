@@ -29,4 +29,4 @@ class RegisterEnum(Attachable):
         info = await EnumInfo.fetch(connection, self.name)
         if info is None:
             raise ValueError(f"Enum {self.name} not found in database.")
-        register_enum(info, connection, self.enum, mapping=self.mapping)
+        register_enum(info, connection, self.enum, mapping=list(self.mapping.items()))

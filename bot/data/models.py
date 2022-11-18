@@ -124,7 +124,7 @@ class RowModel:
     # Cache to keep track of registered Rows
     _cache_: Union[dict, WeakValueDictionary, WeakCache] = None  # type: ignore
 
-    _key_: tuple[str, ...]
+    _key_: tuple[str, ...] = ()
     _connector: Optional[Connector] = None
     _registry: Optional[Registry] = None
 
@@ -145,7 +145,8 @@ class RowModel:
                     columns[key] = value
 
             cls._columns_ = columns
-            cls._key_ = tuple(column.name for column in columns.values() if column.primary)
+            if not cls._key_:
+                cls._key_ = tuple(column.name for column in columns.values() if column.primary)
             cls.table = RowTable(cls._tablename_, cls)
             if cls._cache_ is None:
                 cls._cache_ = WeakValueDictionary()

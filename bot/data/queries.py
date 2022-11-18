@@ -163,6 +163,14 @@ class WhereMixin(TableQuery[QueryResult]):
             return None
 
 
+class JOINTYPE(Enum):
+    LEFT = sql.SQL('LEFT JOIN')
+    RIGHT = sql.SQL('RIGHT JOIN')
+    INNER = sql.SQL('INNER JOIN')
+    OUTER = sql.SQL('OUTER JOIN')
+    FULLOUTER = sql.SQL('FULL OUTER JOIN')
+
+
 class JoinMixin(TableQuery[QueryResult]):
     __slots__ = ()
     # TODO: Remember to add join slots to TableQuery
@@ -174,6 +182,7 @@ class JoinMixin(TableQuery[QueryResult]):
     def join(self,
              target: Union[str, Expression],
              on: Optional[Condition] = None, using: Optional[Union[Expression, tuple[str, ...]]] = None,
+             join_type: JOINTYPE = JOINTYPE.INNER,
              natural=False):
         available = (on is not None) + (using is not None) + natural
         if available == 0:
@@ -181,7 +190,7 @@ class JoinMixin(TableQuery[QueryResult]):
         if available > 1:
             raise ValueError("Exactly one join format must be given for Query Join")
 
-        sections: list[tuple[sql.Composable, tuple[Any, ...]]] = [(sql.SQL('JOIN'), ())]
+        sections: list[tuple[sql.Composable, tuple[Any, ...]]] = [(join_type.value, ())]
         if isinstance(target, str):
             sections.append((sql.Identifier(target), ()))
         else:
@@ -205,6 +214,9 @@ class JoinMixin(TableQuery[QueryResult]):
         expr = RawExpr.join_tuples(*sections)
         self._joins.append(expr)
         return self
+
+    def leftjoin(self, *args, **kwargs):
+        return self.join(*args, join_type=JOINTYPE.LEFT, **kwargs)
 
     @property
     def _join_section(self) -> Optional[Expression]:

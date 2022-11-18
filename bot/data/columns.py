@@ -1,5 +1,6 @@
-from typing import Any, Union, TypeVar, Generic, Type, overload, TYPE_CHECKING
+from typing import Any, Union, TypeVar, Generic, Type, overload, Optional, TYPE_CHECKING
 from psycopg import sql
+from datetime import datetime
 
 from .base import RawExpr, Expression
 from .conditions import Condition, Joiner
@@ -103,16 +104,26 @@ if TYPE_CHECKING:
 
 
 class Column(ColumnExpr, Generic[T]):
-    def __init__(self, name: str = None, primary: bool = False):  # type: ignore
+    def __init__(self, name: Optional[str] = None,
+                 primary: bool = False, references: Optional['Column'] = None,
+                 type: Optional[Type[T]] = None):
         self.primary = primary
-        self.name: str = name
+        self.references = references
+        self.name: str = name  # type: ignore
+        self.owner: Optional['RowModel'] = None
+        self.tablename: Optional[str] = None
+        self._type = type
 
         self.expr = sql.Identifier(name) if name else sql.SQL('')
         self.values = ()
 
     def __set_name__(self, owner, name):
-        self.name = self.name or name
-        self.expr = sql.Identifier(owner._tablename_, self.name)
+        # Only allow setting the owner once
+        if self.owner is None:
+            self.name = self.name or name
+            self.owner = owner
+            self.tablename = owner._tablename_
+            self.expr = sql.Identifier(self.tablename, self.name)
 
     @overload
     def __get__(self: 'Column[T]', obj: None, objtype: "None | Type['RowModel']") -> 'Column[T]':
@@ -126,8 +137,10 @@ class Column(ColumnExpr, Generic[T]):
         # Get value from row data or session
         if obj is None:
             return self
-        else:
+        elif obj is self.owner:
             return obj.data[self.name]
+        else:
+            return self
 
 
 class Integer(Column[int]):
@@ -139,4 +152,8 @@ class String(Column[str]):
 
 
 class Bool(Column[bool]):
+    pass
+
+
+class Timestamp(Column[datetime]):
     pass

@@ -1,3 +1,4 @@
+from typing import TypeVar
 import logging
 from collections import namedtuple
 
@@ -10,6 +11,8 @@ logger = logging.getLogger(__name__)
 
 Version = namedtuple('Version', ('version', 'time', 'author'))
 
+T = TypeVar('T', bound=Registry)
+
 
 class Database(Connector):
     # cursor_factory = AsyncLoggingCursor
@@ -19,9 +22,14 @@ class Database(Connector):
 
         self.registries: dict[str, Registry] = {}
 
-    def load_registry(self, registry: Registry):
+    def load_registry(self, registry: T) -> T:
+        logger.debug(
+            f"Loading and binding registry '{registry.name}'.",
+            extra={'action': f"Reg {registry.name}"}
+        )
         registry.bind(self)
         self.registries[registry.name] = registry
+        return registry
 
     async def version(self) -> Version:
         """
