@@ -1,4 +1,5 @@
 from typing import Optional
+from string import Template
 
 
 class SafeCancellation(Exception):
@@ -12,8 +13,12 @@ class SafeCancellation(Exception):
     """
     default_message = ""
 
-    def __init__(self, msg: Optional[str] = None, details: Optional[str] = None, **kwargs):
-        self.msg: Optional[str] = msg if msg is not None else self.default_message
+    @property
+    def msg(self):
+        return self._msg if self._msg is not None else self.default_message
+
+    def __init__(self, _msg: Optional[str] = None, details: Optional[str] = None, **kwargs):
+        self._msg: Optional[str] = _msg
         self.details: str = details if details is not None else self.msg
         super().__init__(**kwargs)
 
@@ -23,6 +28,14 @@ class UserInputError(SafeCancellation):
     A SafeCancellation induced from unparseable user input.
     """
     default_message = "Could not understand your input."
+
+    @property
+    def msg(self):
+        return Template(self._msg).substitute(**self.info) if self._msg is not None else self.default_message
+
+    def __init__(self, _msg: Optional[str] = None, info: dict[str, str] = {}, **kwargs):
+        self.info = info
+        super().__init__(_msg, **kwargs)
 
 
 class UserCancelled(SafeCancellation):

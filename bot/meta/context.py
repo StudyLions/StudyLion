@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 
 
 # Contains the current command context, if applicable
-context: Optional['LionContext'] = ContextVar('context', default=None)
+context: ContextVar[Optional['LionContext']] = ContextVar('context', default=None)
 
 # Contains the current LionBot instance
-ctx_bot: Optional['LionBot'] = ContextVar('bot', default=None)
+ctx_bot: ContextVar[Optional['LionBot']] = ContextVar('bot', default=None)

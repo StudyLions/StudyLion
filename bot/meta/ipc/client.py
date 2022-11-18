@@ -3,6 +3,8 @@ import asyncio
 import logging
 import pickle
 
+from ..logger import logging_context
+
 
 logger = logging.getLogger(__name__)
 
@@ -22,6 +24,7 @@ class AppClient:
 
         self._listener: Optional[asyncio.Server] = None  # Local client server
         self._server = None  # Connection to the registry server
+        self._keepalive = None
 
         self.register_route('new_peer')(self.new_peer)
         self.register_route('drop_peer')(self.drop_peer)
@@ -29,7 +32,7 @@ class AppClient:
 
     def register_route(self, name=None):
         def wrapper(coro):
-            route = AppRoute(coro, name)
+            route = AppRoute(coro, client=self, name=name)
             self.routes[route.name] = route
             return route
         return wrapper
@@ -49,24 +52,31 @@ class AppClient:
             self.peers = peers
             self._server = (reader, writer)
         except Exception:
-            logger.exception("Could not connect to registry server. Trying again in 30 seconds.")
+            logger.exception(
+                "Could not connect to registry server. Trying again in 30 seconds.",
+                extra={'action': 'Connect'}
+            )
             await asyncio.sleep(30)
             asyncio.create_task(self.server_connection())
         else:
-            logger.info("Connected to the registry server, launching keepalive.")
-            asyncio.create_task(self._server_keepalive())
+            logger.debug(
+                "Connected to the registry server, launching keepalive.",
+                extra={'action': 'Connect'}
+            )
+            self._keepalive = asyncio.create_task(self._server_keepalive())
 
     async def _server_keepalive(self):
-        if self._server is None:
-            raise ValueError("Cannot keepalive non-existent server!")
-        reader, write = self._server
-        try:
-            await reader.read()
-        except Exception:
-            logger.exception("Lost connection to address server. Reconnecting...")
-        else:
-            # Connection ended or broke
-            logger.info("Lost connection to address server. Reconnecting...")
+        with logging_context(action='Keepalive'):
+            if self._server is None:
+                raise ValueError("Cannot keepalive non-existent server!")
+            reader, write = self._server
+            try:
+                await reader.read()
+            except Exception:
+                logger.exception("Lost connection to address server. Reconnecting...")
+            else:
+                # Connection ended or broke
+                logger.info("Lost connection to address server. Reconnecting...")
         await asyncio.sleep(30)
         asyncio.create_task(self.server_connection())
 
@@ -85,55 +95,63 @@ class AppClient:
         ...
 
     async def request(self, appid, payload: 'AppPayload'):
-        try:
-            if appid not in self.peers:
-                raise ValueError(f"Peer '{appid}' not found.")
-            logger.debug(f"Sending request to app '{appid}' with payload {payload}")
+        with logging_context(action=f"Req {appid}"):
+            try:
+                if appid not in self.peers:
+                    raise ValueError(f"Peer '{appid}' not found.")
+                logger.debug(f"Sending request to app '{appid}' with payload {payload}")
 
-            address = self.peers[appid]
-            reader, writer = await asyncio.open_connection(**address)
+                address = self.peers[appid]
+                reader, writer = await asyncio.open_connection(**address)
 
-            writer.write(payload.encoded())
-            await writer.drain()
-            writer.write_eof()
-            result = await reader.read()
-            writer.close()
-            decoded = payload.route.decode(result)
-            return decoded
-        except Exception:
-            logging.exception(f"Failed to send request to {appid}'")
-            return None
+                writer.write(payload.encoded())
+                await writer.drain()
+                writer.write_eof()
+                result = await reader.read()
+                writer.close()
+                decoded = payload.route.decode(result)
+                return decoded
+            except Exception:
+                logging.exception(f"Failed to send request to {appid}'")
+                return None
 
-    async def requestall(self, payload):
-        results = await asyncio.gather(*(self.request(appid, payload) for appid in self.peers))
-        return dict(zip(self.peers.keys(), results))
+    async def requestall(self, payload, except_self=True):
+        with logging_context(action="Broadcast"):
+            results = await asyncio.gather(
+                *(self.request(appid, payload) for appid in self.peers if (appid != self.appid or not except_self)),
+                return_exceptions=True
+            )
+            return dict(zip(self.peers.keys(), results))
 
     async def handle_request(self, reader, writer):
-        data = await reader.read()
-        loaded = pickle.loads(data)
-        route, args, kwargs = loaded
+        with logging_context(action="SERV"):
+            data = await reader.read()
+            loaded = pickle.loads(data)
+            route, args, kwargs = loaded
 
-        logger.debug(f"AppClient {self.appid} handling request on route '{route}' with args {args} and kwargs {kwargs}")
+        with logging_context(action=f"SERV {route}"):
+            logger.debug(f"AppClient {self.appid} handling request on route '{route}' with args {args} and kwargs {kwargs}")
 
-        if route in self.routes:
-            try:
-                await self.routes[route].run((reader, writer), args, kwargs)
-            except Exception:
-                logger.exception(f"Fatal exception during route '{route}'. This should never happen!")
-        else:
-            logger.warning(f"Appclient '{self.appid}' recieved unknown route {route}. Ignoring.")
-        writer.write_eof()
+            if route in self.routes:
+                try:
+                    await self.routes[route].run((reader, writer), args, kwargs)
+                except Exception:
+                    logger.exception(f"Fatal exception during route '{route}'. This should never happen!")
+            else:
+                logger.warning(f"Appclient '{self.appid}' recieved unknown route {route}. Ignoring.")
+            writer.write_eof()
 
     async def connect(self):
         """
         Start the local peer server.
         Connect to the address server.
         """
-        # Start the client server
-        self._listener = await asyncio.start_server(self.handle_request, **self.address, start_serving=True)
+        with logging_context(stack=['ShardTalk']):
+            # Start the client server
+            self._listener = await asyncio.start_server(self.handle_request, **self.address, start_serving=True)
 
-        logger.info(f"Serving on {self.address}")
-        await self.server_connection()
+            logger.info(f"Serving on {self.address}")
+            await self.server_connection()
 
 
 class AppPayload:
@@ -150,13 +168,20 @@ class AppPayload:
     def encoded(self):
         return pickle.dumps((self.route.name, self.args, self.kwargs))
 
+    async def send(self, appid, **kwargs):
+        return await self.route._client.request(appid, self, **kwargs)
+
+    async def broadcast(self, **kwargs):
+        return await self.route._client.requestall(self, **kwargs)
+
 
 class AppRoute:
-    __slots__ = ('func', 'name')
+    __slots__ = ('func', 'name', '_client')
 
-    def __init__(self, func, name=None):
+    def __init__(self, func, client=None, name=None):
         self.func = func
         self.name = name or func.__name__
+        self._client = client
 
     def __call__(self, *args, **kwargs):
         return AppPayload(self, *args, **kwargs)

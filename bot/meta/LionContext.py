@@ -1,10 +1,13 @@
 import types
 import logging
 from collections import namedtuple
-from typing import Optional
+from typing import Optional, TYPE_CHECKING
 
 import discord
 from discord.ext.commands import Context
+
+if TYPE_CHECKING:
+    from .LionBot import LionBot
 
 
 logger = logging.getLogger(__name__)
@@ -34,7 +37,7 @@ FlatContext = namedtuple(
 )
 
 
-class LionContext(Context):
+class LionContext(Context['LionBot']):
     """
     Represents the context a command is invoked under.
 

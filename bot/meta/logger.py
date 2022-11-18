@@ -6,8 +6,9 @@ from logging.handlers import QueueListener, QueueHandler
 from queue import SimpleQueue
 from contextlib import contextmanager
 from io import StringIO
-
+from functools import wraps
 from contextvars import ContextVar
+
 from discord import Webhook, File
 import aiohttp
 
@@ -44,6 +45,16 @@ def logging_context(context=None, action=None, stack=None):
             log_action_stack.reset(actions_t)
         if action is not None:
             log_action_stack.set(astack)
+
+
+def log_wrap(**kwargs):
+    def decorator(func):
+        @wraps(func)
+        async def wrapped(*w_args, **w_kwargs):
+            with logging_context(**kwargs):
+                return await func(*w_args, **w_kwargs)
+        return wrapped
+    return decorator
 
 
 RESET_SEQ = "\033[0m"

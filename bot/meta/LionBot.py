@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional, TYPE_CHECKING
 import logging
 import asyncio
 
@@ -18,12 +18,15 @@ from .LionContext import LionContext
 from .LionTree import LionTree
 from .errors import HandledException, SafeCancellation
 
+if TYPE_CHECKING:
+    from core import CoreCog
+
 logger = logging.getLogger(__name__)
 
 
 class LionBot(Bot):
     def __init__(
-        self, *args, appname: str, db: Database, config: Conf,
+        self, *args, appname: str, shardname: str, db: Database, config: Conf,
         initial_extensions: List[str], web_client: ClientSession, app_ipc,
         testing_guilds: List[int] = [], **kwargs
     ):
@@ -34,9 +37,11 @@ class LionBot(Bot):
         self.initial_extensions = initial_extensions
         self.db = db
         self.appname = appname
+        self.shardname = shardname
 #        self.appdata = appdata
         self.config = config
         self.app_ipc = app_ipc
+        self.core: Optional['CoreCog'] = None
 
     async def setup_hook(self) -> None:
         log_context.set(f"APP: {self.application_id}")
@@ -72,10 +77,11 @@ class LionBot(Bot):
         logger.info(
             f"Logged in as {self.application.name}\n"
             f"Application id {self.application.id}\n"
-            f"Shard Talk identifier {self.appname}\n"
+            f"Shard Talk identifier {self.shardname}\n"
             "------------------------------\n"
             f"Enabled Modules: {', '.join(self.extensions.keys())}\n"
             f"Loaded Cogs: {', '.join(self.cogs.keys())}\n"
+            f"Registered Data: {', '.join(self.db.registries.keys())}\n"
             f"Listening for {sum(1 for _ in self.walk_commands())} commands\n"
             "------------------------------\n"
             f"Logged in to {len(self.guilds)} guilds on shard {self.shard_id} of {self.shard_count}\n"
