@@ -1,9 +1,14 @@
+from typing import NamedTuple, Optional, Sequence, Union, overload, List
 import datetime
 import iso8601  # type: ignore
 import re
 from contextvars import Context
 
 import discord
+from discord import Embed, File, GuildSticker, StickerItem, AllowedMentions, Message, MessageReference, PartialMessage
+from discord.ui import View
+
+from meta.errors import UserInputError
 
 # from cmdClient.lib import SafeCancellation
 
@@ -16,32 +21,178 @@ tick = '✅'
 cross = '❌'
 
 
-def prop_tabulate(prop_list: list[str], value_list: list[str], indent=True, colon=True) -> str:
+class MessageArgs:
     """
-    Turns a list of properties and corresponding list of values into
+    Utility class for storing message creation and editing arguments.
+    """
+    # TODO: Overrides for mutually exclusive arguments, see Messageable.send
+
+    @overload
+    def __init__(
+        self,
+        content: Optional[str] = ...,
+        *,
+        tts: bool = ...,
+        embed: Embed = ...,
+        file: File = ...,
+        stickers: Sequence[Union[GuildSticker, StickerItem]] = ...,
+        delete_after: float = ...,
+        nonce: Union[str, int] = ...,
+        allowed_mentions: AllowedMentions = ...,
+        reference: Union[Message, MessageReference, PartialMessage] = ...,
+        mention_author: bool = ...,
+        view: View = ...,
+        suppress_embeds: bool = ...,
+    ) -> None:
+        ...
+
+    @overload
+    def __init__(
+        self,
+        content: Optional[str] = ...,
+        *,
+        tts: bool = ...,
+        embed: Embed = ...,
+        files: Sequence[File] = ...,
+        stickers: Sequence[Union[GuildSticker, StickerItem]] = ...,
+        delete_after: float = ...,
+        nonce: Union[str, int] = ...,
+        allowed_mentions: AllowedMentions = ...,
+        reference: Union[Message, MessageReference, PartialMessage] = ...,
+        mention_author: bool = ...,
+        view: View = ...,
+        suppress_embeds: bool = ...,
+    ) -> None:
+        ...
+
+    @overload
+    def __init__(
+        self,
+        content: Optional[str] = ...,
+        *,
+        tts: bool = ...,
+        embeds: Sequence[Embed] = ...,
+        file: File = ...,
+        stickers: Sequence[Union[GuildSticker, StickerItem]] = ...,
+        delete_after: float = ...,
+        nonce: Union[str, int] = ...,
+        allowed_mentions: AllowedMentions = ...,
+        reference: Union[Message, MessageReference, PartialMessage] = ...,
+        mention_author: bool = ...,
+        view: View = ...,
+        suppress_embeds: bool = ...,
+    ) -> None:
+        ...
+
+    @overload
+    def __init__(
+        self,
+        content: Optional[str] = ...,
+        *,
+        tts: bool = ...,
+        embeds: Sequence[Embed] = ...,
+        files: Sequence[File] = ...,
+        stickers: Sequence[Union[GuildSticker, StickerItem]] = ...,
+        delete_after: float = ...,
+        nonce: Union[str, int] = ...,
+        allowed_mentions: AllowedMentions = ...,
+        reference: Union[Message, MessageReference, PartialMessage] = ...,
+        mention_author: bool = ...,
+        view: View = ...,
+        suppress_embeds: bool = ...,
+    ) -> None:
+        ...
+
+    def __init__(self, **kwargs):
+        self.kwargs = kwargs
+
+    @property
+    def send_args(self) -> dict:
+        return self.kwargs
+
+    @property
+    def edit_args(self) -> dict:
+        args = {}
+        kept = (
+            'content', 'embed', 'embeds', 'delete_after', 'allowed_mentions', 'view'
+        )
+        for k in kept:
+            if k in self.kwargs:
+                args[k] = self.kwargs[k]
+
+        if 'file' in self.kwargs:
+            args['attachments'] = [self.kwargs['file']]
+
+        if 'files' in self.kwargs:
+            args['attachments'] = self.kwargs['files']
+
+        if 'suppress_embeds' in self.kwargs:
+            args['suppress'] = self.kwargs['suppress_embeds']
+
+        return args
+
+
+def tabulate(
+    *fields: tuple[str, str],
+    row_format: str = "`{invis}{key:<{pad}}{colon}`\t{value}",
+    sub_format: str = "`{invis:<{pad}}{invis}`\t{value}",
+    colon: str = ':',
+    invis: str = "​",
+    **args
+) -> list[str]:
+    """
+    Turns a list of (property, value) pairs into
     a pretty string with one `prop: value` pair each line,
     padded so that the colons in each line are lined up.
-    Handles empty props by using an extra couple of spaces instead of a `:`.
+    Use `\\r\\n` in a value to break the line with padding.
 
     Parameters
     ----------
-    prop_list: List[str]
-        List of short names to put on the right side of the list.
-        Empty props are considered to be "newlines" for the corresponding value.
-    value_list: List[str]
-        List of values corresponding to the properties above.
-    indent: bool
-        Whether to add padding so the properties are right-adjusted.
+    fields: List[tuple[str, str]]
+        List of (key, value) pairs.
+    row_format: str
+        The format string used to format each row.
+    sub_format: str
+        The format string used to format each subline in a row.
+    colon: str
+        The colon character used.
+    invis: str
+        The invisible character used (to avoid Discord stripping the string).
 
-    Returns: str
+    Returns: List[str]
+        The list of resulting table rows.
+        Each row corresponds to one (key, value) pair from fields.
     """
-    max_len = max(len(prop) for prop in prop_list)
-    return "".join(["`{}{}{}`\t{}{}".format("​ " * (max_len - len(prop)) if indent else "",
-                                            prop,
-                                            (":" if len(prop) else "​ " * 2) if colon else '',
-                                            value_list[i],
-                                            '' if str(value_list[i]).endswith("```") else '\n')
-                    for i, prop in enumerate(prop_list)])
+    max_len = max(len(field[0]) for field in fields)
+
+    rows = []
+    for field in fields:
+        key = field[0]
+        value = field[1]
+        lines = value.split('\r\n')
+
+        row_line = row_format.format(
+            invis=invis,
+            key=key,
+            pad=max_len,
+            colon=colon,
+            value=lines[0],
+            field=field,
+            **args
+        )
+        if len(lines) > 1:
+            row_lines = [row_line]
+            for line in lines[1:]:
+                sub_line = sub_format.format(
+                    invis=invis,
+                    pad=max_len + len(colon),
+                    value=line,
+                    **args
+                )
+                row_lines.append(sub_line)
+            row_line = '\n'.join(row_lines)
+        rows.append(row_line)
+    return rows
 
 
 def paginate_list(item_list: list[str], block_length=20, style="markdown", title=None) -> list[str]:
@@ -382,6 +533,12 @@ async def mail(client: discord.Client, channelid: int, **msg_args) -> discord.Me
     return await channel.send(**msg_args)
 
 
+class EmbedField(NamedTuple):
+    name: str
+    value: str
+    inline: Optional[bool] = True
+
+
 def emb_add_fields(embed: discord.Embed, emb_fields: list[tuple[str, str, bool]]):
     """
     Append embed fields to an embed.
@@ -461,3 +618,38 @@ def multiple_replace(string: str, rep_dict: dict[str, str]) -> str:
 def recover_context(context: Context):
     for var in context:
         var.set(context[var])
+
+
+def parse_ids(idstr: str) -> List[int]:
+    """
+    Parse a provided comma separated string of maybe-mentions, maybe-ids, into a list of integer ids.
+
+    Object agnostic, so all mention tokens are stripped.
+    Raises UserInputError if an id is invalid,
+    setting `orig` and `item` info fields.
+    """
+    # Extract ids from string
+    splititer = (split.strip('<@!#&>, ') for split in idstr.split(','))
+    splits = [split for split in splititer if split]
+
+    # Check they are integers
+    if (not_id := next((split for split in splits if not split.isdigit()), None)) is not None:
+        raise UserInputError("Could not extract an id from `$item`!", {'orig': idstr, 'item': not_id})
+
+    # Cast to integer and return
+    return list(map(int, splits))
+
+
+def error_embed(error, **kwargs) -> discord.Embed:
+    embed = discord.Embed(
+        colour=discord.Colour.red(),
+        description=error,
+        timestamp=utc_now()
+    )
+    return embed
+
+
+class DotDict(dict):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.__dict__ = self
