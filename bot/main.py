@@ -1,10 +1,12 @@
 import asyncio
 import logging
 
+import aiohttp
 import discord
 from discord.ext import commands
 
 from meta import LionBot, conf, sharding, appname, shard_talk
+from meta.app import shardname
 from meta.logger import log_context, log_action_stack, logging_context
 from meta.context import ctx_bot
 
@@ -12,20 +14,6 @@ from data import Database
 
 from constants import DATA_VERSION
 
-# from data import tables
-
-# Note: This MUST be imported after core, due to table definition orders
-# from settings import AppSettings
-# log_context.set(f"APP: {appname}")
-
-# client.appdata = core.data.meta.fetch_or_create(appname)
-
-# client.data = tables
-
-# client.settings = AppSettings(conf.bot['data_appid'])
-
-# Initialise all modules
-# client.initialise_modules()
 
 for name in conf.config.options('LOGGING_LEVELS', no_defaults=True):
     logging.getLogger(name).setLevel(conf.logging_levels[name])
@@ -50,27 +38,29 @@ async def main():
             logger.critical(error)
             raise RuntimeError(error)
 
-        async with LionBot(
-            command_prefix=commands.when_mentioned,
-            intents=intents,
-            appname=appname,
-            db=db,
-            config=conf,
-            initial_extensions=['modules'],
-            web_client=None,
-            app_ipc=shard_talk,
-            testing_guilds=[889875661848723456, 879411098384752672],
-            shard_id=sharding.shard_number,
-            shard_count=sharding.shard_count
-        ) as lionbot:
-            ctx_bot.set(lionbot)
-            try:
-                with logging_context(context=f"APP: {appname}"):
-                    logger.info("StudyLion initialised, starting!", extra={'action': 'Starting'})
-                    await lionbot.start(conf.bot['TOKEN'])
-            except asyncio.CancelledError:
-                with logging_context(context=f"APP: {appname}", action="Shutting Down"):
-                    logger.info("StudyLion closed, shutting down.", exc_info=True)
+        async with aiohttp.ClientSession() as session:
+            async with LionBot(
+                command_prefix=commands.when_mentioned,
+                intents=intents,
+                appname=appname,
+                shardname=shardname,
+                db=db,
+                config=conf,
+                initial_extensions=['core', 'modules'],
+                web_client=session,
+                app_ipc=shard_talk,
+                testing_guilds=conf.bot.getintlist('admin_guilds'),
+                shard_id=sharding.shard_number,
+                shard_count=sharding.shard_count
+            ) as lionbot:
+                ctx_bot.set(lionbot)
+                try:
+                    with logging_context(context=f"APP: {appname}"):
+                        logger.info("StudyLion initialised, starting!", extra={'action': 'Starting'})
+                        await lionbot.start(conf.bot['TOKEN'])
+                except asyncio.CancelledError:
+                    with logging_context(context=f"APP: {appname}", action="Shutting Down"):
+                        logger.info("StudyLion closed, shutting down.", exc_info=True)
 
 
 def _main():
