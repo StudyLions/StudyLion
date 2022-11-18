@@ -46,7 +46,7 @@ async def main():
                 shardname=shardname,
                 db=db,
                 config=conf,
-                initial_extensions=['core', 'modules'],
+                initial_extensions=['core', 'analytics', 'modules'],
                 web_client=session,
                 app_ipc=shard_talk,
                 testing_guilds=conf.bot.getintlist('admin_guilds'),

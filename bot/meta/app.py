@@ -35,6 +35,7 @@ log_app.set(shardname)
 
 shard_talk = AppClient(
     shardname,
+    appname,
     {'host': args.host, 'port': args.port},
     {'host': conf.appipc['server_host'], 'port': int(conf.appipc['server_port'])}
 )

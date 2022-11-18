@@ -15,8 +15,9 @@ Address: TypeAlias = dict[str, Any]
 class AppClient:
     routes: dict[str, 'AppRoute'] = {}  # route_name -> Callable[Any, Awaitable[Any]]
 
-    def __init__(self, appid: str, client_address: Address, server_address: Address):
-        self.appid = appid
+    def __init__(self, appid: str, basename: str, client_address: Address, server_address: Address):
+        self.appid = appid  # String identifier for this ShardTalk client
+        self.basename = basename  # Prefix used to recognise app peers
         self.address = client_address
         self.server_address = server_address
 
@@ -29,6 +30,10 @@ class AppClient:
         self.register_route('new_peer')(self.new_peer)
         self.register_route('drop_peer')(self.drop_peer)
         self.register_route('peer_list')(self.peer_list)
+
+    @property
+    def my_peers(self):
+        return {peerid: peer for peerid, peer in self.peers.items() if peerid.startswith(self.basename)}
 
     def register_route(self, name=None):
         def wrapper(coro):
@@ -94,7 +99,7 @@ class AppClient:
         # TODO
         ...
 
-    async def request(self, appid, payload: 'AppPayload'):
+    async def request(self, appid, payload: 'AppPayload', wait_for_reply=True):
         with logging_context(action=f"Req {appid}"):
             try:
                 if appid not in self.peers:
@@ -107,18 +112,22 @@ class AppClient:
                 writer.write(payload.encoded())
                 await writer.drain()
                 writer.write_eof()
-                result = await reader.read()
-                writer.close()
-                decoded = payload.route.decode(result)
-                return decoded
+                if wait_for_reply:
+                    result = await reader.read()
+                    writer.close()
+                    decoded = payload.route.decode(result)
+                    return decoded
+                else:
+                    return None
             except Exception:
                 logging.exception(f"Failed to send request to {appid}'")
                 return None
 
-    async def requestall(self, payload, except_self=True):
+    async def requestall(self, payload, except_self=True, only_my_peers=True):
         with logging_context(action="Broadcast"):
+            peerlist = self.my_peers if only_my_peers else self.peers
             results = await asyncio.gather(
-                *(self.request(appid, payload) for appid in self.peers if (appid != self.appid or not except_self)),
+                *(self.request(appid, payload) for appid in peerlist if (appid != self.appid or not except_self)),
                 return_exceptions=True
             )
             return dict(zip(self.peers.keys(), results))
