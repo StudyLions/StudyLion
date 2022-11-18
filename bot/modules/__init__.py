@@ -1,2 +1,11 @@
+this_package = 'modules'
+
+active = [
+    '.sysadmin',
+    '.test'
+]
+
+
 async def setup(bot):
-    await bot.load_extension('modules.bot_admin')
+    for ext in active:
+        await bot.load_extension(ext, package=this_package)
