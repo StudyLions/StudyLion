@@ -8,8 +8,6 @@ import discord
 from discord import Embed, File, GuildSticker, StickerItem, AllowedMentions, Message, MessageReference, PartialMessage
 from discord.ui import View
 
-from meta.errors import UserInputError
-
 # from cmdClient.lib import SafeCancellation
 
 
@@ -628,6 +626,8 @@ def parse_ids(idstr: str) -> List[int]:
     Raises UserInputError if an id is invalid,
     setting `orig` and `item` info fields.
     """
+    from meta.errors import UserInputError
+
     # Extract ids from string
     splititer = (split.strip('<@!#&>, ') for split in idstr.split(','))
     splits = [split for split in splititer if split]
