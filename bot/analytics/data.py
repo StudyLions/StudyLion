@@ -60,9 +60,10 @@ class AnalyticsData(Registry, name='analytics'):
             snapshotid SERIAL PRIMARY KEY,
             appname TEXT NOT NULL REFERENCES bot_config (appname),
             guild_count INTEGER NOT NULL,
-            study_time BIGINT NOT NULL,
+            member_count INTEGER NOT NULL,
+            user_count INTEGER NOT NULL,
             in_voice INTEGER NOT NULL,
-            _created_at TIMESTAMPTZ NOT NULL DEFAULT (now() at time zone 'utc')
+            created_at TIMESTAMPTZ NOT NULL DEFAULT (now() at time zone 'utc')
         );
         """
         _schema_ = 'analytics'
@@ -71,8 +72,9 @@ class AnalyticsData(Registry, name='analytics'):
         snapshotid = Integer(primary=True)
         appname = String()
         guild_count = Integer()
+        member_count = Integer()
+        user_count = Integer()
         in_voice = Integer()
-        study_time = Integer()
         created_at = Timestamp()
 
     class Events(RowModel):
@@ -105,7 +107,7 @@ class AnalyticsData(Registry, name='analytics'):
             cogname TEXT,
             userid BIGINT NOT NULL,
             status analytics.CommandStatus NOT NULL,
-            execution_time INTEGER NOT NULL
+            execution_time REAL NOT NULL
         ) INHERITS (analytics.events);
         """
         _schema_ = 'analytics'
@@ -121,7 +123,8 @@ class AnalyticsData(Registry, name='analytics'):
         cogname = String()
         userid = Integer()
         status: Column[CommandStatus] = Column()
-        execution_time = Integer()
+        error = String()
+        execution_time: Column[float] = Column()
 
     class Guilds(RowModel):
         """
@@ -150,7 +153,7 @@ class AnalyticsData(Registry, name='analytics'):
         CREATE TABLE analytics.voice_sessions(
             userid BIGINT NOT NULL,
             action analytics.VoiceAction NOT NULL
-        );
+        ) INHERITS (analytics.events);
         """
         _schema_ = 'analytics'
         _tablename_ = 'voice_sessions'
@@ -171,7 +174,7 @@ class AnalyticsData(Registry, name='analytics'):
         CREATE TABLE analytics.gui_renders(
             cardname TEXT NOT NULL,
             duration INTEGER NOT NULL
-        );
+        ) INHERITS (analytics.events);
         """
         _schema_ = 'analytics'
         _tablename_ = 'gui_renders'

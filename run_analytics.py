@@ -4,8 +4,9 @@ import asyncio
 
 sys.path.insert(0, os.path.join(os.getcwd(), "bot"))
 
-from bot.analytics.server import main
+from bot.analytics.server import AnalyticsServer
 
 
 if __name__ == '__main__':
-    asyncio.run(main())
+    server = AnalyticsServer()
+    asyncio.run(server.run())

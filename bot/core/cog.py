@@ -45,7 +45,7 @@ class CoreCog(LionCog):
                 shard_count=self.bot.shard_count
             )
         self.bot.add_listener(self.shard_update_guilds, name='on_guild_join')
-        self.bot.add_listener(self.shard_update_guilds, name='on_guild_leave')
+        self.bot.add_listener(self.shard_update_guilds, name='on_guild_remove')
 
         self.bot.core = self
 

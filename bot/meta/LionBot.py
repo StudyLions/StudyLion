@@ -98,7 +98,8 @@ class LionBot(Bot):
 
     async def on_command(self, ctx: LionContext):
         logger.info(
-            f"Executing command '{ctx.command.qualified_name}' (from module '{ctx.cog.__cog_name__}') "
+            f"Executing command '{ctx.command.qualified_name}' "
+            f"(from module '{ctx.cog.qualified_name if ctx.cog else 'None'}') "
             f"with arguments {ctx.args} and kwargs {ctx.kwargs}.",
             extra={'with_ctx': True}
         )
@@ -109,11 +110,15 @@ class LionBot(Bot):
         if isinstance(ctx.command, HybridCommand) and ctx.command.app_command:
             cmd_str = ctx.command.app_command.to_dict()
         try:
-            raise exception
+            raise exception from None
         except (HybridCommandError, CommandInvokeError, appCommandInvokeError):
-            original = exception.original
             try:
-                raise original
+                if isinstance(exception.original, (HybridCommandError, CommandInvokeError, appCommandInvokeError)):
+                    original = exception.original.original
+                    raise original
+                else:
+                    original = exception.original
+                    raise original
             except HandledException:
                 pass
             except SafeCancellation:
@@ -151,7 +156,6 @@ class LionBot(Bot):
             except Exception:
                 logger.exception(
                     f"Caught an unknown CommandInvokeError while executing: {cmd_str}",
-                    exc_info=exception,
                     extra={'action': 'BotError', 'with_ctx': True}
                 )
 
@@ -183,6 +187,5 @@ class LionBot(Bot):
             # Something is very wrong here, don't attempt user interaction.
             logger.exception(
                 f"Caught an unknown top-level exception while executing: {cmd_str}",
-                exc_info=exception,
                 extra={'action': 'BotError', 'with_ctx': True}
             )

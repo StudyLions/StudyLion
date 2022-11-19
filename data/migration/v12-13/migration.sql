@@ -58,7 +58,8 @@ CREATE TABLE analytics.snapshots(
   snapshotid SERIAL PRIMARY KEY,
   appname TEXT NOT NULL REFERENCES bot_config (appname),
   guild_count INTEGER NOT NULL,
-  study_time BIGINT NOT NULL,
+  member_count INTEGER NOT NULL,
+  user_count INTEGER NOT NULL,
   in_voice INTEGER NOT NULL,
   created_at TIMESTAMPTZ NOT NULL DEFAULT (now() at time zone 'utc')
 );
@@ -83,7 +84,8 @@ CREATE TABLE analytics.commands(
   cogname TEXT,
   userid BIGINT NOT NULL,
   status analytics.CommandStatus NOT NULL,
-  execution_time INTEGER NOT NULL
+  error TEXT,
+  execution_time REAL NOT NULL
 ) INHERITS (analytics.events);
 
 
@@ -106,9 +108,9 @@ CREATE TYPE analytics.VoiceAction AS ENUM(
 CREATE TABLE analytics.voice_sessions(
   userid BIGINT NOT NULL,
   action analytics.VoiceAction NOT NULL
-);
+) INHERITS (analytics.events);
 
 CREATE TABLE analytics.gui_renders(
   cardname TEXT NOT NULL,
   duration INTEGER NOT NULL
-);
+) INHERITS (analytics.events);
