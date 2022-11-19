@@ -163,7 +163,6 @@ class Blacklists(LionCog):
         logger.info(
             f"Owner <aid: {actorid}> removed blacklist for guild(s) {gid_str}."
         )
-        await self.check_guild_blacklist()
 
     @cmds.hybrid_command(
         name="blacklist",
@@ -330,7 +329,7 @@ class BlacklistUI(LeoUI):
         self.page_no += 1
         await self.show()
 
-    @select(cls=Select, max_values=block_len)
+    @select(cls=Select)
     async def select_remove(self, interaction, selected):
         self._show_remove = False
         if not selected.values:
