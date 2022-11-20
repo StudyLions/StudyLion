@@ -110,7 +110,7 @@ class LionBot(Bot):
         if isinstance(ctx.command, HybridCommand) and ctx.command.app_command:
             cmd_str = ctx.command.app_command.to_dict()
         try:
-            raise exception from None
+            raise exception
         except (HybridCommandError, CommandInvokeError, appCommandInvokeError):
             try:
                 if isinstance(exception.original, (HybridCommandError, CommandInvokeError, appCommandInvokeError)):

@@ -1,6 +1,9 @@
+from itertools import chain
+from psycopg import sql
 from cachetools import TTLCache
 
 from data import Table, Registry, Column, RowModel
+from data.models import WeakCache
 from data.columns import Integer, String, Bool, Timestamp
 
 
@@ -56,22 +59,86 @@ class CoreData(Registry, name="core"):
         guild_count = Integer()
 
     class User(RowModel):
-        """User model, representing configuration data for a single user."""
+        """
+        User model, representing configuration data for a single user.
+
+        Schema
+        ------
+        CREATE TABLE user_config(
+            userid BIGINT PRIMARY KEY,
+            timezone TEXT,
+            topgg_vote_reminder BOOLEAN,
+            avatar_hash TEXT,
+            name TEXT,
+            API_timestamp BIGINT,
+            gems INTEGER DEFAULT 0,
+            first_seen TIMESTAMPTZ DEFAULT now(),
+            last_seen TIMESTAMPTZ
+        );
+        """
 
         _tablename_ = "user_config"
-        _cache_: TTLCache[tuple[int], 'User'] = TTLCache(5000, ttl=60*5)
+        _cache_: WeakCache[tuple[int], 'CoreData.User'] = WeakCache(TTLCache(1000, ttl=60*5))
 
         userid = Integer(primary=True)
-        timezone = Column()
-        topgg_vote_reminder = Column()
+        timezone = String()
+        topgg_vote_reminder = Bool()
         avatar_hash = String()
+        name = String()
+        API_timestamp = Integer()
         gems = Integer()
+        first_seen = Timestamp()
+        last_seen = Timestamp()
 
     class Guild(RowModel):
-        """Guild model, representing configuration data for a single guild."""
+        """
+        Guild model, representing configuration data for a single guild.
+
+        Schema
+        ------
+        CREATE TABLE guild_config(
+            guildid BIGINT PRIMARY KEY,
+            admin_role BIGINT,
+            mod_role BIGINT,
+            event_log_channel BIGINT,
+            mod_log_channel BIGINT,
+            alert_channel BIGINT,
+            studyban_role BIGINT,
+            min_workout_length INTEGER,
+            workout_reward INTEGER,
+            max_tasks INTEGER,
+            task_reward INTEGER,
+            task_reward_limit INTEGER,
+            study_hourly_reward INTEGER,
+            study_hourly_live_bonus INTEGER,
+            renting_price INTEGER,
+            renting_category BIGINT,
+            renting_cap INTEGER,
+            renting_role BIGINT,
+            renting_sync_perms BOOLEAN,
+            accountability_category BIGINT,
+            accountability_lobby BIGINT,
+            accountability_bonus INTEGER,
+            accountability_reward INTEGER,
+            accountability_price INTEGER,
+            video_studyban BOOLEAN,
+            video_grace_period INTEGER,
+            greeting_channel BIGINT,
+            greeting_message TEXT,
+            returning_message TEXT,
+            starting_funds INTEGER,
+            persist_roles BOOLEAN,
+            daily_study_cap INTEGER,
+            pomodoro_channel BIGINT,
+            name TEXT,
+            first_joined_at TIMESTAMPTZ DEFAULT now(),
+            left_at TIMESTAMPTZ
+        );
+
+        """
 
         _tablename_ = "guild_config"
-        _cache_: TTLCache[tuple[int], 'Guild'] = TTLCache(2500, ttl=60*5)
+        _cache_: WeakCache[tuple[int], 'CoreData.Guild'] = WeakCache(TTLCache(1000, ttl=60*5))
 
         guildid = Integer(primary=True)
 
@@ -121,15 +188,41 @@ class CoreData(Registry, name="core"):
 
         name = String()
 
+        first_joined_at = Timestamp()
+        left_at = Timestamp()
+
     unranked_rows = Table('unranked_rows')
 
     donator_roles = Table('donator_roles')
 
-    class Member(RowModel):
-        """Member model, representing configuration data for a single member."""
+    member_ranks = Table('member_ranks')
 
+    class Member(RowModel):
+        """
+        Member model, representing configuration data for a single member.
+
+        Schema
+        ------
+        CREATE TABLE members(
+            guildid BIGINT,
+            userid BIGINT,
+            tracked_time INTEGER DEFAULT 0,
+            coins INTEGER DEFAULT 0,
+            workout_count INTEGER DEFAULT 0,
+            revision_mute_count INTEGER DEFAULT 0,
+            last_workout_start TIMESTAMP,
+            last_study_badgeid INTEGER REFERENCES study_badges ON DELETE SET NULL,
+            video_warned BOOLEAN DEFAULT FALSE,
+            display_name TEXT,
+            first_joined TIMESTAMPTZ DEFAULT now(),
+            last_left TIMESTAMPTZ,
+            _timestamp TIMESTAMP DEFAULT (now() at time zone 'utc'),
+            PRIMARY KEY(guildid, userid)
+        );
+        CREATE INDEX member_timestamps ON members (_timestamp);
+        """
         _tablename_ = 'members'
-        _cache_: TTLCache[tuple[int, int], 'Member'] = TTLCache(5000, ttl=60*5)
+        _cache_: WeakCache[tuple[int, int], 'CoreData.Member'] = WeakCache(TTLCache(5000, ttl=60*5))
 
         guildid = Integer(primary=True)
         userid = Integer(primary=True)
@@ -138,16 +231,18 @@ class CoreData(Registry, name="core"):
         coins = Integer()
 
         workout_count = Integer()
-        last_workout_start = Column()
         revision_mute_count = Integer()
+        last_workout_start = Timestamp()
         last_study_badgeid = Integer()
         video_warned = Bool()
         display_name = String()
 
-        _timestamp = Column()
+        first_joined = Timestamp()
+        last_left = Timestamp()
+        _timestamp = Timestamp()
 
         @classmethod
-        async def add_pending(cls, pending: tuple[int, int, int]) -> list['Member']:
+        async def add_pending(cls, pending: list[tuple[int, int, int]]) -> list['CoreData.Member']:
             """
             Safely add pending coins to a list of members.
 
@@ -156,5 +251,56 @@ class CoreData(Registry, name="core"):
             pending:
                 List of tuples of the form `(guildid, userid, pending_coins)`.
             """
+            query = sql.SQL("""
+                UPDATE members
+                SET
+                    coins = LEAST(coins + t.coin_diff, 2147483647)
+                FROM
+                    (VALUES {})
+                AS
+                    t (guildid, userid, coin_diff)
+                WHERE
+                    members.guildid = t.guildid
+                AND
+                    members.userid = t.userid
+                RETURNING *
+            """).format(
+                sql.SQL(', ').join(
+                    sql.SQL("({}, {}, {})").format(sql.Placeholder(), sql.Placeholder(), sql.Placeholder())
+                    for _ in pending
+                )
+            )
             # TODO: Replace with copy syntax/query?
-            ...
+            conn = await cls.table.connector.get_connection()
+            async with conn.cursor() as cursor:
+                await cursor.execute(
+                    query,
+                    tuple(chain(*pending))
+                )
+                rows = await cursor.fetchall()
+                return cls._make_rows(*rows)
+
+        @classmethod
+        async def get_member_rank(cls, guildid, userid, untracked):
+            """
+            Get the time and coin ranking for the given member, ignoring the provided untracked members.
+            """
+            conn = await cls.table.connector.get_connection()
+            async with conn.cursor() as curs:
+                await curs.execute(
+                    """
+                    SELECT
+                    time_rank, coin_rank
+                    FROM (
+                    SELECT
+                        userid,
+                        row_number() OVER (ORDER BY total_tracked_time DESC, userid ASC) AS time_rank,
+                        row_number() OVER (ORDER BY total_coins DESC, userid ASC) AS coin_rank
+                    FROM members_totals
+                    WHERE
+                        guildid=%s AND userid NOT IN %s
+                    ) AS guild_ranks WHERE userid=%s
+                    """,
+                    (guildid, tuple(untracked), userid)
+                )
+                return (await curs.fetchone()) or (None, None)

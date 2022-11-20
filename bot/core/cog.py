@@ -2,7 +2,7 @@ from typing import Optional
 
 import discord
 
-from meta import LionBot, LionCog
+from meta import LionBot, LionCog, LionContext
 from meta.app import shardname, appname
 from meta.logger import log_wrap
 from utils.lib import utc_now
@@ -10,6 +10,7 @@ from utils.lib import utc_now
 from settings.groups import SettingGroup
 
 from .data import CoreData
+from .lion import Lions
 
 
 class CoreCog(LionCog):
@@ -17,6 +18,7 @@ class CoreCog(LionCog):
         self.bot = bot
         self.data = CoreData()
         bot.db.load_registry(self.data)
+        self.lions = Lions(bot)
 
         self.app_config: Optional[CoreData.AppConfig] = None
         self.bot_config: Optional[CoreData.BotConfig] = None
@@ -31,6 +33,12 @@ class CoreCog(LionCog):
 
         self.app_cmd_cache: list[discord.app_commands.AppCommand] = []
         self.cmd_name_cache: dict[str, discord.app_commands.AppCommand] = {}
+
+    async def bot_check_once(self, ctx: LionContext):
+        lion = await self.lions.fetch(ctx.guild.id if ctx.guild else 0, ctx.author.id)
+        await lion.touch_discord_models(ctx.author)
+        ctx.alion = lion
+        return True
 
     async def cog_load(self):
         # Fetch (and possibly create) core data rows.
@@ -48,6 +56,7 @@ class CoreCog(LionCog):
         self.bot.add_listener(self.shard_update_guilds, name='on_guild_remove')
 
         self.bot.core = self
+        await self.bot.add_cog(self.lions)
 
         # Load the app command cache
         for guildid in self.bot.testing_guilds:
@@ -56,6 +65,7 @@ class CoreCog(LionCog):
         self.cmd_name_cache = {cmd.name: cmd for cmd in self.app_cmd_cache}
 
     async def cog_unload(self):
+        await self.bot.remove_cog(self.lions.qualified_name)
         self.bot.remove_listener(self.shard_update_guilds, name='on_guild_join')
         self.bot.remove_listener(self.shard_update_guilds, name='on_guild_leave')
         self.bot.core = None

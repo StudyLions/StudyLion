@@ -1,11 +1,10 @@
--- Add gem support
 ALTER TABLE user_config ADD COLUMN name TEXT;
-INSERT INTO VersionHistory (version, author) VALUES (13, 'v12-v13 migration');
-
--- Add first_joined_at to guild table
--- Add left_at to guild table
-ALTER TABLE guild_config ADD COLUMN first_joined_at TIMESTAMPTZ;
+ALTER TABLE guild_config ADD COLUMN first_joined_at TIMESTAMPTZ DEFAULT now();
 ALTER TABLE guild_config ADD COLUMN left_at TIMESTAMPTZ;
+ALTER TABLE members ADD COLUMN first_joined TIMESTAMPTZ DEFAULT now();
+ALTER TABLE members ADD COLUMN last_left TIMESTAMPTZ;
+ALTER TABLE user_config ADD COLUMN first_seen TIMESTAMPTZ DEFAULT now();
+ALTER TABLE user_config ADD COLUMN last_seen TIMESTAMPTZ;
 
 
 -- Bot config data
@@ -114,3 +113,10 @@ CREATE TABLE analytics.gui_renders(
   cardname TEXT NOT NULL,
   duration INTEGER NOT NULL
 ) INHERITS (analytics.events);
+
+
+-- TODO: Correct foreign keys for member table
+-- TODO: Add name to user
+-- TODO: Add first_joined and last_left time to member
+-- TODO: Add first_seen and last_seen time to User
+INSERT INTO VersionHistory (version, author) VALUES (13, 'v12-v13 migration');

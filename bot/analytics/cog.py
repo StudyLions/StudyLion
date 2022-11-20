@@ -51,6 +51,9 @@ class Analytics(LionCog):
         elif before.channel and not after.channel:
             # Member left channel
             action = VoiceAction.LEFT
+        else:
+            # Member change state, we don't need to deal with that
+            return
 
         event = VoiceEvent(
             appname=appname,

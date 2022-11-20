@@ -119,10 +119,9 @@ class Column(ColumnExpr, Generic[T]):
 
     def __set_name__(self, owner, name):
         # Only allow setting the owner once
-        if self.owner is None:
-            self.name = self.name or name
-            self.owner = owner
-            self.expr = sql.Identifier(self.owner._schema_, self.owner._tablename_, self.name)
+        self.name = self.name or name
+        self.owner = owner
+        self.expr = sql.Identifier(self.owner._schema_, self.owner._tablename_, self.name)
 
     @overload
     def __get__(self: 'Column[T]', obj: None, objtype: "None | Type['RowModel']") -> 'Column[T]':
@@ -136,10 +135,8 @@ class Column(ColumnExpr, Generic[T]):
         # Get value from row data or session
         if obj is None:
             return self
-        elif obj is self.owner:
-            return obj.data[self.name]
         else:
-            return self
+            return obj.data[self.name]
 
 
 class Integer(Column[int]):

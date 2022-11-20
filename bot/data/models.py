@@ -69,7 +69,11 @@ class RowTable(Table, Generic[RowT]):
         ).where(*args, **kwargs)
 
 
-class WeakCache(MutableMapping):
+WK = TypeVar('WK')
+WV = TypeVar('WV')
+
+
+class WeakCache(Generic[WK, WV], MutableMapping[WK, WV]):
     def __init__(self, ref_cache):
         self.ref_cache = ref_cache
         self.weak_cache = WeakValueDictionary()
