@@ -9,6 +9,9 @@ from data import WeakCache
 
 from .data import CoreData
 
+from .user_settings import UserSettings
+from .guild_settings import GuildSettings
+
 
 class Lion:
     """
@@ -25,9 +28,10 @@ class Lion:
 
     There is no guarantee that a corresponding discord Member actually exists.
     """
-    __slots__ = ('data', 'user_data', 'guild_data', '_member', '__weakref__')
+    __slots__ = ('bot', 'data', 'user_data', 'guild_data', '_member', '__weakref__')
 
-    def __init__(self, data: CoreData.Member, user_data: CoreData.User, guild_data: CoreData.Guild):
+    def __init__(self, bot: LionBot, data: CoreData.Member, user_data: CoreData.User, guild_data: CoreData.Guild):
+        self.bot = bot
         self.data = data
         self.user_data = user_data
         self.guild_data = guild_data
@@ -52,6 +56,15 @@ class Lion:
     def get(cls, guildid, userid):
         return cls._cache_.get((guildid, userid), None)
 
+    # ModelSettings interfaces
+    @property
+    def guild_settings(self):
+        return GuildSettings(self.guildid, self.guild_data, bot=self.bot)
+
+    @property
+    def user_settings(self):
+        return UserSettings(self.userid, self.user_data, bot=self.bot)
+
     # Setting interfaces
     # Each of these return an initialised member setting
 
@@ -74,7 +87,7 @@ class Lion:
     # Discord data cache
     async def touch_discord_models(self, member: discord.Member):
         """
-        Update the stored discord data from the givem member.
+        Update the stored discord data from the given user or member object.
         Intended to be used when we get member data from events that may not be available in cache.
         """
         # Can we do these in one query?
@@ -115,7 +128,7 @@ class Lions(LionCog):
             guild = await data.Guild.fetch_or_create(guildid)
             user = await data.User.fetch_or_create(userid)
             member = await data.Member.fetch_or_create(guildid, userid)
-            lion = Lion(member, user, guild)
+            lion = Lion(self.bot, member, user, guild)
             self._cache_[(guildid, userid)] = lion
         return lion
 

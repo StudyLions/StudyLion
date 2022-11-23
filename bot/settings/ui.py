@@ -223,14 +223,14 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
             f"\nAccepts: {self.accepts}"
         ))
 
-    async def update_response(self, interaction: discord.Interaction, **kwargs):
+    async def update_response(self, interaction: discord.Interaction, message: Optional[str] = None, **kwargs):
         """
         Respond to an interaction which triggered a setting update.
         Usually just wraps `update_message` in an embed and sends it back.
         Passes any extra `kwargs` to the message creation method.
         """
         embed = discord.Embed(
-            description=f"{str(conf.emojis.tick)} {self.update_message}",
+            description=f"{str(conf.emojis.tick)} {message or self.update_message}",
             colour=discord.Color.green()
         )
         if interaction.response.is_done():

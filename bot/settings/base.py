@@ -26,6 +26,8 @@ class BaseSetting(Generic[ParentID, SettingData, SettingValue]):
     Additionally, the setting has attributes attached describing
     the setting in a user-friendly manner for display purposes.
     """
+    setting_id: str  # Unique source identifier for the setting
+
     _default: Optional[SettingData] = None  # Default data value for the setting
 
     def __init__(self, parent_id: ParentID, data: Optional[SettingData], **kwargs):

@@ -73,7 +73,9 @@ class CoreData(Registry, name="core"):
             API_timestamp BIGINT,
             gems INTEGER DEFAULT 0,
             first_seen TIMESTAMPTZ DEFAULT now(),
-            last_seen TIMESTAMPTZ
+            last_seen TIMESTAMPTZ,
+            locale TEXT,
+            locale_hint TEXT
         );
         """
 
@@ -89,6 +91,8 @@ class CoreData(Registry, name="core"):
         gems = Integer()
         first_seen = Timestamp()
         last_seen = Timestamp()
+        locale = String()
+        locale_hint = String()
 
     class Guild(RowModel):
         """
@@ -132,7 +136,9 @@ class CoreData(Registry, name="core"):
             pomodoro_channel BIGINT,
             name TEXT,
             first_joined_at TIMESTAMPTZ DEFAULT now(),
-            left_at TIMESTAMPTZ
+            left_at TIMESTAMPTZ,
+            locale TEXT,
+            force_locale BOOLEAN
         );
 
         """
@@ -190,6 +196,9 @@ class CoreData(Registry, name="core"):
 
         first_joined_at = Timestamp()
         left_at = Timestamp()
+
+        locale = String()
+        force_locale = Bool()
 
     unranked_rows = Table('unranked_rows')
 

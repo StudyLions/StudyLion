@@ -28,7 +28,7 @@ class LionBot(Bot):
     def __init__(
         self, *args, appname: str, shardname: str, db: Database, config: Conf,
         initial_extensions: List[str], web_client: ClientSession, app_ipc,
-        testing_guilds: List[int] = [], **kwargs
+        testing_guilds: List[int] = [], translator=None, **kwargs
     ):
         kwargs.setdefault('tree_cls', LionTree)
         super().__init__(*args, **kwargs)
@@ -42,10 +42,14 @@ class LionBot(Bot):
         self.config = config
         self.app_ipc = app_ipc
         self.core: Optional['CoreCog'] = None
+        self.translator = translator
 
     async def setup_hook(self) -> None:
         log_context.set(f"APP: {self.application_id}")
         await self.app_ipc.connect()
+
+        if self.translator is not None:
+            await self.tree.set_translator(self.translator)
 
         for extension in self.initial_extensions:
             await self.load_extension(extension)

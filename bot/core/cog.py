@@ -11,6 +11,8 @@ from settings.groups import SettingGroup
 
 from .data import CoreData
 from .lion import Lions
+from .guild_settings import GuildSettings
+from .user_settings import UserSettings
 
 
 class CoreCog(LionCog):
@@ -31,12 +33,18 @@ class CoreCog(LionCog):
         self.guild_setting_groups: list[SettingGroup] = []
         self.user_setting_groups: list[SettingGroup] = []
 
+        # Some ModelSetting registries
+        # These are for more convenient direct access
+        self.guild_settings = GuildSettings
+        self.user_settings = UserSettings
+
         self.app_cmd_cache: list[discord.app_commands.AppCommand] = []
         self.cmd_name_cache: dict[str, discord.app_commands.AppCommand] = {}
 
-    async def bot_check_once(self, ctx: LionContext):
+    async def bot_check_once(self, ctx: LionContext):  # type: ignore
         lion = await self.lions.fetch(ctx.guild.id if ctx.guild else 0, ctx.author.id)
-        await lion.touch_discord_models(ctx.author)
+        if ctx.guild:
+            await lion.touch_discord_models(ctx.author)  # type: ignore  # Type checker doesn't recognise guard
         ctx.alion = lion
         return True
 

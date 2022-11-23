@@ -24,6 +24,15 @@ class ModelData:
     _cache = None  # Map[id -> value]
 
     @classmethod
+    def _read_from_row(cls, parent_id, row, **kwargs):
+        data = row[cls._column]
+
+        if cls._cache is not None:
+            cls._cache[parent_id] = data
+
+        return data
+
+    @classmethod
     async def _reader(cls, parent_id, use_cache=True, **kwargs):
         """
         Read in the requested column associated to the parent id.

@@ -12,6 +12,8 @@ from meta.context import ctx_bot
 
 from data import Database
 
+from babel.translator import LeoBabel
+
 from constants import DATA_VERSION
 
 
@@ -46,12 +48,13 @@ async def main():
                 shardname=shardname,
                 db=db,
                 config=conf,
-                initial_extensions=['core', 'analytics', 'modules'],
+                initial_extensions=['core', 'analytics', 'babel', 'modules'],
                 web_client=session,
                 app_ipc=shard_talk,
                 testing_guilds=conf.bot.getintlist('admin_guilds'),
                 shard_id=sharding.shard_number,
-                shard_count=sharding.shard_count
+                shard_count=sharding.shard_count,
+                translator=LeoBabel()
             ) as lionbot:
                 ctx_bot.set(lionbot)
                 try:

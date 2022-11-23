@@ -8,15 +8,22 @@ from discord import ui
 from discord.ui.button import button, Button, ButtonStyle
 
 from meta.context import context
-from utils.lib import strfdur, parse_dur
 from meta.errors import UserInputError
+from utils.lib import strfdur, parse_dur
+from babel import ctx_translator
 
 from .base import ParentID
 from .ui import InteractiveSetting, SettingWidget
+from . import babel
+
+_, _p = babel._, babel._p
 
 
 if TYPE_CHECKING:
     from discord.guild import GuildChannel
+
+
+# TODO: Localise this file
 
 
 class StringSetting(InteractiveSetting[ParentID, str, str]):
@@ -34,7 +41,7 @@ class StringSetting(InteractiveSetting[ParentID, str, str]):
         Default: True
     """
 
-    accepts = "Any text"
+    accepts = _p('settype:bool|accepts', "Any text")
 
     _maxlen: int = 4000
     _quote: bool = True
@@ -70,8 +77,14 @@ class StringSetting(InteractiveSetting[ParentID, str, str]):
         Provides some minor input validation.
         Treats an empty string as a `None` value.
         """
+        t = ctx_translator.get().t
         if len(string) > cls._maxlen:
-            raise UserInputError("Provided string is too long! Maximum length: {} characters.".format(cls._maxlen))
+            raise UserInputError(
+                t(_p(
+                    'settype:bool|error',
+                    "Provided string is too long! Maximum length: {maxlen} characters."
+                )).format(maxlen=cls._maxlen)
+            )
         elif len(string) == 0:
             return None
         else:

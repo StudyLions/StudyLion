@@ -1,5 +1,10 @@
-from typing import Generic, Type, TypeVar, Optional
+from typing import Generic, Type, TypeVar, Optional, overload
+
+from data import RowModel
+
+from .data import ModelData
 from .ui import InteractiveSetting
+from .base import BaseSetting
 
 from utils.lib import tabulate
 
@@ -47,7 +52,7 @@ class SettingGroup:
         self.settings: SettingDotDict[InteractiveSetting] = self.__init_settings__()
 
     def attach(self, cls: Type[T], name: Optional[str] = None):
-        name = name or cls.__name__
+        name = name or cls.setting_id
         self.settings[name] = cls
         return cls
 
@@ -77,3 +82,58 @@ class SettingGroup:
             row_format="[`{invis}{key:<{pad}}{colon}`](https://lionbot.org \"{field[2]}\")\t{value}"
         )
         return '\n'.join(table_rows)
+
+
+class ModelSetting(ModelData, BaseSetting):
+    ...
+
+
+class ModelSettings:
+    """
+    A ModelSettings instance aggregates multiple `ModelSetting` instances
+    bound to the same parent id on a single Model.
+
+    This enables a single point of access
+    for settings of a given Model,
+    with support for caching or deriving as needed.
+
+    This is an abstract base class,
+    and should be subclassed to define the contained settings.
+    """
+    _settings: SettingDotDict = SettingDotDict()
+    model: Type[RowModel]
+
+    def __init__(self, parent_id, row, **kwargs):
+        self.parent_id = parent_id
+        self.row = row
+        self.kwargs = kwargs
+
+    @classmethod
+    async def fetch(cls, *parent_id, **kwargs):
+        """
+        Load an instance of this ModelSetting with the given parent_id
+        and setting keyword arguments.
+        """
+        row = await cls.model.fetch_or_create(*parent_id)
+        return cls(parent_id, row, **kwargs)
+
+    @classmethod
+    def attach(self, setting_cls):
+        """
+        Decorator to attach the given setting class to this modelsetting.
+        """
+        # This violates the interface principle, use structured typing instead?
+        if not (issubclass(setting_cls, BaseSetting) and issubclass(setting_cls, ModelData)):
+            raise ValueError(
+                f"The provided setting class must be `ModelSetting`, not {setting_cls.__class__.__name__}."
+            )
+        self._settings[setting_cls.setting_id] = setting_cls
+        return setting_cls
+
+    def get(self, setting_id):
+        setting_cls = self._settings.get(setting_id)
+        data = setting_cls._read_from_row(self.parent_id, self.row, **self.kwargs)
+        return setting_cls(self.parent_id, data, **self.kwargs)
+
+    def __getitem__(self, setting_id):
+        return self.get(setting_id)
