@@ -107,6 +107,8 @@ class PresenceSettings(SettingGroup):
     _title = "Presence Settings ({bot.core.cmd_name_cache[presence].mention})"
 
     class PresenceStatus(ModelData, EnumSetting[str, AppStatus]):
+        setting_id = 'presence_status'
+
         display_name = 'online_status'
         desc = "Bot status indicator"
         long_desc = "Whether the bot account displays as online, idle, dnd, or offline."
@@ -122,6 +124,8 @@ class PresenceSettings(SettingGroup):
         _default = AppStatus.online
 
     class PresenceType(ModelData, EnumSetting[str, AppActivityType]):
+        setting_id = 'presence_type'
+
         display_name = 'activity_type'
         desc = "Type of presence activity"
         long_desc = "Whether the bot activity is shown as 'Listening', 'Playing', or 'Watching'."
@@ -137,6 +141,8 @@ class PresenceSettings(SettingGroup):
         _default = AppActivityType.watching
 
     class PresenceName(ModelData, StringSetting[str]):
+        setting_id = 'presence_name'
+
         display_name = 'activity_name'
         desc = "Name of the presence activity"
         long_desc = "Presence activity name."

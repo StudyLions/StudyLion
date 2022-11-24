@@ -1,5 +1,7 @@
+import asyncio
 import time
-from cmdClient.lib import SafeCancellation
+
+from meta.errors import SafeCancellation
 
 from cachetools import TTLCache
 
@@ -19,7 +21,7 @@ class BucketOverFull(BucketFull):
 
 
 class Bucket:
-    __slots__ = ('max_level', 'empty_time', 'leak_rate', '_level', '_last_checked', '_last_full')
+    __slots__ = ('max_level', 'empty_time', 'leak_rate', '_level', '_last_checked', '_last_full', '_wait_lock')
 
     def __init__(self, max_level, empty_time):
         self.max_level = max_level
@@ -27,21 +29,37 @@ class Bucket:
         self.leak_rate = max_level / empty_time
 
         self._level = 0
-        self._last_checked = time.time()
+        self._last_checked = time.monotonic()
 
         self._last_full = False
+        self._wait_lock = asyncio.Lock()
+
+    @property
+    def full(self) -> bool:
+        """
+        Return whether the bucket is 'full',
+        that is, whether an immediate request against the bucket will raise `BucketFull`.
+        """
+        self._leak()
+        return self._level + 1 > self.max_level
 
     @property
     def overfull(self):
         self._leak()
         return self._level > self.max_level
 
+    @property
+    def delay(self):
+        self._leak()
+        if self._level + 1 > self.max_level:
+            return (self._level + 1 - self.max_level) * self.leak_rate
+
     def _leak(self):
         if self._level:
-            elapsed = time.time() - self._last_checked
+            elapsed = time.monotonic() - self._last_checked
             self._level = max(0, self._level - (elapsed * self.leak_rate))
 
-        self._last_checked = time.time()
+        self._last_checked = time.monotonic()
 
     def request(self):
         self._leak()
@@ -57,6 +75,21 @@ class Bucket:
         else:
             self._last_full = False
             self._level += 1
+
+    async def wait(self):
+        """
+        Wait until the bucket has room.
+
+        Guarantees that a `request` directly afterwards will not raise `BucketFull`.
+        """
+        # Wrapped in a lock so that waiters are correctly handled in wait-order
+        # Otherwise multiple waiters will have the same delay,
+        # and race for the wakeup after sleep.
+        async with self._wait_lock:
+            # We do this in a loop in case asyncio.sleep throws us out early,
+            # or a synchronous request overflows the bucket while we are waiting.
+            while self.full:
+                await asyncio.sleep(self.delay)
 
 
 class RateLimit:

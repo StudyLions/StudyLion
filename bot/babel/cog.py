@@ -157,6 +157,16 @@ class BabelCog(LionCog):
     async def cog_unload(self):
         pass
 
+    async def get_user_locale(self, userid):
+        """
+        Fetch the best locale we can guess for this userid.
+        """
+        data = await self.bot.core.data.User.fetch(userid)
+        if data:
+            return data.locale or data.locale_hint or SOURCE_LOCALE
+        else:
+            return SOURCE_LOCALE
+
     async def bot_check_once(self, ctx: LionContext):  # type: ignore  # Type checker doesn't understand coro checks
         """
         Calculate and inject the current locale before the command begins.

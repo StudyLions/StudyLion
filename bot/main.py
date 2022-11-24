@@ -12,7 +12,7 @@ from meta.context import ctx_bot
 
 from data import Database
 
-from babel.translator import LeoBabel
+from babel.translator import LeoBabel, ctx_translator
 
 from constants import DATA_VERSION
 
@@ -40,6 +40,9 @@ async def main():
             logger.critical(error)
             raise RuntimeError(error)
 
+        translator = LeoBabel()
+        ctx_translator.set(translator)
+
         async with aiohttp.ClientSession() as session:
             async with LionBot(
                 command_prefix=commands.when_mentioned,
@@ -54,7 +57,7 @@ async def main():
                 testing_guilds=conf.bot.getintlist('admin_guilds'),
                 shard_id=sharding.shard_number,
                 shard_count=sharding.shard_count,
-                translator=LeoBabel()
+                translator=translator
             ) as lionbot:
                 ctx_bot.set(lionbot)
                 try:

@@ -121,7 +121,10 @@ CREATE TABLE analytics.gui_renders(
 --- }}}
 
 
--- TODO: Correct foreign keys for member table
+ALTER TABLE members
+  ADD CONSTRAINT fk_members_users FOREIGN KEY (userid) REFERENCES user_config (userid) ON DELETE CASCADE NOT VALID;
+ALTER TABLE members
+  ADD CONSTRAINT fk_members_guilds FOREIGN KEY (guildid) REFERENCES guild_config (guildid) ON DELETE CASCADE NOT VALID;
 
 -- Localisation data {{{
 ALTER TABLE user_config ADD COLUMN locale_hint TEXT;
@@ -129,6 +132,12 @@ ALTER TABLE user_config ADD COLUMN locale TEXT;
 ALTER TABLE guild_config ADD COLUMN locale TEXT;
 ALTER TABLE guild_config ADD COLUMN force_locale BOOLEAN;
 --}}}
+
+-- Reminder data {{{
+ALTER TABLE reminders ADD COLUMN failed BOOLEAN;
+ALTER TABLE reminders
+  ADD CONSTRAINT fk_reminders_users FOREIGN KEY (userid) REFERENCES user_config (userid) ON DELETE CASCADE NOT VALID;
+-- }}}
 
 INSERT INTO VersionHistory (version, author) VALUES (13, 'v12-v13 migration');
 

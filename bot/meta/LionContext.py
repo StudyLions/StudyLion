@@ -124,7 +124,7 @@ class LionContext(Context['LionBot']):
         except Exception:
             logger.exception(
                 "Unknown exception in 'error_reply'.",
-                extra={'action': 'error_reply', 'ctx': self, 'with_ctx': True}
+                extra={'action': 'error_reply', 'ctx': repr(self), 'with_ctx': True}
             )
 
 

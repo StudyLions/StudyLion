@@ -128,7 +128,7 @@ class LeoUI(View):
             slave.stop()
         super().stop()
 
-    async def close(self):
+    async def close(self, msg=None):
         self.stop()
         await self.cleanup()
 

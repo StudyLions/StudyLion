@@ -29,10 +29,14 @@ from meta.LionBot import LionBot
 
 from utils.ui import FastModal, input
 
+from babel.translator import LocalBabel
+
 from wards import sys_admin
 
 
 logger = logging.getLogger(__name__)
+
+_, _n, _p, _np = LocalBabel('exec').methods
 
 
 class ExecModal(FastModal, title="Execute"):
@@ -65,7 +69,7 @@ class ExecUI(View):
         """Only allow the original author to use this View"""
         if interaction.user.id != self.ctx.author.id:
             await interaction.response.send_message(
-                "You cannot use this interface!",
+                ("You cannot use this interface!"),
                 ephemeral=True
             )
             return False
@@ -240,6 +244,7 @@ class Exec(LionCog):
 
     def __init__(self, bot: LionBot):
         self.bot = bot
+        self.t = bot.translator.t
 
         self.talk_async = shard_talk.register_route('exec')(_async)
 
@@ -247,8 +252,8 @@ class Exec(LionCog):
         return await sys_admin(ctx)
 
     @commands.hybrid_command(
-        name='async',
-        description="Execute arbitrary code with Exec"
+        name=_('async'),
+        description=_("Execute arbitrary code with Exec")
     )
     @appcmd.describe(
         string="Code to execute."
@@ -258,23 +263,23 @@ class Exec(LionCog):
         await ExecUI(ctx, string, ExecStyle.EXEC).run()
 
     @commands.hybrid_command(
-        name='eval',
-        description='Execute arbitrary code with Eval'
+        name=_p('command', 'eval'),
+        description=_p('command:eval', 'Execute arbitrary code with Eval')
     )
     @appcmd.describe(
-        string="Code to evaluate."
+        string=_p('command:eval|param:string', "Code to evaluate.")
     )
     @appcmd.guilds(*guild_ids)
     async def eval_cmd(self, ctx: LionContext, *, string: str):
         await ExecUI(ctx, string, ExecStyle.EVAL).run()
 
     @commands.hybrid_command(
-        name='asyncall',
-        description="Execute arbitrary code on all shards."
+        name=_p('command', 'asyncall'),
+        description=_p('command:asyncall|desc', "Execute arbitrary code on all shards.")
     )
     @appcmd.describe(
-        string="Cross-shard code to execute. Cannot reference ctx!",
-        target="Target shard app name, see autocomplete for options."
+        string=_p("command:asyncall|param:string", "Cross-shard code to execute. Cannot reference ctx!"),
+        target=_p("command:asyncall|param:target", "Target shard app name, see autocomplete for options.")
     )
     @appcmd.guilds(*guild_ids)
     async def asyncall_cmd(self, ctx: LionContext, string: Optional[str] = None, target: Optional[str] = None):
@@ -329,11 +334,11 @@ class Exec(LionCog):
         return results
 
     @commands.hybrid_command(
-        name='reload',
-        description="Reload a given LionBot extension. Launches an ExecUI."
+        name=_('reload'),
+        description=_("Reload a given LionBot extension. Launches an ExecUI.")
     )
     @appcmd.describe(
-        extension="Name of the extesion to reload. See autocomplete for options."
+        extension=_("Name of the extesion to reload. See autocomplete for options.")
     )
     @appcmd.guilds(*guild_ids)
     async def reload_cmd(self, ctx: LionContext, extension: str):
@@ -365,8 +370,8 @@ class Exec(LionCog):
         return results
 
     @commands.hybrid_command(
-        name='shutdown',
-        description="Shutdown (or restart) the client."
+        name=_('shutdown'),
+        description=_("Shutdown (or restart) the client.")
     )
     @appcmd.guilds(*guild_ids)
     async def shutdown_cmd(self, ctx: LionContext):

@@ -8,7 +8,11 @@ import discord
 from discord import Embed, File, GuildSticker, StickerItem, AllowedMentions, Message, MessageReference, PartialMessage
 from discord.ui import View
 
-# from cmdClient.lib import SafeCancellation
+from babel.translator import ctx_translator
+
+from . import util_babel
+
+_, _p = util_babel._, util_babel._p
 
 
 multiselect_regex = re.compile(
@@ -320,7 +324,7 @@ def strfdelta(delta: datetime.timedelta, sec=False, minutes=True, short=False) -
     return "".join(reply_msg)
 
 
-def parse_dur(time_str: str) -> int:
+def _parse_dur(time_str: str) -> int:
     """
     Parses a user provided time duration string into a timedelta object.
 
@@ -642,7 +646,7 @@ def parse_ids(idstr: str) -> List[int]:
 
 def error_embed(error, **kwargs) -> discord.Embed:
     embed = discord.Embed(
-        colour=discord.Colour.red(),
+        colour=discord.Colour.brand_red(),
         description=error,
         timestamp=utc_now()
     )
@@ -653,3 +657,52 @@ class DotDict(dict):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.__dict__ = self
+
+
+parse_dur_exps = [
+    (
+        _p(
+            'util:parse_dur|regex:day',
+            r"(?P<value>\d+)\s*(?:(d)|(day))"
+        ),
+        60 * 60 * 24
+    ),
+    (
+        _p(
+            'util:parse_dur|regex:hour',
+            r"(?P<value>\d+)\s*(?:(h)|(hour))"
+        ),
+        60 * 60
+    ),
+    (
+        _p(
+            'util:parse_dur|regex:minute',
+            r"(?P<value>\d+)\s*(?:(m)|(min))"
+        ),
+        60
+    ),
+    (
+        _p(
+            'util:parse_dur|regex:second',
+            r"(?P<value>\d+)\s*(?:(s)|(sec))"
+        ),
+        1
+    )
+]
+
+
+def parse_duration(string: str) -> Optional[int]:
+    translator = ctx_translator.get()
+    if translator is None:
+        raise ValueError("Cannot parse duration without a translator.")
+    t = translator.t
+
+    seconds = 0
+    found = False
+    for expr, multiplier in parse_dur_exps:
+        match = re.search(t(expr), string, flags=re.IGNORECASE)
+        if match:
+            found = True
+            seconds += int(match.group('value')) * multiplier
+
+    return seconds if found else None

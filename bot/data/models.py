@@ -307,3 +307,10 @@ class RowModel:
             return None
         else:
             return data[0]
+
+    async def delete(self: RowT) -> Optional[RowT]:
+        """
+        Delete this Row.
+        """
+        data = await self.table.delete_where(**self._dict_).with_adapter(self._delete_rows)
+        return data[0] if data is not None else None

@@ -9,7 +9,7 @@ from discord.ui.button import button, Button, ButtonStyle
 
 from meta.context import context
 from meta.errors import UserInputError
-from utils.lib import strfdur, parse_dur
+from utils.lib import strfdur, parse_duration
 from babel import ctx_translator
 
 from .base import ParentID
