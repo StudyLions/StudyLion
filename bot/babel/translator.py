@@ -81,7 +81,7 @@ class LeoBabel(Translator):
     async def translate(self, string: locale_str, locale: Locale, context):
         if locale.value in self.supported_locales:
             domain = string.extras.get('domain', None)
-            if domain is None:
+            if domain is None and isinstance(string, LazyStr):
                 logger.debug(
                     f"LeoBabel cannot translate a locale_str with no domain set. Context: {context}, String: {string}"
                 )
