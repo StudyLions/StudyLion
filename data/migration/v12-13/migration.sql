@@ -139,6 +139,75 @@ ALTER TABLE reminders
   ADD CONSTRAINT fk_reminders_users FOREIGN KEY (userid) REFERENCES user_config (userid) ON DELETE CASCADE NOT VALID;
 -- }}}
 
+
+-- Economy data {{{
+CREATE TYPE CoinTransactionType AS ENUM(
+  'REFUND',
+  'TRANSFER',
+  'SHOP_PURCHASE',
+  'STUDY_SESSION',
+  'ADMIN',
+  'TASKS'
+);
+
+
+CREATE TABLE coin_transactions(
+  transactionid SERIAL PRIMARY KEY,
+  transactiontype CoinTransactionType NOT NULL,
+  guildid BIGINT NOT NULL REFERENCES guild_config (guildid) ON DELETE CASCADE,
+  actorid BIGINT NOT NULL,
+  amount INTEGER NOT NULL,
+  bonus INTEGER NOT NULL,
+  from_account BIGINT,
+  to_account BIGINT,
+  refunds INTEGER REFERENCES coin_transactions (transactionid) ON DELETE SET NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT (now() at time zone 'utc')
+);
+CREATE INDEX coin_transaction_guilds ON coin_transactions (guildid);
+
+CREATE TABLE coin_transactions_shop(
+  transactionid INTEGER PRIMARY KEY REFERENCES coin_transactions (transactionid) ON DELETE CASCADE,
+  itemid INTEGER NOT NULL REFERENCES shop_items (itemid) ON DELETE CASCADE
+);
+
+CREATE TABLE coin_transactions_tasks(
+  transactionid INTEGER PRIMARY KEY REFERENCES coin_transactions (transactionid) ON DELETE CASCADE,
+  count INTEGER NOT NULL
+);
+
+CREATE TABLE coin_transactions_sessions(
+  transactionid INTEGER PRIMARY KEY REFERENCES coin_transactions (transactionid) ON DELETE CASCADE,
+  sessionid INTEGER NOT NULL REFERENCES session_history (sessionid) ON DELETE CASCADE 
+);
+
+CREATE TYPE EconAdminTarget AS ENUM(
+  'ROLE',
+  'USER',
+  'GUILD'
+);
+
+CREATE TYPE EconAdminAction AS ENUM(
+  'SET',
+  'ADD'
+);
+
+CREATE TABLE economy_admin_actions(
+  actionid SERIAL PRIMARY KEY,
+  target_type EconAdminTarget NOT NULL,
+  action_type EconAdminAction NOT NULL,
+  targetid INTEGER NOT NULL,
+  amount INTEGER NOT NULL
+);
+
+CREATE TABLE coin_transactions_admin_actions(
+  actionid INTEGER NOT NULL REFERENCES economy_admin_actions (actionid),
+  transactionid INTEGER NOT NULL REFERENCES coin_transactions (transactionid),
+  PRIMARY KEY (actionid, transactionid)
+);
+CREATE INDEX coin_transactions_admin_actions_transactionid ON coin_transactions_admin_actions (transactionid);
+
+-- }}}
+
 INSERT INTO VersionHistory (version, author) VALUES (13, 'v12-v13 migration');
 
 -- vim: set fdm=marker:

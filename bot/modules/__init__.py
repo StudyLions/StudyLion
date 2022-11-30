@@ -3,7 +3,8 @@ this_package = 'modules'
 active = [
     '.sysadmin',
     '.test',
-    '.reminders'
+    '.reminders',
+    '.economy',
 ]
 
 
