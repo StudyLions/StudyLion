@@ -193,3 +193,8 @@ class LionBot(Bot):
                 f"Caught an unknown top-level exception while executing: {cmd_str}",
                 extra={'action': 'BotError', 'with_ctx': True}
             )
+
+    def add_command(self, command):
+        if hasattr(command, '_placeholder_group_'):
+            return
+        super().add_command(command)
