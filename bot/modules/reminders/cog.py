@@ -416,7 +416,7 @@ class Reminders(LionCog):
         )
 
         @AButton(label=t(_p('cmd:reminders_clear|confirm|button:yes', "Yes, clear my reminders")))
-        async def confirm(view, interaction, press):
+        async def confirm(interaction, press):
             await interaction.response.defer()
             reminders = await self.data.Reminder.table.delete_where(userid=ctx.author.id)
             await self.talk_cancel(*(r['reminderid'] for r in reminders)).send(self.executor_name, wait_for_reply=False)
@@ -430,14 +430,14 @@ class Reminders(LionCog):
                 ),
                 view=None
             )
-            await view.close()
+            await press.view.close()
             await self.dispatch_update_for(ctx.author.id)
 
         @AButton(label=t(_p('cmd:reminders_clear|confirm|button:cancel', "Cancel")))
-        async def deny(view, interaction, press):
+        async def deny(interaction, press):
             await interaction.response.defer()
             await ctx.interaction.delete_original_response()
-            await view.close()
+            await press.view.close()
 
         components = AsComponents(confirm, deny)
         await ctx.interaction.response.send_message(embed=embed, view=components, ephemeral=True)
@@ -620,7 +620,7 @@ class Reminders(LionCog):
         self,
         ctx: LionContext,
         time: Transform[int, DurationTransformer(60)],
-        reminder: str,  # TODO: Maximum length 1000?
+        reminder: appcmds.Range[str, 1, 1000],  # TODO: Maximum length 1000?
         every: Optional[Transform[int, DurationTransformer(60)]] = None
     ):
         t = self.bot.translator.t

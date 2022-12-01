@@ -1,3 +1,7 @@
+import time
+
+import discord
+from discord.ui.item import Item
 from discord.ui.button import Button
 
 from .leo import LeoUI
@@ -18,8 +22,8 @@ class HookedItem:
         self.pass_kwargs = pass_kwargs
 
     def __call__(self, coro):
-        async def wrapped(view, interaction, **kwargs):
-            return await coro(view, interaction, self, **kwargs, **self.pass_kwargs)
+        async def wrapped(interaction, **kwargs):
+            return await coro(interaction, self, **(self.pass_kwargs | kwargs))
         self.callback = wrapped
         return self
 
@@ -37,10 +41,19 @@ class AsComponents(LeoUI):
         self.pass_kwargs = pass_kwargs
 
         for item in items:
-            item.callback = self.wrap_callback(item.callback)
             self.add_item(item)
 
-    def wrap_callback(self, coro):
-        async def wrapped(*args, **kwargs):
-            return await coro(self, *args, **kwargs, **self.pass_kwargs)
-        return wrapped
+    async def _scheduled_task(self, item: Item, interaction: discord.Interaction):
+        try:
+            item._refresh_state(interaction, interaction.data)  # type: ignore
+
+            allow = await self.interaction_check(interaction)
+            if not allow:
+                return
+
+            if self.timeout:
+                self.__timeout_expiry = time.monotonic() + self.timeout
+
+            await item.callback(interaction, **self.pass_kwargs)
+        except Exception as e:
+            return await self.on_error(interaction, e, item)
