@@ -1,3 +1,5 @@
+BEGIN;
+
 -- Add metdata to configuration tables {{{
 ALTER TABLE user_config ADD COLUMN name TEXT;
 ALTER TABLE user_config ADD COLUMN first_seen TIMESTAMPTZ DEFAULT now();
@@ -205,9 +207,25 @@ CREATE TABLE coin_transactions_admin_actions(
   PRIMARY KEY (actionid, transactionid)
 );
 CREATE INDEX coin_transactions_admin_actions_transactionid ON coin_transactions_admin_actions (transactionid);
+-- }}}
 
+-- Shop data {{{
+ALTER TABLE member_inventory DROP CONSTRAINT member_inventory_pkey;
+
+ALTER TABLE member_inventory
+  ADD COLUMN inventoryid SERIAL PRIMARY KEY;
+
+ALTER TABLE member_inventory
+  ADD COLUMN transactionid INTEGER REFERENCES coin_transactions (transactionid) ON DELETE SET NULL;
+
+ALTER TABLE member_inventory
+  DROP COLUMN count;
+
+CREATE INDEX member_inventory_members ON member_inventory(guildid, userid);
 -- }}}
 
 INSERT INTO VersionHistory (version, author) VALUES (13, 'v12-v13 migration');
+
+COMMIT;
 
 -- vim: set fdm=marker:
