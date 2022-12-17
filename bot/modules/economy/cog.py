@@ -12,6 +12,8 @@ from meta import LionCog, LionBot, LionContext
 from meta.errors import ResponseTimedOut
 from babel import LocalBabel
 
+from core.data import CoreData
+
 from utils.ui import LeoUI, LeoModal, Confirm, Pager
 from utils.lib import error_embed, MessageArgs, utc_now
 
@@ -109,13 +111,27 @@ class EconomyData(Registry, name='economy'):
 
         @classmethod
         async def execute_transaction(
+            cls,
             transaction_type: TransactionType,
             guildid: int, actorid: int,
-            from_account: int, to_account: int, amount: int,
-            description: str,
-            note: Optional[str] = None, reference: Optional[str] = None, reminding: Optional[int] = None
+            from_account: int, to_account: int, amount: int, bonus: int = 0,
+            refunds: int = None
         ):
-            ...
+            transaction = await cls.create(
+                transactiontype=transaction_type,
+                guildid=guildid, actorid=actorid, amount=amount, bonus=bonus,
+                from_account=from_account, to_account=to_account,
+                refunds=refunds
+            )
+            if from_account is not None:
+                await CoreData.Member.table.update_where(
+                    guildid=guildid, userid=from_account
+                ).set(coins=(CoreData.Member.coins - (amount + bonus)))
+            if to_account is not None:
+                await CoreData.Member.table.update_where(
+                    guildid=guildid, userid=to_account
+                ).set(coins=(CoreData.Member.coins + (amount + bonus)))
+            return transaction
 
     class ShopTransaction(RowModel):
         """
@@ -130,6 +146,19 @@ class EconomyData(Registry, name='economy'):
 
         transactionid = Integer(primary=True)
         itemid = Integer()
+
+        @classmethod
+        async def purchase_transaction(
+            cls,
+            guildid: int, actorid: int,
+            userid: int, itemid: int, amount: int
+        ):
+            row = await EconomyData.Transaction.execute_transaction(
+                TransactionType.PURCHASE,
+                guildid=guildid, actorid=actorid, from_account=userid, to_account=None,
+                amount=amount
+            )
+            return await cls.create(transactionid=row.transactionid, itemid=itemid)
 
     class TaskTransaction(RowModel):
         """

@@ -50,6 +50,7 @@ CREATE TABLE user_config(
   timezone TEXT,
   topgg_vote_reminder BOOLEAN,
   avatar_hash TEXT,
+  name TEXT,
   API_timestamp BIGINT,
   gems INTEGER DEFAULT 0
 );
@@ -230,12 +231,13 @@ CREATE TABLE shop_items_colour_roles(
 );
 
 CREATE TABLE member_inventory(
+  inventoryid SERIAL PRIMARY KEY,
   guildid BIGINT NOT NULL,
   userid BIGINT NOT NULL,
-  itemid INTEGER NOT NULL REFERENCES shop_items(itemid) ON DELETE CASCADE,
-  count INTEGER DEFAULT 1,
-  PRIMARY KEY(guildid, userid)
+  transactionid INTEGER REFERENCES coin_transactions(transactionid) ON DELETE SET NULL,
+  itemid INTEGER NOT NULL REFERENCES shop_items(itemid) ON DELETE CASCADE
 );
+CREATE INDEX member_inventory_members ON member_inventory(guildid, userid);
 
 
 CREATE VIEW shop_item_info AS

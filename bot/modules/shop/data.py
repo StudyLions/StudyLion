@@ -1,4 +1,4 @@
-from enums import Enum
+from enum import Enum
 from cachetools import TTLCache
 
 
@@ -59,6 +59,35 @@ class ShopData(Registry, name='shop'):
         itemid = Integer(primary=True)
         roleid = Integer()
 
+    class ShopItemInfo(RowModel):
+        """
+        A view joining the shop item sub-type information,
+        and including the guild id.
+
+        Schema
+        ------
+        CREATE VIEW shop_item_info AS
+          SELECT
+            *,
+            row_number() OVER (PARTITION BY guildid ORDER BY itemid) AS guild_itemid
+          FROM
+            shop_items
+          LEFT JOIN shop_items_colour_roles USING (itemid)
+          ORDER BY itemid ASC;
+        """
+        _tablename_ = 'shop_item_info'
+        _readonly_ = True
+
+        itemid = Integer(primary=True)
+        guild_itemid = Integer()
+        guildid = Integer()
+        item_type: Column[ShopItemType] = Column()
+        price = Integer()
+        purchasable = Bool()
+        deleted = Bool()
+        created_at = Timestamp()
+        roleid = Integer()
+
     class MemberInventory(RowModel):
         """
         Schema
@@ -80,8 +109,46 @@ class ShopData(Registry, name='shop'):
         transactionid = Integer()
         itemid = Integer()
 
-        async def fetch_inventory(self, guildid, userid) -> list['ShopData.MemberInventory']:
+    class MemberInventoryInfo(RowModel):
+        """
+        Composite view joining the member inventory with shop item information.
+
+        Schema
+        ------
+        CREATE VIEW member_inventory_info AS
+          SELECT
+            inv.inventoryid AS inventoryid,
+            inv.guildid AS guildid,
+            inv.userid AS userid,
+            inv.transactionid AS transactionid,
+            items.itemid AS itemid,
+            items.item_type AS item_type,
+            items.price AS price,
+            items.purchasable AS purchasable,
+            items.deleted AS deleted
+          FROM
+            member_inventory inv
+          LEFT JOIN shop_item_info items USING (itemid)
+          ORDER BY itemid ASC;
+        """
+        _tablename_ = 'member_inventory_info'
+        _readonly_ = True
+
+        inventoryid = Integer(primary=True)
+        guildid = Integer()
+        userid = Integer()
+        transactionid = Integer()
+        itemid = Integer()
+        guild_itemid = Integer()
+        item_type: Column[ShopItemType] = Column()
+        price = Integer()
+        purchasable = Bool()
+        deleted = Bool()
+        roleid = Integer()
+
+        @classmethod
+        async def fetch_inventory_info(cls, guildid, userid) -> list['ShopData.MemberInventoryInfo']:
             """
-            Fetch the given member's inventory.
+            Fetch the information rows for the given members inventory.
             """
-            return await self.fetch_where(guildid=guildid, userid=userid)
+            return await cls.fetch_where(guildid=guildid, userid=userid)

@@ -159,7 +159,7 @@ CREATE TABLE coin_transactions(
   guildid BIGINT NOT NULL REFERENCES guild_config (guildid) ON DELETE CASCADE,
   actorid BIGINT NOT NULL,
   amount INTEGER NOT NULL,
-  bonus INTEGER NOT NULL,
+  bonus INTEGER NOT NULL DEFAULT 0,
   from_account BIGINT,
   to_account BIGINT,
   refunds INTEGER REFERENCES coin_transactions (transactionid) ON DELETE SET NULL,
@@ -222,6 +222,25 @@ ALTER TABLE member_inventory
   DROP COLUMN count;
 
 CREATE INDEX member_inventory_members ON member_inventory(guildid, userid);
+
+
+CREATE VIEW member_inventory_info AS
+  SELECT
+    inv.inventoryid AS inventoryid,
+    inv.guildid AS guildid,
+    inv.userid AS userid,
+    inv.transactionid AS transactionid,
+    items.itemid AS itemid,
+    items.item_type AS item_type,
+    items.price AS price,
+    items.purchasable AS purchasable,
+    items.deleted AS deleted,
+    items.guild_itemid AS guild_itemid,
+    items.roleid AS roleid
+  FROM
+    member_inventory inv
+  LEFT JOIN shop_item_info items USING (itemid)
+  ORDER BY itemid ASC;
 -- }}}
 
 INSERT INTO VersionHistory (version, author) VALUES (13, 'v12-v13 migration');

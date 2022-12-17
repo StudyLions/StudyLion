@@ -100,6 +100,22 @@ class Lion:
         if member.display_name != self.data.display_name:
             await self.data.update(display_name=member.display_name)
 
+    async def get_member(self) -> Optional[discord.Member]:
+        """
+        Retrieve the member object for this Lion, if possible.
+
+        If the guild or member cannot be retrieved, returns None.
+        """
+        guild = self.bot.get_guild(self.guildid)
+        if guild is not None:
+            member = guild.get_member(self.userid)
+            if member is None:
+                try:
+                    member = await guild.fetch_member(self.userid)
+                except discord.HTTPException:
+                    pass
+            return member
+
 
 class Lions(LionCog):
     def __init__(self, bot: LionBot):
