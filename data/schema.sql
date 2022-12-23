@@ -4,7 +4,7 @@ CREATE TABLE VersionHistory(
   time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
   author TEXT
 );
-INSERT INTO VersionHistory (version, author) VALUES (12, 'Initial Creation');
+INSERT INTO VersionHistory (version, author) VALUES (13, 'Initial Creation');
 
 
 CREATE OR REPLACE FUNCTION update_timestamp_column()
@@ -17,6 +17,46 @@ $$ language 'plpgsql';
 -- }}}
 
 -- App metadata {{{
+CREATE TABLE app_config(
+  appname TEXT PRIMARY KEY,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE TABLE bot_config(
+  appname TEXT PRIMARY KEY REFERENCES app_config(appname) ON DELETE CASCADE,
+  default_skin TEXT
+);
+
+CREATE TABLE shard_data(
+  shardname TEXT PRIMARY KEY,
+  appname TEXT REFERENCES bot_config(appname) ON DELETE CASCADE,
+  shard_id INTEGER NOT NULL,
+  shard_count INTEGER NOT NULL,
+  last_login TIMESTAMPTZ,
+  guild_count INTEGER
+);
+
+CREATE TYPE OnlineStatus AS ENUM(
+  'ONLINE',
+  'IDLE',
+  'DND',
+  'OFFLINE'
+);
+
+CREATE TYPE ActivityType AS ENUM(
+  'PLAYING',
+  'WATCHING',
+  'LISTENING',
+  'STREAMING'
+);
+
+CREATE TABLE bot_config_presence(
+  appname TEXT PRIMARY KEY REFERENCES bot_config(appname) ON DELETE CASCADE,
+  online_status OnlineStatus,
+  activity_type ActivityType,
+  activity_name Text
+);
+
 CREATE TABLE AppData(
   appid TEXT PRIMARY KEY,
   last_study_badge_scan TIMESTAMP 
@@ -44,6 +84,71 @@ CREATE TABLE global_guild_blacklist(
 );
 -- }}}
 
+-- Analytics data {{{
+CREATE SCHEMA "analytics";
+
+CREATE TABLE analytics.snapshots(
+  snapshotid SERIAL PRIMARY KEY,
+  appname TEXT NOT NULL REFERENCES bot_config (appname),
+  guild_count INTEGER NOT NULL,
+  member_count INTEGER NOT NULL,
+  user_count INTEGER NOT NULL,
+  in_voice INTEGER NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT (now() at time zone 'utc')
+);
+
+
+CREATE TABLE analytics.events(
+  eventid SERIAL PRIMARY KEY,
+  appname TEXT NOT NULL REFERENCES bot_config (appname),
+  ctxid BIGINT,
+  guildid BIGINT,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT (now() at time zone 'utc')
+);
+
+CREATE TYPE analytics.CommandStatus AS ENUM(
+  'COMPLETED',
+  'CANCELLED'
+  'FAILED'
+);
+
+CREATE TABLE analytics.commands(
+  cmdname TEXT NOT NULL,
+  cogname TEXT,
+  userid BIGINT NOT NULL,
+  status analytics.CommandStatus NOT NULL,
+  error TEXT,
+  execution_time REAL NOT NULL
+) INHERITS (analytics.events);
+
+
+CREATE TYPE analytics.GuildAction AS ENUM(
+  'JOINED',
+  'LEFT'
+);
+
+CREATE TABLE analytics.guilds(
+  guildid BIGINT NOT NULL,
+  action analytics.GuildAction NOT NULL
+) INHERITS (analytics.events);
+
+
+CREATE TYPE analytics.VoiceAction AS ENUM(
+  'JOINED',
+  'LEFT'
+);
+
+CREATE TABLE analytics.voice_sessions(
+  userid BIGINT NOT NULL,
+  action analytics.VoiceAction NOT NULL
+) INHERITS (analytics.events);
+
+CREATE TABLE analytics.gui_renders(
+  cardname TEXT NOT NULL,
+  duration INTEGER NOT NULL
+) INHERITS (analytics.events);
+--- }}}
+
 -- User configuration data {{{
 CREATE TABLE user_config(
   userid BIGINT PRIMARY KEY,
@@ -51,7 +156,11 @@ CREATE TABLE user_config(
   topgg_vote_reminder BOOLEAN,
   avatar_hash TEXT,
   name TEXT,
+  first_seen TIMESTAMPTZ DEFAULT now(),
+  last_seen TIMESTAMPTZ,
   API_timestamp BIGINT,
+  locale_hint TEXT,
+  locale TEXT,
   gems INTEGER DEFAULT 0
 );
 -- }}}
@@ -91,7 +200,11 @@ CREATE TABLE guild_config(
   persist_roles BOOLEAN,
   daily_study_cap INTEGER,
   pomodoro_channel BIGINT,
-  name TEXT
+  name TEXT,
+  first_joined_at TIMESTAMPTZ DEFAULT now(),
+  left_at TIMESTAMPTZ,
+  locale TEXT,
+  force_locale BOOLEAN
 );
 
 CREATE TABLE ignored_members(
@@ -146,7 +259,7 @@ CREATE INDEX workout_sessions_members ON workout_sessions (guildid, userid);
 -- Tasklist data {{{
 CREATE TABLE tasklist(
   taskid SERIAL PRIMARY KEY,
-  userid BIGINT NOT NULL,
+  userid BIGINT NOT NULL REFERENCES user_config (userid) ON DELETE CASCADE,
   content TEXT NOT NULL,
   rewarded BOOL DEFAULT FALSE,
   deleted_at TIMESTAMPTZ,
@@ -157,28 +270,22 @@ CREATE TABLE tasklist(
 CREATE INDEX tasklist_users ON tasklist (userid);
 
 CREATE TABLE tasklist_channels(
-  guildid BIGINT NOT NULL,
+  guildid BIGINT NOT NULL REFERENCES guild_config (guildid) ON DELETE CASCADE,
   channelid BIGINT NOT NULL
 );
 CREATE INDEX tasklist_channels_guilds ON tasklist_channels (guildid);
-
-CREATE TABLE tasklist_reward_history(
-  userid BIGINT NOT NULL,
-  reward_time TIMESTAMP DEFAULT (now() at time zone 'utc'),
-  reward_count INTEGER
-);
-CREATE INDEX tasklist_reward_history_users ON tasklist_reward_history (userid, reward_time);
 -- }}}
 
 -- Reminder data {{{
 CREATE TABLE reminders(
   reminderid SERIAL PRIMARY KEY,
-  userid BIGINT NOT NULL,
+  userid BIGINT NOT NULL REFERENCES user_config ON DELETE CASCADE,
   remind_at TIMESTAMP NOT NULL,
   content TEXT NOT NULL,
   message_link TEXT,
   interval INTEGER,
   created_at TIMESTAMP DEFAULT (now() at time zone 'utc'),
+  failed BOOLEAN,
   title TEXT,
   footer TEXT
 );
@@ -234,6 +341,8 @@ CREATE TABLE member_inventory(
   inventoryid SERIAL PRIMARY KEY,
   guildid BIGINT NOT NULL,
   userid BIGINT NOT NULL,
+  first_joined TIMESTAMPTZ DEFAULT now(),
+  last_left TIMESTAMPTZ,
   transactionid INTEGER REFERENCES coin_transactions(transactionid) ON DELETE SET NULL,
   itemid INTEGER NOT NULL REFERENCES shop_items(itemid) ON DELETE CASCADE
 );
@@ -408,8 +517,8 @@ CREATE INDEX studyban_durations_guilds ON studyban_durations (guildid);
 
 -- Member configuration and stored data {{{
 CREATE TABLE members(
-  guildid BIGINT,
-  userid BIGINT,
+  guildid BIGINT REFERENCES guild_config ON DELETE CASCADE,
+  userid BIGINT ON DELETE CASCADE,
   tracked_time INTEGER DEFAULT 0,
   coins INTEGER DEFAULT 0,
   workout_count INTEGER DEFAULT 0,

@@ -46,6 +46,17 @@ class BasePager(LeoUI):
     representing all `BasePager`s that are currently running.
     This allows access from external page controlling utilities, e.g. the `/page` command.
     """
+    # List of valid keys indicating movement to the next page
+    next_list = _p('cmd:page|pager:Pager|options:next', "n, nxt, next, forward, +")
+
+    # List of valid keys indicating movement to the previous page
+    prev_list = _p('cmd:page|pager:Pager|options:prev', "p, prev, back, -")
+
+    # List of valid keys indicating movement to the first page
+    first_list = _p('cmd:page|pager:Pager|options:first', "f, first, one, start")
+
+    # List of valid keys indicating movement to the last page
+    last_list = _p('cmd:page|pager:Pager|options:last', "l, last, end")
     # channelid -> pager.id -> list of active pagers in this channel
     active_pagers: dict[int, dict[int, 'BasePager']] = defaultdict(dict)
 
@@ -152,17 +163,6 @@ class Pager(BasePager):
     locked: bool
         Whether to only allow the author to use the paging interface.
     """
-    # List of valid keys indicating movement to the next page
-    next_list = _p('cmd:page|pager:Pager|options:next', "n, nxt, next, forward, +")
-
-    # List of valid keys indicating movement to the previous page
-    prev_list = _p('cmd:page|pager:Pager|options:prev', "p, prev, back, -")
-
-    # List of valid keys indicating movement to the first page
-    first_list = _p('cmd:page|pager:Pager|options:first', "f, first, one, start")
-
-    # List of valid keys indicating movement to the last page
-    last_list = _p('cmd:page|pager:Pager|options:last', "l, last, end")
 
     def __init__(self, pages: list[MessageArgs],
                  start_from=0,

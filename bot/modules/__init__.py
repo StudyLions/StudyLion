@@ -2,9 +2,12 @@ this_package = 'modules'
 
 active = [
     '.sysadmin',
-    '.test',
-    '.reminders',
+    '.config',
     '.economy',
+    '.reminders',
+    '.shop',
+    '.tasklist',
+    '.test',
 ]
 
 

@@ -11,6 +11,7 @@ from discord.ui.text_input import TextInput
 from utils.lib import tabulate, recover_context
 from utils.ui import FastModal
 from meta.config import conf
+from babel.translator import ctx_translator
 
 from .base import BaseSetting, ParentID, SettingData, SettingValue
 
@@ -166,10 +167,10 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
     __slots__ = ('_widget',)
 
     # Configuration interface descriptions
-    display_name: str  # User readable name of the setting
-    desc: str  # User readable brief description of the setting
-    long_desc: str  # User readable long description of the setting
-    accepts: str  # User readable description of the acceptable values
+    _display_name: str  # User readable name of the setting
+    _desc: str  # User readable brief description of the setting
+    _long_desc: str  # User readable long description of the setting
+    _accepts: str  # User readable description of the acceptable values
 
     Widget = SettingWidget
 
@@ -183,6 +184,26 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
         super().__init__(*args, **kwargs)
 
         self._widget: Optional[SettingWidget] = None
+
+    @property
+    def long_desc(self):
+        t = ctx_translator.get().t
+        return t(self._long_desc)
+
+    @property
+    def display_name(self):
+        t = ctx_translator.get().t
+        return t(self._display_name)
+
+    @property
+    def desc(self):
+        t = ctx_translator.get().t
+        return t(self._desc)
+
+    @property
+    def accepts(self):
+        t = ctx_translator.get().t
+        return t(self._accepts)
 
     async def write(self, **kwargs) -> None:
         await super().write(**kwargs)
@@ -249,8 +270,12 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
         Returns a {name, value} pair for use in an Embed field.
         """
         name = self.display_name
-        value = f"{self.long_dec}\n{self.desc_table}"
+        value = f"{self.long_desc}\n{self.desc_table}"
         return {'name': name, 'value': value}
+
+    @property
+    def set_str(self):
+        return None
 
     @property
     def embed(self):
@@ -265,10 +290,14 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
 
     @property
     def desc_table(self):
-        return tabulate(
-            ("Current Value", self.formatted or "Not Set"),
-            ("Default Value", self._format_data(self.parent_id, self.default) or "None"),
-        )
+        lines = []
+        lines.append(('Currently', self.formatted or "Not Set"))
+        if (default := self.default) is not None:
+            lines.append(('By Default', self._format_data(self.parent_id, default) or "No Default"))
+        if (set_str := self.set_str) is not None:
+            lines.append(('Set Using', set_str))
+
+        return '\n'.join(tabulate(*lines))
 
     @property
     def input_field(self) -> TextInput:

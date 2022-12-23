@@ -111,7 +111,7 @@ class ListData:
         table = cls._table_interface  # type: Table
         query = table.select_where(**{cls._id_column: parent_id}).select(cls._data_column)
         if cls._order_column:
-            query.order_by(cls._order_column, order=cls._order_type)
+            query.order_by(cls._order_column, direction=cls._order_type)
 
         rows = await query
         data = [row[cls._data_column] for row in rows]
@@ -128,7 +128,7 @@ class ListData:
         """
         table = cls._table_interface
         conn = await table.connector.get_connection()
-        with conn.transaction():
+        async with conn.transaction():
             # Handle None input as an empty list
             if data is None:
                 data = []

@@ -5,7 +5,8 @@ import discord
 from discord.ext import commands as cmds
 from discord import app_commands as appcmds
 
-from data import Registry, RowModel, RegisterEnum, ORDER
+from psycopg import sql
+from data import Registry, RowModel, RegisterEnum, ORDER, JOINTYPE, RawExpr
 from data.columns import Integer, Bool, String, Column, Timestamp
 
 from meta import LionCog, LionBot, LionContext
@@ -153,12 +154,14 @@ class EconomyData(Registry, name='economy'):
             guildid: int, actorid: int,
             userid: int, itemid: int, amount: int
         ):
-            row = await EconomyData.Transaction.execute_transaction(
-                TransactionType.PURCHASE,
-                guildid=guildid, actorid=actorid, from_account=userid, to_account=None,
-                amount=amount
-            )
-            return await cls.create(transactionid=row.transactionid, itemid=itemid)
+            conn = await cls._connector.get_connection()
+            async with conn.transaction():
+                row = await EconomyData.Transaction.execute_transaction(
+                    TransactionType.PURCHASE,
+                    guildid=guildid, actorid=actorid, from_account=userid, to_account=None,
+                    amount=amount
+                )
+                return await cls.create(transactionid=row.transactionid, itemid=itemid)
 
     class TaskTransaction(RowModel):
         """
@@ -173,6 +176,38 @@ class EconomyData(Registry, name='economy'):
 
         transactionid = Integer(primary=True)
         count = Integer()
+
+        @classmethod
+        async def count_recent_for(cls, userid, guildid, interval='24h'):
+            """
+            Retrieve the number of tasks rewarded in the last `interval`.
+            """
+            T = EconomyData.Transaction
+            query = cls.table.select_where().with_no_adapter()
+            query.join(T, using=(T.transactionid.name, ), join_type=JOINTYPE.LEFT)
+            query.select(recent=sql.SQL("SUM({})").format(cls.count.expr))
+            query.where(
+                T.to_account == userid,
+                T.guildid == guildid,
+                T.created_at > RawExpr(sql.SQL("timezone('utc', NOW()) - INTERVAL {}").format(interval), ()),
+            )
+            result = await query
+            return result[0]['recent'] or 0
+
+        @classmethod
+        async def reward_completed(cls, userid, guildid, count, amount):
+            """
+            Reward the specified member `amount` coins for completing `count` tasks.
+            """
+            # TODO: Bonus logic, perhaps apply_bonus(amount), or put this method in the economy cog?
+            conn = await cls._connector.get_connection()
+            async with conn.transaction():
+                row = await EconomyData.Transaction.execute_transaction(
+                    TransactionType.TASKS,
+                    guildid=guildid, actorid=userid, from_account=None, to_account=userid,
+                    amount=amount
+                )
+                return await cls.create(transactionid=row.transactionid, count=count)
 
     class SessionTransaction(RowModel):
         """

@@ -173,6 +173,10 @@ class RowModel:
 
         return obj
 
+    @classmethod
+    def as_tuple(cls):
+        return (cls.table.identifier, ())
+
     def __init__(self, data):
         self.data = data
 

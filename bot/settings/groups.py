@@ -73,8 +73,8 @@ class SettingGroup:
         """
         rows = []
         for setting in self.settings.values():
-            name = f"{setting.display_name}"
             set = await setting.get(parent_id)
+            name = set.display_name
             value = set.formatted
             rows.append((name, value, set.hover_desc))
         table_rows = tabulate(

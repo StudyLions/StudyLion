@@ -1002,7 +1002,7 @@ class ListSetting:
         Format the list by adding `,` between each formatted item
         """
         if not data:
-            return None
+            return 'Not Set'
         else:
             formatted_items = []
             for item in data:

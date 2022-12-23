@@ -52,6 +52,7 @@ class LionCog(Cog):
 
         for command in placeholder_group.commands:
             placeholder_group.remove_command(command.name)
+            target_group.remove_command(command.name)
             acmd = command.app_command._copy_with(parent=target_group.app_command, binding=self)
             command.app_command = acmd
             target_group.add_command(command)

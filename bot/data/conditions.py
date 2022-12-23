@@ -12,6 +12,8 @@ A Condition is a "logical" database expression, intended for use in Where statem
 Conditions support bitwise logical operators ~, &, |, each producing another Condition.
 """
 
+NULL = None
+
 
 class Joiner(Enum):
     EQUALS = ('=', '!=')

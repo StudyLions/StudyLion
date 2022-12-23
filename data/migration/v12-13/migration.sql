@@ -53,6 +53,8 @@ CREATE TABLE bot_config_presence(
   activity_type ActivityType,
   activity_name Text
 );
+-- DROP TABLE AppData CASCADE;
+-- DROP TABLE AppConfig CASCADE;
 -- }}}
 
 
@@ -241,6 +243,27 @@ CREATE VIEW member_inventory_info AS
     member_inventory inv
   LEFT JOIN shop_item_info items USING (itemid)
   ORDER BY itemid ASC;
+-- }}}
+
+-- Task Data {{{
+ALTER TABLE tasklist_channels
+  ADD CONSTRAINT fk_tasklist_channels_guilds
+  FOREIGN KEY (guildid)
+  REFERENCES guild_config (guildid)
+  ON DELETE CASCADE
+  NOT VALID;
+
+ALTER TABLE tasklist
+  ADD CONSTRAINT fk_tasklist_users
+  FOREIGN KEY (userid)
+  REFEREnCES user_config (userid)
+  ON DELETE CASCADE
+  NOT VALID;
+
+ALTER TABLE tasklist
+  ADD COLUMN parentid INTEGER REFERENCES tasklist (taskid) ON DELETE SET NULL;
+
+-- DROP TABLE tasklist_reward_history CASCADE;
 -- }}}
 
 INSERT INTO VersionHistory (version, author) VALUES (13, 'v12-v13 migration');
