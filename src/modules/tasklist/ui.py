@@ -581,8 +581,10 @@ class TasklistUI(BasePager):
             await self.redraw()
 
     async def delete_selector_refresh(self):
+        t = self.bot.translator.t
         self.delete_selector.placeholder = t(_p('ui:tasklist|menu:delete|placeholder', "Select to Delete"))
         self.delete_selector.options = self.toggle_selector.options
+        self.delete_selector.max_values = len(self.toggle_selector.options)
 
     @button(label="ClOSE_PLACEHOLDER", style=ButtonStyle.red)
     async def close_pressed(self, interaction: discord.Interaction, pressed: Button):
