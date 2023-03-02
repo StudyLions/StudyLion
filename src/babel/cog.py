@@ -19,8 +19,8 @@ from settings.groups import SettingGroup
 from core.data import CoreData
 
 from .translator import ctx_locale, ctx_translator, LocalBabel, SOURCE_LOCALE
+from . import babel
 
-babel = LocalBabel('babel')
 _ = babel._
 _p = babel._p
 

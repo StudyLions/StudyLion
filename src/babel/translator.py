@@ -39,6 +39,9 @@ class LeoBabel(Translator):
         self.supported_domains = {dom for dom in stripped if dom}
 
     async def load(self):
+        self._load()
+
+    def _load(self):
         """
         Initialise the gettext translators for the supported_locales.
         """
@@ -75,7 +78,7 @@ class LeoBabel(Translator):
 
     def t(self, lazystr, locale=None):
         domain = lazystr.domain
-        translator = self.get_translator(locale or lazystr.locale, domain)
+        translator = self.get_translator(locale or lazystr.locale or ctx_locale.get(), domain)
         return lazystr._translate_with(translator)
 
     async def translate(self, string: locale_str, locale: Locale, context):
@@ -130,7 +133,7 @@ class LazyStr(locale_str):
         self.method = method
         self.args = args
         self.domain = domain
-        self.locale = locale or ctx_locale.get()
+        self.locale = locale
 
     @property
     def message(self):
