@@ -32,6 +32,7 @@ async def main():
     intents = discord.Intents.all()
     intents.members = True
     intents.message_content = True
+    intents.presences = False
 
     async with await db.connect():
         version = await db.version()
