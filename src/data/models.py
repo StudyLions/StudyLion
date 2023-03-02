@@ -48,8 +48,11 @@ class RowTable(Table, Generic[RowT]):
         return data
 
     def _single_query_adapter(self, *data):
-        self.model._make_rows(*data)
-        return data[0]
+        if data:
+            self.model._make_rows(*data)
+            return data[0]
+        else:
+            return None
 
     def _delete_query_adapter(self, *data):
         self.model._delete_rows(*data)
