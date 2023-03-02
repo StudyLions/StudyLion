@@ -11,7 +11,7 @@ from discord.ui.text_input import TextInput
 from utils.lib import tabulate, recover_context
 from utils.ui import FastModal
 from meta.config import conf
-from babel.translator import ctx_translator
+from babel.translator import ctx_translator, LazyStr
 
 from .base import BaseSetting, ParentID, SettingData, SettingValue
 
@@ -167,10 +167,10 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
     __slots__ = ('_widget',)
 
     # Configuration interface descriptions
-    _display_name: str  # User readable name of the setting
-    _desc: str  # User readable brief description of the setting
-    _long_desc: str  # User readable long description of the setting
-    _accepts: str  # User readable description of the acceptable values
+    _display_name: LazyStr  # User readable name of the setting
+    _desc: LazyStr  # User readable brief description of the setting
+    _long_desc: LazyStr  # User readable long description of the setting
+    _accepts: LazyStr  # User readable description of the acceptable values
 
     Widget = SettingWidget
 
