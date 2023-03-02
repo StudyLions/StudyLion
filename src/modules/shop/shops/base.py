@@ -1,4 +1,4 @@
-from typing import Type, TYPE_CHECKING
+from typing import Type, TYPE_CHECKING, Optional
 from weakref import WeakValueDictionary
 
 import discord
@@ -11,7 +11,7 @@ from babel.translator import LazyStr
 from ..data import ShopData
 
 if TYPE_CHECKING:
-  from core.lion import Lion
+    from core.lion import Lion
 
 
 class ShopCog(LionCog):
@@ -80,7 +80,7 @@ class Customer:
 
     @property
     def balance(self):
-      return self.lion.data['coins']
+        return self.lion.data['coins']
 
     @classmethod
     async def fetch(cls, bot: LionBot, shop_data: ShopData, guildid: int, userid: int):
@@ -174,27 +174,27 @@ class Store(ui.LeoUI):
     (Note that each Shop instance is specific to a single customer.)
     """
     def __init__(self, shop: Shop, interaction: discord.Interaction, **kwargs):
-      super().__init__(**kwargs)
+        super().__init__(**kwargs)
 
-      # The shop this Store is an interface for
-      # Client, shop, and customer data is taken from here
-      # The Shop also manages most Customer object interaction, including purchases.
-      self.shop = shop
+        # The shop this Store is an interface for
+        # Client, shop, and customer data is taken from here
+        # The Shop also manages most Customer object interaction, including purchases.
+        self.shop = shop
 
-      # The row of Buttons used to access different shops, if any
-      # Transient, will be deprecated by direct access to UILayout.
-      self.store_row = ()
+        # The row of Buttons used to access different shops, if any
+        # Transient, will be deprecated by direct access to UILayout.
+        self.store_row = ()
 
-      # Current embed page
-      self.embed: Optional[discord.Embed] = None
+        # Current embed page
+        self.embed: Optional[discord.Embed] = None
 
-      # Current interaction to use
-      self.interaction: discord.Interaction = interaction
+        # Current interaction to use
+        self.interaction: discord.Interaction = interaction
 
     def set_store_row(self, row):
-      self.store_row = row
-      for item in row:
-        self.add_item(item)
+        self.store_row = row
+        for item in row:
+            self.add_item(item)
 
     async def refresh(self):
         """
@@ -207,14 +207,14 @@ class Store(ui.LeoUI):
         Redraw the store UI.
         """
         if self.interaction.is_expired():
-          # This is actually possible,
-          # If the user keeps using the UI,
-          # but never closes it until the origin interaction expires
-          raise ValueError("This interaction has expired!")
-          return
+            # This is actually possible,
+            # If the user keeps using the UI,
+            # but never closes it until the origin interaction expires
+            raise ValueError("This interaction has expired!")
+        return
 
         if self.embed is None:
-          await self.refresh()
+            await self.refresh()
 
         await self.interaction.edit_original_response(embed=self.embed, view=self)
 
