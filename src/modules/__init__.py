@@ -7,6 +7,7 @@ active = [
     '.reminders',
     '.shop',
     '.tasklist',
+    '.statistics',
     '.test',
 ]
 
