@@ -149,7 +149,8 @@ CREATE TYPE CoinTransactionType AS ENUM(
   'REFUND',
   'TRANSFER',
   'SHOP_PURCHASE',
-  'STUDY_SESSION',
+  'VOICE_SESSION',
+  'TEXT_SESSION',
   'ADMIN',
   'TASKS'
 );
@@ -177,11 +178,6 @@ CREATE TABLE coin_transactions_shop(
 CREATE TABLE coin_transactions_tasks(
   transactionid INTEGER PRIMARY KEY REFERENCES coin_transactions (transactionid) ON DELETE CASCADE,
   count INTEGER NOT NULL
-);
-
-CREATE TABLE coin_transactions_sessions(
-  transactionid INTEGER PRIMARY KEY REFERENCES coin_transactions (transactionid) ON DELETE CASCADE,
-  sessionid INTEGER NOT NULL REFERENCES session_history (sessionid) ON DELETE CASCADE 
 );
 
 CREATE TYPE EconAdminTarget AS ENUM(
@@ -264,6 +260,237 @@ ALTER TABLE tasklist
   ADD COLUMN parentid INTEGER REFERENCES tasklist (taskid) ON DELETE SET NULL;
 
 -- DROP TABLE tasklist_reward_history CASCADE;
+-- }}}
+
+-- New tracking data {{
+DROP TABLE IF EXISTS tracked_channels;
+CREATE TABLE tracked_channels(
+  channelid BIGINT PRIMARY KEY,
+  guildid BIGINT NOT NULL,
+  deleted BOOLEAN DEFAULT FALSE,
+  _timestamp TIMESTAMPTZ NOT NULL DEFAULT (now() AT TIME ZONE 'utc'),
+  FOREIGN KEY (guildid) REFERENCES guild_config (guildid) ON DELETE CASCADE
+);
+CREATE INDEX tracked_channels_guilds ON tracked_channels (guildid);
+
+DROP FUNCTION IF EXISTS study_time_between(_guildid BIGINT, _userid BIGINT, _start TIMESTAMPTZ, _end TIMESTAMPTZ);
+DROP FUNCTION IF EXISTS study_time_since(_guildid BIGINT, _userid BIGINT, _timestamp TIMESTAMPTZ);
+DROP VIEW IF EXISTS voice_sessions_combined;
+
+DROP FUNCTION IF EXISTS close_study_sessions(_guildid BIGINT, _userid BIGINT);
+DROP VIEW IF EXISTS current_sessions_totals;
+DROP VIEW IF EXISTS member_totals;
+DROP VIEW IF EXISTS member_ranks;
+
+DROP TABLE current_sessions CASCADE;
+
+ALTER TABLE session_history RENAME TO voice_sessions;
+ALTER TABLE voice_sessions DROP COLUMN channel_type;
+ALTER TABLE voice_sessions DROP COLUMN coins_earned;
+
+ALTER TABLE voice_sessions
+  ADD COLUMN transactionid INTEGER
+  REFERENCES coin_transactions (transactionid)
+  ON UPDATE CASCADE ON DELETE CASCADE;
+
+INSERT INTO tracked_channels (guildid, channelid)
+  SELECT guildid, channelid FROM voice_sessions;
+
+ALTER TABLE voice_sessions ADD FOREIGN KEY (channelid) REFERENCES tracked_channels (channelid);
+
+CREATE TABLE voice_sessions_ongoing(
+  guildid BIGINT NOT NULL,
+  userid BIGINT NOT NULL,
+  channelid BIGINT REFERENCES tracked_channels (channelid),
+  rating INTEGER,
+  tag TEXT,
+  start_time TIMESTAMPTZ DEFAULT (now() AT TIME ZONE 'UTC'),
+  live_duration INTEGER NOT NULL DEFAULT 0,
+  video_duration INTEGER NOT NULL DEFAULT 0,
+  stream_duration INTEGER NOT NULL DEFAULT 0,
+  coins_earned INTEGER NOT NULL DEFAULT 0,
+  last_update TIMESTAMPTZ DEFAULT (now() AT TIME ZONE 'UTC'),
+  live_stream BOOLEAN NOT NULL DEFAULT FALSE,
+  live_video BOOLEAN NOT NULL DEFAULT FALSE,
+  hourly_coins FLOAT NOT NULL DEFAULT 0,
+  FOREIGN KEY (guildid, userid) REFERENCES members (guildid, userid) ON DELETE CASCADE
+);
+CREATE UNIQUE INDEX voice_sessions_ongoing_members ON voice_sessions_ongoing (guildid, userid);
+
+CREATE FUNCTION close_study_session_at(_guildid BIGINT, _userid BIGINT, _now TIMESTAMPTZ)
+  RETURNS SETOF members
+AS $$
+  BEGIN
+    RETURN QUERY
+    WITH
+      voice_session AS (
+        DELETE FROM voice_sessions_ongoing
+        WHERE guildid=_guildid AND userid=_userid
+        RETURNING
+          channelid, rating, tag, start_time,
+          EXTRACT(EPOCH FROM (_now - start_time)) AS total_duration,
+          (
+            CASE WHEN live_stream
+              THEN stream_duration + EXTRACT(EPOCH FROM (_now - last_update))
+              ELSE stream_duration
+            END
+          ) AS stream_duration,
+          (
+            CASE WHEN live_video
+              THEN video_duration + EXTRACT(EPOCH FROM (_now - last_update))
+              ELSE video_duration
+            END
+          ) AS video_duration,
+          (
+            CASE WHEN live_stream OR live_video
+              THEN live_duration + EXTRACT(EPOCH FROM (_now - last_update))
+              ELSE live_duration
+            END
+          ) AS live_duration
+      ),
+      economy_transaction AS (
+        INSERT INTO coin_transaction (
+          guildid, actorid,
+          from_account, to_account,
+          amount, transactiontype
+        ) VALUES
+          _guildid, 0,
+          NULL, _userid,
+          coins_earned, CoinTransactionType.VOICE_SESSION
+        RETURNING 
+          transactionid
+      ),
+      saved_session AS (
+        INSERT INTO voice_sessions (
+          guildid, userid, channelid,
+          rating, tag,
+          start_time, duration, live_duration, stream_duration, video_duration,
+          transactionid
+        ) SELECT 
+          guildid, userid, channelid,
+          rating, tag,
+          start_time, total_duration, live_duration, stream_duration, video_duration,
+          transactionid
+        FROM voice_session, economy_transaction
+        RETURNING *
+      )
+    UPDATE members
+    SET
+      coins=LEAST(coins::BIGINT + voice_session.coins_earned::BIGINT, 2147483647)
+    FROM
+      voice_session
+    WHERE
+      members.guildid=_guildid AND members.userid=_userid
+    RETURNING members.*;
+  END;
+$$ LANGUAGE PLPGSQL;
+
+-- Function to retouch session? Or handle in application?
+-- Function to finish session? Or handle in application?
+-- Does database function make transaction, or application?
+
+
+CREATE VIEW voice_sessions_combined AS
+  SELECT
+    userid,
+    guildid,
+    start_time,
+    duration,
+    (start_time + duration * interval '1 second') AS end_time
+  FROM voice_sessions
+  UNION ALL
+  SELECT
+    userid,
+    guildid,
+    start_time,
+    EXTRACT(EPOCH FROM (NOW() - start_time)) AS duration,
+    NOW() AS end_time
+  FROM voice_sessions_ongoing;
+
+CREATE FUNCTION study_time_between(_guildid BIGINT, _userid BIGINT, _start TIMESTAMPTZ, _end TIMESTAMPTZ)
+  RETURNS INTEGER
+AS $$
+  BEGIN
+    RETURN (
+      SELECT
+        SUM(COALESCE(EXTRACT(EPOCH FROM (upper(part) - lower(part))), 0))
+      FROM (
+        SELECT
+        unnest(range_agg(tstzrange(start_time, end_time)) * multirange(tstzrange(_start, _end))) AS part
+        FROM voice_sessions_combined
+        WHERE
+          (_guildid IS NULL OR guildid=_guildid)
+          AND userid=_userid
+          AND start_time < _end
+          AND end_time > _start
+      ) AS disjoint_parts
+    );
+  END;
+$$ LANGUAGE PLPGSQL;
+
+CREATE FUNCTION study_time_since(_guildid BIGINT, _userid BIGINT, _timestamp TIMESTAMPTZ)
+  RETURNS INTEGER
+AS $$
+  BEGIN
+    RETURN (SELECT study_time_between(_guildid, _userid, _timestamp, NOW()));
+  END;
+$$ LANGUAGE PLPGSQL;
+--}}
+
+-- TODO: Profile tags, remove guildid not null restriction
+-- TODO: Add global_stats to user preferences
+-- TODO: New model for weekly and montguild hly goals
+
+-- Goal data {{{
+
+CREATE TABLE user_weekly_goals(
+  userid BIGINT NOT NULL,
+  weekid INTEGER NOT NULL,
+  task_goal INTEGER,
+  study_goal INTEGER,
+  review_goal INTEGER,
+  message_goal INTEGER,
+  _timestamp TIMESTAMPTZ DEFAULT now(),
+  PRIMARY KEY (userid, weekid),
+  FOREIGN KEY (userid) REFERENCES user_config (userid) ON DELETE CASCADE
+);
+CREATE INDEX user_weekly_goals_users ON user_weekly_goals (userid);
+
+ALTER TABLE member_weekly_goals ADD COLUMN review_goal INTEGER;
+ALTER TABLE member_weekly_goals ADD COLUMN message_goal INTEGER;
+ALTER TABLE member_monthly_goals ADD COLUMN review_goal INTEGER;
+ALTER TABLE member_monthly_goals ADD COLUMN message_goal INTEGER;
+
+CREATE TABLE user_monthly_goals(
+  userid BIGINT NOT NULL,
+  monthid INTEGER NOT NULL,
+  task_goal INTEGER,
+  study_goal INTEGER,
+  review_goal INTEGER,
+  message_goal INTEGER,
+  _timestamp TIMESTAMPTZ DEFAULT now(),
+  PRIMARY KEY (userid, monthid),
+  FOREIGN KEY (userid) REFERENCES user_config (userid) ON DELETE CASCADE
+);
+CREATE INDEX user_monthly_goals_users ON user_monthly_goals (userid);
+
+/* CREATE TABLE weekly_goals( */
+/*   goalid SERIAL PRIMARY KEY, */
+/*   userid BIGINT NOT NULL, */
+/*   weekid BIGINT NOT NULL, */
+/*   guildid BIGINT, */
+/*   goal_type GoalType, */
+/*   goal INTEGER */
+/* ); */
+
+/* CREATE TABLE weeks( */
+/*   weekid INTEGER PRIMARY KEY */
+/* ); */
+
+/* CREATE TABLE months( */
+/*   monthid INTEGER PRIMARY KEY */
+/* ); */
+
 -- }}}
 
 INSERT INTO VersionHistory (version, author) VALUES (13, 'v12-v13 migration');
