@@ -493,6 +493,10 @@ CREATE INDEX user_monthly_goals_users ON user_monthly_goals (userid);
 
 -- }}}
 
+-- Timezone data {{{
+ALTER TABLE guild_config ADD COLUMN timezone TEXT;
+-- }}}
+
 INSERT INTO VersionHistory (version, author) VALUES (13, 'v12-v13 migration');
 
 COMMIT;

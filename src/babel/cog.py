@@ -11,6 +11,7 @@ from discord import app_commands as appcmds
 
 from meta import LionBot, LionCog, LionContext
 from meta.errors import UserInputError
+from wards import low_management
 
 from settings import ModelData
 from settings.setting_types import StringSetting, BoolSetting
@@ -225,6 +226,7 @@ class BabelCog(LionCog):
         ]
     )
     @appcmds.guild_only()  # Can be removed when attached as a subcommand
+    @cmds.check(low_management)
     async def cmd_configure_language(
         self, ctx: LionContext, language: Optional[str] = None, force_language: Optional[appcmds.Choice[int]] = None
     ):

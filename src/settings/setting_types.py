@@ -665,6 +665,10 @@ class TimezoneSetting(InteractiveSetting[ParentID, str, TZT]):
     """
     Typed Setting ABC representing timezone information.
     """
+    # TODO: Consider configuration UI for timezone by continent and country
+    # Do any continents have more than 25 countries?
+    # Maybe list e.g. Europe (Austria - Iceland) and Europe (Ireland - Ukraine) separately
+
     # TODO Definitely need autocomplete here
     accepts = "A timezone name."
     _accepts = (
@@ -703,6 +707,7 @@ class TimezoneSetting(InteractiveSetting[ParentID, str, TZT]):
         """
         Parse the user input into an integer.
         """
+        # TODO: Localise
         # TODO: Another selection case.
         if not string:
             return None
@@ -714,6 +719,9 @@ class TimezoneSetting(InteractiveSetting[ParentID, str, TZT]):
                 timezone = timezones[0]
             elif timezones:
                 raise UserInputError("Multiple matching timezones found!")
+                # TODO: Add a selector-message here instead of dying instantly
+                # Maybe only post a selector if there are less than 25 options!
+
                 # result = await ctx.selector(
                 #     "Multiple matching timezones found, please select one.",
                 #     timezones
@@ -725,7 +733,7 @@ class TimezoneSetting(InteractiveSetting[ParentID, str, TZT]):
                     "Please provide a TZ name from "
                     "[this list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)".format(string)
                 ) from None
-        return timezone
+        return str(timezone)
 
     @classmethod
     def _format_data(cls, parent_id: ParentID, data, **kwargs):

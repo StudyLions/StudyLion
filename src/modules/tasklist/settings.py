@@ -132,7 +132,7 @@ class TasklistConfigUI(LeoUI):
     # TODO: Cohesive edit
     _listening = {}
 
-    def __init__(self, bot: LionBot, settings: TasklistSettings, guildid: int, channelid: int,**kwargs):
+    def __init__(self, bot: LionBot, settings: TasklistSettings, guildid: int, channelid: int, **kwargs):
         super().__init__(**kwargs)
         self.bot = bot
         self.settings = settings

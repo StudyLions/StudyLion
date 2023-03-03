@@ -702,7 +702,7 @@ class TasklistCog(LionCog):
 
     @configure_group.command(
         name=_p('cmd:configure_tasklist', "tasklist"),
-        description=_p('cmd:configure_tasklist|desc', "Configuration panel")
+        description=_p('cmd:configure_tasklist|desc', "Tasklist configuration panel")
     )
     @appcmds.rename(
         reward=_p('cmd:configure_tasklist|param:reward', "reward"),
@@ -712,7 +712,7 @@ class TasklistCog(LionCog):
         reward=TasklistSettings.task_reward._desc,
         reward_limit=TasklistSettings.task_reward_limit._desc
     )
-    @appcmds.check(low_management)
+    @cmds.check(low_management)
     async def configure_tasklist_cmd(self, ctx: LionContext,
                                      reward: Optional[int] = None,
                                      reward_limit: Optional[int] = None):

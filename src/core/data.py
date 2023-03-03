@@ -138,6 +138,7 @@ class CoreData(Registry, name="core"):
             first_joined_at TIMESTAMPTZ DEFAULT now(),
             left_at TIMESTAMPTZ,
             locale TEXT,
+            timezone TEXT,
             force_locale BOOLEAN
         );
 
@@ -196,6 +197,8 @@ class CoreData(Registry, name="core"):
 
         first_joined_at = Timestamp()
         left_at = Timestamp()
+
+        timezone = String()
 
         locale = String()
         force_locale = Bool()
