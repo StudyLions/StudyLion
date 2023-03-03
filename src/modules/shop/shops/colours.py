@@ -184,7 +184,7 @@ class ColourShop(Shop):
                 )
 
             # Ensure the customer member actually exists
-            member = await self.customer.lion.get_member()
+            member = await self.customer.lion.fetch_member()
             if member is None:
                 raise SafeCancellation(
                     t(_p(

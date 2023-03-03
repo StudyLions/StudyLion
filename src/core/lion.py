@@ -1,153 +1,96 @@
 from typing import Optional
 from cachetools import LRUCache
+import datetime
 import discord
 
 from meta import LionCog, LionBot, LionContext
-from settings import InteractiveSetting
-from utils.lib import utc_now
 from data import WeakCache
 
 from .data import CoreData
 
-from .user_settings import UserSettings
-from .guild_settings import GuildSettings
-
-
-class Lion:
-    """
-    A Lion is a high level representation of a Member in the LionBot paradigm.
-
-    All members interacted with by the application should be available as Lions.
-    It primarily provides an interface to the User and Member data.
-    Lion also provides centralised access to various Member properties and methods,
-    that would normally be served by other cogs.
-
-    Many Lion methods may only be used when the required cogs and extensions are loaded.
-    A Lion may exist without a Bot instance or a Member in cache,
-    although the functionality available will be more limited.
-
-    There is no guarantee that a corresponding discord Member actually exists.
-    """
-    __slots__ = ('bot', 'data', 'user_data', 'guild_data', '_member', '__weakref__')
-
-    def __init__(self, bot: LionBot, data: CoreData.Member, user_data: CoreData.User, guild_data: CoreData.Guild):
-        self.bot = bot
-        self.data = data
-        self.user_data = user_data
-        self.guild_data = guild_data
-
-        self._member: Optional[discord.Member] = None
-
-    # Data properties
-
-    @property
-    def key(self):
-        return (self.data.guildid, self.data.userid)
-
-    @property
-    def guildid(self):
-        return self.data.guildid
-
-    @property
-    def userid(self):
-        return self.data.userid
-
-    @classmethod
-    def get(cls, guildid, userid):
-        return cls._cache_.get((guildid, userid), None)
-
-    # ModelSettings interfaces
-    @property
-    def guild_settings(self):
-        return GuildSettings(self.guildid, self.guild_data, bot=self.bot)
-
-    @property
-    def user_settings(self):
-        return UserSettings(self.userid, self.user_data, bot=self.bot)
-
-    # Setting interfaces
-    # Each of these return an initialised member setting
-
-    @property
-    def timezone(self):
-        pass
-
-    @property
-    def locale(self):
-        pass
-
-    # Time utilities
-    @property
-    def now(self):
-        """
-        Returns current time-zone aware time for the member.
-        """
-        pass
-
-    # Discord data cache
-    async def touch_discord_models(self, member: discord.Member):
-        """
-        Update the stored discord data from the given user or member object.
-        Intended to be used when we get member data from events that may not be available in cache.
-        """
-        # Can we do these in one query?
-        if member.guild and (self.guild_data.name != member.guild.name):
-            await self.guild_data.update(name=member.guild.name)
-
-        avatar_key = member.avatar.key if member.avatar else None
-        await self.user_data.update(avatar_hash=avatar_key, name=member.name, last_seen=utc_now())
-
-        if member.display_name != self.data.display_name:
-            await self.data.update(display_name=member.display_name)
-
-    async def get_member(self) -> Optional[discord.Member]:
-        """
-        Retrieve the member object for this Lion, if possible.
-
-        If the guild or member cannot be retrieved, returns None.
-        """
-        guild = self.bot.get_guild(self.guildid)
-        if guild is not None:
-            member = guild.get_member(self.userid)
-            if member is None:
-                try:
-                    member = await guild.fetch_member(self.userid)
-                except discord.HTTPException:
-                    pass
-            return member
+from .lion_guild import LionGuild
+from .lion_user import LionUser
+from .lion_member import LionMember
 
 
 class Lions(LionCog):
-    def __init__(self, bot: LionBot):
+    def __init__(self, bot: LionBot, data: CoreData):
         self.bot = bot
+        self.data = data
 
-        # Full Lions cache
-        # Don't expire Lions with strong references
-        self._cache_: WeakCache[tuple[int, int], 'Lion'] = WeakCache(LRUCache(5000))
+        # Caches
+        # Using WeakCache so strong references stay consistent
+        self.lion_guilds = WeakCache(LRUCache(2500))
+        self.lion_users = WeakCache(LRUCache(2000))
+        self.lion_members = WeakCache(LRUCache(5000))
 
-        self._settings_: dict[str, InteractiveSetting] = {}
-
-    async def fetch(self, guildid, userid) -> Lion:
+    async def bot_check_once(self, ctx: LionContext):
         """
-        Fetch or create the given Member.
-        If the guild or user row doesn't exist, also creates it.
-        Relies on the core cog existing, to retrieve the core data.
+        Insert the high-level Lion objects into context before command execution.
+
+        Creates the objects if they do not already exist.
+        Updates relevant saved data from the Discord models,
+        and updates last seen for the LionUser (for data lifetime).
         """
-        # TODO: Find a way to reduce this to one query, while preserving cache
-        lion = self._cache_.get((guildid, userid))
-        if lion is None:
-            if self.bot.core:
-                data = self.bot.core.data
-            else:
-                raise ValueError("Cannot fetch Lion before core module is attached.")
+        if ctx.guild:
+            # TODO: Consider doing all updates in one query, maybe with a View trigger on Member
+            lmember = ctx.lmember = await self.fetch_member(ctx.guild.id, ctx.author.id, ctx.author)
+            await lmember.touch_discord_model(ctx.author)
 
-            guild = await data.Guild.fetch_or_create(guildid)
-            user = await data.User.fetch_or_create(userid)
-            member = await data.Member.fetch_or_create(guildid, userid)
-            lion = Lion(self.bot, member, user, guild)
-            self._cache_[(guildid, userid)] = lion
-        return lion
+            ctx.luser = lmember.luser
+            await ctx.luser.touch_discord_model(ctx.author, seen=True)
 
-    def add_model_setting(self, setting: InteractiveSetting):
-        self._settings_[setting.__class__.__name__] = setting
-        return setting
+            ctx.lguild = lmember.lguild
+            await ctx.lguild.touch_discord_model(ctx.guild)
+
+            ctx.alion = lmember
+        else:
+            ctx.lmember = ctx.alion = None
+            ctx.lguild = None
+            luser = ctx.luser = await self.fetch_user(ctx.author.id, ctx.author)
+
+            await luser.touch_discord_model(ctx.author)
+
+            ctx.alion = luser
+        return True
+
+    async def fetch_user(self, userid, user: Optional[discord.User] = None) -> LionUser:
+        """
+        Fetch the given LionUser, hitting cache if possible.
+
+        Creates the LionUser if it does not exist.
+        """
+        if (luser := self.lion_users.get(userid, None)) is None:
+            data = await self.data.User.fetch_or_create(userid)
+            luser = LionUser(self.bot, data, user=user)
+            self.lion_users[userid] = luser
+        return luser
+
+    async def fetch_guild(self, guildid, guild: Optional[discord.Guild] = None) -> LionGuild:
+        """
+        Fetch the given LionGuild, hitting cache if possible.
+
+        Creates the LionGuild if it does not exist.
+        """
+        if (lguild := self.lion_guilds.get(guildid, None)) is None:
+            data = await self.data.Guild.fetch_or_create(guildid)
+            lguild = LionGuild(self.bot, data, guild=guild)
+            self.lion_guilds[guildid] = lguild
+        return lguild
+
+    async def fetch_member(self, guildid, userid, member: Optional[discord.Member] = None) -> LionMember:
+        """
+        Fetch the given LionMember, using cache for data if possible.
+
+
+        Creates the LionGuild, LionUser, and LionMember if they do not already exist.
+        """
+        # TODO: Can we do this more efficiently with one query, while keeping cache? Multiple joins?
+        key = (guildid, userid)
+        if (lmember := self.lion_members.get(key, None)) is None:
+            lguild = await self.fetch_guild(guildid, member.guild if member is not None else None)
+            luser = await self.fetch_user(userid, member)
+            data = await self.data.Member.fetch_or_create(guildid, userid)
+            lmember = LionMember(self.bot, data, lguild, luser, member)
+            self.lion_members[key] = lmember
+        return lmember

@@ -12,7 +12,7 @@ from ..data import StatsData
 async def get_weekly_card(bot: LionBot, userid: int, guildid: int, offset: int, mode: CardMode) -> WeeklyStatsCard:
     data: StatsData = bot.get_cog('StatsCog').data
 
-    lion = await bot.core.lions.fetch(guildid, userid)
+    lion = await bot.core.lions.fetch_member(guildid, userid)
     today = lion.today
     week_start = today - timedelta(days=today.weekday()) - timedelta(weeks=offset)
     days = [week_start + timedelta(i) for i in range(-7, 7 if offset else (today.weekday() + 1))]
@@ -34,7 +34,7 @@ async def get_weekly_card(bot: LionBot, userid: int, guildid: int, offset: int, 
         day_stats.append(0)
 
     # Get member profile
-    if member := await lion.get_member():
+    if member := await lion.fetch_member():
         username = (member.display_name, member.discriminator)
     else:
         username = (lion.data.display_name, '#????')

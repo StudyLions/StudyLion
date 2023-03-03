@@ -150,9 +150,9 @@ class BabelCog(LionCog):
     async def cog_load(self):
         if not self.bot.core:
             raise ValueError("CoreCog must be loaded first!")
-        self.bot.core.guild_settings.attach(LocaleSettings.ForceLocale)
-        self.bot.core.guild_settings.attach(LocaleSettings.GuildLocale)
-        self.bot.core.user_settings.attach(LocaleSettings.UserLocale)
+        self.bot.core.guild_config.register_model_setting(LocaleSettings.ForceLocale)
+        self.bot.core.guild_config.register_model_setting(LocaleSettings.GuildLocale)
+        self.bot.core.user_config.register_model_setting(LocaleSettings.UserLocale)
 
     async def cog_unload(self):
         pass
@@ -180,12 +180,12 @@ class BabelCog(LionCog):
         """
         locale = None
         if ctx.guild:
-            forced = ctx.alion.guild_settings['force_locale'].value
-            guild_locale = ctx.alion.guild_settings['guild_locale'].value
+            forced = ctx.lguild.config.get('force_locale').value
+            guild_locale = ctx.lguild.config.get('guild_locale').value
             if forced:
                 locale = guild_locale
 
-        locale = locale or ctx.alion.user_settings['user_locale'].value
+        locale = locale or ctx.luser.config.get('user_locale').value
         if ctx.interaction:
             locale = locale or ctx.interaction.locale.value
         if ctx.guild:

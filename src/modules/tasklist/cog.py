@@ -130,8 +130,8 @@ class TasklistCog(LionCog):
 
     async def cog_load(self):
         await self.data.init()
-        self.bot.core.guild_settings.attach(self.settings.task_reward)
-        self.bot.core.guild_settings.attach(self.settings.task_reward_limit)
+        self.bot.core.guild_config.register_model_setting(self.settings.task_reward)
+        self.bot.core.guild_config.register_model_setting(self.settings.task_reward_limit)
 
         # TODO: Better method for getting single load
         # Or better, unloading crossloaded group

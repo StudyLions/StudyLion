@@ -11,8 +11,9 @@ from settings.groups import SettingGroup
 
 from .data import CoreData
 from .lion import Lions
-from .guild_settings import GuildSettings
-from .user_settings import UserSettings
+from .lion_guild import GuildConfig
+from .lion_member import MemberConfig
+from .lion_user import UserConfig
 
 
 class CoreCog(LionCog):
@@ -20,7 +21,7 @@ class CoreCog(LionCog):
         self.bot = bot
         self.data = CoreData()
         bot.db.load_registry(self.data)
-        self.lions = Lions(bot)
+        self.lions = Lions(bot, self.data)
 
         self.app_config: Optional[CoreData.AppConfig] = None
         self.bot_config: Optional[CoreData.BotConfig] = None
@@ -35,18 +36,12 @@ class CoreCog(LionCog):
 
         # Some ModelSetting registries
         # These are for more convenient direct access
-        self.guild_settings = GuildSettings
-        self.user_settings = UserSettings
+        self.guild_config = GuildConfig
+        self.user_config = UserConfig
+        self.member_config = MemberConfig
 
         self.app_cmd_cache: list[discord.app_commands.AppCommand] = []
         self.cmd_name_cache: dict[str, discord.app_commands.AppCommand] = {}
-
-    async def bot_check_once(self, ctx: LionContext):  # type: ignore
-        lion = await self.lions.fetch(ctx.guild.id if ctx.guild else 0, ctx.author.id)
-        if ctx.guild:
-            await lion.touch_discord_models(ctx.author)  # type: ignore  # Type checker doesn't recognise guard
-        ctx.alion = lion
-        return True
 
     async def cog_load(self):
         # Fetch (and possibly create) core data rows.

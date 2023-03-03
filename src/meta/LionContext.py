@@ -8,7 +8,9 @@ from discord.ext.commands import Context
 
 if TYPE_CHECKING:
     from .LionBot import LionBot
-    from core.lion import Lion
+    from core.lion_member import LionMember
+    from core.lion_user import LionUser
+    from core.lion_guild import LionGuild
 
 
 logger = logging.getLogger(__name__)
@@ -45,7 +47,10 @@ class LionContext(Context['LionBot']):
     Extends Context to add Lion-specific methods and attributes.
     Also adds several contextual wrapped utilities for simpler user during command invocation.
     """
-    alion: 'Lion'
+    luser: 'LionUser'
+    lguild: 'LionGuild'
+    lmember: 'LionMember'
+    alion: 'LionUser | LionMember'
 
     def __repr__(self):
         parts = {}

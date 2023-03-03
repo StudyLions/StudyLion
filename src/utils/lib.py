@@ -1,6 +1,7 @@
 from typing import NamedTuple, Optional, Sequence, Union, overload, List
 import datetime
 import iso8601  # type: ignore
+import pytz
 import re
 from contextvars import Context
 
@@ -706,3 +707,34 @@ def parse_duration(string: str) -> Optional[int]:
             seconds += int(match.group('value')) * multiplier
 
     return seconds if found else None
+
+
+class Timezoned:
+    """
+    ABC mixin for objects with a set timezone.
+
+    Provides several useful localised properties.
+    """
+    __slots__ = ()
+
+    @property
+    def timezone(self) -> pytz.timezone:
+        """
+        Must be implemented by the deriving class!
+        """
+        raise NotImplementedError
+
+    @property
+    def now(self):
+        """
+        Return the current time localised to the object's timezone.
+        """
+        return datetime.datetime.now(tz=self.timezone)
+
+    @property
+    def today(self):
+        """
+        Return the start of the day localised to the object's timezone.
+        """
+        now = self.now
+        return now.replace(hour=0, minute=0, second=0, microsecond=0)

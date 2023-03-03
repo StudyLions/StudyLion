@@ -14,7 +14,7 @@ from ..lib import apply_month_offset
 async def get_monthly_card(bot: LionBot, userid: int, guildid: int, offset: int, mode: CardMode) -> MonthlyStatsCard:
     data: StatsData = bot.get_cog('StatsCog').data
 
-    lion = await bot.core.lions.fetch(guildid, userid)
+    lion = await bot.core.lions.fetch_member(guildid, userid)
     today = lion.today
     month_start = today.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
     target = apply_month_offset(month_start, offset)
@@ -77,7 +77,7 @@ async def get_monthly_card(bot: LionBot, userid: int, guildid: int, offset: int,
             monthly[i][day.day - 1] = stat / 3600
 
     # Get member profile
-    if member := await lion.get_member():
+    if member := await lion.fetch_member():
         username = (member.display_name, member.discriminator)
     else:
         username = (lion.data.display_name, '#????')

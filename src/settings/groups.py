@@ -88,6 +88,70 @@ class ModelSetting(ModelData, BaseSetting):
     ...
 
 
+class ModelConfig:
+    """
+    A ModelConfig provides a central point of configuration for any object described by a single Model.
+
+    An instance of a ModelConfig represents configuration for a single object
+    (given by a single row of the corresponding Model).
+
+    The ModelConfig also supports registration of non-model configuration,
+    to support associated settings (e.g. list-settings) for the object.
+
+    This is an ABC, and must be subclassed for each object-type.
+    """
+    settings: SettingDotDict
+    _model_settings: set
+    model: Type[RowModel]
+
+    def __init__(self, parent_id, row, **kwargs):
+        self.parent_id = parent_id
+        self.row = row
+        self.kwargs = kwargs
+
+    @classmethod
+    def register_setting(cls, setting_cls):
+        """
+        Decorator to register a non-model setting as part of the object configuration.
+
+        The setting class may be re-accessed through the `settings` class attr.
+
+        Subclasses may provide alternative access pathways to key non-model settings.
+        """
+        cls.settings[setting_cls.setting_id] = setting_cls
+        return setting_cls
+
+    @classmethod
+    def register_model_setting(cls, model_setting_cls):
+        """
+        Decorator to register a model setting as part of the object configuration.
+
+        The setting class may be accessed through the `settings` class attr.
+
+        A fresh setting instance may also be retrieved (using cached data)
+        through the `get` instance method.
+
+        Subclasses are recommended to provide model settings as properties
+        for simplified access and type checking.
+        """
+        cls._model_settings.add(model_setting_cls.setting_id)
+        return cls.register_setting(model_setting_cls)
+
+    def get(self, setting_id):
+        """
+        Retrieve a freshly initialised copy of the given model-setting.
+
+        The given `setting_id` must have been previously registered through `register_model_setting`.
+        This uses cached data, and so is not guaranteed to be up-to-date.
+        """
+        if setting_id not in self._model_settings:
+            # TODO: Log
+            raise ValueError
+        setting_cls = self.settings[setting_id]
+        data = setting_cls._read_from_row(self.parent_id, self.row, **self.kwargs)
+        return setting_cls(self.parent_id, data, **self.kwargs)
+
+
 class ModelSettings:
     """
     A ModelSettings instance aggregates multiple `ModelSetting` instances

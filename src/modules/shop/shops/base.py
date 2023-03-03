@@ -11,7 +11,7 @@ from babel.translator import LazyStr
 from ..data import ShopData
 
 if TYPE_CHECKING:
-    from core.lion import Lion
+    from core.lion_member import LionMember
 
 
 class ShopCog(LionCog):
@@ -65,7 +65,7 @@ class Customer:
         self.bot = bot
         self.data = shop_data
 
-        self.lion: 'Lion' = lion
+        self.lion: 'LionMember' = lion
 
         # A list of InventoryItems held by this customer
         self.inventory = inventory
@@ -84,7 +84,7 @@ class Customer:
 
     @classmethod
     async def fetch(cls, bot: LionBot, shop_data: ShopData, guildid: int, userid: int):
-        lion = await bot.core.lions.fetch(guildid, userid)
+        lion = await bot.core.lions.fetch_member(guildid, userid)
         inventory = await shop_data.MemberInventoryInfo.fetch_inventory_info(guildid, userid)
         return cls(bot, shop_data, lion, inventory)
 
@@ -92,7 +92,7 @@ class Customer:
         """
         Refresh the data for this member.
         """
-        self.lion = await self.bot.core.lions.fetch(self.guildid, self.userid)
+        self.lion = await self.bot.core.lions.fetch_member(self.guildid, self.userid)
         await self.lion.data.refresh()
         self.inventory = await self.data.MemberInventoryInfo.fetch_inventory_info(self.guildid, self.userid)
         return self

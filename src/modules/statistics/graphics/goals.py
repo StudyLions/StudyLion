@@ -15,7 +15,7 @@ async def get_goals_card(
 ):
     data: StatsData = bot.get_cog('StatsCog').data
 
-    lion = await bot.core.lions.fetch(guildid, userid)
+    lion = await bot.core.lions.fetch_member(guildid, userid)
     today = lion.today
 
     # Calculate periodid and select the correct model
@@ -63,7 +63,7 @@ async def get_goals_card(
     sessions_complete = 0.5
 
     # Get member profile
-    if member := await lion.get_member():
+    if member := await lion.fetch_member():
         username = (member.display_name, member.discriminator)
         avatar = member.avatar.key
     else:

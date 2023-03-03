@@ -16,7 +16,7 @@ async def get_stats_card(bot: LionBot, userid: int, guildid: int):
     # TODO: Leaderboard rankings
     guildid = guildid or 0
 
-    lion = await bot.core.lions.fetch(guildid, userid)
+    lion = await bot.core.lions.fetch_member(guildid, userid)
 
     # Calculate the period timestamps, i.e. start time for each summary period
     # TODO: Don't do the alltime one like this, not efficient anymore

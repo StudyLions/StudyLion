@@ -21,7 +21,7 @@ from babel.translator import ctx_translator, LazyStr
 from babel.utils import local_month
 from gui.cards import WeeklyGoalCard, WeeklyStatsCard, MonthlyGoalCard, MonthlyStatsCard
 from gui.base import CardMode
-from core.lion import Lion
+from core.lion_member import LionMember
 
 from ..graphics.weekly import get_weekly_card
 from ..graphics.monthly import get_monthly_card
@@ -338,7 +338,7 @@ class WeeklyMonthlyUI(StatsUI):
         self.data: StatsData = bot.get_cog('StatsCog').data
 
         # State
-        self.lion: Optional[Lion] = None
+        self.lion: Optional[LionMember] = None
 
         self._stat_page: StatPage = StatPage.WEEKLY_VOICE
         self._week_offset = 0
@@ -859,7 +859,7 @@ class WeeklyMonthlyUI(StatsUI):
         """
         self._original = interaction
         self._showing_global = False
-        self.lion = await self.bot.core.lions.fetch(self.guildid, self.userid)
+        self.lion = await self.bot.core.lions.fetch_member(self.guildid, self.userid)
 
         # TODO: Switch to using data cache in reload to calculate global/local
 

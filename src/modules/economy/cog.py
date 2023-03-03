@@ -415,7 +415,7 @@ class Economy(LionCog):
                         ).on_conflict(ignore=True)
             else:
                 # With only one target, we can take a simpler path, and make better use of local caches.
-                await self.bot.core.lions.fetch(ctx.guild.id, target.id)
+                await self.bot.core.lions.fetch_member(ctx.guild.id, target.id)
             # Now we are certain these members have a database row
 
             # Perform the appropriate action
@@ -889,7 +889,7 @@ class Economy(LionCog):
 
         t = self.bot.translator.t
         Member = self.bot.core.data.Member
-        target_lion = await self.bot.core.lions.fetch(ctx.guild.id, target.id)
+        target_lion = await self.bot.core.lions.fetch_member(ctx.guild.id, target.id)
 
         # TODO: Add a "Send thanks" button to the DM?
         # Alternative flow could be waiting until the target user presses accept
