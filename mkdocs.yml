@@ -27,4 +27,8 @@ extra:
     - icon: fontawesome/solid/envelope
       link: mailto:contact@arihoresh.com
 
+markdown_extensions:
+  - attr_list
+  - md_in_html
+
 copyright: Copyright &copy; 2023 ENTER COPYRIGHT NAME
