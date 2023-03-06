@@ -1,19 +1,10 @@
-# Welcome to MkDocssss  
+<figure markdown>
+  ![Image title](assets/leo-home.gif){ width="500" }
+</figure>
 
 
-Hello
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+# StudyLion Bot - Tutorials
 
-## Commands
+Use the following page to learn how to use and configure the StudyLion bot! The tutorials are written for both server owners and members. 
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+**Remember that you can always join the [support server](https://discord.gg/studylions) and ask us questions directly.**

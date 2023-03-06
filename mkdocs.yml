@@ -6,14 +6,12 @@ repo_name: StudyLions/StudyLion
 
 theme:
   name: material
-  logo: assets/lion-love-emote.png
-  favicon: assets/lion-love-emote.png
+  logo: assets/leo-transparent-blue.png
+  favicon: assets/leo-transparent-blue.png
   features:
     - navigation.instant
     - navigation.top
     - toc.integrate
-  palette:
-    accent: black
 
 nav:
   - Home: 'index.md'
@@ -22,9 +20,11 @@ nav:
 
 extra:
   social:
-    - icon: fontawesome/brands/twitter
-      link: https://twitter.com/mrdbourke
-    - icon: fontawesome/brands/github
-      link: https://github.com/StudyLions
-    - icon: fontawesome/brands/youtube
-      link: https://www.youtube.com/channel/UCr8O8l5cCX85Oem1d18EezQ
+    - icon: fontawesome/solid/circle-dollar-to-slot
+      link: https://lionbot.org/donate
+    - icon: fontawesome/brands/discord
+      link: https://discord.com/invite/studylions
+    - icon: fontawesome/solid/envelope
+      link: mailto:contact@arihoresh.com
+
+copyright: Copyright &copy; 2023 ENTER COPYRIGHT NAME
