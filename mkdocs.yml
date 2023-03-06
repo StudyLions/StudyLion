@@ -1,0 +1,34 @@
+site_name: StudyLion Bot - Tutorials
+site_url: http://docs.lionbot.org/
+
+repo_url: https://github.com/StudyLions/StudyLion
+repo_name: StudyLions/StudyLion
+
+theme:
+  name: material
+  logo: assets/leo-transparent-blue.png
+  favicon: assets/leo-transparent-blue.png
+  features:
+    - navigation.instant
+    - navigation.top
+    - toc.integrate
+
+nav:
+  - Home: 'index.md'
+  - Configuring StudyLion as a server owner: "as-a-server-owner.md"
+  - Using StudyLion as a member: "as-a-member.md"
+
+extra:
+  social:
+    - icon: fontawesome/solid/circle-dollar-to-slot
+      link: https://lionbot.org/donate
+    - icon: fontawesome/brands/discord
+      link: https://discord.com/invite/studylions
+    - icon: fontawesome/solid/envelope
+      link: mailto:contact@arihoresh.com
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+
+copyright: Copyright &copy; 2023 ENTER COPYRIGHT NAME
