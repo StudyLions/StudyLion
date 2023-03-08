@@ -11,6 +11,7 @@ from discord.ui.text_input import TextInput
 from utils.lib import tabulate, recover_context
 from utils.ui import FastModal
 from meta.config import conf
+from meta.context import ctx_bot
 from babel.translator import ctx_translator, LazyStr
 
 from .base import BaseSetting, ParentID, SettingData, SettingValue
@@ -180,6 +181,10 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
     # The callbacks are called on write, so they may be bypassed by direct use of _writer!
     _listeners_: Dict[Any, Callable[[Optional[SettingData]], Coroutine[Any, Any, None]]] = {}
 
+    # Optional client event to dispatch when theis setting has been written
+    # Event handlers should be of the form Callable[ParentID, SettingData]
+    _event: Optional[str] = None
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -207,8 +212,20 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
 
     async def write(self, **kwargs) -> None:
         await super().write(**kwargs)
+        self.dispatch_update()
         for listener in self._listeners_.values():
             asyncio.create_task(listener(self.data))
+
+    def dispatch_update(self):
+        """
+        Dispatch a client event along `self._event`, if set.
+
+        Override to modify the target event handler arguments.
+        By default, event handlers should be of the form:
+            Callable[[ParentID, SettingData], Coroutine[Any, Any, None]]
+        """
+        if self._event is not None and (bot := ctx_bot.get()) is not None:
+            bot.dispatch(self._event, self.parent_id, self.data)
 
     def get_listener(self, key):
         return self._listeners_.get(key, None)
