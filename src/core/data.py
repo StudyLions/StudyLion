@@ -67,6 +67,7 @@ class CoreData(Registry, name="core"):
         CREATE TABLE user_config(
             userid BIGINT PRIMARY KEY,
             timezone TEXT,
+            show_global_stats BOOLEAN,
             topgg_vote_reminder BOOLEAN,
             avatar_hash TEXT,
             name TEXT,
@@ -84,6 +85,7 @@ class CoreData(Registry, name="core"):
 
         userid = Integer(primary=True)
         timezone = String()
+        show_global_stats = Bool()
         topgg_vote_reminder = Bool()
         avatar_hash = String()
         name = String()
