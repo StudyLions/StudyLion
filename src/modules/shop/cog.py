@@ -205,7 +205,7 @@ class StoreManager(ui.LeoUI):
                 buttons.append(pressed_switch_shop)
 
         @ui.AButton(
-            label=_p('ui:stores|button:close|label', "Close"),
+            label=t(_p('ui:stores|button:close|label', "Close")),
             emoji=self.bot.config.emojis.getemoji('cancel')
         )
         async def pressed_close(press: discord.Interaction, pressed):

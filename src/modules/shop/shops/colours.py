@@ -1060,9 +1060,9 @@ class ColourStore(Store):
     """
     shop: ColourShop
 
-    @select(placeholder=_p("ui:colourstore|menu:buycolours|placeholder", "Select to Buy"))
+    @select(placeholder="SELECT_PLACEHOLDER")
     async def select_colour(self, interaction: discord.Interaction, selection: Select):
-        t = self.bot.translator.t
+        t = self.shop.bot.translator.t
 
         # User selected a colour from the list
         # Run purchase pathway for that item
@@ -1106,7 +1106,7 @@ class ColourStore(Store):
         For an item to be purchasable,
         it needs to be affordable and not currently owned by the member.
         """
-        t = self.bot.translator.t
+        t = self.shop.bot.translator.t
         selector = self.select_colour
 
         # Get the list of ColourRoleItems that may be purchased
@@ -1151,7 +1151,7 @@ class ColourStore(Store):
         """
         Embed for this shop.
         """
-        t = self.bot.translator.t
+        t = self.shop.bot.translator.t
         if self.shop.items:
             owned = self.shop.owned()
             lines = []

@@ -211,7 +211,6 @@ class Store(ui.LeoUI):
             # If the user keeps using the UI,
             # but never closes it until the origin interaction expires
             raise ValueError("This interaction has expired!")
-        return
 
         if self.embed is None:
             await self.refresh()
