@@ -52,7 +52,7 @@ async def main():
                 shardname=shardname,
                 db=db,
                 config=conf,
-                initial_extensions=['utils', 'core', 'analytics', 'babel', 'modules'],
+                initial_extensions=['utils', 'core', 'analytics', 'babel', 'tracking.voice', 'modules'],
                 web_client=session,
                 app_ipc=shard_talk,
                 testing_guilds=conf.bot.getintlist('admin_guilds'),

@@ -252,7 +252,7 @@ ALTER TABLE tasklist_channels
 ALTER TABLE tasklist
   ADD CONSTRAINT fk_tasklist_users
   FOREIGN KEY (userid)
-  REFEREnCES user_config (userid)
+  REFERENCES user_config (userid)
   ON DELETE CASCADE
   NOT VALID;
 
@@ -278,6 +278,10 @@ DROP FUNCTION IF EXISTS study_time_since(_guildid BIGINT, _userid BIGINT, _times
 DROP VIEW IF EXISTS voice_sessions_combined;
 
 DROP FUNCTION IF EXISTS close_study_sessions(_guildid BIGINT, _userid BIGINT);
+DROP VIEW IF EXISTS new_study_badges; -- TODO
+DROP VIEW IF EXISTS current_study_badges; -- TODO
+DROP VIEW IF EXISTS member_ranks; -- TODO
+DROP VIEW IF EXISTS members_totals;  -- TODO
 DROP VIEW IF EXISTS current_sessions_totals;
 DROP VIEW IF EXISTS member_totals;
 DROP VIEW IF EXISTS member_ranks;
@@ -294,7 +298,7 @@ ALTER TABLE voice_sessions
   ON UPDATE CASCADE ON DELETE CASCADE;
 
 INSERT INTO tracked_channels (guildid, channelid)
-  SELECT guildid, channelid FROM voice_sessions;
+  SELECT guildid, channelid FROM voice_sessions ON CONFLICT DO NOTHING;
 
 ALTER TABLE voice_sessions ADD FOREIGN KEY (channelid) REFERENCES tracked_channels (channelid);
 
@@ -346,17 +350,21 @@ AS $$
               THEN live_duration + EXTRACT(EPOCH FROM (_now - last_update))
               ELSE live_duration
             END
-          ) AS live_duration
+          ) AS live_duration,
+          (
+            coins_earned + LEAST((EXTRACT(EPOCH FROM (_now - last_update)) * hourly_coins) / 3600, 2147483647)
+          ) AS coins_earned
       ),
       economy_transaction AS (
-        INSERT INTO coin_transaction (
+        INSERT INTO coin_transactions (
           guildid, actorid,
           from_account, to_account,
-          amount, transactiontype
-        ) VALUES
+          amount, bonus, transactiontype
+        ) SELECT 
           _guildid, 0,
           NULL, _userid,
-          coins_earned, CoinTransactionType.VOICE_SESSION
+          voice_session.coins_earned, 0, 'VOICE_SESSION'
+        FROM voice_session
         RETURNING 
           transactionid
       ),
@@ -367,10 +375,11 @@ AS $$
           start_time, duration, live_duration, stream_duration, video_duration,
           transactionid
         ) SELECT 
-          guildid, userid, channelid,
-          rating, tag,
-          start_time, total_duration, live_duration, stream_duration, video_duration,
-          transactionid
+          _guildid, _userid, voice_session.channelid,
+          voice_session.rating, voice_session.tag,
+          voice_session.start_time, voice_session.total_duration, voice_session.live_duration,
+          voice_session.stream_duration, voice_session.video_duration,
+          economy_transaction.transactionid
         FROM voice_session, economy_transaction
         RETURNING *
       )
@@ -382,6 +391,47 @@ AS $$
     WHERE
       members.guildid=_guildid AND members.userid=_userid
     RETURNING members.*;
+  END;
+$$ LANGUAGE PLPGSQL;
+
+CREATE OR REPLACE FUNCTION update_voice_session(
+  _guildid BIGINT, _userid BIGINT, _at TIMESTAMPTZ, _live_stream BOOLEAN, _live_video BOOLEAN, _hourly_coins FLOAT
+) RETURNS SETOF voice_sessions_ongoing AS $$
+  BEGIN
+    RETURN QUERY
+    UPDATE
+      voice_sessions_ongoing
+    SET
+      stream_duration = (
+        CASE WHEN live_stream
+          THEN stream_duration + EXTRACT(EPOCH FROM (_at - last_update))
+          ELSE stream_duration
+        END
+      ),
+      video_duration = (
+        CASE WHEN live_video
+          THEN video_duration + EXTRACT(EPOCH FROM (_at - last_update))
+          ELSE video_duration
+        END
+      ),
+      live_duration = (
+        CASE WHEN live_stream OR live_video
+          THEN live_duration + EXTRACT(EPOCH FROM (_at - last_update))
+          ELSE live_duration
+        END
+      ),
+      coins_earned = (
+        coins_earned + LEAST((EXTRACT(EPOCH FROM (_at - last_update)) * hourly_coins) / 3600, 2147483647)
+      ),
+      last_update = _at,
+      live_stream = _live_stream,
+      live_video = _live_video,
+      hourly_coins = hourly_coins
+    WHERE
+      guildid = _guildid
+      AND
+      userid = _userid
+    RETURNING *;
   END;
 $$ LANGUAGE PLPGSQL;
 
@@ -437,9 +487,9 @@ AS $$
 $$ LANGUAGE PLPGSQL;
 --}}
 
+ALTER TABLE user_config ADD COLUMN show_global_stats BOOLEAN;
+
 -- TODO: Profile tags, remove guildid not null restriction
--- TODO: Add global_stats to user preferences
--- TODO: New model for weekly and montguild hly goals
 
 -- Goal data {{{
 
