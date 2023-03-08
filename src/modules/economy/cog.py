@@ -285,11 +285,29 @@ class Economy(LionCog):
         self.bot = bot
         self.data = bot.db.load_registry(EconomyData())
 
+        self.bonuses = {}
+
     async def cog_load(self):
         await self.data.init()
 
-    # ----- Economy group commands -----
+    # ----- Economy Bonus regsitration -----
+    def register_economy_bonus(self, bonus_coro, name=None):
+        name = name or bonus_coro.__name__
+        self.bonuses[name] = bonus_coro
 
+    def deregister_economy_bonus(self, name):
+        bonus_coro = self.bonuses.pop(name, None)
+        if bonus_coro is None:
+            raise ValueError(f"Bonus function '{name}' is not registered!")
+        return
+
+    async def fetch_economy_bonus(self, guildid: int, userid: int, **kwargs):
+        multiplier = 1
+        for coro in self.bonuses.values():
+            multiplier *= await coro(guildid, userid, **kwargs)
+        return multiplier
+
+    # ----- Economy group commands -----
     @cmds.hybrid_group(name=_p('cmd:economy', "economy"))
     @cmds.guild_only()
     async def economy_group(self, ctx: LionContext):
