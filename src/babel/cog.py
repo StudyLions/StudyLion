@@ -35,8 +35,8 @@ class LocaleSettings(SettingGroup):
         """
         setting_id = 'user_locale'
 
-        display_name = _p('userset:locale', 'language')
-        desc = _p('userset:locale|desc', "Your preferred language for interacting with me.")
+        _display_name = _p('userset:locale', 'language')
+        _desc = _p('userset:locale|desc', "Your preferred language for interacting with me.")
 
         _model = CoreData.User
         _column = CoreData.User.locale.name
@@ -71,9 +71,9 @@ class LocaleSettings(SettingGroup):
         """
         setting_id = 'force_locale'
 
-        display_name = _p('guildset:force_locale', 'force_language')
-        desc = _p('guildset:force_locale|desc',
-                  "Whether to force all members to use the configured guild language when interacting with me.")
+        _display_name = _p('guildset:force_locale', 'force_language')
+        _desc = _p('guildset:force_locale|desc',
+                   "Whether to force all members to use the configured guild language when interacting with me.")
         long_desc = _p(
             'guildset:force_locale|long_desc',
             "When enabled, commands in this guild will always use the configured guild language, "
@@ -111,8 +111,8 @@ class LocaleSettings(SettingGroup):
         """
         setting_id = 'guild_locale'
 
-        display_name = _p('guildset:locale', 'language')
-        desc = _p('guildset:locale|desc', "Your preferred language for interacting with me.")
+        _display_name = _p('guildset:locale', 'language')
+        _desc = _p('guildset:locale|desc', "Your preferred language for interacting with me.")
 
         _model = CoreData.Guild
         _column = CoreData.Guild.locale.name
@@ -154,6 +154,9 @@ class BabelCog(LionCog):
         self.bot.core.guild_config.register_model_setting(LocaleSettings.ForceLocale)
         self.bot.core.guild_config.register_model_setting(LocaleSettings.GuildLocale)
         self.bot.core.user_config.register_model_setting(LocaleSettings.UserLocale)
+
+        configcog = self.bot.get_cog('ConfigCog')
+        self.crossload_group(self.configure_group, configcog.configure_group)
 
     async def cog_unload(self):
         pass
@@ -199,8 +202,8 @@ class BabelCog(LionCog):
         return True
 
     @cmds.hybrid_command(
-        name=LocaleSettings.UserLocale.display_name,
-        description=LocaleSettings.UserLocale.desc
+        name=LocaleSettings.UserLocale._display_name,
+        description=LocaleSettings.UserLocale._desc
     )
     async def cmd_language(self, ctx: LionContext, language: str):
         """
@@ -214,8 +217,14 @@ class BabelCog(LionCog):
         new_data = await setting._parse_string(ctx.author.id, language)
         await setting.interactive_set(new_data, ctx.interaction)
 
-    @cmds.hybrid_command(
-        name=_p('cmd:configure_language', "configure_language"),
+    @LionCog.placeholder_group
+    @cmds.hybrid_group('configure', with_app_command=False)
+    async def configure_group(self, ctx: LionContext):
+        # Placeholder group method, not used.
+        pass
+
+    @configure_group.command(
+        name=_p('cmd:configure_language', "language"),
         description=_p('cmd:configure_language|desc',
                        "Configure the default language I will use in this server.")
     )
@@ -224,6 +233,14 @@ class BabelCog(LionCog):
             appcmds.Choice(name=LocaleSettings.ForceLocale._outputs[True], value=1),
             appcmds.Choice(name=LocaleSettings.ForceLocale._outputs[False], value=0),
         ]
+    )
+    @appcmds.describe(
+        language=LocaleSettings.GuildLocale._desc,
+        force_language=LocaleSettings.ForceLocale._desc
+    )
+    @appcmds.rename(
+        language=LocaleSettings.GuildLocale._display_name,
+        force_language=LocaleSettings.ForceLocale._display_name
     )
     @appcmds.guild_only()  # Can be removed when attached as a subcommand
     @cmds.check(low_management)
