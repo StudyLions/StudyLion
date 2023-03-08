@@ -36,6 +36,7 @@ class GeneralSettings(SettingGroup):
         and the timezone used to display guild-wide statistics.
         """
         setting_id = 'timezone'
+        _event = 'guild_setting_update_timezone'
 
         _display_name = _p('guildset:timezone', "timezone")
         _desc = _p(
@@ -172,6 +173,7 @@ class GeneralSettingsCog(LionCog):
         Partial text is matched directly by case-insensitive substring.
         """
         t = self.bot.translator.t
+        # TODO: To be refactored to Timezone setting
 
         timezones = pytz.all_timezones
         matching = [tz for tz in timezones if partial.strip().lower() in tz.lower()][:25]
