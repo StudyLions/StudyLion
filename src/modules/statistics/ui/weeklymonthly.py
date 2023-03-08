@@ -693,6 +693,8 @@ class WeeklyMonthlyUI(StatsUI):
         await press.response.defer(thinking=True, ephemeral=True)
         self._showing_global = not self._showing_global
         # TODO: Asynchronously update user preferences
+        self._showing_global_setting.data = self._showing_global
+        await self._showing_global_setting.write()
 
         await self.refresh(thinking=press if not self._showing_global else None)
 
@@ -702,7 +704,8 @@ class WeeklyMonthlyUI(StatsUI):
                 colour=discord.Colour.orange(),
                 description=t(_p(
                     'ui:WeeklyMonthly|button:global|resp:success',
-                    "You will now see statistics from all you servers (where applicable)! Press again to revert."
+                    "You will now see combined "
+                    "statistics from all your servers (where applicable)! Press again to revert."
                 ))
             )
             await press.edit_original_response(embed=embed)
@@ -843,6 +846,7 @@ class WeeklyMonthlyUI(StatsUI):
         """
         Reload the UI data, applying cache where possible.
         """
+        self._showing_global = self._showing_global_setting.value if self.guild else True
         await self.fetch_cards(*self.key)
 
     async def make_message(self) -> MessageArgs:
@@ -858,9 +862,7 @@ class WeeklyMonthlyUI(StatsUI):
         Execute the UI using the given interaction.
         """
         self._original = interaction
-        self._showing_global = False
         self.lion = await self.bot.core.lions.fetch_member(self.guildid, self.userid)
-
-        # TODO: Switch to using data cache in reload to calculate global/local
+        self._showing_global_setting = self.lion.luser.config.get('show_global_stats')
 
         await self.refresh()

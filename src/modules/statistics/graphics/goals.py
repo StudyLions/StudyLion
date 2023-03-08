@@ -15,7 +15,14 @@ async def get_goals_card(
 ):
     data: StatsData = bot.get_cog('StatsCog').data
 
-    lion = await bot.core.lions.fetch_member(guildid, userid)
+    if guildid:
+        lion = await bot.core.lions.fetch_member(guildid, userid)
+        user = await lion.fetch_member()
+        luser = lion.luser
+    else:
+        lion = luser = await bot.core.lions.fetch_user(userid)
+        user = await bot.fetch_user(userid)
+
     today = lion.today
 
     # Calculate periodid and select the correct model
@@ -25,14 +32,14 @@ async def get_goals_card(
         start = today - timedelta(days=today.weekday())
         start, end = apply_week_offset(start, offset), apply_week_offset(start, offset - 1)
         periodid = extract_weekid(start)
-        key = {'guildid': guildid, 'userid': userid, 'weekid': periodid}
+        key = {'guildid': guildid or 0, 'userid': userid, 'weekid': periodid}
     else:
         goal_model = data.MonthlyGoals
         tasks_model = data.MonthlyTasks
         start = today.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
         start, end = apply_month_offset(start, offset), apply_month_offset(start, offset - 1)
         periodid = extract_monthid(start)
-        key = {'guildid': guildid, 'userid': userid, 'monthid': periodid}
+        key = {'guildid': guildid or 0, 'userid': userid, 'monthid': periodid}
 
     # Extract goals and tasks
     goals = await goal_model.fetch_or_create(*key.values())
@@ -63,12 +70,12 @@ async def get_goals_card(
     sessions_complete = 0.5
 
     # Get member profile
-    if member := await lion.fetch_member():
-        username = (member.display_name, member.discriminator)
-        avatar = member.avatar.key
+    if user:
+        username = (user.display_name, user.discriminator)
+        avatar = user.avatar.key
     else:
         username = (lion.data.display_name, '#????')
-        avatar = lion.user_data.avatar_hash
+        avatar = luser.data.avatar_hash
 
     # Getch badges
     badges = await data.ProfileTag.fetch_tags(guildid, userid)

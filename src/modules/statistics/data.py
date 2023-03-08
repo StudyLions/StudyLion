@@ -9,56 +9,6 @@ from utils.lib import utc_now
 
 
 class StatsData(Registry):
-    class PastSession(RowModel):
-        """
-        Schema
-        ------
-        CREATE TABLE session_history(
-          sessionid SERIAL PRIMARY KEY,
-          guildid BIGINT NOT NULL,
-          userid BIGINT NOT NULL,
-          channelid BIGINT,
-          channel_type SessionChannelType,
-          rating INTEGER,
-          tag TEXT,
-          start_time TIMESTAMPTZ NOT NULL,
-          duration INTEGER NOT NULL,
-          coins_earned INTEGER NOT NULL,
-          live_duration INTEGER DEFAULT 0,
-          stream_duration INTEGER DEFAULT 0,
-          video_duration INTEGER DEFAULT 0,
-          FOREIGN KEY (guildid, userid) REFERENCES members (guildid, userid) ON DELETE CASCADE
-        );
-        CREATE INDEX session_history_members ON session_history (guildid, userid, start_time);
-        """
-        _tablename_ = "session_history"
-
-    class CurrentSession(RowModel):
-        """
-        Schema
-        ------
-        CREATE TABLE current_sessions(
-          guildid BIGINT NOT NULL,
-          userid BIGINT NOT NULL,
-          channelid BIGINT,
-          channel_type SessionChannelType,
-          rating INTEGER,
-          tag TEXT,
-          start_time TIMESTAMPTZ DEFAULT now(),
-          live_duration INTEGER DEFAULT 0,
-          live_start TIMESTAMPTZ,
-          stream_duration INTEGER DEFAULT 0,
-          stream_start TIMESTAMPTZ,
-          video_duration INTEGER DEFAULT 0,
-          video_start TIMESTAMPTZ,
-          hourly_coins INTEGER NOT NULL,
-          hourly_live_coins INTEGER NOT NULL,
-          FOREIGN KEY (guildid, userid) REFERENCES members (guildid, userid) ON DELETE CASCADE
-        );
-        CREATE UNIQUE INDEX current_session_members ON current_sessions (guildid, userid);
-        """
-        _tablename_ = "current_sessions"
-
     class VoiceSessionStats(RowModel):
         """
         View containing voice session statistics.
@@ -92,7 +42,7 @@ class StatsData(Registry):
 
         @classmethod
         async def study_time_between(cls, guildid: int, userid: int, _start, _end) -> int:
-            conn = cls._connector.get_connection()
+            conn = await cls._connector.get_connection()
             async with conn.cursor() as cursor:
                 await cursor.execute(
                     "SELECT study_time_between(%s, %s, %s, %s)",
@@ -130,7 +80,7 @@ class StatsData(Registry):
 
         @classmethod
         async def study_time_since(cls, guildid: int, userid: int, _start) -> int:
-            conn = cls._connector.get_connection()
+            conn = await cls._connector.get_connection()
             async with conn.cursor() as cursor:
                 await cursor.execute(
                     "SELECT study_time_since(%s, %s, %s)",

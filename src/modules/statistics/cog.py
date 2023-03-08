@@ -13,6 +13,7 @@ from utils.ui import LeoUI, AButton
 from . import babel
 from .data import StatsData
 from .ui import ProfileUI, WeeklyMonthlyUI
+from .settings import StatsSettings
 
 _p = babel._p
 
@@ -24,9 +25,12 @@ class StatsCog(LionCog):
     def __init__(self, bot: LionBot):
         self.bot = bot
         self.data = bot.db.load_registry(StatsData())
+        self.settings = StatsSettings
 
     async def cog_load(self):
         await self.data.init()
+
+        self.bot.core.user_config.register_model_setting(self.settings.UserGlobalStats)
 
     @cmds.hybrid_command(
         name=_p('cmd:me', "me"),
