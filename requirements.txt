@@ -1,7 +1,7 @@
 aiohttp==3.7.4.post0
 cachetools==4.2.2
 configparser==5.0.2
-discord.py=2.0.1
+discord.py
 iso8601==0.1.16
 psycopg
 pytz==2021.1
