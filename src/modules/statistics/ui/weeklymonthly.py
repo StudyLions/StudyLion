@@ -427,12 +427,12 @@ class WeeklyMonthlyUI(StatsUI):
             goal_model = self.data.WeeklyGoals
             tasks_model = self.data.WeeklyTasks
             weekid = extract_weekid(apply_week_offset(now, self._week_offset))
-            key = {'guildid': self.guildid, 'userid': self.userid, 'weekid': weekid}
+            key = {'guildid': self.guildid or 0, 'userid': self.userid, 'weekid': weekid}
         else:
             goal_model = self.data.MonthlyGoals
             tasks_model = self.data.MonthlyTasks
             monthid = extract_monthid(apply_month_offset(now, self._month_offset))
-            key = {'guildid': self.guildid, 'userid': self.userid, 'monthid': monthid}
+            key = {'guildid': self.guildid or 0, 'userid': self.userid, 'monthid': monthid}
 
         if self._stat_page.stat is StatType.VOICE:
             goal_keys = ('task_goal', 'study_goal')
@@ -744,13 +744,13 @@ class WeeklyMonthlyUI(StatsUI):
             goal_model = data.WeeklyGoals
             tasks_model = data.WeeklyTasks
             weekid = extract_weekid(apply_week_offset(now, self._week_offset))
-            key = {'guildid': self.guildid, 'userid': self.userid, 'weekid': weekid}
+            key = {'guildid': self.guildid or 0, 'userid': self.userid, 'weekid': weekid}
         else:
             goal_model = data.MonthlyGoals
             tasks_model = data.MonthlyTasks
             now = now.replace(day=1)  # Ensures a valid date after applying month offset
             monthid = extract_monthid(apply_month_offset(now, self._month_offset))
-            key = {'guildid': self.guildid, 'userid': self.userid, 'monthid': monthid}
+            key = {'guildid': self.guildid or 0, 'userid': self.userid, 'monthid': monthid}
 
         if self._stat_page.stat is StatType.VOICE:
             goal_keys = ('task_goal', 'study_goal')
@@ -774,7 +774,7 @@ class WeeklyMonthlyUI(StatsUI):
             mode = CardMode.VOICE
         elif stat_page.stat is StatType.TEXT:
             mode = CardMode.TEXT
-        elif stat_page.stats is StatType.ANKI:
+        elif stat_page.stat is StatType.ANKI:
             mode = CardMode.ANKI
 
         card = await get_goals_card(

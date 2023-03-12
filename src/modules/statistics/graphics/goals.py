@@ -15,12 +15,11 @@ async def get_goals_card(
 ):
     data: StatsData = bot.get_cog('StatsCog').data
 
+    lion = await bot.core.lions.fetch_member(guildid or 0, userid)
+    luser = lion.luser
     if guildid:
-        lion = await bot.core.lions.fetch_member(guildid, userid)
         user = await lion.fetch_member()
-        luser = lion.luser
     else:
-        lion = luser = await bot.core.lions.fetch_user(userid)
         user = await bot.fetch_user(userid)
 
     today = lion.today
@@ -42,7 +41,7 @@ async def get_goals_card(
         key = {'guildid': guildid or 0, 'userid': userid, 'monthid': periodid}
 
     # Extract goals and tasks
-    goals = await goal_model.fetch_or_create(*key.values())
+    goals = await goal_model.fetch(*key.values())
     task_rows = await tasks_model.fetch_where(**key)
     tasks = [(i, row.content, bool(row.completed)) for i, row in enumerate(task_rows)]
 
