@@ -297,6 +297,9 @@ ALTER TABLE voice_sessions
   REFERENCES coin_transactions (transactionid)
   ON UPDATE CASCADE ON DELETE CASCADE;
 
+CREATE INDEX voice_session_guild_time ON voice_sessions USING BTREE (guildid, start_time);
+CREATE INDEX voice_session_user_time ON voice_sessions USING BTREE (userid, start_time);
+
 INSERT INTO tracked_channels (guildid, channelid)
   SELECT guildid, channelid FROM voice_sessions ON CONFLICT DO NOTHING;
 
