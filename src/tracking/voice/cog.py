@@ -498,7 +498,7 @@ class VoiceTrackerCog(LionCog):
         studied_today = await self.fetch_tracked_today(guildid, userid)
         cap = lguild.config.get('daily_voice_cap').value
 
-        if studied_today >= cap - 60:
+        if studied_today >= cap - 90:
             start_time = tomorrow
             delay = (tomorrow - now).total_seconds()
         else:
