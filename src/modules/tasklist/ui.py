@@ -351,7 +351,7 @@ class TasklistUI(BasePager):
                     return False
                 if message.attachments or message.embeds or height > 20:
                     return False
-                height += len(message.content.count('\n'))
+                height += message.content.count('\n')
             return False
         return False
 

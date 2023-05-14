@@ -757,6 +757,6 @@ class TasklistCog(LionCog):
 
         if ctx.channel.id not in TasklistConfigUI._listening or not ctx.interaction.response.is_done():
             # Launch setting group UI
-            configui = TasklistConfigUI(self.bot, self.settings, ctx.guild.id, ctx.channel.id)
+            configui = TasklistConfigUI(self.bot, ctx.guild.id, ctx.channel.id)
             await configui.run(ctx.interaction)
             await configui.wait()

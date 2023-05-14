@@ -10,7 +10,7 @@ from settings.groups import SettingGroup
 
 from meta import conf, LionBot
 from utils.lib import tabulate
-from utils.ui import LeoUI, FastModal, error_handler_for, ModalRetryUI
+from utils.ui import LeoUI, FastModal, error_handler_for, ModalRetryUI, DashboardSection
 from core.data import CoreData
 from babel.translator import ctx_translator
 
@@ -128,14 +128,19 @@ class TasklistSettings(SettingGroup):
 
 
 class TasklistConfigUI(LeoUI):
-    # TODO: Back option to globall guild config
+    # TODO: Back option to global guild config
     # TODO: Cohesive edit
     _listening = {}
+    setting_classes = (
+        TasklistSettings.task_reward,
+        TasklistSettings.task_reward_limit,
+        TasklistSettings.tasklist_channels
+    )
 
-    def __init__(self, bot: LionBot, settings: TasklistSettings, guildid: int, channelid: int, **kwargs):
+    def __init__(self, bot: LionBot, guildid: int, channelid: int, **kwargs):
         super().__init__(**kwargs)
         self.bot = bot
-        self.settings = settings
+        self.settings: TasklistSettings = bot.get_cog('TasklistCog').settings
         self.guildid = guildid
         self.channelid = channelid
 
@@ -168,9 +173,9 @@ class TasklistConfigUI(LeoUI):
             elif self._original:
                 await self._original.delete_original_response()
                 self._original = None
-        except discord.HTTPException:
             pass
-        await self.close()
+        except discord.HTTPException:
+            await self.close()
 
     @button(label='RESET_PLACEHOLDER')
     async def reset_pressed(self, interaction: discord.Interaction, pressed):
@@ -278,3 +283,9 @@ class TasklistConfigUI(LeoUI):
         for setting in self.instances:
             embed.add_field(**setting.embed_field, inline=False)
         return embed
+
+
+class TasklistDashboard(DashboardSection):
+    section_name = _p('dash:tasklist|name', "Tasklist Configuration")
+    configui = TasklistConfigUI
+    setting_classes = configui.setting_classes
