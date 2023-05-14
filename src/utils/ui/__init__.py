@@ -9,6 +9,7 @@ from .leo import *
 from .micros import *
 from .pagers import *
 from .transformed import *
+from .config import *
 
 
 # def create_task_in(coro, context: Context):

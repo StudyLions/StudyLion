@@ -115,7 +115,7 @@ async def input(
     field: Optional[TextInput] = None,
     timeout=180,
     **kwargs,
-):
+) -> tuple[discord.Interaction, str]:
     """
     Spawn a modal to accept input.
     Returns an (interaction, value) pair, with interaction not yet responded to.

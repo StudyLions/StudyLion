@@ -10,9 +10,11 @@ from discord.ui import Modal, View, Item
 from meta.logger import log_action_stack, logging_context
 
 from . import logger
+from ..lib import MessageArgs
 
 __all__ = (
     'LeoUI',
+    'MessageUI',
     'LeoModal',
     'error_handler_for'
 )
@@ -125,7 +127,7 @@ class LeoUI(View):
         to include a pre_timeout task
         which may optionally refresh and hence cancel the timeout.
         """
-        if self.__stopped.done():
+        if self._View__stopped.done():
             # We are already stopped, nothing to do
             return
 
@@ -147,17 +149,17 @@ class LeoUI(View):
                 # The timeout was removed entirely, silently walk away
                 return
 
-            if self.__stopped.done():
+            if self._View__stopped.done():
                 # We stopped while waiting for the pre timeout.
                 # Or maybe another thread timed us out
                 # Either way, we are done here
                 return
 
             now = time.monotonic()
-            if self.__timeout_expiry is not None and now < self._timeout_expiry:
+            if self._View__timeout_expiry is not None and now < self._View__timeout_expiry:
                 # The timeout was extended, make sure the timeout task is running then fade away
-                if self.__timeout_task is None or self.__timeout_task.done():
-                    self.__timeout_task = asyncio.create_task(self.__timeout_task_impl())
+                if self._View__timeout_task is None or self._View__timeout_task.done():
+                    self._View__timeout_task = asyncio.create_task(self._View__timeout_task_impl())
             else:
                 # Actually timeout, and call the post-timeout task for cleanup.
                 self._really_timeout()
@@ -168,7 +170,7 @@ class LeoUI(View):
         Overriding timeout method completely, to support interactive flow during timeout,
         and optional refreshing of the timeout.
         """
-        return self._context.run(asyncio.create_task, self.dispatch_timeout())
+        return self._context.run(asyncio.create_task, self.__dispatch_timeout())
 
     def _really_timeout(self):
         """
@@ -176,14 +178,14 @@ class LeoUI(View):
         This copies View._dispatch_timeout, apart from the `on_timeout` dispatch,
         which is now handled by `__dispatch_timeout`.
         """
-        if self.__stopped.done():
+        if self._View__stopped.done():
             return
 
-        if self.__cancel_callback:
-            self.__cancel_callback(self)
-            self.__cancel_callback = None
+        if self._View__cancel_callback:
+            self._View__cancel_callback(self)
+            self._View__cancel_callback = None
 
-        self.__stopped.set_result(True)
+        self._View__stopped.set_result(True)
 
     def _dispatch_item(self, *args, **kwargs):
         """Extending event dispatch to run in the instantiation context."""
@@ -201,6 +203,181 @@ class LeoUI(View):
                 f"Unhandled interaction exception occurred in item {item!r} of LeoUI {self!r}",
                 extra={'with_ctx': True, 'action': 'UIError'}
             )
+
+
+class MessageUI(LeoUI):
+    """
+    Simple single-message LeoUI, intended as a framework for UIs
+    attached to a single interaction response.
+    """
+
+    def __init__(self, *args, callerid: Optional[int] = None, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        # ----- UI state -----
+        # User ID of the original caller (e.g. command author).
+        # Mainly used for interaction usage checks and logging
+        self._callerid = callerid
+
+        # Original interaction, if this UI is sent as an interaction response
+        self._original: discord.Interaction = None
+
+        # Message holding the UI, when the UI is sent attached to a followup
+        self._message: discord.Message = None
+
+        # Refresh lock, to avoid cache collisions on refresh
+        self._refresh_lock = asyncio.Lock()
+
+    # ----- UI API -----
+    async def run(self, interaction: discord.Interaction, **kwargs):
+        """
+        Run the UI as a response or followup to the given interaction.
+
+        Should be extended if more complex run mechanics are needed
+        (e.g. registering listeners or setting up caches).
+        """
+        await self.draw(interaction, **kwargs)
+
+    async def refresh(self, *args, thinking: Optional[discord.Interaction] = None, **kwargs):
+        """
+        Reload and redraw this UI.
+
+        Primarily a hook-method for use by parents and other controllers.
+        Performs a full data and reload and refresh (maintaining UI state, e.g. page n).
+        """
+        async with self._refresh_lock:
+            # Reload data
+            await self.reload()
+            # Redraw UI message
+            await self.redraw(thinking=thinking)
+
+    async def quit(self):
+        """
+        Quit the UI.
+
+        This usually involves removing the original message,
+        and stopping or closing the underlying View.
+        """
+        for child in self._slaves:
+            # TODO: Better to use duck typing or interface typing
+            if isinstance(child, MessageUI) and not child.is_finished():
+                asyncio.create_task(child.quit())
+        try:
+            if self._original is not None and not self._original.is_expired():
+                await self._original.delete_original_response()
+                self._original = None
+            if self._message is not None:
+                await self._message.delete()
+                self._message = None
+        except discord.HTTPException:
+            pass
+
+        # Note close() also runs cleanup and stop
+        await self.close()
+
+    # ----- UI Flow -----
+    async def interaction_check(self, interaction: discord.Interaction):
+        """
+        Check the given interaction is authorised to use this UI.
+
+        Default implementation simply checks that the interaction is
+        from the original caller.
+        Extend for more complex logic.
+        """
+        return interaction.user.id == self._callerid
+
+    async def make_message(self) -> MessageArgs:
+        """
+        Create the UI message body, depening on the current state.
+
+        Called upon each redraw.
+        Should handle caching if message construction is for some reason intensive.
+
+        Must be implemented by concrete UI subclasses.
+        """
+        raise NotImplementedError
+
+    async def refresh_layout(self):
+        """
+        Asynchronously refresh the message components,
+        and explicitly set the message component layout.
+
+        Called just before redrawing, before `make_message`.
+
+        Must be implemented by concrete UI subclasses.
+        """
+        raise NotImplementedError
+
+    async def reload(self):
+        """
+        Reload and recompute the underlying data for this UI.
+
+        Must be implemented by concrete UI subclasses.
+        """
+        raise NotImplementedError
+
+    async def draw(self, interaction, force_followup=False):
+        """
+        Send the UI as a response or followup to the given interaction.
+
+        If the interaction has been responded to, or `force_followup` is set,
+        creates a followup message instead of a response to the interaction.
+        """
+        # Initial data loading
+        await self.reload()
+        # Set the UI layout
+        await self.refresh_layout()
+        # Fetch message arguments
+        args = await self.make_message()
+
+        as_followup = force_followup or interaction.response.is_done()
+        if as_followup:
+            self._message = await interaction.followup.send(**args.send_args, view=self)
+        else:
+            self._original = interaction
+            await interaction.response.send_message(**args.send_args, view=self)
+
+    async def redraw(self, thinking: Optional[discord.Interaction] = None):
+        """
+        Update the output message for this UI.
+
+        If a thinking interaction is provided, deletes the response while redrawing.
+        """
+        await self.refresh_layout()
+        args = await self.make_message()
+
+        if thinking is not None and not thinking.is_expired() and thinking.response.is_done():
+            asyncio.create_task(thinking.delete_original_response())
+
+        try:
+            if self._original and not self._original.is_expired():
+                await self._original.edit_original_response(**args.edit_args, view=self)
+            elif self._message:
+                await self._message.edit(**args.edit_args, view=self)
+            else:
+                # Interaction expired or already closed. Quietly cleanup.
+                await self.close()
+        except discord.HTTPException:
+            # Unknown communication erorr, nothing we can reliably do. Exit quietly.
+            await self.close()
+
+    async def cleanup(self):
+        """
+        Remove message components from interaction response, if possible.
+
+        Extend to remove listeners or clean up caches.
+        `cleanup` is always called when the UI is exiting,
+        through timeout or user-driven closure.
+        """
+        try:
+            if self._original is not None and not self._original.is_expired():
+                await self._original.edit_original_response(view=None)
+                self._original = None
+            if self._message is not None:
+                await self._message.edit(view=None)
+                self._message = None
+        except discord.HTTPException:
+            pass
 
 
 class LeoModal(Modal):
