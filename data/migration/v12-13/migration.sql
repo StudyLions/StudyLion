@@ -83,7 +83,7 @@ CREATE TABLE analytics.events(
 
 CREATE TYPE analytics.CommandStatus AS ENUM(
   'COMPLETED',
-  'CANCELLED'
+  'CANCELLED',
   'FAILED'
 );
 
@@ -145,6 +145,8 @@ ALTER TABLE reminders
 
 
 -- Economy data {{{
+ALTER TABLE guild_config ADD COLUMN allow_transfers BOOLEAN;
+
 CREATE TYPE CoinTransactionType AS ENUM(
   'REFUND',
   'TRANSFER',
@@ -262,7 +264,7 @@ ALTER TABLE tasklist
 -- DROP TABLE tasklist_reward_history CASCADE;
 -- }}}
 
--- New tracking data {{
+-- New tracking data {{{
 DROP TABLE IF EXISTS tracked_channels;
 CREATE TABLE tracked_channels(
   channelid BIGINT PRIMARY KEY,
@@ -299,6 +301,7 @@ ALTER TABLE voice_sessions
 
 CREATE INDEX voice_session_guild_time ON voice_sessions USING BTREE (guildid, start_time);
 CREATE INDEX voice_session_user_time ON voice_sessions USING BTREE (userid, start_time);
+CREATE INDEX voice_session_guild_end_time ON voice_sessions USING BTREE (guildid, timezone('UTC', start_time) + duration * interval '1 second')
 
 INSERT INTO tracked_channels (guildid, channelid)
   SELECT guildid, channelid FROM voice_sessions ON CONFLICT DO NOTHING;
@@ -488,10 +491,117 @@ AS $$
     RETURN (SELECT study_time_between(_guildid, _userid, _timestamp, NOW()));
   END;
 $$ LANGUAGE PLPGSQL;
---}}
+-- }}}
 
+-- New statistics data {{{
 ALTER TABLE user_config ADD COLUMN show_global_stats BOOLEAN;
+ALTER TABLE guild_config ADD COLUMN season_start TIMESTAMPTZ;
 
+CREATE TYPE StatisticType AS ENUM(
+  'VOICE',
+  'TEXT',
+  'ANKI'
+);
+CREATE TABLE visible_statistics(
+  guildid BIGINT NOT NULL REFERENCES guild_config ON DELETE CASCADE,
+  stat_type StatisticType NOT NULL
+);
+CREATE INDEX visible_statistics_guilds ON visible_statistics (guildid);
+-- }}}
+
+-- Message tracking and statistics {{{
+CREATE TYPE ExperienceType AS ENUM(
+  'VOICE_XP',
+  'TEXT_XP',
+  'QUEST_XP',  -- Custom guild quests
+  'ACHIEVEMENT_XP', -- Individual tracked achievements
+  'BONUS_XP' -- Manually adjusted XP
+);
+
+CREATE TABLE member_experience(
+  member_expid BIGSERIAL PRIMARY KEY,
+  guildid BIGINT NOT NULL,
+  userid BIGINT NOT NULL,
+  earned_at TIMESTAMPTZ NOT NULL DEFAULT (now() at time zone 'UTC'),
+  amount INTEGER NOT NULL,
+  exp_type ExperienceType NOT NULL,
+  transactionid INTEGER REFERENCES coin_transactions ON DELETE SET NULL,
+  FOREIGN KEY (guildid, userid) REFERENCES members ON DELETE CASCADE
+);
+CREATE INDEX member_experience_members ON member_experience (guildid, userid, earned_at);
+CREATE INDEX member_experience_guilds ON member_experience (guildid, earned_at);
+
+CREATE TABLE user_experience(
+  user_expid BIGSERIAL PRIMARY KEY,
+  userid BIGINT NOT NULL,
+  earned_at TIMESTAMPTZ NOT NULL DEFAULT (now() at time zone 'UTC'),
+  amount INTEGER NOT NULL,
+  exp_type ExperienceType NOT NULL,
+  FOREIGN KEY (userid) REFERENCES user_config ON DELETE CASCADE
+);
+CREATE INDEX user_experience_users ON user_experience (userid, earned_at);
+
+
+CREATE TABLE bot_config_experience_rates(
+  appname TEXT PRIMARY KEY REFERENCES bot_config(appname) ON DELETE CASCADE,
+  period_length INTEGER,
+  xp_per_period INTEGER,
+  xp_per_centiword INTEGER
+);
+
+CREATE TABLE text_sessions(
+  sessionid BIGSERIAL PRIMARY KEY,
+  guildid BIGINT NOT NULL,
+  userid BIGINT NOT NULL,
+  start_time TIMESTAMPTZ NOT NULL,
+  duration INTEGER NOT NULL,
+  messages INTEGER NOT NULL,
+  words INTEGER NOT NULL,
+  periods INTEGER NOT NULL,
+  user_expid BIGINT REFERENCES user_experience,
+  member_expid BIGINT REFERENCES member_experience,
+  end_time TIMESTAMP GENERATED ALWAYS AS
+    ((start_time AT TIME ZONE 'UTC') + duration * interval '1 second')
+  STORED,
+  FOREIGN KEY (guildid, userid) REFERENCES members (guildid, userid) ON DELETE CASCADE
+);
+CREATE INDEX text_sessions_members ON text_sessions (guildid, userid);
+CREATE INDEX text_sessions_start_time ON text_sessions (start_time);
+CREATE INDEX text_sessions_end_time ON text_sessions (end_time);
+
+ALTER TABLE guild_config
+  ADD COLUMN xp_per_period INTEGER;
+
+ALTER TABLE guild_config
+  ADD COLUMN xp_per_centiword INTEGER;
+
+ALTER TABLE guild_config
+  ADD COLUMN coins_per_centixp INTEGER;
+
+DROP TABLE IF EXISTS untracked_text_channels;
+CREATE TABLE untracked_text_channels(
+  channelid BIGINT PRIMARY KEY,
+  guildid BIGINT NOT NULL,
+  _timestamp TIMESTAMPTZ NOT NULL DEFAULT (now() AT TIME ZONE 'utc'),
+  FOREIGN KEY (guildid) REFERENCES guild_config (guildid) ON DELETE CASCADE
+);
+CREATE INDEX untracked_text_channels_guilds ON untracked_text_channels (guildid);
+
+
+CREATE VIEW xp_statistics AS
+  SELECT
+    sessionid,
+    guildid,
+    userid,
+    start_time,
+    duration,
+    global_xp,
+    guild_xp,
+    messages,
+    end_time
+  FROM text_sessions;
+
+-- }}}
 -- TODO: Profile tags, remove guildid not null restriction
 
 -- Goal data {{{
@@ -548,6 +658,76 @@ CREATE INDEX user_monthly_goals_users ON user_monthly_goals (userid);
 
 -- Timezone data {{{
 ALTER TABLE guild_config ADD COLUMN timezone TEXT;
+-- }}}
+
+-- Rank Data {{{
+CREATE TABLE xp_ranks(
+  rankid SERIAL PRIMARY KEY,
+  roleid BIGINT NOT NULL,
+  guildid BIGINT NOT NULL REFERENCES guild_config ON DELETE CASCADE,
+  required INTEGER NOT NULL,
+  reward INTEGER NOT NULL,
+  message TEXT
+);
+CREATE UNIQUE INDEX xp_ranks_roleid ON xp_ranks (roleid);
+CREATE INDEX xp_ranks_guild_required ON xp_ranks (guildid, required);
+
+CREATE TABLE voice_ranks(
+  rankid SERIAL PRIMARY KEY,
+  roleid BIGINT NOT NULL,
+  guildid BIGINT NOT NULL REFERENCES guild_config ON DELETE CASCADE,
+  required INTEGER NOT NULL,
+  reward INTEGER NOT NULL,
+  message TEXT
+);
+CREATE UNIQUE INDEX voice_ranks_roleid ON voice_ranks (roleid);
+CREATE INDEX voice_ranks_guild_required ON voice_ranks (guildid, required);
+
+CREATE TABLE msg_ranks(
+  rankid SERIAL PRIMARY KEY,
+  roleid BIGINT NOT NULL,
+  guildid BIGINT NOT NULL REFERENCES guild_config ON DELETE CASCADE,
+  required INTEGER NOT NULL,
+  reward INTEGER NOT NULL,
+  message TEXT
+);
+CREATE UNIQUE INDEX msg_ranks_roleid ON msg_ranks (roleid);
+CREATE INDEX msg_ranks_guild_required ON msg_ranks (guildid, required);
+
+CREATE TABLE member_ranks(
+  guildid BIGINT NOT NULL,
+  userid BIGINT NOT NULL,
+  current_xp_rankid INTEGER REFERENCES xp_ranks ON DELETE SET NULL,
+  current_voice_rankid INTEGER REFERENCES voice_ranks ON DELETE SET NULL,
+  current_msg_rankid INTEGER REFERENCES msg_ranks ON DELETE SET NULL,
+  last_roleid BIGINT,
+  PRIMARY KEY (guildid, userid),
+  FOREIGN KEY (guildid, userid) REFERENCES members (guildid, userid)
+);
+
+CREATE TYPE RankType AS ENUM(
+  'XP',
+  'VOICE',
+  'MESSAGE'
+);
+
+ALTER TABLE guild_config ADD COLUMN rank_type RankType;
+ALTER TABLE guild_config ADD COLUMN rank_channel BIGINT;
+ALTER TABLE guild_config ADD COLUMN dm_ranks BOOLEAN;
+
+CREATE TABLE season_stats(
+  guildid BIGINT NOT NULL,
+  userid BIGINT NOT NULL,
+  voice_stats INTEGER NOT NULL DEFAULT 0,
+  xp_stats INTEGER NOT NULL DEFAULT 0,
+  message_stats INTEGER NOT NULL DEFAULT 0,
+  season_start TIMESTAMPTZ,
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  PRIMARY KEY (guildid, userid),
+  FOREIGN KEY (guildid, userid) REFERENCES members (guildid, userid)
+);
+-- TODO: Add voice migration from current mmembers column
+
 -- }}}
 
 INSERT INTO VersionHistory (version, author) VALUES (13, 'v12-v13 migration');
