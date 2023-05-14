@@ -257,7 +257,7 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
         return '\n'.join((
             self.display_name,
             '=' * len(self.display_name),
-            self.long_desc,
+            self.desc,
             f"\nAccepts: {self.accepts}"
         ))
 

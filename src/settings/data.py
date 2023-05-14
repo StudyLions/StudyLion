@@ -70,8 +70,7 @@ class ModelData:
         )
         # If we didn't update any rows, create a new row
         if not rows:
-            await model.table.fetch_or_create(**model._dict_from_id, **{cls._column: data})
-            ...
+            await model.fetch_or_create(**model._dict_from_id(parent_id), **{cls._column: data})
 
         if cls._cache is not None:
             cls._cache[parent_id] = data
