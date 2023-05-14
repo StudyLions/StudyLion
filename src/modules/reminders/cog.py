@@ -19,6 +19,7 @@ from discord.ext import commands as cmds
 from discord import app_commands as appcmds
 from discord.app_commands import Transform
 from discord.ui.select import select, SelectOption
+from dateutil.parser import parse, ParserError
 
 from data import RowModel, Registry
 from data.queries import ORDER
@@ -572,32 +573,131 @@ class Reminders(LionCog):
         # Base command group for scheduling reminders.
         pass
 
-    # TODO: Waiting until we have timezone data and user time methods.
-    # @remindme_group.command(
-    #     name=_p('cmd:remindme_at', "at"),
-    #     description=_p(
-    #         'cmd:remindme_at|desc',
-    #         "Schedule a reminder for a particular time."
-    #     )
-    # )
-    # @appcmds.rename(
-    #     time=_p('cmd:remindme_at|param:time', "time"),
-    #     reminder=_p('cmd:remindme_at|param:reminder', "reminder"),
-    #     every=_p('cmd:remindme_at|param:every', "every"),
-    # )
-    # @appcmds.describe(
-    #     time=_p('cmd:remindme_at|param:time|desc', "When you want to be reminded.."),
-    #     reminder=_p('cmd:remindme_at|param:reminder|desc', "What should the reminder be?"),
-    #     every=_p('cmd:remindme_at|param:every|desc', "How often to repeat this reminder.")
-    # )
-    # async def cmd_remindme_at(
-    #     self,
-    #     ctx: LionContext,
-    #     time: str,
-    #     reminder: str,
-    #     every: Optional[Transform[int, DurationTransformer(60)]] = None
-    # ):
-    #     ...
+    @remindme_group.command(
+        name=_p('cmd:remindme_at', "at"),
+        description=_p(
+            'cmd:remindme_at|desc',
+            "Schedule a reminder for a particular time."
+        )
+    )
+    @appcmds.rename(
+        time=_p('cmd:remindme_at|param:time', "time"),
+        reminder=_p('cmd:remindme_at|param:reminder', "reminder"),
+        every=_p('cmd:remindme_at|param:every', "repeat_every"),
+    )
+    @appcmds.describe(
+        time=_p('cmd:remindme_at|param:time|desc', "When you want to be reminded. (E.g. `4pm` or `16:00`)."),
+        reminder=_p('cmd:remindme_at|param:reminder|desc', "What should the reminder be?"),
+        every=_p('cmd:remindme_at|param:every|desc', "How often to repeat this reminder.")
+    )
+    async def cmd_remindme_at(
+        self,
+        ctx: LionContext,
+        time: str,
+        reminder: str,
+        every: Optional[Transform[int, DurationTransformer(60)]] = None
+    ):
+        t = self.bot.translator.t
+        reminders = await self.data.Reminder.fetch_where(userid=ctx.author.id)
+
+        # Guard against too many reminders
+        if len(reminders) > 25:
+            await ctx.error_reply(
+                embed=error_embed(
+                    t(_p(
+                        'cmd_remindme_at|error:too_many|desc',
+                        "Sorry, you have reached the maximum of `25` reminders!"
+                    )),
+                    title=t(_p(
+                        'cmd_remindme_at|error:too_many|title',
+                        "Could not create reminder!"
+                    ))
+                ),
+                ephemeral=True
+            )
+            return
+
+        # Guard against too frequent reminders
+        if every is not None and every < 600:
+            await ctx.reply(
+                embed=error_embed(
+                    t(_p(
+                        'cmd_remindme_at|error:too_fast|desc',
+                        "You cannot set a repeating reminder with a period less than 10 minutes."
+                    )),
+                    title=t(_p(
+                        'cmd_remindme_at|error:too_fast|title',
+                        "Could not create reminder!"
+                    ))
+                ),
+                ephemeral=True
+            )
+            return
+
+        # Parse the provided static time
+        timezone = ctx.lmember.timezone
+        time = time.strip()
+        default = dt.datetime.now(tz=timezone).replace(hour=0, minute=0, second=0, microsecond=0)
+        try:
+            ts = parse(time, fuzzy=True, default=default)
+        except ParserError:
+            await ctx.reply(
+                embed=error_embed(
+                    t(_p(
+                        'cmd:remindme_at|error:parse_time|desc',
+                        "Could not parse provided time `{given}`. Try entering e.g. `4 pm` or `16:00`."
+                    )),
+                    title=t(_p(
+                        'cmd:remindme_at|error:parse_time|title',
+                        "Could not create reminder!"
+                    ))
+                ),
+                ephemeral=True
+            )
+            return
+        if ts < utc_now():
+            await ctx.reply(
+                embed=error_embed(
+                    t(_p(
+                        'cmd:remindme_at|error:past_time|desc',
+                        "Provided time is in the past!"
+                    )),
+                    title=t(_p(
+                        'cmd:remindme_at|error:past_time|title',
+                        "Could not create reminder!"
+                    ))
+                ),
+                ephemeral=True
+            )
+            return
+        # Everything seems to be in order
+        # Create the reminder
+        now = utc_now()
+        rem = await self.data.Reminder.create(
+            userid=ctx.author.id,
+            remind_at=ts,
+            content=reminder,
+            message_link=ctx.message.jump_url,
+            interval=every,
+            created_at=now
+        )
+
+        # Reminder created, request scheduling from executor shard
+        await self.talk_schedule(rem.reminderid).send(self.executor_name, wait_for_reply=False)
+
+        # TODO Add repeat to description
+        embed = discord.Embed(
+            title=t(_p(
+                'cmd:remindme_in|success|title',
+                "Reminder Set at {timestamp}"
+            )).format(timestamp=f"<t:{rem.timestamp}>"),
+            description=f"> {rem.content}"
+        )
+        await ctx.reply(
+            embed=embed,
+            ephemeral=True
+        )
+        await self.dispatch_update_for(ctx.author.id)
 
     @remindme_group.command(
         name=_p('cmd:remindme_in', "in"),
@@ -609,7 +709,7 @@ class Reminders(LionCog):
     @appcmds.rename(
         time=_p('cmd:remindme_in|param:time', "time"),
         reminder=_p('cmd:remindme_in|param:reminder', "reminder"),
-        every=_p('cmd:remindme_in|param:every', "every"),
+        every=_p('cmd:remindme_in|param:every', "repeat_every"),
     )
     @appcmds.describe(
         time=_p('cmd:remindme_in|param:time|desc', "How far into the future to set the reminder (e.g. 1 day 10h 5m)."),
