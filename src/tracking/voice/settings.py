@@ -1,4 +1,5 @@
 from typing import Optional
+import asyncio
 from collections import defaultdict
 import discord
 from discord.ui.select import select, Select, ChannelSelect
@@ -11,7 +12,8 @@ from settings.setting_types import ChannelListSetting, IntegerSetting, DurationS
 from meta import conf, LionBot
 from meta.sharding import THIS_SHARD
 from meta.logger import log_wrap
-from utils.ui import LeoUI
+from utils.lib import MessageArgs
+from utils.ui import LeoUI, ConfigUI, DashboardSection
 
 from core.data import CoreData
 from core.lion_guild import VoiceMode
@@ -101,6 +103,10 @@ class VoiceTrackerSettings(SettingGroup):
             'guildset:hourly_reward|mode:voice|desc',
             "LionCoins given per hour in a voice channel."
         )
+        _long_desc = _p(
+            'guildset:hourly_reward|mode:voice|long_desc',
+            "Number of LionCoins to each member per hour that they stay in a tracked voice channel."
+        )
 
         _default = 50
         _min = 0
@@ -136,7 +142,7 @@ class VoiceTrackerSettings(SettingGroup):
         )
         _long_desc = _p(
             'guildset:hourly_reward|mode:voice|long_desc',
-            "Number of LionCoins to each member per hour that they stay in a tracked voice channel."
+            "Number of LionCoins rewarded to each member per hour that they stay in a tracked voice channel."
         )
 
         @property
@@ -274,7 +280,7 @@ class VoiceTrackerSettings(SettingGroup):
             )
 
 
-class VoiceTrackerConfigUI(LeoUI):
+class VoiceTrackerConfigUIALT(LeoUI):
     # TODO: Bulk edit
     # TODO: Cohesive exit
     # TODO: Back to main configuration panel
@@ -303,6 +309,7 @@ class VoiceTrackerConfigUI(LeoUI):
         return (self.hourly_reward, self.hourly_live_bonus, self.daily_voice_cap, self.untracked_channels)
 
     async def cleanup(self):
+        # TODO: Swap cleanup and close..
         self._listening.pop(self.channelid, None)
         for instance in self.instances:
             instance.deregister_callback(self.id)
@@ -362,7 +369,7 @@ class VoiceTrackerConfigUI(LeoUI):
 
         if interaction.response.is_done():
             # Use followup to respond
-            self._mesage = await interaction.followup.send(embed=self.embed, view=self)
+            self._message = await interaction.followup.send(embed=self.embed, view=self)
         else:
             # Use interaction response to respond
             self._original = interaction
@@ -431,3 +438,93 @@ class VoiceTrackerConfigUI(LeoUI):
         for setting in self.instances:
             embed.add_field(**setting.embed_field, inline=False)
         return embed
+
+
+class VoiceTrackerConfigUI(ConfigUI):
+    setting_classes = (
+        VoiceTrackerSettings.HourlyReward,
+        VoiceTrackerSettings.HourlyLiveBonus,
+        VoiceTrackerSettings.DailyVoiceCap,
+        VoiceTrackerSettings.UntrackedChannels,
+    )
+
+    def __init__(self, bot: LionBot,
+                 guildid: int, channelid: int, **kwargs):
+        self.settings = bot.get_cog('VoiceTrackerCog').settings
+        super().__init__(bot, guildid, channelid, **kwargs)
+
+    @select(
+        cls=ChannelSelect,
+        placeholder="UNTRACKED_CHANNELS_PLACEHOLDER",
+        min_values=0, max_values=25
+    )
+    async def untracked_channels_menu(self, selection: discord.Interaction, selected):
+        await selection.response.defer()
+        setting = self.instances[3]
+        setting.value = selected.values
+        await setting.write()
+
+    async def untracked_channels_menu_refresh(self):
+        t = self.bot.translator.t
+        self.untracked_channels_menu.placeholder = t(_p(
+            'ui:voice_tracker_config|menu:untracked_channels|placeholder',
+            "Select Untracked Channels"
+        ))
+
+    async def make_message(self):
+        t = self.bot.translator.t
+        lguild = await self.bot.core.lions.fetch_guild(self.guildid)
+        mode = lguild.guild_mode
+        if mode.voice is VoiceMode.VOICE:
+            title = t(_p(
+                'ui:voice_tracker_config|mode:voice|embed|title',
+                "Voice Tracker Configuration Panel"
+            ))
+        else:
+            title = t(_p(
+                'ui:voice_tracker_config|mode:study|embed|title',
+                "Study Tracker Configuration Panel"
+            ))
+        embed = discord.Embed(
+            colour=discord.Colour.orange(),
+            title=title
+        )
+        for setting in self.instances:
+            embed.add_field(**setting.embed_field, inline=False)
+
+        args = MessageArgs(embed=embed)
+        return args
+
+    async def reload(self):
+        lguild = await self.bot.core.lions.fetch_guild(self.guildid)
+        if lguild.guild_mode.voice is VoiceMode.VOICE:
+            hourly_reward = await self.settings.HourlyReward_Voice.get(self.guildid)
+        else:
+            hourly_reward = await self.settings.HourlyReward_Study.get(self.guildid)
+        hourly_live_bonus = lguild.config.get('hourly_live_bonus')
+        daily_voice_cap = lguild.config.get('daily_voice_cap')
+        untracked_channels = await self.settings.UntrackedChannels.get(self.guildid)
+        self.instances = (
+            hourly_reward, hourly_live_bonus, daily_voice_cap, untracked_channels
+        )
+
+    async def refresh_components(self):
+        await asyncio.gather(
+            self.edit_button_refresh(),
+            self.close_button_refresh(),
+            self.reset_button_refresh(),
+            self.untracked_channels_menu_refresh(),
+        )
+        self._layout = [
+            (self.untracked_channels_menu,),
+            (self.edit_button, self.reset_button, self.close_button)
+        ]
+
+
+class VoiceTrackerDashboard(DashboardSection):
+    section_name = _p(
+        'dash:voice_tracker|title',
+        "Voice Tracker Configuration"
+    )
+    configui = VoiceTrackerConfigUI
+    setting_classes = configui.setting_classes

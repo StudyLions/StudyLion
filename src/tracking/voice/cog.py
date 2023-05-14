@@ -47,8 +47,8 @@ class VoiceTrackerCog(LionCog):
 
         self.bot.core.guild_config.register_model_setting(self.settings.HourlyReward)
         self.bot.core.guild_config.register_model_setting(self.settings.HourlyLiveBonus)
-        self.bot.core.guild_config.register_model_setting(self.settings.UntrackedChannels)
         self.bot.core.guild_config.register_model_setting(self.settings.DailyVoiceCap)
+        self.bot.core.guild_config.register_setting(self.settings.UntrackedChannels)
 
         # Update the tracked voice channel cache
         await self.settings.UntrackedChannels.setup(self.bot)
@@ -607,10 +607,10 @@ class VoiceTrackerCog(LionCog):
         pass
 
     @configure_group.command(
-        name=_p('cmd:configure_voice_tracking', "voice_tracking"),
+        name=_p('cmd:configure_voice_rates', "voice_rewards"),
         description=_p(
-            'cmd:configure_voice_tracking|desc',
-            "Voice tracking configuration panel"
+            'cmd:configure_voice_rates|desc',
+            "Configure Voice tracking rewards and experience"
         )
     )
     @appcmds.rename(
@@ -695,6 +695,6 @@ class VoiceTrackerCog(LionCog):
 
         if ctx.channel.id not in VoiceTrackerConfigUI._listening or not modified:
             # Launch setting group UI
-            configui = VoiceTrackerConfigUI(self.bot, self.settings, ctx.guild.id, ctx.channel.id)
+            configui = VoiceTrackerConfigUI(self.bot, ctx.guild.id, ctx.channel.id)
             await configui.run(ctx.interaction)
             await configui.wait()

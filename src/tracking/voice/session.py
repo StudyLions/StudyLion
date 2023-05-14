@@ -232,6 +232,14 @@ class VoiceSession:
             # End the ongoing session
             await self.data.close_study_session_at(self.guildid, self.userid, utc_now())
 
+            # Rank update
+            # TODO: Change to broadcasted event?
+            rank_cog = self.bot.get_cog('RankCog')
+            if rank_cog is not None:
+                asyncio.create_task(rank_cog.on_voice_session_complete(
+                    (self.guildid, self.userid, int((utc_now() - self.data.start_time).total_seconds()), 0)
+                ))
+
         if self.start_task is not None:
             self.start_task.cancel()
             self.start_task = None
