@@ -738,3 +738,34 @@ class Timezoned:
         """
         now = self.now
         return now.replace(hour=0, minute=0, second=0, microsecond=0)
+
+    @property
+    def week_start(self):
+        """
+        Return the start of the week in the object's timezone
+        """
+        today = self.today
+        return today - datetime.timedelta(days=today.weekday())
+
+    @property
+    def month_start(self):
+        """
+        Return the start of the current month in the object's timezone
+        """
+        today = self.today
+        return today - datetime.timedelta(days=today.day)
+
+
+def replace_multiple(format_string, mapping):
+    """
+    Subsistutes the keys from the format_dict with their corresponding values.
+
+    Substitution is non-chained, and done in a single pass via regex.
+    """
+    if not mapping:
+        raise ValueError("Empty mapping passed.")
+
+    keys = list(mapping.keys())
+    pattern = '|'.join(f"({key})" for key in keys)
+    string = re.sub(pattern, lambda match: str(mapping[keys[match.lastindex - 1]]), format_string)
+    return string
