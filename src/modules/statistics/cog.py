@@ -9,11 +9,12 @@ from discord.ui.button import ButtonStyle
 from meta import LionBot, LionCog, LionContext
 from utils.lib import error_embed
 from utils.ui import LeoUI, AButton
+from wards import low_management
 
 from . import babel
 from .data import StatsData
-from .ui import ProfileUI, WeeklyMonthlyUI
-from .settings import StatsSettings
+from .ui import ProfileUI, WeeklyMonthlyUI, LeaderboardUI
+from .settings import StatisticsSettings, StatisticsConfigUI
 
 _p = babel._p
 
@@ -25,12 +26,17 @@ class StatsCog(LionCog):
     def __init__(self, bot: LionBot):
         self.bot = bot
         self.data = bot.db.load_registry(StatsData())
-        self.settings = StatsSettings
+        self.settings = StatisticsSettings()
 
     async def cog_load(self):
         await self.data.init()
 
         self.bot.core.user_config.register_model_setting(self.settings.UserGlobalStats)
+        self.bot.core.guild_config.register_model_setting(self.settings.SeasonStart)
+        self.bot.core.guild_config.register_setting(self.settings.UnrankedRoles)
+
+        configcog = self.bot.get_cog('ConfigCog')
+        self.crossload_group(self.configure_group, configcog.configure_group)
 
     @cmds.hybrid_command(
         name=_p('cmd:me', "me"),
@@ -68,4 +74,67 @@ class StatsCog(LionCog):
     )
     @appcmds.guild_only
     async def leaderboard_cmd(self, ctx: LionContext):
+        await ctx.interaction.response.defer(thinking=True)
+        ui = LeaderboardUI(self.bot, ctx.author, ctx.guild)
+        await ui.run(ctx.interaction)
+
+    # Setting commands
+    @LionCog.placeholder_group
+    @cmds.hybrid_group('configure', with_app_command=False)
+    async def configure_group(self, ctx: LionContext):
         ...
+
+    @configure_group.command(
+        name=_p('cmd:configure_statistics', "statistics"),
+        description=_p('cmd:configure_statistics|desc', "Statistics configuration panel")
+    )
+    @appcmds.rename(
+        season_start=_p('cmd:configure_statistics|param:season_start', "season_start")
+    )
+    @appcmds.describe(
+        season_start=_p(
+            'cmd:configure_statistics|param:season_start|desc',
+            "Time from which to start counting activity for rank badges and season leadeboards."
+        )
+    )
+    @cmds.check(low_management)
+    async def configure_statistics_cmd(self, ctx: LionContext,
+                                       season_start: Optional[str] = None):
+        t = self.bot.translator.t
+
+        # Type checking guards
+        if not ctx.guild:
+            return
+        if not ctx.interaction:
+            return
+
+        # Retrieve settings, using cache where possible
+        setting_season_start = await self.settings.SeasonStart.get(ctx.guild.id)
+
+        modified = []
+        if season_start is not None:
+            data = await setting_season_start._parse_string(ctx.guild.id, season_start)
+            setting_season_start.data = data
+            await setting_season_start.write()
+            modified.append(setting_season_start)
+
+        # Send update ack
+        if modified:
+            # TODO
+            description = t(_p(
+                'cmd:configure_statistics|resp:success|desc',
+                "Activity ranks and season leaderboard will now be measured from {season_start}."
+            )).format(
+                season_start=setting_season_start.formatted
+            )
+            embed = discord.Embed(
+                colour=discord.Colour.brand_green(),
+                description=description
+            )
+            await ctx.reply(embed=embed)
+
+        if ctx.channel.id not in StatisticsConfigUI._listening or not modified:
+            # Launch setting group UI
+            configui = StatisticsConfigUI(self.bot, ctx.guild.id, ctx.channel.id)
+            await configui.run(ctx.interaction)
+            await configui.wait()

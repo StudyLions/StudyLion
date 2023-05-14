@@ -13,8 +13,10 @@ from utils.lib import MessageArgs
 from utils.ui import LeoUI, ModalRetryUI, FastModal, error_handler_for
 from babel.translator import ctx_translator
 from gui.cards import ProfileCard, StatsCard
+from gui.base import CardMode
 
 from ..graphics.stats import get_stats_card
+from ..graphics.profile import get_profile_card
 from ..data import StatsData
 from .. import babel
 
@@ -101,6 +103,16 @@ class StatType(IntEnum):
             )
         return name
 
+    @property
+    def card_mode(self):
+        # TODO: Need to support VOICE separately from STUDY
+        if self is self.VOICE:
+            return CardMode.VOICE
+        elif self is self.TEXT:
+            return CardMode.TEXT
+        elif self is self.ANKI:
+            return CardMode.ANKI
+
 
 class ProfileUI(StatsUI):
     def __init__(self, bot, user, guild, **kwargs):
@@ -109,6 +121,7 @@ class ProfileUI(StatsUI):
         # State
         self._stat_type = StatType.VOICE
         self._showing_stats = False
+        self._stat_message = None
 
         # Card data for rendering
         self._profile_card: Optional[ProfileCard] = None
@@ -181,7 +194,11 @@ class ProfileUI(StatsUI):
         await press.response.send_modal(modal)
 
     async def edit_button_refresh(self):
-        ...
+        t = self.bot.translator.t
+        self.edit_button.label = t(_p(
+            'ui:profile_card|button:edit|label',
+            "Edit Profile Badges"
+        ))
 
     @button(label="Show Statistics", style=ButtonStyle.blurple)
     async def stats_button(self, press: discord.Interaction, pressed: Button):
@@ -189,12 +206,8 @@ class ProfileUI(StatsUI):
         Press to show or hide the statistics panel.
         """
         self._showing_stats = not self._showing_stats
-        if self._stats_card or not self._showing_stats:
-            await press.response.defer()
-            await self.refresh()
-        else:
-            await press.response.defer(thinking=True, ephemeral=True)
-            await self.refresh(thinking=press)
+        await press.response.defer(thinking=True, ephemeral=True)
+        await self.refresh(thinking=press)
 
     async def stats_button_refresh(self):
         button = self.stats_button
@@ -243,6 +256,19 @@ class ProfileUI(StatsUI):
         else:
             button.label = "Global Statistics"
 
+    @button(emoji=conf.emojis.cancel, style=ButtonStyle.red)
+    async def close_button(self, press: discord.Interaction, pressed: Button):
+        """
+        Delete the output message and close the UI.
+        """
+        await press.response.defer()
+        await self._original.delete_original_response()
+        if self._stat_message is not None:
+            await self._stat_message.delete()
+            self._stat_message = None
+        self._original = None
+        await self.close()
+
     async def refresh_components(self):
         """
         Refresh each UI component, and the overall layout.
@@ -268,7 +294,7 @@ class ProfileUI(StatsUI):
         """
         Create and render the profile card.
         """
-        card = await get_stats_card(self.bot, self.userid, self.guildid)
+        card = await get_stats_card(self.bot, self.userid, self.guildid, self._stat_type.card_mode)
         await card.render()
         self._stats_card = card
         return card
@@ -277,12 +303,10 @@ class ProfileUI(StatsUI):
         """
         Create and render the XP and stats cards.
         """
-        args = await ProfileCard.sample_args(None)
-        data: StatsData = self.bot.get_cog('StatsCog').data
-        args |= {'badges': await data.ProfileTag.fetch_tags(self.guildid, self.userid)}
-        card = ProfileCard(**args)
-        await card.render()
-        self._profile_card = card
+        card = await get_profile_card(self.bot, self.userid, self.guildid)
+        if card:
+            await card.render()
+            self._profile_card = card
         return card
 
     async def reload(self):
@@ -302,16 +326,39 @@ class ProfileUI(StatsUI):
         if tasks:
             await asyncio.gather(*tasks)
 
+    async def redraw(self, thinking: Optional[discord.Interaction] = None):
+        """
+        Redraw the UI.
+
+        If a thinking interaction is provided,
+        deletes the response while redrawing.
+        """
+        profile_args, stat_args = await self.make_message()
+        if thinking is not None and not thinking.is_expired() and thinking.response.is_done():
+            asyncio.create_task(thinking.delete_original_response())
+        if stat_args is not None:
+            send_task = asyncio.create_task(self._original.edit_original_response(**profile_args.edit_args, view=None))
+            if self._stat_message is None:
+                self._stat_message = await self._original.followup.send(**stat_args.send_args, view=self)
+            else:
+                await self._stat_message.edit(**stat_args.edit_args, view=self)
+        else:
+            send_task = asyncio.create_task(self._original.edit_original_response(**profile_args.edit_args, view=self))
+            if self._stat_message is not None:
+                await self._stat_message.delete()
+                self._stat_message = None
+        await send_task
+
     async def make_message(self) -> MessageArgs:
         """
         Make the message arguments. Apply cache where possible.
         """
-        # Build the final message arguments
-        files = []
-        files.append(self._profile_card.as_file('profile.png'))
+        profile_args = MessageArgs(file=self._profile_card.as_file('profile.png'))
         if self._showing_stats:
-            files.append(self._stats_card.as_file('stats.png'))
-        return MessageArgs(files=files)
+            stats_args = MessageArgs(file=self._stats_card.as_file('stats.png'))
+        else:
+            stats_args = None
+        return (profile_args, stats_args)
 
     async def run(self, interaction: discord.Interaction):
         """

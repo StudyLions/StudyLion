@@ -5,6 +5,7 @@ from data import NULL
 from meta import LionBot
 from gui.cards import WeeklyGoalCard, MonthlyGoalCard
 from gui.base import CardMode
+from tracking.text.data import TextTrackerData
 
 from ..data import StatsData
 from ..lib import extract_weekid, extract_monthid, apply_week_offset, apply_month_offset
@@ -41,7 +42,15 @@ async def get_goals_card(
         key = {'guildid': guildid or 0, 'userid': userid, 'monthid': periodid}
 
     # Extract goals and tasks
-    goals = await goal_model.fetch(*key.values())
+    # TODO: Major data model fixy fixy here
+    if guildid:
+        goals = await goal_model.fetch_or_create(*key.values())
+    else:
+        goals = await goal_model.fetch(*key.values())
+        if not goals:
+            from collections import defaultdict
+            goals = defaultdict(lambda: -1)
+
     task_rows = await tasks_model.fetch_where(**key)
     tasks = [(i, row.content, bool(row.completed)) for i, row in enumerate(task_rows)]
 
@@ -58,11 +67,17 @@ async def get_goals_card(
     tasks_completed = results[0]['total'] if results else 0
 
     # Set and compute correct middle goal column
-    # if mode in (CardMode.VOICE, CardMode.STUDY):
-    if True:
+    if mode in (CardMode.VOICE, CardMode.STUDY):
         model = data.VoiceSessionStats
         middle_completed = (await model.study_times_between(guildid or None, userid, start, end))[0]
         middle_goal = goals['study_goal']
+    elif mode is CardMode.TEXT:
+        model = TextTrackerData.TextSessions
+        middle_goal = goals['message_goal']
+        if guildid:
+            middle_completed = (await model.member_messages_between(guildid, userid, start, end))[0]
+        else:
+            middle_completed = (await model.user_messages_between(userid, start, end))[0]
 
     # Compute schedule session progress
     # TODO

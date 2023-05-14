@@ -6,6 +6,7 @@ from data import ORDER
 from meta import LionBot
 from gui.cards import MonthlyStatsCard
 from gui.base import CardMode
+from tracking.text.data import TextTrackerData
 
 from ..data import StatsData
 from ..lib import apply_month_offset
@@ -34,8 +35,23 @@ async def get_monthly_card(bot: LionBot, userid: int, guildid: int, offset: int,
         [0]*(calendar.monthrange(month.year, month.month)[1]) for month in months
     ]
 
-    # TODO: Select model based on card mode
-    model = data.VoiceSessionStats
+    if mode is CardMode.VOICE:
+        model = data.VoiceSessionStats
+        req = model.study_times_between
+        reqkey = (guildid or None, userid,)
+    elif mode is CardMode.TEXT:
+        model = TextTrackerData.TextSessions
+        if guildid:
+            req = model.member_messages_between
+            reqkey = (guildid, userid,)
+        else:
+            req = model.user_messages_between
+            reqkey = (userid,)
+    else:
+        # TODO: ANKI
+        model = data.VoiceSessionStats
+        req = model.study_times_between
+        reqkey = (guildid or None, userid,)
 
     # Get first session
     query = model.table.select_where().order_by('start_time', ORDER.ASC).limit(1)
@@ -50,10 +66,10 @@ async def get_monthly_card(bot: LionBot, userid: int, guildid: int, offset: int,
         longest_streak = 0
     else:
         first_day = first_session.replace(hour=0, minute=0, second=0, microsecond=0)
-        first_month = first_day.replace(day=1)
+        # first_month = first_day.replace(day=1)
 
         # Build list of day starts up to now, or end of requested month
-        requests = []
+        requests = [first_day]
         end_of_req = target_end if offset else today
         day = first_day
         while day <= end_of_req:
@@ -61,7 +77,7 @@ async def get_monthly_card(bot: LionBot, userid: int, guildid: int, offset: int,
             requests.append(day)
 
         # Request times between requested days
-        day_stats = await model.study_times_between(guildid or None, userid, *requests)
+        day_stats = await req(*reqkey, *requests)
 
         # Compute current streak and longest streak
         current_streak = 0
@@ -79,7 +95,10 @@ async def get_monthly_card(bot: LionBot, userid: int, guildid: int, offset: int,
             if day < months[0]:
                 break
             i = offsets[(day.year, day.month)]
-            monthly[i][day.day - 1] = stat / 3600
+            if mode in (CardMode.VOICE, CardMode.STUDY):
+                monthly[i][day.day - 1] = stat / 3600
+            else:
+                monthly[i][day.day - 1] = stat
 
     # Get member profile
     if user:
