@@ -78,6 +78,35 @@ class Lions(LionCog):
             self.lion_guilds[guildid] = lguild
         return lguild
 
+    async def fetch_guilds(self, *guildids) -> dict[int, LionGuild]:
+        """
+        Fetch (or create) multiple LionGuilds simultaneously, using cache where possible.
+        """
+        guild_map = {}
+        missing = set()
+        for guildid in guildids:
+            lguild = self.lion_guilds.get(guildid, None)
+            guild_map[guildid] = lguild
+            if lguild is None:
+                missing.add(guildid)
+
+        if missing:
+            rows = await self.data.Guild.fetch_where(guildid=list(missing))
+            missing.difference_update(row.guildid for row in rows)
+
+            if missing:
+                new_rows = await self.data.Guild.table.insert_many(
+                    ('guildid',),
+                    *((guildid,) for guildid in missing)
+                ).with_adapter(self.data.Guild._make_rows)
+                rows = (*rows, *new_rows)
+
+            for row in rows:
+                guildid = row.guildid
+                self.lion_guilds[guildid] = guild_map[guildid] = LionGuild(self.bot, row)
+
+        return guild_map
+
     async def fetch_member(self, guildid, userid, member: Optional[discord.Member] = None) -> LionMember:
         """
         Fetch the given LionMember, using cache for data if possible.

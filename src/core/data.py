@@ -1,10 +1,26 @@
+from enum import Enum
 from itertools import chain
 from psycopg import sql
 from cachetools import TTLCache
 
-from data import Table, Registry, Column, RowModel
+from data import Table, Registry, Column, RowModel, RegisterEnum
 from data.models import WeakCache
 from data.columns import Integer, String, Bool, Timestamp
+
+
+class RankType(Enum):
+    """
+    Schema
+    ------
+    CREATE TYPE RankType AS ENUM(
+        'XP',
+        'VOICE',
+        'MESSAGE'
+    );
+    """
+    XP = 'XP',
+    VOICE = 'VOICE',
+    MESSAGE = 'MESSAGE',
 
 
 class CoreData(Registry, name="core"):
@@ -141,7 +157,10 @@ class CoreData(Registry, name="core"):
             left_at TIMESTAMPTZ,
             locale TEXT,
             timezone TEXT,
-            force_locale BOOLEAN
+            force_locale BOOLEAN,
+            season_start TIMESTAMPTZ,
+            xp_per_period INTEGER,
+            xp_per_centiword INTEGER
         );
 
         """
@@ -205,7 +224,16 @@ class CoreData(Registry, name="core"):
         locale = String()
         force_locale = Bool()
 
-    unranked_rows = Table('unranked_rows')
+        season_start = Timestamp()
+        rank_type: Column[RankType] = Column()
+        rank_channel = Integer()
+        dm_ranks = Bool()
+
+        xp_per_period = Integer()
+        xp_per_centiword = Integer()
+        coins_per_centixp = Integer()
+
+        allow_transfers = Bool()
 
     donator_roles = Table('donator_roles')
 

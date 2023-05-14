@@ -180,9 +180,10 @@ class LocalQueueHandler(QueueHandler):
 
 
 class WebHookHandler(logging.StreamHandler):
-    def __init__(self, webhook_url, batch=False, loop=None):
+    def __init__(self, webhook_url, prefix="", batch=False, loop=None):
         super().__init__()
         self.webhook_url = webhook_url
+        self.prefix = prefix
         self.batched = ""
         self.batch = batch
         self.loop = loop
@@ -264,15 +265,16 @@ class WebHookHandler(logging.StreamHandler):
     async def _send(self, message, as_file=False):
         async with aiohttp.ClientSession() as session:
             webhook = Webhook.from_url(self.webhook_url, session=session)
-            if as_file or len(message) > 2000:
+            if as_file or len(message) > 1900:
                 with StringIO(message) as fp:
                     fp.seek(0)
                     await webhook.send(
+                        f"{self.prefix}\n`{message.splitlines()[0]}`",
                         file=File(fp, filename="logs.md"),
                         username=log_app.get()
                     )
             else:
-                await webhook.send(message, username=log_app.get())
+                await webhook.send(self.prefix + '\n' + message, username=log_app.get())
 
 
 handlers = []
@@ -281,12 +283,12 @@ if webhook := conf.logging['general_log']:
     handlers.append(handler)
 
 if webhook := conf.logging['error_log']:
-    handler = WebHookHandler(webhook, batch=False)
+    handler = WebHookHandler(webhook, prefix=conf.logging['error_prefix'], batch=False)
     handler.setLevel(logging.ERROR)
     handlers.append(handler)
 
 if webhook := conf.logging['critical_log']:
-    handler = WebHookHandler(webhook, batch=False)
+    handler = WebHookHandler(webhook, prefix=conf.logging['critical_prefix'], batch=False)
     handler.setLevel(logging.CRITICAL)
     handlers.append(handler)
 
