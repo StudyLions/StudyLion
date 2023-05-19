@@ -12,8 +12,7 @@ from wards import sys_admin
 from settings.groups import SettingGroup
 
 
-class LeoSettings(LionCog, group_name='leo'):
-    __cog_is_app_commands_group__ = True
+class LeoSettings(LionCog):
     depends = {'CoreCog'}
 
     def __init__(self, bot: LionBot):
@@ -21,7 +20,18 @@ class LeoSettings(LionCog, group_name='leo'):
 
         self.bot_setting_groups: list[SettingGroup] = []
 
-    @cmds.hybrid_command(
+    @cmds.hybrid_group(
+        name="leo"
+    )
+    @cmds.check(sys_admin)
+    async def leo_group(self, ctx: LionContext):
+        """
+        Base command group for global leo-only functions.
+        Only accessible by sysadmins.
+        """
+        ...
+
+    @leo_group.command(
         name='dashboard',
         description="Global setting dashboard"
     )
@@ -36,7 +46,19 @@ class LeoSettings(LionCog, group_name='leo'):
             description = group.description.format(ctx=ctx, bot=ctx.bot).strip()
             embed.add_field(
                 name=group.title.format(ctx=ctx, bot=ctx.bot),
-                value=f"{description}\n{table}"
+                value=f"{description}\n{table}",
+                inline=False
             )
 
         await ctx.reply(embed=embed)
+
+    @leo_group.group(
+        name='configure',
+        description="Leo Configuration Group"
+    )
+    @cmds.check(sys_admin)
+    async def leo_configure_group(self, ctx: LionContext):
+        """
+        Base command group for global configuration of Leo.
+        """
+        ...

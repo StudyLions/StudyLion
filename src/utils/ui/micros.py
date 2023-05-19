@@ -76,8 +76,8 @@ class FastModal(LeoModal):
                             return
                     try:
                         await coro(interaction, *pass_args, **pass_kwargs)
-                    except Exception as error:
-                        await self.on_error(interaction, error)
+                    except Exception:
+                        raise
                     finally:
                         if once:
                             self._waiters.remove(wrapped_callback)
@@ -100,12 +100,20 @@ class FastModal(LeoModal):
             await super().on_error(interaction, error)
 
     async def on_submit(self, interaction):
+        print("On submit")
         old_result = self._result
         self._result = asyncio.get_event_loop().create_future()
         old_result.set_result(interaction)
 
+        tasks = []
         for waiter in self._waiters:
-            asyncio.create_task(waiter(interaction), name=f"leo-ui-fastmodal-{self.id}-callback-{waiter.__name__}")
+            task = asyncio.create_task(
+                waiter(interaction),
+                name=f"leo-ui-fastmodal-{self.id}-callback-{waiter.__name__}"
+            )
+            tasks.append(task)
+        if tasks:
+            await asyncio.gather(*tasks)
 
 
 async def input(

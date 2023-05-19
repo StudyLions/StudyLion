@@ -1,5 +1,6 @@
 from typing import Optional, TYPE_CHECKING
 from enum import Enum
+import asyncio
 import pytz
 import discord
 
@@ -48,7 +49,7 @@ class LionGuild(Timezoned):
     No guarantee is made that the client is in the corresponding Guild,
     or that the corresponding Guild even exists.
     """
-    __slots__ = ('bot', 'data', 'guildid', 'config', '_guild', '__weakref__')
+    __slots__ = ('bot', 'data', 'guildid', 'config', '_guild', 'voice_lock', '__weakref__')
 
     Config = GuildConfig
     settings = Config.settings
@@ -61,6 +62,11 @@ class LionGuild(Timezoned):
         self._guild = guild
 
         self.config = self.Config(self.guildid, data)
+
+        # Guild-specific voice lock
+        # Every module which uses voice alerts should hold this lock throughout the alert.
+        # Avoids voice race-states
+        self.voice_lock = asyncio.Lock()
 
     @property
     def guild(self):
@@ -76,6 +82,10 @@ class LionGuild(Timezoned):
     @property
     def timezone(self) -> pytz.timezone:
         return self.config.timezone.value
+
+    @property
+    def locale(self) -> str:
+        return self.config.get('guild_locale').value
 
     async def touch_discord_model(self, guild: discord.Guild):
         """

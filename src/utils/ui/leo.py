@@ -316,7 +316,7 @@ class MessageUI(LeoUI):
         """
         raise NotImplementedError
 
-    async def draw(self, interaction, force_followup=False):
+    async def draw(self, interaction, force_followup=False, **kwargs):
         """
         Send the UI as a response or followup to the given interaction.
 
@@ -332,10 +332,10 @@ class MessageUI(LeoUI):
 
         as_followup = force_followup or interaction.response.is_done()
         if as_followup:
-            self._message = await interaction.followup.send(**args.send_args, view=self)
+            self._message = await interaction.followup.send(**args.send_args, **kwargs, view=self)
         else:
             self._original = interaction
-            await interaction.response.send_message(**args.send_args, view=self)
+            await interaction.response.send_message(**args.send_args, **kwargs, view=self)
 
     async def redraw(self, thinking: Optional[discord.Interaction] = None):
         """

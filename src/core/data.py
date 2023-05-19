@@ -2,6 +2,7 @@ from enum import Enum
 from itertools import chain
 from psycopg import sql
 from cachetools import TTLCache
+import discord
 
 from data import Table, Registry, Column, RowModel, RegisterEnum
 from data.models import WeakCache
@@ -346,3 +347,23 @@ class CoreData(Registry, name="core"):
                     (guildid, tuple(untracked), userid)
                 )
                 return (await curs.fetchone()) or (None, None)
+
+    class LionHook(RowModel):
+        """
+        Schema
+        ------
+        CREATE TABLE channel_webhooks(
+          channelid BIGINT NOT NULL PRIMARY KEY,
+          webhookid BIGINT NOT NULL,
+          token TEXT NOT NULL
+        );
+        """
+        _tablename_ = 'channel_webhooks'
+        _cache_ = {}
+
+        channelid = Integer(primary=True)
+        webhookid = Integer()
+        token = String()
+
+        def as_webhook(self, **kwargs):
+            return discord.Webhook.partial(self.webhookid, self.token, **kwargs)

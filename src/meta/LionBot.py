@@ -77,6 +77,10 @@ class LionBot(Bot):
         with logging_context(stack=["Running"]):
             await self.connect(reconnect=reconnect)
 
+    def dispatch(self, event_name: str, *args, **kwargs):
+        with logging_context(action=f"Dispatch {event_name}"):
+            super().dispatch(event_name, *args, **kwargs)
+
     async def on_ready(self):
         logger.info(
             f"Logged in as {self.application.name}\n"

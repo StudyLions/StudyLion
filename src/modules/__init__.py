@@ -5,10 +5,12 @@ active = [
     '.config',
     '.user_config',
     '.economy',
+    '.ranks',
     '.reminders',
     '.shop',
     '.tasklist',
     '.statistics',
+    '.pomodoro',
     '.test',
 ]
 

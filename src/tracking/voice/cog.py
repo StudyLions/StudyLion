@@ -255,7 +255,6 @@ class VoiceTrackerCog(LionCog):
 
     @LionCog.listener("on_voice_state_update")
     @log_wrap(action='Voice Track')
-    @log_wrap(action='Voice Event')
     async def session_voice_tracker(self, member, before, after):
         """
         Spawns the correct tasks from members joining, leaving, and changing live state.
@@ -263,6 +262,9 @@ class VoiceTrackerCog(LionCog):
         # TODO: Logging context
         if not self.handle_events:
             # Rely on initialisation to handle current state
+            return
+
+        if member.bot:
             return
 
         # Check user blacklist

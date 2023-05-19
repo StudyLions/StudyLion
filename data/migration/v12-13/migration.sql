@@ -730,6 +730,28 @@ CREATE TABLE season_stats(
 
 -- }}}
 
+-- Pomodoro Data {{{
+
+ALTER TABLE timers ADD COLUMN ownerid BIGINT REFERENCES user_config;
+ALTER TABLE timers ADD COLUMN manager_roleid BIGINT;
+ALTER TABLE timers ADD COLUMN last_messageid BIGINT;
+ALTER TABLE timers ADD COLUMN voice_alerts BOOLEAN;
+ALTER TABLE timers ADD COLUMN auto_restart BOOLEAN;
+ALTER TABLE timers RENAME COLUMN text_channelid TO notification_channelid;
+ALTER TABLE timers ALTER COLUMN last_started DROP NOT NULL;
+
+-- }}}
+
+-- Webhooks {{{
+
+CREATE TABLE channel_webhooks(
+  channelid BIGINT NOT NULL PRIMARY KEY,
+  webhookid BIGINT NOT NULL,
+  token TEXT NOT NULL
+);
+
+-- }}}
+
 INSERT INTO VersionHistory (version, author) VALUES (13, 'v12-v13 migration');
 
 COMMIT;
