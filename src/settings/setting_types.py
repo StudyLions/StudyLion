@@ -43,7 +43,7 @@ class StringSetting(InteractiveSetting[ParentID, str, str]):
         Default: True
     """
 
-    accepts = _p('settype:bool|accepts', "Any text")
+    _accepts = _p('settype:string|accepts', "Any text")
 
     _maxlen: int = 4000
     _quote: bool = True
@@ -83,7 +83,7 @@ class StringSetting(InteractiveSetting[ParentID, str, str]):
         if len(string) > cls._maxlen:
             raise UserInputError(
                 t(_p(
-                    'settype:bool|error',
+                    'settype:string|error',
                     "Provided string is too long! Maximum length: {maxlen} characters."
                 )).format(maxlen=cls._maxlen)
             )
@@ -121,7 +121,7 @@ class ChannelSetting(Generic[ParentID, CT], InteractiveSetting[ParentID, int, CT
         List of guild channel types to accept.
         Default: []
     """
-    accepts = "Enter a channel name or id"
+    _accepts = _p('settype:channel|accepts', "Enter a channel name or id")
 
     _selector_placeholder = "Select a Channel"
     channel_types: list[discord.ChannelType] = []
@@ -145,7 +145,7 @@ class ChannelSetting(Generic[ParentID, CT], InteractiveSetting[ParentID, int, CT
             channel = bot.get_channel(data)
             if channel is None:
                 channel = discord.Object(id=data)
-        return channel
+            return channel
 
     @classmethod
     async def _parse_string(cls, parent_id, string: str, **kwargs):
@@ -248,7 +248,7 @@ class RoleSetting(InteractiveSetting[ParentID, int, Union[discord.Role, discord.
         Placeholder to use in the Widget selector.
         Default: "Select a Role"
     """
-    accepts = "Enter a role name or id"
+    _accepts = _p('settype:role|accepts', "Enter a role name or id")
 
     _selector_placeholder = "Select a Role"
 
@@ -365,7 +365,7 @@ class BoolSetting(InteractiveSetting[ParentID, bool, bool]):
         Default: {True: "On", False: "Off", None: "Not Set"}
     """
 
-    accepts = "True/False"
+    _accepts = _p('settype:bool|accepts', "True/False")
 
     # Values that are accepted as truthy and falsey by the parser
     _truthy = {"yes", "true", "on", "enable", "enabled"}
@@ -470,7 +470,7 @@ class IntegerSetting(InteractiveSetting[ParentID, int, int]):
     _min = -2147483647
     _max = 2147483647
 
-    accepts = "An integer"
+    _accepts = _p('settype:integer|accepts', "An integer")
 
     @property
     def input_formatted(self) -> str:
@@ -533,7 +533,7 @@ class EmojiSetting(InteractiveSetting[ParentID, str, discord.PartialEmoji]):
     None
     """
 
-    accepts = "Unicode or custom emoji"
+    _accepts = _p('settype:emoji|desc', "Unicode or custom emoji")
 
     @staticmethod
     def _parse_emoji(emojistr):
@@ -605,7 +605,7 @@ class GuildIDSetting(InteractiveSetting[ParentID, int, int]):
     Options
     -------
     """
-    accepts = "Any Snowflake ID"
+    _accepts = _p('settype:guildid|accepts', "Any Snowflake ID")
     # TODO: Consider autocomplete for guilds the user is in
 
     @property
@@ -672,7 +672,8 @@ class TimezoneSetting(InteractiveSetting[ParentID, str, TZT]):
     # Maybe list e.g. Europe (Austria - Iceland) and Europe (Ireland - Ukraine) separately
 
     # TODO Definitely need autocomplete here
-    _accepts = (
+    _accepts = _p(
+        'settype:timezone|accepts',
         "A timezone name from [this list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) "
         "(e.g. `Europe/London`)."
     )
@@ -755,7 +756,10 @@ class TimestampSetting(InteractiveSetting[ParentID, str, dt.datetime]):
     Parsing accepts YYYY-MM-DD [HH:MM] [+TZ]
     Display uses a discord timestamp.
     """
-    _accepts = "A timestamp in the form yyyy-mm-dd HH:MM"
+    _accepts = _p(
+        'settype:timestamp|accepts',
+        "A timestamp in the form yyyy-mm-dd HH:MM"
+    )
 
     @classmethod
     def _data_from_value(cls, parent_id: ParentID, value, **kwargs):
@@ -829,7 +833,7 @@ class EnumSetting(InteractiveSetting[ParentID, ET, ET]):
     _outputs: dict[ET, str]
     _inputs: dict[str, ET]
 
-    accepts = "A valid option."
+    _accepts = _p('settype:enum|accepts', "A valid option.")
 
     @property
     def input_formatted(self) -> str:
@@ -908,7 +912,10 @@ class DurationSetting(InteractiveSetting[ParentID, int, int]):
         Default: False
     """
 
-    accepts = "A number of days, hours, minutes, and seconds, e.g. `2d 4h 10s`."
+    _accepts = _p(
+        'settype:duration|accepts',
+        "A number of days, hours, minutes, and seconds, e.g. `2d 4h 10s`."
+    )
 
     # Set an upper limit on the duration
     _max = 60 * 60 * 24 * 365
@@ -960,7 +967,10 @@ class DurationSetting(InteractiveSetting[ParentID, int, int]):
         if cls._default_multiplier and string.isdigit():
             num = int(string) * cls._default_multiplier
         else:
-            num = parse_dur(string)
+            num = parse_duration(string)
+
+        if num is None:
+            raise UserInputError("Could not parse the provided duration!")
 
         if num == 0 and not cls.allow_zero:
             raise UserInputError(
@@ -1094,7 +1104,8 @@ class ChannelListSetting(ListSetting, InteractiveSetting):
     """
     List of channels
     """
-    accepts = (
+    _accepts = _p(
+        'settype:channel_list|accepts',
         "Comma separated list of channel mentions/ids/names. Use `None` to unset. "
         "Write `--add` or `--remove` to add or remove channels."
     )
@@ -1105,7 +1116,8 @@ class RoleListSetting(ListSetting, InteractiveSetting):
     """
     List of roles
     """
-    accepts = (
+    _accepts = _p(
+        'settype:role_list|accepts',
         "Comma separated list of role mentions/ids/names. Use `None` to unset. "
         "Write `--add` or `--remove` to add or remove roles."
     )
@@ -1121,7 +1133,8 @@ class StringListSetting(InteractiveSetting, ListSetting):
     """
     List of strings
     """
-    accepts = (
+    _accepts = _p(
+        'settype:stringlist|accepts',
         "Comma separated list of strings. Use `None` to unset. "
         "Write `--add` or `--remove` to add or remove strings."
     )
@@ -1132,7 +1145,8 @@ class GuildIDListSetting(InteractiveSetting, ListSetting):
     """
     List of guildids.
     """
-    accepts = (
+    _accepts = _p(
+        'settype:guildidlist|accepts',
         "Comma separated list of guild ids. Use `None` to unset. "
         "Write `--add` or `--remove` to add or remove ids. "
         "The provided ids are not verified in any way."

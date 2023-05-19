@@ -67,16 +67,17 @@ class SettingGroup:
             self.settings.pop(key, None)
         return
 
-    async def make_setting_table(self, parent_id):
+    async def make_setting_table(self, parent_id, **kwargs):
         """
         Convenience method for generating a rendered setting table.
         """
         rows = []
         for setting in self.settings.values():
-            set = await setting.get(parent_id)
-            name = set.display_name
-            value = set.formatted
-            rows.append((name, value, set.hover_desc))
+            if not setting._virtual:
+                set = await setting.get(parent_id, **kwargs)
+                name = set.display_name
+                value = str(set.formatted)
+                rows.append((name, value, set.hover_desc))
         table_rows = tabulate(
             *rows,
             row_format="[`{invis}{key:<{pad}}{colon}`](https://lionbot.org \"{field[2]}\")\t{value}"

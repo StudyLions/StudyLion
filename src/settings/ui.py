@@ -172,6 +172,8 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
     _desc: LazyStr  # User readable brief description of the setting
     _long_desc: LazyStr  # User readable long description of the setting
     _accepts: LazyStr  # User readable description of the acceptable values
+    _virtual: bool = False  # Whether the setting should be hidden from tables and dashboards
+    _required: bool = False
 
     Widget = SettingWidget
 
@@ -254,12 +256,17 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
 
     @property
     def hover_desc(self):
+        """
+        This no longer works since Discord changed the hover rules.
+
         return '\n'.join((
             self.display_name,
             '=' * len(self.display_name),
             self.desc,
             f"\nAccepts: {self.accepts}"
         ))
+        """
+        return self.desc
 
     async def update_response(self, interaction: discord.Interaction, message: Optional[str] = None, **kwargs):
         """
@@ -280,6 +287,12 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
         self.data = new_data
         await self.write()
         await self.update_response(interaction, **kwargs)
+
+    async def format_in(self, bot, **kwargs):
+        """
+        Formatted version of the setting given an asynchronous context with client.
+        """
+        return self.formatted
 
     @property
     def embed_field(self):
@@ -327,7 +340,7 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
             label=self.display_name,
             placeholder=self.accepts,
             default=self.input_formatted,
-            required=False
+            required=self._required
         )
 
     @property
@@ -353,7 +366,7 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
         Default user-readable form of the setting.
         Should be a short single line.
         """
-        return self._format_data(self.parent_id, self.data)
+        return self._format_data(self.parent_id, self.data, **self.kwargs)
 
     @property
     def input_formatted(self) -> str:
@@ -373,7 +386,7 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
         Formatted summary of the data.
         May be implemented in `_format_data(..., summary=True, ...)` or overidden.
         """
-        return self._format_data(self.parent_id, self.data, summary=True)
+        return self._format_data(self.parent_id, self.data, summary=True, **self.kwargs)
 
     @classmethod
     async def from_string(cls, parent_id, userstr: str, **kwargs):
@@ -399,6 +412,19 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
         representing the current value.
         """
         raise NotImplementedError
+
+    @classmethod
+    def _check_value(cls, parent_id, value, **kwargs) -> Optional[str]:
+        """
+        Check the provided value is valid.
+
+        Many setting update methods now provide Discord objects instead of raw data or user strings.
+        This method may be used for value-checking such a value.
+
+        Returns `None` if there are no issues, otherwise an error message.
+        Subclasses should override this to implement a value checker.
+        """
+        pass
 
 
 """

@@ -33,6 +33,7 @@ class BaseSetting(Generic[ParentID, SettingData, SettingValue]):
     def __init__(self, parent_id: ParentID, data: Optional[SettingData], **kwargs):
         self.parent_id = parent_id
         self._data = data
+        self.kwargs = kwargs
 
     # Instance generation
     @classmethod
