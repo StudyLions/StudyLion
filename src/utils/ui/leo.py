@@ -337,6 +337,15 @@ class MessageUI(LeoUI):
             self._original = interaction
             await interaction.response.send_message(**args.send_args, **kwargs, view=self)
 
+    async def send(self, channel: discord.abc.Messageable, **kwargs):
+        """
+        Alternative to draw() which uses a discord.abc.Messageable.
+        """
+        await self.reload()
+        await self.refresh_layout()
+        args = await self.make_message()
+        self._message = await channel.send(**args.send_args, view=self)
+
     async def redraw(self, thinking: Optional[discord.Interaction] = None):
         """
         Update the output message for this UI.

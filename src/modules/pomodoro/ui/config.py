@@ -289,7 +289,7 @@ class TimerOptionsUI(MessageUI):
                 self.refresh_delete_button(),
             )
             self.set_layout(
-                (self.edit_button, self.voice_button, self.close_button)
+                (self.edit_button, self.voice_button, self.delete_button, self.close_button)
             )
         else:
             await asyncio.gather(

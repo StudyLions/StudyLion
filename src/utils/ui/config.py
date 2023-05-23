@@ -27,6 +27,7 @@ class ConfigEditor(FastModal):
 
 class ConfigUI(LeoUI):
     # TODO: Migrate to a subclass of MessageUI
+    # TODO: Move instances to a {setting_id: instance} map for easy retrieval
     _listening = {}
     setting_classes = []
 

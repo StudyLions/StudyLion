@@ -11,6 +11,7 @@ active = [
     '.tasklist',
     '.statistics',
     '.pomodoro',
+    '.rooms',
     '.test',
 ]
 

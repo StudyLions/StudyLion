@@ -731,7 +731,6 @@ CREATE TABLE season_stats(
 -- }}}
 
 -- Pomodoro Data {{{
-
 ALTER TABLE timers ADD COLUMN ownerid BIGINT REFERENCES user_config;
 ALTER TABLE timers ADD COLUMN manager_roleid BIGINT;
 ALTER TABLE timers ADD COLUMN last_messageid BIGINT;
@@ -739,6 +738,64 @@ ALTER TABLE timers ADD COLUMN voice_alerts BOOLEAN;
 ALTER TABLE timers ADD COLUMN auto_restart BOOLEAN;
 ALTER TABLE timers RENAME COLUMN text_channelid TO notification_channelid;
 ALTER TABLE timers ALTER COLUMN last_started DROP NOT NULL;
+-- }}}
+
+-- Rented Room Data {{{
+/* OLD SCHEMA
+CREATE TABLE rented(
+  channelid BIGINT PRIMARY KEY,
+  guildid BIGINT NOT NULL,
+  ownerid BIGINT NOT NULL,
+  expires_at TIMESTAMP DEFAULT ((now() at time zone 'utc') + INTERVAL '1 day'),
+  created_at TIMESTAMP DEFAULT (now() at time zone 'utc'),
+  FOREIGN KEY (guildid, ownerid) REFERENCES members (guildid, userid) ON DELETE CASCADE
+);
+CREATE UNIQUE INDEX rented_owners ON rented (guildid, ownerid);
+
+CREATE TABLE rented_members(
+  channelid BIGINT NOT NULL REFERENCES rented(channelid) ON DELETE CASCADE,
+  userid BIGINT NOT NULL
+);
+CREATE INDEX rented_members_channels ON rented_members (channelid);
+CREATE INDEX rented_members_users ON rented_members (userid);
+*/
+
+/* NEW SCHEMA
+CREATE TABLE rented_rooms(
+  channelid BIGINT PRIMARY KEY,
+  guildid BIGINT NOT NULL,
+  ownerid BIGINT NOT NULL,
+  coin_balance INTEGER NOT NULL DEFAULT 0,
+  name TEXT,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  last_tick TIMESTAMPTZ,
+  deleted_at TIMESTAMPTZ,
+  FOREIGN KEY (guildid, ownerid) REFERENCES members (guildid, userid) ON DELETE CASCADE
+);
+CREATE UNIQUE INDEX rented_owners ON rented (guildid, ownerid);
+
+CREATE TABLE rented_members(
+  channelid BIGINT NOT NULL REFERENCES rented(channelid) ON DELETE CASCADE,
+  userid BIGINT NOT NULL,
+  contribution INTEGER NOT NULL DEFAULT 0
+);
+CREATE INDEX rented_members_channels ON rented_members (channelid);
+CREATE INDEX rented_members_users ON rented_members (userid);
+*/
+
+ALTER TABLE rented RENAME TO rented_rooms;
+ALTER TABLE rented_rooms DROP COLUMN expires_at;
+ALTER TABLE rented_rooms ALTER COLUMN created_at TYPE TIMESTAMPTZ;
+ALTER TABLE rented_rooms ADD COLUMN deleted_at TIMESTAMPTZ;
+ALTER TABLE rented_rooms ADD COLUMN coin_balance INTEGER NOT NULL DEFAULT 0;
+ALTER TABLE rented_rooms ADD COLUMN name TEXT;
+ALTER TABLE rented_rooms ADD COLUMN last_tick TIMESTAMPTZ;
+ALTER TABLE rented_members ADD COLUMN contribution INTEGER NOT NULL DEFAULT 0;
+
+DROP INDEX rented_owners;
+CREATE INDEX rented_owners ON rented_rooms(guildid, ownerid);
+
+ALTER TABLE guild_config ADD COLUMN renting_visible BOOLEAN;
 
 -- }}}
 

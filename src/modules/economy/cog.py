@@ -12,6 +12,7 @@ from data import ORDER
 from utils.ui import Confirm, Pager
 from utils.lib import error_embed, MessageArgs, utc_now
 from wards import low_management
+from constants import MAX_COINS
 
 from . import babel, logger
 from .data import EconomyData, TransactionType, AdminActionType
@@ -19,9 +20,6 @@ from .settings import EconomySettings
 from .settingui import EconomyConfigUI
 
 _, _p, _np = babel._, babel._p, babel._np
-
-
-MAX_COINS = 2**16
 
 
 class Economy(LionCog):

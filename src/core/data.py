@@ -196,6 +196,7 @@ class CoreData(Registry, name="core"):
         renting_cap = Integer()
         renting_role = Integer()
         renting_sync_perms = Bool()
+        renting_visible = Bool()
 
         accountability_category = Integer()
         accountability_lobby = Integer()

@@ -256,11 +256,11 @@ class RowModel:
         return cls.table.fetch_rows_where(*args, **kwargs)
 
     @classmethod
-    async def fetch(cls: Type[RowT], *rowid) -> Optional[RowT]:
+    async def fetch(cls: Type[RowT], *rowid, cached=True) -> Optional[RowT]:
         """
         Fetch the row with the given id, retrieving from cache where possible.
         """
-        row = cls._cache_.get(rowid, None)
+        row = cls._cache_.get(rowid, None) if cached else None
         if row is None:
             rows = await cls.fetch_where(**cls._dict_from_id(rowid))
             row = rows[0] if rows else None
