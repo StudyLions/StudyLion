@@ -267,14 +267,10 @@ class Timer:
                     await self._voice_update_task
                 except asyncio.CancelledError:
                     return
-        self._voice_update_task = asyncio.create_task(
+        self._last_voice_update = utc_now()
+        await asyncio.create_task(
             self.channel.edit(name=self.channel_name)
         )
-        try:
-            await self._voice_update_task
-            self._last_voice_update = utc_now()
-        except asyncio.CancelledError:
-            return
 
     async def status(self):
         """

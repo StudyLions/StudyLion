@@ -416,7 +416,9 @@ class RankCog(LionCog):
                     # TODO: Temporary measure
                     season_start = lguild.config.get('season_start').value or datetime(1970, 1, 1)
                     stat_data = self.bot.get_cog('StatsCog').data
-                    session_rank.stat = (await stat_data.study_times_since(guildid, userid, season_start))[0]
+                    session_rank.stat = (await stat_data.VoiceSessionStat.study_times_since(
+                        guildid, userid, season_start)
+                    )[0]
                     # session_rank.stat += duration if (rank_type is RankType.VOICE) else guild_xp
                 else:
                     session_rank = await self.get_member_rank(guildid, userid)

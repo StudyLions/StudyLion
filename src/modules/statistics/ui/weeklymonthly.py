@@ -569,6 +569,10 @@ class WeeklyMonthlyUI(StatsUI):
 
             if page_type.stat is StatType.VOICE:
                 model = self.data.VoiceSessionStats
+            elif page_type.stat is StatType.TEXT:
+                model = self.bot.get_cog('TextTrackerCog').data.TextSessions
+            else:
+                model = self.data.VoiceSessionStats
 
             first_result = await model.table.select_one_where(**data_key).order_by('start_time')
             if first_result is None:
