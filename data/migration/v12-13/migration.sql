@@ -301,7 +301,7 @@ ALTER TABLE voice_sessions
 
 CREATE INDEX voice_session_guild_time ON voice_sessions USING BTREE (guildid, start_time);
 CREATE INDEX voice_session_user_time ON voice_sessions USING BTREE (userid, start_time);
-CREATE INDEX voice_session_guild_end_time ON voice_sessions USING BTREE (guildid, timezone('UTC', start_time) + duration * interval '1 second')
+-- CREATE INDEX voice_session_guild_end_time ON voice_sessions USING BTREE (guildid, start_time + duration * interval '1 second');
 
 INSERT INTO tracked_channels (guildid, channelid)
   SELECT guildid, channelid FROM voice_sessions ON CONFLICT DO NOTHING;
@@ -586,20 +586,6 @@ CREATE TABLE untracked_text_channels(
   FOREIGN KEY (guildid) REFERENCES guild_config (guildid) ON DELETE CASCADE
 );
 CREATE INDEX untracked_text_channels_guilds ON untracked_text_channels (guildid);
-
-
-CREATE VIEW xp_statistics AS
-  SELECT
-    sessionid,
-    guildid,
-    userid,
-    start_time,
-    duration,
-    global_xp,
-    guild_xp,
-    messages,
-    end_time
-  FROM text_sessions;
 
 -- }}}
 -- TODO: Profile tags, remove guildid not null restriction
