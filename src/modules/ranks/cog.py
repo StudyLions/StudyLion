@@ -170,7 +170,7 @@ class RankCog(LionCog):
             lguild = await self.bot.core.lions.fetch_guild(guildid)
             rank_type = lguild.config.get('rank_type').value
             # TODO: Benchmark alltime efficiency
-            season_start = lguild.config.get('season_start').value or datetime(1970, 1, 1)
+            season_start = lguild.config.get('season_start').value or datetime.datetime(1970, 1, 1)
             stat_data = self.bot.get_cog('StatsCog').data
             text_data = self.bot.get_cog('TextTrackerCog').data
             member_row = await self.data.MemberRank.fetch_or_create(guildid, userid)
@@ -414,9 +414,9 @@ class RankCog(LionCog):
                 if (_members := self._member_ranks.get(guildid, None)) is not None and userid in _members:
                     session_rank = _members[userid]
                     # TODO: Temporary measure
-                    season_start = lguild.config.get('season_start').value or datetime(1970, 1, 1)
+                    season_start = lguild.config.get('season_start').value or datetime.datetime(1970, 1, 1)
                     stat_data = self.bot.get_cog('StatsCog').data
-                    session_rank.stat = (await stat_data.VoiceSessionStat.study_times_since(
+                    session_rank.stat = (await stat_data.VoiceSessionStats.study_times_since(
                         guildid, userid, season_start)
                     )[0]
                     # session_rank.stat += duration if (rank_type is RankType.VOICE) else guild_xp
