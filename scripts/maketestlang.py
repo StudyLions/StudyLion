@@ -29,7 +29,12 @@ def translate_entry(entry: polib.POEntry):
         # Ignore
         ...
     else:
-        if entry.msgid:
+        if entry.msgid_plural:
+            entry.msgstr_plural = {
+                '0': translate_string(entry.msgid),
+                '1': translate_string(entry.msgid_plural)
+            }
+        elif entry.msgid:
             entry.msgstr = translate_string(entry.msgid)
 
 
