@@ -108,7 +108,7 @@ class LionBot(Bot):
         logger.info(
             f"Executing command '{ctx.command.qualified_name}' "
             f"(from module '{ctx.cog.qualified_name if ctx.cog else 'None'}') "
-            f"with arguments {ctx.args} and kwargs {ctx.kwargs}.",
+            f"with interaction: {ctx.interaction.data if ctx.interaction else None}",
             extra={'with_ctx': True}
         )
 
