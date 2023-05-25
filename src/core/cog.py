@@ -1,6 +1,7 @@
 from typing import Optional
 
 import discord
+import discord.app_commands as appcmd
 
 from meta import LionBot, LionCog, LionContext
 from meta.app import shardname, appname
@@ -42,6 +43,7 @@ class CoreCog(LionCog):
 
         self.app_cmd_cache: list[discord.app_commands.AppCommand] = []
         self.cmd_name_cache: dict[str, discord.app_commands.AppCommand] = {}
+        self.mention_cache: dict[str, str] = {}
 
     async def cog_load(self):
         # Fetch (and possibly create) core data rows.
@@ -62,10 +64,36 @@ class CoreCog(LionCog):
         await self.bot.add_cog(self.lions)
 
         # Load the app command cache
+        await self.reload_appcmd_cache()
+
+    async def reload_appcmd_cache(self):
         for guildid in self.bot.testing_guilds:
             self.app_cmd_cache += await self.bot.tree.fetch_commands(guild=discord.Object(guildid))
         self.app_cmd_cache += await self.bot.tree.fetch_commands()
         self.cmd_name_cache = {cmd.name: cmd for cmd in self.app_cmd_cache}
+        self.mention_cache = self._mention_cache_from(self.app_cmd_cache)
+
+    def _mention_cache_from(self, cmds: list[appcmd.AppCommand | appcmd.AppCommandGroup]):
+        cache = {}
+        for cmd in cmds:
+            cache[cmd.qualified_name if isinstance(cmd, appcmd.AppCommandGroup) else cmd.name] = cmd.mention
+            subcommands = [option for option in cmd.options if isinstance(option, appcmd.AppCommandGroup)]
+            if subcommands:
+                subcache = self._mention_cache_from(subcommands)
+                cache |= subcache
+        return cache
+
+    def mention_cmd(self, name):
+        """
+        Create an application command mention for the given names.
+
+        If not found in cache, creates a 'fake' mention with an invalid id.
+        """
+        if name in self.mention_cache:
+            mention = self.mention_cache[name]
+        else:
+            mention = f"</{name}:1110834049204891730"
+        return mention
 
     async def cog_unload(self):
         await self.bot.remove_cog(self.lions.qualified_name)

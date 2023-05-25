@@ -387,12 +387,13 @@ class RoomUI(MessageUI):
             bank_value = t(_p(
                 'ui:room_status|embed|field:bank|value:expiring',
                 "**Warning:** Insufficient room balance to pay next rent ({coin} **{rent}**).\n"
-                "The room will expire {expiry}.\nUse `/room deposit` to increase balance."
+                "The room will expire {expiry}.\nUse {room_deposit_cmd} to increase balance."
             )).format(
                 coin=conf.emojis.coin,
                 amount=balance,
                 rent=rent,
-                expiry=next_tick
+                expiry=next_tick,
+                room_deposit_cmd=self.bot.core.mention_cmd('room deposit')
             )
         else:
             bank_value = t(_p(
