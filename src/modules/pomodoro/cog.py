@@ -503,7 +503,7 @@ class TimerCog(LionCog):
                 if ctx.guild.me.guild_permissions.manage_channels:
                     try:
                         channel = await ctx.guild.create_voice_channel(
-                            name="Timer",
+                            name=name or "Timer",
                             reason="Creating Pomodoro Voice Channel",
                             category=ctx.channel.category
                         )

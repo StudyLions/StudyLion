@@ -103,7 +103,7 @@ class RoomUI(MessageUI):
 
         # Input checking
         response = response.strip()
-        if not response.isdigit():
+        if not response.isdigit() or (amount := int(response)) == 0:
             await submit.response.send_message(
                 embed=error_embed(
                     t(_p(
@@ -113,7 +113,6 @@ class RoomUI(MessageUI):
                 ), ephemeral=True
             )
             return
-        amount = int(response)
         await submit.response.defer(thinking=True, ephemeral=True)
 
         # Start transaction for deposit

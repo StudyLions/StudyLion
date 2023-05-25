@@ -191,8 +191,8 @@ class TasklistCog(LionCog):
                 appcmds.Choice(
                     name=t(_p(
                         'argtype:taskid|error:no_matching',
-                        "No tasks matching {partial}!",
-                    )).format(partial=partial),
+                        "No tasks matching '{partial}'!",
+                    )).format(partial=partial[:100]),
                     value=partial
                 )
             ]
@@ -201,7 +201,7 @@ class TasklistCog(LionCog):
                 appcmds.Choice(name=task_string, value=label)
                 for label, task_string in matching
             ]
-            return options[:25]
+        return options[:25]
 
     async def is_tasklist_channel(self, channel) -> bool:
         if not channel.guild:

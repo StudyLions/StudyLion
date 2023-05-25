@@ -11,7 +11,7 @@ from discord.enums import Locale
 logger = logging.getLogger(__name__)
 
 
-SOURCE_LOCALE = 'en_uk'
+SOURCE_LOCALE = 'en-GB'
 ctx_locale: ContextVar[str] = ContextVar('locale', default=SOURCE_LOCALE)
 ctx_translator: ContextVar['LeoBabel'] = ContextVar('translator', default=None)  # type: ignore
 

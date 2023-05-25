@@ -590,7 +590,7 @@ class VoiceTrackerCog(LionCog):
             VoiceSession._sessions_.pop(guild.id, None)
             now = utc_now()
             to_close = []  # (guildid, userid, _at)
-            for session in sessions.vallues():
+            for session in sessions.values():
                 if session.start_task is not None:
                     session.start_task.cancel()
                 if session.expiry_task is not None:

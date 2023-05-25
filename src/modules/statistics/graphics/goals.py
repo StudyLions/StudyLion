@@ -69,7 +69,7 @@ async def get_goals_card(
     # Set and compute correct middle goal column
     if mode in (CardMode.VOICE, CardMode.STUDY):
         model = data.VoiceSessionStats
-        middle_completed = (await model.study_times_between(guildid or None, userid, start, end))[0]
+        middle_completed = int((await model.study_times_between(guildid or None, userid, start, end))[0] // 3600)
         middle_goal = goals['study_goal']
     elif mode is CardMode.TEXT:
         model = TextTrackerData.TextSessions

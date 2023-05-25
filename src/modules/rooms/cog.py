@@ -216,7 +216,8 @@ class RoomCog(LionCog):
         # TODO: Consider extending invites to members rather than giving them immediate access
         # Potential for abuse in moderation-free channel a member can add anyone too
         everyone_overwrite = discord.PermissionOverwrite(
-            view_channel=lguild.config.get(RoomSettings.Visible.setting_id).value
+            view_channel=lguild.config.get(RoomSettings.Visible.setting_id).value,
+            connect=False
         )
 
         # Build permission overwrites for owner and members, take into account visible setting

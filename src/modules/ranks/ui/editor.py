@@ -49,7 +49,7 @@ class RankEditor(FastModal):
 
     def role_colour_setup(self):
         self.role_colour.label = self.bot.translator.t(_p(
-            'ui:rank_editor|input:role_volour|label',
+            'ui:rank_editor|input:role_colour|label',
             "Role Colour"
         ))
         self.role_colour.placeholder = self.bot.translator.t(_p(
@@ -198,19 +198,15 @@ class RankEditor(FastModal):
         ))
         self.message.placeholder = t(_p(
             'ui:rank_editor|input:message|placeholder',
-            (
-                "Congratulatory message sent to the user upon achieving this rank."
-            )
+            "Congratulatory message sent to the user upon achieving this rank."
         ))
         if self.rank_type is RankType.VOICE:
             # TRANSLATOR NOTE: Don't change the keys here, they will be automatically replaced by the localised key
             msg_default = t(_p(
                 'ui:rank_editor|input:message|default|type:voice',
-                (
-                    "Congratulations {user_mention}!\n"
-                    "For working hard for **{requires}**, you have achieved the rank of "
-                    "**{role_name}** in **{guild_name}**! Keep up the good work."
-                )
+                "Congratulations {user_mention}!\n"
+                "For working hard for **{requires}**, you have achieved the rank of "
+                "**{role_name}** in **{guild_name}**! Keep up the good work."
             ))
         elif self.rank_type is RankType.XP:
             # TRANSLATOR NOTE: Don't change the keys here, they will be automatically replaced by the localised key
