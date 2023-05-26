@@ -88,6 +88,8 @@ class Room:
                 pass
 
     async def add_new_members(self, memberids):
+        # Ensure members exist
+        await self.bot.core.lions.fetch_members(*((self.data.guildid, mid) for mid in memberids))
         member_data = self.bot.get_cog('RoomCog').data.RoomMember
         await member_data.table.insert_many(
             ('channelid', 'userid'),

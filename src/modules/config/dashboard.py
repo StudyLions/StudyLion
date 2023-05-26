@@ -13,6 +13,8 @@ from modules.tasklist.settings import TasklistDashboard
 from tracking.voice.settings import VoiceTrackerDashboard
 from tracking.text.ui import TextTrackerDashboard
 from modules.ranks.ui.config import RankDashboard
+from modules.pomodoro.settingui import TimerDashboard
+from modules.rooms.settingui import RoomDashboard
 # from modules.statistics.settings import StatisticsConfigUI
 
 from . import babel, logger
@@ -28,7 +30,7 @@ class GuildDashboard(BasePager):
     pages = [
         (EconomyDashboard, TasklistDashboard),
         (VoiceTrackerDashboard, TextTrackerDashboard, ),
-        (RankDashboard,)
+        (RankDashboard, TimerDashboard, RoomDashboard, )
     ]
 
     def __init__(self, bot: LionBot, guild: discord.Guild, callerid: int, channelid: int, **kwargs):

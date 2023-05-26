@@ -101,6 +101,7 @@ class TextTrackerCog(LionCog):
                 session=session
             )
         )
+        await self.bot.core.lions.fetch_member(session.guildid, session.userid)
         self.sessionq.put_nowait(session)
 
     @log_wrap(stack=['Text Sessions', 'Message Event'])

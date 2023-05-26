@@ -123,3 +123,12 @@ class Lions(LionCog):
             lmember = LionMember(self.bot, data, lguild, luser, member)
             self.lion_members[key] = lmember
         return lmember
+
+    async def fetch_members(self, *members: tuple[int, int]):
+        """
+        Fetch or create multiple members simultaneously.
+        """
+        # TODO: Actually batch this (URGENT)
+        members = {}
+        for key in members:
+            members[key] = await self.fetch_member(*key)

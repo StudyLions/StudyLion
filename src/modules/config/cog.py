@@ -20,7 +20,10 @@ class DashCog(LionCog):
     async def cog_unload(self):
         ...
 
-    @cmds.hybrid_command(name="dashboard")
+    @cmds.hybrid_command(
+        name="dashboard",
+        description="At-a-glance view of the server's configuration."
+    )
     @appcmds.guild_only
     async def dashboard_cmd(self, ctx: LionContext):
         ui = GuildDashboard(self.bot, ctx.guild, ctx.author.id, ctx.channel.id)
