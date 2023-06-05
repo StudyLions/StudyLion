@@ -92,7 +92,7 @@ class CoreCog(LionCog):
         if name in self.mention_cache:
             mention = self.mention_cache[name]
         else:
-            mention = f"</{name}:1110834049204891730"
+            mention = f"</{name}:1110834049204891730>"
         return mention
 
     async def cog_unload(self):
