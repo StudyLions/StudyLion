@@ -5,6 +5,7 @@ import pytz
 import discord
 from discord import app_commands as appcmds
 from discord.ext import commands as cmds
+from discord.ui.button import ButtonStyle
 
 from settings.data import ModelData
 from settings.groups import SettingGroup
@@ -12,6 +13,7 @@ from settings.setting_types import TimezoneSetting
 
 from meta import LionBot, LionContext, LionCog
 from meta.errors import UserInputError
+from utils.ui import AButton, AsComponents
 from babel.translator import ctx_translator
 
 from core.data import CoreData
@@ -43,7 +45,7 @@ class UserConfigSettings(SettingGroup):
             "including personal statistics. "
             "Note that leaderboards will still be shown in the server's own timezone."
         )
-        _default = 'UTC'
+        _default = None
 
         _model = CoreData.User
         _column = CoreData.User.timezone.name
@@ -51,10 +53,16 @@ class UserConfigSettings(SettingGroup):
         @property
         def update_message(self):
             t = ctx_translator.get().t
-            return t(_p(
-                'userset:timezone|response',
-                "Your personal timezone has been set to `{timezone}`."
-            )).format(timezone=self.data)
+            if self._data:
+                return t(_p(
+                    'userset:timezone|response:set',
+                    "Your personal timezone has been set to `{timezone}`."
+                )).format(timezone=self.data)
+            else:
+                return t(_p(
+                    'userset:timezone|response:unset',
+                    "You have unset your timezone. Statistics will be displayed in the server timezone."
+                ))
 
 
 class UserConfigCog(LionCog):
@@ -68,115 +76,6 @@ class UserConfigCog(LionCog):
     async def cog_unload(self):
         ...
 
-    @cmds.hybrid_command(
-        name=_p('cmd:set', "set"),
-        description=_p('cmd:set|desc', "Your personal settings. Configure how I interact with you.")
-    )
-    @appcmds.rename(
-        timezone=UserConfigSettings.Timezone._display_name
-    )
-    @appcmds.describe(
-        timezone=UserConfigSettings.Timezone._desc
-    )
-    async def set_cmd(self, ctx: LionContext, timezone: Optional[str] = None):
-        """
-        Configuration interface for the user's timezone.
-        """
-        # TODO: Cohesive configuration panel for set
-        t = self.bot.translator.t
-
-        if not ctx.interaction:
-            return
-        await ctx.interaction.response.defer(thinking=True)
-
-        updated = []
-        error_embed = None
-
-        if timezone is not None:
-            # TODO: Add None/unsetting support to timezone
-            try:
-                timezone_setting = await self.settings.Timezone.from_string(ctx.author.id, timezone)
-                updated.append(timezone_setting)
-            except UserInputError as err:
-                # Handle UserInputError from timezone parsing
-                error_embed = discord.Embed(
-                    colour=discord.Colour.brand_red(),
-                    title=t(_p(
-                        'cmd:set|parse_failure:timezone',
-                        "Could not set your timezone!"
-                    )),
-                    description=err.msg
-                )
-
-        if error_embed is not None:
-            # Could not parse requested configuration update
-            await ctx.reply(embed=error_embed)
-        elif updated:
-            # Update requested configuration
-            lines = []
-            for to_update in updated:
-                await to_update.write()
-                response = to_update.update_message
-                lines.append(f"{self.bot.config.emojis.tick} {response}")
-            success_embed = discord.Embed(
-                colour=discord.Colour.brand_green(),
-                description='\n'.join(lines)
-            )
-            await ctx.reply(embed=success_embed)
-            # TODO update listening panel UI
-        else:
-            # Show the user's configuration panel
-            # TODO: Interactive UI panel
-            panel_embed = discord.Embed(
-                colour=discord.Colour.orange(),
-                title=t(_p(
-                    'cmd:set|embed:panel|title',
-                    "Your StudyLion settings"
-                ))
-            )
-            panel_embed.add_field(**ctx.luser.config.timezone.embed_field)
-            await ctx.reply(embed=panel_embed)
-
-    @set_cmd.autocomplete('timezone')
-    async def set_cmd_acmpl_timezone(self, interaction: discord.Interaction, partial: str):
-        """
-        Autocomplete timezone options.
-
-        Each option is formatted as timezone (current time).
-        Partial text is matched directly by case-insensitive substring.
-        """
-        # TODO: To be refactored to Timezone setting
-        t = self.bot.translator.t
-
-        timezones = pytz.all_timezones
-        matching = [tz for tz in timezones if partial.strip().lower() in tz.lower()][:25]
-        if not matching:
-            choices = [
-                appcmds.Choice(
-                    name=t(_p(
-                        'cmd:set|acmpl:timezone|no_matching',
-                        "No timezones matching '{input}'!"
-                    )).format(input=partial),
-                    value=partial
-                )
-            ]
-        else:
-            choices = []
-            for tz in matching:
-                timezone = pytz.timezone(tz)
-                now = dt.datetime.now(timezone)
-                nowstr = now.strftime("%H:%M")
-                name = t(_p(
-                    'cmd:set|acmpl:timezone|choice',
-                    "{tz} (Currently {now})"
-                )).format(tz=tz, now=nowstr)
-                choice = appcmds.Choice(
-                    name=name,
-                    value=tz
-                )
-                choices.append(choice)
-        return choices
-
     @cmds.hybrid_group(
         name=_p('cmd:userconfig', "my"),
         description=_p('cmd:userconfig|desc', "User configuration commands.")
@@ -184,3 +83,59 @@ class UserConfigCog(LionCog):
     async def userconfig_group(self, ctx: LionContext):
         # Group base command, no function.
         pass
+
+    @userconfig_group.command(
+        name=_p('cmd:userconfig_timezone', "timezone"),
+        description=_p(
+            'cmd:userconfig_timezone|desc',
+            "Set your personal timezone, used for displaying stats and setting reminders."
+        )
+    )
+    @appcmds.rename(
+        timezone=_p('cmd:userconfig_timezone|param:timezone', "timezone")
+    )
+    @appcmds.describe(
+        timezone=_p(
+            'cmd:userconfig_timezone|param:timezone|desc',
+            "What timezone are you in? Try typing your country or continent."
+        )
+    )
+    async def userconfig_timezone_cmd(self, ctx: LionContext, timezone: Optional[str] = None):
+        if not ctx.interaction:
+            return
+        t = self.bot.translator.t
+
+        setting = ctx.luser.config.get(UserConfigSettings.Timezone.setting_id)
+        if timezone:
+            new_data = await setting._parse_string(ctx.author.id, timezone)
+            await setting.interactive_set(new_data, ctx.interaction, ephemeral=True)
+        else:
+            if setting.value:
+                desc = t(_p(
+                    'cmd:userconfig_timezone|response:set',
+                    "Your timezone is currently set to {timezone}"
+                )).format(timezone=setting.formatted)
+
+                @AButton(
+                    label=t(_p('cmd:userconfig_timezone|button:reset|label', "Reset")),
+                    style=ButtonStyle.red
+                )
+                async def reset_button(_press: discord.Interaction, pressed):
+                    await _press.response.defer()
+                    await setting.interactive_set(None, ctx.interaction, view=None)
+
+                view = AsComponents(reset_button)
+            else:
+                guild_tz = ctx.lguild.config.get('timezone').value if ctx.guild else 'UTC'
+                desc = t(_p(
+                    'cmd:userconfig_timezone|response:unset',
+                    "Your timezone is not set. Using the server timezone `{timezone}`."
+                )).format(timezone=guild_tz)
+                view = None
+            embed = discord.Embed(
+                colour=discord.Colour.orange(),
+                description=desc
+            )
+            await ctx.reply(embed=embed, ephemeral=True, view=view)
+
+    userconfig_timezone_cmd.autocomplete('timezone')(TimezoneSetting.parse_acmpl)

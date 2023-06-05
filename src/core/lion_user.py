@@ -49,7 +49,7 @@ class LionUser(Timezoned):
 
     @property
     def timezone(self) -> pytz.timezone:
-        return self.config.timezone.value
+        return self.config.timezone.value or pytz.UTC
 
     async def touch_discord_model(self, user: discord.User, seen=True):
         """

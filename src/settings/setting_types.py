@@ -3,6 +3,8 @@ from enum import Enum
 
 import pytz
 import discord
+import discord.app_commands as appcmds
+
 import itertools
 import datetime as dt
 from discord import ui
@@ -736,6 +738,40 @@ class TimezoneSetting(InteractiveSetting[ParentID, str, TZT]):
                     "[this list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)".format(string)
                 ) from None
         return str(timezone)
+
+    @classmethod
+    async def parse_acmpl(cls, interaction: discord.Interaction, partial: str):
+        bot = interaction.client
+        t = bot.translator.t
+
+        timezones = pytz.all_timezones
+        matching = [tz for tz in timezones if partial.strip().lower() in tz.lower()][:25]
+        if not matching:
+            choices = [
+                appcmds.Choice(
+                    name=t(_p(
+                        'set_type:timezone|acmpl|no_matching',
+                        "No timezones matching '{input}'!"
+                    )).format(input=partial),
+                    value=partial
+                )
+            ]
+        else:
+            choices = []
+            for tz in matching:
+                timezone = pytz.timezone(tz)
+                now = dt.datetime.now(timezone)
+                nowstr = now.strftime("%H:%M")
+                name = t(_p(
+                    'set_type:timezone|acmpl|choice',
+                    "{tz} (Currently {now})"
+                )).format(tz=tz, now=nowstr)
+                choice = appcmds.Choice(
+                    name=name,
+                    value=tz
+                )
+                choices.append(choice)
+        return choices
 
     @classmethod
     def _format_data(cls, parent_id: ParentID, data, **kwargs):

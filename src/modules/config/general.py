@@ -95,6 +95,12 @@ class GeneralSettingsCog(LionCog):
         name=_p('cmd:configure_general', "general"),
         description=_p('cmd:configure_general|desc', "General configuration panel")
     )
+    @appcmds.rename(
+        timezone=GeneralSettings.Timezone._display_name
+    )
+    @appcmds.describe(
+        timezone=GeneralSettings.Timezone._desc
+    )
     @appcmds.guild_only()
     @cmds.check(low_management)
     async def cmd_configure_general(self, ctx: LionContext,
@@ -164,42 +170,4 @@ class GeneralSettingsCog(LionCog):
             )
             await ctx.reply(embed=embed)
 
-    @cmd_configure_general.autocomplete('timezone')
-    async def cmd_configure_general_acmpl_timezone(self, interaction: discord.Interaction, partial: str):
-        """
-        Autocomplete timezone options.
-
-        Each option is formatted as timezone (current time).
-        Partial text is matched directly by case-insensitive substring.
-        """
-        t = self.bot.translator.t
-        # TODO: To be refactored to Timezone setting
-
-        timezones = pytz.all_timezones
-        matching = [tz for tz in timezones if partial.strip().lower() in tz.lower()][:25]
-        if not matching:
-            choices = [
-                appcmds.Choice(
-                    name=t(_p(
-                        'cmd:configure_general|acmpl:timezone|no_matching',
-                        "No timezones matching '{input}'!"
-                    )).format(input=partial),
-                    value=partial
-                )
-            ]
-        else:
-            choices = []
-            for tz in matching:
-                timezone = pytz.timezone(tz)
-                now = dt.datetime.now(timezone)
-                nowstr = now.strftime("%H:%M")
-                name = t(_p(
-                    'cmd:configure_general|acmpl:timezone|choice',
-                    "{tz} (Currently {now})"
-                )).format(tz=tz, now=nowstr)
-                choice = appcmds.Choice(
-                    name=name,
-                    value=tz
-                )
-                choices.append(choice)
-        return choices
+    cmd_configure_general.autocomplete('timezone')(TimezoneSetting.parse_acmpl)
