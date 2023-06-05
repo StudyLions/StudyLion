@@ -53,8 +53,9 @@ async def main():
                 db=db,
                 config=conf,
                 initial_extensions=[
-                    'utils', 'core', 'analytics', 'babel',
+                    'utils', 'core', 'analytics',
                     'modules',
+                    'babel',
                     'tracking.voice', 'tracking.text',
                 ],
                 web_client=session,
@@ -62,6 +63,7 @@ async def main():
                 testing_guilds=conf.bot.getintlist('admin_guilds'),
                 shard_id=sharding.shard_number,
                 shard_count=sharding.shard_count,
+                help_command=None,
                 translator=translator
             ) as lionbot:
                 ctx_bot.set(lionbot)

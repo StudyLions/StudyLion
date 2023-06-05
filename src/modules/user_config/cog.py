@@ -176,3 +176,11 @@ class UserConfigCog(LionCog):
                 )
                 choices.append(choice)
         return choices
+
+    @cmds.hybrid_group(
+        name=_p('cmd:userconfig', "my"),
+        description=_p('cmd:userconfig|desc', "User configuration commands.")
+    )
+    async def userconfig_group(self, ctx: LionContext):
+        # Group base command, no function.
+        pass

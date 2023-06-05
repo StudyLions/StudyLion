@@ -1,0 +1,144 @@
+
+from settings import ModelData
+from settings.setting_types import StringSetting, BoolSetting
+from settings.groups import SettingGroup
+
+from meta.errors import UserInputError
+from core.data import CoreData
+
+from .translator import ctx_translator
+from . import babel
+from .enums import locale_names
+
+_p = babel._p
+
+
+class LocaleSetting(StringSetting):
+    """
+    Base class describing a LocaleSetting.
+    """
+    @classmethod
+    def _format_data(cls, parent_id, data, **kwargs):
+        t = ctx_translator.get().t
+        if data is None:
+            formatted = t(_p('set_type:locale|formatted:unset', "Unset"))
+        else:
+            name = locale_names.get(data, None)
+            if name:
+                formatted = f"`{data} ({t(name)})`"
+            else:
+                formatted = f"`{data}`"
+        return formatted
+
+    @classmethod
+    async def _parse_string(cls, parent_id, string, **kwargs):
+        translator = ctx_translator.get()
+        if string not in translator.supported_locales:
+            lang = string[:20]
+            raise UserInputError(
+                translator.t(
+                    _p('set_type:locale|error', "Sorry, we do not support the language `{lang}` at this time!")
+                ).format(lang=lang)
+            )
+        return string
+
+
+class LocaleSettings(SettingGroup):
+    class UserLocale(ModelData, LocaleSetting):
+        """
+        User-configured locale.
+
+        Exposed via dedicated setting command.
+        """
+        setting_id = 'user_locale'
+
+        _display_name = _p('userset:locale', 'language')
+        _desc = _p('userset:locale|desc', "Your preferred language for interacting with me.")
+
+        _model = CoreData.User
+        _column = CoreData.User.locale.name
+
+        @property
+        def update_message(self):
+            t = ctx_translator.get().t
+            if self.data is None:
+                return t(_p('userset:locale|response', "You have unset your language."))
+            else:
+                return t(_p('userset:locale|response', "You have set your language to {lang}.")).format(
+                    lang=self.formatted
+                )
+
+    class ForceLocale(ModelData, BoolSetting):
+        """
+        Guild configuration for whether to force usage of the guild locale.
+
+        Exposed via `/configure language` command and standard configuration interface.
+        """
+        setting_id = 'force_locale'
+
+        _display_name = _p('guildset:force_locale', 'force_language')
+        _desc = _p('guildset:force_locale|desc',
+                   "Whether to force all members to use the configured guild language when interacting with me.")
+        _long_desc = _p(
+            'guildset:force_locale|long_desc',
+            "When enabled, commands in this guild will always use the configured guild language, "
+            "regardless of the member's personally configured language."
+        )
+        _outputs = {
+            True: _p('guildset:force_locale|output', 'Enabled (members will be forced to use the server language)'),
+            False: _p('guildset:force_locale|output', 'Disabled (members may set their own language)'),
+            None: 'Not Set'  # This should be impossible, since we have a default
+        }
+        _default = False
+
+        _model = CoreData.Guild
+        _column = CoreData.Guild.force_locale.name
+
+        @property
+        def update_message(self):
+            t = ctx_translator.get().t
+            if self.data:
+                return t(_p(
+                    'guildset:force_locale|response',
+                    "I will always use the set language in this server."
+                ))
+            else:
+                return t(_p(
+                    'guildset:force_locale|response',
+                    "I will now allow the members to set their own language here."
+                ))
+
+        @classmethod
+        def _format_data(cls, parent_id, data, **kwargs):
+            t = ctx_translator.get().t
+            return t(cls._outputs[data])
+
+    class GuildLocale(ModelData, LocaleSetting):
+        """
+        Guild-configured locale.
+
+        Exposed via `/configure language` command, and standard configuration interface.
+        """
+        setting_id = 'guild_locale'
+
+        _display_name = _p('guildset:locale', 'language')
+        _desc = _p('guildset:locale|desc', "Your preferred language for interacting with me.")
+        _long_desc = _p(
+            'guildset:locale|long_desc',
+            "The default language to use for responses and interactions in this server. "
+            "Member's own configured language will override this for their commands "
+            "unless `force_language` is enabled."
+        )
+
+        _model = CoreData.Guild
+        _column = CoreData.Guild.locale.name
+
+        @property
+        def update_message(self):
+            t = ctx_translator.get().t
+            if self.data is None:
+                return t(_p('guildset:locale|response', "You have unset the guild language."))
+            else:
+                return t(_p('guildset:locale|response', "You have set the guild language to {lang}.")).format(
+                    lang=self.formatted
+                )

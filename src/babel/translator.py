@@ -33,6 +33,7 @@ class LeoBabel(Translator):
         locales = conf.babel.get('locales', '')
         stripped = (loc.strip(', ') for loc in locales.split(','))
         self.supported_locales = {loc for loc in stripped if loc}
+        self.supported_locales.add(SOURCE_LOCALE)
 
         domains = conf.babel.get('domains', '')
         stripped = (dom.strip(', ') for dom in domains.split(','))

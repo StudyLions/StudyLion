@@ -8,136 +8,21 @@ from typing import Optional
 import discord
 from discord.ext import commands as cmds
 from discord import app_commands as appcmds
+from discord.ui.button import ButtonStyle
 
 from meta import LionBot, LionCog, LionContext
 from meta.errors import UserInputError
+from utils.ui import AButton, AsComponents
 from wards import low_management
 
-from settings import ModelData
-from settings.setting_types import StringSetting, BoolSetting
-from settings.groups import SettingGroup
-
-from core.data import CoreData
-
-from .translator import ctx_locale, ctx_translator, LocalBabel, SOURCE_LOCALE
+from .translator import ctx_locale, ctx_translator, SOURCE_LOCALE
 from . import babel
+from .enums import locale_names
+from .settings import LocaleSettings
+from .settingui import LocaleSettingUI
 
 _ = babel._
 _p = babel._p
-
-
-class LocaleSettings(SettingGroup):
-    class UserLocale(ModelData, StringSetting):
-        """
-        User-configured locale.
-
-        Exposed via dedicated setting command.
-        """
-        setting_id = 'user_locale'
-
-        _display_name = _p('userset:locale', 'language')
-        _desc = _p('userset:locale|desc', "Your preferred language for interacting with me.")
-
-        _model = CoreData.User
-        _column = CoreData.User.locale.name
-
-        @property
-        def update_message(self):
-            t = ctx_translator.get().t
-            if self.data is None:
-                return t(_p('userset:locale|response', "You have unset your language."))
-            else:
-                return t(_p('userset:locale|response', "You have set your language to `{lang}`.")).format(
-                    lang=self.data
-                )
-
-        @classmethod
-        async def _parse_string(cls, parent_id, string, **kwargs):
-            translator = ctx_translator.get()
-            if string not in translator.supported_locales:
-                lang = string[:20]
-                raise UserInputError(
-                    translator.t(
-                        _p('userset:locale|error', "Sorry, we do not support the `{lang}` language at this time!")
-                    ).format(lang=lang)
-                )
-            return string
-
-    class ForceLocale(ModelData, BoolSetting):
-        """
-        Guild configuration for whether to force usage of the guild locale.
-
-        Exposed via `/configure language` command and standard configuration interface.
-        """
-        setting_id = 'force_locale'
-
-        _display_name = _p('guildset:force_locale', 'force_language')
-        _desc = _p('guildset:force_locale|desc',
-                   "Whether to force all members to use the configured guild language when interacting with me.")
-        long_desc = _p(
-            'guildset:force_locale|long_desc',
-            "When enabled, commands in this guild will always use the configured guild language, "
-            "regardless of the member's personally configured language."
-        )
-        _outputs = {
-            True: _p('guildset:force_locale|output', 'Enabled (members will be forced to use the server language)'),
-            False: _p('guildset:force_locale|output', 'Disabled (members may set their own language)'),
-            None: 'Not Set'  # This should be impossible, since we have a default
-        }
-        _default = False
-
-        _model = CoreData.Guild
-        _column = CoreData.Guild.force_locale.name
-
-        @property
-        def update_message(self):
-            t = ctx_translator.get().t
-            if self.data:
-                return t(_p(
-                    'guildset:force_locale|response',
-                    "I will always use the set language in this server."
-                ))
-            else:
-                return t(_p(
-                    'guildset:force_locale|response',
-                    "I will now allow the members to set their own language here."
-                ))
-
-    class GuildLocale(ModelData, StringSetting):
-        """
-        Guild-configured locale.
-
-        Exposed via `/configure language` command, and standard configuration interface.
-        """
-        setting_id = 'guild_locale'
-
-        _display_name = _p('guildset:locale', 'language')
-        _desc = _p('guildset:locale|desc', "Your preferred language for interacting with me.")
-
-        _model = CoreData.Guild
-        _column = CoreData.Guild.locale.name
-
-        @property
-        def update_message(self):
-            t = ctx_translator.get().t
-            if self.data is None:
-                return t(_p('guildset:locale|response', "You have reset the guild language."))
-            else:
-                return t(_p('guildset:locale|response', "You have set the guild language to `{lang}`.")).format(
-                    lang=self.data
-                )
-
-        @classmethod
-        async def _parse_string(cls, parent_id, string, **kwargs):
-            translator = ctx_translator.get()
-            if string not in translator.supported_locales:
-                lang = string[:20]
-                raise UserInputError(
-                    translator.t(
-                        _p('guildset:locale|error', "Sorry, we do not support the `{lang}` language at this time!")
-                    ).format(lang=lang)
-                )
-            return string
 
 
 class BabelCog(LionCog):
@@ -157,6 +42,9 @@ class BabelCog(LionCog):
 
         configcog = self.bot.get_cog('ConfigCog')
         self.crossload_group(self.configure_group, configcog.configure_group)
+
+        userconfigcog = self.bot.get_cog('UserConfigCog')
+        self.crossload_group(self.userconfig_group, userconfigcog.userconfig_group)
 
     async def cog_unload(self):
         pass
@@ -201,22 +89,6 @@ class BabelCog(LionCog):
         ctx_translator.set(self.bot.translator)
         return True
 
-    @cmds.hybrid_command(
-        name=LocaleSettings.UserLocale._display_name,
-        description=LocaleSettings.UserLocale._desc
-    )
-    async def cmd_language(self, ctx: LionContext, language: str):
-        """
-        Dedicated user setting command for the `locale` setting.
-        """
-        if not ctx.interaction:
-            # This command is not available as a text command
-            return
-
-        setting = await self.settings.UserLocale.get(ctx.author.id)
-        new_data = await setting._parse_string(ctx.author.id, language)
-        await setting.interactive_set(new_data, ctx.interaction)
-
     @LionCog.placeholder_group
     @cmds.hybrid_group('configure', with_app_command=False)
     async def configure_group(self, ctx: LionContext):
@@ -244,9 +116,9 @@ class BabelCog(LionCog):
     )
     @appcmds.guild_only()  # Can be removed when attached as a subcommand
     @cmds.check(low_management)
-    async def cmd_configure_language(
-        self, ctx: LionContext, language: Optional[str] = None, force_language: Optional[appcmds.Choice[int]] = None
-    ):
+    async def cmd_configure_language(self, ctx: LionContext,
+                                     language: Optional[str] = None,
+                                     force_language: Optional[appcmds.Choice[int]] = None):
         if not ctx.interaction:
             # This command is not available as a text command
             return
@@ -284,36 +156,112 @@ class BabelCog(LionCog):
             force_setting.data = force_data
             await force_setting.write()
             lines.append(force_setting.update_message)
-        result = '\n'.join(
-            f"{self.bot.config.emojis.tick} {line}" for line in lines
-        )
-        # TODO: Setting group widget
-        await ctx.reply(
-            embed=discord.Embed(
-                colour=discord.Colour.green(),
-                title=t(_p('cmd:configure_language|success', "Language settings updated!")),
-                description=result
+        if lines:
+            result = '\n'.join(
+                f"{self.bot.config.emojis.tick} {line}" for line in lines
             )
-        )
-
-    @cmd_configure_language.autocomplete('language')
-    async def cmd_configure_language_acmpl_language(self, interaction: discord.Interaction, partial: str):
-        # TODO: More friendly language names
-        supported = self.bot.translator.supported_locales
-        matching = [lang for lang in supported if partial.lower() in lang]
-        t = self.t
-        if not matching:
-            return [
-                appcmds.Choice(
-                    name=t(_p(
-                        'cmd:configure_language|acmpl:language',
-                        "No supported languages matching {partial}"
-                    )).format(partial=partial),
-                    value='None'
+            await ctx.reply(
+                embed=discord.Embed(
+                    colour=discord.Colour.green(),
+                    title=t(_p('cmd:configure_language|success', "Language settings updated!")),
+                    description=result
                 )
+            )
+
+        if ctx.channel.id not in LocaleSettingUI._listening or not lines:
+            ui = LocaleSettingUI(self.bot, ctx.guild.id, ctx.channel.id)
+            await ui.run(ctx.interaction)
+            await ui.wait()
+
+    @LionCog.placeholder_group
+    @cmds.hybrid_group(name='my')
+    async def userconfig_group(self, ctx: LionContext):
+        pass
+
+    @userconfig_group.command(
+        name=_p('cmd:userconfig_language', "language"),
+        description=_p(
+            'cmd:userconfig_language|desc',
+            "Set your preferred interaction language."
+        )
+    )
+    @appcmds.rename(
+        language=_p('cmd:userconfig_language|param:language', "language")
+    )
+    @appcmds.describe(
+        language=_p(
+            'cmd:userconfig_language|param:language|desc',
+            "Which language do you want me to respond in?"
+        )
+    )
+    async def userconfig_language_cmd(self, ctx: LionContext, language: Optional[str] = None):
+        if not ctx.interaction:
+            return
+        t = self.bot.translator.t
+
+        setting = await self.settings.UserLocale.get(ctx.author.id)
+        if language:
+            new_data = await setting._parse_string(ctx.author.id, language)
+            await setting.interactive_set(new_data, ctx.interaction, ephemeral=True)
+        else:
+            if setting.value:
+                desc = t(_p(
+                    'cmd:userconfig_language|response:set',
+                    "Your preferred language is currently set to {language}"
+                )).format(language=setting.formatted)
+
+                @AButton(
+                    label=t(_p('cmd:userconfig_language|button:reset|label', "Reset")),
+                    style=ButtonStyle.red
+                )
+                async def reset_button(_press: discord.Interaction, pressed):
+                    await _press.response.defer()
+                    await setting.interactive_set(None, ctx.interaction, view=None)
+
+                view = AsComponents(reset_button)
+            else:
+                desc = t(_p(
+                    'cmd:userconfig_language|response:unset',
+                    "You have not set a preferred language!"
+                ))
+                view = None
+            embed = discord.Embed(
+                colour=discord.Colour.orange(),
+                description=desc
+            )
+            await ctx.reply(embed=embed, ephemeral=True, view=view)
+
+    @userconfig_language_cmd.autocomplete('language')
+    @cmd_configure_language.autocomplete('language')
+    async def acmpl_language(self, interaction: discord.Interaction, partial: str):
+        """
+        Shared autocomplete for language options.
+        """
+        t = self.bot.translator.t
+        supported = self.bot.translator.supported_locales
+        formatted = []
+        for locale in supported:
+            name = locale_names.get(locale, None)
+            if name:
+                localestr = f"{locale} ({t(name)})"
+            else:
+                localestr = locale
+            formatted.append((locale, localestr))
+
+        matching = {item for item in formatted if partial in item[1]}
+        if matching:
+            choices = [
+                appcmds.Choice(name=localestr, value=locale)
+                for locale, localestr in matching
             ]
         else:
-            return [
-                appcmds.Choice(name=lang, value=lang)
-                for lang in matching
+            choices = [
+                appcmds.Choice(
+                    name=t(_p(
+                        'acmpl:language|no_match',
+                        "No supported languages matching {partial}"
+                    )).format(partial=partial),
+                    value=partial
+                )
             ]
+        return choices
