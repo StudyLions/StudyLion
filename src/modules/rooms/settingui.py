@@ -95,7 +95,7 @@ class RoomSettingUI(ConfigUI):
 class RoomDashboard(DashboardSection):
     section_name = _p(
         'dash:rooms|title',
-        "Private Room Configuration"
+        "Private Room Configuration ({commands[configure rooms]})"
     )
     configui = RoomSettingUI
     setting_classes = RoomSettingUI.setting_classes

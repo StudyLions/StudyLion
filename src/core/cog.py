@@ -1,4 +1,5 @@
 from typing import Optional
+from collections import defaultdict
 
 import discord
 import discord.app_commands as appcmd
@@ -15,6 +16,15 @@ from .lion import Lions
 from .lion_guild import GuildConfig
 from .lion_member import MemberConfig
 from .lion_user import UserConfig
+
+
+class keydefaultdict(defaultdict):
+    def __missing__(self, key):
+        if self.default_factory is None:
+            raise KeyError(key)
+        else:
+            ret = self[key] = self.default_factory(key)
+            return ret
 
 
 class CoreCog(LionCog):
@@ -43,7 +53,7 @@ class CoreCog(LionCog):
 
         self.app_cmd_cache: list[discord.app_commands.AppCommand] = []
         self.cmd_name_cache: dict[str, discord.app_commands.AppCommand] = {}
-        self.mention_cache: dict[str, str] = {}
+        self.mention_cache: dict[str, str] = keydefaultdict(self.mention_cmd)
 
     async def cog_load(self):
         # Fetch (and possibly create) core data rows.
@@ -74,7 +84,7 @@ class CoreCog(LionCog):
         self.mention_cache = self._mention_cache_from(self.app_cmd_cache)
 
     def _mention_cache_from(self, cmds: list[appcmd.AppCommand | appcmd.AppCommandGroup]):
-        cache = {}
+        cache = keydefaultdict(self.mention_cmd)
         for cmd in cmds:
             cache[cmd.qualified_name if isinstance(cmd, appcmd.AppCommandGroup) else cmd.name] = cmd.mention
             subcommands = [option for option in cmd.options if isinstance(option, appcmd.AppCommandGroup)]

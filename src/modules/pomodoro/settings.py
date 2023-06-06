@@ -14,6 +14,7 @@ class TimerSettings(SettingGroup):
     class PomodoroChannel(ModelData, ChannelSetting):
         setting_id = 'pomodoro_channel'
         _event = 'guildset_pomodoro_channel'
+        _set_cmd = 'configure pomodoro'
 
         _display_name = _p('guildset:pomodoro_channel', "pomodoro_channel")
         _desc = _p(
@@ -27,6 +28,15 @@ class TimerSettings(SettingGroup):
             "If this setting is not set, pomodoro notifications will default to the "
             "timer voice channel itself."
         )
+        _notset_str = _p(
+            'guildset:pomodoro_channel|formatted|notset',
+            "Not Set (Will use timer voice channel.)"
+        )
+        _accepts = _p(
+            'guildset:pomodoro_channel|accepts',
+            "Timer notification channel name or id."
+        )
+
         _model = CoreData.Guild
         _column = CoreData.Guild.pomodoro_channel.name
 
@@ -45,3 +55,12 @@ class TimerSettings(SettingGroup):
                     "Pomodoro timer notifications will now default to their voice channel."
                 ))
             return resp
+
+        @property
+        def set_str(self) -> str:
+            cmdstr = super().set_str
+            t = ctx_translator.get().t
+            return t(_p(
+                'guildset:pomdoro_channel|set_using',
+                "{cmd} or channel selector below."
+            )).format(cmd=cmdstr)

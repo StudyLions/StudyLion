@@ -155,7 +155,7 @@ class RankConfigUI(ConfigUI):
 class RankDashboard(DashboardSection):
     section_name = _p(
         'dash:rank|title',
-        "Rank Configuration",
+        "Rank Configuration ({commands[configure ranks]})",
     )
     configui = RankConfigUI
     setting_classes = RankConfigUI.setting_classes

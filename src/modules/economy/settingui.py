@@ -65,7 +65,7 @@ class EconomyConfigUI(ConfigUI):
 class EconomyDashboard(DashboardSection):
     section_name = _p(
         'dash:economy|title',
-        "Economy Configuration"
+        "Economy Configuration ({commands[configure economy]})"
     )
     configui = EconomyConfigUI
     setting_classes = EconomyConfigUI.setting_classes

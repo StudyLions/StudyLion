@@ -83,6 +83,8 @@ class ConfigUI(LeoUI):
         t = ctx_translator.get().t
         instances = self.instances
         items = [setting.input_field for setting in instances]
+        # Filter out settings which don't have input fields
+        items = [item for item in items if item]
         strings = [item.value for item in items]
         modal = ConfigEditor(*items, title=t(self.edit_modal_title))
 
@@ -126,7 +128,7 @@ class ConfigUI(LeoUI):
         t = ctx_translator.get().t
         self.edit_button.label = t(_p(
             'ui:configui|button:edit|label',
-            "Bulk Edit"
+            "Edit"
         ))
 
     @button(emoji=conf.emojis.cancel, style=ButtonStyle.red)
@@ -287,7 +289,7 @@ class DashboardSection:
         # TODO: Header/description field
         table = self.make_table()
         page.add_field(
-            name=t(self.section_name),
+            name=t(self.section_name).format(bot=self.bot, commands=self.bot.core.mention_cache),
             value=table,
             inline=False
         )

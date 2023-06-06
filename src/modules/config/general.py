@@ -11,7 +11,7 @@ import discord
 from discord.ext import commands as cmds
 from discord import app_commands as appcmds
 
-from meta import LionBot, LionCog, LionContext
+from meta import LionBot, LionCog, LionContext, ctx_bot
 from meta.errors import UserInputError
 from wards import low_management
 from settings import ModelData
@@ -57,7 +57,6 @@ class GeneralSettings(SettingGroup):
         @property
         def update_message(self):
             t = ctx_translator.get().t
-            # TODO: update_message can state time in current timezone
             return t(_p(
                 'guildset:timezone|response',
                 "The guild timezone has been set to `{timezone}`."
@@ -65,8 +64,8 @@ class GeneralSettings(SettingGroup):
 
         @property
         def set_str(self):
-            # TODO
-            return '</configure general:1038560947666694144>'
+            bot = ctx_bot.get()
+            return bot.core.mention_cmd('configure general') if bot else None
 
 
 class GeneralSettingsCog(LionCog):

@@ -23,6 +23,10 @@ from settings.groups import SettingGroup
 
 from wards import sys_admin
 
+from . import babel
+
+_p = babel._p
+
 logger = logging.getLogger(__name__)
 
 
@@ -104,49 +108,93 @@ class PresenceSettings(SettingGroup):
     """
     Control the bot status and activity.
     """
-    _title = "Presence Settings ({bot.core.cmd_name_cache[presence].mention})"
+    _title = "Presence Settings ({bot.core.mention_cache[presence]})"
 
     class PresenceStatus(ModelData, EnumSetting[str, AppStatus]):
         setting_id = 'presence_status'
 
-        display_name = 'online_status'
-        desc = "Bot status indicator"
-        long_desc = "Whether the bot account displays as online, idle, dnd, or offline."
-        accepts = "One of 'online', 'idle', 'dnd', or 'offline'."
+        _display_name = _p('botset:presence_status', 'online_status')
+        _desc = _p('botset:presence_status|desc', "Bot status indicator")
+        _long_desc = _p(
+            'botset:presence_status|long_desc',
+            "Whether the bot account displays as online, idle, dnd, or offline."
+        )
+        _accepts = _p(
+            'botset:presence_status|accepts',
+            "Online/Idle/Dnd/Offline"
+        )
 
         _model = PresenceData.AppPresence
         _column = PresenceData.AppPresence.online_status.name
         _create_row = True
 
         _enum = AppStatus
-        _outputs = {item: item.value[1] for item in _enum}
-        _inputs = {item.name: item for item in _enum}
+        _outputs = {
+            AppStatus.online: _p('botset:presence_status|output:online', "**Online**"),
+            AppStatus.idle: _p('botset:presence_status|output:idle', "**Idle**"),
+            AppStatus.dnd: _p('botset:presence_status|output:dnd', "**Do Not Disturb**"),
+            AppStatus.offline: _p('botset:presence_status|output:offline', "**Offline**"),
+        }
+        _input_formatted = {
+            AppStatus.online: _p('botset:presence_status|input_format:online', "Online"),
+            AppStatus.idle: _p('botset:presence_status|input_format:idle', "Idle"),
+            AppStatus.dnd: _p('botset:presence_status|input_format:dnd', "DND"),
+            AppStatus.offline: _p('botset:presence_status|input_format:offline', "Offline"),
+        }
+        _input_patterns = {
+            AppStatus.online: _p('botset:presence_status|input_pattern:online', "on|online"),
+            AppStatus.idle: _p('botset:presence_status|input_pattern:idle', "idle"),
+            AppStatus.dnd: _p('botset:presence_status|input_pattern:dnd', "do not disturb|dnd"),
+            AppStatus.offline: _p('botset:presence_status|input_pattern:offline', "off|offline|invisible"),
+        }
         _default = AppStatus.online
 
     class PresenceType(ModelData, EnumSetting[str, AppActivityType]):
         setting_id = 'presence_type'
 
-        display_name = 'activity_type'
-        desc = "Type of presence activity"
-        long_desc = "Whether the bot activity is shown as 'Listening', 'Playing', or 'Watching'."
-        accepts = "One of 'listening', 'playing', 'watching', or 'streaming'."
+        _display_name = _p('botset:presence_type', 'activity_type')
+        _desc = _p('botset:presence_type|desc', "Type of presence activity")
+        _long_desc = _p(
+            'botset:presence_type|long_desc',
+            "Whether the bot activity is shown as 'Listening', 'Playing', or 'Watching'."
+        )
+        _accepts = _p(
+            'botset:presence_type|accepts',
+            "Listening/Playing/Watching/Streaming"
+        )
 
         _model = PresenceData.AppPresence
         _column = PresenceData.AppPresence.activity_type.name
         _create_row = True
 
         _enum = AppActivityType
-        _outputs = {item: item.value[1] for item in _enum}
-        _inputs = {item.name: item for item in _enum}
+        _outputs = {
+            AppActivityType.watching: _p('botset:presence_type|output:watching', "**Watching**"),
+            AppActivityType.listening: _p('botset:presence_type|output:listening', "**Listening**"),
+            AppActivityType.playing: _p('botset:presence_type|output:playing', "**Playing**"),
+            AppActivityType.streaming: _p('botset:presence_type|output:streaming', "**Streaming**"),
+        }
+        _input_formats = {
+            AppActivityType.watching: _p('botset:presence_type|input_format:watching', "Watching"),
+            AppActivityType.listening: _p('botset:presence_type|input_format:listening', "Listening"),
+            AppActivityType.playing: _p('botset:presence_type|input_format:playing', "Playing"),
+            AppActivityType.streaming: _p('botset:presence_type|input_format:streaming', "Streaming"),
+        }
+        _input_patterns = {
+            AppActivityType.watching: _p('botset:presence_type|input_pattern:watching', "watching"),
+            AppActivityType.listening: _p('botset:presence_type|input_pattern:listening', "listening"),
+            AppActivityType.playing: _p('botset:presence_type|input_pattern:playing', "playing"),
+            AppActivityType.streaming: _p('botset:presence_type|input_pattern:streaming', "streaming"),
+        }
         _default = AppActivityType.watching
 
     class PresenceName(ModelData, StringSetting[str]):
         setting_id = 'presence_name'
 
-        display_name = 'activity_name'
-        desc = "Name of the presence activity"
-        long_desc = "Presence activity name."
-        accepts = "Any string."
+        _display_name = _p('botset:presence_name', 'activity_name')
+        _desc = _p("botset:presence_name|desc", "Name of the presence activity")
+        _long_desc = _p("botset:presence_name|long_desc", "Presence activity name.")
+        _accepts = _p('botset:presence_name|accepts', "The name of the activity to show.")
 
         _model = PresenceData.AppPresence
         _column = PresenceData.AppPresence.activity_name.name

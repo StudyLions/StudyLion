@@ -15,6 +15,7 @@ class RoomSettings(SettingGroup):
     class Category(ModelData, ChannelSetting):
         setting_id = 'rooms_category'
         _event = 'guildset_rooms_category'
+        _set_cmd = 'configure rooms'
 
         _display_name = _p(
             'guildset:room_category', "rooms_category"
@@ -30,6 +31,10 @@ class RoomSettings(SettingGroup):
             "manageable by the member. "
             "I must have permission to create new channels in this category, "
             "as well as to manage permissions."
+        )
+        _accepts = _p(
+            'guildset:room_category|accepts',
+            "Private room category name or id."
         )
 
         _model = CoreData.Guild
@@ -53,9 +58,19 @@ class RoomSettings(SettingGroup):
                 )).format(channel=self.value.mention)
             return resp
 
+        @property
+        def set_str(self) -> str:
+            cmdstr = super().set_str
+            t = ctx_translator.get().t
+            return t(_p(
+                'guildset:room_category|set_using',
+                "{cmd} or category selector below."
+            )).format(cmd=cmdstr)
+
     class Rent(ModelData, IntegerSetting):
         setting_id = 'rooms_price'
         _event = 'guildset_rooms_price'
+        _set_cmd = 'configure rooms'
 
         _display_name = _p(
             'guildset:rooms_price', "room_rent"
@@ -67,6 +82,10 @@ class RoomSettings(SettingGroup):
         _long_desc = _p(
             'guildset:rooms_rent|long_desc',
             "Members will be charged this many LionCoins for each day they rent a private room."
+        )
+        _accepts = _p(
+            'guildset:rooms_rent|accepts',
+            "Number of LionCoins charged per day for a private room."
         )
         _default = 1000
 
@@ -88,6 +107,7 @@ class RoomSettings(SettingGroup):
     class MemberLimit(ModelData, IntegerSetting):
         setting_id = 'rooms_slots'
         _event = 'guildset_rooms_slots'
+        _set_cmd = 'configure rooms'
 
         _display_name = _p('guildset:rooms_slots', "room_member_cap")
         _desc = _p(
@@ -99,6 +119,10 @@ class RoomSettings(SettingGroup):
             "Private room owners may invite other members to their private room via the UI, "
             "or through the `/room invite` command. "
             "This setting limits the maximum number of members a private room may hold."
+        )
+        _accepts = _p(
+            'guildset:rooms_slots|accepts',
+            "Maximum number of members allowed per private room."
         )
         _default = 25
 
@@ -117,6 +141,7 @@ class RoomSettings(SettingGroup):
     class Visible(ModelData, BoolSetting):
         setting_id = 'rooms_visible'
         _event = 'guildset_rooms_visible'
+        _set_cmd = 'configure rooms'
 
         _display_name = _p('guildset:rooms_visible', "room_visibility")
         _desc = _p(
@@ -129,6 +154,21 @@ class RoomSettings(SettingGroup):
             "enabled for the `@everyone` role."
         )
         _default = False
+        _accepts = _p('guildset:rooms_visible|accepts', "Visible/Invisible")
+        _outputs = {
+            True: _p('guildset:rooms_visible|output:true', "Visible"),
+            False: _p('guildset:rooms_visible|output:false', "Invisible"),
+        }
+        _outputs[None] = _outputs[_default]
+
+        _truthy = _p(
+            'guildset:rooms_visible|parse:truthy_values',
+            "visible|enabled|yes|true|on|enable|1"
+        )
+        _falsey = _p(
+            'guildset:rooms_visible|parse:falsey_values',
+            'invisible|disabled|no|false|off|disable|0'
+        )
 
         _model = CoreData.Guild
         _column = CoreData.Guild.renting_visible.name
@@ -147,6 +187,15 @@ class RoomSettings(SettingGroup):
                     "Private rooms will now only be visible to their members (and admins)."
                 ))
             return resp
+
+        @property
+        def set_str(self) -> str:
+            cmdstr = super().set_str
+            t = ctx_translator.get().t
+            return t(_p(
+                'guildset:rooms_visible|set_using',
+                "{cmd} or toggle below."
+            )).format(cmd=cmdstr)
 
     model_settings = (
         Category,

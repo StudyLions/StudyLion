@@ -80,7 +80,7 @@ class LocaleSettingUI(ConfigUI):
 class LocaleDashboard(DashboardSection):
     section_name = _p(
         'dash:locale|title',
-        "Server Language Configuration"
+        "Server Language Configuration ({commands[configure language]})"
     )
     configui = LocaleSettingUI
     setting_classes = LocaleSettingUI.setting_classes

@@ -14,7 +14,8 @@ from settings.groups import SettingGroup
 
 from meta import conf, LionBot
 from meta.context import ctx_bot
-from utils.lib import tabulate
+from meta.errors import UserInputError
+from utils.lib import tabulate, utc_now
 from utils.ui import ConfigUI, FastModal, error_handler_for, ModalRetryUI
 from utils.lib import MessageArgs
 from core.data import CoreData
@@ -33,16 +34,24 @@ class StatTypeSetting(EnumSetting):
     """
     _enum = StatisticType
     _outputs = {
-        StatisticType.VOICE: '`Voice`',
-        StatisticType.TEXT: '`Text`',
-        StatisticType.ANKI: '`Anki`'
+        StatisticType.VOICE: _p('settype:stat|output:voice', "`Voice`"),
+        StatisticType.TEXT: _p('settype:stat|output:text', "`Text`"),
+        StatisticType.ANKI: _p('settype:stat|output:anki', "`Anki`"),
     }
-    _inputs = {
-        'voice': StatisticType.VOICE,
-        'study': StatisticType.VOICE,
-        'text': StatisticType.TEXT,
-        'anki': StatisticType.ANKI
+    _input_formatted = {
+        StatisticType.VOICE: _p('settype:stat|input_format:voice', "Voice"),
+        StatisticType.TEXT: _p('settype:stat|input_format:text', "Text"),
+        StatisticType.ANKI: _p('settype:stat|input_format:anki', "Anki"),
     }
+    _input_patterns = {
+        StatisticType.VOICE: _p('settype:stat|input_pattern:voice', "voice|study"),
+        StatisticType.TEXT: _p('settype:stat|input_pattern:text', "text|messages"),
+        StatisticType.ANKI: _p('settype:stat|input_pattern:anki', "anki"),
+    }
+    _accepts = _p(
+        'settype:state|accepts',
+        'Voice/Text/Anki'
+    )
 
 
 class StatisticsSettings(SettingGroup):
@@ -74,6 +83,7 @@ class StatisticsSettings(SettingGroup):
         Time is assumed to be in set guild timezone (although supports +00 syntax)
         """
         setting_id = 'season_start'
+        _set_cmd = 'configure statistics'
 
         _display_name = _p('guildset:season_start', "season_start")
         _desc = _p(
@@ -86,17 +96,55 @@ class StatisticsSettings(SettingGroup):
             "and the leaderboard will display activity since this time by default. "
             "Unset to disable seasons and use all-time statistics instead."
         )
+        _accepts = _p(
+            'guildset:season_start|accepts',
+            "The season start time in the form YYYY-MM-DD HH:MM"
+        )
+        _notset_str = _p(
+            'guildset:season_start|notset',
+            "Not Set (Using all-time statistics)"
+        )
 
         _model = CoreData.Guild
         _column = CoreData.Guild.season_start.name
-        # TODO: Offer to update badge ranks when this changes?
-        # TODO: Don't allow future times?
 
         @classmethod
         async def _timezone_from_id(cls, guildid, **kwargs):
             bot = ctx_bot.get()
             lguild = await bot.core.lions.fetch_guild(guildid)
             return lguild.timezone
+
+        @classmethod
+        async def _parse_string(cls, parent_id, string, **kwargs):
+            parsed = await super()._parse_string(parent_id, string, **kwargs)
+            if parsed is not None and parsed > utc_now():
+                t = ctx_translator.get().t
+                raise UserInputError(t(_p(
+                    'guildset:season_start|parse|error:future_time',
+                    "Provided season start time {timestamp} is in the future!"
+                )).format(timestamp=f"<t:{int(parsed.timestamp())}>"))
+
+        @property
+        def update_message(self) -> str:
+            t = ctx_translator.get().t
+            bot = ctx_bot.get()
+            value = self.value
+            if value is not None:
+                resp = t(_p(
+                    'guildset:season_start|set_response|set',
+                    "The leaderboard season and activity ranks will now count from {timestamp}. "
+                    "Member ranks will update when they are next active. Use {rank_cmd} to refresh immediately."
+                )).format(
+                    timestamp=self.formatted,
+                    rank_cmd=bot.core.mention_cmd('ranks')
+                )
+            else:
+                resp = t(_p(
+                    'guildset:season_start|set_response|unset',
+                    "The leaderboard and activity ranks will now count all-time statistics. "
+                    "Member ranks will update when they are next active. Use {rank_cmd} to refresh immediately."
+                )).format(rank_cmd=bot.core.mention_cmd('ranks'))
+            return resp
 
     class UnrankedRoles(ListData, RoleListSetting):
         """
@@ -113,6 +161,10 @@ class StatisticsSettings(SettingGroup):
             'guildset:unranked_roles|long_desc',
             "When set, members with *any* of these roles will not appear on the /leaderboard ranking list."
         )
+        _accepts = _p(
+            'guildset:unranked_roles|accepts',
+            "Comma separated list of unranked role names or ids."
+        )
         _default = None
 
         _table_interface = StatsData.unranked_roles
@@ -124,7 +176,29 @@ class StatisticsSettings(SettingGroup):
 
         @property
         def set_str(self):
-            return "Role selector below"
+            t = ctx_translator.get().t
+            return t(_p(
+                'guildset:unranked_roles|set_using',
+                "Role selector below."
+            ))
+
+        @property
+        def update_message(self) -> str:
+            t = ctx_translator.get().t
+            value = self.value
+            if value is not None:
+                resp = t(_p(
+                    'guildset:unranked_roles|set_response|set',
+                    "Members of the following roles will not appear on the leaderboard: {roles}"
+                )).format(
+                    roles=self.formatted
+                )
+            else:
+                resp = t(_p(
+                    'guildset:unranked_roles|set_response|unset',
+                    "You have cleared the unranked role list."
+                ))
+            return resp
 
     class VisibleStats(ListData, ListSetting, InteractiveSetting):
         """
@@ -145,6 +219,10 @@ class StatisticsSettings(SettingGroup):
             'guildset:visible_stats|desc',
             "Choose which statistics types to display in the leaderboard and statistics commands."
         )
+        _accepts = _p(
+            'guildset:visible_stats|accepts',
+            "Voice, Text, Anki"
+        )
         # TODO: Format VOICE as STUDY when possible?
 
         _default = [
@@ -158,6 +236,23 @@ class StatisticsSettings(SettingGroup):
         _order_column = 'stat_type'
 
         _cache = {}
+
+        @property
+        def set_str(self):
+            t = ctx_translator.get().t
+            return t(_p(
+                'guildset:visible_stats|set_using',
+                "Option menu below."
+            ))
+
+        @property
+        def update_message(self) -> str:
+            t = ctx_translator.get().t
+            resp = t(_p(
+                'guildset:visible_stats|set_response',
+                "Members will be able to view the following statistics types: {types}"
+            )).format(types=self.formatted)
+            return resp
 
     class DefaultStat(ModelData, StatTypeSetting):
         """

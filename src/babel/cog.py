@@ -136,7 +136,7 @@ class BabelCog(LionCog):
         if language:
             lang_data = await lang_setting._parse_string(ctx.guild.id, language)
         if force_language is not None:
-            force_data = bool(force_language)
+            force_data = bool(force_language.value)
 
         if force_language is not None and not (lang_data if language is not None else lang_setting.value):
             # Setting force without having a language!
@@ -204,12 +204,8 @@ class BabelCog(LionCog):
             new_data = await setting._parse_string(ctx.author.id, language)
             await setting.interactive_set(new_data, ctx.interaction, ephemeral=True)
         else:
+            embed = setting.embed
             if setting.value:
-                desc = t(_p(
-                    'cmd:userconfig_language|response:set',
-                    "Your preferred language is currently set to {language}"
-                )).format(language=setting.formatted)
-
                 @AButton(
                     label=t(_p('cmd:userconfig_language|button:reset|label', "Reset")),
                     style=ButtonStyle.red
@@ -220,15 +216,7 @@ class BabelCog(LionCog):
 
                 view = AsComponents(reset_button)
             else:
-                desc = t(_p(
-                    'cmd:userconfig_language|response:unset',
-                    "You have not set a preferred language!"
-                ))
                 view = None
-            embed = discord.Embed(
-                colour=discord.Colour.orange(),
-                description=desc
-            )
             await ctx.reply(embed=embed, ephemeral=True, view=view)
 
     @userconfig_language_cmd.autocomplete('language')

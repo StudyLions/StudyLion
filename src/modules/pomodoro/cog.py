@@ -304,8 +304,8 @@ class TimerCog(LionCog):
 
     # ----- Timer Commands -----
     @cmds.hybrid_group(
-        name=_p('cmd:pomodoro', "pomodoro"),
-        desc=_p('cmd:pomodoro|desc', "Base group for all pomodoro timer commands.")
+        name=_p('cmd:pomodoro', "timers"),
+        description=_p('cmd:pomodoro|desc', "Base group for all pomodoro timer commands.")
     )
     @cmds.guild_only()
     async def pomodoro_group(self, ctx: LionContext):
@@ -787,7 +787,7 @@ class TimerCog(LionCog):
                 await timer.update_status_card()
 
         # Show the config UI
-        ui = TimerOptionsUI(self.bot, timer, timer_role)
+        ui = TimerOptionsUI(self.bot, timer, timer_role, callerid=ctx.author.id)
         await ui.run(ctx.interaction)
         await ui.wait()
 

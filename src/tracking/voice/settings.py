@@ -33,9 +33,9 @@ _p = babel._p
 
 class VoiceTrackerSettings(SettingGroup):
     class UntrackedChannels(ListData, ChannelListSetting):
-        # TODO: Factor out into combined tracking settings?
         setting_id = 'untracked_channels'
         _event = 'guild_setting_update_untracked_channels'
+        _set_cmd = 'configure voice_rewards'
 
         _display_name = _p('guildset:untracked_channels', "untracked_channels")
         _desc = _p(
@@ -46,6 +46,14 @@ class VoiceTrackerSettings(SettingGroup):
             'guildset:untracked_channels|long_desc',
             "Activity in these channels will not count towards a member's statistics. "
             "If a category is selected, all channels under the category will be untracked."
+        )
+        _accepts = _p(
+            'guildset:untracked_channels|accepts',
+            "Comma separated list of untracked channel name/ids."
+        )
+        _notset_str = _p(
+            'guildset:untracked_channels|notset',
+            "Not Set (all voice channels will be tracked.)"
         )
 
         _default = None
@@ -68,12 +76,19 @@ class VoiceTrackerSettings(SettingGroup):
         @property
         def update_message(self):
             t = ctx_translator.get().t
-            return t(_p(
-                'guildset:untracked_channels|response',
-                "Activity in the following channels will now be ignored: {channels}"
-            )).format(
-                channels=self.formatted
-            )
+            if self.data:
+                resp = t(_p(
+                    'guildset:untracked_channels|set_response|set',
+                    "Activity in the following channels will now be ignored: {channels}"
+                )).format(
+                    channels=self.formatted
+                )
+            else:
+                resp = t(_p(
+                    'guildset:untracked_channels|set_response|unset',
+                    "All voice channels will now be tracked."
+                ))
+            return resp
 
         @classmethod
         @log_wrap(action='Cache Untracked Channels')
@@ -97,6 +112,7 @@ class VoiceTrackerSettings(SettingGroup):
     class HourlyReward(ModelData, IntegerSetting):
         setting_id = 'hourly_reward'
         _event = 'guild_setting_update_hourly_reward'
+        _set_cmd = 'configure voice_rewards'
 
         _display_name = _p('guildset:hourly_reward', "hourly_reward")
         _desc = _p(
@@ -106,6 +122,10 @@ class VoiceTrackerSettings(SettingGroup):
         _long_desc = _p(
             'guildset:hourly_reward|mode:voice|long_desc',
             "Number of LionCoins to each member per hour that they stay in a tracked voice channel."
+        )
+        _accepts = _p(
+            'guildset:hourly_reward|accepts',
+            "Number of coins to reward per hour in voice."
         )
 
         _default = 50
@@ -127,29 +147,10 @@ class VoiceTrackerSettings(SettingGroup):
                     amount=data
                 )
 
-        @property
-        def set_str(self):
-            # TODO: Dynamic retrieval of command id
-            return '</configure voice_tracking:1038560947666694144>'
-
     class HourlyReward_Voice(HourlyReward):
         """
         Voice-mode specialised version of HourlyReward
         """
-        _desc = _p(
-            'guildset:hourly_reward|mode:voice|desc',
-            "LionCoins given per hour in a voice channel."
-        )
-        _long_desc = _p(
-            'guildset:hourly_reward|mode:voice|long_desc',
-            "Number of LionCoins rewarded to each member per hour that they stay in a tracked voice channel."
-        )
-
-        @property
-        def set_str(self):
-            # TODO: Dynamic retrieval of command id
-            return '</configure voice_tracking:1038560947666694144>'
-
         @property
         def update_message(self):
             t = ctx_translator.get().t
@@ -191,6 +192,7 @@ class VoiceTrackerSettings(SettingGroup):
         """
         setting_id = 'hourly_live_bonus'
         _event = 'guild_setting_update_hourly_live_bonus'
+        _set_cmd = 'configure voice_rewards'
 
         _display_name = _p('guildset:hourly_live_bonus', "hourly_live_bonus")
         _desc = _p(
@@ -202,6 +204,10 @@ class VoiceTrackerSettings(SettingGroup):
             'guildset:hourly_live_bonus|long_desc',
             "When a member streams or video-chats in a channel they will be given this bonus *additionally* "
             "to the `hourly_reward`."
+        )
+        _accepts = _p(
+            'guildset:hourly_live_bonus|accepts',
+            "Number of bonus coins to reward per hour when live."
         )
 
         _default = 150
@@ -224,11 +230,6 @@ class VoiceTrackerSettings(SettingGroup):
                 )
 
         @property
-        def set_str(self):
-            # TODO: Dynamic retrieval of command id
-            return '</configure voice_tracking:1038560947666694144>'
-
-        @property
         def update_message(self):
             t = ctx_translator.get().t
             return t(_p(
@@ -242,6 +243,7 @@ class VoiceTrackerSettings(SettingGroup):
     class DailyVoiceCap(ModelData, DurationSetting):
         setting_id = 'daily_voice_cap'
         _event = 'guild_setting_update_daily_voice_cap'
+        _set_cmd = 'configure voice_rewards'
 
         _display_name = _p('guildset:daily_voice_cap', "daily_voice_cap")
         _desc = _p(
@@ -254,6 +256,10 @@ class VoiceTrackerSettings(SettingGroup):
             "Tracking will resume at the start of the next day. "
             "The start of the day is determined by the configured guild timezone."
         )
+        _accepts = _p(
+            'guildset:daily_voice_cap|accepts',
+            "The maximum number of voice hours to track per day."
+        )
 
         _default = 16 * 60 * 60
         _default_multiplier = 60 * 60
@@ -262,11 +268,6 @@ class VoiceTrackerSettings(SettingGroup):
 
         _model = CoreData.Guild
         _column = CoreData.Guild.daily_study_cap.name
-
-        @property
-        def set_str(self):
-            # TODO: Dynamic retrieval of command id
-            return '</configure voice_tracking:1038560947666694144>'
 
         @property
         def update_message(self):
@@ -524,7 +525,7 @@ class VoiceTrackerConfigUI(ConfigUI):
 class VoiceTrackerDashboard(DashboardSection):
     section_name = _p(
         'dash:voice_tracker|title',
-        "Voice Tracker Configuration"
+        "Voice Tracker Configuration ({commands[configure voice_rewards]})"
     )
     configui = VoiceTrackerConfigUI
     setting_classes = configui.setting_classes

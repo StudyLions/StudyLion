@@ -8,7 +8,7 @@ from settings import ListData, ModelData
 from settings.setting_types import StringSetting, BoolSetting, ChannelListSetting, IntegerSetting
 from settings.groups import SettingGroup
 
-from meta import conf, LionBot
+from meta import conf, LionBot, ctx_bot
 from utils.lib import tabulate
 from utils.ui import LeoUI, FastModal, error_handler_for, ModalRetryUI, DashboardSection
 from core.data import CoreData
@@ -28,6 +28,7 @@ class TasklistSettings(SettingGroup):
         Exposed via `/configure tasklist`, and the standard configuration interface.
         """
         setting_id = 'task_reward'
+        _set_cmd = 'configure tasklist'
 
         _display_name = _p('guildset:task_reward', "task_reward")
         _desc = _p(
@@ -37,6 +38,10 @@ class TasklistSettings(SettingGroup):
         _long_desc = _p(
             'guildset:task_reward|long_desc',
             "The number of coins members will be rewarded each time they complete a task on their tasklist."
+        )
+        _accepts = _p(
+            'guildset:task_reward|accepts',
+            "The number of LionCoins to reward per task."
         )
         _default = 50
 
@@ -51,20 +56,19 @@ class TasklistSettings(SettingGroup):
                 "Members will now be rewarded {coin}**{amount}** for each completed task."
             )).format(coin=conf.emojis.coin, amount=self.data)
 
-        @property
-        def set_str(self):
-            return '</configure tasklist:1038560947666694144>'
-
         @classmethod
         def _format_data(cls, parent_id, data, **kwargs):
             if data is not None:
-                return "{coin}**{amount}** per task.".format(
-                    coin=conf.emojis.coin,
-                    amount=data
-                )
+                t = ctx_translator.get().t
+                formatted = t(_p(
+                    'guildset:task_reward|formatted',
+                    "{coin}**{amount}** per task."
+                )).format(coin=conf.emojis.coin, amount=data)
+                return formatted
 
     class task_reward_limit(ModelData, IntegerSetting):
         setting_id = 'task_reward_limit'
+        _set_cmd = 'configure tasklist'
 
         _display_name = _p('guildset:task_reward_limit', "task_reward_limit")
         _desc = _p(
@@ -75,6 +79,10 @@ class TasklistSettings(SettingGroup):
             'guildset:task_reward_limit|long_desc',
             "Maximum number of times in each 24h period that members will be rewarded "
             "for completing a task."
+        )
+        _accepts = _p(
+            'guildset:task_reward_limit|accepts',
+            "The maximum number of tasks to reward LC for per 24h."
         )
         _default = 10
 
@@ -89,16 +97,15 @@ class TasklistSettings(SettingGroup):
                 "Members will now be rewarded for task completion at most **{amount}** times per 24h."
             )).format(amount=self.data)
 
-        @property
-        def set_str(self):
-            return '</configure tasklist:1038560947666694144>'
-
         @classmethod
         def _format_data(cls, parent_id, data, **kwargs):
             if data is not None:
-                return "`{number}` per 24 hours.".format(
-                    number=data
-                )
+                t = ctx_translator.get().t
+                formatted = t(_p(
+                    'guildset:task_reward_limit|formatted',
+                    "`{number}` per 24 hours."
+                )).format(number=data)
+                return formatted
 
     class tasklist_channels(ListData, ChannelListSetting):
         setting_id = 'tasklist_channels'
@@ -113,6 +120,10 @@ class TasklistSettings(SettingGroup):
             "If set, members will only be able to open their tasklist in these channels.\n"
             "If a category is selected, this will allow all channels under that category."
         )
+        _accepts = _p(
+            'guildset:tasklist_channels|accepts',
+            "Comma separated list of tasklist channel names or ids."
+        )
         _default = None
 
         _table_interface = TasklistData.channels
@@ -123,13 +134,31 @@ class TasklistSettings(SettingGroup):
         _cache = {}
 
         @property
+        def update_message(self):
+            t = ctx_translator.get().t
+            if self.data:
+                resp = t(_p(
+                    'guildset:tasklist_channels|set_response|set',
+                    "Members may now open their tasklist in the following channels: {channels}"
+                )).format(channels=self.formatted)
+            else:
+                resp = t(_p(
+                    'guildset:tasklist_channels|set_response|unset',
+                    "Members may now open their tasklist in any channel."
+                ))
+            return resp
+
+        @property
         def set_str(self):
-            return "Channel selector below."
+            t = ctx_translator.get().t
+            return t(_p(
+                'guildset:tasklist_channels|set_using',
+                "Channel selector below."
+            ))
 
 
 class TasklistConfigUI(LeoUI):
-    # TODO: Back option to global guild config
-    # TODO: Cohesive edit
+    # TODO: Migrate to ConfigUI
     _listening = {}
     setting_classes = (
         TasklistSettings.task_reward,
@@ -286,6 +315,6 @@ class TasklistConfigUI(LeoUI):
 
 
 class TasklistDashboard(DashboardSection):
-    section_name = _p('dash:tasklist|name', "Tasklist Configuration")
+    section_name = _p('dash:tasklist|name', "Tasklist Configuration ({commands[configure tasklist]})")
     configui = TasklistConfigUI
     setting_classes = configui.setting_classes

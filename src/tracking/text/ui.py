@@ -86,7 +86,7 @@ class TextTrackerConfigUI(ConfigUI):
 class TextTrackerDashboard(DashboardSection):
     section_name = _p(
         'dash:text_tracking|title',
-        "Message XP configuration",
+        "Message XP configuration ({commands[configure message_exp]})",
     )
     configui = TextTrackerConfigUI
     setting_classes = configui.setting_classes

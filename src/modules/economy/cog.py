@@ -787,9 +787,23 @@ class Economy(LionCog):
             "Configure LionCoin Economy"
         )
     )
+    @appcmds.rename(
+        allow_transfers=EconomySettings.AllowTransfers._display_name,
+        coins_per_xp=EconomySettings.CoinsPerXP._display_name
+    )
+    @appcmds.describe(
+        allow_transfers=EconomySettings.AllowTransfers._desc,
+        coins_per_xp=EconomySettings.CoinsPerXP._desc
+    )
+    @appcmds.choices(
+        allow_transfers=[
+            appcmds.Choice(name=EconomySettings.AllowTransfers._outputs[True], value=1),
+            appcmds.Choice(name=EconomySettings.AllowTransfers._outputs[False], value=0),
+        ]
+    )
     @cmds.check(low_management)
     async def configure_economy(self, ctx: LionContext,
-                                allow_transfers: Optional[bool] = None,
+                                allow_transfers: Optional[appcmds.Choice[int]] = None,
                                 coins_per_xp: Optional[appcmds.Range[int, 0, 2**15]] = None):
         t = self.bot.translator.t
         if not ctx.interaction:
@@ -802,7 +816,7 @@ class Economy(LionCog):
 
         modified = []
         if allow_transfers is not None:
-            setting_allow_transfers.data = allow_transfers
+            setting_allow_transfers.data = bool(allow_transfers.value)
             await setting_allow_transfers.write()
             modified.append(setting_allow_transfers)
         if coins_per_xp is not None:

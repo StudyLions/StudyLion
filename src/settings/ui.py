@@ -15,6 +15,9 @@ from meta.context import ctx_bot
 from babel.translator import ctx_translator, LazyStr
 
 from .base import BaseSetting, ParentID, SettingData, SettingValue
+from . import babel
+
+_p = babel._p
 
 
 ST = TypeVar('ST', bound='InteractiveSetting')
@@ -172,6 +175,8 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
     _desc: LazyStr  # User readable brief description of the setting
     _long_desc: LazyStr  # User readable long description of the setting
     _accepts: LazyStr  # User readable description of the acceptable values
+    _set_cmd: str = None
+    _notset_str: LazyStr = _p('setting|formatted|notset', "Not Set")
     _virtual: bool = False  # Whether the setting should be hidden from tables and dashboards
     _required: bool = False
 
@@ -305,29 +310,61 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
 
     @property
     def set_str(self):
-        return None
+        if self._set_cmd is not None:
+            bot = ctx_bot.get()
+            if bot:
+                return bot.core.mention_cmd(self._set_cmd)
+            else:
+                return f"`/{self._set_cmd}`"
+
+    @property
+    def notset_str(self):
+        t = ctx_translator.get().t
+        return t(self._notset_str)
 
     @property
     def embed(self):
         """
         Returns a full embed describing this setting.
         """
+        t = ctx_translator.get().t
         embed = discord.Embed(
-            title="Configuration options for `{}`".format(self.display_name),
+            title=t(_p(
+                'setting|summary_embed|title',
+                "Configuration options for `{name}`"
+            )).format(name=self.display_name),
         )
         embed.description = "{}\n{}".format(self.long_desc.format(self=self), self.desc_table)
         return embed
 
-    @property
-    def desc_table(self):
+    def _desc_table(self) -> list[str]:
+        t = ctx_translator.get().t
         lines = []
-        lines.append(('Currently', self.formatted or "Not Set"))
-        if (default := self.default) is not None:
-            lines.append(('By Default', self._format_data(self.parent_id, default) or "No Default"))
-        if (set_str := self.set_str) is not None:
-            lines.append(('Set Using', set_str))
 
-        return '\n'.join(tabulate(*lines))
+        # Currently line
+        lines.append((
+            t(_p('setting|summary_table|field:currently|key', "Currently")),
+            self.formatted or self.notset_str
+        ))
+
+        # Default line
+        if (default := self.default) is not None:
+            lines.append((
+                t(_p('setting|summary_table|field:default|key', "By Default")),
+                self._format_data(self.parent_id, default) or 'None'
+            ))
+
+        # Set using line
+        if (set_str := self.set_str) is not None:
+            lines.append((
+                t(_p('setting|summary_table|field:set|key', "Set Using")),
+                set_str
+            ))
+        return lines
+
+    @property
+    def desc_table(self) -> str:
+        return '\n'.join(tabulate(*self._desc_table()))
 
     @property
     def input_field(self) -> TextInput:
@@ -366,7 +403,7 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
         Default user-readable form of the setting.
         Should be a short single line.
         """
-        return self._format_data(self.parent_id, self.data, **self.kwargs)
+        return self._format_data(self.parent_id, self.data, **self.kwargs) or self.notset_str
 
     @property
     def input_formatted(self) -> str:

@@ -23,22 +23,24 @@ class RankSettings(SettingGroup):
         _enum = RankType
         _default = RankType.VOICE
         _outputs = {
-            RankType.VOICE: '`Voice`',
-            RankType.XP: '`Exp`',
-            RankType.MESSAGE: '`Messages`'
+            RankType.VOICE: _p('guildset:rank_type|output:voice', '`Voice`'),
+            RankType.XP: _p('guildset:rank_type|output:xp', '`Exp`'),
+            RankType.MESSAGE: _p('guildset:rank_type|output:message', '`Messages`'),
         }
-        _inputs = {
-            'voice': RankType.VOICE,
-            'study': RankType.VOICE,
-            'text': RankType.MESSAGE,
-            'message': RankType.MESSAGE,
-            'messages': RankType.MESSAGE,
-            'xp': RankType.XP,
-            'exp': RankType.XP
+        _input_formatted = {
+            RankType.VOICE: _p('guildset:rank_type|input_format:voice', 'Voice'),
+            RankType.XP: _p('guildset:rank_type|input_format:xp', 'Exp'),
+            RankType.MESSAGE: _p('guildset:rank_type|input_format:message', 'Messages'),
+        }
+        _input_patterns = {
+            RankType.VOICE: _p('guildset:rank_type|input_pattern:voice', 'voice|study'),
+            RankType.MESSAGE: _p('guildset:rank_type|input_pattern:voice', 'text|message|messages'),
+            RankType.XP: _p('guildset:rank_type|input_pattern:xp', 'xp|exp|experience'),
         }
 
         setting_id = 'rank_type'
         _event = 'guildset_rank_type'
+        _set_cmd = 'configure ranks'
 
         _display_name = _p('guildset:rank_type', "rank_type")
         _desc = _p(
@@ -51,6 +53,10 @@ class RankSettings(SettingGroup):
             "`Voice` is the number of hours active in tracked voice channels, "
             "`Exp` is a measure of message activity, and "
             "`Message` is a simple count of messages sent."
+        )
+        _accepts = _p(
+            'guildset:rank_type|accepts',
+            "Voice/Exp/Messages"
         )
 
         _model = CoreData.Guild
@@ -76,6 +82,15 @@ class RankSettings(SettingGroup):
                 ))
             return resp
 
+        @property
+        def set_str(self) -> str:
+            cmdstr = super().set_str
+            t = ctx_translator.get().t
+            return t(_p(
+                'guildset:rank_channel|set_using',
+                "{cmd} or option menu below."
+            )).format(cmd=cmdstr)
+
     class RankChannel(ModelData, ChannelSetting):
         """
         Channel to send Rank notifications.
@@ -83,6 +98,7 @@ class RankSettings(SettingGroup):
         If DMRanks is set, this will only be used when the target user has disabled DM notifications.
         """
         setting_id = 'rank_channel'
+        _set_cmd = 'configure ranks'
 
         _display_name = _p('guildset:rank_channel', "rank_channel")
         _desc = _p(
@@ -95,14 +111,44 @@ class RankSettings(SettingGroup):
             "If `dm_ranks` is enabled, this channel will only be used when the user has opted not to receive "
             "DM notifications, or is otherwise unreachable."
         )
+        _accepts = _p(
+            'guildset:rank_channel|accepts',
+            "Rank notification channel name or id."
+        )
         _model = CoreData.Guild
         _column = CoreData.Guild.rank_channel.name
+
+        @property
+        def update_message(self) -> str:
+            t = ctx_translator.get().t
+            value = self.value
+            if value is not None:
+                resp = t(_p(
+                    'guildset:rank_channel|set_response|set',
+                    "Rank update messages will be sent to {channel}."
+                )).format(channel=value.mention)
+            else:
+                resp = t(_p(
+                    'guildset:rank_channel|set_response|unset',
+                    "Rank update messages will be ignored or sent via DM (if `dm_ranks` is enabled)."
+                ))
+            return resp
+
+        @property
+        def set_str(self) -> str:
+            cmdstr = super().set_str
+            t = ctx_translator.get().t
+            return t(_p(
+                'guildset:rank_channel|set_using',
+                "{cmd} or channel selector below."
+            )).format(cmd=cmdstr)
 
     class DMRanks(ModelData, BoolSetting):
         """
         Whether to DM rank notifications.
         """
         setting_id = 'dm_ranks'
+        _set_cmd = 'configure ranks'
 
         _display_name = _p('guildset:dm_ranks', "dm_ranks")
         _desc = _p(
@@ -114,6 +160,21 @@ class RankSettings(SettingGroup):
             "If enabled, congratulatory messages for rank advancement will be direct messaged to the user, "
             "instead of being sent to the configured `rank_channel`."
         )
+        _default = True
 
         _model = CoreData.Guild
         _column = CoreData.Guild.dm_ranks.name
+
+        @property
+        def update_message(self):
+            t = ctx_translator.get().t
+            if self.data:
+                return t(_p(
+                    'guildset:dm_ranks|response:true',
+                    "I will direct message members upon rank advancement."
+                ))
+            else:
+                return t(_p(
+                    'guildset:dm_ranks|response:false',
+                    "I will never direct message members upon rank advancement."
+                ))

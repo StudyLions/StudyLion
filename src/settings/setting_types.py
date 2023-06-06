@@ -14,7 +14,7 @@ from dateutil.parser import parse, ParserError
 from meta.context import ctx_bot
 from meta.errors import UserInputError
 from utils.lib import strfdur, parse_duration
-from babel import ctx_translator
+from babel.translator import ctx_translator, LazyStr
 
 from .base import ParentID
 from .ui import InteractiveSetting, SettingWidget
@@ -45,7 +45,7 @@ class StringSetting(InteractiveSetting[ParentID, str, str]):
         Default: True
     """
 
-    _accepts = _p('settype:string|accepts', "Any text")
+    _accepts = _p('settype:string|accepts', "Any Text")
 
     _maxlen: int = 4000
     _quote: bool = True
@@ -123,7 +123,7 @@ class ChannelSetting(Generic[ParentID, CT], InteractiveSetting[ParentID, int, CT
         List of guild channel types to accept.
         Default: []
     """
-    _accepts = _p('settype:channel|accepts', "Enter a channel name or id")
+    _accepts = _p('settype:channel|accepts', "A channel name or id")
 
     _selector_placeholder = "Select a Channel"
     channel_types: list[discord.ChannelType] = []
@@ -151,8 +151,26 @@ class ChannelSetting(Generic[ParentID, CT], InteractiveSetting[ParentID, int, CT
 
     @classmethod
     async def _parse_string(cls, parent_id, string: str, **kwargs):
-        # TODO: Waiting on seeker utils.
-        ...
+        if not string or string.lower() == 'none':
+            return None
+
+        t = ctx_translator.get().t
+        bot = ctx_bot.get()
+        channel = None
+        guild = bot.get_guild(parent_id)
+
+        if string.isdigit():
+            maybe_id = int(string)
+            channel = guild.get_channel(maybe_id)
+        else:
+            channel = next((channel for channel in guild.channels if channel.name.lower() == string.lower()), None)
+
+        if channel is None:
+            raise UserInputError(t(_p(
+                'settype:channel|parse|error:not_found',
+                "Channel `{string}` could not be found in this guild!".format(string=string)
+            )))
+        return channel.id
 
     @classmethod
     def _format_data(cls, parent_id, data, **kwargs):
@@ -161,25 +179,11 @@ class ChannelSetting(Generic[ParentID, CT], InteractiveSetting[ParentID, int, CT
         """
         if data:
             return "<#{}>".format(data)
-        else:
-            return "Not Set"
 
     @property
     def input_formatted(self) -> str:
-        """
-        Returns the channel name if possible, otherwise the id.
-        """
-        if self._data is not None:
-            channel = self.value
-            if channel is not None:
-                if isinstance(channel, discord.Object):
-                    return str(channel.id)
-                else:
-                    return f"#{channel.name}"
-            else:
-                return ""
-        else:
-            return ""
+        data = self._data
+        return str(data) if data else ''
 
     class Widget(SettingWidget['ChannelSetting']):
         def update_children(self):
@@ -236,7 +240,7 @@ class MessageablelSetting(ChannelSetting):
             bot = ctx_bot.get()
             channel = bot.get_channel(data)
             if channel is None:
-                channel = ctx.bot.get_partial_messageable(data, guild_id=parent_id)
+                channel = bot.get_partial_messageable(data, guild_id=parent_id)
         return channel
 
 
@@ -250,7 +254,7 @@ class RoleSetting(InteractiveSetting[ParentID, int, Union[discord.Role, discord.
         Placeholder to use in the Widget selector.
         Default: "Select a Role"
     """
-    _accepts = _p('settype:role|accepts', "Enter a role name or id")
+    _accepts = _p('settype:role|accepts', "A role name or id")
 
     _selector_placeholder = "Select a Role"
 
@@ -291,8 +295,26 @@ class RoleSetting(InteractiveSetting[ParentID, int, Union[discord.Role, discord.
 
     @classmethod
     async def _parse_string(cls, parent_id, string: str, **kwargs):
-        # TODO: Waiting on seeker utils.
-        ...
+        if not string or string.lower() == 'none':
+            return None
+
+        t = ctx_translator.get().t
+        bot = ctx_bot.get()
+        role = None
+        guild = bot.get_guild(parent_id)
+
+        if string.isdigit():
+            maybe_id = int(string)
+            role = guild.get_role(maybe_id)
+        else:
+            role = next((role for role in guild.roles if role.name.lower() == string.lower()), None)
+
+        if role is None:
+            raise UserInputError(t(_p(
+                'settype:role|parse|error:not_found',
+                "Role `{string}` could not be found in this guild!".format(string=string)
+            )))
+        return role.id
 
     @classmethod
     def _format_data(cls, parent_id, data, **kwargs):
@@ -306,20 +328,8 @@ class RoleSetting(InteractiveSetting[ParentID, int, Union[discord.Role, discord.
 
     @property
     def input_formatted(self) -> str:
-        """
-        Returns the role name if possible, otherwise the id.
-        """
-        if self._data is not None:
-            role = self.value
-            if role is not None:
-                if isinstance(role, discord.Object):
-                    return str(role.id)
-                else:
-                    return f"@{role.name}"
-            else:
-                return ""
-        else:
-            return ""
+        data = self._data
+        return str(data) if data else ''
 
     class Widget(SettingWidget['RoleSetting']):
         def update_children(self):
@@ -367,19 +377,39 @@ class BoolSetting(InteractiveSetting[ParentID, bool, bool]):
         Default: {True: "On", False: "Off", None: "Not Set"}
     """
 
-    _accepts = _p('settype:bool|accepts', "True/False")
+    _accepts = _p('settype:bool|accepts', "Enabled/Disabled")
 
     # Values that are accepted as truthy and falsey by the parser
-    _truthy = {"yes", "true", "on", "enable", "enabled"}
-    _falsey = {"no", "false", "off", "disable", "disabled"}
+    _truthy = _p(
+        'settype:bool|parse:truthy_values',
+        "enabled|yes|true|on|enable|1"
+    )
+    _falsey = _p(
+        'settype:bool|parse:falsey_values',
+        'disabled|no|false|off|disable|0'
+    )
 
     # The user-friendly output strings to use for each value
-    _outputs = {True: "On", False: "Off", None: "Not Set"}
+    _outputs = {
+        True: _p('settype:bool|output:true', "On"),
+        False: _p('settype:bool|output:false', "Off"),
+        None: _p('settype:bool|output:none', "Not Set"),
+    }
 
     # Button labels
     _true_button_args: dict[str, Any] = {}
     _false_button_args: dict[str, Any] = {}
     _reset_button_args: dict[str, Any] = {}
+
+    @classmethod
+    def truthy_values(cls) -> set:
+        t = ctx_translator.get().t
+        return t(cls._truthy).lower().split('|')
+
+    @classmethod
+    def falsey_values(cls) -> set:
+        t = ctx_translator.get().t
+        return t(cls._falsey).lower().split('|')
 
     @property
     def input_formatted(self) -> str:
@@ -387,13 +417,14 @@ class BoolSetting(InteractiveSetting[ParentID, bool, bool]):
         Return the current data string.
         """
         if self._data is not None:
-            output = self._outputs[self._data]
-            set = (self._falsey, self._truthy)[self._data]
+            t = ctx_translator.get().t
+            output = t(self._outputs[self._data])
+            input_set = self.truthy_values() if self._data else self.falsey_values()
 
-            if output.lower() in set:
+            if output.lower() in input_set:
                 return output
             else:
-                return next(iter(set))
+                return next(iter(input_set))
         else:
             return ""
 
@@ -419,9 +450,9 @@ class BoolSetting(InteractiveSetting[ParentID, bool, bool]):
         _userstr = string.lower()
         if not _userstr or _userstr == "none":
             return None
-        if _userstr in cls._truthy:
+        if _userstr in cls.truthy_values():
             return True
-        elif _userstr in cls._falsey:
+        elif _userstr in cls.falsey_values():
             return False
         else:
             raise UserInputError("Could not parse `{}` as a boolean.".format(string))
@@ -431,7 +462,8 @@ class BoolSetting(InteractiveSetting[ParentID, bool, bool]):
         """
         Use provided _outputs dictionary to format data.
         """
-        return cls._outputs[data]
+        t = ctx_translator.get().t
+        return t(cls._outputs[data])
 
     class Widget(SettingWidget['BoolSetting']):
         def update_children(self):
@@ -676,8 +708,7 @@ class TimezoneSetting(InteractiveSetting[ParentID, str, TZT]):
     # TODO Definitely need autocomplete here
     _accepts = _p(
         'settype:timezone|accepts',
-        "A timezone name from [this list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) "
-        "(e.g. `Europe/London`)."
+        "A timezone name from the 'tz database' (e.g. 'Europe/London')"
     )
 
     @property
@@ -739,6 +770,23 @@ class TimezoneSetting(InteractiveSetting[ParentID, str, TZT]):
                 ) from None
         return str(timezone)
 
+    def _desc_table(self) -> list[str]:
+        translator = ctx_translator.get()
+        t = translator.t
+
+        lines = super()._desc_table()
+        lines.append((
+            t(_p(
+                'settype:timezone|summary_table|field:supported|key',
+                "Supported"
+            )),
+            t(_p(
+                'settype:timezone|summary_table|field:supported|value',
+                "Any timezone from the [tz database]({link})."
+            )).format(link="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones")
+        ))
+        return lines
+
     @classmethod
     async def parse_acmpl(cls, interaction: discord.Interaction, partial: str):
         bot = interaction.client
@@ -794,7 +842,7 @@ class TimestampSetting(InteractiveSetting[ParentID, str, dt.datetime]):
     """
     _accepts = _p(
         'settype:timestamp|accepts',
-        "A timestamp in the form yyyy-mm-dd HH:MM"
+        "A timestamp in the form YYYY-MM-DD HH:MM"
     )
 
     @classmethod
@@ -812,22 +860,24 @@ class TimestampSetting(InteractiveSetting[ParentID, str, dt.datetime]):
             ts = None
         else:
             local_tz = await cls._timezone_from_id(parent_id, **kwargs)
-            default = dt.datetime.now(tz=local_tz).replace(
+            now = dt.datetime.now(tz=local_tz)
+            default = now.replace(
                 hour=0, minute=0,
                 second=0, microsecond=0
             )
             try:
                 ts = parse(string, fuzzy=True, default=default)
             except ParserError:
-                # TOLOCALISE:
-                raise UserInputError("Invalid date string passed")
+                t = ctx_translator.get().t
+                raise UserInputError(t(_p(
+                    'settype:timestamp|parse|error:invalid',
+                    "Could not parse `{provided}` as a timestamp. Please use `YYYY-MM-DD HH:MM` format."
+                )))
         return ts
 
     @classmethod
     def _format_data(cls, parent_id: ParentID, data, **kwargs):
-        if data is None:
-            return "Not Set"
-        else:
+        if data is not None:
             return "<t:{}>".format(int(data.timestamp()))
 
     @classmethod
@@ -838,6 +888,41 @@ class TimestampSetting(InteractiveSetting[ParentID, str, dt.datetime]):
         Should generally be overriden for interactive settings.
         """
         return pytz.UTC
+
+    @property
+    def input_formatted(self) -> str:
+        if self._data:
+            formatted = self._data.strftime('%Y-%M-%d %H:%M')
+        else:
+            formatted = ''
+        return formatted
+
+
+class RawSetting(InteractiveSetting[ParentID, Any, Any]):
+    """
+    Basic implementation of an interactive setting with identical value and data type.
+    """
+    _accepts = _p('settype:raw|accepts', "Anything")
+
+    @property
+    def input_formatted(self) -> str:
+        return str(self._data) if self._data is not None else ''
+
+    @classmethod
+    def _data_from_value(cls, parent_id, value, **kwargs):
+        return value
+
+    @classmethod
+    def _data_to_value(cls, parent_id, data, **kwargs):
+        return data
+
+    @classmethod
+    async def _parse_string(cls, parent_id: ParentID, string: str, **kwargs):
+        return string
+
+    @classmethod
+    def _format_data(cls, parent_id: ParentID, data, **kwargs):
+        return str(data) if data is not None else None
 
 
 ET = TypeVar('ET', bound='Enum')
@@ -866,8 +951,9 @@ class EnumSetting(InteractiveSetting[ParentID, ET, ET]):
     """
 
     _enum: Type[ET]
-    _outputs: dict[ET, str]
-    _inputs: dict[str, ET]
+    _outputs: dict[ET, LazyStr]
+    _input_patterns: dict[ET: LazyStr]
+    _input_formatted: dict[ET: LazyStr]
 
     _accepts = _p('settype:enum|accepts', "A valid option.")
 
@@ -877,8 +963,9 @@ class EnumSetting(InteractiveSetting[ParentID, ET, ET]):
         Return the output string for the current data.
         This assumes the output strings are accepted as inputs!
         """
+        t = ctx_translator.get().t
         if self._data is not None:
-            return self._outputs[self._data]
+            return t(self._input_formatted[self._data])
         else:
             return ""
 
@@ -901,23 +988,39 @@ class EnumSetting(InteractiveSetting[ParentID, ET, ET]):
         """
         Parse the user input into an enum item.
         """
-        # TODO: Another selection case.
         if not string:
             return None
+
         string = string.lower()
-        if string not in cls._inputs:
-            raise UserInputError("Invalid choice!")
-        return cls._inputs[string]
+        t = ctx_translator.get().t
+
+        found = None
+        for enumitem, pattern in cls._input_patterns.items():
+            item_keys = set(t(pattern).lower().split('|'))
+            if string in item_keys:
+                found = enumitem
+                break
+
+        if not found:
+            raise UserInputError(
+                t(_p(
+                    'settype:enum|parse|error:not_found',
+                    "`{provided}` is not a valid option!"
+                )).format(provided=string)
+            )
+
+        return found
 
     @classmethod
     def _format_data(cls, parent_id: ParentID, data, **kwargs):
         """
         Format the enum using the provided output map.
         """
+        t = ctx_translator.get().t
         if data is not None:
             if data not in cls._outputs:
                 raise ValueError(f"Enum item {data} unmapped.")
-            return cls._outputs[data]
+            return t(cls._outputs[data])
 
 
 class DurationSetting(InteractiveSetting[ParentID, int, int]):
@@ -1110,9 +1213,7 @@ class ListSetting:
         """
         Format the list by adding `,` between each formatted item
         """
-        if not data:
-            return 'Not Set'
-        else:
+        if data:
             formatted_items = []
             for item in data:
                 formatted_item = cls._setting._format_data(id, item)
@@ -1142,8 +1243,7 @@ class ChannelListSetting(ListSetting, InteractiveSetting):
     """
     _accepts = _p(
         'settype:channel_list|accepts',
-        "Comma separated list of channel mentions/ids/names. Use `None` to unset. "
-        "Write `--add` or `--remove` to add or remove channels."
+        "Comma separated list of channel ids."
     )
     _setting = ChannelSetting
 
@@ -1154,8 +1254,7 @@ class RoleListSetting(ListSetting, InteractiveSetting):
     """
     _accepts = _p(
         'settype:role_list|accepts',
-        "Comma separated list of role mentions/ids/names. Use `None` to unset. "
-        "Write `--add` or `--remove` to add or remove roles."
+        'Comma separated list of role ids.'
     )
     _setting = RoleSetting
 
@@ -1171,8 +1270,7 @@ class StringListSetting(InteractiveSetting, ListSetting):
     """
     _accepts = _p(
         'settype:stringlist|accepts',
-        "Comma separated list of strings. Use `None` to unset. "
-        "Write `--add` or `--remove` to add or remove strings."
+        'Comma separated strings.'
     )
     _setting = StringSetting
 
@@ -1183,9 +1281,7 @@ class GuildIDListSetting(InteractiveSetting, ListSetting):
     """
     _accepts = _p(
         'settype:guildidlist|accepts',
-        "Comma separated list of guild ids. Use `None` to unset. "
-        "Write `--add` or `--remove` to add or remove ids. "
-        "The provided ids are not verified in any way."
+        'Comma separated list of guild ids.'
     )
 
     _setting = GuildIDSetting

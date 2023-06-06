@@ -138,7 +138,7 @@ class MessageArgs:
 def tabulate(
     *fields: tuple[str, str],
     row_format: str = "`{invis}{key:<{pad}}{colon}`\t{value}",
-    sub_format: str = "`{invis:<{pad}}{invis}`\t{value}",
+    sub_format: str = "`{invis:<{pad}}{colon}`\t{value}",
     colon: str = ':',
     invis: str = "​",
     **args
@@ -189,6 +189,7 @@ def tabulate(
                 sub_line = sub_format.format(
                     invis=invis,
                     pad=max_len + len(colon),
+                    colon=colon,
                     value=line,
                     **args
                 )

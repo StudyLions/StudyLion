@@ -28,6 +28,7 @@ class TextTrackerSettings(SettingGroup):
     """
     class XPPerPeriod(ModelData, IntegerSetting):
         setting_id = 'xp_per_period'
+        _set_cmd = 'configure message_exp'
 
         _display_name = _p('guildset:xp_per_period', "xp_per_5min")
         _desc = _p(
@@ -38,6 +39,10 @@ class TextTrackerSettings(SettingGroup):
             'guildset:xp_per_period|long_desc',
             "Amount of message XP to give members for each 5 minute period in which they are active (send a message). "
             "Note that this XP is only given *once* per period."
+        )
+        _accepts = _p(
+            'guildset:xp_per_period|accepts',
+            "Number of message XP to reward per 5 minute active period."
         )
         _default = 101  # TODO: Make a dynamic default based on the global setting?
 
@@ -55,6 +60,7 @@ class TextTrackerSettings(SettingGroup):
 
     class WordXP(ModelData, IntegerSetting):
         setting_id = 'word_xp'
+        _set_cmd = 'configure message_exp'
 
         _display_name = _p('guildset:word_xp', "xp_per_100words")
         _desc = _p(
@@ -65,6 +71,10 @@ class TextTrackerSettings(SettingGroup):
             'guildset:word_xp|long_desc',
             "Amount of message XP to be given (additionally to the XP per period) for each hundred words. "
             "Useful for rewarding communication."
+        )
+        _accepts = _p(
+            'guildset:word_xp|accepts',
+            "Number of XP to reward per hundred words sent."
         )
         _default = 50
 
@@ -92,6 +102,14 @@ class TextTrackerSettings(SettingGroup):
             "Messages sent in these channels will not count towards a member's message XP. "
             "If a category is selected, then all channels under the category will also be untracked."
         )
+        _accepts = _p(
+            'guildset:untracked_text_channels|accepts',
+            "Comma separated list of untracked text channel names or ids."
+        )
+        _notset_str = _p(
+            'guildset:untracked_text_channels|notset',
+            "Not Set (all text channels will be tracked.)"
+        )
 
         _default = None
         _table_interface = TextTrackerData.untracked_channels
@@ -100,6 +118,29 @@ class TextTrackerSettings(SettingGroup):
         _order_column = 'channelid'
 
         _cache = {}
+
+        @property
+        def update_message(self):
+            t = ctx_translator.get().t
+            if self.data:
+                resp = t(_p(
+                    'guildset:untracked_text_channels|set_response|set',
+                    "Messages in or under the following channels will be ignored: {channels}"
+                )).format(channels=self.formatted)
+            else:
+                resp = t(_p(
+                    'guildset:untracked_text_channels|set_response|notset',
+                    "Message XP will now be tracked in every channel."
+                ))
+            return resp
+
+        @property
+        def set_str(self) -> str:
+            t = ctx_translator.get().t
+            return t(_p(
+                'guildset:untracked_text_channels|set_using',
+                "Channel selector below"
+            ))
 
         @classmethod
         @log_wrap(action='Cache Untracked Text Channels')
@@ -127,6 +168,7 @@ class TextTrackerGlobalSettings(SettingGroup):
     """
     class XPPerPeriod(ModelData, IntegerSetting):
         setting_id = 'xp_per_period'
+        _set_cmd = 'leo configure experience_rates'
 
         _display_name = _p('botset:xp_per_period', "xp_per_5min")
         _desc = _p(
@@ -138,6 +180,10 @@ class TextTrackerGlobalSettings(SettingGroup):
             "Amount of global message XP to give members "
             "for each 5 minute period in which they are active (send a message). "
             "Note that this XP is only given *once* per period."
+        )
+        _accepts = _p(
+            'botset:xp_per_period|accepts',
+            "Number of message XP to reward per 5 minute active period."
         )
         _default = 101
 
@@ -155,6 +201,7 @@ class TextTrackerGlobalSettings(SettingGroup):
 
     class WordXP(ModelData, IntegerSetting):
         setting_id = 'word_xp'
+        _set_cmd = 'leo configure experience_rates'
 
         _display_name = _p('botset:word_xp', "xp_per_100words")
         _desc = _p(
@@ -165,6 +212,10 @@ class TextTrackerGlobalSettings(SettingGroup):
             'botset:word_xp|long_desc',
             "Amount of global message XP to be given (additionally to the XP per period) for each hundred words. "
             "Useful for rewarding communication."
+        )
+        _accepts = _p(
+            'botset:word_xp|accepts',
+            "Number of XP to reward per hundred words sent."
         )
         _default = 50
 

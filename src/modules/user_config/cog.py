@@ -33,6 +33,7 @@ class UserConfigSettings(SettingGroup):
         and several other components such as reminder times.
         """
         setting_id = 'timezone'
+        _set_cmd = 'my timezone'
 
         _display_name = _p('userset:timezone', "timezone")
         _desc = _p(

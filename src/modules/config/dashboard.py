@@ -141,7 +141,10 @@ class GuildDashboard(BasePager):
         for i, page in enumerate(self.pages):
             for j, section in enumerate(page):
                 option = SelectOption(
-                    label=t(section.section_name),
+                    label=t(section.section_name).format(
+                        bot=self.bot,
+                        commands=self.bot.core.mention_cache
+                    ),
                     value=str(i * 10 + j)
                 )
                 options.append(option)
