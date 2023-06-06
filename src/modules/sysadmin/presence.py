@@ -21,7 +21,7 @@ from settings.data import ModelData
 from settings.setting_types import EnumSetting, StringSetting
 from settings.groups import SettingGroup
 
-from wards import sys_admin
+from wards import sys_admin_ward
 
 from . import babel
 
@@ -376,7 +376,7 @@ class PresenceCtrl(LionCog):
         name="presence",
         description="Globally set the bot status and activity."
     )
-    @cmds.check(sys_admin)
+    @sys_admin_ward
     @appcmds.describe(
         status="Online status (online | idle | dnd | offline)",
         type="Activity type (watching | listening | playing | streaming)",

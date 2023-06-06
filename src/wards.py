@@ -1,47 +1,98 @@
+from typing import Optional
 import discord
+from discord.ext.commands.errors import CheckFailure
+import discord.ext.commands as cmds
 
-from meta.LionContext import LionContext
-from meta import conf
+from babel.translator import LocalBabel
+
+from meta import conf, LionContext, LionBot
+
+babel = LocalBabel('wards')
+_p = babel._p
 
 
-# Interaction Wards
-
-async def i_sys_admin(interaction: discord.Interaction) -> bool:
+# Raw checks, return True/False depending on whether they pass
+async def sys_admin(bot: LionBot, userid: int):
     """
     Checks whether the context author is listed in the configuration file as a bot admin.
     """
-    admins = conf.bot.getintlist('admins')
-    return interaction.user.id in admins
+    admins = bot.config.bot.getintlist('admins')
+    return userid in admins
 
 
-async def i_high_management(interaction: discord.Interaction) -> bool:
-    if await i_sys_admin(interaction):
+async def high_management(bot: LionBot, member: discord.Member):
+    if await sys_admin(bot, member.id):
         return True
+    return member.guild_permissions.administrator
+
+
+async def low_management(bot: LionBot, member: discord.Member):
+    if await high_management(bot, member):
+        return True
+    return member.guild_permissions.manage_guild
+
+
+# Interaction Wards, also return True/False
+
+async def sys_admin_iward(interaction: discord.Interaction) -> bool:
+    return await sys_admin(interaction.client, interaction.user.id)
+
+
+async def high_management_iward(interaction: discord.Interaction) -> bool:
     if not interaction.guild:
         return False
-    return interaction.user.guild_permissions.administrator
+    return await high_management(interaction.client, interaction.user)
 
 
-async def i_low_management(interaction: discord.Interaction) -> bool:
-    if await i_high_management(interaction):
-        return True
+async def low_management_iward(interaction: discord.Interaction) -> bool:
     if not interaction.guild:
         return False
-    return interaction.user.guild_permissions.manage_guild
+    return await low_management(interaction.client, interaction.user)
 
 
-async def sys_admin(ctx: LionContext) -> bool:
-    admins = ctx.bot.config.bot.getintlist('admins')
-    return ctx.author.id in admins
+# Command Wards, raise CheckFailure with localised error message
 
-
-async def high_management(ctx: LionContext) -> bool:
-    if await sys_admin(ctx):
+@cmds.check
+async def sys_admin_ward(ctx: LionContext) -> bool:
+    passed = await sys_admin(ctx.bot, ctx.author.id)
+    if passed:
         return True
+    else:
+        raise CheckFailure(
+            ctx.bot.translator.t(_p(
+                'ward:sys_admin|failed',
+                "You must be a bot owner to do this!"
+            ))
+        )
+
+
+@cmds.check
+async def high_management_ward(ctx: LionContext) -> bool:
     if not ctx.guild:
         return False
-    return ctx.author.guild_permissions.administrator
+    passed = await high_management(ctx.bot, ctx.author)
+    if passed:
+        return True
+    else:
+        raise CheckFailure(
+            ctx.bot.translator.t(_p(
+                'ward:high_management|failed',
+                "You must have the `ADMINISTRATOR` permission in this server to do this!"
+            ))
+        )
 
 
-async def low_management(ctx: LionContext) -> bool:
-    return (await high_management(ctx)) or ctx.author.guild_permissions.manage_guild
+@cmds.check
+async def low_management_ward(ctx: LionContext) -> bool:
+    if not ctx.guild:
+        return False
+    passed = await low_management(ctx.bot, ctx.author)
+    if passed:
+        return True
+    else:
+        raise CheckFailure(
+            ctx.bot.translator.t(_p(
+                'ward:low_management|failed',
+                "You must have the `MANAGE_GUILD` permission in this server to do this!"
+            ))
+        )

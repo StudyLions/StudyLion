@@ -12,7 +12,7 @@ from utils.lib import utc_now, error_embed
 from utils.ui import ChoicedEnum, Transformed
 
 from data import Condition, NULL
-from wards import low_management
+from wards import low_management_ward
 
 from . import babel, logger
 from .data import TasklistData
@@ -712,7 +712,8 @@ class TasklistCog(LionCog):
         reward=TasklistSettings.task_reward._desc,
         reward_limit=TasklistSettings.task_reward_limit._desc
     )
-    @cmds.check(low_management)
+    @appcmds.default_permissions(manage_guild=True)
+    @low_management_ward
     async def configure_tasklist_cmd(self, ctx: LionContext,
                                      reward: Optional[int] = None,
                                      reward_limit: Optional[int] = None):

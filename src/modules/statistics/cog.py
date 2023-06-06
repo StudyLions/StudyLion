@@ -9,7 +9,7 @@ from discord.ui.button import ButtonStyle
 from meta import LionBot, LionCog, LionContext
 from utils.lib import error_embed
 from utils.ui import LeoUI, AButton
-from wards import low_management
+from wards import low_management_ward
 
 from . import babel
 from .data import StatsData
@@ -97,7 +97,8 @@ class StatsCog(LionCog):
             "Time from which to start counting activity for rank badges and season leadeboards."
         )
     )
-    @cmds.check(low_management)
+    @appcmds.default_permissions(manage_guild=True)
+    @low_management_ward
     async def configure_statistics_cmd(self, ctx: LionContext,
                                        season_start: Optional[str] = None):
         t = self.bot.translator.t

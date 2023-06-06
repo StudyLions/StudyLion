@@ -11,7 +11,7 @@ from data import ORDER
 
 from utils.ui import Confirm, Pager
 from utils.lib import error_embed, MessageArgs, utc_now
-from wards import low_management
+from wards import low_management_ward
 from constants import MAX_COINS
 
 from . import babel, logger
@@ -801,7 +801,8 @@ class Economy(LionCog):
             appcmds.Choice(name=EconomySettings.AllowTransfers._outputs[False], value=0),
         ]
     )
-    @cmds.check(low_management)
+    @appcmds.default_permissions(manage_guild=True)
+    @low_management_ward
     async def configure_economy(self, ctx: LionContext,
                                 allow_transfers: Optional[appcmds.Choice[int]] = None,
                                 coins_per_xp: Optional[appcmds.Range[int, 0, 2**15]] = None):

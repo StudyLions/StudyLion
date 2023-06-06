@@ -6,7 +6,8 @@ from discord.ui.button import button, Button, ButtonStyle
 
 from meta import conf, LionBot
 from meta.errors import UserInputError
-from wards import i_low_management
+from utils.lib import error_embed
+from wards import low_management_iward
 from babel.translator import ctx_translator, LazyStr
 
 from ..lib import tabulate
@@ -55,7 +56,20 @@ class ConfigUI(LeoUI):
         """
         Default requirement for a Config UI is low management (i.e. manage_guild permissions).
         """
-        return await i_low_management(interaction)
+        passed = await low_management_iward(interaction)
+        if passed:
+            return True
+        else:
+            await interaction.response.send_message(
+                embed=error_embed(
+                    self.bot.translator.t(_p(
+                        'ui:configui|check|not_permitted',
+                        "You have insufficient server permissions to use this UI!"
+                    ))
+                ),
+                ephemeral=True
+            )
+            return False
 
     async def cleanup(self):
         self._listening.pop(self.channelid, None)

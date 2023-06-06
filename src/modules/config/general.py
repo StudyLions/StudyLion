@@ -13,7 +13,7 @@ from discord import app_commands as appcmds
 
 from meta import LionBot, LionCog, LionContext, ctx_bot
 from meta.errors import UserInputError
-from wards import low_management
+from wards import low_management_ward
 from settings import ModelData
 from settings.setting_types import TimezoneSetting
 from settings.groups import SettingGroup
@@ -101,7 +101,8 @@ class GeneralSettingsCog(LionCog):
         timezone=GeneralSettings.Timezone._desc
     )
     @appcmds.guild_only()
-    @cmds.check(low_management)
+    @appcmds.default_permissions(manage_guild=True)
+    @low_management_ward
     async def cmd_configure_general(self, ctx: LionContext,
                                     timezone: Optional[str] = None):
         t = self.bot.translator.t

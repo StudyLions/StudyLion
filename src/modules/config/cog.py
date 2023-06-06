@@ -25,6 +25,7 @@ class DashCog(LionCog):
         description="At-a-glance view of the server's configuration."
     )
     @appcmds.guild_only
+    @appcmds.default_permissions(manage_guild=True)
     async def dashboard_cmd(self, ctx: LionContext):
         ui = GuildDashboard(self.bot, ctx.guild, ctx.author.id, ctx.channel.id)
         await ui.run(ctx.interaction)

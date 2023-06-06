@@ -16,7 +16,7 @@ from utils.ui import Confirm
 from constants import MAX_COINS
 from core.data import CoreData
 
-from wards import low_management
+from wards import low_management_ward
 
 from . import babel, logger
 from .data import RoomData
@@ -888,7 +888,8 @@ class RoomCog(LionCog):
     @appcmds.describe(
         **{setting.setting_id: setting._desc for setting in RoomSettings.model_settings}
     )
-    @cmds.check(low_management)
+    @appcmds.default_permissions(manage_guild=True)
+    @low_management_ward
     async def configure_rooms_cmd(self, ctx: LionContext,
                                   rooms_category: Optional[discord.CategoryChannel] = None,
                                   rooms_price: Optional[Range[int, 0, MAX_COINS]] = None,

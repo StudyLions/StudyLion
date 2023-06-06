@@ -11,7 +11,7 @@ from meta.logger import log_wrap
 from meta.sharding import THIS_SHARD
 from utils.lib import utc_now
 
-from wards import low_management
+from wards import low_management_ward
 
 from . import babel, logger
 from .data import TimerData
@@ -807,7 +807,8 @@ class TimerCog(LionCog):
     @appcmds.describe(
         pomodoro_channel=TimerSettings.PomodoroChannel._desc
     )
-    @cmds.check(low_management)
+    @appcmds.default_permissions(manage_guild=True)
+    @low_management_ward
     async def configure_pomodoro_command(self, ctx: LionContext,
                                          pomodoro_channel: Optional[discord.VoiceChannel | discord.TextChannel] = None):
         t = self.bot.translator.t

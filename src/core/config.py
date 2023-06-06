@@ -28,6 +28,7 @@ class ConfigCog(LionCog):
         name=_p('group:configure', "configure"),
     )
     @appcmds.guild_only
+    @appcmds.default_permissions(manage_guild=True)
     async def configure_group(self, ctx: LionContext):
         """
         Bare command group, has no function.

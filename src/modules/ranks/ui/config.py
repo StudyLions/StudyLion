@@ -5,11 +5,11 @@ from discord.ui.select import select, ChannelSelect, Select, SelectOption
 from discord.ui.button import button, Button, ButtonStyle
 
 from meta import LionBot
-from wards import i_high_management
+from wards import high_management_iward
 from core.data import RankType
 
 from utils.ui import ConfigUI, DashboardSection
-from utils.lib import MessageArgs
+from utils.lib import MessageArgs, error_embed
 
 from ..settings import RankSettings
 from .. import babel, logger
@@ -31,7 +31,20 @@ class RankConfigUI(ConfigUI):
         super().__init__(bot, guildid, channelid, **kwargs)
 
     async def interaction_check(self, interaction: discord.Interaction) -> bool:
-        return await i_high_management(interaction)
+        passed = await high_management_iward(interaction)
+        if passed:
+            return True
+        else:
+            await interaction.response.send_message(
+                embed=error_embed(
+                    self.bot.translator.t(_p(
+                        'ui:rankconfigui|check|not_permitted',
+                        "You have insufficient server permissions to use this UI!"
+                    ))
+                ),
+                ephemeral=True
+            )
+            return False
 
     # ----- UI Components -----
 

@@ -14,7 +14,7 @@ from meta.sharding import THIS_SHARD
 from utils.lib import utc_now, error_embed
 from core.lion_guild import VoiceMode
 
-from wards import low_management
+from wards import low_management_ward
 
 from . import babel, logger
 from .data import VoiceTrackerData
@@ -625,7 +625,8 @@ class VoiceTrackerCog(LionCog):
         hourly_live_bonus=VoiceTrackerSettings.HourlyLiveBonus._desc,
         daily_voice_cap=VoiceTrackerSettings.DailyVoiceCap._desc,
     )
-    @cmds.check(low_management)
+    @appcmds.default_permissions(manage_guild=True)
+    @low_management_ward
     async def configure_voice_tracking_cmd(self, ctx: LionContext,
                                            hourly_reward: Optional[int] = None,  # TODO: Change these to Ranges
                                            hourly_live_bonus: Optional[int] = None,

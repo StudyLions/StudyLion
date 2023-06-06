@@ -20,7 +20,7 @@ from meta.app import shard_talk
 from utils.ui import ChoicedEnum, Transformed, FastModal, LeoUI, error_handler_for, ModalRetryUI
 from utils.lib import EmbedField, tabulate, MessageArgs, parse_ids, error_embed
 
-from wards import sys_admin
+from wards import sys_admin_ward
 
 logger = logging.getLogger(__name__)
 
@@ -168,7 +168,7 @@ class Blacklists(LionCog):
         name="blacklist",
         description="Display and modify the user and guild blacklists."
     )
-    @cmds.check(sys_admin)
+    @sys_admin_ward
     async def blacklist_cmd(
         self,
         ctx: LionContext,

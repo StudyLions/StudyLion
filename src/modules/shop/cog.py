@@ -72,6 +72,7 @@ from discord import app_commands as appcmds
 from meta import LionBot, LionCog, LionContext
 from utils import ui
 from utils.lib import error_embed
+from wards import low_management_ward
 
 from . import babel
 
@@ -106,6 +107,9 @@ class Shopping(LionCog):
     @cmds.hybrid_group(
         name=_p('group:editshop', 'editshop')
     )
+    @appcmds.guild_only
+    @appcmds.default_permissions(manage_guild=True)
+    @low_management_ward
     async def editshop_group(self, ctx: LionContext):
         return
 

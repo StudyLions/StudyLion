@@ -13,7 +13,7 @@ from discord.ui.button import ButtonStyle
 from meta import LionBot, LionCog, LionContext
 from meta.errors import UserInputError
 from utils.ui import AButton, AsComponents
-from wards import low_management
+from wards import low_management_ward
 
 from .translator import ctx_locale, ctx_translator, SOURCE_LOCALE
 from . import babel
@@ -115,7 +115,8 @@ class BabelCog(LionCog):
         force_language=LocaleSettings.ForceLocale._display_name
     )
     @appcmds.guild_only()  # Can be removed when attached as a subcommand
-    @cmds.check(low_management)
+    @appcmds.default_permissions(manage_guild=True)
+    @low_management_ward
     async def cmd_configure_language(self, ctx: LionContext,
                                      language: Optional[str] = None,
                                      force_language: Optional[appcmds.Choice[int]] = None):

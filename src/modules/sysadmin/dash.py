@@ -7,7 +7,7 @@ import discord.ext.commands as cmds
 
 from meta import LionBot, LionCog, LionContext
 from meta.app import appname
-from wards import sys_admin
+from wards import sys_admin_ward
 
 from settings.groups import SettingGroup
 
@@ -23,7 +23,7 @@ class LeoSettings(LionCog):
     @cmds.hybrid_group(
         name="leo"
     )
-    @cmds.check(sys_admin)
+    @sys_admin_ward
     async def leo_group(self, ctx: LionContext):
         """
         Base command group for global leo-only functions.
@@ -35,7 +35,7 @@ class LeoSettings(LionCog):
         name='dashboard',
         description="Global setting dashboard"
     )
-    @cmds.check(sys_admin)
+    @sys_admin_ward
     async def dash_cmd(self, ctx: LionContext):
         embed = discord.Embed(
             title="System Admin Dashboard",
@@ -56,7 +56,7 @@ class LeoSettings(LionCog):
         name='configure',
         description="Leo Configuration Group"
     )
-    @cmds.check(sys_admin)
+    @sys_admin_ward
     async def leo_configure_group(self, ctx: LionContext):
         """
         Base command group for global configuration of Leo.

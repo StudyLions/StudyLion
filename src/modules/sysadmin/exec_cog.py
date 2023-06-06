@@ -249,7 +249,7 @@ class Exec(LionCog):
         self.talk_async = shard_talk.register_route('exec')(_async)
 
     async def cog_check(self, ctx: LionContext) -> bool:  # type: ignore
-        return await sys_admin(ctx)
+        return await sys_admin(ctx.bot, ctx.author.id)
 
     @commands.hybrid_command(
         name=_('async'),
