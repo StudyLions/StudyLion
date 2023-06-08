@@ -723,6 +723,36 @@ class ColourShopping(ShopCog):
                 )).format(mention=role.mention)
             )
 
+        # Check that I have permission and ability to manage this role
+        if not (ctx.guild.me.guild_permissions.manage_roles and role.is_assignable()):
+            raise SafeCancellation(
+                t(_p(
+                    'cmd:editshop_colours_add|error:role_perms',
+                    "I do not have enough permissions to assign the role {mention}! "
+                    "Please ensure I have the `MANAGE_ROLES` permission, and that "
+                    "my top role is above this role."
+                )).format(mention=role.mention)
+            )
+
+        # Check that the author has permission to manage this role
+        if not (ctx.author.guild_permissions.manage_roles and ctx.author.top_role > role):
+            raise SafeCancellation(
+                t(_p(
+                    'cmd:editshop_colours_add|error:caller_perms',
+                    "You do not have sufficient server permissions to assign {mention} to the shop! "
+                    "You must have `MANAGE_ROLES`, and your top role must be above this role."
+                )).format(mention=role.mention)
+            )
+
+        if role.permissions.administrator:
+            raise SafeCancellation(
+                t(_p(
+                    'cmd:editshop_colours_add|error:role_has_admin',
+                    "I refuse to add an administrator role to the LionCoin shop. "
+                    "That is a really bad idea."
+                ))
+            )
+
         # Add the role to data
         item = await self.data.ShopItem.create(
             guildid=ctx.guild.id,
