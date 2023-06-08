@@ -447,6 +447,7 @@ class Timer:
 
                 with open(alert_file, 'rb') as audio_stream:
                     finished = asyncio.Event()
+                    loop = asyncio.get_event_loop()
 
                     def voice_callback(error):
                         if error:
@@ -456,7 +457,7 @@ class Timer:
                                 logger.exception(
                                     f"Callback exception occured while playing voice alert for timer {self!r}"
                                 )
-                        finished.set()
+                        loop.call_soon_threadsafe(finished.set)
 
                     voice_client.play(discord.PCMAudio(audio_stream), after=voice_callback)
 

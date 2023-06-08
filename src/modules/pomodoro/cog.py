@@ -184,14 +184,14 @@ class TimerCog(LionCog):
             joining = self.get_channel_timer(after.channel.id) if after.channel else None
 
             tasks = []
-            if leaving:
-                tasks.append(leaving.update_status_card())
+            if leaving is not None:
+                tasks.append(asyncio.create_task(leaving.update_status_card()))
             if joining is not None:
                 joining.last_seen[member.id] = utc_now()
                 if not joining.running and joining.auto_restart:
-                    tasks.append(joining.start())
+                    tasks.append(asyncio.create_task(joining.start()))
                 else:
-                    tasks.append(joining.update_status_card())
+                    tasks.append(asyncio.create_task(joining.update_status_card()))
 
             if tasks:
                 try:
