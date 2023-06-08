@@ -212,7 +212,23 @@ class RankPreviewUI(MessageUI):
         role: discord.Role = selected.values[0]
         await selection.response.defer(thinking=True, ephemeral=True)
 
-        if role.is_assignable():
+        if role >= selection.user.top_role:
+            # Do not allow user to manage a role above their own top role
+            error = t(_p(
+                'ui:rank_preview|menu:roles|error:above_caller',
+                "You have insufficient permissions to assign {mention} as a rank role! "
+                "You may only manage roles below your top role."
+            ))
+            embed = discord.Embed(
+                title=t(_p(
+                    'ui:rank_preview|menu:roles|error:above_caller|title',
+                    "Insufficient permissions!"
+                )),
+                description=error,
+                colour=discord.Colour.brand_red()
+            )
+            await selection.response.send_message(embed=embed, ephemeral=True)
+        elif role.is_assignable():
             # Update the rank role
             await self.rank.update(roleid=role.id)
             if self.parent is not None and not self.parent.is_finished():

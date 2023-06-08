@@ -145,7 +145,24 @@ class RankOverviewUI(MessageUI):
         or throw an error if the role is @everyone or not manageable by the client.
         """
         role: discord.Role = selected.values[0]
-        if role.is_assignable():
+        if role >= selection.user.top_role:
+            # Do not allow user to manage a role above their own top role
+            t = self.bot.translator.t
+            error = t(_p(
+                'ui:rank_overview|menu:roles|error:above_caller',
+                "You have insufficient permissions to assign {mention} as a rank role! "
+                "You may only manage roles below your top role."
+            ))
+            embed = discord.Embed(
+                title=t(_p(
+                    'ui:rank_overview|menu:roles|error:above_caller|title',
+                    "Insufficient permissions!"
+                )),
+                description=error,
+                colour=discord.Colour.brand_red()
+            )
+            await selection.response.send_message(embed=embed, ephemeral=True)
+        elif role.is_assignable():
             existing = next((rank for rank in self.ranks if rank.roleid == role.id), None)
             if existing:
                 # Display and edit the given role

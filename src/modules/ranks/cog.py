@@ -457,7 +457,7 @@ class RankCog(LionCog):
     @LionCog.placeholder_group
     @cmds.hybrid_group('configure', with_app_command=False)
     async def configure_group(self, ctx: LionContext):
-        ...
+        pass
 
     @configure_group.command(
         name=_p('cmd:configure_ranks', "ranks"),
