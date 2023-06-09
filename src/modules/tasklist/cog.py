@@ -151,17 +151,18 @@ class TasklistCog(LionCog):
 
                 ecog = self.bot.get_cog('Economy')
                 recent = await ecog.data.TaskTransaction.count_recent_for(member.id, member.guild.id) or 0
-                max_to_reward = max(limit-recent, 0)
-                to_reward = unrewarded[:max_to_reward]
+                max_to_reward = limit - recent
+                if max_to_reward > 0:
+                    to_reward = unrewarded[:max_to_reward]
 
-                count = len(to_reward)
-                amount = count * reward
-                await ecog.data.TaskTransaction.reward_completed(member.id, member.guild.id, count, amount)
-                await tasklist.update_tasks(*(task.taskid for task in to_reward), rewarded=True)
-                logger.debug(
-                    f"Rewarded <uid: {member.id}> in <gid: {member.guild.id}> "
-                    f"'{amount}' coins for completing '{count}' tasks."
-                )
+                    count = len(to_reward)
+                    amount = count * reward
+                    await ecog.data.TaskTransaction.reward_completed(member.id, member.guild.id, count, amount)
+                    await tasklist.update_tasks(*(task.taskid for task in to_reward), rewarded=True)
+                    logger.debug(
+                        f"Rewarded <uid: {member.id}> in <gid: {member.guild.id}> "
+                        f"'{amount}' coins for completing '{count}' tasks."
+                    )
 
     @cmds.hybrid_group(
         name=_p('group:tasklist', "tasklist")
