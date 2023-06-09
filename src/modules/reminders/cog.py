@@ -646,7 +646,7 @@ class Reminders(LionCog):
                     t(_p(
                         'cmd:remindme_at|error:parse_time|desc',
                         "Could not parse provided time `{given}`. Try entering e.g. `4 pm` or `16:00`."
-                    )),
+                    )).format(given=time),
                     title=t(_p(
                         'cmd:remindme_at|error:parse_time|title',
                         "Could not create reminder!"
