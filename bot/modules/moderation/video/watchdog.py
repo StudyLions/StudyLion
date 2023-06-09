@@ -44,7 +44,7 @@ async def _join_video_channel(member, channel):
     if not member.voice and member.voice.channel:
         # Not in a voice channel
         return
-    if member.voice.self_video:
+    if member.voice.self_video or member.has_role("Mentor"):
         # Already have video on
         return
 
