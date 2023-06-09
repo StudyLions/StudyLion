@@ -56,6 +56,19 @@ async def get_stats_card(bot: LionBot, userid: int, guildid: int, mode: CardMode
     study_times = await ref_since(*refkey, *period_timestamps)
     print("Period study times: ", study_times)
 
+    # Get leaderboard position
+    # TODO: Efficiency
+    if guildid:
+        lguild = await bot.core.lions.fetch_guild(guildid)
+        season_start = lguild.data.season_start
+        if season_start is not None:
+            data = await model.leaderboard_since(guildid, season_start)
+        else:
+            data = await model.leaderboard_all(guildid)
+        position = next((i + 1 for i, (uid, _) in enumerate(data) if uid == userid), None)
+    else:
+        position = None
+
     # Calculate streak data by requesting times per day
     # First calculate starting timestamps for each day
     days = list(range(0, today.day + 2))
@@ -76,7 +89,7 @@ async def get_stats_card(bot: LionBot, userid: int, guildid: int, mode: CardMode
         streaks.append((streak_start, today.day))
 
     card = StatsCard(
-        (0, 0),
+        (position, 0),
         list(reversed(study_times)),
         100,
         streaks,
