@@ -211,11 +211,18 @@ class ProfileUI(StatsUI):
 
     async def stats_button_refresh(self):
         button = self.stats_button
+        t = self.bot.translator.t
 
         if self._showing_stats:
-            button.label = "Hide Statistics"
+            button.label = t(_p(
+                'ui:profile_card|button:statistics|label:hide',
+                "Hide Statistics"
+            ))
         else:
-            button.label = "Show Statistics"
+            button.label = t(_p(
+                'ui:profile_card|button:statistics|label:show',
+                "Show Statistics"
+            ))
 
     @button(label="Global Stats", style=ButtonStyle.blurple)
     async def global_button(self, press: discord.Interaction, pressed: Button):

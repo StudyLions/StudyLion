@@ -716,11 +716,18 @@ class WeeklyMonthlyUI(StatsUI):
 
     async def global_button_refresh(self):
         button = self.global_button
+        t = self.bot.translator.t
 
         if self._showing_global:
-            button.label = "Server Statistics"
+            button.label = t(_p(
+                'ui:WeeklyMonthly|button:global|mode:local',
+                "Server Statistics"
+            ))
         else:
-            button.label = "Global Statistics"
+            button.label = t(_p(
+                'ui:WeeklyMonthly|button:global|mode:global',
+                "Global Statistics"
+            ))
 
     async def refresh_components(self):
         await asyncio.gather(

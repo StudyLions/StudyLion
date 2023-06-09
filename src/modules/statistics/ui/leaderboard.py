@@ -19,6 +19,8 @@ from .. import babel
 
 from .base import StatsUI
 
+_p = babel._p
+
 
 class LBPeriod(IntEnum):
     SEASON = 0
@@ -216,33 +218,50 @@ class LeaderboardUI(StatsUI):
 
     async def stat_menu_refresh(self):
         # TODO: Customise based on configuration
+        t = self.bot.translator.t
         menu = self.stat_menu
+        menu.placeholder = t(_p(
+            'ui:leaderboard|menu:stats|placeholder',
+            "Select Activity Type"
+        ))
         options = []
         lguild = await self.bot.core.lions.fetch_guild(self.guildid)
         if lguild.guild_mode.voice is VoiceMode.VOICE:
             options.append(
                 SelectOption(
-                    label="Voice Activity",
+                    label=t(_p(
+                        'ui:leaderboard|menu:stats|item:voice',
+                        "Voice Activity"
+                    )),
                     value=str(StatType.VOICE.value)
                 )
             )
         else:
             options.append(
                 SelectOption(
-                    label="Study Statistics",
+                    label=t(_p(
+                        'ui:leaderboard|menu:stats|item:study',
+                        "Study Statistics"
+                    )),
                     value=str(StatType.VOICE.value)
                 )
             )
 
         options.append(
             SelectOption(
-                label="Message Activity",
+                label=t(_p(
+                    'ui:leaderboard|menu:stats|item:message',
+                    "Message Activity"
+                )),
                 value=str(StatType.TEXT.value)
             )
         )
         options.append(
             SelectOption(
-                label="Anki Cards Reviewed",
+                label=t(_p(
+                    'ui:leaderboard|menu;stats|item:anki',
+                    "Anki Cards Reviewed"
+                )),
                 value=str(StatType.ANKI.value)
             )
         )
@@ -290,17 +309,51 @@ class LeaderboardUI(StatsUI):
         self.focused = False
         await self.refresh(thinking=press)
 
+    async def _prepare(self):
+        t = self.bot.translator.t
+        self.season_button.label = t(_p(
+            'ui:leaderboard|button:season|label',
+            "This Season"
+        ))
+        self.day_button.label = t(_p(
+            'ui:leaderboard|button:day|label',
+            "Today"
+        ))
+        self.week_button.label = t(_p(
+            'ui:leaderboard|button:week|label',
+            "This Week"
+        ))
+        self.month_button.label = t(_p(
+            'ui:leaderboard|button:month|label',
+            "This Month"
+        ))
+        self.alltime_button.label = t(_p(
+            'ui:leaderboard|button:alltime|label',
+            "All Time"
+        ))
+        self.jump_button.label = t(_p(
+            'ui:leaderboard|button:jump|label',
+            "Jump"
+        ))
+
     @button(label="Jump", style=ButtonStyle.blurple)
     async def jump_button(self, press: discord.Interaction, pressed: Button):
         """
         Jump-to-page button.
         Loads a page-switch dialogue.
         """
+        t = self.bot.translator.t
         try:
             interaction, value = await input(
                 press,
-                title="Jump to page",
-                question="Page number to jump to"
+                title=t(_p(
+                    'ui:leaderboard|button:jump|input:title',
+                    "Jump to page"
+                )),
+                question=t(_p(
+                    'ui:leaderboard|button:jump|input:question',
+                    "Page number to jump to"
+                ))
             )
             value = value.strip()
         except asyncio.TimeoutError:
@@ -308,7 +361,10 @@ class LeaderboardUI(StatsUI):
 
         if not value.lstrip('- ').isdigit():
             error_embed = discord.Embed(
-                title="Invalid page number, please try again!",
+                title=t(_p(
+                    'ui:leaderboard|button:jump|error:invalid_page',
+                    "Invalid page number, please try again!"
+                )),
                 colour=discord.Colour.brand_red()
             )
             await interaction.response.send_message(embed=error_embed, ephemeral=True)
@@ -354,18 +410,23 @@ class LeaderboardUI(StatsUI):
                 file=self.card.as_file('leaderboard.png')
             )
         else:
-            # TOLOCALISE:
+            t = self.bot.translator.t
             embed = discord.Embed(
                 colour=discord.Colour.orange(),
-                title="Empty Leaderboard!",
-                description=(
+                title=t(_p(
+                    'ui:leaderboard|message:empty|title',
+                    "Empty Leaderboard!"
+                )),
+                description=t(_p(
+                    'ui:leaderboard|message:empty|desc',
                     "There has been no activity of this type in this period!"
-                )
+                ))
             )
             args = MessageArgs(embed=embed, files=[])
         return args
 
     async def refresh_components(self):
+        await self._prepare()
         await asyncio.gather(
             self.jump_button_refresh(),
             self.close_button_refresh(),
