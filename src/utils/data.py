@@ -123,6 +123,9 @@ class TemporaryTable(Expression):
         AS
         name (col1, col2)
         """
+        if not self.values:
+            raise ValueError("Cannot flatten CTE with no values.")
+
         single_value = sql.SQL("({})").format(sql.SQL(", ").join(sql.Placeholder() for _ in self.columns))
         if self.types:
             first_value = sql.SQL("({})").format(

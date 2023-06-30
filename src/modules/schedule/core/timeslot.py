@@ -210,20 +210,21 @@ class TimeSlot:
             await batchrun_per_second(coros, 5)
 
             # Save messageids
-            tmptable = TemporaryTable(
-                '_gid', '_sid', '_mid',
-                types=('BIGINT', 'INTEGER', 'BIGINT')
-            )
-            tmptable.values = [
-                (sg.data.guildid, sg.data.slotid, sg.messageid)
-                for sg in sessions
-                if sg.messageid is not None
-            ]
-            await Data.ScheduleSession.table.update_where(
-                guildid=tmptable['_gid'], slotid=tmptable['_sid']
-            ).set(
-                messageid=tmptable['_mid']
-            ).from_expr(tmptable)
+            if sessions:
+                tmptable = TemporaryTable(
+                    '_gid', '_sid', '_mid',
+                    types=('BIGINT', 'INTEGER', 'BIGINT')
+                )
+                tmptable.values = [
+                    (sg.data.guildid, sg.data.slotid, sg.messageid)
+                    for sg in sessions
+                    if sg.messageid is not None
+                ]
+                await Data.ScheduleSession.table.update_where(
+                    guildid=tmptable['_gid'], slotid=tmptable['_sid']
+                ).set(
+                    messageid=tmptable['_mid']
+                ).from_expr(tmptable)
         except Exception:
             logger.exception(
                 f"Unhandled exception while preparing timeslot <slotid: {self.slotid}>."

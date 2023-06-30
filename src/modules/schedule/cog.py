@@ -489,7 +489,8 @@ class ScheduleCog(LionCog):
                         session = slot.sessions.get(guildid, None)
                         if session is None:
                             # Create a new session in the slot and set it up
-                            session = await slot.load_sessions(session_data[guildid, slotid])
+                            sessions = await slot.load_sessions([session_data[guildid, slotid]])
+                            session = sessions[guildid]
                             slot.sessions[guildid] = session
                             if slot.closing.is_set():
                                 # This should never happen
