@@ -137,7 +137,7 @@ class RowModel:
     _registry: Optional[Registry] = None
 
     # TODO: Proper typing for a classvariable which gets dynamically assigned in subclass
-    table: RowTable
+    table: RowTable = None
 
     def __init_subclass__(cls: Type[RowT], table: Optional[str] = None):
         """

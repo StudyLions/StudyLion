@@ -121,7 +121,7 @@ class TableQuery(Query[QueryResult]):
     """
     __slots__ = (
         'tableid',
-        'condition', '_extra', '_limit', '_order', '_joins'
+        'condition', '_extra', '_limit', '_order', '_joins', '_from', '_group'
     )
 
     def __init__(self, tableid, *args, **kwargs):
@@ -282,6 +282,26 @@ class LimitMixin(TableQuery[QueryResult]):
             return None
 
 
+class FromMixin(TableQuery[QueryResult]):
+    __slots__ = ()
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._from: Optional[Expression] = None
+
+    def from_expr(self, _from: Expression):
+        self._from = _from
+        return self
+
+    @property
+    def _from_section(self) -> Optional[Expression]:
+        if self._from is not None:
+            expr, values = self._from.as_tuple()
+            return RawExpr(sql.SQL("FROM {}").format(expr), values)
+        else:
+            return None
+
+
 class ORDER(Enum):
     ASC = sql.SQL('ASC')
     DESC = sql.SQL('DESC')
@@ -326,6 +346,36 @@ class OrderMixin(TableQuery[QueryResult]):
         if self._order:
             expr = RawExpr.join(*self._order, joiner=sql.SQL(', '))
             expr.expr = sql.SQL("ORDER BY {}").format(expr.expr)
+            return expr
+        else:
+            return None
+
+
+class GroupMixin(TableQuery[QueryResult]):
+    __slots__ = ()
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self._group: list[Expression] = []
+
+    def group_by(self, *exprs: Union[Expression, str]):
+        """
+        Add a group expression(s) to the query.
+        This method stacks.
+        """
+        for expr in exprs:
+            if isinstance(expr, Expression):
+                self._group.append(expr)
+            else:
+                self._group.append(RawExpr(sql.Identifier(expr)))
+        return self
+
+    @property
+    def _group_section(self) -> Optional[Expression]:
+        if self._group:
+            expr = RawExpr.join(*self._group, joiner=sql.SQL(', '))
+            expr.expr = sql.SQL("GROUP BY {}").format(expr.expr)
             return expr
         else:
             return None
@@ -411,7 +461,7 @@ class Insert(ExtraMixin, TableQuery[QueryResult]):
         return RawExpr.join(*sections)
 
 
-class Select(WhereMixin, ExtraMixin, OrderMixin, LimitMixin, JoinMixin, TableQuery[QueryResult]):
+class Select(WhereMixin, ExtraMixin, OrderMixin, LimitMixin, JoinMixin, GroupMixin, TableQuery[QueryResult]):
     """
     Select rows from a table matching provided conditions.
     """
@@ -464,6 +514,7 @@ class Select(WhereMixin, ExtraMixin, OrderMixin, LimitMixin, JoinMixin, TableQue
             RawExpr(base, columns_values),
             self._join_section,
             self._where_section,
+            self._group_section,
             self._extra_section,
             self._order_section,
             self._limit_section,
@@ -495,7 +546,7 @@ class Delete(WhereMixin, ExtraMixin, TableQuery[QueryResult]):
         return RawExpr.join(*sections)
 
 
-class Update(LimitMixin, WhereMixin, ExtraMixin, TableQuery[QueryResult]):
+class Update(LimitMixin, WhereMixin, ExtraMixin, FromMixin, TableQuery[QueryResult]):
     __slots__ = (
         '_set',
     )
@@ -534,6 +585,7 @@ class Update(LimitMixin, WhereMixin, ExtraMixin, TableQuery[QueryResult]):
         )
         sections = [
             RawExpr(base, set_values),
+            self._from_section,
             self._where_section,
             self._extra_section,
             self._limit_section,

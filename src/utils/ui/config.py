@@ -52,6 +52,10 @@ class ConfigUI(LeoUI):
         # Instances of the settings this UI is managing
         self.instances = ()
 
+    @property
+    def page_instances(self):
+        return self.instances
+
     async def interaction_check(self, interaction: discord.Interaction):
         """
         Default requirement for a Config UI is low management (i.e. manage_guild permissions).
@@ -95,7 +99,7 @@ class ConfigUI(LeoUI):
         Errors should raise instances of `UserInputError`, and will be caught for retry.
         """
         t = ctx_translator.get().t
-        instances = self.instances
+        instances = self.page_instances
         items = [setting.input_field for setting in instances]
         # Filter out settings which don't have input fields
         items = [item for item in items if item]
@@ -174,7 +178,7 @@ class ConfigUI(LeoUI):
         """
         await press.response.defer()
 
-        for instance in self.instances:
+        for instance in self.page_instances:
             instance.data = None
             await instance.write()
 

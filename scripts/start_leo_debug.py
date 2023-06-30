@@ -18,14 +18,14 @@ def loop_exception_handler(loop, context):
     print(context)
     task: asyncio.Task = context.get('task', None)
     if task is not None:
-        addendum = f"<Task name='{task.name}' stack='{task.get_stack()}'>"
+        addendum = f"<Task name='{task.get_name()}' stack='{task.get_stack()}'>"
         message = context.get('message', '')
         context['message'] = ' '.join((message, addendum))
     loop.default_exception_handler(context)
 
 
 event_loop.set_exception_handler(loop_exception_handler)
-event_loop.set_debug(enabled=True)
+# event_loop.set_debug(enabled=True)
 
 
 if __name__ == '__main__':

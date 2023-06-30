@@ -4,6 +4,7 @@ active = [
     '.sysadmin',
     '.config',
     '.user_config',
+    '.schedule',
     '.economy',
     '.ranks',
     '.reminders',

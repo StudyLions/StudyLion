@@ -3,8 +3,8 @@ from enum import Enum
 from psycopg import sql
 from data import Registry, RowModel, RegisterEnum, JOINTYPE, RawExpr
 from data.columns import Integer, Bool, Column, Timestamp
-
 from core.data import CoreData
+from utils.data import TemporaryTable, SAFECOINS
 
 
 class TransactionType(Enum):
@@ -12,20 +12,28 @@ class TransactionType(Enum):
     Schema
     ------
     CREATE TYPE CoinTransactionType AS ENUM(
-        'REFUND',
-        'TRANSFER',
-        'SHOP_PURCHASE',
-        'STUDY_SESSION',
-        'ADMIN',
-        'TASKS'
+      'REFUND',
+      'TRANSFER',
+      'SHOP_PURCHASE',
+      'VOICE_SESSION',
+      'TEXT_SESSION',
+      'ADMIN',
+      'TASKS',
+      'SCHEDULE_BOOK',
+      'SCHEDULE_REWARD',
+      'OTHER'
     );
     """
     REFUND = 'REFUND',
     TRANSFER = 'TRANSFER',
-    PURCHASE = 'SHOP_PURCHASE',
-    SESSION = 'STUDY_SESSION',
+    SHOP_PURCHASE = 'SHOP_PURCHASE',
+    VOICE_SESSION = 'VOICE_SESSION',
+    TEXT_SESSION = 'TEXT_SESSION',
     ADMIN = 'ADMIN',
     TASKS = 'TASKS',
+    SCHEDULE_BOOK = 'SCHEDULE_BOOK',
+    SCHEDULE_REWARD = 'SCHEDULE_REWARD',
+    OTHER = 'OTHER',
 
 
 class AdminActionTarget(Enum):
@@ -100,21 +108,99 @@ class EconomyData(Registry, name='economy'):
             from_account: int, to_account: int, amount: int, bonus: int = 0,
             refunds: int = None
         ):
-            transaction = await cls.create(
-                transactiontype=transaction_type,
-                guildid=guildid, actorid=actorid, amount=amount, bonus=bonus,
-                from_account=from_account, to_account=to_account,
-                refunds=refunds
-            )
-            if from_account is not None:
-                await CoreData.Member.table.update_where(
-                    guildid=guildid, userid=from_account
-                ).set(coins=(CoreData.Member.coins - (amount + bonus)))
-            if to_account is not None:
-                await CoreData.Member.table.update_where(
-                    guildid=guildid, userid=to_account
-                ).set(coins=(CoreData.Member.coins + (amount + bonus)))
-            return transaction
+            conn = await cls._connector.get_connection()
+            async with conn.transaction():
+                transaction = await cls.create(
+                    transactiontype=transaction_type,
+                    guildid=guildid, actorid=actorid, amount=amount, bonus=bonus,
+                    from_account=from_account, to_account=to_account,
+                    refunds=refunds
+                )
+                if from_account is not None:
+                    await CoreData.Member.table.update_where(
+                        guildid=guildid, userid=from_account
+                    ).set(coins=SAFECOINS(CoreData.Member.coins - (amount + bonus)))
+                if to_account is not None:
+                    await CoreData.Member.table.update_where(
+                        guildid=guildid, userid=to_account
+                    ).set(coins=SAFECOINS(CoreData.Member.coins + (amount + bonus)))
+                return transaction
+
+        @classmethod
+        async def execute_transactions(cls, *transactions):
+            """
+            Execute multiple transactions in one data transaction.
+
+            Writes the transaction and updates the affected member accounts.
+            Returns the created Transactions.
+
+            Arguments
+            ---------
+            transactions: tuple[TransactionType, int, int, int, int, int, int, int]
+                (transaction_type, guildid, actorid, from_account, to_account, amount, bonus, refunds)
+            """
+            if not transactions:
+                return []
+
+            conn = await cls._connector.get_connection()
+            async with conn.transaction():
+                # Create the transactions
+                rows = await cls.table.insert_many(
+                    (
+                        'transactiontype',
+                        'guildid', 'actorid',
+                        'from_account', 'to_account',
+                        'amount', 'bonus',
+                        'refunds'
+                    ),
+                    *transactions
+                ).with_adapter(cls._make_rows)
+
+                # Update the members
+                transtable = TemporaryTable(
+                    '_guildid', '_userid', '_amount',
+                    types=('BIGINT', 'BIGINT', 'INTEGER')
+                )
+                values = transtable.values
+                for transaction in transactions:
+                    _, guildid, _, from_acc, to_acc, amount, bonus, _ = transaction
+                    coins = amount + bonus
+                    if coins:
+                        if from_acc:
+                            values.append((guildid, from_acc, -1 * coins))
+                        if to_acc:
+                            values.append((guildid, to_acc, coins))
+                if values:
+                    Member = CoreData.Member
+                    await Member.table.update_where(
+                        guildid=transtable['_guildid'], userid=transtable['_userid']
+                    ).set(
+                        coins=SAFECOINS(Member.coins + transtable['_amount'])
+                    ).from_expr(transtable)
+            return rows
+
+        @classmethod
+        async def refund_transactions(cls, *transactionids, actorid=0):
+            if not transactionids:
+                return []
+            conn = await cls._connector.get_connection()
+            async with conn.transaction():
+                # First fetch the transaction rows to refund
+                data = await cls.table.select_where(transactionid=transactionids)
+                if data:
+                    # Build the transaction refund data
+                    records = [
+                        (
+                            TransactionType.REFUND,
+                            tr['guildid'], actorid,
+                            tr['to_account'], tr['from_account'],
+                            tr['amount'] + tr['bonus'], 0,
+                            tr['transactionid']
+                        )
+                        for tr in data
+                    ]
+                    # Execute refund transactions
+                    return await cls.execute_transactions(*records)
 
     class ShopTransaction(RowModel):
         """

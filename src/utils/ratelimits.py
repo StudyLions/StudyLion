@@ -85,6 +85,7 @@ class Bucket:
         # Wrapped in a lock so that waiters are correctly handled in wait-order
         # Otherwise multiple waiters will have the same delay,
         # and race for the wakeup after sleep.
+        # Also avoids short-circuiting in the 0 delay case, which would not correctly handle wait-order
         async with self._wait_lock:
             # We do this in a loop in case asyncio.sleep throws us out early,
             # or a synchronous request overflows the bucket while we are waiting.

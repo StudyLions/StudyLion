@@ -1,4 +1,5 @@
 from typing import Optional, Iterable
+import datetime as dt
 from enum import Enum
 from itertools import chain
 from psycopg import sql
@@ -77,6 +78,38 @@ class StatsData(Registry):
         start_time = Timestamp()
         duration = Integer()
         end_time = Timestamp()
+
+        @classmethod
+        async def tracked_time_between(cls, *points: tuple[int, int, dt.datetime, dt.datetime]):
+            query = sql.SQL(
+                """
+                SELECT
+                    t._guildid AS guildid,
+                    t._userid AS userid,
+                    t._start AS start_time,
+                    t._end AS end_time,
+                    study_time_between(t._guildid, t._userid, t._start, t._end) AS stime
+                FROM
+                    (VALUES {})
+                AS
+                    t (_guildid, _userid, _start, _end)
+                """
+            ).format(
+                sql.SQL(', ').join(
+                    sql.SQL("({}, {}, {}, {})").format(
+                        sql.Placeholder(), sql.Placeholder(),
+                        sql.Placeholder(), sql.Placeholder()
+                    )
+                    for _ in points
+                )
+            )
+            conn = await cls._connector.get_connection()
+            async with conn.cursor() as cursor:
+                await cursor.execute(
+                    query,
+                    chain(*points)
+                )
+                return cursor.fetchall()
 
         @classmethod
         async def study_time_between(cls, guildid: int, userid: int, _start, _end) -> int:

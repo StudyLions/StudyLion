@@ -173,6 +173,7 @@ class VoiceSession:
                 live_video=state.video,
                 hourly_coins=self.hourly_rate
             )
+        self.bot.dispatch('voice_session_start', self.data)
         self.start_task = None
 
     def schedule_expiry(self, expire_time):
@@ -230,7 +231,11 @@ class VoiceSession:
         """
         if self.activity is SessionState.ONGOING:
             # End the ongoing session
-            await self.data.close_study_session_at(self.guildid, self.userid, utc_now())
+            now = utc_now()
+            await self.data.close_study_session_at(self.guildid, self.userid, now)
+
+            # TODO: Something a bit saner/safer.. dispatch the finished session instead?
+            self.bot.dispatch('voice_session_end', self.data, now)
 
             # Rank update
             # TODO: Change to broadcasted event?

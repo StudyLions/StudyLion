@@ -291,7 +291,7 @@ class RoleSetting(InteractiveSetting[ParentID, int, Union[discord.Role, discord.
                 role = guild.get_role(data)
             if role is None:
                 role = discord.Object(id=data)
-        return role
+            return role
 
     @classmethod
     async def _parse_string(cls, parent_id, string: str, **kwargs):

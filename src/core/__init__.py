@@ -1,6 +1,11 @@
 from .cog import CoreCog
 from .config import ConfigCog
 
+from babel.translator import LocalBabel
+
+
+babel = LocalBabel('lion-core')
+
 
 async def setup(bot):
     await bot.add_cog(CoreCog(bot))

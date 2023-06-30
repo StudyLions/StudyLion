@@ -37,6 +37,8 @@ class VoiceTrackerCog(LionCog):
         self.babel = babel
 
         # State
+        # Flag indicating whether local voice sessions have been initialised
+        self.initialised = asyncio.Event()
         self.handle_events = False
         self.tracking_lock = asyncio.Lock()
 
@@ -92,6 +94,7 @@ class VoiceTrackerCog(LionCog):
 
             logger.debug("Disabling voice state event handling.")
             self.handle_events = False
+            self.initialised.clear()
             # Read and save the tracked voice states of all visible voice channels
             voice_members = {}  # (guildid, userid) -> TrackedVoiceState
             voice_guilds = set()
@@ -252,6 +255,7 @@ class VoiceTrackerCog(LionCog):
                     for row in rows:
                         VoiceSession.from_ongoing(self.bot, row, expiries[(row.guildid, row.userid)])
                     logger.info(f"Started {len(rows)} new voice sessions from voice channels!")
+            self.initialised.set()
 
     @LionCog.listener("on_voice_state_update")
     @log_wrap(action='Voice Track')
@@ -259,7 +263,6 @@ class VoiceTrackerCog(LionCog):
         """
         Spawns the correct tasks from members joining, leaving, and changing live state.
         """
-        # TODO: Logging context
         if not self.handle_events:
             # Rely on initialisation to handle current state
             return
@@ -505,7 +508,7 @@ class VoiceTrackerCog(LionCog):
             delay = (tomorrow - now).total_seconds()
         else:
             start_time = now
-            delay = 60
+            delay = 20
 
         expiry = start_time + dt.timedelta(seconds=cap)
         if expiry >= tomorrow:

@@ -1,9 +1,11 @@
 from typing import Optional
 from cachetools import LRUCache
+import itertools
 import datetime
 import discord
 
 from meta import LionCog, LionBot, LionContext
+from utils.data import MEMBERS
 from data import WeakCache
 
 from .data import CoreData
@@ -99,13 +101,42 @@ class Lions(LionCog):
                     ('guildid',),
                     *((guildid,) for guildid in missing)
                 ).with_adapter(self.data.Guild._make_rows)
-                rows = (*rows, *new_rows)
+                rows = itertools.chain(rows, new_rows)
 
             for row in rows:
                 guildid = row.guildid
                 self.lion_guilds[guildid] = guild_map[guildid] = LionGuild(self.bot, row)
 
         return guild_map
+
+    async def fetch_users(self, *userids) -> dict[int, LionUser]:
+        """
+        Fetch (or create) multiple LionUsers simultaneously, using cache where possible.
+        """
+        user_map = {}
+        missing = set()
+        for userid in userids:
+            luser = self.lion_users.get(userid, None)
+            user_map[userid] = luser
+            if luser is None:
+                missing.add(userid)
+
+        if missing:
+            rows = await self.data.User.fetch_where(userid=list(missing))
+            missing.difference_update(row.userid for row in rows)
+
+            if missing:
+                new_rows = await self.data.User.table.insert_many(
+                    ('userid',),
+                    *((userid,) for userid in missing)
+                ).with_adapter(self.data.user._make_rows)
+                rows = itertools.chain(rows, new_rows)
+
+            for row in rows:
+                userid = row.userid
+                self.lion_users[userid] = user_map[userid] = LionUser(self.bot, row)
+
+        return user_map
 
     async def fetch_member(self, guildid, userid, member: Optional[discord.Member] = None) -> LionMember:
         """
@@ -124,11 +155,46 @@ class Lions(LionCog):
             self.lion_members[key] = lmember
         return lmember
 
-    async def fetch_members(self, *members: tuple[int, int]):
+    async def fetch_members(self, *memberids: tuple[int, int]) -> dict[tuple[int, int], LionMember]:
         """
         Fetch or create multiple members simultaneously.
         """
-        # TODO: Actually batch this (URGENT)
-        members = {}
-        for key in members:
-            members[key] = await self.fetch_member(*key)
+        member_map = {}
+        missing = set()
+
+        # Retrieve what we can from cache
+        for memberid in memberids:
+            lmember = self.lion_members.get(memberid, None)
+            member_map[memberid] = lmember
+            if lmember is None:
+                missing.add(memberid)
+
+        # Fetch or create members that weren't in cache
+        if missing:
+            # First fetch or create the guilds and users
+            lguilds = await self.fetch_guilds(*(gid for gid, _ in missing))
+            lusers = await self.fetch_users(*(uid for _, uid in missing))
+
+            # Now attempt to load members from data
+            rows = await self.data.Member.fetch_where(MEMBERS(*missing))
+            missing.difference_update((row.guildid, row.userid) for row in rows)
+
+            # Create any member rows that are still missing
+            if missing:
+                new_rows = await self.data.Member.table.insert_many(
+                    ('guildid', 'userid'),
+                    *missing
+                ).with_adapter(self.data.Member._make_rows)
+                rows = itertools.chain(rows, new_rows)
+
+            # We have all the data, now construct the member objects
+            for row in rows:
+                key = (row.guildid, row.userid)
+                self.lion_members[key] = member_map[key] = LionMember(
+                    self.bot,
+                    row,
+                    lguilds[row.guildid],
+                    lusers[row.userid]
+                )
+
+        return member_map

@@ -141,6 +141,7 @@ class Timer:
                 hook = self._hook = await self.bot.core.data.LionHook.fetch(cid)
                 if not hook:
                     # Attempt to create and save webhook
+                    # TODO: Localise
                     try:
                         if channel.permissions_for(channel.guild.me).manage_webhooks:
                             avatar = self.bot.user.avatar

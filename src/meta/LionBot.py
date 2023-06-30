@@ -172,7 +172,7 @@ class LionBot(Bot):
                     "An unexpected error occurred while processing your command!\n"
                     "Our development team has been notified, and the issue should be fixed soon.\n"
                     "If the error persists, please contact our support team and give them the following number: "
-                    f"`{ctx.interaction.id}`"
+                    f"`{ctx.interaction.id if ctx.interaction else ctx.message.id}`"
                 )
 
                 try:
