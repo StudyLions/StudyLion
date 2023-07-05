@@ -21,9 +21,9 @@ cmd_map = {
     "cmd_shop": "shop open",
     "cmd_room": "room rent",
     "cmd_reminders": "remindme in",
-    "cmd_tasklist": "tasklist open",
+    "cmd_tasklist": "tasklist",
     "cmd_timers": "timers list",
-    "cmd_schedule": "schedule book",
+    "cmd_schedule": "schedule",
     "cmd_dashboard": "dashboard"
 }
 

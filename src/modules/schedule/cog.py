@@ -238,7 +238,7 @@ class ScheduleCog(LionCog):
 
         slot = self.active_slots.get(slotid, None)
         session = slot.sessions.get(guildid, None) if slot else None
-        member = session.pop(userid, None) if session else None
+        member = session.members.pop(userid, None) if session else None
         if member is not None:
             if slot.closing.is_set():
                 # Don't try to cancel a booking for a closing active slot.

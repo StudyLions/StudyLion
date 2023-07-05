@@ -1,4 +1,5 @@
 from typing import Optional
+from collections import defaultdict
 import datetime as dt
 
 import discord
@@ -9,7 +10,7 @@ from discord.app_commands.transformers import AppCommandOptionType as cmdopt
 from meta import LionBot, LionCog, LionContext
 from meta.errors import UserInputError
 from utils.lib import utc_now, error_embed
-from utils.ui import ChoicedEnum, Transformed
+from utils.ui import ChoicedEnum, Transformed, AButton
 
 from data import Condition, NULL
 from wards import low_management_ward
@@ -17,10 +18,10 @@ from wards import low_management_ward
 from . import babel, logger
 from .data import TasklistData
 from .tasklist import Tasklist
-from .ui import TasklistUI, SingleEditor, BulkEditor
+from .ui import TasklistUI, SingleEditor, BulkEditor, TasklistCaller
 from .settings import TasklistSettings, TasklistConfigUI
 
-_p = babel._p
+_p, _np = babel._p, babel._np
 
 
 MAX_LENGTH = 100
@@ -128,13 +129,14 @@ class TasklistCog(LionCog):
         self.babel = babel
         self.settings = TasklistSettings()
 
+        self.live_tasklists = TasklistUI._live_
+
     async def cog_load(self):
         await self.data.init()
         self.bot.core.guild_config.register_model_setting(self.settings.task_reward)
         self.bot.core.guild_config.register_model_setting(self.settings.task_reward_limit)
+        self.bot.add_view(TasklistCaller(self.bot))
 
-        # TODO: Better method for getting single load
-        # Or better, unloading crossloaded group
         configcog = self.bot.get_cog('ConfigCog')
         self.crossload_group(self.configure_group, configcog.configure_group)
 
@@ -164,30 +166,164 @@ class TasklistCog(LionCog):
                         f"'{amount}' coins for completing '{count}' tasks."
                     )
 
+    async def is_tasklist_channel(self, channel) -> bool:
+        if not channel.guild:
+            return True
+        channels = (await self.settings.tasklist_channels.get(channel.guild.id)).value
+        return (channel in channels) or (channel.category in channels)
+
+    async def call_tasklist(self, interaction: discord.Interaction):
+        await interaction.response.defer(thinking=True, ephemeral=True)
+        channel = interaction.channel
+        guild = channel.guild
+        userid = interaction.user.id
+
+        tasklist = await Tasklist.fetch(self.bot, self.data, userid)
+
+        if await self.is_tasklist_channel(channel):
+            tasklistui = TasklistUI.fetch(tasklist, channel, guild, timeout=None)
+            await tasklistui.summon(force=True)
+            await interaction.delete_original_response()
+        else:
+            # Note that this will also close any existing listening tasklists in this channel (for this user)
+            tasklistui = TasklistUI.fetch(tasklist, channel, guild, timeout=600)
+            await tasklistui.run(interaction)
+
+    @LionCog.listener('on_tasklist_update')
+    async def update_listening_tasklists(self, userid, channel=None, summon=True):
+        """
+        Propagate a tasklist update to all persistent tasklist UIs for this user.
+
+        If channel is given, also summons the UI if the channel is a tasklist channel.
+        """
+        # Do the given channel first, and summon if requested
+        if channel and (tui := TasklistUI._live_[userid].get(channel.id, None)) is not None:
+            try:
+                if summon and await self.is_tasklist_channel(channel):
+                    await tui.summon()
+                else:
+                    await tui.refresh()
+                    await tui.redraw()
+            except discord.HTTPException:
+                await tui.close()
+
+        # Now do the rest of the listening channels
+        listening = TasklistUI._live_[userid]
+        for cid, ui in listening.items():
+            if channel and channel.id == cid:
+                continue
+            try:
+                await ui.refresh()
+                await ui.redraw()
+            except discord.HTTPException:
+                await tui.close()
+
+    @cmds.hybrid_command(
+        name=_p('cmd:tasklist', "tasklist"),
+        description=_p(
+            'cmd:tasklist|desc',
+            "Open your tasklist."
+        )
+    )
+    async def tasklist_cmd(self, ctx: LionContext):
+        if not ctx.interaction:
+            return
+        await self.call_tasklist(ctx.interaction)
+
     @cmds.hybrid_group(
-        name=_p('group:tasklist', "tasklist")
+        name=_p('group:tasks', "tasks"),
+        description=_p('group:tasks|desc', "Base command group for tasklist commands.")
     )
     async def tasklist_group(self, ctx: LionContext):
         raise NotImplementedError
 
-    async def task_acmpl(self, interaction: discord.Interaction, partial: str) -> list[appcmds.Choice]:
+    async def _task_acmpl(self, userid: int, partial: str, multi=False) -> list[appcmds.Choice]:
+        """
+        Generate a list of task Choices matching a given partial string.
+
+        Supports single and multiple task matching.
+        """
         t = self.bot.translator.t
 
         # Should usually be cached, so this won't trigger repetitive db access
-        tasklist = await Tasklist.fetch(self.bot, self.data, interaction.user.id)
+        tasklist = await Tasklist.fetch(self.bot, self.data, userid)
+
+        # Special case for an empty tasklist
+        if not tasklist.tasklist:
+            return [
+                appcmds.Choice(
+                    name=t(_p(
+                        'argtype:taskid|error:no_tasks',
+                        "Tasklist empty! No matching tasks."
+                    )),
+                    value=partial
+                )
+            ]
 
         labels = []
+        idmap = {}
         for label, task in tasklist.labelled.items():
             labelstring = '.'.join(map(str, label)) + '.' * (len(label) == 1)
             taskstring = f"{labelstring} {task.content}"
+            idmap[task.taskid] = labelstring
             labels.append((labelstring, taskstring))
 
+        # Assume user is typing a label
         matching = [(label, task) for label, task in labels if label.startswith(partial)]
 
+        # If partial does match any labels, search for partial in task content
         if not matching:
             matching = [(label, task) for label, task in labels if partial.lower() in task.lower()]
 
-        if not matching:
+        if matching:
+            # If matches were found, assume user wants one of the matches
+            options = [
+                appcmds.Choice(name=task_string, value=label)
+                for label, task_string in matching
+            ]
+        elif multi and (',' in partial or '-' in partial):
+            # Try parsing input as a multi-list
+            try:
+                parsed = tasklist.parse_labels(partial)
+                multi_name = ', '.join(idmap[tid] for tid in parsed)
+                if len(multi_name) > 100:
+                    multi_name = multi_name[:96]
+                    multi_name, _ = multi_name.rsplit(',', maxsplit=1)
+                    multi_name = multi_name + ', ...'
+            except UserInputError as e:
+                parsed = []
+                error = t(_p(
+                    'argtype:taskid|error:parse_multi',
+                    "(Warning: {error})"
+                )).format(
+                    error=e.msg
+                )
+                remaining = 100 - len(error)
+                multi_name = f"{partial[:remaining-1]} {error}"
+
+            multi_option = appcmds.Choice(
+                name=multi_name,
+                value=partial
+            )
+            options = [multi_option]
+            # Regardless of parse status, show matches with last split, if they exist.
+            if ',' in partial:
+                _, last_split = partial.rsplit(',', maxsplit=1)
+            else:
+                last_split = partial
+            if '-' in last_split:
+                _, last_split = last_split.rsplit('-', maxsplit=1)
+                last_split = last_split.strip(' ')
+            else:
+                last_split = last_split.strip(' ')
+            matching = [(label, task) for label, task in labels if label.startswith(last_split)]
+            if not matching:
+                matching = [(label, task) for label, task in labels if last_split.lower() in task.lower()]
+            options.extend(
+                appcmds.Choice(name=task_string, value=label)
+                for label, task_string in matching
+            )
+        else:
             options = [
                 appcmds.Choice(
                     name=t(_p(
@@ -197,73 +333,34 @@ class TasklistCog(LionCog):
                     value=partial
                 )
             ]
-        else:
-            options = [
-                appcmds.Choice(name=task_string, value=label)
-                for label, task_string in matching
-            ]
         return options[:25]
 
-    async def is_tasklist_channel(self, channel) -> bool:
-        if not channel.guild:
-            return True
-        channels = (await self.settings.tasklist_channels.get(channel.guild.id)).value
-        return (not channels) or (channel in channels) or (channel.category in channels)
+    async def task_acmpl(self, interaction: discord.Interaction, partial: str) -> list[appcmds.Choice]:
+        """
+        Shared autocomplete for single task parameters.
+        """
+        return await self._task_acmpl(interaction.user.id, partial, multi=False)
+
+    async def tasks_acmpl(self, interaction: discord.Interaction, partial: str) -> list[appcmds.Choice]:
+        """
+        Shared autocomplete for multiple task parameters.
+        """
+        return await self._task_acmpl(interaction.user.id, partial, multi=True)
 
     @tasklist_group.command(
-        name=_p('cmd:tasklist_open', "open"),
+        name=_p('cmd:tasks_new', "new"),
         description=_p(
-            'cmd:tasklist_open|desc',
-            "Open your tasklist."
-        )
-    )
-    async def tasklist_open_cmd(self, ctx: LionContext):
-        # TODO: Further arguments for style, e.g. gui/block/text
-        if await self.is_tasklist_channel(ctx.channel):
-            await ctx.interaction.response.defer(thinking=True, ephemeral=True)
-            tasklist = await Tasklist.fetch(self.bot, self.data, ctx.author.id)
-            tasklistui = await TasklistUI.fetch(tasklist, ctx.channel, ctx.guild)
-            await tasklistui.summon()
-            await ctx.interaction.delete_original_response()
-        else:
-            t = self.bot.translator.t
-            channels = (await self.settings.tasklist_channels.get(ctx.guild.id)).value
-            viewable = [
-                channel for channel in channels
-                if (channel.permissions_for(ctx.author).send_messages
-                    or channel.permissions_for(ctx.author).send_messages_in_threads)
-            ]
-            embed = discord.Embed(
-                title=t(_p('cmd:tasklist_open|error:tasklist_channel|title', "Sorry, I can't do that here")),
-                colour=discord.Colour.brand_red()
-            )
-            if viewable:
-                embed.description = t(_p(
-                    'cmd:tasklist_open|error:tasklist_channel|desc',
-                    "Please use direct messages or one of the following channels "
-                    "or categories for managing your tasks:\n{channels}"
-                )).format(channels='\n'.join(channel.mention for channel in viewable))
-            else:
-                embed.description = t(_p(
-                    'cmd:tasklist_open|error:tasklist_channel|desc',
-                    "There are no channels available here where you may open your tasklist!"
-                ))
-            await ctx.reply(embed=embed, ephemeral=True)
-
-    @tasklist_group.command(
-        name=_p('cmd:tasklist_new', "new"),
-        description=_p(
-            'cmd:tasklist_new|desc',
+            'cmd:tasks_new|desc',
             "Add a new task to your tasklist."
         )
     )
     @appcmds.rename(
-        content=_p('cmd:tasklist_new|param:content', "task"),
-        parent=_p('cmd:tasklist_new|param:parent', 'parent')
+        content=_p('cmd:tasks_new|param:content', "task"),
+        parent=_p('cmd:tasks_new|param:parent', 'parent')
     )
     @appcmds.describe(
-        content=_p('cmd:tasklist_new|param:content|desc', "Content of your new task."),
-        parent=_p('cmd:tasklist_new|param:parent', 'Parent of this task.')
+        content=_p('cmd:tasks_new|param:content|desc', "Content of your new task."),
+        parent=_p('cmd:tasks_new|param:parent', 'Parent of this task.')
     )
     async def tasklist_new_cmd(self, ctx: LionContext,
                                content: appcmds.Range[str, 1, MAX_LENGTH],
@@ -282,52 +379,49 @@ class TasklistCog(LionCog):
             await ctx.interaction.edit_original_response(
                 embed=error_embed(
                     t(_p(
-                        'cmd:tasklist_new|error:parse_parent',
-                        "Could not find task number `{input}` in your tasklist."
+                        'cmd:tasks_new|error:parse_parent',
+                        "Could not find parent task number `{input}` in your tasklist."
                     )).format(input=parent)
                 ),
             )
             return
 
         # Create task
-        await tasklist.create_task(content, parentid=pid)
+        task = await tasklist.create_task(content, parentid=pid)
 
-        if await self.is_tasklist_channel(ctx.interaction.channel):
-            # summon tasklist
-            tasklistui = await TasklistUI.fetch(tasklist, ctx.channel, ctx.guild)
-            await tasklistui.summon()
-            await ctx.interaction.delete_original_response()
-        else:
-            # ack creation
-            embed = discord.Embed(
-                colour=discord.Colour.brand_green(),
-                description=t(_p(
-                    'cmd:tasklist_new|resp:success',
-                    "{tick} Task created successfully."
-                )).format(tick=self.bot.config.emojis.tick)
-            )
-            await ctx.interaction.edit_original_response(embed=embed)
+        # Ack creation
+        label = tasklist.labelid(task.taskid)
+        embed = discord.Embed(
+            colour=discord.Colour.brand_green(),
+            description=t(_p(
+                'cmd:tasks_new|resp:success',
+                "{tick} Created task `{label}`."
+            )).format(tick=self.bot.config.emojis.tick, label=tasklist.format_label(label))
+        )
+        await ctx.interaction.edit_original_response(
+            embed=embed,
+            view=None if ctx.channel.id in TasklistUI._live_[ctx.author.id] else TasklistCaller(self.bot)
+        )
+        self.bot.dispatch('tasklist_update', userid=ctx.author.id, channel=ctx.channel)
 
-    @tasklist_new_cmd.autocomplete('parent')
-    async def tasklist_new_cmd_parent_acmpl(self, interaction: discord.Interaction, partial: str):
-        return await self.task_acmpl(interaction, partial)
+    tasklist_new_cmd.autocomplete('parent')(task_acmpl)
 
     @tasklist_group.command(
-        name=_p('cmd:tasklist_edit', "edit"),
+        name=_p('cmd:tasks_edit', "edit"),
         description=_p(
-            'cmd:tasklist_edit|desc',
-            "Edit tasks in your tasklist."
+            'cmd:tasks_edit|desc',
+            "Edit a task in your tasklist."
         )
     )
     @appcmds.rename(
-        taskstr=_p('cmd:tasklist_edit|param:taskstr', "task"),
-        new_content=_p('cmd:tasklist_edit|param:new_content', "new_task"),
-        new_parent=_p('cmd:tasklist_edit|param:new_parent', "new_parent"),
+        taskstr=_p('cmd:tasks_edit|param:taskstr', "task"),
+        new_content=_p('cmd:tasks_edit|param:new_content', "new_task"),
+        new_parent=_p('cmd:tasks_edit|param:new_parent', "new_parent"),
     )
     @appcmds.describe(
-        taskstr=_p('cmd:tasklist_edit|param:taskstr|desc', "Which task do you want to update?"),
-        new_content=_p('cmd:tasklist_edit|param:new_content|desc', "What do you want to change the task to?"),
-        new_parent=_p('cmd:tasklist_edit|param:new_parent|desc', "Which task do you want to be the new parent?"),
+        taskstr=_p('cmd:tasks_edit|param:taskstr|desc', "Which task do you want to update?"),
+        new_content=_p('cmd:tasks_edit|param:new_content|desc', "What do you want to change the task to?"),
+        new_parent=_p('cmd:tasks_edit|param:new_parent|desc', "Which task do you want to be the new parent?"),
     )
     async def tasklist_edit_cmd(self, ctx: LionContext,
                                 taskstr: str,
@@ -345,8 +439,8 @@ class TasklistCog(LionCog):
             await ctx.interaction.response.send_message(
                 embed=error_embed(
                     t(_p(
-                        'cmd:tasklist_edit|error:parse_taskstr',
-                        "Could not find task number `{input}` in your tasklist."
+                        'cmd:tasks_edit|error:parse_taskstr',
+                        "Could not find target task number `{input}` in your tasklist."
                     )).format(input=taskstr)
                 ),
                 ephemeral=True,
@@ -361,8 +455,8 @@ class TasklistCog(LionCog):
                 await interaction.response.send_message(
                     embed=error_embed(
                         t(_p(
-                            'cmd:tasklist_edit|error:parse_parent',
-                            "Could not find task number `{input}` in your tasklist."
+                            'cmd:tasks_edit|error:parse_parent',
+                            "Could not find new parent task number `{input}` in your tasklist."
                         )).format(input=new_parent)
                     ),
                     ephemeral=True
@@ -377,25 +471,22 @@ class TasklistCog(LionCog):
             if args:
                 await tasklist.update_tasks(tid, **args)
 
-            if await self.is_tasklist_channel(ctx.channel):
-                tasklistui = await TasklistUI.fetch(tasklist, ctx.channel, ctx.guild)
-                await tasklistui.summon()
-            else:
-                embed = discord.Embed(
-                    colour=discord.Color.brand_green(),
-                    description=t(_p(
-                        'cmd:tasklist_edit|resp:success|desc',
-                        "{tick} Task updated successfully."
-                    )).format(tick=self.bot.config.emojis.tick),
-                )
-                await interaction.response.send_message(embed=embed, ephemeral=True)
+            embed = discord.Embed(
+                colour=discord.Color.brand_green(),
+                description=t(_p(
+                    'cmd:tasks_edit|resp:success|desc',
+                    "{tick} Task `{label}` updated."
+                )).format(tick=self.bot.config.emojis.tick, label=tasklist.format_label(tasklist.labelid(tid))),
+            )
+            await ctx.interaction.edit_original_response(
+                embed=embed,
+                view=None if ctx.channel.id in TasklistUI._live_[ctx.author.id] else TasklistCaller(self.bot)
+            )
+            self.bot.dispatch('tasklist_update', userid=ctx.author.id, channel=ctx.channel)
 
         if new_content or new_parent:
             # Manual edit route
             await handle_update(ctx.interaction, new_content, new_parent)
-            if not ctx.interaction.response.is_done():
-                await ctx.interaction.response.defer(thinking=True, ephemeral=True)
-                await ctx.interaction.delete_original_response()
         else:
             # Modal edit route
             task = tasklist.tasklist[tid]
@@ -410,22 +501,15 @@ class TasklistCog(LionCog):
             @editor.submit_callback()
             async def update_task(interaction: discord.Interaction):
                 await handle_update(interaction, editor.task.value, editor.parent.value)
-                if not interaction.response.is_done():
-                    await interaction.response.defer()
 
             await ctx.interaction.response.send_modal(editor)
 
-    @tasklist_edit_cmd.autocomplete('taskstr')
-    async def tasklist_edit_cmd_taskstr_acmpl(self, interaction: discord.Interaction, partial: str):
-        return await self.task_acmpl(interaction, partial)
-
-    @tasklist_edit_cmd.autocomplete('new_parent')
-    async def tasklist_edit_cmd_new_parent_acmpl(self, interaction: discord.Interaction, partial: str):
-        return await self.task_acmpl(interaction, partial)
+    tasklist_edit_cmd.autocomplete('taskstr')(task_acmpl)
+    tasklist_edit_cmd.autocomplete('new_parent')(task_acmpl)
 
     @tasklist_group.command(
-        name=_p('cmd:tasklist_clear', "clear"),
-        description=_p('cmd:tasklist_clear|desc', "Clear your tasklist.")
+        name=_p('cmd:tasks_clear', "clear"),
+        description=_p('cmd:tasks_clear|desc', "Clear your tasklist.")
     )
     async def tasklist_clear_cmd(self, ctx: LionContext):
         t = ctx.bot.translator.t
@@ -434,47 +518,47 @@ class TasklistCog(LionCog):
         await tasklist.update_tasklist(deleted_at=utc_now())
         await ctx.reply(
             t(_p(
-                'cmd:tasklist_clear|resp:success',
+                'cmd:tasks_clear|resp:success',
                 "Your tasklist has been cleared."
             )),
+            view=None if ctx.channel.id in TasklistUI._live_[ctx.author.id] else TasklistCaller(self.bot),
             ephemeral=True
         )
-        tasklistui = await TasklistUI.fetch(tasklist, ctx.channel, ctx.guild)
-        await tasklistui.summon()
+        self.bot.dispatch('tasklist_update', userid=ctx.author.id, channel=ctx.channel)
 
     @tasklist_group.command(
-        name=_p('cmd:tasklist_remove', "remove"),
+        name=_p('cmd:tasks_remove', "remove"),
         description=_p(
-            'cmd:tasklist_remove|desc',
+            'cmd:tasks_remove|desc',
             "Remove tasks matching all the provided conditions. (E.g. remove tasks completed before today)."
         )
     )
     @appcmds.rename(
-        taskidstr=_p('cmd:tasklist_remove|param:taskidstr', "tasks"),
-        created_before=_p('cmd:tasklist_remove|param:created_before', "created_before"),
-        updated_before=_p('cmd:tasklist_remove|param:updated_before', "updated_before"),
-        completed=_p('cmd:tasklist_remove|param:completed', "completed"),
-        cascade=_p('cmd:tasklist_remove|param:cascade', "cascade")
+        taskidstr=_p('cmd:tasks_remove|param:taskidstr', "tasks"),
+        created_before=_p('cmd:tasks_remove|param:created_before', "created_before"),
+        updated_before=_p('cmd:tasks_remove|param:updated_before', "updated_before"),
+        completed=_p('cmd:tasks_remove|param:completed', "completed"),
+        cascade=_p('cmd:tasks_remove|param:cascade', "cascade")
     )
     @appcmds.describe(
         taskidstr=_p(
-            'cmd:tasklist_remove|param:taskidstr|desc',
+            'cmd:tasks_remove|param:taskidstr|desc',
             "List of task numbers or ranges to remove (e.g. 1, 2, 5-7, 8.1-3, 9-)."
         ),
         created_before=_p(
-            'cmd:tasklist_remove|param:created_before|desc',
+            'cmd:tasks_remove|param:created_before|desc',
             "Only delete tasks created before the selected time."
         ),
         updated_before=_p(
-            'cmd:tasklist_remove|param:updated_before|desc',
+            'cmd:tasks_remove|param:updated_before|desc',
             "Only deleted tasks update (i.e. completed or edited) before the selected time."
         ),
         completed=_p(
-            'cmd:tasklist_remove|param:completed',
+            'cmd:tasks_remove|param:completed',
             "Only delete tasks which are (not) complete."
         ),
         cascade=_p(
-            'cmd:tasklist_remove|param:cascade',
+            'cmd:tasks_remove|param:cascade',
             "Whether to recursively remove subtasks of removed tasks."
         )
     )
@@ -506,7 +590,7 @@ class TasklistCog(LionCog):
                 # Explicitly error if none of the ranges matched
                 await ctx.interaction.edit_original_response(
                     embed=error_embed(
-                        'cmd:tasklist_remove_cmd|error:no_matching',
+                        'cmd:tasks_remove_cmd|error:no_matching',
                         "No tasks on your tasklist match `{input}`"
                     ).format(input=taskidstr)
                 )
@@ -515,8 +599,7 @@ class TasklistCog(LionCog):
             conditions.append(self.data.Task.taskid == taskids)
 
         if created_before is not None or updated_before is not None:
-            # TODO: Extract timezone from user settings
-            timezone = None
+            timezone = ctx.alion.timezone
             if created_before is not None:
                 conditions.append(self.data.Task.created_at <= created_before.cutoff(timezone))
             if updated_before is not None:
@@ -531,46 +614,52 @@ class TasklistCog(LionCog):
         if not tasks:
             await ctx.interaction.edit_original_response(
                 embed=error_embed(
-                    'cmd:tasklist_remove_cmd|error:no_matching',
+                    'cmd:tasks_remove_cmd|error:no_matching',
                     "No tasks on your tasklist matching all the given conditions!"
                 ).format(input=taskidstr)
             )
             return
         taskids = [task.taskid for task in tasks]
+        label = tasklist.format_label(tasklist.labelid(taskids[0]))
         await tasklist.update_tasks(*taskids, cascade=cascade, deleted_at=utc_now())
 
-        # Ack changes or summon tasklist
-        if await self.is_tasklist_channel(ctx.channel):
-            # Summon tasklist
-            tasklistui = await TasklistUI.fetch(tasklist, ctx.channel, ctx.guild)
-            await tasklistui.summon()
-            await ctx.interaction.delete_original_response()
-        else:
-            # Ack deletion
-            embed = discord.Embed(
-                colour=discord.Colour.brand_green(),
-                description=t(_p(
-                    'cmd:tasklist_remove|resp:success',
-                    "{tick} tasks deleted."
-                )).format(tick=self.bot.config.emojis.tick)
+        # Ack changes and summon tasklist
+        embed = discord.Embed(
+            colour=discord.Colour.brand_green(),
+            description=t(_np(
+                'cmd:tasks_remove|resp:success',
+                "{tick} Deleted task `{label}`",
+                "{tick} Deleted `{count}` tasks from your tasklist.",
+                len(taskids)
+            )).format(
+                tick=self.bot.config.emojis.tick,
+                label=label,
+                count=len(taskids)
             )
-            await ctx.interaction.edit_original_response(embed=embed)
+        )
+        await ctx.interaction.edit_original_response(
+            embed=embed,
+            view=None if ctx.channel.id in TasklistUI._live_[ctx.author.id] else TasklistCaller(self.bot)
+        )
+        self.bot.dispatch('tasklist_update', userid=ctx.author.id, channel=ctx.channel)
+
+    tasklist_remove_cmd.autocomplete('taskidstr')(tasks_acmpl)
 
     @tasklist_group.command(
-        name=_p('cmd:tasklist_tick', "tick"),
-        description=_p('cmd:tasklist_tick|desc', "Mark the given tasks as completed.")
+        name=_p('cmd:tasks_tick', "tick"),
+        description=_p('cmd:tasks_tick|desc', "Mark the given tasks as completed.")
     )
     @appcmds.rename(
-        taskidstr=_p('cmd:tasklist_tick|param:taskidstr', "tasks"),
-        cascade=_p('cmd:tasklist_tick|param:cascade', "cascade")
+        taskidstr=_p('cmd:tasks_tick|param:taskidstr', "tasks"),
+        cascade=_p('cmd:tasks_tick|param:cascade', "cascade")
     )
     @appcmds.describe(
         taskidstr=_p(
-            'cmd:tasklist_tick|param:taskidstr|desc',
+            'cmd:tasks_tick|param:taskidstr|desc',
             "List of task numbers or ranges to remove (e.g. 1, 2, 5-7, 8.1-3, 9-)."
         ),
         cascade=_p(
-            'cmd:tasklist_tick|param:cascade|desc',
+            'cmd:tasks_tick|param:cascade|desc',
             "Whether to also mark all subtasks as complete."
         )
     )
@@ -596,7 +685,7 @@ class TasklistCog(LionCog):
                 # Explicitly error if none of the ranges matched
                 await ctx.interaction.edit_original_response(
                     embed=error_embed(
-                        'cmd:tasklist_remove_cmd|error:no_matching',
+                        'cmd:tasks_remove_cmd|error:no_matching',
                         "No tasks on your tasklist match `{input}`"
                     ).format(input=taskidstr)
                 )
@@ -610,38 +699,43 @@ class TasklistCog(LionCog):
             if ctx.guild:
                 self.bot.dispatch('tasks_completed', ctx.author, *taskids)
 
-        # Ack changes or summon tasklist
-        if await self.is_tasklist_channel(ctx.channel):
-            # Summon tasklist
-            tasklistui = await TasklistUI.fetch(tasklist, ctx.channel, ctx.guild)
-            await tasklistui.summon()
-            await ctx.interaction.delete_original_response()
-        else:
-            # Ack edit
-            embed = discord.Embed(
-                colour=discord.Colour.brand_green(),
-                description=t(_p(
-                    'cmd:tasklist_tick|resp:success',
-                    "{tick} tasks marked as complete."
-                )).format(tick=self.bot.config.emojis.tick)
+        # Ack changes and summon tasklist
+        embed = discord.Embed(
+            colour=discord.Colour.brand_green(),
+            description=t(_np(
+                'cmd:tasks_tick|resp:success',
+                "{tick} Marked `{label}` as complete.",
+                "{tick} Marked `{count}` tasks as complete.",
+                len(taskids)
+            )).format(
+                tick=self.bot.config.emojis.tick,
+                count=len(taskids),
+                label=tasklist.format_label(tasklist.labelid(taskids[0])) if taskids else '-'
             )
-            await ctx.interaction.edit_original_response(embed=embed)
+        )
+        await ctx.interaction.edit_original_response(
+            embed=embed,
+            view=None if ctx.channel.id in TasklistUI._live_[ctx.author.id] else TasklistCaller(self.bot)
+        )
+        self.bot.dispatch('tasklist_update', userid=ctx.author.id, channel=ctx.channel)
+
+    tasklist_tick_cmd.autocomplete('taskidstr')(tasks_acmpl)
 
     @tasklist_group.command(
-        name=_p('cmd:tasklist_untick', "untick"),
-        description=_p('cmd:tasklist_untick|desc', "Mark the given tasks as incomplete.")
+        name=_p('cmd:tasks_untick', "untick"),
+        description=_p('cmd:tasks_untick|desc', "Mark the given tasks as incomplete.")
     )
     @appcmds.rename(
-        taskidstr=_p('cmd:tasklist_untick|param:taskidstr', "taskids"),
-        cascade=_p('cmd:tasklist_untick|param:cascade', "cascade")
+        taskidstr=_p('cmd:tasks_untick|param:taskidstr', "taskids"),
+        cascade=_p('cmd:tasks_untick|param:cascade', "cascade")
     )
     @appcmds.describe(
         taskidstr=_p(
-            'cmd:tasklist_untick|param:taskidstr|desc',
+            'cmd:tasks_untick|param:taskidstr|desc',
             "List of task numbers or ranges to remove (e.g. 1, 2, 5-7, 8.1-3, 9-)."
         ),
         cascade=_p(
-            'cmd:tasklist_untick|param:cascade|desc',
+            'cmd:tasks_untick|param:cascade|desc',
             "Whether to also mark all subtasks as incomplete."
         )
     )
@@ -666,7 +760,7 @@ class TasklistCog(LionCog):
             # Explicitly error if none of the ranges matched
             await ctx.interaction.edit_original_response(
                 embed=error_embed(
-                    'cmd:tasklist_remove_cmd|error:no_matching',
+                    'cmd:tasks_remove_cmd|error:no_matching',
                     "No tasks on your tasklist match `{input}`"
                 ).format(input=taskidstr)
             )
@@ -678,22 +772,27 @@ class TasklistCog(LionCog):
         if taskids:
             await tasklist.update_tasks(*taskids, cascade=cascade, completed_at=None)
 
-        # Ack changes or summon tasklist
-        if await self.is_tasklist_channel(ctx.channel):
-            # Summon tasklist
-            tasklistui = await TasklistUI.fetch(tasklist, ctx.channel, ctx.guild)
-            await tasklistui.summon()
-            await ctx.interaction.delete_original_response()
-        else:
-            # Ack edit
-            embed = discord.Embed(
-                colour=discord.Colour.brand_green(),
-                description=t(_p(
-                    'cmd:tasklist_untick|resp:success',
-                    "{tick} tasks marked as incomplete."
-                )).format(tick=self.bot.config.emojis.tick)
+        # Ack changes and summon tasklist
+        embed = discord.Embed(
+            colour=discord.Colour.brand_green(),
+            description=t(_np(
+                'cmd:tasks_untick|resp:success',
+                "{tick} Marked `{label}` as incomplete.",
+                "{tick} Marked `{count}` tasks as incomplete.",
+                len(taskids)
+            )).format(
+                tick=self.bot.config.emojis.tick,
+                count=len(taskids),
+                label=tasklist.format_label(tasklist.labelid(taskids[0])) if taskids else '-'
             )
-            await ctx.interaction.edit_original_response(embed=embed)
+        )
+        await ctx.interaction.edit_original_response(
+            embed=embed,
+            view=None if ctx.channel.id in TasklistUI._live_[ctx.author.id] else TasklistCaller(self.bot)
+        )
+        self.bot.dispatch('tasklist_update', userid=ctx.author.id, channel=ctx.channel)
+
+    tasklist_untick_cmd.autocomplete('taskidstr')(tasks_acmpl)
 
     # Setting Commands
     @LionCog.placeholder_group

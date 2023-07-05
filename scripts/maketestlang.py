@@ -62,13 +62,16 @@ def process_pot(domain, path):
     po.save(targetpo)
     po.save_as_mofile(targetmo)
     print(f"Processed {entries} from POT {domain}.")
+    return entries
 
 
 def process_all():
+    total = 0
     for file in os.scandir(templates):
         if file.name.endswith('pot'):
             print(f"Processing pot: {file.name[:-4]}")
-            process_pot(file.name[:-4], file.path)
+            total += process_pot(file.name[:-4], file.path)
+    print(f"Total strings: {total}")
 
 
 if __name__ == '__main__':

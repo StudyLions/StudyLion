@@ -200,7 +200,11 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
     @property
     def long_desc(self):
         t = ctx_translator.get().t
-        return t(self._long_desc)
+        bot = ctx_bot.get()
+        return t(self._long_desc).format(
+            bot=bot,
+            cmds=bot.core.mention_cache
+        )
 
     @property
     def display_name(self):
@@ -210,12 +214,20 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
     @property
     def desc(self):
         t = ctx_translator.get().t
-        return t(self._desc)
+        bot = ctx_bot.get()
+        return t(self._desc).format(
+            bot=bot,
+            cmds=bot.core.mention_cache
+        )
 
     @property
     def accepts(self):
         t = ctx_translator.get().t
-        return t(self._accepts)
+        bot = ctx_bot.get()
+        return t(self._accepts).format(
+            bot=bot,
+            cmds=bot.core.mention_cache
+        )
 
     async def write(self, **kwargs) -> None:
         await super().write(**kwargs)

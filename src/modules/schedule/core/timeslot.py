@@ -210,16 +210,16 @@ class TimeSlot:
             await batchrun_per_second(coros, 5)
 
             # Save messageids
-            if sessions:
-                tmptable = TemporaryTable(
-                    '_gid', '_sid', '_mid',
-                    types=('BIGINT', 'INTEGER', 'BIGINT')
-                )
-                tmptable.values = [
-                    (sg.data.guildid, sg.data.slotid, sg.messageid)
-                    for sg in sessions
-                    if sg.messageid is not None
-                ]
+            tmptable = TemporaryTable(
+                '_gid', '_sid', '_mid',
+                types=('BIGINT', 'INTEGER', 'BIGINT')
+            )
+            tmptable.values = [
+                (sg.data.guildid, sg.data.slotid, sg.messageid)
+                for sg in sessions
+                if sg.messageid is not None
+            ]
+            if tmptable.values:
                 await Data.ScheduleSession.table.update_where(
                     guildid=tmptable['_gid'], slotid=tmptable['_sid']
                 ).set(

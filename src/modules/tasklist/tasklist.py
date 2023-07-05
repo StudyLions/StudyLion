@@ -6,7 +6,11 @@ from meta import LionBot
 from meta.errors import UserInputError
 from utils.lib import utc_now
 
+from . import babel
 from .data import TasklistData
+
+
+_p = babel._p
 
 
 class Tasklist:
@@ -207,7 +211,7 @@ class Tasklist:
         """
         return '.'.join(map(str, label)) + '.' * (len(label) == 1)
 
-    def parse_labels(self, labelstr: str) -> Optional[list[str]]:
+    def parse_labels(self, labelstr: str) -> Optional[list[int]]:
         """
         Parse a comma separated list of labels and label ranges into a list of labels.
 
@@ -239,7 +243,13 @@ class Tasklist:
 
                     if len(end_label) > 1 and head != end_label[:-1]:
                         # Error: Parents don't match in range ...
-                        raise UserInputError("Parents don't match in range `{range}`")
+                        t = self.bot.translator.t
+                        raise UserInputError(
+                            t(_p(
+                                'tasklist|parse:multi-range|error:parents_match',
+                                "Parents don't match in range `{range}`"
+                            )).format(range=split)
+                        )
 
                     for tail in range(max(start_tail, 1), end_tail + 1):
                         label = (*head, tail)
@@ -255,5 +265,11 @@ class Tasklist:
                     taskids.add(labelmap[start_label])
             else:
                 # Error
-                raise UserInputError("Could not parse `{range}` as a task number or range.")
+                t = self.bot.translator.t
+                raise UserInputError(
+                    t(_p(
+                        'tasklist|parse:multi-range|error:parse',
+                        "Could not parse `{range}` as a task number or range."
+                    )).format(range=split)
+                )
         return list(taskids)

@@ -113,12 +113,14 @@ class TasklistSettings(SettingGroup):
         _display_name = _p('guildset:tasklist_channels', "tasklist_channels")
         _desc = _p(
             'guildset:tasklist_channels|desc',
-            "Channels in which to allow the tasklist."
+            "Channels in which to publicly display member tasklists."
         )
         _long_desc = _p(
             'guildset:tasklist_channels|long_desc',
-            "If set, members will only be able to open their tasklist in these channels.\n"
-            "If a category is selected, this will allow all channels under that category."
+            "A member's tasklist (from {cmds[tasklist]}) is usually only visible to the member themselves. "
+            "If set, tasklists opened in `tasklist_channels` will be visible to all members, "
+            "and the interface will have a much longer expiry period. "
+            "If a category is provided, this will apply to all channels under the category."
         )
         _accepts = _p(
             'guildset:tasklist_channels|accepts',
@@ -139,12 +141,12 @@ class TasklistSettings(SettingGroup):
             if self.data:
                 resp = t(_p(
                     'guildset:tasklist_channels|set_response|set',
-                    "Members may now open their tasklist in the following channels: {channels}"
+                    "Tasklists will now be publicly displayed in the following channels: {channels}"
                 )).format(channels=self.formatted)
             else:
                 resp = t(_p(
                     'guildset:tasklist_channels|set_response|unset',
-                    "Members may now open their tasklist in any channel."
+                    "Member tasklists will never be publicly displayed."
                 ))
             return resp
 

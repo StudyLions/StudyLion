@@ -1,5 +1,9 @@
 from typing import Optional
+from collections import defaultdict
+from enum import Enum
+import asyncio
 import re
+from io import StringIO
 
 import discord
 from discord.ui.select import select, Select, SelectOption
@@ -24,6 +28,22 @@ checked_emoji = conf.emojis.task_checked
 unchecked_emoji = conf.emojis.task_unchecked
 
 
+class TasklistCaller(LeoUI):
+    def __init__(self, bot, **kwargs):
+        kwargs.setdefault('timeout', None)
+        super().__init__(**kwargs)
+        self.bot = bot
+        self.tasklist_callback.label = bot.translator.t(_p(
+            'ui:tasklist_caller|button:tasklist|label',
+            "Open Tasklist"
+        ))
+
+    @button(label='TASKLIST_PLACEHOLDER', custom_id='open_tasklist', style=ButtonStyle.blurple)
+    async def tasklist_callback(self, press: discord.Interaction, pressed: Button):
+        cog = self.bot.get_cog('TasklistCog')
+        await cog.call_tasklist(press)
+
+
 class SingleEditor(FastModal):
     task: TextInput = TextInput(
         label='',
@@ -37,7 +57,7 @@ class SingleEditor(FastModal):
 
     parent: TextInput = TextInput(
         label='',
-        max_length=10,
+        max_length=120,
         required=False
     )
 
@@ -96,6 +116,7 @@ class BulkEditor(LeoModal):
 
         self.tasklist = tasklist
         self.bot = tasklist.bot
+        self.labelled = tasklist.labelled
         self.userid = tasklist.userid
 
         self.lines = self.format_tasklist()
@@ -118,7 +139,7 @@ class BulkEditor(LeoModal):
         """
         Format the tasklist into lines of editable text.
         """
-        labelled = self.tasklist.labelled
+        labelled = self.labelled
         lines = {}
         total_len = 0
         for label, task in labelled.items():
@@ -236,22 +257,64 @@ class BulkEditor(LeoModal):
                         break
 
 
+class UIMode(Enum):
+    TOGGLE = (
+        _p(
+            'ui:tasklist|menu:main|mode:toggle|placeholder',
+            "Select to Toggle"
+        ),
+        _p(
+            'ui:tasklist|menu:sub|mode:toggle|placeholder',
+            "Task '{label}' subtasks:"
+        ),
+    )
+    EDIT = (
+        _p(
+            'ui:tasklist|menu:main|mode:edit|placeholder',
+            "Select to Edit"
+        ),
+        _p(
+            'ui:tasklist|menu:sub|mode:edit|placeholder',
+            "Task '{label}' subtasks:"
+        ),
+    )
+    DELETE = (
+        _p(
+            'ui:tasklist|menu:main|mode:delete|placeholder',
+            "Select to Delete"
+        ),
+        _p(
+            'ui:tasklist|menu:sub|mode:delete|placeholder',
+            "Task '{label}' subtasks:"
+        ),
+    )
+
+    @property
+    def main_placeholder(self):
+        return self.value[0]
+
+    @property
+    def sub_placeholder(self):
+        return self.value[1]
+
+
 class TasklistUI(BasePager):
     """
     Paged UI panel for managing the tasklist.
     """
     # Cache of live tasklist widgets
-    # (channelid, userid) -> Tasklist
-    _live_ = {}
+    # userid -> channelid -> TasklistUI
+    _live_ = defaultdict(dict)
 
     def __init__(self,
                  tasklist: Tasklist,
                  channel: discord.abc.Messageable, guild: Optional[discord.Guild] = None, **kwargs):
-        kwargs.setdefault('timeout', 3600)
+        kwargs.setdefault('timeout', 600)
         super().__init__(**kwargs)
 
-        self.tasklist = tasklist
         self.bot = tasklist.bot
+        self.tasklist = tasklist
+        self.labelled = tasklist.labelled
         self.userid = tasklist.userid
         self.channel = channel
         self.guild = guild
@@ -263,21 +326,508 @@ class TasklistUI(BasePager):
         self._channelid = channel.id
         self.current_page = None
 
-        self._deleting = False
-
+        self.mode: UIMode = UIMode.TOGGLE
         self._message: Optional[discord.Message] = None
+        self._last_parentid: Optional[int] = None
+        self._subtree_root: Optional[int] = None
 
-        self.button_labels()
         self.set_active()
 
+    # ----- UI API -----
     @classmethod
-    async def fetch(cls, tasklist, channel, *args, **kwargs):
-        key = (channel.id, tasklist.userid)
-        if key not in cls._live_:
+    def fetch(cls, tasklist, channel, *args, **kwargs):
+        userid = tasklist.userid
+        channelid = channel.id
+        if channelid not in cls._live_[userid]:
             self = cls(tasklist, channel, *args, **kwargs)
-            cls._live_[key] = self
-        return cls._live_[key]
+            cls._live_[userid][channelid] = self
+        return cls._live_[userid][channelid]
 
+    async def run(self, interaction: discord.Interaction):
+        await self.refresh()
+        await self.redraw(interaction)
+
+    async def summon(self, force=False):
+        """
+        Delete, refresh, and redisplay the tasklist widget as a non-ephemeral message in the current channel.
+
+        May raise `discord.HTTPException` (from `redraw`) if something goes wrong with the send.
+        """
+        await self.refresh()
+
+        resend = force or not await self._check_recent()
+        if resend and self._message:
+            # Delete our current message if possible
+            try:
+                await self._message.delete()
+            except discord.HTTPException:
+                # If we cannot delete, it has probably already been deleted
+                # Or we don't have permission somehow
+                pass
+            self._message = None
+
+        # Redraw
+        try:
+            await self.redraw()
+        except discord.HTTPException:
+            if self._message:
+                self._message = None
+                await self.redraw()
+
+    async def page_cmd(self, interaction: discord.Interaction, value: str):
+        return await Pager.page_cmd(self, interaction, value)
+
+    async def page_acmpl(self, interaction: discord.Interaction, partial: str):
+        return await Pager.page_acmpl(self, interaction, partial)
+
+    # ----- Utilities / Workers ------
+    async def _check_recent(self) -> bool:
+        """
+        Check whether the tasklist message is a "recent" message in the channel.
+        """
+        if self._message is not None:
+            height = 0
+            async for message in self.channel.history(limit=5):
+                if message.id == self._message.id:
+                    return True
+                if message.id < self._message.id:
+                    return False
+                if message.attachments or message.embeds or height > 20:
+                    return False
+                height += message.content.count('\n')
+            return False
+        return False
+
+    def _format_page(self, page: list[tuple[tuple[int, ...], TasklistData.Task]]) -> str:
+        """
+        Format a single block of page data into the task codeblock.
+        """
+        lines = []
+        numpad = max(sum(len(str(counter)) - 1 for counter in label) for label, _ in page)
+        for label, task in page:
+            label_string = '.'.join(map(str, label)) + '.' * (len(label) == 1)
+            number = f"**`{label_string}`**"
+            if len(label) > 1:
+                depth = sum(len(str(c)) + 1 for c in label[:-1]) * ' '
+                depth = f"`{depth}`"
+            else:
+                depth = ''
+            task_string = "{depth}{cross}{number} {content}{cross}".format(
+                depth=depth,
+                number=number,
+                emoji=unchecked_emoji if task.completed_at is None else checked_emoji,
+                content=task.content,
+                cross='~~' if task.completed_at is not None else ''
+            )
+            lines.append(task_string)
+        return '\n'.join(lines)
+
+    def _format_page_text(self, page: list[tuple[tuple[int, ...], TasklistData.Task]]) -> str:
+        """
+        Format a single block of page data into the task codeblock.
+        """
+        lines = []
+        numpad = max(sum(len(str(counter)) - 1 for counter in label) for label, _ in page)
+        for label, task in page:
+            box = '[ ]' if task.completed_at is None else f"[{checkmark}]"
+            task_string = "{prepad}   {depth} {content}".format(
+                prepad=' ' * numpad,
+                depth=(len(label) - 1) * '   ',
+                content=task.content
+            )
+            label_string = '.'.join(map(str, label)) + '.' * (len(label) == 1)
+            taskline = box + ' ' + label_string + task_string[len(label_string):]
+            lines.append(taskline)
+        return "```md\n{}```".format('\n'.join(lines))
+
+    def _format_options(self, task_block) -> list[SelectOption]:
+        options = []
+        for lbl, task in task_block:
+            value = str(task.taskid)
+            lblstr = '.'.join(map(str, lbl)) + '.' * (len(lbl) == 1)
+            name = f"{lblstr} {task.content[:100 - len(lblstr) - 1]}"
+            emoji = unchecked_emoji if task.completed_at is None else checked_emoji
+            options.append(SelectOption(label=name, value=value, emoji=emoji))
+        return options
+
+    def _format_parent(self, parentid) -> str:
+        parentstr = ''
+        if parentid is not None:
+            task = self.tasklist.tasklist.get(parentid, None)
+            if task:
+                parent_label = self.tasklist.format_label(self.tasklist.labelid(parentid)).strip('.')
+                parentstr = f"{parent_label}: {task.content}"
+        return parentstr
+
+    def _parse_parent(self, provided: str) -> Optional[int]:
+        """
+        Parse a provided parent field.
+
+        May raise UserInputError if parsing fails.
+        """
+        t = self.bot.translator.t
+        provided = provided.strip()
+
+        if provided.split(':', maxsplit=1)[0].replace('.', '').strip().isdigit():
+            # Assume task label
+            label, _, _ = provided.partition(':')
+            label = label.strip()
+            pid = self.tasklist.parse_label(label)
+            if pid is None:
+                raise UserInputError(
+                    t(_p(
+                        'ui:tasklist_single_editor|field:parent|error:parse_id',
+                        "Could not find the given parent task number `{input}` in your tasklist."
+                    )).format(input=label)
+                )
+        elif provided:
+            # Search for matching tasks
+            matching = [
+                task.taskid
+                for task in self.tasklist.tasklist.values()
+                if provided.lower() in task.content.lower()
+            ]
+            if len(matching) > 1:
+                raise UserInputError(
+                    t(_p(
+                        'ui:tasklist_single_editor|field:parent|error:multiple_matching',
+                        "Multiple tasks matching given parent task `{input}`. Please use a task number instead!"
+                    )).format(input=provided)
+                )
+            elif not matching:
+                raise UserInputError(
+                    t(_p(
+                        'ui:tasklist_single_editor|field:parent|error:no_matching',
+                        "No tasks matching given parent task `{input}`."
+                    )).format(input=provided)
+                )
+            pid = matching[0]
+        else:
+            pid = None
+
+        return pid
+
+    # ----- Components -----
+    async def _toggle_menu(self, interaction: discord.Interaction, selected: Select, subtree: bool):
+        await interaction.response.defer()
+        taskids = list(map(int, selected.values))
+        tasks = await self.tasklist.fetch_tasks(*taskids)
+        to_complete = [task for task in tasks if task.completed_at is None]
+        to_uncomplete = [task for task in tasks if task.completed_at is not None]
+        if to_complete:
+            await self.tasklist.update_tasks(
+                *(t.taskid for t in to_complete),
+                cascade=True,
+                completed_at=utc_now()
+            )
+            if self.guild:
+                if (member := self.guild.get_member(self.userid)):
+                    self.bot.dispatch('tasks_completed', member, *(t.taskid for t in to_complete))
+        if to_uncomplete:
+            await self.tasklist.update_tasks(
+                *(t.taskid for t in to_uncomplete),
+                completed_at=None
+            )
+
+        # If the selected tasks share a parent, and we are not in the subtree menu, change the subtree root
+        if taskids and not subtree:
+            labelled = self.labelled
+            mapper = {t.taskid: label for label, t in labelled.items()}
+            shared_root = None
+            for task in tasks:
+                pid = task.parentid
+                plabel = mapper[pid] if pid else ()
+                if shared_root:
+                    shared_root = tuple(i for i, j in zip(shared_root, plabel) if i == j)
+                else:
+                    shared_root = plabel
+                if not shared_root:
+                    break
+            if shared_root:
+                self._subtree_root = labelled[shared_root].taskid
+
+        self.bot.dispatch('tasklist_update', userid=self.userid, channel=self.channel, summon=False)
+
+    async def _delete_menu(self, interaction: discord.Interaction, selected: Select, subtree: bool):
+        await interaction.response.defer()
+        taskids = list(map(int, selected.values))
+        if taskids:
+            await self.tasklist.update_tasks(
+                *taskids,
+                cascade=True,
+                deleted_at=utc_now()
+            )
+            self.bot.dispatch('tasklist_update', userid=self.userid, channel=self.channel, summon=False)
+
+    async def _edit_menu(self, interaction: discord.Interaction, selected: Select, subtree: bool):
+        if not selected.values:
+            await interaction.response.defer()
+        else:
+            t = self.bot.translator.t
+
+            taskid = int(selected.values[0])
+            task = self.tasklist.tasklist[taskid]
+
+            editor = SingleEditor(
+                title=t(_p('ui:tasklist|menu:edit|modal:title', "Edit task"))
+            )
+            editor.parent.default = self._format_parent(task.parentid)
+            editor.task.default = task.content
+
+            @editor.submit_callback()
+            async def create_task(interaction):
+                new_task = editor.task.value
+                new_parentid = self._parse_parent(editor.parent.value)
+                await interaction.response.defer()
+                if task.content != new_task or task.parentid != new_parentid:
+                    await task.update(content=new_task, parentid=new_parentid)
+                    self._last_parentid = new_parentid
+                    if not subtree:
+                        self._subtree_root = new_parentid
+                    self.bot.dispatch('tasklist_update', userid=self.userid, channel=self.channel, summon=False)
+
+            await interaction.response.send_modal(editor)
+
+    @select(placeholder="MAIN_MENU_PLACEHOLDER")
+    async def main_menu(self, interaction: discord.Interaction, selected: Select):
+        if self.mode is UIMode.TOGGLE:
+            await self._toggle_menu(interaction, selected, False)
+        elif self.mode is UIMode.DELETE:
+            await self._delete_menu(interaction, selected, False)
+        elif self.mode is UIMode.EDIT:
+            await self._edit_menu(interaction, selected, False)
+
+    async def main_menu_refresh(self):
+        t = self.bot.translator.t
+        menu = self.main_menu
+        menu.placeholder = t(self.mode.main_placeholder)
+
+        block = self._pages[self.page_num % len(self._pages)]
+        options = self._format_options(block)
+
+        menu.options = options
+        menu.min_values = 0
+        menu.max_values = len(options) if self.mode is not UIMode.EDIT else 1
+
+    @select(placeholder="SUB_MENU_PLACEHOLDER")
+    async def sub_menu(self, interaction: discord.Interaction, selected: Select):
+        if self.mode is UIMode.TOGGLE:
+            await self._toggle_menu(interaction, selected, True)
+        elif self.mode is UIMode.DELETE:
+            await self._delete_menu(interaction, selected, True)
+        elif self.mode is UIMode.EDIT:
+            await self._edit_menu(interaction, selected, True)
+
+    async def sub_menu_refresh(self):
+        t = self.bot.translator.t
+        menu = self.sub_menu
+
+        options = []
+        if self._subtree_root:
+            labelled = self.labelled
+            mapper = {t.taskid: label for label, t in labelled.items()}
+            rootid = self._subtree_root
+            rootlabel = mapper.get(rootid, ())
+            if rootlabel:
+                menu.placeholder = t(self.mode.sub_placeholder).format(
+                    label=self.tasklist.format_label(rootlabel).strip('.'),
+                )
+                children = {
+                    label: taskid
+                    for label, taskid in labelled.items()
+                    if all(i == j for i, j in zip(label, rootlabel))
+                }
+                this_page = self._pages[self.page_num % len(self._pages)]
+                if len(children) <= 25:
+                    # Show all the children even if they don't display on the page
+                    block = list(children.items())
+                else:
+                    # Only show the children which display
+                    page_children = [
+                        (label, tid) for label, tid in this_page if label in children and tid != rootid
+                    ][:24]
+                    if page_children:
+                        block = [(rootlabel, rootid), *page_children]
+                    else:
+                        block = []
+                # Special case if the subtree is exactly the same as the page
+                if not (len(block) == len(this_page) and all(i[0] == j[0] for i, j in zip(block, this_page))):
+                    options = self._format_options(block)
+
+        menu.options = options
+        menu.min_values = 0
+        menu.max_values = len(options) if self.mode is not UIMode.EDIT else 1
+
+    @button(label='NEW_BUTTON_PLACEHOLDER', style=ButtonStyle.green, emoji=conf.emojis.task_new)
+    async def new_button(self, press: discord.Interaction, pressed: Button):
+        t = self.bot.translator.t
+        editor = SingleEditor(
+            title=t(_p('ui:tasklist_single_editor|title', "Add task"))
+        )
+        editor.parent.default = self._format_parent(self._last_parentid)
+
+        @editor.submit_callback()
+        async def create_task(interaction):
+            new_task = editor.task.value
+            parent = editor.parent.value
+            pid = self._parse_parent(parent)
+            self._last_parentid = pid
+            self._subtree_root = pid
+            await interaction.response.defer()
+            await self.tasklist.create_task(new_task, parentid=pid)
+            self.bot.dispatch('tasklist_update', userid=self.userid, channel=self.channel, summon=False)
+
+        await press.response.send_modal(editor)
+
+    async def new_button_refresh(self):
+        self.new_button.label = ""
+
+    @button(label="EDIT_MODE_PLACEHOLDER", style=ButtonStyle.blurple)
+    async def edit_mode_button(self, press: discord.Interaction, pressed: Button):
+        await press.response.defer()
+        self.mode = UIMode.EDIT
+        await self.redraw()
+
+    async def edit_mode_button_refresh(self):
+        t = self.bot.translator.t
+        button = self.edit_mode_button
+
+        button.style = ButtonStyle.blurple if (self.mode is UIMode.EDIT) else ButtonStyle.grey
+        button.label = t(_p(
+            'ui:tasklist|button:edit_mode|label',
+            "Edit"
+        ))
+
+    @button(label="DELETE_MODE_PLACEHOLDER", style=ButtonStyle.blurple)
+    async def delete_mode_button(self, press: discord.Interaction, pressed: Button):
+        await press.response.defer()
+        self.mode = UIMode.DELETE
+        await self.redraw()
+
+    async def delete_mode_button_refresh(self):
+        t = self.bot.translator.t
+        button = self.delete_mode_button
+
+        button.style = ButtonStyle.blurple if (self.mode is UIMode.DELETE) else ButtonStyle.grey
+        button.label = t(_p(
+            'ui:tasklist|button:delete_mode|label',
+            "Delete"
+        ))
+
+    @button(label="TOGGLE_MODE_PLACEHOLDER", style=ButtonStyle.blurple)
+    async def toggle_mode_button(self, press: discord.Interaction, pressed: Button):
+        await press.response.defer()
+        self.mode = UIMode.TOGGLE
+        await self.redraw()
+
+    async def toggle_mode_button_refresh(self):
+        t = self.bot.translator.t
+        button = self.toggle_mode_button
+
+        button.style = ButtonStyle.blurple if (self.mode is UIMode.TOGGLE) else ButtonStyle.grey
+        button.label = t(_p(
+            'ui:tasklist|button:toggle_mode|label',
+            "Toggle"
+        ))
+
+    @button(label="EDIT_BULK_PLACEHOLDER", style=ButtonStyle.blurple)
+    async def edit_bulk_button(self, press: discord.Interaction, pressed: Button):
+        editor = BulkEditor(self.tasklist)
+
+        @editor.add_callback
+        async def editor_callback(interaction: discord.Interaction):
+            self.bot.dispatch('tasklist_update', userid=self.userid, channel=self.channel, summon=False)
+
+        await press.response.send_modal(editor)
+
+    async def edit_bulk_button_refresh(self):
+        t = self.bot.translator.t
+        button = self.edit_bulk_button
+        button.disabled = (len(self.labelled) == 0)
+        button.label = t(_p(
+            'ui:tasklist|button:edit_bulk|label',
+            "Bulk Edit"
+        ))
+
+    @button(label='CLEAR_PLACEHOLDER', style=ButtonStyle.red)
+    async def clear_button(self, press: discord.Interaction, pressed: Button):
+        await press.response.defer()
+        await self.tasklist.update_tasklist(
+            deleted_at=utc_now(),
+        )
+        self.bot.dispatch('tasklist_update', userid=self.userid, channel=self.channel, summon=False)
+
+    async def clear_button_refresh(self):
+        self.clear_button.label = self.bot.translator.t(_p(
+            'ui:tasklist|button:clear|label', "Clear Tasklist"
+        ))
+        self.clear_button.disabled = (len(self.labelled) == 0)
+
+    @button(label="SAVE_PLACEHOLDER", style=ButtonStyle.grey, emoji=conf.emojis.task_save)
+    async def save_button(self, press: discord.Interaction, pressed: Button):
+        """
+        Send the tasklist to the user as a markdown file.
+        """
+        t = self.bot.translator.t
+        await press.response.defer(thinking=True, ephemeral=True)
+
+        # Build the tasklist file
+        # Lazy way of getting the tasklist
+        contents = BulkEditor(self.tasklist).tasklist_editor.default
+        with StringIO(contents) as fp:
+            fp.seek(0)
+            file = discord.File(fp, filename='tasklist.md')
+            contents = t(_p(
+                'ui:tasklist|button:save|dm:contents',
+                "Your tasklist as of {now} is attached. Click here to jump back: {jump}"
+            )).format(
+                now=discord.utils.format_dt(utc_now()),
+                jump=press.message.jump_url
+            )
+            try:
+                await press.user.send(contents, file=file, silent=True)
+            except discord.HTTPClient:
+                fp.seek(0)
+                file = discord.File(fp, filename='tasklist.md')
+                await press.followup.send(
+                    t(_p(
+                        'ui:tasklist|button:save|error:dms',
+                        "Could not DM you! Do you have me blocked? Tasklist attached below."
+                    )),
+                    file=file
+                )
+            else:
+                fp.seek(0)
+                file = discord.File(fp, filename='tasklist.md')
+                await press.followup.send(file=file)
+
+    async def save_button_refresh(self):
+        self.save_button.disabled = (len(self.labelled) == 0)
+        self.save_button.label = ''
+
+    @button(label="REFRESH_PLACEHOLDER", style=ButtonStyle.grey, emoji=conf.emojis.refresh, custom_id='open_tasklist')
+    async def refresh_button(self, press: discord.Interaction, pressed: Button):
+        await press.response.defer()
+        await self.refresh()
+        await self.redraw()
+
+    async def refresh_button_refresh(self):
+        self.refresh_button.label = ''
+
+    @button(label="QUIT_PLACEHOLDER", style=ButtonStyle.grey, emoji=conf.emojis.cancel)
+    async def quit_button(self, press: discord.Interaction, pressed: Button):
+        await press.response.defer()
+        if self._message is not None:
+            try:
+                await self._message.delete()
+            except discord.HTTPException:
+                pass
+        await self.close()
+
+    async def quit_button_refresh(self):
+        self.quit_button.label = ''
+
+    # ----- UI Flow -----
     def access_check(self, userid):
         return userid == self.userid
 
@@ -298,7 +848,7 @@ class TasklistUI(BasePager):
 
     async def cleanup(self):
         self.set_inactive()
-        self._live_.pop((self.channel.id, self.userid), None)
+        self._live_[self.userid].pop(self.channel.id, None)
 
         if self._message is not None:
             try:
@@ -312,48 +862,6 @@ class TasklistUI(BasePager):
                 await self._message.edit(view=None)
         except discord.HTTPException:
             pass
-
-    async def summon(self):
-        """
-        Refresh and re-display the tasklist widget as required.
-        """
-        await self.refresh()
-
-        resend = not await self._check_recent()
-        if resend and self._message:
-            # Delete our current message if possible
-            try:
-                await self._message.delete()
-            except discord.HTTPException:
-                # If we cannot delete, it has probably already been deleted
-                # Or we don't have permission somehow
-                pass
-            self._message = None
-
-        # Redraw
-        try:
-            await self.redraw()
-        except discord.HTTPException:
-            if self._message:
-                self._message = None
-                await self.redraw()
-
-    async def _check_recent(self) -> bool:
-        """
-        Check whether the tasklist message is a "recent" message in the channel.
-        """
-        if self._message is not None:
-            height = 0
-            async for message in self.channel.history(limit=5):
-                if message.id == self._message.id:
-                    return True
-                if message.id < self._message.id:
-                    return False
-                if message.attachments or message.embeds or height > 20:
-                    return False
-                height += message.content.count('\n')
-            return False
-        return False
 
     async def get_page(self, page_id) -> MessageArgs:
         t = self.bot.translator.t
@@ -400,56 +908,8 @@ class TasklistUI(BasePager):
         page_args = MessageArgs(embed=embed)
         return page_args
 
-    async def page_cmd(self, interaction: discord.Interaction, value: str):
-        return await Pager.page_cmd(self, interaction, value)
-
-    async def page_acmpl(self, interaction: discord.Interaction, partial: str):
-        return await Pager.page_acmpl(self, interaction, partial)
-
-    def _format_page(self, page: list[tuple[tuple[int, ...], TasklistData.Task]]) -> str:
-        """
-        Format a single block of page data into the task codeblock.
-        """
-        lines = []
-        numpad = max(sum(len(str(counter)) - 1 for counter in label) for label, _ in page)
-        for label, task in page:
-            label_string = '.'.join(map(str, label)) + '.' * (len(label) == 1)
-            number = f"**`{label_string}`**"
-            if len(label) > 1:
-                depth = sum(len(str(c)) + 1 for c in label[:-1]) * ' '
-                depth = f"`{depth}`"
-            else:
-                depth = ''
-            task_string = "{depth}{cross}{number} {content}{cross}".format(
-                depth=depth,
-                number=number,
-                emoji=unchecked_emoji if task.completed_at is None else checked_emoji,
-                content=task.content,
-                cross='~~' if task.completed_at is not None else ''
-            )
-            lines.append(task_string)
-        return '\n'.join(lines)
-
-    def _format_page_text(self, page: list[tuple[tuple[int, ...], TasklistData.Task]]) -> str:
-        """
-        Format a single block of page data into the task codeblock.
-        """
-        lines = []
-        numpad = max(sum(len(str(counter)) - 1 for counter in label) for label, _ in page)
-        for label, task in page:
-            box = '[ ]' if task.completed_at is None else f"[{checkmark}]"
-            task_string = "{prepad}   {depth} {content}".format(
-                prepad=' ' * numpad,
-                depth=(len(label) - 1) * '   ',
-                content=task.content
-            )
-            label_string = '.'.join(map(str, label)) + '.' * (len(label) == 1)
-            taskline = box + ' ' + label_string + task_string[len(label_string):]
-            lines.append(taskline)
-        return "```md\n{}```".format('\n'.join(lines))
-
     def refresh_pages(self):
-        labelled = list(self.tasklist.labelled.items())
+        labelled = list(self.labelled.items())
         count = len(labelled)
         pages = []
 
@@ -478,181 +938,76 @@ class TasklistUI(BasePager):
         self._pages = pages
         return pages
 
-    @select(placeholder="TOGGLE_PLACEHOLDER")
-    async def toggle_selector(self, interaction: discord.Interaction, selected: Select):
-        await interaction.response.defer()
-        taskids = list(map(int, selected.values))
-        tasks = await self.tasklist.fetch_tasks(*taskids)
-        to_complete = [task for task in tasks if task.completed_at is None]
-        to_uncomplete = [task for task in tasks if task.completed_at is not None]
-        if to_complete:
-            await self.tasklist.update_tasks(
-                *(t.taskid for t in to_complete),
-                cascade=True,
-                completed_at=utc_now()
-            )
-            if self.guild:
-                if (member := self.guild.get_member(self.userid)):
-                    self.bot.dispatch('tasks_completed', member, *(t.taskid for t in to_complete))
-        if to_uncomplete:
-            await self.tasklist.update_tasks(
-                *(t.taskid for t in to_uncomplete),
-                completed_at=None
-            )
-        await self.refresh()
-        await self.redraw()
-
-    async def toggle_selector_refresh(self):
-        t = self.bot.translator.t
-        self.toggle_selector.placeholder = t(_p(
-            'ui:tasklist|menu:toggle_selector|placeholder',
-            "Select to Toggle"
-        ))
-        options = []
-        block = self._pages[self.page_num % len(self._pages)]
-        colwidth = max(sum(len(str(c)) + 1 for c in lbl) for lbl, _ in block)
-        for lbl, task in block:
-            value = str(task.taskid)
-            lblstr = '.'.join(map(str, lbl)) + '.' * (len(lbl) == 1)
-            name = f"{lblstr:<{colwidth}} {task.content}"
-            emoji = unchecked_emoji if task.completed_at is None else checked_emoji
-            options.append(SelectOption(label=name, value=value, emoji=emoji))
-
-        self.toggle_selector.options = options
-        self.toggle_selector.min_values = 0
-        self.toggle_selector.max_values = len(options)
-
-    @button(label="NEW_PLACEHOLDER", style=ButtonStyle.green)
-    async def new_pressed(self, interaction: discord.Interaction, pressed: Button):
-        t = self.bot.translator.t
-        editor = SingleEditor(
-            title=t(_p('ui:tasklist_single_editor|title', "Add task"))
-        )
-
-        @editor.submit_callback()
-        async def create_task(interaction):
-            new_task = editor.task.value
-            parent = editor.parent.value
-            pid = self.tasklist.parse_label(parent) if parent else None
-            if parent and pid is None:
-                # Could not parse
-                raise UserInputError(
-                    t(_p(
-                        'ui:tasklist_single_editor|error:parse_parent',
-                        "Could not find the given parent task number `{input}` in your tasklist."
-                    )).format(input=parent)
-                )
-            await interaction.response.defer()
-            await self.tasklist.create_task(new_task, parentid=pid)
-            await self.refresh()
-            await self.redraw()
-
-        await interaction.response.send_modal(editor)
-
-    @button(label="EDITOR_PLACEHOLDER", style=ButtonStyle.blurple)
-    async def edit_pressed(self, interaction: discord.Interaction, pressed: Button):
-        editor = BulkEditor(self.tasklist)
-
-        @editor.add_callback
-        async def editor_callback(interaction: discord.Interaction):
-            await self.refresh()
-            await self.redraw()
-
-        await interaction.response.send_modal(editor)
-
-    @button(label="DELETE_PLACEHOLDER", style=ButtonStyle.red)
-    async def del_pressed(self, interaction: discord.Interaction, pressed: Button):
-        self._deleting = 1 - self._deleting
-        await interaction.response.defer()
-        await self.refresh()
-        await self.redraw()
-
-    @select(placeholder="DELETE_SELECT_PLACEHOLDER")
-    async def delete_selector(self, interaction: discord.Interaction, selected: Select):
-        await interaction.response.defer()
-        taskids = list(map(int, selected.values))
-        if taskids:
-            await self.tasklist.update_tasks(
-                *taskids,
-                cascade=True,
-                deleted_at=utc_now()
-            )
-            await self.refresh()
-            await self.redraw()
-
-    async def delete_selector_refresh(self):
-        t = self.bot.translator.t
-        self.delete_selector.placeholder = t(_p('ui:tasklist|menu:delete|placeholder', "Select to Delete"))
-        self.delete_selector.options = self.toggle_selector.options
-        self.delete_selector.max_values = len(self.toggle_selector.options)
-
-    @button(label="ClOSE_PLACEHOLDER", style=ButtonStyle.red)
-    async def close_pressed(self, interaction: discord.Interaction, pressed: Button):
-        await interaction.response.defer()
-        if self._message is not None:
-            try:
-                await self._message.delete()
-            except discord.HTTPException:
-                pass
-        await self.close()
-
-    @button(label="CLEAR_PLACEHOLDER", style=ButtonStyle.red)
-    async def clear_pressed(self, interaction: discord.Interaction, pressed: Button):
-        await interaction.response.defer()
-        await self.tasklist.update_tasklist(
-            deleted_at=utc_now(),
-        )
-        await self.refresh()
-        await self.redraw()
-
-    def button_labels(self):
-        t = self.bot.translator.t
-        self.new_pressed.label = t(_p('ui:tasklist|button:new', "New"))
-        self.edit_pressed.label = t(_p('ui:tasklist|button:edit', "Edit"))
-        self.del_pressed.label = t(_p('ui:tasklist|button:delete', "Delete"))
-        self.clear_pressed.label = t(_p('ui:tasklist|button:clear', "Clear"))
-        self.close_pressed.label = t(_p('ui:tasklist|button:close', "Close"))
-
     async def refresh(self):
         # Refresh data
         await self.tasklist.refresh()
+        self.labelled = self.tasklist.labelled
         self.refresh_pages()
 
-    async def redraw(self):
-        self.current_page = await self.get_page(self.page_num)
+    async def refresh_components(self):
+        await asyncio.gather(
+            self.main_menu_refresh(),
+            self.sub_menu_refresh(),
+            self.new_button_refresh(),
+            self.edit_mode_button_refresh(),
+            self.delete_mode_button_refresh(),
+            self.toggle_mode_button_refresh(),
+            self.edit_bulk_button_refresh(),
+            self.clear_button_refresh(),
+            self.save_button_refresh(),
+            self.refresh_button_refresh(),
+            self.quit_button_refresh(),
+        )
 
-        # Refresh the layout
+        action_row = [
+            self.new_button, self.toggle_mode_button, self.edit_mode_button, self.delete_mode_button,
+        ]
+        if self.mode is UIMode.EDIT:
+            action_row.append(self.edit_bulk_button)
+        elif self.mode is UIMode.DELETE:
+            action_row.append(self.clear_button)
+
+        main_row = (self.main_menu,) if self.main_menu.options else ()
+        sub_row = (self.sub_menu,) if self.sub_menu.options else ()
+
         if len(self._pages) > 1:
-            # Paged layout
-            await self.toggle_selector_refresh()
-            self._layout = [
-                (self.new_pressed, self.edit_pressed, self.del_pressed),
-                (self.toggle_selector,),
-                (self.prev_page_button, self.close_pressed, self.next_page_button)
-            ]
-            if self._deleting:
-                await self.delete_selector_refresh()
-                self._layout.append((self.delete_selector,))
-                self._layout[0] = (*self._layout[0], self.clear_pressed)
+            # Multi paged layout
+            self._layout = (
+                action_row,
+                main_row,
+                sub_row,
+                (self.prev_page_button, self.save_button,
+                 self.refresh_button, self.quit_button, self.next_page_button)
+
+            )
         elif len(self.tasklist.tasklist) > 0:
-            # Single page, with tasks
-            await self.toggle_selector_refresh()
-            self._layout = [
-                (self.new_pressed, self.edit_pressed, self.del_pressed, self.close_pressed),
-                (self.toggle_selector,),
-            ]
-            if self._deleting:
-                await self.delete_selector_refresh()
-                self._layout[0] = (*self._layout[0], self.clear_pressed)
-                self._layout.append((self.delete_selector,))
+            # Single page, but still at least one task
+            self._layout = (
+                action_row,
+                main_row,
+                sub_row,
+                (self.save_button, self.refresh_button, self.quit_pressed)
+            )
         else:
-            # With no tasks, nothing to select
-            self._layout = [
-                (self.new_pressed, self.edit_pressed, self.close_pressed)
-            ]
+            # No tasks
+            self._layout = (
+                action_row,
+                (self.refresh_button, self.quit_pressed)
+            )
+
+    async def redraw(self, interaction: Optional[discord.Interaction] = None):
+        self.current_page = await self.get_page(self.page_num)
+        await self.refresh_components()
 
         # Resend
-        if not self._message:
-            self._message = await self.channel.send(**self.current_page.send_args, view=self)
-        else:
+        if interaction is not None:
+            if self._message:
+                try:
+                    await self._message.delete()
+                except discord.HTTPException:
+                    pass
+            self._message = await interaction.followup.send(**self.current_page.send_args, view=self)
+        elif self._message:
             await self._message.edit(**self.current_page.edit_args, view=self)
+        else:
+            self._message = await self.channel.send(**self.current_page.send_args, view=self)
