@@ -26,7 +26,7 @@ class RoomSettings(SettingGroup):
         )
         _long_desc = _p(
             'guildset:room_category|long_desc',
-            "When a member uses `/room rent` to rent a new private room, "
+            "When a member uses {cmds[room rent]} to rent a new private room, "
             "a private voice channel will be created under this category, "
             "manageable by the member. "
             "I must have permission to create new channels in this category, "
@@ -97,7 +97,7 @@ class RoomSettings(SettingGroup):
             t = ctx_translator.get().t
             resp = t(_p(
                 'guildset:rooms_price|set_response',
-                "Private rooms will now cost {coin}**{amount}}** per 24 hours."
+                "Private rooms will now cost {coin}**{amount}** per 24 hours."
             )).format(
                 coin=conf.emojis.coin,
                 amount=self.value
@@ -117,7 +117,7 @@ class RoomSettings(SettingGroup):
         _long_desc = _p(
             'guildset:rooms_slots|long_desc',
             "Private room owners may invite other members to their private room via the UI, "
-            "or through the `/room invite` command. "
+            "or through the {cmds[room invite]} command. "
             "This setting limits the maximum number of members a private room may hold."
         )
         _accepts = _p(
