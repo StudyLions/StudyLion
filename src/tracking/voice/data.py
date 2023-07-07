@@ -37,6 +37,39 @@ class VoiceTrackerData(Registry):
         deleted = Bool()
         _timestamp = Timestamp()
 
+        @classmethod
+        async def fetch_multiple(cls, *keys, create=True):
+            """
+            Fetch and optionally create multiple row, applying cache where possible.
+
+            Provided keys should be in the form (channelid, guildid)
+            Results will be provided as a map channelid -> Row
+            """
+            cidmap = {cid: gid for cid, gid in keys}
+
+            results = {}
+            to_fetch = set()
+            for cid in cidmap:
+                row = cls._cache_.get((cid,), None)
+                if row is None or row.data is None:
+                    to_fetch.add(cid)
+                else:
+                    results[cid] = row
+
+            if to_fetch:
+                rows = await cls.fetch_where(channelid=list(cidmap.keys()))
+                for row in rows:
+                    results[row.channelid] = row
+                    to_fetch.remove(row.channelid)
+            if to_fetch and create:
+                rows = await cls.table.insert_many(
+                    ('channelid', 'guildid', 'deleted'),
+                    *((cid, cidmap[cid], False) for cid in to_fetch)
+                ).with_adapter(cls._make_rows)
+                for row in rows:
+                    results[row.channelid] = row
+            return results
+
     class VoiceSessionsOngoing(RowModel):
         """
         Model describing currently active voice sessions.

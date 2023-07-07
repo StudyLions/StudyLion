@@ -153,14 +153,16 @@ class VoiceSession:
             f"Starting voice session for member <uid:{self.userid}> in guild <gid:{self.guildid}> "
             f"and channel <cid:{self.state.channelid}>."
         )
+        # Create the lion if required
+        await self.bot.core.lions.fetch_member(self.guildid, self.userid)
+
+        # Create the tracked channel if required
+        await self.registry.TrackedChannel.fetch_or_create(
+            self.state.channelid, guildid=self.guildid, deleted=False
+        )
 
         conn = await self.bot.db.get_connection()
         async with conn.transaction():
-            # Create the tracked channel if required
-            await self.registry.TrackedChannel.fetch_or_create(
-                self.state.channelid, guildid=self.guildid, deleted=False
-            )
-
             # Insert an ongoing_session with the correct state, set data
             state = self.state
             self.data = await self.registry.VoiceSessionsOngoing.create(

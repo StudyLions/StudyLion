@@ -22,8 +22,8 @@ class ScheduleData(Registry):
             results = {}
             to_fetch = set()
             for slotid in slotids:
-                row = cls._cache_.get(slotid, None)
-                if row is None:
+                row = cls._cache_.get((slotid,), None)
+                if row is None or row.data is None:
                     to_fetch.add(slotid)
                 else:
                     results[slotid] = row
@@ -82,7 +82,7 @@ class ScheduleData(Registry):
             to_fetch = set()
             for key in keys:
                 row = cls._cache_.get(key, None)
-                if row is None:
+                if row is None or row.data is None:
                     to_fetch.add(key)
                 else:
                     results[key] = row
@@ -129,8 +129,8 @@ class ScheduleData(Registry):
             results = {}
             to_fetch = set()
             for guildid in guildids:
-                row = cls._cache_.get(guildid, None)
-                if row is None:
+                row = cls._cache_.get((guildid,), None)
+                if row is None or row.data is None:
                     to_fetch.add(guildid)
                 else:
                     results[guildid] = row

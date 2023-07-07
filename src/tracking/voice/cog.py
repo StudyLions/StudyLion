@@ -247,6 +247,16 @@ class VoiceTrackerCog(LionCog):
                             ))
                 # Bulk create the ongoing sessions
                 if to_create:
+                    # First ensure the lion members exist
+                    await self.bot.core.lions.fetch_members(
+                        *(item[:2] for item in to_create)
+                    )
+
+                    # Then ensure the TrackedChannels exist
+                    cids = set((item[2], item[0]) for item in to_create)
+                    await self.data.TrackedChannel.fetch_multiple(*cids)
+
+                    # Then actually create the ongoing sessions
                     rows = await self.data.VoiceSessionsOngoing.table.insert_many(
                         ('guildid', 'userid', 'channelid', 'start_time', 'last_update', 'live_stream',
                          'live_video', 'hourly_coins'),
@@ -415,6 +425,16 @@ class VoiceTrackerCog(LionCog):
                     ))
 
             if to_create:
+                # Ensure LionMembers exist
+                await self.bot.core.lions.fetch_members(
+                    *(item[:2] for item in to_create)
+                )
+
+                # Ensure TrackedChannels exist
+                cids = set((item[2], item[0]) for item in to_create)
+                await self.data.TrackedChannel.fetch_multiple(*cids)
+
+                # Create new sessions
                 rows = await self.data.VoiceSessionsOngoing.table.insert_many(
                     ('guildid', 'userid', 'channelid', 'start_time', 'last_update', 'live_stream',
                         'live_video', 'hourly_coins'),
@@ -567,6 +587,16 @@ class VoiceTrackerCog(LionCog):
                     ))
 
             if to_create:
+                # Ensure LionMembers exist
+                await self.bot.core.lions.fetch_members(
+                    *(item[:2] for item in to_create)
+                )
+
+                # Ensure TrackedChannels exist
+                cids = set((item[2], item[0]) for item in to_create)
+                await self.data.TrackedChannel.fetch_multiple(*cids)
+
+                # Create new sessions
                 rows = await self.data.VoiceSessionsOngoing.table.insert_many(
                     ('guildid', 'userid', 'channelid', 'start_time', 'last_update', 'live_stream',
                         'live_video', 'hourly_coins'),
@@ -599,7 +629,8 @@ class VoiceTrackerCog(LionCog):
                 if session.expiry_task is not None:
                     session.expiry_task.cancel()
                 to_close.append(session.guildid, session.userid, now)
-            await self.data.VoiceSessionsOngoing.close_voice_sessions_at(*to_close)
+            if to_close:
+                await self.data.VoiceSessionsOngoing.close_voice_sessions_at(*to_close)
             logger.info(
                 f"Closed {len(to_close)} voice sessions after leaving guild '{guild.name}' <gid:{guild.id}>"
             )
