@@ -174,7 +174,10 @@ class Tasklist:
         Update every task in the tasklist, regardless of cache.
         """
         kwargs.setdefault('last_updated_at', utc_now())
-        tasks = await self.data.Task.table.update_where(userid=self.userid).set(**kwargs)
+        tasks = await self.data.Task.table.update_where(
+            userid=self.userid,
+            deleted_at=None
+        ).set(**kwargs)
 
         return tasks
 
@@ -286,8 +289,6 @@ class Tasklist:
             prefix = '  ' * (len(label) - 1)
             box = '- [ ]' if task.completed_at is None else '- [x]'
             line = f"{prefix}{box} {task.content}"
-            if total_len + len(line) > 4000:
-                break
             lines[task.taskid] = line
             total_len += len(line)
         return lines
