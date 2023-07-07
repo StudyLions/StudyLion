@@ -34,6 +34,7 @@ class Tasklist:
     label_range_re = re.compile(
         r"^(?P<start>(\d+\.)*\d+)\.?((\s*(?P<range>-)\s*)(?P<end>(\d+\.)*\d*\.?))?$"
     )
+    line_regex = re.compile(r"(?P<depth>\s*)-?\s*(\[\s*(?P<check>[^]]?)\s*\]\s*)?(?P<content>.*)")
 
     def __init__(self, bot: LionBot, data: TasklistData, userid: int):
         self.bot = bot
@@ -273,3 +274,89 @@ class Tasklist:
                     )).format(range=split)
                 )
         return list(taskids)
+
+    def flatten(self):
+        """
+        Flatten the tasklist to a map of readable strings parseable by `parse_tasklist`.
+        """
+        labelled = self.labelled
+        lines = {}
+        total_len = 0
+        for label, task in labelled.items():
+            prefix = '  ' * (len(label) - 1)
+            box = '- [ ]' if task.completed_at is None else '- [x]'
+            line = f"{prefix}{box} {task.content}"
+            if total_len + len(line) > 4000:
+                break
+            lines[task.taskid] = line
+            total_len += len(line)
+        return lines
+
+    def parse_tasklist(self, task_lines):
+        t = self.bot.translator.t
+        taskinfo = []  # (parent, truedepth, ticked, content)
+        depthtree = []  # (depth, index)
+
+        for line in task_lines:
+            match = self.line_regex.match(line)
+            if not match:
+                raise UserInputError(
+                    t(_p(
+                        'modal:tasklist_bulk_editor|error:parse_task',
+                        "Malformed taskline!\n`{input}`"
+                    )).format(input=line)
+                )
+            depth = len(match['depth'])
+            check = bool(match['check'])
+            content = match['content']
+            if not content:
+                continue
+            if len(content) > 100:
+                raise UserInputError(
+                    t(_p(
+                        'modal:tasklist_bulk_editor|error:task_too_long',
+                        "Please keep your tasks under 100 characters!"
+                    ))
+                )
+
+            for i in range(len(depthtree)):
+                lastdepth = depthtree[-1][0]
+                if lastdepth >= depth:
+                    depthtree.pop()
+                if lastdepth <= depth:
+                    break
+            parent = depthtree[-1][1] if depthtree else None
+            depthtree.append((depth, len(taskinfo)))
+            taskinfo.append((parent, len(depthtree) - 1, check, content))
+        print(taskinfo)
+        return taskinfo
+
+    async def write_taskinfo(self, taskinfo):
+        """
+        Create tasks from `taskinfo` (matching the output of `parse_tasklist`).
+        """
+        now = utc_now()
+        created = {}
+        target_depth = 0
+        while True:
+            to_insert = {}
+            for i, (parent, truedepth, ticked, content) in enumerate(taskinfo):
+                if truedepth == target_depth:
+                    to_insert[i] = (
+                        self.userid,
+                        content,
+                        created[parent] if parent is not None else None,
+                        now if ticked else None
+                    )
+            if to_insert:
+                # Batch insert
+                tasks = await self.data.Task.table.insert_many(
+                    ('userid', 'content', 'parentid', 'completed_at'),
+                    *to_insert.values()
+                )
+                for i, task in zip(to_insert.keys(), tasks):
+                    created[i] = task['taskid']
+                target_depth += 1
+            else:
+                # Reached maximum depth
+                break

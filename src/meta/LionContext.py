@@ -122,6 +122,8 @@ class LionContext(Context['LionBot']):
 
         # Expect this may be run in highly unusual circumstances.
         # This should never error, or at least handle all errors.
+        if self.interaction:
+            kwargs.setdefault('ephemeral', True)
         try:
             await self.reply(content=content, **kwargs)
         except discord.HTTPException:

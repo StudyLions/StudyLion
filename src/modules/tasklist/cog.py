@@ -18,7 +18,7 @@ from wards import low_management_ward
 from . import babel, logger
 from .data import TasklistData
 from .tasklist import Tasklist
-from .ui import TasklistUI, SingleEditor, BulkEditor, TasklistCaller
+from .ui import TasklistUI, SingleEditor, TasklistCaller
 from .settings import TasklistSettings, TasklistConfigUI
 
 _p, _np = babel._p, babel._np
@@ -264,7 +264,12 @@ class TasklistCog(LionCog):
         idmap = {}
         for label, task in tasklist.labelled.items():
             labelstring = '.'.join(map(str, label)) + '.' * (len(label) == 1)
-            taskstring = f"{labelstring} {task.content}"
+            remaining_width = 100 - len(labelstring) - 1
+            if len(task.content) > remaining_width:
+                content = task.content[:remaining_width - 3] + '...'
+            else:
+                content = task.content
+            taskstring = f"{labelstring} {content}"
             idmap[task.taskid] = labelstring
             labels.append((labelstring, taskstring))
 
@@ -407,6 +412,126 @@ class TasklistCog(LionCog):
     tasklist_new_cmd.autocomplete('parent')(task_acmpl)
 
     @tasklist_group.command(
+        name=_p('cmd:tasks_upload', "upload"),
+        description=_p(
+            'cmd:tasks_upload|desc',
+            "Upload a list of tasks to append to or replace your tasklist."
+        )
+    )
+    @appcmds.rename(
+        tasklist_file=_p('cmd:tasks_upload|param:tasklist', "tasklist"),
+        append=_p('cmd:tasks_upload|param:append', "append")
+    )
+    @appcmds.describe(
+        tasklist_file=_p(
+            'cmd:tasks_upload|param:tasklist|desc',
+            "Text file containing a (standard markdown formatted) checklist of tasks to add or append."
+        ),
+        append=_p(
+            'cmd:tasks_upload|param:append|desc',
+            "Whether to append the given tasks or replace your entire tasklist. Defaults to True."
+        )
+    )
+    async def tasklist_upload_cmd(self, ctx: LionContext,
+                                  tasklist_file: discord.Attachment,
+                                  append: bool = True):
+        t = self.bot.translator.t
+        if not ctx.interaction:
+            return
+
+        error = None
+
+        if tasklist_file.content_type and not tasklist_file.content_type.startswith('text'):
+            # Not a text file
+            error = t(_p(
+                'cmd:tasks_upload|error:not_text',
+                "The attached tasklist must be a text file!"
+            ))
+            raise UserInputError(error)
+
+        if tasklist_file.size > 1000000:
+            # Too large
+            error = t(_p(
+                'cmd:tasks_upload|error:too_large',
+                "The attached tasklist was too large!"
+            ))
+            raise UserInputError(error)
+
+        await ctx.interaction.response.defer(thinking=True, ephemeral=True)
+        try:
+            content = (await tasklist_file.read()).decode(encoding='UTF-8')
+            lines = content.splitlines()
+            if len(lines) > 1000:
+                error = t(_p(
+                    'cmd:tasks_upload|error:too_many_lines',
+                    "Too many tasks! Refusing to process a tasklist with more than `1000` lines."
+                ))
+                raise UserInputError(error)
+        except UnicodeDecodeError:
+            error = t(_p(
+                'cmd:tasks_upload|error:decoding',
+                "Could not decode attached tasklist. Please make sure it is saved with the `UTF-8` encoding."
+            ))
+            raise UserInputError(error)
+
+        # Contents successfully parsed, update the tasklist.
+        tasklist = await Tasklist.fetch(self.bot, self.data, ctx.author.id)
+
+        # Lazily using the editor because it has a good parser
+        taskinfo = tasklist.parse_tasklist(lines)
+
+        conn = await self.bot.db.get_connection()
+        async with conn.transaction():
+            now = utc_now()
+
+            # Delete tasklist if required
+            if not append:
+                await tasklist.update_tasklist(deleted_at=now)
+
+            # Create tasklist
+            # TODO: Refactor into common method with parse tasklist
+            created = {}
+            target_depth = 0
+            while True:
+                to_insert = {}
+                for i, (parent, truedepth, ticked, content) in enumerate(taskinfo):
+                    if truedepth == target_depth:
+                        to_insert[i] = (
+                            tasklist.userid,
+                            content,
+                            created[parent] if parent is not None else None,
+                            now if ticked else None
+                        )
+                if to_insert:
+                    # Batch insert
+                    tasks = await tasklist.data.Task.table.insert_many(
+                        ('userid', 'content', 'parentid', 'completed_at'),
+                        *to_insert.values()
+                    )
+                    for i, task in zip(to_insert.keys(), tasks):
+                        created[i] = task['taskid']
+                    target_depth += 1
+                else:
+                    # Reached maximum depth
+                    break
+
+        # Ack modifications
+        embed = discord.Embed(
+            colour=discord.Colour.brand_green(),
+            description=t(_p(
+                'cmd:tasks_upload|resp:success',
+                "{tick} Updated your tasklist.",
+            )).format(
+                tick=self.bot.config.emojis.tick,
+            )
+        )
+        await ctx.interaction.edit_original_response(
+            embed=embed,
+            view=None if ctx.channel.id in TasklistUI._live_[ctx.author.id] else TasklistCaller(self.bot)
+        )
+        self.bot.dispatch('tasklist_update', userid=ctx.author.id, channel=ctx.channel)
+
+    @tasklist_group.command(
         name=_p('cmd:tasks_edit', "edit"),
         description=_p(
             'cmd:tasks_edit|desc',
@@ -478,9 +603,13 @@ class TasklistCog(LionCog):
                     "{tick} Task `{label}` updated."
                 )).format(tick=self.bot.config.emojis.tick, label=tasklist.format_label(tasklist.labelid(tid))),
             )
-            await ctx.interaction.edit_original_response(
+            await interaction.response.send_message(
                 embed=embed,
-                view=None if ctx.channel.id in TasklistUI._live_[ctx.author.id] else TasklistCaller(self.bot)
+                view=(
+                    discord.utils.MISSING if ctx.channel.id in TasklistUI._live_[ctx.author.id]
+                    else TasklistCaller(self.bot)
+                ),
+                ephemeral=True
             )
             self.bot.dispatch('tasklist_update', userid=ctx.author.id, channel=ctx.channel)
 

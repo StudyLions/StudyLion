@@ -89,7 +89,6 @@ class BulkEditor(LeoModal):
     """
     Error-handling modal for bulk-editing a tasklist.
     """
-    line_regex = re.compile(r"(?P<depth>\s*)-?\s*(\[\s*(?P<check>[^]]?)\s*\]\s*)?(?P<content>.*)")
 
     tasklist_editor: TextInput = TextInput(
         label='',
@@ -119,7 +118,7 @@ class BulkEditor(LeoModal):
         self.labelled = tasklist.labelled
         self.userid = tasklist.userid
 
-        self.lines = self.format_tasklist()
+        self.lines = tasklist.flatten()
         self.tasklist_editor.default = '\n'.join(self.lines.values())
 
         self._callbacks = []
@@ -135,23 +134,6 @@ class BulkEditor(LeoModal):
         self._callbacks.append(coro)
         return coro
 
-    def format_tasklist(self):
-        """
-        Format the tasklist into lines of editable text.
-        """
-        labelled = self.labelled
-        lines = {}
-        total_len = 0
-        for label, task in labelled.items():
-            prefix = '  ' * (len(label) - 1)
-            box = '- [ ]' if task.completed_at is None else '- [x]'
-            line = f"{prefix}{box} {task.content}"
-            if total_len + len(line) > 4000:
-                break
-            lines[task.taskid] = line
-            total_len += len(line)
-        return lines
-
     async def on_submit(self, interaction: discord.Interaction):
         try:
             await self.parse_editor()
@@ -161,50 +143,12 @@ class BulkEditor(LeoModal):
         except UserInputError as error:
             await ModalRetryUI(self, error.msg).respond_to(interaction)
 
-    def _parser(self, task_lines):
-        t = ctx_translator.get().t
-        taskinfo = []  # (parent, truedepth, ticked, content)
-        depthtree = []  # (depth, index)
-
-        for line in task_lines:
-            match = self.line_regex.match(line)
-            if not match:
-                raise UserInputError(
-                    t(_p(
-                        'modal:tasklist_bulk_editor|error:parse_task',
-                        "Malformed taskline!\n`{input}`"
-                    )).format(input=line)
-                )
-            depth = len(match['depth'])
-            check = bool(match['check'])
-            content = match['content']
-            if not content:
-                continue
-            if len(content) > 100:
-                raise UserInputError(
-                    t(_p(
-                        'modal:tasklist_bulk_editor|error:task_too_long',
-                        "Please keep your tasks under 100 characters!"
-                    ))
-                )
-
-            for i in range(len(depthtree)):
-                lastdepth = depthtree[-1][0]
-                if lastdepth >= depth:
-                    depthtree.pop()
-                if lastdepth <= depth:
-                    break
-            parent = depthtree[-1][1] if depthtree else None
-            depthtree.append((depth, len(taskinfo)))
-            taskinfo.append((parent, len(depthtree) - 1, check, content))
-        return taskinfo
-
     async def parse_editor(self):
         # First parse each line
         new_lines = self.tasklist_editor.value.splitlines()
-        taskinfo = self._parser(new_lines)
+        taskinfo = self.tasklist.parse_tasklist(new_lines)
 
-        old_info = self._parser(self.lines.values())
+        old_info = self.tasklist.parse_tasklist(self.lines.values())
         same_layout = (
             len(old_info) == len(taskinfo)
             and all(info[:2] == oldinfo[:2] for (info, oldinfo) in zip(taskinfo, old_info))
@@ -231,30 +175,7 @@ class BulkEditor(LeoModal):
                 await self.tasklist.update_tasklist(deleted_at=now)
 
                 # Create tasklist
-                created = {}
-                target_depth = 0
-                while True:
-                    to_insert = {}
-                    for i, (parent, truedepth, ticked, content) in enumerate(taskinfo):
-                        if truedepth == target_depth:
-                            to_insert[i] = (
-                                self.tasklist.userid,
-                                content,
-                                created[parent] if parent is not None else None,
-                                now if ticked else None
-                            )
-                    if to_insert:
-                        # Batch insert
-                        tasks = await self.tasklist.data.Task.table.insert_many(
-                            ('userid', 'content', 'parentid', 'completed_at'),
-                            *to_insert.values()
-                        )
-                        for i, task in zip(to_insert.keys(), tasks):
-                            created[i] = task['taskid']
-                        target_depth += 1
-                    else:
-                        # Reached maximum depth
-                        break
+                await self.tasklist.write_taskinfo(taskinfo)
 
 
 class UIMode(Enum):
@@ -265,7 +186,7 @@ class UIMode(Enum):
         ),
         _p(
             'ui:tasklist|menu:sub|mode:toggle|placeholder',
-            "Task '{label}' subtasks:"
+            "Toggle from {label}.*"
         ),
     )
     EDIT = (
@@ -275,7 +196,7 @@ class UIMode(Enum):
         ),
         _p(
             'ui:tasklist|menu:sub|mode:edit|placeholder',
-            "Task '{label}' subtasks:"
+            "Edit from {label}.*"
         ),
     )
     DELETE = (
@@ -285,7 +206,7 @@ class UIMode(Enum):
         ),
         _p(
             'ui:tasklist|menu:sub|mode:delete|placeholder',
-            "Task '{label}' subtasks:"
+            "Delete from {label}.*"
         ),
     )
 
@@ -332,6 +253,10 @@ class TasklistUI(BasePager):
         self._subtree_root: Optional[int] = None
 
         self.set_active()
+
+    @property
+    def this_page(self):
+        return self._pages[self.page_num % len(self._pages)] if self._pages else []
 
     # ----- UI API -----
     @classmethod
@@ -440,14 +365,14 @@ class TasklistUI(BasePager):
             lines.append(taskline)
         return "```md\n{}```".format('\n'.join(lines))
 
-    def _format_options(self, task_block) -> list[SelectOption]:
+    def _format_options(self, task_block, make_default: Optional[int] = None) -> list[SelectOption]:
         options = []
         for lbl, task in task_block:
             value = str(task.taskid)
             lblstr = '.'.join(map(str, lbl)) + '.' * (len(lbl) == 1)
             name = f"{lblstr} {task.content[:100 - len(lblstr) - 1]}"
             emoji = unchecked_emoji if task.completed_at is None else checked_emoji
-            options.append(SelectOption(label=name, value=value, emoji=emoji))
+            options.append(SelectOption(label=name, value=value, emoji=emoji, default=(task.taskid == make_default)))
         return options
 
     def _format_parent(self, parentid) -> str:
@@ -602,7 +527,7 @@ class TasklistUI(BasePager):
         menu = self.main_menu
         menu.placeholder = t(self.mode.main_placeholder)
 
-        block = self._pages[self.page_num % len(self._pages)]
+        block = self.this_page
         options = self._format_options(block)
 
         menu.options = options
@@ -637,7 +562,7 @@ class TasklistUI(BasePager):
                     for label, taskid in labelled.items()
                     if all(i == j for i, j in zip(label, rootlabel))
                 }
-                this_page = self._pages[self.page_num % len(self._pages)]
+                this_page = self.this_page
                 if len(children) <= 25:
                     # Show all the children even if they don't display on the page
                     block = list(children.items())
@@ -738,12 +663,24 @@ class TasklistUI(BasePager):
         async def editor_callback(interaction: discord.Interaction):
             self.bot.dispatch('tasklist_update', userid=self.userid, channel=self.channel, summon=False)
 
-        await press.response.send_modal(editor)
+        if sum(len(line) for line in editor.lines.values()) + len(editor.lines) >= 4000:
+            await press.response.send_message(
+                embed=discord.Embed(
+                    colour=discord.Colour.brand_red(),
+                    description=self.bot.translator.t(_p(
+                        'ui:tasklist|button:edit_bulk|error:too_long',
+                        "Your tasklist is too long to be edited in a Discord text input! "
+                        "Use the save button and {cmds[tasks upload]} instead."
+                    )).format(cmds=self.bot.core.mention_cache)
+                ),
+                ephemeral=True
+            )
+        else:
+            await press.response.send_modal(editor)
 
     async def edit_bulk_button_refresh(self):
         t = self.bot.translator.t
         button = self.edit_bulk_button
-        button.disabled = (len(self.labelled) == 0)
         button.label = t(_p(
             'ui:tasklist|button:edit_bulk|label',
             "Bulk Edit"
@@ -772,8 +709,7 @@ class TasklistUI(BasePager):
         await press.response.defer(thinking=True, ephemeral=True)
 
         # Build the tasklist file
-        # Lazy way of getting the tasklist
-        contents = BulkEditor(self.tasklist).tasklist_editor.default
+        contents = '\n'.join(self.tasklist.flatten().values())
         with StringIO(contents) as fp:
             fp.seek(0)
             file = discord.File(fp, filename='tasklist.md')
@@ -895,15 +831,18 @@ class TasklistUI(BasePager):
         )
 
         if self._pages:
-            page = self._pages[page_id % len(self._pages)]
+            page = self.this_page
             block = self._format_page(page)
             embed.description = "{task_block}".format(task_block=block)
         else:
             embed.description = t(_p(
                 'ui:tasklist|embed|description',
                 "**You have no tasks on your tasklist!**\n"
-                "Add a task with `/tasklist new`, or by pressing the `New` button below."
-            ))
+                "Add a task with {cmds[tasks new]}, or by pressing the {new_button} button below."
+            )).format(
+                cmds=self.bot.core.mention_cache,
+                new_button=conf.emojis.task_new
+            )
 
         page_args = MessageArgs(embed=embed)
         return page_args
@@ -945,6 +884,9 @@ class TasklistUI(BasePager):
         self.refresh_pages()
 
     async def refresh_components(self):
+        if not self.labelled:
+            self.mode = UIMode.TOGGLE
+
         await asyncio.gather(
             self.main_menu_refresh(),
             self.sub_menu_refresh(),
@@ -986,13 +928,12 @@ class TasklistUI(BasePager):
                 action_row,
                 main_row,
                 sub_row,
-                (self.save_button, self.refresh_button, self.quit_pressed)
+                (self.save_button, self.refresh_button, self.quit_button)
             )
         else:
             # No tasks
             self._layout = (
-                action_row,
-                (self.refresh_button, self.quit_pressed)
+                (self.new_button, self.edit_bulk_button, self.refresh_button, self.quit_button),
             )
 
     async def redraw(self, interaction: Optional[discord.Interaction] = None):
