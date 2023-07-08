@@ -16,6 +16,7 @@ from modules.ranks.ui.config import RankDashboard
 from modules.pomodoro.settingui import TimerDashboard
 from modules.rooms.settingui import RoomDashboard
 from babel.settingui import LocaleDashboard
+from modules.schedule.ui.settingui import ScheduleDashboard
 # from modules.statistics.settings import StatisticsConfigUI
 
 from . import babel, logger
@@ -31,7 +32,8 @@ class GuildDashboard(BasePager):
     pages = [
         (LocaleDashboard, EconomyDashboard, TasklistDashboard),
         (VoiceTrackerDashboard, TextTrackerDashboard, ),
-        (RankDashboard, TimerDashboard, RoomDashboard, )
+        (RankDashboard, TimerDashboard, RoomDashboard, ),
+        (ScheduleDashboard,),
     ]
 
     def __init__(self, bot: LionBot, guild: discord.Guild, callerid: int, channelid: int, **kwargs):

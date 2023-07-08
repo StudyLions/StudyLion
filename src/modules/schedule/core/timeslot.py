@@ -297,11 +297,10 @@ class TimeSlot:
                 for session in sessions
                 if session.lobby_channel is not None
             ]
-            notify_tasks = [
-                asyncio.create_task(session.notify())
-                for session in fresh
-                if session.lobby_channel is not None and session.data.opened_at is None
-            ]
+            # Trigger notify tasks
+            for session in fresh:
+                if session.lobby_channel is not None:
+                    session.notify()
 
             # Start lobby update loops
             for session in sessions:
@@ -317,7 +316,6 @@ class TimeSlot:
             async for task in limit_concurrency(voice_coros, 5):
                 await task
             await asyncio.gather(*message_tasks)
-            await asyncio.gather(*notify_tasks)
 
             # Write opened
             if fresh:

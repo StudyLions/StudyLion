@@ -87,7 +87,7 @@ class ScheduleCog(LionCog):
                 slot.run_task.cancel()
             for session in slot.sessions.values():
                 if session._updater and not session._updater.done():
-                    session._update.cancel()
+                    session._updater.cancel()
                 if session._status_task and not session._status_task.done():
                     session._status_task.cancel()
 
@@ -217,21 +217,23 @@ class ScheduleCog(LionCog):
             for bookingid in bookingids:
                 await self._cancel_booking_active(*bookingid)
 
-            # Now delete from data
-            records = await self.data.ScheduleSessionMember.table.delete_where(
-                MULTIVALUE_IN(
-                    ('slotid', 'guildid', 'userid'),
-                    *bookingids
+            conn = await self.bot.db.get_connection()
+            async with conn.transaction():
+                # Now delete from data
+                records = await self.data.ScheduleSessionMember.table.delete_where(
+                    MULTIVALUE_IN(
+                        ('slotid', 'guildid', 'userid'),
+                        *bookingids
+                    )
                 )
-            )
 
-            # Refund cancelled bookings
-            if refund:
-                maybe_tids = (record['book_transactionid'] for record in records)
-                tids = [tid for tid in maybe_tids if tid is not None]
-                if tids:
-                    economy = self.bot.get_cog('Economy')
-                    await economy.data.Transaction.refund_transactions(*tids)
+                # Refund cancelled bookings
+                if refund:
+                    maybe_tids = (record['book_transactionid'] for record in records)
+                    tids = [tid for tid in maybe_tids if tid is not None]
+                    if tids:
+                        economy = self.bot.get_cog('Economy')
+                        await economy.data.Transaction.refund_transactions(*tids)
         finally:
             for lock in locks:
                 lock.release()
@@ -240,6 +242,7 @@ class ScheduleCog(LionCog):
         )
         return records
 
+    @log_wrap(action='Cancel Active Booking')
     async def _cancel_booking_active(self, slotid, guildid, userid):
         """
         Booking cancel worker for active slots.
@@ -259,7 +262,7 @@ class ScheduleCog(LionCog):
                 return
             async with session.lock:
                 # Update message if it has already been sent
-                session.update_message_soon(resend=False)
+                session.update_status_soon(resend=False)
                 room = session.room_channel
                 member = session.guild.get_member(userid) if room else None
                 if room and member and session.prepared:
@@ -564,7 +567,7 @@ class ScheduleCog(LionCog):
         if new_roles:
             # This should be in cache in the vast majority of cases
             guild_data = await self.data.ScheduleGuild.fetch(guild.id)
-            if (roleid := guild_data.blacklist_role) is not None and roleid in new_roles:
+            if guild_data and (roleid := guild_data.blacklist_role) is not None and roleid in new_roles:
                 # Clear member schedule
                 await self.clear_member_schedule(guild.id, after.id)
 

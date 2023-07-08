@@ -22,8 +22,8 @@ class ScheduleSettingUI(ConfigUI):
             ScheduleSettings.SessionLobby,
             ScheduleSettings.SessionRoom,
             ScheduleSettings.SessionChannels,
-            ScheduleSettings.ScheduleCost,
         ), (
+            ScheduleSettings.ScheduleCost,
             ScheduleSettings.AttendanceReward,
             ScheduleSettings.AttendanceBonus,
             ScheduleSettings.MinAttendance,
@@ -89,7 +89,7 @@ class ScheduleSettingUI(ConfigUI):
         ))
 
     # Room channel selector
-    @select(cls=ChannelSelect, channel_types=[discord.ChannelType.voice],
+    @select(cls=ChannelSelect, channel_types=[discord.ChannelType.category, discord.ChannelType.voice],
             min_values=0, max_values=1,
             placeholder='ROOM_PLACEHOLDER')
     async def room_menu(self, selection: discord.Interaction, selected: ChannelSelect):

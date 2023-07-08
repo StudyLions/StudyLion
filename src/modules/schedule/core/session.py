@@ -5,6 +5,7 @@ import asyncio
 import discord
 
 from meta import LionBot
+from meta.logger import log_wrap
 from utils.lib import utc_now
 from utils.lib import MessageArgs
 
@@ -79,6 +80,7 @@ class ScheduledSession:
         self._last_update = None
         self._updater = None
         self._status_task = None
+        self._notify_task = None
 
     def __repr__(self):
         return ' '.join((
@@ -193,6 +195,7 @@ class ScheduledSession:
             if hook:
                 return hook.as_webhook(client=self.bot)
 
+    @log_wrap(action='Lobby Send')
     async def send(self, *args, wait=True, **kwargs):
         lobby_hook = await self.get_lobby_hook()
         if lobby_hook:
@@ -209,6 +212,7 @@ class ScheduledSession:
                     exc_info=True
                 )
 
+    @log_wrap(action='Session Prepare')
     async def prepare(self, **kwargs):
         """
         Execute prepare stage for this guild.
@@ -218,6 +222,7 @@ class ScheduledSession:
             await self.update_status(**kwargs)
             self.prepared = True
 
+    @log_wrap(action='Prepare Room')
     async def prepare_room(self):
         """
         Add overwrites allowing current members to connect.
@@ -258,6 +263,7 @@ class ScheduledSession:
                     )).format(room=room.mention)
                 )
 
+    @log_wrap(action='Open Room')
     async def open_room(self):
         """
         Remove overwrites for non-members.
@@ -302,16 +308,27 @@ class ScheduledSession:
             self.prepared = True
             self.opened = True
 
-    async def notify(self):
+    @log_wrap(action='Notify')
+    async def _notify(self, wait=60):
         """
         Ghost ping members who have not yet attended.
         """
+        try:
+            await asyncio.sleep(wait)
+        except asyncio.CancelledError:
+            return
         missing = [mid for mid, m in self.members.items() if m.total_clock == 0 and m.clock_start is None]
         if missing:
             ping = ''.join(f"<@{mid}>" for mid in missing)
             message = await self.send(ping)
             if message is not None:
                 asyncio.create_task(message.delete())
+
+    def notify(self):
+        """
+        Trigger notify after one minute.
+        """
+        self._notify_task = asyncio.create_task(self._notify())
 
     async def current_status(self) -> MessageArgs:
         """
@@ -474,6 +491,7 @@ class ScheduledSession:
         args = MessageArgs(embed=embed, view=view)
         return args
 
+    @log_wrap(action='Update Status')
     async def _update_status(self, save=True, resend=True):
         """
         Send or update the lobby message.
@@ -530,6 +548,7 @@ class ScheduledSession:
             self._status_task.cancel()
         await self._update_status(**kwargs)
 
+    @log_wrap(action='Status Loop')
     async def update_loop(self):
         """
         Keep the lobby message up to date with a message per minute.

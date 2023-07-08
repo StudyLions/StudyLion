@@ -98,13 +98,15 @@ class ScheduleSettings(SettingGroup):
             "During (and slightly before) each scheduled session, all members who have booked the session "
             "will be given permission to join the voice channel (via permission overwrites). "
             "I require the `MANAGE_CHANNEL`, `MANAGE_PERMISSIONS`, `CONNECT`, and `VIEW_CHANNEL` permissions "
-            "in this channel, and my highest role must be higher than all permission overwrites set in the channel."
+            "in this channel, and my highest role must be higher than all permission overwrites set in the channel. "
+            "Furthermore, if this is set to a *category* channel, then the permission overwrites will apply "
+            "to all *synced* channels under the category, as usual."
         )
         _accepts = _p(
             'guildset:session_room|accepts',
             "Name or id of the session room voice channel."
         )
-        channel_types = [discord.VoiceChannel]
+        channel_types = [discord.VoiceChannel, discord.CategoryChannel]
 
         _model = ScheduleData.ScheduleGuild
         _column = ScheduleData.ScheduleGuild.room_channel.name
