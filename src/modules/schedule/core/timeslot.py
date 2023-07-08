@@ -13,12 +13,13 @@ from core.lion_member import LionMember
 from core.lion_guild import LionGuild
 from tracking.voice.session import SessionState
 from utils.data import as_duration, MEMBERS, TemporaryTable
+from utils.ratelimits import Bucket
 from modules.economy.cog import Economy
 from modules.economy.data import EconomyData, TransactionType
 
 from .. import babel, logger
 from ..data import ScheduleData as Data
-from ..lib import slotid_to_utc, batchrun_per_second
+from ..lib import slotid_to_utc, batchrun_per_second, limit_concurrency
 from ..settings import ScheduleSettings
 
 from .session import ScheduledSession
@@ -63,6 +64,41 @@ class TimeSlot:
         self.run_task = None
         self.loaded = False
 
+    def __repr__(self):
+        if self.closing.is_set():
+            state = 'closing'
+        elif self.opened.is_set():
+            state = 'opened'
+        elif self.opening.is_set():
+            state = 'opening'
+        elif self.preparing.is_set():
+            state = 'preparing'
+        elif self.loaded:
+            state = 'loaded'
+        else:
+            state = 'unloaded'
+
+        if self.run_task:
+            if self.run_task.cancelled():
+                running = 'Cancelled'
+            elif self.run_task.done():
+                running = 'Done'
+            else:
+                running = 'Running'
+        else:
+            running = 'None'
+
+        return (
+            "<TimeSlot "
+            f"slotid={self.slotid} "
+            f"state='{state}' "
+            f"sessions={len(self.sessions)} "
+            f"members={sum(len(s.members) for s in self.sessions.values())} "
+            f"loaded={self.loaded} "
+            f"run_task='{running}'"
+            ">"
+        )
+
     @log_wrap(action="Fetch sessions")
     async def fetch(self):
         """
@@ -81,7 +117,7 @@ class TimeSlot:
         self.sessions.update(sessions)
         self.loaded = True
         logger.info(
-            f"Timeslot <slotid: {self.slotid}> finished preloading {len(self.sessions)} guilds. Ready to open."
+            f"Timeslot {self!r}> finished preloading {len(self.sessions)} guilds. Ready to open."
         )
 
     @log_wrap(action="Load sessions")
@@ -129,7 +165,7 @@ class TimeSlot:
             sessions[row.guildid] = session
 
         logger.debug(
-            f"Timeslot <slotid: {self.slotid}> "
+            f"Timeslot {self!r} "
             f"loaded guild data for {len(sessions)} guilds: {', '.join(map(str, guildids))}"
         )
         return sessions
@@ -204,10 +240,12 @@ class TimeSlot:
         This does not take the session lock for setting perms, because this is race-safe
         (aside from potentially leaving extra permissions, which will be overwritten by `open`).
         """
-        logger.debug(f"Running prepare for time slot <slotid: {self.slotid}> with {len(sessions)} sessions.")
+        logger.debug(f"Running prepare for time slot: {self!r}")
         try:
-            coros = [session.prepare(save=False) for session in sessions if session.can_run]
-            await batchrun_per_second(coros, 5)
+            bucket = Bucket(5, 1)
+            coros = [bucket.wrapped(session.prepare(save=False)) for session in sessions if session.can_run]
+            async for task in limit_concurrency(coros, 5):
+                await task
 
             # Save messageids
             tmptable = TemporaryTable(
@@ -227,11 +265,11 @@ class TimeSlot:
                 ).from_expr(tmptable)
         except Exception:
             logger.exception(
-                f"Unhandled exception while preparing timeslot <slotid: {self.slotid}>."
+                f"Unhandled exception while preparing timeslot: {self!r}"
             )
         else:
             logger.info(
-                f"Prepared {len(sessions)} for scheduled session timeslot <slotid: {self.slotid}>"
+                f"Prepared {len(sessions)} for scheduled session timeslot: {self!r}"
             )
 
     @log_wrap(action="Open Sessions")
@@ -269,12 +307,14 @@ class TimeSlot:
                 session.start_updating()
 
             # Bulk run guild open to open session rooms
+            bucket = Bucket(5, 1)
             voice_coros = [
-                session.open_room()
+                bucket.wrapped(session.open_room())
                 for session in fresh
                 if session.room_channel is not None and session.data.opened_at is None
             ]
-            await batchrun_per_second(voice_coros, 5)
+            async for task in limit_concurrency(voice_coros, 5):
+                await task
             await asyncio.gather(*message_tasks)
             await asyncio.gather(*notify_tasks)
 
@@ -297,11 +337,11 @@ class TimeSlot:
                 ).from_expr(tmptable)
         except Exception:
             logger.exception(
-                f"Unhandled exception while opening sessions for timeslot <slotid: {self.slotid}>."
+                f"Unhandled exception while opening sessions for timeslot: {self!r}"
             )
         else:
             logger.info(
-                f"Opened {len(sessions)} sessions for scheduled session timeslot <slotid: {self.slotid}>"
+                f"Opened {len(sessions)} sessions for scheduled session timeslot: {self!r}"
             )
 
     @log_wrap(action="Close Sessions")
@@ -394,11 +434,11 @@ class TimeSlot:
                 await self.cog.handle_noshow(*did_not_show)
         except Exception:
             logger.exception(
-                f"Unhandled exception while closing sessions for timeslot <slotid: {self.slotid}>."
+                f"Unhandled exception while closing sessions for timeslot: {self!r}"
             )
         else:
             logger.info(
-                f"Closed {len(sessions)} for scheduled session timeslot <slotid: {self.slotid}>"
+                f"Closed {len(sessions)} for scheduled session timeslot: {self!r}"
             )
 
     def launch(self) -> asyncio.Task:
@@ -420,32 +460,30 @@ class TimeSlot:
             if now < self.start_at:
                 await discord.utils.sleep_until(self.prep_at)
                 self.preparing.set()
+                logger.info(f"Active timeslot preparing. {self!r}")
                 await self.prepare(list(self.sessions.values()))
-            else:
+                logger.info(f"Active timeslot prepared. {self!r}")
                 await discord.utils.sleep_until(self.start_at)
+            else:
                 self.preparing.set()
+
             self.opening.set()
+            logger.info(f"Active timeslot opening. {self!r}")
             await self.open(list(self.sessions.values()))
+            logger.info(f"Active timeslot opened. {self!r}")
             self.opened.set()
             await discord.utils.sleep_until(self.end_at)
             self.closing.set()
+            logger.info(f"Active timeslot closing. {self!r}")
             await self.close(list(self.sessions.values()), consequences=True)
+            logger.info(f"Active timeslot closed. {self!r}")
         except asyncio.CancelledError:
-            if self.closing.is_set():
-                state = 'closing'
-            elif self.opened.is_set():
-                state = 'opened'
-            elif self.opening.is_set():
-                state = 'opening'
-            elif self.preparing.is_set():
-                state = 'preparing'
             logger.info(
-                f"Deactivating active time slot <slotid: {self.slotid}> "
-                f"with state '{state}'."
+                f"Deactivating active time slot: {self!r}"
             )
         except Exception:
             logger.exception(
-                f"Unexpected exception occurred while running active time slot <slotid: {self.slotid}>."
+                f"Unexpected exception occurred while running active time slot: {self!r}."
             )
 
     @log_wrap(action="Slot Cleanup")

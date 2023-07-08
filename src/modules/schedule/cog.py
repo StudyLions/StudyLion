@@ -57,6 +57,11 @@ class ScheduleCog(LionCog):
 
         self.session_channels = self.settings.SessionChannels._cache
 
+    @property
+    def nowid(self):
+        now = utc_now()
+        return time_to_slotid(now)
+
     async def cog_load(self):
         await self.data.init()
 
@@ -143,6 +148,7 @@ class ScheduleCog(LionCog):
         Every hour, starting at start_at,
         the spawn loop will use `_spawner` to ensure the next slotid has been launched.
         """
+        logger.info(f"Started scheduled session spawner at {start_at}")
         next_spawn = start_at
         while True:
             try:
@@ -185,6 +191,7 @@ class ScheduleCog(LionCog):
         lock = self._slot_locks.get(slotid, None)
         if lock is None:
             lock = self._slot_locks[slotid] = asyncio.Lock()
+        logger.debug(f"Getting slotlock <slotid: {slotid}> (locked: {lock.locked()})")
         return lock
 
     @log_wrap(action='Cancel Booking')
@@ -255,28 +262,19 @@ class ScheduleCog(LionCog):
                     nextsession = nextslot.sessions.get(guildid, None) if nextslot else None
                     nextmember = (userid in nextsession.members) if nextsession else None
 
-                    unlock = None
-                    try:
-                        if nextmember:
-                            unlock = nextsession.lock
-                            await unlock.acquire()
-                            update = (not nextsession.prepared)
-                        else:
-                            update = True
-                            if update:
+                    if (nextmember is None) or not (nextsession.prepared):
+                        async with self.bot.idlock(room.id):
+                            try:
                                 await room.set_permissions(member, overwrite=None)
-                    except discord.HTTPException:
-                        pass
-                    finally:
-                        if unlock is not None:
-                            unlock.release()
-                        elif slot is not None and member is None:
-                            # Should not happen
-                            logger.error(
-                                f"Cancelling booking <slotid: {slotid}> <gid: {guildid}> <uid: {userid}> "
-                                "for active slot "
-                                "but the session member was not found. This should not happen."
-                            )
+                            except discord.HTTPException:
+                                pass
+        elif slot is not None and member is None:
+            # Should not happen
+            logger.error(
+                f"Cancelling booking <slotid: {slotid}> <gid: {guildid}> <uid: {userid}> "
+                "for active slot "
+                "but the session member was not found. This should not happen."
+            )
 
     @log_wrap(action='Clear Member Schedule')
     async def clear_member_schedule(self, guildid, userid, refund=False):
@@ -305,6 +303,9 @@ class ScheduleCog(LionCog):
         blacklists depending on guild settings,
         and notifies the user.
         """
+        logger.debug(
+            "Handling TimeSlot noshow for members: {}".format(', '.join(map(str, memberids)))
+        )
         now = utc_now()
         nowid = time_to_slotid(now)
         member_model = self.data.ScheduleSessionMember
@@ -358,6 +359,9 @@ class ScheduleCog(LionCog):
                 tasks.append(task)
             # TODO: Logging and some error handling
             await asyncio.gather(*tasks, return_exceptions=True)
+            logger.info(
+                f"Applied scheduled session blacklist to {len(to_blacklist)} missing members."
+            )
 
         # Now cancel future sessions for members who were not blacklisted and are not currently clocked on
         to_clear = []
@@ -380,7 +384,12 @@ class ScheduleCog(LionCog):
             bookingids = [(b.slotid, b.guildid, b.userid) for b in bookings]
             if bookingids:
                 await self.cancel_bookings(*bookingids, refund=False)
-        # TODO: Logging and error handling
+            logger.info(
+                f"Cancelled future sessions for {len(to_clear)} missing members."
+            )
+        logger.debug(
+            "Completed NoShow handling"
+        )
 
     @log_wrap(action='Create Booking')
     async def create_booking(self, guildid, userid, *slotids):
@@ -390,77 +399,80 @@ class ScheduleCog(LionCog):
         Probably best refactored into an interactive method,
         with some parts in slot and session.
         """
+        logger.debug(
+            f"Creating bookings for member <uid: {userid}> in <gid: {guildid}> "
+            f"for slotids: {', '.join(map(str, slotids))}"
+        )
         t = self.bot.translator.t
         locks = [self.slotlock(slotid) for slotid in slotids]
         await asyncio.gather(*(lock.acquire() for lock in locks))
         try:
-            conn = await self.bot.db.get_connection()
-            async with conn.transaction():
-                # Validate bookings
-                guild_data = await self.data.ScheduleGuild.fetch_or_create(guildid)
-                config = ScheduleConfig(guildid, guild_data)
+            # Validate bookings
+            guild_data = await self.data.ScheduleGuild.fetch_or_create(guildid)
+            config = ScheduleConfig(guildid, guild_data)
 
-                # Check guild lobby exists
-                if config.get(ScheduleSettings.SessionLobby.setting_id).value is None:
-                    error = t(_p(
-                        'create_booking|error:no_lobby',
-                        "This server has not set a `session_lobby`, so the scheduled session system is disabled!"
-                    ))
-                    raise UserInputError(error)
+            # Check guild lobby exists
+            if config.get(ScheduleSettings.SessionLobby.setting_id).value is None:
+                error = t(_p(
+                    'create_booking|error:no_lobby',
+                    "This server has not set a `session_lobby`, so the scheduled session system is disabled!"
+                ))
+                raise UserInputError(error)
 
-                # Fetch up to data lion data and member data
-                lion = await self.bot.core.lions.fetch_member(guildid, userid)
-                member = await lion.fetch_member()
-                await lion.data.refresh()
-                if not member:
-                    # This should pretty much never happen unless something went wrong on Discord's end
-                    error = t(_p(
-                        'create_booking|error:no_member',
-                        "An unknown Discord error occurred. Please try again in a few minutes."
-                    ))
-                    raise UserInputError(error)
+            # Fetch up to data lion data and member data
+            lion = await self.bot.core.lions.fetch_member(guildid, userid)
+            member = await lion.fetch_member()
+            await lion.data.refresh()
+            if not member:
+                # This should pretty much never happen unless something went wrong on Discord's end
+                error = t(_p(
+                    'create_booking|error:no_member',
+                    "An unknown Discord error occurred. Please try again in a few minutes."
+                ))
+                raise UserInputError(error)
 
-                # Check member blacklist
-                if (role := config.get(ScheduleSettings.BlacklistRole.setting_id).value) and role in member.roles:
-                    error = t(_p(
-                        'create_booking|error:blacklisted',
-                        "You have been blacklisted from the scheduled session system in this server."
-                    ))
-                    raise UserInputError(error)
+            # Check member blacklist
+            if (role := config.get(ScheduleSettings.BlacklistRole.setting_id).value) and role in member.roles:
+                error = t(_p(
+                    'create_booking|error:blacklisted',
+                    "You have been blacklisted from the scheduled session system in this server."
+                ))
+                raise UserInputError(error)
 
-                # Check member balance
-                requested = len(slotids)
-                required = len(slotids) * config.get(ScheduleSettings.ScheduleCost.setting_id).value
-                balance = lion.data.coins
-                if balance < required:
-                    error = t(_np(
-                        'create_booking|error:insufficient_balance',
-                        "Booking a session costs {coin}**{required}**, but you only have {coin}**{balance}**.",
-                        "Booking `{count}` sessions costs {coin}**{required}**, but you only have {coin}**{balance}**.",
-                        requested
-                    )).format(
-                        count=requested, coin=self.bot.config.emojis.coin,
-                        required=required, balance=balance
-                    )
-                    raise UserInputError(error)
-
-                # Check existing bookings
-                schedule = await self._fetch_schedule(userid)
-                if set(slotids).intersection(schedule.keys()):
-                    error = t(_p(
-                        'create_booking|error:already_booked',
-                        "One or more requested timeslots are already booked!"
-                    ))
-                    raise UserInputError(error)
-
-                # Booking request is now validated. Perform bookings.
-
-                # Fetch or create session data
-                await self.data.ScheduleSlot.fetch_multiple(*slotids)
-                session_data = await self.data.ScheduleSession.fetch_multiple(
-                    *((guildid, slotid) for slotid in slotids)
+            # Check member balance
+            requested = len(slotids)
+            required = len(slotids) * config.get(ScheduleSettings.ScheduleCost.setting_id).value
+            balance = lion.data.coins
+            if balance < required:
+                error = t(_np(
+                    'create_booking|error:insufficient_balance',
+                    "Booking a session costs {coin}**{required}**, but you only have {coin}**{balance}**.",
+                    "Booking `{count}` sessions costs {coin}**{required}**, but you only have {coin}**{balance}**.",
+                    requested
+                )).format(
+                    count=requested, coin=self.bot.config.emojis.coin,
+                    required=required, balance=balance
                 )
+                raise UserInputError(error)
 
+            # Check existing bookings
+            schedule = await self._fetch_schedule(userid)
+            if set(slotids).intersection(schedule.keys()):
+                error = t(_p(
+                    'create_booking|error:already_booked',
+                    "One or more requested timeslots are already booked!"
+                ))
+                raise UserInputError(error)
+            conn = await self.bot.db.get_connection()
+
+            # Booking request is now validated. Perform bookings.
+            # Fetch or create session data
+            await self.data.ScheduleSlot.fetch_multiple(*slotids)
+            session_data = await self.data.ScheduleSession.fetch_multiple(
+                *((guildid, slotid) for slotid in slotids)
+            )
+
+            async with conn.transaction():
                 # Create transactions
                 economy = self.bot.get_cog('Economy')
                 trans_data = (
@@ -482,42 +494,56 @@ class ScheduleCog(LionCog):
                     )
                 )
 
-                # Now pass to activated slots
-                for record in booking_data:
-                    slotid = record['slotid']
-                    if (slot := self.active_slots.get(slotid, None)):
-                        session = slot.sessions.get(guildid, None)
-                        if session is None:
-                            # Create a new session in the slot and set it up
-                            sessions = await slot.load_sessions([session_data[guildid, slotid]])
-                            session = sessions[guildid]
-                            slot.sessions[guildid] = session
-                            if slot.closing.is_set():
-                                # This should never happen
-                                logger.error(
-                                    "Attempt to book a session in a closing slot. This should be impossible."
-                                )
-                                raise ValueError('Cannot book a session in a closing slot.')
-                            elif slot.opening.is_set():
-                                await slot.open([session])
-                            elif slot.preparing.is_set():
-                                await slot.prepare([session])
-                        else:
-                            # Session already exists in the slot
-                            async with session.lock:
-                                if session.prepared:
-                                    session.update_status_soon()
-                                    if (room := session.room_channel) and (mem := session.guild.get_member(userid)):
-                                        try:
-                                            await room.set_permissions(
-                                                mem, connect=True, view_channel=True
-                                            )
-                                        except discord.HTTPException:
-                                            pass
+            # Now pass to activated slots
+            for record in booking_data:
+                slotid = record['slotid']
+                if (slot := self.active_slots.get(slotid, None)):
+                    session = slot.sessions.get(guildid, None)
+                    if session is None:
+                        # Create a new session in the slot and set it up
+                        sessions = await slot.load_sessions([session_data[guildid, slotid]])
+                        session = sessions[guildid]
+                        slot.sessions[guildid] = session
+                        if slot.closing.is_set():
+                            # This should never happen
+                            logger.error(
+                                "Attempt to book a session in a closing slot. This should be impossible."
+                            )
+                            raise ValueError('Cannot book a session in a closing slot.')
+                        elif slot.opening.is_set():
+                            await slot.open([session])
+                        elif slot.preparing.is_set():
+                            await slot.prepare([session])
+                    else:
+                        # Session already exists in the slot
+                        async with session.lock:
+                            if session.prepared:
+                                session.update_status_soon()
+                                if (room := session.room_channel) and (mem := session.guild.get_member(userid)):
+                                    try:
+                                        await room.set_permissions(
+                                            mem, connect=True, view_channel=True
+                                        )
+                                    except discord.HTTPException:
+                                        logger.info(
+                                            f"Could not set room permissions for newly booked session "
+                                            f"<uid: {userid}> in {session!r}",
+                                            exc_info=True
+                                        )
+            logger.info(
+                f"Member <uid: {userid}> in <gid: {guildid}> booked scheduled sessions: " +
+                ', '.join(map(str, slotids))
+            )
+        except UserInputError:
+            raise
+        except Exception:
+            logger.exception(
+                "Unexpected exception occurred while booking scheduled sessions."
+            )
+            raise
         finally:
             for lock in locks:
                 lock.release()
-        # TODO: Logging and error handling
         return booking_data
 
     # Event listeners
@@ -592,7 +618,7 @@ class ScheduleCog(LionCog):
                                 member.clock_on(session_data.start_time)
                                 session.update_status_soon()
                                 logger.debug(
-                                    f"Clocked on member {member.data!r} with session {session_data!r}"
+                                    f"Clocked on member {member.data!r} in session {session!r}"
                                 )
         except Exception:
             logger.exception(
@@ -616,11 +642,11 @@ class ScheduleCog(LionCog):
                     member = session.members.get(session_data.userid, None) if session else None
                     if member is not None:
                         async with session.lock:
-                            if session.listening and session.validate_channel(session_data.channelid):
+                            if session.listening and member.clock_start is not None:
                                 member.clock_off(ended_at)
                                 session.update_status_soon()
                                 logger.debug(
-                                    f"Clocked off member {member.data!r} from session {session_data!r}"
+                                    f"Clocked off member {member.data!r} from session {session!r}"
                                 )
         except Exception:
             logger.exception(

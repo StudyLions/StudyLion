@@ -2,6 +2,7 @@ import asyncio
 import itertools
 import datetime as dt
 
+from . import logger
 from utils.ratelimits import Bucket
 
 
@@ -39,3 +40,34 @@ async def batchrun_per_second(awaitables, batchsize):
         task = asyncio.create_task(awaitable)
         task.add_done_callback(lambda fut: sem.release())
     return await asyncio.gather(*tasks, return_exceptions=True)
+
+
+async def limit_concurrency(aws, limit):
+    """
+    Run provided awaitables concurrently,
+    ensuring that no more than `limit` are running at once.
+    """
+    aws = iter(aws)
+    aws_ended = False
+    pending = set()
+    count = 0
+    logger.debug("Starting limited concurrency executor")
+
+    while pending or not aws_ended:
+        while len(pending) < limit and not aws_ended:
+            aw = next(aws, None)
+            if aw is None:
+                aws_ended = True
+            else:
+                pending.add(asyncio.create_task(aw))
+                count += 1
+
+        if not pending:
+            break
+
+        done, pending = await asyncio.wait(
+            pending, return_when=asyncio.FIRST_COMPLETED
+        )
+        while done:
+            yield done.pop()
+    logger.debug(f"Completed {count} tasks")

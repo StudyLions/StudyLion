@@ -92,6 +92,11 @@ class Bucket:
             while self.full:
                 await asyncio.sleep(self.delay)
 
+    async def wrapped(self, coro):
+        await self.wait()
+        self.request()
+        await coro
+
 
 class RateLimit:
     def __init__(self, max_level, empty_time, error=None, cache=TTLCache(1000, 60 * 60)):

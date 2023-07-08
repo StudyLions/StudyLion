@@ -1,6 +1,7 @@
 from typing import List, Optional, TYPE_CHECKING
 import logging
 import asyncio
+from weakref import WeakValueDictionary
 
 import discord
 from discord.utils import MISSING
@@ -44,6 +45,8 @@ class LionBot(Bot):
         self.core: Optional['CoreCog'] = None
         self.translator = translator
 
+        self._locks = WeakValueDictionary()
+
     async def setup_hook(self) -> None:
         log_context.set(f"APP: {self.application_id}")
         await self.app_ipc.connect()
@@ -80,6 +83,12 @@ class LionBot(Bot):
     def dispatch(self, event_name: str, *args, **kwargs):
         with logging_context(action=f"Dispatch {event_name}"):
             super().dispatch(event_name, *args, **kwargs)
+
+    def idlock(self, snowflakeid):
+        lock = self._locks.get(snowflakeid, None)
+        if lock is None:
+            lock = self._locks[snowflakeid] = asyncio.Lock()
+        return lock
 
     async def on_ready(self):
         logger.info(

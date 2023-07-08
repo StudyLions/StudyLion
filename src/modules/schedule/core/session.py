@@ -80,6 +80,26 @@ class ScheduledSession:
         self._updater = None
         self._status_task = None
 
+    def __repr__(self):
+        return ' '.join(
+            "<ScheduledSession"
+            f"slotid={self.slotid}",
+            f"guildid={self.guildid}",
+            f"lobbyid={ch.id if (ch := self.lobby_channel) else None}",
+            f"roomid={ch.id if (ch := self.room_channel) else None}",
+            f"members={len(self.members)}",
+            f"listening={self.listening}",
+            f"prepared={self.prepared}",
+            f"opened={self.opened}",
+            f"cancelled={self.cancelled}",
+            f"locked={self.lock.locked()}",
+            f"status_message={msg.id if (msg := self.status_message) else None}",
+            f"lobby_hook={hook.webhookid if (hook := self._hook) else None}",
+            f"last_update={self._last_update}",
+            f"updater_running={True if (self._updater and not self._updater.done()) else False}",
+            ">"
+        )
+
     # Setting shortcuts
     @property
     def room_channel(self) -> Optional[discord.VoiceChannel]:
@@ -185,7 +205,7 @@ class ScheduledSession:
                     self._hook = None
             except discord.HTTPException:
                 logger.warning(
-                    f"Exception occurred sending to webhooks for scheduled session {self.data!r}",
+                    f"Exception occurred sending to webhooks for scheduled session {self!r}",
                     exc_info=True
                 )
 
@@ -221,14 +241,12 @@ class ScheduledSession:
                     await room.edit(overwrites=overwrites)
                 except discord.HTTPException:
                     logger.warning(
-                        f"Unexpected discord exception received while preparing schedule session room <cid: {room.id}> "
-                        f"in guild <gid: {self.guildid}> for timeslot <sid: {self.slotid}>.",
+                        f"Unexpected discord exception received while preparing schedule session room {self!r}",
                         exc_info=True
                     )
                 else:
                     logger.debug(
-                        f"Prepared schedule session room <cid: {room.id}> "
-                        f"in guild <gid: {self.guildid}> for timeslot <sid: {self.slotid}>.",
+                        f"Prepared schedule session room for session {self!r}"
                     )
             else:
                 t = self.bot.translator.t
@@ -266,13 +284,11 @@ class ScheduledSession:
                     await room.edit(overwrites=overwrites)
                 except discord.HTTPException:
                     logger.exception(
-                        f"Unhandled discord exception received while opening schedule session room <cid: {room.id}> "
-                        f"in guild <gid: {self.guildid}> for timeslot <sid: {self.slotid}>."
+                        f"Unhandled discord exception received while opening schedule session room {self!r}"
                     )
                 else:
                     logger.debug(
-                        f"Opened schedule session room <cid: {room.id}> "
-                        f"in guild <gid: {self.guildid}> for timeslot <sid: {self.slotid}>.",
+                        f"Opened schedule session room for session {self!r}"
                     )
             else:
                 t = self.bot.translator.t
@@ -485,7 +501,7 @@ class ScheduledSession:
             except discord.HTTPException:
                 # Unexpected issue updating the message
                 logger.exception(
-                    f"Exception occurred updating status for scheduled session {self.data!r}"
+                    f"Exception occurred updating status for scheduled session {self!r}"
                 )
 
         if repost and resend and self.members:
@@ -531,12 +547,11 @@ class ScheduledSession:
             await self.update_status()
         except asyncio.CancelledError:
             logger.debug(
-                f"Cancelled scheduled session update loop <slotid: {self.slotid}> ,gid: {self.guildid}>"
+                f"Cancelled scheduled session update loop for session {self!r}"
             )
         except Exception:
             logger.exception(
-                "Unknown exception encountered during session "
-                f"update loop <slotid: {self.slotid}> ,gid: {self.guildid}>"
+                "Unknown exception encountered during session update loop for session {self!r} "
             )
 
     def start_updating(self):

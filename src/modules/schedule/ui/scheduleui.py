@@ -141,8 +141,7 @@ class ScheduleUI(MessageUI):
             'ui:schedule|button:clear|label',
             "Clear Schedule"
         ))
-        if not self.schedule:
-            self.clear_button.disabled = True
+        self.clear_button.disabled = (not self.schedule)
 
     @button(label='ABOUT_PLACEHOLDER', emoji=conf.emojis.question, style=ButtonStyle.grey)
     async def about_button(self, press: discord.Interaction, pressed: Button):
@@ -220,7 +219,7 @@ class ScheduleUI(MessageUI):
                 try:
                     await self.cog.create_booking(self.guildid, self.userid, *slotids)
                     timestrings = [
-                        discord.utils.format_dt(slotid_to_utc(slotid), style='T')
+                        discord.utils.format_dt(slotid_to_utc(slotid), style='f')
                         for slotid in slotids
                     ]
                     ack = t(_np(
@@ -264,6 +263,9 @@ class ScheduleUI(MessageUI):
 
             # Populate with choices
             nowid = self.nowid
+            if ((slotid_to_utc(nowid + 3600) - utc_now()).total_seconds() < 60):
+                # Start from next session instead
+                nowid += 3600
             upcoming = [nowid + 3600 * i for i in range(1, 25)]
             upcoming = [slotid for slotid in upcoming if slotid not in self.schedule]
             options = self._format_slot_options(*upcoming)
@@ -298,7 +300,7 @@ class ScheduleUI(MessageUI):
 
         slot_format = t(_p(
             'ui:schedule|menu:slots|option|format',
-            "{day} {time} (in {until})"
+            "{day} {time} ({until})"
         ))
         today_name = t(_p(
             'ui:schedule|menu:slots|option|day:today',
@@ -325,12 +327,18 @@ class ScheduleUI(MessageUI):
 
     def _format_until(self, distance):
         t = self.bot.translator.t
-        return t(_np(
-            'ui:schedule|format_until',
-            "<1 hour",
-            "{number} hours",
-            distance
-        )).format(number=distance)
+        if distance:
+            return t(_np(
+                'ui:schedule|format_until|positive',
+                "in <1 hour",
+                "in {number} hours",
+                distance
+            )).format(number=distance)
+        else:
+            return t(_p(
+                'ui:schedule|format_until|now',
+                "right now!"
+            ))
 
     @select(cls=Select, placeholder='CANCEL_MENU_PLACEHOLDER')
     async def cancel_menu(self, selection: discord.Interaction, selected):
@@ -379,7 +387,7 @@ class ScheduleUI(MessageUI):
                 embed = error_embed(error)
             else:
                 timestrings = [
-                    discord.utils.format_dt(slotid_to_utc(record['slotid']), style='T')
+                    discord.utils.format_dt(slotid_to_utc(record['slotid']), style='f')
                     for record in booking_records
                 ]
                 ack = t(_np(
@@ -407,8 +415,11 @@ class ScheduleUI(MessageUI):
             'ui:schedule|menu:cancel|placeholder',
             "Cancel booked sessions"
         ))
-        can_cancel = set(self.schedule.keys())
-        can_cancel.discard(self.nowid)
+        minid = self.nowid
+        if ((slotid_to_utc(self.nowid + 3600) - utc_now()).total_seconds() < 60):
+            minid = self.nowid + 3600
+        can_cancel = list(slotid for slotid in self.schedule.keys() if slotid > minid)
+
         menu.options = self._format_slot_options(*can_cancel)
         menu.max_values = len(menu.options)
 
@@ -520,11 +531,11 @@ class ScheduleUI(MessageUI):
         t = self.bot.translator.t
         short_format = t(_p(
             'ui:schedule|booking_format:short',
-            "`in {until}` | {start} - {end}"
+            "`{until}` | {start} - {end}"
         ))
         long_format = t(_p(
             'ui:schedule|booking_format:long',
-            "> `in {until}` | {start} - {end}"
+            "> `{until}` | {start} - {end}"
         ))
         items = []
         format = long_format if show_guild else short_format
