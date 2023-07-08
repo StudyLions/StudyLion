@@ -81,7 +81,7 @@ class ScheduledSession:
         self._status_task = None
 
     def __repr__(self):
-        return ' '.join(
+        return ' '.join((
             "<ScheduledSession"
             f"slotid={self.slotid}",
             f"guildid={self.guildid}",
@@ -98,7 +98,7 @@ class ScheduledSession:
             f"last_update={self._last_update}",
             f"updater_running={True if (self._updater and not self._updater.done()) else False}",
             ">"
-        )
+        ))
 
     # Setting shortcuts
     @property
