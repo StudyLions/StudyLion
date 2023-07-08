@@ -121,7 +121,7 @@ class ScheduledSession:
 
     @property
     def min_attendence(self) -> int:
-        return self.config.get(Settings.MinAttendance.setting_id).value
+        return self.config.get(Settings.MinAttendance.setting_id).value * 60
 
     @property
     def all_attended(self) -> bool:
