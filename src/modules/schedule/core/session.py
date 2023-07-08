@@ -222,14 +222,14 @@ class ScheduledSession:
         """
         Add overwrites allowing current members to connect.
         """
-        async with self.lock:
-            if not (members := list(self.members.values())):
-                return
-            if not (guild := self.guild):
-                return
-            if not (room := self.room_channel):
-                return
+        if not (members := list(self.members.values())):
+            return
+        if not (guild := self.guild):
+            return
+        if not (room := self.room_channel):
+            return
 
+        async with self.bot.idlock(room.id):
             if room.permissions_for(guild.me) >= my_room_permissions:
                 # Add member overwrites
                 overwrites = room.overwrites
