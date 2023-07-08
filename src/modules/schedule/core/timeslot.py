@@ -178,6 +178,7 @@ class TimeSlot:
         now = utc_now()
         tracker = self.bot.get_cog('VoiceTrackerCog')
         tracking_lock = tracker.tracking_lock
+        sessions.sort(key=lambda s: s.guildid)
         session_locks = [session.lock for session in sessions]
 
         # Take the tracking lock so that sessions are not started/finished while we reset the clock

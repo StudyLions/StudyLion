@@ -203,11 +203,15 @@ class ScheduleCog(LionCog):
             Tuple of (slotid, guildid, userid)
         """
         slotids = set(bookingid[0] for bookingid in bookingids)
-        locks = [self.slotlock(slotid) for slotid in slotids]
+        logger.debug(
+            "Cancelling bookings: " + ', '.join(map(str, bookingids))
+        )
 
         # Request all relevant slotlocks
-        await asyncio.gather(*(lock.acquire() for lock in locks))
+        locks = [self.slotlock(slotid) for slotid in sorted(slotids)]
+
         try:
+            [await lock.acquire() for lock in locks]
             # TODO: Some benchmarking here
             # Should we do the channel updates in bulk?
             for bookingid in bookingids:
@@ -231,6 +235,9 @@ class ScheduleCog(LionCog):
         finally:
             for lock in locks:
                 lock.release()
+        logger.info(
+            "Cancelled Scheduled Session bookings: " + ', '.join(map(str, bookingids))
+        )
         return records
 
     async def _cancel_booking_active(self, slotid, guildid, userid):
@@ -404,9 +411,9 @@ class ScheduleCog(LionCog):
             f"for slotids: {', '.join(map(str, slotids))}"
         )
         t = self.bot.translator.t
-        locks = [self.slotlock(slotid) for slotid in slotids]
-        await asyncio.gather(*(lock.acquire() for lock in locks))
+        locks = [self.slotlock(slotid) for slotid in sorted(slotids)]
         try:
+            [await lock.acquire() for lock in locks]
             # Validate bookings
             guild_data = await self.data.ScheduleGuild.fetch_or_create(guildid)
             config = ScheduleConfig(guildid, guild_data)
