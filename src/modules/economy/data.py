@@ -225,7 +225,7 @@ class EconomyData(Registry, name='economy'):
             conn = await cls._connector.get_connection()
             async with conn.transaction():
                 row = await EconomyData.Transaction.execute_transaction(
-                    TransactionType.PURCHASE,
+                    TransactionType.SHOP_PURCHASE,
                     guildid=guildid, actorid=actorid, from_account=userid, to_account=None,
                     amount=amount
                 )
