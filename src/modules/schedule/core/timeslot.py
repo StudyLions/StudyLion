@@ -217,7 +217,7 @@ class TimeSlot:
                 # Now write clocks
                 for sg in sessions:
                     for sm in sg.members.values():
-                        sg.clock = clocks[(sm.guildid, sm.userid)]
+                        sm.clock = clocks[(sm.guildid, sm.userid)]
 
             # Mark current attendance using current voice session
             for session in sessions:
