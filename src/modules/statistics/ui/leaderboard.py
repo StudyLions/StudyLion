@@ -19,7 +19,10 @@ from .. import babel
 
 from .base import StatsUI
 
+
 _p = babel._p
+
+ANKI_AVAILABLE = False
 
 
 class LBPeriod(IntEnum):
@@ -125,6 +128,9 @@ class LeaderboardUI(StatsUI):
                 data = await self.data.MemberExp.leaderboard_since(
                     self.guildid, period_start
                 )
+        else:
+            # TODO: Anki data
+            ...
         # TODO: Handle removing members in invisible roles
         return data
 
@@ -233,7 +239,8 @@ class LeaderboardUI(StatsUI):
                         'ui:leaderboard|menu:stats|item:voice',
                         "Voice Activity"
                     )),
-                    value=str(StatType.VOICE.value)
+                    value=str(StatType.VOICE.value),
+                    default=(self.stat_type == StatType.VOICE),
                 )
             )
         else:
@@ -243,7 +250,8 @@ class LeaderboardUI(StatsUI):
                         'ui:leaderboard|menu:stats|item:study',
                         "Study Statistics"
                     )),
-                    value=str(StatType.VOICE.value)
+                    value=str(StatType.VOICE.value),
+                    default=(self.stat_type == StatType.VOICE),
                 )
             )
 
@@ -253,18 +261,21 @@ class LeaderboardUI(StatsUI):
                     'ui:leaderboard|menu:stats|item:message',
                     "Message Activity"
                 )),
-                value=str(StatType.TEXT.value)
+                value=str(StatType.TEXT.value),
+                default=(self.stat_type == StatType.TEXT),
             )
         )
-        options.append(
-            SelectOption(
-                label=t(_p(
-                    'ui:leaderboard|menu;stats|item:anki',
-                    "Anki Cards Reviewed"
-                )),
-                value=str(StatType.ANKI.value)
+        if ANKI_AVAILABLE:
+            options.append(
+                SelectOption(
+                    label=t(_p(
+                        'ui:leaderboard|menu;stats|item:anki',
+                        "Anki Cards Reviewed"
+                    )),
+                    value=str(StatType.ANKI.value),
+                    default=(self.stat_type == StatType.ANKI),
+                )
             )
-        )
         menu.options = options
 
     @button(label="This Season", style=ButtonStyle.grey)
@@ -411,16 +422,28 @@ class LeaderboardUI(StatsUI):
             )
         else:
             t = self.bot.translator.t
+            if self.stat_type is StatType.VOICE:
+                empty_description = t(_p(
+                    'ui:leaderboard|mode:voice|message:empty|desc',
+                    "There has been no voice activity in this period!"
+                ))
+            elif self.stat_type is StatType.TEXT:
+                empty_description = t(_p(
+                    'ui:leaderboard|mode:text|message:empty|desc',
+                    "There has been no message activity in this period!"
+                ))
+            elif self.stat_type is StatType.ANKI:
+                empty_description = t(_p(
+                    'ui:leaderboard|mode:anki|message:empty|desc',
+                    "There have been no Anki cards reviewed in this period!"
+                ))
             embed = discord.Embed(
                 colour=discord.Colour.orange(),
                 title=t(_p(
                     'ui:leaderboard|message:empty|title',
-                    "Empty Leaderboard!"
+                    "Leaderboard Empty!"
                 )),
-                description=t(_p(
-                    'ui:leaderboard|message:empty|desc',
-                    "There has been no activity of this type in this period!"
-                ))
+                description=empty_description
             )
             args = MessageArgs(embed=embed, files=[])
         return args

@@ -7,6 +7,7 @@ from gui.cards import WeeklyGoalCard, MonthlyGoalCard
 from gui.base import CardMode
 from tracking.text.data import TextTrackerData
 
+from .. import logger
 from ..data import StatsData
 from ..lib import extract_weekid, extract_monthid, apply_week_offset, apply_month_offset
 
@@ -49,7 +50,7 @@ async def get_goals_card(
         goals = await goal_model.fetch(*key.values())
         if not goals:
             from collections import defaultdict
-            goals = defaultdict(lambda: -1)
+            goals = defaultdict(lambda: 0)
 
     task_rows = await tasks_model.fetch_where(**key)
     tasks = [(i, row.content, bool(row.completed)) for i, row in enumerate(task_rows)]

@@ -21,20 +21,15 @@ async def get_leaderboard_card(
     names = {}
     missing = []
     for userid, _, _ in entry_data:
-        hash = name = None
         if guild and (member := guild.get_member(userid)):
-            hash = member.avatar.key
-            name = member.display_name
+            avatars[userid] = member.avatar.key if member.avatar else None
+            names[userid] = member.display_name
         elif (user := bot.get_user(userid)):
-            hash = user.avatar.key
-            name = user.name
+            avatars[userid] = user.avatar.key if user.avatar else None
+            names[userid] = user.display_name
         elif (user_data := bot.core.data.User._cache_.get((userid,))):
-            hash = user_data.avatar_hash
-            name = user_data.name
-
-        if hash:
-            avatars[userid] = hash
-            names[userid] = name or 'Unknown'
+            avatars[userid] = user_data.avatar_hash
+            names[userid] = user_data.name
         else:
             missing.append(userid)
 

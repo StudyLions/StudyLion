@@ -36,6 +36,7 @@ from .base import StatsUI
 
 _p = babel._p
 
+ANKI = False
 
 GoalCard: TypeAlias = Union[WeeklyGoalCard, MonthlyGoalCard]
 StatsCard: TypeAlias = Union[WeeklyStatsCard, MonthlyStatsCard]
@@ -55,10 +56,12 @@ class StatType(IntEnum):
 class StatPage(Enum):
     WEEKLY_VOICE = (0, PeriodType.WEEKLY, StatType.VOICE)
     WEEKLY_TEXT = (1, PeriodType.WEEKLY, StatType.TEXT)
-    WEEKLY_ANKI = (2, PeriodType.WEEKLY, StatType.ANKI)
+    if ANKI:
+        WEEKLY_ANKI = (2, PeriodType.WEEKLY, StatType.ANKI)
     MONTHLY_VOICE = (3, PeriodType.MONTHLY, StatType.VOICE)
     MONTHLY_TEXT = (4, PeriodType.MONTHLY, StatType.TEXT)
-    MONTHLY_ANKI = (5, PeriodType.MONTHLY, StatType.ANKI)
+    if ANKI:
+        MONTHLY_ANKI = (5, PeriodType.MONTHLY, StatType.ANKI)
 
     @classmethod
     def from_value(cls, value: int) -> 'StatPage':
