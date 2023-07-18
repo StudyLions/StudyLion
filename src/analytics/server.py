@@ -3,7 +3,7 @@ import logging
 from typing import Optional
 
 from meta import conf, appname
-from meta.logger import log_context, log_action_stack, logging_context, log_app, log_wrap
+from meta.logger import log_context, log_action_stack, logging_context, log_app, log_wrap, setup_main_logger
 from meta.ipc import AppClient
 from meta.app import appname_from_shard
 from meta.sharding import shard_count
@@ -113,6 +113,7 @@ class AnalyticsServer:
                 await asyncio.sleep(self.snap_retry_period)
 
     async def run(self):
+        setup_main_logger()
         log_action_stack.set(['Analytics'])
         log_app.set(conf.analytics['appname'])
 

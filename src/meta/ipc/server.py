@@ -4,9 +4,13 @@ import logging
 import string
 import random
 
-from ..logger import log_context, log_app, logging_context
+from ..logger import log_context, log_app, logging_context, setup_main_logger
+from ..config import conf
 
 logger = logging.getLogger(__name__)
+
+for name in conf.config.options('LOGGING_LEVELS', no_defaults=True):
+    logging.getLogger(name).setLevel(conf.logging_levels[name])
 
 
 uuid_alphabet = string.ascii_lowercase + string.digits
@@ -166,6 +170,7 @@ class AppServer:
 
 
 async def start_server():
+    setup_main_logger()
     address = {'host': '127.0.0.1', 'port': '5000'}
     server = AppServer()
     await server.start(address)

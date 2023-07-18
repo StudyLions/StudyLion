@@ -7,7 +7,7 @@ from discord.ext import commands
 
 from meta import LionBot, conf, sharding, appname, shard_talk
 from meta.app import shardname
-from meta.logger import log_context, log_action_stack, logging_context
+from meta.logger import log_context, log_action_stack, logging_context, setup_main_logger
 from meta.context import ctx_bot
 
 from data import Database
@@ -19,6 +19,10 @@ from constants import DATA_VERSION
 
 for name in conf.config.options('LOGGING_LEVELS', no_defaults=True):
     logging.getLogger(name).setLevel(conf.logging_levels[name])
+
+
+setup_main_logger()
+
 
 logger = logging.getLogger(__name__)
 
