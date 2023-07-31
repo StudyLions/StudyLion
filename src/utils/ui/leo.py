@@ -8,9 +8,10 @@ import discord
 from discord.ui import Modal, View, Item
 
 from meta.logger import log_action_stack, logging_context
+from meta.errors import SafeCancellation
 
 from . import logger
-from ..lib import MessageArgs
+from ..lib import MessageArgs, error_embed
 
 __all__ = (
     'LeoUI',
@@ -198,6 +199,25 @@ class LeoUI(View):
         """
         try:
             raise error
+        except SafeCancellation as e:
+            if e.msg and not interaction.is_expired():
+                try:
+                    if interaction.response.is_done():
+                        await interaction.followup.send(
+                            embed=error_embed(e.msg),
+                            ephemeral=True
+                        )
+                    else:
+                        await interaction.response.send_message(
+                            embed=error_embed(e.msg),
+                            ephemeral=True
+                        )
+                except discord.HTTPException:
+                    pass
+            logger.debug(
+                f"Caught a safe cancellation from LeoUI: {e.details}",
+                extra={'action': 'Cancel'}
+            )
         except Exception:
             logger.exception(
                 f"Unhandled interaction exception occurred in item {item!r} of LeoUI {self!r}",

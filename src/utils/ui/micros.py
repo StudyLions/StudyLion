@@ -160,6 +160,7 @@ class ModalRetryUI(LeoUI):
     @property
     def embed(self):
         return discord.Embed(
+            title="Uh-Oh!",
             description=self.message,
             colour=discord.Colour.red()
         )

@@ -6,6 +6,7 @@ import discord.ext.commands as cmds
 from babel.translator import LocalBabel
 
 from meta import conf, LionContext, LionBot
+from meta.errors import UserInputError
 
 babel = LocalBabel('wards')
 _p = babel._p
@@ -96,3 +97,79 @@ async def low_management_ward(ctx: LionContext) -> bool:
                 "You must have the `MANAGE_GUILD` permission in this server to do this!"
             ))
         )
+
+
+# ---- Assorted manual wards and checks ----
+
+
+async def equippable_role(bot: LionBot, target_role: discord.Role, actor: discord.Member):
+    """
+    Validator for an 'actor' setting a given 'target_role' as obtainable.
+
+    Checks that the 'target_role' is able to be given out,
+    that I am able to give it out, and that the 'actor' is able to give it out.
+    Raises UserInputError if any of these do not hold.
+    """
+    t = bot.translator.t
+    guild = target_role.guild
+    me = guild.me
+
+    if target_role.is_bot_managed():
+        raise UserInputError(
+            t(_p(
+                'ward:equippable_role|error:bot_managed',
+                "I cannot manage {role} because it is managed by another bot!"
+            )).format(role=target_role.mention)
+        )
+    elif target_role.is_integration():
+        raise UserInputError(
+            t(_p(
+                'ward:equippable_role|error:integration',
+                "I cannot manage {role} because it is managed by a server integration."
+            )).format(role=target_role.mention)
+        )
+    elif target_role == guild.default_role:
+        raise UserInputError(
+            t(_p(
+                'ward:equippable_role|error:default_role',
+                "I cannot manage the server's default role."
+            )).format(role=target_role.mention)
+        )
+    elif not me.guild_permissions.manage_roles:
+        raise UserInputError(
+            t(_p(
+                'ward:equippable_role|error:no_perms',
+                "I need the `MANAGE_ROLES` permission before I can manage roles!"
+            )).format(role=target_role.mention)
+        )
+    elif me.top_role <= target_role:
+        raise UserInputError(
+            t(_p(
+                'ward:equippable_role|error:my_top_role',
+                "I cannot assign or remove {role} because it is above my top role!"
+            )).format(role=target_role.mention)
+        )
+    elif not target_role.is_assignable():
+        raise UserInputError(
+            t(_p(
+                'ward:equippable_role|error:not_assignable',
+                "I don't have sufficient permissions to assign or remove {role}."
+            )).format(role=target_role.mention)
+        )
+
+    if not actor.guild_permissions.manage_roles:
+        raise UserInputError(
+            t(_p(
+                'ward:equippable_role|error:actor_perms',
+                "You need the `MANAGE_ROLES` permission before you can configure roles!"
+            )).format(role=target_role.mention)
+        )
+    elif actor.top_role <= target_role and not actor == guild.owner:
+        raise UserInputError(
+            t(_p(
+                'ward:equippable_role|error:actor_top_role',
+                "You cannot configure {role} because it is above your top role!"
+            )).format(role=target_role.mention)
+        )
+
+    return True

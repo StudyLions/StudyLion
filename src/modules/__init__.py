@@ -13,6 +13,7 @@ active = [
     '.statistics',
     '.pomodoro',
     '.rooms',
+    '.rolemenus',
     '.meta',
     '.test',
 ]
