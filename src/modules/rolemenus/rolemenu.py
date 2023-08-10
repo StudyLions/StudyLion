@@ -511,7 +511,7 @@ class RoleMenu:
                     userid=member.id,
                     removed_at=None,
                 ).set(removed_at=now)
-                await self.cog.cancel_expiring_tasks(*(row.equipid for row in history))
+                await self.cog.cancel_expiring_tasks(*(row['equipid'] for row in history))
 
                 # Refund if required
                 transactionids = [row['transactionid'] for row in history]
