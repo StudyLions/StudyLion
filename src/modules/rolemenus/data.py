@@ -1,6 +1,6 @@
 from enum import Enum
 
-from data import Registry, RowModel, RegisterEnum, Column
+from data import Registry, RowModel, RegisterEnum, Column, NULL
 from data.columns import Integer, Timestamp, String, Bool
 
 
@@ -35,6 +35,9 @@ class RoleMenuData(Registry):
         templateid = Integer()
         rawmessage = String()
 
+        default_price = Integer()
+        event_log = Bool()
+
     class RoleMenuRole(RowModel):
         _tablename_ = 'role_menu_roles'
         _cache_ = {}
@@ -66,4 +69,17 @@ class RoleMenuData(Registry):
         obtained_at = Timestamp()
         transactionid = Integer()
         expires_at = Timestamp()
-        expired_at = Timestamp()
+        removed_at = Timestamp()
+
+        @classmethod
+        def fetch_expiring_where(cls, *args, **kwargs):
+            """
+            Fetch expiring equip rows.
+
+            This returns an awaitable and chainable Select Query.
+            """
+            return cls.fetch_where(
+                (cls.expires_at != NULL),
+                (cls.removed_at == NULL),
+                *args, **kwargs
+            )

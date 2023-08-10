@@ -10,14 +10,12 @@ from settings.setting_types import (
     RoleSetting, BoolSetting, StringSetting, IntegerSetting, DurationSetting
 )
 
+from core.setting_types import MessageSetting
+
 from .data import RoleMenuData
 from . import babel
 
 _p = babel._p
-
-
-# TODO: Write some custom accepts fields
-# TODO: The *name* might be an important setting!
 
 
 class RoleMenuConfig(ModelConfig):
@@ -45,6 +43,10 @@ class RoleMenuConfig(ModelConfig):
     def obtainable(self):
         return self.get(RoleMenuOptions.Obtainable.setting_id)
 
+    @property
+    def rawmessage(self):
+        return self.get(RoleMenuOptions.Message.setting_id)
+
 
 class RoleMenuOptions(SettingGroup):
     @RoleMenuConfig.register_model_setting
@@ -56,6 +58,7 @@ class RoleMenuOptions(SettingGroup):
             'menuset:name|desc',
             "Brief name for this role menu."
         )
+        _accepts = _desc
         _long_desc = _p(
             'menuset:name|long_desc',
             "The role menu name is displayed when selecting the menu in commands, "
@@ -66,6 +69,16 @@ class RoleMenuOptions(SettingGroup):
         _model = RoleMenuData.RoleMenu
         _column = RoleMenuData.RoleMenu.name.name
 
+        @property
+        def update_message(self) -> str:
+            t = ctx_translator.get().t
+            value = self.value
+            resp = t(_p(
+                'menuset:name|set_response',
+                "This role menu will now be called **{new_name}**."
+            )).format(new_name=value)
+            return resp
+
     @RoleMenuConfig.register_model_setting
     class Sticky(ModelData, BoolSetting):
         setting_id = 'sticky'
@@ -75,6 +88,7 @@ class RoleMenuOptions(SettingGroup):
             'menuset:sticky|desc',
             "Whether the menu can be used to unequip roles."
         )
+        _accepts = _desc
         _long_desc = _p(
             'menuset:sticky|long_desc',
             "When enabled, members will not be able to remove equipped roles by selecting them in this menu. "
@@ -86,6 +100,22 @@ class RoleMenuOptions(SettingGroup):
         _model = RoleMenuData.RoleMenu
         _column = RoleMenuData.RoleMenu.sticky.name
 
+        @property
+        def update_message(self) -> str:
+            t = ctx_translator.get().t
+            value = self.value
+            if value:
+                resp = t(_p(
+                    'menuset:sticky|set_response:true',
+                    "Members will no longer be able to remove roles with this menu."
+                ))
+            else:
+                resp = t(_p(
+                    'menuset:sticky|set_response:false',
+                    "Members will now be able to remove roles with this menu."
+                ))
+            return resp
+
     @RoleMenuConfig.register_model_setting
     class Refunds(ModelData, BoolSetting):
         setting_id = 'refunds'
@@ -95,6 +125,7 @@ class RoleMenuOptions(SettingGroup):
             'menuset:refunds|desc',
             "Whether removing a role will refund the purchase price for that role."
         )
+        _accepts = _desc
         _long_desc = _p(
             'menuset:refunds|long_desc',
             "When enabled, members who *purchased a role through this role menu* will obtain a full refund "
@@ -107,6 +138,22 @@ class RoleMenuOptions(SettingGroup):
         _model = RoleMenuData.RoleMenu
         _column = RoleMenuData.RoleMenu.refunds.name
 
+        @property
+        def update_message(self) -> str:
+            t = ctx_translator.get().t
+            value = self.value
+            if value:
+                resp = t(_p(
+                    'menuset:refunds|set_response:true',
+                    "Members will now be refunded when removing a role with this menu."
+                ))
+            else:
+                resp = t(_p(
+                    'menuset:refunds|set_response:false',
+                    "Members will no longer be refunded when removing a role with this menu."
+                ))
+            return resp
+
     @RoleMenuConfig.register_model_setting
     class Obtainable(ModelData, IntegerSetting):
         setting_id = 'obtainable'
@@ -116,15 +163,36 @@ class RoleMenuOptions(SettingGroup):
             'menuset:obtainable|desc',
             "The maximum number of roles equippable from this menu."
         )
+        _accepts = _desc
         _long_desc = _p(
-            'menus:obtainable|long_desc',
+            'menuset:obtainable|long_desc',
             "Members will not be able to obtain more than this number of roles from this menu. "
-            "The counts roles that were not obtained through the rolemenu system."
+            "This counts roles that were not obtained through the rolemenu system."
+        )
+        _notset_str = _p(
+            'menuset:obtainable|notset',
+            "Unlimited."
         )
         _default = None
 
         _model = RoleMenuData.RoleMenu
         _column = RoleMenuData.RoleMenu.obtainable.name
+
+        @property
+        def update_message(self) -> str:
+            t = ctx_translator.get().t
+            value = self.value
+            if value:
+                resp = t(_p(
+                    'menuset:obtainable|set_response:set',
+                    "Members will be able to select a maximum of **{value}** roles from this menu."
+                )).format(value=value)
+            else:
+                resp = t(_p(
+                    'menuset:obtainable|set_response:unset',
+                    "Members will be able to select any number of roles from this menu."
+                ))
+            return resp
 
     @RoleMenuConfig.register_model_setting
     class RequiredRole(ModelData, RoleSetting):
@@ -135,6 +203,7 @@ class RoleMenuOptions(SettingGroup):
             'menuset:required_role|desc',
             "Initial role required to use this menu."
         )
+        _accepts = _desc
         _long_desc = _p(
             'menuset:required_role|long_desc',
             "If set, only members who have the `required_role` will be able to obtain or remove roles using this menu."
@@ -143,3 +212,56 @@ class RoleMenuOptions(SettingGroup):
 
         _model = RoleMenuData.RoleMenu
         _column = RoleMenuData.RoleMenu.required_roleid.name
+
+        @property
+        def update_message(self) -> str:
+            t = ctx_translator.get().t
+            value = self.value
+            if value:
+                resp = t(_p(
+                    'menuset:required_role|set_response:set',
+                    "Members will need to have the {role} role to use this menu."
+                )).format(role=self.formatted)
+            else:
+                resp = t(_p(
+                    'menuset:required_role|set_response:unset',
+                    "Any member who can see the menu may use it."
+                ))
+            return resp
+
+    @RoleMenuConfig.register_model_setting
+    class Message(ModelData, MessageSetting):
+        setting_id = 'message'
+
+        _display_name = _p('menuset:message', "custom_message")
+        _desc = _p(
+            'menuset:message|desc',
+            "Custom message data used to display the menu."
+        )
+        _long_desc = _p(
+            'menuset:message|long_desc',
+            "This setting determines the body of the menu message, "
+            "including the message content and the message embed(s). "
+            "While most easily modifiable through the `Edit Message` button, "
+            "raw JSON-formatted message data may also be uploaded via command."
+        )
+        _default = None
+
+        _model = RoleMenuData.RoleMenu
+        _column = RoleMenuData.RoleMenu.rawmessage.name
+
+        @property
+        def update_message(self) -> str:
+            t = ctx_translator.get().t
+            value = self.value
+            if value:
+                resp = t(_p(
+                    'menuset:message|set_response:set',
+                    "The role menu message has been set. Edit through the menu editor."
+                )).format(value=value.mention)
+            else:
+                resp = t(_p(
+                    'menuset:message|set_response:unset',
+                    "The role menu message has been unset. Select a template through the menu editor."
+                ))
+            return resp

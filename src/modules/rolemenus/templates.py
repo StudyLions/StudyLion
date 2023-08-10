@@ -13,7 +13,7 @@ _p = babel._p
 DEFAULT_EMOJI = '🔲'
 
 
-templates = {}
+templates: dict[int, 'Template'] = {}
 
 
 class Template:
@@ -68,7 +68,7 @@ async def simple_template(menu) -> MessageArgs:
         duration = menurole.config.duration
 
         if emoji.data:
-            parts.append(emoji.formatted)
+            parts.append(emoji.data)
 
         parts.append(role.formatted)
 
@@ -114,7 +114,7 @@ async def twocolumn_template(menu) -> MessageArgs:
     )
     for block in blocks:
         block_lines = [
-            f"{menurole.config.emoji.formatted or DEFAULT_EMOJI} {menurole.config.label.formatted}"
+            f"{menurole.config.emoji.data or ' '} **{menurole.config.label.formatted}**"
             for menurole in block
         ]
         if block_lines:
@@ -151,7 +151,7 @@ async def threecolumn_template(menu) -> MessageArgs:
     )
     for block in blocks:
         block_lines = [
-            f"{menurole.config.emoji.formatted or DEFAULT_EMOJI} {menurole.config.label.formatted}"
+            f"{menurole.config.emoji.data or ' '} **{menurole.config.label.formatted}**"
             for menurole in block
         ]
         if block_lines:
@@ -188,7 +188,7 @@ async def shop_template(menu) -> MessageArgs:
         parts.append("|")
 
         if emoji.data:
-            parts.append(emoji.formatted)
+            parts.append(emoji.data)
 
         parts.append(role.formatted)
 

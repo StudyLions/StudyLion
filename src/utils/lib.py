@@ -6,6 +6,7 @@ import re
 from contextvars import Context
 
 import discord
+from discord.partial_emoji import _EmojiTag
 from discord import Embed, File, GuildSticker, StickerItem, AllowedMentions, Message, MessageReference, PartialMessage
 from discord.ui import View
 
@@ -770,3 +771,20 @@ def replace_multiple(format_string, mapping):
     pattern = '|'.join(f"({key})" for key in keys)
     string = re.sub(pattern, lambda match: str(mapping[keys[match.lastindex - 1]]), format_string)
     return string
+
+
+def emojikey(emoji: discord.Emoji | discord.PartialEmoji | str):
+    """
+    Produces a distinguishing key for an Emoji or PartialEmoji.
+
+    Equality checks using this key should act as expected.
+    """
+    if isinstance(emoji, _EmojiTag):
+        if emoji.id:
+            key = str(emoji.id)
+        else:
+            key = str(emoji.name)
+    else:
+        key = str(emoji)
+
+    return key

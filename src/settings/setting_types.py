@@ -105,6 +105,116 @@ class StringSetting(InteractiveSetting[ParentID, str, str]):
             return None
 
 
+class EmojiSetting(InteractiveSetting[ParentID, str, str]):
+    """
+    Setting type representing a stored emoji.
+
+    The emoji is stored in a single string field, and at no time is guaranteed to be a valid emoji.
+    """
+    _accepts = _p('settype:emoji|accepts', "Paste a builtin emoji, custom emoji, or emoji id.")
+
+    @property
+    def input_formatted(self) -> str:
+        """
+        Return the current data string.
+        """
+        if self._data is not None:
+            return str(self._data)
+        else:
+            return ""
+
+    @classmethod
+    def _data_from_value(cls, parent_id: ParentID, value, **kwargs):
+        """
+        Return the provided value string as the data string.
+        """
+        return value
+
+    @classmethod
+    def _data_to_value(cls, id, data, **kwargs):
+        """
+        Return the provided data string as the value string.
+        """
+        return data
+
+    @classmethod
+    async def _parse_string(cls, parent_id, string: str, **kwargs):
+        """
+        Parse the given user entered emoji string.
+
+        Accepts unicode (builtin) emojis, custom emojis, and custom emoji ids.
+        """
+        t = ctx_translator.get().t
+
+        provided = string
+        string = string.strip(' :<>')
+        if string.startswith('a:'):
+            string = string[2:]
+
+        if not string or string.lower() == 'none':
+            emojistr = None
+        elif string.isdigit():
+            # Assume emoji id
+            emojistr = f"<a:unknown:{string}>"
+        elif ':' in string:
+            # Assume custom emoji
+            emojistr = provided.strip()
+        elif string.isascii():
+            # Probably not an emoji
+            raise UserInputError(
+                t(_p(
+                    'settype:emoji|error:parse',
+                    "Could not parse `{provided}` as a Discord emoji. "
+                    "Supported formats are builtin emojis (e.g. `{builtin}`), "
+                    "custom emojis (e.g. {custom}), "
+                    "or custom emoji ids (e.g. `{custom_id}`)."
+                )).format(
+                    provided=provided,
+                    builtin="🤔",
+                    custom="*`<`*`CuteLeo:942499177135480942`*`>`*",
+                    custom_id="942499177135480942",
+                )
+            )
+        else:
+            # We don't have a good way of testing for emoji unicode
+            # So just assume anything with unicode is an emoji.
+            emojistr = string
+
+        return emojistr
+
+    @classmethod
+    def _format_data(cls, parent_id, data, **kwargs):
+        """
+        Optionally (see `_quote`) wrap the data string in backticks.
+        """
+        if data:
+            return data
+        else:
+            return None
+
+    @property
+    def as_partial(self) -> Optional[discord.PartialEmoji]:
+        return self._parse_emoji(self.data)
+
+    @staticmethod
+    def _parse_emoji(emojistr: str):
+        """
+        Converts a provided string into a PartialEmoji.
+        Deos not validate the emoji string.
+        """
+        if not emojistr:
+            return None
+        elif ":" in emojistr:
+            emojistr = emojistr.strip('<>')
+            splits = emojistr.split(":")
+            if len(splits) == 3:
+                animated, name, id = splits
+                animated = bool(animated)
+                return discord.PartialEmoji(name=name, animated=animated, id=int(id))
+        else:
+            return discord.PartialEmoji(name=emojistr)
+
+
 CT = TypeVar('CT', 'GuildChannel', 'discord.Object', 'discord.Thread')
 MCT = TypeVar('MCT', discord.TextChannel, discord.Thread, discord.VoiceChannel, discord.Object)
 
@@ -558,7 +668,7 @@ class IntegerSetting(InteractiveSetting[ParentID, int, int]):
             return f"`{data}`"
 
 
-class EmojiSetting(InteractiveSetting[ParentID, str, discord.PartialEmoji]):
+class PartialEmojiSetting(InteractiveSetting[ParentID, str, discord.PartialEmoji]):
     """
     Setting type mixin describing an Emoji string.
 
@@ -1138,15 +1248,6 @@ class DurationSetting(InteractiveSetting[ParentID, int, int]):
         """
         if data is not None:
             return "`{}`".format(strfdur(data, short=False, show_days=cls._show_days))
-
-
-class MessageSetting(StringSetting):
-    """
-    Typed Setting ABC representing a message sent to Discord.
-
-    Placeholder implemented as a StringSetting until Context is built.
-    """
-    ...
 
 
 class ListSetting:

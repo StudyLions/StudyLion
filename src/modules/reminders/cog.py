@@ -323,11 +323,10 @@ class Reminders(LionCog):
                     logger.debug(
                         f"Executed reminder <rid: {reminder.reminderid}>."
                     )
-            except discord.HTTPException:
+            except discord.HTTPException as e:
                 await reminder.update(failed=True)
                 logger.debug(
-                    f"Reminder <rid: {reminder.reminderid}> could not be sent.",
-                    exc_info=True
+                    f"Reminder <rid: {reminder.reminderid}> could not be sent: {e.text}",
                 )
             except Exception:
                 await reminder.update(failed=True)

@@ -24,8 +24,12 @@ CREATE TABLE role_menus(
     obtainable INTEGER,
     menutype RoleMenuType NOT NULL,
     templateid INTEGER,
-    rawmessage TEXT
+    rawmessage TEXT,
+    default_price INTEGER,
+    event_log BOOLEAN
 );
+CREATE INDEX role_menu_guildid ON role_menus (guildid);
+
 
 
 CREATE TABLE role_menu_roles(
@@ -39,6 +43,8 @@ CREATE TABLE role_menu_roles(
     duration INTEGER,
     rawreply TEXT
 );
+CREATE INDEX role_menu_roles_menuid ON role_menu_roles (menuid);
+CREATE INDEX role_menu_roles_roleid ON role_menu_roles (roleid);
 
 
 CREATE TABLE role_menu_history(
@@ -49,5 +55,35 @@ CREATE TABLE role_menu_history(
     obtained_at TIMESTAMPTZ NOT NULL,
     transactionid INTEGER REFERENCES coin_transactions (transactionid) ON DELETE SET NULL,
     expires_at TIMESTAMPTZ,
-    expired_at TIMESTAMPTZ
+    removed_at TIMESTAMPTZ
 );
+CREATE INDEX role_menu_history_menuid ON role_menu_history (menuid);
+CREATE INDEX role_menu_history_roleid ON role_menu_history (roleid);
+
+
+-- Migration
+INSERT INTO role_menus (messageid, guildid, channelid, enabled, required_roleid, sticky, obtainable, refunds, event_log, default_price, name, menutype)
+  SELECT
+    messageid, guildid, channelid, enabled,
+    required_role, NOT removable, maximum,
+    refunds, event_log, default_price, messageid :: TEXT,
+    'REACTION'
+  FROM reaction_role_messages;
+
+INSERT INTO role_menu_roles (menuid, roleid, label, emoji, price, duration)
+  SELECT
+    role_menus.menuid, reactions.roleid, reactions.roleid::TEXT,
+    COALESCE('<:' || reactions.emoji_name || ':' || reactions.emoji_id :: TEXT || '>', reactions.emoji_name),
+    reactions.price, reactions.timeout
+  FROM reaction_role_reactions reactions
+  LEFT JOIN role_menus
+    ON role_menus.messageid = reactions.messageid;
+
+INSERT INTO role_menu_history (menuid, roleid, userid, obtained_at, expires_at)
+  SELECT
+    rmr.menuid, expiring.roleid, expiring.userid, NOW(), expiring.expiry
+  FROM reaction_role_expiring expiring
+  LEFT JOIN role_menu_roles rmr
+    ON rmr.roleid = expiring.roleid
+  WHERE rmr.menuid IS NOT NULL;
+

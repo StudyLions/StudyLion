@@ -47,7 +47,7 @@ class TaskMonitor(Generic[Taskid]):
         Similar to `schedule_tasks`, but wipe and reset the tasklist.
         """
         self._taskmap = {tid: time for tid, time in tasks}
-        self._tasklist = sorted(self._taskmap.keys(), key=lambda tid: -1 * tid * self._taskmap[tid])
+        self._tasklist = list(sorted(self._taskmap.keys(), key=lambda tid: -1 * self._taskmap[tid]))
         self._wakeup.set()
 
     def schedule_tasks(self, *tasks: tuple[Taskid, int]) -> None:
@@ -59,7 +59,7 @@ class TaskMonitor(Generic[Taskid]):
         we build an entirely new list, and always wake up the loop.
         """
         self._taskmap |= {tid: time for tid, time in tasks}
-        self._tasklist = sorted(self._taskmap.keys(), key=lambda tid: -1 * self._taskmap[tid])
+        self._tasklist = list(sorted(self._taskmap.keys(), key=lambda tid: -1 * self._taskmap[tid]))
         self._wakeup.set()
 
     def schedule_task(self, taskid: Taskid, timestamp: int) -> None:

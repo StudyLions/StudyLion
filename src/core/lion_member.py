@@ -6,6 +6,7 @@ import discord
 from meta import LionBot
 from utils.lib import Timezoned
 from settings.groups import ModelConfig, SettingDotDict
+from babel.translator import SOURCE_LOCALE
 
 from .data import CoreData
 from .lion_user import LionUser
@@ -63,6 +64,21 @@ class LionMember(Timezoned):
         guild_timezone = self.lguild.config.timezone
         return user_timezone.value if user_timezone._data is not None else guild_timezone.value
 
+    def private_locale(self, interaction=None) -> str:
+        """
+        Appropriate locale to use in private communication with this member.
+
+        Does not take into account guild force_locale.
+        """
+        user_locale = self.luser.config.get('user_locale').value
+        interaction_locale = interaction.locale.value if interaction else None
+        guild_locale = self.lguild.config.get('guild_locale').value
+
+        locale = user_locale or interaction_locale
+        locale = locale or guild_locale
+        locale = locale or SOURCE_LOCALE
+        return locale
+
     async def touch_discord_model(self, member: discord.Member):
         """
         Update saved Discord model attributes for this member.
@@ -82,3 +98,15 @@ class LionMember(Timezoned):
                 except discord.HTTPException:
                     pass
         return member
+
+    async def remove_role(self, role: discord.Role):
+        member = await self.fetch_member()
+        if member is not None and role in member.roles:
+            try:
+                await member.remove_roles(role)
+            except discord.HTTPException:
+                # TODO: Logging, audit logging
+                pass
+        else:
+            # TODO: Persistent role removal
+            ...

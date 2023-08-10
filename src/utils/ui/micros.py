@@ -167,7 +167,10 @@ class ModalRetryUI(LeoUI):
 
     async def respond_to(self, interaction):
         self._interaction = interaction
-        await interaction.response.send_message(embed=self.embed, ephemeral=True, view=self)
+        if interaction.response.is_done():
+            await interaction.followup.send(embed=self.embed, ephemeral=True, view=self)
+        else:
+            await interaction.response.send_message(embed=self.embed, ephemeral=True, view=self)
 
     @button(label="Retry")
     async def retry_button(self, interaction, butt):

@@ -248,6 +248,13 @@ class MessageUI(LeoUI):
         # Refresh lock, to avoid cache collisions on refresh
         self._refresh_lock = asyncio.Lock()
 
+    @property
+    def channel(self):
+        if self._original is not None:
+            return self._original.channel
+        else:
+            return self._message.channel
+
     # ----- UI API -----
     async def run(self, interaction: discord.Interaction, **kwargs):
         """
@@ -366,6 +373,15 @@ class MessageUI(LeoUI):
         args = await self.make_message()
         self._message = await channel.send(**args.send_args, view=self)
 
+    async def _redraw(self, args):
+        if self._original and not self._original.is_expired():
+            await self._original.edit_original_response(**args.edit_args, view=self)
+        elif self._message:
+            await self._message.edit(**args.edit_args, view=self)
+        else:
+            # Interaction expired or already closed. Quietly cleanup.
+            await self.close()
+
     async def redraw(self, thinking: Optional[discord.Interaction] = None):
         """
         Update the output message for this UI.
@@ -379,13 +395,7 @@ class MessageUI(LeoUI):
             asyncio.create_task(thinking.delete_original_response())
 
         try:
-            if self._original and not self._original.is_expired():
-                await self._original.edit_original_response(**args.edit_args, view=self)
-            elif self._message:
-                await self._message.edit(**args.edit_args, view=self)
-            else:
-                # Interaction expired or already closed. Quietly cleanup.
-                await self.close()
+            await self._redraw(args)
         except discord.HTTPException:
             # Unknown communication erorr, nothing we can reliably do. Exit quietly.
             await self.close()
