@@ -351,6 +351,8 @@ class RoleMenuCog(LionCog):
 
         Set _message and messageid to None.
         """
+        if not message.guild:
+            return
         menuid = self.live_menus[message.guild.id].get(message.id, None)
         if menuid is not None:
             menu = await RoleMenu.fetch(self.bot, menuid)

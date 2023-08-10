@@ -1104,7 +1104,7 @@ class MenuEditor(MessageUI):
             self.preview_button, self.edit_msg_button, self.repost_button,
         )
         if self.page_count > 1:
-            line_1 = (self.prev_page_button, *line_last, self.next_page_button)
+            line_1 = (self.prev_page_button, *line_1, self.next_page_button)
         if self.mode is EditorMode.OPTIONS:
             self.set_layout(
                 line_1,
