@@ -14,6 +14,7 @@ active = [
     '.pomodoro',
     '.rooms',
     '.rolemenus',
+    '.member_admin',
     '.meta',
     '.test',
 ]

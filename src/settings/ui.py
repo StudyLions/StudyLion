@@ -455,7 +455,7 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
         raise NotImplementedError
 
     @classmethod
-    def _check_value(cls, parent_id, value, **kwargs) -> Optional[str]:
+    async def _check_value(cls, parent_id, value, **kwargs) -> Optional[str]:
         """
         Check the provided value is valid.
 

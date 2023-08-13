@@ -12,8 +12,6 @@ from discord.ui.text_input import TextInput, TextStyle
 
 from meta import conf, LionBot
 from meta.errors import UserInputError, ResponseTimedOut
-from utils.lib import error_embed
-from babel.translator import ctx_translator, LazyStr
 
 from ..lib import MessageArgs, utc_now
 
@@ -49,8 +47,14 @@ class MsgEditor(MessageUI):
 
     # ----- API -----
     async def format_data(self, data):
+        """
+        Format a MessageData dict for rendering.
+
+        May be extended or overridden for custom formatting.
+        By default, uses the provided `formatter` callback (if provided).
+        """
         if self._formatter is not None:
-            self._formatter(data)
+            await self._formatter(data)
 
     def copy_data(self):
         return copy.deepcopy(self.history[-1])
@@ -567,12 +571,13 @@ class MsgEditor(MessageUI):
             style=TextStyle.short,
             required=True,
             max_length=256,
+            default='True',
         )
 
         modal = MsgEditorInput(
-            position_field,
             name_field,
             value_field,
+            position_field,
             inline_field,
             title=t(_p('ui:msg_editor|modal:add_field|title', "Add Embed Field"))
         )
@@ -1005,6 +1010,7 @@ class MsgEditor(MessageUI):
             async def cont_button(interaction: discord.Interaction, pressed):
                 await interaction.response.defer()
                 await interaction.message.delete()
+                nonlocal stopped
                 stopped = True
                 # TODO: Clean up this mess. It works, but needs to be refactored to a timeout confirmation mixin.
                 # TODO: Consider moving the message to the interaction response

@@ -231,3 +231,41 @@ class ScheduleDashboard(DashboardSection):
     )
     configui = ScheduleSettingUI
     setting_classes = ScheduleSettingUI.setting_classes
+
+    def apply_to(self, page: discord.Embed):
+        t = self.bot.translator.t
+        pages = [
+            self.instances[0:3],
+            self.instances[3:7],
+            self.instances[7:]
+        ]
+        # Schedule Channels
+        table = self._make_table(pages[0])
+        page.add_field(
+            name=t(_p(
+                'dash:schedule|section:schedule_channels|name',
+                "Scheduled Session Channels ({commands[configure schedule]})",
+            )).format(commands=self.bot.core.mention_cache),
+            value=table,
+            inline=False
+        )
+        # Schedule Rewards
+        table = self._make_table(pages[1])
+        page.add_field(
+            name=t(_p(
+                'dash:schedule|section:schedule_rewards|name',
+                "Scheduled Session Rewards ({commands[configure schedule]})",
+            )).format(commands=self.bot.core.mention_cache),
+            value=table,
+            inline=False
+        )
+        # Schedule Blacklist
+        table = self._make_table(pages[2])
+        page.add_field(
+            name=t(_p(
+                'dash:schedule|section:schedule_blacklist|name',
+                "Scheduled Session Blacklist ({commands[configure schedule]})",
+            )).format(commands=self.bot.core.mention_cache),
+            value=table,
+            inline=False
+        )

@@ -56,6 +56,10 @@ class ConfigUI(LeoUI):
     def page_instances(self):
         return self.instances
 
+    def get_instance(self, setting_cls):
+        setting_id = setting_cls.setting_id
+        return next(instance for instance in self.instances if instance.setting_id == setting_id)
+
     async def interaction_check(self, interaction: discord.Interaction):
         """
         Default requirement for a Config UI is low management (i.e. manage_guild permissions).
@@ -102,7 +106,7 @@ class ConfigUI(LeoUI):
         instances = self.page_instances
         items = [setting.input_field for setting in instances]
         # Filter out settings which don't have input fields
-        items = [item for item in items if item]
+        items = [item for item in items if item][:5]
         strings = [item.value for item in items]
         modal = ConfigEditor(*items, title=t(self.edit_modal_title))
 
@@ -313,8 +317,11 @@ class DashboardSection:
         )
 
     def make_table(self):
+        return self._make_table(self.instances)
+
+    def _make_table(self, instances):
         rows = []
-        for setting in self.instances:
+        for setting in instances:
             name = setting.display_name
             value = setting.formatted
             rows.append((name, value, setting.desc))

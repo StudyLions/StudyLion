@@ -816,7 +816,7 @@ class ScheduleCog(LionCog):
 
     # Configuration
     @LionCog.placeholder_group
-    @cmds.hybrid_group('configre', with_app_command=False)
+    @cmds.hybrid_group('configure', with_app_command=False)
     async def configure_group(self, ctx: LionContext):
         """
         Substitute configure command group.

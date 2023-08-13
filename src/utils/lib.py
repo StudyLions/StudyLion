@@ -1,4 +1,5 @@
 from typing import NamedTuple, Optional, Sequence, Union, overload, List
+import collections
 import datetime
 import iso8601  # type: ignore
 import pytz
@@ -788,3 +789,18 @@ def emojikey(emoji: discord.Emoji | discord.PartialEmoji | str):
         key = str(emoji)
 
     return key
+
+def recurse_map(func, obj, loc=[]):
+    if isinstance(obj, dict):
+        for k, v in obj.items():
+            loc.append(k)
+            obj[k] = recurse_map(func, v, loc)
+            loc.pop()
+    elif isinstance(obj, list):
+        for i, item in enumerate(obj):
+            loc.append(i)
+            obj[i] = recurse_map(func, item)
+            loc.pop()
+    else:
+        obj = func(loc, obj)
+    return obj 

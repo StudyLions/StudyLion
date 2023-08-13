@@ -108,5 +108,7 @@ class LionMember(Timezoned):
                 # TODO: Logging, audit logging
                 pass
         else:
-            # TODO: Persistent role removal
-            ...
+            # Remove the role from persistent role storage
+            cog = self.bot.get_cog('MemberAdminCog')
+            if cog:
+                await cog.absent_remove_role(self.guildid, self.userid, role.id)

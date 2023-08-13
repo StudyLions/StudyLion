@@ -6,6 +6,7 @@ import json
 import traceback
 
 import discord
+from discord.enums import TextStyle
 
 from settings.base import ParentID
 from settings.setting_types import IntegerSetting, StringSetting
@@ -13,6 +14,7 @@ from meta import conf
 from meta.errors import UserInputError
 from constants import MAX_COINS
 from babel.translator import ctx_translator
+from utils.lib import MessageArgs
 
 from . import babel
 
@@ -120,7 +122,7 @@ class MessageSetting(StringSetting):
             return decoded
 
     @classmethod
-    def value_to_args(cls, parent_id: ParentID, value: dict, **kwargs):
+    def value_to_args(cls, parent_id: ParentID, value: dict, **kwargs) -> MessageArgs:
         if not value:
             return None
 
@@ -133,6 +135,8 @@ class MessageSetting(StringSetting):
             embeds = []
             for embed_data in value['embeds']:
                 embeds.append(discord.Embed.from_dict(embed_data))
+            args['embeds'] = embeds
+        return MessageArgs(**args)
 
     @classmethod
     def _data_from_value(cls, parent_id: ParentID, value: Optional[dict], **kwargs):
@@ -268,3 +272,9 @@ class MessageSetting(StringSetting):
             formatted = content
 
         return formatted
+
+    @property
+    def input_field(self):
+        field = super().input_field
+        field.style = TextStyle.long
+        return field

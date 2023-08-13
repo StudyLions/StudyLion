@@ -17,7 +17,9 @@ from modules.pomodoro.settingui import TimerDashboard
 from modules.rooms.settingui import RoomDashboard
 from babel.settingui import LocaleDashboard
 from modules.schedule.ui.settingui import ScheduleDashboard
-# from modules.statistics.settings import StatisticsConfigUI
+from modules.statistics.settings import StatisticsDashboard
+from modules.member_admin.settingui import MemberAdminDashboard
+
 
 from . import babel, logger
 
@@ -30,9 +32,9 @@ class GuildDashboard(BasePager):
     Paged UI providing an overview of the guild configuration.
     """
     pages = [
-        (LocaleDashboard, EconomyDashboard, TasklistDashboard),
-        (VoiceTrackerDashboard, TextTrackerDashboard, ),
-        (RankDashboard, TimerDashboard, RoomDashboard, ),
+        (MemberAdminDashboard, LocaleDashboard, EconomyDashboard,),
+        (VoiceTrackerDashboard, TextTrackerDashboard, RankDashboard, StatisticsDashboard,),
+        (TasklistDashboard, RoomDashboard, TimerDashboard,),
         (ScheduleDashboard,),
     ]
 

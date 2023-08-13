@@ -16,7 +16,7 @@ from meta import conf, LionBot
 from meta.context import ctx_bot
 from meta.errors import UserInputError
 from utils.lib import tabulate, utc_now
-from utils.ui import ConfigUI, FastModal, error_handler_for, ModalRetryUI
+from utils.ui import ConfigUI, FastModal, error_handler_for, ModalRetryUI, DashboardSection
 from utils.lib import MessageArgs
 from core.data import CoreData
 from core.lion_guild import VoiceMode
@@ -388,3 +388,12 @@ class StatisticsConfigUI(ConfigUI):
         for setting in self.instances:
             embed.add_field(**setting.embed_field, inline=False)
         return MessageArgs(embed=embed)
+
+
+class StatisticsDashboard(DashboardSection):
+    section_name = _p(
+        'dash:stats|title',
+        "Activity Statistics Configuration ({commands[configure statistics]})"
+    )
+    configui = StatisticsConfigUI
+    setting_classes = StatisticsConfigUI.setting_classes
