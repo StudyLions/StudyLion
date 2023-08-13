@@ -115,7 +115,7 @@ class MemberAdminSettings(SettingGroup):
                         "text": "You are the {member_count}th member!"
                     },
                     "color": 15695665
-                },
+                }
             }
             """
         )
