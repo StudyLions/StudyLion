@@ -1013,6 +1013,10 @@ INSERT INTO role_menu_history (menuid, roleid, userid, obtained_at, expires_at)
   WHERE rmr.menuid IS NOT NULL;
 -- }}}
 
+-- Greeting channels {{{
+UPDATE guild_config SET greeting_message = NULL, returning_message = NULL WHERE greeting_channel IS NULL;
+UPDATE guild_config SET greeting_channel = NULL WHERE greeting_channel = 1;
+-- }}}
 
 INSERT INTO VersionHistory (version, author) VALUES (13, 'v12-v13 migration');
 
