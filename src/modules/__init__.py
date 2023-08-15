@@ -15,6 +15,8 @@ active = [
     '.rooms',
     '.rolemenus',
     '.member_admin',
+    '.moderation',
+    '.video_channels',
     '.meta',
     '.test',
 ]

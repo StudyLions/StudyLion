@@ -47,6 +47,7 @@ class MemberAdminUI(ConfigUI):
         setting = self.get_instance(Settings.GreetingChannel)
         setting.value = selected.values[0] if selected.values else None
         await setting.write()
+        await selection.delete_original_response()
     
     async def greetch_menu_refresh(self):
         menu = self.greetch_menu
@@ -89,6 +90,7 @@ class MemberAdminUI(ConfigUI):
     @select(
         cls=RoleSelect,
         placeholder="BOT_AUTOROLES_MENU_PLACEHOLDER",
+        min_values=0, max_values=25
     )
     async def bot_autoroles_menu(self, selection: discord.Interaction, selected: RoleSelect):
         """
@@ -253,6 +255,10 @@ class MemberAdminDashboard(DashboardSection):
     section_name = _p(
         "dash:member_admin|title",
         "Greetings and Initial Roles ({commands[configure welcome]})"
+    )
+    _option_name = _p(
+        "dash:member_admin|dropdown|placeholder",
+        "Greetings and Initial Roles Panel"
     )
     configui = MemberAdminUI
     setting_classes = MemberAdminUI.setting_classes

@@ -83,10 +83,10 @@ def colour_escape(fmt: str) -> str:
     return fmt
 
 
-log_format = ('[%(green)%(asctime)-19s%(reset)][%(red)%(levelname)-8s%(reset)]' +
-              '[%(cyan)%(app)-15s%(reset)]' +
-              '[%(cyan)%(context)-24s%(reset)]' +
-              '[%(cyan)%(actionstr)-22s%(reset)]' +
+log_format = ('%(green)%(asctime)-19s%(reset)|%(red)%(levelname)-8s%(reset)|' +
+              '%(cyan)%(app)-15s%(reset)|' +
+              '%(cyan)%(context)-24s%(reset)|' +
+              '%(cyan)%(actionstr)-22s%(reset)|' +
               ' %(bold)%(cyan)%(name)s:%(reset)' +
               ' %(white)%(message)s%(ctxstr)s%(reset)')
 log_format = colour_escape(log_format)

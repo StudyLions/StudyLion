@@ -72,7 +72,7 @@ class TaskMonitor(Generic[Taskid]):
             wake = self._taskmap[nextid] >= timestamp
             wake = wake or taskid == nextid
         else:
-            wake = False
+            wake = True
         if taskid in self._taskmap:
             self._tasklist.remove(taskid)
         self._taskmap[taskid] = timestamp

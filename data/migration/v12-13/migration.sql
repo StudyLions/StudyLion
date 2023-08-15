@@ -1018,6 +1018,19 @@ UPDATE guild_config SET greeting_message = NULL, returning_message = NULL WHERE 
 UPDATE guild_config SET greeting_channel = NULL WHERE greeting_channel = 1;
 -- }}}
 
+-- Moderation {{{
+
+UPDATE guild_config SET studyban_role = NULL WHERE video_studyban = False;
+
+CREATE TABLE video_exempt_roles(
+  guildid BIGINT NOT NULL,
+  roleid BIGINT NOT NULL,
+  _timestamp TIMESTAMPTZ NOT NULL DEFAULT now(),
+  FOREIGN KEY (guildid) REFERENCES guild_config (guildid) ON DELETE CASCADE ON UPDATE CASCADE,
+  PRIMARY KEY (guildid, roleid)
+);
+-- }}}
+
 INSERT INTO VersionHistory (version, author) VALUES (13, 'v12-v13 migration');
 
 COMMIT;

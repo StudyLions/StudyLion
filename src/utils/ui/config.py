@@ -281,6 +281,8 @@ class DashboardSection:
     setting_classes = []
     configui = None
 
+    _option_name = None
+
     def __init__(self, bot: LionBot, guildid: int):
         self.bot = bot
         self.guildid = guildid
@@ -288,6 +290,16 @@ class DashboardSection:
         # List of instances of the contained setting classes
         # Populated in load()
         self.instances = []
+
+    @property
+    def option_name(self) -> str:
+        t = self.bot.translator.t
+        string = self._option_name or self.section_name
+        return t(string).format(
+            bot=self.bot,
+            commands=self.bot.core.mention_cache
+        )
+
 
     async def load(self):
         """

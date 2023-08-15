@@ -19,6 +19,8 @@ from babel.settingui import LocaleDashboard
 from modules.schedule.ui.settingui import ScheduleDashboard
 from modules.statistics.settings import StatisticsDashboard
 from modules.member_admin.settingui import MemberAdminDashboard
+from modules.moderation.settingui import ModerationDashboard
+from modules.video_channels.settingui import VideoDashboard
 
 
 from . import babel, logger
@@ -33,6 +35,7 @@ class GuildDashboard(BasePager):
     """
     pages = [
         (MemberAdminDashboard, LocaleDashboard, EconomyDashboard,),
+        (ModerationDashboard, VideoDashboard,),
         (VoiceTrackerDashboard, TextTrackerDashboard, RankDashboard, StatisticsDashboard,),
         (TasklistDashboard, RoomDashboard, TimerDashboard,),
         (ScheduleDashboard,),
@@ -138,17 +141,14 @@ class GuildDashboard(BasePager):
         menu = self.config_menu
         menu.placeholder = t(_p(
             'ui:dashboard|menu:config|placeholder',
-            "Expand Configuration Group"
+            "Open Configuration Panel"
         ))
 
         options = []
         for i, page in enumerate(self.pages):
             for j, section in enumerate(page):
                 option = SelectOption(
-                    label=t(section.section_name).format(
-                        bot=self.bot,
-                        commands=self.bot.core.mention_cache
-                    ),
+                    label=section(self.bot, self.guildid).option_name,
                     value=str(i * 10 + j)
                 )
                 options.append(option)

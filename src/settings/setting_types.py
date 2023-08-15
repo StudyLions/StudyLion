@@ -367,6 +367,7 @@ class RoleSetting(InteractiveSetting[ParentID, int, Union[discord.Role, discord.
     _accepts = _p('settype:role|accepts', "A role name or id")
 
     _selector_placeholder = "Select a Role"
+    _allow_object = True
 
     @classmethod
     def _get_guildid(cls, parent_id: int, **kwargs) -> int:
@@ -399,7 +400,7 @@ class RoleSetting(InteractiveSetting[ParentID, int, Union[discord.Role, discord.
             guild = bot.get_guild(guildid)
             if guild is not None:
                 role = guild.get_role(data)
-            if role is None:
+            if role is None and cls._allow_object:
                 role = discord.Object(id=data)
             return role
 
