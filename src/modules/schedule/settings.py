@@ -51,6 +51,8 @@ class ScheduleSettings(SettingGroup):
 
         _model = ScheduleData.ScheduleGuild
         _column = ScheduleData.ScheduleGuild.lobby_channel.name
+        _allow_object = False
+
 
         @property
         def update_message(self):
@@ -110,6 +112,7 @@ class ScheduleSettings(SettingGroup):
 
         _model = ScheduleData.ScheduleGuild
         _column = ScheduleData.ScheduleGuild.room_channel.name
+        _allow_object = False
 
         @property
         def update_message(self):
@@ -424,6 +427,7 @@ class ScheduleSettings(SettingGroup):
 
         _model = ScheduleData.ScheduleGuild
         _column = ScheduleData.ScheduleGuild.blacklist_role.name
+        _allow_object = False
 
         @property
         def update_message(self):

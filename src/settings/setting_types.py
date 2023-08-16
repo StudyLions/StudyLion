@@ -237,6 +237,7 @@ class ChannelSetting(Generic[ParentID, CT], InteractiveSetting[ParentID, int, CT
 
     _selector_placeholder = "Select a Channel"
     channel_types: list[discord.ChannelType] = []
+    _allow_object = True
 
     @classmethod
     def _data_from_value(cls, parent_id, value, **kwargs):
@@ -255,7 +256,7 @@ class ChannelSetting(Generic[ParentID, CT], InteractiveSetting[ParentID, int, CT
         if data is not None:
             bot = ctx_bot.get()
             channel = bot.get_channel(data)
-            if channel is None:
+            if channel is None and cls._allow_object:
                 channel = discord.Object(id=data)
             return channel
 
