@@ -376,12 +376,12 @@ class PresenceCtrl(LionCog):
         name="presence",
         description="Globally set the bot status and activity."
     )
-    @sys_admin_ward
     @appcmds.describe(
         status="Online status (online | idle | dnd | offline)",
         type="Activity type (watching | listening | playing | streaming)",
         string="Activity name, supports substitutions $in_vc, $voice_channels, $shard_guilds, $shard_members"
     )
+    @sys_admin_ward
     async def presence_cmd(
         self,
         ctx: LionContext,

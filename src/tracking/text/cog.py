@@ -15,7 +15,7 @@ from meta.sharding import THIS_SHARD
 from meta.app import appname
 from utils.lib import utc_now, error_embed
 
-from wards import low_management_ward
+from wards import low_management_ward, sys_admin_ward
 from . import babel, logger
 from .data import TextTrackerData
 
@@ -326,6 +326,7 @@ class TextTrackerCog(LionCog):
         xp_per_period=TextTrackerGlobalSettings.XPPerPeriod._desc,
         word_xp=TextTrackerGlobalSettings.WordXP._desc,
     )
+    @sys_admin_ward
     async def leo_configure_text_tracking_cmd(self, ctx: LionContext,
                                               xp_per_period: Optional[appcmds.Range[int, 0, 2**15]] = None,
                                               word_xp: Optional[appcmds.Range[int, 0, 2**15]] = None):

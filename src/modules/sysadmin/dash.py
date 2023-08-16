@@ -4,8 +4,9 @@ The dashboard shows a summary of the various registered global bot settings.
 
 import discord
 import discord.ext.commands as cmds
+import discord.app_commands as appcmd
 
-from meta import LionBot, LionCog, LionContext
+from meta import LionBot, LionCog, LionContext, conf
 from meta.app import appname
 from wards import sys_admin_ward
 
@@ -15,6 +16,8 @@ from settings.groups import SettingGroup
 class LeoSettings(LionCog):
     depends = {'CoreCog'}
 
+    admin_guilds = conf.bog.getintlist('admin_guilds')
+
     def __init__(self, bot: LionBot):
         self.bot = bot
 
@@ -23,6 +26,7 @@ class LeoSettings(LionCog):
     @cmds.hybrid_group(
         name="leo"
     )
+    @appcmd.guilds(*admin_guilds)
     @sys_admin_ward
     async def leo_group(self, ctx: LionContext):
         """

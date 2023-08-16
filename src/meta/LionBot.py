@@ -196,7 +196,7 @@ class LionBot(Bot):
                 extra={'action': 'BotError', 'with_ctx': True}
             )
             try:
-                await ctx.error_rely(exception.message)
+                await ctx.error_reply(exception.message)
             except Exception:
                 pass
         except Exception:

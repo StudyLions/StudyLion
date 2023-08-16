@@ -511,6 +511,7 @@ class Economy(LionCog):
             "Target user or role to view or update. Use @everyone to reset the entire guild."
         ),
     )
+    @low_management_ward
     async def economy_reset_cmd(
         self,
         ctx: LionContext,
@@ -634,7 +635,7 @@ class Economy(LionCog):
             # Do not create the member row if it does not already exist.
             # TODO: Audit logging trail
             await ctx.bot.core.data.Member.table.update_where(
-                guuildid=ctx.guild.id,
+                guildid=ctx.guild.id,
                 userid=target.id,
             ).set(coins=starting_balance)
             await ctx.reply(
