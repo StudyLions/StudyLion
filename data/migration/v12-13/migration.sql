@@ -851,7 +851,7 @@ CREATE TABLE schedule_guild_config(
   lobby_channel BIGINT,
   room_channel BIGINT,
   blacklist_after INTEGER,
-  blacklistrole BIGINT,
+  blacklist_role BIGINT,
   created_at TIMESTAMPTZ DEFAULT now()
 );
 
