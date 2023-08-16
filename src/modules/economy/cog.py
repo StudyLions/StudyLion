@@ -91,7 +91,7 @@ class Economy(LionCog):
         name=_p('cmd:economy_balance', "balance"),
         description=_p(
             'cmd:economy_balance|desc',
-            "Display and modify LionCoin balance for members or roles."
+            "Display or modify LionCoin balance for members and roles."
         )
     )
     @appcmds.rename(
@@ -113,6 +113,7 @@ class Economy(LionCog):
             "New balance to set the target's balance to."
         )
     )
+    @low_management_ward
     async def economy_balance_cmd(
         self,
         ctx: LionContext,
@@ -368,6 +369,7 @@ class Economy(LionCog):
                 )
             )
         else:
+            # TODO: Restrict view to the top 1000 so we don't murder the main thread
             await ctx.interaction.response.defer()
             # Viewing route
             MemModel = self.bot.core.data.Member
