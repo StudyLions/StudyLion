@@ -123,6 +123,7 @@ class StatisticsSettings(SettingGroup):
                     'guildset:season_start|parse|error:future_time',
                     "Provided season start time {timestamp} is in the future!"
                 )).format(timestamp=f"<t:{int(parsed.timestamp())}>"))
+            return parsed
 
         @property
         def update_message(self) -> str:
