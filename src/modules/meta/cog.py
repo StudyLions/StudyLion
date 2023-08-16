@@ -27,6 +27,7 @@ class MetaCog(LionCog):
         )
     )
     async def help_cmd(self, ctx: LionContext):
+        await ctx.interaction.response.defer(thinking=True, ephemeral=True)
         ui = HelpUI(
             ctx.bot,
             ctx.author,

@@ -479,7 +479,7 @@ class VideoCog(LionCog):
                 "you disabled your video.\n"
                 "Please keep your video on at all times, and leave the channel if you need "
                 "to disable it!"
-            ))
+            )).format(channel=channel.mention)
         )
         modcog: ModerationCog = self.bot.get_cog('ModerationCog')
         await modcog.send_alert(

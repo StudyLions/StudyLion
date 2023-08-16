@@ -261,7 +261,10 @@ class RoomCog(LionCog):
             self._start(room)
 
             # Send tips message
-            await channel.send("{mention} welcome to your private room! (TBD TIPS HERE)".format(mention=owner.mention))
+            # TODO: Actual tips.
+            await channel.send(
+                    "{mention} welcome to your private room! You may use the menu below to configure it.".format(mention=owner.mention)
+            )
 
             # Send config UI
             ui = RoomUI(self.bot, room, callerid=owner.id, timeout=None)

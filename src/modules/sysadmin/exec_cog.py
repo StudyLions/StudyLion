@@ -131,10 +131,7 @@ class ExecUI(View):
         return modal
 
     def get_modal(self):
-        if self._modal is None:
-            # Create modal
-            self._modal = self.create_modal()
-
+        self._modal = self.create_modal()
         self._modal.code.default = self.code
         return self._modal
 
@@ -258,9 +255,8 @@ class Exec(LionCog):
     @appcmd.describe(
         string="Code to execute."
     )
-    @appcmd.guilds(*guild_ids)
     async def async_cmd(self, ctx: LionContext, *, string: Optional[str] = None):
-        await ExecUI(ctx, string, ExecStyle.EXEC).run()
+        await ExecUI(ctx, string, ExecStyle.EXEC, ephemeral=False).run()
 
     @commands.hybrid_command(
         name=_p('command', 'eval'),

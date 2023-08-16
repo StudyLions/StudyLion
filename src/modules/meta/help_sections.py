@@ -75,12 +75,14 @@ admin_extra = _p(
     and quickly jump to the feature configuration panels to modify settings.
 
     Configuration panels are also accessible directly through the `/configure` commands \
-    and most settings can be set with these commands.
+    and most features may be configured through these commands.
 
     Other relevant commands for guild configuration below:
     `/editshop`: Add/Edit/Remove colour roles from the {coin} shop.
     `/ranks`: Add/Edit/Remove activity ranks.
     `/timer admin`: Add/Edit/Remove Pomodoro timers in voice channels.
+    `/rolemenus`: Allow members to equip roles from customisable messages.
+    `/economy balance`: Display and modify LionCoin balance for members and roles.
     """
 )
 
