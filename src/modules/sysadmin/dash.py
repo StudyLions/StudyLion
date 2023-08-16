@@ -16,7 +16,7 @@ from settings.groups import SettingGroup
 class LeoSettings(LionCog):
     depends = {'CoreCog'}
 
-    admin_guilds = conf.bog.getintlist('admin_guilds')
+    admin_guilds = conf.bot.getintlist('admin_guilds')
 
     def __init__(self, bot: LionBot):
         self.bot = bot
