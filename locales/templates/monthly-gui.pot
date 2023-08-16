@@ -1,0 +1,165 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-16 17:01+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/gui/cards/monthly.py:39
+msgctxt "skin:monthlystats|mode:study|title"
+msgid "STUDY HOURS"
+msgstr ""
+
+#: src/gui/cards/monthly.py:43
+msgctxt "skin:monthlystats|mode:voice|title"
+msgid "VOICE CHANNEL ACTIVITY"
+msgstr ""
+
+#: src/gui/cards/monthly.py:47
+msgctxt "skin:monthlystats|mode:text|title"
+msgid "MESSAGE ACTIVITY"
+msgstr ""
+
+#: src/gui/cards/monthly.py:51
+msgctxt "skin::monthlystats|mode:anki|title"
+msgid "CARDS REVIEWED"
+msgstr ""
+
+#: src/gui/cards/monthly.py:118
+#, possible-python-brace-format
+msgctxt "ui:monthlystats|mode:study|bar_value"
+msgid "{value} H"
+msgstr ""
+
+#: src/gui/cards/monthly.py:122
+#, possible-python-brace-format
+msgctxt "ui:monthlystats|mode:voice|bar_value"
+msgid "{value} H"
+msgstr ""
+
+#: src/gui/cards/monthly.py:126
+#, possible-python-brace-format
+msgctxt "ui:monthlystats|mode:text|bar_value"
+msgid "{value} M"
+msgstr ""
+
+#: src/gui/cards/monthly.py:130
+#, possible-python-brace-format
+msgctxt "ui:monthlystats|mode:anki|bar_value"
+msgid "{value} C"
+msgstr ""
+
+#: src/gui/cards/monthly.py:152
+msgctxt "skin:monthlystats|weekdays"
+msgid "M,T,W,T,F,S,S"
+msgstr ""
+
+#: src/gui/cards/monthly.py:162
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:study|summary:this_month"
+msgid "THIS MONTH: {amount} HOURS"
+msgstr ""
+
+#: src/gui/cards/monthly.py:166
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:voice|summary:this_month"
+msgid "THIS MONTH: {amount} HOURS"
+msgstr ""
+
+#: src/gui/cards/monthly.py:170
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:text|summary:this_month"
+msgid "THIS MONTH: {amount} MESSAGES"
+msgstr ""
+
+#: src/gui/cards/monthly.py:174
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:text|summary:this_month"
+msgid "THIS MONTH: {amount} CARDS"
+msgstr ""
+
+#: src/gui/cards/monthly.py:196
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:study|summary:last_month"
+msgid "LAST MONTH: {amount} HOURS"
+msgstr ""
+
+#: src/gui/cards/monthly.py:200
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:voice|summary:last_month"
+msgid "LAST MONTH: {amount} HOURS"
+msgstr ""
+
+#: src/gui/cards/monthly.py:204
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:text|summary:last_month"
+msgid "LAST MONTH: {amount} MESSAGES"
+msgstr ""
+
+#: src/gui/cards/monthly.py:208
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:text|summary:last_month"
+msgid "LAST MONTH: {amount} CARDS"
+msgstr ""
+
+#: src/gui/cards/monthly.py:299
+msgctxt "ui:monthlystats|stats:current_streak|key"
+msgid "Current Streak:"
+msgstr ""
+
+#: src/gui/cards/monthly.py:303
+#, possible-python-brace-format
+msgctxt "ui:monthlystats|stats:current_streak|value"
+msgid "{count} days"
+msgstr ""
+
+#: src/gui/cards/monthly.py:307
+msgctxt "ui:monthlystats|stats:longest_streak|key"
+msgid "Longest Streak:"
+msgstr ""
+
+#: src/gui/cards/monthly.py:311
+#, possible-python-brace-format
+msgctxt "ui:monthlystats|stats:longest_streak|value"
+msgid "{count} days"
+msgstr ""
+
+#: src/gui/cards/monthly.py:315
+msgctxt "ui:monthlystats|stats:daily_average|key"
+msgid "Daily Average:"
+msgstr ""
+
+#: src/gui/cards/monthly.py:319
+#, possible-python-brace-format
+msgctxt "ui:monthlystats|stats:daily_average|value"
+msgid "{count} hours"
+msgstr ""
+
+#: src/gui/cards/monthly.py:323
+msgctxt "ui:monthlystats|stats:days_active|key"
+msgid "Days Active:"
+msgstr ""
+
+#: src/gui/cards/monthly.py:327
+#, possible-python-brace-format
+msgctxt "ui:monthlystats|stats:days_active|value"
+msgid "{count} days"
+msgstr ""
+
+#: src/gui/cards/monthly.py:340
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|footer"
+msgid "Monthly Statistics • As of {day} {month} • {name} {discrim}"
+msgstr ""

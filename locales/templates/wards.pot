@@ -1,0 +1,78 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-16 17:01+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/wards.py:65
+msgctxt "ward:sys_admin|failed"
+msgid "You must be a bot owner to do this!"
+msgstr ""
+
+#: src/wards.py:81
+msgctxt "ward:high_management|failed"
+msgid "You must have the `ADMINISTRATOR` permission in this server to do this!"
+msgstr ""
+
+#: src/wards.py:97
+msgctxt "ward:low_management|failed"
+msgid "You must have the `MANAGE_GUILD` permission in this server to do this!"
+msgstr ""
+
+#: src/wards.py:121
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:bot_managed"
+msgid "I cannot manage {role} because it is managed by another bot!"
+msgstr ""
+
+#: src/wards.py:128
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:integration"
+msgid "I cannot manage {role} because it is managed by a server integration."
+msgstr ""
+
+#: src/wards.py:135
+msgctxt "ward:equippable_role|error:default_role"
+msgid "I cannot manage the server's default role."
+msgstr ""
+
+#: src/wards.py:142
+msgctxt "ward:equippable_role|error:no_perms"
+msgid "I need the `MANAGE_ROLES` permission before I can manage roles!"
+msgstr ""
+
+#: src/wards.py:149
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:my_top_role"
+msgid "I cannot assign or remove {role} because it is above my top role!"
+msgstr ""
+
+#: src/wards.py:156
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:not_assignable"
+msgid "I don't have sufficient permissions to assign or remove {role}."
+msgstr ""
+
+#: src/wards.py:164
+msgctxt "ward:equippable_role|error:actor_perms"
+msgid "You need the `MANAGE_ROLES` permission before you can configure roles!"
+msgstr ""
+
+#: src/wards.py:171
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:actor_top_role"
+msgid "You cannot configure {role} because it is above your top role!"
+msgstr ""
