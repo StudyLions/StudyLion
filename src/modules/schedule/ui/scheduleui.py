@@ -656,7 +656,7 @@ class ScheduleUI(MessageUI):
 
         # Calculate all-time stats
         if recent_count == 100:
-            record = await booking_model.table.select_one_where(
+            records = await booking_model.table.select_one_where(
                 booking_model.slotid < nowid,
                 userid=self.userid,
             ).select(
@@ -664,6 +664,7 @@ class ScheduleUI(MessageUI):
                 _attended='COUNT(*) FILTER (WHERE attended)',
                 _clocked='SUM(COALESCE(clock, 0))'
             ).with_no_adapter()
+            record = records[0]
             self.all_stats = (record['_attended'], record['_booked'])
             self.all_avg = record['_clocked'] // (60 * record['_booked'])
         else:
