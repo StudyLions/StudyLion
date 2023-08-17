@@ -504,6 +504,7 @@ class RoomCog(LionCog):
                     )
                 )
                 await ctx.alion.data.update(coins=CoreData.Member.coins + required)
+                return
             except discord.HTTPException as e:
                 await ctx.reply(
                     embed=error_embed(
@@ -516,6 +517,7 @@ class RoomCog(LionCog):
                     )
                 )
                 await ctx.alion.data.update(coins=CoreData.Member.coins + required)
+                return
 
             # Ack with confirmation message pointing to the room
             msg = t(_p(

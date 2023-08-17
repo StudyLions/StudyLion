@@ -38,7 +38,3 @@ owner_overwrite.update(
     move_members=True,
 )
 bot_overwrite = discord.PermissionOverwrite.from_pair(*owner_overwrite.pair())
-bot_overwrite.update(
-    **dict(owner_overwrite),
-    manage_permissions=True,
-)
