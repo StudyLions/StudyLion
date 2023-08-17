@@ -24,7 +24,7 @@ from .settings import RoomSettings
 from .settingui import RoomSettingUI
 from .room import Room
 from .roomui import RoomUI
-from .lib import parse_members, owner_overwrite, member_overwrite
+from .lib import parse_members, owner_overwrite, member_overwrite, bot_overwrite
 
 _p, _np = babel._p, babel._np
 
@@ -223,7 +223,8 @@ class RoomCog(LionCog):
         # Build permission overwrites for owner and members, take into account visible setting
         overwrites = {
             owner: owner_overwrite,
-            guild.default_role: everyone_overwrite
+            guild.default_role: everyone_overwrite,
+            guild.me: bot_overwrite,
         }
         for member in members:
             overwrites[member] = member_overwrite
@@ -484,13 +485,37 @@ class RoomCog(LionCog):
             await ctx.alion.data.update(coins=CoreData.Member.coins - required)
 
             # Create room with given starting balance and other parameters
-            room = await self.create_private_room(
-                ctx.guild,
-                ctx.author,
-                required - rent,
-                name or ctx.author.display_name,
-                members=provided
-            )
+            try:
+                room = await self.create_private_room(
+                    ctx.guild,
+                    ctx.author,
+                    required - rent,
+                    name or ctx.author.display_name,
+                    members=provided
+                )
+            except discord.Forbidden:
+                await ctx.reply(
+                    embed=error_embed(
+                        t(_p(
+                            'cmd:room_rent|error:my_permissions',
+                            "Could not create your private room! You were not charged.\n"
+                            "I have insufficient permissions to create a private room channel."
+                        )),
+                    )
+                )
+                await ctx.alion.data.update(coins=CoreData.Member.coins + required)
+            except discord.HTTPException as e:
+                await ctx.reply(
+                    embed=error_embed(
+                        t(_p(
+                            'cmd:room_rent|error:unknown',
+                            "Could not create your private room! You were not charged.\n"
+                            "An unknown error occurred while creating your private room.\n"
+                            "`{error}`"
+                        )).format(error=e.text),
+                    )
+                )
+                await ctx.alion.data.update(coins=CoreData.Member.coins + required)
 
             # Ack with confirmation message pointing to the room
             msg = t(_p(
