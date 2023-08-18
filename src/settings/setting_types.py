@@ -984,7 +984,7 @@ class TimestampSetting(InteractiveSetting[ParentID, str, dt.datetime]):
                 raise UserInputError(t(_p(
                     'settype:timestamp|parse|error:invalid',
                     "Could not parse `{provided}` as a timestamp. Please use `YYYY-MM-DD HH:MM` format."
-                )))
+                )).format(provided=string))
         return ts
 
     @classmethod

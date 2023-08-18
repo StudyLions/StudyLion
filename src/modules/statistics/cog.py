@@ -94,7 +94,7 @@ class StatsCog(LionCog):
     @appcmds.describe(
         season_start=_p(
             'cmd:configure_statistics|param:season_start|desc',
-            "Time from which to start counting activity for rank badges and season leadeboards."
+            "Time from which to start counting activity for rank badges and season leaderboards. (YYYY-MM-DD)"
         )
     )
     @appcmds.default_permissions(manage_guild=True)

@@ -221,14 +221,14 @@ class GoalEditor(FastModal):
                     t(_p(
                         'modal:goal_editor|field:text_goal|error:NAN',
                         "The provided message goal `{input}` is not a number! Please try again."
-                    ))
+                    )).format(input=string)
                 )
             elif self.stat_page.stat is StatType.ANKI:
                 raise UserInputError(
                     t(_p(
                         'modal:goal_editor|field:anki_goal|error:NAN',
                         "The provided card goal `{input}` is not a number! Please try again."
-                    ))
+                    )).format(input=string)
                 )
         else:
             result = int(string)

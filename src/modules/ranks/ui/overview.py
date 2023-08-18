@@ -152,7 +152,7 @@ class RankOverviewUI(MessageUI):
                 'ui:rank_overview|menu:roles|error:above_caller',
                 "You have insufficient permissions to assign {mention} as a rank role! "
                 "You may only manage roles below your top role."
-            ))
+            )).format(mention=role.mention)
             embed = discord.Embed(
                 title=t(_p(
                     'ui:rank_overview|menu:roles|error:above_caller|title',

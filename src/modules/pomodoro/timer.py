@@ -235,14 +235,14 @@ class Timer:
         pattern = self.pattern
         name = self.base_name
         if stage is not None:
-            remaining = str(int(5 * math.ceil((stage.end - utc_now()).total_seconds() / 60)))
+            remaining = int(5 * math.ceil((stage.end - utc_now()).total_seconds() / 60))
             stagestr = t(self.focus_name if stage.focused else self.break_name, locale=self.locale.value)
         else:
-            remaining = str(self.data.focus_length // 60)
+            remaining = self.data.focus_length // 60
             stagestr = t(self.focus_name, locale=self.locale.value)
 
         mapping = {
-            '{remaining}': remaining,
+            '{remaining}': f"{remaining}m",
             '{stage}': stagestr,
             '{members}': str(len(self.members)),
             '{name}': name,
