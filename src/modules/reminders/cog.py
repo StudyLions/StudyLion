@@ -65,7 +65,6 @@ class ReminderData(Registry, name='reminders'):
         CREATE INDEX reminder_users ON reminders (userid);
         """
         _tablename_ = 'reminders'
-        _cache_ = WeakCache(LRUCache(1000))
 
         reminderid = Integer(primary=True)
 
@@ -181,7 +180,7 @@ class Reminders(LionCog):
         if self.executor:
             self.monitor: Optional[ReminderMonitor] = ReminderMonitor(
                 executor=self.execute_reminder,
-                bucket=Bucket(1, 1)
+                bucket=Bucket(5, 10)
             )
         else:
             self.monitor = None
@@ -207,7 +206,7 @@ class Reminders(LionCog):
                 self.monitor._monitor_task.cancel()
 
             # Attach and populate the reminder monitor
-            self.monitor = ReminderMonitor(executor=self.execute_reminder, bucket=Bucket(1, 1))
+            self.monitor = ReminderMonitor(executor=self.execute_reminder, bucket=Bucket(5, 10))
             await self.reload_reminders()
 
             # Start firing reminders
@@ -242,7 +241,10 @@ class Reminders(LionCog):
         if not self.executor:
             raise ValueError("Only the executor shard can reload reminders!")
         # Load all reminder tasks
-        reminders = await self.data.Reminder.fetch_where(failed=None)
+        reminders = await self.data.Reminder.fetch_where(
+            self.data.Reminder.remind_at > utc_now(),
+            failed=None
+        )
         tasks = [(r.reminderid, r.timestamp) for r in reminders]
         self.monitor.set_tasks(*tasks)
         logger.info(
