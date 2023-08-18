@@ -35,6 +35,7 @@ from utils.lib import parse_duration, utc_now, strfdur, error_embed
 from utils.monitor import TaskMonitor
 from utils.transformers import DurationTransformer
 from utils.ui import LeoUI, AButton, AsComponents
+from utils.ratelimits import Bucket
 
 from . import babel, logger
 
@@ -178,7 +179,10 @@ class Reminders(LionCog):
         self.executor_name = appname_from_shard(0)
 
         if self.executor:
-            self.monitor: Optional[ReminderMonitor] = ReminderMonitor(executor=self.execute_reminder)
+            self.monitor: Optional[ReminderMonitor] = ReminderMonitor(
+                executor=self.execute_reminder,
+                bucket=Bucket(1, 1)
+            )
         else:
             self.monitor = None
 
@@ -203,7 +207,7 @@ class Reminders(LionCog):
                 self.monitor._monitor_task.cancel()
 
             # Attach and populate the reminder monitor
-            self.monitor = ReminderMonitor(executor=self.execute_reminder)
+            self.monitor = ReminderMonitor(executor=self.execute_reminder, bucket=Bucket(1, 1))
             await self.reload_reminders()
 
             # Start firing reminders
