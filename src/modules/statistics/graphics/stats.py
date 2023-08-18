@@ -54,7 +54,6 @@ async def get_stats_card(bot: LionBot, userid: int, guildid: int, mode: CardMode
         ref_between = model.study_times_between
 
     study_times = await ref_since(*refkey, *period_timestamps)
-    print("Period study times: ", study_times)
 
     # Get leaderboard position
     # TODO: Efficiency

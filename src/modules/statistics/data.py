@@ -446,7 +446,7 @@ class StatsData(Registry):
                         FROM user_experience s
                         WHERE
                             s.userid = %s
-                            AND s.start_time >= t._start
+                            AND s.earned_at >= t._start
                     ) AS exp
                 FROM
                     (VALUES ({}))
@@ -475,12 +475,12 @@ class StatsData(Registry):
                 SELECT
                     (
                         SELECT
-                            SUM(global_xp)
+                            SUM(amount)
                         FROM user_experience s
                         WHERE
                             s.userid = %s
-                            AND s.start_time >= periods._start
-                            AND s.start_time < periods._end
+                            AND s.earned_at >= periods._start
+                            AND s.earned_at < periods._end
                     ) AS period_xp
                 FROM
                     (VALUES {})
