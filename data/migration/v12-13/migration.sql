@@ -138,9 +138,20 @@ ALTER TABLE guild_config ADD COLUMN force_locale BOOLEAN;
 --}}}
 
 -- Reminder data {{{
-ALTER TABLE reminders ADD COLUMN failed BOOLEAN;
-ALTER TABLE reminders
-  ADD CONSTRAINT fk_reminders_users FOREIGN KEY (userid) REFERENCES user_config (userid) ON DELETE CASCADE NOT VALID;
+DROP TABLE reminders CASCADE;
+CREATE TABLE reminders(
+    reminderid SERIAL PRIMARY KEY,
+    userid BIGINT NOT NULL REFERENCES user_config(userid) ON DELETE CASCADE,
+    remind_at TIMESTAMPTZ NOT NULL,
+    content TEXT NOT NULL,
+    message_link TEXT,
+    interval INTEGER,
+    failed BOOLEAN,
+    created_at TIMESTAMPTZ DEFAULT now(),
+    title TEXT,
+    footer TEXT
+);
+CREATE INDEX reminder_users ON reminders (userid);
 -- }}}
 
 
