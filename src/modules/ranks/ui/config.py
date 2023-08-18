@@ -170,5 +170,9 @@ class RankDashboard(DashboardSection):
         'dash:rank|title',
         "Rank Configuration ({commands[configure ranks]})",
     )
+    _option_name = _p(
+        "dash:rank|dropdown|placeholder",
+        "Activity Rank Panel"
+    )
     configui = RankConfigUI
     setting_classes = RankConfigUI.setting_classes

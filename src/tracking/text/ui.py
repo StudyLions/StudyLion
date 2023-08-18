@@ -88,5 +88,9 @@ class TextTrackerDashboard(DashboardSection):
         'dash:text_tracking|title',
         "Message XP configuration ({commands[configure message_exp]})",
     )
+    _option_name = _p(
+        "dash:text_tracking|dropdown|placeholder",
+        "Message XP Panel"
+    )
     configui = TextTrackerConfigUI
     setting_classes = configui.setting_classes

@@ -527,5 +527,9 @@ class VoiceTrackerDashboard(DashboardSection):
         'dash:voice_tracker|title',
         "Voice Tracker Configuration ({commands[configure voice_rewards]})"
     )
+    _option_name = _p(
+        "dash:voice_tracking|dropdown|placeholder",
+        "Voice Activity Panel"
+    )
     configui = VoiceTrackerConfigUI
     setting_classes = configui.setting_classes

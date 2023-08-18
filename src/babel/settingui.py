@@ -82,5 +82,9 @@ class LocaleDashboard(DashboardSection):
         'dash:locale|title',
         "Server Language Configuration ({commands[configure language]})"
     )
+    _option_name = _p(
+        "dash:locale|dropdown|placeholder",
+        "Server Language Panel"
+    )
     configui = LocaleSettingUI
     setting_classes = LocaleSettingUI.setting_classes

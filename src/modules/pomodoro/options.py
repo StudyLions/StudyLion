@@ -84,9 +84,11 @@ class TimerOptions(SettingGroup):
             'timerset:inactivity_threshold|desc',
             "How many timer cycles before kicking inactive members."
         )
-
         _model = TimerData.Timer
         _column = TimerData.Timer.inactivity_threshold.name
+
+        _min = 0
+        _max = 64
 
         @property
         def input_formatted(self):

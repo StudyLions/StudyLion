@@ -80,5 +80,9 @@ class TimerDashboard(DashboardSection):
         'dash:pomodoro|title',
         "Pomodoro Configuration ({commands[configure pomodoro]})"
     )
+    _option_name = _p(
+        "dash:stats|dropdown|placeholder",
+        "Pomodoro Timer Panel"
+    )
     configui = TimerConfigUI
     setting_classes = TimerConfigUI.setting_classes

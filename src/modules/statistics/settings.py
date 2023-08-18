@@ -396,5 +396,9 @@ class StatisticsDashboard(DashboardSection):
         'dash:stats|title',
         "Activity Statistics Configuration ({commands[configure statistics]})"
     )
+    _option_name = _p(
+        "dash:stats|dropdown|placeholder",
+        "Activity Statistics Panel"
+    )
     configui = StatisticsConfigUI
     setting_classes = StatisticsConfigUI.setting_classes

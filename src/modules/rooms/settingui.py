@@ -97,5 +97,9 @@ class RoomDashboard(DashboardSection):
         'dash:rooms|title',
         "Private Room Configuration ({commands[configure rooms]})"
     )
+    _option_name = _p(
+        "dash:economy|dropdown|placeholder",
+        "Private Room Panel"
+    )
     configui = RoomSettingUI
     setting_classes = RoomSettingUI.setting_classes

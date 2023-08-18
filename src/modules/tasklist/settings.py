@@ -318,5 +318,9 @@ class TasklistConfigUI(LeoUI):
 
 class TasklistDashboard(DashboardSection):
     section_name = _p('dash:tasklist|name', "Tasklist Configuration ({commands[configure tasklist]})")
+    _option_name = _p(
+        "dash:tasklist|dropdown|placeholder",
+        "Tasklist Options Panel"
+    )
     configui = TasklistConfigUI
     setting_classes = configui.setting_classes

@@ -229,6 +229,10 @@ class ScheduleDashboard(DashboardSection):
         'dash:schedule|title',
         "Scheduled Session Configuration ({commands[configure schedule]})"
     )
+    _option_name = _p(
+        "dash:schedule|dropdown|placeholder",
+        "Scheduled Sessions Panel"
+    )
     configui = ScheduleSettingUI
     setting_classes = ScheduleSettingUI.setting_classes
 
