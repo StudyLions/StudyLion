@@ -3,6 +3,7 @@ import configparser as cfgp
 
 from .args import args
 
+shard_number = args.shard or 0
 
 class configEmoji(PartialEmoji):
     __slots__ = ('fallback',)
@@ -117,7 +118,12 @@ class Conf:
         return self.section[key].strip()
 
     def __getattr__(self, section):
-        return self.config[section.upper()]
+        name = section.upper()
+        shard_name = f"{name}-{shard_number}"
+        if shard_name in self.config:
+            return self.config[shard_name]
+        else:
+            return self.config[name]
 
     def get(self, name, fallback=None):
         result = self.section.get(name, fallback)
