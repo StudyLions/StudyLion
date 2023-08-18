@@ -36,7 +36,7 @@ async def get_timer_card(bot: LionBot, timer: 'Timer', stage: 'Stage'):
             tag = None
 
         card_user = (
-            (member.id, member.avatar.key),
+            (member.id, (member.avatar or member.default_avatar).key),
             session_duration,
             tag,
         )

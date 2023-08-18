@@ -29,7 +29,7 @@ async def get_profile_card(bot: LionBot, userid: int, guildid: int):
 
     if member:
         username = (member.display_name, '#' + str(member.discriminator))
-        avatar = member.avatar.key
+        avatar = member.avatar.key if member.avatar else member.default_avatar.key
     else:
         username = (lion.data.display_name, "#????")
         avatar = luser.data.avatar_hash

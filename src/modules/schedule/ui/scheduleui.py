@@ -437,7 +437,7 @@ class ScheduleUI(MessageUI):
                 'ui:schedule|embed|author',
                 "Your Scheduled Sessions and Past Statistics"
             )).format(name=member.display_name if member else self.lion.luser.data.name),
-            icon_url=self.lion.member.avatar
+            icon_url=(self.lion.member.avatar or self.lion.member.default_avatar)
         )
         if self.show_info:
             # Info message
