@@ -87,6 +87,7 @@ class ModerationSettings(SettingGroup):
         
         _model = CoreData.Guild
         _column = CoreData.Guild.alert_channel.name
+        _allow_object = False
         
         @property
         def update_message(self) -> str:

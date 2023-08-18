@@ -109,7 +109,7 @@ class ModerationCog(LionCog):
         try:
             return await member.send(**kwargs)
         except discord.HTTPException:
-            alert_channel = await self.settings.AlertChannel.get(member.guild.id)
+            alert_channel = (await self.settings.AlertChannel.get(member.guild.id)).value
             if alert_channel:
                 try:
                     return await alert_channel.send(content=member.mention, **kwargs)
