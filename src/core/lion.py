@@ -129,7 +129,7 @@ class Lions(LionCog):
                 new_rows = await self.data.User.table.insert_many(
                     ('userid',),
                     *((userid,) for userid in missing)
-                ).with_adapter(self.data.user._make_rows)
+                ).with_adapter(self.data.User._make_rows)
                 rows = itertools.chain(rows, new_rows)
 
             for row in rows:
