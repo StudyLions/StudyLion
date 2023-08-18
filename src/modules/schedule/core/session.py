@@ -146,7 +146,17 @@ class ScheduledSession:
         channel = self.bot.get_channel(channelid)
         if channel is not None:
             channels = self.channels_setting.value
-            return (not channels) or (channel in channels) or (channel.category and (channel.category in channels))
+            room = self.room_channel.value
+            valid = (
+                not channels 
+                or (channel in channels)
+                or (channel == room)
+                or (channel.category and (
+                    (channel.category in channels)
+                    or (channel.category == room)
+                   ))
+            )
+            return valid
         else:
             return False
 
