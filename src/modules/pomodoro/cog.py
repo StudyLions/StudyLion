@@ -213,9 +213,9 @@ class TimerCog(LionCog):
             # Trust initialiser to ignore the guild
             return
 
-        timers = self.timers.pop(guild.id)
+        timers = self.timers.pop(guild.id, {})
         tasks = []
-        for timer in timers:
+        for timer in timers.values():
             tasks.append(asyncio.create_task(timer.unload()))
         if tasks:
             try:
