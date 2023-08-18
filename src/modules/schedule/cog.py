@@ -527,6 +527,10 @@ class ScheduleCog(LionCog):
                     else:
                         # Session already exists in the slot
                         async with session.lock:
+                            smember = SessionMember(
+                                self.bot, record, lion
+                            )
+                            session.members[userid] = smember
                             if session.prepared:
                                 session.update_status_soon()
                                 if (room := session.room_channel) and (mem := session.guild.get_member(userid)):
@@ -540,6 +544,10 @@ class ScheduleCog(LionCog):
                                             f"<uid: {userid}> in {session!r}",
                                             exc_info=True
                                         )
+                        if slot.preparing.is_set() and not session.prepared:
+                            # Slot is preparing, but has not prepared the guild
+                            # This *may* cause the guild to get prepared twice
+                            await slot.prepare([session])
             logger.info(
                 f"Member <uid: {userid}> in <gid: {guildid}> booked scheduled sessions: " +
                 ', '.join(map(str, slotids))
