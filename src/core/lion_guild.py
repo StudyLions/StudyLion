@@ -77,7 +77,7 @@ class LionGuild(Timezoned):
     @property
     def guild_mode(self):
         # TODO: Configuration, data, and settings for this...
-        return GuildMode.VoiceGuild
+        return GuildMode.StudyGuild
 
     @property
     def timezone(self) -> pytz.timezone:
