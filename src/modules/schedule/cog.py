@@ -527,8 +527,9 @@ class ScheduleCog(LionCog):
                     else:
                         # Session already exists in the slot
                         async with session.lock:
+                            data = self.data.ScheduleSessionMember(record)
                             smember = SessionMember(
-                                self.bot, record, lion
+                                self.bot, data, lion
                             )
                             session.members[userid] = smember
                             if session.prepared:
