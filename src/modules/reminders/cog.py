@@ -12,7 +12,7 @@ Max 25 reminders (propagating Discord restriction)
 """
 from typing import Optional
 import datetime as dt
-from cachetools import TTLCache
+from cachetools import TTLCache, LRUCache
 
 import discord
 from discord.ext import commands as cmds
@@ -21,7 +21,7 @@ from discord.app_commands import Transform
 from discord.ui.select import select, SelectOption
 from dateutil.parser import parse, ParserError
 
-from data import RowModel, Registry
+from data import RowModel, Registry, WeakCache
 from data.queries import ORDER
 from data.columns import Integer, String, Timestamp, Bool
 
@@ -64,6 +64,7 @@ class ReminderData(Registry, name='reminders'):
         CREATE INDEX reminder_users ON reminders (userid);
         """
         _tablename_ = 'reminders'
+        _cache_ = WeakCache(LRUCache(1000))
 
         reminderid = Integer(primary=True)
 
@@ -192,17 +193,19 @@ class Reminders(LionCog):
     async def cog_load(self):
         await self.data.init()
 
+        if self.executor and self.bot.is_ready():
+            await self.on_ready()
+
+    @LionCog.listener()
+    async def on_ready(self):
         if self.executor:
+            if self.monitor and self.monitor._monitor_task:
+                self.monitor._monitor_task.cancel()
+
             # Attach and populate the reminder monitor
             self.monitor = ReminderMonitor(executor=self.execute_reminder)
             await self.reload_reminders()
 
-            if self.bot.is_ready:
-                self.monitor.start()
-
-    @LionCog.listener()
-    async def on_ready(self):
-        if self.executor and not self.monitor._monitor_task:
             # Start firing reminders
             self.monitor.start()
 
@@ -312,7 +315,7 @@ class Reminders(LionCog):
                     # Skip any expired repeats, to avoid spamming requests after downtime
                     # TODO: Is this actually dst safe?
                     while next_time.timestamp() <= now.timestamp():
-                        next_time + dt.timedelta(seconds=reminder.interval)
+                        next_time = next_time + dt.timedelta(seconds=reminder.interval)
                     await reminder.update(remind_at=next_time)
                     self.monitor.schedule_task(reminder.reminderid, reminder.timestamp)
                     logger.debug(
