@@ -9,7 +9,7 @@ from discord.app_commands.transformers import AppCommandOptionType
 from cachetools import LRUCache
 
 from meta import LionBot, LionContext, LionCog
-from wards import high_management_ward
+from wards import high_management_ward, high_management_iward
 from core.data import RankType
 from utils.ui import ChoicedEnum, Transformed
 from utils.lib import utc_now, replace_multiple
@@ -435,8 +435,6 @@ class RankCog(LionCog):
 
     # ---------- Commands ----------
     @cmds.hybrid_command(name=_p('cmd:ranks', "ranks"))
-    @appcmds.default_permissions(administrator=True)
-    @high_management_ward
     async def ranks_cmd(self, ctx: LionContext):
         """
         Command to access the Rank Overview UI.
@@ -450,8 +448,16 @@ class RankCog(LionCog):
         if not ctx.interaction:
             return
         ui = RankOverviewUI(self.bot, ctx.guild, ctx.author.id)
-        await ui.run(ctx.interaction)
-        await ui.wait()
+        if await high_management_iward(ctx.interaction):
+            await ui.run(ctx.interaction)
+            await ui.wait()
+        else:
+            await ui.reload()
+            msg = await ui.make_message()
+            await ctx.reply(
+                **msg.send_args,
+                ephemeral=True
+            )
 
     # ----- Guild Configuration -----
     @LionCog.placeholder_group

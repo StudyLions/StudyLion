@@ -61,6 +61,9 @@ class GuildDashboard(BasePager):
         # Map settingid -> setting of listening setting classes
         self._listening = {}
 
+    async def interaction_check(self, interaction: discord.Interaction):
+        return self.access_check(interaction.user.id)
+
     def access_check(self, userid):
         return userid == self.callerid
 

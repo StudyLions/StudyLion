@@ -251,6 +251,7 @@ class MemberAdminCog(LionCog):
         ),
     )
     @high_management_ward
+    @appcmds.default_permissions(administrator=True)
     async def cmd_resetmember(self, ctx: LionContext,
                               target: discord.User,
                               saved_roles: Optional[bool] = False,

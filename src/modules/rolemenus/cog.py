@@ -69,9 +69,25 @@ class MenuStyleParam(ChoicedEnum):
 )
 @appcmds.guild_only
 async def rolemenu_ctxcmd(interaction: discord.Interaction, message: discord.Message):
-    # TODO: Permission wards!
-    bot = interaction.client
-    self = bot.get_cog('RoleMenuCog')
+    bot: LionBot = interaction.client
+    self: RoleMenuCog = bot.get_cog('RoleMenuCog')
+    t = bot.translator.t
+
+    # Ward for manage_roles
+    if not interaction.user.guild_permissions.manage_roles:
+        raise UserInputError(
+            t(_p(
+                'ctxcmd:rolemenu|error:author_perms',
+                "You need the `MANAGE_ROLES` permission in order to manage the server role menus."
+            ))
+        )
+    if not interaction.guild.me.guild_permissions.manage_roles:
+        raise UserInputError(
+            t(_p(
+                'ctxcmd:rolemenus|error:my_perms',
+                "I lack the `MANAGE_ROLES` permission required to offer roles from role menus."
+            ))
+        )
 
     await interaction.response.defer(thinking=True, ephemeral=True)
     # Lookup the rolemenu in the active message cache
