@@ -61,8 +61,18 @@ class Tasklist:
             label = labels[tid]
         else:
             pid = task.parentid
+            if (parent := taskmap.get(pid, None)) is None:
+                # Case where parent is not a valid task
+                pid = None
+            if pid is not None and pid in counters and pid not in labels:
+                # Parent has started being labelled before
+                # But has not finished!
+                # This implies a cycle (i.e. tasklist is not a tree)
+                # Prune the cycle
+                pid = None
+
             counters[pid] = i = counters.get(pid, 0) + 1
-            if pid is not None and (parent := taskmap.get(pid, None)) is not None:
+            if pid is not None:
                 plabel = self._label(parent, taskmap, labels, counters)
             else:
                 plabel = ()
