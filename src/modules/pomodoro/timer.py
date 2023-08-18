@@ -235,7 +235,7 @@ class Timer:
         pattern = self.pattern
         name = self.base_name
         if stage is not None:
-            remaining = int(5 * math.ceil((stage.end - utc_now()).total_seconds() / 60))
+            remaining = int(math.ceil((stage.end - utc_now()).total_seconds() / 60))
             stagestr = t(self.focus_name if stage.focused else self.break_name, locale=self.locale.value)
         else:
             remaining = self.data.focus_length // 60
