@@ -149,7 +149,7 @@ class VoiceSession:
         self._active_sessions_[self.guildid][self.userid] = self
         await asyncio.sleep(delay)
 
-        logger.info(
+        logger.debug(
             f"Starting voice session for member <uid:{self.userid}> in guild <gid:{self.guildid}> "
             f"and channel <cid:{self.state.channelid}>."
         )

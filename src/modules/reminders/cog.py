@@ -54,7 +54,7 @@ class ReminderData(Registry, name='reminders'):
         CREATE TABLE reminders(
             reminderid SERIAL PRIMARY KEY,
             userid BIGINT NOT NULL REFERENCES user_config(userid) ON DELETE CASCADE,
-            remind_at TIMESTAMP NOT NULL,
+            remind_at TIMESTAMPTZ NOT NULL,
             content TEXT NOT NULL,
             message_link TEXT,
             interval INTEGER,
