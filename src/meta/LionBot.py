@@ -60,7 +60,8 @@ class LionBot(Bot):
         for guildid in self.testing_guilds:
             guild = discord.Object(guildid)
             self.tree.copy_global_to(guild=guild)
-            await self.tree.sync(guild=guild)
+            if self.shard_id == 0:
+                await self.tree.sync(guild=guild)
 
     async def add_cog(self, cog: Cog, **kwargs):
         with logging_context(action=f"Attach {cog.__cog_name__}"):
