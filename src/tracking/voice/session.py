@@ -162,19 +162,18 @@ class VoiceSession:
         )
 
         conn = await self.bot.db.get_connection()
-        async with conn.transaction():
-            # Insert an ongoing_session with the correct state, set data
-            state = self.state
-            self.data = await self.registry.VoiceSessionsOngoing.create(
-                guildid=self.guildid,
-                userid=self.userid,
-                channelid=state.channelid,
-                start_time=start_time,
-                last_update=start_time,
-                live_stream=state.stream,
-                live_video=state.video,
-                hourly_coins=self.hourly_rate
-            )
+        # Insert an ongoing_session with the correct state, set data
+        state = self.state
+        self.data = await self.registry.VoiceSessionsOngoing.create(
+            guildid=self.guildid,
+            userid=self.userid,
+            channelid=state.channelid,
+            start_time=start_time,
+            last_update=start_time,
+            live_stream=state.stream,
+            live_video=state.video,
+            hourly_coins=self.hourly_rate
+        )
         self.bot.dispatch('voice_session_start', self.data)
         self.start_task = None
 
