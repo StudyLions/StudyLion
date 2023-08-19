@@ -39,6 +39,7 @@ class TimerSettings(SettingGroup):
 
         _model = CoreData.Guild
         _column = CoreData.Guild.pomodoro_channel.name
+        _allow_object = False
 
         @property
         def update_message(self) -> str:
