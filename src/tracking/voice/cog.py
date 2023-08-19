@@ -628,7 +628,7 @@ class VoiceTrackerCog(LionCog):
                     session.start_task.cancel()
                 if session.expiry_task is not None:
                     session.expiry_task.cancel()
-                to_close.append(session.guildid, session.userid, now)
+                to_close.append((session.guildid, session.userid, now))
             if to_close:
                 await self.data.VoiceSessionsOngoing.close_voice_sessions_at(*to_close)
             logger.info(
