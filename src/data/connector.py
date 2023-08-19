@@ -2,6 +2,7 @@ from typing import Protocol, runtime_checkable, Callable, Awaitable
 import logging
 
 import psycopg as psq
+from psycopg.pq import TransactionStatus
 
 from .cursor import AsyncLoggingCursor
 
@@ -27,6 +28,11 @@ class Connector:
         # TODO: Reconnection logic?
         if not self.conn:
             raise ValueError("Attempting to get connection before initialisation!")
+        if self.conn.info.transaction_status is TransactionStatus.INERROR:
+            await self.connect()
+            logger.error(
+                "Database connection transaction failed!! This should not happen. Reconnecting."
+            )
         return self.conn
 
     async def connect(self) -> psq.AsyncConnection:
