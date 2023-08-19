@@ -5,9 +5,9 @@ StudyLion is a Discord bot that tracks members' study and work time while offeri
 
   
 
-[**Invite StudyLion here**](https://discord.studylions.com/invite "here"), and get started with `!help`.
+[**Invite StudyLion here**](https://discord.com/oauth2/authorize?client_id=889078613817831495&permissions=8&scope=bot), and get started with `/help`.
 
-Join the [**support server**](https://discord.gg/studylions "support server") to contact us if you need help configuring the bot on your server, or start a [**discussion**](https://github.com/StudyLions/StudyLion/discussions "disscussion") to report issues and bugs.
+Join the [**support server**](https://discord.gg/the-study-lions-780195610154237993) to contact us if you need help configuring the bot on your server, or start a [**discussion**](https://github.com/StudyLions/StudyLion/discussions "disscussion") to report issues and bugs.
 
 
 
@@ -18,12 +18,11 @@ In the past couple of years, we noticed a new trend on Discord – instead of be
 
 
 
-This bot was founder by [Ari Horesh](https://www.youtube.com/arihoresh) (Ari Horesh#0001) to support these forming study communities and allow students all over the world to study better.
+This bot was founder by [Ari Horesh](https://www.youtube.com/arihoresh) (@AriHoresh) to support these forming study communities and allow students all over the world to study better.
 
 ### Self Hosting
 
-
-You can self-host and fork the bot using the following steps, but beware that this version **does not include** our visual graphical user interface, which is only include in the custom private instances or our the public instance.
+You can self-host and fork the bot using the following steps, but beware that we do not provide support for self-hosted instances. If you are interested in a private managed instance, contact Ari at contact@arihoresh.com
 
 Follow the steps below to self-host the bot.
 - Clone the repo recursively (which makes sure to include the cmdClient submodule, otherwise you need to initialise it separately) 
