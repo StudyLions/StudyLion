@@ -23,6 +23,8 @@ _p = babel._p
 
 
 class RankOverviewUI(MessageUI):
+    block_len = 25
+
     def __init__(self, bot: LionBot, guild: discord.Guild, callerid: int, **kwargs):
         super().__init__(callerid=callerid, **kwargs)
         self.bot = bot
@@ -30,11 +32,24 @@ class RankOverviewUI(MessageUI):
         self.guildid = guild.id
 
         self.lguild = None
+
         # List of ranks rows in ASC order
         self.ranks: list[AnyRankData] = []
         self.rank_type: RankType = None
 
+        self.pagen = 0
+        self.blocks = [[]]
+
         self.rank_preview: Optional[RankPreviewUI] = None
+
+    @property
+    def page_count(self):
+        return len(self.blocks)
+
+    @property
+    def rank_block(self):
+        self.pagen %= self.page_count
+        return self.blocks[self.pagen]
 
     @property
     def rank_model(self):
@@ -261,7 +276,7 @@ class RankOverviewUI(MessageUI):
         ))
 
         options = []
-        for rank in self.ranks:
+        for rank in self.rank_block:
             role = self.guild.get_role(rank.roleid)
             name = role.name if role else "Unknown Role"
             option = SelectOption(
@@ -271,6 +286,18 @@ class RankOverviewUI(MessageUI):
             )
             options.append(option)
         self.rank_menu.options = options
+
+    @button(emoji=conf.emojis.forward)
+    async def next_page_button(self, press: discord.Interaction, pressed: Button):
+        await press.response.defer()
+        self.pagen += 1
+        await self.refresh()
+
+    @button(emoji=conf.emojis.backward)
+    async def prev_page_button(self, press: discord.Interaction, pressed: Button):
+        await press.response.defer()
+        self.pagen -= 1
+        await self.refresh()
 
     # ----- UI Flow -----
     def _format_range(self, start: int, end: Optional[int] = None):
@@ -304,7 +331,7 @@ class RankOverviewUI(MessageUI):
             # TODO: Error symbols for non-existent or permitted roles
             required = [rank.required for rank in self.ranks]
             ranges = list(zip(required, required[1:]))
-            pad = 1 if len(ranges) < 10 else 2
+            pad = 1 if len(self.ranks) < 10 else 2
 
             lines = []
             for i, rank in enumerate(self.ranks):
@@ -315,13 +342,17 @@ class RankOverviewUI(MessageUI):
                     start, end = ranges[i]
                     rangestr = format_stat_range(self.rank_type, start, end)
 
-                line = "`[{pos:<{pad}}]` | <@&{roleid}> **({rangestr})**".format(
+                line = "`[{pos:>{pad}}]` | <@&{roleid}> **({rangestr})**".format(
                     pad=pad,
                     pos=i+1,
                     roleid=rank.roleid,
                     rangestr=rangestr
                 )
                 lines.append(line)
+            line_blocks = [
+                lines[i:i+self.block_len] for i in range(0, len(lines), self.block_len)
+            ] or [[]]
+            lines = line_blocks[self.pagen]
             desc = '\n'.join(reversed(lines))
         else:
             # No ranks, give hints about adding ranks
@@ -356,7 +387,23 @@ class RankOverviewUI(MessageUI):
         return MessageArgs(embed=embed)
 
     async def refresh_layout(self):
-        if self.ranks:
+        if len(self.blocks) > 1:
+            # If the guild has at least one rank setup
+            await asyncio.gather(
+                self.rank_menu_refresh(),
+                self.role_menu_refresh(),
+                self.refresh_button_refresh(),
+                self.create_button_refresh(),
+                self.clear_button_refresh(),
+                self.quit_button_refresh(),
+            )
+            self.set_layout(
+                (self.rank_menu,),
+                (self.role_menu,),
+                (self.refresh_button, self.create_button, self.clear_button),
+                (self.prev_page_button, self.quit_button, self.next_page_button)
+            )
+        elif self.rank_block:
             # If the guild has at least one rank setup
             await asyncio.gather(
                 self.rank_menu_refresh(),
@@ -390,6 +437,7 @@ class RankOverviewUI(MessageUI):
         """
         self.lguild = await self.bot.core.lions.fetch_guild(self.guildid)
         self.rank_type = self.lguild.config.get('rank_type').value
-        self.ranks = await self.rank_model.fetch_where(
+        ranks = self.ranks = await self.rank_model.fetch_where(
             guildid=self.guildid
         ).order_by('required', ORDER.ASC)
+        self.blocks = [ranks[i:i + self.block_len] for i in range(0, len(ranks), self.block_len)] or [[]]
