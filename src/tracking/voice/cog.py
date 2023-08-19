@@ -173,11 +173,11 @@ class VoiceTrackerCog(LionCog):
                     tracked = tracked_today[(session_data.guildid, session_data.userid)]
                     if tracked >= cap:
                         # Already over cap
-                        complete.append(
+                        complete.append((
                             session_data.guildid,
                             session_data.userid,
                             max(now + dt.timedelta(seconds=tracked - cap), session_data.last_update)
-                        )
+                        ))
                     else:
                         tomorrow = lguild.today + dt.timedelta(days=1)
                         expiry = now + dt.timedelta(seconds=(cap - tracked))
