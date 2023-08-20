@@ -4,6 +4,7 @@ from psycopg import sql
 from cachetools import TTLCache
 import discord
 
+from meta import conf
 from data import Table, Registry, Column, RowModel, RegisterEnum
 from data.models import WeakCache
 from data.columns import Integer, String, Bool, Timestamp
@@ -367,4 +368,6 @@ class CoreData(Registry, name="core"):
         token = String()
 
         def as_webhook(self, **kwargs):
-            return discord.Webhook.partial(self.webhookid, self.token, **kwargs)
+            webhook = discord.Webhook.partial(self.webhookid, self.token, **kwargs)
+            webhook.proxy = conf.bot.get('proxy', None)
+            return webhook

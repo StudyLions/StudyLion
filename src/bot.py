@@ -68,6 +68,7 @@ async def main():
                 shard_id=sharding.shard_number,
                 shard_count=sharding.shard_count,
                 help_command=None,
+                proxy=conf.bot.get('proxy', None),
                 translator=translator
             ) as lionbot:
                 ctx_bot.set(lionbot)
