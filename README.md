@@ -22,7 +22,7 @@ This bot was founder by [Ari Horesh](https://www.youtube.com/arihoresh) (@AriHor
 
 ### Self Hosting
 
-You can self-host and fork the bot using the following steps, but beware that we do not provide support for self-hosted instances. If you are interested in a private managed instance, contact Ari at contact@arihoresh.com
+You can self-host and fork the bot using the following steps, but beware that we do not provide support for self-hosted instances. If you are interested in a privately managed instance (affordable paid service), contact Ari at contact@arihoresh.com
 
 Follow the steps below to self-host the bot.
 - Clone the repo recursively (which makes sure to include the cmdClient submodule, otherwise you need to initialise it separately) 
