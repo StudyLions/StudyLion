@@ -4,6 +4,7 @@ from collections import namedtuple
 from typing import Optional, TYPE_CHECKING
 
 import discord
+from discord.enums import ChannelType
 from discord.ext.commands import Context
 
 if TYPE_CHECKING:
@@ -64,7 +65,10 @@ class LionContext(Context['LionBot']):
             parts['uname'] = f"\"{self.author.name}\""
         if self.channel is not None:
             parts['cid'] = self.channel.id
-            parts['cname'] = f"\"{self.channel.name}\""
+            if self.channel.type is ChannelType.private:
+                parts['cname'] = f"\"{self.channel.recipient}\""
+            else:
+                parts['cname'] = f"\"{self.channel.name}\""
         if self.guild is not None:
             parts['gid'] = self.guild.id
             parts['gname'] = f"\"{self.guild.name}\""
