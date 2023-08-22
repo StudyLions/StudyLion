@@ -214,7 +214,7 @@ class LionBot(Bot):
                 exception.original = HandledException(exception.original)
         except CheckFailure as e:
             logger.debug(
-                f"Command failed check: {e}",
+                f"Command failed check: {e}: {e.args}",
                 extra={'action': 'BotError', 'with_ctx': True}
             )
             try:

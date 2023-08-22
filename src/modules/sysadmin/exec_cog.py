@@ -15,6 +15,7 @@ from enum import Enum
 
 import discord
 from discord.ext import commands
+from discord.ext.commands.errors import CheckFailure
 from discord.ui import TextInput, View
 from discord.ui.button import button
 import discord.app_commands as appcmd
@@ -246,7 +247,16 @@ class Exec(LionCog):
         self.talk_async = shard_talk.register_route('exec')(_async)
 
     async def cog_check(self, ctx: LionContext) -> bool:  # type: ignore
-        return await sys_admin(ctx.bot, ctx.author.id)
+        passed = await sys_admin(ctx.bot, ctx.author.id)
+        if passed:
+            return True
+        else:
+            raise CheckFailure(
+                ctx.bot.translator.t(_p(
+                    'ward:sys_admin|failed',
+                    "You must be a bot owner to do this!"
+                ))
+            )
 
     @commands.hybrid_command(
         name=_('async'),
