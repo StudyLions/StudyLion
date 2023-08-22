@@ -110,7 +110,7 @@ class Analytics(LionCog):
         duration = utc_now() - ctx.message.created_at
         event = CommandEvent(
             appname=appname,
-            cmdname=ctx.command.name if ctx.command else 'Unknown',  # TODO: qualified_name
+            cmdname=ctx.command.qualified_name if ctx.command else 'Unknown',
             cogname=ctx.cog.qualified_name if ctx.cog else None,
             userid=ctx.author.id,
             created_at=utc_now(),
