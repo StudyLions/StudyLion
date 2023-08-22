@@ -479,8 +479,8 @@ class RoleMenu:
                 raise UserInputError(
                     t(_p(
                         'rolemenu|deselect|error:sticky',
-                        "{role} is a sticky role, you cannot remove it with this menu!"
-                    )).format(role=role.mention)
+                        "**{role}** is a sticky role, you cannot remove it with this menu!"
+                    )).format(role=role.name)
                 )
 
             conn = await self.bot.db.get_connection()
@@ -534,25 +534,27 @@ class RoleMenu:
                 if total_refund:
                     embed.description = t(_p(
                         'rolemenu|deselect|success:refund|desc',
-                        "You have removed {role}, and been refunded {coin} **{amount}**."
-                    )).format(role=role.mention, coin=self.bot.config.emojis.coin, amount=total_refund)
+                        "You have removed **{role}**, and been refunded {coin} **{amount}**."
+                    )).format(role=role.name, coin=self.bot.config.emojis.coin, amount=total_refund)
                 else:
                     embed.description = t(_p(
                         'rolemenu|deselect|success:norefund|desc',
-                        "You have unequipped {role}."
-                    )).format(role=role.mention)
+                        "You have unequipped **{role}**."
+                    )).format(role=role.name)
                 return embed
         else:
             # Member does not have the role, selection case.
-            required = self.config.required_role.value
+            required = self.config.required_role.data
             if required is not None:
                 # Check member has the required role
-                if required not in member.roles:
+                if required not in [role.id for role in member.roles]:
+                    role = guild.get_role(required)
+                    name = role.name if role else required
                     raise UserInputError(
                         t(_p(
                             'rolemenu|select|error:required_role',
-                            "You need to have the {role} role to use this!"
-                        )).format(role=required.mention)
+                            "You need to have the **{role}** role to use this!"
+                        )).format(role=name)
                     )
 
             obtainable = self.config.obtainable.value
@@ -579,10 +581,10 @@ class RoleMenu:
                     raise UserInputError(
                         t(_p(
                             'rolemenu|select|error:insufficient_funds',
-                            "The role {role} costs {coin}**{cost}**,"
+                            "The role **{role}** costs {coin}**{cost}**,"
                             "but you only have {coin}**{balance}**!"
                         )).format(
-                            role=role.mention,
+                            role=role.name,
                             coin=self.bot.config.emojis.coin,
                             cost=price,
                             balance=balance,
@@ -652,13 +654,13 @@ class RoleMenu:
             if price > 0:
                 embed.description = t(_p(
                     'rolemenu|select|success:purchase|desc',
-                    "You have purchased the role {role} for {coin}**{amount}**"
-                )).format(role=role.mention, coin=self.bot.config.emojis.coin, amount=price)
+                    "You have purchased the role **{role}** for {coin}**{amount}**"
+                )).format(role=role.name, coin=self.bot.config.emojis.coin, amount=price)
             else:
                 embed.description = t(_p(
                     'rolemenu|select|success:nopurchase|desc',
-                    "You have equipped the role {role}"
-                )).format(role=role.mention)
+                    "You have equipped the role **{role}**"
+                )).format(role=role.name)
 
             if expiry is not None:
                 embed.description += '\n' + t(_p(
