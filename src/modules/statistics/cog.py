@@ -49,6 +49,7 @@ class StatsCog(LionCog):
         await ctx.interaction.response.defer(thinking=True)
         ui = ProfileUI(self.bot, ctx.author, ctx.guild)
         await ui.run(ctx.interaction)
+        await ui.wait()
 
     @cmds.hybrid_command(
         name=_p('cmd:stats', "stats"),
@@ -64,6 +65,7 @@ class StatsCog(LionCog):
         await ctx.interaction.response.defer(thinking=True)
         ui = WeeklyMonthlyUI(self.bot, ctx.author, ctx.guild)
         await ui.run(ctx.interaction)
+        await ui.wait()
 
     @cmds.hybrid_command(
         name=_p('cmd:leaderboard', "leaderboard"),
@@ -77,6 +79,7 @@ class StatsCog(LionCog):
         await ctx.interaction.response.defer(thinking=True)
         ui = LeaderboardUI(self.bot, ctx.author, ctx.guild)
         await ui.run(ctx.interaction)
+        await ui.wait()
 
     # Setting commands
     @LionCog.placeholder_group
