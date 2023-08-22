@@ -13,7 +13,7 @@ from aiohttp import ClientSession
 from data import Database
 
 from .config import Conf
-from .logger import logging_context, log_context, log_action_stack
+from .logger import logging_context, log_context, log_action_stack, log_wrap, set_logging_context
 from .context import context
 from .LionContext import LionContext
 from .LionTree import LionTree
@@ -46,6 +46,7 @@ class LionBot(Bot):
         self.translator = translator
 
         self._locks = WeakValueDictionary()
+        self._running_events = set()
 
     async def setup_hook(self) -> None:
         log_context.set(f"APP: {self.application_id}")
@@ -64,26 +65,44 @@ class LionBot(Bot):
                 await self.tree.sync(guild=guild)
 
     async def add_cog(self, cog: Cog, **kwargs):
-        with logging_context(action=f"Attach {cog.__cog_name__}"):
+        sup = super()
+        @log_wrap(action=f"Attach {cog.__cog_name__}")
+        async def wrapper():
             logger.info(f"Attaching Cog {cog.__cog_name__}")
-            await super().add_cog(cog, **kwargs)
+            await sup.add_cog(cog, **kwargs)
             logger.debug(f"Attached Cog {cog.__cog_name__} with no errors.")
+        await wrapper()
 
     async def load_extension(self, name, *, package=None, **kwargs):
-        with logging_context(action=f"Load {name.strip('.')}"):
+        sup = super()
+        @log_wrap(action=f"Load {name.strip('.')}")
+        async def wrapper():
             logger.info(f"Loading extension {name} in package {package}.")
-            await super().load_extension(name, package=package, **kwargs)
+            await sup.load_extension(name, package=package, **kwargs)
             logger.debug(f"Loaded extension {name} in package {package}.")
+        await wrapper()
 
     async def start(self, token: str, *, reconnect: bool = True):
         with logging_context(action="Login"):
-            await self.login(token)
-        with logging_context(stack=["Running"]):
-            await self.connect(reconnect=reconnect)
+            start_task = asyncio.create_task(self.login(token))
+        await start_task
+
+        with logging_context(stack=("Running",)):
+            run_task = asyncio.create_task(self.connect(reconnect=reconnect))
+        await run_task
 
     def dispatch(self, event_name: str, *args, **kwargs):
         with logging_context(action=f"Dispatch {event_name}"):
             super().dispatch(event_name, *args, **kwargs)
+
+    def _schedule_event(self, coro, event_name, *args, **kwargs):
+        """
+        Extends client._schedule_event to keep a persistent
+        background task store.
+        """
+        task = super()._schedule_event(coro, event_name, *args, **kwargs)
+        self._running_events.add(task)
+        task.add_done_callback(lambda fut: self._running_events.discard(fut))
 
     def idlock(self, snowflakeid):
         lock = self._locks.get(snowflakeid, None)
@@ -124,9 +143,11 @@ class LionBot(Bot):
 
     async def on_command_error(self, ctx, exception):
         # TODO: Some of these could have more user-feedback
-        cmd_str = str(ctx.command)
+        logger.debug(f"Handling command error for {ctx}: {exception}")
         if isinstance(ctx.command, HybridCommand) and ctx.command.app_command:
             cmd_str = ctx.command.app_command.to_dict()
+        else:
+            cmd_str = str(ctx.command)
         try:
             raise exception
         except (HybridCommandError, CommandInvokeError, appCommandInvokeError):
@@ -191,14 +212,14 @@ class LionBot(Bot):
                     pass
             finally:
                 exception.original = HandledException(exception.original)
-        except CheckFailure:
+        except CheckFailure as e:
             logger.debug(
-                f"Command failed check: {exception}",
+                f"Command failed check: {e}",
                 extra={'action': 'BotError', 'with_ctx': True}
             )
             try:
-                await ctx.error_reply(exception.message)
-            except Exception:
+                await ctx.error_reply(str(e))
+            except discord.HTTPException:
                 pass
         except Exception:
             # Completely unknown exception outside of command invocation!
@@ -209,6 +230,5 @@ class LionBot(Bot):
             )
 
     def add_command(self, command):
-        if hasattr(command, '_placeholder_group_'):
-            return
-        super().add_command(command)
+        if not hasattr(command, '_placeholder_group_'):
+            super().add_command(command)

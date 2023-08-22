@@ -7,7 +7,7 @@ from discord.ext import commands
 
 from meta import LionBot, conf, sharding, appname, shard_talk
 from meta.app import shardname
-from meta.logger import log_context, log_action_stack, logging_context, setup_main_logger
+from meta.logger import log_context, log_action_stack, setup_main_logger
 from meta.context import ctx_bot
 
 from data import Database
@@ -30,7 +30,7 @@ db = Database(conf.data['args'])
 
 
 async def main():
-    log_action_stack.set(["Initialising"])
+    log_action_stack.set(("Initialising",))
     logger.info("Initialising StudyLion")
 
     intents = discord.Intents.all()
@@ -73,12 +73,12 @@ async def main():
             ) as lionbot:
                 ctx_bot.set(lionbot)
                 try:
-                    with logging_context(context=f"APP: {appname}"):
-                        logger.info("StudyLion initialised, starting!", extra={'action': 'Starting'})
-                        await lionbot.start(conf.bot['TOKEN'])
+                    log_context.set(f"APP: {appname}")
+                    logger.info("StudyLion initialised, starting!", extra={'action': 'Starting'})
+                    await lionbot.start(conf.bot['TOKEN'])
                 except asyncio.CancelledError:
-                    with logging_context(context=f"APP: {appname}", action="Shutting Down"):
-                        logger.info("StudyLion closed, shutting down.", exc_info=True)
+                    log_context.set(f"APP: {appname}")
+                    logger.info("StudyLion closed, shutting down.", extra={'action': "Shutting Down"}, exc_info=True)
 
 
 def _main():

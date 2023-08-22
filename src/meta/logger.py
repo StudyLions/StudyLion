@@ -1,7 +1,7 @@
 import sys
 import logging
 import asyncio
-from typing import List
+from typing import List, Optional
 from logging.handlers import QueueListener, QueueHandler
 import queue
 import multiprocessing
@@ -24,38 +24,115 @@ log_logger.propagate = False
 
 
 log_context: ContextVar[str] = ContextVar('logging_context', default='CTX: ROOT CONTEXT')
-log_action_stack: ContextVar[List[str]] = ContextVar('logging_action_stack', default=[])
+log_action_stack: ContextVar[tuple[str, ...]] = ContextVar('logging_action_stack', default=())
 log_app: ContextVar[str] = ContextVar('logging_shard', default="SHARD {:03}".format(sharding.shard_number))
+
+def set_logging_context(
+    context: Optional[str] = None,
+    action: Optional[str] = None,
+    stack: Optional[tuple[str, ...]] = None
+):
+    """
+    Statically set the logging context variables to the given values.
+
+    If `action` is given, pushes it onto the `log_action_stack`.
+    """
+    if context is not None:
+        log_context.set(context)
+    if action is not None or stack is not None:
+        astack = log_action_stack.get()
+        newstack = stack if stack is not None else astack
+        if action is not None:
+            newstack = (*newstack, action)
+        log_action_stack.set(newstack)
 
 
 @contextmanager
 def logging_context(context=None, action=None, stack=None):
+    """
+    Context manager for executing a block of code in a given logging context.
+
+    This context manager should only be used around synchronous code.
+    This is because async code *may* get cancelled or externally garbage collected,
+    in which case the finally block will be executed in the wrong context.
+    See https://github.com/python/cpython/issues/93740
+    This can be refactored nicely if this gets merged:
+        https://github.com/python/cpython/pull/99634
+
+    (It will not necessarily break on async code,
+     if the async code can be guaranteed to clean up in its own context.)
+    """
     if context is not None:
-        context_t = log_context.set(context)
-    if action is not None:
+        oldcontext = log_context.get()
+        log_context.set(context)
+    if action is not None or stack is not None:
         astack = log_action_stack.get()
-        log_action_stack.set(astack + [action])
-    if stack is not None:
-        actions_t = log_action_stack.set(stack)
+        newstack = stack if stack is not None else astack
+        if action is not None:
+            newstack = (*newstack, action)
+        log_action_stack.set(newstack)
     try:
         yield
     finally:
         if context is not None:
-            log_context.reset(context_t)
-        if stack is not None:
-            log_action_stack.reset(actions_t)
-        if action is not None:
+            log_context.set(oldcontext)
+        if stack is not None or action is not None:
             log_action_stack.set(astack)
 
 
-def log_wrap(**kwargs):
+def with_log_ctx(isolate=True, **kwargs):
+    """
+    Execute a coroutine inside a given logging context.
+
+    If `isolate` is true, ensures that context does not leak
+    outside the coroutine.
+
+    If `isolate` is false, just statically set the context,
+    which will leak unless the coroutine is
+    called in an externally copied context.
+    """
     def decorator(func):
         @wraps(func)
         async def wrapped(*w_args, **w_kwargs):
-            with logging_context(**kwargs):
+            if isolate:
+                with logging_context(**kwargs):
+                    # Task creation will synchronously copy the context
+                    # This is gc safe
+                    name = kwargs.get('action', f"log-wrapped-{func.__name__}")
+                    task = asyncio.create_task(func(*w_args, **w_kwargs), name=name)
+                return await task
+            else:
+                # This will leak context changes
+                set_logging_context(**kwargs)
                 return await func(*w_args, **w_kwargs)
         return wrapped
     return decorator
+
+
+# For backwards compatibility
+log_wrap = with_log_ctx
+
+
+def persist_task(task_collection: set):
+    """
+    Coroutine decorator that ensures the coroutine is scheduled as a task
+    and added to the given task_collection for strong reference
+    when it is called.
+
+    This is just a hack to handle discord.py events potentially
+    being unexpectedly garbage collected.
+
+    Since this also implicitly schedules the coroutine as a task when it is called,
+    the coroutine will also be run inside an isolated context.
+    """
+    def decorator(coro):
+        @wraps(coro)
+        async def wrapped(*w_args, **w_kwargs):
+            name = f"persisted-{coro.__name__}"
+            task = asyncio.create_task(coro(*w_args, **w_kwargs), name=name)
+            task_collection.add(task)
+            task.add_done_callback(lambda f: task_collection.discard(f))
+            await task
 
 
 RESET_SEQ = "\033[0m"
@@ -208,7 +285,7 @@ class WebHookHandler(logging.StreamHandler):
 
     async def post(self, record):
         log_context.set("Webhook Logger")
-        log_action_stack.set(["Logging"])
+        log_action_stack.set(("Logging",))
         log_app.set(record.app)
 
         try:

@@ -19,7 +19,7 @@ from discord.ui import TextInput, View
 from discord.ui.button import button
 import discord.app_commands as appcmd
 
-from meta.logger import logging_context
+from meta.logger import logging_context, log_wrap
 from meta.app import shard_talk
 from meta import conf
 from meta.context import context, ctx_bot
@@ -185,54 +185,54 @@ def mk_print(fp: io.StringIO) -> Callable[..., None]:
     return _print
 
 
+@log_wrap(action="Code Exec")
 async def _async(to_eval: str, style='exec'):
-    with logging_context(action="Code Exec"):
-        newline = '\n' * ('\n' in to_eval)
-        logger.info(
-            f"Exec code with {style}: {newline}{to_eval}"
+    newline = '\n' * ('\n' in to_eval)
+    logger.info(
+        f"Exec code with {style}: {newline}{to_eval}"
+    )
+
+    output = io.StringIO()
+    _print = mk_print(output)
+
+    scope: dict[str, Any] = dict(sys.modules)
+    scope['__builtins__'] = builtins
+    scope.update(builtins.__dict__)
+    scope['ctx'] = ctx = context.get()
+    scope['bot'] = ctx_bot.get()
+    scope['print'] = _print  # type: ignore
+
+    try:
+        if ctx and ctx.message:
+            source_str = f"<msg: {ctx.message.id}>"
+        elif ctx and ctx.interaction:
+            source_str = f"<iid: {ctx.interaction.id}>"
+        else:
+            source_str = "Unknown async"
+
+        code = compile(
+            to_eval,
+            source_str,
+            style,
+            ast.PyCF_ALLOW_TOP_LEVEL_AWAIT
         )
+        func = types.FunctionType(code, scope)
 
-        output = io.StringIO()
-        _print = mk_print(output)
+        ret = func()
+        if inspect.iscoroutine(ret):
+            ret = await ret
+        if ret is not None:
+            _print(repr(ret))
+    except Exception:
+        _, exc, tb = sys.exc_info()
+        _print("".join(traceback.format_tb(tb)))
+        _print(f"{type(exc).__name__}: {exc}")
 
-        scope: dict[str, Any] = dict(sys.modules)
-        scope['__builtins__'] = builtins
-        scope.update(builtins.__dict__)
-        scope['ctx'] = ctx = context.get()
-        scope['bot'] = ctx_bot.get()
-        scope['print'] = _print  # type: ignore
-
-        try:
-            if ctx and ctx.message:
-                source_str = f"<msg: {ctx.message.id}>"
-            elif ctx and ctx.interaction:
-                source_str = f"<iid: {ctx.interaction.id}>"
-            else:
-                source_str = "Unknown async"
-
-            code = compile(
-                to_eval,
-                source_str,
-                style,
-                ast.PyCF_ALLOW_TOP_LEVEL_AWAIT
-            )
-            func = types.FunctionType(code, scope)
-
-            ret = func()
-            if inspect.iscoroutine(ret):
-                ret = await ret
-            if ret is not None:
-                _print(repr(ret))
-        except Exception:
-            _, exc, tb = sys.exc_info()
-            _print("".join(traceback.format_tb(tb)))
-            _print(f"{type(exc).__name__}: {exc}")
-
-        result = output.getvalue().strip()
-        newline = '\n' * ('\n' in result)
-        logger.info(
-            f"Exec complete, output: {newline}{result}"
-        )
+    result = output.getvalue().strip()
+    newline = '\n' * ('\n' in result)
+    logger.info(
+        f"Exec complete, output: {newline}{result}"
+    )
     return result
 
 

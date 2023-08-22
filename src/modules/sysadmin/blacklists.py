@@ -13,7 +13,7 @@ from discord.ui.button import button
 from discord.ui.text_input import TextStyle, TextInput
 
 from meta import LionCog, LionBot, LionContext
-from meta.logger import logging_context, log_wrap
+from meta.logger import logging_context, log_wrap, set_logging_context
 from meta.errors import UserInputError
 from meta.app import shard_talk
 
@@ -73,8 +73,7 @@ class Blacklists(LionCog):
             f"Loaded {len(self.guild_blacklist)} blacklisted guilds."
         )
         if self.bot.is_ready():
-            with logging_context(action="Guild Blacklist"):
-                await self.leave_blacklisted_guilds()
+            await self.leave_blacklisted_guilds()
 
     @LionCog.listener('on_ready')
     @log_wrap(action="Guild Blacklist")
@@ -84,8 +83,9 @@ class Blacklists(LionCog):
             guild for guild in self.bot.guilds
             if guild.id in self.guild_blacklist
         ]
-
-        asyncio.gather(*(guild.leave() for guild in to_leave))
+        if to_leave:
+            tasks = [asyncio.create_task(guild.leave()) for guild in to_leave]
+            await asyncio.gather(*tasks)
 
         logger.info(
             "Left {} blacklisted guilds.".format(len(to_leave)),
@@ -95,12 +95,12 @@ class Blacklists(LionCog):
     @log_wrap(action="Check Guild Blacklist")
     async def check_guild_blacklist(self, guild):
         """Check if the given guild is in the blacklist, and leave if so."""
-        with logging_context(context=f"gid: {guild.id}"):
-            if guild.id in self.guild_blacklist:
-                await guild.leave()
-                logger.info(
-                    "Automatically left blacklisted guild '{}' (gid:{}) upon join.".format(guild.name, guild.id)
-                )
+        if guild.id in self.guild_blacklist:
+            set_logging_context(context=f"gid: {guild.id}")
+            await guild.leave()
+            logger.info(
+                "Automatically left blacklisted guild '{}' (gid:{}) upon join.".format(guild.name, guild.id)
+            )
 
     async def bot_check_once(self, ctx: LionContext) -> bool:  # type:ignore
         if ctx.author.id in self.user_blacklist:

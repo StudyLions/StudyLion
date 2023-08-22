@@ -67,7 +67,11 @@ class AnalyticsServer:
         results = await self.talk_shard_snapshot().broadcast()
 
         # Make sure everyone sent results and there were no exceptions (e.g. concurrency)
-        if not all(result is not None and not isinstance(result, Exception) for result in results.values()):
+        failed = not isinstance(results, dict)
+        failed = failed or not any(
+            result is None or isinstance(result, Exception) for result in results.values()
+        )
+        if failed:
             # This should essentially never happen
             # Either some of the shards could not make a snapshot (e.g. Discord client issues)
             # or they disconnected in the process.

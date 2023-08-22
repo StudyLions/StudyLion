@@ -717,7 +717,7 @@ class Timer:
                 f"Timer <tid: {channelid}> deleted. Reason given: {reason!r}"
             )
 
-    @log_wrap(stack=['Timer Loop'])
+    @log_wrap(action='Timer Loop')
     async def _runloop(self):
         """
         Main loop which controls the

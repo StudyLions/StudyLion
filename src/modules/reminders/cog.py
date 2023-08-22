@@ -27,7 +27,7 @@ from data.columns import Integer, String, Timestamp, Bool
 
 from meta import LionBot, LionCog, LionContext
 from meta.app import shard_talk, appname_from_shard
-from meta.logger import log_wrap, logging_context
+from meta.logger import log_wrap, logging_context, set_logging_context
 
 from babel import ctx_translator, ctx_locale
 
@@ -280,6 +280,7 @@ class Reminders(LionCog):
             f"Scheduled new reminders: {tuple(reminder.reminderid for reminder in reminders)}",
         )
 
+    @log_wrap(action="Send Reminder")
     async def execute_reminder(self, reminderid):
         """
         Send the reminder with the given reminderid.
@@ -287,64 +288,65 @@ class Reminders(LionCog):
         This should in general only be executed from the executor shard,
         through a ReminderMonitor instance.
         """
-        with logging_context(action='Send Reminder', context=f"rid: {reminderid}"):
-            reminder = await self.data.Reminder.fetch(reminderid)
-            if reminder is None:
-                logger.warning(
-                    f"Attempted to execute a reminder <rid: {reminderid}> that no longer exists!"
-                )
-                return
+        set_logging_context(context=f"rid: {reminderid}")
 
-            try:
-                # Try and find the user
-                userid = reminder.userid
-                if not (user := self.bot.get_user(userid)):
-                    user = await self.bot.fetch_user(userid)
+        reminder = await self.data.Reminder.fetch(reminderid)
+        if reminder is None:
+            logger.warning(
+                f"Attempted to execute a reminder <rid: {reminderid}> that no longer exists!"
+            )
+            return
 
-                # Set the locale variables
-                locale = await self.bot.get_cog('BabelCog').get_user_locale(userid)
-                ctx_locale.set(locale)
-                ctx_translator.set(self.bot.translator)
+        try:
+            # Try and find the user
+            userid = reminder.userid
+            if not (user := self.bot.get_user(userid)):
+                user = await self.bot.fetch_user(userid)
 
-                # Build the embed
-                embed = reminder.embed
+            # Set the locale variables
+            locale = await self.bot.get_cog('BabelCog').get_user_locale(userid)
+            ctx_locale.set(locale)
+            ctx_translator.set(self.bot.translator)
 
-                # Attempt to send to user
-                # TODO: Consider adding a View to this, for cancelling a repeated reminder or showing reminders
-                await user.send(embed=embed)
+            # Build the embed
+            embed = reminder.embed
 
-                # Update the data as required
-                if reminder.interval:
-                    now = utc_now()
-                    # Use original reminder time to calculate repeat, avoiding drift
-                    next_time = reminder.remind_at + dt.timedelta(seconds=reminder.interval)
-                    # Skip any expired repeats, to avoid spamming requests after downtime
-                    # TODO: Is this actually dst safe?
-                    while next_time.timestamp() <= now.timestamp():
-                        next_time = next_time + dt.timedelta(seconds=reminder.interval)
-                    await reminder.update(remind_at=next_time)
-                    self.monitor.schedule_task(reminder.reminderid, reminder.timestamp)
-                    logger.debug(
-                        f"Executed reminder <rid: {reminder.reminderid}> and scheduled repeat at {next_time}."
-                    )
-                else:
-                    await reminder.delete()
-                    logger.debug(
-                        f"Executed reminder <rid: {reminder.reminderid}>."
-                    )
-            except discord.HTTPException as e:
-                await reminder.update(failed=True)
+            # Attempt to send to user
+            # TODO: Consider adding a View to this, for cancelling a repeated reminder or showing reminders
+            await user.send(embed=embed)
+
+            # Update the data as required
+            if reminder.interval:
+                now = utc_now()
+                # Use original reminder time to calculate repeat, avoiding drift
+                next_time = reminder.remind_at + dt.timedelta(seconds=reminder.interval)
+                # Skip any expired repeats, to avoid spamming requests after downtime
+                # TODO: Is this actually dst safe?
+                while next_time.timestamp() <= now.timestamp():
+                    next_time = next_time + dt.timedelta(seconds=reminder.interval)
+                await reminder.update(remind_at=next_time)
+                self.monitor.schedule_task(reminder.reminderid, reminder.timestamp)
                 logger.debug(
-                    f"Reminder <rid: {reminder.reminderid}> could not be sent: {e.text}",
+                    f"Executed reminder <rid: {reminder.reminderid}> and scheduled repeat at {next_time}."
                 )
-            except Exception:
-                await reminder.update(failed=True)
-                logger.exception(
-                    f"Reminder <rid: {reminder.reminderid}> failed for an unknown reason!"
+            else:
+                await reminder.delete()
+                logger.debug(
+                    f"Executed reminder <rid: {reminder.reminderid}>."
                 )
-            finally:
-                # Dispatch for analytics
-                self.bot.dispatch('reminder_sent', reminder)
+        except discord.HTTPException as e:
+            await reminder.update(failed=True)
+            logger.debug(
+                f"Reminder <rid: {reminder.reminderid}> could not be sent: {e.text}",
+            )
+        except Exception:
+            await reminder.update(failed=True)
+            logger.exception(
+                f"Reminder <rid: {reminder.reminderid}> failed for an unknown reason!"
+            )
+        finally:
+            # Dispatch for analytics
+            self.bot.dispatch('reminder_sent', reminder)
 
     @cmds.hybrid_group(
         name=_p('cmd:reminders', "reminders")

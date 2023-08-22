@@ -5,7 +5,7 @@ from collections import namedtuple
 from typing import NamedTuple, Optional, Generic, Type, TypeVar
 
 from meta.ipc import AppRoute, AppClient
-from meta.logger import logging_context, log_wrap
+from meta.logger import logging_context, log_wrap, set_logging_context
 
 from data import RowModel
 from .data import AnalyticsData, CommandStatus, VoiceAction, GuildAction
@@ -52,39 +52,39 @@ class EventHandler(Generic[T]):
                 f"Queue on event handler {self.route_name} is full! Discarding event {data}"
             )
 
+    @log_wrap(action='consumer', isolate=False)
     async def consumer(self):
-        with logging_context(action='consumer'):
-            while True:
-                try:
-                    item = await self.queue.get()
-                    self.batch.append(item)
-                    if len(self.batch) > self.batch_size:
-                        await self.process_batch()
-                except asyncio.CancelledError:
-                    # Try and process the last batch
-                    logger.info(
-                        f"Event handler {self.route_name} received cancellation signal! "
-                        "Trying to process last batch."
-                    )
-                    if self.batch:
-                        await self.process_batch()
-                    raise
-                except Exception:
-                    logger.exception(
-                        f"Event handler {self.route_name} received unhandled error."
-                        " Ignoring and continuing cautiously."
-                    )
-                    pass
+        while True:
+            try:
+                item = await self.queue.get()
+                self.batch.append(item)
+                if len(self.batch) > self.batch_size:
+                    await self.process_batch()
+            except asyncio.CancelledError:
+                # Try and process the last batch
+                logger.info(
+                    f"Event handler {self.route_name} received cancellation signal! "
+                    "Trying to process last batch."
+                )
+                if self.batch:
+                    await self.process_batch()
+                raise
+            except Exception:
+                logger.exception(
+                    f"Event handler {self.route_name} received unhandled error."
+                    " Ignoring and continuing cautiously."
+                )
+                pass
 
+    @log_wrap(action='batch', isolate=False)
     async def process_batch(self):
-        with logging_context(action='batch'):
-            logger.debug("Processing Batch")
-            # TODO: copy syntax might be more efficient here
-            await self.model.table.insert_many(
-                self.struct._fields,
-                *map(tuple, self.batch)
-            )
-            self.batch.clear()
+        logger.debug("Processing Batch")
+        # TODO: copy syntax might be more efficient here
+        await self.model.table.insert_many(
+            self.struct._fields,
+            *map(tuple, self.batch)
+        )
+        self.batch.clear()
 
     def bind(self, client: AppClient):
         """
