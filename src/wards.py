@@ -99,6 +99,25 @@ async def low_management_ward(ctx: LionContext) -> bool:
         )
 
 
+@cmds.check
+async def moderator_ward(ctx: LionContext) -> bool:
+    if not ctx.guild:
+        return False
+    passed = await low_management(ctx.bot, ctx.author)
+    if passed:
+        return True
+    modrole = ctx.lguild.data.mod_role
+    roleids = [role.id for role in ctx.author.roles]
+    if not (modrole and modrole in roleids):
+        raise CheckFailure(
+            ctx.bot.translator.t(_p(
+                'ward:moderator|failed',
+                "You must have the configured moderator role, "
+                "or `MANAGE_GUILD` permissions to do this."
+            ))
+        )
+    return True
+
 # ---- Assorted manual wards and checks ----
 
 

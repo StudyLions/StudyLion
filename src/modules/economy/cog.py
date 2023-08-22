@@ -11,7 +11,7 @@ from data import ORDER
 
 from utils.ui import Confirm, Pager
 from utils.lib import error_embed, MessageArgs, utc_now
-from wards import low_management_ward
+from wards import low_management_ward, moderator_ward
 from constants import MAX_COINS
 
 from . import babel, logger
@@ -113,7 +113,7 @@ class Economy(LionCog):
             "New balance to set the target's balance to."
         )
     )
-    @low_management_ward
+    @moderator_ward
     async def economy_balance_cmd(
         self,
         ctx: LionContext,
@@ -511,7 +511,7 @@ class Economy(LionCog):
             "Target user or role to view or update. Use @everyone to reset the entire guild."
         ),
     )
-    @low_management_ward
+    @moderator_ward
     async def economy_reset_cmd(
         self,
         ctx: LionContext,
@@ -805,7 +805,7 @@ class Economy(LionCog):
         ]
     )
     @appcmds.default_permissions(manage_guild=True)
-    @low_management_ward
+    @moderator_ward
     async def configure_economy(self, ctx: LionContext,
                                 allow_transfers: Optional[appcmds.Choice[int]] = None,
                                 coins_per_xp: Optional[appcmds.Range[int, 0, 2**15]] = None):
