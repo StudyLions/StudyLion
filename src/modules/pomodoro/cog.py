@@ -4,6 +4,7 @@ import asyncio
 
 import discord
 from discord.ext import commands as cmds
+from discord.ext.commands.errors import CheckFailure
 from discord import app_commands as appcmds
 
 from meta import LionCog, LionBot, LionContext
@@ -73,6 +74,19 @@ class TimerCog(LionCog):
                 "Exception encountered while unloading `TimerCog`"
             )
         self.timers.clear()
+
+    async def cog_check(self, ctx: LionContext):
+        if not self.ready:
+            raise CheckFailure(
+                self.bot.translator.t(_p(
+                    'cmd_check:ready|failed',
+                    "I am currently restarting! "
+                    "The Pomodoro timers will be unavailable until I have restarted. "
+                    "Thank you for your patience!"
+                ))
+            )
+        else:
+            return True
 
     async def _load_timers(self, timer_data: list[TimerData.Timer]):
         """
