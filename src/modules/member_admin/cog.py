@@ -193,18 +193,19 @@ class MemberAdminCog(LionCog):
         await lion.data.update(last_left=utc_now())
 
         # Save member roles
-        conn = await self.bot.db.get_connection()
-        async with conn.transaction():
-            await self.data.past_roles.delete_where(
-                guildid=member.guild.id,
-                userid=member.id
-            )
-            # Insert current member roles
-            if member.roles:
-                await self.data.past_roles.insert_many(
-                    ('guildid', 'userid', 'roleid'),
-                    *((member.guild.id, member.id, role.id) for role in member.roles)
+        async with self.bot.db.connection() as conn:
+            self.bot.db.conn = conn
+            async with conn.transaction():
+                await self.data.past_roles.delete_where(
+                    guildid=member.guild.id,
+                    userid=member.id
                 )
+                # Insert current member roles
+                if member.roles:
+                    await self.data.past_roles.insert_many(
+                        ('guildid', 'userid', 'roleid'),
+                        *((member.guild.id, member.id, role.id) for role in member.roles)
+                    )
         logger.debug(
             f"Stored persisting roles for member <uid:{member.id}> in <gid:{member.guild.id}>."
         )

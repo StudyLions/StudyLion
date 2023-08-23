@@ -38,7 +38,7 @@ async def main():
     intents.message_content = True
     intents.presences = False
 
-    async with await db.connect():
+    async with db.open():
         version = await db.version()
         if version.version != DATA_VERSION:
             error = f"Data model version is {version}, required version is {DATA_VERSION}! Please migrate."

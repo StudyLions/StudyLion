@@ -2,6 +2,7 @@ import datetime as dt
 from itertools import chain
 from psycopg import sql
 
+from meta.logger import log_wrap
 from data import RowModel, Registry, Table
 from data.columns import Integer, String, Timestamp, Bool
 
@@ -113,16 +114,18 @@ class VoiceTrackerData(Registry):
         hourly_coins = Integer()
 
         @classmethod
+        @log_wrap(action='close_voice_session')
         async def close_study_session_at(cls, guildid: int, userid: int, _at: dt.datetime) -> int:
-            conn = await cls._connector.get_connection()
-            async with conn.cursor() as cursor:
-                await cursor.execute(
-                    "SELECT close_study_session_at(%s, %s, %s)",
-                    (guildid, userid, _at)
-                )
-                member_data = await cursor.fetchone()
+            async with cls._connector.connection() as conn:
+                async with conn.cursor() as cursor:
+                    await cursor.execute(
+                        "SELECT close_study_session_at(%s, %s, %s)",
+                        (guildid, userid, _at)
+                    )
+                    return await cursor.fetchone()
 
         @classmethod
+        @log_wrap(action='close_voice_sessions')
         async def close_voice_sessions_at(cls, *arg_tuples):
             query = sql.SQL("""
                 SELECT
@@ -139,28 +142,30 @@ class VoiceTrackerData(Registry):
                     for _ in arg_tuples
                 )
             )
-            conn = await cls._connector.get_connection()
-            async with conn.cursor() as cursor:
-                await cursor.execute(
-                    query,
-                    tuple(chain(*arg_tuples))
-                )
+            async with cls._connector.connection() as conn:
+                async with conn.cursor() as cursor:
+                    await cursor.execute(
+                        query,
+                        tuple(chain(*arg_tuples))
+                    )
 
         @classmethod
+        @log_wrap(action='update_voice_session')
         async def update_voice_session_at(
             cls, guildid: int, userid: int, _at: dt.datetime,
             stream: bool, video: bool, rate: float
         ) -> int:
-            conn = await cls._connector.get_connection()
-            async with conn.cursor() as cursor:
-                await cursor.execute(
-                    "SELECT * FROM update_voice_session(%s, %s, %s, %s, %s, %s)",
-                    (guildid, userid, _at, stream, video, rate)
-                )
-                rows = await cursor.fetchall()
-                return cls._make_rows(*rows)
+            async with cls._connector.connection() as conn:
+                async with conn.cursor() as cursor:
+                    await cursor.execute(
+                        "SELECT * FROM update_voice_session(%s, %s, %s, %s, %s, %s)",
+                        (guildid, userid, _at, stream, video, rate)
+                    )
+                    rows = await cursor.fetchall()
+                    return cls._make_rows(*rows)
 
         @classmethod
+        @log_wrap(action='update_voice_sessions')
         async def update_voice_sessions_at(cls, *arg_tuples):
             query = sql.SQL("""
                 UPDATE
@@ -209,14 +214,14 @@ class VoiceTrackerData(Registry):
                     for _ in arg_tuples
                 )
             )
-            conn = await cls._connector.get_connection()
-            async with conn.cursor() as cursor:
-                await cursor.execute(
-                    query,
-                    tuple(chain(*arg_tuples))
-                )
-                rows = await cursor.fetchall()
-                return cls._make_rows(*rows)
+            async with cls._connector.connection() as conn:
+                async with conn.cursor() as cursor:
+                    await cursor.execute(
+                        query,
+                        tuple(chain(*arg_tuples))
+                    )
+                    rows = await cursor.fetchall()
+                    return cls._make_rows(*rows)
 
     class VoiceSessions(RowModel):
         """
@@ -257,17 +262,19 @@ class VoiceTrackerData(Registry):
         transactionid = Integer()
 
         @classmethod
+        @log_wrap(action='study_time_since')
         async def study_time_since(cls, guildid: int, userid: int, _start) -> int:
-            conn = await cls._connector.get_connection()
-            async with conn.cursor() as cursor:
-                await cursor.execute(
-                    "SELECT study_time_since(%s, %s, %s) AS result",
-                    (guildid, userid, _start)
-                )
-                result = await cursor.fetchone()
-                return (result['result'] or 0) if result else 0
+            async with cls._connector.connection() as conn:
+                async with conn.cursor() as cursor:
+                    await cursor.execute(
+                        "SELECT study_time_since(%s, %s, %s) AS result",
+                        (guildid, userid, _start)
+                    )
+                    result = await cursor.fetchone()
+                    return (result['result'] or 0) if result else 0
 
         @classmethod
+        @log_wrap(action='multiple_voice_tracked_since')
         async def multiple_voice_tracked_since(cls, *arg_tuples):
             query = sql.SQL("""
                 SELECT
@@ -286,13 +293,13 @@ class VoiceTrackerData(Registry):
                     for _ in arg_tuples
                 )
             )
-            conn = await cls._connector.get_connection()
-            async with conn.cursor() as cursor:
-                await cursor.execute(
-                    query,
-                    tuple(chain(*arg_tuples))
-                )
-                return await cursor.fetchall()
+            async with cls._connector.connection() as conn:
+                async with conn.cursor() as cursor:
+                    await cursor.execute(
+                        query,
+                        tuple(chain(*arg_tuples))
+                    )
+                    return await cursor.fetchall()
 
     """
     Schema

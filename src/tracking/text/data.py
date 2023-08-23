@@ -1,7 +1,7 @@
 from itertools import chain
 from psycopg import sql
 
-
+from meta.logger import log_wrap
 from data import RowModel, Registry, Table
 from data.columns import Integer, String, Timestamp, Bool
 
@@ -72,6 +72,7 @@ class TextTrackerData(Registry):
         member_expid = Integer()
 
         @classmethod
+        @log_wrap(action='end_text_sessions')
         async def end_sessions(cls, connector, *session_data):
             query = sql.SQL("""
                 WITH
@@ -92,7 +93,7 @@ class TextTrackerData(Registry):
                     ) SELECT
                             data._guildid, 0,
                             NULL, data._userid,
-                            SUM(_coins), 0, 'TEXT_SESSION'
+                            LEAST(SUM(_coins :: BIGINT), 2147483647), 0, 'TEXT_SESSION'
                         FROM data
                         WHERE data._coins > 0
                         GROUP BY (data._guildid, data._userid)
@@ -100,7 +101,7 @@ class TextTrackerData(Registry):
                 )
                 , member AS (
                     UPDATE members
-                    SET coins = coins + data._coins
+                    SET coins = LEAST(coins :: BIGINT + data._coins :: BIGINT, 2147483647)
                     FROM data
                     WHERE members.userid = data._userid AND members.guildid = data._guildid
                 )
@@ -166,15 +167,16 @@ class TextTrackerData(Registry):
             # Or ask for a connection from the connection pool
             # Transaction may take some time due to index updates
             # Alternatively maybe use the "do not expect response mode"
-            conn = await connector.get_connection()
-            async with conn.cursor() as cursor:
-                await cursor.execute(
-                    query,
-                    tuple(chain(*session_data))
-                )
+            async with connector.connection() as conn:
+                async with conn.cursor() as cursor:
+                    await cursor.execute(
+                        query,
+                        tuple(chain(*session_data))
+                    )
             return
 
         @classmethod
+        @log_wrap(action='user_messages_between')
         async def user_messages_between(cls, userid: int, *points):
             """
             Compute messages written between the given points.
@@ -203,15 +205,16 @@ class TextTrackerData(Registry):
                     sql.SQL("({}, {})").format(sql.Placeholder(), sql.Placeholder()) for _ in points[1:]
                 )
             )
-            conn = await cls._connector.get_connection()
-            async with conn.cursor() as cursor:
-                await cursor.execute(
-                    query,
-                    tuple(chain((userid,), *blocks))
-                )
-                return [r['period_m'] or 0 for r in await cursor.fetchall()]
+            async with cls._connector.connection() as conn:
+                async with conn.cursor() as cursor:
+                    await cursor.execute(
+                        query,
+                        tuple(chain((userid,), *blocks))
+                    )
+                    return [r['period_m'] or 0 for r in await cursor.fetchall()]
 
         @classmethod
+        @log_wrap(action='member_messages_between')
         async def member_messages_between(cls, guildid: int, userid: int, *points):
             """
             Compute messages written between the given points.
@@ -241,15 +244,16 @@ class TextTrackerData(Registry):
                     sql.SQL("({}, {})").format(sql.Placeholder(), sql.Placeholder()) for _ in points[1:]
                 )
             )
-            conn = await cls._connector.get_connection()
-            async with conn.cursor() as cursor:
-                await cursor.execute(
-                    query,
-                    tuple(chain((userid, guildid), *blocks))
-                )
+            async with cls._connector.connection() as conn:
+                async with conn.cursor() as cursor:
+                    await cursor.execute(
+                        query,
+                        tuple(chain((userid, guildid), *blocks))
+                    )
                 return [r['period_m'] or 0 for r in await cursor.fetchall()]
 
         @classmethod
+        @log_wrap(action='member_messages_since')
         async def member_messages_since(cls, guildid: int, userid: int, *points):
             """
             Compute messages written between the given points.
@@ -277,12 +281,12 @@ class TextTrackerData(Registry):
                     sql.SQL("({})").format(sql.Placeholder()) for _ in points
                 )
             )
-            conn = await cls._connector.get_connection()
-            async with conn.cursor() as cursor:
-                await cursor.execute(
-                    query,
-                    tuple(chain((userid, guildid), points))
-                )
-                return [r['messages'] or 0 for r in await cursor.fetchall()]
+            async with cls._connector.connection() as conn:
+                async with conn.cursor() as cursor:
+                    await cursor.execute(
+                        query,
+                        tuple(chain((userid, guildid), points))
+                    )
+                    return [r['messages'] or 0 for r in await cursor.fetchall()]
 
     untracked_channels = Table('untracked_text_channels')

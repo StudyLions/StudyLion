@@ -123,7 +123,7 @@ class AnalyticsServer:
         log_action_stack.set(['Analytics'])
         log_app.set(conf.analytics['appname'])
 
-        async with await self.db.connect():
+        async with self.db.open():
             await self.talk.connect()
             await self.attach_event_handlers()
             self._snap_task = asyncio.create_task(self.snapshot_loop())

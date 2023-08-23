@@ -35,12 +35,13 @@ class Database(Connector):
         """
         Return the current schema version as a Version namedtuple.
         """
-        async with self.conn.cursor() as cursor:
-            # Get last entry in version table, compare against desired version
-            await cursor.execute("SELECT * FROM VersionHistory ORDER BY time DESC LIMIT 1")
-            row = await cursor.fetchone()
-            if row:
-                return Version(row['version'], row['time'], row['author'])
-            else:
-                # No versions in the database
-                return Version(-1, None, None)
+        async with self.connection() as conn:
+            async with conn.cursor() as cursor:
+                # Get last entry in version table, compare against desired version
+                await cursor.execute("SELECT * FROM VersionHistory ORDER BY time DESC LIMIT 1")
+                row = await cursor.fetchone()
+                if row:
+                    return Version(row['version'], row['time'], row['author'])
+                else:
+                    # No versions in the database
+                    return Version(-1, None, None)

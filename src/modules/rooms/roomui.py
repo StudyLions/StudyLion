@@ -7,6 +7,7 @@ from discord.ui.select import select, UserSelect
 
 from meta import LionBot, conf
 from meta.errors import UserInputError
+from meta.logger import log_wrap
 from babel.translator import ctx_locale
 from utils.lib import utc_now, MessageArgs, error_embed
 from utils.ui import MessageUI, input
@@ -115,38 +116,43 @@ class RoomUI(MessageUI):
             return
         await submit.response.defer(thinking=True, ephemeral=True)
 
+        await self._do_deposit(t, press, amount, submit)
+
+        # Post deposit message
+        await self.room.notify_deposit(press.user, amount)
+
+        await self.refresh(thinking=submit)
+
+    @log_wrap(isolate=True)
+    async def _do_deposit(self, t, press, amount, submit):
         # Start transaction for deposit
-        conn = await self.bot.db.get_connection()
-        async with conn.transaction():
-            # Get the lion balance directly
-            lion = await self.bot.core.data.Member.fetch(
-                self.room.data.guildid,
-                press.user.id,
-                cached=False
-            )
-            balance = lion.coins
-            if balance < amount:
-                await submit.edit_original_response(
-                    embed=error_embed(
-                        t(_p(
-                            'ui:room_status|button:deposit|error:insufficient_funds',
-                            "You cannot deposit {coin}**{amount}**! You only have {coin}**{balance}**."
-                        )).format(
-                            coin=self.bot.config.emojis.coin,
-                            amount=amount,
-                            balance=balance
+        async with self.bot.db.connection() as conn:
+            self.bot.db.conn = conn
+            async with conn.transaction():
+                # Get the lion balance directly
+                lion = await self.bot.core.data.Member.fetch(
+                    self.room.data.guildid,
+                    press.user.id,
+                    cached=False
+                )
+                balance = lion.coins
+                if balance < amount:
+                    await submit.edit_original_response(
+                        embed=error_embed(
+                            t(_p(
+                                'ui:room_status|button:deposit|error:insufficient_funds',
+                                "You cannot deposit {coin}**{amount}**! You only have {coin}**{balance}**."
+                            )).format(
+                                coin=self.bot.config.emojis.coin,
+                                amount=amount,
+                                balance=balance
+                            )
                         )
                     )
-                )
-                return
-            # TODO: Economy Transaction
-            await lion.update(coins=CoreData.Member.coins - amount)
-            await self.room.data.update(coin_balance=RoomData.Room.coin_balance + amount)
-
-            # Post deposit message
-            await self.room.notify_deposit(press.user, amount)
-
-            await self.refresh(thinking=submit)
+                    return
+                # TODO: Economy Transaction
+                await lion.update(coins=CoreData.Member.coins - amount)
+                await self.room.data.update(coin_balance=RoomData.Room.coin_balance + amount)
 
     async def desposit_button_refresh(self):
         self.desposit_button.label = self.bot.translator.t(_p(

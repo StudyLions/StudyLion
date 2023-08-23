@@ -4,6 +4,7 @@ from enum import Enum
 from itertools import chain
 from psycopg import sql
 
+from meta.logger import log_wrap
 from data import RowModel, Registry, Table, RegisterEnum
 from data.columns import Integer, String, Timestamp, Bool, Column
 
@@ -80,6 +81,7 @@ class StatsData(Registry):
         end_time = Timestamp()
 
         @classmethod
+        @log_wrap(action='tracked_time_between')
         async def tracked_time_between(cls, *points: tuple[int, int, dt.datetime, dt.datetime]):
             query = sql.SQL(
                 """
@@ -103,25 +105,27 @@ class StatsData(Registry):
                     for _ in points
                 )
             )
-            conn = await cls._connector.get_connection()
-            async with conn.cursor() as cursor:
-                await cursor.execute(
-                    query,
-                    chain(*points)
-                )
-                return cursor.fetchall()
+            async with cls._connector.connection() as conn:
+                async with conn.cursor() as cursor:
+                    await cursor.execute(
+                        query,
+                        chain(*points)
+                    )
+                    return cursor.fetchall()
 
         @classmethod
+        @log_wrap(action='study_time_between')
         async def study_time_between(cls, guildid: int, userid: int, _start, _end) -> int:
-            conn = await cls._connector.get_connection()
-            async with conn.cursor() as cursor:
-                await cursor.execute(
-                    "SELECT study_time_between(%s, %s, %s, %s)",
-                    (guildid, userid, _start, _end)
-                )
-                return (await cursor.fetchone()[0]) or 0
+            async with cls._connector.connection() as conn:
+                async with conn.cursor() as cursor:
+                    await cursor.execute(
+                        "SELECT study_time_between(%s, %s, %s, %s)",
+                        (guildid, userid, _start, _end)
+                    )
+                    return (await cursor.fetchone()[0]) or 0
 
         @classmethod
+        @log_wrap(action='study_times_between')
         async def study_times_between(cls, guildid: int, userid: int, *points) -> list[int]:
             if len(points) < 2:
                 raise ValueError('Not enough block points given!')
@@ -141,25 +145,27 @@ class StatsData(Registry):
                     sql.SQL("({}, {})").format(sql.Placeholder(), sql.Placeholder()) for _ in points[1:]
                 )
             )
-            conn = await cls._connector.get_connection()
-            async with conn.cursor() as cursor:
-                await cursor.execute(
-                    query,
-                    tuple(chain((guildid, userid), *blocks))
-                )
-                return [r['stime'] or 0 for r in await cursor.fetchall()]
+            async with cls._connector.connection() as conn:
+                async with conn.cursor() as cursor:
+                    await cursor.execute(
+                        query,
+                        tuple(chain((guildid, userid), *blocks))
+                    )
+                    return [r['stime'] or 0 for r in await cursor.fetchall()]
 
         @classmethod
+        @log_wrap(action='study_time_since')
         async def study_time_since(cls, guildid: int, userid: int, _start) -> int:
-            conn = await cls._connector.get_connection()
-            async with conn.cursor() as cursor:
-                await cursor.execute(
-                    "SELECT study_time_since(%s, %s, %s)",
-                    (guildid, userid, _start)
-                )
-                return (await cursor.fetchone()[0]) or 0
+            async with cls._connector.connection() as conn:
+                async with conn.cursor() as cursor:
+                    await cursor.execute(
+                        "SELECT study_time_since(%s, %s, %s)",
+                        (guildid, userid, _start)
+                    )
+                    return (await cursor.fetchone()[0]) or 0
 
         @classmethod
+        @log_wrap(action='study_times_between')
         async def study_times_since(cls, guildid: int, userid: int, *starts) -> int:
             if len(starts) < 1:
                 raise ValueError('No starting points given!')
@@ -178,15 +184,16 @@ class StatsData(Registry):
                     sql.SQL("({})").format(sql.Placeholder()) for _ in starts
                 )
             )
-            conn = await cls._connector.get_connection()
-            async with conn.cursor() as cursor:
-                await cursor.execute(
-                    query,
-                    tuple(chain((guildid, userid), starts))
-                )
-                return [r['stime'] or 0 for r in await cursor.fetchall()]
+            async with cls._connector.connection() as conn:
+                async with conn.cursor() as cursor:
+                    await cursor.execute(
+                        query,
+                        tuple(chain((guildid, userid), starts))
+                    )
+                    return [r['stime'] or 0 for r in await cursor.fetchall()]
 
         @classmethod
+        @log_wrap(action='leaderboard_since')
         async def leaderboard_since(cls, guildid: int, since):
             """
             Return the voice totals since the given time for each member in the guild.
@@ -226,23 +233,25 @@ class StatsData(Registry):
             )
             second_query_args = (since, guildid, since, since)
 
-            conn = await cls._connector.get_connection()
-            async with conn.transaction():
-                async with conn.cursor() as cursor:
-                    await cursor.execute(second_query, second_query_args)
-                    overshoot_rows = await cursor.fetchall()
-                    overshoot = {row['userid']: int(row['diff']) for row in overshoot_rows}
+            async with cls._connector.connection() as conn:
+                cls._connector.conn = conn
+                async with conn.transaction():
+                    async with conn.cursor() as cursor:
+                        await cursor.execute(second_query, second_query_args)
+                        overshoot_rows = await cursor.fetchall()
+                        overshoot = {row['userid']: int(row['diff']) for row in overshoot_rows}
 
-                async with conn.cursor() as cursor:
-                    await cursor.execute(first_query, first_query_args)
-                    leaderboard = [
-                        (row['userid'], int(row['total_duration'] - overshoot.get(row['userid'], 0)))
-                        for row in await cursor.fetchall()
-                    ]
+                    async with conn.cursor() as cursor:
+                        await cursor.execute(first_query, first_query_args)
+                        leaderboard = [
+                            (row['userid'], int(row['total_duration'] - overshoot.get(row['userid'], 0)))
+                            for row in await cursor.fetchall()
+                        ]
                     leaderboard.sort(key=lambda t: t[1], reverse=True)
             return leaderboard
 
         @classmethod
+        @log_wrap('leaderboard_all')
         async def leaderboard_all(cls, guildid: int):
             """
             Return the all-time voice totals for the given guild.
@@ -257,13 +266,13 @@ class StatsData(Registry):
                 """
             )
 
-            conn = await cls._connector.get_connection()
-            async with conn.cursor() as cursor:
-                await cursor.execute(query, (guildid, ))
-                leaderboard = [
-                    (row['userid'], int(row['total_duration']))
-                    for row in await cursor.fetchall()
-                ]
+            async with cls._connector.connection() as conn:
+                async with conn.cursor() as cursor:
+                    await cursor.execute(query, (guildid, ))
+                    leaderboard = [
+                        (row['userid'], int(row['total_duration']))
+                        for row in await cursor.fetchall()
+                    ]
             return leaderboard
 
     class MemberExp(RowModel):
@@ -296,6 +305,7 @@ class StatsData(Registry):
         transactionid = Integer()
 
         @classmethod
+        @log_wrap(action='xp_since')
         async def xp_since(cls, guildid: int, userid: int, *starts):
             query = sql.SQL(
                 """
@@ -320,15 +330,16 @@ class StatsData(Registry):
                     sql.Placeholder() for _ in starts
                 )
             )
-            conn = await cls._connector.get_connection()
-            async with conn.cursor() as cursor:
-                await cursor.execute(
-                    query,
-                    tuple(chain((guildid, userid), starts))
-                )
-                return [r['exp'] or 0 for r in await cursor.fetchall()]
+            async with cls._connector.connection() as conn:
+                async with conn.cursor() as cursor:
+                    await cursor.execute(
+                        query,
+                        tuple(chain((guildid, userid), starts))
+                    )
+                    return [r['exp'] or 0 for r in await cursor.fetchall()]
 
         @classmethod
+        @log_wrap(action='xp_between')
         async def xp_between(cls, guildid: int, userid: int, *points):
             blocks = zip(points, points[1:])
             query = sql.SQL(
@@ -355,15 +366,16 @@ class StatsData(Registry):
                     sql.SQL("({}, {})").format(sql.Placeholder(), sql.Placeholder()) for _ in points[1:]
                 )
             )
-            conn = await cls._connector.get_connection()
-            async with conn.cursor() as cursor:
-                await cursor.execute(
-                    query,
-                    tuple(chain((guildid, userid), *blocks))
-                )
-                return [r['period_xp'] or 0 for r in await cursor.fetchall()]
+            async with cls._connector.connection() as conn:
+                async with conn.cursor() as cursor:
+                    await cursor.execute(
+                        query,
+                        tuple(chain((guildid, userid), *blocks))
+                    )
+                    return [r['period_xp'] or 0 for r in await cursor.fetchall()]
 
         @classmethod
+        @log_wrap(action='leaderboard_since')
         async def leaderboard_since(cls, guildid: int, since):
             """
             Return the XP totals for the given guild since the given time.
@@ -378,16 +390,17 @@ class StatsData(Registry):
                 """
             )
 
-            conn = await cls._connector.get_connection()
-            async with conn.cursor() as cursor:
-                await cursor.execute(query, (guildid, since))
-                leaderboard = [
-                    (row['userid'], int(row['total_xp']))
-                    for row in await cursor.fetchall()
-                ]
+            async with cls._connector.connection() as conn:
+                async with conn.cursor() as cursor:
+                    await cursor.execute(query, (guildid, since))
+                    leaderboard = [
+                        (row['userid'], int(row['total_xp']))
+                        for row in await cursor.fetchall()
+                    ]
             return leaderboard
 
         @classmethod
+        @log_wrap(action='leaderboard_all')
         async def leaderboard_all(cls, guildid: int):
             """
             Return the all-time XP totals for the given guild.
@@ -402,13 +415,13 @@ class StatsData(Registry):
                 """
             )
 
-            conn = await cls._connector.get_connection()
-            async with conn.cursor() as cursor:
-                await cursor.execute(query, (guildid, ))
-                leaderboard = [
-                    (row['userid'], int(row['total_xp']))
-                    for row in await cursor.fetchall()
-                ]
+            async with cls._connector.connection() as conn:
+                async with conn.cursor() as cursor:
+                    await cursor.execute(query, (guildid, ))
+                    leaderboard = [
+                        (row['userid'], int(row['total_xp']))
+                        for row in await cursor.fetchall()
+                    ]
             return leaderboard
 
     class UserExp(RowModel):
@@ -436,6 +449,7 @@ class StatsData(Registry):
         exp_type: Column[ExpType] = Column()
 
         @classmethod
+        @log_wrap(action='user_xp_since')
         async def xp_since(cls, userid: int, *starts):
             query = sql.SQL(
                 """
@@ -459,15 +473,16 @@ class StatsData(Registry):
                     sql.Placeholder() for _ in starts
                 )
             )
-            conn = await cls._connector.get_connection()
-            async with conn.cursor() as cursor:
-                await cursor.execute(
-                    query,
-                    tuple(chain((userid,), starts))
-                )
-                return [r['exp'] or 0 for r in await cursor.fetchall()]
+            async with cls._connector.connection() as conn:
+                async with conn.cursor() as cursor:
+                    await cursor.execute(
+                        query,
+                        tuple(chain((userid,), starts))
+                    )
+                    return [r['exp'] or 0 for r in await cursor.fetchall()]
 
         @classmethod
+        @log_wrap(action='user_xp_since')
         async def xp_between(cls, userid: int, *points):
             blocks = zip(points, points[1:])
             query = sql.SQL(
@@ -493,13 +508,13 @@ class StatsData(Registry):
                     sql.SQL("({}, {})").format(sql.Placeholder(), sql.Placeholder()) for _ in points[1:]
                 )
             )
-            conn = await cls._connector.get_connection()
-            async with conn.cursor() as cursor:
-                await cursor.execute(
-                    query,
-                    tuple(chain((userid,), *blocks))
-                )
-                return [r['period_xp'] or 0 for r in await cursor.fetchall()]
+            async with cls._connector.connection() as conn:
+                async with conn.cursor() as cursor:
+                    await cursor.execute(
+                        query,
+                        tuple(chain((userid,), *blocks))
+                    )
+                    return [r['period_xp'] or 0 for r in await cursor.fetchall()]
 
     class ProfileTag(RowModel):
         """
@@ -531,15 +546,17 @@ class StatsData(Registry):
             return [tag.tag for tag in tags]
 
         @classmethod
+        @log_wrap(action='set_profile_tags')
         async def set_tags(self, guildid: Optional[int], userid: int, tags: Iterable[str]):
-            conn = await self._connector.get_connection()
-            async with conn.transaction():
-                await self.table.delete_where(guildid=guildid, userid=userid)
-                if tags:
-                    await self.table.insert_many(
-                        ('guildid', 'userid', 'tag'),
-                        *((guildid, userid, tag) for tag in tags)
-                    )
+            async with self._connector.connection() as conn:
+                self._connector.conn = conn
+                async with conn.transaction():
+                    await self.table.delete_where(guildid=guildid, userid=userid)
+                    if tags:
+                        await self.table.insert_many(
+                            ('guildid', 'userid', 'tag'),
+                            *((guildid, userid, tag) for tag in tags)
+                        )
 
     class WeeklyGoals(RowModel):
         """

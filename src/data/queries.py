@@ -101,12 +101,12 @@ class Query(Generic[QueryResult]):
                 if self.connector is None:
                     raise ValueError("Cannot execute query without cursor, connection, or connector.")
                 else:
-                    conn = await self.connector.get_connection()
+                    async with self.connector.connection() as conn:
+                        async with conn.cursor() as cursor:
+                            data = await self._execute(cursor)
             else:
-                conn = self.conn
-
-            async with conn.cursor() as cursor:
-                data = await self._execute(cursor)
+                async with self.conn.cursor() as cursor:
+                    data = await self._execute(cursor)
         else:
             data = await self._execute(cursor)
         return data

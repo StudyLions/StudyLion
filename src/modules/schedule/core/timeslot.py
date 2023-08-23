@@ -356,77 +356,76 @@ class TimeSlot:
         Does not modify session room channels (responsibility of the next open).
         """
         try:
-            conn = await self.bot.db.get_connection()
-            async with conn.transaction():
-                # Calculate rewards
-                rewards = []
-                attendance = []
-                did_not_show = []
-                for session in sessions:
-                    bonus = session.bonus_reward * session.all_attended
-                    reward = session.attended_reward + bonus
-                    required = session.min_attendence
-                    for member in session.members.values():
-                        guildid = member.guildid
-                        userid = member.userid
-                        attended = (member.total_clock >= required)
-                        if attended:
-                            rewards.append(
-                                (TransactionType.SCHEDULE_REWARD,
-                                    guildid, self.bot.user.id,
-                                    0, userid,
-                                    reward, 0,
-                                    None)
-                            )
-                        else:
-                            did_not_show.append((guildid, userid))
-
-                        attendance.append(
-                            (self.slotid, guildid, userid, attended, member.total_clock)
+            # TODO: Transaction?
+            # Calculate rewards
+            rewards = []
+            attendance = []
+            did_not_show = []
+            for session in sessions:
+                bonus = session.bonus_reward * session.all_attended
+                reward = session.attended_reward + bonus
+                required = session.min_attendence
+                for member in session.members.values():
+                    guildid = member.guildid
+                    userid = member.userid
+                    attended = (member.total_clock >= required)
+                    if attended:
+                        rewards.append(
+                            (TransactionType.SCHEDULE_REWARD,
+                                guildid, self.bot.user.id,
+                                0, userid,
+                                reward, 0,
+                                None)
                         )
+                    else:
+                        did_not_show.append((guildid, userid))
 
-                # Perform economy transactions
-                economy: Economy = self.bot.get_cog('Economy')
-                transactions = await economy.data.Transaction.execute_transactions(*rewards)
-                reward_ids = {
-                    (t.guildid, t.to_account): t.transactionid
-                    for t in transactions
-                }
-
-                # Update lobby messages
-                message_tasks = [
-                    asyncio.create_task(session.update_status(save=False))
-                    for session in sessions
-                    if session.lobby_channel is not None
-                ]
-                await asyncio.gather(*message_tasks)
-
-                # Save attendance
-                if attendance:
-                    att_table = TemporaryTable(
-                        '_sid', '_gid', '_uid', '_att', '_clock', '_reward',
-                        types=('INTEGER', 'BIGINT', 'BIGINT', 'BOOLEAN', 'INTEGER', 'INTEGER')
+                    attendance.append(
+                        (self.slotid, guildid, userid, attended, member.total_clock)
                     )
-                    att_table.values = [
-                        (sid, gid, uid, att, clock, reward_ids.get((gid, uid), None))
-                        for sid, gid, uid, att, clock in attendance
-                    ]
-                    await self.data.ScheduleSessionMember.table.update_where(
-                        slotid=att_table['_sid'],
-                        guildid=att_table['_gid'],
-                        userid=att_table['_uid'],
-                    ).set(
-                        attended=att_table['_att'],
-                        clock=att_table['_clock'],
-                        reward_transactionid=att_table['_reward']
-                    ).from_expr(att_table)
 
-                # Mark guild sessions as closed
-                if sessions:
-                    await self.data.ScheduleSession.table.update_where(
-                        slotid=self.slotid,
-                        guildid=list(session.guildid for session in sessions)
-                    ).set(closed_at=utc_now())
+            # Perform economy transactions
+            economy: Economy = self.bot.get_cog('Economy')
+            transactions = await economy.data.Transaction.execute_transactions(*rewards)
+            reward_ids = {
+                (t.guildid, t.to_account): t.transactionid
+                for t in transactions
+            }
+
+            # Update lobby messages
+            message_tasks = [
+                asyncio.create_task(session.update_status(save=False))
+                for session in sessions
+                if session.lobby_channel is not None
+            ]
+            await asyncio.gather(*message_tasks)
+
+            # Save attendance
+            if attendance:
+                att_table = TemporaryTable(
+                    '_sid', '_gid', '_uid', '_att', '_clock', '_reward',
+                    types=('INTEGER', 'BIGINT', 'BIGINT', 'BOOLEAN', 'INTEGER', 'INTEGER')
+                )
+                att_table.values = [
+                    (sid, gid, uid, att, clock, reward_ids.get((gid, uid), None))
+                    for sid, gid, uid, att, clock in attendance
+                ]
+                await self.data.ScheduleSessionMember.table.update_where(
+                    slotid=att_table['_sid'],
+                    guildid=att_table['_gid'],
+                    userid=att_table['_uid'],
+                ).set(
+                    attended=att_table['_att'],
+                    clock=att_table['_clock'],
+                    reward_transactionid=att_table['_reward']
+                ).from_expr(att_table)
+
+            # Mark guild sessions as closed
+            if sessions:
+                await self.data.ScheduleSession.table.update_where(
+                    slotid=self.slotid,
+                    guildid=list(session.guildid for session in sessions)
+                ).set(closed_at=utc_now())
 
             if consequences and did_not_show:
                 # Trigger blacklist and cancel member bookings as needed
@@ -532,36 +531,35 @@ class TimeSlot:
         This involves refunding the booking transactions, deleting the booking rows,
         and updating any messages that may have been posted.
         """
-        conn = await self.bot.db.get_connection()
-        async with conn.transaction():
-            # Collect booking rows
-            bookings = [member.data for session in sessions for member in session.members.values()]
+        # TODO: Transaction
+        # Collect booking rows
+        bookings = [member.data for session in sessions for member in session.members.values()]
 
-            if bookings:
-                # Refund booking transactions
-                economy: Economy = self.bot.get_cog('Economy')
-                maybe_tids = (r.book_transactionid for r in bookings)
-                tids = [tid for tid in maybe_tids if tid is not None]
-                await economy.data.Transaction.refund_transactions(*tids)
+        if bookings:
+            # Refund booking transactions
+            economy: Economy = self.bot.get_cog('Economy')
+            maybe_tids = (r.book_transactionid for r in bookings)
+            tids = [tid for tid in maybe_tids if tid is not None]
+            await economy.data.Transaction.refund_transactions(*tids)
 
-                # Delete booking rows
-                await self.data.ScheduleSessionMember.table.delete_where(
-                    MEMBERS(*((r.guildid, r.userid) for r in bookings)),
-                    slotid=self.slotid,
-                )
-
-            # Trigger message update for existent messages
-            lobby_tasks = [
-                asyncio.create_task(session.update_status(save=False, resend=False))
-                for session in sessions
-            ]
-            await asyncio.gather(*lobby_tasks)
-
-            # Mark sessions as closed
-            await self.data.ScheduleSession.table.update_where(
+            # Delete booking rows
+            await self.data.ScheduleSessionMember.table.delete_where(
+                MEMBERS(*((r.guildid, r.userid) for r in bookings)),
                 slotid=self.slotid,
-                guildid=[session.guildid for session in sessions]
-            ).set(
-                closed_at=utc_now()
             )
-            # TODO: Logging
+
+        # Trigger message update for existent messages
+        lobby_tasks = [
+            asyncio.create_task(session.update_status(save=False, resend=False))
+            for session in sessions
+        ]
+        await asyncio.gather(*lobby_tasks)
+
+        # Mark sessions as closed
+        await self.data.ScheduleSession.table.update_where(
+            slotid=self.slotid,
+            guildid=[session.guildid for session in sessions]
+        ).set(
+            closed_at=utc_now()
+        )
+        # TODO: Logging

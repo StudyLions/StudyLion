@@ -473,14 +473,14 @@ class WeeklyMonthlyUI(StatsUI):
             # Update the tasklist
             if len(new_tasks) != len(tasks) or not all(t == new_t for (t, new_t) in zip(tasks, new_tasks)):
                 modified = True
-                conn = await self.bot.db.get_connection()
-                async with conn.transaction():
-                    await tasks_model.table.delete_where(**key)
-                    if new_tasks:
-                        await tasks_model.table.insert_many(
-                            (*key.keys(), 'completed', 'content'),
-                            *((*key.values(), *new_task) for new_task in new_tasks)
-                        )
+                async with self._connector.connection() as conn:
+                    async with conn.transaction():
+                        await tasks_model.table.delete_where(**key).with_connection(conn)
+                        if new_tasks:
+                            await tasks_model.table.insert_many(
+                                (*key.keys(), 'completed', 'content'),
+                                *((*key.values(), *new_task) for new_task in new_tasks)
+                            ).with_connection(conn)
 
             if modified:
                 # If either goal type was modified, clear the rendered cache and refresh

@@ -259,17 +259,6 @@ class RoomCog(LionCog):
                 lguild,
                 [member.id for member in members]
             )
-            self._start(room)
-
-            # Send tips message
-            # TODO: Actual tips.
-            await channel.send(
-                    "{mention} welcome to your private room! You may use the menu below to configure it.".format(mention=owner.mention)
-            )
-
-            # Send config UI
-            ui = RoomUI(self.bot, room, callerid=owner.id, timeout=None)
-            await ui.send(channel)
         except Exception:
             try:
                 await channel.delete(reason="Failed to created private room")
@@ -454,71 +443,9 @@ class RoomCog(LionCog):
             return
 
         # Positive response. Start a transaction.
-        conn = await self.bot.db.get_connection()
-        async with conn.transaction():
-            # Check member balance is sufficient
-            await ctx.alion.data.refresh()
-            member_balance = ctx.alion.data.coins
-            if member_balance < required:
-                await ctx.reply(
-                    embed=error_embed(
-                        t(_np(
-                            'cmd:room_rent|error:insufficient_funds',
-                            "Renting a private room for `one` day costs {coin}**{required}**, "
-                            "but you only have {coin}**{balance}**!",
-                            "Renting a private room for `{days}` days costs {coin}**{required}**, "
-                            "but you only have {coin}**{balance}**!",
-                            days
-                        )).format(
-                            coin=self.bot.config.emojis.coin,
-                            balance=member_balance,
-                            required=required,
-                            days=days
-                        ),
-                        ephemeral=True
-                    )
-                )
-                return
+        room = await self._do_create_room(ctx, required, days, rent, name, provided)
 
-            # Deduct balance
-            # TODO: Economy transaction instead of manual deduction
-            await ctx.alion.data.update(coins=CoreData.Member.coins - required)
-
-            # Create room with given starting balance and other parameters
-            try:
-                room = await self.create_private_room(
-                    ctx.guild,
-                    ctx.author,
-                    required - rent,
-                    name or ctx.author.display_name,
-                    members=provided
-                )
-            except discord.Forbidden:
-                await ctx.reply(
-                    embed=error_embed(
-                        t(_p(
-                            'cmd:room_rent|error:my_permissions',
-                            "Could not create your private room! You were not charged.\n"
-                            "I have insufficient permissions to create a private room channel."
-                        )),
-                    )
-                )
-                await ctx.alion.data.update(coins=CoreData.Member.coins + required)
-                return
-            except discord.HTTPException as e:
-                await ctx.reply(
-                    embed=error_embed(
-                        t(_p(
-                            'cmd:room_rent|error:unknown',
-                            "Could not create your private room! You were not charged.\n"
-                            "An unknown error occurred while creating your private room.\n"
-                            "`{error}`"
-                        )).format(error=e.text),
-                    )
-                )
-                await ctx.alion.data.update(coins=CoreData.Member.coins + required)
-                return
-
+        if room:
             # Ack with confirmation message pointing to the room
             msg = t(_p(
                 'cmd:room_rent|success',
@@ -531,6 +458,90 @@ class RoomCog(LionCog):
                     description=msg
                 )
             )
+            self._start(room)
+
+            # Send tips message
+            # TODO: Actual tips.
+            await room.channel.send(
+                    "{mention} welcome to your private room! You may use the menu below to configure it.".format(
+                    mention=ctx.author.mention
+                )
+            )
+
+            # Send config UI
+            ui = RoomUI(self.bot, room, callerid=ctx.author.id, timeout=None)
+            await ui.send(room.channel)
+
+    @log_wrap(action='create_room')
+    async def _do_create_room(self, ctx, required, days, rent, name, provided) -> Room:
+        t = self.bot.translator.t
+        # TODO: Rollback the channel create if this fails
+        async with self.bot.db.connection() as conn:
+            self.bot.db.conn = conn
+            # Note that the room creation will go into the UI as well.
+            async with conn.transaction():
+                # Check member balance is sufficient
+                await ctx.alion.data.refresh()
+                member_balance = ctx.alion.data.coins
+                if member_balance < required:
+                    await ctx.reply(
+                        embed=error_embed(
+                            t(_np(
+                                'cmd:room_rent|error:insufficient_funds',
+                                "Renting a private room for `one` day costs {coin}**{required}**, "
+                                "but you only have {coin}**{balance}**!",
+                                "Renting a private room for `{days}` days costs {coin}**{required}**, "
+                                "but you only have {coin}**{balance}**!",
+                                days
+                            )).format(
+                                coin=self.bot.config.emojis.coin,
+                                balance=member_balance,
+                                required=required,
+                                days=days
+                            ),
+                            ephemeral=True
+                        )
+                    )
+                    return
+
+                # Deduct balance
+                # TODO: Economy transaction instead of manual deduction
+                await ctx.alion.data.update(coins=CoreData.Member.coins - required)
+
+                # Create room with given starting balance and other parameters
+                try:
+                    return await self.create_private_room(
+                        ctx.guild,
+                        ctx.author,
+                        required - rent,
+                        name or ctx.author.display_name,
+                        members=provided
+                    )
+                except discord.Forbidden:
+                    await ctx.reply(
+                        embed=error_embed(
+                            t(_p(
+                                'cmd:room_rent|error:my_permissions',
+                                "Could not create your private room! You were not charged.\n"
+                                "I have insufficient permissions to create a private room channel."
+                            )),
+                        )
+                    )
+                    await ctx.alion.data.update(coins=CoreData.Member.coins + required)
+                    return
+                except discord.HTTPException as e:
+                    await ctx.reply(
+                        embed=error_embed(
+                            t(_p(
+                                'cmd:room_rent|error:unknown',
+                                "Could not create your private room! You were not charged.\n"
+                                "An unknown error occurred while creating your private room.\n"
+                                "`{error}`"
+                            )).format(error=e.text),
+                        )
+                    )
+                    await ctx.alion.data.update(coins=CoreData.Member.coins + required)
+                    return
 
     @room_group.command(
         name=_p('cmd:room_status', "status"),
@@ -864,43 +875,41 @@ class RoomCog(LionCog):
             return
 
         # Start Transaction
-        conn = await self.bot.db.get_connection()
-        async with conn.transaction():
-            await ctx.alion.data.refresh()
-            member_balance = ctx.alion.data.coins
-            if member_balance < coins:
-                await ctx.reply(
-                    embed=error_embed(t(_p(
-                        'cmd:room_deposit|error:insufficient_funds',
-                        "You cannot deposit {coin}**{amount}**! You only have {coin}**{balance}**."
-                    )).format(
-                        coin=self.bot.config.emojis.coin,
-                        amount=coins,
-                        balance=member_balance
-                    )),
-                    ephemeral=True
-                )
-                return
+        # TODO: Economy transaction
+        await ctx.alion.data.refresh()
+        member_balance = ctx.alion.data.coins
+        if member_balance < coins:
+            await ctx.reply(
+                embed=error_embed(t(_p(
+                    'cmd:room_deposit|error:insufficient_funds',
+                    "You cannot deposit {coin}**{amount}**! You only have {coin}**{balance}**."
+                )).format(
+                    coin=self.bot.config.emojis.coin,
+                    amount=coins,
+                    balance=member_balance
+                )),
+                ephemeral=True
+            )
+            return
 
-            # Deduct balance
-            # TODO: Economy transaction
-            await ctx.alion.data.update(coins=CoreData.Member.coins - coins)
-            await room.data.update(coin_balance=RoomData.Room.coin_balance + coins)
+        # Deduct balance
+        await ctx.alion.data.update(coins=CoreData.Member.coins - coins)
+        await room.data.update(coin_balance=RoomData.Room.coin_balance + coins)
 
-            # Post deposit message
-            await room.notify_deposit(ctx.author, coins)
+        # Post deposit message
+        await room.notify_deposit(ctx.author, coins)
 
-            # Ack the deposit
-            if ctx.channel.id != room.data.channelid:
-                ack_msg = t(_p(
-                    'cmd:room_depost|success',
-                    "Success! You have contributed {coin}**{amount}** to the private room bank."
-                )).format(coin=self.bot.config.emojis.coin, amount=coins)
-                await ctx.reply(
-                    embed=discord.Embed(colour=discord.Colour.brand_green(), description=ack_msg)
-                )
-            else:
-                await ctx.interaction.delete_original_response()
+        # Ack the deposit
+        if ctx.channel.id != room.data.channelid:
+            ack_msg = t(_p(
+                'cmd:room_depost|success',
+                "Success! You have contributed {coin}**{amount}** to the private room bank."
+            )).format(coin=self.bot.config.emojis.coin, amount=coins)
+            await ctx.reply(
+                embed=discord.Embed(colour=discord.Colour.brand_green(), description=ack_msg)
+            )
+        else:
+            await ctx.interaction.delete_original_response()
 
     # ----- Guild Configuration -----
     @LionCog.placeholder_group

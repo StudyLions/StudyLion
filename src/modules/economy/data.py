@@ -1,6 +1,7 @@
 from enum import Enum
 
 from psycopg import sql
+from meta.logger import log_wrap
 from data import Registry, RowModel, RegisterEnum, JOINTYPE, RawExpr
 from data.columns import Integer, Bool, Column, Timestamp
 from core.data import CoreData
@@ -101,6 +102,7 @@ class EconomyData(Registry, name='economy'):
         created_at = Timestamp()
 
         @classmethod
+        @log_wrap(action='execute_transaction')
         async def execute_transaction(
             cls,
             transaction_type: TransactionType,
@@ -108,25 +110,27 @@ class EconomyData(Registry, name='economy'):
             from_account: int, to_account: int, amount: int, bonus: int = 0,
             refunds: int = None
         ):
-            conn = await cls._connector.get_connection()
-            async with conn.transaction():
-                transaction = await cls.create(
-                    transactiontype=transaction_type,
-                    guildid=guildid, actorid=actorid, amount=amount, bonus=bonus,
-                    from_account=from_account, to_account=to_account,
-                    refunds=refunds
-                )
-                if from_account is not None:
-                    await CoreData.Member.table.update_where(
-                        guildid=guildid, userid=from_account
-                    ).set(coins=SAFECOINS(CoreData.Member.coins - (amount + bonus)))
-                if to_account is not None:
-                    await CoreData.Member.table.update_where(
-                        guildid=guildid, userid=to_account
-                    ).set(coins=SAFECOINS(CoreData.Member.coins + (amount + bonus)))
-                return transaction
+            async with cls._connector.connection() as conn:
+                cls._connector.conn = conn
+                async with conn.transaction():
+                    transaction = await cls.create(
+                        transactiontype=transaction_type,
+                        guildid=guildid, actorid=actorid, amount=amount, bonus=bonus,
+                        from_account=from_account, to_account=to_account,
+                        refunds=refunds
+                    )
+                    if from_account is not None:
+                        await CoreData.Member.table.update_where(
+                            guildid=guildid, userid=from_account
+                        ).set(coins=SAFECOINS(CoreData.Member.coins - (amount + bonus)))
+                    if to_account is not None:
+                        await CoreData.Member.table.update_where(
+                            guildid=guildid, userid=to_account
+                        ).set(coins=SAFECOINS(CoreData.Member.coins + (amount + bonus)))
+                    return transaction
 
         @classmethod
+        @log_wrap(action='execute_transactions')
         async def execute_transactions(cls, *transactions):
             """
             Execute multiple transactions in one data transaction.
@@ -142,65 +146,68 @@ class EconomyData(Registry, name='economy'):
             if not transactions:
                 return []
 
-            conn = await cls._connector.get_connection()
-            async with conn.transaction():
-                # Create the transactions
-                rows = await cls.table.insert_many(
-                    (
-                        'transactiontype',
-                        'guildid', 'actorid',
-                        'from_account', 'to_account',
-                        'amount', 'bonus',
-                        'refunds'
-                    ),
-                    *transactions
-                ).with_adapter(cls._make_rows)
+            async with cls._connector.connection() as conn:
+                cls._connector.conn = conn
+                async with conn.transaction():
+                    # Create the transactions
+                    rows = await cls.table.insert_many(
+                        (
+                            'transactiontype',
+                            'guildid', 'actorid',
+                            'from_account', 'to_account',
+                            'amount', 'bonus',
+                            'refunds'
+                        ),
+                        *transactions
+                    ).with_adapter(cls._make_rows)
 
-                # Update the members
-                transtable = TemporaryTable(
-                    '_guildid', '_userid', '_amount',
-                    types=('BIGINT', 'BIGINT', 'INTEGER')
-                )
-                values = transtable.values
-                for transaction in transactions:
-                    _, guildid, _, from_acc, to_acc, amount, bonus, _ = transaction
-                    coins = amount + bonus
-                    if coins:
-                        if from_acc:
-                            values.append((guildid, from_acc, -1 * coins))
-                        if to_acc:
-                            values.append((guildid, to_acc, coins))
-                if values:
-                    Member = CoreData.Member
-                    await Member.table.update_where(
-                        guildid=transtable['_guildid'], userid=transtable['_userid']
-                    ).set(
-                        coins=SAFECOINS(Member.coins + transtable['_amount'])
-                    ).from_expr(transtable)
+                    # Update the members
+                    transtable = TemporaryTable(
+                        '_guildid', '_userid', '_amount',
+                        types=('BIGINT', 'BIGINT', 'INTEGER')
+                    )
+                    values = transtable.values
+                    for transaction in transactions:
+                        _, guildid, _, from_acc, to_acc, amount, bonus, _ = transaction
+                        coins = amount + bonus
+                        if coins:
+                            if from_acc:
+                                values.append((guildid, from_acc, -1 * coins))
+                            if to_acc:
+                                values.append((guildid, to_acc, coins))
+                    if values:
+                        Member = CoreData.Member
+                        await Member.table.update_where(
+                            guildid=transtable['_guildid'], userid=transtable['_userid']
+                        ).set(
+                            coins=SAFECOINS(Member.coins + transtable['_amount'])
+                        ).from_expr(transtable)
             return rows
 
         @classmethod
+        @log_wrap(action='refund_transactions')
         async def refund_transactions(cls, *transactionids, actorid=0):
             if not transactionids:
                 return []
-            conn = await cls._connector.get_connection()
-            async with conn.transaction():
-                # First fetch the transaction rows to refund
-                data = await cls.table.select_where(transactionid=transactionids)
-                if data:
-                    # Build the transaction refund data
-                    records = [
-                        (
-                            TransactionType.REFUND,
-                            tr['guildid'], actorid,
-                            tr['to_account'], tr['from_account'],
-                            tr['amount'] + tr['bonus'], 0,
-                            tr['transactionid']
-                        )
-                        for tr in data
-                    ]
-                    # Execute refund transactions
-                    return await cls.execute_transactions(*records)
+            async with cls._connector.connection() as conn:
+                cls._connector.conn = conn
+                async with conn.transaction():
+                    # First fetch the transaction rows to refund
+                    data = await cls.table.select_where(transactionid=transactionids)
+                    if data:
+                        # Build the transaction refund data
+                        records = [
+                            (
+                                TransactionType.REFUND,
+                                tr['guildid'], actorid,
+                                tr['to_account'], tr['from_account'],
+                                tr['amount'] + tr['bonus'], 0,
+                                tr['transactionid']
+                            )
+                            for tr in data
+                        ]
+                        # Execute refund transactions
+                        return await cls.execute_transactions(*records)
 
     class ShopTransaction(RowModel):
         """
@@ -217,19 +224,21 @@ class EconomyData(Registry, name='economy'):
         itemid = Integer()
 
         @classmethod
+        @log_wrap(action='purchase_transaction')
         async def purchase_transaction(
             cls,
             guildid: int, actorid: int,
             userid: int, itemid: int, amount: int
         ):
-            conn = await cls._connector.get_connection()
-            async with conn.transaction():
-                row = await EconomyData.Transaction.execute_transaction(
-                    TransactionType.SHOP_PURCHASE,
-                    guildid=guildid, actorid=actorid, from_account=userid, to_account=None,
-                    amount=amount
-                )
-                return await cls.create(transactionid=row.transactionid, itemid=itemid)
+            async with cls._connector.connection() as conn:
+                cls._connector.conn = conn
+                async with conn.transaction():
+                    row = await EconomyData.Transaction.execute_transaction(
+                        TransactionType.SHOP_PURCHASE,
+                        guildid=guildid, actorid=actorid, from_account=userid, to_account=None,
+                        amount=amount
+                    )
+                    return await cls.create(transactionid=row.transactionid, itemid=itemid)
 
     class TaskTransaction(RowModel):
         """
@@ -263,19 +272,21 @@ class EconomyData(Registry, name='economy'):
             return result[0]['recent'] or 0
 
         @classmethod
+        @log_wrap(action='reward_completed_tasks')
         async def reward_completed(cls, userid, guildid, count, amount):
             """
             Reward the specified member `amount` coins for completing `count` tasks.
             """
             # TODO: Bonus logic, perhaps apply_bonus(amount), or put this method in the economy cog?
-            conn = await cls._connector.get_connection()
-            async with conn.transaction():
-                row = await EconomyData.Transaction.execute_transaction(
-                    TransactionType.TASKS,
-                    guildid=guildid, actorid=userid, from_account=None, to_account=userid,
-                    amount=amount
-                )
-                return await cls.create(transactionid=row.transactionid, count=count)
+            async with cls._connector.connection() as conn:
+                cls._connector.conn = conn
+                async with conn.transaction():
+                    row = await EconomyData.Transaction.execute_transaction(
+                        TransactionType.TASKS,
+                        guildid=guildid, actorid=userid, from_account=None, to_account=userid,
+                        amount=amount
+                    )
+                    return await cls.create(transactionid=row.transactionid, count=count)
 
     class SessionTransaction(RowModel):
         """

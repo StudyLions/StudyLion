@@ -190,6 +190,8 @@ class ModerationCog(LionCog):
                 update_args[instance._column] = instance.data
                 ack_lines.append(instance.update_message)
 
+            await ctx.lguild.data.update(**update_args)
+
             # Do the ack
             tick = self.bot.config.emojis.tick
             embed = discord.Embed(

@@ -10,6 +10,7 @@ from discord.ui.button import button, Button
 
 from meta import LionCog, LionContext, LionBot
 from meta.errors import SafeCancellation
+from meta.logger import log_wrap
 from utils import ui
 from utils.lib import error_embed
 from constants import MAX_COINS
@@ -145,6 +146,7 @@ class ColourShop(Shop):
             if (owned is None or item.itemid != owned.itemid) and (item.price <= balance)
         ]
 
+    @log_wrap(action='purchase')
     async def purchase(self, itemid) -> ColourRoleItem:
         """
         Atomically handle a purchase of a ColourRoleItem.
@@ -157,144 +159,145 @@ class ColourShop(Shop):
         If the purchase fails for a known reason, raises SafeCancellation, with the error information.
         """
         t = self.bot.translator.t
-        conn = await self.bot.db.get_connection()
-        async with conn.transaction():
-            # Retrieve the item to purchase from data
-            item = await self.data.ShopItemInfo.table.select_one_where(itemid=itemid)
-            # Ensure the item is purchasable and not deleted
-            if not item['purchasable'] or item['deleted']:
-                raise SafeCancellation(
-                    t(_p(
-                        'shop:colour|purchase|error:not_purchasable',
-                        "This item may not be purchased!"
-                    ))
-                )
-
-            # Refresh the customer
-            await self.customer.refresh()
-
-            # Ensure the guild exists in cache
-            guild = self.bot.get_guild(self.customer.guildid)
-            if guild is None:
-                raise SafeCancellation(
-                    t(_p(
-                        'shop:colour|purchase|error:no_guild',
-                        "Could not retrieve the server from Discord!"
-                    ))
-                )
-
-            # Ensure the customer member actually exists
-            member = await self.customer.lion.fetch_member()
-            if member is None:
-                raise SafeCancellation(
-                    t(_p(
-                        'shop:colour|purchase|error:no_member',
-                        "Could not retrieve the member from Discord."
-                    ))
-                )
-
-            # Ensure the purchased role actually exists
-            role = guild.get_role(item['roleid'])
-            if role is None:
-                raise SafeCancellation(
-                    t(_p(
-                        'shop:colour|purchase|error:no_role',
-                        "This colour role could not be found in the server."
-                    ))
-                )
-
-            # Ensure the customer has enough coins for the item
-            if self.customer.balance < item['price']:
-                raise SafeCancellation(
-                    t(_p(
-                        'shop:colour|purchase|error:low_balance',
-                        "This item costs {coin}{amount}!\nYour balance is {coin}{balance}"
-                    )).format(
-                        coin=self.bot.config.emojis.getemoji('coin'),
-                        amount=item['price'],
-                        balance=self.customer.balance
-                    )
-                )
-
-            owned = self.owned()
-            if owned is not None:
-                # Ensure the customer does not already own the item
-                if owned.itemid == item['itemid']:
+        async with self.bot.db.connection() as conn:
+            self.bot.db.conn = conn
+            async with conn.transaction():
+                # Retrieve the item to purchase from data
+                item = await self.data.ShopItemInfo.table.select_one_where(itemid=itemid)
+                # Ensure the item is purchasable and not deleted
+                if not item['purchasable'] or item['deleted']:
                     raise SafeCancellation(
                         t(_p(
-                            'shop:colour|purchase|error:owned',
-                            "You already own this item!"
+                            'shop:colour|purchase|error:not_purchasable',
+                            "This item may not be purchased!"
                         ))
                     )
 
-            # Charge the customer for the item
-            economy_cog: Economy = self.bot.get_cog('Economy')
-            economy_data = economy_cog.data
-            transaction = await economy_data.ShopTransaction.purchase_transaction(
-                guild.id,
-                member.id,
-                member.id,
-                itemid,
-                item['price']
-            )
+                # Refresh the customer
+                await self.customer.refresh()
 
-            # Add the item to the customer's inventory
-            await self.data.MemberInventory.create(
-                guildid=guild.id,
-                userid=member.id,
-                transactionid=transaction.transactionid,
-                itemid=itemid
-            )
+                # Ensure the guild exists in cache
+                guild = self.bot.get_guild(self.customer.guildid)
+                if guild is None:
+                    raise SafeCancellation(
+                        t(_p(
+                            'shop:colour|purchase|error:no_guild',
+                            "Could not retrieve the server from Discord!"
+                        ))
+                    )
 
-            # Give the customer the role (do rollback if this fails)
-            try:
-                await member.add_roles(
-                    role,
-                    atomic=True,
-                    reason="Purchased colour role"
-                )
-            except discord.NotFound:
-                raise SafeCancellation(
-                    t(_p(
-                        'shop:colour|purchase|error:failed_no_role',
-                        "This colour role no longer exists!"
-                    ))
-                )
-            except discord.Forbidden:
-                raise SafeCancellation(
-                    t(_p(
-                        'shop:colour|purchase|error:failed_permissions',
-                        "I do not have enough permissions to give you this colour role!"
-                    ))
-                )
-            except discord.HTTPException:
-                raise SafeCancellation(
-                    t(_p(
-                        'shop:colour|purchase|error:failed_unknown',
-                        "An unknown error occurred while giving you this colour role!"
-                    ))
-                )
+                # Ensure the customer member actually exists
+                member = await self.customer.lion.fetch_member()
+                if member is None:
+                    raise SafeCancellation(
+                        t(_p(
+                            'shop:colour|purchase|error:no_member',
+                            "Could not retrieve the member from Discord."
+                        ))
+                    )
 
-            # At this point, the purchase has succeeded and the user has obtained the colour role
-            # Now, remove their previous colour role (if applicable)
-            # TODO: We should probably add an on_role_delete event to clear defunct colour roles
-            if owned is not None:
-                owned_role = owned.role
-                if owned_role is not None:
-                    try:
-                        await member.remove_roles(
-                            owned_role,
-                            reason="Removing old colour role.",
-                            atomic=True
+                # Ensure the purchased role actually exists
+                role = guild.get_role(item['roleid'])
+                if role is None:
+                    raise SafeCancellation(
+                        t(_p(
+                            'shop:colour|purchase|error:no_role',
+                            "This colour role could not be found in the server."
+                        ))
+                    )
+
+                # Ensure the customer has enough coins for the item
+                if self.customer.balance < item['price']:
+                    raise SafeCancellation(
+                        t(_p(
+                            'shop:colour|purchase|error:low_balance',
+                            "This item costs {coin}{amount}!\nYour balance is {coin}{balance}"
+                        )).format(
+                            coin=self.bot.config.emojis.getemoji('coin'),
+                            amount=item['price'],
+                            balance=self.customer.balance
                         )
-                    except discord.HTTPException:
-                        # Possibly Forbidden, or the role doesn't actually exist anymore (cache failure)
-                        pass
-                await self.data.MemberInventory.table.delete_where(inventoryid=owned.data.inventoryid)
+                    )
 
-            # Purchase complete, update the shop and customer
-            await self.refresh()
-            return self.owned()
+                owned = self.owned()
+                if owned is not None:
+                    # Ensure the customer does not already own the item
+                    if owned.itemid == item['itemid']:
+                        raise SafeCancellation(
+                            t(_p(
+                                'shop:colour|purchase|error:owned',
+                                "You already own this item!"
+                            ))
+                        )
+
+                # Charge the customer for the item
+                economy_cog: Economy = self.bot.get_cog('Economy')
+                economy_data = economy_cog.data
+                transaction = await economy_data.ShopTransaction.purchase_transaction(
+                    guild.id,
+                    member.id,
+                    member.id,
+                    itemid,
+                    item['price']
+                )
+
+                # Add the item to the customer's inventory
+                await self.data.MemberInventory.create(
+                    guildid=guild.id,
+                    userid=member.id,
+                    transactionid=transaction.transactionid,
+                    itemid=itemid
+                )
+
+                # Give the customer the role (do rollback if this fails)
+                try:
+                    await member.add_roles(
+                        role,
+                        atomic=True,
+                        reason="Purchased colour role"
+                    )
+                except discord.NotFound:
+                    raise SafeCancellation(
+                        t(_p(
+                            'shop:colour|purchase|error:failed_no_role',
+                            "This colour role no longer exists!"
+                        ))
+                    )
+                except discord.Forbidden:
+                    raise SafeCancellation(
+                        t(_p(
+                            'shop:colour|purchase|error:failed_permissions',
+                            "I do not have enough permissions to give you this colour role!"
+                        ))
+                    )
+                except discord.HTTPException:
+                    raise SafeCancellation(
+                        t(_p(
+                            'shop:colour|purchase|error:failed_unknown',
+                            "An unknown error occurred while giving you this colour role!"
+                        ))
+                    )
+
+                # At this point, the purchase has succeeded and the user has obtained the colour role
+                # Now, remove their previous colour role (if applicable)
+                # TODO: We should probably add an on_role_delete event to clear defunct colour roles
+                if owned is not None:
+                    owned_role = owned.role
+                    if owned_role is not None:
+                        try:
+                            await member.remove_roles(
+                                owned_role,
+                                reason="Removing old colour role.",
+                                atomic=True
+                            )
+                        except discord.HTTPException:
+                            # Possibly Forbidden, or the role doesn't actually exist anymore (cache failure)
+                            pass
+                    await self.data.MemberInventory.table.delete_where(inventoryid=owned.data.inventoryid)
+
+                # Purchase complete, update the shop and customer
+                await self.refresh()
+                return self.owned()
 
     async def refresh(self):
         """

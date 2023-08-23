@@ -11,6 +11,7 @@ from discord.ui.button import button, Button, ButtonStyle
 from discord.ui.text_input import TextInput, TextStyle
 
 from meta import conf
+from meta.logger import log_wrap
 from meta.errors import UserInputError
 from utils.lib import MessageArgs, utc_now
 from utils.ui import LeoUI, LeoModal, FastModal, error_handler_for, ModalRetryUI
@@ -143,6 +144,7 @@ class BulkEditor(LeoModal):
         except UserInputError as error:
             await ModalRetryUI(self, error.msg).respond_to(interaction)
 
+    @log_wrap(action="parse editor")
     async def parse_editor(self):
         # First parse each line
         new_lines = self.tasklist_editor.value.splitlines()
@@ -155,27 +157,28 @@ class BulkEditor(LeoModal):
         )
 
         # TODO: Incremental/diff editing
-        conn = await self.bot.db.get_connection()
-        async with conn.transaction():
-            now = utc_now()
+        async with self.bot.db.connection() as conn:
+            self.bot.db.conn = conn
+            async with conn.transaction():
+                now = utc_now()
 
-            if same_layout:
-                # if the layout has not changed, just edit the tasks
-                for taskid, (oldinfo, newinfo) in zip(self.lines.keys(), zip(old_info, taskinfo)):
-                    args = {}
-                    if oldinfo[2] != newinfo[2]:
-                        args['completed_at'] = now if newinfo[2] else None
-                    if oldinfo[3] != newinfo[3]:
-                        args['content'] = newinfo[3]
-                    if args:
-                        await self.tasklist.update_tasks(taskid, **args)
-            else:
-                # Naive implementation clearing entire tasklist
-                # Clear tasklist
-                await self.tasklist.update_tasklist(deleted_at=now)
+                if same_layout:
+                    # if the layout has not changed, just edit the tasks
+                    for taskid, (oldinfo, newinfo) in zip(self.lines.keys(), zip(old_info, taskinfo)):
+                        args = {}
+                        if oldinfo[2] != newinfo[2]:
+                            args['completed_at'] = now if newinfo[2] else None
+                        if oldinfo[3] != newinfo[3]:
+                            args['content'] = newinfo[3]
+                        if args:
+                            await self.tasklist.update_tasks(taskid, **args)
+                else:
+                    # Naive implementation clearing entire tasklist
+                    # Clear tasklist
+                    await self.tasklist.update_tasklist(deleted_at=now)
 
-                # Create tasklist
-                await self.tasklist.write_taskinfo(taskinfo)
+                    # Create tasklist
+                    await self.tasklist.write_taskinfo(taskinfo)
 
 
 class UIMode(Enum):

@@ -5,6 +5,7 @@ from cachetools import TTLCache
 import discord
 
 from meta import conf
+from meta.logger import log_wrap
 from data import Table, Registry, Column, RowModel, RegisterEnum
 from data.models import WeakCache
 from data.columns import Integer, String, Bool, Timestamp
@@ -287,6 +288,7 @@ class CoreData(Registry, name="core"):
         _timestamp = Timestamp()
 
         @classmethod
+        @log_wrap(action="Add Pending Coins")
         async def add_pending(cls, pending: list[tuple[int, int, int]]) -> list['CoreData.Member']:
             """
             Safely add pending coins to a list of members.
@@ -316,39 +318,40 @@ class CoreData(Registry, name="core"):
                 )
             )
             # TODO: Replace with copy syntax/query?
-            conn = await cls.table.connector.get_connection()
-            async with conn.cursor() as cursor:
-                await cursor.execute(
-                    query,
-                    tuple(chain(*pending))
-                )
-                rows = await cursor.fetchall()
-                return cls._make_rows(*rows)
+            async with cls.table.connector.connection() as conn:
+                async with conn.cursor() as cursor:
+                    await cursor.execute(
+                        query,
+                        tuple(chain(*pending))
+                    )
+                    rows = await cursor.fetchall()
+                    return cls._make_rows(*rows)
 
         @classmethod
+        @log_wrap(action='get_member_rank')
         async def get_member_rank(cls, guildid, userid, untracked):
             """
             Get the time and coin ranking for the given member, ignoring the provided untracked members.
             """
-            conn = await cls.table.connector.get_connection()
-            async with conn.cursor() as curs:
-                await curs.execute(
-                    """
-                    SELECT
-                    time_rank, coin_rank
-                    FROM (
-                    SELECT
-                        userid,
-                        row_number() OVER (ORDER BY total_tracked_time DESC, userid ASC) AS time_rank,
-                        row_number() OVER (ORDER BY total_coins DESC, userid ASC) AS coin_rank
-                    FROM members_totals
-                    WHERE
-                        guildid=%s AND userid NOT IN %s
-                    ) AS guild_ranks WHERE userid=%s
-                    """,
-                    (guildid, tuple(untracked), userid)
-                )
-                return (await curs.fetchone()) or (None, None)
+            async with cls.table.connector.connection() as conn:
+                async with conn.cursor() as curs:
+                    await curs.execute(
+                        """
+                        SELECT
+                        time_rank, coin_rank
+                        FROM (
+                        SELECT
+                            userid,
+                            row_number() OVER (ORDER BY total_tracked_time DESC, userid ASC) AS time_rank,
+                            row_number() OVER (ORDER BY total_coins DESC, userid ASC) AS coin_rank
+                        FROM members_totals
+                        WHERE
+                            guildid=%s AND userid NOT IN %s
+                        ) AS guild_ranks WHERE userid=%s
+                        """,
+                        (guildid, tuple(untracked), userid)
+                    )
+                    return (await curs.fetchone()) or (None, None)
 
     class LionHook(RowModel):
         """

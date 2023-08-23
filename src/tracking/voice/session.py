@@ -161,7 +161,6 @@ class VoiceSession:
             self.state.channelid, guildid=self.guildid, deleted=False
         )
 
-        conn = await self.bot.db.get_connection()
         # Insert an ongoing_session with the correct state, set data
         state = self.state
         self.data = await self.registry.VoiceSessionsOngoing.create(

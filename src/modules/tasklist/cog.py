@@ -8,6 +8,7 @@ from discord import app_commands as appcmds
 from discord.app_commands.transformers import AppCommandOptionType as cmdopt
 
 from meta import LionBot, LionCog, LionContext
+from meta.logger import log_wrap
 from meta.errors import UserInputError
 from utils.lib import utc_now, error_embed
 from utils.ui import ChoicedEnum, Transformed, AButton
@@ -141,30 +142,32 @@ class TasklistCog(LionCog):
         self.crossload_group(self.configure_group, configcog.configure_group)
 
     @LionCog.listener('on_tasks_completed')
+    @log_wrap(action="reward tasks completed")
     async def reward_tasks_completed(self, member: discord.Member, *taskids: int):
-        conn = await self.bot.db.get_connection()
-        async with conn.transaction():
-            tasklist = await Tasklist.fetch(self.bot, self.data, member.id)
-            tasks = await tasklist.fetch_tasks(*taskids)
-            unrewarded = [task for task in tasks if not task.rewarded]
-            if unrewarded:
-                reward = (await self.settings.task_reward.get(member.guild.id)).value
-                limit = (await self.settings.task_reward_limit.get(member.guild.id)).value
+        async with self.bot.db.connection() as conn:
+            self.bot.db.conn = conn
+            async with conn.transaction():
+                tasklist = await Tasklist.fetch(self.bot, self.data, member.id)
+                tasks = await tasklist.fetch_tasks(*taskids)
+                unrewarded = [task for task in tasks if not task.rewarded]
+                if unrewarded:
+                    reward = (await self.settings.task_reward.get(member.guild.id)).value
+                    limit = (await self.settings.task_reward_limit.get(member.guild.id)).value
 
-                ecog = self.bot.get_cog('Economy')
-                recent = await ecog.data.TaskTransaction.count_recent_for(member.id, member.guild.id) or 0
-                max_to_reward = limit - recent
-                if max_to_reward > 0:
-                    to_reward = unrewarded[:max_to_reward]
+                    ecog = self.bot.get_cog('Economy')
+                    recent = await ecog.data.TaskTransaction.count_recent_for(member.id, member.guild.id) or 0
+                    max_to_reward = limit - recent
+                    if max_to_reward > 0:
+                        to_reward = unrewarded[:max_to_reward]
 
-                    count = len(to_reward)
-                    amount = count * reward
-                    await ecog.data.TaskTransaction.reward_completed(member.id, member.guild.id, count, amount)
-                    await tasklist.update_tasks(*(task.taskid for task in to_reward), rewarded=True)
-                    logger.debug(
-                        f"Rewarded <uid: {member.id}> in <gid: {member.guild.id}> "
-                        f"'{amount}' coins for completing '{count}' tasks."
-                    )
+                        count = len(to_reward)
+                        amount = count * reward
+                        await ecog.data.TaskTransaction.reward_completed(member.id, member.guild.id, count, amount)
+                        await tasklist.update_tasks(*(task.taskid for task in to_reward), rewarded=True)
+                        logger.debug(
+                            f"Rewarded <uid: {member.id}> in <gid: {member.guild.id}> "
+                            f"'{amount}' coins for completing '{count}' tasks."
+                        )
 
     async def is_tasklist_channel(self, channel) -> bool:
         if not channel.guild:
@@ -477,43 +480,40 @@ class TasklistCog(LionCog):
         # Contents successfully parsed, update the tasklist.
         tasklist = await Tasklist.fetch(self.bot, self.data, ctx.author.id)
 
-        # Lazily using the editor because it has a good parser
         taskinfo = tasklist.parse_tasklist(lines)
 
-        conn = await self.bot.db.get_connection()
-        async with conn.transaction():
-            now = utc_now()
+        now = utc_now()
 
-            # Delete tasklist if required
-            if not append:
-                await tasklist.update_tasklist(deleted_at=now)
+        # Delete tasklist if required
+        if not append:
+            await tasklist.update_tasklist(deleted_at=now)
 
-            # Create tasklist
-            # TODO: Refactor into common method with parse tasklist
-            created = {}
-            target_depth = 0
-            while True:
-                to_insert = {}
-                for i, (parent, truedepth, ticked, content) in enumerate(taskinfo):
-                    if truedepth == target_depth:
-                        to_insert[i] = (
-                            tasklist.userid,
-                            content,
-                            created[parent] if parent is not None else None,
-                            now if ticked else None
-                        )
-                if to_insert:
-                    # Batch insert
-                    tasks = await tasklist.data.Task.table.insert_many(
-                        ('userid', 'content', 'parentid', 'completed_at'),
-                        *to_insert.values()
+        # Create tasklist
+        # TODO: Refactor into common method with parse tasklist
+        created = {}
+        target_depth = 0
+        while True:
+            to_insert = {}
+            for i, (parent, truedepth, ticked, content) in enumerate(taskinfo):
+                if truedepth == target_depth:
+                    to_insert[i] = (
+                        tasklist.userid,
+                        content,
+                        created[parent] if parent is not None else None,
+                        now if ticked else None
                     )
-                    for i, task in zip(to_insert.keys(), tasks):
-                        created[i] = task['taskid']
-                    target_depth += 1
-                else:
-                    # Reached maximum depth
-                    break
+            if to_insert:
+                # Batch insert
+                tasks = await tasklist.data.Task.table.insert_many(
+                    ('userid', 'content', 'parentid', 'completed_at'),
+                    *to_insert.values()
+                )
+                for i, task in zip(to_insert.keys(), tasks):
+                    created[i] = task['taskid']
+                target_depth += 1
+            else:
+                # Reached maximum depth
+                break
 
         # Ack modifications
         embed = discord.Embed(

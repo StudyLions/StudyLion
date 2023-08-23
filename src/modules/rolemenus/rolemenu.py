@@ -483,65 +483,63 @@ class RoleMenu:
                     )).format(role=role.name)
                 )
 
-            conn = await self.bot.db.get_connection()
-            async with conn.transaction():
-                # Remove the role
-                try:
-                    await member.remove_roles(role)
-                except discord.Forbidden:
-                    raise UserInputError(
-                        t(_p(
-                            'rolemenu|deselect|error:perms',
-                            "I don't have enough permissions to remove this role from you!"
-                        ))
-                    )
-                except discord.HTTPException:
-                    raise UserInputError(
-                        t(_p(
-                            'rolemenu|deselect|error:discord',
-                            "An unknown error occurred removing your role! Please try again later."
-                        ))
-                    )
-
-                # Update history
-                now = utc_now()
-                history = await self.cog.data.RoleMenuHistory.table.update_where(
-                    menuid=self.data.menuid,
-                    roleid=role.id,
-                    userid=member.id,
-                    removed_at=None,
-                ).set(removed_at=now)
-                await self.cog.cancel_expiring_tasks(*(row['equipid'] for row in history))
-
-                # Refund if required
-                transactionids = [row['transactionid'] for row in history]
-                if self.config.refunds.value and any(transactionids):
-                    transactionids = [tid for tid in transactionids if tid]
-                    economy: Economy = self.bot.get_cog('Economy')
-                    refunded = await economy.data.Transaction.refund_transactions(*transactionids)
-                    total_refund = sum(row.amount + row.bonus for row in refunded)
-                else:
-                    total_refund = 0
-
-                # Ack the removal
-                embed = discord.Embed(
-                    colour=discord.Colour.brand_green(),
-                    title=t(_p(
-                        'rolemenu|deslect|success|title',
-                        "Role removed"
+            # Remove the role
+            try:
+                await member.remove_roles(role)
+            except discord.Forbidden:
+                raise UserInputError(
+                    t(_p(
+                        'rolemenu|deselect|error:perms',
+                        "I don't have enough permissions to remove this role from you!"
                     ))
                 )
-                if total_refund:
-                    embed.description = t(_p(
-                        'rolemenu|deselect|success:refund|desc',
-                        "You have removed **{role}**, and been refunded {coin} **{amount}**."
-                    )).format(role=role.name, coin=self.bot.config.emojis.coin, amount=total_refund)
-                else:
-                    embed.description = t(_p(
-                        'rolemenu|deselect|success:norefund|desc',
-                        "You have unequipped **{role}**."
-                    )).format(role=role.name)
-                return embed
+            except discord.HTTPException:
+                raise UserInputError(
+                    t(_p(
+                        'rolemenu|deselect|error:discord',
+                        "An unknown error occurred removing your role! Please try again later."
+                    ))
+                )
+
+            # Update history
+            now = utc_now()
+            history = await self.cog.data.RoleMenuHistory.table.update_where(
+                menuid=self.data.menuid,
+                roleid=role.id,
+                userid=member.id,
+                removed_at=None,
+            ).set(removed_at=now)
+            await self.cog.cancel_expiring_tasks(*(row['equipid'] for row in history))
+
+            # Refund if required
+            transactionids = [row['transactionid'] for row in history]
+            if self.config.refunds.value and any(transactionids):
+                transactionids = [tid for tid in transactionids if tid]
+                economy: Economy = self.bot.get_cog('Economy')
+                refunded = await economy.data.Transaction.refund_transactions(*transactionids)
+                total_refund = sum(row.amount + row.bonus for row in refunded)
+            else:
+                total_refund = 0
+
+            # Ack the removal
+            embed = discord.Embed(
+                colour=discord.Colour.brand_green(),
+                title=t(_p(
+                    'rolemenu|deslect|success|title',
+                    "Role removed"
+                ))
+            )
+            if total_refund:
+                embed.description = t(_p(
+                    'rolemenu|deselect|success:refund|desc',
+                    "You have removed **{role}**, and been refunded {coin} **{amount}**."
+                )).format(role=role.name, coin=self.bot.config.emojis.coin, amount=total_refund)
+            else:
+                embed.description = t(_p(
+                    'rolemenu|deselect|success:norefund|desc',
+                    "You have unequipped **{role}**."
+                )).format(role=role.name)
+            return embed
         else:
             # Member does not have the role, selection case.
             required = self.config.required_role.data
@@ -591,57 +589,55 @@ class RoleMenu:
                         )
                     )
 
-            conn = await self.bot.db.get_connection()
-            async with conn.transaction():
-                try:
-                    await member.add_roles(role)
-                except discord.Forbidden:
-                    raise UserInputError(
-                        t(_p(
-                            'rolemenu|select|error:perms',
-                            "I don't have enough permissions to give you this role!"
-                        ))
-                    )
-                except discord.HTTPException:
-                    raise UserInputError(
-                        t(_p(
-                            'rolemenu|select|error:discord',
-                            "An unknown error occurred while assigning your role! "
-                            "Please try again later."
-                        ))
-                    )
-
-                now = utc_now()
-
-                # Create transaction if applicable
-                if price:
-                    economy: Economy = self.bot.get_cog('Economy')
-                    tx = await economy.data.Transaction.execute_transaction(
-                        transaction_type=TransactionType.OTHER,
-                        guildid=guild.id, actorid=member.id,
-                        from_account=member.id, to_account=None,
-                        amount=price
-                    )
-                    tid = tx.transactionid
-                else:
-                    tid = None
-
-                # Calculate expiry
-                duration = mrole.config.duration.value
-                if duration is not None:
-                    expiry = now + dt.timedelta(seconds=duration)
-                else:
-                    expiry = None
-
-                # Add to equip history
-                equip = await self.cog.data.RoleMenuHistory.create(
-                    menuid=self.data.menuid, roleid=role.id,
-                    userid=member.id,
-                    obtained_at=now,
-                    transactionid=tid,
-                    expires_at=expiry
+            try:
+                await member.add_roles(role)
+            except discord.Forbidden:
+                raise UserInputError(
+                    t(_p(
+                        'rolemenu|select|error:perms',
+                        "I don't have enough permissions to give you this role!"
+                    ))
                 )
-                await self.cog.schedule_expiring(equip)
+            except discord.HTTPException:
+                raise UserInputError(
+                    t(_p(
+                        'rolemenu|select|error:discord',
+                        "An unknown error occurred while assigning your role! "
+                        "Please try again later."
+                    ))
+                )
+
+            now = utc_now()
+
+            # Create transaction if applicable
+            if price:
+                economy: Economy = self.bot.get_cog('Economy')
+                tx = await economy.data.Transaction.execute_transaction(
+                    transaction_type=TransactionType.OTHER,
+                    guildid=guild.id, actorid=member.id,
+                    from_account=member.id, to_account=None,
+                    amount=price
+                )
+                tid = tx.transactionid
+            else:
+                tid = None
+
+            # Calculate expiry
+            duration = mrole.config.duration.value
+            if duration is not None:
+                expiry = now + dt.timedelta(seconds=duration)
+            else:
+                expiry = None
+
+            # Add to equip history
+            equip = await self.cog.data.RoleMenuHistory.create(
+                menuid=self.data.menuid, roleid=role.id,
+                userid=member.id,
+                obtained_at=now,
+                transactionid=tid,
+                expires_at=expiry
+            )
+            await self.cog.schedule_expiring(equip)
 
             # Ack the selection
             embed = discord.Embed(

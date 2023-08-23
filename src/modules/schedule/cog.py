@@ -217,23 +217,24 @@ class ScheduleCog(LionCog):
             for bookingid in bookingids:
                 await self._cancel_booking_active(*bookingid)
 
-            conn = await self.bot.db.get_connection()
-            async with conn.transaction():
-                # Now delete from data
-                records = await self.data.ScheduleSessionMember.table.delete_where(
-                    MULTIVALUE_IN(
-                        ('slotid', 'guildid', 'userid'),
-                        *bookingids
+            async with self.bot.db.connection() as conn:
+                self.bot.db.conn = conn
+                async with conn.transaction():
+                    # Now delete from data
+                    records = await self.data.ScheduleSessionMember.table.delete_where(
+                        MULTIVALUE_IN(
+                            ('slotid', 'guildid', 'userid'),
+                            *bookingids
+                        )
                     )
-                )
 
-                # Refund cancelled bookings
-                if refund:
-                    maybe_tids = (record['book_transactionid'] for record in records)
-                    tids = [tid for tid in maybe_tids if tid is not None]
-                    if tids:
-                        economy = self.bot.get_cog('Economy')
-                        await economy.data.Transaction.refund_transactions(*tids)
+                    # Refund cancelled bookings
+                    if refund:
+                        maybe_tids = (record['book_transactionid'] for record in records)
+                        tids = [tid for tid in maybe_tids if tid is not None]
+                        if tids:
+                            economy = self.bot.get_cog('Economy')
+                            await economy.data.Transaction.refund_transactions(*tids)
         finally:
             for lock in locks:
                 lock.release()
@@ -473,7 +474,6 @@ class ScheduleCog(LionCog):
                     "One or more requested timeslots are already booked!"
                 ))
                 raise UserInputError(error)
-            conn = await self.bot.db.get_connection()
 
             # Booking request is now validated. Perform bookings.
             # Fetch or create session data
@@ -482,27 +482,27 @@ class ScheduleCog(LionCog):
                 *((guildid, slotid) for slotid in slotids)
             )
 
-            async with conn.transaction():
-                # Create transactions
-                economy = self.bot.get_cog('Economy')
-                trans_data = (
-                    TransactionType.SCHEDULE_BOOK,
-                    guildid, userid, userid, 0,
-                    config.get(ScheduleSettings.ScheduleCost.setting_id).value,
-                    0, None
-                )
-                transactions = await economy.data.Transaction.execute_transactions(*(trans_data for _ in slotids))
-                transactionids = [row.transactionid for row in transactions]
+            # Create transactions
+            # TODO: wrap in a transaction so the economy transaction gets unwound if it fails
+            economy = self.bot.get_cog('Economy')
+            trans_data = (
+                TransactionType.SCHEDULE_BOOK,
+                guildid, userid, userid, 0,
+                config.get(ScheduleSettings.ScheduleCost.setting_id).value,
+                0, None
+            )
+            transactions = await economy.data.Transaction.execute_transactions(*(trans_data for _ in slotids))
+            transactionids = [row.transactionid for row in transactions]
 
-                # Create bookings
-                now = utc_now()
-                booking_data = await self.data.ScheduleSessionMember.table.insert_many(
-                    ('guildid', 'userid', 'slotid', 'booked_at', 'book_transactionid'),
-                    *(
-                        (guildid, userid, slotid, now, tid)
-                        for slotid, tid in zip(slotids, transactionids)
-                    )
+            # Create bookings
+            now = utc_now()
+            booking_data = await self.data.ScheduleSessionMember.table.insert_many(
+                ('guildid', 'userid', 'slotid', 'booked_at', 'book_transactionid'),
+                *(
+                    (guildid, userid, slotid, now, tid)
+                    for slotid, tid in zip(slotids, transactionids)
                 )
+            )
 
             # Now pass to activated slots
             for record in booking_data:

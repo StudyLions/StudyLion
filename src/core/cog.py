@@ -57,16 +57,14 @@ class CoreCog(LionCog):
 
     async def cog_load(self):
         # Fetch (and possibly create) core data rows.
-        conn = await self.bot.db.get_connection()
-        async with conn.transaction():
-            self.app_config = await self.data.AppConfig.fetch_or_create(appname)
-            self.bot_config = await self.data.BotConfig.fetch_or_create(appname)
-            self.shard_data = await self.data.Shard.fetch_or_create(
-                shardname,
-                appname=appname,
-                shard_id=self.bot.shard_id,
-                shard_count=self.bot.shard_count
-            )
+        self.app_config = await self.data.AppConfig.fetch_or_create(appname)
+        self.bot_config = await self.data.BotConfig.fetch_or_create(appname)
+        self.shard_data = await self.data.Shard.fetch_or_create(
+            shardname,
+            appname=appname,
+            shard_id=self.bot.shard_id,
+            shard_count=self.bot.shard_count
+        )
         self.bot.add_listener(self.shard_update_guilds, name='on_guild_join')
         self.bot.add_listener(self.shard_update_guilds, name='on_guild_remove')
 

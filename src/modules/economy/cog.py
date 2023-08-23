@@ -1,4 +1,5 @@
 from typing import Optional, Union
+import asyncio
 
 import discord
 from discord.ext import commands as cmds
@@ -182,30 +183,34 @@ class Economy(LionCog):
             # We may need to do a mass row create operation.
             targetids = set(target.id for target in targets)
             if len(targets) > 1:
-                conn = await ctx.bot.db.get_connection()
-                async with conn.transaction():
-                    # First fetch the members which currently exist
-                    query = self.bot.core.data.Member.table.select_where(guildid=ctx.guild.id)
-                    query.select('userid').with_no_adapter()
-                    if 2 * len(targets) < len(ctx.guild.members):
-                        # More efficient to fetch the targets explicitly
-                        query.where(userid=list(targetids))
-                    existent_rows = await query
-                    existentids = set(r['userid'] for r in existent_rows)
+                async def wrapper():
+                    async with self.bot.db.connection() as conn:
+                        self.bot.db.conn = conn
+                        async with conn.transaction():
+                            # First fetch the members which currently exist
+                            query = self.bot.core.data.Member.table.select_where(guildid=ctx.guild.id)
+                            query.select('userid').with_no_adapter()
+                            if 2 * len(targets) < len(ctx.guild.members):
+                                # More efficient to fetch the targets explicitly
+                                query.where(userid=list(targetids))
+                            existent_rows = await query
+                            existentids = set(r['userid'] for r in existent_rows)
 
-                    # Then check if any new userids need adding, and if so create them
-                    new_ids = targetids.difference(existentids)
-                    if new_ids:
-                        # We use ON CONFLICT IGNORE here in case the users already exist.
-                        await self.bot.core.data.User.table.insert_many(
-                            ('userid',),
-                            *((id,) for id in new_ids)
-                        ).on_conflict(ignore=True)
-                        # TODO: Replace 0 here with the starting_coin value
-                        await self.bot.core.data.Member.table.insert_many(
-                            ('guildid', 'userid', 'coins'),
-                            *((ctx.guild.id, id, 0) for id in new_ids)
-                        ).on_conflict(ignore=True)
+                            # Then check if any new userids need adding, and if so create them
+                            new_ids = targetids.difference(existentids)
+                            if new_ids:
+                                # We use ON CONFLICT IGNORE here in case the users already exist.
+                                await self.bot.core.data.User.table.insert_many(
+                                    ('userid',),
+                                    *((id,) for id in new_ids)
+                                ).on_conflict(ignore=True)
+                                # TODO: Replace 0 here with the starting_coin value
+                                await self.bot.core.data.Member.table.insert_many(
+                                    ('guildid', 'userid', 'coins'),
+                                    *((ctx.guild.id, id, 0) for id in new_ids)
+                                ).on_conflict(ignore=True)
+                task = asyncio.create_task(wrapper(), name="wrapped-create-members")
+                await task
             else:
                 # With only one target, we can take a simpler path, and make better use of local caches.
                 await self.bot.core.lions.fetch_member(ctx.guild.id, target.id)
@@ -703,31 +708,34 @@ class Economy(LionCog):
         # Alternative flow could be waiting until the target user presses accept
         await ctx.interaction.response.defer(thinking=True, ephemeral=True)
 
-        conn = await self.bot.db.get_connection()
-        async with conn.transaction():
-            # We do this in a transaction so that if something goes wrong,
-            # the coins deduction is rolled back atomicly
-            balance = ctx.alion.data.coins
-            if amount > balance:
-                await ctx.interaction.edit_original_response(
-                    embed=error_embed(
-                        t(_p(
-                            'cmd:send|error:insufficient',
-                            "You do not have enough lioncoins to do this!\n"
-                            "`Current Balance:` {coin_emoji}{balance}"
-                        )).format(
-                            coin_emoji=self.bot.config.emojis.getemoji('coin'),
-                            balance=balance
+        async def wrapped():
+            async with self.bot.db.connection() as conn:
+                self.bot.db.conn = conn
+                async with conn.transaction():
+                    # We do this in a transaction so that if something goes wrong,
+                    # the coins deduction is rolled back atomicly
+                    balance = ctx.alion.data.coins
+                    if amount > balance:
+                        await ctx.interaction.edit_original_response(
+                            embed=error_embed(
+                                t(_p(
+                                    'cmd:send|error:insufficient',
+                                    "You do not have enough lioncoins to do this!\n"
+                                    "`Current Balance:` {coin_emoji}{balance}"
+                                )).format(
+                                    coin_emoji=self.bot.config.emojis.getemoji('coin'),
+                                    balance=balance
+                                )
+                            ),
                         )
-                    ),
-                )
-                return
+                        return
 
-            # Transfer the coins
-            await ctx.alion.data.update(coins=(Member.coins - amount))
-            await target_lion.data.update(coins=(Member.coins + amount))
+                    # Transfer the coins
+                    await ctx.alion.data.update(coins=(Member.coins - amount))
+                    await target_lion.data.update(coins=(Member.coins + amount))
 
             # TODO: Audit trail
+        await asyncio.create_task(wrapped(), name="wrapped-send")
 
         # Message target
         embed = discord.Embed(

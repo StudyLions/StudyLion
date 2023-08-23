@@ -52,7 +52,7 @@ class EventHandler(Generic[T]):
                 f"Queue on event handler {self.route_name} is full! Discarding event {data}"
             )
 
-    @log_wrap(action='consumer', isolate=False)
+    @log_wrap(action='consumer')
     async def consumer(self):
         while True:
             try:
@@ -76,7 +76,7 @@ class EventHandler(Generic[T]):
                 )
                 pass
 
-    @log_wrap(action='batch', isolate=False)
+    @log_wrap(action='batch')
     async def process_batch(self):
         logger.debug("Processing Batch")
         # TODO: copy syntax might be more efficient here
