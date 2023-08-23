@@ -68,7 +68,7 @@ class AnalyticsServer:
 
         # Make sure everyone sent results and there were no exceptions (e.g. concurrency)
         failed = not isinstance(results, dict)
-        failed = failed or not any(
+        failed = failed or any(
             result is None or isinstance(result, Exception) for result in results.values()
         )
         if failed:
@@ -79,6 +79,8 @@ class AnalyticsServer:
                 f"Analytics could not take snapshot because some peers failed! Partial snapshot: {results}"
             )
             return False
+
+        logger.debug(f"Creating snapshot from: {results}")
 
         # Now we have a dictionary of shard snapshots, aggregate, pull in remaining data, and store.
         # TODO Possibly move this out into snapshots.py?
