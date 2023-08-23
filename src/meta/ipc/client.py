@@ -126,12 +126,12 @@ class AppClient:
 
     @log_wrap(action="Broadcast")
     async def requestall(self, payload, except_self=True, only_my_peers=True):
-        peerlist = self.my_peers if only_my_peers else self.peers
+        peerlist = list((self.my_peers if only_my_peers else self.peers).keys())
         results = await asyncio.gather(
             *(self.request(appid, payload) for appid in peerlist if (appid != self.appid or not except_self)),
             return_exceptions=True
         )
-        return dict(zip(self.peers.keys(), results))
+        return dict(zip(peerlist, results))
 
     async def handle_request(self, reader, writer):
         set_logging_context(action="SERV")
