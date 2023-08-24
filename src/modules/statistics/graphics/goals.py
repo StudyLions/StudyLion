@@ -87,7 +87,7 @@ async def get_goals_card(
     # Get member profile
     if user:
         username = (user.display_name, user.discriminator)
-        avatar = user.avatar.key
+        avatar = user.avatar.key if user.avatar else user.default_avatar.key
     else:
         username = (lion.data.display_name, '#????')
         avatar = luser.data.avatar_hash

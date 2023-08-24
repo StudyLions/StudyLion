@@ -250,7 +250,7 @@ class TextTrackerData(Registry):
                         query,
                         tuple(chain((userid, guildid), *blocks))
                     )
-                return [r['period_m'] or 0 for r in await cursor.fetchall()]
+                    return [r['period_m'] or 0 for r in await cursor.fetchall()]
 
         @classmethod
         @log_wrap(action='member_messages_since')

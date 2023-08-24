@@ -390,6 +390,14 @@ class StatisticsConfigUI(ConfigUI):
             embed.add_field(**setting.embed_field, inline=False)
         return MessageArgs(embed=embed)
 
+    async def reload(self):
+        # Re-fetch data for each instance
+        # This should generally hit cache
+        self.instances = [
+            await setting.get(self.guildid)
+            for setting in self.setting_classes
+        ]
+
 
 class StatisticsDashboard(DashboardSection):
     section_name = _p(

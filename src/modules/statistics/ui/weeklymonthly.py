@@ -473,7 +473,7 @@ class WeeklyMonthlyUI(StatsUI):
             # Update the tasklist
             if len(new_tasks) != len(tasks) or not all(t == new_t for (t, new_t) in zip(tasks, new_tasks)):
                 modified = True
-                async with self._connector.connection() as conn:
+                async with self.bot.db.connection() as conn:
                     async with conn.transaction():
                         await tasks_model.table.delete_where(**key).with_connection(conn)
                         if new_tasks:
