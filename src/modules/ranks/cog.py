@@ -9,6 +9,7 @@ from discord.app_commands.transformers import AppCommandOptionType
 from cachetools import LRUCache
 
 from meta import LionBot, LionContext, LionCog
+from meta.logger import log_wrap
 from wards import high_management_ward, high_management_iward
 from core.data import RankType
 from utils.ui import ChoicedEnum, Transformed
@@ -462,6 +463,7 @@ class RankCog(LionCog):
     async def on_xp_update(self, *xp_data):
         ...
 
+    @log_wrap(action='interactive rank refresh')
     async def interactive_rank_refresh(self, interaction: discord.Interaction, guild: discord.Guild):
         """
         Interactively update ranks for everyone in the given guild.
@@ -469,7 +471,7 @@ class RankCog(LionCog):
         t = self.bot.translator.t
         if not interaction.response.is_done():
             await interaction.response.defer(thinking=True, ephemeral=False)
-        ui = RankRefreshUI(self.bot, guild, callerid=interaction.user.id)
+        ui = RankRefreshUI(self.bot, guild, callerid=interaction.user.id, timeout=None)
         await ui.run(interaction)
 
         # Retrieve fresh rank roles
@@ -637,22 +639,14 @@ class RankCog(LionCog):
         # First clear the member rank data entirely
         await self.data.MemberRank.table.delete_where(guildid=guild.id)
         column = self._get_rankid_column(rank_type)
-        tmptable = TemporaryTable(
-            '_gid', '_uid', '_rankid', '_roleid',
-            types=('BIGINT', 'BIGINT', 'BIGINT', 'BIGINT')
-        )
-        tmptable.values = [
+        values = [
             (guild.id, memberid, rank.rankid, rank.roleid)
             for memberid, rank in true_member_ranks.items()
         ]
-        if tmptable.values:
-            await self.data.MemberRank.table.update_where(
-                guildid=tmptable['_gid'],
-                userid=tmptable['_uid']
-            ).set(
-                **{column: tmptable['_rankid'], 'last_roleid': tmptable['_roleid']}
-            ).from_expr(tmptable)
-
+        await self.data.MemberRank.table.insert_many(
+            ('guildid', 'userid', column, 'last_roleid'),
+            *values
+        )
         self.flush_guild_ranks(guild.id)
         await ui.set_done()
         await ui.wait()
