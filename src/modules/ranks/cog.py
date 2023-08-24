@@ -13,12 +13,14 @@ from wards import high_management_ward, high_management_iward
 from core.data import RankType
 from utils.ui import ChoicedEnum, Transformed
 from utils.lib import utc_now, replace_multiple
+from utils.ratelimits import Bucket, limit_concurrency
+from utils.data import TemporaryTable
 
 
 from . import babel, logger
 from .data import RankData, AnyRankData
 from .settings import RankSettings
-from .ui import RankOverviewUI, RankConfigUI
+from .ui import RankOverviewUI, RankConfigUI, RankRefreshUI
 from .utils import rank_model_from_type, format_stat_range
 
 _p = babel._p
@@ -157,6 +159,27 @@ class RankCog(LionCog):
             cached = LRUCache(maxsize=size)
             self._member_ranks[guildid] = cached
         return cached
+
+    def _get_stats_model(self, rank_type):
+        return {
+            RankType.MESSAGE: self.bot.get_cog('TextTrackerCog').data.TextSessions,
+            RankType.VOICE: self.bot.get_cog('StatsCog').data.VoiceSessionStats,
+            RankType.XP: self.bot.get_cog('StatsCog').data.MemberExp,
+        }[rank_type]
+
+    def _get_rank_model(self, rank_type):
+        return {
+            RankType.MESSAGE: self.data.MsgRank,
+            RankType.VOICE: self.data.VoiceRank,
+            RankType.XP: self.data.XPRank,
+        }[rank_type]
+
+    def _get_rankid_column(self, rank_type):
+        return {
+            RankType.MESSAGE: 'current_msg_rankid',
+            RankType.VOICE: 'current_voice_rankid',
+            RankType.XP: 'current_xp_rankid'
+        }[rank_type]
 
     async def get_member_rank(self, guildid: int, userid: int) -> SeasonRank:
         """
@@ -409,8 +432,14 @@ class RankCog(LionCog):
         # TODO: Locking between refresh and individual updates
         for guildid, userid, duration, guild_xp in session_data:
             lguild = await self.bot.core.lions.fetch_guild(guildid)
+            unranked_role_setting = await self.bot.get_cog('StatsCog').settings.UnrankedRoles.get(guildid)
+            unranked_roleids = set(unranked_role_setting.data)
+            guild = self.bot.get_guild(guildid)
+            member = guild.get_member(userid) if guild else None
+            if not member or member.bot or any (role.id in unranked_roleids for role in member.roles):
+                continue
             rank_type = lguild.config.get('rank_type').value
-            if rank_type in (RankType.VOICE, RankType.XP):
+            if rank_type in (RankType.VOICE,):
                 if (_members := self._member_ranks.get(guildid, None)) is not None and userid in _members:
                     session_rank = _members[userid]
                     # TODO: Temporary measure
@@ -432,6 +461,201 @@ class RankCog(LionCog):
 
     async def on_xp_update(self, *xp_data):
         ...
+
+    async def interactive_rank_refresh(self, interaction: discord.Interaction, guild: discord.Guild):
+        """
+        Interactively update ranks for everyone in the given guild.
+        """
+        t = self.bot.translator.t
+        if not interaction.response.is_done():
+            await interaction.response.defer(thinking=True, ephemeral=False)
+        ui = RankRefreshUI(self.bot, guild, callerid=interaction.user.id)
+        await ui.run(interaction)
+
+        # Retrieve fresh rank roles
+        ranks = await self.get_guild_ranks(guild.id, refresh=True)
+        ui.stage_ranks = True
+        ui.poke()
+
+        # Ensure guild is chunked
+        if not guild.chunked:
+            members = await guild.chunk()
+        else:
+            members = guild.members
+        ui.stage_members = True
+        ui.poke()
+
+        roles = {rank.roleid: guild.get_role(rank.roleid) for rank in ranks}
+        if not all(roles.values()):
+            error = t(_p(
+                'rank_refresh|error:roles_dne|desc',
+                "Some ranks have invalid or deleted roles! Please remove them first."
+            ))
+            await ui.set_error(error)
+            return
+
+        # Check that bot has permission to assign rank roles
+        failing = [role for role in roles.values() if not role.is_assignable()]
+        if failing:
+            error = t(_p(
+                'rank_refresh|error:unassignable_roles|desc',
+                "I have insufficient permissions to assign the following role(s):\n{roles}"
+            )).format(roles='\n'.join(role.mention for role in failing)),
+            await ui.set_error(error)
+            return
+
+        ui.stage_roles = True
+        ui.poke()
+
+        # Now we are certain that all the rank roles exist and are assignable
+        # Compute season start and season leaderboard
+        lguild = await self.bot.core.lions.fetch_guild(guild.id)
+        season_start = lguild.config.get('season_start').value
+        rank_type = lguild.config.get('rank_type').value
+        stats_model = self._get_stats_model(rank_type)
+        if season_start:
+            leaderboard = await stats_model.leaderboard_since(guild.id, season_start)
+        else:
+            leaderboard = await stats_model.leaderboard_all(guild.id)
+
+        # Compile map of correct ranks
+        # Filtering out members who are untracked or not in server
+        unranked_role_setting = await self.bot.get_cog('StatsCog').settings.UnrankedRoles.get(guild.id)
+        unranked_roleids = set(unranked_role_setting.data)
+        true_member_ranks: dict[int, RankData.VoiceRank | RankData.XPRank | RankData.MsgRank] = {}
+        for userid, stat_total in leaderboard:
+            # Check member exists
+            if member := guild.get_member(userid):
+                # Check member does not have unranked roles
+                if not (member.bot or any(role.id in unranked_roleids for role in member.roles)):
+                    # Compute member rank
+                    rank = next((rank for rank in reversed(ranks) if rank.required <= stat_total), None)
+                    if rank is not None:
+                        true_member_ranks[userid] = rank
+
+        # Compile maps of member roles that need removal and member roles that need adding
+        to_remove: list[tuple[discord.Member, list[discord.Role]]] = []
+        to_add: list[tuple[discord.Member, discord.Role]] = []
+        for member in members:
+            if member.bot:
+                continue
+            true_rank = true_member_ranks.get(member.id, None)
+            true_roleid = true_rank.roleid if true_rank is not None else None
+            has_true = (true_roleid is None)
+            invalid = []
+            for role in member.roles:
+                if role.id in roles:
+                    if not has_true and role.id == true_roleid:
+                        has_true = True
+                    else:
+                        invalid.append(role)
+            if invalid:
+                to_remove.append((member, invalid))
+            if not has_true:
+                to_add.append((member, roles[true_roleid]))
+
+        ui.stage_compute = True
+        ui.to_remove = len(to_remove)
+        ui.to_add = len(to_add)
+        ui.poke()
+
+        # Perform operations
+        # Starting with removals
+        coros = []
+        bucket = Bucket(4, 5)
+
+        for member, roles in to_remove:
+            remove_coro = member.remove_roles(
+                *roles,
+                reason=t(_p(
+                    'rank_refresh|remove_roles|audit',
+                    "Removing invalid rank role."
+                ))
+            )
+            coros.append(bucket.wrapped(remove_coro))
+
+        index = 0
+        async for task in limit_concurrency(coros, 5):
+            try:
+                await task
+                index += 1
+                ui.poke()
+            except discord.HTTPException:
+                error = t(_p(
+                    'rank_refresh|remove_roles|small_error',
+                    "*Could not remove ranks from {member}*"
+                )).format(member=to_remove[index][0].mention)
+                self.ui.errors.append(error)
+                if len(self.ui.errors) > 10:
+                    await ui.set_error(
+                        t(_p(
+                            'rank_refresh|remove_roles|error:too_many_issues',
+                            "Too many issues occurred while removing ranks! "
+                            "Please check my permissions and try again in a few minutes."
+                        ))
+                    )
+                    return
+            ui.removed += 1
+            ui.poke()
+
+        coros = []
+        for member, role in to_add:
+            add_coro = member.add_roles(
+                role,
+                reason=t(_p(
+                    'rank_refresh|add_roles|audit',
+                    "Adding rank role from refresh"
+                ))
+            )
+            coros.append(bucket.wrapped(add_coro))
+
+        index = 0
+        async for task in limit_concurrency(coros, 5):
+            try:
+                await task
+                index += 1
+                ui.poke()
+            except discord.HTTPException:
+                error = t(_p(
+                    'rank_refresh|add_roles|small_error',
+                    "*Could not add {role} to {member}*"
+                )).format(member=to_add[index][0].mention, role=to_add[index][1].mention)
+                self.ui.errors.append(error)
+                if len(self.ui.errors) > 10:
+                    await ui.set_error(
+                        t(_p(
+                            'rank_refresh|add_roles|error:too_many_issues',
+                            "Too many issues occurred while adding ranks! "
+                            "Please check my permissions and try again in a few minutes."
+                        ))
+                    )
+                    return
+            ui.added += 1
+            ui.poke()
+
+        # Save correct member ranks and given roles to data
+        # First clear the member rank data entirely
+        await self.data.MemberRank.table.delete_where(guildid=guild.id)
+        column = self._get_rankid_column(rank_type)
+        tmptable = TemporaryTable(
+            '_gid', '_uid', '_rankid', '_roleid',
+            types=('BIGINT', 'BIGINT', 'BIGINT', 'BIGINT')
+        )
+        tmptable.values = [
+            (guild.id, memberid, rank.rankid, rank.roleid)
+            for memberid, rank in true_member_ranks.items()
+        ]
+        if tmptable.values:
+            await self.data.MemberRank.table.update_where(
+                guildid=tmptable['_gid'],
+                userid=tmptable['_uid']
+            ).set(
+                **{column: tmptable['_rankid'], 'last_roleid': tmptable['_roleid']}
+            ).from_expr(tmptable)
+
+        self.flush_guild_ranks(guild.id)
+        await ui.set_done()
+        await ui.wait()
 
     # ---------- Commands ----------
     @cmds.hybrid_command(name=_p('cmd:ranks', "ranks"))

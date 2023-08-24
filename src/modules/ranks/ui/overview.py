@@ -98,7 +98,8 @@ class RankOverviewUI(MessageUI):
         Refresh the current ranks,
         ensuring that all members have the correct rank.
         """
-        await press.response.send_message("Not Implemented Yet")
+        cog = self.bot.get_cog('RankCog')
+        await cog.interactive_rank_refresh(press, self.guild)
 
     async def refresh_button_refresh(self):
         self.refresh_button.label = self.bot.translator.t(_p(

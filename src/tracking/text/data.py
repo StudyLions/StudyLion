@@ -288,5 +288,53 @@ class TextTrackerData(Registry):
                         tuple(chain((userid, guildid), points))
                     )
                     return [r['messages'] or 0 for r in await cursor.fetchall()]
+        
+        @classmethod
+        @log_wrap(action='msgs_leaderboard_all')
+        async def leaderboard_since(cls, guildid: int, since):
+            """
+            Return the message count totals for the given guild since the given time.
+            """
+            query = sql.SQL(
+                """
+                SELECT userid, sum(messages) as user_total
+                FROM text_sessions
+                WHERE guildid = %s AND start_time >= %s
+                GROUP BY userid
+                ORDER BY 
+                """
+            )
+            async with cls._connector.connection() as conn:
+                async with conn.cursor() as cursor:
+                    await cursor.execute(query, (guildid, since))
+                    leaderboard = [
+                        (row['userid'], int(row['user_total']))
+                        for row in await cursor.fetchall()
+                    ]
+            return leaderboard
+
+        @classmethod
+        @log_wrap(action='msgs_leaderboard_all')
+        async def leaderboard_all(cls, guildid: int):
+            """
+            Return the all-time message count totals for the given guild.
+            """
+            query = sql.SQL(
+                """
+                SELECT userid, sum(messages) as user_total
+                FROM text_sessions
+                WHERE guildid = %s
+                GROUP BY userid
+                ORDER BY 
+                """
+            )
+            async with cls._connector.connection() as conn:
+                async with conn.cursor() as cursor:
+                    await cursor.execute(query, (guildid,))
+                    leaderboard = [
+                        (row['userid'], int(row['user_total']))
+                        for row in await cursor.fetchall()
+                    ]
+            return leaderboard
 
     untracked_channels = Table('untracked_text_channels')
