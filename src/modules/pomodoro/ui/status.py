@@ -78,7 +78,8 @@ class TimerStatusUI(LeoUI):
             t = self.bot.translator.t
             error_msg = t(_p(
                 'ui:timer_status|button:edit|error:no_permissions',
-                "Configuring this timer requires guild admin permissions or the configured manager role!"
+                "Configuring this timer requires `MANAGE_CHANNEL` permissions on "
+                "the timer channel, or the configured manager role!"
             ))
             embed = discord.Embed(
                 colour=discord.Colour.brand_red(),
@@ -114,9 +115,25 @@ class TimerStatusUI(LeoUI):
                 ephemeral=True
             )
         else:
-            # Start the timer
-            await press.response.defer()
-            await self.timer.start()
+            role = self.timer.get_member_role(press.user)
+            if role >= TimerRole.MANAGER or self.timer.auto_restart:
+                # Start the timer
+                await press.response.defer()
+                await self.timer.start()
+            else:
+                embed = discord.Embed(
+                    colour=discord.Colour.brand_red(),
+                    title=t(_p(
+                        'ui:timer_status|button:start|error:not_manager|title',
+                        "Insufficient permissions!"
+                    )),
+                    description=t(_p(
+                        'ui:timer_status|button:start|error:not_manager|desc',
+                        "Starting this timer requires `MANAGE_CHANNEL` permissions on "
+                        "the timer channel, or the configured `manager_role`!"
+                    ))
+                )
+                await press.response.send_message(embed=embed, ephemeral=True)
 
     async def refresh_start_button(self):
         t = self.bot.translator.t
@@ -132,8 +149,26 @@ class TimerStatusUI(LeoUI):
 
         Note that unlike starting, stopping is allowed to be idempotent.
         """
-        await press.response.defer()
-        await self.timer.stop()
+        t = self.bot.translator.t
+        role = self.timer.get_member_role(press.user)
+        if role >= TimerRole.MANAGER:
+            # Stop the timer
+            await press.response.defer()
+            await self.timer.stop()
+        else:
+            embed = discord.Embed(
+                colour=discord.Colour.brand_red(),
+                title=t(_p(
+                    'ui:timer_status|button:stop|error:not_manager|title',
+                    "Insufficient permissions!"
+                )),
+                description=t(_p(
+                    'ui:timer_status|button:stop|error:not_manager|desc',
+                    "Stopping this timer requires `MANAGE_CHANNEL` permissions on "
+                    "the timer channel, or the configured `manager_role`!"
+                ))
+            )
+            await press.response.send_message(embed=embed, ephemeral=True)
 
     async def refresh_stop_button(self):
         t = self.bot.translator.t

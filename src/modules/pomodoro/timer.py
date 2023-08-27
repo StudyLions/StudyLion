@@ -305,6 +305,8 @@ class Timer:
             role = TimerRole.ADMIN
         elif member.id == self.data.ownerid:
             role = TimerRole.OWNER
+        elif self.channel and self.channel.permissions_for(member).manage_channels:
+            role = TimerRole.MANAGER
         elif (roleid := self.data.manager_roleid) and roleid in (r.id for r in member.roles):
             role = TimerRole.MANAGER
         else:
