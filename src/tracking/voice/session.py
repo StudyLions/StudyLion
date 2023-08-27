@@ -72,6 +72,7 @@ class VoiceSession:
         'registry',
         'start_task', 'expiry_task',
         'data', 'state', 'hourly_rate',
+        '_tag', '_start_time',
         '__weakref__'
     )
 
@@ -92,6 +93,24 @@ class VoiceSession:
         # Must match data when session in ongoing
         self.state: Optional[TrackedVoiceState] = None
         self.hourly_rate: Optional[float] = None
+        self._tag = None
+        self._start_time = None
+
+    @property
+    def tag(self) -> Optional[str]:
+        if self.data:
+            tag = self.data.tag
+        else:
+            tag = self._tag
+        return tag
+
+    @property
+    def start_time(self):
+        if self.data:
+            start_time = self.data.start_time
+        else:
+            start_time = self._start_time
+        return start_time
 
     @property
     def activity(self):
@@ -103,13 +122,13 @@ class VoiceSession:
             return SessionState.INACTIVE
 
     @classmethod
-    def get(cls, bot: LionBot, guildid: int, userid: int) -> 'VoiceSession':
+    def get(cls, bot: LionBot, guildid: int, userid: int, create=True) -> Optional['VoiceSession']:
         """
         Fetch the VoiceSession for the given member. Respects cache.
         Creates the session if it doesn't already exist.
         """
         session = cls._sessions_[guildid].get(userid, None)
-        if session is None:
+        if session is None and create:
             session = cls(bot, guildid, userid)
             cls._sessions_[guildid][userid] = session
         return session
@@ -129,6 +148,13 @@ class VoiceSession:
         self._active_sessions_[self.guildid][self.userid] = self
         return self
 
+    async def set_tag(self, new_tag):
+        if self.activity is SessionState.INACTIVE:
+            raise ValueError("Cannot set tag on an inactive voice session.")
+        self._tag = new_tag
+        if self.data is not None:
+            await self.data.update(tag=new_tag)
+
     async def schedule_start(self, delay, start_time, expire_time, state, hourly_rate):
         """
         Schedule the voice session to start at the given target time,
@@ -136,6 +162,8 @@ class VoiceSession:
         """
         self.state = state
         self.hourly_rate = hourly_rate
+        self._start_time = start_time
+        self._tag = None
 
         self.start_task = asyncio.create_task(self._start_after(delay, start_time))
         self.schedule_expiry(expire_time)
@@ -171,7 +199,8 @@ class VoiceSession:
             last_update=start_time,
             live_stream=state.stream,
             live_video=state.video,
-            hourly_coins=self.hourly_rate
+            hourly_coins=self.hourly_rate,
+            tag=self._tag
         )
         self.bot.dispatch('voice_session_start', self.data)
         self.start_task = None

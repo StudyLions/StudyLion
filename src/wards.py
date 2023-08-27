@@ -51,6 +51,20 @@ async def low_management_iward(interaction: discord.Interaction) -> bool:
     return await low_management(interaction.client, interaction.user)
 
 
+# High level ctx wards
+async def moderator_ctxward(ctx: LionContext) -> bool:
+    if not ctx.guild:
+        return False
+    passed = await low_management(ctx.bot, ctx.author)
+    if passed:
+        return True
+    modrole = ctx.lguild.data.mod_role
+    roleids = [role.id for role in ctx.author.roles]
+    if not (modrole and modrole in roleids):
+        return False
+    return True
+
+
 # Command Wards, raise CheckFailure with localised error message
 
 @cmds.check
@@ -101,14 +115,8 @@ async def low_management_ward(ctx: LionContext) -> bool:
 
 @cmds.check
 async def moderator_ward(ctx: LionContext) -> bool:
-    if not ctx.guild:
-        return False
-    passed = await low_management(ctx.bot, ctx.author)
-    if passed:
-        return True
-    modrole = ctx.lguild.data.mod_role
-    roleids = [role.id for role in ctx.author.roles]
-    if not (modrole and modrole in roleids):
+    passed = await moderator_ctxward(ctx)
+    if not passed:
         raise CheckFailure(
             ctx.bot.translator.t(_p(
                 'ward:moderator|failed',
@@ -116,7 +124,8 @@ async def moderator_ward(ctx: LionContext) -> bool:
                 "or `MANAGE_GUILD` permissions to do this."
             ))
         )
-    return True
+    else:
+        return True
 
 # ---- Assorted manual wards and checks ----
 

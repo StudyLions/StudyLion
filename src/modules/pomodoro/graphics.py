@@ -23,14 +23,13 @@ async def get_timer_card(bot: LionBot, timer: 'Timer', stage: 'Stage'):
     card_users = []
     guildid = timer.data.guildid
     for member in timer.members:
-        session_data = None
         if voicecog is not None:
             session = voicecog.get_session(guildid, member.id)
-            session_data = session.data
-
-        if session_data:
-            session_duration = (utc_now() - session_data.start_time).total_seconds()
-            tag = session_data.tag
+            tag = session.tag
+            if session.start_time:
+                session_duration = (utc_now() - session.start_time).total_seconds()
+            else:
+                session_duration = 0
         else:
             session_duration = 0
             tag = None
