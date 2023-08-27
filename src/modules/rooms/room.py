@@ -113,12 +113,32 @@ class Room:
                 await self.channel.send(embed=notification)
             except discord.HTTPException:
                 pass
+            guild = self.channel.guild
+            members = [guild.get_member(memberid) for memberid in memberids]
+            members = [member for member in members if member]
+            for member in members:
+                await self.channel.set_permissions(
+                    member,
+                    overwrite=member_overwrite,
+                    reason="Adding invited members to private room."
+                )
 
     async def rm_members(self, memberids):
         member_data = self.bot.get_cog('RoomCog').data.RoomMember
         await member_data.table.delete_where(channelid=self.data.channelid, userid=list(memberids))
         self.members = list(set(self.members).difference(memberids))
         # No need to notify for removal
+        if self.channel:
+            guild = self.channel.guild
+            members = [guild.get_member(memberid) for memberid in memberids]
+            members = [member for member in members if member]
+            for member in members:
+                if member.id != self.data.ownerid and member != guild.me:
+                    await self.channel.set_permissions(
+                        member,
+                        overwrite=None,
+                        reason="Removing kicked members from private room."
+                    )
         return
 
     async def transfer_ownership(self, new_owner):
