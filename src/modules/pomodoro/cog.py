@@ -378,7 +378,8 @@ class TimerCog(LionCog):
         timers = list(self.get_guild_timers(ctx.guild.id).values())
         visible_timers = [
             timer for timer in timers
-            if timer.channel and timer.channel.permissions_for(ctx.author).view_channel
+            if timer.channel and timer.channel.permissions_for(ctx.author).connect
+            and (not timer.owned or (ctx.author in timer.channel.overwrites))
         ]
 
         if not timers:
@@ -388,7 +389,8 @@ class TimerCog(LionCog):
                 description=t(_p(
                     'cmd:pomodoro_list|error:no_timers',
                     "No timers have been setup in this server!\n"
-                    "You can ask an admin to create one with {command}."
+                    "You can ask an admin to create one with {command}, "
+                    "or rent a private room and create one yourself!"
                 )).format(command='`/pomodoro admin create`')
             )
             # TODO: Update command mention when we have command mentions
@@ -399,7 +401,7 @@ class TimerCog(LionCog):
                 colour=discord.Colour.brand_red(),
                 description=t(_p(
                     'cmd:pomodoro_list|error:no_visible_timers',
-                    "There are no visible timers in this server!"
+                    "There are no timers you can join in this server!"
                 ))
             )
             await ctx.reply(embed=embed, ephemeral=True)
