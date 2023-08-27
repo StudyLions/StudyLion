@@ -208,6 +208,9 @@ class ScheduledSession:
     @log_wrap(action='Lobby Send')
     async def send(self, *args, wait=True, **kwargs):
         lobby_hook = await self.get_lobby_hook()
+        if 'view' in kwargs and kwargs['view'] is None:
+            kwargs.pop('view', None)
+
         if lobby_hook:
             try:
                 return await lobby_hook.send(*args, wait=wait, **kwargs)
