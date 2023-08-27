@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-16 17:01+0300\n"
+"POT-Creation-Date: 2023-08-27 16:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,12 +37,25 @@ msgctxt "ctxcmd:rolemenu"
 msgid "Role Menu Editor"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:284
+#: src/modules/rolemenus/cog.py:81
+msgctxt "ctxcmd:rolemenu|error:author_perms"
+msgid ""
+"You need the `MANAGE_ROLES` permission in order to manage the server role "
+"menus."
+msgstr ""
+
+#: src/modules/rolemenus/cog.py:88
+msgctxt "ctxcmd:rolemenus|error:my_perms"
+msgid ""
+"I lack the `MANAGE_ROLES` permission required to offer roles from role menus."
+msgstr ""
+
+#: src/modules/rolemenus/cog.py:300
 msgctxt "parse:message_link|suberror:message_dne"
 msgid "Could not find the linked message, has it been deleted?"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:289
+#: src/modules/rolemenus/cog.py:305
 #, possible-python-brace-format
 msgctxt "parse:message_link|suberror:no_perms"
 msgid ""
@@ -50,20 +63,20 @@ msgid ""
 "{channel}."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:294
+#: src/modules/rolemenus/cog.py:310
 #, possible-python-brace-format
 msgctxt "parse:message_link|suberror:channel_dne"
 msgid "The channel `{channelid}` could not be found in this server."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:299
+#: src/modules/rolemenus/cog.py:315
 msgctxt "parse:message_link|suberror:malformed_link"
 msgid ""
 "Malformed message link. Please copy the link by right clicking the target "
 "message."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:306
+#: src/modules/rolemenus/cog.py:322
 #, possible-python-brace-format
 msgctxt "parse:message_link|error"
 msgid ""
@@ -71,136 +84,136 @@ msgid ""
 "**ERROR:** {error}"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:418
+#: src/modules/rolemenus/cog.py:434
 msgctxt "cmd:rolemenus"
 msgid "rolemenus"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:421
+#: src/modules/rolemenus/cog.py:437
 msgctxt "cmd:rolemenus|desc"
 msgid "View and configure the role menus in this server."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:438
+#: src/modules/rolemenus/cog.py:454
 msgctxt "cmd:rolemenus|error:author_perms"
 msgid ""
 "You need the `MANAGE_ROLES` permission in order to manage the server role "
 "menus."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:445
+#: src/modules/rolemenus/cog.py:461
 msgctxt "cmd:rolemenus|error:my_perms"
 msgid ""
 "I lack the `MANAGE_ROLES` permission required to offer roles from role menus."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:480
+#: src/modules/rolemenus/cog.py:496
 #, possible-python-brace-format
 msgctxt "acmpl:menus|choice:no_choices|name"
 msgid "No role menus matching '{partial}'"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:499
+#: src/modules/rolemenus/cog.py:515
 msgctxt "acmpl:menuroles|param:menu|keyname"
 msgid "menu"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:505
+#: src/modules/rolemenus/cog.py:521
 msgctxt "acmpl:menuroles|choice:no_menu|name"
 msgid "Please select a menu first"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:529
+#: src/modules/rolemenus/cog.py:545
 #, possible-python-brace-format
 msgctxt "acmpl:menuroles|choice:invalid_menu|name"
 msgid "Menu '{name}' does not exist!"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:558
+#: src/modules/rolemenus/cog.py:574
 #, possible-python-brace-format
 msgctxt "acmpl:menuroles|choice:no_matching|name"
 msgid "No roles in this menu matching '{partial}'"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:565
+#: src/modules/rolemenus/cog.py:581
 msgctxt "group:rolemenu"
 msgid "rolemenu"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:568
+#: src/modules/rolemenus/cog.py:584
 msgctxt "group:rolemenu|desc"
 msgid "Base command group for role menu configuration."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:577
+#: src/modules/rolemenus/cog.py:593
 msgctxt "cmd:rolemenu_create"
 msgid "newmenu"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:580
+#: src/modules/rolemenus/cog.py:596
 msgctxt "cmd:rolemenu_create|desc"
 msgid "Create a new role menu (optionally using an existing message)"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:594
+#: src/modules/rolemenus/cog.py:610
 msgctxt "cmd:rolemenu_create|param:message"
 msgid "message_link"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:595
+#: src/modules/rolemenus/cog.py:611
 msgctxt "cmd:rolemenu_create|param:menu_style"
 msgid "menu_style"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:596
+#: src/modules/rolemenus/cog.py:612
 msgctxt "cmd:rolemenu_create|param:remplate"
 msgid "template"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:597
+#: src/modules/rolemenus/cog.py:613
 msgctxt "cmd:rolemenu_create|param:rawmessage"
 msgid "custom_message"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:607
+#: src/modules/rolemenus/cog.py:623
 msgctxt "cmd:rolemenu_create|param:message|desc"
 msgid "Link to an existing message to turn it into a (reaction) role menu"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:611
+#: src/modules/rolemenus/cog.py:627
 msgctxt "cmd:rolemenu_create|param:menu_style"
 msgid "Selection style for this menu (using buttons, dropdowns, or reactions)"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:615
+#: src/modules/rolemenus/cog.py:631
 msgctxt "cmd:rolemenu_create|param:template"
 msgid "Template to use for the menu message body"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:619
+#: src/modules/rolemenus/cog.py:635
 msgctxt "cmd:rolemenu_create|param:rawmessage"
 msgid "Attach a custom menu message to use"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:648
+#: src/modules/rolemenus/cog.py:664
 msgctxt "cmd:rolemenu_create|error:author_perms"
 msgid ""
 "You need the `MANAGE_ROLES` permission in order to create new role menus."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:655
+#: src/modules/rolemenus/cog.py:671
 msgctxt "cmd:rolemenu_create|error:my_perms"
 msgid ""
 "I lack the `MANAGE_ROLES` permission needed to offer roles from role menus."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:674
+#: src/modules/rolemenus/cog.py:690
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_create|error:message_exists"
 msgid "The message {link} already has a role menu! Use {edit_cmd} to edit it."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:695
+#: src/modules/rolemenus/cog.py:711
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_create|error:style_notmine"
 msgid ""
@@ -208,7 +221,7 @@ msgid ""
 "restriction)."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:702
+#: src/modules/rolemenus/cog.py:718
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_create|error:rawmessage_notmine"
 msgid ""
@@ -216,7 +229,7 @@ msgid ""
 "message!"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:711
+#: src/modules/rolemenus/cog.py:727
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_create|error:template_notmine"
 msgid ""
@@ -224,125 +237,125 @@ msgid ""
 "message!"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:724
+#: src/modules/rolemenus/cog.py:740
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_create|error:name_exists"
 msgid "A rolemenu called `{name}` already exists! Use {edit_cmd} to edit it."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:772
+#: src/modules/rolemenus/cog.py:788
 msgctxt "cmd:rolemenu_edit"
 msgid "editmenu"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:775
+#: src/modules/rolemenus/cog.py:791
 msgctxt "cmd:rolemenu_edit|desc"
 msgid "Edit an existing role menu."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:784
+#: src/modules/rolemenus/cog.py:800
 msgctxt "cmd:rolemenu_edit|param:name"
 msgid "name"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:785
+#: src/modules/rolemenus/cog.py:801
 msgctxt "cmd:rolemenu_edit|param:new_name"
 msgid "new_name"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:786
+#: src/modules/rolemenus/cog.py:802
 msgctxt "cmd:rolemenu_edit|param:channel"
 msgid "new_channel"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:791
+#: src/modules/rolemenus/cog.py:807
 msgctxt "cmd:rolemenu_edit|param:menu_style"
 msgid "menu_style"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:792
+#: src/modules/rolemenus/cog.py:808
 msgctxt "cmd:rolemenu_edit|param:remplate"
 msgid "template"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:793
+#: src/modules/rolemenus/cog.py:809
 msgctxt "cmd:rolemenu_edit|param:rawmessage"
 msgid "custom_message"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:798
+#: src/modules/rolemenus/cog.py:814
 msgctxt "cmd:rolemenu_edit|param:name|desc"
 msgid "Name of the menu to edit"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:802
+#: src/modules/rolemenus/cog.py:818
 msgctxt "cmd:rolemenu_edit|param:channel|desc"
 msgid "Server channel to move the menu to"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:811
+#: src/modules/rolemenus/cog.py:827
 msgctxt "cmd:rolemenu_edit|param:menu_style"
 msgid "Selection style for this menu (using buttons, dropdowns, or reactions)"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:815
+#: src/modules/rolemenus/cog.py:831
 msgctxt "cmd:rolemenu_edit|param:template"
 msgid "Template to use for the menu message body"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:819
+#: src/modules/rolemenus/cog.py:835
 msgctxt "cmd:rolemenu_edit|param:rawmessage"
 msgid "Attach a custom menu message to use"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:848
+#: src/modules/rolemenus/cog.py:864
 msgctxt "cmd:rolemenu_edit|error:author_perms"
 msgid "You need the `MANAGE_ROLES` permission in order to edit role menus."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:855
+#: src/modules/rolemenus/cog.py:871
 msgctxt "cmd:rolemenu_edit|error:my_perms"
 msgid ""
 "I lack the `MANAGE_ROLES` permission needed to offer roles from role menus."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:878
+#: src/modules/rolemenus/cog.py:894
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_edit|error:menu_not_found"
 msgid "This server does not have a role menu called `{name}`!"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:898
+#: src/modules/rolemenus/cog.py:914
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_edit|parse:new_name|error:name_exists"
 msgid "A role menu with the name **{new_name}** already exists!"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:935
+#: src/modules/rolemenus/cog.py:951
 msgctxt "cmd:rolemenu_edit|parse:template|error:not_managed"
 msgid ""
 "Cannot set a template message for a role menu attached to a message I did "
 "not send."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:946
+#: src/modules/rolemenus/cog.py:962
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_edit|parse:template|success:template"
 msgid "Now using the `{name}` menu message template."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:953
+#: src/modules/rolemenus/cog.py:969
 msgctxt "cmd:rolemenu_edit|parse:template|success:custom"
 msgid "Now using a custom menu message."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:978
+#: src/modules/rolemenus/cog.py:994
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_edit|repost|success"
 msgid "The role menu is now available at {message}"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:989
+#: src/modules/rolemenus/cog.py:1005
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_edit|repost|error:forbidden"
 msgid ""
@@ -350,7 +363,7 @@ msgid ""
 "permission in {channel}."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:994
+#: src/modules/rolemenus/cog.py:1010
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_edit|repost|error:unknown"
 msgid ""
@@ -358,40 +371,40 @@ msgid ""
 "**Error:** `{exception}`"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1028
+#: src/modules/rolemenus/cog.py:1044
 msgctxt "cmd:rolemenu_delete"
 msgid "delmenu"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1031
+#: src/modules/rolemenus/cog.py:1047
 msgctxt "cmd:rolemenu_delete|desc"
 msgid "Delete a role menu."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1035
+#: src/modules/rolemenus/cog.py:1051
 msgctxt "cmd:rolemenu_delete|param:name"
 msgid "menu"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1040
+#: src/modules/rolemenus/cog.py:1056
 msgctxt "cmd:rolemenu_delete|param:name|desc"
 msgid "Name of the rolemenu to delete."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1055
+#: src/modules/rolemenus/cog.py:1071
 msgctxt "cmd:rolemenu_delete|error:author_perms"
 msgid ""
 "You need the `MANAGE_ROLES` permission in order to manage the server role "
 "menus."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1078
+#: src/modules/rolemenus/cog.py:1094
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delete|error:menu_not_found"
 msgid "This server does not have a role menu called `{name}`!"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1086
+#: src/modules/rolemenus/cog.py:1102
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delete|confirm|title"
 msgid ""
@@ -399,212 +412,212 @@ msgid ""
 "reversible!"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1091
+#: src/modules/rolemenus/cog.py:1107
 msgctxt "cmd:rolemenu_delete|confirm|button:yes"
 msgid "Yes, Delete Now"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1096
+#: src/modules/rolemenus/cog.py:1112
 msgctxt "cmd:rolemenu_delete|confirm|button:no"
 msgid "No, Cancel"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1121
+#: src/modules/rolemenus/cog.py:1137
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delete|success|desc"
 msgid "Successfully deleted the menu **{name}**"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1129
+#: src/modules/rolemenus/cog.py:1145
 msgctxt "cmd:rolemenu_addrole"
 msgid "addrole"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1132
+#: src/modules/rolemenus/cog.py:1148
 msgctxt "cmd:rolemenu_addrole|desc"
 msgid "Add a new role to an existing role menu."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1137
+#: src/modules/rolemenus/cog.py:1153
 msgctxt "cmd:rolemenu_addrole|param:menu"
 msgid "menu"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1140
+#: src/modules/rolemenus/cog.py:1156
 msgctxt "cmd:rolemenu_addrole|param:role"
 msgid "role"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1151
+#: src/modules/rolemenus/cog.py:1167
 msgctxt "cmd:rolemenu_addrole|param:menu|desc"
 msgid "Name of the menu to add a role to"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1155
+#: src/modules/rolemenus/cog.py:1171
 msgctxt "cmd:rolemenu_addrole|param:role|desc"
 msgid "Role to add to the menu"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1163
+#: src/modules/rolemenus/cog.py:1179
 msgctxt "cmd:rolemenu_addrole|param:duration|desc"
 msgid "Lifetime of the role after selection in minutes."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1211
+#: src/modules/rolemenus/cog.py:1227
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_addrole|error:menu_not_found"
 msgid "This server does not have a role menu called `{name}`!"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1296
+#: src/modules/rolemenus/cog.py:1312
 msgctxt "cmd:rolemenu_addrole|success:create|title"
 msgid "Added Menu Role"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1300
+#: src/modules/rolemenus/cog.py:1316
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_addrole|success:create|desc"
 msgid "Add the role {role} to the menu **{menu}**."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1318
+#: src/modules/rolemenus/cog.py:1334
 msgctxt "cmd:rolemenu_addrole|success:edit|title"
 msgid "Menu Role updated"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1330
+#: src/modules/rolemenus/cog.py:1346
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_addrole|error:role_exists"
 msgid "The role {role} is already selectable from the menu **{menu}**"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1348
+#: src/modules/rolemenus/cog.py:1364
 msgctxt "cmd:rolemenu_addrole|success|error:reaction|name"
 msgid "Note"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1360
+#: src/modules/rolemenus/cog.py:1376
 msgctxt "cmd:rolemenu_addrole|success|button:editor|label"
 msgid "Edit Menu"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1377
+#: src/modules/rolemenus/cog.py:1393
 msgctxt "cmd:rolemenu_editrole"
 msgid "editrole"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1380
+#: src/modules/rolemenus/cog.py:1396
 msgctxt "cmd:rolemenu_editrole|desc"
 msgid "Edit role options in an existing role menu."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1385
+#: src/modules/rolemenus/cog.py:1401
 msgctxt "cmd:rolemenu_editrole|param:menu"
 msgid "menu"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1388
+#: src/modules/rolemenus/cog.py:1404
 msgctxt "cmd:rolemenu_editrole|param:menu_role"
 msgid "menu_role"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1391
+#: src/modules/rolemenus/cog.py:1407
 msgctxt "cmd:rolemenu_editrole|param:role"
 msgid "new_role"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1402
+#: src/modules/rolemenus/cog.py:1418
 msgctxt "cmd:rolemenu_editrole|param:menu|desc"
 msgid "Name of the menu to edit the role for"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1406
+#: src/modules/rolemenus/cog.py:1422
 msgctxt "cmd:rolemenu_editrole|param:menu_role|desc"
 msgid "Label, name, or mention of the menu role to edit."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1410
+#: src/modules/rolemenus/cog.py:1426
 msgctxt "cmd:rolemenu_editrole|param:role|desc"
 msgid "New server role this menu role should give."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1418
+#: src/modules/rolemenus/cog.py:1434
 msgctxt "cmd:rolemenu_editrole|param:duration|desc"
 msgid "Lifetime of the role after selection in minutes."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1459
+#: src/modules/rolemenus/cog.py:1475
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_editrole|error:menu_not_found"
 msgid "This server does not have a role menu called `{name}`!"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1487
+#: src/modules/rolemenus/cog.py:1503
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_editrole|error:role_not_found"
 msgid "The menu **{menu}** does not have the role **{name}**"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1553
+#: src/modules/rolemenus/cog.py:1569
 msgctxt "cmd:rolemenu_editrole|success|title"
 msgid "Role menu role updated"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1568
+#: src/modules/rolemenus/cog.py:1584
 msgctxt "cmd:rolemenu_editrole|success|error:reaction|name"
 msgid "Warning!"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1593
+#: src/modules/rolemenus/cog.py:1609
 msgctxt "cmd:rolemenu_delrole"
 msgid "delrole"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1596
+#: src/modules/rolemenus/cog.py:1612
 msgctxt "cmd:rolemenu_delrole|desc"
 msgid "Remove a role from a role menu."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1600
+#: src/modules/rolemenus/cog.py:1616
 msgctxt "cmd:rolemenu_delrole|param:menu"
 msgid "menu"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1601
+#: src/modules/rolemenus/cog.py:1617
 msgctxt "cmd:rolemenu_delrole|param:menu_role"
 msgid "menu_role"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1606
+#: src/modules/rolemenus/cog.py:1622
 msgctxt "cmd:rolemenu_delrole|param:menu|desc"
 msgid "Name of the menu to delete the role from."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1610
+#: src/modules/rolemenus/cog.py:1626
 msgctxt "cmd:rolemenu_delrole|param:menu_role|desc"
 msgid "Name, label, or mention of the role to delete."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1628
+#: src/modules/rolemenus/cog.py:1644
 msgctxt "cmd:rolemenu_delrole|error:author_perms"
 msgid ""
 "You need the `MANAGE_ROLES` permission in order to manage the server role "
 "menus."
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1652
+#: src/modules/rolemenus/cog.py:1668
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delrole|error:menu_not_found"
 msgid "This server does not have a role menu called `{name}`!"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1680
+#: src/modules/rolemenus/cog.py:1696
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delrole|error:role_not_found"
 msgid "The menu **{menu}** does not have the role **{name}**"
 msgstr ""
 
-#: src/modules/rolemenus/cog.py:1697
+#: src/modules/rolemenus/cog.py:1713
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delrole|success"
 msgid "The role **{name}** was successfully removed from the menu **{menu}**."
@@ -856,40 +869,40 @@ msgstr ""
 #: src/modules/rolemenus/rolemenu.py:482
 #, possible-python-brace-format
 msgctxt "rolemenu|deselect|error:sticky"
-msgid "{role} is a sticky role, you cannot remove it with this menu!"
+msgid "**{role}** is a sticky role, you cannot remove it with this menu!"
 msgstr ""
 
-#: src/modules/rolemenus/rolemenu.py:495
+#: src/modules/rolemenus/rolemenu.py:493
 msgctxt "rolemenu|deselect|error:perms"
 msgid "I don't have enough permissions to remove this role from you!"
 msgstr ""
 
-#: src/modules/rolemenus/rolemenu.py:502
+#: src/modules/rolemenus/rolemenu.py:500
 msgctxt "rolemenu|deselect|error:discord"
 msgid "An unknown error occurred removing your role! Please try again later."
 msgstr ""
 
-#: src/modules/rolemenus/rolemenu.py:531
+#: src/modules/rolemenus/rolemenu.py:529
 msgctxt "rolemenu|deslect|success|title"
 msgid "Role removed"
 msgstr ""
 
-#: src/modules/rolemenus/rolemenu.py:537
+#: src/modules/rolemenus/rolemenu.py:535
 #, possible-python-brace-format
 msgctxt "rolemenu|deselect|success:refund|desc"
-msgid "You have removed {role}, and been refunded {coin} **{amount}**."
+msgid "You have removed **{role}**, and been refunded {coin} **{amount}**."
 msgstr ""
 
-#: src/modules/rolemenus/rolemenu.py:542
+#: src/modules/rolemenus/rolemenu.py:540
 #, possible-python-brace-format
 msgctxt "rolemenu|deselect|success:norefund|desc"
-msgid "You have unequipped {role}."
+msgid "You have unequipped **{role}**."
 msgstr ""
 
 #: src/modules/rolemenus/rolemenu.py:554
 #, possible-python-brace-format
 msgctxt "rolemenu|select|error:required_role"
-msgid "You need to have the {role} role to use this!"
+msgid "You need to have the **{role}** role to use this!"
 msgstr ""
 
 #: src/modules/rolemenus/rolemenu.py:568
@@ -902,44 +915,45 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "rolemenu|select|error:insufficient_funds"
 msgid ""
-"The role {role} costs {coin}**{cost}**,but you only have {coin}**{balance}**!"
+"The role **{role}** costs {coin}**{cost}**,but you only have {coin}"
+"**{balance}**!"
 msgstr ""
 
-#: src/modules/rolemenus/rolemenu.py:600
+#: src/modules/rolemenus/rolemenu.py:598
 msgctxt "rolemenu|select|error:perms"
 msgid "I don't have enough permissions to give you this role!"
 msgstr ""
 
-#: src/modules/rolemenus/rolemenu.py:607
+#: src/modules/rolemenus/rolemenu.py:605
 msgctxt "rolemenu|select|error:discord"
 msgid ""
 "An unknown error occurred while assigning your role! Please try again later."
 msgstr ""
 
-#: src/modules/rolemenus/rolemenu.py:649
+#: src/modules/rolemenus/rolemenu.py:647
 msgctxt "rolemenu|select|success|title"
 msgid "Role equipped"
 msgstr ""
 
-#: src/modules/rolemenus/rolemenu.py:655
+#: src/modules/rolemenus/rolemenu.py:653
 #, possible-python-brace-format
 msgctxt "rolemenu|select|success:purchase|desc"
-msgid "You have purchased the role {role} for {coin}**{amount}**"
+msgid "You have purchased the role **{role}** for {coin}**{amount}**"
 msgstr ""
 
-#: src/modules/rolemenus/rolemenu.py:660
+#: src/modules/rolemenus/rolemenu.py:658
 #, possible-python-brace-format
 msgctxt "rolemenu|select|success:nopurchase|desc"
-msgid "You have equipped the role {role}"
+msgid "You have equipped the role **{role}**"
 msgstr ""
 
-#: src/modules/rolemenus/rolemenu.py:666
+#: src/modules/rolemenus/rolemenu.py:664
 #, possible-python-brace-format
 msgctxt "rolemenu|select|expires_at"
 msgid "The role will expire at {timestamp}."
 msgstr ""
 
-#: src/modules/rolemenus/rolemenu.py:719
+#: src/modules/rolemenus/rolemenu.py:717
 #, possible-python-brace-format
 msgctxt "rolemenu|content:reactions"
 msgid "[Click here]({jump_link}) to jump back."

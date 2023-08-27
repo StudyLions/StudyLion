@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-16 17:01+0300\n"
+"POT-Creation-Date: 2023-08-27 16:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,39 +57,39 @@ msgctxt "dash:member_admin|dropdown|placeholder"
 msgid "Greetings and Initial Roles Panel"
 msgstr ""
 
-#: src/modules/member_admin/cog.py:233
+#: src/modules/member_admin/cog.py:234
 msgctxt "cmd:resetmember"
 msgid "resetmember"
 msgstr ""
 
-#: src/modules/member_admin/cog.py:236
+#: src/modules/member_admin/cog.py:237
 msgctxt "cmd:resetmember|desc"
 msgid "Reset (server-associated) member data for the target member or user."
 msgstr ""
 
-#: src/modules/member_admin/cog.py:240
+#: src/modules/member_admin/cog.py:241
 msgctxt "cmd:resetmember|param:target"
 msgid "member_to_reset"
 msgstr ""
 
-#: src/modules/member_admin/cog.py:241
+#: src/modules/member_admin/cog.py:242
 msgctxt "cmd:resetmember|param:saved_roles"
 msgid "saved_roles"
 msgstr ""
 
-#: src/modules/member_admin/cog.py:246
+#: src/modules/member_admin/cog.py:247
 msgctxt "cmd:resetmember|param:target|desc"
 msgid "Choose the member (current or past) you want to reset."
 msgstr ""
 
-#: src/modules/member_admin/cog.py:250
+#: src/modules/member_admin/cog.py:251
 msgctxt "cmd:resetmember|param:saved_roles|desc"
 msgid ""
 "Clear the saved roles for this member, so their past roles are not restored "
 "on rejoin."
 msgstr ""
 
-#: src/modules/member_admin/cog.py:276
+#: src/modules/member_admin/cog.py:278
 #, possible-python-brace-format
 msgctxt "cmd:resetmember|reset:saved_roles|success"
 msgid ""
@@ -97,17 +97,17 @@ msgid ""
 "roles if they rejoin."
 msgstr ""
 
-#: src/modules/member_admin/cog.py:284
+#: src/modules/member_admin/cog.py:286
 msgctxt "cmd:resetmember|error:nothing_to_do"
 msgid "No reset operation selected, nothing to do."
 msgstr ""
 
-#: src/modules/member_admin/cog.py:300
+#: src/modules/member_admin/cog.py:302
 msgctxt "cmd:configure_welcome"
 msgid "welcome"
 msgstr ""
 
-#: src/modules/member_admin/cog.py:303
+#: src/modules/member_admin/cog.py:305
 msgctxt "cmd:configure_welcome|desc"
 msgid "Configure new member greetings and roles."
 msgstr ""

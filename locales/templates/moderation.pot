@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-16 17:01+0300\n"
+"POT-Creation-Date: 2023-08-27 16:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -199,34 +199,34 @@ msgctxt "guildset:alert_channel|accepts"
 msgid "Alert channel name or id."
 msgstr ""
 
-#: src/modules/moderation/settings.py:98
+#: src/modules/moderation/settings.py:99
 #, possible-python-brace-format
 msgctxt "guildset:alert_channel|set_response:set"
 msgid "Moderation alerts will be sent to {channel}"
 msgstr ""
 
-#: src/modules/moderation/settings.py:103
+#: src/modules/moderation/settings.py:104
 msgctxt "guildset:alert_channel|set_response:unset"
 msgid "Moderation alerts will be ignored if the member cannot be reached."
 msgstr ""
 
-#: src/modules/moderation/settings.py:115
+#: src/modules/moderation/settings.py:116
 msgctxt "guildset:alert_channel|formatted:unset"
 msgid "Not Set (Only alert via direct message.)"
 msgstr ""
 
-#: src/modules/moderation/settings.py:122
+#: src/modules/moderation/settings.py:123
 msgctxt "guildset:mod_role"
 msgid "mod_role"
 msgstr ""
 
-#: src/modules/moderation/settings.py:125
+#: src/modules/moderation/settings.py:126
 msgctxt "guildset:mod_role|desc"
 msgid ""
 "Guild role permitted to view configuration and perform moderation tasks."
 msgstr ""
 
-#: src/modules/moderation/settings.py:129
+#: src/modules/moderation/settings.py:130
 msgctxt "guildset:mod_role|long_desc"
 msgid ""
 "Members with the set role will be able to access my configuration panels, "
@@ -235,23 +235,23 @@ msgid ""
 "they do not already have permission for in Discord."
 msgstr ""
 
-#: src/modules/moderation/settings.py:136
+#: src/modules/moderation/settings.py:137
 msgctxt "guildset:mod_role|accepts"
 msgid "Moderation role name or id."
 msgstr ""
 
-#: src/modules/moderation/settings.py:150
+#: src/modules/moderation/settings.py:151
 #, possible-python-brace-format
 msgctxt "guildset:mod_role|set_response:set"
 msgid "Members with the {role} will be considered moderators."
 msgstr ""
 
-#: src/modules/moderation/settings.py:155
+#: src/modules/moderation/settings.py:156
 msgctxt "guildset:mod_role|set_response:unset"
 msgid "No members will be given moderation privileges."
 msgstr ""
 
-#: src/modules/moderation/settings.py:167
+#: src/modules/moderation/settings.py:168
 msgctxt "guildset:mod_role|formatted:unset"
 msgid "Not Set."
 msgstr ""

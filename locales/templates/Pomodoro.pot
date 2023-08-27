@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-16 17:01+0300\n"
+"POT-Creation-Date: 2023-08-27 16:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: src/modules/pomodoro/timer.py:52
+#: src/modules/pomodoro/timer.py:50
 msgctxt "timer|stage:break|name"
 msgid "BREAK"
 msgstr ""
 
-#: src/modules/pomodoro/timer.py:53
+#: src/modules/pomodoro/timer.py:51
 msgctxt "timer|stage:focus|name"
 msgid "FOCUS"
 msgstr ""
@@ -34,7 +34,7 @@ msgctxt "timer|default_base_name"
 msgid "Timer {pattern}"
 msgstr ""
 
-#: src/modules/pomodoro/timer.py:392
+#: src/modules/pomodoro/timer.py:394
 #, possible-python-brace-format
 msgctxt "timer|kicked_message"
 msgid ""
@@ -46,20 +46,20 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/modules/pomodoro/timer.py:485
+#: src/modules/pomodoro/timer.py:487
 #, possible-python-brace-format
 msgctxt "timer|status|stage:focus|statusline"
 msgid "{channel} is now in **FOCUS**! Good luck, **BREAK** starts {timestamp}"
 msgstr ""
 
-#: src/modules/pomodoro/timer.py:490
+#: src/modules/pomodoro/timer.py:492
 #, possible-python-brace-format
 msgctxt "timer|status|stage:break|statusline"
 msgid ""
 "{channel} is now on **BREAK**! Take a rest, **FOCUS** starts {timestamp}"
 msgstr ""
 
-#: src/modules/pomodoro/timer.py:522
+#: src/modules/pomodoro/timer.py:524
 #, possible-python-brace-format
 msgctxt "timer|status|warningline"
 msgid ""
@@ -67,13 +67,13 @@ msgid ""
 "next stage."
 msgstr ""
 
-#: src/modules/pomodoro/timer.py:539
+#: src/modules/pomodoro/timer.py:543
 #, possible-python-brace-format
 msgctxt "timer|status|stopped:auto"
 msgid "Timer stopped! Join {channel} to start the timer."
 msgstr ""
 
-#: src/modules/pomodoro/timer.py:544
+#: src/modules/pomodoro/timer.py:548
 msgctxt "timer|status|stopped:manual"
 msgid "Timer stopped! Press `Start` to restart the timer."
 msgstr ""
@@ -93,72 +93,85 @@ msgctxt "dash:pomodoro|title"
 msgid "Pomodoro Configuration ({commands[configure pomodoro]})"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:307
+#: src/modules/pomodoro/settingui.py:85
+msgctxt "dash:stats|dropdown|placeholder"
+msgid "Pomodoro Timer Panel"
+msgstr ""
+
+#: src/modules/pomodoro/cog.py:83
+msgctxt "cmd_check:ready|failed"
+msgid ""
+"I am currently restarting! The Pomodoro timers will be unavailable until I "
+"have restarted. Thank you for your patience!"
+msgstr ""
+
+#: src/modules/pomodoro/cog.py:321
 msgctxt "cmd:pomodoro"
 msgid "timers"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:308
+#: src/modules/pomodoro/cog.py:322
 msgctxt "cmd:pomodoro|desc"
 msgid "Base group for all pomodoro timer commands."
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:316
+#: src/modules/pomodoro/cog.py:330
 msgctxt "cmd:pomodoro_status"
 msgid "show"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:317
+#: src/modules/pomodoro/cog.py:331
 msgctxt "cmd:pomodoro_status|desc"
 msgid "Display the status of a single pomodoro timer."
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:320
+#: src/modules/pomodoro/cog.py:334
 msgctxt "cmd:pomodoro_status|param:channel"
 msgid "timer_channel"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:325
+#: src/modules/pomodoro/cog.py:339
 msgctxt "cmd:pomodoro_status|param:channel|desc"
 msgid "The channel for which you want to view the timer."
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:343
+#: src/modules/pomodoro/cog.py:357
 #, possible-python-brace-format
 msgctxt "cmd:pomodoro_status|error:no_timer"
 msgid "The channel {channel} does not have a timer set up!"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:353
+#: src/modules/pomodoro/cog.py:367
 msgctxt "cmd:pomodoro_list"
 msgid "list"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:354
+#: src/modules/pomodoro/cog.py:368
 msgctxt "cmd:pomodoro_list|desc"
 msgid "List the available pomodoro timers."
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:376
+#: src/modules/pomodoro/cog.py:391
 #, possible-python-brace-format
 msgctxt "cmd:pomodoro_list|error:no_timers"
 msgid ""
 "No timers have been setup in this server!\n"
-"You can ask an admin to create one with {command}."
+"You can ask an admin to create one with {command}, or rent a private room "
+"and create one yourself!"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:388
+#: src/modules/pomodoro/cog.py:404
 msgctxt "cmd:pomodoro_list|error:no_visible_timers"
-msgid "There are no visible timers in this server!"
+msgid "There are no timers you can join in this server!"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:398
+#: src/modules/pomodoro/cog.py:414
 #, possible-python-brace-format
 msgctxt "cmd:pomodoro_list|embed:timer_list|title"
 msgid "Pomodoro Timers in **{guild}**"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:407
+#: src/modules/pomodoro/cog.py:423
 #, possible-python-brace-format
 msgctxt "cmd:pomodoro_list|status:stopped_auto"
 msgid ""
@@ -166,7 +179,7 @@ msgid ""
 "Join {channel} to restart it."
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:412
+#: src/modules/pomodoro/cog.py:428
 #, possible-python-brace-format
 msgctxt "cmd:pomodoro_list|status:stopped_manual"
 msgid ""
@@ -174,7 +187,7 @@ msgid ""
 "Join {channel} and press `Start` to start it!"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:419
+#: src/modules/pomodoro/cog.py:435
 #, possible-python-brace-format
 msgctxt "cmd:pomodoro_list|status:running_focus"
 msgid ""
@@ -182,7 +195,7 @@ msgid ""
 "Currently **focusing**, with break starting {timestamp}"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:425
+#: src/modules/pomodoro/cog.py:441
 #, possible-python-brace-format
 msgctxt "cmd:pomodoro_list|status:running_break"
 msgid ""
@@ -190,49 +203,49 @@ msgid ""
 "Currently **resting**, with focus starting {timestamp}"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:439
+#: src/modules/pomodoro/cog.py:455
 msgctxt "cmd:pomodoro_admin"
 msgid "admin"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:440
+#: src/modules/pomodoro/cog.py:456
 msgctxt "cmd:pomodoro_admin|desc"
 msgid "Command group for pomodoro admin controls."
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:446
+#: src/modules/pomodoro/cog.py:462
 msgctxt "cmd:pomodoro_create"
 msgid "create"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:449
+#: src/modules/pomodoro/cog.py:465
 msgctxt "cmd:pomodoro_create|desc"
 msgid "Create a new Pomodoro timer. Requires admin permissions."
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:453
+#: src/modules/pomodoro/cog.py:469
 msgctxt "cmd:pomodoro_create|param:channel"
 msgid "timer_channel"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:459
+#: src/modules/pomodoro/cog.py:475
 msgctxt "cmd:pomodoro_create|param:channel|desc"
 msgid ""
 "Voice channel to create the timer in. (Defaults to your current channel, or "
 "makes a new one.)"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:488
+#: src/modules/pomodoro/cog.py:504
 msgctxt "cmd:pomodoro_create|error:insufficient_perms"
 msgid "Only server administrators can create timers!"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:515
+#: src/modules/pomodoro/cog.py:531
 msgctxt "cmd:pomodoro_create|error:channel_create_failed|title"
 msgid "Could not create pomodoro voice channel!"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:519
+#: src/modules/pomodoro/cog.py:535
 msgctxt "cmd:pomodoro_create|error:channel_create|desc"
 msgid ""
 "Failed to create a new pomodoro voice channel due to an unknown Discord "
@@ -240,99 +253,99 @@ msgid ""
 "the `timer_channel` argument of this command."
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:533
+#: src/modules/pomodoro/cog.py:549
 msgctxt "cmd:pomodoro_create|error:channel_create_permissions|title"
 msgid "Could not create pomodoro voice channel!"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:537
+#: src/modules/pomodoro/cog.py:553
 msgctxt "cmd:pomodoro_create|error:channel_create_permissions|desc"
 msgid ""
 "No `timer_channel` was provided, and I lack the `MANAGE_CHANNELS` permission "
 "needed to create a new voice channel."
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:551
+#: src/modules/pomodoro/cog.py:567
 #, possible-python-brace-format
 msgctxt "cmd:pomodoro_create|error:timer_exists"
 msgid ""
 "A timer already exists in {channel}! Use `/pomodoro admin edit` to modify it."
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:590
+#: src/modules/pomodoro/cog.py:606
 msgctxt "cmd:pomodoro_create|response:success|content"
 msgid "Timer created successfully! Use the panel below to reconfigure."
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:596
+#: src/modules/pomodoro/cog.py:612
 msgctxt "cmd:pomodoro_destroy"
 msgid "destroy"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:599
+#: src/modules/pomodoro/cog.py:615
 msgctxt "cmd:pomodoro_destroy|desc"
 msgid ""
 "Delete a pomodoro timer from a voice channel. Requires admin permissions."
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:603
+#: src/modules/pomodoro/cog.py:619
 msgctxt "cmd:pomodoro_destroy|param:channel"
 msgid "timer_channel"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:606
+#: src/modules/pomodoro/cog.py:622
 msgctxt "cmd:pomodoro_destroy|param:channel"
 msgid "Channel with the timer to delete."
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:624
+#: src/modules/pomodoro/cog.py:640
 msgctxt "cmd:pomodoro_destroy|error:no_timer"
 msgid "This channel doesn't have an attached pomodoro timer!"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:639
+#: src/modules/pomodoro/cog.py:655
 msgctxt "cmd:pomodoro_destroy|error:insufficient_perms|owned"
 msgid ""
 "You need to be an administrator or own this channel to remove this timer!"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:649
+#: src/modules/pomodoro/cog.py:665
 msgctxt "cmd:pomodoro_destroy|error:insufficient_perms|notowned"
 msgid "You need to be a server administrator to remove this timer!"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:661
+#: src/modules/pomodoro/cog.py:677
 #, possible-python-brace-format
 msgctxt "cmd:pomdoro_destroy|response:success|description"
 msgid "Timer successfully removed from {channel}."
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:667
+#: src/modules/pomodoro/cog.py:683
 msgctxt "cmd:pomodoro_edit"
 msgid "edit"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:670
+#: src/modules/pomodoro/cog.py:686
 msgctxt "cmd:pomodoro_edit|desc"
 msgid "Edit a Timer"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:674
+#: src/modules/pomodoro/cog.py:690
 msgctxt "cmd:pomodoro_edit|param:channel"
 msgid "timer_channel"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:680
+#: src/modules/pomodoro/cog.py:696
 msgctxt "cmd:pomodoro_edit|param:channel|desc"
 msgid "Channel holding the timer to edit."
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:721
+#: src/modules/pomodoro/cog.py:737
 msgctxt "cmd:pomodoro_edit|error:no_timer"
 msgid "This channel doesn't have an attached pomodoro timer to edit!"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:734
+#: src/modules/pomodoro/cog.py:750
 msgctxt "cmd:pomodoro_edit|error:insufficient_perms|role:other"
 msgid ""
 "Insufficient permissions to modifiy this timer!\n"
@@ -340,28 +353,28 @@ msgid ""
 "manager role."
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:755
+#: src/modules/pomodoro/cog.py:771
 msgctxt "cmd:pomodoro_edit|error:insufficient_permissions|role_needed:admin"
 msgid "You need to be a guild admin to modify this option!"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:760
+#: src/modules/pomodoro/cog.py:776
 msgctxt "cmd:pomodoro_edit|error:insufficient_permissions|role_needed:owner"
 msgid "You need to be a channel owner or guild admin to modify this option!"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:765
+#: src/modules/pomodoro/cog.py:781
 msgctxt "cmd:pomodoro_edit|error:insufficient_permissions|role_needed:manager"
 msgid ""
 "You need to be a guild admin or have the manager role to modify this option!"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:801
+#: src/modules/pomodoro/cog.py:817
 msgctxt "cmd:configure_pomodoro"
 msgid "pomodoro"
 msgstr ""
 
-#: src/modules/pomodoro/cog.py:802
+#: src/modules/pomodoro/cog.py:818
 msgctxt "cmd:configure_pomodoro|desc"
 msgid "Configure Pomodoro Timer System"
 msgstr ""
@@ -439,52 +452,52 @@ msgctxt "timerset:inactivity_threshold|desc"
 msgid "How many timer cycles before kicking inactive members."
 msgstr ""
 
-#: src/modules/pomodoro/options.py:99
+#: src/modules/pomodoro/options.py:101
 msgctxt "timerset:manager_role"
 msgid "manager_role"
 msgstr ""
 
-#: src/modules/pomodoro/options.py:102
+#: src/modules/pomodoro/options.py:104
 msgctxt "timerset:manager_role|desc"
 msgid "Role allowed to start, stop, and edit the focus/break lengths."
 msgstr ""
 
-#: src/modules/pomodoro/options.py:114
+#: src/modules/pomodoro/options.py:116
 msgctxt "timerset:manager_role|format:notset"
 msgid "Not Set (Only Admins may start/stop or edit pattern)"
 msgstr ""
 
-#: src/modules/pomodoro/options.py:124
+#: src/modules/pomodoro/options.py:126
 msgctxt "timerset:voice_alerts"
 msgid "voice_alerts"
 msgstr ""
 
-#: src/modules/pomodoro/options.py:127
+#: src/modules/pomodoro/options.py:129
 msgctxt "timerset:voice_alerts|desc"
 msgid "Whether to join the voice channel and announce focus and break stages."
 msgstr ""
 
-#: src/modules/pomodoro/options.py:138
+#: src/modules/pomodoro/options.py:140
 msgctxt "timerset:base_name"
 msgid "name"
 msgstr ""
 
-#: src/modules/pomodoro/options.py:141
+#: src/modules/pomodoro/options.py:143
 msgctxt "timerset:base_name|desc"
 msgid "Timer name, as shown on the timer card."
 msgstr ""
 
-#: src/modules/pomodoro/options.py:145
+#: src/modules/pomodoro/options.py:147
 msgctxt "timerset:base_name|accepts"
 msgid "Any short name, shown on the timer card."
 msgstr ""
 
-#: src/modules/pomodoro/options.py:159
+#: src/modules/pomodoro/options.py:161
 msgctxt "timerset:channel_name_format"
 msgid "channel_name"
 msgstr ""
 
-#: src/modules/pomodoro/options.py:162
+#: src/modules/pomodoro/options.py:164
 #, possible-python-brace-format
 msgctxt "timerset:channel_name_format|desc"
 msgid ""
@@ -492,49 +505,49 @@ msgid ""
 "and {stage} keys."
 msgstr ""
 
-#: src/modules/pomodoro/options.py:166
+#: src/modules/pomodoro/options.py:168
 #, possible-python-brace-format
 msgctxt "timerset:channel_name|accepts"
 msgid ""
 "Timer channel name, with keys {remaining}, {name}, {pattern}, and {stage}."
 msgstr ""
 
-#: src/modules/pomodoro/options.py:178
+#: src/modules/pomodoro/options.py:180
 msgctxt "timerset:focus_length"
 msgid "focus_length"
 msgstr ""
 
-#: src/modules/pomodoro/options.py:181
+#: src/modules/pomodoro/options.py:183
 msgctxt "timerset:focus_length|desc"
 msgid "Length of the focus stage of the timer in minutes."
 msgstr ""
 
-#: src/modules/pomodoro/options.py:186
+#: src/modules/pomodoro/options.py:188
 msgctxt "timerset:focus_length|accepts"
 msgid "A positive integer number of minutes."
 msgstr ""
 
-#: src/modules/pomodoro/options.py:210
+#: src/modules/pomodoro/options.py:212
 msgctxt "timerset:focus_length|desc"
 msgid "Please enter a positive number of minutes."
 msgstr ""
 
-#: src/modules/pomodoro/options.py:218
+#: src/modules/pomodoro/options.py:220
 msgctxt "timerset:break_length"
 msgid "break_length"
 msgstr ""
 
-#: src/modules/pomodoro/options.py:221
+#: src/modules/pomodoro/options.py:223
 msgctxt "timerset:break_length|desc"
 msgid "Length of the break stage of the timer in minutes."
 msgstr ""
 
-#: src/modules/pomodoro/options.py:226
+#: src/modules/pomodoro/options.py:228
 msgctxt "timerset:break_length|accepts"
 msgid "A positive integer number of minutes."
 msgstr ""
 
-#: src/modules/pomodoro/options.py:250
+#: src/modules/pomodoro/options.py:252
 msgctxt "timerset:break_length|desc"
 msgid "Please enter a positive number of minutes."
 msgstr ""
@@ -567,18 +580,18 @@ msgctxt "guildset:pomodoro_channel|accepts"
 msgid "Timer notification channel name or id."
 msgstr ""
 
-#: src/modules/pomodoro/settings.py:50
+#: src/modules/pomodoro/settings.py:51
 #, possible-python-brace-format
 msgctxt "guildset:pomodoro_channel|set_response|set"
 msgid "Pomodoro timer notifications will now default to {channel}"
 msgstr ""
 
-#: src/modules/pomodoro/settings.py:55
+#: src/modules/pomodoro/settings.py:56
 msgctxt "guildset:pomodoro_channel|set_response|unset"
 msgid "Pomodoro timer notifications will now default to their voice channel."
 msgstr ""
 
-#: src/modules/pomodoro/settings.py:65
+#: src/modules/pomodoro/settings.py:66
 #, possible-python-brace-format
 msgctxt "guildset:pomdoro_channel|set_using"
 msgid "{cmd} or channel selector below."
@@ -589,34 +602,72 @@ msgctxt "modal:timer_editor|title"
 msgid "Timer Option Editor"
 msgstr ""
 
-#: src/modules/pomodoro/ui/status.py:58
+#: src/modules/pomodoro/ui/status.py:61
+msgctxt "ui:timer_status|button:present|ack"
+msgid ""
+"Thank you for marking your presence.\n"
+"Good luck and stay productive!"
+msgstr ""
+
+#: src/modules/pomodoro/ui/status.py:72
+#, possible-python-brace-format
+msgctxt "ui:timer_status|button:present|error:not_in_timer"
+msgid ""
+"You are not in this timer! Join the timer channel by pressing {channel}."
+msgstr ""
+
+#: src/modules/pomodoro/ui/status.py:82
 msgctxt "ui:timer_status|button:present|label"
 msgid "Present"
 msgstr ""
 
-#: src/modules/pomodoro/ui/status.py:81
+#: src/modules/pomodoro/ui/status.py:106
 msgctxt "ui:timer_status|button:edit|error:no_permissions"
 msgid ""
-"Configuring this timer requires guild admin permissions or the configured "
-"manager role!"
+"Configuring this timer requires `MANAGE_CHANNEL` permissions on the timer "
+"channel, or the configured manager role!"
 msgstr ""
 
-#: src/modules/pomodoro/ui/status.py:93
+#: src/modules/pomodoro/ui/status.py:119
 msgctxt "ui:timer_status|button:edit|label"
 msgid "Options"
 msgstr ""
 
-#: src/modules/pomodoro/ui/status.py:111
+#: src/modules/pomodoro/ui/status.py:138
 msgctxt "ui:timer_status|button:start|error:already_running"
 msgid "Cannot start a timer that is already running!"
 msgstr ""
 
-#: src/modules/pomodoro/ui/status.py:125
+#: src/modules/pomodoro/ui/status.py:154
+msgctxt "ui:timer_status|button:start|error:not_manager|title"
+msgid "Insufficient permissions!"
+msgstr ""
+
+#: src/modules/pomodoro/ui/status.py:158
+msgctxt "ui:timer_status|button:start|error:not_manager|desc"
+msgid ""
+"Starting this timer requires `MANAGE_CHANNEL` permissions on the timer "
+"channel, or the configured `manager_role`!"
+msgstr ""
+
+#: src/modules/pomodoro/ui/status.py:168
 msgctxt "ui:timer_status|button:start|label"
 msgid "Start"
 msgstr ""
 
-#: src/modules/pomodoro/ui/status.py:142
+#: src/modules/pomodoro/ui/status.py:190
+msgctxt "ui:timer_status|button:stop|error:not_manager|title"
+msgid "Insufficient permissions!"
+msgstr ""
+
+#: src/modules/pomodoro/ui/status.py:194
+msgctxt "ui:timer_status|button:stop|error:not_manager|desc"
+msgid ""
+"Stopping this timer requires `MANAGE_CHANNEL` permissions on the timer "
+"channel, or the configured `manager_role`!"
+msgstr ""
+
+#: src/modules/pomodoro/ui/status.py:204
 msgctxt "ui:timer_status|button:stop|label"
 msgid "Stop"
 msgstr ""

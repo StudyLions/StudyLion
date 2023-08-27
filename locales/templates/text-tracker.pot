@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-16 17:01+0300\n"
+"POT-Creation-Date: 2023-08-27 16:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,6 +50,11 @@ msgstr ""
 #: src/tracking/text/ui.py:89
 msgctxt "dash:text_tracking|title"
 msgid "Message XP configuration ({commands[configure message_exp]})"
+msgstr ""
+
+#: src/tracking/text/ui.py:93
+msgctxt "dash:text_tracking|dropdown|placeholder"
+msgid "Message XP Panel"
 msgstr ""
 
 #: src/tracking/text/settings.py:33

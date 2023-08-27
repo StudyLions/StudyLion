@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-16 17:01+0300\n"
+"POT-Creation-Date: 2023-08-27 16:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,65 +17,70 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/sysadmin/exec_cog.py:252
-msgid "async"
-msgstr ""
-
-#: src/modules/sysadmin/exec_cog.py:253
-msgid "Execute arbitrary code with Exec"
+#: src/modules/sysadmin/exec_cog.py:257
+msgctxt "ward:sys_admin|failed"
+msgid "You must be a bot owner to do this!"
 msgstr ""
 
 #: src/modules/sysadmin/exec_cog.py:262
+msgid "async"
+msgstr ""
+
+#: src/modules/sysadmin/exec_cog.py:263
+msgid "Execute arbitrary code with Exec"
+msgstr ""
+
+#: src/modules/sysadmin/exec_cog.py:272
 msgctxt "command"
 msgid "eval"
 msgstr ""
 
-#: src/modules/sysadmin/exec_cog.py:263
+#: src/modules/sysadmin/exec_cog.py:273
 msgctxt "command:eval"
 msgid "Execute arbitrary code with Eval"
 msgstr ""
 
-#: src/modules/sysadmin/exec_cog.py:266
+#: src/modules/sysadmin/exec_cog.py:276
 msgctxt "command:eval|param:string"
 msgid "Code to evaluate."
 msgstr ""
 
-#: src/modules/sysadmin/exec_cog.py:273
+#: src/modules/sysadmin/exec_cog.py:283
 msgctxt "command"
 msgid "asyncall"
 msgstr ""
 
-#: src/modules/sysadmin/exec_cog.py:274
+#: src/modules/sysadmin/exec_cog.py:284
 msgctxt "command:asyncall|desc"
 msgid "Execute arbitrary code on all shards."
 msgstr ""
 
-#: src/modules/sysadmin/exec_cog.py:277
+#: src/modules/sysadmin/exec_cog.py:287
 msgctxt "command:asyncall|param:string"
 msgid "Cross-shard code to execute. Cannot reference ctx!"
 msgstr ""
 
-#: src/modules/sysadmin/exec_cog.py:278
+#: src/modules/sysadmin/exec_cog.py:288
 msgctxt "command:asyncall|param:target"
 msgid "Target shard app name, see autocomplete for options."
 msgstr ""
 
-#: src/modules/sysadmin/exec_cog.py:333
+#: src/modules/sysadmin/exec_cog.py:343
 msgid "reload"
 msgstr ""
 
-#: src/modules/sysadmin/exec_cog.py:334
+#: src/modules/sysadmin/exec_cog.py:344
 msgid "Reload a given LionBot extension. Launches an ExecUI."
 msgstr ""
 
-#: src/modules/sysadmin/exec_cog.py:337
+#: src/modules/sysadmin/exec_cog.py:347
 msgid "Name of the extesion to reload. See autocomplete for options."
 msgstr ""
 
-#: src/modules/sysadmin/exec_cog.py:369
+#: src/modules/sysadmin/exec_cog.py:379
 msgid "shutdown"
 msgstr ""
 
-#: src/modules/sysadmin/exec_cog.py:370
+#: src/modules/sysadmin/exec_cog.py:380
 msgid "Shutdown (or restart) the client."
 msgstr ""

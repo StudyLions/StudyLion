@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-16 17:01+0300\n"
+"POT-Creation-Date: 2023-08-27 16:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,171 +18,171 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: src/modules/tasklist/cog.py:34
+#: src/modules/tasklist/cog.py:35
 msgctxt "argtype:Before|opt:HOUR"
 msgid "The last hour"
 msgstr ""
 
-#: src/modules/tasklist/cog.py:35
+#: src/modules/tasklist/cog.py:36
 msgctxt "argtype:Before|opt:HALFDAY"
 msgid "The last 12 hours"
 msgstr ""
 
-#: src/modules/tasklist/cog.py:36
+#: src/modules/tasklist/cog.py:37
 msgctxt "argtype:Before|opt:DAY"
 msgid "The last 24 hours"
 msgstr ""
 
-#: src/modules/tasklist/cog.py:37
+#: src/modules/tasklist/cog.py:38
 msgctxt "argtype:Before|opt:TODAY"
 msgid "Today"
 msgstr ""
 
-#: src/modules/tasklist/cog.py:38
+#: src/modules/tasklist/cog.py:39
 msgctxt "argtype:Before|opt:YESTERDAY"
 msgid "Yesterday"
 msgstr ""
 
-#: src/modules/tasklist/cog.py:39
+#: src/modules/tasklist/cog.py:40
 msgctxt "argtype:Before|opt:Monday"
 msgid "This Monday"
 msgstr ""
 
-#: src/modules/tasklist/cog.py:40
+#: src/modules/tasklist/cog.py:41
 msgctxt "argtype:Before|opt:THISMONTH"
 msgid "This Month"
 msgstr ""
 
-#: src/modules/tasklist/cog.py:222
+#: src/modules/tasklist/cog.py:225
 msgctxt "cmd:tasklist"
 msgid "tasklist"
 msgstr ""
 
-#: src/modules/tasklist/cog.py:225
+#: src/modules/tasklist/cog.py:228
 msgctxt "cmd:tasklist|desc"
 msgid "Open your tasklist."
 msgstr ""
 
-#: src/modules/tasklist/cog.py:234
+#: src/modules/tasklist/cog.py:237
 msgctxt "group:tasks"
 msgid "tasks"
 msgstr ""
 
-#: src/modules/tasklist/cog.py:235
+#: src/modules/tasklist/cog.py:238
 msgctxt "group:tasks|desc"
 msgid "Base command group for tasklist commands."
 msgstr ""
 
-#: src/modules/tasklist/cog.py:257
+#: src/modules/tasklist/cog.py:260
 msgctxt "argtype:taskid|error:no_tasks"
 msgid "Tasklist empty! No matching tasks."
 msgstr ""
 
-#: src/modules/tasklist/cog.py:302
+#: src/modules/tasklist/cog.py:305
 #, possible-python-brace-format
 msgctxt "argtype:taskid|error:parse_multi"
 msgid "(Warning: {error})"
 msgstr ""
 
-#: src/modules/tasklist/cog.py:336
+#: src/modules/tasklist/cog.py:339
 #, possible-python-brace-format
 msgctxt "argtype:taskid|error:no_matching"
 msgid "No tasks matching '{partial}'!"
 msgstr ""
 
-#: src/modules/tasklist/cog.py:356
+#: src/modules/tasklist/cog.py:359
 msgctxt "cmd:tasks_new"
 msgid "new"
 msgstr ""
 
-#: src/modules/tasklist/cog.py:359
+#: src/modules/tasklist/cog.py:362
 msgctxt "cmd:tasks_new|desc"
 msgid "Add a new task to your tasklist."
 msgstr ""
 
-#: src/modules/tasklist/cog.py:363
+#: src/modules/tasklist/cog.py:366
 msgctxt "cmd:tasks_new|param:content"
 msgid "task"
 msgstr ""
 
-#: src/modules/tasklist/cog.py:364
+#: src/modules/tasklist/cog.py:367
 msgctxt "cmd:tasks_new|param:parent"
 msgid "parent"
 msgstr ""
 
-#: src/modules/tasklist/cog.py:367
+#: src/modules/tasklist/cog.py:370
 msgctxt "cmd:tasks_new|param:content|desc"
 msgid "Content of your new task."
 msgstr ""
 
-#: src/modules/tasklist/cog.py:368
+#: src/modules/tasklist/cog.py:371
 msgctxt "cmd:tasks_new|param:parent"
 msgid "Parent of this task."
 msgstr ""
 
-#: src/modules/tasklist/cog.py:388
+#: src/modules/tasklist/cog.py:391
 #, possible-python-brace-format
 msgctxt "cmd:tasks_new|error:parse_parent"
 msgid "Could not find parent task number `{input}` in your tasklist."
 msgstr ""
 
-#: src/modules/tasklist/cog.py:403
+#: src/modules/tasklist/cog.py:406
 #, possible-python-brace-format
 msgctxt "cmd:tasks_new|resp:success"
 msgid "{tick} Created task `{label}`."
 msgstr ""
 
-#: src/modules/tasklist/cog.py:415
+#: src/modules/tasklist/cog.py:418
 msgctxt "cmd:tasks_upload"
 msgid "upload"
 msgstr ""
 
-#: src/modules/tasklist/cog.py:418
+#: src/modules/tasklist/cog.py:421
 msgctxt "cmd:tasks_upload|desc"
 msgid "Upload a list of tasks to append to or replace your tasklist."
 msgstr ""
 
-#: src/modules/tasklist/cog.py:422
+#: src/modules/tasklist/cog.py:425
 msgctxt "cmd:tasks_upload|param:tasklist"
 msgid "tasklist"
 msgstr ""
 
-#: src/modules/tasklist/cog.py:423
+#: src/modules/tasklist/cog.py:426
 msgctxt "cmd:tasks_upload|param:append"
 msgid "append"
 msgstr ""
 
-#: src/modules/tasklist/cog.py:428
+#: src/modules/tasklist/cog.py:431
 msgctxt "cmd:tasks_upload|param:tasklist|desc"
 msgid ""
 "Text file containing a (standard markdown formatted) checklist of tasks to "
 "add or append."
 msgstr ""
 
-#: src/modules/tasklist/cog.py:432
+#: src/modules/tasklist/cog.py:435
 msgctxt "cmd:tasks_upload|param:append|desc"
 msgid ""
 "Whether to append the given tasks or replace your entire tasklist. Defaults "
 "to True."
 msgstr ""
 
-#: src/modules/tasklist/cog.py:448
+#: src/modules/tasklist/cog.py:451
 msgctxt "cmd:tasks_upload|error:not_text"
 msgid "The attached tasklist must be a text file!"
 msgstr ""
 
-#: src/modules/tasklist/cog.py:456
+#: src/modules/tasklist/cog.py:459
 msgctxt "cmd:tasks_upload|error:too_large"
 msgid "The attached tasklist was too large!"
 msgstr ""
 
-#: src/modules/tasklist/cog.py:467
+#: src/modules/tasklist/cog.py:470
 msgctxt "cmd:tasks_upload|error:too_many_lines"
 msgid ""
 "Too many tasks! Refusing to process a tasklist with more than `1000` lines."
 msgstr ""
 
-#: src/modules/tasklist/cog.py:473
+#: src/modules/tasklist/cog.py:476
 msgctxt "cmd:tasks_upload|error:decoding"
 msgid ""
 "Could not decode attached tasklist. Please make sure it is saved with the "
@@ -449,19 +449,19 @@ msgid ""
 "up to a maximum of `{limit}` tasks per 24h."
 msgstr ""
 
-#: src/modules/tasklist/tasklist.py:254
+#: src/modules/tasklist/tasklist.py:264
 #, possible-python-brace-format
 msgctxt "tasklist|parse:multi-range|error:parents_match"
 msgid "Parents don't match in range `{range}`"
 msgstr ""
 
-#: src/modules/tasklist/tasklist.py:276
+#: src/modules/tasklist/tasklist.py:286
 #, possible-python-brace-format
 msgctxt "tasklist|parse:multi-range|error:parse"
 msgid "Could not parse `{range}` as a task number or range."
 msgstr ""
 
-#: src/modules/tasklist/tasklist.py:307
+#: src/modules/tasklist/tasklist.py:317
 #, possible-python-brace-format
 msgctxt "modal:tasklist_bulk_editor|error:parse_task"
 msgid ""
@@ -469,37 +469,37 @@ msgid ""
 "`{input}`"
 msgstr ""
 
-#: src/modules/tasklist/tasklist.py:319
+#: src/modules/tasklist/tasklist.py:329
 msgctxt "modal:tasklist_bulk_editor|error:task_too_long"
 msgid "Please keep your tasks under 100 characters!"
 msgstr ""
 
-#: src/modules/tasklist/ui.py:38
+#: src/modules/tasklist/ui.py:39
 msgctxt "ui:tasklist_caller|button:tasklist|label"
 msgid "Open Tasklist"
 msgstr ""
 
-#: src/modules/tasklist/ui.py:56
+#: src/modules/tasklist/ui.py:57
 msgctxt "modal:tasklist_single_editor|field:task|label"
 msgid "Task content"
 msgstr ""
 
-#: src/modules/tasklist/ui.py:68
+#: src/modules/tasklist/ui.py:69
 msgctxt "modal:tasklist_single_editor|field:parent|label"
 msgid "Parent Task"
 msgstr ""
 
-#: src/modules/tasklist/ui.py:72
+#: src/modules/tasklist/ui.py:73
 msgctxt "modal:tasklist_single_editor|field:parent|placeholder"
 msgid "Enter a task number, e.g. 2.1"
 msgstr ""
 
-#: src/modules/tasklist/ui.py:103
+#: src/modules/tasklist/ui.py:104
 msgctxt "modal:tasklist_bulk_editor|field:tasklist|label"
 msgid "Tasklist"
 msgstr ""
 
-#: src/modules/tasklist/ui.py:107
+#: src/modules/tasklist/ui.py:108
 msgctxt "modal:tasklist_bulk_editor|field:tasklist|placeholder"
 msgid ""
 "- [ ] This is task 1, unfinished.\n"
@@ -507,51 +507,51 @@ msgid ""
 "  - [ ] This is subtask 2.1."
 msgstr ""
 
-#: src/modules/tasklist/ui.py:129
+#: src/modules/tasklist/ui.py:130
 msgctxt "modal:tasklist_bulk_editor"
 msgid "Tasklist Editor"
 msgstr ""
 
-#: src/modules/tasklist/ui.py:185
+#: src/modules/tasklist/ui.py:188
 msgctxt "ui:tasklist|menu:main|mode:toggle|placeholder"
 msgid "Select to Toggle"
 msgstr ""
 
-#: src/modules/tasklist/ui.py:189
+#: src/modules/tasklist/ui.py:192
 #, possible-python-brace-format
 msgctxt "ui:tasklist|menu:sub|mode:toggle|placeholder"
 msgid "Toggle from {label}.*"
 msgstr ""
 
-#: src/modules/tasklist/ui.py:195
+#: src/modules/tasklist/ui.py:198
 msgctxt "ui:tasklist|menu:main|mode:edit|placeholder"
 msgid "Select to Edit"
 msgstr ""
 
-#: src/modules/tasklist/ui.py:199
+#: src/modules/tasklist/ui.py:202
 #, possible-python-brace-format
 msgctxt "ui:tasklist|menu:sub|mode:edit|placeholder"
 msgid "Edit from {label}.*"
 msgstr ""
 
-#: src/modules/tasklist/ui.py:205
+#: src/modules/tasklist/ui.py:208
 msgctxt "ui:tasklist|menu:main|mode:delete|placeholder"
 msgid "Select to Delete"
 msgstr ""
 
-#: src/modules/tasklist/ui.py:209
+#: src/modules/tasklist/ui.py:212
 #, possible-python-brace-format
 msgctxt "ui:tasklist|menu:sub|mode:delete|placeholder"
 msgid "Delete from {label}.*"
 msgstr ""
 
-#: src/modules/tasklist/ui.py:405
+#: src/modules/tasklist/ui.py:408
 #, possible-python-brace-format
 msgctxt "ui:tasklist_single_editor|field:parent|error:parse_id"
 msgid "Could not find the given parent task number `{input}` in your tasklist."
 msgstr ""
 
-#: src/modules/tasklist/ui.py:419
+#: src/modules/tasklist/ui.py:422
 #, possible-python-brace-format
 msgctxt "ui:tasklist_single_editor|field:parent|error:multiple_matching"
 msgid ""
@@ -559,77 +559,77 @@ msgid ""
 "number instead!"
 msgstr ""
 
-#: src/modules/tasklist/ui.py:426
+#: src/modules/tasklist/ui.py:429
 #, possible-python-brace-format
 msgctxt "ui:tasklist_single_editor|field:parent|error:no_matching"
 msgid "No tasks matching given parent task `{input}`."
 msgstr ""
 
-#: src/modules/tasklist/ui.py:497
+#: src/modules/tasklist/ui.py:500
 msgctxt "ui:tasklist|menu:edit|modal:title"
 msgid "Edit task"
 msgstr ""
 
-#: src/modules/tasklist/ui.py:590
+#: src/modules/tasklist/ui.py:593
 msgctxt "ui:tasklist_single_editor|title"
 msgid "Add task"
 msgstr ""
 
-#: src/modules/tasklist/ui.py:623
+#: src/modules/tasklist/ui.py:626
 msgctxt "ui:tasklist|button:edit_mode|label"
 msgid "Edit"
 msgstr ""
 
-#: src/modules/tasklist/ui.py:639
+#: src/modules/tasklist/ui.py:642
 msgctxt "ui:tasklist|button:delete_mode|label"
 msgid "Delete"
 msgstr ""
 
-#: src/modules/tasklist/ui.py:655
+#: src/modules/tasklist/ui.py:658
 msgctxt "ui:tasklist|button:toggle_mode|label"
 msgid "Toggle"
 msgstr ""
 
-#: src/modules/tasklist/ui.py:672
+#: src/modules/tasklist/ui.py:675
 msgctxt "ui:tasklist|button:edit_bulk|error:too_long"
 msgid ""
 "Your tasklist is too long to be edited in a Discord text input! Use the save "
 "button and {cmds[tasks upload]} instead."
 msgstr ""
 
-#: src/modules/tasklist/ui.py:686
+#: src/modules/tasklist/ui.py:689
 msgctxt "ui:tasklist|button:edit_bulk|label"
 msgid "Bulk Edit"
 msgstr ""
 
-#: src/modules/tasklist/ui.py:699
+#: src/modules/tasklist/ui.py:702
 msgctxt "ui:tasklist|button:clear|label"
 msgid "Clear Tasklist"
 msgstr ""
 
-#: src/modules/tasklist/ui.py:718
+#: src/modules/tasklist/ui.py:721
 #, possible-python-brace-format
 msgctxt "ui:tasklist|button:save|dm:contents"
 msgid "Your tasklist as of {now} is attached. Click here to jump back: {jump}"
 msgstr ""
 
-#: src/modules/tasklist/ui.py:731
+#: src/modules/tasklist/ui.py:734
 msgctxt "ui:tasklist|button:save|error:dms"
 msgid "Could not DM you! Do you have me blocked? Tasklist attached below."
 msgstr ""
 
-#: src/modules/tasklist/ui.py:776
+#: src/modules/tasklist/ui.py:779
 msgctxt "ui:tasklist|error:wrong_user"
 msgid "This is not your tasklist!"
 msgstr ""
 
-#: src/modules/tasklist/ui.py:818
+#: src/modules/tasklist/ui.py:821
 #, possible-python-brace-format
 msgctxt "ui:tasklist|embed|author"
 msgid "{name}'s tasklist ({completed}/{total} complete)"
 msgstr ""
 
-#: src/modules/tasklist/ui.py:840
+#: src/modules/tasklist/ui.py:843
 msgctxt "ui:tasklist|embed|description"
 msgid ""
 "**You have no tasks on your tasklist!**\n"
@@ -775,4 +775,9 @@ msgstr ""
 #: src/modules/tasklist/settings.py:320
 msgctxt "dash:tasklist|name"
 msgid "Tasklist Configuration ({commands[configure tasklist]})"
+msgstr ""
+
+#: src/modules/tasklist/settings.py:323
+msgctxt "dash:tasklist|dropdown|placeholder"
+msgid "Tasklist Options Panel"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-16 17:01+0300\n"
+"POT-Creation-Date: 2023-08-27 16:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,49 +27,49 @@ msgctxt "cmd:me|desc"
 msgid "Display your personal profile and summary statistics."
 msgstr ""
 
-#: src/modules/statistics/cog.py:54
+#: src/modules/statistics/cog.py:55
 msgctxt "cmd:stats"
 msgid "stats"
 msgstr ""
 
-#: src/modules/statistics/cog.py:57
+#: src/modules/statistics/cog.py:58
 msgctxt "cmd:stats|desc"
 msgid "Weekly and monthly statistics for your recent activity."
 msgstr ""
 
-#: src/modules/statistics/cog.py:69
+#: src/modules/statistics/cog.py:71
 msgctxt "cmd:leaderboard"
 msgid "leaderboard"
 msgstr ""
 
-#: src/modules/statistics/cog.py:72
+#: src/modules/statistics/cog.py:74
 msgctxt "cmd:leaderboard|desc"
 msgid "Server leaderboard."
 msgstr ""
 
-#: src/modules/statistics/cog.py:88
+#: src/modules/statistics/cog.py:91
 msgctxt "cmd:configure_statistics"
 msgid "statistics"
 msgstr ""
 
-#: src/modules/statistics/cog.py:89
+#: src/modules/statistics/cog.py:92
 msgctxt "cmd:configure_statistics|desc"
 msgid "Statistics configuration panel"
 msgstr ""
 
-#: src/modules/statistics/cog.py:92
+#: src/modules/statistics/cog.py:95
 msgctxt "cmd:configure_statistics|param:season_start"
 msgid "season_start"
 msgstr ""
 
-#: src/modules/statistics/cog.py:97
+#: src/modules/statistics/cog.py:100
 msgctxt "cmd:configure_statistics|param:season_start|desc"
 msgid ""
 "Time from which to start counting activity for rank badges and season "
-"leadeboards."
+"leaderboards. (YYYY-MM-DD)"
 msgstr ""
 
-#: src/modules/statistics/cog.py:127
+#: src/modules/statistics/cog.py:130
 #, possible-python-brace-format
 msgctxt "cmd:configure_statistics|resp:success|desc"
 msgid ""
@@ -178,7 +178,7 @@ msgctxt "guildset:season_start|parse|error:future_time"
 msgid "Provided season start time {timestamp} is in the future!"
 msgstr ""
 
-#: src/modules/statistics/settings.py:135
+#: src/modules/statistics/settings.py:136
 #, possible-python-brace-format
 msgctxt "guildset:season_start|set_response|set"
 msgid ""
@@ -187,7 +187,7 @@ msgid ""
 "refresh immediately."
 msgstr ""
 
-#: src/modules/statistics/settings.py:144
+#: src/modules/statistics/settings.py:145
 #, possible-python-brace-format
 msgctxt "guildset:season_start|set_response|unset"
 msgid ""
@@ -196,131 +196,136 @@ msgid ""
 "refresh immediately."
 msgstr ""
 
-#: src/modules/statistics/settings.py:155
+#: src/modules/statistics/settings.py:156
 msgctxt "guildset:unranked_roles"
 msgid "unranked_roles"
 msgstr ""
 
-#: src/modules/statistics/settings.py:158
+#: src/modules/statistics/settings.py:159
 msgctxt "guildset:unranked_roles|desc"
 msgid "Roles to exclude from the leaderboards."
 msgstr ""
 
-#: src/modules/statistics/settings.py:162
+#: src/modules/statistics/settings.py:163
 msgctxt "guildset:unranked_roles|long_desc"
 msgid ""
 "When set, members with *any* of these roles will not appear on the /"
 "leaderboard ranking list."
 msgstr ""
 
-#: src/modules/statistics/settings.py:166
+#: src/modules/statistics/settings.py:167
 msgctxt "guildset:unranked_roles|accepts"
 msgid "Comma separated list of unranked role names or ids."
 msgstr ""
 
-#: src/modules/statistics/settings.py:182
+#: src/modules/statistics/settings.py:183
 msgctxt "guildset:unranked_roles|set_using"
 msgid "Role selector below."
 msgstr ""
 
-#: src/modules/statistics/settings.py:192
+#: src/modules/statistics/settings.py:193
 #, possible-python-brace-format
 msgctxt "guildset:unranked_roles|set_response|set"
 msgid ""
 "Members of the following roles will not appear on the leaderboard: {roles}"
 msgstr ""
 
-#: src/modules/statistics/settings.py:199
+#: src/modules/statistics/settings.py:200
 msgctxt "guildset:unranked_roles|set_response|unset"
 msgid "You have cleared the unranked role list."
 msgstr ""
 
-#: src/modules/statistics/settings.py:213
+#: src/modules/statistics/settings.py:214
 msgctxt "guildset:visible_stats"
 msgid "visible_stats"
 msgstr ""
 
-#: src/modules/statistics/settings.py:216
+#: src/modules/statistics/settings.py:217
 msgctxt "guildset:visible_stats|desc"
 msgid "Which statistics will be visible in the statistics commands."
 msgstr ""
 
-#: src/modules/statistics/settings.py:220
+#: src/modules/statistics/settings.py:221
 msgctxt "guildset:visible_stats|desc"
 msgid ""
 "Choose which statistics types to display in the leaderboard and statistics "
 "commands."
 msgstr ""
 
-#: src/modules/statistics/settings.py:224
+#: src/modules/statistics/settings.py:225
 msgctxt "guildset:visible_stats|accepts"
 msgid "Voice, Text, Anki"
 msgstr ""
 
-#: src/modules/statistics/settings.py:245
+#: src/modules/statistics/settings.py:246
 msgctxt "guildset:visible_stats|set_using"
 msgid "Option menu below."
 msgstr ""
 
-#: src/modules/statistics/settings.py:253
+#: src/modules/statistics/settings.py:254
 #, possible-python-brace-format
 msgctxt "guildset:visible_stats|set_response"
 msgid "Members will be able to view the following statistics types: {types}"
 msgstr ""
 
-#: src/modules/statistics/settings.py:263
+#: src/modules/statistics/settings.py:264
 msgctxt "guildset:default_stat"
 msgid "default_stat"
 msgstr ""
 
-#: src/modules/statistics/settings.py:266
+#: src/modules/statistics/settings.py:267
 msgctxt "guildset:default_stat|desc"
 msgid "Statistic type to display by default in setting dialogues."
 msgstr ""
 
-#: src/modules/statistics/settings.py:270
+#: src/modules/statistics/settings.py:271
 msgctxt "guildset:default_stat|long_desc"
 msgid "Which statistic type to display by default in setting dialogues."
 msgstr ""
 
-#: src/modules/statistics/settings.py:303
+#: src/modules/statistics/settings.py:304
 msgctxt "ui:statistics_config|menu:unranked_roles|placeholder"
 msgid "Select Unranked Roles"
 msgstr ""
 
-#: src/modules/statistics/settings.py:327
+#: src/modules/statistics/settings.py:328
 msgctxt "ui:statistics_config|menu:visible_stats|item:voice|mode:voice"
 msgid "Voice Activity"
 msgstr ""
 
-#: src/modules/statistics/settings.py:332
+#: src/modules/statistics/settings.py:333
 msgctxt "ui:statistics_config|menu:visible_stats|item:voice|mode:study"
 msgid "Study Statistics"
 msgstr ""
 
-#: src/modules/statistics/settings.py:342
+#: src/modules/statistics/settings.py:343
 msgctxt "ui:statistics_config|menu:visible_stats|item:text"
 msgid "Message Activity"
 msgstr ""
 
-#: src/modules/statistics/settings.py:350
+#: src/modules/statistics/settings.py:351
 msgctxt "ui:statistics_config|menu:visible_stats|item:anki"
 msgid "Anki Reviews"
 msgstr ""
 
-#: src/modules/statistics/settings.py:361
+#: src/modules/statistics/settings.py:362
 msgctxt "ui:statistics_config|menu:visible_stats|placeholder"
 msgid "Select Visible Statistics"
 msgstr ""
 
-#: src/modules/statistics/settings.py:382
+#: src/modules/statistics/settings.py:383
 msgctxt "ui:statistics_config|embed|title"
 msgid "Statistics Configuration Panel"
 msgstr ""
 
-#: src/modules/statistics/settings.py:396
+#: src/modules/statistics/settings.py:405
 msgctxt "dash:stats|title"
 msgid "Activity Statistics Configuration ({commands[configure statistics]})"
+msgstr ""
+
+#: src/modules/statistics/settings.py:409
+msgctxt "dash:stats|dropdown|placeholder"
+msgid "Activity Statistics Panel"
 msgstr ""
 
 #: src/modules/statistics/ui/goals.py:92

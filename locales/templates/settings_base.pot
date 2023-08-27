@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-16 17:01+0300\n"
+"POT-Creation-Date: 2023-08-27 16:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,102 +73,102 @@ msgctxt "settype:channel|accepts"
 msgid "A channel name or id"
 msgstr ""
 
-#: src/settings/setting_types.py:281
+#: src/settings/setting_types.py:282
 #, possible-python-brace-format
 msgctxt "settype:channel|parse|error:not_found"
 msgid "Channel `{string}` could not be found in this guild!"
 msgstr ""
 
-#: src/settings/setting_types.py:367
+#: src/settings/setting_types.py:368
 msgctxt "settype:role|accepts"
 msgid "A role name or id"
 msgstr ""
 
-#: src/settings/setting_types.py:426
+#: src/settings/setting_types.py:427
 #, possible-python-brace-format
 msgctxt "settype:role|parse|error:not_found"
 msgid "Role `{string}` could not be found in this guild!"
 msgstr ""
 
-#: src/settings/setting_types.py:491
+#: src/settings/setting_types.py:492
 msgctxt "settype:bool|accepts"
 msgid "Enabled/Disabled"
 msgstr ""
 
-#: src/settings/setting_types.py:496
+#: src/settings/setting_types.py:497
 msgctxt "settype:bool|parse:truthy_values"
 msgid "enabled|yes|true|on|enable|1"
 msgstr ""
 
-#: src/settings/setting_types.py:500
+#: src/settings/setting_types.py:501
 msgctxt "settype:bool|parse:falsey_values"
 msgid "disabled|no|false|off|disable|0"
 msgstr ""
 
-#: src/settings/setting_types.py:505
+#: src/settings/setting_types.py:506
 msgctxt "settype:bool|output:true"
 msgid "On"
 msgstr ""
 
-#: src/settings/setting_types.py:506
+#: src/settings/setting_types.py:507
 msgctxt "settype:bool|output:false"
 msgid "Off"
 msgstr ""
 
-#: src/settings/setting_types.py:507
+#: src/settings/setting_types.py:508
 msgctxt "settype:bool|output:none"
 msgid "Not Set"
 msgstr ""
 
-#: src/settings/setting_types.py:618
+#: src/settings/setting_types.py:619
 msgctxt "settype:integer|accepts"
 msgid "An integer"
 msgstr ""
 
-#: src/settings/setting_types.py:681
+#: src/settings/setting_types.py:682
 msgctxt "settype:emoji|desc"
 msgid "Unicode or custom emoji"
 msgstr ""
 
-#: src/settings/setting_types.py:753
+#: src/settings/setting_types.py:754
 msgctxt "settype:guildid|accepts"
 msgid "Any Snowflake ID"
 msgstr ""
 
-#: src/settings/setting_types.py:822
+#: src/settings/setting_types.py:823
 msgctxt "settype:timezone|accepts"
 msgid "A timezone name from the 'tz database' (e.g. 'Europe/London')"
 msgstr ""
 
-#: src/settings/setting_types.py:892
+#: src/settings/setting_types.py:893
 msgctxt "settype:timezone|summary_table|field:supported|key"
 msgid "Supported"
 msgstr ""
 
-#: src/settings/setting_types.py:896
+#: src/settings/setting_types.py:897
 #, possible-python-brace-format
 msgctxt "settype:timezone|summary_table|field:supported|value"
 msgid "Any timezone from the [tz database]({link})."
 msgstr ""
 
-#: src/settings/setting_types.py:913
+#: src/settings/setting_types.py:914
 #, possible-python-brace-format
 msgctxt "set_type:timezone|acmpl|no_matching"
 msgid "No timezones matching '{input}'!"
 msgstr ""
 
-#: src/settings/setting_types.py:926
+#: src/settings/setting_types.py:927
 #, possible-python-brace-format
 msgctxt "set_type:timezone|acmpl|choice"
 msgid "{tz} (Currently {now})"
 msgstr ""
 
-#: src/settings/setting_types.py:956
+#: src/settings/setting_types.py:957
 msgctxt "settype:timestamp|accepts"
 msgid "A timestamp in the form YYYY-MM-DD HH:MM"
 msgstr ""
 
-#: src/settings/setting_types.py:985
+#: src/settings/setting_types.py:986
 #, possible-python-brace-format
 msgctxt "settype:timestamp|parse|error:invalid"
 msgid ""
@@ -176,43 +176,43 @@ msgid ""
 "format."
 msgstr ""
 
-#: src/settings/setting_types.py:1016
+#: src/settings/setting_types.py:1017
 msgctxt "settype:raw|accepts"
 msgid "Anything"
 msgstr ""
 
-#: src/settings/setting_types.py:1069
+#: src/settings/setting_types.py:1070
 msgctxt "settype:enum|accepts"
 msgid "A valid option."
 msgstr ""
 
-#: src/settings/setting_types.py:1119
+#: src/settings/setting_types.py:1120
 #, possible-python-brace-format
 msgctxt "settype:enum|parse|error:not_found"
 msgid "`{provided}` is not a valid option!"
 msgstr ""
 
-#: src/settings/setting_types.py:1167
+#: src/settings/setting_types.py:1168
 msgctxt "settype:duration|accepts"
 msgid "A number of days, hours, minutes, and seconds, e.g. `2d 4h 10s`."
 msgstr ""
 
-#: src/settings/setting_types.py:1348
+#: src/settings/setting_types.py:1349
 msgctxt "settype:channel_list|accepts"
 msgid "Comma separated list of channel ids."
 msgstr ""
 
-#: src/settings/setting_types.py:1359
+#: src/settings/setting_types.py:1360
 msgctxt "settype:role_list|accepts"
 msgid "Comma separated list of role ids."
 msgstr ""
 
-#: src/settings/setting_types.py:1375
+#: src/settings/setting_types.py:1376
 msgctxt "settype:stringlist|accepts"
 msgid "Comma separated strings."
 msgstr ""
 
-#: src/settings/setting_types.py:1386
+#: src/settings/setting_types.py:1387
 msgctxt "settype:guildidlist|accepts"
 msgid "Comma separated list of guild ids."
 msgstr ""
