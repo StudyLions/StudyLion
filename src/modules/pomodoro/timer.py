@@ -585,6 +585,11 @@ class Timer:
             self.last_status_message = None
 
         # Send new notification message
+
+        # Refresh status view
+        old_status = self.status_view
+        self.status_view = None
+
         args = await self.current_status(**kwargs)
         logger.debug(
             f"Timer {self!r} is sending a new status: {args.send_args}"
@@ -606,6 +611,9 @@ class Timer:
         # Save last message id
         if last_message_id != self.data.last_messageid:
             await self.data.update(last_messageid=last_message_id)
+
+        if old_status is not None:
+            old_status.stop()
 
     @log_wrap(action='Update Timer Status')
     async def update_status_card(self, **kwargs):
