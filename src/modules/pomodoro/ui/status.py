@@ -46,10 +46,30 @@ class TimerStatusUI(LeoUI):
 
         Does not send a visible response.
         """
-        await press.response.defer()
+        t = self.bot.translator.t
         member: discord.Member = press.user
         if member.voice and member.voice.channel and member.voice.channel.id == self.timer.data.channelid:
             self.timer.last_seen[member.id] = utc_now()
+            response = discord.Embed(
+                colour=discord.Colour.brand_green(),
+                description=t(_p(
+                    'ui:timer_status|button:present|ack',
+                    "Thank you for marking your presence.\n"
+                    "Good luck and stay productive!"
+                ))
+            )
+            await press.response.send_message(embed=response, ephemeral=True)
+            await self.timer.update_status_card()
+        else:
+            response = discord.Embed(
+                colour=discord.Colour.brand_red(),
+                description=t(_p(
+                    'ui:timer_status|button:present|error:not_in_timer',
+                    "You are not in this timer! "
+                    "Join the timer channel by pressing {channel}."
+                )).format(channel=self.timer.channel.mention if self.timer.channel else "**ERROR**")
+            )
+            await press.response.send_message(embed=response, ephemeral=True)
 
     async def refresh_present_button(self):
         t = self.bot.translator.t
