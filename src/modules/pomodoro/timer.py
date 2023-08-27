@@ -20,8 +20,7 @@ from .graphics import get_timer_card
 from .lib import TimerRole, channel_name_keys, focus_alert_path, break_alert_path
 from .options import TimerConfig, TimerOptions
 
-if TYPE_CHECKING:
-    from babel.cog import LocaleSettings
+from babel.settings import LocaleSettings
 
 _p, _np = babel._p, babel._np
 
@@ -34,7 +33,6 @@ class Timer:
         'bot',
         'data',
         'lguild',
-        'locale',
         'config',
         'last_seen',
         'status_view',
@@ -56,7 +54,6 @@ class Timer:
         self.bot = bot
         self.data = data
         self.lguild = lguild
-        self.locale: LocaleSettings.GuildLocale = lguild.config.get('guild_locale')
         self.config = TimerConfig(data.channelid, data)
 
         log_context.set(f"tid: {self.data.channelid}")
@@ -96,7 +93,10 @@ class Timer:
             ">"
         )
 
-    # Consider exposing configurable settings through a Settings interface, for ease of formatting.
+    @property
+    def locale(self) -> LocaleSettings.GuildLocale:
+        return self.lguild.config.get(LocaleSettings.GuildLocale.setting_id)
+
     @property
     def auto_restart(self) -> bool:
         """

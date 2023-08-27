@@ -30,14 +30,17 @@ class TimerStatusUI(LeoUI):
     def __init__(self, bot: LionBot, timer: 'Timer', channel: discord.abc.GuildChannel, show_present=True, **kwargs):
         # Set the locale context before it is copied in LeoUI
         # This is propagated via dispatch to component handlers
-        self.locale = timer.locale.value
-        ctx_locale.set(self.locale)
+        ctx_locale.set(timer.locale.value)
         super().__init__(timeout=None, **kwargs)
 
         self.bot = bot
         self.timer = timer
         self.channel = channel
         self.show_present = show_present
+
+    @property
+    def locale(self):
+        return self.timer.locale.value
 
     @button(label="PRESENT_PLACEHOLDER", emoji=conf.emojis.tick, style=ButtonStyle.green)
     async def present_button(self, press: discord.Interaction, pressed: Button):
@@ -46,6 +49,7 @@ class TimerStatusUI(LeoUI):
 
         Does not send a visible response.
         """
+        ctx_locale.set(self.locale)
         t = self.bot.translator.t
         member: discord.Member = press.user
         if member.voice and member.voice.channel and member.voice.channel.id == self.timer.data.channelid:
@@ -83,6 +87,7 @@ class TimerStatusUI(LeoUI):
         """
         Pressed to edit the timer. Response depends on role-level of user.
         """
+        ctx_locale.set(self.locale)
         role = self.timer.get_member_role(press.user)
         if role >= TimerRole.OWNER:
             # Open ephemeral config UI
@@ -119,6 +124,7 @@ class TimerStatusUI(LeoUI):
         """
         Start a stopped timer.
         """
+        ctx_locale.set(self.locale)
         t = self.bot.translator.t
 
         if self.timer.running:
@@ -169,6 +175,7 @@ class TimerStatusUI(LeoUI):
 
         Note that unlike starting, stopping is allowed to be idempotent.
         """
+        ctx_locale.set(self.locale)
         t = self.bot.translator.t
         role = self.timer.get_member_role(press.user)
         if role >= TimerRole.MANAGER:
@@ -201,6 +208,7 @@ class TimerStatusUI(LeoUI):
         """
         Refresh the internal UI components based on the current state of the Timer.
         """
+        ctx_locale.set(self.locale)
         await asyncio.gather(
             self.refresh_present_button(),
             self.refresh_edit_button(),
