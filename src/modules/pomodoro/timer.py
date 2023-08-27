@@ -530,9 +530,11 @@ class Timer:
             if with_notify and self.members:
                 # TODO: Handle case with too many members
                 notifyline = ''.join(member.mention for member in self.members if member not in needs_warning)
-                notifyline = f"||{notifyline}||"
             else:
                 notifyline = ""
+
+            if notifyline:
+                notifyline = f"||{notifyline}||"
 
             content = "\n".join(string for string in (stageline, warningline, notifyline) if string)
         elif self.auto_restart:
