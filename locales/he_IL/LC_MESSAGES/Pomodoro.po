@@ -198,6 +198,8 @@ msgid ""
 "`{pattern}` timer is running with `{members}` members!\n"
 "Currently **focusing**, with break starting {timestamp}"
 msgstr ""
+"`{pattern}` טיימר רץ עם `{members}` משתמשים!\n"
+"כרגע בפוקוס, עם הפסקה שתתחיל ב{timestamp}"
 
 #: src/modules/pomodoro/cog.py:441
 #, possible-python-brace-format
@@ -206,6 +208,8 @@ msgid ""
 "`{pattern}` timer is running with `{members}` members!\n"
 "Currently **resting**, with focus starting {timestamp}"
 msgstr ""
+"`{pattern}` טיימר רץ עם `{members}` משתמשים!\n"
+"כרגע בהפסקה, עם פוקוס שיתחיל ב{timestamp}"
 
 #: src/modules/pomodoro/cog.py:455
 msgctxt "cmd:pomodoro_admin"
