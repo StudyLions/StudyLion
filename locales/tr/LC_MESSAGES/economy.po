@@ -514,4 +514,4 @@ msgstr "Üyeler artık {coin} transferi için {send_cmd} kullanabilecekler."
 #, possible-python-brace-format
 msgctxt "guildset:allow_transfers|set_response|set:false"
 msgid "Members will not be able to use {send_cmd} to transfer {coin}"
-msgstr ""
+msgstr "Üyeler {coin} transferleri için {send_cmd} kullanamayacaklar."
