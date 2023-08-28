@@ -163,7 +163,7 @@ msgstr ""
 #: src/modules/moderation/settings.py:32
 msgctxt "guildset:ticket_log|accepts"
 msgid "Ticket channel name or id."
-msgstr ""
+msgstr "Talep kanal adı ya da ID'si."
 
 #: src/modules/moderation/settings.py:46
 #, possible-python-brace-format
