@@ -505,7 +505,7 @@ msgstr "בחר בצבע למחיקה."
 #: src/modules/shop/shops/colours.py:985
 msgctxt "cmd:editshop_colours_remove|param:delete_role|desc"
 msgid "Whether to delete the associated role."
-msgstr ""
+msgstr "האם למחוק גם את הרולים הקשורים."
 
 #: src/modules/shop/shops/colours.py:1010
 #, possible-python-brace-format
@@ -521,7 +521,7 @@ msgstr "הרול נמחק בהצלחה."
 #: src/modules/shop/shops/colours.py:1033
 msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
 msgid "I do not have sufficient permissions to delete the role."
-msgstr ""
+msgstr "אין לך הרשאות מתאימות בשרת עצמו כדי לערוך את הרול הזה!"
 
 #: src/modules/shop/shops/colours.py:1038
 msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
