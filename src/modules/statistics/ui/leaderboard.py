@@ -130,9 +130,22 @@ class LeaderboardUI(StatsUI):
                 )
         else:
             # TODO: Anki data
-            ...
-        # TODO: Handle removing members in invisible roles
-        return data
+            data = []
+
+        # Filter out members which are not in the server and unranked roles and bots
+        # Usually hits cache
+        unranked_setting = await self.bot.get_cog('StatsCog').settings.UnrankedRoles.get(self.guild.id)
+        unranked_roleids = set(unranked_setting.data)
+        true_leaderboard = []
+        guild = self.guild
+        for userid, stat_total in data:
+            if member := guild.get_member(userid):
+                if member.bot:
+                    continue
+                if any(role.id in unranked_roleids for role in member.roles):
+                    continue
+                true_leaderboard.append((userid, stat_total))
+        return true_leaderboard
 
     async def fetch_lb_data(self, stat_type, period):
         """
@@ -148,6 +161,7 @@ class LeaderboardUI(StatsUI):
             future = asyncio.create_task(self._fetch_lb_data(*key))
             self.lb_data[key] = future
             result = await future
+
         return result
 
     async def current_data(self):
@@ -163,7 +177,10 @@ class LeaderboardUI(StatsUI):
         if data:
             # Calculate page data
             page_starts_at = pagen * self.page_size
-            userids, times = zip(*data[page_starts_at:page_starts_at + self.page_size])
+            page_data = data[page_starts_at:page_starts_at + self.page_size]
+            if not page_data:
+                return None
+            userids, times = zip(*page_data)
             positions = range(page_starts_at + 1, page_starts_at + self.page_size + 1)
 
             page_data = zip(userids, positions, times)
@@ -196,7 +213,7 @@ class LeaderboardUI(StatsUI):
         """
         lb_data = await self.fetch_lb_data(stat_type, period)
         if lb_data:
-            pagen %= (len(lb_data) // self.page_size) + 1
+            pagen %= (len(lb_data) // self.page_size) + (1 if len(lb_data) % self.page_size else 0)
         else:
             pagen = 0
         key = (stat_type, period, pagen)

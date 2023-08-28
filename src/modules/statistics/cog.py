@@ -8,7 +8,7 @@ from discord.ui.button import ButtonStyle
 
 from meta import LionBot, LionCog, LionContext
 from utils.lib import error_embed
-from utils.ui import LeoUI, AButton
+from utils.ui import LeoUI, AButton, utc_now
 from wards import low_management_ward
 
 from . import babel
@@ -76,7 +76,24 @@ class StatsCog(LionCog):
     )
     @appcmds.guild_only
     async def leaderboard_cmd(self, ctx: LionContext):
-        await ctx.interaction.response.defer(thinking=True)
+        if not ctx.guild:
+            return
+        if not ctx.interaction:
+            return
+        if not ctx.guild.chunked:
+            t = self.bot.translator.t
+            waiting_embed = discord.Embed(
+                colour=discord.Colour.greyple(),
+                description=t(_p(
+                    'cmd:leaderboard|chunking|desc',
+                    "Requesting server member list from Discord, please wait {loading}"
+                )).format(loading=self.bot.config.emojis.loading),
+                timestamp=utc_now(),
+            )
+            await ctx.interaction.response(embed=waiting_embed)
+            await ctx.guild.chunk()
+        else:
+            await ctx.interaction.response.defer(thinking=True)
         ui = LeaderboardUI(self.bot, ctx.author, ctx.guild)
         await ui.run(ctx.interaction)
         await ui.wait()
