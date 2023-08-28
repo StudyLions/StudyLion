@@ -123,6 +123,7 @@ msgid ""
 "For every **100** words they send, members will now be rewarded an "
 "additional **{amount}** XP."
 msgstr ""
+"לכל 100 מילים שהם ישלחו, המשתמשים יקבלו **{amount}** נקודות ניסיון נוספות."
 
 #: src/tracking/text/settings.py:95
 msgctxt "guildset:untracked_text_channels"
