@@ -128,7 +128,7 @@ msgstr "הצג"
 #: src/modules/pomodoro/cog.py:331
 msgctxt "cmd:pomodoro_status|desc"
 msgid "Display the status of a single pomodoro timer."
-msgstr ""
+msgstr "הצג את הסטטוס של הטיימר פומודורו היחיד."
 
 #: src/modules/pomodoro/cog.py:334
 msgctxt "cmd:pomodoro_status|param:channel"
@@ -138,7 +138,7 @@ msgstr "ערוץ_טיימר"
 #: src/modules/pomodoro/cog.py:339
 msgctxt "cmd:pomodoro_status|param:channel|desc"
 msgid "The channel for which you want to view the timer."
-msgstr ""
+msgstr "הערוץ שבו תרצה לראות את הטיימר."
 
 #: src/modules/pomodoro/cog.py:357
 #, possible-python-brace-format
