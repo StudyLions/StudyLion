@@ -34,7 +34,7 @@ msgstr "Para miktarının pozitif tam sayı olması gerekiyor!"
 #: src/core/setting_types.py:54
 msgctxt "settype:coin|parse|error:too_large"
 msgid "Provided number of coins was too high!"
-msgstr ""
+msgstr "Belirtilen para miktarı çok fazla!"
 
 #: src/core/setting_types.py:60
 msgctxt "settype:coin|parse|error:too_large"
