@@ -231,6 +231,8 @@ msgid ""
 "I cannot create a `{style}` style menu on a message I didn't send! (Discord "
 "restriction)."
 msgstr ""
+"אני לא יכול ליצור תפריט בסגנון `{style}` על הודעה שאני לא שלחתי בעצמי (ככה "
+"דיסקורד עובד, אין לי איך לעקוף את זה)"
 
 #: src/modules/rolemenus/cog.py:718
 #, possible-python-brace-format
@@ -257,7 +259,7 @@ msgstr ""
 #: src/modules/rolemenus/cog.py:788
 msgctxt "cmd:rolemenu_edit"
 msgid "editmenu"
-msgstr ""
+msgstr "ערוךתפריט"
 
 #: src/modules/rolemenus/cog.py:791
 msgctxt "cmd:rolemenu_edit|desc"
