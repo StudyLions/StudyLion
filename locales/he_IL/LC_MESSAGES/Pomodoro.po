@@ -24,12 +24,12 @@ msgstr ""
 #: src/modules/pomodoro/timer.py:50
 msgctxt "timer|stage:break|name"
 msgid "BREAK"
-msgstr ""
+msgstr "הפסקה"
 
 #: src/modules/pomodoro/timer.py:51
 msgctxt "timer|stage:focus|name"
 msgid "FOCUS"
-msgstr ""
+msgstr "פוקוס"
 
 #: src/modules/pomodoro/timer.py:220
 #, possible-python-brace-format
@@ -220,7 +220,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:462
 msgctxt "cmd:pomodoro_create"
 msgid "create"
-msgstr ""
+msgstr "צור"
 
 #: src/modules/pomodoro/cog.py:465
 msgctxt "cmd:pomodoro_create|desc"
