@@ -387,7 +387,7 @@ msgstr "bot_otomatikrolleri"
 #: src/modules/member_admin/settings.py:365
 msgctxt "guildset:bot_autoroles|desc"
 msgid "Roles given to new bots when they join the server."
-msgstr ""
+msgstr "Yeni botlara sunucuya katıldıklarında verilecek roller."
 
 #: src/modules/member_admin/settings.py:369
 msgctxt "guildset:bot_autoroles|long_desc"
