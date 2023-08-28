@@ -121,7 +121,7 @@ msgstr "כבר יש לך את האייטם הזה!"
 #: src/modules/shop/shops/colours.py:263
 msgctxt "shop:colour|purchase|error:failed_no_role"
 msgid "This colour role no longer exists!"
-msgstr ""
+msgstr "הרול צבע הזה כבר לא קיים!"
 
 #: src/modules/shop/shops/colours.py:270
 msgctxt "shop:colour|purchase|error:failed_permissions"
