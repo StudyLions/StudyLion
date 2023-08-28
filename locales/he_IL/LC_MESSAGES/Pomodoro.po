@@ -210,7 +210,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:455
 msgctxt "cmd:pomodoro_admin"
 msgid "admin"
-msgstr ""
+msgstr "אדמין"
 
 #: src/modules/pomodoro/cog.py:456
 msgctxt "cmd:pomodoro_admin|desc"
@@ -635,7 +635,7 @@ msgstr ""
 #: src/modules/pomodoro/ui/status.py:119
 msgctxt "ui:timer_status|button:edit|label"
 msgid "Options"
-msgstr ""
+msgstr "הגדרות"
 
 #: src/modules/pomodoro/ui/status.py:138
 msgctxt "ui:timer_status|button:start|error:already_running"
