@@ -336,7 +336,7 @@ msgstr ""
 #: src/modules/schedule/settings.py:300
 msgctxt "guildset:attendance_bonus"
 msgid "group_attendance_bonus"
-msgstr ""
+msgstr "פרס_נוכחות_קבוצתית"
 
 #: src/modules/schedule/settings.py:303
 msgctxt "guildset:attendance_bonus|desc"
