@@ -102,6 +102,8 @@ msgstr "Botların para bakiyesi olamaz!"
 msgctxt "cmd:economy_balance|error:args"
 msgid "You cannot simultaneously `set` and `add` member balances!"
 msgstr ""
+"`ayarla` ve `ekle` durumlarını eşzamanlı olarak üye bakiyelerinde "
+"yapamazsınız!"
 
 #: src/modules/economy/cog.py:223
 #, possible-python-brace-format
