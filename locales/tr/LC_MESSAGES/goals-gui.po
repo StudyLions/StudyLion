@@ -37,6 +37,8 @@ msgid ""
 "ATTENDANCE\n"
 "RATE"
 msgstr ""
+"KATILIM\n"
+"ORAN"
 
 #: src/gui/cards/goals.py:139
 msgctxt "skin:goals|mode:study|goal:middle|above"
