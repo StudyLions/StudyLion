@@ -331,7 +331,7 @@ msgstr ""
 #: src/modules/economy/cog.py:607
 msgctxt "cmd:economy_reset|confirm:reset_role|button:confirm"
 msgid "Yes, complete economy reset"
-msgstr ""
+msgstr "Evet, ekonomi sıfırlamayı tamamla"
 
 #: src/modules/economy/cog.py:611
 msgctxt "cmd:economy_reset|confirm:reset_role|button:cancel"
