@@ -426,7 +426,7 @@ msgstr ""
 #: src/modules/pomodoro/options.py:45
 msgctxt "timerset:notification_channel"
 msgid "notification_channel"
-msgstr ""
+msgstr "ערוץ_התראות"
 
 #: src/modules/pomodoro/options.py:48
 msgctxt "timerset:notification_channel|desc"
@@ -437,7 +437,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "timerset:notification_channel|format:notset"
 msgid "Not Set (Using {channel})"
-msgstr ""
+msgstr "לא הופעל (Using {channel})"
 
 #: src/modules/pomodoro/options.py:78
 msgctxt "timerset:inactivity_threshold|inactivity_threshold"
