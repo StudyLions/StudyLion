@@ -333,6 +333,8 @@ msgstr "Canal del servidor al que mover el menú"
 msgctxt "cmd:rolemenu_edit|param:menu_style"
 msgid "Selection style for this menu (using buttons, dropdowns, or reactions)"
 msgstr ""
+"Selecciona el estilo para este menú (mediante botones, desplegables o "
+"reacciones)"
 
 #: src/modules/rolemenus/cog.py:831
 msgctxt "cmd:rolemenu_edit|param:template"
