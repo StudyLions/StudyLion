@@ -259,17 +259,17 @@ msgstr "Chino"
 #: src/babel/enums.py:45
 msgctxt "localenames|locale:zh-TW"
 msgid "Taiwan Chinese"
-msgstr ""
+msgstr "Taiwanés"
 
 #: src/babel/enums.py:46
 msgctxt "localenames|locale:hr"
 msgid "Croatian"
-msgstr ""
+msgstr "Croata"
 
 #: src/babel/enums.py:47
 msgctxt "localenames|locale:cs"
 msgid "Czech"
-msgstr ""
+msgstr "Checo"
 
 #: src/babel/enums.py:48
 msgctxt "localenames|locale:da"
