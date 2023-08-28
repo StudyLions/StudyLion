@@ -134,7 +134,7 @@ msgstr "Yeni üyenin ismini görüntüle."
 #: src/modules/member_admin/settings.py:24
 msgctxt "guildset:greeting_message|formatkey:user_avatar"
 msgid "Avatar url of the new member."
-msgstr ""
+msgstr "Yeni üyenin avatar url'si."
 
 #: src/modules/member_admin/settings.py:26
 msgctxt "guildset:greeting_message|formatkey:guild_name"
