@@ -162,7 +162,7 @@ msgstr "Has configurado tu idioma a {lang}."
 #: src/babel/settings.py:110
 msgctxt "guildset:force_locale"
 msgid "force_language"
-msgstr ""
+msgstr "forzar_idioma"
 
 #: src/babel/settings.py:112
 msgctxt "guildset:force_locale|desc"
