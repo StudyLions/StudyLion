@@ -431,6 +431,7 @@ msgid ""
 "Unfortunately, I was not able to message the recipient. Perhaps they have me"
 " blocked?"
 msgstr ""
+"Maalesef alıcıya mesaj gönderemiyorum. Belki de beni engellemişlerdir?"
 
 #: src/modules/economy/cog.py:795
 msgctxt "cmd:configure_economy"
