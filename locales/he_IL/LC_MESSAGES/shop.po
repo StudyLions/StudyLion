@@ -526,12 +526,12 @@ msgstr "אין לך הרשאות מתאימות בשרת עצמו כדי לער�
 #: src/modules/shop/shops/colours.py:1038
 msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
 msgid "Failed to delete the role for an unknown reason."
-msgstr ""
+msgstr "לא הצלחתי למחוק את הרול בעקבות שגיאה לא ידועה."
 
 #: src/modules/shop/shops/colours.py:1043
 msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
 msgid "Could not find the role in order to delete it."
-msgstr ""
+msgstr "לא הצלחתי למצוא את הרול על מנת למחוק אותו."
 
 #: src/modules/shop/shops/colours.py:1054
 #, possible-python-brace-format
