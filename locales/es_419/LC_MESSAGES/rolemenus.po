@@ -206,6 +206,8 @@ msgstr ""
 msgctxt "cmd:rolemenu_create|param:menu_style"
 msgid "Selection style for this menu (using buttons, dropdowns, or reactions)"
 msgstr ""
+"Selección de estilo para este menú (puedes usar botones, desplegables o "
+"reacciones)"
 
 #: src/modules/rolemenus/cog.py:631
 msgctxt "cmd:rolemenu_create|param:template"
