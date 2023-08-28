@@ -159,7 +159,7 @@ msgstr "Bu sunucudaki toplam üye sayısı."
 #: src/modules/member_admin/settings.py:40
 msgctxt "guildset:greeting_channel"
 msgid "welcome_channel"
-msgstr ""
+msgstr "hoşgeldin_kanalı"
 
 #: src/modules/member_admin/settings.py:43
 msgctxt "guildset:greeting_channel|desc"
