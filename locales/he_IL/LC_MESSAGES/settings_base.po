@@ -133,7 +133,7 @@ msgstr "מספר שלם"
 #: src/settings/setting_types.py:682
 msgctxt "settype:emoji|desc"
 msgid "Unicode or custom emoji"
-msgstr ""
+msgstr "אוניקוד לאמוג'י "
 
 #: src/settings/setting_types.py:754
 msgctxt "settype:guildid|accepts"
