@@ -695,7 +695,7 @@ msgstr "הגדרות"
 #: src/modules/pomodoro/ui/status.py:138
 msgctxt "ui:timer_status|button:start|error:already_running"
 msgid "Cannot start a timer that is already running!"
-msgstr ""
+msgstr "לא ניתן להתחיל טיימר שכבר רץ!"
 
 #: src/modules/pomodoro/ui/status.py:154
 msgctxt "ui:timer_status|button:start|error:not_manager|title"
@@ -750,7 +750,7 @@ msgstr "הטיימר נמחק"
 #, possible-python-brace-format
 msgctxt "ui:timer_options|button:delete|success|description"
 msgid "The timer in {channel} has been removed."
-msgstr ""
+msgstr "הטיימר של החדר {channel} נמחק."
 
 #: src/modules/pomodoro/ui/config.py:100
 msgctxt "ui:timer_options|button:delete|label"
