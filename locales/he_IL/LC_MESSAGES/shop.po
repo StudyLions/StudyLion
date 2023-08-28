@@ -61,7 +61,7 @@ msgstr "החנות נסגרה"
 #, possible-python-brace-format
 msgctxt "ui:colourstore|menu:buycolours|label"
 msgid "{name} ({price} LC)"
-msgstr ""
+msgstr "{name} ({price} מטבעות)"
 
 #: src/modules/shop/shops/colours.py:109
 #, possible-python-brace-format
