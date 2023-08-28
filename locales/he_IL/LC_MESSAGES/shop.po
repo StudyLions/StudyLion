@@ -40,7 +40,7 @@ msgstr "פתח"
 #: src/modules/shop/cog.py:124
 msgctxt "cmd:shop_open|desc"
 msgid "Open the server shop."
-msgstr ""
+msgstr "פתח את החנות השרת."
 
 #: src/modules/shop/cog.py:150
 msgctxt "cmd:shop_open|error:no_shops"
