@@ -409,7 +409,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:send|embed:gift|title"
 msgid "{user} sent you a gift!"
-msgstr ""
+msgstr "{user} size hediye gönderdi!"
 
 #: src/modules/economy/cog.py:748
 #, possible-python-brace-format
