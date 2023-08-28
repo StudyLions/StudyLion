@@ -234,12 +234,12 @@ msgstr "Has desconfigurado el idioma del servidor."
 #, possible-python-brace-format
 msgctxt "guildset:locale|response"
 msgid "You have set the guild language to {lang}."
-msgstr ""
+msgstr "Has establecido el idioma del servidor en {lang}."
 
 #: src/babel/enums.py:41
 msgctxt "localenames|locale:en-US"
 msgid "American English"
-msgstr ""
+msgstr "Inglés americano"
 
 #: src/babel/enums.py:42
 msgctxt "localenames|locale:en-GB"
