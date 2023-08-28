@@ -623,7 +623,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "guildset:room_category|set_using"
 msgid "{cmd} or category selector below."
-msgstr ""
+msgstr "{cmd} או בחירת קטגוריות בתחתית."
 
 #: src/modules/rooms/settings.py:76
 msgctxt "guildset:rooms_price"
@@ -633,7 +633,7 @@ msgstr "שכירות_חדר"
 #: src/modules/rooms/settings.py:80
 msgctxt "guildset:rooms_rent|desc"
 msgid "Daily rent price for a private room."
-msgstr ""
+msgstr "מחיר יומי להשכרת חדר פרטי."
 
 #: src/modules/rooms/settings.py:84
 msgctxt "guildset:rooms_rent|long_desc"
