@@ -185,7 +185,7 @@ msgstr "Karşılama kanalının isim ya da ID 'si, DM için 0."
 #: src/modules/member_admin/settings.py:67
 msgctxt "guildset:greeting_channel|set_response:unset"
 msgid "Welcome messages will now be sent via direct message."
-msgstr ""
+msgstr "Hoş geldin mesajı artık direkt mesaj aracılığıyla gönderilecektir."
 
 #: src/modules/member_admin/settings.py:72
 #, possible-python-brace-format
