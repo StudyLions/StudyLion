@@ -92,7 +92,7 @@ msgstr ""
 #: src/modules/meta/help_sections.py:140
 msgctxt "helptext|level:admin|title"
 msgid "Command Summary (for server admins)"
-msgstr ""
+msgstr "Komut Özeti (Sunucu yöneticileri için)"
 
 #: src/modules/meta/helpui.py:47
 msgctxt "ui:help|button:member_page|label"
