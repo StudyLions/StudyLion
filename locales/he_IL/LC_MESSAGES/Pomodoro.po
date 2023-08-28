@@ -144,17 +144,17 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:pomodoro_status|error:no_timer"
 msgid "The channel {channel} does not have a timer set up!"
-msgstr ""
+msgstr "אין שעון ב{channel}!"
 
 #: src/modules/pomodoro/cog.py:367
 msgctxt "cmd:pomodoro_list"
 msgid "list"
-msgstr ""
+msgstr "רשימה"
 
 #: src/modules/pomodoro/cog.py:368
 msgctxt "cmd:pomodoro_list|desc"
 msgid "List the available pomodoro timers."
-msgstr ""
+msgstr "הצג את השעונים הזמינים."
 
 #: src/modules/pomodoro/cog.py:391
 #, possible-python-brace-format
