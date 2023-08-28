@@ -827,7 +827,7 @@ msgstr ""
 #: src/modules/schedule/ui/sessionui.py:115
 msgctxt "ui:session|button:book|error|title"
 msgid "Could not book session"
-msgstr ""
+msgstr "לא ניתן לקבוע סשן."
 
 #: src/modules/schedule/ui/sessionui.py:133
 msgctxt "ui:session|button:cancel|error:starting_soon"
