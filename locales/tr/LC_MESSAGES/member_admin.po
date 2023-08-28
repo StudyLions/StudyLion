@@ -425,4 +425,4 @@ msgstr "Üyeler tekrar katıldıklarında rolleri eklenmeyecek."
 #: src/modules/member_admin/settings.py:410
 msgctxt "guildset:greeting_message|set_response:on"
 msgid "Roles will now be restored when members rejoin."
-msgstr ""
+msgstr "Üyeler tekrardan katıldıklarında şu andan itibaren rolleri eklenecek."
