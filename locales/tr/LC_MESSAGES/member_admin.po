@@ -164,7 +164,7 @@ msgstr "hoşgeldin_kanalı"
 #: src/modules/member_admin/settings.py:43
 msgctxt "guildset:greeting_channel|desc"
 msgid "Channel in which to welcome new members to the server."
-msgstr ""
+msgstr "Sunucuya yeni gelen kullanıcılara hoş geldin mesajı atılacak kanal."
 
 #: src/modules/member_admin/settings.py:47
 msgctxt "guildset:greeting_channel|long_desc"
