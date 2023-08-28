@@ -646,7 +646,7 @@ msgstr[3] ""
 #: src/modules/schedule/ui/scheduleui.py:250
 msgctxt "ui:schedule|menu:booking|placeholder:blacklisted"
 msgid "Book Sessions (Cannot book - Blacklisted)"
-msgstr ""
+msgstr "קביעת סשנים (לא ניתן לקבוע - רשימה שחורה)"
 
 #: src/modules/schedule/ui/scheduleui.py:258
 #, possible-python-brace-format
