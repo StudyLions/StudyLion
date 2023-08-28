@@ -160,7 +160,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "set_type:timezone|acmpl|no_matching"
 msgid "No timezones matching '{input}'!"
-msgstr ""
+msgstr "אין אזורי זמן שמתאימים ל'{input}'!"
 
 #: src/settings/setting_types.py:927
 #, possible-python-brace-format
