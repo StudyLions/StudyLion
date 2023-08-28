@@ -136,6 +136,8 @@ msgid ""
 "All members of **{guild_name}** have had their balance set to "
 "{coin_emoji}**{amount}**."
 msgstr ""
+"**{guild_name}** sunucundaki herkesin bakiyeleri {coin_emoji}**{amount}**. "
+"değerine ayarlandı."
 
 #: src/modules/economy/cog.py:256
 #, possible-python-brace-format
@@ -143,6 +145,8 @@ msgctxt "cmd:economy_balance|confirm_set|desc"
 msgid ""
 "Are you sure you want to set everyone's balance to {coin_emoji}**{amount}**?"
 msgstr ""
+"Herkesin bakiyesini {coin_emoji}**{amount}** değerine ayarlamaya emin "
+"misiniz?"
 
 #: src/modules/economy/cog.py:264
 #, possible-python-brace-format
