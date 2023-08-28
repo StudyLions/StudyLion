@@ -173,7 +173,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:pomodoro_list|embed:timer_list|title"
 msgid "Pomodoro Timers in **{guild}**"
-msgstr ""
+msgstr "טיימרי פומודורו בשרת **{guild}**"
 
 #: src/modules/pomodoro/cog.py:423
 #, possible-python-brace-format
@@ -182,6 +182,8 @@ msgid ""
 "`{pattern}` timer is stopped with no members!\n"
 "Join {channel} to restart it."
 msgstr ""
+"`{pattern}` נעצר ללא משתמשים!\n"
+"הצטרף אל {channel} על מנת לאפס אותו."
 
 #: src/modules/pomodoro/cog.py:428
 #, possible-python-brace-format
