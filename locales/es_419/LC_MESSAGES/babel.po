@@ -284,12 +284,12 @@ msgstr "Neerlandés"
 #: src/babel/enums.py:50
 msgctxt "localenames|locale:fi"
 msgid "Finnish"
-msgstr ""
+msgstr "Finlandés"
 
 #: src/babel/enums.py:51
 msgctxt "localenames|locale:fr"
 msgid "French"
-msgstr ""
+msgstr "Francés"
 
 #: src/babel/enums.py:52
 msgctxt "localenames|locale:de"
