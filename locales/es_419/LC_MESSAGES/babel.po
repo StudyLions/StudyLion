@@ -78,7 +78,7 @@ msgstr ""
 #: src/babel/cog.py:190
 msgctxt "cmd:userconfig_language|param:language"
 msgid "language"
-msgstr ""
+msgstr "idioma"
 
 #: src/babel/cog.py:195
 msgctxt "cmd:userconfig_language|param:language|desc"
