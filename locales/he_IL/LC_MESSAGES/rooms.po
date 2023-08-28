@@ -431,12 +431,12 @@ msgstr ""
 #: src/modules/rooms/cog.py:746
 msgctxt "cmd:room_kick|success|ack"
 msgid "Members removed."
-msgstr ""
+msgstr "משתמשים נמחקו."
 
 #: src/modules/rooms/cog.py:752
 msgctxt "cmd:room_transfer"
 msgid "transfer"
-msgstr ""
+msgstr "העבר"
 
 #: src/modules/rooms/cog.py:755
 msgctxt "cmd:room_transfer|desc"
