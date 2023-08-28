@@ -105,7 +105,7 @@ msgstr ""
 #: src/modules/member_admin/cog.py:286
 msgctxt "cmd:resetmember|error:nothing_to_do"
 msgid "No reset operation selected, nothing to do."
-msgstr ""
+msgstr "Sıfırlama durumu seçilmedi, yapılacak bir şey yok."
 
 #: src/modules/member_admin/cog.py:302
 msgctxt "cmd:configure_welcome"
