@@ -299,7 +299,7 @@ msgstr "בונוס_שעתי_מצלמה"
 #: src/tracking/voice/settings.py:200
 msgctxt "guildset:hourly_live_bonus|desc"
 msgid "Bonus Lioncoins given per hour when a member streams or video-chats."
-msgstr ""
+msgstr "בונוס שעתי שמשתמש מקבל כאשר הוא משתמש במצלמה או משתף מסך. "
 
 #: src/tracking/voice/settings.py:205
 msgctxt "guildset:hourly_live_bonus|long_desc"
