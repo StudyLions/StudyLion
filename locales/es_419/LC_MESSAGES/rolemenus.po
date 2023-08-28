@@ -71,12 +71,13 @@ msgid ""
 "Insufficient permissions! I need the `MESSAGE_HISTORY` permission in "
 "{channel}."
 msgstr ""
+"¡Permisos insuficientes! Necesito el permiso `MESSAGE_HISTORY` en {channel}."
 
 #: src/modules/rolemenus/cog.py:310
 #, possible-python-brace-format
 msgctxt "parse:message_link|suberror:channel_dne"
 msgid "The channel `{channelid}` could not be found in this server."
-msgstr ""
+msgstr "No se ha podido encontrar el canal `{channelid}` en este servidor."
 
 #: src/modules/rolemenus/cog.py:315
 msgctxt "parse:message_link|suberror:malformed_link"
