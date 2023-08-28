@@ -349,12 +349,12 @@ msgstr "Portugués"
 #: src/babel/enums.py:63
 msgctxt "localenames|locale:ro"
 msgid "Romanian"
-msgstr ""
+msgstr "Rumano"
 
 #: src/babel/enums.py:64
 msgctxt "localenames|locale:ru"
 msgid "Russian"
-msgstr ""
+msgstr "Ruso"
 
 #: src/babel/enums.py:65
 msgctxt "localenames|locale:es-ES"
