@@ -110,7 +110,7 @@ msgstr ""
 #: src/modules/moderation/ticket.py:201
 msgctxt "ticket|field:expiry|mode:open|name"
 msgid "Expiry"
-msgstr ""
+msgstr "Geçerlilik"
 
 #: src/modules/moderation/ticket.py:204
 #, possible-python-brace-format
