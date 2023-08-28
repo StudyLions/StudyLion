@@ -206,7 +206,7 @@ msgstr "hoşgeldin_mesajı"
 #: src/modules/member_admin/settings.py:95
 msgctxt "guildset:greeting_message|desc"
 msgid "Custom message used to greet new members when they join the server."
-msgstr ""
+msgstr "Yeni gelen üyeleri karşılamak için gönderilecek özel mesaj."
 
 #: src/modules/member_admin/settings.py:99
 msgctxt "guildset:greeting_message|long_desc"
