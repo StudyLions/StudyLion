@@ -199,6 +199,8 @@ msgstr ""
 msgctxt "cmd:rolemenu_create|param:message|desc"
 msgid "Link to an existing message to turn it into a (reaction) role menu"
 msgstr ""
+"Enlaza a un mensaje existente para convertirlo en un menú de roles (de "
+"reacción)"
 
 #: src/modules/rolemenus/cog.py:627
 msgctxt "cmd:rolemenu_create|param:menu_style"
