@@ -24,7 +24,7 @@ msgstr ""
 #: src/babel/settingui.py:40
 msgctxt "ui:locale_config|button:force|label"
 msgid "Toggle Force"
-msgstr ""
+msgstr "Alternar fuerza"
 
 #: src/babel/settingui.py:49
 msgctxt "ui:locale_config|embed|title"
