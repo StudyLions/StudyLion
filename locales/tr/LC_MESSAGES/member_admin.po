@@ -29,7 +29,7 @@ msgstr "Karşılama Kanalını Seç"
 #: src/modules/member_admin/settingui.py:86
 msgctxt "ui:memberadmin|menu:autoroles|placeholder"
 msgid "Select Autoroles"
-msgstr ""
+msgstr "Otomatik Rolleri Seç"
 
 #: src/modules/member_admin/settingui.py:115
 msgctxt "ui:memberadmin|menu:bot_autoroles|placeholder"
