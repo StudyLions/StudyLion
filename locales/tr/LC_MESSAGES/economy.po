@@ -508,7 +508,7 @@ msgstr "Devre dışı. (LionCoin transferine izin verilmez.)"
 #, possible-python-brace-format
 msgctxt "guildset:allow_transfers|set_response|set:true"
 msgid "Members will now be able to use {send_cmd} to transfer {coin}"
-msgstr ""
+msgstr "Üyeler artık {coin} transferi için {send_cmd} kullanabilecekler."
 
 #: src/modules/economy/settings.py:107
 #, possible-python-brace-format
