@@ -390,7 +390,7 @@ msgstr ""
 #: src/modules/economy/cog.py:674
 msgctxt "cmd:send|param:note|desc"
 msgid "Optional note to add to the gift."
-msgstr ""
+msgstr "Hediyeye eklemek için isteğe bağlı not."
 
 #: src/modules/economy/cog.py:698
 msgctxt "cmd:send|error:not_allowed"
