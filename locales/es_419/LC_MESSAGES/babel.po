@@ -254,7 +254,7 @@ msgstr "Búlgaro"
 #: src/babel/enums.py:44
 msgctxt "localenames|locale:zh-CN"
 msgid "Chinese"
-msgstr ""
+msgstr "Chino"
 
 #: src/babel/enums.py:45
 msgctxt "localenames|locale:zh-TW"
