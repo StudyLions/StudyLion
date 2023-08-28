@@ -177,7 +177,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|confirm_add|desc"
 msgid "Are you sure you want to add **{amount}** to everyone's balance?"
-msgstr ""
+msgstr "Herkesin bakiyesine **{amount}** miktarını eklemekte emin misiniz?"
 
 #: src/modules/economy/cog.py:323
 #, possible-python-brace-format
