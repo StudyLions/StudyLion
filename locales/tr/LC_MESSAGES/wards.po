@@ -91,13 +91,12 @@ msgstr "{role} rolünü ekleyip çıkartabilmek için yeterli yetkim yok."
 #: src/wards.py:192
 msgctxt "ward:equippable_role|error:actor_perms"
 msgid "You need the `MANAGE_ROLES` permission before you can configure roles!"
-msgstr ""
-"Rolleri düzenleyebilmek için `MANAGE_ROLES` yetkisine ihtiyacınız var!"
+msgstr "Rolleri ayarlayabilmek için `MANAGE_ROLES` yetkisine ihtiyacınız var!"
 
 #: src/wards.py:199
 #, possible-python-brace-format
 msgctxt "ward:equippable_role|error:actor_top_role"
 msgid "You cannot configure {role} because it is above your top role!"
 msgstr ""
-"{role} rolünü düzenleyemezsiniz çünkü en yüksek rolünüzün yukarısında "
+"{role} rolünü ayarlayamazsınız çünkü en yüksek rolünüzün yukarısında "
 "bulunuyor!"
