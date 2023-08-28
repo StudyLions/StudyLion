@@ -73,7 +73,7 @@ msgstr "idioma"
 #: src/babel/cog.py:186
 msgctxt "cmd:userconfig_language|desc"
 msgid "Set your preferred interaction language."
-msgstr ""
+msgstr "Establece el idioma que prefieras para interactuar con el bot."
 
 #: src/babel/cog.py:190
 msgctxt "cmd:userconfig_language|param:language"
