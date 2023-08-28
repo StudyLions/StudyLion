@@ -403,6 +403,7 @@ msgstr ""
 msgctxt "guildset:role_persistence|desc"
 msgid "Whether member roles should be restored on rejoin."
 msgstr ""
+"Üyelerin sunucuya tekrar katıldıklarında rollerinin verilip verilmeyeceği."
 
 #: src/modules/member_admin/settings.py:389
 msgctxt "guildset:role_persistence|long_desc"
