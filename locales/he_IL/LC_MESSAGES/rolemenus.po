@@ -264,7 +264,7 @@ msgstr "ערוךתפריט"
 #: src/modules/rolemenus/cog.py:791
 msgctxt "cmd:rolemenu_edit|desc"
 msgid "Edit an existing role menu."
-msgstr ""
+msgstr "ערוך תפריט קיים."
 
 #: src/modules/rolemenus/cog.py:800
 msgctxt "cmd:rolemenu_edit|param:name"
@@ -584,7 +584,7 @@ msgstr "זהירות!"
 #: src/modules/rolemenus/cog.py:1609
 msgctxt "cmd:rolemenu_delrole"
 msgid "delrole"
-msgstr ""
+msgstr "מחקרול"
 
 #: src/modules/rolemenus/cog.py:1612
 msgctxt "cmd:rolemenu_delrole|desc"
