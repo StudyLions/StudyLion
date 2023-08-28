@@ -162,7 +162,7 @@ msgstr "menú de roles"
 #: src/modules/rolemenus/cog.py:584
 msgctxt "group:rolemenu|desc"
 msgid "Base command group for role menu configuration."
-msgstr ""
+msgstr "Grupo de comandos base para la configuración del menú de roles."
 
 #: src/modules/rolemenus/cog.py:593
 msgctxt "cmd:rolemenu_create"
