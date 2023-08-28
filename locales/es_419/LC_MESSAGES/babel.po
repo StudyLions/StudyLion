@@ -314,12 +314,12 @@ msgstr "Húngaro"
 #: src/babel/enums.py:56
 msgctxt "localenames|locale:it"
 msgid "Italian"
-msgstr ""
+msgstr "Italiano"
 
 #: src/babel/enums.py:57
 msgctxt "localenames|locale:ja"
 msgid "Japanese"
-msgstr ""
+msgstr "Japonés"
 
 #: src/babel/enums.py:58
 msgctxt "localenames|locale:ko"
