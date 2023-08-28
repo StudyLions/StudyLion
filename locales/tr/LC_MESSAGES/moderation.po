@@ -184,7 +184,7 @@ msgstr "Ayarlanmadı."
 #: src/modules/moderation/settings.py:70
 msgctxt "guildset:alert_channel"
 msgid "alert_channel"
-msgstr ""
+msgstr "uyarı_kanalı"
 
 #: src/modules/moderation/settings.py:73
 msgctxt "guildset:alert_channel|desc"
