@@ -370,7 +370,7 @@ msgstr ""
 #: src/modules/economy/cog.py:668
 msgctxt "cmd:send|param:amount"
 msgid "amount"
-msgstr ""
+msgstr "miktar"
 
 #: src/modules/economy/cog.py:669
 msgctxt "cmd:send|param:note"
@@ -380,7 +380,7 @@ msgstr "not"
 #: src/modules/economy/cog.py:672
 msgctxt "cmd:send|param:target|desc"
 msgid "User to send the gift to"
-msgstr ""
+msgstr "Hediyenin gönderileceği kişi"
 
 #: src/modules/economy/cog.py:673
 msgctxt "cmd:send|param:amount|desc"
