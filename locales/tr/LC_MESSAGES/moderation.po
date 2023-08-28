@@ -196,6 +196,8 @@ msgstr "uyarı_kanalı"
 msgctxt "guildset:alert_channel|desc"
 msgid "Moderation notification channel for members with DMs disabled."
 msgstr ""
+"Direkt Mesajları kapalı olan kullanıcılar için moderasyon bildirimleri "
+"kanalı"
 
 #: src/modules/moderation/settings.py:77
 msgctxt "guildset:alert_channel|long_desc"
