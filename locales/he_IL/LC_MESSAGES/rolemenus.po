@@ -143,12 +143,12 @@ msgstr "התפריט '{name}' לא קיים!"
 #, possible-python-brace-format
 msgctxt "acmpl:menuroles|choice:no_matching|name"
 msgid "No roles in this menu matching '{partial}'"
-msgstr ""
+msgstr "אין רולים בתפריטים הללו שמתאימים ל'{partial}'!"
 
 #: src/modules/rolemenus/cog.py:581
 msgctxt "group:rolemenu"
 msgid "rolemenu"
-msgstr ""
+msgstr "תפריטרולים"
 
 #: src/modules/rolemenus/cog.py:584
 msgctxt "group:rolemenu|desc"
