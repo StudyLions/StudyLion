@@ -287,6 +287,8 @@ msgid ""
 "Target user or role to view or update. Use @everyone to reset the entire "
 "guild."
 msgstr ""
+"Görüntülemek veya düzenlemek için hedef üye veya rol giriniz. Sunucudaki "
+"herkesi sıfırlamak için @everyone kullanınız."
 
 #: src/modules/economy/cog.py:543
 #, possible-python-brace-format
