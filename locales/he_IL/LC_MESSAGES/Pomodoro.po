@@ -449,7 +449,7 @@ msgctxt "timerset:inactivity_threshold|desc"
 msgid ""
 "Number of inactive focus+break stages before a member is removed from the "
 "timer."
-msgstr ""
+msgstr "מספר הסבבים (פוקוס+הפסקה) לפני שמשתמש מוסר מהטיימר"
 
 #: src/modules/pomodoro/options.py:85
 msgctxt "timerset:inactivity_threshold|desc"
