@@ -111,12 +111,12 @@ msgstr "Ene,Feb,Mar,Abr,May,Jun,Jul,Ago,Sep,Oct,Nov,Dic"
 #: src/babel/settings.py:23
 msgctxt "settype:locale|accepts"
 msgid "Enter a supported language (e.g. 'en-GB')."
-msgstr ""
+msgstr "Introduzca un idioma compatible (por ejemplo, \"en-GB\")."
 
 #: src/babel/settings.py:34
 msgctxt "settype:locale|summary_table|field:supported|key"
 msgid "Supported"
-msgstr ""
+msgstr "Soporte"
 
 #: src/babel/settings.py:44
 msgctxt "settype:locale|formatted:unset"
