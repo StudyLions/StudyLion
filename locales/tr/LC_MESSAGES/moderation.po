@@ -65,7 +65,7 @@ msgstr "Genel moderasyon ayarlarını ayarla"
 #, possible-python-brace-format
 msgctxt "ticket|title:auto"
 msgid "Ticket #{ticketid} | {state} | {type}[Auto] | {name}"
-msgstr ""
+msgstr "Talep #{ticketid} | {state} | {type}[Auto] | {name}"
 
 #: src/modules/moderation/ticket.py:152
 #, possible-python-brace-format
