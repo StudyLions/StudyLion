@@ -53,12 +53,12 @@ msgstr "Genel"
 #: src/modules/config/general.py:95
 msgctxt "cmd:configure_general|desc"
 msgid "General configuration panel"
-msgstr ""
+msgstr "Genel kurulum paneli"
 
 #: src/modules/config/general.py:129
 msgctxt "cmd:configure_general|parse_failure:timezone"
 msgid "Could not set the timezone!"
-msgstr ""
+msgstr "Zaman dilimini ayarlayamadım!"
 
 #: src/modules/config/general.py:150
 msgctxt "cmd:configure_general|success"
