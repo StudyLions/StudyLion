@@ -153,12 +153,12 @@ msgstr "תפריטרולים"
 #: src/modules/rolemenus/cog.py:584
 msgctxt "group:rolemenu|desc"
 msgid "Base command group for role menu configuration."
-msgstr ""
+msgstr "קבוצת פקודות בסיס לניהול הגדרות התפריטים."
 
 #: src/modules/rolemenus/cog.py:593
 msgctxt "cmd:rolemenu_create"
 msgid "newmenu"
-msgstr ""
+msgstr "תפריטחדש"
 
 #: src/modules/rolemenus/cog.py:596
 msgctxt "cmd:rolemenu_create|desc"
