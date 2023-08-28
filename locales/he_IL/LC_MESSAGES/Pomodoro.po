@@ -225,7 +225,7 @@ msgstr "צור"
 #: src/modules/pomodoro/cog.py:465
 msgctxt "cmd:pomodoro_create|desc"
 msgid "Create a new Pomodoro timer. Requires admin permissions."
-msgstr ""
+msgstr "צור שעון פומודורו חדש. הרשאות אדמין נחוצות על מנת לעשות זאת."
 
 #: src/modules/pomodoro/cog.py:469
 msgctxt "cmd:pomodoro_create|param:channel"
@@ -238,11 +238,13 @@ msgid ""
 "Voice channel to create the timer in. (Defaults to your current channel, or "
 "makes a new one.)"
 msgstr ""
+"הערוץ הקולי שתרצו ליצור בו טיימר. (ברירת מחדל היא הערוץ שאתם נמצאים בו "
+"כרגע.)"
 
 #: src/modules/pomodoro/cog.py:504
 msgctxt "cmd:pomodoro_create|error:insufficient_perms"
 msgid "Only server administrators can create timers!"
-msgstr ""
+msgstr "רק אדמינים יכולים ליצור טיימרים."
 
 #: src/modules/pomodoro/cog.py:531
 msgctxt "cmd:pomodoro_create|error:channel_create_failed|title"
