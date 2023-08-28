@@ -201,7 +201,7 @@ msgstr "Direkt Mesaj"
 #: src/modules/member_admin/settings.py:91
 msgctxt "guildset:greeting_message"
 msgid "welcome_message"
-msgstr ""
+msgstr "hoşgeldin_mesajı"
 
 #: src/modules/member_admin/settings.py:95
 msgctxt "guildset:greeting_message|desc"
