@@ -263,7 +263,7 @@ msgstr ""
 #: src/modules/moderation/settings.py:156
 msgctxt "guildset:mod_role|set_response:unset"
 msgid "No members will be given moderation privileges."
-msgstr ""
+msgstr "Hiçbir kullanıcıya moderasyon ayrıcalıkları verilmedi."
 
 #: src/modules/moderation/settings.py:168
 msgctxt "guildset:mod_role|formatted:unset"
