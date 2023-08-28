@@ -184,7 +184,7 @@ msgstr ""
 #: src/settings/setting_types.py:1017
 msgctxt "settype:raw|accepts"
 msgid "Anything"
-msgstr ""
+msgstr "כל אופציה"
 
 #: src/settings/setting_types.py:1070
 msgctxt "settype:enum|accepts"
