@@ -609,7 +609,7 @@ msgstr "מידע על הלו\"ז"
 #: src/modules/schedule/ui/scheduleui.py:184
 msgctxt "ui:schedule|menu:booking|error:current_slot"
 msgid "You cannot schedule a currently running session!"
-msgstr ""
+msgstr "אתה לא יכול לקבוע סשן שכבר רץ כרגע."
 
 #: src/modules/schedule/ui/scheduleui.py:191
 msgctxt "ui:schedule|menu:booking|error:next_slot"
