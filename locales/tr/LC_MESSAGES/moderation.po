@@ -268,4 +268,4 @@ msgstr ""
 #: src/modules/moderation/settings.py:168
 msgctxt "guildset:mod_role|formatted:unset"
 msgid "Not Set."
-msgstr ""
+msgstr "Ayarlanmadı."
