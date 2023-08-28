@@ -304,12 +304,12 @@ msgstr "Griego"
 #: src/babel/enums.py:54
 msgctxt "localenames|locale:hi"
 msgid "Hindi"
-msgstr ""
+msgstr "Hindi"
 
 #: src/babel/enums.py:55
 msgctxt "localenames|locale:hu"
 msgid "Hungarian"
-msgstr ""
+msgstr "Húngaro"
 
 #: src/babel/enums.py:56
 msgctxt "localenames|locale:it"
