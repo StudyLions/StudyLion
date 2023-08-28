@@ -88,7 +88,7 @@ msgstr ""
 #: src/babel/cog.py:211
 msgctxt "cmd:userconfig_language|button:reset|label"
 msgid "Reset"
-msgstr ""
+msgstr "Restablecer"
 
 #: src/babel/cog.py:251
 #, possible-python-brace-format
