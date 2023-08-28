@@ -222,7 +222,7 @@ msgstr ""
 msgctxt "cmd:economy_balance|embed:success|title"
 msgid "Account successfully updated."
 msgid_plural "Accounts successfully updated."
-msgstr[0] "Hesaplar başarıyla güncellendi."
+msgstr[0] "Hesap başarıyla güncellendi."
 msgstr[1] "Hesaplar başarıyla güncellendi."
 
 #: src/modules/economy/cog.py:394
