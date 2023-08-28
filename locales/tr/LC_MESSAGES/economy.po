@@ -262,7 +262,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:single|author"
 msgid "Balance statement for {user}"
-msgstr ""
+msgstr "{user} için bakiye raporu."
 
 #: src/modules/economy/cog.py:504
 msgctxt "cmd:economy_reset"
