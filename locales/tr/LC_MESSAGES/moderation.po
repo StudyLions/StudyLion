@@ -123,7 +123,7 @@ msgstr "{timestamp}"
 #: src/modules/moderation/ticket.py:212
 msgctxt "ticket|field:context|name"
 msgid "Context"
-msgstr ""
+msgstr "bağlam"
 
 #: src/modules/moderation/ticket.py:219
 msgctxt "ticket|field:notes|name"
