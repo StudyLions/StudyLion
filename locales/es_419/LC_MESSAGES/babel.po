@@ -145,11 +145,13 @@ msgid ""
 "The language you would prefer me to respond to commands and interactions in."
 " Servers may be configured to override this with their own language."
 msgstr ""
+"El idioma en el que prefieres que responda a los comandos e interacciones. "
+"Los servidores pueden configurarse para anular esto con su propio idioma."
 
 #: src/babel/settings.py:90
 msgctxt "userset:locale|response"
 msgid "You have unset your language."
-msgstr ""
+msgstr "Has desajustado tu idioma."
 
 #: src/babel/settings.py:92
 #, possible-python-brace-format
