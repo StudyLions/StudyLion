@@ -113,12 +113,12 @@ msgstr ""
 #: src/settings/setting_types.py:506
 msgctxt "settype:bool|output:true"
 msgid "On"
-msgstr ""
+msgstr "דלוק"
 
 #: src/settings/setting_types.py:507
 msgctxt "settype:bool|output:false"
 msgid "Off"
-msgstr ""
+msgstr "כבוי"
 
 #: src/settings/setting_types.py:508
 msgctxt "settype:bool|output:none"
@@ -128,7 +128,7 @@ msgstr "לא נקבע."
 #: src/settings/setting_types.py:619
 msgctxt "settype:integer|accepts"
 msgid "An integer"
-msgstr ""
+msgstr "מספר שלם"
 
 #: src/settings/setting_types.py:682
 msgctxt "settype:emoji|desc"
