@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-27 16:37+0300\n"
+"POT-Creation-Date: 2023-08-28 22:43+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Ari Horesh, 2023\n"
 "Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
@@ -31,13 +31,31 @@ msgctxt "timer|stage:focus|name"
 msgid "FOCUS"
 msgstr "פוקוס"
 
-#: src/modules/pomodoro/timer.py:220
+#: src/modules/pomodoro/timer.py:155
+#, possible-python-brace-format
+msgctxt "timer|webhook|name"
+msgid "{bot_name} Pomodoro"
+msgstr ""
+
+#: src/modules/pomodoro/timer.py:159
+msgctxt "timer|webhook|audit_reason"
+msgid "Pomodoro Notifications"
+msgstr ""
+
+#: src/modules/pomodoro/timer.py:170
+msgctxt "timer|webhook|error:insufficient_permissions"
+msgid ""
+"I require the `MANAGE_WEBHOOKS` permission to send pomodoro notifications "
+"here!"
+msgstr ""
+
+#: src/modules/pomodoro/timer.py:229
 #, possible-python-brace-format
 msgctxt "timer|default_base_name"
 msgid "Timer {pattern}"
 msgstr "טיימר {pattern}"
 
-#: src/modules/pomodoro/timer.py:394
+#: src/modules/pomodoro/timer.py:403
 #, possible-python-brace-format
 msgctxt "timer|kicked_message"
 msgid ""
@@ -59,20 +77,20 @@ msgstr[3] ""
 "{mentions} הוסרו מ {channel} מאחר והם לא היו פעילים! זכרו ללחוץ על {tick} על"
 " מנת לרשום נוכחות בכל שלב."
 
-#: src/modules/pomodoro/timer.py:487
+#: src/modules/pomodoro/timer.py:496
 #, possible-python-brace-format
 msgctxt "timer|status|stage:focus|statusline"
 msgid "{channel} is now in **FOCUS**! Good luck, **BREAK** starts {timestamp}"
 msgstr "{channel} עכשיו בפוקוס! בהצלחה! ההפסקה תתחיל ב {timestamp}"
 
-#: src/modules/pomodoro/timer.py:492
+#: src/modules/pomodoro/timer.py:501
 #, possible-python-brace-format
 msgctxt "timer|status|stage:break|statusline"
 msgid ""
 "{channel} is now on **BREAK**! Take a rest, **FOCUS** starts {timestamp}"
 msgstr "{channel} עכשיו בהפסקה! הסשן יתחיל ב {timestamp}"
 
-#: src/modules/pomodoro/timer.py:524
+#: src/modules/pomodoro/timer.py:533
 #, possible-python-brace-format
 msgctxt "timer|status|warningline"
 msgid ""
@@ -82,31 +100,31 @@ msgstr ""
 "**זהירות:** {mentions}, אל תשכחו ללחוץ על ה{tick} על מנת להימנע מלהתנתק בשלב"
 " הבא."
 
-#: src/modules/pomodoro/timer.py:543
+#: src/modules/pomodoro/timer.py:552
 #, possible-python-brace-format
 msgctxt "timer|status|stopped:auto"
 msgid "Timer stopped! Join {channel} to start the timer."
 msgstr "השעון נעצר! הצטרף אל {channel} על מנת להתחיל את השעון מחדש."
 
-#: src/modules/pomodoro/timer.py:548
+#: src/modules/pomodoro/timer.py:557
 msgctxt "timer|status|stopped:manual"
 msgid "Timer stopped! Press `Start` to restart the timer."
-msgstr ""
+msgstr "השעון נעצר! לחץ על \"התחל\" כדי להתחיל את השעון מחדש."
 
 #: src/modules/pomodoro/settingui.py:39
 msgctxt "ui:timer_config|menu:channels|placeholder"
 msgid "Select Pomodoro Notification Channel"
-msgstr ""
+msgstr "בחר ערוץ התראות לטיימרים של הפומודורו"
 
 #: src/modules/pomodoro/settingui.py:47
 msgctxt "ui:timer_config|embed|title"
 msgid "Timer Configuration Panel"
-msgstr ""
+msgstr "תפריט הגדרות טיימרים פומודורו"
 
 #: src/modules/pomodoro/settingui.py:81
 msgctxt "dash:pomodoro|title"
 msgid "Pomodoro Configuration ({commands[configure pomodoro]})"
-msgstr ""
+msgstr "תפריט הגדרות טיימרים ({commands[configure pomodoro]})"
 
 #: src/modules/pomodoro/settingui.py:85
 msgctxt "dash:stats|dropdown|placeholder"
