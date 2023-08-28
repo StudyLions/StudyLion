@@ -48,7 +48,7 @@ msgstr ""
 #: src/modules/config/general.py:94
 msgctxt "cmd:configure_general"
 msgid "general"
-msgstr ""
+msgstr "Genel"
 
 #: src/modules/config/general.py:95
 msgctxt "cmd:configure_general|desc"
