@@ -45,7 +45,7 @@ msgstr "ekonomi"
 #: src/modules/economy/cog.py:92
 msgctxt "cmd:economy_balance"
 msgid "balance"
-msgstr ""
+msgstr "bakiye"
 
 #: src/modules/economy/cog.py:95
 msgctxt "cmd:economy_balance|desc"
