@@ -40,7 +40,7 @@ msgstr "{bot_name} פומודורו"
 #: src/modules/pomodoro/timer.py:159
 msgctxt "timer|webhook|audit_reason"
 msgid "Pomodoro Notifications"
-msgstr ""
+msgstr "התראות פומודורו"
 
 #: src/modules/pomodoro/timer.py:170
 msgctxt "timer|webhook|error:insufficient_permissions"
