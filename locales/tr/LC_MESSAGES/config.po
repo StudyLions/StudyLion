@@ -74,7 +74,7 @@ msgstr "Genel Konfigürasyon Paneli"
 #, possible-python-brace-format
 msgctxt "ui:dashboard|title"
 msgid "Guild Dashboard (Page {page}/{total})"
-msgstr ""
+msgstr "Sunucu Dashboard (Sayfa {page}/{total})"
 
 #: src/modules/config/dashboard.py:109
 msgctxt "ui:dashboard|footer"
