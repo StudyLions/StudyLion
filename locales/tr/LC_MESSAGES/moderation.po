@@ -71,12 +71,12 @@ msgstr "Talep #{ticketid} | {state} | {type}[Auto] | {name}"
 #, possible-python-brace-format
 msgctxt "ticket|title:manual"
 msgid "Ticket #{ticketid} | {state} | {type} | {name}"
-msgstr ""
+msgstr "Talep #{ticketid} | {state} | {type} | {name}"
 
 #: src/modules/moderation/ticket.py:168
 msgctxt "ticket|field:target|name"
 msgid "Target"
-msgstr ""
+msgstr "Hedef"
 
 #: src/modules/moderation/ticket.py:173
 msgctxt "ticket|field:moderator|name"
