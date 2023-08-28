@@ -193,6 +193,8 @@ msgid ""
 "Are you sure you want to add {coin_emoji}**{amount}** to everyone in "
 "{role_mention}?"
 msgstr ""
+"{role_mention} rolündeki herkese {coin_emoji}**{amount}** miktarını "
+"eklemekte emin misiniz?"
 
 #: src/modules/economy/cog.py:354
 #, possible-python-brace-format
