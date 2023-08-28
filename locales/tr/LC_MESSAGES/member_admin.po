@@ -369,7 +369,7 @@ msgstr "otomatik roller"
 #: src/modules/member_admin/settings.py:343
 msgctxt "guildset:autoroles|desc"
 msgid "Roles given to new members when they join the server."
-msgstr ""
+msgstr "Yeni üyeler sunucuya katıldıklarında verilecek roller."
 
 #: src/modules/member_admin/settings.py:347
 msgctxt "guildset:autoroles|long_desc"
@@ -382,7 +382,7 @@ msgstr ""
 #: src/modules/member_admin/settings.py:361
 msgctxt "guildset:bot_autoroles"
 msgid "bot_autoroles"
-msgstr ""
+msgstr "bot_otomatikrolleri"
 
 #: src/modules/member_admin/settings.py:365
 msgctxt "guildset:bot_autoroles|desc"
