@@ -1,0 +1,93 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Interitio, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-27 16:37+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Interitio, 2023\n"
+"Language-Team: Arabic (https://app.transifex.com/leobot/teams/174919/ar/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: src/wards.py:79
+msgctxt "ward:sys_admin|failed"
+msgid "You must be a bot owner to do this!"
+msgstr "يجب أن تكون مالك البرنامج الآلى لتنفيذ الامر"
+
+#: src/wards.py:95
+msgctxt "ward:high_management|failed"
+msgid ""
+"You must have the `ADMINISTRATOR` permission in this server to do this!"
+msgstr "يجب أن يكون لديك إذن المسؤل للقيام بذلك"
+
+#: src/wards.py:111
+msgctxt "ward:low_management|failed"
+msgid "You must have the `MANAGE_GUILD` permission in this server to do this!"
+msgstr ""
+
+#: src/wards.py:123
+msgctxt "ward:moderator|failed"
+msgid ""
+"You must have the configured moderator role, or `MANAGE_GUILD` permissions "
+"to do this."
+msgstr ""
+
+#: src/wards.py:149
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:bot_managed"
+msgid "I cannot manage {role} because it is managed by another bot!"
+msgstr ""
+
+#: src/wards.py:156
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:integration"
+msgid "I cannot manage {role} because it is managed by a server integration."
+msgstr ""
+
+#: src/wards.py:163
+msgctxt "ward:equippable_role|error:default_role"
+msgid "I cannot manage the server's default role."
+msgstr "لا استطيع إدارة الدور الإفتراضى للخادم"
+
+#: src/wards.py:170
+msgctxt "ward:equippable_role|error:no_perms"
+msgid "I need the `MANAGE_ROLES` permission before I can manage roles!"
+msgstr ""
+"احتاج إلى إذن `MANAGE_ROLES` لكى أستطيع إدارة الادوار\n"
+"\n"
+"احتاج إلى إذن \"إدارة الادوار\" لكى أستطيع التحكم فى إدارة الادوار"
+
+#: src/wards.py:177
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:my_top_role"
+msgid "I cannot assign or remove {role} because it is above my top role!"
+msgstr ""
+
+#: src/wards.py:184
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:not_assignable"
+msgid "I don't have sufficient permissions to assign or remove {role}."
+msgstr ""
+
+#: src/wards.py:192
+msgctxt "ward:equippable_role|error:actor_perms"
+msgid "You need the `MANAGE_ROLES` permission before you can configure roles!"
+msgstr ""
+
+#: src/wards.py:199
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:actor_top_role"
+msgid "You cannot configure {role} because it is above your top role!"
+msgstr ""
