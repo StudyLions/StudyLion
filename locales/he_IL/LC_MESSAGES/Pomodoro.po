@@ -431,7 +431,7 @@ msgstr "ערוץ_התראות"
 #: src/modules/pomodoro/options.py:48
 msgctxt "timerset:notification_channel|desc"
 msgid "Channel to which to send timer status cards and notifications."
-msgstr ""
+msgstr "ערוץ שבו אשלח את הטיימרים והתראות."
 
 #: src/modules/pomodoro/options.py:68
 #, possible-python-brace-format
@@ -454,7 +454,7 @@ msgstr "מספר הסבבים (פוקוס+הפסקה) לפני שמשתמש מו
 #: src/modules/pomodoro/options.py:85
 msgctxt "timerset:inactivity_threshold|desc"
 msgid "How many timer cycles before kicking inactive members."
-msgstr ""
+msgstr "כמה סבבים לפני שאנתק משתמשים לא פעילים."
 
 #: src/modules/pomodoro/options.py:101
 msgctxt "timerset:manager_role"
