@@ -43,7 +43,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "guildset:timezone|response"
 msgid "The guild timezone has been set to `{timezone}`."
-msgstr ""
+msgstr "Sunucu zaman dilimi `{timezone}` olarak ayarlandı."
 
 #: src/modules/config/general.py:94
 msgctxt "cmd:configure_general"
