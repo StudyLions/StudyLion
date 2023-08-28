@@ -395,7 +395,7 @@ msgstr "Ahora usando un mensaje de menú personalizado."
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_edit|repost|success"
 msgid "The role menu is now available at {message}"
-msgstr ""
+msgstr "El menú de funciones ya está disponible en {message}."
 
 #: src/modules/rolemenus/cog.py:1005
 #, possible-python-brace-format
