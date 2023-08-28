@@ -564,7 +564,7 @@ msgstr ""
 #: src/modules/pomodoro/settings.py:22
 msgctxt "guildset:pomodoro_channel|desc"
 msgid "Default central notification channel for pomodoro timers."
-msgstr ""
+msgstr "ערוץ התראות מרכזי לטיימרים של הפומודורו."
 
 #: src/modules/pomodoro/settings.py:26
 msgctxt "guildset:pomodoro_channel|long_desc"
@@ -573,11 +573,13 @@ msgid ""
 "send timer notifications in this channel. If this setting is not set, "
 "pomodoro notifications will default to the timer voice channel itself."
 msgstr ""
+"טיימרים שאין להם ערוץ ספציפי שמוגדר להם ישלחו את ההתראות שלהם לערוץ הזה. אם "
+"ההגדרה הזו לא הופעלה, ההתראות ישלחו לצאט של הערוץ הקולי עצמו (מומלץ להפעיל)."
 
 #: src/modules/pomodoro/settings.py:33
 msgctxt "guildset:pomodoro_channel|formatted|notset"
 msgid "Not Set (Will use timer voice channel.)"
-msgstr ""
+msgstr "לא מופעל (התראות ישלחו לערוץ עצמו)"
 
 #: src/modules/pomodoro/settings.py:37
 msgctxt "guildset:pomodoro_channel|accepts"
