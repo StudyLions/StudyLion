@@ -287,7 +287,7 @@ msgstr "menúdeedición"
 #: src/modules/rolemenus/cog.py:791
 msgctxt "cmd:rolemenu_edit|desc"
 msgid "Edit an existing role menu."
-msgstr ""
+msgstr "Editar un menú de roles existente."
 
 #: src/modules/rolemenus/cog.py:800
 msgctxt "cmd:rolemenu_edit|param:name"
