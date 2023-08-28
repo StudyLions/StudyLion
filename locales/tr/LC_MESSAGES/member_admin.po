@@ -54,7 +54,7 @@ msgstr "Yönetici Üye Konfigürasyon Paneli"
 #: src/modules/member_admin/settingui.py:257
 msgctxt "dash:member_admin|title"
 msgid "Greetings and Initial Roles ({commands[configure welcome]})"
-msgstr ""
+msgstr "Karşılama ve Başlangıç Rolleri ({commands[configure welcome]})"
 
 #: src/modules/member_admin/settingui.py:261
 msgctxt "dash:member_admin|dropdown|placeholder"
