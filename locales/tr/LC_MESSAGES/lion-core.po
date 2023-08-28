@@ -119,6 +119,8 @@ msgid ""
 "Could not parse the message embed data.\n"
 "**Error:** `{exception}`"
 msgstr ""
+"Gömülü mesajın verisini ayrıştıramıyorum.\n"
+"**Hata:** `{exception}`"
 
 #: src/core/setting_types.py:269
 msgctxt "settype:message|format:too_long"
