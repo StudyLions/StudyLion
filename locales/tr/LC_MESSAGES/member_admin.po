@@ -191,7 +191,7 @@ msgstr "Hoş geldin mesajı artık direkt mesaj aracılığıyla gönderilecekti
 #, possible-python-brace-format
 msgctxt "guildset:greeting_channel|set_response:set"
 msgid "Welcome messages will now be sent to {channel}"
-msgstr ""
+msgstr "Hoş geldin mesajı artık {channel} kanalına gönderilecektir."
 
 #: src/modules/member_admin/settings.py:84
 msgctxt "guildset:greeting_channel|formmatted:unset"
