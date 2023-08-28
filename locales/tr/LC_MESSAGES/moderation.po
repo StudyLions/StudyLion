@@ -175,7 +175,7 @@ msgstr "Talep kanal adı ya da ID'si."
 #, possible-python-brace-format
 msgctxt "guildset:ticket_log|set_response:set"
 msgid "Moderation tickets will be sent to {channel}"
-msgstr ""
+msgstr "Moderasyon talepleri {channel} kanalına gönderilecektir."
 
 #: src/modules/moderation/settings.py:51
 msgctxt "guildset:ticket_log|set_response:unset"
