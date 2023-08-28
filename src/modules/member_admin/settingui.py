@@ -262,3 +262,35 @@ class MemberAdminDashboard(DashboardSection):
     )
     configui = MemberAdminUI
     setting_classes = MemberAdminUI.setting_classes
+
+    def apply_to(self, page: discord.Embed):
+        """
+        Overriding DashboardSection apply_to to split into two sections.
+        """
+        t = self.bot.translator.t
+        sections = [
+            self.instances[:3],
+            self.instances[3:]
+        ]
+        
+        # Greeting messages
+        table = self._make_table(sections[0])
+        page.add_field(
+            name=t(_p(
+                'dash:member_admin|section:greeting_messages|name',
+                "Greeting Messages ({commands[configure welcome]})"
+            )).format(commands=self.bot.core.mention_cache),
+            value=table,
+            inline=False
+        )
+
+        # Initial Roles
+        table = self._make_table(sections[1])
+        page.add_field(
+            name=t(_p(
+                'dash:member_admin|section:initial_roles|name',
+                "Initial Roles ({commands[configure welcome]})"
+            )).format(commands=self.bot.core.mention_cache),
+            value=table,
+            inline=False
+        )

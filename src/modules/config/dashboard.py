@@ -4,8 +4,9 @@ import discord
 from discord.ui.select import select, Select, SelectOption
 from discord.ui.button import button, Button, ButtonStyle
 
+from constants import HINT_ICON
 from meta import conf, LionBot
-from utils.lib import MessageArgs
+from utils.lib import MessageArgs, utc_now
 from utils.ui import BasePager
 
 from modules.economy.settingui import EconomyDashboard
@@ -72,6 +73,16 @@ class GuildDashboard(BasePager):
             instance.deregister_callback(self.id)
         self._listening.clear()
 
+        try:
+            if self._original is not None and not self._original.is_expired():
+                await self._original.edit_original_response(view=None)
+                self._original = None
+            if self._message is not None:
+                await self._message.edit(view=None)
+                self._message = None
+        except discord.HTTPException:
+            pass
+
         await super().cleanup()
 
     # ----- Pager Control -----
@@ -80,10 +91,24 @@ class GuildDashboard(BasePager):
         if (page := self._cached_pages.get(page_id, None)) is not None:
             pass
         else:
+            t = self.bot.translator.t
             # Format settings into a dashboard embed
+            dashboard_title = t(_p(
+                'ui:dashboard|title',
+                "Guild Dashboard (Page {page}/{total})"
+            )).format(page=page_id + 1, total=len(self.pages))
+
             embed = discord.Embed(
-                title="Guild Dashboard",
-                colour=discord.Colour.orange()
+                title=dashboard_title,
+                colour=discord.Colour.orange(),
+                timestamp=utc_now()
+            )
+            embed.set_footer(
+                text=t(_p(
+                    'ui:dashboard|footer',
+                    "Hover over setting names for a brief description"
+                )),
+                icon_url=HINT_ICON
             )
 
             section_classes = self.pages[page_id]
@@ -160,7 +185,8 @@ class GuildDashboard(BasePager):
     # ----- UI Control -----
     async def reload(self, *args):
         self._cached_pages.clear()
-        await self.redraw()
+        if not self._original.is_expired():
+            await self.redraw()
 
     async def refresh(self):
         await super().refresh()
