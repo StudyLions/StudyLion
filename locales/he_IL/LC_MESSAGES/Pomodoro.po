@@ -63,14 +63,14 @@ msgstr[3] ""
 #, possible-python-brace-format
 msgctxt "timer|status|stage:focus|statusline"
 msgid "{channel} is now in **FOCUS**! Good luck, **BREAK** starts {timestamp}"
-msgstr ""
+msgstr "{channel} עכשיו בפוקוס! בהצלחה! ההפסקה תתחיל ב {timestamp}"
 
 #: src/modules/pomodoro/timer.py:492
 #, possible-python-brace-format
 msgctxt "timer|status|stage:break|statusline"
 msgid ""
 "{channel} is now on **BREAK**! Take a rest, **FOCUS** starts {timestamp}"
-msgstr ""
+msgstr "{channel} עכשיו בהפסקה! הסשן יתחיל ב {timestamp}"
 
 #: src/modules/pomodoro/timer.py:524
 #, possible-python-brace-format
@@ -79,6 +79,8 @@ msgid ""
 "**Warning:** {mentions}, please press {tick} to avoid being removed on the "
 "next stage."
 msgstr ""
+"**זהירות:** {mentions}, אל תשכחו ללחוץ על ה{tick} על מנת להימנע מלהתנתק בשלב"
+" הבא."
 
 #: src/modules/pomodoro/timer.py:543
 #, possible-python-brace-format
