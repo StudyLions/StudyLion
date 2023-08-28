@@ -1095,7 +1095,7 @@ msgstr ""
 #: src/modules/rolemenus/menuoptions.py:201
 msgctxt "menuset:required_role"
 msgid "required_role"
-msgstr ""
+msgstr "רול_נחוץ"
 
 #: src/modules/rolemenus/menuoptions.py:204
 msgctxt "menuset:required_role|desc"
