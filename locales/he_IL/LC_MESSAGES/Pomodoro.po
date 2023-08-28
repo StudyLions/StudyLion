@@ -376,24 +376,24 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:817
 msgctxt "cmd:configure_pomodoro"
 msgid "pomodoro"
-msgstr ""
+msgstr "פומודורו"
 
 #: src/modules/pomodoro/cog.py:818
 msgctxt "cmd:configure_pomodoro|desc"
 msgid "Configure Pomodoro Timer System"
-msgstr ""
+msgstr "נהל את מערכת הטיימרים"
 
 #: src/modules/pomodoro/lib.py:19
 #, possible-python-brace-format
 msgctxt "formatstring:channel_name|key:remaining"
 msgid "{remaining}"
-msgstr ""
+msgstr "{נותר}"
 
 #: src/modules/pomodoro/lib.py:20
 #, possible-python-brace-format
 msgctxt "formatstring:channel_name|key:stage"
 msgid "{stage}"
-msgstr ""
+msgstr "{שלב}"
 
 #: src/modules/pomodoro/lib.py:21
 #, possible-python-brace-format
