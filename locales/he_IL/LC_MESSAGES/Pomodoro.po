@@ -795,6 +795,8 @@ msgid ""
 "**`{focus_len} minutes`** focus\n"
 "**`{break_len} minutes`** break"
 msgstr ""
+"**`{focus_len} דקות`** פוקוס\n"
+"**`{break_len} דקות`** הפסקה"
 
 #: src/modules/pomodoro/ui/config.py:199
 msgctxt "ui:timer_options|embed|field:channel_name|name"
@@ -808,6 +810,8 @@ msgid ""
 "**`{name}`**\n"
 "(The actual channel name may not match due to ratelimits.)"
 msgstr ""
+"**`{name}`**\n"
+"(השם של החדר לא ישונה בזמן אמת מאחר ודיסקורד מגבילים אותנו מלעשות יותר מידי שינויים)"
 
 #: src/modules/pomodoro/ui/config.py:213
 msgctxt "ui:timer_options|embed|field:issues|name"
@@ -817,14 +821,14 @@ msgstr "בעיות"
 #: src/modules/pomodoro/ui/config.py:231
 msgctxt "ui:timer_options|issue:no_voice_channel"
 msgid "The configured voice channel does not exist! Please update it below."
-msgstr ""
+msgstr "הערוץ הקולי לא קיים! אנא עדכנו אותו בתחתית"
 
 #: src/modules/pomodoro/ui/config.py:242
 #, possible-python-brace-format
 msgctxt "ui:timer_options|issue:cannot_speak"
 msgid ""
 "Voice alerts are on, but I don't have speaking permissions in {channel}"
-msgstr ""
+msgstr "הגדרות קוליות הופעלו, אבל אין לי הרשאות לדבר ב{channel}"
 
 #: src/modules/pomodoro/ui/config.py:249
 #, possible-python-brace-format
