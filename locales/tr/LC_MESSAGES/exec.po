@@ -37,7 +37,7 @@ msgstr ""
 #: src/modules/sysadmin/exec_cog.py:272
 msgctxt "command"
 msgid "eval"
-msgstr ""
+msgstr "eval"
 
 #: src/modules/sysadmin/exec_cog.py:273
 msgctxt "command:eval"
