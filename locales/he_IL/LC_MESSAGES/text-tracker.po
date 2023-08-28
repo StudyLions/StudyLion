@@ -71,7 +71,7 @@ msgstr "נקודות_כל_5דקות"
 msgctxt "guildset:xp_per_period|desc"
 msgid ""
 "How much XP members will be given every 5 minute period they are active."
-msgstr ""
+msgstr "כמה נקודות ניסיון משתמשים יקבלו כל חמש דקות שהם פעילים."
 
 #: src/tracking/text/settings.py:40
 msgctxt "guildset:xp_per_period|long_desc"
@@ -80,6 +80,7 @@ msgid ""
 "are active (send a message). Note that this XP is only given *once* per "
 "period."
 msgstr ""
+"כמות נקודות הניסיון שמשתמשים יקבלו כל חמש דקות שהם פעילים. (פעם בחמש דקות)."
 
 #: src/tracking/text/settings.py:45
 msgctxt "guildset:xp_per_period|accepts"
