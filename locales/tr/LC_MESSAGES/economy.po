@@ -275,6 +275,8 @@ msgid ""
 "Reset the coin balance for a target user or role. (See also \"economy "
 "balance\".)"
 msgstr ""
+"Hedef üye veya rol için para bakiyesini sıfırlayın. (Ayrıca \"ekonomi "
+"bakiye\" kısmına bakınız.)"
 
 #: src/modules/economy/cog.py:511
 msgctxt "cmd:economy_reset|param:target"
