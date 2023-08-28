@@ -471,6 +471,8 @@ msgid ""
 "For every **100** XP they earn, members will now be given "
 "{coin}**{amount}**."
 msgstr ""
+"Kazanılan her **100** XP için üyeler {coin}**{amount}** kadar LionCoin "
+"kazanacaklar."
 
 #: src/modules/economy/settings.py:70
 msgctxt "guildset:allow_transfers"
