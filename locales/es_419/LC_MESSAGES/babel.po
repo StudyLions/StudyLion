@@ -94,7 +94,7 @@ msgstr "Restablecer"
 #, possible-python-brace-format
 msgctxt "acmpl:language|no_match"
 msgid "No supported languages matching {partial}"
-msgstr ""
+msgstr "No hay idiomas compatibles que coincidan {partial}"
 
 #: src/babel/utils.py:9
 msgctxt "utils|months"
