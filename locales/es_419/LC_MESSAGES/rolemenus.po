@@ -238,6 +238,8 @@ msgstr ""
 msgctxt "cmd:rolemenu_create|error:message_exists"
 msgid "The message {link} already has a role menu! Use {edit_cmd} to edit it."
 msgstr ""
+"¡El mensaje {link} ya tiene un menú de roles! Utilice {edit_cmd} para "
+"editarlo."
 
 #: src/modules/rolemenus/cog.py:711
 #, possible-python-brace-format
