@@ -524,12 +524,12 @@ msgstr "עמוד 1"
 #: src/modules/schedule/ui/settingui.py:88
 msgctxt "ui:schedule_config|menu:lobby|placeholder"
 msgid "Select Lobby Channel"
-msgstr ""
+msgstr "בחר ערוץ לובי"
 
 #: src/modules/schedule/ui/settingui.py:105
 msgctxt "ui:schedule_config|menu:room|placeholder"
 msgid "Select Session Room"
-msgstr ""
+msgstr "בחר ערוץ סשנים"
 
 #: src/modules/schedule/ui/settingui.py:123
 msgctxt "ui:schedule_config|menu:channels|placeholder"
