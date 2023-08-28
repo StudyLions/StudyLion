@@ -239,6 +239,8 @@ msgctxt "guildset:mod_role|desc"
 msgid ""
 "Guild role permitted to view configuration and perform moderation tasks."
 msgstr ""
+"Konfigürasyonları gören ve moderasyon görevlerini gerçekleştiren sunucu "
+"rolü."
 
 #: src/modules/moderation/settings.py:130
 msgctxt "guildset:mod_role|long_desc"
