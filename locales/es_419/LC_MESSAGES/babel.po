@@ -157,7 +157,7 @@ msgstr "Has desajustado tu idioma."
 #, possible-python-brace-format
 msgctxt "userset:locale|response"
 msgid "You have set your language to {lang}."
-msgstr ""
+msgstr "Has configurado tu idioma a {lang}."
 
 #: src/babel/settings.py:110
 msgctxt "guildset:force_locale"
