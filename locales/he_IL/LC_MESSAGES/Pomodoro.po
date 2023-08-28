@@ -582,18 +582,18 @@ msgstr ""
 #: src/modules/pomodoro/settings.py:37
 msgctxt "guildset:pomodoro_channel|accepts"
 msgid "Timer notification channel name or id."
-msgstr ""
+msgstr "שם או מספר זהות של הערוץ התראות"
 
 #: src/modules/pomodoro/settings.py:51
 #, possible-python-brace-format
 msgctxt "guildset:pomodoro_channel|set_response|set"
 msgid "Pomodoro timer notifications will now default to {channel}"
-msgstr ""
+msgstr "ההתראות ברירת מחדל עכשיו יופנו אל {channel}"
 
 #: src/modules/pomodoro/settings.py:56
 msgctxt "guildset:pomodoro_channel|set_response|unset"
 msgid "Pomodoro timer notifications will now default to their voice channel."
-msgstr ""
+msgstr "ההתראות ברירת מחדל עכשיו יופנו אל הערוץ הקולי שלהם."
 
 #: src/modules/pomodoro/settings.py:66
 #, possible-python-brace-format
