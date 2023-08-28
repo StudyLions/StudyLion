@@ -371,7 +371,7 @@ msgstr ""
 msgctxt "cmd:pomodoro_edit|error:insufficient_permissions|role_needed:manager"
 msgid ""
 "You need to be a guild admin or have the manager role to modify this option!"
-msgstr ""
+msgstr "אתה צריך להיות האדמין של השרת או להיות מנהל כדי לערוך את האופציה הזו!"
 
 #: src/modules/pomodoro/cog.py:817
 msgctxt "cmd:configure_pomodoro"
