@@ -81,7 +81,7 @@ msgstr "Hedef"
 #: src/modules/moderation/ticket.py:173
 msgctxt "ticket|field:moderator|name"
 msgid "Moderator"
-msgstr ""
+msgstr "Moderatör"
 
 #: src/modules/moderation/ticket.py:180
 msgctxt "ticket|field:expiry|mode:expiring|name"
