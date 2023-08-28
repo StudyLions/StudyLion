@@ -349,7 +349,7 @@ msgstr "Adjunta un mensaje personalizado para usarlo en el menú "
 #: src/modules/rolemenus/cog.py:864
 msgctxt "cmd:rolemenu_edit|error:author_perms"
 msgid "You need the `MANAGE_ROLES` permission in order to edit role menus."
-msgstr ""
+msgstr "Necesita el permiso `MANAGE_ROLES` para editar los menús de roles."
 
 #: src/modules/rolemenus/cog.py:871
 msgctxt "cmd:rolemenu_edit|error:my_perms"
