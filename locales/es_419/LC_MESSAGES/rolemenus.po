@@ -56,6 +56,8 @@ msgid ""
 "I lack the `MANAGE_ROLES` permission required to offer roles from role "
 "menus."
 msgstr ""
+"Me falta el permiso `MANAGE_ROLES` necesario para ofrecer roles desde los "
+"menús de roles."
 
 #: src/modules/rolemenus/cog.py:300
 msgctxt "parse:message_link|suberror:message_dne"
