@@ -301,18 +301,20 @@ msgstr "ערוץ_טיימר"
 #: src/modules/pomodoro/cog.py:622
 msgctxt "cmd:pomodoro_destroy|param:channel"
 msgid "Channel with the timer to delete."
-msgstr ""
+msgstr "הערוץ עם הטיימר שמיועד למחיקה."
 
 #: src/modules/pomodoro/cog.py:640
 msgctxt "cmd:pomodoro_destroy|error:no_timer"
 msgid "This channel doesn't have an attached pomodoro timer!"
-msgstr ""
+msgstr "בערוץ הזה לא קיימים שום טיימרים!"
 
 #: src/modules/pomodoro/cog.py:655
 msgctxt "cmd:pomodoro_destroy|error:insufficient_perms|owned"
 msgid ""
 "You need to be an administrator or own this channel to remove this timer!"
 msgstr ""
+"אתם צריכים הרשאות אדמין או להיות הבעלים של הערוץ הקולי הזה כדי למחוק את "
+"הטיימר הזה!"
 
 #: src/modules/pomodoro/cog.py:665
 msgctxt "cmd:pomodoro_destroy|error:insufficient_perms|notowned"
