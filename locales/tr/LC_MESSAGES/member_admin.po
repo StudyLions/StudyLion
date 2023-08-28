@@ -85,7 +85,7 @@ msgstr "kaydedilen_roller"
 #: src/modules/member_admin/cog.py:247
 msgctxt "cmd:resetmember|param:target|desc"
 msgid "Choose the member (current or past) you want to reset."
-msgstr ""
+msgstr "Sıfırlamak istediğiniz üyeyi seçiniz (eski veya yeni)."
 
 #: src/modules/member_admin/cog.py:251
 msgctxt "cmd:resetmember|param:saved_roles|desc"
