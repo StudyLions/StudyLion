@@ -705,17 +705,17 @@ msgstr "מחק"
 #: src/modules/pomodoro/ui/config.py:119
 msgctxt "ui:timer_options|menu:voice_channel|placeholder"
 msgid "Set Voice Channel"
-msgstr ""
+msgstr "בחר ערוץ קולי"
 
 #: src/modules/pomodoro/ui/config.py:142
 msgctxt "ui:timer_options|menu:notification_channel|placeholder"
 msgid "Set Notification Channel"
-msgstr ""
+msgstr "בחר ערוץ התראות"
 
 #: src/modules/pomodoro/ui/config.py:157
 msgctxt "ui:timer_options|menu:manager_role|placeholder"
 msgid "Set Manager Role"
-msgstr ""
+msgstr "בחר רול מנהל"
 
 #: src/modules/pomodoro/ui/config.py:166
 #, possible-python-brace-format
