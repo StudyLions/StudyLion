@@ -59,7 +59,7 @@ msgstr "אין לי את ההרשאה `MANAGE_ROLES` כדי לערוך את הת
 #: src/modules/rolemenus/cog.py:300
 msgctxt "parse:message_link|suberror:message_dne"
 msgid "Could not find the linked message, has it been deleted?"
-msgstr ""
+msgstr "לא הצלחתי למצוא את ההודעה הקשורה, האם היא נמחקה במקרה?"
 
 #: src/modules/rolemenus/cog.py:305
 #, possible-python-brace-format
