@@ -174,8 +174,8 @@ msgid ""
 " to send these message via direct message."
 msgstr ""
 "Yeni üyeler için ayarlanmış `welcome_message` mesajı ve tekrardan gelen "
-"üyeler için ayarlanmış `returning_message` bu kanala gelecektir. Direkt "
-"Mesaj olarak göndermek için ayarlamadan bırakınız."
+"üyeler için ayarlanmış `returning_message` mesajı bu kanala gelecektir. "
+"Direkt Mesaj olarak göndermek için ayarlamadan bırakınız."
 
 #: src/modules/member_admin/settings.py:53
 msgctxt "guildset:greeting_channel|accepts"
