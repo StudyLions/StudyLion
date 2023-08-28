@@ -73,12 +73,12 @@ msgstr "{name} (זה הצבע הנוכחי שלך!)"
 #, possible-python-brace-format
 msgctxt "ui:colourstore|menu:buycolours|desc"
 msgid "Colour: {colour}"
-msgstr ""
+msgstr "צבע: {colour}"
 
 #: src/modules/shop/shops/colours.py:119
 msgctxt "ui:colourstore|menu:buycolours|desc"
 msgid "Colour: Unknown"
-msgstr ""
+msgstr "צבע: לא ידוע"
 
 #: src/modules/shop/shops/colours.py:133
 msgctxt "shop:colours|name"
