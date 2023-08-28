@@ -327,6 +327,8 @@ msgid ""
 "Are you sure you want to reset the balance for everyone in {mention}?\n"
 "**{count}** members will be affected."
 msgstr ""
+"{mention} rolündeki tüm kullanıcıların bakiyelerini sıfırlamak istediğinize emin misiniz?\n"
+"**{count}** üye etkilenecektir."
 
 #: src/modules/economy/cog.py:607
 msgctxt "cmd:economy_reset|confirm:reset_role|button:confirm"
