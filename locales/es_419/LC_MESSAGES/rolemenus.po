@@ -317,7 +317,7 @@ msgstr "plantilla"
 #: src/modules/rolemenus/cog.py:809
 msgctxt "cmd:rolemenu_edit|param:rawmessage"
 msgid "custom_message"
-msgstr ""
+msgstr "mensaje_personalizado"
 
 #: src/modules/rolemenus/cog.py:814
 msgctxt "cmd:rolemenu_edit|param:name|desc"
