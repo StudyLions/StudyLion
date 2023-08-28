@@ -379,9 +379,9 @@ msgstr "Turco"
 #: src/babel/enums.py:69
 msgctxt "localenames|locale:uk"
 msgid "Ukrainian"
-msgstr ""
+msgstr "Ucraniano"
 
 #: src/babel/enums.py:70
 msgctxt "localenames|locale:vi"
 msgid "Vietnamese"
-msgstr ""
+msgstr "Vietnamita"
