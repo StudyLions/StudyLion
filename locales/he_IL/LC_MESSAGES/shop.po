@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-27 16:37+0300\n"
+"POT-Creation-Date: 2023-08-28 22:43+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Ari Horesh, 2023\n"
 "Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
@@ -98,7 +98,7 @@ msgstr "לא הצלחתי למצוא את השרת דרך דיסקורד!"
 #: src/modules/shop/shops/colours.py:195
 msgctxt "shop:colour|purchase|error:no_member"
 msgid "Could not retrieve the member from Discord."
-msgstr ""
+msgstr "לא הצלחתי למצוא את המשתמש דרך דיסקורד!"
 
 #: src/modules/shop/shops/colours.py:205
 msgctxt "shop:colour|purchase|error:no_role"
