@@ -203,7 +203,7 @@ class TextTrackerCog(LionCog):
 
     @LionCog.listener('on_message')
     @log_wrap(stack=['Text Sessions', 'Message Event'])
-    async def text_message_handler(self, message):
+    async def text_message_handler(self, message: discord.Message):
         """
         Message event handler for the text session tracker.
 
@@ -219,6 +219,11 @@ class TextTrackerCog(LionCog):
 
         guildid = message.guild.id
         channel = message.channel
+        try:
+            channel.category_id
+        except discord.ClientException:
+            logger.debug(f"Ignoring message from channel with no parent: {message.channel}")
+
         # Untracked channel ward
         untracked = self.untracked_channels.get(guildid, [])
         if channel.id in untracked or (channel.category_id and channel.category_id in untracked):
