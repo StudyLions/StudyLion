@@ -72,6 +72,7 @@ msgstr "Sunucunun varsayılan rolünü yönetemiyorum!"
 msgctxt "ward:equippable_role|error:no_perms"
 msgid "I need the `MANAGE_ROLES` permission before I can manage roles!"
 msgstr ""
+"Rolleri yönetebilmek için önce `MANAGE_ROLES` yetkimin olması gerekiyor!"
 
 #: src/wards.py:177
 #, possible-python-brace-format
