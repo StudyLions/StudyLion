@@ -36,7 +36,7 @@ msgstr "אתה צריך הראשות אדמין `ADMINISTRATOR` בשרת כדי 
 #: src/wards.py:111
 msgctxt "ward:low_management|failed"
 msgid "You must have the `MANAGE_GUILD` permission in this server to do this!"
-msgstr ""
+msgstr "אתה צריך הראשות ניהול `MANAGE_GUILD` בשרת כדי לעשות את זה. "
 
 #: src/wards.py:123
 msgctxt "ward:moderator|failed"
