@@ -395,7 +395,7 @@ msgstr ""
 #: src/modules/economy/cog.py:698
 msgctxt "cmd:send|error:not_allowed"
 msgid "Sorry, this server has disabled LionCoin transfers!"
-msgstr ""
+msgstr "Üzgünüm. bu sunucu LionCoin transferlerini devre dışı bıraktı!"
 
 #: src/modules/economy/cog.py:723
 #, possible-python-brace-format
