@@ -94,7 +94,7 @@ msgstr ""
 #: src/gui/cards/goals.py:244
 msgctxt "ui:goals|weekly|task_header"
 msgid "GOALS OF THE WEEK"
-msgstr ""
+msgstr "HAFTANIN HEDEFLERİ"
 
 #: src/gui/cards/goals.py:254
 msgctxt "ui:goals|monthly|title"
