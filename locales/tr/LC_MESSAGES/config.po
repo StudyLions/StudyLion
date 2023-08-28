@@ -53,7 +53,7 @@ msgstr "Genel"
 #: src/modules/config/general.py:95
 msgctxt "cmd:configure_general|desc"
 msgid "General configuration panel"
-msgstr "Genel kurulum paneli"
+msgstr "Genel Konfigürasyon Paneli"
 
 #: src/modules/config/general.py:129
 msgctxt "cmd:configure_general|parse_failure:timezone"
