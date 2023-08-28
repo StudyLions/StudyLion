@@ -304,7 +304,7 @@ msgstr ""
 #: src/modules/video_channels/settings.py:234
 msgctxt "guildset:video_grace_period|accepts"
 msgid "How many seconds to wait for a member to enable video."
-msgstr ""
+msgstr "כמה שניות לחכות למשתמשים עד שהם ידליקו את המצלמה שלהם."
 
 #: src/modules/video_channels/settings.py:248
 #, possible-python-brace-format
