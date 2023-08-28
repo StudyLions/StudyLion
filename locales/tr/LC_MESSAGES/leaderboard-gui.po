@@ -50,13 +50,13 @@ msgstr "SUNUCU:"
 #, possible-python-brace-format
 msgctxt "skin:leaderboard|mode:study|top_hours_text"
 msgid "{amount} hours"
-msgstr ""
+msgstr "{amount} saat"
 
 #: src/gui/cards/leaderboard.py:133
 #, possible-python-brace-format
 msgctxt "skin:leaderboard|mode:text|top_hours_text"
 msgid "{amount} XP"
-msgstr ""
+msgstr "{amount} XP"
 
 #: src/gui/cards/leaderboard.py:137
 #, possible-python-brace-format
