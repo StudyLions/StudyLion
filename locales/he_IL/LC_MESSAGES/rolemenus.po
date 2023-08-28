@@ -94,7 +94,7 @@ msgstr ""
 #: src/modules/rolemenus/cog.py:434
 msgctxt "cmd:rolemenus"
 msgid "rolemenus"
-msgstr ""
+msgstr "תפריטירולים"
 
 #: src/modules/rolemenus/cog.py:437
 msgctxt "cmd:rolemenus|desc"
