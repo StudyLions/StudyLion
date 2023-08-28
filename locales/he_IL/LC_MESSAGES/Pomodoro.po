@@ -253,7 +253,7 @@ msgstr "אדמין"
 #: src/modules/pomodoro/cog.py:456
 msgctxt "cmd:pomodoro_admin|desc"
 msgid "Command group for pomodoro admin controls."
-msgstr ""
+msgstr "קבוצת פקודות עבור אדמין פומודורו"
 
 #: src/modules/pomodoro/cog.py:462
 msgctxt "cmd:pomodoro_create"
