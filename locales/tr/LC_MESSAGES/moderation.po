@@ -211,7 +211,7 @@ msgstr ""
 #: src/modules/moderation/settings.py:84
 msgctxt "guildset:alert_channel|accepts"
 msgid "Alert channel name or id."
-msgstr ""
+msgstr "Uyarı kanalı adı ya da ID'si."
 
 #: src/modules/moderation/settings.py:99
 #, possible-python-brace-format
