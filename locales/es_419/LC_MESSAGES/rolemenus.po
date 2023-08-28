@@ -95,6 +95,8 @@ msgid ""
 "Failed to resolve the provided message link.\n"
 "**ERROR:** {error}"
 msgstr ""
+"No se ha podido resolver el enlace del mensaje proporcionado.\n"
+"**ERROR:** {error}"
 
 #: src/modules/rolemenus/cog.py:434
 msgctxt "cmd:rolemenus"
