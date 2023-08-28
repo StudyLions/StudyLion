@@ -276,16 +276,18 @@ msgid ""
 "A timer already exists in {channel}! Use `/pomodoro admin edit` to modify "
 "it."
 msgstr ""
+"טיימר כבר קיים בערוץ {channel}! השתמש ב`/pomodoro admin edit` כדי לערוך "
+"אותו."
 
 #: src/modules/pomodoro/cog.py:606
 msgctxt "cmd:pomodoro_create|response:success|content"
 msgid "Timer created successfully! Use the panel below to reconfigure."
-msgstr ""
+msgstr "הטיימר נבנה בהצלחה! השתמש בפאנל בתחתית כדי לשנות אותו."
 
 #: src/modules/pomodoro/cog.py:612
 msgctxt "cmd:pomodoro_destroy"
 msgid "destroy"
-msgstr ""
+msgstr "השמד"
 
 #: src/modules/pomodoro/cog.py:615
 msgctxt "cmd:pomodoro_destroy|desc"
