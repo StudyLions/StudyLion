@@ -479,7 +479,7 @@ msgstr "התראות_קוליות"
 #: src/modules/pomodoro/options.py:129
 msgctxt "timerset:voice_alerts|desc"
 msgid "Whether to join the voice channel and announce focus and break stages."
-msgstr ""
+msgstr "האם תרצה שאצטרף לערוץ להכריז את ההפסקות והפוקוס"
 
 #: src/modules/pomodoro/options.py:140
 msgctxt "timerset:base_name"
@@ -489,12 +489,12 @@ msgstr "שם"
 #: src/modules/pomodoro/options.py:143
 msgctxt "timerset:base_name|desc"
 msgid "Timer name, as shown on the timer card."
-msgstr ""
+msgstr "השם של הטיימר שיהיה כתוב על הכרטיס עצמו."
 
 #: src/modules/pomodoro/options.py:147
 msgctxt "timerset:base_name|accepts"
 msgid "Any short name, shown on the timer card."
-msgstr ""
+msgstr "שם קצר שיהיה כתוב על הכרטיס עצמו."
 
 #: src/modules/pomodoro/options.py:161
 msgctxt "timerset:channel_name_format"
