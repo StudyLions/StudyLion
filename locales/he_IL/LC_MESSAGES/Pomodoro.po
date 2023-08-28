@@ -255,7 +255,7 @@ msgid ""
 "Failed to create a new pomodoro voice channel due to an unknown Discord "
 "communication error. Please try creating the channel manually and pass it to"
 " the `timer_channel` argument of this command."
-msgstr ""
+msgstr "נכשל ביצירת טיימר בעקבות שגיאה בצד של דיסקורד. אנא נסה שוב."
 
 #: src/modules/pomodoro/cog.py:549
 msgctxt "cmd:pomodoro_create|error:channel_create_permissions|title"
@@ -268,6 +268,8 @@ msgid ""
 "No `timer_channel` was provided, and I lack the `MANAGE_CHANNELS` permission"
 " needed to create a new voice channel."
 msgstr ""
+"אין ערוץ טיימר שהוגדר, וגם חסרים לי הרשאות כדי ליצור אחד, אנא הוסף אותי לשרת"
+" שוב עם ההרשאות הנכונות (`MANAGE_CHANNELS`)"
 
 #: src/modules/pomodoro/cog.py:567
 #, possible-python-brace-format
