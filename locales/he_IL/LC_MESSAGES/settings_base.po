@@ -166,7 +166,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "set_type:timezone|acmpl|choice"
 msgid "{tz} (Currently {now})"
-msgstr ""
+msgstr "{tz} (כרגע {now})"
 
 #: src/settings/setting_types.py:957
 msgctxt "settype:timestamp|accepts"
