@@ -310,7 +310,7 @@ msgstr ""
 #: src/modules/shop/shops/colours.py:615
 msgctxt "cmd:editshop_colours_edit|error:perms"
 msgid "I do not have sufficient server permissions to edit this role!"
-msgstr ""
+msgstr "אין לך הרשאות מתאימות בשרת עצמו כדי לערוך את הרול הזה!"
 
 #: src/modules/shop/shops/colours.py:631
 #, possible-python-brace-format
