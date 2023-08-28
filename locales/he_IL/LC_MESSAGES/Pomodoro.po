@@ -35,7 +35,7 @@ msgstr "פוקוס"
 #, possible-python-brace-format
 msgctxt "timer|default_base_name"
 msgid "Timer {pattern}"
-msgstr ""
+msgstr "טיימר {pattern}"
 
 #: src/modules/pomodoro/timer.py:394
 #, possible-python-brace-format
