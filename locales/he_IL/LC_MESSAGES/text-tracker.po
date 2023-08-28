@@ -145,7 +145,7 @@ msgstr ""
 #: src/tracking/text/settings.py:107
 msgctxt "guildset:untracked_text_channels|accepts"
 msgid "Comma separated list of untracked text channel names or ids."
-msgstr ""
+msgstr "רשימה מופרדת עם פסיקים של הערוצים המוגדרים כערוצים לא נעקבים."
 
 #: src/tracking/text/settings.py:111
 msgctxt "guildset:untracked_text_channels|notset"
