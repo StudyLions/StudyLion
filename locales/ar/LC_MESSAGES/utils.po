@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-27 16:37+0300\n"
+"POT-Creation-Date: 2023-08-28 22:43+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Interitio, 2023\n"
 "Language-Team: Arabic (https://app.transifex.com/leobot/teams/174919/ar/)\n"
@@ -157,6 +157,14 @@ msgstr ""
 #: src/utils/ui/config.py:192
 msgctxt "ui:guild_config_base|button:reset|label"
 msgid "Reset"
+msgstr ""
+
+#: src/utils/ui/config.py:327
+msgctxt "ui:dashboard|error:section_too_long"
+msgid ""
+"Oops, the settings in this configuration section are too large, and I can "
+"not display them here! Please view the settings in the linked configuration "
+"panel instead."
 msgstr ""
 
 #. List of valid keys indicating movement to the next page
