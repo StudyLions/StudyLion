@@ -68,6 +68,7 @@ msgid ""
 "Insufficient permissions! I need the `MESSAGE_HISTORY` permission in "
 "{channel}."
 msgstr ""
+"אין לי מספיק הרשאות! אני צריך את ההרשאה `MESSAGE_HISTORY` בערוץ {channel}."
 
 #: src/modules/rolemenus/cog.py:310
 #, possible-python-brace-format
