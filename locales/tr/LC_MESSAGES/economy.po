@@ -91,7 +91,7 @@ msgstr "Hedefin yeni ayarlanacak bakiyesi."
 msgctxt "cmd:economy_balance|error:no_target"
 msgid ""
 "There are no valid members in {role.mention}! It has a total of `0` LC."
-msgstr ""
+msgstr "{role.mention} rolünde geçerli bir üye yok! Toplamda `0` LC var."
 
 #: src/modules/economy/cog.py:163
 msgctxt "cmd:economy_balance|error:target_is_bot"
