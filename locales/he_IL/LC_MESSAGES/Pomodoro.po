@@ -328,17 +328,17 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:683
 msgctxt "cmd:pomodoro_edit"
 msgid "edit"
-msgstr ""
+msgstr "ערוך"
 
 #: src/modules/pomodoro/cog.py:686
 msgctxt "cmd:pomodoro_edit|desc"
 msgid "Edit a Timer"
-msgstr ""
+msgstr "ערוך טיימר"
 
 #: src/modules/pomodoro/cog.py:690
 msgctxt "cmd:pomodoro_edit|param:channel"
 msgid "timer_channel"
-msgstr ""
+msgstr "ערוץ_טיימר"
 
 #: src/modules/pomodoro/cog.py:696
 msgctxt "cmd:pomodoro_edit|param:channel|desc"
@@ -744,7 +744,7 @@ msgstr ""
 #: src/modules/pomodoro/ui/config.py:199
 msgctxt "ui:timer_options|embed|field:channel_name|name"
 msgid "Channel Name Preview"
-msgstr ""
+msgstr "תצוגה מקדימה של השם ערוץ"
 
 #: src/modules/pomodoro/ui/config.py:203
 #, possible-python-brace-format
