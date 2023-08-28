@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-27 16:37+0300\n"
+"POT-Creation-Date: 2023-08-28 22:43+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Eyüp Ramazan, 2023\n"
 "Language-Team: Turkish (https://app.transifex.com/leobot/teams/174919/tr/)\n"
@@ -235,152 +235,162 @@ msgctxt "guildset:locale|response"
 msgid "You have set the guild language to {lang}."
 msgstr "Sunucu dilini {lang} olarak ayarladın."
 
-#: src/babel/enums.py:41
+#: src/babel/enums.py:42
 msgctxt "localenames|locale:en-US"
 msgid "American English"
 msgstr "Amerikan İngilizcesi"
 
-#: src/babel/enums.py:42
+#: src/babel/enums.py:43
 msgctxt "localenames|locale:en-GB"
 msgid "British English"
 msgstr "İngiliz İngilizcesi"
 
-#: src/babel/enums.py:43
+#: src/babel/enums.py:44
 msgctxt "localenames|locale:bg"
 msgid "Bulgarian"
 msgstr "Bulgarca"
 
-#: src/babel/enums.py:44
+#: src/babel/enums.py:45
 msgctxt "localenames|locale:zh-CN"
 msgid "Chinese"
 msgstr "Çince"
 
-#: src/babel/enums.py:45
+#: src/babel/enums.py:46
 msgctxt "localenames|locale:zh-TW"
 msgid "Taiwan Chinese"
 msgstr "Tayvan Çincesi"
 
-#: src/babel/enums.py:46
+#: src/babel/enums.py:47
 msgctxt "localenames|locale:hr"
 msgid "Croatian"
 msgstr "Hırvatça"
 
-#: src/babel/enums.py:47
+#: src/babel/enums.py:48
 msgctxt "localenames|locale:cs"
 msgid "Czech"
 msgstr "Çekçe"
 
-#: src/babel/enums.py:48
+#: src/babel/enums.py:49
 msgctxt "localenames|locale:da"
 msgid "Danish"
 msgstr "Danca"
 
-#: src/babel/enums.py:49
+#: src/babel/enums.py:50
 msgctxt "localenames|locale:nl"
 msgid "Dutch"
 msgstr "Hollandaca"
 
-#: src/babel/enums.py:50
+#: src/babel/enums.py:51
 msgctxt "localenames|locale:fi"
 msgid "Finnish"
 msgstr "Fince"
 
-#: src/babel/enums.py:51
+#: src/babel/enums.py:52
 msgctxt "localenames|locale:fr"
 msgid "French"
 msgstr "Fransızca"
 
-#: src/babel/enums.py:52
+#: src/babel/enums.py:53
 msgctxt "localenames|locale:de"
 msgid "German"
 msgstr "Almanca"
 
-#: src/babel/enums.py:53
+#: src/babel/enums.py:54
 msgctxt "localenames|locale:el"
 msgid "Greek"
 msgstr "Yunanca"
 
-#: src/babel/enums.py:54
+#: src/babel/enums.py:55
 msgctxt "localenames|locale:hi"
 msgid "Hindi"
 msgstr "Hintçe"
 
-#: src/babel/enums.py:55
+#: src/babel/enums.py:56
 msgctxt "localenames|locale:hu"
 msgid "Hungarian"
 msgstr "Macarca"
 
-#: src/babel/enums.py:56
+#: src/babel/enums.py:57
 msgctxt "localenames|locale:it"
 msgid "Italian"
 msgstr "İtalyanca"
 
-#: src/babel/enums.py:57
+#: src/babel/enums.py:58
 msgctxt "localenames|locale:ja"
 msgid "Japanese"
 msgstr "Japonca"
 
-#: src/babel/enums.py:58
+#: src/babel/enums.py:59
 msgctxt "localenames|locale:ko"
 msgid "Korean"
 msgstr "Korece"
 
-#: src/babel/enums.py:59
+#: src/babel/enums.py:60
 msgctxt "localenames|locale:lt"
 msgid "Lithuanian"
 msgstr "Litvanyaca"
 
-#: src/babel/enums.py:60
+#: src/babel/enums.py:61
 msgctxt "localenames|locale:no"
 msgid "Norwegian"
 msgstr "Norveççe"
 
-#: src/babel/enums.py:61
+#: src/babel/enums.py:62
 msgctxt "localenames|locale:pl"
 msgid "Polish"
 msgstr "Lehçe"
 
-#: src/babel/enums.py:62
+#: src/babel/enums.py:63
 msgctxt "localenames|locale:pt-BR"
 msgid "Brazil Portuguese"
 msgstr "Brezilya Portekizcesi"
 
-#: src/babel/enums.py:63
+#: src/babel/enums.py:64
 msgctxt "localenames|locale:ro"
 msgid "Romanian"
 msgstr "Romence"
 
-#: src/babel/enums.py:64
+#: src/babel/enums.py:65
 msgctxt "localenames|locale:ru"
 msgid "Russian"
 msgstr "Rusça"
 
-#: src/babel/enums.py:65
+#: src/babel/enums.py:66
 msgctxt "localenames|locale:es-ES"
 msgid "Spain Spanish"
 msgstr "İspanya İspanyolcası"
 
-#: src/babel/enums.py:66
+#: src/babel/enums.py:67
 msgctxt "localenames|locale:sv-SE"
 msgid "Swedish"
 msgstr "İsveççe"
 
-#: src/babel/enums.py:67
+#: src/babel/enums.py:68
 msgctxt "localenames|locale:th"
 msgid "Thai"
 msgstr "Tayca"
 
-#: src/babel/enums.py:68
+#: src/babel/enums.py:69
 msgctxt "localenames|locale:tr"
 msgid "Turkish"
 msgstr "Türkçe"
 
-#: src/babel/enums.py:69
+#: src/babel/enums.py:70
 msgctxt "localenames|locale:uk"
 msgid "Ukrainian"
 msgstr "Ukraynaca"
 
-#: src/babel/enums.py:70
+#: src/babel/enums.py:71
 msgctxt "localenames|locale:vi"
 msgid "Vietnamese"
 msgstr "Vietnamca"
+
+#: src/babel/enums.py:72
+msgctxt "localenames|locale:he"
+msgid "Hebrew"
+msgstr ""
+
+#: src/babel/enums.py:73
+msgctxt "localenames|locale:he_IL"
+msgid "Hebrew (Israel)"
+msgstr ""
