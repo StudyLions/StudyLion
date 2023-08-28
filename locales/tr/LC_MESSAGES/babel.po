@@ -40,7 +40,7 @@ msgstr "Sunucu Dili Seçimi ({commands[configure language]})"
 #: src/babel/settingui.py:87
 msgctxt "dash:locale|dropdown|placeholder"
 msgid "Server Language Panel"
-msgstr "Sunucu dil paneli"
+msgstr "Sunucu Dil Paneli"
 
 #: src/babel/cog.py:99
 msgctxt "cmd:configure_language"
