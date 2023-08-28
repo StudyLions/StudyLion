@@ -268,7 +268,7 @@ msgstr ""
 #: src/modules/video_channels/settings.py:181
 msgctxt "guildset:video_durations|accepts"
 msgid "Comma separated list of durations."
-msgstr ""
+msgstr "אורכים מופרדים באמצעות פסיק."
 
 #: src/modules/video_channels/settings.py:208
 #, possible-python-brace-format
