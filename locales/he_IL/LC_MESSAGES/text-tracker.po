@@ -102,7 +102,7 @@ msgstr "נקודות_לכל_100מילים"
 #: src/tracking/text/settings.py:68
 msgctxt "guildset:word_xp|desc"
 msgid "How much XP members will be given per hundred words they write."
-msgstr ""
+msgstr "כמה נקודות ניסיון משתמשים יקבלו על כל מאה מילים שהם כותבים."
 
 #: src/tracking/text/settings.py:72
 msgctxt "guildset:word_xp|long_desc"
