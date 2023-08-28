@@ -539,12 +539,12 @@ msgstr "אנא ציין מספר שלם של דקות."
 #: src/modules/pomodoro/options.py:220
 msgctxt "timerset:break_length"
 msgid "break_length"
-msgstr ""
+msgstr "אורך_הפסקה"
 
 #: src/modules/pomodoro/options.py:223
 msgctxt "timerset:break_length|desc"
 msgid "Length of the break stage of the timer in minutes."
-msgstr ""
+msgstr "האורך של הזמן הפסקה בדקות."
 
 #: src/modules/pomodoro/options.py:228
 msgctxt "timerset:break_length|accepts"
@@ -559,7 +559,7 @@ msgstr "אנא ציין מספר שלם של דקות."
 #: src/modules/pomodoro/settings.py:19
 msgctxt "guildset:pomodoro_channel"
 msgid "pomodoro_channel"
-msgstr ""
+msgstr "ערוץ_פומודורו"
 
 #: src/modules/pomodoro/settings.py:22
 msgctxt "guildset:pomodoro_channel|desc"
