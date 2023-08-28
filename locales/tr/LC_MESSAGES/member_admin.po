@@ -49,7 +49,7 @@ msgstr "Geri Dönme Mesajı"
 #: src/modules/member_admin/settingui.py:213
 msgctxt "ui:memberadmin|embed|title"
 msgid "Member Admin Configuration Panel"
-msgstr "Yönetici Üye Yönetim Paneli"
+msgstr "Yönetici Üye Konfigürasyon Paneli"
 
 #: src/modules/member_admin/settingui.py:257
 msgctxt "dash:member_admin|title"
