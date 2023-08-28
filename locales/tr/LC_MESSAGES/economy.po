@@ -213,7 +213,7 @@ msgstr[1] ""
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:role_lb|author"
 msgid "Balance sheet for {name}"
-msgstr ""
+msgstr "{name} için bilanço"
 
 #: src/modules/economy/cog.py:400
 #, possible-python-brace-format
