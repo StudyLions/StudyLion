@@ -317,13 +317,13 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:665
 msgctxt "cmd:pomodoro_destroy|error:insufficient_perms|notowned"
 msgid "You need to be a server administrator to remove this timer!"
-msgstr ""
+msgstr "אתם צריכים להיות האדמין של הסרבר כדי למחוק את הטיימר הזה!"
 
 #: src/modules/pomodoro/cog.py:677
 #, possible-python-brace-format
 msgctxt "cmd:pomdoro_destroy|response:success|description"
 msgid "Timer successfully removed from {channel}."
-msgstr ""
+msgstr "הטיימר הוסר בהצלחה מ {channel}."
 
 #: src/modules/pomodoro/cog.py:683
 msgctxt "cmd:pomodoro_edit"
@@ -343,7 +343,7 @@ msgstr "ערוץ_טיימר"
 #: src/modules/pomodoro/cog.py:696
 msgctxt "cmd:pomodoro_edit|param:channel|desc"
 msgid "Channel holding the timer to edit."
-msgstr ""
+msgstr "הערוץ שבו יש את הטיימר לעריכה."
 
 #: src/modules/pomodoro/cog.py:737
 msgctxt "cmd:pomodoro_edit|error:no_timer"
