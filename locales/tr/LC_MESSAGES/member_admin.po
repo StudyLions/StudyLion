@@ -74,7 +74,7 @@ msgstr ""
 #: src/modules/member_admin/cog.py:241
 msgctxt "cmd:resetmember|param:target"
 msgid "member_to_reset"
-msgstr ""
+msgstr "sıfırlanacak_üye"
 
 #: src/modules/member_admin/cog.py:242
 msgctxt "cmd:resetmember|param:saved_roles"
