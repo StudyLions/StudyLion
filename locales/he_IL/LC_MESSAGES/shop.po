@@ -176,7 +176,7 @@ msgstr ""
 #: src/modules/shop/shops/colours.py:373
 msgctxt "cmd:editshop_colours_create|param:price|desc"
 msgid "How much should the colour role cost?"
-msgstr ""
+msgstr "כמה הרול צבע הזה יעלה?"
 
 #: src/modules/shop/shops/colours.py:395
 #, possible-python-brace-format
