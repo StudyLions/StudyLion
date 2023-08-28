@@ -79,6 +79,8 @@ msgstr ""
 msgctxt "ward:equippable_role|error:my_top_role"
 msgid "I cannot assign or remove {role} because it is above my top role!"
 msgstr ""
+"{role} rolünü ekleyip çıkartamıyorum çünkü benim en yüksek rolümün "
+"yukarısında bulunuyor!"
 
 #: src/wards.py:184
 #, possible-python-brace-format
