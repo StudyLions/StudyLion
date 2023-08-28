@@ -1,0 +1,126 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Eyüp Ramazan, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-27 16:37+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Eyüp Ramazan, 2023\n"
+"Language-Team: Turkish (https://app.transifex.com/leobot/teams/174919/tr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/core/setting_types.py:31
+msgctxt "settype:coin|accepts"
+msgid "A positive integral number of coins."
+msgstr "Pozitif tam sayı cinsinden para miktarı."
+
+#: src/core/setting_types.py:47
+msgctxt "settype:coin|parse|error:notinteger"
+msgid "The coin quantity must be a positive integer!"
+msgstr ""
+
+#: src/core/setting_types.py:54
+msgctxt "settype:coin|parse|error:too_large"
+msgid "Provided number of coins was too high!"
+msgstr ""
+
+#: src/core/setting_types.py:60
+msgctxt "settype:coin|parse|error:too_large"
+msgid "Provided number of coins was too low!"
+msgstr ""
+
+#: src/core/setting_types.py:71
+#, possible-python-brace-format
+msgctxt "settype:coin|formatted"
+msgid "{coin}**{amount}**"
+msgstr ""
+
+#: src/core/setting_types.py:87
+msgctxt "settype:message|accepts"
+msgid "JSON formatted raw message data"
+msgstr ""
+
+#: src/core/setting_types.py:102
+msgctxt "settype:message|download|error:not_json"
+msgid "The attached message data is not a JSON file!"
+msgstr ""
+
+#: src/core/setting_types.py:107
+msgctxt "settype:message|download|error:size"
+msgid "The attached message data is too large!"
+msgstr ""
+
+#: src/core/setting_types.py:116
+msgctxt "settype:message|download|error:decoding"
+msgid ""
+"Could not decode the message data. Please ensure it is saved with the "
+"`UTF-8` encoding."
+msgstr ""
+
+#: src/core/setting_types.py:173
+#, possible-python-brace-format
+msgctxt "settype:message|error_suffix"
+msgid ""
+"You can view, test, and fix your embed using the online [embed "
+"builder]({link})."
+msgstr ""
+
+#: src/core/setting_types.py:185
+#, possible-python-brace-format
+msgctxt "settype:message|error:invalid_json"
+msgid ""
+"The provided message data was not a valid JSON document!\n"
+"`{error}`"
+msgstr ""
+
+#: src/core/setting_types.py:193
+msgctxt "settype:message|error:json_missing_keys"
+msgid ""
+"Message data must be a JSON object with at least one of the following "
+"fields: `content`, `embed`, `embeds`"
+msgstr ""
+
+#: src/core/setting_types.py:202
+msgctxt "settype:message|error:json_embed_type"
+msgid "`embed` field must be a valid JSON object."
+msgstr ""
+
+#: src/core/setting_types.py:210
+msgctxt "settype:message|error:json_embeds_type"
+msgid "`embeds` field must be a list."
+msgstr ""
+
+#: src/core/setting_types.py:217
+msgctxt "settype:message|error:json_embed_embeds"
+msgid "Message data cannot include both `embed` and `embeds`."
+msgstr ""
+
+#: src/core/setting_types.py:225
+msgctxt "settype:message|error:json_content_type"
+msgid "`content` field must be a string."
+msgstr ""
+
+#: src/core/setting_types.py:241
+#, possible-python-brace-format
+msgctxt "ui:settype:message|error:embed_conversion"
+msgid ""
+"Could not parse the message embed data.\n"
+"**Error:** `{exception}`"
+msgstr ""
+
+#: src/core/setting_types.py:269
+msgctxt "settype:message|format:too_long"
+msgid "Too long to display! See Preview."
+msgstr ""
