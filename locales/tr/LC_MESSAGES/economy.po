@@ -355,7 +355,7 @@ msgstr ""
 #: src/modules/economy/cog.py:660
 msgctxt "cmd:send"
 msgid "send"
-msgstr ""
+msgstr "gönder"
 
 #: src/modules/economy/cog.py:663
 msgctxt "cmd:send|desc"
