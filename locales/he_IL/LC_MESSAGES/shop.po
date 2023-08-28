@@ -540,6 +540,8 @@ msgid ""
 "Removed {mention} from the colour shop.\n"
 "{delete_line}"
 msgstr ""
+"מחקתי את {mention} מחנות הרולים\n"
+"{delete_line}"
 
 #: src/modules/shop/shops/colours.py:1114
 msgctxt "ui:colourstore|menu:buycolours|embed:error|title"
