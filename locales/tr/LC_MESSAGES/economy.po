@@ -318,7 +318,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:economy_reset|error:no_target|desc"
 msgid "The role {mention} has no members to reset!"
-msgstr ""
+msgstr "{mention} rolünün sıfırlanacak bir üyesi bulunmamaktadır."
 
 #: src/modules/economy/cog.py:598
 #, possible-python-brace-format
