@@ -115,7 +115,7 @@ msgctxt "cmd:rolemenus|error:my_perms"
 msgid ""
 "I lack the `MANAGE_ROLES` permission required to offer roles from role "
 "menus."
-msgstr ""
+msgstr "אין לי את ההרשאה `MANAGE_ROLES` כדי לערוך את התפריטים של השרת הזה."
 
 #: src/modules/rolemenus/cog.py:496
 #, possible-python-brace-format
