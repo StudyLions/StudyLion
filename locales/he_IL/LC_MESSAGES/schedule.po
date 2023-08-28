@@ -619,7 +619,7 @@ msgstr "מאוחר מידי! אי אפשר לקבוע סשן שמתחיל ממש
 #: src/modules/schedule/ui/scheduleui.py:198
 msgctxt "ui:schedule|menu:booking|error:already_booked"
 msgid "You have already booked one or more of the requested sessions!"
-msgstr ""
+msgstr "כבר קבעתם אחד או יותר מהסשנים הללו."
 
 #: src/modules/schedule/ui/scheduleui.py:211
 #, possible-python-brace-format
