@@ -30,12 +30,12 @@ msgstr "Zorunlu dili, aç-kapa."
 #: src/babel/settingui.py:49
 msgctxt "ui:locale_config|embed|title"
 msgid "Language Configuration Panel"
-msgstr "Dil Seçim Paneli"
+msgstr "Dil Konfigürasyon Paneli"
 
 #: src/babel/settingui.py:83
 msgctxt "dash:locale|title"
 msgid "Server Language Configuration ({commands[configure language]})"
-msgstr "Sunucu Dili Seçimi ({commands[configure language]})"
+msgstr "Sunucu Dili Konfigürasyon ({commands[configure language]})"
 
 #: src/babel/settingui.py:87
 msgctxt "dash:locale|dropdown|placeholder"
