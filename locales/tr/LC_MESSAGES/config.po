@@ -68,7 +68,7 @@ msgstr "Ayarlar kaydedilmiştir!"
 #: src/modules/config/general.py:165
 msgctxt "cmd:configure_general|panel|title"
 msgid "General Configuration Panel"
-msgstr "Genel kurulum paneli"
+msgstr "Genel Konfigürasyon Paneli"
 
 #: src/modules/config/dashboard.py:147
 msgctxt "ui:dashboard|menu:config|placeholder"
