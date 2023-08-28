@@ -396,7 +396,7 @@ class Timer:
                     tasks.append(member.edit(voice_channel=None))
 
                 notify_hook = await self.get_notification_webhook()
-                if needs_kick:
+                if needs_kick and notify_hook:
                     t = self.bot.translator.t
                     kick_message = t(_np(
                         'timer|kicked_message',
