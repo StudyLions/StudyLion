@@ -77,7 +77,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "ward:equippable_role|error:not_assignable"
 msgid "I don't have sufficient permissions to assign or remove {role}."
-msgstr ""
+msgstr "אין לי מספי הראשות כדי לתת או להסיר את הרול {role}."
 
 #: src/wards.py:192
 msgctxt "ward:equippable_role|error:actor_perms"
