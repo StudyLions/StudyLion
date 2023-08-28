@@ -334,12 +334,12 @@ msgstr "Lituano"
 #: src/babel/enums.py:60
 msgctxt "localenames|locale:no"
 msgid "Norwegian"
-msgstr ""
+msgstr "Noruego"
 
 #: src/babel/enums.py:61
 msgctxt "localenames|locale:pl"
 msgid "Polish"
-msgstr ""
+msgstr "Polaco"
 
 #: src/babel/enums.py:62
 msgctxt "localenames|locale:pt-BR"
