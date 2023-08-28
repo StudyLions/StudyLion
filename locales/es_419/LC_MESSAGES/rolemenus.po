@@ -404,6 +404,8 @@ msgid ""
 "Cannot update channel! I lack the `EMBED_LINKS` or `SEND_MESSAGES` "
 "permission in {channel}."
 msgstr ""
+"No puedo actualizar el canal. Me falta el permiso `EMBED_LINKS` o "
+"`SEND_MESSAGES` en {channel}."
 
 #: src/modules/rolemenus/cog.py:1010
 #, possible-python-brace-format
