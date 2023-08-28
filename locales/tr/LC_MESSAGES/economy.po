@@ -116,8 +116,8 @@ msgstr[1] ""
 msgctxt "cmd:economy_balance|confirm|affected"
 msgid "One user will be affected."
 msgid_plural "**{count}** users will be affected."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Bir üye etkilenecek."
+msgstr[1] "**{count}** üye etkilenecek."
 
 #: src/modules/economy/cog.py:236
 msgctxt "cmd:economy_balance|confirm|button:confirm"
