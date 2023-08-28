@@ -84,7 +84,7 @@ msgstr "KARTLAR"
 #, possible-python-brace-format
 msgctxt "skin:goals|footer"
 msgid "As of {day} {month} • {name}"
-msgstr ""
+msgstr "{month} aynının {day} günü  • {name}"
 
 #: src/gui/cards/goals.py:240
 msgctxt "ui:goals|weekly|title"
