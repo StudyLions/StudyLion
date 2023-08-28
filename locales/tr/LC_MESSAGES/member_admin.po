@@ -392,7 +392,7 @@ msgstr "Yeni botlara sunucuya katıldıklarında verilecek roller."
 #: src/modules/member_admin/settings.py:369
 msgctxt "guildset:bot_autoroles|long_desc"
 msgid "These roles will be given when a bot joins the server."
-msgstr ""
+msgstr "Bir bot sunucuya katıldığında bu roller verilecek."
 
 #: src/modules/member_admin/settings.py:382
 msgctxt "guildset:role_persistence"
