@@ -55,12 +55,12 @@ msgstr "Üyeler veya roller için LionCoin miktarını gör veya düzenle."
 #: src/modules/economy/cog.py:99
 msgctxt "cmd:economy_balance|param:target"
 msgid "target"
-msgstr ""
+msgstr "hedef"
 
 #: src/modules/economy/cog.py:100
 msgctxt "cmd:economy_balance|param:add"
 msgid "add"
-msgstr ""
+msgstr "ekle"
 
 #: src/modules/economy/cog.py:101
 msgctxt "cmd:economy_balance|param:set"
