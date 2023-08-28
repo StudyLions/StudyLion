@@ -457,7 +457,7 @@ msgctxt "guildset:coins_per_xp|long_desc"
 msgid ""
 "Members will be rewarded with this many LionCoins for every 100 XP they "
 "earn."
-msgstr ""
+msgstr "Üyeler her 100 XP için bu miktarda LionCoin kazanacaklar. "
 
 #: src/modules/economy/settings.py:46
 msgctxt "guildset:coins_per_xp|long_desc"
