@@ -260,7 +260,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:549
 msgctxt "cmd:pomodoro_create|error:channel_create_permissions|title"
 msgid "Could not create pomodoro voice channel!"
-msgstr ""
+msgstr "לא הצלחתי ליצור ערוץ פומודורו!"
 
 #: src/modules/pomodoro/cog.py:553
 msgctxt "cmd:pomodoro_create|error:channel_create_permissions|desc"
@@ -296,7 +296,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:619
 msgctxt "cmd:pomodoro_destroy|param:channel"
 msgid "timer_channel"
-msgstr ""
+msgstr "ערוץ_טיימר"
 
 #: src/modules/pomodoro/cog.py:622
 msgctxt "cmd:pomodoro_destroy|param:channel"
@@ -529,7 +529,7 @@ msgstr ""
 #: src/modules/pomodoro/options.py:188
 msgctxt "timerset:focus_length|accepts"
 msgid "A positive integer number of minutes."
-msgstr ""
+msgstr "מספר שלם עבור מספר דקות."
 
 #: src/modules/pomodoro/options.py:212
 msgctxt "timerset:focus_length|desc"
