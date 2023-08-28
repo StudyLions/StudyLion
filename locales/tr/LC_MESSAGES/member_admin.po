@@ -103,6 +103,8 @@ msgid ""
 "The saved roles for {target} have been reset. They will not regain their "
 "roles if they rejoin."
 msgstr ""
+"{target} için kaydedilen roller sıfırlanmıştır. Eğer tekrar katılırlarsa "
+"rollerini alamayacaklar."
 
 #: src/modules/member_admin/cog.py:286
 msgctxt "cmd:resetmember|error:nothing_to_do"
@@ -112,17 +114,17 @@ msgstr "Sıfırlama durumu seçilmedi, yapılacak bir şey yok."
 #: src/modules/member_admin/cog.py:302
 msgctxt "cmd:configure_welcome"
 msgid "welcome"
-msgstr ""
+msgstr "hoş geldiniz"
 
 #: src/modules/member_admin/cog.py:305
 msgctxt "cmd:configure_welcome|desc"
 msgid "Configure new member greetings and roles."
-msgstr ""
+msgstr "Yeni üye karışaması ve rollerini ayarla."
 
 #: src/modules/member_admin/settings.py:20
 msgctxt "guildset:greeting_message|formatkey:mention"
 msgid "Mention the new member."
-msgstr ""
+msgstr "Yeni üyeden bahset."
 
 #: src/modules/member_admin/settings.py:22
 msgctxt "guildset:greeting_message|formatkey:user_name"
