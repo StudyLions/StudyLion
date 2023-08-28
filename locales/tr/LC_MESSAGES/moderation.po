@@ -258,7 +258,7 @@ msgstr "Moderasyon rol adı ya da ID'si."
 #, possible-python-brace-format
 msgctxt "guildset:mod_role|set_response:set"
 msgid "Members with the {role} will be considered moderators."
-msgstr ""
+msgstr "{role} rolüne sahip üyeler moderatör olarak sayılacaktır."
 
 #: src/modules/moderation/settings.py:156
 msgctxt "guildset:mod_role|set_response:unset"
