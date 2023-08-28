@@ -73,4 +73,4 @@ msgstr "Genel Konfigürasyon Paneli"
 #: src/modules/config/dashboard.py:147
 msgctxt "ui:dashboard|menu:config|placeholder"
 msgid "Open Configuration Panel"
-msgstr "Kurulum panelini aç"
+msgstr "Konfigürasyon Panelini Aç"
