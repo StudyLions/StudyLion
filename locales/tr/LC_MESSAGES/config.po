@@ -63,7 +63,7 @@ msgstr "Zaman dilimini ayarlayamadım!"
 #: src/modules/config/general.py:150
 msgctxt "cmd:configure_general|success"
 msgid "Settings Updated!"
-msgstr ""
+msgstr "Ayarlar kaydedilmiştir!"
 
 #: src/modules/config/general.py:165
 msgctxt "cmd:configure_general|panel|title"
