@@ -490,7 +490,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:837
 msgctxt "cmd:room_deposit"
 msgid "deposit"
-msgstr ""
+msgstr "הכנס לפיקדון"
 
 #: src/modules/rooms/cog.py:840
 msgctxt "cmd:room_deposit|desc"
