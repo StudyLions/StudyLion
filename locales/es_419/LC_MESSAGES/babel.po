@@ -121,7 +121,7 @@ msgstr "Soporte"
 #: src/babel/settings.py:44
 msgctxt "settype:locale|formatted:unset"
 msgid "Unset"
-msgstr ""
+msgstr "Sin configurar"
 
 #: src/babel/settings.py:60
 #, possible-python-brace-format
