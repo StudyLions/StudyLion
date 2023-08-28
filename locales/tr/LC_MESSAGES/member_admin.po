@@ -59,7 +59,7 @@ msgstr "Karşılama ve Başlangıç Rolleri ({commands[configure welcome]})"
 #: src/modules/member_admin/settingui.py:261
 msgctxt "dash:member_admin|dropdown|placeholder"
 msgid "Greetings and Initial Roles Panel"
-msgstr ""
+msgstr "Karşılama ve Başlangıç Rolleri Paneli"
 
 #: src/modules/member_admin/cog.py:234
 msgctxt "cmd:resetmember"
