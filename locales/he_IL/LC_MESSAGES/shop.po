@@ -93,7 +93,7 @@ msgstr "לא ניתן לרכוש את האייטם הזה"
 #: src/modules/shop/shops/colours.py:185
 msgctxt "shop:colour|purchase|error:no_guild"
 msgid "Could not retrieve the server from Discord!"
-msgstr ""
+msgstr "לא הצלחתי למצוא את השרת דרך דיסקורד!"
 
 #: src/modules/shop/shops/colours.py:195
 msgctxt "shop:colour|purchase|error:no_member"
