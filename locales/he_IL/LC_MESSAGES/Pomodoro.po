@@ -508,6 +508,8 @@ msgid ""
 "Auto-updating voice channel name, accepting {remaining}, {name}, {pattern}, "
 "and {stage} keys."
 msgstr ""
+"השם של הערוץ שמתעדכן אוטומטית ביחד עם הטיימר עצמו, השתמשו ב {remaining}, "
+"{name}, {pattern},  {stage} בשם."
 
 #: src/modules/pomodoro/options.py:168
 #, possible-python-brace-format
@@ -515,6 +517,8 @@ msgctxt "timerset:channel_name|accepts"
 msgid ""
 "Timer channel name, with keys {remaining}, {name}, {pattern}, and {stage}."
 msgstr ""
+"השם של הערוץ שמתעדכן אוטומטית ביחד עם הטיימר עצמו, השתמשו ב {remaining}, "
+"{name}, {pattern},  {stage} בשם."
 
 #: src/modules/pomodoro/options.py:180
 msgctxt "timerset:focus_length"
