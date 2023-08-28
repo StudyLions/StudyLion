@@ -80,7 +80,7 @@ msgstr "sıfırlanacak_üye"
 #: src/modules/member_admin/cog.py:242
 msgctxt "cmd:resetmember|param:saved_roles"
 msgid "saved_roles"
-msgstr ""
+msgstr "kaydedilen_roller"
 
 #: src/modules/member_admin/cog.py:247
 msgctxt "cmd:resetmember|param:target|desc"
