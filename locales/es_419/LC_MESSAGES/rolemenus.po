@@ -146,7 +146,7 @@ msgstr "Por favor selecciona un menú primero"
 #, possible-python-brace-format
 msgctxt "acmpl:menuroles|choice:invalid_menu|name"
 msgid "Menu '{name}' does not exist!"
-msgstr ""
+msgstr "¡El menú '{name}' no existe!"
 
 #: src/modules/rolemenus/cog.py:574
 #, possible-python-brace-format
