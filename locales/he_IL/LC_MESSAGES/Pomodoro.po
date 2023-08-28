@@ -348,7 +348,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:737
 msgctxt "cmd:pomodoro_edit|error:no_timer"
 msgid "This channel doesn't have an attached pomodoro timer to edit!"
-msgstr ""
+msgstr "בערוץ הזה לא קיימים שום טיימרים!"
 
 #: src/modules/pomodoro/cog.py:750
 msgctxt "cmd:pomodoro_edit|error:insufficient_perms|role:other"
@@ -356,11 +356,13 @@ msgid ""
 "Insufficient permissions to modifiy this timer!\n"
 "You need to be a server administrator, own this channel, or have the timer manager role."
 msgstr ""
+"הרשאות לא מספקות כדי לערוך את הטיימר!\n"
+"אתה צריך להיות סרבר אדמין, להיו תהבעלים של הערוץ או להיות בעל רול של ניהול טיימרים בשרת כדי לגשת לטיימר הזה."
 
 #: src/modules/pomodoro/cog.py:771
 msgctxt "cmd:pomodoro_edit|error:insufficient_permissions|role_needed:admin"
 msgid "You need to be a guild admin to modify this option!"
-msgstr ""
+msgstr "אתה צריך להיות האדמין של השרת כדי לערוך את האופציה הזו!"
 
 #: src/modules/pomodoro/cog.py:776
 msgctxt "cmd:pomodoro_edit|error:insufficient_permissions|role_needed:owner"
