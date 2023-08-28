@@ -645,7 +645,7 @@ msgstr ""
 #: src/modules/pomodoro/ui/status.py:154
 msgctxt "ui:timer_status|button:start|error:not_manager|title"
 msgid "Insufficient permissions!"
-msgstr ""
+msgstr "אין לי או לך מספיק הראשות בשרת כדי לעשות את זה!"
 
 #: src/modules/pomodoro/ui/status.py:158
 msgctxt "ui:timer_status|button:start|error:not_manager|desc"
