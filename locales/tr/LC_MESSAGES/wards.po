@@ -53,12 +53,15 @@ msgstr ""
 msgctxt "ward:equippable_role|error:bot_managed"
 msgid "I cannot manage {role} because it is managed by another bot!"
 msgstr ""
+"{role} rolünü yönetemiyorum çünkü başka bir bot tarafından yönetiliyor!"
 
 #: src/wards.py:156
 #, possible-python-brace-format
 msgctxt "ward:equippable_role|error:integration"
 msgid "I cannot manage {role} because it is managed by a server integration."
 msgstr ""
+"{role} rolünü yönetemiyorum çünkü sunucu entegrasyonu tarafından "
+"yönetiliyor."
 
 #: src/wards.py:163
 msgctxt "ward:equippable_role|error:default_role"
