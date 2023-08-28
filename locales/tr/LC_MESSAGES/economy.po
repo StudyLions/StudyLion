@@ -483,6 +483,8 @@ msgstr "transfere_izin_ver"
 msgctxt "guildset:allow_transfers|desc"
 msgid "Whether to allow members to transfer LionCoins to each other."
 msgstr ""
+"Kullanıcıların birbirlerine LionCoin transfer etmelerine izin verilip "
+"verilmeyeceği."
 
 #: src/modules/economy/settings.py:77
 msgctxt "guildset:allow_transfers|long_desc"
