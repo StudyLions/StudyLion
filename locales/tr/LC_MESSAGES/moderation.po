@@ -222,7 +222,7 @@ msgstr "Moderasyon uyarıları {channel} kanalına gönderilecektir."
 #: src/modules/moderation/settings.py:104
 msgctxt "guildset:alert_channel|set_response:unset"
 msgid "Moderation alerts will be ignored if the member cannot be reached."
-msgstr ""
+msgstr "Eğer üyeye ulaşılamazsa moderasyon uyarıları görmezden gelinecektir."
 
 #: src/modules/moderation/settings.py:116
 msgctxt "guildset:alert_channel|formatted:unset"
@@ -232,7 +232,7 @@ msgstr "Ayarlanmadı (Direkt mesaj üzerinden uyarılar yapılacaktır.)"
 #: src/modules/moderation/settings.py:123
 msgctxt "guildset:mod_role"
 msgid "mod_role"
-msgstr ""
+msgstr "moderatör_rolü"
 
 #: src/modules/moderation/settings.py:126
 msgctxt "guildset:mod_role|desc"
