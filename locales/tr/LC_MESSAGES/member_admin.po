@@ -261,7 +261,7 @@ msgstr "Hoş geldin mesajı ayarlanmadı! Yeni üyeler karşılanmayacak."
 #: src/modules/member_admin/settings.py:141
 msgctxt "guildset:greeting_message|set_response:set"
 msgid "The welcome message has been updated."
-msgstr ""
+msgstr "Hoş geldin mesajı güncellendi."
 
 #: src/modules/member_admin/settings.py:153
 msgctxt "guildset:greeting_message|formmatted:unset"
