@@ -294,7 +294,7 @@ msgstr "Francés"
 #: src/babel/enums.py:52
 msgctxt "localenames|locale:de"
 msgid "German"
-msgstr ""
+msgstr "Alemán"
 
 #: src/babel/enums.py:53
 msgctxt "localenames|locale:el"
