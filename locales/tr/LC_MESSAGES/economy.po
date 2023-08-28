@@ -202,7 +202,7 @@ msgid ""
 "{coin_emoji}**{new_amount}**."
 msgstr ""
 "{coin_emoji}**{amount}** miktarında para {user_mention} kullanıcına verildi "
-"ve toplam bakiyesi coin_emoji}**{new_amount}** oldu."
+"ve toplam bakiyesi {coin_emoji}**{new_amount}** oldu."
 
 #: src/modules/economy/cog.py:365
 msgctxt "cmd:economy_balance|embed:success|title"
