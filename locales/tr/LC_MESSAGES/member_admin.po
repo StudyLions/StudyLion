@@ -332,6 +332,7 @@ msgstr ""
 msgctxt "guildset:returning_message|formatkey:last_time"
 msgid "Unix timestamp of the last time the member was seen in the server."
 msgstr ""
+"Üyenin sunucuda göründüğü son zamanın Unix timestamp cinsinden ifadesi."
 
 #: src/modules/member_admin/settings.py:258
 msgctxt "guildset:returning_message|set_response:unset"
