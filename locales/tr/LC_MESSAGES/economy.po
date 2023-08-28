@@ -50,7 +50,7 @@ msgstr "bakiye"
 #: src/modules/economy/cog.py:95
 msgctxt "cmd:economy_balance|desc"
 msgid "Display or modify LionCoin balance for members and roles."
-msgstr ""
+msgstr "Üyeler veya roller için LionCoin miktarını gör veya düzenle."
 
 #: src/modules/economy/cog.py:99
 msgctxt "cmd:economy_balance|param:target"
