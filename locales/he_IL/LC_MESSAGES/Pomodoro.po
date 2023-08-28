@@ -291,7 +291,7 @@ msgstr ""
 msgctxt "cmd:pomodoro_destroy|desc"
 msgid ""
 "Delete a pomodoro timer from a voice channel. Requires admin permissions."
-msgstr ""
+msgstr "מחק טיימר מערוץ מסויים. הרשאות אדמין נחוצות."
 
 #: src/modules/pomodoro/cog.py:619
 msgctxt "cmd:pomodoro_destroy|param:channel"
