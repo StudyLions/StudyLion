@@ -34,7 +34,7 @@ msgstr "Uyarı kanalını seç"
 #: src/modules/moderation/settingui.py:103
 msgctxt "ui:moderation_config|menu:modrole|placeholder"
 msgid "Select Moderator Role"
-msgstr ""
+msgstr "Moderatör rolünü seç"
 
 #: src/modules/moderation/settingui.py:111
 msgctxt "ui:moderation_config|embed|title"
