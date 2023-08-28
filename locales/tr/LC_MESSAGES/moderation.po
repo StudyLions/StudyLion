@@ -133,7 +133,7 @@ msgstr "Notlar"
 #: src/modules/moderation/ticket.py:226
 msgctxt "ticket|field:pardoned|name"
 msgid "Pardoned"
-msgstr ""
+msgstr "Affedildi"
 
 #: src/modules/moderation/ticket.py:229
 #, possible-python-brace-format
