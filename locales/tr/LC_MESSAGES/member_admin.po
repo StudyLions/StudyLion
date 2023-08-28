@@ -412,6 +412,10 @@ msgid ""
 " restored when they rejoin (instead of giving `autoroles`). Note that this "
 "may conflict with other bots who manage join roles."
 msgstr ""
+"Aktifleştirildiğinde, üyeler sunucudan çıktıklarında rolleri kaydedilecek ve"
+" tekrar girmeleri durumunda geri verilecek. (`otomatik roller` yerine "
+"kullanılabilir) Katılma rollerini düzenleyen diğer botlarla karışıklık "
+"yaratabileceğini unutmayın."
 
 #: src/modules/member_admin/settings.py:405
 msgctxt "guildset:role_persistence|set_response:off"
