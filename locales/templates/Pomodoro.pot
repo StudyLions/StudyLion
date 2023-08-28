@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-27 16:37+0300\n"
+"POT-Creation-Date: 2023-08-28 22:43+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,13 +28,31 @@ msgctxt "timer|stage:focus|name"
 msgid "FOCUS"
 msgstr ""
 
-#: src/modules/pomodoro/timer.py:220
+#: src/modules/pomodoro/timer.py:155
+#, possible-python-brace-format
+msgctxt "timer|webhook|name"
+msgid "{bot_name} Pomodoro"
+msgstr ""
+
+#: src/modules/pomodoro/timer.py:159
+msgctxt "timer|webhook|audit_reason"
+msgid "Pomodoro Notifications"
+msgstr ""
+
+#: src/modules/pomodoro/timer.py:170
+msgctxt "timer|webhook|error:insufficient_permissions"
+msgid ""
+"I require the `MANAGE_WEBHOOKS` permission to send pomodoro notifications "
+"here!"
+msgstr ""
+
+#: src/modules/pomodoro/timer.py:229
 #, possible-python-brace-format
 msgctxt "timer|default_base_name"
 msgid "Timer {pattern}"
 msgstr ""
 
-#: src/modules/pomodoro/timer.py:394
+#: src/modules/pomodoro/timer.py:403
 #, possible-python-brace-format
 msgctxt "timer|kicked_message"
 msgid ""
@@ -46,20 +64,20 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/modules/pomodoro/timer.py:487
+#: src/modules/pomodoro/timer.py:496
 #, possible-python-brace-format
 msgctxt "timer|status|stage:focus|statusline"
 msgid "{channel} is now in **FOCUS**! Good luck, **BREAK** starts {timestamp}"
 msgstr ""
 
-#: src/modules/pomodoro/timer.py:492
+#: src/modules/pomodoro/timer.py:501
 #, possible-python-brace-format
 msgctxt "timer|status|stage:break|statusline"
 msgid ""
 "{channel} is now on **BREAK**! Take a rest, **FOCUS** starts {timestamp}"
 msgstr ""
 
-#: src/modules/pomodoro/timer.py:524
+#: src/modules/pomodoro/timer.py:533
 #, possible-python-brace-format
 msgctxt "timer|status|warningline"
 msgid ""
@@ -67,13 +85,13 @@ msgid ""
 "next stage."
 msgstr ""
 
-#: src/modules/pomodoro/timer.py:543
+#: src/modules/pomodoro/timer.py:552
 #, possible-python-brace-format
 msgctxt "timer|status|stopped:auto"
 msgid "Timer stopped! Join {channel} to start the timer."
 msgstr ""
 
-#: src/modules/pomodoro/timer.py:548
+#: src/modules/pomodoro/timer.py:557
 msgctxt "timer|status|stopped:manual"
 msgid "Timer stopped! Press `Start` to restart the timer."
 msgstr ""

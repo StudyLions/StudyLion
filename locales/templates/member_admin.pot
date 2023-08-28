@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-27 16:37+0300\n"
+"POT-Creation-Date: 2023-08-28 22:43+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,6 +55,16 @@ msgstr ""
 #: src/modules/member_admin/settingui.py:261
 msgctxt "dash:member_admin|dropdown|placeholder"
 msgid "Greetings and Initial Roles Panel"
+msgstr ""
+
+#: src/modules/member_admin/settingui.py:281
+msgctxt "dash:member_admin|section:greeting_messages|name"
+msgid "Greeting Messages ({commands[configure welcome]})"
+msgstr ""
+
+#: src/modules/member_admin/settingui.py:292
+msgctxt "dash:member_admin|section:initial_roles|name"
+msgid "Initial Roles ({commands[configure welcome]})"
 msgstr ""
 
 #: src/modules/member_admin/cog.py:234
