@@ -68,7 +68,7 @@ msgstr "GÖNDERİLDİ"
 #: src/gui/cards/goals.py:159
 msgctxt "skin:goals|mode:text|goal:middle|below"
 msgid "MESSAGES"
-msgstr ""
+msgstr "MESAJLAR"
 
 #: src/gui/cards/goals.py:163
 msgctxt "skin:goals|mode:anki|goal:middle|above"
@@ -78,7 +78,7 @@ msgstr ""
 #: src/gui/cards/goals.py:167
 msgctxt "skin:goals|mode:anki|goal:middle|below"
 msgid "CARDS"
-msgstr ""
+msgstr "KARTLAR"
 
 #: src/gui/cards/goals.py:228
 #, possible-python-brace-format
