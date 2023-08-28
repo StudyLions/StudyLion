@@ -65,7 +65,7 @@ msgstr "אני לא יכול לערוך את הרול ברירת מחדל של �
 #: src/wards.py:170
 msgctxt "ward:equippable_role|error:no_perms"
 msgid "I need the `MANAGE_ROLES` permission before I can manage roles!"
-msgstr ""
+msgstr "אני צריך את ההרשאה `MANAGE_ROLES` כדי לנהל את הרולים של השרת הזה."
 
 #: src/wards.py:177
 #, possible-python-brace-format
