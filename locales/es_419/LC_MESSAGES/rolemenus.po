@@ -312,7 +312,7 @@ msgstr "estilode_menú"
 #: src/modules/rolemenus/cog.py:808
 msgctxt "cmd:rolemenu_edit|param:remplate"
 msgid "template"
-msgstr ""
+msgstr "plantilla"
 
 #: src/modules/rolemenus/cog.py:809
 msgctxt "cmd:rolemenu_edit|param:rawmessage"
