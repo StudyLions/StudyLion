@@ -614,7 +614,7 @@ msgstr "אתה לא יכול לקבוע סשן שכבר רץ כרגע."
 #: src/modules/schedule/ui/scheduleui.py:191
 msgctxt "ui:schedule|menu:booking|error:next_slot"
 msgid "Too late! You cannot schedule a session starting in the next minute."
-msgstr ""
+msgstr "מאוחר מידי! אי אפשר לקבוע סשן שמתחיל ממש בכל כרגע."
 
 #: src/modules/schedule/ui/scheduleui.py:198
 msgctxt "ui:schedule|menu:booking|error:already_booked"
