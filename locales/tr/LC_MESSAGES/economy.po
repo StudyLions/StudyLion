@@ -267,7 +267,7 @@ msgstr ""
 #: src/modules/economy/cog.py:504
 msgctxt "cmd:economy_reset"
 msgid "reset"
-msgstr ""
+msgstr "sıfırla"
 
 #: src/modules/economy/cog.py:507
 msgctxt "cmd:economy_reset|desc"
