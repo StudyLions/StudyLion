@@ -248,6 +248,11 @@ msgid ""
 "Moderators cannot reconfigure most bot configuration, or perform operations "
 "they do not already have permission for in Discord."
 msgstr ""
+"Ayarlanmış role sahip kullanıcılar benim konfigürasyon panellerime "
+"erişebilecek ve bazı moderasyon görevleri yapabilecekler. Pomodoro "
+"zamanlayıcıları ayarlamak da bunlardan bazılarıdır. Moderatörler birçok bot "
+"konfigürasyonlarını ayarlayamayacak ya da Discord'da izinleri olmayan "
+"durumları gerçekleştiremeyecekler."
 
 #: src/modules/moderation/settings.py:137
 msgctxt "guildset:mod_role|accepts"
