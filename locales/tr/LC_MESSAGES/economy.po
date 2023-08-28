@@ -96,7 +96,7 @@ msgstr ""
 #: src/modules/economy/cog.py:163
 msgctxt "cmd:economy_balance|error:target_is_bot"
 msgid "Bots cannot have coin balances!"
-msgstr ""
+msgstr "Botların para bakiyesi olamaz!"
 
 #: src/modules/economy/cog.py:174
 msgctxt "cmd:economy_balance|error:args"
