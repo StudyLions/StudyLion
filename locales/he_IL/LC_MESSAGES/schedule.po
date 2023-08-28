@@ -628,6 +628,8 @@ msgid ""
 "Booking `{count}` scheduled sessions requires {coin}**{required}**, but you "
 "only have {coin}**{balance}**!"
 msgstr ""
+"כדי לקבוע `{count}` סשנים צריך  {coin}**{required}**, אבל יש לכם רק "
+"{coin}**{balance}**!"
 
 #: src/modules/schedule/ui/scheduleui.py:227
 #, possible-python-brace-format
