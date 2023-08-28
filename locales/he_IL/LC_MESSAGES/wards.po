@@ -55,7 +55,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "ward:equippable_role|error:integration"
 msgid "I cannot manage {role} because it is managed by a server integration."
-msgstr ""
+msgstr "אני לא יכול לנהל את  {role} כי הוא מנוהל על ידי בוט אחר בשרת."
 
 #: src/wards.py:163
 msgctxt "ward:equippable_role|error:default_role"
