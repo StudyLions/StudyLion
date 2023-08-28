@@ -399,19 +399,19 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "formatstring:channel_name|key:members"
 msgid "{members}"
-msgstr ""
+msgstr "{משתמשים}"
 
 #: src/modules/pomodoro/lib.py:22
 #, possible-python-brace-format
 msgctxt "formatstring:channel_name|key:name"
 msgid "{name}"
-msgstr ""
+msgstr "{שם}"
 
 #: src/modules/pomodoro/lib.py:23
 #, possible-python-brace-format
 msgctxt "formatstring:channel_name|key:pattern"
 msgid "{pattern}"
-msgstr ""
+msgstr "{תבנית}"
 
 #: src/modules/pomodoro/options.py:32
 msgctxt "timerset:voice_channel"
