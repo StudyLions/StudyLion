@@ -106,7 +106,7 @@ msgstr "menuderoles"
 #: src/modules/rolemenus/cog.py:437
 msgctxt "cmd:rolemenus|desc"
 msgid "View and configure the role menus in this server."
-msgstr ""
+msgstr "Ver y configurar los menús de roles en este servidor."
 
 #: src/modules/rolemenus/cog.py:454
 msgctxt "cmd:rolemenus|error:author_perms"
