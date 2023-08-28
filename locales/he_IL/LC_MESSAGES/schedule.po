@@ -554,7 +554,7 @@ msgstr "בחר רול לרשימה השחורה"
 #: src/modules/schedule/ui/settingui.py:177
 msgctxt "ui:schedule_config|embed|title"
 msgid "Scheduled Session Configuration Panel"
-msgstr ""
+msgstr "תפריט הגדרות מערכת לו\"זים"
 
 #: src/modules/schedule/ui/settingui.py:230
 msgctxt "dash:schedule|title"
