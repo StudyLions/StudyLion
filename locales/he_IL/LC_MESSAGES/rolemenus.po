@@ -274,7 +274,7 @@ msgstr "שם"
 #: src/modules/rolemenus/cog.py:801
 msgctxt "cmd:rolemenu_edit|param:new_name"
 msgid "new_name"
-msgstr ""
+msgstr "שם_חדש"
 
 #: src/modules/rolemenus/cog.py:802
 msgctxt "cmd:rolemenu_edit|param:channel"
