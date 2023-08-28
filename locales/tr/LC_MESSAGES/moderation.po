@@ -180,7 +180,7 @@ msgstr "Moderasyon talepleri {channel} kanalına gönderilecektir."
 #: src/modules/moderation/settings.py:51
 msgctxt "guildset:ticket_log|set_response:unset"
 msgid "Moderation tickets will not be logged to a channel."
-msgstr ""
+msgstr "Moderasyon talepleri herhangi bir kanalda kayıt edilmeyecektir."
 
 #: src/modules/moderation/settings.py:63
 msgctxt "guildset:ticket_log|formatted:unset"
