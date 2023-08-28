@@ -287,7 +287,7 @@ msgstr "geridönüş_mesajı"
 msgctxt "guildset:returning_message|desc"
 msgid ""
 "Custom message used to greet returning members when they rejoin the server."
-msgstr ""
+msgstr "Geri dönen üyeleri karşılamak için gönderilecek özel mesaj."
 
 #: src/modules/member_admin/settings.py:221
 msgctxt "guildset:returning_message|long_desc"
