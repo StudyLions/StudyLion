@@ -388,6 +388,8 @@ msgid ""
 "`role_persistence` is enabled, these roles will *not* be given to a "
 "returning member."
 msgstr ""
+"Bir üye sunucuya katıldığında bu roller verilecek. Eğer `role_persistence` "
+"aktifse, bu roller geri dönen üyeye *verilmeyecektir.*"
 
 #: src/modules/member_admin/settings.py:361
 msgctxt "guildset:bot_autoroles"
