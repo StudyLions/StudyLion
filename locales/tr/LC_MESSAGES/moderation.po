@@ -142,11 +142,13 @@ msgid ""
 "Pardoned by <&{moderator}> at {timestamp}.\n"
 "{reason}"
 msgstr ""
+" <&{moderator}> tarafından {timestamp} zamanında affedildi.\n"
+"{reason}"
 
 #: src/modules/moderation/settings.py:20
 msgctxt "guildset:ticket_log"
 msgid "ticket_log"
-msgstr ""
+msgstr "talep_log"
 
 #: src/modules/moderation/settings.py:23
 msgctxt "guildset:ticket_log|desc"
