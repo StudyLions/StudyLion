@@ -45,7 +45,7 @@ msgstr "פתח את החנות השרת."
 #: src/modules/shop/cog.py:150
 msgctxt "cmd:shop_open|error:no_shops"
 msgid "There is nothing to buy!"
-msgstr ""
+msgstr "אין שום דבר שניתן לרכישה!"
 
 #: src/modules/shop/cog.py:212
 msgctxt "ui:stores|button:close|label"
