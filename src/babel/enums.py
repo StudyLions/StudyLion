@@ -35,6 +35,7 @@ class LocaleMap(Enum):
     turkish = 'tr'
     ukrainian = 'uk'
     vietnamese = 'vi'
+    hebrew = 'he-IL'
 
 
 locale_names = {
@@ -68,4 +69,6 @@ locale_names = {
     'tr': _p('localenames|locale:tr', "Turkish"),
     'uk': _p('localenames|locale:uk', "Ukrainian"),
     'vi': _p('localenames|locale:vi', "Vietnamese"),
+    'he': _p('localenames|locale:he', "Hebrew"),
+    'he-IL': _p('localenames|locale:he_IL', "Hebrew (Israel)"),
 }
