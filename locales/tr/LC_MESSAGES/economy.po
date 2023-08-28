@@ -360,7 +360,7 @@ msgstr "gönder"
 #: src/modules/economy/cog.py:663
 msgctxt "cmd:send|desc"
 msgid "Gift the target user a certain number of LionCoins."
-msgstr ""
+msgstr "Hedef üyeye belirli miktarda LionCoin hediye edin."
 
 #: src/modules/economy/cog.py:667
 msgctxt "cmd:send|param:target"
