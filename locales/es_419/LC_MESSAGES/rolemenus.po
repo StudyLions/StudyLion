@@ -327,7 +327,7 @@ msgstr "Nombre del menú a editar"
 #: src/modules/rolemenus/cog.py:818
 msgctxt "cmd:rolemenu_edit|param:channel|desc"
 msgid "Server channel to move the menu to"
-msgstr ""
+msgstr "Canal del servidor al que mover el menú"
 
 #: src/modules/rolemenus/cog.py:827
 msgctxt "cmd:rolemenu_edit|param:menu_style"
