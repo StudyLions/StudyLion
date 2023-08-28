@@ -144,7 +144,7 @@ msgstr "Bu sunucunun adı."
 #: src/modules/member_admin/settings.py:28
 msgctxt "guildset:greeting_message|formatkey:guild_icon"
 msgid "Server icon url."
-msgstr ""
+msgstr "Sunucu sembolü url'si."
 
 #: src/modules/member_admin/settings.py:30
 msgctxt "guildset:greeting_message|formatkey:studying_count"
