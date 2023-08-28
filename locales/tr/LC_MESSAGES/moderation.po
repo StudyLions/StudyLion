@@ -39,7 +39,7 @@ msgstr "Moderatör rolünü seç"
 #: src/modules/moderation/settingui.py:111
 msgctxt "ui:moderation_config|embed|title"
 msgid "Moderation Configuration Panel"
-msgstr ""
+msgstr "Moderatör Konfigürasyon Paneli"
 
 #: src/modules/moderation/settingui.py:150
 msgctxt "dash:moderation|title"
