@@ -1374,12 +1374,12 @@ msgstr "מחק תפריט"
 #: src/modules/rolemenus/ui/menueditor.py:813
 msgctxt "ui:menu_editor|button:edit_msg|label"
 msgid "Edit Message"
-msgstr ""
+msgstr "ערוך הודעה"
 
 #: src/modules/rolemenus/ui/menueditor.py:844
 msgctxt "ui:menu_editor|button:preview|label"
 msgid "Preview"
-msgstr ""
+msgstr "תצוגה מקדימה"
 
 #: src/modules/rolemenus/ui/menueditor.py:860
 msgctxt "ui:menu_editor|button:repost|widget:repost|menu:channel|placeholder"
@@ -1389,7 +1389,7 @@ msgstr ""
 #: src/modules/rolemenus/ui/menueditor.py:878
 msgctxt "ui:menu_editor|button:repost|widget:repost|error:perms|title"
 msgid "Insufficient Permissions!"
-msgstr ""
+msgstr "אין לי או לך מספיק הראשות בשרת כדי לעשות את זה!"
 
 #: src/modules/rolemenus/ui/menueditor.py:882
 msgctxt "ui:menu_editor|button:repost|eidget:repost|error:perms|desc"
