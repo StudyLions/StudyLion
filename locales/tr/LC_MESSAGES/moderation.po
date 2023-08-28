@@ -59,7 +59,7 @@ msgstr "moderasyon"
 #: src/modules/moderation/cog.py:139
 msgctxt "cmd:configure_moderation|desc"
 msgid "Configure general moderation settings."
-msgstr ""
+msgstr "Genel moderasyon ayarlarını ayarla"
 
 #: src/modules/moderation/ticket.py:147
 #, possible-python-brace-format
