@@ -442,7 +442,7 @@ msgstr ""
 #: src/modules/pomodoro/options.py:78
 msgctxt "timerset:inactivity_threshold|inactivity_threshold"
 msgid "inactivity_threshold"
-msgstr ""
+msgstr "מגבלת_חוסר_פעילות"
 
 #: src/modules/pomodoro/options.py:81
 msgctxt "timerset:inactivity_threshold|desc"
@@ -459,7 +459,7 @@ msgstr ""
 #: src/modules/pomodoro/options.py:101
 msgctxt "timerset:manager_role"
 msgid "manager_role"
-msgstr ""
+msgstr "רול_מנהל"
 
 #: src/modules/pomodoro/options.py:104
 msgctxt "timerset:manager_role|desc"
