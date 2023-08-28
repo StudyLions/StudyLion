@@ -165,6 +165,8 @@ msgid ""
 "Are you sure you want to set the balance of everyone with {role_mention} to "
 "{coin_emoji}**{amount}**?"
 msgstr ""
+"{role_mention} rolündeki herkesin bakiyesini {coin_emoji}**{amount}** "
+"değerine ayarlamak istediğinize emin misiniz?"
 
 #: src/modules/economy/cog.py:290
 #, possible-python-brace-format
