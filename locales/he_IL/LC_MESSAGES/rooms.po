@@ -502,7 +502,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:844
 msgctxt "cmd:room_deposit|param:coins"
 msgid "coins"
-msgstr ""
+msgstr "מטבעות"
 
 #: src/modules/rooms/cog.py:849
 msgctxt "cmd:room_deposit|param:coins|desc"
