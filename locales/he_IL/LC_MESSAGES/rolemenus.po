@@ -1100,7 +1100,7 @@ msgstr "רול_נחוץ"
 #: src/modules/rolemenus/menuoptions.py:204
 msgctxt "menuset:required_role|desc"
 msgid "Initial role required to use this menu."
-msgstr ""
+msgstr "רול ראשוני שנחוץ על מנת להשתמש בתפריט הזה."
 
 #: src/modules/rolemenus/menuoptions.py:209
 msgctxt "menuset:required_role|long_desc"
