@@ -574,7 +574,7 @@ msgstr "ניהול מערכת הלו\"זים ({commands[configure schedule]})"
 #: src/modules/schedule/ui/settingui.py:261
 msgctxt "dash:schedule|section:schedule_rewards|name"
 msgid "Scheduled Session Rewards ({commands[configure schedule]})"
-msgstr ""
+msgstr "ניהול פרסים מערכת לו\"זים ({commands[configure schedule]})"
 
 #: src/modules/schedule/ui/settingui.py:271
 msgctxt "dash:schedule|section:schedule_blacklist|name"
