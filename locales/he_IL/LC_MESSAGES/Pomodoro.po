@@ -191,6 +191,8 @@ msgid ""
 "No timers have been setup in this server!\n"
 "You can ask an admin to create one with {command}, or rent a private room and create one yourself!"
 msgstr ""
+"אין טיימרים בסרבר הזה!\n"
+"אתם יכולים לבקש מהבעלים של השרת להפעיל כמה באמצעות {command}."
 
 #: src/modules/pomodoro/cog.py:404
 msgctxt "cmd:pomodoro_list|error:no_visible_timers"
