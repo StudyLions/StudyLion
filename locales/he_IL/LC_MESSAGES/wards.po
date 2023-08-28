@@ -82,7 +82,7 @@ msgstr ""
 #: src/wards.py:192
 msgctxt "ward:equippable_role|error:actor_perms"
 msgid "You need the `MANAGE_ROLES` permission before you can configure roles!"
-msgstr ""
+msgstr "אתה צריך את ההרשאה `MANAGE_ROLES` כדי לנהל את הרולים של השרת הזה."
 
 #: src/wards.py:199
 #, possible-python-brace-format
