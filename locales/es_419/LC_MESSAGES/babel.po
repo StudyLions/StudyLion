@@ -279,7 +279,7 @@ msgstr "Danés"
 #: src/babel/enums.py:49
 msgctxt "localenames|locale:nl"
 msgid "Dutch"
-msgstr ""
+msgstr "Neerlandés"
 
 #: src/babel/enums.py:50
 msgctxt "localenames|locale:fi"
