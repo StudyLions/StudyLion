@@ -557,7 +557,7 @@ msgstr "{tick} קנית את {mention} בהצלחה"
 #: src/modules/shop/shops/colours.py:1160
 msgctxt "ui:colourstore|menu:buycolours|placeholder"
 msgid "There are no colour roles available to purchase!"
-msgstr ""
+msgstr "אין רולים צבעים לרכישה!"
 
 #: src/modules/shop/shops/colours.py:1166
 msgctxt "ui:colourstore|menu:buycolours|placeholder"
