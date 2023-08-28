@@ -163,7 +163,7 @@ msgstr "תפריטחדש"
 #: src/modules/rolemenus/cog.py:596
 msgctxt "cmd:rolemenu_create|desc"
 msgid "Create a new role menu (optionally using an existing message)"
-msgstr ""
+msgstr "צור תפריט חדש (ניתן להשתמש גם בהודעה קיימת)"
 
 #: src/modules/rolemenus/cog.py:610
 msgctxt "cmd:rolemenu_create|param:message"
