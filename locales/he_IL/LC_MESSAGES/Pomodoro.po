@@ -113,12 +113,12 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:321
 msgctxt "cmd:pomodoro"
 msgid "timers"
-msgstr ""
+msgstr "טיימרים"
 
 #: src/modules/pomodoro/cog.py:322
 msgctxt "cmd:pomodoro|desc"
 msgid "Base group for all pomodoro timer commands."
-msgstr ""
+msgstr "קבוצת בסיס לכל הפקודות של הטיימר."
 
 #: src/modules/pomodoro/cog.py:330
 msgctxt "cmd:pomodoro_status"
