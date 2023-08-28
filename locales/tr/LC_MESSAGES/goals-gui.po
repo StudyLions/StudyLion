@@ -29,7 +29,7 @@ msgstr "GÖREVLER TAMAMLANDI"
 #: src/gui/cards/goals.py:99
 msgctxt "skin:goals|goal:tasks|goal"
 msgid "GOAL: "
-msgstr ""
+msgstr "HEDEF: "
 
 #: src/gui/cards/goals.py:125
 msgctxt "skin:goals|goal:attendance|name"
