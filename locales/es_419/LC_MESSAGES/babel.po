@@ -359,7 +359,7 @@ msgstr "Ruso"
 #: src/babel/enums.py:65
 msgctxt "localenames|locale:es-ES"
 msgid "Spain Spanish"
-msgstr ""
+msgstr "Español"
 
 #: src/babel/enums.py:66
 msgctxt "localenames|locale:sv-SE"
