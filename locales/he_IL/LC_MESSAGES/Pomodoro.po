@@ -776,12 +776,12 @@ msgstr "בחר רול מנהל"
 #, possible-python-brace-format
 msgctxt "ui:timer_options|embed|title"
 msgid "Timer Control Panel for {channel}"
-msgstr ""
+msgstr "לוח שליטה של הטיימר של {channel}"
 
 #: src/modules/pomodoro/ui/config.py:173
 msgctxt "ui:timer_options|embed|footer"
 msgid "Hover over the option names to view descriptions."
-msgstr ""
+msgstr "רחף מעל השמות כדי לקרוא את התיאור שלהם"
 
 #: src/modules/pomodoro/ui/config.py:185
 msgctxt "ui:timer_options|embed|field:pattern|name"
