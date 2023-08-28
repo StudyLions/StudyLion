@@ -464,12 +464,12 @@ msgstr ""
 #: src/modules/pomodoro/options.py:104
 msgctxt "timerset:manager_role|desc"
 msgid "Role allowed to start, stop, and edit the focus/break lengths."
-msgstr ""
+msgstr "הרול רשאי להתחיל, לעצור, ולערוך טיימרים."
 
 #: src/modules/pomodoro/options.py:116
 msgctxt "timerset:manager_role|format:notset"
 msgid "Not Set (Only Admins may start/stop or edit pattern)"
-msgstr ""
+msgstr "לא הופעל (רק אדמינים יכולים לערוך טיימרים)"
 
 #: src/modules/pomodoro/options.py:126
 msgctxt "timerset:voice_alerts"
