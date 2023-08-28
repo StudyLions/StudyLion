@@ -477,7 +477,7 @@ msgstr ""
 #: src/modules/economy/settings.py:70
 msgctxt "guildset:allow_transfers"
 msgid "allow_transfers"
-msgstr ""
+msgstr "transfere_izin_ver"
 
 #: src/modules/economy/settings.py:73
 msgctxt "guildset:allow_transfers|desc"
