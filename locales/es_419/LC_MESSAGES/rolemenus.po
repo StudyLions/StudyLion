@@ -140,7 +140,7 @@ msgstr "menú"
 #: src/modules/rolemenus/cog.py:521
 msgctxt "acmpl:menuroles|choice:no_menu|name"
 msgid "Please select a menu first"
-msgstr ""
+msgstr "Por favor selecciona un menú primero"
 
 #: src/modules/rolemenus/cog.py:545
 #, possible-python-brace-format
