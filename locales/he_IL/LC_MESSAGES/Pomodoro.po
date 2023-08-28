@@ -197,7 +197,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:404
 msgctxt "cmd:pomodoro_list|error:no_visible_timers"
 msgid "There are no timers you can join in this server!"
-msgstr ""
+msgstr "אין טיימרים ציבוריים בסרבר הזה."
 
 #: src/modules/pomodoro/cog.py:414
 #, possible-python-brace-format
@@ -222,6 +222,8 @@ msgid ""
 "`{pattern}` timer is stopped with `{members}` members!\n"
 "Join {channel} and press `Start` to start it!"
 msgstr ""
+"`{pattern}` נעצר עם `{members}` משתמשים!\n"
+"הצטרף אל {channel} ולחץ \"התחל\" על מנת לאפס אותו."
 
 #: src/modules/pomodoro/cog.py:435
 #, possible-python-brace-format
