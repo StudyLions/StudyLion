@@ -409,7 +409,7 @@ msgstr "Bir bot sunucuya katıldığında bu roller verilecek."
 #: src/modules/member_admin/settings.py:382
 msgctxt "guildset:role_persistence"
 msgid "role_persistence"
-msgstr ""
+msgstr "rol_kalıcılığı"
 
 #: src/modules/member_admin/settings.py:385
 msgctxt "guildset:role_persistence|desc"
