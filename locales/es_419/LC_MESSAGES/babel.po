@@ -29,7 +29,7 @@ msgstr ""
 #: src/babel/settingui.py:49
 msgctxt "ui:locale_config|embed|title"
 msgid "Language Configuration Panel"
-msgstr "Panel de configuración de idioma"
+msgstr "Panel de configuración del idioma"
 
 #: src/babel/settingui.py:83
 msgctxt "dash:locale|title"
