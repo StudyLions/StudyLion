@@ -262,7 +262,7 @@ class MessageSetting(StringSetting):
 
         value = cls._data_to_value(parent_id, data, **kwargs)
         content = value.get('content', "")
-        if 'embed' in value or 'embeds' in value or len(content) > 1024:
+        if 'embed' in value or 'embeds' in value or len(content) > 100:
             t = ctx_translator.get().t
             formatted = t(_p(
                 'settype:message|format:too_long',

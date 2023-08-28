@@ -142,14 +142,22 @@ class Timer:
                 if not hook:
                     # Attempt to create and save webhook
                     # TODO: Localise
+                    t = self.bot.translator.t
+                    ctx_locale.set(self.locale.value)
                     try:
                         if channel.permissions_for(channel.guild.me).manage_webhooks:
                             avatar = self.bot.user.avatar
                             avatar_data = (await avatar.to_file()).fp.read() if avatar else None
                             webhook = await channel.create_webhook(
                                 avatar=avatar_data,
-                                name=f"{self.bot.user.name} Pomodoro",
-                                reason="Pomodoro Notifications"
+                                name=t(_p(
+                                    'timer|webhook|name',
+                                    "{bot_name} Pomodoro"
+                                )).format(bot_name=self.bot.user.name),
+                                reason=t(_p(
+                                    'timer|webhook|audit_reason',
+                                    "Pomodoro Notifications"
+                                ))
                             )
                             hook = await self.bot.core.data.LionHook.create(
                                 channelid=channel.id,
@@ -157,9 +165,10 @@ class Timer:
                                 webhookid=webhook.id
                             )
                         elif channel.permissions_for(channel.guild.me).send_messages:
-                            await channel.send(
-                                "I require the `manage_webhooks` permission to send pomodoro notifications here!"
-                            )
+                            await channel.send(t(_p(
+                                'timer|webhook|error:insufficient_permissions',
+                                "I require the `MANAGE_WEBHOOKS` permission to send pomodoro notifications here!"
+                            )))
                     except discord.HTTPException:
                         logger.warning(
                             "Unexpected Exception caught while creating timer notification webhook "

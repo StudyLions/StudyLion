@@ -230,7 +230,7 @@ class BabelCog(LionCog):
         supported = self.bot.translator.supported_locales
         formatted = []
         for locale in supported:
-            name = locale_names.get(locale, None)
+            name = locale_names.get(locale.replace('_', '-'), None)
             if name:
                 localestr = f"{locale} ({t(name)})"
             else:

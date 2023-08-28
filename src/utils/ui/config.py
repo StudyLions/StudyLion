@@ -300,7 +300,6 @@ class DashboardSection:
             commands=self.bot.core.mention_cache
         )
 
-
     async def load(self):
         """
         Initialise the contained settings.
@@ -322,9 +321,18 @@ class DashboardSection:
 
         # TODO: Header/description field
         table = self.make_table()
+        if len(table) > 1024:
+            value = t(_p(
+                'ui:dashboard|error:section_too_long',
+                "Oops, the settings in this configuration section are too large, "
+                "and I can not display them here! "
+                "Please view the settings in the linked configuration panel instead."
+            ))
+        else:
+            value = table
         page.add_field(
             name=t(self.section_name).format(bot=self.bot, commands=self.bot.core.mention_cache),
-            value=table,
+            value=value,
             inline=False
         )
 
