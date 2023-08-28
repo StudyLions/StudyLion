@@ -349,7 +349,7 @@ msgstr "Geri dönen üye karşılaması güncellendi."
 #: src/modules/member_admin/settings.py:275
 msgctxt "guildset:greeting_message|formmatted:unset"
 msgid "Not set, will use the `welcome_message` if set."
-msgstr ""
+msgstr "Ayarlanmadı, eğer ayarlandıysa `welcome_message` kullanılacak."
 
 #: src/modules/member_admin/settings.py:325
 msgctxt "guildset:returning_message|embed_field|formatkeys|explanation"
