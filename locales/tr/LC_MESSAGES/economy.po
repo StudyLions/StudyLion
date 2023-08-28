@@ -40,7 +40,7 @@ msgstr "Ekonomi Paneli"
 #: src/modules/economy/cog.py:86
 msgctxt "cmd:economy"
 msgid "economy"
-msgstr ""
+msgstr "ekonomi"
 
 #: src/modules/economy/cog.py:92
 msgctxt "cmd:economy_balance"
