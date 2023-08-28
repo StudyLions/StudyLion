@@ -81,7 +81,7 @@ msgctxt "parse:message_link|suberror:malformed_link"
 msgid ""
 "Malformed message link. Please copy the link by right clicking the target "
 "message."
-msgstr ""
+msgstr "הלינק לא תקין. אנא העתק את הלינק הנכון."
 
 #: src/modules/rolemenus/cog.py:322
 #, possible-python-brace-format
