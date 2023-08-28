@@ -41,12 +41,12 @@ msgstr "כרגע"
 #: src/settings/ui.py:357
 msgctxt "setting|summary_table|field:default|key"
 msgid "By Default"
-msgstr ""
+msgstr "כברירת מחדל"
 
 #: src/settings/ui.py:364
 msgctxt "setting|summary_table|field:set|key"
 msgid "Set Using"
-msgstr ""
+msgstr "בחר באמצעות"
 
 #: src/settings/setting_types.py:48
 msgctxt "settype:string|accepts"
