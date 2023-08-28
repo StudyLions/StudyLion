@@ -30,7 +30,7 @@ msgstr "ערוךחנות"
 #: src/modules/shop/cog.py:117
 msgctxt "group:shop"
 msgid "shop"
-msgstr ""
+msgstr "חנות"
 
 #: src/modules/shop/cog.py:123
 msgctxt "cmd:shop_open"
