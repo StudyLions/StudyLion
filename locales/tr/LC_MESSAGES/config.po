@@ -29,7 +29,7 @@ msgstr "Zaman dilimi"
 #: src/modules/config/general.py:44
 msgctxt "guildset:timezone|desc"
 msgid "Guild timezone for statistics display."
-msgstr ""
+msgstr "İstatistik gösterimi için sunucu zaman dilimi."
 
 #: src/modules/config/general.py:48
 msgctxt "guildset:timezone|long_desc"
