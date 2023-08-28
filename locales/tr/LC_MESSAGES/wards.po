@@ -66,7 +66,7 @@ msgstr ""
 #: src/wards.py:163
 msgctxt "ward:equippable_role|error:default_role"
 msgid "I cannot manage the server's default role."
-msgstr ""
+msgstr "Sunucunun varsayılan rolünü yönetemiyorum!"
 
 #: src/wards.py:170
 msgctxt "ward:equippable_role|error:no_perms"
