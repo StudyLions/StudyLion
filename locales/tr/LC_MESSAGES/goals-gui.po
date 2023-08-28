@@ -104,4 +104,4 @@ msgstr "AYLIK İSTATİSTİKLER"
 #: src/gui/cards/goals.py:258
 msgctxt "ui:goals|monthly|task_header"
 msgid "GOALS OF THE MONTH"
-msgstr ""
+msgstr "AYIN HEDEFLERİ"
