@@ -87,7 +87,7 @@ msgstr ""
 #: src/modules/meta/help_sections.py:112
 msgctxt "helptext|level:member|title"
 msgid "Command Summary (for members)"
-msgstr ""
+msgstr "Komut Özeti (üyeler için)"
 
 #: src/modules/meta/help_sections.py:140
 msgctxt "helptext|level:admin|title"
