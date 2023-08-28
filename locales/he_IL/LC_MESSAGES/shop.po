@@ -103,7 +103,7 @@ msgstr "לא הצלחתי למצוא את המשתמש דרך דיסקורד!"
 #: src/modules/shop/shops/colours.py:205
 msgctxt "shop:colour|purchase|error:no_role"
 msgid "This colour role could not be found in the server."
-msgstr ""
+msgstr "הרול צבע הזה לא נמצא בשרת."
 
 #: src/modules/shop/shops/colours.py:214
 #, possible-python-brace-format
@@ -116,7 +116,7 @@ msgstr ""
 #: src/modules/shop/shops/colours.py:229
 msgctxt "shop:colour|purchase|error:owned"
 msgid "You already own this item!"
-msgstr ""
+msgstr "כבר יש לך את האייטם הזה!"
 
 #: src/modules/shop/shops/colours.py:263
 msgctxt "shop:colour|purchase|error:failed_no_role"
