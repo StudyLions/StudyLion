@@ -62,7 +62,7 @@ msgstr "{amount} XP"
 #, possible-python-brace-format
 msgctxt "skin:leaderboard|mode:voice|top_hours_text"
 msgid "{amount} hours"
-msgstr ""
+msgstr "{amount} saat"
 
 #: src/gui/cards/leaderboard.py:141
 #, possible-python-brace-format
