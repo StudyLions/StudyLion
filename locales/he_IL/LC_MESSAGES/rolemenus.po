@@ -121,7 +121,7 @@ msgstr "אין לי את ההרשאה `MANAGE_ROLES` כדי לערוך את הת
 #, possible-python-brace-format
 msgctxt "acmpl:menus|choice:no_choices|name"
 msgid "No role menus matching '{partial}'"
-msgstr ""
+msgstr "אין תפריטים שמתאימים ל'{partial}'!"
 
 #: src/modules/rolemenus/cog.py:515
 msgctxt "acmpl:menuroles|param:menu|keyname"
