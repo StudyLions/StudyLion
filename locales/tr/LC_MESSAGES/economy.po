@@ -440,7 +440,7 @@ msgstr "ekonomi"
 #: src/modules/economy/cog.py:798
 msgctxt "cmd:configure_economy|desc"
 msgid "Configure LionCoin Economy"
-msgstr ""
+msgstr "LionCoin ekonomisini düzenle"
 
 #: src/modules/economy/settings.py:35
 msgctxt "guildset:coins_per_xp"
