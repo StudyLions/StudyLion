@@ -424,6 +424,8 @@ msgid ""
 "**{coin_emoji}{amount}** has been deducted from your balance and sent to "
 "{mention}!"
 msgstr ""
+"**{coin_emoji}{amount}** bakiyenizden düşüldü ve {mention} kullanıcına "
+"gönderildi!"
 
 #: src/modules/economy/cog.py:783
 msgctxt "cmd:send|embed:ack|desc|error:unreachable"
