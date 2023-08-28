@@ -58,6 +58,7 @@ msgctxt "cmd:configure_language|error"
 msgid ""
 "You cannot enable `{force_setting}` without having a configured language!"
 msgstr ""
+"¡No se puede activar `{force_setting}` sin tener un idioma configurado!"
 
 #: src/babel/cog.py:167
 msgctxt "cmd:configure_language|success"
