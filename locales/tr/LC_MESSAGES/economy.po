@@ -29,12 +29,12 @@ msgstr "Ekonomi kurulum paneli"
 #: src/modules/economy/settingui.py:68
 msgctxt "dash:economy|title"
 msgid "Economy Configuration ({commands[configure economy]})"
-msgstr ""
+msgstr "Ekonomi Kurulumu ({commands[configure economy]})"
 
 #: src/modules/economy/settingui.py:72
 msgctxt "dash:economy|dropdown|placeholder"
 msgid "Economy Panel"
-msgstr ""
+msgstr "Ekonomi Paneli"
 
 #. ----- Economy group commands -----
 #: src/modules/economy/cog.py:86
