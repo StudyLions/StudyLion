@@ -657,7 +657,7 @@ msgstr ""
 #: src/modules/pomodoro/ui/status.py:168
 msgctxt "ui:timer_status|button:start|label"
 msgid "Start"
-msgstr ""
+msgstr "התחל"
 
 #: src/modules/pomodoro/ui/status.py:190
 msgctxt "ui:timer_status|button:stop|error:not_manager|title"
@@ -674,17 +674,17 @@ msgstr ""
 #: src/modules/pomodoro/ui/status.py:204
 msgctxt "ui:timer_status|button:stop|label"
 msgid "Stop"
-msgstr ""
+msgstr "עצור"
 
 #: src/modules/pomodoro/ui/config.py:51
 msgctxt "ui:timer_options|button:edit|label"
 msgid "Edit"
-msgstr ""
+msgstr "ערוך"
 
 #: src/modules/pomodoro/ui/config.py:67
 msgctxt "ui:timer_options|button:voice_alerts|label"
 msgid "Voice Alerts"
-msgstr ""
+msgstr "התראות קוליות"
 
 #: src/modules/pomodoro/ui/config.py:88
 msgctxt "ui:timer_options|button:delete|success|title"
