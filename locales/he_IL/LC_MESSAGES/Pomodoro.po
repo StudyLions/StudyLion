@@ -534,7 +534,7 @@ msgstr "מספר שלם עבור מספר דקות."
 #: src/modules/pomodoro/options.py:212
 msgctxt "timerset:focus_length|desc"
 msgid "Please enter a positive number of minutes."
-msgstr ""
+msgstr "אנא ציין מספר שלם של דקות."
 
 #: src/modules/pomodoro/options.py:220
 msgctxt "timerset:break_length"
@@ -549,12 +549,12 @@ msgstr ""
 #: src/modules/pomodoro/options.py:228
 msgctxt "timerset:break_length|accepts"
 msgid "A positive integer number of minutes."
-msgstr ""
+msgstr "מספר שלם של דקות."
 
 #: src/modules/pomodoro/options.py:252
 msgctxt "timerset:break_length|desc"
 msgid "Please enter a positive number of minutes."
-msgstr ""
+msgstr "אנא ציין מספר שלם של דקות."
 
 #: src/modules/pomodoro/settings.py:19
 msgctxt "guildset:pomodoro_channel"
@@ -599,7 +599,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "guildset:pomdoro_channel|set_using"
 msgid "{cmd} or channel selector below."
-msgstr ""
+msgstr "{cmd} או בחירת ערוצים בתחתית."
 
 #: src/modules/pomodoro/ui/edit.py:63
 msgctxt "modal:timer_editor|title"
