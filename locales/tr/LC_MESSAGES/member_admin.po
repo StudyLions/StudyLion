@@ -281,7 +281,7 @@ msgstr ""
 #: src/modules/member_admin/settings.py:213
 msgctxt "guildset:returning_message"
 msgid "returning_message"
-msgstr ""
+msgstr "geridönüş_mesajı"
 
 #: src/modules/member_admin/settings.py:217
 msgctxt "guildset:returning_message|desc"
