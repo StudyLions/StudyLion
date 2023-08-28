@@ -196,7 +196,7 @@ msgstr ""
 #: src/modules/member_admin/settings.py:84
 msgctxt "guildset:greeting_channel|formmatted:unset"
 msgid "Direct Message"
-msgstr ""
+msgstr "Direkt Mesaj"
 
 #: src/modules/member_admin/settings.py:91
 msgctxt "guildset:greeting_message"
