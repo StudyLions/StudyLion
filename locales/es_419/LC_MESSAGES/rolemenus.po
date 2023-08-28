@@ -344,7 +344,7 @@ msgstr "Plantilla que se utilizará para el cuerpo del mensaje del menú"
 #: src/modules/rolemenus/cog.py:835
 msgctxt "cmd:rolemenu_edit|param:rawmessage"
 msgid "Attach a custom menu message to use"
-msgstr "Adjunta un mensaje de menú personalizado para utilizarlo"
+msgstr "Adjunta un mensaje personalizado para usarlo en el menú "
 
 #: src/modules/rolemenus/cog.py:864
 msgctxt "cmd:rolemenu_edit|error:author_perms"
