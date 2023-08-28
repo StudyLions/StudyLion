@@ -594,7 +594,7 @@ msgstr "אין סשנים שקבעתם שאתם יכולים לבטל! הלו\"�
 #: src/modules/schedule/ui/scheduleui.py:129
 msgctxt "ui:schedule|button:clear|success"
 msgid "Successfully cancelled and refunded your upcoming scheduled sessions."
-msgstr ""
+msgstr "ביטלתי והחזרתי את המטבעות עבור הסשנים העתידיים שלכם."
 
 #: src/modules/schedule/ui/scheduleui.py:142
 msgctxt "ui:schedule|button:clear|label"
