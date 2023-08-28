@@ -222,6 +222,7 @@ msgstr "אין לי את ההרשאה `MANAGE_ROLES` כדי לערוך את הת
 msgctxt "cmd:rolemenu_create|error:message_exists"
 msgid "The message {link} already has a role menu! Use {edit_cmd} to edit it."
 msgstr ""
+"להודעה {link} כבר יש תפריט משויך אליו. תשתמשו ב {edit_cmd} כדי לערוך אותו."
 
 #: src/modules/rolemenus/cog.py:711
 #, possible-python-brace-format
