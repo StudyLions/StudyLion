@@ -408,7 +408,7 @@ msgstr "תפריט"
 #: src/modules/rolemenus/cog.py:1056
 msgctxt "cmd:rolemenu_delete|param:name|desc"
 msgid "Name of the rolemenu to delete."
-msgstr ""
+msgstr "השם של התפריט שמיועד למחיקה"
 
 #: src/modules/rolemenus/cog.py:1071
 msgctxt "cmd:rolemenu_delete|error:author_perms"
