@@ -126,7 +126,7 @@ msgstr "Sıfırlama işlemi seçilmedi, yapılacak bir şey yok."
 #: src/modules/member_admin/cog.py:302
 msgctxt "cmd:configure_welcome"
 msgid "welcome"
-msgstr "hoş geldiniz"
+msgstr "hoş_geldin"
 
 #: src/modules/member_admin/cog.py:305
 msgctxt "cmd:configure_welcome|desc"
