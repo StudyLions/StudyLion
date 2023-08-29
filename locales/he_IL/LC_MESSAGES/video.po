@@ -339,7 +339,7 @@ msgstr "רשימה של שמות או מספר מזהה של רולים שלא �
 #, possible-python-brace-format
 msgctxt "guildset:video_exempt|set_response:set"
 msgid "The following roles will now be exempt from video channels: {roles}"
-msgstr ""
+msgstr "הרולים הבאים יוכלו לעקוף את הדרישות של ערוצי המצלמה: {roles}"
 
 #: src/modules/video_channels/settings.py:289
 msgctxt "guildset:video_exempt|set_response:unset"
