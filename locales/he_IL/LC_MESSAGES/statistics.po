@@ -331,7 +331,7 @@ msgstr ""
 #: src/modules/statistics/settings.py:409
 msgctxt "dash:stats|dropdown|placeholder"
 msgid "Activity Statistics Panel"
-msgstr ""
+msgstr "תפריט סטטיסטיקת פעילות"
 
 #: src/modules/statistics/ui/goals.py:92
 msgctxt "ui:MonthlyUI|name"
