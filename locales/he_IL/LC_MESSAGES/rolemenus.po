@@ -470,7 +470,7 @@ msgstr "רול"
 #: src/modules/rolemenus/cog.py:1167
 msgctxt "cmd:rolemenu_addrole|param:menu|desc"
 msgid "Name of the menu to add a role to"
-msgstr ""
+msgstr "השם של התפריט שאליו אוסיף את הרול"
 
 #: src/modules/rolemenus/cog.py:1171
 msgctxt "cmd:rolemenu_addrole|param:role|desc"
