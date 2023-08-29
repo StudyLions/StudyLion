@@ -121,6 +121,8 @@ msgid ""
 "Too many members! You are inviting `{count}` new members to your room, but "
 "you already have `{current}` members! The member cap is `{cap}`."
 msgstr ""
+"Muitos membros! Você está convidando ˋ{count}ˋ novos membros para sua sala, "
+"mas já tem ˋ{current}ˋ membros! A capacidade de membros é ˋ{cap}ˋ."
 
 #: src/modules/rooms/roomui.py:330
 msgctxt "ui:room_status|menu:invite_menu|placeholder:capped"
