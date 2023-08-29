@@ -148,7 +148,7 @@ msgstr "צור"
 #: src/modules/shop/shops/colours.py:354
 msgctxt "cmd:editshop_colours_create|desc"
 msgid "Create a new colour role with the given colour."
-msgstr ""
+msgstr "צור רול צבע עם הצבע הזה."
 
 #: src/modules/shop/shops/colours.py:358
 msgctxt "cmd:editshop_colours_create|param:colour"
