@@ -522,7 +522,7 @@ msgstr "¡Este servidor no tiene un menú de roles llamado `{name}`!"
 #: src/modules/rolemenus/cog.py:1312
 msgctxt "cmd:rolemenu_addrole|success:create|title"
 msgid "Added Menu Role"
-msgstr ""
+msgstr "Menú de roles añadido"
 
 #: src/modules/rolemenus/cog.py:1316
 #, possible-python-brace-format
