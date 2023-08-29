@@ -101,12 +101,12 @@ msgstr "rahatsız etmeyin|dnd"
 #: src/modules/sysadmin/presence.py:148
 msgctxt "botset:presence_status|input_pattern:offline"
 msgid "off|offline|invisible"
-msgstr ""
+msgstr "off|çevrimdışı|görünmez"
 
 #: src/modules/sysadmin/presence.py:155
 msgctxt "botset:presence_type"
 msgid "activity_type"
-msgstr ""
+msgstr "faali̇yet_türü"
 
 #: src/modules/sysadmin/presence.py:156
 msgctxt "botset:presence_type|desc"
