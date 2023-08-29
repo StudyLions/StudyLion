@@ -347,7 +347,7 @@ msgstr "מגבלת_מטבעות_יומית"
 #: src/tracking/voice/settings.py:251
 msgctxt "guildset:daily_voice_cap|desc"
 msgid "Maximum number of hours per day to count for each member."
-msgstr ""
+msgstr "מספר מקסימלי של שעות ביום שיחשבו לכל משתמש."
 
 #: src/tracking/voice/settings.py:255
 msgctxt "guildset:daily_voice_cap|long_desc"
