@@ -683,7 +683,7 @@ msgstr "rol"
 #: src/modules/rolemenus/roleoptions.py:57
 msgctxt "roleset:role|desc"
 msgid "The role associated to this menu item."
-msgstr ""
+msgstr "El rol asociado a este elemento de menú."
 
 #: src/modules/rolemenus/roleoptions.py:61
 msgctxt "roleset:role|long_desc"
