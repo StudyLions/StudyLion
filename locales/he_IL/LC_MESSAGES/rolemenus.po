@@ -705,6 +705,9 @@ msgid ""
 "otherwise appears next to the role label in the button and dropdown styles. "
 "The emoji is also displayed next to the role in most menu templates."
 msgstr ""
+"הרול אמוג'י משומש עבור הריאקציה (בריאקציות של התפריטי רולים), וניתן לצפייה "
+"ליד התאגית של הכפתור ובתפריטים נופלים. האמוג'י גם נראה לי הרול עצמו רוב "
+"הפעמים."
 
 #: src/modules/rolemenus/roleoptions.py:157
 #, possible-python-brace-format
