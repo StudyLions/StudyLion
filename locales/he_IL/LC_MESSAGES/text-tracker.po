@@ -146,6 +146,8 @@ msgid ""
 "XP. If a category is selected, then all channels under the category will "
 "also be untracked."
 msgstr ""
+"פעילות בערוצים האלו לא יחשבו בתור נקודות ניסיון. אם קטגוריה נבחרה, כל "
+"הערוצים תחתה לא יחשבו."
 
 #: src/tracking/text/settings.py:107
 msgctxt "guildset:untracked_text_channels|accepts"
