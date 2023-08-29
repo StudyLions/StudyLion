@@ -293,13 +293,13 @@ msgstr "מטבעות שניתנות עבור כל שעה של למידה."
 #: src/tracking/voice/settings.py:175
 msgctxt "guildset:hourly_reward|mode:study|long_desc"
 msgid "Number of LionCoins given per hour of study, up to the daily hour cap."
-msgstr ""
+msgstr "מספר מטבעות שיקבלו כל שעת למידה בערוץ קולי עד המגבלה."
 
 #: src/tracking/voice/settings.py:183
 #, possible-python-brace-format
 msgctxt "guildset:hourly_reward|mode:study|response"
 msgid "Members will be given {coin}**{amount}** per hour that they study!"
-msgstr ""
+msgstr "משתמשים יקבלו {coin}**{amount}** כל שעה בערוץ קולי!"
 
 #: src/tracking/voice/settings.py:197
 msgctxt "guildset:hourly_live_bonus"
