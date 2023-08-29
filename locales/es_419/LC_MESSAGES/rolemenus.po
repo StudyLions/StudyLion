@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-27 16:37+0300\n"
+"POT-Creation-Date: 2023-08-28 22:43+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Ronin DeMentira, 2023\n"
 "Language-Team: Spanish (Latin America) (https://app.transifex.com/leobot/teams/174919/es_419/)\n"
@@ -420,12 +420,12 @@ msgstr ""
 #: src/modules/rolemenus/cog.py:1044
 msgctxt "cmd:rolemenu_delete"
 msgid "delmenu"
-msgstr ""
+msgstr "borrarmenú"
 
 #: src/modules/rolemenus/cog.py:1047
 msgctxt "cmd:rolemenu_delete|desc"
 msgid "Delete a role menu."
-msgstr ""
+msgstr "Borrar un menú de roles."
 
 #: src/modules/rolemenus/cog.py:1051
 msgctxt "cmd:rolemenu_delete|param:name"
