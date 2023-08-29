@@ -84,7 +84,7 @@ msgstr "תגית הסשן נוקתה"
 #: src/tracking/voice/cog.py:717
 msgctxt "cmd:now|target:self|mode:clear|success|desc"
 msgid "Successfully unset your session tag."
-msgstr ""
+msgstr "ניקיתי את התאגית שלך בהצלחה!"
 
 #: src/tracking/voice/cog.py:726
 msgctxt "cmd:now|target:other|mode:clear|error:perms|title"
@@ -99,7 +99,7 @@ msgstr ""
 #: src/tracking/voice/cog.py:740
 msgctxt "cmd:now|target:other|mode:clear|success|title"
 msgid "Session Tag Cleared!"
-msgstr ""
+msgstr "תאגית הסשן נוקתה!"
 
 #: src/tracking/voice/cog.py:744
 #, possible-python-brace-format
