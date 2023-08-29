@@ -1506,11 +1506,13 @@ msgid ""
 "This menu is not currently active!\n"
 "Make it available by clicking `Post` below."
 msgstr ""
+"התפריט לא פעיל כרגע!\n"
+"תהפוך אותו לפעיל על ידי לחיצה על \"פרסם\" למטה."
 
 #: src/modules/rolemenus/ui/menueditor.py:1002
 msgctxt "ui:menu_editor|embed|field:tips|name"
 msgid "Command Tips"
-msgstr ""
+msgstr "טיפים לפקודות"
 
 #: src/modules/rolemenus/ui/menueditor.py:1006
 #, possible-python-brace-format
