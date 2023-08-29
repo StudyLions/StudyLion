@@ -38,6 +38,8 @@ msgstr ""
 msgctxt "ward:low_management|failed"
 msgid "You must have the `MANAGE_GUILD` permission in this server to do this!"
 msgstr ""
+"Você precisa ter permissão de `MANAGE_GUILD`, neste servidor, para poder "
+"fazer isto! "
 
 #: src/wards.py:123
 msgctxt "ward:moderator|failed"
