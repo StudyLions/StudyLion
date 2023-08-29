@@ -137,7 +137,7 @@ msgstr "ערוציטקסט_לא_נצפים"
 #: src/tracking/text/settings.py:98
 msgctxt "guildset:untracked_text_channels|desc"
 msgid "Channels in which Message XP will not be given."
-msgstr ""
+msgstr "ערוצים שבהם לא אחשיב הודעות."
 
 #: src/tracking/text/settings.py:102
 msgctxt "guildset:untracked_text_channels|long_desc"
