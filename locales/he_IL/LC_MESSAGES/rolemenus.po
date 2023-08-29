@@ -595,7 +595,7 @@ msgstr "מחקרול"
 #: src/modules/rolemenus/cog.py:1612
 msgctxt "cmd:rolemenu_delrole|desc"
 msgid "Remove a role from a role menu."
-msgstr ""
+msgstr "הסר את הרול מהתפריט רולים."
 
 #: src/modules/rolemenus/cog.py:1616
 msgctxt "cmd:rolemenu_delrole|param:menu"
