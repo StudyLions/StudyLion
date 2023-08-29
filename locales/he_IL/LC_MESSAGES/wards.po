@@ -73,6 +73,8 @@ msgstr "אני צריך את ההרשאה `MANAGE_ROLES` כדי לנהל את ה
 msgctxt "ward:equippable_role|error:my_top_role"
 msgid "I cannot assign or remove {role} because it is above my top role!"
 msgstr ""
+"אני לא יכול לתת או להסיר את {role} מאחר והוא מעל הרול שלי ברשימת הרולים של "
+"השרת שלכם!"
 
 #: src/wards.py:184
 #, possible-python-brace-format
