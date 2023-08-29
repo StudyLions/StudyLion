@@ -328,7 +328,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_edit|resp:done|line:price"
 msgid "{tick} Set price to {coin}**{price}**"
-msgstr ""
+msgstr "{tick} configure o preço para {coin}**{price}**"
 
 #: src/modules/shop/shops/colours.py:648
 #, possible-python-brace-format
