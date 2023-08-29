@@ -254,6 +254,8 @@ msgid ""
 "I do not have enough permissions to create a new channel under the "
 "configured private room category!"
 msgstr ""
+"Eu não tenho permissão suficiente para criar um novo canal dentro da "
+"categoria de salas privadas! "
 
 #: src/modules/rooms/cog.py:379
 #, possible-python-brace-format
