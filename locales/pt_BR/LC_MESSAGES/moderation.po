@@ -261,7 +261,7 @@ msgstr "Nome do cargo de moderador, ou id deste."
 #, possible-python-brace-format
 msgctxt "guildset:mod_role|set_response:set"
 msgid "Members with the {role} will be considered moderators."
-msgstr ""
+msgstr "Membros com o cargo {role} serão considerados moderadores."
 
 #: src/modules/moderation/settings.py:156
 msgctxt "guildset:mod_role|set_response:unset"
