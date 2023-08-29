@@ -1477,12 +1477,12 @@ msgstr "פרסם תפריט רולים מחדש"
 #: src/modules/rolemenus/ui/menueditor.py:944
 msgctxt "ui:menu_editor|button:repost|widget:repost|description"
 msgid "Please select the channel to which you want to resend this menu."
-msgstr ""
+msgstr "אנא בחרו את הערוץ שבו תרצו לשלוח את התפריט הזה מחדש."
 
 #: src/modules/rolemenus/ui/menueditor.py:959
 msgctxt "ui:menu_editor|button:repost|label:repost"
 msgid "Repost"
-msgstr ""
+msgstr "פרסם מחדש"
 
 #: src/modules/rolemenus/ui/menueditor.py:964
 msgctxt "ui:menu_editor|button:repost|label:post"
