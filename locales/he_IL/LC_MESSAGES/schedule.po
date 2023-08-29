@@ -240,7 +240,7 @@ msgstr "חדרי_סשנים"
 #: src/modules/schedule/settings.py:138
 msgctxt "guildset:session_channels|desc"
 msgid "Voice channels in which to track activity for scheduled sessions."
-msgstr ""
+msgstr "חדרי קול שבהם אעקוב אחרי פעילות במערכת הסשנים."
 
 #: src/modules/schedule/settings.py:142
 msgctxt "guildset:session_channels|long_desc"
