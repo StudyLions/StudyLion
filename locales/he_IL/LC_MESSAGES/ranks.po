@@ -543,7 +543,7 @@ msgstr "הרענון דרגות הושלם בהצלחה!"
 #: src/modules/ranks/ui/refresh.py:139
 msgctxt "ui:refresh_ranks|embed|title:working"
 msgid "Refreshing your server ranks, please wait."
-msgstr ""
+msgstr "מרענן את הדרגות למשתמשים בשרת, חכו בסבלנות."
 
 #: src/modules/ranks/ui/refresh.py:157
 #, possible-python-brace-format
