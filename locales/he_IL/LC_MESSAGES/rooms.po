@@ -469,7 +469,7 @@ msgstr "העבר"
 #: src/modules/rooms/cog.py:755
 msgctxt "cmd:room_transfer|desc"
 msgid "Transfer your private room to another room member. Not reversible!"
-msgstr ""
+msgstr "העבר את החדר הפרטי הזה למשתמש אחר. לא ניתן לשינוי!"
 
 #: src/modules/rooms/cog.py:759
 msgctxt "cmd:room_transfer|param:new_owner"
