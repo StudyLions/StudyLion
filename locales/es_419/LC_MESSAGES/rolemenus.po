@@ -594,7 +594,7 @@ msgstr "Nuevo rol de servidor que el menú de roles debería dar."
 #: src/modules/rolemenus/cog.py:1434
 msgctxt "cmd:rolemenu_editrole|param:duration|desc"
 msgid "Lifetime of the role after selection in minutes."
-msgstr ""
+msgstr "Tiempo de vida en minutos del rol tras la selección."
 
 #: src/modules/rolemenus/cog.py:1475
 #, possible-python-brace-format
