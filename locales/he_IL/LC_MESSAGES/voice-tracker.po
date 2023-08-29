@@ -105,7 +105,7 @@ msgstr "תאגית הסשן נוקתה!"
 #, possible-python-brace-format
 msgctxt "cmd:now|target:other|mode:clear|success|desc"
 msgid "Cleared {target}'s session tag."
-msgstr ""
+msgstr "ניקיתי את התאג של {target}"
 
 #: src/tracking/voice/cog.py:756
 msgctxt "cmd:now|target:self|mode:set|success|title"
