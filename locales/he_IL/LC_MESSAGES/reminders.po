@@ -257,6 +257,8 @@ msgid ""
 "Could not parse provided time `{given}`. Try entering e.g. `4 pm` or "
 "`16:00`."
 msgstr ""
+"לא הצלחתי להבין את `{given}`. נסה להכניס את הערך באנגלית.  `4 pm` או "
+"`16:00`."
 
 #: src/modules/reminders/cog.py:662
 msgctxt "cmd:remindme_at|error:parse_time|title"
