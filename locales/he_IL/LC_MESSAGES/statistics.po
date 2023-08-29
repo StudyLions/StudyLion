@@ -166,6 +166,9 @@ msgid ""
 " and the leaderboard will display activity since this time by default. Unset"
 " to disable seasons and use all-time statistics instead."
 msgstr ""
+"דרגות פעילות יקבעו על בסיס פעילות נעקב מהתאריך הזה, ולוח השיאים יראה גם את "
+"הפעילות מהתאריך הזה כברירת מחדל. הסר כדי לבטל את העונות ובכדי להשתמש בתצוגה "
+"מכל הזמנים במקום מזמן מסויים."
 
 #: src/modules/statistics/settings.py:101
 msgctxt "guildset:season_start|accepts"
