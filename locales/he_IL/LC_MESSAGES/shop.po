@@ -433,6 +433,8 @@ msgstr "רול צבע נוצר"
 msgctxt "cmd:editshop_colours_add|resp:done|embed:desc"
 msgid "You have added {mention} to the colour shop for {coin}**{price}**!"
 msgstr ""
+"בחרתם את הרול {mention}, והוספת אותו לחנות צבעים עבור {coin}**{price}**! "
+"בהצלחה!"
 
 #: src/modules/shop/shops/colours.py:786
 msgctxt "cmd:editshop_colours_clear"
