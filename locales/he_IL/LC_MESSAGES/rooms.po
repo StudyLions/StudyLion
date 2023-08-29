@@ -694,7 +694,7 @@ msgstr "מספר מטבעות לתשלום עבור תקוף של יממה בח�
 #, possible-python-brace-format
 msgctxt "guildset:rooms_price|set_response"
 msgid "Private rooms will now cost {coin}**{amount}** per 24 hours."
-msgstr ""
+msgstr "חדרים פרטיים יעלו עכשיו  {coin}**{amount}** כל יממה."
 
 #: src/modules/rooms/settings.py:112
 msgctxt "guildset:rooms_slots"
