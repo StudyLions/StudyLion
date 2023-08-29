@@ -112,7 +112,7 @@ msgstr "Editar Temporizador"
 #: src/modules/rooms/roomui.py:261
 msgctxt "ui:room_status|button:timer|label:add_timer"
 msgid "Add Timer"
-msgstr ""
+msgstr "Adicionar Temporizador"
 
 #: src/modules/rooms/roomui.py:304
 #, possible-python-brace-format
