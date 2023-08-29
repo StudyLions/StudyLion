@@ -195,7 +195,7 @@ msgstr "אופציה שעובדת."
 #, possible-python-brace-format
 msgctxt "settype:enum|parse|error:not_found"
 msgid "`{provided}` is not a valid option!"
-msgstr ""
+msgstr "`{provided}` אינו אופציה שעובדת!"
 
 #: src/settings/setting_types.py:1168
 msgctxt "settype:duration|accepts"
