@@ -485,13 +485,13 @@ msgstr "{tick} החזרתי את הכסף ל**{total}/{total}** משתמשים."
 msgctxt "cmd:editshop_colours_clear|resp:done|line:deleted_failed"
 msgid ""
 "{emoji} Deleted **{count}/{total}** colour roles. (**{failed}** failed!)"
-msgstr ""
+msgstr "{emoji} מחקתי **{count}/{total}** רולי צבעים.  (**{failed}** נכשלו!)"
 
 #: src/modules/shop/shops/colours.py:919
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_clear|resp:done|line:deleted"
 msgid "{emoji} Deleted **{count}/{total}** colour roles."
-msgstr ""
+msgstr "{emoji} מחקתי **{count}/{total}** רולי צבעים. "
 
 #: src/modules/shop/shops/colours.py:968
 msgctxt "cmd:editshop_colours_remove"
