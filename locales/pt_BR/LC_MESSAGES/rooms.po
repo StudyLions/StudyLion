@@ -261,7 +261,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|error:room_exists"
 msgid "You already own a private room! Click to visit: {channel}"
-msgstr ""
+msgstr "Você já tem uma sala privada! Clique para visitar: {channel}"
 
 #: src/modules/rooms/cog.py:399
 #, possible-python-brace-format
