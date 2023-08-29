@@ -70,8 +70,8 @@ msgstr[0] ""
 "{mentions} aktif olmadıklarından dolayı kanaldan çıkartıldılar! Burada "
 "olduğunuzu belirtmek için her oturumda {tick} butonuna basmayı unutmayın!"
 msgstr[1] ""
-"{mentions} aktif olmadıklarından dolayı kanaldan çıkartıldılar! Burada "
-"olduğunuzu belirtmek için {tick} butonuna basmayı unutmayın!"
+"{mentions} aktif olmadıklarından dolayı {channel} kanalından çıkartıldılar! "
+"Burada olduğunuzu belirtmek için {tick} butonuna basmayı unutmayın!"
 
 #: src/modules/pomodoro/timer.py:496
 #, possible-python-brace-format
