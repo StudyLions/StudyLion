@@ -329,6 +329,8 @@ msgid ""
 " video in the `video_channels`. This also overrides the `video_blacklist` "
 "role."
 msgstr ""
+"משתמשים שיש להם כל אחד מהרולים האלו לא יצטרכו להפעיל את המצלמה שלהם בערוצי "
+"המצלמה. אופציה זו עוקפת גם את הרשימה השחורה."
 
 #: src/modules/video_channels/settings.py:269
 msgctxt "guildset:video_exempt|accepts"
