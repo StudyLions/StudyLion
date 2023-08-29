@@ -501,7 +501,7 @@ msgstr "הסר"
 #: src/modules/shop/shops/colours.py:971
 msgctxt "cmd:editshop_colours_remove|desc"
 msgid "Remove a specific colour role from the shop."
-msgstr ""
+msgstr "מחק רול צבעים ספציפי מהחנות."
 
 #: src/modules/shop/shops/colours.py:975
 msgctxt "cmd:editshop_colours_remove|param:role"
@@ -578,7 +578,7 @@ msgstr "אין רולים צבעים לרכישה!"
 #: src/modules/shop/shops/colours.py:1166
 msgctxt "ui:colourstore|menu:buycolours|placeholder"
 msgid "Select a colour role to purchase!"
-msgstr ""
+msgstr "בחר רול צבע לרכישה!"
 
 #: src/modules/shop/shops/colours.py:1195
 #, possible-python-brace-format
