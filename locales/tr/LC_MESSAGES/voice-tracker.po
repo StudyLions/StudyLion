@@ -93,7 +93,7 @@ msgstr "Oturum etiketiniz başarıyla temizlenmiştir."
 #: src/tracking/voice/cog.py:726
 msgctxt "cmd:now|target:other|mode:clear|error:perms|title"
 msgid "You can't do that!"
-msgstr ""
+msgstr "Bunu yapamazsın!"
 
 #: src/tracking/voice/cog.py:730
 msgctxt "cmd:now|target:other|mode:clear|error:perms|desc"
