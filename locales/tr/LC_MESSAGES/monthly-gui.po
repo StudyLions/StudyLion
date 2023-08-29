@@ -80,7 +80,7 @@ msgstr "BU AY: {amount} SAAT"
 #, possible-python-brace-format
 msgctxt "skin:monthlystats|mode:voice|summary:this_month"
 msgid "THIS MONTH: {amount} HOURS"
-msgstr ""
+msgstr "BU AY: {amount} SAAT"
 
 #: src/gui/cards/monthly.py:171
 #, possible-python-brace-format
