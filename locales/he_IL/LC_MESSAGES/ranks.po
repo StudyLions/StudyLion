@@ -439,7 +439,7 @@ msgstr ""
 msgctxt ""
 "ui:rank_preview|button:delete|response:success|button:delete_role|response:success|desc"
 msgid "You have deleted the rank **{name}** along with the underlying role."
-msgstr ""
+msgstr "מחקתם את הדרגה  **{name}** ביחד עם הרול שהיה קשור אליה."
 
 #: src/modules/ranks/ui/preview.py:199
 msgctxt "ui:rank_preview|button:delete|label"
