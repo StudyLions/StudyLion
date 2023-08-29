@@ -49,7 +49,7 @@ msgstr "Painel de Salas Privadas"
 #: src/modules/rooms/roomui.py:56
 msgctxt "ui:room_status|error:owner_required"
 msgid "You must be the private room owner to do this!"
-msgstr ""
+msgstr "Você precisa ser dono de uma sala privada para fazer isto!"
 
 #: src/modules/rooms/roomui.py:72
 msgctxt "ui:room_status|error:member_required"
