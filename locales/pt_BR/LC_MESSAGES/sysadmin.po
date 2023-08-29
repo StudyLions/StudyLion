@@ -55,7 +55,7 @@ msgstr "**Inativa**"
 #: src/modules/sysadmin/presence.py:135
 msgctxt "botset:presence_status|output:dnd"
 msgid "**Do Not Disturb**"
-msgstr ""
+msgstr "**Ocupado**"
 
 #: src/modules/sysadmin/presence.py:136
 msgctxt "botset:presence_status|output:offline"
