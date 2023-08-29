@@ -108,7 +108,7 @@ msgstr "מופעל/כן/נכון/דלוק/הפעל/1"
 #: src/settings/setting_types.py:501
 msgctxt "settype:bool|parse:falsey_values"
 msgid "disabled|no|false|off|disable|0"
-msgstr "בלתינראה/כבוי/לא/לאנכון/כבוי/מנוטרל/0"
+msgstr "כבוי/לא/לאנכון/כבוי/מנוטרל/0"
 
 #: src/settings/setting_types.py:506
 msgctxt "settype:bool|output:true"
