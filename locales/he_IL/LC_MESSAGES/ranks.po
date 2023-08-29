@@ -833,7 +833,7 @@ msgctxt "ui:rank_editor|type:message|input:requires|error:parse"
 msgid ""
 "`requires`: Could not parse provided minimum message count! Please enter an "
 "integer."
-msgstr ""
+msgstr "`דרוש`: לא הצלחתי להבין את כמות ההודעות המינימלית! אנא ציין את המספר."
 
 #: src/modules/ranks/ui/editor.py:148
 msgctxt "ui:rank_editor|type:xp|input:requires|error:parse"
