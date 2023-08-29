@@ -92,7 +92,7 @@ msgstr "NESTE MÊS: {amount} MENSAGENS"
 #, possible-python-brace-format
 msgctxt "skin:monthlystats|mode:text|summary:this_month"
 msgid "THIS MONTH: {amount} CARDS"
-msgstr ""
+msgstr "NESTE MÊS: {amount} CARTÕES"
 
 #: src/gui/cards/monthly.py:197
 #, possible-python-brace-format
