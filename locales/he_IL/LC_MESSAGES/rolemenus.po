@@ -1395,7 +1395,7 @@ msgstr "הודעה בעריכה אישית"
 #: src/modules/rolemenus/ui/menueditor.py:712
 msgctxt "ui:menu_editor|menu:template|option:custom|description"
 msgid "Entirely custom menu message (opens an interactive editor)."
-msgstr ""
+msgstr "בנה הודעה מותאמת אישית מ0 (יפתח את ההעורך הודעות שלנו)"
 
 #: src/modules/rolemenus/ui/menueditor.py:729
 msgctxt "ui:menu_editor|button:delete|confirm|title"
