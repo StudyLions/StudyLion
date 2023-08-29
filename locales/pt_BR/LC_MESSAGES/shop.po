@@ -511,7 +511,7 @@ msgstr "Remova uma cor de cargo específica da loja. "
 #: src/modules/shop/shops/colours.py:975
 msgctxt "cmd:editshop_colours_remove|param:role"
 msgid "role"
-msgstr ""
+msgstr "cargo"
 
 #: src/modules/shop/shops/colours.py:976
 msgctxt "cmd:editshop_colours_remove"
