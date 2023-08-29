@@ -171,7 +171,7 @@ msgstr ""
 #: src/modules/reminders/cog.py:525
 msgctxt "cmd:reminders_cancel|embed:success|desc"
 msgid "Reminder successfully cancelled."
-msgstr ""
+msgstr "התזכור בוטל בהצלחה."
 
 #: src/modules/reminders/cog.py:542
 msgctxt "cmd:reminders_cancel|acmpl:reminder|error:no_reminders"
