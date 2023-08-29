@@ -1309,12 +1309,12 @@ msgstr "הוסף רולים"
 #: src/modules/rolemenus/ui/menueditor.py:481
 msgctxt "ui:menu_editor|menu:edit_roles|placeholder"
 msgid "Edit Roles"
-msgstr ""
+msgstr "ערוך רולים"
 
 #: src/modules/rolemenus/ui/menueditor.py:514
 msgctxt "ui:menu_editor|menu:del_role|placeholder"
 msgid "Remove Roles"
-msgstr ""
+msgstr "הסר רולים"
 
 #: src/modules/rolemenus/ui/menueditor.py:538
 msgctxt "ui:menu_editor|button:style|error:non-managed"
