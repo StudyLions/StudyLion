@@ -116,7 +116,7 @@ msgstr "תאג לסשן לא נקבע!"
 #, possible-python-brace-format
 msgctxt "cmd:now|target:self|mode:set|success|desc"
 msgid "You are now working on `{new_tag}`. Good luck!"
-msgstr ""
+msgstr "אתה עובד על `{new_tag}` עכשיו, בהצלחה!"
 
 #: src/tracking/voice/cog.py:769
 msgctxt "cmd:now|target:other|mode:set|error:perms|title"
@@ -126,7 +126,7 @@ msgstr "אתה לא יכול לעשות את זה!"
 #: src/tracking/voice/cog.py:773
 msgctxt "cmd:now|target:other|mode:set|error:perms|desc"
 msgid "You need to be a moderator to set or clear someone else's session tag!"
-msgstr ""
+msgstr "אתה צריך להיות מנהל כדי לקבוע או למחוק סשן תאג של מישהו אחר."
 
 #: src/tracking/voice/cog.py:783
 msgctxt "cmd:now|target:other|mode:set|success|title"
