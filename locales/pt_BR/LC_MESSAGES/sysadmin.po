@@ -127,7 +127,7 @@ msgstr "Ouvindo/Jogando/Assistindo/Transmitindo"
 #: src/modules/sysadmin/presence.py:172
 msgctxt "botset:presence_type|output:watching"
 msgid "**Watching**"
-msgstr ""
+msgstr "**Assistindo**"
 
 #: src/modules/sysadmin/presence.py:173
 msgctxt "botset:presence_type|output:listening"
