@@ -61,7 +61,7 @@ msgstr "**Rahatsız Etmeyin**"
 #: src/modules/sysadmin/presence.py:136
 msgctxt "botset:presence_status|output:offline"
 msgid "**Offline**"
-msgstr ""
+msgstr "**Çevrimdışı**"
 
 #: src/modules/sysadmin/presence.py:139
 msgctxt "botset:presence_status|input_format:online"
