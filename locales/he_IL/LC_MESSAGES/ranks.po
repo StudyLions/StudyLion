@@ -356,7 +356,7 @@ msgid ""
 "If enabled, congratulatory messages for rank advancement will be direct "
 "messaged to the user, instead of being sent to the configured "
 "`rank_channel`."
-msgstr ""
+msgstr "אם מופעל, הודעת איחולים תישלח למשתמש בהודעה פרטית כמשתמש עולה בדרגה."
 
 #: src/modules/ranks/settings.py:174
 msgctxt "guildset:dm_ranks|response:true"
