@@ -542,7 +542,7 @@ msgstr "Cargo deletado com sucesso!"
 #: src/modules/shop/shops/colours.py:1033
 msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
 msgid "I do not have sufficient permissions to delete the role."
-msgstr ""
+msgstr "Eu não tenho permissões suficientes para deletar o cargo."
 
 #: src/modules/shop/shops/colours.py:1038
 msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
