@@ -332,7 +332,7 @@ msgstr "{tick} המחיר נקבע ל{coin}**{price}**"
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_edit|resp:done|line:role"
 msgid "{tick} Updated role to {mention}"
-msgstr ""
+msgstr "{tick} הרול עודכן ל{mention}"
 
 #: src/modules/shop/shops/colours.py:658
 msgctxt "cmd:editshop_colours_edit|resp:done|embed:title"
@@ -347,7 +347,7 @@ msgstr "אוטומטי"
 #: src/modules/shop/shops/colours.py:665
 msgctxt "cmd:editshop_colours_auto|desc"
 msgid "Automatically create a set of colour roles."
-msgstr ""
+msgstr "צור באופן אוטומטי סט של רולי צבעים עבור השרת שלך."
 
 #: src/modules/shop/shops/colours.py:674
 msgctxt "cmd:editshop_colours_add"
