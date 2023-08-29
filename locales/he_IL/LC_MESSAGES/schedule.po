@@ -872,12 +872,12 @@ msgstr "מאוחר מידי! הסשן כבר התחיל או מתחיל מידי
 #: src/modules/schedule/ui/sessionui.py:94
 msgctxt "ui:session|button:book|error:already_booked"
 msgid "You are already a member of this session!"
-msgstr ""
+msgstr "אתה כבר רשום לסשן הזה!"
 
 #: src/modules/schedule/ui/sessionui.py:101
 msgctxt "ui:session|button:book|success"
 msgid "Successfully booked this session."
-msgstr ""
+msgstr "קבעתי את הסשן בהצלחה!"
 
 #: src/modules/schedule/ui/sessionui.py:115
 msgctxt "ui:session|button:book|error|title"
