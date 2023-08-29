@@ -229,6 +229,8 @@ msgid ""
 "You have created the role {mention}, and added it to the colour shop for "
 "{coin}**{price}**!"
 msgstr ""
+"Você criou o cargo {mention}, e adicionou ele à loja de cores por "
+"{coin}**{price}**!"
 
 #: src/modules/shop/shops/colours.py:501
 msgctxt "cmd:editshop_colours_create|resp:done|field:position_note|value"
