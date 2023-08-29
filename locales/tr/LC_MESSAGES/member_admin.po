@@ -268,7 +268,7 @@ msgstr ""
 #: src/modules/member_admin/settings.py:136
 msgctxt "guildset:greeting_message|set_response:unset"
 msgid "Welcome message unset! New members will not be greeted."
-msgstr "Hoş geldin mesajı ayarlanmadı! Yeni üyeler karşılanmayacak."
+msgstr "Hoş geldin mesajı kaldırıldı! Yeni üyeler karşılanmayacak."
 
 #: src/modules/member_admin/settings.py:141
 msgctxt "guildset:greeting_message|set_response:set"
