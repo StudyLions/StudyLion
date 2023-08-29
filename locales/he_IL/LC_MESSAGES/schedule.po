@@ -488,7 +488,7 @@ msgstr "לא נקבע."
 #: src/modules/schedule/settings.py:467
 msgctxt "guildset:schedule_blacklist_after"
 msgid "schedule_blacklist_after"
-msgstr ""
+msgstr "סשן_רשימהשחורה_לאחרכמהזמן"
 
 #: src/modules/schedule/settings.py:470
 msgctxt "guildset:schedule_blacklist_after|desc"
