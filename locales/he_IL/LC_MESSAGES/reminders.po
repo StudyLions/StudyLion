@@ -282,7 +282,7 @@ msgstr ""
 #: src/modules/reminders/cog.py:713
 msgctxt "cmd:remindme_in"
 msgid "in"
-msgstr ""
+msgstr "ב"
 
 #: src/modules/reminders/cog.py:716
 msgctxt "cmd:remindme_in|desc"
