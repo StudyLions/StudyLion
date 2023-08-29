@@ -116,7 +116,7 @@ msgstr "MÊS PASSADO: {amount} MENSAGENS"
 #, possible-python-brace-format
 msgctxt "skin:monthlystats|mode:text|summary:last_month"
 msgid "LAST MONTH: {amount} CARDS"
-msgstr ""
+msgstr "MÊS PASSADO: {amount} CARTÕES"
 
 #: src/gui/cards/monthly.py:300
 msgctxt "ui:monthlystats|stats:current_streak|key"
