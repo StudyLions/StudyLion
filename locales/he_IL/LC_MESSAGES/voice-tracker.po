@@ -259,7 +259,7 @@ msgstr "פרס_שעתי"
 #: src/tracking/voice/settings.py:120
 msgctxt "guildset:hourly_reward|mode:voice|desc"
 msgid "LionCoins given per hour in a voice channel."
-msgstr ""
+msgstr "מטבעות שניתנות עבור כל שעה בערוץ קול."
 
 #: src/tracking/voice/settings.py:124
 msgctxt "guildset:hourly_reward|mode:voice|long_desc"
