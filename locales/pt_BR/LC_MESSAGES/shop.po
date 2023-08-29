@@ -476,7 +476,7 @@ msgstr "{tick} Loja de cores foi limpa."
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_clear|resp:done|line:refunding"
 msgid "{loading} Refunded **{count}/{total}** members."
-msgstr ""
+msgstr "{loading} Reembolsados **{count}/{total}** membros."
 
 #: src/modules/shop/shops/colours.py:901
 #, possible-python-brace-format
