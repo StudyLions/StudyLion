@@ -31,17 +31,17 @@ msgstr "Talep Kayıt Kanalını Seç"
 #: src/modules/moderation/settingui.py:78
 msgctxt "ui:moderation_config|menu:alert_channel|placeholder"
 msgid "Select Alert Channel"
-msgstr "Uyarı kanalını seç"
+msgstr "Uyarı Kanalını Seç"
 
 #: src/modules/moderation/settingui.py:103
 msgctxt "ui:moderation_config|menu:modrole|placeholder"
 msgid "Select Moderator Role"
-msgstr "Moderatör rolünü seç"
+msgstr "Moderatör Rolünü Seç"
 
 #: src/modules/moderation/settingui.py:111
 msgctxt "ui:moderation_config|embed|title"
 msgid "Moderation Configuration Panel"
-msgstr "Moderatör Konfigürasyon Paneli"
+msgstr "Moderasyon Konfigürasyon Paneli"
 
 #: src/modules/moderation/settingui.py:150
 msgctxt "dash:moderation|title"
