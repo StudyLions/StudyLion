@@ -299,7 +299,7 @@ msgstr "ערוץ_דרגות"
 #: src/modules/ranks/settings.py:106
 msgctxt "guildset:rank_channel|desc"
 msgid "The channel in which to send rank update notifications."
-msgstr ""
+msgstr "הערוץ שבו אשלח התראות בנוגע לעדכוני דרגות."
 
 #: src/modules/ranks/settings.py:110
 msgctxt "guildset:rank_channel|long_desc"
