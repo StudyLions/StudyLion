@@ -459,7 +459,7 @@ msgstr "cargo_apagado"
 #: src/modules/shop/shops/colours.py:798
 msgctxt "cmd:editshop_colours_clear|param:delete|desc"
 msgid "Also delete the associated roles."
-msgstr ""
+msgstr "Também apague os cargos associados."
 
 #: src/modules/shop/shops/colours.py:840
 msgctxt "cmd:editshop_colours_clear|error:no_colours"
