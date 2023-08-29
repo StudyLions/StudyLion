@@ -54,7 +54,7 @@ msgstr "Você precisa ser dono de uma sala privada para fazer isto!"
 #: src/modules/rooms/roomui.py:72
 msgctxt "ui:room_status|error:member_required"
 msgid "You need to be a member of the private room to do this!"
-msgstr ""
+msgstr "Você precisa ser membro de uma sala privada para fazer isto!"
 
 #: src/modules/rooms/roomui.py:90
 msgctxt "ui:room_status|button:deposit|modal:deposit|title"
