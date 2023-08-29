@@ -358,7 +358,7 @@ msgstr "פרס_נוכחות_קבוצתית"
 #: src/modules/schedule/settings.py:303
 msgctxt "guildset:attendance_bonus|desc"
 msgid "Bonus reward given when all members attend a scheduled session."
-msgstr ""
+msgstr "בונוס ינתן לכל המשתמשים כאשר כל מי שקבע את הסשן נכח בהצלחה."
 
 #: src/modules/schedule/settings.py:307
 msgctxt "guildset:attendance_bonus|long_desc"
