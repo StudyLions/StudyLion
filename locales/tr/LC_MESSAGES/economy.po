@@ -326,7 +326,7 @@ msgid ""
 "*This is not reversible!*"
 msgstr ""
 "**{guild_name}** sunucusundaki herkesin para bakiyesini sıfırlamak istediğinize emin misiniz?\n"
-"*Bu geri alınamaz!*"
+"*Bu işlem geri alınamaz!*"
 
 #: src/modules/economy/cog.py:551
 msgctxt "cmd:economy_reset|confirm:reset_guild|button:confirm"
