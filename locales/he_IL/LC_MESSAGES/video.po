@@ -228,6 +228,8 @@ msgid ""
 "The role may also be manually assigned, to the same effect.\n"
 "If this role is not set, no video blacklist will occur, and members will only be kicked from the channel and warned."
 msgstr ""
+"הרול ינתן אוטומטית עבור אנשים שלא הצליחו להפעיל את הצמלמה שלהם הערוצי המצלמות.\n"
+"משתמשים שיש להם את הרול הזה לא יוכלו להיכנס לערוצי המצלמה. בתור אדמינים, תוכלו לערוץ את הרול הזה איך שבא לכם, כדי לשמור על הסדר של השרת שלכם."
 
 #: src/modules/video_channels/settings.py:123
 msgctxt "guildset:video_blacklist|accepts"
