@@ -904,12 +904,12 @@ msgstr "Tienda de Roles"
 #: src/modules/rolemenus/templates.py:172
 msgctxt "template:shop|desc"
 msgid "A single column display suitable for simple role shops"
-msgstr ""
+msgstr "Un diseño de una columna adecuado para tiendas simples de roles."
 
 #: src/modules/rolemenus/rolemenu.py:280
 msgctxt "rolemenu|menu_message|error|title"
 msgid "ROLE MENU DISPLAY ERROR"
-msgstr ""
+msgstr "ERROR DE VISUALIZACIÓN DEL MENÚ DE ROLES"
 
 #: src/modules/rolemenus/rolemenu.py:284
 #, possible-python-brace-format
