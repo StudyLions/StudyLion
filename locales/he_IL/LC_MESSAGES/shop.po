@@ -445,7 +445,7 @@ msgstr "נקה"
 msgctxt "cmd:editshop_colours_clear|desc"
 msgid ""
 "Remove all the colour roles from the shop, and optionally delete the roles."
-msgstr ""
+msgstr "הסר את כל הרולי צבעים מהחנות, ואפילו הסר אותם באופן כללי (אופציונלי)."
 
 #: src/modules/shop/shops/colours.py:793
 msgctxt "cmd:editshop_colours_clear|param:delete"
