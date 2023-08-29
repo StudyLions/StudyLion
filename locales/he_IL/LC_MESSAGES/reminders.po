@@ -293,7 +293,7 @@ msgstr "ב"
 #: src/modules/reminders/cog.py:716
 msgctxt "cmd:remindme_in|desc"
 msgid "Schedule a reminder for a given amount of time in the future."
-msgstr ""
+msgstr "קבע תזכיר זמן מסויים לתוך העתיד."
 
 #: src/modules/reminders/cog.py:720
 msgctxt "cmd:remindme_in|param:time"
