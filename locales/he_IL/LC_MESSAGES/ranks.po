@@ -533,7 +533,7 @@ msgstr "הודעה מברכת"
 #: src/modules/ranks/ui/refresh.py:125
 msgctxt "ui:refresh_ranks|embed|title:errored"
 msgid "Could not refresh the server ranks!"
-msgstr ""
+msgstr "לא הצלחתי לרענן את הדרגות בשרת הזה!"
 
 #: src/modules/ranks/ui/refresh.py:133
 msgctxt "ui:refresh_ranks|embed|title:done"
