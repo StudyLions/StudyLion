@@ -209,7 +209,7 @@ msgstr "רולים_ללא_מעקב"
 #: src/modules/statistics/settings.py:159
 msgctxt "guildset:unranked_roles|desc"
 msgid "Roles to exclude from the leaderboards."
-msgstr ""
+msgstr "רולים שלא אציג בלוח השיאים."
 
 #: src/modules/statistics/settings.py:163
 msgctxt "guildset:unranked_roles|long_desc"
