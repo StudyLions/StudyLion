@@ -561,6 +561,8 @@ msgid ""
 "Removed {mention} from the colour shop.\n"
 "{delete_line}"
 msgstr ""
+"Removida {mention} da loja de cargos.\n"
+"{delete_line}"
 
 #: src/modules/shop/shops/colours.py:1114
 msgctxt "ui:colourstore|menu:buycolours|embed:error|title"
