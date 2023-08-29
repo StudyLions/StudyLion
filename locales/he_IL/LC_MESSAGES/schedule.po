@@ -95,7 +95,7 @@ msgstr "לא הצלחתי לבטל את {time} כי לעולם לא קבעת א�
 #, possible-python-brace-format
 msgctxt "cmd:schedule|cancel_booking|error:too_soon"
 msgid "Cannot cancel {time} booking because it is running or starting soon!"
-msgstr ""
+msgstr "לא הצלחתי לבטל את {time} כי הוא כבר התחיל או מתחיל ממש בקרוב!"
 
 #: src/modules/schedule/cog.py:738
 #, possible-python-brace-format
