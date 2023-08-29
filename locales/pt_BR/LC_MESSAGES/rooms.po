@@ -181,7 +181,7 @@ msgstr "Novo aluguel devido {time} (- {coin}**{rent}**)"
 #, possible-python-brace-format
 msgctxt "ui:room_status|embed|field:bank|name"
 msgid "Room Balance: {coin}**{amount}**"
-msgstr ""
+msgstr "Saldo da Sala: {coin}**{amount}**"
 
 #: src/modules/rooms/roomui.py:428
 #, possible-python-brace-format
