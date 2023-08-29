@@ -298,7 +298,7 @@ msgstr "משתמשים יצטרכו לשלם את כמות המטבעות הזו
 #: src/modules/schedule/settings.py:222
 msgctxt "guildset:schedule_cost|accepts"
 msgid "Price of each session booking (non-negative integer)."
-msgstr ""
+msgstr "מחיר של כל סשן (מספר שלם חיובי)."
 
 #: src/modules/schedule/settings.py:234
 #, possible-python-brace-format
