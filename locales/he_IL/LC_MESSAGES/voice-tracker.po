@@ -342,7 +342,7 @@ msgstr ""
 #: src/tracking/voice/settings.py:248
 msgctxt "guildset:daily_voice_cap"
 msgid "daily_voice_cap"
-msgstr ""
+msgstr "מגבלת_מטבעות_יומית"
 
 #: src/tracking/voice/settings.py:251
 msgctxt "guildset:daily_voice_cap|desc"
