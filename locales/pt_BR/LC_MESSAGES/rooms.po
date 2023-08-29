@@ -267,7 +267,7 @@ msgstr "Você já tem uma sala privada! Clique para visitar: {channel}"
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|error:member_not_found"
 msgid "Could not find the requested member {mention} in this server!"
-msgstr ""
+msgstr "Não pude encontrar o membro requisitado {mention} neste servidor!"
 
 #: src/modules/rooms/cog.py:413
 #, possible-python-brace-format
