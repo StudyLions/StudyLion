@@ -478,7 +478,7 @@ msgstr "הרשימה השחורה של מערכת הסשנים נמחקה."
 #, possible-python-brace-format
 msgctxt "guildset:schedule_blacklist_role|formatted|set"
 msgid "{role} members will not be able to book scheduled sessions."
-msgstr ""
+msgstr "{role} לא יוכלו להשתמש במערכת הלו\"זים."
 
 #: src/modules/schedule/settings.py:458
 msgctxt "guildset:schedule_blacklist_role|formatted|unset"
