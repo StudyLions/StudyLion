@@ -217,7 +217,7 @@ msgstr "חזור_כל"
 #: src/modules/reminders/cog.py:599
 msgctxt "cmd:remindme_at|param:time|desc"
 msgid "When you want to be reminded. (E.g. `4pm` or `16:00`)."
-msgstr ""
+msgstr "הזמן שבו תרצה את התזכור (באנגלית) לדוגמא: 4PM או 16:00"
 
 #: src/modules/reminders/cog.py:600
 msgctxt "cmd:remindme_at|param:reminder|desc"
