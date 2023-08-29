@@ -60,7 +60,7 @@ msgstr "סטטיסטיקות"
 #: src/modules/statistics/cog.py:92
 msgctxt "cmd:configure_statistics|desc"
 msgid "Statistics configuration panel"
-msgstr ""
+msgstr "תפריט הגדרות סטטיסטיקת פעילות"
 
 #: src/modules/statistics/cog.py:95
 msgctxt "cmd:configure_statistics|param:season_start"
