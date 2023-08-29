@@ -329,7 +329,7 @@ msgid ""
 "When a member successfully attends a scheduled session they booked, they "
 "will be awarded this many LionCoins. Should generally be more than the "
 "`schedule_cost` setting."
-msgstr ""
+msgstr "כאשר מישהו נכח בהצלחה במערכת הלו\"זים הוא יקבל פרס של מטבעות."
 
 #: src/modules/schedule/settings.py:269
 msgctxt "guildset:attendance_reward|accepts"
