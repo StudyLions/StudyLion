@@ -921,6 +921,8 @@ msgid ""
 "session! I require the `MANAGE_CHANNEL`, `MANAGE_ROLES`, `CONNECT` and "
 "`VIEW_CHANNEL` permissions."
 msgstr ""
+"לא הצלחתי להכין את החדר {room} לסשן הבא! אני צריך את ההראשות "
+"`MANAGE_CHANNEL`, `MANAGE_ROLES`, `CONNECT` וגם `VIEW_CHANNEL`"
 
 #: src/modules/schedule/core/session.py:317
 #, possible-python-brace-format
@@ -930,6 +932,8 @@ msgid ""
 "session! I require the `MANAGE_CHANNEL`, `MANAGE_ROLES`, `CONNECT` and "
 "`VIEW_CHANNEL` permissions."
 msgstr ""
+"לא הצלחתי להכין את החדר {room} לסשן הבא! אני צריך את ההראשות "
+"`MANAGE_CHANNEL`, `MANAGE_ROLES`, `CONNECT` וגם `VIEW_CHANNEL`"
 
 #: src/modules/schedule/core/session.py:358
 #, possible-python-brace-format
