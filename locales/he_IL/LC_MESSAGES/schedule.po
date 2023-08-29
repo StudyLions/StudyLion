@@ -230,7 +230,7 @@ msgstr "משתמשים במערכת הסשנים יקבלו הרשאה אל {cha
 #: src/modules/schedule/settings.py:128
 msgctxt "guildset:session_room|set_response|unset"
 msgid "The dedicated schedule session room has been removed."
-msgstr ""
+msgstr "החדר קולי של מערכת הסשנים הוסר."
 
 #: src/modules/schedule/settings.py:135
 msgctxt "guildset:session_channels"
