@@ -35,7 +35,7 @@ msgstr "YAZIŞMA LİDER TABLOSU"
 #: src/gui/cards/leaderboard.py:77
 msgctxt "skin:leaderboard|mode:voice|header_text"
 msgid "VOICE LEADERBOARD"
-msgstr "SES LİDERLİK TABLOSU"
+msgstr "SES LİDER TABLOSU"
 
 #: src/gui/cards/leaderboard.py:81
 msgctxt "skin:leaderboard|mode:anki|header_text"
