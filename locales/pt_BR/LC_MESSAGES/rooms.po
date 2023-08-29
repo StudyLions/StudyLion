@@ -85,12 +85,12 @@ msgstr ""
 #: src/modules/rooms/roomui.py:160
 msgctxt "ui:room_status|button:deposit|label"
 msgid "Deposit"
-msgstr ""
+msgstr "Depósito"
 
 #: src/modules/rooms/roomui.py:171
 msgctxt "ui:room_status|button:edit|label"
 msgid "Edit Room"
-msgstr ""
+msgstr "Editar Sala"
 
 #: src/modules/rooms/roomui.py:204
 msgctxt "ui:room_status|button:timer|modal:add_timer|title"
