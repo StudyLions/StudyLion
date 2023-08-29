@@ -366,6 +366,8 @@ msgid ""
 "When all members who have booked a session successfully attend the session, "
 "they will be given this bonus in *addition* to the `attendance_reward`."
 msgstr ""
+"כאשר כל המשתמשים שקבעו את הסשן הצטרפו לסשן בהצלחה, אני אתן בונוס לכולם בנוסף"
+" לפרס שמגיע להם על נוכחות."
 
 #: src/modules/schedule/settings.py:312
 msgctxt "guildset:attendance_bonus|accepts"
