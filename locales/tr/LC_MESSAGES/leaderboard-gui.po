@@ -40,7 +40,7 @@ msgstr "SES LİDER TABLOSU"
 #: src/gui/cards/leaderboard.py:81
 msgctxt "skin:leaderboard|mode:anki|header_text"
 msgid "ANKI REVIEW LEADERBOARD"
-msgstr "ANKI DEĞERLENDİRMESİ LİDERLİK TABLOSU"
+msgstr "ANKI LİDER TABLOSU"
 
 #: src/gui/cards/leaderboard.py:99
 msgctxt "skin:leaderboard|field:subheader_text"
