@@ -532,7 +532,7 @@ msgstr "Caso o cargo associado deve ser deletado."
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_remove|error:not_colour"
 msgid "{mention} is not in the colour role shop!"
-msgstr ""
+msgstr "{mention} não está na loja de cores de cargo!"
 
 #: src/modules/shop/shops/colours.py:1028
 msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
