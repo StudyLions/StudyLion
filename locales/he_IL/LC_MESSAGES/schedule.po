@@ -225,7 +225,7 @@ msgstr "שם או מספר מזהה של חדר הקול של הסשנים."
 #, possible-python-brace-format
 msgctxt "guildset:session_room|set_response|set"
 msgid "Schedule session members will now be given access to {channel}"
-msgstr ""
+msgstr "משתמשים במערכת הסשנים יקבלו הרשאה אל {channel}"
 
 #: src/modules/schedule/settings.py:128
 msgctxt "guildset:session_room|set_response|unset"
