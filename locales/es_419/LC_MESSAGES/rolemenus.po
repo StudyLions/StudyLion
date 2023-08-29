@@ -841,11 +841,14 @@ msgid ""
 "Allows creation of 'temporary roles' which expire a given time after being "
 "equipped. Refunds will not be given upon expiry."
 msgstr ""
+"Permite la creación de \"roles temporales\" que expiran después de un tiempo"
+" determinado luego de ser equipados. No se devolverá el dinero cuando "
+"caduquen."
 
 #: src/modules/rolemenus/roleoptions.py:267
 msgctxt "roleset:duration|notset"
 msgid "Forever."
-msgstr ""
+msgstr "Para siempre."
 
 #: src/modules/rolemenus/roleoptions.py:280
 #, possible-python-brace-format
