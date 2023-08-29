@@ -968,6 +968,8 @@ msgctxt "rolemenu|select|error:discord"
 msgid ""
 "An unknown error occurred while assigning your role! Please try again later."
 msgstr ""
+"שגיאה לא ידועה התחוללה כשניסיתי לתת לך את הרול.\n"
+"אנא נסה שוב במספר דקות."
 
 #: src/modules/rolemenus/rolemenu.py:647
 msgctxt "rolemenu|select|success|title"
