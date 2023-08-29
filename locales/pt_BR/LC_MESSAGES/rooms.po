@@ -245,6 +245,8 @@ msgid ""
 "The private room system has not been set up! A private room category needs "
 "to be set first with `/configure rooms`."
 msgstr ""
+"O sistema de sala privada não foi configurado! É necessário configurar uma "
+"categoria de salas privadas primeiro, com ˋ/configurar salasˋ."
 
 #: src/modules/rooms/cog.py:365
 msgctxt "cmd:room_rent|error:insufficient_perms"
