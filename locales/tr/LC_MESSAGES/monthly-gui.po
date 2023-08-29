@@ -121,7 +121,7 @@ msgstr "GEÇEN AY: {amount} KART"
 #: src/gui/cards/monthly.py:300
 msgctxt "ui:monthlystats|stats:current_streak|key"
 msgid "Current Streak:"
-msgstr ""
+msgstr "Şu anki seri:"
 
 #: src/gui/cards/monthly.py:304
 #, possible-python-brace-format
