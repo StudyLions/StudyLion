@@ -271,7 +271,7 @@ msgctxt "guildset:session_channels|set_response|unset"
 msgid ""
 "Activity in all (tracked) voice channels will now count towards session "
 "attendance."
-msgstr ""
+msgstr "פעילו בכל ערוצי הקול יחשבו בתור נוכחות במערכת הסשנים."
 
 #: src/modules/schedule/settings.py:181
 msgctxt "guildset:session_channels|formatted|unset"
