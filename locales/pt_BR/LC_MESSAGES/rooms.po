@@ -127,12 +127,12 @@ msgstr ""
 #: src/modules/rooms/roomui.py:330
 msgctxt "ui:room_status|menu:invite_menu|placeholder:capped"
 msgid "Room member cap reached!"
-msgstr ""
+msgstr "Capacidade de membros atingida."
 
 #: src/modules/rooms/roomui.py:336
 msgctxt "ui:room_status|menu:invite_menu|placeholder:notcapped"
 msgid "Add Members"
-msgstr ""
+msgstr "Adicionar Membros"
 
 #: src/modules/rooms/roomui.py:359
 msgctxt "ui:room_status|menu:kick_menu|placeholder"
