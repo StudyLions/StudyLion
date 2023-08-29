@@ -535,6 +535,8 @@ msgstr "משתמשים לא יכנסו לרשימה השחורה אוטומטי�
 msgctxt "guildset:schedule_blacklist_after|formatted|set"
 msgid "Blacklist after **`{amount}`** missed sessions within `24h`."
 msgstr ""
+"משתמשים יכנסו לרשימה השחורה לאחר  **`{amount}`** סשנים שהם הבריזו מהם ב24 "
+"שעות."
 
 #: src/modules/schedule/settings.py:516
 msgctxt "guildset:schedule_blacklist_after|formatted|unset"
