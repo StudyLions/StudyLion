@@ -348,7 +348,7 @@ msgstr "משתמשים יקבלו  {coin}**{amount}** כשהם משתתפים ב
 #, possible-python-brace-format
 msgctxt "guildset:attendance_reward|formatted"
 msgid "{coin}**{amount}** upon attendance."
-msgstr ""
+msgstr "{coin}**{amount}** עבור נוכחות מוצלחת."
 
 #: src/modules/schedule/settings.py:300
 msgctxt "guildset:attendance_bonus"
