@@ -73,6 +73,8 @@ msgid ""
 "Time from which to start counting activity for rank badges and season "
 "leaderboards. (YYYY-MM-DD)"
 msgstr ""
+"הזמן שבו אתחיל לספור את הפעילות של האנשים (אנחנו קוראים לזה \"עונה\") (YYYY-"
+"MM-DD)"
 
 #: src/modules/statistics/cog.py:130
 #, possible-python-brace-format
@@ -80,7 +82,7 @@ msgctxt "cmd:configure_statistics|resp:success|desc"
 msgid ""
 "Activity ranks and season leaderboard will now be measured from "
 "{season_start}."
-msgstr ""
+msgstr "פעילות דרגות ולוח השיאים עכשיו יתחילו מ {season_start}."
 
 #: src/modules/statistics/settings.py:37
 msgctxt "settype:stat|output:voice"
