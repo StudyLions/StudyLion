@@ -195,7 +195,7 @@ msgstr "חדר_סשנים"
 #: src/modules/schedule/settings.py:95
 msgctxt "guildset:session_room|desc"
 msgid "Special voice channel open to scheduled session members."
-msgstr ""
+msgstr "ערוץ קול מיוחד שאפשר רק לאנשים שקבעו סשן."
 
 #: src/modules/schedule/settings.py:99
 msgctxt "guildset:session_room|long_desc"
