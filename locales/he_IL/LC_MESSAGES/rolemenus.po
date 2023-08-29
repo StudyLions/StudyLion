@@ -455,7 +455,7 @@ msgstr "הוסףרול"
 #: src/modules/rolemenus/cog.py:1148
 msgctxt "cmd:rolemenu_addrole|desc"
 msgid "Add a new role to an existing role menu."
-msgstr ""
+msgstr "מוסיף רול חדש לתפריט קיים."
 
 #: src/modules/rolemenus/cog.py:1153
 msgctxt "cmd:rolemenu_addrole|param:menu"
