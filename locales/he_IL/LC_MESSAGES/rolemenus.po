@@ -743,6 +743,8 @@ msgid ""
 "It may also be used as a substitution key in custom role selection "
 "responses."
 msgstr ""
+"התיאור נמצא מתחת לתאגית רול בתפריטים נופלים. ניתן להשתמש בזה גם כמפתח חלופי "
+"בריאקציות מותאמות אישית."
 
 #: src/modules/rolemenus/roleoptions.py:205
 msgctxt "roleset:description|set_response:set"
