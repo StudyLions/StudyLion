@@ -30,7 +30,7 @@ msgstr "ÇALIŞMA ZAMANI LİDER TABLOSU"
 #: src/gui/cards/leaderboard.py:73
 msgctxt "skin:leaderboard|mode:text|header_text"
 msgid "MESSAGE LEADERBOARD"
-msgstr "YAZIŞMA LİDERLİK TABLOSU"
+msgstr "YAZIŞMA LİDER TABLOSU"
 
 #: src/gui/cards/leaderboard.py:77
 msgctxt "skin:leaderboard|mode:voice|header_text"
