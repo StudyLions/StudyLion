@@ -291,7 +291,7 @@ msgstr ""
 #: src/modules/statistics/settings.py:304
 msgctxt "ui:statistics_config|menu:unranked_roles|placeholder"
 msgid "Select Unranked Roles"
-msgstr ""
+msgstr "בחר רולים ללא מעקב"
 
 #: src/modules/statistics/settings.py:328
 msgctxt "ui:statistics_config|menu:visible_stats|item:voice|mode:voice"
@@ -316,7 +316,7 @@ msgstr "ביקורות אנקי"
 #: src/modules/statistics/settings.py:362
 msgctxt "ui:statistics_config|menu:visible_stats|placeholder"
 msgid "Select Visible Statistics"
-msgstr ""
+msgstr "בחר סטטיסטקות ציבוריות"
 
 #: src/modules/statistics/settings.py:383
 msgctxt "ui:statistics_config|embed|title"
