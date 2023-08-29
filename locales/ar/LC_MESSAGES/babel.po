@@ -5,6 +5,7 @@
 # 
 # Translators:
 # Interitio, 2023
+# Nour Ibram, 2023
 # 
 #, fuzzy
 msgid ""
@@ -13,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-28 22:43+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Interitio, 2023\n"
+"Last-Translator: Nour Ibram, 2023\n"
 "Language-Team: Arabic (https://app.transifex.com/leobot/teams/174919/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -50,6 +51,8 @@ msgstr "اللغة"
 msgctxt "cmd:configure_language|desc"
 msgid "Configure the default language I will use in this server."
 msgstr ""
+"اضبط اللغة الافتراضية التى سوف استخدمها فى هذا الخادم\n"
+"ِAt: اختر اللغة الاساسية التى سأستخدمها فى هذا الخادم"
 
 #: src/babel/cog.py:147
 #, possible-python-brace-format
