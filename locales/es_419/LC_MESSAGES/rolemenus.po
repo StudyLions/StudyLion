@@ -616,7 +616,7 @@ msgstr "Menú de roles rol actualizado"
 #: src/modules/rolemenus/cog.py:1584
 msgctxt "cmd:rolemenu_editrole|success|error:reaction|name"
 msgid "Warning!"
-msgstr ""
+msgstr "¡Advertencia!"
 
 #: src/modules/rolemenus/cog.py:1609
 msgctxt "cmd:rolemenu_delrole"
