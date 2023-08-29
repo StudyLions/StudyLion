@@ -111,7 +111,7 @@ msgstr "faali̇yet_türü"
 #: src/modules/sysadmin/presence.py:156
 msgctxt "botset:presence_type|desc"
 msgid "Type of presence activity"
-msgstr ""
+msgstr "Presence faaliyetinin türü"
 
 #: src/modules/sysadmin/presence.py:159
 msgctxt "botset:presence_type|long_desc"
