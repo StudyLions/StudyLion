@@ -346,7 +346,8 @@ msgid ""
 "`{error}`"
 msgstr ""
 "Não pude criar sua sala privada! Você não foi cobrado por isto.\n"
-"Um erro desconhecido ocorreu quando estava criando sua sala."
+"Um erro desconhecido ocorreu quando estava criando sua sala.\n"
+"ˋ{error}ˋ"
 
 #: src/modules/rooms/cog.py:547
 msgctxt "cmd:room_status"
