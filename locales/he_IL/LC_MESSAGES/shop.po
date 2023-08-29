@@ -584,13 +584,13 @@ msgstr "בחר רול צבע לרכישה!"
 #, possible-python-brace-format
 msgctxt "ui:colourstore|embed|line:owned_item"
 msgid "`[{j:02}]` | `{price} LC` | {mention} (You own this!)"
-msgstr ""
+msgstr "`[{j:02}]` | `{price} מטבעות` | {mention} (יש לך את הצבע הזה!)"
 
 #: src/modules/shop/shops/colours.py:1200
 #, possible-python-brace-format
 msgctxt "ui:colourstore|embed|line:item"
 msgid "`[{j:02}]` | `{price} LC` | {mention}"
-msgstr ""
+msgstr "`[{j:02}]` | `{price} מטבעות` | {mention} "
 
 #: src/modules/shop/shops/colours.py:1207
 msgctxt "ui:colourstore|embed|desc"
