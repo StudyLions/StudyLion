@@ -111,6 +111,8 @@ msgid ""
 "This item costs {coin}{amount}!\n"
 "Your balance is {coin}{balance}"
 msgstr ""
+"Este item custa {coin}{amount}!\n"
+"Seu saldo é {coin}{balance}"
 
 #: src/modules/shop/shops/colours.py:229
 msgctxt "shop:colour|purchase|error:owned"
