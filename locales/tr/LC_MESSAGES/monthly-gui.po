@@ -133,7 +133,7 @@ msgstr "{count} gün"
 #: src/gui/cards/monthly.py:308
 msgctxt "ui:monthlystats|stats:longest_streak|key"
 msgid "Longest Streak:"
-msgstr "En uzun seri:"
+msgstr "En Uzun Seri:"
 
 #: src/gui/cards/monthly.py:312
 #, possible-python-brace-format
