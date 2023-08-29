@@ -271,7 +271,7 @@ msgstr "תפריט בחירה למטה."
 #, possible-python-brace-format
 msgctxt "guildset:visible_stats|set_response"
 msgid "Members will be able to view the following statistics types: {types}"
-msgstr ""
+msgstr "משתמשים יוכלו לראות את הסוגי סטטיסטיקה הבאים: {types}"
 
 #: src/modules/statistics/settings.py:264
 msgctxt "guildset:default_stat"
