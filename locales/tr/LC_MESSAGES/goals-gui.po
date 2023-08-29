@@ -79,7 +79,7 @@ msgstr "ÇALIŞILDI"
 #: src/gui/cards/goals.py:167
 msgctxt "skin:goals|mode:anki|goal:middle|below"
 msgid "CARDS"
-msgstr "KARTLAR"
+msgstr "KART"
 
 #: src/gui/cards/goals.py:228
 #, possible-python-brace-format
