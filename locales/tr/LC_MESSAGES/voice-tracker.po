@@ -133,11 +133,13 @@ msgstr "Bunu yapamazsın!"
 msgctxt "cmd:now|target:other|mode:set|error:perms|desc"
 msgid "You need to be a moderator to set or clear someone else's session tag!"
 msgstr ""
+"Başka birinin oturum etiketini ayarlamak ya da temizlemek için moderatör "
+"olman gerekiyor."
 
 #: src/tracking/voice/cog.py:783
 msgctxt "cmd:now|target:other|mode:set|success|title"
 msgid "Session Tag Set!"
-msgstr ""
+msgstr "Oturum etiketi ayarlandı!"
 
 #: src/tracking/voice/cog.py:787
 #, possible-python-brace-format
