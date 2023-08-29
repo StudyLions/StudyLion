@@ -317,7 +317,7 @@ msgid ""
 "Are you sure you want to reset the coin balance for everyone in **{guild_name}**?\n"
 "*This is not reversible!*"
 msgstr ""
-"אתם בטוחים שאתם רוסיפ לאפס את המטבעות של כולם בשרת **{guild_name}**?\n"
+"אתם בטוחים שאתם רוצים לאפס את המטבעות של כולם בשרת **{guild_name}**?\n"
 "*המטבעות יאבדו לנצח ולא יהיה ניתן לשחזר אותם!*"
 
 #: src/modules/economy/cog.py:551
