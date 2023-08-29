@@ -226,7 +226,7 @@ msgid ""
 "When set, this message will be sent to the `welcome_channel` when a *new* "
 "member joins the server. If not set, no message will be sent."
 msgstr ""
-"Ayarlandığında, bu mesaj `welcome_channel` kanalına *yeni* üye geldiğinde "
+"Ayarlandığında, bu mesaj `hoşgeldin_kanalı` kanalına *yeni* üye geldiğinde "
 "gönderilecektir. Ayarlanmadığında, mesaj gönderilmeyecektir."
 
 #: src/modules/member_admin/settings.py:104
