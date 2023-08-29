@@ -38,6 +38,8 @@ msgstr ""
 msgctxt "dash:economy|dropdown|placeholder"
 msgid "Economy Panel"
 msgstr ""
+"لوحة البنك\n"
+"ِAT: لوحة حساب الإدخار"
 
 #. ----- Economy group commands -----
 #: src/modules/economy/cog.py:86
