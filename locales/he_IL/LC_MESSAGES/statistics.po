@@ -356,7 +356,7 @@ msgstr "סיכום סטטיסטיקות שבועיות (קוליות)"
 #: src/modules/statistics/ui/weeklymonthly.py:101
 msgctxt "menu:stat_type|opt:weekly_text|name"
 msgid "Weekly Text Statistics"
-msgstr ""
+msgstr "סטטיסטיקות טקסט שבועיות"
 
 #: src/modules/statistics/ui/weeklymonthly.py:106
 msgctxt "menu:stat_type|opt:weekly_anki|name"
