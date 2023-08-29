@@ -187,6 +187,10 @@ msgid ""
 "If they do not enable their video with `15` seconds of joining, they will be asked to enable it through a notification in direct messages or the `alert_channel`. If they still have not enabled it after the `video_grace_period` has passed, they will be kicked from the channel. Further, after the first offence (which is considered a warning), they will be given the `video_blacklist` role, if configured, which will stop them from joining video channels.\n"
 "As usual, if a category is configured, this will apply to all voice channels under the category."
 msgstr ""
+"משתמשים חייבים להפעיל את המצלמה שלהם בערוצים האלו. אם הם לא מצליחים להפעיל "
+"את המצלמה שלהם תוך 15 שניות, הם יקבלו הודעה פרטית או הודעה בערוץ_הודעות "
+"שעדכתם בהגדות. אם זמן יעבור והם עדיין לא יפתחו את המצלמה שלהם, הם יקבלו "
+"חסימה לפי משך הזמן שהקצבתם בהגדרות."
 
 #: src/modules/video_channels/settings.py:50
 msgctxt "guildset:video_channels|accepts"
