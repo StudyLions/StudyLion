@@ -511,7 +511,7 @@ msgstr ""
 #: src/utils/ui/msgeditor.py:996
 msgctxt "ui:msg_editor|timeout_warning|title"
 msgid "Warning!"
-msgstr ""
+msgstr "تحذير!"
 
 #: src/utils/ui/msgeditor.py:1000
 #, possible-python-brace-format
@@ -524,4 +524,4 @@ msgstr ""
 #: src/utils/ui/msgeditor.py:1009
 msgctxt "ui:msg_editor|timeout_warning|continue"
 msgid "Continue"
-msgstr ""
+msgstr "استمر"
