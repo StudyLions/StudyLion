@@ -1187,7 +1187,7 @@ msgctxt "menuset:message|set_response:unset"
 msgid ""
 "The role menu message has been unset. Select a template through the menu "
 "editor."
-msgstr ""
+msgstr "ההודעה של תפריט הרולים הוסרה. ניתן לערוך אותה דרך עורך התפריטים."
 
 #: src/modules/rolemenus/ui/menus.py:105
 msgctxt "ui:menu_list|menu:editmenu|placeholder"
