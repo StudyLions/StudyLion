@@ -869,7 +869,7 @@ msgstr "Menú Simple"
 #: src/modules/rolemenus/templates.py:57
 msgctxt "template:simple|desc"
 msgid "A simple embedded list of roles in the menu"
-msgstr ""
+msgstr "Una simple lista incrustada de roles en el menú"
 
 #: src/modules/rolemenus/templates.py:96
 msgctxt "template:two_column|name"
