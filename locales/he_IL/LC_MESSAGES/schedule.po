@@ -121,7 +121,7 @@ msgstr "כבר קבעת בלו\"ז ב {time}."
 #, possible-python-brace-format
 msgctxt "cmd:schedule|create_booking|error:too_soon"
 msgid "Cannot book session at {time} because it is running or starting soon!"
-msgstr ""
+msgstr "לא הצלחתי לקבוע את {time} כי הוא כבר התחיל או מתחיל ממש בקרוב!"
 
 #: src/modules/schedule/cog.py:780
 #, possible-python-brace-format
@@ -142,7 +142,7 @@ msgstr ""
 #: src/modules/schedule/settings.py:36
 msgctxt "guildset:session_lobby"
 msgid "session_lobby"
-msgstr ""
+msgstr "לובי_סשנים"
 
 #: src/modules/schedule/settings.py:39
 msgctxt "guildset:session_lobby|desc"
