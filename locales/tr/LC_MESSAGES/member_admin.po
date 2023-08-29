@@ -390,7 +390,7 @@ msgid ""
 "`role_persistence` is enabled, these roles will *not* be given to a "
 "returning member."
 msgstr ""
-"Bir üye sunucuya katıldığında bu roller verilecek. Eğer `role_persistance` "
+"Bir üye sunucuya katıldığında bu roller verilecek. Eğer `rol_kalıcılığı` "
 "aktifse, bu roller geri dönen üyeye *verilmeyecektir.*"
 
 #: src/modules/member_admin/settings.py:361
