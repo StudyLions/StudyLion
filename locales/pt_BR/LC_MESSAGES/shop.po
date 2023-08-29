@@ -454,7 +454,7 @@ msgstr ""
 #: src/modules/shop/shops/colours.py:793
 msgctxt "cmd:editshop_colours_clear|param:delete"
 msgid "delete_roles"
-msgstr ""
+msgstr "cargo_apagado"
 
 #: src/modules/shop/shops/colours.py:798
 msgctxt "cmd:editshop_colours_clear|param:delete|desc"
