@@ -427,7 +427,7 @@ msgid ""
 "may conflict with other bots who manage join roles."
 msgstr ""
 "Aktifleştirildiğinde, üyeler sunucudan çıktıklarında rolleri kaydedilecek ve"
-" tekrar girmeleri durumunda geri verilecek. (`otomatik roller` yerine "
+" tekrar girmeleri durumunda geri verilecek. (`otomatik_roller` yerine "
 "kullanılabilir) Katılma rollerini düzenleyen diğer botlarla karışıklık "
 "yaratabileceğini unutmayın."
 
