@@ -939,7 +939,7 @@ msgstr "Selecciona Roles"
 #: src/modules/rolemenus/rolemenu.py:472
 msgctxt "rolemenu|error:role_gone"
 msgid "This role no longer exists!"
-msgstr ""
+msgstr "¡Este rol ya no existe!"
 
 #: src/modules/rolemenus/rolemenu.py:482
 #, possible-python-brace-format
