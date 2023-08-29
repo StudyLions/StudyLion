@@ -863,7 +863,7 @@ msgstr "חנות רולים"
 #: src/modules/rolemenus/templates.py:172
 msgctxt "template:shop|desc"
 msgid "A single column display suitable for simple role shops"
-msgstr ""
+msgstr "עמדה בודדת - מתאימה לחנות פשוטה עם מספר רולים בודדים."
 
 #: src/modules/rolemenus/rolemenu.py:280
 msgctxt "rolemenu|menu_message|error|title"
