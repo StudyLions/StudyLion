@@ -306,7 +306,7 @@ msgstr "{mention} não está na loja de cores de cargo."
 #: src/modules/shop/shops/colours.py:584
 msgctxt "cmd:editshop_colours_edit|error:no_args"
 msgid "You must give me one of `name`, `colour`, or `price` to update!"
-msgstr ""
+msgstr "Você precisa me informar o ˋnomeˋ"
 
 #: src/modules/shop/shops/colours.py:600
 #, possible-python-brace-format
