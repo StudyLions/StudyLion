@@ -1011,6 +1011,8 @@ msgid ""
 "No-one attended this session! No-one received rewards.\n"
 "**Members who missed their session have all future sessions cancelled without refund!*"
 msgstr ""
+"אף אחד לא נכח בסשן הזה! אף אחד לא קיבל פרס.\n"
+"כל מי שלא נכח יבוטלו לו כל הסשנים העתידיים ללא החזר כספי."
 
 #: src/modules/schedule/core/session.py:492
 msgctxt "session|status:finished|field:attended"
