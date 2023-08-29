@@ -29,7 +29,7 @@ msgstr "Selecione o Registro de Logs"
 #: src/modules/moderation/settingui.py:78
 msgctxt "ui:moderation_config|menu:alert_channel|placeholder"
 msgid "Select Alert Channel"
-msgstr ""
+msgstr "Selecione o Canal de Alertas"
 
 #: src/modules/moderation/settingui.py:103
 msgctxt "ui:moderation_config|menu:modrole|placeholder"
