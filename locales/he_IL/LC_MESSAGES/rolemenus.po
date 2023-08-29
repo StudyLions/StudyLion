@@ -1294,7 +1294,7 @@ msgstr "ערוך תפריט רולים"
 #: src/modules/rolemenus/ui/menueditor.py:411
 msgctxt "ui:menu_editor|menu:add_roles|error:too_many_reactions"
 msgid "Too many roles! Reaction role menus cannot exceed `20` roles."
-msgstr ""
+msgstr "יותר מידי רולים! לא ניתן לעבור יותר מ20 רולים בתפריט."
 
 #: src/modules/rolemenus/ui/menueditor.py:416
 msgctxt "ui:menu_editor|menu:add_roles|error:too_many_roles"
