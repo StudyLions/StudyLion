@@ -100,7 +100,7 @@ msgstr "HAFTANIN HEDEFLERİ"
 #: src/gui/cards/goals.py:254
 msgctxt "ui:goals|monthly|title"
 msgid "MONTHLY STATISTICS"
-msgstr "AYLIK İSTATİSTİKLER"
+msgstr "AYLIK İSTATİSTİK"
 
 #: src/gui/cards/goals.py:258
 msgctxt "ui:goals|monthly|task_header"
