@@ -740,6 +740,8 @@ msgid ""
 "Too late! You cannot cancel a scheduled session within a minute of it "
 "starting. Please attend it if possible."
 msgstr ""
+"מאוחר מידי! לא ניתן לבטל סשן כל כך קרוב ממתי שהוא מתחיל. אנא הצטרף אליו כדי "
+"לא למנוע מחבריך לקבל את הבונוס שלהם."
 
 #: src/modules/schedule/ui/scheduleui.py:385
 msgctxt "ui:schedule|menu:cancel|error:already_cancelled"
