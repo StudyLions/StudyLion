@@ -205,12 +205,12 @@ msgstr ""
 #: src/settings/setting_types.py:1349
 msgctxt "settype:channel_list|accepts"
 msgid "Comma separated list of channel ids."
-msgstr ""
+msgstr "תעודת זהות של ערוצים מופרדים באמצעות פסיק."
 
 #: src/settings/setting_types.py:1360
 msgctxt "settype:role_list|accepts"
 msgid "Comma separated list of role ids."
-msgstr ""
+msgstr "תעודת זהות של רולים מופרדים באמצעות פסיק."
 
 #: src/settings/setting_types.py:1376
 msgctxt "settype:stringlist|accepts"
