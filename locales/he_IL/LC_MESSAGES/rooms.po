@@ -548,6 +548,8 @@ msgid ""
 "Could not identify target private room! Please re-run the command in the "
 "private room you wish to contribute to."
 msgstr ""
+"לא הצלחתי לזהות את החדר הפרטי! אנא הרץ את הפקודה מחדש בחדר בתוך הפרטי שאתה "
+"רוצה להפקיד אליו מטבעות."
 
 #: src/modules/rooms/cog.py:885
 #, possible-python-brace-format
