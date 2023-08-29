@@ -430,7 +430,7 @@ msgstr "Borrar un menú de roles."
 #: src/modules/rolemenus/cog.py:1051
 msgctxt "cmd:rolemenu_delete|param:name"
 msgid "menu"
-msgstr ""
+msgstr "menú"
 
 #: src/modules/rolemenus/cog.py:1056
 msgctxt "cmd:rolemenu_delete|param:name|desc"
