@@ -158,12 +158,12 @@ msgstr "cor"
 #: src/modules/shop/shops/colours.py:359
 msgctxt "cmd:editshop_colours_create|param:name"
 msgid "name"
-msgstr ""
+msgstr "nome"
 
 #: src/modules/shop/shops/colours.py:360
 msgctxt "cmd:editshop_colours_create|param:price"
 msgid "price"
-msgstr ""
+msgstr "preço"
 
 #: src/modules/shop/shops/colours.py:365
 msgctxt "cmd:editshop_colours_create|param:colour|desc"
