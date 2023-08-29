@@ -182,7 +182,7 @@ msgstr ""
 #: src/tracking/voice/cog.py:837
 msgctxt "cmd:configure_voice_rates"
 msgid "voice_rewards"
-msgstr ""
+msgstr "ses_ödülleri"
 
 #: src/tracking/voice/cog.py:840
 msgctxt "cmd:configure_voice_rates|desc"
