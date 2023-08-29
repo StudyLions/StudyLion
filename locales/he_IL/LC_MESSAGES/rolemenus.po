@@ -344,7 +344,7 @@ msgstr "לשרת הזה אין תפריט בשם `{name}`!"
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_edit|parse:new_name|error:name_exists"
 msgid "A role menu with the name **{new_name}** already exists!"
-msgstr ""
+msgstr "תפריט רולים עם השם **{new_name}** כבר קיים!"
 
 #: src/modules/rolemenus/cog.py:951
 msgctxt "cmd:rolemenu_edit|parse:template|error:not_managed"
