@@ -741,6 +741,10 @@ msgid ""
 "otherwise appears next to the role label in the button and dropdown styles. "
 "The emoji is also displayed next to the role in most menu templates."
 msgstr ""
+"El emoji del rol es usado para la reacción (en el menú de roles con "
+"reacciones), y por lo demás aparece junto a la etiqueta en el botón y en el "
+"desplegable. El emoji también se ve al lado del rol en la mayoría de "
+"plantillas de menú. "
 
 #: src/modules/rolemenus/roleoptions.py:157
 #, possible-python-brace-format
