@@ -244,7 +244,7 @@ msgstr "בחירת ערוצים בתחתית."
 #, possible-python-brace-format
 msgctxt "guildset:untracked_channels|set_response|set"
 msgid "Activity in the following channels will now be ignored: {channels}"
-msgstr ""
+msgstr "פעילות בערוצים הבאים יתעלמו על ידי: {channels}"
 
 #: src/tracking/voice/settings.py:89
 msgctxt "guildset:untracked_channels|set_response|unset"
