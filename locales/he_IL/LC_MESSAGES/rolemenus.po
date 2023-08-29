@@ -1073,22 +1073,26 @@ msgid ""
 "**Refunds will only be given for roles purchased through the same menu.**\n"
 "**The `sticky` option must be disabled to allow members to remove roles.**"
 msgstr ""
+"כאשר מופעיל, משתמשים *שקנו את הרול הזה דרך התפריט הספציפי* יקבלו החזר מלא כשהם יסירו את הרול דרך התפריט.\n"
+"שימו לב שהחזר כספי ינתן רק דרך התפריט.\n"
+"האופציה הדביקה חייבת להיות כבויה אחרת לא יהיה ניתן לתת החזרים."
 
 #: src/modules/rolemenus/menuoptions.py:148
 msgctxt "menuset:refunds|set_response:true"
 msgid "Members will now be refunded when removing a role with this menu."
-msgstr ""
+msgstr "משתמשים יקבלו החזר כספי כאשר הם יסירו רולים באמצעות התפריט הזה."
 
 #: src/modules/rolemenus/menuoptions.py:153
 msgctxt "menuset:refunds|set_response:false"
 msgid ""
 "Members will no longer be refunded when removing a role with this menu."
 msgstr ""
+"משתמשים כבר לא יקבלו החזר כספי כאשר הם יסירו רולים באמצעות התפריט הזה."
 
 #: src/modules/rolemenus/menuoptions.py:161
 msgctxt "menuset:obtainable"
 msgid "obtainable"
-msgstr ""
+msgstr "ניתנים להשגה"
 
 #: src/modules/rolemenus/menuoptions.py:164
 msgctxt "menuset:obtainable|desc"
