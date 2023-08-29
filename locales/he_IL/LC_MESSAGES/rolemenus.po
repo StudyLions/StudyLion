@@ -905,6 +905,7 @@ msgstr "הרול הזה כבר לא קיים."
 msgctxt "rolemenu|deselect|error:sticky"
 msgid "**{role}** is a sticky role, you cannot remove it with this menu!"
 msgstr ""
+"**{role}** הוא רול דביק, זה אומר שאתם לא יכולים להסיר אותו עם התפריט הזה."
 
 #: src/modules/rolemenus/rolemenu.py:493
 msgctxt "rolemenu|deselect|error:perms"
