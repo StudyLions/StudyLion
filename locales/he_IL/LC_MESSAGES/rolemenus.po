@@ -1467,7 +1467,7 @@ msgstr "התפריט רולים  `{name}` עכשיו זמין בלינק {messag
 #: src/modules/rolemenus/ui/menueditor.py:927
 msgctxt "ui:menu_editor|button:repost|widget:repost|success|desc:reactions"
 msgid "Please check the message reactions are correct."
-msgstr ""
+msgstr "אנא בדקו אם הריאקציות שקשורות להודעה הזו נכונות."
 
 #: src/modules/rolemenus/ui/menueditor.py:940
 msgctxt "ui:menu_editor|button:repost|widget:repost|title"
