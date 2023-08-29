@@ -1335,7 +1335,7 @@ msgctxt "ui:menu_editor|menu:style|error:too_many_reactions"
 msgid ""
 "Too many roles! The Reaction style is limited to `20` roles (Discord "
 "limitation)."
-msgstr ""
+msgstr "יותר מידי רולים! הסגנון הזה מוגבל אל 20 רולים (מגבלה שדיסקורד שמו)"
 
 #: src/modules/rolemenus/ui/menueditor.py:586
 msgctxt "ui:menu_editor|menu:style|error:incomplete_emojis"
