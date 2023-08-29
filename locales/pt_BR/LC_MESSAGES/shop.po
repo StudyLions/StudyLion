@@ -133,16 +133,17 @@ msgstr "Eu não tenho permissões suficientes para te dar esta cor de cargo."
 msgctxt "shop:colour|purchase|error:failed_unknown"
 msgid "An unknown error occurred while giving you this colour role!"
 msgstr ""
+"Um erro desconhecido aconteceu enquanto era alterada sua cor de cargo."
 
 #: src/modules/shop/shops/colours.py:346
 msgctxt "grp:editshop_colours"
 msgid "colours"
-msgstr ""
+msgstr "cores"
 
 #: src/modules/shop/shops/colours.py:351
 msgctxt "cmd:editshop_colours_create"
 msgid "create"
-msgstr ""
+msgstr "criar"
 
 #: src/modules/shop/shops/colours.py:354
 msgctxt "cmd:editshop_colours_create|desc"
