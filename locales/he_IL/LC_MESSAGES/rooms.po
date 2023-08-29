@@ -726,7 +726,7 @@ msgstr "מספר אנשים מקסימלי שחדר פרטי יכול להכיל
 #, possible-python-brace-format
 msgctxt "guildset:rooms_slots|set_response"
 msgid "Private rooms are now capped to **{amount}** members."
-msgstr ""
+msgstr "מגבלת הכמות של החדרים נקבעה בהצלחה ל**{amount}** חברים."
 
 #: src/modules/rooms/settings.py:146
 msgctxt "guildset:rooms_visible"
