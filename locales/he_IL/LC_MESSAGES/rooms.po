@@ -484,7 +484,7 @@ msgstr "החבר שתרצה להעביר את החדר הזה אליו."
 #: src/modules/rooms/cog.py:778
 msgctxt "cmd:room_transfer|error:no_room"
 msgid "You do not own a private room to transfer!"
-msgstr ""
+msgstr "אין לך חדר פרטי להעביר!"
 
 #: src/modules/rooms/cog.py:790
 #, possible-python-brace-format
