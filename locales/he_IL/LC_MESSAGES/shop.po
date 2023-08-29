@@ -421,7 +421,7 @@ msgctxt "cmd:editshop_colours_add|error:role_has_admin"
 msgid ""
 "I refuse to add an administrator role to the LionCoin shop. That is a really"
 " bad idea."
-msgstr ""
+msgstr "אני לא יכול להרשות לכם להוסיף רול אדמין לחנות, זה רעיון ממש לא טוב."
 
 #: src/modules/shop/shops/colours.py:775
 msgctxt "cmd:editshop_colours_add|resp:done|embed:title"
