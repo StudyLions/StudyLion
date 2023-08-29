@@ -205,6 +205,10 @@ msgid ""
 "to send it via direct messages. If this fails, I will instead mention the "
 "user in this channel."
 msgstr ""
+"Quando for preciso enviar uma mensagem referente à moderação de um membro "
+"deste servidor (ex. pedindo a ele que habilite o vídeo em um canal de "
+"vídeo), eu tentarei enviar por mensagem direta. Caso esta mensagem falhe, eu"
+" irei mencionar o usuário neste canal."
 
 #: src/modules/moderation/settings.py:84
 msgctxt "guildset:alert_channel|accepts"
