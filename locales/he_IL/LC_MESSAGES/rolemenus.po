@@ -1192,7 +1192,7 @@ msgstr "ההודעה של תפריט הרולים הוסרה. ניתן לערו�
 #: src/modules/rolemenus/ui/menus.py:105
 msgctxt "ui:menu_list|menu:editmenu|placeholder"
 msgid "Select Menu to Edit"
-msgstr ""
+msgstr "בחר תפריט לעריכה"
 
 #: src/modules/rolemenus/ui/menus.py:129
 #, possible-python-brace-format
