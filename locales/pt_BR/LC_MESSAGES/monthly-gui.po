@@ -154,7 +154,7 @@ msgstr "{count} horas"
 #: src/gui/cards/monthly.py:324
 msgctxt "ui:monthlystats|stats:days_active|key"
 msgid "Days Active:"
-msgstr ""
+msgstr "Dias Ativo:"
 
 #: src/gui/cards/monthly.py:328
 #, possible-python-brace-format
