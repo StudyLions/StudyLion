@@ -123,6 +123,8 @@ msgstr ""
 msgctxt "cmd:now|target:other|mode:set|error:perms|title"
 msgid "You can't do that!"
 msgstr ""
+"لا تستطيع القيام بذلك\n"
+"AT: لاتستطيع فعل ذلك "
 
 #: src/tracking/voice/cog.py:773
 msgctxt "cmd:now|target:other|mode:set|error:perms|desc"
