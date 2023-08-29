@@ -877,6 +877,8 @@ msgid ""
 "A critical error occurred trying to display this role menu.\n"
 "Error: `{error}`."
 msgstr ""
+"שגיאה קריטית התחוללה כשניסיתי להציג את התפריט הזה.\n"
+"שגיאה: `{error}`."
 
 #: src/modules/rolemenus/rolemenu.py:336
 #, possible-python-brace-format
@@ -889,7 +891,7 @@ msgstr ""
 #: src/modules/rolemenus/rolemenu.py:381
 msgctxt "ui:rolemenu_dropdown|placeholder"
 msgid "Select Roles"
-msgstr ""
+msgstr "בחר רולים"
 
 #: src/modules/rolemenus/rolemenu.py:472
 msgctxt "rolemenu|error:role_gone"
