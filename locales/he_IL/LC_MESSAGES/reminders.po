@@ -197,7 +197,7 @@ msgstr "ב"
 #: src/modules/reminders/cog.py:590
 msgctxt "cmd:remindme_at|desc"
 msgid "Schedule a reminder for a particular time."
-msgstr ""
+msgstr "קבע תזכור לזמן ספציפי."
 
 #: src/modules/reminders/cog.py:594
 msgctxt "cmd:remindme_at|param:time"
