@@ -83,7 +83,7 @@ msgstr "Sunucu Gösterge Paneli (Sayfa {page}/{total})"
 #: src/modules/config/dashboard.py:109
 msgctxt "ui:dashboard|footer"
 msgid "Hover over setting names for a brief description"
-msgstr ""
+msgstr "Kısa bir açıklama için kursörünüzü ayar adlarının üzerine getirin"
 
 #: src/modules/config/dashboard.py:172
 msgctxt "ui:dashboard|menu:config|placeholder"
