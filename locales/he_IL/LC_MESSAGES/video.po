@@ -259,7 +259,7 @@ msgstr "וידאו_רשימהשחורה_משךזמן"
 #: src/modules/video_channels/settings.py:165
 msgctxt "guildset:video_durations|desc"
 msgid "Sequence of durations for automatic video blacklists."
-msgstr ""
+msgstr "רשימה של משכים שבהם כל חסימה והוספה לרשימה השחורה תימשך"
 
 #: src/modules/video_channels/settings.py:169
 msgctxt "guildset:video_durations|long_desc"
