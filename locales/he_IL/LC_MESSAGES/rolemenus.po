@@ -998,7 +998,7 @@ msgstr "הרול יפוג ב{timestamp}."
 #, possible-python-brace-format
 msgctxt "rolemenu|content:reactions"
 msgid "[Click here]({jump_link}) to jump back."
-msgstr ""
+msgstr "[לחצו פה]({jump_link}) כדי לקפוץ אחורה"
 
 #: src/modules/rolemenus/menuoptions.py:56
 msgctxt "menuset:name"
