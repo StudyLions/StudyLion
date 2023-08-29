@@ -405,6 +405,8 @@ msgid ""
 "number of minutes before they are marked as having attended (and hence are "
 "rewarded)."
 msgstr ""
+"משתמשים יצטרכו להישאר בחדר לתקופת זמן הזו לפני שאחשיב את הנוכחות שלהם "
+"שמוצלחת. "
 
 #: src/modules/schedule/settings.py:355
 msgctxt "guildset:min_attendance|accepts"
