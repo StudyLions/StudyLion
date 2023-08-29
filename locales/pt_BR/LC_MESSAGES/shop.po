@@ -416,6 +416,8 @@ msgid ""
 "shop! You must have `MANAGE_ROLES`, and your top role must be above this "
 "role."
 msgstr ""
+"Você não tem permissão suficiente para colocar {mention} na loja! Você "
+"precisa ter ˋMANAGE_ROLESˋ, e seu maior cargo precisa estar acima deste."
 
 #: src/modules/shop/shops/colours.py:754
 msgctxt "cmd:editshop_colours_add|error:role_has_admin"
