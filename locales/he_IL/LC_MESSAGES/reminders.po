@@ -277,7 +277,7 @@ msgstr "לא הצלחתי ליצור את התזכיר!"
 #, possible-python-brace-format
 msgctxt "cmd:remindme_in|success|title"
 msgid "Reminder Set at {timestamp}"
-msgstr ""
+msgstr "תזכיר נקבע ל {timestamp}"
 
 #: src/modules/reminders/cog.py:713
 msgctxt "cmd:remindme_in"
