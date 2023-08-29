@@ -32,7 +32,7 @@ msgstr ""
 #: src/modules/economy/settingui.py:68
 msgctxt "dash:economy|title"
 msgid "Economy Configuration ({commands[configure economy]})"
-msgstr ""
+msgstr "إعدادات البنك ({commands[configure economy]})"
 
 #: src/modules/economy/settingui.py:72
 msgctxt "dash:economy|dropdown|placeholder"
