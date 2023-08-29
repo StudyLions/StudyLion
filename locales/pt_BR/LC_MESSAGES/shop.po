@@ -496,7 +496,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_clear|resp:done|line:deleted"
 msgid "{emoji} Deleted **{count}/{total}** colour roles."
-msgstr ""
+msgstr "{emoji} Deletadas **{count}/{total}** cores de cargo."
 
 #: src/modules/shop/shops/colours.py:968
 msgctxt "cmd:editshop_colours_remove"
