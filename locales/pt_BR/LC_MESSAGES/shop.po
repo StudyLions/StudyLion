@@ -102,7 +102,7 @@ msgstr "Não foi possível acessar o membro do Discord."
 #: src/modules/shop/shops/colours.py:205
 msgctxt "shop:colour|purchase|error:no_role"
 msgid "This colour role could not be found in the server."
-msgstr ""
+msgstr "Esta cor de cargo não pôde ser encontrada no servidor."
 
 #: src/modules/shop/shops/colours.py:214
 #, possible-python-brace-format
