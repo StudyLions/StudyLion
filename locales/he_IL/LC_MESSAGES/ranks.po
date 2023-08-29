@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-27 16:37+0300\n"
+"POT-Creation-Date: 2023-08-28 22:43+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Ari Horesh, 2023\n"
 "Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
@@ -45,7 +45,7 @@ msgstr "הגעת לדרגה חדשה!"
 #: src/modules/ranks/cog.py:494
 msgctxt "rank_refresh|error:roles_dne|desc"
 msgid "Some ranks have invalid or deleted roles! Please remove them first."
-msgstr ""
+msgstr "כמה דרגות לא זמינות או נמחקו! אנא מחק אותם קודם."
 
 #: src/modules/ranks/cog.py:504
 #, possible-python-brace-format
@@ -54,6 +54,8 @@ msgid ""
 "I have insufficient permissions to assign the following role(s):\n"
 "{roles}"
 msgstr ""
+"אין לי מספיק הרשאות כדי לתת את הרולים הבאים:\n"
+"{roles}"
 
 #: src/modules/ranks/cog.py:574
 msgctxt "rank_refresh|remove_roles|audit"
