@@ -365,6 +365,8 @@ msgid ""
 "Could not identify target private room! Please re-run the command in the "
 "private room you wish to view the status of."
 msgstr ""
+"לא הצלחתי לזהות את החדר הפרטי! אנא הרץ את הפקודה מחדש בחדר בתוך הפרטי שאתה "
+"רוצה לראות את הסטטוס שלו."
 
 #: src/modules/rooms/cog.py:582
 msgctxt "cmd:room_invite"
@@ -374,7 +376,7 @@ msgstr "הזמן"
 #: src/modules/rooms/cog.py:585
 msgctxt "cmd:room_invite|desc"
 msgid "Add members to your private room."
-msgstr ""
+msgstr "הוסף חברים לחדר הפרטי שלך."
 
 #: src/modules/rooms/cog.py:589
 msgctxt "cmd:room_invite|param:members"
