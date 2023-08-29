@@ -74,13 +74,13 @@ msgstr "ESTA SEMANA: {amount} CARTÕES"
 #, possible-python-brace-format
 msgctxt "skin:weeklystats|mode:study|summary:last_week"
 msgid "LAST WEEK: {amount} HOURS"
-msgstr "ESTA SEMANA: {amount} HORAS"
+msgstr "SEMANA PASSADA: {amount} HORAS"
 
 #: src/gui/cards/weekly.py:244
 #, possible-python-brace-format
 msgctxt "skin:weeklystats|mode:voice|summary:last_week"
 msgid "LAST WEEK: {amount} HOURS"
-msgstr ""
+msgstr "SEMANA PASSADA: {amount} HORAS"
 
 #: src/gui/cards/weekly.py:248
 #, possible-python-brace-format
