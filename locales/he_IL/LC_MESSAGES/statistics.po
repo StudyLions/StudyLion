@@ -204,7 +204,7 @@ msgstr ""
 #: src/modules/statistics/settings.py:156
 msgctxt "guildset:unranked_roles"
 msgid "unranked_roles"
-msgstr ""
+msgstr "רולים_ללא_מעקב"
 
 #: src/modules/statistics/settings.py:159
 msgctxt "guildset:unranked_roles|desc"
@@ -235,7 +235,7 @@ msgstr "בחירת רולים בתחתית."
 msgctxt "guildset:unranked_roles|set_response|set"
 msgid ""
 "Members of the following roles will not appear on the leaderboard: {roles}"
-msgstr ""
+msgstr "אנשים עם הרולים הבאים לא יפיעו בלוח השיאים: {roles}"
 
 #: src/modules/statistics/settings.py:200
 msgctxt "guildset:unranked_roles|set_response|unset"
