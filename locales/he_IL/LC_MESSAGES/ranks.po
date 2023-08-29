@@ -128,20 +128,20 @@ msgstr ""
 msgctxt ""
 "cmd:configure_ranks|response:updated|setting:notification|withdm_nochannel"
 msgid "Rank update notifications will be sent via **direct message**."
-msgstr ""
+msgstr "עדכון ההתראות ישלח ב**הודעה פרטית.**"
 
 #: src/modules/ranks/cog.py:760
 #, possible-python-brace-format
 msgctxt ""
 "cmd:configure_ranks|response:updated|setting:notification|nodm_withchannel"
 msgid "Rank update notifications will be sent to {channel}."
-msgstr ""
+msgstr "התראות בנוגע לדרגות ישלחו אל {channel}."
 
 #: src/modules/ranks/cog.py:765
 msgctxt ""
 "cmd:configure_ranks|response:updated|setting:notification|nodm_nochannel"
 msgid "Members will not be notified when their activity rank updates."
-msgstr ""
+msgstr "משתמשים לא יקבלו עדכון כשהם מקבלים דרגה חדשה."
 
 #: src/modules/ranks/utils.py:13
 #, possible-python-brace-format
@@ -253,6 +253,8 @@ msgid ""
 "The type of statistic (messages | xp | voice hours) used to determine "
 "activity ranks."
 msgstr ""
+"סוג הסטטיסטיקה (הודעות | נקודות ניסיון | שעות קול) שמשומש כדי לקבוע את "
+"הדרגות."
 
 #: src/modules/ranks/settings.py:52
 msgctxt "guildset:rank_type|long_desc"
