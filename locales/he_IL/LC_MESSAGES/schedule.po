@@ -511,6 +511,7 @@ msgstr ""
 msgctxt "guildset:schedule_blacklist_after|accepts"
 msgid "A number of missed sessions (1-24) before blacklisting."
 msgstr ""
+"מספר הסשנים שהוברזו ב24 השעות האחרונות לפני שאכניס אותם לרשימה השחורה."
 
 #: src/modules/schedule/settings.py:496
 #, possible-python-brace-format
