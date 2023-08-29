@@ -124,12 +124,12 @@ msgstr ""
 #: src/modules/sysadmin/presence.py:163
 msgctxt "botset:presence_type|accepts"
 msgid "Listening/Playing/Watching/Streaming"
-msgstr ""
+msgstr "Dinliyor/Oynuyor/İzliyor/Yayında"
 
 #: src/modules/sysadmin/presence.py:172
 msgctxt "botset:presence_type|output:watching"
 msgid "**Watching**"
-msgstr ""
+msgstr "**İzliyor**"
 
 #: src/modules/sysadmin/presence.py:173
 msgctxt "botset:presence_type|output:listening"
