@@ -1450,6 +1450,8 @@ msgid ""
 "An error ocurred while posting to {channel}. Do I have sufficient "
 "permissions?"
 msgstr ""
+"שגיאה התרחשה כשניסיתי לשלוח הודעה לערוץ  {channel}. אתם בטוחים שיש לי הרשאות"
+" מספקות?"
 
 #: src/modules/rolemenus/ui/menueditor.py:907
 msgctxt "ui:menu_editor|button:repost|widget:repost|success|title"
