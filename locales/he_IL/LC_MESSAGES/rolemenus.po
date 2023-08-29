@@ -357,7 +357,7 @@ msgstr "אני לא יכול לגשת להודעה הזו, אני לא היית�
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_edit|parse:template|success:template"
 msgid "Now using the `{name}` menu message template."
-msgstr ""
+msgstr "עכשיו אשתמש בתבנית בשם `{name}` "
 
 #: src/modules/rolemenus/cog.py:969
 msgctxt "cmd:rolemenu_edit|parse:template|success:custom"
