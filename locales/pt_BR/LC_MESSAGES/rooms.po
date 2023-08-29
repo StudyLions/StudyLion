@@ -237,7 +237,7 @@ msgstr "Mencione o membro que você gostaria de adicionar à sua sala privada."
 #: src/modules/rooms/cog.py:336
 msgctxt "cmd:room_rent|param:name|desc"
 msgid "Name of your private voice channel."
-msgstr "Nome da sua sala privada de voz."
+msgstr "Nome do seu canal privado de voz."
 
 #: src/modules/rooms/cog.py:354
 msgctxt "cmd:room_rent|error:not_setup"
