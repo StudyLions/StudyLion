@@ -97,7 +97,7 @@ msgstr "נקה"
 #: src/modules/reminders/cog.py:393
 msgctxt "cmd:reminders_clear|desc"
 msgid "Clear your reminder list."
-msgstr ""
+msgstr "נקה את רשימת התזכירים שלך."
 
 #: src/modules/reminders/cog.py:411
 msgctxt "cmd:reminders_clear|error:no_reminders"
@@ -122,7 +122,7 @@ msgstr[3] ""
 #: src/modules/reminders/cog.py:429
 msgctxt "cmd:reminders_clear|confirm|button:yes"
 msgid "Yes, clear my reminders"
-msgstr ""
+msgstr "כן, נקה את התזכירים שלי"
 
 #: src/modules/reminders/cog.py:438
 msgctxt "cmd:reminders_clear|success|desc"
@@ -137,7 +137,7 @@ msgstr "בטל"
 #: src/modules/reminders/cog.py:457
 msgctxt "cmd:reminders_cancel"
 msgid "cancel"
-msgstr ""
+msgstr "בטל"
 
 #: src/modules/reminders/cog.py:460
 msgctxt "cmd:reminders_cancel|desc"
@@ -192,7 +192,7 @@ msgstr ""
 #: src/modules/reminders/cog.py:587
 msgctxt "cmd:remindme_at"
 msgid "at"
-msgstr ""
+msgstr "ב"
 
 #: src/modules/reminders/cog.py:590
 msgctxt "cmd:remindme_at|desc"
