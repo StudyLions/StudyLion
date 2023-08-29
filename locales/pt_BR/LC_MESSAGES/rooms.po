@@ -187,12 +187,12 @@ msgstr "Saldo da Sala: {coin}**{amount}**"
 #, possible-python-brace-format
 msgctxt "ui:room_status|embed|field:members|name"
 msgid "Members ({count}/{cap})"
-msgstr ""
+msgstr "Membros ({count}/{cap})"
 
 #: src/modules/rooms/cog.py:306
 msgctxt "cmd:room"
 msgid "room"
-msgstr ""
+msgstr "sala"
 
 #: src/modules/rooms/cog.py:307
 msgctxt "cmd:room|desc"
