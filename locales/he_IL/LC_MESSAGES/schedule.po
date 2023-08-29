@@ -520,6 +520,8 @@ msgid ""
 "Members will be blacklisted after **`{amount}`** missed sessions within "
 "`24h`."
 msgstr ""
+"משתמשים יכנסו לרשימה השחורה לאחר  **`{amount}`** סשנים שהם הבריזו מהם ב24 "
+"שעות."
 
 #: src/modules/schedule/settings.py:501
 msgctxt "guildset:schedule_blacklist_after|set_response|unset"
