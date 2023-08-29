@@ -376,7 +376,7 @@ msgstr ""
 #: src/modules/member_admin/settings.py:339
 msgctxt "guildset:autoroles"
 msgid "autoroles"
-msgstr "otomatik roller"
+msgstr "otomatik_roller"
 
 #: src/modules/member_admin/settings.py:343
 msgctxt "guildset:autoroles|desc"
