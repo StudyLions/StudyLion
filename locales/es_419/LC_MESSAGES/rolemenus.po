@@ -828,7 +828,7 @@ msgstr "Este rol ahora se podrá equipar libremente desde el menú de roles."
 #: src/modules/rolemenus/roleoptions.py:255
 msgctxt "roleset:duration"
 msgid "duration"
-msgstr ""
+msgstr "duración"
 
 #: src/modules/rolemenus/roleoptions.py:258
 msgctxt "roleset:duration|desc"
