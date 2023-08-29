@@ -1064,7 +1064,7 @@ msgstr "החזרים"
 #: src/modules/rolemenus/menuoptions.py:126
 msgctxt "menuset:refunds|desc"
 msgid "Whether removing a role will refund the purchase price for that role."
-msgstr ""
+msgstr "האם הסרת הרול דרך התפריט יתן החזר כספי מלא למשתמש."
 
 #: src/modules/rolemenus/menuoptions.py:131
 msgctxt "menuset:refunds|long_desc"
