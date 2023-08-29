@@ -1385,7 +1385,7 @@ msgstr "רולים ניתנים לבחירה על ידי תפריט נופל מ�
 #: src/modules/rolemenus/ui/menueditor.py:697
 msgctxt "ui:menu_editor|menu:template|placeholder"
 msgid "Select Message Template"
-msgstr ""
+msgstr "בחר תבנית הודעה"
 
 #: src/modules/rolemenus/ui/menueditor.py:707
 msgctxt "ui:menu_editor|menu:template|option:custom|label"
