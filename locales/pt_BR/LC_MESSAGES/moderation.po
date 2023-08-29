@@ -271,4 +271,4 @@ msgstr "Nenhum membro ganhará privilégios de moderação."
 #: src/modules/moderation/settings.py:168
 msgctxt "guildset:mod_role|formatted:unset"
 msgid "Not Set."
-msgstr ""
+msgstr "Não Configurado."
