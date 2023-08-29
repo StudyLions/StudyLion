@@ -30,7 +30,7 @@ msgstr "אני"
 #: src/modules/statistics/cog.py:45
 msgctxt "cmd:me|desc"
 msgid "Display your personal profile and summary statistics."
-msgstr ""
+msgstr "הצג את הפרופיל האישי שלך וסיכום סטטיסטיקות הפעילות שלך."
 
 #: src/modules/statistics/cog.py:55
 msgctxt "cmd:stats"
