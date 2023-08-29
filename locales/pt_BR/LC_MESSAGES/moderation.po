@@ -266,7 +266,7 @@ msgstr "Membros com o cargo {role} serão considerados moderadores."
 #: src/modules/moderation/settings.py:156
 msgctxt "guildset:mod_role|set_response:unset"
 msgid "No members will be given moderation privileges."
-msgstr ""
+msgstr "Nenhum membro ganhará privilégios de moderação."
 
 #: src/modules/moderation/settings.py:168
 msgctxt "guildset:mod_role|formatted:unset"
