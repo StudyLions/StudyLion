@@ -39,7 +39,7 @@ msgstr "Painel de Configuração do Sistema de Salas Privadas"
 #: src/modules/rooms/settingui.py:98
 msgctxt "dash:rooms|title"
 msgid "Private Room Configuration ({commands[configure rooms]})"
-msgstr ""
+msgstr "Configuração de Salas Privadas ({commands[configure rooms]})"
 
 #: src/modules/rooms/settingui.py:102
 msgctxt "dash:economy|dropdown|placeholder"
