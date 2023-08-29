@@ -179,9 +179,8 @@ msgid ""
 "When enabled, commands in this guild will always use the configured guild "
 "language, regardless of the member's personally configured language."
 msgstr ""
-"Etkinleştirildiğinde, bu sunucudaki komutlar, üyenin kişisel olarak "
-"yapılandırılmış dilinden bağımsız olarak her zaman yapılandırılmış sunucu "
-"dilini kullanacaktır."
+"Etkinleştirildiğinde bu sunucudaki komutlar, üyenin kişisel olarak "
+"ayarlanmış dilinden bağımsız olarak, her zaman sunucu dilini kullanacaktır."
 
 #: src/babel/settings.py:119
 msgctxt "guildset:force_locale|output"
