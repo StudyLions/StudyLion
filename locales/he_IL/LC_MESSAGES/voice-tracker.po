@@ -356,6 +356,8 @@ msgid ""
 "the member's statistics. Tracking will resume at the start of the next day. "
 "The start of the day is determined by the configured guild timezone."
 msgstr ""
+"זמן שיעבור אחרי המגלבה הזו לא יחשב בסטטיסטקות של אנשים. אני אחזור לעקוב "
+"אחריהם יום אחרי, בחצות. "
 
 #: src/tracking/voice/settings.py:261
 msgctxt "guildset:daily_voice_cap|accepts"
