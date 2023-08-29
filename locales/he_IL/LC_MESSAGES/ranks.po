@@ -309,6 +309,9 @@ msgid ""
 "used when the user has opted not to receive DM notifications, or is "
 "otherwise unreachable."
 msgstr ""
+"אם כשמשתמש עולה דרגה, הודעת איחולים תישלח לערוץ הזה, אם הפעלתם את האופציה "
+"הזאתי. אם הפעלתם דרגות_הודעה_פרטית, הערוץ הזה רק ישומש כשמשתמש בחר לא לקבל "
+"הודעות פרטיות."
 
 #: src/modules/ranks/settings.py:116
 msgctxt "guildset:rank_channel|accepts"
@@ -337,7 +340,7 @@ msgstr "{cmd} או בחירת ערוצים בתחתית."
 #: src/modules/ranks/settings.py:153
 msgctxt "guildset:dm_ranks"
 msgid "dm_ranks"
-msgstr ""
+msgstr "דרגות_הודעה_פרטית"
 
 #: src/modules/ranks/settings.py:156
 msgctxt "guildset:dm_ranks|desc"
