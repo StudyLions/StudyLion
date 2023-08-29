@@ -71,6 +71,8 @@ msgid ""
 "You have no running session! Join a tracked voice channel to start a "
 "session."
 msgstr ""
+"Aktif bir oturumun yok! Oturum başlatmak için takip edilen bir ses kanalına "
+"gir."
 
 #: src/tracking/voice/cog.py:698
 #, possible-python-brace-format
