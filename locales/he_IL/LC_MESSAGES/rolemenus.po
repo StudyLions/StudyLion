@@ -580,7 +580,7 @@ msgstr "לתפריט **{menu}** אין את הרול **{name}**"
 #: src/modules/rolemenus/cog.py:1569
 msgctxt "cmd:rolemenu_editrole|success|title"
 msgid "Role menu role updated"
-msgstr ""
+msgstr "תפריט רולים עודכן"
 
 #: src/modules/rolemenus/cog.py:1584
 msgctxt "cmd:rolemenu_editrole|success|error:reaction|name"
