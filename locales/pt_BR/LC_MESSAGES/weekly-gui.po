@@ -34,12 +34,12 @@ msgstr "ATIVIDADE EM CANAL DE VOZ"
 #: src/gui/cards/weekly.py:60
 msgctxt "skin:weeklystats|mode:text|title"
 msgid "MESSAGE ACTIVITY"
-msgstr ""
+msgstr "ATIVIDADE EM CONVERSAS"
 
 #: src/gui/cards/weekly.py:64
 msgctxt "skin::weeklystats|mode:anki|title"
 msgid "CARDS REVIEWED"
-msgstr ""
+msgstr "CARTÕES REVISADOS"
 
 #: src/gui/cards/weekly.py:137
 msgctxt "skin:weeklystats|weekdays"
