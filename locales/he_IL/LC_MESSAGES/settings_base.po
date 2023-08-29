@@ -108,7 +108,7 @@ msgstr ""
 #: src/settings/setting_types.py:501
 msgctxt "settype:bool|parse:falsey_values"
 msgid "disabled|no|false|off|disable|0"
-msgstr ""
+msgstr "disabled|no|false|off|disable|0"
 
 #: src/settings/setting_types.py:506
 msgctxt "settype:bool|output:true"
@@ -138,7 +138,7 @@ msgstr "אוניקוד לאמוג'י "
 #: src/settings/setting_types.py:754
 msgctxt "settype:guildid|accepts"
 msgid "Any Snowflake ID"
-msgstr ""
+msgstr "Any Snowflake ID"
 
 #: src/settings/setting_types.py:823
 msgctxt "settype:timezone|accepts"
