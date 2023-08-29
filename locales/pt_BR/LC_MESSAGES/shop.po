@@ -334,7 +334,7 @@ msgstr "{tick} configure o preço para {coin}**{price}**"
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_edit|resp:done|line:role"
 msgid "{tick} Updated role to {mention}"
-msgstr ""
+msgstr "{tick} Cargo atualizado para {mention}"
 
 #: src/modules/shop/shops/colours.py:658
 msgctxt "cmd:editshop_colours_edit|resp:done|embed:title"
