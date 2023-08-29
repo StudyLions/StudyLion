@@ -344,7 +344,7 @@ msgstr "Cor do Cargo Atualizada"
 #: src/modules/shop/shops/colours.py:664
 msgctxt "cmd:editshop_colours_auto"
 msgid "auto"
-msgstr ""
+msgstr "automatíco"
 
 #: src/modules/shop/shops/colours.py:665
 msgctxt "cmd:editshop_colours_auto|desc"
