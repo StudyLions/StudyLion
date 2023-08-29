@@ -449,6 +449,7 @@ msgctxt "cmd:editshop_colours_clear|desc"
 msgid ""
 "Remove all the colour roles from the shop, and optionally delete the roles."
 msgstr ""
+"Remova todas as cores dos cargos da loja, e opcionalmente delete os cargos."
 
 #: src/modules/shop/shops/colours.py:793
 msgctxt "cmd:editshop_colours_clear|param:delete"
