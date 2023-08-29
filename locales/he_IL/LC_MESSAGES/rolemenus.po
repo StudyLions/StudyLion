@@ -1204,7 +1204,7 @@ msgstr "[`{name}`]({jump_url}) עם `{count}` רולים."
 #, possible-python-brace-format
 msgctxt "ui:menu_list|menu_line:unattached"
 msgid "`{name}` with `{count}` roles."
-msgstr ""
+msgstr "`{name}` עם `{count}` רולים."
 
 #: src/modules/rolemenus/ui/menus.py:163
 #, possible-python-brace-format
