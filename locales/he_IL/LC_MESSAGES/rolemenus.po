@@ -306,7 +306,7 @@ msgstr "השם של התפריט שמיועד לעריכה"
 #: src/modules/rolemenus/cog.py:818
 msgctxt "cmd:rolemenu_edit|param:channel|desc"
 msgid "Server channel to move the menu to"
-msgstr ""
+msgstr "ערוץ בשרת שאליו אעביר את התפריט הזה"
 
 #: src/modules/rolemenus/cog.py:827
 msgctxt "cmd:rolemenu_edit|param:menu_style"
@@ -326,7 +326,7 @@ msgstr "הוסף הודעה מותאמת אישית שאשתמש"
 #: src/modules/rolemenus/cog.py:864
 msgctxt "cmd:rolemenu_edit|error:author_perms"
 msgid "You need the `MANAGE_ROLES` permission in order to edit role menus."
-msgstr ""
+msgstr "אתה צריך את ההרשאה `MANAGE_ROLES` כדי לנהל את התפריטים של השרת הזה."
 
 #: src/modules/rolemenus/cog.py:871
 msgctxt "cmd:rolemenu_edit|error:my_perms"
