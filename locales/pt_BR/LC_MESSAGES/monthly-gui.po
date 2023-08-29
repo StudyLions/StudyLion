@@ -39,7 +39,7 @@ msgstr "ATIVIDADE EM CONVERSAS"
 #: src/gui/cards/monthly.py:52
 msgctxt "skin::monthlystats|mode:anki|title"
 msgid "CARDS REVIEWED"
-msgstr ""
+msgstr "CARTÕES REVISADOS"
 
 #: src/gui/cards/monthly.py:119
 #, possible-python-brace-format
