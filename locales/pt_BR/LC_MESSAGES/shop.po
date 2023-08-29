@@ -521,7 +521,7 @@ msgstr "apagar_cargo"
 #: src/modules/shop/shops/colours.py:981
 msgctxt "cmd:editshop_colours_remove|param:role|desc"
 msgid "Select the colour role to remove."
-msgstr ""
+msgstr "Selecione a cor de cargo para remover."
 
 #: src/modules/shop/shops/colours.py:985
 msgctxt "cmd:editshop_colours_remove|param:delete_role|desc"
