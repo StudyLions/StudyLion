@@ -280,7 +280,7 @@ msgstr "preço"
 #: src/modules/shop/shops/colours.py:529
 msgctxt "cmd:editshop_colours_edit|param:role|desc"
 msgid "Select a colour role to edit."
-msgstr ""
+msgstr "Selecione a cor de um cargo para editar."
 
 #: src/modules/shop/shops/colours.py:533
 msgctxt "cmd:editshop_colours_edit|param:name|desc"
