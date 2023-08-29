@@ -552,7 +552,7 @@ msgstr "Falha ao dele tar o cargo, por um motivo desconhecido."
 #: src/modules/shop/shops/colours.py:1043
 msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
 msgid "Could not find the role in order to delete it."
-msgstr ""
+msgstr "Não consegui encontrar o cargo para deletá-lo."
 
 #: src/modules/shop/shops/colours.py:1054
 #, possible-python-brace-format
