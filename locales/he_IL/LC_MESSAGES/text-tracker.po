@@ -55,7 +55,7 @@ msgstr "תפריט הגדרות מעקב אחרי הודעות"
 #: src/tracking/text/ui.py:89
 msgctxt "dash:text_tracking|title"
 msgid "Message XP configuration ({commands[configure message_exp]})"
-msgstr ""
+msgstr "תפריט נקודות ניסיון ({commands[configure message_exp]})"
 
 #: src/tracking/text/ui.py:93
 msgctxt "dash:text_tracking|dropdown|placeholder"
