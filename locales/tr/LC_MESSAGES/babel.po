@@ -237,112 +237,112 @@ msgstr "Sunucu dilini {lang} olarak ayarladın."
 #: src/babel/enums.py:42
 msgctxt "localenames|locale:en-US"
 msgid "American English"
-msgstr "Amerikan İngilizcesi"
+msgstr ""
 
 #: src/babel/enums.py:43
 msgctxt "localenames|locale:en-GB"
 msgid "British English"
-msgstr "İngiliz İngilizcesi"
+msgstr ""
 
 #: src/babel/enums.py:44
 msgctxt "localenames|locale:bg"
 msgid "Bulgarian"
-msgstr "Bulgarca"
+msgstr ""
 
 #: src/babel/enums.py:45
 msgctxt "localenames|locale:zh-CN"
 msgid "Chinese"
-msgstr "Çince"
+msgstr ""
 
 #: src/babel/enums.py:46
 msgctxt "localenames|locale:zh-TW"
 msgid "Taiwan Chinese"
-msgstr "Tayvan Çincesi"
+msgstr ""
 
 #: src/babel/enums.py:47
 msgctxt "localenames|locale:hr"
 msgid "Croatian"
-msgstr "Hırvatça"
+msgstr ""
 
 #: src/babel/enums.py:48
 msgctxt "localenames|locale:cs"
 msgid "Czech"
-msgstr "Çekçe"
+msgstr ""
 
 #: src/babel/enums.py:49
 msgctxt "localenames|locale:da"
 msgid "Danish"
-msgstr "Danca"
+msgstr ""
 
 #: src/babel/enums.py:50
 msgctxt "localenames|locale:nl"
 msgid "Dutch"
-msgstr "Hollandaca"
+msgstr ""
 
 #: src/babel/enums.py:51
 msgctxt "localenames|locale:fi"
 msgid "Finnish"
-msgstr "Fince"
+msgstr ""
 
 #: src/babel/enums.py:52
 msgctxt "localenames|locale:fr"
 msgid "French"
-msgstr "Fransızca"
+msgstr ""
 
 #: src/babel/enums.py:53
 msgctxt "localenames|locale:de"
 msgid "German"
-msgstr "Almanca"
+msgstr ""
 
 #: src/babel/enums.py:54
 msgctxt "localenames|locale:el"
 msgid "Greek"
-msgstr "Yunanca"
+msgstr ""
 
 #: src/babel/enums.py:55
 msgctxt "localenames|locale:hi"
 msgid "Hindi"
-msgstr "Hintçe"
+msgstr ""
 
 #: src/babel/enums.py:56
 msgctxt "localenames|locale:hu"
 msgid "Hungarian"
-msgstr "Macarca"
+msgstr ""
 
 #: src/babel/enums.py:57
 msgctxt "localenames|locale:it"
 msgid "Italian"
-msgstr "İtalyanca"
+msgstr ""
 
 #: src/babel/enums.py:58
 msgctxt "localenames|locale:ja"
 msgid "Japanese"
-msgstr "Japonca"
+msgstr ""
 
 #: src/babel/enums.py:59
 msgctxt "localenames|locale:ko"
 msgid "Korean"
-msgstr "Korece"
+msgstr ""
 
 #: src/babel/enums.py:60
 msgctxt "localenames|locale:lt"
 msgid "Lithuanian"
-msgstr "Litvanyaca"
+msgstr ""
 
 #: src/babel/enums.py:61
 msgctxt "localenames|locale:no"
 msgid "Norwegian"
-msgstr "Norveççe"
+msgstr ""
 
 #: src/babel/enums.py:62
 msgctxt "localenames|locale:pl"
 msgid "Polish"
-msgstr "Lehçe"
+msgstr ""
 
 #: src/babel/enums.py:63
 msgctxt "localenames|locale:pt-BR"
 msgid "Brazil Portuguese"
-msgstr "Brezilya Portekizcesi"
+msgstr ""
 
 #: src/babel/enums.py:64
 msgctxt "localenames|locale:ro"
