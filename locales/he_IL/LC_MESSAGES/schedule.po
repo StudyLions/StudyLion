@@ -437,7 +437,7 @@ msgstr "מספר הדקות חייב להיות מספר שלם בין 1 ל60"
 #: src/modules/schedule/settings.py:410
 msgctxt "guildset:schedule_blacklist_role"
 msgid "schedule_blacklist_role"
-msgstr ""
+msgstr "סשנים_רשימה_שחורה"
 
 #: src/modules/schedule/settings.py:413
 msgctxt "guildset:schedule_blacklist_role|desc"
