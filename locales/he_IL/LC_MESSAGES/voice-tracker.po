@@ -337,7 +337,7 @@ msgstr "{coin}**{amount}** לשעה כשמשתמש פותח מצלמה או מש
 msgctxt "guildset:hourly_live_bonus|response"
 msgid ""
 "Live members will now *additionally* be given {coin}**{amount}** per hour."
-msgstr ""
+msgstr "משתמשים שמשתפים מדיה יקבלו עכשיו {coin}**{amount}** כל שעה."
 
 #: src/tracking/voice/settings.py:248
 msgctxt "guildset:daily_voice_cap"
