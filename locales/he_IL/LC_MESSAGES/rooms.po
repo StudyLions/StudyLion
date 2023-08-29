@@ -422,7 +422,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:686
 msgctxt "cmd:room_kick"
 msgid "kick"
-msgstr ""
+msgstr "העף"
 
 #: src/modules/rooms/cog.py:689
 msgctxt "cmd:room_kick|desc"
