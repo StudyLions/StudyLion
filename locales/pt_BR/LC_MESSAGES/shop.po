@@ -270,7 +270,7 @@ msgstr "nome"
 #: src/modules/shop/shops/colours.py:523
 msgctxt "cmd:editshop_colours_edit|param:colour"
 msgid "colour"
-msgstr ""
+msgstr "cor"
 
 #: src/modules/shop/shops/colours.py:524
 msgctxt "cmd:editshop_colours_edit|param:price"
