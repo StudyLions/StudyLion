@@ -182,7 +182,7 @@ msgstr "אין שום תזכירים לבטל!"
 #, possible-python-brace-format
 msgctxt "cmd:reminders_cancel|acmpl:reminder|error:no_matches"
 msgid "You do not have any reminders matching \"{partial}\""
-msgstr ""
+msgstr "אין לכם שום תזכורים שמתאימים ל \"{partial}\""
 
 #: src/modules/reminders/cog.py:580
 msgctxt "cmd:remindme"
