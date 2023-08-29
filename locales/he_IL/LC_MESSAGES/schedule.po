@@ -147,7 +147,7 @@ msgstr "לובי_סשנים"
 #: src/modules/schedule/settings.py:39
 msgctxt "guildset:session_lobby|desc"
 msgid "Channel to post scheduled session announcement and status to."
-msgstr ""
+msgstr "הערוץ שבו אשלח התראות והכרזות של מערכת הלו\"זים"
 
 #: src/modules/schedule/settings.py:43
 msgctxt "guildset:session_lobby|long_desc"
