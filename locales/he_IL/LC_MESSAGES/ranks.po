@@ -322,7 +322,7 @@ msgstr "שם או מספר זהות של הערוץ התראות."
 #, possible-python-brace-format
 msgctxt "guildset:rank_channel|set_response|set"
 msgid "Rank update messages will be sent to {channel}."
-msgstr ""
+msgstr "התראות בנוגע לדרגות ישלחו אל {channel}."
 
 #: src/modules/ranks/settings.py:133
 msgctxt "guildset:rank_channel|set_response|unset"
