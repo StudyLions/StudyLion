@@ -772,7 +772,7 @@ msgstr "נראה/מופעל/כן/נכון/דלוק/הפעל/1"
 #: src/modules/rooms/settings.py:170
 msgctxt "guildset:rooms_visible|parse:falsey_values"
 msgid "invisible|disabled|no|false|off|disable|0"
-msgstr "בלתינראה"
+msgstr "בלתינראה/כבוי/לא/לאנכון/כבוי/מנוטרל/0"
 
 #: src/modules/rooms/settings.py:182
 msgctxt "guildset:rooms_visible|set_response:enabled"
