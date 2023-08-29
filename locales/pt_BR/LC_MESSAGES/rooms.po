@@ -222,7 +222,7 @@ msgstr "membros"
 #: src/modules/rooms/cog.py:323
 msgctxt "cmd:room_rent|param:name"
 msgid "name"
-msgstr ""
+msgstr "nome"
 
 #: src/modules/rooms/cog.py:328
 msgctxt "cmd:room_rent|param:days|desc"
