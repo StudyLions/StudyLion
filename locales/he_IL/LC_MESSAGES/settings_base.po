@@ -76,7 +76,7 @@ msgstr ""
 #: src/settings/setting_types.py:236
 msgctxt "settype:channel|accepts"
 msgid "A channel name or id"
-msgstr ""
+msgstr "שם ערוץ או מספר הזהות שלו"
 
 #: src/settings/setting_types.py:282
 #, possible-python-brace-format
