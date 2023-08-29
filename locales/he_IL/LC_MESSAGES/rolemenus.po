@@ -1248,6 +1248,8 @@ msgid ""
 "Failed to display preview!\n"
 "**Error:** `{exception}`"
 msgstr ""
+"נכשלתי להראות את התצוגה המקדימה!\n"
+"שגיאה: `{exception}`"
 
 #: src/modules/rolemenus/ui/menueditor.py:151
 msgctxt "ui:menu_editor|button:options|label"
