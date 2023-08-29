@@ -633,6 +633,9 @@ msgid ""
 " I must have permission to create new channels in this category, as well as "
 "to manage permissions."
 msgstr ""
+"כאשר משתמש משתמש ב{cmds[room rent]} על מנת ליצור חדר פרטי, חדר קול עם צאט "
+"פרטי יווצר מתחת לקטגוריה הזו. החדר ניתן לשינוי על ידי המשתמש עצמו, ואני חייב"
+" להיות בעל הראשות נכונות בקטגוריה הזו, כדי שאוכל להגיד ולשלוט בחדר אוטומטית."
 
 #: src/modules/rooms/settings.py:37
 msgctxt "guildset:room_category|accepts"
