@@ -317,6 +317,8 @@ msgid ""
 "When a member streams or video-chats in a channel they will be given this "
 "bonus *additionally* to the `hourly_reward`."
 msgstr ""
+"כאשר משתמש פותח מצלמה או משתף מסך הם יקבלו את הבונוס הזה בנוסף למה שהם עושים"
+" כל שעה."
 
 #: src/tracking/voice/settings.py:210
 msgctxt "guildset:hourly_live_bonus|accepts"
