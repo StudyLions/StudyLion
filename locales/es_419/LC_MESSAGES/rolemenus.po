@@ -802,7 +802,7 @@ msgstr "precio"
 #: src/modules/rolemenus/roleoptions.py:221
 msgctxt "roleset:price|desc"
 msgid "Price of the role, in LionCoins."
-msgstr "Precio del rol, en MonedaLeón."
+msgstr "Precio del rol, en MonedasLion."
 
 #: src/modules/rolemenus/roleoptions.py:225
 msgctxt "roleset:price|long_desc"
