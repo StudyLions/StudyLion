@@ -401,7 +401,7 @@ msgstr "מטרת מטלות"
 #: src/modules/statistics/ui/weeklymonthly.py:148
 msgctxt "modal:goal_editor|field:task_goal|placeholder"
 msgid "Enter the number of tasklist tasks you aim to do"
-msgstr ""
+msgstr "הכנס את מספר המטלות שאתה מכוון להגיע אליו"
 
 #: src/modules/statistics/ui/weeklymonthly.py:159
 #, possible-python-brace-format
