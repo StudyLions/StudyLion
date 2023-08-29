@@ -916,6 +916,8 @@ msgstr "אין לי מספיק הרשאות כדי להסיר את הרול הז
 msgctxt "rolemenu|deselect|error:discord"
 msgid "An unknown error occurred removing your role! Please try again later."
 msgstr ""
+"שגיאה לא ידועה התחוללה כשניסיתי להסיר את הרול ממך.\n"
+"אנא נסה שוב במספר דקות."
 
 #: src/modules/rolemenus/rolemenu.py:529
 msgctxt "rolemenu|deslect|success|title"
