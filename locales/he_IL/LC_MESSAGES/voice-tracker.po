@@ -330,7 +330,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "guildset:hourly_live_bonus|formatted"
 msgid "{coin}**{amount}** bonus per hour when live."
-msgstr ""
+msgstr "{coin}**{amount}** לשעה כשמשתמש פותח מצלמה או משתף מסך."
 
 #: src/tracking/voice/settings.py:237
 #, possible-python-brace-format
