@@ -503,6 +503,9 @@ msgid ""
 "if the `blacklist_role` is not set or if I do not have sufficient "
 "permissions to assign the blacklist role."
 msgstr ""
+"משתמשים שמפסידים יותר מהמספר הזה של סשנים ב24 שעות יקבלו את הרול רשימה שחורה"
+" ולא יוכלו להצטרף לחדר סשנים. סימו לב שחייבות להיות לי הרשאות נכונות כדי "
+"שאצליח לתת את הרול הזה לאנשים."
 
 #: src/modules/schedule/settings.py:481
 msgctxt "guildset:schedule_blacklist_after|accepts"
