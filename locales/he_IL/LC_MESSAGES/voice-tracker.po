@@ -94,7 +94,7 @@ msgstr "אתה לא יכול לעשות את זה!"
 #: src/tracking/voice/cog.py:730
 msgctxt "cmd:now|target:other|mode:clear|error:perms|desc"
 msgid "You need to be a moderator to set or clear someone else's session tag."
-msgstr ""
+msgstr "אתה צריך להיות מנהל כדי לקבוע או למחוק סשן תאג של מישהו אחר."
 
 #: src/tracking/voice/cog.py:740
 msgctxt "cmd:now|target:other|mode:clear|success|title"
