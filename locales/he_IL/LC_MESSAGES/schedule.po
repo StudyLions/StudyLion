@@ -493,7 +493,7 @@ msgstr "סשן_רשימהשחורה_לאחרכמהזמן"
 #: src/modules/schedule/settings.py:470
 msgctxt "guildset:schedule_blacklist_after|desc"
 msgid "Number of missed sessions within 24h before blacklisting."
-msgstr ""
+msgstr "מספר הסשנים שהוברזו ב24 לפני שאכניס אותם לרשימה השחורה."
 
 #: src/modules/schedule/settings.py:474
 msgctxt "guildset:schedule_blacklist_after|long_desc"
