@@ -918,6 +918,8 @@ msgid ""
 "A critical error occurred trying to display this role menu.\n"
 "Error: `{error}`."
 msgstr ""
+"Se ha producido un error crítico al intentar mostrar este menú de roles.\n"
+"Error: `{error}`."
 
 #: src/modules/rolemenus/rolemenu.py:336
 #, possible-python-brace-format
