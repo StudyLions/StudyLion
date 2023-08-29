@@ -228,7 +228,7 @@ msgctxt "botset:word_xp|long_desc"
 msgid ""
 "Amount of global message XP to be given (additionally to the XP per period) "
 "for each hundred words. Useful for rewarding communication."
-msgstr ""
+msgstr "כמות נקודות ניסיון גלובליות לתת לכל 100 מילים."
 
 #: src/tracking/text/settings.py:218
 msgctxt "botset:word_xp|accepts"
