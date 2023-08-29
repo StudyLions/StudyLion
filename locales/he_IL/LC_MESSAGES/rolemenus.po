@@ -508,7 +508,7 @@ msgstr "תפריט רולים עודכן"
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_addrole|error:role_exists"
 msgid "The role {role} is already selectable from the menu **{menu}**"
-msgstr ""
+msgstr "הרול {role} כבר ניתן לבחירה מהתפריט **{menu}**"
 
 #: src/modules/rolemenus/cog.py:1364
 msgctxt "cmd:rolemenu_addrole|success|error:reaction|name"
@@ -518,7 +518,7 @@ msgstr "פתקית"
 #: src/modules/rolemenus/cog.py:1376
 msgctxt "cmd:rolemenu_addrole|success|button:editor|label"
 msgid "Edit Menu"
-msgstr ""
+msgstr "ערוך תפריט"
 
 #: src/modules/rolemenus/cog.py:1393
 msgctxt "cmd:rolemenu_editrole"
