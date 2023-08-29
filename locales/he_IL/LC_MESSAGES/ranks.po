@@ -262,6 +262,8 @@ msgid ""
 "Which statistic is used to reward activity ranks.\n"
 "`Voice` is the number of hours active in tracked voice channels, `Exp` is a measure of message activity, and `Message` is a simple count of messages sent."
 msgstr ""
+"איזה סוג סטטיסטיקה אשתמש כדי לקבוע דרגות עבור המשתמשים שלכם!\n"
+"לדוגמא, `קול` יתן לאנשים דרגות לפי כמה זמן הם נמצאים בחדרי קול, `נקודות ניסיון` הם מדד של המילים שהם שולחים בשרת, ב`הודעות` זה פשוט כמה הודעות משתמש שלח בשרת בלי קשר לכמות המילים."
 
 #: src/modules/ranks/settings.py:59
 msgctxt "guildset:rank_type|accepts"
