@@ -812,7 +812,7 @@ msgstr "Cuantas MonedasLion cuesta el rol cuando es seleccionado. "
 #: src/modules/rolemenus/roleoptions.py:229
 msgctxt "roleset:price|accepts"
 msgid "Amount of coins that the role costs."
-msgstr ""
+msgstr "Cantidad de monedas que cuesta el rol."
 
 #: src/modules/rolemenus/roleoptions.py:242
 #, possible-python-brace-format
