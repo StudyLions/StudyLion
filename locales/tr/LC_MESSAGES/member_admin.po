@@ -45,7 +45,7 @@ msgstr "Karşılama Mesajı"
 #: src/modules/member_admin/settingui.py:205
 msgctxt "ui:memberadmin|button:return_msg|label"
 msgid "Returning Msg"
-msgstr "Geri Dönme Mesajı"
+msgstr "Geri Dönüş Mesajı"
 
 #: src/modules/member_admin/settingui.py:213
 msgctxt "ui:memberadmin|embed|title"
