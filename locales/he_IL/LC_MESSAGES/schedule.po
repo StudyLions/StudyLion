@@ -454,6 +454,9 @@ msgid ""
 "Alternatively, consider setting the booking cost (and reward) very high to "
 "provide a strong disincentive for not attending a session."
 msgstr ""
+"משתמשים עם הרול הזה לא יוכלו לקבוע פגישות בשרת הזה. המערכת הזו נועדה לחסום "
+"אנשים שמעצבנים אנשים אחרים על ידי קביעה של סשנים והברזה חוזרת ונשנת. הם לא "
+"יוכלו להשתמש בפונקציה הזו של הבוט בשרת הזה."
 
 #: src/modules/schedule/settings.py:425
 msgctxt "guildset:schedule_blacklist_role|accepts"
