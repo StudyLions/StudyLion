@@ -1105,11 +1105,13 @@ msgid ""
 "Members will not be able to obtain more than this number of roles from this "
 "menu. This counts roles that were not obtained through the rolemenu system."
 msgstr ""
+"משתמשים לא יוכלו להשיג יותר מהמספר רולים הזה באופן כללי. סופר את כל הרולים "
+"שהמשתמש עונד, לא רק רולים שנלבשו דרך מערכת התפריטי רולים. "
 
 #: src/modules/rolemenus/menuoptions.py:174
 msgctxt "menuset:obtainable|notset"
 msgid "Unlimited."
-msgstr ""
+msgstr "ללא הגבלה."
 
 #: src/modules/rolemenus/menuoptions.py:188
 #, possible-python-brace-format
