@@ -359,12 +359,12 @@ msgstr "adicionar"
 #: src/modules/shop/shops/colours.py:677
 msgctxt "cmd:editshop_colours_add|desc"
 msgid "Add an existing role to the colour shop."
-msgstr ""
+msgstr "Adicionar um cargo existente para a loja de cores de cargo."
 
 #: src/modules/shop/shops/colours.py:681
 msgctxt "cmd:editshop_colours_add|param:role"
 msgid "role"
-msgstr ""
+msgstr "cargo"
 
 #: src/modules/shop/shops/colours.py:682
 msgctxt "cmd:editshop_colours_add|param:price"
