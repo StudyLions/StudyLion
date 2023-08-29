@@ -265,7 +265,7 @@ msgstr "cargo"
 #: src/modules/shop/shops/colours.py:522
 msgctxt "cmd:editshop_colours_edit|param:name"
 msgid "name"
-msgstr ""
+msgstr "nome"
 
 #: src/modules/shop/shops/colours.py:523
 msgctxt "cmd:editshop_colours_edit|param:colour"
