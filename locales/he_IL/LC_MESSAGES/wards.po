@@ -44,6 +44,7 @@ msgid ""
 "You must have the configured moderator role, or `MANAGE_GUILD` permissions "
 "to do this."
 msgstr ""
+"חייב להיות לכם רול של מנהלים, או הרשאה `MANAGE_GUILD` כדי לעשות את זה."
 
 #: src/wards.py:149
 #, possible-python-brace-format
