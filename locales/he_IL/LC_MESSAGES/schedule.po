@@ -127,7 +127,7 @@ msgstr "לא הצלחתי לקבוע את {time} כי הוא כבר התחיל �
 #, possible-python-brace-format
 msgctxt "cmd:schedule|create_booking|success"
 msgid "You have successfully scheduled a session at {time}."
-msgstr ""
+msgstr "קבעת בלו\"ז ב {time} בהצלחה."
 
 #: src/modules/schedule/cog.py:847
 msgctxt "cmd:configure_schedule"
