@@ -302,7 +302,7 @@ msgstr[2] ""
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|success"
 msgid "Successfully created your private room {channel}!"
-msgstr ""
+msgstr "Sua sala privada {channel} foi criada com sucesso!"
 
 #: src/modules/rooms/cog.py:457
 msgctxt "cmd:room_rent|success|title"
