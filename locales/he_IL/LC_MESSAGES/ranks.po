@@ -866,7 +866,7 @@ msgstr "דרגה הודעות"
 #: src/modules/ranks/ui/editor.py:201
 msgctxt "ui:rank_editor|input:message|placeholder"
 msgid "Congratulatory message sent to the user upon achieving this rank."
-msgstr ""
+msgstr "הודעת איחולים תישלח למשתמש כשהוא יגיע לדרגה הזו."
 
 #: src/modules/ranks/ui/editor.py:207
 #, possible-python-brace-format
