@@ -142,12 +142,12 @@ msgstr "Remover Membros"
 #: src/modules/rooms/roomui.py:367
 msgctxt "ui:room_status|embed|title"
 msgid "Room Control Panel"
-msgstr ""
+msgstr "Painel de Controle da Sala"
 
 #: src/modules/rooms/roomui.py:375
 msgctxt "ui:room_status|embed|field:channel|name"
 msgid "Channel"
-msgstr ""
+msgstr "Canal"
 
 #: src/modules/rooms/roomui.py:380
 msgctxt "ui:room_status|embed|field:owner|name"
