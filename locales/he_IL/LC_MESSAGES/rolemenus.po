@@ -1042,6 +1042,9 @@ msgid ""
 " them in this menu. Note that when disabled, members will be able to unequip"
 " the menu roles even if they were not obtained from the menu."
 msgstr ""
+"כשאופציה הזו מופעלת, משתמשים לא יוכלו להסיר את הרול הלבוש על ידי בחירה חוזרת"
+" מהתפריט. שימו לב שאם האופציה לא פעילה, משתמשים יוכלו להסיר רולים אפילו אם "
+"הם לא השיגו אותם מהתפריט."
 
 #: src/modules/rolemenus/menuoptions.py:110
 msgctxt "menuset:sticky|set_response:true"
