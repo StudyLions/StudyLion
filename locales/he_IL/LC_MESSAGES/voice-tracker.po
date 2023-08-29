@@ -143,7 +143,7 @@ msgstr "שנה את התאג של {target} אל `{new_tag}`."
 #, possible-python-brace-format
 msgctxt "cmd:now|target:self|mode:show_with_tag|desc"
 msgid "You have been working on **`{tag}`** in {channel} since {time}!"
-msgstr ""
+msgstr "אתה עובד על  **`{tag}`** בערוץ {channel} במשך {time}!"
 
 #: src/tracking/voice/cog.py:801
 #, possible-python-brace-format
