@@ -128,7 +128,7 @@ msgstr "הרול צבע הזה כבר לא קיים!"
 #: src/modules/shop/shops/colours.py:270
 msgctxt "shop:colour|purchase|error:failed_permissions"
 msgid "I do not have enough permissions to give you this colour role!"
-msgstr ""
+msgstr "אין לי מספיק הרשאות כדי לתת לכם את הרול צבע הזה!"
 
 #: src/modules/shop/shops/colours.py:277
 msgctxt "shop:colour|purchase|error:failed_unknown"
