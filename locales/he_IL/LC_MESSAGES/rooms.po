@@ -683,6 +683,7 @@ msgid ""
 "Members will be charged this many LionCoins for each day they rent a private"
 " room."
 msgstr ""
+"משתמשים יצטרכו לשלם כמות כזו של מטבעות אם הם רוצים לקנות חדר פרטי ליום שלם."
 
 #: src/modules/rooms/settings.py:88
 msgctxt "guildset:rooms_rent|accepts"
