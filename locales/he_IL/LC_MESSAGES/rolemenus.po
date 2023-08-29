@@ -362,7 +362,7 @@ msgstr "עכשיו אשתמש בתבנית בשם `{name}` "
 #: src/modules/rolemenus/cog.py:969
 msgctxt "cmd:rolemenu_edit|parse:template|success:custom"
 msgid "Now using a custom menu message."
-msgstr ""
+msgstr "עכשיו אשתמש בהודעה מותאמת אישית לתפריט."
 
 #: src/modules/rolemenus/cog.py:994
 #, possible-python-brace-format
