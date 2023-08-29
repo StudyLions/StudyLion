@@ -412,4 +412,4 @@ msgstr "הגדרות מעקב קולי ({commands[configure voice_rewards]})"
 #: src/tracking/voice/settings.py:532
 msgctxt "dash:voice_tracking|dropdown|placeholder"
 msgid "Voice Activity Panel"
-msgstr "תפריט פעילות קול"
+msgstr "תפריט פעילות חדרי קול"
