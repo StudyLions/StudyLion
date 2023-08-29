@@ -737,6 +737,8 @@ msgstr "פרטיות_חדר"
 msgctxt "guildset:rooms_visible|desc"
 msgid "Whether private rented rooms are visible to non-members."
 msgstr ""
+"האם חדרים פרטיים יוסתרו או לא ממשתמשים שלא חברים בחדרים (הם לא יוכלו להצטרף,"
+" רק לראות שהם קיימים)"
 
 #: src/modules/rooms/settings.py:153
 msgctxt "guildset:rooms_visible|long_desc"
