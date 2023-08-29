@@ -1370,6 +1370,7 @@ msgctxt "ui:menu_editor|menu:style|option:button|desc"
 msgid ""
 "Roles are represented in 5 rows of 5 buttons, each with an emoji and label."
 msgstr ""
+"רולים שמוצגים בתור 5 שורות של 5 כפתורים, לכל אחד יש אמוג'י ותגית טקסט."
 
 #: src/modules/rolemenus/ui/menueditor.py:624
 msgctxt "ui:menu_editor|menu:style|option:dropdown|label"
