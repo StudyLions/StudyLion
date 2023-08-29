@@ -430,7 +430,7 @@ msgstr "Gönderilen coin miktarı"
 #: src/modules/economy/cog.py:674
 msgctxt "cmd:send|param:note|desc"
 msgid "Optional note to add to the gift."
-msgstr "Hediyeye eklemek için isteğe bağlı not."
+msgstr "Hediyeye eklenecek isteğe bağlı not."
 
 #: src/modules/economy/cog.py:698
 msgctxt "cmd:send|error:not_allowed"
