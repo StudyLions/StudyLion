@@ -380,7 +380,7 @@ msgctxt "guildset:attendance_bonus|set_response"
 msgid ""
 "Session members will be rewarded an additional {coin}**{amount}** when "
 "everyone attends."
-msgstr ""
+msgstr "משתתפים יקבלו בונוס של {coin}**{amount}**  אם כל מי שקבע השתתף בסשן."
 
 #: src/modules/schedule/settings.py:334
 #, possible-python-brace-format
