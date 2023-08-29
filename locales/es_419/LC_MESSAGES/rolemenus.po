@@ -761,12 +761,12 @@ msgstr "El emoji del rol del menú es ahora {emoji}."
 #: src/modules/rolemenus/roleoptions.py:173
 msgctxt "roleset:emoji|set_response:unset"
 msgid "The menu role emoji has been removed."
-msgstr ""
+msgstr "Se ha eliminado el emoji del rol del menú."
 
 #: src/modules/rolemenus/roleoptions.py:181
 msgctxt "roleset:description"
 msgid "description"
-msgstr ""
+msgstr "descripción"
 
 #: src/modules/rolemenus/roleoptions.py:184
 msgctxt "roleset:description|desc"
