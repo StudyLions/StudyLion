@@ -200,7 +200,7 @@ msgstr "`{provided}` אינו אופציה שעובדת!"
 #: src/settings/setting_types.py:1168
 msgctxt "settype:duration|accepts"
 msgid "A number of days, hours, minutes, and seconds, e.g. `2d 4h 10s`."
-msgstr ""
+msgstr "מספר ימים, שעות, דקות ושניות באנגלית, לדוגמא: `2d 4h 10s`."
 
 #: src/settings/setting_types.py:1349
 msgctxt "settype:channel_list|accepts"
