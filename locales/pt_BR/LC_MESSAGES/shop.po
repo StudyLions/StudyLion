@@ -238,6 +238,9 @@ msgid ""
 "The new colour role was added below all other roles. Remember a member's "
 "active colour is determined by their highest coloured role!"
 msgstr ""
+"A nova cor de cargo foi adicionada abaixo de todas as outras. Lembre-se que "
+"a cor ativa de um cargo é determinada pela equivalente à mais alta cor de "
+"cargo."
 
 #: src/modules/shop/shops/colours.py:505
 msgctxt "cmd:editshop_colours_create|resp:done|field:position_note|name"
