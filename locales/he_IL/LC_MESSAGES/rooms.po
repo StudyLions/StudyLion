@@ -442,6 +442,7 @@ msgid ""
 "Mention the members you want to remove. Also accepts space-separated user "
 "ids."
 msgstr ""
+"תייג את החברים שאתה רוצה להעיף. אני יכול לקבל גם מספר זהות מופרד עם פסיקים."
 
 #: src/modules/rooms/cog.py:712
 #, possible-python-brace-format
@@ -453,7 +454,7 @@ msgstr "אין לך חדש פרטי! תשתמש ב  `/room rent` כדי ליצו
 #: src/modules/rooms/cog.py:729
 msgctxt "cmd:room_kick|error:no_matching_members"
 msgid "None of the mentioned members are in this room!"
-msgstr ""
+msgstr "אף אחד ממי שציינת נמצא בחדר הזה."
 
 #: src/modules/rooms/cog.py:746
 msgctxt "cmd:room_kick|success|ack"
