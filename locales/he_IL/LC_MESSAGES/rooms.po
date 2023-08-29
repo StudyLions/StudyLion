@@ -573,7 +573,7 @@ msgstr "חדרים"
 #: src/modules/rooms/cog.py:922
 msgctxt "cmd:configure_rooms|desc"
 msgid "Configure Rented Private Rooms"
-msgstr ""
+msgstr "הגדר חדרים פרטיים"
 
 #: src/modules/rooms/room.py:81
 #, possible-python-brace-format
