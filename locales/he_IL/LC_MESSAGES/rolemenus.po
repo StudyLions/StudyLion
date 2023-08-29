@@ -398,7 +398,7 @@ msgstr "מחקתפריט"
 #: src/modules/rolemenus/cog.py:1047
 msgctxt "cmd:rolemenu_delete|desc"
 msgid "Delete a role menu."
-msgstr ""
+msgstr "מחק את התפריט רולים."
 
 #: src/modules/rolemenus/cog.py:1051
 msgctxt "cmd:rolemenu_delete|param:name"
