@@ -559,12 +559,12 @@ msgstr "editarrol"
 #: src/modules/rolemenus/cog.py:1396
 msgctxt "cmd:rolemenu_editrole|desc"
 msgid "Edit role options in an existing role menu."
-msgstr ""
+msgstr "Editar opciones de rol en un menú de rol existente."
 
 #: src/modules/rolemenus/cog.py:1401
 msgctxt "cmd:rolemenu_editrole|param:menu"
 msgid "menu"
-msgstr ""
+msgstr "menú"
 
 #: src/modules/rolemenus/cog.py:1404
 msgctxt "cmd:rolemenu_editrole|param:menu_role"
