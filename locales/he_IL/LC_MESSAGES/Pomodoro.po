@@ -677,7 +677,7 @@ msgstr ""
 msgctxt "ui:timer_status|button:present|error:not_in_timer"
 msgid ""
 "You are not in this timer! Join the timer channel by pressing {channel}."
-msgstr ""
+msgstr "אתה לא בטיימר הזה! תצטרף אליו על ידי לחיצה על: {channel}."
 
 #: src/modules/pomodoro/ui/status.py:82
 msgctxt "ui:timer_status|button:present|label"
@@ -689,7 +689,7 @@ msgctxt "ui:timer_status|button:edit|error:no_permissions"
 msgid ""
 "Configuring this timer requires `MANAGE_CHANNEL` permissions on the timer "
 "channel, or the configured manager role!"
-msgstr ""
+msgstr "כדי לערוך את הטיימר הזה נדרשות הרשאות מנהל או אדמין."
 
 #: src/modules/pomodoro/ui/status.py:119
 msgctxt "ui:timer_status|button:edit|label"
