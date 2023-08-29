@@ -432,7 +432,7 @@ msgctxt "guildset:min_attendance|parse|error"
 msgid ""
 "Minimum attendance must be an integer number of minutes between `1` and "
 "`60`."
-msgstr ""
+msgstr "מספר הדקות חייב להיות מספר שלם בין 1 ל60"
 
 #: src/modules/schedule/settings.py:410
 msgctxt "guildset:schedule_blacklist_role"
