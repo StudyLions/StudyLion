@@ -910,6 +910,8 @@ msgid ""
 "Insufficient permissions to create a webhook in this channel. I require the "
 "`MANAGE_WEBHOOKS` permission."
 msgstr ""
+"אין לי מספיק הרשות לשלוח התראות בערוץ הזה, אני צריך את ההרשאה "
+"`MANAGE_WEBHOOKS` "
 
 #: src/modules/schedule/core/session.py:274
 #, possible-python-brace-format
