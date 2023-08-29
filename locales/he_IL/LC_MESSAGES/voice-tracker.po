@@ -61,7 +61,7 @@ msgstr "בדוק על מה חברים שלך עובדים כרגע."
 #: src/tracking/voice/cog.py:662
 msgctxt "cmd:now|param:clear|desc"
 msgid "Unset your activity tag (or the target user's tag, for moderators)."
-msgstr ""
+msgstr "בטל את התאג פעילות שלך (או ציין תאג של אחד מהמשתמשים אם אתה המנהל)."
 
 #: src/tracking/voice/cog.py:689
 msgctxt "cmd:now|target:self|error:target_inactive"
