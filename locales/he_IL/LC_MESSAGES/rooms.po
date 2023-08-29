@@ -404,7 +404,7 @@ msgstr "לא הצלחתי למצוא את החבר {mention} בשרת הזה! "
 #: src/modules/rooms/cog.py:640
 msgctxt "cmd:room_invite|error:no_new_members"
 msgid "All members mentioned are already in the room!"
-msgstr ""
+msgstr "כל החברים שציינת כבר בחדר!"
 
 #: src/modules/rooms/cog.py:654
 #, possible-python-brace-format
