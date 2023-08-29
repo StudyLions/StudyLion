@@ -44,6 +44,8 @@ msgstr ""
 msgctxt "cmd:economy"
 msgid "economy"
 msgstr ""
+"بنك\n"
+"ِAT: حساب إدخار"
 
 #: src/modules/economy/cog.py:92
 msgctxt "cmd:economy_balance"
