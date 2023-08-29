@@ -307,7 +307,7 @@ msgstr "חזור_כל"
 #: src/modules/reminders/cog.py:725
 msgctxt "cmd:remindme_in|param:time|desc"
 msgid "How far into the future to set the reminder (e.g. 1 day 10h 5m)."
-msgstr ""
+msgstr "עוד כמה זמן תרצו לקבל את התזכיר הזה? (e.g. 1 day 10h 5m)."
 
 #: src/modules/reminders/cog.py:726
 msgctxt "cmd:remindme_in|param:reminder|desc"
