@@ -640,7 +640,7 @@ msgstr ""
 #: src/modules/rooms/settings.py:37
 msgctxt "guildset:room_category|accepts"
 msgid "Private room category name or id."
-msgstr ""
+msgstr "שם או מספר זהות של קטגוריית החדרים הפרטיים."
 
 #: src/modules/rooms/settings.py:51
 msgctxt "guildset:rooms_category|set_response:unset"
