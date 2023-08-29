@@ -646,7 +646,7 @@ msgstr "Nombre del menú del que se eliminará el rol."
 #: src/modules/rolemenus/cog.py:1626
 msgctxt "cmd:rolemenu_delrole|param:menu_role|desc"
 msgid "Name, label, or mention of the role to delete."
-msgstr ""
+msgstr "Nombra, etiqueta o menciona el rol a eliminar."
 
 #: src/modules/rolemenus/cog.py:1644
 msgctxt "cmd:rolemenu_delrole|error:author_perms"
