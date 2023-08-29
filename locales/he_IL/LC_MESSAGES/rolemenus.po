@@ -548,7 +548,7 @@ msgstr "רול_חדש"
 #: src/modules/rolemenus/cog.py:1418
 msgctxt "cmd:rolemenu_editrole|param:menu|desc"
 msgid "Name of the menu to edit the role for"
-msgstr ""
+msgstr "השם של התפריט שאליו אערוך את הרול"
 
 #: src/modules/rolemenus/cog.py:1422
 msgctxt "cmd:rolemenu_editrole|param:menu_role|desc"
