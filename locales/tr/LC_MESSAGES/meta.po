@@ -5,6 +5,7 @@
 # 
 # Translators:
 # Eyüp Ramazan, 2023
+# Havina Ru, 2023
 # 
 #, fuzzy
 msgid ""
@@ -13,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-28 22:43+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Eyüp Ramazan, 2023\n"
+"Last-Translator: Havina Ru, 2023\n"
 "Language-Team: Turkish (https://app.transifex.com/leobot/teams/174919/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -81,18 +82,18 @@ msgstr ""
 "\n"
 "\n"
 "    {coin} Ekonomi\n"
-"    *Çalışarak para kazanın ve kazandığınız paraları güzel ödüllerde kullanın!*\n"
-"    {cmd_send}:  {coin}'ininizibaşka kullanıcılara gönderin..\n"
-"    {cmd_shop}: {coin} aracılığıyla sunucu rollerini satın alın.\n"
-"    {cmd_room}: Kendiniz ve arkadaşlarınız için özel oda kiralayın.\n"
+"    *Çalışarak para kazan ve kazandığın paraları çokça hak ettiiğn ödüllerde kullan!*\n"
+"    {cmd_send}:  {coin}'inini başka kullanıcılara gönder.\n"
+"    {cmd_shop}: {coin} aracılığıyla sunucu rollerini satın al.\n"
+"    {cmd_room}: Kendin ve arkadaşların için özel oda kirala.\n"
 "\n"
 "\n"
 "    {utility_emoji} Araçlar\n"
-"    *Çalışırken verimli kalmanıza yardımcı olacak diğer araçlar!*\n"
+"    *Çalışırken verimli kalmana yardımcı olacak diğer araçlar!*\n"
 "    {cmd_reminders}: Bana sana hatırlatmam gereken önemli bir şeyi söyleyebilirsin!\n"
-"    {cmd_tasklist}: Görevler belirleyin ve onları tamamlamanın rahatlatıcı etkisini görün.\n"
-"    {cmd_timers}: Klasik *pomodoro tekniğini* kullanarak verimli kalın!\n"
-"    {cmd_schedule}: Paylaşabileceğiniz bir çalışma oturumu ayırtın ve kendinizi sorumlu tutun!\n"
+"    {cmd_tasklist}: Görevler belirle ve onları tamamlamanın rahatlatıcı etkisini gör.\n"
+"    {cmd_timers}: Klasik *pomodoro tekniğini* kullanarak verimli kal!\n"
+"    {cmd_schedule}: Paylaşabileceğiniz bir çalışma oturumu ayırt ve kendini sorumlu tut!\n"
 "    "
 
 #: src/modules/meta/help_sections.py:73
