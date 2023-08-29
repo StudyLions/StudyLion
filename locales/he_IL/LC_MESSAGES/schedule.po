@@ -174,7 +174,7 @@ msgctxt "guildset:session_lobby|set_response|unset"
 msgid ""
 "The schedule session lobby has been unset. Shutting down scheduled session "
 "system."
-msgstr ""
+msgstr "הלובי של מערכת הסשנים הוסר, מכבה את מערכת הסשנים."
 
 #: src/modules/schedule/settings.py:78
 msgctxt "guildset:session_lobby|formatted|unset"
@@ -190,7 +190,7 @@ msgstr "<#{channelid}>"
 #: src/modules/schedule/settings.py:92
 msgctxt "guildset:session_room"
 msgid "session_room"
-msgstr ""
+msgstr "חדר_סשנים"
 
 #: src/modules/schedule/settings.py:95
 msgctxt "guildset:session_room|desc"
