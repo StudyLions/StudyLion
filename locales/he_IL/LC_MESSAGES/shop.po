@@ -294,7 +294,7 @@ msgstr "צבע חדש עבור רול הצבע (לדוגמא #AB12AB)"
 #: src/modules/shop/shops/colours.py:541
 msgctxt "cmd:editshop_colours_edit|param:price|desc"
 msgid "New price for the colour role."
-msgstr ""
+msgstr "מחיר חדש לרול הצבע."
 
 #: src/modules/shop/shops/colours.py:570
 #, possible-python-brace-format
