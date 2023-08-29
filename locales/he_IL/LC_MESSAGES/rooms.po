@@ -782,10 +782,10 @@ msgstr "חדרים פרטיים יהיו שקופים לכולם."
 #: src/modules/rooms/settings.py:187
 msgctxt "guildset:rooms_visible|set_response:disabled"
 msgid "Private rooms will now only be visible to their members (and admins)."
-msgstr ""
+msgstr "חדרים פרטיים יהיו שקופים רק לחברים שלהם וכמובן לאדמינים של השרת."
 
 #: src/modules/rooms/settings.py:197
 #, possible-python-brace-format
 msgctxt "guildset:rooms_visible|set_using"
 msgid "{cmd} or toggle below."
-msgstr ""
+msgstr "{cmd} או תפריט הבחירה למטה."
