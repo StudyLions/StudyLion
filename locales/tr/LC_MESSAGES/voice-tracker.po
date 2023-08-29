@@ -105,7 +105,7 @@ msgstr ""
 #: src/tracking/voice/cog.py:740
 msgctxt "cmd:now|target:other|mode:clear|success|title"
 msgid "Session Tag Cleared!"
-msgstr ""
+msgstr "Oturum Etiketi Temizlendi!"
 
 #: src/tracking/voice/cog.py:744
 #, possible-python-brace-format
