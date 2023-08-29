@@ -1,0 +1,246 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Interitio, 2023
+# Ari Horesh, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-28 22:43+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Ari Horesh, 2023\n"
+"Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: he_IL\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
+
+#: src/tracking/text/cog.py:249
+msgctxt "cmd:configure_message_exp"
+msgid "message_exp"
+msgstr "נקודות_הודעה"
+
+#: src/tracking/text/cog.py:252
+msgctxt "cmd:configure_message_exp|desc"
+msgid "Configure Message Tracking & Experience"
+msgstr "ערוך ניתור ונקודות ניסיון מהודעות"
+
+#: src/tracking/text/cog.py:315
+msgctxt "cmd:leo_configure_exp_rates"
+msgid "experience_rates"
+msgstr "קצב_נקודות_ניסיון"
+
+#: src/tracking/text/cog.py:318
+msgctxt "cmd:leo_configure_exp_rates|desc"
+msgid "Global experience rate configuration"
+msgstr "עריכת קצב נקודות ניסיון גלובליות "
+
+#: src/tracking/text/ui.py:45
+msgctxt "ui:text_tracker_config|menu:untracked_channels|placeholder"
+msgid "Select Untracked Channels"
+msgstr "בחר ערוצים ללא מעקב"
+
+#: src/tracking/text/ui.py:52
+msgctxt "ui:text_tracker_config|embed|title"
+msgid "Message Tracking Configuration Panel"
+msgstr "תפריט הגדרות מעקב אחרי הודעות"
+
+#: src/tracking/text/ui.py:89
+msgctxt "dash:text_tracking|title"
+msgid "Message XP configuration ({commands[configure message_exp]})"
+msgstr "תפריט נקודות ניסיון ({commands[configure message_exp]})"
+
+#: src/tracking/text/ui.py:93
+msgctxt "dash:text_tracking|dropdown|placeholder"
+msgid "Message XP Panel"
+msgstr "תפריט נקודות ניסיון מהודעות"
+
+#: src/tracking/text/settings.py:33
+msgctxt "guildset:xp_per_period"
+msgid "xp_per_5min"
+msgstr "נקודות_כל_5דקות"
+
+#: src/tracking/text/settings.py:36
+msgctxt "guildset:xp_per_period|desc"
+msgid ""
+"How much XP members will be given every 5 minute period they are active."
+msgstr "כמה נקודות ניסיון משתמשים יקבלו כל חמש דקות שהם פעילים."
+
+#: src/tracking/text/settings.py:40
+msgctxt "guildset:xp_per_period|long_desc"
+msgid ""
+"Amount of message XP to give members for each 5 minute period in which they "
+"are active (send a message). Note that this XP is only given *once* per "
+"period."
+msgstr ""
+"כמות נקודות הניסיון שמשתמשים יקבלו כל חמש דקות שהם פעילים. (פעם בחמש דקות)."
+
+#: src/tracking/text/settings.py:45
+msgctxt "guildset:xp_per_period|accepts"
+msgid "Number of message XP to reward per 5 minute active period."
+msgstr "כמות נקודות הניסיון לכל 5 דקות פעילות"
+
+#: src/tracking/text/settings.py:57
+#, possible-python-brace-format
+msgctxt "guildset:xp_per_period|set_response"
+msgid ""
+"For every **5** minutes they are active (i.e. in which they send a message),"
+" members will now be given **{amount}** XP."
+msgstr ""
+"לכל חמש דקות שהם פעילים (זאת אומרת כשהם שולחים הודעה), כל המשתמשים יקבלו "
+"**{amount}** נקודות ניסיון."
+
+#: src/tracking/text/settings.py:65
+msgctxt "guildset:word_xp"
+msgid "xp_per_100words"
+msgstr "נקודות_לכל_100מילים"
+
+#: src/tracking/text/settings.py:68
+msgctxt "guildset:word_xp|desc"
+msgid "How much XP members will be given per hundred words they write."
+msgstr "כמה נקודות ניסיון משתמשים יקבלו על כל מאה מילים שהם כותבים."
+
+#: src/tracking/text/settings.py:72
+msgctxt "guildset:word_xp|long_desc"
+msgid ""
+"Amount of message XP to be given (additionally to the XP per period) for "
+"each hundred words. Useful for rewarding communication."
+msgstr ""
+"כמות נקודות הניסיון שאתן לכל 100 מילים. מעולה כדי לתגמל על שימוש בשרת."
+
+#: src/tracking/text/settings.py:77
+msgctxt "guildset:word_xp|accepts"
+msgid "Number of XP to reward per hundred words sent."
+msgstr "כמות נקודות ניסיון שמשתמש יקבל כל 100 מילים שישלחו בשרת"
+
+#: src/tracking/text/settings.py:89
+#, possible-python-brace-format
+msgctxt "guildset:word_xp|set_response"
+msgid ""
+"For every **100** words they send, members will now be rewarded an "
+"additional **{amount}** XP."
+msgstr ""
+"לכל 100 מילים שהם ישלחו, המשתמשים יקבלו **{amount}** נקודות ניסיון נוספות."
+
+#: src/tracking/text/settings.py:95
+msgctxt "guildset:untracked_text_channels"
+msgid "untracked_text_channels"
+msgstr "ערוציטקסט_לא_נצפים"
+
+#: src/tracking/text/settings.py:98
+msgctxt "guildset:untracked_text_channels|desc"
+msgid "Channels in which Message XP will not be given."
+msgstr "ערוצים שבהם לא אחשיב הודעות."
+
+#: src/tracking/text/settings.py:102
+msgctxt "guildset:untracked_text_channels|long_desc"
+msgid ""
+"Messages sent in these channels will not count towards a member's message "
+"XP. If a category is selected, then all channels under the category will "
+"also be untracked."
+msgstr ""
+"פעילות בערוצים האלו לא יחשבו בתור נקודות ניסיון. אם קטגוריה נבחרה, כל "
+"הערוצים תחתה לא יחשבו."
+
+#: src/tracking/text/settings.py:107
+msgctxt "guildset:untracked_text_channels|accepts"
+msgid "Comma separated list of untracked text channel names or ids."
+msgstr "רשימה מופרדת עם פסיקים של הערוצים המוגדרים כערוצים לא נעקבים."
+
+#: src/tracking/text/settings.py:111
+msgctxt "guildset:untracked_text_channels|notset"
+msgid "Not Set (all text channels will be tracked.)"
+msgstr "לא נקבע. (כל הערוצי טקסט ייחשבו)"
+
+#: src/tracking/text/settings.py:128
+#, possible-python-brace-format
+msgctxt "guildset:untracked_text_channels|set_response|set"
+msgid ""
+"Messages in or under the following channels will be ignored: {channels}"
+msgstr "הודעות בערוצים הבאים יתעלמו על ידי: {channels}"
+
+#: src/tracking/text/settings.py:133
+msgctxt "guildset:untracked_text_channels|set_response|notset"
+msgid "Message XP will now be tracked in every channel."
+msgstr "נקודות ניסיון של הודעות יתקבלו עכשיו מכל הערוצים בשרת."
+
+#: src/tracking/text/settings.py:142
+msgctxt "guildset:untracked_text_channels|set_using"
+msgid "Channel selector below"
+msgstr "בחירת ערוצים בתחתית."
+
+#: src/tracking/text/settings.py:173
+msgctxt "botset:xp_per_period"
+msgid "xp_per_5min"
+msgstr "נקודות_כל_5דקות"
+
+#: src/tracking/text/settings.py:176
+msgctxt "botset:xp_per_period|desc"
+msgid ""
+"How much global XP members will be given every 5 minute period they are "
+"active."
+msgstr "כמה נקודות ניסיון גלובליות משתמשים יקבלו כל חמש דקות שהם פעילים."
+
+#: src/tracking/text/settings.py:180
+msgctxt "botset:xp_per_period|long_desc"
+msgid ""
+"Amount of global message XP to give members for each 5 minute period in "
+"which they are active (send a message). Note that this XP is only given "
+"*once* per period."
+msgstr ""
+"כמות נקודות הניסיון הגלובליות שמשתמשים יקבלו כל חמש דקות שהם פעילים. (פעם "
+"בחמש דקות)."
+
+#: src/tracking/text/settings.py:186
+msgctxt "botset:xp_per_period|accepts"
+msgid "Number of message XP to reward per 5 minute active period."
+msgstr "כמות נקודות הניסיון לכל 5 דקות פעילות"
+
+#: src/tracking/text/settings.py:198
+#, possible-python-brace-format
+msgctxt "leoset:xp_per_period|set_response"
+msgid ""
+"For every **5** minutes they are active (i.e. in which they send a message),"
+" all users will now be given **{amount}** global XP."
+msgstr ""
+"לכל חמש דקות שהם פעילים (זאת אומרת כשהם שולחים הודעה), כל המשתמשים יקבלו "
+"**{amount}** נקודות ניסיון גלובליות."
+
+#: src/tracking/text/settings.py:206
+msgctxt "botset:word_xp"
+msgid "xp_per_100words"
+msgstr "נקודות_לכל_100מילים"
+
+#: src/tracking/text/settings.py:209
+msgctxt "botset:word_xp|desc"
+msgid "How much global XP members will be given per hundred words they write."
+msgstr "כמה נקודות ניסיון גלובליות משתמשים יקבלו על כל מאה מילים שהם כותבים."
+
+#: src/tracking/text/settings.py:213
+msgctxt "botset:word_xp|long_desc"
+msgid ""
+"Amount of global message XP to be given (additionally to the XP per period) "
+"for each hundred words. Useful for rewarding communication."
+msgstr "כמות נקודות ניסיון גלובליות לתת לכל 100 מילים."
+
+#: src/tracking/text/settings.py:218
+msgctxt "botset:word_xp|accepts"
+msgid "Number of XP to reward per hundred words sent."
+msgstr "כמות נקודות ניסיון שמשתמש יקבל כל 100 מילים שישלחו בשרת"
+
+#: src/tracking/text/settings.py:230
+#, possible-python-brace-format
+msgctxt "leoset:word_xp|set_response"
+msgid ""
+"For every **100** words they send, users will now be rewarded an additional "
+"**{amount}** global XP."
+msgstr ""
+"לכל 100 מילים שהם ישלחו, המשתמשים יקבלו **{amount}** נקודות ניסיון גלובליות "
+"נוספות."
