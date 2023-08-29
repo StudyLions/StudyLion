@@ -284,7 +284,7 @@ msgstr ""
 #: src/modules/video_channels/settings.py:221
 msgctxt "guildset:video_grace_period"
 msgid "video_grace_period"
-msgstr ""
+msgstr "תקופת_חנינה_חדרמצלמה"
 
 #: src/modules/video_channels/settings.py:224
 msgctxt "guildset:video_grace_period|desc"
