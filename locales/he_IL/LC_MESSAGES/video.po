@@ -344,4 +344,4 @@ msgstr ""
 #: src/modules/video_channels/settings.py:289
 msgctxt "guildset:video_exempt|set_response:unset"
 msgid "No members will be exempt from video channel requirements."
-msgstr ""
+msgstr "שום משתמש לא יוכל לעקוף את הדרישות של חדרי המצלמה."
