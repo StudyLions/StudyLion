@@ -1229,7 +1229,7 @@ msgstr ""
 #: src/modules/rolemenus/ui/menus.py:189
 msgctxt "ui:menu_list|embed|field:unattached|name"
 msgid "Unattached Menus"
-msgstr ""
+msgstr "תפריטים שלא קשורים להודעות"
 
 #: src/modules/rolemenus/ui/menus.py:201
 msgctxt "ui:menu_list|embed|footer:text"
