@@ -442,7 +442,7 @@ msgstr "סשנים_רשימה_שחורה"
 #: src/modules/schedule/settings.py:413
 msgctxt "guildset:schedule_blacklist_role|desc"
 msgid "Role which disables scheduled session booking."
-msgstr ""
+msgstr "רולים שחוסמים מפני קביעה לחדר לוז\"ים"
 
 #: src/modules/schedule/settings.py:417
 msgctxt "guildset:schedule_blacklist_role|long_desc"
