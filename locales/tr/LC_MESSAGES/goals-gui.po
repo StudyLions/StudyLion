@@ -59,7 +59,7 @@ msgstr "YAZIŞMA"
 #: src/gui/cards/goals.py:151
 msgctxt "skin:goals|mode:voice|goal:middle|below"
 msgid "HOURS"
-msgstr "SAATLER"
+msgstr "SAAT"
 
 #: src/gui/cards/goals.py:155
 msgctxt "skin:goals|mode:text|goal:middle|above"
