@@ -145,6 +145,8 @@ msgid ""
 "Cancel a single reminder. Use the menu in \"reminder show\" to cancel "
 "multiple reminders."
 msgstr ""
+"בטל תזכור בודד. השתמש בתפריט ב  \"הצג תזכורים\" כדי לבטל כמה תזכירים בבת "
+"אחת."
 
 #: src/modules/reminders/cog.py:464
 msgctxt "cmd:reminders_cancel|param:reminder"
