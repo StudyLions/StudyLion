@@ -127,7 +127,7 @@ msgstr "Esta cor de cargo não existe!"
 #: src/modules/shop/shops/colours.py:270
 msgctxt "shop:colour|purchase|error:failed_permissions"
 msgid "I do not have enough permissions to give you this colour role!"
-msgstr ""
+msgstr "Eu não tenho permissões suficientes para te dar esta cor de cargo."
 
 #: src/modules/shop/shops/colours.py:277
 msgctxt "shop:colour|purchase|error:failed_unknown"
