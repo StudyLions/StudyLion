@@ -317,7 +317,7 @@ msgstr "מה התזכיר צריך להיות?"
 #: src/modules/reminders/cog.py:727
 msgctxt "cmd:remindme_in|param:every|desc"
 msgid "How often to repeat this reminder. (e.g. 1 day, or 2h)"
-msgstr ""
+msgstr "עד מתי תרצו לקבל את התזכיר הזה? (e.g. 1 day, or 2h)"
 
 #: src/modules/reminders/cog.py:745
 msgctxt "cmd_remindme_in|error:too_many|desc"
