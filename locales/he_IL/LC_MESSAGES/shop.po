@@ -173,7 +173,7 @@ msgstr "איזה צבע הרול הזה צריך להיות? (תשתמשו בק�
 #: src/modules/shop/shops/colours.py:369
 msgctxt "cmd:editshop_colours_create|param:name|desc"
 msgid "What should the colour role be called?"
-msgstr ""
+msgstr "מה יהיה השם של הרול צבע הזה?"
 
 #: src/modules/shop/shops/colours.py:373
 msgctxt "cmd:editshop_colours_create|param:price|desc"
