@@ -264,7 +264,7 @@ msgctxt "guildset:session_channels|set_response|set"
 msgid ""
 "Activity in the following sessions will now count towards scheduled session "
 "attendance: {channels}"
-msgstr ""
+msgstr "פעילות בסשנים הבאים עכשיו יחשבו כנוכחות במערכת הסשנים: {channels}"
 
 #: src/modules/schedule/settings.py:171
 msgctxt "guildset:session_channels|set_response|unset"
