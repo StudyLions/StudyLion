@@ -81,7 +81,8 @@ msgstr "üyeyisıfırla"
 msgctxt "cmd:resetmember|desc"
 msgid "Reset (server-associated) member data for the target member or user."
 msgstr ""
-"Hedef kullanıcı veya üyedeki (sunucu-bağlantılı) kullanıcı verisini sıfırla."
+"Hedef kullanıcının veya üyenin (sunucu-bağlantılı) kullanıcı verisini "
+"sıfırla."
 
 #: src/modules/member_admin/cog.py:241
 msgctxt "cmd:resetmember|param:target"
