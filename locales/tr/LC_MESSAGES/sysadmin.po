@@ -204,4 +204,4 @@ msgstr "Presence etkinliği adı."
 #: src/modules/sysadmin/presence.py:197
 msgctxt "botset:presence_name|accepts"
 msgid "The name of the activity to show."
-msgstr ""
+msgstr "Gösterilecek etkinliğin adı."
