@@ -431,6 +431,8 @@ msgid ""
 "You have deleted the rank **{name}**! Could not delete the role due to an "
 "unknown error."
 msgstr ""
+"מחקתם את הדרגה  **{name}**! לא הצלחתי למחוק את הרול הקשור אליו בעקבות שגיאה "
+"לא ידועה."
 
 #: src/modules/ranks/ui/preview.py:182
 #, possible-python-brace-format
