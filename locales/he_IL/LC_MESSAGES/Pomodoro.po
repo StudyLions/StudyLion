@@ -711,7 +711,7 @@ msgctxt "ui:timer_status|button:start|error:not_manager|desc"
 msgid ""
 "Starting this timer requires `MANAGE_CHANNEL` permissions on the timer "
 "channel, or the configured `manager_role`!"
-msgstr ""
+msgstr "כדי לערוך את הטיימר הזה נדרשות הרשאות מנהל או אדמין."
 
 #: src/modules/pomodoro/ui/status.py:168
 msgctxt "ui:timer_status|button:start|label"
@@ -728,7 +728,7 @@ msgctxt "ui:timer_status|button:stop|error:not_manager|desc"
 msgid ""
 "Stopping this timer requires `MANAGE_CHANNEL` permissions on the timer "
 "channel, or the configured `manager_role`!"
-msgstr ""
+msgstr "כדי לערוך את הטיימר הזה נדרשות הרשאות מנהל או אדמין."
 
 #: src/modules/pomodoro/ui/status.py:204
 msgctxt "ui:timer_status|button:stop|label"
