@@ -161,6 +161,8 @@ msgid ""
 "Warnings, notes, video blacklists, and other moderation events will be "
 "posted as numbered tickets with context to this log."
 msgstr ""
+"Avisos, notas, lista negra de vídeo, e outros eventos da moderação serão "
+"postados em tíckets numerados de acordo com o contexto deste registro."
 
 #: src/modules/moderation/settings.py:32
 msgctxt "guildset:ticket_log|accepts"
