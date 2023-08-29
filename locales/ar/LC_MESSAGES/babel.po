@@ -304,7 +304,7 @@ msgstr "الهندية"
 #: src/babel/enums.py:56
 msgctxt "localenames|locale:hu"
 msgid "Hungarian"
-msgstr ""
+msgstr "المجرية"
 
 #: src/babel/enums.py:57
 msgctxt "localenames|locale:it"
