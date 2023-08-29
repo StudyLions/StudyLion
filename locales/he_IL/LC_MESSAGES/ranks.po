@@ -66,7 +66,7 @@ msgstr "מוחק דרגות לא זמינות."
 #, possible-python-brace-format
 msgctxt "rank_refresh|remove_roles|small_error"
 msgid "*Could not remove ranks from {member}*"
-msgstr ""
+msgstr "*לא הצלחתי למחוק את הדרגה מ{member}*"
 
 #: src/modules/ranks/cog.py:595
 msgctxt "rank_refresh|remove_roles|error:too_many_issues"
