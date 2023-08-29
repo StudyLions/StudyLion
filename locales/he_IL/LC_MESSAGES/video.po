@@ -279,7 +279,7 @@ msgstr "משתמשים יכנסו לרשימה השחורה אוטומטית: {d
 #: src/modules/video_channels/settings.py:213
 msgctxt "guildset:video_durations|set_response:unset"
 msgid "Video blacklists are now always permanent."
-msgstr ""
+msgstr "הרשימה השחורה של ערוצי המצלמה עכשיו תמידית ולא תוסר לעולם."
 
 #: src/modules/video_channels/settings.py:221
 msgctxt "guildset:video_grace_period"
