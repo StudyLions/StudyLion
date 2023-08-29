@@ -89,7 +89,7 @@ msgstr "לוח הזמנים `{provided}` לא נקבע. אנא בחר סשן ל�
 #, possible-python-brace-format
 msgctxt "cmd:schedule|cancel_booking|error:not_booked"
 msgid "Could not cancel {time} booking because it is not booked!"
-msgstr ""
+msgstr "לא הצלחתי לבטל את {time} כי לעולם לא קבעת את הסשן הזה."
 
 #: src/modules/schedule/cog.py:725
 #, possible-python-brace-format
