@@ -613,12 +613,12 @@ msgstr "החדר הפרטי שלך ב**{guild}** פג תוקף."
 #, possible-python-brace-format
 msgctxt "room|tick|rent_deducted"
 msgid "Daily rent deducted from room balance. New balance: {coin}**{amount}**"
-msgstr ""
+msgstr "שכירות יומים נלקחה מהבנק. מאזן עדכני: {coin}**{amount}**"
 
 #: src/modules/rooms/settings.py:21
 msgctxt "guildset:room_category"
 msgid "rooms_category"
-msgstr ""
+msgstr "קטגוריית_חדרים"
 
 #: src/modules/rooms/settings.py:25
 msgctxt "guildset:rooms_category|desc"
