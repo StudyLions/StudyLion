@@ -148,6 +148,8 @@ msgid ""
 "Whether statistics commands display combined stats for all servers or just "
 "your current server."
 msgstr ""
+"האם פקודות סטטיקטיקה יראו את הפעילות של המשתמשים מכל השרתים או רק השרת "
+"הנוכחי."
 
 #: src/modules/statistics/settings.py:88
 msgctxt "guildset:season_start"
