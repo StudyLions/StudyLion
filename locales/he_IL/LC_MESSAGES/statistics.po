@@ -216,7 +216,7 @@ msgctxt "guildset:unranked_roles|long_desc"
 msgid ""
 "When set, members with *any* of these roles will not appear on the "
 "/leaderboard ranking list."
-msgstr ""
+msgstr "כשמופעל, אנשים עם *אחד* מהרולים האלו לא יופיע בלוח השיאים."
 
 #: src/modules/statistics/settings.py:167
 msgctxt "guildset:unranked_roles|accepts"
