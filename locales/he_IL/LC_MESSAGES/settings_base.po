@@ -215,7 +215,7 @@ msgstr ""
 #: src/settings/setting_types.py:1376
 msgctxt "settype:stringlist|accepts"
 msgid "Comma separated strings."
-msgstr ""
+msgstr "טקסטים מופרדים באמצעות פסיק."
 
 #: src/settings/setting_types.py:1387
 msgctxt "settype:guildidlist|accepts"
