@@ -183,7 +183,7 @@ msgstr "Os tickets de moderação não serão registrados em um canal."
 #: src/modules/moderation/settings.py:63
 msgctxt "guildset:ticket_log|formatted:unset"
 msgid "Not Set."
-msgstr ""
+msgstr "Não configurado."
 
 #: src/modules/moderation/settings.py:70
 msgctxt "guildset:alert_channel"
