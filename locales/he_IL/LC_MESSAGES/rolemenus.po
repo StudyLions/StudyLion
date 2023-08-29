@@ -1049,7 +1049,7 @@ msgstr ""
 #: src/modules/rolemenus/menuoptions.py:110
 msgctxt "menuset:sticky|set_response:true"
 msgid "Members will no longer be able to remove roles with this menu."
-msgstr ""
+msgstr "משתמשים לא יוכלו להוריד מעצמם רולים באמצעות התפריט הזה."
 
 #: src/modules/rolemenus/menuoptions.py:115
 msgctxt "menuset:sticky|set_response:false"
