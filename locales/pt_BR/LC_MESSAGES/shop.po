@@ -369,7 +369,7 @@ msgstr "cargo"
 #: src/modules/shop/shops/colours.py:682
 msgctxt "cmd:editshop_colours_add|param:price"
 msgid "price"
-msgstr ""
+msgstr "preço"
 
 #: src/modules/shop/shops/colours.py:687
 msgctxt "cmd:editshop_colours_add|param:role|desc"
