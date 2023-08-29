@@ -541,7 +541,7 @@ msgstr ""
 #: src/modules/schedule/settings.py:516
 msgctxt "guildset:schedule_blacklist_after|formatted|unset"
 msgid "Do not automatically blacklist."
-msgstr ""
+msgstr "אל תכניס לרשימה השחורה אוטומטית."
 
 #: src/modules/schedule/settings.py:528
 msgctxt "guildset:schedule_blacklist_role|parse|error"
