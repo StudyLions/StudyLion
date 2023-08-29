@@ -856,7 +856,7 @@ msgstr "מטבעות יתנו כשמגיעים לדרגה הזו"
 #: src/modules/ranks/ui/editor.py:181
 msgctxt "ui:rank_editor|input:reward|error:parse"
 msgid "`reward`: Please enter an integer number of LionCoins."
-msgstr ""
+msgstr "`פרס`: אנא הכנס מספר שלם של מטבעות."
 
 #: src/modules/ranks/ui/editor.py:197
 msgctxt "ui:rank_editor|input:message|label"
