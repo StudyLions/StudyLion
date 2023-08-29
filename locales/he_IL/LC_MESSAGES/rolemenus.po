@@ -1124,7 +1124,7 @@ msgstr "משתמשים יוכלו להשיג מספר מקסימלי של  **{va
 #: src/modules/rolemenus/menuoptions.py:193
 msgctxt "menuset:obtainable|set_response:unset"
 msgid "Members will be able to select any number of roles from this menu."
-msgstr ""
+msgstr "משתמשים יוכלו לבחור כל כמות של רולים מהתפריט הזה."
 
 #: src/modules/rolemenus/menuoptions.py:201
 msgctxt "menuset:required_role"
