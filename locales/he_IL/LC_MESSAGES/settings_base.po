@@ -62,7 +62,7 @@ msgstr "הטקסט שהבאת לי ארוך מידי! אורך מקסימלי: {
 #: src/settings/setting_types.py:114
 msgctxt "settype:emoji|accepts"
 msgid "Paste a builtin emoji, custom emoji, or emoji id."
-msgstr ""
+msgstr "הדבק אימוג'י או מספר זהות של אחד."
 
 #: src/settings/setting_types.py:167
 #, possible-python-brace-format
