@@ -220,4 +220,4 @@ msgstr "טקסטים מופרדים באמצעות פסיק."
 #: src/settings/setting_types.py:1387
 msgctxt "settype:guildidlist|accepts"
 msgid "Comma separated list of guild ids."
-msgstr ""
+msgstr "תעודת זהות של שרתים מופרדים באמצעות פסיק."
