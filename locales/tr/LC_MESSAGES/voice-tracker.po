@@ -99,6 +99,8 @@ msgstr "Bunu yapamazsın!"
 msgctxt "cmd:now|target:other|mode:clear|error:perms|desc"
 msgid "You need to be a moderator to set or clear someone else's session tag."
 msgstr ""
+"Başka birinin oturum etiketini ayarlamak ya da temizlemek için moderatör "
+"olman gerekiyor."
 
 #: src/tracking/voice/cog.py:740
 msgctxt "cmd:now|target:other|mode:clear|success|title"
