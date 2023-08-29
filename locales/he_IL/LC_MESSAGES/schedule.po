@@ -472,7 +472,7 @@ msgstr "משתמשים עם הרול הזה {role} לא יוכלו לקבוע פ
 #: src/modules/schedule/settings.py:443
 msgctxt "guildset:schedule_blacklist_role|set_response|unset"
 msgid "The schedule blacklist role has been unset."
-msgstr ""
+msgstr "הרשימה השחורה של מערכת הסשנים נמחקה."
 
 #: src/modules/schedule/settings.py:453
 #, possible-python-brace-format
