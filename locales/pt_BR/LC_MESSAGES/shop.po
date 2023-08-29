@@ -255,12 +255,12 @@ msgstr "editar"
 #: src/modules/shop/shops/colours.py:517
 msgctxt "cmd:editshop_colours_edit|desc"
 msgid "Edit the name, colour, or price of a colour role."
-msgstr ""
+msgstr "Edite o nome, cor ou preço de uma cor de cargo."
 
 #: src/modules/shop/shops/colours.py:521
 msgctxt "cmd:editshop_colours_edit|param:role"
 msgid "role"
-msgstr ""
+msgstr "cargo"
 
 #: src/modules/shop/shops/colours.py:522
 msgctxt "cmd:editshop_colours_edit|param:name"
