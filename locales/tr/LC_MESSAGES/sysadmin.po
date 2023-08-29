@@ -118,6 +118,8 @@ msgctxt "botset:presence_type|long_desc"
 msgid ""
 "Whether the bot activity is shown as 'Listening', 'Playing', or 'Watching'."
 msgstr ""
+"Bot etkinliğinin 'Dinleme', 'Oynama' veya 'İzleme' olarak gösterilip "
+"gösterilmeyeceği."
 
 #: src/modules/sysadmin/presence.py:163
 msgctxt "botset:presence_type|accepts"
