@@ -38,7 +38,7 @@ msgstr "שגיאה לא ידועה התחוללה. אנא נסה שוב במספ
 msgctxt "create_booking|error:blacklisted"
 msgid ""
 "You have been blacklisted from the scheduled session system in this server."
-msgstr ""
+msgstr "נכנסת לרשימה השחורה של מערכת הלו\"זים בשרת הזה."
 
 #: src/modules/schedule/cog.py:460
 #, possible-python-brace-format
