@@ -295,7 +295,7 @@ msgstr "Nova cor para a cor de cargo (em código HEX, ex:. #AB12AB)."
 #: src/modules/shop/shops/colours.py:541
 msgctxt "cmd:editshop_colours_edit|param:price|desc"
 msgid "New price for the colour role."
-msgstr ""
+msgstr "Novo preço para a cor de cargo."
 
 #: src/modules/shop/shops/colours.py:570
 #, possible-python-brace-format
