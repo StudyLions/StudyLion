@@ -189,7 +189,7 @@ msgstr "כל אופציה"
 #: src/settings/setting_types.py:1070
 msgctxt "settype:enum|accepts"
 msgid "A valid option."
-msgstr ""
+msgstr "אופציה שעובדת."
 
 #: src/settings/setting_types.py:1120
 #, possible-python-brace-format
