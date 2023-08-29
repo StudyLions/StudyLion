@@ -101,6 +101,8 @@ msgstr "Criar Temporizador na Sala"
 msgctxt "ui:room_status|button:timer|timer_created"
 msgid "Timer created successfully! Use `/pomodoro edit` to configure further."
 msgstr ""
+"Temporizador criado com sucesso! Use ˋ/pomodoro editarˋ para mais "
+"configurações. "
 
 #: src/modules/rooms/roomui.py:254
 msgctxt "ui:room_status|button:timer|label:edit_timer"
