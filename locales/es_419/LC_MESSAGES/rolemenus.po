@@ -880,11 +880,12 @@ msgstr "Dos Columnas"
 msgctxt "template:two_column|desc"
 msgid "A compact two column role layout. Excludes prices and durations."
 msgstr ""
+"Un diseño compacto de dos columnas de roles. Excluye precios y duraciones."
 
 #: src/modules/rolemenus/templates.py:131
 msgctxt "template:three_column|name"
 msgid "Three Column"
-msgstr ""
+msgstr "Tres Columnas"
 
 #: src/modules/rolemenus/templates.py:135
 msgctxt "template:three_column|desc"
