@@ -1380,7 +1380,7 @@ msgstr "תפריט נפתח"
 #: src/modules/rolemenus/ui/menueditor.py:627
 msgctxt "ui:menu_editor|menu:style|option:dropdown|desc"
 msgid "Roles are selectable from a dropdown menu below the message."
-msgstr ""
+msgstr "רולים ניתנים לבחירה על ידי תפריט נופל מתחת להודעה."
 
 #: src/modules/rolemenus/ui/menueditor.py:697
 msgctxt "ui:menu_editor|menu:template|placeholder"
