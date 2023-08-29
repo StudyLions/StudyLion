@@ -72,6 +72,8 @@ msgid ""
 "builtin emojis (e.g. `{builtin}`), custom emojis (e.g. {custom}), or custom "
 "emoji ids (e.g. `{custom_id}`)."
 msgstr ""
+"לא הצלחתי להבין את `{provided}` כאמוג'י. אני תומך רק באמוג'ים של דיסקורד, "
+"שיש לכם בשרת, או במספר מזהה של אימוג'י ספציפי משרת אחד שאני נמצא בו."
 
 #: src/settings/setting_types.py:236
 msgctxt "settype:channel|accepts"
