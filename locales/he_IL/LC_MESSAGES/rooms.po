@@ -746,11 +746,13 @@ msgid ""
 "If enabled, new private rooms will be created with the `VIEW_CHANNEL` "
 "permission enabled for the `@everyone` role."
 msgstr ""
+"אם מופעל, חדרים חדשים יווצרו עם ההרשאה `VIEW_CHANNEL` לכל חברי השרת, אבל הם "
+"לא יוכלו להצטרף אליו, רק לראות אותו."
 
 #: src/modules/rooms/settings.py:157
 msgctxt "guildset:rooms_visible|accepts"
 msgid "Visible/Invisible"
-msgstr ""
+msgstr "נראה/בלתי נראה"
 
 #: src/modules/rooms/settings.py:159
 msgctxt "guildset:rooms_visible|output:true"
