@@ -86,7 +86,7 @@ msgstr ""
 #: src/modules/moderation/ticket.py:180
 msgctxt "ticket|field:expiry|mode:expiring|name"
 msgid "Expires At"
-msgstr ""
+msgstr "Expira em"
 
 #: src/modules/moderation/ticket.py:183
 #, possible-python-brace-format
