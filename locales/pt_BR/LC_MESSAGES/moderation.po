@@ -167,7 +167,7 @@ msgstr ""
 #: src/modules/moderation/settings.py:32
 msgctxt "guildset:ticket_log|accepts"
 msgid "Ticket channel name or id."
-msgstr "Nome do canal de tickets, ou id deste. "
+msgstr "Nome do canal de tickets, ou id deste."
 
 #: src/modules/moderation/settings.py:46
 #, possible-python-brace-format
