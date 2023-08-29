@@ -300,6 +300,9 @@ msgid ""
 "channel. After this time, if they have not enabled their video, they will be"
 " kicked from the channel and potentially blacklisted from video channels."
 msgstr ""
+"אורך הזמן שבו משתמש חייב להפעיל את המצלמה שלו לאחר שהצטרף לערוץ מצלמה. אם הם"
+" לא מפעילים אותה, הם מסתכנים בחסימה והכנסה לרשימה השחורה, והם לא יוכלו "
+"להשתמש בפונקציה הזאתי."
 
 #: src/modules/video_channels/settings.py:234
 msgctxt "guildset:video_grace_period|accepts"
