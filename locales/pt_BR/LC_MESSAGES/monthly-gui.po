@@ -80,7 +80,7 @@ msgstr "NESTE MÊS: {amount} HORAS"
 #, possible-python-brace-format
 msgctxt "skin:monthlystats|mode:voice|summary:this_month"
 msgid "THIS MONTH: {amount} HOURS"
-msgstr ""
+msgstr "NESTE MÊS: {amount} HORAS"
 
 #: src/gui/cards/monthly.py:171
 #, possible-python-brace-format
