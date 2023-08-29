@@ -50,7 +50,7 @@ msgstr "**Online**"
 #: src/modules/sysadmin/presence.py:134
 msgctxt "botset:presence_status|output:idle"
 msgid "**Idle**"
-msgstr "**Inativa**"
+msgstr "**Ausente**"
 
 #: src/modules/sysadmin/presence.py:135
 msgctxt "botset:presence_status|output:dnd"
@@ -60,7 +60,7 @@ msgstr "**Ocupado**"
 #: src/modules/sysadmin/presence.py:136
 msgctxt "botset:presence_status|output:offline"
 msgid "**Offline**"
-msgstr ""
+msgstr "**Offline**"
 
 #: src/modules/sysadmin/presence.py:139
 msgctxt "botset:presence_status|input_format:online"
