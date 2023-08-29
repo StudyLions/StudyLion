@@ -607,7 +607,7 @@ msgstr "החדר הפרטי פג תוקף!"
 #, possible-python-brace-format
 msgctxt "room|embed:expiry|description"
 msgid "Your private room in **{guild}** has expired!"
-msgstr ""
+msgstr "החדר הפרטי שלך ב**{guild}** פג תוקף."
 
 #: src/modules/rooms/room.py:265
 #, possible-python-brace-format
