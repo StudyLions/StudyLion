@@ -980,7 +980,7 @@ msgstr "הרול נלבש."
 #, possible-python-brace-format
 msgctxt "rolemenu|select|success:purchase|desc"
 msgid "You have purchased the role **{role}** for {coin}**{amount}**"
-msgstr ""
+msgstr "רכשת את הרול **{role}** עבור {coin}**{amount}**"
 
 #: src/modules/rolemenus/rolemenu.py:658
 #, possible-python-brace-format
