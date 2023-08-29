@@ -48,12 +48,14 @@ msgid ""
 "I require the `MANAGE_WEBHOOKS` permission to send pomodoro notifications "
 "here!"
 msgstr ""
+"Buraya pomodoro bildirimlerini gönderebilmek için `MANAGE_WEBHOOKS` iznine "
+"ihtiyacım var!"
 
 #: src/modules/pomodoro/timer.py:229
 #, possible-python-brace-format
 msgctxt "timer|default_base_name"
 msgid "Timer {pattern}"
-msgstr ""
+msgstr "Sayaç {pattern}"
 
 #: src/modules/pomodoro/timer.py:403
 #, possible-python-brace-format
