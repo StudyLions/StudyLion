@@ -1299,12 +1299,12 @@ msgstr "יותר מידי רולים! לא ניתן לעבור יותר מ20 ר�
 #: src/modules/rolemenus/ui/menueditor.py:416
 msgctxt "ui:menu_editor|menu:add_roles|error:too_many_roles"
 msgid "Too many roles! Role menus cannot have more than `25` roles."
-msgstr ""
+msgstr "יותר מידי רולים! לא ניתן לעבור יותר מ25 רולים בתפריט."
 
 #: src/modules/rolemenus/ui/menueditor.py:455
 msgctxt "ui:menu_editor|menu:add_roles|placeholder"
 msgid "Add Roles"
-msgstr ""
+msgstr "הוסף רולים"
 
 #: src/modules/rolemenus/ui/menueditor.py:481
 msgctxt "ui:menu_editor|menu:edit_roles|placeholder"
