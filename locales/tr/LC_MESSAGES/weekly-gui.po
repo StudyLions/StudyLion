@@ -29,7 +29,7 @@ msgstr "ÇALIŞMA SAATLERİ"
 #: src/gui/cards/weekly.py:56
 msgctxt "skin:weeklystats|mode:voice|title"
 msgid "VOICE CHANNEL ACTIVITY"
-msgstr ""
+msgstr "SES KANALI ETKİNLIĞİ"
 
 #: src/gui/cards/weekly.py:60
 msgctxt "skin:weeklystats|mode:text|title"
