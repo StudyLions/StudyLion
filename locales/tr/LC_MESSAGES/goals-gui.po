@@ -25,7 +25,7 @@ msgstr ""
 #: src/gui/cards/goals.py:95
 msgctxt "skin:goals|goal:tasks|name"
 msgid "TASKS DONE"
-msgstr "GÖREVLER TAMAMLANDI"
+msgstr "TAMAMLANAN GÖREVLER"
 
 #: src/gui/cards/goals.py:99
 msgctxt "skin:goals|goal:tasks|goal"
