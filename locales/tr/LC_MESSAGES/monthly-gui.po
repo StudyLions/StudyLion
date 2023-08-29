@@ -34,12 +34,12 @@ msgstr "SES KANALI ETKINLIĞI"
 #: src/gui/cards/monthly.py:48
 msgctxt "skin:monthlystats|mode:text|title"
 msgid "MESSAGE ACTIVITY"
-msgstr ""
+msgstr "MESAJ ETKINLIĞI"
 
 #: src/gui/cards/monthly.py:52
 msgctxt "skin::monthlystats|mode:anki|title"
 msgid "CARDS REVIEWED"
-msgstr ""
+msgstr "İNCELENEN KARTLAR"
 
 #: src/gui/cards/monthly.py:119
 #, possible-python-brace-format
