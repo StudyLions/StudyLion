@@ -419,7 +419,7 @@ msgctxt "guildset:min_attendance|set_response"
 msgid ""
 "Members will be rewarded after they have attended booked sessions for at "
 "least **`{amount}`** minutes."
-msgstr ""
+msgstr "הסשן יחושב כשמוצלח אחרי **`{amount}`** דקות."
 
 #: src/modules/schedule/settings.py:379
 #, possible-python-brace-format
