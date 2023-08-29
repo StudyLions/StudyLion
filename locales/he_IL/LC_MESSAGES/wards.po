@@ -92,3 +92,5 @@ msgstr "אתה צריך את ההרשאה `MANAGE_ROLES` כדי לנהל את ה
 msgctxt "ward:equippable_role|error:actor_top_role"
 msgid "You cannot configure {role} because it is above your top role!"
 msgstr ""
+"אתה לא יכול לתת או להסיר את {role} מאחר והוא מעל הרול שלך ברשימת הרולים של "
+"השרת שלכם!"
