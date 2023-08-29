@@ -91,7 +91,8 @@ msgstr "{role} rolünü atamak veya kaldırmak için yeterli yetkim yok."
 #: src/wards.py:192
 msgctxt "ward:equippable_role|error:actor_perms"
 msgid "You need the `MANAGE_ROLES` permission before you can configure roles!"
-msgstr "Rolleri ayarlayabilmek için `MANAGE_ROLES` yetkisine ihtiyacınız var!"
+msgstr ""
+"Rolleri yönetebilmek için `ROLLERİ_YÖNET` yetkisine sahip olmanız gerekir!"
 
 #: src/wards.py:199
 #, possible-python-brace-format
