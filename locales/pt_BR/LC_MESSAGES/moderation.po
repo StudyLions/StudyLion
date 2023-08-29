@@ -126,7 +126,7 @@ msgstr ""
 #: src/modules/moderation/ticket.py:219
 msgctxt "ticket|field:notes|name"
 msgid "Notes"
-msgstr ""
+msgstr "Notas"
 
 #: src/modules/moderation/ticket.py:226
 msgctxt "ticket|field:pardoned|name"
