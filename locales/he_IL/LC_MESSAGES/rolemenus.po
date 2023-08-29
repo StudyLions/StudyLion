@@ -1223,6 +1223,8 @@ msgid ""
 "Right click an existing message or use the `newmenu` command to create a new"
 " menu."
 msgstr ""
+"לחץ בלחיצה ימנית על הודעה קיימת או השתמש בפקודה `newmenu` כדי ליצור תפריט "
+"חדש."
 
 #: src/modules/rolemenus/ui/menus.py:189
 msgctxt "ui:menu_list|embed|field:unattached|name"
