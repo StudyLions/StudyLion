@@ -30,7 +30,7 @@ msgstr "נקודות_הודעה"
 #: src/tracking/text/cog.py:252
 msgctxt "cmd:configure_message_exp|desc"
 msgid "Configure Message Tracking & Experience"
-msgstr ""
+msgstr "ערוך ניתור ונקודות ניסיון מהודעות"
 
 #: src/tracking/text/cog.py:315
 msgctxt "cmd:leo_configure_exp_rates"
