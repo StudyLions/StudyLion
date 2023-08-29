@@ -486,12 +486,12 @@ msgstr "añadirrol"
 #: src/modules/rolemenus/cog.py:1148
 msgctxt "cmd:rolemenu_addrole|desc"
 msgid "Add a new role to an existing role menu."
-msgstr ""
+msgstr "Añadir un nuevo rol a un menú de roles existente."
 
 #: src/modules/rolemenus/cog.py:1153
 msgctxt "cmd:rolemenu_addrole|param:menu"
 msgid "menu"
-msgstr ""
+msgstr "menú"
 
 #: src/modules/rolemenus/cog.py:1156
 msgctxt "cmd:rolemenu_addrole|param:role"
