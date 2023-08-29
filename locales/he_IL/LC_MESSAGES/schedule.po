@@ -286,7 +286,7 @@ msgstr "מחיר_סשן"
 #: src/modules/schedule/settings.py:214
 msgctxt "guildset:schedule_cost|desc"
 msgid "Booking cost for each scheduled session."
-msgstr ""
+msgstr "מחיר לקביעת כל סשן בלו\"ז."
 
 #: src/modules/schedule/settings.py:218
 msgctxt "guildset:schedule_cost|long_desc"
