@@ -475,7 +475,7 @@ msgstr "השם של התפריט שאליו אוסיף את הרול"
 #: src/modules/rolemenus/cog.py:1171
 msgctxt "cmd:rolemenu_addrole|param:role|desc"
 msgid "Role to add to the menu"
-msgstr ""
+msgstr "רול שאותו אוסיף לתפריט"
 
 #: src/modules/rolemenus/cog.py:1179
 msgctxt "cmd:rolemenu_addrole|param:duration|desc"
@@ -491,7 +491,7 @@ msgstr "לשרת הזה אין תפריט בשם `{name}`!"
 #: src/modules/rolemenus/cog.py:1312
 msgctxt "cmd:rolemenu_addrole|success:create|title"
 msgid "Added Menu Role"
-msgstr ""
+msgstr "רול שהוסף לתפריט"
 
 #: src/modules/rolemenus/cog.py:1316
 #, possible-python-brace-format
