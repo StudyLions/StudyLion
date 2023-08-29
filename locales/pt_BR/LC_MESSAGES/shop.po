@@ -490,7 +490,7 @@ msgctxt "cmd:editshop_colours_clear|resp:done|line:deleted_failed"
 msgid ""
 "{emoji} Deleted **{count}/{total}** colour roles. (**{failed}** failed!)"
 msgstr ""
-"{emoji} Apagados **{count}/{total}** cores de cargo. (**{failed}** failed!)"
+"{emoji} Apagadas **{count}/{total}** cores de cargo. (**{failed}** failed!)"
 
 #: src/modules/shop/shops/colours.py:919
 #, possible-python-brace-format
