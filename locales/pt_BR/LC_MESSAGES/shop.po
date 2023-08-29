@@ -573,7 +573,7 @@ msgstr "A compra falhou!"
 #, possible-python-brace-format
 msgctxt "ui:colourstore|menu:buycolours|resp:done|desc"
 msgid "{tick} You have purchased {mention}"
-msgstr ""
+msgstr "{tick} Você comprou {mention}"
 
 #: src/modules/shop/shops/colours.py:1160
 msgctxt "ui:colourstore|menu:buycolours|placeholder"
