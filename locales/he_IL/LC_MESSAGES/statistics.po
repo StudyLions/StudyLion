@@ -361,12 +361,12 @@ msgstr ""
 #: src/modules/statistics/ui/weeklymonthly.py:106
 msgctxt "menu:stat_type|opt:weekly_anki|name"
 msgid "Weekly Anki Statistics"
-msgstr ""
+msgstr "סטטיסטיקות אנקי שבועיות"
 
 #: src/modules/statistics/ui/weeklymonthly.py:112
 msgctxt "menu:stat_type|opt:monthly_voice|name"
 msgid "Monthly Voice Statistics"
-msgstr ""
+msgstr "סטטיסטיקות קול חודשיות"
 
 #: src/modules/statistics/ui/weeklymonthly.py:117
 msgctxt "menu:stat_type|opt:monthly_text|name"
