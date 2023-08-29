@@ -167,7 +167,7 @@ msgstr "שם או מספר מזהה של חדר הלובי של הסשנים."
 #, possible-python-brace-format
 msgctxt "guildset:session_lobby|set_response|set"
 msgid "Scheduled sessions will now be announced in {channel}"
-msgstr ""
+msgstr "עדכונים של מערכת הסשנים יהיו מוכרזים ב {channel}"
 
 #: src/modules/schedule/settings.py:68
 msgctxt "guildset:session_lobby|set_response|unset"
