@@ -266,7 +266,7 @@ msgctxt "guildset:hourly_reward|mode:voice|long_desc"
 msgid ""
 "Number of LionCoins to each member per hour that they stay in a tracked "
 "voice channel."
-msgstr ""
+msgstr "מספר מטבעות שכל משתמש יקבל בשעה כשהוא נשאר בערוץ קולי."
 
 #: src/tracking/voice/settings.py:128
 msgctxt "guildset:hourly_reward|accepts"
