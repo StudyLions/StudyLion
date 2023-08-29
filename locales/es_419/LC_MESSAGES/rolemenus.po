@@ -696,12 +696,12 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "roleset:role|set_response:set"
 msgid "This menu item will now give the role {role}."
-msgstr ""
+msgstr "Este elemento de menú dará ahora el rol {role}."
 
 #: src/modules/rolemenus/roleoptions.py:82
 msgctxt "roleset:label"
 msgid "label"
-msgstr ""
+msgstr "etiqueta"
 
 #: src/modules/rolemenus/roleoptions.py:85
 msgctxt "roleset:label|desc"
