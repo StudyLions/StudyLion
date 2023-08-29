@@ -73,6 +73,7 @@ msgstr "Eu não posso configurar os cargos padrão do servidor."
 msgctxt "ward:equippable_role|error:no_perms"
 msgid "I need the `MANAGE_ROLES` permission before I can manage roles!"
 msgstr ""
+"Eu preciso ter permissão de `MANAGE_GUILD` antes de poder configurar cargos."
 
 #: src/wards.py:177
 #, possible-python-brace-format
