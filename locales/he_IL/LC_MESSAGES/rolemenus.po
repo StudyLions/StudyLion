@@ -1269,12 +1269,12 @@ msgstr "עריכה בכמות גדולה"
 #: src/modules/rolemenus/ui/menueditor.py:235
 msgctxt "ui:menu_editor|button:sticky|label"
 msgid "Toggle Sticky"
-msgstr ""
+msgstr "הפעל מצב דביק"
 
 #: src/modules/rolemenus/ui/menueditor.py:259
 msgctxt "ui:menu_editor|button:refunds|label"
 msgid "Toggle Refunds"
-msgstr ""
+msgstr "אפשר החזרים"
 
 #: src/modules/rolemenus/ui/menueditor.py:289
 msgctxt "ui:menu_editor|menu:reqroles|placeholder"
