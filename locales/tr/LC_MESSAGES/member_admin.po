@@ -131,7 +131,7 @@ msgstr "hoş_geldin"
 #: src/modules/member_admin/cog.py:305
 msgctxt "cmd:configure_welcome|desc"
 msgid "Configure new member greetings and roles."
-msgstr "Yeni üye karışaması ve rollerini ayarla."
+msgstr "Yeni üye karşılaması ve rollerini ayarla."
 
 #: src/modules/member_admin/settings.py:20
 msgctxt "guildset:greeting_message|formatkey:mention"
