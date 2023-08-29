@@ -289,8 +289,14 @@ msgid_plural ""
 "Are you sure you want to spend {coin}**{required}** to rent a private room "
 "for `{days}` days?"
 msgstr[0] ""
+"Você confirma que quer gastar {coin}**{required}** para alugar uma sala "
+"privada por ˋ{days}ˋ dia?"
 msgstr[1] ""
+"Você confirma que quer gastar {coin}**{required}** para alugar uma sala "
+"privada por ˋ{days}ˋ dias?"
 msgstr[2] ""
+"Você confirma que quer gastar {coin}**{required}** para alugar uma sala "
+"privada por ˋ{days}ˋ dias?"
 
 #: src/modules/rooms/cog.py:452
 #, possible-python-brace-format
