@@ -403,6 +403,8 @@ msgid ""
 "You have deleted the rank {mention}. Press the button below to also delete "
 "the role."
 msgstr ""
+"מחקתם את הדרגה {mention}. לחץ על הכפתור בתחתית כדי למחוק את הרול שהיה קשור "
+"אליה."
 
 #: src/modules/ranks/ui/preview.py:144
 #, possible-python-brace-format
