@@ -69,7 +69,7 @@ msgstr "GÖNDERİLDİ"
 #: src/gui/cards/goals.py:159
 msgctxt "skin:goals|mode:text|goal:middle|below"
 msgid "MESSAGES"
-msgstr "MESAJLAR"
+msgstr "MESAJ"
 
 #: src/gui/cards/goals.py:163
 msgctxt "skin:goals|mode:anki|goal:middle|above"
