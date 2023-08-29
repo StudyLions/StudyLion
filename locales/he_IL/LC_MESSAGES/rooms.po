@@ -454,7 +454,7 @@ msgstr "אין לך חדש פרטי! תשתמש ב  `/room rent` כדי ליצו
 #: src/modules/rooms/cog.py:729
 msgctxt "cmd:room_kick|error:no_matching_members"
 msgid "None of the mentioned members are in this room!"
-msgstr "אף אחד ממי שציינת נמצא בחדר הזה."
+msgstr "אף אחד ממי שציינת לא נמצא בחדר הזה."
 
 #: src/modules/rooms/cog.py:746
 msgctxt "cmd:room_kick|success|ack"
