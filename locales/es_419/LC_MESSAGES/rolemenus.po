@@ -549,7 +549,7 @@ msgstr "Nota"
 #: src/modules/rolemenus/cog.py:1376
 msgctxt "cmd:rolemenu_addrole|success|button:editor|label"
 msgid "Edit Menu"
-msgstr ""
+msgstr "Editar menú"
 
 #: src/modules/rolemenus/cog.py:1393
 msgctxt "cmd:rolemenu_editrole"
