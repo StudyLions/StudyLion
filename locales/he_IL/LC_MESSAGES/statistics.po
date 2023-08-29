@@ -281,7 +281,7 @@ msgstr "ברירתמחדל_סטטיסטיקה"
 #: src/modules/statistics/settings.py:267
 msgctxt "guildset:default_stat|desc"
 msgid "Statistic type to display by default in setting dialogues."
-msgstr ""
+msgstr "סוג הסטטיסטיקה שתרצו לראות כשאתם משחקים עם ההגדרות."
 
 #: src/modules/statistics/settings.py:271
 msgctxt "guildset:default_stat|long_desc"
