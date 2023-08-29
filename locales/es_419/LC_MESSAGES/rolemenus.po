@@ -859,12 +859,12 @@ msgstr ""
 #: src/modules/rolemenus/roleoptions.py:285
 msgctxt "roleset:duration|set_response:unset"
 msgid "This role will no longer expire after being selected."
-msgstr ""
+msgstr "Este rol ya no caducará después de haber sido seleccionado."
 
 #: src/modules/rolemenus/templates.py:53
 msgctxt "template:simple|name"
 msgid "Simple Menu"
-msgstr ""
+msgstr "Menú Simple"
 
 #: src/modules/rolemenus/templates.py:57
 msgctxt "template:simple|desc"
