@@ -166,4 +166,4 @@ msgstr "{count} gün"
 #, possible-python-brace-format
 msgctxt "skin:monthlystats|footer"
 msgid "Monthly Statistics • As of {day} {month} • {name} {discrim}"
-msgstr ""
+msgstr " Aylık İstatistikler • {day} {month} • {name} {discrim} itibariyle"
