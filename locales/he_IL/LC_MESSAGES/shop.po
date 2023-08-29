@@ -600,4 +600,4 @@ msgstr "אין רולים צבעים לרכישה!"
 #: src/modules/shop/shops/colours.py:1210
 msgctxt "ui:colourstore|embed|title"
 msgid "Colour Role Shop"
-msgstr ""
+msgstr "חנות רולי צבעים"
