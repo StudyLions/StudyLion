@@ -45,7 +45,7 @@ msgstr "Online/Inativa/Ausente/Offline"
 #: src/modules/sysadmin/presence.py:133
 msgctxt "botset:presence_status|output:online"
 msgid "**Online**"
-msgstr ""
+msgstr "**Online**"
 
 #: src/modules/sysadmin/presence.py:134
 msgctxt "botset:presence_status|output:idle"
