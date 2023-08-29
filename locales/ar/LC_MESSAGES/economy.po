@@ -5,15 +5,16 @@
 # 
 # Translators:
 # Interitio, 2023
+# Nour Ibram, 2023
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-27 16:37+0300\n"
+"POT-Creation-Date: 2023-08-28 22:43+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Interitio, 2023\n"
+"Last-Translator: Nour Ibram, 2023\n"
 "Language-Team: Arabic (https://app.transifex.com/leobot/teams/174919/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,6 +26,8 @@ msgstr ""
 msgctxt "ui:economy_config|embed|title"
 msgid "Economy Configuration Panel"
 msgstr ""
+"لوحة إعدادت البنك \n"
+"AT: لوحة إعدادت حساب الإدخار"
 
 #: src/modules/economy/settingui.py:68
 msgctxt "dash:economy|title"
