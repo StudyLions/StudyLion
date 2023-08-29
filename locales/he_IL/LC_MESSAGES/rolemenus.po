@@ -713,7 +713,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "roleset:emoji|error:test_emoji"
 msgid "The selected emoji `{emoji}` is invalid or has been deleted."
-msgstr ""
+msgstr "האמוג'י שנבחר  `{emoji}` שגוי או נמחק."
 
 #: src/modules/rolemenus/roleoptions.py:168
 #, possible-python-brace-format
