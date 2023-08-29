@@ -49,7 +49,7 @@ msgstr "Configurações de Moderação ({commands[configure moderation]})"
 #: src/modules/moderation/settingui.py:154
 msgctxt "dash:moderation|dropdown|placeholder"
 msgid "Moderation Panel"
-msgstr ""
+msgstr "Painel de Moderação"
 
 #: src/modules/moderation/cog.py:136
 msgctxt "cmd:configure_moderation"
