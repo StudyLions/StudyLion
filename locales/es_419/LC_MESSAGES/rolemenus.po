@@ -621,12 +621,12 @@ msgstr "¡Advertencia!"
 #: src/modules/rolemenus/cog.py:1609
 msgctxt "cmd:rolemenu_delrole"
 msgid "delrole"
-msgstr ""
+msgstr "eliminarrol"
 
 #: src/modules/rolemenus/cog.py:1612
 msgctxt "cmd:rolemenu_delrole|desc"
 msgid "Remove a role from a role menu."
-msgstr ""
+msgstr "Eliminar un rol de un menú de roles."
 
 #: src/modules/rolemenus/cog.py:1616
 msgctxt "cmd:rolemenu_delrole|param:menu"
