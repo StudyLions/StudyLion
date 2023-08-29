@@ -561,7 +561,7 @@ msgstr "**טוען משתמשים:**{emoji}"
 #, possible-python-brace-format
 msgctxt "ui:refresh_ranks|embed|line:roles"
 msgid "**Loading rank roles:** {emoji}"
-msgstr ""
+msgstr "**טוען רולים שקשורים לדרגות:** {emoji}"
 
 #: src/modules/ranks/ui/refresh.py:187
 #, possible-python-brace-format
