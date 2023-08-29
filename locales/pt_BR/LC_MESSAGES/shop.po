@@ -220,7 +220,7 @@ msgstr ""
 #: src/modules/shop/shops/colours.py:490
 msgctxt "cmd:editshop_colours_create|resp:done|title"
 msgid "Colour Role Created"
-msgstr ""
+msgstr " Cor de Cargo Criada"
 
 #: src/modules/shop/shops/colours.py:494
 #, possible-python-brace-format
