@@ -330,6 +330,8 @@ msgid ""
 "Rank update messages will be ignored or sent via DM (if `dm_ranks` is "
 "enabled)."
 msgstr ""
+"התראות דרגה לא יקבלו התראה או פשוט ישלחו בהודעה פרטית אם הפעלתם את "
+"`דרגות_הודעה_פרטית`"
 
 #: src/modules/ranks/settings.py:143
 #, possible-python-brace-format
