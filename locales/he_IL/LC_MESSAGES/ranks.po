@@ -80,7 +80,7 @@ msgstr ""
 #: src/modules/ranks/cog.py:609
 msgctxt "rank_refresh|add_roles|audit"
 msgid "Adding rank role from refresh"
-msgstr ""
+msgstr "מוסיף דרגות מאופציית הרענון"
 
 #: src/modules/ranks/cog.py:623
 #, possible-python-brace-format
