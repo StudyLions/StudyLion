@@ -93,4 +93,4 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "skin:leaderboard|mode:anki|entry_hours_text"
 msgid "{amount} cards"
-msgstr "{amount} kartlar"
+msgstr "{amount} kart"
