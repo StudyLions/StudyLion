@@ -101,7 +101,7 @@ msgstr "לא הצלחתי לבטל את {time} כי הוא כבר התחיל א�
 #, possible-python-brace-format
 msgctxt "cmd:schedule|cancel_booking|success"
 msgid "Successfully cancelled your booking at {time}."
-msgstr ""
+msgstr "ביטלתי בהצלחה את הסשן שלך ב {time}."
 
 #: src/modules/schedule/cog.py:751
 #, possible-python-brace-format
