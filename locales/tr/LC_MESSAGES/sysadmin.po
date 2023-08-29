@@ -134,12 +134,12 @@ msgstr "**İzliyor**"
 #: src/modules/sysadmin/presence.py:173
 msgctxt "botset:presence_type|output:listening"
 msgid "**Listening**"
-msgstr ""
+msgstr "**Dinliyor**"
 
 #: src/modules/sysadmin/presence.py:174
 msgctxt "botset:presence_type|output:playing"
 msgid "**Playing**"
-msgstr ""
+msgstr "**Oynuyor**"
 
 #: src/modules/sysadmin/presence.py:175
 msgctxt "botset:presence_type|output:streaming"
