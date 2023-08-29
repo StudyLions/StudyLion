@@ -1210,12 +1210,12 @@ msgstr "`{name}` עם `{count}` רולים."
 #, possible-python-brace-format
 msgctxt "ui:menu_list|embed|title"
 msgid "Role Menus in {guild}"
-msgstr ""
+msgstr "תפריטי רולים בשרת {guild}"
 
 #: src/modules/rolemenus/ui/menus.py:172
 msgctxt "ui:menu_list|embed|field:tips|name"
 msgid "Tips"
-msgstr ""
+msgstr "טיפים"
 
 #: src/modules/rolemenus/ui/menus.py:176
 msgctxt "ui:menu_list|embed|field:tips|value"
