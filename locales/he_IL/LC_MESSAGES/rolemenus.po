@@ -1033,7 +1033,7 @@ msgstr "רולים_דביקים"
 #: src/modules/rolemenus/menuoptions.py:89
 msgctxt "menuset:sticky|desc"
 msgid "Whether the menu can be used to unequip roles."
-msgstr ""
+msgstr "האם התפריט יוכל לשמש גם כדי להסיר רולים ולא רק ללבוש אותם."
 
 #: src/modules/rolemenus/menuoptions.py:94
 msgctxt "menuset:sticky|long_desc"
