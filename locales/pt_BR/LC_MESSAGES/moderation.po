@@ -140,6 +140,8 @@ msgid ""
 "Pardoned by <&{moderator}> at {timestamp}.\n"
 "{reason}"
 msgstr ""
+"Perdoado por <&{moderator}> em {timestamp}.\n"
+"{reason}"
 
 #: src/modules/moderation/settings.py:20
 msgctxt "guildset:ticket_log"
