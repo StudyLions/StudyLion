@@ -127,7 +127,7 @@ msgstr "כן, נקה את התזכירים שלי"
 #: src/modules/reminders/cog.py:438
 msgctxt "cmd:reminders_clear|success|desc"
 msgid "Your reminders have been cleared!"
-msgstr ""
+msgstr "רשמית התזכורים שלך נוקתה בהצלחה."
 
 #: src/modules/reminders/cog.py:447
 msgctxt "cmd:reminders_clear|confirm|button:cancel"
