@@ -52,7 +52,7 @@ msgstr "Sunucu zaman dilimi `{timezone}` olarak ayarlandı."
 #: src/modules/config/general.py:94
 msgctxt "cmd:configure_general"
 msgid "general"
-msgstr "Genel"
+msgstr "genel"
 
 #: src/modules/config/general.py:95
 msgctxt "cmd:configure_general|desc"
