@@ -980,7 +980,7 @@ msgstr "מחכה ל:"
 #: src/modules/schedule/core/session.py:432
 msgctxt "session|status:running|field:attending"
 msgid "Attending"
-msgstr ""
+msgstr "נוכח"
 
 #: src/modules/schedule/core/session.py:438
 msgctxt "session|status:running|field:attended"
