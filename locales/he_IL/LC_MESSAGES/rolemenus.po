@@ -1358,6 +1358,7 @@ msgstr "רולים שמקבלים עם ריאקציות"
 msgctxt "ui:menu_editor|menu:style|option:reaction|desc"
 msgid "Roles are represented compactly as clickable reactions on a message."
 msgstr ""
+"רולים שמוצגים בצורה קומפקטית עם ריאקציות שניתן ללחוץ עליהם בהודעה עצמה."
 
 #: src/modules/rolemenus/ui/menueditor.py:615
 msgctxt "ui:menu_editor|menu:style|option:button|label"
