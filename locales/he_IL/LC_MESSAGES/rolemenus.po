@@ -445,12 +445,12 @@ msgstr "לא, בטל"
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delete|success|desc"
 msgid "Successfully deleted the menu **{name}**"
-msgstr ""
+msgstr "מחקתי את התפריט **{name}** בהצלחה "
 
 #: src/modules/rolemenus/cog.py:1145
 msgctxt "cmd:rolemenu_addrole"
 msgid "addrole"
-msgstr ""
+msgstr "הוסףרול"
 
 #: src/modules/rolemenus/cog.py:1148
 msgctxt "cmd:rolemenu_addrole|desc"
