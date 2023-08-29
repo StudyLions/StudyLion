@@ -516,7 +516,7 @@ msgstr ""
 msgctxt "cmd:room_transfer|success|description"
 msgid ""
 "You have successfully transferred ownership of {channel} to {new_owner}."
-msgstr ""
+msgstr "העברת את הבעלות של  {channel} אל {new_owner}."
 
 #: src/modules/rooms/cog.py:837
 msgctxt "cmd:room_deposit"
