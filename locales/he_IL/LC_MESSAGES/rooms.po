@@ -479,7 +479,7 @@ msgstr "בעלים_חדש"
 #: src/modules/rooms/cog.py:764
 msgctxt "cmd:room_transfer|param:new_owner"
 msgid "The room member you would like to transfer your room to."
-msgstr ""
+msgstr "החבר שתרצה להעביר את החדר הזה אליו."
 
 #: src/modules/rooms/cog.py:778
 msgctxt "cmd:room_transfer|error:no_room"
