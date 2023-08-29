@@ -177,12 +177,12 @@ msgstr "ouvindo"
 #: src/modules/sysadmin/presence.py:186
 msgctxt "botset:presence_type|input_pattern:playing"
 msgid "playing"
-msgstr ""
+msgstr "jogando"
 
 #: src/modules/sysadmin/presence.py:187
 msgctxt "botset:presence_type|input_pattern:streaming"
 msgid "streaming"
-msgstr ""
+msgstr "transmitindo"
 
 #: src/modules/sysadmin/presence.py:194
 msgctxt "botset:presence_name"
