@@ -352,7 +352,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:547
 msgctxt "cmd:room_status"
 msgid "status"
-msgstr ""
+msgstr "status"
 
 #: src/modules/rooms/cog.py:550
 msgctxt "cmd:room_status|desc"
