@@ -57,7 +57,7 @@ msgstr "כל טקסט"
 #, possible-python-brace-format
 msgctxt "settype:string|error"
 msgid "Provided string is too long! Maximum length: {maxlen} characters."
-msgstr ""
+msgstr "הטקסט שהבאת לי ארוך מידי! אורך מקסימלי: {maxlen} תווים."
 
 #: src/settings/setting_types.py:114
 msgctxt "settype:emoji|accepts"
