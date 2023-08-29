@@ -276,12 +276,12 @@ msgstr "פעילו בכל ערוצי הקול יחשבו בתור נוכחות �
 #: src/modules/schedule/settings.py:181
 msgctxt "guildset:session_channels|formatted|unset"
 msgid "All Channels (excluding `untracked_channels`)"
-msgstr ""
+msgstr "כל הערוצים (ללא הערוצים שלא נעקבים)"
 
 #: src/modules/schedule/settings.py:211
 msgctxt "guildset:schedule_cost"
 msgid "schedule_cost"
-msgstr ""
+msgstr "מחיר_סשן"
 
 #: src/modules/schedule/settings.py:214
 msgctxt "guildset:schedule_cost|desc"
