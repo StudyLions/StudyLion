@@ -264,6 +264,8 @@ msgid ""
 "This setting describes *how long* the member will be blacklisted for, for each offence.\n"
 "E.g. if this is set to `1d, 7d, 30d`, then on the first offence the member will be blacklisted for 1 day, on the second for 7 days, and on the third for 30 days. A subsequent offence will result in an infinite blacklist."
 msgstr ""
+"כאשר האופציה של הרשימה השחורה מופעילת והם לא מצליחים להדליק את המצלמה שלהם בזמן, הם יקבלו חסימה אוטומטית משימוש בחדרי המצלמות.\n"
+"האופציה הזו מתארת את האורך שבו הם יהיו חסומים, לדוגמא: `1d, 7d, 30d`, יחסום אותם ליום, שבוע ואז 30 יום בעבירה השלישית."
 
 #: src/modules/video_channels/settings.py:181
 msgctxt "guildset:video_durations|accepts"
