@@ -1498,7 +1498,7 @@ msgstr "עורך תפריט רולים"
 #, possible-python-brace-format
 msgctxt "ui:menu_editor|embed|description|jump_text:attached"
 msgid "Members may use this menu from {jump_url}"
-msgstr ""
+msgstr "משתמשים יוכלו להשתמש בתפריט הזה ב {jump_url}"
 
 #: src/modules/rolemenus/ui/menueditor.py:988
 msgctxt "ui:menu_editor|embed|description|jump_text:unattached"
