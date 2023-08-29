@@ -678,7 +678,7 @@ msgstr "El rol **{name}** se ha eliminado correctamente del menú **{menu}**."
 #: src/modules/rolemenus/roleoptions.py:54
 msgctxt "roleset:role"
 msgid "role"
-msgstr ""
+msgstr "rol"
 
 #: src/modules/rolemenus/roleoptions.py:57
 msgctxt "roleset:role|desc"
