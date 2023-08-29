@@ -713,6 +713,9 @@ msgid ""
 "UI, or through the {cmds[room invite]} command. This setting limits the "
 "maximum number of members a private room may hold."
 msgstr ""
+"בעלים של חדרים פרטיים יוכלו להזמין את החברים שלהם בדרכים שונות, לדוגמא: "
+"{cmds[room invite]}. ההגדרה הזו היא בעצם כמה אנשים אתם מרשים שיהיו בחדר פרטי"
+" בבת אחת."
 
 #: src/modules/rooms/settings.py:125
 msgctxt "guildset:rooms_slots|accepts"
