@@ -540,7 +540,7 @@ msgstr "מטבעות"
 #: src/modules/rooms/cog.py:849
 msgctxt "cmd:room_deposit|param:coins|desc"
 msgid "Number of coins to deposit."
-msgstr ""
+msgstr "מספר מטבעות להפקיד."
 
 #: src/modules/rooms/cog.py:869
 msgctxt "cmd:room_deposit|error:no_target"
