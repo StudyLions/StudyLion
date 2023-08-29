@@ -46,7 +46,7 @@ msgstr "Çevrimiçi/Boşta/Rahatsız Etmeyin/Çevrimdışı"
 #: src/modules/sysadmin/presence.py:133
 msgctxt "botset:presence_status|output:online"
 msgid "**Online**"
-msgstr ""
+msgstr "**Çevrimiçi**"
 
 #: src/modules/sysadmin/presence.py:134
 msgctxt "botset:presence_status|output:idle"
