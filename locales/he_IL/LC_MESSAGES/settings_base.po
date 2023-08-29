@@ -103,7 +103,7 @@ msgstr ""
 #: src/settings/setting_types.py:497
 msgctxt "settype:bool|parse:truthy_values"
 msgid "enabled|yes|true|on|enable|1"
-msgstr ""
+msgstr "מופעל/כן/נכון/דלוק/הפעל/1"
 
 #: src/settings/setting_types.py:501
 msgctxt "settype:bool|parse:falsey_values"
