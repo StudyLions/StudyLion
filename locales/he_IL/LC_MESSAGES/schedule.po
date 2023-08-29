@@ -546,7 +546,7 @@ msgstr "אל תכניס לרשימה השחורה אוטומטית."
 #: src/modules/schedule/settings.py:528
 msgctxt "guildset:schedule_blacklist_role|parse|error"
 msgid "Blacklist threshold must be a number between `1` and `24`."
-msgstr ""
+msgstr "המספר של הרשימה השחורה חייב להיות מספר בין 1 ל24."
 
 #: src/modules/schedule/ui/settingui.py:69
 msgctxt "ui:schedule_config|button:page0|label"
