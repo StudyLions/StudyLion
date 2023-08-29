@@ -874,7 +874,7 @@ msgstr "Una simple lista incrustada de roles en el menú"
 #: src/modules/rolemenus/templates.py:96
 msgctxt "template:two_column|name"
 msgid "Two Column"
-msgstr ""
+msgstr "Dos Columnas"
 
 #: src/modules/rolemenus/templates.py:100
 msgctxt "template:two_column|desc"
