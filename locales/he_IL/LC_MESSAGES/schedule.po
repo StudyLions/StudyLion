@@ -396,7 +396,7 @@ msgstr "נוכחות_מינימלית"
 #: src/modules/schedule/settings.py:346
 msgctxt "guildset:min_attendance|desc"
 msgid "Minimum attendance before reward eligability."
-msgstr ""
+msgstr "זמן מינימלי לפני שאחשיב את הנוכחות כמוצלחת."
 
 #: src/modules/schedule/settings.py:350
 msgctxt "guildset:min_attendance|long_desc"
