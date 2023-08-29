@@ -349,7 +349,7 @@ msgstr "automatíco"
 #: src/modules/shop/shops/colours.py:665
 msgctxt "cmd:editshop_colours_auto|desc"
 msgid "Automatically create a set of colour roles."
-msgstr ""
+msgstr "Automaticamente crie uma sequência de cores de cargo."
 
 #: src/modules/shop/shops/colours.py:674
 msgctxt "cmd:editshop_colours_add"
