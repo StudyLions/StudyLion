@@ -117,7 +117,7 @@ msgstr ""
 #: src/modules/shop/shops/colours.py:229
 msgctxt "shop:colour|purchase|error:owned"
 msgid "You already own this item!"
-msgstr ""
+msgstr "Você já comprou este item!"
 
 #: src/modules/shop/shops/colours.py:263
 msgctxt "shop:colour|purchase|error:failed_no_role"
