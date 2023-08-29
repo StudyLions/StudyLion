@@ -910,7 +910,7 @@ msgstr ""
 #: src/modules/rolemenus/rolemenu.py:493
 msgctxt "rolemenu|deselect|error:perms"
 msgid "I don't have enough permissions to remove this role from you!"
-msgstr ""
+msgstr "אין לי מספיק הרשאות כדי להסיר את הרול הזה!"
 
 #: src/modules/rolemenus/rolemenu.py:500
 msgctxt "rolemenu|deselect|error:discord"
@@ -920,7 +920,7 @@ msgstr ""
 #: src/modules/rolemenus/rolemenu.py:529
 msgctxt "rolemenu|deslect|success|title"
 msgid "Role removed"
-msgstr ""
+msgstr "הרול הוסר"
 
 #: src/modules/rolemenus/rolemenu.py:535
 #, possible-python-brace-format
