@@ -32,7 +32,7 @@ msgstr "השרת הזה לא קבע לובי למידה, ולכן מערכת ה�
 #: src/modules/schedule/cog.py:441
 msgctxt "create_booking|error:no_member"
 msgid "An unknown Discord error occurred. Please try again in a few minutes."
-msgstr ""
+msgstr "שגיאה לא ידועה התחוללה. אנא נסה שוב במספר דקות."
 
 #: src/modules/schedule/cog.py:449
 msgctxt "create_booking|error:blacklisted"
