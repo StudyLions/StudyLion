@@ -205,6 +205,8 @@ msgid ""
 "This server already has the maximum of `25` colour roles!\n"
 "Please remove some before adding or creating more."
 msgstr ""
+"Este servidor já possui o máximo de ˋ25ˋ cores de cargo!\n"
+"Por favor, remova alguma antes de adicionar ou criar outra."
 
 #: src/modules/shop/shops/colours.py:440
 msgctxt "cmd:editshop_colours_create|error:failed_unknown"
