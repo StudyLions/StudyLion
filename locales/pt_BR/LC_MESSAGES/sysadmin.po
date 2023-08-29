@@ -85,7 +85,7 @@ msgstr "Offline"
 #: src/modules/sysadmin/presence.py:145
 msgctxt "botset:presence_status|input_pattern:online"
 msgid "on|online"
-msgstr ""
+msgstr "on|online"
 
 #: src/modules/sysadmin/presence.py:146
 msgctxt "botset:presence_status|input_pattern:idle"
