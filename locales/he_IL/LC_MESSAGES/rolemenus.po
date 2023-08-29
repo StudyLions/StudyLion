@@ -1472,7 +1472,7 @@ msgstr "אנא בדקו אם הריאקציות שקשורות להודעה הז
 #: src/modules/rolemenus/ui/menueditor.py:940
 msgctxt "ui:menu_editor|button:repost|widget:repost|title"
 msgid "Repost Role Menu"
-msgstr ""
+msgstr "פרסם תפריט רולים מחדש"
 
 #: src/modules/rolemenus/ui/menueditor.py:944
 msgctxt "ui:menu_editor|button:repost|widget:repost|description"
