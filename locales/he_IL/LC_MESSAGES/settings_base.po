@@ -84,7 +84,7 @@ msgstr "שם ערוץ או מספר הזהות שלו"
 #, possible-python-brace-format
 msgctxt "settype:channel|parse|error:not_found"
 msgid "Channel `{string}` could not be found in this guild!"
-msgstr ""
+msgstr "הערוץ `{string}` לא נמצא בשרת הזה."
 
 #: src/settings/setting_types.py:368
 msgctxt "settype:role|accepts"
@@ -95,7 +95,7 @@ msgstr "שם רול או מספר הזהות שלו"
 #, possible-python-brace-format
 msgctxt "settype:role|parse|error:not_found"
 msgid "Role `{string}` could not be found in this guild!"
-msgstr ""
+msgstr "הרול `{string}` לא נמצא בשרת הזה."
 
 #: src/settings/setting_types.py:492
 msgctxt "settype:bool|accepts"
