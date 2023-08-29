@@ -386,7 +386,7 @@ msgstr "משתתפים יקבלו בונוס של {coin}**{amount}**  אם כל
 #, possible-python-brace-format
 msgctxt "guildset:attendance_bonus|formatted"
 msgid "{coin}**{amount}** bonus when all booked members attend."
-msgstr ""
+msgstr "{coin}**{amount}** בונוס כאשר כל מי שקבע את הסשן הצטרף."
 
 #: src/modules/schedule/settings.py:343
 msgctxt "guildset:min_attendance"
