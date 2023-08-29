@@ -29,7 +29,7 @@ msgstr "HORAS DE ESTUDO"
 #: src/gui/cards/monthly.py:44
 msgctxt "skin:monthlystats|mode:voice|title"
 msgid "VOICE CHANNEL ACTIVITY"
-msgstr ""
+msgstr "ATIVIDADE EM CANAL DE VOZ"
 
 #: src/gui/cards/monthly.py:48
 msgctxt "skin:monthlystats|mode:text|title"
