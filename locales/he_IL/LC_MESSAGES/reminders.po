@@ -266,7 +266,7 @@ msgstr "לא הצלחתי ליצור את התזכיר!"
 #: src/modules/reminders/cog.py:673
 msgctxt "cmd:remindme_at|error:past_time|desc"
 msgid "Provided time is in the past!"
-msgstr ""
+msgstr "הזמן שנתת לי הוא בעבר."
 
 #: src/modules/reminders/cog.py:677
 msgctxt "cmd:remindme_at|error:past_time|title"
