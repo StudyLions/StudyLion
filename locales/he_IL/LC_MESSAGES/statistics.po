@@ -191,6 +191,8 @@ msgid ""
 "Member ranks will update when they are next active. Use {rank_cmd} to "
 "refresh immediately."
 msgstr ""
+"לוח השיאים עכשיו יציג את הסטטיסטיקות של של העונה שקבעת שתתחיל מ{timestamp}. הדרגות של האנשים יעודכנו בפעם הבאה שהם יהיו פעילים.\n"
+"השתמשו ב {rank_cmd} אם אתם רוצים לעדכן אותם באופן מיידי."
 
 #: src/modules/statistics/settings.py:145
 #, possible-python-brace-format
