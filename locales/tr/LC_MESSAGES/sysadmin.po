@@ -96,7 +96,7 @@ msgstr "boşta"
 #: src/modules/sysadmin/presence.py:147
 msgctxt "botset:presence_status|input_pattern:dnd"
 msgid "do not disturb|dnd"
-msgstr ""
+msgstr "rahatsız etmeyin|dnd"
 
 #: src/modules/sysadmin/presence.py:148
 msgctxt "botset:presence_status|input_pattern:offline"
