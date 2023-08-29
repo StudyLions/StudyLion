@@ -147,12 +147,12 @@ msgstr "**Transmitindo**"
 #: src/modules/sysadmin/presence.py:178
 msgctxt "botset:presence_type|input_format:watching"
 msgid "Watching"
-msgstr ""
+msgstr "Assistindo"
 
 #: src/modules/sysadmin/presence.py:179
 msgctxt "botset:presence_type|input_format:listening"
 msgid "Listening"
-msgstr ""
+msgstr "Ouvindo"
 
 #: src/modules/sysadmin/presence.py:180
 msgctxt "botset:presence_type|input_format:playing"
