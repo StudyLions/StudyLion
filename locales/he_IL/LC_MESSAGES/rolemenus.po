@@ -387,11 +387,13 @@ msgid ""
 "An unknown error occurred trying to repost the menu to {channel}.\n"
 "**Error:** `{exception}`"
 msgstr ""
+"שגיאה לא ידועה התרחשה כשניסיתי לשלוח מחדש את התפריט לערוץ {channel}.\n"
+"השגיאה: `{exception}`"
 
 #: src/modules/rolemenus/cog.py:1044
 msgctxt "cmd:rolemenu_delete"
 msgid "delmenu"
-msgstr ""
+msgstr "מחקתפריט"
 
 #: src/modules/rolemenus/cog.py:1047
 msgctxt "cmd:rolemenu_delete|desc"
