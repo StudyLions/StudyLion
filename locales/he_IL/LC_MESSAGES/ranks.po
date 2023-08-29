@@ -121,6 +121,8 @@ msgid ""
 "Rank update notifications will be sent via **direct message** when possible,"
 " otherwise to {channel}"
 msgstr ""
+"כמשתמש יקבל דרגה אני אשלח את ההתראות בהודעה פרטית, אם לא הצלחתי, אשלח אותה "
+"אל  {channel}"
 
 #: src/modules/ranks/cog.py:754
 msgctxt ""
