@@ -1400,7 +1400,7 @@ msgstr "בנה הודעה מותאמת אישית מ0 (יפתח את ההעור�
 #: src/modules/rolemenus/ui/menueditor.py:729
 msgctxt "ui:menu_editor|button:delete|confirm|title"
 msgid "Are you sure you want to delete this menu? This is not reversible!"
-msgstr ""
+msgstr "אתם בטוחים שאתם רוצים למחוק את התפריט? לא ניתן לשחזר את הצעד הזה."
 
 #: src/modules/rolemenus/ui/menueditor.py:734
 msgctxt "ui:menu_editor|button:delete|confirm|button:yes"
