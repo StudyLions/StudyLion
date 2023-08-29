@@ -29,7 +29,7 @@ msgstr "çevrim_içi_durum"
 #: src/modules/sysadmin/presence.py:117
 msgctxt "botset:presence_status|desc"
 msgid "Bot status indicator"
-msgstr ""
+msgstr "Bot durum göstergesi"
 
 #: src/modules/sysadmin/presence.py:120
 msgctxt "botset:presence_status|long_desc"
