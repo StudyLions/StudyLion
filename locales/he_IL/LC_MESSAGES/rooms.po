@@ -529,6 +529,8 @@ msgid ""
 "Deposit LionCoins in your private room bank to add more days. (Members may "
 "also deposit!)"
 msgstr ""
+"הפקד מטבעות לחדר כדי להוסיף עוד ימים! (גם משתמשים רגילים בחדר יכולים להפקיד "
+"מטבעות!)"
 
 #: src/modules/rooms/cog.py:844
 msgctxt "cmd:room_deposit|param:coins"
