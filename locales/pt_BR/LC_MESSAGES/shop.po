@@ -394,7 +394,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_add|error:role_exists"
 msgid "The role {mention} is already registered as a colour role!"
-msgstr ""
+msgstr "O cargo {mention} já está registrado como uma cor de cargo."
 
 #: src/modules/shop/shops/colours.py:734
 #, possible-python-brace-format
