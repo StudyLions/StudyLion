@@ -771,7 +771,7 @@ msgstr "descripción"
 #: src/modules/rolemenus/roleoptions.py:184
 msgctxt "roleset:description|desc"
 msgid "A longer description of this role."
-msgstr ""
+msgstr "Una descripción mas larga de este rol."
 
 #: src/modules/rolemenus/roleoptions.py:189
 msgctxt "roleset:description|long_desc"
