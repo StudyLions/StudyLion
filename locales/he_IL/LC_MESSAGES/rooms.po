@@ -345,6 +345,9 @@ msgid ""
 "An unknown error occurred while creating your private room.\n"
 "`{error}`"
 msgstr ""
+"לא הצלחתי ליצור חדר פרטי! לא לקחתי ממך מטבעות.\n"
+"שגיאה לא ידועה התחוללה כשניסיתי לעשות את זה.\n"
+"`{error}`"
 
 #: src/modules/rooms/cog.py:547
 msgctxt "cmd:room_status"
