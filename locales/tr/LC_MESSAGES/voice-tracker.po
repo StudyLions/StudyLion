@@ -83,7 +83,7 @@ msgstr "{mention} kullanıcısının aktif bir oturumu yok!"
 #: src/tracking/voice/cog.py:713
 msgctxt "cmd:now|target:self|mode:clear|success|title"
 msgid "Session Tag Cleared"
-msgstr "Oturum Etiketi Temizkendi"
+msgstr "Oturum Etiketi Temizlendi"
 
 #: src/tracking/voice/cog.py:717
 msgctxt "cmd:now|target:self|mode:clear|success|desc"
