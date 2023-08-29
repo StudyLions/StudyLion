@@ -95,7 +95,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "acmpl:language|no_match"
 msgid "No supported languages matching {partial}"
-msgstr ""
+msgstr "لا يوجد لغة مدعومة تطابق حاليا {partial}"
 
 #: src/babel/utils.py:9
 msgctxt "utils|months"
