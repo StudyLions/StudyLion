@@ -606,12 +606,12 @@ msgstr "¡Este servidor no tiene un menú de roles llamado `{name}`!"
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_editrole|error:role_not_found"
 msgid "The menu **{menu}** does not have the role **{name}**"
-msgstr ""
+msgstr "El menú **{menu}** no tiene el rol **{name}**"
 
 #: src/modules/rolemenus/cog.py:1569
 msgctxt "cmd:rolemenu_editrole|success|title"
 msgid "Role menu role updated"
-msgstr ""
+msgstr "Menú de roles rol actualizado"
 
 #: src/modules/rolemenus/cog.py:1584
 msgctxt "cmd:rolemenu_editrole|success|error:reaction|name"
