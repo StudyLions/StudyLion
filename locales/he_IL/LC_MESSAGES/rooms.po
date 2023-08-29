@@ -508,6 +508,8 @@ msgid ""
 "Are you sure you wish to transfer your private room {channel} to "
 "{new_owner}? This action is not reversible!"
 msgstr ""
+"אתם בטוחים שאתם רוצים להעביר את החדר הפרטי שלך {channel} לבעלים החדש "
+"{new_owner}? לא תוכלו לחזור בכם אחרי שתאשרו."
 
 #: src/modules/rooms/cog.py:831
 #, possible-python-brace-format
