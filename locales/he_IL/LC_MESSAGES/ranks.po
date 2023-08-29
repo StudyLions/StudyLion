@@ -94,6 +94,8 @@ msgid ""
 "Too many issues occurred while adding ranks! Please check my permissions and"
 " try again in a few minutes."
 msgstr ""
+"יותר מידי בעיות קרו כשניסיתי להוסיף את הדרגות! אנא בדוק את ההרשאות שלי ונסה "
+"שוב בעוד כמה דקות."
 
 #. ---------- Commands ----------
 #: src/modules/ranks/cog.py:655
