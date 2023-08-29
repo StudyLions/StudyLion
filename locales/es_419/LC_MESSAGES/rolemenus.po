@@ -539,12 +539,12 @@ msgstr "Menú de roles actualizado"
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_addrole|error:role_exists"
 msgid "The role {role} is already selectable from the menu **{menu}**"
-msgstr ""
+msgstr "El rol {role} ya es seleccionable desde el menú **{menu}**"
 
 #: src/modules/rolemenus/cog.py:1364
 msgctxt "cmd:rolemenu_addrole|success|error:reaction|name"
 msgid "Note"
-msgstr ""
+msgstr "Nota"
 
 #: src/modules/rolemenus/cog.py:1376
 msgctxt "cmd:rolemenu_addrole|success|button:editor|label"
