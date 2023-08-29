@@ -511,7 +511,7 @@ msgstr "Rol a añadir al menú"
 #: src/modules/rolemenus/cog.py:1179
 msgctxt "cmd:rolemenu_addrole|param:duration|desc"
 msgid "Lifetime of the role after selection in minutes."
-msgstr ""
+msgstr "Tiempo de vida del rol en minutos tras su selección."
 
 #: src/modules/rolemenus/cog.py:1227
 #, possible-python-brace-format
