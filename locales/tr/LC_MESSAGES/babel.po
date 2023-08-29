@@ -347,49 +347,49 @@ msgstr ""
 #: src/babel/enums.py:64
 msgctxt "localenames|locale:ro"
 msgid "Romanian"
-msgstr "Romence"
+msgstr ""
 
 #: src/babel/enums.py:65
 msgctxt "localenames|locale:ru"
 msgid "Russian"
-msgstr "Rusça"
+msgstr ""
 
 #: src/babel/enums.py:66
 msgctxt "localenames|locale:es-ES"
 msgid "Spain Spanish"
-msgstr "İspanya İspanyolcası"
+msgstr ""
 
 #: src/babel/enums.py:67
 msgctxt "localenames|locale:sv-SE"
 msgid "Swedish"
-msgstr "İsveççe"
+msgstr ""
 
 #: src/babel/enums.py:68
 msgctxt "localenames|locale:th"
 msgid "Thai"
-msgstr "Tayca"
+msgstr ""
 
 #: src/babel/enums.py:69
 msgctxt "localenames|locale:tr"
 msgid "Turkish"
-msgstr "Türkçe"
+msgstr ""
 
 #: src/babel/enums.py:70
 msgctxt "localenames|locale:uk"
 msgid "Ukrainian"
-msgstr "Ukraynaca"
+msgstr ""
 
 #: src/babel/enums.py:71
 msgctxt "localenames|locale:vi"
 msgid "Vietnamese"
-msgstr "Vietnamca"
+msgstr ""
 
 #: src/babel/enums.py:72
 msgctxt "localenames|locale:he"
 msgid "Hebrew"
-msgstr "Ibranice"
+msgstr ""
 
 #: src/babel/enums.py:73
 msgctxt "localenames|locale:he_IL"
 msgid "Hebrew (Israel)"
-msgstr "Ibranice (Israil)"
+msgstr ""
