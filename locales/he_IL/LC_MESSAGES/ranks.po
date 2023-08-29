@@ -383,6 +383,8 @@ msgid ""
 "I do not have permission to edit the underlying role! Please select a new "
 "role from the role menu, or ensure my top role is above the selected role."
 msgstr ""
+"אין לי מספיק הרשאות לערוך את הרול הזה! אנא בחרו רול מהתפריט אחרי שווידאתם "
+"שהרול שלי נמצא בחלק העליון של הרשימת רולים של השרת שלכם."
 
 #: src/modules/ranks/ui/preview.py:90
 msgctxt "ui:rank_preview|button:edit|error|title"
