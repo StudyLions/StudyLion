@@ -402,6 +402,8 @@ msgid ""
 " I have the `MANAGE_ROLES` permission, and that my top role is above this "
 "role."
 msgstr ""
+"אין לי מספיק הרשאות כדי לתת את הרול {mention}! בדקו שיש לי את ההרשאה "
+"`MANAGE_ROLES`, ושהרול שלי הוא הכי גבוה ברשימה של הרולים שלכם."
 
 #: src/modules/shop/shops/colours.py:745
 #, possible-python-brace-format
