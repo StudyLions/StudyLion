@@ -623,7 +623,7 @@ msgstr "קטגוריית_חדרים"
 #: src/modules/rooms/settings.py:25
 msgctxt "guildset:rooms_category|desc"
 msgid "Category in which to create private voice channels."
-msgstr ""
+msgstr "קטגוריה שבה אצור את החדרים הפרטיים של המשתמשים."
 
 #: src/modules/rooms/settings.py:29
 msgctxt "guildset:room_category|long_desc"
