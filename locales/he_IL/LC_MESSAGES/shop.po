@@ -413,6 +413,8 @@ msgid ""
 "shop! You must have `MANAGE_ROLES`, and your top role must be above this "
 "role."
 msgstr ""
+"אין לך מספיק הרשאות כדי להוסיף את {mention} לחנות! חייב להיות לך את ההרשאות "
+"`MANAGE_ROLES`, והרול שלך חייב להיות מעל הרול שאתה יוצר."
 
 #: src/modules/shop/shops/colours.py:754
 msgctxt "cmd:editshop_colours_add|error:role_has_admin"
