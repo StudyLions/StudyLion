@@ -286,7 +286,7 @@ msgstr ""
 #: src/modules/statistics/settings.py:271
 msgctxt "guildset:default_stat|long_desc"
 msgid "Which statistic type to display by default in setting dialogues."
-msgstr ""
+msgstr "איזה סוג סטטיסטיקה תרצו להראות כברירת מחדל בהגדרות?"
 
 #: src/modules/statistics/settings.py:304
 msgctxt "ui:statistics_config|menu:unranked_roles|placeholder"
