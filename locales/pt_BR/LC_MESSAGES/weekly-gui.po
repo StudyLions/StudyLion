@@ -44,7 +44,7 @@ msgstr "CARTÕES REVISADOS"
 #: src/gui/cards/weekly.py:137
 msgctxt "skin:weeklystats|weekdays"
 msgid "M,T,W,T,F,S,S"
-msgstr ""
+msgstr "S,T,Q,Q,S,S,D"
 
 #: src/gui/cards/weekly.py:207
 #, possible-python-brace-format
