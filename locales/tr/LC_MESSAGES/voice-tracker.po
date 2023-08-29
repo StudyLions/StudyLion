@@ -46,7 +46,7 @@ msgstr "kullanıcı"
 #: src/tracking/voice/cog.py:649
 msgctxt "cmd:now|param:clear"
 msgid "clear"
-msgstr ""
+msgstr "temizle"
 
 #: src/tracking/voice/cog.py:654
 msgctxt "cmd:now|param:tag|desc"
