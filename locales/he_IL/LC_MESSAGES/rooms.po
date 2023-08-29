@@ -563,7 +563,7 @@ msgstr "אתה לא יכול לשלם {coin}**{amount}**!  יש לך רק {coin
 msgctxt "cmd:room_depost|success"
 msgid ""
 "Success! You have contributed {coin}**{amount}** to the private room bank."
-msgstr ""
+msgstr "הצלחתי להפקיד {coin}**{amount}** בבנק של החדר הפרטי."
 
 #: src/modules/rooms/cog.py:921
 msgctxt "cmd:configure_rooms"
@@ -584,7 +584,7 @@ msgstr ""
 #: src/modules/rooms/room.py:104
 msgctxt "room|notify:new_members|title"
 msgid "New Members!"
-msgstr ""
+msgstr "חברים חדשים!"
 
 #: src/modules/rooms/room.py:108
 #, possible-python-brace-format
