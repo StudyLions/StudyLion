@@ -376,7 +376,7 @@ msgstr "convidar"
 #: src/modules/rooms/cog.py:585
 msgctxt "cmd:room_invite|desc"
 msgid "Add members to your private room."
-msgstr ""
+msgstr "Adicionar membros à sua sala privada."
 
 #: src/modules/rooms/cog.py:589
 msgctxt "cmd:room_invite|param:members"
