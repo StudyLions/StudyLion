@@ -934,7 +934,7 @@ msgstr "הסרתם את הרול **{role}**, וקיבלתם את הכסף חזר
 #, possible-python-brace-format
 msgctxt "rolemenu|deselect|success:norefund|desc"
 msgid "You have unequipped **{role}**."
-msgstr ""
+msgstr "הורדתם מעצמכם את הרול **{role}**."
 
 #: src/modules/rolemenus/rolemenu.py:554
 #, possible-python-brace-format
