@@ -54,7 +54,7 @@ msgstr "Painel de Moderação"
 #: src/modules/moderation/cog.py:136
 msgctxt "cmd:configure_moderation"
 msgid "moderation"
-msgstr ""
+msgstr "moderação"
 
 #: src/modules/moderation/cog.py:139
 msgctxt "cmd:configure_moderation|desc"
