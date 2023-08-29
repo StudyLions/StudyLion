@@ -68,7 +68,7 @@ msgctxt "cmd:now|target:self|error:target_inactive"
 msgid ""
 "You have no running session! Join a tracked voice channel to start a "
 "session."
-msgstr ""
+msgstr "אין לך סשנים שרצים כרגע, הצטרף לערוץ קולי כדי להתחיל את הסשן שלך!"
 
 #: src/tracking/voice/cog.py:698
 #, possible-python-brace-format
