@@ -25,7 +25,7 @@ msgstr ""
 #: src/tracking/voice/cog.py:640
 msgctxt "cmd:now"
 msgid "now"
-msgstr ""
+msgstr "עכשיו"
 
 #: src/tracking/voice/cog.py:643
 msgctxt "cmd:now|desc"
@@ -36,12 +36,12 @@ msgstr ""
 #: src/tracking/voice/cog.py:647
 msgctxt "cmd:now|param:tag"
 msgid "tag"
-msgstr ""
+msgstr "תאג"
 
 #: src/tracking/voice/cog.py:648
 msgctxt "cmd:now|param:user"
 msgid "user"
-msgstr ""
+msgstr "משתמש"
 
 #: src/tracking/voice/cog.py:649
 msgctxt "cmd:now|param:clear"
