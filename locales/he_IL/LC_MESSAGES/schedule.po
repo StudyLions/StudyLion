@@ -137,7 +137,7 @@ msgstr "הירשם בלו\"ז"
 #: src/modules/schedule/cog.py:850
 msgctxt "cmd:configure_schedule|desc"
 msgid "Configure Scheduled Session system"
-msgstr ""
+msgstr "תפריט הגדרות מערכת הלו\"זים"
 
 #: src/modules/schedule/settings.py:36
 msgctxt "guildset:session_lobby"
