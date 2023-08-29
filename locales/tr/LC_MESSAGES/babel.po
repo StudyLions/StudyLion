@@ -36,7 +36,7 @@ msgstr "Dil Konfigürasyon Paneli"
 #: src/babel/settingui.py:83
 msgctxt "dash:locale|title"
 msgid "Server Language Configuration ({commands[configure language]})"
-msgstr "Sunucu Dili Konfigürasyon ({commands[configure language]})"
+msgstr "Sunucu Dil Konfigürasyonu ({commands[configure language]})"
 
 #: src/babel/settingui.py:87
 msgctxt "dash:locale|dropdown|placeholder"
