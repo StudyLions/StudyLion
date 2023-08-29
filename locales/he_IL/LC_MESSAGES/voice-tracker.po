@@ -137,7 +137,7 @@ msgstr "תאג לסשן לא נקבע!"
 #, possible-python-brace-format
 msgctxt "cmd:now|target:other|mode:set|success|desc"
 msgid "Set {target}'s session tag to `{new_tag}`."
-msgstr ""
+msgstr "שנה את התאג של {target} אל `{new_tag}`."
 
 #: src/tracking/voice/cog.py:796
 #, possible-python-brace-format
