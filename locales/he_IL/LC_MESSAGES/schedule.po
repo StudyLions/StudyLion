@@ -293,7 +293,7 @@ msgctxt "guildset:schedule_cost|long_desc"
 msgid ""
 "Members will be charged this many LionCoins for each scheduled session they "
 "book."
-msgstr ""
+msgstr "משתמשים יצטרכו לשלם את כמות המטבעות הזו כדי לקבוע סשן בלו\"ז."
 
 #: src/modules/schedule/settings.py:222
 msgctxt "guildset:schedule_cost|accepts"
