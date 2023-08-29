@@ -355,7 +355,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "ui:reminderlist|embed:list|author"
 msgid "{name}'s reminders"
-msgstr ""
+msgstr "התזכורים של {name}"
 
 #: src/modules/reminders/cog.py:935
 msgctxt "ui:reminderlist|embed:list|footer"
