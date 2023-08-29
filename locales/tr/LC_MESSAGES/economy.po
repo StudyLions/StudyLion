@@ -542,12 +542,12 @@ msgstr ""
 #: src/modules/economy/settings.py:85
 msgctxt "guildset:allow_transfers|outputs:true"
 msgid "Enabled (Coin transfers allowed.)"
-msgstr "Aktifleştirildi. (LionCoin transferlerine izin verilir.)"
+msgstr "Aktifleştirildi (LionCoin transferlerine izin verilir.)"
 
 #: src/modules/economy/settings.py:86
 msgctxt "guildset:allow_transfers|outputs:false"
 msgid "Disabled (Coin transfers not allowed.)"
-msgstr "Devre dışı. (LionCoin transferine izin verilmez.)"
+msgstr "Devre dışı (LionCoin transferine izin verilmez.)"
 
 #: src/modules/economy/settings.py:102
 #, possible-python-brace-format
