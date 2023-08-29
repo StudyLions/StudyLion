@@ -230,7 +230,7 @@ msgstr ""
 #: src/modules/moderation/settings.py:116
 msgctxt "guildset:alert_channel|formatted:unset"
 msgid "Not Set (Only alert via direct message.)"
-msgstr "Não configurado {somente alertar via mensagem direta.}"
+msgstr "Não configurado {somente alertar via mensagem direta}"
 
 #: src/modules/moderation/settings.py:123
 msgctxt "guildset:mod_role"
