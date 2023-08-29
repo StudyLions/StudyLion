@@ -442,7 +442,7 @@ msgstr "Você adicionou {mention} à loja de cores por {coin}**{price}**!"
 #: src/modules/shop/shops/colours.py:786
 msgctxt "cmd:editshop_colours_clear"
 msgid "clear"
-msgstr ""
+msgstr "limpar"
 
 #: src/modules/shop/shops/colours.py:789
 msgctxt "cmd:editshop_colours_clear|desc"
