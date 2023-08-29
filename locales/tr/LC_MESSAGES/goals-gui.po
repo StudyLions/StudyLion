@@ -90,7 +90,7 @@ msgstr "{month} {day} itibaren • {name}"
 #: src/gui/cards/goals.py:240
 msgctxt "ui:goals|weekly|title"
 msgid "WEEKLY STATISTICS"
-msgstr "HAFTALIK İSTATİSTİKLER"
+msgstr "HAFTALIK İSTATİSTİK"
 
 #: src/gui/cards/goals.py:244
 msgctxt "ui:goals|weekly|task_header"
