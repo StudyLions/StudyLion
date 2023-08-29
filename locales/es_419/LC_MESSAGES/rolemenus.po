@@ -636,7 +636,7 @@ msgstr "menú"
 #: src/modules/rolemenus/cog.py:1617
 msgctxt "cmd:rolemenu_delrole|param:menu_role"
 msgid "menu_role"
-msgstr ""
+msgstr "menúde_roles"
 
 #: src/modules/rolemenus/cog.py:1622
 msgctxt "cmd:rolemenu_delrole|param:menu|desc"
