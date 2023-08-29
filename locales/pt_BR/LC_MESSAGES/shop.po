@@ -501,7 +501,7 @@ msgstr "{emoji} Apagadas **{count}/{total}** cores de cargo."
 #: src/modules/shop/shops/colours.py:968
 msgctxt "cmd:editshop_colours_remove"
 msgid "remove"
-msgstr ""
+msgstr "remover"
 
 #: src/modules/shop/shops/colours.py:971
 msgctxt "cmd:editshop_colours_remove|desc"
