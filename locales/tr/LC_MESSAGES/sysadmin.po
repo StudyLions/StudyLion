@@ -41,7 +41,7 @@ msgstr ""
 #: src/modules/sysadmin/presence.py:124
 msgctxt "botset:presence_status|accepts"
 msgid "Online/Idle/Dnd/Offline"
-msgstr ""
+msgstr "Çevrimiçi/Boşta/Rahatsız Etmeyin/Çevrimdışı"
 
 #: src/modules/sysadmin/presence.py:133
 msgctxt "botset:presence_status|output:online"
