@@ -993,7 +993,7 @@ msgctxt "session|status:finished|desc:everyone_att"
 msgid ""
 "Everyone attended the session! All members were rewarded with {coin} "
 "**{reward} + {bonus}**!"
-msgstr ""
+msgstr "כולם נכחו בסשן הזה! כל המשתמשים קיבלו {coin} **{reward} + {bonus}**!"
 
 #: src/modules/schedule/core/session.py:474
 #, possible-python-brace-format
