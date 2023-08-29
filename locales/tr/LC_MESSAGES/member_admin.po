@@ -350,7 +350,7 @@ msgstr ""
 msgctxt "guildset:returning_message|set_response:unset"
 msgid "Returning member greeting unset! Will use `welcome_message` if set."
 msgstr ""
-"Geri dönen üye karşılaması ayarlanmadı! Eğer ayarlandıysa `welcome_message` "
+"Geri dönen üye karşılaması kaldırıldı! Eğer ayarlandıysa `hoşgeldin_mesajı` "
 "kullanılacak."
 
 #: src/modules/member_admin/settings.py:263
@@ -361,7 +361,7 @@ msgstr "Geri dönen üye karşılaması güncellendi."
 #: src/modules/member_admin/settings.py:275
 msgctxt "guildset:greeting_message|formmatted:unset"
 msgid "Not set, will use the `welcome_message` if set."
-msgstr "Ayarlanmadı, eğer ayarlandıysa `welcome_message` kullanılacak."
+msgstr "Ayarlanmadı, eğer ayarlandıysa `hoşgeldin_mesajı` kullanılacak."
 
 #: src/modules/member_admin/settings.py:325
 msgctxt "guildset:returning_message|embed_field|formatkeys|explanation"
