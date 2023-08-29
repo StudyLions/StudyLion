@@ -74,7 +74,7 @@ msgstr "P,S,Ç,P,C,C,P"
 #, possible-python-brace-format
 msgctxt "skin:monthlystats|mode:study|summary:this_month"
 msgid "THIS MONTH: {amount} HOURS"
-msgstr ""
+msgstr "BU AY: {amount} SAAT"
 
 #: src/gui/cards/monthly.py:167
 #, possible-python-brace-format
