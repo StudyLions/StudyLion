@@ -567,7 +567,7 @@ msgstr "**טוען רולים שקשורים לדרגות:** {emoji}"
 #, possible-python-brace-format
 msgctxt "ui:refresh_ranks|embed|line:compute"
 msgid "**Computing correct ranks:** {emoji}"
-msgstr ""
+msgstr "**מחשב דרגות נכונות:**{emoji}"
 
 #: src/modules/ranks/ui/refresh.py:198
 msgctxt "ui:refresh_ranks|embed|field:remove|name"
