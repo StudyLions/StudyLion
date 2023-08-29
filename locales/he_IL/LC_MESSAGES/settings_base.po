@@ -143,7 +143,7 @@ msgstr "Any Snowflake ID"
 #: src/settings/setting_types.py:823
 msgctxt "settype:timezone|accepts"
 msgid "A timezone name from the 'tz database' (e.g. 'Europe/London')"
-msgstr ""
+msgstr "אזור זמן מהארכיון של \"tz\" (לדוגמא 'Europe/London')"
 
 #: src/settings/setting_types.py:893
 msgctxt "settype:timezone|summary_table|field:supported|key"
