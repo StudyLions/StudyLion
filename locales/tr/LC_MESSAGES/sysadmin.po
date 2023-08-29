@@ -35,6 +35,8 @@ msgstr "Bot durum göstergesi"
 msgctxt "botset:presence_status|long_desc"
 msgid "Whether the bot account displays as online, idle, dnd, or offline."
 msgstr ""
+"Bot hesabının çevrimiçi, boşta, rahatsız etmeyin veya çevrimdışı olarak "
+"görüntülenip görüntülenmeyeceği."
 
 #: src/modules/sysadmin/presence.py:124
 msgctxt "botset:presence_status|accepts"
