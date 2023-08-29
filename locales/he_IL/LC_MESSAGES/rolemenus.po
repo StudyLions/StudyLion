@@ -1441,7 +1441,7 @@ msgstr "אין לי או לך מספיק הראשות בשרת כדי לעשות
 msgctxt "ui:menu_editor|button:repost|eidget:repost|error:perms|desc"
 msgid ""
 "I lack the `EMBED_LINKS` or `SEND_MESSAGES` permission in this channel."
-msgstr ""
+msgstr "אין לי את ההרשאות `EMBED_LINKS` או `SEND_MESSAGES` בערוץ הזה."
 
 #: src/modules/rolemenus/ui/menueditor.py:895
 #, possible-python-brace-format
