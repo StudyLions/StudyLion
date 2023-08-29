@@ -34,7 +34,7 @@ msgstr "loja"
 #: src/modules/shop/cog.py:123
 msgctxt "cmd:shop_open"
 msgid "open"
-msgstr ""
+msgstr "abrir"
 
 #: src/modules/shop/cog.py:124
 msgctxt "cmd:shop_open|desc"
