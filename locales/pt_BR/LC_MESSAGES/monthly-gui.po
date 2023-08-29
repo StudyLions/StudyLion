@@ -68,7 +68,7 @@ msgstr ""
 #: src/gui/cards/monthly.py:153
 msgctxt "skin:monthlystats|weekdays"
 msgid "M,T,W,T,F,S,S"
-msgstr ""
+msgstr "S,T,Q,Q,S,S,D"
 
 #: src/gui/cards/monthly.py:163
 #, possible-python-brace-format
