@@ -667,7 +667,7 @@ msgstr "¡Este servidor no tiene un menú de roles llamado `{name}`!"
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delrole|error:role_not_found"
 msgid "The menu **{menu}** does not have the role **{name}**"
-msgstr ""
+msgstr "El menú **{menu}** no tiene el rol **{name}**"
 
 #: src/modules/rolemenus/cog.py:1713
 #, possible-python-brace-format
