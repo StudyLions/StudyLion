@@ -902,7 +902,7 @@ msgstr "ביטלתי את הסשן בהצלחה!"
 #: src/modules/schedule/ui/sessionui.py:164
 msgctxt "ui:session|button:cancel|error|title"
 msgid "Could not cancel session"
-msgstr ""
+msgstr "לא הצלחתי לבטל את הסשן"
 
 #: src/modules/schedule/core/session.py:196
 msgctxt "session|error:lobby_webhook_perms"
