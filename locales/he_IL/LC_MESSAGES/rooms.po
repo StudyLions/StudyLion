@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-27 16:37+0300\n"
+"POT-Creation-Date: 2023-08-28 22:43+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Ari Horesh, 2023\n"
 "Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
@@ -45,7 +45,7 @@ msgstr "עריכת חדרים פרטיים ({commands[configure rooms]})"
 #: src/modules/rooms/settingui.py:102
 msgctxt "dash:economy|dropdown|placeholder"
 msgid "Private Room Panel"
-msgstr ""
+msgstr "תפריט חדר פרטי"
 
 #: src/modules/rooms/roomui.py:56
 msgctxt "ui:room_status|error:owner_required"
