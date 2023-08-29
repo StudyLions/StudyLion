@@ -164,6 +164,8 @@ msgid ""
 "{target} is current working in {channel}!\n"
 "They have been working on **{tag}** since {time}."
 msgstr ""
+"{target} עובד כרגע בערוץ  {channel}!\n"
+"הם עובדים על **{tag}** מאז {time}."
 
 #: src/tracking/voice/cog.py:814
 #, possible-python-brace-format
