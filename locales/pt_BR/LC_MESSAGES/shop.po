@@ -122,7 +122,7 @@ msgstr "Você já comprou este item!"
 #: src/modules/shop/shops/colours.py:263
 msgctxt "shop:colour|purchase|error:failed_no_role"
 msgid "This colour role no longer exists!"
-msgstr ""
+msgstr "Esta cor de cargo não existe!"
 
 #: src/modules/shop/shops/colours.py:270
 msgctxt "shop:colour|purchase|error:failed_permissions"
