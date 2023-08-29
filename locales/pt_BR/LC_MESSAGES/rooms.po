@@ -107,7 +107,7 @@ msgstr ""
 #: src/modules/rooms/roomui.py:254
 msgctxt "ui:room_status|button:timer|label:edit_timer"
 msgid "Edit Timer"
-msgstr ""
+msgstr "Editar Temporizador"
 
 #: src/modules/rooms/roomui.py:261
 msgctxt "ui:room_status|button:timer|label:add_timer"
