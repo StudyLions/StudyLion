@@ -655,7 +655,7 @@ msgstr "הרול משויך לאייטם הזה מהתפריט."
 #: src/modules/rolemenus/roleoptions.py:61
 msgctxt "roleset:role|long_desc"
 msgid "The role given when this menu item is selected in the role menu."
-msgstr ""
+msgstr "הרול ניתן למשתמש כאשר האייטם התפריט נבחר על ידי לחיצה."
 
 #: src/modules/rolemenus/roleoptions.py:74
 #, possible-python-brace-format
