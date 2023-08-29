@@ -276,6 +276,8 @@ msgid ""
 "Too many members! You have requested to add `{count}` members to your room, "
 "but the maximum private room size is `{cap}`!"
 msgstr ""
+"Muitos membros! Você quis adicionar ˋ{count}ˋ membros para sua sala, mas a "
+"capacidade máxima de salas privadas é ˋ{cap}ˋ!"
 
 #: src/modules/rooms/cog.py:427
 #, possible-python-brace-format
