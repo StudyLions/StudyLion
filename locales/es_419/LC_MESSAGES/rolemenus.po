@@ -787,7 +787,7 @@ msgstr ""
 #: src/modules/rolemenus/roleoptions.py:205
 msgctxt "roleset:description|set_response:set"
 msgid "The role description has been set."
-msgstr ""
+msgstr "Se ha establecido la descripción del rol."
 
 #: src/modules/rolemenus/roleoptions.py:210
 msgctxt "roleset:description|set_response:unset"
