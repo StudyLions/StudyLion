@@ -220,8 +220,8 @@ msgid ""
 "unless `force_language` is enabled."
 msgstr ""
 "Bu sunucuda yanıtlar ve etkileşimler için kullanılacak varsayılan dil. "
-"`force_language` etkinleştirilmediği sürece üyelerin kendi ayarladıları dil,"
-" komutlar için geçersiz olacaktır."
+"`zorunlu_dil` etkinleştirilmediği sürece üyelerin kendi ayarladıları dil, "
+"komutlar için geçersiz olacaktır."
 
 #: src/babel/settings.py:172
 msgctxt "guildset:locale|response"
