@@ -517,7 +517,7 @@ msgstr "Tiempo de vida del rol en minutos tras su selección."
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_addrole|error:menu_not_found"
 msgid "This server does not have a role menu called `{name}`!"
-msgstr ""
+msgstr "¡Este servidor no tiene un menú de roles llamado `{name}`!"
 
 #: src/modules/rolemenus/cog.py:1312
 msgctxt "cmd:rolemenu_addrole|success:create|title"
