@@ -241,6 +241,7 @@ msgid ""
 "Cannot apply a custom menu message to {message} because I do not own this "
 "message!"
 msgstr ""
+"לא הצלחתי להכין תפריט על ההודעה {message} כי אני לא זה ששלח את ההודעה הזו!"
 
 #: src/modules/rolemenus/cog.py:727
 #, possible-python-brace-format
@@ -249,6 +250,7 @@ msgid ""
 "Cannot apply a menu message template to {message} because I do not own this "
 "message!"
 msgstr ""
+"לא הצלחתי להכין תפריט על ההודעה {message} כי אני לא זה ששלח את ההודעה הזו!"
 
 #: src/modules/rolemenus/cog.py:740
 #, possible-python-brace-format
