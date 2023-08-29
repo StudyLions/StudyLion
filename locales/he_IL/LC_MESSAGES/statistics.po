@@ -260,7 +260,7 @@ msgstr ""
 #: src/modules/statistics/settings.py:225
 msgctxt "guildset:visible_stats|accepts"
 msgid "Voice, Text, Anki"
-msgstr ""
+msgstr "קול, טקסט, אנקי"
 
 #: src/modules/statistics/settings.py:246
 msgctxt "guildset:visible_stats|set_using"
