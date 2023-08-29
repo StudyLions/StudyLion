@@ -315,6 +315,8 @@ msgid ""
 "I could not extract a colour value from `{colour}`!\n"
 "Please enter the colour as a hex string, e.g. `#FA0BC1`"
 msgstr ""
+"Eu não consegui extrair um código de cor de ˋ{colour}ˋ!\n"
+"Por favor, informe a cor como um código HEX, ex. ˋ#FA0BC1ˋ"
 
 #: src/modules/shop/shops/colours.py:615
 msgctxt "cmd:editshop_colours_edit|error:perms"
