@@ -210,6 +210,11 @@ msgid ""
 "then the permission overwrites will apply to all *synced* channels under the"
 " category, as usual."
 msgstr ""
+"אם פעיל, ערוץ הקול ישמש כחדר ייעודי למערכת הלוזים של השרת. במהלך (וקצת לפני)"
+" כל סשן, כל האנשים שקבעו פגישה יקבלו התראה ויוכלו להצטרף לחדר הזה. אני צריך "
+"את ההתראות  `MANAGE_CHANNEL`, `MANAGE_PERMISSIONS`, `CONNECT`, and "
+"`VIEW_CHANNEL` כדי לעשות את זה, והרול שלי צריך להיות הכי גבוה בהיררכיה של "
+"הרולים."
 
 #: src/modules/schedule/settings.py:109
 msgctxt "guildset:session_room|accepts"
