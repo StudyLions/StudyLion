@@ -338,6 +338,8 @@ msgstr ""
 msgctxt "ui:msg_editor|button:author|label"
 msgid "Author"
 msgstr ""
+"مؤلف\n"
+"At: كاتب"
 
 #: src/utils/ui/msgeditor.py:377
 msgctxt "ui:msg_editor|modal:footer|field:text|label"
