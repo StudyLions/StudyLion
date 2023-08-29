@@ -322,6 +322,7 @@ msgstr ""
 msgctxt "cmd:editshop_colours_edit|error:perms"
 msgid "I do not have sufficient server permissions to edit this role!"
 msgstr ""
+"Eu não tenho permissões suficientes no servidor para editar este cargo."
 
 #: src/modules/shop/shops/colours.py:631
 #, possible-python-brace-format
