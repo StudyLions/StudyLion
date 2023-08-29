@@ -152,6 +152,8 @@ msgstr "registro_de_tickets"
 msgctxt "guildset:ticket_log|desc"
 msgid "Private moderation log to send tickets and moderation events."
 msgstr ""
+"Lugar privado, da moderação, para onde enviar registro de tickets e eventos "
+"da moderação"
 
 #: src/modules/moderation/settings.py:27
 msgctxt "guildset:ticket_log|long_desc"
