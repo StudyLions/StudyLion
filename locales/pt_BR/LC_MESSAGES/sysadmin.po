@@ -50,7 +50,7 @@ msgstr "**Online**"
 #: src/modules/sysadmin/presence.py:134
 msgctxt "botset:presence_status|output:idle"
 msgid "**Idle**"
-msgstr ""
+msgstr "**Inativa**"
 
 #: src/modules/sysadmin/presence.py:135
 msgctxt "botset:presence_status|output:dnd"
