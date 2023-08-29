@@ -112,6 +112,8 @@ msgid ""
 "This item costs {coin}{amount}!\n"
 "Your balance is {coin}{balance}"
 msgstr ""
+"האייטם עולה  {coin}{amount}!\n"
+"אבל יש לכם רק {coin}{balance}"
 
 #: src/modules/shop/shops/colours.py:229
 msgctxt "shop:colour|purchase|error:owned"
