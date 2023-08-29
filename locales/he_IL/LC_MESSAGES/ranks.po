@@ -374,6 +374,8 @@ msgid ""
 "The role underlying this rank no longer exists! Please select a new role "
 "from the role menu."
 msgstr ""
+"הרול הקשור לדרגה הזו נמחק או כבר לא קיים! בבקשה תבחרו רול חדש כדי לשייך "
+"לדרגה הזו דרך התפריט רולים."
 
 #: src/modules/ranks/ui/preview.py:81
 msgctxt "ui:rank_preview|button:edit|error:role_not_assignable"
