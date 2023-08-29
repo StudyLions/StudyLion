@@ -104,7 +104,7 @@ msgstr "GEÇEN AY: {amount} SAAT"
 #, possible-python-brace-format
 msgctxt "skin:monthlystats|mode:voice|summary:last_month"
 msgid "LAST MONTH: {amount} HOURS"
-msgstr ""
+msgstr "GEÇEN AY: {amount} SAAT"
 
 #: src/gui/cards/monthly.py:205
 #, possible-python-brace-format
