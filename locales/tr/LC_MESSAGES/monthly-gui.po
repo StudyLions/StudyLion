@@ -143,7 +143,7 @@ msgstr "{count} gün"
 #: src/gui/cards/monthly.py:316
 msgctxt "ui:monthlystats|stats:daily_average|key"
 msgid "Daily Average:"
-msgstr ""
+msgstr "Günlük Ortalama:"
 
 #: src/gui/cards/monthly.py:320
 #, possible-python-brace-format
