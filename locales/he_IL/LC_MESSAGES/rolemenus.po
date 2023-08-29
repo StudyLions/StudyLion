@@ -1279,12 +1279,12 @@ msgstr "אפשר החזרים"
 #: src/modules/rolemenus/ui/menueditor.py:289
 msgctxt "ui:menu_editor|menu:reqroles|placeholder"
 msgid "Select Required Role"
-msgstr ""
+msgstr "בחר רול נחוץ"
 
 #: src/modules/rolemenus/ui/menueditor.py:308
 msgctxt "ui:menu_editor|button:modify_roles|label"
 msgid "Modify Roles"
-msgstr ""
+msgstr "ערוך רולים"
 
 #: src/modules/rolemenus/ui/menueditor.py:337
 msgctxt "ui:menu_editor|role_editor|modal|title"
