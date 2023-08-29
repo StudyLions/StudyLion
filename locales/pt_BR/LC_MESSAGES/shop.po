@@ -66,7 +66,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "ui:colourstore|menu:buycolours|label"
 msgid "{name} (This is your colour!)"
-msgstr ""
+msgstr "{name} (Esta é sua cor!)"
 
 #: src/modules/shop/shops/colours.py:114
 #, possible-python-brace-format
