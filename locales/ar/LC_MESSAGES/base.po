@@ -32,7 +32,7 @@ msgstr "غير متزامن"
 
 #: bot/modules/sysadmin/exec_cog.py:253 bot/modules/sysadmin/exec_cog.py:255
 msgid "Execute arbitrary code with Exec"
-msgstr ""
+msgstr "قم بتنفيذ أوامر برمجية عشوائية بإستخدام Exec"
 
 #: bot/modules/sysadmin/exec_cog.py:265
 msgid "eval"
