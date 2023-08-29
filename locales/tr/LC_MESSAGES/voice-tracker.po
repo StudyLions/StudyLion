@@ -62,6 +62,8 @@ msgstr "Arkadaşlarınızın neye çalıştığını kontrol edin."
 msgctxt "cmd:now|param:clear|desc"
 msgid "Unset your activity tag (or the target user's tag, for moderators)."
 msgstr ""
+"Aktivite etiketinizi kaldırın (ya da hedef üye etiketini, moderatörler için "
+"geçerlidir)"
 
 #: src/tracking/voice/cog.py:689
 msgctxt "cmd:now|target:self|error:target_inactive"
