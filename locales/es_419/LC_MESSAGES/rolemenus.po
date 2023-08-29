@@ -689,7 +689,8 @@ msgstr "El rol asociado a este elemento de menú."
 msgctxt "roleset:role|long_desc"
 msgid "The role given when this menu item is selected in the role menu."
 msgstr ""
-"El rol otorgado cuando se selecciona este elemento en el menú de roles."
+"El rol otorgado cuando se selecciona este elemento del menú en el menú de "
+"roles."
 
 #: src/modules/rolemenus/roleoptions.py:74
 #, possible-python-brace-format
