@@ -589,7 +589,7 @@ msgstr "**דרגות לא קשורות שנמחקו:** {done}/{target}"
 #: src/modules/ranks/ui/refresh.py:220
 msgctxt "ui:refresh_ranks|embed|field:add|name"
 msgid "Giving members their rank roles"
-msgstr ""
+msgstr "נותן למשתמשים את הרולי דרגות שלהם"
 
 #: src/modules/ranks/ui/refresh.py:224
 #, possible-python-brace-format
