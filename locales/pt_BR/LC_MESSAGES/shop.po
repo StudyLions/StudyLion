@@ -583,7 +583,7 @@ msgstr "Não há cores de cargo disponíveis para venda!"
 #: src/modules/shop/shops/colours.py:1166
 msgctxt "ui:colourstore|menu:buycolours|placeholder"
 msgid "Select a colour role to purchase!"
-msgstr ""
+msgstr "Selecione uma cor de cargo para comprar!"
 
 #: src/modules/shop/shops/colours.py:1195
 #, possible-python-brace-format
