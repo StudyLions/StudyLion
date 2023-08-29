@@ -202,7 +202,7 @@ msgstr "Grupo de comandos base para configurações de salas privadas. "
 #: src/modules/rooms/cog.py:314
 msgctxt "cmd:room_rent"
 msgid "rent"
-msgstr ""
+msgstr "alugar"
 
 #: src/modules/rooms/cog.py:317
 msgctxt "cmd:room_rent|desc"
