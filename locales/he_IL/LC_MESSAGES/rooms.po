@@ -777,7 +777,7 @@ msgstr "בלתינראה/כבוי/לא/לאנכון/כבוי/מנוטרל/0"
 #: src/modules/rooms/settings.py:182
 msgctxt "guildset:rooms_visible|set_response:enabled"
 msgid "Private rooms will now be visible to everyone."
-msgstr ""
+msgstr "חדרים פרטיים יהיו שקופים לכולם."
 
 #: src/modules/rooms/settings.py:187
 msgctxt "guildset:rooms_visible|set_response:disabled"
