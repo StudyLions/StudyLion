@@ -321,7 +321,7 @@ msgstr ""
 #: src/modules/statistics/settings.py:383
 msgctxt "ui:statistics_config|embed|title"
 msgid "Statistics Configuration Panel"
-msgstr ""
+msgstr "תפריט הגדרות סטטיסטיקת פעילות"
 
 #: src/modules/statistics/settings.py:405
 msgctxt "dash:stats|title"
