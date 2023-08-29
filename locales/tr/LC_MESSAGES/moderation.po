@@ -157,7 +157,7 @@ msgctxt "guildset:ticket_log|desc"
 msgid "Private moderation log to send tickets and moderation events."
 msgstr ""
 "Talep gönderilen ve moderasyon etkinliklerini kaydeden özel moderasyon "
-"kayıtları ."
+"kayıtları."
 
 #: src/modules/moderation/settings.py:27
 msgctxt "guildset:ticket_log|long_desc"
