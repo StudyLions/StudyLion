@@ -35,12 +35,12 @@ msgstr "Indicador de sitação do bot "
 msgctxt "botset:presence_status|long_desc"
 msgid "Whether the bot account displays as online, idle, dnd, or offline."
 msgstr ""
-"Se a conta do bot é mostrada como online, inativa, ausente ou offline. "
+"Se a conta do bot é mostrada como online, ausente, não perturbe ou offline. "
 
 #: src/modules/sysadmin/presence.py:124
 msgctxt "botset:presence_status|accepts"
 msgid "Online/Idle/Dnd/Offline"
-msgstr "Online/Inativa/Ausente/Offline"
+msgstr "Online/Inativa/Não Perturbe/Offline"
 
 #: src/modules/sysadmin/presence.py:133
 msgctxt "botset:presence_status|output:online"
