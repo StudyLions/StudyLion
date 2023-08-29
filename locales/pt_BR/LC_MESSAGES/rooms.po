@@ -157,7 +157,7 @@ msgstr "Dono"
 #: src/modules/rooms/roomui.py:385
 msgctxt "ui:room_status|embed|field:created|name"
 msgid "Created At"
-msgstr ""
+msgstr "Criado em"
 
 #: src/modules/rooms/roomui.py:395
 #, possible-python-brace-format
