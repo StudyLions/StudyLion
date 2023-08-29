@@ -584,7 +584,7 @@ msgstr "Nombre del menú para editar el rol"
 #: src/modules/rolemenus/cog.py:1422
 msgctxt "cmd:rolemenu_editrole|param:menu_role|desc"
 msgid "Label, name, or mention of the menu role to edit."
-msgstr ""
+msgstr "Etiqueta, nombra o menciona el menú de roles a editar."
 
 #: src/modules/rolemenus/cog.py:1426
 msgctxt "cmd:rolemenu_editrole|param:role|desc"
