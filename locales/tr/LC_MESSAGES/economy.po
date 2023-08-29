@@ -252,7 +252,7 @@ msgid ""
 "{role_mention} has `{count}` members with non-zero balance, with a total "
 "balance of {coin_emoji}**{total}**."
 msgstr ""
-"{role_mention} rolü `{count}` adedinde bakiyesi sıfır olan kullanıcı "
+"{role_mention} rolü `{count}` bakiyesi sıfırdan farkı olan kullanıcı "
 "içermekte ve rolün toplam bakiyesi {coin_emoji}**{total}**."
 
 #: src/modules/economy/cog.py:420
