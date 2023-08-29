@@ -341,7 +341,7 @@ msgstr "תפריט הגדרות סטטיסטיקת פעילות"
 #: src/modules/statistics/settings.py:405
 msgctxt "dash:stats|title"
 msgid "Activity Statistics Configuration ({commands[configure statistics]})"
-msgstr ""
+msgstr "תפריט סטטיסטיקת פעילות ({commands[configure statistics]})"
 
 #: src/modules/statistics/settings.py:409
 msgctxt "dash:stats|dropdown|placeholder"
