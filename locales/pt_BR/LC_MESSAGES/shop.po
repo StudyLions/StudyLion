@@ -595,7 +595,7 @@ msgstr "`[{j:02}]` | `{price} LC` | {mention} (Você tem isto!)"
 #, possible-python-brace-format
 msgctxt "ui:colourstore|embed|line:item"
 msgid "`[{j:02}]` | `{price} LC` | {mention}"
-msgstr ""
+msgstr "`[{j:02}]` | `{price} LC` | {mention}"
 
 #: src/modules/shop/shops/colours.py:1207
 msgctxt "ui:colourstore|embed|desc"
