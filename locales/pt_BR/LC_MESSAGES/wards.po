@@ -61,6 +61,8 @@ msgstr "Eu não posso gerenciar {role}, pois ele é gerenciado por outro bot!"
 msgctxt "ward:equippable_role|error:integration"
 msgid "I cannot manage {role} because it is managed by a server integration."
 msgstr ""
+"Eu não posso gerenciar {role}, pois ele é gerenciado por uma integração do "
+"servidor."
 
 #: src/wards.py:163
 msgctxt "ward:equippable_role|error:default_role"
