@@ -290,7 +290,7 @@ msgstr "Novo nome para definir a cor do cargo."
 #: src/modules/shop/shops/colours.py:537
 msgctxt "cmd:editshop_colours_edit|param:colour|desc"
 msgid "New colour for the colour role (as hex, e.g. #AB12AB)."
-msgstr ""
+msgstr "Nova cor para a cor de cargo (em código HEX, ex:. #AB12AB)."
 
 #: src/modules/shop/shops/colours.py:541
 msgctxt "cmd:editshop_colours_edit|param:price|desc"
