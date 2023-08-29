@@ -491,7 +491,7 @@ msgstr "אין לך חדר פרטי להעביר!"
 msgctxt "cmd:room_transfer|error:target_not_member"
 msgid ""
 "{mention} is not a member of your private room! You must invite them first."
-msgstr ""
+msgstr "{mention} הוא לא חבר בחדר הפרטי שלך! אתם חייבים להזמין אותם קודם."
 
 #: src/modules/rooms/cog.py:802
 #, possible-python-brace-format
