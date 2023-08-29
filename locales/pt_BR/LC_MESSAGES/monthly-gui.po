@@ -127,7 +127,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "ui:monthlystats|stats:current_streak|value"
 msgid "{count} days"
-msgstr ""
+msgstr "{count} dias"
 
 #: src/gui/cards/monthly.py:308
 msgctxt "ui:monthlystats|stats:longest_streak|key"
