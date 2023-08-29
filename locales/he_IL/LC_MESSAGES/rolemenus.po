@@ -1174,6 +1174,8 @@ msgid ""
 "`Edit Message` button, raw JSON-formatted message data may also be uploaded "
 "via command."
 msgstr ""
+"ההגדרה הזו אחראית על הגוף של ההודעה בתפריט, כולל תוכן ההודעה וגם הembed. רוב"
+" הדברים יכולים לעבור עריכה דרך הבוט, אבל ניתן גם להעלות קובץ JSON."
 
 #: src/modules/rolemenus/menuoptions.py:260
 msgctxt "menuset:message|set_response:set"
