@@ -59,7 +59,7 @@ msgstr "Você precisa ser membro de uma sala privada para fazer isto!"
 #: src/modules/rooms/roomui.py:90
 msgctxt "ui:room_status|button:deposit|modal:deposit|title"
 msgid "Room Deposit"
-msgstr ""
+msgstr "Depósito de Salas"
 
 #: src/modules/rooms/roomui.py:94
 msgctxt "ui:room_status|button:deposit|modal:deposit|field:question|label"
