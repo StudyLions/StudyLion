@@ -537,7 +537,7 @@ msgstr "{mention} não está na loja de cores de cargo!"
 #: src/modules/shop/shops/colours.py:1028
 msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
 msgid "Successfully deleted the role."
-msgstr ""
+msgstr "Cargo deletado com sucesso!"
 
 #: src/modules/shop/shops/colours.py:1033
 msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
