@@ -131,7 +131,7 @@ msgstr "Notas"
 #: src/modules/moderation/ticket.py:226
 msgctxt "ticket|field:pardoned|name"
 msgid "Pardoned"
-msgstr ""
+msgstr "Perdoado"
 
 #: src/modules/moderation/ticket.py:229
 #, possible-python-brace-format
