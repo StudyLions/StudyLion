@@ -214,7 +214,7 @@ msgstr "ערוצים_לא_נחשבים"
 #: src/tracking/voice/settings.py:43
 msgctxt "guildset:untracked_channels|desc"
 msgid "Channels which will be ignored for statistics tracking."
-msgstr ""
+msgstr "ערוצים שאתעלם מהם כשאעקוב אחרי סטטיסטיקה של אנשים."
 
 #: src/tracking/voice/settings.py:47
 msgctxt "guildset:untracked_channels|long_desc"
