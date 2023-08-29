@@ -528,7 +528,7 @@ msgstr "ערוךרול"
 #: src/modules/rolemenus/cog.py:1396
 msgctxt "cmd:rolemenu_editrole|desc"
 msgid "Edit role options in an existing role menu."
-msgstr ""
+msgstr "ערוך הגדרות רול בתפריט רולים קיים."
 
 #: src/modules/rolemenus/cog.py:1401
 msgctxt "cmd:rolemenu_editrole|param:menu"
