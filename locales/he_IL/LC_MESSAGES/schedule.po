@@ -467,7 +467,7 @@ msgstr "רול או מספר זהות של רשימה שחורה."
 #, possible-python-brace-format
 msgctxt "guildset:schedule_blacklist_role|set_response|set"
 msgid "Members with {role} will be unable to book scheduled sessions."
-msgstr ""
+msgstr "משתמשים עם הרול הזה {role} לא יוכלו לקבוע פגישות לוז\"ים יותר."
 
 #: src/modules/schedule/settings.py:443
 msgctxt "guildset:schedule_blacklist_role|set_response|unset"
