@@ -283,7 +283,7 @@ msgstr "{coin}**{amount}** לשעה."
 #, possible-python-brace-format
 msgctxt "guildset:hourly_reward|mode:voice|response"
 msgid "Members will be given {coin}**{amount}** per hour in a voice channel!"
-msgstr ""
+msgstr "משתמשים יקבלו {coin}**{amount}** כל שעה בערוץ קולי!"
 
 #: src/tracking/voice/settings.py:171
 msgctxt "guildset:hourly_reward|mode:study|desc"
