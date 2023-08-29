@@ -178,7 +178,7 @@ msgstr "Como a cor do cargo deverá ser chamada?"
 #: src/modules/shop/shops/colours.py:373
 msgctxt "cmd:editshop_colours_create|param:price|desc"
 msgid "How much should the colour role cost?"
-msgstr ""
+msgstr "Quanto deverá custar a cor do cargo?"
 
 #: src/modules/shop/shops/colours.py:395
 #, possible-python-brace-format
