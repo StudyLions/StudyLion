@@ -782,7 +782,7 @@ msgid ""
 msgstr ""
 "La descripción se muestra bajo la etiqueta del rol en los menús "
 "desplegables. También puede utilizarse como clave de sustitución en las "
-"respuestas personalizadas de selección de funciones."
+"respuestas personalizadas de selección de roles."
 
 #: src/modules/rolemenus/roleoptions.py:205
 msgctxt "roleset:description|set_response:set"
