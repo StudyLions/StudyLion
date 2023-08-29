@@ -305,7 +305,7 @@ msgstr "מחיר של כל סשן (מספר שלם חיובי)."
 msgctxt "guildset:schedule_cost|set_response"
 msgid ""
 "Schedule session bookings will now cost {coin} **{amount}** per timeslot."
-msgstr ""
+msgstr "קביעת סשן יעלה עכשיו  {coin}**{amount}** כל פגישה."
 
 #: src/modules/schedule/settings.py:247
 #, possible-python-brace-format
