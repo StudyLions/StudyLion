@@ -58,7 +58,7 @@ msgstr "Bu sunucuda kullanacağım varsayılan dili seçin."
 msgctxt "cmd:configure_language|error"
 msgid ""
 "You cannot enable `{force_setting}` without having a configured language!"
-msgstr "Dil seçmeden,  `{force_setting}` 'i etkinleştiremezsiniz."
+msgstr "Dil seçmeden `{force_setting}`'i etkinleştiremezsiniz."
 
 #: src/babel/cog.py:167
 msgctxt "cmd:configure_language|success"
