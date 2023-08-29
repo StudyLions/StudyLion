@@ -410,7 +410,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "ui:rank_preview|button:delete|response:success|description|no_role"
 msgid "You have deleted the rank {mention}."
-msgstr ""
+msgstr "מחקתם את הדרגה {mention}."
 
 #: src/modules/ranks/ui/preview.py:150
 msgctxt "ui:rank_preview|button:delete|response:success|title"
