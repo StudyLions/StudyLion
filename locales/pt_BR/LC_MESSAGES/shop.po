@@ -425,6 +425,8 @@ msgid ""
 "I refuse to add an administrator role to the LionCoin shop. That is a really"
 " bad idea."
 msgstr ""
+"Eu me recuso a adicionar um cargo de Administrador à Loja de LionCoin. Isto "
+"é realmente uma péssima ideia."
 
 #: src/modules/shop/shops/colours.py:775
 msgctxt "cmd:editshop_colours_add|resp:done|embed:title"
