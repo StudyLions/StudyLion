@@ -285,7 +285,7 @@ msgstr "Selecione a cor de um cargo para editar."
 #: src/modules/shop/shops/colours.py:533
 msgctxt "cmd:editshop_colours_edit|param:name|desc"
 msgid "New name to give the colour role."
-msgstr ""
+msgstr "Novo nome para definir a cor do cargo."
 
 #: src/modules/shop/shops/colours.py:537
 msgctxt "cmd:editshop_colours_edit|param:colour|desc"
