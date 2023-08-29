@@ -151,7 +151,7 @@ msgstr "{target} kullanıcısının oturum etiketini `{new_tag}` olarak ayarla."
 #, possible-python-brace-format
 msgctxt "cmd:now|target:self|mode:show_with_tag|desc"
 msgid "You have been working on **`{tag}`** in {channel} since {time}!"
-msgstr ""
+msgstr "**`{tag}`** üzerine {channel} kanalında {time} beridir çalışıyorsun!"
 
 #: src/tracking/voice/cog.py:801
 #, possible-python-brace-format
