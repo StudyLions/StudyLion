@@ -245,12 +245,12 @@ msgstr ""
 #: src/modules/shop/shops/colours.py:505
 msgctxt "cmd:editshop_colours_create|resp:done|field:position_note|name"
 msgid "Note"
-msgstr ""
+msgstr "Nota"
 
 #: src/modules/shop/shops/colours.py:514
 msgctxt "cmd:editshop_colours_edit"
 msgid "edit"
-msgstr ""
+msgstr "editar"
 
 #: src/modules/shop/shops/colours.py:517
 msgctxt "cmd:editshop_colours_edit|desc"
