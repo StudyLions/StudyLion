@@ -156,7 +156,7 @@ msgstr "תזכיר"
 #: src/modules/reminders/cog.py:469
 msgctxt "cmd:reminders_cancel|param:reminder|desc"
 msgid "Start typing, then select a reminder to cancel."
-msgstr ""
+msgstr "התחל להקליד, ואז תבחר את התזכור הרלוונטי שתרצה לבטל."
 
 #: src/modules/reminders/cog.py:488
 msgctxt "cmd:reminders_cancel|error:no_reminders"
