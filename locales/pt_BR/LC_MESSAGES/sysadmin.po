@@ -75,12 +75,12 @@ msgstr "Ausente"
 #: src/modules/sysadmin/presence.py:141
 msgctxt "botset:presence_status|input_format:dnd"
 msgid "DND"
-msgstr ""
+msgstr "Não Perturbe"
 
 #: src/modules/sysadmin/presence.py:142
 msgctxt "botset:presence_status|input_format:offline"
 msgid "Offline"
-msgstr ""
+msgstr "Offline"
 
 #: src/modules/sysadmin/presence.py:145
 msgctxt "botset:presence_status|input_pattern:online"
