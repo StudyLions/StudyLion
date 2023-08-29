@@ -255,7 +255,7 @@ msgctxt "guildset:visible_stats|desc"
 msgid ""
 "Choose which statistics types to display in the leaderboard and statistics "
 "commands."
-msgstr ""
+msgstr "בחר באיזה סוג סטטיסטיקה לוח השיאים ופקודות הסטטיסטיקה ישתמשו."
 
 #: src/modules/statistics/settings.py:225
 msgctxt "guildset:visible_stats|accepts"
