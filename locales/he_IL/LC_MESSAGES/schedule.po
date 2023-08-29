@@ -321,7 +321,7 @@ msgstr "פרס_נוכחות"
 #: src/modules/schedule/settings.py:259
 msgctxt "guildset:attendance_reward|desc"
 msgid "Reward for attending a booked scheduled session."
-msgstr ""
+msgstr "פרס עבור נוכחות במערכת הלו\"זים."
 
 #: src/modules/schedule/settings.py:263
 msgctxt "guildset:attendance_reward|long_desc"
