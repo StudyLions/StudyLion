@@ -154,7 +154,7 @@ msgstr "נתמך"
 #, possible-python-brace-format
 msgctxt "settype:timezone|summary_table|field:supported|value"
 msgid "Any timezone from the [tz database]({link})."
-msgstr ""
+msgstr "כל אזור זמן מפה [tz database]({link})."
 
 #: src/settings/setting_types.py:914
 #, possible-python-brace-format
