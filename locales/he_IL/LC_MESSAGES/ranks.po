@@ -826,7 +826,7 @@ msgctxt "ui:rank_editor|type:voice|input:requires|error:parse"
 msgid ""
 "`requires`: Could not parse provided minimum time! Please write a number of "
 "hours."
-msgstr ""
+msgstr "`דרוש`: לא הצלחתי להבין את הזמן המינימלי! אנא ציין את מספר השעות."
 
 #: src/modules/ranks/ui/editor.py:137
 msgctxt "ui:rank_editor|type:message|input:requires|error:parse"
