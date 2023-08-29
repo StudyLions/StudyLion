@@ -173,7 +173,7 @@ msgstr "De qual cor o cargo deverá ser? (Usando um Hex code, ex. #AB22AB)"
 #: src/modules/shop/shops/colours.py:369
 msgctxt "cmd:editshop_colours_create|param:name|desc"
 msgid "What should the colour role be called?"
-msgstr ""
+msgstr "Como a cor do cargo deverá ser chamada?"
 
 #: src/modules/shop/shops/colours.py:373
 msgctxt "cmd:editshop_colours_create|param:price|desc"
