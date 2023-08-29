@@ -589,7 +589,7 @@ msgstr "Selecione uma cor de cargo para comprar!"
 #, possible-python-brace-format
 msgctxt "ui:colourstore|embed|line:owned_item"
 msgid "`[{j:02}]` | `{price} LC` | {mention} (You own this!)"
-msgstr ""
+msgstr "`[{j:02}]` | `{price} LC` | {mention} (Você comprou isto!)"
 
 #: src/modules/shop/shops/colours.py:1200
 #, possible-python-brace-format
