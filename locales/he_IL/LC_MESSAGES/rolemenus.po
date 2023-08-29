@@ -1342,12 +1342,12 @@ msgctxt "ui:menu_editor|menu:style|error:incomplete_emojis"
 msgid ""
 "Cannot switch to the Reaction Role Style! Every role needs to have a "
 "distinct emoji first."
-msgstr ""
+msgstr "לא ניתן להחליף אל הסגנון הזה! כל רול צריך להכיל אמוג'י ייחודי קודם."
 
 #: src/modules/rolemenus/ui/menueditor.py:602
 msgctxt "ui:menu_editor|menu:style|placeholder"
 msgid "Select Menu Style"
-msgstr ""
+msgstr "בחר סגנון תפריט"
 
 #: src/modules/rolemenus/ui/menueditor.py:606
 msgctxt "ui:menu_editor|menu:style|option:reaction|label"
