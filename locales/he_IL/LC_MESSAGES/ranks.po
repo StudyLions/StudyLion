@@ -361,7 +361,7 @@ msgstr "אם מופעל, הודעת איחולים תישלח למשתמש בה�
 #: src/modules/ranks/settings.py:174
 msgctxt "guildset:dm_ranks|response:true"
 msgid "I will direct message members upon rank advancement."
-msgstr ""
+msgstr "אני אשלח למשתמש הודעה פרטית שהוא עולה דרגה."
 
 #: src/modules/ranks/settings.py:179
 msgctxt "guildset:dm_ranks|response:false"
