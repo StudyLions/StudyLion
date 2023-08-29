@@ -180,6 +180,8 @@ msgid ""
 "Could not parse `{provided}` as a timestamp. Please use `YYYY-MM-DD HH:MM` "
 "format."
 msgstr ""
+"לא הצלחתי להבין את  `{provided}`, אנא השתמש בפורמט `YYYY-MM-DD HH:MM` "
+"format."
 
 #: src/settings/setting_types.py:1017
 msgctxt "settype:raw|accepts"
