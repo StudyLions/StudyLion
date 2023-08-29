@@ -222,11 +222,13 @@ msgid ""
 "Activity in these channels will not count towards a member's statistics. If "
 "a category is selected, all channels under the category will be untracked."
 msgstr ""
+"פעילות בערוצים האלו לא יחשבו בתור זמן בסטטיסטיקות של אנשים. אם קטגוריה "
+"נבחרה, כל הערוצים תחתה לא יחשבו."
 
 #: src/tracking/voice/settings.py:52
 msgctxt "guildset:untracked_channels|accepts"
 msgid "Comma separated list of untracked channel name/ids."
-msgstr ""
+msgstr "רשימה מופרדת עם פסיקים של הערוצים המוגדרים כערוצים לא נעקבים."
 
 #: src/tracking/voice/settings.py:56
 msgctxt "guildset:untracked_channels|notset"
