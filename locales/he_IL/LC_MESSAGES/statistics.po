@@ -407,7 +407,7 @@ msgstr "הכנס את מספר המטלות שאתה מכוון להגיע אל�
 #, possible-python-brace-format
 msgctxt "modal:goal_editor|field:task_goal|error:NAN"
 msgid "The provided task goal `{input}` is not a number! Please try again."
-msgstr ""
+msgstr "המטרה שהבאת `{input}` אינה מספר, אנא נסו שוב."
 
 #: src/modules/statistics/ui/weeklymonthly.py:181
 msgctxt "modal:goal_editor|field:voice_goal|label"
