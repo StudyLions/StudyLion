@@ -1154,7 +1154,7 @@ msgstr "משתמשים יצטרכו להיות הבעלים של {role} על מ�
 #: src/modules/rolemenus/menuoptions.py:228
 msgctxt "menuset:required_role|set_response:unset"
 msgid "Any member who can see the menu may use it."
-msgstr ""
+msgstr "כל משתמש שיכול לראות את התפריט הזה יכול להשתמש בו."
 
 #: src/modules/rolemenus/menuoptions.py:236
 msgctxt "menuset:message"
