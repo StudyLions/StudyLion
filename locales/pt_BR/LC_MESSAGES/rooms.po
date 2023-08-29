@@ -394,6 +394,8 @@ msgctxt "cmd:room_invite|error:no_room"
 msgid ""
 "You do not own a private room! Use `/room rent` to rent one with {coin}!"
 msgstr ""
+"Você não tem uma sala privada! Digite ˋ/sala alugarˋ para alugar uma por "
+"{coin}!"
 
 #: src/modules/rooms/cog.py:629
 #, possible-python-brace-format
