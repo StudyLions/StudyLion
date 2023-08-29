@@ -756,7 +756,7 @@ msgstr "El emoji seleccionado `{emoji}` no es válido o ha sido eliminado."
 #, possible-python-brace-format
 msgctxt "roleset:emoji|set_response:set"
 msgid "The menu role emoji is now {emoji}."
-msgstr ""
+msgstr "El emoji del rol del menú es ahora {emoji}."
 
 #: src/modules/rolemenus/roleoptions.py:173
 msgctxt "roleset:emoji|set_response:unset"
