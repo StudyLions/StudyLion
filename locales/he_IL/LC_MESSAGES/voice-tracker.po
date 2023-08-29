@@ -153,6 +153,9 @@ msgid ""
 "\n"
 "Use `/now <tag>` to set what you are working on."
 msgstr ""
+"אתה עובד ב{channel} במשך {time}!\n"
+"\n"
+" `/now <tag>` כדי להראות לכולם על מה אתה עובד תמשתמש ב."
 
 #: src/tracking/voice/cog.py:808
 #, possible-python-brace-format
