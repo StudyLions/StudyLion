@@ -56,7 +56,7 @@ msgstr "**Boşta**"
 #: src/modules/sysadmin/presence.py:135
 msgctxt "botset:presence_status|output:dnd"
 msgid "**Do Not Disturb**"
-msgstr ""
+msgstr "**Rahatsız Etmeyin**"
 
 #: src/modules/sysadmin/presence.py:136
 msgctxt "botset:presence_status|output:offline"
