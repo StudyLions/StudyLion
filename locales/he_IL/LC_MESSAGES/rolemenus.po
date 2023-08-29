@@ -1054,12 +1054,12 @@ msgstr "משתמשים לא יוכלו להוריד מעצמם רולים באמ
 #: src/modules/rolemenus/menuoptions.py:115
 msgctxt "menuset:sticky|set_response:false"
 msgid "Members will now be able to remove roles with this menu."
-msgstr ""
+msgstr "משתמשים כן יוכלו להוריד מעצמם רולים באמצעות התפריט הזה."
 
 #: src/modules/rolemenus/menuoptions.py:123
 msgctxt "menuset:refunds"
 msgid "refunds"
-msgstr ""
+msgstr "החזרים"
 
 #: src/modules/rolemenus/menuoptions.py:126
 msgctxt "menuset:refunds|desc"
