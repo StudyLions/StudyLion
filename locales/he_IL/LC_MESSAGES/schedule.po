@@ -970,12 +970,12 @@ msgstr "משתמשים"
 #, possible-python-brace-format
 msgctxt "session|status:running|desc:has_members"
 msgid "Finishing {start}"
-msgstr ""
+msgstr "מסיים {start}"
 
 #: src/modules/schedule/core/session.py:426
 msgctxt "session|status:running|field:waiting"
 msgid "Waiting For"
-msgstr ""
+msgstr "מחכה ל:"
 
 #: src/modules/schedule/core/session.py:432
 msgctxt "session|status:running|field:attending"
