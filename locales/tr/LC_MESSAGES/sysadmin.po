@@ -194,7 +194,7 @@ msgstr "etkinlik_adı"
 #: src/modules/sysadmin/presence.py:195
 msgctxt "botset:presence_name|desc"
 msgid "Name of the presence activity"
-msgstr ""
+msgstr "Presence etkinliğinin adı"
 
 #: src/modules/sysadmin/presence.py:196
 msgctxt "botset:presence_name|long_desc"
