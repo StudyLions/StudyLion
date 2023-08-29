@@ -1487,7 +1487,7 @@ msgstr "פרסם מחדש"
 #: src/modules/rolemenus/ui/menueditor.py:964
 msgctxt "ui:menu_editor|button:repost|label:post"
 msgid "Post"
-msgstr ""
+msgstr "פרסם"
 
 #: src/modules/rolemenus/ui/menueditor.py:974
 msgctxt "ui:menu_editor|embed|title"
