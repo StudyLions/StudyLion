@@ -185,9 +185,9 @@ msgid ""
 "and returning members will be sent the configured `returning_message`. Unset"
 " to send these message via direct message."
 msgstr ""
-"Yeni üyeler için ayarlanmış `welcome_message` mesajı ve tekrardan gelen "
-"üyeler için ayarlanmış `returning_message` mesajı bu kanala gelecektir. "
-"Direkt Mesaj olarak göndermek için ayarlamadan bırakınız."
+"Yeni üyeler için ayarlanmış `hoşgeldin_mesajı` ve tekrardan gelen üyeler "
+"için ayarlanmış `geridönüş_mesajı` bu kanala gelecektir. Direkt Mesaj olarak"
+" göndermek için ayarlamadan bırakınız."
 
 #: src/modules/member_admin/settings.py:53
 msgctxt "guildset:greeting_channel|accepts"
