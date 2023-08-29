@@ -502,7 +502,7 @@ msgstr "הוסף את הרול {role} לתפריט **{menu}**."
 #: src/modules/rolemenus/cog.py:1334
 msgctxt "cmd:rolemenu_addrole|success:edit|title"
 msgid "Menu Role updated"
-msgstr ""
+msgstr "תפריט רולים עודכן"
 
 #: src/modules/rolemenus/cog.py:1346
 #, possible-python-brace-format
