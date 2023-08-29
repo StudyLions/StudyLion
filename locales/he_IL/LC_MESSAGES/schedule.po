@@ -334,7 +334,7 @@ msgstr "כאשר מישהו נכח בהצלחה במערכת הלו\"זים הו
 #: src/modules/schedule/settings.py:269
 msgctxt "guildset:attendance_reward|accepts"
 msgid "Number of coins to reward session attendance."
-msgstr ""
+msgstr "מספר מטבעות שמשתמש יקבל בעקבות נוכחות מוצלחת בחדר הלו\"זים."
 
 #: src/modules/schedule/settings.py:281
 #, possible-python-brace-format
