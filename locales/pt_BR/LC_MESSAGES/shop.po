@@ -92,7 +92,7 @@ msgstr "Este item talvez não seja comprado!"
 #: src/modules/shop/shops/colours.py:185
 msgctxt "shop:colour|purchase|error:no_guild"
 msgid "Could not retrieve the server from Discord!"
-msgstr ""
+msgstr "Não foi possível acessar o servidor do Discord!"
 
 #: src/modules/shop/shops/colours.py:195
 msgctxt "shop:colour|purchase|error:no_member"
