@@ -249,6 +249,8 @@ msgstr "סטטיסטיקות_זמינות"
 msgctxt "guildset:visible_stats|desc"
 msgid "Which statistics will be visible in the statistics commands."
 msgstr ""
+"איזה סוג סטטיסטיקה יהיה זמין כמשתמשים ישתמשו בפקודה שמראה להם את הסטטיסטיקה "
+"שלהם."
 
 #: src/modules/statistics/settings.py:221
 msgctxt "guildset:visible_stats|desc"
