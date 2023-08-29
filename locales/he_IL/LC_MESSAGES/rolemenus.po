@@ -1016,6 +1016,8 @@ msgid ""
 "The role menu name is displayed when selecting the menu in commands, and as "
 "the title of most default menu layouts."
 msgstr ""
+"התפריט רולים הזה יוצג כאשר מזמנים אותו עם פקודה, עם השם הקצר של רוב התפריטי "
+"ברירת מחדל. "
 
 #: src/modules/rolemenus/menuoptions.py:78
 #, possible-python-brace-format
