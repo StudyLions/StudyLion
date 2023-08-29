@@ -640,7 +640,7 @@ msgstr "לתפריט **{menu}** אין את הרול **{name}**"
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delrole|success"
 msgid "The role **{name}** was successfully removed from the menu **{menu}**."
-msgstr ""
+msgstr "הרול **{name}** נמחק בהצלחה מהתפריט **{menu}**."
 
 #: src/modules/rolemenus/roleoptions.py:54
 msgctxt "roleset:role"
