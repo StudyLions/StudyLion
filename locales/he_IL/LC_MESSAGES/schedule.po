@@ -250,6 +250,8 @@ msgid ""
 "channels under the category will also be included. Activity tracking also "
 "respects the `untracked_voice_channels` setting."
 msgstr ""
+"רק פעילות בערוצים האלו תחשב בתור נוכחות במערכת הלו\"זים. אם בחרתם בקטגוריה, "
+"כל הערוצים מתחת לקטגוריה הזו יבחרו."
 
 #: src/modules/schedule/settings.py:149
 msgctxt "guildset:session_channels|accepts"
