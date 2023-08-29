@@ -142,7 +142,7 @@ msgstr "**Jogando**"
 #: src/modules/sysadmin/presence.py:175
 msgctxt "botset:presence_type|output:streaming"
 msgid "**Streaming**"
-msgstr ""
+msgstr "**Transmitindo**"
 
 #: src/modules/sysadmin/presence.py:178
 msgctxt "botset:presence_type|input_format:watching"
