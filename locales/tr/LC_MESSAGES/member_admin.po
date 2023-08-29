@@ -307,7 +307,7 @@ msgid ""
 "When set, this message will be sent to the `welcome_channel` when a member "
 "*returns* to the server. If not set, no message will be sent."
 msgstr ""
-"Ayarlandığında, bu mesaj `welcome_channel` kanalına üye sunucuya *geri "
+"Ayarlandığında, bu mesaj `hoşgeldin_kanalı` kanalına üye sunucuya *geri "
 "döndüğünde* gönderilecektir. Ayarlanmadığında, mesaj gönderilmeyecektir."
 
 #: src/modules/member_admin/settings.py:226
