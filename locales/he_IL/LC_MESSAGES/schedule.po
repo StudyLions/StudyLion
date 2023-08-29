@@ -311,7 +311,7 @@ msgstr "קביעת סשן יעלה עכשיו  {coin}**{amount}** כל פגיש�
 #, possible-python-brace-format
 msgctxt "guildset:schedule_cost|formatted"
 msgid "{coin}**{amount}** per booking."
-msgstr ""
+msgstr "{coin}**{amount}** עבור כל סשן."
 
 #: src/modules/schedule/settings.py:256
 msgctxt "guildset:attendance_reward"
