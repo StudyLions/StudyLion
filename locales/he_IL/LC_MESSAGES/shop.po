@@ -254,7 +254,7 @@ msgstr "ערוך"
 #: src/modules/shop/shops/colours.py:517
 msgctxt "cmd:editshop_colours_edit|desc"
 msgid "Edit the name, colour, or price of a colour role."
-msgstr ""
+msgstr "ערוך את השם, צבע והמחיר של רול הצבע."
 
 #: src/modules/shop/shops/colours.py:521
 msgctxt "cmd:editshop_colours_edit|param:role"
@@ -284,7 +284,7 @@ msgstr "בחר בצבע לעריכה."
 #: src/modules/shop/shops/colours.py:533
 msgctxt "cmd:editshop_colours_edit|param:name|desc"
 msgid "New name to give the colour role."
-msgstr ""
+msgstr "שם חדש לתת לרול הצבע."
 
 #: src/modules/shop/shops/colours.py:537
 msgctxt "cmd:editshop_colours_edit|param:colour|desc"
