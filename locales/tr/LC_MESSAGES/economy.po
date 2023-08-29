@@ -389,8 +389,8 @@ msgstr ""
 msgctxt "cmd:economy_reset|embed:success_user|desc"
 msgid "{mention}'s balance has been reset to {coin_emoji}**{amount}**."
 msgstr ""
-"{mention} kullanıcısının bakiyesi şu değere sıfırlandı "
-"{coin_emoji}**{amount}**."
+"{mention} kullanıcısının bakiyesi {coin_emoji}**{amount}** değerine "
+"sıfırlandı."
 
 #: src/modules/economy/cog.py:660
 msgctxt "cmd:send"
