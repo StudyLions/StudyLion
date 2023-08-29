@@ -52,7 +52,7 @@ msgstr ""
 #: src/tracking/voice/cog.py:654
 msgctxt "cmd:now|param:tag|desc"
 msgid "Describe what you are working on in 10 characters or less!"
-msgstr ""
+msgstr "اكتب وصف عن ماذا تعمل خلال 10 كلمات أوأقل "
 
 #: src/tracking/voice/cog.py:658
 msgctxt "cmd:now|param:user|desc"
