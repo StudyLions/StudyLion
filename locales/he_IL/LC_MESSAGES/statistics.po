@@ -222,6 +222,8 @@ msgstr ""
 msgctxt "guildset:unranked_roles|accepts"
 msgid "Comma separated list of unranked role names or ids."
 msgstr ""
+"רשימה מופרדת עם פסיקים של הערוצים, רולים, אנשים ומספר זהות של מי שלא תרצו "
+"שאתן לו דרגות."
 
 #: src/modules/statistics/settings.py:183
 msgctxt "guildset:unranked_roles|set_using"
