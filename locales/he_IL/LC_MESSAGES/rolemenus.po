@@ -956,6 +956,7 @@ msgid ""
 "The role **{role}** costs {coin}**{cost}**,but you only have "
 "{coin}**{balance}**!"
 msgstr ""
+"הרול **{role}** עולה {coin}**{cost}**, אבל יש לכם רק {coin}**{balance}**!"
 
 #: src/modules/rolemenus/rolemenu.py:598
 msgctxt "rolemenu|select|error:perms"
