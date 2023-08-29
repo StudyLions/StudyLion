@@ -1462,7 +1462,7 @@ msgstr "תפריט רולים הוזז"
 #, possible-python-brace-format
 msgctxt "ui:menu_editor|button:repost|widget:repost|success|desc:general"
 msgid "The role menu `{name}` is now available at {message_link}."
-msgstr ""
+msgstr "התפריט רולים  `{name}` עכשיו זמין בלינק {message_link}."
 
 #: src/modules/rolemenus/ui/menueditor.py:927
 msgctxt "ui:menu_editor|button:repost|widget:repost|success|desc:reactions"
