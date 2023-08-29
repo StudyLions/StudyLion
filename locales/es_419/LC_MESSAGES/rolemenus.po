@@ -899,7 +899,7 @@ msgstr ""
 #: src/modules/rolemenus/templates.py:168
 msgctxt "template:shop|name"
 msgid "Role Shop"
-msgstr ""
+msgstr "Tienda de Roles"
 
 #: src/modules/rolemenus/templates.py:172
 msgctxt "template:shop|desc"
