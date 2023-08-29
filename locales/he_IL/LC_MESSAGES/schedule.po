@@ -235,7 +235,7 @@ msgstr "החדר קולי של מערכת הסשנים הוסר."
 #: src/modules/schedule/settings.py:135
 msgctxt "guildset:session_channels"
 msgid "session_channels"
-msgstr ""
+msgstr "חדרי_סשנים"
 
 #: src/modules/schedule/settings.py:138
 msgctxt "guildset:session_channels|desc"
