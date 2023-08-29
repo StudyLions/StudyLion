@@ -499,6 +499,7 @@ msgctxt "cmd:room_transfer|error:target_has_room"
 msgid ""
 "{mention} already owns a room! Members can only own one room at a time."
 msgstr ""
+"ל{mention} יש כבר חדר משלו. אנשים יכולים להיות הבעלים רק של חדר אחד בכל פעם."
 
 #: src/modules/rooms/cog.py:811
 #, possible-python-brace-format
