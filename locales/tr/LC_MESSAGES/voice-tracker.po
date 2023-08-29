@@ -111,12 +111,12 @@ msgstr "Oturum Etiketi Temizlendi!"
 #, possible-python-brace-format
 msgctxt "cmd:now|target:other|mode:clear|success|desc"
 msgid "Cleared {target}'s session tag."
-msgstr ""
+msgstr "{target} kullanıcısının oturum etiketi temizlendi."
 
 #: src/tracking/voice/cog.py:756
 msgctxt "cmd:now|target:self|mode:set|success|title"
 msgid "Session Tag Set!"
-msgstr ""
+msgstr "Oturum etiketi ayarlandı!"
 
 #: src/tracking/voice/cog.py:760
 #, possible-python-brace-format
