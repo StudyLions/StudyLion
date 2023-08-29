@@ -113,6 +113,7 @@ msgid ""
 "Amount of message XP to be given (additionally to the XP per period) for "
 "each hundred words. Useful for rewarding communication."
 msgstr ""
+"כמות נקודות הניסיון שאתן לכל 100 מילים. מעולה כדי לתגמל על שימוש בשרת."
 
 #: src/tracking/text/settings.py:77
 msgctxt "guildset:word_xp|accepts"
