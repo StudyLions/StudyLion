@@ -76,12 +76,12 @@ msgstr ""
 #: src/modules/moderation/ticket.py:168
 msgctxt "ticket|field:target|name"
 msgid "Target"
-msgstr ""
+msgstr "Alvo"
 
 #: src/modules/moderation/ticket.py:173
 msgctxt "ticket|field:moderator|name"
 msgid "Moderator"
-msgstr ""
+msgstr "Moderador"
 
 #: src/modules/moderation/ticket.py:180
 msgctxt "ticket|field:expiry|mode:expiring|name"
