@@ -437,7 +437,7 @@ msgstr "Cor de Cargo Criada"
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_add|resp:done|embed:desc"
 msgid "You have added {mention} to the colour shop for {coin}**{price}**!"
-msgstr ""
+msgstr "Você adicionou {mention} à loja de cores por {coin}**{price}**!"
 
 #: src/modules/shop/shops/colours.py:786
 msgctxt "cmd:editshop_colours_clear"
