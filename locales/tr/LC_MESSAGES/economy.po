@@ -425,7 +425,7 @@ msgstr "Hediyenin gönderileceği kişi"
 #: src/modules/economy/cog.py:673
 msgctxt "cmd:send|param:amount|desc"
 msgid "Number of coins to send"
-msgstr "Gönderilen coin sayısı"
+msgstr "Gönderilen coin miktarı"
 
 #: src/modules/economy/cog.py:674
 msgctxt "cmd:send|param:note|desc"
