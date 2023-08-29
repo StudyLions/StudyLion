@@ -569,7 +569,7 @@ msgstr "menú"
 #: src/modules/rolemenus/cog.py:1404
 msgctxt "cmd:rolemenu_editrole|param:menu_role"
 msgid "menu_role"
-msgstr ""
+msgstr "menúde_roles"
 
 #: src/modules/rolemenus/cog.py:1407
 msgctxt "cmd:rolemenu_editrole|param:role"
