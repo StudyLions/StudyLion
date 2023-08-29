@@ -365,11 +365,13 @@ msgid ""
 "Could not identify target private room! Please re-run the command in the "
 "private room you wish to view the status of."
 msgstr ""
+"Não pude identificar a sala privada indicada! Por favor, repita o comando na"
+" sala privada que você gostaria de ver o status."
 
 #: src/modules/rooms/cog.py:582
 msgctxt "cmd:room_invite"
 msgid "invite"
-msgstr ""
+msgstr "convidar"
 
 #: src/modules/rooms/cog.py:585
 msgctxt "cmd:room_invite|desc"
