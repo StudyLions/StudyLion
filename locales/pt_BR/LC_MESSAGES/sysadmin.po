@@ -132,12 +132,12 @@ msgstr "**Assistindo**"
 #: src/modules/sysadmin/presence.py:173
 msgctxt "botset:presence_type|output:listening"
 msgid "**Listening**"
-msgstr ""
+msgstr "**Ouvindo**"
 
 #: src/modules/sysadmin/presence.py:174
 msgctxt "botset:presence_type|output:playing"
 msgid "**Playing**"
-msgstr ""
+msgstr "**Jogando**"
 
 #: src/modules/sysadmin/presence.py:175
 msgctxt "botset:presence_type|output:streaming"
