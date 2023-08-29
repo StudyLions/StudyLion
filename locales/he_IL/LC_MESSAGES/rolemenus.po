@@ -1149,7 +1149,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "menuset:required_role|set_response:set"
 msgid "Members will need to have the {role} role to use this menu."
-msgstr ""
+msgstr "משתמשים יצטרכו להיות הבעלים של {role} על מנת להשתמש בתפריט הזה."
 
 #: src/modules/rolemenus/menuoptions.py:228
 msgctxt "menuset:required_role|set_response:unset"
