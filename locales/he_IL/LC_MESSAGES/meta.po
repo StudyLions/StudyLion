@@ -5,15 +5,16 @@
 # 
 # Translators:
 # Interitio, 2023
+# Ari Horesh, 2023
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-27 16:37+0300\n"
+"POT-Creation-Date: 2023-08-28 22:43+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Interitio, 2023\n"
+"Last-Translator: Ari Horesh, 2023\n"
 "Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -112,6 +113,17 @@ msgid ""
 "    `/economy balance`: Display and modify LionCoin balance for members and roles.\n"
 "    "
 msgstr ""
+"\n"
+"השתמש ב {cmd_dashboard} כדי לראות תיאור מקוצר של כל ההגדרות של הערוץ ובכדי לקפוץ לתפריטים השונים. \n"
+"\n"
+"התפריטים נגישים גם על ידי הפקודות הישירות, לדוגמא `/configure`\n"
+"\n"
+"עוד פקודות חשובות יוכלו להימצא פה:\n"
+" `/editshop`: כדי לשלוט בחנות צבעים של השרת.\n"
+" `/ranks`: כדי להכין דרגות עבור אנשים בשרת.\n"
+"`/timer admin`: כדי להכין טיימרים בשרת.\n"
+" `/rolemenus`: כדי להכין הודעות שאנשים יוכלו ללחוץ עליהן ולקבל רולים שונים.\n"
+"`/economy balance`: לשלוח במטבעות ובכלכלת השרת."
 
 #: src/modules/meta/help_sections.py:112
 msgctxt "helptext|level:member|title"
