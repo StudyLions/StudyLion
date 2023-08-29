@@ -145,7 +145,7 @@ msgstr "Oturum etiketi ayarlandı!"
 #, possible-python-brace-format
 msgctxt "cmd:now|target:other|mode:set|success|desc"
 msgid "Set {target}'s session tag to `{new_tag}`."
-msgstr ""
+msgstr "{target} kullanıcısının oturum etiketini `{new_tag}` olarak ayarla."
 
 #: src/tracking/voice/cog.py:796
 #, possible-python-brace-format
