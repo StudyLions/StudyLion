@@ -363,7 +363,7 @@ msgstr "Altbilgi Resım URL'si"
 #: src/utils/ui/msgeditor.py:398
 msgctxt "ui:msg_editor|modal:footer|field:timestamp|label"
 msgid "Embed Timestamp (in ISO format)"
-msgstr "Embed Zaman Damgası (ISO formatında)"
+msgstr "Gömülü İçerik Zaman Damgası (ISO formatında)"
 
 #: src/utils/ui/msgeditor.py:410
 msgctxt "ui:msg_editor|modal:footer|title"
