@@ -388,7 +388,7 @@ msgstr "Küçük Resim URL'si"
 #: src/utils/ui/msgeditor.py:477
 msgctxt "ui:msg_editor|modal:images|field:image|label"
 msgid "Embed Image URL"
-msgstr "Embed Resim URL'si"
+msgstr "Gömülü İçerik Resim URL'si"
 
 #: src/utils/ui/msgeditor.py:487
 msgctxt "ui:msg_editor|modal:images|title"
