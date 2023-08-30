@@ -235,7 +235,8 @@ msgstr "Eşleşen sayfa yok!"
 msgctxt "ui:msg_editor|error:empty"
 msgid "Rendering failed! The message content and embed cannot both be empty."
 msgstr ""
-"Oluşturma başarısız oldu! Mesaj içeriği ve gömmülünün ikisi de boş olamaz."
+"İşlem başarısız oldu! Mesaj içeriği ve gömülü öğenin ikisi de boş olamaz, en"
+" azından birinde bilgi olmalı."
 
 #: src/utils/ui/msgeditor.py:86
 #, possible-python-brace-format
