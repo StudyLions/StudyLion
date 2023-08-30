@@ -398,7 +398,7 @@ msgstr "Gömülü İçerik Resim Editörü"
 #: src/utils/ui/msgeditor.py:517
 msgctxt "ui:msg_editor|button:images|label"
 msgid "Images"
-msgstr "Görüntüler"
+msgstr "Resimler"
 
 #: src/utils/ui/msgeditor.py:535
 msgctxt "ui:msg_editor|modal:add_field|field:position|label"
