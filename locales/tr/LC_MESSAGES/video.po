@@ -90,8 +90,8 @@ msgid ""
 "**You have joined the video channel {channel}!**\n"
 "Please **enable your video** or **leave the channel** or you will be disconnected {timestamp} and potentially **blacklisted**."
 msgstr ""
-"**Video kanalı {channel}'ına katıldınız!**\n"
-"Lütfen **videonuzu etkinleştirin** veya **kanaldan ayrılın**, aksi takdirde bağlantınız kesilecektir {timestamp} ve muhtemelen **kara listeye alınacaksınız**."
+"**Video kanalı {channel}'ına katıldın!**\n"
+"Lütfen **videonu etkinleştir** veya **kanaldan ayrıl**, aksi takdirde bağlantın {timestamp} kesilecek ve potansiyel olarak **kara listeye alınabilirsin**."
 
 #: src/modules/video_channels/cog.py:316
 msgctxt "video_watchdog|join_task|thanks:title"
