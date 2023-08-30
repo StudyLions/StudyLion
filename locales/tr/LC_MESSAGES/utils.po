@@ -358,7 +358,7 @@ msgstr "Altbilgi Metni"
 #: src/utils/ui/msgeditor.py:388
 msgctxt "ui:msg_editor|modal:footer|field:image|label"
 msgid "Footer Image URL"
-msgstr "Altbilgi Görsel URL'si"
+msgstr "Altbilgi Resım URL'si"
 
 #: src/utils/ui/msgeditor.py:398
 msgctxt "ui:msg_editor|modal:footer|field:timestamp|label"
