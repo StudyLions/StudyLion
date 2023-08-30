@@ -41,7 +41,7 @@ msgid ""
 msgstr ""
 "StudyLion'un zamanla ilgili tüm kişisel özellikleri, kişisel istatistikler "
 "de dahil olmak üzere bu zaman dilimini kullanacaktır. Liderlik tablolarının "
-"hala sunucunun kendi zaman diliminde gösterileceğini unutmayın."
+"hala sunucunun kendi zaman diliminde gösterileceğini unutma."
 
 #: src/modules/user_config/cog.py:60
 #, possible-python-brace-format
