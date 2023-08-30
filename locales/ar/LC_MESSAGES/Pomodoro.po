@@ -559,7 +559,7 @@ msgstr ""
 #: src/modules/pomodoro/options.py:220
 msgctxt "timerset:break_length"
 msgid "break_length"
-msgstr ""
+msgstr "مدة_الاستراحة"
 
 #: src/modules/pomodoro/options.py:223
 msgctxt "timerset:break_length|desc"
