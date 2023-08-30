@@ -478,7 +478,7 @@ msgstr "Gömülü İçerik Alanını Düzenle"
 #: src/utils/ui/msgeditor.py:772
 msgctxt "ui:msg_deleteor|menu:delete_field|placeholder"
 msgid "Remove Embed Field"
-msgstr "Embed Alanını Kaldır"
+msgstr "Gömülü İçerik Alanını Kaldır"
 
 #: src/utils/ui/msgeditor.py:808
 msgctxt "ui:msg_editor|button:save|label"
