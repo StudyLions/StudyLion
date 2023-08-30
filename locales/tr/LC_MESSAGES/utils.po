@@ -393,7 +393,7 @@ msgstr "Gömülü İçerik Resim URL'si"
 #: src/utils/ui/msgeditor.py:487
 msgctxt "ui:msg_editor|modal:images|title"
 msgid "Embed images Editor"
-msgstr "Embed Resim Editörü"
+msgstr "Gömülü İçerik Resim Editörü"
 
 #: src/utils/ui/msgeditor.py:517
 msgctxt "ui:msg_editor|button:images|label"
