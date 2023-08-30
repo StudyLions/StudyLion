@@ -208,8 +208,7 @@ msgid ""
 "Members will be asked to turn on their video in the following channels: "
 "{channels}"
 msgstr ""
-"Üyelerden aşağıdaki kanallarda kameralarını açmaları istenecektir: "
-"{channels}"
+"Üyelerden sıradaki kanallarda kameralarını açmaları istenecektir: {channels}"
 
 #: src/modules/video_channels/settings.py:72
 msgctxt "guildset:video_channels|set_response:unset"
