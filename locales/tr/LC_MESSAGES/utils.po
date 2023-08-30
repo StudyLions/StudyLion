@@ -47,7 +47,7 @@ msgstr "sonraki"
 #: src/utils/cog.py:46
 msgctxt "cmd:page_next|desc"
 msgid "Jump to the next page of output."
-msgstr "Çıktının bir sonraki sayfasına atlayın."
+msgstr "Yanıtın bir sonraki sayfasına atlayın."
 
 #: src/utils/cog.py:52
 msgctxt "cmd:page_prev"
