@@ -53,7 +53,7 @@ msgstr "احتاج إلى إذن `MANAGE_WEBHOOKS` لإرسال إشعارات �
 #, possible-python-brace-format
 msgctxt "timer|default_base_name"
 msgid "Timer {pattern}"
-msgstr ""
+msgstr "ساعة توقيت {pattern}"
 
 #: src/modules/pomodoro/timer.py:403
 #, possible-python-brace-format
