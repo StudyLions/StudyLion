@@ -65,7 +65,7 @@ msgstr ""
 #: src/modules/user_config/cog.py:89
 msgctxt "cmd:userconfig_timezone"
 msgid "timezone"
-msgstr ""
+msgstr "منطقة زمنية"
 
 #: src/modules/user_config/cog.py:92
 msgctxt "cmd:userconfig_timezone|desc"
