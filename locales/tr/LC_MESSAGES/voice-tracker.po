@@ -122,7 +122,7 @@ msgstr "Oturum etiketi ayarlandı!"
 #, possible-python-brace-format
 msgctxt "cmd:now|target:self|mode:set|success|desc"
 msgid "You are now working on `{new_tag}`. Good luck!"
-msgstr "Şimdi `{new_tag}` üzerine çalışıyorsunuz. İyi şanslar!"
+msgstr "Şimdi `{new_tag}` üzerine çalışıyorsun. İyi şanslar!"
 
 #: src/tracking/voice/cog.py:769
 msgctxt "cmd:now|target:other|mode:set|error:perms|title"
