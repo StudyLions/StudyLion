@@ -306,7 +306,7 @@ msgstr "Gömülü Mesaj Başlığı"
 #: src/utils/ui/msgeditor.py:225
 msgctxt "ui:msg_editor|modal:body|field:colour|label"
 msgid "Embed Colour"
-msgstr "Embed Rengi"
+msgstr "Gömülü Mesaj Rengi"
 
 #: src/utils/ui/msgeditor.py:240
 msgctxt "ui:msg_editor|modal:body|title"
