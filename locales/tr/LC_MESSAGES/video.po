@@ -193,7 +193,7 @@ msgid ""
 "As usual, if a category is configured, this will apply to all voice channels under the category."
 msgstr ""
 "Üyelerin bu kanallarda kameralarını açmaları zorunlu olacaktır.\n"
-"Katıldıktan `15` saniye sonra kamralarını etkinleştirmezlerse, doğrudan mesajlarda veya `alert_channel`da bir bildirim yoluyla etkinleştirmeleri istenecektir. `video_grace_period` süresi geçtikten sonra hala etkinleştirmemişlerse, kanaldan atılacaklardır. Ayrıca, ilk kusurdan sonra (bu bir uyarı olarak kabul edilir), yapılandırılmışsa, kamera açık kanallara katılmalarını engelleyecek olan `video_blacklist` rolü verilecektir.\n"
+"Katıldıktan sonra `15` saniye içinde kameralarını etkinleştirmezlerse, direkt mesajlarda veya `uyarı_kanalı`nda bir bildirim yoluyla etkinleştirmeleri istenecektir. `video_grace_period` süresi geçtikten sonra hala etkinleştirmemişlerse, kanaldan atılacaklardır. Ayrıca, ilk kusurdan sonra (bu bir uyarı olarak kabul edilir), yapılandırılmışsa, kamera açık kanallara katılmalarını engelleyecek olan `video_blacklist` rolü verilecektir.\n"
 "Her zamanki gibi, bir kategori seçilmişse, ayar, bu kategori altındaki tüm ses kanalları için geçerli olacaktır."
 
 #: src/modules/video_channels/settings.py:50
