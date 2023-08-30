@@ -56,6 +56,8 @@ msgstr ""
 msgctxt "cmd:userconfig"
 msgid "my"
 msgstr ""
+"خاصتى\n"
+"AT: لى"
 
 #: src/modules/user_config/cog.py:82
 msgctxt "cmd:userconfig|desc"
