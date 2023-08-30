@@ -67,7 +67,7 @@ msgstr "ilk"
 #: src/utils/cog.py:60
 msgctxt "cmd:page_first|desc"
 msgid "Jump to the first page of output."
-msgstr "Çıktının ilk sayfasına atlayın."
+msgstr "Yanıtın ilk sayfasına atlayın."
 
 #: src/utils/cog.py:66
 msgctxt "cmd:page_last"
