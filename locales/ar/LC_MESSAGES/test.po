@@ -49,7 +49,7 @@ msgstr ""
 
 #: src/modules/test/test.py:102
 msgid "colours"
-msgstr ""
+msgstr "الوان"
 
 #: src/modules/test/test.py:103
 msgid "Test Ansi colours"
