@@ -83,7 +83,7 @@ msgstr "منطقة زمنية"
 #: src/modules/user_config/cog.py:101
 msgctxt "cmd:userconfig_timezone|param:timezone|desc"
 msgid "What timezone are you in? Try typing your country or continent."
-msgstr ""
+msgstr "ما هى منطقتك الزمنية ؟ حاول كتابة اسم الدولة أو القارة"
 
 #: src/modules/user_config/cog.py:117
 #, possible-python-brace-format
