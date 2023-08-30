@@ -301,7 +301,7 @@ msgstr "Gömülü İçerik Açıklaması"
 #: src/utils/ui/msgeditor.py:214
 msgctxt "ui:msg_editor|modal:body|field:title|label"
 msgid "Embed Title"
-msgstr "Gömülü Mesaj Başlığı"
+msgstr "Gömülü İçerşk Başlığı"
 
 #: src/utils/ui/msgeditor.py:225
 msgctxt "ui:msg_editor|modal:body|field:colour|label"
