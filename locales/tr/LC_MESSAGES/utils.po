@@ -338,7 +338,7 @@ msgstr "Yazar URL'si"
 #: src/utils/ui/msgeditor.py:323
 msgctxt "ui:msg_editor|modal:author|field:image|label"
 msgid "Author Image URL"
-msgstr "Yazar Görsel URL'si"
+msgstr "Yazar Resım URL'si"
 
 #: src/utils/ui/msgeditor.py:334
 msgctxt "ui:msg_editor|modal:author|title"
