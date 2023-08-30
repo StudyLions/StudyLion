@@ -99,4 +99,4 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "ward:equippable_role|error:actor_top_role"
 msgid "You cannot configure {role} because it is above your top role!"
-msgstr "Üst rolünüzün üzerinde olduğu için {role} rolünü ayarlayamazsınız!"
+msgstr "Üst rolünün üzerinde olduğu için {role} rolünü ayarlayamazsın!"
