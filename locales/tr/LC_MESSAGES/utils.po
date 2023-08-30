@@ -168,6 +168,9 @@ msgid ""
 "not display them here! Please view the settings in the linked configuration "
 "panel instead."
 msgstr ""
+"Tüh, bu konfigürasyon bölümündeki bazı ayarlar fazla uzun, o yüzden onları "
+"burada gösteremiyorum! Bunun yerine ayarları bağlantıdaki konfigürasyon "
+"panelinde inceleyebilirsin."
 
 #. List of valid keys indicating movement to the next page
 #: src/utils/ui/pagers.py:50
