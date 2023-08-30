@@ -57,7 +57,7 @@ msgstr ""
 
 #: src/modules/test/test.py:123
 msgid "fail"
-msgstr ""
+msgstr "فشل"
 
 #: src/modules/test/test.py:130
 msgid "pager"
