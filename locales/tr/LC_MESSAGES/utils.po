@@ -286,7 +286,7 @@ msgstr "Açıklama Yertutucu"
 #: src/utils/ui/msgeditor.py:174
 msgctxt "ui:msg_editor|button:add_embed|label"
 msgid "Add Embed"
-msgstr "Embed Ekle"
+msgstr "Gömülü İçerik Ekle"
 
 #: src/utils/ui/msgeditor.py:192
 msgctxt "ui:msg_editor|modal:body|field:content|label"
