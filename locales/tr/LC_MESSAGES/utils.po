@@ -124,7 +124,7 @@ msgstr "\"{partial}\" öğesinden süre çıkarılamıyor"
 #: src/utils/lib.py:670
 msgctxt "util:parse_dur|regex:day"
 msgid "(?P<value>\\d+)\\s*(?:(d)|(day))"
-msgstr ""
+msgstr "(?P<value>\\d+)\\s*(?:(g)|(gün))"
 
 #: src/utils/lib.py:677
 msgctxt "util:parse_dur|regex:hour"
