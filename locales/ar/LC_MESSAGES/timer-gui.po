@@ -29,9 +29,9 @@ msgstr "استخدم /now لعرض ماتعمل عليه الآن!"
 #: src/gui/cards/timer.py:89
 msgctxt "skin:timer|stage:focus|field:stage_text"
 msgid "FOCUS"
-msgstr ""
+msgstr "ركز"
 
 #: src/gui/cards/timer.py:103
 msgctxt "skin:timer|stage:break|field:stage_text"
 msgid "BREAK"
-msgstr ""
+msgstr "استراحة"
