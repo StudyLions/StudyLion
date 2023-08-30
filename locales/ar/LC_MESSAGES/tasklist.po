@@ -497,7 +497,7 @@ msgstr ""
 #: src/modules/tasklist/ui.py:57
 msgctxt "modal:tasklist_single_editor|field:task|label"
 msgid "Task content"
-msgstr ""
+msgstr "محتوى المهمة"
 
 #: src/modules/tasklist/ui.py:69
 msgctxt "modal:tasklist_single_editor|field:parent|label"
