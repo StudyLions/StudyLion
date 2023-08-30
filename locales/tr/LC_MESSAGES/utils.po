@@ -468,12 +468,12 @@ msgstr "Doğru/Yanlış"
 #: src/utils/ui/msgeditor.py:704
 msgctxt "ui:msg_editor|modal:edit_field|title"
 msgid "Edit Embed Field"
-msgstr "Embed Alanını Düzenle"
+msgstr "Gömülü İçerik Alanını Düzenle"
 
 #: src/utils/ui/msgeditor.py:733
 msgctxt "ui:msg_editor|menu:edit_field|placeholder"
 msgid "Edit Embed Field"
-msgstr "Embed Alanını Düzenle"
+msgstr "Gömülü İçerik Alanını Düzenle"
 
 #: src/utils/ui/msgeditor.py:772
 msgctxt "ui:msg_deleteor|menu:delete_field|placeholder"
