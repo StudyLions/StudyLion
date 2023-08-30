@@ -32,6 +32,8 @@ msgstr "اختبار"
 #: src/modules/test/test.py:62
 msgid "editor"
 msgstr ""
+"مؤلف\n"
+"AT: محرر"
 
 #: src/modules/test/test.py:63
 msgid "Test message editor"
