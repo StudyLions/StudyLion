@@ -60,7 +60,7 @@ msgstr "Bir video kanalından, video kara listesine alınmış üyeyi kaldırma.
 #: src/modules/video_channels/cog.py:246
 msgctxt "video_watchdog|kick_blacklisted_member|notification|title"
 msgid "You have been disconnected."
-msgstr "Bağlantınız kesildi."
+msgstr "Bağlantın kesildi."
 
 #: src/modules/video_channels/cog.py:250
 #, possible-python-brace-format
