@@ -194,7 +194,7 @@ msgstr "i, ilk, birinci, başlangıç"
 #: src/utils/ui/pagers.py:59
 msgctxt "cmd:page|pager:Pager|options:last"
 msgid "l, last, end"
-msgstr "s, son"
+msgstr "s, son, sonuncu"
 
 #: src/utils/ui/pagers.py:273
 #, possible-python-brace-format
