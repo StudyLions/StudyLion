@@ -574,7 +574,7 @@ msgstr ""
 #: src/modules/pomodoro/options.py:252
 msgctxt "timerset:break_length|desc"
 msgid "Please enter a positive number of minutes."
-msgstr ""
+msgstr "من فضلك ادخل عدد الدقائق بالموجب"
 
 #: src/modules/pomodoro/settings.py:19
 msgctxt "guildset:pomodoro_channel"
