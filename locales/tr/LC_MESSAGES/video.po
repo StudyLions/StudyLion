@@ -172,7 +172,7 @@ msgstr "video_kanalları"
 #: src/modules/video_channels/cog.py:512
 msgctxt "cmd:configure_video|desc"
 msgid "Configure video-only channels and blacklisting."
-msgstr "Yalnızca video kanallarını ve kara listeyi yapılandırın."
+msgstr "Video-özel kanallarını ve kara listeyi yapılandırın."
 
 #: src/modules/video_channels/settings.py:29
 msgctxt "guildset:video_channels"
