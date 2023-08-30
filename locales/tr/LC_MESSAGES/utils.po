@@ -255,7 +255,7 @@ msgid ""
 "Rendering failed! The message was not modified.\n"
 "Error: `{text}`"
 msgstr ""
-"Oluşturma başarısız oldu! Mesaj değiştirilmedi.\n"
+"İşlem başarısız oldu! Mesaj değiştirilmedi.\n"
 "Hata: `{text}`"
 
 #: src/utils/ui/msgeditor.py:123
