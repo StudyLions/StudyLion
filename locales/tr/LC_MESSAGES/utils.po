@@ -57,7 +57,7 @@ msgstr "önceki"
 #: src/utils/cog.py:53
 msgctxt "cmd:page_prev|desc"
 msgid "Jump to the previous page of output."
-msgstr "Çıktının önceki sayfasına atlayın."
+msgstr "Yanıtın bir önceki sayfasına atlayın."
 
 #: src/utils/cog.py:59
 msgctxt "cmd:page_first"
