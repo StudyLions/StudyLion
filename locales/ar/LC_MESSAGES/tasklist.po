@@ -492,7 +492,7 @@ msgstr ""
 #: src/modules/tasklist/ui.py:39
 msgctxt "ui:tasklist_caller|button:tasklist|label"
 msgid "Open Tasklist"
-msgstr ""
+msgstr "افتح قائمة المهام"
 
 #: src/modules/tasklist/ui.py:57
 msgctxt "modal:tasklist_single_editor|field:task|label"
