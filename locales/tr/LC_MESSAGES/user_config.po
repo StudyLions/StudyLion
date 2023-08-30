@@ -55,8 +55,8 @@ msgid ""
 "You have unset your timezone. Statistics will be displayed in the server "
 "timezone."
 msgstr ""
-"Kişisel saat diliminizi ayarlamamışsınız. İstatistikler sunucu saat "
-"diliminde görüntülenecektir."
+"Kişisel saat dilimini kaldırdın. İstatistikler sunucu saat diliminde "
+"görüntülenecektir."
 
 #: src/modules/user_config/cog.py:81
 msgctxt "cmd:userconfig"
