@@ -31,8 +31,7 @@ msgstr "şuan"
 msgctxt "cmd:now|desc"
 msgid ""
 "Describe what you are working on, or see what your friends are working on!"
-msgstr ""
-"Neye çalıştığınızı anlatın ya da arkadaşlarınızın neye çalıştığını görün!"
+msgstr "Neye çalıştığını anlat ya da arkadaşlarının neye çalıştığını gör!"
 
 #: src/tracking/voice/cog.py:647
 msgctxt "cmd:now|param:tag"
