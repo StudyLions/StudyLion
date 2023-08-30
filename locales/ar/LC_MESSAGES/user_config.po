@@ -94,7 +94,7 @@ msgstr "تم وضع منطقتك الزمنية حاليا على {timezone}"
 #: src/modules/user_config/cog.py:121
 msgctxt "cmd:userconfig_timezone|button:reset|label"
 msgid "Reset"
-msgstr ""
+msgstr "إعادة ضبط"
 
 #: src/modules/user_config/cog.py:133
 #, possible-python-brace-format
