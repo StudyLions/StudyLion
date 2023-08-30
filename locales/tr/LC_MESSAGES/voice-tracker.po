@@ -88,7 +88,7 @@ msgstr "Oturum Etiketi Temizlendi"
 #: src/tracking/voice/cog.py:717
 msgctxt "cmd:now|target:self|mode:clear|success|desc"
 msgid "Successfully unset your session tag."
-msgstr "Oturum etiketiniz başarıyla temizlenmiştir."
+msgstr "Oturum etiketin başarıyla temizlenmiştir."
 
 #: src/tracking/voice/cog.py:726
 msgctxt "cmd:now|target:other|mode:clear|error:perms|title"
