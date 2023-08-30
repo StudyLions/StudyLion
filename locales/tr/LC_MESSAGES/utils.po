@@ -82,7 +82,7 @@ msgstr "Yanıtın son sayfasına atlayın."
 #: src/utils/cog.py:73
 msgctxt "cmd:page_select"
 msgid "select"
-msgstr "seçin"
+msgstr "seç"
 
 #: src/utils/cog.py:74
 msgctxt "cmd:page_select|desc"
