@@ -77,7 +77,7 @@ msgstr "son"
 #: src/utils/cog.py:67
 msgctxt "cmd:page_last|desc"
 msgid "Jump to the last page of output."
-msgstr "Çıktının son sayfasına atlayın."
+msgstr "Yanıtın son sayfasına atlayın."
 
 #: src/utils/cog.py:73
 msgctxt "cmd:page_select"
