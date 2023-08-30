@@ -139,7 +139,7 @@ msgstr "(?P<value>\\d+)\\s*(?:(dk)|(dak)|(dakika))"
 #: src/utils/lib.py:691
 msgctxt "util:parse_dur|regex:second"
 msgid "(?P<value>\\d+)\\s*(?:(s)|(sec))"
-msgstr ""
+msgstr "(?P<value>\\d+)\\s*(?:(sn)|(saniye))"
 
 #: src/utils/ui/config.py:35
 msgctxt "ui:configui|modal:edit|title"
