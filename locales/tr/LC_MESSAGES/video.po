@@ -199,7 +199,7 @@ msgstr ""
 #: src/modules/video_channels/settings.py:50
 msgctxt "guildset:video_channels|accepts"
 msgid "Comma separated channel ids or names."
-msgstr "Virgülle ayrılmış kanal ID'leri veya adları."
+msgstr "Kanal ID'leri veya adları (virgülle ayırın)."
 
 #: src/modules/video_channels/settings.py:67
 #, possible-python-brace-format
