@@ -96,12 +96,12 @@ msgstr ""
 #: src/modules/video_channels/cog.py:316
 msgctxt "video_watchdog|join_task|thanks:title"
 msgid "Thanks for enabling your video!"
-msgstr "Videonuzu etkinleştirdiğiniz için teşekkürler!"
+msgstr "Videonuzu etkinleştirdiğin için teşekkürler!"
 
 #: src/modules/video_channels/cog.py:323
 msgctxt "video_watchdog|join_task|bye:title"
 msgid "Thanks for leaving the channel promptly!"
-msgstr "Kanaldan zamanında ayrıldığınız için teşekkürler!"
+msgstr "Kanaldan zamanında ayrıldığın için teşekkürler!"
 
 #: src/modules/video_channels/cog.py:367
 msgctxt "video_watchdog|join_task|kick_after_grace|audit_reason"
