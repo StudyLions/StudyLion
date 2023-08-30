@@ -126,7 +126,7 @@ msgid ""
 "**You must enable your camera in camera-only rooms.**\n"
 "You have been disconnected from the video {channel} for not enabling your camera."
 msgstr ""
-"**Sadece kameralı odalarda, kameranızı etkinleştirmelisiniz.**\n"
+"**Kameraya özel odalarda kameranızı etkinleştirmelisiniz.**\n"
 "Kameranızı etkinleştirmediğiniz için video kanalı {kanal} ile bağlantınız kesildi."
 
 #: src/modules/video_channels/cog.py:422
