@@ -35,7 +35,7 @@ msgstr "تركيز"
 #, possible-python-brace-format
 msgctxt "timer|webhook|name"
 msgid "{bot_name} Pomodoro"
-msgstr ""
+msgstr "بومودورو {bot_name}"
 
 #: src/modules/pomodoro/timer.py:159
 msgctxt "timer|webhook|audit_reason"
