@@ -89,7 +89,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:userconfig_timezone|response:set"
 msgid "Your timezone is currently set to {timezone}"
-msgstr ""
+msgstr "تم وضع منطقتك الزمنية حاليا على {timezone}"
 
 #: src/modules/user_config/cog.py:121
 msgctxt "cmd:userconfig_timezone|button:reset|label"
