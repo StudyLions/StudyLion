@@ -368,7 +368,7 @@ msgstr "Gömülü İçerik Zaman Damgası (ISO formatında)"
 #: src/utils/ui/msgeditor.py:410
 msgctxt "ui:msg_editor|modal:footer|title"
 msgid "Embed Footer Editor"
-msgstr "Embed Altbilgi Düzenleyicisini"
+msgstr "Gömülü İçerik Altbilgi Düzenleyicisini"
 
 #: src/utils/ui/msgeditor.py:429
 msgctxt "ui:msg_editor|button:footer|error:invalid_timestamp"
