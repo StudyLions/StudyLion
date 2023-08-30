@@ -778,6 +778,8 @@ msgstr ""
 msgctxt "ui:timer_options|embed|field:issues|name"
 msgid "Issues"
 msgstr ""
+"مشكلات\n"
+"AT: أخطاء"
 
 #: src/modules/pomodoro/ui/config.py:231
 msgctxt "ui:timer_options|issue:no_voice_channel"
