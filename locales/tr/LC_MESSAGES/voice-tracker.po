@@ -51,7 +51,7 @@ msgstr "temizle"
 #: src/tracking/voice/cog.py:654
 msgctxt "cmd:now|param:tag|desc"
 msgid "Describe what you are working on in 10 characters or less!"
-msgstr "Ne çalıştığınızı 10 ya da daha az karakterle açıklayın!"
+msgstr "Ne çalıştığını 10 ya da daha az karakterle açıkla!"
 
 #: src/tracking/voice/cog.py:658
 msgctxt "cmd:now|param:user|desc"
