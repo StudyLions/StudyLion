@@ -43,7 +43,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "userset:timezone|response:set"
 msgid "Your personal timezone has been set to `{timezone}`."
-msgstr ""
+msgstr "تم وضع المنطقة الزمنية الخاصة بك و هى `{timezone}`"
 
 #: src/modules/user_config/cog.py:65
 msgctxt "userset:timezone|response:unset"
