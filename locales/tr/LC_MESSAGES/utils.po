@@ -87,7 +87,7 @@ msgstr "seç"
 #: src/utils/cog.py:74
 msgctxt "cmd:page_select|desc"
 msgid "Select a page of the output to jump to."
-msgstr "Atlamak için çıktının bir sayfasını seçin."
+msgstr "Atlamak için yanıtın bir sayfasını seçin."
 
 #: src/utils/cog.py:77
 msgctxt "cmd:page_select|param:page"
