@@ -318,8 +318,7 @@ msgctxt "ui:msg_editor|button:body|error:invalid_colour"
 msgid ""
 "Invalid colour format! Please enter colours as hex codes, e.g. `#E67E22`"
 msgstr ""
-"Geçersiz renk formatı! Lütfen renkleri hex kodları olarak girin, örn. "
-"`#E67E22`"
+"Geçersiz renk formatı! Lütfen renkleri hex kodu olarak girin, örn. `#E67E22`"
 
 #: src/utils/ui/msgeditor.py:285
 msgctxt "ui:msg_editor|button:body|label"
