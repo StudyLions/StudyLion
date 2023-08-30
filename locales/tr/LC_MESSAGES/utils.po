@@ -343,7 +343,7 @@ msgstr "Yazar Resım URL'si"
 #: src/utils/ui/msgeditor.py:334
 msgctxt "ui:msg_editor|modal:author|title"
 msgid "Embed Author Editor"
-msgstr "Embed Yazar Editörü"
+msgstr "Gömülü İçerik Yazar Editörü"
 
 #: src/utils/ui/msgeditor.py:360
 msgctxt "ui:msg_editor|button:author|label"
