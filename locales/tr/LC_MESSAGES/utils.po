@@ -245,7 +245,7 @@ msgid ""
 "Rendering failed! Could not parse the embed.\n"
 "Error: {error}"
 msgstr ""
-"Oluşturma başarısız oldu! Embed ayrıştırılamadı.\n"
+"İşlem başarısız oldu! Gömülü mesaj ayrıştırılamadı.\n"
 "Hata: {error}"
 
 #: src/utils/ui/msgeditor.py:104
