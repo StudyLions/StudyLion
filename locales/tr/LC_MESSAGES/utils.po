@@ -503,8 +503,7 @@ msgstr "İleri al"
 #: src/utils/ui/msgeditor.py:891
 msgctxt "ui:msg_editor|button:quit|confirm"
 msgid "You have unsaved changes! Are you sure you want to quit?"
-msgstr ""
-"Kaydedilmemiş değişiklikleriniz var! Çıkmak istediğinizden emin misiniz?"
+msgstr "Kaydedilmemiş değişikliklerin var! Çıkmak istediğinden emin misin?"
 
 #: src/utils/ui/msgeditor.py:896
 msgctxt "ui:msg_editor|button:quit|confirm|button:yes"
