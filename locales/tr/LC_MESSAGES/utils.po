@@ -296,7 +296,7 @@ msgstr "Mesaj İçeriği"
 #: src/utils/ui/msgeditor.py:203
 msgctxt "ui:msg_editor|modal:body|field:desc|label"
 msgid "Embed Description"
-msgstr "Embed Açıklaması"
+msgstr "Gömülü İçerik Açıklaması"
 
 #: src/utils/ui/msgeditor.py:214
 msgctxt "ui:msg_editor|modal:body|field:title|label"
