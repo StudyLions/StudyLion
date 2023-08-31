@@ -663,12 +663,12 @@ msgstr "هذا الشهر"
 #: src/modules/statistics/ui/leaderboard.py:343
 msgctxt "ui:leaderboard|button:alltime|label"
 msgid "All Time"
-msgstr ""
+msgstr "الوقت الكلى"
 
 #: src/modules/statistics/ui/leaderboard.py:347
 msgctxt "ui:leaderboard|button:jump|label"
 msgid "Jump"
-msgstr ""
+msgstr "اذهب إلى"
 
 #: src/modules/statistics/ui/leaderboard.py:362
 msgctxt "ui:leaderboard|button:jump|input:title"
