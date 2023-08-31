@@ -99,7 +99,7 @@ msgstr ""
 #: src/modules/statistics/settings.py:42
 msgctxt "settype:stat|input_format:voice"
 msgid "Voice"
-msgstr ""
+msgstr "صوت"
 
 #: src/modules/statistics/settings.py:43
 msgctxt "settype:stat|input_format:text"
