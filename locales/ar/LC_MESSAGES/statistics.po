@@ -487,7 +487,7 @@ msgstr ""
 #: src/modules/statistics/ui/weeklymonthly.py:499
 msgctxt "ui:weeklymonthly|button:edit_goals|label"
 msgid "Edit Goals"
-msgstr ""
+msgstr "تعديل الهدف"
 
 #: src/modules/statistics/ui/weeklymonthly.py:515
 #, possible-python-brace-format
