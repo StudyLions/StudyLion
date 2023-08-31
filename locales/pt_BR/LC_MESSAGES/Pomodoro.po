@@ -177,7 +177,7 @@ msgstr "O canal em que você deseja visualizar o temporizador."
 #, possible-python-brace-format
 msgctxt "cmd:pomodoro_status|error:no_timer"
 msgid "The channel {channel} does not have a timer set up!"
-msgstr ""
+msgstr "O canal {channel} não tem um temporizador configurado!"
 
 #: src/modules/pomodoro/cog.py:367
 msgctxt "cmd:pomodoro_list"
