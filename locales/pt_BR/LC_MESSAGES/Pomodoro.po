@@ -100,6 +100,8 @@ msgid ""
 "**Warning:** {mentions}, please press {tick} to avoid being removed on the "
 "next stage."
 msgstr ""
+"**Atenção:** {mentions}, por favor, aperte {tick} para evitar ser removido "
+"no próximo estágio."
 
 #: src/modules/pomodoro/timer.py:552
 #, possible-python-brace-format
