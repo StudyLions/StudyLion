@@ -253,7 +253,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:455
 msgctxt "cmd:pomodoro_admin"
 msgid "admin"
-msgstr ""
+msgstr "administrador"
 
 #: src/modules/pomodoro/cog.py:456
 msgctxt "cmd:pomodoro_admin|desc"
