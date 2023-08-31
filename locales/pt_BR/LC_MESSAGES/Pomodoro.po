@@ -302,6 +302,9 @@ msgid ""
 "communication error. Please try creating the channel manually and pass it to"
 " the `timer_channel` argument of this command."
 msgstr ""
+"Falha ao criar o novo canal de voz com o pomodoro, devido a um erro de "
+"comunicação do Discord. Por favor, tente criar o canal manualmente e "
+"selecione ele na opção ˋcanal_do_temporizadorˋ deste comando."
 
 #: src/modules/pomodoro/cog.py:549
 msgctxt "cmd:pomodoro_create|error:channel_create_permissions|title"
