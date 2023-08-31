@@ -74,7 +74,7 @@ msgstr[1] ""
 "lembre de clickar {tick} para registrar sua presença em todos os ciclos."
 msgstr[2] ""
 "{mentions} foram removidas de {channel} pois elas estavam inativas! Se "
-"lembre de clickar {tick} para registrar sua presença em todos os ciclos."
+"lembre de apertar {tick} para registrar sua presença em todos os ciclos."
 
 #: src/modules/pomodoro/timer.py:496
 #, possible-python-brace-format
