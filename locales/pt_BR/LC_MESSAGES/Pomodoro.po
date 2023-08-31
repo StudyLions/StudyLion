@@ -187,7 +187,7 @@ msgstr "listar"
 #: src/modules/pomodoro/cog.py:368
 msgctxt "cmd:pomodoro_list|desc"
 msgid "List the available pomodoro timers."
-msgstr ""
+msgstr "Lista os temporizadores pomodoro disponíveis."
 
 #: src/modules/pomodoro/cog.py:391
 #, possible-python-brace-format
