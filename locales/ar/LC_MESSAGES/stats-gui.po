@@ -35,7 +35,7 @@ msgstr ""
 #: src/gui/cards/stats.py:79
 msgctxt "skin:stats|mode:study|subheader:study"
 msgid "STUDY TIME"
-msgstr ""
+msgstr "وقت الدراسة"
 
 #: src/gui/cards/stats.py:83
 msgctxt "skin:stats|mode:voice|subheader:study"
@@ -45,7 +45,7 @@ msgstr ""
 #: src/gui/cards/stats.py:87
 msgctxt "skin:stats|mode:text|subheader:study"
 msgid "MESSAGES"
-msgstr ""
+msgstr "رسائل"
 
 #: src/gui/cards/stats.py:91
 msgctxt "skin:stats|mode:anki|subheader:study"
