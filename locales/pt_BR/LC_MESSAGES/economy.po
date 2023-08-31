@@ -129,7 +129,7 @@ msgstr[2] ""
 #: src/modules/economy/cog.py:236
 msgctxt "cmd:economy_balance|confirm|button:confirm"
 msgid "Yes, adjust balances"
-msgstr ""
+msgstr "Sim, ajuste os saldos"
 
 #: src/modules/economy/cog.py:240
 msgctxt "cmd:economy_balance|confirm|button:cancel"
