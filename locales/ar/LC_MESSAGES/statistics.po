@@ -605,7 +605,7 @@ msgstr ""
 #: src/modules/statistics/ui/profile.py:219
 msgctxt "ui:profile_card|button:statistics|label:hide"
 msgid "Hide Statistics"
-msgstr ""
+msgstr "اخفى الإحصائيات"
 
 #: src/modules/statistics/ui/profile.py:224
 msgctxt "ui:profile_card|button:statistics|label:show"
