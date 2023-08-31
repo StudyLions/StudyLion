@@ -237,6 +237,8 @@ msgid ""
 "`{pattern}` timer is running with `{members}` members!\n"
 "Currently **focusing**, with break starting {timestamp}"
 msgstr ""
+"ˋ{pattern}ˋ temporizador está rodando com ˋ{membersˋ membros!\n"
+"Agora em **foco**, com um intervalo começando em {timestamp}"
 
 #: src/modules/pomodoro/cog.py:441
 #, possible-python-brace-format
