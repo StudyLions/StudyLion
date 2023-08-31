@@ -516,7 +516,9 @@ msgstr ""
 #: src/modules/statistics/ui/weeklymonthly.py:617
 msgctxt "ui:weeklymonthly|button:period|weekly|label"
 msgid "Select Week"
-msgstr "اختر الاسبوع"
+msgstr ""
+"اختر الأسبوع\n"
+"AT: حدد الأسبوع"
 
 #: src/modules/statistics/ui/weeklymonthly.py:622
 msgctxt "ui:weeklymonthly|button:period|monthly|label"
