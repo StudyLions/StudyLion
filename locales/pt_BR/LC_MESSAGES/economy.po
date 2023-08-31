@@ -95,7 +95,7 @@ msgstr "Novo saldo a ser definido para o selecionado."
 msgctxt "cmd:economy_balance|error:no_target"
 msgid ""
 "There are no valid members in {role.mention}! It has a total of `0` LC."
-msgstr ""
+msgstr "Não há membros válidos em {role.mention}! O total é de `0` LC."
 
 #: src/modules/economy/cog.py:163
 msgctxt "cmd:economy_balance|error:target_is_bot"
