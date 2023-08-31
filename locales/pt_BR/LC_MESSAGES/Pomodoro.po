@@ -202,7 +202,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:404
 msgctxt "cmd:pomodoro_list|error:no_visible_timers"
 msgid "There are no timers you can join in this server!"
-msgstr ""
+msgstr "Não há temporizadores que você possa participar neste servidor!"
 
 #: src/modules/pomodoro/cog.py:414
 #, possible-python-brace-format
