@@ -70,7 +70,7 @@ msgstr "أسبوعيا"
 #: src/gui/cards/stats.py:126
 msgctxt "skin:stats|field:monthly"
 msgid "MONTHLY"
-msgstr ""
+msgstr "شهريا"
 
 #: src/gui/cards/stats.py:130
 msgctxt "skin:stats|field:alltime"
