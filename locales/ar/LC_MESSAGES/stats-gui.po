@@ -55,7 +55,7 @@ msgstr ""
 #: src/gui/cards/stats.py:102
 msgctxt "skin:stats|subheader:workouts"
 msgid "WORKOUTS"
-msgstr ""
+msgstr "تمارين رياضية"
 
 #: src/gui/cards/stats.py:118
 msgctxt "skin:stats|field:daily"
