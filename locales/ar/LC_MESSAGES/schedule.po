@@ -741,7 +741,7 @@ msgstr "حديثاً"
 #: src/modules/schedule/ui/scheduleui.py:457
 msgctxt "ui:schedule|embed|field:stats|field:alltime"
 msgid "All Time"
-msgstr ""
+msgstr "كل الوقت"
 
 #: src/modules/schedule/ui/scheduleui.py:463
 msgctxt "ui:schedule|embed|field:stats|field:streak"
