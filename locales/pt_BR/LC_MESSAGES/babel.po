@@ -394,4 +394,4 @@ msgstr "Hebreu"
 #: src/babel/enums.py:73
 msgctxt "localenames|locale:he_IL"
 msgid "Hebrew (Israel)"
-msgstr ""
+msgstr "Hebreu (Israel)"
