@@ -55,12 +55,12 @@ msgstr "Exiba ou modifique o saldo de LionCoin para membros e cargos."
 #: src/modules/economy/cog.py:99
 msgctxt "cmd:economy_balance|param:target"
 msgid "target"
-msgstr ""
+msgstr "selecionar"
 
 #: src/modules/economy/cog.py:100
 msgctxt "cmd:economy_balance|param:add"
 msgid "add"
-msgstr ""
+msgstr "adicionar"
 
 #: src/modules/economy/cog.py:101
 msgctxt "cmd:economy_balance|param:set"
@@ -73,6 +73,8 @@ msgid ""
 "Target user or role to view or update. Use @everyone to update the entire "
 "guild."
 msgstr ""
+"Selecione um usuário ou cargo para visualizar ou atualizar. Use @todos para "
+"atualizar a comunidade inteira."
 
 #: src/modules/economy/cog.py:110
 msgctxt "cmd:economy_balance|param:add|desc"
