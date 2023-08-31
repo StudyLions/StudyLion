@@ -80,7 +80,7 @@ msgstr ""
 #: src/gui/cards/stats.py:134
 msgctxt "skin:stats|field:time"
 msgid "TIME"
-msgstr ""
+msgstr "وقت"
 
 #: src/gui/cards/stats.py:138
 msgctxt "skin:stats|field:anki"
