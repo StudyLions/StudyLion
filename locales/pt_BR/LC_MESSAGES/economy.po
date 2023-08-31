@@ -88,7 +88,7 @@ msgstr ""
 #: src/modules/economy/cog.py:114
 msgctxt "cmd:economy_balance|param:set|set"
 msgid "New balance to set the target's balance to."
-msgstr ""
+msgstr "Novo saldo a ser definido para o selecionado."
 
 #: src/modules/economy/cog.py:152
 #, possible-python-brace-format
