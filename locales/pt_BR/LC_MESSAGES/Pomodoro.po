@@ -208,7 +208,7 @@ msgstr "Não há temporizadores que você possa participar neste servidor!"
 #, possible-python-brace-format
 msgctxt "cmd:pomodoro_list|embed:timer_list|title"
 msgid "Pomodoro Timers in **{guild}**"
-msgstr ""
+msgstr "Temporizadores Pomodoro em **{guild}**"
 
 #: src/modules/pomodoro/cog.py:423
 #, possible-python-brace-format
