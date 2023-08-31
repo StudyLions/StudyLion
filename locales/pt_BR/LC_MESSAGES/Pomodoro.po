@@ -288,7 +288,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:504
 msgctxt "cmd:pomodoro_create|error:insufficient_perms"
 msgid "Only server administrators can create timers!"
-msgstr ""
+msgstr "Somente administradores do servidor podem criar temporizadores!"
 
 #: src/modules/pomodoro/cog.py:531
 msgctxt "cmd:pomodoro_create|error:channel_create_failed|title"
