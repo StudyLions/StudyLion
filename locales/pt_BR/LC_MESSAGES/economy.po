@@ -106,6 +106,7 @@ msgstr "Bots não podem ter saldos de moedas!"
 msgctxt "cmd:economy_balance|error:args"
 msgid "You cannot simultaneously `set` and `add` member balances!"
 msgstr ""
+"Você não pode `definir` e `adicionar` saldos de membro simultaneamente!"
 
 #: src/modules/economy/cog.py:223
 #, possible-python-brace-format
