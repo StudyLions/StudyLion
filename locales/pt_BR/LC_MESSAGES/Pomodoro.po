@@ -217,6 +217,8 @@ msgid ""
 "`{pattern}` timer is stopped with no members!\n"
 "Join {channel} to restart it."
 msgstr ""
+"ˋ{pattern}ˋ temporizador está pausado sem membros!\n"
+"Entre em {channel} para reiniciá-lo."
 
 #: src/modules/pomodoro/cog.py:428
 #, possible-python-brace-format
