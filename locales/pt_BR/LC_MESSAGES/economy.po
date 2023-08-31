@@ -65,7 +65,7 @@ msgstr "adicionar"
 #: src/modules/economy/cog.py:101
 msgctxt "cmd:economy_balance|param:set"
 msgid "set"
-msgstr "configurar"
+msgstr "definir"
 
 #: src/modules/economy/cog.py:106
 msgctxt "cmd:economy_balance|param:target|desc"
