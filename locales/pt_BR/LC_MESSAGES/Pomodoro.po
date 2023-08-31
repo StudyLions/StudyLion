@@ -247,6 +247,8 @@ msgid ""
 "`{pattern}` timer is running with `{members}` members!\n"
 "Currently **resting**, with focus starting {timestamp}"
 msgstr ""
+"ˋ{pattern}ˋ temporizador está rodando com ˋ{members}ˋ membros!\n"
+"Agora em **intervalo**, com o foco começando em {timestamp}"
 
 #: src/modules/pomodoro/cog.py:455
 msgctxt "cmd:pomodoro_admin"
