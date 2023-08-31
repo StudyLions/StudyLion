@@ -24,7 +24,7 @@ msgstr ""
 #: src/modules/shop/cog.py:108
 msgctxt "group:editshop"
 msgid "editshop"
-msgstr ""
+msgstr "تعديل المتجر"
 
 #: src/modules/shop/cog.py:117
 msgctxt "group:shop"
