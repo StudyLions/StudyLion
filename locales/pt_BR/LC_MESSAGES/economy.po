@@ -134,7 +134,7 @@ msgstr "Sim, ajuste os saldos"
 #: src/modules/economy/cog.py:240
 msgctxt "cmd:economy_balance|confirm|button:cancel"
 msgid "No, cancel"
-msgstr ""
+msgstr "Não, cancelar"
 
 #: src/modules/economy/cog.py:247
 #, possible-python-brace-format
