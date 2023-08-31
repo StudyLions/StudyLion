@@ -256,6 +256,11 @@ msgid ""
 "Moderators cannot reconfigure most bot configuration, or perform operations "
 "they do not already have permission for in Discord."
 msgstr ""
+"Membros com a função definida poderão acessar meus painéis de configuração e"
+" realizar algumas tarefas de moderação, como configurar temporizadores "
+"pomodoro. Os moderadores não podem reconfigurar a maioria das configurações "
+"do bot ou realizar operações para as quais ainda não têm permissão no "
+"Discord."
 
 #: src/modules/moderation/settings.py:137
 msgctxt "guildset:mod_role|accepts"
