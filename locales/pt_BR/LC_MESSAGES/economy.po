@@ -45,12 +45,12 @@ msgstr "economia"
 #: src/modules/economy/cog.py:92
 msgctxt "cmd:economy_balance"
 msgid "balance"
-msgstr ""
+msgstr "saldo"
 
 #: src/modules/economy/cog.py:95
 msgctxt "cmd:economy_balance|desc"
 msgid "Display or modify LionCoin balance for members and roles."
-msgstr ""
+msgstr "Exiba ou modifique o saldo de LionCoin para membros e cargos."
 
 #: src/modules/economy/cog.py:99
 msgctxt "cmd:economy_balance|param:target"
