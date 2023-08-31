@@ -49,7 +49,7 @@ msgstr ""
 #: src/modules/shop/cog.py:212
 msgctxt "ui:stores|button:close|label"
 msgid "Close"
-msgstr ""
+msgstr "اغلق"
 
 #: src/modules/shop/cog.py:219
 msgctxt "ui:stores|button:close|response|title"
