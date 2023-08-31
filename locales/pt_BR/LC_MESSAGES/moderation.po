@@ -96,6 +96,8 @@ msgid ""
 "{timestamp}\n"
 "Duration: `{duration}`"
 msgstr ""
+"{timestamp}\n"
+"Duração: `{duration}`"
 
 #: src/modules/moderation/ticket.py:191
 msgctxt "ticket|field:expiry|mode:expired|name"
