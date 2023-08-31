@@ -117,7 +117,7 @@ msgstr "Temporizador parado! Precione ˋStartˋ para reiniciar o temporizador."
 #: src/modules/pomodoro/settingui.py:39
 msgctxt "ui:timer_config|menu:channels|placeholder"
 msgid "Select Pomodoro Notification Channel"
-msgstr ""
+msgstr "Selecione o Canal de Notificações do Pomodoro"
 
 #: src/modules/pomodoro/settingui.py:47
 msgctxt "ui:timer_config|embed|title"
