@@ -648,7 +648,7 @@ msgstr ""
 #: src/modules/statistics/ui/leaderboard.py:331
 msgctxt "ui:leaderboard|button:day|label"
 msgid "Today"
-msgstr ""
+msgstr "اليوم"
 
 #: src/modules/statistics/ui/leaderboard.py:335
 msgctxt "ui:leaderboard|button:week|label"
