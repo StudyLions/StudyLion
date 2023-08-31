@@ -82,6 +82,8 @@ msgid ""
 "Number of LionCoins to add to the target member's balance. May be negative "
 "to remove."
 msgstr ""
+"Quantidade de LionCoins a ser adicionada ao saldo do membro selecionado. "
+"Pode ser negativo para subtrair do saldo."
 
 #: src/modules/economy/cog.py:114
 msgctxt "cmd:economy_balance|param:set|set"
