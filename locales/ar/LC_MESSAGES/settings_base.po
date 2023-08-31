@@ -50,7 +50,7 @@ msgstr ""
 #: src/settings/setting_types.py:48
 msgctxt "settype:string|accepts"
 msgid "Any Text"
-msgstr ""
+msgstr "اى نص"
 
 #: src/settings/setting_types.py:89
 #, possible-python-brace-format
