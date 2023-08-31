@@ -156,7 +156,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:330
 msgctxt "cmd:pomodoro_status"
 msgid "show"
-msgstr ""
+msgstr "mostrar"
 
 #: src/modules/pomodoro/cog.py:331
 msgctxt "cmd:pomodoro_status|desc"
