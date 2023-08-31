@@ -54,7 +54,7 @@ msgstr "اغلق"
 #: src/modules/shop/cog.py:219
 msgctxt "ui:stores|button:close|response|title"
 msgid "Shop Closed"
-msgstr ""
+msgstr "المتجر مغلق"
 
 #: src/modules/shop/shops/colours.py:104
 #, possible-python-brace-format
