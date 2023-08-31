@@ -166,7 +166,7 @@ msgstr "Mostra o status de um temporizador pomodoro específico."
 #: src/modules/pomodoro/cog.py:334
 msgctxt "cmd:pomodoro_status|param:channel"
 msgid "timer_channel"
-msgstr ""
+msgstr "canal_do_temporizador"
 
 #: src/modules/pomodoro/cog.py:339
 msgctxt "cmd:pomodoro_status|param:channel|desc"
