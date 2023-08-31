@@ -65,7 +65,7 @@ msgstr ""
 #: src/gui/cards/stats.py:122
 msgctxt "skin:stats|field:weekly"
 msgid "WEEKLY"
-msgstr ""
+msgstr "أسبوعى"
 
 #: src/gui/cards/stats.py:126
 msgctxt "skin:stats|field:monthly"
