@@ -653,7 +653,7 @@ msgstr "اليوم"
 #: src/modules/statistics/ui/leaderboard.py:335
 msgctxt "ui:leaderboard|button:week|label"
 msgid "This Week"
-msgstr ""
+msgstr "هذا الاسبوع"
 
 #: src/modules/statistics/ui/leaderboard.py:339
 msgctxt "ui:leaderboard|button:month|label"
