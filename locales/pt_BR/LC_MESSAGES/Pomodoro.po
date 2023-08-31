@@ -122,7 +122,7 @@ msgstr "Selecione o Canal de Notificações do Pomodoro"
 #: src/modules/pomodoro/settingui.py:47
 msgctxt "ui:timer_config|embed|title"
 msgid "Timer Configuration Panel"
-msgstr ""
+msgstr "Painel de Configurações do Pomodoro"
 
 #: src/modules/pomodoro/settingui.py:81
 msgctxt "dash:pomodoro|title"
