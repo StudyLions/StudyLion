@@ -182,7 +182,7 @@ msgstr "O canal {channel} não tem um temporizador configurado!"
 #: src/modules/pomodoro/cog.py:367
 msgctxt "cmd:pomodoro_list"
 msgid "list"
-msgstr ""
+msgstr "listar"
 
 #: src/modules/pomodoro/cog.py:368
 msgctxt "cmd:pomodoro_list|desc"
