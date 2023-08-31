@@ -245,6 +245,8 @@ msgctxt "guildset:mod_role|desc"
 msgid ""
 "Guild role permitted to view configuration and perform moderation tasks."
 msgstr ""
+"Cargos com permissão para ver a configuração e realizar tarefas de "
+"moderação."
 
 #: src/modules/moderation/settings.py:130
 msgctxt "guildset:mod_role|long_desc"
