@@ -658,7 +658,7 @@ msgstr "هذا الاسبوع"
 #: src/modules/statistics/ui/leaderboard.py:339
 msgctxt "ui:leaderboard|button:month|label"
 msgid "This Month"
-msgstr ""
+msgstr "هذا الشهر"
 
 #: src/modules/statistics/ui/leaderboard.py:343
 msgctxt "ui:leaderboard|button:alltime|label"
