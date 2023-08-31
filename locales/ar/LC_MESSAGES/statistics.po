@@ -673,7 +673,7 @@ msgstr "اذهب إلى"
 #: src/modules/statistics/ui/leaderboard.py:362
 msgctxt "ui:leaderboard|button:jump|input:title"
 msgid "Jump to page"
-msgstr ""
+msgstr "اذهب إلى الصفحة"
 
 #: src/modules/statistics/ui/leaderboard.py:366
 msgctxt "ui:leaderboard|button:jump|input:question"
