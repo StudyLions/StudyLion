@@ -524,6 +524,8 @@ msgstr ""
 msgctxt "ui:weeklymonthly|button:period|monthly|label"
 msgid "Select Month"
 msgstr ""
+"اختر الشهر\n"
+"AT: حدد الشهر"
 
 #: src/modules/statistics/ui/weeklymonthly.py:687
 msgctxt "ui:weeklymonthly|menu:period|weekly|placeholder"
