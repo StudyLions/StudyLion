@@ -452,6 +452,7 @@ msgctxt "cmd:room_kick|error:no_room"
 msgid ""
 "You do not own a private room! Use `/room rent` to rent one with {coin}!"
 msgstr ""
+"Você não tem uma sala privada! Use `/room rent` para alugar uma com {coin}!"
 
 #: src/modules/rooms/cog.py:729
 msgctxt "cmd:room_kick|error:no_matching_members"
