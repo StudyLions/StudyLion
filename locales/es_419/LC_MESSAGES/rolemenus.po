@@ -1458,6 +1458,7 @@ msgstr "Mensaje personalizado"
 msgctxt "ui:menu_editor|menu:template|option:custom|description"
 msgid "Entirely custom menu message (opens an interactive editor)."
 msgstr ""
+"Mensaje de menú totalmente personalizado (abre un editor interactivo)."
 
 #: src/modules/rolemenus/ui/menueditor.py:729
 msgctxt "ui:menu_editor|button:delete|confirm|title"
