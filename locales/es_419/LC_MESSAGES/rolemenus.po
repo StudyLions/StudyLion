@@ -1266,7 +1266,7 @@ msgstr "Menús de roles en {guild}"
 #: src/modules/rolemenus/ui/menus.py:172
 msgctxt "ui:menu_list|embed|field:tips|name"
 msgid "Tips"
-msgstr ""
+msgstr "Consejos"
 
 #: src/modules/rolemenus/ui/menus.py:176
 msgctxt "ui:menu_list|embed|field:tips|value"
