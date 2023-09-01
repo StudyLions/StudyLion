@@ -1315,7 +1315,7 @@ msgstr "Opción de menú"
 #: src/modules/rolemenus/ui/menueditor.py:215
 msgctxt "ui:menu_editor|button:bulk_edit|label"
 msgid "Bulk Edit"
-msgstr ""
+msgstr "Edición masiva"
 
 #: src/modules/rolemenus/ui/menueditor.py:235
 msgctxt "ui:menu_editor|button:sticky|label"
