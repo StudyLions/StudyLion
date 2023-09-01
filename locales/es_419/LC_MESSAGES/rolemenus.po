@@ -1228,6 +1228,8 @@ msgstr ""
 msgctxt "menuset:message|set_response:set"
 msgid "The role menu message has been set. Edit through the menu editor."
 msgstr ""
+"El mensaje del menú de roles ha sido configurado. Editar a través del editor"
+" de menús."
 
 #: src/modules/rolemenus/menuoptions.py:265
 msgctxt "menuset:message|set_response:unset"
@@ -1235,6 +1237,8 @@ msgid ""
 "The role menu message has been unset. Select a template through the menu "
 "editor."
 msgstr ""
+"El mensaje del menú de roles ha sido desactivado. Seleccione una plantilla a"
+" través del editor de menús."
 
 #: src/modules/rolemenus/ui/menus.py:105
 msgctxt "ui:menu_list|menu:editmenu|placeholder"
