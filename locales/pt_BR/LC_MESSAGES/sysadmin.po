@@ -188,7 +188,7 @@ msgstr "transmitindo"
 #: src/modules/sysadmin/presence.py:194
 msgctxt "botset:presence_name"
 msgid "activity_name"
-msgstr ""
+msgstr "nome_atividade"
 
 #: src/modules/sysadmin/presence.py:195
 msgctxt "botset:presence_name|desc"
