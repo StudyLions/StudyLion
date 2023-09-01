@@ -407,7 +407,7 @@ msgstr "Não foi possível encontrar o membro {mention} nesse servidor!"
 #: src/modules/rooms/cog.py:640
 msgctxt "cmd:room_invite|error:no_new_members"
 msgid "All members mentioned are already in the room!"
-msgstr ""
+msgstr "Todos os membros mencionados já estão na sala!"
 
 #: src/modules/rooms/cog.py:654
 #, possible-python-brace-format
