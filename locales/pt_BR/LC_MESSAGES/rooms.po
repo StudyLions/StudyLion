@@ -511,6 +511,8 @@ msgid ""
 "Are you sure you wish to transfer your private room {channel} to "
 "{new_owner}? This action is not reversible!"
 msgstr ""
+"Tem certeza que você deseja transferir sua sala privada {channel} para "
+"{new_owner}? Essa ação não é reversível!"
 
 #: src/modules/rooms/cog.py:831
 #, possible-python-brace-format
