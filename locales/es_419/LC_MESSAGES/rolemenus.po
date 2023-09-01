@@ -1340,7 +1340,7 @@ msgstr "Modificar roles"
 #: src/modules/rolemenus/ui/menueditor.py:337
 msgctxt "ui:menu_editor|role_editor|modal|title"
 msgid "Edit Menu Role"
-msgstr ""
+msgstr "Editar rol del menú"
 
 #: src/modules/rolemenus/ui/menueditor.py:411
 msgctxt "ui:menu_editor|menu:add_roles|error:too_many_reactions"
