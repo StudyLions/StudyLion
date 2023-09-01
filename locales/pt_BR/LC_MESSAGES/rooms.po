@@ -432,12 +432,12 @@ msgstr "expulsar"
 #: src/modules/rooms/cog.py:689
 msgctxt "cmd:room_kick|desc"
 msgid "Remove a members from your private room."
-msgstr ""
+msgstr "Remover um membro da sua sala privada."
 
 #: src/modules/rooms/cog.py:693
 msgctxt "cmd:room_kick|param:members"
 msgid "members"
-msgstr ""
+msgstr "membros"
 
 #: src/modules/rooms/cog.py:698
 msgctxt "cmd:room_kick|param:members|desc"
