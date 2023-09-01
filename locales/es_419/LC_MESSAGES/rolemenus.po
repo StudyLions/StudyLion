@@ -1320,7 +1320,7 @@ msgstr "Edición masiva"
 #: src/modules/rolemenus/ui/menueditor.py:235
 msgctxt "ui:menu_editor|button:sticky|label"
 msgid "Toggle Sticky"
-msgstr ""
+msgstr "Alternar pegajosos"
 
 #: src/modules/rolemenus/ui/menueditor.py:259
 msgctxt "ui:menu_editor|button:refunds|label"
