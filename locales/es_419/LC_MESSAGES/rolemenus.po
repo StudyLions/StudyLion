@@ -1346,6 +1346,8 @@ msgstr "Editar rol del menú"
 msgctxt "ui:menu_editor|menu:add_roles|error:too_many_reactions"
 msgid "Too many roles! Reaction role menus cannot exceed `20` roles."
 msgstr ""
+"¡Demasiados roles! Los menús de roles de reacción no pueden superar los `20`"
+" roles."
 
 #: src/modules/rolemenus/ui/menueditor.py:416
 msgctxt "ui:menu_editor|menu:add_roles|error:too_many_roles"
