@@ -40,7 +40,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "skin:profile|field:rank_nextrank_text"
 msgid "NEXT RANK: {name} {rangestr}"
-msgstr ""
+msgstr "المرتبة التالية: {name} {rangestr}"
 
 #: src/gui/cards/profile.py:142
 msgctxt "skin:profile|field:rank_noranks_text"
