@@ -113,7 +113,7 @@ msgstr "Nhập một ngôn ngữ được hỗ trợ (ví dụ: 'en-GB')."
 #: src/babel/settings.py:34
 msgctxt "settype:locale|summary_table|field:supported|key"
 msgid "Supported"
-msgstr ""
+msgstr "Được hỗ trợ"
 
 #: src/babel/settings.py:44
 msgctxt "settype:locale|formatted:unset"
