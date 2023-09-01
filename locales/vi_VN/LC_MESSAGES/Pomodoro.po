@@ -106,7 +106,7 @@ msgstr "Chọn kênh thông báo Pomodoro"
 #: src/modules/pomodoro/settingui.py:47
 msgctxt "ui:timer_config|embed|title"
 msgid "Timer Configuration Panel"
-msgstr ""
+msgstr "Bảng cài đặt đồng hồ bấm giờ"
 
 #: src/modules/pomodoro/settingui.py:81
 msgctxt "dash:pomodoro|title"
