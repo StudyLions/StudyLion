@@ -87,7 +87,7 @@ msgstr "GEÇEN HAFTA: {amount} SAAT"
 #, possible-python-brace-format
 msgctxt "skin:weeklystats|mode:text|summary:last_week"
 msgid "LAST WEEK: {amount} MESSAGES"
-msgstr ""
+msgstr "GEÇEN HAFTA: {amount} MESAJ"
 
 #: src/gui/cards/weekly.py:252
 #, possible-python-brace-format
