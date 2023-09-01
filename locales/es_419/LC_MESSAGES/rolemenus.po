@@ -1545,7 +1545,7 @@ msgstr "Seleccione el canal al que desea reenviar este menú."
 #: src/modules/rolemenus/ui/menueditor.py:959
 msgctxt "ui:menu_editor|button:repost|label:repost"
 msgid "Repost"
-msgstr ""
+msgstr "Volver a publicar"
 
 #: src/modules/rolemenus/ui/menueditor.py:964
 msgctxt "ui:menu_editor|button:repost|label:post"
