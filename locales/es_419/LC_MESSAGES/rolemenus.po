@@ -1082,6 +1082,10 @@ msgid ""
 " them in this menu. Note that when disabled, members will be able to unequip"
 " the menu roles even if they were not obtained from the menu."
 msgstr ""
+"Cuando está activada, los miembros no podrán eliminar roles equipados "
+"seleccionándolos en este menú. Ten en cuenta que cuando esté desactivado, "
+"los miembros podrán desequipar los roles del menú aunque no los hayan "
+"obtenido del menú."
 
 #: src/modules/rolemenus/menuoptions.py:110
 msgctxt "menuset:sticky|set_response:true"
