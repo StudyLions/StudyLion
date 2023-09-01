@@ -69,7 +69,7 @@ msgstr "BU HAFTA: {amount} MESAJ"
 #, possible-python-brace-format
 msgctxt "skin:weeklystats|mode:text|summary:this_week"
 msgid "THIS WEEK: {amount} CARDS"
-msgstr ""
+msgstr "BU HAFTA: {amount} KART"
 
 #: src/gui/cards/weekly.py:240
 #, possible-python-brace-format
