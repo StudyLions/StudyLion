@@ -1498,13 +1498,13 @@ msgstr "Seleccionar nuevo canal"
 #: src/modules/rolemenus/ui/menueditor.py:878
 msgctxt "ui:menu_editor|button:repost|widget:repost|error:perms|title"
 msgid "Insufficient Permissions!"
-msgstr ""
+msgstr "Permisos insuficientes"
 
 #: src/modules/rolemenus/ui/menueditor.py:882
 msgctxt "ui:menu_editor|button:repost|eidget:repost|error:perms|desc"
 msgid ""
 "I lack the `EMBED_LINKS` or `SEND_MESSAGES` permission in this channel."
-msgstr ""
+msgstr "Me falta el permiso `EMBED_LINKS` o `SEND_MESSAGES` en este canal."
 
 #: src/modules/rolemenus/ui/menueditor.py:895
 #, possible-python-brace-format
