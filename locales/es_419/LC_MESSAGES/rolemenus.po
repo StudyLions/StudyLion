@@ -1147,6 +1147,9 @@ msgid ""
 "Members will not be able to obtain more than this number of roles from this "
 "menu. This counts roles that were not obtained through the rolemenu system."
 msgstr ""
+"Los miembros no podrán obtener más de este número de roles desde este menú. "
+"Esto cuenta los roles que no se han obtenido a través del sistema "
+"menuderoles."
 
 #: src/modules/rolemenus/menuoptions.py:174
 msgctxt "menuset:obtainable|notset"
