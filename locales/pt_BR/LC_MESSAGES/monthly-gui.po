@@ -46,7 +46,7 @@ msgstr "CARTÕES REVISADOS"
 #, possible-python-brace-format
 msgctxt "ui:monthlystats|mode:study|bar_value"
 msgid "{value} H"
-msgstr ""
+msgstr "{value} H"
 
 #: src/gui/cards/monthly.py:123
 #, possible-python-brace-format
