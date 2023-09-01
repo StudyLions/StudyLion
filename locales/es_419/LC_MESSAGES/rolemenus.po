@@ -1134,7 +1134,7 @@ msgstr ""
 #: src/modules/rolemenus/menuoptions.py:161
 msgctxt "menuset:obtainable"
 msgid "obtainable"
-msgstr ""
+msgstr "obtenible"
 
 #: src/modules/rolemenus/menuoptions.py:164
 msgctxt "menuset:obtainable|desc"
