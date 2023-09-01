@@ -49,7 +49,7 @@ msgstr "ngôn ngữ"
 #: src/babel/cog.py:101
 msgctxt "cmd:configure_language|desc"
 msgid "Configure the default language I will use in this server."
-msgstr ""
+msgstr "Điều chỉnh ngôn ngữ mặc định mà mình sẽ dùng trong máy chủ."
 
 #: src/babel/cog.py:147
 #, possible-python-brace-format
