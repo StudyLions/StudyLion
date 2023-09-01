@@ -1376,11 +1376,13 @@ msgid ""
 "Cannot change the style of a menu attached to a message I did not send! "
 "Please repost first."
 msgstr ""
+"No puedo cambiar el estilo de un menú adjunto a un mensaje que no he "
+"enviado. Por favor, vuelva a enviarlo primero."
 
 #: src/modules/rolemenus/ui/menueditor.py:551
 msgctxt "ui:menu_editor|button:style|label"
 msgid "Menu Style"
-msgstr ""
+msgstr "Menú Estilo"
 
 #: src/modules/rolemenus/ui/menueditor.py:576
 msgctxt "ui:menu_editor|menu:style|error:too_many_reactions"
