@@ -1473,7 +1473,7 @@ msgstr "Sí, borrar ahora"
 #: src/modules/rolemenus/ui/menueditor.py:739
 msgctxt "ui:menu_editor|button:delete|confirm|button:no"
 msgid "No, Go Back"
-msgstr ""
+msgstr "No, volver"
 
 #: src/modules/rolemenus/ui/menueditor.py:756
 msgctxt "ui:menu_editor|button:delete|label"
