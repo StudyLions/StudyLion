@@ -1530,7 +1530,7 @@ msgstr "El menú de roles `{name}` ya está disponible en {message_link}."
 #: src/modules/rolemenus/ui/menueditor.py:927
 msgctxt "ui:menu_editor|button:repost|widget:repost|success|desc:reactions"
 msgid "Please check the message reactions are correct."
-msgstr ""
+msgstr "Por favor, compruebe que las reacciones del mensaje son correctas."
 
 #: src/modules/rolemenus/ui/menueditor.py:940
 msgctxt "ui:menu_editor|button:repost|widget:repost|title"
