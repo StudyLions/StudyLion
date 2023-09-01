@@ -61,7 +61,7 @@ msgstr ""
 #: src/babel/cog.py:167
 msgctxt "cmd:configure_language|success"
 msgid "Language settings updated!"
-msgstr ""
+msgstr "Đã cập nhật cài đặt ngôn ngữ!"
 
 #: src/babel/cog.py:183
 msgctxt "cmd:userconfig_language"
