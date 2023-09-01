@@ -854,7 +854,7 @@ msgstr "Para siempre."
 #, possible-python-brace-format
 msgctxt "roleset:duration|set_response:set"
 msgid "This role will now expire after {duration}."
-msgstr ""
+msgstr "Este rol expirará después de {duration}."
 
 #: src/modules/rolemenus/roleoptions.py:285
 msgctxt "roleset:duration|set_response:unset"
