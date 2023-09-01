@@ -1441,6 +1441,8 @@ msgstr "Menú desplegable"
 msgctxt "ui:menu_editor|menu:style|option:dropdown|desc"
 msgid "Roles are selectable from a dropdown menu below the message."
 msgstr ""
+"Los roles se pueden seleccionar en un menú desplegable situado debajo del "
+"mensaje."
 
 #: src/modules/rolemenus/ui/menueditor.py:697
 msgctxt "ui:menu_editor|menu:template|placeholder"
