@@ -1535,12 +1535,12 @@ msgstr "Por favor, compruebe que las reacciones del mensaje son correctas."
 #: src/modules/rolemenus/ui/menueditor.py:940
 msgctxt "ui:menu_editor|button:repost|widget:repost|title"
 msgid "Repost Role Menu"
-msgstr ""
+msgstr "Volver a publicar el menú de roles"
 
 #: src/modules/rolemenus/ui/menueditor.py:944
 msgctxt "ui:menu_editor|button:repost|widget:repost|description"
 msgid "Please select the channel to which you want to resend this menu."
-msgstr ""
+msgstr "Seleccione el canal al que desea reenviar este menú."
 
 #: src/modules/rolemenus/ui/menueditor.py:959
 msgctxt "ui:menu_editor|button:repost|label:repost"
