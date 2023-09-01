@@ -166,4 +166,4 @@ msgstr "أيام {count} "
 #, possible-python-brace-format
 msgctxt "skin:monthlystats|footer"
 msgid "Monthly Statistics • As of {day} {month} • {name} {discrim}"
-msgstr ""
+msgstr "إحصائيات الشهر بال {day} {month} • {name} {discrim}"
