@@ -531,7 +531,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:921
 msgctxt "cmd:configure_rooms"
 msgid "rooms"
-msgstr ""
+msgstr "غرف"
 
 #: src/modules/rooms/cog.py:922
 msgctxt "cmd:configure_rooms|desc"
