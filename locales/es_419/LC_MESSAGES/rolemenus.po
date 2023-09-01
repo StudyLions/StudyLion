@@ -1447,12 +1447,12 @@ msgstr ""
 #: src/modules/rolemenus/ui/menueditor.py:697
 msgctxt "ui:menu_editor|menu:template|placeholder"
 msgid "Select Message Template"
-msgstr ""
+msgstr "Seleccionar plantilla de mensaje"
 
 #: src/modules/rolemenus/ui/menueditor.py:707
 msgctxt "ui:menu_editor|menu:template|option:custom|label"
 msgid "Custom Message"
-msgstr ""
+msgstr "Mensaje personalizado"
 
 #: src/modules/rolemenus/ui/menueditor.py:712
 msgctxt "ui:menu_editor|menu:template|option:custom|description"
