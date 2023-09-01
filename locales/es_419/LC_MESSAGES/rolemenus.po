@@ -956,6 +956,8 @@ msgstr "No tengo suficientes permisos para quitarte este rol."
 msgctxt "rolemenu|deselect|error:discord"
 msgid "An unknown error occurred removing your role! Please try again later."
 msgstr ""
+"Se ha producido un error desconocido al eliminar su rol. Vuelve a intentarlo"
+" más tarde."
 
 #: src/modules/rolemenus/rolemenu.py:529
 msgctxt "rolemenu|deslect|success|title"
