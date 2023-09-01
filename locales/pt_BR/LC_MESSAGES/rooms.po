@@ -691,7 +691,7 @@ msgstr ""
 #: src/modules/rooms/settings.py:112
 msgctxt "guildset:rooms_slots"
 msgid "room_member_cap"
-msgstr ""
+msgstr "room_member_cap"
 
 #: src/modules/rooms/settings.py:115
 msgctxt "guildset:rooms_slots|desc"
@@ -720,7 +720,7 @@ msgstr ""
 #: src/modules/rooms/settings.py:146
 msgctxt "guildset:rooms_visible"
 msgid "room_visibility"
-msgstr ""
+msgstr "room_visibility"
 
 #: src/modules/rooms/settings.py:149
 msgctxt "guildset:rooms_visible|desc"
