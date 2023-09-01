@@ -1478,12 +1478,12 @@ msgstr "No, volver"
 #: src/modules/rolemenus/ui/menueditor.py:756
 msgctxt "ui:menu_editor|button:delete|label"
 msgid "Delete Menu"
-msgstr ""
+msgstr "Eliminar menú"
 
 #: src/modules/rolemenus/ui/menueditor.py:813
 msgctxt "ui:menu_editor|button:edit_msg|label"
 msgid "Edit Message"
-msgstr ""
+msgstr "Editar mensaje"
 
 #: src/modules/rolemenus/ui/menueditor.py:844
 msgctxt "ui:menu_editor|button:preview|label"
