@@ -1429,11 +1429,13 @@ msgctxt "ui:menu_editor|menu:style|option:button|desc"
 msgid ""
 "Roles are represented in 5 rows of 5 buttons, each with an emoji and label."
 msgstr ""
+"Las funciones se representan en 5 filas de 5 botones, cada uno con un emoji "
+"y una etiqueta."
 
 #: src/modules/rolemenus/ui/menueditor.py:624
 msgctxt "ui:menu_editor|menu:style|option:dropdown|label"
 msgid "Dropdown Menu"
-msgstr ""
+msgstr "Menú desplegable"
 
 #: src/modules/rolemenus/ui/menueditor.py:627
 msgctxt "ui:menu_editor|menu:style|option:dropdown|desc"
