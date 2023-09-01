@@ -85,7 +85,7 @@ msgstr "ZAMAN"
 #: src/gui/cards/stats.py:138
 msgctxt "skin:stats|field:anki"
 msgid "ANKI: COMING SOON"
-msgstr ""
+msgstr "ANKI: ÇOK YAKINDA"
 
 #: src/gui/cards/stats.py:155
 msgctxt "skin:stats|mode:study|header:col2"
