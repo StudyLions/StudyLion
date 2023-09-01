@@ -111,7 +111,7 @@ msgstr "tipo_atividade"
 #: src/modules/sysadmin/presence.py:156
 msgctxt "botset:presence_type|desc"
 msgid "Type of presence activity"
-msgstr ""
+msgstr "Tipo de atividade presencial"
 
 #: src/modules/sysadmin/presence.py:159
 msgctxt "botset:presence_type|long_desc"
