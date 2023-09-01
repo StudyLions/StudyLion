@@ -117,13 +117,13 @@ msgstr "{amount} SAAT"
 #, possible-python-brace-format
 msgctxt "skin:stats|mode:voice|field:col2_summary"
 msgid "{amount} HRS"
-msgstr ""
+msgstr "{amount} SAAT"
 
 #: src/gui/cards/stats.py:188
 #, possible-python-brace-format
 msgctxt "skin:stats|mode:text|field:col2_summary"
 msgid "{amount} XP"
-msgstr ""
+msgstr "{amount} XP"
 
 #: src/gui/cards/stats.py:192
 #, possible-python-brace-format
