@@ -1020,7 +1020,7 @@ msgstr "Rol equipado"
 #, possible-python-brace-format
 msgctxt "rolemenu|select|success:purchase|desc"
 msgid "You have purchased the role **{role}** for {coin}**{amount}**"
-msgstr ""
+msgstr "Ha adquirido el rol **{role}** por {coin}**{amount}**"
 
 #: src/modules/rolemenus/rolemenu.py:658
 #, possible-python-brace-format
