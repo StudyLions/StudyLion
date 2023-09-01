@@ -547,13 +547,13 @@ msgstr ""
 #: src/modules/rooms/room.py:104
 msgctxt "room|notify:new_members|title"
 msgid "New Members!"
-msgstr ""
+msgstr "عضو جديد"
 
 #: src/modules/rooms/room.py:108
 #, possible-python-brace-format
 msgctxt "room|notify:new_members|desc"
 msgid "Welcome {members}"
-msgstr ""
+msgstr "مرحبا  {members}"
 
 #: src/modules/rooms/room.py:183
 #, possible-python-brace-format
