@@ -1163,6 +1163,7 @@ msgid ""
 "Members will be able to select a maximum of **{value}** roles from this "
 "menu."
 msgstr ""
+"Los miembros podrán seleccionar un máximo de **{value}** roles de este menú."
 
 #: src/modules/rolemenus/menuoptions.py:193
 msgctxt "menuset:obtainable|set_response:unset"
