@@ -1368,7 +1368,7 @@ msgstr "Editar roles"
 #: src/modules/rolemenus/ui/menueditor.py:514
 msgctxt "ui:menu_editor|menu:del_role|placeholder"
 msgid "Remove Roles"
-msgstr ""
+msgstr "Eliminar roles"
 
 #: src/modules/rolemenus/ui/menueditor.py:538
 msgctxt "ui:menu_editor|button:style|error:non-managed"
