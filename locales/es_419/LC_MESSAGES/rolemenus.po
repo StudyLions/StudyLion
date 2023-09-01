@@ -980,7 +980,7 @@ msgstr "Has desequipado **{role}**."
 #, possible-python-brace-format
 msgctxt "rolemenu|select|error:required_role"
 msgid "You need to have the **{role}** role to use this!"
-msgstr ""
+msgstr "¡Necesitas tener el rol **{role}** para usar esto!"
 
 #: src/modules/rolemenus/rolemenu.py:568
 #, possible-python-brace-format
