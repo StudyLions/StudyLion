@@ -310,7 +310,7 @@ msgstr "Tiếng Nhật"
 #: src/babel/enums.py:59
 msgctxt "localenames|locale:ko"
 msgid "Korean"
-msgstr ""
+msgstr "Tiếng Hàn"
 
 #: src/babel/enums.py:60
 msgctxt "localenames|locale:lt"
