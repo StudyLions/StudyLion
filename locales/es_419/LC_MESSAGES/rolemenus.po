@@ -1519,7 +1519,7 @@ msgstr ""
 #: src/modules/rolemenus/ui/menueditor.py:907
 msgctxt "ui:menu_editor|button:repost|widget:repost|success|title"
 msgid "Role Menu Moved"
-msgstr ""
+msgstr "Menú de roles movido"
 
 #: src/modules/rolemenus/ui/menueditor.py:913
 #, possible-python-brace-format
