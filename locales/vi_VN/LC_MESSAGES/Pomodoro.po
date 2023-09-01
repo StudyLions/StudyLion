@@ -399,7 +399,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:818
 msgctxt "cmd:configure_pomodoro|desc"
 msgid "Configure Pomodoro Timer System"
-msgstr ""
+msgstr "Điều chỉnh hệ thống đồng hồ Pomodoro"
 
 #: src/modules/pomodoro/lib.py:19
 #, possible-python-brace-format
