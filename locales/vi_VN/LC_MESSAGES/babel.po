@@ -44,7 +44,7 @@ msgstr "Bảng ngôn ngữ máy chủ"
 #: src/babel/cog.py:99
 msgctxt "cmd:configure_language"
 msgid "language"
-msgstr ""
+msgstr "ngôn ngữ"
 
 #: src/babel/cog.py:101
 msgctxt "cmd:configure_language|desc"
