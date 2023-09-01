@@ -106,7 +106,7 @@ msgstr ""
 #: src/modules/sysadmin/presence.py:155
 msgctxt "botset:presence_type"
 msgid "activity_type"
-msgstr ""
+msgstr "tipo_atividade"
 
 #: src/modules/sysadmin/presence.py:156
 msgctxt "botset:presence_type|desc"
