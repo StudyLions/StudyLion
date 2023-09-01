@@ -950,7 +950,7 @@ msgstr "**{role}** es un rol fijo, ¡no puedes eliminarlo con este menú!"
 #: src/modules/rolemenus/rolemenu.py:493
 msgctxt "rolemenu|deselect|error:perms"
 msgid "I don't have enough permissions to remove this role from you!"
-msgstr ""
+msgstr "No tengo suficientes permisos para quitarte este rol."
 
 #: src/modules/rolemenus/rolemenu.py:500
 msgctxt "rolemenu|deselect|error:discord"
