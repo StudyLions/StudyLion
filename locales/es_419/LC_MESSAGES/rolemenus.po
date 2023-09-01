@@ -1330,12 +1330,12 @@ msgstr "Alternar devoluciones"
 #: src/modules/rolemenus/ui/menueditor.py:289
 msgctxt "ui:menu_editor|menu:reqroles|placeholder"
 msgid "Select Required Role"
-msgstr ""
+msgstr "Seleccione el rol requerido"
 
 #: src/modules/rolemenus/ui/menueditor.py:308
 msgctxt "ui:menu_editor|button:modify_roles|label"
 msgid "Modify Roles"
-msgstr ""
+msgstr "Modificar roles"
 
 #: src/modules/rolemenus/ui/menueditor.py:337
 msgctxt "ui:menu_editor|role_editor|modal|title"
