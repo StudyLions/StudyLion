@@ -60,7 +60,7 @@ msgstr ""
 #: src/gui/cards/stats.py:118
 msgctxt "skin:stats|field:daily"
 msgid "DAILY"
-msgstr ""
+msgstr "GÜNLÜK"
 
 #: src/gui/cards/stats.py:122
 msgctxt "skin:stats|field:weekly"
