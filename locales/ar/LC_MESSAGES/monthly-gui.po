@@ -149,7 +149,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "ui:monthlystats|stats:daily_average|value"
 msgid "{count} hours"
-msgstr ""
+msgstr "ساعات {count} "
 
 #: src/gui/cards/monthly.py:324
 msgctxt "ui:monthlystats|stats:days_active|key"
