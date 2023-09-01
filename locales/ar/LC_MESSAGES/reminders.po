@@ -95,7 +95,7 @@ msgstr ""
 #: src/modules/reminders/cog.py:390
 msgctxt "cmd:reminders_clear"
 msgid "clear"
-msgstr ""
+msgstr "احذف"
 
 #: src/modules/reminders/cog.py:393
 msgctxt "cmd:reminders_clear|desc"
