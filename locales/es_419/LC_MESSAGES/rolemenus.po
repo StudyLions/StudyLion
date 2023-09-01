@@ -968,7 +968,7 @@ msgstr "Rol retirado."
 #, possible-python-brace-format
 msgctxt "rolemenu|deselect|success:refund|desc"
 msgid "You have removed **{role}**, and been refunded {coin} **{amount}**."
-msgstr ""
+msgstr "Has eliminado **{role}**, y se te ha reembolsado {coin} **{amount}**."
 
 #: src/modules/rolemenus/rolemenu.py:540
 #, possible-python-brace-format
