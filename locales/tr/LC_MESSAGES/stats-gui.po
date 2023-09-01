@@ -30,22 +30,22 @@ msgstr "İSTATİSTİKLER"
 #: src/gui/cards/stats.py:75
 msgctxt "skin:stats|subheader:leaderboard"
 msgid "LEADERBOARD POSITION"
-msgstr ""
+msgstr "LİDERLİK TABLOSU SIRASI"
 
 #: src/gui/cards/stats.py:79
 msgctxt "skin:stats|mode:study|subheader:study"
 msgid "STUDY TIME"
-msgstr ""
+msgstr "ÇALIŞMA SÜRESİ"
 
 #: src/gui/cards/stats.py:83
 msgctxt "skin:stats|mode:voice|subheader:study"
 msgid "VOICE TIME"
-msgstr ""
+msgstr "SES SÜRESİ"
 
 #: src/gui/cards/stats.py:87
 msgctxt "skin:stats|mode:text|subheader:study"
 msgid "MESSAGES"
-msgstr ""
+msgstr "MESAJLAR"
 
 #: src/gui/cards/stats.py:91
 msgctxt "skin:stats|mode:anki|subheader:study"
