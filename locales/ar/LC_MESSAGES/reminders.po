@@ -80,7 +80,7 @@ msgstr ""
 #: src/modules/reminders/cog.py:359
 msgctxt "cmd:reminders_show"
 msgid "show"
-msgstr ""
+msgstr "اظهر"
 
 #: src/modules/reminders/cog.py:362
 msgctxt "cmd:reminders_show|desc"
