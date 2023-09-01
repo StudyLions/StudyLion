@@ -440,6 +440,7 @@ msgstr ""
 msgctxt "timerset:voice_channel|desc"
 msgid "Channel in which to track timer members and send alerts."
 msgstr ""
+"Kênh để theo dõi thời gian hoạt động của các thành viên và gửi thông báo."
 
 #: src/modules/pomodoro/options.py:45
 msgctxt "timerset:notification_channel"
