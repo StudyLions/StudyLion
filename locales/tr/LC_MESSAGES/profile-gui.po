@@ -45,7 +45,7 @@ msgstr "SONRAKİ SEVİYE: {name} {rangestr}"
 #: src/gui/cards/profile.py:142
 msgctxt "skin:profile|field:rank_noranks_text"
 msgid "NO RANKS AVAILABLE"
-msgstr ""
+msgstr "SEVİYE BULUNMAMAKTA"
 
 #: src/gui/cards/profile.py:146
 msgctxt "skin:profile|field:rank_maxrank_text"
