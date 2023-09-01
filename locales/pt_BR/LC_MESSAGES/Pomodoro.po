@@ -5,6 +5,7 @@
 # 
 # Translators:
 # Bruno Evangelista De Oliveira, 2023
+# Aline Souki, 2023
 # 
 #, fuzzy
 msgid ""
@@ -13,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-28 22:43+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
+"Last-Translator: Aline Souki, 2023\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -166,7 +167,7 @@ msgstr "Mostra o status de um temporizador pomodoro específico."
 #: src/modules/pomodoro/cog.py:334
 msgctxt "cmd:pomodoro_status|param:channel"
 msgid "timer_channel"
-msgstr "canal_do_temporizador"
+msgstr "timer_channel"
 
 #: src/modules/pomodoro/cog.py:339
 msgctxt "cmd:pomodoro_status|param:channel|desc"
@@ -274,7 +275,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:469
 msgctxt "cmd:pomodoro_create|param:channel"
 msgid "timer_channel"
-msgstr "canal_do_temporizador"
+msgstr "timer_channel"
 
 #: src/modules/pomodoro/cog.py:475
 msgctxt "cmd:pomodoro_create|param:channel|desc"
@@ -304,7 +305,7 @@ msgid ""
 msgstr ""
 "Falha ao criar o novo canal de voz com o pomodoro, devido a um erro de "
 "comunicação do Discord. Por favor, tente criar o canal manualmente e "
-"selecione ele na opção ˋcanal_do_temporizadorˋ deste comando."
+"selecione ele na opção ˋtimer_channelˋ deste comando."
 
 #: src/modules/pomodoro/cog.py:549
 msgctxt "cmd:pomodoro_create|error:channel_create_permissions|title"
@@ -317,7 +318,7 @@ msgid ""
 "No `timer_channel` was provided, and I lack the `MANAGE_CHANNELS` permission"
 " needed to create a new voice channel."
 msgstr ""
-"Nenhum ˋcanal_do_temporizadorˋ foi informado e me falta permissão de "
+"Nenhum ˋtimer_channelˋ foi informado e me falta permissão de "
 "ˋGERENCIAR_CANAISˋ para que possa criar um canal de voz."
 
 #: src/modules/pomodoro/cog.py:567
