@@ -1038,12 +1038,12 @@ msgstr "El rol expirará en {timestamp}."
 #, possible-python-brace-format
 msgctxt "rolemenu|content:reactions"
 msgid "[Click here]({jump_link}) to jump back."
-msgstr ""
+msgstr "[Click here]({jump_link}) para volver atrás."
 
 #: src/modules/rolemenus/menuoptions.py:56
 msgctxt "menuset:name"
 msgid "name"
-msgstr ""
+msgstr "nombre"
 
 #: src/modules/rolemenus/menuoptions.py:59
 msgctxt "menuset:name|desc"
