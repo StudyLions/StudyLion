@@ -90,12 +90,12 @@ msgstr "ANKI: ÇOK YAKINDA"
 #: src/gui/cards/stats.py:155
 msgctxt "skin:stats|mode:study|header:col2"
 msgid "STUDY STREAK"
-msgstr ""
+msgstr "ÇALIŞMA SERİ"
 
 #: src/gui/cards/stats.py:159
 msgctxt "skin:stats|mode:voice|header:col2"
 msgid "VOICE STREAK"
-msgstr ""
+msgstr "SES SERİSİ"
 
 #: src/gui/cards/stats.py:163
 msgctxt "skin:stats|mode:text|header:col2"
