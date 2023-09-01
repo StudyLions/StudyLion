@@ -198,7 +198,7 @@ msgstr "Nome da atividade atual"
 #: src/modules/sysadmin/presence.py:196
 msgctxt "botset:presence_name|long_desc"
 msgid "Presence activity name."
-msgstr ""
+msgstr "Nome da atividade atual."
 
 #: src/modules/sysadmin/presence.py:197
 msgctxt "botset:presence_name|accepts"
