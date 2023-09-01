@@ -61,7 +61,7 @@ msgstr[1] ""
 #: src/modules/schedule/cog.py:474
 msgctxt "create_booking|error:already_booked"
 msgid "One or more requested timeslots are already booked!"
-msgstr ""
+msgstr "Bir ya da daha fazla zaman dilimi çoktan ayırtıldı!"
 
 #: src/modules/schedule/cog.py:677
 msgctxt "cmd:schedule"
