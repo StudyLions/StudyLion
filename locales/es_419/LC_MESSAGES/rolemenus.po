@@ -1243,13 +1243,13 @@ msgstr ""
 #: src/modules/rolemenus/ui/menus.py:105
 msgctxt "ui:menu_list|menu:editmenu|placeholder"
 msgid "Select Menu to Edit"
-msgstr ""
+msgstr "Seleccionar menú para editar"
 
 #: src/modules/rolemenus/ui/menus.py:129
 #, possible-python-brace-format
 msgctxt "ui:menu_list|menu_line:attached"
 msgid "[`{name}`]({jump_url}) with `{count}` roles."
-msgstr ""
+msgstr "[`{name}`]({jump_url}) con `{count}` roles."
 
 #: src/modules/rolemenus/ui/menus.py:138
 #, possible-python-brace-format
