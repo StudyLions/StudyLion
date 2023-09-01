@@ -137,12 +137,12 @@ msgstr ""
 #: src/modules/reminders/cog.py:447
 msgctxt "cmd:reminders_clear|confirm|button:cancel"
 msgid "Cancel"
-msgstr ""
+msgstr "إلغاء"
 
 #: src/modules/reminders/cog.py:457
 msgctxt "cmd:reminders_cancel"
 msgid "cancel"
-msgstr ""
+msgstr "إلغاء"
 
 #: src/modules/reminders/cog.py:460
 msgctxt "cmd:reminders_cancel|desc"
