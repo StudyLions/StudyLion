@@ -710,7 +710,7 @@ msgstr "مرئى"
 #: src/modules/rooms/settings.py:160
 msgctxt "guildset:rooms_visible|output:false"
 msgid "Invisible"
-msgstr ""
+msgstr "غير مرئى"
 
 #: src/modules/rooms/settings.py:166
 msgctxt "guildset:rooms_visible|parse:truthy_values"
