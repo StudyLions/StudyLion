@@ -259,7 +259,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:504
 msgctxt "cmd:pomodoro_create|error:insufficient_perms"
 msgid "Only server administrators can create timers!"
-msgstr ""
+msgstr "Chỉ có các admins của server mới có thể tạo thêm đồng hồ bấm giờ!"
 
 #: src/modules/pomodoro/cog.py:531
 msgctxt "cmd:pomodoro_create|error:channel_create_failed|title"
