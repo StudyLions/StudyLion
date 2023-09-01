@@ -240,7 +240,7 @@ msgstr ""
 #: src/babel/enums.py:45
 msgctxt "localenames|locale:zh-CN"
 msgid "Chinese"
-msgstr ""
+msgstr "Tiếng Trung"
 
 #: src/babel/enums.py:46
 msgctxt "localenames|locale:zh-TW"
