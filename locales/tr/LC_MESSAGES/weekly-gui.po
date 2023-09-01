@@ -40,7 +40,7 @@ msgstr "MESAJ AKTİVİTESİ"
 #: src/gui/cards/weekly.py:64
 msgctxt "skin::weeklystats|mode:anki|title"
 msgid "CARDS REVIEWED"
-msgstr ""
+msgstr "GÖSTERİLEN KARTLAR"
 
 #: src/gui/cards/weekly.py:137
 msgctxt "skin:weeklystats|weekdays"
