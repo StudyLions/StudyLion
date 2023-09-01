@@ -309,6 +309,7 @@ msgctxt "cmd:pomodoro_destroy|desc"
 msgid ""
 "Delete a pomodoro timer from a voice channel. Requires admin permissions."
 msgstr ""
+"Bạn cần quyền quản trị viên để có thể xóa đồng hồ Pomodoro khỏi kênh thoại."
 
 #: src/modules/pomodoro/cog.py:619
 msgctxt "cmd:pomodoro_destroy|param:channel"
