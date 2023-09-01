@@ -1068,7 +1068,7 @@ msgstr "Este menú de roles se llamará ahora **{new_name}**."
 #: src/modules/rolemenus/menuoptions.py:86
 msgctxt "menuset:sticky"
 msgid "sticky_roles"
-msgstr ""
+msgstr "roles_pegajosos"
 
 #: src/modules/rolemenus/menuoptions.py:89
 msgctxt "menuset:sticky|desc"
