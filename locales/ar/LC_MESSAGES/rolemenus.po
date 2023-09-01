@@ -174,7 +174,7 @@ msgstr ""
 #: src/modules/rolemenus/cog.py:612
 msgctxt "cmd:rolemenu_create|param:remplate"
 msgid "template"
-msgstr ""
+msgstr "قالب"
 
 #: src/modules/rolemenus/cog.py:613
 msgctxt "cmd:rolemenu_create|param:rawmessage"
