@@ -1008,11 +1008,13 @@ msgctxt "rolemenu|select|error:discord"
 msgid ""
 "An unknown error occurred while assigning your role! Please try again later."
 msgstr ""
+"Se ha producido un error desconocido al asignar su rol. Vuelva a intentarlo "
+"más tarde."
 
 #: src/modules/rolemenus/rolemenu.py:647
 msgctxt "rolemenu|select|success|title"
 msgid "Role equipped"
-msgstr ""
+msgstr "Rol equipado"
 
 #: src/modules/rolemenus/rolemenu.py:653
 #, possible-python-brace-format
