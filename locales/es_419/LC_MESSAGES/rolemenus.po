@@ -1555,7 +1555,7 @@ msgstr "Publicar"
 #: src/modules/rolemenus/ui/menueditor.py:974
 msgctxt "ui:menu_editor|embed|title"
 msgid "Role Menu Editor"
-msgstr ""
+msgstr "Editor del menú de roles"
 
 #: src/modules/rolemenus/ui/menueditor.py:983
 #, possible-python-brace-format
