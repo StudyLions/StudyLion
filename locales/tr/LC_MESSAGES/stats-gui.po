@@ -134,7 +134,7 @@ msgstr ""
 #: src/gui/cards/stats.py:223
 msgctxt "skin:stats|cal|weekdays"
 msgid "S,M,T,W,T,F,S"
-msgstr ""
+msgstr "P,S,Ç,P,C,CTS,PZR"
 
 #: src/gui/cards/stats.py:227
 msgctxt "skin:stats|cal|months"
