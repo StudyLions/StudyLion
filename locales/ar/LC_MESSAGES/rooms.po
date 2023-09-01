@@ -705,7 +705,7 @@ msgstr ""
 #: src/modules/rooms/settings.py:159
 msgctxt "guildset:rooms_visible|output:true"
 msgid "Visible"
-msgstr ""
+msgstr "مرئى"
 
 #: src/modules/rooms/settings.py:160
 msgctxt "guildset:rooms_visible|output:false"
