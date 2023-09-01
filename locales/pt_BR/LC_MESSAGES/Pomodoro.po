@@ -319,7 +319,7 @@ msgid ""
 " needed to create a new voice channel."
 msgstr ""
 "Nenhum ˋtimer_channelˋ foi informado e me falta permissão de "
-"ˋGERENCIAR_CANAISˋ para que possa criar um canal de voz."
+"ˋMANAGE_CHANNELSˋ para que possa criar um canal de voz."
 
 #: src/modules/pomodoro/cog.py:567
 #, possible-python-brace-format
