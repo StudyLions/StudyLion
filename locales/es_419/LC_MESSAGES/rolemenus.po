@@ -1410,17 +1410,19 @@ msgstr "Seleccionar estilo de menú"
 #: src/modules/rolemenus/ui/menueditor.py:606
 msgctxt "ui:menu_editor|menu:style|option:reaction|label"
 msgid "Reaction Roles"
-msgstr ""
+msgstr "Roles de reacción"
 
 #: src/modules/rolemenus/ui/menueditor.py:609
 msgctxt "ui:menu_editor|menu:style|option:reaction|desc"
 msgid "Roles are represented compactly as clickable reactions on a message."
 msgstr ""
+"Los roles se representan de forma compacta como reacciones clicables en un "
+"mensaje."
 
 #: src/modules/rolemenus/ui/menueditor.py:615
 msgctxt "ui:menu_editor|menu:style|option:button|label"
 msgid "Button Menu"
-msgstr ""
+msgstr "Botón Menú"
 
 #: src/modules/rolemenus/ui/menueditor.py:618
 msgctxt "ui:menu_editor|menu:style|option:button|desc"
