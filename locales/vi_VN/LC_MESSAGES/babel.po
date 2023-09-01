@@ -71,12 +71,12 @@ msgstr "ngôn ngữ"
 #: src/babel/cog.py:186
 msgctxt "cmd:userconfig_language|desc"
 msgid "Set your preferred interaction language."
-msgstr ""
+msgstr "Đặt ngôn ngữ ưa dùng của bạn."
 
 #: src/babel/cog.py:190
 msgctxt "cmd:userconfig_language|param:language"
 msgid "language"
-msgstr ""
+msgstr "ngôn ngữ"
 
 #: src/babel/cog.py:195
 msgctxt "cmd:userconfig_language|param:language|desc"
