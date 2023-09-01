@@ -1114,6 +1114,9 @@ msgid ""
 "**Refunds will only be given for roles purchased through the same menu.**\n"
 "**The `sticky` option must be disabled to allow members to remove roles.**"
 msgstr ""
+"Cuando se activa, los miembros que *compraron un rol a través de este menú de roles* obtendrán un reembolso completo cuando eliminen el rol a través del menú.\n"
+"**Los reembolsos sólo se harán para los roles comprados a través del mismo menú.**\n"
+"**La opción \"pegajosa\" debe estar desactivada para que los usuarios puedan eliminar roles.**"
 
 #: src/modules/rolemenus/menuoptions.py:148
 msgctxt "menuset:refunds|set_response:true"
