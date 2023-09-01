@@ -75,7 +75,7 @@ msgstr "BU HAFTA: {amount} KART"
 #, possible-python-brace-format
 msgctxt "skin:weeklystats|mode:study|summary:last_week"
 msgid "LAST WEEK: {amount} HOURS"
-msgstr ""
+msgstr "GEÇEN HAFTA: {amount} SAAT"
 
 #: src/gui/cards/weekly.py:244
 #, possible-python-brace-format
