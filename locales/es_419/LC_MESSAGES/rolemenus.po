@@ -1139,7 +1139,7 @@ msgstr "obtenible"
 #: src/modules/rolemenus/menuoptions.py:164
 msgctxt "menuset:obtainable|desc"
 msgid "The maximum number of roles equippable from this menu."
-msgstr ""
+msgstr "El número máximo de roles equipables desde este menú."
 
 #: src/modules/rolemenus/menuoptions.py:169
 msgctxt "menuset:obtainable|long_desc"
