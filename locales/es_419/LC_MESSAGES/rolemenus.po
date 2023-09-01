@@ -1219,6 +1219,10 @@ msgid ""
 "`Edit Message` button, raw JSON-formatted message data may also be uploaded "
 "via command."
 msgstr ""
+"Este ajuste determina el cuerpo del mensaje del menú, incluyendo el "
+"contenido del mensaje y el embed(s) del mensaje. Aunque se puede modificar "
+"más fácilmente a través del botón `Edit Message`, también se pueden cargar "
+"datos de mensaje sin formato JSON a través de un comando."
 
 #: src/modules/rolemenus/menuoptions.py:260
 msgctxt "menuset:message|set_response:set"
