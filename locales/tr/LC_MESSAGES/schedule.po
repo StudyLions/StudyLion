@@ -52,7 +52,11 @@ msgid_plural ""
 "Booking `{count}` sessions costs {coin}**{required}**, but you only have "
 "{coin}**{balance}**."
 msgstr[0] ""
+"Bir oturum ayırtmak {coin}**{required}** miktar para istiyor ama senin "
+"sadece {coin}**{balance}** paran var."
 msgstr[1] ""
+"`{count}` adet oturum {coin}**{required}** miktar para istiyor ama senin "
+"sadece {coin}**{balance}** paran var"
 
 #: src/modules/schedule/cog.py:474
 msgctxt "create_booking|error:already_booked"
