@@ -1274,11 +1274,13 @@ msgid ""
 "Right click an existing message or use the `newmenu` command to create a new"
 " menu."
 msgstr ""
+"Haga clic derecho en un mensaje existente o utilice el comando `newmenu` "
+"para crear un nuevo menú."
 
 #: src/modules/rolemenus/ui/menus.py:189
 msgctxt "ui:menu_list|embed|field:unattached|name"
 msgid "Unattached Menus"
-msgstr ""
+msgstr "Menús no adjuntos"
 
 #: src/modules/rolemenus/ui/menus.py:201
 msgctxt "ui:menu_list|embed|footer:text"
