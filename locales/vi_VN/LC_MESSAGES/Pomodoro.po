@@ -351,7 +351,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:686
 msgctxt "cmd:pomodoro_edit|desc"
 msgid "Edit a Timer"
-msgstr ""
+msgstr "Điều chỉnh một đồng hồ bấm giờ"
 
 #: src/modules/pomodoro/cog.py:690
 msgctxt "cmd:pomodoro_edit|param:channel"
