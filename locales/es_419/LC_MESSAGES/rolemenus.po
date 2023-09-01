@@ -995,6 +995,8 @@ msgid ""
 "The role **{role}** costs {coin}**{cost}**,but you only have "
 "{coin}**{balance}**!"
 msgstr ""
+"El rol **{role}** cuesta {coin}**{cost}**, ¡pero sólo tienes "
+"{coin}**{balance}**!"
 
 #: src/modules/rolemenus/rolemenu.py:598
 msgctxt "rolemenu|select|error:perms"
