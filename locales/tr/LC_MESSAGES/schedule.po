@@ -66,7 +66,7 @@ msgstr "Bir ya da daha fazla zaman dilimi çoktan ayırtıldı!"
 #: src/modules/schedule/cog.py:677
 msgctxt "cmd:schedule"
 msgid "schedule"
-msgstr ""
+msgstr "plan"
 
 #: src/modules/schedule/cog.py:680
 msgctxt "cmd:schedule|desc"
