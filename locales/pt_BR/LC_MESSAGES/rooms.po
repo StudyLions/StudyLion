@@ -596,7 +596,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "room|notify:transfer|description"
 msgid "{old_owner} has transferred private room ownership to {new_owner}"
-msgstr ""
+msgstr "{old_owner} transferiu a posse da sala privada para {new_owner}"
 
 #: src/modules/rooms/room.py:247
 msgctxt "room|embed:expiry|title"
