@@ -416,6 +416,8 @@ msgid ""
 "Too many members! You have invited `{count}` new members to your room, but "
 "you already have `{current}`, and the member cap is `{cap}`!"
 msgstr ""
+"Muitos membros! Você convidou `{count}` novos membros para sua sala, mas "
+"você já tem `{current}`, e a capacidade máxima de membros é de `{cap}`!"
 
 #: src/modules/rooms/cog.py:678
 msgctxt "cmd:room_invite|success|ack"
