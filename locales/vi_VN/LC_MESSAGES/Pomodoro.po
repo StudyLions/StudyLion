@@ -473,7 +473,7 @@ msgstr ""
 #: src/modules/pomodoro/options.py:85
 msgctxt "timerset:inactivity_threshold|desc"
 msgid "How many timer cycles before kicking inactive members."
-msgstr ""
+msgstr "Số chu kì Pomodoro trước khi kick những thành viên không hoạt động."
 
 #: src/modules/pomodoro/options.py:101
 msgctxt "timerset:manager_role"
