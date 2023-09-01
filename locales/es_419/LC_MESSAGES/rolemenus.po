@@ -1073,7 +1073,7 @@ msgstr "roles_pegajosos"
 #: src/modules/rolemenus/menuoptions.py:89
 msgctxt "menuset:sticky|desc"
 msgid "Whether the menu can be used to unequip roles."
-msgstr ""
+msgstr "Si el menú se puede utilizar para desequipar roles."
 
 #: src/modules/rolemenus/menuoptions.py:94
 msgctxt "menuset:sticky|long_desc"
