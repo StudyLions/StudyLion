@@ -39,7 +39,7 @@ msgstr ""
 #: src/babel/settingui.py:87
 msgctxt "dash:locale|dropdown|placeholder"
 msgid "Server Language Panel"
-msgstr ""
+msgstr "Bảng ngôn ngữ máy chủ"
 
 #: src/babel/cog.py:99
 msgctxt "cmd:configure_language"
