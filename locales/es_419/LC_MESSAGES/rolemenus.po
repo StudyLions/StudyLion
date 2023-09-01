@@ -1187,6 +1187,8 @@ msgid ""
 "If set, only members who have the `required_role` will be able to obtain or "
 "remove roles using this menu."
 msgstr ""
+"Si se establece, sólo los miembros que tengan el `required_role` podrán "
+"obtener o eliminar roles utilizando este menú."
 
 #: src/modules/rolemenus/menuoptions.py:223
 #, possible-python-brace-format
