@@ -945,7 +945,7 @@ msgstr "¡Este rol ya no existe!"
 #, possible-python-brace-format
 msgctxt "rolemenu|deselect|error:sticky"
 msgid "**{role}** is a sticky role, you cannot remove it with this menu!"
-msgstr ""
+msgstr "**{role}** es un rol fijo, ¡no puedes eliminarlo con este menú!"
 
 #: src/modules/rolemenus/rolemenu.py:493
 msgctxt "rolemenu|deselect|error:perms"
