@@ -24,7 +24,7 @@ msgstr ""
 #: src/gui/cards/profile.py:79
 msgctxt "skin:profile|header:profile"
 msgid "PROFILE"
-msgstr ""
+msgstr "الملف الشخصى"
 
 #: src/gui/cards/profile.py:83
 msgctxt "skin:profile|header:achievements"
