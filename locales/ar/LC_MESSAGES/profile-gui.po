@@ -34,7 +34,7 @@ msgstr "الإنجازات"
 #: src/gui/cards/profile.py:134
 msgctxt "skin:profile|field:rank_unranked_text"
 msgid "UNRANKED"
-msgstr ""
+msgstr "غير مصنف"
 
 #: src/gui/cards/profile.py:138
 #, possible-python-brace-format
@@ -50,4 +50,4 @@ msgstr "لايوجد رتب متوفرة"
 #: src/gui/cards/profile.py:146
 msgctxt "skin:profile|field:rank_maxrank_text"
 msgid "YOU HAVE REACHED THE MAXIMUM RANK"
-msgstr ""
+msgstr "لقد وصلت إلى أقصى مرتبة"
