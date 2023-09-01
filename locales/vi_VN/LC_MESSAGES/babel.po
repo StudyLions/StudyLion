@@ -245,7 +245,7 @@ msgstr "Tiếng Trung"
 #: src/babel/enums.py:46
 msgctxt "localenames|locale:zh-TW"
 msgid "Taiwan Chinese"
-msgstr ""
+msgstr "Tiếng Đài Loan"
 
 #: src/babel/enums.py:47
 msgctxt "localenames|locale:hr"
