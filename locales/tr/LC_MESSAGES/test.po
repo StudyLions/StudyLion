@@ -51,7 +51,7 @@ msgstr "renkler"
 
 #: src/modules/test/test.py:103
 msgid "Test Ansi colours"
-msgstr "Test Ansi renkleri"
+msgstr "Ansi Renklerini Test Et"
 
 #: src/modules/test/test.py:123
 msgid "fail"
