@@ -88,6 +88,8 @@ msgstr ""
 msgctxt "ui:room_status|button:edit|label"
 msgid "Edit Room"
 msgstr ""
+"تعديل الغرفة\n"
+"AT: تعديل القناة"
 
 #: src/modules/rooms/roomui.py:204
 msgctxt "ui:room_status|button:timer|modal:add_timer|title"
