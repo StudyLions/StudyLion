@@ -96,12 +96,12 @@ msgstr ""
 #: src/modules/pomodoro/timer.py:557
 msgctxt "timer|status|stopped:manual"
 msgid "Timer stopped! Press `Start` to restart the timer."
-msgstr ""
+msgstr "Đồng hồ bấm giờ đã dừng! Nhấn 'Start' để khởi động lại đồng hồ."
 
 #: src/modules/pomodoro/settingui.py:39
 msgctxt "ui:timer_config|menu:channels|placeholder"
 msgid "Select Pomodoro Notification Channel"
-msgstr ""
+msgstr "Chọn kênh thông báo Pomodoro"
 
 #: src/modules/pomodoro/settingui.py:47
 msgctxt "ui:timer_config|embed|title"
