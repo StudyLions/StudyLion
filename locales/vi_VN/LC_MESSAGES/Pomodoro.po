@@ -792,7 +792,7 @@ msgstr ""
 #: src/modules/pomodoro/ui/config.py:185
 msgctxt "ui:timer_options|embed|field:pattern|name"
 msgid "Pattern"
-msgstr "Tên"
+msgstr "Mô hình"
 
 #: src/modules/pomodoro/ui/config.py:188
 #, possible-python-brace-format
