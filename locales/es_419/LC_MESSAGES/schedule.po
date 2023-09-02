@@ -417,6 +417,8 @@ msgid ""
 "Session members will be rewarded an additional {coin}**{amount}** when "
 "everyone attends."
 msgstr ""
+"Los miembros de la sesión recibirán una {coin}**{cantidad}** adicional "
+"cuando asistan todos."
 
 #: src/modules/schedule/settings.py:334
 #, possible-python-brace-format
