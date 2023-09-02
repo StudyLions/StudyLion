@@ -71,7 +71,7 @@ msgstr "horario"
 #: src/modules/schedule/cog.py:680
 msgctxt "cmd:schedule|desc"
 msgid "View and manage your scheduled session."
-msgstr ""
+msgstr "Vea y gestione su sesión programada."
 
 #: src/modules/schedule/cog.py:708
 #, possible-python-brace-format
