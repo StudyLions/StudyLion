@@ -177,7 +177,7 @@ msgstr "Kênh {channel} không có một đồng hồ bấm giờ nào!"
 #: src/modules/pomodoro/cog.py:367
 msgctxt "cmd:pomodoro_list"
 msgid "list"
-msgstr ""
+msgstr "danh sách"
 
 #: src/modules/pomodoro/cog.py:368
 msgctxt "cmd:pomodoro_list|desc"
