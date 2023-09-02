@@ -151,7 +151,7 @@ msgstr "Nhóm cơ bản cho tất cả các lệnh hẹn giờ Pomodoro."
 #: src/modules/pomodoro/cog.py:330
 msgctxt "cmd:pomodoro_status"
 msgid "show"
-msgstr ""
+msgstr "hiển thị"
 
 #: src/modules/pomodoro/cog.py:331
 msgctxt "cmd:pomodoro_status|desc"
