@@ -83,6 +83,8 @@ msgctxt "timer|status|stage:break|statusline"
 msgid ""
 "{channel} is now on **BREAK**! Take a rest, **FOCUS** starts {timestamp}"
 msgstr ""
+"{channel} hiện tại đang trong trạng thái **NGHỈ**! Nghỉ ngơi một chút nhé, "
+"trạng thái **TẬP TRUNG** sẽ bắt đầu vào {timestamp}"
 
 #: src/modules/pomodoro/timer.py:533
 #, possible-python-brace-format
