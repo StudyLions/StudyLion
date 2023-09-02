@@ -587,12 +587,12 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "guildset:schedule_blacklist_after|formatted|set"
 msgid "Blacklist after **`{amount}`** missed sessions within `24h`."
-msgstr ""
+msgstr "Lista negra después de **`{amount}`** sesiones perdidas en `24h`."
 
 #: src/modules/schedule/settings.py:516
 msgctxt "guildset:schedule_blacklist_after|formatted|unset"
 msgid "Do not automatically blacklist."
-msgstr ""
+msgstr "No poner automáticamente en la lista negra."
 
 #: src/modules/schedule/settings.py:528
 msgctxt "guildset:schedule_blacklist_role|parse|error"
