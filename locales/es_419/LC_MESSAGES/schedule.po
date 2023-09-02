@@ -916,12 +916,12 @@ msgstr "Esta sesión se ha reservado con éxito."
 #: src/modules/schedule/ui/sessionui.py:115
 msgctxt "ui:session|button:book|error|title"
 msgid "Could not book session"
-msgstr ""
+msgstr "No se ha podido reservar la sesión"
 
 #: src/modules/schedule/ui/sessionui.py:133
 msgctxt "ui:session|button:cancel|error:starting_soon"
 msgid "Too late! This session has started or is starting shortly."
-msgstr ""
+msgstr "Demasiado tarde. Esta sesión ha comenzado o comenzará en breve."
 
 #: src/modules/schedule/ui/sessionui.py:140
 msgctxt "ui:session|button:cancel|error:not_booked"
