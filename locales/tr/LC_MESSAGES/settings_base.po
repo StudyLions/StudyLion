@@ -45,12 +45,12 @@ msgstr "Varsayılan"
 #: src/settings/ui.py:364
 msgctxt "setting|summary_table|field:set|key"
 msgid "Set Using"
-msgstr ""
+msgstr "Kullanımı ayarla"
 
 #: src/settings/setting_types.py:48
 msgctxt "settype:string|accepts"
 msgid "Any Text"
-msgstr ""
+msgstr "Herhangi bir metin"
 
 #: src/settings/setting_types.py:89
 #, possible-python-brace-format
