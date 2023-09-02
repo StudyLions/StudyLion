@@ -445,11 +445,14 @@ msgid ""
 "number of minutes before they are marked as having attended (and hence are "
 "rewarded)."
 msgstr ""
+"Los miembros de la sesión programada tendrán que asistir a la sesión durante"
+" al menos este número de minutos antes de que se marque que han asistido (y,"
+" por tanto, se les recompense)."
 
 #: src/modules/schedule/settings.py:355
 msgctxt "guildset:min_attendance|accepts"
 msgid "Number of minutes (1-60) before attendance is counted."
-msgstr ""
+msgstr "Número de minutos (1-60) antes de que se cuente la asistencia."
 
 #: src/modules/schedule/settings.py:369
 #, possible-python-brace-format
