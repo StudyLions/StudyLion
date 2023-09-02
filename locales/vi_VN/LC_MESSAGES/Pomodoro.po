@@ -321,6 +321,8 @@ msgid ""
 "A timer already exists in {channel}! Use `/pomodoro admin edit` to modify "
 "it."
 msgstr ""
+"Đã có một đồng hồ bấm giờ ở {channel}! Sử dụng lệnh `/pomodoro admin edit` "
+"để chỉnh sửa hoặc cài đặt nó."
 
 #: src/modules/pomodoro/cog.py:606
 msgctxt "cmd:pomodoro_create|response:success|content"
