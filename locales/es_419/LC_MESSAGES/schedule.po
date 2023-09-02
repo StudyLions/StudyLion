@@ -775,6 +775,8 @@ msgid ""
 "You cannot cancel a currently running *scheduled* session! Please attend it "
 "if possible."
 msgstr ""
+"No puede cancelar una sesión *programada* en curso. Por favor, asista si es "
+"posible."
 
 #: src/modules/schedule/ui/scheduleui.py:368
 msgctxt "ui:schedule|menu:cancel|error:too_late"
