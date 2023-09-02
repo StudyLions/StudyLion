@@ -100,4 +100,4 @@ msgstr "GEÇEN HAFTA: {amount} KART"
 #, possible-python-brace-format
 msgctxt "skin:weeklystats|footer"
 msgid "Weekly Statistics • As of {day} {month} • {name} {discrim}"
-msgstr ""
+msgstr "Haftalık İstatistik• {month} ayının {day} günü • {name} {discrim}"
