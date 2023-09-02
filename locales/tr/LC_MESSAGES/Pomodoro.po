@@ -180,7 +180,7 @@ msgstr "{channel} kanalına bir sayaç ayarlanmamış."
 #: src/modules/pomodoro/cog.py:367
 msgctxt "cmd:pomodoro_list"
 msgid "list"
-msgstr "lsite"
+msgstr "liste"
 
 #: src/modules/pomodoro/cog.py:368
 msgctxt "cmd:pomodoro_list|desc"
