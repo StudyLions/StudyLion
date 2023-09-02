@@ -1010,7 +1010,7 @@ msgstr "Terminando {start}"
 #: src/modules/schedule/core/session.py:426
 msgctxt "session|status:running|field:waiting"
 msgid "Waiting For"
-msgstr ""
+msgstr "A la espera de"
 
 #: src/modules/schedule/core/session.py:432
 msgctxt "session|status:running|field:attending"
