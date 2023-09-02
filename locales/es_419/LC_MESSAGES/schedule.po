@@ -309,7 +309,7 @@ msgstr "horario_coste"
 #: src/modules/schedule/settings.py:214
 msgctxt "guildset:schedule_cost|desc"
 msgid "Booking cost for each scheduled session."
-msgstr ""
+msgstr "Coste de reserva para cada sesión programada."
 
 #: src/modules/schedule/settings.py:218
 msgctxt "guildset:schedule_cost|long_desc"
