@@ -823,7 +823,7 @@ msgstr "Reciente"
 #: src/modules/schedule/ui/scheduleui.py:457
 msgctxt "ui:schedule|embed|field:stats|field:alltime"
 msgid "All Time"
-msgstr ""
+msgstr "De todos los tiempos"
 
 #: src/modules/schedule/ui/scheduleui.py:463
 msgctxt "ui:schedule|embed|field:stats|field:streak"
