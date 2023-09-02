@@ -580,6 +580,8 @@ msgid ""
 "Members will not be automatically blacklisted from booking scheduled "
 "sessions."
 msgstr ""
+"Los miembros no entrarán automáticamente en la lista negra de reserva de "
+"sesiones programadas."
 
 #: src/modules/schedule/settings.py:511
 #, possible-python-brace-format
