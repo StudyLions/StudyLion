@@ -276,6 +276,8 @@ msgid ""
 "Voice channel to create the timer in. (Defaults to your current channel, or "
 "makes a new one.)"
 msgstr ""
+"Kênh thoại để tạo đồng hồ bấm giờ. (Mặc định là kênh hiện tại của bạn, hoặc "
+"tạo một kênh thoại mới.)"
 
 #: src/modules/pomodoro/cog.py:504
 msgctxt "cmd:pomodoro_create|error:insufficient_perms"
