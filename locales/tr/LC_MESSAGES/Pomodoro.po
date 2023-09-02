@@ -200,13 +200,13 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:404
 msgctxt "cmd:pomodoro_list|error:no_visible_timers"
 msgid "There are no timers you can join in this server!"
-msgstr ""
+msgstr "Bu sunucuda katılabileceğiniz bir sayaç bulunmamakta!"
 
 #: src/modules/pomodoro/cog.py:414
 #, possible-python-brace-format
 msgctxt "cmd:pomodoro_list|embed:timer_list|title"
 msgid "Pomodoro Timers in **{guild}**"
-msgstr ""
+msgstr " **{guild}** sunucusundaki pomodoro sayaçları"
 
 #: src/modules/pomodoro/cog.py:423
 #, possible-python-brace-format
