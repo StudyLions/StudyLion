@@ -193,12 +193,12 @@ msgstr "`Not Set` (El sistema de sesiones programadas está desactivado.)"
 #, possible-python-brace-format
 msgctxt "guildset:session_lobby|formatted|set"
 msgid "<#{channelid}>"
-msgstr ""
+msgstr "<#{channelid}>"
 
 #: src/modules/schedule/settings.py:92
 msgctxt "guildset:session_room"
 msgid "session_room"
-msgstr ""
+msgstr "sala_sesión"
 
 #: src/modules/schedule/settings.py:95
 msgctxt "guildset:session_room|desc"
