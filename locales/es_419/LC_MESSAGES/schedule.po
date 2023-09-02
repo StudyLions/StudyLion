@@ -851,9 +851,9 @@ msgstr "Racha"
 msgctxt "ui:schedule|embed|field:stats|field:streak|value:zero"
 msgid "One session attended! Keep it up!"
 msgid_plural "**{streak}** sessions attended in a row! Good job!"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "¡Una sesión atendida! ¡Sigue así!"
+msgstr[1] "¡**{streak}** sesiones asistidas seguidas! ¡Buen trabajo!"
+msgstr[2] "¡**{streak}** sesiones asistidas seguidas! ¡Buen trabajo!"
 
 #: src/modules/schedule/ui/scheduleui.py:475
 msgctxt "ui:schedule|embed|field:stats|field:streak|value:positive"
