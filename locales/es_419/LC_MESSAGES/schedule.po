@@ -994,12 +994,12 @@ msgstr "*No hay miembros programados para esta sesión.*"
 #, possible-python-brace-format
 msgctxt "session|status:preparing|desc:has_members"
 msgid "Starting {start}"
-msgstr ""
+msgstr "Empezando {start}"
 
 #: src/modules/schedule/core/session.py:385
 msgctxt "session|status:preparing|field:members"
 msgid "Members"
-msgstr ""
+msgstr "Miembros"
 
 #: src/modules/schedule/core/session.py:392
 #, possible-python-brace-format
