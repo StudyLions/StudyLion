@@ -499,22 +499,29 @@ msgid ""
 "Alternatively, consider setting the booking cost (and reward) very high to "
 "provide a strong disincentive for not attending a session."
 msgstr ""
+"Los miembros con este rol no podrán reservar sesiones programadas en este "
+"servidor. Si el rol se añade manualmente, se cancelarán todas las sesiones "
+"programadas futuras para el usuario. Esto proporciona una forma de evitar "
+"que miembros poco fiables repetidamente bloqueen la bonificación de grupo "
+"para todos los miembros. Alternativamente, considere establecer el coste de "
+"reserva (y recompensa) muy alto para proporcionar un fuerte desincentivo "
+"para no asistir a una sesión."
 
 #: src/modules/schedule/settings.py:425
 msgctxt "guildset:schedule_blacklist_role|accepts"
 msgid "Blacklist role name or id."
-msgstr ""
+msgstr "Nombre o id del rol de la lista negra."
 
 #: src/modules/schedule/settings.py:438
 #, possible-python-brace-format
 msgctxt "guildset:schedule_blacklist_role|set_response|set"
 msgid "Members with {role} will be unable to book scheduled sessions."
-msgstr ""
+msgstr "Los miembros con {role} no podrán reservar sesiones programadas."
 
 #: src/modules/schedule/settings.py:443
 msgctxt "guildset:schedule_blacklist_role|set_response|unset"
 msgid "The schedule blacklist role has been unset."
-msgstr ""
+msgstr "El rol de lista negra de horarios ha sido desactivada."
 
 #: src/modules/schedule/settings.py:453
 #, possible-python-brace-format
