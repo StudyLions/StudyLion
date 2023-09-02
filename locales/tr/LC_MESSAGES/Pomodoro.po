@@ -164,7 +164,7 @@ msgstr "Tek bir pomodoro sayacının durumunu görüntüleyin."
 #: src/modules/pomodoro/cog.py:334
 msgctxt "cmd:pomodoro_status|param:channel"
 msgid "timer_channel"
-msgstr ""
+msgstr "sayaç_kanalı"
 
 #: src/modules/pomodoro/cog.py:339
 msgctxt "cmd:pomodoro_status|param:channel|desc"
