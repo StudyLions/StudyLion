@@ -756,7 +756,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "ui:timer_options|button:delete|success|description"
 msgid "The timer in {channel} has been removed."
-msgstr ""
+msgstr "Đồng hồ trong {channel} đã bị xoá."
 
 #: src/modules/pomodoro/ui/config.py:100
 msgctxt "ui:timer_options|button:delete|label"
