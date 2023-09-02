@@ -369,7 +369,8 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:665
 msgctxt "cmd:pomodoro_destroy|error:insufficient_perms|notowned"
 msgid "You need to be a server administrator to remove this timer!"
-msgstr "Bạn cần là một quản trị viên để có thể xoá bỏ đồng hồ bấm giờ!"
+msgstr ""
+"Bạn cần là một quản trị viên máy chủ để có thể xoá bỏ đồng hồ bấm giờ!"
 
 #: src/modules/pomodoro/cog.py:677
 #, possible-python-brace-format
