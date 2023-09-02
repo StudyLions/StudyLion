@@ -1005,7 +1005,7 @@ msgstr "Miembros"
 #, possible-python-brace-format
 msgctxt "session|status:running|desc:has_members"
 msgid "Finishing {start}"
-msgstr ""
+msgstr "Terminando {start}"
 
 #: src/modules/schedule/core/session.py:426
 msgctxt "session|status:running|field:waiting"
