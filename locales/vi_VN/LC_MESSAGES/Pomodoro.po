@@ -381,7 +381,7 @@ msgstr "Đồng hồ bấm giờ đã được xoá bỏ thành công khỏi {ch
 #: src/modules/pomodoro/cog.py:683
 msgctxt "cmd:pomodoro_edit"
 msgid "edit"
-msgstr ""
+msgstr "chỉnh sửa"
 
 #: src/modules/pomodoro/cog.py:686
 msgctxt "cmd:pomodoro_edit|desc"
