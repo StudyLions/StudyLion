@@ -409,6 +409,8 @@ msgid ""
 "Insufficient permissions to modifiy this timer!\n"
 "You need to be a server administrator, own this channel, or have the timer manager role."
 msgstr ""
+"Bạn không có đủ quyền để chỉnh sửa đồng hồ bấm giờ này!\n"
+"Bạn cần là một quản trị viên máy chủ, sở hữu kênh này, hoặc có vai trò quản lí đồng hồ."
 
 #: src/modules/pomodoro/cog.py:771
 msgctxt "cmd:pomodoro_edit|error:insufficient_permissions|role_needed:admin"
