@@ -102,7 +102,7 @@ msgctxt "timer|status|stopped:auto"
 msgid "Timer stopped! Join {channel} to start the timer."
 msgstr ""
 "Đồng hồ đếm giờ đã dừng! Hãy tham gia {channel} để khởi động lại đồng hồ đếm"
-" giờ nhé"
+" giờ nhé."
 
 #: src/modules/pomodoro/timer.py:557
 msgctxt "timer|status|stopped:manual"
