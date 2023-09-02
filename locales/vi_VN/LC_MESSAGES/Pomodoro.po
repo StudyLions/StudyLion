@@ -161,7 +161,7 @@ msgstr "Hiển thị trạng thái của từng đồng hồ bấm giờ Pomodor
 #: src/modules/pomodoro/cog.py:334
 msgctxt "cmd:pomodoro_status|param:channel"
 msgid "timer_channel"
-msgstr ""
+msgstr "kênh_đồng_hồ_bấm_giờ"
 
 #: src/modules/pomodoro/cog.py:339
 msgctxt "cmd:pomodoro_status|param:channel|desc"
