@@ -242,6 +242,8 @@ msgid ""
 "`{pattern}` timer is running with `{members}` members!\n"
 "Currently **resting**, with focus starting {timestamp}"
 msgstr ""
+"Đồng hồ bấm giờ `{pattern}` đang chạy với các thành viên `{members}`!\n"
+"Hiện đang **resting**, với trạng thái tập trung sẽ bắt đầu vào {timestamp}"
 
 #: src/modules/pomodoro/cog.py:455
 msgctxt "cmd:pomodoro_admin"
