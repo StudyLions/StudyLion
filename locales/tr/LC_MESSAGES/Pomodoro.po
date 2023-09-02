@@ -88,6 +88,7 @@ msgctxt "timer|status|stage:break|statusline"
 msgid ""
 "{channel} is now on **BREAK**! Take a rest, **FOCUS** starts {timestamp}"
 msgstr ""
+"{channel} şu anda **ARADA**! İyi şanslar, **ODAK** {timestamp} başlayacak."
 
 #: src/modules/pomodoro/timer.py:533
 #, possible-python-brace-format
