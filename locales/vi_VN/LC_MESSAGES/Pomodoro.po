@@ -232,6 +232,8 @@ msgid ""
 "`{pattern}` timer is running with `{members}` members!\n"
 "Currently **focusing**, with break starting {timestamp}"
 msgstr ""
+"Đồng hồ bấm giờ `{pattern}` đang chạy với các thành viên `{members}`!\n"
+"Hiện tại đang ở trạng thái **focusing**, với trạng thái nghỉ sẽ bắt đầu vào {timestamp}"
 
 #: src/modules/pomodoro/cog.py:441
 #, possible-python-brace-format
