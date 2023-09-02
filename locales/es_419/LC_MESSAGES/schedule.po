@@ -357,6 +357,9 @@ msgid ""
 "will be awarded this many LionCoins. Should generally be more than the "
 "`schedule_cost` setting."
 msgstr ""
+"Cuando un miembro asiste con éxito a una sesión programada que ha reservado,"
+" recibirá esta cantidad de LionCoins. Por lo general, esta cantidad debe ser"
+" superior a la del parámetro `schedule_cost`."
 
 #: src/modules/schedule/settings.py:269
 msgctxt "guildset:attendance_reward|accepts"
