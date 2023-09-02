@@ -268,7 +268,7 @@ msgstr "Bạn cần quyền quản trị viên để có thể tạo một đồ
 #: src/modules/pomodoro/cog.py:469
 msgctxt "cmd:pomodoro_create|param:channel"
 msgid "timer_channel"
-msgstr "kênh_đồng_hồ_bấm_giờ"
+msgstr "kênh đồng hồ bấm giờ"
 
 #: src/modules/pomodoro/cog.py:475
 msgctxt "cmd:pomodoro_create|param:channel|desc"
