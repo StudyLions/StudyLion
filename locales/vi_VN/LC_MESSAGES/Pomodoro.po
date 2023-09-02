@@ -766,7 +766,7 @@ msgstr ""
 #: src/modules/pomodoro/ui/config.py:119
 msgctxt "ui:timer_options|menu:voice_channel|placeholder"
 msgid "Set Voice Channel"
-msgstr ""
+msgstr "Chọn Kênh Thoại"
 
 #: src/modules/pomodoro/ui/config.py:142
 msgctxt "ui:timer_options|menu:notification_channel|placeholder"
