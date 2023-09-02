@@ -212,6 +212,8 @@ msgid ""
 "`{pattern}` timer is stopped with no members!\n"
 "Join {channel} to restart it."
 msgstr ""
+"`{pattern}` đồng hồ bấm giờ đã bị dừng vì không có thành viên nào!\n"
+"Hãy tham gia {channel} để khởi động lại."
 
 #: src/modules/pomodoro/cog.py:428
 #, possible-python-brace-format
