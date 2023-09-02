@@ -250,12 +250,13 @@ msgstr "Se ha suprimido la sala dedicada a las sesiones programadas."
 #: src/modules/schedule/settings.py:135
 msgctxt "guildset:session_channels"
 msgid "session_channels"
-msgstr ""
+msgstr "canalesde_sesión"
 
 #: src/modules/schedule/settings.py:138
 msgctxt "guildset:session_channels|desc"
 msgid "Voice channels in which to track activity for scheduled sessions."
 msgstr ""
+"Canales de voz en los que seguir la actividad de las sesiones programadas."
 
 #: src/modules/schedule/settings.py:142
 msgctxt "guildset:session_channels|long_desc"
