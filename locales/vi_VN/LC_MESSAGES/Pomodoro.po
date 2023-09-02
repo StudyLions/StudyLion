@@ -436,7 +436,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:817
 msgctxt "cmd:configure_pomodoro"
 msgid "pomodoro"
-msgstr ""
+msgstr "pomodoro"
 
 #: src/modules/pomodoro/cog.py:818
 msgctxt "cmd:configure_pomodoro|desc"
@@ -447,7 +447,7 @@ msgstr "Điều chỉnh hệ thống đồng hồ Pomodoro"
 #, possible-python-brace-format
 msgctxt "formatstring:channel_name|key:remaining"
 msgid "{remaining}"
-msgstr ""
+msgstr "{remaining}"
 
 #: src/modules/pomodoro/lib.py:20
 #, possible-python-brace-format
