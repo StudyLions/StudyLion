@@ -1015,7 +1015,7 @@ msgstr "A la espera de"
 #: src/modules/schedule/core/session.py:432
 msgctxt "session|status:running|field:attending"
 msgid "Attending"
-msgstr ""
+msgstr "Asistir"
 
 #: src/modules/schedule/core/session.py:438
 msgctxt "session|status:running|field:attended"
