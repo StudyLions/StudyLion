@@ -191,11 +191,13 @@ msgid ""
 "No timers have been setup in this server!\n"
 "You can ask an admin to create one with {command}, or rent a private room and create one yourself!"
 msgstr ""
+"Không có đồng hồ bấm giờ nào đã được cài dặt trong máy chủ này!\n"
+"Bạn có thể yêu cầu một quản trị viên tạo một cái mới với {command}."
 
 #: src/modules/pomodoro/cog.py:404
 msgctxt "cmd:pomodoro_list|error:no_visible_timers"
 msgid "There are no timers you can join in this server!"
-msgstr ""
+msgstr "Không có một đồng hồ bấm giờ được hiện ở trong máy chủ này!"
 
 #: src/modules/pomodoro/cog.py:414
 #, possible-python-brace-format
