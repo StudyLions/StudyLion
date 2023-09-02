@@ -104,7 +104,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "timer|status|stopped:auto"
 msgid "Timer stopped! Join {channel} to start the timer."
-msgstr ""
+msgstr "Sayaç durduruldu! Sayacı başlatmak için {channel} kanalına katılın."
 
 #: src/modules/pomodoro/timer.py:557
 msgctxt "timer|status|stopped:manual"
