@@ -389,9 +389,9 @@ msgstr "Vietnamita"
 #: src/babel/enums.py:72
 msgctxt "localenames|locale:he"
 msgid "Hebrew"
-msgstr ""
+msgstr "Hebreo"
 
 #: src/babel/enums.py:73
 msgctxt "localenames|locale:he_IL"
 msgid "Hebrew (Israel)"
-msgstr ""
+msgstr "Hebreo (Israel)"
