@@ -527,12 +527,12 @@ msgstr "El rol de lista negra de horarios ha sido desactivada."
 #, possible-python-brace-format
 msgctxt "guildset:schedule_blacklist_role|formatted|set"
 msgid "{role} members will not be able to book scheduled sessions."
-msgstr ""
+msgstr "Los miembros con el {role} no podrán reservar sesiones programadas."
 
 #: src/modules/schedule/settings.py:458
 msgctxt "guildset:schedule_blacklist_role|formatted|unset"
 msgid "Not Set"
-msgstr ""
+msgstr "No fijado"
 
 #: src/modules/schedule/settings.py:467
 msgctxt "guildset:schedule_blacklist_after"
