@@ -842,7 +842,7 @@ msgstr ""
 #: src/modules/pomodoro/ui/config.py:260
 msgctxt "ui:timer_options|issue:notif_channel_dne"
 msgid "Configured notification channel does not exist!"
-msgstr ""
+msgstr "Kênh thông báo đã được chỉnh sửa không tồn tại!"
 
 #: src/modules/pomodoro/ui/config.py:269
 #, possible-python-brace-format
