@@ -571,6 +571,8 @@ msgid ""
 "Members will be blacklisted after **`{amount}`** missed sessions within "
 "`24h`."
 msgstr ""
+"Los miembros serán incluidos en la lista negra después de **`{amount}`** "
+"sesiones perdidas dentro de `24h`."
 
 #: src/modules/schedule/settings.py:501
 msgctxt "guildset:schedule_blacklist_after|set_response|unset"
