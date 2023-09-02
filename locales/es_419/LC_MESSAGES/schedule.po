@@ -141,7 +141,7 @@ msgstr "horario"
 #: src/modules/schedule/cog.py:850
 msgctxt "cmd:configure_schedule|desc"
 msgid "Configure Scheduled Session system"
-msgstr ""
+msgstr "Configurar el sistema de sesiones programadas"
 
 #: src/modules/schedule/settings.py:36
 msgctxt "guildset:session_lobby"
