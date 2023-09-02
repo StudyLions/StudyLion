@@ -396,7 +396,7 @@ msgstr "kênh đồng hồ bấm giờ"
 #: src/modules/pomodoro/cog.py:696
 msgctxt "cmd:pomodoro_edit|param:channel|desc"
 msgid "Channel holding the timer to edit."
-msgstr ""
+msgstr "Kênh có sẵn đồng hồ bấm giờ để chỉnh sửa."
 
 #: src/modules/pomodoro/cog.py:737
 msgctxt "cmd:pomodoro_edit|error:no_timer"
