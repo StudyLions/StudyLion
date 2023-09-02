@@ -175,12 +175,12 @@ msgstr "Sayacı görmek istediğiniz kanal."
 #, possible-python-brace-format
 msgctxt "cmd:pomodoro_status|error:no_timer"
 msgid "The channel {channel} does not have a timer set up!"
-msgstr ""
+msgstr "{channel} kanalına bir sayaç ayarlanmamış."
 
 #: src/modules/pomodoro/cog.py:367
 msgctxt "cmd:pomodoro_list"
 msgid "list"
-msgstr ""
+msgstr "lsite"
 
 #: src/modules/pomodoro/cog.py:368
 msgctxt "cmd:pomodoro_list|desc"
