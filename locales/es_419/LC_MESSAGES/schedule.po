@@ -1048,11 +1048,13 @@ msgid ""
 "No-one attended this session! No-one received rewards.\n"
 "**Members who missed their session have all future sessions cancelled without refund!*"
 msgstr ""
+"Nadie asistió a esta sesión!. Nadie recibió recompensas.\n"
+"**Los miembros que no asistieron a su sesión tienen todas las sesiones futuras canceladas sin reembolso.**"
 
 #: src/modules/schedule/core/session.py:492
 msgctxt "session|status:finished|field:attended"
 msgid "Attended"
-msgstr ""
+msgstr "Asistió"
 
 #: src/modules/schedule/core/session.py:497
 msgctxt "session|status:finished|field:missing"
