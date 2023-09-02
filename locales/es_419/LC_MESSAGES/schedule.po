@@ -818,7 +818,7 @@ msgstr "Sesiones programadas y estadísticas anteriores"
 #: src/modules/schedule/ui/scheduleui.py:450
 msgctxt "ui:schedule|embed|field:stats|field:recent"
 msgid "Recent"
-msgstr ""
+msgstr "Reciente"
 
 #: src/modules/schedule/ui/scheduleui.py:457
 msgctxt "ui:schedule|embed|field:stats|field:alltime"
