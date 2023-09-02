@@ -731,6 +731,8 @@ msgid ""
 "Stopping this timer requires `MANAGE_CHANNEL` permissions on the timer "
 "channel, or the configured `manager_role`!"
 msgstr ""
+"Cần quyền `MANAGE_CHANNEL` để có thể dừng đồng hồ trong kênh này, hoặc "
+"`manager_role` đã được chỉnh sửa!"
 
 #: src/modules/pomodoro/ui/status.py:204
 msgctxt "ui:timer_status|button:stop|label"
