@@ -814,6 +814,8 @@ msgid ""
 "**`{name}`**\n"
 "(The actual channel name may not match due to ratelimits.)"
 msgstr ""
+"**`{name}`**\n"
+"(Tên kênh thật sẽ không đúng bởi vì giới hạn thao tác của Discord.)"
 
 #: src/modules/pomodoro/ui/config.py:213
 msgctxt "ui:timer_options|embed|field:issues|name"
