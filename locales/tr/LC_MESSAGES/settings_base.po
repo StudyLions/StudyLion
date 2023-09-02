@@ -30,12 +30,12 @@ msgstr "Ayarlanmadı"
 #, possible-python-brace-format
 msgctxt "setting|summary_embed|title"
 msgid "Configuration options for `{name}`"
-msgstr ""
+msgstr "`{name}` için konfigürasyon seçenekleri"
 
 #: src/settings/ui.py:350
 msgctxt "setting|summary_table|field:currently|key"
 msgid "Currently"
-msgstr ""
+msgstr "Anlık"
 
 #: src/settings/ui.py:357
 msgctxt "setting|summary_table|field:default|key"
