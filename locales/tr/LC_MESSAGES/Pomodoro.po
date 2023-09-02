@@ -280,7 +280,7 @@ msgstr "Sadece sunucu yöneticileri sayaç oluşturabilir!"
 #: src/modules/pomodoro/cog.py:531
 msgctxt "cmd:pomodoro_create|error:channel_create_failed|title"
 msgid "Could not create pomodoro voice channel!"
-msgstr ""
+msgstr "Pomodoro ses kanalı kuramıyorum!"
 
 #: src/modules/pomodoro/cog.py:535
 msgctxt "cmd:pomodoro_create|error:channel_create|desc"
