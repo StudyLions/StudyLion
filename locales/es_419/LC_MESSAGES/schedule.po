@@ -632,7 +632,7 @@ msgstr "Página 3"
 #: src/modules/schedule/ui/settingui.py:169
 msgctxt "ui:schedule_config|menu:blacklist_role|placeholder"
 msgid "Select Blacklist Role"
-msgstr ""
+msgstr "Seleccionar rol de lista negra"
 
 #: src/modules/schedule/ui/settingui.py:177
 msgctxt "ui:schedule_config|embed|title"
