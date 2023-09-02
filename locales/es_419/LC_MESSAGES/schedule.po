@@ -275,7 +275,7 @@ msgstr ""
 #: src/modules/schedule/settings.py:149
 msgctxt "guildset:session_channels|accepts"
 msgid "Comma separated list of session channel names or ids."
-msgstr ""
+msgstr "Lista separada por comas de nombres o ids de canales de sesión."
 
 #: src/modules/schedule/settings.py:166
 #, possible-python-brace-format
