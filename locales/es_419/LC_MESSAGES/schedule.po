@@ -1059,4 +1059,4 @@ msgstr "Asistió"
 #: src/modules/schedule/core/session.py:497
 msgctxt "session|status:finished|field:missing"
 msgid "Missing"
-msgstr ""
+msgstr "Desaparecido"
