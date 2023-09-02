@@ -824,6 +824,8 @@ msgstr "Vấn đề"
 msgctxt "ui:timer_options|issue:no_voice_channel"
 msgid "The configured voice channel does not exist! Please update it below."
 msgstr ""
+"Kênh thông báo đã được chỉnh sửa không tồn tại! Hãy cập nhật lại ở phía dưới"
+" nhé!"
 
 #: src/modules/pomodoro/ui/config.py:242
 #, possible-python-brace-format
