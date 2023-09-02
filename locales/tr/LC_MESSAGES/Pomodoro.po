@@ -138,11 +138,13 @@ msgid ""
 "I am currently restarting! The Pomodoro timers will be unavailable until I "
 "have restarted. Thank you for your patience!"
 msgstr ""
+"Şu anda tekrardan başlatılmaktayım! Tekrar başlatılana kadar pomodoro "
+"sayaçlarım kullanımda olmayacak. Anlayışınız için teşekkürler!"
 
 #: src/modules/pomodoro/cog.py:321
 msgctxt "cmd:pomodoro"
 msgid "timers"
-msgstr ""
+msgstr "sayaçlar"
 
 #: src/modules/pomodoro/cog.py:322
 msgctxt "cmd:pomodoro|desc"
@@ -152,7 +154,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:330
 msgctxt "cmd:pomodoro_status"
 msgid "show"
-msgstr ""
+msgstr "göster"
 
 #: src/modules/pomodoro/cog.py:331
 msgctxt "cmd:pomodoro_status|desc"
