@@ -901,7 +901,7 @@ msgstr "Horario abierto"
 #: src/modules/schedule/ui/sessionui.py:87
 msgctxt "ui:session|button:book|error:starting_soon"
 msgid "Too late! This session has started or is starting shortly."
-msgstr ""
+msgstr "Demasiado tarde. Esta sesión ha comenzado o comenzará en breve."
 
 #: src/modules/schedule/ui/sessionui.py:94
 msgctxt "ui:session|button:book|error:already_booked"
