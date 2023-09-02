@@ -115,7 +115,7 @@ msgstr ""
 #: src/modules/pomodoro/settingui.py:39
 msgctxt "ui:timer_config|menu:channels|placeholder"
 msgid "Select Pomodoro Notification Channel"
-msgstr ""
+msgstr "Pomodoro Bildirim Kanalını Seçin"
 
 #: src/modules/pomodoro/settingui.py:47
 msgctxt "ui:timer_config|embed|title"
