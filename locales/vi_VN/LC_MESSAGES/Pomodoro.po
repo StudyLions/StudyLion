@@ -156,7 +156,7 @@ msgstr "hiển thị"
 #: src/modules/pomodoro/cog.py:331
 msgctxt "cmd:pomodoro_status|desc"
 msgid "Display the status of a single pomodoro timer."
-msgstr ""
+msgstr "Hiển thị trạng thái của từng đồng hồ bấm giờ Pomodoro."
 
 #: src/modules/pomodoro/cog.py:334
 msgctxt "cmd:pomodoro_status|param:channel"
