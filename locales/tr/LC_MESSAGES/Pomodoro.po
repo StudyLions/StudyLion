@@ -169,7 +169,7 @@ msgstr "sayaç_kanalı"
 #: src/modules/pomodoro/cog.py:339
 msgctxt "cmd:pomodoro_status|param:channel|desc"
 msgid "The channel for which you want to view the timer."
-msgstr ""
+msgstr "Sayacı görmek istediğiniz kanal."
 
 #: src/modules/pomodoro/cog.py:357
 #, possible-python-brace-format
