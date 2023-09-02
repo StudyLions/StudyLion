@@ -173,6 +173,7 @@ msgstr "Nombre o id del canal del lobby de la sesión."
 msgctxt "guildset:session_lobby|set_response|set"
 msgid "Scheduled sessions will now be announced in {channel}"
 msgstr ""
+"Las sesiones programadas se anunciarán a partir de ahora en {channel}."
 
 #: src/modules/schedule/settings.py:68
 msgctxt "guildset:session_lobby|set_response|unset"
