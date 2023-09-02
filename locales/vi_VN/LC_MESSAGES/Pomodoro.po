@@ -48,7 +48,7 @@ msgctxt "timer|webhook|error:insufficient_permissions"
 msgid ""
 "I require the `MANAGE_WEBHOOKS` permission to send pomodoro notifications "
 "here!"
-msgstr ""
+msgstr "Tôi cần quyền `MANAGE_WEBHOOKS` để gửi các thông báo Pomodoro ở đây!"
 
 #: src/modules/pomodoro/timer.py:229
 #, possible-python-brace-format
