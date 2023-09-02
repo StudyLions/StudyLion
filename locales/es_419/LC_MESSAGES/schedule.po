@@ -886,17 +886,17 @@ msgstr "> `{until}` Yo {start} - {end}"
 #: src/modules/schedule/ui/sessionui.py:52
 msgctxt "ui:sessionui|button:book|label"
 msgid "Book"
-msgstr ""
+msgstr "Reservar"
 
 #: src/modules/schedule/ui/sessionui.py:56
 msgctxt "ui:sessionui|button:cancel|label"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: src/modules/schedule/ui/sessionui.py:60
 msgctxt "ui:sessionui|button:schedule|label"
 msgid "Open Schedule"
-msgstr ""
+msgstr "Horario abierto"
 
 #: src/modules/schedule/ui/sessionui.py:87
 msgctxt "ui:session|button:book|error:starting_soon"
