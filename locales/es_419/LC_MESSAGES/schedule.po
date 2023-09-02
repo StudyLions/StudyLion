@@ -317,6 +317,8 @@ msgid ""
 "Members will be charged this many LionCoins for each scheduled session they "
 "book."
 msgstr ""
+"A los socios se les cobrará esta cantidad de LionCoins por cada sesión "
+"programada que reserven."
 
 #: src/modules/schedule/settings.py:222
 msgctxt "guildset:schedule_cost|accepts"
