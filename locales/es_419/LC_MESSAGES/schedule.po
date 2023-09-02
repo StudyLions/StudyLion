@@ -146,7 +146,7 @@ msgstr "Configurar el sistema de sesiones programadas"
 #: src/modules/schedule/settings.py:36
 msgctxt "guildset:session_lobby"
 msgid "session_lobby"
-msgstr ""
+msgstr "lobbyde_sesión"
 
 #: src/modules/schedule/settings.py:39
 msgctxt "guildset:session_lobby|desc"
