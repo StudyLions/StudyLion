@@ -683,7 +683,7 @@ msgstr "Cancelado con éxito y reembolsado sus próximas sesiones programadas."
 #: src/modules/schedule/ui/scheduleui.py:142
 msgctxt "ui:schedule|button:clear|label"
 msgid "Clear Schedule"
-msgstr "Calendario claro"
+msgstr "Despejar Calendario "
 
 #: src/modules/schedule/ui/scheduleui.py:158
 msgctxt "ui:schedule|button:about|label"
