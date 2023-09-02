@@ -828,7 +828,7 @@ msgstr "De todos los tiempos"
 #: src/modules/schedule/ui/scheduleui.py:463
 msgctxt "ui:schedule|embed|field:stats|field:streak"
 msgid "Streak"
-msgstr ""
+msgstr "Racha"
 
 #: src/modules/schedule/ui/scheduleui.py:468
 #, possible-python-brace-format
