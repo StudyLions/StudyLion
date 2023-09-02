@@ -266,6 +266,11 @@ msgid ""
 "channels under the category will also be included. Activity tracking also "
 "respects the `untracked_voice_channels` setting."
 msgstr ""
+"Sólo la actividad en estos canales (y en `session_room` si está configurado)"
+" contará para la asistencia a la sesión programada. Si se selecciona una "
+"categoría, también se incluirán todos los canales de dicha categoría. El "
+"seguimiento de la actividad también respeta el ajuste "
+"`untracked_voice_channels`."
 
 #: src/modules/schedule/settings.py:149
 msgctxt "guildset:session_channels|accepts"
