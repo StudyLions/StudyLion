@@ -487,7 +487,7 @@ msgstr ""
 #: src/modules/pomodoro/options.py:45
 msgctxt "timerset:notification_channel"
 msgid "notification_channel"
-msgstr ""
+msgstr "kênh thông báo"
 
 #: src/modules/pomodoro/options.py:48
 msgctxt "timerset:notification_channel|desc"
