@@ -328,6 +328,8 @@ msgstr ""
 msgctxt "cmd:pomodoro_create|response:success|content"
 msgid "Timer created successfully! Use the panel below to reconfigure."
 msgstr ""
+"Đồng hồ bấm giờ đã được tạo thành công! Sử dụng bảng điều khiển dưới đây để "
+"điều chỉnh lại."
 
 #: src/modules/pomodoro/cog.py:612
 msgctxt "cmd:pomodoro_destroy"
