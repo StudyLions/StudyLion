@@ -146,7 +146,7 @@ msgstr "các đồng hồ bấm giờ"
 #: src/modules/pomodoro/cog.py:322
 msgctxt "cmd:pomodoro|desc"
 msgid "Base group for all pomodoro timer commands."
-msgstr ""
+msgstr "Nhóm cơ bản cho tất cả các lệnh hẹn giờ Pomodoro."
 
 #: src/modules/pomodoro/cog.py:330
 msgctxt "cmd:pomodoro_status"
