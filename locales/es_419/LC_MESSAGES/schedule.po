@@ -867,6 +867,9 @@ msgid ""
 "**{percent}%** attendance rate.\r\n"
 "**{average}** average attendance time."
 msgstr ""
+"**{attended}** asistidos de **{total}** inscritos.\n"
+"**{percent}%** índice de asistencia.\n"
+"**{average}** tiempo medio de asistencia."
 
 #: src/modules/schedule/ui/scheduleui.py:534
 #, possible-python-brace-format
