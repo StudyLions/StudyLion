@@ -182,7 +182,7 @@ msgstr "danh sách"
 #: src/modules/pomodoro/cog.py:368
 msgctxt "cmd:pomodoro_list|desc"
 msgid "List the available pomodoro timers."
-msgstr ""
+msgstr "Danh sách các đồng hồ Pomodoro hiện có."
 
 #: src/modules/pomodoro/cog.py:391
 #, possible-python-brace-format
