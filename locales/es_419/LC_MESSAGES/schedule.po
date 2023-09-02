@@ -554,6 +554,10 @@ msgid ""
 "if the `blacklist_role` is not set or if I do not have sufficient "
 "permissions to assign the blacklist role."
 msgstr ""
+"Los miembros que falten a más de este número de sesiones reservadas en un "
+"solo periodo de 24 horas recibirán automáticamente el rol `blacklist_role`. "
+"No tiene efecto si el rol `blacklist_role` no está configurado o si no tengo"
+" permisos suficientes para asignar el rol blacklist."
 
 #: src/modules/schedule/settings.py:481
 msgctxt "guildset:schedule_blacklist_after|accepts"
