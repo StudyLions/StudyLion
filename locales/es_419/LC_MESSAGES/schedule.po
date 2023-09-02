@@ -612,12 +612,12 @@ msgstr "Seleccione el canal del lobby"
 #: src/modules/schedule/ui/settingui.py:105
 msgctxt "ui:schedule_config|menu:room|placeholder"
 msgid "Select Session Room"
-msgstr ""
+msgstr "Seleccione la sala de la sesión"
 
 #: src/modules/schedule/ui/settingui.py:123
 msgctxt "ui:schedule_config|menu:channels|placeholder"
 msgid "Select Session Channels"
-msgstr ""
+msgstr "Seleccionar canales de sesión"
 
 #: src/modules/schedule/ui/settingui.py:137
 msgctxt "ui:schedule_config|button:page1|label"
