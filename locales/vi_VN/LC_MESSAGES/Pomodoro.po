@@ -346,7 +346,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:619
 msgctxt "cmd:pomodoro_destroy|param:channel"
 msgid "timer_channel"
-msgstr ""
+msgstr "kênh đồng hồ bấm giờ"
 
 #: src/modules/pomodoro/cog.py:622
 msgctxt "cmd:pomodoro_destroy|param:channel"
