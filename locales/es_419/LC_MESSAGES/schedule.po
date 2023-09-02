@@ -1040,7 +1040,7 @@ msgid ""
 "**Members who missed their session have all future sessions cancelled without refund!*"
 msgstr ""
 "Todos los asistentes fueron recompensados con {coin} ¡**{reward}**! Algunos miembros no asistieron, por lo que todos perdieron {coin} de bonificación **{bonus}**.\n"
-"**Los miembros que no asistieron a su sesión tienen todas las sesiones futuras canceladas sin reembolso."
+"**Los miembros que no asistieron a su sesión tienen todas las sesiones futuras canceladas sin reembolso.**"
 
 #: src/modules/schedule/core/session.py:486
 msgctxt "session|status:finished|desc:some_att"
