@@ -906,12 +906,12 @@ msgstr "Demasiado tarde. Esta sesión ha comenzado o comenzará en breve."
 #: src/modules/schedule/ui/sessionui.py:94
 msgctxt "ui:session|button:book|error:already_booked"
 msgid "You are already a member of this session!"
-msgstr ""
+msgstr "¡Ya eres miembro de esta sesión!"
 
 #: src/modules/schedule/ui/sessionui.py:101
 msgctxt "ui:session|button:book|success"
 msgid "Successfully booked this session."
-msgstr ""
+msgstr "Esta sesión se ha reservado con éxito."
 
 #: src/modules/schedule/ui/sessionui.py:115
 msgctxt "ui:session|button:book|error|title"
