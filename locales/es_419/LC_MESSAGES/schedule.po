@@ -537,7 +537,7 @@ msgstr "No fijado"
 #: src/modules/schedule/settings.py:467
 msgctxt "guildset:schedule_blacklist_after"
 msgid "schedule_blacklist_after"
-msgstr ""
+msgstr "programar_listanegra_despuésde"
 
 #: src/modules/schedule/settings.py:470
 msgctxt "guildset:schedule_blacklist_after|desc"
