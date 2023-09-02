@@ -86,7 +86,7 @@ msgstr ""
 #: src/settings/setting_types.py:368
 msgctxt "settype:role|accepts"
 msgid "A role name or id"
-msgstr ""
+msgstr "Rol adı ya da ID'si"
 
 #: src/settings/setting_types.py:427
 #, possible-python-brace-format
@@ -112,12 +112,12 @@ msgstr ""
 #: src/settings/setting_types.py:506
 msgctxt "settype:bool|output:true"
 msgid "On"
-msgstr ""
+msgstr "Açık"
 
 #: src/settings/setting_types.py:507
 msgctxt "settype:bool|output:false"
 msgid "Off"
-msgstr ""
+msgstr "Kapal"
 
 #: src/settings/setting_types.py:508
 msgctxt "settype:bool|output:none"
