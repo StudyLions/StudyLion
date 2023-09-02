@@ -122,7 +122,7 @@ msgstr "Bảng cài đặt đồng hồ bấm giờ"
 #: src/modules/pomodoro/settingui.py:81
 msgctxt "dash:pomodoro|title"
 msgid "Pomodoro Configuration ({commands[configure pomodoro]})"
-msgstr ""
+msgstr "Cài đặt Pomodoro ({commands[configure pomodoro]})"
 
 #: src/modules/pomodoro/settingui.py:85
 msgctxt "dash:stats|dropdown|placeholder"
