@@ -124,6 +124,8 @@ msgstr "Ya ha reservado una sesión programada para {time}."
 msgctxt "cmd:schedule|create_booking|error:too_soon"
 msgid "Cannot book session at {time} because it is running or starting soon!"
 msgstr ""
+"¡No se puede reservar sesión en {time} porque está en marcha o empieza "
+"pronto!"
 
 #: src/modules/schedule/cog.py:780
 #, possible-python-brace-format
