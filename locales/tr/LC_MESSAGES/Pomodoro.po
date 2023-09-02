@@ -110,6 +110,7 @@ msgstr "Sayaç durduruldu! Sayacı başlatmak için {channel} kanalına katılı
 msgctxt "timer|status|stopped:manual"
 msgid "Timer stopped! Press `Start` to restart the timer."
 msgstr ""
+"Sayaç durduruldu! `Start` butonuna basarak sayacı tekrar başlatabilirsiniz."
 
 #: src/modules/pomodoro/settingui.py:39
 msgctxt "ui:timer_config|menu:channels|placeholder"
