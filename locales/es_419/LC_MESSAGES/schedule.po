@@ -597,12 +597,12 @@ msgstr "No poner automáticamente en la lista negra."
 #: src/modules/schedule/settings.py:528
 msgctxt "guildset:schedule_blacklist_role|parse|error"
 msgid "Blacklist threshold must be a number between `1` and `24`."
-msgstr ""
+msgstr "El umbral de la lista negra debe ser un número entre `1` y `24`."
 
 #: src/modules/schedule/ui/settingui.py:69
 msgctxt "ui:schedule_config|button:page0|label"
 msgid "Page 1"
-msgstr ""
+msgstr "Página 1"
 
 #: src/modules/schedule/ui/settingui.py:88
 msgctxt "ui:schedule_config|menu:lobby|placeholder"
