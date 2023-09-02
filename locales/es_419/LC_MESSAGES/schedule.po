@@ -737,7 +737,7 @@ msgstr "Book Sessions (No se puede reservar - En la lista negra)"
 #, possible-python-brace-format
 msgctxt "ui:schedule|menu:booking|placeholder:regular"
 msgid "Book Sessions ({amount} LC)"
-msgstr ""
+msgstr "Reservar sesiones ({amount} LC)"
 
 #: src/modules/schedule/ui/scheduleui.py:303
 #, possible-python-brace-format
