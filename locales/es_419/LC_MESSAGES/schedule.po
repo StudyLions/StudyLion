@@ -852,12 +852,12 @@ msgstr "Estadísticas de la sesión"
 #: src/modules/schedule/ui/scheduleui.py:502
 msgctxt "ui:schedule|embed|field:upcoming|name"
 msgid "Upcoming Sessions"
-msgstr ""
+msgstr "Próximas sesiones"
 
 #: src/modules/schedule/ui/scheduleui.py:506
 msgctxt "ui:schedule|embed|field:upcoming|value:empty"
 msgid "No sessions scheduled yet!"
-msgstr ""
+msgstr "Aún no hay sesiones programadas."
 
 #: src/modules/schedule/ui/scheduleui.py:520
 #, possible-python-brace-format
