@@ -468,7 +468,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "guildset:min_attendance|formatted"
 msgid "**`{amount}`** minutes"
-msgstr ""
+msgstr "**`{amount}`** minutos"
 
 #: src/modules/schedule/settings.py:400
 msgctxt "guildset:min_attendance|parse|error"
@@ -476,16 +476,18 @@ msgid ""
 "Minimum attendance must be an integer number of minutes between `1` and "
 "`60`."
 msgstr ""
+"La asistencia mínima debe ser un número entero de minutos comprendido entre "
+"`1` y `60`."
 
 #: src/modules/schedule/settings.py:410
 msgctxt "guildset:schedule_blacklist_role"
 msgid "schedule_blacklist_role"
-msgstr ""
+msgstr "horario_listanegra_rol"
 
 #: src/modules/schedule/settings.py:413
 msgctxt "guildset:schedule_blacklist_role|desc"
 msgid "Role which disables scheduled session booking."
-msgstr ""
+msgstr "Rol que desactiva la reserva de sesiones programadas."
 
 #: src/modules/schedule/settings.py:417
 msgctxt "guildset:schedule_blacklist_role|long_desc"
