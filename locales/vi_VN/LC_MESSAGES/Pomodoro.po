@@ -222,6 +222,8 @@ msgid ""
 "`{pattern}` timer is stopped with `{members}` members!\n"
 "Join {channel} and press `Start` to start it!"
 msgstr ""
+"Đồng hồ bấm giờ `{pattern}` đã được dùng với các thành viên `{members}`!\n"
+"Tham gia {channel} và nhấn `Start` để bắt đầu!"
 
 #: src/modules/pomodoro/cog.py:435
 #, possible-python-brace-format
