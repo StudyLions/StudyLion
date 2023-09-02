@@ -805,7 +805,7 @@ msgstr ""
 #: src/modules/pomodoro/ui/config.py:199
 msgctxt "ui:timer_options|embed|field:channel_name|name"
 msgid "Channel Name Preview"
-msgstr ""
+msgstr "Xem Trước Tên Kênh"
 
 #: src/modules/pomodoro/ui/config.py:203
 #, possible-python-brace-format
