@@ -782,7 +782,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "ui:timer_options|embed|title"
 msgid "Timer Control Panel for {channel}"
-msgstr ""
+msgstr "Bảng Điều Khiển Đồng Hồ cho {channel}"
 
 #: src/modules/pomodoro/ui/config.py:173
 msgctxt "ui:timer_options|embed|footer"
