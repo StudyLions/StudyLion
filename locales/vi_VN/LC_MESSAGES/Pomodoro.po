@@ -203,7 +203,7 @@ msgstr "Không có một đồng hồ bấm giờ được hiện ở trong máy
 #, possible-python-brace-format
 msgctxt "cmd:pomodoro_list|embed:timer_list|title"
 msgid "Pomodoro Timers in **{guild}**"
-msgstr ""
+msgstr "Các đồng hồ bấm giờ Pomodoro ở trong **{guild}**"
 
 #: src/modules/pomodoro/cog.py:423
 #, possible-python-brace-format
