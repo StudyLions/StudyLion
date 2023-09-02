@@ -401,7 +401,7 @@ msgstr "Kênh có sẵn đồng hồ bấm giờ để chỉnh sửa."
 #: src/modules/pomodoro/cog.py:737
 msgctxt "cmd:pomodoro_edit|error:no_timer"
 msgid "This channel doesn't have an attached pomodoro timer to edit!"
-msgstr ""
+msgstr "Kênh này không có một đồng hồ bấm giờ Pomodoro để có thể chỉnh sửa!"
 
 #: src/modules/pomodoro/cog.py:750
 msgctxt "cmd:pomodoro_edit|error:insufficient_perms|role:other"
