@@ -936,7 +936,7 @@ msgstr "Esta sesión se ha cancelado correctamente."
 #: src/modules/schedule/ui/sessionui.py:164
 msgctxt "ui:session|button:cancel|error|title"
 msgid "Could not cancel session"
-msgstr ""
+msgstr "No se ha podido cancelar la sesión"
 
 #: src/modules/schedule/core/session.py:196
 msgctxt "session|error:lobby_webhook_perms"
