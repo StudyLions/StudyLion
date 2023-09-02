@@ -159,7 +159,7 @@ msgstr "göster"
 #: src/modules/pomodoro/cog.py:331
 msgctxt "cmd:pomodoro_status|desc"
 msgid "Display the status of a single pomodoro timer."
-msgstr ""
+msgstr "Tek bir pomodoro sayacının durumunu görüntüleyin."
 
 #: src/modules/pomodoro/cog.py:334
 msgctxt "cmd:pomodoro_status|param:channel"
