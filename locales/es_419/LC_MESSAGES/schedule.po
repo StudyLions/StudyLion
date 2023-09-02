@@ -461,6 +461,8 @@ msgid ""
 "Members will be rewarded after they have attended booked sessions for at "
 "least **`{amount}`** minutes."
 msgstr ""
+"Los miembros serán recompensados después de haber asistido a las sesiones "
+"reservadas durante al menos **`{amount}`** minutos."
 
 #: src/modules/schedule/settings.py:379
 #, possible-python-brace-format
