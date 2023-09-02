@@ -172,7 +172,7 @@ msgstr "Kênh mà bạn muốn hiển thị đồng hồ bấm giờ."
 #, possible-python-brace-format
 msgctxt "cmd:pomodoro_status|error:no_timer"
 msgid "The channel {channel} does not have a timer set up!"
-msgstr ""
+msgstr "Kênh {channel} không có một đồng hồ bấm giờ nào!"
 
 #: src/modules/pomodoro/cog.py:367
 msgctxt "cmd:pomodoro_list"
