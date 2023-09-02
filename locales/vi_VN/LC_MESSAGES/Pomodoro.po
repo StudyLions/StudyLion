@@ -296,6 +296,9 @@ msgid ""
 "communication error. Please try creating the channel manually and pass it to"
 " the `timer_channel` argument of this command."
 msgstr ""
+"Không thể tạo kênh thoại Pomodoro mới do lỗi giao tiếp Discord không xác "
+"định. Vui lòng thử tạo kênh theo cách thủ công và chuyển kênh đó vào đối số "
+"`timer_channel` của lệnh này."
 
 #: src/modules/pomodoro/cog.py:549
 msgctxt "cmd:pomodoro_create|error:channel_create_permissions|title"
