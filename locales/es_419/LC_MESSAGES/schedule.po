@@ -181,11 +181,13 @@ msgid ""
 "The schedule session lobby has been unset. Shutting down scheduled session "
 "system."
 msgstr ""
+"Se ha desactivado el sistema de sesiones programadas. Cierre del sistema de "
+"sesiones programadas."
 
 #: src/modules/schedule/settings.py:78
 msgctxt "guildset:session_lobby|formatted|unset"
 msgid "`Not Set` (The scheduled session system is disabled.)"
-msgstr ""
+msgstr "`Not Set` (El sistema de sesiones programadas está desactivado.)"
 
 #: src/modules/schedule/settings.py:83
 #, possible-python-brace-format
