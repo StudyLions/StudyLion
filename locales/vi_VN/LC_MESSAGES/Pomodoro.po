@@ -745,7 +745,7 @@ msgstr ""
 #: src/modules/pomodoro/ui/config.py:67
 msgctxt "ui:timer_options|button:voice_alerts|label"
 msgid "Voice Alerts"
-msgstr ""
+msgstr "Thông Báo Bằng Giọng Nói"
 
 #: src/modules/pomodoro/ui/config.py:88
 msgctxt "ui:timer_options|button:delete|success|title"
