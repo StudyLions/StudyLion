@@ -771,7 +771,7 @@ msgstr ""
 #: src/modules/pomodoro/ui/config.py:142
 msgctxt "ui:timer_options|menu:notification_channel|placeholder"
 msgid "Set Notification Channel"
-msgstr ""
+msgstr "Cài Đặt Kênh Thông Báo"
 
 #: src/modules/pomodoro/ui/config.py:157
 msgctxt "ui:timer_options|menu:manager_role|placeholder"
