@@ -105,7 +105,7 @@ msgstr "AKTİVİTE SERİSİ"
 #: src/gui/cards/stats.py:167
 msgctxt "skin:stats|mode:anki|header:col2"
 msgid "ANKI REVIEW STREAK"
-msgstr ""
+msgstr "ANKI GÖRÜŞ SERİSİ"
 
 #: src/gui/cards/stats.py:180
 #, possible-python-brace-format
