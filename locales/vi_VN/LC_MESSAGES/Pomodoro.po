@@ -253,7 +253,7 @@ msgstr "quản trị viên"
 #: src/modules/pomodoro/cog.py:456
 msgctxt "cmd:pomodoro_admin|desc"
 msgid "Command group for pomodoro admin controls."
-msgstr ""
+msgstr "Nhóm lệnh Pomodoro cho quản trị viên quản lí."
 
 #: src/modules/pomodoro/cog.py:462
 msgctxt "cmd:pomodoro_create"
