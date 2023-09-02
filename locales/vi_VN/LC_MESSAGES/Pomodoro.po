@@ -54,7 +54,7 @@ msgstr "Tôi cần quyền `MANAGE_WEBHOOKS` để gửi các thông báo Pomodo
 #, possible-python-brace-format
 msgctxt "timer|default_base_name"
 msgid "Timer {pattern}"
-msgstr ""
+msgstr "Đồng hồ bấm giờ {pattern}"
 
 #: src/modules/pomodoro/timer.py:403
 #, possible-python-brace-format
