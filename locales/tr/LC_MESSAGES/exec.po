@@ -83,7 +83,7 @@ msgstr ""
 
 #: src/modules/sysadmin/exec_cog.py:379
 msgid "shutdown"
-msgstr ""
+msgstr "kapat"
 
 #: src/modules/sysadmin/exec_cog.py:380
 msgid "Shutdown (or restart) the client."
