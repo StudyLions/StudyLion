@@ -141,7 +141,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:321
 msgctxt "cmd:pomodoro"
 msgid "timers"
-msgstr ""
+msgstr "các đồng hồ bấm giờ"
 
 #: src/modules/pomodoro/cog.py:322
 msgctxt "cmd:pomodoro|desc"
