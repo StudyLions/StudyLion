@@ -152,6 +152,7 @@ msgstr "lobbyde_sesión"
 msgctxt "guildset:session_lobby|desc"
 msgid "Channel to post scheduled session announcement and status to."
 msgstr ""
+"Canal en el que publicar el anuncio y el estado de la sesión programada."
 
 #: src/modules/schedule/settings.py:43
 msgctxt "guildset:session_lobby|long_desc"
