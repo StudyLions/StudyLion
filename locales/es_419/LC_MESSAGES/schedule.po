@@ -784,11 +784,13 @@ msgid ""
 "Too late! You cannot cancel a scheduled session within a minute of it "
 "starting. Please attend it if possible."
 msgstr ""
+"Demasiado tarde! No puede cancelar una sesión programada a menos de un "
+"minuto de su inicio. Por favor, asista si es posible."
 
 #: src/modules/schedule/ui/scheduleui.py:385
 msgctxt "ui:schedule|menu:cancel|error:already_cancelled"
 msgid "The selected bookings no longer exist! Nothing to cancel."
-msgstr ""
+msgstr "Las reservas seleccionadas ya no existen. No hay nada que cancelar."
 
 #: src/modules/schedule/ui/scheduleui.py:395
 #, possible-python-brace-format
