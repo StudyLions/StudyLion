@@ -693,12 +693,14 @@ msgstr "Sobre el horario"
 #: src/modules/schedule/ui/scheduleui.py:184
 msgctxt "ui:schedule|menu:booking|error:current_slot"
 msgid "You cannot schedule a currently running session!"
-msgstr ""
+msgstr "No se puede programar una sesión en curso."
 
 #: src/modules/schedule/ui/scheduleui.py:191
 msgctxt "ui:schedule|menu:booking|error:next_slot"
 msgid "Too late! You cannot schedule a session starting in the next minute."
 msgstr ""
+"Demasiado tarde. No puede programar una sesión que comienza en el minuto "
+"siguiente."
 
 #: src/modules/schedule/ui/scheduleui.py:198
 msgctxt "ui:schedule|menu:booking|error:already_booked"
