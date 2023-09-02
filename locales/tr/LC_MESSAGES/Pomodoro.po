@@ -125,12 +125,12 @@ msgstr "Sayaç Konfigürasyon Paneli"
 #: src/modules/pomodoro/settingui.py:81
 msgctxt "dash:pomodoro|title"
 msgid "Pomodoro Configuration ({commands[configure pomodoro]})"
-msgstr ""
+msgstr "Pomodoro Konfigürasyonu ({commands[configure pomodoro]})"
 
 #: src/modules/pomodoro/settingui.py:85
 msgctxt "dash:stats|dropdown|placeholder"
 msgid "Pomodoro Timer Panel"
-msgstr ""
+msgstr "Pomodoro Sayaç Paneli"
 
 #: src/modules/pomodoro/cog.py:83
 msgctxt "cmd_check:ready|failed"
