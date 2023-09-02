@@ -122,12 +122,12 @@ msgstr "Kapal"
 #: src/settings/setting_types.py:508
 msgctxt "settype:bool|output:none"
 msgid "Not Set"
-msgstr ""
+msgstr "Ayarlanmadı"
 
 #: src/settings/setting_types.py:619
 msgctxt "settype:integer|accepts"
 msgid "An integer"
-msgstr ""
+msgstr "Tam sayı"
 
 #: src/settings/setting_types.py:682
 msgctxt "settype:emoji|desc"
