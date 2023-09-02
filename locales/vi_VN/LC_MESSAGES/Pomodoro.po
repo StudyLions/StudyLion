@@ -801,6 +801,8 @@ msgid ""
 "**`{focus_len} minutes`** focus\n"
 "**`{break_len} minutes`** break"
 msgstr ""
+"**`{focus_len} phút`** tập trung\n"
+"**`{break_len} phút`** nghỉ"
 
 #: src/modules/pomodoro/ui/config.py:199
 msgctxt "ui:timer_options|embed|field:channel_name|name"
