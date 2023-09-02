@@ -808,12 +808,12 @@ msgstr[2] ""
 #: src/modules/schedule/ui/scheduleui.py:416
 msgctxt "ui:schedule|menu:cancel|placeholder"
 msgid "Cancel booked sessions"
-msgstr ""
+msgstr "Cancelar sesiones reservadas"
 
 #: src/modules/schedule/ui/scheduleui.py:438
 msgctxt "ui:schedule|embed|author"
 msgid "Your Scheduled Sessions and Past Statistics"
-msgstr ""
+msgstr "Sesiones programadas y estadísticas anteriores"
 
 #: src/modules/schedule/ui/scheduleui.py:450
 msgctxt "ui:schedule|embed|field:stats|field:recent"
