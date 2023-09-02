@@ -364,7 +364,7 @@ msgstr ""
 #: src/modules/schedule/settings.py:269
 msgctxt "guildset:attendance_reward|accepts"
 msgid "Number of coins to reward session attendance."
-msgstr ""
+msgstr "Número de monedas para premiar la asistencia a la sesión."
 
 #: src/modules/schedule/settings.py:281
 #, possible-python-brace-format
@@ -373,6 +373,8 @@ msgid ""
 "Members will be rewarded {coin}**{amount}** when they attend a scheduled "
 "session."
 msgstr ""
+"Los miembros serán recompensados con {coin}**{amount}** cuando asistan a una"
+" sesión programada."
 
 #: src/modules/schedule/settings.py:291
 #, possible-python-brace-format
