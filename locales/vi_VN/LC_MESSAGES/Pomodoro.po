@@ -363,6 +363,8 @@ msgctxt "cmd:pomodoro_destroy|error:insufficient_perms|owned"
 msgid ""
 "You need to be an administrator or own this channel to remove this timer!"
 msgstr ""
+"Bạn cần là một quản trị viên hoặc sở hữu kênh này để có thể xoá bỏ đồng hồ "
+"bấm giờ!"
 
 #: src/modules/pomodoro/cog.py:665
 msgctxt "cmd:pomodoro_destroy|error:insufficient_perms|notowned"
