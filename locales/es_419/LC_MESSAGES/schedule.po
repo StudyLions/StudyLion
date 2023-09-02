@@ -842,12 +842,12 @@ msgstr[2] ""
 #: src/modules/schedule/ui/scheduleui.py:475
 msgctxt "ui:schedule|embed|field:stats|field:streak|value:positive"
 msgid "No streak yet!"
-msgstr ""
+msgstr "¡Aún no hay racha!"
 
 #: src/modules/schedule/ui/scheduleui.py:483
 msgctxt "ui:schedule|embed|field:stats|name"
 msgid "Session Statistics"
-msgstr ""
+msgstr "Estadísticas de la sesión"
 
 #: src/modules/schedule/ui/scheduleui.py:502
 msgctxt "ui:schedule|embed|field:upcoming|name"
