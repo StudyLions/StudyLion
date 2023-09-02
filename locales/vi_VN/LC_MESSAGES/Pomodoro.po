@@ -351,12 +351,12 @@ msgstr "kênh đồng hồ bấm giờ"
 #: src/modules/pomodoro/cog.py:622
 msgctxt "cmd:pomodoro_destroy|param:channel"
 msgid "Channel with the timer to delete."
-msgstr ""
+msgstr "Kênh với đồng hồ bấm giờ để xoá."
 
 #: src/modules/pomodoro/cog.py:640
 msgctxt "cmd:pomodoro_destroy|error:no_timer"
 msgid "This channel doesn't have an attached pomodoro timer!"
-msgstr ""
+msgstr "Kênh này không có một đồng hồ bấm giờ Pomodoro!"
 
 #: src/modules/pomodoro/cog.py:655
 msgctxt "cmd:pomodoro_destroy|error:insufficient_perms|owned"
