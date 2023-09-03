@@ -134,7 +134,7 @@ msgstr "Ses/Metin/Anki"
 #: src/modules/statistics/settings.py:66
 msgctxt "userset:show_global_stats"
 msgid "global_stats"
-msgstr ""
+msgstr "global_istatistik"
 
 #: src/modules/statistics/settings.py:69
 msgctxt "userset:show_global_stats|desc"
