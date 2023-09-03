@@ -541,7 +541,7 @@ msgstr "Menü Rolü Güncellendi"
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_addrole|error:role_exists"
 msgid "The role {role} is already selectable from the menu **{menu}**"
-msgstr ""
+msgstr "{role} rolü zaten **{menu}** menüsünden seçilebilir"
 
 #: src/modules/rolemenus/cog.py:1364
 msgctxt "cmd:rolemenu_addrole|success|error:reaction|name"
@@ -551,32 +551,32 @@ msgstr "Not"
 #: src/modules/rolemenus/cog.py:1376
 msgctxt "cmd:rolemenu_addrole|success|button:editor|label"
 msgid "Edit Menu"
-msgstr ""
+msgstr "Menüyü Düzenle"
 
 #: src/modules/rolemenus/cog.py:1393
 msgctxt "cmd:rolemenu_editrole"
 msgid "editrole"
-msgstr ""
+msgstr "rolüdüzenle"
 
 #: src/modules/rolemenus/cog.py:1396
 msgctxt "cmd:rolemenu_editrole|desc"
 msgid "Edit role options in an existing role menu."
-msgstr ""
+msgstr "Varolan bir menüdeki rol seçeneklerini güncelle."
 
 #: src/modules/rolemenus/cog.py:1401
 msgctxt "cmd:rolemenu_editrole|param:menu"
 msgid "menu"
-msgstr ""
+msgstr "menü"
 
 #: src/modules/rolemenus/cog.py:1404
 msgctxt "cmd:rolemenu_editrole|param:menu_role"
 msgid "menu_role"
-msgstr ""
+msgstr "menü_rol"
 
 #: src/modules/rolemenus/cog.py:1407
 msgctxt "cmd:rolemenu_editrole|param:role"
 msgid "new_role"
-msgstr ""
+msgstr "yeni_rol"
 
 #: src/modules/rolemenus/cog.py:1418
 msgctxt "cmd:rolemenu_editrole|param:menu|desc"
