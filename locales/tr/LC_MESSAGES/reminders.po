@@ -39,7 +39,7 @@ msgstr "Buraya Tıkla"
 #: src/modules/reminders/cog.py:110
 msgctxt "reminder|embed"
 msgid "Next reminder"
-msgstr ""
+msgstr "Sonraki hatırlatıcı"
 
 #: src/modules/reminders/cog.py:134
 #, possible-python-brace-format
