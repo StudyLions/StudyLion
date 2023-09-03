@@ -168,7 +168,7 @@ msgstr ""
 #: src/modules/rolemenus/cog.py:593
 msgctxt "cmd:rolemenu_create"
 msgid "newmenu"
-msgstr ""
+msgstr "yenimenü"
 
 #: src/modules/rolemenus/cog.py:596
 msgctxt "cmd:rolemenu_create|desc"
