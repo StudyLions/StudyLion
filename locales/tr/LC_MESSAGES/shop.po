@@ -378,7 +378,7 @@ msgstr "Renk markete eklemek için bir rol seç."
 #: src/modules/shop/shops/colours.py:691
 msgctxt "cmd:editshop_colours_add|param:price|desc"
 msgid "How much should this role cost?"
-msgstr ""
+msgstr "Bu rolün fiyatı ne kadar olacak?"
 
 #: src/modules/shop/shops/colours.py:716
 msgctxt "cmd:editshop_colours_add|error:max_colours"
@@ -386,6 +386,8 @@ msgid ""
 "This server already has the maximum of `25` colour roles!\n"
 "Please remove some before adding or creating more."
 msgstr ""
+"Bu sunucu zaten maximum `25` renk rolüne sahip!\n"
+"Eklemeden ya da oluşturmadan önce lütfen bazılarını kaldırın."
 
 #: src/modules/shop/shops/colours.py:725
 #, possible-python-brace-format
