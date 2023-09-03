@@ -46,8 +46,8 @@ msgstr "Sonraki hatırlatıcı"
 msgctxt "reminder|formatted|interval"
 msgid "Every day"
 msgid_plural "Every `{days}` days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Her gün"
+msgstr[1] "Her `{days}`"
 
 #: src/modules/reminders/cog.py:143
 #, possible-python-brace-format
