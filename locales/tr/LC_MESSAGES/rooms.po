@@ -49,7 +49,7 @@ msgstr "Özel Oda Paneli"
 #: src/modules/rooms/roomui.py:56
 msgctxt "ui:room_status|error:owner_required"
 msgid "You must be the private room owner to do this!"
-msgstr ""
+msgstr "Bunu yapabilmeniz için özel odanın sahibi olmanız gerekmektedir.!"
 
 #: src/modules/rooms/roomui.py:72
 msgctxt "ui:room_status|error:member_required"
