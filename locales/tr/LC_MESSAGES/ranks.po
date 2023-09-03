@@ -801,7 +801,7 @@ msgstr "Gerekli XP"
 #: src/modules/ranks/ui/editor.py:101
 msgctxt "ui:rank_editor|type:xp|input:requires|placeholder"
 msgid "Amount of XP needed before obtaining this rank"
-msgstr ""
+msgstr "Bu rütbeyi elde etmeden önce gereken XP miktarı"
 
 #: src/modules/ranks/ui/editor.py:106
 msgctxt "ui:rank_editor|type:message|input:requires|label"
@@ -811,7 +811,7 @@ msgstr "Gerekli Mesaj Sayısı"
 #: src/modules/ranks/ui/editor.py:110
 msgctxt "ui:rank_editor|type:message|input:requires|placeholder"
 msgid "Number of messages needed before awarding rank"
-msgstr ""
+msgstr "Rütbe ödülü verilmeden önce gereken mesaj sayısı"
 
 #: src/modules/ranks/ui/editor.py:126
 msgctxt "ui:rank_editor|type:voice|input:requires|error:parse"
