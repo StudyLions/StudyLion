@@ -301,7 +301,7 @@ msgstr "hatırlatıcı"
 #: src/modules/reminders/cog.py:722
 msgctxt "cmd:remindme_in|param:every"
 msgid "repeat_every"
-msgstr ""
+msgstr "her_tekrarla"
 
 #: src/modules/reminders/cog.py:725
 msgctxt "cmd:remindme_in|param:time|desc"
@@ -348,7 +348,7 @@ msgstr ""
 #: src/modules/reminders/cog.py:853
 msgctxt "ui:reminderlist|select:remove|placeholder"
 msgid "Select to cancel."
-msgstr ""
+msgstr "İptal etmek için seç"
 
 #: src/modules/reminders/cog.py:929
 #, possible-python-brace-format
