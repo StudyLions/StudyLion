@@ -300,7 +300,7 @@ msgstr "Renk rolüne yeni fiyat."
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_edit|error:invalid_role"
 msgid "{mention} is not in the colour role shop!"
-msgstr ""
+msgstr "{mention} renk markette değil!"
 
 #: src/modules/shop/shops/colours.py:584
 msgctxt "cmd:editshop_colours_edit|error:no_args"
