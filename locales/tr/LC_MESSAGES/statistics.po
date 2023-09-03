@@ -713,4 +713,4 @@ msgstr ""
 #: src/modules/statistics/ui/leaderboard.py:444
 msgctxt "ui:leaderboard|message:empty|title"
 msgid "Leaderboard Empty!"
-msgstr ""
+msgstr "Lider Tablosu Boş!"
