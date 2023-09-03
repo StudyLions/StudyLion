@@ -348,7 +348,7 @@ msgstr "otomatik"
 #: src/modules/shop/shops/colours.py:665
 msgctxt "cmd:editshop_colours_auto|desc"
 msgid "Automatically create a set of colour roles."
-msgstr ""
+msgstr "Otomatik olarak renk rollerini oluşturdum."
 
 #: src/modules/shop/shops/colours.py:674
 msgctxt "cmd:editshop_colours_add"
