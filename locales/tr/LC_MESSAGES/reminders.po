@@ -306,7 +306,7 @@ msgstr "her_tekrarla"
 #: src/modules/reminders/cog.py:725
 msgctxt "cmd:remindme_in|param:time|desc"
 msgid "How far into the future to set the reminder (e.g. 1 day 10h 5m)."
-msgstr ""
+msgstr "Hatırlatıcıyı ne kadar geleceğe oluşturacağın (ör. 1 gün 10s 5d)."
 
 #: src/modules/reminders/cog.py:726
 msgctxt "cmd:remindme_in|param:reminder|desc"
@@ -333,7 +333,7 @@ msgstr "Hatırlatıcı oluşturamadım!"
 msgctxt "cmd_remindme_in|error:too_fast|desc"
 msgid ""
 "You cannot set a repeating reminder with a period less than 10 minutes."
-msgstr ""
+msgstr "10 dakikanın aşağısında tekrarlanan bir hatırlatıcı kurulamaz."
 
 #: src/modules/reminders/cog.py:766
 msgctxt "cmd_remindme_in|error:too_fast|title"
