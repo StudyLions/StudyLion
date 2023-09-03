@@ -412,7 +412,7 @@ msgstr "Rütbe Silindi"
 msgctxt ""
 "ui:rank_preview|button:delete|response:success|button:delete_role|label"
 msgid "Delete Role"
-msgstr ""
+msgstr "Rol Sil"
 
 #: src/modules/ranks/ui/preview.py:176
 #, possible-python-brace-format
