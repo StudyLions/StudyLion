@@ -279,12 +279,12 @@ msgstr ""
 #: src/modules/statistics/settings.py:225
 msgctxt "guildset:visible_stats|accepts"
 msgid "Voice, Text, Anki"
-msgstr ""
+msgstr "Ses, Metin, Anki"
 
 #: src/modules/statistics/settings.py:246
 msgctxt "guildset:visible_stats|set_using"
 msgid "Option menu below."
-msgstr ""
+msgstr "Seçenek menüsü aşağıda."
 
 #: src/modules/statistics/settings.py:254
 #, possible-python-brace-format
