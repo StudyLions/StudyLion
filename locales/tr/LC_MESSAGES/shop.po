@@ -219,7 +219,7 @@ msgstr ""
 #: src/modules/shop/shops/colours.py:490
 msgctxt "cmd:editshop_colours_create|resp:done|title"
 msgid "Colour Role Created"
-msgstr "Renk Rolü Oluşturukdu"
+msgstr "Renk Rolü Oluşturuldu"
 
 #: src/modules/shop/shops/colours.py:494
 #, possible-python-brace-format
@@ -239,7 +239,7 @@ msgstr ""
 #: src/modules/shop/shops/colours.py:505
 msgctxt "cmd:editshop_colours_create|resp:done|field:position_note|name"
 msgid "Note"
-msgstr ""
+msgstr "Not"
 
 #: src/modules/shop/shops/colours.py:514
 msgctxt "cmd:editshop_colours_edit"
