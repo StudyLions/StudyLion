@@ -633,7 +633,7 @@ msgstr ""
 #: src/modules/statistics/ui/leaderboard.py:240
 msgctxt "ui:leaderboard|menu:stats|item:voice"
 msgid "Voice Activity"
-msgstr ""
+msgstr "Ses Etkinlikleri"
 
 #: src/modules/statistics/ui/leaderboard.py:251
 msgctxt "ui:leaderboard|menu:stats|item:study"
