@@ -595,13 +595,13 @@ msgstr "**Geçersiz rütbeler kaldırıldı:** {done}/{target}"
 #: src/modules/ranks/ui/refresh.py:220
 msgctxt "ui:refresh_ranks|embed|field:add|name"
 msgid "Giving members their rank roles"
-msgstr ""
+msgstr "Üyelere rütbe rollerinin verilmesi"
 
 #: src/modules/ranks/ui/refresh.py:224
 #, possible-python-brace-format
 msgctxt "ui:refresh_ranks|embed|field:add|value"
 msgid "0 {progress} {total}"
-msgstr ""
+msgstr "Giving members their rank roles"
 
 #: src/modules/ranks/ui/refresh.py:234
 #, possible-python-brace-format
