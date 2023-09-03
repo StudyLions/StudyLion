@@ -367,7 +367,7 @@ msgstr ""
 #: src/modules/ranks/settings.py:174
 msgctxt "guildset:dm_ranks|response:true"
 msgid "I will direct message members upon rank advancement."
-msgstr ""
+msgstr "Rütbe ilerlemesi üzerine üyeleri dm atacağım."
 
 #: src/modules/ranks/settings.py:179
 msgctxt "guildset:dm_ranks|response:false"
