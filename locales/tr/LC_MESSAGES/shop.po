@@ -284,7 +284,7 @@ msgstr "Düzenlenecek renk rolünü seçin."
 #: src/modules/shop/shops/colours.py:533
 msgctxt "cmd:editshop_colours_edit|param:name|desc"
 msgid "New name to give the colour role."
-msgstr ""
+msgstr "Bu renk rolüne verilecek yeni isim."
 
 #: src/modules/shop/shops/colours.py:537
 msgctxt "cmd:editshop_colours_edit|param:colour|desc"
