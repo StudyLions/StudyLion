@@ -478,12 +478,12 @@ msgstr "Hayır, iptal et"
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delete|success|desc"
 msgid "Successfully deleted the menu **{name}**"
-msgstr ""
+msgstr "**{name}** adlı menüyü başarıyla sildim"
 
 #: src/modules/rolemenus/cog.py:1145
 msgctxt "cmd:rolemenu_addrole"
 msgid "addrole"
-msgstr ""
+msgstr "rolekle"
 
 #: src/modules/rolemenus/cog.py:1148
 msgctxt "cmd:rolemenu_addrole|desc"
