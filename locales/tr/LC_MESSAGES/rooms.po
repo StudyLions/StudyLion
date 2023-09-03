@@ -110,7 +110,7 @@ msgstr "Zamanlayıcıyı Düzenle"
 #: src/modules/rooms/roomui.py:261
 msgctxt "ui:room_status|button:timer|label:add_timer"
 msgid "Add Timer"
-msgstr ""
+msgstr "Zamanlayıcı Ekle"
 
 #: src/modules/rooms/roomui.py:304
 #, possible-python-brace-format
@@ -119,11 +119,13 @@ msgid ""
 "Too many members! You are inviting `{count}` new members to your room, but "
 "you already have `{current}` members! The member cap is `{cap}`."
 msgstr ""
+"Çok fazla üye! Odana `{count}` kadar yeni kişi davet ediyorsun, fakat zaten "
+"{current}` kadar üye var! Üye sınırı `{cap}` dır."
 
 #: src/modules/rooms/roomui.py:330
 msgctxt "ui:room_status|menu:invite_menu|placeholder:capped"
 msgid "Room member cap reached!"
-msgstr ""
+msgstr "Oda üye sınırına ulaşıldı!"
 
 #: src/modules/rooms/roomui.py:336
 msgctxt "ui:room_status|menu:invite_menu|placeholder:notcapped"
