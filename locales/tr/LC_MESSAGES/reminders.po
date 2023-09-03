@@ -109,13 +109,13 @@ msgstr "Emin misin?"
 msgctxt "cmd:reminders_clear|confirm|desc"
 msgid "Are you sure you want to delete your `{count}` reminder?"
 msgid_plural "Are you sure you want to clear your `{count}` reminders?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "`{count}` adet hatırlatıcını temizlemek istediğine emin misin?"
+msgstr[1] "`{count}` adet hatırlatıcını temizlemek istediğine emin misin?"
 
 #: src/modules/reminders/cog.py:429
 msgctxt "cmd:reminders_clear|confirm|button:yes"
 msgid "Yes, clear my reminders"
-msgstr ""
+msgstr "Evet, hatırlatıcılarımı temizle"
 
 #: src/modules/reminders/cog.py:438
 msgctxt "cmd:reminders_clear|success|desc"
