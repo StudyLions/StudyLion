@@ -470,6 +470,7 @@ msgstr ""
 msgctxt "modal:goal_editor|field:anki_goal|error:NAN"
 msgid "The provided card goal `{input}` is not a number! Please try again."
 msgstr ""
+"Belirtilen kart hedefi `{input}` bir sayı değil! Lütfen tekrar deneyin."
 
 #: src/modules/statistics/ui/weeklymonthly.py:252
 msgctxt "modal:goal_editor|field:weekly_task_editor|label"
