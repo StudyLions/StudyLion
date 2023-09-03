@@ -238,7 +238,7 @@ msgstr ""
 #: src/modules/statistics/settings.py:167
 msgctxt "guildset:unranked_roles|accepts"
 msgid "Comma separated list of unranked role names or ids."
-msgstr ""
+msgstr "Rütbesiz rollerin adları ya da ID'lerinin virgülle ayrılmış listesi."
 
 #: src/modules/statistics/settings.py:183
 msgctxt "guildset:unranked_roles|set_using"
