@@ -340,27 +340,27 @@ msgstr ""
 #: src/modules/statistics/settings.py:362
 msgctxt "ui:statistics_config|menu:visible_stats|placeholder"
 msgid "Select Visible Statistics"
-msgstr ""
+msgstr "Görünen İstatistikleri Seçin"
 
 #: src/modules/statistics/settings.py:383
 msgctxt "ui:statistics_config|embed|title"
 msgid "Statistics Configuration Panel"
-msgstr ""
+msgstr "İstatistik Konfigürasyon Paneli"
 
 #: src/modules/statistics/settings.py:405
 msgctxt "dash:stats|title"
 msgid "Activity Statistics Configuration ({commands[configure statistics]})"
-msgstr ""
+msgstr "Aktivite İstatistik Konfigürasyonu ({commands[configure statistics]})"
 
 #: src/modules/statistics/settings.py:409
 msgctxt "dash:stats|dropdown|placeholder"
 msgid "Activity Statistics Panel"
-msgstr ""
+msgstr "Aktivite İstatistik Paneli"
 
 #: src/modules/statistics/ui/goals.py:92
 msgctxt "ui:MonthlyUI|name"
 msgid "Monthly"
-msgstr ""
+msgstr "Aylık"
 
 #: src/modules/statistics/ui/goals.py:135
 msgctxt "ui:WeeklyUI|name"
