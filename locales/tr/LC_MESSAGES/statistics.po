@@ -410,7 +410,7 @@ msgstr "Görev hedefi"
 #: src/modules/statistics/ui/weeklymonthly.py:148
 msgctxt "modal:goal_editor|field:task_goal|placeholder"
 msgid "Enter the number of tasklist tasks you aim to do"
-msgstr ""
+msgstr "Yapmayı hedeflediğiniz görev listesi görev sayısını giriniz."
 
 #: src/modules/statistics/ui/weeklymonthly.py:159
 #, possible-python-brace-format
@@ -421,7 +421,7 @@ msgstr ""
 #: src/modules/statistics/ui/weeklymonthly.py:181
 msgctxt "modal:goal_editor|field:voice_goal|label"
 msgid "Study time goal"
-msgstr ""
+msgstr "Çalışma zamanı hedefi"
 
 #: src/modules/statistics/ui/weeklymonthly.py:185
 msgctxt "modal:goal_editor|field:voice_goal|placeholder"
