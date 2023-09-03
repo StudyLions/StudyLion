@@ -1060,12 +1060,12 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "menuset:name|set_response"
 msgid "This role menu will now be called **{new_name}**."
-msgstr ""
+msgstr "Bu rol menüsü bundan böyle **{new_name}** olarak adlandırılacak."
 
 #: src/modules/rolemenus/menuoptions.py:86
 msgctxt "menuset:sticky"
 msgid "sticky_roles"
-msgstr ""
+msgstr "yapışkan_roller"
 
 #: src/modules/rolemenus/menuoptions.py:89
 msgctxt "menuset:sticky|desc"
