@@ -184,9 +184,28 @@ class TasklistCog(LionCog):
         tasklist = await Tasklist.fetch(self.bot, self.data, userid)
 
         if await self.is_tasklist_channel(channel):
-            tasklistui = TasklistUI.fetch(tasklist, channel, guild, timeout=None)
-            await tasklistui.summon(force=True)
-            await interaction.delete_original_response()
+            # Check we have permissions to send a regular message here
+            my_permissions = channel.permissions_for(guild.me)
+            if not my_permissions.embed_links or not my_permissions.send_messages:
+                t = self.bot.translator.t
+                error = discord.Embed(
+                    colour=discord.Colour.brand_red(),
+                    title=t(_p(
+                        'summon_tasklist|error:insufficient_perms|title',
+                        "Uh-Oh, I cannot do that here!"
+                    )),
+                    description=t(_p(
+                        'summon_tasklist|error:insufficient_perms|desc',
+                        "This channel is configured as a tasklist channel, "
+                        "but I lack the `EMBED_LINKS` or `SEND_MESSAGES` permission here! "
+                        "If you believe this is unintentional, please contact a server administrator."
+                    ))
+                )
+                await interaction.edit_original_response(embed=error)
+            else:
+                tasklistui = TasklistUI.fetch(tasklist, channel, guild, timeout=None)
+                await tasklistui.summon(force=True)
+                await interaction.delete_original_response()
         else:
             # Note that this will also close any existing listening tasklists in this channel (for this user)
             tasklistui = TasklistUI.fetch(tasklist, channel, guild, timeout=600)
