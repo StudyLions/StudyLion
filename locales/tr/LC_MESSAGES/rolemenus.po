@@ -839,6 +839,8 @@ msgid ""
 "Allows creation of 'temporary roles' which expire a given time after being "
 "equipped. Refunds will not be given upon expiry."
 msgstr ""
+"Alındıktan sonra belirli bir süre sona eren 'geçici rollerin' "
+"oluşturulmasına izin verir. Süre bitiminde iade yapılmayacaktır."
 
 #: src/modules/rolemenus/roleoptions.py:267
 msgctxt "roleset:duration|notset"
