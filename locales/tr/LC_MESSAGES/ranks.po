@@ -687,7 +687,7 @@ msgstr ""
 #: src/modules/ranks/ui/overview.py:208
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:is_default"
 msgid "The @everyone role cannot be removed, and cannot be a rank!"
-msgstr ""
+msgstr "@everyone rolü kaldırılamaz ve bir rütbe olamaz!"
 
 #: src/modules/ranks/ui/overview.py:213
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:is_managed"
@@ -702,7 +702,7 @@ msgctxt ""
 msgid ""
 "I do not have the `MANAGE_ROLES` permission in this server, so I cannot "
 "manage ranks!"
-msgstr ""
+msgstr "'ROLLERİ_YÖNET' iznine sahip olmadığımdan rütbeleri yönetemiyorum!"
 
 #: src/modules/ranks/ui/overview.py:223
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:above_me"
