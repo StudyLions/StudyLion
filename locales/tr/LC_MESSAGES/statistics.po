@@ -523,19 +523,19 @@ msgstr "Aylık hedef düzenleyicisi"
 #: src/modules/statistics/ui/weeklymonthly.py:499
 msgctxt "ui:weeklymonthly|button:edit_goals|label"
 msgid "Edit Goals"
-msgstr "Görevleri düzenle"
+msgstr "Hedefleri düzenle"
 
 #: src/modules/statistics/ui/weeklymonthly.py:515
 #, possible-python-brace-format
 msgctxt "ui:weeklymonthly|menu:period|monthly|label"
 msgid "{month} {year}"
-msgstr ""
+msgstr "{month} {year}"
 
 #: src/modules/statistics/ui/weeklymonthly.py:530
 #, possible-python-brace-format
 msgctxt "ui:weeklymonthly|menu:period|weekly|label"
 msgid "{year} W{week}"
-msgstr ""
+msgstr "{year} H{week}"
 
 #: src/modules/statistics/ui/weeklymonthly.py:534
 #, possible-python-brace-format
