@@ -877,9 +877,9 @@ msgstr ""
 #: src/modules/ranks/ui/editor.py:262
 msgctxt "ui:rank_editor|mode:edit|title"
 msgid "Rank Editor"
-msgstr ""
+msgstr "Rütbe Düzenleyici"
 
 #: src/modules/ranks/ui/editor.py:317
 msgctxt "ui:rank_editor|mode:create|title"
 msgid "Rank Creator"
-msgstr ""
+msgstr "Rütbe Oluşturucu"
