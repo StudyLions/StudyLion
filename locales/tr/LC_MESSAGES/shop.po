@@ -373,7 +373,7 @@ msgstr "fiyat"
 #: src/modules/shop/shops/colours.py:687
 msgctxt "cmd:editshop_colours_add|param:role|desc"
 msgid "Select a role to add to the colour shop."
-msgstr ""
+msgstr "Renk markete eklemek için bir rol seç."
 
 #: src/modules/shop/shops/colours.py:691
 msgctxt "cmd:editshop_colours_add|param:price|desc"
