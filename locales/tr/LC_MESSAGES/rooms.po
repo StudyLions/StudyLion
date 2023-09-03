@@ -70,7 +70,7 @@ msgstr "Ne kadar LionCoins yatırmak istiyorsun?"
 #, possible-python-brace-format
 msgctxt "ui:room_status|button:deposit|error:invalid_number"
 msgid "Cannot deposit `{inputted}` coins. Please enter a positive integer."
-msgstr ""
+msgstr "`{inputted}` para yatırılamıyor. Lütfen pozitif bir tam sayı girin."
 
 #: src/modules/rooms/roomui.py:144
 #, possible-python-brace-format
