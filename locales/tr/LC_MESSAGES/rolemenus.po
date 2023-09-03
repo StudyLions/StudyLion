@@ -1010,7 +1010,7 @@ msgstr ""
 #: src/modules/rolemenus/rolemenu.py:647
 msgctxt "rolemenu|select|success|title"
 msgid "Role equipped"
-msgstr ""
+msgstr "Rol alındı"
 
 #: src/modules/rolemenus/rolemenu.py:653
 #, possible-python-brace-format
