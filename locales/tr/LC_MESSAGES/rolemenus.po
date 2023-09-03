@@ -923,8 +923,8 @@ msgid ""
 "Could not add the {emoji} reaction, perhaps I do not have access to this "
 "emoji! Reactions will need to be added manually."
 msgstr ""
-"{Emoji} tepkisi eklenemedi, belki de bu emojiye erişimim yok! Reaksiyonların"
-" manuel olarak eklenmesi gerekecektir."
+"{Emoji} tepkisi eklenemedi, belki de bu emojiye erişimim yok! Tepkilerin "
+"manuel olarak eklenmesi gerekecektir."
 
 #: src/modules/rolemenus/rolemenu.py:381
 msgctxt "ui:rolemenu_dropdown|placeholder"
