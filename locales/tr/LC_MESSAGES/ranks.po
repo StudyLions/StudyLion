@@ -542,7 +542,7 @@ msgstr "Sunucu rütbeleri yenilenemedi!"
 #: src/modules/ranks/ui/refresh.py:133
 msgctxt "ui:refresh_ranks|embed|title:done"
 msgid "Rank refresh complete!"
-msgstr ""
+msgstr "Rütbe yenilenmesi tamamlandı!"
 
 #: src/modules/ranks/ui/refresh.py:139
 msgctxt "ui:refresh_ranks|embed|title:working"
