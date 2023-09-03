@@ -152,7 +152,7 @@ msgstr "{klan_ismi}"
 #, possible-python-brace-format
 msgctxt "formatstring:rank_message|key:user_name"
 msgid "{user_name}"
-msgstr ""
+msgstr "{kullanıcı_ismi}"
 
 #: src/modules/ranks/utils.py:16
 #, possible-python-brace-format
