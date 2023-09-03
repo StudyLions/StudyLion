@@ -204,6 +204,8 @@ msgid ""
 "This server already has the maximum of `25` colour roles!\n"
 "Please remove some before adding or creating more."
 msgstr ""
+"Bu sunucu zaten maximum `25` renk rolüne sahip!\n"
+"Eklemeden ya da oluşturmadan önce lütfen bazılarını kaldırın."
 
 #: src/modules/shop/shops/colours.py:440
 msgctxt "cmd:editshop_colours_create|error:failed_unknown"
