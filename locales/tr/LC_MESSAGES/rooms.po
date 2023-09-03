@@ -34,12 +34,12 @@ msgstr "Oda Görünürlüğünü Değiştir"
 #: src/modules/rooms/settingui.py:62
 msgctxt "ui:rooms_config|embed|title"
 msgid "Private Room System Configuration Panel"
-msgstr ""
+msgstr "Özel Oda Sistemi Yapılandırma Paneli"
 
 #: src/modules/rooms/settingui.py:98
 msgctxt "dash:rooms|title"
 msgid "Private Room Configuration ({commands[configure rooms]})"
-msgstr ""
+msgstr "Özel Oda Yapılandırma ({commands[configure rooms]})"
 
 #: src/modules/rooms/settingui.py:102
 msgctxt "dash:economy|dropdown|placeholder"
