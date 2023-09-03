@@ -571,7 +571,7 @@ msgstr "**{guild}** daki özel odanın süresi bitti!"
 #, possible-python-brace-format
 msgctxt "room|tick|rent_deducted"
 msgid "Daily rent deducted from room balance. New balance: {coin}**{amount}**"
-msgstr ""
+msgstr "Günlük kira oda bakiyesinden düşülür. Yeni bakiye: {coin}**{amount}**"
 
 #: src/modules/rooms/settings.py:21
 msgctxt "guildset:room_category"
