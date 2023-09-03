@@ -184,13 +184,13 @@ msgstr "{user_id}"
 #, possible-python-brace-format
 msgctxt "formatstring:rank_message|key:role_mention"
 msgid "{role_mention}"
-msgstr ""
+msgstr "{role_mention}"
 
 #: src/modules/ranks/utils.py:20
 #, possible-python-brace-format
 msgctxt "formatstring:rank_message|key:user_mention"
 msgid "{user_mention}"
-msgstr ""
+msgstr "{user_mention}"
 
 #: src/modules/ranks/utils.py:21
 #, possible-python-brace-format
