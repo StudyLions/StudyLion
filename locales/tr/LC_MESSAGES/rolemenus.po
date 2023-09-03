@@ -741,6 +741,9 @@ msgid ""
 "otherwise appears next to the role label in the button and dropdown styles. "
 "The emoji is also displayed next to the role in most menu templates."
 msgstr ""
+"Rol emojisi tepki için kullanılır (tepki rolü menülerinde) ve bunun dışında "
+"buton ve açılır menülerde rol etiketinin yanında görünür. Emoji, çoğu menü "
+"şablonunda rolün yanında da görüntülenir."
 
 #: src/modules/rolemenus/roleoptions.py:157
 #, possible-python-brace-format
