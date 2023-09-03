@@ -363,12 +363,12 @@ msgstr "Varolan bir rolü renk markete ekle."
 #: src/modules/shop/shops/colours.py:681
 msgctxt "cmd:editshop_colours_add|param:role"
 msgid "role"
-msgstr ""
+msgstr "rol"
 
 #: src/modules/shop/shops/colours.py:682
 msgctxt "cmd:editshop_colours_add|param:price"
 msgid "price"
-msgstr ""
+msgstr "fiyat"
 
 #: src/modules/shop/shops/colours.py:687
 msgctxt "cmd:editshop_colours_add|param:role|desc"
