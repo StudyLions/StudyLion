@@ -391,7 +391,7 @@ msgstr "`{name}` menü mesajını şablon olarak kullanıyorum."
 #: src/modules/rolemenus/cog.py:969
 msgctxt "cmd:rolemenu_edit|parse:template|success:custom"
 msgid "Now using a custom menu message."
-msgstr ""
+msgstr "Şu anda özel menü mesajını kullanıyorum."
 
 #: src/modules/rolemenus/cog.py:994
 #, possible-python-brace-format
