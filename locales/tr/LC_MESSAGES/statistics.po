@@ -29,7 +29,7 @@ msgstr "ben"
 #: src/modules/statistics/cog.py:45
 msgctxt "cmd:me|desc"
 msgid "Display your personal profile and summary statistics."
-msgstr "kldsalkdlkasldkaskldlkas"
+msgstr "Kişisel profilinizi ve istatistik özetini görüntüleyin."
 
 #: src/modules/statistics/cog.py:55
 msgctxt "cmd:stats"
