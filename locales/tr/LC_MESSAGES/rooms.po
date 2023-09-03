@@ -710,7 +710,7 @@ msgstr "Görünmez"
 #: src/modules/rooms/settings.py:166
 msgctxt "guildset:rooms_visible|parse:truthy_values"
 msgid "visible|enabled|yes|true|on|enable|1"
-msgstr ""
+msgstr "görünür|etkin|evet|doğru|üstünde|etkin|1"
 
 #: src/modules/rooms/settings.py:170
 msgctxt "guildset:rooms_visible|parse:falsey_values"
