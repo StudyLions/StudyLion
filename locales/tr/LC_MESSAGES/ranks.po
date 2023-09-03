@@ -355,6 +355,8 @@ msgctxt "guildset:dm_ranks|desc"
 msgid ""
 "Whether to send rank advancement notifications through direct messages."
 msgstr ""
+"Rütbe ilerleme bildirimlerinin doğrudan mesaj yoluyla gönderilip "
+"gönderilmeyeceği"
 
 #: src/modules/ranks/settings.py:160
 msgctxt "guildset:dm_ranks|long_desc"
@@ -363,6 +365,9 @@ msgid ""
 "messaged to the user, instead of being sent to the configured "
 "`rank_channel`."
 msgstr ""
+"Eğer etkinse, rütbe ilerlemesi için tebrik mesajı yapılandırılmış "
+"'rütbe_kanalı' na gönderilmek yerine kullanıcıya direkt mesaj yoluyla "
+"bildirilecek."
 
 #: src/modules/ranks/settings.py:174
 msgctxt "guildset:dm_ranks|response:true"
