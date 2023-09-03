@@ -558,17 +558,17 @@ msgstr "Haftayı Seç"
 #: src/modules/statistics/ui/weeklymonthly.py:622
 msgctxt "ui:weeklymonthly|button:period|monthly|label"
 msgid "Select Month"
-msgstr ""
+msgstr "Ayı Seç"
 
 #: src/modules/statistics/ui/weeklymonthly.py:687
 msgctxt "ui:weeklymonthly|menu:period|weekly|placeholder"
 msgid "Select a week to display"
-msgstr ""
+msgstr "Görüntülenecek haftayı seç"
 
 #: src/modules/statistics/ui/weeklymonthly.py:692
 msgctxt "ui:weeklymonthly|menu:period|monthly|placeholder"
 msgid "Select a month to display"
-msgstr ""
+msgstr "Görüntülenecek ayı seç"
 
 #: src/modules/statistics/ui/weeklymonthly.py:714
 msgctxt "ui:WeeklyMonthly|button:global|resp:success"
