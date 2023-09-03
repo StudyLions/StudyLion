@@ -379,6 +379,8 @@ msgid ""
 "Cannot set a template message for a role menu attached to a message I did "
 "not send."
 msgstr ""
+"Göndermediğim bir mesaja eklenen rol menüsü için şablon mesaj "
+"ayarlayamıyorum."
 
 #: src/modules/rolemenus/cog.py:962
 #, possible-python-brace-format
