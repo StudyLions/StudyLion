@@ -649,7 +649,7 @@ msgstr ""
 #: src/modules/rooms/settings.py:112
 msgctxt "guildset:rooms_slots"
 msgid "room_member_cap"
-msgstr ""
+msgstr "oda_üye_sınırı"
 
 #: src/modules/rooms/settings.py:115
 msgctxt "guildset:rooms_slots|desc"
@@ -678,7 +678,7 @@ msgstr ""
 #: src/modules/rooms/settings.py:146
 msgctxt "guildset:rooms_visible"
 msgid "room_visibility"
-msgstr ""
+msgstr "oda_görünürlüğü"
 
 #: src/modules/rooms/settings.py:149
 msgctxt "guildset:rooms_visible|desc"
@@ -731,4 +731,4 @@ msgstr "Özel odalar artık sadece üyelerine (ve adminlere) görünür."
 #, possible-python-brace-format
 msgctxt "guildset:rooms_visible|set_using"
 msgid "{cmd} or toggle below."
-msgstr ""
+msgstr "{cmd} veya aşağıya geç."
