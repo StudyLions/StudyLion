@@ -199,7 +199,7 @@ msgstr "özel_mesaj"
 #: src/modules/rolemenus/cog.py:623
 msgctxt "cmd:rolemenu_create|param:message|desc"
 msgid "Link to an existing message to turn it into a (reaction) role menu"
-msgstr ""
+msgstr "Rol menüsü (reaksiyon) olarak değiştirmek için varolan mesaj linki"
 
 #: src/modules/rolemenus/cog.py:627
 msgctxt "cmd:rolemenu_create|param:menu_style"
