@@ -549,7 +549,7 @@ msgstr "Rütbe yenilenmesi tamamlandı!"
 #: src/modules/ranks/ui/refresh.py:139
 msgctxt "ui:refresh_ranks|embed|title:working"
 msgid "Refreshing your server ranks, please wait."
-msgstr ""
+msgstr "Sunucu rütbelerinizi yeniliyoruz, lütfen bekleyin."
 
 #: src/modules/ranks/ui/refresh.py:157
 #, possible-python-brace-format
@@ -573,12 +573,12 @@ msgstr "**Rütbe rolleri yükleniyor:** {emoji}"
 #, possible-python-brace-format
 msgctxt "ui:refresh_ranks|embed|line:compute"
 msgid "**Computing correct ranks:** {emoji}"
-msgstr ""
+msgstr "**Doğru rütbelerin hesaplanması:** {emoji}"
 
 #: src/modules/ranks/ui/refresh.py:198
 msgctxt "ui:refresh_ranks|embed|field:remove|name"
 msgid "Removing invalid rank roles from members"
-msgstr ""
+msgstr "Üyelerden geçersiz rütbe rollerinin kaldırılması"
 
 #: src/modules/ranks/ui/refresh.py:202
 #, possible-python-brace-format
@@ -612,42 +612,42 @@ msgstr "**Güncellenen üye rütbeleri:** {done}/{target}"
 #: src/modules/ranks/ui/config.py:42
 msgctxt "ui:rankconfigui|check|not_permitted"
 msgid "You have insufficient server permissions to use this UI!"
-msgstr ""
+msgstr "Bu kullanıcı arayüzünü kullanmak için yeterli sunucu izniniz yok!"
 
 #: src/modules/ranks/ui/config.py:64
 msgctxt "ui:rank_config|button:overview|label"
 msgid "Edit Ranks"
-msgstr ""
+msgstr "Rütbeleri Düzenle"
 
 #: src/modules/ranks/ui/config.py:82
 msgctxt "ui:rank_config|menu:types|placeholder"
 msgid "Select Statistic Type"
-msgstr ""
+msgstr "İstatistik Tipini Seç"
 
 #: src/modules/ranks/ui/config.py:90
 msgctxt "ui:rank_config|menu:types|option:voice"
 msgid "Voice Activity"
-msgstr ""
+msgstr "Ses Aktivitesi"
 
 #: src/modules/ranks/ui/config.py:98
 msgctxt "ui:rank_config|menu:types|option:xp"
 msgid "XP Earned"
-msgstr ""
+msgstr "Kazanılan XP'ler"
 
 #: src/modules/ranks/ui/config.py:106
 msgctxt "ui:rank_config|menu:types|option:messages"
 msgid "Messages Sent"
-msgstr ""
+msgstr "Gönderilen Mesajlar"
 
 #: src/modules/ranks/ui/config.py:126
 msgctxt "ui:rank_config|menu:channels|placeholder"
 msgid "Select Rank Notification Channel"
-msgstr ""
+msgstr "Rütbe Bildirim Kanalını Seç"
 
 #: src/modules/ranks/ui/config.py:134
 msgctxt "ui:rank_config|embed|title"
 msgid "Ranks Configuration Panel"
-msgstr ""
+msgstr "Rütbe Yapılandırma Paneli"
 
 #: src/modules/ranks/ui/config.py:171
 msgctxt "dash:rank|title"
