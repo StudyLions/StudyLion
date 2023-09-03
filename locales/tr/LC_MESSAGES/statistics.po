@@ -114,12 +114,12 @@ msgstr "Anki"
 #: src/modules/statistics/settings.py:47
 msgctxt "settype:stat|input_pattern:voice"
 msgid "voice|study"
-msgstr ""
+msgstr "ses|çalışması"
 
 #: src/modules/statistics/settings.py:48
 msgctxt "settype:stat|input_pattern:text"
 msgid "text|messages"
-msgstr ""
+msgstr "metin|mesajı"
 
 #: src/modules/statistics/settings.py:49
 msgctxt "settype:stat|input_pattern:anki"
