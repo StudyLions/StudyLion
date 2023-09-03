@@ -415,6 +415,9 @@ msgid ""
 "shop! You must have `MANAGE_ROLES`, and your top role must be above this "
 "role."
 msgstr ""
+"{mention} rolünü markete eklemek için yeterli iznin bulunmamakta! "
+"MANAGE_ROLES` yetkisine sahip olman ve en üstteki rolünün bu rolün üzerinde "
+"bulunması gerekmekte."
 
 #: src/modules/shop/shops/colours.py:754
 msgctxt "cmd:editshop_colours_add|error:role_has_admin"
