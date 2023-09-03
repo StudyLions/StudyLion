@@ -81,7 +81,7 @@ msgstr ""
 #: src/modules/ranks/cog.py:609
 msgctxt "rank_refresh|add_roles|audit"
 msgid "Adding rank role from refresh"
-msgstr ""
+msgstr "Baştan yeni bir rol ekleniyor"
 
 #: src/modules/ranks/cog.py:623
 #, possible-python-brace-format
@@ -137,7 +137,7 @@ msgstr ""
 msgctxt ""
 "cmd:configure_ranks|response:updated|setting:notification|nodm_withchannel"
 msgid "Rank update notifications will be sent to {channel}."
-msgstr "Rütbe güncellemeleri {channel}' a atılacaktır."
+msgstr "Rütbe güncelleme bildirimleri {channel}' a gönderilecektir"
 
 #: src/modules/ranks/cog.py:765
 msgctxt ""
