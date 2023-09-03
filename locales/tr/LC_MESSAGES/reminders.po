@@ -194,17 +194,17 @@ msgstr ""
 #: src/modules/reminders/cog.py:590
 msgctxt "cmd:remindme_at|desc"
 msgid "Schedule a reminder for a particular time."
-msgstr ""
+msgstr "Belirli zaman dilimine hatırlatıcı ayarla."
 
 #: src/modules/reminders/cog.py:594
 msgctxt "cmd:remindme_at|param:time"
 msgid "time"
-msgstr ""
+msgstr "zaman"
 
 #: src/modules/reminders/cog.py:595
 msgctxt "cmd:remindme_at|param:reminder"
 msgid "reminder"
-msgstr ""
+msgstr "hatırlatıcı"
 
 #: src/modules/reminders/cog.py:596
 msgctxt "cmd:remindme_at|param:every"
