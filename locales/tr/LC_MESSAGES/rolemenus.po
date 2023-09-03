@@ -1069,7 +1069,7 @@ msgstr "yapışkan_roller"
 #: src/modules/rolemenus/menuoptions.py:89
 msgctxt "menuset:sticky|desc"
 msgid "Whether the menu can be used to unequip roles."
-msgstr ""
+msgstr "Menünün rollerin bırakılmasında kullanılıp kullanılamayacağı."
 
 #: src/modules/rolemenus/menuoptions.py:94
 msgctxt "menuset:sticky|long_desc"
@@ -1078,6 +1078,9 @@ msgid ""
 " them in this menu. Note that when disabled, members will be able to unequip"
 " the menu roles even if they were not obtained from the menu."
 msgstr ""
+"Etkinleştirildiğinde, üyeler eklenmiş rolleri bu menüden seçerek "
+"kaldıramayacaktır. Devre dışı bırakıldığında üyelerin, menüden alınmamış "
+"olsalar bile menü rollerini kaldırabileceklerini unutmayın."
 
 #: src/modules/rolemenus/menuoptions.py:110
 msgctxt "menuset:sticky|set_response:true"
