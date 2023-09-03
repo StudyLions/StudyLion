@@ -190,7 +190,7 @@ msgstr "Ayarlanmadı (Tüm zamanların istatistiği kullanılıyor)"
 #, possible-python-brace-format
 msgctxt "guildset:season_start|parse|error:future_time"
 msgid "Provided season start time {timestamp} is in the future!"
-msgstr ""
+msgstr "Belirtilen sezon başlangıç zamanı {timestamp} gelecekte yer alıyor!"
 
 #: src/modules/statistics/settings.py:136
 #, possible-python-brace-format
