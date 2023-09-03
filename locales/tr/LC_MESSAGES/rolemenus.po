@@ -676,7 +676,7 @@ msgstr "**{menu}** menüsünün **{name}** adında bir rolü bulunmuyor"
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delrole|success"
 msgid "The role **{name}** was successfully removed from the menu **{menu}**."
-msgstr ""
+msgstr "**{name}** rolü başarıyla **{menu}** menüsünden kaldırıldı."
 
 #: src/modules/rolemenus/roleoptions.py:54
 msgctxt "roleset:role"
