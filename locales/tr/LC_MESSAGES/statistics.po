@@ -313,12 +313,12 @@ msgstr ""
 #: src/modules/statistics/settings.py:304
 msgctxt "ui:statistics_config|menu:unranked_roles|placeholder"
 msgid "Select Unranked Roles"
-msgstr ""
+msgstr "Rütbesiz Rolleri Seçin"
 
 #: src/modules/statistics/settings.py:328
 msgctxt "ui:statistics_config|menu:visible_stats|item:voice|mode:voice"
 msgid "Voice Activity"
-msgstr ""
+msgstr "Ses Aktivitesi"
 
 #: src/modules/statistics/settings.py:333
 msgctxt "ui:statistics_config|menu:visible_stats|item:voice|mode:study"
