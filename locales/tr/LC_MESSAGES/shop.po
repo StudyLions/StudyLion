@@ -358,7 +358,7 @@ msgstr "ekle"
 #: src/modules/shop/shops/colours.py:677
 msgctxt "cmd:editshop_colours_add|desc"
 msgid "Add an existing role to the colour shop."
-msgstr ""
+msgstr "Varolan bir rolü renk markete ekle."
 
 #: src/modules/shop/shops/colours.py:681
 msgctxt "cmd:editshop_colours_add|param:role"
