@@ -60,19 +60,19 @@ msgstr "Market Kapandı"
 #, possible-python-brace-format
 msgctxt "ui:colourstore|menu:buycolours|label"
 msgid "{name} ({price} LC)"
-msgstr ""
+msgstr "{name} ({price} LC)"
 
 #: src/modules/shop/shops/colours.py:109
 #, possible-python-brace-format
 msgctxt "ui:colourstore|menu:buycolours|label"
 msgid "{name} (This is your colour!)"
-msgstr ""
+msgstr "{name} (Bu sizin renginiz!)"
 
 #: src/modules/shop/shops/colours.py:114
 #, possible-python-brace-format
 msgctxt "ui:colourstore|menu:buycolours|desc"
 msgid "Colour: {colour}"
-msgstr ""
+msgstr "Renk: {colour}"
 
 #: src/modules/shop/shops/colours.py:119
 msgctxt "ui:colourstore|menu:buycolours|desc"
