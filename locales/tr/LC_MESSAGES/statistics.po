@@ -417,6 +417,7 @@ msgstr "Yapmayı hedeflediğiniz görev listesi görev sayısını giriniz."
 msgctxt "modal:goal_editor|field:task_goal|error:NAN"
 msgid "The provided task goal `{input}` is not a number! Please try again."
 msgstr ""
+"Belirtilen görev hedefi `{input}` bir sayı değil! Lütfen tekrar deneyin."
 
 #: src/modules/statistics/ui/weeklymonthly.py:181
 msgctxt "modal:goal_editor|field:voice_goal|label"
