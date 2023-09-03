@@ -189,7 +189,7 @@ msgstr "banahatırlat"
 #: src/modules/reminders/cog.py:587
 msgctxt "cmd:remindme_at"
 msgid "at"
-msgstr ""
+msgstr "da"
 
 #: src/modules/reminders/cog.py:590
 msgctxt "cmd:remindme_at|desc"
