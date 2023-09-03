@@ -71,6 +71,8 @@ msgid ""
 "Insufficient permissions! I need the `MESSAGE_HISTORY` permission in "
 "{channel}."
 msgstr ""
+"Yetersiz izinler! {channel} kanalında `MESAJ_GEÇMİŞİ` yetkisine sahip olmam "
+"gerekiyor."
 
 #: src/modules/rolemenus/cog.py:310
 #, possible-python-brace-format
