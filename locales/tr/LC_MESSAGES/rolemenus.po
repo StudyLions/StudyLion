@@ -993,6 +993,8 @@ msgid ""
 "The role **{role}** costs {coin}**{cost}**,but you only have "
 "{coin}**{balance}**!"
 msgstr ""
+"**{role}** rolü {coin}**{cost}** tutuyor fakat senin sadece "
+"{coin}**{balance}** paran var!"
 
 #: src/modules/rolemenus/rolemenu.py:598
 msgctxt "rolemenu|select|error:perms"
