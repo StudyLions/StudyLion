@@ -302,7 +302,7 @@ msgstr "Yunanca"
 #: src/babel/enums.py:55
 msgctxt "localenames|locale:hi"
 msgid "Hindi"
-msgstr ""
+msgstr "Hintçe"
 
 #: src/babel/enums.py:56
 msgctxt "localenames|locale:hu"
