@@ -1035,17 +1035,17 @@ msgstr "Rol {timestamp} tarihinde geçersiz olacak."
 #, possible-python-brace-format
 msgctxt "rolemenu|content:reactions"
 msgid "[Click here]({jump_link}) to jump back."
-msgstr ""
+msgstr "[Buraya Bas]Geri gitmek için ({jump_link}) ."
 
 #: src/modules/rolemenus/menuoptions.py:56
 msgctxt "menuset:name"
 msgid "name"
-msgstr ""
+msgstr "isim"
 
 #: src/modules/rolemenus/menuoptions.py:59
 msgctxt "menuset:name|desc"
 msgid "Brief name for this role menu."
-msgstr ""
+msgstr "Bu rol menüsünün kısa adı."
 
 #: src/modules/rolemenus/menuoptions.py:64
 msgctxt "menuset:name|long_desc"
