@@ -96,12 +96,12 @@ msgstr ""
 #: src/modules/ranks/cog.py:655
 msgctxt "cmd:ranks"
 msgid "ranks"
-msgstr ""
+msgstr "rütbeler"
 
 #: src/modules/ranks/cog.py:687
 msgctxt "cmd:configure_ranks"
 msgid "ranks"
-msgstr ""
+msgstr "rütbeler"
 
 #: src/modules/ranks/cog.py:688
 msgctxt "cmd:configure_ranks|desc"
