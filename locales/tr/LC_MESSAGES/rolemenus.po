@@ -889,21 +889,23 @@ msgid ""
 "A compact three column layout using emojis and labels, excluding prices and "
 "durations."
 msgstr ""
+"Fiyatlar ve süreler hariç, emojiler ve etiketler kullanan kompakt üç sütunlu"
+" düzen."
 
 #: src/modules/rolemenus/templates.py:168
 msgctxt "template:shop|name"
 msgid "Role Shop"
-msgstr ""
+msgstr "Rol Market"
 
 #: src/modules/rolemenus/templates.py:172
 msgctxt "template:shop|desc"
 msgid "A single column display suitable for simple role shops"
-msgstr ""
+msgstr "Basit rol mağazaları için uygun tek sütunlu görüntü"
 
 #: src/modules/rolemenus/rolemenu.py:280
 msgctxt "rolemenu|menu_message|error|title"
 msgid "ROLE MENU DISPLAY ERROR"
-msgstr ""
+msgstr "ROL MENÜ GÖSTERİM HATASI"
 
 #: src/modules/rolemenus/rolemenu.py:284
 #, possible-python-brace-format
