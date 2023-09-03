@@ -230,12 +230,12 @@ msgstr "Ön satın almaya kalan gün sayısı. (Varsayılan: 1)"
 #: src/modules/rooms/cog.py:332
 msgctxt "cmd:room_rent|param:members|desc"
 msgid "Mention the members you want to add to your private room."
-msgstr ""
+msgstr "Özel odalara eklemek istediğin üyeleri etiketle."
 
 #: src/modules/rooms/cog.py:336
 msgctxt "cmd:room_rent|param:name|desc"
 msgid "Name of your private voice channel."
-msgstr ""
+msgstr "Özel ses odanın ismi."
 
 #: src/modules/rooms/cog.py:354
 msgctxt "cmd:room_rent|error:not_setup"
