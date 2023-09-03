@@ -577,7 +577,7 @@ msgstr "{tick} {mention} rolünü satın aldınız!"
 #: src/modules/shop/shops/colours.py:1160
 msgctxt "ui:colourstore|menu:buycolours|placeholder"
 msgid "There are no colour roles available to purchase!"
-msgstr ""
+msgstr "Satın alınabilecek bir renk rolü bulunmamaktadır!"
 
 #: src/modules/shop/shops/colours.py:1166
 msgctxt "ui:colourstore|menu:buycolours|placeholder"
