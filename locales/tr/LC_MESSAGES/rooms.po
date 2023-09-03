@@ -202,7 +202,7 @@ msgstr "kira"
 #: src/modules/rooms/cog.py:317
 msgctxt "cmd:room_rent|desc"
 msgid "Rent a private voice channel with LionCoins."
-msgstr ""
+msgstr "LionCoins ile özel sesli kanal kirala."
 
 #: src/modules/rooms/cog.py:321
 msgctxt "cmd:room_rent|param:days"
