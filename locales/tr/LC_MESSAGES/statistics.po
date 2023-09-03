@@ -612,7 +612,7 @@ msgstr "Profil Etiketi Editörü"
 #, possible-python-brace-format
 msgctxt "modal:profile_editor|error:too_many_tags"
 msgid "Too many tags! You can have at most `{limit}` profile tags."
-msgstr ""
+msgstr "Çok fazla etiket! En fazla `{limit}` adet profil etiketiniz olabilir."
 
 #: src/modules/statistics/ui/profile.py:92
 msgctxt "menu:stat_type|opt:voice|name"
