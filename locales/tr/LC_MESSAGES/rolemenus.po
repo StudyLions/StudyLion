@@ -96,6 +96,8 @@ msgid ""
 "Failed to resolve the provided message link.\n"
 "**ERROR:** {error}"
 msgstr ""
+"Sağlanan mesaj bağlantısı çözümlenemedi.\n"
+"**HATA:** {error}"
 
 #: src/modules/rolemenus/cog.py:434
 msgctxt "cmd:rolemenus"
