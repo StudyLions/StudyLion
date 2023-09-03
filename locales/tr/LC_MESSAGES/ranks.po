@@ -827,6 +827,8 @@ msgid ""
 "`requires`: Could not parse provided minimum time! Please write a number of "
 "hours."
 msgstr ""
+"'gerekenler': Elde edilen en düşük zaman ayrıştırılamadı! Lütfen tam sayı "
+"girin."
 
 #: src/modules/ranks/ui/editor.py:137
 msgctxt "ui:rank_editor|type:message|input:requires|error:parse"
@@ -834,6 +836,8 @@ msgid ""
 "`requires`: Could not parse provided minimum message count! Please enter an "
 "integer."
 msgstr ""
+"'gerekenler': Elde edilen en düşük mesaj sayısı ayrıştırılamadı! Lütfen tam "
+"sayı girin."
 
 #: src/modules/ranks/ui/editor.py:148
 msgctxt "ui:rank_editor|type:xp|input:requires|error:parse"
