@@ -316,6 +316,10 @@ msgid ""
 "used when the user has opted not to receive DM notifications, or is "
 "otherwise unreachable."
 msgstr ""
+"Bir kullanıcı bir rütbeye ulaştığında, eğer ayarlıysa tebrik mesajı bu "
+"kanala gönderilir. Eğer `dm_rütbeleri` etkinleşmişse bu kanal sadece "
+"kullanıcı dm bildirimlerini almamayı tercih ettiğinde veya ulaşmanın başka "
+"bir yolu yoksa kullanılacaktır."
 
 #: src/modules/ranks/settings.py:116
 msgctxt "guildset:rank_channel|accepts"
