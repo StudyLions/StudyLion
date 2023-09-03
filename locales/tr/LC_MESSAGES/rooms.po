@@ -576,7 +576,7 @@ msgstr "Günlük kira oda bakiyesinden düşülür. Yeni bakiye: {coin}**{amount
 #: src/modules/rooms/settings.py:21
 msgctxt "guildset:room_category"
 msgid "rooms_category"
-msgstr ""
+msgstr "odalar_kategorisi"
 
 #: src/modules/rooms/settings.py:25
 msgctxt "guildset:rooms_category|desc"
