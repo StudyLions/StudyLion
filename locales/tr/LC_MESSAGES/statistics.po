@@ -213,7 +213,7 @@ msgstr ""
 #: src/modules/statistics/settings.py:156
 msgctxt "guildset:unranked_roles"
 msgid "unranked_roles"
-msgstr ""
+msgstr "seviyesiz_roller"
 
 #: src/modules/statistics/settings.py:159
 msgctxt "guildset:unranked_roles|desc"
