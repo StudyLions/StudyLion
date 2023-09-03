@@ -147,7 +147,7 @@ msgstr "Lütfen önce menü seçiniz"
 #, possible-python-brace-format
 msgctxt "acmpl:menuroles|choice:invalid_menu|name"
 msgid "Menu '{name}' does not exist!"
-msgstr ""
+msgstr "'{name}' adlı menü bulunmamaktadır!"
 
 #: src/modules/rolemenus/cog.py:574
 #, possible-python-brace-format
