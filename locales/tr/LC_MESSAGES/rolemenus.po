@@ -657,12 +657,14 @@ msgid ""
 "You need the `MANAGE_ROLES` permission in order to manage the server role "
 "menus."
 msgstr ""
+"Bu sunucudaki rol menülerini düzenleyebilmek için `MANAGE_ROLES` yetkisine "
+"sahip olman gerekmektedir."
 
 #: src/modules/rolemenus/cog.py:1668
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delrole|error:menu_not_found"
 msgid "This server does not have a role menu called `{name}`!"
-msgstr ""
+msgstr "Bu sunucuda `{name}` adında bir rol menüsü bulunmuyor!"
 
 #: src/modules/rolemenus/cog.py:1696
 #, possible-python-brace-format
