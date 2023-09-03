@@ -622,7 +622,7 @@ msgstr "Ses İstatistikleri"
 #: src/modules/statistics/ui/profile.py:97
 msgctxt "menu:stat_type|opt:text|name"
 msgid "Text Statistics"
-msgstr ""
+msgstr "Metin İstatistikleri"
 
 #: src/modules/statistics/ui/profile.py:102
 msgctxt "menu:stat_type|opt:anki|name"
