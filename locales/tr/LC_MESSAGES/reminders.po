@@ -254,6 +254,8 @@ msgid ""
 "Could not parse provided time `{given}`. Try entering e.g. `4 pm` or "
 "`16:00`."
 msgstr ""
+"Belirtilen zaman `{given}` ayrıştırılamadı. `4 pm` or `16:00` şeklinde "
+"girmeyi deneyin."
 
 #: src/modules/reminders/cog.py:662
 msgctxt "cmd:remindme_at|error:parse_time|title"
@@ -279,7 +281,7 @@ msgstr "Hatırlatıcı {timestamp} zamanına kuruldu"
 #: src/modules/reminders/cog.py:713
 msgctxt "cmd:remindme_in"
 msgid "in"
-msgstr ""
+msgstr "içinde"
 
 #: src/modules/reminders/cog.py:716
 msgctxt "cmd:remindme_in|desc"
