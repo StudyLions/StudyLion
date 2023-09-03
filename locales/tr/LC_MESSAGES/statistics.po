@@ -688,7 +688,7 @@ msgstr ""
 #: src/modules/statistics/ui/leaderboard.py:366
 msgctxt "ui:leaderboard|button:jump|input:question"
 msgid "Page number to jump to"
-msgstr ""
+msgstr "Atlamak için sayfa numarası"
 
 #: src/modules/statistics/ui/leaderboard.py:377
 msgctxt "ui:leaderboard|button:jump|error:invalid_page"
