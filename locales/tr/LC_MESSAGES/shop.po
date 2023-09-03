@@ -92,7 +92,7 @@ msgstr "Bu ürün satın alınamaz!"
 #: src/modules/shop/shops/colours.py:185
 msgctxt "shop:colour|purchase|error:no_guild"
 msgid "Could not retrieve the server from Discord!"
-msgstr ""
+msgstr "Sunucu Discord'dan alınamadı!"
 
 #: src/modules/shop/shops/colours.py:195
 msgctxt "shop:colour|purchase|error:no_member"
