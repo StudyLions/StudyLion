@@ -700,12 +700,12 @@ msgstr ""
 #: src/modules/rooms/settings.py:159
 msgctxt "guildset:rooms_visible|output:true"
 msgid "Visible"
-msgstr ""
+msgstr "Görünür"
 
 #: src/modules/rooms/settings.py:160
 msgctxt "guildset:rooms_visible|output:false"
 msgid "Invisible"
-msgstr ""
+msgstr "Görünmez"
 
 #: src/modules/rooms/settings.py:166
 msgctxt "guildset:rooms_visible|parse:truthy_values"
