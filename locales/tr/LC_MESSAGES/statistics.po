@@ -463,6 +463,7 @@ msgstr ""
 msgctxt "modal:goal_editor|field:text_goal|error:NAN"
 msgid "The provided message goal `{input}` is not a number! Please try again."
 msgstr ""
+"Belirtilen mesaj hedefi `{input}` bir sayı değil! Lütfen tekrar deneyin."
 
 #: src/modules/statistics/ui/weeklymonthly.py:230
 #, possible-python-brace-format
