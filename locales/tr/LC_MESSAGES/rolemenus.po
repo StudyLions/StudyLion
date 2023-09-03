@@ -432,7 +432,7 @@ msgstr "Bir rol menüsünü sil."
 #: src/modules/rolemenus/cog.py:1051
 msgctxt "cmd:rolemenu_delete|param:name"
 msgid "menu"
-msgstr ""
+msgstr "menü"
 
 #: src/modules/rolemenus/cog.py:1056
 msgctxt "cmd:rolemenu_delete|param:name|desc"
