@@ -325,7 +325,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:547
 msgctxt "cmd:room_status"
 msgid "status"
-msgstr ""
+msgstr "durum"
 
 #: src/modules/rooms/cog.py:550
 msgctxt "cmd:room_status|desc"
@@ -342,17 +342,17 @@ msgstr ""
 #: src/modules/rooms/cog.py:582
 msgctxt "cmd:room_invite"
 msgid "invite"
-msgstr ""
+msgstr "davet et"
 
 #: src/modules/rooms/cog.py:585
 msgctxt "cmd:room_invite|desc"
 msgid "Add members to your private room."
-msgstr ""
+msgstr "Özel odana üyeler ekle."
 
 #: src/modules/rooms/cog.py:589
 msgctxt "cmd:room_invite|param:members"
 msgid "members"
-msgstr ""
+msgstr "üyeler"
 
 #: src/modules/rooms/cog.py:594
 msgctxt "cmd:room_invite|param:members|desc"
