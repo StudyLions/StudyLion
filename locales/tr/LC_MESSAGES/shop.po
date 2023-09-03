@@ -469,7 +469,7 @@ msgstr "Çıkartılacak renk rolleri bulunmamakta!"
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_clear|resp:done|line:clear"
 msgid "{tick} Colour shop cleared."
-msgstr ""
+msgstr "{tick} Renk market temizlendi."
 
 #: src/modules/shop/shops/colours.py:895
 #, possible-python-brace-format
