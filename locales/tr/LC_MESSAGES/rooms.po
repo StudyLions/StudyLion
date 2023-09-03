@@ -626,7 +626,7 @@ msgstr ""
 #: src/modules/rooms/settings.py:80
 msgctxt "guildset:rooms_rent|desc"
 msgid "Daily rent price for a private room."
-msgstr ""
+msgstr "Özel oda için günlük kira ücreti."
 
 #: src/modules/rooms/settings.py:84
 msgctxt "guildset:rooms_rent|long_desc"
@@ -634,6 +634,8 @@ msgid ""
 "Members will be charged this many LionCoins for each day they rent a private"
 " room."
 msgstr ""
+"Üyeler özel oda kiraladığında her gün için şu kadar miktar LionCoins ile "
+"ücretlendirilir."
 
 #: src/modules/rooms/settings.py:88
 msgctxt "guildset:rooms_rent|accepts"
