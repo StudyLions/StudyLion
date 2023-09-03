@@ -327,7 +327,7 @@ msgstr "Korece"
 #: src/babel/enums.py:60
 msgctxt "localenames|locale:lt"
 msgid "Lithuanian"
-msgstr ""
+msgstr "Litovca"
 
 #: src/babel/enums.py:61
 msgctxt "localenames|locale:no"
