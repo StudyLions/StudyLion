@@ -120,17 +120,17 @@ msgstr "Evet, hatırlatıcılarımı temizle"
 #: src/modules/reminders/cog.py:438
 msgctxt "cmd:reminders_clear|success|desc"
 msgid "Your reminders have been cleared!"
-msgstr ""
+msgstr "Hatırlatıcıların temizlendi!"
 
 #: src/modules/reminders/cog.py:447
 msgctxt "cmd:reminders_clear|confirm|button:cancel"
 msgid "Cancel"
-msgstr ""
+msgstr "İptal"
 
 #: src/modules/reminders/cog.py:457
 msgctxt "cmd:reminders_cancel"
 msgid "cancel"
-msgstr ""
+msgstr "iptal"
 
 #: src/modules/reminders/cog.py:460
 msgctxt "cmd:reminders_cancel|desc"
