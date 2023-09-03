@@ -237,6 +237,9 @@ msgid ""
 "The new colour role was added below all other roles. Remember a member's "
 "active colour is determined by their highest coloured role!"
 msgstr ""
+"Yeni oluşturulan renk rolü tüm rollerin altına oluşturuldu. Unutmayın ki "
+"üyenin aktif rengi sahip olduğu en yüksek rolün rengine göre "
+"belirlenmektedir!"
 
 #: src/modules/shop/shops/colours.py:505
 msgctxt "cmd:editshop_colours_create|resp:done|field:position_note|name"
