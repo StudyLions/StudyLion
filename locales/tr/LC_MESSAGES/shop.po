@@ -254,22 +254,22 @@ msgstr "düzenle"
 #: src/modules/shop/shops/colours.py:517
 msgctxt "cmd:editshop_colours_edit|desc"
 msgid "Edit the name, colour, or price of a colour role."
-msgstr ""
+msgstr "Bir renk rolünün adını, rengini ya da fiyatını düzenleyin"
 
 #: src/modules/shop/shops/colours.py:521
 msgctxt "cmd:editshop_colours_edit|param:role"
 msgid "role"
-msgstr ""
+msgstr "rol"
 
 #: src/modules/shop/shops/colours.py:522
 msgctxt "cmd:editshop_colours_edit|param:name"
 msgid "name"
-msgstr ""
+msgstr "isim"
 
 #: src/modules/shop/shops/colours.py:523
 msgctxt "cmd:editshop_colours_edit|param:colour"
 msgid "colour"
-msgstr ""
+msgstr "renk"
 
 #: src/modules/shop/shops/colours.py:524
 msgctxt "cmd:editshop_colours_edit|param:price"
