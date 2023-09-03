@@ -223,6 +223,8 @@ msgctxt "cmd:rolemenu_create|error:author_perms"
 msgid ""
 "You need the `MANAGE_ROLES` permission in order to create new role menus."
 msgstr ""
+"Yeni rol menüleri oluşturmak için `ROLLERİ_DÜZENLE` yetkisine sahip olman "
+"gerekiyor."
 
 #: src/modules/rolemenus/cog.py:671
 msgctxt "cmd:rolemenu_create|error:my_perms"
