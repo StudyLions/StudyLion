@@ -287,7 +287,7 @@ class RoleMenuCog(LionCog):
 
         error = None
         message = None
-        splits = msgstr.strip().rsplit('/', maxsplit=2)
+        splits = msgstr.strip().rsplit('/', maxsplit=2)[-2:]
         if len(splits) == 2 and splits[0].isdigit() and splits[1].isdigit():
             chid, mid = map(int, splits)
             channel = guild.get_channel(chid)
@@ -678,7 +678,7 @@ class RoleMenuCog(LionCog):
             target_mine = True
         else:
             # Parse provided message link into a Message
-            target_message: discord.Message = await self._parse_msg(message)
+            target_message: discord.Message = await self._parse_msg(ctx.guild, message)
             target_mine = (target_message.author == ctx.guild.me)
 
             # Check that this message is not already attached to a role menu
@@ -747,7 +747,7 @@ class RoleMenuCog(LionCog):
             message_data['content'] = target_message.content
             if target_message.embeds:
                 message_data['embed'] = target_message.embeds[0].to_dict()
-            rawmessage = json.dumps(message_data)
+            rawmessagedata = json.dumps(message_data)
         else:
             if rawmessage is not None:
                 # Attempt to parse rawmessage
