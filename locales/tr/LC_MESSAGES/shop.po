@@ -403,6 +403,9 @@ msgid ""
 " I have the `MANAGE_ROLES` permission, and that my top role is above this "
 "role."
 msgstr ""
+" {mention} rolünü atamak için yeterli iznim bulunmamakta! Lütfen "
+"`MANAGE_ROLES` yetkimin olduğuna  ve en üstteki rolümün bu rolün üzerinde "
+"olduğuna emin olun."
 
 #: src/modules/shop/shops/colours.py:745
 #, possible-python-brace-format
