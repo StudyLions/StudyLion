@@ -952,6 +952,8 @@ msgstr "Bu rolü sizden kaldırabilmek için gerekli izinlerim bulunmamakta!"
 msgctxt "rolemenu|deselect|error:discord"
 msgid "An unknown error occurred removing your role! Please try again later."
 msgstr ""
+"Rolünüzü kaldırırken bilinmeyen bir hata oluştu! Lütfen daha sonra tekrar "
+"deneyin."
 
 #: src/modules/rolemenus/rolemenu.py:529
 msgctxt "rolemenu|deslect|success|title"
