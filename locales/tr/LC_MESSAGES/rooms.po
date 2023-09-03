@@ -59,7 +59,7 @@ msgstr "Bunu yapabilmeniz için özel odanın bir üyesi olmanız gerekmektedir!
 #: src/modules/rooms/roomui.py:90
 msgctxt "ui:room_status|button:deposit|modal:deposit|title"
 msgid "Room Deposit"
-msgstr ""
+msgstr "Oda Depozitosu"
 
 #: src/modules/rooms/roomui.py:94
 msgctxt "ui:room_status|button:deposit|modal:deposit|field:question|label"
