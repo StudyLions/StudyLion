@@ -273,6 +273,8 @@ msgid ""
 "Choose which statistics types to display in the leaderboard and statistics "
 "commands."
 msgstr ""
+"Lider tablosunda ve istatistik komutunda hangi istatistik türlerinin "
+"gösterileceğini seçin."
 
 #: src/modules/statistics/settings.py:225
 msgctxt "guildset:visible_stats|accepts"
