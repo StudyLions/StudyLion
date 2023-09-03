@@ -497,6 +497,8 @@ msgid ""
 "[ ] Write my biology essay\n"
 "[x] Complete the second maths assignment\n"
 msgstr ""
+"[ ] Biyoloji metnimi hazırla\n"
+"[x] İkinci matematik ödevimi tamamla\n"
 
 #: src/modules/statistics/ui/weeklymonthly.py:284
 #, possible-python-brace-format
@@ -505,21 +507,23 @@ msgid ""
 "Malformed task!\n"
 "`{input}`"
 msgstr ""
+"Yanlış biçimlendirilmiş görev!\n"
+"`{input}`"
 
 #: src/modules/statistics/ui/weeklymonthly.py:301
 msgctxt "modal:goal_editor|title"
 msgid "Weekly goal editor"
-msgstr ""
+msgstr "Haftalık görev düzenleyicisi"
 
 #: src/modules/statistics/ui/weeklymonthly.py:306
 msgctxt "modal:goal_editor|monthly|title"
 msgid "Monthly goal editor"
-msgstr ""
+msgstr "Aylık görev düzenleyicisi"
 
 #: src/modules/statistics/ui/weeklymonthly.py:499
 msgctxt "ui:weeklymonthly|button:edit_goals|label"
 msgid "Edit Goals"
-msgstr ""
+msgstr "Görevleri düzenle"
 
 #: src/modules/statistics/ui/weeklymonthly.py:515
 #, possible-python-brace-format
