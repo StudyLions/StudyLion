@@ -821,7 +821,7 @@ msgstr "Bu rolün alınması bundan böyle {price} tutacak."
 #: src/modules/rolemenus/roleoptions.py:247
 msgctxt "roleset:price|set_response:unset"
 msgid "This role will now be free to equip from this role menu."
-msgstr ""
+msgstr "Bu rolü bu menüden almak bundan sonra ücretsiz olacak."
 
 #: src/modules/rolemenus/roleoptions.py:255
 msgctxt "roleset:duration"
