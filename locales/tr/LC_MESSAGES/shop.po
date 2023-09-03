@@ -294,7 +294,7 @@ msgstr "Yeni renk rolüne yeni renk verin (Hex kodu olarak ör. #AB12AB)."
 #: src/modules/shop/shops/colours.py:541
 msgctxt "cmd:editshop_colours_edit|param:price|desc"
 msgid "New price for the colour role."
-msgstr ""
+msgstr "Renk rolüne yeni fiyat."
 
 #: src/modules/shop/shops/colours.py:570
 #, possible-python-brace-format
