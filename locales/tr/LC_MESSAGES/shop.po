@@ -588,13 +588,13 @@ msgstr "Satın almak istediğiniz renk rolünü seçin!"
 #, possible-python-brace-format
 msgctxt "ui:colourstore|embed|line:owned_item"
 msgid "`[{j:02}]` | `{price} LC` | {mention} (You own this!)"
-msgstr ""
+msgstr "`[{j:02}]` | `{price} LC` | {mention} (Buna zaten sahipsin!)"
 
 #: src/modules/shop/shops/colours.py:1200
 #, possible-python-brace-format
 msgctxt "ui:colourstore|embed|line:item"
 msgid "`[{j:02}]` | `{price} LC` | {mention}"
-msgstr ""
+msgstr "`[{j:02}]` | `{price} LC` | {mention}"
 
 #: src/modules/shop/shops/colours.py:1207
 msgctxt "ui:colourstore|embed|desc"
