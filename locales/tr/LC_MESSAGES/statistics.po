@@ -124,12 +124,12 @@ msgstr "metin|mesajı"
 #: src/modules/statistics/settings.py:49
 msgctxt "settype:stat|input_pattern:anki"
 msgid "anki"
-msgstr ""
+msgstr "anki"
 
 #: src/modules/statistics/settings.py:53
 msgctxt "settype:state|accepts"
 msgid "Voice/Text/Anki"
-msgstr ""
+msgstr "Ses/Metin/Anki"
 
 #: src/modules/statistics/settings.py:66
 msgctxt "userset:show_global_stats"
