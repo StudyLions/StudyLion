@@ -197,7 +197,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:314
 msgctxt "cmd:room_rent"
 msgid "rent"
-msgstr ""
+msgstr "kira"
 
 #: src/modules/rooms/cog.py:317
 msgctxt "cmd:room_rent|desc"
