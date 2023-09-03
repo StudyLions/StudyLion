@@ -348,7 +348,7 @@ msgstr ""
 #: src/modules/reminders/cog.py:853
 msgctxt "ui:reminderlist|select:remove|placeholder"
 msgid "Select to cancel."
-msgstr "İptal etmek için seç"
+msgstr "İptal etmek için seç."
 
 #: src/modules/reminders/cog.py:929
 #, possible-python-brace-format
