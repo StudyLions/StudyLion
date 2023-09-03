@@ -44,7 +44,7 @@ msgstr ""
 #: src/modules/statistics/cog.py:71
 msgctxt "cmd:leaderboard"
 msgid "leaderboard"
-msgstr ""
+msgstr "lider tablosu"
 
 #: src/modules/statistics/cog.py:74
 msgctxt "cmd:leaderboard|desc"
