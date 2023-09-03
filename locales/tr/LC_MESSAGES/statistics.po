@@ -171,7 +171,7 @@ msgid ""
 " and the leaderboard will display activity since this time by default. Unset"
 " to disable seasons and use all-time statistics instead."
 msgstr ""
-"Etkinlik sıralamaları, şimdiye kadar izlenen etkinliğe göre belirlenecek ve "
+"Etkinlik rütbeleri, şimdiye kadar izlenen etkinliğe göre belirlenecek ve "
 "lider tablosu, varsayılan olarak şimdiye kadar gerçekleşen etkinlikleri "
 "gösterecek. Sezonları devre dışı bırakmak ve bunun yerine tüm zamanların "
 "istatistiklerini kullanmak için ayarı kaldırın."
@@ -653,7 +653,7 @@ msgstr ""
 #: src/modules/statistics/ui/leaderboard.py:327
 msgctxt "ui:leaderboard|button:season|label"
 msgid "This Season"
-msgstr ""
+msgstr "Bu Sezon"
 
 #: src/modules/statistics/ui/leaderboard.py:331
 msgctxt "ui:leaderboard|button:day|label"
