@@ -257,7 +257,7 @@ msgstr "Çince"
 #: src/babel/enums.py:46
 msgctxt "localenames|locale:zh-TW"
 msgid "Taiwan Chinese"
-msgstr ""
+msgstr "Tayvan Çincesi"
 
 #: src/babel/enums.py:47
 msgctxt "localenames|locale:hr"
