@@ -526,12 +526,12 @@ msgstr ""
 #: src/modules/rooms/cog.py:921
 msgctxt "cmd:configure_rooms"
 msgid "rooms"
-msgstr ""
+msgstr "odalar"
 
 #: src/modules/rooms/cog.py:922
 msgctxt "cmd:configure_rooms|desc"
 msgid "Configure Rented Private Rooms"
-msgstr ""
+msgstr "Kiralanmış Özel Odaları Yapılandır"
 
 #: src/modules/rooms/room.py:81
 #, possible-python-brace-format
@@ -611,6 +611,8 @@ msgid ""
 "Private room category has been set to {channel}. Existing private rooms will"
 " be moved."
 msgstr ""
+"Özel oda kategorisi {channel}' ayarlandı. Mevcut özel odaların yeri "
+"değişecektir."
 
 #: src/modules/rooms/settings.py:67
 #, possible-python-brace-format
