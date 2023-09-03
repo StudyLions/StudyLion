@@ -759,7 +759,7 @@ msgstr ""
 #: src/modules/ranks/ui/editor.py:33
 msgctxt "ui:rank_editor|input:role_name|label"
 msgid "Role Name"
-msgstr ""
+msgstr "Rol İsmi"
 
 #: src/modules/ranks/ui/editor.py:37
 msgctxt "ui:rank_editor|input:role_name|placeholder"
