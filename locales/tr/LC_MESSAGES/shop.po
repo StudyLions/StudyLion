@@ -463,7 +463,7 @@ msgstr "Ayrıca ilişkili rolleri de silin."
 #: src/modules/shop/shops/colours.py:840
 msgctxt "cmd:editshop_colours_clear|error:no_colours"
 msgid "There are no coloured roles to remove!"
-msgstr ""
+msgstr "Çıkartılacak renk rolleri bulunmamakta!"
 
 #: src/modules/shop/shops/colours.py:884
 #, possible-python-brace-format
