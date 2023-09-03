@@ -196,7 +196,7 @@ msgstr "{user_mention}"
 #, possible-python-brace-format
 msgctxt "formatstring:rank_message|key:requires"
 msgid "{rank_requires}"
-msgstr ""
+msgstr "{rank_requires}"
 
 #: src/modules/ranks/settings.py:26
 msgctxt "guildset:rank_type|output:voice"
@@ -246,7 +246,7 @@ msgstr ""
 #: src/modules/ranks/settings.py:45
 msgctxt "guildset:rank_type"
 msgid "rank_type"
-msgstr ""
+msgstr "rütbe_tipi"
 
 #: src/modules/ranks/settings.py:48
 msgctxt "guildset:rank_type|desc"
