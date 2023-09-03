@@ -307,22 +307,22 @@ msgstr "Hintçe"
 #: src/babel/enums.py:56
 msgctxt "localenames|locale:hu"
 msgid "Hungarian"
-msgstr ""
+msgstr "Macarca"
 
 #: src/babel/enums.py:57
 msgctxt "localenames|locale:it"
 msgid "Italian"
-msgstr ""
+msgstr "İtalyanca"
 
 #: src/babel/enums.py:58
 msgctxt "localenames|locale:ja"
 msgid "Japanese"
-msgstr ""
+msgstr "Japonca"
 
 #: src/babel/enums.py:59
 msgctxt "localenames|locale:ko"
 msgid "Korean"
-msgstr ""
+msgstr "Korece"
 
 #: src/babel/enums.py:60
 msgctxt "localenames|locale:lt"
