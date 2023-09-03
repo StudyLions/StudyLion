@@ -132,17 +132,17 @@ msgstr "Size bu renk rolünü verebilmek için yeterli yetkim yok!"
 #: src/modules/shop/shops/colours.py:277
 msgctxt "shop:colour|purchase|error:failed_unknown"
 msgid "An unknown error occurred while giving you this colour role!"
-msgstr ""
+msgstr "Size bu renk rolünü verirken bilinmeyen bir hata oluştu!"
 
 #: src/modules/shop/shops/colours.py:346
 msgctxt "grp:editshop_colours"
 msgid "colours"
-msgstr ""
+msgstr "renkler"
 
 #: src/modules/shop/shops/colours.py:351
 msgctxt "cmd:editshop_colours_create"
 msgid "create"
-msgstr ""
+msgstr "oluştur"
 
 #: src/modules/shop/shops/colours.py:354
 msgctxt "cmd:editshop_colours_create|desc"
