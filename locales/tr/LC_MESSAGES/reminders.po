@@ -359,7 +359,7 @@ msgstr "{name}'in hatırlatıcısı"
 #: src/modules/reminders/cog.py:935
 msgctxt "ui:reminderlist|embed:list|footer"
 msgid "Click a reminder twice to jump to the context!"
-msgstr ""
+msgstr "İçeriğe gitmek için hatırlatıcıya iki defa bas!"
 
 #: src/modules/reminders/cog.py:942
 #, possible-python-brace-format
@@ -368,3 +368,5 @@ msgid ""
 "You have no reminders to display!\n"
 "Use {remindme} to create a new reminder."
 msgstr ""
+"Görüntülenecek hatırlatıcınız bulunmamaktadır.\n"
+"{remindme} kullanarak yeni bir hatırlatıcı oluşturun."
