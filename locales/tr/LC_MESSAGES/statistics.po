@@ -323,7 +323,7 @@ msgstr "Ses Aktivitesi"
 #: src/modules/statistics/settings.py:333
 msgctxt "ui:statistics_config|menu:visible_stats|item:voice|mode:study"
 msgid "Study Statistics"
-msgstr ""
+msgstr "Çalışma İstatistikleri"
 
 #: src/modules/statistics/settings.py:343
 msgctxt "ui:statistics_config|menu:visible_stats|item:text"
