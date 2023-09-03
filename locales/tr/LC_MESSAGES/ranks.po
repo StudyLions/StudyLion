@@ -164,13 +164,13 @@ msgstr "{rol_id}"
 #, possible-python-brace-format
 msgctxt "formatstring:rank_message|key:guild_id"
 msgid "{guild_id}"
-msgstr ""
+msgstr "{sunucu_id}"
 
 #: src/modules/ranks/utils.py:18
 #, possible-python-brace-format
 msgctxt "formatstring:rank_message|key:user_id"
 msgid "{user_id}"
-msgstr ""
+msgstr "{kullanıcı_id}"
 
 #: src/modules/ranks/utils.py:19
 #, possible-python-brace-format
