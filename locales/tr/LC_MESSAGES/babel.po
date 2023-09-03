@@ -277,7 +277,7 @@ msgstr "Danca"
 #: src/babel/enums.py:50
 msgctxt "localenames|locale:nl"
 msgid "Dutch"
-msgstr "Almanca"
+msgstr "Hollandaca"
 
 #: src/babel/enums.py:51
 msgctxt "localenames|locale:fi"
@@ -292,12 +292,12 @@ msgstr "Fransızca"
 #: src/babel/enums.py:53
 msgctxt "localenames|locale:de"
 msgid "German"
-msgstr ""
+msgstr "Almanca"
 
 #: src/babel/enums.py:54
 msgctxt "localenames|locale:el"
 msgid "Greek"
-msgstr ""
+msgstr "Yunanca"
 
 #: src/babel/enums.py:55
 msgctxt "localenames|locale:hi"
