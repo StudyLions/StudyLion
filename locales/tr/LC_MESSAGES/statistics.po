@@ -224,7 +224,7 @@ msgstr "seviyesiz_roller"
 #: src/modules/statistics/settings.py:159
 msgctxt "guildset:unranked_roles|desc"
 msgid "Roles to exclude from the leaderboards."
-msgstr ""
+msgstr "Lider tablosundan hariç tutulacak roller."
 
 #: src/modules/statistics/settings.py:163
 msgctxt "guildset:unranked_roles|long_desc"
