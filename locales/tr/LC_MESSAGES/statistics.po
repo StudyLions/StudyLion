@@ -600,6 +600,8 @@ msgid ""
 "Mathematician\n"
 "Loves Cats"
 msgstr ""
+"Matematikçi\n"
+"Kedileri Sever"
 
 #: src/modules/statistics/ui/profile.py:53
 msgctxt "modal:profile_editor|title"
