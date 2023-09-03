@@ -673,7 +673,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "guildset:rooms_slots|set_response"
 msgid "Private rooms are now capped to **{amount}** members."
-msgstr ""
+msgstr "Özel oda üye sınırı artık **{amount}** ."
 
 #: src/modules/rooms/settings.py:146
 msgctxt "guildset:rooms_visible"
