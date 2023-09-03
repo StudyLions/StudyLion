@@ -576,16 +576,18 @@ msgid ""
 "You will now see combined statistics from all your servers (where "
 "applicable)! Press again to revert."
 msgstr ""
+"Şu anda tüm sunucularınızın birleştirilmiş istatistiklerini göreceksiniz "
+"(uygun olanları)! Geri almak için bir daha basın."
 
 #: src/modules/statistics/ui/weeklymonthly.py:727
 msgctxt "ui:WeeklyMonthly|button:global|mode:local"
 msgid "Server Statistics"
-msgstr ""
+msgstr "Sunucu İstatistikleri"
 
 #: src/modules/statistics/ui/weeklymonthly.py:732
 msgctxt "ui:WeeklyMonthly|button:global|mode:global"
 msgid "Global Statistics"
-msgstr ""
+msgstr "Global İstatistikler"
 
 #: src/modules/statistics/ui/profile.py:41
 msgctxt "modal:profile_editor|field:editor|label"
