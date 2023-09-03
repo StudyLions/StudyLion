@@ -448,12 +448,12 @@ msgstr "temizle"
 msgctxt "cmd:editshop_colours_clear|desc"
 msgid ""
 "Remove all the colour roles from the shop, and optionally delete the roles."
-msgstr ""
+msgstr "Tüm rolleri marketten kaldır ve opsiyonel olarak rolleri sil."
 
 #: src/modules/shop/shops/colours.py:793
 msgctxt "cmd:editshop_colours_clear|param:delete"
 msgid "delete_roles"
-msgstr ""
+msgstr "rolleri_sil"
 
 #: src/modules/shop/shops/colours.py:798
 msgctxt "cmd:editshop_colours_clear|param:delete|desc"
