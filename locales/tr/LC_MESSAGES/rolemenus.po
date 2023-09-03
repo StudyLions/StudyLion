@@ -614,7 +614,7 @@ msgstr ""
 #: src/modules/rolemenus/cog.py:1569
 msgctxt "cmd:rolemenu_editrole|success|title"
 msgid "Role menu role updated"
-msgstr ""
+msgstr "Rol menü rolü güncellendi"
 
 #: src/modules/rolemenus/cog.py:1584
 msgctxt "cmd:rolemenu_editrole|success|error:reaction|name"
