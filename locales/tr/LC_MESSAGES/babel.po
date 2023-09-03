@@ -347,12 +347,12 @@ msgstr "Brezilya Portekizcesi"
 #: src/babel/enums.py:64
 msgctxt "localenames|locale:ro"
 msgid "Romanian"
-msgstr ""
+msgstr "Rumence"
 
 #: src/babel/enums.py:65
 msgctxt "localenames|locale:ru"
 msgid "Russian"
-msgstr ""
+msgstr "Rusça"
 
 #: src/babel/enums.py:66
 msgctxt "localenames|locale:es-ES"
