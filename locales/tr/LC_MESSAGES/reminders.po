@@ -29,12 +29,12 @@ msgstr "Sen bana hatırlatmamı söylemiştin!"
 #: src/modules/reminders/cog.py:101
 msgctxt "reminder|embed"
 msgid "Context?"
-msgstr ""
+msgstr "Şartlar?"
 
 #: src/modules/reminders/cog.py:103
 msgctxt "reminder|embed"
 msgid "Click Here"
-msgstr ""
+msgstr "Buraya Tıkla"
 
 #: src/modules/reminders/cog.py:110
 msgctxt "reminder|embed"
