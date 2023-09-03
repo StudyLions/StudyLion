@@ -447,7 +447,7 @@ msgstr "Kart Hedefi"
 #: src/modules/statistics/ui/weeklymonthly.py:203
 msgctxt "modal:goal_editor|field:anki_goal|label"
 msgid "Enter a number of card revisions to aim for."
-msgstr ""
+msgstr "Hedeflediğiniz kart sayısını giriniz."
 
 #: src/modules/statistics/ui/weeklymonthly.py:216
 #, possible-python-brace-format
