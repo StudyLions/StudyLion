@@ -619,7 +619,7 @@ msgstr "Rol menü rolü güncellendi"
 #: src/modules/rolemenus/cog.py:1584
 msgctxt "cmd:rolemenu_editrole|success|error:reaction|name"
 msgid "Warning!"
-msgstr ""
+msgstr "Uyarı!"
 
 #: src/modules/rolemenus/cog.py:1609
 msgctxt "cmd:rolemenu_delrole"
