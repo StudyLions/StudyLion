@@ -247,7 +247,7 @@ msgstr ""
 #: src/modules/statistics/settings.py:200
 msgctxt "guildset:unranked_roles|set_response|unset"
 msgid "You have cleared the unranked role list."
-msgstr ""
+msgstr "Rütbesiz rol listesini temizledin."
 
 #: src/modules/statistics/settings.py:214
 msgctxt "guildset:visible_stats"
