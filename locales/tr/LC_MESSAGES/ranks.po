@@ -790,6 +790,8 @@ msgid ""
 "`role_colour`: Could not parse colour! Please use `#<hex>` format e.g. "
 "`#AB1325`."
 msgstr ""
+"'rol_rengi': Renk ayrıştırılamadı! Lütfen `#<hex>` formatını kullanın. Örn/ "
+"`#AB1325`."
 
 #: src/modules/ranks/ui/editor.py:88
 msgctxt "ui:rank_editor|type:voice|input:requires|label"
