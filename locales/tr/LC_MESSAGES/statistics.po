@@ -643,7 +643,7 @@ msgstr ""
 #: src/modules/statistics/ui/leaderboard.py:262
 msgctxt "ui:leaderboard|menu:stats|item:message"
 msgid "Message Activity"
-msgstr ""
+msgstr "Mesaj Aktivitesi"
 
 #: src/modules/statistics/ui/leaderboard.py:273
 msgctxt "ui:leaderboard|menu;stats|item:anki"
