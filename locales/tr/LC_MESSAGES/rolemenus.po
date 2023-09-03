@@ -779,16 +779,18 @@ msgid ""
 "It may also be used as a substitution key in custom role selection "
 "responses."
 msgstr ""
+"Açıklama, açılır menülerdeki rol etiketinin altında görüntülenir. Ayrıca "
+"özel rol seçimi yanıtlarında yer açıklaması olarak da kullanılabilir."
 
 #: src/modules/rolemenus/roleoptions.py:205
 msgctxt "roleset:description|set_response:set"
 msgid "The role description has been set."
-msgstr ""
+msgstr "Rol açıklaması ayarlandı."
 
 #: src/modules/rolemenus/roleoptions.py:210
 msgctxt "roleset:description|set_response:unset"
 msgid "The role description has been removed."
-msgstr ""
+msgstr "Rol açıklaması kaldırıldı."
 
 #: src/modules/rolemenus/roleoptions.py:218
 msgctxt "roleset:price"
