@@ -24,7 +24,7 @@ msgstr ""
 #: src/modules/rolemenus/cog.py:41
 msgctxt "argtype:menu_style|opt:reaction"
 msgid "Reaction Roles"
-msgstr "Reaksiyon Rolleri"
+msgstr "Tepki Rolleri"
 
 #: src/modules/rolemenus/cog.py:45
 msgctxt "argtype:menu_style|opt:button"
