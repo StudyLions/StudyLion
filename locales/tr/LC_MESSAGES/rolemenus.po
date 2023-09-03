@@ -681,12 +681,12 @@ msgstr "**{name}** rolü başarıyla **{menu}** menüsünden kaldırıldı."
 #: src/modules/rolemenus/roleoptions.py:54
 msgctxt "roleset:role"
 msgid "role"
-msgstr ""
+msgstr "rol"
 
 #: src/modules/rolemenus/roleoptions.py:57
 msgctxt "roleset:role|desc"
 msgid "The role associated to this menu item."
-msgstr ""
+msgstr "Bu rol menü ürünüyle ilişkili rol."
 
 #: src/modules/rolemenus/roleoptions.py:61
 msgctxt "roleset:role|long_desc"
@@ -702,7 +702,7 @@ msgstr ""
 #: src/modules/rolemenus/roleoptions.py:82
 msgctxt "roleset:label"
 msgid "label"
-msgstr ""
+msgstr "etiket"
 
 #: src/modules/rolemenus/roleoptions.py:85
 msgctxt "roleset:label|desc"
