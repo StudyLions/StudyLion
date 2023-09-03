@@ -173,7 +173,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "ui:room_status|embed|field:bank|value:notexpiring"
 msgid "Next rent due {time} (- {coin}**{rent}**)"
-msgstr ""
+msgstr "Sonraki kiranın vadesi {time} (- {coin}**{rent}**)"
 
 #: src/modules/rooms/roomui.py:416
 #, possible-python-brace-format
