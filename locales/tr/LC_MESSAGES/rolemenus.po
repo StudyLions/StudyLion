@@ -707,7 +707,7 @@ msgstr "etiket"
 #: src/modules/rolemenus/roleoptions.py:85
 msgctxt "roleset:label|desc"
 msgid "A short button label for this role."
-msgstr ""
+msgstr "Bu rol için kısa buton etiketi."
 
 #: src/modules/rolemenus/roleoptions.py:90
 msgctxt "roleset:label|long_desc"
