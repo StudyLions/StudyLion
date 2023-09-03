@@ -286,17 +286,17 @@ msgstr "içinde"
 #: src/modules/reminders/cog.py:716
 msgctxt "cmd:remindme_in|desc"
 msgid "Schedule a reminder for a given amount of time in the future."
-msgstr ""
+msgstr "Gelecekte belirli bir süre için bir hatırlatıcı planlayın."
 
 #: src/modules/reminders/cog.py:720
 msgctxt "cmd:remindme_in|param:time"
 msgid "time"
-msgstr ""
+msgstr "zaman"
 
 #: src/modules/reminders/cog.py:721
 msgctxt "cmd:remindme_in|param:reminder"
 msgid "reminder"
-msgstr ""
+msgstr "hatırlatıcı"
 
 #: src/modules/reminders/cog.py:722
 msgctxt "cmd:remindme_in|param:every"
