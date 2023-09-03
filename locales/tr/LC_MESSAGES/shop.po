@@ -147,22 +147,22 @@ msgstr "oluştur"
 #: src/modules/shop/shops/colours.py:354
 msgctxt "cmd:editshop_colours_create|desc"
 msgid "Create a new colour role with the given colour."
-msgstr ""
+msgstr "Verilen renkten yeni bir renk rolü oluştur."
 
 #: src/modules/shop/shops/colours.py:358
 msgctxt "cmd:editshop_colours_create|param:colour"
 msgid "colour"
-msgstr ""
+msgstr "renk"
 
 #: src/modules/shop/shops/colours.py:359
 msgctxt "cmd:editshop_colours_create|param:name"
 msgid "name"
-msgstr ""
+msgstr "isim"
 
 #: src/modules/shop/shops/colours.py:360
 msgctxt "cmd:editshop_colours_create|param:price"
 msgid "price"
-msgstr ""
+msgstr "fiyat"
 
 #: src/modules/shop/shops/colours.py:365
 msgctxt "cmd:editshop_colours_create|param:colour|desc"
