@@ -333,12 +333,12 @@ msgstr "{tick} Fiyat {coin}**{price}** değerine ayarlandı"
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_edit|resp:done|line:role"
 msgid "{tick} Updated role to {mention}"
-msgstr ""
+msgstr "{tick} Rol {mention} olarak güncellendi"
 
 #: src/modules/shop/shops/colours.py:658
 msgctxt "cmd:editshop_colours_edit|resp:done|embed:title"
 msgid "Colour Role Updated"
-msgstr ""
+msgstr "Renk Rolü Güncellendi"
 
 #: src/modules/shop/shops/colours.py:664
 msgctxt "cmd:editshop_colours_auto"
