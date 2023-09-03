@@ -330,7 +330,7 @@ msgstr "Çalışma İstatistikleri"
 #: src/modules/statistics/settings.py:343
 msgctxt "ui:statistics_config|menu:visible_stats|item:text"
 msgid "Message Activity"
-msgstr ""
+msgstr "Mesaj Aktivitesi"
 
 #: src/modules/statistics/settings.py:351
 msgctxt "ui:statistics_config|menu:visible_stats|item:anki"
