@@ -1029,7 +1029,7 @@ msgstr " **{role}** rolünü aldın"
 #, possible-python-brace-format
 msgctxt "rolemenu|select|expires_at"
 msgid "The role will expire at {timestamp}."
-msgstr ""
+msgstr "Rol {timestamp} tarihinde geçersiz olacak."
 
 #: src/modules/rolemenus/rolemenu.py:717
 #, possible-python-brace-format
