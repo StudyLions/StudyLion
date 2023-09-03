@@ -437,7 +437,7 @@ msgstr "menü"
 #: src/modules/rolemenus/cog.py:1056
 msgctxt "cmd:rolemenu_delete|param:name|desc"
 msgid "Name of the rolemenu to delete."
-msgstr ""
+msgstr "Silinecek rol menü adı."
 
 #: src/modules/rolemenus/cog.py:1071
 msgctxt "cmd:rolemenu_delete|error:author_perms"
@@ -445,12 +445,14 @@ msgid ""
 "You need the `MANAGE_ROLES` permission in order to manage the server role "
 "menus."
 msgstr ""
+"Bu sunucudaki rol menülerini düzenleyebilmek için `MANAGE_ROLES` yetkisine "
+"sahip olman gerekmektedir."
 
 #: src/modules/rolemenus/cog.py:1094
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delete|error:menu_not_found"
 msgid "This server does not have a role menu called `{name}`!"
-msgstr ""
+msgstr "Bu sunucuda `{name}` adında bir rol menüsü bulunmuyor!"
 
 #: src/modules/rolemenus/cog.py:1102
 #, possible-python-brace-format
