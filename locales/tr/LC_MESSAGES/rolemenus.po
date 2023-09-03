@@ -856,12 +856,12 @@ msgstr "Bu rol bundan sonra {duration} süre sonra sona erecektir."
 #: src/modules/rolemenus/roleoptions.py:285
 msgctxt "roleset:duration|set_response:unset"
 msgid "This role will no longer expire after being selected."
-msgstr ""
+msgstr "Bu rolün süresi artık seçildikten sonra sona ermeyecektir."
 
 #: src/modules/rolemenus/templates.py:53
 msgctxt "template:simple|name"
 msgid "Simple Menu"
-msgstr ""
+msgstr "Basit Menü"
 
 #: src/modules/rolemenus/templates.py:57
 msgctxt "template:simple|desc"
