@@ -223,7 +223,7 @@ msgstr "Mesajlar"
 #: src/modules/ranks/settings.py:36
 msgctxt "guildset:rank_type|input_pattern:voice"
 msgid "voice|study"
-msgstr ""
+msgstr "ses|çalışma"
 
 #: src/modules/ranks/settings.py:37
 msgctxt "guildset:rank_type|input_pattern:voice"
