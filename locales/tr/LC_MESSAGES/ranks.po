@@ -284,6 +284,8 @@ msgstr ""
 msgctxt "guildset:rank_type|set_response|type:xp"
 msgid "Members will be awarded activity ranks based on `Message XP Earned`."
 msgstr ""
+"Üyeler 'Kazanılan Mesaj XP' ne göre aktivite rütbeleri ile "
+"ödüllendirilecektir."
 
 #: src/modules/ranks/settings.py:91
 #, possible-python-brace-format
@@ -294,7 +296,7 @@ msgstr ""
 #: src/modules/ranks/settings.py:103
 msgctxt "guildset:rank_channel"
 msgid "rank_channel"
-msgstr ""
+msgstr "rütbe_kanalı"
 
 #: src/modules/ranks/settings.py:106
 msgctxt "guildset:rank_channel|desc"
