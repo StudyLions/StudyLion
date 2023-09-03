@@ -154,7 +154,7 @@ msgstr "Yazmaya başla sonra iptal edilecek hatırlatıcıyı seç."
 #: src/modules/reminders/cog.py:488
 msgctxt "cmd:reminders_cancel|error:no_reminders"
 msgid "There are no reminders to cancel!"
-msgstr ""
+msgstr "İptal edilecek hatırlatıcı bulunmamaktadır!"
 
 #: src/modules/reminders/cog.py:512
 msgctxt "cmd:reminders_cancel|error:no_match"
