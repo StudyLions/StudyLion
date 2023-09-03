@@ -232,6 +232,8 @@ msgid ""
 "When set, members with *any* of these roles will not appear on the "
 "/leaderboard ranking list."
 msgstr ""
+"Ayarlandığında bu rollerden **herhangi birinde** bulunan kullanıcılar "
+"/leaderboard rütbe sıralamasında gösterilmeyecektir."
 
 #: src/modules/statistics/settings.py:167
 msgctxt "guildset:unranked_roles|accepts"
