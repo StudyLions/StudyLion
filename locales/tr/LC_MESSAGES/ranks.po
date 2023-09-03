@@ -55,7 +55,7 @@ msgid ""
 "I have insufficient permissions to assign the following role(s):\n"
 "{roles}"
 msgstr ""
-"Sıradaki rolleri atamak için iznim yeterli değil\n"
+"Sıradaki rolleri atamak için yeterli iznim yok:\n"
 "{roller}"
 
 #: src/modules/ranks/cog.py:574
