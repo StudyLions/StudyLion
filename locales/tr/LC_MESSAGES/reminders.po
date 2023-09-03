@@ -77,17 +77,17 @@ msgstr "göster"
 #: src/modules/reminders/cog.py:362
 msgctxt "cmd:reminders_show|desc"
 msgid "Display your current reminders."
-msgstr ""
+msgstr "Şimdiki hatırlatıcılarınızı görüntüleyin."
 
 #: src/modules/reminders/cog.py:378
 msgctxt "cmd:reminders_show|close_elsewhere"
 msgid "Closing since the list was opened elsewhere."
-msgstr ""
+msgstr "Liste başka bir yerde açıldığından dolayı kapatılıyor."
 
 #: src/modules/reminders/cog.py:390
 msgctxt "cmd:reminders_clear"
 msgid "clear"
-msgstr ""
+msgstr "temizle"
 
 #: src/modules/reminders/cog.py:393
 msgctxt "cmd:reminders_clear|desc"
