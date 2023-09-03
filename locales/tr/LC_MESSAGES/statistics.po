@@ -302,6 +302,8 @@ msgstr "varsayılan_istatistik"
 msgctxt "guildset:default_stat|desc"
 msgid "Statistic type to display by default in setting dialogues."
 msgstr ""
+"Diyalogların ayarlanmasında varsayılan olarak görüntülenecek istatistik "
+"türü."
 
 #: src/modules/statistics/settings.py:271
 msgctxt "guildset:default_stat|long_desc"
