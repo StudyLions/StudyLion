@@ -455,6 +455,8 @@ msgctxt "modal:goal_editor|field:voice_goal|error:NAN"
 msgid ""
 "The provided study time goal `{input}` is not a number! Please try again."
 msgstr ""
+"Belirtilen çalışma zamanı hedefi `{input}` bir sayı değil! Lütfen tekrar "
+"deneyin."
 
 #: src/modules/statistics/ui/weeklymonthly.py:223
 #, possible-python-brace-format
