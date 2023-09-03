@@ -465,7 +465,7 @@ msgstr ""
 #: src/modules/rolemenus/cog.py:1107
 msgctxt "cmd:rolemenu_delete|confirm|button:yes"
 msgid "Yes, Delete Now"
-msgstr ""
+msgstr "Evet, şimdi sil"
 
 #: src/modules/rolemenus/cog.py:1112
 msgctxt "cmd:rolemenu_delete|confirm|button:no"
