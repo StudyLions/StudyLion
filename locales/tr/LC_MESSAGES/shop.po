@@ -289,7 +289,7 @@ msgstr "Bu renk rolüne verilecek yeni isim."
 #: src/modules/shop/shops/colours.py:537
 msgctxt "cmd:editshop_colours_edit|param:colour|desc"
 msgid "New colour for the colour role (as hex, e.g. #AB12AB)."
-msgstr ""
+msgstr "Yeni renk rolüne yeni renk verin (Hex kodu olarak ör. #AB12AB)."
 
 #: src/modules/shop/shops/colours.py:541
 msgctxt "cmd:editshop_colours_edit|param:price|desc"
