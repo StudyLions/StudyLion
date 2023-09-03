@@ -160,7 +160,7 @@ msgstr "sezon_başlat"
 #: src/modules/statistics/settings.py:91
 msgctxt "guildset:season_start|desc"
 msgid "Start of the current statistics season."
-msgstr ""
+msgstr "Şu anki istatistik sezonunun başlangıcı."
 
 #: src/modules/statistics/settings.py:95
 msgctxt "guildset:season_start|long_desc"
