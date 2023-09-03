@@ -864,7 +864,7 @@ msgstr "Rütbe Mesajı"
 #: src/modules/ranks/ui/editor.py:201
 msgctxt "ui:rank_editor|input:message|placeholder"
 msgid "Congratulatory message sent to the user upon achieving this rank."
-msgstr ""
+msgstr "Kullanıcı bu rütbeye ulaştığında tebrik edici mesaj gönderildi. "
 
 #: src/modules/ranks/ui/editor.py:207
 #, possible-python-brace-format
