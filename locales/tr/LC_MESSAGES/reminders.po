@@ -66,13 +66,13 @@ msgstr "Her `{duration}`"
 #: src/modules/reminders/cog.py:352
 msgctxt "cmd:reminders"
 msgid "reminders"
-msgstr ""
+msgstr "hatırlatıcılar"
 
 #. No help string
 #: src/modules/reminders/cog.py:359
 msgctxt "cmd:reminders_show"
 msgid "show"
-msgstr ""
+msgstr "göster"
 
 #: src/modules/reminders/cog.py:362
 msgctxt "cmd:reminders_show|desc"
