@@ -1092,7 +1092,7 @@ msgstr ""
 #: src/modules/rolemenus/menuoptions.py:123
 msgctxt "menuset:refunds"
 msgid "refunds"
-msgstr ""
+msgstr "iadeler"
 
 #: src/modules/rolemenus/menuoptions.py:126
 msgctxt "menuset:refunds|desc"
