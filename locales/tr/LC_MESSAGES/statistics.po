@@ -309,6 +309,8 @@ msgstr ""
 msgctxt "guildset:default_stat|long_desc"
 msgid "Which statistic type to display by default in setting dialogues."
 msgstr ""
+"Diyalogların ayarlanmasında varsayılan olarak hangi istatistik türünün "
+"görüntüleneceği."
 
 #: src/modules/statistics/settings.py:304
 msgctxt "ui:statistics_config|menu:unranked_roles|placeholder"
