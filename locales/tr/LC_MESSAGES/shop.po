@@ -195,6 +195,8 @@ msgid ""
 "I do not have permission to create server roles!\n"
 "Please either give me this permission, or create the role manually and use `/editshop colours add` instead."
 msgstr ""
+"Sunucuda rol oluşturmaya yetkim yok!\n"
+"Ya bana bu izni verin ya da manuel olarak ve `/editshop colours add` kullanarak kendiniz oluşturun."
 
 #: src/modules/shop/shops/colours.py:421
 msgctxt "cmd:editshop_colours_create|error:max_colours"
