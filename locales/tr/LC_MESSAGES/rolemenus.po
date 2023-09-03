@@ -508,7 +508,7 @@ msgstr "Rolün ekleneceği menünün adı"
 #: src/modules/rolemenus/cog.py:1171
 msgctxt "cmd:rolemenu_addrole|param:role|desc"
 msgid "Role to add to the menu"
-msgstr ""
+msgstr "Menüye eklenecek rol"
 
 #: src/modules/rolemenus/cog.py:1179
 msgctxt "cmd:rolemenu_addrole|param:duration|desc"
