@@ -678,6 +678,8 @@ msgid ""
 "You have insufficient permissions to assign {mention} as a rank role! You "
 "may only manage roles below your top role."
 msgstr ""
+"{mention}'u rütbe rolü olarak atamak için yeterli izniniz yok! Sadece en "
+"baştaki rolünüzden aşağıda olan rolleri yönetebilirsiniz!"
 
 #: src/modules/ranks/ui/overview.py:175
 msgctxt "ui:rank_overview|menu:roles|error:above_caller|title"
@@ -695,6 +697,8 @@ msgid ""
 "The role is managed by another application or integration, and cannot be a "
 "rank!"
 msgstr ""
+"Bu rol başka bir uygulama veya entegrasyon tarafından yönetiliyor ve bir "
+"rütbe olamaz!"
 
 #: src/modules/ranks/ui/overview.py:218
 msgctxt ""
