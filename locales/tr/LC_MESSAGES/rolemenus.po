@@ -216,7 +216,7 @@ msgstr "Menü mesaj gövdesinde kullanmak için şablon"
 #: src/modules/rolemenus/cog.py:635
 msgctxt "cmd:rolemenu_create|param:rawmessage"
 msgid "Attach a custom menu message to use"
-msgstr ""
+msgstr "Kullanmak için özel mesaj menüsü ekleyin"
 
 #: src/modules/rolemenus/cog.py:664
 msgctxt "cmd:rolemenu_create|error:author_perms"
