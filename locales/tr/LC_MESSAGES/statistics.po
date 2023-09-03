@@ -265,7 +265,7 @@ msgstr "görünen_istatistikler"
 #: src/modules/statistics/settings.py:217
 msgctxt "guildset:visible_stats|desc"
 msgid "Which statistics will be visible in the statistics commands."
-msgstr ""
+msgstr "İstatistik komutunda hangi istatistiklerin gösterileceği."
 
 #: src/modules/statistics/settings.py:221
 msgctxt "guildset:visible_stats|desc"
