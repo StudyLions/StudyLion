@@ -179,7 +179,7 @@ msgstr ""
 #: src/modules/statistics/settings.py:101
 msgctxt "guildset:season_start|accepts"
 msgid "The season start time in the form YYYY-MM-DD HH:MM"
-msgstr ""
+msgstr "Bu sezon başlangıç zamanı formatı YYYY-AA-GG SS:DD"
 
 #: src/modules/statistics/settings.py:105
 msgctxt "guildset:season_start|notset"
