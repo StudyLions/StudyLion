@@ -252,7 +252,7 @@ msgstr ""
 #: src/modules/statistics/settings.py:214
 msgctxt "guildset:visible_stats"
 msgid "visible_stats"
-msgstr ""
+msgstr "görünen_istatistikler"
 
 #: src/modules/statistics/settings.py:217
 msgctxt "guildset:visible_stats|desc"
