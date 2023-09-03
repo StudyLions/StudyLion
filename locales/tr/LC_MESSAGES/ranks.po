@@ -122,12 +122,14 @@ msgid ""
 "Rank update notifications will be sent via **direct message** when possible,"
 " otherwise to {channel}"
 msgstr ""
+"Rütbe güncellemeleri mümkünse **direkt mesaj** ile gönderilecek, değilse "
+"{channel}' a gönderilecektir."
 
 #: src/modules/ranks/cog.py:754
 msgctxt ""
 "cmd:configure_ranks|response:updated|setting:notification|withdm_nochannel"
 msgid "Rank update notifications will be sent via **direct message**."
-msgstr ""
+msgstr "Rütbe güncellemeleri mümkünse **direkt mesaj** ile gönderilecektir."
 
 #: src/modules/ranks/cog.py:760
 #, possible-python-brace-format
