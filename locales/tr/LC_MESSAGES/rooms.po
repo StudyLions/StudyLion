@@ -78,16 +78,17 @@ msgctxt "ui:room_status|button:deposit|error:insufficient_funds"
 msgid ""
 "You cannot deposit {coin}**{amount}**! You only have {coin}**{balance}**."
 msgstr ""
+" {coin}**{amount}** yatıramazsın! Sadece {coin}**{balance}** kadarın var."
 
 #: src/modules/rooms/roomui.py:160
 msgctxt "ui:room_status|button:deposit|label"
 msgid "Deposit"
-msgstr ""
+msgstr "Depozito"
 
 #: src/modules/rooms/roomui.py:171
 msgctxt "ui:room_status|button:edit|label"
 msgid "Edit Room"
-msgstr ""
+msgstr "Oda Düzenle"
 
 #: src/modules/rooms/roomui.py:204
 msgctxt "ui:room_status|button:timer|modal:add_timer|title"
