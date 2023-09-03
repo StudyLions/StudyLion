@@ -876,7 +876,7 @@ msgstr "İki sütun"
 #: src/modules/rolemenus/templates.py:100
 msgctxt "template:two_column|desc"
 msgid "A compact two column role layout. Excludes prices and durations."
-msgstr ""
+msgstr "Kompakt iki sütunlu rol düzeni. Fiyatlar ve süreler hariçtir."
 
 #: src/modules/rolemenus/templates.py:131
 msgctxt "template:three_column|name"
