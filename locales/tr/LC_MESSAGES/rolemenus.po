@@ -795,12 +795,12 @@ msgstr "Rol açıklaması kaldırıldı."
 #: src/modules/rolemenus/roleoptions.py:218
 msgctxt "roleset:price"
 msgid "price"
-msgstr ""
+msgstr "ücret"
 
 #: src/modules/rolemenus/roleoptions.py:221
 msgctxt "roleset:price|desc"
 msgid "Price of the role, in LionCoins."
-msgstr ""
+msgstr "LionCoin cinsinden rolün ücreti."
 
 #: src/modules/rolemenus/roleoptions.py:225
 msgctxt "roleset:price|long_desc"
