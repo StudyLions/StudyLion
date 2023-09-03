@@ -67,7 +67,7 @@ msgstr "Geçersiz rütbe rolünü kaldırıyorum."
 #, possible-python-brace-format
 msgctxt "rank_refresh|remove_roles|small_error"
 msgid "*Could not remove ranks from {member}*"
-msgstr "*{member}'den rütbeleri kaldıramıyorum*"
+msgstr "*{member}'den rütbeler kaldırılamıyor*"
 
 #: src/modules/ranks/cog.py:595
 msgctxt "rank_refresh|remove_roles|error:too_many_issues"
