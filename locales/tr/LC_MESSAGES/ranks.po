@@ -719,7 +719,7 @@ msgstr ""
 #: src/modules/ranks/ui/overview.py:235
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|title"
 msgid "Could not create rank!"
-msgstr ""
+msgstr "Rol yaratılamıyor!"
 
 #: src/modules/ranks/ui/overview.py:259
 msgctxt "ui:rank_overview|menu:roles|placeholder"
