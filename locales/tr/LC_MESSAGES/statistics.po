@@ -698,7 +698,7 @@ msgstr ""
 #: src/modules/statistics/ui/leaderboard.py:428
 msgctxt "ui:leaderboard|mode:voice|message:empty|desc"
 msgid "There has been no voice activity in this period!"
-msgstr ""
+msgstr "Bu zaman diliminde ses aktivitesi bulunmuyor!"
 
 #: src/modules/statistics/ui/leaderboard.py:433
 msgctxt "ui:leaderboard|mode:text|message:empty|desc"
