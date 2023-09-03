@@ -582,7 +582,7 @@ msgstr "Satın alınabilecek bir renk rolü bulunmamaktadır!"
 #: src/modules/shop/shops/colours.py:1166
 msgctxt "ui:colourstore|menu:buycolours|placeholder"
 msgid "Select a colour role to purchase!"
-msgstr ""
+msgstr "Satın almak istediğiniz renk rolünü seçin!"
 
 #: src/modules/shop/shops/colours.py:1195
 #, possible-python-brace-format
