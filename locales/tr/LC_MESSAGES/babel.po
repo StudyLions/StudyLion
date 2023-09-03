@@ -282,12 +282,12 @@ msgstr "Almanca"
 #: src/babel/enums.py:51
 msgctxt "localenames|locale:fi"
 msgid "Finnish"
-msgstr ""
+msgstr "Fince"
 
 #: src/babel/enums.py:52
 msgctxt "localenames|locale:fr"
 msgid "French"
-msgstr ""
+msgstr "Fransızca"
 
 #: src/babel/enums.py:53
 msgctxt "localenames|locale:de"
