@@ -99,17 +99,17 @@ msgstr "`Anki`"
 #: src/modules/statistics/settings.py:42
 msgctxt "settype:stat|input_format:voice"
 msgid "Voice"
-msgstr ""
+msgstr "Ses"
 
 #: src/modules/statistics/settings.py:43
 msgctxt "settype:stat|input_format:text"
 msgid "Text"
-msgstr ""
+msgstr "Metin"
 
 #: src/modules/statistics/settings.py:44
 msgctxt "settype:stat|input_format:anki"
 msgid "Anki"
-msgstr ""
+msgstr "Anki"
 
 #: src/modules/statistics/settings.py:47
 msgctxt "settype:stat|input_pattern:voice"
