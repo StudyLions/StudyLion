@@ -128,12 +128,12 @@ msgstr ""
 #: src/modules/rooms/roomui.py:336
 msgctxt "ui:room_status|menu:invite_menu|placeholder:notcapped"
 msgid "Add Members"
-msgstr ""
+msgstr "Üyeler Ekle"
 
 #: src/modules/rooms/roomui.py:359
 msgctxt "ui:room_status|menu:kick_menu|placeholder"
 msgid "Remove Members"
-msgstr ""
+msgstr "Üyeler Kaldır"
 
 #: src/modules/rooms/roomui.py:367
 msgctxt "ui:room_status|embed|title"
