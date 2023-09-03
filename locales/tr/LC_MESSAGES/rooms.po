@@ -439,7 +439,7 @@ msgstr "transfer"
 #: src/modules/rooms/cog.py:755
 msgctxt "cmd:room_transfer|desc"
 msgid "Transfer your private room to another room member. Not reversible!"
-msgstr ""
+msgstr "Özel odanı başka bir oda üyesine transfer et. Geri döndürülemez!"
 
 #: src/modules/rooms/cog.py:759
 msgctxt "cmd:room_transfer|param:new_owner"
@@ -488,7 +488,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:837
 msgctxt "cmd:room_deposit"
 msgid "deposit"
-msgstr ""
+msgstr "depozito"
 
 #: src/modules/rooms/cog.py:840
 msgctxt "cmd:room_deposit|desc"
