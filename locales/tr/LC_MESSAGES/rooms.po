@@ -195,7 +195,7 @@ msgstr "oda"
 #: src/modules/rooms/cog.py:307
 msgctxt "cmd:room|desc"
 msgid "Base command group for private room configuration."
-msgstr ""
+msgstr "Özel komut yapılandırması için temel komut grubu."
 
 #: src/modules/rooms/cog.py:314
 msgctxt "cmd:room_rent"
