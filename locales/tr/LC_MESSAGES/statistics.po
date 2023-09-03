@@ -427,12 +427,12 @@ msgstr "Çalışma zamanı hedefi"
 #: src/modules/statistics/ui/weeklymonthly.py:185
 msgctxt "modal:goal_editor|field:voice_goal|placeholder"
 msgid "Enter a number of hours of study to aim for."
-msgstr ""
+msgstr "Hedeflediğiniz çalışma saati sayınızı giriniz."
 
 #: src/modules/statistics/ui/weeklymonthly.py:190
 msgctxt "modal:goal_editor|field:text_goal|label"
 msgid "Message goal"
-msgstr ""
+msgstr "Mesaj hedefi"
 
 #: src/modules/statistics/ui/weeklymonthly.py:194
 msgctxt "modal:goal_editor|field:text_goal|placeholder"
