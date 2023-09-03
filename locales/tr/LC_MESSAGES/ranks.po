@@ -265,7 +265,7 @@ msgstr ""
 #: src/modules/ranks/settings.py:59
 msgctxt "guildset:rank_type|accepts"
 msgid "Voice/Exp/Messages"
-msgstr ""
+msgstr "Ses/Exp/Mesajlar"
 
 #: src/modules/ranks/settings.py:71
 msgctxt "guildset:rank_type|set_response|type:voice"
