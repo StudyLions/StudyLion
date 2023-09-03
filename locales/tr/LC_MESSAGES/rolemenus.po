@@ -322,7 +322,7 @@ msgstr "özel_mesaj"
 #: src/modules/rolemenus/cog.py:814
 msgctxt "cmd:rolemenu_edit|param:name|desc"
 msgid "Name of the menu to edit"
-msgstr ""
+msgstr "Düzenlenecek menü adı"
 
 #: src/modules/rolemenus/cog.py:818
 msgctxt "cmd:rolemenu_edit|param:channel|desc"
