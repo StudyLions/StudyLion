@@ -632,12 +632,12 @@ msgstr "Anki İstatistikleri"
 #: src/modules/statistics/ui/profile.py:190
 msgctxt "modal:profile_editor|resp:success"
 msgid "Your profile has been updated!"
-msgstr ""
+msgstr "Profiliniz güncellenmiştir!"
 
 #: src/modules/statistics/ui/profile.py:200
 msgctxt "ui:profile_card|button:edit|label"
 msgid "Edit Profile Badges"
-msgstr ""
+msgstr "Profil Rozetlerini Güncelle"
 
 #: src/modules/statistics/ui/profile.py:219
 msgctxt "ui:profile_card|button:statistics|label:hide"
