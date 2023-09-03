@@ -515,7 +515,7 @@ msgstr "rol"
 #: src/modules/shop/shops/colours.py:976
 msgctxt "cmd:editshop_colours_remove"
 msgid "delete_role"
-msgstr ""
+msgstr "rolü_sil"
 
 #: src/modules/shop/shops/colours.py:981
 msgctxt "cmd:editshop_colours_remove|param:role|desc"
