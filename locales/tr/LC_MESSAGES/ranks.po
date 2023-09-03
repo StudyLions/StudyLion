@@ -714,7 +714,7 @@ msgstr ""
 #: src/modules/ranks/ui/overview.py:229
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:other"
 msgid "I am not able to manage the selected role, so it cannot be a rank!"
-msgstr ""
+msgstr "Seçilen rolü yönetemiyorum bu yüzden bu bir rütbe olamaz!"
 
 #: src/modules/ranks/ui/overview.py:235
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|title"
