@@ -481,7 +481,7 @@ msgstr "{loading} İade edilen üyeler: **{count}/{total}** ."
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_clear|resp:done|line:refunded"
 msgid "{tick} Refunded **{total}/{total}** members."
-msgstr ""
+msgstr "{tick} **{total}/{total}** üyeye iade edildi."
 
 #: src/modules/shop/shops/colours.py:914
 #, possible-python-brace-format
