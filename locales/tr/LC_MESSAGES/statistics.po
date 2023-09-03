@@ -592,7 +592,7 @@ msgstr "Global İstatistikler"
 #: src/modules/statistics/ui/profile.py:41
 msgctxt "modal:profile_editor|field:editor|label"
 msgid "Profile Tags (One line per tag)"
-msgstr ""
+msgstr "Profil Etiketleri (Her satıra bir tane etiket)"
 
 #: src/modules/statistics/ui/profile.py:45
 msgctxt "modal:profile_editor|field:editor|placeholder"
