@@ -683,12 +683,12 @@ msgstr ""
 #: src/modules/statistics/ui/leaderboard.py:362
 msgctxt "ui:leaderboard|button:jump|input:title"
 msgid "Jump to page"
-msgstr ""
+msgstr "Sayfaya git"
 
 #: src/modules/statistics/ui/leaderboard.py:366
 msgctxt "ui:leaderboard|button:jump|input:question"
 msgid "Page number to jump to"
-msgstr "Atlamak için sayfa numarası"
+msgstr "Gidilecek sayfa numarası"
 
 #: src/modules/statistics/ui/leaderboard.py:377
 msgctxt "ui:leaderboard|button:jump|error:invalid_page"
