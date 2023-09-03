@@ -316,7 +316,7 @@ msgstr "Bu hatırlatıcı ne üzerine olacak?"
 #: src/modules/reminders/cog.py:727
 msgctxt "cmd:remindme_in|param:every|desc"
 msgid "How often to repeat this reminder. (e.g. 1 day, or 2h)"
-msgstr ""
+msgstr "Bu hatırlatıcının ne kadar sürede tekrarlanacağı. (ÖR. 1 gün, or 2s)"
 
 #: src/modules/reminders/cog.py:745
 msgctxt "cmd_remindme_in|error:too_many|desc"
