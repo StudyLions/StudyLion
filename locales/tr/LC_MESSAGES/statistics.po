@@ -627,7 +627,7 @@ msgstr "Metin İstatistikleri"
 #: src/modules/statistics/ui/profile.py:102
 msgctxt "menu:stat_type|opt:anki|name"
 msgid "Anki Statistics"
-msgstr ""
+msgstr "Anki İstatistikleri"
 
 #: src/modules/statistics/ui/profile.py:190
 msgctxt "modal:profile_editor|resp:success"
