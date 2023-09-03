@@ -729,7 +729,7 @@ msgstr ""
 #: src/modules/ranks/ui/overview.py:276
 msgctxt "ui:rank_overview|menu:ranks|placeholder"
 msgid "View or edit rank"
-msgstr ""
+msgstr "Rütbeyi göster veya edile"
 
 #: src/modules/ranks/ui/overview.py:362
 msgctxt "ui:rank_overview|embed:noranks|desc"
