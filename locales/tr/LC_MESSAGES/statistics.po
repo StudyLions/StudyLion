@@ -437,12 +437,12 @@ msgstr "Mesaj hedefi"
 #: src/modules/statistics/ui/weeklymonthly.py:194
 msgctxt "modal:goal_editor|field:text_goal|placeholder"
 msgid "Enter a message count to aim for."
-msgstr ""
+msgstr "Hedeflediğiniz mesaj sayısını giriniz."
 
 #: src/modules/statistics/ui/weeklymonthly.py:199
 msgctxt "modal:goal_editor|field:anki_goal|label"
 msgid "Card goal"
-msgstr ""
+msgstr "Kart Hedefi"
 
 #: src/modules/statistics/ui/weeklymonthly.py:203
 msgctxt "modal:goal_editor|field:anki_goal|label"
