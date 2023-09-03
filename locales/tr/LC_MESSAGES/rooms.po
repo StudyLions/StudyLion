@@ -616,7 +616,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "guildset:room_category|set_using"
 msgid "{cmd} or category selector below."
-msgstr ""
+msgstr "{cmd} veya aşağıdaki kategori seçicisi"
 
 #: src/modules/rooms/settings.py:76
 msgctxt "guildset:rooms_price"
