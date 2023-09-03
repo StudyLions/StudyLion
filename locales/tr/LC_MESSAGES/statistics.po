@@ -606,7 +606,7 @@ msgstr ""
 #: src/modules/statistics/ui/profile.py:53
 msgctxt "modal:profile_editor|title"
 msgid "Profile Tag Editor"
-msgstr ""
+msgstr "Profil Etiketi Editörü"
 
 #: src/modules/statistics/ui/profile.py:71
 #, possible-python-brace-format
