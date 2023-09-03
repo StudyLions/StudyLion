@@ -505,12 +505,12 @@ msgstr "çıkart"
 #: src/modules/shop/shops/colours.py:971
 msgctxt "cmd:editshop_colours_remove|desc"
 msgid "Remove a specific colour role from the shop."
-msgstr ""
+msgstr "Belirli bir renk rolünü marketten kaldır."
 
 #: src/modules/shop/shops/colours.py:975
 msgctxt "cmd:editshop_colours_remove|param:role"
 msgid "role"
-msgstr ""
+msgstr "rol"
 
 #: src/modules/shop/shops/colours.py:976
 msgctxt "cmd:editshop_colours_remove"
