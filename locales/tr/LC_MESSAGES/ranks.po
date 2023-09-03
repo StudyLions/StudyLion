@@ -849,7 +849,7 @@ msgstr ""
 #: src/modules/ranks/ui/editor.py:166
 msgctxt "ui:rank_editor|input:reward|placeholder"
 msgid "LionCoins awarded upon achieving this rank"
-msgstr ""
+msgstr "Bu rütbeye ulaşıldığında verilen LionCoins"
 
 #: src/modules/ranks/ui/editor.py:181
 msgctxt "ui:rank_editor|input:reward|error:parse"
