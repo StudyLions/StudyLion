@@ -47,6 +47,8 @@ msgid ""
 "You need the `MANAGE_ROLES` permission in order to manage the server role "
 "menus."
 msgstr ""
+"Sunucunun rol menülerini güncelleyebilmek için `MANAGE_ROLES` yetkisine "
+"sahip olman gerekiyor."
 
 #: src/modules/rolemenus/cog.py:88
 msgctxt "ctxcmd:rolemenus|error:my_perms"
