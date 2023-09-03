@@ -708,7 +708,7 @@ msgstr ""
 #: src/modules/statistics/ui/leaderboard.py:438
 msgctxt "ui:leaderboard|mode:anki|message:empty|desc"
 msgid "There have been no Anki cards reviewed in this period!"
-msgstr ""
+msgstr "Bu zaman diliminde hiçbir Anki kartı bulunmamaktadır!"
 
 #: src/modules/statistics/ui/leaderboard.py:444
 msgctxt "ui:leaderboard|message:empty|title"
