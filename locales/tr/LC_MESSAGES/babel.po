@@ -342,7 +342,7 @@ msgstr "Polonyaca"
 #: src/babel/enums.py:63
 msgctxt "localenames|locale:pt-BR"
 msgid "Brazil Portuguese"
-msgstr ""
+msgstr "Brazilya Polonyaca"
 
 #: src/babel/enums.py:64
 msgctxt "localenames|locale:ro"
