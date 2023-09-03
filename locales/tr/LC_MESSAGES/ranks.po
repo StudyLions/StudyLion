@@ -55,8 +55,8 @@ msgid ""
 "I have insufficient permissions to assign the following role(s):\n"
 "{roles}"
 msgstr ""
-"Sıradaki rolleri atamak için yeterli iznim yok:\n"
-"{roller}"
+"Sıradaki rol(ler)i atamak için yeterli iznim yok:\n"
+"{roles}"
 
 #: src/modules/ranks/cog.py:574
 msgctxt "rank_refresh|remove_roles|audit"
