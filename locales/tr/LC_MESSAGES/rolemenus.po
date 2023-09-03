@@ -1142,7 +1142,7 @@ msgstr ""
 #: src/modules/rolemenus/menuoptions.py:174
 msgctxt "menuset:obtainable|notset"
 msgid "Unlimited."
-msgstr ""
+msgstr "Limitsiz."
 
 #: src/modules/rolemenus/menuoptions.py:188
 #, possible-python-brace-format
