@@ -64,7 +64,7 @@ msgstr "Oda Depozitosu"
 #: src/modules/rooms/roomui.py:94
 msgctxt "ui:room_status|button:deposit|modal:deposit|field:question|label"
 msgid "How many LionCoins do you want to deposit?"
-msgstr ""
+msgstr "Ne kadar LionCoins yatırmak istiyorsun?"
 
 #: src/modules/rooms/roomui.py:112
 #, possible-python-brace-format
