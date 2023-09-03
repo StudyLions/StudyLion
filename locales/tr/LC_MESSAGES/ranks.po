@@ -429,12 +429,12 @@ msgstr ""
 msgctxt ""
 "ui:rank_preview|button:delete|response:success|button:delete_role|response:success|desc"
 msgid "You have deleted the rank **{name}** along with the underlying role."
-msgstr ""
+msgstr "**{name}** rütbesini esas rolle birlikte sildiniz."
 
 #: src/modules/ranks/ui/preview.py:199
 msgctxt "ui:rank_preview|button:delete|label"
 msgid "Delete Rank"
-msgstr ""
+msgstr "Rütbe Sil"
 
 #: src/modules/ranks/ui/preview.py:219
 #, possible-python-brace-format
