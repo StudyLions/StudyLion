@@ -710,6 +710,8 @@ msgid ""
 "This role is above my top role in the role hierarchy, so I cannot add or "
 "remove it!"
 msgstr ""
+"Bu rol rol hiyerarşisinde baştaki rolümden daha üstte yer aldığından onu "
+"ekleyemiyor veya kaldıramıyorum!"
 
 #: src/modules/ranks/ui/overview.py:229
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:other"
