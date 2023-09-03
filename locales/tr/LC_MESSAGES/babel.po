@@ -337,7 +337,7 @@ msgstr "Norveççe"
 #: src/babel/enums.py:62
 msgctxt "localenames|locale:pl"
 msgid "Polish"
-msgstr ""
+msgstr "Polonyaca"
 
 #: src/babel/enums.py:63
 msgctxt "localenames|locale:pt-BR"
