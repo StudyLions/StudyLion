@@ -255,6 +255,8 @@ msgid ""
 "The type of statistic (messages | xp | voice hours) used to determine "
 "activity ranks."
 msgstr ""
+"Bu istatistik tipi(mesajlar| xp | ses saatleri) aktivite rütbelerini "
+"belirlemek için kullanılır."
 
 #: src/modules/ranks/settings.py:52
 msgctxt "guildset:rank_type|long_desc"
