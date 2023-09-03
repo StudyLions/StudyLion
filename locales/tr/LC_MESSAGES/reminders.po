@@ -316,12 +316,13 @@ msgstr "Bu hatırlatıcı ne üzerine olacak?"
 #: src/modules/reminders/cog.py:727
 msgctxt "cmd:remindme_in|param:every|desc"
 msgid "How often to repeat this reminder. (e.g. 1 day, or 2h)"
-msgstr "Bu hatırlatıcının ne kadar sürede tekrarlanacağı. (ÖR. 1 gün, or 2s)"
+msgstr ""
+"Bu hatırlatıcının ne kadar sürede tekrarlanacağı. (ÖR. 1 gün ya da 2s)"
 
 #: src/modules/reminders/cog.py:745
 msgctxt "cmd_remindme_in|error:too_many|desc"
 msgid "Sorry, you have reached the maximum of `25` reminders!"
-msgstr ""
+msgstr "Üzgünüm, maksimum `25` hatırlatıcı sayısına ulaştınız!"
 
 #: src/modules/reminders/cog.py:749
 msgctxt "cmd_remindme_in|error:too_many|title"
