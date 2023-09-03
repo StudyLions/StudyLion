@@ -592,7 +592,7 @@ msgstr ""
 #: src/modules/rolemenus/cog.py:1426
 msgctxt "cmd:rolemenu_editrole|param:role|desc"
 msgid "New server role this menu role should give."
-msgstr ""
+msgstr "Bu rol menünün vermesi gereken yeni sunucu rolü."
 
 #: src/modules/rolemenus/cog.py:1434
 msgctxt "cmd:rolemenu_editrole|param:duration|desc"
