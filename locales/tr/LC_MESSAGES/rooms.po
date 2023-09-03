@@ -93,7 +93,7 @@ msgstr "Oda Düzenle"
 #: src/modules/rooms/roomui.py:204
 msgctxt "ui:room_status|button:timer|modal:add_timer|title"
 msgid "Create Room Timer"
-msgstr ""
+msgstr "Oda Zamanlayıcısı Oluştur"
 
 #: src/modules/rooms/roomui.py:236
 msgctxt "ui:room_status|button:timer|timer_created"
