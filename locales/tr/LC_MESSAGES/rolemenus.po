@@ -871,7 +871,7 @@ msgstr "Menüdeki basit gömülü rollerin listesi"
 #: src/modules/rolemenus/templates.py:96
 msgctxt "template:two_column|name"
 msgid "Two Column"
-msgstr ""
+msgstr "İki sütun"
 
 #: src/modules/rolemenus/templates.py:100
 msgctxt "template:two_column|desc"
@@ -881,7 +881,7 @@ msgstr ""
 #: src/modules/rolemenus/templates.py:131
 msgctxt "template:three_column|name"
 msgid "Three Column"
-msgstr ""
+msgstr "Üç sütun"
 
 #: src/modules/rolemenus/templates.py:135
 msgctxt "template:three_column|desc"
