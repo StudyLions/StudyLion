@@ -595,7 +595,7 @@ msgstr ""
 #: src/modules/rooms/settings.py:37
 msgctxt "guildset:room_category|accepts"
 msgid "Private room category name or id."
-msgstr ""
+msgstr "Özel oda kategori adı veya idsi"
 
 #: src/modules/rooms/settings.py:51
 msgctxt "guildset:rooms_category|set_response:unset"
