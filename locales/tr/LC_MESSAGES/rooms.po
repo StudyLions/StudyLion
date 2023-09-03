@@ -44,7 +44,7 @@ msgstr "Özel Oda Yapılandırma ({commands[configure rooms]})"
 #: src/modules/rooms/settingui.py:102
 msgctxt "dash:economy|dropdown|placeholder"
 msgid "Private Room Panel"
-msgstr ""
+msgstr "Özel Oda Paneli"
 
 #: src/modules/rooms/roomui.py:56
 msgctxt "ui:room_status|error:owner_required"
