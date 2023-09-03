@@ -513,12 +513,12 @@ msgstr ""
 #: src/modules/statistics/ui/weeklymonthly.py:301
 msgctxt "modal:goal_editor|title"
 msgid "Weekly goal editor"
-msgstr "Haftalık görev düzenleyicisi"
+msgstr "Haftalık hedef düzenleyicisi"
 
 #: src/modules/statistics/ui/weeklymonthly.py:306
 msgctxt "modal:goal_editor|monthly|title"
 msgid "Monthly goal editor"
-msgstr "Aylık görev düzenleyicisi"
+msgstr "Aylık hedef düzenleyicisi"
 
 #: src/modules/statistics/ui/weeklymonthly.py:499
 msgctxt "ui:weeklymonthly|button:edit_goals|label"
