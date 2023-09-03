@@ -554,7 +554,7 @@ msgstr "Hoşgeldiniz {members}"
 #, possible-python-brace-format
 msgctxt "room|notify:transfer|description"
 msgid "{old_owner} has transferred private room ownership to {new_owner}"
-msgstr ""
+msgstr "{old_owner} özel oda sahipliğini {new_owner}'a aktardı"
 
 #: src/modules/rooms/room.py:247
 msgctxt "room|embed:expiry|title"
