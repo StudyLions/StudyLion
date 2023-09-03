@@ -663,6 +663,9 @@ msgid ""
 "UI, or through the {cmds[room invite]} command. This setting limits the "
 "maximum number of members a private room may hold."
 msgstr ""
+"Özel oda sahipleri başka üyeleri kullanıcı arayüzü yoluyla veya {cmds[room "
+"invite]} komuduyla kendi özel odalarına davet edebilir. Bu ayar özel bir "
+"odanın tutabileceği maksimum üye sayısını sınırlar."
 
 #: src/modules/rooms/settings.py:125
 msgctxt "guildset:rooms_slots|accepts"
