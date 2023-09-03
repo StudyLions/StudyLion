@@ -826,7 +826,7 @@ msgstr ""
 #: src/modules/rolemenus/roleoptions.py:255
 msgctxt "roleset:duration"
 msgid "duration"
-msgstr ""
+msgstr "süre"
 
 #: src/modules/rolemenus/roleoptions.py:258
 msgctxt "roleset:duration|desc"
