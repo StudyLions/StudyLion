@@ -551,7 +551,7 @@ msgstr "Belirlenemeyen sebepten dolayı rolü silme başarısız oldu."
 #: src/modules/shop/shops/colours.py:1043
 msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
 msgid "Could not find the role in order to delete it."
-msgstr ""
+msgstr "Silinecek rol bulunamadı."
 
 #: src/modules/shop/shops/colours.py:1054
 #, possible-python-brace-format
