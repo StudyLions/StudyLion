@@ -649,7 +649,7 @@ msgstr ""
 #: src/modules/ranks/ui/config.py:175
 msgctxt "dash:rank|dropdown|placeholder"
 msgid "Activity Rank Panel"
-msgstr ""
+msgstr "Aktivite Rütbe Paneli"
 
 #: src/modules/ranks/ui/overview.py:92
 msgctxt "ui:rank_overview|button:auto|label"
