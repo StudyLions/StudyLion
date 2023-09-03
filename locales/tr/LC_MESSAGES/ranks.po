@@ -652,7 +652,7 @@ msgstr "Rütbe Yapılandırma Paneli"
 #: src/modules/ranks/ui/config.py:171
 msgctxt "dash:rank|title"
 msgid "Rank Configuration ({commands[configure ranks]})"
-msgstr ""
+msgstr "Rütbe Yapılandırma ({commands[configure ranks]})"
 
 #: src/modules/ranks/ui/config.py:175
 msgctxt "dash:rank|dropdown|placeholder"
