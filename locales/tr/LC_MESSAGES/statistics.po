@@ -34,7 +34,7 @@ msgstr "kldsalkdlkasldkaskldlkas"
 #: src/modules/statistics/cog.py:55
 msgctxt "cmd:stats"
 msgid "stats"
-msgstr ""
+msgstr "istatistikler"
 
 #: src/modules/statistics/cog.py:58
 msgctxt "cmd:stats|desc"
