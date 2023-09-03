@@ -213,11 +213,13 @@ msgid ""
 "An unknown Discord error occurred while creating your colour role!\n"
 "Please try again in a few minutes."
 msgstr ""
+"Sizin renk rolünüzü oluştururken bilinmeyen bir Discord hatası oluştu!\n"
+"Birkaç dakika sonra lütfen tekrar deneyin."
 
 #: src/modules/shop/shops/colours.py:490
 msgctxt "cmd:editshop_colours_create|resp:done|title"
 msgid "Colour Role Created"
-msgstr ""
+msgstr "Renk Rolü Oluşturukdu"
 
 #: src/modules/shop/shops/colours.py:494
 #, possible-python-brace-format
