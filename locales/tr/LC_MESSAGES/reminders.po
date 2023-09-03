@@ -138,11 +138,13 @@ msgid ""
 "Cancel a single reminder. Use the menu in \"reminder show\" to cancel "
 "multiple reminders."
 msgstr ""
+"Bir tane hatırlatıcını iptal et. \"Hatırlatıcı göster\" menüsünü kullanarak "
+"birden fazla hatırlatıcını iptal edebilirsin."
 
 #: src/modules/reminders/cog.py:464
 msgctxt "cmd:reminders_cancel|param:reminder"
 msgid "reminder"
-msgstr ""
+msgstr "hatırlatıcı"
 
 #: src/modules/reminders/cog.py:469
 msgctxt "cmd:reminders_cancel|param:reminder|desc"
