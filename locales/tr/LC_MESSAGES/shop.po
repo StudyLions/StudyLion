@@ -77,17 +77,17 @@ msgstr "Renk: {colour}"
 #: src/modules/shop/shops/colours.py:119
 msgctxt "ui:colourstore|menu:buycolours|desc"
 msgid "Colour: Unknown"
-msgstr ""
+msgstr "Renk: Bilinmiyor"
 
 #: src/modules/shop/shops/colours.py:133
 msgctxt "shop:colours|name"
 msgid "Colour Shop"
-msgstr ""
+msgstr "Renk Market"
 
 #: src/modules/shop/shops/colours.py:172
 msgctxt "shop:colour|purchase|error:not_purchasable"
 msgid "This item may not be purchased!"
-msgstr ""
+msgstr "Bu ürün satın alınamaz!"
 
 #: src/modules/shop/shops/colours.py:185
 msgctxt "shop:colour|purchase|error:no_guild"
