@@ -136,7 +136,7 @@ msgstr "Rütbe güncellemeleri mümkünse **direkt mesaj** ile gönderilecektir.
 msgctxt ""
 "cmd:configure_ranks|response:updated|setting:notification|nodm_withchannel"
 msgid "Rank update notifications will be sent to {channel}."
-msgstr "Rütbe güncellemeleri {kanal}' a atılacaktır."
+msgstr "Rütbe güncellemeleri {channel}' a atılacaktır."
 
 #: src/modules/ranks/cog.py:765
 msgctxt ""
@@ -166,19 +166,19 @@ msgstr "{user_name}"
 #, possible-python-brace-format
 msgctxt "formatstring:rank_message|key:role_id"
 msgid "{role_id}"
-msgstr "{rol_id}"
+msgstr "{role_id}"
 
 #: src/modules/ranks/utils.py:17
 #, possible-python-brace-format
 msgctxt "formatstring:rank_message|key:guild_id"
 msgid "{guild_id}"
-msgstr "{sunucu_id}"
+msgstr "{guild_id}"
 
 #: src/modules/ranks/utils.py:18
 #, possible-python-brace-format
 msgctxt "formatstring:rank_message|key:user_id"
 msgid "{user_id}"
-msgstr "{kullanıcı_id}"
+msgstr "{user_id}"
 
 #: src/modules/ranks/utils.py:19
 #, possible-python-brace-format
