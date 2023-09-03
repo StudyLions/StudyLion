@@ -816,7 +816,7 @@ msgstr "Rolün tutacağı para miktarı."
 #, possible-python-brace-format
 msgctxt "roleset:price|set_response:set"
 msgid "This role will now cost {price} to equip."
-msgstr ""
+msgstr "Bu rolün alınması bundan böyle {price} tutacak."
 
 #: src/modules/rolemenus/roleoptions.py:247
 msgctxt "roleset:price|set_response:unset"
