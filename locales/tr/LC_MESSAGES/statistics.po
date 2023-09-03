@@ -251,6 +251,7 @@ msgctxt "guildset:unranked_roles|set_response|set"
 msgid ""
 "Members of the following roles will not appear on the leaderboard: {roles}"
 msgstr ""
+"Belirtilen rollere sahip üyeler lider tablosunda görünmeyecek: {roles}"
 
 #: src/modules/statistics/settings.py:200
 msgctxt "guildset:unranked_roles|set_response|unset"
