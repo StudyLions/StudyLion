@@ -45,8 +45,8 @@ msgstr "Yeni aktivite rütbesine erişildi !"
 msgctxt "rank_refresh|error:roles_dne|desc"
 msgid "Some ranks have invalid or deleted roles! Please remove them first."
 msgstr ""
-"Bazı rütbeler geçersiz veya silinmiş rollere sahip!\n"
-"Lütfen ilk önce onları kaldırın!"
+"Bazı rütbeler geçersiz veya silinmiş rollere sahip! Lütfen ilk önce onları "
+"kaldırın!"
 
 #: src/modules/ranks/cog.py:504
 #, possible-python-brace-format
