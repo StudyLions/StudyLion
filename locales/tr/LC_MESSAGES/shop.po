@@ -531,12 +531,12 @@ msgstr "İlişkili rolün silinip silinmeyeceği."
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_remove|error:not_colour"
 msgid "{mention} is not in the colour role shop!"
-msgstr ""
+msgstr "{mention} bir renk market rolü değil!"
 
 #: src/modules/shop/shops/colours.py:1028
 msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
 msgid "Successfully deleted the role."
-msgstr ""
+msgstr "Başarıyla rolü sildi."
 
 #: src/modules/shop/shops/colours.py:1033
 msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
