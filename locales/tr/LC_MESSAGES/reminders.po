@@ -263,12 +263,12 @@ msgstr "Hatırlatıcı oluşturamadım!"
 #: src/modules/reminders/cog.py:673
 msgctxt "cmd:remindme_at|error:past_time|desc"
 msgid "Provided time is in the past!"
-msgstr ""
+msgstr "Belirtilen zaman geçmişte yer alıyor!"
 
 #: src/modules/reminders/cog.py:677
 msgctxt "cmd:remindme_at|error:past_time|title"
 msgid "Could not create reminder!"
-msgstr ""
+msgstr "Hatırlatıcı oluşturamadım!"
 
 #: src/modules/reminders/cog.py:702
 #, possible-python-brace-format
