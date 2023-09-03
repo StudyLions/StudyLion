@@ -186,6 +186,8 @@ msgid ""
 "I could not extract a colour value from `{colour}`!\n"
 "Please enter the colour as a hex string, e.g. `#FA0BC1`"
 msgstr ""
+"Belirttiğiniz koddan bu rengi bulamadım  `{colour}`!\n"
+"Hex kodu olarak rengi tekrardan yazın ör. `#FA0BC1`"
 
 #: src/modules/shop/shops/colours.py:405
 msgctxt "cmd:editshop_colours_create|error:perms"
