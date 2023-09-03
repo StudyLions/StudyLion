@@ -371,7 +371,7 @@ msgstr "Bu sunucuda `{name}` adında bir rol menüsü bulunmuyor!"
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_edit|parse:new_name|error:name_exists"
 msgid "A role menu with the name **{new_name}** already exists!"
-msgstr ""
+msgstr "**{new_name}** adında bir rol menüsü zaten bulunuyor!"
 
 #: src/modules/rolemenus/cog.py:951
 msgctxt "cmd:rolemenu_edit|parse:template|error:not_managed"
