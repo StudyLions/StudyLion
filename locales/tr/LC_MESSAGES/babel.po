@@ -247,12 +247,12 @@ msgstr "İngiltere İngilizcesi"
 #: src/babel/enums.py:44
 msgctxt "localenames|locale:bg"
 msgid "Bulgarian"
-msgstr ""
+msgstr "Bulgarca"
 
 #: src/babel/enums.py:45
 msgctxt "localenames|locale:zh-CN"
 msgid "Chinese"
-msgstr ""
+msgstr "Çince"
 
 #: src/babel/enums.py:46
 msgctxt "localenames|locale:zh-TW"
