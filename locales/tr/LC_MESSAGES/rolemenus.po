@@ -127,7 +127,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "acmpl:menus|choice:no_choices|name"
 msgid "No role menus matching '{partial}'"
-msgstr ""
+msgstr "'{partial}' ile eşleşen rol menüsü bulunamadı"
 
 #: src/modules/rolemenus/cog.py:515
 msgctxt "acmpl:menuroles|param:menu|keyname"
