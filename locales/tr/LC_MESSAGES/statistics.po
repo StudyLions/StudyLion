@@ -703,7 +703,7 @@ msgstr ""
 #: src/modules/statistics/ui/leaderboard.py:433
 msgctxt "ui:leaderboard|mode:text|message:empty|desc"
 msgid "There has been no message activity in this period!"
-msgstr ""
+msgstr "Bu zaman diliminde mesaj aktivitesi bulunmuyor!"
 
 #: src/modules/statistics/ui/leaderboard.py:438
 msgctxt "ui:leaderboard|mode:anki|message:empty|desc"
