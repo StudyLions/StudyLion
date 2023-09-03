@@ -395,17 +395,17 @@ msgstr "Aylık Ses İstatistikleri"
 #: src/modules/statistics/ui/weeklymonthly.py:117
 msgctxt "menu:stat_type|opt:monthly_text|name"
 msgid "Monthly Text Statistics"
-msgstr ""
+msgstr "Aylık Metin İstatistikleri"
 
 #: src/modules/statistics/ui/weeklymonthly.py:122
 msgctxt "menu:stat_type|opt:monthly_anki|name"
 msgid "Monthly Anki Statistics"
-msgstr ""
+msgstr "Aylık Anki İstatistikleri"
 
 #: src/modules/statistics/ui/weeklymonthly.py:144
 msgctxt "modal:goal_editor|field:task_goal|label"
 msgid "Task goal"
-msgstr ""
+msgstr "Görev hedefi"
 
 #: src/modules/statistics/ui/weeklymonthly.py:148
 msgctxt "modal:goal_editor|field:task_goal|placeholder"
