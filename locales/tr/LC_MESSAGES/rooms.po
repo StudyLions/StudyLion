@@ -559,7 +559,7 @@ msgstr "{old_owner} özel oda sahipliğini {new_owner}'a aktardı"
 #: src/modules/rooms/room.py:247
 msgctxt "room|embed:expiry|title"
 msgid "Private Room Expired!"
-msgstr ""
+msgstr "Özel Odanın Süresi Bitti!"
 
 #: src/modules/rooms/room.py:251
 #, possible-python-brace-format
