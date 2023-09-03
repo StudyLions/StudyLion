@@ -64,7 +64,7 @@ msgstr "İstatistik konfigürasyon paneli"
 #: src/modules/statistics/cog.py:95
 msgctxt "cmd:configure_statistics|param:season_start"
 msgid "season_start"
-msgstr ""
+msgstr "sezon_başlat"
 
 #: src/modules/statistics/cog.py:100
 msgctxt "cmd:configure_statistics|param:season_start|desc"
