@@ -382,12 +382,12 @@ msgstr ""
 #: src/modules/ranks/ui/preview.py:90
 msgctxt "ui:rank_preview|button:edit|error|title"
 msgid "Failed to edit rank!"
-msgstr ""
+msgstr "Rütbeyi düzenlemekte başarısız oldum!"
 
 #: src/modules/ranks/ui/preview.py:108
 msgctxt "ui:rank_preview|button:edit|label"
 msgid "Edit"
-msgstr ""
+msgstr "Düzenlemek"
 
 #: src/modules/ranks/ui/preview.py:139
 #, possible-python-brace-format
@@ -406,7 +406,7 @@ msgstr ""
 #: src/modules/ranks/ui/preview.py:150
 msgctxt "ui:rank_preview|button:delete|response:success|title"
 msgid "Rank Deleted"
-msgstr ""
+msgstr "Rütbe Silindi"
 
 #: src/modules/ranks/ui/preview.py:160
 msgctxt ""
