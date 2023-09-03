@@ -162,6 +162,8 @@ msgid ""
 "I am not sure which reminder you want to cancel. Please try again, selecting"
 " a reminder from the list of choices."
 msgstr ""
+"Hangi hatırlatıcını iptal etmek istediğini anladığıma emin değilim. Lütfen "
+"tekrar dene, hatırlatıcı listesinden seçeneklerini seç."
 
 #: src/modules/reminders/cog.py:525
 msgctxt "cmd:reminders_cancel|embed:success|desc"
