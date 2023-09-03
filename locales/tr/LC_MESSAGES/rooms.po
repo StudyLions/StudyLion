@@ -603,6 +603,8 @@ msgid ""
 "The private room category has been unset. Existing private rooms will not be"
 " affected. Delete the channels manually to remove the private rooms."
 msgstr ""
+"Özel oda kategorisi ayarlı değil. Hazırda var olan özel odalar "
+"etkilenmeyecek. Özel odaları kaldırmak için kanalları manuel olarak silin."
 
 #: src/modules/rooms/settings.py:57
 #, possible-python-brace-format
