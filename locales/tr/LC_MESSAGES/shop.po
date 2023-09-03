@@ -437,12 +437,12 @@ msgstr "Renk Rolü Oluşturuldu"
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_add|resp:done|embed:desc"
 msgid "You have added {mention} to the colour shop for {coin}**{price}**!"
-msgstr ""
+msgstr "{mention} rolünü renk markete {coin}**{price}** değerinde eklediniz!"
 
 #: src/modules/shop/shops/colours.py:786
 msgctxt "cmd:editshop_colours_clear"
 msgid "clear"
-msgstr ""
+msgstr "temizle"
 
 #: src/modules/shop/shops/colours.py:789
 msgctxt "cmd:editshop_colours_clear|desc"
