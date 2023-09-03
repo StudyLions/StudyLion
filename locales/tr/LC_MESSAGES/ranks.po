@@ -873,6 +873,8 @@ msgid ""
 "Congratulations {user_mention}!\n"
 "For working hard for **{requires}**, you have achieved the rank of **{role_name}** in **{guild_name}**! Keep up the good work."
 msgstr ""
+"Tebrikler {user_mention}!\n"
+"**{requires}** için çok çalıştığınızdan dolayı **{guild_name}**'de **{role_name}* rütbesine ulaştınız. İyi çalışmalar. "
 
 #: src/modules/ranks/ui/editor.py:262
 msgctxt "ui:rank_editor|mode:edit|title"
