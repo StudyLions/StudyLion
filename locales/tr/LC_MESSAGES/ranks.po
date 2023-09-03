@@ -348,7 +348,7 @@ msgstr ""
 #: src/modules/ranks/settings.py:153
 msgctxt "guildset:dm_ranks"
 msgid "dm_ranks"
-msgstr ""
+msgstr "dm_rütbeleri"
 
 #: src/modules/ranks/settings.py:156
 msgctxt "guildset:dm_ranks|desc"
