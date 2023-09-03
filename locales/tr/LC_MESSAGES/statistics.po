@@ -648,7 +648,7 @@ msgstr ""
 #: src/modules/statistics/ui/leaderboard.py:273
 msgctxt "ui:leaderboard|menu;stats|item:anki"
 msgid "Anki Cards Reviewed"
-msgstr ""
+msgstr "Anki Kartları Görüntülendi"
 
 #: src/modules/statistics/ui/leaderboard.py:327
 msgctxt "ui:leaderboard|button:season|label"
