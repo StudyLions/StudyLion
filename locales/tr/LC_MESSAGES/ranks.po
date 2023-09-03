@@ -517,7 +517,7 @@ msgstr "Rütbe Bilgisi"
 #: src/modules/ranks/ui/preview.py:297
 msgctxt "ui:rank_preview|embed|field:role|name"
 msgid "Role"
-msgstr ""
+msgstr "Rol"
 
 #: src/modules/ranks/ui/preview.py:304
 msgctxt "ui:rank_preview|embed|field:required|name"
@@ -527,17 +527,17 @@ msgstr "Gereken"
 #: src/modules/ranks/ui/preview.py:311
 msgctxt "ui:rank_preview|embed|field:reward|name"
 msgid "Reward"
-msgstr ""
+msgstr "Ödül"
 
 #: src/modules/ranks/ui/preview.py:320
 msgctxt "ui:rank_preview|embed|field:message"
 msgid "Congratulatory Message"
-msgstr ""
+msgstr "Tebrik Mesajı"
 
 #: src/modules/ranks/ui/refresh.py:125
 msgctxt "ui:refresh_ranks|embed|title:errored"
 msgid "Could not refresh the server ranks!"
-msgstr ""
+msgstr "Sunucu rütbeleri yenilenemedi!"
 
 #: src/modules/ranks/ui/refresh.py:133
 msgctxt "ui:refresh_ranks|embed|title:done"
