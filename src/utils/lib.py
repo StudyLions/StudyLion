@@ -25,6 +25,8 @@ multiselect_regex = re.compile(
 tick = '✅'
 cross = '❌'
 
+MISSING = object()
+
 
 class MessageArgs:
     """
@@ -113,7 +115,13 @@ class MessageArgs:
 
     @property
     def send_args(self) -> dict:
-        return self.kwargs
+        if self.kwargs.get('view', MISSING) is None:
+            kwargs = self.kwargs.copy()
+            kwargs.pop('view')
+        else:
+            kwargs = self.kwargs
+
+        return kwargs
 
     @property
     def edit_args(self) -> dict:
