@@ -83,7 +83,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "rank_refresh|add_roles|small_error"
 msgid "*Could not add {role} to {member}*"
-msgstr ""
+msgstr "*{üye} ' ye {rol}' ü ekleyemiyorum*"
 
 #: src/modules/ranks/cog.py:630
 msgctxt "rank_refresh|add_roles|error:too_many_issues"
