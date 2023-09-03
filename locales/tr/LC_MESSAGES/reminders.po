@@ -311,7 +311,7 @@ msgstr ""
 #: src/modules/reminders/cog.py:726
 msgctxt "cmd:remindme_in|param:reminder|desc"
 msgid "What should the reminder be?"
-msgstr ""
+msgstr "Bu hatırlatıcı ne üzerine olacak?"
 
 #: src/modules/reminders/cog.py:727
 msgctxt "cmd:remindme_in|param:every|desc"
