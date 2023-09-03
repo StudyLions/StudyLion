@@ -92,7 +92,7 @@ msgstr "temizle"
 #: src/modules/reminders/cog.py:393
 msgctxt "cmd:reminders_clear|desc"
 msgid "Clear your reminder list."
-msgstr ""
+msgstr "Hatırlatıcı listeni temizle."
 
 #: src/modules/reminders/cog.py:411
 msgctxt "cmd:reminders_clear|error:no_reminders"
