@@ -978,7 +978,7 @@ msgstr "**{role}** rolünü kaldırdın."
 #, possible-python-brace-format
 msgctxt "rolemenu|select|error:required_role"
 msgid "You need to have the **{role}** role to use this!"
-msgstr ""
+msgstr "Bunu kullanabilmek için **{role}** rolüne sahip olman gerekiyor!"
 
 #: src/modules/rolemenus/rolemenu.py:568
 #, possible-python-brace-format
@@ -997,7 +997,7 @@ msgstr ""
 #: src/modules/rolemenus/rolemenu.py:598
 msgctxt "rolemenu|select|error:perms"
 msgid "I don't have enough permissions to give you this role!"
-msgstr ""
+msgstr "Bu rolü sana vermek için yeterli iznim yok!"
 
 #: src/modules/rolemenus/rolemenu.py:605
 msgctxt "rolemenu|select|error:discord"
