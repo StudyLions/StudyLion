@@ -338,7 +338,7 @@ msgstr ""
 #: src/modules/reminders/cog.py:766
 msgctxt "cmd_remindme_in|error:too_fast|title"
 msgid "Could not create reminder!"
-msgstr ""
+msgstr "Hatırlatıcı oluşturamadım!"
 
 #: src/modules/reminders/cog.py:792
 #, possible-python-brace-format
