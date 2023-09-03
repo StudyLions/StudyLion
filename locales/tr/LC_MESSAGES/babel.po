@@ -382,7 +382,7 @@ msgstr "Ukranyaca"
 #: src/babel/enums.py:71
 msgctxt "localenames|locale:vi"
 msgid "Vietnamese"
-msgstr ""
+msgstr "Vietnamca"
 
 #: src/babel/enums.py:72
 msgctxt "localenames|locale:he"
