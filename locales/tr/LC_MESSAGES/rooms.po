@@ -225,7 +225,7 @@ msgstr "isim"
 #: src/modules/rooms/cog.py:328
 msgctxt "cmd:room_rent|param:days|desc"
 msgid "Number of days to pre-purchase. (Default: 1)"
-msgstr ""
+msgstr "Ön satın almaya kalan gün sayısı. (Varsayılan: 1)"
 
 #: src/modules/rooms/cog.py:332
 msgctxt "cmd:room_rent|param:members|desc"
