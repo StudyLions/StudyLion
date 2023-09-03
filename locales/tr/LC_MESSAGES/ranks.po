@@ -743,6 +743,8 @@ msgid ""
 "No activity ranks have been set up!\n"
 "Press 'AUTO' to automatically create a standard heirachy of voice | text | xp ranks, or select a role or press Create below!"
 msgstr ""
+"Hiçbir Aktivite rütbesi kurulmadı!\n"
+"Otomatik olarak standart ses | metin | xp rütbeleri hiyerarşisi oluşturmak için 'OTO' ya basın veya rol seçin veya aşağıda Oluştur' a basın!"
 
 #: src/modules/ranks/ui/overview.py:370
 #, possible-python-brace-format
