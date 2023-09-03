@@ -1101,6 +1101,7 @@ msgstr "iadeler"
 msgctxt "menuset:refunds|desc"
 msgid "Whether removing a role will refund the purchase price for that role."
 msgstr ""
+"Bir rolün kaldırılmasının o rolün satın alma bedelini iade edip etmeyeceği."
 
 #: src/modules/rolemenus/menuoptions.py:131
 msgctxt "menuset:refunds|long_desc"
