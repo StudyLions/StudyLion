@@ -194,7 +194,7 @@ msgstr "şablon"
 #: src/modules/rolemenus/cog.py:613
 msgctxt "cmd:rolemenu_create|param:rawmessage"
 msgid "custom_message"
-msgstr ""
+msgstr "özel_mesaj"
 
 #: src/modules/rolemenus/cog.py:623
 msgctxt "cmd:rolemenu_create|param:message|desc"
