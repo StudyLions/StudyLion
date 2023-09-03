@@ -199,13 +199,13 @@ msgstr "özel_mesaj"
 #: src/modules/rolemenus/cog.py:623
 msgctxt "cmd:rolemenu_create|param:message|desc"
 msgid "Link to an existing message to turn it into a (reaction) role menu"
-msgstr "Rol menüsü (reaksiyon) olarak değiştirmek için varolan mesaj linki"
+msgstr "Rol menüsü (tepki) olarak değiştirmek için varolan mesaj linki"
 
 #: src/modules/rolemenus/cog.py:627
 msgctxt "cmd:rolemenu_create|param:menu_style"
 msgid "Selection style for this menu (using buttons, dropdowns, or reactions)"
 msgstr ""
-"Bu menünün seçim stili (düğmeleri, açılır menüleri veya reaksiyonları "
+"Bu menünün seçim stili (düğmeleri, açılır menüleri veya tepkileri "
 "kullanarak)"
 
 #: src/modules/rolemenus/cog.py:631
