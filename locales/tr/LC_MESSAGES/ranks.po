@@ -367,12 +367,12 @@ msgstr ""
 #: src/modules/ranks/settings.py:174
 msgctxt "guildset:dm_ranks|response:true"
 msgid "I will direct message members upon rank advancement."
-msgstr "Rütbe ilerlemesi üzerine üyelere dm atacağım."
+msgstr "Rütbe ilerlemesi üzerine üyelere direkt mesaj atacağım."
 
 #: src/modules/ranks/settings.py:179
 msgctxt "guildset:dm_ranks|response:false"
 msgid "I will never direct message members upon rank advancement."
-msgstr "Rütbe ilerlemesi üzerine üyelere asla dm atmayacağım."
+msgstr "Rütbe ilerlemesi üzerine üyelere asla direkt mesaj atmayacağım."
 
 #: src/modules/ranks/ui/preview.py:74
 msgctxt "ui:rank_preview|button:edit|error:role_deleted"
