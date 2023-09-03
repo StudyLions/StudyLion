@@ -720,7 +720,7 @@ msgstr "görünmez|etkin değil|hayır|yanlış|kapalı|etkin değil|0"
 #: src/modules/rooms/settings.py:182
 msgctxt "guildset:rooms_visible|set_response:enabled"
 msgid "Private rooms will now be visible to everyone."
-msgstr ""
+msgstr "Özel odalar artık herkese görünür."
 
 #: src/modules/rooms/settings.py:187
 msgctxt "guildset:rooms_visible|set_response:disabled"
