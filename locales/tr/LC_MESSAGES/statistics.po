@@ -291,6 +291,7 @@ msgstr "Seçenek menüsü aşağıda."
 msgctxt "guildset:visible_stats|set_response"
 msgid "Members will be able to view the following statistics types: {types}"
 msgstr ""
+"Üyeler bundan böyle bu istatistik türlerini görüntüleyebilecek: {types}"
 
 #: src/modules/statistics/settings.py:264
 msgctxt "guildset:default_stat"
