@@ -340,7 +340,7 @@ msgstr ""
 #: src/modules/shop/shops/colours.py:664
 msgctxt "cmd:editshop_colours_auto"
 msgid "auto"
-msgstr ""
+msgstr "otomatik"
 
 #: src/modules/shop/shops/colours.py:665
 msgctxt "cmd:editshop_colours_auto|desc"
@@ -350,7 +350,7 @@ msgstr ""
 #: src/modules/shop/shops/colours.py:674
 msgctxt "cmd:editshop_colours_add"
 msgid "add"
-msgstr ""
+msgstr "ekle"
 
 #: src/modules/shop/shops/colours.py:677
 msgctxt "cmd:editshop_colours_add|desc"
