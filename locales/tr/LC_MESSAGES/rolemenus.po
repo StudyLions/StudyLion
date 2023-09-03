@@ -1017,7 +1017,7 @@ msgstr "Rol alındı"
 #, possible-python-brace-format
 msgctxt "rolemenu|select|success:purchase|desc"
 msgid "You have purchased the role **{role}** for {coin}**{amount}**"
-msgstr ""
+msgstr " **{role}** rolünü {coin}**{amount}** miktar lionCoin'e satın aldın"
 
 #: src/modules/rolemenus/rolemenu.py:658
 #, possible-python-brace-format
