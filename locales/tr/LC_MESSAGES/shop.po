@@ -546,7 +546,7 @@ msgstr "Rolü silmek için yeterli iznim bulunmuyor."
 #: src/modules/shop/shops/colours.py:1038
 msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
 msgid "Failed to delete the role for an unknown reason."
-msgstr ""
+msgstr "Belirlenemeyen sebepten dolayı rolü silme başarısız oldu."
 
 #: src/modules/shop/shops/colours.py:1043
 msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
