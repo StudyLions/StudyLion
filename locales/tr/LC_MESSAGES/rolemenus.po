@@ -397,7 +397,7 @@ msgstr "Şu anda özel menü mesajını kullanıyorum."
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_edit|repost|success"
 msgid "The role menu is now available at {message}"
-msgstr ""
+msgstr " {message} mesajında rol menü artık aktif"
 
 #: src/modules/rolemenus/cog.py:1005
 #, possible-python-brace-format
