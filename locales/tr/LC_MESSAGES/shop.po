@@ -520,7 +520,7 @@ msgstr "rolü_sil"
 #: src/modules/shop/shops/colours.py:981
 msgctxt "cmd:editshop_colours_remove|param:role|desc"
 msgid "Select the colour role to remove."
-msgstr ""
+msgstr "Kaldırılacak renk rolünü seçin."
 
 #: src/modules/shop/shops/colours.py:985
 msgctxt "cmd:editshop_colours_remove|param:delete_role|desc"
