@@ -748,13 +748,13 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "ui:rank_overview|embed|title|type:xp"
 msgid "XP ranks in {guild_name}"
-msgstr ""
+msgstr "{guild_name}'de XP rütbeleri"
 
 #: src/modules/ranks/ui/overview.py:380
 #, possible-python-brace-format
 msgctxt "ui:rank_overview|embed|title|type:message"
 msgid "Message ranks in {guild_name}"
-msgstr ""
+msgstr "{guild_name}'de mesaj rütbeleri"
 
 #: src/modules/ranks/ui/editor.py:33
 msgctxt "ui:rank_editor|input:role_name|label"
