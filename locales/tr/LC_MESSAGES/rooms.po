@@ -565,7 +565,7 @@ msgstr "Özel Odanın Süresi Bitti!"
 #, possible-python-brace-format
 msgctxt "room|embed:expiry|description"
 msgid "Your private room in **{guild}** has expired!"
-msgstr ""
+msgstr "**{guild}** daki özel odanın süresi bitti!"
 
 #: src/modules/rooms/room.py:265
 #, possible-python-brace-format
