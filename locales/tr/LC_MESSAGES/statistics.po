@@ -673,12 +673,12 @@ msgstr ""
 #: src/modules/statistics/ui/leaderboard.py:343
 msgctxt "ui:leaderboard|button:alltime|label"
 msgid "All Time"
-msgstr ""
+msgstr "Tüm zamanlar"
 
 #: src/modules/statistics/ui/leaderboard.py:347
 msgctxt "ui:leaderboard|button:jump|label"
 msgid "Jump"
-msgstr ""
+msgstr "Atla"
 
 #: src/modules/statistics/ui/leaderboard.py:362
 msgctxt "ui:leaderboard|button:jump|input:title"
