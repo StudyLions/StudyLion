@@ -248,6 +248,8 @@ msgid ""
 "I cannot create a `{style}` style menu on a message I didn't send! (Discord "
 "restriction)."
 msgstr ""
+"Benim göndermediğim bir mesajda \"{style}\" tarzı menü oluşturamıyorum! "
+"(Discord kısıtlaması)."
 
 #: src/modules/rolemenus/cog.py:718
 #, possible-python-brace-format
@@ -256,6 +258,8 @@ msgid ""
 "Cannot apply a custom menu message to {message} because I do not own this "
 "message!"
 msgstr ""
+"Bu mesajın sahibi olmadığım için {message} mesajına özel menü mesajı "
+"uygulayamıyorum!"
 
 #: src/modules/rolemenus/cog.py:727
 #, possible-python-brace-format
@@ -264,52 +268,56 @@ msgid ""
 "Cannot apply a menu message template to {message} because I do not own this "
 "message!"
 msgstr ""
+"Bu mesajın sahibi olmadığım için {message} mesajına özel menü şablonu "
+"uygulayamıyorum!"
 
 #: src/modules/rolemenus/cog.py:740
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_create|error:name_exists"
 msgid "A rolemenu called `{name}` already exists! Use {edit_cmd} to edit it."
 msgstr ""
+"`{name}` adında bir rol menü zaten var! {edit_cmd} kullanarak "
+"düzenleyebilirsin."
 
 #: src/modules/rolemenus/cog.py:788
 msgctxt "cmd:rolemenu_edit"
 msgid "editmenu"
-msgstr ""
+msgstr "menüyüdüzenle"
 
 #: src/modules/rolemenus/cog.py:791
 msgctxt "cmd:rolemenu_edit|desc"
 msgid "Edit an existing role menu."
-msgstr ""
+msgstr "Varolan bir rol menü mesajını düzenle."
 
 #: src/modules/rolemenus/cog.py:800
 msgctxt "cmd:rolemenu_edit|param:name"
 msgid "name"
-msgstr ""
+msgstr "isim"
 
 #: src/modules/rolemenus/cog.py:801
 msgctxt "cmd:rolemenu_edit|param:new_name"
 msgid "new_name"
-msgstr ""
+msgstr "yeni_isim"
 
 #: src/modules/rolemenus/cog.py:802
 msgctxt "cmd:rolemenu_edit|param:channel"
 msgid "new_channel"
-msgstr ""
+msgstr "yeni_kanal"
 
 #: src/modules/rolemenus/cog.py:807
 msgctxt "cmd:rolemenu_edit|param:menu_style"
 msgid "menu_style"
-msgstr ""
+msgstr "menü_stili"
 
 #: src/modules/rolemenus/cog.py:808
 msgctxt "cmd:rolemenu_edit|param:remplate"
 msgid "template"
-msgstr ""
+msgstr "şablon"
 
 #: src/modules/rolemenus/cog.py:809
 msgctxt "cmd:rolemenu_edit|param:rawmessage"
 msgid "custom_message"
-msgstr ""
+msgstr "özel_mesaj"
 
 #: src/modules/rolemenus/cog.py:814
 msgctxt "cmd:rolemenu_edit|param:name|desc"
