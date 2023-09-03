@@ -396,12 +396,13 @@ msgid ""
 "You have deleted the rank {mention}. Press the button below to also delete "
 "the role."
 msgstr ""
+"{mention} rütbesini sildiniz. Rolü de silmek için alttaki düğmeye basın."
 
 #: src/modules/ranks/ui/preview.py:144
 #, possible-python-brace-format
 msgctxt "ui:rank_preview|button:delete|response:success|description|no_role"
 msgid "You have deleted the rank {mention}."
-msgstr ""
+msgstr "{mention} rütbesini sildiniz."
 
 #: src/modules/ranks/ui/preview.py:150
 msgctxt "ui:rank_preview|button:delete|response:success|title"
