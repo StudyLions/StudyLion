@@ -327,7 +327,7 @@ msgstr "Bu rolü düzenleyebilmek için yeterli iznim bulunmamakta!"
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_edit|resp:done|line:price"
 msgid "{tick} Set price to {coin}**{price}**"
-msgstr ""
+msgstr "{tick} Fiyat {coin}**{price}** değerine ayarlandı"
 
 #: src/modules/shop/shops/colours.py:648
 #, possible-python-brace-format
