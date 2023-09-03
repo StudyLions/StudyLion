@@ -149,7 +149,7 @@ msgstr "hatırlatıcı"
 #: src/modules/reminders/cog.py:469
 msgctxt "cmd:reminders_cancel|param:reminder|desc"
 msgid "Start typing, then select a reminder to cancel."
-msgstr ""
+msgstr "Yazmaya başla sonra iptal edilecek hatırlatıcıyı seç."
 
 #: src/modules/reminders/cog.py:488
 msgctxt "cmd:reminders_cancel|error:no_reminders"
