@@ -378,6 +378,8 @@ msgid ""
 "I do not have permission to edit the underlying role! Please select a new "
 "role from the role menu, or ensure my top role is above the selected role."
 msgstr ""
+"Esas rolü düzenlemek için yetkim yok! Lütfen rol menüsünden yeni bir rol "
+"seçin veya en baştaki rolümün seçilen rolün üzerinde olduğundan emin olun."
 
 #: src/modules/ranks/ui/preview.py:90
 msgctxt "ui:rank_preview|button:edit|error|title"
