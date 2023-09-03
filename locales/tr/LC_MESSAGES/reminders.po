@@ -258,7 +258,7 @@ msgstr ""
 #: src/modules/reminders/cog.py:662
 msgctxt "cmd:remindme_at|error:parse_time|title"
 msgid "Could not create reminder!"
-msgstr ""
+msgstr "Hatırlatıcı oluşturamadım!"
 
 #: src/modules/reminders/cog.py:673
 msgctxt "cmd:remindme_at|error:past_time|desc"
