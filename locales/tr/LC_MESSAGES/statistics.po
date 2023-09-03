@@ -617,7 +617,7 @@ msgstr "Çok fazla etiket! En fazla `{limit}` adet profil etiketiniz olabilir."
 #: src/modules/statistics/ui/profile.py:92
 msgctxt "menu:stat_type|opt:voice|name"
 msgid "Voice Statistics"
-msgstr ""
+msgstr "Ses İstatistikleri"
 
 #: src/modules/statistics/ui/profile.py:97
 msgctxt "menu:stat_type|opt:text|name"
