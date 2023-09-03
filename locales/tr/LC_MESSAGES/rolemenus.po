@@ -339,12 +339,12 @@ msgstr ""
 #: src/modules/rolemenus/cog.py:831
 msgctxt "cmd:rolemenu_edit|param:template"
 msgid "Template to use for the menu message body"
-msgstr ""
+msgstr "Menü mesaj gövdesinde kullanmak için şablon"
 
 #: src/modules/rolemenus/cog.py:835
 msgctxt "cmd:rolemenu_edit|param:rawmessage"
 msgid "Attach a custom menu message to use"
-msgstr ""
+msgstr "Kullanmak için özel mesaj menüsü ekleyin"
 
 #: src/modules/rolemenus/cog.py:864
 msgctxt "cmd:rolemenu_edit|error:author_perms"
