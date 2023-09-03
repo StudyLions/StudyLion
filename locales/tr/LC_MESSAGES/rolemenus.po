@@ -715,6 +715,8 @@ msgid ""
 "A short name for this role, to be displayed in button labels, dropdown "
 "titles, and some menu layouts. By default uses the Discord role name."
 msgstr ""
+"Bu rolün buton etiketlerinde, açılır başlıklarda ve bazı menü düzenlerinde "
+"görüntülenecek kısa adı. Varsayılan olarak Discord rol adını kullanır."
 
 #: src/modules/rolemenus/roleoptions.py:104
 #, possible-python-brace-format
