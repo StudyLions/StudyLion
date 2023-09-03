@@ -851,7 +851,7 @@ msgstr "Sonsuza kadar."
 #, possible-python-brace-format
 msgctxt "roleset:duration|set_response:set"
 msgid "This role will now expire after {duration}."
-msgstr ""
+msgstr "Bu rol bundan sonra {duration} süre sonra sona erecektir."
 
 #: src/modules/rolemenus/roleoptions.py:285
 msgctxt "roleset:duration|set_response:unset"
