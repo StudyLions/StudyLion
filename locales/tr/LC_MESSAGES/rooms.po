@@ -138,17 +138,17 @@ msgstr "Üyeler Kaldır"
 #: src/modules/rooms/roomui.py:367
 msgctxt "ui:room_status|embed|title"
 msgid "Room Control Panel"
-msgstr ""
+msgstr "Oda Kontrol Paneli"
 
 #: src/modules/rooms/roomui.py:375
 msgctxt "ui:room_status|embed|field:channel|name"
 msgid "Channel"
-msgstr ""
+msgstr "Kanal"
 
 #: src/modules/rooms/roomui.py:380
 msgctxt "ui:room_status|embed|field:owner|name"
 msgid "Owner"
-msgstr ""
+msgstr "Sahip"
 
 #: src/modules/rooms/roomui.py:385
 msgctxt "ui:room_status|embed|field:created|name"
