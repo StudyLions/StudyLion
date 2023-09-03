@@ -291,7 +291,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "guildset:rank_channel|set_using"
 msgid "{cmd} or option menu below."
-msgstr ""
+msgstr "{cmd} veya aşağıdaki seçenek menüsü"
 
 #: src/modules/ranks/settings.py:103
 msgctxt "guildset:rank_channel"
@@ -321,7 +321,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "guildset:rank_channel|set_response|set"
 msgid "Rank update messages will be sent to {channel}."
-msgstr ""
+msgstr "Rütbe güncelleme mesajları {channel}'a gönderilecektir."
 
 #: src/modules/ranks/settings.py:133
 msgctxt "guildset:rank_channel|set_response|unset"
