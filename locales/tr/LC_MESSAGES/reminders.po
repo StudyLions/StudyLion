@@ -327,7 +327,7 @@ msgstr "Üzgünüm, maksimum `25` hatırlatıcı sayısına ulaştınız!"
 #: src/modules/reminders/cog.py:749
 msgctxt "cmd_remindme_in|error:too_many|title"
 msgid "Could not create reminder!"
-msgstr ""
+msgstr "Hatırlatıcı oluşturamadım!"
 
 #: src/modules/reminders/cog.py:762
 msgctxt "cmd_remindme_in|error:too_fast|desc"
