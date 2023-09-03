@@ -99,11 +99,13 @@ msgstr "Oda Zamanlayıcısı Oluştur"
 msgctxt "ui:room_status|button:timer|timer_created"
 msgid "Timer created successfully! Use `/pomodoro edit` to configure further."
 msgstr ""
+"Zamanlayıcı başarılı bir şekilde oluşturuldu! Daha fazla yapılandırmak için "
+"'/pomodoro edit' kullanın."
 
 #: src/modules/rooms/roomui.py:254
 msgctxt "ui:room_status|button:timer|label:edit_timer"
 msgid "Edit Timer"
-msgstr ""
+msgstr "Zamanlayıcıyı Düzenle"
 
 #: src/modules/rooms/roomui.py:261
 msgctxt "ui:room_status|button:timer|label:add_timer"
