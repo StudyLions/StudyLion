@@ -271,6 +271,7 @@ msgstr "Ses/Exp/Mesajlar"
 msgctxt "guildset:rank_type|set_response|type:voice"
 msgid "Members will be awarded activity ranks based on `Voice Activity`."
 msgstr ""
+"Üyeler 'Ses Aktivitesi' ne göre aktivite rütbeleri ile ödüllendirilecektir."
 
 #: src/modules/ranks/settings.py:76
 msgctxt "guildset:rank_type|set_response|type:messages"
