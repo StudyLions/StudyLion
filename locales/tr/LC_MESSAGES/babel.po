@@ -242,7 +242,7 @@ msgstr "Amerikan İngilizcesi"
 #: src/babel/enums.py:43
 msgctxt "localenames|locale:en-GB"
 msgid "British English"
-msgstr ""
+msgstr "İngiltere İngilizcesi"
 
 #: src/babel/enums.py:44
 msgctxt "localenames|locale:bg"
