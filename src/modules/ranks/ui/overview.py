@@ -6,10 +6,11 @@ from discord.ui.select import select, Select, SelectOption, RoleSelect
 from discord.ui.button import button, Button, ButtonStyle
 
 from meta import conf, LionBot
+from meta.errors import ResponseTimedOut
 from core.data import RankType
 from data import ORDER
 
-from utils.ui import MessageUI
+from utils.ui import MessageUI, Confirm
 from utils.lib import MessageArgs
 from babel.translator import ctx_translator
 
@@ -112,10 +113,32 @@ class RankOverviewUI(MessageUI):
         """
         Clear the rank list.
         """
-        await self.rank_model.table.delete_where(guildid=self.guildid)
-        self.bot.get_cog('RankCog').flush_guild_ranks(self.guild.id)
-        self.ranks = []
-        await self.redraw()
+        # Confirm deletion
+        t = self.bot.translator.t
+        confirm_msg = t(_p(
+            'ui:rank_overview|button:clear|confirm',
+            "Are you sure you want to **delete all activity ranks** in this server?"
+        ))
+        confirmui = Confirm(confirm_msg, self._callerid)
+        confirmui.confirm_button.label = t(_p(
+            'ui:rank_overview|button:clear|confirm|button:yes',
+            "Yes, clear ranks"
+        ))
+        confirmui.confirm_button.style = ButtonStyle.red
+        confirmui.cancel_button.style = ButtonStyle.green
+        confirmui.cancel_button.label = t(_p(
+            'ui:rank_overview|button:clear|confirm|button:no',
+            "Cancel"
+        ))
+        try:
+            result = await confirmui.ask(press, ephemeral=True)
+        except ResponseTimedOut:
+            result = False
+        if result:
+            await self.rank_model.table.delete_where(guildid=self.guildid)
+            self.bot.get_cog('RankCog').flush_guild_ranks(self.guild.id)
+            self.ranks = []
+            await self.redraw()
 
     async def clear_button_refresh(self):
         self.clear_button.label = self.bot.translator.t(_p(
