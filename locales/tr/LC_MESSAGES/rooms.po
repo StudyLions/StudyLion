@@ -654,7 +654,7 @@ msgstr "oda_üye_sınırı"
 #: src/modules/rooms/settings.py:115
 msgctxt "guildset:rooms_slots|desc"
 msgid "Maximum number of members in each private room."
-msgstr ""
+msgstr "Her özel odada maksimum üye sayısı"
 
 #: src/modules/rooms/settings.py:119
 msgctxt "guildset:rooms_slots|long_desc"
@@ -667,7 +667,7 @@ msgstr ""
 #: src/modules/rooms/settings.py:125
 msgctxt "guildset:rooms_slots|accepts"
 msgid "Maximum number of members allowed per private room."
-msgstr "Her özel oda için izin verilen maksimum üye sayısı."
+msgstr "Herbir özel oda için izin verilen maksimum üye sayısı."
 
 #: src/modules/rooms/settings.py:137
 #, possible-python-brace-format
