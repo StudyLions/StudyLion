@@ -115,6 +115,8 @@ msgid ""
 "You need the `MANAGE_ROLES` permission in order to manage the server role "
 "menus."
 msgstr ""
+"Bu sunucudaki rol menülerini düzenleyebilmek için `MANAGE_ROLES` yetkisine "
+"sahip olman gerekmektedir."
 
 #: src/modules/rolemenus/cog.py:461
 msgctxt "cmd:rolemenus|error:my_perms"
@@ -122,6 +124,8 @@ msgid ""
 "I lack the `MANAGE_ROLES` permission required to offer roles from role "
 "menus."
 msgstr ""
+"Rol menülerinden roller sunmak için gereken \"MANAGE_ROLES\" yetkisine sahip"
+" değilim."
 
 #: src/modules/rolemenus/cog.py:496
 #, possible-python-brace-format
