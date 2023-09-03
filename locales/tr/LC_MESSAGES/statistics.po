@@ -693,7 +693,7 @@ msgstr ""
 #: src/modules/statistics/ui/leaderboard.py:377
 msgctxt "ui:leaderboard|button:jump|error:invalid_page"
 msgid "Invalid page number, please try again!"
-msgstr ""
+msgstr "Geçersiz sayfa numarası, lütfen tekrar deneyin!"
 
 #: src/modules/statistics/ui/leaderboard.py:428
 msgctxt "ui:leaderboard|mode:voice|message:empty|desc"
