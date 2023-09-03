@@ -82,7 +82,7 @@ msgid ""
 "Activity ranks and season leaderboard will now be measured from "
 "{season_start}."
 msgstr ""
-"Aktivite seviyeleri ve sezon lider tablosu bundan sonra {season_start}'tan "
+"Aktivite rütbeleri ve sezon lider tablosu bundan sonra {season_start}'tan "
 "itibaren hesaplanacaktır."
 
 #: src/modules/statistics/settings.py:37
