@@ -235,7 +235,7 @@ msgstr ""
 #: src/modules/statistics/settings.py:183
 msgctxt "guildset:unranked_roles|set_using"
 msgid "Role selector below."
-msgstr ""
+msgstr "Rol seçici aşağıdadır."
 
 #: src/modules/statistics/settings.py:193
 #, possible-python-brace-format
