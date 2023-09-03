@@ -1085,12 +1085,12 @@ msgstr ""
 #: src/modules/rolemenus/menuoptions.py:110
 msgctxt "menuset:sticky|set_response:true"
 msgid "Members will no longer be able to remove roles with this menu."
-msgstr ""
+msgstr "Üyeler bundan sonra bu menüden rolleri kaldıramayacaklar."
 
 #: src/modules/rolemenus/menuoptions.py:115
 msgctxt "menuset:sticky|set_response:false"
 msgid "Members will now be able to remove roles with this menu."
-msgstr ""
+msgstr "Üyeler bundan böyle bu menüden rolleri kaldırabilecekler."
 
 #: src/modules/rolemenus/menuoptions.py:123
 msgctxt "menuset:refunds"
