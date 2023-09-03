@@ -240,12 +240,12 @@ msgstr "Hatırlatıcı oluşturulamadı!"
 msgctxt "cmd_remindme_at|error:too_fast|desc"
 msgid ""
 "You cannot set a repeating reminder with a period less than 10 minutes."
-msgstr ""
+msgstr "10 dakikanın aşağısında tekrarlanan bir hatırlatıcı kurulamaz."
 
 #: src/modules/reminders/cog.py:640
 msgctxt "cmd_remindme_at|error:too_fast|title"
 msgid "Could not create reminder!"
-msgstr ""
+msgstr "Hatırlatıcı kuramadım!"
 
 #: src/modules/reminders/cog.py:658
 #, possible-python-brace-format
