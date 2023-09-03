@@ -395,17 +395,17 @@ msgstr ""
 #: src/modules/rooms/cog.py:686
 msgctxt "cmd:room_kick"
 msgid "kick"
-msgstr ""
+msgstr "at"
 
 #: src/modules/rooms/cog.py:689
 msgctxt "cmd:room_kick|desc"
 msgid "Remove a members from your private room."
-msgstr ""
+msgstr "Özel odandan üyeleri çıkart."
 
 #: src/modules/rooms/cog.py:693
 msgctxt "cmd:room_kick|param:members"
 msgid "members"
-msgstr ""
+msgstr "üyeler"
 
 #: src/modules/rooms/cog.py:698
 msgctxt "cmd:room_kick|param:members|desc"
@@ -429,12 +429,12 @@ msgstr ""
 #: src/modules/rooms/cog.py:746
 msgctxt "cmd:room_kick|success|ack"
 msgid "Members removed."
-msgstr ""
+msgstr "Üyeler çıkartıldı."
 
 #: src/modules/rooms/cog.py:752
 msgctxt "cmd:room_transfer"
 msgid "transfer"
-msgstr ""
+msgstr "transfer"
 
 #: src/modules/rooms/cog.py:755
 msgctxt "cmd:room_transfer|desc"
@@ -444,7 +444,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:759
 msgctxt "cmd:room_transfer|param:new_owner"
 msgid "new_owner"
-msgstr ""
+msgstr "yeni_sahip"
 
 #: src/modules/rooms/cog.py:764
 msgctxt "cmd:room_transfer|param:new_owner"
