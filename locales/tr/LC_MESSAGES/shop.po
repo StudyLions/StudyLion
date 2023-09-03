@@ -167,7 +167,7 @@ msgstr "fiyat"
 #: src/modules/shop/shops/colours.py:365
 msgctxt "cmd:editshop_colours_create|param:colour|desc"
 msgid "What colour should the role be? (As a hex code, e.g. #AB22AB)"
-msgstr ""
+msgstr "Bu rol ne renkte olacak? (Hex kodu cinsinden ör. #AB22AB)"
 
 #: src/modules/shop/shops/colours.py:369
 msgctxt "cmd:editshop_colours_create|param:name|desc"
