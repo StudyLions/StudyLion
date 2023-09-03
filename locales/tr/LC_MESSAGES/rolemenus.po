@@ -965,6 +965,8 @@ msgstr "Rol kaldırıldı"
 msgctxt "rolemenu|deselect|success:refund|desc"
 msgid "You have removed **{role}**, and been refunded {coin} **{amount}**."
 msgstr ""
+"**{role}** rolünü kaldırdın ve  {coin} **{amount}** miktarı sana iade "
+"edildi."
 
 #: src/modules/rolemenus/rolemenu.py:540
 #, possible-python-brace-format
