@@ -525,7 +525,7 @@ msgstr "Kaldırılacak renk rolünü seçin."
 #: src/modules/shop/shops/colours.py:985
 msgctxt "cmd:editshop_colours_remove|param:delete_role|desc"
 msgid "Whether to delete the associated role."
-msgstr ""
+msgstr "İlişkili rolün silinip silinmeyeceği."
 
 #: src/modules/shop/shops/colours.py:1010
 #, possible-python-brace-format
