@@ -365,32 +365,32 @@ msgstr "Aylık"
 #: src/modules/statistics/ui/goals.py:135
 msgctxt "ui:WeeklyUI|name"
 msgid "Weekly"
-msgstr ""
+msgstr "Haftalık"
 
 #: src/modules/statistics/ui/summary.py:18
 msgctxt "ui:SummaryUI|name"
 msgid "Summary"
-msgstr ""
+msgstr "Özet"
 
 #: src/modules/statistics/ui/weeklymonthly.py:96
 msgctxt "menu:stat_type|opt:weekly_voice|name"
 msgid "Weekly Voice Statistics"
-msgstr ""
+msgstr "Haftalık Ses İstatistikleri"
 
 #: src/modules/statistics/ui/weeklymonthly.py:101
 msgctxt "menu:stat_type|opt:weekly_text|name"
 msgid "Weekly Text Statistics"
-msgstr ""
+msgstr "Haftalık Metin İstatistikleri"
 
 #: src/modules/statistics/ui/weeklymonthly.py:106
 msgctxt "menu:stat_type|opt:weekly_anki|name"
 msgid "Weekly Anki Statistics"
-msgstr ""
+msgstr "Haftalık Anki İstatistikleri"
 
 #: src/modules/statistics/ui/weeklymonthly.py:112
 msgctxt "menu:stat_type|opt:monthly_voice|name"
 msgid "Monthly Voice Statistics"
-msgstr ""
+msgstr "Aylık Ses İstatistikleri"
 
 #: src/modules/statistics/ui/weeklymonthly.py:117
 msgctxt "menu:stat_type|opt:monthly_text|name"
