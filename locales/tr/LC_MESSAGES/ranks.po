@@ -54,7 +54,7 @@ msgctxt "rank_refresh|error:unassignable_roles|desc"
 msgid ""
 "I have insufficient permissions to assign the following role(s):\n"
 "{roles}"
-msgstr ""
+msgstr "Sıradaki rolleri atamak için iznim yeterli değil"
 
 #: src/modules/ranks/cog.py:574
 msgctxt "rank_refresh|remove_roles|audit"
