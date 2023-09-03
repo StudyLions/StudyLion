@@ -163,7 +163,7 @@ msgstr "rolmenüsü"
 #: src/modules/rolemenus/cog.py:584
 msgctxt "group:rolemenu|desc"
 msgid "Base command group for role menu configuration."
-msgstr ""
+msgstr "Rol menüsü konfigürasyonu için temel komut grubu."
 
 #: src/modules/rolemenus/cog.py:593
 msgctxt "cmd:rolemenu_create"
