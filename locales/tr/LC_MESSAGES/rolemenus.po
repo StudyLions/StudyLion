@@ -524,7 +524,7 @@ msgstr "Bu sunucuda `{name}` adında bir rol menüsü bulunmuyor!"
 #: src/modules/rolemenus/cog.py:1312
 msgctxt "cmd:rolemenu_addrole|success:create|title"
 msgid "Added Menu Role"
-msgstr ""
+msgstr "Menü Rolünü Ekledim"
 
 #: src/modules/rolemenus/cog.py:1316
 #, possible-python-brace-format
