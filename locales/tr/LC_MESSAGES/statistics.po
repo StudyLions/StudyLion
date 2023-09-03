@@ -151,6 +151,8 @@ msgid ""
 "Whether statistics commands display combined stats for all servers or just "
 "your current server."
 msgstr ""
+"İstatistik komutlarının tüm sunucular için birleştirilmiş istatistikleri mi "
+"yoksa yalnızca mevcut sunucunuz için mi görüntüleyeceği."
 
 #: src/modules/statistics/settings.py:88
 msgctxt "guildset:season_start"
