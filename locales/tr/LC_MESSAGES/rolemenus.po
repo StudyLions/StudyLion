@@ -1053,6 +1053,8 @@ msgid ""
 "The role menu name is displayed when selecting the menu in commands, and as "
 "the title of most default menu layouts."
 msgstr ""
+"Rol menüsü adı, komutlarda menü seçilirken ve çoğu varsayılan menü düzeninin"
+" başlığı olarak görüntülenir."
 
 #: src/modules/rolemenus/menuoptions.py:78
 #, possible-python-brace-format
