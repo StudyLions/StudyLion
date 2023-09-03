@@ -214,12 +214,12 @@ msgstr "her_tekrarla"
 #: src/modules/reminders/cog.py:599
 msgctxt "cmd:remindme_at|param:time|desc"
 msgid "When you want to be reminded. (E.g. `4pm` or `16:00`)."
-msgstr ""
+msgstr "Ne zaman hatırlatılmasını istediğin. (Ör.`4pm` or `16:00` )"
 
 #: src/modules/reminders/cog.py:600
 msgctxt "cmd:remindme_at|param:reminder|desc"
 msgid "What should the reminder be?"
-msgstr ""
+msgstr "Hatırlatıcı ne olacak?"
 
 #: src/modules/reminders/cog.py:601
 msgctxt "cmd:remindme_at|param:every|desc"
