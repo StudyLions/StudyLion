@@ -502,12 +502,12 @@ msgstr ""
 #: src/modules/ranks/ui/preview.py:268
 msgctxt "ui:rank_preview|menu:roles|error:not_assignable|title"
 msgid "Could not update rank!"
-msgstr ""
+msgstr "Rütbe güncellenemedi!"
 
 #: src/modules/ranks/ui/preview.py:278
 msgctxt "ui:rank_preview|menu:roles|placeholder"
 msgid "Update Rank Role"
-msgstr ""
+msgstr "Rütbe Rolünü Güncelle"
 
 #: src/modules/ranks/ui/preview.py:290
 msgctxt "ui:rank_preview|embed|title"
