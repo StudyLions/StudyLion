@@ -72,6 +72,8 @@ msgid ""
 "Time from which to start counting activity for rank badges and season "
 "leaderboards. (YYYY-MM-DD)"
 msgstr ""
+"Rütbe rozetlerinin ve seviye liderlik tablosunun başlama tarihi. (YYYY-AA-"
+"GG)"
 
 #: src/modules/statistics/cog.py:130
 #, possible-python-brace-format
