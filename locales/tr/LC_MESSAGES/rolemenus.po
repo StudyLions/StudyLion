@@ -930,7 +930,7 @@ msgstr ""
 #: src/modules/rolemenus/rolemenu.py:381
 msgctxt "ui:rolemenu_dropdown|placeholder"
 msgid "Select Roles"
-msgstr ""
+msgstr "Rolleri Seç"
 
 #: src/modules/rolemenus/rolemenu.py:472
 msgctxt "rolemenu|error:role_gone"
