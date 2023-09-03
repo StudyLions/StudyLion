@@ -179,12 +179,12 @@ msgstr "İptal edilecek hatırlatıcı bulunmamaktadır."
 #, possible-python-brace-format
 msgctxt "cmd:reminders_cancel|acmpl:reminder|error:no_matches"
 msgid "You do not have any reminders matching \"{partial}\""
-msgstr ""
+msgstr "\"{partial}\" ile eşleşen hatırlatıcın bulunmamakta."
 
 #: src/modules/reminders/cog.py:580
 msgctxt "cmd:remindme"
 msgid "remindme"
-msgstr ""
+msgstr "banahatırlat"
 
 #: src/modules/reminders/cog.py:587
 msgctxt "cmd:remindme_at"
