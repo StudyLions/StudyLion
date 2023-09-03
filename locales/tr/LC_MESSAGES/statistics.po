@@ -624,6 +624,8 @@ msgid ""
 "You will now see statistics from all you servers (where applicable)! Press "
 "again to revert."
 msgstr ""
+"Şu anda tüm sunucularınızın istatistiklerini göreceksiniz (uygun olanları)! "
+"Geri almak için bir daha basın."
 
 #: src/modules/statistics/ui/leaderboard.py:231
 msgctxt "ui:leaderboard|menu:stats|placeholder"
