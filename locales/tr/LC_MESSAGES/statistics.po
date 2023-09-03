@@ -200,6 +200,9 @@ msgid ""
 "Member ranks will update when they are next active. Use {rank_cmd} to "
 "refresh immediately."
 msgstr ""
+"{timestamp}'tan itibaren lider tablosu sezonu ve aktivite rütbeleri "
+"sayılacaktır. Üye rütbeleri bir sonraki aktif olmalarından itibaren "
+"güncellenecektir. {rank_cmd} kullanarak hemen yenileyebilirsiniz. "
 
 #: src/modules/statistics/settings.py:145
 #, possible-python-brace-format
