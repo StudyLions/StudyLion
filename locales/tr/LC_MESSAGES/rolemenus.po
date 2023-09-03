@@ -691,7 +691,7 @@ msgstr "Bu rol menü ürünüyle ilişkili rol."
 #: src/modules/rolemenus/roleoptions.py:61
 msgctxt "roleset:role|long_desc"
 msgid "The role given when this menu item is selected in the role menu."
-msgstr ""
+msgstr "Rol menüsünden menü ürünü seçildiğinde verilecek rol."
 
 #: src/modules/rolemenus/roleoptions.py:74
 #, possible-python-brace-format
