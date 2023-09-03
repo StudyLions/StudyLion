@@ -695,7 +695,7 @@ msgstr ""
 #: src/modules/rooms/settings.py:157
 msgctxt "guildset:rooms_visible|accepts"
 msgid "Visible/Invisible"
-msgstr ""
+msgstr "Görünür/Görünmez"
 
 #: src/modules/rooms/settings.py:159
 msgctxt "guildset:rooms_visible|output:true"
