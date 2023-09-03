@@ -49,12 +49,12 @@ msgstr "lider tablosu"
 #: src/modules/statistics/cog.py:74
 msgctxt "cmd:leaderboard|desc"
 msgid "Server leaderboard."
-msgstr ""
+msgstr "Sunucu liderlik tablosu."
 
 #: src/modules/statistics/cog.py:91
 msgctxt "cmd:configure_statistics"
 msgid "statistics"
-msgstr ""
+msgstr "istatistikler"
 
 #: src/modules/statistics/cog.py:92
 msgctxt "cmd:configure_statistics|desc"
