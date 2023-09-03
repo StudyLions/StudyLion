@@ -495,12 +495,12 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_clear|resp:done|line:deleted"
 msgid "{emoji} Deleted **{count}/{total}** colour roles."
-msgstr ""
+msgstr "{emoji} **{count}/{total}** renk rolü silindi."
 
 #: src/modules/shop/shops/colours.py:968
 msgctxt "cmd:editshop_colours_remove"
 msgid "remove"
-msgstr ""
+msgstr "çıkart"
 
 #: src/modules/shop/shops/colours.py:971
 msgctxt "cmd:editshop_colours_remove|desc"
