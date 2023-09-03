@@ -168,12 +168,12 @@ msgstr ""
 #: src/modules/reminders/cog.py:525
 msgctxt "cmd:reminders_cancel|embed:success|desc"
 msgid "Reminder successfully cancelled."
-msgstr ""
+msgstr "Hatırlatıcı başarıyla iptal edildi."
 
 #: src/modules/reminders/cog.py:542
 msgctxt "cmd:reminders_cancel|acmpl:reminder|error:no_reminders"
 msgid "There are no reminders to cancel!"
-msgstr ""
+msgstr "İptal edilecek hatırlatıcı bulunmamaktadır."
 
 #: src/modules/reminders/cog.py:572
 #, possible-python-brace-format
