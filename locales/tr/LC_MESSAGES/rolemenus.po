@@ -972,7 +972,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "rolemenu|deselect|success:norefund|desc"
 msgid "You have unequipped **{role}**."
-msgstr ""
+msgstr "**{role}** rolünü kaldırdın."
 
 #: src/modules/rolemenus/rolemenu.py:554
 #, possible-python-brace-format
