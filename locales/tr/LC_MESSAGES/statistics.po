@@ -638,7 +638,7 @@ msgstr ""
 #: src/modules/statistics/ui/leaderboard.py:251
 msgctxt "ui:leaderboard|menu:stats|item:study"
 msgid "Study Statistics"
-msgstr ""
+msgstr "Çalışma İstatistikleri"
 
 #: src/modules/statistics/ui/leaderboard.py:262
 msgctxt "ui:leaderboard|menu:stats|item:message"
