@@ -474,6 +474,8 @@ msgid ""
 "The role is managed by another application or integration, and cannot be a "
 "rank!"
 msgstr ""
+"Bu rol başka bir aplikasyon veya integrasyon tarafından yönetiliyor, ve bir "
+"rütbe olamaz!"
 
 #: src/modules/ranks/ui/preview.py:251
 msgctxt ""
@@ -482,6 +484,8 @@ msgid ""
 "I do not have the `MANAGE_ROLES` permission in this server, so I cannot "
 "manage ranks!"
 msgstr ""
+"Bu sunucuda 'ROLLERİ_DÜZENLE' iznine sahip değilim, bu yüzden rütbeleri "
+"yönetemiyorum!"
 
 #: src/modules/ranks/ui/preview.py:256
 msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:above_me"
