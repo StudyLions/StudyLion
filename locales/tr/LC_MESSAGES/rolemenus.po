@@ -406,6 +406,8 @@ msgid ""
 "Cannot update channel! I lack the `EMBED_LINKS` or `SEND_MESSAGES` "
 "permission in {channel}."
 msgstr ""
+"Kanalı güncelleyemedim! {channel}'da \"EMBED_LINKS\" veya \"SEND_MESSAGES\" "
+"iznim yok."
 
 #: src/modules/rolemenus/cog.py:1010
 #, possible-python-brace-format
@@ -418,7 +420,7 @@ msgstr ""
 #: src/modules/rolemenus/cog.py:1044
 msgctxt "cmd:rolemenu_delete"
 msgid "delmenu"
-msgstr ""
+msgstr "menüyüsil"
 
 #: src/modules/rolemenus/cog.py:1047
 msgctxt "cmd:rolemenu_delete|desc"
