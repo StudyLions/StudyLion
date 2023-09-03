@@ -422,6 +422,7 @@ msgid ""
 "You have deleted the rank **{name}**! Could not delete the role due to an "
 "unknown error."
 msgstr ""
+"**{name}** rütbesini sildin! Bilinmeyen bir hatadan ötürü rol silinemedi."
 
 #: src/modules/ranks/ui/preview.py:182
 #, possible-python-brace-format
