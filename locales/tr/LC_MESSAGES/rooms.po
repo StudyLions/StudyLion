@@ -165,6 +165,9 @@ msgid ""
 "The room will expire {expiry}.\n"
 "Use {room_deposit_cmd} to increase balance."
 msgstr ""
+"**Uyarı:** Sonraki kirayı ödemek için yeterli oda bakiyesi yok ({coin} **{rent}**).\n"
+"Odanın süresi dolacak {expiry}.\n"
+"Bakiye arttırmak için {room_deposit_cmd} kullanın."
 
 #: src/modules/rooms/roomui.py:407
 #, possible-python-brace-format
