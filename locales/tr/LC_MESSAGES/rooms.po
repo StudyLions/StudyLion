@@ -520,6 +520,7 @@ msgctxt "cmd:room_deposit|error:insufficient_funds"
 msgid ""
 "You cannot deposit {coin}**{amount}**! You only have {coin}**{balance}**."
 msgstr ""
+"{coin}**{amount}** yatıramazsın! Sadece {coin}**{balance}** kadarın var."
 
 #: src/modules/rooms/cog.py:906
 #, possible-python-brace-format
