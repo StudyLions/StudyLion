@@ -541,7 +541,7 @@ msgstr "Başarıyla rolü sildi."
 #: src/modules/shop/shops/colours.py:1033
 msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
 msgid "I do not have sufficient permissions to delete the role."
-msgstr ""
+msgstr "Rolü silmek için yeterli iznim bulunmuyor."
 
 #: src/modules/shop/shops/colours.py:1038
 msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
