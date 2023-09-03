@@ -628,7 +628,7 @@ msgstr ""
 #: src/modules/statistics/ui/leaderboard.py:231
 msgctxt "ui:leaderboard|menu:stats|placeholder"
 msgid "Select Activity Type"
-msgstr ""
+msgstr "Aktivite Türünü Seçin"
 
 #: src/modules/statistics/ui/leaderboard.py:240
 msgctxt "ui:leaderboard|menu:stats|item:voice"
