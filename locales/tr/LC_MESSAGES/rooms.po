@@ -638,7 +638,7 @@ msgstr ""
 #: src/modules/rooms/settings.py:88
 msgctxt "guildset:rooms_rent|accepts"
 msgid "Number of LionCoins charged per day for a private room."
-msgstr ""
+msgstr "Özel bir oda için her bir gün için ücretlendirilen Lion Coin sayısı."
 
 #: src/modules/rooms/settings.py:100
 #, possible-python-brace-format
