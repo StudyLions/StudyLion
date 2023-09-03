@@ -697,7 +697,7 @@ msgstr "Rol menüsünden menü ürünü seçildiğinde verilecek rol."
 #, possible-python-brace-format
 msgctxt "roleset:role|set_response:set"
 msgid "This menu item will now give the role {role}."
-msgstr ""
+msgstr " Bu menü ürünü bundan böyle {role} rolünü verecek."
 
 #: src/modules/rolemenus/roleoptions.py:82
 msgctxt "roleset:label"
