@@ -787,6 +787,7 @@ class Timer:
             if current.end < utc_now():
                 self._state = self.current_stage
                 task = asyncio.create_task(self.notify_change_stage(current, self._state))
+                background_tasks.add(task)
                 task.add_done_callback(background_tasks.discard)
                 current = self._state
             elif self.members:
