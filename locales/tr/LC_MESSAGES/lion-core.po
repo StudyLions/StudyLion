@@ -50,7 +50,7 @@ msgstr "{coin}**{amount}**"
 #: src/core/setting_types.py:87
 msgctxt "settype:message|accepts"
 msgid "JSON formatted raw message data"
-msgstr ""
+msgstr "JSON formatlı ham mesaj verileri"
 
 #: src/core/setting_types.py:102
 msgctxt "settype:message|download|error:not_json"
