@@ -1409,7 +1409,7 @@ msgstr ""
 #: src/modules/rolemenus/ui/menueditor.py:615
 msgctxt "ui:menu_editor|menu:style|option:button|label"
 msgid "Button Menu"
-msgstr ""
+msgstr "Buton Menü"
 
 #: src/modules/rolemenus/ui/menueditor.py:618
 msgctxt "ui:menu_editor|menu:style|option:button|desc"
