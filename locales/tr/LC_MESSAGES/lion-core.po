@@ -108,7 +108,7 @@ msgstr "`embed` alanı geçerli bir JSON verisi olmalıdır."
 #: src/core/setting_types.py:210
 msgctxt "settype:message|error:json_embeds_type"
 msgid "`embeds` field must be a list."
-msgstr ""
+msgstr "`embeds` kısmı bir liste olmalıdır."
 
 #: src/core/setting_types.py:217
 msgctxt "settype:message|error:json_embed_embeds"
