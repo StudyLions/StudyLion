@@ -366,12 +366,12 @@ msgstr "Ayarlanmadı, eğer ayarlandıysa `hoşgeldin_mesajı` kullanılacak."
 #: src/modules/member_admin/settings.py:325
 msgctxt "guildset:returning_message|embed_field|formatkeys|explanation"
 msgid "In *addition* to the placeholders supported by `welcome_message`"
-msgstr ""
+msgstr "`welcome_message` tarafından desteklenen yer tutuculara *ek olarak*"
 
 #: src/modules/member_admin/settings.py:328
 msgctxt "guildset:returning_message|embed_field|formatkeys|"
 msgid "Placeholders"
-msgstr ""
+msgstr "Yer Tutucular"
 
 #: src/modules/member_admin/settings.py:339
 msgctxt "guildset:autoroles"
