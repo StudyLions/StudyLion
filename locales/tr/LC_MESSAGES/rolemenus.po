@@ -1557,6 +1557,8 @@ msgid ""
 "This menu is not currently active!\n"
 "Make it available by clicking `Post` below."
 msgstr ""
+"Bu menü şu anda aktif değil!\n"
+"Aşağıdaki `Post` butonuna basarak aktif edebilirsiniz."
 
 #: src/modules/rolemenus/ui/menueditor.py:1002
 msgctxt "ui:menu_editor|embed|field:tips|name"
