@@ -62,7 +62,7 @@ msgstr "Tüm parçalarda isteğe bağlı kod yürütün."
 #: src/modules/sysadmin/exec_cog.py:287
 msgctxt "command:asyncall|param:string"
 msgid "Cross-shard code to execute. Cannot reference ctx!"
-msgstr ""
+msgstr "Yürütülecek çapraz parça kodu. Ctx'den referans alınamaz!"
 
 #: src/modules/sysadmin/exec_cog.py:288
 msgctxt "command:asyncall|param:target"
