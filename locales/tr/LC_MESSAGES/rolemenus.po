@@ -1501,6 +1501,7 @@ msgid ""
 "An error ocurred while posting to {channel}. Do I have sufficient "
 "permissions?"
 msgstr ""
+"{channel} kanala gönderirken bir hata oluştu. Benim yeterli iznim var mı?"
 
 #: src/modules/rolemenus/ui/menueditor.py:907
 msgctxt "ui:menu_editor|button:repost|widget:repost|success|title"
