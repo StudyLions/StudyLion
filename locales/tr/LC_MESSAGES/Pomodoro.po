@@ -472,12 +472,12 @@ msgstr "{isim}"
 #, possible-python-brace-format
 msgctxt "formatstring:channel_name|key:pattern"
 msgid "{pattern}"
-msgstr ""
+msgstr "{model}"
 
 #: src/modules/pomodoro/options.py:32
 msgctxt "timerset:voice_channel"
 msgid "channel"
-msgstr ""
+msgstr "kanal"
 
 #: src/modules/pomodoro/options.py:35
 msgctxt "timerset:voice_channel|desc"
