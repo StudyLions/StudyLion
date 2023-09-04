@@ -336,7 +336,7 @@ msgstr "Mesaj Aktivitesi"
 #: src/modules/statistics/settings.py:351
 msgctxt "ui:statistics_config|menu:visible_stats|item:anki"
 msgid "Anki Reviews"
-msgstr "Anki Görüntülemeleri"
+msgstr "Anki İncelemeleri"
 
 #: src/modules/statistics/settings.py:362
 msgctxt "ui:statistics_config|menu:visible_stats|placeholder"
