@@ -1277,12 +1277,12 @@ msgstr "Eklenmeyen Menüler"
 #: src/modules/rolemenus/ui/menus.py:201
 msgctxt "ui:menu_list|embed|footer:text"
 msgid "Click a menu name to jump to the message."
-msgstr ""
+msgstr "Mesaja gitmek için menü adına sağ tıklayın."
 
 #: src/modules/rolemenus/ui/menueditor.py:93
 msgctxt "ui:menu_editor|preview|error:title"
 msgid "Display Error!"
-msgstr ""
+msgstr "Gösterim Hatasu"
 
 #: src/modules/rolemenus/ui/menueditor.py:97
 #, possible-python-brace-format
