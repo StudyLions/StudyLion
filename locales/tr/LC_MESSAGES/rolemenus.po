@@ -1342,7 +1342,7 @@ msgstr "Çok fazla rol var! Tepki rol menüleri `20` rol sınırını geçemez."
 #: src/modules/rolemenus/ui/menueditor.py:416
 msgctxt "ui:menu_editor|menu:add_roles|error:too_many_roles"
 msgid "Too many roles! Role menus cannot have more than `25` roles."
-msgstr ""
+msgstr "Çok fazla rol var! Rol menüleri `25` rol sınırını geçemez."
 
 #: src/modules/rolemenus/ui/menueditor.py:455
 msgctxt "ui:menu_editor|menu:add_roles|placeholder"
