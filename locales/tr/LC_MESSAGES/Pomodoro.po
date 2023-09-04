@@ -314,6 +314,8 @@ msgid ""
 "No `timer_channel` was provided, and I lack the `MANAGE_CHANNELS` permission"
 " needed to create a new voice channel."
 msgstr ""
+"`timer_channel` belirtilmedi. Yeni bir ses kanalı oluşturabilmem için "
+"`MANAGE_CHANNELS` yetkisine sahip olmam gerekiyor."
 
 #: src/modules/pomodoro/cog.py:567
 #, possible-python-brace-format
