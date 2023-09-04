@@ -149,7 +149,7 @@ msgstr "sayaçlar"
 #: src/modules/pomodoro/cog.py:322
 msgctxt "cmd:pomodoro|desc"
 msgid "Base group for all pomodoro timer commands."
-msgstr ""
+msgstr "Tüm pomodoro zamanlayıcı komutları için temel grup."
 
 #: src/modules/pomodoro/cog.py:330
 msgctxt "cmd:pomodoro_status"
