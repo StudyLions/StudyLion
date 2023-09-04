@@ -1388,16 +1388,18 @@ msgid ""
 "Cannot switch to the Reaction Role Style! Every role needs to have a "
 "distinct emoji first."
 msgstr ""
+"Tepki rol stiline geçemiyorum! Önce tüm rollerin belirli bir emojisinin "
+"olması gerekiyor."
 
 #: src/modules/rolemenus/ui/menueditor.py:602
 msgctxt "ui:menu_editor|menu:style|placeholder"
 msgid "Select Menu Style"
-msgstr ""
+msgstr "Menü Stilini Seç"
 
 #: src/modules/rolemenus/ui/menueditor.py:606
 msgctxt "ui:menu_editor|menu:style|option:reaction|label"
 msgid "Reaction Roles"
-msgstr ""
+msgstr "Tepki Rolleri"
 
 #: src/modules/rolemenus/ui/menueditor.py:609
 msgctxt "ui:menu_editor|menu:style|option:reaction|desc"
