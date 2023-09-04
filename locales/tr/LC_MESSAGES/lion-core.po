@@ -55,12 +55,12 @@ msgstr "JSON formatlı ham mesaj verileri"
 #: src/core/setting_types.py:102
 msgctxt "settype:message|download|error:not_json"
 msgid "The attached message data is not a JSON file!"
-msgstr ""
+msgstr "Eklenen mesaj verisi JSON dosyası değil!"
 
 #: src/core/setting_types.py:107
 msgctxt "settype:message|download|error:size"
 msgid "The attached message data is too large!"
-msgstr ""
+msgstr "Eklenen mesaj verisi çok yüksek boyutta!"
 
 #: src/core/setting_types.py:116
 msgctxt "settype:message|download|error:decoding"
@@ -68,6 +68,8 @@ msgid ""
 "Could not decode the message data. Please ensure it is saved with the "
 "`UTF-8` encoding."
 msgstr ""
+"Mesaj verilerinin kodu çözülemedi. Lütfen 'UTF-8' kodlamasıyla "
+"kaydedildiğinden emin olun."
 
 #: src/core/setting_types.py:173
 #, possible-python-brace-format
