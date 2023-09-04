@@ -587,6 +587,7 @@ msgctxt "timerset:channel_name|accepts"
 msgid ""
 "Timer channel name, with keys {remaining}, {name}, {pattern}, and {stage}."
 msgstr ""
+"Sayaç kanal adı, {remaining}, {name}, {pattern} ve {stage} kısatmalarıyla."
 
 #: src/modules/pomodoro/options.py:180
 msgctxt "timerset:focus_length"
