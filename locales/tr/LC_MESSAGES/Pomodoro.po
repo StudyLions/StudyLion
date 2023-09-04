@@ -602,7 +602,7 @@ msgstr "Dakika cinsinden odak oturumlarının uzunluğu."
 #: src/modules/pomodoro/options.py:188
 msgctxt "timerset:focus_length|accepts"
 msgid "A positive integer number of minutes."
-msgstr ""
+msgstr "Dakikanın tam sayı cinsinden değeri."
 
 #: src/modules/pomodoro/options.py:212
 msgctxt "timerset:focus_length|desc"
