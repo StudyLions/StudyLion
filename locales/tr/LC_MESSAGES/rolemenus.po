@@ -1192,12 +1192,12 @@ msgstr ""
 #: src/modules/rolemenus/menuoptions.py:228
 msgctxt "menuset:required_role|set_response:unset"
 msgid "Any member who can see the menu may use it."
-msgstr ""
+msgstr "Bu menüyü gören herkes kullanabilir."
 
 #: src/modules/rolemenus/menuoptions.py:236
 msgctxt "menuset:message"
 msgid "custom_message"
-msgstr ""
+msgstr "özel_mesaj"
 
 #: src/modules/rolemenus/menuoptions.py:239
 msgctxt "menuset:message|desc"
