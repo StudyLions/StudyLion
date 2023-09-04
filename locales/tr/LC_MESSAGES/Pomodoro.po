@@ -380,7 +380,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:683
 msgctxt "cmd:pomodoro_edit"
 msgid "edit"
-msgstr ""
+msgstr "düzenle"
 
 #: src/modules/pomodoro/cog.py:686
 msgctxt "cmd:pomodoro_edit|desc"
