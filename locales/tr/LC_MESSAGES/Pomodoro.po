@@ -397,7 +397,7 @@ msgstr "sayaç_kanalı"
 #: src/modules/pomodoro/cog.py:696
 msgctxt "cmd:pomodoro_edit|param:channel|desc"
 msgid "Channel holding the timer to edit."
-msgstr ""
+msgstr "Düzenlemek için zamanlayıcıyı olan kanal."
 
 #: src/modules/pomodoro/cog.py:737
 msgctxt "cmd:pomodoro_edit|error:no_timer"
