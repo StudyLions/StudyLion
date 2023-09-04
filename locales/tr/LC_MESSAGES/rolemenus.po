@@ -1513,6 +1513,7 @@ msgstr "Rol Menüsü Taşındı"
 msgctxt "ui:menu_editor|button:repost|widget:repost|success|desc:general"
 msgid "The role menu `{name}` is now available at {message_link}."
 msgstr ""
+"`{name}` rol menüsü bundan böyle {message_link} bağlantısında bulunabilecek."
 
 #: src/modules/rolemenus/ui/menueditor.py:927
 msgctxt "ui:menu_editor|button:repost|widget:repost|success|desc:reactions"
