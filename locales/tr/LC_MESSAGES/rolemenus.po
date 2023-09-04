@@ -1523,12 +1523,12 @@ msgstr "Lütfen mesaj tepki rollerinin doğru olup olmadığını kontrol et."
 #: src/modules/rolemenus/ui/menueditor.py:940
 msgctxt "ui:menu_editor|button:repost|widget:repost|title"
 msgid "Repost Role Menu"
-msgstr ""
+msgstr "Rol Menüsünü Tekrar Gönder"
 
 #: src/modules/rolemenus/ui/menueditor.py:944
 msgctxt "ui:menu_editor|button:repost|widget:repost|description"
 msgid "Please select the channel to which you want to resend this menu."
-msgstr ""
+msgstr "Bu menüyü tekrar göndermek istediğiniz kanalı seçiniz."
 
 #: src/modules/rolemenus/ui/menueditor.py:959
 msgctxt "ui:menu_editor|button:repost|label:repost"
