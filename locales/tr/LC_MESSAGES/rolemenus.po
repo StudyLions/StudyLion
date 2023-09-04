@@ -1307,12 +1307,12 @@ msgstr "Menü Seçenekleri"
 #: src/modules/rolemenus/ui/menueditor.py:215
 msgctxt "ui:menu_editor|button:bulk_edit|label"
 msgid "Bulk Edit"
-msgstr ""
+msgstr "Toplu Düzenleme"
 
 #: src/modules/rolemenus/ui/menueditor.py:235
 msgctxt "ui:menu_editor|button:sticky|label"
 msgid "Toggle Sticky"
-msgstr ""
+msgstr "Yapışkanı Aç/Kapat"
 
 #: src/modules/rolemenus/ui/menueditor.py:259
 msgctxt "ui:menu_editor|button:refunds|label"
