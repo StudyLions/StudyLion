@@ -448,13 +448,13 @@ msgstr "Pomodoro Sayaç Sistemi Konfigürasyonu"
 #, possible-python-brace-format
 msgctxt "formatstring:channel_name|key:remaining"
 msgid "{remaining}"
-msgstr ""
+msgstr "{kalan}"
 
 #: src/modules/pomodoro/lib.py:20
 #, possible-python-brace-format
 msgctxt "formatstring:channel_name|key:stage"
 msgid "{stage}"
-msgstr ""
+msgstr "{oturum}"
 
 #: src/modules/pomodoro/lib.py:21
 #, possible-python-brace-format
