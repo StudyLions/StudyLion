@@ -1282,7 +1282,7 @@ msgstr "Mesaja gitmek için menü adına sağ tıklayın."
 #: src/modules/rolemenus/ui/menueditor.py:93
 msgctxt "ui:menu_editor|preview|error:title"
 msgid "Display Error!"
-msgstr "Gösterim Hatasu"
+msgstr "Gösterim Hatası!"
 
 #: src/modules/rolemenus/ui/menueditor.py:97
 #, possible-python-brace-format
