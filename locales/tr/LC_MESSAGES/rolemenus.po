@@ -1266,11 +1266,13 @@ msgid ""
 "Right click an existing message or use the `newmenu` command to create a new"
 " menu."
 msgstr ""
+"Yeni bir menü oluşturmak için mevcut bir mesaja sağ tıklayın ya da "
+"`yenimenü` komutunu kullanın."
 
 #: src/modules/rolemenus/ui/menus.py:189
 msgctxt "ui:menu_list|embed|field:unattached|name"
 msgid "Unattached Menus"
-msgstr ""
+msgstr "Eklenmeyen Menüler"
 
 #: src/modules/rolemenus/ui/menus.py:201
 msgctxt "ui:menu_list|embed|footer:text"
