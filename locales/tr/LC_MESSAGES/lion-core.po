@@ -78,6 +78,8 @@ msgid ""
 "You can view, test, and fix your embed using the online [embed "
 "builder]({link})."
 msgstr ""
+"Çevrimiçi [embed builder]({link}) kullanarak yerleştirmenizi "
+"görüntüleyebilir, test edebilir ve düzeltebilirsiniz."
 
 #: src/core/setting_types.py:185
 #, possible-python-brace-format
