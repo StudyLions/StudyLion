@@ -1186,6 +1186,8 @@ msgstr ""
 msgctxt "menuset:required_role|set_response:set"
 msgid "Members will need to have the {role} role to use this menu."
 msgstr ""
+"Üyelerin bu menüyü kullanabilmeleri için {role} rolüne sahip olmaları "
+"gerekir."
 
 #: src/modules/rolemenus/menuoptions.py:228
 msgctxt "menuset:required_role|set_response:unset"
