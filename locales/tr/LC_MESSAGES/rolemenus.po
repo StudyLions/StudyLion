@@ -1578,7 +1578,7 @@ msgstr ""
 #: src/modules/rolemenus/ui/menueditor.py:1046
 msgctxt "ui:menu_editor|error:invald_emoji|title"
 msgid "Invalid emoji encountered."
-msgstr ""
+msgstr "Geçersiz emojiyle karşılaşıldı."
 
 #: src/modules/rolemenus/ui/menueditor.py:1050
 #, possible-python-brace-format
