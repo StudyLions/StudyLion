@@ -1212,6 +1212,10 @@ msgid ""
 "`Edit Message` button, raw JSON-formatted message data may also be uploaded "
 "via command."
 msgstr ""
+"Bu ayar, mesaj içeriği ve eklenen mesaj(lar) da dahil olmak üzere menü "
+"mesajının metnini belirler. En kolay şekilde `Mesajı Düzenle` düğmesi "
+"aracılığıyla değiştirilebilirken, ham JSON formatlı mesaj verileri de komut "
+"aracılığıyla yüklenebilir."
 
 #: src/modules/rolemenus/menuoptions.py:260
 msgctxt "menuset:message|set_response:set"
