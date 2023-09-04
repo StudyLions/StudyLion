@@ -578,6 +578,8 @@ msgid ""
 "Auto-updating voice channel name, accepting {remaining}, {name}, {pattern}, "
 "and {stage} keys."
 msgstr ""
+"Ses kanalı adı otomatik olarak güncelleniyor; {remaining}, {name}, {pattern}"
+" ve {stage} kelimeleri kabul ediliyor."
 
 #: src/modules/pomodoro/options.py:168
 #, possible-python-brace-format
@@ -589,7 +591,7 @@ msgstr ""
 #: src/modules/pomodoro/options.py:180
 msgctxt "timerset:focus_length"
 msgid "focus_length"
-msgstr ""
+msgstr "odak_uzunluğu"
 
 #: src/modules/pomodoro/options.py:183
 msgctxt "timerset:focus_length|desc"
