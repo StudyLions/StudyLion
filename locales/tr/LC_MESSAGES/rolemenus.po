@@ -1474,12 +1474,12 @@ msgstr "Mesajı Düzenle"
 #: src/modules/rolemenus/ui/menueditor.py:844
 msgctxt "ui:menu_editor|button:preview|label"
 msgid "Preview"
-msgstr ""
+msgstr "Ön gösterim"
 
 #: src/modules/rolemenus/ui/menueditor.py:860
 msgctxt "ui:menu_editor|button:repost|widget:repost|menu:channel|placeholder"
 msgid "Select New Channel"
-msgstr ""
+msgstr "Yeni Kanalı Seç"
 
 #: src/modules/rolemenus/ui/menueditor.py:878
 msgctxt "ui:menu_editor|button:repost|widget:repost|error:perms|title"
