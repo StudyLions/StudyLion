@@ -617,7 +617,7 @@ msgstr "ara_uzunluğu"
 #: src/modules/pomodoro/options.py:223
 msgctxt "timerset:break_length|desc"
 msgid "Length of the break stage of the timer in minutes."
-msgstr ""
+msgstr "Dakika cinsinden ara oturumlarının uzunluğu."
 
 #: src/modules/pomodoro/options.py:228
 msgctxt "timerset:break_length|accepts"
