@@ -403,6 +403,7 @@ msgstr "Düzenlemek için zamanlayıcıyı olan kanal."
 msgctxt "cmd:pomodoro_edit|error:no_timer"
 msgid "This channel doesn't have an attached pomodoro timer to edit!"
 msgstr ""
+"Bu kanalın sabitlenmiş düzenlenebilecek bir pomodoro sayacı bulunmamaktadır."
 
 #: src/modules/pomodoro/cog.py:750
 msgctxt "cmd:pomodoro_edit|error:insufficient_perms|role:other"
