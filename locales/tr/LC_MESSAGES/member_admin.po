@@ -70,7 +70,7 @@ msgstr "Karşılama Mesajları ({commands[configure welcome]})"
 #: src/modules/member_admin/settingui.py:292
 msgctxt "dash:member_admin|section:initial_roles|name"
 msgid "Initial Roles ({commands[configure welcome]})"
-msgstr ""
+msgstr "Başlangıç ​​Rolleri ({commands[configure welcome]})"
 
 #: src/modules/member_admin/cog.py:234
 msgctxt "cmd:resetmember"
