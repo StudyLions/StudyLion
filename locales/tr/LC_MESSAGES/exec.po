@@ -47,12 +47,12 @@ msgstr "Eval ile isteğe bağlı kod yürütün"
 #: src/modules/sysadmin/exec_cog.py:276
 msgctxt "command:eval|param:string"
 msgid "Code to evaluate."
-msgstr ""
+msgstr "Değerlendirmek istediğiniz kod."
 
 #: src/modules/sysadmin/exec_cog.py:283
 msgctxt "command"
 msgid "asyncall"
-msgstr ""
+msgstr "asyncall"
 
 #: src/modules/sysadmin/exec_cog.py:284
 msgctxt "command:asyncall|desc"
