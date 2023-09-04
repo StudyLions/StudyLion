@@ -1322,12 +1322,12 @@ msgstr "İadeleri Aç/Kapat"
 #: src/modules/rolemenus/ui/menueditor.py:289
 msgctxt "ui:menu_editor|menu:reqroles|placeholder"
 msgid "Select Required Role"
-msgstr ""
+msgstr "Gereken Rolleri Seç"
 
 #: src/modules/rolemenus/ui/menueditor.py:308
 msgctxt "ui:menu_editor|button:modify_roles|label"
 msgid "Modify Roles"
-msgstr ""
+msgstr "Rolleri Düzenle"
 
 #: src/modules/rolemenus/ui/menueditor.py:337
 msgctxt "ui:menu_editor|role_editor|modal|title"
