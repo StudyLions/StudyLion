@@ -331,6 +331,8 @@ msgstr ""
 msgctxt "cmd:pomodoro_create|response:success|content"
 msgid "Timer created successfully! Use the panel below to reconfigure."
 msgstr ""
+"Sayaç başarıyla oluşturuldu! Tekrardan konfigüre etmek için aşağıdaki paneli"
+" kullanabilirsin!"
 
 #: src/modules/pomodoro/cog.py:612
 msgctxt "cmd:pomodoro_destroy"
