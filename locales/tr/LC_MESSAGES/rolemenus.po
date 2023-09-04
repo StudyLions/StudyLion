@@ -1160,12 +1160,12 @@ msgstr "Üyeler bu menüden maksimum **{value}** adet rol seçebilecekler."
 #: src/modules/rolemenus/menuoptions.py:193
 msgctxt "menuset:obtainable|set_response:unset"
 msgid "Members will be able to select any number of roles from this menu."
-msgstr ""
+msgstr "Üyeler bu menüden istedikleri sayıda rolü seçebilecekler."
 
 #: src/modules/rolemenus/menuoptions.py:201
 msgctxt "menuset:required_role"
 msgid "required_role"
-msgstr ""
+msgstr "gereken_rol"
 
 #: src/modules/rolemenus/menuoptions.py:204
 msgctxt "menuset:required_role|desc"
