@@ -1444,7 +1444,7 @@ msgstr "Özel Mesa"
 #: src/modules/rolemenus/ui/menueditor.py:712
 msgctxt "ui:menu_editor|menu:template|option:custom|description"
 msgid "Entirely custom menu message (opens an interactive editor)."
-msgstr ""
+msgstr "Tamamen Özel Menü Mesajı (İnteraktif editörü açar)."
 
 #: src/modules/rolemenus/ui/menueditor.py:729
 msgctxt "ui:menu_editor|button:delete|confirm|title"
