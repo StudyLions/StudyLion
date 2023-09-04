@@ -423,6 +423,8 @@ msgstr "Bu seçeneği düzenleyebilmek için sunucu yöneticisi olman gerekiyor!
 msgctxt "cmd:pomodoro_edit|error:insufficient_permissions|role_needed:owner"
 msgid "You need to be a channel owner or guild admin to modify this option!"
 msgstr ""
+"Bu seçeneği düzenleyebilmek için kanal sahibi ya da sunucu yöneticisi olman "
+"gerekiyor!"
 
 #: src/modules/pomodoro/cog.py:781
 msgctxt "cmd:pomodoro_edit|error:insufficient_permissions|role_needed:manager"
