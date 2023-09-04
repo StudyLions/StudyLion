@@ -504,7 +504,7 @@ msgstr "Ayarlanmadı ({channel} kullanılıyor)"
 #: src/modules/pomodoro/options.py:78
 msgctxt "timerset:inactivity_threshold|inactivity_threshold"
 msgid "inactivity_threshold"
-msgstr ""
+msgstr "aktifsizlik_eşiği"
 
 #: src/modules/pomodoro/options.py:81
 msgctxt "timerset:inactivity_threshold|desc"
