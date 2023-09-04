@@ -530,6 +530,8 @@ msgstr "yönetici_rolü"
 msgctxt "timerset:manager_role|desc"
 msgid "Role allowed to start, stop, and edit the focus/break lengths."
 msgstr ""
+"Odak/ara uzunluklarını başlatmaya, durdurmaya ve düzenleme yapmasına izin "
+"verilen rol."
 
 #: src/modules/pomodoro/options.py:116
 msgctxt "timerset:manager_role|format:notset"
