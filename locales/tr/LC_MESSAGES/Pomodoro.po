@@ -245,6 +245,8 @@ msgid ""
 "`{pattern}` timer is running with `{members}` members!\n"
 "Currently **resting**, with focus starting {timestamp}"
 msgstr ""
+"`{pattern}` sayaç `{members}` üye ile devam ediyor!\n"
+"Şu anda **arada**, odak {timestamp} başlayacak"
 
 #: src/modules/pomodoro/cog.py:455
 msgctxt "cmd:pomodoro_admin"
