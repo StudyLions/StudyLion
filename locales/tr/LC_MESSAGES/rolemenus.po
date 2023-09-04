@@ -1114,7 +1114,7 @@ msgstr ""
 #: src/modules/rolemenus/menuoptions.py:148
 msgctxt "menuset:refunds|set_response:true"
 msgid "Members will now be refunded when removing a role with this menu."
-msgstr ""
+msgstr "Kullanıcılar bu menüden rol kaldırdığında iade alacaklar."
 
 #: src/modules/rolemenus/menuoptions.py:153
 msgctxt "menuset:refunds|set_response:false"
