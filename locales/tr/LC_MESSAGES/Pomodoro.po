@@ -579,7 +579,7 @@ msgid ""
 "and {stage} keys."
 msgstr ""
 "Ses kanalı adı otomatik olarak güncelleniyor; {remaining}, {name}, {pattern}"
-" ve {stage} kelimeleri kabul ediliyor."
+" ve {stage} kısatlamaları kabul ediliyor."
 
 #: src/modules/pomodoro/options.py:168
 #, possible-python-brace-format
