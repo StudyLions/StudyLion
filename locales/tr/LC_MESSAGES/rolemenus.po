@@ -1202,7 +1202,7 @@ msgstr "özel_mesaj"
 #: src/modules/rolemenus/menuoptions.py:239
 msgctxt "menuset:message|desc"
 msgid "Custom message data used to display the menu."
-msgstr ""
+msgstr "Menüde gösterilecek özel mesaj verisi."
 
 #: src/modules/rolemenus/menuoptions.py:243
 msgctxt "menuset:message|long_desc"
