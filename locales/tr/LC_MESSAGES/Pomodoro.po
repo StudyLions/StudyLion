@@ -353,7 +353,7 @@ msgstr "sayaç_kanalı"
 #: src/modules/pomodoro/cog.py:622
 msgctxt "cmd:pomodoro_destroy|param:channel"
 msgid "Channel with the timer to delete."
-msgstr ""
+msgstr "Silinecek zamanlayıcılı kanal."
 
 #: src/modules/pomodoro/cog.py:640
 msgctxt "cmd:pomodoro_destroy|error:no_timer"
