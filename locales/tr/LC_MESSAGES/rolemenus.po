@@ -1405,6 +1405,8 @@ msgstr "Tepki Rolleri"
 msgctxt "ui:menu_editor|menu:style|option:reaction|desc"
 msgid "Roles are represented compactly as clickable reactions on a message."
 msgstr ""
+"Roller, bir mesajda tıklanabilir tepkiler olarak kompakt bir şekilde temsil "
+"eidlmektedir."
 
 #: src/modules/rolemenus/ui/menueditor.py:615
 msgctxt "ui:menu_editor|menu:style|option:button|label"
