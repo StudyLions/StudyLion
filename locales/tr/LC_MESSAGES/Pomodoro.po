@@ -537,6 +537,8 @@ msgstr ""
 msgctxt "timerset:manager_role|format:notset"
 msgid "Not Set (Only Admins may start/stop or edit pattern)"
 msgstr ""
+"Ayarlanmadı (Sadece yöneticiler başlat/bitir ya da düzenle işlemlerini "
+"yapabilirler)"
 
 #: src/modules/pomodoro/options.py:126
 msgctxt "timerset:voice_alerts"
