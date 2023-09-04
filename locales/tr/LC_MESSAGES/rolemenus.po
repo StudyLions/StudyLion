@@ -1317,7 +1317,7 @@ msgstr "Yapışkanı Aç/Kapat"
 #: src/modules/rolemenus/ui/menueditor.py:259
 msgctxt "ui:menu_editor|button:refunds|label"
 msgid "Toggle Refunds"
-msgstr ""
+msgstr "İadeleri Aç/Kapat"
 
 #: src/modules/rolemenus/ui/menueditor.py:289
 msgctxt "ui:menu_editor|menu:reqroles|placeholder"
