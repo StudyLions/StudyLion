@@ -587,7 +587,7 @@ msgctxt "timerset:channel_name|accepts"
 msgid ""
 "Timer channel name, with keys {remaining}, {name}, {pattern}, and {stage}."
 msgstr ""
-"Sayaç kanal adı, {remaining}, {name}, {pattern} ve {stage} kısatmalarıyla."
+"Sayaç kanal adı, {remaining}, {name}, {pattern} ve {stage} kısaltmalarıyla."
 
 #: src/modules/pomodoro/options.py:180
 msgctxt "timerset:focus_length"
@@ -597,7 +597,7 @@ msgstr "odak_uzunluğu"
 #: src/modules/pomodoro/options.py:183
 msgctxt "timerset:focus_length|desc"
 msgid "Length of the focus stage of the timer in minutes."
-msgstr ""
+msgstr "Dakika cinsinden "
 
 #: src/modules/pomodoro/options.py:188
 msgctxt "timerset:focus_length|accepts"
