@@ -1518,7 +1518,7 @@ msgstr ""
 #: src/modules/rolemenus/ui/menueditor.py:927
 msgctxt "ui:menu_editor|button:repost|widget:repost|success|desc:reactions"
 msgid "Please check the message reactions are correct."
-msgstr ""
+msgstr "Lütfen mesaj tepki rollerinin doğru olup olmadığını kontrol ediniz."
 
 #: src/modules/rolemenus/ui/menueditor.py:940
 msgctxt "ui:menu_editor|button:repost|widget:repost|title"
