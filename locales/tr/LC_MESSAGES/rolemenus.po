@@ -1422,7 +1422,7 @@ msgstr ""
 #: src/modules/rolemenus/ui/menueditor.py:624
 msgctxt "ui:menu_editor|menu:style|option:dropdown|label"
 msgid "Dropdown Menu"
-msgstr ""
+msgstr "Açılır Menü"
 
 #: src/modules/rolemenus/ui/menueditor.py:627
 msgctxt "ui:menu_editor|menu:style|option:dropdown|desc"
