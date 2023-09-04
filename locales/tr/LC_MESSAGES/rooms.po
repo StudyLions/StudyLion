@@ -262,7 +262,7 @@ msgstr "Zaten özel kanal sahibisin! {channel} kanalını ziyaret etmek için ba
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|error:member_not_found"
 msgid "Could not find the requested member {mention} in this server!"
-msgstr ""
+msgstr "İstenen {mention} kullanıcısı bu sunucuda bulamadım!"
 
 #: src/modules/rooms/cog.py:413
 #, possible-python-brace-format
