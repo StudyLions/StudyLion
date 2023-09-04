@@ -632,7 +632,7 @@ msgstr "Lütfen pozitif sayı cinsinden dakikayı giriniz."
 #: src/modules/pomodoro/settings.py:19
 msgctxt "guildset:pomodoro_channel"
 msgid "pomodoro_channel"
-msgstr ""
+msgstr "pomodoro_kanalı"
 
 #: src/modules/pomodoro/settings.py:22
 msgctxt "guildset:pomodoro_channel|desc"
