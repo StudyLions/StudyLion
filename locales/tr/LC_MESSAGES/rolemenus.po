@@ -1574,6 +1574,10 @@ msgid ""
 "{addrole} to add new roles (recommended for roles with emojis).\n"
 "{editrole} to edit role options."
 msgstr ""
+"Daha hızlı menü kurulumu için aşağıdaki komutları kullanın.\n"
+"Yukarıdaki menü seçeneklerini düzenlemek için {menuedit}.\n"
+"Yeni roller eklemek için {addrole} (emojili roller için önerilir).\n"
+"Rol seçeneklerini düzenlemek için {editrole}."
 
 #: src/modules/rolemenus/ui/menueditor.py:1046
 msgctxt "ui:menu_editor|error:invald_emoji|title"
