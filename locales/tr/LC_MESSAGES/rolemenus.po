@@ -1291,11 +1291,13 @@ msgid ""
 "Failed to display preview!\n"
 "**Error:** `{exception}`"
 msgstr ""
+"Öngösterimi gösterme sırasında başarısız olundu!\n"
+"**Hata:** `{exception}`"
 
 #: src/modules/rolemenus/ui/menueditor.py:151
 msgctxt "ui:menu_editor|button:options|label"
 msgid "Menu Options"
-msgstr ""
+msgstr "Menü Seçenekleri"
 
 #: src/modules/rolemenus/ui/menueditor.py:179
 msgctxt "ui:menu_editor|button:bulk_edit|modal|title"
