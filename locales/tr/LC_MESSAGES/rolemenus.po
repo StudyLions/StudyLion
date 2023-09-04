@@ -1533,17 +1533,17 @@ msgstr "Bu menüyü tekrar göndermek istediğiniz kanalı seçiniz."
 #: src/modules/rolemenus/ui/menueditor.py:959
 msgctxt "ui:menu_editor|button:repost|label:repost"
 msgid "Repost"
-msgstr ""
+msgstr "Tekrar gönder"
 
 #: src/modules/rolemenus/ui/menueditor.py:964
 msgctxt "ui:menu_editor|button:repost|label:post"
 msgid "Post"
-msgstr ""
+msgstr "Gönder"
 
 #: src/modules/rolemenus/ui/menueditor.py:974
 msgctxt "ui:menu_editor|embed|title"
 msgid "Role Menu Editor"
-msgstr ""
+msgstr "Rol Menü Düzenleyicisi"
 
 #: src/modules/rolemenus/ui/menueditor.py:983
 #, possible-python-brace-format
