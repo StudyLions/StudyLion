@@ -266,7 +266,7 @@ msgstr "oluştur"
 #: src/modules/pomodoro/cog.py:465
 msgctxt "cmd:pomodoro_create|desc"
 msgid "Create a new Pomodoro timer. Requires admin permissions."
-msgstr ""
+msgstr "Yeni pomodoro sayacı oluştur. Admin yetkileri gerekmektedir."
 
 #: src/modules/pomodoro/cog.py:469
 msgctxt "cmd:pomodoro_create|param:channel"
