@@ -68,6 +68,8 @@ msgstr "Yürütülecek çapraz parça kodu. Ctx'den referans alınamaz!"
 msgctxt "command:asyncall|param:target"
 msgid "Target shard app name, see autocomplete for options."
 msgstr ""
+"Parça uygulamasının adını hedefleyin; seçenekler için otomatik tamamlamaya "
+"bakın."
 
 #: src/modules/sysadmin/exec_cog.py:343
 msgid "reload"
