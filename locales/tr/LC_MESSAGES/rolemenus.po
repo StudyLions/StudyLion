@@ -1230,6 +1230,7 @@ msgid ""
 "The role menu message has been unset. Select a template through the menu "
 "editor."
 msgstr ""
+"Rol menü mesajı ayarlanmadı. Menü düzenleyicisi aracılığıyla bir şablon seç."
 
 #: src/modules/rolemenus/ui/menus.py:105
 msgctxt "ui:menu_list|menu:editmenu|placeholder"
