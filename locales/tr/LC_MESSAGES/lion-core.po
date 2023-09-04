@@ -97,6 +97,8 @@ msgid ""
 "Message data must be a JSON object with at least one of the following "
 "fields: `content`, `embed`, `embeds`"
 msgstr ""
+"Mesaj verileri şu alanlardan en az birine sahip bir JSON nesnesi olmalıdır: "
+"`content`, `embed`, `embeds`"
 
 #: src/core/setting_types.py:202
 msgctxt "settype:message|error:json_embed_type"
