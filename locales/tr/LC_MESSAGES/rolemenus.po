@@ -1549,7 +1549,7 @@ msgstr "Rol Menü Düzenleyicisi"
 #, possible-python-brace-format
 msgctxt "ui:menu_editor|embed|description|jump_text:attached"
 msgid "Members may use this menu from {jump_url}"
-msgstr ""
+msgstr "Kullanıcılar menüyü {jump_url} bağlantısından kullanabilecekler"
 
 #: src/modules/rolemenus/ui/menueditor.py:988
 msgctxt "ui:menu_editor|embed|description|jump_text:unattached"
