@@ -1253,12 +1253,12 @@ msgstr "`{name}` `{count}` adet rolde."
 #, possible-python-brace-format
 msgctxt "ui:menu_list|embed|title"
 msgid "Role Menus in {guild}"
-msgstr ""
+msgstr " {guild} sunucusundaki rol menüleri"
 
 #: src/modules/rolemenus/ui/menus.py:172
 msgctxt "ui:menu_list|embed|field:tips|name"
 msgid "Tips"
-msgstr ""
+msgstr "İpuçları"
 
 #: src/modules/rolemenus/ui/menus.py:176
 msgctxt "ui:menu_list|embed|field:tips|value"
