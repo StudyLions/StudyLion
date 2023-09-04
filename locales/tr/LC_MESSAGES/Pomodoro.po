@@ -256,7 +256,7 @@ msgstr "yönetici"
 #: src/modules/pomodoro/cog.py:456
 msgctxt "cmd:pomodoro_admin|desc"
 msgid "Command group for pomodoro admin controls."
-msgstr ""
+msgstr "Pomodoro admin kontrolleri için komut grubu."
 
 #: src/modules/pomodoro/cog.py:462
 msgctxt "cmd:pomodoro_create"
