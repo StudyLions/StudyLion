@@ -343,12 +343,12 @@ msgstr "yok et"
 msgctxt "cmd:pomodoro_destroy|desc"
 msgid ""
 "Delete a pomodoro timer from a voice channel. Requires admin permissions."
-msgstr ""
+msgstr "Bir ses kanalından pomodoro sayacını silin. Admin yetkileri gerekir."
 
 #: src/modules/pomodoro/cog.py:619
 msgctxt "cmd:pomodoro_destroy|param:channel"
 msgid "timer_channel"
-msgstr ""
+msgstr "sayaç_kanalı"
 
 #: src/modules/pomodoro/cog.py:622
 msgctxt "cmd:pomodoro_destroy|param:channel"
