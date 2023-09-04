@@ -283,12 +283,12 @@ msgstr "Ayarlanmadı, üyeler karşılanmayacak."
 #: src/modules/member_admin/settings.py:200
 msgctxt "guildset:greeting_message|embed_field|formatkeys|explanation"
 msgid "The following placeholders will be substituted with their values."
-msgstr ""
+msgstr "Aşağıdaki yer tutucular kendi değerleriyle değiştirilecektir."
 
 #: src/modules/member_admin/settings.py:203
 msgctxt "guildset:greeting_message|embed_field|formatkeys|name"
 msgid "Placeholders"
-msgstr ""
+msgstr "Yer Tutucular"
 
 #: src/modules/member_admin/settings.py:213
 msgctxt "guildset:returning_message"
