@@ -392,7 +392,7 @@ msgstr "Bir sayacı düzenle"
 #: src/modules/pomodoro/cog.py:690
 msgctxt "cmd:pomodoro_edit|param:channel"
 msgid "timer_channel"
-msgstr ""
+msgstr "sayaç_kanalı"
 
 #: src/modules/pomodoro/cog.py:696
 msgctxt "cmd:pomodoro_edit|param:channel|desc"
