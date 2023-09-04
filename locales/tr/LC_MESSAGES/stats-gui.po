@@ -50,7 +50,7 @@ msgstr "MESAJLAR"
 #: src/gui/cards/stats.py:91
 msgctxt "skin:stats|mode:anki|subheader:study"
 msgid "CARDS REVIEWED"
-msgstr ""
+msgstr "Görüntülenen Kartlar"
 
 #: src/gui/cards/stats.py:102
 msgctxt "skin:stats|subheader:workouts"
@@ -129,7 +129,7 @@ msgstr "{amount} XP"
 #, possible-python-brace-format
 msgctxt "skin:stats|mode:anki|field:col2_summary"
 msgid "{amount} CARDS"
-msgstr ""
+msgstr "{amount} Kartlar"
 
 #: src/gui/cards/stats.py:223
 msgctxt "skin:stats|cal|weekdays"
