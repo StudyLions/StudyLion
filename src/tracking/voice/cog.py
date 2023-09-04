@@ -99,8 +99,16 @@ class VoiceTrackerCog(LionCog):
             voice_members = {}  # (guildid, userid) -> TrackedVoiceState
             voice_guilds = set()
             for guild in self.bot.guilds:
+                untracked = self.untracked_channels.get(guild.id, ())
                 for channel in guild.voice_channels:
+                    if channel.id in untracked:
+                        continue
+                    if channel.category_id and channel.category_id in untracked:
+                        continue
+
                     for member in channel.members:
+                        if member.bot:
+                            continue
                         voice_members[(guild.id, member.id)] = TrackedVoiceState.from_voice_state(member.voice)
                         voice_guilds.add(guild.id)
 
@@ -299,7 +307,8 @@ class VoiceTrackerCog(LionCog):
             # Fetch tracked member session state
             session = self.get_session(member.guild.id, member.id)
             tstate = session.state
-            untracked = self.untracked_channels.get(member.guild.id, [])
+            # This usually pulls from cache, but don't rely on it
+            untracked = (await self.settings.UntrackedChannels.get(member.guild.id)).data
 
             if (bstate.channelid != astate.channelid):
                 # Leaving/Moving/Joining channels
