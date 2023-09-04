@@ -559,7 +559,7 @@ msgstr "isim"
 #: src/modules/pomodoro/options.py:143
 msgctxt "timerset:base_name|desc"
 msgid "Timer name, as shown on the timer card."
-msgstr ""
+msgstr "Sayaç adı, sayaç kartında görünen şeklinde"
 
 #: src/modules/pomodoro/options.py:147
 msgctxt "timerset:base_name|accepts"
