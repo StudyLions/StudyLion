@@ -1459,17 +1459,17 @@ msgstr "Evet, şimdi sil"
 #: src/modules/rolemenus/ui/menueditor.py:739
 msgctxt "ui:menu_editor|button:delete|confirm|button:no"
 msgid "No, Go Back"
-msgstr ""
+msgstr "Hayır, geri dön"
 
 #: src/modules/rolemenus/ui/menueditor.py:756
 msgctxt "ui:menu_editor|button:delete|label"
 msgid "Delete Menu"
-msgstr ""
+msgstr "Menüyü Sil"
 
 #: src/modules/rolemenus/ui/menueditor.py:813
 msgctxt "ui:menu_editor|button:edit_msg|label"
 msgid "Edit Message"
-msgstr ""
+msgstr "Mesajı Düzenle"
 
 #: src/modules/rolemenus/ui/menueditor.py:844
 msgctxt "ui:menu_editor|button:preview|label"
