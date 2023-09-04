@@ -1170,7 +1170,7 @@ msgstr "gereken_rol"
 #: src/modules/rolemenus/menuoptions.py:204
 msgctxt "menuset:required_role|desc"
 msgid "Initial role required to use this menu."
-msgstr ""
+msgstr "Bu menüyü kullanmak için başlama ​​rolü gereklidir."
 
 #: src/modules/rolemenus/menuoptions.py:209
 msgctxt "menuset:required_role|long_desc"
@@ -1178,6 +1178,8 @@ msgid ""
 "If set, only members who have the `required_role` will be able to obtain or "
 "remove roles using this menu."
 msgstr ""
+"Ayarlanırsa, yalnızca \"gerekli_role\" sahip olan üyeler bu menüyü "
+"kullanarak rolleri alabilir veya kaldırabilirler."
 
 #: src/modules/rolemenus/menuoptions.py:223
 #, possible-python-brace-format
