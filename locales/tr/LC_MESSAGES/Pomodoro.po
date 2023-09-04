@@ -637,7 +637,7 @@ msgstr "pomodoro_kanalı"
 #: src/modules/pomodoro/settings.py:22
 msgctxt "guildset:pomodoro_channel|desc"
 msgid "Default central notification channel for pomodoro timers."
-msgstr ""
+msgstr "Pomodoro sayaçları için varsayılan ana bildirim kanalı."
 
 #: src/modules/pomodoro/settings.py:26
 msgctxt "guildset:pomodoro_channel|long_desc"
