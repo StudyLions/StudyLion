@@ -324,6 +324,8 @@ msgid ""
 "A timer already exists in {channel}! Use `/pomodoro admin edit` to modify "
 "it."
 msgstr ""
+"{channel} kanalında zaten bir sayaç bulunuyor! `/pomodoro admin edit` "
+"komutunu kullanarak düzenleyebilirsin."
 
 #: src/modules/pomodoro/cog.py:606
 msgctxt "cmd:pomodoro_create|response:success|content"
