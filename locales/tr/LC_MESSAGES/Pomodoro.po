@@ -460,13 +460,13 @@ msgstr "{oturum}"
 #, possible-python-brace-format
 msgctxt "formatstring:channel_name|key:members"
 msgid "{members}"
-msgstr ""
+msgstr "{üyeler}"
 
 #: src/modules/pomodoro/lib.py:22
 #, possible-python-brace-format
 msgctxt "formatstring:channel_name|key:name"
 msgid "{name}"
-msgstr ""
+msgstr "{isim}"
 
 #: src/modules/pomodoro/lib.py:23
 #, possible-python-brace-format
