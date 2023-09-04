@@ -1110,8 +1110,9 @@ msgid ""
 "**Refunds will only be given for roles purchased through the same menu.**\n"
 "**The `sticky` option must be disabled to allow members to remove roles.**"
 msgstr ""
-"Etkinleştirildiğinde, *bu rol menüsü aracılığıyla rol satın alan* üyeler, "
-"menü aracılığıyla rolü kaldırdıklarında tam para iadesi alacaklar."
+"Etkinleştirildiğinde, *bu rol menüsü aracılığıyla rol satın alan* üyeler, menü aracılığıyla rolü kaldırdıklarında tam para iadesi alacaklar.\n"
+"**Yalnızca aynı menü aracılığıyla satın alınan roller için geri ödeme yapılacak.**\n"
+"**Üyelerin rolleri kaldırabilmesi için `yapışkan` seçeneği devre dışı bırakılmalıdır.**"
 
 #: src/modules/rolemenus/menuoptions.py:148
 msgctxt "menuset:refunds|set_response:true"
