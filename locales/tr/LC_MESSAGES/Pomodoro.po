@@ -279,6 +279,8 @@ msgid ""
 "Voice channel to create the timer in. (Defaults to your current channel, or "
 "makes a new one.)"
 msgstr ""
+"Sayacın kurulacağı ses kanalı. (Varsayılan olarak anlık kanalındır ya da "
+"yenisini oluşturur.)"
 
 #: src/modules/pomodoro/cog.py:504
 msgctxt "cmd:pomodoro_create|error:insufficient_perms"
