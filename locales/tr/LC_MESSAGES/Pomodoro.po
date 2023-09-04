@@ -499,7 +499,7 @@ msgstr "Zamanlayıcı durum kartlarının ve bildirimlerin gönderileceği kanal
 #, possible-python-brace-format
 msgctxt "timerset:notification_channel|format:notset"
 msgid "Not Set (Using {channel})"
-msgstr ""
+msgstr "Ayarlanmadı ({channel} kullanılıyor)"
 
 #: src/modules/pomodoro/options.py:78
 msgctxt "timerset:inactivity_threshold|inactivity_threshold"
