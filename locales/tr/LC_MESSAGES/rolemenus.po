@@ -1434,12 +1434,12 @@ msgstr "Roller menünün altındaki mesajdan açılır menüden seçilebilirler.
 #: src/modules/rolemenus/ui/menueditor.py:697
 msgctxt "ui:menu_editor|menu:template|placeholder"
 msgid "Select Message Template"
-msgstr ""
+msgstr "Mesaj Şablonunu se."
 
 #: src/modules/rolemenus/ui/menueditor.py:707
 msgctxt "ui:menu_editor|menu:template|option:custom|label"
 msgid "Custom Message"
-msgstr ""
+msgstr "Özel Mesa"
 
 #: src/modules/rolemenus/ui/menueditor.py:712
 msgctxt "ui:menu_editor|menu:template|option:custom|description"
