@@ -377,7 +377,7 @@ msgstr "Bu sayacı kaldırabilmek için sunucu yöneticisi olman gerekiyor!"
 #, possible-python-brace-format
 msgctxt "cmd:pomdoro_destroy|response:success|description"
 msgid "Timer successfully removed from {channel}."
-msgstr ""
+msgstr "{channel} kanalından sayaç başarıyla kaldırıldı."
 
 #: src/modules/pomodoro/cog.py:683
 msgctxt "cmd:pomodoro_edit"
@@ -387,7 +387,7 @@ msgstr "düzenle"
 #: src/modules/pomodoro/cog.py:686
 msgctxt "cmd:pomodoro_edit|desc"
 msgid "Edit a Timer"
-msgstr ""
+msgstr "Bir sayacı düzenle"
 
 #: src/modules/pomodoro/cog.py:690
 msgctxt "cmd:pomodoro_edit|param:channel"
