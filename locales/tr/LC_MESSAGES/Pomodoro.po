@@ -335,7 +335,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:612
 msgctxt "cmd:pomodoro_destroy"
 msgid "destroy"
-msgstr ""
+msgstr "yok et"
 
 #: src/modules/pomodoro/cog.py:615
 msgctxt "cmd:pomodoro_destroy|desc"
