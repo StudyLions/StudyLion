@@ -82,6 +82,8 @@ msgstr "Belirli bir LionBot uzantısını yeniden yükleyin. Bir ExecUI başlat�
 #: src/modules/sysadmin/exec_cog.py:347
 msgid "Name of the extesion to reload. See autocomplete for options."
 msgstr ""
+"Yeniden yüklenecek uzantının adı. Seçenekler için otomatik tamamlamaya "
+"bakın."
 
 #: src/modules/sysadmin/exec_cog.py:379
 msgid "shutdown"
