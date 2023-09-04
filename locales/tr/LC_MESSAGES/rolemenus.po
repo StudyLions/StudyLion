@@ -1429,7 +1429,7 @@ msgstr "Açılır Menü"
 #: src/modules/rolemenus/ui/menueditor.py:627
 msgctxt "ui:menu_editor|menu:style|option:dropdown|desc"
 msgid "Roles are selectable from a dropdown menu below the message."
-msgstr ""
+msgstr "Roller menünün altındaki mesajdan açılır menüden seçilebilirler."
 
 #: src/modules/rolemenus/ui/menueditor.py:697
 msgctxt "ui:menu_editor|menu:template|placeholder"
