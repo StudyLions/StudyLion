@@ -512,6 +512,8 @@ msgid ""
 "Number of inactive focus+break stages before a member is removed from the "
 "timer."
 msgstr ""
+"Bir üye zamanlayıcıdan çıkarılmadan önce aktif olmadığı odaklanma+ara "
+"bölümlerinin sayısı."
 
 #: src/modules/pomodoro/options.py:85
 msgctxt "timerset:inactivity_threshold|desc"
