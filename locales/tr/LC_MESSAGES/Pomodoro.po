@@ -519,6 +519,7 @@ msgstr ""
 msgctxt "timerset:inactivity_threshold|desc"
 msgid "How many timer cycles before kicking inactive members."
 msgstr ""
+"Etkin olmayan üyeleri atmadan önce kaç zamanlayıcı döngüsü bekleneceği."
 
 #: src/modules/pomodoro/options.py:101
 msgctxt "timerset:manager_role"
