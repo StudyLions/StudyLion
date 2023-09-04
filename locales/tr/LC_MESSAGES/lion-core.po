@@ -118,7 +118,7 @@ msgstr "Mesaj verileri hem \"embed\" hem de \"embeds\" içeremez."
 #: src/core/setting_types.py:225
 msgctxt "settype:message|error:json_content_type"
 msgid "`content` field must be a string."
-msgstr ""
+msgstr "`content` alanı bir dizge olmalıdır."
 
 #: src/core/setting_types.py:241
 #, possible-python-brace-format
