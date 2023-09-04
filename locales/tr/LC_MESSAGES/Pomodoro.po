@@ -521,7 +521,7 @@ msgstr ""
 #: src/modules/pomodoro/options.py:101
 msgctxt "timerset:manager_role"
 msgid "manager_role"
-msgstr ""
+msgstr "yönetici_rolü"
 
 #: src/modules/pomodoro/options.py:104
 msgctxt "timerset:manager_role|desc"
