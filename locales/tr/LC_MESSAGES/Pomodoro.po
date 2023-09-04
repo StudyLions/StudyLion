@@ -488,12 +488,12 @@ msgstr ""
 #: src/modules/pomodoro/options.py:45
 msgctxt "timerset:notification_channel"
 msgid "notification_channel"
-msgstr ""
+msgstr "bildirim_kanalı"
 
 #: src/modules/pomodoro/options.py:48
 msgctxt "timerset:notification_channel|desc"
 msgid "Channel to which to send timer status cards and notifications."
-msgstr ""
+msgstr "Zamanlayıcı durum kartlarının ve bildirimlerin gönderileceği kanal."
 
 #: src/modules/pomodoro/options.py:68
 #, possible-python-brace-format
