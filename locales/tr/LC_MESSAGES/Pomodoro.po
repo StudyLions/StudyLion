@@ -597,7 +597,7 @@ msgstr "odak_uzunluğu"
 #: src/modules/pomodoro/options.py:183
 msgctxt "timerset:focus_length|desc"
 msgid "Length of the focus stage of the timer in minutes."
-msgstr "Dakika cinsinden "
+msgstr "Dakika cinsinden odak oturumlarının uzunluğu."
 
 #: src/modules/pomodoro/options.py:188
 msgctxt "timerset:focus_length|accepts"
