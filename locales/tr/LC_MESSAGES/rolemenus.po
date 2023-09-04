@@ -1449,12 +1449,12 @@ msgstr "Tamamen Özel Menü Mesajı (İnteraktif editörü açar)."
 #: src/modules/rolemenus/ui/menueditor.py:729
 msgctxt "ui:menu_editor|button:delete|confirm|title"
 msgid "Are you sure you want to delete this menu? This is not reversible!"
-msgstr ""
+msgstr "Bu menüyü silmek istediğine emin misin? Bu işlem geri alınamaz!"
 
 #: src/modules/rolemenus/ui/menueditor.py:734
 msgctxt "ui:menu_editor|button:delete|confirm|button:yes"
 msgid "Yes, Delete Now"
-msgstr ""
+msgstr "Evet, şimdi sil"
 
 #: src/modules/rolemenus/ui/menueditor.py:739
 msgctxt "ui:menu_editor|button:delete|confirm|button:no"
