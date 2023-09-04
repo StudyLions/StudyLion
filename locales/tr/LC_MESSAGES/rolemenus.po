@@ -1247,7 +1247,7 @@ msgstr "[`{name}`]({jump_url}) `{count}` adet rolde."
 #, possible-python-brace-format
 msgctxt "ui:menu_list|menu_line:unattached"
 msgid "`{name}` with `{count}` roles."
-msgstr ""
+msgstr "`{name}` `{count}` adet rolde."
 
 #: src/modules/rolemenus/ui/menus.py:163
 #, possible-python-brace-format
