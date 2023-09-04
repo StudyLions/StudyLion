@@ -1141,6 +1141,8 @@ msgid ""
 "Members will not be able to obtain more than this number of roles from this "
 "menu. This counts roles that were not obtained through the rolemenu system."
 msgstr ""
+"Üyeler bu menüden bu sayıdan daha fazla rol alamayacaktır. Bu, rol menüsü "
+"sistemi aracılığıyla elde edilmeyen rolleri sayar."
 
 #: src/modules/rolemenus/menuoptions.py:174
 msgctxt "menuset:obtainable|notset"
@@ -1153,7 +1155,7 @@ msgctxt "menuset:obtainable|set_response:set"
 msgid ""
 "Members will be able to select a maximum of **{value}** roles from this "
 "menu."
-msgstr ""
+msgstr "Üyeler bu menüden maksimum **{value}** adet rol seçebilecekler."
 
 #: src/modules/rolemenus/menuoptions.py:193
 msgctxt "menuset:obtainable|set_response:unset"
