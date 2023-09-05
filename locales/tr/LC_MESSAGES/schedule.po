@@ -538,7 +538,7 @@ msgstr ""
 #: src/modules/schedule/settings.py:528
 msgctxt "guildset:schedule_blacklist_role|parse|error"
 msgid "Blacklist threshold must be a number between `1` and `24`."
-msgstr ""
+msgstr "Karaliste eşiği `1` ve`24`arasında bir numara olmalı."
 
 #: src/modules/schedule/ui/settingui.py:69
 msgctxt "ui:schedule_config|button:page0|label"
