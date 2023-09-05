@@ -260,7 +260,7 @@ msgstr ""
 #: src/modules/video_channels/settings.py:155
 msgctxt "guildset:video_blacklist|formatted:unset"
 msgid "Not Set. (Members will not be automatically blacklisted.)"
-msgstr ""
+msgstr "Ayarlanmadı. (Üyeler otomatik olarak yasaklanmayacaklar.)"
 
 #: src/modules/video_channels/settings.py:162
 msgctxt "guildset:video_durations"
