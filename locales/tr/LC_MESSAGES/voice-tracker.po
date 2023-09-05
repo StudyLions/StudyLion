@@ -290,7 +290,7 @@ msgstr "Sesteki her bir saat için ödüllendirilecek para miktarı."
 #, possible-python-brace-format
 msgctxt "guildset:hourly_reward|formatted"
 msgid "{coin}**{amount}** per hour."
-msgstr ""
+msgstr "Saat başına {coin}**{amount}**."
 
 #: src/tracking/voice/settings.py:159
 #, possible-python-brace-format
