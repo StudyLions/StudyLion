@@ -234,23 +234,28 @@ msgid ""
 "The role may also be manually assigned, to the same effect.\n"
 "If this role is not set, no video blacklist will occur, and members will only be kicked from the channel and warned."
 msgstr ""
+"Bu rol üye bir video kanalında videosunu açık tutmayı başaramadığında verilecektir. (yukarıda gör.)\n"
+"Bu role sahip üyeler ayarlanmış video kanallarına giremeyecekler. Rol izinleri sunucu yöneticileri tarafından suçlu üzerine daha fazla yasaklama koymak için düzenlenebilecektir.\n"
+"Aynı etkiyi göstermesi için rol elle de verilebilir.\n"
+"Bu rol ayarlanmadıysa video yasaklaması yapılmayacak ve üyeler sadece kanaldan atılıp uyarılacaktır."
 
 #: src/modules/video_channels/settings.py:123
 msgctxt "guildset:video_blacklist|accepts"
 msgid "Blacklist role name or id."
-msgstr ""
+msgstr "Yasaklama rolü adı ya da ID'si"
 
 #: src/modules/video_channels/settings.py:138
 #, possible-python-brace-format
 msgctxt "guildset:video_blacklist|set_response:set"
 msgid "Members who fail to keep their video on will be given {role}"
-msgstr ""
+msgstr "{role} rolü videosunu açık tutmayı başaramayan üyelere verilecek"
 
 #: src/modules/video_channels/settings.py:143
 msgctxt "guildset:video_blacklist|set_response:unset"
 msgid ""
 "Members will no longer be automatically blacklisted from video channels."
 msgstr ""
+"Üyeler bundan böyle otomatik olarak video kanallarından yasaklanmayacaklar."
 
 #: src/modules/video_channels/settings.py:155
 msgctxt "guildset:video_blacklist|formatted:unset"
