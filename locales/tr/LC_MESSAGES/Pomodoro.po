@@ -817,7 +817,7 @@ msgstr "Açıklamaları görüntülemek için seçenek adlarının üzerine geli
 #: src/modules/pomodoro/ui/config.py:185
 msgctxt "ui:timer_options|embed|field:pattern|name"
 msgid "Pattern"
-msgstr ""
+msgstr "Model"
 
 #: src/modules/pomodoro/ui/config.py:188
 #, possible-python-brace-format
