@@ -43,7 +43,7 @@ msgstr "test_ephermal"
 
 #: src/modules/test/test.py:90
 msgid "Test ephemeral delete and edit"
-msgstr ""
+msgstr "Gizli mesajları test et, sil ve düzenle"
 
 #: src/modules/test/test.py:102
 msgid "colours"
