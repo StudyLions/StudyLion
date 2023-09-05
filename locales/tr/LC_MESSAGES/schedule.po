@@ -827,7 +827,7 @@ msgstr "Oturum rezerve edilemedi"
 #: src/modules/schedule/ui/sessionui.py:133
 msgctxt "ui:session|button:cancel|error:starting_soon"
 msgid "Too late! This session has started or is starting shortly."
-msgstr ""
+msgstr "Çok geç! Bu oturum çoktan başladı veya hemen başlıyor."
 
 #: src/modules/schedule/ui/sessionui.py:140
 msgctxt "ui:session|button:cancel|error:not_booked"
