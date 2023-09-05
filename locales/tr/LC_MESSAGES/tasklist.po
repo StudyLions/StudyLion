@@ -138,7 +138,7 @@ msgstr ""
 #: src/modules/tasklist/cog.py:418
 msgctxt "cmd:tasks_upload"
 msgid "upload"
-msgstr ""
+msgstr "yükle"
 
 #: src/modules/tasklist/cog.py:421
 msgctxt "cmd:tasks_upload|desc"
@@ -148,7 +148,7 @@ msgstr ""
 #: src/modules/tasklist/cog.py:425
 msgctxt "cmd:tasks_upload|param:tasklist"
 msgid "tasklist"
-msgstr ""
+msgstr "görevlistesi"
 
 #: src/modules/tasklist/cog.py:426
 msgctxt "cmd:tasks_upload|param:append"
