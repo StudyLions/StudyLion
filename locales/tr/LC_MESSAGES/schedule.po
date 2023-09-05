@@ -485,11 +485,18 @@ msgid ""
 "Alternatively, consider setting the booking cost (and reward) very high to "
 "provide a strong disincentive for not attending a session."
 msgstr ""
+"Bu role sahip üyelerin bu sunucuda zamanlanmış oturumlar ayırtmasına "
+"yapmasına izin verilmeyecektir. Rol manuel olarak eklenirse kullanıcı için "
+"gelecekte zamanlanmış tüm oturumlar iptal edilir. Bu, sürekli olarak "
+"güvenilmez üyelerin grup bonusunu tüm üyeler için engellemesini engellemenin"
+" bir yolunu sağlar. Alternatif olarak, bir oturuma katılmamayı güçlü bir "
+"şekilde caydırmak için ayırtma ücretini (ve ödülünü) çok yüksek ayarlamayı "
+"düşünün."
 
 #: src/modules/schedule/settings.py:425
 msgctxt "guildset:schedule_blacklist_role|accepts"
 msgid "Blacklist role name or id."
-msgstr ""
+msgstr "Kara liste rolü ya da ID'Sİ."
 
 #: src/modules/schedule/settings.py:438
 #, possible-python-brace-format
