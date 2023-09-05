@@ -349,6 +349,9 @@ msgid ""
 "will be awarded this many LionCoins. Should generally be more than the "
 "`schedule_cost` setting."
 msgstr ""
+"Bir üye, ayırttığı zamanlanmış bir oturuma başarıyla katıldığında, kendisine"
+" şu kadar LionCoin verilecek. Genellikle `schedule_cost` ayarında daha fazla"
+" olmalıdır."
 
 #: src/modules/schedule/settings.py:269
 msgctxt "guildset:attendance_reward|accepts"
