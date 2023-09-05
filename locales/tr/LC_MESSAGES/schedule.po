@@ -178,6 +178,8 @@ msgid ""
 "The schedule session lobby has been unset. Shutting down scheduled session "
 "system."
 msgstr ""
+"Zamanlanmış oturum lobisi ayarlanmadı. Zamanlanmış oturum sistemini "
+"kapatıyorum."
 
 #: src/modules/schedule/settings.py:78
 msgctxt "guildset:session_lobby|formatted|unset"
