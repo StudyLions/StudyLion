@@ -837,7 +837,7 @@ msgstr ""
 #: src/modules/schedule/ui/sessionui.py:150
 msgctxt "ui:session|button:cancel|success"
 msgid "Successfully cancelled this session."
-msgstr ""
+msgstr "Oturum başarılı bir şekilde iptal edildi."
 
 #: src/modules/schedule/ui/sessionui.py:164
 msgctxt "ui:session|button:cancel|error|title"
