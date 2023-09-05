@@ -320,7 +320,7 @@ msgstr "tamamlandı"
 #: src/modules/tasklist/cog.py:670
 msgctxt "cmd:tasks_remove|param:cascade"
 msgid "cascade"
-msgstr ""
+msgstr "kademeli"
 
 #: src/modules/tasklist/cog.py:675
 msgctxt "cmd:tasks_remove|param:taskidstr|desc"
