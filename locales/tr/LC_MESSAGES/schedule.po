@@ -861,6 +861,9 @@ msgid ""
 "session! I require the `MANAGE_CHANNEL`, `MANAGE_ROLES`, `CONNECT` and "
 "`VIEW_CHANNEL` permissions."
 msgstr ""
+"Bir sonraki ayarlanmış oturum için yapılandırılmış oturum odası {room} "
+"hazırlanamadı! `MANAGE_CHANNEL`, `MANAGE_ROLES`, `CONNECT` ve `VIEW_CHANNEL`"
+" izinlerine ihtiyacım var."
 
 #: src/modules/schedule/core/session.py:317
 #, possible-python-brace-format
