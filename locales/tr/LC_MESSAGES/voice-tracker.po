@@ -224,7 +224,7 @@ msgstr "takip_edilmeyen_kanallar"
 #: src/tracking/voice/settings.py:43
 msgctxt "guildset:untracked_channels|desc"
 msgid "Channels which will be ignored for statistics tracking."
-msgstr ""
+msgstr "İstatistik takibinde dikkate alınmayacak kanallar."
 
 #: src/tracking/voice/settings.py:47
 msgctxt "guildset:untracked_channels|long_desc"
