@@ -832,7 +832,7 @@ msgstr "Çok geç! Bu oturum çoktan başladı veya hemen başlıyor."
 #: src/modules/schedule/ui/sessionui.py:140
 msgctxt "ui:session|button:cancel|error:not_booked"
 msgid "You are not a member of this session!"
-msgstr ""
+msgstr "Bu oturumun bir üyesi değilsin!"
 
 #: src/modules/schedule/ui/sessionui.py:150
 msgctxt "ui:session|button:cancel|success"
