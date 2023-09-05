@@ -387,6 +387,8 @@ msgstr "kademeli"
 msgctxt "cmd:tasks_tick|param:taskidstr|desc"
 msgid "List of task numbers or ranges to remove (e.g. 1, 2, 5-7, 8.1-3, 9-)."
 msgstr ""
+"Kaldırılacak görev numaraları veya aralıklarının listesi(Örn/ 1, 2, 5-7, "
+"8.1-3, 9-)."
 
 #: src/modules/tasklist/cog.py:792
 msgctxt "cmd:tasks_tick|param:cascade|desc"
