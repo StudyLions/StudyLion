@@ -235,6 +235,8 @@ msgstr "Zamanlanmış oturum ses kanalı ismi ya da ID'si."
 msgctxt "guildset:session_room|set_response|set"
 msgid "Schedule session members will now be given access to {channel}"
 msgstr ""
+"Zamanlanmış oturum üyelerinin {channel} kanalına bundan böyle "
+"erişebilecektir."
 
 #: src/modules/schedule/settings.py:128
 msgctxt "guildset:session_room|set_response|unset"
@@ -578,7 +580,7 @@ msgstr "Kara Liste Rolünü Seç"
 #: src/modules/schedule/ui/settingui.py:177
 msgctxt "ui:schedule_config|embed|title"
 msgid "Scheduled Session Configuration Panel"
-msgstr ""
+msgstr "Ayarlanmış Oturum Yapılandırma Paneli"
 
 #: src/modules/schedule/ui/settingui.py:230
 msgctxt "dash:schedule|title"
