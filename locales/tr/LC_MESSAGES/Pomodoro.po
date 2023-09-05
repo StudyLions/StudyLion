@@ -646,6 +646,9 @@ msgid ""
 "send timer notifications in this channel. If this setting is not set, "
 "pomodoro notifications will default to the timer voice channel itself."
 msgstr ""
+"Özel bir bildirim kanalı ayarı olmayan Pomodoro zamanlayıcılarının "
+"bildirimleri bu kanala gönderilecektir. Bu ayar yapılmazsa pomodoro "
+"bildirimleri varsayılan olarak zamanlayıcı ses kanalının kendisini kullanır."
 
 #: src/modules/pomodoro/settings.py:33
 msgctxt "guildset:pomodoro_channel|formatted|notset"
