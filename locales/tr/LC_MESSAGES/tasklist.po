@@ -211,27 +211,27 @@ msgstr "düzenle"
 #: src/modules/tasklist/cog.py:538
 msgctxt "cmd:tasks_edit|desc"
 msgid "Edit a task in your tasklist."
-msgstr ""
+msgstr "Görevlistesindendeki bir görevi düzenle."
 
 #: src/modules/tasklist/cog.py:542
 msgctxt "cmd:tasks_edit|param:taskstr"
 msgid "task"
-msgstr ""
+msgstr "görev"
 
 #: src/modules/tasklist/cog.py:543
 msgctxt "cmd:tasks_edit|param:new_content"
 msgid "new_task"
-msgstr ""
+msgstr "yeni_görev"
 
 #: src/modules/tasklist/cog.py:544
 msgctxt "cmd:tasks_edit|param:new_parent"
 msgid "new_parent"
-msgstr ""
+msgstr "yeni_ana"
 
 #: src/modules/tasklist/cog.py:547
 msgctxt "cmd:tasks_edit|param:taskstr|desc"
 msgid "Which task do you want to update?"
-msgstr ""
+msgstr "Hangi görevi güncellemek istiyorsun?"
 
 #: src/modules/tasklist/cog.py:548
 msgctxt "cmd:tasks_edit|param:new_content|desc"
