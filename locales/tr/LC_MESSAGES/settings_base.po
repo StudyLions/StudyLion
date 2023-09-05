@@ -61,7 +61,7 @@ msgstr "Belirtilen dizi çok uzun! Maksimum uzunluk: {maxlen} karakter."
 #: src/settings/setting_types.py:114
 msgctxt "settype:emoji|accepts"
 msgid "Paste a builtin emoji, custom emoji, or emoji id."
-msgstr ""
+msgstr "Yapılmış, özel emoji ya da emoji ID'sini yapıştırın."
 
 #: src/settings/setting_types.py:167
 #, possible-python-brace-format
