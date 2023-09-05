@@ -84,7 +84,7 @@ msgstr "Kanal adı ya da ID'si"
 #, possible-python-brace-format
 msgctxt "settype:channel|parse|error:not_found"
 msgid "Channel `{string}` could not be found in this guild!"
-msgstr ""
+msgstr "Kanal `{string}`'i bu sunucuda bulunamadı!"
 
 #: src/settings/setting_types.py:368
 msgctxt "settype:role|accepts"
