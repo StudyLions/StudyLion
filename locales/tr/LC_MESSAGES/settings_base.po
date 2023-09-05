@@ -182,6 +182,8 @@ msgid ""
 "Could not parse `{provided}` as a timestamp. Please use `YYYY-MM-DD HH:MM` "
 "format."
 msgstr ""
+".{provided} zaman damgası olarak alınamaz. Lütfen `YYYY-AA-GG SS:DD` "
+"formatını kullanın."
 
 #: src/settings/setting_types.py:1017
 msgctxt "settype:raw|accepts"
