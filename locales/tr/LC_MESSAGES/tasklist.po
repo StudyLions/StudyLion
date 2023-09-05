@@ -162,6 +162,8 @@ msgid ""
 "Text file containing a (standard markdown formatted) checklist of tasks to "
 "add or append."
 msgstr ""
+"Eklenecek veya iliştirilecek görevlerin kontrol listesini (standart "
+"işaretleme formatlı) içeren bir metin dosyası"
 
 #: src/modules/tasklist/cog.py:435
 msgctxt "cmd:tasks_upload|param:append|desc"
