@@ -323,6 +323,10 @@ msgid ""
 "channel. After this time, if they have not enabled their video, they will be"
 " kicked from the channel and potentially blacklisted from video channels."
 msgstr ""
+"Bir üyenin bir video kanalına katıldıktan sonra videosunu etkinleştirmesi "
+"gereken süre. Bu sürenin sonunda videolarını aktifleştirmemişlerse kanaldan "
+"atılacaklar ve potansiyel olarak video kanallarında kara listeye "
+"alınacaklar."
 
 #: src/modules/video_channels/settings.py:234
 msgctxt "guildset:video_grace_period|accepts"
