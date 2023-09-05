@@ -263,7 +263,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:tasks_edit|resp:success|desc"
 msgid "{tick} Task `{label}` updated."
-msgstr ""
+msgstr "{tick} Görev `{label}` güncellendi."
 
 #: src/modules/tasklist/cog.py:625
 msgctxt "ui:tasklist_single_editor|title"
