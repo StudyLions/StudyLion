@@ -767,6 +767,7 @@ msgstr ""
 msgctxt "guildset:tasklist_channels|accepts"
 msgid "Comma separated list of tasklist channel names or ids."
 msgstr ""
+"Görevlistesi kanal isimlerinin veya id lerinin virgülle ayrılmış listesi."
 
 #: src/modules/tasklist/settings.py:144
 #, possible-python-brace-format
