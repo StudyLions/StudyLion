@@ -366,7 +366,7 @@ msgstr[1] ""
 #: src/modules/tasklist/cog.py:778
 msgctxt "cmd:tasks_tick"
 msgid "tick"
-msgstr ""
+msgstr "saniye"
 
 #: src/modules/tasklist/cog.py:779
 msgctxt "cmd:tasks_tick|desc"
