@@ -781,22 +781,22 @@ msgstr "Sayaç Silindi"
 #, possible-python-brace-format
 msgctxt "ui:timer_options|button:delete|success|description"
 msgid "The timer in {channel} has been removed."
-msgstr ""
+msgstr "{channel} kanalındaki sayaç kaldırıldı."
 
 #: src/modules/pomodoro/ui/config.py:100
 msgctxt "ui:timer_options|button:delete|label"
 msgid "Delete"
-msgstr ""
+msgstr "Sil"
 
 #: src/modules/pomodoro/ui/config.py:119
 msgctxt "ui:timer_options|menu:voice_channel|placeholder"
 msgid "Set Voice Channel"
-msgstr ""
+msgstr "Ses Kanalını Ayarla"
 
 #: src/modules/pomodoro/ui/config.py:142
 msgctxt "ui:timer_options|menu:notification_channel|placeholder"
 msgid "Set Notification Channel"
-msgstr ""
+msgstr "Bildirim Kanalını Ayarla"
 
 #: src/modules/pomodoro/ui/config.py:157
 msgctxt "ui:timer_options|menu:manager_role|placeholder"
