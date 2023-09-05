@@ -283,12 +283,12 @@ msgstr "Görevlisteni temizle."
 #: src/modules/tasklist/cog.py:651
 msgctxt "cmd:tasks_clear|resp:success"
 msgid "Your tasklist has been cleared."
-msgstr ""
+msgstr "Görevlisten temizlendi."
 
 #: src/modules/tasklist/cog.py:659
 msgctxt "cmd:tasks_remove"
 msgid "remove"
-msgstr ""
+msgstr "kaldır"
 
 #: src/modules/tasklist/cog.py:662
 msgctxt "cmd:tasks_remove|desc"
@@ -300,7 +300,7 @@ msgstr ""
 #: src/modules/tasklist/cog.py:666
 msgctxt "cmd:tasks_remove|param:taskidstr"
 msgid "tasks"
-msgstr ""
+msgstr "görevler"
 
 #: src/modules/tasklist/cog.py:667
 msgctxt "cmd:tasks_remove|param:created_before"
