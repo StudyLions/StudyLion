@@ -101,12 +101,12 @@ msgstr "yeni"
 #: src/modules/tasklist/cog.py:362
 msgctxt "cmd:tasks_new|desc"
 msgid "Add a new task to your tasklist."
-msgstr ""
+msgstr "Görevlistene yeni bir görev ekle."
 
 #: src/modules/tasklist/cog.py:366
 msgctxt "cmd:tasks_new|param:content"
 msgid "task"
-msgstr ""
+msgstr "görev"
 
 #: src/modules/tasklist/cog.py:367
 msgctxt "cmd:tasks_new|param:parent"
