@@ -202,6 +202,9 @@ msgid ""
 "which they are active (send a message). Note that this XP is only given "
 "*once* per period."
 msgstr ""
+"Üyelere aktif oldukları her 5 dakikalık süre için verilecek global mesaj XP "
+"miktarı (mesaj gönderilmeli). Bu XP'nin her bir periyotta yalnızca *bir kez*"
+" verildiğini unutmayın."
 
 #: src/tracking/text/settings.py:186
 msgctxt "botset:xp_per_period|accepts"
