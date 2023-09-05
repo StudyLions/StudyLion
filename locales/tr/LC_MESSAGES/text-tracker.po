@@ -241,7 +241,7 @@ msgstr ""
 #: src/tracking/text/settings.py:218
 msgctxt "botset:word_xp|accepts"
 msgid "Number of XP to reward per hundred words sent."
-msgstr ""
+msgstr "Gönderilen her 100 kelime için verilecek XP ödül miktarı."
 
 #: src/tracking/text/settings.py:230
 #, possible-python-brace-format
