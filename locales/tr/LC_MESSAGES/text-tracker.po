@@ -150,6 +150,8 @@ msgid ""
 "XP. If a category is selected, then all channels under the category will "
 "also be untracked."
 msgstr ""
+"Bu kanala gönderilen mesajlar üyenin mesaj XP'si olarak sayılmayacak. "
+"Kategori seçildiyse kategorinin altındaki tüm kanallar takip edilmeyecektir."
 
 #: src/tracking/text/settings.py:107
 msgctxt "guildset:untracked_text_channels|accepts"
