@@ -775,6 +775,8 @@ msgid ""
 "Tasklists will now be publicly displayed in the following channels: "
 "{channels}"
 msgstr ""
+"Görevlisteleri artık şu kanallarda herkese açık görüntülenebilecek : "
+"{channels}"
 
 #: src/modules/tasklist/settings.py:149
 msgctxt "guildset:tasklist_channels|set_response|unset"
