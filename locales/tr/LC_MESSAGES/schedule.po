@@ -640,12 +640,12 @@ msgstr "Yaklaşan ayarlanmış oturumların başarıyla iptal ve iade edildi."
 #: src/modules/schedule/ui/scheduleui.py:142
 msgctxt "ui:schedule|button:clear|label"
 msgid "Clear Schedule"
-msgstr ""
+msgstr "Takvimi Temizle"
 
 #: src/modules/schedule/ui/scheduleui.py:158
 msgctxt "ui:schedule|button:about|label"
 msgid "About Schedule"
-msgstr ""
+msgstr "Takvim Hakkında"
 
 #: src/modules/schedule/ui/scheduleui.py:184
 msgctxt "ui:schedule|menu:booking|error:current_slot"
