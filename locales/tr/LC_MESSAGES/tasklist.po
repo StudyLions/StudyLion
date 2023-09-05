@@ -198,6 +198,8 @@ msgid ""
 "Could not decode attached tasklist. Please make sure it is saved with the "
 "`UTF-8` encoding."
 msgstr ""
+"Ekli görevlistesi çözülemedi. Lütfen `UTF-8` kodu ile kaydedildiğinden emin "
+"olun."
 
 #: src/modules/tasklist/cog.py:523
 #, possible-python-brace-format
@@ -266,12 +268,12 @@ msgstr ""
 #: src/modules/tasklist/cog.py:625
 msgctxt "ui:tasklist_single_editor|title"
 msgid "Edit Task"
-msgstr ""
+msgstr "Görev Düzenle"
 
 #: src/modules/tasklist/cog.py:640
 msgctxt "cmd:tasks_clear"
 msgid "clear"
-msgstr ""
+msgstr "Temizle"
 
 #: src/modules/tasklist/cog.py:641
 msgctxt "cmd:tasks_clear|desc"
