@@ -305,17 +305,17 @@ msgstr "görevler"
 #: src/modules/tasklist/cog.py:667
 msgctxt "cmd:tasks_remove|param:created_before"
 msgid "created_before"
-msgstr ""
+msgstr "önceden_oluşturulmuş"
 
 #: src/modules/tasklist/cog.py:668
 msgctxt "cmd:tasks_remove|param:updated_before"
 msgid "updated_before"
-msgstr ""
+msgstr "önceden_güncelleştirilmiş"
 
 #: src/modules/tasklist/cog.py:669
 msgctxt "cmd:tasks_remove|param:completed"
 msgid "completed"
-msgstr ""
+msgstr "tamamlandı"
 
 #: src/modules/tasklist/cog.py:670
 msgctxt "cmd:tasks_remove|param:cascade"
