@@ -184,7 +184,7 @@ msgstr "Kanal Seçici Aşağıda"
 #: src/tracking/text/settings.py:173
 msgctxt "botset:xp_per_period"
 msgid "xp_per_5min"
-msgstr ""
+msgstr "her_5dk_xp"
 
 #: src/tracking/text/settings.py:176
 msgctxt "botset:xp_per_period|desc"
