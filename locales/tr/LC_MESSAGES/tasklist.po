@@ -661,6 +661,8 @@ msgid ""
 "**You have no tasks on your tasklist!**\n"
 "Add a task with {cmds[tasks new]}, or by pressing the {new_button} button below."
 msgstr ""
+"**Görevlistende görev yok!**\n"
+"{cmds[tasks new]} veya aşağıdaki {new_button} butona basarak ile görev ekle."
 
 #: src/modules/tasklist/settings.py:33
 msgctxt "guildset:task_reward"
