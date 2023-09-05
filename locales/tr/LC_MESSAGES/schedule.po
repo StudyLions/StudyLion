@@ -747,7 +747,7 @@ msgstr[1] ""
 #: src/modules/schedule/ui/scheduleui.py:416
 msgctxt "ui:schedule|menu:cancel|placeholder"
 msgid "Cancel booked sessions"
-msgstr ""
+msgstr "Rezerve edilen oturumları iptal et"
 
 #: src/modules/schedule/ui/scheduleui.py:438
 msgctxt "ui:schedule|embed|author"
