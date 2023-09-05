@@ -415,7 +415,7 @@ msgstr "Ses Takibi Konfigürasyon Paneli"
 #: src/tracking/voice/settings.py:433 src/tracking/voice/settings.py:487
 msgctxt "ui:voice_tracker_config|mode:study|embed|title"
 msgid "Study Tracker Configuration Panel"
-msgstr ""
+msgstr "Çalışma Sayacı Konfigürasyon Paneli "
 
 #: src/tracking/voice/settings.py:472
 msgctxt "ui:voice_tracker_config|menu:untracked_channels|placeholder"
