@@ -688,6 +688,8 @@ msgid ""
 "Thank you for marking your presence.\n"
 "Good luck and stay productive!"
 msgstr ""
+"Durumunuzu bildirdiğiniz için teşekkür ederiz.\n"
+"İyi şanslar ve verimli kalın!"
 
 #: src/modules/pomodoro/ui/status.py:72
 #, possible-python-brace-format
@@ -699,7 +701,7 @@ msgstr ""
 #: src/modules/pomodoro/ui/status.py:82
 msgctxt "ui:timer_status|button:present|label"
 msgid "Present"
-msgstr ""
+msgstr "Şimdiki"
 
 #: src/modules/pomodoro/ui/status.py:106
 msgctxt "ui:timer_status|button:edit|error:no_permissions"
