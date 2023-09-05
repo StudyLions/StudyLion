@@ -4,8 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Serhat Acar, 2023
 # Eyüp Ramazan, 2023
+# Serhat Acar, 2023
 # 
 #, fuzzy
 msgid ""
@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-28 22:43+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Eyüp Ramazan, 2023\n"
+"Last-Translator: Serhat Acar, 2023\n"
 "Language-Team: Turkish (https://app.transifex.com/leobot/teams/174919/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -269,7 +269,7 @@ msgstr ""
 #: src/modules/schedule/settings.py:149
 msgctxt "guildset:session_channels|accepts"
 msgid "Comma separated list of session channel names or ids."
-msgstr ""
+msgstr "Oturum kanal isimlerinin veya id lerinin virgülle ayrılmış listesi."
 
 #: src/modules/schedule/settings.py:166
 #, possible-python-brace-format
@@ -689,12 +689,12 @@ msgstr ""
 #: src/modules/schedule/ui/scheduleui.py:307
 msgctxt "ui:schedule|menu:slots|option|day:today"
 msgid "Today"
-msgstr ""
+msgstr "Bugün"
 
 #: src/modules/schedule/ui/scheduleui.py:311
 msgctxt "ui:schedule|menu:slots|option|day:tomorrow"
 msgid "Tomorrow"
-msgstr ""
+msgstr "Yarın"
 
 #: src/modules/schedule/ui/scheduleui.py:333
 #, possible-python-brace-format
