@@ -71,12 +71,12 @@ msgstr ""
 
 #: src/modules/test/test.py:239
 msgid "dmview"
-msgstr ""
+msgstr "dmgörünümü"
 
 #: src/modules/test/test.py:250
 msgid "multiview"
-msgstr ""
+msgstr "çoklugörünüm"
 
 #: src/modules/test/test.py:267
 msgid "stats-card"
-msgstr ""
+msgstr "istatistik-kartları"
