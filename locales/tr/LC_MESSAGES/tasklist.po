@@ -546,12 +546,12 @@ msgstr "Geçmek için Seç"
 #, possible-python-brace-format
 msgctxt "ui:tasklist|menu:sub|mode:toggle|placeholder"
 msgid "Toggle from {label}.*"
-msgstr ""
+msgstr "{label} arasında geçiş yap"
 
 #: src/modules/tasklist/ui.py:198
 msgctxt "ui:tasklist|menu:main|mode:edit|placeholder"
 msgid "Select to Edit"
-msgstr ""
+msgstr "Düzenlemek için Seç "
 
 #: src/modules/tasklist/ui.py:202
 #, possible-python-brace-format
