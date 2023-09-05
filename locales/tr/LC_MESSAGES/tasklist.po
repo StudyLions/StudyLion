@@ -694,7 +694,7 @@ msgstr "görev_ödül_limiti"
 #: src/modules/tasklist/settings.py:76
 msgctxt "guildset:task_reward_limit|desc"
 msgid "Maximum number of task rewards given per 24h."
-msgstr ""
+msgstr "24 saatte bir verilen maksimum görev ödülü sayısı."
 
 #: src/modules/tasklist/settings.py:80
 msgctxt "guildset:task_reward_limit|long_desc"
