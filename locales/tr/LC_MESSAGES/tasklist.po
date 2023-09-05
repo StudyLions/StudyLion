@@ -79,7 +79,7 @@ msgstr "Görevlistesi komutları için temel komut grubu."
 #: src/modules/tasklist/cog.py:260
 msgctxt "argtype:taskid|error:no_tasks"
 msgid "Tasklist empty! No matching tasks."
-msgstr ""
+msgstr "Görevlistesi boş! Eşleşen görev yok."
 
 #: src/modules/tasklist/cog.py:305
 #, possible-python-brace-format
