@@ -559,7 +559,7 @@ msgstr "Sayfa 2"
 #: src/modules/schedule/ui/settingui.py:152
 msgctxt "ui:schedule_config|button:page2|label"
 msgid "Page 3"
-msgstr ""
+msgstr "Sayfa 3"
 
 #: src/modules/schedule/ui/settingui.py:169
 msgctxt "ui:schedule_config|menu:blacklist_role|placeholder"
