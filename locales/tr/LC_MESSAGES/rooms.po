@@ -482,7 +482,7 @@ msgstr "Odanı aktarmak istediğin oda üyesi."
 #: src/modules/rooms/cog.py:778
 msgctxt "cmd:room_transfer|error:no_room"
 msgid "You do not own a private room to transfer!"
-msgstr ""
+msgstr "Devredecek bir özel oda sahibi değilsin!"
 
 #: src/modules/rooms/cog.py:790
 #, possible-python-brace-format
