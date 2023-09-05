@@ -110,6 +110,8 @@ msgid ""
 "Time slot `{provided}` not recognised. Please select a session to cancel "
 "from the autocomplete options."
 msgstr ""
+"`{provided}` zaman dilimi hatırlanamadı. Lütfen iptal etmek için otomatik "
+"tamamlama seçeneklerinden bir oturum seçin."
 
 #: src/modules/schedule/cog.py:759
 #, possible-python-brace-format
