@@ -504,12 +504,12 @@ msgstr "Görevlistesini Aç"
 #: src/modules/tasklist/ui.py:57
 msgctxt "modal:tasklist_single_editor|field:task|label"
 msgid "Task content"
-msgstr ""
+msgstr "Görev içeriği"
 
 #: src/modules/tasklist/ui.py:69
 msgctxt "modal:tasklist_single_editor|field:parent|label"
 msgid "Parent Task"
-msgstr ""
+msgstr "Ana Görev"
 
 #: src/modules/tasklist/ui.py:73
 msgctxt "modal:tasklist_single_editor|field:parent|placeholder"
