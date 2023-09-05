@@ -371,17 +371,17 @@ msgstr "saniye"
 #: src/modules/tasklist/cog.py:779
 msgctxt "cmd:tasks_tick|desc"
 msgid "Mark the given tasks as completed."
-msgstr ""
+msgstr "Tamamlanmış olarak verilen görevleri işaretle."
 
 #: src/modules/tasklist/cog.py:782
 msgctxt "cmd:tasks_tick|param:taskidstr"
 msgid "tasks"
-msgstr ""
+msgstr "görevler"
 
 #: src/modules/tasklist/cog.py:783
 msgctxt "cmd:tasks_tick|param:cascade"
 msgid "cascade"
-msgstr ""
+msgstr "kademeli"
 
 #: src/modules/tasklist/cog.py:788
 msgctxt "cmd:tasks_tick|param:taskidstr|desc"
