@@ -244,6 +244,8 @@ msgid ""
 "The private room system has not been set up! A private room category needs "
 "to be set first with `/configure rooms`."
 msgstr ""
+"Özel oda sistemi kurulmadı! İlk olarak `/configure rooms` ile özel oda "
+"kategorisinin ayarlanması gerekiyor."
 
 #: src/modules/rooms/cog.py:365
 msgctxt "cmd:room_rent|error:insufficient_perms"
@@ -251,6 +253,8 @@ msgid ""
 "I do not have enough permissions to create a new channel under the "
 "configured private room category!"
 msgstr ""
+"Ayarlanmış özel oda kategorisinin altına yeni bir kanal açmak için yeterli "
+"iznim bulunmuyor!"
 
 #: src/modules/rooms/cog.py:379
 #, possible-python-brace-format
@@ -271,6 +275,8 @@ msgid ""
 "Too many members! You have requested to add `{count}` members to your room, "
 "but the maximum private room size is `{cap}`!"
 msgstr ""
+"Çok fazla üye! Sen `{count}` üye eklememi istedin ama bu odanın kapasitesi "
+"en fazla `{cap}` kişi alabilir!"
 
 #: src/modules/rooms/cog.py:427
 #, possible-python-brace-format
