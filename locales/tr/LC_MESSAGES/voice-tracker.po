@@ -358,6 +358,8 @@ msgctxt "guildset:hourly_live_bonus|response"
 msgid ""
 "Live members will now *additionally* be given {coin}**{amount}** per hour."
 msgstr ""
+"Yayın açan kullanıcılara saatlik ekstra olarak {coin}**{amount}** miktarında"
+" para verilecek."
 
 #: src/tracking/voice/settings.py:248
 msgctxt "guildset:daily_voice_cap"
@@ -367,7 +369,7 @@ msgstr "günlük_ses_süresi"
 #: src/tracking/voice/settings.py:251
 msgctxt "guildset:daily_voice_cap|desc"
 msgid "Maximum number of hours per day to count for each member."
-msgstr ""
+msgstr "Her üye için sayılacak maksimum ses saati süresi."
 
 #: src/tracking/voice/settings.py:255
 msgctxt "guildset:daily_voice_cap|long_desc"
@@ -393,17 +395,17 @@ msgstr ""
 #: src/tracking/voice/settings.py:335
 msgctxt "ui:voice_tracker_config|button:close|label"
 msgid "Close"
-msgstr ""
+msgstr "Kapat"
 
 #: src/tracking/voice/settings.py:349
 msgctxt "ui:voice_tracker_config|button:reset|label"
 msgid "Reset"
-msgstr ""
+msgstr "Sıfırla"
 
 #: src/tracking/voice/settings.py:362
 msgctxt "ui:voice_tracker_config|menu:untracked_channels|placeholder"
 msgid "Set Untracked Channels"
-msgstr ""
+msgstr "Takip Edilmeyen Kanalları Seç"
 
 #: src/tracking/voice/settings.py:428 src/tracking/voice/settings.py:482
 msgctxt "ui:voice_tracker_config|mode:voice|embed|title"
@@ -418,7 +420,7 @@ msgstr ""
 #: src/tracking/voice/settings.py:472
 msgctxt "ui:voice_tracker_config|menu:untracked_channels|placeholder"
 msgid "Select Untracked Channels"
-msgstr ""
+msgstr "Takip Edilmeyen Kanalları Seç"
 
 #: src/tracking/voice/settings.py:528
 msgctxt "dash:voice_tracker|title"
@@ -428,4 +430,4 @@ msgstr ""
 #: src/tracking/voice/settings.py:532
 msgctxt "dash:voice_tracking|dropdown|placeholder"
 msgid "Voice Activity Panel"
-msgstr ""
+msgstr "Ses Aktivite Paneli"
