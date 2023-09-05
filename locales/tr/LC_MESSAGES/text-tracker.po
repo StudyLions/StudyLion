@@ -99,7 +99,7 @@ msgstr ""
 #: src/tracking/text/settings.py:65
 msgctxt "guildset:word_xp"
 msgid "xp_per_100words"
-msgstr ""
+msgstr "her_100kelime_xp"
 
 #: src/tracking/text/settings.py:68
 msgctxt "guildset:word_xp|desc"
