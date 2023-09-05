@@ -442,8 +442,8 @@ msgstr "Tüm alt görevlerin tamamlanmadı olarak işaretlenip işaretlenmeyece�
 msgctxt "cmd:tasks_untick|resp:success"
 msgid "{tick} Marked `{label}` as incomplete."
 msgid_plural "{tick} Marked `{count}` tasks as incomplete."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] " `{label}` tamamlanmadı olarak işaretlendi."
+msgstr[1] " `{count}` görevler tamamlanmadı olarak işaretlendi {tick}."
 
 #: src/modules/tasklist/cog.py:933
 msgctxt "cmd:configure_tasklist"
