@@ -365,6 +365,8 @@ msgid ""
 "Members will be rewarded {coin}**{amount}** when they attend a scheduled "
 "session."
 msgstr ""
+"Üyeler bundan böyle bir zamanlanmış oturuma katıldıklarında  "
+"{coin}**{amount}* ile ödüllendirileceklerdir."
 
 #: src/modules/schedule/settings.py:291
 #, possible-python-brace-format
