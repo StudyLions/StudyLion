@@ -168,7 +168,7 @@ msgstr " '{input}' ile eşleşen bir zaman dilimi yok!"
 #, possible-python-brace-format
 msgctxt "set_type:timezone|acmpl|choice"
 msgid "{tz} (Currently {now})"
-msgstr ""
+msgstr "{tz} (Şu anda {now})"
 
 #: src/settings/setting_types.py:957
 msgctxt "settype:timestamp|accepts"
