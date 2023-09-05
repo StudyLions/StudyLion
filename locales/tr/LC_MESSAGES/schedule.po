@@ -736,7 +736,7 @@ msgstr ""
 #: src/modules/schedule/ui/scheduleui.py:385
 msgctxt "ui:schedule|menu:cancel|error:already_cancelled"
 msgid "The selected bookings no longer exist! Nothing to cancel."
-msgstr ""
+msgstr "Seçilen rezerveler artık mevcut değil! İptal edilecek bir şey yok."
 
 #: src/modules/schedule/ui/scheduleui.py:395
 #, possible-python-brace-format
