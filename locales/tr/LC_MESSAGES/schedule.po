@@ -396,7 +396,7 @@ msgstr ""
 #: src/modules/schedule/settings.py:312
 msgctxt "guildset:attendance_bonus|accepts"
 msgid "Bonus coins rewarded when everyone attends a session."
-msgstr ""
+msgstr "Oturuma herkes katıldığında ödüllendirilecek bonus para."
 
 #: src/modules/schedule/settings.py:324
 #, possible-python-brace-format
@@ -652,7 +652,7 @@ msgstr "Takvim Hakkında"
 #: src/modules/schedule/ui/scheduleui.py:184
 msgctxt "ui:schedule|menu:booking|error:current_slot"
 msgid "You cannot schedule a currently running session!"
-msgstr ""
+msgstr "Hali hazırda çalışan oturumu ayarlayamassın!"
 
 #: src/modules/schedule/ui/scheduleui.py:191
 msgctxt "ui:schedule|menu:booking|error:next_slot"
