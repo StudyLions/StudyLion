@@ -812,7 +812,7 @@ msgstr ""
 #: src/modules/schedule/ui/sessionui.py:94
 msgctxt "ui:session|button:book|error:already_booked"
 msgid "You are already a member of this session!"
-msgstr ""
+msgstr "Zaten bu oturumun bir üyesisin!"
 
 #: src/modules/schedule/ui/sessionui.py:101
 msgctxt "ui:session|button:book|success"
