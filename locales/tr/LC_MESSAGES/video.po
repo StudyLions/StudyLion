@@ -349,7 +349,7 @@ msgstr "video_muaf"
 #: src/modules/video_channels/settings.py:259
 msgctxt "guildset:video_exempt|desc"
 msgid "List of roles which are exempt from video channels."
-msgstr ""
+msgstr "Video kanallarından muaf tutulacak roller."
 
 #: src/modules/video_channels/settings.py:263
 msgctxt "guildset:video_exempt|long_desc"
