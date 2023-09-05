@@ -437,6 +437,8 @@ msgid ""
 "Mention the members you want to remove. Also accepts space-separated user "
 "ids."
 msgstr ""
+"Çıkartmak istediğiniz üyelerden bahsedin. Ayrıca boşlukla ayrılmış kullanıcı"
+" ID'lerini de kabul ederim."
 
 #: src/modules/rooms/cog.py:712
 #, possible-python-brace-format
