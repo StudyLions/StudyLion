@@ -714,7 +714,7 @@ msgstr ""
 #: src/modules/tasklist/settings.py:113
 msgctxt "guildset:tasklist_channels"
 msgid "tasklist_channels"
-msgstr ""
+msgstr "görevlistesi_kanalları"
 
 #: src/modules/tasklist/settings.py:116
 msgctxt "guildset:tasklist_channels|desc"
