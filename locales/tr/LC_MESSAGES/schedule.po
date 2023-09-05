@@ -842,7 +842,7 @@ msgstr "Oturum başarılı bir şekilde iptal edildi."
 #: src/modules/schedule/ui/sessionui.py:164
 msgctxt "ui:session|button:cancel|error|title"
 msgid "Could not cancel session"
-msgstr ""
+msgstr "Oturum iptal edilemedi"
 
 #: src/modules/schedule/core/session.py:196
 msgctxt "session|error:lobby_webhook_perms"
