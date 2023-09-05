@@ -628,7 +628,7 @@ msgstr ""
 #: src/modules/tasklist/ui.py:702
 msgctxt "ui:tasklist|button:clear|label"
 msgid "Clear Tasklist"
-msgstr ""
+msgstr "Görevlisteni Temizle"
 
 #: src/modules/tasklist/ui.py:721
 #, possible-python-brace-format
@@ -662,7 +662,7 @@ msgstr ""
 #: src/modules/tasklist/settings.py:33
 msgctxt "guildset:task_reward"
 msgid "task_reward"
-msgstr ""
+msgstr "görev_ödülü"
 
 #: src/modules/tasklist/settings.py:36
 msgctxt "guildset:task_reward|desc"
