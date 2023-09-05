@@ -489,7 +489,7 @@ msgstr "Devredecek bir özel oda sahibi değilsin!"
 msgctxt "cmd:room_transfer|error:target_not_member"
 msgid ""
 "{mention} is not a member of your private room! You must invite them first."
-msgstr ""
+msgstr "{mention} özel odanın bir üyesi değil! Önce onu davet etmelisin."
 
 #: src/modules/rooms/cog.py:802
 #, possible-python-brace-format
@@ -497,6 +497,8 @@ msgctxt "cmd:room_transfer|error:target_has_room"
 msgid ""
 "{mention} already owns a room! Members can only own one room at a time."
 msgstr ""
+"{mention} zaten bir oda sahibi! Üyeler aynı anda sadece bir tane oda sahibi "
+"olabilirler."
 
 #: src/modules/rooms/cog.py:811
 #, possible-python-brace-format
