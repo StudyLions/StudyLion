@@ -408,6 +408,8 @@ msgid ""
 "Too many members! You have invited `{count}` new members to your room, but "
 "you already have `{current}`, and the member cap is `{cap}`!"
 msgstr ""
+"Çok fazla üye! Odana `{count}` kadar yeni kişi davet ediyorsun, fakat zaten "
+"`{current}` kadar üye var! Üye sınırı `{cap}` dır."
 
 #: src/modules/rooms/cog.py:678
 msgctxt "cmd:room_invite|success|ack"
