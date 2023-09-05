@@ -279,6 +279,9 @@ msgid ""
 "This setting describes *how long* the member will be blacklisted for, for each offence.\n"
 "E.g. if this is set to `1d, 7d, 30d`, then on the first offence the member will be blacklisted for 1 day, on the second for 7 days, and on the third for 30 days. A subsequent offence will result in an infinite blacklist."
 msgstr ""
+"'video_blacklist' ayarlandığında ve üyeler, yapılandırılan 'video_grace_period' dahilinde videolarını açamazlarsa, otomatik olarak kara listeye alınırlar (yani, 'video_blacklist' rolü verilir).\n"
+"Bu ayar, üyenin her suç için *ne kadar süreyle* kara listeye alınacağını açıklar.\n"
+"Örneğin. eğer bu `1g, 7g, 30g` olarak ayarlanırsa, üye ilk suçta 1 gün, ikinci suçta 7 gün ve üçüncü suçta 30 gün boyunca kara listeye alınır. Sonraki bir suç sonsuz bir kara listeyle sonuçlanacaktır."
 
 #: src/modules/video_channels/settings.py:181
 msgctxt "guildset:video_durations|accepts"
