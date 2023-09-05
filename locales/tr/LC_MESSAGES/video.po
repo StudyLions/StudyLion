@@ -237,12 +237,12 @@ msgstr ""
 "Bu rol üye bir video kanalında videosunu açık tutmayı başaramadığında verilecektir. (yukarıda gör.)\n"
 "Bu role sahip üyeler ayarlanmış video kanallarına giremeyecekler. Rol izinleri sunucu yöneticileri tarafından suçlu üzerine daha fazla yasaklama koymak için düzenlenebilecektir.\n"
 "Aynı etkiyi göstermesi için rol elle de verilebilir.\n"
-"Bu rol ayarlanmadıysa video yasaklaması yapılmayacak ve üyeler sadece kanaldan atılıp uyarılacaktır."
+"Bu rol ayarlanmadıysa video kara listesi yapılmayacak ve üyeler sadece kanaldan atılıp uyarılacaktır."
 
 #: src/modules/video_channels/settings.py:123
 msgctxt "guildset:video_blacklist|accepts"
 msgid "Blacklist role name or id."
-msgstr "Yasaklama rolü adı ya da ID'si"
+msgstr "Kara liste rolü adı ya da ID'si"
 
 #: src/modules/video_channels/settings.py:138
 #, possible-python-brace-format
