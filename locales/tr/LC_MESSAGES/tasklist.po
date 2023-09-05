@@ -568,7 +568,7 @@ msgstr "Silmek için Seç"
 #, possible-python-brace-format
 msgctxt "ui:tasklist|menu:sub|mode:delete|placeholder"
 msgid "Delete from {label}.*"
-msgstr ""
+msgstr "{label} dan sil."
 
 #: src/modules/tasklist/ui.py:408
 #, possible-python-brace-format
@@ -594,7 +594,7 @@ msgstr ""
 #: src/modules/tasklist/ui.py:500
 msgctxt "ui:tasklist|menu:edit|modal:title"
 msgid "Edit task"
-msgstr ""
+msgstr "Görev Düzenle"
 
 #: src/modules/tasklist/ui.py:593
 msgctxt "ui:tasklist_single_editor|title"
