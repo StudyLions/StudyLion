@@ -528,6 +528,9 @@ msgid ""
 "- [x] This is task 2, finished.\n"
 "  - [ ] This is subtask 2.1."
 msgstr ""
+"- [ ] Bu 1. görev, bitmedi.\n"
+"- [x] Bu 2. görev, bitti.\n"
+"- [ ] Bu alt görev 2.1."
 
 #: src/modules/tasklist/ui.py:130
 msgctxt "modal:tasklist_bulk_editor"
