@@ -378,6 +378,9 @@ msgid ""
 "the member's statistics. Tracking will resume at the start of the next day. "
 "The start of the day is determined by the configured guild timezone."
 msgstr ""
+"Ses kanallarında bu süreyi aşan süreler üye istatistiklerine "
+"yansıtılmayacaktır. Takip ertesi günün başlangıcında devam edecektir. Günün "
+"başlangıcı, ayarlanmış sunucu saat dilimine göre belirlenir."
 
 #: src/tracking/voice/settings.py:261
 msgctxt "guildset:daily_voice_cap|accepts"
