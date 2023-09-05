@@ -199,6 +199,9 @@ msgid ""
 "spend (live) in a voice channel, up to a total of **{cap}** hours per server"
 " day."
 msgstr ""
+"Üyeler artık bir ses kanalında geçirdikleri (aktif) saat başına, sunucu günü"
+" başına toplam **{cap}** saate kadar {coin}**{base} (+ {bonus})** ile "
+"ödüllendirilecek."
 
 #: src/tracking/voice/cog.py:908
 #, possible-python-brace-format
