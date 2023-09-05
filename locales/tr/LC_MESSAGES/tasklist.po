@@ -406,17 +406,17 @@ msgstr[1] ""
 #: src/modules/tasklist/cog.py:854
 msgctxt "cmd:tasks_untick"
 msgid "untick"
-msgstr ""
+msgstr "işareti kaldır"
 
 #: src/modules/tasklist/cog.py:855
 msgctxt "cmd:tasks_untick|desc"
 msgid "Mark the given tasks as incomplete."
-msgstr ""
+msgstr "Verilen görevleri tamamlanmamış olarak işaretle."
 
 #: src/modules/tasklist/cog.py:858
 msgctxt "cmd:tasks_untick|param:taskidstr"
 msgid "taskids"
-msgstr ""
+msgstr "görev kimlikleri"
 
 #: src/modules/tasklist/cog.py:859
 msgctxt "cmd:tasks_untick|param:cascade"
@@ -692,7 +692,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "guildset:task_reward|formatted"
 msgid "{coin}**{amount}** per task."
-msgstr ""
+msgstr "Her görev için {coin}**{amount}**."
 
 #: src/modules/tasklist/settings.py:73
 msgctxt "guildset:task_reward_limit"
