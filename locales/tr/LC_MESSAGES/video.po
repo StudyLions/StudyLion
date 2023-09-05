@@ -305,7 +305,7 @@ msgstr "Video kara listesi bundan sonra sürekli kalıcı olacaktır."
 #: src/modules/video_channels/settings.py:221
 msgctxt "guildset:video_grace_period"
 msgid "video_grace_period"
-msgstr ""
+msgstr "video_bekleme_periyodu"
 
 #: src/modules/video_channels/settings.py:224
 msgctxt "guildset:video_grace_period|desc"
