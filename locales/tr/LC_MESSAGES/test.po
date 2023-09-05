@@ -59,7 +59,7 @@ msgstr "başarısız"
 
 #: src/modules/test/test.py:130
 msgid "pager"
-msgstr "çağrı cihazı"
+msgstr "sayfacı"
 
 #: src/modules/test/test.py:158
 msgid "pager2"
