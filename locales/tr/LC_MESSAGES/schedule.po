@@ -792,7 +792,7 @@ msgstr ""
 #: src/modules/schedule/ui/sessionui.py:52
 msgctxt "ui:sessionui|button:book|label"
 msgid "Book"
-msgstr ""
+msgstr "Rezerve"
 
 #: src/modules/schedule/ui/sessionui.py:56
 msgctxt "ui:sessionui|button:cancel|label"
@@ -807,7 +807,7 @@ msgstr "Açık Program"
 #: src/modules/schedule/ui/sessionui.py:87
 msgctxt "ui:session|button:book|error:starting_soon"
 msgid "Too late! This session has started or is starting shortly."
-msgstr ""
+msgstr "Çok geç! Bu oturum çoktan başladı veya hemen başlıyor."
 
 #: src/modules/schedule/ui/sessionui.py:94
 msgctxt "ui:session|button:book|error:already_booked"
