@@ -544,7 +544,7 @@ msgstr ""
 #: src/modules/schedule/settings.py:481
 msgctxt "guildset:schedule_blacklist_after|accepts"
 msgid "A number of missed sessions (1-24) before blacklisting."
-msgstr ""
+msgstr "Karalisteye alınmadan önceki kaçırılmış oturum sayısı (1-24)."
 
 #: src/modules/schedule/settings.py:496
 #, possible-python-brace-format
