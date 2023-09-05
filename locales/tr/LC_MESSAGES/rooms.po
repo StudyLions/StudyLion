@@ -327,6 +327,8 @@ msgid ""
 "Could not create your private room! You were not charged.\n"
 "I have insufficient permissions to create a private room channel."
 msgstr ""
+"Özel odanı kuramadım! Hesabından para eksilmedi!\n"
+"Özel oda kanalı oluşturmak için yeterli iznim bulunmuyor."
 
 #: src/modules/rooms/cog.py:537
 #, possible-python-brace-format
