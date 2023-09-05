@@ -841,11 +841,13 @@ msgid ""
 "**`{name}`**\n"
 "(The actual channel name may not match due to ratelimits.)"
 msgstr ""
+"**`{name}`**\n"
+"(Sınırlayıcılar nedeniyle gerçek kanal adı ile eşleşmeyebilir.)"
 
 #: src/modules/pomodoro/ui/config.py:213
 msgctxt "ui:timer_options|embed|field:issues|name"
 msgid "Issues"
-msgstr ""
+msgstr "Sorunlar"
 
 #: src/modules/pomodoro/ui/config.py:231
 msgctxt "ui:timer_options|issue:no_voice_channel"
