@@ -358,7 +358,7 @@ msgid ""
 "Could not identify target private room! Please re-run the command in the "
 "private room you wish to view the status of."
 msgstr ""
-"Hedef özel odayı bulamadım! Lütfen durumunu görüntülemek istediğin özel "
+"Hedef özel oda belirlenemedi! Lütfen durumunu görüntülemek istediğin özel "
 "odanda komutu tekrardan kullan."
 
 #: src/modules/rooms/cog.py:582
@@ -530,6 +530,8 @@ msgid ""
 "Deposit LionCoins in your private room bank to add more days. (Members may "
 "also deposit!)"
 msgstr ""
+"Günü arttırmak için oda bankanıza biraz daha LionCoin aktarmanız "
+"gerekmektedir. (Ayrıca üyeler de aktarmalıdır!)"
 
 #: src/modules/rooms/cog.py:844
 msgctxt "cmd:room_deposit|param:coins"
@@ -547,6 +549,8 @@ msgid ""
 "Could not identify target private room! Please re-run the command in the "
 "private room you wish to contribute to."
 msgstr ""
+"Hedef özel oda belirlenemedi! Lütfen katkıda bulunmak istediğiniz özel odada"
+" komutu yeniden çalıştırın."
 
 #: src/modules/rooms/cog.py:885
 #, possible-python-brace-format
