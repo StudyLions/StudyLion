@@ -677,6 +677,8 @@ msgid ""
 "Booking `{count}` scheduled sessions requires {coin}**{required}**, but you "
 "only have {coin}**{balance}**!"
 msgstr ""
+"`{count}` ayarlanmış oturumları rezerve etmek için {coin}**{required}** "
+"gerekir, ama sadece {coin}**{balance}** kadarın var!"
 
 #: src/modules/schedule/ui/scheduleui.py:227
 #, possible-python-brace-format
