@@ -717,8 +717,8 @@ msgid ""
 "You cannot cancel a currently running *scheduled* session! Please attend it "
 "if possible."
 msgstr ""
-"Hali hazırda çalışan *ayarlanmış* oturum iptal edilemiyor! Mümkünse katılın "
-"lütfen."
+"Hali hazırda çalışan *zamanlanmış* oturum iptal edilemiyor! Mümkünse katılın"
+" lütfen."
 
 #: src/modules/schedule/ui/scheduleui.py:368
 msgctxt "ui:schedule|menu:cancel|error:too_late"
