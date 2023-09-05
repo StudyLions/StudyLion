@@ -64,12 +64,12 @@ msgstr "görevlistesi"
 #: src/modules/tasklist/cog.py:228
 msgctxt "cmd:tasklist|desc"
 msgid "Open your tasklist."
-msgstr ""
+msgstr "Görev listeni aç."
 
 #: src/modules/tasklist/cog.py:237
 msgctxt "group:tasks"
 msgid "tasks"
-msgstr ""
+msgstr "görevler"
 
 #: src/modules/tasklist/cog.py:238
 msgctxt "group:tasks|desc"
