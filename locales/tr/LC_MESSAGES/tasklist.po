@@ -111,7 +111,7 @@ msgstr "görev"
 #: src/modules/tasklist/cog.py:367
 msgctxt "cmd:tasks_new|param:parent"
 msgid "parent"
-msgstr ""
+msgstr "ana"
 
 #: src/modules/tasklist/cog.py:370
 msgctxt "cmd:tasks_new|param:content|desc"
