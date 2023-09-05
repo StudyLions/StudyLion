@@ -263,10 +263,63 @@ class Exec(LionCog):
         description=_("Execute arbitrary code with Exec")
     )
     @appcmd.describe(
-        string="Code to execute."
+        string="Code to execute.",
+        target="Cross-shard peer to async on."
     )
-    async def async_cmd(self, ctx: LionContext, *, string: Optional[str] = None):
-        await ExecUI(ctx, string, ExecStyle.EXEC, ephemeral=False).run()
+    async def async_cmd(self, ctx: LionContext,
+                        string: Optional[str] = None,
+                        target: Optional[str] = None,
+                        ):
+        if target is not None:
+            if string is None:
+                try:
+                    ctx.interaction, string = await input(
+                        ctx.interaction, "Cross-shard async", "Code to execute?",
+                        style=discord.TextStyle.long
+                    )
+                except asyncio.TimeoutError:
+                    return
+            await ctx.interaction.response.defer(thinking=True)
+            if target not in shard_talk.peers:
+                # Invalid target
+                embed = discord.Embed(
+                    description="Unknown peer {target}",
+                    colour=discord.Colour.brand_red(),
+                )
+                await ctx.interaction.edit_original_response(embed=embed)
+            else:
+                # Send to given target
+                result = await self.talk_async(string).send(target)
+                if len(result) > 1900:
+                    # Send as file
+                    with StringIO(result) as fp:
+                        fp.seek(0)
+                        file = discord.File(fp, filename=f"output-{target}.md")
+                        await ctx.reply(file=file)
+                elif result:
+                    await ctx.reply(f"```md{result}```")
+                else:
+                    await ctx.reply("Command completed, and had no output.")
+        else:
+            await ExecUI(ctx, string, ExecStyle.EXEC, ephemeral=False).run()
+
+    async def _peer_acmpl(self, interaction: discord.Interaction, partial: str):
+        """
+        Autocomplete utility for peer targets parameters.
+        """
+        appids = set(shard_talk.peers.keys())
+        results = [
+            appcmd.Choice(name=appid, value=appid)
+            for appid in appids
+            if partial.lower() in appid.lower()
+        ]
+        if not results:
+            results = [
+                appcmd.Choice(name=f"No peers found matching {partial}", value=partial)
+            ]
+        return results
+
+    async_cmd.autocomplete('target')(_peer_acmpl)
 
     @commands.hybrid_command(
         name=_p('command', 'eval'),
@@ -325,40 +378,33 @@ class Exec(LionCog):
             # Send as message
             await ctx.reply(f"```md\n{output}```", ephemeral=True)
 
-    @asyncall_cmd.autocomplete('target')
-    async def asyncall_target_acmpl(self, interaction: discord.Interaction, partial: str):
-        appids = set(shard_talk.peers.keys())
-        results = [
-            appcmd.Choice(name=appid, value=appid)
-            for appid in appids
-            if partial.lower() in appid.lower()
-        ]
-        if not results:
-            results = [
-                appcmd.Choice(name=f"No peers found matching {partial}", value="None")
-            ]
-        return results
+    asyncall_cmd.autocomplete('target')(_peer_acmpl)
 
     @commands.hybrid_command(
         name=_('reload'),
         description=_("Reload a given LionBot extension. Launches an ExecUI.")
     )
     @appcmd.describe(
-        extension=_("Name of the extesion to reload. See autocomplete for options.")
+        extension=_("Name of the extension to reload. See autocomplete for options."),
+        force=_("Whether to force an extension reload even if it doesn't exist.")
     )
     @appcmd.guilds(*guild_ids)
-    async def reload_cmd(self, ctx: LionContext, extension: str):
+    async def reload_cmd(self, ctx: LionContext, extension: str, force: Optional[bool] = False):
         """
         This is essentially just a friendly wrapper to reload an extension.
         It is equivalent to running "await bot.reload_extension(extension)" in eval,
         with a slightly nicer interface through the autocomplete and error handling.
         """
-        if extension not in self.bot.extensions:
+        exists = (extension in self.bot.extensions)
+        if not (force or exists):
             embed = discord.Embed(description=f"Unknown extension {extension}", colour=discord.Colour.red())
             await ctx.reply(embed=embed)
         else:
             # Uses an ExecUI to simplify error handling and re-execution
-            string = f"await bot.reload_extension('{extension}')"
+            if exists:
+                string = f"await bot.reload_extension('{extension}')"
+            else:
+                string = f"await bot.load_extension('{extension}')"
             await ExecUI(ctx, string, ExecStyle.EVAL).run()
 
     @reload_cmd.autocomplete('extension')
