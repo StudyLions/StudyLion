@@ -883,6 +883,8 @@ msgid ""
 "I cannot attach files (`ATTACH_FILES`) or send embeds (`EMBED_LINKS`) in "
 "{channel}"
 msgstr ""
+"{channel} kanalına dosya ekleyemiyorum (`ATTACH_FILES`) veya embed "
+"(`EMBED_LINKS`) gönderemiyorum."
 
 #: src/modules/pomodoro/ui/config.py:277
 #, possible-python-brace-format
