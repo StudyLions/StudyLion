@@ -116,7 +116,7 @@ msgstr "ana"
 #: src/modules/tasklist/cog.py:370
 msgctxt "cmd:tasks_new|param:content|desc"
 msgid "Content of your new task."
-msgstr ""
+msgstr "Yeni görevinin içeriği."
 
 #: src/modules/tasklist/cog.py:371
 msgctxt "cmd:tasks_new|param:parent"
