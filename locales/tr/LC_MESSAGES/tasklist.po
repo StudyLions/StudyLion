@@ -421,7 +421,7 @@ msgstr ""
 #: src/modules/tasklist/cog.py:859
 msgctxt "cmd:tasks_untick|param:cascade"
 msgid "cascade"
-msgstr ""
+msgstr "kademeli"
 
 #: src/modules/tasklist/cog.py:864
 msgctxt "cmd:tasks_untick|param:taskidstr|desc"
