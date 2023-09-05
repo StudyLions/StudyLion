@@ -748,7 +748,7 @@ msgstr "görevlistesi_kanalları"
 #: src/modules/tasklist/settings.py:116
 msgctxt "guildset:tasklist_channels|desc"
 msgid "Channels in which to publicly display member tasklists."
-msgstr ""
+msgstr "Üye görev listelerinin herkese açık olarak görüntüleneceği kanallar."
 
 #: src/modules/tasklist/settings.py:120
 #, possible-python-brace-format
