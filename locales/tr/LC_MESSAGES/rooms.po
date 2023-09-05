@@ -338,6 +338,9 @@ msgid ""
 "An unknown error occurred while creating your private room.\n"
 "`{error}`"
 msgstr ""
+"Özel odanı kuramadım! Hesabından para eksilmedi!\n"
+"Özel oda kanalını kurarken bilinmeyen bir hata oluştu.\n"
+"`{error}`"
 
 #: src/modules/rooms/cog.py:547
 msgctxt "cmd:room_status"
