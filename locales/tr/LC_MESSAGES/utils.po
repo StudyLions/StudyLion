@@ -108,7 +108,7 @@ msgstr "Bu kanalda çağrı cihazı dinlemiyor!"
 #: src/utils/cog.py:97
 msgctxt "cmd:page_select|acmpl|error:no_pager"
 msgid "No active pagers in this channel!"
-msgstr ""
+msgstr "Bu kanalda aktif bir çağrı cihazı yok!"
 
 #: src/utils/transformers.py:43
 #, possible-python-brace-format
