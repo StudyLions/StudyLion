@@ -452,7 +452,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:729
 msgctxt "cmd:room_kick|error:no_matching_members"
 msgid "None of the mentioned members are in this room!"
-msgstr ""
+msgstr "Bahsedilen üyelerin hiçbiri bu kanalda değil!"
 
 #: src/modules/rooms/cog.py:746
 msgctxt "cmd:room_kick|success|ack"
