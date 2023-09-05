@@ -362,8 +362,8 @@ msgstr ""
 msgctxt "cmd:tasks_remove|resp:success"
 msgid "{tick} Deleted task `{label}`"
 msgid_plural "{tick} Deleted `{count}` tasks from your tasklist."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "`{label}` görev silindi {tick} "
+msgstr[1] "Görevlistenden `{count}` görev silindi {tick}."
 
 #: src/modules/tasklist/cog.py:778
 msgctxt "cmd:tasks_tick"
