@@ -301,7 +301,7 @@ msgstr "oturum_tutarı"
 #: src/modules/schedule/settings.py:214
 msgctxt "guildset:schedule_cost|desc"
 msgid "Booking cost for each scheduled session."
-msgstr ""
+msgstr "Her zamanlanmış oturum için ayırtma ücreti."
 
 #: src/modules/schedule/settings.py:218
 msgctxt "guildset:schedule_cost|long_desc"
