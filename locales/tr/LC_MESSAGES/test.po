@@ -55,7 +55,7 @@ msgstr "Ansi Renklerini Test Et"
 
 #: src/modules/test/test.py:123
 msgid "fail"
-msgstr ""
+msgstr "başarısız"
 
 #: src/modules/test/test.py:130
 msgid "pager"
