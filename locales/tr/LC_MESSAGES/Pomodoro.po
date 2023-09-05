@@ -760,22 +760,22 @@ msgstr ""
 #: src/modules/pomodoro/ui/status.py:204
 msgctxt "ui:timer_status|button:stop|label"
 msgid "Stop"
-msgstr ""
+msgstr "Durdur"
 
 #: src/modules/pomodoro/ui/config.py:51
 msgctxt "ui:timer_options|button:edit|label"
 msgid "Edit"
-msgstr ""
+msgstr "Düzenle"
 
 #: src/modules/pomodoro/ui/config.py:67
 msgctxt "ui:timer_options|button:voice_alerts|label"
 msgid "Voice Alerts"
-msgstr ""
+msgstr "Ses Uyarıları"
 
 #: src/modules/pomodoro/ui/config.py:88
 msgctxt "ui:timer_options|button:delete|success|title"
 msgid "Timer Deleted"
-msgstr ""
+msgstr "Sayaç Silindi"
 
 #: src/modules/pomodoro/ui/config.py:92
 #, possible-python-brace-format
