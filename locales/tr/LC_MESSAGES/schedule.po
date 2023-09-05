@@ -323,6 +323,8 @@ msgctxt "guildset:schedule_cost|set_response"
 msgid ""
 "Schedule session bookings will now cost {coin} **{amount}** per timeslot."
 msgstr ""
+"Her bir zamanlanmış oturumu ayırtma bundan böyle  {coin} **{amount}**  "
+"tutacaktır."
 
 #: src/modules/schedule/settings.py:247
 #, possible-python-brace-format
