@@ -513,7 +513,7 @@ msgstr "Oturum kara liste rolü ayarlanmadı."
 #, possible-python-brace-format
 msgctxt "guildset:schedule_blacklist_role|formatted|set"
 msgid "{role} members will not be able to book scheduled sessions."
-msgstr ""
+msgstr "{role} üyeleri zamanlanmış oturum ayırtamayacaklar."
 
 #: src/modules/schedule/settings.py:458
 msgctxt "guildset:schedule_blacklist_role|formatted|unset"
