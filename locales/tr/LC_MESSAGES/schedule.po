@@ -682,8 +682,10 @@ msgid "Successfully booked your scheduled session at {times}."
 msgid_plural ""
 "Successfully booked the following scheduled sessions.\n"
 "{times}"
-msgstr[0] ""
+msgstr[0] "Başarıyla ayarlanmış oturumun {times} da rezerve edildi."
 msgstr[1] ""
+"Başarıyla bir sonraki ayarlanmış oturumlar rezerve edildi.\n"
+"{times}"
 
 #: src/modules/schedule/ui/scheduleui.py:250
 msgctxt "ui:schedule|menu:booking|placeholder:blacklisted"
