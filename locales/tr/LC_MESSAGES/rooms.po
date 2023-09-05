@@ -446,6 +446,8 @@ msgctxt "cmd:room_kick|error:no_room"
 msgid ""
 "You do not own a private room! Use `/room rent` to rent one with {coin}!"
 msgstr ""
+"Bir özel oda sahibi değilsin! `/room rent` ile {coin} miktar LionCoin'e bir "
+"oda kiralayabilirsin!"
 
 #: src/modules/rooms/cog.py:729
 msgctxt "cmd:room_kick|error:no_matching_members"
