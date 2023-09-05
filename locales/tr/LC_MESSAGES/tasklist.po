@@ -581,7 +581,7 @@ msgstr "{label} dan sil."
 msgctxt "ui:tasklist_single_editor|field:parent|error:parse_id"
 msgid ""
 "Could not find the given parent task number `{input}` in your tasklist."
-msgstr ""
+msgstr "Verilen `{input}` ana görev numarası görevlistende bulunamadı."
 
 #: src/modules/tasklist/ui.py:422
 #, possible-python-brace-format
