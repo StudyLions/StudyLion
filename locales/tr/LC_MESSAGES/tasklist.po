@@ -762,6 +762,11 @@ msgid ""
 "period. If a category is provided, this will apply to all channels under the"
 " category."
 msgstr ""
+"Üyenin görevlistesi (from {cmds[tasklist]}) sadece üyenin kendisine karşı "
+"görülebilir. Eğer ayarlanmışsa, `tasklist_channels` da açılmış görevlistesi "
+"herkese açık olacak ve arayüzün kullanım süresi çok daha uzun olacak. Eğer "
+"kategori sağlanmışsa, bu kategorinin altındaki tüm kategoriler için geçerli "
+"olacak."
 
 #: src/modules/tasklist/settings.py:127
 msgctxt "guildset:tasklist_channels|accepts"
