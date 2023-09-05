@@ -16,6 +16,8 @@ from utils.ui import ChoicedEnum, Transformed
 from utils.lib import utc_now, replace_multiple
 from utils.ratelimits import Bucket, limit_concurrency
 from utils.data import TemporaryTable
+from modules.economy.cog import Economy
+from modules.economy.data import TransactionType
 
 
 from . import babel, logger
@@ -299,6 +301,7 @@ class RankCog(LionCog):
                 if new_last_roleid != last_roleid:
                     await session_rank.rankrow.update(last_roleid=new_last_roleid)
 
+    @log_wrap(action="Update Rank")
     async def update_rank(self, session_rank):
         # Identify target rank
         guildid = session_rank.guildid
@@ -341,6 +344,7 @@ class RankCog(LionCog):
                     await member.add_roles(new_role)
                     last_roleid = new_role.id
             except discord.HTTPException:
+                # TODO: Event log either way
                 pass
 
         # Update MemberRank row
@@ -356,6 +360,18 @@ class RankCog(LionCog):
         # Update SessionRank info
         session_rank.current_rank = new_rank
         session_rank.next_rank = next((rank for rank in ranks if rank.required > new_rank.required), None)
+
+        # Provide economy reward if required
+        if new_rank.reward:
+            economy: Economy = self.bot.get_cog('Economy')
+            await economy.data.Transaction.execute_transaction(
+                TransactionType.OTHER,
+                guildid=guildid,
+                actorid=guild.me.id,
+                from_account=None,
+                to_account=userid,
+                amount=new_rank.reward
+            )
 
         # Send notification
         await self._notify_rank_update(guildid, userid, new_rank)
@@ -427,6 +443,7 @@ class RankCog(LionCog):
         }
         return key_map
 
+    @log_wrap(action="Voice Rank Hook")
     async def on_voice_session_complete(self, *session_data):
         tasks = []
         # TODO: Thread safety

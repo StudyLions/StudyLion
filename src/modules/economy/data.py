@@ -8,6 +8,7 @@ from core.data import CoreData
 from utils.data import TemporaryTable, SAFECOINS
 
 
+# TODO: Add Rank transaction type and tables.
 class TransactionType(Enum):
     """
     Schema
