@@ -232,6 +232,8 @@ msgid ""
 "Activity in these channels will not count towards a member's statistics. If "
 "a category is selected, all channels under the category will be untracked."
 msgstr ""
+"Bu kanallardaki etkinlikler kullanıcı istatistiklerinde sayılmayacak. "
+"Kategori seçildiyse, kategorinin altındaki tüm kanallar takip edilmeyecek."
 
 #: src/tracking/voice/settings.py:52
 msgctxt "guildset:untracked_channels|accepts"
