@@ -494,6 +494,8 @@ msgid ""
 "Malformed taskline!\n"
 "`{input}`"
 msgstr ""
+"Hatalı görevhattı!\n"
+"`{input}`"
 
 #: src/modules/tasklist/tasklist.py:329
 msgctxt "modal:tasklist_bulk_editor|error:task_too_long"
@@ -593,7 +595,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "ui:tasklist_single_editor|field:parent|error:no_matching"
 msgid "No tasks matching given parent task `{input}`."
-msgstr ""
+msgstr "Verilen ana görevle hiçbir görev eşleşmiyor `{input}`."
 
 #: src/modules/tasklist/ui.py:500
 msgctxt "ui:tasklist|menu:edit|modal:title"
