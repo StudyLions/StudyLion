@@ -448,12 +448,14 @@ msgid ""
 "Members will be rewarded after they have attended booked sessions for at "
 "least **`{amount}`** minutes."
 msgstr ""
+"**`{amount}`** dakika katılım sağladıklarında katıldıkları oturumdan "
+"ödüllendirileceklerdir."
 
 #: src/modules/schedule/settings.py:379
 #, possible-python-brace-format
 msgctxt "guildset:min_attendance|formatted"
 msgid "**`{amount}`** minutes"
-msgstr ""
+msgstr "**`{amount}`** dakika"
 
 #: src/modules/schedule/settings.py:400
 msgctxt "guildset:min_attendance|parse|error"
