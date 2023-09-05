@@ -175,12 +175,12 @@ msgstr ""
 #: src/modules/tasklist/cog.py:451
 msgctxt "cmd:tasks_upload|error:not_text"
 msgid "The attached tasklist must be a text file!"
-msgstr ""
+msgstr "Ekli olan görevlistesi bir metin dosyası olmak zorunda!"
 
 #: src/modules/tasklist/cog.py:459
 msgctxt "cmd:tasks_upload|error:too_large"
 msgid "The attached tasklist was too large!"
-msgstr ""
+msgstr "Eklenmiş görevlistesi çok büyüktü!"
 
 #: src/modules/tasklist/cog.py:470
 msgctxt "cmd:tasks_upload|error:too_many_lines"
