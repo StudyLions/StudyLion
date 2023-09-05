@@ -758,7 +758,7 @@ msgstr ""
 #: src/modules/schedule/ui/scheduleui.py:483
 msgctxt "ui:schedule|embed|field:stats|name"
 msgid "Session Statistics"
-msgstr ""
+msgstr "Oturum İstatistikleri"
 
 #: src/modules/schedule/ui/scheduleui.py:502
 msgctxt "ui:schedule|embed|field:upcoming|name"
