@@ -650,7 +650,7 @@ msgstr ""
 #: src/modules/pomodoro/settings.py:33
 msgctxt "guildset:pomodoro_channel|formatted|notset"
 msgid "Not Set (Will use timer voice channel.)"
-msgstr ""
+msgstr "Ayarlanmadı (Sayaç ses kanalını kullanacağım)"
 
 #: src/modules/pomodoro/settings.py:37
 msgctxt "guildset:pomodoro_channel|accepts"
