@@ -391,6 +391,8 @@ msgid ""
 "Members will be tracked for at most {duration} per day. (**NOTE:** This will"
 " not affect members currently in voice channels.)"
 msgstr ""
+"Üyeler günlük en fazla {duration} süre takip edilecekler. (**NOT:** Bu o "
+"anda ses kanalında olan üyeleri etkilemeyecektir.)"
 
 #: src/tracking/voice/settings.py:335
 msgctxt "ui:voice_tracker_config|button:close|label"
