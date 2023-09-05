@@ -402,8 +402,8 @@ msgstr "Tüm alt görevlerin tamamlandı olarak işaretlenip işaretlenmeyeceği
 msgctxt "cmd:tasks_tick|resp:success"
 msgid "{tick} Marked `{label}` as complete."
 msgid_plural "{tick} Marked `{count}` tasks as complete."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] " "
+msgstr[1] " `{count}` görevler tamamlandı olarak işaretlendi {tick}."
 
 #: src/modules/tasklist/cog.py:854
 msgctxt "cmd:tasks_untick"
@@ -442,7 +442,7 @@ msgstr "Tüm alt görevlerin tamamlanmadı olarak işaretlenip işaretlenmeyece�
 msgctxt "cmd:tasks_untick|resp:success"
 msgid "{tick} Marked `{label}` as incomplete."
 msgid_plural "{tick} Marked `{count}` tasks as incomplete."
-msgstr[0] " `{label}` tamamlanmadı olarak işaretlendi."
+msgstr[0] " `{label}` tamamlanmadı olarak işaretlendi {tick}."
 msgstr[1] " `{count}` görevler tamamlanmadı olarak işaretlendi {tick}."
 
 #: src/modules/tasklist/cog.py:933
