@@ -410,7 +410,7 @@ msgstr "Takip Edilmeyen Kanalları Seç"
 #: src/tracking/voice/settings.py:428 src/tracking/voice/settings.py:482
 msgctxt "ui:voice_tracker_config|mode:voice|embed|title"
 msgid "Voice Tracker Configuration Panel"
-msgstr "Ses Takibi Konfigürasyon Paneli"
+msgstr "Ses Sayacı Konfigürasyon Paneli"
 
 #: src/tracking/voice/settings.py:433 src/tracking/voice/settings.py:487
 msgctxt "ui:voice_tracker_config|mode:study|embed|title"
