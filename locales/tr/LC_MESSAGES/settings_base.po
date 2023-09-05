@@ -188,12 +188,12 @@ msgstr ""
 #: src/settings/setting_types.py:1017
 msgctxt "settype:raw|accepts"
 msgid "Anything"
-msgstr ""
+msgstr "Herhangi bir şey"
 
 #: src/settings/setting_types.py:1070
 msgctxt "settype:enum|accepts"
 msgid "A valid option."
-msgstr ""
+msgstr "Geçerli bir seçenek."
 
 #: src/settings/setting_types.py:1120
 #, possible-python-brace-format
