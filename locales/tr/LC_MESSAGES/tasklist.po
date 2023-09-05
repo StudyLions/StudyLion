@@ -535,7 +535,7 @@ msgstr ""
 #: src/modules/tasklist/ui.py:130
 msgctxt "modal:tasklist_bulk_editor"
 msgid "Tasklist Editor"
-msgstr ""
+msgstr "Görevlistesi Düzenleyicisi"
 
 #: src/modules/tasklist/ui.py:188
 msgctxt "ui:tasklist|menu:main|mode:toggle|placeholder"
