@@ -468,7 +468,7 @@ msgstr ""
 #: src/modules/schedule/settings.py:410
 msgctxt "guildset:schedule_blacklist_role"
 msgid "schedule_blacklist_role"
-msgstr ""
+msgstr "zamanlanmış_karaliste_rolü"
 
 #: src/modules/schedule/settings.py:413
 msgctxt "guildset:schedule_blacklist_role|desc"
