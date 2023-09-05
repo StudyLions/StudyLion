@@ -101,7 +101,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:schedule|cancel_booking|success"
 msgid "Successfully cancelled your booking at {time}."
-msgstr ""
+msgstr "{time} zamanındaki oturumunuzu başarıyla iptal ettim!"
 
 #: src/modules/schedule/cog.py:751
 #, possible-python-brace-format
