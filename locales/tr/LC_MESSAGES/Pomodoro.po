@@ -655,7 +655,7 @@ msgstr "Ayarlanmadı (Sayaç ses kanalını kullanacağım)"
 #: src/modules/pomodoro/settings.py:37
 msgctxt "guildset:pomodoro_channel|accepts"
 msgid "Timer notification channel name or id."
-msgstr ""
+msgstr "Sayaç bildirim kanalı adı ya da ID'si."
 
 #: src/modules/pomodoro/settings.py:51
 #, possible-python-brace-format
