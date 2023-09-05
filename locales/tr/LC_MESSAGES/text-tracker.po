@@ -157,6 +157,7 @@ msgstr ""
 msgctxt "guildset:untracked_text_channels|accepts"
 msgid "Comma separated list of untracked text channel names or ids."
 msgstr ""
+"Takip edilmeyecek metin kanallarının virgülle ayrılmış adları ya da ID'leri."
 
 #: src/tracking/text/settings.py:111
 msgctxt "guildset:untracked_text_channels|notset"
