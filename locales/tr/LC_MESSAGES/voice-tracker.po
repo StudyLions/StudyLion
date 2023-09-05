@@ -348,7 +348,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "guildset:hourly_live_bonus|formatted"
 msgid "{coin}**{amount}** bonus per hour when live."
-msgstr ""
+msgstr "Yayın açıldığında saatlik olarak {coin}**{amount}**  bonus verilecek."
 
 #: src/tracking/voice/settings.py:237
 #, possible-python-brace-format
@@ -360,7 +360,7 @@ msgstr ""
 #: src/tracking/voice/settings.py:248
 msgctxt "guildset:daily_voice_cap"
 msgid "daily_voice_cap"
-msgstr ""
+msgstr "günlük_ses_süresi"
 
 #: src/tracking/voice/settings.py:251
 msgctxt "guildset:daily_voice_cap|desc"
