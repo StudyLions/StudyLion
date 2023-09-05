@@ -720,7 +720,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "guildset:task_reward_limit|formatted"
 msgid "`{number}` per 24 hours."
-msgstr ""
+msgstr "Her 24 saatte `{number}`"
 
 #: src/modules/tasklist/settings.py:113
 msgctxt "guildset:tasklist_channels"
