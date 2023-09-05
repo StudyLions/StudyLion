@@ -219,7 +219,7 @@ msgstr ""
 #: src/tracking/voice/settings.py:40
 msgctxt "guildset:untracked_channels"
 msgid "untracked_channels"
-msgstr ""
+msgstr "takip_edilmeyen_kanallar"
 
 #: src/tracking/voice/settings.py:43
 msgctxt "guildset:untracked_channels|desc"
