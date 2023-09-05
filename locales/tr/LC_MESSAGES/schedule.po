@@ -744,7 +744,7 @@ msgstr "Tüm Zamanlar"
 #: src/modules/schedule/ui/scheduleui.py:463
 msgctxt "ui:schedule|embed|field:stats|field:streak"
 msgid "Streak"
-msgstr ""
+msgstr "Seri"
 
 #: src/modules/schedule/ui/scheduleui.py:468
 #, possible-python-brace-format
