@@ -334,7 +334,7 @@ msgstr ""
 #: src/modules/tasklist/cog.py:679
 msgctxt "cmd:tasks_remove|param:created_before|desc"
 msgid "Only delete tasks created before the selected time."
-msgstr ""
+msgstr "Sadece seçilen zamandan önceki görevleri sil."
 
 #: src/modules/tasklist/cog.py:683
 msgctxt "cmd:tasks_remove|param:updated_before|desc"
