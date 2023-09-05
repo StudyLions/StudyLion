@@ -758,12 +758,12 @@ msgstr ""
 #: src/modules/tasklist/settings.py:289
 msgctxt "ui:tasklist_config|button:close|label"
 msgid "Close"
-msgstr ""
+msgstr "Kapat"
 
 #: src/modules/tasklist/settings.py:290
 msgctxt "ui:tasklist_config|button:reset|label"
 msgid "Reset"
-msgstr ""
+msgstr "Sıfırla"
 
 #: src/modules/tasklist/settings.py:293
 msgctxt "ui:tasklist_config|menu:channels|placeholder"
