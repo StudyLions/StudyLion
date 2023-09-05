@@ -662,6 +662,7 @@ msgstr "Sayaç bildirim kanalı adı ya da ID'si."
 msgctxt "guildset:pomodoro_channel|set_response|set"
 msgid "Pomodoro timer notifications will now default to {channel}"
 msgstr ""
+"Pomodoro sayaç bildirimleri varsayılan olarak {channel} kanalına ayarlandı"
 
 #: src/modules/pomodoro/settings.py:56
 msgctxt "guildset:pomodoro_channel|set_response|unset"
