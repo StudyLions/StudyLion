@@ -653,7 +653,7 @@ msgstr "Bu senin görevlisten değil!"
 #, possible-python-brace-format
 msgctxt "ui:tasklist|embed|author"
 msgid "{name}'s tasklist ({completed}/{total} complete)"
-msgstr ""
+msgstr "{name}'in görevlistesi ({completed}/{total} complete)"
 
 #: src/modules/tasklist/ui.py:843
 msgctxt "ui:tasklist|embed|description"
