@@ -124,6 +124,7 @@ msgstr "{time} zamanında zaten ayırtılmış bir oturumun bulunuyor."
 msgctxt "cmd:schedule|create_booking|error:too_soon"
 msgid "Cannot book session at {time} because it is running or starting soon!"
 msgstr ""
+"{time} oturumunu ayırtamıyorum çünkü devam ediyor ya da başlamak üzere!"
 
 #: src/modules/schedule/cog.py:780
 #, possible-python-brace-format
