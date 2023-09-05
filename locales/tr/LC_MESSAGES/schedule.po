@@ -610,7 +610,7 @@ msgstr "Ayarlanmış Oturum Karalistesi ({commands[configure schedule]})"
 #: src/modules/schedule/ui/scheduleui.py:31
 msgctxt "ui:schedule|about"
 msgid "Guide tips here TBD"
-msgstr ""
+msgstr "Kılavuz ipuçları burada belirlenecek"
 
 #: src/modules/schedule/ui/scheduleui.py:116
 msgctxt "ui:schedule|button:clear|error:nothing"
