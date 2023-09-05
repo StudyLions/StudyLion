@@ -590,6 +590,8 @@ msgid ""
 "Multiple tasks matching given parent task `{input}`. Please use a task "
 "number instead!"
 msgstr ""
+"Verilen ana görevle birden fazla görev eşleşiyor `{input}`. Lütfen bunun "
+"yerine görev numarası kullanın!"
 
 #: src/modules/tasklist/ui.py:429
 #, possible-python-brace-format
