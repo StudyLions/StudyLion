@@ -315,7 +315,7 @@ msgstr ""
 #: src/modules/schedule/settings.py:222
 msgctxt "guildset:schedule_cost|accepts"
 msgid "Price of each session booking (non-negative integer)."
-msgstr ""
+msgstr "Her oturum ayırtmanın ücreti (negatif tam sayı olamaz)."
 
 #: src/modules/schedule/settings.py:234
 #, possible-python-brace-format
@@ -728,8 +728,8 @@ msgid ""
 "Too late! You cannot cancel a scheduled session within a minute of it "
 "starting. Please attend it if possible."
 msgstr ""
-"Çok geç! Ayarlanmış bir oturumu başladıktan sonraki bir dakika içinde iptal "
-"edemezsin. Mümkünse katıl lütfen."
+"Çok geç! Zamanlanmış bir oturumu başladıktan sonraki bir dakika içinde iptal"
+" edemezsin. Mümkünse katıl lütfen."
 
 #: src/modules/schedule/ui/scheduleui.py:385
 msgctxt "ui:schedule|menu:cancel|error:already_cancelled"
