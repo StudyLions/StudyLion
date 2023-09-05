@@ -39,7 +39,7 @@ msgstr "Son 24 saat"
 #: src/modules/tasklist/cog.py:38
 msgctxt "argtype:Before|opt:TODAY"
 msgid "Today"
-msgstr "Bugünn"
+msgstr "Bugün"
 
 #: src/modules/tasklist/cog.py:39
 msgctxt "argtype:Before|opt:YESTERDAY"
