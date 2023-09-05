@@ -945,7 +945,7 @@ msgstr ""
 #: src/modules/schedule/core/session.py:492
 msgctxt "session|status:finished|field:attended"
 msgid "Attended"
-msgstr ""
+msgstr "Katıldı"
 
 #: src/modules/schedule/core/session.py:497
 msgctxt "session|status:finished|field:missing"
