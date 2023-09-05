@@ -423,7 +423,7 @@ msgstr "minimum_katılım"
 #: src/modules/schedule/settings.py:346
 msgctxt "guildset:min_attendance|desc"
 msgid "Minimum attendance before reward eligability."
-msgstr ""
+msgstr "Ödül yeterliliği için en az (minimum) katılım."
 
 #: src/modules/schedule/settings.py:350
 msgctxt "guildset:min_attendance|long_desc"
