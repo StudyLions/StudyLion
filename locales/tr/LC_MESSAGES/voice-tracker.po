@@ -329,6 +329,8 @@ msgstr "saatlik_yayın_bonusu"
 msgctxt "guildset:hourly_live_bonus|desc"
 msgid "Bonus Lioncoins given per hour when a member streams or video-chats."
 msgstr ""
+"Saat başına üye yayın yaptığında ya da video-konuşmalarında verilecek bonus "
+"LionCoin."
 
 #: src/tracking/voice/settings.py:205
 msgctxt "guildset:hourly_live_bonus|long_desc"
