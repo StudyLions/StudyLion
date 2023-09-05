@@ -414,7 +414,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:678
 msgctxt "cmd:room_invite|success|ack"
 msgid "Members Invited successfully."
-msgstr ""
+msgstr "Üyeler başarıyla davet edildi."
 
 #: src/modules/rooms/cog.py:686
 msgctxt "cmd:room_kick"
