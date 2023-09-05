@@ -278,6 +278,8 @@ msgid ""
 "Activity in the following sessions will now count towards scheduled session "
 "attendance: {channels}"
 msgstr ""
+"Şu oturumlardaki etkinlikler artık zamanlanmış oturum katılımına dahil "
+"edilecek: {channels}"
 
 #: src/modules/schedule/settings.py:171
 msgctxt "guildset:session_channels|set_response|unset"
@@ -715,6 +717,8 @@ msgid ""
 "You cannot cancel a currently running *scheduled* session! Please attend it "
 "if possible."
 msgstr ""
+"Hali hazırda çalışan *ayarlanmış* oturum iptal edilemiyor! Mümkünse katılın "
+"lütfen."
 
 #: src/modules/schedule/ui/scheduleui.py:368
 msgctxt "ui:schedule|menu:cancel|error:too_late"
