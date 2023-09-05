@@ -54,12 +54,12 @@ msgstr "Bu Pazartesi"
 #: src/modules/tasklist/cog.py:41
 msgctxt "argtype:Before|opt:THISMONTH"
 msgid "This Month"
-msgstr ""
+msgstr "Bu Ay"
 
 #: src/modules/tasklist/cog.py:225
 msgctxt "cmd:tasklist"
 msgid "tasklist"
-msgstr ""
+msgstr "görevlistesi"
 
 #: src/modules/tasklist/cog.py:228
 msgctxt "cmd:tasklist|desc"
