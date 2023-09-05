@@ -372,12 +372,12 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "guildset:attendance_reward|formatted"
 msgid "{coin}**{amount}** upon attendance."
-msgstr ""
+msgstr "Katılım başına {coin}**{amount}**."
 
 #: src/modules/schedule/settings.py:300
 msgctxt "guildset:attendance_bonus"
 msgid "group_attendance_bonus"
-msgstr ""
+msgstr "grup_katılım_bonusu"
 
 #: src/modules/schedule/settings.py:303
 msgctxt "guildset:attendance_bonus|desc"
