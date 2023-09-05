@@ -319,7 +319,7 @@ msgstr ""
 #: src/tracking/voice/settings.py:197
 msgctxt "guildset:hourly_live_bonus"
 msgid "hourly_live_bonus"
-msgstr ""
+msgstr "saatlik_yayın_bonusu"
 
 #: src/tracking/voice/settings.py:200
 msgctxt "guildset:hourly_live_bonus|desc"
