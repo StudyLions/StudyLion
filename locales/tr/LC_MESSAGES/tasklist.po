@@ -773,7 +773,7 @@ msgstr "Görevlistesi Kanallarını Ayarla"
 #: src/modules/tasklist/settings.py:311
 msgctxt "ui:tasklist_config|embed|title"
 msgid "Tasklist Configuration Panel"
-msgstr ""
+msgstr "Görevlistesi Yapılandırma Paneli"
 
 #: src/modules/tasklist/settings.py:320
 msgctxt "dash:tasklist|name"
