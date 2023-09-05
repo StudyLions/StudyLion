@@ -121,7 +121,7 @@ msgstr "Yeni görevinin içeriği."
 #: src/modules/tasklist/cog.py:371
 msgctxt "cmd:tasks_new|param:parent"
 msgid "Parent of this task."
-msgstr ""
+msgstr "Bu görevin anası."
 
 #: src/modules/tasklist/cog.py:391
 #, possible-python-brace-format
