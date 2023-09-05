@@ -679,12 +679,12 @@ msgctxt "guildset:task_reward|long_desc"
 msgid ""
 "The number of coins members will be rewarded each time they complete a task "
 "on their tasklist."
-msgstr ""
+msgstr "Görevlistende her görev tamamlandığında üyelere ödüllendirilen para."
 
 #: src/modules/tasklist/settings.py:44
 msgctxt "guildset:task_reward|accepts"
 msgid "The number of LionCoins to reward per task."
-msgstr ""
+msgstr "Her görev için ödüllendirilen LionCoins sayısı."
 
 #: src/modules/tasklist/settings.py:56
 #, possible-python-brace-format
