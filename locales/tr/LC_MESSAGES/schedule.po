@@ -896,13 +896,13 @@ msgstr ""
 #: src/modules/schedule/core/session.py:385
 msgctxt "session|status:preparing|field:members"
 msgid "Members"
-msgstr ""
+msgstr "Üyeler"
 
 #: src/modules/schedule/core/session.py:392
 #, possible-python-brace-format
 msgctxt "session|status:running|desc:has_members"
 msgid "Finishing {start}"
-msgstr ""
+msgstr "Bitiyor {start}"
 
 #: src/modules/schedule/core/session.py:426
 msgctxt "session|status:running|field:waiting"
