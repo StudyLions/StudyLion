@@ -797,7 +797,7 @@ msgstr ""
 #: src/modules/schedule/ui/sessionui.py:56
 msgctxt "ui:sessionui|button:cancel|label"
 msgid "Cancel"
-msgstr ""
+msgstr "İptal"
 
 #: src/modules/schedule/ui/sessionui.py:60
 msgctxt "ui:sessionui|button:schedule|label"
