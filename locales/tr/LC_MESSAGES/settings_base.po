@@ -162,7 +162,7 @@ msgstr "[tz database]({link})'den herhangi bir zaman dilimi."
 #, possible-python-brace-format
 msgctxt "set_type:timezone|acmpl|no_matching"
 msgid "No timezones matching '{input}'!"
-msgstr ""
+msgstr " '{input}' ile eşleşen bir zaman dilimi yok!"
 
 #: src/settings/setting_types.py:927
 #, possible-python-brace-format
