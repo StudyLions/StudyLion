@@ -214,14 +214,14 @@ msgstr "Kanal ID'lerini virgülle ayırılmış listesi."
 #: src/settings/setting_types.py:1360
 msgctxt "settype:role_list|accepts"
 msgid "Comma separated list of role ids."
-msgstr ""
+msgstr "Rol ID'lerini virgülle ayırılmış listesi."
 
 #: src/settings/setting_types.py:1376
 msgctxt "settype:stringlist|accepts"
 msgid "Comma separated strings."
-msgstr ""
+msgstr "Dizgilerin virgülle ayırılmış listesi."
 
 #: src/settings/setting_types.py:1387
 msgctxt "settype:guildidlist|accepts"
 msgid "Comma separated list of guild ids."
-msgstr ""
+msgstr "Sunucu ID'lerini virgülle ayırılmış listesi."
