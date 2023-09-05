@@ -472,6 +472,8 @@ msgid ""
 "Members will now be rewarded {coin}**{amount}** for each task they complete "
 "up to a maximum of `{limit}` tasks per 24h."
 msgstr ""
+"Üyeler artık 24 saatte maksimum `{limit}` e kadar tamamladıkları her görev "
+"için {coin}**{amount}** ile ödüllendirilecek."
 
 #: src/modules/tasklist/tasklist.py:264
 #, possible-python-brace-format
