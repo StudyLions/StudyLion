@@ -606,7 +606,7 @@ msgstr "Düzenle"
 #: src/modules/tasklist/ui.py:642
 msgctxt "ui:tasklist|button:delete_mode|label"
 msgid "Delete"
-msgstr ""
+msgstr "Sil"
 
 #: src/modules/tasklist/ui.py:658
 msgctxt "ui:tasklist|button:toggle_mode|label"
