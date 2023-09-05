@@ -174,12 +174,12 @@ msgstr "Belirtilen kanallardaki mesajlar dikkate alınmayacak: {channels}"
 #: src/tracking/text/settings.py:133
 msgctxt "guildset:untracked_text_channels|set_response|notset"
 msgid "Message XP will now be tracked in every channel."
-msgstr ""
+msgstr "Mesaj XP'leri tüm kanallarda takip edilecek."
 
 #: src/tracking/text/settings.py:142
 msgctxt "guildset:untracked_text_channels|set_using"
 msgid "Channel selector below"
-msgstr ""
+msgstr "Kanal Seçici Aşağıda"
 
 #: src/tracking/text/settings.py:173
 msgctxt "botset:xp_per_period"
