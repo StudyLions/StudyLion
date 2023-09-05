@@ -127,7 +127,7 @@ msgstr "Bu görevin anası."
 #, possible-python-brace-format
 msgctxt "cmd:tasks_new|error:parse_parent"
 msgid "Could not find parent task number `{input}` in your tasklist."
-msgstr ""
+msgstr "Görevlistende `{input}` ana görev numaran bulunamadı."
 
 #: src/modules/tasklist/cog.py:406
 #, possible-python-brace-format
