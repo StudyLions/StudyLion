@@ -95,6 +95,7 @@ msgstr "{time} oturumunu iptal edemiyorum çünkü ayırtılmış değil!"
 msgctxt "cmd:schedule|cancel_booking|error:too_soon"
 msgid "Cannot cancel {time} booking because it is running or starting soon!"
 msgstr ""
+"{time} oturumunu iptal edemiyorum çünkü devam ediyor ya da başlamak üzere!"
 
 #: src/modules/schedule/cog.py:738
 #, possible-python-brace-format
