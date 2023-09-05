@@ -44,12 +44,12 @@ msgstr "Bugün"
 #: src/modules/tasklist/cog.py:39
 msgctxt "argtype:Before|opt:YESTERDAY"
 msgid "Yesterday"
-msgstr ""
+msgstr "Dün"
 
 #: src/modules/tasklist/cog.py:40
 msgctxt "argtype:Before|opt:Monday"
 msgid "This Monday"
-msgstr ""
+msgstr "Bu Pazartesi"
 
 #: src/modules/tasklist/cog.py:41
 msgctxt "argtype:Before|opt:THISMONTH"
