@@ -200,7 +200,7 @@ msgstr "oturum_odası"
 #: src/modules/schedule/settings.py:95
 msgctxt "guildset:session_room|desc"
 msgid "Special voice channel open to scheduled session members."
-msgstr ""
+msgstr "Zamanlanmış oturum üyeleri için açılacak özel ses kanal"
 
 #: src/modules/schedule/settings.py:99
 msgctxt "guildset:session_room|long_desc"
@@ -733,7 +733,7 @@ msgstr ""
 #: src/modules/schedule/ui/scheduleui.py:438
 msgctxt "ui:schedule|embed|author"
 msgid "Your Scheduled Sessions and Past Statistics"
-msgstr ""
+msgstr "Ayarladığın Oturumlar ve Geçmiş İstatistikler"
 
 #: src/modules/schedule/ui/scheduleui.py:450
 msgctxt "ui:schedule|embed|field:stats|field:recent"
