@@ -583,7 +583,7 @@ msgstr ""
 #: src/modules/schedule/ui/settingui.py:230
 msgctxt "dash:schedule|title"
 msgid "Scheduled Session Configuration ({commands[configure schedule]})"
-msgstr ""
+msgstr "Ayarlanmış Oturum Yapılandırması ({commands[configure schedule]})"
 
 #: src/modules/schedule/ui/settingui.py:234
 msgctxt "dash:schedule|dropdown|placeholder"
