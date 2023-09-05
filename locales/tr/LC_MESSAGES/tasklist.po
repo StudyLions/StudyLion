@@ -626,6 +626,8 @@ msgid ""
 "Your tasklist is too long to be edited in a Discord text input! Use the save"
 " button and {cmds[tasks upload]} instead."
 msgstr ""
+"Görevlisten çok uzun olduğundan Discord metin girişinde düzenlemez! Bunun "
+"yerine {cmds[tasks upload]} ve kaydet butonunu kullan."
 
 #: src/modules/tasklist/ui.py:689
 msgctxt "ui:tasklist|button:edit_bulk|label"
