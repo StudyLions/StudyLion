@@ -162,7 +162,7 @@ msgstr ""
 #: src/tracking/text/settings.py:111
 msgctxt "guildset:untracked_text_channels|notset"
 msgid "Not Set (all text channels will be tracked.)"
-msgstr ""
+msgstr "Ayarlanmadı (tüm metin kanalları takip edilecek.)"
 
 #: src/tracking/text/settings.py:128
 #, possible-python-brace-format
