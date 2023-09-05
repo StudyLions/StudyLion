@@ -557,12 +557,12 @@ msgstr "Düzenlemek için Seç "
 #, possible-python-brace-format
 msgctxt "ui:tasklist|menu:sub|mode:edit|placeholder"
 msgid "Edit from {label}.*"
-msgstr ""
+msgstr "{label} dan düzenle."
 
 #: src/modules/tasklist/ui.py:208
 msgctxt "ui:tasklist|menu:main|mode:delete|placeholder"
 msgid "Select to Delete"
-msgstr ""
+msgstr "Silmek için Seç"
 
 #: src/modules/tasklist/ui.py:212
 #, possible-python-brace-format
