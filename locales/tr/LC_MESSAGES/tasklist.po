@@ -96,7 +96,7 @@ msgstr "'{partial}' ile eşleşen görev yok!"
 #: src/modules/tasklist/cog.py:359
 msgctxt "cmd:tasks_new"
 msgid "new"
-msgstr ""
+msgstr "yeni"
 
 #: src/modules/tasklist/cog.py:362
 msgctxt "cmd:tasks_new|desc"
