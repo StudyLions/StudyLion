@@ -29,27 +29,27 @@ msgstr "mesaj_açıklaması"
 #: src/tracking/text/cog.py:252
 msgctxt "cmd:configure_message_exp|desc"
 msgid "Configure Message Tracking & Experience"
-msgstr ""
+msgstr "Mesaj Takibini & Deneyimini Konfigüre Et"
 
 #: src/tracking/text/cog.py:315
 msgctxt "cmd:leo_configure_exp_rates"
 msgid "experience_rates"
-msgstr ""
+msgstr "deneyim_bedel"
 
 #: src/tracking/text/cog.py:318
 msgctxt "cmd:leo_configure_exp_rates|desc"
 msgid "Global experience rate configuration"
-msgstr ""
+msgstr "Evrensel deneyim bedeli konfigürasyonu"
 
 #: src/tracking/text/ui.py:45
 msgctxt "ui:text_tracker_config|menu:untracked_channels|placeholder"
 msgid "Select Untracked Channels"
-msgstr ""
+msgstr "Takip Edilmeyen Kanalları Seç"
 
 #: src/tracking/text/ui.py:52
 msgctxt "ui:text_tracker_config|embed|title"
 msgid "Message Tracking Configuration Panel"
-msgstr ""
+msgstr "Mesaj Takibi Konfigürasyon Paneli"
 
 #: src/tracking/text/ui.py:89
 msgctxt "dash:text_tracking|title"
