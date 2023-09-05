@@ -209,7 +209,7 @@ msgstr ""
 #: src/tracking/text/settings.py:186
 msgctxt "botset:xp_per_period|accepts"
 msgid "Number of message XP to reward per 5 minute active period."
-msgstr ""
+msgstr "Aktif oldukları 5 dakikalık periyotlar için mesaj XP miktarı."
 
 #: src/tracking/text/settings.py:198
 #, possible-python-brace-format
