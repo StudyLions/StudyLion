@@ -173,7 +173,7 @@ msgstr "{tz} (Şu anda {now})"
 #: src/settings/setting_types.py:957
 msgctxt "settype:timestamp|accepts"
 msgid "A timestamp in the form YYYY-MM-DD HH:MM"
-msgstr ""
+msgstr "YYYY-AA-GG SS:DD cinsinden zaman damgası."
 
 #: src/settings/setting_types.py:986
 #, possible-python-brace-format
