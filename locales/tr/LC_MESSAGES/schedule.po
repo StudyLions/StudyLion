@@ -540,6 +540,10 @@ msgid ""
 "if the `blacklist_role` is not set or if I do not have sufficient "
 "permissions to assign the blacklist role."
 msgstr ""
+"Tek 24 saatlik periyot içinde bu rezerve edilen oturum sayısından daha fazla"
+" oturum kaçıran üyelere otomatik olarak `blacklist_role` verilecektir. Eğer "
+"`blacklist_role` kurulmamışsa veya karaliste rolünü atamak için yeterli "
+"iznim yoksa işe yaramaz."
 
 #: src/modules/schedule/settings.py:481
 msgctxt "guildset:schedule_blacklist_after|accepts"
