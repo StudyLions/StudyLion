@@ -278,7 +278,7 @@ msgstr "Temizle"
 #: src/modules/tasklist/cog.py:641
 msgctxt "cmd:tasks_clear|desc"
 msgid "Clear your tasklist."
-msgstr ""
+msgstr "Görevlisteni temizle."
 
 #: src/modules/tasklist/cog.py:651
 msgctxt "cmd:tasks_clear|resp:success"
