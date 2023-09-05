@@ -229,7 +229,7 @@ msgstr "her_100kelimedeki_xp"
 #: src/tracking/text/settings.py:209
 msgctxt "botset:word_xp|desc"
 msgid "How much global XP members will be given per hundred words they write."
-msgstr ""
+msgstr "Her yüz kelime yazdıklarında üyelere ne kadar evrensel XP verileceği."
 
 #: src/tracking/text/settings.py:213
 msgctxt "botset:word_xp|long_desc"
