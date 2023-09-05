@@ -296,6 +296,8 @@ msgid ""
 "Remove tasks matching all the provided conditions. (E.g. remove tasks "
 "completed before today)."
 msgstr ""
+"Tüm sağlanmış koşullarla eşleşen görevleri kaldırın. (Örn/ Bugünden önce "
+"tamamlanmış görevleri kaldırın.)"
 
 #: src/modules/tasklist/cog.py:666
 msgctxt "cmd:tasks_remove|param:taskidstr"
