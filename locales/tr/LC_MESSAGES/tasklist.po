@@ -206,7 +206,7 @@ msgstr ""
 #: src/modules/tasklist/cog.py:535
 msgctxt "cmd:tasks_edit"
 msgid "edit"
-msgstr ""
+msgstr "düzenle"
 
 #: src/modules/tasklist/cog.py:538
 msgctxt "cmd:tasks_edit|desc"
