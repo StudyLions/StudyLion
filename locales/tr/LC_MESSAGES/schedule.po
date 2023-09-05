@@ -145,7 +145,7 @@ msgstr "Zamanlanmış oturum sistemini konfigüre et"
 #: src/modules/schedule/settings.py:36
 msgctxt "guildset:session_lobby"
 msgid "session_lobby"
-msgstr ""
+msgstr "oturum_lobisi"
 
 #: src/modules/schedule/settings.py:39
 msgctxt "guildset:session_lobby|desc"
