@@ -641,7 +641,7 @@ msgstr "Görevlisteni Temizle"
 #, possible-python-brace-format
 msgctxt "ui:tasklist|button:save|dm:contents"
 msgid "Your tasklist as of {now} is attached. Click here to jump back: {jump}"
-msgstr ""
+msgstr "Görev listen artık {now} eklendi. Geri gitmek için buraya bas: {jump}"
 
 #: src/modules/tasklist/ui.py:734
 msgctxt "ui:tasklist|button:save|error:dms"
