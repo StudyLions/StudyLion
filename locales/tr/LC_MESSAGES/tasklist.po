@@ -395,7 +395,7 @@ msgstr ""
 #: src/modules/tasklist/cog.py:792
 msgctxt "cmd:tasks_tick|param:cascade|desc"
 msgid "Whether to also mark all subtasks as complete."
-msgstr ""
+msgstr "Tüm alt görevlerin tamamlandı olarak işaretlenip işaretlenmeyeceği."
 
 #: src/modules/tasklist/cog.py:836
 #, possible-python-brace-format
@@ -435,7 +435,7 @@ msgstr ""
 #: src/modules/tasklist/cog.py:868
 msgctxt "cmd:tasks_untick|param:cascade|desc"
 msgid "Whether to also mark all subtasks as incomplete."
-msgstr ""
+msgstr "Tüm alt görevlerin tamamlanmadı olarak işaretlenip işaretlenmeyeceği."
 
 #: src/modules/tasklist/cog.py:909
 #, possible-python-brace-format
