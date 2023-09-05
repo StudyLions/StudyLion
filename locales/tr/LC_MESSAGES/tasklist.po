@@ -133,7 +133,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:tasks_new|resp:success"
 msgid "{tick} Created task `{label}`."
-msgstr ""
+msgstr "{tick} Görev oluşturuldu `{label}`."
 
 #: src/modules/tasklist/cog.py:418
 msgctxt "cmd:tasks_upload"
