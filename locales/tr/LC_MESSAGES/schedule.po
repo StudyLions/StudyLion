@@ -817,12 +817,12 @@ msgstr ""
 #: src/modules/schedule/ui/sessionui.py:101
 msgctxt "ui:session|button:book|success"
 msgid "Successfully booked this session."
-msgstr ""
+msgstr "Oturum başarılı bir şekilde rezerve edildi."
 
 #: src/modules/schedule/ui/sessionui.py:115
 msgctxt "ui:session|button:book|error|title"
 msgid "Could not book session"
-msgstr ""
+msgstr "Oturum rezerve edilemedi"
 
 #: src/modules/schedule/ui/sessionui.py:133
 msgctxt "ui:session|button:cancel|error:starting_soon"
