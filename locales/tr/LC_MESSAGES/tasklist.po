@@ -596,12 +596,12 @@ msgstr ""
 #: src/modules/tasklist/ui.py:593
 msgctxt "ui:tasklist_single_editor|title"
 msgid "Add task"
-msgstr ""
+msgstr "Görev ekle"
 
 #: src/modules/tasklist/ui.py:626
 msgctxt "ui:tasklist|button:edit_mode|label"
 msgid "Edit"
-msgstr ""
+msgstr "Düzenle"
 
 #: src/modules/tasklist/ui.py:642
 msgctxt "ui:tasklist|button:delete_mode|label"
