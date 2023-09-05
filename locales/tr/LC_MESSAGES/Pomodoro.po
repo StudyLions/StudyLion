@@ -696,7 +696,9 @@ msgstr ""
 msgctxt "ui:timer_status|button:present|error:not_in_timer"
 msgid ""
 "You are not in this timer! Join the timer channel by pressing {channel}."
-msgstr "Bu sayaçta değilsiniz!"
+msgstr ""
+"Bu sayaçta değilsiniz! {channel} kanalına basarak sayaç kanalına "
+"katılabilirsiniz."
 
 #: src/modules/pomodoro/ui/status.py:82
 msgctxt "ui:timer_status|button:present|label"
