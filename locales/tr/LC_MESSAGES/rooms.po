@@ -121,7 +121,7 @@ msgid ""
 "you already have `{current}` members! The member cap is `{cap}`."
 msgstr ""
 "Çok fazla üye! Odana `{count}` kadar yeni kişi davet ediyorsun, fakat zaten "
-"{current}` kadar üye var! Üye sınırı `{cap}` dır."
+"`{current}` kadar üye var! Üye sınırı `{cap}` dır."
 
 #: src/modules/rooms/roomui.py:330
 msgctxt "ui:room_status|menu:invite_menu|placeholder:capped"
