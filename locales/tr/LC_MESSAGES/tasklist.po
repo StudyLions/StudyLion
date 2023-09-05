@@ -767,7 +767,7 @@ msgstr ""
 #: src/modules/tasklist/settings.py:149
 msgctxt "guildset:tasklist_channels|set_response|unset"
 msgid "Member tasklists will never be publicly displayed."
-msgstr ""
+msgstr "Üye görevlisteleri asla herkese açık görünmeyecek."
 
 #: src/modules/tasklist/settings.py:158
 msgctxt "guildset:tasklist_channels|set_using"
