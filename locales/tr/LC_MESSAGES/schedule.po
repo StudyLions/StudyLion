@@ -215,6 +215,15 @@ msgid ""
 "then the permission overwrites will apply to all *synced* channels under the"
 " category, as usual."
 msgstr ""
+"Ayarlanırsa bu ses kanalı, zamanlanmış oturum üyeleri için özel bir oda "
+"görevi görür. Zamanlanan her oturum sırasında (ve biraz öncesinde), oturumu "
+"rezerve eden tüm üyelere ses kanalına katılma izni verilecektir (izin "
+"üzerine yazma yoluyla). Bu kanalda `MANAGE_CHANNEL`, `MANAGE_PERMISSIONS`, "
+"`CONNECT` ve `VIEW_CHANNEL` izinlerine ihtiyacım var ve en yüksek rolüm, "
+"kanalda ayarlanan tüm izin üzerine yazma işlemlerinden daha yüksek "
+"olmalıdır. Ayrıca, eğer bu bir *kategori'ye* ayarlanırsa, izin üzerine yazma"
+" işlemleri her zamanki gibi kategori altındaki tüm *senkronize* kanallara "
+"uygulanacaktır."
 
 #: src/modules/schedule/settings.py:109
 msgctxt "guildset:session_room|accepts"
@@ -534,12 +543,12 @@ msgstr ""
 #: src/modules/schedule/ui/settingui.py:69
 msgctxt "ui:schedule_config|button:page0|label"
 msgid "Page 1"
-msgstr ""
+msgstr "Sayfa 1"
 
 #: src/modules/schedule/ui/settingui.py:88
 msgctxt "ui:schedule_config|menu:lobby|placeholder"
 msgid "Select Lobby Channel"
-msgstr ""
+msgstr "Lobi Kanalını Seç"
 
 #: src/modules/schedule/ui/settingui.py:105
 msgctxt "ui:schedule_config|menu:room|placeholder"
