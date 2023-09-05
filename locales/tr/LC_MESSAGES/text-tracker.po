@@ -93,6 +93,8 @@ msgid ""
 "For every **5** minutes they are active (i.e. in which they send a message),"
 " members will now be given **{amount}** XP."
 msgstr ""
+"Her **5** dakikalık aktifliklerinde (mesaj gönderdiklerinde) üyelere "
+"**{amount}** XP verilecek."
 
 #: src/tracking/text/settings.py:65
 msgctxt "guildset:word_xp"
