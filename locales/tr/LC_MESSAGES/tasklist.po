@@ -354,6 +354,8 @@ msgstr "Sadece tamamlan(ma)mış görevleri sil."
 msgctxt "cmd:tasks_remove|param:cascade"
 msgid "Whether to recursively remove subtasks of removed tasks."
 msgstr ""
+"Kaldırılan görevlerin alt görevlerinin tekrar tekrar kaldırılıp "
+"kaldırılmayacağı."
 
 #: src/modules/tasklist/cog.py:760
 #, possible-python-brace-format
@@ -643,6 +645,7 @@ msgstr ""
 msgctxt "ui:tasklist|button:save|error:dms"
 msgid "Could not DM you! Do you have me blocked? Tasklist attached below."
 msgstr ""
+"Direkt mesaj atamadım! Beni engelledin mi? Görevlistesi aşağıya eklenmiştir."
 
 #: src/modules/tasklist/ui.py:779
 msgctxt "ui:tasklist|error:wrong_user"
