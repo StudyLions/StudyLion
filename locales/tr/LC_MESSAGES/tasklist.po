@@ -764,7 +764,7 @@ msgstr ""
 #: src/modules/tasklist/settings.py:158
 msgctxt "guildset:tasklist_channels|set_using"
 msgid "Channel selector below."
-msgstr ""
+msgstr "Kanal seçicisi aşağıda."
 
 #: src/modules/tasklist/settings.py:289
 msgctxt "ui:tasklist_config|button:close|label"
