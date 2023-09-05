@@ -850,6 +850,8 @@ msgid ""
 "Insufficient permissions to create a webhook in this channel. I require the "
 "`MANAGE_WEBHOOKS` permission."
 msgstr ""
+"Bu kanalda webhook oluşturmak için yeterli iznim yok. `MANAGE_WEBHOOKS` "
+"iznine ihtiyacım var."
 
 #: src/modules/schedule/core/session.py:274
 #, possible-python-brace-format
