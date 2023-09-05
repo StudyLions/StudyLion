@@ -239,6 +239,7 @@ msgstr ""
 msgctxt "guildset:untracked_channels|accepts"
 msgid "Comma separated list of untracked channel name/ids."
 msgstr ""
+"Takip edilmeyecek kanalların isim/ID'lerinin virgülle ayrılmış listesi."
 
 #: src/tracking/voice/settings.py:56
 msgctxt "guildset:untracked_channels|notset"
