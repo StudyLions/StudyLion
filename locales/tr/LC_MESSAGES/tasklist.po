@@ -768,7 +768,7 @@ msgstr "Sıfırla"
 #: src/modules/tasklist/settings.py:293
 msgctxt "ui:tasklist_config|menu:channels|placeholder"
 msgid "Set Tasklist Channels"
-msgstr ""
+msgstr "Görevlistesi Kanallarını Ayarla"
 
 #: src/modules/tasklist/settings.py:311
 msgctxt "ui:tasklist_config|embed|title"
