@@ -801,18 +801,18 @@ msgstr "Bildirim Kanalını Ayarla"
 #: src/modules/pomodoro/ui/config.py:157
 msgctxt "ui:timer_options|menu:manager_role|placeholder"
 msgid "Set Manager Role"
-msgstr ""
+msgstr "Yönetici Rolünü Ayarla"
 
 #: src/modules/pomodoro/ui/config.py:166
 #, possible-python-brace-format
 msgctxt "ui:timer_options|embed|title"
 msgid "Timer Control Panel for {channel}"
-msgstr ""
+msgstr "{channel} kanalı için sayaç kontrol paneli"
 
 #: src/modules/pomodoro/ui/config.py:173
 msgctxt "ui:timer_options|embed|footer"
 msgid "Hover over the option names to view descriptions."
-msgstr ""
+msgstr "Açıklamaları görüntülemek için seçenek adlarının üzerine gelin."
 
 #: src/modules/pomodoro/ui/config.py:185
 msgctxt "ui:timer_options|embed|field:pattern|name"
