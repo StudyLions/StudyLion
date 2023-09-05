@@ -224,7 +224,7 @@ msgstr "kamera_karaliste"
 #: src/modules/video_channels/settings.py:108
 msgctxt "guildset:video_blacklist|desc"
 msgid "Role given when members are blacklisted from video channels."
-msgstr "Üyeler kanaldan yasaklandıklarında verilecek rol."
+msgstr "Üyeler kanalda kara listeye alındıklarında verilecek rol."
 
 #: src/modules/video_channels/settings.py:112
 msgctxt "guildset:video_blacklist|long_desc"
