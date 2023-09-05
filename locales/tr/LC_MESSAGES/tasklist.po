@@ -74,7 +74,7 @@ msgstr "görevler"
 #: src/modules/tasklist/cog.py:238
 msgctxt "group:tasks|desc"
 msgid "Base command group for tasklist commands."
-msgstr ""
+msgstr "Görevlistesi komutları için temel komut grubu."
 
 #: src/modules/tasklist/cog.py:260
 msgctxt "argtype:taskid|error:no_tasks"
