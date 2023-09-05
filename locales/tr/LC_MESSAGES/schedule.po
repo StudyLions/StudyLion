@@ -523,7 +523,7 @@ msgstr "Ayarlanmadı"
 #: src/modules/schedule/settings.py:467
 msgctxt "guildset:schedule_blacklist_after"
 msgid "schedule_blacklist_after"
-msgstr ""
+msgstr "zamanlanmış_karaliste_sonra"
 
 #: src/modules/schedule/settings.py:470
 msgctxt "guildset:schedule_blacklist_after|desc"
@@ -558,6 +558,8 @@ msgid ""
 "Members will not be automatically blacklisted from booking scheduled "
 "sessions."
 msgstr ""
+"Üyeler zamanlanmış oturumları rezerve ederlerken otomatik olarak kara "
+"listeye alınmayacaklarç"
 
 #: src/modules/schedule/settings.py:511
 #, possible-python-brace-format
