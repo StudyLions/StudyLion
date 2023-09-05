@@ -71,6 +71,9 @@ msgid ""
 "builtin emojis (e.g. `{builtin}`), custom emojis (e.g. {custom}), or custom "
 "emoji ids (e.g. `{custom_id}`)."
 msgstr ""
+"`{provided}`'ı Discord emojisi olarak alamazsın. Yerleşik (ör. `{builtin}`),"
+" özel emojiler (ör. {custom}) ya da özel emoji idleri (ör. `{custom_id}`) "
+"desteklenen formatlardır."
 
 #: src/settings/setting_types.py:236
 msgctxt "settype:channel|accepts"
