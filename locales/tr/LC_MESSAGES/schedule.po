@@ -912,12 +912,12 @@ msgstr ""
 #: src/modules/schedule/core/session.py:432
 msgctxt "session|status:running|field:attending"
 msgid "Attending"
-msgstr ""
+msgstr "Katılınıyor"
 
 #: src/modules/schedule/core/session.py:438
 msgctxt "session|status:running|field:attended"
 msgid "Attended"
-msgstr ""
+msgstr "Katıldı"
 
 #: src/modules/schedule/core/session.py:463
 #, possible-python-brace-format
