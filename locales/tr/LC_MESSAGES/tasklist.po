@@ -778,9 +778,9 @@ msgstr "Görevlistesi Yapılandırma Paneli"
 #: src/modules/tasklist/settings.py:320
 msgctxt "dash:tasklist|name"
 msgid "Tasklist Configuration ({commands[configure tasklist]})"
-msgstr ""
+msgstr "Görevlistesi Yapılandırması ({commands[configure tasklist]})"
 
 #: src/modules/tasklist/settings.py:323
 msgctxt "dash:tasklist|dropdown|placeholder"
 msgid "Tasklist Options Panel"
-msgstr ""
+msgstr "Görevlistesi Ayarlar Paneli"
