@@ -291,12 +291,12 @@ msgstr "Tüm ses kanalları (takip edilen) oturum katılımı olarak sayılacak.
 #: src/modules/schedule/settings.py:181
 msgctxt "guildset:session_channels|formatted|unset"
 msgid "All Channels (excluding `untracked_channels`)"
-msgstr ""
+msgstr "Tüm kanallar (`untracked_channels` haricindekiler)"
 
 #: src/modules/schedule/settings.py:211
 msgctxt "guildset:schedule_cost"
 msgid "schedule_cost"
-msgstr ""
+msgstr "oturum_tutarı"
 
 #: src/modules/schedule/settings.py:214
 msgctxt "guildset:schedule_cost|desc"
