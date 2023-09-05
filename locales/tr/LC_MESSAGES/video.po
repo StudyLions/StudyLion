@@ -313,6 +313,8 @@ msgid ""
 "How long to wait (in seconds) before kicking/blacklist members who don't "
 "enable their video."
 msgstr ""
+"Kamerasını açmayan üye için atmadan/kara listeye almadan önce ne kadar süre "
+"(saniye cinsinden) bekleneceği."
 
 #: src/modules/video_channels/settings.py:228
 msgctxt "guildset:video_grace_period|long_desc"
@@ -354,13 +356,13 @@ msgstr ""
 #: src/modules/video_channels/settings.py:269
 msgctxt "guildset:video_exempt|accepts"
 msgid "List of exempt role names or ids."
-msgstr ""
+msgstr "Muaf rol adlarının veya kimliklerinin listesi."
 
 #: src/modules/video_channels/settings.py:284
 #, possible-python-brace-format
 msgctxt "guildset:video_exempt|set_response:set"
 msgid "The following roles will now be exempt from video channels: {roles}"
-msgstr ""
+msgstr "Şu roller bundan sonra video kanallarından muaf tutulacak: {roles}"
 
 #: src/modules/video_channels/settings.py:289
 msgctxt "guildset:video_exempt|set_response:unset"
