@@ -733,6 +733,8 @@ msgid ""
 "Members will now be rewarded for task completion at most **{amount}** times "
 "per 24h."
 msgstr ""
+"Üyeler artık her 24 saatte en fazla **{amount}** kadar görev tamamlamaları "
+"karşılığında ödüllendirilecek."
 
 #: src/modules/tasklist/settings.py:106
 #, possible-python-brace-format
