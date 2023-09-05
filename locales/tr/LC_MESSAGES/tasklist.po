@@ -451,12 +451,12 @@ msgstr "görevlistesi"
 #: src/modules/tasklist/cog.py:934
 msgctxt "cmd:configure_tasklist|desc"
 msgid "Tasklist configuration panel"
-msgstr ""
+msgstr "Görevlistesi yapılandırma paneli"
 
 #: src/modules/tasklist/cog.py:937
 msgctxt "cmd:configure_tasklist|param:reward"
 msgid "reward"
-msgstr ""
+msgstr "ödül"
 
 #: src/modules/tasklist/cog.py:938
 msgctxt "cmd:configure_tasklist|param:reward_limit"
