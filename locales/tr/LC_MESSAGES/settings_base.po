@@ -145,12 +145,12 @@ msgstr "Herhangi bir Snowflake ID'si"
 #: src/settings/setting_types.py:823
 msgctxt "settype:timezone|accepts"
 msgid "A timezone name from the 'tz database' (e.g. 'Europe/London')"
-msgstr ""
+msgstr "'tz database''den bir zaman dilimi adı  (ör. 'Avrupa/Londra')"
 
 #: src/settings/setting_types.py:893
 msgctxt "settype:timezone|summary_table|field:supported|key"
 msgid "Supported"
-msgstr ""
+msgstr "Desteklenen"
 
 #: src/settings/setting_types.py:897
 #, possible-python-brace-format
