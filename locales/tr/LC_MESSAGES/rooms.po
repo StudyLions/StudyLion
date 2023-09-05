@@ -315,7 +315,11 @@ msgid_plural ""
 "Renting a private room for `{days}` days costs {coin}**{required}**, but you"
 " only have {coin}**{balance}**!"
 msgstr[0] ""
+"`Bir` gün özel oda kiralamak {coin}**{required}** tutuyor ama senin sadece "
+"{coin}**{balance}** paran var!"
 msgstr[1] ""
+"`{days}` gün özel oda kiralamak {coin}**{required}** tutuyor ama senin "
+"sadece {coin}**{balance}** paran var!"
 
 #: src/modules/rooms/cog.py:525
 msgctxt "cmd:room_rent|error:my_permissions"
