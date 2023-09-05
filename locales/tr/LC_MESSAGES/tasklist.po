@@ -672,7 +672,7 @@ msgstr "görev_ödülü"
 #: src/modules/tasklist/settings.py:36
 msgctxt "guildset:task_reward|desc"
 msgid "Number of LionCoins given for each completed task."
-msgstr ""
+msgstr "Her tamamlanmış görev için verilen LionCoins sayısı."
 
 #: src/modules/tasklist/settings.py:40
 msgctxt "guildset:task_reward|long_desc"
