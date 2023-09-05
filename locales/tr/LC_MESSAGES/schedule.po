@@ -418,7 +418,7 @@ msgstr ""
 #: src/modules/schedule/settings.py:343
 msgctxt "guildset:min_attendance"
 msgid "min_attendance"
-msgstr ""
+msgstr "minimum_katılım"
 
 #: src/modules/schedule/settings.py:346
 msgctxt "guildset:min_attendance|desc"
