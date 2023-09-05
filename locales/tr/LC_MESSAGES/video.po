@@ -358,6 +358,9 @@ msgid ""
 " video in the `video_channels`. This also overrides the `video_blacklist` "
 "role."
 msgstr ""
+"Bu rollerden **herhangi birine** sahip olan kullanıcıların `video_channels` "
+"kanallarında kameralarını aktifleştirme zorunluluğu yoktur. Bu aynı zamanda "
+"`video_blacklist` rolünü de geçersiz kılar."
 
 #: src/modules/video_channels/settings.py:269
 msgctxt "guildset:video_exempt|accepts"
