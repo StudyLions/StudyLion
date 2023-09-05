@@ -626,7 +626,7 @@ msgstr ""
 #: src/modules/tasklist/ui.py:689
 msgctxt "ui:tasklist|button:edit_bulk|label"
 msgid "Bulk Edit"
-msgstr ""
+msgstr "Toplu Düzenleme"
 
 #: src/modules/tasklist/ui.py:702
 msgctxt "ui:tasklist|button:clear|label"
