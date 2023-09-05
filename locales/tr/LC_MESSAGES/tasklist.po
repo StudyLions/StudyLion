@@ -692,6 +692,8 @@ msgctxt "guildset:task_reward|response"
 msgid ""
 "Members will now be rewarded {coin}**{amount}** for each completed task."
 msgstr ""
+"Üyeler artık her tamamlanmış görev için {coin}**{amount}** kadar "
+"ödüllendirilecek."
 
 #: src/modules/tasklist/settings.py:65
 #, possible-python-brace-format
