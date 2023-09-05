@@ -347,7 +347,7 @@ msgstr "durum"
 #: src/modules/rooms/cog.py:550
 msgctxt "cmd:room_status|desc"
 msgid "Display the status of your current room."
-msgstr ""
+msgstr "Özel odanın durumunu görüntüle."
 
 #: src/modules/rooms/cog.py:567
 msgctxt "cmd:room_status|error:no_target"
