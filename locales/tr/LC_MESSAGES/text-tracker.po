@@ -169,7 +169,7 @@ msgstr "Ayarlanmadı (tüm metin kanalları takip edilecek.)"
 msgctxt "guildset:untracked_text_channels|set_response|set"
 msgid ""
 "Messages in or under the following channels will be ignored: {channels}"
-msgstr ""
+msgstr "Belirtilen kanallardaki mesajlar dikkate alınmayacak: {channels}"
 
 #: src/tracking/text/settings.py:133
 msgctxt "guildset:untracked_text_channels|set_response|notset"
