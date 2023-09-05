@@ -111,13 +111,13 @@ msgid ""
 "from the autocomplete options."
 msgstr ""
 "`{provided}` zaman dilimi hatırlanamadı. Lütfen iptal etmek için otomatik "
-"tamamlama seçeneklerinden bir oturum seçin."
+"tamamlama seçeneklerinden bir oturum seç."
 
 #: src/modules/schedule/cog.py:759
 #, possible-python-brace-format
 msgctxt "cmd:schedule|create_booking|error:already_booked"
 msgid "You have already booked a scheduled session for {time}."
-msgstr ""
+msgstr "{time} zamanında zaten ayırtılmış bir oturumun bulunuyor."
 
 #: src/modules/schedule/cog.py:768
 #, possible-python-brace-format
