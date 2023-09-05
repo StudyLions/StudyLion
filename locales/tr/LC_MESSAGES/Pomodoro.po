@@ -868,11 +868,13 @@ msgctxt "ui:timer_options|issue:cannot_change_name"
 msgid ""
 "I cannot update the name of {channel}! (Needs `MANAGE_CHANNELS` permission)"
 msgstr ""
+"{channel} kanalının adını düzenleyemiyorum! (`MANAGE_CHANNELS` iznine "
+"ihtiyacım var!)"
 
 #: src/modules/pomodoro/ui/config.py:260
 msgctxt "ui:timer_options|issue:notif_channel_dne"
 msgid "Configured notification channel does not exist!"
-msgstr ""
+msgstr "Ayarlanmış bildirim kanalı bulunamıyor!"
 
 #: src/modules/pomodoro/ui/config.py:269
 #, possible-python-brace-format
