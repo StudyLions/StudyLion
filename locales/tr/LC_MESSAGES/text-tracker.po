@@ -59,12 +59,12 @@ msgstr "Mesaj XP Konfigürasyonu ({commands[configure message_exp]})"
 #: src/tracking/text/ui.py:93
 msgctxt "dash:text_tracking|dropdown|placeholder"
 msgid "Message XP Panel"
-msgstr ""
+msgstr "Mesaj XP Paneli"
 
 #: src/tracking/text/settings.py:33
 msgctxt "guildset:xp_per_period"
 msgid "xp_per_5min"
-msgstr ""
+msgstr "her_5dk_xp"
 
 #: src/tracking/text/settings.py:36
 msgctxt "guildset:xp_per_period|desc"
