@@ -485,7 +485,7 @@ msgstr "Ana görevler aralık içinde eşleşmiyor `{range}`"
 #, possible-python-brace-format
 msgctxt "tasklist|parse:multi-range|error:parse"
 msgid "Could not parse `{range}` as a task number or range."
-msgstr ""
+msgstr "`{range}` görev numarası veya aralık olarak ayrıştırılamadı."
 
 #: src/modules/tasklist/tasklist.py:317
 #, possible-python-brace-format
