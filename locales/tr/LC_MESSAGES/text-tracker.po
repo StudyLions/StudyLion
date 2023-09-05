@@ -115,6 +115,8 @@ msgid ""
 "Amount of message XP to be given (additionally to the XP per period) for "
 "each hundred words. Useful for rewarding communication."
 msgstr ""
+"Her yüz kelime için verilecek mesaj XP miktarı (periyot başına verilen XP'ye"
+" ek olarak). İletişimleri ödüllendirmek için kullanışlıdır."
 
 #: src/tracking/text/settings.py:77
 msgctxt "guildset:word_xp|accepts"
