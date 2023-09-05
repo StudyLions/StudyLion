@@ -80,6 +80,9 @@ msgid ""
 "are active (send a message). Note that this XP is only given *once* per "
 "period."
 msgstr ""
+"Üyelere aktif oldukları her 5 dakikalık süre için verilecek mesaj XP miktarı"
+" (mesaj gönderilmeli). Bu XP'nin her bir periyotta yalnızca *bir kez* "
+"verildiğini unutmayın."
 
 #: src/tracking/text/settings.py:45
 msgctxt "guildset:xp_per_period|accepts"
