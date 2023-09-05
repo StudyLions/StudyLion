@@ -100,7 +100,7 @@ msgstr "Rol `{string}` bu sunucuda bulunamadı!"
 #: src/settings/setting_types.py:492
 msgctxt "settype:bool|accepts"
 msgid "Enabled/Disabled"
-msgstr ""
+msgstr "Aktifleştirildi/Devre dışı bırakıldı"
 
 #: src/settings/setting_types.py:497
 msgctxt "settype:bool|parse:truthy_values"
