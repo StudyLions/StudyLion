@@ -394,12 +394,12 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:room_invite|error:member_not_found"
 msgid "Could not find the invited member {mention} in this server!"
-msgstr ""
+msgstr "Davet edilen {mention} üyeyi bu sunucuda bulamadım!"
 
 #: src/modules/rooms/cog.py:640
 msgctxt "cmd:room_invite|error:no_new_members"
 msgid "All members mentioned are already in the room!"
-msgstr ""
+msgstr "Bahsedilen tüm üyeler zaten kanalda!"
 
 #: src/modules/rooms/cog.py:654
 #, possible-python-brace-format
