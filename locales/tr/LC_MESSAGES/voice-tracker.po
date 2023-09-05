@@ -249,13 +249,13 @@ msgstr "Ayarlanmadı (tüm ses kanalları takip edilecek.)"
 #: src/tracking/voice/settings.py:73
 msgctxt "guildset:untracked_channels|set"
 msgid "Channel selector below."
-msgstr ""
+msgstr "Kanal seçici aşağıda."
 
 #: src/tracking/voice/settings.py:82
 #, possible-python-brace-format
 msgctxt "guildset:untracked_channels|set_response|set"
 msgid "Activity in the following channels will now be ignored: {channels}"
-msgstr ""
+msgstr "Bu kanallardaki aktiviteler dikkate alınmayacak: {channels}"
 
 #: src/tracking/voice/settings.py:89
 msgctxt "guildset:untracked_channels|set_response|unset"
