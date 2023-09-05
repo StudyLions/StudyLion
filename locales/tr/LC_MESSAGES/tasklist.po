@@ -144,6 +144,7 @@ msgstr "yükle"
 msgctxt "cmd:tasks_upload|desc"
 msgid "Upload a list of tasks to append to or replace your tasklist."
 msgstr ""
+"Görev listenize eklenecek veya değiştirilecek bir görev listesi yükle."
 
 #: src/modules/tasklist/cog.py:425
 msgctxt "cmd:tasks_upload|param:tasklist"
