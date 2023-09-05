@@ -170,7 +170,7 @@ msgstr "Oturum Lobi kanalının ismi ya da ID'si."
 #, possible-python-brace-format
 msgctxt "guildset:session_lobby|set_response|set"
 msgid "Scheduled sessions will now be announced in {channel}"
-msgstr ""
+msgstr "Zamanlanmış oturumlar bundan sonra {channel} kanalında duyurulacak."
 
 #: src/modules/schedule/settings.py:68
 msgctxt "guildset:session_lobby|set_response|unset"
