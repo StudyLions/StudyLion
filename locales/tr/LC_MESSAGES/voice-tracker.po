@@ -309,6 +309,8 @@ msgstr "Çalışma saati başına verilecek LionCoin."
 msgctxt "guildset:hourly_reward|mode:study|long_desc"
 msgid "Number of LionCoins given per hour of study, up to the daily hour cap."
 msgstr ""
+"Her çalışma saati başına verilecek LionCoin miktarı, en fazla günlük çalışma"
+" süresi kadar alınabilir."
 
 #: src/tracking/voice/settings.py:183
 #, possible-python-brace-format
