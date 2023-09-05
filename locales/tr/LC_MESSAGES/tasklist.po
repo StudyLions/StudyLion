@@ -241,7 +241,7 @@ msgstr "Görevi neye değiştirmek istiyorsun?"
 #: src/modules/tasklist/cog.py:549
 msgctxt "cmd:tasks_edit|param:new_parent|desc"
 msgid "Which task do you want to be the new parent?"
-msgstr ""
+msgstr "Hangi görev yeni ana görev olsun istiyorsun?"
 
 #: src/modules/tasklist/cog.py:568
 #, possible-python-brace-format
