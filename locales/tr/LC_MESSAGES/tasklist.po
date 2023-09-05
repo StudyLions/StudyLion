@@ -689,7 +689,7 @@ msgstr ""
 #: src/modules/tasklist/settings.py:73
 msgctxt "guildset:task_reward_limit"
 msgid "task_reward_limit"
-msgstr ""
+msgstr "görev_ödül_limiti"
 
 #: src/modules/tasklist/settings.py:76
 msgctxt "guildset:task_reward_limit|desc"
