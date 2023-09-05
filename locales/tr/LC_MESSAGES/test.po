@@ -67,7 +67,7 @@ msgstr "sayfacı2"
 
 #: src/modules/test/test.py:189
 msgid "prettyusers"
-msgstr ""
+msgstr "tatlıüyeler"
 
 #: src/modules/test/test.py:239
 msgid "dmview"
