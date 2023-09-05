@@ -187,6 +187,8 @@ msgctxt "cmd:tasks_upload|error:too_many_lines"
 msgid ""
 "Too many tasks! Refusing to process a tasklist with more than `1000` lines."
 msgstr ""
+"Çok fazla görev! '1000'den fazla satırı olan görev listesinin işlenmesi "
+"reddediliyor."
 
 #: src/modules/tasklist/cog.py:476
 msgctxt "cmd:tasks_upload|error:decoding"
