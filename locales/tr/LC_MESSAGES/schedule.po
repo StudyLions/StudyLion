@@ -463,6 +463,7 @@ msgid ""
 "Minimum attendance must be an integer number of minutes between `1` and "
 "`60`."
 msgstr ""
+"Minimum katılımın tam sayı olması ve `1` ile `60` arasında olması gerekiyor."
 
 #: src/modules/schedule/settings.py:410
 msgctxt "guildset:schedule_blacklist_role"
