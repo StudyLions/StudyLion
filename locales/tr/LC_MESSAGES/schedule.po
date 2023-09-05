@@ -885,7 +885,7 @@ msgstr ""
 #: src/modules/schedule/core/session.py:376
 msgctxt "session|status|desc:no_members"
 msgid "*No members scheduled this session.*"
-msgstr ""
+msgstr "*Hiçbir üye bu oturumu planlamadı.*"
 
 #: src/modules/schedule/core/session.py:382
 #, possible-python-brace-format
