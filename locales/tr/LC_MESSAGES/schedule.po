@@ -496,7 +496,7 @@ msgstr ""
 #: src/modules/schedule/settings.py:425
 msgctxt "guildset:schedule_blacklist_role|accepts"
 msgid "Blacklist role name or id."
-msgstr "Kara liste rolü ya da ID'Sİ."
+msgstr "Kara liste rolü ya da ID'si."
 
 #: src/modules/schedule/settings.py:438
 #, possible-python-brace-format
