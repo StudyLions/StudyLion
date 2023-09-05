@@ -498,7 +498,7 @@ msgstr ""
 #: src/modules/tasklist/tasklist.py:329
 msgctxt "modal:tasklist_bulk_editor|error:task_too_long"
 msgid "Please keep your tasks under 100 characters!"
-msgstr ""
+msgstr "Lütfen görevlerinizi 100 karakterden az karakterle yazın."
 
 #: src/modules/tasklist/ui.py:39
 msgctxt "ui:tasklist_caller|button:tasklist|label"
