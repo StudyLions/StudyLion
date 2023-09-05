@@ -189,7 +189,7 @@ msgstr "ses_ödülleri"
 #: src/tracking/voice/cog.py:840
 msgctxt "cmd:configure_voice_rates|desc"
 msgid "Configure Voice tracking rewards and experience"
-msgstr ""
+msgstr "Ses takibinin ödüllerini ve deneyimlerini konfigüre edin"
 
 #: src/tracking/voice/cog.py:897
 #, possible-python-brace-format
