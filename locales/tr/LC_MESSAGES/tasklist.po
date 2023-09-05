@@ -91,7 +91,7 @@ msgstr "(Uyarı: {error})"
 #, possible-python-brace-format
 msgctxt "argtype:taskid|error:no_matching"
 msgid "No tasks matching '{partial}'!"
-msgstr ""
+msgstr "'{partial}' ile eşleşen görev yok!"
 
 #: src/modules/tasklist/cog.py:359
 msgctxt "cmd:tasks_new"
