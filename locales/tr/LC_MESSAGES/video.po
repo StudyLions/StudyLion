@@ -266,12 +266,12 @@ msgstr "Ayarlanmadı. (Üyeler otomatik olarak kara listeye alınmayacaklar.)"
 #: src/modules/video_channels/settings.py:162
 msgctxt "guildset:video_durations"
 msgid "video_blacklist_durations"
-msgstr "video_yasaklanma_süreleri"
+msgstr "video_karaliste_süreleri"
 
 #: src/modules/video_channels/settings.py:165
 msgctxt "guildset:video_durations|desc"
 msgid "Sequence of durations for automatic video blacklists."
-msgstr "Otomatik video yasaklamaları süresi."
+msgstr "Otomatik video kara liste süresi."
 
 #: src/modules/video_channels/settings.py:169
 msgctxt "guildset:video_durations|long_desc"
