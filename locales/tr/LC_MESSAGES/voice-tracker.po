@@ -382,7 +382,7 @@ msgstr ""
 #: src/tracking/voice/settings.py:261
 msgctxt "guildset:daily_voice_cap|accepts"
 msgid "The maximum number of voice hours to track per day."
-msgstr ""
+msgstr "Günlük sayılacak maksimum ses saati."
 
 #: src/tracking/voice/settings.py:277
 #, possible-python-brace-format
