@@ -265,7 +265,7 @@ msgstr "Ayarlanmadı. (Üyeler otomatik olarak yasaklanmayacaklar.)"
 #: src/modules/video_channels/settings.py:162
 msgctxt "guildset:video_durations"
 msgid "video_blacklist_durations"
-msgstr ""
+msgstr "video_yasaklanma_süreleri"
 
 #: src/modules/video_channels/settings.py:165
 msgctxt "guildset:video_durations|desc"
