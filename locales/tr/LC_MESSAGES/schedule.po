@@ -781,13 +781,13 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "ui:schedule|booking_format:short"
 msgid "`{until}` | {start} - {end}"
-msgstr ""
+msgstr "`{until}` | {start} - {end}"
 
 #: src/modules/schedule/ui/scheduleui.py:538
 #, possible-python-brace-format
 msgctxt "ui:schedule|booking_format:long"
 msgid "> `{until}` | {start} - {end}"
-msgstr ""
+msgstr "> `{until}` | {start} - {end}"
 
 #: src/modules/schedule/ui/sessionui.py:52
 msgctxt "ui:sessionui|button:book|label"
