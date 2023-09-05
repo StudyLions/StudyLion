@@ -4,8 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Eyüp Ramazan, 2023
 # Serhat Acar, 2023
+# Eyüp Ramazan, 2023
 # 
 #, fuzzy
 msgid ""
@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-28 22:43+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Serhat Acar, 2023\n"
+"Last-Translator: Eyüp Ramazan, 2023\n"
 "Language-Team: Turkish (https://app.transifex.com/leobot/teams/174919/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -158,6 +158,8 @@ msgid ""
 "Channel in which to announce scheduled sessions and post their status. I must have the `MANAGE_WEBHOOKS` permission in this channel.\n"
 "**This must be configured in order for the scheduled session system to function.**"
 msgstr ""
+"Zamanlanmış oturum duyurularını ve durumlarını göndereceğim kanal. Bu kanada `MANAGE_WEBHOOKS` yetkimin olması gerekiyor.\n"
+"**Zamanlanmış oturum sisteminin çalışabilmesi için bu sistemin ayarlanmış olması gerekiyor.**"
 
 #: src/modules/schedule/settings.py:49
 msgctxt "guildset:session_lobby|accepts"
