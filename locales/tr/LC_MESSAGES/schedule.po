@@ -164,7 +164,7 @@ msgstr ""
 #: src/modules/schedule/settings.py:49
 msgctxt "guildset:session_lobby|accepts"
 msgid "Name or id of the session lobby channel."
-msgstr ""
+msgstr "Oturum Lobi kanalının ismi ya da ID'si."
 
 #: src/modules/schedule/settings.py:63
 #, possible-python-brace-format
