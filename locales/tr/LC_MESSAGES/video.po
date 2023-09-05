@@ -294,11 +294,13 @@ msgstr "Virgülle ayırılmış süre listesi."
 msgctxt "guildset:video_durations|set_response:set"
 msgid "Members will be automatically blacklisted for: {durations}"
 msgstr ""
+"Üyeler otomatik olarak yandaki süreler boyunca kara listeye alınacaklar: "
+"{durations}"
 
 #: src/modules/video_channels/settings.py:213
 msgctxt "guildset:video_durations|set_response:unset"
 msgid "Video blacklists are now always permanent."
-msgstr ""
+msgstr "Video kara listesi bundan sonra sürekli kalıcı olacaktır."
 
 #: src/modules/video_channels/settings.py:221
 msgctxt "guildset:video_grace_period"
