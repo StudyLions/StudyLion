@@ -461,7 +461,7 @@ msgstr "ödül"
 #: src/modules/tasklist/cog.py:938
 msgctxt "cmd:configure_tasklist|param:reward_limit"
 msgid "reward_limit"
-msgstr ""
+msgstr "ödül_limiti"
 
 #: src/modules/tasklist/cog.py:974
 #, possible-python-brace-format
