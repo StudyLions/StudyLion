@@ -288,7 +288,11 @@ msgid_plural ""
 "Are you sure you want to spend {coin}**{required}** to rent a private room "
 "for `{days}` days?"
 msgstr[0] ""
+"`Bir` gün özel oda kiralamak için {coin}**{required}** harcamak istediğine "
+"emin misin?"
 msgstr[1] ""
+"`{days}` gün özel oda kiralamak için {coin}**{required}** harcamak "
+"istediğine emin misin?"
 
 #: src/modules/rooms/cog.py:452
 #, possible-python-brace-format
