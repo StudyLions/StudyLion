@@ -251,7 +251,7 @@ msgstr "oturum_kanalları"
 #: src/modules/schedule/settings.py:138
 msgctxt "guildset:session_channels|desc"
 msgid "Voice channels in which to track activity for scheduled sessions."
-msgstr ""
+msgstr "Zamanlanmış oturumların takibinin yapılacağı ses kanalları."
 
 #: src/modules/schedule/settings.py:142
 msgctxt "guildset:session_channels|long_desc"
@@ -605,7 +605,7 @@ msgstr "Ayarlanmış Oturum Ödülleri ({commands[configure schedule]})"
 #: src/modules/schedule/ui/settingui.py:271
 msgctxt "dash:schedule|section:schedule_blacklist|name"
 msgid "Scheduled Session Blacklist ({commands[configure schedule]})"
-msgstr ""
+msgstr "Ayarlanmış Oturum Karalistesi ({commands[configure schedule]})"
 
 #: src/modules/schedule/ui/scheduleui.py:31
 msgctxt "ui:schedule|about"
