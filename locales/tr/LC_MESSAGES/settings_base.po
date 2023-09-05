@@ -135,12 +135,12 @@ msgstr "Tam sayı"
 #: src/settings/setting_types.py:682
 msgctxt "settype:emoji|desc"
 msgid "Unicode or custom emoji"
-msgstr ""
+msgstr "Unicode ya da özel emoji"
 
 #: src/settings/setting_types.py:754
 msgctxt "settype:guildid|accepts"
 msgid "Any Snowflake ID"
-msgstr ""
+msgstr "Herhangi bir Snowflake ID'si"
 
 #: src/settings/setting_types.py:823
 msgctxt "settype:timezone|accepts"
