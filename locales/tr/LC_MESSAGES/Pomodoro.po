@@ -852,7 +852,7 @@ msgstr "Sorunlar"
 #: src/modules/pomodoro/ui/config.py:231
 msgctxt "ui:timer_options|issue:no_voice_channel"
 msgid "The configured voice channel does not exist! Please update it below."
-msgstr ""
+msgstr "Ayarlanmış ses kanalı bulunamıyor! Lütfen yukarıdan güncelle."
 
 #: src/modules/pomodoro/ui/config.py:242
 #, possible-python-brace-format
