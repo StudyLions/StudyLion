@@ -358,6 +358,8 @@ msgid ""
 "Could not identify target private room! Please re-run the command in the "
 "private room you wish to view the status of."
 msgstr ""
+"Hedef özel odayı bulamadım! Lütfen durumunu görüntülemek istediğin özel "
+"odanda komutu tekrardan kullan."
 
 #: src/modules/rooms/cog.py:582
 msgctxt "cmd:room_invite"
