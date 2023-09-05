@@ -85,7 +85,7 @@ msgstr "Görevlistesi boş! Eşleşen görev yok."
 #, possible-python-brace-format
 msgctxt "argtype:taskid|error:parse_multi"
 msgid "(Warning: {error})"
-msgstr ""
+msgstr "(Uyarı: {error})"
 
 #: src/modules/tasklist/cog.py:339
 #, possible-python-brace-format
