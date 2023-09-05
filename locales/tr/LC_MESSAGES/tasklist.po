@@ -251,7 +251,7 @@ msgstr "Hangi görev yeni ana görev olsun istiyorsun?"
 #, possible-python-brace-format
 msgctxt "cmd:tasks_edit|error:parse_taskstr"
 msgid "Could not find target task number `{input}` in your tasklist."
-msgstr ""
+msgstr "Görevlistende `{input}` numaralı görev bulunamadı."
 
 #: src/modules/tasklist/cog.py:584
 #, possible-python-brace-format
