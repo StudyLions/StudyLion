@@ -303,7 +303,7 @@ msgstr ""
 #: src/tracking/voice/settings.py:171
 msgctxt "guildset:hourly_reward|mode:study|desc"
 msgid "LionCoins given per hour of study."
-msgstr ""
+msgstr "Çalışma saati başına verilecek LionCoin."
 
 #: src/tracking/voice/settings.py:175
 msgctxt "guildset:hourly_reward|mode:study|long_desc"
