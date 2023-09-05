@@ -611,7 +611,7 @@ msgstr "Sil"
 #: src/modules/tasklist/ui.py:658
 msgctxt "ui:tasklist|button:toggle_mode|label"
 msgid "Toggle"
-msgstr ""
+msgstr "Geçiş"
 
 #: src/modules/tasklist/ui.py:675
 msgctxt "ui:tasklist|button:edit_bulk|error:too_long"
