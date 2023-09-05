@@ -236,7 +236,7 @@ msgstr "Hangi görevi güncellemek istiyorsun?"
 #: src/modules/tasklist/cog.py:548
 msgctxt "cmd:tasks_edit|param:new_content|desc"
 msgid "What do you want to change the task to?"
-msgstr ""
+msgstr "Görevi neye değiştirmek istiyorsun?"
 
 #: src/modules/tasklist/cog.py:549
 msgctxt "cmd:tasks_edit|param:new_parent|desc"
