@@ -757,7 +757,7 @@ msgstr[1] ""
 #: src/modules/schedule/ui/scheduleui.py:475
 msgctxt "ui:schedule|embed|field:stats|field:streak|value:positive"
 msgid "No streak yet!"
-msgstr ""
+msgstr "Henüz bir seri yok!"
 
 #: src/modules/schedule/ui/scheduleui.py:483
 msgctxt "ui:schedule|embed|field:stats|name"
