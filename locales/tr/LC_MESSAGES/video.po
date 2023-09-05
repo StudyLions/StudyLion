@@ -338,7 +338,7 @@ msgstr ""
 #: src/modules/video_channels/settings.py:256
 msgctxt "guildset:video_exempt"
 msgid "video_exempt"
-msgstr ""
+msgstr "video_muaf"
 
 #: src/modules/video_channels/settings.py:259
 msgctxt "guildset:video_exempt|desc"
@@ -367,4 +367,4 @@ msgstr "Şu roller bundan sonra video kanallarından muaf tutulacak: {roles}"
 #: src/modules/video_channels/settings.py:289
 msgctxt "guildset:video_exempt|set_response:unset"
 msgid "No members will be exempt from video channel requirements."
-msgstr ""
+msgstr "Hiçbir rol video kanal gerekliliklerinden muaf tutulmayacak."
