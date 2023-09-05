@@ -4,8 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Eyüp Ramazan, 2023
 # Serhat Acar, 2023
+# Eyüp Ramazan, 2023
 # 
 #, fuzzy
 msgid ""
@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-28 22:43+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Serhat Acar, 2023\n"
+"Last-Translator: Eyüp Ramazan, 2023\n"
 "Language-Team: Turkish (https://app.transifex.com/leobot/teams/174919/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -81,6 +81,8 @@ msgid ""
 "Time slot `{provided}` not recognised. Please select a session to cancel "
 "from the autocomplete options."
 msgstr ""
+"`{provided}` zaman dilimi hatırlanamadı. Lütfen iptal etmek için otomatik "
+"tamamlama seçeneklerinden bir oturum seçin."
 
 #: src/modules/schedule/cog.py:716
 #, possible-python-brace-format
