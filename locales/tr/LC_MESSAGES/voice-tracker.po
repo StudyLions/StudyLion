@@ -317,6 +317,8 @@ msgstr ""
 msgctxt "guildset:hourly_reward|mode:study|response"
 msgid "Members will be given {coin}**{amount}** per hour that they study!"
 msgstr ""
+"Üyeler çalıştıkları her saat için {coin}**{amount}** ile "
+"ödüllendirilecekler!"
 
 #: src/tracking/voice/settings.py:197
 msgctxt "guildset:hourly_live_bonus"
