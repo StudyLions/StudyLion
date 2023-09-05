@@ -287,7 +287,7 @@ msgstr ""
 #: src/modules/video_channels/settings.py:181
 msgctxt "guildset:video_durations|accepts"
 msgid "Comma separated list of durations."
-msgstr ""
+msgstr "Virgülle ayırılmış süre listesi."
 
 #: src/modules/video_channels/settings.py:208
 #, possible-python-brace-format
