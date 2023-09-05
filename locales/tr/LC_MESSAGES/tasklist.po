@@ -519,7 +519,7 @@ msgstr "Görev numarasını gir, örn/ 2.1"
 #: src/modules/tasklist/ui.py:104
 msgctxt "modal:tasklist_bulk_editor|field:tasklist|label"
 msgid "Tasklist"
-msgstr ""
+msgstr "Görevlistesi"
 
 #: src/modules/tasklist/ui.py:108
 msgctxt "modal:tasklist_bulk_editor|field:tasklist|placeholder"
