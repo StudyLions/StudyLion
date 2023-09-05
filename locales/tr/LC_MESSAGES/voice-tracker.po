@@ -211,6 +211,10 @@ msgid ""
 "server, with a bonus of {coin}**{bonus}** if they stream of display video, "
 "up to a total of **{cap}** hours per server day."
 msgstr ""
+"Üyeler artık bu sunucuda çalıştıkları saat başına {coin}**{base}** ile "
+"ödüllendirilecek ve görüntülü video yayını yapmaları durumunda toplam "
+"{coin}**{bonus}** bonus verilecek. Toplamda sunucuda gün başına **{cap}** "
+"saat."
 
 #: src/tracking/voice/settings.py:40
 msgctxt "guildset:untracked_channels"
