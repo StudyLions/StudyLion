@@ -110,7 +110,7 @@ msgstr "etkin|evet|doğru|açık|etkin|1"
 #: src/settings/setting_types.py:501
 msgctxt "settype:bool|parse:falsey_values"
 msgid "disabled|no|false|off|disable|0"
-msgstr ""
+msgstr "devre dışı|hayır|yanlış|kapalı|devre dışı|0"
 
 #: src/settings/setting_types.py:506
 msgctxt "settype:bool|output:true"
