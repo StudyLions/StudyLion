@@ -715,6 +715,7 @@ msgstr ""
 msgctxt "guildset:task_reward_limit|accepts"
 msgid "The maximum number of tasks to reward LC for per 24h."
 msgstr ""
+"Her 24 saatte bir LC ödüllendirmesi için gereken maksimum görev sayısı."
 
 #: src/modules/tasklist/settings.py:97
 #, possible-python-brace-format
