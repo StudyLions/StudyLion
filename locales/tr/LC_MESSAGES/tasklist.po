@@ -342,6 +342,8 @@ msgid ""
 "Only deleted tasks update (i.e. completed or edited) before the selected "
 "time."
 msgstr ""
+"Sadece seçilen zamandan önceki görevleri güncelle(Örn/ tamamlanmış veya "
+"düzenlenmiş)."
 
 #: src/modules/tasklist/cog.py:687
 msgctxt "cmd:tasks_remove|param:completed"
