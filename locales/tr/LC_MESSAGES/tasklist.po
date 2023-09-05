@@ -348,7 +348,7 @@ msgstr ""
 #: src/modules/tasklist/cog.py:687
 msgctxt "cmd:tasks_remove|param:completed"
 msgid "Only delete tasks which are (not) complete."
-msgstr ""
+msgstr "Sadece tamamlan(ma)mış görevleri sil."
 
 #: src/modules/tasklist/cog.py:691
 msgctxt "cmd:tasks_remove|param:cascade"
