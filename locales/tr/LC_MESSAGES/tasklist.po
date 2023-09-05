@@ -171,6 +171,8 @@ msgid ""
 "Whether to append the given tasks or replace your entire tasklist. Defaults "
 "to True."
 msgstr ""
+"Verilen görevlerin iliştirilmesi veya tüm görevlistesinin değiştirilmesi. "
+"Varsayılan Doğru."
 
 #: src/modules/tasklist/cog.py:451
 msgctxt "cmd:tasks_upload|error:not_text"
