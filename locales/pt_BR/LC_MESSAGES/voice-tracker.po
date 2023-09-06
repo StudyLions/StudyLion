@@ -257,7 +257,7 @@ msgstr "A atividade nos seguintes canais, serão agora ignoradas: {channels}"
 #: src/tracking/voice/settings.py:89
 msgctxt "guildset:untracked_channels|set_response|unset"
 msgid "All voice channels will now be tracked."
-msgstr ""
+msgstr "Todos os canais de voz, agora, serão considerados!"
 
 #: src/tracking/voice/settings.py:117
 msgctxt "guildset:hourly_reward"
