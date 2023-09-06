@@ -40,12 +40,12 @@ msgstr "etiqueta"
 #: src/tracking/voice/cog.py:648
 msgctxt "cmd:now|param:user"
 msgid "user"
-msgstr ""
+msgstr "usuário"
 
 #: src/tracking/voice/cog.py:649
 msgctxt "cmd:now|param:clear"
 msgid "clear"
-msgstr ""
+msgstr "limpar"
 
 #: src/tracking/voice/cog.py:654
 msgctxt "cmd:now|param:tag|desc"
