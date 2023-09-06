@@ -91,7 +91,7 @@ msgstr "A etiqueta de sessão foi retirada com sucesso! "
 #: src/tracking/voice/cog.py:726
 msgctxt "cmd:now|target:other|mode:clear|error:perms|title"
 msgid "You can't do that!"
-msgstr ""
+msgstr "Você não pode fazer isto! "
 
 #: src/tracking/voice/cog.py:730
 msgctxt "cmd:now|target:other|mode:clear|error:perms|desc"
