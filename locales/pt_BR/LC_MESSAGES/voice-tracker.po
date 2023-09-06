@@ -221,7 +221,7 @@ msgstr "canais_irrastreáveis"
 #: src/tracking/voice/settings.py:43
 msgctxt "guildset:untracked_channels|desc"
 msgid "Channels which will be ignored for statistics tracking."
-msgstr ""
+msgstr "Canais que serão desconsiderados das estatísticas."
 
 #: src/tracking/voice/settings.py:47
 msgctxt "guildset:untracked_channels|long_desc"
