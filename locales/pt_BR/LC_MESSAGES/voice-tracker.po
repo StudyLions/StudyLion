@@ -97,11 +97,13 @@ msgstr "Você não pode fazer isto! "
 msgctxt "cmd:now|target:other|mode:clear|error:perms|desc"
 msgid "You need to be a moderator to set or clear someone else's session tag."
 msgstr ""
+"Você precisa ser um moderador para adicionar ou remover a etiqueta de sessão"
+" de alguém."
 
 #: src/tracking/voice/cog.py:740
 msgctxt "cmd:now|target:other|mode:clear|success|title"
 msgid "Session Tag Cleared!"
-msgstr ""
+msgstr "Etiqueta de Sessão Apagada!"
 
 #: src/tracking/voice/cog.py:744
 #, possible-python-brace-format
