@@ -137,7 +137,7 @@ msgstr ""
 #: src/tracking/voice/cog.py:783
 msgctxt "cmd:now|target:other|mode:set|success|title"
 msgid "Session Tag Set!"
-msgstr ""
+msgstr "Etiqueta de Sessão definida."
 
 #: src/tracking/voice/cog.py:787
 #, possible-python-brace-format
