@@ -281,7 +281,7 @@ msgstr ""
 #: src/tracking/voice/settings.py:128
 msgctxt "guildset:hourly_reward|accepts"
 msgid "Number of coins to reward per hour in voice."
-msgstr ""
+msgstr "Número de moedas recebidas por hora em sala de voz."
 
 #: src/tracking/voice/settings.py:144
 #, possible-python-brace-format
