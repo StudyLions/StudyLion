@@ -241,7 +241,7 @@ msgstr ""
 #: src/tracking/voice/settings.py:56
 msgctxt "guildset:untracked_channels|notset"
 msgid "Not Set (all voice channels will be tracked.)"
-msgstr ""
+msgstr "Não configurado (todos canais de voz serão considerados)."
 
 #: src/tracking/voice/settings.py:73
 msgctxt "guildset:untracked_channels|set"
