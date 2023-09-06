@@ -30,7 +30,7 @@ msgstr "agora"
 msgctxt "cmd:now|desc"
 msgid ""
 "Describe what you are working on, or see what your friends are working on!"
-msgstr ""
+msgstr "Descreva em quê você está fazendo, ou veja o que seus amigos estão!"
 
 #: src/tracking/voice/cog.py:647
 msgctxt "cmd:now|param:tag"
