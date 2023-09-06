@@ -394,7 +394,7 @@ msgstr ""
 #: src/tracking/voice/settings.py:335
 msgctxt "ui:voice_tracker_config|button:close|label"
 msgid "Close"
-msgstr ""
+msgstr "Fechar"
 
 #: src/tracking/voice/settings.py:349
 msgctxt "ui:voice_tracker_config|button:reset|label"
