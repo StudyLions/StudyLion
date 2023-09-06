@@ -356,7 +356,7 @@ msgstr ""
 #: src/tracking/voice/settings.py:248
 msgctxt "guildset:daily_voice_cap"
 msgid "daily_voice_cap"
-msgstr ""
+msgstr "limite_diario_horas"
 
 #: src/tracking/voice/settings.py:251
 msgctxt "guildset:daily_voice_cap|desc"
