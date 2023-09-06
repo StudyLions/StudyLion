@@ -262,7 +262,7 @@ msgstr "Todos os canais de voz, agora, serão considerados!"
 #: src/tracking/voice/settings.py:117
 msgctxt "guildset:hourly_reward"
 msgid "hourly_reward"
-msgstr ""
+msgstr "recompensa_horária"
 
 #: src/tracking/voice/settings.py:120
 msgctxt "guildset:hourly_reward|mode:voice|desc"
