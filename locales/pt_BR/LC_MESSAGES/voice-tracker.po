@@ -50,7 +50,7 @@ msgstr "limpar"
 #: src/tracking/voice/cog.py:654
 msgctxt "cmd:now|param:tag|desc"
 msgid "Describe what you are working on in 10 characters or less!"
-msgstr "Descreva em quê você está trabalhando em no máximo 10 caracteres!"
+msgstr "Descreva em quê você está fazendo em no máximo 10 caracteres!"
 
 #: src/tracking/voice/cog.py:658
 msgctxt "cmd:now|param:user|desc"
