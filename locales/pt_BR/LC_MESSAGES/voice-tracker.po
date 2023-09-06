@@ -125,7 +125,7 @@ msgstr "Agora você está empenhado em ˋ{new_tag}ˋ. Boa sorte! "
 #: src/tracking/voice/cog.py:769
 msgctxt "cmd:now|target:other|mode:set|error:perms|title"
 msgid "You can't do that!"
-msgstr ""
+msgstr "Você não pode fazer isto!"
 
 #: src/tracking/voice/cog.py:773
 msgctxt "cmd:now|target:other|mode:set|error:perms|desc"
