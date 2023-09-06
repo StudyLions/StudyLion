@@ -35,7 +35,7 @@ msgstr "Descreva em quê você está fazendo, ou veja o que seus amigos estão!"
 #: src/tracking/voice/cog.py:647
 msgctxt "cmd:now|param:tag"
 msgid "tag"
-msgstr ""
+msgstr "etiqueta"
 
 #: src/tracking/voice/cog.py:648
 msgctxt "cmd:now|param:user"
