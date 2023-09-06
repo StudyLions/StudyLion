@@ -336,7 +336,7 @@ msgstr ""
 #: src/tracking/voice/settings.py:210
 msgctxt "guildset:hourly_live_bonus|accepts"
 msgid "Number of bonus coins to reward per hour when live."
-msgstr ""
+msgstr "Número de moedas bônus a receber por horas em chamada."
 
 #: src/tracking/voice/settings.py:226
 #, possible-python-brace-format
