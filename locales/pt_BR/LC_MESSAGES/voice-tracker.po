@@ -252,7 +252,7 @@ msgstr "Seletor de canais abaixo."
 #, possible-python-brace-format
 msgctxt "guildset:untracked_channels|set_response|set"
 msgid "Activity in the following channels will now be ignored: {channels}"
-msgstr ""
+msgstr "A atividade nos seguintes canais, serão agora ignoradas: {channels}"
 
 #: src/tracking/voice/settings.py:89
 msgctxt "guildset:untracked_channels|set_response|unset"
