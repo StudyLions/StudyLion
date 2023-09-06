@@ -350,6 +350,8 @@ msgctxt "guildset:hourly_live_bonus|response"
 msgid ""
 "Live members will now *additionally* be given {coin}**{amount}** per hour."
 msgstr ""
+"Membros em chamada, irão *adicionalmente* receber {coin}**{amount}** por "
+"hora."
 
 #: src/tracking/voice/settings.py:248
 msgctxt "guildset:daily_voice_cap"
