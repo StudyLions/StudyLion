@@ -321,6 +321,8 @@ msgstr "bonus_horário"
 msgctxt "guildset:hourly_live_bonus|desc"
 msgid "Bonus Lioncoins given per hour when a member streams or video-chats."
 msgstr ""
+"Bônus de Lioncoins recebidas por hora, quando um membro compartilhar a tela,"
+" ou ligar seu vídeo."
 
 #: src/tracking/voice/settings.py:205
 msgctxt "guildset:hourly_live_bonus|long_desc"
