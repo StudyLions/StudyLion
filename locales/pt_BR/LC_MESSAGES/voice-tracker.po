@@ -246,7 +246,7 @@ msgstr "Não configurado (todos canais de voz serão considerados)."
 #: src/tracking/voice/settings.py:73
 msgctxt "guildset:untracked_channels|set"
 msgid "Channel selector below."
-msgstr ""
+msgstr "Seletor de canais abaixo."
 
 #: src/tracking/voice/settings.py:82
 #, possible-python-brace-format
