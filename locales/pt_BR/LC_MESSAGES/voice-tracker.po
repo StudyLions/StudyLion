@@ -109,7 +109,7 @@ msgstr "Etiqueta de Sessão Apagada!"
 #, possible-python-brace-format
 msgctxt "cmd:now|target:other|mode:clear|success|desc"
 msgid "Cleared {target}'s session tag."
-msgstr ""
+msgstr "Etiquetas de sessão de {target}'s apagada."
 
 #: src/tracking/voice/cog.py:756
 msgctxt "cmd:now|target:self|mode:set|success|title"
