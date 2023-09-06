@@ -298,7 +298,7 @@ msgstr "Os membros receberão {coin}**{amount}** por hora em um canal de voz."
 #: src/tracking/voice/settings.py:171
 msgctxt "guildset:hourly_reward|mode:study|desc"
 msgid "LionCoins given per hour of study."
-msgstr ""
+msgstr "LionCoins recebidas por hora de estudo."
 
 #: src/tracking/voice/settings.py:175
 msgctxt "guildset:hourly_reward|mode:study|long_desc"
