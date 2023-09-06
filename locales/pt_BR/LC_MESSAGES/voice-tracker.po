@@ -342,7 +342,7 @@ msgstr "Número de moedas bônus a receber por horas em chamada."
 #, possible-python-brace-format
 msgctxt "guildset:hourly_live_bonus|formatted"
 msgid "{coin}**{amount}** bonus per hour when live."
-msgstr ""
+msgstr "{coin}**{amount}** bonus por hora em chamada."
 
 #: src/tracking/voice/settings.py:237
 #, possible-python-brace-format
