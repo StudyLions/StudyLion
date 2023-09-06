@@ -170,6 +170,8 @@ msgid ""
 "{target} is current working in {channel}!\n"
 "They have been working on **{tag}** since {time}."
 msgstr ""
+"{target} está empenhado em {channel}!\n"
+"Eles estão empenhados em **{tag}** desde {time}."
 
 #: src/tracking/voice/cog.py:814
 #, possible-python-brace-format
