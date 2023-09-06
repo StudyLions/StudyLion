@@ -361,7 +361,7 @@ msgstr "limite_diario_horas"
 #: src/tracking/voice/settings.py:251
 msgctxt "guildset:daily_voice_cap|desc"
 msgid "Maximum number of hours per day to count for each member."
-msgstr ""
+msgstr "Numero máximo de horas que cada membro pode contabilizar."
 
 #: src/tracking/voice/settings.py:255
 msgctxt "guildset:daily_voice_cap|long_desc"
