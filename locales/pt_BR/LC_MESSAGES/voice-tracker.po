@@ -61,6 +61,8 @@ msgstr "Verifique o que seu amgio está fazendo."
 msgctxt "cmd:now|param:clear|desc"
 msgid "Unset your activity tag (or the target user's tag, for moderators)."
 msgstr ""
+"Retire uma etiqueta de atividade (ou a de um usuário definido -para "
+"moderadores- )"
 
 #: src/tracking/voice/cog.py:689
 msgctxt "cmd:now|target:self|error:target_inactive"
