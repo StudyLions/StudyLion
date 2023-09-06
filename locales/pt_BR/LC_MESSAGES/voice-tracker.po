@@ -143,7 +143,7 @@ msgstr "Etiqueta de Sessão definida."
 #, possible-python-brace-format
 msgctxt "cmd:now|target:other|mode:set|success|desc"
 msgid "Set {target}'s session tag to `{new_tag}`."
-msgstr ""
+msgstr "Etiqueta de sessão de {target}'s definidas para ˋ{new_tag}ˋ."
 
 #: src/tracking/voice/cog.py:796
 #, possible-python-brace-format
