@@ -370,6 +370,10 @@ msgid ""
 "the member's statistics. Tracking will resume at the start of the next day. "
 "The start of the day is determined by the configured guild timezone."
 msgstr ""
+"O tempo gasto em canais de voz além deste limite, não será contabilizado nas"
+" estatísticas do membro. O tempo voltará a ser contabilizado no horário "
+"inicial do próximo dia. Este horário inicial é configurado pelo fuso horário"
+" do servidor."
 
 #: src/tracking/voice/settings.py:261
 msgctxt "guildset:daily_voice_cap|accepts"
