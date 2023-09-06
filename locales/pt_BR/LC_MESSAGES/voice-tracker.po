@@ -198,8 +198,8 @@ msgid ""
 " day."
 msgstr ""
 "Os membros agora serão recompensados {coin}**{base} (+ {bonus})** por hora "
-"que eles ficarem em um canal de voz, até um total de **{cap}** horas por dia"
-" no servidor."
+"que eles ficarem (on) em um canal de voz, até um total de **{cap}** horas "
+"por dia no servidor."
 
 #: src/tracking/voice/cog.py:908
 #, possible-python-brace-format
