@@ -182,7 +182,7 @@ msgstr "{target} está empenhado em {channel} desde {time}!"
 #: src/tracking/voice/cog.py:837
 msgctxt "cmd:configure_voice_rates"
 msgid "voice_rewards"
-msgstr ""
+msgstr "recompensa_de_voz"
 
 #: src/tracking/voice/cog.py:840
 msgctxt "cmd:configure_voice_rates|desc"
