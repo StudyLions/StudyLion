@@ -86,7 +86,7 @@ msgstr "Etiqueta de sessão apagada."
 #: src/tracking/voice/cog.py:717
 msgctxt "cmd:now|target:self|mode:clear|success|desc"
 msgid "Successfully unset your session tag."
-msgstr ""
+msgstr "A etiqueta de sessão foi retirada com sucesso! "
 
 #: src/tracking/voice/cog.py:726
 msgctxt "cmd:now|target:other|mode:clear|error:perms|title"
