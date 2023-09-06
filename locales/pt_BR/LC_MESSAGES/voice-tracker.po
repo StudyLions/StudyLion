@@ -81,7 +81,7 @@ msgstr "{mention} não está em uma sessão!"
 #: src/tracking/voice/cog.py:713
 msgctxt "cmd:now|target:self|mode:clear|success|title"
 msgid "Session Tag Cleared"
-msgstr ""
+msgstr "Etiqueta de sessão apagada."
 
 #: src/tracking/voice/cog.py:717
 msgctxt "cmd:now|target:self|mode:clear|success|desc"
