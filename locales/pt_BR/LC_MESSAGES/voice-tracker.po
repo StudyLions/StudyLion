@@ -55,7 +55,7 @@ msgstr "Descreva em quê você está trabalhando em no máximo 10 caracteres!"
 #: src/tracking/voice/cog.py:658
 msgctxt "cmd:now|param:user|desc"
 msgid "Check what a friend is working on."
-msgstr ""
+msgstr "Verifique o que seu amgio está fazendo."
 
 #: src/tracking/voice/cog.py:662
 msgctxt "cmd:now|param:clear|desc"
