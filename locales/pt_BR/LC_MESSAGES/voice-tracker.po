@@ -177,7 +177,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:now|target:other|mode:show_without_tag|desc"
 msgid "{target} has been working in {channel} since {time}!"
-msgstr ""
+msgstr "{target} está empenhado em {channel} desde {time}!"
 
 #: src/tracking/voice/cog.py:837
 msgctxt "cmd:configure_voice_rates"
