@@ -76,7 +76,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:now|target:other|error:target_inactive"
 msgid "{mention} has no running session!"
-msgstr ""
+msgstr "{mention} não está em uma sessão!"
 
 #: src/tracking/voice/cog.py:713
 msgctxt "cmd:now|target:self|mode:clear|success|title"
