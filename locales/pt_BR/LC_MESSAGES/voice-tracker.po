@@ -399,7 +399,7 @@ msgstr "Fechar"
 #: src/tracking/voice/settings.py:349
 msgctxt "ui:voice_tracker_config|button:reset|label"
 msgid "Reset"
-msgstr ""
+msgstr "Resetar"
 
 #: src/tracking/voice/settings.py:362
 msgctxt "ui:voice_tracker_config|menu:untracked_channels|placeholder"
