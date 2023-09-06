@@ -187,7 +187,7 @@ msgstr "recompensa_de_voz"
 #: src/tracking/voice/cog.py:840
 msgctxt "cmd:configure_voice_rates|desc"
 msgid "Configure Voice tracking rewards and experience"
-msgstr ""
+msgstr "Configure as recompensas em canais de voz e experiência"
 
 #: src/tracking/voice/cog.py:897
 #, possible-python-brace-format
