@@ -70,6 +70,7 @@ msgid ""
 "You have no running session! Join a tracked voice channel to start a "
 "session."
 msgstr ""
+"Você não está em uma sessão! Entre em um canal de voz e comece uma sessão. "
 
 #: src/tracking/voice/cog.py:698
 #, possible-python-brace-format
