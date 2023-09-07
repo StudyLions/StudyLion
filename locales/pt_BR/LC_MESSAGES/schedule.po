@@ -993,7 +993,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "session|status|title"
 msgid "Session {start} - {end}"
-msgstr ""
+msgstr "Sessão {start} - {end}"
 
 #: src/modules/schedule/core/session.py:369
 msgctxt "session|status|desc:cancelled"
