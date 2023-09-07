@@ -195,7 +195,7 @@ msgstr "ˋNão Configuradoˋ ( O sistema de check-in está desabilitado)."
 #, possible-python-brace-format
 msgctxt "guildset:session_lobby|formatted|set"
 msgid "<#{channelid}>"
-msgstr ""
+msgstr "<#{channelid}>"
 
 #: src/modules/schedule/settings.py:92
 msgctxt "guildset:session_room"
