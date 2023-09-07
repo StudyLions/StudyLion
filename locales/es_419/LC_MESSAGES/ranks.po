@@ -438,7 +438,7 @@ msgstr "Rango Eliminado"
 msgctxt ""
 "ui:rank_preview|button:delete|response:success|button:delete_role|label"
 msgid "Delete Role"
-msgstr ""
+msgstr "Eliminar rol"
 
 #: src/modules/ranks/ui/preview.py:176
 #, possible-python-brace-format
