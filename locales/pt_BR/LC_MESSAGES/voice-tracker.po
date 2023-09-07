@@ -409,7 +409,7 @@ msgstr ""
 #: src/tracking/voice/settings.py:428 src/tracking/voice/settings.py:482
 msgctxt "ui:voice_tracker_config|mode:voice|embed|title"
 msgid "Voice Tracker Configuration Panel"
-msgstr ""
+msgstr "Painel de Configuração de Contabilização em Chamada"
 
 #: src/tracking/voice/settings.py:433 src/tracking/voice/settings.py:487
 msgctxt "ui:voice_tracker_config|mode:study|embed|title"
