@@ -338,7 +338,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "guildset:schedule_cost|formatted"
 msgid "{coin}**{amount}** per booking."
-msgstr ""
+msgstr "{coin}**{amount}** por agendamento."
 
 #: src/modules/schedule/settings.py:256
 msgctxt "guildset:attendance_reward"
