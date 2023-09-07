@@ -731,6 +731,8 @@ msgid ""
 "I do not have the `MANAGE_ROLES` permission in this server, so I cannot "
 "manage ranks!"
 msgstr ""
+"No tengo el permiso `MANAGE_ROLES` en este servidor, ¡así que no puedo "
+"gestionar rangos!"
 
 #: src/modules/ranks/ui/overview.py:223
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:above_me"
@@ -738,6 +740,8 @@ msgid ""
 "This role is above my top role in the role hierarchy, so I cannot add or "
 "remove it!"
 msgstr ""
+"Este rol está por encima de mi rol superior en la jerarquía de roles, por lo"
+" que no puedo añadirlo ni eliminarlo."
 
 #: src/modules/ranks/ui/overview.py:229
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:other"
