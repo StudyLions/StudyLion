@@ -310,6 +310,7 @@ msgstr "rango_canal"
 msgctxt "guildset:rank_channel|desc"
 msgid "The channel in which to send rank update notifications."
 msgstr ""
+"El canal en el que se enviarán las notificaciones de actualización de rango."
 
 #: src/modules/ranks/settings.py:110
 msgctxt "guildset:rank_channel|long_desc"
