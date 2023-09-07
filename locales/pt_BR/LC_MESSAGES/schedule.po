@@ -71,7 +71,7 @@ msgstr "Um ou mais horários marcados, já estão agendados!"
 #: src/modules/schedule/cog.py:677
 msgctxt "cmd:schedule"
 msgid "schedule"
-msgstr ""
+msgstr "check-in"
 
 #: src/modules/schedule/cog.py:680
 msgctxt "cmd:schedule|desc"
