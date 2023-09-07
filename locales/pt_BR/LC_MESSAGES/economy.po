@@ -272,7 +272,7 @@ msgstr "Página {page}/{total}"
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:role_lb|header"
 msgid "This server has a total balance of {coin_emoji}**0**."
-msgstr ""
+msgstr "Este servidor tem o saldo total de {coin_emoji}**0**."
 
 #: src/modules/economy/cog.py:465
 #, possible-python-brace-format
