@@ -241,6 +241,8 @@ msgstr "Nome ou ID do canal de voz da sessão."
 msgctxt "guildset:session_room|set_response|set"
 msgid "Schedule session members will now be given access to {channel}"
 msgstr ""
+"Membros que fizerem o Check-in, agora serão autorizados a entrar em "
+"{channel}"
 
 #: src/modules/schedule/settings.py:128
 msgctxt "guildset:session_room|set_response|unset"
