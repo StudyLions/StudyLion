@@ -776,7 +776,7 @@ msgstr[2] "em {number} hours"
 #: src/modules/schedule/ui/scheduleui.py:340
 msgctxt "ui:schedule|format_until|now"
 msgid "right now!"
-msgstr ""
+msgstr "neste momento!"
 
 #: src/modules/schedule/ui/scheduleui.py:362
 msgctxt "ui:schedule|menu:cancel|error:current_slot"
