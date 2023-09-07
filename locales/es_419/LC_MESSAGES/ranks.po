@@ -67,7 +67,7 @@ msgstr "Eliminación del rol de rango no válido."
 #, possible-python-brace-format
 msgctxt "rank_refresh|remove_roles|small_error"
 msgid "*Could not remove ranks from {member}*"
-msgstr ""
+msgstr "*No se han podido eliminar rangos de {member}*"
 
 #: src/modules/ranks/cog.py:595
 msgctxt "rank_refresh|remove_roles|error:too_many_issues"
