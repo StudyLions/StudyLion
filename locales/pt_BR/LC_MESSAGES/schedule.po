@@ -92,7 +92,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:schedule|cancel_booking|error:not_booked"
 msgid "Could not cancel {time} booking because it is not booked!"
-msgstr ""
+msgstr "Não pude cancelar o {time} solicitado, por ele não estar agendado! "
 
 #: src/modules/schedule/cog.py:725
 #, possible-python-brace-format
