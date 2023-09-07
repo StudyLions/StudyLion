@@ -150,7 +150,7 @@ msgstr "Sistema de Configuração de Check-ins"
 #: src/modules/schedule/settings.py:36
 msgctxt "guildset:session_lobby"
 msgid "session_lobby"
-msgstr ""
+msgstr "balcão_de_agendamentos"
 
 #: src/modules/schedule/settings.py:39
 msgctxt "guildset:session_lobby|desc"
