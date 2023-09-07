@@ -769,9 +769,9 @@ msgstr "Amanhã"
 msgctxt "ui:schedule|format_until|positive"
 msgid "in <1 hour"
 msgid_plural "in {number} hours"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Em < 1 hora"
+msgstr[1] "em {number} horas"
+msgstr[2] "em {number} hours"
 
 #: src/modules/schedule/ui/scheduleui.py:340
 msgctxt "ui:schedule|format_until|now"
