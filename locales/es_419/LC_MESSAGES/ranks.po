@@ -762,7 +762,7 @@ msgstr "Crear a partir del rol"
 #: src/modules/ranks/ui/overview.py:276
 msgctxt "ui:rank_overview|menu:ranks|placeholder"
 msgid "View or edit rank"
-msgstr ""
+msgstr "Ver o editar el rango"
 
 #: src/modules/ranks/ui/overview.py:362
 msgctxt "ui:rank_overview|embed:noranks|desc"
