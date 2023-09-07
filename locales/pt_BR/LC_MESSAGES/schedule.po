@@ -502,8 +502,8 @@ msgstr ""
 "futuros para o usuário estarão cancelados. Isto ajuda com que alguns membros"
 " descompromissados continuem a prejudicar o grupo a atingir a meta de "
 "comparecimento em grupo com faltas seguidas. Alternativamente, considere "
-"cobrar um preço mais alto para os agendamentos, para ajudar a coibir e "
-"desincentivar as faltas. "
+"valores mais altos para os agendamentos (e também da recompensa de check-"
+"in), para ajudar a coibir e desincentivar as faltas."
 
 #: src/modules/schedule/settings.py:425
 msgctxt "guildset:schedule_blacklist_role|accepts"
