@@ -949,7 +949,7 @@ msgstr "Você não faz parte desta sessão!"
 #: src/modules/schedule/ui/sessionui.py:150
 msgctxt "ui:session|button:cancel|success"
 msgid "Successfully cancelled this session."
-msgstr ""
+msgstr "Esta sessão foi cancelada com sucesso!"
 
 #: src/modules/schedule/ui/sessionui.py:164
 msgctxt "ui:session|button:cancel|error|title"
