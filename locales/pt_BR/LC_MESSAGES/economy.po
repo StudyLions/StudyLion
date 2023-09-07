@@ -436,6 +436,7 @@ msgstr "Bilhete opicional para enviar juntamente com o presente."
 msgctxt "cmd:send|error:not_allowed"
 msgid "Sorry, this server has disabled LionCoin transfers!"
 msgstr ""
+"Desculpe, este servidor desabilitou o sistema de tansferências de LionCoins!"
 
 #: src/modules/economy/cog.py:723
 #, possible-python-brace-format
