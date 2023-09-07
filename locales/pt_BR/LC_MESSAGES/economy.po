@@ -333,7 +333,7 @@ msgstr ""
 #: src/modules/economy/cog.py:551
 msgctxt "cmd:economy_reset|confirm:reset_guild|button:confirm"
 msgid "Yes, reset the economy"
-msgstr ""
+msgstr "Sim, resetar o sistema de saldos."
 
 #: src/modules/economy/cog.py:555
 msgctxt "cmd:economy_reset|confirm:reset_guild|button:cancel"
