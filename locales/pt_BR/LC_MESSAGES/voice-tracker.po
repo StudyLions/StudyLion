@@ -404,7 +404,7 @@ msgstr "Resetar"
 #: src/tracking/voice/settings.py:362
 msgctxt "ui:voice_tracker_config|menu:untracked_channels|placeholder"
 msgid "Set Untracked Channels"
-msgstr ""
+msgstr "Configurar canais não contabilizados"
 
 #: src/tracking/voice/settings.py:428 src/tracking/voice/settings.py:482
 msgctxt "ui:voice_tracker_config|mode:voice|embed|title"
