@@ -588,6 +588,8 @@ msgstr ""
 msgctxt "guildset:schedule_blacklist_after|formatted|set"
 msgid "Blacklist after **`{amount}`** missed sessions within `24h`."
 msgstr ""
+"Colocar na Lista Negra depois de **ˋ{amount}ˋ** check-inˋs perdidos em "
+"ˋ24hˋ."
 
 #: src/modules/schedule/settings.py:516
 msgctxt "guildset:schedule_blacklist_after|formatted|unset"
