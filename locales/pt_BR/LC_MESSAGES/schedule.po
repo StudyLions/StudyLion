@@ -400,6 +400,8 @@ msgid ""
 "When all members who have booked a session successfully attend the session, "
 "they will be given this bonus in *addition* to the `attendance_reward`."
 msgstr ""
+"Quando todos os membros agendados, comparecerem ao check-in, eles receberão "
+"um bônus adicional por ˋcomparecimento_do_grupoˋ."
 
 #: src/modules/schedule/settings.py:312
 msgctxt "guildset:attendance_bonus|accepts"
