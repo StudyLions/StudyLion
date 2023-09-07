@@ -621,7 +621,7 @@ msgstr "Selecione a Sala da Reunião Agendada "
 #: src/modules/schedule/ui/settingui.py:123
 msgctxt "ui:schedule_config|menu:channels|placeholder"
 msgid "Select Session Channels"
-msgstr ""
+msgstr "Selecione os Canais de Reunião"
 
 #: src/modules/schedule/ui/settingui.py:137
 msgctxt "ui:schedule_config|button:page1|label"
