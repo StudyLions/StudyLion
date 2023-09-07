@@ -600,7 +600,7 @@ msgstr "Eliminar roles de rango inválidos de los miembros"
 #, possible-python-brace-format
 msgctxt "ui:refresh_ranks|embed|field:remove|value"
 msgid "0 {progress} {total}"
-msgstr ""
+msgstr "0 {progress} {total}"
 
 #: src/modules/ranks/ui/refresh.py:212
 #, possible-python-brace-format
