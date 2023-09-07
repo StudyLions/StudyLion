@@ -400,12 +400,12 @@ msgstr "enviar"
 #: src/modules/economy/cog.py:663
 msgctxt "cmd:send|desc"
 msgid "Gift the target user a certain number of LionCoins."
-msgstr ""
+msgstr "Presenteie um determinado usuário com um certo valor em LionCoins."
 
 #: src/modules/economy/cog.py:667
 msgctxt "cmd:send|param:target"
 msgid "target"
-msgstr ""
+msgstr "alvo"
 
 #: src/modules/economy/cog.py:668
 msgctxt "cmd:send|param:amount"
