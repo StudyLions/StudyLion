@@ -526,7 +526,7 @@ msgstr "A Lista Negra do check-in está desabilitada."
 #, possible-python-brace-format
 msgctxt "guildset:schedule_blacklist_role|formatted|set"
 msgid "{role} members will not be able to book scheduled sessions."
-msgstr ""
+msgstr "Usuários {role} não estarão aptos a agendamento de check-ins. "
 
 #: src/modules/schedule/settings.py:458
 msgctxt "guildset:schedule_blacklist_role|formatted|unset"
