@@ -835,12 +835,12 @@ msgstr "Suas Estatísticas e Check-inˋs Realizados."
 #: src/modules/schedule/ui/scheduleui.py:450
 msgctxt "ui:schedule|embed|field:stats|field:recent"
 msgid "Recent"
-msgstr ""
+msgstr "Recentes"
 
 #: src/modules/schedule/ui/scheduleui.py:457
 msgctxt "ui:schedule|embed|field:stats|field:alltime"
 msgid "All Time"
-msgstr ""
+msgstr "Desde o Começo"
 
 #: src/modules/schedule/ui/scheduleui.py:463
 msgctxt "ui:schedule|embed|field:stats|field:streak"
