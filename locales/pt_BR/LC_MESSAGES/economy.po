@@ -410,7 +410,7 @@ msgstr "alvo"
 #: src/modules/economy/cog.py:668
 msgctxt "cmd:send|param:amount"
 msgid "amount"
-msgstr ""
+msgstr "quantidade"
 
 #: src/modules/economy/cog.py:669
 msgctxt "cmd:send|param:note"
