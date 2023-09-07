@@ -235,12 +235,12 @@ msgstr "Mensajes"
 #: src/modules/ranks/settings.py:36
 msgctxt "guildset:rank_type|input_pattern:voice"
 msgid "voice|study"
-msgstr ""
+msgstr "voz|estudio"
 
 #: src/modules/ranks/settings.py:37
 msgctxt "guildset:rank_type|input_pattern:voice"
 msgid "text|message|messages"
-msgstr ""
+msgstr "texto|mensaje|mensajes"
 
 #: src/modules/ranks/settings.py:38
 msgctxt "guildset:rank_type|input_pattern:xp"
