@@ -515,6 +515,7 @@ msgstr "Nome ou ID do cargo da Lista Negra."
 msgctxt "guildset:schedule_blacklist_role|set_response|set"
 msgid "Members with {role} will be unable to book scheduled sessions."
 msgstr ""
+"Os membros com o cargo {role} estarão inabilitados de agendar check-ins."
 
 #: src/modules/schedule/settings.py:443
 msgctxt "guildset:schedule_blacklist_role|set_response|unset"
