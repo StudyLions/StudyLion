@@ -874,7 +874,7 @@ msgstr "Próximas Sessões."
 #: src/modules/schedule/ui/scheduleui.py:506
 msgctxt "ui:schedule|embed|field:upcoming|value:empty"
 msgid "No sessions scheduled yet!"
-msgstr ""
+msgstr "Sem check-ins cumpridos ainda!"
 
 #: src/modules/schedule/ui/scheduleui.py:520
 #, possible-python-brace-format
