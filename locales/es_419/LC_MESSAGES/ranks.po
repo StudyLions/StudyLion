@@ -583,13 +583,13 @@ msgstr "**Cargando miembros del servidor:** {emoji}"
 #, possible-python-brace-format
 msgctxt "ui:refresh_ranks|embed|line:roles"
 msgid "**Loading rank roles:** {emoji}"
-msgstr ""
+msgstr "**Cargando roles de rango:** {emoji}"
 
 #: src/modules/ranks/ui/refresh.py:187
 #, possible-python-brace-format
 msgctxt "ui:refresh_ranks|embed|line:compute"
 msgid "**Computing correct ranks:** {emoji}"
-msgstr ""
+msgstr "**Calculando rangos correctos:** {emoji}"
 
 #: src/modules/ranks/ui/refresh.py:198
 msgctxt "ui:refresh_ranks|embed|field:remove|name"
