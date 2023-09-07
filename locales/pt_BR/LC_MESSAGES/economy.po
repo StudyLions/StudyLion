@@ -475,6 +475,8 @@ msgid ""
 "Unfortunately, I was not able to message the recipient. Perhaps they have me"
 " blocked?"
 msgstr ""
+"Infelizmente, eu não estou habilitado para receber mensagens. Será que eles "
+"me bloquearam?"
 
 #: src/modules/economy/cog.py:795
 msgctxt "cmd:configure_economy"
