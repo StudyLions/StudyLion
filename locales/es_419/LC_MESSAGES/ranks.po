@@ -205,7 +205,7 @@ msgstr "{rank_requires}"
 #: src/modules/ranks/settings.py:26
 msgctxt "guildset:rank_type|output:voice"
 msgid "`Voice`"
-msgstr "`Voz`"
+msgstr "`Voice`"
 
 #: src/modules/ranks/settings.py:27
 msgctxt "guildset:rank_type|output:xp"
