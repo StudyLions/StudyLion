@@ -456,7 +456,7 @@ msgstr ""
 msgctxt ""
 "ui:rank_preview|button:delete|response:success|button:delete_role|response:success|desc"
 msgid "You have deleted the rank **{name}** along with the underlying role."
-msgstr ""
+msgstr "Has eliminado el rango **{name}** junto con el rol subyacente."
 
 #: src/modules/ranks/ui/preview.py:199
 msgctxt "ui:rank_preview|button:delete|label"
