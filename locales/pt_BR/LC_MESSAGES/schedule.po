@@ -285,6 +285,8 @@ msgid ""
 "Activity in the following sessions will now count towards scheduled session "
 "attendance: {channels}"
 msgstr ""
+"A atividade nos canais a seguir, agora, contarão como atendimento aos check-"
+"inˋs agendados: {channels}"
 
 #: src/modules/schedule/settings.py:171
 msgctxt "guildset:session_channels|set_response|unset"
