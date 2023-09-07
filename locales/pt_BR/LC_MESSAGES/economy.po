@@ -458,7 +458,7 @@ msgstr "{user} te enviou um presente!"
 #, possible-python-brace-format
 msgctxt "cmd:send|embed:gift|desc"
 msgid "{mention} sent you {coin_emoji}**{amount}**."
-msgstr ""
+msgstr "{mention} te enviou {coin_emoji}**{amount}**."
 
 #: src/modules/economy/cog.py:773
 #, possible-python-brace-format
