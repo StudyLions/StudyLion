@@ -292,6 +292,8 @@ msgstr ""
 msgctxt "guildset:rank_type|set_response|type:xp"
 msgid "Members will be awarded activity ranks based on `Message XP Earned`."
 msgstr ""
+"A los miembros se les otorgarán rangos de actividad basados en `Mensaje XP "
+"Ganado`"
 
 #: src/modules/ranks/settings.py:91
 #, possible-python-brace-format
