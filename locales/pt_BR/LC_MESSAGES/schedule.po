@@ -531,7 +531,7 @@ msgstr "Usuários {role} não estarão aptos a agendamento de check-ins. "
 #: src/modules/schedule/settings.py:458
 msgctxt "guildset:schedule_blacklist_role|formatted|unset"
 msgid "Not Set"
-msgstr ""
+msgstr "Não habilitado."
 
 #: src/modules/schedule/settings.py:467
 msgctxt "guildset:schedule_blacklist_after"
