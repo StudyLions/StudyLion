@@ -328,7 +328,7 @@ msgstr ""
 #: src/modules/ranks/settings.py:116
 msgctxt "guildset:rank_channel|accepts"
 msgid "Rank notification channel name or id."
-msgstr ""
+msgstr "Nombre o id del canal de notificación de rango."
 
 #: src/modules/ranks/settings.py:128
 #, possible-python-brace-format
