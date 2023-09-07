@@ -828,12 +828,12 @@ msgstr "Horas de voz requeridas"
 #: src/modules/ranks/ui/editor.py:92
 msgctxt "ui:rank_editor|type:voice|input:requires|placeholder"
 msgid "Number of voice hours before awarding this rank"
-msgstr ""
+msgstr "Número de horas de voz antes de conceder este rango"
 
 #: src/modules/ranks/ui/editor.py:97
 msgctxt "ui:rank_editor|type:xp|input:requires|label"
 msgid "Required XP"
-msgstr ""
+msgstr "XP requerida"
 
 #: src/modules/ranks/ui/editor.py:101
 msgctxt "ui:rank_editor|type:xp|input:requires|placeholder"
