@@ -257,7 +257,7 @@ msgstr "canais_de_reuniao"
 #: src/modules/schedule/settings.py:138
 msgctxt "guildset:session_channels|desc"
 msgid "Voice channels in which to track activity for scheduled sessions."
-msgstr ""
+msgstr "Canais de voz para contar a atividade das sessões agendadas."
 
 #: src/modules/schedule/settings.py:142
 msgctxt "guildset:session_channels|long_desc"
