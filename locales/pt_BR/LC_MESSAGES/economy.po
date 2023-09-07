@@ -530,7 +530,7 @@ msgstr "permitir_transferências"
 #: src/modules/economy/settings.py:73
 msgctxt "guildset:allow_transfers|desc"
 msgid "Whether to allow members to transfer LionCoins to each other."
-msgstr ""
+msgstr "Se autorizados aos membros transferir LionCoins entre eles."
 
 #: src/modules/economy/settings.py:77
 msgctxt "guildset:allow_transfers|long_desc"
