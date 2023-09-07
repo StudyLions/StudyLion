@@ -411,7 +411,7 @@ msgstr "¡Error al editar el rango!"
 #: src/modules/ranks/ui/preview.py:108
 msgctxt "ui:rank_preview|button:edit|label"
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: src/modules/ranks/ui/preview.py:139
 #, possible-python-brace-format
