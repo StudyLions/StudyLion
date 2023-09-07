@@ -830,7 +830,7 @@ msgstr "Cancelar agendamentos de check-in."
 #: src/modules/schedule/ui/scheduleui.py:438
 msgctxt "ui:schedule|embed|author"
 msgid "Your Scheduled Sessions and Past Statistics"
-msgstr ""
+msgstr "Suas Estatísticas e Check-inˋs Realizados."
 
 #: src/modules/schedule/ui/scheduleui.py:450
 msgctxt "ui:schedule|embed|field:stats|field:recent"
