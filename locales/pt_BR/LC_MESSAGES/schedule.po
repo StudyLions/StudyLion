@@ -300,7 +300,7 @@ msgstr ""
 #: src/modules/schedule/settings.py:181
 msgctxt "guildset:session_channels|formatted|unset"
 msgid "All Channels (excluding `untracked_channels`)"
-msgstr ""
+msgstr "Todos Os Canais (excluindo os ˋcanais_nao_contabilizadosˋ)"
 
 #: src/modules/schedule/settings.py:211
 msgctxt "guildset:schedule_cost"
