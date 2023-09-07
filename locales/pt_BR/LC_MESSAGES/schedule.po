@@ -762,7 +762,7 @@ msgstr "Hoje"
 #: src/modules/schedule/ui/scheduleui.py:311
 msgctxt "ui:schedule|menu:slots|option|day:tomorrow"
 msgid "Tomorrow"
-msgstr ""
+msgstr "Amanhã"
 
 #: src/modules/schedule/ui/scheduleui.py:333
 #, possible-python-brace-format
