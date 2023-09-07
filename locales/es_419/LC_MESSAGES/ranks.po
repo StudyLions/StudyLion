@@ -525,7 +525,7 @@ msgstr "¡No se puede actualizar el rango!"
 #: src/modules/ranks/ui/preview.py:278
 msgctxt "ui:rank_preview|menu:roles|placeholder"
 msgid "Update Rank Role"
-msgstr ""
+msgstr "Actualizar el rol de rango"
 
 #: src/modules/ranks/ui/preview.py:290
 msgctxt "ui:rank_preview|embed|title"
