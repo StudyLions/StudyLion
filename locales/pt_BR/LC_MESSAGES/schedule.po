@@ -671,7 +671,7 @@ msgstr "Lista Negra do Check-in ({commands[configure schedule]})"
 #: src/modules/schedule/ui/scheduleui.py:31
 msgctxt "ui:schedule|about"
 msgid "Guide tips here TBD"
-msgstr ""
+msgstr "Dicas para direcionamento aqui."
 
 #: src/modules/schedule/ui/scheduleui.py:116
 msgctxt "ui:schedule|button:clear|error:nothing"
