@@ -848,7 +848,7 @@ msgstr "Recuento de mensajes requeridos"
 #: src/modules/ranks/ui/editor.py:110
 msgctxt "ui:rank_editor|type:message|input:requires|placeholder"
 msgid "Number of messages needed before awarding rank"
-msgstr ""
+msgstr "Número de mensajes necesarios antes de conceder el rango"
 
 #: src/modules/ranks/ui/editor.py:126
 msgctxt "ui:rank_editor|type:voice|input:requires|error:parse"
@@ -856,6 +856,8 @@ msgid ""
 "`requires`: Could not parse provided minimum time! Please write a number of "
 "hours."
 msgstr ""
+"`requires`: No se ha podido analizar el tiempo mínimo proporcionado. Por "
+"favor, escriba un número de horas."
 
 #: src/modules/ranks/ui/editor.py:137
 msgctxt "ui:rank_editor|type:message|input:requires|error:parse"
