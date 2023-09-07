@@ -245,7 +245,7 @@ msgstr "texto|mensaje|mensajes"
 #: src/modules/ranks/settings.py:38
 msgctxt "guildset:rank_type|input_pattern:xp"
 msgid "xp|exp|experience"
-msgstr ""
+msgstr "xp|exp|experiencia"
 
 #: src/modules/ranks/settings.py:45
 msgctxt "guildset:rank_type"
