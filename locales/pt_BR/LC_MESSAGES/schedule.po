@@ -793,6 +793,8 @@ msgid ""
 "Too late! You cannot cancel a scheduled session within a minute of it "
 "starting. Please attend it if possible."
 msgstr ""
+"Tarde demais! Você não pode cancelar um check-in com menos de um minuto do "
+"começo. Faça sua parte do compromisso com o grupo!"
 
 #: src/modules/schedule/ui/scheduleui.py:385
 msgctxt "ui:schedule|menu:cancel|error:already_cancelled"
