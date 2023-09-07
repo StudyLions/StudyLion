@@ -1,5 +1,5 @@
 
-## LionBot (formerlyStudyLion) - Discord Study & Productivity Bot
+## LionBot (formerly StudyLion) - Discord Study & Productivity Bot
 
 LionBot is a Discord bot that tracks members' study and work time while offering members the ability to view their statistics and use productivity tools such as: To-do lists, pomodoro timers, reminders, and much more.
 
