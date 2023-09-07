@@ -633,7 +633,7 @@ msgstr "No tiene permisos suficientes para utilizar esta interfaz."
 #: src/modules/ranks/ui/config.py:64
 msgctxt "ui:rank_config|button:overview|label"
 msgid "Edit Ranks"
-msgstr ""
+msgstr "Editar rangos"
 
 #: src/modules/ranks/ui/config.py:82
 msgctxt "ui:rank_config|menu:types|placeholder"
