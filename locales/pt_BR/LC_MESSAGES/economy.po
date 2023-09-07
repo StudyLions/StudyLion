@@ -214,7 +214,7 @@ msgid ""
 "Are you sure you want to add {coin_emoji}**{amount}** to everyone in "
 "{role_mention}?"
 msgstr ""
-"Você tem certeza que quer adicionar (coin_emoji}**{amount}** para todos em "
+"Você tem certeza que quer adicionar {coin_emoji}**{amount}** para todos em "
 "{role_mention}?"
 
 #: src/modules/economy/cog.py:354
