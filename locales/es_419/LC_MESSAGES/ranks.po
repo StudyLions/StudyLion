@@ -489,6 +489,8 @@ msgid ""
 "The role is managed by another application or integration, and cannot be a "
 "rank!"
 msgstr ""
+"El rol es gestionado por otra aplicación o integración, ¡y no puede ser un "
+"rango!"
 
 #: src/modules/ranks/ui/preview.py:251
 msgctxt ""
@@ -497,6 +499,8 @@ msgid ""
 "I do not have the `MANAGE_ROLES` permission in this server, so I cannot "
 "manage ranks!"
 msgstr ""
+"No tengo el permiso `MANAGE_ROLES` en este servidor, ¡así que no puedo "
+"gestionar rangos!"
 
 #: src/modules/ranks/ui/preview.py:256
 msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:above_me"
