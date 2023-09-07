@@ -371,11 +371,13 @@ msgid ""
 "messaged to the user, instead of being sent to the configured "
 "`rank_channel`."
 msgstr ""
+"Si se activa, los mensajes de felicitación por ascenso de rango se enviarán "
+"directamente al usuario, en lugar de enviarse al `rank_channel` configurado."
 
 #: src/modules/ranks/settings.py:174
 msgctxt "guildset:dm_ranks|response:true"
 msgid "I will direct message members upon rank advancement."
-msgstr ""
+msgstr "Enviaré mensajes directos a los miembros al subir de rango."
 
 #: src/modules/ranks/settings.py:179
 msgctxt "guildset:dm_ranks|response:false"
