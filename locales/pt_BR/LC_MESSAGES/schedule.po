@@ -189,7 +189,7 @@ msgstr ""
 #: src/modules/schedule/settings.py:78
 msgctxt "guildset:session_lobby|formatted|unset"
 msgid "`Not Set` (The scheduled session system is disabled.)"
-msgstr ""
+msgstr "ˋNão Configuradoˋ ( O sistema de check-in está desabilitado)."
 
 #: src/modules/schedule/settings.py:83
 #, possible-python-brace-format
