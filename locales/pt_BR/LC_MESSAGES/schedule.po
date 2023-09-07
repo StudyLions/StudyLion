@@ -144,7 +144,7 @@ msgstr "check-in"
 #: src/modules/schedule/cog.py:850
 msgctxt "cmd:configure_schedule|desc"
 msgid "Configure Scheduled Session system"
-msgstr ""
+msgstr "Sistema de Configuração de Check-ins"
 
 #: src/modules/schedule/settings.py:36
 msgctxt "guildset:session_lobby"
