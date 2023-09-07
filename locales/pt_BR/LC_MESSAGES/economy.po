@@ -415,7 +415,7 @@ msgstr "quantidade"
 #: src/modules/economy/cog.py:669
 msgctxt "cmd:send|param:note"
 msgid "note"
-msgstr ""
+msgstr "nota"
 
 #: src/modules/economy/cog.py:672
 msgctxt "cmd:send|param:target|desc"
