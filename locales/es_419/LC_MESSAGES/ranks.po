@@ -577,7 +577,7 @@ msgstr "**Cargando rangos del servidor:** {emoji}"
 #, possible-python-brace-format
 msgctxt "ui:refresh_ranks|embed|line:members"
 msgid "**Loading server members:** {emoji}"
-msgstr ""
+msgstr "**Cargando miembros del servidor:** {emoji}"
 
 #: src/modules/ranks/ui/refresh.py:177
 #, possible-python-brace-format
