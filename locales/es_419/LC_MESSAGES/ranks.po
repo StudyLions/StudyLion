@@ -210,7 +210,7 @@ msgstr "`Voz`"
 #: src/modules/ranks/settings.py:27
 msgctxt "guildset:rank_type|output:xp"
 msgid "`Exp`"
-msgstr ""
+msgstr "`Exp`"
 
 #: src/modules/ranks/settings.py:28
 msgctxt "guildset:rank_type|output:message"
