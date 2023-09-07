@@ -284,7 +284,7 @@ msgstr "O cargo {role_mention} tem o saldo total de {coin_emoji}**0**."
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:single|desc"
 msgid "{mention} currently owns {coin_emoji} {coins}."
-msgstr ""
+msgstr "{mention} possui atualmente {coins_emoji} {coins}."
 
 #: src/modules/economy/cog.py:495
 #, possible-python-brace-format
