@@ -419,7 +419,7 @@ msgstr "Painel de Configuração de Contabilização de Estudos"
 #: src/tracking/voice/settings.py:472
 msgctxt "ui:voice_tracker_config|menu:untracked_channels|placeholder"
 msgid "Select Untracked Channels"
-msgstr ""
+msgstr "Selecione os Canais não Contabilizados"
 
 #: src/tracking/voice/settings.py:528
 msgctxt "dash:voice_tracker|title"
