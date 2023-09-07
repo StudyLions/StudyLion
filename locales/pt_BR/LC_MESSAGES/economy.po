@@ -309,7 +309,7 @@ msgstr ""
 #: src/modules/economy/cog.py:511
 msgctxt "cmd:economy_reset|param:target"
 msgid "target"
-msgstr ""
+msgstr "alvo"
 
 #: src/modules/economy/cog.py:516
 msgctxt "cmd:economy_reset|param:target|desc"
