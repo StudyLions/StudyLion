@@ -623,12 +623,12 @@ msgstr "0 {progress} {total}"
 #, possible-python-brace-format
 msgctxt "ui:refresh_ranks|embed|line:add"
 msgid "**Updated member ranks:** {done}/{target}"
-msgstr "**Rangos de miembros actualizados:** {hecho}/{objetivo}"
+msgstr "**Rangos de miembros actualizados:** {done}/{target}"
 
 #: src/modules/ranks/ui/config.py:42
 msgctxt "ui:rankconfigui|check|not_permitted"
 msgid "You have insufficient server permissions to use this UI!"
-msgstr ""
+msgstr "No tiene permisos suficientes para utilizar esta interfaz."
 
 #: src/modules/ranks/ui/config.py:64
 msgctxt "ui:rank_config|button:overview|label"
