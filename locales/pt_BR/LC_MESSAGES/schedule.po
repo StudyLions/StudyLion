@@ -467,7 +467,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "guildset:min_attendance|formatted"
 msgid "**`{amount}`** minutes"
-msgstr ""
+msgstr "**ˋ{amountˋ}** minutos"
 
 #: src/modules/schedule/settings.py:400
 msgctxt "guildset:min_attendance|parse|error"
