@@ -692,7 +692,7 @@ msgstr "Limpar meus check-inˋs."
 #: src/modules/schedule/ui/scheduleui.py:158
 msgctxt "ui:schedule|button:about|label"
 msgid "About Schedule"
-msgstr ""
+msgstr "Sobre o Sistema de Check-inˋs."
 
 #: src/modules/schedule/ui/scheduleui.py:184
 msgctxt "ui:schedule|menu:booking|error:current_slot"
