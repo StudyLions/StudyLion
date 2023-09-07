@@ -491,7 +491,7 @@ msgstr "Configure o sistema da Economia do LionCoin"
 #: src/modules/economy/settings.py:35
 msgctxt "guildset:coins_per_xp"
 msgid "coins_per_100xp"
-msgstr ""
+msgstr "moedas_por_100xp"
 
 #: src/modules/economy/settings.py:38
 msgctxt "guildset:coins_per_xp|desc"
