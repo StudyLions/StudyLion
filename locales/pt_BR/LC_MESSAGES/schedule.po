@@ -944,7 +944,7 @@ msgstr ""
 #: src/modules/schedule/ui/sessionui.py:140
 msgctxt "ui:session|button:cancel|error:not_booked"
 msgid "You are not a member of this session!"
-msgstr ""
+msgstr "Você não faz parte desta sessão!"
 
 #: src/modules/schedule/ui/sessionui.py:150
 msgctxt "ui:session|button:cancel|success"
