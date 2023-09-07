@@ -45,6 +45,8 @@ msgstr "¡Nuevo rango de actividad alcanzado!"
 msgctxt "rank_refresh|error:roles_dne|desc"
 msgid "Some ranks have invalid or deleted roles! Please remove them first."
 msgstr ""
+"¡Algunos rangos tienen roles inválidos o borrados! Por favor, elimínelos "
+"primero."
 
 #: src/modules/ranks/cog.py:504
 #, possible-python-brace-format
