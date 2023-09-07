@@ -800,6 +800,8 @@ msgstr ""
 msgctxt "ui:schedule|menu:cancel|error:already_cancelled"
 msgid "The selected bookings no longer exist! Nothing to cancel."
 msgstr ""
+"Os agendamentos selecionados não existem mais. Não há nada o que cancelar "
+"aqui!"
 
 #: src/modules/schedule/ui/scheduleui.py:395
 #, possible-python-brace-format
