@@ -653,12 +653,12 @@ msgstr "XP ganada"
 #: src/modules/ranks/ui/config.py:106
 msgctxt "ui:rank_config|menu:types|option:messages"
 msgid "Messages Sent"
-msgstr ""
+msgstr "Mensajes enviados"
 
 #: src/modules/ranks/ui/config.py:126
 msgctxt "ui:rank_config|menu:channels|placeholder"
 msgid "Select Rank Notification Channel"
-msgstr ""
+msgstr "Seleccionar canal de notificación de rango"
 
 #: src/modules/ranks/ui/config.py:134
 msgctxt "ui:rank_config|embed|title"
