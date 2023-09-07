@@ -817,11 +817,13 @@ msgid ""
 "`role_colour`: Could not parse colour! Please use `#<hex>` format e.g. "
 "`#AB1325`."
 msgstr ""
+"`role_colour`: No se ha podido entender el color. Por favor, utilice "
+"`#<hex>` formato ejemplo, `#AB1325`."
 
 #: src/modules/ranks/ui/editor.py:88
 msgctxt "ui:rank_editor|type:voice|input:requires|label"
 msgid "Required Voice Hours"
-msgstr ""
+msgstr "Horas de voz requeridas"
 
 #: src/modules/ranks/ui/editor.py:92
 msgctxt "ui:rank_editor|type:voice|input:requires|placeholder"
