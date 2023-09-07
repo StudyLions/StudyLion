@@ -205,6 +205,7 @@ msgctxt "cmd:economy_balance|embed:success_add|desc"
 msgid ""
 "All members of {role_mention} have been given {coin_emoji}**{amount}**."
 msgstr ""
+"Todos os membros de {role_mention} receberam {coin_emoji}**{amount}**."
 
 #: src/modules/economy/cog.py:332
 #, possible-python-brace-format
