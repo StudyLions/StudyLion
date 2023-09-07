@@ -78,7 +78,7 @@ msgstr "Painel de Configuração Geral"
 #, possible-python-brace-format
 msgctxt "ui:dashboard|title"
 msgid "Guild Dashboard (Page {page}/{total})"
-msgstr ""
+msgstr "Painel do Servidor (Página {page}/{total})"
 
 #: src/modules/config/dashboard.py:109
 msgctxt "ui:dashboard|footer"
