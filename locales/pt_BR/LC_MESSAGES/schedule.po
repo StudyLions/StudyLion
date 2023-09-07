@@ -480,7 +480,7 @@ msgstr ""
 #: src/modules/schedule/settings.py:410
 msgctxt "guildset:schedule_blacklist_role"
 msgid "schedule_blacklist_role"
-msgstr "lista_negra_do_check-in"
+msgstr "cargo_lista_negra_do_check-in"
 
 #: src/modules/schedule/settings.py:413
 msgctxt "guildset:schedule_blacklist_role|desc"
