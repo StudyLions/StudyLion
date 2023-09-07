@@ -285,6 +285,8 @@ msgstr ""
 msgctxt "guildset:rank_type|set_response|type:messages"
 msgid "Members will be awarded activity ranks based on `Messages Sent`."
 msgstr ""
+"Los miembros recibirán rangos de actividad en función de los `Mensajes "
+"enviados`."
 
 #: src/modules/ranks/settings.py:81
 msgctxt "guildset:rank_type|set_response|type:xp"
