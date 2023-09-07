@@ -432,7 +432,7 @@ msgstr "Has eliminado el rango {mention}."
 #: src/modules/ranks/ui/preview.py:150
 msgctxt "ui:rank_preview|button:delete|response:success|title"
 msgid "Rank Deleted"
-msgstr ""
+msgstr "Rango Eliminado"
 
 #: src/modules/ranks/ui/preview.py:160
 msgctxt ""
