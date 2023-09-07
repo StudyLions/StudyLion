@@ -174,6 +174,8 @@ msgid ""
 "Are you sure you want to set the balance of everyone with {role_mention} to "
 "{coin_emoji}**{amount}**?"
 msgstr ""
+"Você tem certeza que quer definir o saldo de todos com o cargo "
+"{role_mention} em {coin_emoji}**{amount}**?"
 
 #: src/modules/economy/cog.py:290
 #, possible-python-brace-format
