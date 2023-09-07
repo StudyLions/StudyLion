@@ -349,12 +349,12 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "guildset:rank_channel|set_using"
 msgid "{cmd} or channel selector below."
-msgstr ""
+msgstr "{cmd} o selector de canal abajo."
 
 #: src/modules/ranks/settings.py:153
 msgctxt "guildset:dm_ranks"
 msgid "dm_ranks"
-msgstr ""
+msgstr "dm_rangos"
 
 #: src/modules/ranks/settings.py:156
 msgctxt "guildset:dm_ranks|desc"
