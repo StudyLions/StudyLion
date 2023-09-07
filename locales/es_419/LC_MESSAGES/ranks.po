@@ -838,7 +838,7 @@ msgstr "XP requerida"
 #: src/modules/ranks/ui/editor.py:101
 msgctxt "ui:rank_editor|type:xp|input:requires|placeholder"
 msgid "Amount of XP needed before obtaining this rank"
-msgstr ""
+msgstr "Cantidad de XP necesaria para obtener este rango"
 
 #: src/modules/ranks/ui/editor.py:106
 msgctxt "ui:rank_editor|type:message|input:requires|label"
