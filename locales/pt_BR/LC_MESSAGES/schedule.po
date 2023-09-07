@@ -682,6 +682,7 @@ msgstr "Não há agendamentos para cancelar. Você já está sem check-inˋs. "
 msgctxt "ui:schedule|button:clear|success"
 msgid "Successfully cancelled and refunded your upcoming scheduled sessions."
 msgstr ""
+"Seu check-in foi cancelado com sucesso, e suas moedas foram ressarcidas."
 
 #: src/modules/schedule/ui/scheduleui.py:142
 msgctxt "ui:schedule|button:clear|label"
