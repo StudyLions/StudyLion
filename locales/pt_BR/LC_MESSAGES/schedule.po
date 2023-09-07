@@ -916,6 +916,8 @@ msgstr "Abrir Check-in"
 msgctxt "ui:session|button:book|error:starting_soon"
 msgid "Too late! This session has started or is starting shortly."
 msgstr ""
+"Tarde demais! O tempo para este check-in já passou e a sessão já começou, ou"
+" irá a qualquer momento. "
 
 #: src/modules/schedule/ui/sessionui.py:94
 msgctxt "ui:session|button:book|error:already_booked"
