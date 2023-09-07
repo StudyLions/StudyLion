@@ -1039,7 +1039,7 @@ msgstr "Presente"
 #: src/modules/schedule/core/session.py:438
 msgctxt "session|status:running|field:attended"
 msgid "Attended"
-msgstr ""
+msgstr "Cumpriu"
 
 #: src/modules/schedule/core/session.py:463
 #, possible-python-brace-format
