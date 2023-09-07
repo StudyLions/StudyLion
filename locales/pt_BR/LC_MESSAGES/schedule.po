@@ -864,7 +864,7 @@ msgstr "Ainda não fez uma sequência!"
 #: src/modules/schedule/ui/scheduleui.py:483
 msgctxt "ui:schedule|embed|field:stats|name"
 msgid "Session Statistics"
-msgstr ""
+msgstr "Estatísticas das Sessões"
 
 #: src/modules/schedule/ui/scheduleui.py:502
 msgctxt "ui:schedule|embed|field:upcoming|name"
