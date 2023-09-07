@@ -537,6 +537,8 @@ msgctxt "guildset:allow_transfers|long_desc"
 msgid ""
 "If disabled, members will not be able to transfer LionCoins to each other."
 msgstr ""
+"Caso desabilitado, os membros não estarão permitidos a transferir LionCoins "
+"entre eles."
 
 #: src/modules/economy/settings.py:85
 msgctxt "guildset:allow_transfers|outputs:true"
