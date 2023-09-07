@@ -399,11 +399,14 @@ msgid ""
 "I do not have permission to edit the underlying role! Please select a new "
 "role from the role menu, or ensure my top role is above the selected role."
 msgstr ""
+"¡No tengo permiso para editar el rol subyacente! Por favor, seleccione un "
+"nuevo rol en el menú de roles, o asegúrese de que mi rol principal está por "
+"encima del rol seleccionado."
 
 #: src/modules/ranks/ui/preview.py:90
 msgctxt "ui:rank_preview|button:edit|error|title"
 msgid "Failed to edit rank!"
-msgstr ""
+msgstr "¡Error al editar el rango!"
 
 #: src/modules/ranks/ui/preview.py:108
 msgctxt "ui:rank_preview|button:edit|label"
