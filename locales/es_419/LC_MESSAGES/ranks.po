@@ -678,7 +678,7 @@ msgstr "Panel de clasificación de la actividad"
 #: src/modules/ranks/ui/overview.py:92
 msgctxt "ui:rank_overview|button:auto|label"
 msgid "Auto Create"
-msgstr ""
+msgstr "Creación automática"
 
 #: src/modules/ranks/ui/overview.py:107
 msgctxt "ui:rank_overview|button:refresh|label"
