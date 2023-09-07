@@ -626,7 +626,7 @@ msgstr "Selecione os Canais de Reunião"
 #: src/modules/schedule/ui/settingui.py:137
 msgctxt "ui:schedule_config|button:page1|label"
 msgid "Page 2"
-msgstr ""
+msgstr "Página 2"
 
 #: src/modules/schedule/ui/settingui.py:152
 msgctxt "ui:schedule_config|button:page2|label"
