@@ -42,6 +42,7 @@ msgctxt "create_booking|error:blacklisted"
 msgid ""
 "You have been blacklisted from the scheduled session system in this server."
 msgstr ""
+"Você foi colocado na lista negra do sistema de Check-In deste servidor."
 
 #: src/modules/schedule/cog.py:460
 #, possible-python-brace-format
