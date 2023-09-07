@@ -112,7 +112,7 @@ msgstr "rangos"
 #: src/modules/ranks/cog.py:688
 msgctxt "cmd:configure_ranks|desc"
 msgid "Configure Activity Ranks"
-msgstr ""
+msgstr "Configurar los rangos de actividad"
 
 #: src/modules/ranks/cog.py:748
 #, possible-python-brace-format
