@@ -305,7 +305,7 @@ msgstr "Todos Os Canais (excluindo os ˋcanais_nao_contabilizadosˋ)"
 #: src/modules/schedule/settings.py:211
 msgctxt "guildset:schedule_cost"
 msgid "schedule_cost"
-msgstr ""
+msgstr "custo_do_check-in"
 
 #: src/modules/schedule/settings.py:214
 msgctxt "guildset:schedule_cost|desc"
