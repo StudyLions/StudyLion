@@ -130,13 +130,15 @@ msgctxt ""
 "cmd:configure_ranks|response:updated|setting:notification|withdm_nochannel"
 msgid "Rank update notifications will be sent via **direct message**."
 msgstr ""
+"Las notificaciones de actualización de rango se enviarán a través de "
+"**mensaje directo**."
 
 #: src/modules/ranks/cog.py:760
 #, possible-python-brace-format
 msgctxt ""
 "cmd:configure_ranks|response:updated|setting:notification|nodm_withchannel"
 msgid "Rank update notifications will be sent to {channel}."
-msgstr ""
+msgstr "Las notificaciones de actualización de rango se enviarán a {channel}."
 
 #: src/modules/ranks/cog.py:765
 msgctxt ""
