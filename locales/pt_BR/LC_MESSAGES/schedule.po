@@ -206,6 +206,7 @@ msgstr ""
 msgctxt "guildset:session_room|desc"
 msgid "Special voice channel open to scheduled session members."
 msgstr ""
+"Canal de voz especialmente aberto para os membros que fizerm o check-in."
 
 #: src/modules/schedule/settings.py:99
 msgctxt "guildset:session_room|long_desc"
