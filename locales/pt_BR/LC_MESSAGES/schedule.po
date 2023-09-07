@@ -746,7 +746,7 @@ msgstr "Agendamentos (Não foi possível agendar - Lista Negra)"
 #, possible-python-brace-format
 msgctxt "ui:schedule|menu:booking|placeholder:regular"
 msgid "Book Sessions ({amount} LC)"
-msgstr ""
+msgstr "Agendamentos ({amount} LC)"
 
 #: src/modules/schedule/ui/scheduleui.py:303
 #, possible-python-brace-format
