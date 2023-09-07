@@ -95,17 +95,19 @@ msgid ""
 "Too many issues occurred while adding ranks! Please check my permissions and"
 " try again in a few minutes."
 msgstr ""
+"Se han producido demasiados problemas al añadir rangos. Por favor, comprueba"
+" mis permisos e inténtalo de nuevo en unos minutos."
 
 #. ---------- Commands ----------
 #: src/modules/ranks/cog.py:655
 msgctxt "cmd:ranks"
 msgid "ranks"
-msgstr ""
+msgstr "rangos"
 
 #: src/modules/ranks/cog.py:687
 msgctxt "cmd:configure_ranks"
 msgid "ranks"
-msgstr ""
+msgstr "rangos"
 
 #: src/modules/ranks/cog.py:688
 msgctxt "cmd:configure_ranks|desc"
