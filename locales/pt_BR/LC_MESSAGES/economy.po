@@ -510,7 +510,7 @@ msgstr ""
 #: src/modules/economy/settings.py:46
 msgctxt "guildset:coins_per_xp|long_desc"
 msgid "The number of coins to reward per 100 XP."
-msgstr ""
+msgstr "O número de moedas a recompensar por 100 xp."
 
 #: src/modules/economy/settings.py:59
 #, possible-python-brace-format
