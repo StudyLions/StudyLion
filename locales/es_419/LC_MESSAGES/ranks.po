@@ -884,12 +884,12 @@ msgstr "LionCoins concedidos al alcanzar este rango"
 #: src/modules/ranks/ui/editor.py:166
 msgctxt "ui:rank_editor|input:reward|placeholder"
 msgid "LionCoins awarded upon achieving this rank"
-msgstr ""
+msgstr "LionCoins concedidos al alcanzar este rango"
 
 #: src/modules/ranks/ui/editor.py:181
 msgctxt "ui:rank_editor|input:reward|error:parse"
 msgid "`reward`: Please enter an integer number of LionCoins."
-msgstr ""
+msgstr "`reward`: Introduce un número entero de LionCoins."
 
 #: src/modules/ranks/ui/editor.py:197
 msgctxt "ui:rank_editor|input:message|label"
