@@ -497,6 +497,13 @@ msgid ""
 "Alternatively, consider setting the booking cost (and reward) very high to "
 "provide a strong disincentive for not attending a session."
 msgstr ""
+"Os membros com este cargo estarão impedidos de agendar um check-in neste "
+"servidor. Se este cargo for adicionado manualmente, todos os check-ins "
+"futuros para o usuário estarão cancelados. Isto ajuda com que alguns membros"
+" descompromissados continuem a prejudicar o grupo a atingir a meta de "
+"comparecimento em grupo com faltas seguidas. Alternativamente, considere "
+"cobrar um preço mais alto para os agendamentos, para ajudar a coibir e "
+"desincentivar as faltas. "
 
 #: src/modules/schedule/settings.py:425
 msgctxt "guildset:schedule_blacklist_role|accepts"
