@@ -611,13 +611,13 @@ msgstr "**Remover rangos inválidos:** {done}/{target}"
 #: src/modules/ranks/ui/refresh.py:220
 msgctxt "ui:refresh_ranks|embed|field:add|name"
 msgid "Giving members their rank roles"
-msgstr "Asignación de roles a los miembros"
+msgstr "Dar a los miembros sus roles de rango"
 
 #: src/modules/ranks/ui/refresh.py:224
 #, possible-python-brace-format
 msgctxt "ui:refresh_ranks|embed|field:add|value"
 msgid "0 {progress} {total}"
-msgstr ""
+msgstr "0 {progress} {total}"
 
 #: src/modules/ranks/ui/refresh.py:234
 #, possible-python-brace-format
