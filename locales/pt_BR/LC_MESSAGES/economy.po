@@ -481,7 +481,7 @@ msgstr ""
 #: src/modules/economy/cog.py:795
 msgctxt "cmd:configure_economy"
 msgid "economy"
-msgstr ""
+msgstr "economia"
 
 #: src/modules/economy/cog.py:798
 msgctxt "cmd:configure_economy|desc"
