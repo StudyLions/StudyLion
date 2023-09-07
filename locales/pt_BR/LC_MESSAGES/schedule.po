@@ -813,13 +813,19 @@ msgid_plural ""
 "Successfully cancelled and refunded your scheduled session bookings:\n"
 "{times}."
 msgstr[0] ""
+"Seu check-in {times} foi cancelado com sucesso, e suas moedas foram "
+"devolvidas."
 msgstr[1] ""
+"Seus agendamentos de check-inˋs foram cancelados com sucesso, e suas moedas foram devolvidas.\n"
+"{times}."
 msgstr[2] ""
+"Seus agendamento de check-inˋs foram cancelados com sucesso, e suas moedas foram devolvidas.\n"
+"{times}."
 
 #: src/modules/schedule/ui/scheduleui.py:416
 msgctxt "ui:schedule|menu:cancel|placeholder"
 msgid "Cancel booked sessions"
-msgstr ""
+msgstr "Cancelar agendamentos de check-in."
 
 #: src/modules/schedule/ui/scheduleui.py:438
 msgctxt "ui:schedule|embed|author"
