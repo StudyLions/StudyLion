@@ -894,12 +894,12 @@ msgstr "`reward`: Introduce un número entero de LionCoins."
 #: src/modules/ranks/ui/editor.py:197
 msgctxt "ui:rank_editor|input:message|label"
 msgid "Rank Message"
-msgstr ""
+msgstr "Mensaje de rango"
 
 #: src/modules/ranks/ui/editor.py:201
 msgctxt "ui:rank_editor|input:message|placeholder"
 msgid "Congratulatory message sent to the user upon achieving this rank."
-msgstr ""
+msgstr "Mensaje de felicitación enviado al usuario al alcanzar este rango."
 
 #: src/modules/ranks/ui/editor.py:207
 #, possible-python-brace-format
