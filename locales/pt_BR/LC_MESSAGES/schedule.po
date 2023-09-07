@@ -324,7 +324,7 @@ msgstr ""
 #: src/modules/schedule/settings.py:222
 msgctxt "guildset:schedule_cost|accepts"
 msgid "Price of each session booking (non-negative integer)."
-msgstr "Preço de cada agendamento feito."
+msgstr "Preço de cada agendamento feito (número inteiro e positivo)."
 
 #: src/modules/schedule/settings.py:234
 #, possible-python-brace-format
