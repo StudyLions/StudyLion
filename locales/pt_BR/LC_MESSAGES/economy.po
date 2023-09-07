@@ -239,7 +239,7 @@ msgstr[2] "As contas foram atualizadas com sucesso!"
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:role_lb|author"
 msgid "Balance sheet for {name}"
-msgstr ""
+msgstr "Extrato de saldos para {name}"
 
 #: src/modules/economy/cog.py:400
 #, possible-python-brace-format
