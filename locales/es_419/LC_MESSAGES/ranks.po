@@ -643,12 +643,12 @@ msgstr "Seleccione el tipo de estadística"
 #: src/modules/ranks/ui/config.py:90
 msgctxt "ui:rank_config|menu:types|option:voice"
 msgid "Voice Activity"
-msgstr ""
+msgstr "Actividad de voz"
 
 #: src/modules/ranks/ui/config.py:98
 msgctxt "ui:rank_config|menu:types|option:xp"
 msgid "XP Earned"
-msgstr ""
+msgstr "XP ganada"
 
 #: src/modules/ranks/ui/config.py:106
 msgctxt "ui:rank_config|menu:types|option:messages"
