@@ -145,6 +145,8 @@ msgctxt ""
 "cmd:configure_ranks|response:updated|setting:notification|nodm_nochannel"
 msgid "Members will not be notified when their activity rank updates."
 msgstr ""
+"Los miembros no recibirán ninguna notificación cuando se actualice su rango "
+"de actividad."
 
 #: src/modules/ranks/utils.py:13
 #, possible-python-brace-format
