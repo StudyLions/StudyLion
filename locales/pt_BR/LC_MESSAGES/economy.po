@@ -445,6 +445,8 @@ msgid ""
 "You do not have enough lioncoins to do this!\n"
 "`Current Balance:` {coin_emoji}{balance}"
 msgstr ""
+"Você não tem LionCoins suficientes para fazer isto!\n"
+"ˋSaldo Atual:ˋ {coin_emoji}{balance}"
 
 #: src/modules/economy/cog.py:744
 #, possible-python-brace-format
