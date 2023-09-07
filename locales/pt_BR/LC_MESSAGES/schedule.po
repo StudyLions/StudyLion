@@ -709,7 +709,7 @@ msgstr ""
 #: src/modules/schedule/ui/scheduleui.py:198
 msgctxt "ui:schedule|menu:booking|error:already_booked"
 msgid "You have already booked one or more of the requested sessions!"
-msgstr ""
+msgstr "Você já agendou um ou mais destes check-inˋs selecionados."
 
 #: src/modules/schedule/ui/scheduleui.py:211
 #, possible-python-brace-format
