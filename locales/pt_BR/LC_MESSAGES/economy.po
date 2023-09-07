@@ -224,6 +224,8 @@ msgid ""
 "{user_mention} was given {coin_emoji}**{amount}**, and now has a balance of "
 "{coin_emoji}**{new_amount}**."
 msgstr ""
+"{user_mention} recebeu {coin_emoji}**{amount}**, e agora tem um saldo de "
+"{coin_emoji}**{new_amount}**."
 
 #: src/modules/economy/cog.py:365
 msgctxt "cmd:economy_balance|embed:success|title"
