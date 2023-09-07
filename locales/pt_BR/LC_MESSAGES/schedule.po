@@ -122,7 +122,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:schedule|create_booking|error:already_booked"
 msgid "You have already booked a scheduled session for {time}."
-msgstr ""
+msgstr "Você já fez seu check in para {time}."
 
 #: src/modules/schedule/cog.py:768
 #, possible-python-brace-format
