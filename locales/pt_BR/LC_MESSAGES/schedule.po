@@ -910,7 +910,7 @@ msgstr "Cancelar"
 #: src/modules/schedule/ui/sessionui.py:60
 msgctxt "ui:sessionui|button:schedule|label"
 msgid "Open Schedule"
-msgstr ""
+msgstr "Abrir Check-in"
 
 #: src/modules/schedule/ui/sessionui.py:87
 msgctxt "ui:session|button:book|error:starting_soon"
