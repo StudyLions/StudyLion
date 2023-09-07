@@ -757,7 +757,7 @@ msgstr "No se ha podido crear el rango."
 #: src/modules/ranks/ui/overview.py:259
 msgctxt "ui:rank_overview|menu:roles|placeholder"
 msgid "Create from role"
-msgstr ""
+msgstr "Crear a partir del rol"
 
 #: src/modules/ranks/ui/overview.py:276
 msgctxt "ui:rank_overview|menu:ranks|placeholder"
