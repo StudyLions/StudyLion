@@ -390,6 +390,8 @@ msgid ""
 "The role underlying this rank no longer exists! Please select a new role "
 "from the role menu."
 msgstr ""
+"El rol subyacente a este rango ya no existe. Seleccione un nuevo rol en el "
+"menú de funciones."
 
 #: src/modules/ranks/ui/preview.py:81
 msgctxt "ui:rank_preview|button:edit|error:role_not_assignable"
