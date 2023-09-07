@@ -555,6 +555,7 @@ msgstr "Desabilitado (Transferência de moedas não permitida)."
 msgctxt "guildset:allow_transfers|set_response|set:true"
 msgid "Members will now be able to use {send_cmd} to transfer {coin}"
 msgstr ""
+"Membros estarão permitidos a usar {send_cmd} para transferência de {coin}"
 
 #: src/modules/economy/settings.py:107
 #, possible-python-brace-format
