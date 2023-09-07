@@ -6,6 +6,7 @@
 # Translators:
 # Tatiana Tenuto, 2023
 # Aline Souki, 2023
+# Bruno Evangelista De Oliveira, 2023
 # 
 #, fuzzy
 msgid ""
@@ -14,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-28 22:43+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Aline Souki, 2023\n"
+"Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -163,6 +164,8 @@ msgid ""
 "All members of {role_mention} have had their balance set to "
 "{coin_emoji}**{amount}**."
 msgstr ""
+"Todos os membros {role_mention} tiveram seus saldos definidos para "
+"{coin_emoji}**{amount}**."
 
 #: src/modules/economy/cog.py:273
 #, possible-python-brace-format
