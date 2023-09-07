@@ -804,7 +804,7 @@ msgstr "Nombre del rol del servidor otorgado"
 #: src/modules/ranks/ui/editor.py:53
 msgctxt "ui:rank_editor|input:role_colour|label"
 msgid "Role Colour"
-msgstr "Rol Color"
+msgstr "Color del Rol"
 
 #: src/modules/ranks/ui/editor.py:57
 msgctxt "ui:rank_editor|input:role_colour|placeholder"
