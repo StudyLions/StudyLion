@@ -62,7 +62,7 @@ msgstr "Executar código arbitrário em todos fragmentos."
 #: src/modules/sysadmin/exec_cog.py:287
 msgctxt "command:asyncall|param:string"
 msgid "Cross-shard code to execute. Cannot reference ctx!"
-msgstr ""
+msgstr "Código Cross-Shard a executar. Não pode referenciar ctx!"
 
 #: src/modules/sysadmin/exec_cog.py:288
 msgctxt "command:asyncall|param:target"
