@@ -600,6 +600,8 @@ msgstr "Não coloque automaticamente em Lista Negra."
 msgctxt "guildset:schedule_blacklist_role|parse|error"
 msgid "Blacklist threshold must be a number between `1` and `24`."
 msgstr ""
+"A tolerância sem inscrever na Lista Negra precisa ser um número entre ˋ1ˋ e "
+"ˋ24ˋ."
 
 #: src/modules/schedule/ui/settingui.py:69
 msgctxt "ui:schedule_config|button:page0|label"
