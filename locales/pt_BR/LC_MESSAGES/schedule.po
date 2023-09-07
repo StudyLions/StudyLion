@@ -752,7 +752,7 @@ msgstr "Agendamentos ({amount} LC)"
 #, possible-python-brace-format
 msgctxt "ui:schedule|menu:slots|option|format"
 msgid "{day} {time} ({until})"
-msgstr ""
+msgstr "{day} {time} ({until})"
 
 #: src/modules/schedule/ui/scheduleui.py:307
 msgctxt "ui:schedule|menu:slots|option|day:today"
