@@ -28,7 +28,7 @@ msgstr "Você precisa ser o dono do bot para fazer isto!"
 
 #: src/modules/sysadmin/exec_cog.py:262
 msgid "async"
-msgstr ""
+msgstr "async"
 
 #: src/modules/sysadmin/exec_cog.py:263
 msgid "Execute arbitrary code with Exec"
