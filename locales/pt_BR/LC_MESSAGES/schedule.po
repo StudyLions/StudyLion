@@ -267,6 +267,11 @@ msgid ""
 "channels under the category will also be included. Activity tracking also "
 "respects the `untracked_voice_channels` setting."
 msgstr ""
+"Somente a atividade destes canais (e na ˋsala_de_reuniãoˋ, se estiver "
+"configurada) irá ser contabilizada como comparecimento ao Check-in feito. "
+"Caso seja selecionada uma categoria, ao invés de um canal, todos os canais "
+"pertencentes a esta, também serão contabilizáveis. O contador de atividade "
+"irá respeitar a configuração de \"canais_nao_contabilizadosˋ."
 
 #: src/modules/schedule/settings.py:149
 msgctxt "guildset:session_channels|accepts"
