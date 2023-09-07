@@ -76,7 +76,7 @@ msgstr "check-in"
 #: src/modules/schedule/cog.py:680
 msgctxt "cmd:schedule|desc"
 msgid "View and manage your scheduled session."
-msgstr ""
+msgstr "Ver e gerenciar seus check-ins agendados."
 
 #: src/modules/schedule/cog.py:708
 #, possible-python-brace-format
