@@ -260,7 +260,7 @@ msgstr ""
 #: src/modules/economy/cog.py:420
 msgctxt "cmd:economy_balance|embed:role_lb|row_format"
 msgid "`[{pos:>{numwidth}}]` | `{coins:>{coinwidth}} LC` | {mention}"
-msgstr ""
+msgstr "`[{pos:>{numwidth}}]` | `{coins:>{coinwidth}} LC` | {mention}"
 
 #: src/modules/economy/cog.py:448
 #, possible-python-brace-format
