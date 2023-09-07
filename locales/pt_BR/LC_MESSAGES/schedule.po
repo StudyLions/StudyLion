@@ -606,7 +606,7 @@ msgstr ""
 #: src/modules/schedule/ui/settingui.py:69
 msgctxt "ui:schedule_config|button:page0|label"
 msgid "Page 1"
-msgstr ""
+msgstr "Página 1"
 
 #: src/modules/schedule/ui/settingui.py:88
 msgctxt "ui:schedule_config|menu:lobby|placeholder"
