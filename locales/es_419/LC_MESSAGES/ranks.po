@@ -747,11 +747,12 @@ msgstr ""
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:other"
 msgid "I am not able to manage the selected role, so it cannot be a rank!"
 msgstr ""
+"No puedo gestionar el rol seleccionado, por lo que no puede ser un rango."
 
 #: src/modules/ranks/ui/overview.py:235
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|title"
 msgid "Could not create rank!"
-msgstr ""
+msgstr "No se ha podido crear el rango."
 
 #: src/modules/ranks/ui/overview.py:259
 msgctxt "ui:rank_overview|menu:roles|placeholder"
