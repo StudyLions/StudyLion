@@ -87,7 +87,7 @@ msgstr "Añadir rol de rango desde actualización"
 #, possible-python-brace-format
 msgctxt "rank_refresh|add_roles|small_error"
 msgid "*Could not add {role} to {member}*"
-msgstr ""
+msgstr "*No se ha podido añadir {role} a {member}*."
 
 #: src/modules/ranks/cog.py:630
 msgctxt "rank_refresh|add_roles|error:too_many_issues"
