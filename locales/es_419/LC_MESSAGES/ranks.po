@@ -152,7 +152,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "formatstring:rank_message|key:role_name"
 msgid "{role_name}"
-msgstr ""
+msgstr "{role_name}"
 
 #: src/modules/ranks/utils.py:14
 #, possible-python-brace-format
