@@ -770,12 +770,14 @@ msgid ""
 "No activity ranks have been set up!\n"
 "Press 'AUTO' to automatically create a standard heirachy of voice | text | xp ranks, or select a role or press Create below!"
 msgstr ""
+"¡No se han creado rangos de actividad!\n"
+"Pulsa 'AUTO' para crear automáticamente una serie estándar de rangos de voz | texto | xp, o selecciona un rol o pulsa Crear a continuación."
 
 #: src/modules/ranks/ui/overview.py:370
 #, possible-python-brace-format
 msgctxt "ui:rank_overview|embed|title|type:voice"
 msgid "Voice Ranks in {guild_name}"
-msgstr ""
+msgstr "Rangos de voz en {guild_name}"
 
 #: src/modules/ranks/ui/overview.py:375
 #, possible-python-brace-format
