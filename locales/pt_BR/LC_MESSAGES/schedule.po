@@ -552,6 +552,11 @@ msgid ""
 "if the `blacklist_role` is not set or if I do not have sufficient "
 "permissions to assign the blacklist role."
 msgstr ""
+"Os membros que perderem mais do que este número de check-inˋs em um período "
+"de 24 horas, serão automaticamente colocados como ˋcargo_de_listanegraˋ. "
+"Esta funcionalidade não terá efeitos se ˋcargo_de_listanegraˋ não estiver "
+"configurado, ou se eu não tiver permissões suficientes para designar o cargo"
+" de Lista Negra. "
 
 #: src/modules/schedule/settings.py:481
 msgctxt "guildset:schedule_blacklist_after|accepts"
