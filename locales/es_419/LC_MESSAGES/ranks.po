@@ -683,17 +683,17 @@ msgstr "Creación automática"
 #: src/modules/ranks/ui/overview.py:107
 msgctxt "ui:rank_overview|button:refresh|label"
 msgid "Refresh Member Ranks"
-msgstr ""
+msgstr "Actualizar los rangos de los miembros"
 
 #: src/modules/ranks/ui/overview.py:123
 msgctxt "ui:rank_overview|button:clear|label"
 msgid "Clear Ranks"
-msgstr ""
+msgstr "Borrar rangos"
 
 #: src/modules/ranks/ui/overview.py:153
 msgctxt "ui:rank_overview|button:create|label"
 msgid "Create Rank"
-msgstr ""
+msgstr "Crear rango"
 
 #: src/modules/ranks/ui/overview.py:169
 #, possible-python-brace-format
