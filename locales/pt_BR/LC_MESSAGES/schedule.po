@@ -163,6 +163,8 @@ msgid ""
 "Channel in which to announce scheduled sessions and post their status. I must have the `MANAGE_WEBHOOKS` permission in this channel.\n"
 "**This must be configured in order for the scheduled session system to function.**"
 msgstr ""
+"Canal em que irá anunciar os check-inˋs e o estado de cada um. Eu preciso ter permissão de ˋGERENCIAR_WEBHOOKSˋ neste canal.\n"
+"**Isto precisa ser configurado para que o sistema de check-in possa funcionar.** "
 
 #: src/modules/schedule/settings.py:49
 msgctxt "guildset:session_lobby|accepts"
