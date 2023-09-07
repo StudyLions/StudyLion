@@ -128,7 +128,7 @@ msgstr "Você já fez seu check in para {time}."
 #, possible-python-brace-format
 msgctxt "cmd:schedule|create_booking|error:too_soon"
 msgid "Cannot book session at {time} because it is running or starting soon!"
-msgstr ""
+msgstr "Não pude agendar às {time} por já ter começado ou irá muito em breve!"
 
 #: src/modules/schedule/cog.py:780
 #, possible-python-brace-format
