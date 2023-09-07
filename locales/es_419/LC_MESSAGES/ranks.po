@@ -663,7 +663,7 @@ msgstr "Seleccionar canal de notificación de rango"
 #: src/modules/ranks/ui/config.py:134
 msgctxt "ui:rank_config|embed|title"
 msgid "Ranks Configuration Panel"
-msgstr ""
+msgstr "Panel de configuración de rangos"
 
 #: src/modules/ranks/ui/config.py:171
 msgctxt "dash:rank|title"
