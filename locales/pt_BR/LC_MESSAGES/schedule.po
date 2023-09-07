@@ -869,7 +869,7 @@ msgstr "Estatísticas das Sessões"
 #: src/modules/schedule/ui/scheduleui.py:502
 msgctxt "ui:schedule|embed|field:upcoming|name"
 msgid "Upcoming Sessions"
-msgstr ""
+msgstr "Próximas Sessões."
 
 #: src/modules/schedule/ui/scheduleui.py:506
 msgctxt "ui:schedule|embed|field:upcoming|value:empty"
