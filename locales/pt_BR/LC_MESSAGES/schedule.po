@@ -183,6 +183,8 @@ msgid ""
 "The schedule session lobby has been unset. Shutting down scheduled session "
 "system."
 msgstr ""
+"O balcão de agendamentos do check-in foi desativado. Desligando o sistema de"
+" agendamento de check-in. "
 
 #: src/modules/schedule/settings.py:78
 msgctxt "guildset:session_lobby|formatted|unset"
