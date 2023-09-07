@@ -900,12 +900,12 @@ msgstr "> `{until}` | {start} - {end}"
 #: src/modules/schedule/ui/sessionui.py:52
 msgctxt "ui:sessionui|button:book|label"
 msgid "Book"
-msgstr ""
+msgstr "Check-in"
 
 #: src/modules/schedule/ui/sessionui.py:56
 msgctxt "ui:sessionui|button:cancel|label"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: src/modules/schedule/ui/sessionui.py:60
 msgctxt "ui:sessionui|button:schedule|label"
