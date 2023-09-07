@@ -1018,7 +1018,7 @@ msgstr "Começando {start}"
 #: src/modules/schedule/core/session.py:385
 msgctxt "session|status:preparing|field:members"
 msgid "Members"
-msgstr ""
+msgstr "Membros"
 
 #: src/modules/schedule/core/session.py:392
 #, possible-python-brace-format
