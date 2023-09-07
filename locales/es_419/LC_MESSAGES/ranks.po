@@ -530,12 +530,12 @@ msgstr "Actualizar el rol de rango"
 #: src/modules/ranks/ui/preview.py:290
 msgctxt "ui:rank_preview|embed|title"
 msgid "Rank Information"
-msgstr ""
+msgstr "Información de rango"
 
 #: src/modules/ranks/ui/preview.py:297
 msgctxt "ui:rank_preview|embed|field:role|name"
 msgid "Role"
-msgstr ""
+msgstr "Role"
 
 #: src/modules/ranks/ui/preview.py:304
 msgctxt "ui:rank_preview|embed|field:required|name"
