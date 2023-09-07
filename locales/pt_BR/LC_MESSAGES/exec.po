@@ -52,7 +52,7 @@ msgstr "Código a avaliar."
 #: src/modules/sysadmin/exec_cog.py:283
 msgctxt "command"
 msgid "asyncall"
-msgstr ""
+msgstr "asyncall"
 
 #: src/modules/sysadmin/exec_cog.py:284
 msgctxt "command:asyncall|desc"
