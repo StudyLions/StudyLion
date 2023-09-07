@@ -247,7 +247,7 @@ msgstr ""
 #: src/modules/schedule/settings.py:128
 msgctxt "guildset:session_room|set_response|unset"
 msgid "The dedicated schedule session room has been removed."
-msgstr ""
+msgstr "O canal dedicado para as reuniões agendadas foi removido."
 
 #: src/modules/schedule/settings.py:135
 msgctxt "guildset:session_channels"
