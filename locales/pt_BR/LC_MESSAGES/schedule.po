@@ -729,8 +729,13 @@ msgid_plural ""
 "Successfully booked the following scheduled sessions.\n"
 "{times}"
 msgstr[0] ""
+"O agendamento foi feito com sucesso. Compareça para o check-in das {times}."
 msgstr[1] ""
+"O agendamento foi feito com sucesso! Compareça no horário para o check-in.\n"
+"{times}"
 msgstr[2] ""
+"O agendamento foi feito com sucesso. Compareça para o check-in.\n"
+"{times}"
 
 #: src/modules/schedule/ui/scheduleui.py:250
 msgctxt "ui:schedule|menu:booking|placeholder:blacklisted"
