@@ -543,7 +543,7 @@ msgstr ""
 #: src/modules/economy/settings.py:85
 msgctxt "guildset:allow_transfers|outputs:true"
 msgid "Enabled (Coin transfers allowed.)"
-msgstr ""
+msgstr "Habilitado {Transferência de Moedas Permitida)."
 
 #: src/modules/economy/settings.py:86
 msgctxt "guildset:allow_transfers|outputs:false"
