@@ -651,7 +651,7 @@ msgstr "Configuração de Check-inˋs ({commands[configure schedule]})"
 #: src/modules/schedule/ui/settingui.py:234
 msgctxt "dash:schedule|dropdown|placeholder"
 msgid "Scheduled Sessions Panel"
-msgstr ""
+msgstr "Painel de Check-inˋs"
 
 #: src/modules/schedule/ui/settingui.py:251
 msgctxt "dash:schedule|section:schedule_channels|name"
