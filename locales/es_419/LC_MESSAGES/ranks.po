@@ -843,7 +843,7 @@ msgstr "Cantidad de XP necesaria para obtener este rango"
 #: src/modules/ranks/ui/editor.py:106
 msgctxt "ui:rank_editor|type:message|input:requires|label"
 msgid "Required Message Count"
-msgstr ""
+msgstr "Recuento de mensajes requeridos"
 
 #: src/modules/ranks/ui/editor.py:110
 msgctxt "ui:rank_editor|type:message|input:requires|placeholder"
