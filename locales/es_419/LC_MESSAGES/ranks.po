@@ -75,6 +75,8 @@ msgid ""
 "Too many issues occurred while removing ranks! Please check my permissions "
 "and try again in a few minutes."
 msgstr ""
+"Se han producido demasiados problemas al eliminar rangos. Por favor, "
+"comprueba mis permisos e inténtalo de nuevo en unos minutos."
 
 #: src/modules/ranks/cog.py:609
 msgctxt "rank_refresh|add_roles|audit"
