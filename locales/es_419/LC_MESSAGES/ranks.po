@@ -320,6 +320,10 @@ msgid ""
 "used when the user has opted not to receive DM notifications, or is "
 "otherwise unreachable."
 msgstr ""
+"Siempre que un usuario suba de rango, se enviará un mensaje de felicitación "
+"en este canal, si está configurado. Si `dm_ranks` está activado, este canal "
+"sólo se utilizará cuando el usuario haya optado por no recibir "
+"notificaciones de DM, o esté ilocalizable."
 
 #: src/modules/ranks/settings.py:116
 msgctxt "guildset:rank_channel|accepts"
