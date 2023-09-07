@@ -1013,7 +1013,7 @@ msgstr "*Ninguém agendou para este check-in.*"
 #, possible-python-brace-format
 msgctxt "session|status:preparing|desc:has_members"
 msgid "Starting {start}"
-msgstr ""
+msgstr "Começando {start}"
 
 #: src/modules/schedule/core/session.py:385
 msgctxt "session|status:preparing|field:members"
