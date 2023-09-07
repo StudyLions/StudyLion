@@ -536,7 +536,7 @@ msgstr "Não habilitado."
 #: src/modules/schedule/settings.py:467
 msgctxt "guildset:schedule_blacklist_after"
 msgid "schedule_blacklist_after"
-msgstr ""
+msgstr "depois_da_listanegra_do_check-in"
 
 #: src/modules/schedule/settings.py:470
 msgctxt "guildset:schedule_blacklist_after|desc"
