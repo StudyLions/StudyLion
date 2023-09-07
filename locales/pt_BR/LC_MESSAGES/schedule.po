@@ -348,7 +348,7 @@ msgstr "recompensa_de_comparecimento"
 #: src/modules/schedule/settings.py:259
 msgctxt "guildset:attendance_reward|desc"
 msgid "Reward for attending a booked scheduled session."
-msgstr ""
+msgstr "Recompensa por ter comparecido a uma sessão agendada."
 
 #: src/modules/schedule/settings.py:263
 msgctxt "guildset:attendance_reward|long_desc"
