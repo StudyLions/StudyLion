@@ -1048,6 +1048,8 @@ msgid ""
 "Everyone attended the session! All members were rewarded with {coin} "
 "**{reward} + {bonus}**!"
 msgstr ""
+"Todos cumpriram a sessão! Por isso, todos os membros irão ser recompensados "
+"com {coin} **{reward} + {bonus}**!"
 
 #: src/modules/schedule/core/session.py:474
 #, possible-python-brace-format
