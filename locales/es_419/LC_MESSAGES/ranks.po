@@ -342,6 +342,8 @@ msgid ""
 "Rank update messages will be ignored or sent via DM (if `dm_ranks` is "
 "enabled)."
 msgstr ""
+"Los mensajes de actualización de rangos serán ignorados o enviados vía DM "
+"(si `dm_ranks` está habilitado)."
 
 #: src/modules/ranks/settings.py:143
 #, possible-python-brace-format
