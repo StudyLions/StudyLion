@@ -347,6 +347,8 @@ msgid ""
 "Everyone in **{guild_name}** has had their balance reset to "
 "{coin_emoji}**{amount}**."
 msgstr ""
+"Todos em **{guild_name}** tiveram seu saldo atualizado para "
+"{coin_emoji}**{amount}**."
 
 #: src/modules/economy/cog.py:588
 #, possible-python-brace-format
