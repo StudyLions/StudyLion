@@ -445,7 +445,8 @@ msgid ""
 "rewarded)."
 msgstr ""
 "Os membros que fizerem check-in, precisarão permanecer, pelo menos, esta "
-"quantidade de minutos para que não seja considerado como falta. "
+"quantidade de minutos para que sejam considerados presentes (e recebam a "
+"recompensa por isso)."
 
 #: src/modules/schedule/settings.py:355
 msgctxt "guildset:min_attendance|accepts"
