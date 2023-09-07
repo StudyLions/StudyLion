@@ -343,7 +343,7 @@ msgstr "{coin}**{amount}** por agendamento."
 #: src/modules/schedule/settings.py:256
 msgctxt "guildset:attendance_reward"
 msgid "attendance_reward"
-msgstr ""
+msgstr "recompensa_de_comparecimento"
 
 #: src/modules/schedule/settings.py:259
 msgctxt "guildset:attendance_reward|desc"
