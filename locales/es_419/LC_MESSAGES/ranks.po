@@ -470,6 +470,8 @@ msgid ""
 "You have insufficient permissions to assign {mention} as a rank role! You "
 "may only manage roles below your top role."
 msgstr ""
+"¡No tienes permisos suficientes para asignar {mention} como rol de rango! "
+"Sólo puede gestionar roles por debajo de su rol superior."
 
 #: src/modules/ranks/ui/preview.py:225
 msgctxt "ui:rank_preview|menu:roles|error:above_caller|title"
