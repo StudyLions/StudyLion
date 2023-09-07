@@ -873,11 +873,13 @@ msgctxt "ui:rank_editor|type:xp|input:requires|error:parse"
 msgid ""
 "`requires`: Could not parse provided minimum XP! Please enter an integer."
 msgstr ""
+"`requires`: No se ha podido analizar la XP mínima proporcionada. Por favor, "
+"introduzca un número entero."
 
 #: src/modules/ranks/ui/editor.py:162
 msgctxt "ui:rank_editor|input:reward|label"
 msgid "LionCoins awarded upon achieving this rank"
-msgstr ""
+msgstr "LionCoins concedidos al alcanzar este rango"
 
 #: src/modules/ranks/ui/editor.py:166
 msgctxt "ui:rank_editor|input:reward|placeholder"
