@@ -200,7 +200,7 @@ msgstr "<#{channelid}>"
 #: src/modules/schedule/settings.py:92
 msgctxt "guildset:session_room"
 msgid "session_room"
-msgstr ""
+msgstr "Sala_de_reunião"
 
 #: src/modules/schedule/settings.py:95
 msgctxt "guildset:session_room|desc"
