@@ -55,7 +55,7 @@ msgid ""
 "I have insufficient permissions to assign the following role(s):\n"
 "{roles}"
 msgstr ""
-"No tengo permisos suficientes para asignar el/los siguiente(s) rol(es):\n"
+"No tengo permisos suficientes para asignar el/los siguiente/s rol(es):\n"
 "{roles}"
 
 #: src/modules/ranks/cog.py:574
