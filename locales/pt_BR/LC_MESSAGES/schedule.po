@@ -252,7 +252,7 @@ msgstr "O canal dedicado para as reuniões agendadas foi removido."
 #: src/modules/schedule/settings.py:135
 msgctxt "guildset:session_channels"
 msgid "session_channels"
-msgstr "canais_de_reunião"
+msgstr "canais_de_reuniao"
 
 #: src/modules/schedule/settings.py:138
 msgctxt "guildset:session_channels|desc"
