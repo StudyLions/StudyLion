@@ -425,6 +425,7 @@ msgstr ""
 msgctxt "guildset:attendance_bonus|formatted"
 msgid "{coin}**{amount}** bonus when all booked members attend."
 msgstr ""
+"{coin}**{amount} de bônus quando todos os agendamentos forem atendidos. "
 
 #: src/modules/schedule/settings.py:343
 msgctxt "guildset:min_attendance"
