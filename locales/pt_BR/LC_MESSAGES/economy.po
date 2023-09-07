@@ -519,6 +519,8 @@ msgid ""
 "For every **100** XP they earn, members will now be given "
 "{coin}**{amount}**."
 msgstr ""
+"Para cada **100** XP acumuladas, os membros irão ser pagos "
+"{coin}**{amount}**."
 
 #: src/modules/economy/settings.py:70
 msgctxt "guildset:allow_transfers"
