@@ -713,7 +713,7 @@ msgstr "Permisos insuficientes"
 #: src/modules/ranks/ui/overview.py:208
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:is_default"
 msgid "The @everyone role cannot be removed, and cannot be a rank!"
-msgstr ""
+msgstr "El rol @everyone no puede ser eliminado, ¡y no puede ser un rango!"
 
 #: src/modules/ranks/ui/overview.py:213
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:is_managed"
@@ -721,6 +721,8 @@ msgid ""
 "The role is managed by another application or integration, and cannot be a "
 "rank!"
 msgstr ""
+"El rol es gestionado por otra aplicación o integración, ¡y no puede ser un "
+"rango!"
 
 #: src/modules/ranks/ui/overview.py:218
 msgctxt ""
