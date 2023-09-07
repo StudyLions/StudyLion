@@ -703,6 +703,8 @@ msgstr "Você não pode fazer check-in em uma seção que já começou."
 msgctxt "ui:schedule|menu:booking|error:next_slot"
 msgid "Too late! You cannot schedule a session starting in the next minute."
 msgstr ""
+"Tarde demais! Você não pode fazer check-in em uma seção começando em menos "
+"de um minuto."
 
 #: src/modules/schedule/ui/scheduleui.py:198
 msgctxt "ui:schedule|menu:booking|error:already_booked"
