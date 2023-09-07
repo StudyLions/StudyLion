@@ -957,6 +957,9 @@ msgid ""
 "session! I require the `MANAGE_CHANNEL`, `MANAGE_ROLES`, `CONNECT` and "
 "`VIEW_CHANNEL` permissions."
 msgstr ""
+"Não pude configurar a sala de reunião para este check-in! Eu preciso ter "
+"permissões para ˋGERENCIAR_CANALˋ, ˋGERENCIAR_CARGOSˋ, ˋCONECTARˋ e "
+"ˋVER_CANALˋ."
 
 #: src/modules/schedule/core/session.py:358
 #, possible-python-brace-format
