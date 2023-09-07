@@ -451,7 +451,7 @@ msgstr ""
 #: src/modules/schedule/settings.py:355
 msgctxt "guildset:min_attendance|accepts"
 msgid "Number of minutes (1-60) before attendance is counted."
-msgstr ""
+msgstr "Número de minutos (1-60) antes de ser validada a presença. "
 
 #: src/modules/schedule/settings.py:369
 #, possible-python-brace-format
