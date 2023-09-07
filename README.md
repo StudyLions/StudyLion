@@ -1,13 +1,13 @@
 
-## StudyLion - Discord Study & Productivity Bot
+## LionBot (formerlyStudyLion) - Discord Study & Productivity Bot
 
-StudyLion is a Discord bot that tracks members' study and work time while offering members the ability to view their statistics and use productivity tools such as: To-do lists, pomodoro timers, reminders, and much more.
+LionBot is a Discord bot that tracks members' study and work time while offering members the ability to view their statistics and use productivity tools such as: To-do lists, pomodoro timers, reminders, and much more.
 
   
 
-[**Invite StudyLion here**](https://discord.com/oauth2/authorize?client_id=889078613817831495&permissions=8&scope=bot), and get started with `/help`.
+[**Invite LionBot here**](https://discord.com/oauth2/authorize?client_id=889078613817831495&permissions=8&scope=bot), and get started with `/help`.
 
-Join the [**support server**](https://discord.gg/the-study-lions-780195610154237993) to contact us if you need help configuring the bot on your server, or start a [**discussion**](https://github.com/StudyLions/StudyLion/discussions "disscussion") to report issues and bugs.
+Join the [**support server**](https://discord.gg/the-study-lions-780195610154237993) to contact us if you need help configuring the bot on your server, or start a [**discussion**](https://github.com/LionBots/LionBot/discussions "disscussion") to report issues and bugs.
 
 
 
@@ -104,8 +104,8 @@ Punish cheaters, audit-log, welcome message, and so much more using our full-sca
 
 ### Tutorials
 
-A command list and general documentation for StudyLion may be found using the `!help` command, and documentation for a specific command, e.g. `config`, may be found with `!help config`.
+A command list and general documentation for LionBot may be found using the `!help` command, and documentation for a specific command, e.g. `config`, may be found with `!help config`.
 
-Make sure to check the [full documentation](https://www.notion.so/izabellakis/StudyLion-Bot-Tutorials-f493268fcd12436c9674afef2e151707 "StudyLion Tutorial") to stay updated.
+Make sure to check the [full documentation](https://www.notion.so/izabellakis/LionBot-Bot-Tutorials-f493268fcd12436c9674afef2e151707 "LionBot Tutorial") to stay updated.
 
 <a href="https://imgur.com/ziPdJGw"><img src="https://i.imgur.com/ziPdJGws.png" title="source: imgur.com" /></a>
