@@ -750,6 +750,9 @@ msgid ""
 "Starting this timer requires `MANAGE_CHANNEL` permissions on the timer "
 "channel, or the configured `manager_role`!"
 msgstr ""
+"Para iniciar este temporizador, é necessário ter permissão de "
+"ˋGERENCIAR_CANALˋ no canal do temporizador, ou estar configurado neste "
+"sistema como autorizado a isto."
 
 #: src/modules/pomodoro/ui/status.py:168
 msgctxt "ui:timer_status|button:start|label"
