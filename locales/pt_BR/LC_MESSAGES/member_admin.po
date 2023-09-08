@@ -389,6 +389,7 @@ msgstr "cargos_automáticos"
 msgctxt "guildset:autoroles|desc"
 msgid "Roles given to new members when they join the server."
 msgstr ""
+"Cargos a serem designados aos novos membros quando entrarem no servidor."
 
 #: src/modules/member_admin/settings.py:347
 msgctxt "guildset:autoroles|long_desc"
