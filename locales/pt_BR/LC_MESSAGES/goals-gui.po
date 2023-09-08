@@ -54,7 +54,7 @@ msgstr "HORAS"
 #: src/gui/cards/goals.py:147
 msgctxt "skin:goals|mode:voice|goal:middle|above"
 msgid "CHATTED"
-msgstr "CONVERSANDO"
+msgstr "CONVERSADAS"
 
 #: src/gui/cards/goals.py:151
 msgctxt "skin:goals|mode:voice|goal:middle|below"
