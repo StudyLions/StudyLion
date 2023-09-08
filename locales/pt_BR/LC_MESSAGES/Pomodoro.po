@@ -901,6 +901,8 @@ msgid ""
 "I cannot attach files (`ATTACH_FILES`) or send embeds (`EMBED_LINKS`) in "
 "{channel}"
 msgstr ""
+"Eu não pude anexar os arquivos (ˋANEXAR_ARQUIVOSˋ), ou enviar as integrações"
+" (ˋLINKS_INTEGRADOSˋ) em {channel}"
 
 #: src/modules/pomodoro/ui/config.py:277
 #, possible-python-brace-format
