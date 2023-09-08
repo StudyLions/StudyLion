@@ -616,7 +616,7 @@ msgstr "Um número positivo e inteiro, em minutos."
 #: src/modules/pomodoro/options.py:212
 msgctxt "timerset:focus_length|desc"
 msgid "Please enter a positive number of minutes."
-msgstr ""
+msgstr "Por favor, preencha um número positivo de minutos. "
 
 #: src/modules/pomodoro/options.py:220
 msgctxt "timerset:break_length"
