@@ -361,7 +361,7 @@ msgstr ""
 #: src/modules/member_admin/settings.py:263
 msgctxt "guildset:greeting_message|set_response:set"
 msgid "The returning member greeting has been updated."
-msgstr ""
+msgstr "A mensagem de saudação ao membro que retorna foi atualizada."
 
 #: src/modules/member_admin/settings.py:275
 msgctxt "guildset:greeting_message|formmatted:unset"
