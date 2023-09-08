@@ -165,7 +165,7 @@ msgstr "Número atual de membros de canais de voz."
 #: src/modules/member_admin/settings.py:32
 msgctxt "guildset:greeting_message|formatkey:member_count"
 msgid "Number of members in the server."
-msgstr ""
+msgstr "Número de membros neste servidor."
 
 #: src/modules/member_admin/settings.py:40
 msgctxt "guildset:greeting_channel"
