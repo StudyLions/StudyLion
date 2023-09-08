@@ -134,4 +134,4 @@ msgstr ""
 #: src/core/setting_types.py:269
 msgctxt "settype:message|format:too_long"
 msgid "Too long to display! See Preview."
-msgstr ""
+msgstr "Muito longo para mostrar! Veja uma prévia."
