@@ -601,7 +601,7 @@ msgstr ""
 #: src/modules/pomodoro/options.py:180
 msgctxt "timerset:focus_length"
 msgid "focus_length"
-msgstr "duração_em_foco"
+msgstr "duração_foco"
 
 #: src/modules/pomodoro/options.py:183
 msgctxt "timerset:focus_length|desc"
