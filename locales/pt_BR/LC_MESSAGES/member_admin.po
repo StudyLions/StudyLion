@@ -319,7 +319,7 @@ msgstr ""
 #: src/modules/member_admin/settings.py:226
 msgctxt "guildset:returning_message|accepts"
 msgid "JSON formatted returning message data"
-msgstr ""
+msgstr "Mensagem de retorno em formato de dados JSON."
 
 #: src/modules/member_admin/settings.py:230
 msgctxt "guildset:returning_message|default"
