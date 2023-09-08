@@ -160,7 +160,7 @@ msgstr "Link do ícone do servidor."
 #: src/modules/member_admin/settings.py:30
 msgctxt "guildset:greeting_message|formatkey:studying_count"
 msgid "Number of current voice channel members."
-msgstr ""
+msgstr "Número atual de membros de canais de voz."
 
 #: src/modules/member_admin/settings.py:32
 msgctxt "guildset:greeting_message|formatkey:member_count"
