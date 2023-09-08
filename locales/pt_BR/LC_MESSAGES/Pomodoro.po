@@ -668,7 +668,7 @@ msgstr "Não Configurado (Irá usar o canal em que está o temporizador)."
 #: src/modules/pomodoro/settings.py:37
 msgctxt "guildset:pomodoro_channel|accepts"
 msgid "Timer notification channel name or id."
-msgstr ""
+msgstr "Nome ou ID do canal para enviar as notificações do temporizador."
 
 #: src/modules/pomodoro/settings.py:51
 #, possible-python-brace-format
