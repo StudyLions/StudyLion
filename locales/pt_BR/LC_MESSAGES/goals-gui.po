@@ -44,7 +44,7 @@ msgstr ""
 #: src/gui/cards/goals.py:139
 msgctxt "skin:goals|mode:study|goal:middle|above"
 msgid "STUDIED"
-msgstr "ESTUDANDO"
+msgstr "ESTUDADAS"
 
 #: src/gui/cards/goals.py:143
 msgctxt "skin:goals|mode:study|goal:middle|below"
