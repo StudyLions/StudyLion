@@ -60,7 +60,7 @@ msgstr "A mensagem anexada não é um dado JSON!"
 #: src/core/setting_types.py:107
 msgctxt "settype:message|download|error:size"
 msgid "The attached message data is too large!"
-msgstr ""
+msgstr "A mensagem anexada é muito grande!"
 
 #: src/core/setting_types.py:116
 msgctxt "settype:message|download|error:decoding"
