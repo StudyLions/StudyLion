@@ -191,7 +191,7 @@ msgstr ""
 #: src/modules/member_admin/settings.py:53
 msgctxt "guildset:greeting_channel|accepts"
 msgid "Name or id of the greeting channel, or 0 for DM."
-msgstr ""
+msgstr "Nome ou ID do canal de boas vindas. Ou 0 para Mensagens Diretas."
 
 #: src/modules/member_admin/settings.py:67
 msgctxt "guildset:greeting_channel|set_response:unset"
