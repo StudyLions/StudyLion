@@ -426,6 +426,7 @@ msgstr "cargo_persistente"
 msgctxt "guildset:role_persistence|desc"
 msgid "Whether member roles should be restored on rejoin."
 msgstr ""
+"Definir se os cargos de um membro devem ser restaurados em seu retorno.  "
 
 #: src/modules/member_admin/settings.py:389
 msgctxt "guildset:role_persistence|long_desc"
