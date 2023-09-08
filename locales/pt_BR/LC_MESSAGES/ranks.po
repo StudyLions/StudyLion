@@ -67,7 +67,7 @@ msgstr "Removendo o cargo de nível inválido."
 #, possible-python-brace-format
 msgctxt "rank_refresh|remove_roles|small_error"
 msgid "*Could not remove ranks from {member}*"
-msgstr ""
+msgstr "*Não consegui remover os níveis de {member}*"
 
 #: src/modules/ranks/cog.py:595
 msgctxt "rank_refresh|remove_roles|error:too_many_issues"
