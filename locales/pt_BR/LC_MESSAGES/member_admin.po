@@ -415,7 +415,7 @@ msgstr "Cargos dados aos novos bots quando entrarem ao servidor."
 #: src/modules/member_admin/settings.py:369
 msgctxt "guildset:bot_autoroles|long_desc"
 msgid "These roles will be given when a bot joins the server."
-msgstr ""
+msgstr "Estes cargos serão dados quando um bot entrar no servidor."
 
 #: src/modules/member_admin/settings.py:382
 msgctxt "guildset:role_persistence"
