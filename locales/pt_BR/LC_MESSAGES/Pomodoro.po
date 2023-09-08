@@ -858,6 +858,8 @@ msgid ""
 "**`{name}`**\n"
 "(The actual channel name may not match due to ratelimits.)"
 msgstr ""
+"**ˋ{name}ˋ**\n"
+"(O nome do canal atual talvez não corresponda exatamente devido a limites de taxa)."
 
 #: src/modules/pomodoro/ui/config.py:213
 msgctxt "ui:timer_options|embed|field:issues|name"
