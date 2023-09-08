@@ -184,6 +184,9 @@ msgid ""
 "and returning members will be sent the configured `returning_message`. Unset"
 " to send these message via direct message."
 msgstr ""
+"Novos membros irão receber a ˋmensagem_de_boas_vindasˋ neste canal. Membros "
+"que estão voltando após um tempo fora, receberão ˋmensagem_de_retornoˋ. "
+"Desative para que a mensagem seja enviada por Mensagem Direta. "
 
 #: src/modules/member_admin/settings.py:53
 msgctxt "guildset:greeting_channel|accepts"
