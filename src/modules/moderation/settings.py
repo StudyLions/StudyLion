@@ -128,7 +128,7 @@ class ModerationSettings(SettingGroup):
         _long_desc = _p(
             'guildset:mod_role|long_desc',
             "Members with the set role will be able to access my configuration panels, "
-            "and perform some moderation tasks, such us setting up pomodoro timers. "
+            "and perform some moderation tasks, such as setting up pomodoro timers. "
             "Moderators cannot reconfigure most bot configuration, "
             "or perform operations they do not already have permission for in Discord."
         )
