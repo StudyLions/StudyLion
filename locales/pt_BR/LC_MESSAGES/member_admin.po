@@ -291,7 +291,7 @@ msgstr "Os seguintes espaços serão substituídos por seus valores."
 #: src/modules/member_admin/settings.py:203
 msgctxt "guildset:greeting_message|embed_field|formatkeys|name"
 msgid "Placeholders"
-msgstr ""
+msgstr "Espaços"
 
 #: src/modules/member_admin/settings.py:213
 msgctxt "guildset:returning_message"
