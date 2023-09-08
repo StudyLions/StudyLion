@@ -312,6 +312,8 @@ msgid ""
 "When set, this message will be sent to the `welcome_channel` when a member "
 "*returns* to the server. If not set, no message will be sent."
 msgstr ""
+"Quando configurada, esta mensagem será enviada para o ˋcanal_de_boas_vindasˋ"
+" assim que um membro *voltar a entrar* no servidor."
 
 #: src/modules/member_admin/settings.py:226
 msgctxt "guildset:returning_message|accepts"
