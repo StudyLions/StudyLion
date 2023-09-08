@@ -834,7 +834,7 @@ msgstr "Passe o mouse sobre o nome para ver as descrições."
 #: src/modules/pomodoro/ui/config.py:185
 msgctxt "ui:timer_options|embed|field:pattern|name"
 msgid "Pattern"
-msgstr ""
+msgstr "Padrão"
 
 #: src/modules/pomodoro/ui/config.py:188
 #, possible-python-brace-format
