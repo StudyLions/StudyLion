@@ -725,11 +725,14 @@ msgid ""
 "Configuring this timer requires `MANAGE_CHANNEL` permissions on the timer "
 "channel, or the configured manager role!"
 msgstr ""
+"Para configurar este temporizador, é necessário ter permissão de "
+"ˋGERENCIAR_CANALˋ no canal do temporizador, ou estar configurado nesse "
+"sistema como autorizado a isto. "
 
 #: src/modules/pomodoro/ui/status.py:119
 msgctxt "ui:timer_status|button:edit|label"
 msgid "Options"
-msgstr ""
+msgstr "Opções"
 
 #: src/modules/pomodoro/ui/status.py:138
 msgctxt "ui:timer_status|button:start|error:already_running"
