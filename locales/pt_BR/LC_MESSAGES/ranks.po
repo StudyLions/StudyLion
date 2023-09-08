@@ -224,7 +224,7 @@ msgstr "Voz"
 #: src/modules/ranks/settings.py:32
 msgctxt "guildset:rank_type|input_format:xp"
 msgid "Exp"
-msgstr ""
+msgstr "Exp"
 
 #: src/modules/ranks/settings.py:33
 msgctxt "guildset:rank_type|input_format:message"
