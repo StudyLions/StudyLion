@@ -621,7 +621,7 @@ msgstr "Por favor, preencha um número positivo de minutos. "
 #: src/modules/pomodoro/options.py:220
 msgctxt "timerset:break_length"
 msgid "break_length"
-msgstr ""
+msgstr "duração_pausa"
 
 #: src/modules/pomodoro/options.py:223
 msgctxt "timerset:break_length|desc"
