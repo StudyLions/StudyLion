@@ -535,7 +535,9 @@ msgstr "gerenciar_cargos"
 #: src/modules/pomodoro/options.py:104
 msgctxt "timerset:manager_role|desc"
 msgid "Role allowed to start, stop, and edit the focus/break lengths."
-msgstr "Cargo autorizado a começar, parar, e editar os temporizador pomodoro."
+msgstr ""
+"Cargo autorizado a começar, parar, e editar os intervalos do temporizador "
+"pomodoro."
 
 #: src/modules/pomodoro/options.py:116
 msgctxt "timerset:manager_role|format:notset"
