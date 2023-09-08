@@ -276,7 +276,7 @@ msgstr ""
 #: src/modules/member_admin/settings.py:141
 msgctxt "guildset:greeting_message|set_response:set"
 msgid "The welcome message has been updated."
-msgstr ""
+msgstr "A mensagem de boas vindas foi atualizada."
 
 #: src/modules/member_admin/settings.py:153
 msgctxt "guildset:greeting_message|formmatted:unset"
