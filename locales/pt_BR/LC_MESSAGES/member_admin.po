@@ -155,7 +155,7 @@ msgstr "Nome deste servidor."
 #: src/modules/member_admin/settings.py:28
 msgctxt "guildset:greeting_message|formatkey:guild_icon"
 msgid "Server icon url."
-msgstr ""
+msgstr "Link do ícone do servidor."
 
 #: src/modules/member_admin/settings.py:30
 msgctxt "guildset:greeting_message|formatkey:studying_count"
