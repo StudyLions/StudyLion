@@ -349,7 +349,7 @@ msgstr ""
 #: src/modules/member_admin/settings.py:247
 msgctxt "guildset:returning_message|formatkey:last_time"
 msgid "Unix timestamp of the last time the member was seen in the server."
-msgstr ""
+msgstr "Carimbo da data em que o membro havia sido visto pela última vez."
 
 #: src/modules/member_admin/settings.py:258
 msgctxt "guildset:returning_message|set_response:unset"
