@@ -88,6 +88,8 @@ msgid ""
 "The provided message data was not a valid JSON document!\n"
 "`{error}`"
 msgstr ""
+"Os dados informados não são um documento JSON válido.\n"
+"ˋ{error}ˋ"
 
 #: src/core/setting_types.py:193
 msgctxt "settype:message|error:json_missing_keys"
