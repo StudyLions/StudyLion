@@ -792,7 +792,7 @@ msgstr "Alertas Sonoros"
 #: src/modules/pomodoro/ui/config.py:88
 msgctxt "ui:timer_options|button:delete|success|title"
 msgid "Timer Deleted"
-msgstr ""
+msgstr "Temporizador Deletado"
 
 #: src/modules/pomodoro/ui/config.py:92
 #, possible-python-brace-format
