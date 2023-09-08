@@ -466,13 +466,13 @@ msgstr "{stage}"
 #, possible-python-brace-format
 msgctxt "formatstring:channel_name|key:members"
 msgid "{members}"
-msgstr ""
+msgstr "{members}"
 
 #: src/modules/pomodoro/lib.py:22
 #, possible-python-brace-format
 msgctxt "formatstring:channel_name|key:name"
 msgid "{name}"
-msgstr ""
+msgstr "{name}"
 
 #: src/modules/pomodoro/lib.py:23
 #, possible-python-brace-format
