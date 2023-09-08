@@ -303,6 +303,8 @@ msgctxt "guildset:returning_message|desc"
 msgid ""
 "Custom message used to greet returning members when they rejoin the server."
 msgstr ""
+"Mensagem personalizada de boas vindas usada quando um membro retornar ao "
+"servidor."
 
 #: src/modules/member_admin/settings.py:221
 msgctxt "guildset:returning_message|long_desc"
