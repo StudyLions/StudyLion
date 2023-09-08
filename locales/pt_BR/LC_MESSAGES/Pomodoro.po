@@ -576,7 +576,7 @@ msgstr "Um nome curto, a ser visto no painel de exibição do temporizador. "
 #: src/modules/pomodoro/options.py:161
 msgctxt "timerset:channel_name_format"
 msgid "channel_name"
-msgstr ""
+msgstr "nome_do_canal"
 
 #: src/modules/pomodoro/options.py:164
 #, possible-python-brace-format
