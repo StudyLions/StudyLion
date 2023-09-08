@@ -398,6 +398,9 @@ msgid ""
 "`role_persistence` is enabled, these roles will *not* be given to a "
 "returning member."
 msgstr ""
+"Estes cargos serão dados aos novos membros que entrarem ao servidor. Caso "
+"ˋpermanecer_cargosˋ esteja ativado, estes cargos *não* serão dados para um "
+"membro que retorne ao servidor."
 
 #: src/modules/member_admin/settings.py:361
 msgctxt "guildset:bot_autoroles"
