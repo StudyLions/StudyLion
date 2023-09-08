@@ -68,6 +68,7 @@ msgstr "Código Cross-Shard a executar. Não pode referenciar ctx!"
 msgctxt "command:asyncall|param:target"
 msgid "Target shard app name, see autocomplete for options."
 msgstr ""
+"Nome do fragmento alvo do app. Escolha uma opção no auto-preenchimento."
 
 #: src/modules/sysadmin/exec_cog.py:343
 msgid "reload"
