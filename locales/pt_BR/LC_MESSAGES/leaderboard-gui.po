@@ -34,7 +34,7 @@ msgstr "CLASSIFICAÇÃO DE CONVERSAÇÃO"
 #: src/gui/cards/leaderboard.py:77
 msgctxt "skin:leaderboard|mode:voice|header_text"
 msgid "VOICE LEADERBOARD"
-msgstr ""
+msgstr "CLASSIFICAÇÃO CANAIS DE VOZ"
 
 #: src/gui/cards/leaderboard.py:81
 msgctxt "skin:leaderboard|mode:anki|header_text"
