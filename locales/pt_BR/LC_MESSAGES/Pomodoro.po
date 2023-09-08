@@ -877,6 +877,8 @@ msgctxt "ui:timer_options|issue:cannot_speak"
 msgid ""
 "Voice alerts are on, but I don't have speaking permissions in {channel}"
 msgstr ""
+"Os alertas de voz estão ativados, mas eu não tenho falado pessoalmente em "
+"{channel}. "
 
 #: src/modules/pomodoro/ui/config.py:249
 #, possible-python-brace-format
