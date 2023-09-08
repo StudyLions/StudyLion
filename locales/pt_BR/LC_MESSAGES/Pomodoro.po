@@ -742,7 +742,7 @@ msgstr "Não posso começar um temporizador que já está rodando!"
 #: src/modules/pomodoro/ui/status.py:154
 msgctxt "ui:timer_status|button:start|error:not_manager|title"
 msgid "Insufficient permissions!"
-msgstr ""
+msgstr "Premissões insuficientes!"
 
 #: src/modules/pomodoro/ui/status.py:158
 msgctxt "ui:timer_status|button:start|error:not_manager|desc"
