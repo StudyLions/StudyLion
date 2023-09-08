@@ -571,7 +571,7 @@ msgstr "Título do painel de exibição do temporizador."
 #: src/modules/pomodoro/options.py:147
 msgctxt "timerset:base_name|accepts"
 msgid "Any short name, shown on the timer card."
-msgstr "Um nome curto, a ser mostrado no painel mostrador do temporizador. "
+msgstr "Um nome curto, a ser visto no painel de exibição do temporizador. "
 
 #: src/modules/pomodoro/options.py:161
 msgctxt "timerset:channel_name_format"
