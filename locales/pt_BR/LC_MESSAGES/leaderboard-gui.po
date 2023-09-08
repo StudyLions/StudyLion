@@ -74,7 +74,7 @@ msgstr "{amount} cartões"
 #, possible-python-brace-format
 msgctxt "skin:leaderboard|mode:study|entry_hours_text"
 msgid "{HH:02d}:{MM:02d}"
-msgstr ""
+msgstr "{HH:02d}:{MM:02d}"
 
 #: src/gui/cards/leaderboard.py:172
 #, possible-python-brace-format
