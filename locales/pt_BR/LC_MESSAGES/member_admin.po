@@ -286,7 +286,7 @@ msgstr "Não configurado. Membros não receberão boas vindas."
 #: src/modules/member_admin/settings.py:200
 msgctxt "guildset:greeting_message|embed_field|formatkeys|explanation"
 msgid "The following placeholders will be substituted with their values."
-msgstr ""
+msgstr "Os seguintes espaços serão substituídos por seus valores."
 
 #: src/modules/member_admin/settings.py:203
 msgctxt "guildset:greeting_message|embed_field|formatkeys|name"
