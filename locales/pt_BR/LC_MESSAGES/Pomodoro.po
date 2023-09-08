@@ -770,6 +770,9 @@ msgid ""
 "Stopping this timer requires `MANAGE_CHANNEL` permissions on the timer "
 "channel, or the configured `manager_role`!"
 msgstr ""
+"Para Pausar o temporizador, é necessário permissão de ˋGERENCIAR_CANALˋ no "
+"canal do temporizador, ou estar configurado neste sistema como autorizado a "
+"isto. "
 
 #: src/modules/pomodoro/ui/status.py:204
 msgctxt "ui:timer_status|button:stop|label"
