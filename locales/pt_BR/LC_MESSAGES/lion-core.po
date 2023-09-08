@@ -45,7 +45,7 @@ msgstr "O número de moedas informado é muito baixo!"
 #, possible-python-brace-format
 msgctxt "settype:coin|formatted"
 msgid "{coin}**{amount}**"
-msgstr ""
+msgstr "{coin}**{amount}**"
 
 #: src/core/setting_types.py:87
 msgctxt "settype:message|accepts"
