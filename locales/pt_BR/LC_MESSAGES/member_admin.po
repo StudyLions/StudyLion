@@ -399,7 +399,7 @@ msgid ""
 "returning member."
 msgstr ""
 "Estes cargos serão dados aos novos membros que entrarem ao servidor. Caso "
-"ˋpermanecer_cargosˋ esteja ativado, estes cargos *não* serão dados para um "
+"ˋcargo_persistenteˋ esteja ativado, estes cargos *não* serão dados para um "
 "membro que retorne ao servidor."
 
 #: src/modules/member_admin/settings.py:361
@@ -420,7 +420,7 @@ msgstr "Estes cargos serão dados quando um bot entrar no servidor."
 #: src/modules/member_admin/settings.py:382
 msgctxt "guildset:role_persistence"
 msgid "role_persistence"
-msgstr ""
+msgstr "cargo_persistente"
 
 #: src/modules/member_admin/settings.py:385
 msgctxt "guildset:role_persistence|desc"
