@@ -378,7 +378,7 @@ msgstr ""
 #: src/modules/member_admin/settings.py:328
 msgctxt "guildset:returning_message|embed_field|formatkeys|"
 msgid "Placeholders"
-msgstr ""
+msgstr "Espaços reservados"
 
 #: src/modules/member_admin/settings.py:339
 msgctxt "guildset:autoroles"
