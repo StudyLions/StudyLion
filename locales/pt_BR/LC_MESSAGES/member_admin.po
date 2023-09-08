@@ -296,7 +296,7 @@ msgstr "Espaços"
 #: src/modules/member_admin/settings.py:213
 msgctxt "guildset:returning_message"
 msgid "returning_message"
-msgstr ""
+msgstr "mensagem_retornando"
 
 #: src/modules/member_admin/settings.py:217
 msgctxt "guildset:returning_message|desc"
