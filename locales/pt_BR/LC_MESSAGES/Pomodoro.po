@@ -423,6 +423,7 @@ msgstr ""
 msgctxt "cmd:pomodoro_edit|error:insufficient_permissions|role_needed:admin"
 msgid "You need to be a guild admin to modify this option!"
 msgstr ""
+"Você precisa ser um administrador do servidor para modificar esta opção."
 
 #: src/modules/pomodoro/cog.py:776
 msgctxt "cmd:pomodoro_edit|error:insufficient_permissions|role_needed:owner"
