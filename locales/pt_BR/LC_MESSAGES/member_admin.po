@@ -135,7 +135,7 @@ msgstr "Configure as saudações e cargos do novo membro."
 #: src/modules/member_admin/settings.py:20
 msgctxt "guildset:greeting_message|formatkey:mention"
 msgid "Mention the new member."
-msgstr ""
+msgstr "Mencione o novo membro"
 
 #: src/modules/member_admin/settings.py:22
 msgctxt "guildset:greeting_message|formatkey:user_name"
