@@ -104,6 +104,8 @@ msgid ""
 "Clear the saved roles for this member, so their past roles are not restored "
 "on rejoin."
 msgstr ""
+"Limpar os cargos salvos deste membro, então os cargos passados não serão "
+"restaurados novamente caso retorne."
 
 #: src/modules/member_admin/cog.py:278
 #, possible-python-brace-format
