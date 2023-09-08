@@ -416,6 +416,7 @@ msgid ""
 "Insufficient permissions to modifiy this timer!\n"
 "You need to be a server administrator, own this channel, or have the timer manager role."
 msgstr ""
+"Você não possui permissões suficientes para modificar este temporizador!"
 
 #: src/modules/pomodoro/cog.py:771
 msgctxt "cmd:pomodoro_edit|error:insufficient_permissions|role_needed:admin"
