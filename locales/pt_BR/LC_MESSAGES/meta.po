@@ -29,7 +29,7 @@ msgstr "ajuda"
 #: src/modules/meta/cog.py:26
 msgctxt "cmd:help|desc"
 msgid "See a brief summary of my commands and features."
-msgstr ""
+msgstr "Veja um breve sumário dos meus comandos e ferramentas."
 
 #: src/modules/meta/help_sections.py:40
 #, possible-python-brace-format
