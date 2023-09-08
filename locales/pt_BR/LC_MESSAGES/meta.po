@@ -24,7 +24,7 @@ msgstr ""
 #: src/modules/meta/cog.py:23
 msgctxt "cmd:help"
 msgid "help"
-msgstr ""
+msgstr "ajuda"
 
 #: src/modules/meta/cog.py:26
 msgctxt "cmd:help|desc"
