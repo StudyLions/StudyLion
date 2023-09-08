@@ -39,7 +39,7 @@ msgstr "O número de moedas informado é muito alto!"
 #: src/core/setting_types.py:60
 msgctxt "settype:coin|parse|error:too_large"
 msgid "Provided number of coins was too low!"
-msgstr ""
+msgstr "O número de moedas informado é muito baixo!"
 
 #: src/core/setting_types.py:71
 #, possible-python-brace-format
