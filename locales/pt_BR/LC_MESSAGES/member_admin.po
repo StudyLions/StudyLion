@@ -405,7 +405,7 @@ msgstr ""
 #: src/modules/member_admin/settings.py:361
 msgctxt "guildset:bot_autoroles"
 msgid "bot_autoroles"
-msgstr ""
+msgstr "cargos_automáticos_bots"
 
 #: src/modules/member_admin/settings.py:365
 msgctxt "guildset:bot_autoroles|desc"
