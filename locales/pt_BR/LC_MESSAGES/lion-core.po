@@ -119,7 +119,7 @@ msgstr ""
 #: src/core/setting_types.py:225
 msgctxt "settype:message|error:json_content_type"
 msgid "`content` field must be a string."
-msgstr "O campo ˋconteúdoˋ precisa ser uma string."
+msgstr "O campo ˋconteúdoˋ precisa ser do tipo string."
 
 #: src/core/setting_types.py:241
 #, possible-python-brace-format
