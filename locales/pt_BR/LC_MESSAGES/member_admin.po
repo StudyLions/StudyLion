@@ -140,12 +140,12 @@ msgstr "Mencione o novo membro"
 #: src/modules/member_admin/settings.py:22
 msgctxt "guildset:greeting_message|formatkey:user_name"
 msgid "Display name of the new member."
-msgstr "Mostrar o nome do novo membro"
+msgstr "Mostrar o nome do novo membro."
 
 #: src/modules/member_admin/settings.py:24
 msgctxt "guildset:greeting_message|formatkey:user_avatar"
 msgid "Avatar url of the new member."
-msgstr ""
+msgstr "Link do avatar do novo membro."
 
 #: src/modules/member_admin/settings.py:26
 msgctxt "guildset:greeting_message|formatkey:guild_name"
