@@ -393,7 +393,7 @@ msgstr "editar"
 #: src/modules/pomodoro/cog.py:686
 msgctxt "cmd:pomodoro_edit|desc"
 msgid "Edit a Timer"
-msgstr ""
+msgstr "Edita um Temporizador"
 
 #: src/modules/pomodoro/cog.py:690
 msgctxt "cmd:pomodoro_edit|param:channel"
