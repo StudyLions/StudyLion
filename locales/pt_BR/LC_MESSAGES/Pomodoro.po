@@ -689,7 +689,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "guildset:pomdoro_channel|set_using"
 msgid "{cmd} or channel selector below."
-msgstr ""
+msgstr "{cmd} ou seletor de canais abaixo. "
 
 #: src/modules/pomodoro/ui/edit.py:63
 msgctxt "modal:timer_editor|title"
