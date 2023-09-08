@@ -29,7 +29,7 @@ msgstr "PERFIL"
 #: src/gui/cards/profile.py:83
 msgctxt "skin:profile|header:achievements"
 msgid "ACHIEVEMENTS"
-msgstr ""
+msgstr "CONQUISTAS"
 
 #: src/gui/cards/profile.py:134
 msgctxt "skin:profile|field:rank_unranked_text"
