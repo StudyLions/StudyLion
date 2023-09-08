@@ -59,7 +59,7 @@ msgstr "Cargos Iniciais de Saudação ({commands[configure welcome]})"
 #: src/modules/member_admin/settingui.py:261
 msgctxt "dash:member_admin|dropdown|placeholder"
 msgid "Greetings and Initial Roles Panel"
-msgstr ""
+msgstr "Painel de Boas Vindas com Cargos Iniciais  "
 
 #: src/modules/member_admin/settingui.py:281
 msgctxt "dash:member_admin|section:greeting_messages|name"
