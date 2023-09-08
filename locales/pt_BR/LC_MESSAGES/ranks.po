@@ -39,7 +39,7 @@ msgstr "Conversa"
 #: src/modules/ranks/cog.py:383
 msgctxt "event:rank_update|embed:notify"
 msgid "New Activity Rank Attained!"
-msgstr ""
+msgstr "Novo Nível de Classificação Alcançado!"
 
 #: src/modules/ranks/cog.py:494
 msgctxt "rank_refresh|error:roles_dne|desc"
