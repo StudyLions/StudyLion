@@ -363,7 +363,7 @@ msgstr "Canal em que será deletado o temporizador."
 #: src/modules/pomodoro/cog.py:640
 msgctxt "cmd:pomodoro_destroy|error:no_timer"
 msgid "This channel doesn't have an attached pomodoro timer!"
-msgstr ""
+msgstr "Este canal não tem um temporizador Pomodoro."
 
 #: src/modules/pomodoro/cog.py:655
 msgctxt "cmd:pomodoro_destroy|error:insufficient_perms|owned"
