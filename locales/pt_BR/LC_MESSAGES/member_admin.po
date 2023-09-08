@@ -130,7 +130,7 @@ msgstr "bem vindo"
 #: src/modules/member_admin/cog.py:305
 msgctxt "cmd:configure_welcome|desc"
 msgid "Configure new member greetings and roles."
-msgstr ""
+msgstr "Configure as saudações e cargos do novo membro."
 
 #: src/modules/member_admin/settings.py:20
 msgctxt "guildset:greeting_message|formatkey:mention"
