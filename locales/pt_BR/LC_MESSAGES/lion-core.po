@@ -68,6 +68,8 @@ msgid ""
 "Could not decode the message data. Please ensure it is saved with the "
 "`UTF-8` encoding."
 msgstr ""
+"Não consegui descompilar os dados da mensagem. Por favor, confirme que está "
+"codificada como ˋUTF-8ˋ."
 
 #: src/core/setting_types.py:173
 #, possible-python-brace-format
