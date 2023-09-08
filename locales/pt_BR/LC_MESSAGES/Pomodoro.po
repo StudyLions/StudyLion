@@ -377,6 +377,7 @@ msgstr ""
 msgctxt "cmd:pomodoro_destroy|error:insufficient_perms|notowned"
 msgid "You need to be a server administrator to remove this timer!"
 msgstr ""
+"Você precisa ser administrador do servidor para remover este temporizador."
 
 #: src/modules/pomodoro/cog.py:677
 #, possible-python-brace-format
