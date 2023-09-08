@@ -335,7 +335,7 @@ msgstr ""
 msgctxt "cmd:pomodoro_create|response:success|content"
 msgid "Timer created successfully! Use the panel below to reconfigure."
 msgstr ""
-"Temporizador criado com sucesso! Use o painel abaixo para reconfigurá-lo"
+"Temporizador criado com sucesso! Use o painel abaixo para reconfigurá-lo."
 
 #: src/modules/pomodoro/cog.py:612
 msgctxt "cmd:pomodoro_destroy"
