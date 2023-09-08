@@ -90,4 +90,4 @@ msgstr "desligar"
 
 #: src/modules/sysadmin/exec_cog.py:380
 msgid "Shutdown (or restart) the client."
-msgstr ""
+msgstr "Desligar (ou reiniciar) o client."
