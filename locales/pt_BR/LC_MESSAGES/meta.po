@@ -120,7 +120,7 @@ msgstr "Sumário de Comando (para membros)"
 #: src/modules/meta/help_sections.py:140
 msgctxt "helptext|level:admin|title"
 msgid "Command Summary (for server admins)"
-msgstr ""
+msgstr "Sumário de Comando (para Administradores do servidor)"
 
 #: src/modules/meta/helpui.py:47
 msgctxt "ui:help|button:member_page|label"
