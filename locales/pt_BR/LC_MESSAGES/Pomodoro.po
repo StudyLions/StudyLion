@@ -717,7 +717,7 @@ msgstr ""
 #: src/modules/pomodoro/ui/status.py:82
 msgctxt "ui:timer_status|button:present|label"
 msgid "Present"
-msgstr ""
+msgstr "Presente"
 
 #: src/modules/pomodoro/ui/status.py:106
 msgctxt "ui:timer_status|button:edit|error:no_permissions"
