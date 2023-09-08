@@ -829,7 +829,7 @@ msgstr "Painel de Controle do Temporizador em {channel}"
 #: src/modules/pomodoro/ui/config.py:173
 msgctxt "ui:timer_options|embed|footer"
 msgid "Hover over the option names to view descriptions."
-msgstr ""
+msgstr "Passe o mouse sobre o nome para ver as descrições."
 
 #: src/modules/pomodoro/ui/config.py:185
 msgctxt "ui:timer_options|embed|field:pattern|name"
