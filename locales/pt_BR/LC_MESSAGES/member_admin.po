@@ -202,12 +202,12 @@ msgstr "Mensagens de boas vindas serão enviadas por Mensagem Direta."
 #, possible-python-brace-format
 msgctxt "guildset:greeting_channel|set_response:set"
 msgid "Welcome messages will now be sent to {channel}"
-msgstr ""
+msgstr "Mensagens de boas vindas serão enviadas para {channel}"
 
 #: src/modules/member_admin/settings.py:84
 msgctxt "guildset:greeting_channel|formmatted:unset"
 msgid "Direct Message"
-msgstr ""
+msgstr "Mensagem Direta"
 
 #: src/modules/member_admin/settings.py:91
 msgctxt "guildset:greeting_message"
