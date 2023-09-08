@@ -227,6 +227,9 @@ msgid ""
 "When set, this message will be sent to the `welcome_channel` when a *new* "
 "member joins the server. If not set, no message will be sent."
 msgstr ""
+"Quando configurada, esta mensagem será enviada ao ˋcanal_de_boas_vindasˋ "
+"sempre que um *novo* membro entrar no servidor. Se não configurado, nenhuma "
+"mensagem será enviada."
 
 #: src/modules/member_admin/settings.py:104
 msgctxt "guildset:greeting_message|accepts"
