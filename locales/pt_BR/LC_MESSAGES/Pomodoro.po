@@ -611,7 +611,7 @@ msgstr "Duração, em minutos, do estágio de ˋFocoˋ do temporizador."
 #: src/modules/pomodoro/options.py:188
 msgctxt "timerset:focus_length|accepts"
 msgid "A positive integer number of minutes."
-msgstr ""
+msgstr "Um número positivo e inteiro, em minutos."
 
 #: src/modules/pomodoro/options.py:212
 msgctxt "timerset:focus_length|desc"
