@@ -370,6 +370,8 @@ msgctxt "cmd:pomodoro_destroy|error:insufficient_perms|owned"
 msgid ""
 "You need to be an administrator or own this channel to remove this timer!"
 msgstr ""
+"Você precisa ser um administrador, ou dono do seu próprio canal, para "
+"remover este temporizador."
 
 #: src/modules/pomodoro/cog.py:665
 msgctxt "cmd:pomodoro_destroy|error:insufficient_perms|notowned"
