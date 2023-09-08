@@ -218,6 +218,8 @@ msgstr "mensagem_de_boas_vindas"
 msgctxt "guildset:greeting_message|desc"
 msgid "Custom message used to greet new members when they join the server."
 msgstr ""
+"Mensagem personalisada usada para saudar novos membros quando eles entram no"
+" servidor."
 
 #: src/modules/member_admin/settings.py:99
 msgctxt "guildset:greeting_message|long_desc"
