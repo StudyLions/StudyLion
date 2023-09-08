@@ -45,7 +45,7 @@ msgstr "PRÓXIMO NÍVEL: {name} {rangestr}"
 #: src/gui/cards/profile.py:142
 msgctxt "skin:profile|field:rank_noranks_text"
 msgid "NO RANKS AVAILABLE"
-msgstr ""
+msgstr "NÃO HÁ RANKS DISPONÍVEIS"
 
 #: src/gui/cards/profile.py:146
 msgctxt "skin:profile|field:rank_maxrank_text"
