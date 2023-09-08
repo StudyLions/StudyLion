@@ -271,6 +271,7 @@ msgstr ""
 msgctxt "guildset:greeting_message|set_response:unset"
 msgid "Welcome message unset! New members will not be greeted."
 msgstr ""
+"Mensagem de boas vindas desabilitada! Novos membros não receberão saudações."
 
 #: src/modules/member_admin/settings.py:141
 msgctxt "guildset:greeting_message|set_response:set"
