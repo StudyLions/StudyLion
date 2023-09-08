@@ -114,6 +114,7 @@ msgstr "Os campos ˋintegraçõesˋ precisam ser uma lista."
 msgctxt "settype:message|error:json_embed_embeds"
 msgid "Message data cannot include both `embed` and `embeds`."
 msgstr ""
+"Os dados de mensagem não podem incluir ambos ˋintegraçãoˋ e ˋintegraçõesˋ."
 
 #: src/core/setting_types.py:225
 msgctxt "settype:message|error:json_content_type"
