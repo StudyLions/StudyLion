@@ -74,7 +74,7 @@ msgstr "Cargos Iniciais ({commands[configure welcome]})"
 #: src/modules/member_admin/cog.py:234
 msgctxt "cmd:resetmember"
 msgid "resetmember"
-msgstr ""
+msgstr "ResetarMembro"
 
 #: src/modules/member_admin/cog.py:237
 msgctxt "cmd:resetmember|desc"
