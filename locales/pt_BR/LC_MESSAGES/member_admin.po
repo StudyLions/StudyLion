@@ -175,7 +175,7 @@ msgstr "canal_de_boas_vindas"
 #: src/modules/member_admin/settings.py:43
 msgctxt "guildset:greeting_channel|desc"
 msgid "Channel in which to welcome new members to the server."
-msgstr ""
+msgstr "Canal em que será recebido o novo membro no servidor."
 
 #: src/modules/member_admin/settings.py:47
 msgctxt "guildset:greeting_channel|long_desc"
