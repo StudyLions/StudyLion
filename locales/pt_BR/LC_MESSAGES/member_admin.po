@@ -44,7 +44,7 @@ msgstr "Mensagem de Saudação"
 #: src/modules/member_admin/settingui.py:205
 msgctxt "ui:memberadmin|button:return_msg|label"
 msgid "Returning Msg"
-msgstr ""
+msgstr "Mensagem Retornando"
 
 #: src/modules/member_admin/settingui.py:213
 msgctxt "ui:memberadmin|embed|title"
