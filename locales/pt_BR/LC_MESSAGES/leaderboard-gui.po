@@ -92,4 +92,4 @@ msgstr "{HH:02d}:{MM:02d}"
 #, possible-python-brace-format
 msgctxt "skin:leaderboard|mode:anki|entry_hours_text"
 msgid "{amount} cards"
-msgstr ""
+msgstr "{amount} cartões"
