@@ -139,6 +139,7 @@ msgctxt ""
 "cmd:configure_ranks|response:updated|setting:notification|nodm_withchannel"
 msgid "Rank update notifications will be sent to {channel}."
 msgstr ""
+"Atualização dos níveis das categorias serão enviadas para o {channel}."
 
 #: src/modules/ranks/cog.py:765
 msgctxt ""
