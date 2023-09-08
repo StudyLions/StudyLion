@@ -39,12 +39,12 @@ msgstr "CLASSIFICAÇÃO CANAIS DE VOZ"
 #: src/gui/cards/leaderboard.py:81
 msgctxt "skin:leaderboard|mode:anki|header_text"
 msgid "ANKI REVIEW LEADERBOARD"
-msgstr ""
+msgstr "CLASSIFICAÇÃO ATIVIDADES ANKI"
 
 #: src/gui/cards/leaderboard.py:99
 msgctxt "skin:leaderboard|field:subheader_text"
 msgid "SERVER: "
-msgstr ""
+msgstr "SERVIDOR:"
 
 #: src/gui/cards/leaderboard.py:129
 #, possible-python-brace-format
