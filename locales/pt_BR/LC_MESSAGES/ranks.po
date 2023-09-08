@@ -34,7 +34,7 @@ msgstr "XP"
 #: src/modules/ranks/cog.py:75
 msgctxt "cmd:configure_ranks|param:rank_type|choice:message"
 msgid "Message"
-msgstr ""
+msgstr "Conversa"
 
 #: src/modules/ranks/cog.py:383
 msgctxt "event:rank_update|embed:notify"
