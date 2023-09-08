@@ -150,7 +150,7 @@ msgstr "Link do avatar do novo membro."
 #: src/modules/member_admin/settings.py:26
 msgctxt "guildset:greeting_message|formatkey:guild_name"
 msgid "Name of this server."
-msgstr ""
+msgstr "Nome deste servidor."
 
 #: src/modules/member_admin/settings.py:28
 msgctxt "guildset:greeting_message|formatkey:guild_icon"
