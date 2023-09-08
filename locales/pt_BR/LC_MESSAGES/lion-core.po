@@ -29,7 +29,7 @@ msgstr "Um número inteiro e positivo de moedas."
 #: src/core/setting_types.py:47
 msgctxt "settype:coin|parse|error:notinteger"
 msgid "The coin quantity must be a positive integer!"
-msgstr ""
+msgstr "O número de moedas precisa ser inteiro e positivo!"
 
 #: src/core/setting_types.py:54
 msgctxt "settype:coin|parse|error:too_large"
