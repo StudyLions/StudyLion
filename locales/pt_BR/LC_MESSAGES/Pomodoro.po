@@ -886,6 +886,8 @@ msgctxt "ui:timer_options|issue:cannot_change_name"
 msgid ""
 "I cannot update the name of {channel}! (Needs `MANAGE_CHANNELS` permission)"
 msgstr ""
+"Eu não posso atualizar o nome do {channel}! (É preciso permissão de "
+"ˋGERENCIAR_CANAISˋ)"
 
 #: src/modules/pomodoro/ui/config.py:260
 msgctxt "ui:timer_options|issue:notif_channel_dne"
