@@ -34,7 +34,7 @@ msgstr "Selecione os CargosAutomáticos"
 #: src/modules/member_admin/settingui.py:115
 msgctxt "ui:memberadmin|menu:bot_autoroles|placeholder"
 msgid "Select Bot Autoroles"
-msgstr ""
+msgstr "Selecione os CargosAutomáticos de Bot"
 
 #: src/modules/member_admin/settingui.py:156
 msgctxt "ui:member_admin|button:greet_msg|label"
