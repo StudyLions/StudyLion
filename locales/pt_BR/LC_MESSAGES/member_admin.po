@@ -39,7 +39,7 @@ msgstr "Selecione os CargosAutomáticos de Bot"
 #: src/modules/member_admin/settingui.py:156
 msgctxt "ui:member_admin|button:greet_msg|label"
 msgid "Greeting Msg"
-msgstr ""
+msgstr "Mensagem de Saudação"
 
 #: src/modules/member_admin/settingui.py:205
 msgctxt "ui:memberadmin|button:return_msg|label"
