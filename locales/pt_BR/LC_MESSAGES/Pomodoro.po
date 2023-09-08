@@ -152,7 +152,7 @@ msgstr "temporizadores"
 #: src/modules/pomodoro/cog.py:322
 msgctxt "cmd:pomodoro|desc"
 msgid "Base group for all pomodoro timer commands."
-msgstr ""
+msgstr "Base para reunir todos os comandos pomodoro."
 
 #: src/modules/pomodoro/cog.py:330
 msgctxt "cmd:pomodoro_status"
