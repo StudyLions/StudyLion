@@ -313,7 +313,8 @@ msgid ""
 "*returns* to the server. If not set, no message will be sent."
 msgstr ""
 "Quando configurada, esta mensagem será enviada para o ˋcanal_de_boas_vindasˋ"
-" assim que um membro *voltar a entrar* no servidor."
+" assim que um membro *voltar a entrar* no servidor. Se não for configurada, "
+"nenhuma mensagem será enviada."
 
 #: src/modules/member_admin/settings.py:226
 msgctxt "guildset:returning_message|accepts"
