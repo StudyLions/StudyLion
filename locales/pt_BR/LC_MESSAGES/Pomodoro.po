@@ -383,12 +383,12 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:pomdoro_destroy|response:success|description"
 msgid "Timer successfully removed from {channel}."
-msgstr ""
+msgstr "O temporizador foi removido de {channel} com sucesso."
 
 #: src/modules/pomodoro/cog.py:683
 msgctxt "cmd:pomodoro_edit"
 msgid "edit"
-msgstr ""
+msgstr "editar"
 
 #: src/modules/pomodoro/cog.py:686
 msgctxt "cmd:pomodoro_edit|desc"
