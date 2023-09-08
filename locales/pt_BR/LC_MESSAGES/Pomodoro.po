@@ -408,7 +408,7 @@ msgstr "Canal do temporizador a ser editado."
 #: src/modules/pomodoro/cog.py:737
 msgctxt "cmd:pomodoro_edit|error:no_timer"
 msgid "This channel doesn't have an attached pomodoro timer to edit!"
-msgstr ""
+msgstr "Este canal não possui um temporizador Pomodoro para ser editado!"
 
 #: src/modules/pomodoro/cog.py:750
 msgctxt "cmd:pomodoro_edit|error:insufficient_perms|role:other"
