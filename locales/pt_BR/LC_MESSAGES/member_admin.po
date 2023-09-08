@@ -49,7 +49,7 @@ msgstr "Mensagem Retornando"
 #: src/modules/member_admin/settingui.py:213
 msgctxt "ui:memberadmin|embed|title"
 msgid "Member Admin Configuration Panel"
-msgstr ""
+msgstr "Painel Configuração da Administração de Membros  "
 
 #: src/modules/member_admin/settingui.py:257
 msgctxt "dash:member_admin|title"
