@@ -54,7 +54,7 @@ msgstr "Painel Configuração da Administração de Membros  "
 #: src/modules/member_admin/settingui.py:257
 msgctxt "dash:member_admin|title"
 msgid "Greetings and Initial Roles ({commands[configure welcome]})"
-msgstr ""
+msgstr "Cargos Iniciais de Saudação ({commands[configure welcome]})"
 
 #: src/modules/member_admin/settingui.py:261
 msgctxt "dash:member_admin|dropdown|placeholder"
