@@ -82,6 +82,7 @@ msgstr ""
 #: src/modules/sysadmin/exec_cog.py:347
 msgid "Name of the extesion to reload. See autocomplete for options."
 msgstr ""
+"Nome da extensão a recarregar. Veja uma das opções do auto-preenchimento."
 
 #: src/modules/sysadmin/exec_cog.py:379
 msgid "shutdown"
