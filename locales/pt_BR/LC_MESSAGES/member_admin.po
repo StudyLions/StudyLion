@@ -410,7 +410,7 @@ msgstr "cargos_automáticos_bots"
 #: src/modules/member_admin/settings.py:365
 msgctxt "guildset:bot_autoroles|desc"
 msgid "Roles given to new bots when they join the server."
-msgstr ""
+msgstr "Cargos dados aos novos bots quando entrarem ao servidor."
 
 #: src/modules/member_admin/settings.py:369
 msgctxt "guildset:bot_autoroles|long_desc"
