@@ -383,7 +383,7 @@ msgstr "Espaços reservados"
 #: src/modules/member_admin/settings.py:339
 msgctxt "guildset:autoroles"
 msgid "autoroles"
-msgstr ""
+msgstr "cargos_automáticos"
 
 #: src/modules/member_admin/settings.py:343
 msgctxt "guildset:autoroles|desc"
