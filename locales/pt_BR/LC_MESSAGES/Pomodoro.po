@@ -675,6 +675,8 @@ msgstr "Nome ou ID do canal para enviar as notificações do temporizador."
 msgctxt "guildset:pomodoro_channel|set_response|set"
 msgid "Pomodoro timer notifications will now default to {channel}"
 msgstr ""
+"As notificações do Pomodoro irão, a partir de agora, ser enviadas para "
+"{channel}."
 
 #: src/modules/pomodoro/settings.py:56
 msgctxt "guildset:pomodoro_channel|set_response|unset"
