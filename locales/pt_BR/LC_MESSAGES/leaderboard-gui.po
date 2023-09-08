@@ -24,7 +24,7 @@ msgstr ""
 #: src/gui/cards/leaderboard.py:69
 msgctxt "skin:leaderboard|mode:study|header_text"
 msgid "STUDY TIME LEADERBOARD"
-msgstr ""
+msgstr "CLASSIFICAÇÃO TEMPO DE ESTUDOS"
 
 #: src/gui/cards/leaderboard.py:73
 msgctxt "skin:leaderboard|mode:text|header_text"
