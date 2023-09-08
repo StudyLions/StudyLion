@@ -80,7 +80,7 @@ msgstr "{HH:02d}:{MM:02d}"
 #, possible-python-brace-format
 msgctxt "skin:leaderboard|mode:text|entry_hours_text"
 msgid "{amount} XP"
-msgstr ""
+msgstr "{amount} XP"
 
 #: src/gui/cards/leaderboard.py:176
 #, possible-python-brace-format
