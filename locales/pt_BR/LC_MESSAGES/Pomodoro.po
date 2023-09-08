@@ -813,7 +813,7 @@ msgstr "Configurar Canal de Voz"
 #: src/modules/pomodoro/ui/config.py:142
 msgctxt "ui:timer_options|menu:notification_channel|placeholder"
 msgid "Set Notification Channel"
-msgstr ""
+msgstr "Configurar Canal de Notificações"
 
 #: src/modules/pomodoro/ui/config.py:157
 msgctxt "ui:timer_options|menu:manager_role|placeholder"
