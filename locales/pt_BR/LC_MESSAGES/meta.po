@@ -125,9 +125,9 @@ msgstr "Sumário de Comando (para Administradores do servidor)"
 #: src/modules/meta/helpui.py:47
 msgctxt "ui:help|button:member_page|label"
 msgid "Member Page"
-msgstr ""
+msgstr "Página do Membro"
 
 #: src/modules/meta/helpui.py:59
 msgctxt "ui:help|button:admin_page|label"
 msgid "Admin Page"
-msgstr ""
+msgstr "Página do Administrador"
