@@ -120,12 +120,12 @@ msgstr ""
 #: src/modules/member_admin/cog.py:286
 msgctxt "cmd:resetmember|error:nothing_to_do"
 msgid "No reset operation selected, nothing to do."
-msgstr ""
+msgstr "Nenhuma operação de resetar foi selecionada. Não tenho o que fazer."
 
 #: src/modules/member_admin/cog.py:302
 msgctxt "cmd:configure_welcome"
 msgid "welcome"
-msgstr ""
+msgstr "bem vindo"
 
 #: src/modules/member_admin/cog.py:305
 msgctxt "cmd:configure_welcome|desc"
