@@ -212,7 +212,7 @@ msgstr "Mensagem Direta"
 #: src/modules/member_admin/settings.py:91
 msgctxt "guildset:greeting_message"
 msgid "welcome_message"
-msgstr ""
+msgstr "mensagem_de_boas_vindas"
 
 #: src/modules/member_admin/settings.py:95
 msgctxt "guildset:greeting_message|desc"
