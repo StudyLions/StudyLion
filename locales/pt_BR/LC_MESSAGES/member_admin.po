@@ -170,7 +170,7 @@ msgstr "Número de membros neste servidor."
 #: src/modules/member_admin/settings.py:40
 msgctxt "guildset:greeting_channel"
 msgid "welcome_channel"
-msgstr ""
+msgstr "canal_de_boas_vindas"
 
 #: src/modules/member_admin/settings.py:43
 msgctxt "guildset:greeting_channel|desc"
