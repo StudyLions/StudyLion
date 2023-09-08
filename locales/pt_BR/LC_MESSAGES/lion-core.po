@@ -55,7 +55,7 @@ msgstr "Dados das mensagens formatados como JSON"
 #: src/core/setting_types.py:102
 msgctxt "settype:message|download|error:not_json"
 msgid "The attached message data is not a JSON file!"
-msgstr ""
+msgstr "A mensagem anexada não é um dado JSON!"
 
 #: src/core/setting_types.py:107
 msgctxt "settype:message|download|error:size"
