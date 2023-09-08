@@ -114,6 +114,8 @@ msgid ""
 "The saved roles for {target} have been reset. They will not regain their "
 "roles if they rejoin."
 msgstr ""
+"Os cargos salvos de {target} foram resetados. Eles não irão recuperar os "
+"cargos caso retornem."
 
 #: src/modules/member_admin/cog.py:286
 msgctxt "cmd:resetmember|error:nothing_to_do"
