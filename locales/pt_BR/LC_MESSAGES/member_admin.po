@@ -196,7 +196,7 @@ msgstr "Nome ou ID do canal de boas vindas. Ou 0 para Mensagens Diretas."
 #: src/modules/member_admin/settings.py:67
 msgctxt "guildset:greeting_channel|set_response:unset"
 msgid "Welcome messages will now be sent via direct message."
-msgstr ""
+msgstr "Mensagens de boas vindas serão enviadas por Mensagem Direta."
 
 #: src/modules/member_admin/settings.py:72
 #, possible-python-brace-format
