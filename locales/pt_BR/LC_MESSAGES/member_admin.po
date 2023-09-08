@@ -281,7 +281,7 @@ msgstr "A mensagem de boas vindas foi atualizada."
 #: src/modules/member_admin/settings.py:153
 msgctxt "guildset:greeting_message|formmatted:unset"
 msgid "Not set, members will not be welcomed."
-msgstr ""
+msgstr "Não configurado. Membros não receberão boas vindas."
 
 #: src/modules/member_admin/settings.py:200
 msgctxt "guildset:greeting_message|embed_field|formatkeys|explanation"
