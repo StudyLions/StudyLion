@@ -711,6 +711,8 @@ msgctxt "ui:timer_status|button:present|error:not_in_timer"
 msgid ""
 "You are not in this timer! Join the timer channel by pressing {channel}."
 msgstr ""
+"Você não faz parte deste temporizador! Você pode entrar nele pressionando "
+"aqui {channel}."
 
 #: src/modules/pomodoro/ui/status.py:82
 msgctxt "ui:timer_status|button:present|label"
