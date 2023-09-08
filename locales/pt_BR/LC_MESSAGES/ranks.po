@@ -122,6 +122,7 @@ msgctxt ""
 "cmd:configure_ranks|response:updated|setting:notification|withdm_nochannel"
 msgid "Rank update notifications will be sent via **direct message**."
 msgstr ""
+"As atualizações da classificação será enviada por **mensagem_direta**."
 
 #: src/modules/ranks/cog.py:760
 #, possible-python-brace-format
