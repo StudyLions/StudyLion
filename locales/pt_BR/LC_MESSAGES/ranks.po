@@ -114,6 +114,8 @@ msgid ""
 "Rank update notifications will be sent via **direct message** when possible,"
 " otherwise to {channel}"
 msgstr ""
+"As atualizações de níveis de classificação serão enviados por "
+"**mensagem_direta** quando possível, ou em outro caso {channel}."
 
 #: src/modules/ranks/cog.py:754
 msgctxt ""
