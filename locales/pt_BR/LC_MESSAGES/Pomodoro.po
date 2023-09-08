@@ -403,7 +403,7 @@ msgstr "canal_do_temporizador"
 #: src/modules/pomodoro/cog.py:696
 msgctxt "cmd:pomodoro_edit|param:channel|desc"
 msgid "Channel holding the timer to edit."
-msgstr ""
+msgstr "Canal do temporizador a ser editado."
 
 #: src/modules/pomodoro/cog.py:737
 msgctxt "cmd:pomodoro_edit|error:no_timer"
