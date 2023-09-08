@@ -448,19 +448,19 @@ msgstr "pomodoro"
 #: src/modules/pomodoro/cog.py:818
 msgctxt "cmd:configure_pomodoro|desc"
 msgid "Configure Pomodoro Timer System"
-msgstr ""
+msgstr "Configure o Sistema de Temporizador Pomodoro"
 
 #: src/modules/pomodoro/lib.py:19
 #, possible-python-brace-format
 msgctxt "formatstring:channel_name|key:remaining"
 msgid "{remaining}"
-msgstr ""
+msgstr "{remaining}"
 
 #: src/modules/pomodoro/lib.py:20
 #, possible-python-brace-format
 msgctxt "formatstring:channel_name|key:stage"
 msgid "{stage}"
-msgstr ""
+msgstr "{stage}"
 
 #: src/modules/pomodoro/lib.py:21
 #, possible-python-brace-format
