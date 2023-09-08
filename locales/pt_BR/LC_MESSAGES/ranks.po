@@ -75,7 +75,7 @@ msgid ""
 "Too many issues occurred while removing ranks! Please check my permissions "
 "and try again in a few minutes."
 msgstr ""
-"Muitos problemas ocorreram eenquant eu removia os ranks! Por favor, "
+"Muitos problemas ocorreram enquanto eu removia as níveis! Por favor, "
 "verifique se tenho permissões suficientes e tente novamente em alguns "
 "minutos."
 
