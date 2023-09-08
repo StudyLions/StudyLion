@@ -777,12 +777,12 @@ msgstr ""
 #: src/modules/pomodoro/ui/status.py:204
 msgctxt "ui:timer_status|button:stop|label"
 msgid "Stop"
-msgstr ""
+msgstr "Parar"
 
 #: src/modules/pomodoro/ui/config.py:51
 msgctxt "ui:timer_options|button:edit|label"
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: src/modules/pomodoro/ui/config.py:67
 msgctxt "ui:timer_options|button:voice_alerts|label"
