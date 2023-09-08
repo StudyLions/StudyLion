@@ -358,7 +358,7 @@ msgstr "canal_do_temporizador"
 #: src/modules/pomodoro/cog.py:622
 msgctxt "cmd:pomodoro_destroy|param:channel"
 msgid "Channel with the timer to delete."
-msgstr ""
+msgstr "Canal em que será deletado o temporizador."
 
 #: src/modules/pomodoro/cog.py:640
 msgctxt "cmd:pomodoro_destroy|error:no_timer"
