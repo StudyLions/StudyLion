@@ -694,7 +694,7 @@ msgstr "{cmd} ou seletor de canais abaixo. "
 #: src/modules/pomodoro/ui/edit.py:63
 msgctxt "modal:timer_editor|title"
 msgid "Timer Option Editor"
-msgstr ""
+msgstr "Editor das Opções do Temporizador"
 
 #: src/modules/pomodoro/ui/status.py:61
 msgctxt "ui:timer_status|button:present|ack"
