@@ -79,7 +79,7 @@ msgid ""
 "builder]({link})."
 msgstr ""
 "Você pode ver, testar e corrigir sua incorporação usando o sistema online "
-"{embed builder}({link})."
+"[embed builder]({link})."
 
 #: src/core/setting_types.py:185
 #, possible-python-brace-format
