@@ -209,7 +209,7 @@ msgstr "ˋVozˋ"
 #: src/modules/ranks/settings.py:27
 msgctxt "guildset:rank_type|output:xp"
 msgid "`Exp`"
-msgstr ""
+msgstr "ˋExpˋ"
 
 #: src/modules/ranks/settings.py:28
 msgctxt "guildset:rank_type|output:message"
