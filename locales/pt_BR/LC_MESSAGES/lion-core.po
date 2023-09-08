@@ -103,7 +103,7 @@ msgstr ""
 #: src/core/setting_types.py:202
 msgctxt "settype:message|error:json_embed_type"
 msgid "`embed` field must be a valid JSON object."
-msgstr ""
+msgstr "O campo ˋintegraçõesˋ precisa ser um objeto JSON válido."
 
 #: src/core/setting_types.py:210
 msgctxt "settype:message|error:json_embeds_type"
