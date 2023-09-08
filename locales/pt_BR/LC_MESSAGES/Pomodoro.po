@@ -787,7 +787,7 @@ msgstr "Editar"
 #: src/modules/pomodoro/ui/config.py:67
 msgctxt "ui:timer_options|button:voice_alerts|label"
 msgid "Voice Alerts"
-msgstr ""
+msgstr "Alertas Sonoros"
 
 #: src/modules/pomodoro/ui/config.py:88
 msgctxt "ui:timer_options|button:delete|success|title"
