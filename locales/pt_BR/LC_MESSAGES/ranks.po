@@ -475,7 +475,7 @@ msgstr ""
 #: src/modules/ranks/ui/preview.py:225
 msgctxt "ui:rank_preview|menu:roles|error:above_caller|title"
 msgid "Insufficient permissions!"
-msgstr ""
+msgstr "Permissões insuficientes!"
 
 #: src/modules/ranks/ui/preview.py:241
 msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:is_default"
