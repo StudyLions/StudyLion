@@ -48,6 +48,16 @@ class LeoUI(View):
         # TODO: Replace this with a substitutable ViewLayout class
         self._layout: Optional[tuple[tuple[Item, ...], ...]] = None
 
+    @property
+    def _stopped(self) -> asyncio.Future:
+        """
+        Return an future indicating whether the View has finished interacting.
+
+        Currently exposes a hidden attribute of the underlying View.
+        May be reimplemented in future.
+        """
+        return self._View__stopped
+
     def to_components(self) -> List[Dict[str, Any]]:
         """
         Extending component generator to apply the set _layout, if it exists.
