@@ -685,7 +685,7 @@ msgstr "cargo"
 #: src/modules/rolemenus/roleoptions.py:57
 msgctxt "roleset:role|desc"
 msgid "The role associated to this menu item."
-msgstr ""
+msgstr "O cargo associado a este item do menu."
 
 #: src/modules/rolemenus/roleoptions.py:61
 msgctxt "roleset:role|long_desc"
