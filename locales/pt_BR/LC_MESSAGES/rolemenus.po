@@ -1106,7 +1106,7 @@ msgstr "Os membros poderão remover os cargos com este menu."
 #: src/modules/rolemenus/menuoptions.py:123
 msgctxt "menuset:refunds"
 msgid "refunds"
-msgstr ""
+msgstr "ressarcido"
 
 #: src/modules/rolemenus/menuoptions.py:126
 msgctxt "menuset:refunds|desc"
