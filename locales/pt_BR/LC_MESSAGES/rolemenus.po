@@ -967,7 +967,7 @@ msgstr ""
 #: src/modules/rolemenus/rolemenu.py:529
 msgctxt "rolemenu|deslect|success|title"
 msgid "Role removed"
-msgstr ""
+msgstr "Cargo retirado"
 
 #: src/modules/rolemenus/rolemenu.py:535
 #, possible-python-brace-format
