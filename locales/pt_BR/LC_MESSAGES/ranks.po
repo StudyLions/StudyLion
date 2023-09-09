@@ -718,6 +718,8 @@ msgstr "Permissões Insuficientes!"
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:is_default"
 msgid "The @everyone role cannot be removed, and cannot be a rank!"
 msgstr ""
+"O cargo @everyone não pode ser removido, nem pode ser um cargo de nível "
+"classificatório."
 
 #: src/modules/ranks/ui/overview.py:213
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:is_managed"
