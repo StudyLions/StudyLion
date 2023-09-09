@@ -1,0 +1,367 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Bruno Evangelista De Oliveira, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-28 22:43+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
+"Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#: src/modules/reminders/cog.py:93
+msgctxt "reminder|embed"
+msgid "You asked me to remind you!"
+msgstr "Você me pediu para te lembrar!"
+
+#: src/modules/reminders/cog.py:101
+msgctxt "reminder|embed"
+msgid "Context?"
+msgstr "Contexto?"
+
+#: src/modules/reminders/cog.py:103
+msgctxt "reminder|embed"
+msgid "Click Here"
+msgstr ""
+
+#: src/modules/reminders/cog.py:110
+msgctxt "reminder|embed"
+msgid "Next reminder"
+msgstr ""
+
+#: src/modules/reminders/cog.py:134
+#, possible-python-brace-format
+msgctxt "reminder|formatted|interval"
+msgid "Every day"
+msgid_plural "Every `{days}` days"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: src/modules/reminders/cog.py:143
+#, possible-python-brace-format
+msgctxt "reminder|formatted|interval"
+msgid "Every hour"
+msgid_plural "Every `{hours}` hours"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: src/modules/reminders/cog.py:152
+#, possible-python-brace-format
+msgctxt "reminder|formatted|interval"
+msgid "Every `{duration}`"
+msgstr ""
+
+#: src/modules/reminders/cog.py:352
+msgctxt "cmd:reminders"
+msgid "reminders"
+msgstr ""
+
+#. No help string
+#: src/modules/reminders/cog.py:359
+msgctxt "cmd:reminders_show"
+msgid "show"
+msgstr ""
+
+#: src/modules/reminders/cog.py:362
+msgctxt "cmd:reminders_show|desc"
+msgid "Display your current reminders."
+msgstr ""
+
+#: src/modules/reminders/cog.py:378
+msgctxt "cmd:reminders_show|close_elsewhere"
+msgid "Closing since the list was opened elsewhere."
+msgstr ""
+
+#: src/modules/reminders/cog.py:390
+msgctxt "cmd:reminders_clear"
+msgid "clear"
+msgstr ""
+
+#: src/modules/reminders/cog.py:393
+msgctxt "cmd:reminders_clear|desc"
+msgid "Clear your reminder list."
+msgstr ""
+
+#: src/modules/reminders/cog.py:411
+msgctxt "cmd:reminders_clear|error:no_reminders"
+msgid "You have no reminders to clear!"
+msgstr ""
+
+#: src/modules/reminders/cog.py:420
+msgctxt "cmd:reminders_clear|confirm|title"
+msgid "Are You Sure?"
+msgstr ""
+
+#: src/modules/reminders/cog.py:423
+#, possible-python-brace-format
+msgctxt "cmd:reminders_clear|confirm|desc"
+msgid "Are you sure you want to delete your `{count}` reminder?"
+msgid_plural "Are you sure you want to clear your `{count}` reminders?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: src/modules/reminders/cog.py:429
+msgctxt "cmd:reminders_clear|confirm|button:yes"
+msgid "Yes, clear my reminders"
+msgstr ""
+
+#: src/modules/reminders/cog.py:438
+msgctxt "cmd:reminders_clear|success|desc"
+msgid "Your reminders have been cleared!"
+msgstr ""
+
+#: src/modules/reminders/cog.py:447
+msgctxt "cmd:reminders_clear|confirm|button:cancel"
+msgid "Cancel"
+msgstr ""
+
+#: src/modules/reminders/cog.py:457
+msgctxt "cmd:reminders_cancel"
+msgid "cancel"
+msgstr ""
+
+#: src/modules/reminders/cog.py:460
+msgctxt "cmd:reminders_cancel|desc"
+msgid ""
+"Cancel a single reminder. Use the menu in \"reminder show\" to cancel "
+"multiple reminders."
+msgstr ""
+
+#: src/modules/reminders/cog.py:464
+msgctxt "cmd:reminders_cancel|param:reminder"
+msgid "reminder"
+msgstr ""
+
+#: src/modules/reminders/cog.py:469
+msgctxt "cmd:reminders_cancel|param:reminder|desc"
+msgid "Start typing, then select a reminder to cancel."
+msgstr ""
+
+#: src/modules/reminders/cog.py:488
+msgctxt "cmd:reminders_cancel|error:no_reminders"
+msgid "There are no reminders to cancel!"
+msgstr ""
+
+#: src/modules/reminders/cog.py:512
+msgctxt "cmd:reminders_cancel|error:no_match"
+msgid ""
+"I am not sure which reminder you want to cancel. Please try again, selecting"
+" a reminder from the list of choices."
+msgstr ""
+
+#: src/modules/reminders/cog.py:525
+msgctxt "cmd:reminders_cancel|embed:success|desc"
+msgid "Reminder successfully cancelled."
+msgstr ""
+
+#: src/modules/reminders/cog.py:542
+msgctxt "cmd:reminders_cancel|acmpl:reminder|error:no_reminders"
+msgid "There are no reminders to cancel!"
+msgstr ""
+
+#: src/modules/reminders/cog.py:572
+#, possible-python-brace-format
+msgctxt "cmd:reminders_cancel|acmpl:reminder|error:no_matches"
+msgid "You do not have any reminders matching \"{partial}\""
+msgstr ""
+
+#: src/modules/reminders/cog.py:580
+msgctxt "cmd:remindme"
+msgid "remindme"
+msgstr ""
+
+#: src/modules/reminders/cog.py:587
+msgctxt "cmd:remindme_at"
+msgid "at"
+msgstr ""
+
+#: src/modules/reminders/cog.py:590
+msgctxt "cmd:remindme_at|desc"
+msgid "Schedule a reminder for a particular time."
+msgstr ""
+
+#: src/modules/reminders/cog.py:594
+msgctxt "cmd:remindme_at|param:time"
+msgid "time"
+msgstr ""
+
+#: src/modules/reminders/cog.py:595
+msgctxt "cmd:remindme_at|param:reminder"
+msgid "reminder"
+msgstr ""
+
+#: src/modules/reminders/cog.py:596
+msgctxt "cmd:remindme_at|param:every"
+msgid "repeat_every"
+msgstr ""
+
+#: src/modules/reminders/cog.py:599
+msgctxt "cmd:remindme_at|param:time|desc"
+msgid "When you want to be reminded. (E.g. `4pm` or `16:00`)."
+msgstr ""
+
+#: src/modules/reminders/cog.py:600
+msgctxt "cmd:remindme_at|param:reminder|desc"
+msgid "What should the reminder be?"
+msgstr ""
+
+#: src/modules/reminders/cog.py:601
+msgctxt "cmd:remindme_at|param:every|desc"
+msgid "How often to repeat this reminder."
+msgstr ""
+
+#: src/modules/reminders/cog.py:619
+msgctxt "cmd_remindme_at|error:too_many|desc"
+msgid "Sorry, you have reached the maximum of `25` reminders!"
+msgstr ""
+
+#: src/modules/reminders/cog.py:623
+msgctxt "cmd_remindme_at|error:too_many|title"
+msgid "Could not create reminder!"
+msgstr ""
+
+#: src/modules/reminders/cog.py:636
+msgctxt "cmd_remindme_at|error:too_fast|desc"
+msgid ""
+"You cannot set a repeating reminder with a period less than 10 minutes."
+msgstr ""
+
+#: src/modules/reminders/cog.py:640
+msgctxt "cmd_remindme_at|error:too_fast|title"
+msgid "Could not create reminder!"
+msgstr ""
+
+#: src/modules/reminders/cog.py:658
+#, possible-python-brace-format
+msgctxt "cmd:remindme_at|error:parse_time|desc"
+msgid ""
+"Could not parse provided time `{given}`. Try entering e.g. `4 pm` or "
+"`16:00`."
+msgstr ""
+
+#: src/modules/reminders/cog.py:662
+msgctxt "cmd:remindme_at|error:parse_time|title"
+msgid "Could not create reminder!"
+msgstr ""
+
+#: src/modules/reminders/cog.py:673
+msgctxt "cmd:remindme_at|error:past_time|desc"
+msgid "Provided time is in the past!"
+msgstr ""
+
+#: src/modules/reminders/cog.py:677
+msgctxt "cmd:remindme_at|error:past_time|title"
+msgid "Could not create reminder!"
+msgstr ""
+
+#: src/modules/reminders/cog.py:702
+#, possible-python-brace-format
+msgctxt "cmd:remindme_in|success|title"
+msgid "Reminder Set at {timestamp}"
+msgstr ""
+
+#: src/modules/reminders/cog.py:713
+msgctxt "cmd:remindme_in"
+msgid "in"
+msgstr ""
+
+#: src/modules/reminders/cog.py:716
+msgctxt "cmd:remindme_in|desc"
+msgid "Schedule a reminder for a given amount of time in the future."
+msgstr ""
+
+#: src/modules/reminders/cog.py:720
+msgctxt "cmd:remindme_in|param:time"
+msgid "time"
+msgstr ""
+
+#: src/modules/reminders/cog.py:721
+msgctxt "cmd:remindme_in|param:reminder"
+msgid "reminder"
+msgstr ""
+
+#: src/modules/reminders/cog.py:722
+msgctxt "cmd:remindme_in|param:every"
+msgid "repeat_every"
+msgstr ""
+
+#: src/modules/reminders/cog.py:725
+msgctxt "cmd:remindme_in|param:time|desc"
+msgid "How far into the future to set the reminder (e.g. 1 day 10h 5m)."
+msgstr ""
+
+#: src/modules/reminders/cog.py:726
+msgctxt "cmd:remindme_in|param:reminder|desc"
+msgid "What should the reminder be?"
+msgstr ""
+
+#: src/modules/reminders/cog.py:727
+msgctxt "cmd:remindme_in|param:every|desc"
+msgid "How often to repeat this reminder. (e.g. 1 day, or 2h)"
+msgstr ""
+
+#: src/modules/reminders/cog.py:745
+msgctxt "cmd_remindme_in|error:too_many|desc"
+msgid "Sorry, you have reached the maximum of `25` reminders!"
+msgstr ""
+
+#: src/modules/reminders/cog.py:749
+msgctxt "cmd_remindme_in|error:too_many|title"
+msgid "Could not create reminder!"
+msgstr ""
+
+#: src/modules/reminders/cog.py:762
+msgctxt "cmd_remindme_in|error:too_fast|desc"
+msgid ""
+"You cannot set a repeating reminder with a period less than 10 minutes."
+msgstr ""
+
+#: src/modules/reminders/cog.py:766
+msgctxt "cmd_remindme_in|error:too_fast|title"
+msgid "Could not create reminder!"
+msgstr ""
+
+#: src/modules/reminders/cog.py:792
+#, possible-python-brace-format
+msgctxt "cmd:remindme_in|success|title"
+msgid "Reminder Set {timestamp}"
+msgstr ""
+
+#: src/modules/reminders/cog.py:853
+msgctxt "ui:reminderlist|select:remove|placeholder"
+msgid "Select to cancel."
+msgstr ""
+
+#: src/modules/reminders/cog.py:929
+#, possible-python-brace-format
+msgctxt "ui:reminderlist|embed:list|author"
+msgid "{name}'s reminders"
+msgstr ""
+
+#: src/modules/reminders/cog.py:935
+msgctxt "ui:reminderlist|embed:list|footer"
+msgid "Click a reminder twice to jump to the context!"
+msgstr ""
+
+#: src/modules/reminders/cog.py:942
+#, possible-python-brace-format
+msgctxt "ui:reminderlist|embed:no_reminders|desc"
+msgid ""
+"You have no reminders to display!\n"
+"Use {remindme} to create a new reminder."
+msgstr ""
