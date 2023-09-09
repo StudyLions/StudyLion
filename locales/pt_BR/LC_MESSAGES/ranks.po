@@ -561,7 +561,7 @@ msgstr "Não pude atualizar as classificações de nível do servidor."
 #: src/modules/ranks/ui/refresh.py:133
 msgctxt "ui:refresh_ranks|embed|title:done"
 msgid "Rank refresh complete!"
-msgstr ""
+msgstr "Atualização das classificações de nível foi feita!"
 
 #: src/modules/ranks/ui/refresh.py:139
 msgctxt "ui:refresh_ranks|embed|title:working"
