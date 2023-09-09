@@ -1088,6 +1088,10 @@ msgid ""
 " them in this menu. Note that when disabled, members will be able to unequip"
 " the menu roles even if they were not obtained from the menu."
 msgstr ""
+"Quando habilitado, os membros não estarão aptos a retirar os cargos "
+"atribuídos por este menu. Observe que, quando desabilitado, os membros "
+"poderão retirar os cargos através do menu de cargos, caso não tenha sido "
+"colocado por lá."
 
 #: src/modules/rolemenus/menuoptions.py:110
 msgctxt "menuset:sticky|set_response:true"
