@@ -89,12 +89,12 @@ msgstr "Fechando assim que a lista for aberta em outro lugar."
 #: src/modules/reminders/cog.py:390
 msgctxt "cmd:reminders_clear"
 msgid "clear"
-msgstr "limpar"
+msgstr "apagar"
 
 #: src/modules/reminders/cog.py:393
 msgctxt "cmd:reminders_clear|desc"
 msgid "Clear your reminder list."
-msgstr "Limpar sua lista de lembretes."
+msgstr "Apagar sua lista de lembretes."
 
 #: src/modules/reminders/cog.py:411
 msgctxt "cmd:reminders_clear|error:no_reminders"
