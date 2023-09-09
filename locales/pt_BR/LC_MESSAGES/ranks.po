@@ -267,7 +267,7 @@ msgid ""
 "`Voice` is the number of hours active in tracked voice channels, `Exp` is a measure of message activity, and `Message` is a simple count of messages sent."
 msgstr ""
 "Qual tipo de estatística é utilizada para recompensar os níveis de atividade.\n"
-"ˋVozˋ é o número de horas ativas em um canal habilitado a contabilizar. ˋExpˋ é uma ponderação entre as atividades com mensagens, e ˋMensagemˋ é uma sintagem símples do número de mensagens enviadas."
+"ˋVozˋ é o número de horas ativas em um canal habilitado a contabilizar. ˋExpˋ é uma pontuação de experiência, obtida por uma ponderação entre as atividades com mensagens. ˋMensagemˋ é uma sintagem símples do número de mensagens enviadas."
 
 #: src/modules/ranks/settings.py:59
 msgctxt "guildset:rank_type|accepts"
