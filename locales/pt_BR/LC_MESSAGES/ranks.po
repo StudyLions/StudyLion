@@ -500,6 +500,8 @@ msgid ""
 "I do not have the `MANAGE_ROLES` permission in this server, so I cannot "
 "manage ranks!"
 msgstr ""
+"Eu não tenho a permissão para ˋMANAGE_ROLESˋ neste servidor, então eu não "
+"posso gerenciar os níveis."
 
 #: src/modules/ranks/ui/preview.py:256
 msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:above_me"
