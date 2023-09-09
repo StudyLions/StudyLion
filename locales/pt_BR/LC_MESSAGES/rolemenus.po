@@ -991,7 +991,7 @@ msgstr "Você precisa ter o **{role}** para usar isto!"
 #, possible-python-brace-format
 msgctxt "rolemenu|select|error:max_obtainable"
 msgid "You already have the maximum of {obtainable} roles from this menu!"
-msgstr ""
+msgstr "Você já tem o máximo {obtainable} de cargos permitidos deste menu."
 
 #: src/modules/rolemenus/rolemenu.py:582
 #, possible-python-brace-format
