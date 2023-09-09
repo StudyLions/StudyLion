@@ -339,7 +339,7 @@ msgstr ""
 #: src/modules/rolemenus/cog.py:831
 msgctxt "cmd:rolemenu_edit|param:template"
 msgid "Template to use for the menu message body"
-msgstr ""
+msgstr "Modelo a ser usado para no corpo da mensagem "
 
 #: src/modules/rolemenus/cog.py:835
 msgctxt "cmd:rolemenu_edit|param:rawmessage"
