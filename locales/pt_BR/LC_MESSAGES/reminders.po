@@ -176,7 +176,7 @@ msgstr "Lembretes cancelados com sucesso."
 #: src/modules/reminders/cog.py:542
 msgctxt "cmd:reminders_cancel|acmpl:reminder|error:no_reminders"
 msgid "There are no reminders to cancel!"
-msgstr ""
+msgstr "Não há lembretes para cancelar."
 
 #: src/modules/reminders/cog.py:572
 #, possible-python-brace-format
