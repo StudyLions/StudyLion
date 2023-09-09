@@ -824,6 +824,8 @@ msgid ""
 "`role_colour`: Could not parse colour! Please use `#<hex>` format e.g. "
 "`#AB1325`."
 msgstr ""
+"`cor_de_cargo`: Não consegui analisar a cor! Por favor, use o formato "
+"`#<hex>`  Exemplo: `#AB1325`."
 
 #: src/modules/ranks/ui/editor.py:88
 msgctxt "ui:rank_editor|type:voice|input:requires|label"
