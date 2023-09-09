@@ -298,12 +298,12 @@ msgstr "nome"
 #: src/modules/rolemenus/cog.py:801
 msgctxt "cmd:rolemenu_edit|param:new_name"
 msgid "new_name"
-msgstr ""
+msgstr "novo_nome"
 
 #: src/modules/rolemenus/cog.py:802
 msgctxt "cmd:rolemenu_edit|param:channel"
 msgid "new_channel"
-msgstr ""
+msgstr "novo_canal"
 
 #: src/modules/rolemenus/cog.py:807
 msgctxt "cmd:rolemenu_edit|param:menu_style"
