@@ -914,6 +914,8 @@ msgstr "Mensagem da Classificação"
 msgctxt "ui:rank_editor|input:message|placeholder"
 msgid "Congratulatory message sent to the user upon achieving this rank."
 msgstr ""
+"Mensagem de comemoração enviada ao usuário quando atingir este nível de "
+"classificação."
 
 #: src/modules/ranks/ui/editor.py:207
 #, possible-python-brace-format
