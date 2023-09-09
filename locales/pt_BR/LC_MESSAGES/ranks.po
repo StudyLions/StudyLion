@@ -754,7 +754,7 @@ msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:other"
 msgid "I am not able to manage the selected role, so it cannot be a rank!"
 msgstr ""
 "Eu não estou habilitado para gerenciar o cargo selecionado, então ele não "
-"poderá ser atribuído como um nível classificatório."
+"poderá ser atribuído como um nível de classificação."
 
 #: src/modules/ranks/ui/overview.py:235
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|title"
