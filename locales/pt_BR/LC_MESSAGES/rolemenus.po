@@ -1074,7 +1074,7 @@ msgstr "Agora, este menu de cargos terá o nome de **{new_name}**. "
 #: src/modules/rolemenus/menuoptions.py:86
 msgctxt "menuset:sticky"
 msgid "sticky_roles"
-msgstr ""
+msgstr "cargos_permanentes"
 
 #: src/modules/rolemenus/menuoptions.py:89
 msgctxt "menuset:sticky|desc"
