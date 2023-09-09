@@ -979,7 +979,7 @@ msgstr "Você removeu o **{role}**, e foi ressarcido com {coin} **{amount}**."
 #, possible-python-brace-format
 msgctxt "rolemenu|deselect|success:norefund|desc"
 msgid "You have unequipped **{role}**."
-msgstr ""
+msgstr "Você retirou o **{role}**."
 
 #: src/modules/rolemenus/rolemenu.py:554
 #, possible-python-brace-format
