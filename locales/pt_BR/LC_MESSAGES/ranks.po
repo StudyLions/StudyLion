@@ -229,7 +229,7 @@ msgstr "Exp"
 #: src/modules/ranks/settings.py:33
 msgctxt "guildset:rank_type|input_format:message"
 msgid "Messages"
-msgstr "Conversas"
+msgstr "Mensagens"
 
 #: src/modules/ranks/settings.py:36
 msgctxt "guildset:rank_type|input_pattern:voice"
