@@ -292,16 +292,17 @@ msgstr "em"
 msgctxt "cmd:remindme_in|desc"
 msgid "Schedule a reminder for a given amount of time in the future."
 msgstr ""
+"Lembrete de check-in para uma determinada quantidade de horários no futuro."
 
 #: src/modules/reminders/cog.py:720
 msgctxt "cmd:remindme_in|param:time"
 msgid "time"
-msgstr ""
+msgstr "tempo"
 
 #: src/modules/reminders/cog.py:721
 msgctxt "cmd:remindme_in|param:reminder"
 msgid "reminder"
-msgstr ""
+msgstr "lembreto"
 
 #: src/modules/reminders/cog.py:722
 msgctxt "cmd:remindme_in|param:every"
