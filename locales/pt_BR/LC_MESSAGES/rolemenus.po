@@ -260,6 +260,8 @@ msgid ""
 "Cannot apply a custom menu message to {message} because I do not own this "
 "message!"
 msgstr ""
+"Não pude aplicar um menu personalizado na mensagem {message}, pois ela não "
+"pertence a mim! "
 
 #: src/modules/rolemenus/cog.py:727
 #, possible-python-brace-format
