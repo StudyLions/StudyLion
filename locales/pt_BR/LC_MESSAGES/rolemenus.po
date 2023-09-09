@@ -907,6 +907,8 @@ msgstr "Loja de Cargos"
 msgctxt "template:shop|desc"
 msgid "A single column display suitable for simple role shops"
 msgstr ""
+"Um menu em formato de uma coluna, alternável para uma simplificada loja de "
+"cargos."
 
 #: src/modules/rolemenus/rolemenu.py:280
 msgctxt "rolemenu|menu_message|error|title"
