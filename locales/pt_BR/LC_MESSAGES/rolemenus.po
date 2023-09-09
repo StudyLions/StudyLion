@@ -478,7 +478,7 @@ msgstr "Não, Cancelar"
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delete|success|desc"
 msgid "Successfully deleted the menu **{name}**"
-msgstr ""
+msgstr "Menu **{name}** apagado com sucesso!"
 
 #: src/modules/rolemenus/cog.py:1145
 msgctxt "cmd:rolemenu_addrole"
