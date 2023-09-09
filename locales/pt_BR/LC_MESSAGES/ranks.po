@@ -630,7 +630,7 @@ msgstr "**Níveis dos membros atualizados:** {done}/{target}"
 #: src/modules/ranks/ui/config.py:42
 msgctxt "ui:rankconfigui|check|not_permitted"
 msgid "You have insufficient server permissions to use this UI!"
-msgstr ""
+msgstr "Você não tem permissões suficientes no servidor para usar isto!"
 
 #: src/modules/ranks/ui/config.py:64
 msgctxt "ui:rank_config|button:overview|label"
