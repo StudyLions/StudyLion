@@ -1290,7 +1290,7 @@ msgstr ""
 #: src/modules/rolemenus/ui/menus.py:189
 msgctxt "ui:menu_list|embed|field:unattached|name"
 msgid "Unattached Menus"
-msgstr ""
+msgstr "Menus Desanexados"
 
 #: src/modules/rolemenus/ui/menus.py:201
 msgctxt "ui:menu_list|embed|footer:text"
