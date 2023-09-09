@@ -165,6 +165,8 @@ msgid ""
 "I am not sure which reminder you want to cancel. Please try again, selecting"
 " a reminder from the list of choices."
 msgstr ""
+"Eu não entendi ao certo qual lembrete você gostaria de cancelar. Por favor, "
+"tente novamente selecionando o lembrete de uma das opções da lista."
 
 #: src/modules/reminders/cog.py:525
 msgctxt "cmd:reminders_cancel|embed:success|desc"
