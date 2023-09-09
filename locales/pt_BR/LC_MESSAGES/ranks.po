@@ -640,12 +640,12 @@ msgstr "Editar Níveis"
 #: src/modules/ranks/ui/config.py:82
 msgctxt "ui:rank_config|menu:types|placeholder"
 msgid "Select Statistic Type"
-msgstr ""
+msgstr "Selecione o Tipo de Estatística"
 
 #: src/modules/ranks/ui/config.py:90
 msgctxt "ui:rank_config|menu:types|option:voice"
 msgid "Voice Activity"
-msgstr ""
+msgstr "Atividade em Canal de Voz"
 
 #: src/modules/ranks/ui/config.py:98
 msgctxt "ui:rank_config|menu:types|option:xp"
