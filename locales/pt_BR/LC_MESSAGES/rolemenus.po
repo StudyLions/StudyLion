@@ -270,6 +270,8 @@ msgid ""
 "Cannot apply a menu message template to {message} because I do not own this "
 "message!"
 msgstr ""
+"Não pude aplicar um modelo de mensagem à {message} pois ela não pertence a "
+"mim! "
 
 #: src/modules/rolemenus/cog.py:740
 #, possible-python-brace-format
