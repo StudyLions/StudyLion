@@ -675,7 +675,7 @@ msgstr "O menu **{menu}** não tem o cargo **{name}**"
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delrole|success"
 msgid "The role **{name}** was successfully removed from the menu **{menu}**."
-msgstr ""
+msgstr "O cargo **{name}** foi removido com sucesso do menu **{menu}**/"
 
 #: src/modules/rolemenus/roleoptions.py:54
 msgctxt "roleset:role"
