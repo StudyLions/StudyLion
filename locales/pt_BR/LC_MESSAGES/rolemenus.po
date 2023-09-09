@@ -602,7 +602,7 @@ msgstr "Tempo de vida do cargo, depois da seleção, em minutos."
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_editrole|error:menu_not_found"
 msgid "This server does not have a role menu called `{name}`!"
-msgstr ""
+msgstr "Este servidor não tem um menu de cargos chamado ˋ{name}ˋ!"
 
 #: src/modules/rolemenus/cog.py:1503
 #, possible-python-brace-format
