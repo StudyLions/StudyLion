@@ -519,7 +519,7 @@ msgstr "Tempo de vida do cargo após a seleção, em minutos."
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_addrole|error:menu_not_found"
 msgid "This server does not have a role menu called `{name}`!"
-msgstr ""
+msgstr "Este servidor não tem um menu de cargos chamado ˋ{name}ˋ!"
 
 #: src/modules/rolemenus/cog.py:1312
 msgctxt "cmd:rolemenu_addrole|success:create|title"
