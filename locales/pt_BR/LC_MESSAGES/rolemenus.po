@@ -1014,6 +1014,8 @@ msgctxt "rolemenu|select|error:discord"
 msgid ""
 "An unknown error occurred while assigning your role! Please try again later."
 msgstr ""
+"Um erro desconhecido ocorreu enquanto estava atribuindo seu cargo. Por "
+"favor, tente mais tarde."
 
 #: src/modules/rolemenus/rolemenu.py:647
 msgctxt "rolemenu|select|success|title"
