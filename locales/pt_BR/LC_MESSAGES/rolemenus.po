@@ -1253,7 +1253,7 @@ msgstr ""
 #: src/modules/rolemenus/ui/menus.py:105
 msgctxt "ui:menu_list|menu:editmenu|placeholder"
 msgid "Select Menu to Edit"
-msgstr ""
+msgstr "Selecione o Menu a Editar"
 
 #: src/modules/rolemenus/ui/menus.py:129
 #, possible-python-brace-format
