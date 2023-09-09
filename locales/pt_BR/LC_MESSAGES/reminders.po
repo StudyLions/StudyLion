@@ -227,7 +227,7 @@ msgstr "Sobre o quê você quer ser lembrado?"
 #: src/modules/reminders/cog.py:601
 msgctxt "cmd:remindme_at|param:every|desc"
 msgid "How often to repeat this reminder."
-msgstr ""
+msgstr "Quantas vezes devo repetir este lembrete."
 
 #: src/modules/reminders/cog.py:619
 msgctxt "cmd_remindme_at|error:too_many|desc"
