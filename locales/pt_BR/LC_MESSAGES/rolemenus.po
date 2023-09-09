@@ -39,7 +39,7 @@ msgstr "Menu Suspenso"
 #: src/modules/rolemenus/cog.py:68
 msgctxt "ctxcmd:rolemenu"
 msgid "Role Menu Editor"
-msgstr ""
+msgstr "Editor de Cargos"
 
 #: src/modules/rolemenus/cog.py:81
 msgctxt "ctxcmd:rolemenu|error:author_perms"
