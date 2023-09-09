@@ -283,7 +283,7 @@ msgstr ""
 #: src/modules/rolemenus/cog.py:788
 msgctxt "cmd:rolemenu_edit"
 msgid "editmenu"
-msgstr ""
+msgstr "editarmenu"
 
 #: src/modules/rolemenus/cog.py:791
 msgctxt "cmd:rolemenu_edit|desc"
