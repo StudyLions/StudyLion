@@ -1399,6 +1399,8 @@ msgid ""
 "Too many roles! The Reaction style is limited to `20` roles (Discord "
 "limitation)."
 msgstr ""
+"Muitos cargos! O estilo de atribuição de cargos por Reação é limitado a ˋ20ˋ"
+" cargos (Limitação do Discord)."
 
 #: src/modules/rolemenus/ui/menueditor.py:586
 msgctxt "ui:menu_editor|menu:style|error:incomplete_emojis"
