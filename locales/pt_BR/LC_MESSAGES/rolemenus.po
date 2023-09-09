@@ -416,6 +416,8 @@ msgid ""
 "An unknown error occurred trying to repost the menu to {channel}.\n"
 "**Error:** `{exception}`"
 msgstr ""
+"Um erro desconhecido aconteceu, na tentativa de repostar o menu em {channel}.\n"
+"**Error:** ˋ{exception}ˋ"
 
 #: src/modules/rolemenus/cog.py:1044
 msgctxt "cmd:rolemenu_delete"
