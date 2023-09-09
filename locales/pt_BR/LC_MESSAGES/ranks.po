@@ -373,6 +373,8 @@ msgstr ""
 msgctxt "guildset:dm_ranks|response:true"
 msgid "I will direct message members upon rank advancement."
 msgstr ""
+"Eu irei enviar mensagens diretas aos membros sobre atualização dos seus "
+"níveis classificatórios."
 
 #: src/modules/ranks/settings.py:179
 msgctxt "guildset:dm_ranks|response:false"
