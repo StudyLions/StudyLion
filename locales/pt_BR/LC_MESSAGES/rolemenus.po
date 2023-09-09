@@ -1210,7 +1210,7 @@ msgstr "Membros precisarão ter o cargo {role} para usar este menu."
 #: src/modules/rolemenus/menuoptions.py:228
 msgctxt "menuset:required_role|set_response:unset"
 msgid "Any member who can see the menu may use it."
-msgstr ""
+msgstr "Qualquer membro que possa ver o menu, será permitido a usá-lo."
 
 #: src/modules/rolemenus/menuoptions.py:236
 msgctxt "menuset:message"
