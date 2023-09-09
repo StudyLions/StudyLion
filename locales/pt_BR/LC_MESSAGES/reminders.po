@@ -63,12 +63,12 @@ msgstr[2] "Todas ˋ{hours}ˋ horas"
 #, possible-python-brace-format
 msgctxt "reminder|formatted|interval"
 msgid "Every `{duration}`"
-msgstr ""
+msgstr "A cada ˋ{duration}ˋ"
 
 #: src/modules/reminders/cog.py:352
 msgctxt "cmd:reminders"
 msgid "reminders"
-msgstr ""
+msgstr "lembretes"
 
 #. No help string
 #: src/modules/reminders/cog.py:359
