@@ -339,6 +339,8 @@ msgctxt "cmd_remindme_in|error:too_fast|desc"
 msgid ""
 "You cannot set a repeating reminder with a period less than 10 minutes."
 msgstr ""
+"Você não pode configurar lembretes repetitivos com intervalos menores de 10 "
+"minutos."
 
 #: src/modules/reminders/cog.py:766
 msgctxt "cmd_remindme_in|error:too_fast|title"
