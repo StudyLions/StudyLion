@@ -732,7 +732,7 @@ msgstr "emoji"
 #: src/modules/rolemenus/roleoptions.py:115
 msgctxt "roleset:emoji|desc"
 msgid "The emoji associated with this role."
-msgstr ""
+msgstr "O emoji associado a este cargo."
 
 #: src/modules/rolemenus/roleoptions.py:119
 msgctxt "roleset:emoji|long_desc"
