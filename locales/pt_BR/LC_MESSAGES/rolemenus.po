@@ -576,7 +576,7 @@ msgstr "menu_de_cargos"
 #: src/modules/rolemenus/cog.py:1407
 msgctxt "cmd:rolemenu_editrole|param:role"
 msgid "new_role"
-msgstr ""
+msgstr "novo_cargo"
 
 #: src/modules/rolemenus/cog.py:1418
 msgctxt "cmd:rolemenu_editrole|param:menu|desc"
