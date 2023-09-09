@@ -249,7 +249,7 @@ msgstr "xp|exp|experiência"
 #: src/modules/ranks/settings.py:45
 msgctxt "guildset:rank_type"
 msgid "rank_type"
-msgstr ""
+msgstr "tipo_de_rank"
 
 #: src/modules/ranks/settings.py:48
 msgctxt "guildset:rank_type|desc"
