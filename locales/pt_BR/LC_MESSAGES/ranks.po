@@ -277,7 +277,7 @@ msgstr "Voz/Exp/Mensagens"
 #: src/modules/ranks/settings.py:71
 msgctxt "guildset:rank_type|set_response|type:voice"
 msgid "Members will be awarded activity ranks based on `Voice Activity`."
-msgstr ""
+msgstr "Os membros acumularão com base nos níveis de ˋAtividade de Vozˋ."
 
 #: src/modules/ranks/settings.py:76
 msgctxt "guildset:rank_type|set_response|type:messages"
