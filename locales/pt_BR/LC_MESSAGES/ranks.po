@@ -365,7 +365,7 @@ msgid ""
 "messaged to the user, instead of being sent to the configured "
 "`rank_channel`."
 msgstr ""
-"Se habilitado, mensagens de parabéns, pela conquista de um novo nível "
+"Se habilitado, mensagens de comemoração, pela conquista de um novo nível "
 "classificatório, serão enviadas por mensagem direta ao usuário. Ao invés de "
 "serem enviadas ao ˋcanal_do_rankˋ."
 
