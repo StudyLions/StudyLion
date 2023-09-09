@@ -859,6 +859,8 @@ msgstr "Quantidade de Mensagens "
 msgctxt "ui:rank_editor|type:message|input:requires|placeholder"
 msgid "Number of messages needed before awarding rank"
 msgstr ""
+"Número de mensagens enviadas necessário para alcançar este nível de "
+"classificação."
 
 #: src/modules/ranks/ui/editor.py:126
 msgctxt "ui:rank_editor|type:voice|input:requires|error:parse"
