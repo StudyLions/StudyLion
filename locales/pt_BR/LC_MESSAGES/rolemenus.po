@@ -1148,7 +1148,7 @@ msgstr "recebível"
 #: src/modules/rolemenus/menuoptions.py:164
 msgctxt "menuset:obtainable|desc"
 msgid "The maximum number of roles equippable from this menu."
-msgstr ""
+msgstr "O número máximo de cargos que podem ser atribuídos por este menu."
 
 #: src/modules/rolemenus/menuoptions.py:169
 msgctxt "menuset:obtainable|long_desc"
