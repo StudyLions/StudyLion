@@ -526,7 +526,7 @@ msgstr "Não pude atualizar as classificações."
 #: src/modules/ranks/ui/preview.py:278
 msgctxt "ui:rank_preview|menu:roles|placeholder"
 msgid "Update Rank Role"
-msgstr ""
+msgstr "Atualizar Cargos de Nível"
 
 #: src/modules/ranks/ui/preview.py:290
 msgctxt "ui:rank_preview|embed|title"
