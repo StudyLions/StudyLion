@@ -104,7 +104,7 @@ msgstr "Você não possui lembretes a apagar!"
 #: src/modules/reminders/cog.py:420
 msgctxt "cmd:reminders_clear|confirm|title"
 msgid "Are You Sure?"
-msgstr ""
+msgstr "Você tem certeza?"
 
 #: src/modules/reminders/cog.py:423
 #, possible-python-brace-format
