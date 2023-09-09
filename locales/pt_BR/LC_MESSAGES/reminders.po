@@ -327,7 +327,7 @@ msgstr "Quantas vezes repetir este lembrete. (ex 1 dia, ou 2h)"
 #: src/modules/reminders/cog.py:745
 msgctxt "cmd_remindme_in|error:too_many|desc"
 msgid "Sorry, you have reached the maximum of `25` reminders!"
-msgstr ""
+msgstr "Sinto muito, você alcançou o número máximo de ˋ25ˋ lembretes!"
 
 #: src/modules/reminders/cog.py:749
 msgctxt "cmd_remindme_in|error:too_many|title"
