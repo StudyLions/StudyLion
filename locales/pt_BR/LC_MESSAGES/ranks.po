@@ -431,13 +431,13 @@ msgstr "Você deletou o nível {mention}."
 #: src/modules/ranks/ui/preview.py:150
 msgctxt "ui:rank_preview|button:delete|response:success|title"
 msgid "Rank Deleted"
-msgstr ""
+msgstr "Nível Deletado"
 
 #: src/modules/ranks/ui/preview.py:160
 msgctxt ""
 "ui:rank_preview|button:delete|response:success|button:delete_role|label"
 msgid "Delete Role"
-msgstr ""
+msgstr "Deletar Cargo"
 
 #: src/modules/ranks/ui/preview.py:176
 #, possible-python-brace-format
