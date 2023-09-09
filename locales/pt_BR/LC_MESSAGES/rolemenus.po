@@ -913,7 +913,7 @@ msgstr ""
 #: src/modules/rolemenus/rolemenu.py:280
 msgctxt "rolemenu|menu_message|error|title"
 msgid "ROLE MENU DISPLAY ERROR"
-msgstr ""
+msgstr "ERRO DO MOSTRADOR DO MENU DE CARGOS"
 
 #: src/modules/rolemenus/rolemenu.py:284
 #, possible-python-brace-format
