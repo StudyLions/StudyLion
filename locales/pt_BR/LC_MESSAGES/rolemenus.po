@@ -895,6 +895,8 @@ msgid ""
 "A compact three column layout using emojis and labels, excluding prices and "
 "durations."
 msgstr ""
+"Um modelo compacto com três colunas, usando títulos e emojis, excluindo as "
+"durações e preços."
 
 #: src/modules/rolemenus/templates.py:168
 msgctxt "template:shop|name"
