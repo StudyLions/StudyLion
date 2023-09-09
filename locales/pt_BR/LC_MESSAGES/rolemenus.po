@@ -1032,7 +1032,7 @@ msgstr "Você comprou o cargo **{role}** por {coin}**{amount}**."
 #, possible-python-brace-format
 msgctxt "rolemenu|select|success:nopurchase|desc"
 msgid "You have equipped the role **{role}**"
-msgstr ""
+msgstr "O cargo **{role}** foi atribuído a você"
 
 #: src/modules/rolemenus/rolemenu.py:664
 #, possible-python-brace-format
