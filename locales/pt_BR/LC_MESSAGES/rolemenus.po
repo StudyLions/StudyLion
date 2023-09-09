@@ -613,12 +613,12 @@ msgstr "O menu **{menu}** não tem o cargo **{name}**"
 #: src/modules/rolemenus/cog.py:1569
 msgctxt "cmd:rolemenu_editrole|success|title"
 msgid "Role menu role updated"
-msgstr ""
+msgstr "Cargos do menu de cargos foram atualizados"
 
 #: src/modules/rolemenus/cog.py:1584
 msgctxt "cmd:rolemenu_editrole|success|error:reaction|name"
 msgid "Warning!"
-msgstr ""
+msgstr "Atenção!"
 
 #: src/modules/rolemenus/cog.py:1609
 msgctxt "cmd:rolemenu_delrole"
