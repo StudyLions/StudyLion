@@ -1391,7 +1391,7 @@ msgstr ""
 #: src/modules/rolemenus/ui/menueditor.py:551
 msgctxt "ui:menu_editor|button:style|label"
 msgid "Menu Style"
-msgstr ""
+msgstr "Estilo do Menu"
 
 #: src/modules/rolemenus/ui/menueditor.py:576
 msgctxt "ui:menu_editor|menu:style|error:too_many_reactions"
