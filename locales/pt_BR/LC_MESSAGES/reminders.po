@@ -157,7 +157,7 @@ msgstr "Comece digitando, e então, selecione o lembrete a cancelar."
 #: src/modules/reminders/cog.py:488
 msgctxt "cmd:reminders_cancel|error:no_reminders"
 msgid "There are no reminders to cancel!"
-msgstr ""
+msgstr "Não há nenhum lembrete para cancelar."
 
 #: src/modules/reminders/cog.py:512
 msgctxt "cmd:reminders_cancel|error:no_match"
