@@ -586,7 +586,7 @@ msgstr "Nome do menu de onde você quer editar o cargo"
 #: src/modules/rolemenus/cog.py:1422
 msgctxt "cmd:rolemenu_editrole|param:menu_role|desc"
 msgid "Label, name, or mention of the menu role to edit."
-msgstr ""
+msgstr "Rótulo, nome ou menção do menu de cargos a ser editado."
 
 #: src/modules/rolemenus/cog.py:1426
 msgctxt "cmd:rolemenu_editrole|param:role|desc"
