@@ -1300,7 +1300,7 @@ msgstr "Clique no nome do menu para pular para a mensagem."
 #: src/modules/rolemenus/ui/menueditor.py:93
 msgctxt "ui:menu_editor|preview|error:title"
 msgid "Display Error!"
-msgstr ""
+msgstr "Erro do mostrador!"
 
 #: src/modules/rolemenus/ui/menueditor.py:97
 #, possible-python-brace-format
