@@ -1309,6 +1309,8 @@ msgid ""
 "Failed to display preview!\n"
 "**Error:** `{exception}`"
 msgstr ""
+"Falha ao mostrar a prévia!\n"
+"**Error:** ˋ{exception}ˋ"
 
 #: src/modules/rolemenus/ui/menueditor.py:151
 msgctxt "ui:menu_editor|button:options|label"
