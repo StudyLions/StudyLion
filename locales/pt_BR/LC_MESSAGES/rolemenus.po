@@ -541,7 +541,7 @@ msgstr "Menu de Cargo atualizado"
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_addrole|error:role_exists"
 msgid "The role {role} is already selectable from the menu **{menu}**"
-msgstr ""
+msgstr "O cargo {role} já pode ser escolhido através do menu **{menu}**."
 
 #: src/modules/rolemenus/cog.py:1364
 msgctxt "cmd:rolemenu_addrole|success|error:reaction|name"
