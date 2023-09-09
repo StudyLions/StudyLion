@@ -136,7 +136,7 @@ msgstr "Não há coincidência com o menu de cargos '{partial}'"
 #: src/modules/rolemenus/cog.py:515
 msgctxt "acmpl:menuroles|param:menu|keyname"
 msgid "menu"
-msgstr ""
+msgstr "menu"
 
 #: src/modules/rolemenus/cog.py:521
 msgctxt "acmpl:menuroles|choice:no_menu|name"
