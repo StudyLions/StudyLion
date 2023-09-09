@@ -1179,6 +1179,8 @@ msgstr ""
 msgctxt "menuset:obtainable|set_response:unset"
 msgid "Members will be able to select any number of roles from this menu."
 msgstr ""
+"Membros estarão permitidos de selecionar qualquer número de cargos por este "
+"menu de cargos."
 
 #: src/modules/rolemenus/menuoptions.py:201
 msgctxt "menuset:required_role"
