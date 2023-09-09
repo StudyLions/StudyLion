@@ -955,7 +955,7 @@ msgstr ""
 #: src/modules/rolemenus/rolemenu.py:493
 msgctxt "rolemenu|deselect|error:perms"
 msgid "I don't have enough permissions to remove this role from you!"
-msgstr ""
+msgstr "Eu não tenho permissões suficientes para remover este seu cargo!"
 
 #: src/modules/rolemenus/rolemenu.py:500
 msgctxt "rolemenu|deselect|error:discord"
