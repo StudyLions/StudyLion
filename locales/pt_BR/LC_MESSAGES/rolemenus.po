@@ -835,7 +835,7 @@ msgstr "duração"
 #: src/modules/rolemenus/roleoptions.py:258
 msgctxt "roleset:duration|desc"
 msgid "Lifetime of the role after selection"
-msgstr ""
+msgstr "Tempo de vida do cargo, depois de atribuído"
 
 #: src/modules/rolemenus/roleoptions.py:262
 msgctxt "roleset:duration|long_desc"
