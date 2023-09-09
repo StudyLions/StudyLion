@@ -660,7 +660,7 @@ msgstr "Mensagens Enviadas"
 #: src/modules/ranks/ui/config.py:126
 msgctxt "ui:rank_config|menu:channels|placeholder"
 msgid "Select Rank Notification Channel"
-msgstr ""
+msgstr "Selecione o Canal de Notificações dos Níveis Classificatórios"
 
 #: src/modules/ranks/ui/config.py:134
 msgctxt "ui:rank_config|embed|title"
