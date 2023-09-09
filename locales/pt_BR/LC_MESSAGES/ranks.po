@@ -337,7 +337,7 @@ msgid ""
 "enabled)."
 msgstr ""
 "Atualizações de classificação serão ignoradas ou enviadas por Mensagem "
-"Privada (se ˋmp_niveisˋ estiver habilitado)"
+"Direta (se ˋmd_niveisˋ estiver habilitado)"
 
 #: src/modules/ranks/settings.py:143
 #, possible-python-brace-format
