@@ -398,6 +398,9 @@ msgid ""
 "I do not have permission to edit the underlying role! Please select a new "
 "role from the role menu, or ensure my top role is above the selected role."
 msgstr ""
+"Eu não tenho permissão suificiente para editar o cargo sublinhado. Por "
+"favor, selecione um novo cargo, através do menu de cargos, ou garanta que "
+"meu cargo seja mais elevado do que aqueles que irei designar."
 
 #: src/modules/ranks/ui/preview.py:90
 msgctxt "ui:rank_preview|button:edit|error|title"
