@@ -861,7 +861,7 @@ msgstr "Agora, este cargo irá expirar depois de {duration}."
 #: src/modules/rolemenus/roleoptions.py:285
 msgctxt "roleset:duration|set_response:unset"
 msgid "This role will no longer expire after being selected."
-msgstr ""
+msgstr "Este cargo não irá expirar, após ser selecionado."
 
 #: src/modules/rolemenus/templates.py:53
 msgctxt "template:simple|name"
