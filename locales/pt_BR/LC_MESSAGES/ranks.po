@@ -670,7 +670,7 @@ msgstr "Painel de Configuração dos Níveis"
 #: src/modules/ranks/ui/config.py:171
 msgctxt "dash:rank|title"
 msgid "Rank Configuration ({commands[configure ranks]})"
-msgstr ""
+msgstr "Configuração dos Níveis ({commands[configure ranks]})"
 
 #: src/modules/ranks/ui/config.py:175
 msgctxt "dash:rank|dropdown|placeholder"
