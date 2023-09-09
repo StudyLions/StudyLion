@@ -288,6 +288,7 @@ msgstr "Os membros acumularão com base nos níveis de ˋMensagens Enviadasˋ."
 msgctxt "guildset:rank_type|set_response|type:xp"
 msgid "Members will be awarded activity ranks based on `Message XP Earned`."
 msgstr ""
+"Os membros acumularão com base nos níveis de ˋExp de Mensagens Acumuladosˋ."
 
 #: src/modules/ranks/settings.py:91
 #, possible-python-brace-format
