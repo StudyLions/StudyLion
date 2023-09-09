@@ -930,9 +930,9 @@ msgstr ""
 #: src/modules/ranks/ui/editor.py:262
 msgctxt "ui:rank_editor|mode:edit|title"
 msgid "Rank Editor"
-msgstr ""
+msgstr "Editor de Níveis"
 
 #: src/modules/ranks/ui/editor.py:317
 msgctxt "ui:rank_editor|mode:create|title"
 msgid "Rank Creator"
-msgstr ""
+msgstr "Criador de Níveis"
