@@ -696,7 +696,7 @@ msgstr "O cargo dado quando este item é selecionado no menu de cargos."
 #, possible-python-brace-format
 msgctxt "roleset:role|set_response:set"
 msgid "This menu item will now give the role {role}."
-msgstr ""
+msgstr "Este item do menu, dará agora, o cargo {role}."
 
 #: src/modules/rolemenus/roleoptions.py:82
 msgctxt "roleset:label"
