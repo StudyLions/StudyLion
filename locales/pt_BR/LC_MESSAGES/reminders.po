@@ -118,7 +118,7 @@ msgstr[2] "Você tem certeza que quer apagar seus ˋ{count}ˋ lembretes?"
 #: src/modules/reminders/cog.py:429
 msgctxt "cmd:reminders_clear|confirm|button:yes"
 msgid "Yes, clear my reminders"
-msgstr ""
+msgstr "Sim, apagar meus lembretes"
 
 #: src/modules/reminders/cog.py:438
 msgctxt "cmd:reminders_clear|success|desc"
