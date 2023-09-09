@@ -367,7 +367,7 @@ msgstr "{name}ˋs lembretes"
 #: src/modules/reminders/cog.py:935
 msgctxt "ui:reminderlist|embed:list|footer"
 msgid "Click a reminder twice to jump to the context!"
-msgstr ""
+msgstr "Clique duas vezes em um lembrete para ver o contexto!"
 
 #: src/modules/reminders/cog.py:942
 #, possible-python-brace-format
