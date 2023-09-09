@@ -1295,7 +1295,7 @@ msgstr "Menus Desanexados"
 #: src/modules/rolemenus/ui/menus.py:201
 msgctxt "ui:menu_list|embed|footer:text"
 msgid "Click a menu name to jump to the message."
-msgstr ""
+msgstr "Clique no nome do menu para pular para a mensagem."
 
 #: src/modules/rolemenus/ui/menueditor.py:93
 msgctxt "ui:menu_editor|preview|error:title"
