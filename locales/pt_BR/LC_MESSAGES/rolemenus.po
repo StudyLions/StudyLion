@@ -1231,7 +1231,7 @@ msgid ""
 "via command."
 msgstr ""
 "Esta configuração determina a mensagem do corpo do menu, incluindo o contedo"
-" da mensagem integrada. Apesar de ser facilmente modificada pelo botão "
+" da mensagem integrada(s). Apesar de ser facilmente modificada pelo botão "
 "\"Editar Mensagemˋ, uma mensagem em formato JSON pode ser anexada através de"
 " comando."
 
