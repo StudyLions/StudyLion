@@ -422,7 +422,7 @@ msgstr ""
 #: src/modules/rolemenus/cog.py:1044
 msgctxt "cmd:rolemenu_delete"
 msgid "delmenu"
-msgstr ""
+msgstr "apagarmenu"
 
 #: src/modules/rolemenus/cog.py:1047
 msgctxt "cmd:rolemenu_delete|desc"
