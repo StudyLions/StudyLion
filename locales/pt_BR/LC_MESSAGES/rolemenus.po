@@ -882,6 +882,7 @@ msgstr "Duas Colunas"
 msgctxt "template:two_column|desc"
 msgid "A compact two column role layout. Excludes prices and durations."
 msgstr ""
+"Um modelo compacto com apenas duas 2 colunas. Exclui duração e preços."
 
 #: src/modules/rolemenus/templates.py:131
 msgctxt "template:three_column|name"
