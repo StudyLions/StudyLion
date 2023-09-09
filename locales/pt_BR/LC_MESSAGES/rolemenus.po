@@ -391,7 +391,7 @@ msgstr "Agora usando o modelo ˋ{name}ˋ de mensagem. "
 #: src/modules/rolemenus/cog.py:969
 msgctxt "cmd:rolemenu_edit|parse:template|success:custom"
 msgid "Now using a custom menu message."
-msgstr ""
+msgstr "Agora usando uma mensagem personalizada de menu."
 
 #: src/modules/rolemenus/cog.py:994
 #, possible-python-brace-format
