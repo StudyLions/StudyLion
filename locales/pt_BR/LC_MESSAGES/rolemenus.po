@@ -701,7 +701,7 @@ msgstr "Este item do menu, dará agora, o cargo {role}."
 #: src/modules/rolemenus/roleoptions.py:82
 msgctxt "roleset:label"
 msgid "label"
-msgstr ""
+msgstr "rótulo"
 
 #: src/modules/rolemenus/roleoptions.py:85
 msgctxt "roleset:label|desc"
