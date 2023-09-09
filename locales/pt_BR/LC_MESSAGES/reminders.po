@@ -222,7 +222,7 @@ msgstr "Quando você gostaria de ser lembrado. (Ex. ˋ4pmˋ ou ˋ16:00ˋ)."
 #: src/modules/reminders/cog.py:600
 msgctxt "cmd:remindme_at|param:reminder|desc"
 msgid "What should the reminder be?"
-msgstr ""
+msgstr "Sobre o quê você quer ser lembrado?"
 
 #: src/modules/reminders/cog.py:601
 msgctxt "cmd:remindme_at|param:every|desc"
