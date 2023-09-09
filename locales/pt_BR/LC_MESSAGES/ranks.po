@@ -214,7 +214,7 @@ msgstr "ˋExpˋ"
 #: src/modules/ranks/settings.py:28
 msgctxt "guildset:rank_type|output:message"
 msgid "`Messages`"
-msgstr "ˋConversasˋ"
+msgstr "ˋMensagensˋ"
 
 #: src/modules/ranks/settings.py:31
 msgctxt "guildset:rank_type|input_format:voice"
