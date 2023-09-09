@@ -1121,6 +1121,9 @@ msgid ""
 "**Refunds will only be given for roles purchased through the same menu.**\n"
 "**The `sticky` option must be disabled to allow members to remove roles.**"
 msgstr ""
+"Quando habilitado, membros os quais *compraram um cargo através deste menu de cargos* irão obter um ressarcimento quando retirarem o cargo através do menu.\n"
+"**Ressarcimentos somente serão feitos por compras feitas através do mesmo menu.**\n"
+"**A opção por permanente precisa estar desabilitada para permitir membros a retirar os cargos.** "
 
 #: src/modules/rolemenus/menuoptions.py:148
 msgctxt "menuset:refunds|set_response:true"
