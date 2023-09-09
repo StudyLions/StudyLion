@@ -531,12 +531,12 @@ msgstr "Atualizar Cargos de Nível"
 #: src/modules/ranks/ui/preview.py:290
 msgctxt "ui:rank_preview|embed|title"
 msgid "Rank Information"
-msgstr ""
+msgstr "Informação das Cassificações"
 
 #: src/modules/ranks/ui/preview.py:297
 msgctxt "ui:rank_preview|embed|field:role|name"
 msgid "Role"
-msgstr ""
+msgstr "Cargo"
 
 #: src/modules/ranks/ui/preview.py:304
 msgctxt "ui:rank_preview|embed|field:required|name"
