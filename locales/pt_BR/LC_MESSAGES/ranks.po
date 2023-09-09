@@ -727,6 +727,8 @@ msgid ""
 "The role is managed by another application or integration, and cannot be a "
 "rank!"
 msgstr ""
+"Este cargo é gerenciado por outra aplicação ou Integração, e não pode ser "
+"usado para um nível."
 
 #: src/modules/ranks/ui/overview.py:218
 msgctxt ""
