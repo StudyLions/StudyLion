@@ -556,7 +556,7 @@ msgstr "Editar Menu"
 #: src/modules/rolemenus/cog.py:1393
 msgctxt "cmd:rolemenu_editrole"
 msgid "editrole"
-msgstr ""
+msgstr "editarcargo"
 
 #: src/modules/rolemenus/cog.py:1396
 msgctxt "cmd:rolemenu_editrole|desc"
