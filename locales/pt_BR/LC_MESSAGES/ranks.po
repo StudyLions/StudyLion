@@ -447,6 +447,8 @@ msgid ""
 "You have deleted the rank **{name}**! Could not delete the role due to an "
 "unknown error."
 msgstr ""
+"Você deletou o nível **{name}**! Não pude deletar o cargo, devido a um erro "
+"desconhecido."
 
 #: src/modules/ranks/ui/preview.py:182
 #, possible-python-brace-format
