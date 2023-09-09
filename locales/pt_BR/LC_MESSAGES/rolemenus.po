@@ -1198,6 +1198,8 @@ msgid ""
 "If set, only members who have the `required_role` will be able to obtain or "
 "remove roles using this menu."
 msgstr ""
+"Se configurado, membros que tiverem o ˋcargo_requeridoˋ serão permitidos "
+"para atribuir e retirar cargos através deste menu."
 
 #: src/modules/rolemenus/menuoptions.py:223
 #, possible-python-brace-format
