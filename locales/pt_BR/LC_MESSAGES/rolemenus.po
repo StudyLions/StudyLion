@@ -452,7 +452,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delete|error:menu_not_found"
 msgid "This server does not have a role menu called `{name}`!"
-msgstr ""
+msgstr "Este servidor não possui um menu de cargo chamado ˋ{name}ˋ!"
 
 #: src/modules/rolemenus/cog.py:1102
 #, possible-python-brace-format
