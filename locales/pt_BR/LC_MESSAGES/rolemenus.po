@@ -1180,17 +1180,17 @@ msgctxt "menuset:obtainable|set_response:unset"
 msgid "Members will be able to select any number of roles from this menu."
 msgstr ""
 "Membros estarão permitidos de selecionar qualquer número de cargos por este "
-"menu de cargos."
+"menu."
 
 #: src/modules/rolemenus/menuoptions.py:201
 msgctxt "menuset:required_role"
 msgid "required_role"
-msgstr ""
+msgstr "cargo_requerido"
 
 #: src/modules/rolemenus/menuoptions.py:204
 msgctxt "menuset:required_role|desc"
 msgid "Initial role required to use this menu."
-msgstr ""
+msgstr "Cargo inicial requerido para usar este menu."
 
 #: src/modules/rolemenus/menuoptions.py:209
 msgctxt "menuset:required_role|long_desc"
