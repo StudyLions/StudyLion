@@ -250,7 +250,7 @@ msgstr ""
 #: src/modules/reminders/cog.py:640
 msgctxt "cmd_remindme_at|error:too_fast|title"
 msgid "Could not create reminder!"
-msgstr ""
+msgstr "Não pude criar o lembrete!"
 
 #: src/modules/reminders/cog.py:658
 #, possible-python-brace-format
