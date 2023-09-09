@@ -445,6 +445,8 @@ msgid ""
 "You need the `MANAGE_ROLES` permission in order to manage the server role "
 "menus."
 msgstr ""
+"Você precisa ter permissão de ˋMANAGE_ROLESˋ para que possa gerenciar os "
+"menus de cargo no servidor."
 
 #: src/modules/rolemenus/cog.py:1094
 #, possible-python-brace-format
