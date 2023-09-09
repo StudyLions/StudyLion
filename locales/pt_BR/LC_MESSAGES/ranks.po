@@ -419,6 +419,8 @@ msgid ""
 "You have deleted the rank {mention}. Press the button below to also delete "
 "the role."
 msgstr ""
+"Você deletou o nível {mention}. Clique no botão abaixo para também apagar o "
+"cargo."
 
 #: src/modules/ranks/ui/preview.py:144
 #, possible-python-brace-format
