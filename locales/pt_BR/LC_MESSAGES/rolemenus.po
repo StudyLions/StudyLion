@@ -792,12 +792,12 @@ msgstr "A descrição do cargo foi configurada."
 #: src/modules/rolemenus/roleoptions.py:210
 msgctxt "roleset:description|set_response:unset"
 msgid "The role description has been removed."
-msgstr ""
+msgstr "A descrição do cargo foi removida."
 
 #: src/modules/rolemenus/roleoptions.py:218
 msgctxt "roleset:price"
 msgid "price"
-msgstr ""
+msgstr "preço"
 
 #: src/modules/rolemenus/roleoptions.py:221
 msgctxt "roleset:price|desc"
