@@ -1284,6 +1284,8 @@ msgid ""
 "Right click an existing message or use the `newmenu` command to create a new"
 " menu."
 msgstr ""
+"Clique com o botão direito do mouse, ou use o comando ˋnovomenuˋ para criar "
+"um novo menu."
 
 #: src/modules/rolemenus/ui/menus.py:189
 msgctxt "ui:menu_list|embed|field:unattached|name"
