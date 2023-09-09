@@ -131,7 +131,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "acmpl:menus|choice:no_choices|name"
 msgid "No role menus matching '{partial}'"
-msgstr ""
+msgstr "Não há coincidência com o menu de cargos '{partial}'"
 
 #: src/modules/rolemenus/cog.py:515
 msgctxt "acmpl:menuroles|param:menu|keyname"
