@@ -1239,6 +1239,7 @@ msgstr ""
 msgctxt "menuset:message|set_response:set"
 msgid "The role menu message has been set. Edit through the menu editor."
 msgstr ""
+"A mensagem do menu de cargos foi configurada. Edite através do menu editor."
 
 #: src/modules/rolemenus/menuoptions.py:265
 msgctxt "menuset:message|set_response:unset"
