@@ -1079,7 +1079,7 @@ msgstr "cargos_permanentes"
 #: src/modules/rolemenus/menuoptions.py:89
 msgctxt "menuset:sticky|desc"
 msgid "Whether the menu can be used to unequip roles."
-msgstr ""
+msgstr "Se este menu pode ser utilizado para retirar os cargos."
 
 #: src/modules/rolemenus/menuoptions.py:94
 msgctxt "menuset:sticky|long_desc"
