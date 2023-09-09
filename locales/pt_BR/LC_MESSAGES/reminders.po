@@ -207,7 +207,7 @@ msgstr "tempo"
 #: src/modules/reminders/cog.py:595
 msgctxt "cmd:remindme_at|param:reminder"
 msgid "reminder"
-msgstr ""
+msgstr "lembrete"
 
 #: src/modules/reminders/cog.py:596
 msgctxt "cmd:remindme_at|param:every"
