@@ -737,6 +737,8 @@ msgid ""
 "I do not have the `MANAGE_ROLES` permission in this server, so I cannot "
 "manage ranks!"
 msgstr ""
+"Eu não tenho permissão de ˋMENAGE_ROLESˋ neste servidor, então não posso "
+"gerenciar uma classificação em níveis."
 
 #: src/modules/ranks/ui/overview.py:223
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:above_me"
