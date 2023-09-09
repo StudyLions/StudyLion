@@ -46,9 +46,9 @@ msgstr "Próximo lembrete"
 msgctxt "reminder|formatted|interval"
 msgid "Every day"
 msgid_plural "Every `{days}` days"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Todo dia"
+msgstr[1] "Todos os ˋ{days}ˋ dias"
+msgstr[2] "Todos os ˋ{days}ˋ dias"
 
 #: src/modules/reminders/cog.py:143
 #, possible-python-brace-format
