@@ -1038,7 +1038,7 @@ msgstr "O cargo **{role}** foi atribuído a você"
 #, possible-python-brace-format
 msgctxt "rolemenu|select|expires_at"
 msgid "The role will expire at {timestamp}."
-msgstr ""
+msgstr "O cargo irá expirar em {timestamp}."
 
 #: src/modules/rolemenus/rolemenu.py:717
 #, possible-python-brace-format
