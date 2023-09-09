@@ -282,7 +282,7 @@ msgstr "Os membros acumularão com base nos níveis de ˋAtividade de Vozˋ."
 #: src/modules/ranks/settings.py:76
 msgctxt "guildset:rank_type|set_response|type:messages"
 msgid "Members will be awarded activity ranks based on `Messages Sent`."
-msgstr ""
+msgstr "Os membros acumularão com base nos níveis de ˋMensagens Enviadasˋ."
 
 #: src/modules/ranks/settings.py:81
 msgctxt "guildset:rank_type|set_response|type:xp"
