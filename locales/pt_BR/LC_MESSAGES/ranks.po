@@ -578,7 +578,7 @@ msgstr "**Atualizando níveis de classificação:** {emoji}"
 #, possible-python-brace-format
 msgctxt "ui:refresh_ranks|embed|line:members"
 msgid "**Loading server members:** {emoji}"
-msgstr ""
+msgstr "**Atualizando membros do servidor:** {emoji}"
 
 #: src/modules/ranks/ui/refresh.py:177
 #, possible-python-brace-format
