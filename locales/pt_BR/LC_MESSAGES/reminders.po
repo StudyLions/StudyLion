@@ -302,12 +302,12 @@ msgstr "tempo"
 #: src/modules/reminders/cog.py:721
 msgctxt "cmd:remindme_in|param:reminder"
 msgid "reminder"
-msgstr "lembreto"
+msgstr "lembret"
 
 #: src/modules/reminders/cog.py:722
 msgctxt "cmd:remindme_in|param:every"
 msgid "repeat_every"
-msgstr "repetir_por"
+msgstr "repetir_torda"
 
 #: src/modules/reminders/cog.py:725
 msgctxt "cmd:remindme_in|param:time|desc"
