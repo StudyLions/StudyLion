@@ -1419,7 +1419,7 @@ msgstr "Selecione o Estilo de Menu"
 #: src/modules/rolemenus/ui/menueditor.py:606
 msgctxt "ui:menu_editor|menu:style|option:reaction|label"
 msgid "Reaction Roles"
-msgstr ""
+msgstr "Cargos por Reação"
 
 #: src/modules/rolemenus/ui/menueditor.py:609
 msgctxt "ui:menu_editor|menu:style|option:reaction|desc"
