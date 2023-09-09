@@ -541,12 +541,12 @@ msgstr "Cargo"
 #: src/modules/ranks/ui/preview.py:304
 msgctxt "ui:rank_preview|embed|field:required|name"
 msgid "Required"
-msgstr ""
+msgstr "Necessário"
 
 #: src/modules/ranks/ui/preview.py:311
 msgctxt "ui:rank_preview|embed|field:reward|name"
 msgid "Reward"
-msgstr ""
+msgstr "Recompensa"
 
 #: src/modules/ranks/ui/preview.py:320
 msgctxt "ui:rank_preview|embed|field:message"
