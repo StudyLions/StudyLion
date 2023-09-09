@@ -1259,7 +1259,7 @@ msgstr "Selecione o Menu a Editar"
 #, possible-python-brace-format
 msgctxt "ui:menu_list|menu_line:attached"
 msgid "[`{name}`]({jump_url}) with `{count}` roles."
-msgstr ""
+msgstr "[`{name}`]({jump_url}) com `{count}` roles."
 
 #: src/modules/rolemenus/ui/menus.py:138
 #, possible-python-brace-format
