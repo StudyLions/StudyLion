@@ -584,7 +584,7 @@ msgstr "**Atualizando membros do servidor:** {emoji}"
 #, possible-python-brace-format
 msgctxt "ui:refresh_ranks|embed|line:roles"
 msgid "**Loading rank roles:** {emoji}"
-msgstr ""
+msgstr "**Atualizando cargos de nível:** {emoji}"
 
 #: src/modules/ranks/ui/refresh.py:187
 #, possible-python-brace-format
