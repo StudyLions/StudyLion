@@ -706,7 +706,7 @@ msgstr "rótulo"
 #: src/modules/rolemenus/roleoptions.py:85
 msgctxt "roleset:label|desc"
 msgid "A short button label for this role."
-msgstr ""
+msgstr "Um botão curto rótulado para este cargo."
 
 #: src/modules/rolemenus/roleoptions.py:90
 msgctxt "roleset:label|long_desc"
