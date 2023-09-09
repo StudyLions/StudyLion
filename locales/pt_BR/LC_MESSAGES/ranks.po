@@ -898,6 +898,7 @@ msgstr ""
 msgctxt "ui:rank_editor|input:reward|placeholder"
 msgid "LionCoins awarded upon achieving this rank"
 msgstr ""
+"Prêmio de LionCoins a ser pago quando atingirem este nível de classificação."
 
 #: src/modules/ranks/ui/editor.py:181
 msgctxt "ui:rank_editor|input:reward|error:parse"
