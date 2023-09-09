@@ -843,6 +843,9 @@ msgid ""
 "Allows creation of 'temporary roles' which expire a given time after being "
 "equipped. Refunds will not be given upon expiry."
 msgstr ""
+"Autoriza a criação de 'cargos temporários' que irão expirar, no período "
+"informado, após ser atribuído. As moedas não serão devolvidas quando expirar"
+" o tempo de uso."
 
 #: src/modules/rolemenus/roleoptions.py:267
 msgctxt "roleset:duration|notset"
