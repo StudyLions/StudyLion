@@ -746,6 +746,8 @@ msgid ""
 "This role is above my top role in the role hierarchy, so I cannot add or "
 "remove it!"
 msgstr ""
+"Este cargo é acima do meu cargo mais elevado, então eu não posso atribuí-lo,"
+" ou removê-lo!"
 
 #: src/modules/ranks/ui/overview.py:229
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:other"
