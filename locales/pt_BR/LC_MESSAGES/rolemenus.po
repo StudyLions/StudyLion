@@ -780,6 +780,9 @@ msgid ""
 "It may also be used as a substitution key in custom role selection "
 "responses."
 msgstr ""
+"A descrição é mostrada abaixo do rótulo do cargo, em um menu suspenso. "
+"Talvez ele também seja usado como substituto para uma seleção personalizada "
+"de responsabilidades. "
 
 #: src/modules/rolemenus/roleoptions.py:205
 msgctxt "roleset:description|set_response:set"
