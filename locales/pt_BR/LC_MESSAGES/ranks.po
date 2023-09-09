@@ -299,7 +299,7 @@ msgstr "{cmd} ou escolha uma opção no menu abaixo."
 #: src/modules/ranks/settings.py:103
 msgctxt "guildset:rank_channel"
 msgid "rank_channel"
-msgstr ""
+msgstr "canal_do_rank"
 
 #: src/modules/ranks/settings.py:106
 msgctxt "guildset:rank_channel|desc"
