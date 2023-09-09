@@ -84,12 +84,12 @@ msgstr "Mostra seus lembretes atuais."
 #: src/modules/reminders/cog.py:378
 msgctxt "cmd:reminders_show|close_elsewhere"
 msgid "Closing since the list was opened elsewhere."
-msgstr ""
+msgstr "Fechando assim que a lista for aberta em outro lugar."
 
 #: src/modules/reminders/cog.py:390
 msgctxt "cmd:reminders_clear"
 msgid "clear"
-msgstr ""
+msgstr "limpar"
 
 #: src/modules/reminders/cog.py:393
 msgctxt "cmd:reminders_clear|desc"
