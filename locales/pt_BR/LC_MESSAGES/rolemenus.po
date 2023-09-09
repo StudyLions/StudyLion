@@ -741,6 +741,10 @@ msgid ""
 "otherwise appears next to the role label in the button and dropdown styles. "
 "The emoji is also displayed next to the role in most menu templates."
 msgstr ""
+"O emoji do cargo é usado para a reação do membro (nos menus de reação em "
+"mensagem), e em outras horas, aparece próximo ao rótulo do cargo, em menus "
+"de botões ou suspensos. O emoji também será mostrado próximo ao cargo na "
+"maioria dos modelos de menu."
 
 #: src/modules/rolemenus/roleoptions.py:157
 #, possible-python-brace-format
