@@ -1096,7 +1096,7 @@ msgstr ""
 #: src/modules/rolemenus/menuoptions.py:110
 msgctxt "menuset:sticky|set_response:true"
 msgid "Members will no longer be able to remove roles with this menu."
-msgstr ""
+msgstr "Os membros não estarão habilitados a remover os cargos com este menu."
 
 #: src/modules/rolemenus/menuoptions.py:115
 msgctxt "menuset:sticky|set_response:false"
