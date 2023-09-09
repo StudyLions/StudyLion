@@ -866,7 +866,7 @@ msgstr "Este cargo não irá expirar, após ser selecionado."
 #: src/modules/rolemenus/templates.py:53
 msgctxt "template:simple|name"
 msgid "Simple Menu"
-msgstr ""
+msgstr "Menu Simplificado"
 
 #: src/modules/rolemenus/templates.py:57
 msgctxt "template:simple|desc"
