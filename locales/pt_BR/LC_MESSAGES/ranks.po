@@ -696,7 +696,7 @@ msgstr "Limpar Níveis Classificatórios"
 #: src/modules/ranks/ui/overview.py:153
 msgctxt "ui:rank_overview|button:create|label"
 msgid "Create Rank"
-msgstr ""
+msgstr "Criar Níveis Classificatórios"
 
 #: src/modules/ranks/ui/overview.py:169
 #, possible-python-brace-format
