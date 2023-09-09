@@ -86,6 +86,8 @@ msgid ""
 "Malformed message link. Please copy the link by right clicking the target "
 "message."
 msgstr ""
+"O link para a mensagem referida está inconsistente. Por favor, copie o link "
+"clicando com o botão direito do mouse sobre a mensagem."
 
 #: src/modules/rolemenus/cog.py:322
 #, possible-python-brace-format
