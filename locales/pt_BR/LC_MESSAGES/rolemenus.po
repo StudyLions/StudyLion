@@ -591,7 +591,7 @@ msgstr "Rótulo, nome ou menção do menu de cargos a ser editado."
 #: src/modules/rolemenus/cog.py:1426
 msgctxt "cmd:rolemenu_editrole|param:role|desc"
 msgid "New server role this menu role should give."
-msgstr ""
+msgstr "Cargo de novatos no servidor que este menu deve dar."
 
 #: src/modules/rolemenus/cog.py:1434
 msgctxt "cmd:rolemenu_editrole|param:duration|desc"
