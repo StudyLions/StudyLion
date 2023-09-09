@@ -278,6 +278,7 @@ msgstr ""
 msgctxt "cmd:rolemenu_create|error:name_exists"
 msgid "A rolemenu called `{name}` already exists! Use {edit_cmd} to edit it."
 msgstr ""
+"Um cargomenu chamado ˋ{name}ˋ já existe! Use {edit_cmd} para editá-lo."
 
 #: src/modules/rolemenus/cog.py:788
 msgctxt "cmd:rolemenu_edit"
