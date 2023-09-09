@@ -250,6 +250,8 @@ msgid ""
 "I cannot create a `{style}` style menu on a message I didn't send! (Discord "
 "restriction)."
 msgstr ""
+"Eu não posso criar o ˋ{style}ˋ estilo de um menu, em uma mensagem que não "
+"foi enviada por mim! (Há uma restrição do Discord). "
 
 #: src/modules/rolemenus/cog.py:718
 #, possible-python-brace-format
