@@ -200,6 +200,8 @@ msgstr "mensagem_personalizada"
 msgctxt "cmd:rolemenu_create|param:message|desc"
 msgid "Link to an existing message to turn it into a (reaction) role menu"
 msgstr ""
+"Link de uma mensagem já existente para transforma-la em um painel de cargos "
+"por reação."
 
 #: src/modules/rolemenus/cog.py:627
 msgctxt "cmd:rolemenu_create|param:menu_style"
