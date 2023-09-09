@@ -55,9 +55,9 @@ msgstr[2] "Todos os ˋ{days}ˋ dias"
 msgctxt "reminder|formatted|interval"
 msgid "Every hour"
 msgid_plural "Every `{hours}` hours"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "A cada hora"
+msgstr[1] "Todas ˋ{hours}ˋ horas"
+msgstr[2] "Todas ˋ{hours}ˋ horas"
 
 #: src/modules/reminders/cog.py:152
 #, possible-python-brace-format
