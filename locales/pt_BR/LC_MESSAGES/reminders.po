@@ -275,7 +275,7 @@ msgstr "O horário informado, já passou!"
 #: src/modules/reminders/cog.py:677
 msgctxt "cmd:remindme_at|error:past_time|title"
 msgid "Could not create reminder!"
-msgstr ""
+msgstr "Não pude criar o lembrete!"
 
 #: src/modules/reminders/cog.py:702
 #, possible-python-brace-format
