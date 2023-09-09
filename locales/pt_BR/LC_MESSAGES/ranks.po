@@ -686,7 +686,7 @@ msgstr "Criar Automaticamente"
 #: src/modules/ranks/ui/overview.py:107
 msgctxt "ui:rank_overview|button:refresh|label"
 msgid "Refresh Member Ranks"
-msgstr ""
+msgstr "Atualizar Níveis Classificatórios dos Membros"
 
 #: src/modules/ranks/ui/overview.py:123
 msgctxt "ui:rank_overview|button:clear|label"
