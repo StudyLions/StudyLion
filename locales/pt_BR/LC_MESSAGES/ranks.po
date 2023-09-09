@@ -885,6 +885,8 @@ msgctxt "ui:rank_editor|type:xp|input:requires|error:parse"
 msgid ""
 "`requires`: Could not parse provided minimum XP! Please enter an integer."
 msgstr ""
+"ˋrequerˋ: Não pude analisar o valor mínimo de XP informado! Por favor, use "
+"um número inteiro."
 
 #: src/modules/ranks/ui/editor.py:162
 msgctxt "ui:rank_editor|input:reward|label"
