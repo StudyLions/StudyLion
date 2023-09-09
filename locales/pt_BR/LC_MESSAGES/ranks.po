@@ -612,7 +612,7 @@ msgstr "**Cargos inválidos removidos:** {done}/{target}"
 #: src/modules/ranks/ui/refresh.py:220
 msgctxt "ui:refresh_ranks|embed|field:add|name"
 msgid "Giving members their rank roles"
-msgstr ""
+msgstr "Atribuindo os cargos aos níveis de classificação dos membros."
 
 #: src/modules/ranks/ui/refresh.py:224
 #, possible-python-brace-format
