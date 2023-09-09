@@ -386,7 +386,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_edit|parse:template|success:template"
 msgid "Now using the `{name}` menu message template."
-msgstr ""
+msgstr "Agora usando o modelo ˋ{name}ˋ de mensagem. "
 
 #: src/modules/rolemenus/cog.py:969
 msgctxt "cmd:rolemenu_edit|parse:template|success:custom"
