@@ -807,7 +807,7 @@ msgstr "Preço do cargo, em LionCoins."
 #: src/modules/rolemenus/roleoptions.py:225
 msgctxt "roleset:price|long_desc"
 msgid "How much the role costs when selected, in LionCoins."
-msgstr ""
+msgstr "Quanto o cargo custará, quando selecionado, em LionCoins."
 
 #: src/modules/rolemenus/roleoptions.py:229
 msgctxt "roleset:price|accepts"
