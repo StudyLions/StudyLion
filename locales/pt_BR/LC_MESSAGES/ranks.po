@@ -460,7 +460,7 @@ msgstr "Você deletou o nível **{name}** juntamente com o cargo sublinhado."
 #: src/modules/ranks/ui/preview.py:199
 msgctxt "ui:rank_preview|button:delete|label"
 msgid "Delete Rank"
-msgstr ""
+msgstr "Deletar Nível"
 
 #: src/modules/ranks/ui/preview.py:219
 #, possible-python-brace-format
