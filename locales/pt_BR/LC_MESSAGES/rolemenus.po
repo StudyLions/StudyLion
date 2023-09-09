@@ -115,6 +115,8 @@ msgid ""
 "You need the `MANAGE_ROLES` permission in order to manage the server role "
 "menus."
 msgstr ""
+"Você precisa de permissão para ˋMANAGE_ROLESˋ para que possa gerenciar o "
+"menu de cargos do servidor."
 
 #: src/modules/rolemenus/cog.py:461
 msgctxt "cmd:rolemenus|error:my_perms"
