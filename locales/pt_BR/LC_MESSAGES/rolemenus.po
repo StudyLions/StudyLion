@@ -124,6 +124,8 @@ msgid ""
 "I lack the `MANAGE_ROLES` permission required to offer roles from role "
 "menus."
 msgstr ""
+"Não tenho permissão de ˋMANAGE_ROLESˋ, necessária para oferecer um menu de "
+"cargos."
 
 #: src/modules/rolemenus/cog.py:496
 #, possible-python-brace-format
