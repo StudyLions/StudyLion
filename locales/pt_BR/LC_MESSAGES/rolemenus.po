@@ -1408,6 +1408,8 @@ msgid ""
 "Cannot switch to the Reaction Role Style! Every role needs to have a "
 "distinct emoji first."
 msgstr ""
+"Não pude alternar para o atribuição Cargos Estilo Reação. Todo cargo "
+"precisa, primeiro, ter um emoji distinto. "
 
 #: src/modules/rolemenus/ui/menueditor.py:602
 msgctxt "ui:menu_editor|menu:style|placeholder"
