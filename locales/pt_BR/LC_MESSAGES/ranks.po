@@ -830,7 +830,7 @@ msgstr ""
 #: src/modules/ranks/ui/editor.py:88
 msgctxt "ui:rank_editor|type:voice|input:requires|label"
 msgid "Required Voice Hours"
-msgstr ""
+msgstr "Quantidade de Horas de Voz Necessárias"
 
 #: src/modules/ranks/ui/editor.py:92
 msgctxt "ui:rank_editor|type:voice|input:requires|placeholder"
