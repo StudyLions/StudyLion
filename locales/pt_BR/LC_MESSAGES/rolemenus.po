@@ -1158,7 +1158,7 @@ msgid ""
 msgstr ""
 "Os membros não serão permitidos de atribuir mais do que este número de "
 "cargos por meio deste menu. Esta contagem inclui cargos que não foram "
-"obtidos através do sistema de  cargos de menu."
+"obtidos através do sistema de cargos de menu."
 
 #: src/modules/rolemenus/menuoptions.py:174
 msgctxt "menuset:obtainable|notset"
