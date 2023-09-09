@@ -184,7 +184,7 @@ msgstr "link_mensagem"
 #: src/modules/rolemenus/cog.py:611
 msgctxt "cmd:rolemenu_create|param:menu_style"
 msgid "menu_style"
-msgstr ""
+msgstr "estilo_menu"
 
 #: src/modules/rolemenus/cog.py:612
 msgctxt "cmd:rolemenu_create|param:remplate"
