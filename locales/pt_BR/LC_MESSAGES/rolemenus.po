@@ -163,12 +163,12 @@ msgstr "menucargo"
 #: src/modules/rolemenus/cog.py:584
 msgctxt "group:rolemenu|desc"
 msgid "Base command group for role menu configuration."
-msgstr ""
+msgstr "Grupo de comandos base para configuração do menu  de cargos. "
 
 #: src/modules/rolemenus/cog.py:593
 msgctxt "cmd:rolemenu_create"
 msgid "newmenu"
-msgstr ""
+msgstr "novomenu"
 
 #: src/modules/rolemenus/cog.py:596
 msgctxt "cmd:rolemenu_create|desc"
