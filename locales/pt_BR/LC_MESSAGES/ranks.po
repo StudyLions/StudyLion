@@ -868,6 +868,8 @@ msgid ""
 "`requires`: Could not parse provided minimum time! Please write a number of "
 "hours."
 msgstr ""
+"ˋrequerˋ: Não pude analisar o tempo mínimo informado! Por favor, informe o "
+"número de horas."
 
 #: src/modules/ranks/ui/editor.py:137
 msgctxt "ui:rank_editor|type:message|input:requires|error:parse"
