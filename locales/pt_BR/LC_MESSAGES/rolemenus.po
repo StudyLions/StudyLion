@@ -1054,7 +1054,7 @@ msgstr "nome"
 #: src/modules/rolemenus/menuoptions.py:59
 msgctxt "menuset:name|desc"
 msgid "Brief name for this role menu."
-msgstr ""
+msgstr "Um nome curto para este menu."
 
 #: src/modules/rolemenus/menuoptions.py:64
 msgctxt "menuset:name|long_desc"
