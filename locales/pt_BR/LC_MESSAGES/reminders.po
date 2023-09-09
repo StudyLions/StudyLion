@@ -187,7 +187,7 @@ msgstr "Você não tem nenhum lembrete parecido com \"{partial}\""
 #: src/modules/reminders/cog.py:580
 msgctxt "cmd:remindme"
 msgid "remindme"
-msgstr ""
+msgstr "lembrar-me"
 
 #: src/modules/reminders/cog.py:587
 msgctxt "cmd:remindme_at"
