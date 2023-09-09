@@ -836,6 +836,8 @@ msgstr "Quantidade de Horas de Voz Necessárias"
 msgctxt "ui:rank_editor|type:voice|input:requires|placeholder"
 msgid "Number of voice hours before awarding this rank"
 msgstr ""
+"Número de horas em canal de voz necessárias para alcançar este nível de "
+"classificação."
 
 #: src/modules/ranks/ui/editor.py:97
 msgctxt "ui:rank_editor|type:xp|input:requires|label"
