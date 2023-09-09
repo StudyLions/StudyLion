@@ -932,6 +932,8 @@ msgid ""
 "Could not add the {emoji} reaction, perhaps I do not have access to this "
 "emoji! Reactions will need to be added manually."
 msgstr ""
+"Não pude adicionar a reação {emoji}, pois eu não tenho acesso a este emoji! "
+"As reações do menu precisarão ser adicionadas manualmente."
 
 #: src/modules/rolemenus/rolemenu.py:381
 msgctxt "ui:rolemenu_dropdown|placeholder"
