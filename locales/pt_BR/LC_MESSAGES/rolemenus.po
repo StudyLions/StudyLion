@@ -648,7 +648,7 @@ msgstr "Nome do menu do qual será deletado o cargo"
 #: src/modules/rolemenus/cog.py:1626
 msgctxt "cmd:rolemenu_delrole|param:menu_role|desc"
 msgid "Name, label, or mention of the role to delete."
-msgstr ""
+msgstr "Nome, rótulo, ou menção do cargo a deletar."
 
 #: src/modules/rolemenus/cog.py:1644
 msgctxt "cmd:rolemenu_delrole|error:author_perms"
