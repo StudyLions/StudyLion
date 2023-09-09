@@ -650,12 +650,12 @@ msgstr "Atividade em Canal de Voz"
 #: src/modules/ranks/ui/config.py:98
 msgctxt "ui:rank_config|menu:types|option:xp"
 msgid "XP Earned"
-msgstr ""
+msgstr "EXP Acumulada"
 
 #: src/modules/ranks/ui/config.py:106
 msgctxt "ui:rank_config|menu:types|option:messages"
 msgid "Messages Sent"
-msgstr ""
+msgstr "Mensagens Enviadas"
 
 #: src/modules/ranks/ui/config.py:126
 msgctxt "ui:rank_config|menu:channels|placeholder"
