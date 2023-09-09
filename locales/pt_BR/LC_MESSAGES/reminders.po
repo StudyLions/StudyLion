@@ -281,12 +281,12 @@ msgstr "Não pude criar o lembrete!"
 #, possible-python-brace-format
 msgctxt "cmd:remindme_in|success|title"
 msgid "Reminder Set at {timestamp}"
-msgstr ""
+msgstr "Lembrete configurado para as {timestamp}"
 
 #: src/modules/reminders/cog.py:713
 msgctxt "cmd:remindme_in"
 msgid "in"
-msgstr ""
+msgstr "em"
 
 #: src/modules/reminders/cog.py:716
 msgctxt "cmd:remindme_in|desc"
