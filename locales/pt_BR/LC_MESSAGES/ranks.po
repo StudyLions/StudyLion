@@ -806,7 +806,7 @@ msgstr "Nome do Cargo"
 #: src/modules/ranks/ui/editor.py:37
 msgctxt "ui:rank_editor|input:role_name|placeholder"
 msgid "Name of the awarded guild role"
-msgstr ""
+msgstr "Nome do cargo atribuído"
 
 #: src/modules/ranks/ui/editor.py:53
 msgctxt "ui:rank_editor|input:role_colour|label"
