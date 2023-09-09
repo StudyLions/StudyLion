@@ -79,7 +79,7 @@ msgstr "mostrar"
 #: src/modules/reminders/cog.py:362
 msgctxt "cmd:reminders_show|desc"
 msgid "Display your current reminders."
-msgstr ""
+msgstr "Mostra seus lembretes atuais."
 
 #: src/modules/reminders/cog.py:378
 msgctxt "cmd:reminders_show|close_elsewhere"
