@@ -1345,7 +1345,7 @@ msgstr "Selecione o Cargo Requerido"
 #: src/modules/rolemenus/ui/menueditor.py:308
 msgctxt "ui:menu_editor|button:modify_roles|label"
 msgid "Modify Roles"
-msgstr ""
+msgstr "Modificar Cargos"
 
 #: src/modules/rolemenus/ui/menueditor.py:337
 msgctxt "ui:menu_editor|role_editor|modal|title"
