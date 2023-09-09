@@ -1362,7 +1362,7 @@ msgstr ""
 #: src/modules/rolemenus/ui/menueditor.py:416
 msgctxt "ui:menu_editor|menu:add_roles|error:too_many_roles"
 msgid "Too many roles! Role menus cannot have more than `25` roles."
-msgstr ""
+msgstr "Muitos cargos! O menu de cargos não pode exceder ˋ25ˋ cargos."
 
 #: src/modules/rolemenus/ui/menueditor.py:455
 msgctxt "ui:menu_editor|menu:add_roles|placeholder"
