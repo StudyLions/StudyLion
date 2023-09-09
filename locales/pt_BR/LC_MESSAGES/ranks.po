@@ -816,7 +816,7 @@ msgstr "Cor de Cargo"
 #: src/modules/ranks/ui/editor.py:57
 msgctxt "ui:rank_editor|input:role_colour|placeholder"
 msgid "Colour of the awarded guild role, e.g. #AB1321"
-msgstr ""
+msgstr "Cor do cargo premiado, Exemplo #AB1321"
 
 #: src/modules/ranks/ui/editor.py:69
 msgctxt "ui:rank_editor|input:role_colour|error:parse"
