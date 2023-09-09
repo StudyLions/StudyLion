@@ -903,7 +903,7 @@ msgstr ""
 #: src/modules/ranks/ui/editor.py:181
 msgctxt "ui:rank_editor|input:reward|error:parse"
 msgid "`reward`: Please enter an integer number of LionCoins."
-msgstr ""
+msgstr "ˋrequerˋ: Por favor, informe um número inteiro de LionCoins. "
 
 #: src/modules/ranks/ui/editor.py:197
 msgctxt "ui:rank_editor|input:message|label"
