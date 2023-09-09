@@ -1425,11 +1425,13 @@ msgstr "Cargos por Reação"
 msgctxt "ui:menu_editor|menu:style|option:reaction|desc"
 msgid "Roles are represented compactly as clickable reactions on a message."
 msgstr ""
+"Os cargos estao representados simbolicamente por um emoji para reação na "
+"mensagem."
 
 #: src/modules/rolemenus/ui/menueditor.py:615
 msgctxt "ui:menu_editor|menu:style|option:button|label"
 msgid "Button Menu"
-msgstr ""
+msgstr "Botão Menu"
 
 #: src/modules/rolemenus/ui/menueditor.py:618
 msgctxt "ui:menu_editor|menu:style|option:button|desc"
