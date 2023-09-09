@@ -237,7 +237,7 @@ msgstr "Me desculpe, você atingiu o máximo de ˋ25ˋ lembretes!"
 #: src/modules/reminders/cog.py:623
 msgctxt "cmd_remindme_at|error:too_many|title"
 msgid "Could not create reminder!"
-msgstr ""
+msgstr "Não pude criar o lembrete!"
 
 #: src/modules/reminders/cog.py:636
 msgctxt "cmd_remindme_at|error:too_fast|desc"
