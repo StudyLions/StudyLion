@@ -1007,6 +1007,7 @@ msgstr ""
 msgctxt "rolemenu|select|error:perms"
 msgid "I don't have enough permissions to give you this role!"
 msgstr ""
+"Eu não tenho as permissões suficientes para atribuir este cargo a você!"
 
 #: src/modules/rolemenus/rolemenu.py:605
 msgctxt "rolemenu|select|error:discord"
