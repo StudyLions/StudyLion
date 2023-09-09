@@ -850,7 +850,7 @@ msgstr ""
 #: src/modules/rolemenus/roleoptions.py:267
 msgctxt "roleset:duration|notset"
 msgid "Forever."
-msgstr ""
+msgstr "Ilimitado."
 
 #: src/modules/rolemenus/roleoptions.py:280
 #, possible-python-brace-format
