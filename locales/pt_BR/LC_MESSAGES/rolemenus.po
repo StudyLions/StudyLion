@@ -530,7 +530,7 @@ msgstr "Menu de Cargos Adicionado"
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_addrole|success:create|desc"
 msgid "Add the role {role} to the menu **{menu}**."
-msgstr ""
+msgstr "Adicione o cargo {role} ao menu **{menu}**."
 
 #: src/modules/rolemenus/cog.py:1334
 msgctxt "cmd:rolemenu_addrole|success:edit|title"
