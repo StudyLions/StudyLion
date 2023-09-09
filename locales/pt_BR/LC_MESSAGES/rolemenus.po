@@ -950,6 +950,7 @@ msgstr "Este cargo não existe mais!"
 msgctxt "rolemenu|deselect|error:sticky"
 msgid "**{role}** is a sticky role, you cannot remove it with this menu!"
 msgstr ""
+"**{role}** é um cargo persistentel. Você não pode removê-lo neste menu!"
 
 #: src/modules/rolemenus/rolemenu.py:493
 msgctxt "rolemenu|deselect|error:perms"
