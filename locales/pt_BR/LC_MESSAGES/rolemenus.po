@@ -1215,7 +1215,7 @@ msgstr "Qualquer membro que possa ver o menu, será permitido a usá-lo."
 #: src/modules/rolemenus/menuoptions.py:236
 msgctxt "menuset:message"
 msgid "custom_message"
-msgstr ""
+msgstr "mensagem_personalizada"
 
 #: src/modules/rolemenus/menuoptions.py:239
 msgctxt "menuset:message|desc"
