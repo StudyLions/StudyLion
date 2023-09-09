@@ -908,7 +908,7 @@ msgstr "ˋrequerˋ: Por favor, informe um número inteiro de LionCoins. "
 #: src/modules/ranks/ui/editor.py:197
 msgctxt "ui:rank_editor|input:message|label"
 msgid "Rank Message"
-msgstr ""
+msgstr "Mensagem da Classificação"
 
 #: src/modules/ranks/ui/editor.py:201
 msgctxt "ui:rank_editor|input:message|placeholder"
