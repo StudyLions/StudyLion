@@ -1220,7 +1220,7 @@ msgstr "mensagem_personalizada"
 #: src/modules/rolemenus/menuoptions.py:239
 msgctxt "menuset:message|desc"
 msgid "Custom message data used to display the menu."
-msgstr ""
+msgstr "Uma mensagem personalizada usada para mostrar o menu."
 
 #: src/modules/rolemenus/menuoptions.py:243
 msgctxt "menuset:message|long_desc"
