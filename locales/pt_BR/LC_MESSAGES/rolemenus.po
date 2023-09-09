@@ -472,7 +472,7 @@ msgstr "Sim, Apagar Agora"
 #: src/modules/rolemenus/cog.py:1112
 msgctxt "cmd:rolemenu_delete|confirm|button:no"
 msgid "No, Cancel"
-msgstr ""
+msgstr "Não, Cancelar"
 
 #: src/modules/rolemenus/cog.py:1137
 #, possible-python-brace-format
