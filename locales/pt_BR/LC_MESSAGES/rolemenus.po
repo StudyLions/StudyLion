@@ -1340,7 +1340,7 @@ msgstr "Alterar Ressarcimentos"
 #: src/modules/rolemenus/ui/menueditor.py:289
 msgctxt "ui:menu_editor|menu:reqroles|placeholder"
 msgid "Select Required Role"
-msgstr ""
+msgstr "Selecione o Cargo Requerido"
 
 #: src/modules/rolemenus/ui/menueditor.py:308
 msgctxt "ui:menu_editor|button:modify_roles|label"
