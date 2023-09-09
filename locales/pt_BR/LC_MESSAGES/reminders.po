@@ -217,7 +217,7 @@ msgstr "repetir_toda"
 #: src/modules/reminders/cog.py:599
 msgctxt "cmd:remindme_at|param:time|desc"
 msgid "When you want to be reminded. (E.g. `4pm` or `16:00`)."
-msgstr ""
+msgstr "Quando você gostaria de ser lembrado. (Ex. ˋ4pmˋ ou ˋ16:00ˋ)."
 
 #: src/modules/reminders/cog.py:600
 msgctxt "cmd:remindme_at|param:reminder|desc"
