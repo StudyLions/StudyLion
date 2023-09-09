@@ -665,12 +665,13 @@ msgstr "Selecione o Canal de Notificações dos Níveis Classificatórios"
 #: src/modules/ranks/ui/config.py:134
 msgctxt "ui:rank_config|embed|title"
 msgid "Ranks Configuration Panel"
-msgstr "Painel de Configuração dos Níveis"
+msgstr "Painel de Configuração dos Níveis de Classificação"
 
 #: src/modules/ranks/ui/config.py:171
 msgctxt "dash:rank|title"
 msgid "Rank Configuration ({commands[configure ranks]})"
-msgstr "Configuração dos Níveis ({commands[configure ranks]})"
+msgstr ""
+"Configuração dos Níveis de Classificação ({commands[configure ranks]})"
 
 #: src/modules/ranks/ui/config.py:175
 msgctxt "dash:rank|dropdown|placeholder"
