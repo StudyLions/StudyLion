@@ -623,7 +623,7 @@ msgstr "Atenção!"
 #: src/modules/rolemenus/cog.py:1609
 msgctxt "cmd:rolemenu_delrole"
 msgid "delrole"
-msgstr ""
+msgstr "apagarcargo"
 
 #: src/modules/rolemenus/cog.py:1612
 msgctxt "cmd:rolemenu_delrole|desc"
