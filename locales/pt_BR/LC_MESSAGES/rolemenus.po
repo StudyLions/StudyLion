@@ -1367,12 +1367,12 @@ msgstr "Muitos cargos! O menu de cargos não pode exceder ˋ25ˋ cargos."
 #: src/modules/rolemenus/ui/menueditor.py:455
 msgctxt "ui:menu_editor|menu:add_roles|placeholder"
 msgid "Add Roles"
-msgstr ""
+msgstr "Adicionar Cargos"
 
 #: src/modules/rolemenus/ui/menueditor.py:481
 msgctxt "ui:menu_editor|menu:edit_roles|placeholder"
 msgid "Edit Roles"
-msgstr ""
+msgstr "Editar Cargos"
 
 #: src/modules/rolemenus/ui/menueditor.py:514
 msgctxt "ui:menu_editor|menu:del_role|placeholder"
