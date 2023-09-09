@@ -272,7 +272,7 @@ msgstr ""
 #: src/modules/ranks/settings.py:59
 msgctxt "guildset:rank_type|accepts"
 msgid "Voice/Exp/Messages"
-msgstr ""
+msgstr "Voz/Exp/Mensagens"
 
 #: src/modules/ranks/settings.py:71
 msgctxt "guildset:rank_type|set_response|type:voice"
