@@ -461,6 +461,8 @@ msgid ""
 "Are you sure you want to delete the role menu **{name}**? This is not "
 "reversible!"
 msgstr ""
+"Você tem certeza que quer apagar o menu de cargos **{name}**? Esta operação "
+"é irreversível!"
 
 #: src/modules/rolemenus/cog.py:1107
 msgctxt "cmd:rolemenu_delete|confirm|button:yes"
