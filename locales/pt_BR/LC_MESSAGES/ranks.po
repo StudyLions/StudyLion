@@ -635,7 +635,7 @@ msgstr "Você não tem permissões suficientes no servidor para usar isto!"
 #: src/modules/ranks/ui/config.py:64
 msgctxt "ui:rank_config|button:overview|label"
 msgid "Edit Ranks"
-msgstr ""
+msgstr "Editar Níveis"
 
 #: src/modules/ranks/ui/config.py:82
 msgctxt "ui:rank_config|menu:types|placeholder"
