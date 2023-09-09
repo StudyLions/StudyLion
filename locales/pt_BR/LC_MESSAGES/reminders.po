@@ -312,7 +312,7 @@ msgstr "repetir_toda"
 #: src/modules/reminders/cog.py:725
 msgctxt "cmd:remindme_in|param:time|desc"
 msgid "How far into the future to set the reminder (e.g. 1 day 10h 5m)."
-msgstr ""
+msgstr "O quanto distante no tempo você quer ser lembrado (ex. 1 dia 10h 5m)."
 
 #: src/modules/reminders/cog.py:726
 msgctxt "cmd:remindme_in|param:reminder|desc"
