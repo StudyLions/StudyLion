@@ -1247,6 +1247,8 @@ msgid ""
 "The role menu message has been unset. Select a template through the menu "
 "editor."
 msgstr ""
+"A mensagem do menu de cargos foi retirada. Escolha um menu através do menu "
+"editor."
 
 #: src/modules/rolemenus/ui/menus.py:105
 msgctxt "ui:menu_list|menu:editmenu|placeholder"
