@@ -1414,7 +1414,7 @@ msgstr ""
 #: src/modules/rolemenus/ui/menueditor.py:602
 msgctxt "ui:menu_editor|menu:style|placeholder"
 msgid "Select Menu Style"
-msgstr ""
+msgstr "Selecione o Estilo de Menu"
 
 #: src/modules/rolemenus/ui/menueditor.py:606
 msgctxt "ui:menu_editor|menu:style|option:reaction|label"
