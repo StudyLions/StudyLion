@@ -1271,7 +1271,7 @@ msgstr "`{name}` com `{count}` cargos."
 #, possible-python-brace-format
 msgctxt "ui:menu_list|embed|title"
 msgid "Role Menus in {guild}"
-msgstr ""
+msgstr "Menu de Cargos em {guild}"
 
 #: src/modules/rolemenus/ui/menus.py:172
 msgctxt "ui:menu_list|embed|field:tips|name"
