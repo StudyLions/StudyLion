@@ -503,7 +503,7 @@ msgstr "cargo"
 #: src/modules/rolemenus/cog.py:1167
 msgctxt "cmd:rolemenu_addrole|param:menu|desc"
 msgid "Name of the menu to add a role to"
-msgstr ""
+msgstr "Nome do menu ao qual devo adicionar o cargo"
 
 #: src/modules/rolemenus/cog.py:1171
 msgctxt "cmd:rolemenu_addrole|param:role|desc"
