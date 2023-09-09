@@ -358,6 +358,8 @@ msgctxt "cmd:rolemenu_edit|error:my_perms"
 msgid ""
 "I lack the `MANAGE_ROLES` permission needed to offer roles from role menus."
 msgstr ""
+"Me falta permissão de ˋMANAGE_ROLESˋ, necessária para que eu possa oferecer "
+"cargos através dos menus."
 
 #: src/modules/rolemenus/cog.py:894
 #, possible-python-brace-format
