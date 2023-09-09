@@ -328,7 +328,7 @@ msgstr "Nome ou ID do canal de notificação dos níveis classificatórios."
 #, possible-python-brace-format
 msgctxt "guildset:rank_channel|set_response|set"
 msgid "Rank update messages will be sent to {channel}."
-msgstr ""
+msgstr "Atualizações de classificação serão enviadas para {channel}."
 
 #: src/modules/ranks/settings.py:133
 msgctxt "guildset:rank_channel|set_response|unset"
