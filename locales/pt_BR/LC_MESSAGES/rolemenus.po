@@ -189,12 +189,12 @@ msgstr "estilo_menu"
 #: src/modules/rolemenus/cog.py:612
 msgctxt "cmd:rolemenu_create|param:remplate"
 msgid "template"
-msgstr ""
+msgstr "modelo"
 
 #: src/modules/rolemenus/cog.py:613
 msgctxt "cmd:rolemenu_create|param:rawmessage"
 msgid "custom_message"
-msgstr ""
+msgstr "mensagem_personalizada"
 
 #: src/modules/rolemenus/cog.py:623
 msgctxt "cmd:rolemenu_create|param:message|desc"
