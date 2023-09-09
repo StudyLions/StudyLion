@@ -1385,6 +1385,8 @@ msgid ""
 "Cannot change the style of a menu attached to a message I did not send! "
 "Please repost first."
 msgstr ""
+"Não posso mudar o estilo de um menu anexado a uma mensagem que eu não "
+"enviei! Por favor, reposte primeiro."
 
 #: src/modules/rolemenus/ui/menueditor.py:551
 msgctxt "ui:menu_editor|button:style|label"
