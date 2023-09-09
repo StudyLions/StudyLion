@@ -812,7 +812,7 @@ msgstr "Quanto o cargo custará, quando selecionado, em LionCoins."
 #: src/modules/rolemenus/roleoptions.py:229
 msgctxt "roleset:price|accepts"
 msgid "Amount of coins that the role costs."
-msgstr ""
+msgstr "Quantidade de moedas que custará o cargo."
 
 #: src/modules/rolemenus/roleoptions.py:242
 #, possible-python-brace-format
