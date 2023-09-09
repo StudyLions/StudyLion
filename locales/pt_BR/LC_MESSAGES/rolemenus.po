@@ -78,7 +78,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "parse:message_link|suberror:channel_dne"
 msgid "The channel `{channelid}` could not be found in this server."
-msgstr ""
+msgstr "O canal ˋ{channelid}ˋ não pôde ser encontrado neste servidor."
 
 #: src/modules/rolemenus/cog.py:315
 msgctxt "parse:message_link|suberror:malformed_link"
