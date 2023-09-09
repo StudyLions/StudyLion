@@ -308,12 +308,12 @@ msgstr "novo_canal"
 #: src/modules/rolemenus/cog.py:807
 msgctxt "cmd:rolemenu_edit|param:menu_style"
 msgid "menu_style"
-msgstr ""
+msgstr "menu_estilo"
 
 #: src/modules/rolemenus/cog.py:808
 msgctxt "cmd:rolemenu_edit|param:remplate"
 msgid "template"
-msgstr ""
+msgstr "modelo"
 
 #: src/modules/rolemenus/cog.py:809
 msgctxt "cmd:rolemenu_edit|param:rawmessage"
