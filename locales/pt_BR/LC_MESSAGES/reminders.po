@@ -197,12 +197,12 @@ msgstr "às"
 #: src/modules/reminders/cog.py:590
 msgctxt "cmd:remindme_at|desc"
 msgid "Schedule a reminder for a particular time."
-msgstr ""
+msgstr "Agende um lembrete para um horário específico."
 
 #: src/modules/reminders/cog.py:594
 msgctxt "cmd:remindme_at|param:time"
 msgid "time"
-msgstr ""
+msgstr "tempo"
 
 #: src/modules/reminders/cog.py:595
 msgctxt "cmd:remindme_at|param:reminder"
