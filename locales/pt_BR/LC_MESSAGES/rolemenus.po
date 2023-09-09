@@ -973,7 +973,7 @@ msgstr "Cargo retirado"
 #, possible-python-brace-format
 msgctxt "rolemenu|deselect|success:refund|desc"
 msgid "You have removed **{role}**, and been refunded {coin} **{amount}**."
-msgstr ""
+msgstr "Você removeu **{role}**, e foi ressarcido {coin} **amount}**."
 
 #: src/modules/rolemenus/rolemenu.py:540
 #, possible-python-brace-format
