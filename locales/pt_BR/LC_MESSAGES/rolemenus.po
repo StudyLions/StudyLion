@@ -961,6 +961,8 @@ msgstr "Eu não tenho permissões suficientes para remover este seu cargo!"
 msgctxt "rolemenu|deselect|error:discord"
 msgid "An unknown error occurred removing your role! Please try again later."
 msgstr ""
+"Um erro desconhecido ocorreu enquanto seu cargo estava sendo retirado. Tente"
+" novamente mais tarde!"
 
 #: src/modules/rolemenus/rolemenu.py:529
 msgctxt "rolemenu|deslect|success|title"
