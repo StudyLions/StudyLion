@@ -102,7 +102,7 @@ msgstr ""
 #: src/modules/rolemenus/cog.py:434
 msgctxt "cmd:rolemenus"
 msgid "rolemenus"
-msgstr ""
+msgstr "menu_de_cargos"
 
 #: src/modules/rolemenus/cog.py:437
 msgctxt "cmd:rolemenus|desc"
