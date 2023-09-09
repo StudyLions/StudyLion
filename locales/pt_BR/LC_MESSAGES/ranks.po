@@ -389,6 +389,8 @@ msgid ""
 "The role underlying this rank no longer exists! Please select a new role "
 "from the role menu."
 msgstr ""
+"O cargo sublinhado, não é um cargo existente. Por favor, selecione um novo "
+"cargo através do menu de cargos."
 
 #: src/modules/ranks/ui/preview.py:81
 msgctxt "ui:rank_preview|button:edit|error:role_not_assignable"
