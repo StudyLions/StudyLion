@@ -39,7 +39,7 @@ msgstr "Clique Aqui"
 #: src/modules/reminders/cog.py:110
 msgctxt "reminder|embed"
 msgid "Next reminder"
-msgstr ""
+msgstr "Próximo lembrete"
 
 #: src/modules/reminders/cog.py:134
 #, possible-python-brace-format
