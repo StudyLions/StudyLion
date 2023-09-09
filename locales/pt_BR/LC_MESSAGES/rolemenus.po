@@ -1377,7 +1377,7 @@ msgstr "Editar Cargos"
 #: src/modules/rolemenus/ui/menueditor.py:514
 msgctxt "ui:menu_editor|menu:del_role|placeholder"
 msgid "Remove Roles"
-msgstr ""
+msgstr "Remover Cargos"
 
 #: src/modules/rolemenus/ui/menueditor.py:538
 msgctxt "ui:menu_editor|button:style|error:non-managed"
