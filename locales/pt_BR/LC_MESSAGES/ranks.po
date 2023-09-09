@@ -590,7 +590,7 @@ msgstr "**Atualizando cargos de nível:** {emoji}"
 #, possible-python-brace-format
 msgctxt "ui:refresh_ranks|embed|line:compute"
 msgid "**Computing correct ranks:** {emoji}"
-msgstr ""
+msgstr "**Calculando os níveis adequados:** {emoji}"
 
 #: src/modules/ranks/ui/refresh.py:198
 msgctxt "ui:refresh_ranks|embed|field:remove|name"
