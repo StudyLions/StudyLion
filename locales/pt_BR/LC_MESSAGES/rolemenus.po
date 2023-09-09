@@ -513,7 +513,7 @@ msgstr "Nome do cargo a adicionar ao menu"
 #: src/modules/rolemenus/cog.py:1179
 msgctxt "cmd:rolemenu_addrole|param:duration|desc"
 msgid "Lifetime of the role after selection in minutes."
-msgstr ""
+msgstr "Tempo de vida do cargo após a seleção, em minutos."
 
 #: src/modules/rolemenus/cog.py:1227
 #, possible-python-brace-format
