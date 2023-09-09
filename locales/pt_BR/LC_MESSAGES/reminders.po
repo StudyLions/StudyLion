@@ -182,7 +182,7 @@ msgstr "Não há lembretes para cancelar."
 #, possible-python-brace-format
 msgctxt "cmd:reminders_cancel|acmpl:reminder|error:no_matches"
 msgid "You do not have any reminders matching \"{partial}\""
-msgstr ""
+msgstr "Você não tem nenhum lembrete parecido com \"{partial}\""
 
 #: src/modules/reminders/cog.py:580
 msgctxt "cmd:remindme"
