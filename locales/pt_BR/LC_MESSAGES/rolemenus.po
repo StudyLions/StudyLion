@@ -1112,6 +1112,7 @@ msgstr "ressarcido"
 msgctxt "menuset:refunds|desc"
 msgid "Whether removing a role will refund the purchase price for that role."
 msgstr ""
+"Caso removido um cargo, irá ressarcir o preço pago pela compra do cargo."
 
 #: src/modules/rolemenus/menuoptions.py:131
 msgctxt "menuset:refunds|long_desc"
