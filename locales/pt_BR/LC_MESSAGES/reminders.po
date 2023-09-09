@@ -192,7 +192,7 @@ msgstr "lembrar-me"
 #: src/modules/reminders/cog.py:587
 msgctxt "cmd:remindme_at"
 msgid "at"
-msgstr ""
+msgstr "às"
 
 #: src/modules/reminders/cog.py:590
 msgctxt "cmd:remindme_at|desc"
