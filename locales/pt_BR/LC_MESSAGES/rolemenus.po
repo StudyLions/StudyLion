@@ -344,7 +344,7 @@ msgstr "Modelo a ser usado para no corpo da mensagem "
 #: src/modules/rolemenus/cog.py:835
 msgctxt "cmd:rolemenu_edit|param:rawmessage"
 msgid "Attach a custom menu message to use"
-msgstr ""
+msgstr "Anexe uma mensagem personalizada a usar no menu"
 
 #: src/modules/rolemenus/cog.py:864
 msgctxt "cmd:rolemenu_edit|error:author_perms"
