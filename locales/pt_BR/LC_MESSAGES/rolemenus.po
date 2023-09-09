@@ -179,7 +179,7 @@ msgstr ""
 #: src/modules/rolemenus/cog.py:610
 msgctxt "cmd:rolemenu_create|param:message"
 msgid "message_link"
-msgstr ""
+msgstr "link_mensagem"
 
 #: src/modules/rolemenus/cog.py:611
 msgctxt "cmd:rolemenu_create|param:menu_style"
