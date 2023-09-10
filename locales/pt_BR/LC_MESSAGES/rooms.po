@@ -309,7 +309,7 @@ msgstr "Sua sala particular {channel} foi criada com sucesso!"
 #: src/modules/rooms/cog.py:457
 msgctxt "cmd:room_rent|success|title"
 msgid "Private Room Created!"
-msgstr "Sala Privada Criada!"
+msgstr "Sala Particular Criada!"
 
 #: src/modules/rooms/cog.py:491
 #, possible-python-brace-format
@@ -327,8 +327,8 @@ msgstr[1] ""
 "Alugar uma sala privada por ˋ{days} dias, custa {coin}**{required}**, mas "
 "você só tem {coin}**{balance}**!"
 msgstr[2] ""
-"Alugar uma sala privada por ˋ{days} dias, custa {coin}**{required}**, mas "
-"você só tem {coin}**{balance}**!"
+"Alugar uma sala particular por ˋ{days} dias, custa {coin}**{required}**, mas"
+" você só tem {coin}**{balance}**!"
 
 #: src/modules/rooms/cog.py:525
 msgctxt "cmd:room_rent|error:my_permissions"
