@@ -60,12 +60,12 @@ msgstr "EXERCÍCIOS"
 #: src/gui/cards/stats.py:118
 msgctxt "skin:stats|field:daily"
 msgid "DAILY"
-msgstr ""
+msgstr "DIÁRIO"
 
 #: src/gui/cards/stats.py:122
 msgctxt "skin:stats|field:weekly"
 msgid "WEEKLY"
-msgstr ""
+msgstr "SEMANAL"
 
 #: src/gui/cards/stats.py:126
 msgctxt "skin:stats|field:monthly"
