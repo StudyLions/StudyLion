@@ -10,6 +10,7 @@ from tracking.text.data import TextTrackerData
 
 from ..data import StatsData
 from ..lib import apply_month_offset
+from .. import logger
 
 
 async def get_monthly_card(bot: LionBot, userid: int, guildid: int, offset: int, mode: CardMode) -> MonthlyStatsCard:
@@ -65,6 +66,7 @@ async def get_monthly_card(bot: LionBot, userid: int, guildid: int, offset: int,
         current_streak = 0
         longest_streak = 0
     else:
+        first_session = first_session.astimezone(lion.timezone)
         first_day = first_session.replace(hour=0, minute=0, second=0, microsecond=0)
         # first_month = first_day.replace(day=1)
 
@@ -77,7 +79,19 @@ async def get_monthly_card(bot: LionBot, userid: int, guildid: int, offset: int,
             requests.append(day)
 
         # Request times between requested days
-        day_stats = await req(*reqkey, *requests)
+        if len(requests) > 1:
+            day_stats = await req(*reqkey, *requests)
+        else:
+            day_stats = []
+            logger.warning(
+                "Requesting monthly card with no active days. "
+                f"offset={offset} "
+                f"first_session={first_session} "
+                f"today={today} "
+                f"target_end={target_end} "
+                f"userid={userid} "
+                f"guildid={guildid}"
+            )
 
         # Compute current streak and longest streak
         current_streak = 0
