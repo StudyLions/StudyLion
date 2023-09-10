@@ -205,7 +205,7 @@ msgstr "ˋ{provided} não é uma opção válida!"
 #: src/settings/setting_types.py:1168
 msgctxt "settype:duration|accepts"
 msgid "A number of days, hours, minutes, and seconds, e.g. `2d 4h 10s`."
-msgstr ""
+msgstr "Um número de dias, horas, minutos e segundos, ex:. ˋ2d 4h 10sˋ."
 
 #: src/settings/setting_types.py:1349
 msgctxt "settype:channel_list|accepts"
