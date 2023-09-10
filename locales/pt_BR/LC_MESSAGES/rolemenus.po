@@ -1597,7 +1597,9 @@ msgid ""
 "{editrole} to edit role options."
 msgstr ""
 "Use os seguintes comandos para uma configuração rápida do menu.\n"
-"{menuedit} para editar opções abaixo do menu."
+"{menuedit} para editar opções abaixo do menu.\n"
+"{addrole} para adicionar novos cargos (recomendado para cargos com emojis).\n"
+"{editrole} para editar opções de cargo."
 
 #: src/modules/rolemenus/ui/menueditor.py:1046
 msgctxt "ui:menu_editor|error:invald_emoji|title"
