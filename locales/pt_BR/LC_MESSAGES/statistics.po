@@ -372,12 +372,12 @@ msgstr "Painel de Estatísticas de Atividade"
 #: src/modules/statistics/ui/goals.py:92
 msgctxt "ui:MonthlyUI|name"
 msgid "Monthly"
-msgstr ""
+msgstr "Mensal"
 
 #: src/modules/statistics/ui/goals.py:135
 msgctxt "ui:WeeklyUI|name"
 msgid "Weekly"
-msgstr ""
+msgstr "Semanal"
 
 #: src/modules/statistics/ui/summary.py:18
 msgctxt "ui:SummaryUI|name"
