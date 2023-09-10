@@ -193,7 +193,7 @@ msgid ""
 "As usual, if a category is configured, this will apply to all voice channels under the category."
 msgstr ""
 "Os membros serão requisitados a ligar sua câmera nestes canais.\n"
-"Caso eles não habilitem o seu vídeo em 15 segundos, eles irão ser notificados por mensagem direta ou no \"canal_de_alertasˋ. Caso, ainda assim, continuem com a câmera desligada, será contado o tempo configurado em \"tempo_tolerância_câmera\"  e então serão retirados do canal. Se o membro reincidir no comportamento depois da primeira retirada do canal (que é considerada como um aviso), ele será incluído na \"lista_negra_de_video\" e receberão o cargo correspondente (caso configurado), o que os proibirá de entrar nos canais de vídeo.\n"
+"Caso eles não habilitem o seu vídeo em 15 segundos, eles irão ser notificados por mensagem direta ou no \"canal_de_alertasˋ. Caso, ainda assim, continuem com a câmera desligada, será contado o tempo configurado em \"tempo_tolerância_câmera\"  e então serão retirados do canal. Se o membro reincidir no comportamento depois da primeira retirada do canal (que é considerada como um aviso), ele será incluído na \"lista_negra_de_video\" e receberão o cargo correspondente, caso configurado, o que os proibirá de entrar nos canais de vídeo.\n"
 "Usualmente, se você configurar toda uma categoria, todos os canais de voz desta, estarão sobre estas regras.  "
 
 #: src/modules/video_channels/settings.py:50
