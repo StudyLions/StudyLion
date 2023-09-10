@@ -460,7 +460,7 @@ msgstr "Se o campo é linear"
 #: src/utils/ui/msgeditor.py:692
 msgctxt "ui:msg_editor|modal:edit_field|field:inline|placeholder"
 msgid "True/False"
-msgstr ""
+msgstr "Verdadeiro/Falso"
 
 #: src/utils/ui/msgeditor.py:704
 msgctxt "ui:msg_editor|modal:edit_field|title"
