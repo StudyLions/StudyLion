@@ -1539,7 +1539,7 @@ msgstr "O menu de cargos ˋ{name}ˋ agora está disponível em {message_link}."
 #: src/modules/rolemenus/ui/menueditor.py:927
 msgctxt "ui:menu_editor|button:repost|widget:repost|success|desc:reactions"
 msgid "Please check the message reactions are correct."
-msgstr ""
+msgstr "Por favor, verifique se a mensagem das reações está correta."
 
 #: src/modules/rolemenus/ui/menueditor.py:940
 msgctxt "ui:menu_editor|button:repost|widget:repost|title"
