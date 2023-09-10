@@ -225,4 +225,4 @@ msgstr "Strings separadas por vírgulas."
 #: src/settings/setting_types.py:1387
 msgctxt "settype:guildidlist|accepts"
 msgid "Comma separated list of guild ids."
-msgstr ""
+msgstr "Lista de servidores, separados por vírgula."
