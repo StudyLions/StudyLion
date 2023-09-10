@@ -435,7 +435,7 @@ msgstr "O valor do campo precisa ser um valor inteiro!"
 #: src/utils/ui/msgeditor.py:621
 msgctxt "ui:msg_editor|button:add_field|label"
 msgid "Add Field"
-msgstr ""
+msgstr "Adicione Campo"
 
 #: src/utils/ui/msgeditor.py:637
 msgctxt "ui:msg_editor|format_field|name_placeholder"
