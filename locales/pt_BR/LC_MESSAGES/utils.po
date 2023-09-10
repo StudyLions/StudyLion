@@ -118,7 +118,7 @@ msgstr "Não pude analisar ˋ{value}ˋ como uma duração."
 #, possible-python-brace-format
 msgctxt "util:Duration|acmpl|error"
 msgid "Cannot extract duration from \"{partial}\""
-msgstr ""
+msgstr "Não pude extrair a duração de ˋ{partial}ˋ"
 
 #: src/utils/lib.py:670
 msgctxt "util:parse_dur|regex:day"
