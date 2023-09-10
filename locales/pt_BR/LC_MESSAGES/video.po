@@ -338,6 +338,7 @@ msgstr "Quantos segundos aguardar para um membro habilitar sua câmera."
 msgctxt "guildset:video_grace_period|set_response:set"
 msgid "Members will now have **{duration}** to enable their video."
 msgstr ""
+"Os membros terão, a partir de agora, **{duration}** para ligar sua câmera."
 
 #: src/modules/video_channels/settings.py:256
 msgctxt "guildset:video_exempt"
