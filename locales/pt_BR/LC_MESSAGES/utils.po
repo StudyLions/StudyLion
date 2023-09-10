@@ -314,11 +314,13 @@ msgctxt "ui:msg_editor|button:body|error:invalid_colour"
 msgid ""
 "Invalid colour format! Please enter colours as hex codes, e.g. `#E67E22`"
 msgstr ""
+"Cor em formato inválido! Por favor, insira cores como códigos HEX, Ex. "
+"ˋ#E67E22ˋ"
 
 #: src/utils/ui/msgeditor.py:285
 msgctxt "ui:msg_editor|button:body|label"
 msgid "Body"
-msgstr ""
+msgstr "Corpo"
 
 #: src/utils/ui/msgeditor.py:302
 msgctxt "ui:msg_editor|modal:author|field:name|label"
