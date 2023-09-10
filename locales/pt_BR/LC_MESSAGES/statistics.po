@@ -54,7 +54,7 @@ msgstr "Classificação no servidor."
 #: src/modules/statistics/cog.py:91
 msgctxt "cmd:configure_statistics"
 msgid "statistics"
-msgstr ""
+msgstr "Estatísticas"
 
 #: src/modules/statistics/cog.py:92
 msgctxt "cmd:configure_statistics|desc"
