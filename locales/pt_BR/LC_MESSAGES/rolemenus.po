@@ -1550,11 +1550,12 @@ msgstr "Reposte Menu Cargos"
 msgctxt "ui:menu_editor|button:repost|widget:repost|description"
 msgid "Please select the channel to which you want to resend this menu."
 msgstr ""
+"Por favor, selecione o canal ao qual você gostaria de reenviar este menu."
 
 #: src/modules/rolemenus/ui/menueditor.py:959
 msgctxt "ui:menu_editor|button:repost|label:repost"
 msgid "Repost"
-msgstr ""
+msgstr "Repost"
 
 #: src/modules/rolemenus/ui/menueditor.py:964
 msgctxt "ui:menu_editor|button:repost|label:post"
