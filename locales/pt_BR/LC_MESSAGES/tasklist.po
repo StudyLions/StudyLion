@@ -59,12 +59,12 @@ msgstr "Este Mês"
 #: src/modules/tasklist/cog.py:225
 msgctxt "cmd:tasklist"
 msgid "tasklist"
-msgstr ""
+msgstr "lista de tarefas"
 
 #: src/modules/tasklist/cog.py:228
 msgctxt "cmd:tasklist|desc"
 msgid "Open your tasklist."
-msgstr ""
+msgstr "Abra sua lista de tarefas."
 
 #: src/modules/tasklist/cog.py:237
 msgctxt "group:tasks"
