@@ -512,6 +512,8 @@ msgid ""
 "[ ] Write my biology essay\n"
 "[x] Complete the second maths assignment\n"
 msgstr ""
+"[ ] Cumprir minhas metas de estudo\n"
+"[x] Estudar na A Seita todos os dias da semana\n"
 
 #: src/modules/statistics/ui/weeklymonthly.py:284
 #, possible-python-brace-format
