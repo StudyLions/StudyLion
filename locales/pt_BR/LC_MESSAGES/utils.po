@@ -277,7 +277,7 @@ msgstr "Espaço para Título"
 #: src/utils/ui/msgeditor.py:163
 msgctxt "ui:msg_editor|button:add_embed|sample_embed|description"
 msgid "Description Placeholder"
-msgstr ""
+msgstr "Descrição do Espaço"
 
 #: src/utils/ui/msgeditor.py:174
 msgctxt "ui:msg_editor|button:add_embed|label"
