@@ -59,7 +59,7 @@ msgstr "Estatísticas"
 #: src/modules/statistics/cog.py:92
 msgctxt "cmd:configure_statistics|desc"
 msgid "Statistics configuration panel"
-msgstr ""
+msgstr "Painel de configuração das estatísticas"
 
 #: src/modules/statistics/cog.py:95
 msgctxt "cmd:configure_statistics|param:season_start"
