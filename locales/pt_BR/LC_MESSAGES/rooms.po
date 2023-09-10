@@ -616,7 +616,7 @@ msgstr "{old_owner} transferiu a posse da sala privada para {new_owner}"
 #: src/modules/rooms/room.py:247
 msgctxt "room|embed:expiry|title"
 msgid "Private Room Expired!"
-msgstr ""
+msgstr "Sala Particular Expirou!"
 
 #: src/modules/rooms/room.py:251
 #, possible-python-brace-format
