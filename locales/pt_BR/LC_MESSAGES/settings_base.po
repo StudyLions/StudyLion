@@ -146,6 +146,7 @@ msgstr "Qualquer ID Snowflake"
 msgctxt "settype:timezone|accepts"
 msgid "A timezone name from the 'tz database' (e.g. 'Europe/London')"
 msgstr ""
+"Um fuso horário dos mencionados ˋtz databaseˋ (ex:. ˋAmerica/Sao_Paulo)"
 
 #: src/settings/setting_types.py:893
 msgctxt "settype:timezone|summary_table|field:supported|key"
