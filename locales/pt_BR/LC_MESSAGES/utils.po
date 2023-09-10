@@ -46,7 +46,7 @@ msgstr "próximo"
 #: src/utils/cog.py:46
 msgctxt "cmd:page_next|desc"
 msgid "Jump to the next page of output."
-msgstr ""
+msgstr "Ir para próxima página de saídas."
 
 #: src/utils/cog.py:52
 msgctxt "cmd:page_prev"
