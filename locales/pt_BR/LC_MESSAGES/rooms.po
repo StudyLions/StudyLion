@@ -798,7 +798,7 @@ msgstr "visível|habilitado|sim|on|habilitar|1"
 #: src/modules/rooms/settings.py:170
 msgctxt "guildset:rooms_visible|parse:falsey_values"
 msgid "invisible|disabled|no|false|off|disable|0"
-msgstr ""
+msgstr "invisivel|desabilitado|não|falso|desligado|desabilitar|0"
 
 #: src/modules/rooms/settings.py:182
 msgctxt "guildset:rooms_visible|set_response:enabled"
