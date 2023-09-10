@@ -204,7 +204,7 @@ msgstr "Não pude entender a especificação ˋ{valor}ˋ."
 #, possible-python-brace-format
 msgctxt "cmd:page|acmpl|pager:Pager|choice:last"
 msgid "Last: Page {page}/{total}"
-msgstr ""
+msgstr "Última: Página {page}/{total}"
 
 #: src/utils/ui/pagers.py:307
 #, possible-python-brace-format
