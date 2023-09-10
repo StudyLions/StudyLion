@@ -45,7 +45,7 @@ msgstr "TEMPO VOZ"
 #: src/gui/cards/stats.py:87
 msgctxt "skin:stats|mode:text|subheader:study"
 msgid "MESSAGES"
-msgstr ""
+msgstr "MENSAGENS"
 
 #: src/gui/cards/stats.py:91
 msgctxt "skin:stats|mode:anki|subheader:study"
