@@ -148,7 +148,7 @@ msgstr "Configurando Editor"
 #: src/utils/ui/config.py:75
 msgctxt "ui:configui|check|not_permitted"
 msgid "You have insufficient server permissions to use this UI!"
-msgstr ""
+msgstr "Você não tem permissões suficientes para usar este UI no servidor!"
 
 #: src/utils/ui/config.py:153
 msgctxt "ui:configui|button:edit|label"
