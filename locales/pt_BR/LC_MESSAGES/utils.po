@@ -186,7 +186,7 @@ msgstr "a, ant, anterior, atrás, -"
 #: src/utils/ui/pagers.py:56
 msgctxt "cmd:page|pager:Pager|options:first"
 msgid "f, first, one, start"
-msgstr ""
+msgstr "1, prim, primeira, começo"
 
 #. List of valid keys indicating movement to the last page
 #: src/utils/ui/pagers.py:59
