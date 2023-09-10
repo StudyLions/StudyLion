@@ -1496,7 +1496,7 @@ msgstr "Editar Mensagem"
 #: src/modules/rolemenus/ui/menueditor.py:844
 msgctxt "ui:menu_editor|button:preview|label"
 msgid "Preview"
-msgstr ""
+msgstr "Pré-Visualização"
 
 #: src/modules/rolemenus/ui/menueditor.py:860
 msgctxt "ui:menu_editor|button:repost|widget:repost|menu:channel|placeholder"
