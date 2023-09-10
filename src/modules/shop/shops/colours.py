@@ -14,6 +14,7 @@ from meta.logger import log_wrap
 from utils import ui
 from utils.lib import error_embed
 from constants import MAX_COINS
+from wards import equippable_role
 
 from .. import babel
 
@@ -738,7 +739,7 @@ class ColourShopping(ShopCog):
             )
 
         # Check that the author has permission to manage this role
-        if not (ctx.author.guild_permissions.manage_roles and ctx.author.top_role > role):
+        if not (ctx.author.guild_permissions.manage_roles):
             raise SafeCancellation(
                 t(_p(
                     'cmd:editshop_colours_add|error:caller_perms',
@@ -746,6 +747,9 @@ class ColourShopping(ShopCog):
                     "You must have `MANAGE_ROLES`, and your top role must be above this role."
                 )).format(mention=role.mention)
             )
+
+        # Final catch-all with more general error messages
+        await equippable_role(self.bot, role, ctx.author)
 
         if role.permissions.administrator:
             raise SafeCancellation(
