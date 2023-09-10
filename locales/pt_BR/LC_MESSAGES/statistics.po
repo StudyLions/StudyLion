@@ -302,6 +302,7 @@ msgstr "Opção de menu, abaixo."
 msgctxt "guildset:visible_stats|set_response"
 msgid "Members will be able to view the following statistics types: {types}"
 msgstr ""
+"Os membros estarão aptos a ver os seguintes tipos de estatísticas: {types} "
 
 #: src/modules/statistics/settings.py:264
 msgctxt "guildset:default_stat"
