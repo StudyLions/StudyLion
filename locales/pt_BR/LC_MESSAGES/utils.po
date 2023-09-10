@@ -253,6 +253,8 @@ msgid ""
 "Rendering failed! The message was not modified.\n"
 "Error: `{text}`"
 msgstr ""
+"Falha de processamento! A mensagem não foi modificada.\n"
+"Error: ˋ{text}ˋ"
 
 #: src/utils/ui/msgeditor.py:123
 msgctxt "ui:msg_editor|modal:content|field:content|label"
