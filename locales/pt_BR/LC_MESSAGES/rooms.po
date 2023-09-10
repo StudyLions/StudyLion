@@ -512,8 +512,8 @@ msgctxt "cmd:room_transfer|error:target_has_room"
 msgid ""
 "{mention} already owns a room! Members can only own one room at a time."
 msgstr ""
-"{mention} já possui uma sala! Cada membro pode ter apenas uma sala privada "
-"por vez."
+"{mention} já possui uma sala! Cada membro pode ter apenas uma sala "
+"particular por vez."
 
 #: src/modules/rooms/cog.py:811
 #, possible-python-brace-format
@@ -522,7 +522,7 @@ msgid ""
 "Are you sure you wish to transfer your private room {channel} to "
 "{new_owner}? This action is not reversible!"
 msgstr ""
-"Tem certeza que você deseja transferir sua sala privada {channel} para "
+"Tem certeza que você deseja transferir sua sala particular {channel} para "
 "{new_owner}? Essa ação não é reversível!"
 
 #: src/modules/rooms/cog.py:831
