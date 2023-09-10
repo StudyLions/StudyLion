@@ -445,7 +445,7 @@ msgstr "Digite o número de horas de estudo para alcançar."
 #: src/modules/statistics/ui/weeklymonthly.py:190
 msgctxt "modal:goal_editor|field:text_goal|label"
 msgid "Message goal"
-msgstr "Meta de conversas"
+msgstr "Meta de Mensagens"
 
 #: src/modules/statistics/ui/weeklymonthly.py:194
 msgctxt "modal:goal_editor|field:text_goal|placeholder"
