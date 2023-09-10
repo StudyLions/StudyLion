@@ -237,6 +237,8 @@ msgstr ""
 msgctxt "guildset:untracked_channels|accepts"
 msgid "Comma separated list of untracked channel name/ids."
 msgstr ""
+"Lista dos nomes ou IDˋs dos canais não contabilizados, separados por "
+"vírgula."
 
 #: src/tracking/voice/settings.py:56
 msgctxt "guildset:untracked_channels|notset"
