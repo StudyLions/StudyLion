@@ -757,7 +757,7 @@ class RankCog(LionCog):
             lines = []
             if rank_type_setting in modified:
                 lines.append(rank_type_setting.update_message)
-            if dm_ranks or rank_channel:
+            if (dm_ranks is not None) or (rank_channel is not None):
                 if dm_ranks_setting.value:
                     if rank_channel_setting.value:
                         notif_string = t(_p(

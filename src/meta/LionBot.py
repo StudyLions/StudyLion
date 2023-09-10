@@ -195,7 +195,7 @@ class LionBot(Bot):
                         extra={'action': 'BotError', 'with_ctx': True}
                     )
             except discord.HTTPException:
-                logger.warning(
+                logger.error(
                     f"Caught an unhandled 'HTTPException' while executing: {cmd_str}",
                     exc_info=True,
                     extra={'action': 'BotError', 'with_ctx': True}
