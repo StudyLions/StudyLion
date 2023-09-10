@@ -465,7 +465,7 @@ msgstr "Verdadeiro/Falso"
 #: src/utils/ui/msgeditor.py:704
 msgctxt "ui:msg_editor|modal:edit_field|title"
 msgid "Edit Embed Field"
-msgstr ""
+msgstr "Editar Campo Integrado"
 
 #: src/utils/ui/msgeditor.py:733
 msgctxt "ui:msg_editor|menu:edit_field|placeholder"
