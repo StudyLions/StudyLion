@@ -153,12 +153,12 @@ msgstr "Você não tem permissões suficientes para usar este UI no servidor!"
 #: src/utils/ui/config.py:153
 msgctxt "ui:configui|button:edit|label"
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: src/utils/ui/config.py:192
 msgctxt "ui:guild_config_base|button:reset|label"
 msgid "Reset"
-msgstr ""
+msgstr "Resetar"
 
 #: src/utils/ui/config.py:327
 msgctxt "ui:dashboard|error:section_too_long"
