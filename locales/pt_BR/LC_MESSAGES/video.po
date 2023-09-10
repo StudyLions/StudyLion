@@ -168,7 +168,7 @@ msgstr ""
 #: src/modules/video_channels/cog.py:510
 msgctxt "cmd:configure_video"
 msgid "video_channels"
-msgstr ""
+msgstr "canais_de_vídeo"
 
 #: src/modules/video_channels/cog.py:512
 msgctxt "cmd:configure_video|desc"
