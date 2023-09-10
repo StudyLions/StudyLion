@@ -95,7 +95,7 @@ msgstr "O nome ou ID de um cargo."
 #, possible-python-brace-format
 msgctxt "settype:role|parse|error:not_found"
 msgid "Role `{string}` could not be found in this guild!"
-msgstr ""
+msgstr "O cargo ˋ{string}ˋ não pôde ser encontrado neste servidor."
 
 #: src/settings/setting_types.py:492
 msgctxt "settype:bool|accepts"
