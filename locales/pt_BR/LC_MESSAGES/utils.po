@@ -335,7 +335,7 @@ msgstr "Link do Autor"
 #: src/utils/ui/msgeditor.py:323
 msgctxt "ui:msg_editor|modal:author|field:image|label"
 msgid "Author Image URL"
-msgstr ""
+msgstr "Link da Imagem do Autor"
 
 #: src/utils/ui/msgeditor.py:334
 msgctxt "ui:msg_editor|modal:author|title"
