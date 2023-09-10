@@ -86,12 +86,12 @@ msgstr "selecionar"
 #: src/utils/cog.py:74
 msgctxt "cmd:page_select|desc"
 msgid "Select a page of the output to jump to."
-msgstr ""
+msgstr "Seleciona a página de saída para ir até ela."
 
 #: src/utils/cog.py:77
 msgctxt "cmd:page_select|param:page"
 msgid "page"
-msgstr ""
+msgstr "página"
 
 #: src/utils/cog.py:80
 msgctxt "cmd:page_select|param:page|desc"
