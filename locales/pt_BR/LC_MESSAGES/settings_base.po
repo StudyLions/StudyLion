@@ -100,7 +100,7 @@ msgstr "O cargo ˋ{string}ˋ não pôde ser encontrado neste servidor."
 #: src/settings/setting_types.py:492
 msgctxt "settype:bool|accepts"
 msgid "Enabled/Disabled"
-msgstr ""
+msgstr "Habilitado/Desabilitado"
 
 #: src/settings/setting_types.py:497
 msgctxt "settype:bool|parse:truthy_values"
