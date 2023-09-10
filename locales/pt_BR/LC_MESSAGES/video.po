@@ -178,7 +178,7 @@ msgstr "Configure canais somente para vídeo, e da Lista Negra."
 #: src/modules/video_channels/settings.py:29
 msgctxt "guildset:video_channels"
 msgid "video_channels"
-msgstr ""
+msgstr "somente_vídeo"
 
 #: src/modules/video_channels/settings.py:32
 msgctxt "guildset:video_channels|desc"
