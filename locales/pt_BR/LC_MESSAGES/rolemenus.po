@@ -1571,7 +1571,7 @@ msgstr "Menu Cargos Editor"
 #, possible-python-brace-format
 msgctxt "ui:menu_editor|embed|description|jump_text:attached"
 msgid "Members may use this menu from {jump_url}"
-msgstr ""
+msgstr "Membros podem usar este menu de {jump_url}"
 
 #: src/modules/rolemenus/ui/menueditor.py:988
 msgctxt "ui:menu_editor|embed|description|jump_text:unattached"
