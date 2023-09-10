@@ -101,7 +101,7 @@ msgstr "O nome da página ou número para ir até ela."
 #: src/utils/cog.py:86
 msgctxt "cmd:page_select|error:no_pager"
 msgid "No pager listening in this channel!"
-msgstr ""
+msgstr "Sem pager listado neste canal!"
 
 #: src/utils/cog.py:97
 msgctxt "cmd:page_select|acmpl|error:no_pager"
