@@ -174,7 +174,7 @@ msgstr ""
 #: src/utils/ui/pagers.py:50
 msgctxt "cmd:page|pager:Pager|options:next"
 msgid "n, nxt, next, forward, +"
-msgstr ""
+msgstr "p, próximo, pxm, diante, +"
 
 #. List of valid keys indicating movement to the previous page
 #: src/utils/ui/pagers.py:53
