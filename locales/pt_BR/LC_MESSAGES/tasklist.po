@@ -49,7 +49,7 @@ msgstr "Ontem"
 #: src/modules/tasklist/cog.py:40
 msgctxt "argtype:Before|opt:Monday"
 msgid "This Monday"
-msgstr ""
+msgstr "Esta Segunda"
 
 #: src/modules/tasklist/cog.py:41
 msgctxt "argtype:Before|opt:THISMONTH"
