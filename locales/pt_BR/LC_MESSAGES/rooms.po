@@ -588,7 +588,7 @@ msgstr "salas"
 #: src/modules/rooms/cog.py:922
 msgctxt "cmd:configure_rooms|desc"
 msgid "Configure Rented Private Rooms"
-msgstr ""
+msgstr "Configurar Aluguel de Salas Privadas"
 
 #: src/modules/rooms/room.py:81
 #, possible-python-brace-format
