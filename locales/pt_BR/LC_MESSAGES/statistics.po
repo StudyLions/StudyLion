@@ -355,7 +355,7 @@ msgstr "Selecione Estatísticas Visíveis"
 #: src/modules/statistics/settings.py:383
 msgctxt "ui:statistics_config|embed|title"
 msgid "Statistics Configuration Panel"
-msgstr ""
+msgstr "Painel de Configuração de Estatísticas"
 
 #: src/modules/statistics/settings.py:405
 msgctxt "dash:stats|title"
