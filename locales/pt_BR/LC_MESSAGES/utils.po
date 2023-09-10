@@ -350,7 +350,7 @@ msgstr "Autor"
 #: src/utils/ui/msgeditor.py:377
 msgctxt "ui:msg_editor|modal:footer|field:text|label"
 msgid "Footer Text"
-msgstr ""
+msgstr "Texto de Rodapé"
 
 #: src/utils/ui/msgeditor.py:388
 msgctxt "ui:msg_editor|modal:footer|field:image|label"
