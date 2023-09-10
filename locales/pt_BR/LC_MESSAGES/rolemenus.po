@@ -1486,7 +1486,7 @@ msgstr "Não, Desejo Voltar"
 #: src/modules/rolemenus/ui/menueditor.py:756
 msgctxt "ui:menu_editor|button:delete|label"
 msgid "Delete Menu"
-msgstr ""
+msgstr "Deletar Menu"
 
 #: src/modules/rolemenus/ui/menueditor.py:813
 msgctxt "ui:menu_editor|button:edit_msg|label"
