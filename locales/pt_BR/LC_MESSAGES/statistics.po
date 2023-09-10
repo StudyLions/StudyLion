@@ -224,7 +224,7 @@ msgstr ""
 #: src/modules/statistics/settings.py:156
 msgctxt "guildset:unranked_roles"
 msgid "unranked_roles"
-msgstr ""
+msgstr "cargos_não_contabilizados"
 
 #: src/modules/statistics/settings.py:159
 msgctxt "guildset:unranked_roles|desc"
