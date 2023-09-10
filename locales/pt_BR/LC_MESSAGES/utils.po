@@ -440,7 +440,7 @@ msgstr "Adicione Campo"
 #: src/utils/ui/msgeditor.py:637
 msgctxt "ui:msg_editor|format_field|name_placeholder"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: src/utils/ui/msgeditor.py:666
 msgctxt "ui:msg_editor|modal:edit_field|field:name|label"
