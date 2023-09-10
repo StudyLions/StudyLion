@@ -417,7 +417,7 @@ msgstr "Estatística Mensal Anki"
 #: src/modules/statistics/ui/weeklymonthly.py:144
 msgctxt "modal:goal_editor|field:task_goal|label"
 msgid "Task goal"
-msgstr ""
+msgstr "Meta de Tarefas"
 
 #: src/modules/statistics/ui/weeklymonthly.py:148
 msgctxt "modal:goal_editor|field:task_goal|placeholder"
