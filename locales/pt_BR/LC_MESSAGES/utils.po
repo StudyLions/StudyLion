@@ -267,7 +267,7 @@ msgstr "Editor de Conteúdo"
 #: src/utils/ui/msgeditor.py:150
 msgctxt "ui:msg_editor|button:edit|label"
 msgid "Edit Content"
-msgstr ""
+msgstr "Editar Conteúdo"
 
 #: src/utils/ui/msgeditor.py:162
 msgctxt "ui:msg_editor|button:add_embed|sample_embed|title"
