@@ -400,7 +400,7 @@ msgstr "Imagens"
 #: src/utils/ui/msgeditor.py:535
 msgctxt "ui:msg_editor|modal:add_field|field:position|label"
 msgid "Field number to insert at"
-msgstr ""
+msgstr "Campo de Número a inserir "
 
 #: src/utils/ui/msgeditor.py:545
 msgctxt "ui:msg_editor|modal:add_field|field:name|label"
