@@ -307,7 +307,7 @@ msgstr ""
 #: src/modules/statistics/settings.py:264
 msgctxt "guildset:default_stat"
 msgid "default_stat"
-msgstr ""
+msgstr "estatística_padrão"
 
 #: src/modules/statistics/settings.py:267
 msgctxt "guildset:default_stat|desc"
