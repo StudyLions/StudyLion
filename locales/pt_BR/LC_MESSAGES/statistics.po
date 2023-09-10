@@ -659,7 +659,7 @@ msgstr "Editar Emblemas de Perfil"
 #: src/modules/statistics/ui/profile.py:219
 msgctxt "ui:profile_card|button:statistics|label:hide"
 msgid "Hide Statistics"
-msgstr "Esconder Estatísticas"
+msgstr "Ocultar Estatísticas"
 
 #: src/modules/statistics/ui/profile.py:224
 msgctxt "ui:profile_card|button:statistics|label:show"
