@@ -364,7 +364,7 @@ msgstr ""
 #: src/modules/video_channels/settings.py:269
 msgctxt "guildset:video_exempt|accepts"
 msgid "List of exempt role names or ids."
-msgstr "Lista de Exceções, nome ou IDs."
+msgstr "Nome dos cargos ou IDs dos excepcionados."
 
 #: src/modules/video_channels/settings.py:284
 #, possible-python-brace-format
