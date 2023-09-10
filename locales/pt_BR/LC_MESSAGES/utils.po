@@ -106,7 +106,7 @@ msgstr "Sem pager listado neste canal!"
 #: src/utils/cog.py:97
 msgctxt "cmd:page_select|acmpl|error:no_pager"
 msgid "No active pagers in this channel!"
-msgstr ""
+msgstr "Não há pagers ativos neste canal!"
 
 #: src/utils/transformers.py:43
 #, possible-python-brace-format
