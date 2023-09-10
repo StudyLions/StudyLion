@@ -71,6 +71,9 @@ msgid ""
 "builtin emojis (e.g. `{builtin}`), custom emojis (e.g. {custom}), or custom "
 "emoji ids (e.g. `{custom_id}`)."
 msgstr ""
+"Não pude analisar ˋ{provided}ˋ como um emoji do Discord. Formatos aceitos "
+"são de emoji integrados (ex: ˋ{builtin}ˋ), emoji personalizado (ex:. "
+"{custom}), ou IDˋs de um emoji personalizado (ex:. ˋ{custom_id}ˋ)."
 
 #: src/settings/setting_types.py:236
 msgctxt "settype:channel|accepts"
