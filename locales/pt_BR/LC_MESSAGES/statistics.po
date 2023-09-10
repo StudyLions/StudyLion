@@ -533,12 +533,12 @@ msgstr "Editor Meta Semanal"
 #: src/modules/statistics/ui/weeklymonthly.py:306
 msgctxt "modal:goal_editor|monthly|title"
 msgid "Monthly goal editor"
-msgstr ""
+msgstr "Editor Meta Mensal"
 
 #: src/modules/statistics/ui/weeklymonthly.py:499
 msgctxt "ui:weeklymonthly|button:edit_goals|label"
 msgid "Edit Goals"
-msgstr ""
+msgstr "Editor Metas"
 
 #: src/modules/statistics/ui/weeklymonthly.py:515
 #, possible-python-brace-format
