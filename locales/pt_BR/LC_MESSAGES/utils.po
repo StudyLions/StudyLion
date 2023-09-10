@@ -167,6 +167,8 @@ msgid ""
 "not display them here! Please view the settings in the linked configuration "
 "panel instead."
 msgstr ""
+"Oops, as configurações nesta seção são muito compridas e eu não posso "
+"mostrá-las aqui! Por favor, veja a confiugração no link do painel vinculado."
 
 #. List of valid keys indicating movement to the next page
 #: src/utils/ui/pagers.py:50
