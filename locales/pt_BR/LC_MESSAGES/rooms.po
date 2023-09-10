@@ -605,7 +605,7 @@ msgstr "Novos Membros!"
 #, possible-python-brace-format
 msgctxt "room|notify:new_members|desc"
 msgid "Welcome {members}"
-msgstr ""
+msgstr "Bem Vindos {members}"
 
 #: src/modules/rooms/room.py:183
 #, possible-python-brace-format
