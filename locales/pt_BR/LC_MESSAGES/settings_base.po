@@ -200,7 +200,7 @@ msgstr "Uma opção válida."
 #, possible-python-brace-format
 msgctxt "settype:enum|parse|error:not_found"
 msgid "`{provided}` is not a valid option!"
-msgstr ""
+msgstr "ˋ{provided} não é uma opção válida!"
 
 #: src/settings/setting_types.py:1168
 msgctxt "settype:duration|accepts"
