@@ -422,7 +422,7 @@ msgstr "Meta de Tarefas"
 #: src/modules/statistics/ui/weeklymonthly.py:148
 msgctxt "modal:goal_editor|field:task_goal|placeholder"
 msgid "Enter the number of tasklist tasks you aim to do"
-msgstr "Digite o número de tarefas para alcançar. "
+msgstr "Digite o número de tarefas para ser o objetivo."
 
 #: src/modules/statistics/ui/weeklymonthly.py:159
 #, possible-python-brace-format
@@ -440,7 +440,7 @@ msgstr "Meta de Horas de Estudo"
 #: src/modules/statistics/ui/weeklymonthly.py:185
 msgctxt "modal:goal_editor|field:voice_goal|placeholder"
 msgid "Enter a number of hours of study to aim for."
-msgstr "Digite o número de horas de estudo para alcançar."
+msgstr "Digite o número de horas de estudo para ser o objetivo."
 
 #: src/modules/statistics/ui/weeklymonthly.py:190
 msgctxt "modal:goal_editor|field:text_goal|label"
