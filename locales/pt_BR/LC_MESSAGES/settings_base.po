@@ -40,7 +40,7 @@ msgstr "Atualmente"
 #: src/settings/ui.py:357
 msgctxt "setting|summary_table|field:default|key"
 msgid "By Default"
-msgstr ""
+msgstr "Por Padrão"
 
 #: src/settings/ui.py:364
 msgctxt "setting|summary_table|field:set|key"
