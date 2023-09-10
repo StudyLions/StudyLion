@@ -693,7 +693,7 @@ msgstr "Estatísticas de Estudos"
 #: src/modules/statistics/ui/leaderboard.py:262
 msgctxt "ui:leaderboard|menu:stats|item:message"
 msgid "Message Activity"
-msgstr ""
+msgstr "Atividade em Conversas"
 
 #: src/modules/statistics/ui/leaderboard.py:273
 msgctxt "ui:leaderboard|menu;stats|item:anki"
