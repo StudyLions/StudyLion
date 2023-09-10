@@ -615,11 +615,13 @@ msgid ""
 "Mathematician\n"
 "Loves Cats"
 msgstr ""
+"Matematico\n"
+"AmaGatos"
 
 #: src/modules/statistics/ui/profile.py:53
 msgctxt "modal:profile_editor|title"
 msgid "Profile Tag Editor"
-msgstr ""
+msgstr "Editor Etiquetas Perfil"
 
 #: src/modules/statistics/ui/profile.py:71
 #, possible-python-brace-format
