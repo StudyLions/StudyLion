@@ -55,7 +55,7 @@ msgstr "Painel de Canais de Vídeo"
 #: src/modules/video_channels/cog.py:229
 msgctxt "video_watchdog|kick_blacklisted_member|audit_reason"
 msgid "Removing video blacklisted member from a video channel."
-msgstr ""
+msgstr "Removendo um membro da Lista Negra dos canais de vídeo."
 
 #: src/modules/video_channels/cog.py:246
 msgctxt "video_watchdog|kick_blacklisted_member|notification|title"
