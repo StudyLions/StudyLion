@@ -101,12 +101,12 @@ msgstr "nova"
 #: src/modules/tasklist/cog.py:362
 msgctxt "cmd:tasks_new|desc"
 msgid "Add a new task to your tasklist."
-msgstr ""
+msgstr "Adicione uma nova tarefa na sua lista de tarefas."
 
 #: src/modules/tasklist/cog.py:366
 msgctxt "cmd:tasks_new|param:content"
 msgid "task"
-msgstr ""
+msgstr "tarefas"
 
 #: src/modules/tasklist/cog.py:367
 msgctxt "cmd:tasks_new|param:parent"
