@@ -563,12 +563,12 @@ msgstr ""
 #: src/modules/statistics/ui/weeklymonthly.py:612
 msgctxt "ui:weeklymonthly|button:period|close|label"
 msgid "Close Selector"
-msgstr ""
+msgstr "Fechar Seletor"
 
 #: src/modules/statistics/ui/weeklymonthly.py:617
 msgctxt "ui:weeklymonthly|button:period|weekly|label"
 msgid "Select Week"
-msgstr ""
+msgstr "Selecionar Semana"
 
 #: src/modules/statistics/ui/weeklymonthly.py:622
 msgctxt "ui:weeklymonthly|button:period|monthly|label"
