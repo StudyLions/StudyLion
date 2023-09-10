@@ -248,6 +248,7 @@ msgstr "Nome ou ID do cargo da Lista Negra "
 msgctxt "guildset:video_blacklist|set_response:set"
 msgid "Members who fail to keep their video on will be given {role}"
 msgstr ""
+"Os membros que deixarem de ligar sua câmera, serão atribuídos ao {role}."
 
 #: src/modules/video_channels/settings.py:143
 msgctxt "guildset:video_blacklist|set_response:unset"
