@@ -34,7 +34,7 @@ msgstr "Mostra seu perfil pessoal e resumo das suas estatísticas."
 #: src/modules/statistics/cog.py:55
 msgctxt "cmd:stats"
 msgid "stats"
-msgstr ""
+msgstr "estatísticas"
 
 #: src/modules/statistics/cog.py:58
 msgctxt "cmd:stats|desc"
