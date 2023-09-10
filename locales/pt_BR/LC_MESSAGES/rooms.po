@@ -681,6 +681,8 @@ msgid ""
 "Private room category has been set to {channel}. Existing private rooms will"
 " be moved."
 msgstr ""
+"Uma categoria de salas particulares foi configurada para o canal {channel}. "
+"As salas privadas atuais serão movidas para lá."
 
 #: src/modules/rooms/settings.py:67
 #, possible-python-brace-format
