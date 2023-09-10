@@ -355,7 +355,7 @@ msgstr "Texto de Rodapé"
 #: src/utils/ui/msgeditor.py:388
 msgctxt "ui:msg_editor|modal:footer|field:image|label"
 msgid "Footer Image URL"
-msgstr ""
+msgstr "Link da Image de Rodapé"
 
 #: src/utils/ui/msgeditor.py:398
 msgctxt "ui:msg_editor|modal:footer|field:timestamp|label"
