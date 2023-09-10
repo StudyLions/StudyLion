@@ -390,12 +390,12 @@ msgstr "Link de imagem integrada"
 #: src/utils/ui/msgeditor.py:487
 msgctxt "ui:msg_editor|modal:images|title"
 msgid "Embed images Editor"
-msgstr ""
+msgstr "Editor de Imagens Integrado"
 
 #: src/utils/ui/msgeditor.py:517
 msgctxt "ui:msg_editor|button:images|label"
 msgid "Images"
-msgstr ""
+msgstr "Imagens"
 
 #: src/utils/ui/msgeditor.py:535
 msgctxt "ui:msg_editor|modal:add_field|field:position|label"
