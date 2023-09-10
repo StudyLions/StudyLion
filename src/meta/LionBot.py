@@ -7,7 +7,7 @@ import discord
 from discord.utils import MISSING
 from discord.ext.commands import Bot, Cog, HybridCommand, HybridCommandError
 from discord.ext.commands.errors import CommandInvokeError, CheckFailure
-from discord.app_commands.errors import CommandInvokeError as appCommandInvokeError
+from discord.app_commands.errors import CommandInvokeError as appCommandInvokeError, TransformerError
 from aiohttp import ClientSession
 
 from data import Database
@@ -161,6 +161,17 @@ class LionBot(Bot):
                     raise original
             except HandledException:
                 pass
+            except TransformerError as e:
+                msg = str(e)
+                if msg:
+                    try:
+                        await ctx.error_reply(msg)
+                    except Exception:
+                        pass
+                logger.debug(
+                    f"Caught a transformer error: {repr(e)}",
+                    extra={'action': 'BotError', 'with_ctx': True}
+                )
             except SafeCancellation:
                 if original.msg:
                     try:

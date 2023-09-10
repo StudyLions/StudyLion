@@ -40,7 +40,10 @@ class DurationTransformer(Transformer):
         duration = parse_duration(value)
         if duration is None:
             raise UserInputError(
-                t(_p('utils:parse_dur|error', "Cannot parse `{value}` as a duration.")).format(
+                t(_p(
+                    'utils:parse_dur|error',
+                    "Cannot parse `{value}` as a duration."
+                )).format(
                     value=value
                 )
             )
