@@ -227,7 +227,7 @@ msgstr "Selecionada: Página {page}/{total}"
 #: src/utils/ui/pagers.py:363
 msgctxt "cmd:page|acmpl|pager:Page|error:parse"
 msgid "No matching pages!"
-msgstr ""
+msgstr "Não há páginas compatíveis."
 
 #: src/utils/ui/msgeditor.py:75
 msgctxt "ui:msg_editor|error:empty"
