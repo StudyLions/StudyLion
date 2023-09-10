@@ -133,7 +133,7 @@ msgstr ""
 #: src/modules/video_channels/cog.py:422
 msgctxt "video_watchdog|join_task|kick_after_grace|blacklist|title"
 msgid "You have been blacklisted!"
-msgstr ""
+msgstr "Você foi colocado na Lista Negra!"
 
 #: src/modules/video_channels/cog.py:426
 msgctxt "video_watchdog|join_task|kick_after_grace|blacklist|desc"
