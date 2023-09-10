@@ -143,7 +143,7 @@ msgstr "(?P<value>\\d+)\\s*(?:(s)|(seg))"
 #: src/utils/ui/config.py:35
 msgctxt "ui:configui|modal:edit|title"
 msgid "Setting Editor"
-msgstr ""
+msgstr "Configurando Editor"
 
 #: src/utils/ui/config.py:75
 msgctxt "ui:configui|check|not_permitted"
