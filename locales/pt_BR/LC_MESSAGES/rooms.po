@@ -730,7 +730,7 @@ msgstr "limite_membros_sala"
 #: src/modules/rooms/settings.py:115
 msgctxt "guildset:rooms_slots|desc"
 msgid "Maximum number of members in each private room."
-msgstr ""
+msgstr "Número máximo de membros que cada sala particular pode ter."
 
 #: src/modules/rooms/settings.py:119
 msgctxt "guildset:rooms_slots|long_desc"
