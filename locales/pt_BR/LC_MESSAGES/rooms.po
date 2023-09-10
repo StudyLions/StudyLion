@@ -563,7 +563,7 @@ msgid ""
 "Could not identify target private room! Please re-run the command in the "
 "private room you wish to contribute to."
 msgstr ""
-"Não pude identificar sala privada descrita! Por favor, use o comando "
+"Não pude identificar sala particular descrita! Por favor, use o comando "
 "novamente através da sala que você quer contribuir."
 
 #: src/modules/rooms/cog.py:885
@@ -582,7 +582,7 @@ msgid ""
 "Success! You have contributed {coin}**{amount}** to the private room bank."
 msgstr ""
 "Sucesso! Você contribuiu com {coin}**{amount}** para o caixa da sala "
-"privada."
+"particular."
 
 #: src/modules/rooms/cog.py:921
 msgctxt "cmd:configure_rooms"
