@@ -210,7 +210,7 @@ msgstr "Um número de dias, horas, minutos e segundos, ex:. ˋ2d 4h 10sˋ."
 #: src/settings/setting_types.py:1349
 msgctxt "settype:channel_list|accepts"
 msgid "Comma separated list of channel ids."
-msgstr ""
+msgstr "Lista de ID dos canais, separadas pro vírgula."
 
 #: src/settings/setting_types.py:1360
 msgctxt "settype:role_list|accepts"
