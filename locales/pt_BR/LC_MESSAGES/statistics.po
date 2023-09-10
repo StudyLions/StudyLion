@@ -591,6 +591,8 @@ msgid ""
 "You will now see combined statistics from all your servers (where "
 "applicable)! Press again to revert."
 msgstr ""
+"Você irá ver as estatísticas combinadas de todos os seus servidores (onde "
+"for possível)! Pressione novamente para desfazer."
 
 #: src/modules/statistics/ui/weeklymonthly.py:727
 msgctxt "ui:WeeklyMonthly|button:global|mode:local"
