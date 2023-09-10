@@ -153,7 +153,7 @@ msgstr ""
 #: src/modules/video_channels/cog.py:474
 msgctxt "video_watchdog|disabled_video_kick|notification|title"
 msgid "You have been disconnected."
-msgstr ""
+msgstr "Você foi desconectado."
 
 #: src/modules/video_channels/cog.py:478
 #, possible-python-brace-format
