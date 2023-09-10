@@ -69,6 +69,8 @@ msgid ""
 "You were disconnected from the video channel {channel} because you are "
 "blacklisted from video channels in **{server}**."
 msgstr ""
+"Você foi desconectado do canal de vídeo {channel} pois você foi adicionado à"
+" lista negra dos canais de vídeo no servidor **{server}**."
 
 #: src/modules/video_channels/cog.py:290
 #, possible-python-brace-format
