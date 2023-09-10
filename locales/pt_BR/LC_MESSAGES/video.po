@@ -113,6 +113,7 @@ msgstr "Membro nunca abriu sua cãmera em um canal de vídeo."
 msgctxt "video_watchdog|join_task|kick_after_grace|ticket_reason"
 msgid "Failed to enable their video in time in the video channel {channel}"
 msgstr ""
+"Você deixou de habilitar sua câmera a tempo, no canal de vídeo {channel}."
 
 #: src/modules/video_channels/cog.py:403
 msgctxt "video_watchdog|join_task|kick_after_grace|warning|title"
