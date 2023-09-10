@@ -219,7 +219,7 @@ msgstr "Os membros não serão orientados a ligar suas câmeras em nenhum canal.
 #: src/modules/video_channels/settings.py:105
 msgctxt "guildset:video_blacklist"
 msgid "video_blacklist"
-msgstr ""
+msgstr "câmera_listanegra"
 
 #: src/modules/video_channels/settings.py:108
 msgctxt "guildset:video_blacklist|desc"
