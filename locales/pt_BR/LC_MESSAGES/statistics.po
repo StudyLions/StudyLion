@@ -763,4 +763,4 @@ msgstr "Não houveram cartões Anki revisados neste período!"
 #: src/modules/statistics/ui/leaderboard.py:444
 msgctxt "ui:leaderboard|message:empty|title"
 msgid "Leaderboard Empty!"
-msgstr ""
+msgstr "Lista de Classificação Vazia!"
