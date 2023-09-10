@@ -633,6 +633,8 @@ msgstr "Sua sala particular em **{guild}** expirou!"
 msgctxt "room|tick|rent_deducted"
 msgid "Daily rent deducted from room balance. New balance: {coin}**{amount}**"
 msgstr ""
+"Aluguel diariamente cobrado do saldo do caixa da sala. Novo saldo: "
+"{coin}**{amount}** "
 
 #: src/modules/rooms/settings.py:21
 msgctxt "guildset:room_category"
