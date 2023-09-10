@@ -476,7 +476,7 @@ class Economy(LionCog):
             else:
                 # If we have a single target, show their current balance, with a short transaction history.
                 user = targets[0]
-                row = await self.bot.core.data.Member.fetch(ctx.guild.id, user.id)
+                row = await self.bot.core.data.Member.fetch(ctx.guild.id, user.id, cached=False)
 
                 embed = discord.Embed(
                     colour=discord.Colour.orange(),

@@ -85,6 +85,8 @@ class LionMember(Timezoned):
         """
         if member.display_name != self.data.display_name:
             await self.data.update(display_name=member.display_name)
+        else:
+            await self.data.refresh()
 
     async def fetch_member(self) -> Optional[discord.Member]:
         """
