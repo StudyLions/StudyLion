@@ -670,6 +670,9 @@ msgid ""
 "The private room category has been unset. Existing private rooms will not be"
 " affected. Delete the channels manually to remove the private rooms."
 msgstr ""
+"A categoria de salas particulares foi retirada. As salas particulares atuais"
+" não serão afetadas. Apague manualmente os canais para remover as salas "
+"particulares."
 
 #: src/modules/rooms/settings.py:57
 #, possible-python-brace-format
