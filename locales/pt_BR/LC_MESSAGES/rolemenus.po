@@ -1459,7 +1459,7 @@ msgstr "Selecione o Modelo de Mensagem"
 #: src/modules/rolemenus/ui/menueditor.py:707
 msgctxt "ui:menu_editor|menu:template|option:custom|label"
 msgid "Custom Message"
-msgstr ""
+msgstr "Mensagem Personalizada"
 
 #: src/modules/rolemenus/ui/menueditor.py:712
 msgctxt "ui:menu_editor|menu:template|option:custom|description"
