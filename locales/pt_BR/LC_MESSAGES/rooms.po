@@ -803,7 +803,7 @@ msgstr "invisivel|desabilitado|não|falso|desligado|desabilitar|0"
 #: src/modules/rooms/settings.py:182
 msgctxt "guildset:rooms_visible|set_response:enabled"
 msgid "Private rooms will now be visible to everyone."
-msgstr ""
+msgstr "Agora, as salas particulares serão visíveis a todos."
 
 #: src/modules/rooms/settings.py:187
 msgctxt "guildset:rooms_visible|set_response:disabled"
