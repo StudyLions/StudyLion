@@ -128,7 +128,7 @@ msgstr "A tarefa-mãe desta tarefa."
 msgctxt "cmd:tasks_new|error:parse_parent"
 msgid "Could not find parent task number `{input}` in your tasklist."
 msgstr ""
-"Não consegui encontrar o número ˋ{input}ˋ da tarefa-pai em sua lista de "
+"Não consegui encontrar o número ˋ{input}ˋ da tarefa-mãe em sua lista de "
 "tarefas. "
 
 #: src/modules/tasklist/cog.py:406
