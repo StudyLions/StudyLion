@@ -387,7 +387,7 @@ msgstr "Sumário"
 #: src/modules/statistics/ui/weeklymonthly.py:96
 msgctxt "menu:stat_type|opt:weekly_voice|name"
 msgid "Weekly Voice Statistics"
-msgstr ""
+msgstr "Estatística Semanal em Voz"
 
 #: src/modules/statistics/ui/weeklymonthly.py:101
 msgctxt "menu:stat_type|opt:weekly_text|name"
