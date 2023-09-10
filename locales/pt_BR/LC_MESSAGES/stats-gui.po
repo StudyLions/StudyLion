@@ -95,7 +95,7 @@ msgstr "ETAPA DE ESTUDOS"
 #: src/gui/cards/stats.py:159
 msgctxt "skin:stats|mode:voice|header:col2"
 msgid "VOICE STREAK"
-msgstr ""
+msgstr "ETAPA DE VOZ"
 
 #: src/gui/cards/stats.py:163
 msgctxt "skin:stats|mode:text|header:col2"
