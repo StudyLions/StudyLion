@@ -25,7 +25,7 @@ msgstr ""
 #: src/modules/rooms/settingui.py:38
 msgctxt "ui:room_config|menu:category|placeholder"
 msgid "Select Private Room Category"
-msgstr "Selecione uma Categoria Privada de Sala"
+msgstr "Selecione uma Categoria Particular de Sala"
 
 #: src/modules/rooms/settingui.py:52
 msgctxt "ui:room_config|button:visible|label"
