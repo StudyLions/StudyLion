@@ -125,7 +125,7 @@ msgstr "Off"
 #: src/settings/setting_types.py:508
 msgctxt "settype:bool|output:none"
 msgid "Not Set"
-msgstr ""
+msgstr "Não Configurado"
 
 #: src/settings/setting_types.py:619
 msgctxt "settype:integer|accepts"
