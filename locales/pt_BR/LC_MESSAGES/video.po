@@ -118,7 +118,7 @@ msgstr ""
 #: src/modules/video_channels/cog.py:403
 msgctxt "video_watchdog|join_task|kick_after_grace|warning|title"
 msgid "You have received a warning!"
-msgstr ""
+msgstr "Você recebeu um alerta!"
 
 #: src/modules/video_channels/cog.py:407
 #, possible-python-brace-format
