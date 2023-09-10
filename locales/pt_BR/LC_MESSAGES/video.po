@@ -60,7 +60,7 @@ msgstr "Removendo um membro da Lista Negra dos canais de vídeo."
 #: src/modules/video_channels/cog.py:246
 msgctxt "video_watchdog|kick_blacklisted_member|notification|title"
 msgid "You have been disconnected."
-msgstr ""
+msgstr "Você foi desconectado."
 
 #: src/modules/video_channels/cog.py:250
 #, possible-python-brace-format
