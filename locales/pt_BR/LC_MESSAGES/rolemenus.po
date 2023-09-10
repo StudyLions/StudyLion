@@ -1491,7 +1491,7 @@ msgstr "Deletar Menu"
 #: src/modules/rolemenus/ui/menueditor.py:813
 msgctxt "ui:menu_editor|button:edit_msg|label"
 msgid "Edit Message"
-msgstr ""
+msgstr "Editar Mensagem"
 
 #: src/modules/rolemenus/ui/menueditor.py:844
 msgctxt "ui:menu_editor|button:preview|label"
