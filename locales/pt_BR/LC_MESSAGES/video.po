@@ -147,6 +147,8 @@ msgid ""
 "Disconnected for disabling video for more than {number} seconds in video "
 "channel."
 msgstr ""
+"Desconectado por ter desabilitado o vídeo por mais de {numer} segundos em um"
+" canal de vídeo."
 
 #: src/modules/video_channels/cog.py:474
 msgctxt "video_watchdog|disabled_video_kick|notification|title"
