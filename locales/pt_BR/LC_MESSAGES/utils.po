@@ -71,7 +71,7 @@ msgstr "Ir para a primeira página de saída."
 #: src/utils/cog.py:66
 msgctxt "cmd:page_last"
 msgid "last"
-msgstr "Última"
+msgstr "última"
 
 #: src/utils/cog.py:67
 msgctxt "cmd:page_last|desc"
