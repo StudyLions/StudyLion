@@ -54,7 +54,7 @@ msgstr "Esta Segunda"
 #: src/modules/tasklist/cog.py:41
 msgctxt "argtype:Before|opt:THISMONTH"
 msgid "This Month"
-msgstr ""
+msgstr "Este Mês"
 
 #: src/modules/tasklist/cog.py:225
 msgctxt "cmd:tasklist"
