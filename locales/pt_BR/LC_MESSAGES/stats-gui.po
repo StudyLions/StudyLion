@@ -105,7 +105,7 @@ msgstr "ETAPA DA ATIVIDADE"
 #: src/gui/cards/stats.py:167
 msgctxt "skin:stats|mode:anki|header:col2"
 msgid "ANKI REVIEW STREAK"
-msgstr ""
+msgstr "ETAPA DE REVISÃO ANKI"
 
 #: src/gui/cards/stats.py:180
 #, possible-python-brace-format
