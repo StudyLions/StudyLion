@@ -76,7 +76,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "video_watchdog|join_task|jump_field"
 msgid "[Click to jump back]({link})"
-msgstr ""
+msgstr "[Clique para retornar] ({link})"
 
 #: src/modules/video_channels/cog.py:297
 msgctxt "video_watchdog|join_task|initial_request:title"
