@@ -49,7 +49,7 @@ msgstr "Classificação"
 #: src/modules/statistics/cog.py:74
 msgctxt "cmd:leaderboard|desc"
 msgid "Server leaderboard."
-msgstr ""
+msgstr "Classificação no servidor."
 
 #: src/modules/statistics/cog.py:91
 msgctxt "cmd:configure_statistics"
