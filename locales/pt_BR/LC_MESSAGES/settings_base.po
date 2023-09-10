@@ -183,6 +183,8 @@ msgid ""
 "Could not parse `{provided}` as a timestamp. Please use `YYYY-MM-DD HH:MM` "
 "format."
 msgstr ""
+"Não consegui analisar ˋ{provided}ˋ como uma marcação data/hora. Por favor, "
+"use o formato ˋAAAA-MM-DD HH:MMˋ."
 
 #: src/settings/setting_types.py:1017
 msgctxt "settype:raw|accepts"
