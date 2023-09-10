@@ -294,6 +294,7 @@ msgstr "Lista de duração, separada por vírgulas."
 msgctxt "guildset:video_durations|set_response:set"
 msgid "Members will be automatically blacklisted for: {durations}"
 msgstr ""
+"Os membros serão automaticamente listados na Lista Negra por: {durations}"
 
 #: src/modules/video_channels/settings.py:213
 msgctxt "guildset:video_durations|set_response:unset"
