@@ -435,7 +435,7 @@ msgstr ""
 #: src/modules/statistics/ui/weeklymonthly.py:181
 msgctxt "modal:goal_editor|field:voice_goal|label"
 msgid "Study time goal"
-msgstr ""
+msgstr "Meta de Horas de Estudo"
 
 #: src/modules/statistics/ui/weeklymonthly.py:185
 msgctxt "modal:goal_editor|field:voice_goal|placeholder"
