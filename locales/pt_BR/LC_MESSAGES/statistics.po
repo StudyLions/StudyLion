@@ -313,6 +313,8 @@ msgstr "estatística_padrão"
 msgctxt "guildset:default_stat|desc"
 msgid "Statistic type to display by default in setting dialogues."
 msgstr ""
+"Tipo de estatística padrão para ser mostrada na configuração de caixa de "
+"diálogos."
 
 #: src/modules/statistics/settings.py:271
 msgctxt "guildset:default_stat|long_desc"
