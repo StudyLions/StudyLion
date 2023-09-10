@@ -217,6 +217,9 @@ msgid ""
 "Member ranks will update when they are next active. Use {rank_cmd} to "
 "refresh immediately."
 msgstr ""
+"A Lista de Classificação e o Ranking de Atividades irão contar desde o "
+"início dos registros. A classificação dos membros será atualizada na próxima"
+" atividade que fizerem. Use {rank_cmd} para atualizar imediatamente."
 
 #: src/modules/statistics/settings.py:156
 msgctxt "guildset:unranked_roles"
