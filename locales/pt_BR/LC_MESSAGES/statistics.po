@@ -382,7 +382,7 @@ msgstr "Semanal"
 #: src/modules/statistics/ui/summary.py:18
 msgctxt "ui:SummaryUI|name"
 msgid "Summary"
-msgstr ""
+msgstr "Sumário"
 
 #: src/modules/statistics/ui/weeklymonthly.py:96
 msgctxt "menu:stat_type|opt:weekly_voice|name"
