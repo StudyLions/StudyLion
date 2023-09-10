@@ -719,6 +719,8 @@ msgstr "Número de LionCoins cobrados por dia por um canal particular."
 msgctxt "guildset:rooms_price|set_response"
 msgid "Private rooms will now cost {coin}**{amount}** per 24 hours."
 msgstr ""
+"A partir de agora, as salas particulares irão custar {coin}**{amount}** a "
+"cada 24 horas."
 
 #: src/modules/rooms/settings.py:112
 msgctxt "guildset:rooms_slots"
