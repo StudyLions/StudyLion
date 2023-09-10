@@ -135,7 +135,7 @@ msgstr "Um número inteiro"
 #: src/settings/setting_types.py:682
 msgctxt "settype:emoji|desc"
 msgid "Unicode or custom emoji"
-msgstr ""
+msgstr "Emoji personalizado, ou Unicode"
 
 #: src/settings/setting_types.py:754
 msgctxt "settype:guildid|accepts"
