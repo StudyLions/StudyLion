@@ -106,7 +106,7 @@ msgstr "Adicione uma nova tarefa na sua lista de tarefas."
 #: src/modules/tasklist/cog.py:366
 msgctxt "cmd:tasks_new|param:content"
 msgid "task"
-msgstr "tarefas"
+msgstr "tarefa"
 
 #: src/modules/tasklist/cog.py:367
 msgctxt "cmd:tasks_new|param:parent"
