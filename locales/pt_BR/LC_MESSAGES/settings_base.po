@@ -61,7 +61,7 @@ msgstr "String provida é muito comprida. Tamanho máximo: {maxlen} caracteres."
 #: src/settings/setting_types.py:114
 msgctxt "settype:emoji|accepts"
 msgid "Paste a builtin emoji, custom emoji, or emoji id."
-msgstr "Colar um emoji integrado, emoji personalizado, ou id de um emoji."
+msgstr "Colar um emoji integrado, personalizado, ou id de um padrão."
 
 #: src/settings/setting_types.py:167
 #, possible-python-brace-format
