@@ -69,7 +69,7 @@ msgstr "Abra sua lista de tarefas."
 #: src/modules/tasklist/cog.py:237
 msgctxt "group:tasks"
 msgid "tasks"
-msgstr ""
+msgstr "tarefas"
 
 #: src/modules/tasklist/cog.py:238
 msgctxt "group:tasks|desc"
