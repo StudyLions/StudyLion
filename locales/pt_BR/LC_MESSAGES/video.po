@@ -50,7 +50,7 @@ msgstr ""
 #: src/modules/video_channels/settingui.py:160
 msgctxt "dash:video|option|name"
 msgid "Video Channel Panel"
-msgstr ""
+msgstr "Painel de Canais de Vídeo"
 
 #: src/modules/video_channels/cog.py:229
 msgctxt "video_watchdog|kick_blacklisted_member|audit_reason"
