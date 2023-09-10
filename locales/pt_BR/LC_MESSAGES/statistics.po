@@ -649,7 +649,7 @@ msgstr "Estatísticas Anki"
 #: src/modules/statistics/ui/profile.py:190
 msgctxt "modal:profile_editor|resp:success"
 msgid "Your profile has been updated!"
-msgstr ""
+msgstr "Seu perfil foi atualizado!"
 
 #: src/modules/statistics/ui/profile.py:200
 msgctxt "ui:profile_card|button:edit|label"
