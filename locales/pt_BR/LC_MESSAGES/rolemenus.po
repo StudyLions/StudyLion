@@ -1544,7 +1544,7 @@ msgstr "Por favor, verifique se a mensagem das reações está correta."
 #: src/modules/rolemenus/ui/menueditor.py:940
 msgctxt "ui:menu_editor|button:repost|widget:repost|title"
 msgid "Repost Role Menu"
-msgstr "Reposte Menu Cargos"
+msgstr "Repostar Menu Cargos"
 
 #: src/modules/rolemenus/ui/menueditor.py:944
 msgctxt "ui:menu_editor|button:repost|widget:repost|description"
