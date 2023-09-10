@@ -220,7 +220,7 @@ msgstr "Lista de ID dos cargos, separadas por vírgula."
 #: src/settings/setting_types.py:1376
 msgctxt "settype:stringlist|accepts"
 msgid "Comma separated strings."
-msgstr ""
+msgstr "Strings separadas por vírgulas."
 
 #: src/settings/setting_types.py:1387
 msgctxt "settype:guildidlist|accepts"
