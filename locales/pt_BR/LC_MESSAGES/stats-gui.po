@@ -50,7 +50,7 @@ msgstr "MENSAGENS"
 #: src/gui/cards/stats.py:91
 msgctxt "skin:stats|mode:anki|subheader:study"
 msgid "CARDS REVIEWED"
-msgstr ""
+msgstr "CARTÕES REVISADOS"
 
 #: src/gui/cards/stats.py:102
 msgctxt "skin:stats|subheader:workouts"
