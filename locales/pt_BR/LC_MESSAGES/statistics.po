@@ -748,7 +748,7 @@ msgstr "Número da página inválido, por favor, tente novamente."
 #: src/modules/statistics/ui/leaderboard.py:428
 msgctxt "ui:leaderboard|mode:voice|message:empty|desc"
 msgid "There has been no voice activity in this period!"
-msgstr ""
+msgstr "Não há tempo em canais de voz para mostrar neste período."
 
 #: src/modules/statistics/ui/leaderboard.py:433
 msgctxt "ui:leaderboard|mode:text|message:empty|desc"
