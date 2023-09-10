@@ -112,7 +112,7 @@ msgstr "Não há pagers ativos neste canal!"
 #, possible-python-brace-format
 msgctxt "utils:parse_dur|error"
 msgid "Cannot parse `{value}` as a duration."
-msgstr ""
+msgstr "Não pude analisar ˋ{value}ˋ como uma duração."
 
 #: src/utils/transformers.py:68
 #, possible-python-brace-format
