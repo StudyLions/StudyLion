@@ -180,7 +180,7 @@ msgstr "p, próximo, pxm, diante, +"
 #: src/utils/ui/pagers.py:53
 msgctxt "cmd:page|pager:Pager|options:prev"
 msgid "p, prev, back, -"
-msgstr ""
+msgstr "a, ant, anterior, atrás, -"
 
 #. List of valid keys indicating movement to the first page
 #: src/utils/ui/pagers.py:56
