@@ -307,7 +307,7 @@ msgstr "Cor Integrada"
 #: src/utils/ui/msgeditor.py:240
 msgctxt "ui:msg_editor|modal:body|title"
 msgid "Message Body Editor"
-msgstr ""
+msgstr "Editor de Corpo de Mensagem"
 
 #: src/utils/ui/msgeditor.py:265
 msgctxt "ui:msg_editor|button:body|error:invalid_colour"
