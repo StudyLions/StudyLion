@@ -405,12 +405,12 @@ msgstr "Campo de Número a inserir "
 #: src/utils/ui/msgeditor.py:545
 msgctxt "ui:msg_editor|modal:add_field|field:name|label"
 msgid "Field name"
-msgstr ""
+msgstr "Nome do Campo"
 
 #: src/utils/ui/msgeditor.py:555
 msgctxt "ui:msg_editor|modal:add_field|field:value|label"
 msgid "Field value"
-msgstr ""
+msgstr "Valor do Campo"
 
 #: src/utils/ui/msgeditor.py:565
 msgctxt "ui:msg_editor|modal:add_field|field:inline|label"
