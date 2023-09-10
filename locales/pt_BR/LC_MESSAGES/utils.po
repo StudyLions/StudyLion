@@ -500,12 +500,12 @@ msgstr "Refazer"
 #: src/utils/ui/msgeditor.py:891
 msgctxt "ui:msg_editor|button:quit|confirm"
 msgid "You have unsaved changes! Are you sure you want to quit?"
-msgstr ""
+msgstr "Você tem mudanças não salvas! Tem certeza que deseja sair?"
 
 #: src/utils/ui/msgeditor.py:896
 msgctxt "ui:msg_editor|button:quit|confirm|button:yes"
 msgid "Yes, Quit Now"
-msgstr ""
+msgstr "Sim! Sair agora"
 
 #: src/utils/ui/msgeditor.py:902
 msgctxt "ui:msg_editor|button:quit|confirm|button:no"
