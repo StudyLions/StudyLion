@@ -260,6 +260,7 @@ msgstr "Membros não estarão automaticamente proibidos de salas de vídeo."
 msgctxt "guildset:video_blacklist|formatted:unset"
 msgid "Not Set. (Members will not be automatically blacklisted.)"
 msgstr ""
+"Não configurado. (Membros não serão atribuídos a um cargo de Lista Negra.)"
 
 #: src/modules/video_channels/settings.py:162
 msgctxt "guildset:video_durations"
