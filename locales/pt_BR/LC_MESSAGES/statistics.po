@@ -476,6 +476,8 @@ msgstr ""
 msgctxt "modal:goal_editor|field:text_goal|error:NAN"
 msgid "The provided message goal `{input}` is not a number! Please try again."
 msgstr ""
+"A meta de conversas informada ˋ{input}ˋ não é um número! Por favor, tente "
+"novamente."
 
 #: src/modules/statistics/ui/weeklymonthly.py:230
 #, possible-python-brace-format
