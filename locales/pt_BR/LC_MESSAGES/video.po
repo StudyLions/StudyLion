@@ -241,7 +241,7 @@ msgstr ""
 #: src/modules/video_channels/settings.py:123
 msgctxt "guildset:video_blacklist|accepts"
 msgid "Blacklist role name or id."
-msgstr ""
+msgstr "Nome ou ID do cargo da Lista Negra "
 
 #: src/modules/video_channels/settings.py:138
 #, possible-python-brace-format
