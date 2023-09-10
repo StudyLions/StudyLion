@@ -370,12 +370,12 @@ msgstr "Editor de Rodapé Integrado"
 #: src/utils/ui/msgeditor.py:429
 msgctxt "ui:msg_editor|button:footer|error:invalid_timestamp"
 msgid "Invalid timestamp! Please enter the timestamp in ISO format."
-msgstr "Carimbo de Tempo Inválido! Por favor, adicione um em formato ISO."
+msgstr "Tempo Estampado Inválido! Por favor, adicione um em formato ISO."
 
 #: src/utils/ui/msgeditor.py:449
 msgctxt "ui:msg_editor|button:footer|label"
 msgid "Footer"
-msgstr ""
+msgstr "Rodapé"
 
 #: src/utils/ui/msgeditor.py:467
 msgctxt "ui:msg_editor|modal:images|field:thumb|label"
