@@ -85,7 +85,7 @@ msgstr "Lista de tarefas vazia! Não há tarefas compatíveis."
 #, possible-python-brace-format
 msgctxt "argtype:taskid|error:parse_multi"
 msgid "(Warning: {error})"
-msgstr ""
+msgstr "(Atenção: {error})"
 
 #: src/modules/tasklist/cog.py:339
 #, possible-python-brace-format
