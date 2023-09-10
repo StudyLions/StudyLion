@@ -675,7 +675,7 @@ class Economy(LionCog):
     )
     @appcmds.guild_only()
     async def send_cmd(self, ctx: LionContext,
-                       target: discord.User | discord.Member,
+                       target: discord.Member,
                        amount: appcmds.Range[int, 1, MAX_COINS],
                        note: Optional[str] = None):
         """
@@ -690,17 +690,49 @@ class Economy(LionCog):
 
         t = self.bot.translator.t
 
+        error = None
         if not ctx.lguild.config.get('allow_transfers').value:
-            await ctx.interaction.response.send_message(
-                embed=error_embed(
-                    t(_p(
-                        'cmd:send|error:not_allowed',
-                        "Sorry, this server has disabled LionCoin transfers!"
-                    ))
-                )
+            error = error_embed(
+                t(_p(
+                    'cmd:send|error:not_allowed',
+                    "Sorry, this server has disabled LionCoin transfers!"
+                ))
             )
+        elif target == ctx.author:
+            # Funny response
+            error = discord.Embed(
+                colour=discord.Colour.brand_red(),
+                description=t(_p(  # TRANSLATOR NOTE: Easter egg/Funny error, translate as you wish.
+                    'cmd:send|error:sending-to-self',
+                    "What is this, tax evasion?\n"
+                    "(You can not send coins to yourself.)"
+                ))
+            )
+        elif target == ctx.guild.me:
+            # Funny response
+            error = discord.Embed(
+                colour=discord.Colour.orange(),
+                description=t(_p(  # TRANSLATOR NOTE: Easter egg/Funny error, translate as you wish.
+                    'cmd:send|error:sending-to-leo',
+                    "I appreciate it, but you need it more than I do!\n"
+                    "(You cannot send coins to bots.)"
+                ))
+            )
+        elif target.bot:
+            # Funny response
+            error = discord.Embed(
+                colour=discord.Colour.brand_red(),
+                description=t(_p(  # TRANSLATOR NOTE: Easter egg/Funny error, translate as you wish.
+                    'cmd:send|error:sending-to-bot',
+                    "{target} appreciates the gesture, but said they don't have any use for {coin}.\n"
+                    "(You cannot send coins to bots.)"
+                )).format(target=target.mention, coin=self.bot.config.emojis.coin)
+            )
+        if error is not None:
+            await ctx.interaction.response.send_message(embed=error, ephemeral=True)
             return
 
+        # Ensure the target member exists
         Member = self.bot.core.data.Member
         target_lion = await self.bot.core.lions.fetch_member(ctx.guild.id, target.id)
 
@@ -778,7 +810,7 @@ class Economy(LionCog):
             )
         )
         if failed:
-            embed.description = t(_p(
+            embed.description += '\n' + t(_p(
                 'cmd:send|embed:ack|desc|error:unreachable',
                 "Unfortunately, I was not able to message the recipient. Perhaps they have me blocked?"
             ))
