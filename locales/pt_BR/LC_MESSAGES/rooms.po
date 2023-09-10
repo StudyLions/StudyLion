@@ -788,7 +788,7 @@ msgstr "Visível"
 #: src/modules/rooms/settings.py:160
 msgctxt "guildset:rooms_visible|output:false"
 msgid "Invisible"
-msgstr ""
+msgstr "Invisível"
 
 #: src/modules/rooms/settings.py:166
 msgctxt "guildset:rooms_visible|parse:truthy_values"
