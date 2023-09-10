@@ -430,7 +430,7 @@ msgstr "Adicionar Campo Integrado"
 #: src/utils/ui/msgeditor.py:602
 msgctxt "ui:msg_editor|modal:add_field|error:position_not_int"
 msgid "The field position must be an integer!"
-msgstr ""
+msgstr "O valor do campo precisa ser um valor inteiro!"
 
 #: src/utils/ui/msgeditor.py:621
 msgctxt "ui:msg_editor|button:add_field|label"
