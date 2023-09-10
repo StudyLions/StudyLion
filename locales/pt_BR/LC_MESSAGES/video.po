@@ -91,7 +91,7 @@ msgid ""
 "Please **enable your video** or **leave the channel** or you will be disconnected {timestamp} and potentially **blacklisted**."
 msgstr ""
 "**Você entrou em um canal de vídeo {channel}!**\n"
-"Por favor, **ligue sua câmera** ou **se retire do canal**, ou você será desconectado em {timestamp} e colocado na **Lista Negra**."
+"Por favor, **ligue sua câmera** ou **se retire do canal**, ou você será desconectado em {timestamp} e poderá ser colocado na **Lista Negra**."
 
 #: src/modules/video_channels/cog.py:316
 msgctxt "video_watchdog|join_task|thanks:title"
