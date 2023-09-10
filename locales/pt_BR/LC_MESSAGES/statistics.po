@@ -361,6 +361,8 @@ msgstr "Painel de Configuração de Estatísticas"
 msgctxt "dash:stats|title"
 msgid "Activity Statistics Configuration ({commands[configure statistics]})"
 msgstr ""
+"Configuração das Estatísticas de Atividade ({commands[configure "
+"statistics]})"
 
 #: src/modules/statistics/settings.py:409
 msgctxt "dash:stats|dropdown|placeholder"
