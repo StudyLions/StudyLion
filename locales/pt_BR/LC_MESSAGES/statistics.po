@@ -743,7 +743,7 @@ msgstr "Número da página para ir"
 #: src/modules/statistics/ui/leaderboard.py:377
 msgctxt "ui:leaderboard|button:jump|error:invalid_page"
 msgid "Invalid page number, please try again!"
-msgstr ""
+msgstr "Número da página inválido, por favor, tente novamente."
 
 #: src/modules/statistics/ui/leaderboard.py:428
 msgctxt "ui:leaderboard|mode:voice|message:empty|desc"
