@@ -39,7 +39,7 @@ msgstr "Selecione o Cargo ListaNegra"
 #: src/modules/video_channels/settingui.py:117
 msgctxt "ui:video_config|embed|title"
 msgid "Video Channel Configuration Panel"
-msgstr ""
+msgstr "Painel de Configuração de Canais de Video"
 
 #: src/modules/video_channels/settingui.py:156
 msgctxt "dash:video|title"
