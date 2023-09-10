@@ -499,6 +499,8 @@ msgctxt "cmd:room_transfer|error:target_not_member"
 msgid ""
 "{mention} is not a member of your private room! You must invite them first."
 msgstr ""
+"{mention} não é um membro da sua sala privada! Você precisa convidá-lo "
+"primeiro."
 
 #: src/modules/rooms/cog.py:802
 #, possible-python-brace-format
