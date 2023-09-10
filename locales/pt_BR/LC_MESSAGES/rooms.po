@@ -698,7 +698,7 @@ msgstr "room_rent"
 #: src/modules/rooms/settings.py:80
 msgctxt "guildset:rooms_rent|desc"
 msgid "Daily rent price for a private room."
-msgstr "Preço do aluguel diário para um canal privado."
+msgstr "Preço diário do aluguel de um canal privado."
 
 #: src/modules/rooms/settings.py:84
 msgctxt "guildset:rooms_rent|long_desc"
