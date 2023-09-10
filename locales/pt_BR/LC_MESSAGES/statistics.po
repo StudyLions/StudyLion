@@ -628,6 +628,8 @@ msgstr "Editor Etiquetas Perfil"
 msgctxt "modal:profile_editor|error:too_many_tags"
 msgid "Too many tags! You can have at most `{limit}` profile tags."
 msgstr ""
+"Muitas etiquetas de perfil! Você pode ter no máximo ˋ{limit}ˋ etiquetas de "
+"perfil."
 
 #: src/modules/statistics/ui/profile.py:92
 msgctxt "menu:stat_type|opt:voice|name"
