@@ -162,6 +162,8 @@ msgid ""
 "You were disconnected from the video channel {channel} because you disabled your video.\n"
 "Please keep your video on at all times, and leave the channel if you need to disable it!"
 msgstr ""
+"Você foi desconectado do canal de vídeo {channel} por ter desabilitado seu vídeo.\n"
+"Por favor, deixê sua câmera ligada, e, caso precise desabilitar ou tampar, saia do canal. Retorne assim que for possível voltar às condições necessárias. "
 
 #: src/modules/video_channels/cog.py:510
 msgctxt "cmd:configure_video"
