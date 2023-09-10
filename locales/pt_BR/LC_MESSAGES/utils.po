@@ -475,7 +475,7 @@ msgstr "Editar Campo Integrado"
 #: src/utils/ui/msgeditor.py:772
 msgctxt "ui:msg_deleteor|menu:delete_field|placeholder"
 msgid "Remove Embed Field"
-msgstr ""
+msgstr "Remover Campo Integrado"
 
 #: src/utils/ui/msgeditor.py:808
 msgctxt "ui:msg_editor|button:save|label"
