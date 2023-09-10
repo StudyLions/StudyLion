@@ -35,7 +35,7 @@ msgstr "Alternar Visibilidade da Sala"
 #: src/modules/rooms/settingui.py:62
 msgctxt "ui:rooms_config|embed|title"
 msgid "Private Room System Configuration Panel"
-msgstr "Painel de Configuração do Sistema de Salas Privadas"
+msgstr "Painel de Configuração do Sistema de Salas Particulares"
 
 #: src/modules/rooms/settingui.py:98
 msgctxt "dash:rooms|title"
