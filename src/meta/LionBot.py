@@ -11,6 +11,7 @@ from discord.app_commands.errors import CommandInvokeError as appCommandInvokeEr
 from aiohttp import ClientSession
 
 from data import Database
+from utils.lib import tabulate
 
 from .config import Conf
 from .logger import logging_context, log_context, log_action_stack, log_wrap, set_logging_context
@@ -192,7 +193,7 @@ class LionBot(Bot):
                 pass
             except asyncio.TimeoutError:
                 pass
-            except Exception:
+            except Exception as e:
                 logger.exception(
                     f"Caught an unknown CommandInvokeError while executing: {cmd_str}",
                     extra={'action': 'BotError', 'with_ctx': True}
@@ -201,10 +202,36 @@ class LionBot(Bot):
                 error_embed = discord.Embed(title="Something went wrong!")
                 error_embed.description = (
                     "An unexpected error occurred while processing your command!\n"
-                    "Our development team has been notified, and the issue should be fixed soon.\n"
-                    "If the error persists, please contact our support team and give them the following number: "
-                    f"`{ctx.interaction.id if ctx.interaction else ctx.message.id}`"
-                )
+                    "Our development team has been notified, and the issue will be addressed soon.\n"
+                    "If the error persists, or you have any questions, please contact our [support team]({link}) "
+                    "and give them the extra details below."
+                ).format(link=self.config.bot.support_guild)
+                details = {}
+                details['error'] = f"`{repr(e)}`"
+                if ctx.interaction:
+                    details['interactionid'] = f"`{ctx.interaction.id}`"
+                if ctx.command:
+                    details['cmd'] = f"`{ctx.command.qualified_name}`"
+                if ctx.author:
+                    details['author'] = f"`{ctx.author.id}` -- `{ctx.author}`"
+                if ctx.guild:
+                    details['guild'] = f"`{ctx.guild.id}` -- `{ctx.guild.name}`"
+                    details['my_guild_perms'] = f"`{ctx.guild.me.guild_permissions.value}`"
+                    if ctx.author:
+                        ownerstr = ' (owner)' if ctx.author == ctx.guild.owner else ''
+                        details['author_guild_perms'] = f"`{ctx.author.guild_permissions.value}{ownerstr}`"
+                if ctx.channel.type is discord.enums.ChannelType.private:
+                    details['channel'] = "`Direct Message`"
+                elif ctx.channel:
+                    details['channel'] = f"`{ctx.channel.id}` -- `{ctx.channel.name}`"
+                    details['my_channel_perms'] = f"`{ctx.channel.permissions_for(ctx.guild.me).value}`"
+                    if ctx.author:
+                        details['author_channel_perms'] = f"`{ctx.channel.permissions_for(ctx.author).value}`"
+                details['shard'] = f"`{self.shardname}`"
+                details['log_stack'] = f"`{log_action_stack.get()}`"
+
+                table = '\n'.join(tabulate(*details.items()))
+                error_embed.add_field(name='Details', value=table)
 
                 try:
                     await ctx.error_reply(embed=error_embed)

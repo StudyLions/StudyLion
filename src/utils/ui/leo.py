@@ -230,9 +230,20 @@ class LeoUI(View):
             )
         except Exception:
             logger.exception(
-                f"Unhandled interaction exception occurred in item {item!r} of LeoUI {self!r}",
+                f"Unhandled interaction exception occurred in item {item!r} of LeoUI {self!r} from interaction: "
+                f"{interaction.data}",
                 extra={'with_ctx': True, 'action': 'UIError'}
             )
+            # Explicitly handle the bugsplat ourselves
+            if not interaction.is_expired():
+                splat = interaction.client.tree.bugsplat(interaction, error)
+                try:
+                    if interaction.response.is_done():
+                        await interaction.followup.send(embed=splat, ephemeral=True)
+                    else:
+                        await interaction.response.send_message(embed=splat, ephemeral=True)
+                except discord.HTTPException:
+                    pass
 
 
 class MessageUI(LeoUI):
@@ -461,9 +472,19 @@ class LeoModal(Modal):
             raise error
         except Exception:
             logger.exception(
-                f"Unhandled interaction exception occurred in {self!r}",
+                f"Unhandled interaction exception occurred in {self!r}. Interaction: {interaction.data}",
                 extra={'with_ctx': True, 'action': 'ModalError'}
             )
+            # Explicitly handle the bugsplat ourselves
+            if not interaction.is_expired():
+                splat = interaction.client.tree.bugsplat(interaction, error)
+                try:
+                    if interaction.response.is_done():
+                        await interaction.followup.send(embed=splat, ephemeral=True)
+                    else:
+                        await interaction.response.send_message(embed=splat, ephemeral=True)
+                except discord.HTTPException:
+                    pass
 
 
 def error_handler_for(exc):
