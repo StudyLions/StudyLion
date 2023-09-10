@@ -340,12 +340,12 @@ msgstr "Estatísticas de Estudos"
 #: src/modules/statistics/settings.py:343
 msgctxt "ui:statistics_config|menu:visible_stats|item:text"
 msgid "Message Activity"
-msgstr ""
+msgstr "Atividade em Conversas"
 
 #: src/modules/statistics/settings.py:351
 msgctxt "ui:statistics_config|menu:visible_stats|item:anki"
 msgid "Anki Reviews"
-msgstr ""
+msgstr "Revisões Anki"
 
 #: src/modules/statistics/settings.py:362
 msgctxt "ui:statistics_config|menu:visible_stats|placeholder"
