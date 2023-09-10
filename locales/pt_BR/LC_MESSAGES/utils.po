@@ -96,7 +96,7 @@ msgstr "página"
 #: src/utils/cog.py:80
 msgctxt "cmd:page_select|param:page|desc"
 msgid "The page name or number to jump to."
-msgstr ""
+msgstr "O nome da página ou número para ir até ela."
 
 #: src/utils/cog.py:86
 msgctxt "cmd:page_select|error:no_pager"
