@@ -183,7 +183,7 @@ msgstr "somente_vídeo"
 #: src/modules/video_channels/settings.py:32
 msgctxt "guildset:video_channels|desc"
 msgid "List of voice channels and categories in which to enforce video."
-msgstr ""
+msgstr "Lista de canais e/ou categorias nas quais o vídeo deve ser obrigado."
 
 #: src/modules/video_channels/settings.py:36
 msgctxt "guildset:video_channels|long_desc"
