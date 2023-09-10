@@ -82,6 +82,8 @@ msgid ""
 "Activity ranks and season leaderboard will now be measured from "
 "{season_start}."
 msgstr ""
+"Rank de atividades, e Lista de Classificações, serão agora contadas a partir"
+" de {season_start}."
 
 #: src/modules/statistics/settings.py:37
 msgctxt "settype:stat|output:voice"
