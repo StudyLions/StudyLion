@@ -123,7 +123,7 @@ msgstr "Não pude extrair a duração de ˋ{partial}ˋ"
 #: src/utils/lib.py:670
 msgctxt "util:parse_dur|regex:day"
 msgid "(?P<value>\\d+)\\s*(?:(d)|(day))"
-msgstr ""
+msgstr "(?P<value>\\d+)\\s*(?:(d)|(dia))"
 
 #: src/utils/lib.py:677
 msgctxt "util:parse_dur|regex:hour"
