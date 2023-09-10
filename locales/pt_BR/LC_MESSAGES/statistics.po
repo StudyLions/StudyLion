@@ -402,7 +402,7 @@ msgstr "Estatística Semanal Anki"
 #: src/modules/statistics/ui/weeklymonthly.py:112
 msgctxt "menu:stat_type|opt:monthly_voice|name"
 msgid "Monthly Voice Statistics"
-msgstr ""
+msgstr "Estatística Mensal em Voz"
 
 #: src/modules/statistics/ui/weeklymonthly.py:117
 msgctxt "menu:stat_type|opt:monthly_text|name"
