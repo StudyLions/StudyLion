@@ -578,7 +578,7 @@ msgstr "Selecionar Mês"
 #: src/modules/statistics/ui/weeklymonthly.py:687
 msgctxt "ui:weeklymonthly|menu:period|weekly|placeholder"
 msgid "Select a week to display"
-msgstr ""
+msgstr "Selecione uma semana para mostrar"
 
 #: src/modules/statistics/ui/weeklymonthly.py:692
 msgctxt "ui:weeklymonthly|menu:period|monthly|placeholder"
