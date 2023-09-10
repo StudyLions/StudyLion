@@ -163,7 +163,7 @@ msgstr "desde"
 #: src/modules/statistics/settings.py:91
 msgctxt "guildset:season_start|desc"
 msgid "Start of the current statistics season."
-msgstr ""
+msgstr "Conta as estatísticas a partir desta data."
 
 #: src/modules/statistics/settings.py:95
 msgctxt "guildset:season_start|long_desc"
