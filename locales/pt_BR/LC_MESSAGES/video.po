@@ -224,7 +224,7 @@ msgstr "câmera_listanegra"
 #: src/modules/video_channels/settings.py:108
 msgctxt "guildset:video_blacklist|desc"
 msgid "Role given when members are blacklisted from video channels."
-msgstr ""
+msgstr "Cargo dado a quem foi inscrito na Lista Negra dos canais de vídeo."
 
 #: src/modules/video_channels/settings.py:112
 msgctxt "guildset:video_blacklist|long_desc"
