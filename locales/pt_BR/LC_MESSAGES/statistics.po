@@ -460,7 +460,7 @@ msgstr "Meta Cartões"
 #: src/modules/statistics/ui/weeklymonthly.py:203
 msgctxt "modal:goal_editor|field:anki_goal|label"
 msgid "Enter a number of card revisions to aim for."
-msgstr ""
+msgstr "Digite um número de revisões de cartões Anki para ser o objetivo."
 
 #: src/modules/statistics/ui/weeklymonthly.py:216
 #, possible-python-brace-format
