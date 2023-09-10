@@ -205,6 +205,9 @@ msgid ""
 "Member ranks will update when they are next active. Use {rank_cmd} to "
 "refresh immediately."
 msgstr ""
+"A Lista de Classificação e o Ranking de Atividades contará a partir de "
+"{timestamp}. As classificações dos membros serão atualizadas com a próxima "
+"atividade que fizerem. Use {rank_cmd} para atualizar imediatamente."
 
 #: src/modules/statistics/settings.py:145
 #, possible-python-brace-format
