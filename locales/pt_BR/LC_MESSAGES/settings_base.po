@@ -215,7 +215,7 @@ msgstr "Lista de ID dos canais, separadas pro vírgula."
 #: src/settings/setting_types.py:1360
 msgctxt "settype:role_list|accepts"
 msgid "Comma separated list of role ids."
-msgstr ""
+msgstr "Lista de ID dos cargos, separadas por vírgula."
 
 #: src/settings/setting_types.py:1376
 msgctxt "settype:stringlist|accepts"
