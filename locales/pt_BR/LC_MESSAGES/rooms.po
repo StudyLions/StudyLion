@@ -396,7 +396,7 @@ msgctxt "cmd:room_invite|error:no_room"
 msgid ""
 "You do not own a private room! Use `/room rent` to rent one with {coin}!"
 msgstr ""
-"Você não tem uma sala privada! Digite ˋ/sala alugarˋ para alugar uma por "
+"Você não tem uma sala particular! Digite ˋ/sala alugarˋ para alugar uma por "
 "{coin}!"
 
 #: src/modules/rooms/cog.py:629
@@ -433,7 +433,7 @@ msgstr "expulsar"
 #: src/modules/rooms/cog.py:689
 msgctxt "cmd:room_kick|desc"
 msgid "Remove a members from your private room."
-msgstr "Remover um membro da sua sala privada."
+msgstr "Remover um membro da sua sala particular."
 
 #: src/modules/rooms/cog.py:693
 msgctxt "cmd:room_kick|param:members"
