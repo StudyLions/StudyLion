@@ -250,7 +250,7 @@ msgstr ""
 #: src/modules/statistics/settings.py:183
 msgctxt "guildset:unranked_roles|set_using"
 msgid "Role selector below."
-msgstr ""
+msgstr "Selecione o cargo abaixo."
 
 #: src/modules/statistics/settings.py:193
 #, possible-python-brace-format
