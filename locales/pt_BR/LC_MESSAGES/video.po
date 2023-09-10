@@ -214,7 +214,7 @@ msgstr ""
 #: src/modules/video_channels/settings.py:72
 msgctxt "guildset:video_channels|set_response:unset"
 msgid "Members will not be asked to turn on their video in any channels."
-msgstr ""
+msgstr "Os membros não serão orientados a ligar suas câmeras em nenhum canal."
 
 #: src/modules/video_channels/settings.py:105
 msgctxt "guildset:video_blacklist"
