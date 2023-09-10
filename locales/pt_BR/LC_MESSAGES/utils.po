@@ -415,7 +415,7 @@ msgstr "Valor do Campo"
 #: src/utils/ui/msgeditor.py:565
 msgctxt "ui:msg_editor|modal:add_field|field:inline|label"
 msgid "Whether the field is inline"
-msgstr ""
+msgstr "Se o campo é linear"
 
 #: src/utils/ui/msgeditor.py:569
 msgctxt "ui:msg_editor|modal:add_field|field:inline|placeholder"
