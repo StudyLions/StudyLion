@@ -343,7 +343,7 @@ msgstr ""
 #: src/modules/video_channels/settings.py:256
 msgctxt "guildset:video_exempt"
 msgid "video_exempt"
-msgstr ""
+msgstr "vídeo_excepcionados"
 
 #: src/modules/video_channels/settings.py:259
 msgctxt "guildset:video_exempt|desc"
