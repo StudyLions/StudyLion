@@ -425,7 +425,7 @@ msgstr "Verdadeiro/Falso"
 #: src/utils/ui/msgeditor.py:582
 msgctxt "ui:msg_editor|modal:add_field|title"
 msgid "Add Embed Field"
-msgstr ""
+msgstr "Adicionar Campo Integrado"
 
 #: src/utils/ui/msgeditor.py:602
 msgctxt "ui:msg_editor|modal:add_field|error:position_not_int"
