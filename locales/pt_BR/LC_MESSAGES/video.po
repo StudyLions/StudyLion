@@ -192,6 +192,9 @@ msgid ""
 "If they do not enable their video with `15` seconds of joining, they will be asked to enable it through a notification in direct messages or the `alert_channel`. If they still have not enabled it after the `video_grace_period` has passed, they will be kicked from the channel. Further, after the first offence (which is considered a warning), they will be given the `video_blacklist` role, if configured, which will stop them from joining video channels.\n"
 "As usual, if a category is configured, this will apply to all voice channels under the category."
 msgstr ""
+"Os membros serão requisitados a ligar sua câmera nestes canais.\n"
+"Caso eles não habilitem o seu vídeo em 15 segundos, eles irão ser notificados por mensagem direta ou no \"canal_de_alertasˋ. Caso, ainda assim, continuem com a câmera desligada, será contado o tempo configurado em \"tempo_tolerância_câmera\"  e então serão retirados do canal. Se o membro reincidir no comportamento depois da primeira retirada do canal (que é considerada como um aviso), ele será incluído na \"lista_negra_de_video\" e receberão o cargo correspondente (caso configurado), o que os proibirá de entrar nos canais de vídeo.\n"
+"Usualmente, se você configurar toda uma categoria, todos os canais de voz desta, estarão sobre estas regras.  "
 
 #: src/modules/video_channels/settings.py:50
 msgctxt "guildset:video_channels|accepts"
