@@ -1454,7 +1454,7 @@ msgstr "Os cargos são selecionáveis por um menu suspenso abaixo da mensagem. "
 #: src/modules/rolemenus/ui/menueditor.py:697
 msgctxt "ui:menu_editor|menu:template|placeholder"
 msgid "Select Message Template"
-msgstr ""
+msgstr "Selecione o Modelo de Mensagem"
 
 #: src/modules/rolemenus/ui/menueditor.py:707
 msgctxt "ui:menu_editor|menu:template|option:custom|label"
