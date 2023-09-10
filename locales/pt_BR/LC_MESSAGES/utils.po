@@ -128,7 +128,7 @@ msgstr "(?P<value>\\d+)\\s*(?:(d)|(dia))"
 #: src/utils/lib.py:677
 msgctxt "util:parse_dur|regex:hour"
 msgid "(?P<value>\\d+)\\s*(?:(h)|(hour))"
-msgstr ""
+msgstr "(?P<value>\\d+)\\s*(?:(h)|(hora))"
 
 #: src/utils/lib.py:684
 msgctxt "util:parse_dur|regex:minute"
