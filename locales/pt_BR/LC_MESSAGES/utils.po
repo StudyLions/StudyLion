@@ -233,6 +233,8 @@ msgstr "Não há páginas compatíveis."
 msgctxt "ui:msg_editor|error:empty"
 msgid "Rendering failed! The message content and embed cannot both be empty."
 msgstr ""
+"Falha de processamento! O conteúdo da mensagem e a integração não podem "
+"estar vazios."
 
 #: src/utils/ui/msgeditor.py:86
 #, possible-python-brace-format
