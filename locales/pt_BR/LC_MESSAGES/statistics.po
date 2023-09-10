@@ -244,6 +244,8 @@ msgstr ""
 msgctxt "guildset:unranked_roles|accepts"
 msgid "Comma separated list of unranked role names or ids."
 msgstr ""
+"Nome ou ID dos cargos não contabilizados para classificações, separados por "
+"vírgula."
 
 #: src/modules/statistics/settings.py:183
 msgctxt "guildset:unranked_roles|set_using"
