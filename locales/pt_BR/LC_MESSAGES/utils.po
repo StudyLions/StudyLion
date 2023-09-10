@@ -36,12 +36,12 @@ msgstr ""
 #: src/utils/cog.py:34
 msgctxt "cmd:page|error:no_pager"
 msgid "No pager listening in this channel!"
-msgstr ""
+msgstr "Nenhum pager listado neste canal!"
 
 #: src/utils/cog.py:45
 msgctxt "cmd:page_next"
 msgid "next"
-msgstr ""
+msgstr "próximo"
 
 #: src/utils/cog.py:46
 msgctxt "cmd:page_next|desc"
