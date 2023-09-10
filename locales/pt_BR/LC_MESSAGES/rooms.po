@@ -816,4 +816,4 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "guildset:rooms_visible|set_using"
 msgid "{cmd} or toggle below."
-msgstr ""
+msgstr "{cmd} ou altere aqui abaixo."
