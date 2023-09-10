@@ -524,8 +524,10 @@ msgid ""
 "This interface will time out {timestamp}. Press 'Continue' below to keep "
 "editing."
 msgstr ""
+"Esta interface irá finalizar em {timestamp}. Para continuar editando, "
+"pressione ˋContinuarˋ."
 
 #: src/utils/ui/msgeditor.py:1009
 msgctxt "ui:msg_editor|timeout_warning|continue"
 msgid "Continue"
-msgstr ""
+msgstr "Continuar"
