@@ -272,7 +272,7 @@ msgstr "Editar Conteúdo"
 #: src/utils/ui/msgeditor.py:162
 msgctxt "ui:msg_editor|button:add_embed|sample_embed|title"
 msgid "Title Placeholder"
-msgstr ""
+msgstr "Fixador de Título"
 
 #: src/utils/ui/msgeditor.py:163
 msgctxt "ui:msg_editor|button:add_embed|sample_embed|description"
