@@ -300,6 +300,7 @@ msgstr ""
 msgctxt "guildset:video_durations|set_response:unset"
 msgid "Video blacklists are now always permanent."
 msgstr ""
+"A partir de agora, a reincidência não irá ser temporária, será permanente."
 
 #: src/modules/video_channels/settings.py:221
 msgctxt "guildset:video_grace_period"
