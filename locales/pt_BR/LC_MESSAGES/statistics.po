@@ -172,6 +172,9 @@ msgid ""
 " and the leaderboard will display activity since this time by default. Unset"
 " to disable seasons and use all-time statistics instead."
 msgstr ""
+"O rank de atividades será baseado em atividades contabilizáveis, desde este "
+"tempo informado. E a Lista de Classificação irá mostrar atividade desde este"
+" tempo, por padrão. Não informada, "
 
 #: src/modules/statistics/settings.py:101
 msgctxt "guildset:season_start|accepts"
