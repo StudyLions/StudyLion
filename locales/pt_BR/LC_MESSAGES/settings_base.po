@@ -120,7 +120,7 @@ msgstr "On"
 #: src/settings/setting_types.py:507
 msgctxt "settype:bool|output:false"
 msgid "Off"
-msgstr ""
+msgstr "Off"
 
 #: src/settings/setting_types.py:508
 msgctxt "settype:bool|output:none"
