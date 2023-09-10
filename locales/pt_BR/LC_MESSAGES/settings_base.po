@@ -130,7 +130,7 @@ msgstr "Não Configurado"
 #: src/settings/setting_types.py:619
 msgctxt "settype:integer|accepts"
 msgid "An integer"
-msgstr ""
+msgstr "Um número inteiro"
 
 #: src/settings/setting_types.py:682
 msgctxt "settype:emoji|desc"
