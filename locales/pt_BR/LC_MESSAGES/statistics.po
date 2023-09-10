@@ -753,7 +753,7 @@ msgstr "Não há tempo em canais de voz para mostrar neste período."
 #: src/modules/statistics/ui/leaderboard.py:433
 msgctxt "ui:leaderboard|mode:text|message:empty|desc"
 msgid "There has been no message activity in this period!"
-msgstr ""
+msgstr "Não há atividade em conversações para mostrar neste período!"
 
 #: src/modules/statistics/ui/leaderboard.py:438
 msgctxt "ui:leaderboard|mode:anki|message:empty|desc"
