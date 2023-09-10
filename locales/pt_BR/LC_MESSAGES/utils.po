@@ -470,7 +470,7 @@ msgstr "Editar Campo Integrado"
 #: src/utils/ui/msgeditor.py:733
 msgctxt "ui:msg_editor|menu:edit_field|placeholder"
 msgid "Edit Embed Field"
-msgstr ""
+msgstr "Editar Campo Integrado"
 
 #: src/utils/ui/msgeditor.py:772
 msgctxt "ui:msg_deleteor|menu:delete_field|placeholder"
