@@ -1506,7 +1506,7 @@ msgstr "Selecione Novo Canal"
 #: src/modules/rolemenus/ui/menueditor.py:878
 msgctxt "ui:menu_editor|button:repost|widget:repost|error:perms|title"
 msgid "Insufficient Permissions!"
-msgstr ""
+msgstr "Permissões insuficientes!"
 
 #: src/modules/rolemenus/ui/menueditor.py:882
 msgctxt "ui:menu_editor|button:repost|eidget:repost|error:perms|desc"
