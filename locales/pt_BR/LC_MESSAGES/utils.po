@@ -365,7 +365,7 @@ msgstr "Integração de Tempo (em formato ISO)"
 #: src/utils/ui/msgeditor.py:410
 msgctxt "ui:msg_editor|modal:footer|title"
 msgid "Embed Footer Editor"
-msgstr ""
+msgstr "Editor de Rodapé Integrado"
 
 #: src/utils/ui/msgeditor.py:429
 msgctxt "ui:msg_editor|button:footer|error:invalid_timestamp"
