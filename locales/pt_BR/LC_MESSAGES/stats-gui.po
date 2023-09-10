@@ -40,7 +40,7 @@ msgstr "TEMPO ESTUDOS"
 #: src/gui/cards/stats.py:83
 msgctxt "skin:stats|mode:voice|subheader:study"
 msgid "VOICE TIME"
-msgstr "VOZ"
+msgstr "TEMPO VOZ"
 
 #: src/gui/cards/stats.py:87
 msgctxt "skin:stats|mode:text|subheader:study"
