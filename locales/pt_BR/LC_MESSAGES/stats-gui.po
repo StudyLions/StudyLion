@@ -90,7 +90,7 @@ msgstr "ANKI: EM BREVE"
 #: src/gui/cards/stats.py:155
 msgctxt "skin:stats|mode:study|header:col2"
 msgid "STUDY STREAK"
-msgstr ""
+msgstr "ETAPA DE ESTUDOS"
 
 #: src/gui/cards/stats.py:159
 msgctxt "skin:stats|mode:voice|header:col2"
