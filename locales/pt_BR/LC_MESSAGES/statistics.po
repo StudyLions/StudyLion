@@ -144,6 +144,7 @@ msgstr "estatísticas_globais"
 msgctxt "userset:show_global_stats|desc"
 msgid "Whether displayed statistics include all your servers."
 msgstr ""
+"Se escolhida, irá incluir as estatísticas de todos os seus servidores."
 
 #: src/modules/statistics/settings.py:73
 msgctxt "userset:show_global_stats|long_desc"
