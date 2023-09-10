@@ -445,12 +445,12 @@ msgstr "-"
 #: src/utils/ui/msgeditor.py:666
 msgctxt "ui:msg_editor|modal:edit_field|field:name|label"
 msgid "Field name"
-msgstr ""
+msgstr "Nome do campo"
 
 #: src/utils/ui/msgeditor.py:677
 msgctxt "ui:msg_editor|modal:edit_field|field:value|label"
 msgid "Field value"
-msgstr ""
+msgstr "Valor do campo"
 
 #: src/utils/ui/msgeditor.py:688
 msgctxt "ui:msg_editor|modal:edit_field|field:inline|label"
