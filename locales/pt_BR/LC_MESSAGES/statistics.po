@@ -275,6 +275,8 @@ msgstr "estatística_visível"
 msgctxt "guildset:visible_stats|desc"
 msgid "Which statistics will be visible in the statistics commands."
 msgstr ""
+"Quais estatísticas poderão ser vistas através dos comandos de estatística "
+"deste servidor."
 
 #: src/modules/statistics/settings.py:221
 msgctxt "guildset:visible_stats|desc"
