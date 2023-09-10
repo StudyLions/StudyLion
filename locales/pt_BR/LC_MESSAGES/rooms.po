@@ -198,7 +198,7 @@ msgstr "sala"
 #: src/modules/rooms/cog.py:307
 msgctxt "cmd:room|desc"
 msgid "Base command group for private room configuration."
-msgstr "Grupo de comandos base para configurações de salas privadas. "
+msgstr "Grupo de comandos base para configurações de salas particulares."
 
 #: src/modules/rooms/cog.py:314
 msgctxt "cmd:room_rent"
