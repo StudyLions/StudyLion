@@ -1476,7 +1476,7 @@ msgstr "Você está certo que quer deletar este menu? Isto não é reversivel!"
 #: src/modules/rolemenus/ui/menueditor.py:734
 msgctxt "ui:menu_editor|button:delete|confirm|button:yes"
 msgid "Yes, Delete Now"
-msgstr ""
+msgstr "Sim, deletar agora!"
 
 #: src/modules/rolemenus/ui/menueditor.py:739
 msgctxt "ui:menu_editor|button:delete|confirm|button:no"
