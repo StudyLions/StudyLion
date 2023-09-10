@@ -187,7 +187,7 @@ msgstr ""
 #: src/modules/statistics/settings.py:105
 msgctxt "guildset:season_start|notset"
 msgid "Not Set (Using all-time statistics)"
-msgstr ""
+msgstr "Não Configurado (Usando estatísticas desde o início dos registros)  "
 
 #: src/modules/statistics/settings.py:124
 #, possible-python-brace-format
