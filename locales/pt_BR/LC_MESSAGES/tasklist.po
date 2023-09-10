@@ -140,7 +140,7 @@ msgstr "{tick} Tarefa criada ˋ{label}ˋ."
 #: src/modules/tasklist/cog.py:418
 msgctxt "cmd:tasks_upload"
 msgid "upload"
-msgstr ""
+msgstr "enviar"
 
 #: src/modules/tasklist/cog.py:421
 msgctxt "cmd:tasks_upload|desc"
