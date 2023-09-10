@@ -490,12 +490,12 @@ msgstr "Download"
 #: src/utils/ui/msgeditor.py:852
 msgctxt "ui:msg_editor|button:undo|label"
 msgid "Undo"
-msgstr ""
+msgstr "Desfazer"
 
 #: src/utils/ui/msgeditor.py:872
 msgctxt "ui:msg_editor|button:redo|label"
 msgid "Redo"
-msgstr ""
+msgstr "Refazer"
 
 #: src/utils/ui/msgeditor.py:891
 msgctxt "ui:msg_editor|button:quit|confirm"
