@@ -412,7 +412,7 @@ msgstr "Estatística Mensal em Conversas"
 #: src/modules/statistics/ui/weeklymonthly.py:122
 msgctxt "menu:stat_type|opt:monthly_anki|name"
 msgid "Monthly Anki Statistics"
-msgstr ""
+msgstr "Estatística Mensal Anki"
 
 #: src/modules/statistics/ui/weeklymonthly.py:144
 msgctxt "modal:goal_editor|field:task_goal|label"
