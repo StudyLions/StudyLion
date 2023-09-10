@@ -74,7 +74,7 @@ msgstr "tarefas"
 #: src/modules/tasklist/cog.py:238
 msgctxt "group:tasks|desc"
 msgid "Base command group for tasklist commands."
-msgstr ""
+msgstr "Grupo de comandos-base para comandar as tarefas."
 
 #: src/modules/tasklist/cog.py:260
 msgctxt "argtype:taskid|error:no_tasks"
