@@ -380,7 +380,7 @@ msgstr "Rodapé"
 #: src/utils/ui/msgeditor.py:467
 msgctxt "ui:msg_editor|modal:images|field:thumb|label"
 msgid "Thumbnail Image URL"
-msgstr ""
+msgstr "Link de Miniatura de Imagem "
 
 #: src/utils/ui/msgeditor.py:477
 msgctxt "ui:msg_editor|modal:images|field:image|label"
