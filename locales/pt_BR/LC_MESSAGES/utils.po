@@ -505,7 +505,7 @@ msgstr "Você tem mudanças não salvas! Tem certeza que deseja sair?"
 #: src/utils/ui/msgeditor.py:896
 msgctxt "ui:msg_editor|button:quit|confirm|button:yes"
 msgid "Yes, Quit Now"
-msgstr "Sim! Sair Agora"
+msgstr "Sim! Sair Agora."
 
 #: src/utils/ui/msgeditor.py:902
 msgctxt "ui:msg_editor|button:quit|confirm|button:no"
