@@ -35,12 +35,12 @@ msgstr "POSIÇÃO NA CLASSIFICAÇÃO"
 #: src/gui/cards/stats.py:79
 msgctxt "skin:stats|mode:study|subheader:study"
 msgid "STUDY TIME"
-msgstr "TEMPO ESTUDADO"
+msgstr "TEMPO ESTUDOS"
 
 #: src/gui/cards/stats.py:83
 msgctxt "skin:stats|mode:voice|subheader:study"
 msgid "VOICE TIME"
-msgstr ""
+msgstr "VOZ"
 
 #: src/gui/cards/stats.py:87
 msgctxt "skin:stats|mode:text|subheader:study"
