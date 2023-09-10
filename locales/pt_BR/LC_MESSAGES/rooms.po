@@ -752,7 +752,7 @@ msgid ""
 "If enabled, new private rooms will be created with the `VIEW_CHANNEL` "
 "permission enabled for the `@everyone` role."
 msgstr ""
-"Se ativado, novas salas privadas serão criadas com a permissão "
+"Se ativado, novas salas particulares serão criadas com a permissão "
 "`VIEW_CHANNEL` para o cargo `@everyone`."
 
 #: src/modules/rooms/settings.py:157
