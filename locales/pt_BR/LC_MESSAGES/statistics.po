@@ -522,6 +522,8 @@ msgid ""
 "Malformed task!\n"
 "`{input}`"
 msgstr ""
+"Tarefa fora do padrão!\n"
+"ˋ{imput}ˋ"
 
 #: src/modules/statistics/ui/weeklymonthly.py:301
 msgctxt "modal:goal_editor|title"
