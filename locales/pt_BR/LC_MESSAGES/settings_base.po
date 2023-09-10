@@ -45,12 +45,12 @@ msgstr "Por Padrão"
 #: src/settings/ui.py:364
 msgctxt "setting|summary_table|field:set|key"
 msgid "Set Using"
-msgstr ""
+msgstr "Configuração Usada"
 
 #: src/settings/setting_types.py:48
 msgctxt "settype:string|accepts"
 msgid "Any Text"
-msgstr ""
+msgstr "Qualquer Texto"
 
 #: src/settings/setting_types.py:89
 #, possible-python-brace-format
