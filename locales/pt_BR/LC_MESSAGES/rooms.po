@@ -495,7 +495,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:778
 msgctxt "cmd:room_transfer|error:no_room"
 msgid "You do not own a private room to transfer!"
-msgstr "Você não possui nenhuma sala privada para transferir!"
+msgstr "Você não possui nenhuma sala particular para transferir!"
 
 #: src/modules/rooms/cog.py:790
 #, possible-python-brace-format
@@ -503,7 +503,7 @@ msgctxt "cmd:room_transfer|error:target_not_member"
 msgid ""
 "{mention} is not a member of your private room! You must invite them first."
 msgstr ""
-"{mention} não é um membro da sua sala privada! Você precisa convidá-lo "
+"{mention} não é um membro da sua sala particular! Você precisa convidá-lo "
 "primeiro."
 
 #: src/modules/rooms/cog.py:802
