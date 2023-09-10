@@ -325,7 +325,7 @@ msgstr "Corpo"
 #: src/utils/ui/msgeditor.py:302
 msgctxt "ui:msg_editor|modal:author|field:name|label"
 msgid "Author Name"
-msgstr ""
+msgstr "Nome do Autor"
 
 #: src/utils/ui/msgeditor.py:313
 msgctxt "ui:msg_editor|modal:author|field:link|label"
