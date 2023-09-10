@@ -450,7 +450,7 @@ msgstr "Meta de Mensagens"
 #: src/modules/statistics/ui/weeklymonthly.py:194
 msgctxt "modal:goal_editor|field:text_goal|placeholder"
 msgid "Enter a message count to aim for."
-msgstr ""
+msgstr "Digite um valor de mensagens para ser sua meta"
 
 #: src/modules/statistics/ui/weeklymonthly.py:199
 msgctxt "modal:goal_editor|field:anki_goal|label"
