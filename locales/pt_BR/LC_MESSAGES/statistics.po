@@ -93,12 +93,12 @@ msgstr "ˋEm Sala de Vozˋ"
 #: src/modules/statistics/settings.py:38
 msgctxt "settype:stat|output:text"
 msgid "`Text`"
-msgstr ""
+msgstr "ˋMensagemˋ"
 
 #: src/modules/statistics/settings.py:39
 msgctxt "settype:stat|output:anki"
 msgid "`Anki`"
-msgstr ""
+msgstr "ˋAnkiˋ"
 
 #: src/modules/statistics/settings.py:42
 msgctxt "settype:stat|input_format:voice"
