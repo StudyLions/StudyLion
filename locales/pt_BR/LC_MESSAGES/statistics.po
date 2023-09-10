@@ -468,6 +468,8 @@ msgctxt "modal:goal_editor|field:voice_goal|error:NAN"
 msgid ""
 "The provided study time goal `{input}` is not a number! Please try again."
 msgstr ""
+"A meta de estudos informada ˋ{imput}ˋ não é um número! Por favor, tente "
+"novamente."
 
 #: src/modules/statistics/ui/weeklymonthly.py:223
 #, possible-python-brace-format
