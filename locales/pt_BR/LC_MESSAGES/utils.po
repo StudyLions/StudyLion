@@ -222,7 +222,7 @@ msgstr "Página {page}"
 #, possible-python-brace-format
 msgctxt "cmd:page|acmpl|pager:Page|choice:select"
 msgid "Selected: Page {page}/{total}"
-msgstr ""
+msgstr "Selecionada: Página {page}/{total}"
 
 #: src/utils/ui/pagers.py:363
 msgctxt "cmd:page|acmpl|pager:Page|error:parse"
