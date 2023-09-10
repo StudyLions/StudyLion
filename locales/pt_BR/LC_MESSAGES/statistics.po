@@ -544,7 +544,7 @@ msgstr "Editor Metas"
 #, possible-python-brace-format
 msgctxt "ui:weeklymonthly|menu:period|monthly|label"
 msgid "{month} {year}"
-msgstr ""
+msgstr "{month} {year}"
 
 #: src/modules/statistics/ui/weeklymonthly.py:530
 #, possible-python-brace-format
