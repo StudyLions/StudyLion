@@ -29,7 +29,7 @@ msgstr "Selecione os Canais de Vídeo"
 #: src/modules/video_channels/settingui.py:82
 msgctxt "ui:video_config|menu:exempt|placeholder"
 msgid "Select Exempt Roles"
-msgstr ""
+msgstr "Selecione Cargos Excepcionados"
 
 #: src/modules/video_channels/settingui.py:109
 msgctxt "ui:video_config|menu:video_blacklist|placeholder"
