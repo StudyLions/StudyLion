@@ -473,8 +473,8 @@ class VoiceTrackerCog(LionCog):
             return
 
         async with self.tracking_lock:
-            sessions = VoiceSession._active_sessions_.get(guildid)
-            for session in sessions:
+            sessions = VoiceSession._active_sessions_.get(guildid, {})
+            for session in list(sessions.values()):
                 hourly_rate = await self._calculate_rate(session.guildid, session.userid, session.state)
                 await session.update(new_rate=hourly_rate)
 
