@@ -110,12 +110,12 @@ msgstr "habilitado|sim|verdadeiro|on|habilitar|1"
 #: src/settings/setting_types.py:501
 msgctxt "settype:bool|parse:falsey_values"
 msgid "disabled|no|false|off|disable|0"
-msgstr ""
+msgstr "desabilitado|não|falso|off|desabilitar|0"
 
 #: src/settings/setting_types.py:506
 msgctxt "settype:bool|output:true"
 msgid "On"
-msgstr ""
+msgstr "On"
 
 #: src/settings/setting_types.py:507
 msgctxt "settype:bool|output:false"
