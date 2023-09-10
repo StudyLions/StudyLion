@@ -106,7 +106,7 @@ msgstr "Obrigado por ter deixado o canal prontamente!"
 #: src/modules/video_channels/cog.py:367
 msgctxt "video_watchdog|join_task|kick_after_grace|audit_reason"
 msgid "Member never enabled their video in video channel."
-msgstr ""
+msgstr "Membro nunca abriu sua cãmera em um canal de vídeo."
 
 #: src/modules/video_channels/cog.py:385
 #, possible-python-brace-format
