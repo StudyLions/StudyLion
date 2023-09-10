@@ -540,6 +540,8 @@ msgid ""
 "Deposit LionCoins in your private room bank to add more days. (Members may "
 "also deposit!)"
 msgstr ""
+"Depositar LionCoins em seu caixa da sala privada, para que possam ser "
+"adicionados mais dias. (Membros também podem depositar!)"
 
 #: src/modules/rooms/cog.py:844
 msgctxt "cmd:room_deposit|param:coins"
