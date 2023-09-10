@@ -138,7 +138,7 @@ msgstr "Você foi colocado na Lista Negra!"
 #: src/modules/video_channels/cog.py:426
 msgctxt "video_watchdog|join_task|kick_after_grace|blacklist|desc"
 msgid "You have been blacklisted from the video channels in this server."
-msgstr ""
+msgstr "Você foi colocado na Lista Negra dos canais de vídeo deste servidor."
 
 #: src/modules/video_channels/cog.py:459
 #, possible-python-brace-format
