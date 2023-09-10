@@ -271,6 +271,7 @@ msgstr "câmera_listanegra_duração"
 msgctxt "guildset:video_durations|desc"
 msgid "Sequence of durations for automatic video blacklists."
 msgstr ""
+"Sequência de reincidências para ser automáticamente listado na Lista Negra."
 
 #: src/modules/video_channels/settings.py:169
 msgctxt "guildset:video_durations|long_desc"
