@@ -257,7 +257,7 @@ msgstr ""
 #: src/utils/ui/msgeditor.py:123
 msgctxt "ui:msg_editor|modal:content|field:content|label"
 msgid "Message Content"
-msgstr ""
+msgstr "Conteúdo da Mensagem"
 
 #: src/utils/ui/msgeditor.py:132
 msgctxt "ui:msg_editor|modal:content|title"
