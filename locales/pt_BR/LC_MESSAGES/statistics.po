@@ -39,7 +39,7 @@ msgstr "estatísticas"
 #: src/modules/statistics/cog.py:58
 msgctxt "cmd:stats|desc"
 msgid "Weekly and monthly statistics for your recent activity."
-msgstr ""
+msgstr "Estatísticas semanais, e mensais, das suas atividades recentes."
 
 #: src/modules/statistics/cog.py:71
 msgctxt "cmd:leaderboard"
