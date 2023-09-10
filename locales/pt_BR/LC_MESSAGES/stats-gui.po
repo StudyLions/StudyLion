@@ -70,12 +70,12 @@ msgstr "SEMANAL"
 #: src/gui/cards/stats.py:126
 msgctxt "skin:stats|field:monthly"
 msgid "MONTHLY"
-msgstr ""
+msgstr "MENSAL"
 
 #: src/gui/cards/stats.py:130
 msgctxt "skin:stats|field:alltime"
 msgid "ALL TIME"
-msgstr ""
+msgstr "SEMPRE"
 
 #: src/gui/cards/stats.py:134
 msgctxt "skin:stats|field:time"
