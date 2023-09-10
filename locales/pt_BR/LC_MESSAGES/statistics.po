@@ -728,7 +728,7 @@ msgstr "Desde Sempre"
 #: src/modules/statistics/ui/leaderboard.py:347
 msgctxt "ui:leaderboard|button:jump|label"
 msgid "Jump"
-msgstr ""
+msgstr "Ir"
 
 #: src/modules/statistics/ui/leaderboard.py:362
 msgctxt "ui:leaderboard|button:jump|input:title"
