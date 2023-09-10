@@ -140,7 +140,7 @@ msgstr "Emoji personalizado, ou Unicode"
 #: src/settings/setting_types.py:754
 msgctxt "settype:guildid|accepts"
 msgid "Any Snowflake ID"
-msgstr ""
+msgstr "Qualquer ID Snowflake"
 
 #: src/settings/setting_types.py:823
 msgctxt "settype:timezone|accepts"
