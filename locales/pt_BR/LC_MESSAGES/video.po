@@ -45,6 +45,7 @@ msgstr "Painel de Configuração de Canais de Video"
 msgctxt "dash:video|title"
 msgid "Video Channel Settings ({commands[configure video_channels]})"
 msgstr ""
+"Configuração de Canais de Vídeo ({commands[configure_video_channels]})"
 
 #: src/modules/video_channels/settingui.py:160
 msgctxt "dash:video|option|name"
