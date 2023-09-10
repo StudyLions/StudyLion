@@ -1534,7 +1534,7 @@ msgstr "Menu Cargos Movido"
 #, possible-python-brace-format
 msgctxt "ui:menu_editor|button:repost|widget:repost|success|desc:general"
 msgid "The role menu `{name}` is now available at {message_link}."
-msgstr ""
+msgstr "O menu de cargos ˋ{name}ˋ agora está disponível em {message_link}."
 
 #: src/modules/rolemenus/ui/menueditor.py:927
 msgctxt "ui:menu_editor|button:repost|widget:repost|success|desc:reactions"
