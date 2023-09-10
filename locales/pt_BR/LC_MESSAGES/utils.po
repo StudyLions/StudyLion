@@ -480,12 +480,12 @@ msgstr "Remover Campo Integrado"
 #: src/utils/ui/msgeditor.py:808
 msgctxt "ui:msg_editor|button:save|label"
 msgid "Save"
-msgstr ""
+msgstr "Salvar"
 
 #: src/utils/ui/msgeditor.py:833
 msgctxt "ui:msg_editor|button:download|label"
 msgid "Download"
-msgstr ""
+msgstr "Download"
 
 #: src/utils/ui/msgeditor.py:852
 msgctxt "ui:msg_editor|button:undo|label"
