@@ -210,13 +210,13 @@ msgstr "Última: Página {page}/{total}"
 #, possible-python-brace-format
 msgctxt "cmd:page|acmpl|pager:Pager|choice:current"
 msgid "Current: Page {page}/{total}"
-msgstr ""
+msgstr "Atual: Página {page}/{total}"
 
 #: src/utils/ui/pagers.py:319
 #, possible-python-brace-format
 msgctxt "cmd:page|acmpl|pager:Pager|choice:general"
 msgid "Page {page}"
-msgstr ""
+msgstr "Página {page}"
 
 #: src/utils/ui/pagers.py:353
 #, possible-python-brace-format
