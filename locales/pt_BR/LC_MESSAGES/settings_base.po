@@ -194,7 +194,7 @@ msgstr "Qualquer"
 #: src/settings/setting_types.py:1070
 msgctxt "settype:enum|accepts"
 msgid "A valid option."
-msgstr ""
+msgstr "Uma opção válida."
 
 #: src/settings/setting_types.py:1120
 #, possible-python-brace-format
