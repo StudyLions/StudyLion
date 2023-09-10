@@ -455,7 +455,7 @@ msgstr "Digite um valor de mensagens para ser sua meta"
 #: src/modules/statistics/ui/weeklymonthly.py:199
 msgctxt "modal:goal_editor|field:anki_goal|label"
 msgid "Card goal"
-msgstr ""
+msgstr "Meta Cartões"
 
 #: src/modules/statistics/ui/weeklymonthly.py:203
 msgctxt "modal:goal_editor|field:anki_goal|label"
