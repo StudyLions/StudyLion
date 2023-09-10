@@ -174,7 +174,7 @@ msgstr "{tz} (Atualmente {now})"
 #: src/settings/setting_types.py:957
 msgctxt "settype:timestamp|accepts"
 msgid "A timestamp in the form YYYY-MM-DD HH:MM"
-msgstr ""
+msgstr "Uma data na forma AAAA-MM-DD HH:MM"
 
 #: src/settings/setting_types.py:986
 #, possible-python-brace-format
