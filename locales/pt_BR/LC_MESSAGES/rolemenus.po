@@ -1522,6 +1522,8 @@ msgid ""
 "An error ocurred while posting to {channel}. Do I have sufficient "
 "permissions?"
 msgstr ""
+"Um erro aconteceu enquanto estava postando em {channel}. Eu tenho permissões"
+" suficientes?"
 
 #: src/modules/rolemenus/ui/menueditor.py:907
 msgctxt "ui:menu_editor|button:repost|widget:repost|success|title"
