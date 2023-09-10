@@ -626,7 +626,7 @@ msgstr "Sala Particular Expirou!"
 #, possible-python-brace-format
 msgctxt "room|embed:expiry|description"
 msgid "Your private room in **{guild}** has expired!"
-msgstr ""
+msgstr "Sua sala particular em **{guild}** expirou!"
 
 #: src/modules/rooms/room.py:265
 #, possible-python-brace-format
