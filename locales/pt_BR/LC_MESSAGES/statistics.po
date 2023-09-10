@@ -88,7 +88,7 @@ msgstr ""
 #: src/modules/statistics/settings.py:37
 msgctxt "settype:stat|output:voice"
 msgid "`Voice`"
-msgstr "ˋEm Vozˋ"
+msgstr "ˋEm Sala de Vozˋ"
 
 #: src/modules/statistics/settings.py:38
 msgctxt "settype:stat|output:text"
