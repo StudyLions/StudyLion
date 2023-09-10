@@ -577,11 +577,13 @@ msgctxt "cmd:room_depost|success"
 msgid ""
 "Success! You have contributed {coin}**{amount}** to the private room bank."
 msgstr ""
+"Sucesso! Você contribuiu com {coin}**{amount}** para o caixa da sala "
+"privada."
 
 #: src/modules/rooms/cog.py:921
 msgctxt "cmd:configure_rooms"
 msgid "rooms"
-msgstr ""
+msgstr "salas"
 
 #: src/modules/rooms/cog.py:922
 msgctxt "cmd:configure_rooms|desc"
