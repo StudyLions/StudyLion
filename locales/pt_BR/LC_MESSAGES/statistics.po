@@ -703,7 +703,7 @@ msgstr "Cartões Anki Revisados"
 #: src/modules/statistics/ui/leaderboard.py:327
 msgctxt "ui:leaderboard|button:season|label"
 msgid "This Season"
-msgstr ""
+msgstr "Neste Período"
 
 #: src/modules/statistics/ui/leaderboard.py:331
 msgctxt "ui:leaderboard|button:day|label"
