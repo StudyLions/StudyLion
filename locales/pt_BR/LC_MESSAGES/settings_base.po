@@ -163,7 +163,7 @@ msgstr "Qualquer fuso horário da lista [tz database]({link})."
 #, possible-python-brace-format
 msgctxt "set_type:timezone|acmpl|no_matching"
 msgid "No timezones matching '{input}'!"
-msgstr ""
+msgstr "O nome ˋ{input}ˋ do fuso horário não coincide com a lista."
 
 #: src/settings/setting_types.py:927
 #, possible-python-brace-format
