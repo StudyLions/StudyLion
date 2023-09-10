@@ -243,6 +243,8 @@ msgid ""
 "Rendering failed! Could not parse the embed.\n"
 "Error: {error}"
 msgstr ""
+"Falha de processamento! Não consegui analisar a integração.\n"
+"Error: {error}"
 
 #: src/utils/ui/msgeditor.py:104
 #, possible-python-brace-format
