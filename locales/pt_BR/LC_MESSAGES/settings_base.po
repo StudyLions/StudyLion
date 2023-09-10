@@ -89,7 +89,7 @@ msgstr "O Canal ˋ{string}ˋ não pode ser encontrado neste servidor!"
 #: src/settings/setting_types.py:368
 msgctxt "settype:role|accepts"
 msgid "A role name or id"
-msgstr ""
+msgstr "O nome ou ID de um cargo."
 
 #: src/settings/setting_types.py:427
 #, possible-python-brace-format
