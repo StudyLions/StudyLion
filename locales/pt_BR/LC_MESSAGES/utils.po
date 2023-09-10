@@ -31,6 +31,7 @@ msgctxt "cmd:page|desc"
 msgid ""
 "Jump to a given page of the ouput of a previous command in this channel."
 msgstr ""
+"Ir para uma determinada página da saída de um comando anterior neste canal."
 
 #: src/utils/cog.py:34
 msgctxt "cmd:page|error:no_pager"
