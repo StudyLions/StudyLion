@@ -121,7 +121,7 @@ msgstr "Conteúdo da sua nova tarefa."
 #: src/modules/tasklist/cog.py:371
 msgctxt "cmd:tasks_new|param:parent"
 msgid "Parent of this task."
-msgstr ""
+msgstr "Pai desta tarefa."
 
 #: src/modules/tasklist/cog.py:391
 #, possible-python-brace-format
