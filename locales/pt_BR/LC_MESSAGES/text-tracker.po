@@ -200,6 +200,8 @@ msgid ""
 "How much global XP members will be given every 5 minute period they are "
 "active."
 msgstr ""
+"Quanto de EXP Global os membros receberão por cada período de 5 minutos que "
+"estiverem ativos. "
 
 #: src/tracking/text/settings.py:180
 msgctxt "botset:xp_per_period|long_desc"
