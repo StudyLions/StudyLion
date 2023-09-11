@@ -743,7 +743,7 @@ msgstr ""
 #: src/modules/tasklist/settings.py:85
 msgctxt "guildset:task_reward_limit|accepts"
 msgid "The maximum number of tasks to reward LC for per 24h."
-msgstr ""
+msgstr "O número máximo de tarefas a recompensar com LionCoins a cada 24h."
 
 #: src/modules/tasklist/settings.py:97
 #, possible-python-brace-format
