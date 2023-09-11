@@ -185,7 +185,7 @@ msgstr "A lista anexada precisa ser um arquivo de texto!"
 #: src/modules/tasklist/cog.py:459
 msgctxt "cmd:tasks_upload|error:too_large"
 msgid "The attached tasklist was too large!"
-msgstr ""
+msgstr "A lista de tarefas era muito grande."
 
 #: src/modules/tasklist/cog.py:470
 msgctxt "cmd:tasks_upload|error:too_many_lines"
