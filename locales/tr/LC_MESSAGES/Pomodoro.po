@@ -301,7 +301,7 @@ msgid ""
 msgstr ""
 "Belirlenemeyen Discord haberleşme hatası nedeniyle yeni bir pomodoro ses "
 "kanalı oluşturma sırasında hata oluştu. Lütfen kanalı manuel olarak kurmayı "
-"deneyin ve bu komuttaki `timer_channel` kısmına yazın."
+"deneyin ve bu komuttaki `sayaç_kanalı` kısmına yazın."
 
 #: src/modules/pomodoro/cog.py:549
 msgctxt "cmd:pomodoro_create|error:channel_create_permissions|title"
