@@ -507,7 +507,7 @@ msgstr "Por favor, mantenha suas tarefas com menos de 100 caracteres!"
 #: src/modules/tasklist/ui.py:39
 msgctxt "ui:tasklist_caller|button:tasklist|label"
 msgid "Open Tasklist"
-msgstr ""
+msgstr "Abrir Lista de Tarefas"
 
 #: src/modules/tasklist/ui.py:57
 msgctxt "modal:tasklist_single_editor|field:task|label"
