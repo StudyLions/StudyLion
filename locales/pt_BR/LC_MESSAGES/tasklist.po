@@ -671,7 +671,7 @@ msgstr "Esta não é sua lista de tarefas!"
 #, possible-python-brace-format
 msgctxt "ui:tasklist|embed|author"
 msgid "{name}'s tasklist ({completed}/{total} complete)"
-msgstr ""
+msgstr "Lista de Tarefas {name}ˋs ({completed}/{total} completos) "
 
 #: src/modules/tasklist/ui.py:843
 msgctxt "ui:tasklist|embed|description"
