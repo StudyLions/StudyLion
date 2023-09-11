@@ -99,7 +99,7 @@ msgid ""
 "For every **5** minutes they are active (i.e. in which they send a message),"
 " members will now be given **{amount}** XP."
 msgstr ""
-"Para todos 5min que eles estiverem ativos ( no qual ele tenha enviado "
+"Para todos 5min que eles estiverem ativos (em que ele tenha enviado "
 "mensagens), os membros receberão **{amount}**EXP."
 
 #: src/tracking/text/settings.py:65
