@@ -548,7 +548,7 @@ msgstr "Editor da Lista de Tarefas"
 #: src/modules/tasklist/ui.py:188
 msgctxt "ui:tasklist|menu:main|mode:toggle|placeholder"
 msgid "Select to Toggle"
-msgstr ""
+msgstr "Selecione para Alternar"
 
 #: src/modules/tasklist/ui.py:192
 #, possible-python-brace-format
