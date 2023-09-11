@@ -266,12 +266,12 @@ msgstr "Não pude encontrar a tarefa-mãe número ˋ{input}ˋ em sua lista."
 #, possible-python-brace-format
 msgctxt "cmd:tasks_edit|resp:success|desc"
 msgid "{tick} Task `{label}` updated."
-msgstr ""
+msgstr "{tick} Tarefa ˋ{label}ˋ atualizada."
 
 #: src/modules/tasklist/cog.py:625
 msgctxt "ui:tasklist_single_editor|title"
 msgid "Edit Task"
-msgstr ""
+msgstr "Editar Tarefa"
 
 #: src/modules/tasklist/cog.py:640
 msgctxt "cmd:tasks_clear"
