@@ -173,7 +173,17 @@ class TasklistCog(LionCog):
         if not channel.guild:
             return True
         channels = (await self.settings.tasklist_channels.get(channel.guild.id)).value
-        return (channel in channels) or (channel.category in channels)
+        # Also allow private rooms
+        roomcog = self.bot.get_cog('RoomCog')
+        if roomcog:
+            private_rooms = roomcog.get_rooms(channel.guild.id)
+            private_channels = {room.data.channelid for room in private_rooms.values()}
+        else:
+            logger.warning(
+                "Fetching tasklist channels before private room cog is loaded!"
+            )
+            private_channels = {}
+        return (channel in channels) or (channel.id in private_channels) or (channel.category in channels)
 
     async def call_tasklist(self, interaction: discord.Interaction):
         await interaction.response.defer(thinking=True, ephemeral=True)
