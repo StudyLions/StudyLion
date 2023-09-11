@@ -248,7 +248,7 @@ msgstr "Para qual conteúdo será transformada esta tarefa?"
 #: src/modules/tasklist/cog.py:549
 msgctxt "cmd:tasks_edit|param:new_parent|desc"
 msgid "Which task do you want to be the new parent?"
-msgstr ""
+msgstr "Qual tarefa você gostaria que fosse a nova tarefa-mãe?"
 
 #: src/modules/tasklist/cog.py:568
 #, possible-python-brace-format
