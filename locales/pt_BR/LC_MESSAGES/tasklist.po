@@ -450,7 +450,7 @@ msgstr[2] "{tick} Marquei ˋ{count}ˋ tarefas como incompletas."
 #: src/modules/tasklist/cog.py:933
 msgctxt "cmd:configure_tasklist"
 msgid "tasklist"
-msgstr ""
+msgstr "lista de tarefas"
 
 #: src/modules/tasklist/cog.py:934
 msgctxt "cmd:configure_tasklist|desc"
