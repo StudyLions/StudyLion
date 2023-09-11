@@ -831,7 +831,7 @@ msgstr "Configurar Canal da Lista de Tarefas"
 #: src/modules/tasklist/settings.py:311
 msgctxt "ui:tasklist_config|embed|title"
 msgid "Tasklist Configuration Panel"
-msgstr ""
+msgstr "Painel de Configuração da Lista de Tarefas"
 
 #: src/modules/tasklist/settings.py:320
 msgctxt "dash:tasklist|name"
