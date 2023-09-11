@@ -709,8 +709,8 @@ msgid ""
 "Configuring this timer requires `MANAGE_CHANNEL` permissions on the timer "
 "channel, or the configured manager role!"
 msgstr ""
-"Bu sayacı konfigüre etmek sayaç kanalında `MANAGE_CHANNEL` yetkisi ya da "
-"ayarlanmış bir yönetici rolü istemektedir!"
+"Bu sayacı konfigüre etmek sayaç kanalında `KANALI_YÖNET` yetkisi ya da "
+"ayarlanmış bir idareci rolü gerektirmektedir!"
 
 #: src/modules/pomodoro/ui/status.py:119
 msgctxt "ui:timer_status|button:edit|label"
