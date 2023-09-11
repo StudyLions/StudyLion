@@ -576,7 +576,7 @@ msgstr "Selecione para Deletar"
 #, possible-python-brace-format
 msgctxt "ui:tasklist|menu:sub|mode:delete|placeholder"
 msgid "Delete from {label}.*"
-msgstr ""
+msgstr "Deletar de {label}.*"
 
 #: src/modules/tasklist/ui.py:408
 #, possible-python-brace-format
