@@ -420,7 +420,7 @@ msgstr "Marca a tarefa determinada como incompleta."
 #: src/modules/tasklist/cog.py:858
 msgctxt "cmd:tasks_untick|param:taskidstr"
 msgid "taskids"
-msgstr ""
+msgstr "identificador da tarefa"
 
 #: src/modules/tasklist/cog.py:859
 msgctxt "cmd:tasks_untick|param:cascade"
