@@ -487,7 +487,7 @@ msgstr "Tarefas-mãe não coincidem no intervalo ˋ{range}ˋ"
 #, possible-python-brace-format
 msgctxt "tasklist|parse:multi-range|error:parse"
 msgid "Could not parse `{range}` as a task number or range."
-msgstr ""
+msgstr "Não pude analisar ˋ{range}ˋ como um número ou intervalo."
 
 #: src/modules/tasklist/tasklist.py:317
 #, possible-python-brace-format
