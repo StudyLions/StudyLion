@@ -502,7 +502,7 @@ msgstr ""
 #: src/modules/tasklist/tasklist.py:329
 msgctxt "modal:tasklist_bulk_editor|error:task_too_long"
 msgid "Please keep your tasks under 100 characters!"
-msgstr ""
+msgstr "Por favor, mantenha suas tarefas com menos de 100 caracteres!"
 
 #: src/modules/tasklist/ui.py:39
 msgctxt "ui:tasklist_caller|button:tasklist|label"
