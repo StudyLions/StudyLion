@@ -38,6 +38,7 @@ class TimerOptions(SettingGroup):
 
         _model = TimerData.Timer
         _column = TimerData.Timer.channelid.name
+        _create_row = False
         _allow_object = False
 
     @TimerConfig.register_model_setting
@@ -52,6 +53,7 @@ class TimerOptions(SettingGroup):
 
         _model = TimerData.Timer
         _column = TimerData.Timer.notification_channelid.name
+        _create_row = False
         _allow_object = False
 
         @classmethod
@@ -89,6 +91,7 @@ class TimerOptions(SettingGroup):
         )
         _model = TimerData.Timer
         _column = TimerData.Timer.inactivity_threshold.name
+        _create_row = False
 
         _min = 0
         _max = 64
@@ -122,6 +125,7 @@ class TimerOptions(SettingGroup):
 
         _model = TimerData.Timer
         _column = TimerData.Timer.manager_roleid.name
+        _create_row = False
         _allow_object = False
 
         @classmethod
@@ -149,6 +153,7 @@ class TimerOptions(SettingGroup):
 
         _model = TimerData.Timer
         _column = TimerData.Timer.voice_alerts.name
+        _create_row = False
 
     @TimerConfig.register_model_setting
     class BaseName(ModelData, StringSetting):
@@ -170,6 +175,7 @@ class TimerOptions(SettingGroup):
 
         _model = TimerData.Timer
         _column = TimerData.Timer.pretty_name.name
+        _create_row = False
 
     @TimerConfig.register_model_setting
     class ChannelFormat(ModelData, StringSetting):
@@ -189,6 +195,7 @@ class TimerOptions(SettingGroup):
 
         _model = TimerData.Timer
         _column = TimerData.Timer.channel_name.name
+        _create_row = False
 
         @classmethod
         async def _parse_string(cls, parent_id, string, **kwargs):
@@ -244,6 +251,7 @@ class TimerOptions(SettingGroup):
 
         _model = TimerData.Timer
         _column = TimerData.Timer.focus_length.name
+        _create_row = False
 
         _default_multiplier = 60
         allow_zero = False
@@ -284,6 +292,7 @@ class TimerOptions(SettingGroup):
 
         _model = TimerData.Timer
         _column = TimerData.Timer.break_length.name
+        _create_row = False
 
         _default_multiplier = 60
         allow_zero = False

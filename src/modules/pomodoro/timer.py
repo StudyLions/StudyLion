@@ -45,6 +45,7 @@ class Timer:
         '_voice_update_lock',
         '_run_task',
         '_loop_task',
+        'destroyed',
     )
 
     break_name = _p('timer|stage:break|name', "BREAK")
@@ -78,6 +79,8 @@ class Timer:
         self._run_task = None
         # Main loop task. Should not be cancelled.
         self._loop_task = None
+
+        self.destroyed = False
 
     def __repr__(self):
         return (
@@ -729,6 +732,7 @@ class Timer:
                 self._run_task.cancel()
             channelid = self.data.channelid
             await self.data.delete()
+            self.destroyed = True
             if self.last_status_message:
                 try:
                     await self.last_status_message.delete()

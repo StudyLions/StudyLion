@@ -37,6 +37,23 @@ class TimerOptionsUI(MessageUI):
         self.timer = timer
         self.role = role
 
+    async def interaction_check(self, interaction: discord.Interaction):
+        if self.timer.destroyed:
+            t = self.bot.translator.t
+            error = t(_p(
+                'ui:timer_options|error:timer_destroyed',
+                "This timer no longer exists! Closing option menu."
+            ))
+            embed = discord.Embed(
+                colour=discord.Colour.brand_red(),
+                description=error
+            )
+            await interaction.response.send_message(embed=embed, ephemeral=True)
+            await self.quit()
+            return False
+        else:
+            return await super().interaction_check(interaction)
+
     @button(label="EDIT_PLACEHOLDER", style=ButtonStyle.blurple)
     async def edit_button(self, press: discord.Interaction, pressed: Button):
         """
