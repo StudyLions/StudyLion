@@ -570,7 +570,7 @@ msgstr "Editar da {label}.*"
 #: src/modules/tasklist/ui.py:208
 msgctxt "ui:tasklist|menu:main|mode:delete|placeholder"
 msgid "Select to Delete"
-msgstr ""
+msgstr "Selecione para Deletar"
 
 #: src/modules/tasklist/ui.py:212
 #, possible-python-brace-format
