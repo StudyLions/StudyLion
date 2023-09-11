@@ -403,9 +403,9 @@ msgstr "Caso deverá marcar também as sub-tarefas como completadas."
 msgctxt "cmd:tasks_tick|resp:success"
 msgid "{tick} Marked `{label}` as complete."
 msgid_plural "{tick} Marked `{count}` tasks as complete."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "{tick} Marquei ˋ{label}ˋ como completada."
+msgstr[1] "{tick} Marquei ˋ{count}ˋ tarefas como completadas."
+msgstr[2] "{tick} Marquei ˋ{count}ˋ tarefas como completadas."
 
 #: src/modules/tasklist/cog.py:854
 msgctxt "cmd:tasks_untick"
