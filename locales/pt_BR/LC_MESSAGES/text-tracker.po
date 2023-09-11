@@ -54,7 +54,7 @@ msgstr "Painel de Configuração do Contabilizador de Mensagens"
 #: src/tracking/text/ui.py:89
 msgctxt "dash:text_tracking|title"
 msgid "Message XP configuration ({commands[configure message_exp]})"
-msgstr ""
+msgstr "Configuração de EXP em Mensagens ({commands[configure message_exp]})"
 
 #: src/tracking/text/ui.py:93
 msgctxt "dash:text_tracking|dropdown|placeholder"
