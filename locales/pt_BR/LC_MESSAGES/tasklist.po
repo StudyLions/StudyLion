@@ -243,7 +243,7 @@ msgstr "Qual tarefa você gostaria de atualizar?"
 #: src/modules/tasklist/cog.py:548
 msgctxt "cmd:tasks_edit|param:new_content|desc"
 msgid "What do you want to change the task to?"
-msgstr ""
+msgstr "Para qual conteúdo será transformada esta tarefa?"
 
 #: src/modules/tasklist/cog.py:549
 msgctxt "cmd:tasks_edit|param:new_parent|desc"
