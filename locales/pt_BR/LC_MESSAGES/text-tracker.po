@@ -187,7 +187,7 @@ msgstr "EXP em Mensagens serão agora acumuladas em todos os canais."
 #: src/tracking/text/settings.py:142
 msgctxt "guildset:untracked_text_channels|set_using"
 msgid "Channel selector below"
-msgstr ""
+msgstr "Seletor de canais abaixo"
 
 #: src/tracking/text/settings.py:173
 msgctxt "botset:xp_per_period"
