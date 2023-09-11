@@ -146,6 +146,8 @@ msgstr "enviar"
 msgctxt "cmd:tasks_upload|desc"
 msgid "Upload a list of tasks to append to or replace your tasklist."
 msgstr ""
+"Envie uma lista de tarefas para anexar ou substituir sua lista de tarefas "
+"atual."
 
 #: src/modules/tasklist/cog.py:425
 msgctxt "cmd:tasks_upload|param:tasklist"
