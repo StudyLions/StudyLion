@@ -358,7 +358,7 @@ msgstr "Silinecek zamanlayıcılı kanalı."
 #: src/modules/pomodoro/cog.py:640
 msgctxt "cmd:pomodoro_destroy|error:no_timer"
 msgid "This channel doesn't have an attached pomodoro timer!"
-msgstr "Bu kanalda eklenen bir pomodoro sayacı bulunmuyor!"
+msgstr "Bu kanala bağlı bir pomodoro sayacı bulunmuyor!"
 
 #: src/modules/pomodoro/cog.py:655
 msgctxt "cmd:pomodoro_destroy|error:insufficient_perms|owned"
