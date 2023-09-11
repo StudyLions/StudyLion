@@ -800,6 +800,8 @@ msgid ""
 "Tasklists will now be publicly displayed in the following channels: "
 "{channels}"
 msgstr ""
+"A lista de tarefas, estará agora, visível publicamente nos seguintes canais:"
+" {channels}"
 
 #: src/modules/tasklist/settings.py:149
 msgctxt "guildset:tasklist_channels|set_response|unset"
