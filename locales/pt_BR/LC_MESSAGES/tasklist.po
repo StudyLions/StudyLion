@@ -380,12 +380,12 @@ msgstr "Marca as tarefas como completadas."
 #: src/modules/tasklist/cog.py:782
 msgctxt "cmd:tasks_tick|param:taskidstr"
 msgid "tasks"
-msgstr ""
+msgstr "tarefas"
 
 #: src/modules/tasklist/cog.py:783
 msgctxt "cmd:tasks_tick|param:cascade"
 msgid "cascade"
-msgstr ""
+msgstr "cascata"
 
 #: src/modules/tasklist/cog.py:788
 msgctxt "cmd:tasks_tick|param:taskidstr|desc"
