@@ -126,7 +126,7 @@ msgstr ""
 #: src/tracking/text/settings.py:77
 msgctxt "guildset:word_xp|accepts"
 msgid "Number of XP to reward per hundred words sent."
-msgstr ""
+msgstr "Número de EXP a recompensar por centena de palavras enviadas."
 
 #: src/tracking/text/settings.py:89
 #, possible-python-brace-format
