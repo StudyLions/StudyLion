@@ -308,6 +308,16 @@ class TasklistCog(LionCog):
                 appcmds.Choice(name=task_string, value=label)
                 for label, task_string in matching
             ]
+        elif multi and partial.lower().strip() in ('-', 'all'):
+            options = [
+                appcmds.Choice(
+                    name=t(_p(
+                        'argtype:taskid|match:all',
+                        "All tasks"
+                    )),
+                    value='-'
+                )
+            ]
         elif multi and (',' in partial or '-' in partial):
             # Try parsing input as a multi-list
             try:
@@ -691,7 +701,7 @@ class TasklistCog(LionCog):
     @appcmds.describe(
         taskidstr=_p(
             'cmd:tasks_remove|param:taskidstr|desc',
-            "List of task numbers or ranges to remove (e.g. 1, 2, 5-7, 8.1-3, 9-)."
+            "List of task numbers or ranges to remove (e.g. 1, 2, 5-7, 8.1-3, 9-), or `-` to remove all."
         ),
         created_before=_p(
             'cmd:tasks_remove|param:created_before|desc',
@@ -737,10 +747,10 @@ class TasklistCog(LionCog):
             if not taskids:
                 # Explicitly error if none of the ranges matched
                 await ctx.interaction.edit_original_response(
-                    embed=error_embed(
+                    embed=error_embed(t(_p(
                         'cmd:tasks_remove_cmd|error:no_matching',
                         "No tasks on your tasklist match `{input}`"
-                    ).format(input=taskidstr)
+                    ))).format(input=taskidstr)
                 )
                 return
 
@@ -761,10 +771,10 @@ class TasklistCog(LionCog):
         tasks = await self.data.Task.fetch_where(*conditions, userid=ctx.author.id)
         if not tasks:
             await ctx.interaction.edit_original_response(
-                embed=error_embed(
+                embed=error_embed(t(_p(
                     'cmd:tasks_remove_cmd|error:no_matching',
                     "No tasks on your tasklist matching all the given conditions!"
-                ).format(input=taskidstr)
+                ))).format(input=taskidstr)
             )
             return
         taskids = [task.taskid for task in tasks]
@@ -804,7 +814,7 @@ class TasklistCog(LionCog):
     @appcmds.describe(
         taskidstr=_p(
             'cmd:tasks_tick|param:taskidstr|desc',
-            "List of task numbers or ranges to remove (e.g. 1, 2, 5-7, 8.1-3, 9-)."
+            "List of task numbers or ranges to tick (e.g. 1, 2, 5-7, 8.1-3, 9-) or '-' to tick all."
         ),
         cascade=_p(
             'cmd:tasks_tick|param:cascade|desc',
@@ -832,10 +842,10 @@ class TasklistCog(LionCog):
             if not taskids:
                 # Explicitly error if none of the ranges matched
                 await ctx.interaction.edit_original_response(
-                    embed=error_embed(
+                    embed=error_embed(t(_p(
                         'cmd:tasks_remove_cmd|error:no_matching',
                         "No tasks on your tasklist match `{input}`"
-                    ).format(input=taskidstr)
+                    ))).format(input=taskidstr)
                 )
                 return
 
@@ -880,7 +890,7 @@ class TasklistCog(LionCog):
     @appcmds.describe(
         taskidstr=_p(
             'cmd:tasks_untick|param:taskidstr|desc',
-            "List of task numbers or ranges to remove (e.g. 1, 2, 5-7, 8.1-3, 9-)."
+            "List of task numbers or ranges to untick (e.g. 1, 2, 5-7, 8.1-3, 9-) or '-' to untick all."
         ),
         cascade=_p(
             'cmd:tasks_untick|param:cascade|desc',
@@ -907,10 +917,10 @@ class TasklistCog(LionCog):
         if not taskids:
             # Explicitly error if none of the ranges matched
             await ctx.interaction.edit_original_response(
-                embed=error_embed(
+                embed=error_embed(t(_p(
                     'cmd:tasks_remove_cmd|error:no_matching',
                     "No tasks on your tasklist match `{input}`"
-                ).format(input=taskidstr)
+                ))).format(input=taskidstr)
             )
             return
 

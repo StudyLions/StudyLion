@@ -233,6 +233,9 @@ class Tasklist:
 
         May raise `UserInputError`.
         """
+        if labelstr.strip().lower() in ('-', 'all'):
+            return list(self.tasklist.keys())
+
         labelmap = {label: task.taskid for label, task in self.labelled.items()}
 
         splits = labelstr.split(',')
