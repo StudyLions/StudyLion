@@ -34,7 +34,7 @@ msgstr "Configurar Contabilizador de Mensagens e Experiência"
 #: src/tracking/text/cog.py:315
 msgctxt "cmd:leo_configure_exp_rates"
 msgid "experience_rates"
-msgstr ""
+msgstr "taxas_experiência"
 
 #: src/tracking/text/cog.py:318
 msgctxt "cmd:leo_configure_exp_rates|desc"
