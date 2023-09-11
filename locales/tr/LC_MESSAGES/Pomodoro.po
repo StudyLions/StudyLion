@@ -511,7 +511,7 @@ msgid ""
 "timer."
 msgstr ""
 "Bir üye zamanlayıcıdan çıkarılmadan önce aktif olmadığı odaklanma+ara "
-"bölümlerinin sayısı."
+"oturumları sayısı."
 
 #: src/modules/pomodoro/options.py:85
 msgctxt "timerset:inactivity_threshold|desc"
