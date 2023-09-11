@@ -565,7 +565,7 @@ msgstr "Selecione para Editar"
 #, possible-python-brace-format
 msgctxt "ui:tasklist|menu:sub|mode:edit|placeholder"
 msgid "Edit from {label}.*"
-msgstr ""
+msgstr "Editar da {label}.*"
 
 #: src/modules/tasklist/ui.py:208
 msgctxt "ui:tasklist|menu:main|mode:delete|placeholder"
