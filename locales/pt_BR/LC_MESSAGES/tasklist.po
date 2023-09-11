@@ -218,7 +218,7 @@ msgstr "editar"
 #: src/modules/tasklist/cog.py:538
 msgctxt "cmd:tasks_edit|desc"
 msgid "Edit a task in your tasklist."
-msgstr ""
+msgstr "Editar uma tarefa da lista de tarefas."
 
 #: src/modules/tasklist/cog.py:542
 msgctxt "cmd:tasks_edit|param:taskstr"
