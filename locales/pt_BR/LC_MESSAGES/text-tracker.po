@@ -111,6 +111,7 @@ msgstr "exp_por_100palavras"
 msgctxt "guildset:word_xp|desc"
 msgid "How much XP members will be given per hundred words they write."
 msgstr ""
+"Quanto os membros receberão em XP para cada centena de palavras escritas."
 
 #: src/tracking/text/settings.py:72
 msgctxt "guildset:word_xp|long_desc"
