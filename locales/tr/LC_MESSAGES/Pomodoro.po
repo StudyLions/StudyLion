@@ -545,8 +545,7 @@ msgstr "ses_uyarıları"
 #: src/modules/pomodoro/options.py:129
 msgctxt "timerset:voice_alerts|desc"
 msgid "Whether to join the voice channel and announce focus and break stages."
-msgstr ""
-"Odak ve ara oturumlarının ses kanalına katılıp bildirilip bildirilmeyeceği."
+msgstr "Odak ve ara oturumlarının ses kanalında duyurulup duyurlmayacağı."
 
 #: src/modules/pomodoro/options.py:140
 msgctxt "timerset:base_name"
