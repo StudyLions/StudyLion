@@ -247,6 +247,9 @@ msgid ""
 "Amount of global message XP to be given (additionally to the XP per period) "
 "for each hundred words. Useful for rewarding communication."
 msgstr ""
+"Quantidade de EXP em mensagem a ser dado (adicionalmente ao EXP por período)"
+" por cada cem palavras. Útil para incentivar a interação dos membros através"
+" de recompensas. "
 
 #: src/tracking/text/settings.py:218
 msgctxt "botset:word_xp|accepts"
