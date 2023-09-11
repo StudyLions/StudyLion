@@ -101,7 +101,7 @@ msgstr "não perturbe|np"
 #: src/modules/sysadmin/presence.py:148
 msgctxt "botset:presence_status|input_pattern:offline"
 msgid "off|offline|invisible"
-msgstr ""
+msgstr "off|offline|invisível"
 
 #: src/modules/sysadmin/presence.py:155
 msgctxt "botset:presence_type"
