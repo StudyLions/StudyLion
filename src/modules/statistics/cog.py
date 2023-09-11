@@ -141,13 +141,7 @@ class StatsCog(LionCog):
 
         # Send update ack
         if modified:
-            # TODO
-            description = t(_p(
-                'cmd:configure_statistics|resp:success|desc',
-                "Activity ranks and season leaderboard will now be measured from {season_start}."
-            )).format(
-                season_start=setting_season_start.formatted
-            )
+            description = setting_season_start.update_message
             embed = discord.Embed(
                 colour=discord.Colour.brand_green(),
                 description=description

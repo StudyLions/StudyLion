@@ -90,6 +90,8 @@ class LeaderboardUI(StatsUI):
         periods[LBPeriod.DAY] = lguild.today
         periods[LBPeriod.WEEK] = lguild.week_start
         periods[LBPeriod.MONTH] = lguild.month_start
+        alltime = (lguild.data.first_joined_at or interaction.guild.created_at).astimezone(lguild.timezone)
+        periods[LBPeriod.ALLTIME] = alltime
         self.period_starts = periods
 
         self.focused = True
@@ -432,28 +434,37 @@ class LeaderboardUI(StatsUI):
         """
         Generate UI message arguments from stored data
         """
+        t = self.bot.translator.t
         if self.card is not None:
+            period_start = self.period_starts[self.current_period]
+            header = t(_p(
+                'ui:leaderboard|since',
+                "Counting statistics since {timestamp}"
+            )).format(timestamp=discord.utils.format_dt(period_start))
             args = MessageArgs(
                 embed=None,
+                content=header,
                 file=self.card.as_file('leaderboard.png')
             )
         else:
-            t = self.bot.translator.t
             if self.stat_type is StatType.VOICE:
                 empty_description = t(_p(
                     'ui:leaderboard|mode:voice|message:empty|desc',
-                    "There has been no voice activity in this period!"
+                    "There has been no voice activity since {timestamp}"
                 ))
             elif self.stat_type is StatType.TEXT:
                 empty_description = t(_p(
                     'ui:leaderboard|mode:text|message:empty|desc',
-                    "There has been no message activity in this period!"
+                    "There has been no message activity since {timestamp}"
                 ))
             elif self.stat_type is StatType.ANKI:
                 empty_description = t(_p(
                     'ui:leaderboard|mode:anki|message:empty|desc',
-                    "There have been no Anki cards reviewed in this period!"
+                    "There have been no Anki cards reviewed since {timestamp}"
                 ))
+            empty_description = empty_description.format(
+                timestamp=discord.utils.format_dt(self.period_starts[self.current_period])
+            )
             embed = discord.Embed(
                 colour=discord.Colour.orange(),
                 title=t(_p(
@@ -462,7 +473,7 @@ class LeaderboardUI(StatsUI):
                 )),
                 description=empty_description
             )
-            args = MessageArgs(embed=embed, files=[])
+            args = MessageArgs(content=None, embed=embed, files=[])
         return args
 
     async def refresh_components(self):

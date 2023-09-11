@@ -693,7 +693,7 @@ class RankCog(LionCog):
             await ui.wait()
         else:
             await ui.reload()
-            msg = await ui.make_message()
+            msg = await ui.make_message(show_note=False)
             await ctx.reply(
                 **msg.send_args,
                 ephemeral=True

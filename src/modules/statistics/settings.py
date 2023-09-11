@@ -94,7 +94,8 @@ class StatisticsSettings(SettingGroup):
             'guildset:season_start|long_desc',
             "Activity ranks will be determined based on tracked activity since this time, "
             "and the leaderboard will display activity since this time by default. "
-            "Unset to disable seasons and use all-time statistics instead."
+            "Unset to disable seasons and use all-time statistics instead.\n"
+            "Provided dates and times are assumed to be in the guild `timezone`, so set this first!"
         )
         _accepts = _p(
             'guildset:season_start|accepts',
@@ -134,7 +135,8 @@ class StatisticsSettings(SettingGroup):
                 resp = t(_p(
                     'guildset:season_start|set_response|set',
                     "The leaderboard season and activity ranks will now count from {timestamp}. "
-                    "Member ranks will update when they are next active. Use {rank_cmd} to refresh immediately."
+                    "Member ranks will update when they are next active.\n"
+                    "Use {rank_cmd} and press **Refresh Member Ranks** to refresh all ranks immediately."
                 )).format(
                     timestamp=self.formatted,
                     rank_cmd=bot.core.mention_cmd('ranks')
@@ -143,7 +145,8 @@ class StatisticsSettings(SettingGroup):
                 resp = t(_p(
                     'guildset:season_start|set_response|unset',
                     "The leaderboard and activity ranks will now count all-time statistics. "
-                    "Member ranks will update when they are next active. Use {rank_cmd} to refresh immediately."
+                    "Member ranks will update when they are next active.\n"
+                    "Use {rank_cmd} and press **Refresh Member Ranks** to refresh all ranks immediately."
                 )).format(rank_cmd=bot.core.mention_cmd('ranks'))
             return resp
 
