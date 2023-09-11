@@ -460,7 +460,7 @@ msgstr "Painel de Configuração da Lista de Tarefas"
 #: src/modules/tasklist/cog.py:937
 msgctxt "cmd:configure_tasklist|param:reward"
 msgid "reward"
-msgstr ""
+msgstr "recompensa"
 
 #: src/modules/tasklist/cog.py:938
 msgctxt "cmd:configure_tasklist|param:reward_limit"
