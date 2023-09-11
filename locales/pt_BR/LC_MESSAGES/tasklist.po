@@ -192,6 +192,8 @@ msgctxt "cmd:tasks_upload|error:too_many_lines"
 msgid ""
 "Too many tasks! Refusing to process a tasklist with more than `1000` lines."
 msgstr ""
+"Muitas tarefas! Recusa ao tentar processar uma lista de tarefas com mais de "
+"1000 linhas."
 
 #: src/modules/tasklist/cog.py:476
 msgctxt "cmd:tasks_upload|error:decoding"
