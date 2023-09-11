@@ -640,7 +640,7 @@ msgstr ""
 #: src/modules/tasklist/ui.py:689
 msgctxt "ui:tasklist|button:edit_bulk|label"
 msgid "Bulk Edit"
-msgstr ""
+msgstr "Edição em Escala"
 
 #: src/modules/tasklist/ui.py:702
 msgctxt "ui:tasklist|button:clear|label"
