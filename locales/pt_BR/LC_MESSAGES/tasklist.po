@@ -276,7 +276,7 @@ msgstr "Editar Tarefa"
 #: src/modules/tasklist/cog.py:640
 msgctxt "cmd:tasks_clear"
 msgid "clear"
-msgstr ""
+msgstr "apagar"
 
 #: src/modules/tasklist/cog.py:641
 msgctxt "cmd:tasks_clear|desc"
