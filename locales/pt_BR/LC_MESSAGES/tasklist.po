@@ -584,6 +584,8 @@ msgctxt "ui:tasklist_single_editor|field:parent|error:parse_id"
 msgid ""
 "Could not find the given parent task number `{input}` in your tasklist."
 msgstr ""
+"Não pude encontrar o número ˋ{input}ˋ da tarefa-mãe informado na sua lista "
+"de tarefas."
 
 #: src/modules/tasklist/ui.py:422
 #, possible-python-brace-format
