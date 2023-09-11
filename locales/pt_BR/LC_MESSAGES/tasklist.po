@@ -351,7 +351,7 @@ msgstr ""
 #: src/modules/tasklist/cog.py:687
 msgctxt "cmd:tasks_remove|param:completed"
 msgid "Only delete tasks which are (not) complete."
-msgstr "Somente apague tarefas que não foram completadas."
+msgstr "Somente apague tarefas que (não) foram completadas."
 
 #: src/modules/tasklist/cog.py:691
 msgctxt "cmd:tasks_remove|param:cascade"
