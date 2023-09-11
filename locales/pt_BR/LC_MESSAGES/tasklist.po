@@ -356,7 +356,7 @@ msgstr "Somente apague tarefas que (não) foram completadas."
 #: src/modules/tasklist/cog.py:691
 msgctxt "cmd:tasks_remove|param:cascade"
 msgid "Whether to recursively remove subtasks of removed tasks."
-msgstr ""
+msgstr "Se as sub-tarefas também devem ser apagadas com as tarefas removidas."
 
 #: src/modules/tasklist/cog.py:760
 #, possible-python-brace-format
