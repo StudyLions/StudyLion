@@ -250,6 +250,8 @@ class MessageUI(LeoUI):
     """
     Simple single-message LeoUI, intended as a framework for UIs
     attached to a single interaction response.
+
+    UIs may also be sent as regular messages by using `send(channel)` instead of `run(interaction)`.
     """
 
     def __init__(self, *args, callerid: Optional[int] = None, **kwargs):

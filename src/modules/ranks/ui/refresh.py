@@ -199,10 +199,11 @@ class RankRefreshUI(MessageUI):
                 ))
                 value = t(_p(
                     'ui:refresh_ranks|embed|field:remove|value',
-                    "0 {progress} {total}"
+                    "{progress} {done}/{total} removed"
                 )).format(
                     progress=self.progress_bar(self.removed, 0, self.to_remove),
                     total=self.to_remove,
+                    done=self.removed,
                 )
                 embed.add_field(name=name, value=value, inline=False)
             else:
@@ -221,10 +222,11 @@ class RankRefreshUI(MessageUI):
                 ))
                 value = t(_p(
                     'ui:refresh_ranks|embed|field:add|value',
-                    "0 {progress} {total}"
+                    "{progress} {done}/{total} given"
                 )).format(
                     progress=self.progress_bar(self.added, 0, self.to_add),
                     total=self.to_add,
+                    done=self.added,
                 )
                 embed.add_field(name=name, value=value, inline=False)
             else:

@@ -31,6 +31,7 @@ class RankOverviewUI(MessageUI):
         self.bot = bot
         self.guild = guild
         self.guildid = guild.id
+        self.cog = bot.get_cog('RankCog')
 
         self.lguild = None
 
@@ -99,8 +100,8 @@ class RankOverviewUI(MessageUI):
         Refresh the current ranks,
         ensuring that all members have the correct rank.
         """
-        cog = self.bot.get_cog('RankCog')
-        await cog.interactive_rank_refresh(press, self.guild)
+        async with self.cog.ranklock(self.guild.id):
+            await self.cog.interactive_rank_refresh(press, self.guild)
 
     async def refresh_button_refresh(self):
         self.refresh_button.label = self.bot.translator.t(_p(
@@ -135,9 +136,10 @@ class RankOverviewUI(MessageUI):
         except ResponseTimedOut:
             result = False
         if result:
-            await self.rank_model.table.delete_where(guildid=self.guildid)
-            self.bot.get_cog('RankCog').flush_guild_ranks(self.guild.id)
-            self.ranks = []
+            async with self.cog.ranklock(self.guild.id):
+                await self.rank_model.table.delete_where(guildid=self.guildid)
+                self.cog.flush_guild_ranks(self.guild.id)
+                self.ranks = []
             await self.redraw()
 
     async def clear_button_refresh(self):
