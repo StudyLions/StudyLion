@@ -223,12 +223,12 @@ msgstr "Editar uma tarefa da lista de tarefas."
 #: src/modules/tasklist/cog.py:542
 msgctxt "cmd:tasks_edit|param:taskstr"
 msgid "task"
-msgstr ""
+msgstr "tarefa"
 
 #: src/modules/tasklist/cog.py:543
 msgctxt "cmd:tasks_edit|param:new_content"
 msgid "new_task"
-msgstr ""
+msgstr "nova_tarefa"
 
 #: src/modules/tasklist/cog.py:544
 msgctxt "cmd:tasks_edit|param:new_parent"
