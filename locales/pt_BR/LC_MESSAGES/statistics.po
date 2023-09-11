@@ -429,7 +429,7 @@ msgstr "Digite o número de tarefas para ser o objetivo."
 msgctxt "modal:goal_editor|field:task_goal|error:NAN"
 msgid "The provided task goal `{input}` is not a number! Please try again."
 msgstr ""
-"A meta de tarefas informada ˋ{imput}ˋ não é um número! Por favor, tente "
+"A meta de tarefas informada ˋ{input}ˋ não é um número! Por favor, tente "
 "novamente."
 
 #: src/modules/statistics/ui/weeklymonthly.py:181
