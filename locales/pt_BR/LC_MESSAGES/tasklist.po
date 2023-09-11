@@ -315,12 +315,12 @@ msgstr "criadas_antes"
 #: src/modules/tasklist/cog.py:668
 msgctxt "cmd:tasks_remove|param:updated_before"
 msgid "updated_before"
-msgstr ""
+msgstr "atualizadas_antes"
 
 #: src/modules/tasklist/cog.py:669
 msgctxt "cmd:tasks_remove|param:completed"
 msgid "completed"
-msgstr ""
+msgstr "concluídas"
 
 #: src/modules/tasklist/cog.py:670
 msgctxt "cmd:tasks_remove|param:cascade"
