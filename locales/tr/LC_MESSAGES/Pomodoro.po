@@ -226,7 +226,7 @@ msgid ""
 "Join {channel} and press `Start` to start it!"
 msgstr ""
 "`{pattern}` sayaç `{members}` üye ile durduruldu!\n"
-"Başlatmak için {channel} kanalına katıl ve `Start` butonuna bas!"
+"Başlatmak için {channel} kanalına katıl ve `Başlat` butonuna bas!"
 
 #: src/modules/pomodoro/cog.py:435
 #, possible-python-brace-format
