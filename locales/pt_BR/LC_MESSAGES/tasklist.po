@@ -345,6 +345,8 @@ msgid ""
 "Only deleted tasks update (i.e. completed or edited) before the selected "
 "time."
 msgstr ""
+"Somente apague tarefas atualizadas (completas ou editadas) antes da data "
+"selecionada."
 
 #: src/modules/tasklist/cog.py:687
 msgctxt "cmd:tasks_remove|param:completed"
