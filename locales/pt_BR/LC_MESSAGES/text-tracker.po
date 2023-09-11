@@ -89,6 +89,8 @@ msgstr ""
 msgctxt "guildset:xp_per_period|accepts"
 msgid "Number of message XP to reward per 5 minute active period."
 msgstr ""
+"Número de EXP em mensagens a recompensar por cada 5 min de atividade no "
+"período."
 
 #: src/tracking/text/settings.py:57
 #, possible-python-brace-format
