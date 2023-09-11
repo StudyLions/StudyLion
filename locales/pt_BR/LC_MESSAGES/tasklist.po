@@ -554,7 +554,7 @@ msgstr "Selecione para Alternar"
 #, possible-python-brace-format
 msgctxt "ui:tasklist|menu:sub|mode:toggle|placeholder"
 msgid "Toggle from {label}.*"
-msgstr ""
+msgstr "Alternar de {label}.*"
 
 #: src/modules/tasklist/ui.py:198
 msgctxt "ui:tasklist|menu:main|mode:edit|placeholder"
