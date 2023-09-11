@@ -574,8 +574,8 @@ msgid ""
 "Auto-updating voice channel name, accepting {remaining}, {name}, {pattern}, "
 "and {stage} keys."
 msgstr ""
-"Ses kanalı adı otomatik olarak güncelleniyor; {remaining}, {name}, {pattern}"
-" ve {stage} kısatlamaları kabul ediliyor."
+"Ses kanalı adı otomatik olarak güncelleniyor; {kalan}, {isim}, {model} ve "
+"{oturum} kodları kabul ediliyor."
 
 #: src/modules/pomodoro/options.py:168
 #, possible-python-brace-format
