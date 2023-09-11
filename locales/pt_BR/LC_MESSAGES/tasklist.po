@@ -724,7 +724,7 @@ msgstr "{coin}**{amount}** por tarefa."
 #: src/modules/tasklist/settings.py:73
 msgctxt "guildset:task_reward_limit"
 msgid "task_reward_limit"
-msgstr ""
+msgstr "Limite_recompensa_tarefas"
 
 #: src/modules/tasklist/settings.py:76
 msgctxt "guildset:task_reward_limit|desc"
