@@ -30,11 +30,7 @@ member_overwrite = discord.PermissionOverwrite(
 owner_overwrite = discord.PermissionOverwrite.from_pair(*member_overwrite.pair())
 owner_overwrite.update(
     manage_channels=True,
-    manage_webhooks=True,
     manage_messages=True,
-    create_public_threads=True,
-    create_private_threads=True,
-    manage_threads=True,
     move_members=True,
 )
 bot_overwrite = discord.PermissionOverwrite.from_pair(*owner_overwrite.pair())
