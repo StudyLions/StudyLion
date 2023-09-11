@@ -29,7 +29,7 @@ msgstr "exp_message"
 #: src/tracking/text/cog.py:252
 msgctxt "cmd:configure_message_exp|desc"
 msgid "Configure Message Tracking & Experience"
-msgstr ""
+msgstr "Configurar Contabilizador de Mensagens e Experiência"
 
 #: src/tracking/text/cog.py:315
 msgctxt "cmd:leo_configure_exp_rates"
