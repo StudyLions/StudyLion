@@ -731,6 +731,10 @@ class Timer:
             if self._run_task and not self._run_task.done():
                 self._run_task.cancel()
             channelid = self.data.channelid
+            if self.channel:
+                task = asyncio.create_task(
+                    self.channel.edit(name=self.data.pretty_name, reason="Reverting timer channel name")
+                )
             await self.data.delete()
             self.destroyed = True
             if self.last_status_message:
