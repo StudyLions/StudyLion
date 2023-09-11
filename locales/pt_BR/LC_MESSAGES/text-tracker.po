@@ -240,6 +240,8 @@ msgstr "exp_por_100palavras"
 msgctxt "botset:word_xp|desc"
 msgid "How much global XP members will be given per hundred words they write."
 msgstr ""
+"Quantidade de EXP Global que os membros receberão por centena de palavras "
+"que escreverem."
 
 #: src/tracking/text/settings.py:213
 msgctxt "botset:word_xp|long_desc"
