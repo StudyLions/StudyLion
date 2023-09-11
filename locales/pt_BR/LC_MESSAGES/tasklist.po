@@ -601,12 +601,12 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "ui:tasklist_single_editor|field:parent|error:no_matching"
 msgid "No tasks matching given parent task `{input}`."
-msgstr ""
+msgstr "Não há tarefas coincidindo com a Tarefa-Mãe ˋ{input}ˋ."
 
 #: src/modules/tasklist/ui.py:500
 msgctxt "ui:tasklist|menu:edit|modal:title"
 msgid "Edit task"
-msgstr ""
+msgstr "Editar tarefa"
 
 #: src/modules/tasklist/ui.py:593
 msgctxt "ui:tasklist_single_editor|title"
