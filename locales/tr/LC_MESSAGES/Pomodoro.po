@@ -744,7 +744,7 @@ msgstr "Başlat"
 #: src/modules/pomodoro/ui/status.py:190
 msgctxt "ui:timer_status|button:stop|error:not_manager|title"
 msgid "Insufficient permissions!"
-msgstr "Yetersiz izinler!"
+msgstr "Yetersiz izin!"
 
 #: src/modules/pomodoro/ui/status.py:194
 msgctxt "ui:timer_status|button:stop|error:not_manager|desc"
