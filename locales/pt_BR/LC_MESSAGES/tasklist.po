@@ -836,7 +836,7 @@ msgstr "Painel de Configuração da Lista de Tarefas"
 #: src/modules/tasklist/settings.py:320
 msgctxt "dash:tasklist|name"
 msgid "Tasklist Configuration ({commands[configure tasklist]})"
-msgstr ""
+msgstr "Configuração da Lista de Tarefas ({commands[configure tasklist]})"
 
 #: src/modules/tasklist/settings.py:323
 msgctxt "dash:tasklist|dropdown|placeholder"
