@@ -363,9 +363,9 @@ msgstr "Se as sub-tarefas também devem ser apagadas com as tarefas removidas."
 msgctxt "cmd:tasks_remove|resp:success"
 msgid "{tick} Deleted task `{label}`"
 msgid_plural "{tick} Deleted `{count}` tasks from your tasklist."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "{tick} Tarefa apagada ˋ{label}ˋ"
+msgstr[1] "{tick} Apaguei ˋ{count}ˋ tarefas da sua lista de tarefas."
+msgstr[2] "{tick} Apaguei ˋ{count}ˋ tarefas da sua lista de tarefas."
 
 #: src/modules/tasklist/cog.py:778
 msgctxt "cmd:tasks_tick"
