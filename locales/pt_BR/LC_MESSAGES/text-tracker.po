@@ -234,7 +234,7 @@ msgstr ""
 #: src/tracking/text/settings.py:206
 msgctxt "botset:word_xp"
 msgid "xp_per_100words"
-msgstr ""
+msgstr "exp_por_100palavras"
 
 #: src/tracking/text/settings.py:209
 msgctxt "botset:word_xp|desc"
