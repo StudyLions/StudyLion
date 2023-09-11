@@ -210,6 +210,9 @@ msgid ""
 "which they are active (send a message). Note that this XP is only given "
 "*once* per period."
 msgstr ""
+"Quantidade de EXP Global de Mensagens a ser dada aos membros por cada "
+"período de 5 minutos em que eles estiverem ativos (enviando mensagens). "
+"Observe que será dado apenas *uma vez* a cada período."
 
 #: src/tracking/text/settings.py:186
 msgctxt "botset:xp_per_period|accepts"
