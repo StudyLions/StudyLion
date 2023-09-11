@@ -704,7 +704,7 @@ msgstr ""
 #: src/modules/tasklist/settings.py:44
 msgctxt "guildset:task_reward|accepts"
 msgid "The number of LionCoins to reward per task."
-msgstr ""
+msgstr "O número de LionCoins a recompensar por tarefa."
 
 #: src/modules/tasklist/settings.py:56
 #, possible-python-brace-format
