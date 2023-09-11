@@ -231,14 +231,18 @@ class TasklistCog(LionCog):
 
         # Now do the rest of the listening channels
         listening = TasklistUI._live_[userid]
-        for cid, ui in listening.items():
+        for cid, ui in list(listening.items()):
             if channel and channel.id == cid:
+                # We already did this channel
+                continue
+            if cid not in listening:
+                # UI closed while we were updating
                 continue
             try:
                 await ui.refresh()
                 await ui.redraw()
             except discord.HTTPException:
-                await tui.close()
+                await ui.close()
 
     @cmds.hybrid_command(
         name=_p('cmd:tasklist', "tasklist"),
