@@ -370,7 +370,7 @@ msgstr[2] "{tick} Apaguei ˋ{count}ˋ tarefas da sua lista de tarefas."
 #: src/modules/tasklist/cog.py:778
 msgctxt "cmd:tasks_tick"
 msgid "tick"
-msgstr "check"
+msgstr "ticar"
 
 #: src/modules/tasklist/cog.py:779
 msgctxt "cmd:tasks_tick|desc"
