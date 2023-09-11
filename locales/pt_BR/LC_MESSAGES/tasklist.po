@@ -698,6 +698,8 @@ msgid ""
 "The number of coins members will be rewarded each time they complete a task "
 "on their tasklist."
 msgstr ""
+"O número de moedas que os membros serão recompensados a cada vez que eles "
+"completarem uma tarefa da sua lista."
 
 #: src/modules/tasklist/settings.py:44
 msgctxt "guildset:task_reward|accepts"
