@@ -195,7 +195,7 @@ msgid ""
 "You can ask an admin to create one with {command}, or rent a private room and create one yourself!"
 msgstr ""
 "Bu sunucuda hiçbir sayaç kurulu değil!\n"
-"Bir yöneticiden {command} ile kurmasını isteyebilir ya da özel bir oda kiralayıp kendinize özel açabilirsiniz!"
+"Bir yöneticiden {command} ile kurmasını isteyebilir ya da özel bir oda kiralayıp kendinize özel sayaç açabilirsiniz!"
 
 #: src/modules/pomodoro/cog.py:404
 msgctxt "cmd:pomodoro_list|error:no_visible_timers"
