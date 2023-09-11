@@ -769,7 +769,7 @@ msgstr "canal_lista_de_tarefas"
 #: src/modules/tasklist/settings.py:116
 msgctxt "guildset:tasklist_channels|desc"
 msgid "Channels in which to publicly display member tasklists."
-msgstr ""
+msgstr "Canal em que será publicado o mostrador de tarefas dos membros."
 
 #: src/modules/tasklist/settings.py:120
 #, possible-python-brace-format
