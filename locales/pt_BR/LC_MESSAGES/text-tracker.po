@@ -49,7 +49,7 @@ msgstr "Selecione Canais não Contabilizados"
 #: src/tracking/text/ui.py:52
 msgctxt "ui:text_tracker_config|embed|title"
 msgid "Message Tracking Configuration Panel"
-msgstr ""
+msgstr "Painel de Configuração do Contabilizador de Mensagens"
 
 #: src/tracking/text/ui.py:89
 msgctxt "dash:text_tracking|title"
