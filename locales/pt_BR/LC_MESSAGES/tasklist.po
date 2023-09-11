@@ -559,7 +559,7 @@ msgstr "Alternar de {label}.*"
 #: src/modules/tasklist/ui.py:198
 msgctxt "ui:tasklist|menu:main|mode:edit|placeholder"
 msgid "Select to Edit"
-msgstr ""
+msgstr "Selecione para Editar"
 
 #: src/modules/tasklist/ui.py:202
 #, possible-python-brace-format
