@@ -719,7 +719,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "guildset:task_reward|formatted"
 msgid "{coin}**{amount}** per task."
-msgstr ""
+msgstr "{coin}**{amount}** por tarefa."
 
 #: src/modules/tasklist/settings.py:73
 msgctxt "guildset:task_reward_limit"
