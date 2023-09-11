@@ -826,7 +826,7 @@ msgstr "Resetar"
 #: src/modules/tasklist/settings.py:293
 msgctxt "ui:tasklist_config|menu:channels|placeholder"
 msgid "Set Tasklist Channels"
-msgstr ""
+msgstr "Configurar Canal da Lista de Tarefas"
 
 #: src/modules/tasklist/settings.py:311
 msgctxt "ui:tasklist_config|embed|title"
