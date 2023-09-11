@@ -517,7 +517,7 @@ msgstr "Conteúdo da tarefa"
 #: src/modules/tasklist/ui.py:69
 msgctxt "modal:tasklist_single_editor|field:parent|label"
 msgid "Parent Task"
-msgstr ""
+msgstr "Tarefa-Mãe"
 
 #: src/modules/tasklist/ui.py:73
 msgctxt "modal:tasklist_single_editor|field:parent|placeholder"
