@@ -481,7 +481,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "tasklist|parse:multi-range|error:parents_match"
 msgid "Parents don't match in range `{range}`"
-msgstr ""
+msgstr "Tarefas-mãe não coincidem no intervalo ˋ{range}ˋ"
 
 #: src/modules/tasklist/tasklist.py:286
 #, possible-python-brace-format
