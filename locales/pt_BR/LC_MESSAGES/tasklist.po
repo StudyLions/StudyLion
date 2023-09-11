@@ -233,7 +233,7 @@ msgstr "nova_tarefa"
 #: src/modules/tasklist/cog.py:544
 msgctxt "cmd:tasks_edit|param:new_parent"
 msgid "new_parent"
-msgstr ""
+msgstr "nova_tarefamae"
 
 #: src/modules/tasklist/cog.py:547
 msgctxt "cmd:tasks_edit|param:taskstr|desc"
