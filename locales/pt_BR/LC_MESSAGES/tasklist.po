@@ -254,7 +254,7 @@ msgstr "Qual tarefa você gostaria que fosse a nova tarefa-mãe?"
 #, possible-python-brace-format
 msgctxt "cmd:tasks_edit|error:parse_taskstr"
 msgid "Could not find target task number `{input}` in your tasklist."
-msgstr ""
+msgstr "Não pude encontrar a tarefa número ˋ{input}ˋ em sua lista."
 
 #: src/modules/tasklist/cog.py:584
 #, possible-python-brace-format
