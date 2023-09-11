@@ -201,6 +201,8 @@ msgid ""
 "Could not decode attached tasklist. Please make sure it is saved with the "
 "`UTF-8` encoding."
 msgstr ""
+"Não pude decodificar a lista de tarefas anexada. Por favor, confirme se ela "
+"está salva com o formato ˋUTF-8ˋ."
 
 #: src/modules/tasklist/cog.py:523
 #, possible-python-brace-format
