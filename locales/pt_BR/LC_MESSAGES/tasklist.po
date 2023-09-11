@@ -594,6 +594,8 @@ msgid ""
 "Multiple tasks matching given parent task `{input}`. Please use a task "
 "number instead!"
 msgstr ""
+"Multiplas tarefas coincidem com a tarefa-mãe ˋ{input}ˋ. Por favor, use o "
+"número de tarefa."
 
 #: src/modules/tasklist/ui.py:429
 #, possible-python-brace-format
