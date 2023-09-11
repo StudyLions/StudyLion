@@ -24,7 +24,7 @@ msgstr ""
 #: src/gui/cards/timer.py:73
 msgctxt "skin:timer|field:date_text"
 msgid "Use /now to show what you are working on!"
-msgstr ""
+msgstr "Use /now para mostrar a descrição do que você está fazendo!"
 
 #: src/gui/cards/timer.py:89
 msgctxt "skin:timer|stage:focus|field:stage_text"
