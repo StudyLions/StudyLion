@@ -381,9 +381,10 @@ class TasklistUI(BasePager):
     def _format_parent(self, parentid) -> str:
         parentstr = ''
         if parentid is not None:
-            task = self.tasklist.tasklist.get(parentid, None)
-            if task:
-                parent_label = self.tasklist.format_label(self.tasklist.labelid(parentid)).strip('.')
+            pair = next(((label, task) for label, task in self.labelled.items() if task.taskid == parentid), None)
+            if pair is not None:
+                label, task = pair
+                parent_label = self.tasklist.format_label(label).strip('.')
                 parentstr = f"{parent_label}: {task.content}"
         return parentstr
 
@@ -561,8 +562,8 @@ class TasklistUI(BasePager):
                     label=self.tasklist.format_label(rootlabel).strip('.'),
                 )
                 children = {
-                    label: taskid
-                    for label, taskid in labelled.items()
+                    label: task
+                    for label, task in labelled.items()
                     if all(i == j for i, j in zip(label, rootlabel))
                 }
                 this_page = self.this_page
@@ -572,11 +573,13 @@ class TasklistUI(BasePager):
                 else:
                     # Only show the children which display
                     page_children = [
-                        (label, tid) for label, tid in this_page if label in children and tid != rootid
+                        (label, task) for label, task in this_page if label in children and task.taskid != rootid
                     ][:24]
                     if page_children:
-                        block = [(rootlabel, rootid), *page_children]
+                        # Always add the root task
+                        block = [(rootlabel, self.tasklist.tasklist[rootid]), *page_children]
                     else:
+                        # There are no subtree children on the current page
                         block = []
                 # Special case if the subtree is exactly the same as the page
                 if not (len(block) == len(this_page) and all(i[0] == j[0] for i, j in zip(block, this_page))):
