@@ -63,7 +63,7 @@ msgstr "pager"
 
 #: src/modules/test/test.py:158
 msgid "pager2"
-msgstr ""
+msgstr "pager2"
 
 #: src/modules/test/test.py:189
 msgid "prettyusers"
