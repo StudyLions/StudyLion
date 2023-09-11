@@ -260,7 +260,7 @@ msgstr "Não pude encontrar a tarefa número ˋ{input}ˋ em sua lista."
 #, possible-python-brace-format
 msgctxt "cmd:tasks_edit|error:parse_parent"
 msgid "Could not find new parent task number `{input}` in your tasklist."
-msgstr ""
+msgstr "Não pude encontrar a tarefa-mãe número ˋ{input}ˋ em sua lista."
 
 #: src/modules/tasklist/cog.py:603
 #, possible-python-brace-format
