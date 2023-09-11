@@ -71,11 +71,11 @@ msgstr "usuariosfofos"
 
 #: src/modules/test/test.py:239
 msgid "dmview"
-msgstr ""
+msgstr "vermd"
 
 #: src/modules/test/test.py:250
 msgid "multiview"
-msgstr ""
+msgstr "multivisao"
 
 #: src/modules/test/test.py:267
 msgid "stats-card"
