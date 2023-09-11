@@ -455,7 +455,7 @@ msgstr "lista de tarefas"
 #: src/modules/tasklist/cog.py:934
 msgctxt "cmd:configure_tasklist|desc"
 msgid "Tasklist configuration panel"
-msgstr ""
+msgstr "Painel de Configuração da Lista de Tarefas"
 
 #: src/modules/tasklist/cog.py:937
 msgctxt "cmd:configure_tasklist|param:reward"
