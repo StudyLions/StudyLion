@@ -39,7 +39,7 @@ msgstr "taxas_experiência"
 #: src/tracking/text/cog.py:318
 msgctxt "cmd:leo_configure_exp_rates|desc"
 msgid "Global experience rate configuration"
-msgstr ""
+msgstr "Configuração da Taxa global de experiência"
 
 #: src/tracking/text/ui.py:45
 msgctxt "ui:text_tracker_config|menu:untracked_channels|placeholder"
