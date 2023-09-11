@@ -38,6 +38,7 @@ class TimerOptions(SettingGroup):
 
         _model = TimerData.Timer
         _column = TimerData.Timer.channelid.name
+        _allow_object = False
 
     @TimerConfig.register_model_setting
     class NotificationChannel(ModelData, ChannelSetting):
@@ -51,6 +52,7 @@ class TimerOptions(SettingGroup):
 
         _model = TimerData.Timer
         _column = TimerData.Timer.notification_channelid.name
+        _allow_object = False
 
         @classmethod
         async def _check_value(cls, parent_id: int, value: Optional[discord.abc.GuildChannel], **kwargs):
@@ -120,6 +122,7 @@ class TimerOptions(SettingGroup):
 
         _model = TimerData.Timer
         _column = TimerData.Timer.manager_roleid.name
+        _allow_object = False
 
         @classmethod
         def _format_data(cls, parent_id, data, timer=None, **kwargs):

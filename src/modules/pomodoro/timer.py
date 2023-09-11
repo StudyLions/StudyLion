@@ -406,7 +406,7 @@ class Timer:
                         "Remember to press {tick} to register your presence every stage.",
                         len(needs_kick)
                     ), locale=self.locale.value).format(
-                        channel=self.channel.mention,
+                        channel=f"<#{self.data.channelid}>",
                         mentions=', '.join(member.mention for member in needs_kick),
                         tick=self.bot.config.emojis.tick
                     )
@@ -439,7 +439,7 @@ class Timer:
         if not stage:
             return
 
-        if not self.channel.permissions_for(self.guild.me).speak:
+        if not self.channel or not self.channel.permissions_for(self.guild.me).speak:
             return
 
         async with self.lguild.voice_lock:
@@ -501,7 +501,7 @@ class Timer:
                 "{channel} is now on **BREAK**! Take a rest, **FOCUS** starts {timestamp}"
             )
         stageline = t(lazy_stageline).format(
-            channel=self.channel.mention,
+            channel=f"<#{self.data.channelid}>",
             timestamp=f"<t:{int(stage.end.timestamp())}:R>"
         )
         return stageline
@@ -550,12 +550,12 @@ class Timer:
             content = t(_p(
                 'timer|status|stopped:auto',
                 "Timer stopped! Join {channel} to start the timer."
-            )).format(channel=self.channel.mention)
+            )).format(channel=f"<#{self.data.channelid}>")
         else:
             content = t(_p(
                 'timer|status|stopped:manual',
                 "Timer stopped! Press `Start` to restart the timer."
-            )).format(channel=self.channel.mention)
+            )).format(channel=f"<#{self.data.channelid}>")
 
         card = await get_timer_card(self.bot, self, stage)
         await card.render()
