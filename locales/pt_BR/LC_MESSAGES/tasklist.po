@@ -781,6 +781,12 @@ msgid ""
 "period. If a category is provided, this will apply to all channels under the"
 " category."
 msgstr ""
+"O painel da Lista de Tarefas (de {cmds[tasklist]}) é normalmente mostrado "
+"somente ao membro. Se configurada esta opção, no ˋcanal_lista_de_tarefasˋ "
+"será publicada sua lista visível a todos os outros membros, e o tempo de "
+"interação com o painel será muito mais longo também. Se for informada uma "
+"categoria de canais, todos os canais dentro desta categoria estarão com "
+"estas características."
 
 #: src/modules/tasklist/settings.py:127
 msgctxt "guildset:tasklist_channels|accepts"
