@@ -659,6 +659,8 @@ msgstr ""
 msgctxt "ui:tasklist|button:save|error:dms"
 msgid "Could not DM you! Do you have me blocked? Tasklist attached below."
 msgstr ""
+"Não pude enviar mensagem direta a você! Você me bloqueou? Anexei a lista de "
+"tarefas aqui abaixo."
 
 #: src/modules/tasklist/ui.py:779
 msgctxt "ui:tasklist|error:wrong_user"
