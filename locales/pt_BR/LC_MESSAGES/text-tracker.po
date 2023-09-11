@@ -64,7 +64,7 @@ msgstr "Painel de EXP Mensagens"
 #: src/tracking/text/settings.py:33
 msgctxt "guildset:xp_per_period"
 msgid "xp_per_5min"
-msgstr ""
+msgstr "exp_por_5min"
 
 #: src/tracking/text/settings.py:36
 msgctxt "guildset:xp_per_period|desc"
