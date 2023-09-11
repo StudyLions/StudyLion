@@ -686,8 +686,8 @@ msgid ""
 "Thank you for marking your presence.\n"
 "Good luck and stay productive!"
 msgstr ""
-"Durumunuzu bildirdiğiniz için teşekkür ederiz.\n"
-"İyi şanslar ve verimli kalın!"
+"Burada olduğunuzu bildirdiğin için teşekkürler.\n"
+"İyi şanslar ve verimli kal!"
 
 #: src/modules/pomodoro/ui/status.py:72
 #, possible-python-brace-format
