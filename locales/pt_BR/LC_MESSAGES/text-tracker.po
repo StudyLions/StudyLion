@@ -146,7 +146,7 @@ msgstr "canais_texto_não_contabilizado"
 #: src/tracking/text/settings.py:98
 msgctxt "guildset:untracked_text_channels|desc"
 msgid "Channels in which Message XP will not be given."
-msgstr ""
+msgstr "Canais em que não será dado EXP por Mensagens."
 
 #: src/tracking/text/settings.py:102
 msgctxt "guildset:untracked_text_channels|long_desc"
