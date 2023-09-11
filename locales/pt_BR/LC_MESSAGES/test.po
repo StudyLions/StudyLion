@@ -79,4 +79,4 @@ msgstr "multivisao"
 
 #: src/modules/test/test.py:267
 msgid "stats-card"
-msgstr ""
+msgstr "stats-cartões"
