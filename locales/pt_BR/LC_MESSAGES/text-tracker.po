@@ -141,7 +141,7 @@ msgstr ""
 #: src/tracking/text/settings.py:95
 msgctxt "guildset:untracked_text_channels"
 msgid "untracked_text_channels"
-msgstr ""
+msgstr "canais_texto_não_contabilizado"
 
 #: src/tracking/text/settings.py:98
 msgctxt "guildset:untracked_text_channels|desc"
