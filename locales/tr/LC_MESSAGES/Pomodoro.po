@@ -607,7 +607,7 @@ msgstr "Lütfen pozitif sayı cinsinden dakikayı giriniz."
 #: src/modules/pomodoro/options.py:220
 msgctxt "timerset:break_length"
 msgid "break_length"
-msgstr "ara_uzunluğu"
+msgstr "ara_süresi"
 
 #: src/modules/pomodoro/options.py:223
 msgctxt "timerset:break_length|desc"
