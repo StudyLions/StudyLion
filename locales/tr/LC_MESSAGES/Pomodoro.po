@@ -411,7 +411,7 @@ msgid ""
 "You need to be a server administrator, own this channel, or have the timer manager role."
 msgstr ""
 "Bu sayacı düzenlemek için yetersiz izin!\n"
-"Sunucu yöneticisi, bu kanalın sahibi olmanız ya da sayaç yönetici rolünüzün olması gerekiyor."
+"Sunucu yöneticisi, bu kanalın sahibi olmanız ya da sayaç idarecisi rolünüzün olması gerekiyor."
 
 #: src/modules/pomodoro/cog.py:771
 msgctxt "cmd:pomodoro_edit|error:insufficient_permissions|role_needed:admin"
