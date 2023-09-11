@@ -611,12 +611,12 @@ msgstr "Editar tarefa"
 #: src/modules/tasklist/ui.py:593
 msgctxt "ui:tasklist_single_editor|title"
 msgid "Add task"
-msgstr ""
+msgstr "Adicionar Tarefa"
 
 #: src/modules/tasklist/ui.py:626
 msgctxt "ui:tasklist|button:edit_mode|label"
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: src/modules/tasklist/ui.py:642
 msgctxt "ui:tasklist|button:delete_mode|label"
