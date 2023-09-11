@@ -816,12 +816,12 @@ msgstr "Selecione canal abaixo."
 #: src/modules/tasklist/settings.py:289
 msgctxt "ui:tasklist_config|button:close|label"
 msgid "Close"
-msgstr "fechar"
+msgstr "Fechar"
 
 #: src/modules/tasklist/settings.py:290
 msgctxt "ui:tasklist_config|button:reset|label"
 msgid "Reset"
-msgstr ""
+msgstr "Resetar"
 
 #: src/modules/tasklist/settings.py:293
 msgctxt "ui:tasklist_config|menu:channels|placeholder"
