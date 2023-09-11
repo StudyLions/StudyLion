@@ -587,7 +587,7 @@ msgstr "Sayaç kanal adı, {kalan}, {isim}, {model} ve {oturum} kodlarıyla."
 #: src/modules/pomodoro/options.py:180
 msgctxt "timerset:focus_length"
 msgid "focus_length"
-msgstr "odak_uzunluğu"
+msgstr "odak_süresi"
 
 #: src/modules/pomodoro/options.py:183
 msgctxt "timerset:focus_length|desc"
