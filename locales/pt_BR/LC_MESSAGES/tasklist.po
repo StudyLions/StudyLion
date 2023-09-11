@@ -737,6 +737,8 @@ msgid ""
 "Maximum number of times in each 24h period that members will be rewarded for"
 " completing a task."
 msgstr ""
+"Número máximo de vezes, em 24h de intervalo, que membros serão recompensados"
+" por completar uma tarefa."
 
 #: src/modules/tasklist/settings.py:85
 msgctxt "guildset:task_reward_limit|accepts"
