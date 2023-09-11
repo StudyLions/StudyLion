@@ -238,7 +238,7 @@ msgstr "nova_tarefamae"
 #: src/modules/tasklist/cog.py:547
 msgctxt "cmd:tasks_edit|param:taskstr|desc"
 msgid "Which task do you want to update?"
-msgstr ""
+msgstr "Qual tarefa você gostaria de atualizar?"
 
 #: src/modules/tasklist/cog.py:548
 msgctxt "cmd:tasks_edit|param:new_content|desc"
