@@ -71,6 +71,8 @@ msgctxt "guildset:xp_per_period|desc"
 msgid ""
 "How much XP members will be given every 5 minute period they are active."
 msgstr ""
+"Quantidade de XP que os membros receberão a cada 5 min que eles estiverem "
+"ativos."
 
 #: src/tracking/text/settings.py:40
 msgctxt "guildset:xp_per_period|long_desc"
