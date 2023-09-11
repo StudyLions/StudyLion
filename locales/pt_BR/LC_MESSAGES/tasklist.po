@@ -685,7 +685,7 @@ msgstr ""
 #: src/modules/tasklist/settings.py:33
 msgctxt "guildset:task_reward"
 msgid "task_reward"
-msgstr ""
+msgstr "recompensa_tarefas"
 
 #: src/modules/tasklist/settings.py:36
 msgctxt "guildset:task_reward|desc"
