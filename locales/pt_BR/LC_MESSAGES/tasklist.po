@@ -180,7 +180,7 @@ msgstr ""
 #: src/modules/tasklist/cog.py:451
 msgctxt "cmd:tasks_upload|error:not_text"
 msgid "The attached tasklist must be a text file!"
-msgstr ""
+msgstr "A lista anexada precisa ser um arquivo de texto!"
 
 #: src/modules/tasklist/cog.py:459
 msgctxt "cmd:tasks_upload|error:too_large"
