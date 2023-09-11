@@ -208,12 +208,12 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:tasks_upload|resp:success"
 msgid "{tick} Updated your tasklist."
-msgstr ""
+msgstr "{tick} Lista atualizada."
 
 #: src/modules/tasklist/cog.py:535
 msgctxt "cmd:tasks_edit"
 msgid "edit"
-msgstr ""
+msgstr "editar"
 
 #: src/modules/tasklist/cog.py:538
 msgctxt "cmd:tasks_edit|desc"
