@@ -81,6 +81,9 @@ msgid ""
 "are active (send a message). Note that this XP is only given *once* per "
 "period."
 msgstr ""
+"Quantidade de EXP em mensagens dado para cada 5 minutos em que os membros "
+"estiverem ativos (enviando mensagem). Observe que EXP somente é dada *uma "
+"vez* cada período. "
 
 #: src/tracking/text/settings.py:45
 msgctxt "guildset:xp_per_period|accepts"
