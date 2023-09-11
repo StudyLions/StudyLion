@@ -228,6 +228,8 @@ msgid ""
 "For every **5** minutes they are active (i.e. in which they send a message),"
 " all users will now be given **{amount}** global XP."
 msgstr ""
+"Para cada **5** minutos de atividade (em que eles estiverem enviando "
+"mensagens), todos os usuários receberão **{amount}** de EXP Global."
 
 #: src/tracking/text/settings.py:206
 msgctxt "botset:word_xp"
