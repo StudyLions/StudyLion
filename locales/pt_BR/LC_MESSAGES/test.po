@@ -47,11 +47,11 @@ msgstr "Apagar e editar Test ephemeral "
 
 #: src/modules/test/test.py:102
 msgid "colours"
-msgstr ""
+msgstr "cores"
 
 #: src/modules/test/test.py:103
 msgid "Test Ansi colours"
-msgstr ""
+msgstr "Teste cores Ansi"
 
 #: src/modules/test/test.py:123
 msgid "fail"
