@@ -286,12 +286,12 @@ msgstr "Apagar sua lista de tarefas."
 #: src/modules/tasklist/cog.py:651
 msgctxt "cmd:tasks_clear|resp:success"
 msgid "Your tasklist has been cleared."
-msgstr ""
+msgstr "Sua lista de tarefas foi apagada."
 
 #: src/modules/tasklist/cog.py:659
 msgctxt "cmd:tasks_remove"
 msgid "remove"
-msgstr ""
+msgstr "remover"
 
 #: src/modules/tasklist/cog.py:662
 msgctxt "cmd:tasks_remove|desc"
