@@ -44,7 +44,7 @@ msgstr "Configuração da Taxa global de experiência"
 #: src/tracking/text/ui.py:45
 msgctxt "ui:text_tracker_config|menu:untracked_channels|placeholder"
 msgid "Select Untracked Channels"
-msgstr ""
+msgstr "Selecione Canais não Contabilizados"
 
 #: src/tracking/text/ui.py:52
 msgctxt "ui:text_tracker_config|embed|title"
