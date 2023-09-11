@@ -645,7 +645,7 @@ msgstr "Edição em Escala"
 #: src/modules/tasklist/ui.py:702
 msgctxt "ui:tasklist|button:clear|label"
 msgid "Clear Tasklist"
-msgstr ""
+msgstr "Apagar Lista de Tarefas"
 
 #: src/modules/tasklist/ui.py:721
 #, possible-python-brace-format
