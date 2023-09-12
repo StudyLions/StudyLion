@@ -89,7 +89,7 @@ msgid ""
 "The provided message data was not a valid JSON document!\n"
 "`{error}`"
 msgstr ""
-"Belirtilen mesaj verisi geçerli bir JSON dosyası değil!\n"
+"Verilen mesaj verisi geçerli bir JSON dosyası değil!\n"
 "`{error}`"
 
 #: src/core/setting_types.py:193
