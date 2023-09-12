@@ -69,8 +69,8 @@ msgid ""
 "Could not decode the message data. Please ensure it is saved with the "
 "`UTF-8` encoding."
 msgstr ""
-"Mesaj verilerinin kodu çözülemedi. Lütfen 'UTF-8' kodlamasıyla "
-"kaydedildiğinden emin olun."
+"Mesaj verileri çözülemedi. Lütfen 'UTF-8' kodlamasıyla kaydedildiğinden emin"
+" olun."
 
 #: src/core/setting_types.py:173
 #, possible-python-brace-format
