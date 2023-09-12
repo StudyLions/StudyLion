@@ -289,7 +289,7 @@ msgstr ""
 msgctxt "guildset:rank_type|set_response|type:xp"
 msgid "Members will be awarded activity ranks based on `Message XP Earned`."
 msgstr ""
-"Üyeler 'Kazanılan Mesaj XP' ne göre aktivite seviyeleri ile "
+"Üyeler 'Kazanılan Mesaj XP'sine göre aktivite seviyeleri ile "
 "ödüllendirilecektir."
 
 #: src/modules/ranks/settings.py:91
