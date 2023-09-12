@@ -247,7 +247,7 @@ msgstr "xp|exp|deneyim"
 #: src/modules/ranks/settings.py:45
 msgctxt "guildset:rank_type"
 msgid "rank_type"
-msgstr "rütbe_tipi"
+msgstr "seviye_tipi"
 
 #: src/modules/ranks/settings.py:48
 msgctxt "guildset:rank_type|desc"
