@@ -29,6 +29,7 @@ member_overwrite = discord.PermissionOverwrite(
 )
 owner_overwrite = discord.PermissionOverwrite.from_pair(*member_overwrite.pair())
 owner_overwrite.update(
+    manage_webhooks=True,
     manage_channels=True,
     manage_messages=True,
     move_members=True,
