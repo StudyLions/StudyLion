@@ -255,7 +255,7 @@ msgid ""
 "The type of statistic (messages | xp | voice hours) used to determine "
 "activity ranks."
 msgstr ""
-"Bu istatistik tipi(mesajlar| xp | ses saatleri) aktivite rütbelerini "
+"Bu istatistik tipi (mesajlar| xp | ses saatleri) aktivite seviyeleri "
 "belirlemek için kullanılır."
 
 #: src/modules/ranks/settings.py:52
