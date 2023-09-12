@@ -40,7 +40,7 @@ msgstr "Mesaj"
 #: src/modules/ranks/cog.py:383
 msgctxt "event:rank_update|embed:notify"
 msgid "New Activity Rank Attained!"
-msgstr "Yeni aktivite rütbesine erişildi !"
+msgstr "Yeni Aktivite Seviyesine Erişildi!"
 
 #: src/modules/ranks/cog.py:494
 msgctxt "rank_refresh|error:roles_dne|desc"
