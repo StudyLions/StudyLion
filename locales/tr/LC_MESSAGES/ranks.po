@@ -306,7 +306,7 @@ msgstr "seviye_kanalı"
 #: src/modules/ranks/settings.py:106
 msgctxt "guildset:rank_channel|desc"
 msgid "The channel in which to send rank update notifications."
-msgstr "Rütbe güncelleme bildirimlerinin gönderileceği kanal"
+msgstr "Seviye güncelleme bildirimlerinin gönderileceği kanal."
 
 #: src/modules/ranks/settings.py:110
 msgctxt "guildset:rank_channel|long_desc"
