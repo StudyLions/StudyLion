@@ -381,13 +381,28 @@ class Economy(LionCog):
             if role:
                 query = MemModel.table.select_where(
                     (MemModel.guildid == role.guild.id) & (MemModel.coins != 0)
-                )
-                query.order_by('coins', ORDER.DESC)
+                ).with_no_adapter()
                 if not role.is_default():
                     # Everyone role is handled differently for data efficiency
                     ids = [target.id for target in targets]
                     query = query.where(userid=ids)
-                rows = await query
+
+                # First get a summary
+                summary = await query.select(
+                    _count='COUNT(*)',
+                    _coin_total='SUM(coins)',
+                )
+                record = summary[0]
+                count = record['_count']
+                total = record['_coin_total']
+                if count > 0:
+                    # Then get the top 1000 members
+                    query._columns = ()
+                    query.order_by('coins', ORDER.DESC)
+                    query.limit(1000)
+                    rows = await query.select('userid', 'coins')
+                else:
+                    rows = []
 
                 name = t(_p(
                     'cmd:economy_balance|embed:role_lb|author',
@@ -400,7 +415,7 @@ class Economy(LionCog):
                             "This server has a total balance of {coin_emoji}**{total}**."
                         )).format(
                             coin_emoji=cemoji,
-                            total=sum(row['coins'] for row in rows)
+                            total=total
                         )
                     else:
                         header = t(_p(
@@ -408,9 +423,9 @@ class Economy(LionCog):
                             "{role_mention} has `{count}` members with non-zero balance, "
                             "with a total balance of {coin_emoji}**{total}**."
                         )).format(
-                            count=len(targets),
+                            count=count,
                             role_mention=role.mention,
-                            total=sum(row['coins'] for row in rows),
+                            total=total,
                             coin_emoji=cemoji
                         )
 
