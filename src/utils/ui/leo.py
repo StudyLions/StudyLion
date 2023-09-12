@@ -419,8 +419,11 @@ class MessageUI(LeoUI):
 
         try:
             await self._redraw(args)
-        except discord.HTTPException:
-            # Unknown communication erorr, nothing we can reliably do. Exit quietly.
+        except discord.HTTPException as e:
+            # Unknown communication error, nothing we can reliably do. Exit quietly.
+            logger.warning(
+                f"Unexpected UI redraw failure occurred in {self}: {repr(e)}",
+            )
             await self.close()
 
     async def cleanup(self):

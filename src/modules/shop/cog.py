@@ -114,7 +114,8 @@ class Shopping(LionCog):
         return
 
     @cmds.hybrid_group(
-        name=_p('group:shop', 'shop')
+        name=_p('cmd:shop', 'shop'),
+        description=_p('cmd:shop|desc', "Purchase coloures, roles, and other goodies with LionCoins.")
     )
     async def shop_group(self, ctx: LionContext):
         return
@@ -188,8 +189,8 @@ class StoreManager(ui.LeoUI):
         Ask the current shop widget to redraw.
         """
         self.page_num %= len(self.stores)
-        await self.stores[self.page_num].refresh()
-        await self.stores[self.page_num].redraw()
+        store = self.stores[self.page_num]
+        await store.refresh()
 
     def make_buttons(self):
         """
