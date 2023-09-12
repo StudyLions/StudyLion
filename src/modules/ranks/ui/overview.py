@@ -109,7 +109,7 @@ class RankOverviewUI(MessageUI):
             "Refresh Member Ranks"
         ))
 
-    @button(label="CLEAR_BUTTON_PLACEHOLDER", style=ButtonStyle.blurple)
+    @button(label="CLEAR_BUTTON_PLACEHOLDER", style=ButtonStyle.red)
     async def clear_button(self, press: discord.Interaction, pressed: Button):
         """
         Clear the rank list.

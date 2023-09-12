@@ -20,7 +20,7 @@ cmd_map = {
     "cmd_send": "send",
     "cmd_shop": "shop open",
     "cmd_room": "room rent",
-    "cmd_reminders": "remindme in",
+    "cmd_reminders": "reminders",
     "cmd_tasklist": "tasklist",
     "cmd_timers": "timers",
     "cmd_schedule": "schedule",

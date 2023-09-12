@@ -12,156 +12,34 @@ Max 25 reminders (propagating Discord restriction)
 """
 from typing import Optional
 import datetime as dt
-from cachetools import TTLCache, LRUCache
+from cachetools import TTLCache
 
 import discord
 from discord.ext import commands as cmds
 from discord import app_commands as appcmds
 from discord.app_commands import Transform
-from discord.ui.select import select, SelectOption
 from dateutil.parser import parse, ParserError
 
-from data import RowModel, Registry, WeakCache
 from data.queries import ORDER
-from data.columns import Integer, String, Timestamp, Bool
 
 from meta import LionBot, LionCog, LionContext
+from meta.errors import UserInputError
 from meta.app import shard_talk, appname_from_shard
-from meta.logger import log_wrap, logging_context, set_logging_context
+from meta.logger import log_wrap, set_logging_context
 
 from babel import ctx_translator, ctx_locale
 
-from utils.lib import parse_duration, utc_now, strfdur, error_embed
+from utils.lib import parse_duration, utc_now, strfdur, error_embed, check_dm
 from utils.monitor import TaskMonitor
 from utils.transformers import DurationTransformer
-from utils.ui import LeoUI, AButton, AsComponents
+from utils.ui import AButton, AsComponents
 from utils.ratelimits import Bucket
 
 from . import babel, logger
+from .data import ReminderData
+from .ui import ReminderList
 
 _, _p, _np = babel._, babel._p, babel._np
-
-
-class ReminderData(Registry, name='reminders'):
-    class Reminder(RowModel):
-        """
-        Model representing a single reminder.
-        Since reminders are likely to change across shards,
-        does not use an explicit reference cache.
-
-        Schema
-        ------
-        CREATE TABLE reminders(
-            reminderid SERIAL PRIMARY KEY,
-            userid BIGINT NOT NULL REFERENCES user_config(userid) ON DELETE CASCADE,
-            remind_at TIMESTAMPTZ NOT NULL,
-            content TEXT NOT NULL,
-            message_link TEXT,
-            interval INTEGER,
-            created_at TIMESTAMP DEFAULT (now() at time zone 'utc'),
-            title TEXT,
-            footer TEXT
-        );
-        CREATE INDEX reminder_users ON reminders (userid);
-        """
-        _tablename_ = 'reminders'
-
-        reminderid = Integer(primary=True)
-
-        userid = Integer()  # User which created the reminder
-        remind_at = Timestamp()  # Time when the reminder should be executed
-        content = String()  # Content the user gave us to remind them
-        message_link = String()  # Link to original confirmation message, for context
-        interval = Integer()  # Repeat interval, if applicable
-        created_at = Timestamp()  # Time when this reminder was originally created
-        title = String()  # Title of the final reminder embed, only set in automated reminders
-        footer = String()  # Footer of the final reminder embed, only set in automated reminders
-        failed = Bool()  # Whether the reminder was already attempted and failed
-
-        @property
-        def timestamp(self) -> int:
-            """
-            Time when this reminder should be executed (next) as an integer timestamp.
-            """
-            return int(self.remind_at.timestamp())
-
-        @property
-        def embed(self) -> discord.Embed:
-            t = ctx_translator.get().t
-
-            embed = discord.Embed(
-                title=self.title or t(_p('reminder|embed', "You asked me to remind you!")),
-                colour=discord.Colour.orange(),
-                description=self.content,
-                timestamp=self.remind_at
-            )
-
-            if self.message_link:
-                embed.add_field(
-                    name=t(_p('reminder|embed', "Context?")),
-                    value="[{click}]({link})".format(
-                        click=t(_p('reminder|embed', "Click Here")),
-                        link=self.message_link
-                    )
-                )
-
-            if self.interval:
-                embed.add_field(
-                    name=t(_p('reminder|embed', "Next reminder")),
-                    value=f"<t:{self.timestamp + self.interval}:R>"
-                )
-
-            if self.footer:
-                embed.set_footer(text=self.footer)
-
-            return embed
-
-        @property
-        def formatted(self):
-            """
-            Single-line string format for the reminder, intended for an embed.
-            """
-            t = ctx_translator.get().t
-            content = self.content
-            trunc_content = content[:50] + '...' * (len(content) > 50)
-
-            if interval := self.interval:
-                if not interval % (24 * 60 * 60):
-                    # Exact day case
-                    days = interval // (24 * 60 * 60)
-                    repeat = t(_np(
-                        'reminder|formatted|interval',
-                        "Every day",
-                        "Every `{days}` days",
-                        days
-                    )).format(days=days)
-                elif not interval % (60 * 60):
-                    # Exact hour case
-                    hours = interval // (60 * 60)
-                    repeat = t(_np(
-                        'reminder|formatted|interval',
-                        "Every hour",
-                        "Every `{hours}` hours",
-                        hours
-                    )).format(hours=hours)
-                else:
-                    # Inexact interval, e.g 10m or 1h 10m.
-                    # Use short duration format
-                    repeat = t(_p(
-                        'reminder|formatted|interval',
-                        "Every `{duration}`"
-                    )).format(duration=strfdur(interval))
-
-                repeat = f"({repeat})"
-            else:
-                repeat = ""
-
-            return "<t:{timestamp}:R>, [{content}]({jump_link}) {repeat}".format(
-                jump_link=self.message_link,
-                content=trunc_content,
-                timestamp=self.timestamp,
-                repeat=repeat
-            )
 
 
 class ReminderMonitor(TaskMonitor[int]):
@@ -191,7 +69,7 @@ class Reminders(LionCog):
 
         # Short term userid -> list[Reminder] cache, mainly for autocomplete
         self._user_reminder_cache: TTLCache[int, list[ReminderData.Reminder]] = TTLCache(1000, ttl=60)
-        self._active_reminderlists: dict[int, ReminderListUI] = {}
+        self._active_reminderlists: dict[int, ReminderList] = {}
 
     async def cog_load(self):
         await self.data.init()
@@ -211,6 +89,105 @@ class Reminders(LionCog):
 
             # Start firing reminders
             self.monitor.start()
+
+    # ----- Cog API -----
+
+    async def create_reminder(
+        self,
+        userid: int, remind_at: dt.datetime, content: str,
+        message_link: Optional[str] = None,
+        interval: Optional[int] = None,
+        created_at: Optional[dt.datetime] = None,
+    ) -> ReminderData.Reminder:
+        """
+        Create and schedule a new reminder from user-entered data.
+
+        Raises UserInputError if the requested parameters are invalid.
+        """
+        now = utc_now()
+
+        if remind_at <= now:
+            t = self.bot.translator.t
+            raise UserInputError(
+                t(_p(
+                    'create_reminder|error:past',
+                    "The provided reminder time {timestamp} is in the past!"
+                )).format(timestamp=discord.utils.format_dt(remind_at))
+            )
+
+        if interval is not None and interval < 600:
+            t = self.bot.translator.t
+            raise UserInputError(
+                t(_p(
+                    'create_reminder|error:too_fast',
+                    "You cannot set a repeating reminder with a period less than 10 minutes."
+                ))
+            )
+
+        existing = await self.data.Reminder.fetch_where(userid=userid)
+        if len(existing) >= 25:
+            t = self.bot.translator.t
+            raise UserInputError(
+                t(_p(
+                    'create_reminder|error:too_many',
+                    "Sorry, you have reached the maximum of `25` reminders."
+                ))
+            )
+
+        user = self.bot.get_user(userid)
+        if not user:
+            user = await self.bot.fetch_user(userid)
+        if not user:
+            raise ValueError(f"Target user {userid} does not exist.")
+
+        can_dm = await check_dm(user)
+        if not can_dm:
+            t = self.bot.translator.t
+            raise UserInputError(
+                t(_p(
+                    'create_reminder|error:cannot_dm',
+                    "I cannot direct message you! Do you have me blocked or direct messages closed?"
+                ))
+            )
+
+        created_at = created_at or now
+
+        # Passes validation, actually create
+        reminder = await self.data.Reminder.create(
+            userid=userid,
+            remind_at=remind_at,
+            content=content,
+            message_link=message_link,
+            interval=interval,
+            created_at=created_at,
+        )
+
+        # Schedule from executor
+        await self.talk_schedule(reminder.reminderid).send(self.executor_name, wait_for_reply=False)
+
+        # Dispatch reminder update
+        await self.dispatch_update_for(userid)
+
+        # Return fresh reminder
+        return reminder
+
+    async def parse_time_static(self, timestr, timezone):
+        timestr = timestr.strip()
+        default = dt.datetime.now(tz=timezone).replace(hour=0, minute=0, second=0, microsecond=0)
+        if not timestr:
+            return default
+        try:
+            ts = parse(timestr, fuzzy=True, default=default)
+        except ParserError:
+            t = self.bot.translator.t
+            raise UserInputError(
+                t(_p(
+                    'parse_timestamp|error:parse',
+                    "Could not parse `{given}` as a valid reminder time. "
+                    "Try entering the time in the form `HH:MM` or `YYYY-MM-DD HH:MM`."
+                )).format(given=timestr)
+            )
+        return ts
 
     async def get_reminders_for(self, userid: int):
         """
@@ -348,116 +325,43 @@ class Reminders(LionCog):
             # Dispatch for analytics
             self.bot.dispatch('reminder_sent', reminder)
 
-    @cmds.hybrid_group(
-        name=_p('cmd:reminders', "reminders")
-    )
-    async def reminders_group(self, ctx: LionContext):
-        pass
-
-    @reminders_group.command(
-        # No help string
-        name=_p('cmd:reminders_show', "show"),
+    @cmds.hybrid_command(
+        name=_p('cmd:reminders', "reminders"),
         description=_p(
-            'cmd:reminders_show|desc',
-            "Display your current reminders."
+            'cmd:reminders|desc',
+            "View and set your reminders."
         )
     )
-    async def cmd_reminders_show(self, ctx: LionContext):
-        # No help string
+    async def cmd_reminders(self, ctx: LionContext):
         """
         Display the reminder widget for this user.
         """
-        t = self.bot.translator.t
         if not ctx.interaction:
             return
 
         if ctx.author.id in self._active_reminderlists:
-            await self._active_reminderlists[ctx.author.id].close(
-                msg=t(_p(
-                    'cmd:reminders_show|close_elsewhere',
-                    "Closing since the list was opened elsewhere."
-                ))
-            )
-        ui = ReminderListUI(self.bot, ctx.author)
+            await self._active_reminderlists[ctx.author.id].quit()
+        ui = ReminderList(self.bot, ctx.author)
         try:
             self._active_reminderlists[ctx.author.id] = ui
-            await ui.run(ctx.interaction)
+            await ui.run(ctx.interaction, ephemeral=True)
             await ui.wait()
         finally:
             self._active_reminderlists.pop(ctx.author.id, None)
 
-    @reminders_group.command(
-        name=_p('cmd:reminders_clear', "clear"),
-        description=_p(
-            'cmd:reminders_clear|desc',
-            "Clear your reminder list."
-        )
+    @cmds.hybrid_group(
+        name=_p('cmd:remindme', "remindme"),
+        description=_p('cmd:remindme|desc', "View and set task reminders."),
     )
-    async def cmd_reminders_clear(self, ctx: LionContext):
-        # No help string
-        """
-        Confirm and then clear all the reminders for this user.
-        """
-        if not ctx.interaction:
-            return
+    async def remindme_group(self, ctx: LionContext):
+        # Base command group for scheduling reminders.
+        pass
 
-        t = self.bot.translator.t
-        reminders = await self.data.Reminder.fetch_where(userid=ctx.author.id)
-        if not reminders:
-            await ctx.reply(
-                embed=discord.Embed(
-                    description=t(_p(
-                        'cmd:reminders_clear|error:no_reminders',
-                        "You have no reminders to clear!"
-                    )),
-                    colour=discord.Colour.brand_red()
-                ),
-                ephemeral=True
-            )
-            return
-
-        embed = discord.Embed(
-            title=t(_p('cmd:reminders_clear|confirm|title', "Are You Sure?")),
-            description=t(_np(
-                'cmd:reminders_clear|confirm|desc',
-                "Are you sure you want to delete your `{count}` reminder?",
-                "Are you sure you want to clear your `{count}` reminders?",
-                len(reminders)
-            )).format(count=len(reminders))
-        )
-
-        @AButton(label=t(_p('cmd:reminders_clear|confirm|button:yes', "Yes, clear my reminders")))
-        async def confirm(interaction, press):
-            await interaction.response.defer()
-            reminders = await self.data.Reminder.table.delete_where(userid=ctx.author.id)
-            await self.talk_cancel(*(r['reminderid'] for r in reminders)).send(self.executor_name, wait_for_reply=False)
-            await ctx.interaction.edit_original_response(
-                embed=discord.Embed(
-                    description=t(_p(
-                        'cmd:reminders_clear|success|desc',
-                        "Your reminders have been cleared!"
-                    )),
-                    colour=discord.Colour.brand_green()
-                ),
-                view=None
-            )
-            await press.view.close()
-            await self.dispatch_update_for(ctx.author.id)
-
-        @AButton(label=t(_p('cmd:reminders_clear|confirm|button:cancel', "Cancel")))
-        async def deny(interaction, press):
-            await interaction.response.defer()
-            await ctx.interaction.delete_original_response()
-            await press.view.close()
-
-        components = AsComponents(confirm, deny)
-        await ctx.interaction.response.send_message(embed=embed, view=components, ephemeral=True)
-
-    @reminders_group.command(
+    @remindme_group.command(
         name=_p('cmd:reminders_cancel', "cancel"),
         description=_p(
             'cmd:reminders_cancel|desc',
-            "Cancel a single reminder. Use the menu in \"reminder show\" to cancel multiple reminders."
+            "Cancel a single reminder. Use /reminders to clear or cancel multiple reminders."
         )
     )
     @appcmds.rename(
@@ -576,13 +480,6 @@ class Reminders(LionCog):
                 ]
         return choices
 
-    @cmds.hybrid_group(
-        name=_p('cmd:remindme', "remindme")
-    )
-    async def remindme_group(self, ctx: LionContext):
-        # Base command group for scheduling reminders.
-        pass
-
     @remindme_group.command(
         name=_p('cmd:remindme_at', "at"),
         description=_p(
@@ -596,118 +493,79 @@ class Reminders(LionCog):
         every=_p('cmd:remindme_at|param:every', "repeat_every"),
     )
     @appcmds.describe(
-        time=_p('cmd:remindme_at|param:time|desc', "When you want to be reminded. (E.g. `4pm` or `16:00`)."),
-        reminder=_p('cmd:remindme_at|param:reminder|desc', "What should the reminder be?"),
-        every=_p('cmd:remindme_at|param:every|desc', "How often to repeat this reminder.")
+        time=_p(
+            'cmd:remindme_at|param:time|desc',
+            "When you want to be reminded. (E.g. `4pm` or `16:00`)."
+        ),
+        reminder=_p(
+            'cmd:remindme_at|param:reminder|desc',
+            "What should the reminder be?"
+        ),
+        every=_p(
+            'cmd:remindme_at|param:every|desc',
+            "How often to repeat this reminder."
+        )
     )
     async def cmd_remindme_at(
         self,
         ctx: LionContext,
-        time: str,
-        reminder: str,
+        time: appcmds.Range[str, 1, 100],
+        reminder: appcmds.Range[str, 1, 2000],
         every: Optional[Transform[int, DurationTransformer(60)]] = None
     ):
         t = self.bot.translator.t
-        reminders = await self.data.Reminder.fetch_where(userid=ctx.author.id)
 
-        # Guard against too many reminders
-        if len(reminders) > 25:
-            await ctx.error_reply(
-                embed=error_embed(
-                    t(_p(
-                        'cmd_remindme_at|error:too_many|desc',
-                        "Sorry, you have reached the maximum of `25` reminders!"
-                    )),
-                    title=t(_p(
-                        'cmd_remindme_at|error:too_many|title',
-                        "Could not create reminder!"
-                    ))
-                ),
-                ephemeral=True
-            )
-            return
-
-        # Guard against too frequent reminders
-        if every is not None and every < 600:
-            await ctx.reply(
-                embed=error_embed(
-                    t(_p(
-                        'cmd_remindme_at|error:too_fast|desc',
-                        "You cannot set a repeating reminder with a period less than 10 minutes."
-                    )),
-                    title=t(_p(
-                        'cmd_remindme_at|error:too_fast|title',
-                        "Could not create reminder!"
-                    ))
-                ),
-                ephemeral=True
-            )
-            return
-
-        # Parse the provided static time
-        timezone = ctx.lmember.timezone
-        time = time.strip()
-        default = dt.datetime.now(tz=timezone).replace(hour=0, minute=0, second=0, microsecond=0)
         try:
-            ts = parse(time, fuzzy=True, default=default)
-        except ParserError:
-            await ctx.reply(
-                embed=error_embed(
-                    t(_p(
-                        'cmd:remindme_at|error:parse_time|desc',
-                        "Could not parse provided time `{given}`. Try entering e.g. `4 pm` or `16:00`."
-                    )).format(given=time),
-                    title=t(_p(
-                        'cmd:remindme_at|error:parse_time|title',
-                        "Could not create reminder!"
-                    ))
-                ),
-                ephemeral=True
+            timezone = ctx.lmember.timezone
+            remind_at = await self.parse_time_static(time, timezone)
+            reminder = await self.create_reminder(
+                userid=ctx.author.id,
+                remind_at=remind_at,
+                content=reminder,
+                message_link=ctx.message.jump_url,
+                interval=every,
             )
-            return
-        if ts < utc_now():
-            await ctx.reply(
-                embed=error_embed(
-                    t(_p(
-                        'cmd:remindme_at|error:past_time|desc',
-                        "Provided time is in the past!"
-                    )),
-                    title=t(_p(
-                        'cmd:remindme_at|error:past_time|title',
-                        "Could not create reminder!"
-                    ))
-                ),
-                ephemeral=True
+            embed = reminder.set_response
+        except UserInputError as e:
+            embed = discord.Embed(
+                title=t(_p(
+                    'cmd:remindme_at|error|title',
+                    "Could not create reminder!"
+                )),
+                description=e.msg,
+                colour=discord.Colour.brand_red()
             )
-            return
-        # Everything seems to be in order
-        # Create the reminder
-        now = utc_now()
-        rem = await self.data.Reminder.create(
-            userid=ctx.author.id,
-            remind_at=ts,
-            content=reminder,
-            message_link=ctx.message.jump_url,
-            interval=every,
-            created_at=now
-        )
 
-        # Reminder created, request scheduling from executor shard
-        await self.talk_schedule(rem.reminderid).send(self.executor_name, wait_for_reply=False)
-
-        # TODO Add repeat to description
-        embed = discord.Embed(
-            title=t(_p(
-                'cmd:remindme_in|success|title',
-                "Reminder Set at {timestamp}"
-            )).format(timestamp=f"<t:{rem.timestamp}>"),
-            description=f"> {rem.content}"
-        )
         await ctx.reply(
             embed=embed,
             ephemeral=True
         )
-        await self.dispatch_update_for(ctx.author.id)
+
+    @cmd_remindme_at.autocomplete('time')
+    async def cmd_remindme_at_acmpl_time(self, interaction: discord.Interaction, partial: str):
+        if interaction.guild:
+            lmember = await self.bot.core.lions.fetch_member(interaction.guild.id, interaction.user.id)
+            timezone = lmember.timezone
+        else:
+            luser = await self.bot.core.lions.fetch_user(interaction.user.id)
+            timezone = luser.timezone
+
+        t = self.bot.translator.t
+        try:
+            timestamp = await self.parse_time_static(partial, timezone)
+            choice = appcmds.Choice(
+                name=timestamp.strftime('%Y-%m-%d %H:%M'),
+                value=partial
+            )
+        except UserInputError:
+            choice = appcmds.Choice(
+                name=t(_p(
+                    'cmd:remindme_at|acmpl:time|error:parse',
+                    "Cannot parse \"{partial}\" as a time. Try the format HH:MM or YYYY-MM-DD HH:MM"
+                )).format(partial=partial),
+                value=partial
+            )
+        return [choice]
 
     @remindme_group.command(
         name=_p('cmd:remindme_in', "in"),
@@ -722,228 +580,49 @@ class Reminders(LionCog):
         every=_p('cmd:remindme_in|param:every', "repeat_every"),
     )
     @appcmds.describe(
-        time=_p('cmd:remindme_in|param:time|desc', "How far into the future to set the reminder (e.g. 1 day 10h 5m)."),
-        reminder=_p('cmd:remindme_in|param:reminder|desc', "What should the reminder be?"),
-        every=_p('cmd:remindme_in|param:every|desc', "How often to repeat this reminder. (e.g. 1 day, or 2h)")
+        time=_p(
+            'cmd:remindme_in|param:time|desc',
+            "How far into the future to set the reminder (e.g. 1 day 10h 5m)."
+        ),
+        reminder=_p(
+            'cmd:remindme_in|param:reminder|desc',
+            "What should the reminder be?"
+        ),
+        every=_p(
+            'cmd:remindme_in|param:every|desc',
+            "How often to repeat this reminder. (e.g. 1 day, or 2h)"
+        )
     )
     async def cmd_remindme_in(
         self,
         ctx: LionContext,
         time: Transform[int, DurationTransformer(60)],
-        reminder: appcmds.Range[str, 1, 1000],  # TODO: Maximum length 1000?
+        reminder: appcmds.Range[str, 1, 2000],
         every: Optional[Transform[int, DurationTransformer(60)]] = None
     ):
         t = self.bot.translator.t
-        reminders = await self.data.Reminder.fetch_where(userid=ctx.author.id)
 
-        # Guard against too many reminders
-        if len(reminders) > 25:
-            await ctx.error_reply(
-                embed=error_embed(
-                    t(_p(
-                        'cmd_remindme_in|error:too_many|desc',
-                        "Sorry, you have reached the maximum of `25` reminders!"
-                    )),
-                    title=t(_p(
-                        'cmd_remindme_in|error:too_many|title',
-                        "Could not create reminder!"
-                    ))
-                ),
-                ephemeral=True
+        try:
+            remind_at = utc_now() + dt.timedelta(seconds=time)
+            reminder = await self.create_reminder(
+                userid=ctx.author.id,
+                remind_at=remind_at,
+                content=reminder,
+                message_link=ctx.message.jump_url,
+                interval=every,
             )
-            return
-
-        # Guard against too frequent reminders
-        if every is not None and every < 600:
-            await ctx.reply(
-                embed=error_embed(
-                    t(_p(
-                        'cmd_remindme_in|error:too_fast|desc',
-                        "You cannot set a repeating reminder with a period less than 10 minutes."
-                    )),
-                    title=t(_p(
-                        'cmd_remindme_in|error:too_fast|title',
-                        "Could not create reminder!"
-                    ))
-                ),
-                ephemeral=True
+            embed = reminder.set_response
+        except UserInputError as e:
+            embed = discord.Embed(
+                title=t(_p(
+                    'cmd:remindme_in|error|title',
+                    "Could not create reminder!"
+                )),
+                description=e.msg,
+                colour=discord.Colour.brand_red()
             )
-            return
 
-        # Everything seems to be in order
-        # Create the reminder
-        now = utc_now()
-        rem = await self.data.Reminder.create(
-            userid=ctx.author.id,
-            remind_at=now + dt.timedelta(seconds=time),
-            content=reminder,
-            message_link=ctx.message.jump_url,
-            interval=every,
-            created_at=now
-        )
-
-        # Reminder created, request scheduling from executor shard
-        await self.talk_schedule(rem.reminderid).send(self.executor_name, wait_for_reply=False)
-
-        # TODO Add repeat to description
-        embed = discord.Embed(
-            title=t(_p(
-                'cmd:remindme_in|success|title',
-                "Reminder Set {timestamp}"
-            )).format(timestamp=f"<t:{rem.timestamp}:R>"),
-            description=f"> {rem.content}"
-        )
         await ctx.reply(
             embed=embed,
             ephemeral=True
         )
-        await self.dispatch_update_for(ctx.author.id)
-
-
-class ReminderListUI(LeoUI):
-    def __init__(self, bot: LionBot, user: discord.User, **kwargs):
-        super().__init__(**kwargs)
-
-        self.bot = bot
-        self.user = user
-
-        cog = bot.get_cog('Reminders')
-        if cog is None:
-            raise ValueError("Cannot create a ReminderUI without the Reminder cog!")
-        self.cog: Reminders = cog
-        self.userid = user.id
-
-        # Original interaction which sent the UI message
-        # Since this is an ephemeral UI, we need this to update and delete
-        self._interaction: Optional[discord.Interaction] = None
-        self._reminders = []
-
-    async def cleanup(self):
-        # Cleanup after an ephemeral UI
-        # Just close if possible
-        if self._interaction and not self._interaction.is_expired():
-            try:
-                await self._interaction.delete_original_response()
-            except discord.HTTPException:
-                pass
-
-    @select()
-    async def select_remove(self, interaction: discord.Interaction, selection):
-        """
-        Select a number of reminders to delete.
-        """
-        await interaction.response.defer()
-        # Hopefully this is a list of reminderids
-        values = selection.values
-        # Delete from data
-        await self.cog.data.Reminder.table.delete_where(reminderid=values)
-        # Send cancellation
-        await self.cog.talk_cancel(*values).send(self.cog.executor_name, wait_for_reply=False)
-        self.cog._user_reminder_cache.pop(self.userid, None)
-        await self.refresh()
-
-    async def refresh_select_remove(self):
-        """
-        Refresh the select remove component from current state.
-        """
-        t = self.bot.translator.t
-
-        self.select_remove.placeholder = t(_p(
-            'ui:reminderlist|select:remove|placeholder',
-            "Select to cancel."
-        ))
-        self.select_remove.options = [
-            SelectOption(
-                label=f"[{i}] {reminder.content[:50] + '...' * (len(reminder.content) > 50)}",
-                value=reminder.reminderid,
-                emoji=self.bot.config.emojis.getemoji('clock')
-            )
-            for i, reminder in enumerate(self._reminders, start=1)
-        ]
-        self.select_remove.min_values = 1
-        self.select_remove.max_values = len(self._reminders)
-
-    async def refresh_reminders(self):
-        self._reminders = await self.cog.get_reminders_for(self.userid)
-
-    async def refresh(self):
-        """
-        Refresh the UI message and components.
-        """
-        if not self._interaction:
-            raise ValueError("Cannot refresh ephemeral UI without an origin interaction!")
-
-        await self.refresh_reminders()
-        await self.refresh_select_remove()
-        embed = await self.build_embed()
-
-        if self._reminders:
-            self.set_layout((self.select_remove,))
-        else:
-            self.set_layout()
-
-        try:
-            if not self._interaction.response.is_done():
-                # Fresh message
-                await self._interaction.response.send_message(embed=embed, view=self, ephemeral=True)
-            else:
-                # Update existing message
-                await self._interaction.edit_original_response(embed=embed, view=self)
-        except discord.HTTPException:
-            await self.close()
-
-    async def run(self, interaction: discord.Interaction):
-        """
-        Run the UI responding to the given interaction.
-        """
-        self._interaction = interaction
-        await self.refresh()
-
-    async def build_embed(self):
-        """
-        Build the reminder list embed.
-        """
-        t = self.bot.translator.t
-        reminders = self._reminders
-
-        if reminders:
-            lines = []
-            num_len = len(str(len(reminders)))
-            for i, reminder in enumerate(reminders):
-                lines.append(
-                    "`[{:<{}}]` | {}".format(
-                        i+1,
-                        num_len,
-                        reminder.formatted
-                    )
-                )
-            description = '\n'.join(lines)
-
-            embed = discord.Embed(
-                description=description,
-                colour=discord.Colour.orange(),
-                timestamp=utc_now()
-            ).set_author(
-                name=t(_p(
-                    'ui:reminderlist|embed:list|author',
-                    "{name}'s reminders"
-                )).format(name=self.user.display_name),
-                icon_url=self.user.avatar
-            ).set_footer(
-                text=t(_p(
-                    'ui:reminderlist|embed:list|footer',
-                    "Click a reminder twice to jump to the context!"
-                ))
-            )
-        else:
-            embed = discord.Embed(
-                description=t(_p(
-                    'ui:reminderlist|embed:no_reminders|desc',
-                    "You have no reminders to display!\n"
-                    "Use {remindme} to create a new reminder."
-                )).format(
-                    remindme=self.bot.core.cmd_name_cache['remindme'].mention,
-                )
-            )
-
-        return embed

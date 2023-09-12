@@ -812,3 +812,20 @@ def recurse_map(func, obj, loc=[]):
     else:
         obj = func(loc, obj)
     return obj 
+
+async def check_dm(user: discord.User | discord.Member) -> bool:
+    """
+    Check whether we can direct message the given user.
+
+    Assumes the client is initialised.
+    This uses an always-failing HTTP request,
+    so we need to be very very very careful that this is not used frequently.
+    Optimally only at the explicit behest of the user
+    (i.e. during a user instigated interaction).
+    """
+    try:
+        await user.send('')
+    except discord.Forbidden:
+        return False
+    except discord.HTTPException:
+        return True
