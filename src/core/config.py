@@ -26,6 +26,7 @@ class ConfigCog(LionCog):
 
     @cmds.hybrid_group(
         name=_p('group:configure', "configure"),
+        description=_p('group:configure|desc', "View and adjust my configuration options."),
     )
     @appcmds.guild_only
     @appcmds.default_permissions(manage_guild=True)
