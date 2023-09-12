@@ -671,6 +671,7 @@ class Timer:
             if repost:
                 await self.send_status(delete_last=False, with_notify=False)
 
+    @log_wrap(action='Update Channel Name')
     async def _update_channel_name(self):
         """
         Submit a task to update the voice channel name.
@@ -678,15 +679,19 @@ class Timer:
         Attempts to ensure that only one task is running at a time.
         Attempts to wait until the next viable channel update slot (via ratelimit).
         """
-        if self._voice_update_task and not self._voice_update_task.done():
-            # Voice update request already submitted
+        if self._voice_update_lock.locked():
+            # Voice update is already running
+            # Note that if channel editing takes a long time,
+            # and the lock is waiting on that,
+            # we may actually miss a channel update in this period.
+            # Erring on the side of less ratelimits.
             return
 
         async with self._voice_update_lock:
             if self._last_voice_update:
                 to_wait = ((self._last_voice_update + timedelta(minutes=5)) - utc_now()).total_seconds()
                 if to_wait > 0:
-                    self._voice_update_task = asyncio.create_task(asyncio.sleep(to_wait))
+                    self._voice_update_task = asyncio.create_task(asyncio.sleep(to_wait), name='timer-voice-wait')
                     try:
                         await self._voice_update_task
                     except asyncio.CancelledError:
@@ -701,8 +706,18 @@ class Timer:
             if new_name == self.channel.name:
                 return
 
-            self._last_voice_update = utc_now()
-            await self.channel.edit(name=self.channel_name)
+            try:
+                logger.debug(f"Requesting channel name update for timer {self}")
+                await self.channel.edit(name=new_name)
+            except discord.HTTPException:
+                logger.warning(
+                    f"Voice channel name update failed for timer {self}",
+                    exc_info=True
+                )
+            finally:
+                # Whether we fail or not, update ratelimit marker
+                # (Repeatedly sending failing requests is even worse than normal ratelimits.)
+                self._last_voice_update = utc_now()
 
     @log_wrap(action="Stop Timer")
     async def stop(self, auto_restart=False):
