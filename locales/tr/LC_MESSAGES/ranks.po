@@ -30,7 +30,7 @@ msgstr "Ses"
 #: src/modules/ranks/cog.py:74
 msgctxt "cmd:configure_ranks|param:rank_type|choice:xp"
 msgid "XP"
-msgstr "xp"
+msgstr "XP"
 
 #: src/modules/ranks/cog.py:75
 msgctxt "cmd:configure_ranks|param:rank_type|choice:message"
