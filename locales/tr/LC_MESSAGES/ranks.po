@@ -296,7 +296,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "guildset:rank_channel|set_using"
 msgid "{cmd} or option menu below."
-msgstr "{cmd} veya aşağıdaki seçenek menüsü"
+msgstr "{cmd} veya aşağıdaki seçenek menüsü."
 
 #: src/modules/ranks/settings.py:103
 msgctxt "guildset:rank_channel"
