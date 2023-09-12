@@ -21,7 +21,6 @@ from .settings import TimerSettings
 from .settingui import TimerConfigUI
 from .timer import Timer
 from .options import TimerOptions
-from .ui import TimerStatusUI
 from .ui.config import TimerOptionsUI
 
 _p = babel._p
@@ -317,29 +316,24 @@ class TimerCog(LionCog):
         await timer.destroy(**kwargs)
 
     # ----- Timer Commands -----
-    @cmds.hybrid_group(
-        name=_p('cmd:pomodoro', "timers"),
-        description=_p('cmd:pomodoro|desc', "Base group for all pomodoro timer commands.")
-    )
-    @cmds.guild_only()
-    async def pomodoro_group(self, ctx: LionContext):
-        ...
 
     # -- User Display Commands --
-    @pomodoro_group.command(
-        name=_p('cmd:pomodoro_status', "show"),
-        description=_p('cmd:pomodoro_status|desc', "Display the status of a single pomodoro timer.")
+    @cmds.hybrid_command(
+        name=_p('cmd:timer', "timer"),
+        description=_p('cmd:timer|desc', "Show your current (or selected) pomodoro timer.")
     )
     @appcmds.rename(
-        channel=_p('cmd:pomodoro_status|param:channel', "timer_channel")
+        channel=_p('cmd:timer|param:channel', "timer_channel")
     )
     @appcmds.describe(
         channel=_p(
-            'cmd:pomodoro_status|param:channel|desc',
-            "The channel for which you want to view the timer."
+            'cmd:timer|param:channel|desc',
+            "Select a timer to display (by selecting the timer voice channel)"
         )
     )
-    async def cmd_pomodoro_status(self, ctx: LionContext, channel: discord.VoiceChannel):
+    @cmds.guild_only()
+    async def cmd_timer(self, ctx: LionContext,
+                        channel: Optional[discord.VoiceChannel] = None):
         t = self.bot.translator.t
 
         if not ctx.guild:
@@ -347,27 +341,63 @@ class TimerCog(LionCog):
         if not ctx.interaction:
             return
 
-        # Check if a timer exists in the given channel
-        timer = self.get_channel_timer(channel.id)
-        if timer is None:
-            embed = discord.Embed(
+        timers: list[Timer] = list(self.get_guild_timers(ctx.guild.id).values())
+        error: Optional[discord.Embed] = None
+
+        if not timers:
+            # Guild has no timers
+            error = discord.Embed(
                 colour=discord.Colour.brand_red(),
                 description=t(_p(
-                    'cmd:pomodoro_status|error:no_timer',
-                    "The channel {channel} does not have a timer set up!"
-                )).format(channel=channel.mention)
+                    'cmd:timer|error:no_timers|desc',
+                    "**This server has no timers set up!**\n"
+                    "Ask an admin to set up and configure a timer with {create_cmd} first, "
+                    "or rent a private room with {room_cmd} and create one yourself!"
+                )).format(create_cmd=self.bot.core.mention_cmd('pomodoro create'),
+                          room_cmd=self.bot.core.mention_cmd('rooms rent'))
             )
-            await ctx.reply(embed=embed, ephemeral=True)
-        else:
-            # Display the timer status ephemerally
-            status = await timer.current_status(with_notify=False, with_warnings=False)
-            await ctx.reply(**status.send_args, ephemeral=True)
+        elif channel is None:
+            if ctx.author.voice and ctx.author.voice.channel:
+                channel = ctx.author.voice.channel
+            else:
+                error = discord.Embed(
+                    colour=discord.Colour.brand_red(),
+                    description=t(_p(
+                        'cmd:timer|error:no_channel|desc',
+                        "**I don't know what timer to show you.**\n"
+                        "No channel selected and you are not in a voice channel! "
+                        "Use {timers_cmd} to list the available timers in this server."
+                    )).format(timers_cmd=self.bot.core.mention_cmd('timers'))
+                )
 
-    @pomodoro_group.command(
-        name=_p('cmd:pomodoro_list', "list"),
-        description=_p('cmd:pomodoro_list|desc', "List the available pomodoro timers.")
+        if channel is not None:
+            timer = self.get_channel_timer(channel.id)
+            if timer is None:
+                error = discord.Embed(
+                    colour=discord.Colour.brand_red(),
+                    description=t(_p(
+                        'cmd:timer|error:no_timer_in_channel',
+                        "The channel {channel} is not a pomodoro timer room!\n"
+                        "Use {timers_cmd} to list the available timers in this server."
+                    )).format(
+                        channel=channel.mention,
+                        timers_cmd=self.bot.core.mention_cmd('timers')
+                    )
+                )
+            else:
+                # Display the timer status ephemerally
+                status = await timer.current_status(with_notify=False, with_warnings=False)
+                await ctx.reply(**status.send_args, ephemeral=True)
+
+        if error is not None:
+            await ctx.reply(embed=error, ephemeral=True)
+
+    @cmds.hybrid_command(
+        name=_p('cmd:timers', "timers"),
+        description=_p('cmd:timers|desc', "List the available pomodoro timer rooms.")
     )
-    async def cmd_pomodoro_list(self, ctx: LionContext):
+    @cmds.guild_only()
+    async def cmd_timers(self, ctx: LionContext):
         t = self.bot.translator.t
 
         if not ctx.guild:
@@ -376,6 +406,8 @@ class TimerCog(LionCog):
             return
 
         timers = list(self.get_guild_timers(ctx.guild.id).values())
+
+        # Extra filter here to exclude owned timers, but include ones the author is a member of
         visible_timers = [
             timer for timer in timers
             if timer.channel and timer.channel.permissions_for(ctx.author).connect
@@ -383,26 +415,29 @@ class TimerCog(LionCog):
         ]
 
         if not timers:
-            # No timers in this guild!
+            # No timers in the guild
             embed = discord.Embed(
                 colour=discord.Colour.brand_red(),
                 description=t(_p(
-                    'cmd:pomodoro_list|error:no_timers',
-                    "No timers have been setup in this server!\n"
-                    "You can ask an admin to create one with {command}, "
-                    "or rent a private room and create one yourself!"
-                )).format(command='`/pomodoro admin create`')
+                    'cmd:timer|error:no_timers|desc',
+                    "**This server has no timers set up!**\n"
+                    "Ask an admin to set up and configure a timer with {create_cmd} first, "
+                    "or rent a private room with {room_cmd} and create one yourself!"
+                )).format(create_cmd=self.bot.core.mention_cmd('pomodoro create'),
+                          room_cmd=self.bot.core.mention_cmd('rooms rent'))
             )
-            # TODO: Update command mention when we have command mentions
             await ctx.reply(embed=embed, ephemeral=True)
         elif not visible_timers:
             # Timers exist, but the member can't see any
             embed = discord.Embed(
                 colour=discord.Colour.brand_red(),
                 description=t(_p(
-                    'cmd:pomodoro_list|error:no_visible_timers',
-                    "There are no timers you can join in this server!"
-                ))
+                    'cmd:timer|error:no_visible_timers|desc',
+                    "**There are no available pomodoro timers!**\n"
+                    "Ask an admin to set up a new timer with {create_cmd}, "
+                    "or rent a private room with {room_cmd} and create one yourself!"
+                )).format(create_cmd=self.bot.core.mention_cmd('pomodoro create'),
+                          room_cmd=self.bot.core.mention_cmd('rooms rent'))
             )
             await ctx.reply(embed=embed, ephemeral=True)
         else:
@@ -410,8 +445,8 @@ class TimerCog(LionCog):
             embed = discord.Embed(
                 colour=discord.Colour.orange(),
                 title=t(_p(
-                    'cmd:pomodoro_list|embed:timer_list|title',
-                    "Pomodoro Timers in **{guild}**"
+                    'cmd:timers|embed:timer_list|title',
+                    "Pomodoro Timer Rooms in **{guild}**"
                 )).format(guild=ctx.guild.name),
             )
             for timer in visible_timers:
@@ -419,25 +454,26 @@ class TimerCog(LionCog):
                 if stage is None:
                     if timer.auto_restart:
                         lazy_status = _p(
-                            'cmd:pomodoro_list|status:stopped_auto',
-                            "`{pattern}` timer is stopped with no members!\nJoin {channel} to restart it."
+                            'cmd:timers|status:stopped_auto',
+                            "`{pattern}` timer is stopped with no members!\n"
+                            "Join {channel} to restart it."
                         )
                     else:
                         lazy_status = _p(
-                            'cmd:pomodoro_list|status:stopped_manual',
+                            'cmd:timers|status:stopped_manual',
                             "`{pattern}` timer is stopped with `{members}` members!\n"
                             "Join {channel} and press `Start` to start it!"
                         )
                 else:
                     if stage.focused:
                         lazy_status = _p(
-                            'cmd:pomodoro_list|status:running_focus',
+                            'cmd:timers|status:running_focus',
                             "`{pattern}` timer is running with `{members}` members!\n"
                             "Currently **focusing**, with break starting {timestamp}"
                         )
                     else:
                         lazy_status = _p(
-                            'cmd:pomodoro_list|status:running_break',
+                            'cmd:timers|status:running_break',
                             "`{pattern}` timer is running with `{members}` members!\n"
                             "Currently **resting**, with focus starting {timestamp}"
                         )
@@ -451,18 +487,19 @@ class TimerCog(LionCog):
             await ctx.reply(embed=embed, ephemeral=False)
 
     # -- Admin Commands --
-    @pomodoro_group.group(
-        name=_p('cmd:pomodoro_admin', "admin"),
-        desc=_p('cmd:pomodoro_admin|desc', "Command group for pomodoro admin controls.")
+    @cmds.hybrid_group(
+        name=_p('cmd:pomodoro', "pomodoro"),
+        description=_p('cmd:pomodoro|desc', "Create and configure pomodoro timer rooms.")
     )
-    async def pomodoro_admin_group(self, ctx: LionContext):
+    @cmds.guild_only()
+    async def pomodoro_group(self, ctx: LionContext):
         ...
 
-    @pomodoro_admin_group.command(
+    @pomodoro_group.command(
         name=_p('cmd:pomodoro_create', "create"),
         description=_p(
             'cmd:pomodoro_create|desc',
-            "Create a new Pomodoro timer. Requires admin permissions."
+            "Create a new Pomodoro timer. Requires manage channel permissions."
         )
     )
     @appcmds.rename(
@@ -495,17 +532,15 @@ class TimerCog(LionCog):
         if not ctx.interaction:
             return
 
-        # Check permissions
-        if not ctx.author.guild_permissions.administrator:
-            embed = discord.Embed(
-                colour=discord.Colour.brand_red(),
-                description=t(_p(
-                    'cmd:pomodoro_create|error:insufficient_perms',
-                    "Only server administrators can create timers!"
-                ))
-            )
-            await ctx.reply(embed=embed, ephemeral=True)
-            return
+        # Get private room if applicable
+        room_cog = self.bot.get_cog('RoomCog')
+        if room_cog is None:
+            logger.warning("Running pomodoro create without private room cog loaded!")
+            private_room = None
+        else:
+            rooms = room_cog.get_rooms(ctx.guild.id, ctx.author.id)
+            cid = next((cid for cid, room in rooms.items() if room.data.ownerid == ctx.author.id), None)
+            private_room = ctx.guild.get_channel(cid) if cid is not None else None
 
         # If a voice channel was not given, attempt to resolve it or make one
         if channel is None:
@@ -514,112 +549,155 @@ class TimerCog(LionCog):
                 channel = ctx.channel
             elif ctx.author.voice and ctx.author.voice.channel:
                 channel = ctx.author.voice.channel
+            elif not ctx.author.guild_permissions.manage_channels:
+                embed = discord.Embed(
+                    colour=discord.Colour.brand_red(),
+                    title=t(_p(
+                        'cmd:pomodoro_create|new_channel|error:your_insufficient_perms|title',
+                        "Could not create pomodoro voice channel!"
+                    )),
+                    description=t(_p(
+                        'cmd:pomodoro_create|new_channel|error:your_insufficient_perms',
+                        "No `timer_channel` was provided, and you lack the 'Manage Channels` permission "
+                        "required to create a new timer room!"
+                    ))
+                )
+                await ctx.reply(embed=embed, ephemeral=True)
+            elif not ctx.guild.me.guild_permissions.manage_channels:
+                # Error
+                embed = discord.Embed(
+                    colour=discord.Colour.brand_red(),
+                    title=t(_p(
+                        'cmd:pomodoro_create|new_channel|error:my_insufficient_perms|title',
+                        "Could not create pomodoro voice channel!"
+                    )),
+                    description=t(_p(
+                        'cmd:pomodoro_create|new_channel|error:my_insufficient_perms|desc',
+                        "No `timer_channel` was provided, and I lack the 'Manage Channels' permission "
+                        "required to create a new voice channel."
+                    ))
+                )
+                await ctx.reply(embed=embed, ephemeral=True)
             else:
                 # Attempt to create new channel in current category
-                if ctx.guild.me.guild_permissions.manage_channels:
-                    try:
-                        channel = await ctx.guild.create_voice_channel(
-                            name=name or "Timer",
-                            reason="Creating Pomodoro Voice Channel",
-                            category=ctx.channel.category
-                        )
-                    except discord.HTTPException:
-                        embed = discord.Embed(
-                            colour=discord.Colour.brand_red(),
-                            title=t(_p(
-                                'cmd:pomodoro_create|error:channel_create_failed|title',
-                                "Could not create pomodoro voice channel!"
-                            )),
-                            description=t(_p(
-                                'cmd:pomodoro_create|error:channel_create|desc',
-                                "Failed to create a new pomodoro voice channel due to an unknown "
-                                "Discord communication error. "
-                                "Please try creating the channel manually and pass it to the "
-                                "`timer_channel` argument of this command."
-                            ))
-                        )
-                        await ctx.reply(embed=embed, ephemeral=True)
-                        return
-                else:
-                    # Error
+                try:
+                    channel = await ctx.guild.create_voice_channel(
+                        name=name or t(_p(
+                            'cmd:pomodoro_create|new_channel|default_name',
+                            "Timer"
+                        )),
+                        reason=t(_p(
+                            'cmd:pomodoro_create|new_channel|audit_reason',
+                            "Creating Pomodoro Voice Channel"
+                        )),
+                        category=ctx.channel.category
+                    )
+                except discord.HTTPException:
                     embed = discord.Embed(
                         colour=discord.Colour.brand_red(),
                         title=t(_p(
-                            'cmd:pomodoro_create|error:channel_create_permissions|title',
+                            'cmd:pomodoro_create|new_channel|error:channel_create_failed|title',
                             "Could not create pomodoro voice channel!"
                         )),
                         description=t(_p(
-                            'cmd:pomodoro_create|error:channel_create_permissions|desc',
-                            "No `timer_channel` was provided, and I lack the `MANAGE_CHANNELS` permission "
-                            "needed to create a new voice channel."
+                            'cmd:pomodoro_create|new_channel|error:channel_create_failed|desc',
+                            "Failed to create a new pomodoro voice channel due to an unknown "
+                            "Discord communication error. "
+                            "Please try creating the channel manually and pass it to the "
+                            "`timer_channel` argument of this command."
                         ))
                     )
                     await ctx.reply(embed=embed, ephemeral=True)
-                    return
 
-        # At this point, we have a voice channel
-        # Make sure a timer does not already exist in the channel
-        if (self.get_channel_timer(channel.id)) is not None:
+        if not channel:
+            # Already handled the creation error
+            pass
+        elif (self.get_channel_timer(channel.id)) is not None:
+            # A timer already exists in the resolved channel
             embed = discord.Embed(
                 colour=discord.Colour.brand_red(),
                 description=t(_p(
-                    'cmd:pomodoro_create|error:timer_exists',
-                    "A timer already exists in {channel}! Use `/pomodoro admin edit` to modify it."
-                )).format(channel=channel.mention)
+                    'cmd:pomodoro_create|add_timer|error:timer_exists',
+                    "A timer already exists in {channel}! "
+                    "Reconfigure it with {edit_cmd}."
+                )).format(
+                    channel=channel.mention,
+                    edit_cmd=self.bot.core.mention_cmd('pomodoro edit')
+                )
             )
             await ctx.reply(embed=embed, ephemeral=True)
-            return
+        elif not channel.permissions_for(ctx.author).manage_channels:
+            # Note that this takes care of private room owners as well
+            embed = discord.Embed(
+                colour=discord.Colour.brand_red(),
+                description=t(_p(
+                    'cmd:pomodoro_create|add_timer|error:your_insufficient_perms',
+                    "You must have the 'Manage Channel' permission in {channel} "
+                    "in order to add a timer there!"
+                ))
+            )
+            await ctx.reply(embed=embed, ephemeral=True)
+        else:
+            # Finally, we are sure they can create a timer here
+            # Build the creation arguments from the rest of the provided args
+            provided = {
+                'focus_length': focus_length * 60,
+                'break_length': break_length * 60,
+                'inactivity_threshold': inactivity_threshold,
+                'voice_alerts': voice_alerts,
+                'name': name or channel.name,
+                'channel_name': channel_name or None,
+            }
+            create_args = {'channelid': channel.id, 'guildid': channel.guild.id}
 
-        # Build the creation arguments from the rest of the provided args
-        provided = {
-            'focus_length': focus_length * 60,
-            'break_length': break_length * 60,
-            'notification_channel': notification_channel,
-            'inactivity_threshold': inactivity_threshold,
-            'manager_role': manager_role,
-            'voice_alerts': voice_alerts,
-            'name': name or channel.name,
-            'channel_name': channel_name or None,
-        }
+            owned = (private_room and (channel == private_room))
+            if owned:
+                provided['manager_role'] = manager_role or ctx.guild.default_role
+                create_args['notification_channelid'] = channel.id
+                create_args['ownerid'] = ctx.author.id
+            else:
+                provided['notification_channel'] = notification_channel
+                provided['manager_role'] = manager_role
 
-        create_args = {'channelid': channel.id, 'guildid': channel.guild.id}
-        for param, value in provided.items():
-            if value is not None:
-                setting, _ = _param_options[param]
-                create_args[setting._column] = setting._data_from_value(channel.id, value)
+            for param, value in provided.items():
+                if value is not None:
+                    setting, _ = _param_options[param]
+                    create_args[setting._column] = setting._data_from_value(channel.id, value)
 
-        # Permission checks and input checking done
-        await ctx.interaction.response.defer(thinking=True)
+            # Permission checks and input checking done
+            await ctx.interaction.response.defer(thinking=True)
 
-        # Create timer
-        timer = await self.create_timer(**create_args)
+            # Create timer
+            timer = await self.create_timer(**create_args)
 
-        # Start timer
-        await timer.start()
+            # Start timer
+            await timer.start()
 
-        # Ack with a config UI
-        ui = TimerOptionsUI(self.bot, timer, TimerRole.ADMIN, callerid=ctx.author.id)
-        await ui.run(
-            ctx.interaction,
-            content=t(_p(
-                'cmd:pomodoro_create|response:success|content',
-                "Timer created successfully! Use the panel below to reconfigure."
-            ))
-        )
-        await ui.wait()
+            # Ack with a config UI
+            ui = TimerOptionsUI(
+                self.bot, timer, TimerRole.ADMIN if not owned else TimerRole.OWNER, callerid=ctx.author.id
+            )
+            await ui.run(
+                ctx.interaction,
+                content=t(_p(
+                    'cmd:pomodoro_create|response:success|content',
+                    "Timer created successfully! Use the panel below to reconfigure."
+                ))
+            )
+            await ui.wait()
 
-    @pomodoro_admin_group.command(
+    @pomodoro_group.command(
         name=_p('cmd:pomodoro_destroy', "destroy"),
         description=_p(
             'cmd:pomodoro_destroy|desc',
-            "Delete a pomodoro timer from a voice channel. Requires admin permissions."
+            "Remove a pomodoro timer from a voice channel."
         )
     )
     @appcmds.rename(
         channel=_p('cmd:pomodoro_destroy|param:channel', "timer_channel"),
     )
     @appcmds.describe(
-        channel=_p('cmd:pomodoro_destroy|param:channel', "Channel with the timer to delete."),
+        channel=_p('cmd:pomodoro_destroy|param:channel', "Select a timer voice channel to remove the timer from."),
     )
     async def cmd_pomodoro_delete(self, ctx: LionContext, channel: discord.VoiceChannel):
         t = self.bot.translator.t
@@ -644,46 +722,42 @@ class TimerCog(LionCog):
             return
 
         # Check the user has sufficient permissions to delete the timer
-        # TODO: Should we drop the admin requirement down to manage channel?
         timer_role = timer.get_member_role(ctx.author)
-        if timer.owned:
-            if timer_role < TimerRole.OWNER:
-                embed = discord.Embed(
-                    colour=discord.Colour.brand_red(),
-                    description=t(_p(
-                        'cmd:pomodoro_destroy|error:insufficient_perms|owned',
-                        "You need to be an administrator or own this channel to remove this timer!"
-                    ))
-                )
-                await ctx.interaction.response.send_message(embed=embed, ephemeral=True)
-                return
-        elif timer_role is not TimerRole.ADMIN:
+        if timer.owned and timer_role < TimerRole.OWNER:
+            embed = discord.Embed(
+                colour=discord.Colour.brand_red(),
+                description=t(_p(
+                    'cmd:pomodoro_destroy|error:insufficient_perms|owned',
+                    "You need to be an administrator or own this channel to remove this timer!"
+                ))
+            )
+            await ctx.interaction.response.send_message(embed=embed, ephemeral=True)
+        elif timer_role is not TimerRole.ADMIN and not channel.permissions_for(ctx.author).manage_channels:
             embed = discord.Embed(
                 colour=discord.Colour.brand_red(),
                 description=t(_p(
                     'cmd:pomodoro_destroy|error:insufficient_perms|notowned',
-                    "You need to be a server administrator to remove this timer!"
-                ))
+                    "You need to have the `Manage Channels` permission in {channel} to remove this timer!"
+                )).format(channel=channel.mention)
             )
             await ctx.interaction.response.send_message(embed=embed, ephemeral=True)
-            return
+        else:
+            await ctx.interaction.response.defer(thinking=True)
+            await self.destroy_timer(timer, reason="Deleted by command")
+            embed = discord.Embed(
+                colour=discord.Colour.brand_green(),
+                description=t(_p(
+                    'cmd:pomdoro_destroy|response:success|description',
+                    "Timer successfully removed from {channel}."
+                )).format(channel=channel.mention)
+            )
+            await ctx.interaction.edit_original_response(embed=embed)
 
-        await ctx.interaction.response.defer(thinking=True)
-        await self.destroy_timer(timer, reason="Deleted by command")
-        embed = discord.Embed(
-            colour=discord.Colour.brand_green(),
-            description=t(_p(
-                'cmd:pomdoro_destroy|response:success|description',
-                "Timer successfully removed from {channel}."
-            )).format(channel=channel.mention)
-        )
-        await ctx.interaction.edit_original_response(embed=embed)
-
-    @pomodoro_admin_group.command(
+    @pomodoro_group.command(
         name=_p('cmd:pomodoro_edit', "edit"),
         description=_p(
             'cmd:pomodoro_edit|desc',
-            "Edit a Timer"
+            "Reconfigure a pomodoro timer."
         )
     )
     @appcmds.rename(
@@ -693,7 +767,7 @@ class TimerCog(LionCog):
     @appcmds.describe(
         channel=_p(
             'cmd:pomodoro_edit|param:channel|desc',
-            "Channel holding the timer to edit."
+            "Select a timer voice channel to reconfigure."
         ),
         **{param: option._desc for param, (option, _) in _param_options.items()}
     )
@@ -827,8 +901,6 @@ class TimerCog(LionCog):
     @low_management_ward
     async def configure_pomodoro_command(self, ctx: LionContext,
                                          pomodoro_channel: Optional[discord.VoiceChannel | discord.TextChannel] = None):
-        t = self.bot.translator.t
-
         # Type checking guards
         if not ctx.guild:
             return
