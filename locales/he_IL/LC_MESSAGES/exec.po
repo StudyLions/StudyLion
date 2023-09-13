@@ -84,7 +84,7 @@ msgstr "Name of the extesion to reload. See autocomplete for options."
 
 #: src/modules/sysadmin/exec_cog.py:389
 msgid "Whether to force an extension reload even if it doesn't exist."
-msgstr ""
+msgstr "Whether to force an extension reload even if it doesn't exist."
 
 #: src/modules/sysadmin/exec_cog.py:425
 msgid "shutdown"
