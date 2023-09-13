@@ -686,12 +686,12 @@ msgstr "Duración de la etapa de pausa del temporizador en minutos."
 #: src/modules/pomodoro/options.py:289
 msgctxt "timerset:break_length|accepts"
 msgid "A positive integer number of minutes."
-msgstr ""
+msgstr "Un número entero positivo de minutos."
 
 #: src/modules/pomodoro/options.py:314
 msgctxt "timerset:break_length|desc"
 msgid "Please enter a positive number of minutes."
-msgstr ""
+msgstr "Introduzca un número positivo de minutos."
 
 #: src/modules/pomodoro/settings.py:19
 msgctxt "guildset:pomodoro_channel"
