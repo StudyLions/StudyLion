@@ -603,11 +603,12 @@ msgstr "alertas_voz"
 msgctxt "timerset:voice_alerts|desc"
 msgid "Whether to join the voice channel and announce focus and break stages."
 msgstr ""
+"Si se une al canal de voz y anuncia las etapas de concentración y pausa."
 
 #: src/modules/pomodoro/options.py:162
 msgctxt "timerset:base_name"
 msgid "name"
-msgstr ""
+msgstr "nombre"
 
 #: src/modules/pomodoro/options.py:165
 msgctxt "timerset:base_name|desc"
