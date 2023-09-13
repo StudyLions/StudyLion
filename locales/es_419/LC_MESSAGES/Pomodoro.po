@@ -578,12 +578,14 @@ msgstr "El umbral de inactividad debe ser un número entero positivo."
 #: src/modules/pomodoro/options.py:120
 msgctxt "timerset:manager_role"
 msgid "manager_role"
-msgstr ""
+msgstr "rol_directivo"
 
 #: src/modules/pomodoro/options.py:123
 msgctxt "timerset:manager_role|desc"
 msgid "Role allowed to start, stop, and edit the focus/break lengths."
 msgstr ""
+"Función que permite iniciar, detener y editar las longitudes de "
+"enfoque/interrupción."
 
 #: src/modules/pomodoro/options.py:137
 msgctxt "timerset:manager_role|format:notset"
