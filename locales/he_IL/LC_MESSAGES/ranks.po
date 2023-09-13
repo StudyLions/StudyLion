@@ -595,7 +595,7 @@ msgstr "נותן למשתמשים את הרולי דרגות שלהם"
 #, possible-python-brace-format
 msgctxt "ui:refresh_ranks|embed|field:add|value"
 msgid "{progress} {done}/{total} given"
-msgstr ""
+msgstr "{progress} {done}/{total} ניתן"
 
 #: src/modules/ranks/ui/refresh.py:236
 #, possible-python-brace-format
