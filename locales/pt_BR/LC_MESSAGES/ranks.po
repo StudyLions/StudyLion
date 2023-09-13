@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 22:43+0300\n"
+"POT-Creation-Date: 2023-09-13 08:47+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
@@ -21,34 +21,34 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: src/modules/ranks/cog.py:73
+#: src/modules/ranks/cog.py:76
 msgctxt "cmd:configure_ranks|param:rank_type|choice:voice"
 msgid "Voice"
 msgstr "Em Voz"
 
-#: src/modules/ranks/cog.py:74
+#: src/modules/ranks/cog.py:77
 msgctxt "cmd:configure_ranks|param:rank_type|choice:xp"
 msgid "XP"
 msgstr "XP"
 
-#: src/modules/ranks/cog.py:75
+#: src/modules/ranks/cog.py:78
 msgctxt "cmd:configure_ranks|param:rank_type|choice:message"
 msgid "Message"
 msgstr "Conversa"
 
-#: src/modules/ranks/cog.py:383
+#: src/modules/ranks/cog.py:406
 msgctxt "event:rank_update|embed:notify"
 msgid "New Activity Rank Attained!"
 msgstr "Novo Nível de Classificação Alcançado!"
 
-#: src/modules/ranks/cog.py:494
+#: src/modules/ranks/cog.py:516
 msgctxt "rank_refresh|error:roles_dne|desc"
 msgid "Some ranks have invalid or deleted roles! Please remove them first."
 msgstr ""
 "Algumas classificações estão com cargos inválidos ou deletados. Por favor, "
 "remova-os primeiro."
 
-#: src/modules/ranks/cog.py:504
+#: src/modules/ranks/cog.py:526
 #, possible-python-brace-format
 msgctxt "rank_refresh|error:unassignable_roles|desc"
 msgid ""
@@ -58,18 +58,18 @@ msgstr ""
 "E não tenho permissões suficientes para designar os seguintes cargo(s):\n"
 "{roles}"
 
-#: src/modules/ranks/cog.py:574
+#: src/modules/ranks/cog.py:596
 msgctxt "rank_refresh|remove_roles|audit"
 msgid "Removing invalid rank role."
 msgstr "Removendo o cargo de nível inválido."
 
-#: src/modules/ranks/cog.py:588
+#: src/modules/ranks/cog.py:610
 #, possible-python-brace-format
 msgctxt "rank_refresh|remove_roles|small_error"
 msgid "*Could not remove ranks from {member}*"
 msgstr "*Não consegui remover os níveis de {member}*"
 
-#: src/modules/ranks/cog.py:595
+#: src/modules/ranks/cog.py:617
 msgctxt "rank_refresh|remove_roles|error:too_many_issues"
 msgid ""
 "Too many issues occurred while removing ranks! Please check my permissions "
@@ -79,18 +79,18 @@ msgstr ""
 "verifique se tenho permissões suficientes e tente novamente em alguns "
 "minutos."
 
-#: src/modules/ranks/cog.py:609
+#: src/modules/ranks/cog.py:631
 msgctxt "rank_refresh|add_roles|audit"
 msgid "Adding rank role from refresh"
 msgstr "Atualizando a designação dos cargos de nível"
 
-#: src/modules/ranks/cog.py:623
+#: src/modules/ranks/cog.py:645
 #, possible-python-brace-format
 msgctxt "rank_refresh|add_roles|small_error"
 msgid "*Could not add {role} to {member}*"
 msgstr "*Não pude adicionar {role} ao {member}*"
 
-#: src/modules/ranks/cog.py:630
+#: src/modules/ranks/cog.py:652
 msgctxt "rank_refresh|add_roles|error:too_many_issues"
 msgid ""
 "Too many issues occurred while adding ranks! Please check my permissions and"
@@ -100,22 +100,22 @@ msgstr ""
 "verifique minhas permissões e tente novamente em alguns minutos."
 
 #. ---------- Commands ----------
-#: src/modules/ranks/cog.py:655
+#: src/modules/ranks/cog.py:677
 msgctxt "cmd:ranks"
 msgid "ranks"
 msgstr "níveis"
 
-#: src/modules/ranks/cog.py:687
+#: src/modules/ranks/cog.py:709
 msgctxt "cmd:configure_ranks"
 msgid "ranks"
 msgstr "níveis"
 
-#: src/modules/ranks/cog.py:688
+#: src/modules/ranks/cog.py:710
 msgctxt "cmd:configure_ranks|desc"
 msgid "Configure Activity Ranks"
 msgstr "Configure os Níveis de Atividade"
 
-#: src/modules/ranks/cog.py:748
+#: src/modules/ranks/cog.py:770
 #, possible-python-brace-format
 msgctxt ""
 "cmd:configure_ranks|response:updated|setting:notification|withdm_withchannel"
@@ -126,14 +126,14 @@ msgstr ""
 "As atualizações de níveis de classificação serão enviados por "
 "**mensagem_direta** quando possível, ou em outro caso {channel}."
 
-#: src/modules/ranks/cog.py:754
+#: src/modules/ranks/cog.py:776
 msgctxt ""
 "cmd:configure_ranks|response:updated|setting:notification|withdm_nochannel"
 msgid "Rank update notifications will be sent via **direct message**."
 msgstr ""
 "As atualizações da classificação será enviada por **mensagem_direta**."
 
-#: src/modules/ranks/cog.py:760
+#: src/modules/ranks/cog.py:782
 #, possible-python-brace-format
 msgctxt ""
 "cmd:configure_ranks|response:updated|setting:notification|nodm_withchannel"
@@ -141,7 +141,7 @@ msgid "Rank update notifications will be sent to {channel}."
 msgstr ""
 "Atualização dos níveis das categorias serão enviadas para o {channel}."
 
-#: src/modules/ranks/cog.py:765
+#: src/modules/ranks/cog.py:787
 msgctxt ""
 "cmd:configure_ranks|response:updated|setting:notification|nodm_nochannel"
 msgid "Members will not be notified when their activity rank updates."
@@ -600,28 +600,28 @@ msgstr "Removendo os ranks inválidos dos membros."
 #: src/modules/ranks/ui/refresh.py:202
 #, possible-python-brace-format
 msgctxt "ui:refresh_ranks|embed|field:remove|value"
-msgid "0 {progress} {total}"
-msgstr "0 {progress} {total}"
+msgid "{progress} {done}/{total} removed"
+msgstr ""
 
-#: src/modules/ranks/ui/refresh.py:212
+#: src/modules/ranks/ui/refresh.py:213
 #, possible-python-brace-format
 msgctxt "ui:refresh_ranks|embed|line:remove"
 msgid "**Removed invalid ranks:** {done}/{target}"
 msgstr "**Cargos inválidos removidos:** {done}/{target}"
 
-#: src/modules/ranks/ui/refresh.py:220
+#: src/modules/ranks/ui/refresh.py:221
 msgctxt "ui:refresh_ranks|embed|field:add|name"
 msgid "Giving members their rank roles"
 msgstr ""
 "Atribuindo os cargos de acordo com os níveis de classificação dos membros."
 
-#: src/modules/ranks/ui/refresh.py:224
+#: src/modules/ranks/ui/refresh.py:225
 #, possible-python-brace-format
 msgctxt "ui:refresh_ranks|embed|field:add|value"
-msgid "0 {progress} {total}"
-msgstr "0 {progress} {total}"
+msgid "{progress} {done}/{total} given"
+msgstr ""
 
-#: src/modules/ranks/ui/refresh.py:234
+#: src/modules/ranks/ui/refresh.py:236
 #, possible-python-brace-format
 msgctxt "ui:refresh_ranks|embed|line:add"
 msgid "**Updated member ranks:** {done}/{target}"
@@ -678,27 +678,42 @@ msgctxt "dash:rank|dropdown|placeholder"
 msgid "Activity Rank Panel"
 msgstr "Painel de Classificação dos Membros"
 
-#: src/modules/ranks/ui/overview.py:92
+#: src/modules/ranks/ui/overview.py:94
 msgctxt "ui:rank_overview|button:auto|label"
 msgid "Auto Create"
 msgstr "Criar Automaticamente"
 
-#: src/modules/ranks/ui/overview.py:107
+#: src/modules/ranks/ui/overview.py:109
 msgctxt "ui:rank_overview|button:refresh|label"
 msgid "Refresh Member Ranks"
 msgstr "Atualizar Níveis Classificatórios dos Membros"
 
-#: src/modules/ranks/ui/overview.py:123
+#: src/modules/ranks/ui/overview.py:121
+msgctxt "ui:rank_overview|button:clear|confirm"
+msgid "Are you sure you want to **delete all activity ranks** in this server?"
+msgstr ""
+
+#: src/modules/ranks/ui/overview.py:126
+msgctxt "ui:rank_overview|button:clear|confirm|button:yes"
+msgid "Yes, clear ranks"
+msgstr ""
+
+#: src/modules/ranks/ui/overview.py:132
+msgctxt "ui:rank_overview|button:clear|confirm|button:no"
+msgid "Cancel"
+msgstr ""
+
+#: src/modules/ranks/ui/overview.py:148
 msgctxt "ui:rank_overview|button:clear|label"
 msgid "Clear Ranks"
 msgstr "Limpar Níveis Classificatórios"
 
-#: src/modules/ranks/ui/overview.py:153
+#: src/modules/ranks/ui/overview.py:178
 msgctxt "ui:rank_overview|button:create|label"
 msgid "Create Rank"
 msgstr "Criar Níveis Classificatórios"
 
-#: src/modules/ranks/ui/overview.py:169
+#: src/modules/ranks/ui/overview.py:194
 #, possible-python-brace-format
 msgctxt "ui:rank_overview|menu:roles|error:above_caller"
 msgid ""
@@ -709,19 +724,19 @@ msgstr ""
 "nível classificatório. Você provavelmente só possa gerenciar cargos abaixo "
 "do seu!"
 
-#: src/modules/ranks/ui/overview.py:175
+#: src/modules/ranks/ui/overview.py:200
 msgctxt "ui:rank_overview|menu:roles|error:above_caller|title"
 msgid "Insufficient permissions!"
 msgstr "Permissões Insuficientes!"
 
-#: src/modules/ranks/ui/overview.py:208
+#: src/modules/ranks/ui/overview.py:233
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:is_default"
 msgid "The @everyone role cannot be removed, and cannot be a rank!"
 msgstr ""
 "O cargo @everyone não pode ser removido, nem pode ser um cargo de nível de "
 "classificação."
 
-#: src/modules/ranks/ui/overview.py:213
+#: src/modules/ranks/ui/overview.py:238
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:is_managed"
 msgid ""
 "The role is managed by another application or integration, and cannot be a "
@@ -730,7 +745,7 @@ msgstr ""
 "Este cargo é gerenciado por outra aplicação ou Integração, e não pode ser "
 "usado para um nível."
 
-#: src/modules/ranks/ui/overview.py:218
+#: src/modules/ranks/ui/overview.py:243
 msgctxt ""
 "ui:rank_overview|menu:roles|error:not_assignable|suberror:no_permissions"
 msgid ""
@@ -740,7 +755,7 @@ msgstr ""
 "Eu não tenho permissão de ˋMENAGE_ROLESˋ neste servidor, então não posso "
 "gerenciar uma classificação em níveis."
 
-#: src/modules/ranks/ui/overview.py:223
+#: src/modules/ranks/ui/overview.py:248
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:above_me"
 msgid ""
 "This role is above my top role in the role hierarchy, so I cannot add or "
@@ -749,29 +764,56 @@ msgstr ""
 "Este cargo é acima do meu cargo mais elevado, então eu não posso atribuí-lo,"
 " ou removê-lo!"
 
-#: src/modules/ranks/ui/overview.py:229
+#: src/modules/ranks/ui/overview.py:254
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:other"
 msgid "I am not able to manage the selected role, so it cannot be a rank!"
 msgstr ""
 "Eu não estou habilitado para gerenciar o cargo selecionado, então ele não "
 "poderá ser atribuído como um nível de classificação."
 
-#: src/modules/ranks/ui/overview.py:235
+#: src/modules/ranks/ui/overview.py:260
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|title"
 msgid "Could not create rank!"
 msgstr "Não pude criar o nível!"
 
-#: src/modules/ranks/ui/overview.py:259
+#: src/modules/ranks/ui/overview.py:284
 msgctxt "ui:rank_overview|menu:roles|placeholder"
 msgid "Create from role"
 msgstr "Criar por cargos"
 
-#: src/modules/ranks/ui/overview.py:276
+#: src/modules/ranks/ui/overview.py:301
 msgctxt "ui:rank_overview|menu:ranks|placeholder"
 msgid "View or edit rank"
 msgstr "Ver ou editar níveis de classificação"
 
-#: src/modules/ranks/ui/overview.py:362
+#: src/modules/ranks/ui/overview.py:387
+msgctxt "ui:rank_overview|embed|field:note|name"
+msgid "Note"
+msgstr ""
+
+#: src/modules/ranks/ui/overview.py:393
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|field:note|value:with_season"
+msgid "Ranks are determined by activity since {timestamp}."
+msgstr ""
+
+#: src/modules/ranks/ui/overview.py:400
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|field:note|value:without_season"
+msgid ""
+"Ranks are determined by *all-time* statistics.\n"
+"To reward ranks from a later time (e.g. to have monthly/quarterly/yearly ranks) set the `season_start` with {stats_cmd}"
+msgstr ""
+
+#: src/modules/ranks/ui/overview.py:407
+msgctxt "ui:rank_overview|embed|field:note|value|voice_addendum"
+msgid ""
+"Also note that ranks will only be updated when a member leaves a tracked "
+"voice channel! Use the **Refresh Member Ranks** button below to update all "
+"members manually."
+msgstr ""
+
+#: src/modules/ranks/ui/overview.py:415
 msgctxt "ui:rank_overview|embed:noranks|desc"
 msgid ""
 "No activity ranks have been set up!\n"
@@ -780,19 +822,19 @@ msgstr ""
 "Nenhum nível de classificação foi configurado!\n"
 "Pressione em 'AUTO' para criar automaticamente um padrão hierárquico dos níveis de Voz | Texto | Exp, ou pressione em Criar para fazê-lo manualmente."
 
-#: src/modules/ranks/ui/overview.py:370
+#: src/modules/ranks/ui/overview.py:423
 #, possible-python-brace-format
 msgctxt "ui:rank_overview|embed|title|type:voice"
 msgid "Voice Ranks in {guild_name}"
 msgstr "Classificação em Voz em {guild_name}"
 
-#: src/modules/ranks/ui/overview.py:375
+#: src/modules/ranks/ui/overview.py:428
 #, possible-python-brace-format
 msgctxt "ui:rank_overview|embed|title|type:xp"
 msgid "XP ranks in {guild_name}"
 msgstr "Classificação em XPˋs  em {guild_name}"
 
-#: src/modules/ranks/ui/overview.py:380
+#: src/modules/ranks/ui/overview.py:433
 #, possible-python-brace-format
 msgctxt "ui:rank_overview|embed|title|type:message"
 msgid "Message ranks in {guild_name}"
