@@ -738,6 +738,8 @@ msgstr ""
 msgctxt "guildset:pomodoro_channel|set_response|unset"
 msgid "Pomodoro timer notifications will now default to their voice channel."
 msgstr ""
+"Las notificaciones del temporizador Pomodoro ahora se mostrarán por defecto "
+"en su canal de voz."
 
 #: src/modules/pomodoro/settings.py:66
 #, possible-python-brace-format
