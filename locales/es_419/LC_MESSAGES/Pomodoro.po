@@ -656,12 +656,12 @@ msgstr ""
 #: src/modules/pomodoro/options.py:240
 msgctxt "timerset:focus_length"
 msgid "focus_length"
-msgstr ""
+msgstr "longitud_enfoque"
 
 #: src/modules/pomodoro/options.py:243
 msgctxt "timerset:focus_length|desc"
 msgid "Length of the focus stage of the timer in minutes."
-msgstr ""
+msgstr "Duración de la etapa de enfoque del temporizador en minutos."
 
 #: src/modules/pomodoro/options.py:248
 msgctxt "timerset:focus_length|accepts"
