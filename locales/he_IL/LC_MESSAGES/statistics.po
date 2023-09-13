@@ -730,7 +730,7 @@ msgstr "לא הייתה פעילות הודעות מאז {timestamp}"
 #, possible-python-brace-format
 msgctxt "ui:leaderboard|mode:anki|message:empty|desc"
 msgid "There have been no Anki cards reviewed since {timestamp}"
-msgstr ""
+msgstr "לא היו שום קלפי אנקי שבוצעו מאז {timestamp}"
 
 #: src/modules/statistics/ui/leaderboard.py:472
 msgctxt "ui:leaderboard|message:empty|title"
