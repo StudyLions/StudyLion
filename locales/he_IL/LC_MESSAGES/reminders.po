@@ -227,7 +227,7 @@ msgstr ""
 #: src/modules/reminders/ui.py:47
 msgctxt "ui:reminderlist|button:clear|confirm|title"
 msgid "Are You Sure?"
-msgstr ""
+msgstr "אתם בטוחים?"
 
 #: src/modules/reminders/ui.py:50
 #, possible-python-brace-format
