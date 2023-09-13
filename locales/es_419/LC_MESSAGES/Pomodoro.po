@@ -797,7 +797,7 @@ msgstr "No se puede iniciar un temporizador que ya está en marcha."
 #: src/modules/pomodoro/ui/status.py:154
 msgctxt "ui:timer_status|button:start|error:not_manager|title"
 msgid "Insufficient permissions!"
-msgstr ""
+msgstr "Permisos insuficientes"
 
 #: src/modules/pomodoro/ui/status.py:158
 msgctxt "ui:timer_status|button:start|error:not_manager|desc"
@@ -805,6 +805,8 @@ msgid ""
 "Starting this timer requires `MANAGE_CHANNEL` permissions on the timer "
 "channel, or the configured `manager_role`!"
 msgstr ""
+"El inicio de este temporizador requiere permisos `MANAGE_CHANNEL` en el "
+"canal del temporizador, o el `manager_role` configurado."
 
 #: src/modules/pomodoro/ui/status.py:168
 msgctxt "ui:timer_status|button:start|label"
