@@ -695,12 +695,12 @@ msgstr ""
 #: src/modules/ranks/ui/overview.py:126
 msgctxt "ui:rank_overview|button:clear|confirm|button:yes"
 msgid "Yes, clear ranks"
-msgstr ""
+msgstr "Sí, resetea los rangos"
 
 #: src/modules/ranks/ui/overview.py:132
 msgctxt "ui:rank_overview|button:clear|confirm|button:no"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: src/modules/ranks/ui/overview.py:148
 msgctxt "ui:rank_overview|button:clear|label"
@@ -784,7 +784,7 @@ msgstr "Ver o editar el rango"
 #: src/modules/ranks/ui/overview.py:387
 msgctxt "ui:rank_overview|embed|field:note|name"
 msgid "Note"
-msgstr ""
+msgstr "Nota"
 
 #: src/modules/ranks/ui/overview.py:393
 #, possible-python-brace-format
