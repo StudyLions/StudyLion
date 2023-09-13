@@ -259,16 +259,18 @@ msgid ""
 "`{pattern}` timer is running with `{members}` members!\n"
 "Currently **resting**, with focus starting {timestamp}"
 msgstr ""
+"¡El temporizador `{pattern}` se está ejecutando con los miembros `{members}`!\n"
+"Actualmente **en reposo**, con foco a partir de {timestamp}"
 
 #: src/modules/pomodoro/cog.py:491
 msgctxt "cmd:pomodoro"
 msgid "pomodoro"
-msgstr ""
+msgstr "pomodoro"
 
 #: src/modules/pomodoro/cog.py:492
 msgctxt "cmd:pomodoro|desc"
 msgid "Create and configure pomodoro timer rooms."
-msgstr ""
+msgstr "Crear y configurar salas con temporizador pomodoro."
 
 #: src/modules/pomodoro/cog.py:499
 msgctxt "cmd:pomodoro_create"
