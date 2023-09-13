@@ -641,6 +641,8 @@ msgctxt "timerset:channel_name|accepts"
 msgid ""
 "Timer channel name, with keys {remaining}, {name}, {pattern}, and {stage}."
 msgstr ""
+"Nombre del canal del temporizador, con las claves {remaining}, {name}, "
+"{pattern} y {stage}."
 
 #: src/modules/pomodoro/options.py:221
 msgctxt "timerset:channel_name_format|error:too_long"
@@ -648,6 +650,8 @@ msgid ""
 "The provided name is too long! Channel names can be at most `100` "
 "characters."
 msgstr ""
+"El nombre proporcionado es demasiado largo. Los nombres de los canales no "
+"pueden tener más de 100 caracteres."
 
 #: src/modules/pomodoro/options.py:240
 msgctxt "timerset:focus_length"
