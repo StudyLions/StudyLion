@@ -597,7 +597,7 @@ msgstr ""
 #: src/modules/pomodoro/options.py:147
 msgctxt "timerset:voice_alerts"
 msgid "voice_alerts"
-msgstr ""
+msgstr "alertas_voz"
 
 #: src/modules/pomodoro/options.py:150
 msgctxt "timerset:voice_alerts|desc"
