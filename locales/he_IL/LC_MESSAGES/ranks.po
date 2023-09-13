@@ -770,6 +770,8 @@ msgid ""
 "Ranks are determined by *all-time* statistics.\n"
 "To reward ranks from a later time (e.g. to have monthly/quarterly/yearly ranks) set the `season_start` with {stats_cmd}"
 msgstr ""
+"דרגות יקבעו על ידי פעילות *מכל הזמנים*.\n"
+"כדי לתת דרגה מזמן אחר (לדוגמא מחודש ספציפי או שנה וכו') השתמשו ב {stats_cmd} וקבעו את `התחלת_עונה` "
 
 #: src/modules/ranks/ui/overview.py:407
 msgctxt "ui:rank_overview|embed|field:note|value|voice_addendum"
