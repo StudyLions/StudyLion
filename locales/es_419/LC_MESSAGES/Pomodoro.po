@@ -449,7 +449,7 @@ msgstr "Seleccione un canal de voz con temporizador para reconfigurar."
 #: src/modules/pomodoro/cog.py:811
 msgctxt "cmd:pomodoro_edit|error:no_timer"
 msgid "This channel doesn't have an attached pomodoro timer to edit!"
-msgstr ""
+msgstr "¡Este canal no tiene un temporizador pomodoro adjunto para editar!"
 
 #: src/modules/pomodoro/cog.py:824
 msgctxt "cmd:pomodoro_edit|error:insufficient_perms|role:other"
@@ -457,6 +457,8 @@ msgid ""
 "Insufficient permissions to modifiy this timer!\n"
 "You need to be a server administrator, own this channel, or have the timer manager role."
 msgstr ""
+"Permisos insuficientes para modificar este temporizador.\n"
+"Necesitas ser administrador del servidor, poseer este canal o tener el rol de administrador del temporizador."
 
 #: src/modules/pomodoro/cog.py:845
 msgctxt "cmd:pomodoro_edit|error:insufficient_permissions|role_needed:admin"
