@@ -233,6 +233,8 @@ msgid ""
 "`{pattern}` timer is stopped with `{members}` members!\n"
 "Join {channel} and press `Start` to start it!"
 msgstr ""
+"`{pattern}` נעצר עם `{members}` משתמשים!\n"
+"הצטרף אל {channel} ולחץ \"התחל\" על מנת לאפס אותו."
 
 #: src/modules/pomodoro/cog.py:471
 #, possible-python-brace-format
@@ -241,6 +243,8 @@ msgid ""
 "`{pattern}` timer is running with `{members}` members!\n"
 "Currently **focusing**, with break starting {timestamp}"
 msgstr ""
+"`{pattern}` טיימר רץ עם `{members}` משתמשים!\n"
+"כרגע בפוקוס, עם הפסקה שתתחיל ב{timestamp}"
 
 #: src/modules/pomodoro/cog.py:477
 #, possible-python-brace-format
@@ -249,6 +253,8 @@ msgid ""
 "`{pattern}` timer is running with `{members}` members!\n"
 "Currently **resting**, with focus starting {timestamp}"
 msgstr ""
+"`{pattern}` טיימר רץ עם `{members}` משתמשים!\n"
+"כרגע בהפסקה, עם פוקוס שיתחיל ב{timestamp}"
 
 #: src/modules/pomodoro/cog.py:491
 msgctxt "cmd:pomodoro"
