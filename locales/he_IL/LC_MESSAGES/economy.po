@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 22:43+0300\n"
+"POT-Creation-Date: 2023-09-13 08:47+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Ari Horesh, 2023\n"
 "Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
@@ -228,19 +228,19 @@ msgstr[1] "שני משתמשים עודכנו בהצלחה."
 msgstr[2] "הרבה משתמשים עודכנו בהצלחה."
 msgstr[3] "המשתמשים עודכנו בהצלחה."
 
-#: src/modules/economy/cog.py:394
+#: src/modules/economy/cog.py:409
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:role_lb|author"
 msgid "Balance sheet for {name}"
 msgstr "מאזן של {name}"
 
-#: src/modules/economy/cog.py:400
+#: src/modules/economy/cog.py:415
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:role_lb|header"
 msgid "This server has a total balance of {coin_emoji}**{total}**."
 msgstr "לכל מהשתמשים בשרת יש ביחד {coin_emoji}**{total}**."
 
-#: src/modules/economy/cog.py:408
+#: src/modules/economy/cog.py:423
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:role_lb|header"
 msgid ""
@@ -250,59 +250,59 @@ msgstr ""
 "ל{role_mention} יש `{count}` משתמשים עם מאזן גדול מ-0, לכולם יחד יש "
 "{coin_emoji}**{total}**."
 
-#: src/modules/economy/cog.py:420
+#: src/modules/economy/cog.py:435
 msgctxt "cmd:economy_balance|embed:role_lb|row_format"
 msgid "`[{pos:>{numwidth}}]` | `{coins:>{coinwidth}} LC` | {mention}"
 msgstr "`[{pos:>{numwidth}}]` | `{coins:>{coinwidth}} LC` | {mention}"
 
-#: src/modules/economy/cog.py:448
+#: src/modules/economy/cog.py:463
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:role_lb|footer"
 msgid "Page {page}/{total}"
 msgstr "עמוד {page}/{total}"
 
-#: src/modules/economy/cog.py:458
+#: src/modules/economy/cog.py:473
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:role_lb|header"
 msgid "This server has a total balance of {coin_emoji}**0**."
 msgstr "אין לאף אחד בשרת מטבעות."
 
-#: src/modules/economy/cog.py:465
+#: src/modules/economy/cog.py:480
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:role_lb|header"
 msgid "The role {role_mention} has a total balance of {coin_emoji}**0**."
 msgstr "לרול {role_mention} אין מטבעות."
 
-#: src/modules/economy/cog.py:485
+#: src/modules/economy/cog.py:500
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:single|desc"
 msgid "{mention} currently owns {coin_emoji} {coins}."
 msgstr "ל{mention} יש כרגע {coin_emoji} {coins}."
 
-#: src/modules/economy/cog.py:495
+#: src/modules/economy/cog.py:510
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:single|author"
 msgid "Balance statement for {user}"
 msgstr "המאזן של {user}"
 
-#: src/modules/economy/cog.py:504
+#: src/modules/economy/cog.py:519
 msgctxt "cmd:economy_reset"
 msgid "reset"
 msgstr "אפס"
 
-#: src/modules/economy/cog.py:507
+#: src/modules/economy/cog.py:522
 msgctxt "cmd:economy_reset|desc"
 msgid ""
 "Reset the coin balance for a target user or role. (See also \"economy "
 "balance\".)"
 msgstr "אפס את מאזן המטבעות של משתמש ספציפי או של רול. (קרא עוד ב\"מאזן כלכלה\")"
 
-#: src/modules/economy/cog.py:511
+#: src/modules/economy/cog.py:526
 msgctxt "cmd:economy_reset|param:target"
 msgid "target"
 msgstr "מטרה"
 
-#: src/modules/economy/cog.py:516
+#: src/modules/economy/cog.py:531
 msgctxt "cmd:economy_reset|param:target|desc"
 msgid ""
 "Target user or role to view or update. Use @everyone to reset the entire "
@@ -310,7 +310,7 @@ msgid ""
 msgstr ""
 "בחר משתמש או רול כדי לנהל. השתמש ב@everyone כדי לבחור את כל השרת בבת אחת."
 
-#: src/modules/economy/cog.py:543
+#: src/modules/economy/cog.py:558
 #, possible-python-brace-format
 msgctxt "cmd:economy_reset|confirm:reset_guild|desc"
 msgid ""
@@ -320,17 +320,17 @@ msgstr ""
 "אתם בטוחים שאתם רוצים לאפס את המטבעות של כולם בשרת **{guild_name}**?\n"
 "*המטבעות יאבדו לנצח ולא יהיה ניתן לשחזר אותם!*"
 
-#: src/modules/economy/cog.py:551
+#: src/modules/economy/cog.py:566
 msgctxt "cmd:economy_reset|confirm:reset_guild|button:confirm"
 msgid "Yes, reset the economy"
 msgstr "כן, אפס את הכלכלה"
 
-#: src/modules/economy/cog.py:555
+#: src/modules/economy/cog.py:570
 msgctxt "cmd:economy_reset|confirm:reset_guild|button:cancel"
 msgid "Cancel reset"
 msgstr "בטל את האיפוס"
 
-#: src/modules/economy/cog.py:571
+#: src/modules/economy/cog.py:586
 #, possible-python-brace-format
 msgctxt "cmd:economy_reset|embed:success_guild|desc"
 msgid ""
@@ -338,13 +338,13 @@ msgid ""
 "{coin_emoji}**{amount}**."
 msgstr "כולם בשרת **{guild_name}** עברו איפוס ל {coin_emoji}**{amount}**."
 
-#: src/modules/economy/cog.py:588
+#: src/modules/economy/cog.py:603
 #, possible-python-brace-format
 msgctxt "cmd:economy_reset|error:no_target|desc"
 msgid "The role {mention} has no members to reset!"
 msgstr "לרול {mention} אין משתמשים לאפס!"
 
-#: src/modules/economy/cog.py:598
+#: src/modules/economy/cog.py:613
 #, possible-python-brace-format
 msgctxt "cmd:economy_reset|confirm:reset_role|desc"
 msgid ""
@@ -354,17 +354,17 @@ msgstr ""
 "אתם בטוחים שאתם רוצים לאפס את המאזנים של כולם תחת הרול {mention}?\n"
 "**{count}** יעברו שינוי."
 
-#: src/modules/economy/cog.py:607
+#: src/modules/economy/cog.py:622
 msgctxt "cmd:economy_reset|confirm:reset_role|button:confirm"
 msgid "Yes, complete economy reset"
 msgstr "כן, השלם את איפוס הכלכלה"
 
-#: src/modules/economy/cog.py:611
+#: src/modules/economy/cog.py:626
 msgctxt "cmd:economy_reset|confirm:reset_role|button:cancel"
 msgid "Cancel"
 msgstr "בטל"
 
-#: src/modules/economy/cog.py:628
+#: src/modules/economy/cog.py:643
 #, possible-python-brace-format
 msgctxt "cmd:economy_reset|embed:success_role|desc"
 msgid ""
@@ -372,58 +372,80 @@ msgid ""
 "{coin_emoji}**{amount}**."
 msgstr "כולם תחת הרול {role_mention} עברו איפוס ל{coin_emoji}**{amount}**."
 
-#: src/modules/economy/cog.py:650
+#: src/modules/economy/cog.py:665
 #, possible-python-brace-format
 msgctxt "cmd:economy_reset|embed:success_user|desc"
 msgid "{mention}'s balance has been reset to {coin_emoji}**{amount}**."
 msgstr "המאזן של {mention} אופס ל {coin_emoji}**{amount}**."
 
-#: src/modules/economy/cog.py:660
+#: src/modules/economy/cog.py:675
 msgctxt "cmd:send"
 msgid "send"
 msgstr "שלח"
 
-#: src/modules/economy/cog.py:663
+#: src/modules/economy/cog.py:678
 msgctxt "cmd:send|desc"
 msgid "Gift the target user a certain number of LionCoins."
 msgstr "שלח מטבעות במתנה למטרה שתרצה"
 
-#: src/modules/economy/cog.py:667
+#: src/modules/economy/cog.py:682
 msgctxt "cmd:send|param:target"
 msgid "target"
 msgstr "מטרה"
 
-#: src/modules/economy/cog.py:668
+#: src/modules/economy/cog.py:683
 msgctxt "cmd:send|param:amount"
 msgid "amount"
 msgstr "כמות"
 
-#: src/modules/economy/cog.py:669
+#: src/modules/economy/cog.py:684
 msgctxt "cmd:send|param:note"
 msgid "note"
 msgstr "פתקית"
 
-#: src/modules/economy/cog.py:672
+#: src/modules/economy/cog.py:687
 msgctxt "cmd:send|param:target|desc"
 msgid "User to send the gift to"
 msgstr "המשתמש שאליו תשלחו את המתנה"
 
-#: src/modules/economy/cog.py:673
+#: src/modules/economy/cog.py:688
 msgctxt "cmd:send|param:amount|desc"
 msgid "Number of coins to send"
 msgstr "כמות המטבעות שתרצו לשלוח"
 
-#: src/modules/economy/cog.py:674
+#: src/modules/economy/cog.py:689
 msgctxt "cmd:send|param:note|desc"
 msgid "Optional note to add to the gift."
 msgstr "פתקית שתרצו להוסיף למתנה."
 
-#: src/modules/economy/cog.py:698
+#: src/modules/economy/cog.py:713
 msgctxt "cmd:send|error:not_allowed"
 msgid "Sorry, this server has disabled LionCoin transfers!"
 msgstr "מצטערים, אבל מנהל השרת בחר שלא לאפשר מסחר מטבעות."
 
-#: src/modules/economy/cog.py:723
+#: src/modules/economy/cog.py:722
+msgctxt "cmd:send|error:sending-to-self"
+msgid ""
+"What is this, tax evasion?\n"
+"(You can not send coins to yourself.)"
+msgstr ""
+
+#: src/modules/economy/cog.py:732
+msgctxt "cmd:send|error:sending-to-leo"
+msgid ""
+"I appreciate it, but you need it more than I do!\n"
+"(You cannot send coins to bots.)"
+msgstr ""
+
+#: src/modules/economy/cog.py:742
+#, possible-python-brace-format
+msgctxt "cmd:send|error:sending-to-bot"
+msgid ""
+"{target} appreciates the gesture, but said they don't have any use for {coin}.\n"
+"(You cannot send coins to bots.)"
+msgstr ""
+
+#: src/modules/economy/cog.py:770
 #, possible-python-brace-format
 msgctxt "cmd:send|error:insufficient"
 msgid ""
@@ -433,19 +455,19 @@ msgstr ""
 "אין לך מספיק מטבעות כדי לעשות את זה!\n"
 "`מאזן נוכחי:` {coin_emoji}{balance}"
 
-#: src/modules/economy/cog.py:744
+#: src/modules/economy/cog.py:791
 #, possible-python-brace-format
 msgctxt "cmd:send|embed:gift|title"
 msgid "{user} sent you a gift!"
 msgstr "{user} שלח לך מתנה!"
 
-#: src/modules/economy/cog.py:748
+#: src/modules/economy/cog.py:795
 #, possible-python-brace-format
 msgctxt "cmd:send|embed:gift|desc"
 msgid "{mention} sent you {coin_emoji}**{amount}**."
 msgstr "{mention} שלח לך {coin_emoji}**{amount}**."
 
-#: src/modules/economy/cog.py:773
+#: src/modules/economy/cog.py:820
 #, possible-python-brace-format
 msgctxt "cmd:send|embed:ack|desc"
 msgid ""
@@ -453,7 +475,7 @@ msgid ""
 "{mention}!"
 msgstr "**{coin_emoji}{amount}** הוסרו מהמאזן שלך ונשלחו ל{mention}!"
 
-#: src/modules/economy/cog.py:783
+#: src/modules/economy/cog.py:830
 msgctxt "cmd:send|embed:ack|desc|error:unreachable"
 msgid ""
 "Unfortunately, I was not able to message the recipient. Perhaps they have me"
@@ -462,12 +484,12 @@ msgstr ""
 "לצערי לא הצלחתי לשלוח הודעה פרטית למטרה. סביר להניח שהם חסמו את ההודעות "
 "הפרטיות שלהם. "
 
-#: src/modules/economy/cog.py:795
+#: src/modules/economy/cog.py:842
 msgctxt "cmd:configure_economy"
 msgid "economy"
 msgstr "כלכלה"
 
-#: src/modules/economy/cog.py:798
+#: src/modules/economy/cog.py:845
 msgctxt "cmd:configure_economy|desc"
 msgid "Configure LionCoin Economy"
 msgstr "הגדרות כלכלה של מטבעות"

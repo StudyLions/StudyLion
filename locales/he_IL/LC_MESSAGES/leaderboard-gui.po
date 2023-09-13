@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-27 16:37+0300\n"
+"POT-Creation-Date: 2023-08-28 22:43+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Ari Horesh, 2023\n"
 "Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
@@ -51,7 +51,7 @@ msgstr "שרת:"
 #, possible-python-brace-format
 msgctxt "skin:leaderboard|mode:study|top_hours_text"
 msgid "{amount} hours"
-msgstr "{count} שעות"
+msgstr "{amount} שעות"
 
 #: src/gui/cards/leaderboard.py:133
 #, possible-python-brace-format
