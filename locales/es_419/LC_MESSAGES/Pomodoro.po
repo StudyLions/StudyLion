@@ -882,12 +882,14 @@ msgstr "Seleccionar rol del directivo"
 #, possible-python-brace-format
 msgctxt "ui:timer_options|embed|title"
 msgid "Timer Control Panel for {channel}"
-msgstr ""
+msgstr "Panel de control del temporizador para {channel}"
 
 #: src/modules/pomodoro/ui/config.py:190
 msgctxt "ui:timer_options|embed|footer"
 msgid "Hover over the option names to view descriptions."
 msgstr ""
+"Pase el ratón por encima de los nombres de las opciones para ver las "
+"descripciones."
 
 #: src/modules/pomodoro/ui/config.py:202
 msgctxt "ui:timer_options|embed|field:pattern|name"
