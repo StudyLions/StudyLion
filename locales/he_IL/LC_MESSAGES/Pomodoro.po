@@ -619,7 +619,7 @@ msgctxt "timerset:channel_name_format|error:too_long"
 msgid ""
 "The provided name is too long! Channel names can be at most `100` "
 "characters."
-msgstr ""
+msgstr "השם שננתם לי ארוך מידי! השתמשו בפחות מ `100` תווים."
 
 #: src/modules/pomodoro/options.py:240
 msgctxt "timerset:focus_length"
@@ -788,7 +788,7 @@ msgstr "עצור"
 #: src/modules/pomodoro/ui/config.py:45
 msgctxt "ui:timer_options|error:timer_destroyed"
 msgid "This timer no longer exists! Closing option menu."
-msgstr ""
+msgstr "הטיימר כבר לא קיים! אני סוגר את התפריט."
 
 #: src/modules/pomodoro/ui/config.py:68
 msgctxt "ui:timer_options|button:edit|label"
