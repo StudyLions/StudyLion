@@ -264,7 +264,7 @@ msgstr "פומודורו"
 #: src/modules/pomodoro/cog.py:492
 msgctxt "cmd:pomodoro|desc"
 msgid "Create and configure pomodoro timer rooms."
-msgstr ""
+msgstr "הגדר וצור חדרי פומודורו."
 
 #: src/modules/pomodoro/cog.py:499
 msgctxt "cmd:pomodoro_create"
