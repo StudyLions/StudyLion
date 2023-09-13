@@ -809,6 +809,9 @@ msgid ""
 "voice channel! Use the **Refresh Member Ranks** button below to update all "
 "members manually."
 msgstr ""
+"Ten en cuenta que los rangos sólo se actualizarán cuando un miembro abandone"
+" un canal de voz rastreado. Utiliza el botón **Refrescar rangos de "
+"miembros** para actualizar todos los miembros manualmente."
 
 #: src/modules/ranks/ui/overview.py:415
 msgctxt "ui:rank_overview|embed:noranks|desc"
