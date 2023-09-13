@@ -417,6 +417,8 @@ msgid ""
 "You need to have the `Manage Channels` permission in {channel} to remove "
 "this timer!"
 msgstr ""
+"Para eliminar este temporizador, debe tener el permiso `Manage Channels` en "
+"{channel}."
 
 #: src/modules/pomodoro/cog.py:751
 #, possible-python-brace-format
