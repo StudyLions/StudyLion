@@ -329,12 +329,12 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:587
 msgctxt "cmd:pomodoro_create|new_channel|default_name"
 msgid "Timer"
-msgstr ""
+msgstr "Temporizador"
 
 #: src/modules/pomodoro/cog.py:591
 msgctxt "cmd:pomodoro_create|new_channel|audit_reason"
 msgid "Creating Pomodoro Voice Channel"
-msgstr ""
+msgstr "Creación del canal de voz Pomodoro"
 
 #: src/modules/pomodoro/cog.py:600
 msgctxt "cmd:pomodoro_create|new_channel|error:channel_create_failed|title"
