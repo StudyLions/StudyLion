@@ -376,7 +376,7 @@ msgstr "שום מטלה ברשימה שלך תואמת ל  `{input}`"
 #: src/modules/tasklist/cog.py:790
 msgctxt "cmd:tasks_remove_cmd|error:no_matching"
 msgid "No tasks on your tasklist matching all the given conditions!"
-msgstr ""
+msgstr "שום מטלה ברשימה שלך מתאימה לתנאים שהצגת."
 
 #: src/modules/tasklist/cog.py:803
 #, possible-python-brace-format
