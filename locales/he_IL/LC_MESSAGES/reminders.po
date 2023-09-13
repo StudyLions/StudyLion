@@ -62,7 +62,7 @@ msgstr "תזכירים"
 #: src/modules/reminders/cog.py:332
 msgctxt "cmd:reminders|desc"
 msgid "View and set your reminders."
-msgstr ""
+msgstr "הצג וצור תזכירים."
 
 #: src/modules/reminders/cog.py:353
 msgctxt "cmd:remindme"
@@ -72,7 +72,7 @@ msgstr "הזכרלי"
 #: src/modules/reminders/cog.py:354
 msgctxt "cmd:remindme|desc"
 msgid "View and set task reminders."
-msgstr ""
+msgstr "הצג וצור תזכירי מטלות."
 
 #: src/modules/reminders/cog.py:361
 msgctxt "cmd:reminders_cancel"
@@ -85,6 +85,7 @@ msgid ""
 "Cancel a single reminder. Use /reminders to clear or cancel multiple "
 "reminders."
 msgstr ""
+"בטל תזכור בודד. השתמש בתפריט ב  /reminders כדי לבטל כמה תזכירים בבת אחת."
 
 #: src/modules/reminders/cog.py:368
 msgctxt "cmd:reminders_cancel|param:reminder"
@@ -169,7 +170,7 @@ msgstr "באיזו תדירות שבה תרצה לקבל את התזכור הז�
 #: src/modules/reminders/cog.py:533
 msgctxt "cmd:remindme_at|error|title"
 msgid "Could not create reminder!"
-msgstr ""
+msgstr "לא הצלחתי ליצור את התזכיר!"
 
 #: src/modules/reminders/cog.py:564
 #, possible-python-brace-format
