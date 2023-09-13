@@ -1004,7 +1004,7 @@ class TimestampSetting(InteractiveSetting[ParentID, str, dt.datetime]):
     @property
     def input_formatted(self) -> str:
         if self._data:
-            formatted = self._data.strftime('%Y-%M-%d %H:%M')
+            formatted = self._data.strftime('%Y-%m-%d %H:%M')
         else:
             formatted = ''
         return formatted

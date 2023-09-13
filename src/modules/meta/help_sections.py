@@ -20,9 +20,9 @@ cmd_map = {
     "cmd_send": "send",
     "cmd_shop": "shop open",
     "cmd_room": "room rent",
-    "cmd_reminders": "remindme in",
+    "cmd_reminders": "reminders",
     "cmd_tasklist": "tasklist",
-    "cmd_timers": "timers list",
+    "cmd_timers": "timers",
     "cmd_schedule": "schedule",
     "cmd_dashboard": "dashboard"
 }
@@ -79,8 +79,8 @@ admin_extra = _p(
 
     Other relevant commands for guild configuration below:
     `/editshop`: Add/Edit/Remove colour roles from the {coin} shop.
-    `/ranks`: Add/Edit/Remove activity ranks.
-    `/timer admin`: Add/Edit/Remove Pomodoro timers in voice channels.
+    `/ranks`: Add/Edit/Refresh/Remove activity ranks.
+    `/pomodoro`: Add/Edit/Remove Pomodoro timers in voice channels.
     `/rolemenus`: Allow members to equip roles from customisable messages.
     `/economy balance`: Display and modify LionCoin balance for members and roles.
     """

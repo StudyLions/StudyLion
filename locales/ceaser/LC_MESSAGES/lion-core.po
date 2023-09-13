@@ -1,0 +1,131 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: you@example.com\n"
+"POT-Creation-Date: 2007-10-18 14:00+0100\n"
+"PO-Revision-Date: 2007-10-18 14:00+0100\n"
+"Last-Translator: you <you@example.com>\n"
+"Language-Team: English <yourteam@example.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/core/setting_types.py:31
+msgctxt "settype:coin|accepts"
+msgid "A positive integral number of coins."
+msgstr "B qptjujwf joufhsbm ovncfs pg dpjot."
+
+#: src/core/setting_types.py:47
+msgctxt "settype:coin|parse|error:notinteger"
+msgid "The coin quantity must be a positive integer!"
+msgstr "Uif dpjo rvboujuz nvtu cf b qptjujwf joufhfs!"
+
+#: src/core/setting_types.py:54
+msgctxt "settype:coin|parse|error:too_large"
+msgid "Provided number of coins was too high!"
+msgstr "Qspwjefe ovncfs pg dpjot xbt upp ijhi!"
+
+#: src/core/setting_types.py:60
+msgctxt "settype:coin|parse|error:too_large"
+msgid "Provided number of coins was too low!"
+msgstr "Qspwjefe ovncfs pg dpjot xbt upp mpx!"
+
+#: src/core/setting_types.py:71
+#, possible-python-brace-format
+msgctxt "settype:coin|formatted"
+msgid "{coin}**{amount}**"
+msgstr "{coin}**{amount}**"
+
+#: src/core/setting_types.py:87
+msgctxt "settype:message|accepts"
+msgid "JSON formatted raw message data"
+msgstr "KTPO gpsnbuufe sbx nfttbhf ebub"
+
+#: src/core/setting_types.py:102
+msgctxt "settype:message|download|error:not_json"
+msgid "The attached message data is not a JSON file!"
+msgstr "Uif buubdife nfttbhf ebub jt opu b KTPO gjmf!"
+
+#: src/core/setting_types.py:107
+msgctxt "settype:message|download|error:size"
+msgid "The attached message data is too large!"
+msgstr "Uif buubdife nfttbhf ebub jt upp mbshf!"
+
+#: src/core/setting_types.py:116
+msgctxt "settype:message|download|error:decoding"
+msgid ""
+"Could not decode the message data. Please ensure it is saved with the "
+"`UTF-8` encoding."
+msgstr ""
+"Dpvme opu efdpef uif nfttbhf ebub. Qmfbtf fotvsf ju jt tbwfe xjui uif "
+"`VUG-8` fodpejoh."
+
+#: src/core/setting_types.py:173
+#, possible-python-brace-format
+msgctxt "settype:message|error_suffix"
+msgid ""
+"You can view, test, and fix your embed using the online [embed "
+"builder]({link})."
+msgstr ""
+"Zpv dbo wjfx, uftu, boe gjy zpvs fncfe vtjoh uif pomjof [fncfe "
+"cvjmefs]({link})."
+
+#: src/core/setting_types.py:185
+#, possible-python-brace-format
+msgctxt "settype:message|error:invalid_json"
+msgid ""
+"The provided message data was not a valid JSON document!\n"
+"`{error}`"
+msgstr ""
+"Uif qspwjefe nfttbhf ebub xbt opu b wbmje KTPO epdvnfou!\n"
+"`{error}`"
+
+#: src/core/setting_types.py:193
+msgctxt "settype:message|error:json_missing_keys"
+msgid ""
+"Message data must be a JSON object with at least one of the following "
+"fields: `content`, `embed`, `embeds`"
+msgstr ""
+"Nfttbhf ebub nvtu cf b KTPO pckfdu xjui bu mfbtu pof pg uif gpmmpxjoh "
+"gjfmet: `dpoufou`, `fncfe`, `fncfet`"
+
+#: src/core/setting_types.py:202
+msgctxt "settype:message|error:json_embed_type"
+msgid "`embed` field must be a valid JSON object."
+msgstr "`fncfe` gjfme nvtu cf b wbmje KTPO pckfdu."
+
+#: src/core/setting_types.py:210
+msgctxt "settype:message|error:json_embeds_type"
+msgid "`embeds` field must be a list."
+msgstr "`fncfet` gjfme nvtu cf b mjtu."
+
+#: src/core/setting_types.py:217
+msgctxt "settype:message|error:json_embed_embeds"
+msgid "Message data cannot include both `embed` and `embeds`."
+msgstr "Nfttbhf ebub dboopu jodmvef cpui `fncfe` boe `fncfet`."
+
+#: src/core/setting_types.py:225
+msgctxt "settype:message|error:json_content_type"
+msgid "`content` field must be a string."
+msgstr "`dpoufou` gjfme nvtu cf b tusjoh."
+
+#: src/core/setting_types.py:241
+#, possible-python-brace-format
+msgctxt "ui:settype:message|error:embed_conversion"
+msgid ""
+"Could not parse the message embed data.\n"
+"**Error:** `{exception}`"
+msgstr ""
+"Dpvme opu qbstf uif nfttbhf fncfe ebub.\n"
+"**Fssps:** `{exception}`"
+
+#: src/core/setting_types.py:269
+msgctxt "settype:message|format:too_long"
+msgid "Too long to display! See Preview."
+msgstr "Upp mpoh up ejtqmbz! Tff Qsfwjfx."

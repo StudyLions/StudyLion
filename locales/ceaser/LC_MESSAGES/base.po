@@ -1,0 +1,33 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: you@example.com\n"
+"POT-Creation-Date: 2007-10-18 14:00+0100\n"
+"PO-Revision-Date: 2007-10-18 14:00+0100\n"
+"Last-Translator: you <you@example.com>\n"
+"Language-Team: English <yourteam@example.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: bot/modules/sysadmin/exec_cog.py:70
+msgid "You cannot use this interface!"
+msgstr "Zpv dboopu vtf uijt joufsgbdf!"
+
+#: bot/modules/sysadmin/exec_cog.py:252 bot/modules/sysadmin/exec_cog.py:254
+msgid "async"
+msgstr "btzod"
+
+#: bot/modules/sysadmin/exec_cog.py:253 bot/modules/sysadmin/exec_cog.py:255
+msgid "Execute arbitrary code with Exec"
+msgstr "Fyfdvuf bscjusbsz dpef xjui Fyfd"
+
+#: bot/modules/sysadmin/exec_cog.py:265
+msgid "eval"
+msgstr "fwbm"

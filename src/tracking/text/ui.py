@@ -34,7 +34,7 @@ class TextTrackerConfigUI(ConfigUI):
     )
     async def untracked_channels_menu(self, selection: discord.Interaction, selected):
         await selection.response.defer()
-        setting = self.instances[3]
+        setting = self.instances[2]
         setting.value = selected.values
         await setting.write()
 

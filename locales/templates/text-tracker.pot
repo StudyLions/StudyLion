@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 22:43+0300\n"
+"POT-Creation-Date: 2023-09-13 08:47+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,22 +17,22 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/tracking/text/cog.py:249
+#: src/tracking/text/cog.py:254
 msgctxt "cmd:configure_message_exp"
 msgid "message_exp"
 msgstr ""
 
-#: src/tracking/text/cog.py:252
+#: src/tracking/text/cog.py:257
 msgctxt "cmd:configure_message_exp|desc"
 msgid "Configure Message Tracking & Experience"
 msgstr ""
 
-#: src/tracking/text/cog.py:315
+#: src/tracking/text/cog.py:320
 msgctxt "cmd:leo_configure_exp_rates"
 msgid "experience_rates"
 msgstr ""
 
-#: src/tracking/text/cog.py:318
+#: src/tracking/text/cog.py:323
 msgctxt "cmd:leo_configure_exp_rates|desc"
 msgid "Global experience rate configuration"
 msgstr ""

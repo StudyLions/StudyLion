@@ -1,0 +1,48 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: you@example.com\n"
+"POT-Creation-Date: 2007-10-18 14:00+0100\n"
+"PO-Revision-Date: 2007-10-18 14:00+0100\n"
+"Last-Translator: you <you@example.com>\n"
+"Language-Team: English <yourteam@example.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/gui/cards/profile.py:79
+msgctxt "skin:profile|header:profile"
+msgid "PROFILE"
+msgstr "QSPGJMF"
+
+#: src/gui/cards/profile.py:83
+msgctxt "skin:profile|header:achievements"
+msgid "ACHIEVEMENTS"
+msgstr "BDIJFWFNFOUT"
+
+#: src/gui/cards/profile.py:134
+msgctxt "skin:profile|field:rank_unranked_text"
+msgid "UNRANKED"
+msgstr "VOSBOLFE"
+
+#: src/gui/cards/profile.py:138
+#, possible-python-brace-format
+msgctxt "skin:profile|field:rank_nextrank_text"
+msgid "NEXT RANK: {name} {rangestr}"
+msgstr "OFYU SBOL: {name} {rangestr}"
+
+#: src/gui/cards/profile.py:142
+msgctxt "skin:profile|field:rank_noranks_text"
+msgid "NO RANKS AVAILABLE"
+msgstr "OP SBOLT BWBJMBCMF"
+
+#: src/gui/cards/profile.py:146
+msgctxt "skin:profile|field:rank_maxrank_text"
+msgid "YOU HAVE REACHED THE MAXIMUM RANK"
+msgstr "ZPV IBWF SFBDIFE UIF NBYJNVN SBOL"

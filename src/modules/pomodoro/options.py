@@ -4,6 +4,7 @@ import discord
 
 from meta import LionBot
 from meta.errors import UserInputError
+from utils.lib import replace_multiple
 from babel.translator import ctx_translator
 from settings import ModelData
 from settings.groups import SettingGroup, ModelConfig, SettingDotDict
@@ -37,6 +38,8 @@ class TimerOptions(SettingGroup):
 
         _model = TimerData.Timer
         _column = TimerData.Timer.channelid.name
+        _create_row = False
+        _allow_object = False
 
     @TimerConfig.register_model_setting
     class NotificationChannel(ModelData, ChannelSetting):
@@ -50,6 +53,8 @@ class TimerOptions(SettingGroup):
 
         _model = TimerData.Timer
         _column = TimerData.Timer.notification_channelid.name
+        _create_row = False
+        _allow_object = False
 
         @classmethod
         async def _check_value(cls, parent_id: int, value: Optional[discord.abc.GuildChannel], **kwargs):
@@ -86,6 +91,7 @@ class TimerOptions(SettingGroup):
         )
         _model = TimerData.Timer
         _column = TimerData.Timer.inactivity_threshold.name
+        _create_row = False
 
         _min = 0
         _max = 64
@@ -93,6 +99,19 @@ class TimerOptions(SettingGroup):
         @property
         def input_formatted(self):
             return str(self._data) if self._data is not None else ''
+
+        @classmethod
+        async def _parse_string(cls, parent_id, string, **kwargs):
+            try:
+                return await super()._parse_string(parent_id, string, **kwargs)
+            except UserInputError:
+                t = ctx_translator.get().t
+                raise UserInputError(
+                    t(_p(
+                        'timerset:inactivity_length|desc',
+                        "The inactivity threshold must be a positive whole number!"
+                    ))
+                )
 
     @TimerConfig.register_model_setting
     class ManagerRole(ModelData, RoleSetting):
@@ -106,6 +125,8 @@ class TimerOptions(SettingGroup):
 
         _model = TimerData.Timer
         _column = TimerData.Timer.manager_roleid.name
+        _create_row = False
+        _allow_object = False
 
         @classmethod
         def _format_data(cls, parent_id, data, timer=None, **kwargs):
@@ -132,6 +153,7 @@ class TimerOptions(SettingGroup):
 
         _model = TimerData.Timer
         _column = TimerData.Timer.voice_alerts.name
+        _create_row = False
 
     @TimerConfig.register_model_setting
     class BaseName(ModelData, StringSetting):
@@ -153,6 +175,7 @@ class TimerOptions(SettingGroup):
 
         _model = TimerData.Timer
         _column = TimerData.Timer.pretty_name.name
+        _create_row = False
 
     @TimerConfig.register_model_setting
     class ChannelFormat(ModelData, StringSetting):
@@ -172,6 +195,43 @@ class TimerOptions(SettingGroup):
 
         _model = TimerData.Timer
         _column = TimerData.Timer.channel_name.name
+        _create_row = False
+
+        @classmethod
+        async def _parse_string(cls, parent_id, string, **kwargs):
+            # Enforce a length limit on a test-rendered string.
+            # TODO: Localised formatkey transformation
+            if string.lower() in ('', 'none', 'default'):
+                # Special cases for unsetting
+                return None
+
+            testmap = {
+                '{remaining}': "10m",
+                '{name}': "Longish name",
+                '{stage}': "FOCUS",
+                '{members}': "25",
+                '{pattern}': "50/10",
+            }
+            testmapped = replace_multiple(string, testmap)
+            if len(testmapped) > 100:
+                t = ctx_translator.get().t
+                raise UserInputError(
+                    t(_p(
+                        'timerset:channel_name_format|error:too_long',
+                        "The provided name is too long! Channel names can be at most `100` characters."
+                    ))
+                )
+            else:
+                return string
+
+        @classmethod
+        def _format_data(cls, parent_id, data, **kwargs):
+            """
+            Overriding format to truncate displayed string.
+            """
+            if data is not None and len(data) > 100:
+                data = data[:97] + '...'
+            return super()._format_data(parent_id, data, **kwargs)
 
     @TimerConfig.register_model_setting
     class FocusLength(ModelData, DurationSetting):
@@ -191,6 +251,7 @@ class TimerOptions(SettingGroup):
 
         _model = TimerData.Timer
         _column = TimerData.Timer.focus_length.name
+        _create_row = False
 
         _default_multiplier = 60
         allow_zero = False
@@ -231,6 +292,7 @@ class TimerOptions(SettingGroup):
 
         _model = TimerData.Timer
         _column = TimerData.Timer.break_length.name
+        _create_row = False
 
         _default_multiplier = 60
         allow_zero = False

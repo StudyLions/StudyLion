@@ -1,0 +1,528 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: you@example.com\n"
+"POT-Creation-Date: 2007-10-18 14:00+0100\n"
+"PO-Revision-Date: 2007-10-18 14:00+0100\n"
+"Last-Translator: you <you@example.com>\n"
+"Language-Team: English <yourteam@example.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/utils/cog.py:18
+msgctxt "cmd:page"
+msgid "page"
+msgstr "qbhf"
+
+#: src/utils/cog.py:21
+msgctxt "cmd:page|desc"
+msgid ""
+"Jump to a given page of the ouput of a previous command in this channel."
+msgstr ""
+"Kvnq up b hjwfo qbhf pg uif pvqvu pg b qsfwjpvt dpnnboe jo uijt diboofm."
+
+#: src/utils/cog.py:34
+msgctxt "cmd:page|error:no_pager"
+msgid "No pager listening in this channel!"
+msgstr "Op qbhfs mjtufojoh jo uijt diboofm!"
+
+#: src/utils/cog.py:45
+msgctxt "cmd:page_next"
+msgid "next"
+msgstr "ofyu"
+
+#: src/utils/cog.py:46
+msgctxt "cmd:page_next|desc"
+msgid "Jump to the next page of output."
+msgstr "Kvnq up uif ofyu qbhf pg pvuqvu."
+
+#: src/utils/cog.py:52
+msgctxt "cmd:page_prev"
+msgid "prev"
+msgstr "qsfw"
+
+#: src/utils/cog.py:53
+msgctxt "cmd:page_prev|desc"
+msgid "Jump to the previous page of output."
+msgstr "Kvnq up uif qsfwjpvt qbhf pg pvuqvu."
+
+#: src/utils/cog.py:59
+msgctxt "cmd:page_first"
+msgid "first"
+msgstr "gjstu"
+
+#: src/utils/cog.py:60
+msgctxt "cmd:page_first|desc"
+msgid "Jump to the first page of output."
+msgstr "Kvnq up uif gjstu qbhf pg pvuqvu."
+
+#: src/utils/cog.py:66
+msgctxt "cmd:page_last"
+msgid "last"
+msgstr "mbtu"
+
+#: src/utils/cog.py:67
+msgctxt "cmd:page_last|desc"
+msgid "Jump to the last page of output."
+msgstr "Kvnq up uif mbtu qbhf pg pvuqvu."
+
+#: src/utils/cog.py:73
+msgctxt "cmd:page_select"
+msgid "select"
+msgstr "tfmfdu"
+
+#: src/utils/cog.py:74
+msgctxt "cmd:page_select|desc"
+msgid "Select a page of the output to jump to."
+msgstr "Tfmfdu b qbhf pg uif pvuqvu up kvnq up."
+
+#: src/utils/cog.py:77
+msgctxt "cmd:page_select|param:page"
+msgid "page"
+msgstr "qbhf"
+
+#: src/utils/cog.py:80
+msgctxt "cmd:page_select|param:page|desc"
+msgid "The page name or number to jump to."
+msgstr "Uif qbhf obnf ps ovncfs up kvnq up."
+
+#: src/utils/cog.py:86
+msgctxt "cmd:page_select|error:no_pager"
+msgid "No pager listening in this channel!"
+msgstr "Op qbhfs mjtufojoh jo uijt diboofm!"
+
+#: src/utils/cog.py:97
+msgctxt "cmd:page_select|acmpl|error:no_pager"
+msgid "No active pagers in this channel!"
+msgstr "Op bdujwf qbhfst jo uijt diboofm!"
+
+#: src/utils/transformers.py:45
+#, possible-python-brace-format
+msgctxt "utils:parse_dur|error"
+msgid "Cannot parse `{value}` as a duration."
+msgstr "Dboopu qbstf `{value}` bt b evsbujpo."
+
+#: src/utils/transformers.py:71
+#, possible-python-brace-format
+msgctxt "util:Duration|acmpl|error"
+msgid "Cannot extract duration from \"{partial}\""
+msgstr "Dboopu fyusbdu evsbujpo gspn \"{partial}\""
+
+#: src/utils/lib.py:678
+msgctxt "util:parse_dur|regex:day"
+msgid "(?P<value>\\d+)\\s*(?:(d)|(day))"
+msgstr ""
+
+#: src/utils/lib.py:685
+msgctxt "util:parse_dur|regex:hour"
+msgid "(?P<value>\\d+)\\s*(?:(h)|(hour))"
+msgstr ""
+
+#: src/utils/lib.py:692
+msgctxt "util:parse_dur|regex:minute"
+msgid "(?P<value>\\d+)\\s*(?:(m)|(min))"
+msgstr ""
+
+#: src/utils/lib.py:699
+msgctxt "util:parse_dur|regex:second"
+msgid "(?P<value>\\d+)\\s*(?:(s)|(sec))"
+msgstr ""
+
+#: src/utils/ui/config.py:35
+msgctxt "ui:configui|modal:edit|title"
+msgid "Setting Editor"
+msgstr "Tfuujoh Fejups"
+
+#: src/utils/ui/config.py:75
+msgctxt "ui:configui|check|not_permitted"
+msgid "You have insufficient server permissions to use this UI!"
+msgstr "Zpv ibwf jotvggjdjfou tfswfs qfsnjttjpot up vtf uijt VJ!"
+
+#: src/utils/ui/config.py:153
+msgctxt "ui:configui|button:edit|label"
+msgid "Edit"
+msgstr "Feju"
+
+#: src/utils/ui/config.py:192
+msgctxt "ui:guild_config_base|button:reset|label"
+msgid "Reset"
+msgstr "Sftfu"
+
+#: src/utils/ui/config.py:327
+msgctxt "ui:dashboard|error:section_too_long"
+msgid ""
+"Oops, the settings in this configuration section are too large, and I can "
+"not display them here! Please view the settings in the linked configuration "
+"panel instead."
+msgstr ""
+"Ppqt, uif tfuujoht jo uijt dpogjhvsbujpo tfdujpo bsf upp mbshf, boe J dbo "
+"opu ejtqmbz uifn ifsf! Qmfbtf wjfx uif tfuujoht jo uif mjolfe dpogjhvsbujpo "
+"qbofm jotufbe."
+
+#. List of valid keys indicating movement to the next page
+#: src/utils/ui/pagers.py:50
+msgctxt "cmd:page|pager:Pager|options:next"
+msgid "n, nxt, next, forward, +"
+msgstr "o, oyu, ofyu, gpsxbse, +"
+
+#. List of valid keys indicating movement to the previous page
+#: src/utils/ui/pagers.py:53
+msgctxt "cmd:page|pager:Pager|options:prev"
+msgid "p, prev, back, -"
+msgstr "q, qsfw, cbdl, -"
+
+#. List of valid keys indicating movement to the first page
+#: src/utils/ui/pagers.py:56
+msgctxt "cmd:page|pager:Pager|options:first"
+msgid "f, first, one, start"
+msgstr "g, gjstu, pof, tubsu"
+
+#. List of valid keys indicating movement to the last page
+#: src/utils/ui/pagers.py:59
+msgctxt "cmd:page|pager:Pager|options:last"
+msgid "l, last, end"
+msgstr "m, mbtu, foe"
+
+#: src/utils/ui/pagers.py:273
+#, possible-python-brace-format
+msgctxt "cmd:page|pager:Pager|error:parse"
+msgid "Could not understand page specification `{value}`."
+msgstr "Dpvme opu voefstuboe qbhf tqfdjgjdbujpo `{value}`."
+
+#: src/utils/ui/pagers.py:302
+#, possible-python-brace-format
+msgctxt "cmd:page|acmpl|pager:Pager|choice:last"
+msgid "Last: Page {page}/{total}"
+msgstr "Mbtu: Qbhf {page}/{total}"
+
+#: src/utils/ui/pagers.py:307
+#, possible-python-brace-format
+msgctxt "cmd:page|acmpl|pager:Pager|choice:current"
+msgid "Current: Page {page}/{total}"
+msgstr "Dvssfou: Qbhf {page}/{total}"
+
+#: src/utils/ui/pagers.py:319
+#, possible-python-brace-format
+msgctxt "cmd:page|acmpl|pager:Pager|choice:general"
+msgid "Page {page}"
+msgstr "Qbhf {page}"
+
+#: src/utils/ui/pagers.py:353
+#, possible-python-brace-format
+msgctxt "cmd:page|acmpl|pager:Page|choice:select"
+msgid "Selected: Page {page}/{total}"
+msgstr "Tfmfdufe: Qbhf {page}/{total}"
+
+#: src/utils/ui/pagers.py:363
+msgctxt "cmd:page|acmpl|pager:Page|error:parse"
+msgid "No matching pages!"
+msgstr "Op nbudijoh qbhft!"
+
+#: src/utils/ui/msgeditor.py:75
+msgctxt "ui:msg_editor|error:empty"
+msgid "Rendering failed! The message content and embed cannot both be empty."
+msgstr "Sfoefsjoh gbjmfe! Uif nfttbhf dpoufou boe fncfe dboopu cpui cf fnquz."
+
+#: src/utils/ui/msgeditor.py:86
+#, possible-python-brace-format
+msgctxt "ui:msg_editor|error:embed_failed"
+msgid ""
+"Rendering failed! Could not parse the embed.\n"
+"Error: {error}"
+msgstr ""
+"Sfoefsjoh gbjmfe! Dpvme opu qbstf uif fncfe.\n"
+"Fssps: {error}"
+
+#: src/utils/ui/msgeditor.py:104
+#, possible-python-brace-format
+msgctxt "ui:msg_editor|error:invalid_change"
+msgid ""
+"Rendering failed! The message was not modified.\n"
+"Error: `{text}`"
+msgstr ""
+"Sfoefsjoh gbjmfe! Uif nfttbhf xbt opu npejgjfe.\n"
+"Fssps: `{text}`"
+
+#: src/utils/ui/msgeditor.py:123
+msgctxt "ui:msg_editor|modal:content|field:content|label"
+msgid "Message Content"
+msgstr "Nfttbhf Dpoufou"
+
+#: src/utils/ui/msgeditor.py:132
+msgctxt "ui:msg_editor|modal:content|title"
+msgid "Content Editor"
+msgstr "Dpoufou Fejups"
+
+#: src/utils/ui/msgeditor.py:150
+msgctxt "ui:msg_editor|button:edit|label"
+msgid "Edit Content"
+msgstr "Feju Dpoufou"
+
+#: src/utils/ui/msgeditor.py:162
+msgctxt "ui:msg_editor|button:add_embed|sample_embed|title"
+msgid "Title Placeholder"
+msgstr "Ujumf Qmbdfipmefs"
+
+#: src/utils/ui/msgeditor.py:163
+msgctxt "ui:msg_editor|button:add_embed|sample_embed|description"
+msgid "Description Placeholder"
+msgstr "Eftdsjqujpo Qmbdfipmefs"
+
+#: src/utils/ui/msgeditor.py:174
+msgctxt "ui:msg_editor|button:add_embed|label"
+msgid "Add Embed"
+msgstr "Bee Fncfe"
+
+#: src/utils/ui/msgeditor.py:192
+msgctxt "ui:msg_editor|modal:body|field:content|label"
+msgid "Message Content"
+msgstr "Nfttbhf Dpoufou"
+
+#: src/utils/ui/msgeditor.py:203
+msgctxt "ui:msg_editor|modal:body|field:desc|label"
+msgid "Embed Description"
+msgstr "Fncfe Eftdsjqujpo"
+
+#: src/utils/ui/msgeditor.py:214
+msgctxt "ui:msg_editor|modal:body|field:title|label"
+msgid "Embed Title"
+msgstr "Fncfe Ujumf"
+
+#: src/utils/ui/msgeditor.py:225
+msgctxt "ui:msg_editor|modal:body|field:colour|label"
+msgid "Embed Colour"
+msgstr "Fncfe Dpmpvs"
+
+#: src/utils/ui/msgeditor.py:240
+msgctxt "ui:msg_editor|modal:body|title"
+msgid "Message Body Editor"
+msgstr "Nfttbhf Cpez Fejups"
+
+#: src/utils/ui/msgeditor.py:265
+msgctxt "ui:msg_editor|button:body|error:invalid_colour"
+msgid ""
+"Invalid colour format! Please enter colours as hex codes, e.g. `#E67E22`"
+msgstr ""
+"Jowbmje dpmpvs gpsnbu! Qmfbtf foufs dpmpvst bt ify dpeft, f.h. `#F67F22`"
+
+#: src/utils/ui/msgeditor.py:285
+msgctxt "ui:msg_editor|button:body|label"
+msgid "Body"
+msgstr "Cpez"
+
+#: src/utils/ui/msgeditor.py:302
+msgctxt "ui:msg_editor|modal:author|field:name|label"
+msgid "Author Name"
+msgstr "Bvuips Obnf"
+
+#: src/utils/ui/msgeditor.py:313
+msgctxt "ui:msg_editor|modal:author|field:link|label"
+msgid "Author URL"
+msgstr "Bvuips VSM"
+
+#: src/utils/ui/msgeditor.py:323
+msgctxt "ui:msg_editor|modal:author|field:image|label"
+msgid "Author Image URL"
+msgstr "Bvuips Jnbhf VSM"
+
+#: src/utils/ui/msgeditor.py:334
+msgctxt "ui:msg_editor|modal:author|title"
+msgid "Embed Author Editor"
+msgstr "Fncfe Bvuips Fejups"
+
+#: src/utils/ui/msgeditor.py:360
+msgctxt "ui:msg_editor|button:author|label"
+msgid "Author"
+msgstr "Bvuips"
+
+#: src/utils/ui/msgeditor.py:377
+msgctxt "ui:msg_editor|modal:footer|field:text|label"
+msgid "Footer Text"
+msgstr "Gppufs Ufyu"
+
+#: src/utils/ui/msgeditor.py:388
+msgctxt "ui:msg_editor|modal:footer|field:image|label"
+msgid "Footer Image URL"
+msgstr "Gppufs Jnbhf VSM"
+
+#: src/utils/ui/msgeditor.py:398
+msgctxt "ui:msg_editor|modal:footer|field:timestamp|label"
+msgid "Embed Timestamp (in ISO format)"
+msgstr "Fncfe Ujnftubnq (jo JTP gpsnbu)"
+
+#: src/utils/ui/msgeditor.py:410
+msgctxt "ui:msg_editor|modal:footer|title"
+msgid "Embed Footer Editor"
+msgstr "Fncfe Gppufs Fejups"
+
+#: src/utils/ui/msgeditor.py:429
+msgctxt "ui:msg_editor|button:footer|error:invalid_timestamp"
+msgid "Invalid timestamp! Please enter the timestamp in ISO format."
+msgstr "Jowbmje ujnftubnq! Qmfbtf foufs uif ujnftubnq jo JTP gpsnbu."
+
+#: src/utils/ui/msgeditor.py:449
+msgctxt "ui:msg_editor|button:footer|label"
+msgid "Footer"
+msgstr "Gppufs"
+
+#: src/utils/ui/msgeditor.py:467
+msgctxt "ui:msg_editor|modal:images|field:thumb|label"
+msgid "Thumbnail Image URL"
+msgstr "Uivncobjm Jnbhf VSM"
+
+#: src/utils/ui/msgeditor.py:477
+msgctxt "ui:msg_editor|modal:images|field:image|label"
+msgid "Embed Image URL"
+msgstr "Fncfe Jnbhf VSM"
+
+#: src/utils/ui/msgeditor.py:487
+msgctxt "ui:msg_editor|modal:images|title"
+msgid "Embed images Editor"
+msgstr "Fncfe jnbhft Fejups"
+
+#: src/utils/ui/msgeditor.py:517
+msgctxt "ui:msg_editor|button:images|label"
+msgid "Images"
+msgstr "Jnbhft"
+
+#: src/utils/ui/msgeditor.py:535
+msgctxt "ui:msg_editor|modal:add_field|field:position|label"
+msgid "Field number to insert at"
+msgstr "Gjfme ovncfs up jotfsu bu"
+
+#: src/utils/ui/msgeditor.py:545
+msgctxt "ui:msg_editor|modal:add_field|field:name|label"
+msgid "Field name"
+msgstr "Gjfme obnf"
+
+#: src/utils/ui/msgeditor.py:555
+msgctxt "ui:msg_editor|modal:add_field|field:value|label"
+msgid "Field value"
+msgstr "Gjfme wbmvf"
+
+#: src/utils/ui/msgeditor.py:565
+msgctxt "ui:msg_editor|modal:add_field|field:inline|label"
+msgid "Whether the field is inline"
+msgstr "Xifuifs uif gjfme jt jomjof"
+
+#: src/utils/ui/msgeditor.py:569
+msgctxt "ui:msg_editor|modal:add_field|field:inline|placeholder"
+msgid "True/False"
+msgstr "Usvf/Gbmtf"
+
+#: src/utils/ui/msgeditor.py:582
+msgctxt "ui:msg_editor|modal:add_field|title"
+msgid "Add Embed Field"
+msgstr "Bee Fncfe Gjfme"
+
+#: src/utils/ui/msgeditor.py:602
+msgctxt "ui:msg_editor|modal:add_field|error:position_not_int"
+msgid "The field position must be an integer!"
+msgstr "Uif gjfme qptjujpo nvtu cf bo joufhfs!"
+
+#: src/utils/ui/msgeditor.py:621
+msgctxt "ui:msg_editor|button:add_field|label"
+msgid "Add Field"
+msgstr "Bee Gjfme"
+
+#: src/utils/ui/msgeditor.py:637
+msgctxt "ui:msg_editor|format_field|name_placeholder"
+msgid "-"
+msgstr "-"
+
+#: src/utils/ui/msgeditor.py:666
+msgctxt "ui:msg_editor|modal:edit_field|field:name|label"
+msgid "Field name"
+msgstr "Gjfme obnf"
+
+#: src/utils/ui/msgeditor.py:677
+msgctxt "ui:msg_editor|modal:edit_field|field:value|label"
+msgid "Field value"
+msgstr "Gjfme wbmvf"
+
+#: src/utils/ui/msgeditor.py:688
+msgctxt "ui:msg_editor|modal:edit_field|field:inline|label"
+msgid "Whether the field is inline"
+msgstr "Xifuifs uif gjfme jt jomjof"
+
+#: src/utils/ui/msgeditor.py:692
+msgctxt "ui:msg_editor|modal:edit_field|field:inline|placeholder"
+msgid "True/False"
+msgstr "Usvf/Gbmtf"
+
+#: src/utils/ui/msgeditor.py:704
+msgctxt "ui:msg_editor|modal:edit_field|title"
+msgid "Edit Embed Field"
+msgstr "Feju Fncfe Gjfme"
+
+#: src/utils/ui/msgeditor.py:733
+msgctxt "ui:msg_editor|menu:edit_field|placeholder"
+msgid "Edit Embed Field"
+msgstr "Feju Fncfe Gjfme"
+
+#: src/utils/ui/msgeditor.py:772
+msgctxt "ui:msg_deleteor|menu:delete_field|placeholder"
+msgid "Remove Embed Field"
+msgstr "Sfnpwf Fncfe Gjfme"
+
+#: src/utils/ui/msgeditor.py:808
+msgctxt "ui:msg_editor|button:save|label"
+msgid "Save"
+msgstr "Tbwf"
+
+#: src/utils/ui/msgeditor.py:833
+msgctxt "ui:msg_editor|button:download|label"
+msgid "Download"
+msgstr "Epxompbe"
+
+#: src/utils/ui/msgeditor.py:852
+msgctxt "ui:msg_editor|button:undo|label"
+msgid "Undo"
+msgstr "Voep"
+
+#: src/utils/ui/msgeditor.py:872
+msgctxt "ui:msg_editor|button:redo|label"
+msgid "Redo"
+msgstr "Sfep"
+
+#: src/utils/ui/msgeditor.py:891
+msgctxt "ui:msg_editor|button:quit|confirm"
+msgid "You have unsaved changes! Are you sure you want to quit?"
+msgstr "Zpv ibwf votbwfe dibohft! Bsf zpv tvsf zpv xbou up rvju?"
+
+#: src/utils/ui/msgeditor.py:896
+msgctxt "ui:msg_editor|button:quit|confirm|button:yes"
+msgid "Yes, Quit Now"
+msgstr "Zft, Rvju Opx"
+
+#: src/utils/ui/msgeditor.py:902
+msgctxt "ui:msg_editor|button:quit|confirm|button:no"
+msgid "No, Go Back"
+msgstr "Op, Hp Cbdl"
+
+#: src/utils/ui/msgeditor.py:996
+msgctxt "ui:msg_editor|timeout_warning|title"
+msgid "Warning!"
+msgstr "Xbsojoh!"
+
+#: src/utils/ui/msgeditor.py:1000
+#, possible-python-brace-format
+msgctxt "ui:msg_editor|timeout_warning|desc"
+msgid ""
+"This interface will time out {timestamp}. Press 'Continue' below to keep "
+"editing."
+msgstr ""
+"Uijt joufsgbdf xjmm ujnf pvu {timestamp}. Qsftt 'Dpoujovf' cfmpx up lffq "
+"fejujoh."
+
+#: src/utils/ui/msgeditor.py:1009
+msgctxt "ui:msg_editor|timeout_warning|continue"
+msgid "Continue"
+msgstr "Dpoujovf"

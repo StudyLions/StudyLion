@@ -381,13 +381,28 @@ class Economy(LionCog):
             if role:
                 query = MemModel.table.select_where(
                     (MemModel.guildid == role.guild.id) & (MemModel.coins != 0)
-                )
-                query.order_by('coins', ORDER.DESC)
+                ).with_no_adapter()
                 if not role.is_default():
                     # Everyone role is handled differently for data efficiency
                     ids = [target.id for target in targets]
                     query = query.where(userid=ids)
-                rows = await query
+
+                # First get a summary
+                summary = await query.select(
+                    _count='COUNT(*)',
+                    _coin_total='SUM(coins)',
+                )
+                record = summary[0]
+                count = record['_count']
+                total = record['_coin_total']
+                if count > 0:
+                    # Then get the top 1000 members
+                    query._columns = ()
+                    query.order_by('coins', ORDER.DESC)
+                    query.limit(1000)
+                    rows = await query.select('userid', 'coins')
+                else:
+                    rows = []
 
                 name = t(_p(
                     'cmd:economy_balance|embed:role_lb|author',
@@ -400,7 +415,7 @@ class Economy(LionCog):
                             "This server has a total balance of {coin_emoji}**{total}**."
                         )).format(
                             coin_emoji=cemoji,
-                            total=sum(row['coins'] for row in rows)
+                            total=total
                         )
                     else:
                         header = t(_p(
@@ -408,9 +423,9 @@ class Economy(LionCog):
                             "{role_mention} has `{count}` members with non-zero balance, "
                             "with a total balance of {coin_emoji}**{total}**."
                         )).format(
-                            count=len(targets),
+                            count=count,
                             role_mention=role.mention,
-                            total=sum(row['coins'] for row in rows),
+                            total=total,
                             coin_emoji=cemoji
                         )
 
@@ -476,7 +491,7 @@ class Economy(LionCog):
             else:
                 # If we have a single target, show their current balance, with a short transaction history.
                 user = targets[0]
-                row = await self.bot.core.data.Member.fetch(ctx.guild.id, user.id)
+                row = await self.bot.core.data.Member.fetch(ctx.guild.id, user.id, cached=False)
 
                 embed = discord.Embed(
                     colour=discord.Colour.orange(),
@@ -675,7 +690,7 @@ class Economy(LionCog):
     )
     @appcmds.guild_only()
     async def send_cmd(self, ctx: LionContext,
-                       target: discord.User | discord.Member,
+                       target: discord.Member,
                        amount: appcmds.Range[int, 1, MAX_COINS],
                        note: Optional[str] = None):
         """
@@ -690,17 +705,49 @@ class Economy(LionCog):
 
         t = self.bot.translator.t
 
+        error = None
         if not ctx.lguild.config.get('allow_transfers').value:
-            await ctx.interaction.response.send_message(
-                embed=error_embed(
-                    t(_p(
-                        'cmd:send|error:not_allowed',
-                        "Sorry, this server has disabled LionCoin transfers!"
-                    ))
-                )
+            error = error_embed(
+                t(_p(
+                    'cmd:send|error:not_allowed',
+                    "Sorry, this server has disabled LionCoin transfers!"
+                ))
             )
+        elif target == ctx.author:
+            # Funny response
+            error = discord.Embed(
+                colour=discord.Colour.brand_red(),
+                description=t(_p(  # TRANSLATOR NOTE: Easter egg/Funny error, translate as you wish.
+                    'cmd:send|error:sending-to-self',
+                    "What is this, tax evasion?\n"
+                    "(You can not send coins to yourself.)"
+                ))
+            )
+        elif target == ctx.guild.me:
+            # Funny response
+            error = discord.Embed(
+                colour=discord.Colour.orange(),
+                description=t(_p(  # TRANSLATOR NOTE: Easter egg/Funny error, translate as you wish.
+                    'cmd:send|error:sending-to-leo',
+                    "I appreciate it, but you need it more than I do!\n"
+                    "(You cannot send coins to bots.)"
+                ))
+            )
+        elif target.bot:
+            # Funny response
+            error = discord.Embed(
+                colour=discord.Colour.brand_red(),
+                description=t(_p(  # TRANSLATOR NOTE: Easter egg/Funny error, translate as you wish.
+                    'cmd:send|error:sending-to-bot',
+                    "{target} appreciates the gesture, but said they don't have any use for {coin}.\n"
+                    "(You cannot send coins to bots.)"
+                )).format(target=target.mention, coin=self.bot.config.emojis.coin)
+            )
+        if error is not None:
+            await ctx.interaction.response.send_message(embed=error, ephemeral=True)
             return
 
+        # Ensure the target member exists
         Member = self.bot.core.data.Member
         target_lion = await self.bot.core.lions.fetch_member(ctx.guild.id, target.id)
 
@@ -778,7 +825,7 @@ class Economy(LionCog):
             )
         )
         if failed:
-            embed.description = t(_p(
+            embed.description += '\n' + t(_p(
                 'cmd:send|embed:ack|desc|error:unreachable',
                 "Unfortunately, I was not able to message the recipient. Perhaps they have me blocked?"
             ))

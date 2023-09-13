@@ -6,6 +6,7 @@ from meta import LionBot
 from gui.cards import WeeklyGoalCard, MonthlyGoalCard
 from gui.base import CardMode
 from tracking.text.data import TextTrackerData
+from modules.schedule.lib import time_to_slotid
 
 from .. import logger
 from ..data import StatsData
@@ -81,8 +82,33 @@ async def get_goals_card(
             middle_completed = (await model.user_messages_between(userid, start, end))[0]
 
     # Compute schedule session progress
-    # TODO
-    sessions_complete = 0.5
+    attendance = None
+    schedule_cog = bot.get_cog('ScheduleCog')
+    if schedule_cog:
+        booking_model = schedule_cog.data.ScheduleSessionMember
+        startid = time_to_slotid(start)
+        endid = time_to_slotid(end)
+        query = booking_model.table.select_where(
+            booking_model.slotid >= startid,
+            booking_model.slotid < endid,
+            userid=userid
+        )
+        if guildid:
+            query.where(guildid=guildid)
+
+        query.select(
+            _booked='COUNT(*)',
+            _attended='COUNT(*) FILTER (WHERE attended)',
+        )
+        query.with_no_adapter()
+
+        records = await query
+        if records:
+            record = records[0]
+            attended = record['_attended']
+            booked = record['_booked']
+            if booked:
+                attendance = attended / booked
 
     # Get member profile
     if user:
@@ -105,7 +131,7 @@ async def get_goals_card(
         tasks_goal=goals['task_goal'],
         studied_hours=middle_completed,
         studied_goal=middle_goal,
-        attendance=sessions_complete,
+        attendance=attendance,
         goals=tasks,
         date=today,
         skin={'mode': mode}

@@ -233,8 +233,8 @@ class RoomUI(MessageUI):
                     await submit.edit_original_response(
                         content=t(_p(
                             'ui:room_status|button:timer|timer_created',
-                            "Timer created successfully! Use `/pomodoro edit` to configure further."
-                        ))
+                            "Timer created successfully! Use {edit_cmd} to configure further."
+                        )).format(edit_cmd=self.bot.core.mention_cmd('pomodoro edit'))
                     )
                     await self.refresh()
                 except UserInputError:

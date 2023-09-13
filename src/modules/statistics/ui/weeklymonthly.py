@@ -483,12 +483,16 @@ class WeeklyMonthlyUI(StatsUI):
                             ).with_connection(conn)
 
             if modified:
-                # If either goal type was modified, clear the rendered cache and refresh
-                for page_key, (goalf, statf) in self._card_cache.items():
-                    # If the stat period type is the same as the current period type
-                    if page_key[2].period is self._stat_page.period:
-                        self._card_cache[page_key] = (None, statf)
-                await self.refresh(thinking=interaction)
+                # Check whether the UI finished while we were interacting
+                if not self._stopped.done():
+                    # If either goal type was modified, clear the rendered cache and refresh
+                    for page_key, (goalf, statf) in self._card_cache.items():
+                        # If the stat period type is the same as the current period type
+                        if page_key[2].period is self._stat_page.period:
+                            self._card_cache[page_key] = (None, statf)
+                    await self.refresh(thinking=interaction)
+                else:
+                    await interaction.delete_original_response()
         await press.response.send_modal(modal)
 
     async def edit_button_refresh(self):

@@ -1,0 +1,32 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: you@example.com\n"
+"POT-Creation-Date: 2007-10-18 14:00+0100\n"
+"PO-Revision-Date: 2007-10-18 14:00+0100\n"
+"Last-Translator: you <you@example.com>\n"
+"Language-Team: English <yourteam@example.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/gui/cards/timer.py:73
+msgctxt "skin:timer|field:date_text"
+msgid "Use /now to show what you are working on!"
+msgstr "Vtf /opx up tipx xibu zpv bsf xpsljoh po!"
+
+#: src/gui/cards/timer.py:89
+msgctxt "skin:timer|stage:focus|field:stage_text"
+msgid "FOCUS"
+msgstr "GPDVT"
+
+#: src/gui/cards/timer.py:103
+msgctxt "skin:timer|stage:break|field:stage_text"
+msgid "BREAK"
+msgstr "CSFBL"

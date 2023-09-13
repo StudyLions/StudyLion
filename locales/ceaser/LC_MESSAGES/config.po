@@ -1,0 +1,85 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: you@example.com\n"
+"POT-Creation-Date: 2007-10-18 14:00+0100\n"
+"PO-Revision-Date: 2007-10-18 14:00+0100\n"
+"Last-Translator: you <you@example.com>\n"
+"Language-Team: English <yourteam@example.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/modules/config/general.py:41
+msgctxt "guildset:timezone"
+msgid "timezone"
+msgstr "ujnfapof"
+
+#: src/modules/config/general.py:44
+msgctxt "guildset:timezone|desc"
+msgid "Guild timezone for statistics display."
+msgstr "Hvjme ujnfapof gps tubujtujdt ejtqmbz."
+
+#: src/modules/config/general.py:48
+msgctxt "guildset:timezone|long_desc"
+msgid ""
+"Guild-wide timezone. Used to determine start of the day for the "
+"leaderboards, and as the default statistics timezone for members who have "
+"not set one."
+msgstr ""
+"Hvjme-xjef ujnfapof. Vtfe up efufsnjof tubsu pg uif ebz gps uif "
+"mfbefscpbset, boe bt uif efgbvmu tubujtujdt ujnfapof gps nfncfst xip ibwf "
+"opu tfu pof."
+
+#: src/modules/config/general.py:62
+#, possible-python-brace-format
+msgctxt "guildset:timezone|response"
+msgid "The guild timezone has been set to `{timezone}`."
+msgstr "Uif hvjme ujnfapof ibt cffo tfu up `{timezone}`."
+
+#: src/modules/config/general.py:94
+msgctxt "cmd:configure_general"
+msgid "general"
+msgstr "hfofsbm"
+
+#: src/modules/config/general.py:95
+msgctxt "cmd:configure_general|desc"
+msgid "General configuration panel"
+msgstr "Hfofsbm dpogjhvsbujpo qbofm"
+
+#: src/modules/config/general.py:129
+msgctxt "cmd:configure_general|parse_failure:timezone"
+msgid "Could not set the timezone!"
+msgstr "Dpvme opu tfu uif ujnfapof!"
+
+#: src/modules/config/general.py:150
+msgctxt "cmd:configure_general|success"
+msgid "Settings Updated!"
+msgstr "Tfuujoht Vqebufe!"
+
+#: src/modules/config/general.py:165
+msgctxt "cmd:configure_general|panel|title"
+msgid "General Configuration Panel"
+msgstr "Hfofsbm Dpogjhvsbujpo Qbofm"
+
+#: src/modules/config/dashboard.py:98
+#, possible-python-brace-format
+msgctxt "ui:dashboard|title"
+msgid "Guild Dashboard (Page {page}/{total})"
+msgstr "Hvjme Ebticpbse (Qbhf {page}/{total})"
+
+#: src/modules/config/dashboard.py:109
+msgctxt "ui:dashboard|footer"
+msgid "Hover over setting names for a brief description"
+msgstr "Ipwfs pwfs tfuujoh obnft gps b csjfg eftdsjqujpo"
+
+#: src/modules/config/dashboard.py:172
+msgctxt "ui:dashboard|menu:config|placeholder"
+msgid "Open Configuration Panel"
+msgstr "Pqfo Dpogjhvsbujpo Qbofm"

@@ -8,12 +8,13 @@ from discord import app_commands as appcmds
 from discord.ui.select import select, Select, SelectOption
 from discord.ui.button import button, Button
 
+from meta import conf
 from meta import LionCog, LionContext, LionBot
 from meta.errors import SafeCancellation
 from meta.logger import log_wrap
-from utils import ui
-from utils.lib import error_embed
+from utils.lib import error_embed, MessageArgs
 from constants import MAX_COINS
+from wards import equippable_role
 
 from .. import babel
 
@@ -292,6 +293,7 @@ class ColourShop(Shop):
                             )
                         except discord.HTTPException:
                             # Possibly Forbidden, or the role doesn't actually exist anymore (cache failure)
+                            # TODO: Event log
                             pass
                     await self.data.MemberInventory.table.delete_where(inventoryid=owned.data.inventoryid)
 
@@ -414,7 +416,8 @@ class ColourShopping(ShopCog):
             item_type=self._shop_cls_._item_type_,
             deleted=False
         )
-        if len(current) >= 25:
+        # Disabled because we can support more than 25 colours
+        if False and len(current) >= 25:
             raise SafeCancellation(
                 t(_p(
                     'cmd:editshop_colours_create|error:max_colours',
@@ -709,7 +712,7 @@ class ColourShopping(ShopCog):
             item_type=self._shop_cls_._item_type_,
             deleted=False
         )
-        if len(current) >= 25:
+        if False and len(current) >= 25:
             raise SafeCancellation(
                 t(_p(
                     'cmd:editshop_colours_add|error:max_colours',
@@ -738,7 +741,7 @@ class ColourShopping(ShopCog):
             )
 
         # Check that the author has permission to manage this role
-        if not (ctx.author.guild_permissions.manage_roles and ctx.author.top_role > role):
+        if not (ctx.author.guild_permissions.manage_roles):
             raise SafeCancellation(
                 t(_p(
                     'cmd:editshop_colours_add|error:caller_perms',
@@ -746,6 +749,9 @@ class ColourShopping(ShopCog):
                     "You must have `MANAGE_ROLES`, and your top role must be above this role."
                 )).format(mention=role.mention)
             )
+
+        # Final catch-all with more general error messages
+        await equippable_role(self.bot, role, ctx.author)
 
         if role.permissions.administrator:
             raise SafeCancellation(
@@ -1016,7 +1022,7 @@ class ColourShopping(ShopCog):
         item = items[0]
 
         # Delete the item, respecting the delete setting.
-        await self.data.ShopItem.table.update_where(itemid=item.itemid, deleted=True)
+        await self.data.ShopItem.table.update_where(itemid=item.itemid).set(deleted=True)
 
         if delete_role:
             role = ctx.guild.get_role(item.roleid)
@@ -1093,6 +1099,24 @@ class ColourStore(Store):
     """
     shop: ColourShop
 
+    page_len = 25
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.pagen = 0
+        self.blocks = [[]]
+
+    @property
+    def page_count(self):
+        return len(self.blocks)
+
+    @property
+    def this_page(self):
+        self.pagen %= self.page_count
+        return self.blocks[self.pagen]
+
+    # ----- UI Components -----
     @select(placeholder="SELECT_PLACEHOLDER")
     async def select_colour(self, interaction: discord.Interaction, selection: Select):
         t = self.shop.bot.translator.t
@@ -1143,7 +1167,7 @@ class ColourStore(Store):
         selector = self.select_colour
 
         # Get the list of ColourRoleItems that may be purchased
-        purchasable = self.shop.purchasable()
+        purchasable = [item for item in self.shop.purchasable() if item in self.this_page]
         owned = self.shop.owned()
 
         option_map: dict[int, SelectOption] = {}
@@ -1168,37 +1192,54 @@ class ColourStore(Store):
             selector.disabled = False
             selector.options = list(option_map.values())
 
-    async def refresh(self):
-        """
-        Refresh the UI elements
-        """
+    @button(emoji=conf.emojis.forward)
+    async def next_page_button(self, press: discord.Interaction, pressed: Button):
+        await press.response.defer()
+        self.pagen += 1
+        await self.refresh()
+
+    @button(emoji=conf.emojis.backward)
+    async def prev_page_button(self, press: discord.Interaction, pressed: Button):
+        await press.response.defer()
+        self.pagen -= 1
+        await self.refresh()
+
+    # ----- UI Flow -----
+    async def reload(self):
+        items = self.shop.items
+        self.blocks = [
+            items[i:i+self.page_len] for i in range(0, len(items), self.page_len)
+        ] or [[]]
+
+    async def refresh_layout(self):
         await self.select_colour_refresh()
-        if not self.select_colour.options:
-            self._layout = [self.store_row]
+        if self.page_count > 1:
+            buttons = (self.prev_page_button, *self.store_row, self.next_page_button)
         else:
-            self._layout = [(self.select_colour,), self.store_row]
+            buttons = self.store_row
+        if not self.select_colour.options:
+            self._layout = [buttons]
+        else:
+            self._layout = [(self.select_colour,), buttons]
 
-        self.embed = self.make_embed()
-
-    def make_embed(self):
-        """
-        Embed for this shop.
-        """
+    async def make_message(self) -> MessageArgs:
         t = self.shop.bot.translator.t
+        owned = self.shop.owned()
         if self.shop.items:
-            owned = self.shop.owned()
+            page_items = self.this_page
+            page_start = self.pagen * self.page_len + 1
             lines = []
-            for i, item in enumerate(self.shop.items):
+            for i, item in enumerate(page_items):
                 if owned is not None and item.itemid == owned.itemid:
                     line = t(_p(
                         'ui:colourstore|embed|line:owned_item',
                         "`[{j:02}]` | `{price} LC` | {mention} (You own this!)"
-                    )).format(j=i+1, price=item.price, mention=item.mention)
+                    )).format(j=i+page_start, price=item.price, mention=item.mention)
                 else:
                     line = t(_p(
                         'ui:colourstore|embed|line:item',
                         "`[{j:02}]` | `{price} LC` | {mention}"
-                    )).format(j=i+1, price=item.price, mention=item.mention)
+                    )).format(j=i+page_start, price=item.price, mention=item.mention)
                 lines.append(line)
             description = '\n'.join(lines)
         else:
@@ -1210,4 +1251,23 @@ class ColourStore(Store):
             title=t(_p('ui:colourstore|embed|title', "Colour Role Shop")),
             description=description
         )
-        return embed
+        if self.page_count > 1:
+            footer = t(_p(
+                'ui:colourstore|embed|footer:paged',
+                "Page {current}/{total}"
+            )).format(current=self.pagen + 1, total=self.page_count)
+            embed.set_footer(text=footer)
+        if owned:
+            embed.add_field(
+                name=t(_p(
+                    'ui:colourstore|embed|field:warning|name',
+                    "Note!"
+                )),
+                value=t(_p(
+                    'ui:colourstore|embed|field:warning|value',
+                    "Purchasing a new colour role will *replace* your currently colour "
+                    "{current} without refund!"
+                )).format(current=owned.mention)
+            )
+
+        return MessageArgs(embed=embed)

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 22:43+0300\n"
+"POT-Creation-Date: 2023-09-13 08:47+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,85 +17,85 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/gui/cards/goals.py:95
+#: src/gui/cards/goals.py:97
 msgctxt "skin:goals|goal:tasks|name"
 msgid "TASKS DONE"
 msgstr ""
 
-#: src/gui/cards/goals.py:99
+#: src/gui/cards/goals.py:101
 msgctxt "skin:goals|goal:tasks|goal"
 msgid "GOAL: "
 msgstr ""
 
-#: src/gui/cards/goals.py:125
+#: src/gui/cards/goals.py:127
 msgctxt "skin:goals|goal:attendance|name"
 msgid ""
 "ATTENDANCE\n"
 "RATE"
 msgstr ""
 
-#: src/gui/cards/goals.py:139
+#: src/gui/cards/goals.py:141
 msgctxt "skin:goals|mode:study|goal:middle|above"
 msgid "STUDIED"
 msgstr ""
 
-#: src/gui/cards/goals.py:143
+#: src/gui/cards/goals.py:145
 msgctxt "skin:goals|mode:study|goal:middle|below"
 msgid "HOURS"
 msgstr ""
 
-#: src/gui/cards/goals.py:147
+#: src/gui/cards/goals.py:149
 msgctxt "skin:goals|mode:voice|goal:middle|above"
 msgid "CHATTED"
 msgstr ""
 
-#: src/gui/cards/goals.py:151
+#: src/gui/cards/goals.py:153
 msgctxt "skin:goals|mode:voice|goal:middle|below"
 msgid "HOURS"
 msgstr ""
 
-#: src/gui/cards/goals.py:155
+#: src/gui/cards/goals.py:157
 msgctxt "skin:goals|mode:text|goal:middle|above"
 msgid "SENT"
 msgstr ""
 
-#: src/gui/cards/goals.py:159
+#: src/gui/cards/goals.py:161
 msgctxt "skin:goals|mode:text|goal:middle|below"
 msgid "MESSAGES"
 msgstr ""
 
-#: src/gui/cards/goals.py:163
+#: src/gui/cards/goals.py:165
 msgctxt "skin:goals|mode:anki|goal:middle|above"
 msgid "REVIEWED"
 msgstr ""
 
-#: src/gui/cards/goals.py:167
+#: src/gui/cards/goals.py:169
 msgctxt "skin:goals|mode:anki|goal:middle|below"
 msgid "CARDS"
 msgstr ""
 
-#: src/gui/cards/goals.py:228
+#: src/gui/cards/goals.py:230
 #, possible-python-brace-format
 msgctxt "skin:goals|footer"
 msgid "As of {day} {month} • {name}"
 msgstr ""
 
-#: src/gui/cards/goals.py:240
+#: src/gui/cards/goals.py:242
 msgctxt "ui:goals|weekly|title"
 msgid "WEEKLY STATISTICS"
 msgstr ""
 
-#: src/gui/cards/goals.py:244
+#: src/gui/cards/goals.py:246
 msgctxt "ui:goals|weekly|task_header"
 msgid "GOALS OF THE WEEK"
 msgstr ""
 
-#: src/gui/cards/goals.py:254
+#: src/gui/cards/goals.py:256
 msgctxt "ui:goals|monthly|title"
 msgid "MONTHLY STATISTICS"
 msgstr ""
 
-#: src/gui/cards/goals.py:258
+#: src/gui/cards/goals.py:260
 msgctxt "ui:goals|monthly|task_header"
 msgid "GOALS OF THE MONTH"
 msgstr ""

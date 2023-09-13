@@ -1,0 +1,102 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: you@example.com\n"
+"POT-Creation-Date: 2007-10-18 14:00+0100\n"
+"PO-Revision-Date: 2007-10-18 14:00+0100\n"
+"Last-Translator: you <you@example.com>\n"
+"Language-Team: English <yourteam@example.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/gui/cards/goals.py:97
+msgctxt "skin:goals|goal:tasks|name"
+msgid "TASKS DONE"
+msgstr "UBTLT EPOF"
+
+#: src/gui/cards/goals.py:101
+msgctxt "skin:goals|goal:tasks|goal"
+msgid "GOAL: "
+msgstr "HPBM: "
+
+#: src/gui/cards/goals.py:127
+msgctxt "skin:goals|goal:attendance|name"
+msgid ""
+"ATTENDANCE\n"
+"RATE"
+msgstr ""
+"BUUFOEBODF\n"
+"SBUF"
+
+#: src/gui/cards/goals.py:141
+msgctxt "skin:goals|mode:study|goal:middle|above"
+msgid "STUDIED"
+msgstr "TUVEJFE"
+
+#: src/gui/cards/goals.py:145
+msgctxt "skin:goals|mode:study|goal:middle|below"
+msgid "HOURS"
+msgstr "IPVST"
+
+#: src/gui/cards/goals.py:149
+msgctxt "skin:goals|mode:voice|goal:middle|above"
+msgid "CHATTED"
+msgstr "DIBUUFE"
+
+#: src/gui/cards/goals.py:153
+msgctxt "skin:goals|mode:voice|goal:middle|below"
+msgid "HOURS"
+msgstr "IPVST"
+
+#: src/gui/cards/goals.py:157
+msgctxt "skin:goals|mode:text|goal:middle|above"
+msgid "SENT"
+msgstr "TFOU"
+
+#: src/gui/cards/goals.py:161
+msgctxt "skin:goals|mode:text|goal:middle|below"
+msgid "MESSAGES"
+msgstr "NFTTBHFT"
+
+#: src/gui/cards/goals.py:165
+msgctxt "skin:goals|mode:anki|goal:middle|above"
+msgid "REVIEWED"
+msgstr "SFWJFXFE"
+
+#: src/gui/cards/goals.py:169
+msgctxt "skin:goals|mode:anki|goal:middle|below"
+msgid "CARDS"
+msgstr "DBSET"
+
+#: src/gui/cards/goals.py:230
+#, possible-python-brace-format
+msgctxt "skin:goals|footer"
+msgid "As of {day} {month} • {name}"
+msgstr "Bt pg {day} {month} • {name}"
+
+#: src/gui/cards/goals.py:242
+msgctxt "ui:goals|weekly|title"
+msgid "WEEKLY STATISTICS"
+msgstr "XFFLMZ TUBUJTUJDT"
+
+#: src/gui/cards/goals.py:246
+msgctxt "ui:goals|weekly|task_header"
+msgid "GOALS OF THE WEEK"
+msgstr "HPBMT PG UIF XFFL"
+
+#: src/gui/cards/goals.py:256
+msgctxt "ui:goals|monthly|title"
+msgid "MONTHLY STATISTICS"
+msgstr "NPOUIMZ TUBUJTUJDT"
+
+#: src/gui/cards/goals.py:260
+msgctxt "ui:goals|monthly|task_header"
+msgid "GOALS OF THE MONTH"
+msgstr "HPBMT PG UIF NPOUI"

@@ -57,6 +57,21 @@ class RoomCog(LionCog):
         for task in self._ticker_tasks.values():
             task.cancel()
 
+    def get_rooms(self, guildid: int, userid: Optional[int] = None):
+        """
+        Get the private rooms in the given guild, using cache.
+
+        If `userid` is provided, filters by rooms which the given user is a member or owner of.
+        """
+        guild_rooms = self._room_cache[guildid]
+        if userid:
+            rooms = {
+                cid: room for cid, room in guild_rooms.items() if userid in room.members or userid == room.data.ownerid
+            }
+        else:
+            rooms = guild_rooms
+        return rooms
+
     async def _prepare_rooms(self, room_data: list[RoomData.Room]):
         """
         Launch or destroy rooms from the provided room data.

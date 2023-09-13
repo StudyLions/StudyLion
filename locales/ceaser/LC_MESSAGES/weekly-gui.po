@@ -1,0 +1,96 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: you@example.com\n"
+"POT-Creation-Date: 2007-10-18 14:00+0100\n"
+"PO-Revision-Date: 2007-10-18 14:00+0100\n"
+"Last-Translator: you <you@example.com>\n"
+"Language-Team: English <yourteam@example.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/gui/cards/weekly.py:52
+msgctxt "skin:weeklystats|mode:study|title"
+msgid "STUDY HOURS"
+msgstr "TUVEZ IPVST"
+
+#: src/gui/cards/weekly.py:56
+msgctxt "skin:weeklystats|mode:voice|title"
+msgid "VOICE CHANNEL ACTIVITY"
+msgstr "WPJDF DIBOOFM BDUJWJUZ"
+
+#: src/gui/cards/weekly.py:60
+msgctxt "skin:weeklystats|mode:text|title"
+msgid "MESSAGE ACTIVITY"
+msgstr "NFTTBHF BDUJWJUZ"
+
+#: src/gui/cards/weekly.py:64
+msgctxt "skin::weeklystats|mode:anki|title"
+msgid "CARDS REVIEWED"
+msgstr "DBSET SFWJFXFE"
+
+#: src/gui/cards/weekly.py:137
+msgctxt "skin:weeklystats|weekdays"
+msgid "M,T,W,T,F,S,S"
+msgstr "N,U,X,U,G,T,T"
+
+#: src/gui/cards/weekly.py:207
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:study|summary:this_week"
+msgid "THIS WEEK: {amount} HOURS"
+msgstr "UIJT XFFL: {amount} IPVST"
+
+#: src/gui/cards/weekly.py:211
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:voice|summary:this_week"
+msgid "THIS WEEK: {amount} HOURS"
+msgstr "UIJT XFFL: {amount} IPVST"
+
+#: src/gui/cards/weekly.py:215
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:text|summary:this_week"
+msgid "THIS WEEK: {amount} MESSAGES"
+msgstr "UIJT XFFL: {amount} NFTTBHFT"
+
+#: src/gui/cards/weekly.py:219
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:text|summary:this_week"
+msgid "THIS WEEK: {amount} CARDS"
+msgstr "UIJT XFFL: {amount} DBSET"
+
+#: src/gui/cards/weekly.py:240
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:study|summary:last_week"
+msgid "LAST WEEK: {amount} HOURS"
+msgstr "MBTU XFFL: {amount} IPVST"
+
+#: src/gui/cards/weekly.py:244
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:voice|summary:last_week"
+msgid "LAST WEEK: {amount} HOURS"
+msgstr "MBTU XFFL: {amount} IPVST"
+
+#: src/gui/cards/weekly.py:248
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:text|summary:last_week"
+msgid "LAST WEEK: {amount} MESSAGES"
+msgstr "MBTU XFFL: {amount} NFTTBHFT"
+
+#: src/gui/cards/weekly.py:252
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:text|summary:last_week"
+msgid "LAST WEEK: {amount} CARDS"
+msgstr "MBTU XFFL: {amount} DBSET"
+
+#: src/gui/cards/weekly.py:272
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|footer"
+msgid "Weekly Statistics • As of {day} {month} • {name} {discrim}"
+msgstr "Xfflmz Tubujtujdt • Bt pg {day} {month} • {name} {discrim}"

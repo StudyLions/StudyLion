@@ -539,21 +539,21 @@ class StatsData(Registry):
         _timestamp = Timestamp()
 
         @classmethod
-        async def fetch_tags(self, guildid: Optional[int], userid: int):
-            tags = await self.fetch_where(guildid=guildid, userid=userid)
+        async def fetch_tags(cls, guildid: Optional[int], userid: int):
+            tags = await cls.fetch_where(guildid=guildid, userid=userid).order_by(cls.tagid)
             if not tags and guildid is not None:
-                tags = await self.fetch_where(guildid=None, userid=userid)
+                tags = await cls.fetch_where(guildid=None, userid=userid)
             return [tag.tag for tag in tags]
 
         @classmethod
         @log_wrap(action='set_profile_tags')
-        async def set_tags(self, guildid: Optional[int], userid: int, tags: Iterable[str]):
-            async with self._connector.connection() as conn:
-                self._connector.conn = conn
+        async def set_tags(cls, guildid: Optional[int], userid: int, tags: Iterable[str]):
+            async with cls._connector.connection() as conn:
+                cls._connector.conn = conn
                 async with conn.transaction():
-                    await self.table.delete_where(guildid=guildid, userid=userid)
+                    await cls.table.delete_where(guildid=guildid, userid=userid)
                     if tags:
-                        await self.table.insert_many(
+                        await cls.table.insert_many(
                             ('guildid', 'userid', 'tag'),
                             *((guildid, userid, tag) for tag in tags)
                         )

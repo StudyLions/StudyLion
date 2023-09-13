@@ -5,7 +5,7 @@ import discord
 from discord.ui.button import Button
 
 from meta import LionBot, LionCog
-from utils import ui
+from utils.ui import MessageUI
 from babel.translator import LazyStr
 
 from ..data import ShopData
@@ -165,7 +165,7 @@ class Shop:
         return self._store_cls_(self)
 
 
-class Store(ui.LeoUI):
+class Store(MessageUI):
     """
     ABC for the UI used to interact with a given shop.
 
@@ -174,7 +174,7 @@ class Store(ui.LeoUI):
     (Note that each Shop instance is specific to a single customer.)
     """
     def __init__(self, shop: Shop, interaction: discord.Interaction, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__(callerid=interaction.user.id, **kwargs)
 
         # The shop this Store is an interface for
         # Client, shop, and customer data is taken from here
@@ -189,36 +189,10 @@ class Store(ui.LeoUI):
         self.embed: Optional[discord.Embed] = None
 
         # Current interaction to use
-        self.interaction: discord.Interaction = interaction
+        self._original = interaction
 
+    # ----- UI API -----
     def set_store_row(self, row):
         self.store_row = row
         for item in row:
             self.add_item(item)
-
-    async def refresh(self):
-        """
-        Refresh all UI elements.
-        """
-        raise NotImplementedError
-
-    async def redraw(self):
-        """
-        Redraw the store UI.
-        """
-        if self.interaction.is_expired():
-            # This is actually possible,
-            # If the user keeps using the UI,
-            # but never closes it until the origin interaction expires
-            raise ValueError("This interaction has expired!")
-
-        if self.embed is None:
-            await self.refresh()
-
-        await self.interaction.edit_original_response(embed=self.embed, view=self)
-
-    async def make_embed(self):
-        """
-        Embed page for this shop.
-        """
-        raise NotImplementedError

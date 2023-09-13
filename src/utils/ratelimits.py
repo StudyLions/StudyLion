@@ -67,9 +67,9 @@ class Bucket:
 
     def request(self):
         self._leak()
-        if self._level + 1 > self.max_level + 1:
+        if self._level > self.max_level:
             raise BucketOverFull
-        elif self._level + 1 > self.max_level:
+        elif self._level == self.max_level:
             self._level += 1
             if self._last_full:
                 raise BucketOverFull

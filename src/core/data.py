@@ -179,9 +179,6 @@ class CoreData(Registry, name="core"):
         mod_log_channel = Integer()
         alert_channel = Integer()
 
-        studyban_role = Integer()
-        max_study_bans = Integer()
-
         min_workout_length = Integer()
         workout_reward = Integer()
 
@@ -208,6 +205,8 @@ class CoreData(Registry, name="core"):
 
         video_studyban = Bool()
         video_grace_period = Integer()
+
+        studyban_role = Integer()
 
         greeting_channel = Integer()
         greeting_message = String()

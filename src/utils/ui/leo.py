@@ -48,6 +48,16 @@ class LeoUI(View):
         # TODO: Replace this with a substitutable ViewLayout class
         self._layout: Optional[tuple[tuple[Item, ...], ...]] = None
 
+    @property
+    def _stopped(self) -> asyncio.Future:
+        """
+        Return an future indicating whether the View has finished interacting.
+
+        Currently exposes a hidden attribute of the underlying View.
+        May be reimplemented in future.
+        """
+        return self._View__stopped
+
     def to_components(self) -> List[Dict[str, Any]]:
         """
         Extending component generator to apply the set _layout, if it exists.
@@ -220,15 +230,28 @@ class LeoUI(View):
             )
         except Exception:
             logger.exception(
-                f"Unhandled interaction exception occurred in item {item!r} of LeoUI {self!r}",
+                f"Unhandled interaction exception occurred in item {item!r} of LeoUI {self!r} from interaction: "
+                f"{interaction.data}",
                 extra={'with_ctx': True, 'action': 'UIError'}
             )
+            # Explicitly handle the bugsplat ourselves
+            if not interaction.is_expired():
+                splat = interaction.client.tree.bugsplat(interaction, error)
+                try:
+                    if interaction.response.is_done():
+                        await interaction.followup.send(embed=splat, ephemeral=True)
+                    else:
+                        await interaction.response.send_message(embed=splat, ephemeral=True)
+                except discord.HTTPException:
+                    pass
 
 
 class MessageUI(LeoUI):
     """
     Simple single-message LeoUI, intended as a framework for UIs
     attached to a single interaction response.
+
+    UIs may also be sent as regular messages by using `send(channel)` instead of `run(interaction)`.
     """
 
     def __init__(self, *args, callerid: Optional[int] = None, **kwargs):
@@ -396,8 +419,11 @@ class MessageUI(LeoUI):
 
         try:
             await self._redraw(args)
-        except discord.HTTPException:
-            # Unknown communication erorr, nothing we can reliably do. Exit quietly.
+        except discord.HTTPException as e:
+            # Unknown communication error, nothing we can reliably do. Exit quietly.
+            logger.warning(
+                f"Unexpected UI redraw failure occurred in {self}: {repr(e)}",
+            )
             await self.close()
 
     async def cleanup(self):
@@ -451,9 +477,19 @@ class LeoModal(Modal):
             raise error
         except Exception:
             logger.exception(
-                f"Unhandled interaction exception occurred in {self!r}",
+                f"Unhandled interaction exception occurred in {self!r}. Interaction: {interaction.data}",
                 extra={'with_ctx': True, 'action': 'ModalError'}
             )
+            # Explicitly handle the bugsplat ourselves
+            if not interaction.is_expired():
+                splat = interaction.client.tree.bugsplat(interaction, error)
+                try:
+                    if interaction.response.is_done():
+                        await interaction.followup.send(embed=splat, ephemeral=True)
+                    else:
+                        await interaction.response.send_message(embed=splat, ephemeral=True)
+                except discord.HTTPException:
+                    pass
 
 
 def error_handler_for(exc):

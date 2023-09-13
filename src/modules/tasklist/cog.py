@@ -173,7 +173,17 @@ class TasklistCog(LionCog):
         if not channel.guild:
             return True
         channels = (await self.settings.tasklist_channels.get(channel.guild.id)).value
-        return (channel in channels) or (channel.category in channels)
+        # Also allow private rooms
+        roomcog = self.bot.get_cog('RoomCog')
+        if roomcog:
+            private_rooms = roomcog.get_rooms(channel.guild.id)
+            private_channels = {room.data.channelid for room in private_rooms.values()}
+        else:
+            logger.warning(
+                "Fetching tasklist channels before private room cog is loaded!"
+            )
+            private_channels = {}
+        return (channel in channels) or (channel.id in private_channels) or (channel.category in channels)
 
     async def call_tasklist(self, interaction: discord.Interaction):
         await interaction.response.defer(thinking=True, ephemeral=True)
@@ -184,9 +194,28 @@ class TasklistCog(LionCog):
         tasklist = await Tasklist.fetch(self.bot, self.data, userid)
 
         if await self.is_tasklist_channel(channel):
-            tasklistui = TasklistUI.fetch(tasklist, channel, guild, timeout=None)
-            await tasklistui.summon(force=True)
-            await interaction.delete_original_response()
+            # Check we have permissions to send a regular message here
+            my_permissions = channel.permissions_for(guild.me)
+            if not my_permissions.embed_links or not my_permissions.send_messages:
+                t = self.bot.translator.t
+                error = discord.Embed(
+                    colour=discord.Colour.brand_red(),
+                    title=t(_p(
+                        'summon_tasklist|error:insufficient_perms|title',
+                        "Uh-Oh, I cannot do that here!"
+                    )),
+                    description=t(_p(
+                        'summon_tasklist|error:insufficient_perms|desc',
+                        "This channel is configured as a tasklist channel, "
+                        "but I lack the `EMBED_LINKS` or `SEND_MESSAGES` permission here! "
+                        "If you believe this is unintentional, please contact a server administrator."
+                    ))
+                )
+                await interaction.edit_original_response(embed=error)
+            else:
+                tasklistui = TasklistUI.fetch(tasklist, channel, guild, timeout=None)
+                await tasklistui.summon(force=True)
+                await interaction.delete_original_response()
         else:
             # Note that this will also close any existing listening tasklists in this channel (for this user)
             tasklistui = TasklistUI.fetch(tasklist, channel, guild, timeout=600)
@@ -212,14 +241,18 @@ class TasklistCog(LionCog):
 
         # Now do the rest of the listening channels
         listening = TasklistUI._live_[userid]
-        for cid, ui in listening.items():
+        for cid, ui in list(listening.items()):
             if channel and channel.id == cid:
+                # We already did this channel
+                continue
+            if cid not in listening:
+                # UI closed while we were updating
                 continue
             try:
                 await ui.refresh()
                 await ui.redraw()
             except discord.HTTPException:
-                await tui.close()
+                await ui.close()
 
     @cmds.hybrid_command(
         name=_p('cmd:tasklist', "tasklist"),
@@ -288,6 +321,16 @@ class TasklistCog(LionCog):
             options = [
                 appcmds.Choice(name=task_string, value=label)
                 for label, task_string in matching
+            ]
+        elif multi and partial.lower().strip() in ('-', 'all'):
+            options = [
+                appcmds.Choice(
+                    name=t(_p(
+                        'argtype:taskid|match:all',
+                        "All tasks"
+                    )),
+                    value='-'
+                )
             ]
         elif multi and (',' in partial or '-' in partial):
             # Try parsing input as a multi-list
@@ -672,7 +715,7 @@ class TasklistCog(LionCog):
     @appcmds.describe(
         taskidstr=_p(
             'cmd:tasks_remove|param:taskidstr|desc',
-            "List of task numbers or ranges to remove (e.g. 1, 2, 5-7, 8.1-3, 9-)."
+            "List of task numbers or ranges to remove (e.g. 1, 2, 5-7, 8.1-3, 9-), or `-` to remove all."
         ),
         created_before=_p(
             'cmd:tasks_remove|param:created_before|desc',
@@ -718,10 +761,10 @@ class TasklistCog(LionCog):
             if not taskids:
                 # Explicitly error if none of the ranges matched
                 await ctx.interaction.edit_original_response(
-                    embed=error_embed(
+                    embed=error_embed(t(_p(
                         'cmd:tasks_remove_cmd|error:no_matching',
                         "No tasks on your tasklist match `{input}`"
-                    ).format(input=taskidstr)
+                    ))).format(input=taskidstr)
                 )
                 return
 
@@ -742,10 +785,10 @@ class TasklistCog(LionCog):
         tasks = await self.data.Task.fetch_where(*conditions, userid=ctx.author.id)
         if not tasks:
             await ctx.interaction.edit_original_response(
-                embed=error_embed(
+                embed=error_embed(t(_p(
                     'cmd:tasks_remove_cmd|error:no_matching',
                     "No tasks on your tasklist matching all the given conditions!"
-                ).format(input=taskidstr)
+                ))).format(input=taskidstr)
             )
             return
         taskids = [task.taskid for task in tasks]
@@ -785,7 +828,7 @@ class TasklistCog(LionCog):
     @appcmds.describe(
         taskidstr=_p(
             'cmd:tasks_tick|param:taskidstr|desc',
-            "List of task numbers or ranges to remove (e.g. 1, 2, 5-7, 8.1-3, 9-)."
+            "List of task numbers or ranges to tick (e.g. 1, 2, 5-7, 8.1-3, 9-) or '-' to tick all."
         ),
         cascade=_p(
             'cmd:tasks_tick|param:cascade|desc',
@@ -813,10 +856,10 @@ class TasklistCog(LionCog):
             if not taskids:
                 # Explicitly error if none of the ranges matched
                 await ctx.interaction.edit_original_response(
-                    embed=error_embed(
+                    embed=error_embed(t(_p(
                         'cmd:tasks_remove_cmd|error:no_matching',
                         "No tasks on your tasklist match `{input}`"
-                    ).format(input=taskidstr)
+                    ))).format(input=taskidstr)
                 )
                 return
 
@@ -861,7 +904,7 @@ class TasklistCog(LionCog):
     @appcmds.describe(
         taskidstr=_p(
             'cmd:tasks_untick|param:taskidstr|desc',
-            "List of task numbers or ranges to remove (e.g. 1, 2, 5-7, 8.1-3, 9-)."
+            "List of task numbers or ranges to untick (e.g. 1, 2, 5-7, 8.1-3, 9-) or '-' to untick all."
         ),
         cascade=_p(
             'cmd:tasks_untick|param:cascade|desc',
@@ -888,10 +931,10 @@ class TasklistCog(LionCog):
         if not taskids:
             # Explicitly error if none of the ranges matched
             await ctx.interaction.edit_original_response(
-                embed=error_embed(
+                embed=error_embed(t(_p(
                     'cmd:tasks_remove_cmd|error:no_matching',
                     "No tasks on your tasklist match `{input}`"
-                ).format(input=taskidstr)
+                ))).format(input=taskidstr)
             )
             return
 

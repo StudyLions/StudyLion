@@ -174,7 +174,7 @@ async def threecolumn_template(menu) -> MessageArgs:
 )
 async def shop_template(menu) -> MessageArgs:
     menuroles = menu.roles
-    width = max(len(str(menurole.config.price.data)) for menurole in menuroles)
+    width = max(len(str(menurole.config.price.data)) for menurole in menuroles) if menuroles else 0
 
     lines = []
     for menurole in menuroles:
