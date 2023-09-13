@@ -469,12 +469,16 @@ msgstr "Necesitas ser administrador del gremio para modificar esta opción."
 msgctxt "cmd:pomodoro_edit|error:insufficient_permissions|role_needed:owner"
 msgid "You need to be a channel owner or guild admin to modify this option!"
 msgstr ""
+"Debes ser propietario de un canal o administrador de clan para modificar "
+"esta opción."
 
 #: src/modules/pomodoro/cog.py:855
 msgctxt "cmd:pomodoro_edit|error:insufficient_permissions|role_needed:manager"
 msgid ""
 "You need to be a guild admin or have the manager role to modify this option!"
 msgstr ""
+"Debes ser administrador del clan o tener el rol de gestor para modificar "
+"esta opción."
 
 #: src/modules/pomodoro/cog.py:891
 msgctxt "cmd:configure_pomodoro"
