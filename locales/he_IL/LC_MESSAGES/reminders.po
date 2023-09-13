@@ -252,7 +252,7 @@ msgstr ""
 #: src/modules/reminders/ui.py:77
 msgctxt "ui:reminderlist|button:clear|confirm|button:cancel"
 msgid "Cancel"
-msgstr ""
+msgstr "בטל"
 
 #: src/modules/reminders/ui.py:89
 msgctxt "ui:reminderlist|button:clear|label"
