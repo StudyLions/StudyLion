@@ -780,6 +780,8 @@ msgid ""
 "voice channel! Use the **Refresh Member Ranks** button below to update all "
 "members manually."
 msgstr ""
+"שימו לב גם שהדרגות יתעדכנו רק אחרי שמשתמש נכנס ויוצא מחדר קול. אם אתם רוצים "
+"לעדכן את כל המשתמשים כבר מעכשיו, השתמשו ב\"רענן\"."
 
 #: src/modules/ranks/ui/overview.py:415
 msgctxt "ui:rank_overview|embed:noranks|desc"
