@@ -429,12 +429,12 @@ msgstr "Temporizador eliminado con éxito de {channel}."
 #: src/modules/pomodoro/cog.py:757
 msgctxt "cmd:pomodoro_edit"
 msgid "edit"
-msgstr ""
+msgstr "editar"
 
 #: src/modules/pomodoro/cog.py:760
 msgctxt "cmd:pomodoro_edit|desc"
 msgid "Reconfigure a pomodoro timer."
-msgstr ""
+msgstr "Reconfigurar un temporizador pomodoro."
 
 #: src/modules/pomodoro/cog.py:764
 msgctxt "cmd:pomodoro_edit|param:channel"
