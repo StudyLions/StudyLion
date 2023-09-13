@@ -830,12 +830,12 @@ msgstr ""
 #: src/modules/pomodoro/ui/status.py:204
 msgctxt "ui:timer_status|button:stop|label"
 msgid "Stop"
-msgstr ""
+msgstr "Detener"
 
 #: src/modules/pomodoro/ui/config.py:45
 msgctxt "ui:timer_options|error:timer_destroyed"
 msgid "This timer no longer exists! Closing option menu."
-msgstr ""
+msgstr "Este temporizador ya no existe. Menú de opciones de cierre."
 
 #: src/modules/pomodoro/ui/config.py:68
 msgctxt "ui:timer_options|button:edit|label"
