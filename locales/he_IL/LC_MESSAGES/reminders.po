@@ -288,7 +288,7 @@ msgstr "צור תזכיר"
 #, possible-python-brace-format
 msgctxt "ui:reminderlist|button:new|modal|parse|error:interval"
 msgid "Cannot parse '{value}' as a duration."
-msgstr ""
+msgstr "לא הצלחתי להבין את `{value}` בתור אורך זמן."
 
 #: src/modules/reminders/ui.py:180
 msgctxt "ui:reminderlist|button:new|label"
