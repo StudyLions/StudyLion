@@ -204,7 +204,7 @@ msgstr "temporizadores"
 #: src/modules/pomodoro/cog.py:397
 msgctxt "cmd:timers|desc"
 msgid "List the available pomodoro timer rooms."
-msgstr ""
+msgstr "Enumera las salas con temporizador pomodoro disponibles."
 
 #: src/modules/pomodoro/cog.py:436
 #, possible-python-brace-format
