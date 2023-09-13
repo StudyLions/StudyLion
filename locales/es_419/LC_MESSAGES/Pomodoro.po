@@ -632,6 +632,8 @@ msgid ""
 "Auto-updating voice channel name, accepting {remaining}, {name}, {pattern}, "
 "and {stage} keys."
 msgstr ""
+"Auto-actualización del nombre del canal de voz, aceptando las claves "
+"{remaining}, {name}, {pattern}, y {stage}."
 
 #: src/modules/pomodoro/options.py:191
 #, possible-python-brace-format
