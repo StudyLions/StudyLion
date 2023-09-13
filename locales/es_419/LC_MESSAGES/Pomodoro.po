@@ -903,6 +903,8 @@ msgid ""
 "**`{focus_len} minutes`** focus\n"
 "**`{break_len} minutes`** break"
 msgstr ""
+"**`{focus_len} minutos`** focus\n"
+"**`{break_len} minutos`** break"
 
 #: src/modules/pomodoro/ui/config.py:216
 msgctxt "ui:timer_options|embed|field:channel_name|name"
