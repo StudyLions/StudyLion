@@ -840,17 +840,17 @@ msgstr "Este temporizador ya no existe. Menú de opciones de cierre."
 #: src/modules/pomodoro/ui/config.py:68
 msgctxt "ui:timer_options|button:edit|label"
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: src/modules/pomodoro/ui/config.py:84
 msgctxt "ui:timer_options|button:voice_alerts|label"
 msgid "Voice Alerts"
-msgstr ""
+msgstr "Alertas de voz"
 
 #: src/modules/pomodoro/ui/config.py:105
 msgctxt "ui:timer_options|button:delete|success|title"
 msgid "Timer Deleted"
-msgstr ""
+msgstr "Temporizador borrado"
 
 #: src/modules/pomodoro/ui/config.py:109
 #, possible-python-brace-format
