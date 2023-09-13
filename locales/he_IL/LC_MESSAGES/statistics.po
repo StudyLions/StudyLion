@@ -712,7 +712,7 @@ msgstr "מספר עמוד לא נכון, אנא נסה שוב!"
 #, possible-python-brace-format
 msgctxt "ui:leaderboard|since"
 msgid "Counting statistics since {timestamp}"
-msgstr ""
+msgstr "סופר סטטיסטיקות מ  {timestamp}"
 
 #: src/modules/statistics/ui/leaderboard.py:453
 #, possible-python-brace-format
