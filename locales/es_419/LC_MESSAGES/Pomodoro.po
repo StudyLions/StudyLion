@@ -183,6 +183,8 @@ msgid ""
 "**I don't know what timer to show you.**\n"
 "No channel selected and you are not in a voice channel! Use {timers_cmd} to list the available timers in this server."
 msgstr ""
+"**No sé qué temporizador mostrarte.**\n"
+"No hay ningún canal seleccionado y no estás en un canal de voz. Usa {timers_cmd} para listar los temporizadores disponibles en este servidor."
 
 #: src/modules/pomodoro/cog.py:380
 #, possible-python-brace-format
