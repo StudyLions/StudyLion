@@ -282,7 +282,7 @@ msgstr ""
 #: src/modules/reminders/ui.py:144
 msgctxt "ui:reminderlist|button:new|modal|title"
 msgid "Set a Reminder"
-msgstr ""
+msgstr "צור תזכיר"
 
 #: src/modules/reminders/ui.py:157
 #, possible-python-brace-format
