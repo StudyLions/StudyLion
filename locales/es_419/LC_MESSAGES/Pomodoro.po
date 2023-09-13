@@ -133,7 +133,7 @@ msgstr "Configuración de Pomodoro ({commands[configure pomodoro]})"
 #: src/modules/pomodoro/settingui.py:85
 msgctxt "dash:stats|dropdown|placeholder"
 msgid "Pomodoro Timer Panel"
-msgstr ""
+msgstr "Panel Temporizador Pomodoro"
 
 #: src/modules/pomodoro/cog.py:82
 msgctxt "cmd_check:ready|failed"
