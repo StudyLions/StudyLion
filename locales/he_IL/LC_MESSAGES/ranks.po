@@ -761,7 +761,7 @@ msgstr "פתקית"
 #, possible-python-brace-format
 msgctxt "ui:rank_overview|embed|field:note|value:with_season"
 msgid "Ranks are determined by activity since {timestamp}."
-msgstr ""
+msgstr "דרגות נקבעות על ידי פעילות מתאריך {timestamp}."
 
 #: src/modules/ranks/ui/overview.py:400
 #, possible-python-brace-format
