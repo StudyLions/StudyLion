@@ -366,7 +366,7 @@ msgstr "השמד"
 #: src/modules/pomodoro/cog.py:693
 msgctxt "cmd:pomodoro_destroy|desc"
 msgid "Remove a pomodoro timer from a voice channel."
-msgstr ""
+msgstr "הסר את הטיימר מערוץ קולי."
 
 #: src/modules/pomodoro/cog.py:697
 msgctxt "cmd:pomodoro_destroy|param:channel"
