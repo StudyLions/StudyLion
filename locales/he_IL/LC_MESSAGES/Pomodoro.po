@@ -167,6 +167,8 @@ msgid ""
 "**This server has no timers set up!**\n"
 "Ask an admin to set up and configure a timer with {create_cmd} first, or rent a private room with {room_cmd} and create one yourself!"
 msgstr ""
+"לשרת הזה אין טיימרים מוגדרים!\n"
+"בקש מאדמין להפעיל את הטיימר באמצעות {create_cmd}, או שכור חדר פרטי עם {room_cmd} והכן אחד לעצמך!"
 
 #: src/modules/pomodoro/cog.py:367
 #, possible-python-brace-format
