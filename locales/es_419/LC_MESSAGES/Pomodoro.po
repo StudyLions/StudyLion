@@ -389,12 +389,13 @@ msgstr "Eliminar un temporizador pomodoro de un canal de voz."
 #: src/modules/pomodoro/cog.py:697
 msgctxt "cmd:pomodoro_destroy|param:channel"
 msgid "timer_channel"
-msgstr ""
+msgstr "canal_temporizador"
 
 #: src/modules/pomodoro/cog.py:700
 msgctxt "cmd:pomodoro_destroy|param:channel"
 msgid "Select a timer voice channel to remove the timer from."
 msgstr ""
+"Seleccione un canal de voz de temporizador para eliminar el temporizador."
 
 #: src/modules/pomodoro/cog.py:718
 msgctxt "cmd:pomodoro_destroy|error:no_timer"
