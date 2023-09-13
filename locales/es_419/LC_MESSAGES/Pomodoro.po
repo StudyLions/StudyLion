@@ -91,6 +91,8 @@ msgctxt "timer|status|stage:break|statusline"
 msgid ""
 "{channel} is now on **BREAK**! Take a rest, **FOCUS** starts {timestamp}"
 msgstr ""
+"¡{channel} está ahora en **BREAK**! Tómese un descanso, **FOCUS** comienza "
+"{timestamp}"
 
 #: src/modules/pomodoro/timer.py:536
 #, possible-python-brace-format
@@ -99,6 +101,8 @@ msgid ""
 "**Warning:** {mentions}, please press {tick} to avoid being removed on the "
 "next stage."
 msgstr ""
+"**Advertencia:** {mentions}, por favor pulse {tick} para evitar ser "
+"eliminado en la siguiente etapa."
 
 #: src/modules/pomodoro/timer.py:555
 #, possible-python-brace-format
