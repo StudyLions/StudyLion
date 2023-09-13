@@ -773,7 +773,7 @@ msgstr ""
 #: src/modules/pomodoro/ui/status.py:82
 msgctxt "ui:timer_status|button:present|label"
 msgid "Present"
-msgstr ""
+msgstr "Presente"
 
 #: src/modules/pomodoro/ui/status.py:106
 msgctxt "ui:timer_status|button:edit|error:no_permissions"
@@ -781,6 +781,8 @@ msgid ""
 "Configuring this timer requires `MANAGE_CHANNEL` permissions on the timer "
 "channel, or the configured manager role!"
 msgstr ""
+"La configuración de este temporizador requiere permisos `MANAGE_CHANNEL` en "
+"el canal del temporizador, o el rol de administrador configurado."
 
 #: src/modules/pomodoro/ui/status.py:119
 msgctxt "ui:timer_status|button:edit|label"
