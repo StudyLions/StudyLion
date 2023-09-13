@@ -398,6 +398,8 @@ msgid ""
 "You need to have the `Manage Channels` permission in {channel} to remove "
 "this timer!"
 msgstr ""
+"חייבת להיות לך ההרשאה 'Manage Channel' בערוץ {channel} על מנת להסיר את "
+"הטיימר מכאן!"
 
 #: src/modules/pomodoro/cog.py:751
 #, possible-python-brace-format
@@ -413,7 +415,7 @@ msgstr "ערוך"
 #: src/modules/pomodoro/cog.py:760
 msgctxt "cmd:pomodoro_edit|desc"
 msgid "Reconfigure a pomodoro timer."
-msgstr ""
+msgstr "הגדר את הטיימר מחדש."
 
 #: src/modules/pomodoro/cog.py:764
 msgctxt "cmd:pomodoro_edit|param:channel"
