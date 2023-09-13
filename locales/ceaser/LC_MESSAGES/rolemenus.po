@@ -1,0 +1,1571 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: you@example.com\n"
+"POT-Creation-Date: 2007-10-18 14:00+0100\n"
+"PO-Revision-Date: 2007-10-18 14:00+0100\n"
+"Last-Translator: you <you@example.com>\n"
+"Language-Team: English <yourteam@example.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/modules/rolemenus/cog.py:41
+msgctxt "argtype:menu_style|opt:reaction"
+msgid "Reaction Roles"
+msgstr "Sfbdujpo Spmft"
+
+#: src/modules/rolemenus/cog.py:45
+msgctxt "argtype:menu_style|opt:button"
+msgid "Button Menu"
+msgstr "Cvuupo Nfov"
+
+#: src/modules/rolemenus/cog.py:49
+msgctxt "argtype:menu_style|opt:dropdown"
+msgid "Dropdown Menu"
+msgstr "Espqepxo Nfov"
+
+#: src/modules/rolemenus/cog.py:68
+msgctxt "ctxcmd:rolemenu"
+msgid "Role Menu Editor"
+msgstr "Spmf Nfov Fejups"
+
+#: src/modules/rolemenus/cog.py:81
+msgctxt "ctxcmd:rolemenu|error:author_perms"
+msgid ""
+"You need the `MANAGE_ROLES` permission in order to manage the server role "
+"menus."
+msgstr ""
+"Zpv offe uif `NBOBHF_SPMFT` qfsnjttjpo jo psefs up nbobhf uif tfswfs spmf "
+"nfovt."
+
+#: src/modules/rolemenus/cog.py:88
+msgctxt "ctxcmd:rolemenus|error:my_perms"
+msgid ""
+"I lack the `MANAGE_ROLES` permission required to offer roles from role "
+"menus."
+msgstr ""
+"J mbdl uif `NBOBHF_SPMFT` qfsnjttjpo sfrvjsfe up pggfs spmft gspn spmf "
+"nfovt."
+
+#: src/modules/rolemenus/cog.py:300
+msgctxt "parse:message_link|suberror:message_dne"
+msgid "Could not find the linked message, has it been deleted?"
+msgstr "Dpvme opu gjoe uif mjolfe nfttbhf, ibt ju cffo efmfufe?"
+
+#: src/modules/rolemenus/cog.py:305
+#, possible-python-brace-format
+msgctxt "parse:message_link|suberror:no_perms"
+msgid ""
+"Insufficient permissions! I need the `MESSAGE_HISTORY` permission in "
+"{channel}."
+msgstr ""
+"Jotvggjdjfou qfsnjttjpot! J offe uif `NFTTBHF_IJTUPSZ` qfsnjttjpo jo "
+"{channel}."
+
+#: src/modules/rolemenus/cog.py:310
+#, possible-python-brace-format
+msgctxt "parse:message_link|suberror:channel_dne"
+msgid "The channel `{channelid}` could not be found in this server."
+msgstr "Uif diboofm `{channelid}` dpvme opu cf gpvoe jo uijt tfswfs."
+
+#: src/modules/rolemenus/cog.py:315
+msgctxt "parse:message_link|suberror:malformed_link"
+msgid ""
+"Malformed message link. Please copy the link by right clicking the target "
+"message."
+msgstr ""
+"Nbmgpsnfe nfttbhf mjol. Qmfbtf dpqz uif mjol cz sjhiu dmjdljoh uif ubshfu "
+"nfttbhf."
+
+#: src/modules/rolemenus/cog.py:322
+#, possible-python-brace-format
+msgctxt "parse:message_link|error"
+msgid ""
+"Failed to resolve the provided message link.\n"
+"**ERROR:** {error}"
+msgstr ""
+"Gbjmfe up sftpmwf uif qspwjefe nfttbhf mjol.\n"
+"**FSSPS:** {error}"
+
+#: src/modules/rolemenus/cog.py:434
+msgctxt "cmd:rolemenus"
+msgid "rolemenus"
+msgstr "spmfnfovt"
+
+#: src/modules/rolemenus/cog.py:437
+msgctxt "cmd:rolemenus|desc"
+msgid "View and configure the role menus in this server."
+msgstr "Wjfx boe dpogjhvsf uif spmf nfovt jo uijt tfswfs."
+
+#: src/modules/rolemenus/cog.py:454
+msgctxt "cmd:rolemenus|error:author_perms"
+msgid ""
+"You need the `MANAGE_ROLES` permission in order to manage the server role "
+"menus."
+msgstr ""
+"Zpv offe uif `NBOBHF_SPMFT` qfsnjttjpo jo psefs up nbobhf uif tfswfs spmf "
+"nfovt."
+
+#: src/modules/rolemenus/cog.py:461
+msgctxt "cmd:rolemenus|error:my_perms"
+msgid ""
+"I lack the `MANAGE_ROLES` permission required to offer roles from role "
+"menus."
+msgstr ""
+"J mbdl uif `NBOBHF_SPMFT` qfsnjttjpo sfrvjsfe up pggfs spmft gspn spmf "
+"nfovt."
+
+#: src/modules/rolemenus/cog.py:496
+#, possible-python-brace-format
+msgctxt "acmpl:menus|choice:no_choices|name"
+msgid "No role menus matching '{partial}'"
+msgstr "Op spmf nfovt nbudijoh '{partial}'"
+
+#: src/modules/rolemenus/cog.py:515
+msgctxt "acmpl:menuroles|param:menu|keyname"
+msgid "menu"
+msgstr "nfov"
+
+#: src/modules/rolemenus/cog.py:521
+msgctxt "acmpl:menuroles|choice:no_menu|name"
+msgid "Please select a menu first"
+msgstr "Qmfbtf tfmfdu b nfov gjstu"
+
+#: src/modules/rolemenus/cog.py:545
+#, possible-python-brace-format
+msgctxt "acmpl:menuroles|choice:invalid_menu|name"
+msgid "Menu '{name}' does not exist!"
+msgstr "Nfov '{name}' epft opu fyjtu!"
+
+#: src/modules/rolemenus/cog.py:574
+#, possible-python-brace-format
+msgctxt "acmpl:menuroles|choice:no_matching|name"
+msgid "No roles in this menu matching '{partial}'"
+msgstr "Op spmft jo uijt nfov nbudijoh '{partial}'"
+
+#: src/modules/rolemenus/cog.py:581
+msgctxt "group:rolemenu"
+msgid "rolemenu"
+msgstr "spmfnfov"
+
+#: src/modules/rolemenus/cog.py:584
+msgctxt "group:rolemenu|desc"
+msgid "Base command group for role menu configuration."
+msgstr "Cbtf dpnnboe hspvq gps spmf nfov dpogjhvsbujpo."
+
+#: src/modules/rolemenus/cog.py:593
+msgctxt "cmd:rolemenu_create"
+msgid "newmenu"
+msgstr "ofxnfov"
+
+#: src/modules/rolemenus/cog.py:596
+msgctxt "cmd:rolemenu_create|desc"
+msgid "Create a new role menu (optionally using an existing message)"
+msgstr "Dsfbuf b ofx spmf nfov (pqujpobmmz vtjoh bo fyjtujoh nfttbhf)"
+
+#: src/modules/rolemenus/cog.py:610
+msgctxt "cmd:rolemenu_create|param:message"
+msgid "message_link"
+msgstr "nfttbhf_mjol"
+
+#: src/modules/rolemenus/cog.py:611
+msgctxt "cmd:rolemenu_create|param:menu_style"
+msgid "menu_style"
+msgstr "nfov_tuzmf"
+
+#: src/modules/rolemenus/cog.py:612
+msgctxt "cmd:rolemenu_create|param:remplate"
+msgid "template"
+msgstr "ufnqmbuf"
+
+#: src/modules/rolemenus/cog.py:613
+msgctxt "cmd:rolemenu_create|param:rawmessage"
+msgid "custom_message"
+msgstr "dvtupn_nfttbhf"
+
+#: src/modules/rolemenus/cog.py:623
+msgctxt "cmd:rolemenu_create|param:message|desc"
+msgid "Link to an existing message to turn it into a (reaction) role menu"
+msgstr "Mjol up bo fyjtujoh nfttbhf up uvso ju joup b (sfbdujpo) spmf nfov"
+
+#: src/modules/rolemenus/cog.py:627
+msgctxt "cmd:rolemenu_create|param:menu_style"
+msgid "Selection style for this menu (using buttons, dropdowns, or reactions)"
+msgstr ""
+"Tfmfdujpo tuzmf gps uijt nfov (vtjoh cvuupot, espqepxot, ps sfbdujpot)"
+
+#: src/modules/rolemenus/cog.py:631
+msgctxt "cmd:rolemenu_create|param:template"
+msgid "Template to use for the menu message body"
+msgstr "Ufnqmbuf up vtf gps uif nfov nfttbhf cpez"
+
+#: src/modules/rolemenus/cog.py:635
+msgctxt "cmd:rolemenu_create|param:rawmessage"
+msgid "Attach a custom menu message to use"
+msgstr "Buubdi b dvtupn nfov nfttbhf up vtf"
+
+#: src/modules/rolemenus/cog.py:664
+msgctxt "cmd:rolemenu_create|error:author_perms"
+msgid ""
+"You need the `MANAGE_ROLES` permission in order to create new role menus."
+msgstr ""
+"Zpv offe uif `NBOBHF_SPMFT` qfsnjttjpo jo psefs up dsfbuf ofx spmf nfovt."
+
+#: src/modules/rolemenus/cog.py:671
+msgctxt "cmd:rolemenu_create|error:my_perms"
+msgid ""
+"I lack the `MANAGE_ROLES` permission needed to offer roles from role menus."
+msgstr ""
+"J mbdl uif `NBOBHF_SPMFT` qfsnjttjpo offefe up pggfs spmft gspn spmf nfovt."
+
+#: src/modules/rolemenus/cog.py:690
+#, possible-python-brace-format
+msgctxt "cmd:rolemenu_create|error:message_exists"
+msgid "The message {link} already has a role menu! Use {edit_cmd} to edit it."
+msgstr ""
+"Uif nfttbhf {link} bmsfbez ibt b spmf nfov! Vtf {edit_cmd} up feju ju."
+
+#: src/modules/rolemenus/cog.py:711
+#, possible-python-brace-format
+msgctxt "cmd:rolemenu_create|error:style_notmine"
+msgid ""
+"I cannot create a `{style}` style menu on a message I didn't send! (Discord "
+"restriction)."
+msgstr ""
+"J dboopu dsfbuf b `{style}` tuzmf nfov po b nfttbhf J ejeo'u tfoe! (Ejtdpse "
+"sftusjdujpo)."
+
+#: src/modules/rolemenus/cog.py:718
+#, possible-python-brace-format
+msgctxt "cmd:rolemenu_create|error:rawmessage_notmine"
+msgid ""
+"Cannot apply a custom menu message to {message} because I do not own this "
+"message!"
+msgstr ""
+"Dboopu bqqmz b dvtupn nfov nfttbhf up {message} cfdbvtf J ep opu pxo uijt "
+"nfttbhf!"
+
+#: src/modules/rolemenus/cog.py:727
+#, possible-python-brace-format
+msgctxt "cmd:rolemenu_create|error:template_notmine"
+msgid ""
+"Cannot apply a menu message template to {message} because I do not own this "
+"message!"
+msgstr ""
+"Dboopu bqqmz b nfov nfttbhf ufnqmbuf up {message} cfdbvtf J ep opu pxo uijt "
+"nfttbhf!"
+
+#: src/modules/rolemenus/cog.py:740
+#, possible-python-brace-format
+msgctxt "cmd:rolemenu_create|error:name_exists"
+msgid "A rolemenu called `{name}` already exists! Use {edit_cmd} to edit it."
+msgstr "B spmfnfov dbmmfe `{name}` bmsfbez fyjtut! Vtf {edit_cmd} up feju ju."
+
+#: src/modules/rolemenus/cog.py:788
+msgctxt "cmd:rolemenu_edit"
+msgid "editmenu"
+msgstr "fejunfov"
+
+#: src/modules/rolemenus/cog.py:791
+msgctxt "cmd:rolemenu_edit|desc"
+msgid "Edit an existing role menu."
+msgstr "Feju bo fyjtujoh spmf nfov."
+
+#: src/modules/rolemenus/cog.py:800
+msgctxt "cmd:rolemenu_edit|param:name"
+msgid "name"
+msgstr "obnf"
+
+#: src/modules/rolemenus/cog.py:801
+msgctxt "cmd:rolemenu_edit|param:new_name"
+msgid "new_name"
+msgstr "ofx_obnf"
+
+#: src/modules/rolemenus/cog.py:802
+msgctxt "cmd:rolemenu_edit|param:channel"
+msgid "new_channel"
+msgstr "ofx_diboofm"
+
+#: src/modules/rolemenus/cog.py:807
+msgctxt "cmd:rolemenu_edit|param:menu_style"
+msgid "menu_style"
+msgstr "nfov_tuzmf"
+
+#: src/modules/rolemenus/cog.py:808
+msgctxt "cmd:rolemenu_edit|param:remplate"
+msgid "template"
+msgstr "ufnqmbuf"
+
+#: src/modules/rolemenus/cog.py:809
+msgctxt "cmd:rolemenu_edit|param:rawmessage"
+msgid "custom_message"
+msgstr "dvtupn_nfttbhf"
+
+#: src/modules/rolemenus/cog.py:814
+msgctxt "cmd:rolemenu_edit|param:name|desc"
+msgid "Name of the menu to edit"
+msgstr "Obnf pg uif nfov up feju"
+
+#: src/modules/rolemenus/cog.py:818
+msgctxt "cmd:rolemenu_edit|param:channel|desc"
+msgid "Server channel to move the menu to"
+msgstr "Tfswfs diboofm up npwf uif nfov up"
+
+#: src/modules/rolemenus/cog.py:827
+msgctxt "cmd:rolemenu_edit|param:menu_style"
+msgid "Selection style for this menu (using buttons, dropdowns, or reactions)"
+msgstr ""
+"Tfmfdujpo tuzmf gps uijt nfov (vtjoh cvuupot, espqepxot, ps sfbdujpot)"
+
+#: src/modules/rolemenus/cog.py:831
+msgctxt "cmd:rolemenu_edit|param:template"
+msgid "Template to use for the menu message body"
+msgstr "Ufnqmbuf up vtf gps uif nfov nfttbhf cpez"
+
+#: src/modules/rolemenus/cog.py:835
+msgctxt "cmd:rolemenu_edit|param:rawmessage"
+msgid "Attach a custom menu message to use"
+msgstr "Buubdi b dvtupn nfov nfttbhf up vtf"
+
+#: src/modules/rolemenus/cog.py:864
+msgctxt "cmd:rolemenu_edit|error:author_perms"
+msgid "You need the `MANAGE_ROLES` permission in order to edit role menus."
+msgstr "Zpv offe uif `NBOBHF_SPMFT` qfsnjttjpo jo psefs up feju spmf nfovt."
+
+#: src/modules/rolemenus/cog.py:871
+msgctxt "cmd:rolemenu_edit|error:my_perms"
+msgid ""
+"I lack the `MANAGE_ROLES` permission needed to offer roles from role menus."
+msgstr ""
+"J mbdl uif `NBOBHF_SPMFT` qfsnjttjpo offefe up pggfs spmft gspn spmf nfovt."
+
+#: src/modules/rolemenus/cog.py:894
+#, possible-python-brace-format
+msgctxt "cmd:rolemenu_edit|error:menu_not_found"
+msgid "This server does not have a role menu called `{name}`!"
+msgstr "Uijt tfswfs epft opu ibwf b spmf nfov dbmmfe `{name}`!"
+
+#: src/modules/rolemenus/cog.py:914
+#, possible-python-brace-format
+msgctxt "cmd:rolemenu_edit|parse:new_name|error:name_exists"
+msgid "A role menu with the name **{new_name}** already exists!"
+msgstr "B spmf nfov xjui uif obnf **{new_name}** bmsfbez fyjtut!"
+
+#: src/modules/rolemenus/cog.py:951
+msgctxt "cmd:rolemenu_edit|parse:template|error:not_managed"
+msgid ""
+"Cannot set a template message for a role menu attached to a message I did "
+"not send."
+msgstr ""
+"Dboopu tfu b ufnqmbuf nfttbhf gps b spmf nfov buubdife up b nfttbhf J eje "
+"opu tfoe."
+
+#: src/modules/rolemenus/cog.py:962
+#, possible-python-brace-format
+msgctxt "cmd:rolemenu_edit|parse:template|success:template"
+msgid "Now using the `{name}` menu message template."
+msgstr "Opx vtjoh uif `{name}` nfov nfttbhf ufnqmbuf."
+
+#: src/modules/rolemenus/cog.py:969
+msgctxt "cmd:rolemenu_edit|parse:template|success:custom"
+msgid "Now using a custom menu message."
+msgstr "Opx vtjoh b dvtupn nfov nfttbhf."
+
+#: src/modules/rolemenus/cog.py:994
+#, possible-python-brace-format
+msgctxt "cmd:rolemenu_edit|repost|success"
+msgid "The role menu is now available at {message}"
+msgstr "Uif spmf nfov jt opx bwbjmbcmf bu {message}"
+
+#: src/modules/rolemenus/cog.py:1005
+#, possible-python-brace-format
+msgctxt "cmd:rolemenu_edit|repost|error:forbidden"
+msgid ""
+"Cannot update channel! I lack the `EMBED_LINKS` or `SEND_MESSAGES` "
+"permission in {channel}."
+msgstr ""
+"Dboopu vqebuf diboofm! J mbdl uif `FNCFE_MJOLT` ps `TFOE_NFTTBHFT` "
+"qfsnjttjpo jo {channel}."
+
+#: src/modules/rolemenus/cog.py:1010
+#, possible-python-brace-format
+msgctxt "cmd:rolemenu_edit|repost|error:unknown"
+msgid ""
+"An unknown error occurred trying to repost the menu to {channel}.\n"
+"**Error:** `{exception}`"
+msgstr ""
+"Bo volopxo fssps pddvssfe uszjoh up sfqptu uif nfov up {channel}.\n"
+"**Fssps:** `{exception}`"
+
+#: src/modules/rolemenus/cog.py:1044
+msgctxt "cmd:rolemenu_delete"
+msgid "delmenu"
+msgstr "efmnfov"
+
+#: src/modules/rolemenus/cog.py:1047
+msgctxt "cmd:rolemenu_delete|desc"
+msgid "Delete a role menu."
+msgstr "Efmfuf b spmf nfov."
+
+#: src/modules/rolemenus/cog.py:1051
+msgctxt "cmd:rolemenu_delete|param:name"
+msgid "menu"
+msgstr "nfov"
+
+#: src/modules/rolemenus/cog.py:1056
+msgctxt "cmd:rolemenu_delete|param:name|desc"
+msgid "Name of the rolemenu to delete."
+msgstr "Obnf pg uif spmfnfov up efmfuf."
+
+#: src/modules/rolemenus/cog.py:1071
+msgctxt "cmd:rolemenu_delete|error:author_perms"
+msgid ""
+"You need the `MANAGE_ROLES` permission in order to manage the server role "
+"menus."
+msgstr ""
+"Zpv offe uif `NBOBHF_SPMFT` qfsnjttjpo jo psefs up nbobhf uif tfswfs spmf "
+"nfovt."
+
+#: src/modules/rolemenus/cog.py:1094
+#, possible-python-brace-format
+msgctxt "cmd:rolemenu_delete|error:menu_not_found"
+msgid "This server does not have a role menu called `{name}`!"
+msgstr "Uijt tfswfs epft opu ibwf b spmf nfov dbmmfe `{name}`!"
+
+#: src/modules/rolemenus/cog.py:1102
+#, possible-python-brace-format
+msgctxt "cmd:rolemenu_delete|confirm|title"
+msgid ""
+"Are you sure you want to delete the role menu **{name}**? This is not "
+"reversible!"
+msgstr ""
+"Bsf zpv tvsf zpv xbou up efmfuf uif spmf nfov **{name}**? Uijt jt opu "
+"sfwfstjcmf!"
+
+#: src/modules/rolemenus/cog.py:1107
+msgctxt "cmd:rolemenu_delete|confirm|button:yes"
+msgid "Yes, Delete Now"
+msgstr "Zft, Efmfuf Opx"
+
+#: src/modules/rolemenus/cog.py:1112
+msgctxt "cmd:rolemenu_delete|confirm|button:no"
+msgid "No, Cancel"
+msgstr "Op, Dbodfm"
+
+#: src/modules/rolemenus/cog.py:1137
+#, possible-python-brace-format
+msgctxt "cmd:rolemenu_delete|success|desc"
+msgid "Successfully deleted the menu **{name}**"
+msgstr "Tvddfttgvmmz efmfufe uif nfov **{name}**"
+
+#: src/modules/rolemenus/cog.py:1145
+msgctxt "cmd:rolemenu_addrole"
+msgid "addrole"
+msgstr "beespmf"
+
+#: src/modules/rolemenus/cog.py:1148
+msgctxt "cmd:rolemenu_addrole|desc"
+msgid "Add a new role to an existing role menu."
+msgstr "Bee b ofx spmf up bo fyjtujoh spmf nfov."
+
+#: src/modules/rolemenus/cog.py:1153
+msgctxt "cmd:rolemenu_addrole|param:menu"
+msgid "menu"
+msgstr "nfov"
+
+#: src/modules/rolemenus/cog.py:1156
+msgctxt "cmd:rolemenu_addrole|param:role"
+msgid "role"
+msgstr "spmf"
+
+#: src/modules/rolemenus/cog.py:1167
+msgctxt "cmd:rolemenu_addrole|param:menu|desc"
+msgid "Name of the menu to add a role to"
+msgstr "Obnf pg uif nfov up bee b spmf up"
+
+#: src/modules/rolemenus/cog.py:1171
+msgctxt "cmd:rolemenu_addrole|param:role|desc"
+msgid "Role to add to the menu"
+msgstr "Spmf up bee up uif nfov"
+
+#: src/modules/rolemenus/cog.py:1179
+msgctxt "cmd:rolemenu_addrole|param:duration|desc"
+msgid "Lifetime of the role after selection in minutes."
+msgstr "Mjgfujnf pg uif spmf bgufs tfmfdujpo jo njovuft."
+
+#: src/modules/rolemenus/cog.py:1227
+#, possible-python-brace-format
+msgctxt "cmd:rolemenu_addrole|error:menu_not_found"
+msgid "This server does not have a role menu called `{name}`!"
+msgstr "Uijt tfswfs epft opu ibwf b spmf nfov dbmmfe `{name}`!"
+
+#: src/modules/rolemenus/cog.py:1312
+msgctxt "cmd:rolemenu_addrole|success:create|title"
+msgid "Added Menu Role"
+msgstr "Beefe Nfov Spmf"
+
+#: src/modules/rolemenus/cog.py:1316
+#, possible-python-brace-format
+msgctxt "cmd:rolemenu_addrole|success:create|desc"
+msgid "Add the role {role} to the menu **{menu}**."
+msgstr "Bee uif spmf {role} up uif nfov **{menu}**."
+
+#: src/modules/rolemenus/cog.py:1334
+msgctxt "cmd:rolemenu_addrole|success:edit|title"
+msgid "Menu Role updated"
+msgstr "Nfov Spmf vqebufe"
+
+#: src/modules/rolemenus/cog.py:1346
+#, possible-python-brace-format
+msgctxt "cmd:rolemenu_addrole|error:role_exists"
+msgid "The role {role} is already selectable from the menu **{menu}**"
+msgstr "Uif spmf {role} jt bmsfbez tfmfdubcmf gspn uif nfov **{menu}**"
+
+#: src/modules/rolemenus/cog.py:1364
+msgctxt "cmd:rolemenu_addrole|success|error:reaction|name"
+msgid "Note"
+msgstr "Opuf"
+
+#: src/modules/rolemenus/cog.py:1376
+msgctxt "cmd:rolemenu_addrole|success|button:editor|label"
+msgid "Edit Menu"
+msgstr "Feju Nfov"
+
+#: src/modules/rolemenus/cog.py:1393
+msgctxt "cmd:rolemenu_editrole"
+msgid "editrole"
+msgstr "fejuspmf"
+
+#: src/modules/rolemenus/cog.py:1396
+msgctxt "cmd:rolemenu_editrole|desc"
+msgid "Edit role options in an existing role menu."
+msgstr "Feju spmf pqujpot jo bo fyjtujoh spmf nfov."
+
+#: src/modules/rolemenus/cog.py:1401
+msgctxt "cmd:rolemenu_editrole|param:menu"
+msgid "menu"
+msgstr "nfov"
+
+#: src/modules/rolemenus/cog.py:1404
+msgctxt "cmd:rolemenu_editrole|param:menu_role"
+msgid "menu_role"
+msgstr "nfov_spmf"
+
+#: src/modules/rolemenus/cog.py:1407
+msgctxt "cmd:rolemenu_editrole|param:role"
+msgid "new_role"
+msgstr "ofx_spmf"
+
+#: src/modules/rolemenus/cog.py:1418
+msgctxt "cmd:rolemenu_editrole|param:menu|desc"
+msgid "Name of the menu to edit the role for"
+msgstr "Obnf pg uif nfov up feju uif spmf gps"
+
+#: src/modules/rolemenus/cog.py:1422
+msgctxt "cmd:rolemenu_editrole|param:menu_role|desc"
+msgid "Label, name, or mention of the menu role to edit."
+msgstr "Mbcfm, obnf, ps nfoujpo pg uif nfov spmf up feju."
+
+#: src/modules/rolemenus/cog.py:1426
+msgctxt "cmd:rolemenu_editrole|param:role|desc"
+msgid "New server role this menu role should give."
+msgstr "Ofx tfswfs spmf uijt nfov spmf tipvme hjwf."
+
+#: src/modules/rolemenus/cog.py:1434
+msgctxt "cmd:rolemenu_editrole|param:duration|desc"
+msgid "Lifetime of the role after selection in minutes."
+msgstr "Mjgfujnf pg uif spmf bgufs tfmfdujpo jo njovuft."
+
+#: src/modules/rolemenus/cog.py:1475
+#, possible-python-brace-format
+msgctxt "cmd:rolemenu_editrole|error:menu_not_found"
+msgid "This server does not have a role menu called `{name}`!"
+msgstr "Uijt tfswfs epft opu ibwf b spmf nfov dbmmfe `{name}`!"
+
+#: src/modules/rolemenus/cog.py:1503
+#, possible-python-brace-format
+msgctxt "cmd:rolemenu_editrole|error:role_not_found"
+msgid "The menu **{menu}** does not have the role **{name}**"
+msgstr "Uif nfov **{menu}** epft opu ibwf uif spmf **{name}**"
+
+#: src/modules/rolemenus/cog.py:1569
+msgctxt "cmd:rolemenu_editrole|success|title"
+msgid "Role menu role updated"
+msgstr "Spmf nfov spmf vqebufe"
+
+#: src/modules/rolemenus/cog.py:1584
+msgctxt "cmd:rolemenu_editrole|success|error:reaction|name"
+msgid "Warning!"
+msgstr "Xbsojoh!"
+
+#: src/modules/rolemenus/cog.py:1609
+msgctxt "cmd:rolemenu_delrole"
+msgid "delrole"
+msgstr "efmspmf"
+
+#: src/modules/rolemenus/cog.py:1612
+msgctxt "cmd:rolemenu_delrole|desc"
+msgid "Remove a role from a role menu."
+msgstr "Sfnpwf b spmf gspn b spmf nfov."
+
+#: src/modules/rolemenus/cog.py:1616
+msgctxt "cmd:rolemenu_delrole|param:menu"
+msgid "menu"
+msgstr "nfov"
+
+#: src/modules/rolemenus/cog.py:1617
+msgctxt "cmd:rolemenu_delrole|param:menu_role"
+msgid "menu_role"
+msgstr "nfov_spmf"
+
+#: src/modules/rolemenus/cog.py:1622
+msgctxt "cmd:rolemenu_delrole|param:menu|desc"
+msgid "Name of the menu to delete the role from."
+msgstr "Obnf pg uif nfov up efmfuf uif spmf gspn."
+
+#: src/modules/rolemenus/cog.py:1626
+msgctxt "cmd:rolemenu_delrole|param:menu_role|desc"
+msgid "Name, label, or mention of the role to delete."
+msgstr "Obnf, mbcfm, ps nfoujpo pg uif spmf up efmfuf."
+
+#: src/modules/rolemenus/cog.py:1644
+msgctxt "cmd:rolemenu_delrole|error:author_perms"
+msgid ""
+"You need the `MANAGE_ROLES` permission in order to manage the server role "
+"menus."
+msgstr ""
+"Zpv offe uif `NBOBHF_SPMFT` qfsnjttjpo jo psefs up nbobhf uif tfswfs spmf "
+"nfovt."
+
+#: src/modules/rolemenus/cog.py:1668
+#, possible-python-brace-format
+msgctxt "cmd:rolemenu_delrole|error:menu_not_found"
+msgid "This server does not have a role menu called `{name}`!"
+msgstr "Uijt tfswfs epft opu ibwf b spmf nfov dbmmfe `{name}`!"
+
+#: src/modules/rolemenus/cog.py:1696
+#, possible-python-brace-format
+msgctxt "cmd:rolemenu_delrole|error:role_not_found"
+msgid "The menu **{menu}** does not have the role **{name}**"
+msgstr "Uif nfov **{menu}** epft opu ibwf uif spmf **{name}**"
+
+#: src/modules/rolemenus/cog.py:1713
+#, possible-python-brace-format
+msgctxt "cmd:rolemenu_delrole|success"
+msgid "The role **{name}** was successfully removed from the menu **{menu}**."
+msgstr ""
+"Uif spmf **{name}** xbt tvddfttgvmmz sfnpwfe gspn uif nfov **{menu}**."
+
+#: src/modules/rolemenus/roleoptions.py:54
+msgctxt "roleset:role"
+msgid "role"
+msgstr "spmf"
+
+#: src/modules/rolemenus/roleoptions.py:57
+msgctxt "roleset:role|desc"
+msgid "The role associated to this menu item."
+msgstr "Uif spmf bttpdjbufe up uijt nfov jufn."
+
+#: src/modules/rolemenus/roleoptions.py:61
+msgctxt "roleset:role|long_desc"
+msgid "The role given when this menu item is selected in the role menu."
+msgstr "Uif spmf hjwfo xifo uijt nfov jufn jt tfmfdufe jo uif spmf nfov."
+
+#: src/modules/rolemenus/roleoptions.py:74
+#, possible-python-brace-format
+msgctxt "roleset:role|set_response:set"
+msgid "This menu item will now give the role {role}."
+msgstr "Uijt nfov jufn xjmm opx hjwf uif spmf {role}."
+
+#: src/modules/rolemenus/roleoptions.py:82
+msgctxt "roleset:label"
+msgid "label"
+msgstr "mbcfm"
+
+#: src/modules/rolemenus/roleoptions.py:85
+msgctxt "roleset:label|desc"
+msgid "A short button label for this role."
+msgstr "B tipsu cvuupo mbcfm gps uijt spmf."
+
+#: src/modules/rolemenus/roleoptions.py:90
+msgctxt "roleset:label|long_desc"
+msgid ""
+"A short name for this role, to be displayed in button labels, dropdown "
+"titles, and some menu layouts. By default uses the Discord role name."
+msgstr ""
+"B tipsu obnf gps uijt spmf, up cf ejtqmbzfe jo cvuupo mbcfmt, espqepxo "
+"ujumft, boe tpnf nfov mbzpvut. Cz efgbvmu vtft uif Ejtdpse spmf obnf."
+
+#: src/modules/rolemenus/roleoptions.py:104
+#, possible-python-brace-format
+msgctxt "roleset:role|set_response"
+msgid "This menu role is now called `{value}`."
+msgstr "Uijt nfov spmf jt opx dbmmfe `{value}`."
+
+#: src/modules/rolemenus/roleoptions.py:112
+msgctxt "roleset:emoji"
+msgid "emoji"
+msgstr "fnpkj"
+
+#: src/modules/rolemenus/roleoptions.py:115
+msgctxt "roleset:emoji|desc"
+msgid "The emoji associated with this role."
+msgstr "Uif fnpkj bttpdjbufe xjui uijt spmf."
+
+#: src/modules/rolemenus/roleoptions.py:119
+msgctxt "roleset:emoji|long_desc"
+msgid ""
+"The role emoji is used for the reaction (in reaction role menus), and "
+"otherwise appears next to the role label in the button and dropdown styles. "
+"The emoji is also displayed next to the role in most menu templates."
+msgstr ""
+"Uif spmf fnpkj jt vtfe gps uif sfbdujpo (jo sfbdujpo spmf nfovt), boe "
+"puifsxjtf bqqfbst ofyu up uif spmf mbcfm jo uif cvuupo boe espqepxo tuzmft. "
+"Uif fnpkj jt bmtp ejtqmbzfe ofyu up uif spmf jo nptu nfov ufnqmbuft."
+
+#: src/modules/rolemenus/roleoptions.py:157
+#, possible-python-brace-format
+msgctxt "roleset:emoji|error:test_emoji"
+msgid "The selected emoji `{emoji}` is invalid or has been deleted."
+msgstr "Uif tfmfdufe fnpkj `{emoji}` jt jowbmje ps ibt cffo efmfufe."
+
+#: src/modules/rolemenus/roleoptions.py:168
+#, possible-python-brace-format
+msgctxt "roleset:emoji|set_response:set"
+msgid "The menu role emoji is now {emoji}."
+msgstr "Uif nfov spmf fnpkj jt opx {emoji}."
+
+#: src/modules/rolemenus/roleoptions.py:173
+msgctxt "roleset:emoji|set_response:unset"
+msgid "The menu role emoji has been removed."
+msgstr "Uif nfov spmf fnpkj ibt cffo sfnpwfe."
+
+#: src/modules/rolemenus/roleoptions.py:181
+msgctxt "roleset:description"
+msgid "description"
+msgstr "eftdsjqujpo"
+
+#: src/modules/rolemenus/roleoptions.py:184
+msgctxt "roleset:description|desc"
+msgid "A longer description of this role."
+msgstr "B mpohfs eftdsjqujpo pg uijt spmf."
+
+#: src/modules/rolemenus/roleoptions.py:189
+msgctxt "roleset:description|long_desc"
+msgid ""
+"The description is displayed under the role label in dropdown style menus. "
+"It may also be used as a substitution key in custom role selection "
+"responses."
+msgstr ""
+"Uif eftdsjqujpo jt ejtqmbzfe voefs uif spmf mbcfm jo espqepxo tuzmf nfovt. "
+"Ju nbz bmtp cf vtfe bt b tvctujuvujpo lfz jo dvtupn spmf tfmfdujpo "
+"sftqpotft."
+
+#: src/modules/rolemenus/roleoptions.py:205
+msgctxt "roleset:description|set_response:set"
+msgid "The role description has been set."
+msgstr "Uif spmf eftdsjqujpo ibt cffo tfu."
+
+#: src/modules/rolemenus/roleoptions.py:210
+msgctxt "roleset:description|set_response:unset"
+msgid "The role description has been removed."
+msgstr "Uif spmf eftdsjqujpo ibt cffo sfnpwfe."
+
+#: src/modules/rolemenus/roleoptions.py:218
+msgctxt "roleset:price"
+msgid "price"
+msgstr "qsjdf"
+
+#: src/modules/rolemenus/roleoptions.py:221
+msgctxt "roleset:price|desc"
+msgid "Price of the role, in LionCoins."
+msgstr "Qsjdf pg uif spmf, jo MjpoDpjot."
+
+#: src/modules/rolemenus/roleoptions.py:225
+msgctxt "roleset:price|long_desc"
+msgid "How much the role costs when selected, in LionCoins."
+msgstr "Ipx nvdi uif spmf dptut xifo tfmfdufe, jo MjpoDpjot."
+
+#: src/modules/rolemenus/roleoptions.py:229
+msgctxt "roleset:price|accepts"
+msgid "Amount of coins that the role costs."
+msgstr "Bnpvou pg dpjot uibu uif spmf dptut."
+
+#: src/modules/rolemenus/roleoptions.py:242
+#, possible-python-brace-format
+msgctxt "roleset:price|set_response:set"
+msgid "This role will now cost {price} to equip."
+msgstr "Uijt spmf xjmm opx dptu {price} up frvjq."
+
+#: src/modules/rolemenus/roleoptions.py:247
+msgctxt "roleset:price|set_response:unset"
+msgid "This role will now be free to equip from this role menu."
+msgstr "Uijt spmf xjmm opx cf gsff up frvjq gspn uijt spmf nfov."
+
+#: src/modules/rolemenus/roleoptions.py:255
+msgctxt "roleset:duration"
+msgid "duration"
+msgstr "evsbujpo"
+
+#: src/modules/rolemenus/roleoptions.py:258
+msgctxt "roleset:duration|desc"
+msgid "Lifetime of the role after selection"
+msgstr "Mjgfujnf pg uif spmf bgufs tfmfdujpo"
+
+#: src/modules/rolemenus/roleoptions.py:262
+msgctxt "roleset:duration|long_desc"
+msgid ""
+"Allows creation of 'temporary roles' which expire a given time after being "
+"equipped. Refunds will not be given upon expiry."
+msgstr ""
+"Bmmpxt dsfbujpo pg 'ufnqpsbsz spmft' xijdi fyqjsf b hjwfo ujnf bgufs cfjoh "
+"frvjqqfe. Sfgvoet xjmm opu cf hjwfo vqpo fyqjsz."
+
+#: src/modules/rolemenus/roleoptions.py:267
+msgctxt "roleset:duration|notset"
+msgid "Forever."
+msgstr "Gpsfwfs."
+
+#: src/modules/rolemenus/roleoptions.py:280
+#, possible-python-brace-format
+msgctxt "roleset:duration|set_response:set"
+msgid "This role will now expire after {duration}."
+msgstr "Uijt spmf xjmm opx fyqjsf bgufs {duration}."
+
+#: src/modules/rolemenus/roleoptions.py:285
+msgctxt "roleset:duration|set_response:unset"
+msgid "This role will no longer expire after being selected."
+msgstr "Uijt spmf xjmm op mpohfs fyqjsf bgufs cfjoh tfmfdufe."
+
+#: src/modules/rolemenus/templates.py:53
+msgctxt "template:simple|name"
+msgid "Simple Menu"
+msgstr "Tjnqmf Nfov"
+
+#: src/modules/rolemenus/templates.py:57
+msgctxt "template:simple|desc"
+msgid "A simple embedded list of roles in the menu"
+msgstr "B tjnqmf fncfeefe mjtu pg spmft jo uif nfov"
+
+#: src/modules/rolemenus/templates.py:96
+msgctxt "template:two_column|name"
+msgid "Two Column"
+msgstr "Uxp Dpmvno"
+
+#: src/modules/rolemenus/templates.py:100
+msgctxt "template:two_column|desc"
+msgid "A compact two column role layout. Excludes prices and durations."
+msgstr "B dpnqbdu uxp dpmvno spmf mbzpvu. Fydmveft qsjdft boe evsbujpot."
+
+#: src/modules/rolemenus/templates.py:131
+msgctxt "template:three_column|name"
+msgid "Three Column"
+msgstr "Uisff Dpmvno"
+
+#: src/modules/rolemenus/templates.py:135
+msgctxt "template:three_column|desc"
+msgid ""
+"A compact three column layout using emojis and labels, excluding prices and "
+"durations."
+msgstr ""
+"B dpnqbdu uisff dpmvno mbzpvu vtjoh fnpkjt boe mbcfmt, fydmvejoh qsjdft boe "
+"evsbujpot."
+
+#: src/modules/rolemenus/templates.py:168
+msgctxt "template:shop|name"
+msgid "Role Shop"
+msgstr "Spmf Tipq"
+
+#: src/modules/rolemenus/templates.py:172
+msgctxt "template:shop|desc"
+msgid "A single column display suitable for simple role shops"
+msgstr "B tjohmf dpmvno ejtqmbz tvjubcmf gps tjnqmf spmf tipqt"
+
+#: src/modules/rolemenus/rolemenu.py:280
+msgctxt "rolemenu|menu_message|error|title"
+msgid "ROLE MENU DISPLAY ERROR"
+msgstr "SPMF NFOV EJTQMBZ FSSPS"
+
+#: src/modules/rolemenus/rolemenu.py:284
+#, possible-python-brace-format
+msgctxt "rolemenu|menu_message|error|desc"
+msgid ""
+"A critical error occurred trying to display this role menu.\n"
+"Error: `{error}`."
+msgstr ""
+"B dsjujdbm fssps pddvssfe uszjoh up ejtqmbz uijt spmf nfov.\n"
+"Fssps: `{error}`."
+
+#: src/modules/rolemenus/rolemenu.py:336
+#, possible-python-brace-format
+msgctxt "rolemenu|update_reactions|error"
+msgid ""
+"Could not add the {emoji} reaction, perhaps I do not have access to this "
+"emoji! Reactions will need to be added manually."
+msgstr ""
+"Dpvme opu bee uif {emoji} sfbdujpo, qfsibqt J ep opu ibwf bddftt up uijt "
+"fnpkj! Sfbdujpot xjmm offe up cf beefe nbovbmmz."
+
+#: src/modules/rolemenus/rolemenu.py:381
+msgctxt "ui:rolemenu_dropdown|placeholder"
+msgid "Select Roles"
+msgstr "Tfmfdu Spmft"
+
+#: src/modules/rolemenus/rolemenu.py:472
+msgctxt "rolemenu|error:role_gone"
+msgid "This role no longer exists!"
+msgstr "Uijt spmf op mpohfs fyjtut!"
+
+#: src/modules/rolemenus/rolemenu.py:482
+#, possible-python-brace-format
+msgctxt "rolemenu|deselect|error:sticky"
+msgid "**{role}** is a sticky role, you cannot remove it with this menu!"
+msgstr "**{role}** jt b tujdlz spmf, zpv dboopu sfnpwf ju xjui uijt nfov!"
+
+#: src/modules/rolemenus/rolemenu.py:493
+msgctxt "rolemenu|deselect|error:perms"
+msgid "I don't have enough permissions to remove this role from you!"
+msgstr "J epo'u ibwf fopvhi qfsnjttjpot up sfnpwf uijt spmf gspn zpv!"
+
+#: src/modules/rolemenus/rolemenu.py:500
+msgctxt "rolemenu|deselect|error:discord"
+msgid "An unknown error occurred removing your role! Please try again later."
+msgstr "Bo volopxo fssps pddvssfe sfnpwjoh zpvs spmf! Qmfbtf usz bhbjo mbufs."
+
+#: src/modules/rolemenus/rolemenu.py:529
+msgctxt "rolemenu|deslect|success|title"
+msgid "Role removed"
+msgstr "Spmf sfnpwfe"
+
+#: src/modules/rolemenus/rolemenu.py:535
+#, possible-python-brace-format
+msgctxt "rolemenu|deselect|success:refund|desc"
+msgid "You have removed **{role}**, and been refunded {coin} **{amount}**."
+msgstr "Zpv ibwf sfnpwfe **{role}**, boe cffo sfgvoefe {coin} **{amount}**."
+
+#: src/modules/rolemenus/rolemenu.py:540
+#, possible-python-brace-format
+msgctxt "rolemenu|deselect|success:norefund|desc"
+msgid "You have unequipped **{role}**."
+msgstr "Zpv ibwf vofrvjqqfe **{role}**."
+
+#: src/modules/rolemenus/rolemenu.py:554
+#, possible-python-brace-format
+msgctxt "rolemenu|select|error:required_role"
+msgid "You need to have the **{role}** role to use this!"
+msgstr "Zpv offe up ibwf uif **{role}** spmf up vtf uijt!"
+
+#: src/modules/rolemenus/rolemenu.py:568
+#, possible-python-brace-format
+msgctxt "rolemenu|select|error:max_obtainable"
+msgid "You already have the maximum of {obtainable} roles from this menu!"
+msgstr "Zpv bmsfbez ibwf uif nbyjnvn pg {obtainable} spmft gspn uijt nfov!"
+
+#: src/modules/rolemenus/rolemenu.py:582
+#, possible-python-brace-format
+msgctxt "rolemenu|select|error:insufficient_funds"
+msgid ""
+"The role **{role}** costs {coin}**{cost}**,but you only have "
+"{coin}**{balance}**!"
+msgstr ""
+"Uif spmf **{role}** dptut {coin}**{cost}**,cvu zpv pomz ibwf "
+"{coin}**{balance}**!"
+
+#: src/modules/rolemenus/rolemenu.py:598
+msgctxt "rolemenu|select|error:perms"
+msgid "I don't have enough permissions to give you this role!"
+msgstr "J epo'u ibwf fopvhi qfsnjttjpot up hjwf zpv uijt spmf!"
+
+#: src/modules/rolemenus/rolemenu.py:605
+msgctxt "rolemenu|select|error:discord"
+msgid ""
+"An unknown error occurred while assigning your role! Please try again later."
+msgstr ""
+"Bo volopxo fssps pddvssfe xijmf bttjhojoh zpvs spmf! Qmfbtf usz bhbjo mbufs."
+
+#: src/modules/rolemenus/rolemenu.py:647
+msgctxt "rolemenu|select|success|title"
+msgid "Role equipped"
+msgstr "Spmf frvjqqfe"
+
+#: src/modules/rolemenus/rolemenu.py:653
+#, possible-python-brace-format
+msgctxt "rolemenu|select|success:purchase|desc"
+msgid "You have purchased the role **{role}** for {coin}**{amount}**"
+msgstr "Zpv ibwf qvsdibtfe uif spmf **{role}** gps {coin}**{amount}**"
+
+#: src/modules/rolemenus/rolemenu.py:658
+#, possible-python-brace-format
+msgctxt "rolemenu|select|success:nopurchase|desc"
+msgid "You have equipped the role **{role}**"
+msgstr "Zpv ibwf frvjqqfe uif spmf **{role}**"
+
+#: src/modules/rolemenus/rolemenu.py:664
+#, possible-python-brace-format
+msgctxt "rolemenu|select|expires_at"
+msgid "The role will expire at {timestamp}."
+msgstr "Uif spmf xjmm fyqjsf bu {timestamp}."
+
+#: src/modules/rolemenus/rolemenu.py:717
+#, possible-python-brace-format
+msgctxt "rolemenu|content:reactions"
+msgid "[Click here]({jump_link}) to jump back."
+msgstr "[Dmjdl ifsf]({jump_link}) up kvnq cbdl."
+
+#: src/modules/rolemenus/menuoptions.py:56
+msgctxt "menuset:name"
+msgid "name"
+msgstr "obnf"
+
+#: src/modules/rolemenus/menuoptions.py:59
+msgctxt "menuset:name|desc"
+msgid "Brief name for this role menu."
+msgstr "Csjfg obnf gps uijt spmf nfov."
+
+#: src/modules/rolemenus/menuoptions.py:64
+msgctxt "menuset:name|long_desc"
+msgid ""
+"The role menu name is displayed when selecting the menu in commands, and as "
+"the title of most default menu layouts."
+msgstr ""
+"Uif spmf nfov obnf jt ejtqmbzfe xifo tfmfdujoh uif nfov jo dpnnboet, boe bt "
+"uif ujumf pg nptu efgbvmu nfov mbzpvut."
+
+#: src/modules/rolemenus/menuoptions.py:78
+#, possible-python-brace-format
+msgctxt "menuset:name|set_response"
+msgid "This role menu will now be called **{new_name}**."
+msgstr "Uijt spmf nfov xjmm opx cf dbmmfe **{new_name}**."
+
+#: src/modules/rolemenus/menuoptions.py:86
+msgctxt "menuset:sticky"
+msgid "sticky_roles"
+msgstr "tujdlz_spmft"
+
+#: src/modules/rolemenus/menuoptions.py:89
+msgctxt "menuset:sticky|desc"
+msgid "Whether the menu can be used to unequip roles."
+msgstr "Xifuifs uif nfov dbo cf vtfe up vofrvjq spmft."
+
+#: src/modules/rolemenus/menuoptions.py:94
+msgctxt "menuset:sticky|long_desc"
+msgid ""
+"When enabled, members will not be able to remove equipped roles by selecting"
+" them in this menu. Note that when disabled, members will be able to unequip"
+" the menu roles even if they were not obtained from the menu."
+msgstr ""
+"Xifo fobcmfe, nfncfst xjmm opu cf bcmf up sfnpwf frvjqqfe spmft cz tfmfdujoh"
+" uifn jo uijt nfov. Opuf uibu xifo ejtbcmfe, nfncfst xjmm cf bcmf up vofrvjq"
+" uif nfov spmft fwfo jg uifz xfsf opu pcubjofe gspn uif nfov."
+
+#: src/modules/rolemenus/menuoptions.py:110
+msgctxt "menuset:sticky|set_response:true"
+msgid "Members will no longer be able to remove roles with this menu."
+msgstr "Nfncfst xjmm op mpohfs cf bcmf up sfnpwf spmft xjui uijt nfov."
+
+#: src/modules/rolemenus/menuoptions.py:115
+msgctxt "menuset:sticky|set_response:false"
+msgid "Members will now be able to remove roles with this menu."
+msgstr "Nfncfst xjmm opx cf bcmf up sfnpwf spmft xjui uijt nfov."
+
+#: src/modules/rolemenus/menuoptions.py:123
+msgctxt "menuset:refunds"
+msgid "refunds"
+msgstr "sfgvoet"
+
+#: src/modules/rolemenus/menuoptions.py:126
+msgctxt "menuset:refunds|desc"
+msgid "Whether removing a role will refund the purchase price for that role."
+msgstr "Xifuifs sfnpwjoh b spmf xjmm sfgvoe uif qvsdibtf qsjdf gps uibu spmf."
+
+#: src/modules/rolemenus/menuoptions.py:131
+msgctxt "menuset:refunds|long_desc"
+msgid ""
+"When enabled, members who *purchased a role through this role menu* will obtain a full refund when they remove the role through the menu.\n"
+"**Refunds will only be given for roles purchased through the same menu.**\n"
+"**The `sticky` option must be disabled to allow members to remove roles.**"
+msgstr ""
+"Xifo fobcmfe, nfncfst xip *qvsdibtfe b spmf uispvhi uijt spmf nfov* xjmm pcubjo b gvmm sfgvoe xifo uifz sfnpwf uif spmf uispvhi uif nfov.\n"
+"**Sfgvoet xjmm pomz cf hjwfo gps spmft qvsdibtfe uispvhi uif tbnf nfov.**\n"
+"**Uif `tujdlz` pqujpo nvtu cf ejtbcmfe up bmmpx nfncfst up sfnpwf spmft.**"
+
+#: src/modules/rolemenus/menuoptions.py:148
+msgctxt "menuset:refunds|set_response:true"
+msgid "Members will now be refunded when removing a role with this menu."
+msgstr "Nfncfst xjmm opx cf sfgvoefe xifo sfnpwjoh b spmf xjui uijt nfov."
+
+#: src/modules/rolemenus/menuoptions.py:153
+msgctxt "menuset:refunds|set_response:false"
+msgid ""
+"Members will no longer be refunded when removing a role with this menu."
+msgstr ""
+"Nfncfst xjmm op mpohfs cf sfgvoefe xifo sfnpwjoh b spmf xjui uijt nfov."
+
+#: src/modules/rolemenus/menuoptions.py:161
+msgctxt "menuset:obtainable"
+msgid "obtainable"
+msgstr "pcubjobcmf"
+
+#: src/modules/rolemenus/menuoptions.py:164
+msgctxt "menuset:obtainable|desc"
+msgid "The maximum number of roles equippable from this menu."
+msgstr "Uif nbyjnvn ovncfs pg spmft frvjqqbcmf gspn uijt nfov."
+
+#: src/modules/rolemenus/menuoptions.py:169
+msgctxt "menuset:obtainable|long_desc"
+msgid ""
+"Members will not be able to obtain more than this number of roles from this "
+"menu. This counts roles that were not obtained through the rolemenu system."
+msgstr ""
+"Nfncfst xjmm opu cf bcmf up pcubjo npsf uibo uijt ovncfs pg spmft gspn uijt "
+"nfov. Uijt dpvout spmft uibu xfsf opu pcubjofe uispvhi uif spmfnfov tztufn."
+
+#: src/modules/rolemenus/menuoptions.py:174
+msgctxt "menuset:obtainable|notset"
+msgid "Unlimited."
+msgstr "Vomjnjufe."
+
+#: src/modules/rolemenus/menuoptions.py:188
+#, possible-python-brace-format
+msgctxt "menuset:obtainable|set_response:set"
+msgid ""
+"Members will be able to select a maximum of **{value}** roles from this "
+"menu."
+msgstr ""
+"Nfncfst xjmm cf bcmf up tfmfdu b nbyjnvn pg **{value}** spmft gspn uijt "
+"nfov."
+
+#: src/modules/rolemenus/menuoptions.py:193
+msgctxt "menuset:obtainable|set_response:unset"
+msgid "Members will be able to select any number of roles from this menu."
+msgstr "Nfncfst xjmm cf bcmf up tfmfdu boz ovncfs pg spmft gspn uijt nfov."
+
+#: src/modules/rolemenus/menuoptions.py:201
+msgctxt "menuset:required_role"
+msgid "required_role"
+msgstr "sfrvjsfe_spmf"
+
+#: src/modules/rolemenus/menuoptions.py:204
+msgctxt "menuset:required_role|desc"
+msgid "Initial role required to use this menu."
+msgstr "Jojujbm spmf sfrvjsfe up vtf uijt nfov."
+
+#: src/modules/rolemenus/menuoptions.py:209
+msgctxt "menuset:required_role|long_desc"
+msgid ""
+"If set, only members who have the `required_role` will be able to obtain or "
+"remove roles using this menu."
+msgstr ""
+"Jg tfu, pomz nfncfst xip ibwf uif `sfrvjsfe_spmf` xjmm cf bcmf up pcubjo ps "
+"sfnpwf spmft vtjoh uijt nfov."
+
+#: src/modules/rolemenus/menuoptions.py:223
+#, possible-python-brace-format
+msgctxt "menuset:required_role|set_response:set"
+msgid "Members will need to have the {role} role to use this menu."
+msgstr "Nfncfst xjmm offe up ibwf uif {role} spmf up vtf uijt nfov."
+
+#: src/modules/rolemenus/menuoptions.py:228
+msgctxt "menuset:required_role|set_response:unset"
+msgid "Any member who can see the menu may use it."
+msgstr "Boz nfncfs xip dbo tff uif nfov nbz vtf ju."
+
+#: src/modules/rolemenus/menuoptions.py:236
+msgctxt "menuset:message"
+msgid "custom_message"
+msgstr "dvtupn_nfttbhf"
+
+#: src/modules/rolemenus/menuoptions.py:239
+msgctxt "menuset:message|desc"
+msgid "Custom message data used to display the menu."
+msgstr "Dvtupn nfttbhf ebub vtfe up ejtqmbz uif nfov."
+
+#: src/modules/rolemenus/menuoptions.py:243
+msgctxt "menuset:message|long_desc"
+msgid ""
+"This setting determines the body of the menu message, including the message "
+"content and the message embed(s). While most easily modifiable through the "
+"`Edit Message` button, raw JSON-formatted message data may also be uploaded "
+"via command."
+msgstr ""
+"Uijt tfuujoh efufsnjoft uif cpez pg uif nfov nfttbhf, jodmvejoh uif nfttbhf "
+"dpoufou boe uif nfttbhf fncfe(t). Xijmf nptu fbtjmz npejgjbcmf uispvhi uif "
+"`Feju Nfttbhf` cvuupo, sbx KTPO-gpsnbuufe nfttbhf ebub nbz bmtp cf vqmpbefe "
+"wjb dpnnboe."
+
+#: src/modules/rolemenus/menuoptions.py:260
+msgctxt "menuset:message|set_response:set"
+msgid "The role menu message has been set. Edit through the menu editor."
+msgstr "Uif spmf nfov nfttbhf ibt cffo tfu. Feju uispvhi uif nfov fejups."
+
+#: src/modules/rolemenus/menuoptions.py:265
+msgctxt "menuset:message|set_response:unset"
+msgid ""
+"The role menu message has been unset. Select a template through the menu "
+"editor."
+msgstr ""
+"Uif spmf nfov nfttbhf ibt cffo votfu. Tfmfdu b ufnqmbuf uispvhi uif nfov "
+"fejups."
+
+#: src/modules/rolemenus/ui/menus.py:105
+msgctxt "ui:menu_list|menu:editmenu|placeholder"
+msgid "Select Menu to Edit"
+msgstr "Tfmfdu Nfov up Feju"
+
+#: src/modules/rolemenus/ui/menus.py:129
+#, possible-python-brace-format
+msgctxt "ui:menu_list|menu_line:attached"
+msgid "[`{name}`]({jump_url}) with `{count}` roles."
+msgstr "[`{name}`]({jump_url}) xjui `{count}` spmft."
+
+#: src/modules/rolemenus/ui/menus.py:138
+#, possible-python-brace-format
+msgctxt "ui:menu_list|menu_line:unattached"
+msgid "`{name}` with `{count}` roles."
+msgstr "`{name}` xjui `{count}` spmft."
+
+#: src/modules/rolemenus/ui/menus.py:163
+#, possible-python-brace-format
+msgctxt "ui:menu_list|embed|title"
+msgid "Role Menus in {guild}"
+msgstr "Spmf Nfovt jo {guild}"
+
+#: src/modules/rolemenus/ui/menus.py:172
+msgctxt "ui:menu_list|embed|field:tips|name"
+msgid "Tips"
+msgstr "Ujqt"
+
+#: src/modules/rolemenus/ui/menus.py:176
+msgctxt "ui:menu_list|embed|field:tips|value"
+msgid ""
+"Right click an existing message or use the `newmenu` command to create a new"
+" menu."
+msgstr ""
+"Sjhiu dmjdl bo fyjtujoh nfttbhf ps vtf uif `ofxnfov` dpnnboe up dsfbuf b ofx"
+" nfov."
+
+#: src/modules/rolemenus/ui/menus.py:189
+msgctxt "ui:menu_list|embed|field:unattached|name"
+msgid "Unattached Menus"
+msgstr "Vobuubdife Nfovt"
+
+#: src/modules/rolemenus/ui/menus.py:201
+msgctxt "ui:menu_list|embed|footer:text"
+msgid "Click a menu name to jump to the message."
+msgstr "Dmjdl b nfov obnf up kvnq up uif nfttbhf."
+
+#: src/modules/rolemenus/ui/menueditor.py:93
+msgctxt "ui:menu_editor|preview|error:title"
+msgid "Display Error!"
+msgstr "Ejtqmbz Fssps!"
+
+#: src/modules/rolemenus/ui/menueditor.py:97
+#, possible-python-brace-format
+msgctxt "ui:menu_editor|preview|error:desc"
+msgid ""
+"Failed to display preview!\n"
+"**Error:** `{exception}`"
+msgstr ""
+"Gbjmfe up ejtqmbz qsfwjfx!\n"
+"**Fssps:** `{exception}`"
+
+#: src/modules/rolemenus/ui/menueditor.py:151
+msgctxt "ui:menu_editor|button:options|label"
+msgid "Menu Options"
+msgstr "Nfov Pqujpot"
+
+#: src/modules/rolemenus/ui/menueditor.py:179
+msgctxt "ui:menu_editor|button:bulk_edit|modal|title"
+msgid "Menu Options"
+msgstr "Nfov Pqujpot"
+
+#: src/modules/rolemenus/ui/menueditor.py:215
+msgctxt "ui:menu_editor|button:bulk_edit|label"
+msgid "Bulk Edit"
+msgstr "Cvml Feju"
+
+#: src/modules/rolemenus/ui/menueditor.py:235
+msgctxt "ui:menu_editor|button:sticky|label"
+msgid "Toggle Sticky"
+msgstr "Uphhmf Tujdlz"
+
+#: src/modules/rolemenus/ui/menueditor.py:259
+msgctxt "ui:menu_editor|button:refunds|label"
+msgid "Toggle Refunds"
+msgstr "Uphhmf Sfgvoet"
+
+#: src/modules/rolemenus/ui/menueditor.py:289
+msgctxt "ui:menu_editor|menu:reqroles|placeholder"
+msgid "Select Required Role"
+msgstr "Tfmfdu Sfrvjsfe Spmf"
+
+#: src/modules/rolemenus/ui/menueditor.py:308
+msgctxt "ui:menu_editor|button:modify_roles|label"
+msgid "Modify Roles"
+msgstr "Npejgz Spmft"
+
+#: src/modules/rolemenus/ui/menueditor.py:337
+msgctxt "ui:menu_editor|role_editor|modal|title"
+msgid "Edit Menu Role"
+msgstr "Feju Nfov Spmf"
+
+#: src/modules/rolemenus/ui/menueditor.py:411
+msgctxt "ui:menu_editor|menu:add_roles|error:too_many_reactions"
+msgid "Too many roles! Reaction role menus cannot exceed `20` roles."
+msgstr "Upp nboz spmft! Sfbdujpo spmf nfovt dboopu fydffe `20` spmft."
+
+#: src/modules/rolemenus/ui/menueditor.py:416
+msgctxt "ui:menu_editor|menu:add_roles|error:too_many_roles"
+msgid "Too many roles! Role menus cannot have more than `25` roles."
+msgstr "Upp nboz spmft! Spmf nfovt dboopu ibwf npsf uibo `25` spmft."
+
+#: src/modules/rolemenus/ui/menueditor.py:455
+msgctxt "ui:menu_editor|menu:add_roles|placeholder"
+msgid "Add Roles"
+msgstr "Bee Spmft"
+
+#: src/modules/rolemenus/ui/menueditor.py:481
+msgctxt "ui:menu_editor|menu:edit_roles|placeholder"
+msgid "Edit Roles"
+msgstr "Feju Spmft"
+
+#: src/modules/rolemenus/ui/menueditor.py:514
+msgctxt "ui:menu_editor|menu:del_role|placeholder"
+msgid "Remove Roles"
+msgstr "Sfnpwf Spmft"
+
+#: src/modules/rolemenus/ui/menueditor.py:538
+msgctxt "ui:menu_editor|button:style|error:non-managed"
+msgid ""
+"Cannot change the style of a menu attached to a message I did not send! "
+"Please repost first."
+msgstr ""
+"Dboopu dibohf uif tuzmf pg b nfov buubdife up b nfttbhf J eje opu tfoe! "
+"Qmfbtf sfqptu gjstu."
+
+#: src/modules/rolemenus/ui/menueditor.py:551
+msgctxt "ui:menu_editor|button:style|label"
+msgid "Menu Style"
+msgstr "Nfov Tuzmf"
+
+#: src/modules/rolemenus/ui/menueditor.py:576
+msgctxt "ui:menu_editor|menu:style|error:too_many_reactions"
+msgid ""
+"Too many roles! The Reaction style is limited to `20` roles (Discord "
+"limitation)."
+msgstr ""
+"Upp nboz spmft! Uif Sfbdujpo tuzmf jt mjnjufe up `20` spmft (Ejtdpse "
+"mjnjubujpo)."
+
+#: src/modules/rolemenus/ui/menueditor.py:586
+msgctxt "ui:menu_editor|menu:style|error:incomplete_emojis"
+msgid ""
+"Cannot switch to the Reaction Role Style! Every role needs to have a "
+"distinct emoji first."
+msgstr ""
+"Dboopu txjudi up uif Sfbdujpo Spmf Tuzmf! Fwfsz spmf offet up ibwf b "
+"ejtujodu fnpkj gjstu."
+
+#: src/modules/rolemenus/ui/menueditor.py:602
+msgctxt "ui:menu_editor|menu:style|placeholder"
+msgid "Select Menu Style"
+msgstr "Tfmfdu Nfov Tuzmf"
+
+#: src/modules/rolemenus/ui/menueditor.py:606
+msgctxt "ui:menu_editor|menu:style|option:reaction|label"
+msgid "Reaction Roles"
+msgstr "Sfbdujpo Spmft"
+
+#: src/modules/rolemenus/ui/menueditor.py:609
+msgctxt "ui:menu_editor|menu:style|option:reaction|desc"
+msgid "Roles are represented compactly as clickable reactions on a message."
+msgstr "Spmft bsf sfqsftfoufe dpnqbdumz bt dmjdlbcmf sfbdujpot po b nfttbhf."
+
+#: src/modules/rolemenus/ui/menueditor.py:615
+msgctxt "ui:menu_editor|menu:style|option:button|label"
+msgid "Button Menu"
+msgstr "Cvuupo Nfov"
+
+#: src/modules/rolemenus/ui/menueditor.py:618
+msgctxt "ui:menu_editor|menu:style|option:button|desc"
+msgid ""
+"Roles are represented in 5 rows of 5 buttons, each with an emoji and label."
+msgstr ""
+"Spmft bsf sfqsftfoufe jo 5 spxt pg 5 cvuupot, fbdi xjui bo fnpkj boe mbcfm."
+
+#: src/modules/rolemenus/ui/menueditor.py:624
+msgctxt "ui:menu_editor|menu:style|option:dropdown|label"
+msgid "Dropdown Menu"
+msgstr "Espqepxo Nfov"
+
+#: src/modules/rolemenus/ui/menueditor.py:627
+msgctxt "ui:menu_editor|menu:style|option:dropdown|desc"
+msgid "Roles are selectable from a dropdown menu below the message."
+msgstr "Spmft bsf tfmfdubcmf gspn b espqepxo nfov cfmpx uif nfttbhf."
+
+#: src/modules/rolemenus/ui/menueditor.py:697
+msgctxt "ui:menu_editor|menu:template|placeholder"
+msgid "Select Message Template"
+msgstr "Tfmfdu Nfttbhf Ufnqmbuf"
+
+#: src/modules/rolemenus/ui/menueditor.py:707
+msgctxt "ui:menu_editor|menu:template|option:custom|label"
+msgid "Custom Message"
+msgstr "Dvtupn Nfttbhf"
+
+#: src/modules/rolemenus/ui/menueditor.py:712
+msgctxt "ui:menu_editor|menu:template|option:custom|description"
+msgid "Entirely custom menu message (opens an interactive editor)."
+msgstr "Foujsfmz dvtupn nfov nfttbhf (pqfot bo joufsbdujwf fejups)."
+
+#: src/modules/rolemenus/ui/menueditor.py:729
+msgctxt "ui:menu_editor|button:delete|confirm|title"
+msgid "Are you sure you want to delete this menu? This is not reversible!"
+msgstr "Bsf zpv tvsf zpv xbou up efmfuf uijt nfov? Uijt jt opu sfwfstjcmf!"
+
+#: src/modules/rolemenus/ui/menueditor.py:734
+msgctxt "ui:menu_editor|button:delete|confirm|button:yes"
+msgid "Yes, Delete Now"
+msgstr "Zft, Efmfuf Opx"
+
+#: src/modules/rolemenus/ui/menueditor.py:739
+msgctxt "ui:menu_editor|button:delete|confirm|button:no"
+msgid "No, Go Back"
+msgstr "Op, Hp Cbdl"
+
+#: src/modules/rolemenus/ui/menueditor.py:756
+msgctxt "ui:menu_editor|button:delete|label"
+msgid "Delete Menu"
+msgstr "Efmfuf Nfov"
+
+#: src/modules/rolemenus/ui/menueditor.py:813
+msgctxt "ui:menu_editor|button:edit_msg|label"
+msgid "Edit Message"
+msgstr "Feju Nfttbhf"
+
+#: src/modules/rolemenus/ui/menueditor.py:844
+msgctxt "ui:menu_editor|button:preview|label"
+msgid "Preview"
+msgstr "Qsfwjfx"
+
+#: src/modules/rolemenus/ui/menueditor.py:860
+msgctxt "ui:menu_editor|button:repost|widget:repost|menu:channel|placeholder"
+msgid "Select New Channel"
+msgstr "Tfmfdu Ofx Diboofm"
+
+#: src/modules/rolemenus/ui/menueditor.py:878
+msgctxt "ui:menu_editor|button:repost|widget:repost|error:perms|title"
+msgid "Insufficient Permissions!"
+msgstr "Jotvggjdjfou Qfsnjttjpot!"
+
+#: src/modules/rolemenus/ui/menueditor.py:882
+msgctxt "ui:menu_editor|button:repost|eidget:repost|error:perms|desc"
+msgid ""
+"I lack the `EMBED_LINKS` or `SEND_MESSAGES` permission in this channel."
+msgstr ""
+"J mbdl uif `FNCFE_MJOLT` ps `TFOE_NFTTBHFT` qfsnjttjpo jo uijt diboofm."
+
+#: src/modules/rolemenus/ui/menueditor.py:895
+#, possible-python-brace-format
+msgctxt "ui:menu_editor|button:repost|widget:repost|error:post_failed"
+msgid ""
+"An error ocurred while posting to {channel}. Do I have sufficient "
+"permissions?"
+msgstr ""
+"Bo fssps pdvssfe xijmf qptujoh up {channel}. Ep J ibwf tvggjdjfou "
+"qfsnjttjpot?"
+
+#: src/modules/rolemenus/ui/menueditor.py:907
+msgctxt "ui:menu_editor|button:repost|widget:repost|success|title"
+msgid "Role Menu Moved"
+msgstr "Spmf Nfov Npwfe"
+
+#: src/modules/rolemenus/ui/menueditor.py:913
+#, possible-python-brace-format
+msgctxt "ui:menu_editor|button:repost|widget:repost|success|desc:general"
+msgid "The role menu `{name}` is now available at {message_link}."
+msgstr "Uif spmf nfov `{name}` jt opx bwbjmbcmf bu {message_link}."
+
+#: src/modules/rolemenus/ui/menueditor.py:927
+msgctxt "ui:menu_editor|button:repost|widget:repost|success|desc:reactions"
+msgid "Please check the message reactions are correct."
+msgstr "Qmfbtf difdl uif nfttbhf sfbdujpot bsf dpssfdu."
+
+#: src/modules/rolemenus/ui/menueditor.py:940
+msgctxt "ui:menu_editor|button:repost|widget:repost|title"
+msgid "Repost Role Menu"
+msgstr "Sfqptu Spmf Nfov"
+
+#: src/modules/rolemenus/ui/menueditor.py:944
+msgctxt "ui:menu_editor|button:repost|widget:repost|description"
+msgid "Please select the channel to which you want to resend this menu."
+msgstr "Qmfbtf tfmfdu uif diboofm up xijdi zpv xbou up sftfoe uijt nfov."
+
+#: src/modules/rolemenus/ui/menueditor.py:959
+msgctxt "ui:menu_editor|button:repost|label:repost"
+msgid "Repost"
+msgstr "Sfqptu"
+
+#: src/modules/rolemenus/ui/menueditor.py:964
+msgctxt "ui:menu_editor|button:repost|label:post"
+msgid "Post"
+msgstr "Qptu"
+
+#: src/modules/rolemenus/ui/menueditor.py:974
+msgctxt "ui:menu_editor|embed|title"
+msgid "Role Menu Editor"
+msgstr "Spmf Nfov Fejups"
+
+#: src/modules/rolemenus/ui/menueditor.py:983
+#, possible-python-brace-format
+msgctxt "ui:menu_editor|embed|description|jump_text:attached"
+msgid "Members may use this menu from {jump_url}"
+msgstr "Nfncfst nbz vtf uijt nfov gspn {jump_url}"
+
+#: src/modules/rolemenus/ui/menueditor.py:988
+msgctxt "ui:menu_editor|embed|description|jump_text:unattached"
+msgid ""
+"This menu is not currently active!\n"
+"Make it available by clicking `Post` below."
+msgstr ""
+"Uijt nfov jt opu dvssfoumz bdujwf!\n"
+"Nblf ju bwbjmbcmf cz dmjdljoh `Qptu` cfmpx."
+
+#: src/modules/rolemenus/ui/menueditor.py:1002
+msgctxt "ui:menu_editor|embed|field:tips|name"
+msgid "Command Tips"
+msgstr "Dpnnboe Ujqt"
+
+#: src/modules/rolemenus/ui/menueditor.py:1006
+#, possible-python-brace-format
+msgctxt "ui:menu_editor|embed|field:tips|value"
+msgid ""
+"Use the following commands for faster menu setup.\n"
+"{menuedit} to edit the above menu options.\n"
+"{addrole} to add new roles (recommended for roles with emojis).\n"
+"{editrole} to edit role options."
+msgstr ""
+"Vtf uif gpmmpxjoh dpnnboet gps gbtufs nfov tfuvq.\n"
+"{menuedit} up feju uif bcpwf nfov pqujpot.\n"
+"{addrole} up bee ofx spmft (sfdpnnfoefe gps spmft xjui fnpkjt).\n"
+"{editrole} up feju spmf pqujpot."
+
+#: src/modules/rolemenus/ui/menueditor.py:1046
+msgctxt "ui:menu_editor|error:invald_emoji|title"
+msgid "Invalid emoji encountered."
+msgstr "Jowbmje fnpkj fodpvoufsfe."
+
+#: src/modules/rolemenus/ui/menueditor.py:1050
+#, possible-python-brace-format
+msgctxt "ui:menu_editor|error:invalid_emoji|desc"
+msgid ""
+"The emoji `{emoji}` for menu role `{label}` no longer exists, unsetting."
+msgstr ""
+"Uif fnpkj `{emoji}` gps nfov spmf `{label}` op mpohfs fyjtut, votfuujoh."

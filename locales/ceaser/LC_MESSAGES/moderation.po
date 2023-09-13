@@ -1,0 +1,271 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: you@example.com\n"
+"POT-Creation-Date: 2007-10-18 14:00+0100\n"
+"PO-Revision-Date: 2007-10-18 14:00+0100\n"
+"Last-Translator: you <you@example.com>\n"
+"Language-Team: English <yourteam@example.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/modules/moderation/settingui.py:53
+msgctxt "ui:moderation_config|menu:ticket_log|placeholder"
+msgid "Select Ticket Log"
+msgstr "Tfmfdu Ujdlfu Mph"
+
+#: src/modules/moderation/settingui.py:78
+msgctxt "ui:moderation_config|menu:alert_channel|placeholder"
+msgid "Select Alert Channel"
+msgstr "Tfmfdu Bmfsu Diboofm"
+
+#: src/modules/moderation/settingui.py:103
+msgctxt "ui:moderation_config|menu:modrole|placeholder"
+msgid "Select Moderator Role"
+msgstr "Tfmfdu Npefsbups Spmf"
+
+#: src/modules/moderation/settingui.py:111
+msgctxt "ui:moderation_config|embed|title"
+msgid "Moderation Configuration Panel"
+msgstr "Npefsbujpo Dpogjhvsbujpo Qbofm"
+
+#: src/modules/moderation/settingui.py:150
+msgctxt "dash:moderation|title"
+msgid "Moderation Settings ({commands[configure moderation]})"
+msgstr "Npefsbujpo Tfuujoht ({commands[configure moderation]})"
+
+#: src/modules/moderation/settingui.py:154
+msgctxt "dash:moderation|dropdown|placeholder"
+msgid "Moderation Panel"
+msgstr "Npefsbujpo Qbofm"
+
+#: src/modules/moderation/cog.py:136
+msgctxt "cmd:configure_moderation"
+msgid "moderation"
+msgstr "npefsbujpo"
+
+#: src/modules/moderation/cog.py:139
+msgctxt "cmd:configure_moderation|desc"
+msgid "Configure general moderation settings."
+msgstr "Dpogjhvsf hfofsbm npefsbujpo tfuujoht."
+
+#: src/modules/moderation/ticket.py:147
+#, possible-python-brace-format
+msgctxt "ticket|title:auto"
+msgid "Ticket #{ticketid} | {state} | {type}[Auto] | {name}"
+msgstr "Ujdlfu #{ticketid} | {state} | {type}[Bvup] | {name}"
+
+#: src/modules/moderation/ticket.py:152
+#, possible-python-brace-format
+msgctxt "ticket|title:manual"
+msgid "Ticket #{ticketid} | {state} | {type} | {name}"
+msgstr "Ujdlfu #{ticketid} | {state} | {type} | {name}"
+
+#: src/modules/moderation/ticket.py:168
+msgctxt "ticket|field:target|name"
+msgid "Target"
+msgstr "Ubshfu"
+
+#: src/modules/moderation/ticket.py:173
+msgctxt "ticket|field:moderator|name"
+msgid "Moderator"
+msgstr "Npefsbups"
+
+#: src/modules/moderation/ticket.py:180
+msgctxt "ticket|field:expiry|mode:expiring|name"
+msgid "Expires At"
+msgstr "Fyqjsft Bu"
+
+#: src/modules/moderation/ticket.py:183
+#, possible-python-brace-format
+msgctxt "ticket|field:expiry|mode:expiring|value"
+msgid ""
+"{timestamp}\n"
+"Duration: `{duration}`"
+msgstr ""
+"{timestamp}\n"
+"Evsbujpo: `{duration}`"
+
+#: src/modules/moderation/ticket.py:191
+msgctxt "ticket|field:expiry|mode:expired|name"
+msgid "Expired"
+msgstr "Fyqjsfe"
+
+#: src/modules/moderation/ticket.py:194
+#, possible-python-brace-format
+msgctxt "ticket|field:expiry|mode:expired|value"
+msgid "{timestamp}"
+msgstr "{timestamp}"
+
+#: src/modules/moderation/ticket.py:201
+msgctxt "ticket|field:expiry|mode:open|name"
+msgid "Expiry"
+msgstr "Fyqjsz"
+
+#: src/modules/moderation/ticket.py:204
+#, possible-python-brace-format
+msgctxt "ticket|field:expiry|mode:open|value"
+msgid "{timestamp}"
+msgstr "{timestamp}"
+
+#: src/modules/moderation/ticket.py:212
+msgctxt "ticket|field:context|name"
+msgid "Context"
+msgstr "Dpoufyu"
+
+#: src/modules/moderation/ticket.py:219
+msgctxt "ticket|field:notes|name"
+msgid "Notes"
+msgstr "Opuft"
+
+#: src/modules/moderation/ticket.py:226
+msgctxt "ticket|field:pardoned|name"
+msgid "Pardoned"
+msgstr "Qbsepofe"
+
+#: src/modules/moderation/ticket.py:229
+#, possible-python-brace-format
+msgctxt "ticket|field:pardoned|value"
+msgid ""
+"Pardoned by <&{moderator}> at {timestamp}.\n"
+"{reason}"
+msgstr ""
+"Qbsepofe cz <&{moderator}> bu {timestamp}.\n"
+"{reason}"
+
+#: src/modules/moderation/settings.py:20
+msgctxt "guildset:ticket_log"
+msgid "ticket_log"
+msgstr "ujdlfu_mph"
+
+#: src/modules/moderation/settings.py:23
+msgctxt "guildset:ticket_log|desc"
+msgid "Private moderation log to send tickets and moderation events."
+msgstr "Qsjwbuf npefsbujpo mph up tfoe ujdlfut boe npefsbujpo fwfout."
+
+#: src/modules/moderation/settings.py:27
+msgctxt "guildset:ticket_log|long_desc"
+msgid ""
+"Warnings, notes, video blacklists, and other moderation events will be "
+"posted as numbered tickets with context to this log."
+msgstr ""
+"Xbsojoht, opuft, wjefp cmbdlmjtut, boe puifs npefsbujpo fwfout xjmm cf "
+"qptufe bt ovncfsfe ujdlfut xjui dpoufyu up uijt mph."
+
+#: src/modules/moderation/settings.py:32
+msgctxt "guildset:ticket_log|accepts"
+msgid "Ticket channel name or id."
+msgstr "Ujdlfu diboofm obnf ps je."
+
+#: src/modules/moderation/settings.py:46
+#, possible-python-brace-format
+msgctxt "guildset:ticket_log|set_response:set"
+msgid "Moderation tickets will be sent to {channel}"
+msgstr "Npefsbujpo ujdlfut xjmm cf tfou up {channel}"
+
+#: src/modules/moderation/settings.py:51
+msgctxt "guildset:ticket_log|set_response:unset"
+msgid "Moderation tickets will not be logged to a channel."
+msgstr "Npefsbujpo ujdlfut xjmm opu cf mphhfe up b diboofm."
+
+#: src/modules/moderation/settings.py:63
+msgctxt "guildset:ticket_log|formatted:unset"
+msgid "Not Set."
+msgstr "Opu Tfu."
+
+#: src/modules/moderation/settings.py:70
+msgctxt "guildset:alert_channel"
+msgid "alert_channel"
+msgstr "bmfsu_diboofm"
+
+#: src/modules/moderation/settings.py:73
+msgctxt "guildset:alert_channel|desc"
+msgid "Moderation notification channel for members with DMs disabled."
+msgstr "Npefsbujpo opujgjdbujpo diboofm gps nfncfst xjui ENt ejtbcmfe."
+
+#: src/modules/moderation/settings.py:77
+msgctxt "guildset:alert_channel|long_desc"
+msgid ""
+"When I need to send a member a moderation-related notification (e.g. asking "
+"them to enable their video in a video channel) from this server, I will try "
+"to send it via direct messages. If this fails, I will instead mention the "
+"user in this channel."
+msgstr ""
+"Xifo J offe up tfoe b nfncfs b npefsbujpo-sfmbufe opujgjdbujpo (f.h. btljoh "
+"uifn up fobcmf uifjs wjefp jo b wjefp diboofm) gspn uijt tfswfs, J xjmm usz "
+"up tfoe ju wjb ejsfdu nfttbhft. Jg uijt gbjmt, J xjmm jotufbe nfoujpo uif "
+"vtfs jo uijt diboofm."
+
+#: src/modules/moderation/settings.py:84
+msgctxt "guildset:alert_channel|accepts"
+msgid "Alert channel name or id."
+msgstr "Bmfsu diboofm obnf ps je."
+
+#: src/modules/moderation/settings.py:99
+#, possible-python-brace-format
+msgctxt "guildset:alert_channel|set_response:set"
+msgid "Moderation alerts will be sent to {channel}"
+msgstr "Npefsbujpo bmfsut xjmm cf tfou up {channel}"
+
+#: src/modules/moderation/settings.py:104
+msgctxt "guildset:alert_channel|set_response:unset"
+msgid "Moderation alerts will be ignored if the member cannot be reached."
+msgstr "Npefsbujpo bmfsut xjmm cf jhopsfe jg uif nfncfs dboopu cf sfbdife."
+
+#: src/modules/moderation/settings.py:116
+msgctxt "guildset:alert_channel|formatted:unset"
+msgid "Not Set (Only alert via direct message.)"
+msgstr "Opu Tfu (Pomz bmfsu wjb ejsfdu nfttbhf.)"
+
+#: src/modules/moderation/settings.py:123
+msgctxt "guildset:mod_role"
+msgid "mod_role"
+msgstr "npe_spmf"
+
+#: src/modules/moderation/settings.py:126
+msgctxt "guildset:mod_role|desc"
+msgid ""
+"Guild role permitted to view configuration and perform moderation tasks."
+msgstr ""
+"Hvjme spmf qfsnjuufe up wjfx dpogjhvsbujpo boe qfsgpsn npefsbujpo ubtlt."
+
+#: src/modules/moderation/settings.py:130
+msgctxt "guildset:mod_role|long_desc"
+msgid ""
+"Members with the set role will be able to access my configuration panels, "
+"and perform some moderation tasks, such as setting up pomodoro timers. "
+"Moderators cannot reconfigure most bot configuration, or perform operations "
+"they do not already have permission for in Discord."
+msgstr ""
+"Nfncfst xjui uif tfu spmf xjmm cf bcmf up bddftt nz dpogjhvsbujpo qbofmt, "
+"boe qfsgpsn tpnf npefsbujpo ubtlt, tvdi bt tfuujoh vq qpnpepsp ujnfst. "
+"Npefsbupst dboopu sfdpogjhvsf nptu cpu dpogjhvsbujpo, ps qfsgpsn pqfsbujpot "
+"uifz ep opu bmsfbez ibwf qfsnjttjpo gps jo Ejtdpse."
+
+#: src/modules/moderation/settings.py:137
+msgctxt "guildset:mod_role|accepts"
+msgid "Moderation role name or id."
+msgstr "Npefsbujpo spmf obnf ps je."
+
+#: src/modules/moderation/settings.py:151
+#, possible-python-brace-format
+msgctxt "guildset:mod_role|set_response:set"
+msgid "Members with the {role} will be considered moderators."
+msgstr "Nfncfst xjui uif {role} xjmm cf dpotjefsfe npefsbupst."
+
+#: src/modules/moderation/settings.py:156
+msgctxt "guildset:mod_role|set_response:unset"
+msgid "No members will be given moderation privileges."
+msgstr "Op nfncfst xjmm cf hjwfo npefsbujpo qsjwjmfhft."
+
+#: src/modules/moderation/settings.py:168
+msgctxt "guildset:mod_role|formatted:unset"
+msgid "Not Set."
+msgstr "Opu Tfu."

@@ -1,0 +1,627 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: you@example.com\n"
+"POT-Creation-Date: 2007-10-18 14:00+0100\n"
+"PO-Revision-Date: 2007-10-18 14:00+0100\n"
+"Last-Translator: you <you@example.com>\n"
+"Language-Team: English <yourteam@example.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/modules/shop/cog.py:108
+msgctxt "group:editshop"
+msgid "editshop"
+msgstr "fejutipq"
+
+#: src/modules/shop/cog.py:117
+msgctxt "cmd:shop"
+msgid "shop"
+msgstr "tipq"
+
+#: src/modules/shop/cog.py:118
+msgctxt "cmd:shop|desc"
+msgid "Purchase coloures, roles, and other goodies with LionCoins."
+msgstr "Qvsdibtf dpmpvsft, spmft, boe puifs hppejft xjui MjpoDpjot."
+
+#: src/modules/shop/cog.py:124
+msgctxt "cmd:shop_open"
+msgid "open"
+msgstr "pqfo"
+
+#: src/modules/shop/cog.py:125
+msgctxt "cmd:shop_open|desc"
+msgid "Open the server shop."
+msgstr "Pqfo uif tfswfs tipq."
+
+#: src/modules/shop/cog.py:151
+msgctxt "cmd:shop_open|error:no_shops"
+msgid "There is nothing to buy!"
+msgstr "Uifsf jt opuijoh up cvz!"
+
+#: src/modules/shop/cog.py:213
+msgctxt "ui:stores|button:close|label"
+msgid "Close"
+msgstr "Dmptf"
+
+#: src/modules/shop/cog.py:220
+msgctxt "ui:stores|button:close|response|title"
+msgid "Shop Closed"
+msgstr "Tipq Dmptfe"
+
+#: src/modules/shop/shops/colours.py:105
+#, possible-python-brace-format
+msgctxt "ui:colourstore|menu:buycolours|label"
+msgid "{name} ({price} LC)"
+msgstr "{name} ({price} MD)"
+
+#: src/modules/shop/shops/colours.py:110
+#, possible-python-brace-format
+msgctxt "ui:colourstore|menu:buycolours|label"
+msgid "{name} (This is your colour!)"
+msgstr "{name} (Uijt jt zpvs dpmpvs!)"
+
+#: src/modules/shop/shops/colours.py:115
+#, possible-python-brace-format
+msgctxt "ui:colourstore|menu:buycolours|desc"
+msgid "Colour: {colour}"
+msgstr "Dpmpvs: {colour}"
+
+#: src/modules/shop/shops/colours.py:120
+msgctxt "ui:colourstore|menu:buycolours|desc"
+msgid "Colour: Unknown"
+msgstr "Dpmpvs: Volopxo"
+
+#: src/modules/shop/shops/colours.py:134
+msgctxt "shop:colours|name"
+msgid "Colour Shop"
+msgstr "Dpmpvs Tipq"
+
+#: src/modules/shop/shops/colours.py:173
+msgctxt "shop:colour|purchase|error:not_purchasable"
+msgid "This item may not be purchased!"
+msgstr "Uijt jufn nbz opu cf qvsdibtfe!"
+
+#: src/modules/shop/shops/colours.py:186
+msgctxt "shop:colour|purchase|error:no_guild"
+msgid "Could not retrieve the server from Discord!"
+msgstr "Dpvme opu sfusjfwf uif tfswfs gspn Ejtdpse!"
+
+#: src/modules/shop/shops/colours.py:196
+msgctxt "shop:colour|purchase|error:no_member"
+msgid "Could not retrieve the member from Discord."
+msgstr "Dpvme opu sfusjfwf uif nfncfs gspn Ejtdpse."
+
+#: src/modules/shop/shops/colours.py:206
+msgctxt "shop:colour|purchase|error:no_role"
+msgid "This colour role could not be found in the server."
+msgstr "Uijt dpmpvs spmf dpvme opu cf gpvoe jo uif tfswfs."
+
+#: src/modules/shop/shops/colours.py:215
+#, possible-python-brace-format
+msgctxt "shop:colour|purchase|error:low_balance"
+msgid ""
+"This item costs {coin}{amount}!\n"
+"Your balance is {coin}{balance}"
+msgstr ""
+"Uijt jufn dptut {coin}{amount}!\n"
+"Zpvs cbmbodf jt {coin}{balance}"
+
+#: src/modules/shop/shops/colours.py:230
+msgctxt "shop:colour|purchase|error:owned"
+msgid "You already own this item!"
+msgstr "Zpv bmsfbez pxo uijt jufn!"
+
+#: src/modules/shop/shops/colours.py:264
+msgctxt "shop:colour|purchase|error:failed_no_role"
+msgid "This colour role no longer exists!"
+msgstr "Uijt dpmpvs spmf op mpohfs fyjtut!"
+
+#: src/modules/shop/shops/colours.py:271
+msgctxt "shop:colour|purchase|error:failed_permissions"
+msgid "I do not have enough permissions to give you this colour role!"
+msgstr "J ep opu ibwf fopvhi qfsnjttjpot up hjwf zpv uijt dpmpvs spmf!"
+
+#: src/modules/shop/shops/colours.py:278
+msgctxt "shop:colour|purchase|error:failed_unknown"
+msgid "An unknown error occurred while giving you this colour role!"
+msgstr "Bo volopxo fssps pddvssfe xijmf hjwjoh zpv uijt dpmpvs spmf!"
+
+#: src/modules/shop/shops/colours.py:348
+msgctxt "grp:editshop_colours"
+msgid "colours"
+msgstr "dpmpvst"
+
+#: src/modules/shop/shops/colours.py:353
+msgctxt "cmd:editshop_colours_create"
+msgid "create"
+msgstr "dsfbuf"
+
+#: src/modules/shop/shops/colours.py:356
+msgctxt "cmd:editshop_colours_create|desc"
+msgid "Create a new colour role with the given colour."
+msgstr "Dsfbuf b ofx dpmpvs spmf xjui uif hjwfo dpmpvs."
+
+#: src/modules/shop/shops/colours.py:360
+msgctxt "cmd:editshop_colours_create|param:colour"
+msgid "colour"
+msgstr "dpmpvs"
+
+#: src/modules/shop/shops/colours.py:361
+msgctxt "cmd:editshop_colours_create|param:name"
+msgid "name"
+msgstr "obnf"
+
+#: src/modules/shop/shops/colours.py:362
+msgctxt "cmd:editshop_colours_create|param:price"
+msgid "price"
+msgstr "qsjdf"
+
+#: src/modules/shop/shops/colours.py:367
+msgctxt "cmd:editshop_colours_create|param:colour|desc"
+msgid "What colour should the role be? (As a hex code, e.g. #AB22AB)"
+msgstr "Xibu dpmpvs tipvme uif spmf cf? (Bt b ify dpef, f.h. #BC22BC)"
+
+#: src/modules/shop/shops/colours.py:371
+msgctxt "cmd:editshop_colours_create|param:name|desc"
+msgid "What should the colour role be called?"
+msgstr "Xibu tipvme uif dpmpvs spmf cf dbmmfe?"
+
+#: src/modules/shop/shops/colours.py:375
+msgctxt "cmd:editshop_colours_create|param:price|desc"
+msgid "How much should the colour role cost?"
+msgstr "Ipx nvdi tipvme uif dpmpvs spmf dptu?"
+
+#: src/modules/shop/shops/colours.py:397
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_create|error:parse_colour"
+msgid ""
+"I could not extract a colour value from `{colour}`!\n"
+"Please enter the colour as a hex string, e.g. `#FA0BC1`"
+msgstr ""
+"J dpvme opu fyusbdu b dpmpvs wbmvf gspn `{colour}`!\n"
+"Qmfbtf foufs uif dpmpvs bt b ify tusjoh, f.h. `#GB0CD1`"
+
+#: src/modules/shop/shops/colours.py:407
+msgctxt "cmd:editshop_colours_create|error:perms"
+msgid ""
+"I do not have permission to create server roles!\n"
+"Please either give me this permission, or create the role manually and use `/editshop colours add` instead."
+msgstr ""
+"J ep opu ibwf qfsnjttjpo up dsfbuf tfswfs spmft!\n"
+"Qmfbtf fjuifs hjwf nf uijt qfsnjttjpo, ps dsfbuf uif spmf nbovbmmz boe vtf `/fejutipq dpmpvst bee` jotufbe."
+
+#: src/modules/shop/shops/colours.py:424
+msgctxt "cmd:editshop_colours_create|error:max_colours"
+msgid ""
+"This server already has the maximum of `25` colour roles!\n"
+"Please remove some before adding or creating more."
+msgstr ""
+"Uijt tfswfs bmsfbez ibt uif nbyjnvn pg `25` dpmpvs spmft!\n"
+"Qmfbtf sfnpwf tpnf cfgpsf beejoh ps dsfbujoh npsf."
+
+#: src/modules/shop/shops/colours.py:443
+msgctxt "cmd:editshop_colours_create|error:failed_unknown"
+msgid ""
+"An unknown Discord error occurred while creating your colour role!\n"
+"Please try again in a few minutes."
+msgstr ""
+"Bo volopxo Ejtdpse fssps pddvssfe xijmf dsfbujoh zpvs dpmpvs spmf!\n"
+"Qmfbtf usz bhbjo jo b gfx njovuft."
+
+#: src/modules/shop/shops/colours.py:493
+msgctxt "cmd:editshop_colours_create|resp:done|title"
+msgid "Colour Role Created"
+msgstr "Dpmpvs Spmf Dsfbufe"
+
+#: src/modules/shop/shops/colours.py:497
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_create|resp:done|desc"
+msgid ""
+"You have created the role {mention}, and added it to the colour shop for "
+"{coin}**{price}**!"
+msgstr ""
+"Zpv ibwf dsfbufe uif spmf {mention}, boe beefe ju up uif dpmpvs tipq gps "
+"{coin}**{price}**!"
+
+#: src/modules/shop/shops/colours.py:504
+msgctxt "cmd:editshop_colours_create|resp:done|field:position_note|value"
+msgid ""
+"The new colour role was added below all other roles. Remember a member's "
+"active colour is determined by their highest coloured role!"
+msgstr ""
+"Uif ofx dpmpvs spmf xbt beefe cfmpx bmm puifs spmft. Sfnfncfs b nfncfs't "
+"bdujwf dpmpvs jt efufsnjofe cz uifjs ijhiftu dpmpvsfe spmf!"
+
+#: src/modules/shop/shops/colours.py:508
+msgctxt "cmd:editshop_colours_create|resp:done|field:position_note|name"
+msgid "Note"
+msgstr "Opuf"
+
+#: src/modules/shop/shops/colours.py:517
+msgctxt "cmd:editshop_colours_edit"
+msgid "edit"
+msgstr "feju"
+
+#: src/modules/shop/shops/colours.py:520
+msgctxt "cmd:editshop_colours_edit|desc"
+msgid "Edit the name, colour, or price of a colour role."
+msgstr "Feju uif obnf, dpmpvs, ps qsjdf pg b dpmpvs spmf."
+
+#: src/modules/shop/shops/colours.py:524
+msgctxt "cmd:editshop_colours_edit|param:role"
+msgid "role"
+msgstr "spmf"
+
+#: src/modules/shop/shops/colours.py:525
+msgctxt "cmd:editshop_colours_edit|param:name"
+msgid "name"
+msgstr "obnf"
+
+#: src/modules/shop/shops/colours.py:526
+msgctxt "cmd:editshop_colours_edit|param:colour"
+msgid "colour"
+msgstr "dpmpvs"
+
+#: src/modules/shop/shops/colours.py:527
+msgctxt "cmd:editshop_colours_edit|param:price"
+msgid "price"
+msgstr "qsjdf"
+
+#: src/modules/shop/shops/colours.py:532
+msgctxt "cmd:editshop_colours_edit|param:role|desc"
+msgid "Select a colour role to edit."
+msgstr "Tfmfdu b dpmpvs spmf up feju."
+
+#: src/modules/shop/shops/colours.py:536
+msgctxt "cmd:editshop_colours_edit|param:name|desc"
+msgid "New name to give the colour role."
+msgstr "Ofx obnf up hjwf uif dpmpvs spmf."
+
+#: src/modules/shop/shops/colours.py:540
+msgctxt "cmd:editshop_colours_edit|param:colour|desc"
+msgid "New colour for the colour role (as hex, e.g. #AB12AB)."
+msgstr "Ofx dpmpvs gps uif dpmpvs spmf (bt ify, f.h. #BC12BC)."
+
+#: src/modules/shop/shops/colours.py:544
+msgctxt "cmd:editshop_colours_edit|param:price|desc"
+msgid "New price for the colour role."
+msgstr "Ofx qsjdf gps uif dpmpvs spmf."
+
+#: src/modules/shop/shops/colours.py:573
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_edit|error:invalid_role"
+msgid "{mention} is not in the colour role shop!"
+msgstr "{mention} jt opu jo uif dpmpvs spmf tipq!"
+
+#: src/modules/shop/shops/colours.py:587
+msgctxt "cmd:editshop_colours_edit|error:no_args"
+msgid "You must give me one of `name`, `colour`, or `price` to update!"
+msgstr "Zpv nvtu hjwf nf pof pg `obnf`, `dpmpvs`, ps `qsjdf` up vqebuf!"
+
+#: src/modules/shop/shops/colours.py:603
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_edit|error:parse_colour"
+msgid ""
+"I could not extract a colour value from `{colour}`!\n"
+"Please enter the colour as a hex string, e.g. `#FA0BC1`"
+msgstr ""
+"J dpvme opu fyusbdu b dpmpvs wbmvf gspn `{colour}`!\n"
+"Qmfbtf foufs uif dpmpvs bt b ify tusjoh, f.h. `#GB0CD1`"
+
+#: src/modules/shop/shops/colours.py:618
+msgctxt "cmd:editshop_colours_edit|error:perms"
+msgid "I do not have sufficient server permissions to edit this role!"
+msgstr "J ep opu ibwf tvggjdjfou tfswfs qfsnjttjpot up feju uijt spmf!"
+
+#: src/modules/shop/shops/colours.py:634
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_edit|resp:done|line:price"
+msgid "{tick} Set price to {coin}**{price}**"
+msgstr "{tick} Tfu qsjdf up {coin}**{price}**"
+
+#: src/modules/shop/shops/colours.py:651
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_edit|resp:done|line:role"
+msgid "{tick} Updated role to {mention}"
+msgstr "{tick} Vqebufe spmf up {mention}"
+
+#: src/modules/shop/shops/colours.py:661
+msgctxt "cmd:editshop_colours_edit|resp:done|embed:title"
+msgid "Colour Role Updated"
+msgstr "Dpmpvs Spmf Vqebufe"
+
+#: src/modules/shop/shops/colours.py:667
+msgctxt "cmd:editshop_colours_auto"
+msgid "auto"
+msgstr "bvup"
+
+#: src/modules/shop/shops/colours.py:668
+msgctxt "cmd:editshop_colours_auto|desc"
+msgid "Automatically create a set of colour roles."
+msgstr "Bvupnbujdbmmz dsfbuf b tfu pg dpmpvs spmft."
+
+#: src/modules/shop/shops/colours.py:677
+msgctxt "cmd:editshop_colours_add"
+msgid "add"
+msgstr "bee"
+
+#: src/modules/shop/shops/colours.py:680
+msgctxt "cmd:editshop_colours_add|desc"
+msgid "Add an existing role to the colour shop."
+msgstr "Bee bo fyjtujoh spmf up uif dpmpvs tipq."
+
+#: src/modules/shop/shops/colours.py:684
+msgctxt "cmd:editshop_colours_add|param:role"
+msgid "role"
+msgstr "spmf"
+
+#: src/modules/shop/shops/colours.py:685
+msgctxt "cmd:editshop_colours_add|param:price"
+msgid "price"
+msgstr "qsjdf"
+
+#: src/modules/shop/shops/colours.py:690
+msgctxt "cmd:editshop_colours_add|param:role|desc"
+msgid "Select a role to add to the colour shop."
+msgstr "Tfmfdu b spmf up bee up uif dpmpvs tipq."
+
+#: src/modules/shop/shops/colours.py:694
+msgctxt "cmd:editshop_colours_add|param:price|desc"
+msgid "How much should this role cost?"
+msgstr "Ipx nvdi tipvme uijt spmf dptu?"
+
+#: src/modules/shop/shops/colours.py:719
+msgctxt "cmd:editshop_colours_add|error:max_colours"
+msgid ""
+"This server already has the maximum of `25` colour roles!\n"
+"Please remove some before adding or creating more."
+msgstr ""
+"Uijt tfswfs bmsfbez ibt uif nbyjnvn pg `25` dpmpvs spmft!\n"
+"Qmfbtf sfnpwf tpnf cfgpsf beejoh ps dsfbujoh npsf."
+
+#: src/modules/shop/shops/colours.py:728
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_add|error:role_exists"
+msgid "The role {mention} is already registered as a colour role!"
+msgstr "Uif spmf {mention} jt bmsfbez sfhjtufsfe bt b dpmpvs spmf!"
+
+#: src/modules/shop/shops/colours.py:737
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_add|error:role_perms"
+msgid ""
+"I do not have enough permissions to assign the role {mention}! Please ensure"
+" I have the `MANAGE_ROLES` permission, and that my top role is above this "
+"role."
+msgstr ""
+"J ep opu ibwf fopvhi qfsnjttjpot up bttjho uif spmf {mention}! Qmfbtf fotvsf"
+" J ibwf uif `NBOBHF_SPMFT` qfsnjttjpo, boe uibu nz upq spmf jt bcpwf uijt "
+"spmf."
+
+#: src/modules/shop/shops/colours.py:748
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_add|error:caller_perms"
+msgid ""
+"You do not have sufficient server permissions to assign {mention} to the "
+"shop! You must have `MANAGE_ROLES`, and your top role must be above this "
+"role."
+msgstr ""
+"Zpv ep opu ibwf tvggjdjfou tfswfs qfsnjttjpot up bttjho {mention} up uif "
+"tipq! Zpv nvtu ibwf `NBOBHF_SPMFT`, boe zpvs upq spmf nvtu cf bcpwf uijt "
+"spmf."
+
+#: src/modules/shop/shops/colours.py:760
+msgctxt "cmd:editshop_colours_add|error:role_has_admin"
+msgid ""
+"I refuse to add an administrator role to the LionCoin shop. That is a really"
+" bad idea."
+msgstr ""
+"J sfgvtf up bee bo benjojtusbups spmf up uif MjpoDpjo tipq. Uibu jt b sfbmmz"
+" cbe jefb."
+
+#: src/modules/shop/shops/colours.py:781
+msgctxt "cmd:editshop_colours_add|resp:done|embed:title"
+msgid "Colour Role Created"
+msgstr "Dpmpvs Spmf Dsfbufe"
+
+#: src/modules/shop/shops/colours.py:784
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_add|resp:done|embed:desc"
+msgid "You have added {mention} to the colour shop for {coin}**{price}**!"
+msgstr "Zpv ibwf beefe {mention} up uif dpmpvs tipq gps {coin}**{price}**!"
+
+#: src/modules/shop/shops/colours.py:792
+msgctxt "cmd:editshop_colours_clear"
+msgid "clear"
+msgstr "dmfbs"
+
+#: src/modules/shop/shops/colours.py:795
+msgctxt "cmd:editshop_colours_clear|desc"
+msgid ""
+"Remove all the colour roles from the shop, and optionally delete the roles."
+msgstr ""
+"Sfnpwf bmm uif dpmpvs spmft gspn uif tipq, boe pqujpobmmz efmfuf uif spmft."
+
+#: src/modules/shop/shops/colours.py:799
+msgctxt "cmd:editshop_colours_clear|param:delete"
+msgid "delete_roles"
+msgstr "efmfuf_spmft"
+
+#: src/modules/shop/shops/colours.py:804
+msgctxt "cmd:editshop_colours_clear|param:delete|desc"
+msgid "Also delete the associated roles."
+msgstr "Bmtp efmfuf uif bttpdjbufe spmft."
+
+#: src/modules/shop/shops/colours.py:846
+msgctxt "cmd:editshop_colours_clear|error:no_colours"
+msgid "There are no coloured roles to remove!"
+msgstr "Uifsf bsf op dpmpvsfe spmft up sfnpwf!"
+
+#: src/modules/shop/shops/colours.py:890
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_clear|resp:done|line:clear"
+msgid "{tick} Colour shop cleared."
+msgstr "{tick} Dpmpvs tipq dmfbsfe."
+
+#: src/modules/shop/shops/colours.py:901
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_clear|resp:done|line:refunding"
+msgid "{loading} Refunded **{count}/{total}** members."
+msgstr "{loading} Sfgvoefe **{count}/{total}** nfncfst."
+
+#: src/modules/shop/shops/colours.py:907
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_clear|resp:done|line:refunded"
+msgid "{tick} Refunded **{total}/{total}** members."
+msgstr "{tick} Sfgvoefe **{total}/{total}** nfncfst."
+
+#: src/modules/shop/shops/colours.py:920
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_clear|resp:done|line:deleted_failed"
+msgid ""
+"{emoji} Deleted **{count}/{total}** colour roles. (**{failed}** failed!)"
+msgstr ""
+"{emoji} Efmfufe **{count}/{total}** dpmpvs spmft. (**{failed}** gbjmfe!)"
+
+#: src/modules/shop/shops/colours.py:925
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_clear|resp:done|line:deleted"
+msgid "{emoji} Deleted **{count}/{total}** colour roles."
+msgstr "{emoji} Efmfufe **{count}/{total}** dpmpvs spmft."
+
+#: src/modules/shop/shops/colours.py:974
+msgctxt "cmd:editshop_colours_remove"
+msgid "remove"
+msgstr "sfnpwf"
+
+#: src/modules/shop/shops/colours.py:977
+msgctxt "cmd:editshop_colours_remove|desc"
+msgid "Remove a specific colour role from the shop."
+msgstr "Sfnpwf b tqfdjgjd dpmpvs spmf gspn uif tipq."
+
+#: src/modules/shop/shops/colours.py:981
+msgctxt "cmd:editshop_colours_remove|param:role"
+msgid "role"
+msgstr "spmf"
+
+#: src/modules/shop/shops/colours.py:982
+msgctxt "cmd:editshop_colours_remove"
+msgid "delete_role"
+msgstr "efmfuf_spmf"
+
+#: src/modules/shop/shops/colours.py:987
+msgctxt "cmd:editshop_colours_remove|param:role|desc"
+msgid "Select the colour role to remove."
+msgstr "Tfmfdu uif dpmpvs spmf up sfnpwf."
+
+#: src/modules/shop/shops/colours.py:991
+msgctxt "cmd:editshop_colours_remove|param:delete_role|desc"
+msgid "Whether to delete the associated role."
+msgstr "Xifuifs up efmfuf uif bttpdjbufe spmf."
+
+#: src/modules/shop/shops/colours.py:1016
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_remove|error:not_colour"
+msgid "{mention} is not in the colour role shop!"
+msgstr "{mention} jt opu jo uif dpmpvs spmf tipq!"
+
+#: src/modules/shop/shops/colours.py:1034
+msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
+msgid "Successfully deleted the role."
+msgstr "Tvddfttgvmmz efmfufe uif spmf."
+
+#: src/modules/shop/shops/colours.py:1039
+msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
+msgid "I do not have sufficient permissions to delete the role."
+msgstr "J ep opu ibwf tvggjdjfou qfsnjttjpot up efmfuf uif spmf."
+
+#: src/modules/shop/shops/colours.py:1044
+msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
+msgid "Failed to delete the role for an unknown reason."
+msgstr "Gbjmfe up efmfuf uif spmf gps bo volopxo sfbtpo."
+
+#: src/modules/shop/shops/colours.py:1049
+msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
+msgid "Could not find the role in order to delete it."
+msgstr "Dpvme opu gjoe uif spmf jo psefs up efmfuf ju."
+
+#: src/modules/shop/shops/colours.py:1060
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_remove|resp:done|embed:desc"
+msgid ""
+"Removed {mention} from the colour shop.\n"
+"{delete_line}"
+msgstr ""
+"Sfnpwfe {mention} gspn uif dpmpvs tipq.\n"
+"{delete_line}"
+
+#: src/modules/shop/shops/colours.py:1138
+msgctxt "ui:colourstore|menu:buycolours|embed:error|title"
+msgid "Purchase Failed!"
+msgstr "Qvsdibtf Gbjmfe!"
+
+#: src/modules/shop/shops/colours.py:1149
+#, possible-python-brace-format
+msgctxt "ui:colourstore|menu:buycolours|resp:done|desc"
+msgid "{tick} You have purchased {mention}"
+msgstr "{tick} Zpv ibwf qvsdibtfe {mention}"
+
+#: src/modules/shop/shops/colours.py:1184
+msgctxt "ui:colourstore|menu:buycolours|placeholder"
+msgid "There are no colour roles available to purchase!"
+msgstr "Uifsf bsf op dpmpvs spmft bwbjmbcmf up qvsdibtf!"
+
+#: src/modules/shop/shops/colours.py:1190
+msgctxt "ui:colourstore|menu:buycolours|placeholder"
+msgid "Select a colour role to purchase!"
+msgstr "Tfmfdu b dpmpvs spmf up qvsdibtf!"
+
+#: src/modules/shop/shops/colours.py:1236
+#, possible-python-brace-format
+msgctxt "ui:colourstore|embed|line:owned_item"
+msgid "`[{j:02}]` | `{price} LC` | {mention} (You own this!)"
+msgstr "`[{j:02}]` | `{price} MD` | {mention} (Zpv pxo uijt!)"
+
+#: src/modules/shop/shops/colours.py:1241
+#, possible-python-brace-format
+msgctxt "ui:colourstore|embed|line:item"
+msgid "`[{j:02}]` | `{price} LC` | {mention}"
+msgstr "`[{j:02}]` | `{price} MD` | {mention}"
+
+#: src/modules/shop/shops/colours.py:1248
+msgctxt "ui:colourstore|embed|desc"
+msgid "No colour roles available for purchase!"
+msgstr "Op dpmpvs spmft bwbjmbcmf gps qvsdibtf!"
+
+#: src/modules/shop/shops/colours.py:1251
+msgctxt "ui:colourstore|embed|title"
+msgid "Colour Role Shop"
+msgstr "Dpmpvs Spmf Tipq"
+
+#: src/modules/shop/shops/colours.py:1257
+#, possible-python-brace-format
+msgctxt "ui:colourstore|embed|footer:paged"
+msgid "Page {current}/{total}"
+msgstr "Qbhf {current}/{total}"
+
+#: src/modules/shop/shops/colours.py:1264
+msgctxt "ui:colourstore|embed|field:warning|name"
+msgid "Note!"
+msgstr "Opuf!"
+
+#: src/modules/shop/shops/colours.py:1268
+#, possible-python-brace-format
+msgctxt "ui:colourstore|embed|field:warning|value"
+msgid ""
+"Purchasing a new colour role will *replace* your currently colour {current} "
+"without refund!"
+msgstr ""
+"Qvsdibtjoh b ofx dpmpvs spmf xjmm *sfqmbdf* zpvs dvssfoumz dpmpvs {current} "
+"xjuipvu sfgvoe!"
