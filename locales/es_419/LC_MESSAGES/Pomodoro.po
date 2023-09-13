@@ -856,22 +856,22 @@ msgstr "Temporizador borrado"
 #, possible-python-brace-format
 msgctxt "ui:timer_options|button:delete|success|description"
 msgid "The timer in {channel} has been removed."
-msgstr ""
+msgstr "El temporizador en {channel} ha sido eliminado."
 
 #: src/modules/pomodoro/ui/config.py:117
 msgctxt "ui:timer_options|button:delete|label"
 msgid "Delete"
-msgstr ""
+msgstr "Borrar"
 
 #: src/modules/pomodoro/ui/config.py:136
 msgctxt "ui:timer_options|menu:voice_channel|placeholder"
 msgid "Set Voice Channel"
-msgstr ""
+msgstr "Ajustar canal de voz"
 
 #: src/modules/pomodoro/ui/config.py:159
 msgctxt "ui:timer_options|menu:notification_channel|placeholder"
 msgid "Set Notification Channel"
-msgstr ""
+msgstr "Establecer canal de notificación"
 
 #: src/modules/pomodoro/ui/config.py:174
 msgctxt "ui:timer_options|menu:manager_role|placeholder"
