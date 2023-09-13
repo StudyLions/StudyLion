@@ -876,7 +876,7 @@ msgstr "Establecer canal de notificación"
 #: src/modules/pomodoro/ui/config.py:174
 msgctxt "ui:timer_options|menu:manager_role|placeholder"
 msgid "Set Manager Role"
-msgstr ""
+msgstr "Seleccionar rol del directivo"
 
 #: src/modules/pomodoro/ui/config.py:183
 #, possible-python-brace-format
