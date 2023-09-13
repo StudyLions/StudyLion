@@ -561,6 +561,8 @@ msgid ""
 "Number of inactive focus+break stages before a member is removed from the "
 "timer."
 msgstr ""
+"Número de etapas inactivas de focus+break antes de que un miembro se elimine"
+" del temporizador."
 
 #: src/modules/pomodoro/options.py:90
 msgctxt "timerset:inactivity_threshold|desc"
