@@ -373,16 +373,18 @@ msgstr ""
 msgctxt "cmd:pomodoro_create|response:success|content"
 msgid "Timer created successfully! Use the panel below to reconfigure."
 msgstr ""
+"¡Temporizador creado con éxito! Utilice el panel de abajo para volver a "
+"configurar."
 
 #: src/modules/pomodoro/cog.py:690
 msgctxt "cmd:pomodoro_destroy"
 msgid "destroy"
-msgstr ""
+msgstr "destruir"
 
 #: src/modules/pomodoro/cog.py:693
 msgctxt "cmd:pomodoro_destroy|desc"
 msgid "Remove a pomodoro timer from a voice channel."
-msgstr ""
+msgstr "Eliminar un temporizador pomodoro de un canal de voz."
 
 #: src/modules/pomodoro/cog.py:697
 msgctxt "cmd:pomodoro_destroy|param:channel"
