@@ -341,7 +341,7 @@ msgstr "נכשל ביצירת טיימר בעקבות שגיאה בצד של ד�
 #, possible-python-brace-format
 msgctxt "cmd:pomodoro_create|add_timer|error:timer_exists"
 msgid "A timer already exists in {channel}! Reconfigure it with {edit_cmd}."
-msgstr ""
+msgstr "טיימר כבר קיים בערוץ {channel}! השתמש ב {edit_cmd} כדי לערוך אותו."
 
 #: src/modules/pomodoro/cog.py:635
 #, possible-python-brace-format
