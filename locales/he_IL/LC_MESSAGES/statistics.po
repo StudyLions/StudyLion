@@ -56,7 +56,7 @@ msgstr "לוח השגים של השרת"
 #, possible-python-brace-format
 msgctxt "cmd:leaderboard|chunking|desc"
 msgid "Requesting server member list from Discord, please wait {loading}"
-msgstr ""
+msgstr "מבקש רשימת חברים מדיסקורד, אנא המתן {loading}"
 
 #: src/modules/statistics/cog.py:108
 msgctxt "cmd:configure_statistics"
