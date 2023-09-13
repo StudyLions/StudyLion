@@ -494,13 +494,13 @@ msgstr "Configurar el sistema de temporizador de Pomodoro"
 #, possible-python-brace-format
 msgctxt "formatstring:channel_name|key:remaining"
 msgid "{remaining}"
-msgstr ""
+msgstr "{remaining}"
 
 #: src/modules/pomodoro/lib.py:20
 #, possible-python-brace-format
 msgctxt "formatstring:channel_name|key:stage"
 msgid "{stage}"
-msgstr ""
+msgstr "{stage}"
 
 #: src/modules/pomodoro/lib.py:21
 #, possible-python-brace-format
