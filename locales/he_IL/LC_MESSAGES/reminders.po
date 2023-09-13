@@ -277,7 +277,7 @@ msgstr ""
 #: src/modules/reminders/ui.py:133
 msgctxt "ui:reminderlist|button:new|modal|field:content|label"
 msgid "What should I remind you?"
-msgstr ""
+msgstr "מה אני צריך להזכיר לך?"
 
 #: src/modules/reminders/ui.py:144
 msgctxt "ui:reminderlist|button:new|modal|title"
