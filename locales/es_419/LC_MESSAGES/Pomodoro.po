@@ -548,12 +548,12 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "timerset:notification_channel|format:notset"
 msgid "Not Set (Using {channel})"
-msgstr ""
+msgstr "No configurado (Using {channel})"
 
 #: src/modules/pomodoro/options.py:83
 msgctxt "timerset:inactivity_threshold|inactivity_threshold"
 msgid "inactivity_threshold"
-msgstr ""
+msgstr "umbral_inactividad"
 
 #: src/modules/pomodoro/options.py:86
 msgctxt "timerset:inactivity_threshold|desc"
