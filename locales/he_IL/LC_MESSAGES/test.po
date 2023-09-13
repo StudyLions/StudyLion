@@ -60,7 +60,7 @@ msgstr "נכשל"
 
 #: src/modules/test/test.py:143
 msgid "failui"
-msgstr ""
+msgstr "failui"
 
 #: src/modules/test/test.py:150
 msgid "pager"
