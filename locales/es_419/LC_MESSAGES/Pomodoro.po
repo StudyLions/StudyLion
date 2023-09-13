@@ -68,8 +68,14 @@ msgid_plural ""
 "{mentions} were removed from {channel} because they were inactive! Remember "
 "to press {tick} to register your presence every stage."
 msgstr[0] ""
+"¡{mentions} fue eliminado de {channel} por estar inactivo! Recuerde pulsar "
+"{tick} para registrar su presencia en cada etapa."
 msgstr[1] ""
+"¡{mentions} fueron eliminadas del {channel} por estar inactivas! Recuerda "
+"pulsar {tick} para registrar tu presencia en cada etapa."
 msgstr[2] ""
+"¡{mentions} fueron eliminadas del {channel} por estar inactivas! Recuerda "
+"pulsar {tick} para registrar tu presencia en cada etapa."
 
 #: src/modules/pomodoro/timer.py:499
 #, possible-python-brace-format
