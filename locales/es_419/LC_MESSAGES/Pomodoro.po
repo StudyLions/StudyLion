@@ -323,6 +323,8 @@ msgid ""
 "No `timer_channel` was provided, and I lack the 'Manage Channels' permission"
 " required to create a new voice channel."
 msgstr ""
+"No se proporcionó ningún `timer_channel`, y carezco del permiso `Manage "
+"Channels` necesario para crear un nuevo canal de voz."
 
 #: src/modules/pomodoro/cog.py:587
 msgctxt "cmd:pomodoro_create|new_channel|default_name"
