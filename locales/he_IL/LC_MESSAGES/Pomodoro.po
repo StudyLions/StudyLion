@@ -376,7 +376,7 @@ msgstr "ערוץ_טיימר"
 #: src/modules/pomodoro/cog.py:700
 msgctxt "cmd:pomodoro_destroy|param:channel"
 msgid "Select a timer voice channel to remove the timer from."
-msgstr ""
+msgstr "בחר את הערוץ הקולי שתרצה להסיר את הטיימר ממנו."
 
 #: src/modules/pomodoro/cog.py:718
 msgctxt "cmd:pomodoro_destroy|error:no_timer"
