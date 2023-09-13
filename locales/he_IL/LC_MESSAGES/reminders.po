@@ -26,7 +26,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "create_reminder|error:past"
 msgid "The provided reminder time {timestamp} is in the past!"
-msgstr ""
+msgstr "התאריך שהבאת לתזכיר {timestamp} הוא בעבר!"
 
 #: src/modules/reminders/cog.py:123
 msgctxt "create_reminder|error:too_fast"
