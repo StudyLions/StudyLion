@@ -275,12 +275,14 @@ msgstr "Crear y configurar salas con temporizador pomodoro."
 #: src/modules/pomodoro/cog.py:499
 msgctxt "cmd:pomodoro_create"
 msgid "create"
-msgstr ""
+msgstr "crear"
 
 #: src/modules/pomodoro/cog.py:502
 msgctxt "cmd:pomodoro_create|desc"
 msgid "Create a new Pomodoro timer. Requires manage channel permissions."
 msgstr ""
+"Crea un nuevo temporizador Pomodoro. Requiere permisos de gestión de "
+"canales."
 
 #: src/modules/pomodoro/cog.py:506
 msgctxt "cmd:pomodoro_create|param:channel"
