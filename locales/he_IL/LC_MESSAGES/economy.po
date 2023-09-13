@@ -428,7 +428,7 @@ msgctxt "cmd:send|error:sending-to-self"
 msgid ""
 "What is this, tax evasion?\n"
 "(You can not send coins to yourself.)"
-msgstr ""
+msgstr "מה זה? הלבנת מס? (אתם לא יכולים לשלוח מטבעות לעצמכם)"
 
 #: src/modules/economy/cog.py:732
 msgctxt "cmd:send|error:sending-to-leo"
