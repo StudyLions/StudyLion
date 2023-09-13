@@ -666,7 +666,7 @@ msgstr "רענן דרגות משתמשים"
 #: src/modules/ranks/ui/overview.py:121
 msgctxt "ui:rank_overview|button:clear|confirm"
 msgid "Are you sure you want to **delete all activity ranks** in this server?"
-msgstr ""
+msgstr "אתה בטוח שאתה רוצה למחוק את **כל הפעילות של הדרגות** מהשרת הזה?"
 
 #: src/modules/ranks/ui/overview.py:126
 msgctxt "ui:rank_overview|button:clear|confirm|button:yes"
