@@ -718,13 +718,13 @@ msgstr "סופר סטטיסטיקות מ  {timestamp}"
 #, possible-python-brace-format
 msgctxt "ui:leaderboard|mode:voice|message:empty|desc"
 msgid "There has been no voice activity since {timestamp}"
-msgstr ""
+msgstr "לא הייתה פעילות קולית מאז {timestamp}"
 
 #: src/modules/statistics/ui/leaderboard.py:458
 #, possible-python-brace-format
 msgctxt "ui:leaderboard|mode:text|message:empty|desc"
 msgid "There has been no message activity since {timestamp}"
-msgstr ""
+msgstr "לא הייתה פעילות הודעות מאז {timestamp}"
 
 #: src/modules/statistics/ui/leaderboard.py:463
 #, possible-python-brace-format
