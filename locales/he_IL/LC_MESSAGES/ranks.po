@@ -578,7 +578,7 @@ msgstr "מוחק דרגות לא זמינות ממשתמשים בשרת."
 #, possible-python-brace-format
 msgctxt "ui:refresh_ranks|embed|field:remove|value"
 msgid "{progress} {done}/{total} removed"
-msgstr ""
+msgstr "{progress} {done}/{total} הוסר"
 
 #: src/modules/ranks/ui/refresh.py:213
 #, possible-python-brace-format
