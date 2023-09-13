@@ -909,7 +909,7 @@ msgstr ""
 #: src/modules/pomodoro/ui/config.py:216
 msgctxt "ui:timer_options|embed|field:channel_name|name"
 msgid "Channel Name Preview"
-msgstr ""
+msgstr "Vista previa del nombre del canal"
 
 #: src/modules/pomodoro/ui/config.py:220
 #, possible-python-brace-format
@@ -918,16 +918,20 @@ msgid ""
 "**`{name}`**\n"
 "(The actual channel name may not match due to ratelimits.)"
 msgstr ""
+"**`{name}`**\n"
+"(El nombre real del canal puede no coincidir debido a los límites de velocidad)."
 
 #: src/modules/pomodoro/ui/config.py:230
 msgctxt "ui:timer_options|embed|field:issues|name"
 msgid "Issues"
-msgstr ""
+msgstr "Cuestiones"
 
 #: src/modules/pomodoro/ui/config.py:248
 msgctxt "ui:timer_options|issue:no_voice_channel"
 msgid "The configured voice channel does not exist! Please update it below."
 msgstr ""
+"El canal de voz configurado no existe. Por favor, actualícelo a "
+"continuación."
 
 #: src/modules/pomodoro/ui/config.py:259
 #, possible-python-brace-format
@@ -935,6 +939,8 @@ msgctxt "ui:timer_options|issue:cannot_speak"
 msgid ""
 "Voice alerts are on, but I don't have speaking permissions in {channel}"
 msgstr ""
+"Las alertas de voz están activadas, pero no tengo permisos para hablar en "
+"{channel}."
 
 #: src/modules/pomodoro/ui/config.py:266
 #, possible-python-brace-format
@@ -942,11 +948,13 @@ msgctxt "ui:timer_options|issue:cannot_change_name"
 msgid ""
 "I cannot update the name of {channel}! (Needs `MANAGE_CHANNELS` permission)"
 msgstr ""
+"¡No puedo actualizar el nombre de {channel}! (Necesita permiso "
+"`MANAGE_CHANNELS`)"
 
 #: src/modules/pomodoro/ui/config.py:277
 msgctxt "ui:timer_options|issue:notif_channel_dne"
 msgid "Configured notification channel does not exist!"
-msgstr ""
+msgstr "El canal de notificación configurado no existe."
 
 #: src/modules/pomodoro/ui/config.py:286
 #, possible-python-brace-format
@@ -955,6 +963,8 @@ msgid ""
 "I cannot attach files (`ATTACH_FILES`) or send embeds (`EMBED_LINKS`) in "
 "{channel}"
 msgstr ""
+"No puedo adjuntar archivos (`ATTACH_FILES`) ni enviar incrustaciones "
+"(`EMBED_LINKS`) en {channel}"
 
 #: src/modules/pomodoro/ui/config.py:294
 #, possible-python-brace-format
@@ -962,3 +972,4 @@ msgctxt "ui:timer_options|issues:cannot_make_webhooks"
 msgid ""
 "I cannot create the notification webhook (`MANAGE_WEBHOOKS`) in {channel}"
 msgstr ""
+"No puedo crear el webhook de notificación (`MANAGE_WEBHOOKS`) en {channel}"
