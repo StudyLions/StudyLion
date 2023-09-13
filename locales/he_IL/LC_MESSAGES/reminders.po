@@ -338,6 +338,10 @@ msgid ""
 "- Both commands support repeating reminders using the `every` parameter.\n"
 "- Remember to tell me your timezone with {timezone_cmd} if you haven't already!"
 msgstr ""
+"- השתמש ב  {at_cmd} כדי ליצור תזכיר בשעה ספציפית. \n"
+"השתמש ב{in_cmd} כדי ליצור תזכיר בעוד זמן ספציפי.\n"
+"- שתי הפקודות תומכות חזרה באינטרבל באמצעות שימוש ב `every`\n"
+"- תזכרו לקבוע את אזור הזמן שלכם ב  {timezone_cmd} וכמובן להשתמש באנגלית."
 
 #: src/modules/reminders/data.py:63
 msgctxt "reminder_set|title"
