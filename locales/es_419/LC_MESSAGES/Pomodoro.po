@@ -439,12 +439,12 @@ msgstr "Reconfigurar un temporizador pomodoro."
 #: src/modules/pomodoro/cog.py:764
 msgctxt "cmd:pomodoro_edit|param:channel"
 msgid "timer_channel"
-msgstr ""
+msgstr "canal_temporizador"
 
 #: src/modules/pomodoro/cog.py:770
 msgctxt "cmd:pomodoro_edit|param:channel|desc"
 msgid "Select a timer voice channel to reconfigure."
-msgstr ""
+msgstr "Seleccione un canal de voz con temporizador para reconfigurar."
 
 #: src/modules/pomodoro/cog.py:811
 msgctxt "cmd:pomodoro_edit|error:no_timer"
