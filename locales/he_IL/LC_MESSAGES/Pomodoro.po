@@ -148,12 +148,12 @@ msgstr "טיימר"
 #: src/modules/pomodoro/cog.py:323
 msgctxt "cmd:timer|desc"
 msgid "Show your current (or selected) pomodoro timer."
-msgstr ""
+msgstr "הצג את החדר פומודורו טיימר הנוכחי."
 
 #: src/modules/pomodoro/cog.py:326
 msgctxt "cmd:timer|param:channel"
 msgid "timer_channel"
-msgstr ""
+msgstr "ערוץ_טיימר"
 
 #: src/modules/pomodoro/cog.py:331
 msgctxt "cmd:timer|param:channel|desc"
