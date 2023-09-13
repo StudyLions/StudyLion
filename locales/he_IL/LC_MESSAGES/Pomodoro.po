@@ -207,6 +207,8 @@ msgid ""
 "**There are no available pomodoro timers!**\n"
 "Ask an admin to set up a new timer with {create_cmd}, or rent a private room with {room_cmd} and create one yourself!"
 msgstr ""
+"לשרת הזה אין טיימרים מוגדרים!\n"
+"בקש מאדמין להפעיל את הטיימר באמצעות {create_cmd}, או שכור חדר פרטי עם {room_cmd} והכן אחד לעצמך!"
 
 #: src/modules/pomodoro/cog.py:449
 #, possible-python-brace-format
@@ -221,6 +223,8 @@ msgid ""
 "`{pattern}` timer is stopped with no members!\n"
 "Join {channel} to restart it."
 msgstr ""
+"`{pattern}` נעצר ללא משתמשים!\n"
+"הצטרף אל {channel} על מנת לאפס אותו."
 
 #: src/modules/pomodoro/cog.py:464
 #, possible-python-brace-format
