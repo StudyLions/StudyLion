@@ -591,6 +591,8 @@ msgstr ""
 msgctxt "timerset:manager_role|format:notset"
 msgid "Not Set (Only Admins may start/stop or edit pattern)"
 msgstr ""
+"No configurado (sólo los administradores pueden iniciar/parar o editar el "
+"patrón)"
 
 #: src/modules/pomodoro/options.py:147
 msgctxt "timerset:voice_alerts"
