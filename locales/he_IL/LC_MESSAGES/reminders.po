@@ -37,7 +37,7 @@ msgstr "אתה לא יכול ליצור תזכיר עם אינטרבל של פח
 #: src/modules/reminders/cog.py:133
 msgctxt "create_reminder|error:too_many"
 msgid "Sorry, you have reached the maximum of `25` reminders."
-msgstr ""
+msgstr "סליחה, הגעת למגבלה של 25 תזכירים!"
 
 #: src/modules/reminders/cog.py:149
 msgctxt "create_reminder|error:cannot_dm"
