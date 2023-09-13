@@ -711,6 +711,10 @@ msgid ""
 "send timer notifications in this channel. If this setting is not set, "
 "pomodoro notifications will default to the timer voice channel itself."
 msgstr ""
+"Los temporizadores pomodoro que no tengan configurado un canal de "
+"notificación personalizado enviarán las notificaciones del temporizador en "
+"este canal. Si no se establece este ajuste, las notificaciones de pomodoro "
+"se enviarán por defecto al propio canal de voz del temporizador."
 
 #: src/modules/pomodoro/settings.py:33
 msgctxt "guildset:pomodoro_channel|formatted|notset"
