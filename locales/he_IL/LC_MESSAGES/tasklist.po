@@ -60,7 +60,7 @@ msgstr "בחודש הנוכחי"
 #: src/modules/tasklist/cog.py:205
 msgctxt "summon_tasklist|error:insufficient_perms|title"
 msgid "Uh-Oh, I cannot do that here!"
-msgstr ""
+msgstr "אוי לא! אני לא יכול לעשות את זה פה."
 
 #: src/modules/tasklist/cog.py:209
 msgctxt "summon_tasklist|error:insufficient_perms|desc"
