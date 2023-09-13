@@ -611,7 +611,7 @@ msgstr "חנות רולי צבעים"
 #, possible-python-brace-format
 msgctxt "ui:colourstore|embed|footer:paged"
 msgid "Page {current}/{total}"
-msgstr ""
+msgstr "עמוד {current}/{total}"
 
 #: src/modules/shop/shops/colours.py:1264
 msgctxt "ui:colourstore|embed|field:warning|name"
