@@ -371,7 +371,7 @@ msgstr "האם למחוק סאב-מטלות מאותה המטלה שנמחקה."
 #, possible-python-brace-format
 msgctxt "cmd:tasks_remove_cmd|error:no_matching"
 msgid "No tasks on your tasklist match `{input}`"
-msgstr ""
+msgstr "שום מטלה ברשימה שלך תואמת ל  `{input}`"
 
 #: src/modules/tasklist/cog.py:790
 msgctxt "cmd:tasks_remove_cmd|error:no_matching"
