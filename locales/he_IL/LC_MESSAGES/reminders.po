@@ -293,27 +293,27 @@ msgstr ""
 #: src/modules/reminders/ui.py:180
 msgctxt "ui:reminderlist|button:new|label"
 msgid "New Reminder"
-msgstr ""
+msgstr "תזכיר חדש"
 
 #: src/modules/reminders/ui.py:208
 msgctxt "ui:reminderlist|select:remove|placeholder"
 msgid "Select to cancel"
-msgstr ""
+msgstr "בחר כדי לבטל."
 
 #: src/modules/reminders/ui.py:264
 msgctxt "ui:reminderlist|embed:list|author"
 msgid "Your reminders"
-msgstr ""
+msgstr "התזכירים שלך"
 
 #: src/modules/reminders/ui.py:270
 msgctxt "ui:reminderlist|embed:list|footer"
 msgid "Click a reminder to jump back to the context!"
-msgstr ""
+msgstr "לחץ על תזכיר כדי לקפוץ לקונטקסט שלו!"
 
 #: src/modules/reminders/ui.py:277
 msgctxt "ui:reminderlist|embed:no_reminders|title"
 msgid "You have no reminders set!"
-msgstr ""
+msgstr "אין לך תזכירים!"
 
 #: src/modules/reminders/ui.py:286
 msgctxt "ui:reminderlist|embed|tips:name"
