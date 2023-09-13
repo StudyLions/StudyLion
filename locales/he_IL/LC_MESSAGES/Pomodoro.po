@@ -425,7 +425,7 @@ msgstr "ערוץ_טיימר"
 #: src/modules/pomodoro/cog.py:770
 msgctxt "cmd:pomodoro_edit|param:channel|desc"
 msgid "Select a timer voice channel to reconfigure."
-msgstr ""
+msgstr "בחר את הערוץ הקולי שתרצה להגדיר מחדש את הטיימר."
 
 #: src/modules/pomodoro/cog.py:811
 msgctxt "cmd:pomodoro_edit|error:no_timer"
