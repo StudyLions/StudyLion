@@ -335,7 +335,7 @@ msgid ""
 "Failed to create a new pomodoro voice channel due to an unknown Discord "
 "communication error. Please try creating the channel manually and pass it to"
 " the `timer_channel` argument of this command."
-msgstr ""
+msgstr "נכשל ביצירת טיימר בעקבות שגיאה בצד של דיסקורד. אנא נסה שוב."
 
 #: src/modules/pomodoro/cog.py:621
 #, possible-python-brace-format
