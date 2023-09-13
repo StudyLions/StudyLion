@@ -689,6 +689,8 @@ msgstr "Actualizar los rangos de los miembros"
 msgctxt "ui:rank_overview|button:clear|confirm"
 msgid "Are you sure you want to **delete all activity ranks** in this server?"
 msgstr ""
+"¿Estás seguro de que quieres **borrar todos los rangos de actividad** en "
+"este servidor?"
 
 #: src/modules/ranks/ui/overview.py:126
 msgctxt "ui:rank_overview|button:clear|confirm|button:yes"
