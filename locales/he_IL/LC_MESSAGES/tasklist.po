@@ -69,6 +69,9 @@ msgid ""
 "`EMBED_LINKS` or `SEND_MESSAGES` permission here! If you believe this is "
 "unintentional, please contact a server administrator."
 msgstr ""
+"הערוץ הזה מוגדר בתור ערוץ רשימת מטלות, אבל אין לי את ההרשאה `EMBED_LINKS` או"
+" `SEND_MESSAGES` , אז אני לא יכול לשלוח פה כלום! תבדקו בבקשה את ההגדרות של "
+"הערוץ הזה."
 
 #: src/modules/tasklist/cog.py:258
 msgctxt "cmd:tasklist"
