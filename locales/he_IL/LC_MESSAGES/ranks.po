@@ -755,7 +755,7 @@ msgstr "צפה או ערוך דרגה"
 #: src/modules/ranks/ui/overview.py:387
 msgctxt "ui:rank_overview|embed|field:note|name"
 msgid "Note"
-msgstr ""
+msgstr "פתקית"
 
 #: src/modules/ranks/ui/overview.py:393
 #, possible-python-brace-format
