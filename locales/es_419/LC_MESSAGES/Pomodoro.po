@@ -400,13 +400,15 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:718
 msgctxt "cmd:pomodoro_destroy|error:no_timer"
 msgid "This channel doesn't have an attached pomodoro timer!"
-msgstr ""
+msgstr "¡Este canal no tiene un temporizador pomodoro adjunto!"
 
 #: src/modules/pomodoro/cog.py:731
 msgctxt "cmd:pomodoro_destroy|error:insufficient_perms|owned"
 msgid ""
 "You need to be an administrator or own this channel to remove this timer!"
 msgstr ""
+"Debes ser administrador o propietario de este canal para eliminar este "
+"temporizador."
 
 #: src/modules/pomodoro/cog.py:740
 #, possible-python-brace-format
