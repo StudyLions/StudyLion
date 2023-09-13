@@ -187,16 +187,18 @@ msgid ""
 "The channel {channel} is not a pomodoro timer room!\n"
 "Use {timers_cmd} to list the available timers in this server."
 msgstr ""
+"הערוץ {channel} הוא לא חדר פומודורו!\n"
+"השתמש ב {timers_cmd}  כדי להציג את הטיימרים שקיימים בשרת הזה."
 
 #: src/modules/pomodoro/cog.py:396
 msgctxt "cmd:timers"
 msgid "timers"
-msgstr ""
+msgstr "טיימרים"
 
 #: src/modules/pomodoro/cog.py:397
 msgctxt "cmd:timers|desc"
 msgid "List the available pomodoro timer rooms."
-msgstr ""
+msgstr "הצג את הטיימרי פומודורו הזמינים."
 
 #: src/modules/pomodoro/cog.py:436
 #, possible-python-brace-format
@@ -210,7 +212,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:timers|embed:timer_list|title"
 msgid "Pomodoro Timer Rooms in **{guild}**"
-msgstr ""
+msgstr "טיימרי פומודורו בשרת **{guild}**"
 
 #: src/modules/pomodoro/cog.py:458
 #, possible-python-brace-format
