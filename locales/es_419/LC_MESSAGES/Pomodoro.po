@@ -488,7 +488,7 @@ msgstr "pomodoro"
 #: src/modules/pomodoro/cog.py:892
 msgctxt "cmd:configure_pomodoro|desc"
 msgid "Configure Pomodoro Timer System"
-msgstr ""
+msgstr "Configurar el sistema Pomodoro Timer"
 
 #: src/modules/pomodoro/lib.py:19
 #, possible-python-brace-format
