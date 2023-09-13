@@ -274,7 +274,7 @@ msgstr "צור"
 #: src/modules/pomodoro/cog.py:502
 msgctxt "cmd:pomodoro_create|desc"
 msgid "Create a new Pomodoro timer. Requires manage channel permissions."
-msgstr ""
+msgstr "צור שעון פומודורו חדש. הרשאות ניהול ערוץ נחוצות על מנת לעשות זאת."
 
 #: src/modules/pomodoro/cog.py:506
 msgctxt "cmd:pomodoro_create|param:channel"
