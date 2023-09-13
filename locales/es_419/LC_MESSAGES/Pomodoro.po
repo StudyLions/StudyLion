@@ -787,12 +787,12 @@ msgstr ""
 #: src/modules/pomodoro/ui/status.py:119
 msgctxt "ui:timer_status|button:edit|label"
 msgid "Options"
-msgstr ""
+msgstr "Opciones"
 
 #: src/modules/pomodoro/ui/status.py:138
 msgctxt "ui:timer_status|button:start|error:already_running"
 msgid "Cannot start a timer that is already running!"
-msgstr ""
+msgstr "No se puede iniciar un temporizador que ya está en marcha."
 
 #: src/modules/pomodoro/ui/status.py:154
 msgctxt "ui:timer_status|button:start|error:not_manager|title"
