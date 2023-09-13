@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 22:43+0300\n"
+"POT-Creation-Date: 2023-09-13 08:47+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Eyüp Ramazan, 2023\n"
 "Language-Team: Turkish (https://app.transifex.com/leobot/teams/174919/tr/)\n"
@@ -97,11 +97,10 @@ msgid "Create Room Timer"
 msgstr "Oda Zamanlayıcısı Oluştur"
 
 #: src/modules/rooms/roomui.py:236
+#, possible-python-brace-format
 msgctxt "ui:room_status|button:timer|timer_created"
-msgid "Timer created successfully! Use `/pomodoro edit` to configure further."
+msgid "Timer created successfully! Use {edit_cmd} to configure further."
 msgstr ""
-"Zamanlayıcı başarılı bir şekilde oluşturuldu! Daha fazla yapılandırmak için "
-"'/pomodoro edit' kullanın."
 
 #: src/modules/rooms/roomui.py:254
 msgctxt "ui:room_status|button:timer|label:edit_timer"
@@ -188,57 +187,57 @@ msgctxt "ui:room_status|embed|field:members|name"
 msgid "Members ({count}/{cap})"
 msgstr "Üyeler ({count}/{cap})"
 
-#: src/modules/rooms/cog.py:306
+#: src/modules/rooms/cog.py:321
 msgctxt "cmd:room"
 msgid "room"
 msgstr "oda"
 
-#: src/modules/rooms/cog.py:307
+#: src/modules/rooms/cog.py:322
 msgctxt "cmd:room|desc"
 msgid "Base command group for private room configuration."
 msgstr "Özel komut yapılandırması için temel komut grubu."
 
-#: src/modules/rooms/cog.py:314
+#: src/modules/rooms/cog.py:329
 msgctxt "cmd:room_rent"
 msgid "rent"
 msgstr "kira"
 
-#: src/modules/rooms/cog.py:317
+#: src/modules/rooms/cog.py:332
 msgctxt "cmd:room_rent|desc"
 msgid "Rent a private voice channel with LionCoins."
 msgstr "LionCoins ile özel sesli kanal kirala."
 
-#: src/modules/rooms/cog.py:321
+#: src/modules/rooms/cog.py:336
 msgctxt "cmd:room_rent|param:days"
 msgid "days"
 msgstr "günler"
 
-#: src/modules/rooms/cog.py:322
+#: src/modules/rooms/cog.py:337
 msgctxt "cmd:room_rent|param:members"
 msgid "members"
 msgstr "üyeler"
 
-#: src/modules/rooms/cog.py:323
+#: src/modules/rooms/cog.py:338
 msgctxt "cmd:room_rent|param:name"
 msgid "name"
 msgstr "isim"
 
-#: src/modules/rooms/cog.py:328
+#: src/modules/rooms/cog.py:343
 msgctxt "cmd:room_rent|param:days|desc"
 msgid "Number of days to pre-purchase. (Default: 1)"
 msgstr "Ön satın almaya kalan gün sayısı. (Varsayılan: 1)"
 
-#: src/modules/rooms/cog.py:332
+#: src/modules/rooms/cog.py:347
 msgctxt "cmd:room_rent|param:members|desc"
 msgid "Mention the members you want to add to your private room."
 msgstr "Özel odalara eklemek istediğin üyeleri etiketle."
 
-#: src/modules/rooms/cog.py:336
+#: src/modules/rooms/cog.py:351
 msgctxt "cmd:room_rent|param:name|desc"
 msgid "Name of your private voice channel."
 msgstr "Özel ses odanın ismi."
 
-#: src/modules/rooms/cog.py:354
+#: src/modules/rooms/cog.py:369
 msgctxt "cmd:room_rent|error:not_setup"
 msgid ""
 "The private room system has not been set up! A private room category needs "
@@ -247,7 +246,7 @@ msgstr ""
 "Özel oda sistemi kurulmadı! İlk olarak `/configure rooms` ile özel oda "
 "kategorisinin ayarlanması gerekiyor."
 
-#: src/modules/rooms/cog.py:365
+#: src/modules/rooms/cog.py:380
 msgctxt "cmd:room_rent|error:insufficient_perms"
 msgid ""
 "I do not have enough permissions to create a new channel under the "
@@ -256,19 +255,19 @@ msgstr ""
 "Ayarlanmış özel oda kategorisinin altına yeni bir kanal açmak için yeterli "
 "iznim bulunmuyor!"
 
-#: src/modules/rooms/cog.py:379
+#: src/modules/rooms/cog.py:394
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|error:room_exists"
 msgid "You already own a private room! Click to visit: {channel}"
 msgstr "Zaten özel kanal sahibisin! {channel} kanalını ziyaret etmek için bas"
 
-#: src/modules/rooms/cog.py:399
+#: src/modules/rooms/cog.py:414
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|error:member_not_found"
 msgid "Could not find the requested member {mention} in this server!"
 msgstr "İstenen {mention} kullanıcısı bu sunucuda bulamadım!"
 
-#: src/modules/rooms/cog.py:413
+#: src/modules/rooms/cog.py:428
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|error:too_many_members"
 msgid ""
@@ -278,7 +277,7 @@ msgstr ""
 "Çok fazla üye! Sen `{count}` üye eklememi istedin ama bu odanın kapasitesi "
 "en fazla `{cap}` kişi alabilir!"
 
-#: src/modules/rooms/cog.py:427
+#: src/modules/rooms/cog.py:442
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|confirm:purchase"
 msgid ""
@@ -294,18 +293,18 @@ msgstr[1] ""
 "`{days}` gün özel oda kiralamak için {coin}**{required}** harcamak "
 "istediğine emin misin?"
 
-#: src/modules/rooms/cog.py:452
+#: src/modules/rooms/cog.py:467
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|success"
 msgid "Successfully created your private room {channel}!"
 msgstr "Başarıyla {channel} özel odanı oluşturdum!"
 
-#: src/modules/rooms/cog.py:457
+#: src/modules/rooms/cog.py:472
 msgctxt "cmd:room_rent|success|title"
 msgid "Private Room Created!"
 msgstr "Özel Oda Oluşturuldu!"
 
-#: src/modules/rooms/cog.py:491
+#: src/modules/rooms/cog.py:506
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|error:insufficient_funds"
 msgid ""
@@ -321,7 +320,7 @@ msgstr[1] ""
 "`{days}` gün özel oda kiralamak {coin}**{required}** tutuyor ama senin "
 "sadece {coin}**{balance}** paran var!"
 
-#: src/modules/rooms/cog.py:525
+#: src/modules/rooms/cog.py:540
 msgctxt "cmd:room_rent|error:my_permissions"
 msgid ""
 "Could not create your private room! You were not charged.\n"
@@ -330,7 +329,7 @@ msgstr ""
 "Özel odanı kuramadım! Hesabından para eksilmedi!\n"
 "Özel oda kanalı oluşturmak için yeterli iznim bulunmuyor."
 
-#: src/modules/rooms/cog.py:537
+#: src/modules/rooms/cog.py:552
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|error:unknown"
 msgid ""
@@ -342,17 +341,17 @@ msgstr ""
 "Özel oda kanalını kurarken bilinmeyen bir hata oluştu.\n"
 "`{error}`"
 
-#: src/modules/rooms/cog.py:547
+#: src/modules/rooms/cog.py:562
 msgctxt "cmd:room_status"
 msgid "status"
 msgstr "durum"
 
-#: src/modules/rooms/cog.py:550
+#: src/modules/rooms/cog.py:565
 msgctxt "cmd:room_status|desc"
 msgid "Display the status of your current room."
 msgstr "Özel odanın durumunu görüntüle."
 
-#: src/modules/rooms/cog.py:567
+#: src/modules/rooms/cog.py:582
 msgctxt "cmd:room_status|error:no_target"
 msgid ""
 "Could not identify target private room! Please re-run the command in the "
@@ -361,27 +360,27 @@ msgstr ""
 "Hedef özel oda belirlenemedi! Lütfen durumunu görüntülemek istediğin özel "
 "odanda komutu tekrardan kullan."
 
-#: src/modules/rooms/cog.py:582
+#: src/modules/rooms/cog.py:597
 msgctxt "cmd:room_invite"
 msgid "invite"
 msgstr "davet et"
 
-#: src/modules/rooms/cog.py:585
+#: src/modules/rooms/cog.py:600
 msgctxt "cmd:room_invite|desc"
 msgid "Add members to your private room."
 msgstr "Özel odana üyeler ekle."
 
-#: src/modules/rooms/cog.py:589
+#: src/modules/rooms/cog.py:604
 msgctxt "cmd:room_invite|param:members"
 msgid "members"
 msgstr "üyeler"
 
-#: src/modules/rooms/cog.py:594
+#: src/modules/rooms/cog.py:609
 msgctxt "cmd:room_invite|param:members|desc"
 msgid "Mention the members you want to add."
 msgstr "Eklemek istediğin üyeleri etiketle."
 
-#: src/modules/rooms/cog.py:608
+#: src/modules/rooms/cog.py:623
 #, possible-python-brace-format
 msgctxt "cmd:room_invite|error:no_room"
 msgid ""
@@ -390,18 +389,18 @@ msgstr ""
 "Özel odaya sahip değilsin! {coin} ile kiralamak için `/oda kirala` yı "
 "kullan!"
 
-#: src/modules/rooms/cog.py:629
+#: src/modules/rooms/cog.py:644
 #, possible-python-brace-format
 msgctxt "cmd:room_invite|error:member_not_found"
 msgid "Could not find the invited member {mention} in this server!"
 msgstr "Davet edilen {mention} üyeyi bu sunucuda bulamadım!"
 
-#: src/modules/rooms/cog.py:640
+#: src/modules/rooms/cog.py:655
 msgctxt "cmd:room_invite|error:no_new_members"
 msgid "All members mentioned are already in the room!"
 msgstr "Bahsedilen tüm üyeler zaten kanalda!"
 
-#: src/modules/rooms/cog.py:654
+#: src/modules/rooms/cog.py:669
 #, possible-python-brace-format
 msgctxt "cmd:room_invite|error:too_many_members"
 msgid ""
@@ -411,27 +410,27 @@ msgstr ""
 "Çok fazla üye! Odana `{count}` kadar yeni kişi davet ediyorsun, fakat zaten "
 "`{current}` kadar üye var! Üye sınırı `{cap}` dır."
 
-#: src/modules/rooms/cog.py:678
+#: src/modules/rooms/cog.py:693
 msgctxt "cmd:room_invite|success|ack"
 msgid "Members Invited successfully."
 msgstr "Üyeler başarıyla davet edildi."
 
-#: src/modules/rooms/cog.py:686
+#: src/modules/rooms/cog.py:701
 msgctxt "cmd:room_kick"
 msgid "kick"
 msgstr "at"
 
-#: src/modules/rooms/cog.py:689
+#: src/modules/rooms/cog.py:704
 msgctxt "cmd:room_kick|desc"
 msgid "Remove a members from your private room."
 msgstr "Özel odandan üyeleri çıkart."
 
-#: src/modules/rooms/cog.py:693
+#: src/modules/rooms/cog.py:708
 msgctxt "cmd:room_kick|param:members"
 msgid "members"
 msgstr "üyeler"
 
-#: src/modules/rooms/cog.py:698
+#: src/modules/rooms/cog.py:713
 msgctxt "cmd:room_kick|param:members|desc"
 msgid ""
 "Mention the members you want to remove. Also accepts space-separated user "
@@ -440,7 +439,7 @@ msgstr ""
 "Çıkartmak istediğiniz üyelerden bahsedin. Ayrıca boşlukla ayrılmış kullanıcı"
 " ID'lerini de kabul ederim."
 
-#: src/modules/rooms/cog.py:712
+#: src/modules/rooms/cog.py:727
 #, possible-python-brace-format
 msgctxt "cmd:room_kick|error:no_room"
 msgid ""
@@ -449,49 +448,49 @@ msgstr ""
 "Bir özel oda sahibi değilsin! `/room rent` ile {coin} miktar LionCoin'e bir "
 "oda kiralayabilirsin!"
 
-#: src/modules/rooms/cog.py:729
+#: src/modules/rooms/cog.py:744
 msgctxt "cmd:room_kick|error:no_matching_members"
 msgid "None of the mentioned members are in this room!"
 msgstr "Bahsedilen üyelerin hiçbiri bu kanalda değil!"
 
-#: src/modules/rooms/cog.py:746
+#: src/modules/rooms/cog.py:761
 msgctxt "cmd:room_kick|success|ack"
 msgid "Members removed."
 msgstr "Üyeler çıkartıldı."
 
-#: src/modules/rooms/cog.py:752
+#: src/modules/rooms/cog.py:767
 msgctxt "cmd:room_transfer"
 msgid "transfer"
 msgstr "transfer"
 
-#: src/modules/rooms/cog.py:755
+#: src/modules/rooms/cog.py:770
 msgctxt "cmd:room_transfer|desc"
 msgid "Transfer your private room to another room member. Not reversible!"
 msgstr "Özel odanı başka bir oda üyesine transfer et. Geri döndürülemez!"
 
-#: src/modules/rooms/cog.py:759
+#: src/modules/rooms/cog.py:774
 msgctxt "cmd:room_transfer|param:new_owner"
 msgid "new_owner"
 msgstr "yeni_sahip"
 
-#: src/modules/rooms/cog.py:764
+#: src/modules/rooms/cog.py:779
 msgctxt "cmd:room_transfer|param:new_owner"
 msgid "The room member you would like to transfer your room to."
 msgstr "Odanı devretmek istediğin oda üyesi."
 
-#: src/modules/rooms/cog.py:778
+#: src/modules/rooms/cog.py:793
 msgctxt "cmd:room_transfer|error:no_room"
 msgid "You do not own a private room to transfer!"
 msgstr "Devredecek bir özel oda sahibi değilsin!"
 
-#: src/modules/rooms/cog.py:790
+#: src/modules/rooms/cog.py:805
 #, possible-python-brace-format
 msgctxt "cmd:room_transfer|error:target_not_member"
 msgid ""
 "{mention} is not a member of your private room! You must invite them first."
 msgstr "{mention} özel odanın bir üyesi değil! Önce onu davet etmelisin."
 
-#: src/modules/rooms/cog.py:802
+#: src/modules/rooms/cog.py:817
 #, possible-python-brace-format
 msgctxt "cmd:room_transfer|error:target_has_room"
 msgid ""
@@ -500,7 +499,7 @@ msgstr ""
 "{mention} zaten bir oda sahibi! Üyeler aynı anda sadece bir tane oda sahibi "
 "olabilirler."
 
-#: src/modules/rooms/cog.py:811
+#: src/modules/rooms/cog.py:826
 #, possible-python-brace-format
 msgctxt "cmd:room_transfer|confirm|question"
 msgid ""
@@ -510,7 +509,7 @@ msgstr ""
 "{channel} özel odanı {new_owner} kullanıcısına devretmek istediğine emin "
 "misin? Bu işlem geri alınamaz!"
 
-#: src/modules/rooms/cog.py:831
+#: src/modules/rooms/cog.py:846
 #, possible-python-brace-format
 msgctxt "cmd:room_transfer|success|description"
 msgid ""
@@ -519,12 +518,12 @@ msgstr ""
 "{channel} kanalının oda sahipliğini {new_owner} kullanıcına başarıyla "
 "devrettin."
 
-#: src/modules/rooms/cog.py:837
+#: src/modules/rooms/cog.py:852
 msgctxt "cmd:room_deposit"
 msgid "deposit"
 msgstr "depozito"
 
-#: src/modules/rooms/cog.py:840
+#: src/modules/rooms/cog.py:855
 msgctxt "cmd:room_deposit|desc"
 msgid ""
 "Deposit LionCoins in your private room bank to add more days. (Members may "
@@ -533,17 +532,17 @@ msgstr ""
 "Günü arttırmak için oda bankanıza biraz daha LionCoin aktarmanız "
 "gerekmektedir. (Ayrıca üyeler de aktarmalıdır!)"
 
-#: src/modules/rooms/cog.py:844
+#: src/modules/rooms/cog.py:859
 msgctxt "cmd:room_deposit|param:coins"
 msgid "coins"
 msgstr "paralar"
 
-#: src/modules/rooms/cog.py:849
+#: src/modules/rooms/cog.py:864
 msgctxt "cmd:room_deposit|param:coins|desc"
 msgid "Number of coins to deposit."
 msgstr "Yatırılacak para."
 
-#: src/modules/rooms/cog.py:869
+#: src/modules/rooms/cog.py:884
 msgctxt "cmd:room_deposit|error:no_target"
 msgid ""
 "Could not identify target private room! Please re-run the command in the "
@@ -552,7 +551,7 @@ msgstr ""
 "Hedef özel oda belirlenemedi! Lütfen katkıda bulunmak istediğiniz özel odada"
 " komutu yeniden çalıştırın."
 
-#: src/modules/rooms/cog.py:885
+#: src/modules/rooms/cog.py:900
 #, possible-python-brace-format
 msgctxt "cmd:room_deposit|error:insufficient_funds"
 msgid ""
@@ -560,7 +559,7 @@ msgid ""
 msgstr ""
 "{coin}**{amount}** yatıramazsın! Sadece {coin}**{balance}** kadarın var."
 
-#: src/modules/rooms/cog.py:906
+#: src/modules/rooms/cog.py:921
 #, possible-python-brace-format
 msgctxt "cmd:room_depost|success"
 msgid ""
@@ -568,12 +567,12 @@ msgid ""
 msgstr ""
 "Tebrikler! Özel oda bankasına {coin}**{amount}** kadar katkıda bulundunuz."
 
-#: src/modules/rooms/cog.py:921
+#: src/modules/rooms/cog.py:936
 msgctxt "cmd:configure_rooms"
 msgid "rooms"
 msgstr "odalar"
 
-#: src/modules/rooms/cog.py:922
+#: src/modules/rooms/cog.py:937
 msgctxt "cmd:configure_rooms|desc"
 msgid "Configure Rented Private Rooms"
 msgstr "Kiralanmış Özel Odaları Yapılandır"
