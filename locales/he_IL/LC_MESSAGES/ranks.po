@@ -671,12 +671,12 @@ msgstr "אתה בטוח שאתה רוצה למחוק את **כל הפעילות 
 #: src/modules/ranks/ui/overview.py:126
 msgctxt "ui:rank_overview|button:clear|confirm|button:yes"
 msgid "Yes, clear ranks"
-msgstr ""
+msgstr "כן, נקה דרגות"
 
 #: src/modules/ranks/ui/overview.py:132
 msgctxt "ui:rank_overview|button:clear|confirm|button:no"
 msgid "Cancel"
-msgstr ""
+msgstr "בטל"
 
 #: src/modules/ranks/ui/overview.py:148
 msgctxt "ui:rank_overview|button:clear|label"
