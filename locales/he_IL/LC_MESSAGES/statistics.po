@@ -167,6 +167,8 @@ msgid ""
 "Activity ranks will be determined based on tracked activity since this time, and the leaderboard will display activity since this time by default. Unset to disable seasons and use all-time statistics instead.\n"
 "Provided dates and times are assumed to be in the guild `timezone`, so set this first!"
 msgstr ""
+"דרגות יקבעו על בסיס פעילות מהזמן הזה, ולוח השיאים יוצג מהזמן הזה. הסר על מנת לבטל \"עונות\" ולהשתמש בלוח שיאים מכל הזמנים במקום.\n"
+"התאריכים שניתנים מושפעים מאזור הזמן שקבעתם בהגדרות שרת שלכם, אז תהיו בטוחים ששינית את אזור הזמן קודם!"
 
 #: src/modules/statistics/settings.py:102
 msgctxt "guildset:season_start|accepts"
