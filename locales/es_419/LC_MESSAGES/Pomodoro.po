@@ -249,6 +249,8 @@ msgid ""
 "`{pattern}` timer is running with `{members}` members!\n"
 "Currently **focusing**, with break starting {timestamp}"
 msgstr ""
+"¡El temporizador `{pattern}` se está ejecutando con los miembros `{members}`!\n"
+"Actualmente **enfocando**, con pausa a partir de {timestamp}"
 
 #: src/modules/pomodoro/cog.py:477
 #, possible-python-brace-format
