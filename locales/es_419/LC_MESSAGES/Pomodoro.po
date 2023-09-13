@@ -568,11 +568,12 @@ msgstr ""
 msgctxt "timerset:inactivity_threshold|desc"
 msgid "How many timer cycles before kicking inactive members."
 msgstr ""
+"Cuántos ciclos de temporizador antes de expulsar a los miembros inactivos."
 
 #: src/modules/pomodoro/options.py:112
 msgctxt "timerset:inactivity_length|desc"
 msgid "The inactivity threshold must be a positive whole number!"
-msgstr ""
+msgstr "El umbral de inactividad debe ser un número entero positivo."
 
 #: src/modules/pomodoro/options.py:120
 msgctxt "timerset:manager_role"
