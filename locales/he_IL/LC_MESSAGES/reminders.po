@@ -273,6 +273,8 @@ msgstr ""
 msgctxt "ui:reminderlist|button:new|modal|field:repeat|placeholder"
 msgid "1 day 10 hours 5 minutes (Leave empty for no repeat.)"
 msgstr ""
+"יום 1 10 שעות 5 דקות (באנגלית, השאר ריק אם אתה לא רוצה שהתזכיר יחזור על "
+"עצמו)"
 
 #: src/modules/reminders/ui.py:133
 msgctxt "ui:reminderlist|button:new|modal|field:content|label"
