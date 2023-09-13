@@ -724,13 +724,15 @@ msgstr "No configurado (Utilizará el canal de voz del temporizador.)"
 #: src/modules/pomodoro/settings.py:37
 msgctxt "guildset:pomodoro_channel|accepts"
 msgid "Timer notification channel name or id."
-msgstr ""
+msgstr "Nombre o id del canal de notificación del temporizador."
 
 #: src/modules/pomodoro/settings.py:51
 #, possible-python-brace-format
 msgctxt "guildset:pomodoro_channel|set_response|set"
 msgid "Pomodoro timer notifications will now default to {channel}"
 msgstr ""
+"Las notificaciones del temporizador Pomodoro ahora se enviarán por defecto a"
+" {channel}."
 
 #: src/modules/pomodoro/settings.py:56
 msgctxt "guildset:pomodoro_channel|set_response|unset"
