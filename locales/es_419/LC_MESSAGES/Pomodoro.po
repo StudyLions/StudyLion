@@ -239,6 +239,8 @@ msgid ""
 "`{pattern}` timer is stopped with `{members}` members!\n"
 "Join {channel} and press `Start` to start it!"
 msgstr ""
+"¡El temporizador de `{pattern}` se ha detenido con los miembros de `{members}`!\n"
+"Únete a {channel} y pulsa `Start` para iniciarlo."
 
 #: src/modules/pomodoro/cog.py:471
 #, possible-python-brace-format
