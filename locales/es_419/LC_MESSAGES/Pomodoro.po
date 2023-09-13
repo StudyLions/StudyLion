@@ -56,7 +56,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "timer|default_base_name"
 msgid "Timer {pattern}"
-msgstr ""
+msgstr "Temporizador {pattern}"
 
 #: src/modules/pomodoro/timer.py:406
 #, possible-python-brace-format
