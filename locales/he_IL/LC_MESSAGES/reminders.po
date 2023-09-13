@@ -242,12 +242,12 @@ msgstr[3] ""
 #: src/modules/reminders/ui.py:57
 msgctxt "ui:reminderlist|button:clear|confirm|button:yes"
 msgid "Yes, clear my reminders"
-msgstr ""
+msgstr "כן, נקה את התזכירים שלי"
 
 #: src/modules/reminders/ui.py:68
 msgctxt "ui:reminderlist|button:clear|success|desc"
 msgid "Your reminders have been cleared!"
-msgstr ""
+msgstr "התזכירים שלך נוקו!"
 
 #: src/modules/reminders/ui.py:77
 msgctxt "ui:reminderlist|button:clear|confirm|button:cancel"
