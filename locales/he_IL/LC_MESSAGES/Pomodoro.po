@@ -259,7 +259,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:491
 msgctxt "cmd:pomodoro"
 msgid "pomodoro"
-msgstr ""
+msgstr "פומודורו"
 
 #: src/modules/pomodoro/cog.py:492
 msgctxt "cmd:pomodoro|desc"
