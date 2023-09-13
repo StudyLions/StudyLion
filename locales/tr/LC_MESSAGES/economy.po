@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 22:43+0300\n"
+"POT-Creation-Date: 2023-09-13 08:47+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Eyüp Ramazan, 2023\n"
 "Language-Team: Turkish (https://app.transifex.com/leobot/teams/174919/tr/)\n"
@@ -233,19 +233,19 @@ msgid_plural "Accounts successfully updated."
 msgstr[0] "Hesap başarıyla güncellendi."
 msgstr[1] "Hesaplar başarıyla güncellendi."
 
-#: src/modules/economy/cog.py:394
+#: src/modules/economy/cog.py:409
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:role_lb|author"
 msgid "Balance sheet for {name}"
 msgstr "{name} için bilanço"
 
-#: src/modules/economy/cog.py:400
+#: src/modules/economy/cog.py:415
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:role_lb|header"
 msgid "This server has a total balance of {coin_emoji}**{total}**."
 msgstr "Bu sunucudaki toplam bakiye {coin_emoji}**{total}**."
 
-#: src/modules/economy/cog.py:408
+#: src/modules/economy/cog.py:423
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:role_lb|header"
 msgid ""
@@ -255,47 +255,47 @@ msgstr ""
 "{role_mention} rolü `{count}` bakiyesi sıfırdan farkı olan kullanıcı "
 "içermekte ve rolün toplam bakiyesi {coin_emoji}**{total}**."
 
-#: src/modules/economy/cog.py:420
+#: src/modules/economy/cog.py:435
 msgctxt "cmd:economy_balance|embed:role_lb|row_format"
 msgid "`[{pos:>{numwidth}}]` | `{coins:>{coinwidth}} LC` | {mention}"
 msgstr "`[{pos:>{numwidth}}]` | `{coins:>{coinwidth}} LC` | {mention}"
 
-#: src/modules/economy/cog.py:448
+#: src/modules/economy/cog.py:463
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:role_lb|footer"
 msgid "Page {page}/{total}"
 msgstr "Sayfa {page}/{total}"
 
-#: src/modules/economy/cog.py:458
+#: src/modules/economy/cog.py:473
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:role_lb|header"
 msgid "This server has a total balance of {coin_emoji}**0**."
 msgstr "Sunucudaki toplam bakiye {coin_emoji}**0**."
 
-#: src/modules/economy/cog.py:465
+#: src/modules/economy/cog.py:480
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:role_lb|header"
 msgid "The role {role_mention} has a total balance of {coin_emoji}**0**."
 msgstr "{role_mention} rolünün toplam bakiyesi {coin_emoji}**0**."
 
-#: src/modules/economy/cog.py:485
+#: src/modules/economy/cog.py:500
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:single|desc"
 msgid "{mention} currently owns {coin_emoji} {coins}."
 msgstr "{mention} şu anda {coin_emoji} {coins} sahibi."
 
-#: src/modules/economy/cog.py:495
+#: src/modules/economy/cog.py:510
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:single|author"
 msgid "Balance statement for {user}"
 msgstr "{user} için bakiye raporu."
 
-#: src/modules/economy/cog.py:504
+#: src/modules/economy/cog.py:519
 msgctxt "cmd:economy_reset"
 msgid "reset"
 msgstr "sıfırla"
 
-#: src/modules/economy/cog.py:507
+#: src/modules/economy/cog.py:522
 msgctxt "cmd:economy_reset|desc"
 msgid ""
 "Reset the coin balance for a target user or role. (See also \"economy "
@@ -304,12 +304,12 @@ msgstr ""
 "Hedef üye veya rol için para bakiyesini sıfırlayın. (Ayrıca \"ekonomi "
 "bakiye\" kısmına bakınız.)"
 
-#: src/modules/economy/cog.py:511
+#: src/modules/economy/cog.py:526
 msgctxt "cmd:economy_reset|param:target"
 msgid "target"
 msgstr "hedef"
 
-#: src/modules/economy/cog.py:516
+#: src/modules/economy/cog.py:531
 msgctxt "cmd:economy_reset|param:target|desc"
 msgid ""
 "Target user or role to view or update. Use @everyone to reset the entire "
@@ -318,7 +318,7 @@ msgstr ""
 "Görüntülemek veya düzenlemek için hedef üye veya rol giriniz. Sunucudaki "
 "herkesi sıfırlamak için @everyone kullanınız."
 
-#: src/modules/economy/cog.py:543
+#: src/modules/economy/cog.py:558
 #, possible-python-brace-format
 msgctxt "cmd:economy_reset|confirm:reset_guild|desc"
 msgid ""
@@ -328,17 +328,17 @@ msgstr ""
 "**{guild_name}** sunucusundaki herkesin para bakiyesini sıfırlamak istediğinize emin misiniz?\n"
 "*Bu işlem geri alınamaz!*"
 
-#: src/modules/economy/cog.py:551
+#: src/modules/economy/cog.py:566
 msgctxt "cmd:economy_reset|confirm:reset_guild|button:confirm"
 msgid "Yes, reset the economy"
 msgstr "Evet, ekonomiyi sıfırla"
 
-#: src/modules/economy/cog.py:555
+#: src/modules/economy/cog.py:570
 msgctxt "cmd:economy_reset|confirm:reset_guild|button:cancel"
 msgid "Cancel reset"
 msgstr "Sıfırlamayı iptal et"
 
-#: src/modules/economy/cog.py:571
+#: src/modules/economy/cog.py:586
 #, possible-python-brace-format
 msgctxt "cmd:economy_reset|embed:success_guild|desc"
 msgid ""
@@ -348,13 +348,13 @@ msgstr ""
 "**{guild_name}** sunucusundaki herkesin bakiyeleri {coin_emoji}**{amount}** "
 "değerine sıfırlandı."
 
-#: src/modules/economy/cog.py:588
+#: src/modules/economy/cog.py:603
 #, possible-python-brace-format
 msgctxt "cmd:economy_reset|error:no_target|desc"
 msgid "The role {mention} has no members to reset!"
 msgstr "{mention} rolünün sıfırlanacak bir üyesi bulunmamaktadır."
 
-#: src/modules/economy/cog.py:598
+#: src/modules/economy/cog.py:613
 #, possible-python-brace-format
 msgctxt "cmd:economy_reset|confirm:reset_role|desc"
 msgid ""
@@ -364,17 +364,17 @@ msgstr ""
 "{mention} rolündeki tüm kullanıcıların bakiyelerini sıfırlamak istediğinize emin misiniz?\n"
 "**{count}** üye etkilenecektir."
 
-#: src/modules/economy/cog.py:607
+#: src/modules/economy/cog.py:622
 msgctxt "cmd:economy_reset|confirm:reset_role|button:confirm"
 msgid "Yes, complete economy reset"
 msgstr "Evet, ekonomi sıfırlamayı tamamla"
 
-#: src/modules/economy/cog.py:611
+#: src/modules/economy/cog.py:626
 msgctxt "cmd:economy_reset|confirm:reset_role|button:cancel"
 msgid "Cancel"
 msgstr "İptal"
 
-#: src/modules/economy/cog.py:628
+#: src/modules/economy/cog.py:643
 #, possible-python-brace-format
 msgctxt "cmd:economy_reset|embed:success_role|desc"
 msgid ""
@@ -384,7 +384,7 @@ msgstr ""
 "{role_mention} rolündeki herkesin para bakiyesi {coin_emoji}**{amount}** "
 "değerine sıfırlandı."
 
-#: src/modules/economy/cog.py:650
+#: src/modules/economy/cog.py:665
 #, possible-python-brace-format
 msgctxt "cmd:economy_reset|embed:success_user|desc"
 msgid "{mention}'s balance has been reset to {coin_emoji}**{amount}**."
@@ -392,52 +392,74 @@ msgstr ""
 "{mention} kullanıcısının bakiyesi {coin_emoji}**{amount}** değerine "
 "sıfırlandı."
 
-#: src/modules/economy/cog.py:660
+#: src/modules/economy/cog.py:675
 msgctxt "cmd:send"
 msgid "send"
 msgstr "gönder"
 
-#: src/modules/economy/cog.py:663
+#: src/modules/economy/cog.py:678
 msgctxt "cmd:send|desc"
 msgid "Gift the target user a certain number of LionCoins."
 msgstr "Hedef üyeye belirli miktarda LionCoin hediye edin."
 
-#: src/modules/economy/cog.py:667
+#: src/modules/economy/cog.py:682
 msgctxt "cmd:send|param:target"
 msgid "target"
 msgstr "hedef"
 
-#: src/modules/economy/cog.py:668
+#: src/modules/economy/cog.py:683
 msgctxt "cmd:send|param:amount"
 msgid "amount"
 msgstr "miktar"
 
-#: src/modules/economy/cog.py:669
+#: src/modules/economy/cog.py:684
 msgctxt "cmd:send|param:note"
 msgid "note"
 msgstr "not"
 
-#: src/modules/economy/cog.py:672
+#: src/modules/economy/cog.py:687
 msgctxt "cmd:send|param:target|desc"
 msgid "User to send the gift to"
 msgstr "Hediyenin gönderileceği kişi"
 
-#: src/modules/economy/cog.py:673
+#: src/modules/economy/cog.py:688
 msgctxt "cmd:send|param:amount|desc"
 msgid "Number of coins to send"
 msgstr "Gönderilen coin miktarı"
 
-#: src/modules/economy/cog.py:674
+#: src/modules/economy/cog.py:689
 msgctxt "cmd:send|param:note|desc"
 msgid "Optional note to add to the gift."
 msgstr "Hediyeye eklenecek isteğe bağlı not."
 
-#: src/modules/economy/cog.py:698
+#: src/modules/economy/cog.py:713
 msgctxt "cmd:send|error:not_allowed"
 msgid "Sorry, this server has disabled LionCoin transfers!"
 msgstr "Üzgünüm. bu sunucu LionCoin transferlerini devre dışı bıraktı!"
 
-#: src/modules/economy/cog.py:723
+#: src/modules/economy/cog.py:722
+msgctxt "cmd:send|error:sending-to-self"
+msgid ""
+"What is this, tax evasion?\n"
+"(You can not send coins to yourself.)"
+msgstr ""
+
+#: src/modules/economy/cog.py:732
+msgctxt "cmd:send|error:sending-to-leo"
+msgid ""
+"I appreciate it, but you need it more than I do!\n"
+"(You cannot send coins to bots.)"
+msgstr ""
+
+#: src/modules/economy/cog.py:742
+#, possible-python-brace-format
+msgctxt "cmd:send|error:sending-to-bot"
+msgid ""
+"{target} appreciates the gesture, but said they don't have any use for {coin}.\n"
+"(You cannot send coins to bots.)"
+msgstr ""
+
+#: src/modules/economy/cog.py:770
 #, possible-python-brace-format
 msgctxt "cmd:send|error:insufficient"
 msgid ""
@@ -447,19 +469,19 @@ msgstr ""
 "Bunu yapmak için yeterli LionCoin'inin yok!\n"
 "`Bakiyen:` {coin_emoji}{balance}"
 
-#: src/modules/economy/cog.py:744
+#: src/modules/economy/cog.py:791
 #, possible-python-brace-format
 msgctxt "cmd:send|embed:gift|title"
 msgid "{user} sent you a gift!"
 msgstr "{user} sana hediye gönderdi!"
 
-#: src/modules/economy/cog.py:748
+#: src/modules/economy/cog.py:795
 #, possible-python-brace-format
 msgctxt "cmd:send|embed:gift|desc"
 msgid "{mention} sent you {coin_emoji}**{amount}**."
 msgstr "{mention} sana {coin_emoji}**{amount}** gönderdi."
 
-#: src/modules/economy/cog.py:773
+#: src/modules/economy/cog.py:820
 #, possible-python-brace-format
 msgctxt "cmd:send|embed:ack|desc"
 msgid ""
@@ -469,7 +491,7 @@ msgstr ""
 "**{coin_emoji}{amount}** bakiyenizden düşüldü ve {mention} kullanıcısına "
 "gönderildi!"
 
-#: src/modules/economy/cog.py:783
+#: src/modules/economy/cog.py:830
 msgctxt "cmd:send|embed:ack|desc|error:unreachable"
 msgid ""
 "Unfortunately, I was not able to message the recipient. Perhaps they have me"
@@ -477,12 +499,12 @@ msgid ""
 msgstr ""
 "Maalesef alıcıya mesaj gönderemiyorum. Belki de beni engellemişlerdir?"
 
-#: src/modules/economy/cog.py:795
+#: src/modules/economy/cog.py:842
 msgctxt "cmd:configure_economy"
 msgid "economy"
 msgstr "ekonomi"
 
-#: src/modules/economy/cog.py:798
+#: src/modules/economy/cog.py:845
 msgctxt "cmd:configure_economy|desc"
 msgid "Configure LionCoin Economy"
 msgstr "LionCoin Ekonomisini Ayarla"
