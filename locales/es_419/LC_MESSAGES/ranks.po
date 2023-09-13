@@ -961,4 +961,4 @@ msgstr "Editor de rango"
 #: src/modules/ranks/ui/editor.py:317
 msgctxt "ui:rank_editor|mode:create|title"
 msgid "Rank Creator"
-msgstr ""
+msgstr "Creador de Rangos"
