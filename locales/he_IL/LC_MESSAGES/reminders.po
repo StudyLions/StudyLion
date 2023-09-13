@@ -178,6 +178,8 @@ msgid ""
 "Cannot parse \"{partial}\" as a time. Try the format HH:MM or YYYY-MM-DD "
 "HH:MM"
 msgstr ""
+"לא הצלחתי להבין את \"{partial}\" בתור זמן. השתמשו בפורמט HH:MM או YYYY-MM-DD"
+" HH:MM"
 
 #: src/modules/reminders/cog.py:571
 msgctxt "cmd:remindme_in"
@@ -222,7 +224,7 @@ msgstr "עד מתי תרצו לקבל את התזכיר הזה? (e.g. 1 day, or 
 #: src/modules/reminders/cog.py:619
 msgctxt "cmd:remindme_in|error|title"
 msgid "Could not create reminder!"
-msgstr ""
+msgstr "לא הצלחתי ליצור את התזכיר!"
 
 #: src/modules/reminders/ui.py:47
 msgctxt "ui:reminderlist|button:clear|confirm|title"
