@@ -366,6 +366,8 @@ msgid ""
 "You must have the 'Manage Channel' permission in {channel} in order to add a"
 " timer there!"
 msgstr ""
+"Para poder añadir un temporizador en {channel}, debe disponer del permiso "
+"'Manage Channel'."
 
 #: src/modules/pomodoro/cog.py:684
 msgctxt "cmd:pomodoro_create|response:success|content"
