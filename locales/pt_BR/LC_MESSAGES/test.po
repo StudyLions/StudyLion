@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 22:43+0300\n"
+"POT-Creation-Date: 2023-09-13 08:47+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
@@ -21,62 +21,66 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: src/modules/test/test.py:47 src/modules/test/test.py:54
+#: src/modules/test/test.py:59 src/modules/test/test.py:66
 msgid "test"
 msgstr "teste"
 
-#: src/modules/test/test.py:55
+#: src/modules/test/test.py:67
 msgid "Test"
 msgstr "Teste"
 
-#: src/modules/test/test.py:62
+#: src/modules/test/test.py:74
 msgid "editor"
 msgstr "editor"
 
-#: src/modules/test/test.py:63
+#: src/modules/test/test.py:75
 msgid "Test message editor"
 msgstr "Mensagem de teste do editor"
 
-#: src/modules/test/test.py:89
+#: src/modules/test/test.py:101
 msgid "test_ephemeral"
 msgstr "test_ephemeral"
 
-#: src/modules/test/test.py:90
+#: src/modules/test/test.py:102
 msgid "Test ephemeral delete and edit"
 msgstr "Apagar e editar Test ephemeral "
 
-#: src/modules/test/test.py:102
+#: src/modules/test/test.py:114
 msgid "colours"
 msgstr "cores"
 
-#: src/modules/test/test.py:103
+#: src/modules/test/test.py:115
 msgid "Test Ansi colours"
 msgstr "Teste cores Ansi"
 
-#: src/modules/test/test.py:123
+#: src/modules/test/test.py:135
 msgid "fail"
 msgstr "falha"
 
-#: src/modules/test/test.py:130
+#: src/modules/test/test.py:143
+msgid "failui"
+msgstr ""
+
+#: src/modules/test/test.py:150
 msgid "pager"
 msgstr "pager"
 
-#: src/modules/test/test.py:158
+#: src/modules/test/test.py:178
 msgid "pager2"
 msgstr "pager2"
 
-#: src/modules/test/test.py:189
+#: src/modules/test/test.py:209
 msgid "prettyusers"
 msgstr "usuariosfofos"
 
-#: src/modules/test/test.py:239
+#: src/modules/test/test.py:259
 msgid "dmview"
 msgstr "vermd"
 
-#: src/modules/test/test.py:250
+#: src/modules/test/test.py:270
 msgid "multiview"
 msgstr "multivisao"
 
-#: src/modules/test/test.py:267
+#: src/modules/test/test.py:287
 msgid "stats-card"
 msgstr "stats-cartões"
