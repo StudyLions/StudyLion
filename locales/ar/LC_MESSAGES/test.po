@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 22:43+0300\n"
+"POT-Creation-Date: 2023-09-13 08:47+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Nour Ibram, 2023\n"
 "Language-Team: Arabic (https://app.transifex.com/leobot/teams/174919/ar/)\n"
@@ -21,64 +21,68 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: src/modules/test/test.py:47 src/modules/test/test.py:54
+#: src/modules/test/test.py:59 src/modules/test/test.py:66
 msgid "test"
 msgstr "اختبار"
 
-#: src/modules/test/test.py:55
+#: src/modules/test/test.py:67
 msgid "Test"
 msgstr "اختبار"
 
-#: src/modules/test/test.py:62
+#: src/modules/test/test.py:74
 msgid "editor"
 msgstr ""
 "مؤلف\n"
 "AT: محرر"
 
-#: src/modules/test/test.py:63
+#: src/modules/test/test.py:75
 msgid "Test message editor"
 msgstr ""
 
-#: src/modules/test/test.py:89
+#: src/modules/test/test.py:101
 msgid "test_ephemeral"
 msgstr ""
 
-#: src/modules/test/test.py:90
+#: src/modules/test/test.py:102
 msgid "Test ephemeral delete and edit"
 msgstr ""
 
-#: src/modules/test/test.py:102
+#: src/modules/test/test.py:114
 msgid "colours"
 msgstr "الوان"
 
-#: src/modules/test/test.py:103
+#: src/modules/test/test.py:115
 msgid "Test Ansi colours"
 msgstr ""
 
-#: src/modules/test/test.py:123
+#: src/modules/test/test.py:135
 msgid "fail"
 msgstr "فشل"
 
-#: src/modules/test/test.py:130
+#: src/modules/test/test.py:143
+msgid "failui"
+msgstr ""
+
+#: src/modules/test/test.py:150
 msgid "pager"
 msgstr ""
 
-#: src/modules/test/test.py:158
+#: src/modules/test/test.py:178
 msgid "pager2"
 msgstr ""
 
-#: src/modules/test/test.py:189
+#: src/modules/test/test.py:209
 msgid "prettyusers"
 msgstr ""
 
-#: src/modules/test/test.py:239
+#: src/modules/test/test.py:259
 msgid "dmview"
 msgstr ""
 
-#: src/modules/test/test.py:250
+#: src/modules/test/test.py:270
 msgid "multiview"
 msgstr ""
 
-#: src/modules/test/test.py:267
+#: src/modules/test/test.py:287
 msgid "stats-card"
 msgstr ""
