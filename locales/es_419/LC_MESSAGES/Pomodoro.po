@@ -696,12 +696,13 @@ msgstr "Introduzca un número positivo de minutos."
 #: src/modules/pomodoro/settings.py:19
 msgctxt "guildset:pomodoro_channel"
 msgid "pomodoro_channel"
-msgstr ""
+msgstr "canal_pomodoro"
 
 #: src/modules/pomodoro/settings.py:22
 msgctxt "guildset:pomodoro_channel|desc"
 msgid "Default central notification channel for pomodoro timers."
 msgstr ""
+"Canal de notificación central por defecto para los temporizadores pomodoro."
 
 #: src/modules/pomodoro/settings.py:26
 msgctxt "guildset:pomodoro_channel|long_desc"
