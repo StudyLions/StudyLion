@@ -318,7 +318,7 @@ msgstr ""
 #: src/modules/reminders/ui.py:286
 msgctxt "ui:reminderlist|embed|tips:name"
 msgid "Reminder Tips"
-msgstr ""
+msgstr "טיפים לקביעת תזכירים"
 
 #: src/modules/reminders/ui.py:290
 #, possible-python-brace-format
@@ -342,6 +342,8 @@ msgid ""
 "At {timestamp} I will remind you about:\n"
 "> {content}"
 msgstr ""
+"כל {timestamp} אזכיר לך:\n"
+"> {content}"
 
 #: src/modules/reminders/data.py:79
 msgctxt "reminder_set|field:repeat|name"
