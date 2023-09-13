@@ -623,7 +623,7 @@ msgstr "Cualquier nombre corto, que aparece en la tarjeta del temporizador."
 #: src/modules/pomodoro/options.py:184
 msgctxt "timerset:channel_name_format"
 msgid "channel_name"
-msgstr ""
+msgstr "nombre_canal"
 
 #: src/modules/pomodoro/options.py:187
 #, possible-python-brace-format
