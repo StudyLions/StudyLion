@@ -455,7 +455,7 @@ msgctxt "cmd:tasks_untick|param:taskidstr|desc"
 msgid ""
 "List of task numbers or ranges to untick (e.g. 1, 2, 5-7, 8.1-3, 9-) or '-' "
 "to untick all."
-msgstr ""
+msgstr "טווח של רשימת מטלות להסרת ההשלמה (לדוגמא 1-15, 8.1.1.1-20 וכו')."
 
 #: src/modules/tasklist/cog.py:911
 msgctxt "cmd:tasks_untick|param:cascade|desc"
