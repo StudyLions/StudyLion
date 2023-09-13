@@ -267,7 +267,7 @@ msgstr ""
 #: src/modules/reminders/ui.py:120
 msgctxt "ui:reminderlist|button:new|modal|field:repeat|label"
 msgid "How often should the reminder repeat?"
-msgstr ""
+msgstr "כל כמה זמן אני צריך להזכיר לך את זה?"
 
 #: src/modules/reminders/ui.py:124
 msgctxt "ui:reminderlist|button:new|modal|field:repeat|placeholder"
