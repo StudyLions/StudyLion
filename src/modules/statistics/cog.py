@@ -90,7 +90,7 @@ class StatsCog(LionCog):
                 )).format(loading=self.bot.config.emojis.loading),
                 timestamp=utc_now(),
             )
-            await ctx.interaction.response(embed=waiting_embed)
+            await ctx.interaction.response.send_message(embed=waiting_embed)
             await ctx.guild.chunk()
         else:
             await ctx.interaction.response.defer(thinking=True)
