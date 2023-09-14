@@ -436,7 +436,7 @@ msgid ""
 "may conflict with other bots who manage join roles."
 msgstr ""
 "Caso habilitado, os cargos dos membros serão salvos quando eles deixarem o "
-"servidor, e restaurados em seu retorno (ao invés de receber os "
+"servidor, e restaurados em seu retorno (ao invés de receberem os "
 "cargos_automáticos). Perceba que talvez isto entre em confilto com outros "
 "bots que também configurem cargos de boas vindas."
 
