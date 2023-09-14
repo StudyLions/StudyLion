@@ -79,9 +79,7 @@ msgstr "ResetarMembro"
 #: src/modules/member_admin/cog.py:237
 msgctxt "cmd:resetmember|desc"
 msgid "Reset (server-associated) member data for the target member or user."
-msgstr ""
-"Resetar dados (servidor-associado) de membro para determinado usuário ou "
-"membro."
+msgstr "Resetar dados de membro para determinado usuário ou membro."
 
 #: src/modules/member_admin/cog.py:241
 msgctxt "cmd:resetmember|param:target"
