@@ -453,7 +453,7 @@ msgid ""
 "(You cannot send coins to bots.)"
 msgstr ""
 "Teşekkürler, ama senin buna daha çok ihtiyacın var!\n"
-"(Botlara LC gönderemzsin.)"
+"(Botlara LC gönderemezsin.)"
 
 #: src/modules/economy/cog.py:742
 #, possible-python-brace-format
@@ -462,6 +462,8 @@ msgid ""
 "{target} appreciates the gesture, but said they don't have any use for {coin}.\n"
 "(You cannot send coins to bots.)"
 msgstr ""
+"{target} teşekkürlerini iletiyor, ama {coin}'a ihtiyacı yokmuş..\n"
+"(Botlara LC gönderemezsin.)"
 
 #: src/modules/economy/cog.py:770
 #, possible-python-brace-format
