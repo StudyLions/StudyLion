@@ -74,7 +74,7 @@ msgstr ""
 
 #: src/modules/sysadmin/exec_cog.py:384
 msgid "reload"
-msgstr "tekrar yükle"
+msgstr "tekrar_yükle"
 
 #: src/modules/sysadmin/exec_cog.py:385
 msgid "Reload a given LionBot extension. Launches an ExecUI."
