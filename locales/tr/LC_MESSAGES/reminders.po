@@ -129,7 +129,7 @@ msgstr "\"{partial}\" ile eşleşen hatırlatıcın bulunmamakta."
 #: src/modules/reminders/cog.py:484
 msgctxt "cmd:remindme_at"
 msgid "at"
-msgstr "zaman"
+msgstr "saatinde"
 
 #: src/modules/reminders/cog.py:487
 msgctxt "cmd:remindme_at|desc"
