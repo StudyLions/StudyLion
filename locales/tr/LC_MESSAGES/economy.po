@@ -4,8 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Havina Ru, 2023
 # Eyüp Ramazan, 2023
+# Havina Ru, 2023
 # 
 #, fuzzy
 msgid ""
@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-13 08:47+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Eyüp Ramazan, 2023\n"
+"Last-Translator: Havina Ru, 2023\n"
 "Language-Team: Turkish (https://app.transifex.com/leobot/teams/174919/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -443,6 +443,8 @@ msgid ""
 "What is this, tax evasion?\n"
 "(You can not send coins to yourself.)"
 msgstr ""
+"Vergiden mi kaçmaya çalışıyorsun?\n"
+"(Kendine LC gönderemezsin.)"
 
 #: src/modules/economy/cog.py:732
 msgctxt "cmd:send|error:sending-to-leo"
