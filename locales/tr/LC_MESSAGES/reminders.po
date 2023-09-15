@@ -380,7 +380,7 @@ msgctxt "reminder|formatted|interval"
 msgid "Every day"
 msgid_plural "Every `{days}` days"
 msgstr[0] "Her gün"
-msgstr[1] "Her `{days}` gün"
+msgstr[1] "Her `{days}` günde bir"
 
 #: src/modules/reminders/data.py:144
 #, possible-python-brace-format
