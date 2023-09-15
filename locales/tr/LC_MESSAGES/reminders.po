@@ -388,7 +388,7 @@ msgctxt "reminder|formatted|interval"
 msgid "Every hour"
 msgid_plural "Every `{hours}` hours"
 msgstr[0] "Her saat"
-msgstr[1] "Her `{hours}` saat"
+msgstr[1] "Her `{hours}` saatte bir"
 
 #: src/modules/reminders/data.py:153
 #, possible-python-brace-format
