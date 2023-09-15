@@ -452,6 +452,8 @@ msgid ""
 "I appreciate it, but you need it more than I do!\n"
 "(You cannot send coins to bots.)"
 msgstr ""
+"Teşekkürler, ama senin buna daha çok ihtiyacın var!\n"
+"(Botlara LC gönderemzsin.)"
 
 #: src/modules/economy/cog.py:742
 #, possible-python-brace-format
