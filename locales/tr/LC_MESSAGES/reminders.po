@@ -362,7 +362,7 @@ msgstr "Sen bana hatırlatmamı söylemiştin!"
 #: src/modules/reminders/data.py:102
 msgctxt "reminder|embed"
 msgid "Context?"
-msgstr "Şartlar?"
+msgstr "Hatırlatıcıyı oluşturduğun zamana atla:"
 
 #: src/modules/reminders/data.py:104
 msgctxt "reminder|embed"
