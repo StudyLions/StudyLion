@@ -149,7 +149,7 @@ msgstr "hatırlatıcı"
 #: src/modules/reminders/cog.py:493
 msgctxt "cmd:remindme_at|param:every"
 msgid "repeat_every"
-msgstr "her_tekrarla"
+msgstr "tekrar"
 
 #: src/modules/reminders/cog.py:498
 msgctxt "cmd:remindme_at|param:time|desc"
