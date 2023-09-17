@@ -692,7 +692,7 @@ msgstr "Evet, rütbeleri temizle"
 #: src/modules/ranks/ui/overview.py:132
 msgctxt "ui:rank_overview|button:clear|confirm|button:no"
 msgid "Cancel"
-msgstr ""
+msgstr "İptal"
 
 #: src/modules/ranks/ui/overview.py:148
 msgctxt "ui:rank_overview|button:clear|label"
