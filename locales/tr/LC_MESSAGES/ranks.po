@@ -6,6 +6,7 @@
 # Translators:
 # Serhat Acar, 2023
 # Havina Ru, 2023
+# Eyüp Ramazan, 2023
 # 
 #, fuzzy
 msgid ""
@@ -14,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-13 08:47+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Havina Ru, 2023\n"
+"Last-Translator: Eyüp Ramazan, 2023\n"
 "Language-Team: Turkish (https://app.transifex.com/leobot/teams/174919/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -681,11 +682,12 @@ msgstr "Üye Rütbelerini Yenile"
 msgctxt "ui:rank_overview|button:clear|confirm"
 msgid "Are you sure you want to **delete all activity ranks** in this server?"
 msgstr ""
+"Bu sunucudaki **tüm aktivite rütbelerini** silmek istediğine emin misin?"
 
 #: src/modules/ranks/ui/overview.py:126
 msgctxt "ui:rank_overview|button:clear|confirm|button:yes"
 msgid "Yes, clear ranks"
-msgstr ""
+msgstr "Evet, rütbeleri temizle"
 
 #: src/modules/ranks/ui/overview.py:132
 msgctxt "ui:rank_overview|button:clear|confirm|button:no"
