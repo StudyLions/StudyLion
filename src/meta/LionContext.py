@@ -35,6 +35,7 @@ FlatContext = namedtuple(
      'interaction',
      'guild',
      'author',
+     'channel',
      'alias',
      'prefix',
      'failed')

@@ -3,7 +3,7 @@ import configparser as cfgp
 
 from .args import args
 
-shard_number = args.shard or 0
+shard_number = args.shard
 
 class configEmoji(PartialEmoji):
     __slots__ = ('fallback',)
@@ -87,7 +87,10 @@ class Conf:
                 "emoji": configEmoji.from_str,
             }
         )
-        self.config.read(configfile)
+
+        with open(configfile) as conff:
+            # Opening with read_file mainly to ensure the file exists
+            self.config.read_file(conff)
 
         self.section_name = section_name if section_name in self.config else 'DEFAULT'
 

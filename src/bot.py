@@ -21,7 +21,7 @@ for name in conf.config.options('LOGGING_LEVELS', no_defaults=True):
     logging.getLogger(name).setLevel(conf.logging_levels[name])
 
 
-setup_main_logger()
+logging_queue = setup_main_logger()
 
 
 logger = logging.getLogger(__name__)
