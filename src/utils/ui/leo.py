@@ -10,6 +10,8 @@ from discord.ui import Modal, View, Item
 from meta.logger import log_action_stack, logging_context
 from meta.errors import SafeCancellation
 
+from gui.errors import RenderingException
+
 from . import logger
 from ..lib import MessageArgs, error_embed
 
@@ -228,6 +230,12 @@ class LeoUI(View):
                 f"Caught a safe cancellation from LeoUI: {e.details}",
                 extra={'action': 'Cancel'}
             )
+        except RenderingException as e:
+            logger.info(
+                f"UI interaction failed due to rendering exception: {repr(e)}"
+            )
+            embed = interaction.client.tree.rendersplat(e)
+            await interaction.client.tree.error_reply(interaction, embed)
         except Exception:
             logger.exception(
                 f"Unhandled interaction exception occurred in item {item!r} of LeoUI {self!r} from interaction: "
@@ -235,15 +243,8 @@ class LeoUI(View):
                 extra={'with_ctx': True, 'action': 'UIError'}
             )
             # Explicitly handle the bugsplat ourselves
-            if not interaction.is_expired():
-                splat = interaction.client.tree.bugsplat(interaction, error)
-                try:
-                    if interaction.response.is_done():
-                        await interaction.followup.send(embed=splat, ephemeral=True)
-                    else:
-                        await interaction.response.send_message(embed=splat, ephemeral=True)
-                except discord.HTTPException:
-                    pass
+            splat = interaction.client.tree.bugsplat(interaction, error)
+            await interaction.client.tree.error_reply(interaction, splat)
 
 
 class MessageUI(LeoUI):
@@ -475,21 +476,20 @@ class LeoModal(Modal):
         """
         try:
             raise error
+        except RenderingException as e:
+            logger.info(
+                f"Modal submit failed due to rendering exception: {repr(e)}"
+            )
+            embed = interaction.client.tree.rendersplat(e)
+            await interaction.client.tree.error_reply(interaction, embed)
         except Exception:
             logger.exception(
                 f"Unhandled interaction exception occurred in {self!r}. Interaction: {interaction.data}",
                 extra={'with_ctx': True, 'action': 'ModalError'}
             )
             # Explicitly handle the bugsplat ourselves
-            if not interaction.is_expired():
-                splat = interaction.client.tree.bugsplat(interaction, error)
-                try:
-                    if interaction.response.is_done():
-                        await interaction.followup.send(embed=splat, ephemeral=True)
-                    else:
-                        await interaction.response.send_message(embed=splat, ephemeral=True)
-                except discord.HTTPException:
-                    pass
+            splat = interaction.client.tree.bugsplat(interaction, error)
+            await interaction.client.tree.error_reply(interaction, splat)
 
 
 def error_handler_for(exc):

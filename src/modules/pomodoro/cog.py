@@ -386,8 +386,9 @@ class TimerCog(LionCog):
                 )
             else:
                 # Display the timer status ephemerally
+                await ctx.interaction.response.defer(thinking=True, ephemeral=True)
                 status = await timer.current_status(with_notify=False, with_warnings=False)
-                await ctx.reply(**status.send_args, ephemeral=True)
+                await ctx.interaction.edit_original_response(**status.edit_args)
 
         if error is not None:
             await ctx.reply(embed=error, ephemeral=True)

@@ -299,42 +299,42 @@ class LeaderboardUI(StatsUI):
 
     @button(label="This Season", style=ButtonStyle.grey)
     async def season_button(self, press: discord.Interaction, pressed: Button):
-        await press.response.defer(thinking=True)
+        await press.response.defer(thinking=True, ephemeral=True)
         self.current_period = LBPeriod.SEASON
         self.focused = True
         await self.refresh(thinking=press)
 
     @button(label="Today", style=ButtonStyle.grey)
     async def day_button(self, press: discord.Interaction, pressed: Button):
-        await press.response.defer(thinking=True)
+        await press.response.defer(thinking=True, ephemeral=True)
         self.current_period = LBPeriod.DAY
         self.focused = True
         await self.refresh(thinking=press)
 
     @button(label="This Week", style=ButtonStyle.grey)
     async def week_button(self, press: discord.Interaction, pressed: Button):
-        await press.response.defer(thinking=True)
+        await press.response.defer(thinking=True, ephemeral=True)
         self.current_period = LBPeriod.WEEK
         self.focused = True
         await self.refresh(thinking=press)
 
     @button(label="This Month", style=ButtonStyle.grey)
     async def month_button(self, press: discord.Interaction, pressed: Button):
-        await press.response.defer(thinking=True)
+        await press.response.defer(thinking=True, ephemeral=True)
         self.current_period = LBPeriod.MONTH
         self.focused = True
         await self.refresh(thinking=press)
 
     @button(label="All Time", style=ButtonStyle.grey)
     async def alltime_button(self, press: discord.Interaction, pressed: Button):
-        await press.response.defer(thinking=True)
+        await press.response.defer(thinking=True, ephemeral=True)
         self.current_period = LBPeriod.ALLTIME
         self.focused = True
         await self.refresh(thinking=press)
 
     @button(emoji=conf.emojis.backward, style=ButtonStyle.grey)
     async def prev_button(self, press: discord.Interaction, pressed: Button):
-        await press.response.defer(thinking=True)
+        await press.response.defer(thinking=True, ephemeral=True)
         self.pagen -= 1
         self.focused = False
         await self.refresh(thinking=press)

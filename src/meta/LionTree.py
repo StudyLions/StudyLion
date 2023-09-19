@@ -8,9 +8,11 @@ from discord.enums import InteractionType
 from discord.app_commands.namespace import Namespace
 
 from utils.lib import tabulate
+from gui.errors import RenderingException
 
 from .logger import logging_context, set_logging_context, log_wrap, log_action_stack
 from .errors import SafeCancellation
+from .config import conf
 
 logger = logging.getLogger(__name__)
 
@@ -29,17 +31,36 @@ class LionTree(CommandTree):
         except SafeCancellation:
             # Assume this has already been handled
             pass
+        except RenderingException as e:
+            logger.info(f"Tree interaction failed due to rendering exception: {repr(e)}")
+            embed = self.rendersplat(e)
+            await self.error_reply(interaction, embed)
         except Exception:
             logger.exception(f"Unhandled exception in interaction: {interaction}", extra={'action': 'TreeError'})
-            if not interaction.is_expired():
-                splat = self.bugsplat(interaction, error)
-                try:
-                    if interaction.response.is_done():
-                        await interaction.followup.send(embed=splat, ephemeral=True)
-                    else:
-                        await interaction.response.send_message(embed=splat, ephemeral=True)
-                except discord.HTTPException:
-                    pass
+            embed = self.bugsplat(interaction, error)
+            await self.error_reply(interaction, embed)
+
+    async def error_reply(self, interaction, embed):
+        if not interaction.is_expired():
+            try:
+                if interaction.response.is_done():
+                    await interaction.followup.send(embed=embed, ephemeral=True)
+                else:
+                    await interaction.response.send_message(embed=embed, ephemeral=True)
+            except discord.HTTPException:
+                pass
+
+    def rendersplat(self, e: RenderingException):
+        embed = discord.Embed(
+            title="Resource Currently Unavailable!",
+            description=(
+                "Sorry, the graphics service is currently unavailable!\n"
+                "Please try again in a few minutes.\n"
+                "If the error persists, please contact our [support team]({link})"
+            ).format(link=conf.bot.support_guild),
+            colour=discord.Colour.dark_red()
+        )
+        return embed
 
     def bugsplat(self, interaction, e):
         error_embed = discord.Embed(title="Something went wrong!", colour=discord.Colour.red())

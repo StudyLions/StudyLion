@@ -12,6 +12,7 @@ from aiohttp import ClientSession
 
 from data import Database
 from utils.lib import tabulate
+from gui.errors import RenderingException
 
 from .config import Conf
 from .logger import logging_context, log_context, log_action_stack, log_wrap, set_logging_context
@@ -204,13 +205,23 @@ class LionBot(Bot):
                 pass
             except asyncio.TimeoutError:
                 pass
+            except RenderingException as e:
+                logger.info(f"Command failed due to RenderingException: {repr(e)}")
+                embed = self.tree.rendersplat(e)
+                try:
+                    await ctx.error_reply(embed=embed)
+                except discord.HTTPException:
+                    pass
             except Exception as e:
                 logger.exception(
                     f"Caught an unknown CommandInvokeError while executing: {cmd_str}",
                     extra={'action': 'BotError', 'with_ctx': True}
                 )
 
-                error_embed = discord.Embed(title="Something went wrong!")
+                error_embed = discord.Embed(
+                    title="Something went wrong!",
+                    colour=discord.Colour.dark_red()
+                )
                 error_embed.description = (
                     "An unexpected error occurred while processing your command!\n"
                     "Our development team has been notified, and the issue will be addressed soon.\n"
@@ -246,7 +257,7 @@ class LionBot(Bot):
 
                 try:
                     await ctx.error_reply(embed=error_embed)
-                except Exception:
+                except discord.HTTPException:
                     pass
             finally:
                 exception.original = HandledException(exception.original)
