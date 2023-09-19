@@ -21,7 +21,7 @@ async def sys_admin(bot: LionBot, userid: int):
     return userid in admins
 
 
-async def high_management(bot: LionBot, member: discord.Member, guild=discord.Guild):
+async def high_management(bot: LionBot, member: discord.Member, guild: discord.Guild):
     if not guild:
         return True
     if await sys_admin(bot, member.id):
