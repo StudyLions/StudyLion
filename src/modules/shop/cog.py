@@ -117,6 +117,7 @@ class Shopping(LionCog):
         name=_p('cmd:shop', 'shop'),
         description=_p('cmd:shop|desc', "Purchase coloures, roles, and other goodies with LionCoins.")
     )
+    @appcmds.guild_only
     async def shop_group(self, ctx: LionContext):
         return
 
@@ -124,6 +125,7 @@ class Shopping(LionCog):
         name=_p('cmd:shop_open', 'open'),
         description=_p('cmd:shop_open|desc', "Open the server shop.")
     )
+    @appcmds.guild_only
     async def shop_open_cmd(self, ctx: LionContext):
         """
         Opens the shop UI for the current guild.

@@ -21,13 +21,17 @@ async def sys_admin(bot: LionBot, userid: int):
     return userid in admins
 
 
-async def high_management(bot: LionBot, member: discord.Member):
+async def high_management(bot: LionBot, member: discord.Member, guild: discord.Guild):
+    if not guild:
+        return True
     if await sys_admin(bot, member.id):
         return True
     return member.guild_permissions.administrator
 
 
-async def low_management(bot: LionBot, member: discord.Member):
+async def low_management(bot: LionBot, member: discord.Member, guild: discord.Guild):
+    if not guild:
+        return True
     if await high_management(bot, member):
         return True
     return member.guild_permissions.manage_guild
@@ -42,20 +46,20 @@ async def sys_admin_iward(interaction: discord.Interaction) -> bool:
 async def high_management_iward(interaction: discord.Interaction) -> bool:
     if not interaction.guild:
         return False
-    return await high_management(interaction.client, interaction.user)
+    return await high_management(interaction.client, interaction.user, interaction.guild)
 
 
 async def low_management_iward(interaction: discord.Interaction) -> bool:
     if not interaction.guild:
         return False
-    return await low_management(interaction.client, interaction.user)
+    return await low_management(interaction.client, interaction.user, interaction.guild)
 
 
 # High level ctx wards
 async def moderator_ctxward(ctx: LionContext) -> bool:
     if not ctx.guild:
         return False
-    passed = await low_management(ctx.bot, ctx.author)
+    passed = await low_management(ctx.bot, ctx.author, ctx.guild)
     if passed:
         return True
     modrole = ctx.lguild.data.mod_role
@@ -85,7 +89,7 @@ async def sys_admin_ward(ctx: LionContext) -> bool:
 async def high_management_ward(ctx: LionContext) -> bool:
     if not ctx.guild:
         return False
-    passed = await high_management(ctx.bot, ctx.author)
+    passed = await high_management(ctx.bot, ctx.author, ctx.guild)
     if passed:
         return True
     else:
@@ -101,7 +105,7 @@ async def high_management_ward(ctx: LionContext) -> bool:
 async def low_management_ward(ctx: LionContext) -> bool:
     if not ctx.guild:
         return False
-    passed = await low_management(ctx.bot, ctx.author)
+    passed = await low_management(ctx.bot, ctx.author, ctx.guild)
     if passed:
         return True
     else:
