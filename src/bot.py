@@ -69,7 +69,8 @@ async def main():
                 shard_count=sharding.shard_count,
                 help_command=None,
                 proxy=conf.bot.get('proxy', None),
-                translator=translator
+                translator=translator,
+                chunk_guilds_at_startup=False,
             ) as lionbot:
                 ctx_bot.set(lionbot)
                 try:

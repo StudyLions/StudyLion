@@ -240,7 +240,7 @@ class LionBot(Bot):
                     details['guild'] = f"`{ctx.guild.id}` -- `{ctx.guild.name}`"
                     details['my_guild_perms'] = f"`{ctx.guild.me.guild_permissions.value}`"
                     if ctx.author:
-                        ownerstr = ' (owner)' if ctx.author == ctx.guild.owner else ''
+                        ownerstr = ' (owner)' if ctx.author.id == ctx.guild.owner_id else ''
                         details['author_guild_perms'] = f"`{ctx.author.guild_permissions.value}{ownerstr}`"
                 if ctx.channel.type is discord.enums.ChannelType.private:
                     details['channel'] = "`Direct Message`"
@@ -281,3 +281,29 @@ class LionBot(Bot):
     def add_command(self, command):
         if not hasattr(command, '_placeholder_group_'):
             super().add_command(command)
+
+    def request_chunking_for(self, guild):
+        if not guild.chunked:
+            return asyncio.create_task(
+                self._connection.chunk_guild(guild, wait=False, cache=True),
+                name=f"Background chunkreq for {guild.id}"
+            )
+
+    async def on_interaction(self, interaction: discord.Interaction):
+        """
+        Adds the interaction author to guild cache if appropriate.
+
+        This gets run a little bit late, so it is possible the interaction gets handled
+        without the author being in case.
+        """
+        guild = interaction.guild
+        user = interaction.user
+        if guild is not None and user is not None and isinstance(user, discord.Member):
+            if not guild.get_member(user.id):
+                guild._add_member(user)
+        if guild is not None and not guild.chunked:
+            # Getting an interaction in the guild is a good enough reason to request chunking
+            logger.info(
+                f"Unchunked guild <gid: {guild.id}> requesting chunking after interaction."
+            )
+            self.request_chunking_for(guild)

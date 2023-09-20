@@ -253,6 +253,12 @@ class ScheduledSession:
                 overwrites = room.overwrites
                 for member in members:
                     mobj = guild.get_member(member.userid)
+                    if not mobj and not guild.chunked:
+                        self.bot.request_chunking_for(guild)
+                        try:
+                            mobj = await guild.fetch_member(member.userid)
+                        except discord.HTTPException:
+                            mobj = None
                     if mobj:
                         overwrites[mobj] = discord.PermissionOverwrite(connect=True, view_channel=True)
                 try:
@@ -297,6 +303,13 @@ class ScheduledSession:
                 }
                 for member in members:
                     mobj = guild.get_member(member.userid)
+                    if not mobj and not guild.chunked:
+                        self.bot.request_chunking_for(guild)
+                        try:
+                            mobj = await guild.fetch_member(member.userid)
+                        except discord.HTTPException:
+                            mobj = None
+
                     if mobj:
                         overwrites[mobj] = discord.PermissionOverwrite(connect=True, view_channel=True)
                 try:

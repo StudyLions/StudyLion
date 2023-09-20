@@ -503,7 +503,15 @@ class RankCog(LionCog):
 
         # Ensure guild is chunked
         if not guild.chunked:
-            members = await guild.chunk()
+            try:
+                members = await asyncio.wait_for(guild.chunk(), timeout=60)
+            except asyncio.TimeoutError:
+                error = t(_p(
+                    'rank_refresh|error:cannot_chunk|desc',
+                    "Could not retrieve member list from Discord. Please try again later."
+                ))
+                await ui.set_error(error)
+                return
         else:
             members = guild.members
         ui.stage_members = True

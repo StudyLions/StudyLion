@@ -32,7 +32,7 @@ async def high_management(bot: LionBot, member: discord.Member, guild: discord.G
 async def low_management(bot: LionBot, member: discord.Member, guild: discord.Guild):
     if not guild:
         return True
-    if await high_management(bot, member):
+    if await high_management(bot, member, guild):
         return True
     return member.guild_permissions.manage_guild
 
@@ -196,7 +196,7 @@ async def equippable_role(bot: LionBot, target_role: discord.Role, actor: discor
                 "You need the `MANAGE_ROLES` permission before you can configure roles!"
             )).format(role=target_role.mention)
         )
-    elif actor.top_role <= target_role and not actor == guild.owner:
+    elif actor.top_role <= target_role and not actor.id == guild.owner_id:
         raise UserInputError(
             t(_p(
                 'ward:equippable_role|error:actor_top_role',

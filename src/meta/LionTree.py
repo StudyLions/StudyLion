@@ -82,7 +82,7 @@ class LionTree(CommandTree):
             details['guild'] = f"`{interaction.guild.id}` -- `{interaction.guild.name}`"
             details['my_guild_perms'] = f"`{interaction.guild.me.guild_permissions.value}`"
             if interaction.user:
-                ownerstr = ' (owner)' if interaction.user == interaction.guild.owner else ''
+                ownerstr = ' (owner)' if interaction.user.id == interaction.guild.owner_id else ''
                 details['user_guild_perms'] = f"`{interaction.user.guild_permissions.value}{ownerstr}`"
         if interaction.channel.type is discord.enums.ChannelType.private:
             details['channel'] = "`Direct Message`"

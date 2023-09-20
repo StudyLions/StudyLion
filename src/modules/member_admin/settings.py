@@ -173,7 +173,7 @@ class MemberAdminSettings(SettingGroup):
                     '{guild_name}': guild.name,
                     '{guild_icon}': guild.icon.url if guild.icon else member.default_avatar.url,
                     '{studying_count}': str(active),
-                    '{member_count}': len(guild.members),
+                    '{member_count}': guild.member_count,
                 }
 
                 recurse_map(
@@ -297,7 +297,7 @@ class MemberAdminSettings(SettingGroup):
                     '{guild_name}': guild.name,
                     '{guild_icon}': guild.icon.url if guild.icon else member.default_avatar.url,
                     '{studying_count}': str(active),
-                    '{member_count}': str(len(guild.members)),
+                    '{member_count}': str(guild.member_count),
                     '{last_time}': str(last_seen or member.joined_at.timestamp()),
                 }
 
