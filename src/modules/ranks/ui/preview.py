@@ -112,6 +112,7 @@ class RankPreviewUI(MessageUI):
         await submit.response.defer(thinking=False)
         if self.parent is not None:
             asyncio.create_task(self.parent.refresh())
+        self.bot.get_cog('RankCog').flush_guild_ranks(self.guild.id)
         await self.refresh()
 
     @button(label="DELETE_PLACEHOLDER", style=ButtonStyle.red)
@@ -130,6 +131,7 @@ class RankPreviewUI(MessageUI):
             role = None
 
         await self.rank.delete()
+        self.bot.get_cog('RankCog').flush_guild_ranks(self.guild.id)
 
         mention = role.mention if role else str(self.rank.roleid)
 
@@ -231,6 +233,7 @@ class RankPreviewUI(MessageUI):
         elif role.is_assignable():
             # Update the rank role
             await self.rank.update(roleid=role.id)
+            self.bot.get_cog('RankCog').flush_guild_ranks(self.guild.id)
             if self.parent is not None and not self.parent.is_finished():
                 asyncio.create_task(self.parent.refresh())
             await self.refresh(thinking=selection)
