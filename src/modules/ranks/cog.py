@@ -438,7 +438,7 @@ class RankCog(LionCog):
         required = format_stat_range(rank_type, rank.required, short=False)
 
         key_map = {
-            '{role_name}': role.name,
+            '{role_name}': role.name if role else 'Unknown',
             '{guild_name}': guild.name,
             '{user_name}': member.name,
             '{role_id}': role.id,
