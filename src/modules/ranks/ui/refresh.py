@@ -64,9 +64,12 @@ class RankRefreshUI(MessageUI):
     def poke(self):
         self._wakeup.set()
 
+    def start(self):
+        self._loop_task = asyncio.create_task(self._refresh_loop(), name='Rank RefreshUI Monitor')
+
     async def run(self, *args, **kwargs):
         await super().run(*args, **kwargs)
-        self._loop_task = asyncio.create_task(self._refresh_loop(), name='refresh ui loop')
+        self.start()
 
     async def cleanup(self):
         if self._loop_task and not self._loop_task.done():

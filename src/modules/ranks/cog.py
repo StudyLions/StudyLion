@@ -495,6 +495,7 @@ class RankCog(LionCog):
             await interaction.response.defer(thinking=False)
         ui = RankRefreshUI(self.bot, guild, callerid=interaction.user.id, timeout=None)
         await ui.send(interaction.channel)
+        ui.start()
 
         # Retrieve fresh rank roles
         ranks = await self.get_guild_ranks(guild.id, refresh=True)
