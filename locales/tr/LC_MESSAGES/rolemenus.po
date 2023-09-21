@@ -125,8 +125,8 @@ msgid ""
 "I lack the `MANAGE_ROLES` permission required to offer roles from role "
 "menus."
 msgstr ""
-"Rol menülerinden roller sunmak için gereken \"MANAGE_ROLES\" yetkisine sahip"
-" değilim."
+"Rol menülerinden roller sunmak için gereken \"ROLLERİ_YÖNET\" yetkisine "
+"sahip değilim."
 
 #: src/modules/rolemenus/cog.py:496
 #, possible-python-brace-format
