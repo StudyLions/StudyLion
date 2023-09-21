@@ -516,7 +516,7 @@ msgctxt "cmd:room_transfer|success|description"
 msgid ""
 "You have successfully transferred ownership of {channel} to {new_owner}."
 msgstr ""
-"{channel} kanalının oda sahipliğini {new_owner} kullanıcına başarıyla "
+"{channel} kanalının oda sahipliğini {new_owner} kullanıcısına başarıyla "
 "devrettin."
 
 #: src/modules/rooms/cog.py:852
