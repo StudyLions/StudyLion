@@ -13,6 +13,7 @@ from aiohttp import ClientSession
 from data import Database
 from utils.lib import tabulate
 from gui.errors import RenderingException
+from babel.translator import ctx_locale
 
 from .config import Conf
 from .logger import logging_context, log_context, log_action_stack, log_wrap, set_logging_context
@@ -236,6 +237,7 @@ class LionBot(Bot):
                     details['cmd'] = f"`{ctx.command.qualified_name}`"
                 if ctx.author:
                     details['author'] = f"`{ctx.author.id}` -- `{ctx.author}`"
+                details['locale'] = f"`{ctx_locale.get()}`"
                 if ctx.guild:
                     details['guild'] = f"`{ctx.guild.id}` -- `{ctx.guild.name}`"
                     details['my_guild_perms'] = f"`{ctx.guild.me.guild_permissions.value}`"

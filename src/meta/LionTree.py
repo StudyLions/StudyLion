@@ -9,6 +9,7 @@ from discord.app_commands.namespace import Namespace
 
 from utils.lib import tabulate
 from gui.errors import RenderingException
+from babel.translator import ctx_locale
 
 from .logger import logging_context, set_logging_context, log_wrap, log_action_stack
 from .errors import SafeCancellation
@@ -76,6 +77,7 @@ class LionTree(CommandTree):
         details['interactiontype'] = f"`{interaction.type}`"
         if interaction.command:
             details['cmd'] = f"`{interaction.command.qualified_name}`"
+        details['locale'] = f"`{ctx_locale.get()}`"
         if interaction.user:
             details['user'] = f"`{interaction.user.id}` -- `{interaction.user}`"
         if interaction.guild:
