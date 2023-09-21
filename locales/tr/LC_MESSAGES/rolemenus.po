@@ -657,7 +657,7 @@ msgid ""
 "You need the `MANAGE_ROLES` permission in order to manage the server role "
 "menus."
 msgstr ""
-"Bu sunucudaki rol menülerini düzenleyebilmek için `MANAGE_ROLES` yetkisine "
+"Bu sunucudaki rol menülerini düzenleyebilmek için `ROLLERİ_YÖNET` yetkisine "
 "sahip olman gerekmektedir."
 
 #: src/modules/rolemenus/cog.py:1668
