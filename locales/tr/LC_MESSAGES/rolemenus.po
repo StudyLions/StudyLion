@@ -1441,7 +1441,7 @@ msgstr "Mesaj Şablonu Seç"
 #: src/modules/rolemenus/ui/menueditor.py:707
 msgctxt "ui:menu_editor|menu:template|option:custom|label"
 msgid "Custom Message"
-msgstr "Özel Mesa"
+msgstr "Özel Mesaj"
 
 #: src/modules/rolemenus/ui/menueditor.py:712
 msgctxt "ui:menu_editor|menu:template|option:custom|description"
