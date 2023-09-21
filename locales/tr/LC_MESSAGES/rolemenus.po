@@ -1293,7 +1293,7 @@ msgid ""
 "Failed to display preview!\n"
 "**Error:** `{exception}`"
 msgstr ""
-"Öngösterimi gösterme sırasında başarısız olundu!\n"
+"Öngösterimi oluşturma sırasında hata oluştu!\n"
 "**Hata:** `{exception}`"
 
 #: src/modules/rolemenus/ui/menueditor.py:151
