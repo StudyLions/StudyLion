@@ -156,7 +156,7 @@ msgstr "Sahip"
 #: src/modules/rooms/roomui.py:385
 msgctxt "ui:room_status|embed|field:created|name"
 msgid "Created At"
-msgstr "..'da Oluşturuldu"
+msgstr "Oluşturulduğu Saat"
 
 #: src/modules/rooms/roomui.py:395
 #, possible-python-brace-format
@@ -196,7 +196,7 @@ msgstr "oda"
 #: src/modules/rooms/cog.py:322
 msgctxt "cmd:room|desc"
 msgid "Base command group for private room configuration."
-msgstr "Özel komut yapılandırması için temel komut grubu."
+msgstr "Özel komut konfigürasyonu için temel komut grubu."
 
 #: src/modules/rooms/cog.py:329
 msgctxt "cmd:room_rent"
