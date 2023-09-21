@@ -87,7 +87,7 @@ msgid ""
 "Malformed message link. Please copy the link by right clicking the target "
 "message."
 msgstr ""
-"Yanlış biçimlendirilmiş mesaj linki. Sağ butona basarak hedef mesajın "
+"Yanlış biçimlendirilmiş mesaj linki. Sağ fare tuşuna basarak hedef mesajın "
 "bağlantısını kopyalayın."
 
 #: src/modules/rolemenus/cog.py:322
