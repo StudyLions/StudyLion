@@ -350,7 +350,7 @@ msgstr "Kullanmak için özel mesaj menüsü ekleyin"
 msgctxt "cmd:rolemenu_edit|error:author_perms"
 msgid "You need the `MANAGE_ROLES` permission in order to edit role menus."
 msgstr ""
-"Rol menülerini düzenlemek için `ROLLERİ_DÜZENLE` yetkisine sahip olman "
+"Rol menülerini düzenlemek için `ROLLERİ_YÖNET` yetkisine sahip olman "
 "gerekiyor."
 
 #: src/modules/rolemenus/cog.py:871
@@ -358,7 +358,7 @@ msgctxt "cmd:rolemenu_edit|error:my_perms"
 msgid ""
 "I lack the `MANAGE_ROLES` permission needed to offer roles from role menus."
 msgstr ""
-"Rol menülerinden roller sunmak için gereken \"MANAGE_ROLES\" iznine sahip "
+"Rol menülerinden roller sunmak için gereken \"ROLLERİ_YÖNET\" iznine sahip "
 "değilim."
 
 #: src/modules/rolemenus/cog.py:894
