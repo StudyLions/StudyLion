@@ -971,6 +971,8 @@ class RoleMenuCog(LionCog):
                 )
                 # TODO: Generate the custom message from the template if it doesn't exist
 
+        # TODO: Pathway for setting menu style
+
         if rawmessage is not None:
             msg_config = target.config.rawmessage
             content = await msg_config.download_attachment(rawmessage)
@@ -1356,7 +1358,7 @@ class RoleMenuCog(LionCog):
             await target.update_message()
             if target_is_reaction:
                 try:
-                    await self.menu.update_reactons()
+                    await target.update_reactons()
                 except SafeCancellation as e:
                     embed.add_field(
                         name=t(_p(
