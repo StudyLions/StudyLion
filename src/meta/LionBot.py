@@ -21,6 +21,7 @@ from .context import context
 from .LionContext import LionContext
 from .LionTree import LionTree
 from .errors import HandledException, SafeCancellation
+from .monitor import SystemMonitor, ComponentMonitor, StatusLevel, ComponentStatus
 
 if TYPE_CHECKING:
     from core import CoreCog
@@ -48,8 +49,39 @@ class LionBot(Bot):
         self.core: Optional['CoreCog'] = None
         self.translator = translator
 
+        self.system_monitor = SystemMonitor()
+        self.monitor = ComponentMonitor('LionBot', self._monitor_status)
+        self.system_monitor.add_component(self.monitor)
+
         self._locks = WeakValueDictionary()
         self._running_events = set()
+
+    async def _monitor_status(self):
+        if self.is_closed():
+            level = StatusLevel.ERRORED
+            info = "(ERROR) Websocket is closed"
+            data = {}
+        elif self.is_ws_ratelimited():
+            level = StatusLevel.WAITING
+            info = "(WAITING) Websocket is ratelimited"
+            data = {}
+        elif not self.is_ready():
+            level = StatusLevel.STARTING
+            info = "(STARTING) Not yet ready"
+            data = {}
+        else:
+            level = StatusLevel.OKAY
+            info = (
+                "(OK) "
+                "Logged in with {guild_count} guilds, "
+                ", websocket latency {latency}, and {events} running events."
+            )
+            data = {
+                'guild_count': len(self.guilds),
+                'latency': self.latency,
+                'events': len(self._running_events),
+            }
+        return ComponentStatus(level, info, info, data)
 
     async def setup_hook(self) -> None:
         log_context.set(f"APP: {self.application_id}")

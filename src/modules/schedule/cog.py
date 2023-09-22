@@ -13,6 +13,7 @@ from meta import LionCog, LionBot, LionContext
 from meta.logger import log_wrap
 from meta.errors import UserInputError, ResponseTimedOut
 from meta.sharding import THIS_SHARD
+from meta.monitor import ComponentMonitor, ComponentStatus, StatusLevel
 from utils.lib import utc_now, error_embed
 from utils.ui import Confirm
 from utils.data import MULTIVALUE_IN, MEMBERS
@@ -38,6 +39,10 @@ class ScheduleCog(LionCog):
         self.bot = bot
         self.data: ScheduleData = bot.db.load_registry(ScheduleData())
         self.settings = ScheduleSettings()
+        self.monitor = ComponentMonitor(
+            'ScheduleCog',
+            self._monitor
+        )
 
         # Whether we are ready to take events
         self.initialised = asyncio.Event()
@@ -57,12 +62,56 @@ class ScheduleCog(LionCog):
 
         self.session_channels = self.settings.SessionChannels._cache
 
+    async def _monitor(self):
+        nowid = self.nowid
+        now = None
+        now_lock = self.slotlock(nowid)
+        if not self.initialised.is_set():
+            level = StatusLevel.STARTING
+            info = (
+                "(STARTING) "
+                "Not ready. "
+                "Spawn task is {spawn}. "
+                "Spawn lock is {spawn_lock}. "
+                "Active slots {active}."
+            )
+        elif nowid not in self.active_slots:
+            level = StatusLevel.UNSURE
+            info = (
+                "(UNSURE) "
+                "Setup, but current slotid {nowid} not active. "
+                "Spawn task is {spawn}. "
+                "Spawn lock is {spawn_lock}. "
+                "Now lock is {now_lock}. "
+                "Active slots {active}."
+            )
+        else:
+            now = self.active_slots[nowid]
+            level = StatusLevel.OKAY
+            info = (
+                "(OK) "
+                "Running current slot {now}. "
+                "Spawn lock is {spawn_lock}. "
+                "Now lock is {now_lock}. "
+                "Active slots {active}."
+            )
+        data = {
+            'spawn': self.spawn_task,
+            'spawn_lock': self.spawn_lock,
+            'active': self.active_slots,
+            'nowid': nowid,
+            'now_lock': now_lock,
+            'now': now,
+        }
+        return ComponentStatus(level, info, info, data)
+
     @property
     def nowid(self):
         now = utc_now()
         return time_to_slotid(now)
 
     async def cog_load(self):
+        self.bot.system_monitor.add_component(self.monitor)
         await self.data.init()
 
         # Update the session channel cache
