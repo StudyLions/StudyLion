@@ -949,7 +949,7 @@ class MenuEditor(MessageUI):
             title=title, description=desc
         )
         # Send as response with the repost widget attached
-        await press.response.send_message(embed=embed, view=AsComponents(repost_widget))
+        await press.response.send_message(embed=embed, view=AsComponents(repost_widget), ephemeral=True)
 
     async def repost_button_refresh(self):
         t = self.bot.translator.t
@@ -1040,7 +1040,7 @@ class MenuEditor(MessageUI):
         role_index = int(splits[i-1])
         mrole = self.menu.roles[role_index]
 
-        error = discord.Embed(
+        embed = discord.Embed(
             colour=discord.Colour.brand_red(),
             title=t(_p(
                 'ui:menu_editor|error:invald_emoji|title',
@@ -1052,7 +1052,7 @@ class MenuEditor(MessageUI):
             )).format(emoji=mrole.config.emoji.data, label=mrole.config.label.data)
         )
         await mrole.data.update(emoji=None)
-        await self.channel.send(embed=error)
+        await self.channel.send(embed=embed)
 
     async def _redraw(self, args):
         try:
