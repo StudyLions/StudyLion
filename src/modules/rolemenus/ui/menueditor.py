@@ -190,7 +190,10 @@ class MenuEditor(MessageUI):
                     if not userstr:
                         new_data = None
                     else:
-                        new_data = await instance._parse_string(instance.parent_id, userstr)
+                        new_data = await instance._parse_string(
+                            instance.parent_id, userstr,
+                            guildid=self.menu.data.guildid
+                        )
                     instance.data = new_data
                     modified.append(instance)
             if modified:
@@ -349,7 +352,9 @@ class MenuEditor(MessageUI):
                     if not userstr:
                         new_data = None
                     else:
-                        new_data = await instance._parse_string(instance.parent_id, userstr, interaction=interaction)
+                        new_data = await instance._parse_string(
+                            instance.parent_id, userstr, interaction=interaction
+                        )
                     instance.data = new_data
                     modified.append(instance)
             if modified:

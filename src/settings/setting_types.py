@@ -396,7 +396,7 @@ class RoleSetting(InteractiveSetting[ParentID, int, Union[discord.Role, discord.
         if data is not None:
             role = None
 
-            guildid = cls._get_guildid(parent_id)
+            guildid = cls._get_guildid(parent_id, **kwargs)
             bot = ctx_bot.get()
             guild = bot.get_guild(guildid)
             if guild is not None:
@@ -409,11 +409,14 @@ class RoleSetting(InteractiveSetting[ParentID, int, Union[discord.Role, discord.
     async def _parse_string(cls, parent_id, string: str, **kwargs):
         if not string or string.lower() == 'none':
             return None
+        guildid = cls._get_guildid(parent_id, **kwargs)
 
         t = ctx_translator.get().t
         bot = ctx_bot.get()
         role = None
-        guild = bot.get_guild(parent_id)
+        guild = bot.get_guild(guildid)
+        if guild is None:
+            raise ValueError("Attempting to parse role string with no guild.")
 
         if string.isdigit():
             maybe_id = int(string)
