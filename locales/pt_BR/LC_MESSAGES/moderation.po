@@ -197,7 +197,7 @@ msgstr "canal_alertas"
 msgctxt "guildset:alert_channel|desc"
 msgid "Moderation notification channel for members with DMs disabled."
 msgstr ""
-"Canal de notificações sobre a moderação de membros com mensagem direta "
+"Canal para o envio de notificações e avisos a membros com mensagem direta "
 "desabilitada."
 
 #: src/modules/moderation/settings.py:77
