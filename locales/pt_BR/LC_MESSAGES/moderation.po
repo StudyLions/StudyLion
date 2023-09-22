@@ -260,7 +260,7 @@ msgstr ""
 #: src/modules/moderation/settings.py:137
 msgctxt "guildset:mod_role|accepts"
 msgid "Moderation role name or id."
-msgstr "Nome do cargo de moderador, ou id deste."
+msgstr "Nome, ou ID, do cargo de moderador."
 
 #: src/modules/moderation/settings.py:151
 #, possible-python-brace-format
