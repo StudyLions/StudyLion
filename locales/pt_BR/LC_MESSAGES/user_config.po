@@ -39,9 +39,10 @@ msgid ""
 "you, including personal statistics. Note that leaderboards will still be "
 "shown in the server's own timezone."
 msgstr ""
-"Todas as funcionalidades relacionadas ao tempo pessoal do StudyLion usarão "
-"este fuso horário para você, incluindo estatísticas pessoais. Note que os "
-"rankings de classificação ainda serão exibidos no fuso horário do servidor."
+"Todas as funcionalidades do StudyLion, para você, relacionadas ao horário, "
+"usarão este fuso. Incluindo suas  estatísticas pessoais. Note que os "
+"rankings de classificação ainda serão exibidos no fuso horário padrão do "
+"servidor."
 
 #: src/modules/user_config/cog.py:60
 #, possible-python-brace-format
