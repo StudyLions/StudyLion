@@ -644,7 +644,7 @@ class MenuEditor(MessageUI):
             self.bot, json.loads(self.menu.data.rawmessage), callback=self._editor_callback, callerid=self._callerid
         )
         self._slaves.append(editor)
-        await editor.run(interaction)
+        await editor.run(interaction, ephemeral=True)
 
     # Template/Custom Menu
     @select(cls=Select, placeholder="TEMPLATE_MENU_PLACEHOLDER", min_values=1, max_values=1)
@@ -821,20 +821,15 @@ class MenuEditor(MessageUI):
         """
         Display or update the preview message.
         """
-        args = await self.menu.make_args()
-        view = await self.menu.make_view()
         if self._preview is not None:
             try:
                 await self._preview.delete_original_response()
             except discord.HTTPException:
                 pass
             self._preview = None
-        await press.response.send_message(
-            **args.send_args,
-            view=view or discord.utils.MISSING,
-            ephemeral=True
-        )
+        await press.response.defer(thinking=True, ephemeral=True)
         self._preview = press
+        await self.update_preview()
 
     async def preview_button_refresh(self):
         t = self.bot.translator.t
@@ -887,13 +882,14 @@ class MenuEditor(MessageUI):
                         description=desc
                     )
                     await selection.edit_original_response(embed=embed)
-                except discord.HTTPException:
+                except discord.HTTPException as e:
                     error = discord.Embed(
                         colour=discord.Colour.brand_red(),
                         description=t(_p(
                             'ui:menu_editor|button:repost|widget:repost|error:post_failed',
-                            "An error ocurred while posting to {channel}. Do I have sufficient permissions?"
-                        )).format(channel=channel.mention)
+                            "An unknown error ocurred while posting to {channel}!\n"
+                            "**Error:** `{exception}`"
+                        )).format(channel=channel.mention, exception=e.text)
                     )
                     await selection.edit_original_response(embed=error)
                 else:

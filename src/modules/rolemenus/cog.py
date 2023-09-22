@@ -976,11 +976,16 @@ class RoleMenuCog(LionCog):
         if rawmessage is not None:
             msg_config = target.config.rawmessage
             content = await msg_config.download_attachment(rawmessage)
-            data = await msg_config._parse_string(content)
+            data = await msg_config._parse_string(0, content)
             update_args[msg_config._column] = data
             if template is None:
                 update_args[self.data.RoleMenu.templateid.name] = None
-            ack_lines.append(msg_config.update_message)
+            ack_lines.append(
+                t(_p(
+                    'cmd:rolemenu_edit|parse:custom_message|success',
+                    "Custom menu message updated."
+                ))
+            )
 
         # Update the data, if applicable
         if update_args:
