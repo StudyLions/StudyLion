@@ -238,7 +238,7 @@ msgstr "Não configurado (somente alertar via mensagem direta)"
 #: src/modules/moderation/settings.py:123
 msgctxt "guildset:mod_role"
 msgid "mod_role"
-msgstr "mod_role"
+msgstr "cargo_moderador"
 
 #: src/modules/moderation/settings.py:126
 msgctxt "guildset:mod_role|desc"
