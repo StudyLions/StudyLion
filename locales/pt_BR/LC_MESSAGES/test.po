@@ -43,7 +43,7 @@ msgstr "teste_provisório"
 
 #: src/modules/test/test.py:102
 msgid "Test ephemeral delete and edit"
-msgstr "Apagar e editar Test ephemeral "
+msgstr "Apagar e editar Teste Provisório"
 
 #: src/modules/test/test.py:114
 msgid "colours"
