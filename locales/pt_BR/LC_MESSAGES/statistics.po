@@ -405,7 +405,7 @@ msgstr "Meta de Tarefas"
 #: src/modules/statistics/ui/weeklymonthly.py:148
 msgctxt "modal:goal_editor|field:task_goal|placeholder"
 msgid "Enter the number of tasklist tasks you aim to do"
-msgstr "Digite o número de tarefas para ser o objetivo."
+msgstr "Digite o número de tarefas da lista-de-tarefas a cumprir."
 
 #: src/modules/statistics/ui/weeklymonthly.py:159
 #, possible-python-brace-format
