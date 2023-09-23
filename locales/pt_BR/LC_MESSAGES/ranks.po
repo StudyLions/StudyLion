@@ -358,7 +358,7 @@ msgid ""
 "Whether to send rank advancement notifications through direct messages."
 msgstr ""
 "Se devo enviar a progressão nos níveis classificatórios através de mensagens"
-" privadas."
+" diretas."
 
 #: src/modules/ranks/settings.py:160
 msgctxt "guildset:dm_ranks|long_desc"
