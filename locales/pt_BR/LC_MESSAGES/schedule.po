@@ -136,7 +136,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:schedule|create_booking|success"
 msgid "You have successfully scheduled a session at {time}."
-msgstr "Você fez o check-in das {time} com sucesso."
+msgstr "Você fez o agendamento das {time} com sucesso."
 
 #: src/modules/schedule/cog.py:847
 msgctxt "cmd:configure_schedule"
