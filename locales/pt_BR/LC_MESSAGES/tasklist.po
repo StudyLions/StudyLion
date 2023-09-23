@@ -446,7 +446,7 @@ msgstr "des-ticar"
 #: src/modules/tasklist/cog.py:898
 msgctxt "cmd:tasks_untick|desc"
 msgid "Mark the given tasks as incomplete."
-msgstr "Marca a tarefa determinada como incompleta."
+msgstr "Marca a tarefa indicada como incompleta."
 
 #: src/modules/tasklist/cog.py:901
 msgctxt "cmd:tasks_untick|param:taskidstr"
