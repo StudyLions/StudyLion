@@ -363,9 +363,10 @@ msgid ""
 "will be awarded this many LionCoins. Should generally be more than the "
 "`schedule_cost` setting."
 msgstr ""
-"Quando um membro consegue comparecer ao check-in agendado, ele irá receber "
-"esta quantidade de LionCoins. Este valor, geralmente, deve ser maior do que "
-"o configurado como ˋcusto_do_check-inˋ."
+"Quando um membro comparece a um horário agendado, é considerado feito o "
+"check-in. Por este check-in, ele irá receber esta quantidade de LionCoins. "
+"Este valor, geralmente, deve ser mais alto do que o valor configurado como "
+"ˋcusto_do_agendamentoˋ."
 
 #: src/modules/schedule/settings.py:269
 msgctxt "guildset:attendance_reward|accepts"
