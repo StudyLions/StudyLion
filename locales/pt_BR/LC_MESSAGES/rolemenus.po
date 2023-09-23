@@ -1090,8 +1090,8 @@ msgid ""
 msgstr ""
 "Quando habilitado, os membros não estarão aptos a retirar os cargos "
 "atribuídos por este menu. Observe que, quando desabilitado, os membros "
-"poderão retirar os cargos através do menu de cargos, caso não tenha sido "
-"colocado por lá."
+"poderão retirar os cargos através do menu de cargos, mesmo aqueles que não "
+"tenham sido colocado por lá."
 
 #: src/modules/rolemenus/menuoptions.py:110
 msgctxt "menuset:sticky|set_response:true"
