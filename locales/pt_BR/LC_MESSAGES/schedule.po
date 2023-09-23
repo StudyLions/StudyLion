@@ -314,7 +314,8 @@ msgstr "custo_do_agendamento"
 #: src/modules/schedule/settings.py:214
 msgctxt "guildset:schedule_cost|desc"
 msgid "Booking cost for each scheduled session."
-msgstr "Custo de agendamento para cada check-in feito."
+msgstr ""
+"Custo de agendamento para cada horário que você deverá fazer o check-in ."
 
 #: src/modules/schedule/settings.py:218
 msgctxt "guildset:schedule_cost|long_desc"
