@@ -400,8 +400,8 @@ msgstr "bonus_comprometimento_do_grupo"
 msgctxt "guildset:attendance_bonus|desc"
 msgid "Bonus reward given when all members attend a scheduled session."
 msgstr ""
-"Recompensa bônus dada quando todos os membros comparecerem ao check-in que "
-"foi programado."
+"Recompensa bônus a ser dada quando todos os membros agendados comparecerem "
+"para check-in naquele horário."
 
 #: src/modules/schedule/settings.py:307
 msgctxt "guildset:attendance_bonus|long_desc"
