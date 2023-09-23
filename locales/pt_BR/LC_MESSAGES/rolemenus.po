@@ -1449,7 +1449,9 @@ msgstr "Menu Suspenso"
 #: src/modules/rolemenus/ui/menueditor.py:627
 msgctxt "ui:menu_editor|menu:style|option:dropdown|desc"
 msgid "Roles are selectable from a dropdown menu below the message."
-msgstr "Os cargos são selecionáveis por um menu suspenso abaixo da mensagem. "
+msgstr ""
+"Os cargos serão selecionáveis por um menu, que aparecerá suspenso ao clicar "
+"na mensagem. "
 
 #: src/modules/rolemenus/ui/menueditor.py:697
 msgctxt "ui:menu_editor|menu:template|placeholder"
