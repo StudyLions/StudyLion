@@ -275,7 +275,7 @@ msgstr ""
 "configurada) irá ser contabilizada como comparecimento ao agendamento feito."
 " Caso seja selecionada uma categoria, ao invés de um canal, todos os canais "
 "pertencentes a esta, também serão contabilizáveis. O contador de check-in's "
-"irá respeitar a configuração de \"canais_nao_contabilizadosˋ."
+"irá respeitar a configuração de ˋcanais_nao_contabilizadosˋ."
 
 #: src/modules/schedule/settings.py:149
 msgctxt "guildset:session_channels|accepts"
