@@ -476,8 +476,8 @@ msgstr "transferir"
 msgctxt "cmd:room_transfer|desc"
 msgid "Transfer your private room to another room member. Not reversible!"
 msgstr ""
-"Transferir sua sala particular para a sala de outro membro. Não é "
-"reversível!"
+"Transferir a titularidade da sua sala particular para outro membro. Isto não"
+" é reversível!"
 
 #: src/modules/rooms/cog.py:774
 msgctxt "cmd:room_transfer|param:new_owner"
