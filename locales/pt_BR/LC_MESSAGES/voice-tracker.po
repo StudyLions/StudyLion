@@ -391,8 +391,8 @@ msgid ""
 " not affect members currently in voice channels.)"
 msgstr ""
 "As horas dos membros serão contadas até {duration} por dia. (**Atenção:** "
-"Esta configuração não irá surtir efeito sobre as contagens atuais dos "
-"canais.)"
+"Esta configuração não irá surtir efeito sobre os membros que já estão dentro"
+" dos canais.)"
 
 #: src/tracking/voice/settings.py:335
 msgctxt "ui:voice_tracker_config|button:close|label"
