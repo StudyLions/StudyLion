@@ -597,7 +597,7 @@ msgstr "**Calculando os níveis adequados:** {emoji}"
 #: src/modules/ranks/ui/refresh.py:198
 msgctxt "ui:refresh_ranks|embed|field:remove|name"
 msgid "Removing invalid rank roles from members"
-msgstr "Removendo os ranks inválidos dos membros."
+msgstr "Removendo os cargos de níveis inexistentes dos membros."
 
 #: src/modules/ranks/ui/refresh.py:202
 #, possible-python-brace-format
