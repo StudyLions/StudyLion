@@ -39,7 +39,7 @@ msgstr "Teste do editor de mensagem"
 
 #: src/modules/test/test.py:101
 msgid "test_ephemeral"
-msgstr "test_ephemeral"
+msgstr "teste_provisório"
 
 #: src/modules/test/test.py:102
 msgid "Test ephemeral delete and edit"
