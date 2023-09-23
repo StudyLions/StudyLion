@@ -628,7 +628,7 @@ msgstr "apagarcargo"
 #: src/modules/rolemenus/cog.py:1612
 msgctxt "cmd:rolemenu_delrole|desc"
 msgid "Remove a role from a role menu."
-msgstr "Apaga o cargo de um menu de cargos"
+msgstr "Apaga um cargo de um menu de cargos"
 
 #: src/modules/rolemenus/cog.py:1616
 msgctxt "cmd:rolemenu_delrole|param:menu"
