@@ -886,7 +886,7 @@ msgstr ""
 #: src/modules/ranks/ui/editor.py:97
 msgctxt "ui:rank_editor|type:xp|input:requires|label"
 msgid "Required XP"
-msgstr "XP Necessária"
+msgstr "EXP Necessária"
 
 #: src/modules/ranks/ui/editor.py:101
 msgctxt "ui:rank_editor|type:xp|input:requires|placeholder"
