@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 22:43+0300\n"
+"POT-Creation-Date: 2023-09-13 08:47+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
@@ -86,7 +86,7 @@ msgid ""
 "from the autocomplete options."
 msgstr ""
 "O intervalo de tempo ˋ{provided}ˋ não reconhecido. Por favor, selecione um "
-"horário a cancelar das opções que aparecem no autopreenchimento. "
+"horário a cancelar entre as opções que aparecem no autopreenchimento. "
 
 #: src/modules/schedule/cog.py:716
 #, possible-python-brace-format
