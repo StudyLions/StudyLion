@@ -380,7 +380,7 @@ msgctxt "reminder|formatted|interval"
 msgid "Every day"
 msgid_plural "Every `{days}` days"
 msgstr[0] "Todo dia"
-msgstr[1] "Todos os ˋ{days}ˋ dias"
+msgstr[1] "A cada ˋ{days}ˋ dias"
 msgstr[2] "A cada ˋ{days}ˋ dias"
 
 #: src/modules/reminders/data.py:144
