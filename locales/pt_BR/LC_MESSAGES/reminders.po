@@ -390,7 +390,7 @@ msgid "Every hour"
 msgid_plural "Every `{hours}` hours"
 msgstr[0] "A cada hora"
 msgstr[1] "Todas ˋ{hours}ˋ horas"
-msgstr[2] "Todas ˋ{hours}ˋ horas"
+msgstr[2] "A cada ˋ{hours}ˋ horas"
 
 #: src/modules/reminders/data.py:153
 #, possible-python-brace-format
