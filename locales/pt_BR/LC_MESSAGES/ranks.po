@@ -558,7 +558,7 @@ msgstr "Mensagem de Comemoração"
 #: src/modules/ranks/ui/refresh.py:125
 msgctxt "ui:refresh_ranks|embed|title:errored"
 msgid "Could not refresh the server ranks!"
-msgstr "Não pude atualizar as classificações de nível do servidor."
+msgstr "Não pude atualizar os níveis classificatórios do servidor."
 
 #: src/modules/ranks/ui/refresh.py:133
 msgctxt "ui:refresh_ranks|embed|title:done"
