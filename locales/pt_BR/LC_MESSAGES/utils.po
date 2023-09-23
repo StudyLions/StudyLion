@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 22:43+0300\n"
+"POT-Creation-Date: 2023-09-13 08:47+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
@@ -108,34 +108,34 @@ msgctxt "cmd:page_select|acmpl|error:no_pager"
 msgid "No active pagers in this channel!"
 msgstr "Não há pagers ativos neste canal!"
 
-#: src/utils/transformers.py:43
+#: src/utils/transformers.py:45
 #, possible-python-brace-format
 msgctxt "utils:parse_dur|error"
 msgid "Cannot parse `{value}` as a duration."
 msgstr "Não pude analisar ˋ{value}ˋ como uma duração."
 
-#: src/utils/transformers.py:68
+#: src/utils/transformers.py:71
 #, possible-python-brace-format
 msgctxt "util:Duration|acmpl|error"
 msgid "Cannot extract duration from \"{partial}\""
 msgstr "Não pude extrair a duração de ˋ{partial}ˋ"
 
-#: src/utils/lib.py:670
+#: src/utils/lib.py:678
 msgctxt "util:parse_dur|regex:day"
 msgid "(?P<value>\\d+)\\s*(?:(d)|(day))"
 msgstr "(?P<value>\\d+)\\s*(?:(d)|(dia))"
 
-#: src/utils/lib.py:677
+#: src/utils/lib.py:685
 msgctxt "util:parse_dur|regex:hour"
 msgid "(?P<value>\\d+)\\s*(?:(h)|(hour))"
 msgstr "(?P<value>\\d+)\\s*(?:(h)|(hora))"
 
-#: src/utils/lib.py:684
+#: src/utils/lib.py:692
 msgctxt "util:parse_dur|regex:minute"
 msgid "(?P<value>\\d+)\\s*(?:(m)|(min))"
 msgstr "(?P<value>\\d+)\\s*(?:(m)|(min))"
 
-#: src/utils/lib.py:691
+#: src/utils/lib.py:699
 msgctxt "util:parse_dur|regex:second"
 msgid "(?P<value>\\d+)\\s*(?:(s)|(sec))"
 msgstr "(?P<value>\\d+)\\s*(?:(s)|(seg))"
@@ -299,7 +299,7 @@ msgstr "Descrição da Integração"
 #: src/utils/ui/msgeditor.py:214
 msgctxt "ui:msg_editor|modal:body|field:title|label"
 msgid "Embed Title"
-msgstr "Título Integrado"
+msgstr "Título em Integração"
 
 #: src/utils/ui/msgeditor.py:225
 msgctxt "ui:msg_editor|modal:body|field:colour|label"
