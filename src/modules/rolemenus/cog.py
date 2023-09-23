@@ -1192,7 +1192,7 @@ class RoleMenuCog(LionCog):
                                    label: Optional[appcmds.Range[str, 1, 100]] = None,
                                    emoji: Optional[appcmds.Range[str, 0, 100]] = None,
                                    description: Optional[appcmds.Range[str, 0, 100]] = None,
-                                   price: Optional[appcmds.Range[int, 0, MAX_COINS]] = None,
+                                   price: Optional[appcmds.Range[int, -MAX_COINS, MAX_COINS]] = None,
                                    duration: Optional[Transform[int, DurationTransformer(60)]] = None,
                                    ):
         # Type checking guards
@@ -1448,7 +1448,7 @@ class RoleMenuCog(LionCog):
                                     label: Optional[appcmds.Range[str, 1, 100]] = None,
                                     emoji: Optional[appcmds.Range[str, 0, 100]] = None,
                                     description: Optional[appcmds.Range[str, 0, 100]] = None,
-                                    price: Optional[appcmds.Range[int, 0, MAX_COINS]] = None,
+                                    price: Optional[appcmds.Range[int, -MAX_COINS, MAX_COINS]] = None,
                                     duration: Optional[Transform[int, DurationTransformer(60)]] = None,
                                     ):
         # Type checking wards

@@ -165,7 +165,7 @@ class RoleMenu:
         await menu.attach()
         return menu
 
-    async def fetch_message(self, refresh=False):
+    async def fetch_message(self, refresh=False) -> Optional[discord.Message]:
         """
         Fetch the message the menu is attached to.
         """
@@ -529,11 +529,17 @@ class RoleMenu:
                     "Role removed"
                 ))
             )
-            if total_refund:
+            if total_refund > 0:
                 embed.description = t(_p(
                     'rolemenu|deselect|success:refund|desc',
                     "You have removed **{role}**, and been refunded {coin} **{amount}**."
                 )).format(role=role.name, coin=self.bot.config.emojis.coin, amount=total_refund)
+            if total_refund < 0:
+                # TODO: Consider disallowing them from removing roles if their balance would go negative
+                embed.description = t(_p(
+                    'rolemenu|deselect|success:negrefund|desc',
+                    "You have removed **{role}**, and have lost {coin} **{amount}**."
+                )).format(role=role.name, coin=self.bot.config.emojis.coin, amount=-total_refund)
             else:
                 embed.description = t(_p(
                     'rolemenu|deselect|success:norefund|desc',
@@ -551,7 +557,7 @@ class RoleMenu:
                     raise UserInputError(
                         t(_p(
                             'rolemenu|select|error:required_role',
-                            "You need to have the **{role}** role to use this!"
+                            "You need to have the role **{role}** required to use this menu!"
                         )).format(role=name)
                     )
 
@@ -647,7 +653,7 @@ class RoleMenu:
                     "Role equipped"
                 ))
             )
-            if price > 0:
+            if price:
                 embed.description = t(_p(
                     'rolemenu|select|success:purchase|desc',
                     "You have purchased the role **{role}** for {coin}**{amount}**"
@@ -665,6 +671,7 @@ class RoleMenu:
                 )).format(
                     timestamp=discord.utils.format_dt(expiry)
                 )
+            # TODO Event logging
             return embed
 
     async def interactive_selection(self, interaction: discord.Interaction, menuroleid: int):

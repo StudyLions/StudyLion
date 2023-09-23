@@ -1,14 +1,17 @@
+from typing import Optional
 import discord
 
 from settings import ModelData
 from settings.groups import SettingGroup, ModelConfig, SettingDotDict
 from settings.setting_types import (
-    RoleSetting, BoolSetting, StringSetting, DurationSetting, EmojiSetting
+    RoleSetting, StringSetting, DurationSetting, EmojiSetting
 )
 from core.setting_types import CoinSetting
 from utils.ui import AButton, AsComponents
 from meta.errors import UserInputError
+from meta import conf
 from babel.translator import ctx_translator
+from constants import MAX_COINS
 
 from .data import RoleMenuData
 from . import babel
@@ -74,6 +77,9 @@ class RoleMenuRoleOptions(SettingGroup):
                     "This menu item will now give the role {role}."
                 )).format(role=self.formatted)
                 return resp
+            else:
+                raise ValueError("Attempt to call update_message without a value.")
+
 
     @RoleMenuRoleConfig.register_model_setting
     class Label(ModelData, StringSetting):
@@ -138,7 +144,9 @@ class RoleMenuRoleOptions(SettingGroup):
             return button
 
         @classmethod
-        async def _parse_string(cls, parent_id, string: str, interaction: discord.Interaction = None, **kwargs):
+        async def _parse_string(cls, parent_id, string: str,
+                                interaction: Optional[discord.Interaction] = None,
+                                **kwargs):
             emojistr = await super()._parse_string(parent_id, string, interaction=interaction, **kwargs)
             if emojistr and interaction is not None:
                 # Use the interaction to test
@@ -151,7 +159,7 @@ class RoleMenuRoleOptions(SettingGroup):
                         view=view,
                     )
                 except discord.HTTPException:
-                    t = interaction.client.translator.t
+                    t = ctx_translator.get().t
                     raise UserInputError(t(_p(
                         'roleset:emoji|error:test_emoji',
                         "The selected emoji `{emoji}` is invalid or has been deleted."
@@ -218,34 +226,43 @@ class RoleMenuRoleOptions(SettingGroup):
         _display_name = _p('roleset:price', "price")
         _desc = _p(
             'roleset:price|desc',
-            "Price of the role, in LionCoins."
+            "Price of the role, in LionCoins. May be negative."
         )
         _long_desc = _p(
             'roleset:price|long_desc',
-            "How much the role costs when selected, in LionCoins."
+            "How many LionCoins should be deducted from a member's account "
+            "when they equip this role through this menu.\n"
+            "The price may be negative, in which case the member will instead be rewarded "
+            "coins when they equip the role."
         )
         _accepts = _p(
             'roleset:price|accepts',
-            "Amount of coins that the role costs."
+            "Amount of coins that the role costs when equipped."
         )
         _default = 0
+        _min = - MAX_COINS
         _model = RoleMenuData.RoleMenuRole
         _column = RoleMenuData.RoleMenuRole.price.name
 
         @property
         def update_message(self) -> str:
             t = ctx_translator.get().t
-            value = self.value
-            if value:
+            value = self.value or 0
+            if value > 0:
                 resp = t(_p(
-                    'roleset:price|set_response:set',
-                    "This role will now cost {price} to equip."
-                )).format(price=self.formatted)
+                    'roleset:price|set_response:positive',
+                    "Equipping this role will now cost {coin}**{price}**."
+                )).format(price=value, coin=conf.emojis.coin)
+            elif value == 0:
+                resp = t(_p(
+                    'roleset:price|set_response:zero',
+                    "Equipping this role is now free."
+                ))
             else:
                 resp = t(_p(
-                    'roleset:price|set_response:unset',
-                    "This role will now be free to equip from this role menu."
-                ))
+                    'roleset:price|set_response:negative',
+                    "Equipping this role will now reward {coin}**{price}**."
+                )).format(price=-value, coin=conf.emojis.coin)
             return resp
 
     @RoleMenuRoleConfig.register_model_setting

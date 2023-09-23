@@ -49,16 +49,20 @@ class CoinSetting(IntegerSetting):
 
         if num > cls._max:
             t = ctx_translator.get().t
-            raise UserInputError(t(_p(
-                'settype:coin|parse|error:too_large',
-                "Provided number of coins was too high!"
-            ))) from None
+            raise UserInputError(
+                t(_p(
+                    'settype:coin|parse|error:too_large',
+                    "You cannot set this to more than {coin}**{max}**!"
+                )).format(coin=conf.emojis.coin, max=cls._max)
+            ) from None
         elif num < cls._min:
             t = ctx_translator.get().t
-            raise UserInputError(t(_p(
-                'settype:coin|parse|error:too_large',
-                "Provided number of coins was too low!"
-            ))) from None
+            raise UserInputError(
+                t(_p(
+                    'settype:coin|parse|error:too_small',
+                    "You cannot set this to less than {coin}**{min}**!"
+                )).format(coin=conf.emojis.coin, min=cls._min)
+            ) from None
 
         return num
 
