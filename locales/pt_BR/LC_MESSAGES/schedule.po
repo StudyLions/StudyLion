@@ -245,8 +245,8 @@ msgstr "Nome ou ID do canal para check-in do horário agendado."
 msgctxt "guildset:session_room|set_response|set"
 msgid "Schedule session members will now be given access to {channel}"
 msgstr ""
-"Membros que fizerem o Check-in, agora serão autorizados a entrar em "
-"{channel}"
+"Agora, os membros que fizerem agendamento serão autorizados a entrar em "
+"{channel} para contar como check-in no sistema"
 
 #: src/modules/schedule/settings.py:128
 msgctxt "guildset:session_room|set_response|unset"
