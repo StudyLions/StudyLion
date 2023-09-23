@@ -72,7 +72,7 @@ msgstr ""
 #: src/modules/tasklist/cog.py:258
 msgctxt "cmd:tasklist"
 msgid "tasklist"
-msgstr "lista de tarefas"
+msgstr "lista_de_tarefas"
 
 #: src/modules/tasklist/cog.py:261
 msgctxt "cmd:tasklist|desc"
