@@ -289,7 +289,7 @@ msgstr "Adicionar Integração"
 #: src/utils/ui/msgeditor.py:192
 msgctxt "ui:msg_editor|modal:body|field:content|label"
 msgid "Message Content"
-msgstr "Conteúdo da Mensage"
+msgstr "Conteúdo da Mensagem"
 
 #: src/utils/ui/msgeditor.py:203
 msgctxt "ui:msg_editor|modal:body|field:desc|label"
