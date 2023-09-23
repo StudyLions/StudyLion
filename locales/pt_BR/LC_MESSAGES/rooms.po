@@ -488,8 +488,7 @@ msgstr "new_owner"
 msgctxt "cmd:room_transfer|param:new_owner"
 msgid "The room member you would like to transfer your room to."
 msgstr ""
-"O membro da sala, para o qual você gostaria de transferir sua sala "
-"particular."
+"O membro da sala, para quem você gostaria de transferir sua sala particular."
 
 #: src/modules/rooms/cog.py:793
 msgctxt "cmd:room_transfer|error:no_room"
