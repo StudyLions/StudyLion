@@ -834,7 +834,7 @@ msgstr "Classificação em Voz em {guild_name}"
 #, possible-python-brace-format
 msgctxt "ui:rank_overview|embed|title|type:xp"
 msgid "XP ranks in {guild_name}"
-msgstr "Classificação em XPˋs  em {guild_name}"
+msgstr "Classificação em EXPˋs  em {guild_name}"
 
 #: src/modules/ranks/ui/overview.py:433
 #, possible-python-brace-format
