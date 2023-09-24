@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-13 08:47+0300\n"
+"POT-Creation-Date: 2023-09-24 12:21+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
@@ -168,7 +168,8 @@ msgid ""
 "panel instead."
 msgstr ""
 "Oops, as configurações nesta seção são muito compridas e eu não posso "
-"mostrá-las aqui! Por favor, veja a confiugração no link do painel vinculado."
+"mostrá-las aqui! Por favor, veja mais detalhes da configuração no painel "
+"específico desta função."
 
 #. List of valid keys indicating movement to the next page
 #: src/utils/ui/pagers.py:50
