@@ -658,7 +658,7 @@ msgstr "Selecione Cargo Lista Negra"
 #: src/modules/schedule/ui/settingui.py:177
 msgctxt "ui:schedule_config|embed|title"
 msgid "Scheduled Session Configuration Panel"
-msgstr "Painel de Configuração do Sistema de Check-inˋs."
+msgstr "Painel de Configuração do Sistema de Check-in."
 
 #: src/modules/schedule/ui/settingui.py:230
 msgctxt "dash:schedule|title"
