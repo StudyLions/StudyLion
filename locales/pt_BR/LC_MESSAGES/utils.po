@@ -31,7 +31,8 @@ msgctxt "cmd:page|desc"
 msgid ""
 "Jump to a given page of the ouput of a previous command in this channel."
 msgstr ""
-"Ir para uma determinada página da saída de um comando anterior neste canal."
+"Comando utilizado para ir diretamente para uma determinada página de um "
+"painel que esteja sendo mostrado pelo Lion neste canal."
 
 #: src/utils/cog.py:34
 msgctxt "cmd:page|error:no_pager"
