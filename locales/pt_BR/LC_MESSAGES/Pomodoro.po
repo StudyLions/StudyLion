@@ -171,6 +171,8 @@ msgid ""
 "**This server has no timers set up!**\n"
 "Ask an admin to set up and configure a timer with {create_cmd} first, or rent a private room with {room_cmd} and create one yourself!"
 msgstr ""
+"**Este servidor não tem nenhum temporizador Pomodoro configurado!**\n"
+"Peça que um administrador configure e ative um, primeiramente usando {create_cmd}. Ou alugue uma sala, usando {room_cmd} e crie seu próprio temporizador! "
 
 #: src/modules/pomodoro/cog.py:381
 #, possible-python-brace-format
