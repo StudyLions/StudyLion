@@ -522,7 +522,7 @@ msgid ""
 "{new_owner}? This action is not reversible!"
 msgstr ""
 "Tem certeza que você deseja transferir sua sala particular {channel} para "
-"{new_owner}? Essa ação não é reversível!"
+"{novo_dono}? Essa ação não é reversível!"
 
 #: src/modules/rooms/cog.py:846
 #, possible-python-brace-format
