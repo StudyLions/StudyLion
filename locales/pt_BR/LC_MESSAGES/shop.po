@@ -29,7 +29,7 @@ msgstr "editarloja"
 #: src/modules/shop/cog.py:117
 msgctxt "cmd:shop"
 msgid "shop"
-msgstr ""
+msgstr "loja"
 
 #: src/modules/shop/cog.py:118
 msgctxt "cmd:shop|desc"
