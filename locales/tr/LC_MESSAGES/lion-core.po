@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 22:43+0300\n"
+"POT-Creation-Date: 2023-09-24 12:21+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Havina Ru, 2023\n"
 "Language-Team: Turkish (https://app.transifex.com/leobot/teams/174919/tr/)\n"
@@ -32,38 +32,40 @@ msgctxt "settype:coin|parse|error:notinteger"
 msgid "The coin quantity must be a positive integer!"
 msgstr "Para miktarının pozitif tam sayı olması gerekiyor!"
 
-#: src/core/setting_types.py:54
+#: src/core/setting_types.py:55
+#, possible-python-brace-format
 msgctxt "settype:coin|parse|error:too_large"
-msgid "Provided number of coins was too high!"
-msgstr "Belirtilen para miktarı çok fazla!"
+msgid "You cannot set this to more than {coin}**{max}**!"
+msgstr ""
 
-#: src/core/setting_types.py:60
-msgctxt "settype:coin|parse|error:too_large"
-msgid "Provided number of coins was too low!"
-msgstr "Belirtilen para miktarı çok az!"
+#: src/core/setting_types.py:63
+#, possible-python-brace-format
+msgctxt "settype:coin|parse|error:too_small"
+msgid "You cannot set this to less than {coin}**{min}**!"
+msgstr ""
 
-#: src/core/setting_types.py:71
+#: src/core/setting_types.py:75
 #, possible-python-brace-format
 msgctxt "settype:coin|formatted"
 msgid "{coin}**{amount}**"
 msgstr "{coin}**{amount}**"
 
-#: src/core/setting_types.py:87
+#: src/core/setting_types.py:91
 msgctxt "settype:message|accepts"
 msgid "JSON formatted raw message data"
 msgstr "JSON formatlı ham mesaj verisi"
 
-#: src/core/setting_types.py:102
+#: src/core/setting_types.py:106
 msgctxt "settype:message|download|error:not_json"
 msgid "The attached message data is not a JSON file!"
 msgstr "Eklenen mesaj verisi JSON dosyası değil!"
 
-#: src/core/setting_types.py:107
+#: src/core/setting_types.py:111
 msgctxt "settype:message|download|error:size"
 msgid "The attached message data is too large!"
 msgstr "Eklenen mesaj verisi fazla büyük!"
 
-#: src/core/setting_types.py:116
+#: src/core/setting_types.py:120
 msgctxt "settype:message|download|error:decoding"
 msgid ""
 "Could not decode the message data. Please ensure it is saved with the "
@@ -72,7 +74,7 @@ msgstr ""
 "Mesaj verileri çözülemedi. Lütfen 'UTF-8' kodlamasıyla kaydedildiğinden emin"
 " olun."
 
-#: src/core/setting_types.py:173
+#: src/core/setting_types.py:177
 #, possible-python-brace-format
 msgctxt "settype:message|error_suffix"
 msgid ""
@@ -82,7 +84,7 @@ msgstr ""
 "Çevrimiçi [gömülü içerik yapıcısı]({link}) kullanarak gömülü içeriğinizi "
 "görüntüleyebilir, test edebilir ve düzeltebilirsiniz."
 
-#: src/core/setting_types.py:185
+#: src/core/setting_types.py:189
 #, possible-python-brace-format
 msgctxt "settype:message|error:invalid_json"
 msgid ""
@@ -92,7 +94,7 @@ msgstr ""
 "Verilen mesaj verisi geçerli bir JSON dosyası değil!\n"
 "`{error}`"
 
-#: src/core/setting_types.py:193
+#: src/core/setting_types.py:197
 msgctxt "settype:message|error:json_missing_keys"
 msgid ""
 "Message data must be a JSON object with at least one of the following "
@@ -101,27 +103,27 @@ msgstr ""
 "Mesaj verileri şu alanlardan en az birine sahip bir JSON nesnesi olmalıdır: "
 "`content`, `embed`, `embeds`"
 
-#: src/core/setting_types.py:202
+#: src/core/setting_types.py:206
 msgctxt "settype:message|error:json_embed_type"
 msgid "`embed` field must be a valid JSON object."
 msgstr "`embed` alanı geçerli bir JSON verisi olmalıdır."
 
-#: src/core/setting_types.py:210
+#: src/core/setting_types.py:214
 msgctxt "settype:message|error:json_embeds_type"
 msgid "`embeds` field must be a list."
 msgstr "`embeds` kısmı bir liste olmalıdır."
 
-#: src/core/setting_types.py:217
+#: src/core/setting_types.py:221
 msgctxt "settype:message|error:json_embed_embeds"
 msgid "Message data cannot include both `embed` and `embeds`."
 msgstr "Mesaj verileri  aynı anda hem \"embed\" hem de \"embeds\" içeremez."
 
-#: src/core/setting_types.py:225
+#: src/core/setting_types.py:229
 msgctxt "settype:message|error:json_content_type"
 msgid "`content` field must be a string."
 msgstr "`içerik` alanı bir metin olmalıdır."
 
-#: src/core/setting_types.py:241
+#: src/core/setting_types.py:245
 #, possible-python-brace-format
 msgctxt "ui:settype:message|error:embed_conversion"
 msgid ""
@@ -131,7 +133,7 @@ msgstr ""
 "Gömülü mesajın verisini ayrıştıramıyorum.\n"
 "**Hata:** `{exception}`"
 
-#: src/core/setting_types.py:269
+#: src/core/setting_types.py:273
 msgctxt "settype:message|format:too_long"
 msgid "Too long to display! See Preview."
 msgstr "Gösterim için çok uzun! Önizlemeyi gör."
