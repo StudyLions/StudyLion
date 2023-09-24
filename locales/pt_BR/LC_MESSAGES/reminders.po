@@ -91,6 +91,8 @@ msgid ""
 "Cancel a single reminder. Use /reminders to clear or cancel multiple "
 "reminders."
 msgstr ""
+"Cancele um lembrete. Use /lembretes para limpar ou cancelar vários lembretes"
+" de uma vez."
 
 #: src/modules/reminders/cog.py:368
 msgctxt "cmd:reminders_cancel|param:reminder"
