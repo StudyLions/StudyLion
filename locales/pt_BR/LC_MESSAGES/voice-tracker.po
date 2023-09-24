@@ -434,4 +434,4 @@ msgstr ""
 #: src/tracking/voice/settings.py:532
 msgctxt "dash:voice_tracking|dropdown|placeholder"
 msgid "Voice Activity Panel"
-msgstr "Painel de Atividade em Chamada "
+msgstr "Painel de Atividade em Canais de Voz "
