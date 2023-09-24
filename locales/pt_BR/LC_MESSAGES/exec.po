@@ -88,7 +88,7 @@ msgstr ""
 #: src/modules/sysadmin/exec_cog.py:401
 msgid "Whether to force an extension reload even if it doesn't exist."
 msgstr ""
-"Se devo insistir em recarregar uma extenção, mesmo que ela não esteja "
+"Se devo insistir em recarregar uma extensão, mesmo que ela não esteja "
 "existente."
 
 #: src/modules/sysadmin/exec_cog.py:437
