@@ -748,7 +748,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "ui:leaderboard|since"
 msgid "Counting statistics since {timestamp}"
-msgstr ""
+msgstr "Estatísticas sendo contadas desde {timestamp}"
 
 #: src/modules/statistics/ui/leaderboard.py:463
 #, possible-python-brace-format
