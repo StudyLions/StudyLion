@@ -348,7 +348,7 @@ msgstr ""
 #: src/modules/reminders/data.py:63
 msgctxt "reminder_set|title"
 msgid "Reminder Set!"
-msgstr ""
+msgstr "Lembrete configurado!"
 
 #: src/modules/reminders/data.py:67
 #, possible-python-brace-format
