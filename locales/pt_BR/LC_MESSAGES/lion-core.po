@@ -35,7 +35,7 @@ msgstr "O número de moedas precisa ser inteiro e positivo!"
 #, possible-python-brace-format
 msgctxt "settype:coin|parse|error:too_large"
 msgid "You cannot set this to more than {coin}**{max}**!"
-msgstr ""
+msgstr "Você não pode cobrar mais do que {coin}**{max}**!"
 
 #: src/core/setting_types.py:63
 #, possible-python-brace-format
