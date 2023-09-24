@@ -822,6 +822,10 @@ msgid ""
 "voice channel! Use the **Refresh Member Ranks** button below to update all "
 "members manually."
 msgstr ""
+"Perceba também, que os Níveis somente serão atualizados quando um membro "
+"sair de um canal em que esteja contabilizando atividade. Para atualizar "
+"manualmente todos os níveis, use o botão **Atualizar Níveis dos Membros** "
+"abaixo."
 
 #: src/modules/ranks/ui/editor.py:33
 msgctxt "ui:rank_editor|input:role_name|label"
