@@ -840,7 +840,7 @@ msgstr "Parar"
 #: src/modules/pomodoro/ui/config.py:45
 msgctxt "ui:timer_options|error:timer_destroyed"
 msgid "This timer no longer exists! Closing option menu."
-msgstr ""
+msgstr "Este temporizador não existe! Fechando menu de opção."
 
 #: src/modules/pomodoro/ui/config.py:68
 msgctxt "ui:timer_options|button:edit|label"
