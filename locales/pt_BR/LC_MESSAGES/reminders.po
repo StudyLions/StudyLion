@@ -304,7 +304,7 @@ msgstr "Não pude analisar ˋ{value}ˋ como uma duração."
 #: src/modules/reminders/ui.py:180
 msgctxt "ui:reminderlist|button:new|label"
 msgid "New Reminder"
-msgstr ""
+msgstr "Novo Lembrete"
 
 #: src/modules/reminders/ui.py:208
 msgctxt "ui:reminderlist|select:remove|placeholder"
