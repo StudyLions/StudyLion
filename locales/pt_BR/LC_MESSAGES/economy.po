@@ -304,7 +304,7 @@ msgid ""
 "balance\".)"
 msgstr ""
 "Resetar o saldo de moedas de um determinado cargo, ou usuário. (Veja também "
-"o \"balanço da economia\")."
+"o \"balanço do financeiro\")."
 
 #: src/modules/economy/cog.py:526
 msgctxt "cmd:economy_reset|param:target"
