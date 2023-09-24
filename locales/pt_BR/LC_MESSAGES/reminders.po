@@ -299,7 +299,7 @@ msgstr "Configurar um Lembrete"
 #, possible-python-brace-format
 msgctxt "ui:reminderlist|button:new|modal|parse|error:interval"
 msgid "Cannot parse '{value}' as a duration."
-msgstr ""
+msgstr "Não pude analisar ˋ{value}ˋ como uma duração."
 
 #: src/modules/reminders/ui.py:180
 msgctxt "ui:reminderlist|button:new|label"
