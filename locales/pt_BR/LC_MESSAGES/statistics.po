@@ -167,7 +167,7 @@ msgid ""
 "Activity ranks will be determined based on tracked activity since this time, and the leaderboard will display activity since this time by default. Unset to disable seasons and use all-time statistics instead.\n"
 "Provided dates and times are assumed to be in the guild `timezone`, so set this first!"
 msgstr ""
-"Os Níveis de Classificação serão computados com base na atividade desde esta data, assim como a Classificação do servidor. Para que sejam usadas as estatísticas desde o início do servidor, deixe sem configurações de data.\n"
+"Os Níveis de Classificação serão computados com base na atividade desde esta data, assim como a Tabela de Classificação do servidor. Para que sejam usadas as estatísticas desde o início do servidor, deixe sem configurações de data.\n"
 "Os dias e as horas das estatísticas são baseadas no ˋfuso horárioˋ do servidor, então, configure-o primeiro!"
 
 #: src/modules/statistics/settings.py:102
