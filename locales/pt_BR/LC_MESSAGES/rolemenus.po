@@ -827,7 +827,7 @@ msgstr "Quantidade de moedas que o cargo irá custar, quando for atribuído."
 #, possible-python-brace-format
 msgctxt "roleset:price|set_response:positive"
 msgid "Equipping this role will now cost {coin}**{price}**."
-msgstr ""
+msgstr "Atribuir este cargo, irá custar {coin{**{price}**."
 
 #: src/modules/rolemenus/roleoptions.py:259
 msgctxt "roleset:price|set_response:zero"
