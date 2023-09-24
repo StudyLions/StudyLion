@@ -812,6 +812,8 @@ msgid ""
 "Ranks are determined by *all-time* statistics.\n"
 "To reward ranks from a later time (e.g. to have monthly/quarterly/yearly ranks) set the `season_start` with {stats_cmd}"
 msgstr ""
+"Os Níveis de Classificação são determinados pela estatística desde o começo da contagem.\n"
+"Para recompensar Níveis de uma classificação mais antiga, (ex. ter estatísticas de níveis mensalmente/semanalmente/anualmente), use ˋestatísticas_começoˋ em {stats_cmd}"
 
 #: src/modules/ranks/ui/overview.py:426
 msgctxt "ui:rank_overview|embed|field:note|value|voice_addendum"
