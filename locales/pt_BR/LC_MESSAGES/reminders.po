@@ -309,7 +309,7 @@ msgstr "Novo Lembrete"
 #: src/modules/reminders/ui.py:208
 msgctxt "ui:reminderlist|select:remove|placeholder"
 msgid "Select to cancel"
-msgstr ""
+msgstr "Selecione para cancelar"
 
 #: src/modules/reminders/ui.py:264
 msgctxt "ui:reminderlist|embed:list|author"
