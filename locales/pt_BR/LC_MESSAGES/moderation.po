@@ -256,6 +256,10 @@ msgid ""
 "Moderators cannot reconfigure most bot configuration, or perform operations "
 "they do not already have permission for in Discord."
 msgstr ""
+"Membros com o cargo configurado estarão autorizados a acessar meus painéis "
+"de configuração, e realizar algumas tarefas, como criar Temporizadores "
+"Pomodoro. Os moderadores não podem reconfigurar todos os comandos do bot, ou"
+" o fazer algo que não entre as permissões do seu cargo no Discord."
 
 #: src/modules/moderation/settings.py:137
 msgctxt "guildset:mod_role|accepts"
