@@ -254,7 +254,9 @@ msgstr ""
 msgctxt "guildset:video_blacklist|set_response:unset"
 msgid ""
 "Members will no longer be automatically blacklisted from video channels."
-msgstr "Membros não estarão automaticamente proibidos de salas de vídeo."
+msgstr ""
+"Membros não serão automaticamente colocados na Lista Negra de salas de "
+"vídeo."
 
 #: src/modules/video_channels/settings.py:155
 msgctxt "guildset:video_blacklist|formatted:unset"
