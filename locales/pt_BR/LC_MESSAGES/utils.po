@@ -372,7 +372,7 @@ msgstr "Link da Image de Rodapé"
 #: src/utils/ui/msgeditor.py:398
 msgctxt "ui:msg_editor|modal:footer|field:timestamp|label"
 msgid "Embed Timestamp (in ISO format)"
-msgstr "Integração de Data/Hora (em formato ISO)"
+msgstr "Link integrado de Data/Hora (em formato ISO)"
 
 #: src/utils/ui/msgeditor.py:410
 msgctxt "ui:msg_editor|modal:footer|title"
