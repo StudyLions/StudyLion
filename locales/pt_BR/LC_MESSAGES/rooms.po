@@ -773,7 +773,7 @@ msgid ""
 "permission enabled for the `@everyone` role."
 msgstr ""
 "Se ativado, novas salas particulares serão criadas com a permissão "
-"`VIEW_CHANNEL` para o cargo `@everyone`."
+"`VER_CANAL` para o cargo `@everyone`."
 
 #: src/modules/rooms/settings.py:157
 msgctxt "guildset:rooms_visible|accepts"
