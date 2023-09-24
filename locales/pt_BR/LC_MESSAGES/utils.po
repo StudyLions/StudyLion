@@ -59,7 +59,9 @@ msgstr "anterior"
 #: src/utils/cog.py:53
 msgctxt "cmd:page_prev|desc"
 msgid "Jump to the previous page of output."
-msgstr "Ir para página de saída anterior."
+msgstr ""
+"Comando utilizado para ir para a página anterior de um painel mostrado no "
+"canal."
 
 #: src/utils/cog.py:59
 msgctxt "cmd:page_first"
