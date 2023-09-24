@@ -10,6 +10,7 @@ from io import StringIO
 from functools import wraps
 from contextvars import ContextVar
 
+import discord
 from discord import Webhook, File
 import aiohttp
 
@@ -304,6 +305,10 @@ class WebHookHandler(logging.StreamHandler):
         self.webhook = Webhook.from_url(self.webhook_url, session=self.session)
 
     async def post(self, record):
+        if record.context == 'Webhook Logger':
+            # Don't livelog livelog errors
+            # Otherwise we recurse and Cloudflare hates us
+            return
         log_context.set("Webhook Logger")
         log_action_stack.set(("Logging",))
         log_app.set(record.app)
@@ -371,7 +376,7 @@ class WebHookHandler(logging.StreamHandler):
         except BucketFull:
             logger.warning(
                 "Can't keep up! "
-                "Ignoring records on live-logger {self.webhook.id}."
+                f"Ignoring records on live-logger {self.webhook.id}."
             )
             self.ignored += 1
             return
@@ -383,16 +388,22 @@ class WebHookHandler(logging.StreamHandler):
                 )
                 self.ignored = 0
 
-        if as_file or len(message) > 1900:
-            with StringIO(message) as fp:
-                fp.seek(0)
-                await self.webhook.send(
-                    f"{self.prefix}\n`{message.splitlines()[0]}`",
-                    file=File(fp, filename="logs.md"),
-                    username=log_app.get()
-                )
-        else:
-            await self.webhook.send(self.prefix + '\n' + message, username=log_app.get())
+        try:
+            if as_file or len(message) > 1900:
+                with StringIO(message) as fp:
+                    fp.seek(0)
+                    await self.webhook.send(
+                        f"{self.prefix}\n`{message.splitlines()[0]}`",
+                        file=File(fp, filename="logs.md"),
+                        username=log_app.get()
+                    )
+            else:
+                await self.webhook.send(self.prefix + '\n' + message, username=log_app.get())
+        except discord.HTTPException:
+            logger.exception(
+                "Live logger errored. Slowing down live logger."
+            )
+            self.bucket.fill()
 
 
 handlers = []
