@@ -150,7 +150,7 @@ msgstr "temporizador"
 #: src/modules/pomodoro/cog.py:337
 msgctxt "cmd:timer|desc"
 msgid "Show your current (or selected) pomodoro timer."
-msgstr ""
+msgstr "Mostra o seu temporizador Pomodoro atual (ou o selecionado)."
 
 #: src/modules/pomodoro/cog.py:340
 msgctxt "cmd:timer|param:channel"
