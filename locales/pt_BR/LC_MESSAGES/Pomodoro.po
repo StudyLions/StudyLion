@@ -191,6 +191,8 @@ msgid ""
 "The channel {channel} is not a pomodoro timer room!\n"
 "Use {timers_cmd} to list the available timers in this server."
 msgstr ""
+"O canal {channel} não é um canal usado com o temporizador pomodoro.\n"
+"Use {timers_cmd} para visualizar a lista de temporizadores disponíveis no servidor."
 
 #: src/modules/pomodoro/cog.py:411
 msgctxt "cmd:timers"
