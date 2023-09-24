@@ -6,6 +6,7 @@
 # Translators:
 # Interitio, 2023
 # Aline Souki, 2023
+# Bruno Evangelista De Oliveira, 2023
 # 
 #, fuzzy
 msgid ""
@@ -14,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-24 12:21+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Aline Souki, 2023\n"
+"Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -239,7 +240,7 @@ msgstr "Você definiu o idioma da comunidade para {lang}."
 #: src/babel/enums.py:43
 msgctxt "localenames|locale:id"
 msgid "Indonesian"
-msgstr ""
+msgstr "Indonésio"
 
 #: src/babel/enums.py:44
 msgctxt "localenames|locale:da"
