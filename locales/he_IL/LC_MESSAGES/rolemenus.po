@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 22:43+0300\n"
+"POT-Creation-Date: 2023-09-24 12:21+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Ari Horesh, 2023\n"
 "Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
@@ -364,13 +364,18 @@ msgctxt "cmd:rolemenu_edit|parse:template|success:custom"
 msgid "Now using a custom menu message."
 msgstr "עכשיו אשתמש בהודעה מותאמת אישית לתפריט."
 
-#: src/modules/rolemenus/cog.py:994
+#: src/modules/rolemenus/cog.py:986
+msgctxt "cmd:rolemenu_edit|parse:custom_message|success"
+msgid "Custom menu message updated."
+msgstr ""
+
+#: src/modules/rolemenus/cog.py:1001
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_edit|repost|success"
 msgid "The role menu is now available at {message}"
 msgstr "התפריט עכשיו משוייך ל  {message}"
 
-#: src/modules/rolemenus/cog.py:1005
+#: src/modules/rolemenus/cog.py:1012
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_edit|repost|error:forbidden"
 msgid ""
@@ -380,7 +385,7 @@ msgstr ""
 "לא הצלחתי לעדכן את הערוץ! אין לי את ההרשאות `EMBED_LINKS` או `SEND_MESSAGES`"
 " בערוץ {channel}."
 
-#: src/modules/rolemenus/cog.py:1010
+#: src/modules/rolemenus/cog.py:1017
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_edit|repost|error:unknown"
 msgid ""
@@ -390,40 +395,40 @@ msgstr ""
 "שגיאה לא ידועה התרחשה כשניסיתי לשלוח מחדש את התפריט לערוץ {channel}.\n"
 "השגיאה: `{exception}`"
 
-#: src/modules/rolemenus/cog.py:1044
+#: src/modules/rolemenus/cog.py:1051
 msgctxt "cmd:rolemenu_delete"
 msgid "delmenu"
 msgstr "מחקתפריט"
 
-#: src/modules/rolemenus/cog.py:1047
+#: src/modules/rolemenus/cog.py:1054
 msgctxt "cmd:rolemenu_delete|desc"
 msgid "Delete a role menu."
 msgstr "מחק את התפריט רולים."
 
-#: src/modules/rolemenus/cog.py:1051
+#: src/modules/rolemenus/cog.py:1058
 msgctxt "cmd:rolemenu_delete|param:name"
 msgid "menu"
 msgstr "תפריט"
 
-#: src/modules/rolemenus/cog.py:1056
+#: src/modules/rolemenus/cog.py:1063
 msgctxt "cmd:rolemenu_delete|param:name|desc"
 msgid "Name of the rolemenu to delete."
 msgstr "השם של התפריט שמיועד למחיקה"
 
-#: src/modules/rolemenus/cog.py:1071
+#: src/modules/rolemenus/cog.py:1078
 msgctxt "cmd:rolemenu_delete|error:author_perms"
 msgid ""
 "You need the `MANAGE_ROLES` permission in order to manage the server role "
 "menus."
 msgstr "אתה צריך את ההרשאה `MANAGE_ROLES` כדי לערוך את התפריטים של השרת הזה."
 
-#: src/modules/rolemenus/cog.py:1094
+#: src/modules/rolemenus/cog.py:1101
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delete|error:menu_not_found"
 msgid "This server does not have a role menu called `{name}`!"
 msgstr "לשרת הזה אין תפריט בשם `{name}`!"
 
-#: src/modules/rolemenus/cog.py:1102
+#: src/modules/rolemenus/cog.py:1109
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delete|confirm|title"
 msgid ""
@@ -431,249 +436,249 @@ msgid ""
 "reversible!"
 msgstr "אתם רוצים שאתם רוצים למחוק את התפריט **{name}**? לא תוכלו לחזור בכם."
 
-#: src/modules/rolemenus/cog.py:1107
+#: src/modules/rolemenus/cog.py:1114
 msgctxt "cmd:rolemenu_delete|confirm|button:yes"
 msgid "Yes, Delete Now"
 msgstr "כן, מחק עכשיו"
 
-#: src/modules/rolemenus/cog.py:1112
+#: src/modules/rolemenus/cog.py:1119
 msgctxt "cmd:rolemenu_delete|confirm|button:no"
 msgid "No, Cancel"
 msgstr "לא, בטל"
 
-#: src/modules/rolemenus/cog.py:1137
+#: src/modules/rolemenus/cog.py:1144
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delete|success|desc"
 msgid "Successfully deleted the menu **{name}**"
 msgstr "מחקתי את התפריט **{name}** בהצלחה "
 
-#: src/modules/rolemenus/cog.py:1145
+#: src/modules/rolemenus/cog.py:1152
 msgctxt "cmd:rolemenu_addrole"
 msgid "addrole"
 msgstr "הוסףרול"
 
-#: src/modules/rolemenus/cog.py:1148
+#: src/modules/rolemenus/cog.py:1155
 msgctxt "cmd:rolemenu_addrole|desc"
 msgid "Add a new role to an existing role menu."
 msgstr "מוסיף רול חדש לתפריט קיים."
 
-#: src/modules/rolemenus/cog.py:1153
+#: src/modules/rolemenus/cog.py:1160
 msgctxt "cmd:rolemenu_addrole|param:menu"
 msgid "menu"
 msgstr "תפריט"
 
-#: src/modules/rolemenus/cog.py:1156
+#: src/modules/rolemenus/cog.py:1163
 msgctxt "cmd:rolemenu_addrole|param:role"
 msgid "role"
 msgstr "רול"
 
-#: src/modules/rolemenus/cog.py:1167
+#: src/modules/rolemenus/cog.py:1174
 msgctxt "cmd:rolemenu_addrole|param:menu|desc"
 msgid "Name of the menu to add a role to"
 msgstr "השם של התפריט שאליו אוסיף את הרול"
 
-#: src/modules/rolemenus/cog.py:1171
+#: src/modules/rolemenus/cog.py:1178
 msgctxt "cmd:rolemenu_addrole|param:role|desc"
 msgid "Role to add to the menu"
 msgstr "רול שאותו אוסיף לתפריט"
 
-#: src/modules/rolemenus/cog.py:1179
+#: src/modules/rolemenus/cog.py:1186
 msgctxt "cmd:rolemenu_addrole|param:duration|desc"
 msgid "Lifetime of the role after selection in minutes."
 msgstr "משך התוקף בדקות לרול שיתקבל לאחר בחירה"
 
-#: src/modules/rolemenus/cog.py:1227
+#: src/modules/rolemenus/cog.py:1234
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_addrole|error:menu_not_found"
 msgid "This server does not have a role menu called `{name}`!"
 msgstr "לשרת הזה אין תפריט בשם `{name}`!"
 
-#: src/modules/rolemenus/cog.py:1312
+#: src/modules/rolemenus/cog.py:1319
 msgctxt "cmd:rolemenu_addrole|success:create|title"
 msgid "Added Menu Role"
 msgstr "רול שהוסף לתפריט"
 
-#: src/modules/rolemenus/cog.py:1316
+#: src/modules/rolemenus/cog.py:1323
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_addrole|success:create|desc"
 msgid "Add the role {role} to the menu **{menu}**."
 msgstr "הוסף את הרול {role} לתפריט **{menu}**."
 
-#: src/modules/rolemenus/cog.py:1334
+#: src/modules/rolemenus/cog.py:1341
 msgctxt "cmd:rolemenu_addrole|success:edit|title"
 msgid "Menu Role updated"
 msgstr "תפריט רולים עודכן"
 
-#: src/modules/rolemenus/cog.py:1346
+#: src/modules/rolemenus/cog.py:1353
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_addrole|error:role_exists"
 msgid "The role {role} is already selectable from the menu **{menu}**"
 msgstr "הרול {role} כבר ניתן לבחירה מהתפריט **{menu}**"
 
-#: src/modules/rolemenus/cog.py:1364
+#: src/modules/rolemenus/cog.py:1371
 msgctxt "cmd:rolemenu_addrole|success|error:reaction|name"
 msgid "Note"
 msgstr "פתקית"
 
-#: src/modules/rolemenus/cog.py:1376
+#: src/modules/rolemenus/cog.py:1383
 msgctxt "cmd:rolemenu_addrole|success|button:editor|label"
 msgid "Edit Menu"
 msgstr "ערוך תפריט"
 
-#: src/modules/rolemenus/cog.py:1393
+#: src/modules/rolemenus/cog.py:1400
 msgctxt "cmd:rolemenu_editrole"
 msgid "editrole"
 msgstr "ערוךרול"
 
-#: src/modules/rolemenus/cog.py:1396
+#: src/modules/rolemenus/cog.py:1403
 msgctxt "cmd:rolemenu_editrole|desc"
 msgid "Edit role options in an existing role menu."
 msgstr "ערוך הגדרות רול בתפריט רולים קיים."
 
-#: src/modules/rolemenus/cog.py:1401
+#: src/modules/rolemenus/cog.py:1408
 msgctxt "cmd:rolemenu_editrole|param:menu"
 msgid "menu"
 msgstr "תפריט"
 
-#: src/modules/rolemenus/cog.py:1404
+#: src/modules/rolemenus/cog.py:1411
 msgctxt "cmd:rolemenu_editrole|param:menu_role"
 msgid "menu_role"
 msgstr "תפריט_רולים"
 
-#: src/modules/rolemenus/cog.py:1407
+#: src/modules/rolemenus/cog.py:1414
 msgctxt "cmd:rolemenu_editrole|param:role"
 msgid "new_role"
 msgstr "רול_חדש"
 
-#: src/modules/rolemenus/cog.py:1418
+#: src/modules/rolemenus/cog.py:1425
 msgctxt "cmd:rolemenu_editrole|param:menu|desc"
 msgid "Name of the menu to edit the role for"
 msgstr "השם של התפריט שאליו אערוך את הרול"
 
-#: src/modules/rolemenus/cog.py:1422
+#: src/modules/rolemenus/cog.py:1429
 msgctxt "cmd:rolemenu_editrole|param:menu_role|desc"
 msgid "Label, name, or mention of the menu role to edit."
 msgstr "תאג, שם, או תיוג של התפריט שתרצו לערוך"
 
-#: src/modules/rolemenus/cog.py:1426
+#: src/modules/rolemenus/cog.py:1433
 msgctxt "cmd:rolemenu_editrole|param:role|desc"
 msgid "New server role this menu role should give."
 msgstr "רול שרת חדש שהתפריט רולים הזה יתן"
 
-#: src/modules/rolemenus/cog.py:1434
+#: src/modules/rolemenus/cog.py:1441
 msgctxt "cmd:rolemenu_editrole|param:duration|desc"
 msgid "Lifetime of the role after selection in minutes."
 msgstr "משך התוקף בדקות לרול שיתקבל לאחר בחירה"
 
-#: src/modules/rolemenus/cog.py:1475
+#: src/modules/rolemenus/cog.py:1482
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_editrole|error:menu_not_found"
 msgid "This server does not have a role menu called `{name}`!"
 msgstr "לשרת הזה אין תפריט בשם `{name}`!"
 
-#: src/modules/rolemenus/cog.py:1503
+#: src/modules/rolemenus/cog.py:1510
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_editrole|error:role_not_found"
 msgid "The menu **{menu}** does not have the role **{name}**"
 msgstr "לתפריט **{menu}** אין את הרול **{name}**"
 
-#: src/modules/rolemenus/cog.py:1569
+#: src/modules/rolemenus/cog.py:1576
 msgctxt "cmd:rolemenu_editrole|success|title"
 msgid "Role menu role updated"
 msgstr "תפריט רולים עודכן"
 
-#: src/modules/rolemenus/cog.py:1584
+#: src/modules/rolemenus/cog.py:1591
 msgctxt "cmd:rolemenu_editrole|success|error:reaction|name"
 msgid "Warning!"
 msgstr "זהירות!"
 
-#: src/modules/rolemenus/cog.py:1609
+#: src/modules/rolemenus/cog.py:1616
 msgctxt "cmd:rolemenu_delrole"
 msgid "delrole"
 msgstr "מחקרול"
 
-#: src/modules/rolemenus/cog.py:1612
+#: src/modules/rolemenus/cog.py:1619
 msgctxt "cmd:rolemenu_delrole|desc"
 msgid "Remove a role from a role menu."
 msgstr "הסר את הרול מהתפריט רולים."
 
-#: src/modules/rolemenus/cog.py:1616
+#: src/modules/rolemenus/cog.py:1623
 msgctxt "cmd:rolemenu_delrole|param:menu"
 msgid "menu"
 msgstr "תפריט"
 
-#: src/modules/rolemenus/cog.py:1617
+#: src/modules/rolemenus/cog.py:1624
 msgctxt "cmd:rolemenu_delrole|param:menu_role"
 msgid "menu_role"
 msgstr "תפריט_רולים"
 
-#: src/modules/rolemenus/cog.py:1622
+#: src/modules/rolemenus/cog.py:1629
 msgctxt "cmd:rolemenu_delrole|param:menu|desc"
 msgid "Name of the menu to delete the role from."
 msgstr "השם של התפריט שממנו אמחק את הרול"
 
-#: src/modules/rolemenus/cog.py:1626
+#: src/modules/rolemenus/cog.py:1633
 msgctxt "cmd:rolemenu_delrole|param:menu_role|desc"
 msgid "Name, label, or mention of the role to delete."
 msgstr "תאג, שם, או תיוג של הרול שתרצו למחוק"
 
-#: src/modules/rolemenus/cog.py:1644
+#: src/modules/rolemenus/cog.py:1651
 msgctxt "cmd:rolemenu_delrole|error:author_perms"
 msgid ""
 "You need the `MANAGE_ROLES` permission in order to manage the server role "
 "menus."
 msgstr "אתה צריך את ההרשאה `MANAGE_ROLES` כדי לערוך את התפריטים של השרת הזה."
 
-#: src/modules/rolemenus/cog.py:1668
+#: src/modules/rolemenus/cog.py:1675
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delrole|error:menu_not_found"
 msgid "This server does not have a role menu called `{name}`!"
 msgstr "לשרת הזה אין תפריט בשם `{name}`!"
 
-#: src/modules/rolemenus/cog.py:1696
+#: src/modules/rolemenus/cog.py:1703
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delrole|error:role_not_found"
 msgid "The menu **{menu}** does not have the role **{name}**"
 msgstr "לתפריט **{menu}** אין את הרול **{name}**"
 
-#: src/modules/rolemenus/cog.py:1713
+#: src/modules/rolemenus/cog.py:1720
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delrole|success"
 msgid "The role **{name}** was successfully removed from the menu **{menu}**."
 msgstr "הרול **{name}** נמחק בהצלחה מהתפריט **{menu}**."
 
-#: src/modules/rolemenus/roleoptions.py:54
+#: src/modules/rolemenus/roleoptions.py:57
 msgctxt "roleset:role"
 msgid "role"
 msgstr "רול"
 
-#: src/modules/rolemenus/roleoptions.py:57
+#: src/modules/rolemenus/roleoptions.py:60
 msgctxt "roleset:role|desc"
 msgid "The role associated to this menu item."
 msgstr "הרול משויך לאייטם הזה מהתפריט."
 
-#: src/modules/rolemenus/roleoptions.py:61
+#: src/modules/rolemenus/roleoptions.py:64
 msgctxt "roleset:role|long_desc"
 msgid "The role given when this menu item is selected in the role menu."
 msgstr "הרול ניתן למשתמש כאשר האייטם התפריט נבחר על ידי לחיצה."
 
-#: src/modules/rolemenus/roleoptions.py:74
+#: src/modules/rolemenus/roleoptions.py:77
 #, possible-python-brace-format
 msgctxt "roleset:role|set_response:set"
 msgid "This menu item will now give the role {role}."
 msgstr "האייטם הזה עכשיו יתן את הרול {role}."
 
-#: src/modules/rolemenus/roleoptions.py:82
+#: src/modules/rolemenus/roleoptions.py:88
 msgctxt "roleset:label"
 msgid "label"
 msgstr "תגית"
 
-#: src/modules/rolemenus/roleoptions.py:85
+#: src/modules/rolemenus/roleoptions.py:91
 msgctxt "roleset:label|desc"
 msgid "A short button label for this role."
 msgstr "טקסט קצת עבור הכפתור של הרול הזה."
 
-#: src/modules/rolemenus/roleoptions.py:90
+#: src/modules/rolemenus/roleoptions.py:96
 msgctxt "roleset:label|long_desc"
 msgid ""
 "A short name for this role, to be displayed in button labels, dropdown "
@@ -682,23 +687,23 @@ msgstr ""
 "שם קצר עבור הרול הזה, כדי להציג על הכפתור עצמו, תפריטים נופלים, ומקומות "
 "שונים. הברירת מחדל זה איך שקראתם לרול. "
 
-#: src/modules/rolemenus/roleoptions.py:104
+#: src/modules/rolemenus/roleoptions.py:110
 #, possible-python-brace-format
 msgctxt "roleset:role|set_response"
 msgid "This menu role is now called `{value}`."
 msgstr "השם של התפריט רולים הזה שונה ל`{value}`."
 
-#: src/modules/rolemenus/roleoptions.py:112
+#: src/modules/rolemenus/roleoptions.py:118
 msgctxt "roleset:emoji"
 msgid "emoji"
 msgstr "אמוג'י"
 
-#: src/modules/rolemenus/roleoptions.py:115
+#: src/modules/rolemenus/roleoptions.py:121
 msgctxt "roleset:emoji|desc"
 msgid "The emoji associated with this role."
 msgstr "האמוג'י שקשור לרול הזה"
 
-#: src/modules/rolemenus/roleoptions.py:119
+#: src/modules/rolemenus/roleoptions.py:125
 msgctxt "roleset:emoji|long_desc"
 msgid ""
 "The role emoji is used for the reaction (in reaction role menus), and "
@@ -709,34 +714,34 @@ msgstr ""
 "ליד התאגית של הכפתור ובתפריטים נופלים. האמוג'י גם נראה לי הרול עצמו רוב "
 "הפעמים."
 
-#: src/modules/rolemenus/roleoptions.py:157
+#: src/modules/rolemenus/roleoptions.py:165
 #, possible-python-brace-format
 msgctxt "roleset:emoji|error:test_emoji"
 msgid "The selected emoji `{emoji}` is invalid or has been deleted."
 msgstr "האמוג'י שנבחר  `{emoji}` שגוי או נמחק."
 
-#: src/modules/rolemenus/roleoptions.py:168
+#: src/modules/rolemenus/roleoptions.py:176
 #, possible-python-brace-format
 msgctxt "roleset:emoji|set_response:set"
 msgid "The menu role emoji is now {emoji}."
 msgstr "האמוג'י של הרול הוא עכשיו {emoji}."
 
-#: src/modules/rolemenus/roleoptions.py:173
+#: src/modules/rolemenus/roleoptions.py:181
 msgctxt "roleset:emoji|set_response:unset"
 msgid "The menu role emoji has been removed."
 msgstr "התפריט רול אמוג'י הוסר."
 
-#: src/modules/rolemenus/roleoptions.py:181
+#: src/modules/rolemenus/roleoptions.py:189
 msgctxt "roleset:description"
 msgid "description"
 msgstr "תיאור"
 
-#: src/modules/rolemenus/roleoptions.py:184
+#: src/modules/rolemenus/roleoptions.py:192
 msgctxt "roleset:description|desc"
 msgid "A longer description of this role."
 msgstr "תיאור ארוך יותר לרול הזה."
 
-#: src/modules/rolemenus/roleoptions.py:189
+#: src/modules/rolemenus/roleoptions.py:197
 msgctxt "roleset:description|long_desc"
 msgid ""
 "The description is displayed under the role label in dropdown style menus. "
@@ -746,58 +751,66 @@ msgstr ""
 "התיאור נמצא מתחת לתאגית רול בתפריטים נופלים. ניתן להשתמש בזה גם כמפתח חלופי "
 "בריאקציות מותאמות אישית."
 
-#: src/modules/rolemenus/roleoptions.py:205
+#: src/modules/rolemenus/roleoptions.py:213
 msgctxt "roleset:description|set_response:set"
 msgid "The role description has been set."
 msgstr "התיאור רול נקבע."
 
-#: src/modules/rolemenus/roleoptions.py:210
+#: src/modules/rolemenus/roleoptions.py:218
 msgctxt "roleset:description|set_response:unset"
 msgid "The role description has been removed."
 msgstr "התיאור של הרול הוסר."
 
-#: src/modules/rolemenus/roleoptions.py:218
+#: src/modules/rolemenus/roleoptions.py:226
 msgctxt "roleset:price"
 msgid "price"
 msgstr "מחיר"
 
-#: src/modules/rolemenus/roleoptions.py:221
-msgctxt "roleset:price|desc"
-msgid "Price of the role, in LionCoins."
-msgstr "המחיר של הרול במטבעות."
-
-#: src/modules/rolemenus/roleoptions.py:225
-msgctxt "roleset:price|long_desc"
-msgid "How much the role costs when selected, in LionCoins."
-msgstr "כמה הרול עולה כשלוחצים עליו במטבעות."
-
 #: src/modules/rolemenus/roleoptions.py:229
+msgctxt "roleset:price|desc"
+msgid "Price of the role, in LionCoins. May be negative."
+msgstr ""
+
+#: src/modules/rolemenus/roleoptions.py:233
+msgctxt "roleset:price|long_desc"
+msgid ""
+"How many LionCoins should be deducted from a member's account when they equip this role through this menu.\n"
+"The price may be negative, in which case the member will instead be rewarded coins when they equip the role."
+msgstr ""
+
+#: src/modules/rolemenus/roleoptions.py:240
 msgctxt "roleset:price|accepts"
-msgid "Amount of coins that the role costs."
-msgstr "כמות מטבעות שהרול עולה."
+msgid "Amount of coins that the role costs when equipped."
+msgstr ""
 
-#: src/modules/rolemenus/roleoptions.py:242
+#: src/modules/rolemenus/roleoptions.py:254
 #, possible-python-brace-format
-msgctxt "roleset:price|set_response:set"
-msgid "This role will now cost {price} to equip."
-msgstr "הרול יעלה למשתמש {price}."
+msgctxt "roleset:price|set_response:positive"
+msgid "Equipping this role will now cost {coin}**{price}**."
+msgstr ""
 
-#: src/modules/rolemenus/roleoptions.py:247
-msgctxt "roleset:price|set_response:unset"
-msgid "This role will now be free to equip from this role menu."
-msgstr "הרול עכשיו יהיה חינמי כדי לרכוש מהתפריט רולים."
+#: src/modules/rolemenus/roleoptions.py:259
+msgctxt "roleset:price|set_response:zero"
+msgid "Equipping this role is now free."
+msgstr ""
 
-#: src/modules/rolemenus/roleoptions.py:255
+#: src/modules/rolemenus/roleoptions.py:264
+#, possible-python-brace-format
+msgctxt "roleset:price|set_response:negative"
+msgid "Equipping this role will now reward {coin}**{price}**."
+msgstr ""
+
+#: src/modules/rolemenus/roleoptions.py:272
 msgctxt "roleset:duration"
 msgid "duration"
 msgstr "משך זמן"
 
-#: src/modules/rolemenus/roleoptions.py:258
+#: src/modules/rolemenus/roleoptions.py:275
 msgctxt "roleset:duration|desc"
 msgid "Lifetime of the role after selection"
 msgstr "אורך חיים של הרול לאחר הרכישה"
 
-#: src/modules/rolemenus/roleoptions.py:262
+#: src/modules/rolemenus/roleoptions.py:279
 msgctxt "roleset:duration|long_desc"
 msgid ""
 "Allows creation of 'temporary roles' which expire a given time after being "
@@ -806,18 +819,18 @@ msgstr ""
 "מאפשר את היצירה של \"רולים זמניים\" שפגים אחרי תקופת זמן ספציפים לאחר "
 "הרכישה. המטבעות לא יחזרו למשתמש אחרי שהרול תקף."
 
-#: src/modules/rolemenus/roleoptions.py:267
+#: src/modules/rolemenus/roleoptions.py:284
 msgctxt "roleset:duration|notset"
 msgid "Forever."
 msgstr "לנצח."
 
-#: src/modules/rolemenus/roleoptions.py:280
+#: src/modules/rolemenus/roleoptions.py:297
 #, possible-python-brace-format
 msgctxt "roleset:duration|set_response:set"
 msgid "This role will now expire after {duration}."
 msgstr "הרול הזה יפוג לאחר {duration}."
 
-#: src/modules/rolemenus/roleoptions.py:285
+#: src/modules/rolemenus/roleoptions.py:302
 msgctxt "roleset:duration|set_response:unset"
 msgid "This role will no longer expire after being selected."
 msgstr "הרול הזה כבר לא יפוג לאחר הרכישה."
@@ -930,26 +943,32 @@ msgctxt "rolemenu|deselect|success:refund|desc"
 msgid "You have removed **{role}**, and been refunded {coin} **{amount}**."
 msgstr "הסרתם את הרול **{role}**, וקיבלתם את הכסף חזרה  {coin} **{amount}**."
 
-#: src/modules/rolemenus/rolemenu.py:540
+#: src/modules/rolemenus/rolemenu.py:541
+#, possible-python-brace-format
+msgctxt "rolemenu|deselect|success:negrefund|desc"
+msgid "You have removed **{role}**, and have lost {coin} **{amount}**."
+msgstr ""
+
+#: src/modules/rolemenus/rolemenu.py:546
 #, possible-python-brace-format
 msgctxt "rolemenu|deselect|success:norefund|desc"
 msgid "You have unequipped **{role}**."
 msgstr "הורדתם מעצמכם את הרול **{role}**."
 
-#: src/modules/rolemenus/rolemenu.py:554
+#: src/modules/rolemenus/rolemenu.py:560
 #, possible-python-brace-format
 msgctxt "rolemenu|select|error:required_role"
-msgid "You need to have the **{role}** role to use this!"
-msgstr "אתם צריכים את הרול **{role}** כדי להשתמש בזה!"
+msgid "You need to have the role **{role}** required to use this menu!"
+msgstr ""
 
-#: src/modules/rolemenus/rolemenu.py:568
+#: src/modules/rolemenus/rolemenu.py:574
 #, possible-python-brace-format
 msgctxt "rolemenu|select|error:max_obtainable"
 msgid "You already have the maximum of {obtainable} roles from this menu!"
 msgstr ""
 "כבר יש לכם את המספר המקסימלי ({obtainable}) שאתם יכולים לבחור מהתפריט הזה!"
 
-#: src/modules/rolemenus/rolemenu.py:582
+#: src/modules/rolemenus/rolemenu.py:588
 #, possible-python-brace-format
 msgctxt "rolemenu|select|error:insufficient_funds"
 msgid ""
@@ -958,12 +977,12 @@ msgid ""
 msgstr ""
 "הרול **{role}** עולה {coin}**{cost}**, אבל יש לכם רק {coin}**{balance}**!"
 
-#: src/modules/rolemenus/rolemenu.py:598
+#: src/modules/rolemenus/rolemenu.py:604
 msgctxt "rolemenu|select|error:perms"
 msgid "I don't have enough permissions to give you this role!"
 msgstr "אין לי מספיק הרשאות בכדי לתת לך את הרול הזה!"
 
-#: src/modules/rolemenus/rolemenu.py:605
+#: src/modules/rolemenus/rolemenu.py:611
 msgctxt "rolemenu|select|error:discord"
 msgid ""
 "An unknown error occurred while assigning your role! Please try again later."
@@ -971,30 +990,30 @@ msgstr ""
 "שגיאה לא ידועה התחוללה כשניסיתי לתת לך את הרול.\n"
 "אנא נסה שוב במספר דקות."
 
-#: src/modules/rolemenus/rolemenu.py:647
+#: src/modules/rolemenus/rolemenu.py:653
 msgctxt "rolemenu|select|success|title"
 msgid "Role equipped"
 msgstr "הרול נלבש."
 
-#: src/modules/rolemenus/rolemenu.py:653
+#: src/modules/rolemenus/rolemenu.py:659
 #, possible-python-brace-format
 msgctxt "rolemenu|select|success:purchase|desc"
 msgid "You have purchased the role **{role}** for {coin}**{amount}**"
 msgstr "רכשת את הרול **{role}** עבור {coin}**{amount}**"
 
-#: src/modules/rolemenus/rolemenu.py:658
+#: src/modules/rolemenus/rolemenu.py:664
 #, possible-python-brace-format
 msgctxt "rolemenu|select|success:nopurchase|desc"
 msgid "You have equipped the role **{role}**"
 msgstr "לבשת על עצמך את הרול  **{role}**"
 
-#: src/modules/rolemenus/rolemenu.py:664
+#: src/modules/rolemenus/rolemenu.py:670
 #, possible-python-brace-format
 msgctxt "rolemenu|select|expires_at"
 msgid "The role will expire at {timestamp}."
 msgstr "הרול יפוג ב{timestamp}."
 
-#: src/modules/rolemenus/rolemenu.py:717
+#: src/modules/rolemenus/rolemenu.py:724
 #, possible-python-brace-format
 msgctxt "rolemenu|content:reactions"
 msgid "[Click here]({jump_link}) to jump back."
@@ -1261,62 +1280,62 @@ msgctxt "ui:menu_editor|button:bulk_edit|modal|title"
 msgid "Menu Options"
 msgstr "אפשריות תפריט"
 
-#: src/modules/rolemenus/ui/menueditor.py:215
+#: src/modules/rolemenus/ui/menueditor.py:218
 msgctxt "ui:menu_editor|button:bulk_edit|label"
 msgid "Bulk Edit"
 msgstr "עריכה בכמות גדולה"
 
-#: src/modules/rolemenus/ui/menueditor.py:235
+#: src/modules/rolemenus/ui/menueditor.py:238
 msgctxt "ui:menu_editor|button:sticky|label"
 msgid "Toggle Sticky"
 msgstr "הפעל מצב דביק"
 
-#: src/modules/rolemenus/ui/menueditor.py:259
+#: src/modules/rolemenus/ui/menueditor.py:262
 msgctxt "ui:menu_editor|button:refunds|label"
 msgid "Toggle Refunds"
 msgstr "אפשר החזרים"
 
-#: src/modules/rolemenus/ui/menueditor.py:289
+#: src/modules/rolemenus/ui/menueditor.py:292
 msgctxt "ui:menu_editor|menu:reqroles|placeholder"
 msgid "Select Required Role"
 msgstr "בחר רול נחוץ"
 
-#: src/modules/rolemenus/ui/menueditor.py:308
+#: src/modules/rolemenus/ui/menueditor.py:311
 msgctxt "ui:menu_editor|button:modify_roles|label"
 msgid "Modify Roles"
 msgstr "ערוך רולים"
 
-#: src/modules/rolemenus/ui/menueditor.py:337
+#: src/modules/rolemenus/ui/menueditor.py:340
 msgctxt "ui:menu_editor|role_editor|modal|title"
 msgid "Edit Menu Role"
 msgstr "ערוך תפריט רולים"
 
-#: src/modules/rolemenus/ui/menueditor.py:411
+#: src/modules/rolemenus/ui/menueditor.py:416
 msgctxt "ui:menu_editor|menu:add_roles|error:too_many_reactions"
 msgid "Too many roles! Reaction role menus cannot exceed `20` roles."
 msgstr "יותר מידי רולים! לא ניתן לעבור יותר מ20 רולים בתפריט."
 
-#: src/modules/rolemenus/ui/menueditor.py:416
+#: src/modules/rolemenus/ui/menueditor.py:421
 msgctxt "ui:menu_editor|menu:add_roles|error:too_many_roles"
 msgid "Too many roles! Role menus cannot have more than `25` roles."
 msgstr "יותר מידי רולים! לא ניתן לעבור יותר מ25 רולים בתפריט."
 
-#: src/modules/rolemenus/ui/menueditor.py:455
+#: src/modules/rolemenus/ui/menueditor.py:460
 msgctxt "ui:menu_editor|menu:add_roles|placeholder"
 msgid "Add Roles"
 msgstr "הוסף רולים"
 
-#: src/modules/rolemenus/ui/menueditor.py:481
+#: src/modules/rolemenus/ui/menueditor.py:486
 msgctxt "ui:menu_editor|menu:edit_roles|placeholder"
 msgid "Edit Roles"
 msgstr "ערוך רולים"
 
-#: src/modules/rolemenus/ui/menueditor.py:514
+#: src/modules/rolemenus/ui/menueditor.py:524
 msgctxt "ui:menu_editor|menu:del_role|placeholder"
 msgid "Remove Roles"
 msgstr "הסר רולים"
 
-#: src/modules/rolemenus/ui/menueditor.py:538
+#: src/modules/rolemenus/ui/menueditor.py:548
 msgctxt "ui:menu_editor|button:style|error:non-managed"
 msgid ""
 "Cannot change the style of a menu attached to a message I did not send! "
@@ -1325,182 +1344,180 @@ msgstr ""
 "לא ניתן לשנות את הסטייל של התפריט המוצמד להודעה שלא אני שלחתי! שלח אותה שוב "
 "דרכי."
 
-#: src/modules/rolemenus/ui/menueditor.py:551
+#: src/modules/rolemenus/ui/menueditor.py:561
 msgctxt "ui:menu_editor|button:style|label"
 msgid "Menu Style"
 msgstr "סגנון תפריט"
 
-#: src/modules/rolemenus/ui/menueditor.py:576
+#: src/modules/rolemenus/ui/menueditor.py:586
 msgctxt "ui:menu_editor|menu:style|error:too_many_reactions"
 msgid ""
 "Too many roles! The Reaction style is limited to `20` roles (Discord "
 "limitation)."
 msgstr "יותר מידי רולים! הסגנון הזה מוגבל אל 20 רולים (מגבלה שדיסקורד שמו)"
 
-#: src/modules/rolemenus/ui/menueditor.py:586
+#: src/modules/rolemenus/ui/menueditor.py:596
 msgctxt "ui:menu_editor|menu:style|error:incomplete_emojis"
 msgid ""
 "Cannot switch to the Reaction Role Style! Every role needs to have a "
 "distinct emoji first."
 msgstr "לא ניתן להחליף אל הסגנון הזה! כל רול צריך להכיל אמוג'י ייחודי קודם."
 
-#: src/modules/rolemenus/ui/menueditor.py:602
+#: src/modules/rolemenus/ui/menueditor.py:614
 msgctxt "ui:menu_editor|menu:style|placeholder"
 msgid "Select Menu Style"
 msgstr "בחר סגנון תפריט"
 
-#: src/modules/rolemenus/ui/menueditor.py:606
+#: src/modules/rolemenus/ui/menueditor.py:618
 msgctxt "ui:menu_editor|menu:style|option:reaction|label"
 msgid "Reaction Roles"
 msgstr "רולים שמקבלים עם ריאקציות"
 
-#: src/modules/rolemenus/ui/menueditor.py:609
+#: src/modules/rolemenus/ui/menueditor.py:621
 msgctxt "ui:menu_editor|menu:style|option:reaction|desc"
 msgid "Roles are represented compactly as clickable reactions on a message."
 msgstr ""
 "רולים שמוצגים בצורה קומפקטית עם ריאקציות שניתן ללחוץ עליהם בהודעה עצמה."
 
-#: src/modules/rolemenus/ui/menueditor.py:615
+#: src/modules/rolemenus/ui/menueditor.py:627
 msgctxt "ui:menu_editor|menu:style|option:button|label"
 msgid "Button Menu"
 msgstr "תפריט עם כפתורים"
 
-#: src/modules/rolemenus/ui/menueditor.py:618
+#: src/modules/rolemenus/ui/menueditor.py:630
 msgctxt "ui:menu_editor|menu:style|option:button|desc"
 msgid ""
 "Roles are represented in 5 rows of 5 buttons, each with an emoji and label."
 msgstr ""
 "רולים שמוצגים בתור 5 שורות של 5 כפתורים, לכל אחד יש אמוג'י ותגית טקסט."
 
-#: src/modules/rolemenus/ui/menueditor.py:624
+#: src/modules/rolemenus/ui/menueditor.py:636
 msgctxt "ui:menu_editor|menu:style|option:dropdown|label"
 msgid "Dropdown Menu"
 msgstr "תפריט נפתח"
 
-#: src/modules/rolemenus/ui/menueditor.py:627
+#: src/modules/rolemenus/ui/menueditor.py:639
 msgctxt "ui:menu_editor|menu:style|option:dropdown|desc"
 msgid "Roles are selectable from a dropdown menu below the message."
 msgstr "רולים ניתנים לבחירה על ידי תפריט נופל מתחת להודעה."
 
-#: src/modules/rolemenus/ui/menueditor.py:697
+#: src/modules/rolemenus/ui/menueditor.py:709
 msgctxt "ui:menu_editor|menu:template|placeholder"
 msgid "Select Message Template"
 msgstr "בחר תבנית הודעה"
 
-#: src/modules/rolemenus/ui/menueditor.py:707
+#: src/modules/rolemenus/ui/menueditor.py:719
 msgctxt "ui:menu_editor|menu:template|option:custom|label"
 msgid "Custom Message"
 msgstr "הודעה בעריכה אישית"
 
-#: src/modules/rolemenus/ui/menueditor.py:712
+#: src/modules/rolemenus/ui/menueditor.py:724
 msgctxt "ui:menu_editor|menu:template|option:custom|description"
 msgid "Entirely custom menu message (opens an interactive editor)."
 msgstr "בנה הודעה מותאמת אישית מ0 (יפתח את ההעורך הודעות שלנו)"
 
-#: src/modules/rolemenus/ui/menueditor.py:729
+#: src/modules/rolemenus/ui/menueditor.py:741
 msgctxt "ui:menu_editor|button:delete|confirm|title"
 msgid "Are you sure you want to delete this menu? This is not reversible!"
 msgstr "אתם בטוחים שאתם רוצים למחוק את התפריט? לא ניתן לשחזר את הצעד הזה."
 
-#: src/modules/rolemenus/ui/menueditor.py:734
+#: src/modules/rolemenus/ui/menueditor.py:746
 msgctxt "ui:menu_editor|button:delete|confirm|button:yes"
 msgid "Yes, Delete Now"
 msgstr "כן, מחק עכשיו"
 
-#: src/modules/rolemenus/ui/menueditor.py:739
+#: src/modules/rolemenus/ui/menueditor.py:751
 msgctxt "ui:menu_editor|button:delete|confirm|button:no"
 msgid "No, Go Back"
 msgstr "לא, חזור אחורה"
 
-#: src/modules/rolemenus/ui/menueditor.py:756
+#: src/modules/rolemenus/ui/menueditor.py:768
 msgctxt "ui:menu_editor|button:delete|label"
 msgid "Delete Menu"
 msgstr "מחק תפריט"
 
-#: src/modules/rolemenus/ui/menueditor.py:813
+#: src/modules/rolemenus/ui/menueditor.py:825
 msgctxt "ui:menu_editor|button:edit_msg|label"
 msgid "Edit Message"
 msgstr "ערוך הודעה"
 
-#: src/modules/rolemenus/ui/menueditor.py:844
+#: src/modules/rolemenus/ui/menueditor.py:851
 msgctxt "ui:menu_editor|button:preview|label"
 msgid "Preview"
 msgstr "תצוגה מקדימה"
 
-#: src/modules/rolemenus/ui/menueditor.py:860
+#: src/modules/rolemenus/ui/menueditor.py:867
 msgctxt "ui:menu_editor|button:repost|widget:repost|menu:channel|placeholder"
 msgid "Select New Channel"
 msgstr "בחר ערוץ חדש"
 
-#: src/modules/rolemenus/ui/menueditor.py:878
+#: src/modules/rolemenus/ui/menueditor.py:885
 msgctxt "ui:menu_editor|button:repost|widget:repost|error:perms|title"
 msgid "Insufficient Permissions!"
 msgstr "אין לי או לך מספיק הראשות בשרת כדי לעשות את זה!"
 
-#: src/modules/rolemenus/ui/menueditor.py:882
+#: src/modules/rolemenus/ui/menueditor.py:889
 msgctxt "ui:menu_editor|button:repost|eidget:repost|error:perms|desc"
 msgid ""
 "I lack the `EMBED_LINKS` or `SEND_MESSAGES` permission in this channel."
 msgstr "אין לי את ההרשאות `EMBED_LINKS` או `SEND_MESSAGES` בערוץ הזה."
 
-#: src/modules/rolemenus/ui/menueditor.py:895
+#: src/modules/rolemenus/ui/menueditor.py:902
 #, possible-python-brace-format
 msgctxt "ui:menu_editor|button:repost|widget:repost|error:post_failed"
 msgid ""
-"An error ocurred while posting to {channel}. Do I have sufficient "
-"permissions?"
+"An unknown error ocurred while posting to {channel}!\n"
+"**Error:** `{exception}`"
 msgstr ""
-"שגיאה התרחשה כשניסיתי לשלוח הודעה לערוץ  {channel}. אתם בטוחים שיש לי הרשאות"
-" מספקות?"
 
-#: src/modules/rolemenus/ui/menueditor.py:907
+#: src/modules/rolemenus/ui/menueditor.py:915
 msgctxt "ui:menu_editor|button:repost|widget:repost|success|title"
 msgid "Role Menu Moved"
 msgstr "תפריט רולים הוזז"
 
-#: src/modules/rolemenus/ui/menueditor.py:913
+#: src/modules/rolemenus/ui/menueditor.py:921
 #, possible-python-brace-format
 msgctxt "ui:menu_editor|button:repost|widget:repost|success|desc:general"
 msgid "The role menu `{name}` is now available at {message_link}."
 msgstr "התפריט רולים  `{name}` עכשיו זמין בלינק {message_link}."
 
-#: src/modules/rolemenus/ui/menueditor.py:927
+#: src/modules/rolemenus/ui/menueditor.py:935
 msgctxt "ui:menu_editor|button:repost|widget:repost|success|desc:reactions"
 msgid "Please check the message reactions are correct."
 msgstr "אנא בדקו אם הריאקציות שקשורות להודעה הזו נכונות."
 
-#: src/modules/rolemenus/ui/menueditor.py:940
+#: src/modules/rolemenus/ui/menueditor.py:948
 msgctxt "ui:menu_editor|button:repost|widget:repost|title"
 msgid "Repost Role Menu"
 msgstr "פרסם תפריט רולים מחדש"
 
-#: src/modules/rolemenus/ui/menueditor.py:944
+#: src/modules/rolemenus/ui/menueditor.py:952
 msgctxt "ui:menu_editor|button:repost|widget:repost|description"
 msgid "Please select the channel to which you want to resend this menu."
 msgstr "אנא בחרו את הערוץ שבו תרצו לשלוח את התפריט הזה מחדש."
 
-#: src/modules/rolemenus/ui/menueditor.py:959
+#: src/modules/rolemenus/ui/menueditor.py:967
 msgctxt "ui:menu_editor|button:repost|label:repost"
 msgid "Repost"
 msgstr "פרסם מחדש"
 
-#: src/modules/rolemenus/ui/menueditor.py:964
+#: src/modules/rolemenus/ui/menueditor.py:972
 msgctxt "ui:menu_editor|button:repost|label:post"
 msgid "Post"
 msgstr "פרסם"
 
-#: src/modules/rolemenus/ui/menueditor.py:974
+#: src/modules/rolemenus/ui/menueditor.py:982
 msgctxt "ui:menu_editor|embed|title"
 msgid "Role Menu Editor"
 msgstr "עורך תפריט רולים"
 
-#: src/modules/rolemenus/ui/menueditor.py:983
+#: src/modules/rolemenus/ui/menueditor.py:991
 #, possible-python-brace-format
 msgctxt "ui:menu_editor|embed|description|jump_text:attached"
 msgid "Members may use this menu from {jump_url}"
 msgstr "משתמשים יוכלו להשתמש בתפריט הזה ב {jump_url}"
 
-#: src/modules/rolemenus/ui/menueditor.py:988
+#: src/modules/rolemenus/ui/menueditor.py:996
 msgctxt "ui:menu_editor|embed|description|jump_text:unattached"
 msgid ""
 "This menu is not currently active!\n"
@@ -1509,12 +1526,12 @@ msgstr ""
 "התפריט לא פעיל כרגע!\n"
 "תהפוך אותו לפעיל על ידי לחיצה על \"פרסם\" למטה."
 
-#: src/modules/rolemenus/ui/menueditor.py:1002
+#: src/modules/rolemenus/ui/menueditor.py:1010
 msgctxt "ui:menu_editor|embed|field:tips|name"
 msgid "Command Tips"
 msgstr "טיפים לפקודות"
 
-#: src/modules/rolemenus/ui/menueditor.py:1006
+#: src/modules/rolemenus/ui/menueditor.py:1014
 #, possible-python-brace-format
 msgctxt "ui:menu_editor|embed|field:tips|value"
 msgid ""
@@ -1528,12 +1545,12 @@ msgstr ""
 "{addrole} כדי להוסיף רולים חדשים (מומלץ עבור רולים שיש להם אמוג'י)\n"
 "{editrole} כדי לערוך את האופציות של הרולים"
 
-#: src/modules/rolemenus/ui/menueditor.py:1046
+#: src/modules/rolemenus/ui/menueditor.py:1054
 msgctxt "ui:menu_editor|error:invald_emoji|title"
 msgid "Invalid emoji encountered."
 msgstr "נתקלתי באמוג'י לא תקין."
 
-#: src/modules/rolemenus/ui/menueditor.py:1050
+#: src/modules/rolemenus/ui/menueditor.py:1058
 #, possible-python-brace-format
 msgctxt "ui:menu_editor|error:invalid_emoji|desc"
 msgid ""
