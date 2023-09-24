@@ -4,7 +4,6 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Aline Souki, 2023
 # Bruno Evangelista De Oliveira, 2023
 # 
 #, fuzzy
@@ -412,7 +411,7 @@ msgid ""
 msgstr ""
 "Eu não tenho permissão para colocar o cargo {mention}! Por favor, garanta "
 "que eu tenha a permissão de ˋMANAGE_ROLESˋ, e que meu cargo mais alto seja "
-"mais alto que este."
+"maior que este."
 
 #: src/modules/shop/shops/colours.py:748
 #, possible-python-brace-format
