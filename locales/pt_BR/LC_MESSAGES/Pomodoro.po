@@ -543,7 +543,7 @@ msgstr ""
 #: src/modules/pomodoro/options.py:120
 msgctxt "timerset:manager_role"
 msgid "manager_role"
-msgstr "gerenciar_cargos"
+msgstr "cargo_gerenciador"
 
 #: src/modules/pomodoro/options.py:123
 msgctxt "timerset:manager_role|desc"
