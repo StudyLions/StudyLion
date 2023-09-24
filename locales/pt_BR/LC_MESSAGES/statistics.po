@@ -644,7 +644,7 @@ msgstr "Seu perfil foi atualizado!"
 #: src/modules/statistics/ui/profile.py:200
 msgctxt "ui:profile_card|button:edit|label"
 msgid "Edit Profile Badges"
-msgstr "Editar Emblemas de Perfil"
+msgstr "Editar Distintivos Perfil"
 
 #: src/modules/statistics/ui/profile.py:219
 msgctxt "ui:profile_card|button:statistics|label:hide"
