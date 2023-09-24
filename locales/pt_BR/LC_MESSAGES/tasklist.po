@@ -101,7 +101,7 @@ msgstr "Lista de tarefas vazia! Não há tarefas compatíveis."
 #: src/modules/tasklist/cog.py:330
 msgctxt "argtype:taskid|match:all"
 msgid "All tasks"
-msgstr ""
+msgstr "Todas as tarefas"
 
 #: src/modules/tasklist/cog.py:348
 #, possible-python-brace-format
