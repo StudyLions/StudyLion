@@ -71,7 +71,9 @@ msgstr "Primeira"
 #: src/utils/cog.py:60
 msgctxt "cmd:page_first|desc"
 msgid "Jump to the first page of output."
-msgstr "Ir para a primeira página de saída."
+msgstr ""
+"Comando utilizado para ir para a primeira página do painel mostrado no "
+"canal."
 
 #: src/utils/cog.py:66
 msgctxt "cmd:page_last"
