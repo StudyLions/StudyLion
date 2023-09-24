@@ -327,7 +327,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:602
 msgctxt "cmd:pomodoro_create|new_channel|default_name"
 msgid "Timer"
-msgstr ""
+msgstr "Temporizador"
 
 #: src/modules/pomodoro/cog.py:606
 msgctxt "cmd:pomodoro_create|new_channel|audit_reason"
