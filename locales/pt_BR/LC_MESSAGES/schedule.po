@@ -1087,8 +1087,8 @@ msgid ""
 "No-one attended this session! No-one received rewards.\n"
 "**Members who missed their session have all future sessions cancelled without refund!*"
 msgstr ""
-"Ninguém compareceu à esta sessão! Sendo assim, ninguém recebeu recompensa.\n"
-"** Os membros que não compareceram à sessão podem ter todos os próximos agendamentos cancelados sem direito a devolução do dinheiro por isso!**"
+"Ninguém compareceu a este horário! Sendo assim, ninguém recebeu recompensa.\n"
+"** Os membros que não compareceram para check-in no horário agendado podem ter todos os próximos agendamentos cancelados sem o direito a devolução do dinheiro!**"
 
 #: src/modules/schedule/core/session.py:492
 msgctxt "session|status:finished|field:attended"
