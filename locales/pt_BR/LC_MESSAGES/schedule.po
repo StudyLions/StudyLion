@@ -1054,7 +1054,7 @@ msgstr "Esperando por"
 #: src/modules/schedule/core/session.py:432
 msgctxt "session|status:running|field:attending"
 msgid "Attending"
-msgstr "Presente"
+msgstr "Presentes"
 
 #: src/modules/schedule/core/session.py:438
 msgctxt "session|status:running|field:attended"
