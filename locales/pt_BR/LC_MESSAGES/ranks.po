@@ -697,7 +697,7 @@ msgstr "Sim, apagar Níveis de Atividade"
 #: src/modules/ranks/ui/overview.py:133
 msgctxt "ui:rank_overview|button:clear|confirm|button:no"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: src/modules/ranks/ui/overview.py:149
 msgctxt "ui:rank_overview|button:clear|label"
