@@ -734,6 +734,8 @@ msgid ""
 "**Note:** Could not retrieve member list from Discord, so some members may "
 "be missing. Try again in a minute!"
 msgstr ""
+"**Nota:** Não pude recuperar a lista de membros do Discord, então alguns "
+"membros podem estar faltando. Tente novamente em um minuto!"
 
 #: src/modules/statistics/ui/leaderboard.py:450
 #, possible-python-brace-format
