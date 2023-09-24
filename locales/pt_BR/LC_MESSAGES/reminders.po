@@ -340,6 +340,10 @@ msgid ""
 "- Both commands support repeating reminders using the `every` parameter.\n"
 "- Remember to tell me your timezone with {timezone_cmd} if you haven't already!"
 msgstr ""
+"- Use {at_cmd} para configurar um lembrete em para um tempo exato (ex. ˋàs 10 am`).\n"
+"- Use {in_cmd} para configurar um lembrete daqui a um certo tempo (ex. `em 2 horas`).\n"
+"- Ambos os comandos aceitam lembretes repetitivos, usando o parâmetro 'a cada'.\n"
+"- Se lembre de configurar o seu fuso horário com {timezone_cmd}, caso ainda não tenha feito!"
 
 #: src/modules/reminders/data.py:63
 msgctxt "reminder_set|title"
