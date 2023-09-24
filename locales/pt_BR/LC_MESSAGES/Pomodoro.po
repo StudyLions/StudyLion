@@ -25,7 +25,7 @@ msgstr ""
 #: src/modules/pomodoro/timer.py:51
 msgctxt "timer|stage:break|name"
 msgid "BREAK"
-msgstr "INTERVALO"
+msgstr "PAUSA"
 
 #: src/modules/pomodoro/timer.py:52
 msgctxt "timer|stage:focus|name"
