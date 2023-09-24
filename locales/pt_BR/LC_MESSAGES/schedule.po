@@ -1027,7 +1027,7 @@ msgstr ""
 #: src/modules/schedule/core/session.py:376
 msgctxt "session|status|desc:no_members"
 msgid "*No members scheduled this session.*"
-msgstr "*Ninguém agendou para este check-in.*"
+msgstr "*Ninguém agendou para fazer check-in neste horário.*"
 
 #: src/modules/schedule/core/session.py:382
 #, possible-python-brace-format
