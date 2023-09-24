@@ -283,6 +283,7 @@ msgstr "Com que frequência o lembrete deve se repetir?"
 msgctxt "ui:reminderlist|button:new|modal|field:repeat|placeholder"
 msgid "1 day 10 hours 5 minutes (Leave empty for no repeat.)"
 msgstr ""
+"1 dia 10 horas 5 minutos (Caso não queira que se repita, deixe em branco)"
 
 #: src/modules/reminders/ui.py:133
 msgctxt "ui:reminderlist|button:new|modal|field:content|label"
