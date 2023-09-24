@@ -547,7 +547,7 @@ msgstr ""
 #: src/modules/schedule/settings.py:458
 msgctxt "guildset:schedule_blacklist_role|formatted|unset"
 msgid "Not Set"
-msgstr "Não habilitado."
+msgstr "Não Configurado"
 
 #: src/modules/schedule/settings.py:467
 msgctxt "guildset:schedule_blacklist_after"
