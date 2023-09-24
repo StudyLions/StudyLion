@@ -324,7 +324,7 @@ msgstr "Clique em um lembrete para retornar ao conteúdo"
 #: src/modules/reminders/ui.py:277
 msgctxt "ui:reminderlist|embed:no_reminders|title"
 msgid "You have no reminders set!"
-msgstr ""
+msgstr "Você não possui lembretes configurados!"
 
 #: src/modules/reminders/ui.py:286
 msgctxt "ui:reminderlist|embed|tips:name"
