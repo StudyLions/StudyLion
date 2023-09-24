@@ -412,7 +412,7 @@ class RoomCog(LionCog):
                             t(_p(
                                 'cmd:room_rent|error:member_not_found',
                                 "Could not find the requested member {mention} in this server!"
-                            )).format(member=f"<@{mid}>")
+                            )).format(mention=f"<@{mid}>")
                         ), ephemeral=True
                     )
                     return
