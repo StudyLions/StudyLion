@@ -943,7 +943,7 @@ msgstr "Tarde demais! Este horário já começou, ou irá a qualquer momento. "
 #: src/modules/schedule/ui/sessionui.py:94
 msgctxt "ui:session|button:book|error:already_booked"
 msgid "You are already a member of this session!"
-msgstr "Você já faz parte desta sessão!"
+msgstr "Você já está agendado para este horário!"
 
 #: src/modules/schedule/ui/sessionui.py:101
 msgctxt "ui:session|button:book|success"
