@@ -553,7 +553,7 @@ msgstr "Não configurado (Usando {channel})"
 #: src/modules/pomodoro/options.py:83
 msgctxt "timerset:inactivity_threshold|inactivity_threshold"
 msgid "inactivity_threshold"
-msgstr "limite_de_inatividade"
+msgstr "tolerância_de_inatividade"
 
 #: src/modules/pomodoro/options.py:86
 msgctxt "timerset:inactivity_threshold|desc"
