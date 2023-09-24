@@ -329,7 +329,7 @@ msgstr "Você não possui lembretes configurados!"
 #: src/modules/reminders/ui.py:286
 msgctxt "ui:reminderlist|embed|tips:name"
 msgid "Reminder Tips"
-msgstr ""
+msgstr "Dicas dos lembretes."
 
 #: src/modules/reminders/ui.py:290
 #, possible-python-brace-format
