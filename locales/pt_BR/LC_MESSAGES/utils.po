@@ -82,7 +82,8 @@ msgstr "última"
 #: src/utils/cog.py:67
 msgctxt "cmd:page_last|desc"
 msgid "Jump to the last page of output."
-msgstr "Ir para a última página."
+msgstr ""
+"Comando utilizado para ir para a última página do painel mostrado no canal."
 
 #: src/utils/cog.py:73
 msgctxt "cmd:page_select"
