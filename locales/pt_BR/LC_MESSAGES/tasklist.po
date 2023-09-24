@@ -68,6 +68,10 @@ msgid ""
 "`EMBED_LINKS` or `SEND_MESSAGES` permission here! If you believe this is "
 "unintentional, please contact a server administrator."
 msgstr ""
+"Este canal é configurado como o Canal da Lista de Tarefas, mas me falta "
+"permissão para ˋINSERIR_LINKSˋ ou ˋENVIAR_MENSAGENSˋ aqui! Se você acredita "
+"que é um erro não intencional, por favor, contate a Administração do "
+"servidor."
 
 #: src/modules/tasklist/cog.py:258
 msgctxt "cmd:tasklist"
