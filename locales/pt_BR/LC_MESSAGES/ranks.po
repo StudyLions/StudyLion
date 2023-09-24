@@ -774,7 +774,7 @@ msgid ""
 "Press 'AUTO' to automatically create a standard heirachy of voice | text | xp ranks, or select a role or press Create below!"
 msgstr ""
 "Nenhum nível de classificação foi configurado!\n"
-"Pressione em 'AUTO' para criar automaticamente um padrão hierárquico dos níveis de Voz | Texto | Exp, ou pressione em Criar para fazê-lo manualmente."
+"Pressione em 'AUTO' para criar automaticamente um padrão hierárquico de Níveis de Atividade em Canais de Voz | Texto | Exp, ou pressione em Criar para fazê-lo manualmente."
 
 #: src/modules/ranks/ui/overview.py:384
 #, possible-python-brace-format
