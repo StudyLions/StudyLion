@@ -948,7 +948,7 @@ msgstr "Você já está agendado para este horário!"
 #: src/modules/schedule/ui/sessionui.py:101
 msgctxt "ui:session|button:book|success"
 msgid "Successfully booked this session."
-msgstr "Agendamento para este check-in foi feito com sucesso!"
+msgstr "Agendamento para este horário foi feito com sucesso!"
 
 #: src/modules/schedule/ui/sessionui.py:115
 msgctxt "ui:session|button:book|error|title"
