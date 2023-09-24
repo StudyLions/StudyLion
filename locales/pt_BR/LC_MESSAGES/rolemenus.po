@@ -442,7 +442,7 @@ msgstr "menu"
 #: src/modules/rolemenus/cog.py:1063
 msgctxt "cmd:rolemenu_delete|param:name|desc"
 msgid "Name of the rolemenu to delete."
-msgstr "Nome do cargomenu a apagar."
+msgstr "Nome do menucargo a apagar."
 
 #: src/modules/rolemenus/cog.py:1078
 msgctxt "cmd:rolemenu_delete|error:author_perms"
