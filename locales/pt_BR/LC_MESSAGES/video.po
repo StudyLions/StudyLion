@@ -234,9 +234,9 @@ msgid ""
 "The role may also be manually assigned, to the same effect.\n"
 "If this role is not set, no video blacklist will occur, and members will only be kicked from the channel and warned."
 msgstr ""
-"O cargo será automaticamente atribuído ao membro que deixar de manter a câmera ligada nos canais indicados (conforme abaixo).\n"
-"Os membros que tiverem este cargo não estarão aptos a entrar nos canais de vídeo configurados. As permissões do cargo podem ser facilmente definidas manualmente pela moderação, com o mesmo efeito.\n"
-"Se o cargo não for configurado, não haverá uma proibição para reincidentes. Os membros irão ser kickados do canal e alertados por mensagem direta. "
+"O cargo será automaticamente atribuído ao membro que, repetidamente, deixar de manter a câmera ligada nos canais indicados (conforme abaixo).\n"
+"Os membros que tiverem este cargo não estarão aptos a entrar nos canais de vídeo configurados como de uso obrigatório de webcam. As permissões do cargo podem ser facilmente definidas manualmente pela moderação, com o mesmo efeito.\n"
+"Se o cargo não for configurado, não haverá uma proibição para reincidentes. Os membros somente irão ser kickados do canal e alertados por mensagem direta. "
 
 #: src/modules/video_channels/settings.py:123
 msgctxt "guildset:video_blacklist|accepts"
