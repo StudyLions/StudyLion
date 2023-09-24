@@ -24,7 +24,7 @@ msgstr ""
 #: src/modules/ranks/cog.py:76
 msgctxt "cmd:configure_ranks|param:rank_type|choice:voice"
 msgid "Voice"
-msgstr "Em Voz"
+msgstr "Em Canal de Voz"
 
 #: src/modules/ranks/cog.py:77
 msgctxt "cmd:configure_ranks|param:rank_type|choice:xp"
