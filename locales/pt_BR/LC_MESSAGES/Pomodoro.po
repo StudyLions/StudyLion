@@ -248,7 +248,7 @@ msgid ""
 "Currently **focusing**, with break starting {timestamp}"
 msgstr ""
 "Temporizador ˋ{pattern}ˋ está ativo, com ˋ{members}ˋ membros!\n"
-"Agora, no estágio **Foco**, com a pausa começando em {timestamp}"
+"Agora, no estágio **Foco**. A pausa começa em {timestamp}"
 
 #: src/modules/pomodoro/cog.py:492
 #, possible-python-brace-format
