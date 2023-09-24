@@ -387,7 +387,7 @@ msgstr "Se as sub-tarefas também devem ser apagadas com as tarefas removidas."
 #, possible-python-brace-format
 msgctxt "cmd:tasks_remove_cmd|error:no_matching"
 msgid "No tasks on your tasklist match `{input}`"
-msgstr "Nenhuma das tarefas em sua lista de tarefas corresponde com ˋ{imput}ˋ"
+msgstr "Nenhuma das tarefas em sua lista de tarefas corresponde com ˋ{input}ˋ"
 
 #: src/modules/tasklist/cog.py:790
 msgctxt "cmd:tasks_remove_cmd|error:no_matching"
