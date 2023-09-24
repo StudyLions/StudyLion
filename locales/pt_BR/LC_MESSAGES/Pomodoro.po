@@ -504,7 +504,9 @@ msgstr "canal_de_notificação"
 #: src/modules/pomodoro/options.py:51
 msgctxt "timerset:notification_channel|desc"
 msgid "Channel to which to send timer status cards and notifications."
-msgstr "Canal em que será enviado o painel do temporizador e as notificações."
+msgstr ""
+"Canal para onde será enviado o painel do temporizador, e também as "
+"notificações dos ciclos."
 
 #: src/modules/pomodoro/options.py:73
 #, possible-python-brace-format
