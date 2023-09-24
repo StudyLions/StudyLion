@@ -57,8 +57,8 @@ msgid ""
 "Could not parse `{given}` as a valid reminder time. Try entering the time in"
 " the form `HH:MM` or `YYYY-MM-DD HH:MM`."
 msgstr ""
-"Não pude analisar ˋ{given}ˋ como um valor de tempo válido. Tente usar o "
-"formato ˋHH:MMˋ ou ˋAAAA-MM-DD HH:MMˋ."
+"Não pude analisar ˋ{given}ˋ como um lembrete, de tempo, válido. Tente usar o"
+" formato ˋHH:MMˋ ou ˋAAAA-MM-DD HH:MMˋ."
 
 #: src/modules/reminders/cog.py:329
 msgctxt "cmd:reminders"
