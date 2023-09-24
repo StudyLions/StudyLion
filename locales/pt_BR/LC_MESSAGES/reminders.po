@@ -252,7 +252,7 @@ msgstr[2] "Você tem certeza que deseja limpar seus ˋ{count}ˋ lembretes?"
 #: src/modules/reminders/ui.py:57
 msgctxt "ui:reminderlist|button:clear|confirm|button:yes"
 msgid "Yes, clear my reminders"
-msgstr ""
+msgstr "Sim, apagar meus lembretes"
 
 #: src/modules/reminders/ui.py:68
 msgctxt "ui:reminderlist|button:clear|success|desc"
