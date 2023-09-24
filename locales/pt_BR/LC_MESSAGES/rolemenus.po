@@ -1006,7 +1006,7 @@ msgstr "Você retirou o **{role}**."
 #, possible-python-brace-format
 msgctxt "rolemenu|select|error:required_role"
 msgid "You need to have the role **{role}** required to use this menu!"
-msgstr ""
+msgstr "É necessário que você tenha o cargo **{role}** para usar este menu!"
 
 #: src/modules/rolemenus/rolemenu.py:574
 #, possible-python-brace-format
