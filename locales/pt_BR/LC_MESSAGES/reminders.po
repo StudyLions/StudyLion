@@ -47,6 +47,8 @@ msgid ""
 "I cannot direct message you! Do you have me blocked or direct messages "
 "closed?"
 msgstr ""
+"Eu não posso enviar uma Mensagem Direta a você! Você me bloqueou, ou suas "
+"Mensagens Diretas estão fechadas?"
 
 #: src/modules/reminders/cog.py:186
 #, possible-python-brace-format
