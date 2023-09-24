@@ -357,6 +357,8 @@ msgid ""
 "At {timestamp} I will remind you about:\n"
 "> {content}"
 msgstr ""
+"Às {timestamp} eu irei te lembrar sobre:\n"
+"> {content}"
 
 #: src/modules/reminders/data.py:79
 msgctxt "reminder_set|field:repeat|name"
