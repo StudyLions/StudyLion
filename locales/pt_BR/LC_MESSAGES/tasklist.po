@@ -59,7 +59,7 @@ msgstr "Este Mês"
 #: src/modules/tasklist/cog.py:205
 msgctxt "summon_tasklist|error:insufficient_perms|title"
 msgid "Uh-Oh, I cannot do that here!"
-msgstr ""
+msgstr "Oh-oh, eu não posso fazer isto!"
 
 #: src/modules/tasklist/cog.py:209
 msgctxt "summon_tasklist|error:insufficient_perms|desc"
