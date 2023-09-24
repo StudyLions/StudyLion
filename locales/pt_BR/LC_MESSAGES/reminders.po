@@ -39,6 +39,7 @@ msgstr ""
 msgctxt "create_reminder|error:too_many"
 msgid "Sorry, you have reached the maximum of `25` reminders."
 msgstr ""
+"Sinto muito, mas você já atingiu o máximo de ˋ25ˋ lembretes permitidos."
 
 #: src/modules/reminders/cog.py:149
 msgctxt "create_reminder|error:cannot_dm"
