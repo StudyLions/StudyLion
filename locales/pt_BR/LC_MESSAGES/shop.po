@@ -621,7 +621,7 @@ msgstr "Página {current}/{total}"
 #: src/modules/shop/shops/colours.py:1264
 msgctxt "ui:colourstore|embed|field:warning|name"
 msgid "Note!"
-msgstr ""
+msgstr "Atenção!"
 
 #: src/modules/shop/shops/colours.py:1268
 #, possible-python-brace-format
