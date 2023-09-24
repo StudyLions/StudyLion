@@ -307,6 +307,8 @@ msgid ""
 "No `timer_channel` was provided, and you lack the 'Manage Channels` "
 "permission required to create a new timer room!"
 msgstr ""
+"Nenhum ˋtemporizador_canalˋ foi indicado, e me falta permissão de 'Gerenciar"
+" Canais', necessária para que eu possa criar uma sala para o temporizador."
 
 #: src/modules/pomodoro/cog.py:587
 msgctxt "cmd:pomodoro_create|new_channel|error:my_insufficient_perms|title"
