@@ -700,7 +700,7 @@ msgstr ""
 msgctxt "ui:schedule|button:clear|success"
 msgid "Successfully cancelled and refunded your upcoming scheduled sessions."
 msgstr ""
-"Seu check-in foi cancelado com sucesso, e suas moedas foram devolvidas."
+"Seu agendamento foi cancelado com sucesso, e suas moedas foram devolvidas."
 
 #: src/modules/schedule/ui/scheduleui.py:142
 msgctxt "ui:schedule|button:clear|label"
