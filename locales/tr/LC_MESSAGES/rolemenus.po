@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-13 08:47+0300\n"
+"POT-Creation-Date: 2023-09-24 12:21+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Havina Ru, 2023\n"
 "Language-Team: Turkish (https://app.transifex.com/leobot/teams/174919/tr/)\n"
@@ -393,13 +393,18 @@ msgctxt "cmd:rolemenu_edit|parse:template|success:custom"
 msgid "Now using a custom menu message."
 msgstr "Şu anda özel menü mesajını kullanıyorum."
 
-#: src/modules/rolemenus/cog.py:994
+#: src/modules/rolemenus/cog.py:986
+msgctxt "cmd:rolemenu_edit|parse:custom_message|success"
+msgid "Custom menu message updated."
+msgstr ""
+
+#: src/modules/rolemenus/cog.py:1001
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_edit|repost|success"
 msgid "The role menu is now available at {message}"
 msgstr " {message} mesajında rol menü artık aktif"
 
-#: src/modules/rolemenus/cog.py:1005
+#: src/modules/rolemenus/cog.py:1012
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_edit|repost|error:forbidden"
 msgid ""
@@ -409,7 +414,7 @@ msgstr ""
 "Kanalı güncelleyemedim! {channel}'da \"BAĞLANTI_EKLE\" veya \"MESAJ_GÖNDER\""
 " iznim yok."
 
-#: src/modules/rolemenus/cog.py:1010
+#: src/modules/rolemenus/cog.py:1017
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_edit|repost|error:unknown"
 msgid ""
@@ -419,27 +424,27 @@ msgstr ""
 " {channel} kanalına menüyü atmaya çalışırken belirlenemeyen bir hata oluştu.\n"
 "**Hata:** `{exception}`"
 
-#: src/modules/rolemenus/cog.py:1044
+#: src/modules/rolemenus/cog.py:1051
 msgctxt "cmd:rolemenu_delete"
 msgid "delmenu"
 msgstr "menüyüsil"
 
-#: src/modules/rolemenus/cog.py:1047
+#: src/modules/rolemenus/cog.py:1054
 msgctxt "cmd:rolemenu_delete|desc"
 msgid "Delete a role menu."
 msgstr "Bir rol menüsünü sil."
 
-#: src/modules/rolemenus/cog.py:1051
+#: src/modules/rolemenus/cog.py:1058
 msgctxt "cmd:rolemenu_delete|param:name"
 msgid "menu"
 msgstr "menü"
 
-#: src/modules/rolemenus/cog.py:1056
+#: src/modules/rolemenus/cog.py:1063
 msgctxt "cmd:rolemenu_delete|param:name|desc"
 msgid "Name of the rolemenu to delete."
 msgstr "Silinecek rol menü adı."
 
-#: src/modules/rolemenus/cog.py:1071
+#: src/modules/rolemenus/cog.py:1078
 msgctxt "cmd:rolemenu_delete|error:author_perms"
 msgid ""
 "You need the `MANAGE_ROLES` permission in order to manage the server role "
@@ -448,13 +453,13 @@ msgstr ""
 "Bu sunucudaki rol menülerini düzenleyebilmek için `ROLLERİ_YÖNET` yetkisine "
 "sahip olman gerekmektedir."
 
-#: src/modules/rolemenus/cog.py:1094
+#: src/modules/rolemenus/cog.py:1101
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delete|error:menu_not_found"
 msgid "This server does not have a role menu called `{name}`!"
 msgstr "Bu sunucuda `{name}` adında bir rol menüsü bulunmuyor!"
 
-#: src/modules/rolemenus/cog.py:1102
+#: src/modules/rolemenus/cog.py:1109
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delete|confirm|title"
 msgid ""
@@ -464,194 +469,194 @@ msgstr ""
 "**{name}** rol menüsünü silmek istediğine emin misin? Bu işlem geri "
 "alınamaz!"
 
-#: src/modules/rolemenus/cog.py:1107
+#: src/modules/rolemenus/cog.py:1114
 msgctxt "cmd:rolemenu_delete|confirm|button:yes"
 msgid "Yes, Delete Now"
 msgstr "Evet, şimdi sil"
 
-#: src/modules/rolemenus/cog.py:1112
+#: src/modules/rolemenus/cog.py:1119
 msgctxt "cmd:rolemenu_delete|confirm|button:no"
 msgid "No, Cancel"
 msgstr "Hayır, iptal et"
 
-#: src/modules/rolemenus/cog.py:1137
+#: src/modules/rolemenus/cog.py:1144
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delete|success|desc"
 msgid "Successfully deleted the menu **{name}**"
 msgstr "**{name}** adlı menüyü başarıyla sildim"
 
-#: src/modules/rolemenus/cog.py:1145
+#: src/modules/rolemenus/cog.py:1152
 msgctxt "cmd:rolemenu_addrole"
 msgid "addrole"
 msgstr "rolekle"
 
-#: src/modules/rolemenus/cog.py:1148
+#: src/modules/rolemenus/cog.py:1155
 msgctxt "cmd:rolemenu_addrole|desc"
 msgid "Add a new role to an existing role menu."
 msgstr "Varolan bir menüye yeni rol ekle."
 
-#: src/modules/rolemenus/cog.py:1153
+#: src/modules/rolemenus/cog.py:1160
 msgctxt "cmd:rolemenu_addrole|param:menu"
 msgid "menu"
 msgstr "menü"
 
-#: src/modules/rolemenus/cog.py:1156
+#: src/modules/rolemenus/cog.py:1163
 msgctxt "cmd:rolemenu_addrole|param:role"
 msgid "role"
 msgstr "rol"
 
-#: src/modules/rolemenus/cog.py:1167
+#: src/modules/rolemenus/cog.py:1174
 msgctxt "cmd:rolemenu_addrole|param:menu|desc"
 msgid "Name of the menu to add a role to"
 msgstr "Rolün ekleneceği menünün adı"
 
-#: src/modules/rolemenus/cog.py:1171
+#: src/modules/rolemenus/cog.py:1178
 msgctxt "cmd:rolemenu_addrole|param:role|desc"
 msgid "Role to add to the menu"
 msgstr "Menüye eklenecek rol"
 
-#: src/modules/rolemenus/cog.py:1179
+#: src/modules/rolemenus/cog.py:1186
 msgctxt "cmd:rolemenu_addrole|param:duration|desc"
 msgid "Lifetime of the role after selection in minutes."
 msgstr "Dakika cinsinden seçildikten sonra rolün kalma süresi."
 
-#: src/modules/rolemenus/cog.py:1227
+#: src/modules/rolemenus/cog.py:1234
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_addrole|error:menu_not_found"
 msgid "This server does not have a role menu called `{name}`!"
 msgstr "Bu sunucuda `{name}` adında bir rol menüsü bulunmuyor!"
 
-#: src/modules/rolemenus/cog.py:1312
+#: src/modules/rolemenus/cog.py:1319
 msgctxt "cmd:rolemenu_addrole|success:create|title"
 msgid "Added Menu Role"
 msgstr "Menü Rolünü Ekledim"
 
-#: src/modules/rolemenus/cog.py:1316
+#: src/modules/rolemenus/cog.py:1323
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_addrole|success:create|desc"
 msgid "Add the role {role} to the menu **{menu}**."
 msgstr "**{menu}** menüsüne {role} rolünü ekledim."
 
-#: src/modules/rolemenus/cog.py:1334
+#: src/modules/rolemenus/cog.py:1341
 msgctxt "cmd:rolemenu_addrole|success:edit|title"
 msgid "Menu Role updated"
 msgstr "Menü Rolü Güncellendi"
 
-#: src/modules/rolemenus/cog.py:1346
+#: src/modules/rolemenus/cog.py:1353
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_addrole|error:role_exists"
 msgid "The role {role} is already selectable from the menu **{menu}**"
 msgstr "{role} rolü zaten **{menu}** menüsünden seçilebilir"
 
-#: src/modules/rolemenus/cog.py:1364
+#: src/modules/rolemenus/cog.py:1371
 msgctxt "cmd:rolemenu_addrole|success|error:reaction|name"
 msgid "Note"
 msgstr "Not"
 
-#: src/modules/rolemenus/cog.py:1376
+#: src/modules/rolemenus/cog.py:1383
 msgctxt "cmd:rolemenu_addrole|success|button:editor|label"
 msgid "Edit Menu"
 msgstr "Menüyü Düzenle"
 
-#: src/modules/rolemenus/cog.py:1393
+#: src/modules/rolemenus/cog.py:1400
 msgctxt "cmd:rolemenu_editrole"
 msgid "editrole"
 msgstr "rolüdüzenle"
 
-#: src/modules/rolemenus/cog.py:1396
+#: src/modules/rolemenus/cog.py:1403
 msgctxt "cmd:rolemenu_editrole|desc"
 msgid "Edit role options in an existing role menu."
 msgstr "Varolan bir menüdeki rol seçeneklerini güncelle."
 
-#: src/modules/rolemenus/cog.py:1401
+#: src/modules/rolemenus/cog.py:1408
 msgctxt "cmd:rolemenu_editrole|param:menu"
 msgid "menu"
 msgstr "menü"
 
-#: src/modules/rolemenus/cog.py:1404
+#: src/modules/rolemenus/cog.py:1411
 msgctxt "cmd:rolemenu_editrole|param:menu_role"
 msgid "menu_role"
 msgstr "menü_rol"
 
-#: src/modules/rolemenus/cog.py:1407
+#: src/modules/rolemenus/cog.py:1414
 msgctxt "cmd:rolemenu_editrole|param:role"
 msgid "new_role"
 msgstr "yeni_rol"
 
-#: src/modules/rolemenus/cog.py:1418
+#: src/modules/rolemenus/cog.py:1425
 msgctxt "cmd:rolemenu_editrole|param:menu|desc"
 msgid "Name of the menu to edit the role for"
 msgstr "Rolünün düzenleneceği menü adı"
 
-#: src/modules/rolemenus/cog.py:1422
+#: src/modules/rolemenus/cog.py:1429
 msgctxt "cmd:rolemenu_editrole|param:menu_role|desc"
 msgid "Label, name, or mention of the menu role to edit."
 msgstr ""
 "Güncellemek için rol menüsünün etiket, isim ya da menü rolünün etiketi."
 
-#: src/modules/rolemenus/cog.py:1426
+#: src/modules/rolemenus/cog.py:1433
 msgctxt "cmd:rolemenu_editrole|param:role|desc"
 msgid "New server role this menu role should give."
 msgstr "Bu rol menünün vermesi gereken yeni sunucu rolü."
 
-#: src/modules/rolemenus/cog.py:1434
+#: src/modules/rolemenus/cog.py:1441
 msgctxt "cmd:rolemenu_editrole|param:duration|desc"
 msgid "Lifetime of the role after selection in minutes."
 msgstr "Dakika cinsinden seçildikten sonra rolün kalma süresi."
 
-#: src/modules/rolemenus/cog.py:1475
+#: src/modules/rolemenus/cog.py:1482
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_editrole|error:menu_not_found"
 msgid "This server does not have a role menu called `{name}`!"
 msgstr "Bu sunucuda `{name}` adında bir rol menüsü bulunmuyor!"
 
-#: src/modules/rolemenus/cog.py:1503
+#: src/modules/rolemenus/cog.py:1510
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_editrole|error:role_not_found"
 msgid "The menu **{menu}** does not have the role **{name}**"
 msgstr "**{menu}** menüsünün **{name}** adında bir rolü bulunmuyor"
 
-#: src/modules/rolemenus/cog.py:1569
+#: src/modules/rolemenus/cog.py:1576
 msgctxt "cmd:rolemenu_editrole|success|title"
 msgid "Role menu role updated"
 msgstr "Rol menü rolü güncellendi"
 
-#: src/modules/rolemenus/cog.py:1584
+#: src/modules/rolemenus/cog.py:1591
 msgctxt "cmd:rolemenu_editrole|success|error:reaction|name"
 msgid "Warning!"
 msgstr "Uyarı!"
 
-#: src/modules/rolemenus/cog.py:1609
+#: src/modules/rolemenus/cog.py:1616
 msgctxt "cmd:rolemenu_delrole"
 msgid "delrole"
 msgstr "rolsil"
 
-#: src/modules/rolemenus/cog.py:1612
+#: src/modules/rolemenus/cog.py:1619
 msgctxt "cmd:rolemenu_delrole|desc"
 msgid "Remove a role from a role menu."
 msgstr "Bir rol menüsünden bir rolü çıkart."
 
-#: src/modules/rolemenus/cog.py:1616
+#: src/modules/rolemenus/cog.py:1623
 msgctxt "cmd:rolemenu_delrole|param:menu"
 msgid "menu"
 msgstr "menü"
 
-#: src/modules/rolemenus/cog.py:1617
+#: src/modules/rolemenus/cog.py:1624
 msgctxt "cmd:rolemenu_delrole|param:menu_role"
 msgid "menu_role"
 msgstr "menü_rol"
 
-#: src/modules/rolemenus/cog.py:1622
+#: src/modules/rolemenus/cog.py:1629
 msgctxt "cmd:rolemenu_delrole|param:menu|desc"
 msgid "Name of the menu to delete the role from."
 msgstr "Rolün silineceği menü adı"
 
-#: src/modules/rolemenus/cog.py:1626
+#: src/modules/rolemenus/cog.py:1633
 msgctxt "cmd:rolemenu_delrole|param:menu_role|desc"
 msgid "Name, label, or mention of the role to delete."
 msgstr "Silmek için rol menüsünün etiket, isim ya da menü rolünün etiketi."
 
-#: src/modules/rolemenus/cog.py:1644
+#: src/modules/rolemenus/cog.py:1651
 msgctxt "cmd:rolemenu_delrole|error:author_perms"
 msgid ""
 "You need the `MANAGE_ROLES` permission in order to manage the server role "
@@ -660,56 +665,56 @@ msgstr ""
 "Bu sunucudaki rol menülerini düzenleyebilmek için `ROLLERİ_YÖNET` yetkisine "
 "sahip olman gerekmektedir."
 
-#: src/modules/rolemenus/cog.py:1668
+#: src/modules/rolemenus/cog.py:1675
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delrole|error:menu_not_found"
 msgid "This server does not have a role menu called `{name}`!"
 msgstr "Bu sunucuda `{name}` adında bir rol menüsü bulunmuyor!"
 
-#: src/modules/rolemenus/cog.py:1696
+#: src/modules/rolemenus/cog.py:1703
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delrole|error:role_not_found"
 msgid "The menu **{menu}** does not have the role **{name}**"
 msgstr "**{menu}** menüsünün **{name}** adında bir rolü bulunmuyor"
 
-#: src/modules/rolemenus/cog.py:1713
+#: src/modules/rolemenus/cog.py:1720
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delrole|success"
 msgid "The role **{name}** was successfully removed from the menu **{menu}**."
 msgstr "**{name}** rolü başarıyla **{menu}** menüsünden kaldırıldı."
 
-#: src/modules/rolemenus/roleoptions.py:54
+#: src/modules/rolemenus/roleoptions.py:57
 msgctxt "roleset:role"
 msgid "role"
 msgstr "rol"
 
-#: src/modules/rolemenus/roleoptions.py:57
+#: src/modules/rolemenus/roleoptions.py:60
 msgctxt "roleset:role|desc"
 msgid "The role associated to this menu item."
 msgstr "Bu rol menü ürünüyle ilişkili rol."
 
-#: src/modules/rolemenus/roleoptions.py:61
+#: src/modules/rolemenus/roleoptions.py:64
 msgctxt "roleset:role|long_desc"
 msgid "The role given when this menu item is selected in the role menu."
 msgstr "Rol menüsünden menü ürünü seçildiğinde verilecek rol."
 
-#: src/modules/rolemenus/roleoptions.py:74
+#: src/modules/rolemenus/roleoptions.py:77
 #, possible-python-brace-format
 msgctxt "roleset:role|set_response:set"
 msgid "This menu item will now give the role {role}."
 msgstr " Bu menü ürünü bundan böyle {role} rolünü verecek."
 
-#: src/modules/rolemenus/roleoptions.py:82
+#: src/modules/rolemenus/roleoptions.py:88
 msgctxt "roleset:label"
 msgid "label"
 msgstr "etiket"
 
-#: src/modules/rolemenus/roleoptions.py:85
+#: src/modules/rolemenus/roleoptions.py:91
 msgctxt "roleset:label|desc"
 msgid "A short button label for this role."
 msgstr "Bu rol için kısa buton etiketi."
 
-#: src/modules/rolemenus/roleoptions.py:90
+#: src/modules/rolemenus/roleoptions.py:96
 msgctxt "roleset:label|long_desc"
 msgid ""
 "A short name for this role, to be displayed in button labels, dropdown "
@@ -718,23 +723,23 @@ msgstr ""
 "Bu rolün buton etiketlerinde, açılır başlıklarda ve bazı menü düzenlerinde "
 "görüntülenecek kısa adı. Varsayılan olarak Discord rol adını kullanır."
 
-#: src/modules/rolemenus/roleoptions.py:104
+#: src/modules/rolemenus/roleoptions.py:110
 #, possible-python-brace-format
 msgctxt "roleset:role|set_response"
 msgid "This menu role is now called `{value}`."
 msgstr "Bu rol menüsü bundan böyle `{value}` olarak anılacak."
 
-#: src/modules/rolemenus/roleoptions.py:112
+#: src/modules/rolemenus/roleoptions.py:118
 msgctxt "roleset:emoji"
 msgid "emoji"
 msgstr "emoji"
 
-#: src/modules/rolemenus/roleoptions.py:115
+#: src/modules/rolemenus/roleoptions.py:121
 msgctxt "roleset:emoji|desc"
 msgid "The emoji associated with this role."
 msgstr "Bu rolle ilişkilendirilecek emoji."
 
-#: src/modules/rolemenus/roleoptions.py:119
+#: src/modules/rolemenus/roleoptions.py:125
 msgctxt "roleset:emoji|long_desc"
 msgid ""
 "The role emoji is used for the reaction (in reaction role menus), and "
@@ -745,34 +750,34 @@ msgstr ""
 "buton ve açılır menülerde rol etiketinin yanında görünür. Emoji, çoğu menü "
 "şablonunda rolün yanında da görüntülenir."
 
-#: src/modules/rolemenus/roleoptions.py:157
+#: src/modules/rolemenus/roleoptions.py:165
 #, possible-python-brace-format
 msgctxt "roleset:emoji|error:test_emoji"
 msgid "The selected emoji `{emoji}` is invalid or has been deleted."
 msgstr "Seçilen `{emoji}` emoji geçersiz ya da silindi."
 
-#: src/modules/rolemenus/roleoptions.py:168
+#: src/modules/rolemenus/roleoptions.py:176
 #, possible-python-brace-format
 msgctxt "roleset:emoji|set_response:set"
 msgid "The menu role emoji is now {emoji}."
 msgstr "Menü rol emojisi bundan böyle {emoji}."
 
-#: src/modules/rolemenus/roleoptions.py:173
+#: src/modules/rolemenus/roleoptions.py:181
 msgctxt "roleset:emoji|set_response:unset"
 msgid "The menu role emoji has been removed."
 msgstr "Menü rol emojisi kaldırıldı."
 
-#: src/modules/rolemenus/roleoptions.py:181
+#: src/modules/rolemenus/roleoptions.py:189
 msgctxt "roleset:description"
 msgid "description"
 msgstr "açıklama"
 
-#: src/modules/rolemenus/roleoptions.py:184
+#: src/modules/rolemenus/roleoptions.py:192
 msgctxt "roleset:description|desc"
 msgid "A longer description of this role."
 msgstr "Bu rolün uzun açıklaması."
 
-#: src/modules/rolemenus/roleoptions.py:189
+#: src/modules/rolemenus/roleoptions.py:197
 msgctxt "roleset:description|long_desc"
 msgid ""
 "The description is displayed under the role label in dropdown style menus. "
@@ -782,58 +787,66 @@ msgstr ""
 "Açıklama, açılır menülerdeki rol etiketinin altında görüntülenir. Ayrıca "
 "özel rol seçimi yanıtlarında yer açıklaması olarak da kullanılabilir."
 
-#: src/modules/rolemenus/roleoptions.py:205
+#: src/modules/rolemenus/roleoptions.py:213
 msgctxt "roleset:description|set_response:set"
 msgid "The role description has been set."
 msgstr "Rol açıklaması ayarlandı."
 
-#: src/modules/rolemenus/roleoptions.py:210
+#: src/modules/rolemenus/roleoptions.py:218
 msgctxt "roleset:description|set_response:unset"
 msgid "The role description has been removed."
 msgstr "Rol açıklaması kaldırıldı."
 
-#: src/modules/rolemenus/roleoptions.py:218
+#: src/modules/rolemenus/roleoptions.py:226
 msgctxt "roleset:price"
 msgid "price"
 msgstr "ücret"
 
-#: src/modules/rolemenus/roleoptions.py:221
-msgctxt "roleset:price|desc"
-msgid "Price of the role, in LionCoins."
-msgstr "LionCoin cinsinden rolün ücreti."
-
-#: src/modules/rolemenus/roleoptions.py:225
-msgctxt "roleset:price|long_desc"
-msgid "How much the role costs when selected, in LionCoins."
-msgstr "LionCoin cinsinden rol seçildiğinde ne kadar tutacağı."
-
 #: src/modules/rolemenus/roleoptions.py:229
+msgctxt "roleset:price|desc"
+msgid "Price of the role, in LionCoins. May be negative."
+msgstr ""
+
+#: src/modules/rolemenus/roleoptions.py:233
+msgctxt "roleset:price|long_desc"
+msgid ""
+"How many LionCoins should be deducted from a member's account when they equip this role through this menu.\n"
+"The price may be negative, in which case the member will instead be rewarded coins when they equip the role."
+msgstr ""
+
+#: src/modules/rolemenus/roleoptions.py:240
 msgctxt "roleset:price|accepts"
-msgid "Amount of coins that the role costs."
-msgstr "Rolün tutacağı para miktarı."
+msgid "Amount of coins that the role costs when equipped."
+msgstr ""
 
-#: src/modules/rolemenus/roleoptions.py:242
+#: src/modules/rolemenus/roleoptions.py:254
 #, possible-python-brace-format
-msgctxt "roleset:price|set_response:set"
-msgid "This role will now cost {price} to equip."
-msgstr "Bu rolün alınması bundan böyle {price} tutacak."
+msgctxt "roleset:price|set_response:positive"
+msgid "Equipping this role will now cost {coin}**{price}**."
+msgstr ""
 
-#: src/modules/rolemenus/roleoptions.py:247
-msgctxt "roleset:price|set_response:unset"
-msgid "This role will now be free to equip from this role menu."
-msgstr "Bu rolü bu menüden almak bundan sonra ücretsiz olacak."
+#: src/modules/rolemenus/roleoptions.py:259
+msgctxt "roleset:price|set_response:zero"
+msgid "Equipping this role is now free."
+msgstr ""
 
-#: src/modules/rolemenus/roleoptions.py:255
+#: src/modules/rolemenus/roleoptions.py:264
+#, possible-python-brace-format
+msgctxt "roleset:price|set_response:negative"
+msgid "Equipping this role will now reward {coin}**{price}**."
+msgstr ""
+
+#: src/modules/rolemenus/roleoptions.py:272
 msgctxt "roleset:duration"
 msgid "duration"
 msgstr "süre"
 
-#: src/modules/rolemenus/roleoptions.py:258
+#: src/modules/rolemenus/roleoptions.py:275
 msgctxt "roleset:duration|desc"
 msgid "Lifetime of the role after selection"
 msgstr "Rolün seçildikten sonraki süresi"
 
-#: src/modules/rolemenus/roleoptions.py:262
+#: src/modules/rolemenus/roleoptions.py:279
 msgctxt "roleset:duration|long_desc"
 msgid ""
 "Allows creation of 'temporary roles' which expire a given time after being "
@@ -842,18 +855,18 @@ msgstr ""
 "Alındıktan sonra belirli bir süre sona eren 'geçici rollerin' "
 "oluşturulmasına izin verir. Süre bitiminde iade yapılmayacaktır."
 
-#: src/modules/rolemenus/roleoptions.py:267
+#: src/modules/rolemenus/roleoptions.py:284
 msgctxt "roleset:duration|notset"
 msgid "Forever."
 msgstr "Sonsuza kadar."
 
-#: src/modules/rolemenus/roleoptions.py:280
+#: src/modules/rolemenus/roleoptions.py:297
 #, possible-python-brace-format
 msgctxt "roleset:duration|set_response:set"
 msgid "This role will now expire after {duration}."
 msgstr "Bu rol bundan sonra {duration} süre sonra sona erecektir."
 
-#: src/modules/rolemenus/roleoptions.py:285
+#: src/modules/rolemenus/roleoptions.py:302
 msgctxt "roleset:duration|set_response:unset"
 msgid "This role will no longer expire after being selected."
 msgstr "Bu rolün süresi artık seçildikten sonra sona ermeyecektir."
@@ -968,26 +981,32 @@ msgstr ""
 "**{role}** rolünü kaldırdın ve  {coin} **{amount}** miktarı sana iade "
 "edildi."
 
-#: src/modules/rolemenus/rolemenu.py:540
+#: src/modules/rolemenus/rolemenu.py:541
+#, possible-python-brace-format
+msgctxt "rolemenu|deselect|success:negrefund|desc"
+msgid "You have removed **{role}**, and have lost {coin} **{amount}**."
+msgstr ""
+
+#: src/modules/rolemenus/rolemenu.py:546
 #, possible-python-brace-format
 msgctxt "rolemenu|deselect|success:norefund|desc"
 msgid "You have unequipped **{role}**."
 msgstr "**{role}** rolünü kaldırdın."
 
-#: src/modules/rolemenus/rolemenu.py:554
+#: src/modules/rolemenus/rolemenu.py:560
 #, possible-python-brace-format
 msgctxt "rolemenu|select|error:required_role"
-msgid "You need to have the **{role}** role to use this!"
-msgstr "Bunu kullanabilmek için **{role}** rolüne sahip olman gerekiyor!"
+msgid "You need to have the role **{role}** required to use this menu!"
+msgstr ""
 
-#: src/modules/rolemenus/rolemenu.py:568
+#: src/modules/rolemenus/rolemenu.py:574
 #, possible-python-brace-format
 msgctxt "rolemenu|select|error:max_obtainable"
 msgid "You already have the maximum of {obtainable} roles from this menu!"
 msgstr ""
 "Bu menüden seçilebilir maksimum {obtainable} adet role zaten sahipsin!"
 
-#: src/modules/rolemenus/rolemenu.py:582
+#: src/modules/rolemenus/rolemenu.py:588
 #, possible-python-brace-format
 msgctxt "rolemenu|select|error:insufficient_funds"
 msgid ""
@@ -997,42 +1016,42 @@ msgstr ""
 "**{role}** rolü {coin}**{cost}** tutuyor fakat senin sadece "
 "{coin}**{balance}** paran var!"
 
-#: src/modules/rolemenus/rolemenu.py:598
+#: src/modules/rolemenus/rolemenu.py:604
 msgctxt "rolemenu|select|error:perms"
 msgid "I don't have enough permissions to give you this role!"
 msgstr "Bu rolü sana vermek için yeterli iznim yok!"
 
-#: src/modules/rolemenus/rolemenu.py:605
+#: src/modules/rolemenus/rolemenu.py:611
 msgctxt "rolemenu|select|error:discord"
 msgid ""
 "An unknown error occurred while assigning your role! Please try again later."
 msgstr ""
 "Rolünü atarken bilinmeyen bir sorun oluştu! Lütfen daha sonra tekrar dene."
 
-#: src/modules/rolemenus/rolemenu.py:647
+#: src/modules/rolemenus/rolemenu.py:653
 msgctxt "rolemenu|select|success|title"
 msgid "Role equipped"
 msgstr "Rol alındı"
 
-#: src/modules/rolemenus/rolemenu.py:653
+#: src/modules/rolemenus/rolemenu.py:659
 #, possible-python-brace-format
 msgctxt "rolemenu|select|success:purchase|desc"
 msgid "You have purchased the role **{role}** for {coin}**{amount}**"
 msgstr " **{role}** rolünü {coin}**{amount}** miktar lionCoin'e satın aldın"
 
-#: src/modules/rolemenus/rolemenu.py:658
+#: src/modules/rolemenus/rolemenu.py:664
 #, possible-python-brace-format
 msgctxt "rolemenu|select|success:nopurchase|desc"
 msgid "You have equipped the role **{role}**"
 msgstr " **{role}** rolünü aldın"
 
-#: src/modules/rolemenus/rolemenu.py:664
+#: src/modules/rolemenus/rolemenu.py:670
 #, possible-python-brace-format
 msgctxt "rolemenu|select|expires_at"
 msgid "The role will expire at {timestamp}."
 msgstr "Rol {timestamp} tarihinde geçersiz olacak."
 
-#: src/modules/rolemenus/rolemenu.py:717
+#: src/modules/rolemenus/rolemenu.py:724
 #, possible-python-brace-format
 msgctxt "rolemenu|content:reactions"
 msgid "[Click here]({jump_link}) to jump back."
@@ -1306,62 +1325,62 @@ msgctxt "ui:menu_editor|button:bulk_edit|modal|title"
 msgid "Menu Options"
 msgstr "Menü Seçenekleri"
 
-#: src/modules/rolemenus/ui/menueditor.py:215
+#: src/modules/rolemenus/ui/menueditor.py:218
 msgctxt "ui:menu_editor|button:bulk_edit|label"
 msgid "Bulk Edit"
 msgstr "Toplu Düzenleme"
 
-#: src/modules/rolemenus/ui/menueditor.py:235
+#: src/modules/rolemenus/ui/menueditor.py:238
 msgctxt "ui:menu_editor|button:sticky|label"
 msgid "Toggle Sticky"
 msgstr "Yapışkanı Aç/Kapat"
 
-#: src/modules/rolemenus/ui/menueditor.py:259
+#: src/modules/rolemenus/ui/menueditor.py:262
 msgctxt "ui:menu_editor|button:refunds|label"
 msgid "Toggle Refunds"
 msgstr "İadeleri Aç/Kapat"
 
-#: src/modules/rolemenus/ui/menueditor.py:289
+#: src/modules/rolemenus/ui/menueditor.py:292
 msgctxt "ui:menu_editor|menu:reqroles|placeholder"
 msgid "Select Required Role"
 msgstr "Gereken Rolleri Seç"
 
-#: src/modules/rolemenus/ui/menueditor.py:308
+#: src/modules/rolemenus/ui/menueditor.py:311
 msgctxt "ui:menu_editor|button:modify_roles|label"
 msgid "Modify Roles"
 msgstr "Rolleri Düzenle"
 
-#: src/modules/rolemenus/ui/menueditor.py:337
+#: src/modules/rolemenus/ui/menueditor.py:340
 msgctxt "ui:menu_editor|role_editor|modal|title"
 msgid "Edit Menu Role"
 msgstr "Menü Rolünü Düzenle"
 
-#: src/modules/rolemenus/ui/menueditor.py:411
+#: src/modules/rolemenus/ui/menueditor.py:416
 msgctxt "ui:menu_editor|menu:add_roles|error:too_many_reactions"
 msgid "Too many roles! Reaction role menus cannot exceed `20` roles."
 msgstr "Çok fazla rol var! Tepki rol menüleri `20` rol sınırını geçemez."
 
-#: src/modules/rolemenus/ui/menueditor.py:416
+#: src/modules/rolemenus/ui/menueditor.py:421
 msgctxt "ui:menu_editor|menu:add_roles|error:too_many_roles"
 msgid "Too many roles! Role menus cannot have more than `25` roles."
 msgstr "Çok fazla rol var! Rol menüleri `25` rol sınırını geçemez."
 
-#: src/modules/rolemenus/ui/menueditor.py:455
+#: src/modules/rolemenus/ui/menueditor.py:460
 msgctxt "ui:menu_editor|menu:add_roles|placeholder"
 msgid "Add Roles"
 msgstr "Rol Ekle"
 
-#: src/modules/rolemenus/ui/menueditor.py:481
+#: src/modules/rolemenus/ui/menueditor.py:486
 msgctxt "ui:menu_editor|menu:edit_roles|placeholder"
 msgid "Edit Roles"
 msgstr "Rolleri Düzenle"
 
-#: src/modules/rolemenus/ui/menueditor.py:514
+#: src/modules/rolemenus/ui/menueditor.py:524
 msgctxt "ui:menu_editor|menu:del_role|placeholder"
 msgid "Remove Roles"
 msgstr "Rolleri Çıkart"
 
-#: src/modules/rolemenus/ui/menueditor.py:538
+#: src/modules/rolemenus/ui/menueditor.py:548
 msgctxt "ui:menu_editor|button:style|error:non-managed"
 msgid ""
 "Cannot change the style of a menu attached to a message I did not send! "
@@ -1370,12 +1389,12 @@ msgstr ""
 "Göndermediğim bir mesaja eklenen menünün stilini değiştiremiyorum! Lütfen "
 "önce yeniden gönderin."
 
-#: src/modules/rolemenus/ui/menueditor.py:551
+#: src/modules/rolemenus/ui/menueditor.py:561
 msgctxt "ui:menu_editor|button:style|label"
 msgid "Menu Style"
 msgstr "Menü Stili"
 
-#: src/modules/rolemenus/ui/menueditor.py:576
+#: src/modules/rolemenus/ui/menueditor.py:586
 msgctxt "ui:menu_editor|menu:style|error:too_many_reactions"
 msgid ""
 "Too many roles! The Reaction style is limited to `20` roles (Discord "
@@ -1384,7 +1403,7 @@ msgstr ""
 "Çok fazla rol var! Tepki stili `20` rol ile sınırlandırılmıştır. (Discord "
 "limitlendirmesi.)"
 
-#: src/modules/rolemenus/ui/menueditor.py:586
+#: src/modules/rolemenus/ui/menueditor.py:596
 msgctxt "ui:menu_editor|menu:style|error:incomplete_emojis"
 msgid ""
 "Cannot switch to the Reaction Role Style! Every role needs to have a "
@@ -1393,29 +1412,29 @@ msgstr ""
 "Tepki rol stiline geçemiyorum! Önce tüm rollerin belirli bir emojisinin "
 "olması gerekiyor."
 
-#: src/modules/rolemenus/ui/menueditor.py:602
+#: src/modules/rolemenus/ui/menueditor.py:614
 msgctxt "ui:menu_editor|menu:style|placeholder"
 msgid "Select Menu Style"
 msgstr "Menü Stilini Seç"
 
-#: src/modules/rolemenus/ui/menueditor.py:606
+#: src/modules/rolemenus/ui/menueditor.py:618
 msgctxt "ui:menu_editor|menu:style|option:reaction|label"
 msgid "Reaction Roles"
 msgstr "Tepki Rolleri"
 
-#: src/modules/rolemenus/ui/menueditor.py:609
+#: src/modules/rolemenus/ui/menueditor.py:621
 msgctxt "ui:menu_editor|menu:style|option:reaction|desc"
 msgid "Roles are represented compactly as clickable reactions on a message."
 msgstr ""
 "Roller, bir mesajda tıklanabilir tepkiler olarak kompakt bir şekilde temsil "
 "eidlmektedir."
 
-#: src/modules/rolemenus/ui/menueditor.py:615
+#: src/modules/rolemenus/ui/menueditor.py:627
 msgctxt "ui:menu_editor|menu:style|option:button|label"
 msgid "Button Menu"
 msgstr "Buton Menü"
 
-#: src/modules/rolemenus/ui/menueditor.py:618
+#: src/modules/rolemenus/ui/menueditor.py:630
 msgctxt "ui:menu_editor|menu:style|option:button|desc"
 msgid ""
 "Roles are represented in 5 rows of 5 buttons, each with an emoji and label."
@@ -1423,72 +1442,72 @@ msgstr ""
 "Roller, her birinde bir emoji ve etiket bulunan 5 düğmeden oluşan 5 sıra "
 "halinde temsil edilir."
 
-#: src/modules/rolemenus/ui/menueditor.py:624
+#: src/modules/rolemenus/ui/menueditor.py:636
 msgctxt "ui:menu_editor|menu:style|option:dropdown|label"
 msgid "Dropdown Menu"
 msgstr "Açılır Menü"
 
-#: src/modules/rolemenus/ui/menueditor.py:627
+#: src/modules/rolemenus/ui/menueditor.py:639
 msgctxt "ui:menu_editor|menu:style|option:dropdown|desc"
 msgid "Roles are selectable from a dropdown menu below the message."
 msgstr "Roller menünün altındaki mesajdan açılır menüden seçilebilirler."
 
-#: src/modules/rolemenus/ui/menueditor.py:697
+#: src/modules/rolemenus/ui/menueditor.py:709
 msgctxt "ui:menu_editor|menu:template|placeholder"
 msgid "Select Message Template"
 msgstr "Mesaj Şablonu Seç"
 
-#: src/modules/rolemenus/ui/menueditor.py:707
+#: src/modules/rolemenus/ui/menueditor.py:719
 msgctxt "ui:menu_editor|menu:template|option:custom|label"
 msgid "Custom Message"
 msgstr "Özel Mesaj"
 
-#: src/modules/rolemenus/ui/menueditor.py:712
+#: src/modules/rolemenus/ui/menueditor.py:724
 msgctxt "ui:menu_editor|menu:template|option:custom|description"
 msgid "Entirely custom menu message (opens an interactive editor)."
 msgstr "Tamamen Özel Menü Mesajı (İnteraktif editörü açar)."
 
-#: src/modules/rolemenus/ui/menueditor.py:729
+#: src/modules/rolemenus/ui/menueditor.py:741
 msgctxt "ui:menu_editor|button:delete|confirm|title"
 msgid "Are you sure you want to delete this menu? This is not reversible!"
 msgstr "Bu menüyü silmek istediğine emin misin? Bu işlem geri alınamaz!"
 
-#: src/modules/rolemenus/ui/menueditor.py:734
+#: src/modules/rolemenus/ui/menueditor.py:746
 msgctxt "ui:menu_editor|button:delete|confirm|button:yes"
 msgid "Yes, Delete Now"
 msgstr "Evet, şimdi sil"
 
-#: src/modules/rolemenus/ui/menueditor.py:739
+#: src/modules/rolemenus/ui/menueditor.py:751
 msgctxt "ui:menu_editor|button:delete|confirm|button:no"
 msgid "No, Go Back"
 msgstr "Hayır, geri dön"
 
-#: src/modules/rolemenus/ui/menueditor.py:756
+#: src/modules/rolemenus/ui/menueditor.py:768
 msgctxt "ui:menu_editor|button:delete|label"
 msgid "Delete Menu"
 msgstr "Menüyü Sil"
 
-#: src/modules/rolemenus/ui/menueditor.py:813
+#: src/modules/rolemenus/ui/menueditor.py:825
 msgctxt "ui:menu_editor|button:edit_msg|label"
 msgid "Edit Message"
 msgstr "Mesajı Düzenle"
 
-#: src/modules/rolemenus/ui/menueditor.py:844
+#: src/modules/rolemenus/ui/menueditor.py:851
 msgctxt "ui:menu_editor|button:preview|label"
 msgid "Preview"
 msgstr "Ön gösterim"
 
-#: src/modules/rolemenus/ui/menueditor.py:860
+#: src/modules/rolemenus/ui/menueditor.py:867
 msgctxt "ui:menu_editor|button:repost|widget:repost|menu:channel|placeholder"
 msgid "Select New Channel"
 msgstr "Yeni Kanalı Seç"
 
-#: src/modules/rolemenus/ui/menueditor.py:878
+#: src/modules/rolemenus/ui/menueditor.py:885
 msgctxt "ui:menu_editor|button:repost|widget:repost|error:perms|title"
 msgid "Insufficient Permissions!"
 msgstr "Yetersiz İzin!"
 
-#: src/modules/rolemenus/ui/menueditor.py:882
+#: src/modules/rolemenus/ui/menueditor.py:889
 msgctxt "ui:menu_editor|button:repost|eidget:repost|error:perms|desc"
 msgid ""
 "I lack the `EMBED_LINKS` or `SEND_MESSAGES` permission in this channel."
@@ -1496,63 +1515,63 @@ msgstr ""
 "Bu kanalda `BAĞLANTI_EKLE` ya da `MESAJ_GÖNDER` izinine sahip olmam "
 "gerekiyor."
 
-#: src/modules/rolemenus/ui/menueditor.py:895
+#: src/modules/rolemenus/ui/menueditor.py:902
 #, possible-python-brace-format
 msgctxt "ui:menu_editor|button:repost|widget:repost|error:post_failed"
 msgid ""
-"An error ocurred while posting to {channel}. Do I have sufficient "
-"permissions?"
-msgstr "{channel} kanala gönderirken bir hata oluştu. Yeterli iznim var mı?"
+"An unknown error ocurred while posting to {channel}!\n"
+"**Error:** `{exception}`"
+msgstr ""
 
-#: src/modules/rolemenus/ui/menueditor.py:907
+#: src/modules/rolemenus/ui/menueditor.py:915
 msgctxt "ui:menu_editor|button:repost|widget:repost|success|title"
 msgid "Role Menu Moved"
 msgstr "Rol Menüsü Taşındı"
 
-#: src/modules/rolemenus/ui/menueditor.py:913
+#: src/modules/rolemenus/ui/menueditor.py:921
 #, possible-python-brace-format
 msgctxt "ui:menu_editor|button:repost|widget:repost|success|desc:general"
 msgid "The role menu `{name}` is now available at {message_link}."
 msgstr ""
 "`{name}` rol menüsü bundan böyle {message_link} bağlantısında bulunabilecek."
 
-#: src/modules/rolemenus/ui/menueditor.py:927
+#: src/modules/rolemenus/ui/menueditor.py:935
 msgctxt "ui:menu_editor|button:repost|widget:repost|success|desc:reactions"
 msgid "Please check the message reactions are correct."
 msgstr "Lütfen mesaj tepki rollerinin doğru olup olmadığını kontrol et."
 
-#: src/modules/rolemenus/ui/menueditor.py:940
+#: src/modules/rolemenus/ui/menueditor.py:948
 msgctxt "ui:menu_editor|button:repost|widget:repost|title"
 msgid "Repost Role Menu"
 msgstr "Rol Menüsünü Tekrar Gönder"
 
-#: src/modules/rolemenus/ui/menueditor.py:944
+#: src/modules/rolemenus/ui/menueditor.py:952
 msgctxt "ui:menu_editor|button:repost|widget:repost|description"
 msgid "Please select the channel to which you want to resend this menu."
 msgstr "Bu menüyü tekrar göndermek istediğiniz kanalı seçiniz."
 
-#: src/modules/rolemenus/ui/menueditor.py:959
+#: src/modules/rolemenus/ui/menueditor.py:967
 msgctxt "ui:menu_editor|button:repost|label:repost"
 msgid "Repost"
 msgstr "Tekrar gönder"
 
-#: src/modules/rolemenus/ui/menueditor.py:964
+#: src/modules/rolemenus/ui/menueditor.py:972
 msgctxt "ui:menu_editor|button:repost|label:post"
 msgid "Post"
 msgstr "Gönder"
 
-#: src/modules/rolemenus/ui/menueditor.py:974
+#: src/modules/rolemenus/ui/menueditor.py:982
 msgctxt "ui:menu_editor|embed|title"
 msgid "Role Menu Editor"
 msgstr "Rol Menü Düzenleyicisi"
 
-#: src/modules/rolemenus/ui/menueditor.py:983
+#: src/modules/rolemenus/ui/menueditor.py:991
 #, possible-python-brace-format
 msgctxt "ui:menu_editor|embed|description|jump_text:attached"
 msgid "Members may use this menu from {jump_url}"
 msgstr "Kullanıcılar menüyü {jump_url} bağlantısından kullanabilecekler"
 
-#: src/modules/rolemenus/ui/menueditor.py:988
+#: src/modules/rolemenus/ui/menueditor.py:996
 msgctxt "ui:menu_editor|embed|description|jump_text:unattached"
 msgid ""
 "This menu is not currently active!\n"
@@ -1561,12 +1580,12 @@ msgstr ""
 "Bu menü şu anda aktif değil!\n"
 "Aşağıdaki `Gönder` butonuna basarak aktif edebilirsiniz."
 
-#: src/modules/rolemenus/ui/menueditor.py:1002
+#: src/modules/rolemenus/ui/menueditor.py:1010
 msgctxt "ui:menu_editor|embed|field:tips|name"
 msgid "Command Tips"
 msgstr "Komut İpuçları"
 
-#: src/modules/rolemenus/ui/menueditor.py:1006
+#: src/modules/rolemenus/ui/menueditor.py:1014
 #, possible-python-brace-format
 msgctxt "ui:menu_editor|embed|field:tips|value"
 msgid ""
@@ -1580,12 +1599,12 @@ msgstr ""
 "Yeni roller eklemek için {addrole} (emojili roller için önerilir).\n"
 "Rol seçeneklerini düzenlemek için {editrole}."
 
-#: src/modules/rolemenus/ui/menueditor.py:1046
+#: src/modules/rolemenus/ui/menueditor.py:1054
 msgctxt "ui:menu_editor|error:invald_emoji|title"
 msgid "Invalid emoji encountered."
 msgstr "Geçersiz emojiyle karşılaşıldı."
 
-#: src/modules/rolemenus/ui/menueditor.py:1050
+#: src/modules/rolemenus/ui/menueditor.py:1058
 #, possible-python-brace-format
 msgctxt "ui:menu_editor|error:invalid_emoji|desc"
 msgid ""
