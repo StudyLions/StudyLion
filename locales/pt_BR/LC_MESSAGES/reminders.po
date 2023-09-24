@@ -293,7 +293,7 @@ msgstr "Do que eu devo te lembrar?"
 #: src/modules/reminders/ui.py:144
 msgctxt "ui:reminderlist|button:new|modal|title"
 msgid "Set a Reminder"
-msgstr ""
+msgstr "Configurar um Lembrete"
 
 #: src/modules/reminders/ui.py:157
 #, possible-python-brace-format
