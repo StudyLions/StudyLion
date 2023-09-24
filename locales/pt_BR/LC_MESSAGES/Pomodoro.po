@@ -212,7 +212,7 @@ msgid ""
 "Ask an admin to set up a new timer with {create_cmd}, or rent a private room with {room_cmd} and create one yourself!"
 msgstr ""
 "**Não há temporizadores pomodoro disponíveis!**\n"
-"Peça que um administrador crie e configure um novo temporizador através de {create_cmd}, ou alugue uma sala particular e crie o seu próprio!"
+"Peça que um administrador crie e configure um novo temporizador através de {create_cmd}, ou alugue uma sala particular com {room_cmd}, e crie o seu próprio!"
 
 #: src/modules/pomodoro/cog.py:464
 #, possible-python-brace-format
