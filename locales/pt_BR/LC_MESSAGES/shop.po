@@ -460,7 +460,7 @@ msgstr ""
 #: src/modules/shop/shops/colours.py:799
 msgctxt "cmd:editshop_colours_clear|param:delete"
 msgid "delete_roles"
-msgstr "delete_roles"
+msgstr "excluir_cargos"
 
 #: src/modules/shop/shops/colours.py:804
 msgctxt "cmd:editshop_colours_clear|param:delete|desc"
