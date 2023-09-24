@@ -508,7 +508,7 @@ msgstr "financeiro"
 #: src/modules/economy/cog.py:845
 msgctxt "cmd:configure_economy|desc"
 msgid "Configure LionCoin Economy"
-msgstr "Configure o sistema da Economia do LionCoin"
+msgstr "Configure o Sistema Financeiro de LionCoin"
 
 #: src/modules/economy/settings.py:35
 msgctxt "guildset:coins_per_xp"
