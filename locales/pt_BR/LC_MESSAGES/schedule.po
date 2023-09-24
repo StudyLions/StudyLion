@@ -558,7 +558,8 @@ msgstr "listanegra_checkin_após"
 msgctxt "guildset:schedule_blacklist_after|desc"
 msgid "Number of missed sessions within 24h before blacklisting."
 msgstr ""
-"Número de check-ins perdidos em 24h antes de ser colocado na Lista Negra."
+"Número limite, de check-ins perdidos dentro de 24h, sem que o membro seja "
+"colocado na lista negra."
 
 #: src/modules/schedule/settings.py:474
 msgctxt "guildset:schedule_blacklist_after|long_desc"
