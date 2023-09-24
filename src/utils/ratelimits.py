@@ -80,6 +80,10 @@ class Bucket:
             self._last_full = False
             self._level += 1
 
+    def fill(self):
+        self._leak()
+        self._level = max(self._level, self.max_level + 1)
+
     async def wait(self):
         """
         Wait until the bucket has room.

@@ -440,7 +440,7 @@ class TimeSlot:
             )
 
     def launch(self) -> asyncio.Task:
-        self.run_task = asyncio.create_task(self.run())
+        self.run_task = asyncio.create_task(self.run(), name=f"TimeSlot {self.slotid}")
         return self.run_task
 
     @log_wrap(action="TimeSlot Run")

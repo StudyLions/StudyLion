@@ -12,6 +12,7 @@ from data import ORDER
 
 from utils.ui import MessageUI, Confirm
 from utils.lib import MessageArgs
+from wards import equippable_role
 from babel.translator import ctx_translator
 
 from .. import babel, logger
@@ -185,25 +186,11 @@ class RankOverviewUI(MessageUI):
         or edit an existing rank,
         or throw an error if the role is @everyone or not manageable by the client.
         """
+
         role: discord.Role = selected.values[0]
-        if role >= selection.user.top_role:
-            # Do not allow user to manage a role above their own top role
-            t = self.bot.translator.t
-            error = t(_p(
-                'ui:rank_overview|menu:roles|error:above_caller',
-                "You have insufficient permissions to assign {mention} as a rank role! "
-                "You may only manage roles below your top role."
-            )).format(mention=role.mention)
-            embed = discord.Embed(
-                title=t(_p(
-                    'ui:rank_overview|menu:roles|error:above_caller|title',
-                    "Insufficient permissions!"
-                )),
-                description=error,
-                colour=discord.Colour.brand_red()
-            )
-            await selection.response.send_message(embed=embed, ephemeral=True)
-        elif role.is_assignable():
+
+        if role.is_assignable():
+            # Create or edit the selected role
             existing = next((rank for rank in self.ranks if rank.roleid == role.id), None)
             if existing:
                 # Display and edit the given role
@@ -216,6 +203,8 @@ class RankOverviewUI(MessageUI):
                 )
             else:
                 # Create new rank based on role
+                # Need to check the calling author has authority to manage this role
+                await equippable_role(self.bot, role, selection.user)
                 await RankEditor.create_rank(
                     selection,
                     self.rank_type,
@@ -380,34 +369,6 @@ class RankOverviewUI(MessageUI):
             ] or [[]]
             lines = line_blocks[self.pagen]
             desc = '\n'.join(reversed(lines))
-
-            # Add note about season start
-            note_name = t(_p(
-                'ui:rank_overview|embed|field:note|name',
-                "Note"
-            ))
-            season_start = self.lguild.data.season_start
-            if season_start:
-                season_str = t(_p(
-                    'ui:rank_overview|embed|field:note|value:with_season',
-                    "Ranks are determined by activity since {timestamp}."
-                )).format(
-                    timestamp=discord.utils.format_dt(season_start)
-                )
-            else:
-                season_str = t(_p(
-                    'ui:rank_overview|embed|field:note|value:without_season',
-                    "Ranks are determined by *all-time* statistics.\n"
-                    "To reward ranks from a later time (e.g. to have monthly/quarterly/yearly ranks) "
-                    "set the `season_start` with {stats_cmd}"
-                )).format(stats_cmd=self.bot.core.mention_cmd('configure statistics'))
-            if self.rank_type is RankType.VOICE:
-                addendum = t(_p(
-                    'ui:rank_overview|embed|field:note|value|voice_addendum',
-                    "Also note that ranks will only be updated when a member leaves a tracked voice channel! "
-                    "Use the **Refresh Member Ranks** button below to update all members manually."
-                ))
-                season_str = '\n'.join((season_str, addendum))
         else:
             # No ranks, give hints about adding ranks
             desc = t(_p(
@@ -439,6 +400,33 @@ class RankOverviewUI(MessageUI):
             description=desc
         )
         if show_note:
+            # Add note about season start
+            note_name = t(_p(
+                'ui:rank_overview|embed|field:note|name',
+                "Note"
+            ))
+            season_start = self.lguild.data.season_start
+            if season_start:
+                season_str = t(_p(
+                    'ui:rank_overview|embed|field:note|value:with_season',
+                    "Ranks are determined by activity since {timestamp}."
+                )).format(
+                    timestamp=discord.utils.format_dt(season_start)
+                )
+            else:
+                season_str = t(_p(
+                    'ui:rank_overview|embed|field:note|value:without_season',
+                    "Ranks are determined by *all-time* statistics.\n"
+                    "To reward ranks from a later time (e.g. to have monthly/quarterly/yearly ranks) "
+                    "set the `season_start` with {stats_cmd}"
+                )).format(stats_cmd=self.bot.core.mention_cmd('configure statistics'))
+            if self.rank_type is RankType.VOICE:
+                addendum = t(_p(
+                    'ui:rank_overview|embed|field:note|value|voice_addendum',
+                    "Also note that ranks will only be updated when a member leaves a tracked voice channel! "
+                    "Use the **Refresh Member Ranks** button below to update all members manually."
+                ))
+                season_str = '\n'.join((season_str, addendum))
             embed.add_field(
                 name=note_name,
                 value=season_str,

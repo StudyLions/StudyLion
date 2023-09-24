@@ -10,6 +10,7 @@ from discord import app_commands as appcmds
 from meta import LionCog, LionBot, LionContext
 from meta.logger import log_wrap
 from meta.sharding import THIS_SHARD
+from meta.monitor import ComponentMonitor, ComponentStatus, StatusLevel
 from utils.lib import utc_now
 
 from wards import low_management_ward
@@ -42,12 +43,25 @@ class TimerCog(LionCog):
         self.bot = bot
         self.data = bot.db.load_registry(TimerData())
         self.settings = TimerSettings()
+        self.monitor = ComponentMonitor('TimerCog', self._monitor)
+
         self.timer_options = TimerOptions()
 
         self.ready = False
         self.timers = defaultdict(dict)
 
+    async def _monitor(self):
+        if not self.ready:
+            level = StatusLevel.STARTING
+            info = "(STARTING) Not ready. {timers} timers loaded."
+        else:
+            level = StatusLevel.OKAY
+            info = "(OK) {timers} timers loaded."
+        data = dict(timers=len(self.timers))
+        return ComponentStatus(level, info, info, data)
+
     async def cog_load(self):
+        self.bot.system_monitor.add_component(self.monitor)
         await self.data.init()
 
         self.bot.core.guild_config.register_model_setting(self.settings.PomodoroChannel)
@@ -386,8 +400,9 @@ class TimerCog(LionCog):
                 )
             else:
                 # Display the timer status ephemerally
+                await ctx.interaction.response.defer(thinking=True, ephemeral=True)
                 status = await timer.current_status(with_notify=False, with_warnings=False)
-                await ctx.reply(**status.send_args, ephemeral=True)
+                await ctx.interaction.edit_original_response(**status.edit_args)
 
         if error is not None:
             await ctx.reply(embed=error, ephemeral=True)

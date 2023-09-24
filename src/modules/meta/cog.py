@@ -32,6 +32,6 @@ class MetaCog(LionCog):
             ctx.bot,
             ctx.author,
             ctx.guild,
-            show_admin=await low_management(ctx.bot, ctx.author),
+            show_admin=await low_management(ctx.bot, ctx.author, ctx.guild),
         )
         await ui.run(ctx.interaction)

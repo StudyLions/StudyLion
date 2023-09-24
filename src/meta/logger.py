@@ -10,6 +10,7 @@ from io import StringIO
 from functools import wraps
 from contextvars import ContextVar
 
+import discord
 from discord import Webhook, File
 import aiohttp
 
@@ -188,6 +189,14 @@ class LessThanFilter(logging.Filter):
         # non-zero return means we log this message
         return 1 if record.levelno < self.max_level else 0
 
+class ExactLevelFilter(logging.Filter):
+    def __init__(self, target_level, name=""):
+        super().__init__(name)
+        self.target_level = target_level
+
+    def filter(self, record):
+        return (record.levelno == self.target_level)
+
 
 class ThreadFilter(logging.Filter):
     def __init__(self, thread_name):
@@ -234,7 +243,6 @@ class ContextInjection(logging.Filter):
 logging_handler_out = logging.StreamHandler(sys.stdout)
 logging_handler_out.setLevel(logging.DEBUG)
 logging_handler_out.setFormatter(log_fmt)
-logging_handler_out.addFilter(LessThanFilter(logging.WARNING))
 logging_handler_out.addFilter(ContextInjection())
 logger.addHandler(logging_handler_out)
 log_logger.addHandler(logging_handler_out)
@@ -297,6 +305,10 @@ class WebHookHandler(logging.StreamHandler):
         self.webhook = Webhook.from_url(self.webhook_url, session=self.session)
 
     async def post(self, record):
+        if record.context == 'Webhook Logger':
+            # Don't livelog livelog errors
+            # Otherwise we recurse and Cloudflare hates us
+            return
         log_context.set("Webhook Logger")
         log_action_stack.set(("Logging",))
         log_app.set(record.app)
@@ -363,28 +375,35 @@ class WebHookHandler(logging.StreamHandler):
             return
         except BucketFull:
             logger.warning(
-                f"Live logging webhook {self.webhook.id} going too fast! "
-                "Ignoring records until rate slows down."
+                "Can't keep up! "
+                f"Ignoring records on live-logger {self.webhook.id}."
             )
             self.ignored += 1
             return
         else:
             if self.ignored > 0:
                 logger.warning(
+                    "Can't keep up! "
                     f"{self.ignored} live logging records on webhook {self.webhook.id} skipped, continuing."
                 )
                 self.ignored = 0
 
-        if as_file or len(message) > 1900:
-            with StringIO(message) as fp:
-                fp.seek(0)
-                await self.webhook.send(
-                    f"{self.prefix}\n`{message.splitlines()[0]}`",
-                    file=File(fp, filename="logs.md"),
-                    username=log_app.get()
-                )
-        else:
-            await self.webhook.send(self.prefix + '\n' + message, username=log_app.get())
+        try:
+            if as_file or len(message) > 1900:
+                with StringIO(message) as fp:
+                    fp.seek(0)
+                    await self.webhook.send(
+                        f"{self.prefix}\n`{message.splitlines()[0]}`",
+                        file=File(fp, filename="logs.md"),
+                        username=log_app.get()
+                    )
+            else:
+                await self.webhook.send(self.prefix + '\n' + message, username=log_app.get())
+        except discord.HTTPException:
+            logger.exception(
+                "Live logger errored. Slowing down live logger."
+            )
+            self.bucket.fill()
 
 
 handlers = []
@@ -392,9 +411,15 @@ if webhook := conf.logging['general_log']:
     handler = WebHookHandler(webhook, batch=True)
     handlers.append(handler)
 
+if webhook := conf.logging['warning_log']:
+    handler = WebHookHandler(webhook, prefix=conf.logging['warning_prefix'], batch=True)
+    handler.addFilter(ExactLevelFilter(logging.WARNING))
+    handler.setLevel(logging.WARNING)
+    handlers.append(handler)
+
 if webhook := conf.logging['error_log']:
     handler = WebHookHandler(webhook, prefix=conf.logging['error_prefix'], batch=True)
-    handler.setLevel(logging.WARNING)
+    handler.setLevel(logging.ERROR)
     handlers.append(handler)
 
 if webhook := conf.logging['critical_log']:

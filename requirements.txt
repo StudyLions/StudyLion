@@ -3,7 +3,7 @@ cachetools==4.2.2
 configparser==5.0.2
 discord.py
 iso8601==0.1.16
-psycopg
+psycopg[pool]
 pytz==2021.1
 topggpy
 psutil

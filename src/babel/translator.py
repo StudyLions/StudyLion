@@ -47,33 +47,43 @@ class LeoBabel(Translator):
         Initialise the gettext translators for the supported_locales.
         """
         self.read_supported()
+        missing = []
+        loaded = []
         for locale in self.supported_locales:
             for domain in self.supported_domains:
                 if locale == SOURCE_LOCALE:
                     continue
                 try:
                     translator = gettext.translation(domain, "locales/", languages=[locale])
+                    loaded.append(f"Loaded translator for <locale: {locale}> <domain: {domain}>")
                 except OSError:
                     # Presume translation does not exist
-                    logger.warning(f"Could not load translator for supported <locale: {locale}> <domain: {domain}>")
-                    pass
-                else:
-                    logger.debug(f"Loaded translator for <locale: {locale}> <domain: {domain}>")
-                    self.translators[locale][domain] = translator
+                    missing.append(f"Could not load translator for supported <locale: {locale}> <domain: {domain}>")
+                    translator = null
+
+                self.translators[locale][domain] = translator
+        if missing:
+            logger.warning('\n'.join(("Missing Translators:", *missing)))
+        if loaded:
+            logger.debug('\n'.join(("Loaded Translators:", *loaded)))
 
     async def unload(self):
         self.translators.clear()
 
     def get_translator(self, locale, domain):
         if locale == SOURCE_LOCALE:
-            return null
-
-        translator = self.translators[locale].get(domain, None)
-        if translator is None:
-            logger.warning(
-                f"Translator missing for requested <locale: {locale}> and <domain: {domain}>. Setting NullTranslator."
-            )
-            self.translators[locale][domain] = null
+            translator = null
+        elif locale in self.supported_locales and domain in self.supported_domains:
+            translator = self.translators[locale].get(domain, None)
+            if translator is None:
+                # This should never really happen because we already loaded the supported translators
+                logger.warning(
+                    f"Translator missing for supported <locale: {locale}> "
+                    "and <domain: {domain}>. Setting NullTranslator."
+                )
+                translator = self.translators[locale][domain] = null
+        else:
+            # Unsupported
             translator = null
         return translator
 

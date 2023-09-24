@@ -44,7 +44,7 @@ async def get_profile_card(bot: LionBot, userid: int, guildid: int):
     if crank:
         roleid = crank.roleid
         role = guild.get_role(roleid)
-        name = role.name if role else str(role.id)
+        name = role.name if role else 'Unknown Rank'
         minimum = crank.required
         maximum = nrank.required if nrank else None
         rangestr = format_stat_range(rank_type, minimum, maximum)
@@ -63,7 +63,7 @@ async def get_profile_card(bot: LionBot, userid: int, guildid: int):
     if nrank:
         roleid = nrank.roleid
         role = guild.get_role(roleid)
-        name = role.name if role else str(role.id)
+        name = role.name if role else 'Unknown Rank'
         minimum = nrank.required
 
         guild_ranks = await ranks.get_guild_ranks(guildid)

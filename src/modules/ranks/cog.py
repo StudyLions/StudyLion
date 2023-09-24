@@ -286,27 +286,78 @@ class RankCog(LionCog):
                     await task
 
     async def _role_check(self, session_rank: SeasonRank):
-        guild = self.bot.get_guild(session_rank.guildid)
-        member = guild.get_member(session_rank.userid)
-        crank = session_rank.current_rank
-        roleid = crank.roleid if crank else None
-        last_roleid = session_rank.rankrow.last_roleid
-        if guild is not None and member is not None and roleid != last_roleid:
-            new_role = guild.get_role(roleid) if roleid else None
-            last_role = guild.get_role(last_roleid) if last_roleid else None
+        """
+        Update the member's rank roles, if required.
+        """
+        guildid = session_rank.guildid
+        guild = self.bot.get_guild(guildid)
+
+        userid = session_rank.userid
+        member = guild.get_member(userid)
+
+        if guild is not None and member is not None and guild.me.guild_permissions.manage_roles:
+            ranks = await self.get_guild_ranks(guildid)
+
+            crank = session_rank.current_rank
+            current_roleid = crank.roleid if crank else None
+
+            # First gather rank roleids, note that the last_roleid is an 'honourary' roleid
+            last_roleid = session_rank.rankrow.last_roleid
+            rank_roleids = {rank.roleid for rank in ranks}
+            rank_roleids.add(last_roleid)
+
+            # Gather member roleids
+            mem_roleids = {role.id: role for role in member.roles}
+
+            # Calculate diffs
+            to_add = guild.get_role(current_roleid) if (current_roleid not in mem_roleids) else None
+            to_rm = [
+                role for roleid, role in mem_roleids.items()
+                if roleid in rank_roleids and roleid != current_roleid
+            ]
+
+            # Now update roles
             new_last_roleid = last_roleid
-            if guild.me.guild_permissions.manage_roles:
+
+            # TODO: Event log here, including errors
+            to_rm = [role for role in to_rm if role.is_assignable()]
+            if to_rm:
                 try:
-                    if last_role and last_role.is_assignable():
-                        await member.remove_roles(last_role)
-                        new_last_roleid = None
-                    if new_role and new_role.is_assignable():
-                        await member.add_roles(new_role)
-                        new_last_roleid = roleid
-                except discord.HTTPClient:
-                    pass
-                if new_last_roleid != last_roleid:
-                    await session_rank.rankrow.update(last_roleid=new_last_roleid)
+                    await member.remove_roles(
+                        *to_rm,
+                        reason="Removing Old Rank Roles",
+                        atomic=True
+                    )
+                    roleids = ', '.join(str(role.id) for role in to_rm)
+                    logger.info(
+                        f"Removed old rank roles from <uid:{userid}> in <gid:{guildid}>: {roleids}"
+                    )
+                    new_last_roleid = None
+                except discord.HTTPException:
+                    logger.warning(
+                        f"Unexpected error removing old rank roles from <uid:{member.id}> in <gid:{guild.id}>: {to_rm}",
+                        exc_info=True
+                    )
+
+            if to_add and to_add.is_assignable():
+                try:
+                    await member.add_roles(
+                        to_add,
+                        reason="Rewarding Activity Rank",
+                        atomic=True
+                    )
+                    logger.info(
+                        f"Rewarded rank role <rid:{to_add.id}> to <uid:{userid}> in <gid:{guildid}>."
+                    )
+                    new_last_roleid = to_add.id
+                except discord.HTTPException:
+                    logger.warning(
+                        f"Unexpected error giving <uid:{userid}> in <gid:{guildid}> their rank role <rid:{to_add.id}>",
+                        exc_info=True
+                    )
+
+            if new_last_roleid != last_roleid:
+                await session_rank.rankrow.update(last_roleid=new_last_roleid)
 
     @log_wrap(action="Update Rank")
     async def update_rank(self, session_rank):
@@ -336,23 +387,61 @@ class RankCog(LionCog):
         if member is None:
             return
 
-        new_role = guild.get_role(new_rank.roleid)
-        if last_roleid := session_rank.rankrow.last_roleid:
-            last_role = guild.get_role(last_roleid)
-        else:
-            last_role = None
+        last_roleid = session_rank.rankrow.last_roleid
 
+        # Update ranks
         if guild.me.guild_permissions.manage_roles:
-            try:
-                if last_role and last_role.is_assignable():
-                    await member.remove_roles(last_role)
+            # First gather rank roleids, note that the last_roleid is an 'honourary' roleid
+            rank_roleids = {rank.roleid for rank in ranks}
+            rank_roleids.add(last_roleid)
+
+            # Gather member roleids
+            mem_roleids = {role.id: role for role in member.roles}
+
+            # Calculate diffs
+            to_add = guild.get_role(new_rank.roleid) if (new_rank.roleid not in mem_roleids) else None
+            to_rm = [
+                role for roleid, role in mem_roleids.items()
+                if roleid in rank_roleids and roleid != new_rank.roleid
+            ]
+
+            # Now update roles
+            # TODO: Event log here, including errors
+            to_rm = [role for role in to_rm if role.is_assignable()]
+            if to_rm:
+                try:
+                    await member.remove_roles(
+                        *to_rm,
+                        reason="Removing Old Rank Roles",
+                        atomic=True
+                    )
+                    roleids = ', '.join(str(role.id) for role in to_rm)
+                    logger.info(
+                        f"Removed old rank roles from <uid:{userid}> in <gid:{guildid}>: {roleids}"
+                    )
                     last_roleid = None
-                if new_role and new_role.is_assignable():
-                    await member.add_roles(new_role)
-                    last_roleid = new_role.id
-            except discord.HTTPException:
-                # TODO: Event log either way
-                pass
+                except discord.HTTPException:
+                    logger.warning(
+                        f"Unexpected error removing old rank roles from <uid:{member.id}> in <gid:{guild.id}>: {to_rm}",
+                        exc_info=True
+                    )
+
+            if to_add and to_add.is_assignable():
+                try:
+                    await member.add_roles(
+                        to_add,
+                        reason="Rewarding Activity Rank",
+                        atomic=True
+                    )
+                    logger.info(
+                        f"Rewarded rank role <rid:{to_add.id}> to <uid:{userid}> in <gid:{guildid}>."
+                    )
+                    last_roleid=to_add.id
+                except discord.HTTPException:
+                    logger.warning(
+                        f"Unexpected error giving <uid:{userid}> in <gid:{guildid}> their rank role <rid:{to_add.id}>",
+                        exc_info=True
+                    )
 
         # Update MemberRank row
         column = {
@@ -438,7 +527,7 @@ class RankCog(LionCog):
         required = format_stat_range(rank_type, rank.required, short=False)
 
         key_map = {
-            '{role_name}': role.name,
+            '{role_name}': role.name if role else 'Unknown',
             '{guild_name}': guild.name,
             '{user_name}': member.name,
             '{role_id}': role.id,
@@ -495,6 +584,7 @@ class RankCog(LionCog):
             await interaction.response.defer(thinking=False)
         ui = RankRefreshUI(self.bot, guild, callerid=interaction.user.id, timeout=None)
         await ui.send(interaction.channel)
+        ui.start()
 
         # Retrieve fresh rank roles
         ranks = await self.get_guild_ranks(guild.id, refresh=True)
@@ -503,7 +593,15 @@ class RankCog(LionCog):
 
         # Ensure guild is chunked
         if not guild.chunked:
-            members = await guild.chunk()
+            try:
+                members = await asyncio.wait_for(guild.chunk(), timeout=60)
+            except asyncio.TimeoutError:
+                error = t(_p(
+                    'rank_refresh|error:cannot_chunk|desc',
+                    "Could not retrieve member list from Discord. Please try again later."
+                ))
+                await ui.set_error(error)
+                return
         else:
             members = guild.members
         ui.stage_members = True
@@ -524,7 +622,7 @@ class RankCog(LionCog):
             error = t(_p(
                 'rank_refresh|error:unassignable_roles|desc',
                 "I have insufficient permissions to assign the following role(s):\n{roles}"
-            )).format(roles='\n'.join(role.mention for role in failing)),
+            )).format(roles='\n'.join(role.mention for role in failing))
             await ui.set_error(error)
             return
 
@@ -609,8 +707,8 @@ class RankCog(LionCog):
                     'rank_refresh|remove_roles|small_error',
                     "*Could not remove ranks from {member}*"
                 )).format(member=to_remove[index][0].mention)
-                self.ui.errors.append(error)
-                if len(self.ui.errors) > 10:
+                ui.errors.append(error)
+                if len(ui.errors) > 10:
                     await ui.set_error(
                         t(_p(
                             'rank_refresh|remove_roles|error:too_many_issues',
@@ -644,8 +742,8 @@ class RankCog(LionCog):
                     'rank_refresh|add_roles|small_error',
                     "*Could not add {role} to {member}*"
                 )).format(member=to_add[index][0].mention, role=to_add[index][1].mention)
-                self.ui.errors.append(error)
-                if len(self.ui.errors) > 10:
+                ui.errors.append(error)
+                if len(ui.errors) > 10:
                     await ui.set_error(
                         t(_p(
                             'rank_refresh|add_roles|error:too_many_issues',

@@ -22,7 +22,7 @@ async def shard_snapshot():
     snap = ShardSnapshot(
         guild_count=len(bot.guilds),
         voice_count=sum(len(channel.members) for guild in bot.guilds for channel in guild.voice_channels),
-        member_count=sum(len(guild.members) for guild in bot.guilds),
+        member_count=sum(guild.member_count for guild in bot.guilds),
         user_count=len(set(m.id for guild in bot.guilds for m in guild.members))
     )
     return snap

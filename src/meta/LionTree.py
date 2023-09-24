@@ -8,9 +8,12 @@ from discord.enums import InteractionType
 from discord.app_commands.namespace import Namespace
 
 from utils.lib import tabulate
+from gui.errors import RenderingException
+from babel.translator import ctx_locale
 
 from .logger import logging_context, set_logging_context, log_wrap, log_action_stack
 from .errors import SafeCancellation
+from .config import conf
 
 logger = logging.getLogger(__name__)
 
@@ -29,17 +32,36 @@ class LionTree(CommandTree):
         except SafeCancellation:
             # Assume this has already been handled
             pass
+        except RenderingException as e:
+            logger.info(f"Tree interaction failed due to rendering exception: {repr(e)}")
+            embed = self.rendersplat(e)
+            await self.error_reply(interaction, embed)
         except Exception:
             logger.exception(f"Unhandled exception in interaction: {interaction}", extra={'action': 'TreeError'})
-            if not interaction.is_expired():
-                splat = self.bugsplat(interaction, error)
-                try:
-                    if interaction.response.is_done():
-                        await interaction.followup.send(embed=splat, ephemeral=True)
-                    else:
-                        await interaction.response.send_message(embed=splat, ephemeral=True)
-                except discord.HTTPException:
-                    pass
+            embed = self.bugsplat(interaction, error)
+            await self.error_reply(interaction, embed)
+
+    async def error_reply(self, interaction, embed):
+        if not interaction.is_expired():
+            try:
+                if interaction.response.is_done():
+                    await interaction.followup.send(embed=embed, ephemeral=True)
+                else:
+                    await interaction.response.send_message(embed=embed, ephemeral=True)
+            except discord.HTTPException:
+                pass
+
+    def rendersplat(self, e: RenderingException):
+        embed = discord.Embed(
+            title="Resource Currently Unavailable!",
+            description=(
+                "Sorry, the graphics service is currently unavailable!\n"
+                "Please try again in a few minutes.\n"
+                "If the error persists, please contact our [support team]({link})"
+            ).format(link=conf.bot.support_guild),
+            colour=discord.Colour.dark_red()
+        )
+        return embed
 
     def bugsplat(self, interaction, e):
         error_embed = discord.Embed(title="Something went wrong!", colour=discord.Colour.red())
@@ -55,13 +77,14 @@ class LionTree(CommandTree):
         details['interactiontype'] = f"`{interaction.type}`"
         if interaction.command:
             details['cmd'] = f"`{interaction.command.qualified_name}`"
+        details['locale'] = f"`{ctx_locale.get()}`"
         if interaction.user:
             details['user'] = f"`{interaction.user.id}` -- `{interaction.user}`"
         if interaction.guild:
             details['guild'] = f"`{interaction.guild.id}` -- `{interaction.guild.name}`"
             details['my_guild_perms'] = f"`{interaction.guild.me.guild_permissions.value}`"
             if interaction.user:
-                ownerstr = ' (owner)' if interaction.user == interaction.guild.owner else ''
+                ownerstr = ' (owner)' if interaction.user.id == interaction.guild.owner_id else ''
                 details['user_guild_perms'] = f"`{interaction.user.guild_permissions.value}{ownerstr}`"
         if interaction.channel.type is discord.enums.ChannelType.private:
             details['channel'] = "`Direct Message`"

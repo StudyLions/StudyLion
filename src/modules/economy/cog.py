@@ -190,7 +190,7 @@ class Economy(LionCog):
                             # First fetch the members which currently exist
                             query = self.bot.core.data.Member.table.select_where(guildid=ctx.guild.id)
                             query.select('userid').with_no_adapter()
-                            if 2 * len(targets) < len(ctx.guild.members):
+                            if 2 * len(targets) < ctx.guild.member_count:
                                 # More efficient to fetch the targets explicitly
                                 query.where(userid=list(targetids))
                             existent_rows = await query

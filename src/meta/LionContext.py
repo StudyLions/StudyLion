@@ -6,6 +6,7 @@ from typing import Optional, TYPE_CHECKING
 import discord
 from discord.enums import ChannelType
 from discord.ext.commands import Context
+from babel.translator import ctx_locale
 
 if TYPE_CHECKING:
     from .LionBot import LionBot
@@ -35,6 +36,7 @@ FlatContext = namedtuple(
      'interaction',
      'guild',
      'author',
+     'channel',
      'alias',
      'prefix',
      'failed')
@@ -78,6 +80,7 @@ class LionContext(Context['LionBot']):
             parts['alias'] = f"\"{self.invoked_with}\""
         if self.command_failed:
             parts['failed'] = self.command_failed
+        parts['locale'] = f"\"{ctx_locale.get()}\""
 
         return "<LionContext: {}>".format(
             ' '.join(f"{name}={value}" for name, value in parts.items())

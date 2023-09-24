@@ -9,6 +9,7 @@ from meta import LionBot, conf, sharding, appname, shard_talk
 from meta.app import shardname
 from meta.logger import log_context, log_action_stack, setup_main_logger
 from meta.context import ctx_bot
+from meta.monitor import ComponentMonitor, StatusLevel, ComponentStatus
 
 from data import Database
 
@@ -21,12 +22,31 @@ for name in conf.config.options('LOGGING_LEVELS', no_defaults=True):
     logging.getLogger(name).setLevel(conf.logging_levels[name])
 
 
-setup_main_logger()
+logging_queue = setup_main_logger()
 
 
 logger = logging.getLogger(__name__)
 
 db = Database(conf.data['args'])
+
+
+async def _data_monitor() -> ComponentStatus:
+    """
+    Component monitor callback for the database.
+    """
+    data = {
+        'stats': str(db.pool.get_stats())
+    }
+    if not db.pool._opened:
+        level = StatusLevel.WAITING
+        info = "(WAITING) Database Pool is not opened."
+    elif db.pool._closed:
+        level = StatusLevel.ERRORED
+        info = "(ERROR) Database Pool is closed."
+    else:
+        level = StatusLevel.OKAY
+        info = "(OK) Database Pool statistics: {stats}"
+    return ComponentStatus(level, info, info, data)
 
 
 async def main():
@@ -69,9 +89,13 @@ async def main():
                 shard_count=sharding.shard_count,
                 help_command=None,
                 proxy=conf.bot.get('proxy', None),
-                translator=translator
+                translator=translator,
+                chunk_guilds_at_startup=False,
             ) as lionbot:
                 ctx_bot.set(lionbot)
+                lionbot.system_monitor.add_component(
+                    ComponentMonitor('Database', _data_monitor)
+                )
                 try:
                     log_context.set(f"APP: {appname}")
                     logger.info("StudyLion initialised, starting!", extra={'action': 'Starting'})

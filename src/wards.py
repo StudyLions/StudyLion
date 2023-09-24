@@ -21,14 +21,18 @@ async def sys_admin(bot: LionBot, userid: int):
     return userid in admins
 
 
-async def high_management(bot: LionBot, member: discord.Member):
+async def high_management(bot: LionBot, member: discord.Member, guild: discord.Guild):
+    if not guild:
+        return True
     if await sys_admin(bot, member.id):
         return True
     return member.guild_permissions.administrator
 
 
-async def low_management(bot: LionBot, member: discord.Member):
-    if await high_management(bot, member):
+async def low_management(bot: LionBot, member: discord.Member, guild: discord.Guild):
+    if not guild:
+        return True
+    if await high_management(bot, member, guild):
         return True
     return member.guild_permissions.manage_guild
 
@@ -42,20 +46,20 @@ async def sys_admin_iward(interaction: discord.Interaction) -> bool:
 async def high_management_iward(interaction: discord.Interaction) -> bool:
     if not interaction.guild:
         return False
-    return await high_management(interaction.client, interaction.user)
+    return await high_management(interaction.client, interaction.user, interaction.guild)
 
 
 async def low_management_iward(interaction: discord.Interaction) -> bool:
     if not interaction.guild:
         return False
-    return await low_management(interaction.client, interaction.user)
+    return await low_management(interaction.client, interaction.user, interaction.guild)
 
 
 # High level ctx wards
 async def moderator_ctxward(ctx: LionContext) -> bool:
     if not ctx.guild:
         return False
-    passed = await low_management(ctx.bot, ctx.author)
+    passed = await low_management(ctx.bot, ctx.author, ctx.guild)
     if passed:
         return True
     modrole = ctx.lguild.data.mod_role
@@ -85,7 +89,7 @@ async def sys_admin_ward(ctx: LionContext) -> bool:
 async def high_management_ward(ctx: LionContext) -> bool:
     if not ctx.guild:
         return False
-    passed = await high_management(ctx.bot, ctx.author)
+    passed = await high_management(ctx.bot, ctx.author, ctx.guild)
     if passed:
         return True
     else:
@@ -101,7 +105,7 @@ async def high_management_ward(ctx: LionContext) -> bool:
 async def low_management_ward(ctx: LionContext) -> bool:
     if not ctx.guild:
         return False
-    passed = await low_management(ctx.bot, ctx.author)
+    passed = await low_management(ctx.bot, ctx.author, ctx.guild)
     if passed:
         return True
     else:
@@ -192,7 +196,7 @@ async def equippable_role(bot: LionBot, target_role: discord.Role, actor: discor
                 "You need the `MANAGE_ROLES` permission before you can configure roles!"
             )).format(role=target_role.mention)
         )
-    elif actor.top_role <= target_role and not actor == guild.owner:
+    elif actor.top_role <= target_role and not actor.id == guild.owner_id:
         raise UserInputError(
             t(_p(
                 'ward:equippable_role|error:actor_top_role',

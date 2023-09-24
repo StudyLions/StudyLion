@@ -7,6 +7,7 @@ from discord.ui.button import button, Button, ButtonStyle
 
 from meta import conf, LionBot
 from core.data import RankType
+from wards import equippable_role
 
 from utils.ui import MessageUI, AButton, AsComponents
 from utils.lib import MessageArgs, replace_multiple
@@ -112,6 +113,7 @@ class RankPreviewUI(MessageUI):
         await submit.response.defer(thinking=False)
         if self.parent is not None:
             asyncio.create_task(self.parent.refresh())
+        self.bot.get_cog('RankCog').flush_guild_ranks(self.guild.id)
         await self.refresh()
 
     @button(label="DELETE_PLACEHOLDER", style=ButtonStyle.red)
@@ -130,6 +132,7 @@ class RankPreviewUI(MessageUI):
             role = None
 
         await self.rank.delete()
+        self.bot.get_cog('RankCog').flush_guild_ranks(self.guild.id)
 
         mention = role.mention if role else str(self.rank.roleid)
 
@@ -212,25 +215,13 @@ class RankPreviewUI(MessageUI):
         role: discord.Role = selected.values[0]
         await selection.response.defer(thinking=True, ephemeral=True)
 
-        if role >= selection.user.top_role:
-            # Do not allow user to manage a role above their own top role
-            error = t(_p(
-                'ui:rank_preview|menu:roles|error:above_caller',
-                "You have insufficient permissions to assign {mention} as a rank role! "
-                "You may only manage roles below your top role."
-            ))
-            embed = discord.Embed(
-                title=t(_p(
-                    'ui:rank_preview|menu:roles|error:above_caller|title',
-                    "Insufficient permissions!"
-                )),
-                description=error,
-                colour=discord.Colour.brand_red()
-            )
-            await selection.response.send_message(embed=embed, ephemeral=True)
-        elif role.is_assignable():
+        if role.is_assignable():
             # Update the rank role
+            # Generic permission check for the new role
+            await equippable_role(self.bot, role, selection.user)
+
             await self.rank.update(roleid=role.id)
+            self.bot.get_cog('RankCog').flush_guild_ranks(self.guild.id)
             if self.parent is not None and not self.parent.is_finished():
                 asyncio.create_task(self.parent.refresh())
             await self.refresh(thinking=selection)

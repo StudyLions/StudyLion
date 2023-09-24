@@ -181,15 +181,17 @@ class MemberAdminCog(LionCog):
                     finally:
                         self._adding_roles.discard((member.guild.id, member.id))
 
-    @LionCog.listener('on_member_remove')
+    @LionCog.listener('on_raw_member_remove')
     @log_wrap(action="Farewell")
-    async def admin_member_farewell(self, member: discord.Member):
+    async def admin_member_farewell(self, payload: discord.RawMemberRemoveEvent):
         # Ignore members that just joined
-        if (member.guild.id, member.id) in self._adding_roles:
+        guildid = payload.guild_id
+        userid = payload.user.id
+        if (guildid, userid) in self._adding_roles:
             return
 
         # Set lion last_left, creating the lion_member if needed
-        lion = await self.bot.core.lions.fetch_member(member.guild.id, member.id)
+        lion = await self.bot.core.lions.fetch_member(guildid, userid)
         await lion.data.update(last_left=utc_now())
 
         # Save member roles
@@ -197,18 +199,21 @@ class MemberAdminCog(LionCog):
             self.bot.db.conn = conn
             async with conn.transaction():
                 await self.data.past_roles.delete_where(
-                    guildid=member.guild.id,
-                    userid=member.id
+                    guildid=guildid,
+                    userid=userid
                 )
                 # Insert current member roles
-                if member.roles:
+                print(type(payload.user))
+                if isinstance(payload.user, discord.Member) and payload.user.roles:
+                    member = payload.user
                     await self.data.past_roles.insert_many(
                         ('guildid', 'userid', 'roleid'),
-                        *((member.guild.id, member.id, role.id) for role in member.roles)
+                        *((guildid, userid, role.id) for role in member.roles)
                     )
         logger.debug(
-            f"Stored persisting roles for member <uid:{member.id}> in <gid:{member.guild.id}>."
+            f"Stored persisting roles for member <uid:{userid}> in <gid:{guildid}>."
         )
+        # TODO: Event log, and include info about unchunked members
 
     @LionCog.listener('on_guild_join')
     async def admin_init_guild(self, guild: discord.Guild):

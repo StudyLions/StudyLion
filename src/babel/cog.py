@@ -230,14 +230,15 @@ class BabelCog(LionCog):
         supported = self.bot.translator.supported_locales
         formatted = []
         for locale in supported:
-            name = locale_names.get(locale.replace('_', '-'), None)
-            if name:
-                localestr = f"{locale} ({t(name)})"
+            names = locale_names.get(locale.replace('_', '-'), None)
+            if names:
+                local_name, native_name = names
+                localestr = f"{native_name} ({t(local_name)})"
             else:
                 localestr = locale
             formatted.append((locale, localestr))
 
-        matching = {item for item in formatted if partial in item[1]}
+        matching = {item for item in formatted if partial in item[1] or partial in item[0]}
         if matching:
             choices = [
                 appcmds.Choice(name=localestr, value=locale)

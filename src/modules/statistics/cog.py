@@ -1,3 +1,4 @@
+import asyncio
 import logging
 from typing import Optional
 
@@ -90,8 +91,12 @@ class StatsCog(LionCog):
                 )).format(loading=self.bot.config.emojis.loading),
                 timestamp=utc_now(),
             )
-            await ctx.interaction.response(embed=waiting_embed)
-            await ctx.guild.chunk()
+            await ctx.interaction.response.send_message(embed=waiting_embed)
+            try:
+                await asyncio.wait_for(ctx.guild.chunk(), timeout=10)
+                pass
+            except asyncio.TimeoutError:
+                pass
         else:
             await ctx.interaction.response.defer(thinking=True)
         ui = LeaderboardUI(self.bot, ctx.author, ctx.guild)

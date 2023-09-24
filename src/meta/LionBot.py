@@ -12,6 +12,8 @@ from aiohttp import ClientSession
 
 from data import Database
 from utils.lib import tabulate
+from gui.errors import RenderingException
+from babel.translator import ctx_locale
 
 from .config import Conf
 from .logger import logging_context, log_context, log_action_stack, log_wrap, set_logging_context
@@ -19,6 +21,7 @@ from .context import context
 from .LionContext import LionContext
 from .LionTree import LionTree
 from .errors import HandledException, SafeCancellation
+from .monitor import SystemMonitor, ComponentMonitor, StatusLevel, ComponentStatus
 
 if TYPE_CHECKING:
     from core import CoreCog
@@ -46,8 +49,39 @@ class LionBot(Bot):
         self.core: Optional['CoreCog'] = None
         self.translator = translator
 
+        self.system_monitor = SystemMonitor()
+        self.monitor = ComponentMonitor('LionBot', self._monitor_status)
+        self.system_monitor.add_component(self.monitor)
+
         self._locks = WeakValueDictionary()
         self._running_events = set()
+
+    async def _monitor_status(self):
+        if self.is_closed():
+            level = StatusLevel.ERRORED
+            info = "(ERROR) Websocket is closed"
+            data = {}
+        elif self.is_ws_ratelimited():
+            level = StatusLevel.WAITING
+            info = "(WAITING) Websocket is ratelimited"
+            data = {}
+        elif not self.is_ready():
+            level = StatusLevel.STARTING
+            info = "(STARTING) Not yet ready"
+            data = {}
+        else:
+            level = StatusLevel.OKAY
+            info = (
+                "(OK) "
+                "Logged in with {guild_count} guilds, "
+                ", websocket latency {latency}, and {events} running events."
+            )
+            data = {
+                'guild_count': len(self.guilds),
+                'latency': self.latency,
+                'events': len(self._running_events),
+            }
+        return ComponentStatus(level, info, info, data)
 
     async def setup_hook(self) -> None:
         log_context.set(f"APP: {self.application_id}")
@@ -204,13 +238,23 @@ class LionBot(Bot):
                 pass
             except asyncio.TimeoutError:
                 pass
+            except RenderingException as e:
+                logger.info(f"Command failed due to RenderingException: {repr(e)}")
+                embed = self.tree.rendersplat(e)
+                try:
+                    await ctx.error_reply(embed=embed)
+                except discord.HTTPException:
+                    pass
             except Exception as e:
                 logger.exception(
                     f"Caught an unknown CommandInvokeError while executing: {cmd_str}",
                     extra={'action': 'BotError', 'with_ctx': True}
                 )
 
-                error_embed = discord.Embed(title="Something went wrong!")
+                error_embed = discord.Embed(
+                    title="Something went wrong!",
+                    colour=discord.Colour.dark_red()
+                )
                 error_embed.description = (
                     "An unexpected error occurred while processing your command!\n"
                     "Our development team has been notified, and the issue will be addressed soon.\n"
@@ -225,11 +269,12 @@ class LionBot(Bot):
                     details['cmd'] = f"`{ctx.command.qualified_name}`"
                 if ctx.author:
                     details['author'] = f"`{ctx.author.id}` -- `{ctx.author}`"
+                details['locale'] = f"`{ctx_locale.get()}`"
                 if ctx.guild:
                     details['guild'] = f"`{ctx.guild.id}` -- `{ctx.guild.name}`"
                     details['my_guild_perms'] = f"`{ctx.guild.me.guild_permissions.value}`"
                     if ctx.author:
-                        ownerstr = ' (owner)' if ctx.author == ctx.guild.owner else ''
+                        ownerstr = ' (owner)' if ctx.author.id == ctx.guild.owner_id else ''
                         details['author_guild_perms'] = f"`{ctx.author.guild_permissions.value}{ownerstr}`"
                 if ctx.channel.type is discord.enums.ChannelType.private:
                     details['channel'] = "`Direct Message`"
@@ -246,7 +291,7 @@ class LionBot(Bot):
 
                 try:
                     await ctx.error_reply(embed=error_embed)
-                except Exception:
+                except discord.HTTPException:
                     pass
             finally:
                 exception.original = HandledException(exception.original)
@@ -270,3 +315,29 @@ class LionBot(Bot):
     def add_command(self, command):
         if not hasattr(command, '_placeholder_group_'):
             super().add_command(command)
+
+    def request_chunking_for(self, guild):
+        if not guild.chunked:
+            return asyncio.create_task(
+                self._connection.chunk_guild(guild, wait=False, cache=True),
+                name=f"Background chunkreq for {guild.id}"
+            )
+
+    async def on_interaction(self, interaction: discord.Interaction):
+        """
+        Adds the interaction author to guild cache if appropriate.
+
+        This gets run a little bit late, so it is possible the interaction gets handled
+        without the author being in case.
+        """
+        guild = interaction.guild
+        user = interaction.user
+        if guild is not None and user is not None and isinstance(user, discord.Member):
+            if not guild.get_member(user.id):
+                guild._add_member(user)
+        if guild is not None and not guild.chunked:
+            # Getting an interaction in the guild is a good enough reason to request chunking
+            logger.info(
+                f"Unchunked guild <gid: {guild.id}> requesting chunking after interaction."
+            )
+            self.request_chunking_for(guild)

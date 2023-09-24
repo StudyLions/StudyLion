@@ -186,6 +186,17 @@ def mk_print(fp: io.StringIO) -> Callable[..., None]:
     return _print
 
 
+def mk_status_printer(bot, printer):
+    async def _status(details=False):
+        if details:
+            status = await bot.system_monitor.get_overview()
+        else:
+            status = await bot.system_monitor.get_summary()
+        printer(status)
+        return status
+    return _status
+
+
 @log_wrap(action="Code Exec")
 async def _async(to_eval: str, style='exec'):
     newline = '\n' * ('\n' in to_eval)
@@ -202,6 +213,7 @@ async def _async(to_eval: str, style='exec'):
     scope['ctx'] = ctx = context.get()
     scope['bot'] = ctx_bot.get()
     scope['print'] = _print  # type: ignore
+    scope['print_status'] = mk_status_printer(scope['bot'], _print)
 
     try:
         if ctx and ctx.message:
@@ -297,7 +309,7 @@ class Exec(LionCog):
                         file = discord.File(fp, filename=f"output-{target}.md")
                         await ctx.reply(file=file)
                 elif result:
-                    await ctx.reply(f"```md{result}```")
+                    await ctx.reply(f"```md\n{result}```")
                 else:
                     await ctx.reply("Command completed, and had no output.")
         else:
@@ -351,7 +363,7 @@ class Exec(LionCog):
             except asyncio.TimeoutError:
                 return
         if ctx.interaction:
-            await ctx.interaction.response.defer(thinking=True, ephemeral=True)
+            await ctx.interaction.response.defer(thinking=True)
         if target is not None:
             if target not in shard_talk.peers:
                 embed = discord.Embed(description=f"Unknown peer {target}", colour=discord.Colour.red())
@@ -376,7 +388,7 @@ class Exec(LionCog):
                 await ctx.reply(file=file)
         else:
             # Send as message
-            await ctx.reply(f"```md\n{output}```", ephemeral=True)
+            await ctx.reply(f"```md\n{output}```")
 
     asyncall_cmd.autocomplete('target')(_peer_acmpl)
 

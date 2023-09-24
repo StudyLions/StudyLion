@@ -210,7 +210,7 @@ class MemberAdminUI(ConfigUI):
         t = self.bot.translator.t
         title = t(_p(
             'ui:memberadmin|embed|title',
-            "Member Admin Configuration Panel"
+            "Greetings and Initial Roles Panel"
         ))
         embed = discord.Embed(
             title=title,

@@ -190,7 +190,10 @@ class MenuEditor(MessageUI):
                     if not userstr:
                         new_data = None
                     else:
-                        new_data = await instance._parse_string(instance.parent_id, userstr)
+                        new_data = await instance._parse_string(
+                            instance.parent_id, userstr,
+                            guildid=self.menu.data.guildid
+                        )
                     instance.data = new_data
                     modified.append(instance)
             if modified:
@@ -349,7 +352,9 @@ class MenuEditor(MessageUI):
                     if not userstr:
                         new_data = None
                     else:
-                        new_data = await instance._parse_string(instance.parent_id, userstr, interaction=interaction)
+                        new_data = await instance._parse_string(
+                            instance.parent_id, userstr, interaction=interaction
+                        )
                     instance.data = new_data
                     modified.append(instance)
             if modified:
@@ -503,6 +508,11 @@ class MenuEditor(MessageUI):
             await self.refresh(thinking=selection)
             await self.update_preview()
             await self.menu.update_message()
+            if self.menu.data.menutype is MenuType.REACTION:
+                try:
+                    await self.menu.update_reactons()
+                except SafeCancellation:
+                    pass
         else:
             await selection.response.defer(thinking=False)
 
@@ -591,6 +601,8 @@ class MenuEditor(MessageUI):
             await self.refresh(thinking=selection)
             await self.update_preview()
             await self.menu.update_message()
+            if menutype is MenuType.REACTION:
+                await self.menu.update_reactons()
         else:
             await selection.response.defer()
 
@@ -644,7 +656,7 @@ class MenuEditor(MessageUI):
             self.bot, json.loads(self.menu.data.rawmessage), callback=self._editor_callback, callerid=self._callerid
         )
         self._slaves.append(editor)
-        await editor.run(interaction)
+        await editor.run(interaction, ephemeral=True)
 
     # Template/Custom Menu
     @select(cls=Select, placeholder="TEMPLATE_MENU_PLACEHOLDER", min_values=1, max_values=1)
@@ -821,20 +833,15 @@ class MenuEditor(MessageUI):
         """
         Display or update the preview message.
         """
-        args = await self.menu.make_args()
-        view = await self.menu.make_view()
         if self._preview is not None:
             try:
                 await self._preview.delete_original_response()
             except discord.HTTPException:
                 pass
             self._preview = None
-        await press.response.send_message(
-            **args.send_args,
-            view=view or discord.utils.MISSING,
-            ephemeral=True
-        )
+        await press.response.defer(thinking=True, ephemeral=True)
         self._preview = press
+        await self.update_preview()
 
     async def preview_button_refresh(self):
         t = self.bot.translator.t
@@ -887,13 +894,14 @@ class MenuEditor(MessageUI):
                         description=desc
                     )
                     await selection.edit_original_response(embed=embed)
-                except discord.HTTPException:
+                except discord.HTTPException as e:
                     error = discord.Embed(
                         colour=discord.Colour.brand_red(),
                         description=t(_p(
                             'ui:menu_editor|button:repost|widget:repost|error:post_failed',
-                            "An error ocurred while posting to {channel}. Do I have sufficient permissions?"
-                        )).format(channel=channel.mention)
+                            "An unknown error ocurred while posting to {channel}!\n"
+                            "**Error:** `{exception}`"
+                        )).format(channel=channel.mention, exception=e.text)
                     )
                     await selection.edit_original_response(embed=error)
                 else:
@@ -948,7 +956,7 @@ class MenuEditor(MessageUI):
             title=title, description=desc
         )
         # Send as response with the repost widget attached
-        await press.response.send_message(embed=embed, view=AsComponents(repost_widget))
+        await press.response.send_message(embed=embed, view=AsComponents(repost_widget), ephemeral=True)
 
     async def repost_button_refresh(self):
         t = self.bot.translator.t
@@ -1039,7 +1047,7 @@ class MenuEditor(MessageUI):
         role_index = int(splits[i-1])
         mrole = self.menu.roles[role_index]
 
-        error = discord.Embed(
+        embed = discord.Embed(
             colour=discord.Colour.brand_red(),
             title=t(_p(
                 'ui:menu_editor|error:invald_emoji|title',
@@ -1051,7 +1059,7 @@ class MenuEditor(MessageUI):
             )).format(emoji=mrole.config.emoji.data, label=mrole.config.label.data)
         )
         await mrole.data.update(emoji=None)
-        await self.channel.send(embed=error)
+        await self.channel.send(embed=embed)
 
     async def _redraw(self, args):
         try:

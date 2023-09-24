@@ -12,6 +12,7 @@ from utils.lib import MessageArgs, utc_now, replace_multiple
 from core.lion_guild import LionGuild
 from core.data import CoreData
 from babel.translator import ctx_locale
+from gui.errors import RenderingException
 
 from . import babel, logger
 from .data import TimerData
@@ -83,6 +84,7 @@ class Timer:
         self.destroyed = False
 
     def __repr__(self):
+        # TODO: Add lock status and current state and stage
         return (
             "<Timer "
             f"channelid={self.data.channelid} "
@@ -560,19 +562,20 @@ class Timer:
                 "Timer stopped! Press `Start` to restart the timer."
             )).format(channel=f"<#{self.data.channelid}>")
 
-        card = await get_timer_card(self.bot, self, stage)
-        await card.render()
-
         if (ui := self.status_view) is None:
             ui = self.status_view = TimerStatusUI(self.bot, self, self.channel)
 
         await ui.refresh()
 
-        return MessageArgs(
-            content=content,
-            file=card.as_file(f"pomodoro_{self.data.channelid}.png"),
-            view=ui
-        )
+        card = await get_timer_card(self.bot, self, stage)
+        try:
+            await card.render()
+            file = card.as_file(f"pomodoro_{self.data.channelid}.png")
+            args = MessageArgs(content=content, file=file, view=ui)
+        except RenderingException:
+            args = MessageArgs(content=content, view=ui)
+
+        return args
 
     @log_wrap(action='Send Timer Status')
     async def send_status(self, delete_last=True, **kwargs):
@@ -785,8 +788,8 @@ class Timer:
             to_next_stage = (current.end - utc_now()).total_seconds()
 
             # TODO: Consider request rate and load
-            if to_next_stage > 1 * 60 - drift:
-                time_to_sleep = 1 * 60
+            if to_next_stage > 5 * 60 - drift:
+                time_to_sleep = 5 * 60
             else:
                 time_to_sleep = to_next_stage
 

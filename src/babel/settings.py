@@ -43,9 +43,9 @@ class LocaleSetting(StringSetting):
         if data is None:
             formatted = t(_p('settype:locale|formatted:unset', "Unset"))
         else:
-            name = locale_names.get(data, None)
-            if name:
-                formatted = f"`{data} ({t(name)})`"
+            if data in locale_names:
+                local_name, native_name = locale_names[data]
+                formatted = f"`{native_name} ({t(local_name)})`"
             else:
                 formatted = f"`{data}`"
         return formatted

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-13 08:47+0300\n"
+"POT-Creation-Date: 2023-09-24 12:21+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,7 +44,7 @@ msgstr ""
 
 #: src/modules/member_admin/settingui.py:213
 msgctxt "ui:memberadmin|embed|title"
-msgid "Member Admin Configuration Panel"
+msgid "Greetings and Initial Roles Panel"
 msgstr ""
 
 #: src/modules/member_admin/settingui.py:257
@@ -67,39 +67,39 @@ msgctxt "dash:member_admin|section:initial_roles|name"
 msgid "Initial Roles ({commands[configure welcome]})"
 msgstr ""
 
-#: src/modules/member_admin/cog.py:234
+#: src/modules/member_admin/cog.py:239
 msgctxt "cmd:resetmember"
 msgid "resetmember"
 msgstr ""
 
-#: src/modules/member_admin/cog.py:237
+#: src/modules/member_admin/cog.py:242
 msgctxt "cmd:resetmember|desc"
 msgid "Reset (server-associated) member data for the target member or user."
 msgstr ""
 
-#: src/modules/member_admin/cog.py:241
+#: src/modules/member_admin/cog.py:246
 msgctxt "cmd:resetmember|param:target"
 msgid "member_to_reset"
 msgstr ""
 
-#: src/modules/member_admin/cog.py:242
+#: src/modules/member_admin/cog.py:247
 msgctxt "cmd:resetmember|param:saved_roles"
 msgid "saved_roles"
 msgstr ""
 
-#: src/modules/member_admin/cog.py:247
+#: src/modules/member_admin/cog.py:252
 msgctxt "cmd:resetmember|param:target|desc"
 msgid "Choose the member (current or past) you want to reset."
 msgstr ""
 
-#: src/modules/member_admin/cog.py:251
+#: src/modules/member_admin/cog.py:256
 msgctxt "cmd:resetmember|param:saved_roles|desc"
 msgid ""
 "Clear the saved roles for this member, so their past roles are not restored "
 "on rejoin."
 msgstr ""
 
-#: src/modules/member_admin/cog.py:278
+#: src/modules/member_admin/cog.py:283
 #, possible-python-brace-format
 msgctxt "cmd:resetmember|reset:saved_roles|success"
 msgid ""
@@ -107,17 +107,17 @@ msgid ""
 "roles if they rejoin."
 msgstr ""
 
-#: src/modules/member_admin/cog.py:286
+#: src/modules/member_admin/cog.py:291
 msgctxt "cmd:resetmember|error:nothing_to_do"
 msgid "No reset operation selected, nothing to do."
 msgstr ""
 
-#: src/modules/member_admin/cog.py:302
+#: src/modules/member_admin/cog.py:307
 msgctxt "cmd:configure_welcome"
 msgid "welcome"
 msgstr ""
 
-#: src/modules/member_admin/cog.py:305
+#: src/modules/member_admin/cog.py:310
 msgctxt "cmd:configure_welcome|desc"
 msgid "Configure new member greetings and roles."
 msgstr ""
