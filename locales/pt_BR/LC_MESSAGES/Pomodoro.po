@@ -279,6 +279,8 @@ msgstr "criar"
 msgctxt "cmd:pomodoro_create|desc"
 msgid "Create a new Pomodoro timer. Requires manage channel permissions."
 msgstr ""
+"Crie um novo Temporizador Pomodoro. É necessário ter permissão de gerenciar "
+"canais."
 
 #: src/modules/pomodoro/cog.py:521
 msgctxt "cmd:pomodoro_create|param:channel"
