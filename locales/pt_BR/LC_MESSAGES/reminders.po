@@ -68,7 +68,7 @@ msgstr "lembretes"
 #: src/modules/reminders/cog.py:332
 msgctxt "cmd:reminders|desc"
 msgid "View and set your reminders."
-msgstr ""
+msgstr "Veja e configure seus lembretes."
 
 #: src/modules/reminders/cog.py:353
 msgctxt "cmd:remindme"
