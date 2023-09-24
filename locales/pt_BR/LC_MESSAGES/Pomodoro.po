@@ -579,7 +579,7 @@ msgstr "nome"
 #: src/modules/pomodoro/options.py:165
 msgctxt "timerset:base_name|desc"
 msgid "Timer name, as shown on the timer card."
-msgstr "Título do painel de exibição do temporizador."
+msgstr "Título que será mostrado no painel do temporizador."
 
 #: src/modules/pomodoro/options.py:169
 msgctxt "timerset:base_name|accepts"
