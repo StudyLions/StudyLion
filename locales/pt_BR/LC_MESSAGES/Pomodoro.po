@@ -4,7 +4,6 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Aline Souki, 2023
 # Bruno Evangelista De Oliveira, 2023
 # 
 #, fuzzy
@@ -266,7 +265,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:506
 msgctxt "cmd:pomodoro_create|param:channel"
 msgid "timer_channel"
-msgstr "timer_channel"
+msgstr "canal_do_temporizador"
 
 #: src/modules/pomodoro/cog.py:512
 msgctxt "cmd:pomodoro_create|param:channel|desc"
