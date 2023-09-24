@@ -525,8 +525,8 @@ msgid ""
 "Number of inactive focus+break stages before a member is removed from the "
 "timer."
 msgstr ""
-"Número de ciclos Foco+Pausa em que um membro pode não marcar presença sem "
-"ser retirado do canal."
+"Número de ciclos Foco+Pausa que um membro pode deixar de marcar presença sem"
+" que seja retirado do canal."
 
 #: src/modules/pomodoro/options.py:90
 msgctxt "timerset:inactivity_threshold|desc"
