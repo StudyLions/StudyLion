@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-13 08:47+0300\n"
+"POT-Creation-Date: 2023-09-24 12:21+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
@@ -187,7 +187,7 @@ msgstr "recompensa_de_voz"
 #: src/tracking/voice/cog.py:849
 msgctxt "cmd:configure_voice_rates|desc"
 msgid "Configure Voice tracking rewards and experience"
-msgstr "Configure as recompensas em canais de voz e experiência"
+msgstr "Configure as recompensas e atividades em canais de voz"
 
 #: src/tracking/voice/cog.py:906
 #, possible-python-brace-format
