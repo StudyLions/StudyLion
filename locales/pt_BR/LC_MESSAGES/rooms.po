@@ -757,7 +757,7 @@ msgstr "Salas particulares estão limitadas a **{amount}** membros."
 #: src/modules/rooms/settings.py:146
 msgctxt "guildset:rooms_visible"
 msgid "room_visibility"
-msgstr "visibilidade_sala"
+msgstr "sala_visibilidade"
 
 #: src/modules/rooms/settings.py:149
 msgctxt "guildset:rooms_visible|desc"
