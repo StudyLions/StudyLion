@@ -371,6 +371,7 @@ msgctxt "reminder_set|field:repeat|value"
 msgid ""
 "This reminder will repeat every `{interval}` (after the first reminder)."
 msgstr ""
+"Este lembrete irá repetir a cada ˋ{interval}ˋ (depois do primeiro lembrete)"
 
 #: src/modules/reminders/data.py:94
 msgctxt "reminder|embed"
