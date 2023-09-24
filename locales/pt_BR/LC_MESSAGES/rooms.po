@@ -739,8 +739,9 @@ msgid ""
 "maximum number of members a private room may hold."
 msgstr ""
 "Donos de salas particulares podem convidar outros membros para as suas salas"
-" através de UI, ou através do comando {cmds[room invite]}. Esta configuração"
-" limita o número máximo de membros que uma sala particular pode permitir."
+" através da interface do usuário, ou através do comando {cmds[room invite]}."
+" Esta configuração limita o número máximo de membros que uma sala particular"
+" pode permitir."
 
 #: src/modules/rooms/settings.py:125
 msgctxt "guildset:rooms_slots|accepts"
