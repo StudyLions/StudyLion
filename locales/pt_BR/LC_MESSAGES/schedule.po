@@ -496,7 +496,9 @@ msgstr "cargo_listanegra_checkin"
 #: src/modules/schedule/settings.py:413
 msgctxt "guildset:schedule_blacklist_role|desc"
 msgid "Role which disables scheduled session booking."
-msgstr "Cargo que estará impedido de agendamento e check-in."
+msgstr ""
+"Cargo que estará impedido de fazer novos agendamentos de horário, no sistema"
+" de check-in."
 
 #: src/modules/schedule/settings.py:417
 msgctxt "guildset:schedule_blacklist_role|long_desc"
