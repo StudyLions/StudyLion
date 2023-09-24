@@ -315,8 +315,8 @@ msgid ""
 "How long to wait (in seconds) before kicking/blacklist members who don't "
 "enable their video."
 msgstr ""
-"Quanto tempo esperar (em segundos) antes de kickar/Blacklistar membros que "
-"não ligarem suas câmeras."
+"Quanto tempo esperar (em segundos) antes de kickar/proibir membros que não "
+"ligarem suas câmeras."
 
 #: src/modules/video_channels/settings.py:228
 msgctxt "guildset:video_grace_period|long_desc"
