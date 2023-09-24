@@ -186,6 +186,8 @@ msgid ""
 "Cannot parse \"{partial}\" as a time. Try the format HH:MM or YYYY-MM-DD "
 "HH:MM"
 msgstr ""
+"Não pude analisar \"{partial}\" como um tempo. Tente o formato HH:MM ou "
+"AAAA-MM-DD HH:MM"
 
 #: src/modules/reminders/cog.py:571
 msgctxt "cmd:remindme_in"
