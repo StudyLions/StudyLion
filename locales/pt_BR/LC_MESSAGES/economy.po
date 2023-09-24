@@ -36,13 +36,13 @@ msgstr "Configuração do Sistema Financeiro ({commands[configure economy]})"
 #: src/modules/economy/settingui.py:72
 msgctxt "dash:economy|dropdown|placeholder"
 msgid "Economy Panel"
-msgstr "Painel da Economia"
+msgstr "Painel do Financeiro"
 
 #. ----- Economy group commands -----
 #: src/modules/economy/cog.py:86
 msgctxt "cmd:economy"
 msgid "economy"
-msgstr "economia"
+msgstr "financeiro"
 
 #: src/modules/economy/cog.py:92
 msgctxt "cmd:economy_balance"
