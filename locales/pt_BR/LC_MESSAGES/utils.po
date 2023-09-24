@@ -309,7 +309,7 @@ msgstr "Descrição da Integração"
 #: src/utils/ui/msgeditor.py:214
 msgctxt "ui:msg_editor|modal:body|field:title|label"
 msgid "Embed Title"
-msgstr "Título em Integração"
+msgstr "Título integrado"
 
 #: src/utils/ui/msgeditor.py:225
 msgctxt "ui:msg_editor|modal:body|field:colour|label"
