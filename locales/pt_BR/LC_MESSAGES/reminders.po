@@ -78,7 +78,7 @@ msgstr "lembrar-me"
 #: src/modules/reminders/cog.py:354
 msgctxt "cmd:remindme|desc"
 msgid "View and set task reminders."
-msgstr ""
+msgstr "Veja e configure lembretes de tarefas."
 
 #: src/modules/reminders/cog.py:361
 msgctxt "cmd:reminders_cancel"
