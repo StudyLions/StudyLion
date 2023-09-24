@@ -218,7 +218,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:timers|embed:timer_list|title"
 msgid "Pomodoro Timer Rooms in **{guild}**"
-msgstr ""
+msgstr "Salas de Temporizadores Pomodoro em **{guild}**"
 
 #: src/modules/pomodoro/cog.py:473
 #, possible-python-brace-format
