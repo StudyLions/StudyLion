@@ -382,7 +382,7 @@ msgstr "desativar"
 #: src/modules/pomodoro/cog.py:708
 msgctxt "cmd:pomodoro_destroy|desc"
 msgid "Remove a pomodoro timer from a voice channel."
-msgstr ""
+msgstr "Remova um Temporizador Pomodoro de um canal de voz."
 
 #: src/modules/pomodoro/cog.py:712
 msgctxt "cmd:pomodoro_destroy|param:channel"
