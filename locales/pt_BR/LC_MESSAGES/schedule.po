@@ -973,7 +973,7 @@ msgstr "Este horário foi cancelado com sucesso!"
 #: src/modules/schedule/ui/sessionui.py:164
 msgctxt "ui:session|button:cancel|error|title"
 msgid "Could not cancel session"
-msgstr "Não pude cancelar esta sessão"
+msgstr "Não pude cancelar este horário"
 
 #: src/modules/schedule/core/session.py:196
 msgctxt "session|error:lobby_webhook_perms"
