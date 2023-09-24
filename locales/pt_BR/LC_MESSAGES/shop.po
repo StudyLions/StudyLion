@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-13 08:47+0300\n"
+"POT-Creation-Date: 2023-09-24 12:21+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
@@ -37,27 +37,27 @@ msgctxt "cmd:shop|desc"
 msgid "Purchase coloures, roles, and other goodies with LionCoins."
 msgstr ""
 
-#: src/modules/shop/cog.py:124
+#: src/modules/shop/cog.py:125
 msgctxt "cmd:shop_open"
 msgid "open"
 msgstr "abrir"
 
-#: src/modules/shop/cog.py:125
+#: src/modules/shop/cog.py:126
 msgctxt "cmd:shop_open|desc"
 msgid "Open the server shop."
 msgstr "Abrir a loja do servidor."
 
-#: src/modules/shop/cog.py:151
+#: src/modules/shop/cog.py:153
 msgctxt "cmd:shop_open|error:no_shops"
 msgid "There is nothing to buy!"
 msgstr "Não há nada para comprar!"
 
-#: src/modules/shop/cog.py:213
+#: src/modules/shop/cog.py:215
 msgctxt "ui:stores|button:close|label"
 msgid "Close"
 msgstr "Fechar"
 
-#: src/modules/shop/cog.py:220
+#: src/modules/shop/cog.py:222
 msgctxt "ui:stores|button:close|response|title"
 msgid "Shop Closed"
 msgstr "Loja Fechada"
@@ -334,7 +334,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_edit|resp:done|line:price"
 msgid "{tick} Set price to {coin}**{price}**"
-msgstr "{tick} configure o preço para {coin}**{price}**"
+msgstr "{tick} configurar o preço por {coin}**{price}**"
 
 #: src/modules/shop/shops/colours.py:651
 #, possible-python-brace-format
