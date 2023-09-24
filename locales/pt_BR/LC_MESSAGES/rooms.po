@@ -483,7 +483,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:774
 msgctxt "cmd:room_transfer|param:new_owner"
 msgid "new_owner"
-msgstr "new_owner"
+msgstr "novo_dono"
 
 #: src/modules/rooms/cog.py:779
 msgctxt "cmd:room_transfer|param:new_owner"
