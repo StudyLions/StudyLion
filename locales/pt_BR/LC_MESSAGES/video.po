@@ -183,7 +183,7 @@ msgstr "canais_de_vídeo"
 #: src/modules/video_channels/settings.py:32
 msgctxt "guildset:video_channels|desc"
 msgid "List of voice channels and categories in which to enforce video."
-msgstr "Lista de canais e/ou categorias nas quais a câmera deve ser obrigada."
+msgstr "Lista de canais e/ou categorias em que a câmera deve ser obrigatória."
 
 #: src/modules/video_channels/settings.py:36
 msgctxt "guildset:video_channels|long_desc"
