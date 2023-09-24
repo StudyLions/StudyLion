@@ -346,6 +346,9 @@ msgid ""
 "communication error. Please try creating the channel manually and pass it to"
 " the `timer_channel` argument of this command."
 msgstr ""
+"Falha desconhecida, ao criar um novo canal com Temporizador Pomodoro. Por "
+"favor, tente criar o canal manualmente, e o atribua ao Pomodoro atravéz do "
+"item ˋtemporizador_canalˋ deste comando. "
 
 #: src/modules/pomodoro/cog.py:636
 #, possible-python-brace-format
