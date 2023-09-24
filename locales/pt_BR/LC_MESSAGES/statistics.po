@@ -760,7 +760,7 @@ msgstr "Não houve atividade em canais de voz desde {timestamp}"
 #, possible-python-brace-format
 msgctxt "ui:leaderboard|mode:text|message:empty|desc"
 msgid "There has been no message activity since {timestamp}"
-msgstr ""
+msgstr "Não houve atividade em conversas desde {timestamp}"
 
 #: src/modules/statistics/ui/leaderboard.py:473
 #, possible-python-brace-format
