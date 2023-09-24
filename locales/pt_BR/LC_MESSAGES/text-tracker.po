@@ -163,8 +163,8 @@ msgstr ""
 msgctxt "guildset:untracked_text_channels|accepts"
 msgid "Comma separated list of untracked text channel names or ids."
 msgstr ""
-"Lista de nomes ou IDˋs dos canais em que as mensagens são não "
-"contabilizáveis, separado por vírgula."
+"Lista de nomes, ou IDˋs, dos canais em que as mensagens são não-"
+"contabilizáveis, separados por vírgula."
 
 #: src/tracking/text/settings.py:111
 msgctxt "guildset:untracked_text_channels|notset"
