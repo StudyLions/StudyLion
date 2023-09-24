@@ -711,7 +711,7 @@ msgstr "rótulo"
 #: src/modules/rolemenus/roleoptions.py:91
 msgctxt "roleset:label|desc"
 msgid "A short button label for this role."
-msgstr "Um botão curto rótulado para este cargo."
+msgstr "Um botão curto rotulado para este cargo."
 
 #: src/modules/rolemenus/roleoptions.py:96
 msgctxt "roleset:label|long_desc"
@@ -785,9 +785,9 @@ msgid ""
 "It may also be used as a substitution key in custom role selection "
 "responses."
 msgstr ""
-"A descrição é mostrada abaixo do rótulo do cargo, em um menu suspenso. "
-"Talvez ele também seja usado como substituto para uma seleção personalizada "
-"de responsabilidades. "
+"A descrição é mostrada abaixo do rótulo do cargo, através de um menu "
+"suspenso. Talvez ele também seja usado como substituto para uma seleção "
+"personalizada de responsabilidades. "
 
 #: src/modules/rolemenus/roleoptions.py:213
 msgctxt "roleset:description|set_response:set"
