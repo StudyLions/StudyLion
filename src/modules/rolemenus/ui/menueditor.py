@@ -508,6 +508,11 @@ class MenuEditor(MessageUI):
             await self.refresh(thinking=selection)
             await self.update_preview()
             await self.menu.update_message()
+            if self.menu.data.menutype is MenuType.REACTION:
+                try:
+                    await self.menu.update_reactons()
+                except SafeCancellation:
+                    pass
         else:
             await selection.response.defer(thinking=False)
 
@@ -596,6 +601,8 @@ class MenuEditor(MessageUI):
             await self.refresh(thinking=selection)
             await self.update_preview()
             await self.menu.update_message()
+            if menutype is MenuType.REACTION:
+                await self.menu.update_reactons()
         else:
             await selection.response.defer()
 
