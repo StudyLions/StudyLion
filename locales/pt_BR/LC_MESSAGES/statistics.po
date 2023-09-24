@@ -320,7 +320,7 @@ msgstr "Selecione Cargos Não Contabilizáveis"
 #: src/modules/statistics/settings.py:331
 msgctxt "ui:statistics_config|menu:visible_stats|item:voice|mode:voice"
 msgid "Voice Activity"
-msgstr "Atividade em Voz"
+msgstr "Atividade em Canal de Voz"
 
 #: src/modules/statistics/settings.py:336
 msgctxt "ui:statistics_config|menu:visible_stats|item:voice|mode:study"
