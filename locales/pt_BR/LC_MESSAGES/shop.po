@@ -531,7 +531,7 @@ msgstr "Selecione a cor de cargo para remover."
 #: src/modules/shop/shops/colours.py:991
 msgctxt "cmd:editshop_colours_remove|param:delete_role|desc"
 msgid "Whether to delete the associated role."
-msgstr "Se o cargo associado deverá ser deletado."
+msgstr "Se o cargo associado também deverá ser deletado."
 
 #: src/modules/shop/shops/colours.py:1016
 #, possible-python-brace-format
