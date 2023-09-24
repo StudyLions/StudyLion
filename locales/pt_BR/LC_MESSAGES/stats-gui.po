@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 22:43+0300\n"
+"POT-Creation-Date: 2023-09-24 12:21+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
@@ -40,7 +40,7 @@ msgstr "TEMPO ESTUDOS"
 #: src/gui/cards/stats.py:83
 msgctxt "skin:stats|mode:voice|subheader:study"
 msgid "VOICE TIME"
-msgstr "TEMPO VOZ"
+msgstr "TEMPO EM CANAL DE VOZ"
 
 #: src/gui/cards/stats.py:87
 msgctxt "skin:stats|mode:text|subheader:study"
