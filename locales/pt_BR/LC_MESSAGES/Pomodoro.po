@@ -268,7 +268,7 @@ msgstr "pomodoro"
 #: src/modules/pomodoro/cog.py:507
 msgctxt "cmd:pomodoro|desc"
 msgid "Create and configure pomodoro timer rooms."
-msgstr ""
+msgstr "Crie e configure salas com temporizadores pomodoro."
 
 #: src/modules/pomodoro/cog.py:514
 msgctxt "cmd:pomodoro_create"
