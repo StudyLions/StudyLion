@@ -839,6 +839,8 @@ msgstr "Atribuir este cargo sairá de graça!"
 msgctxt "roleset:price|set_response:negative"
 msgid "Equipping this role will now reward {coin}**{price}**."
 msgstr ""
+"Atribuir este cargo, agora dará uma recompensa, ao membro, de "
+"{coin}**{price}**."
 
 #: src/modules/rolemenus/roleoptions.py:272
 msgctxt "roleset:duration"
