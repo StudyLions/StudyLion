@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-13 08:47+0300\n"
+"POT-Creation-Date: 2023-09-24 12:21+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,25 +18,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: src/modules/schedule/cog.py:429
+#: src/modules/schedule/cog.py:478
 msgctxt "create_booking|error:no_lobby"
 msgid ""
 "This server has not set a `session_lobby`, so the scheduled session system "
 "is disabled!"
 msgstr ""
 
-#: src/modules/schedule/cog.py:441
+#: src/modules/schedule/cog.py:490
 msgctxt "create_booking|error:no_member"
 msgid "An unknown Discord error occurred. Please try again in a few minutes."
 msgstr ""
 
-#: src/modules/schedule/cog.py:449
+#: src/modules/schedule/cog.py:498
 msgctxt "create_booking|error:blacklisted"
 msgid ""
 "You have been blacklisted from the scheduled session system in this server."
 msgstr ""
 
-#: src/modules/schedule/cog.py:460
+#: src/modules/schedule/cog.py:509
 #, possible-python-brace-format
 msgctxt "create_booking|error:insufficient_balance"
 msgid ""
@@ -48,22 +48,22 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/modules/schedule/cog.py:474
+#: src/modules/schedule/cog.py:523
 msgctxt "create_booking|error:already_booked"
 msgid "One or more requested timeslots are already booked!"
 msgstr ""
 
-#: src/modules/schedule/cog.py:677
+#: src/modules/schedule/cog.py:726
 msgctxt "cmd:schedule"
 msgid "schedule"
 msgstr ""
 
-#: src/modules/schedule/cog.py:680
+#: src/modules/schedule/cog.py:729
 msgctxt "cmd:schedule|desc"
 msgid "View and manage your scheduled session."
 msgstr ""
 
-#: src/modules/schedule/cog.py:708
+#: src/modules/schedule/cog.py:757
 #, possible-python-brace-format
 msgctxt "cmd:schedule|cancel_booking|error:parse_slot"
 msgid ""
@@ -71,25 +71,25 @@ msgid ""
 "from the autocomplete options."
 msgstr ""
 
-#: src/modules/schedule/cog.py:716
+#: src/modules/schedule/cog.py:765
 #, possible-python-brace-format
 msgctxt "cmd:schedule|cancel_booking|error:not_booked"
 msgid "Could not cancel {time} booking because it is not booked!"
 msgstr ""
 
-#: src/modules/schedule/cog.py:725
+#: src/modules/schedule/cog.py:774
 #, possible-python-brace-format
 msgctxt "cmd:schedule|cancel_booking|error:too_soon"
 msgid "Cannot cancel {time} booking because it is running or starting soon!"
 msgstr ""
 
-#: src/modules/schedule/cog.py:738
+#: src/modules/schedule/cog.py:787
 #, possible-python-brace-format
 msgctxt "cmd:schedule|cancel_booking|success"
 msgid "Successfully cancelled your booking at {time}."
 msgstr ""
 
-#: src/modules/schedule/cog.py:751
+#: src/modules/schedule/cog.py:800
 #, possible-python-brace-format
 msgctxt "cmd:schedule|create_booking|error:parse_slot"
 msgid ""
@@ -97,30 +97,30 @@ msgid ""
 "from the autocomplete options."
 msgstr ""
 
-#: src/modules/schedule/cog.py:759
+#: src/modules/schedule/cog.py:808
 #, possible-python-brace-format
 msgctxt "cmd:schedule|create_booking|error:already_booked"
 msgid "You have already booked a scheduled session for {time}."
 msgstr ""
 
-#: src/modules/schedule/cog.py:768
+#: src/modules/schedule/cog.py:817
 #, possible-python-brace-format
 msgctxt "cmd:schedule|create_booking|error:too_soon"
 msgid "Cannot book session at {time} because it is running or starting soon!"
 msgstr ""
 
-#: src/modules/schedule/cog.py:780
+#: src/modules/schedule/cog.py:829
 #, possible-python-brace-format
 msgctxt "cmd:schedule|create_booking|success"
 msgid "You have successfully scheduled a session at {time}."
 msgstr ""
 
-#: src/modules/schedule/cog.py:847
+#: src/modules/schedule/cog.py:896
 msgctxt "cmd:configure_schedule"
 msgid "schedule"
 msgstr ""
 
-#: src/modules/schedule/cog.py:850
+#: src/modules/schedule/cog.py:899
 msgctxt "cmd:configure_schedule|desc"
 msgid "Configure Scheduled Session system"
 msgstr ""
@@ -841,7 +841,7 @@ msgid ""
 "`MANAGE_WEBHOOKS` permission."
 msgstr ""
 
-#: src/modules/schedule/core/session.py:274
+#: src/modules/schedule/core/session.py:280
 #, possible-python-brace-format
 msgctxt "session|prepare|error:room_permissions"
 msgid ""
@@ -850,7 +850,7 @@ msgid ""
 "`VIEW_CHANNEL` permissions."
 msgstr ""
 
-#: src/modules/schedule/core/session.py:317
+#: src/modules/schedule/core/session.py:330
 #, possible-python-brace-format
 msgctxt "session|open|error:room_permissions"
 msgid ""
@@ -859,57 +859,57 @@ msgid ""
 "`VIEW_CHANNEL` permissions."
 msgstr ""
 
-#: src/modules/schedule/core/session.py:358
+#: src/modules/schedule/core/session.py:371
 #, possible-python-brace-format
 msgctxt "session|status|title"
 msgid "Session {start} - {end}"
 msgstr ""
 
-#: src/modules/schedule/core/session.py:369
+#: src/modules/schedule/core/session.py:382
 msgctxt "session|status|desc:cancelled"
 msgid ""
 "I cancelled this scheduled session because I was unavailable. All members "
 "who booked the session have been refunded."
 msgstr ""
 
-#: src/modules/schedule/core/session.py:376
+#: src/modules/schedule/core/session.py:389
 msgctxt "session|status|desc:no_members"
 msgid "*No members scheduled this session.*"
 msgstr ""
 
-#: src/modules/schedule/core/session.py:382
+#: src/modules/schedule/core/session.py:395
 #, possible-python-brace-format
 msgctxt "session|status:preparing|desc:has_members"
 msgid "Starting {start}"
 msgstr ""
 
-#: src/modules/schedule/core/session.py:385
+#: src/modules/schedule/core/session.py:398
 msgctxt "session|status:preparing|field:members"
 msgid "Members"
 msgstr ""
 
-#: src/modules/schedule/core/session.py:392
+#: src/modules/schedule/core/session.py:405
 #, possible-python-brace-format
 msgctxt "session|status:running|desc:has_members"
 msgid "Finishing {start}"
 msgstr ""
 
-#: src/modules/schedule/core/session.py:426
+#: src/modules/schedule/core/session.py:439
 msgctxt "session|status:running|field:waiting"
 msgid "Waiting For"
 msgstr ""
 
-#: src/modules/schedule/core/session.py:432
+#: src/modules/schedule/core/session.py:445
 msgctxt "session|status:running|field:attending"
 msgid "Attending"
 msgstr ""
 
-#: src/modules/schedule/core/session.py:438
+#: src/modules/schedule/core/session.py:451
 msgctxt "session|status:running|field:attended"
 msgid "Attended"
 msgstr ""
 
-#: src/modules/schedule/core/session.py:463
+#: src/modules/schedule/core/session.py:476
 #, possible-python-brace-format
 msgctxt "session|status:finished|desc:everyone_att"
 msgid ""
@@ -917,7 +917,7 @@ msgid ""
 "**{reward} + {bonus}**!"
 msgstr ""
 
-#: src/modules/schedule/core/session.py:474
+#: src/modules/schedule/core/session.py:487
 #, possible-python-brace-format
 msgctxt "session|status:finished|desc:some_att"
 msgid ""
@@ -927,7 +927,7 @@ msgid ""
 "without refund!*"
 msgstr ""
 
-#: src/modules/schedule/core/session.py:486
+#: src/modules/schedule/core/session.py:499
 msgctxt "session|status:finished|desc:some_att"
 msgid ""
 "No-one attended this session! No-one received rewards.\n"
@@ -935,12 +935,12 @@ msgid ""
 "without refund!*"
 msgstr ""
 
-#: src/modules/schedule/core/session.py:492
+#: src/modules/schedule/core/session.py:505
 msgctxt "session|status:finished|field:attended"
 msgid "Attended"
 msgstr ""
 
-#: src/modules/schedule/core/session.py:497
+#: src/modules/schedule/core/session.py:510
 msgctxt "session|status:finished|field:missing"
 msgid "Missing"
 msgstr ""

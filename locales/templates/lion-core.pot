@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-13 08:47+0300\n"
+"POT-Creation-Date: 2023-09-24 12:21+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,45 +27,47 @@ msgctxt "settype:coin|parse|error:notinteger"
 msgid "The coin quantity must be a positive integer!"
 msgstr ""
 
-#: src/core/setting_types.py:54
+#: src/core/setting_types.py:55
+#, possible-python-brace-format
 msgctxt "settype:coin|parse|error:too_large"
-msgid "Provided number of coins was too high!"
+msgid "You cannot set this to more than {coin}**{max}**!"
 msgstr ""
 
-#: src/core/setting_types.py:60
-msgctxt "settype:coin|parse|error:too_large"
-msgid "Provided number of coins was too low!"
+#: src/core/setting_types.py:63
+#, possible-python-brace-format
+msgctxt "settype:coin|parse|error:too_small"
+msgid "You cannot set this to less than {coin}**{min}**!"
 msgstr ""
 
-#: src/core/setting_types.py:71
+#: src/core/setting_types.py:75
 #, possible-python-brace-format
 msgctxt "settype:coin|formatted"
 msgid "{coin}**{amount}**"
 msgstr ""
 
-#: src/core/setting_types.py:87
+#: src/core/setting_types.py:91
 msgctxt "settype:message|accepts"
 msgid "JSON formatted raw message data"
 msgstr ""
 
-#: src/core/setting_types.py:102
+#: src/core/setting_types.py:106
 msgctxt "settype:message|download|error:not_json"
 msgid "The attached message data is not a JSON file!"
 msgstr ""
 
-#: src/core/setting_types.py:107
+#: src/core/setting_types.py:111
 msgctxt "settype:message|download|error:size"
 msgid "The attached message data is too large!"
 msgstr ""
 
-#: src/core/setting_types.py:116
+#: src/core/setting_types.py:120
 msgctxt "settype:message|download|error:decoding"
 msgid ""
 "Could not decode the message data. Please ensure it is saved with the "
 "`UTF-8` encoding."
 msgstr ""
 
-#: src/core/setting_types.py:173
+#: src/core/setting_types.py:177
 #, possible-python-brace-format
 msgctxt "settype:message|error_suffix"
 msgid ""
@@ -73,7 +75,7 @@ msgid ""
 "({link})."
 msgstr ""
 
-#: src/core/setting_types.py:185
+#: src/core/setting_types.py:189
 #, possible-python-brace-format
 msgctxt "settype:message|error:invalid_json"
 msgid ""
@@ -81,34 +83,34 @@ msgid ""
 "`{error}`"
 msgstr ""
 
-#: src/core/setting_types.py:193
+#: src/core/setting_types.py:197
 msgctxt "settype:message|error:json_missing_keys"
 msgid ""
 "Message data must be a JSON object with at least one of the following "
 "fields: `content`, `embed`, `embeds`"
 msgstr ""
 
-#: src/core/setting_types.py:202
+#: src/core/setting_types.py:206
 msgctxt "settype:message|error:json_embed_type"
 msgid "`embed` field must be a valid JSON object."
 msgstr ""
 
-#: src/core/setting_types.py:210
+#: src/core/setting_types.py:214
 msgctxt "settype:message|error:json_embeds_type"
 msgid "`embeds` field must be a list."
 msgstr ""
 
-#: src/core/setting_types.py:217
+#: src/core/setting_types.py:221
 msgctxt "settype:message|error:json_embed_embeds"
 msgid "Message data cannot include both `embed` and `embeds`."
 msgstr ""
 
-#: src/core/setting_types.py:225
+#: src/core/setting_types.py:229
 msgctxt "settype:message|error:json_content_type"
 msgid "`content` field must be a string."
 msgstr ""
 
-#: src/core/setting_types.py:241
+#: src/core/setting_types.py:245
 #, possible-python-brace-format
 msgctxt "ui:settype:message|error:embed_conversion"
 msgid ""
@@ -116,7 +118,7 @@ msgid ""
 "**Error:** `{exception}`"
 msgstr ""
 
-#: src/core/setting_types.py:269
+#: src/core/setting_types.py:273
 msgctxt "settype:message|format:too_long"
 msgid "Too long to display! See Preview."
 msgstr ""
