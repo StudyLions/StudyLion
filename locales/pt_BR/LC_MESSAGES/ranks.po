@@ -595,7 +595,7 @@ msgstr "Removendo os cargos de níveis inexistentes dos membros."
 #, possible-python-brace-format
 msgctxt "ui:refresh_ranks|embed|field:remove|value"
 msgid "{progress} {done}/{total} removed"
-msgstr ""
+msgstr "{progress} {done}/{total} removidos"
 
 #: src/modules/ranks/ui/refresh.py:222
 #, possible-python-brace-format
