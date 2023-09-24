@@ -444,6 +444,8 @@ msgid ""
 "What is this, tax evasion?\n"
 "(You can not send coins to yourself.)"
 msgstr ""
+"O que é isto? Tentativa de sonegação de impostos? Vou chamar uma Seita de Auditores!\n"
+"(Você não pode enviar moedas para você mesmo.)"
 
 #: src/modules/economy/cog.py:732
 msgctxt "cmd:send|error:sending-to-leo"
