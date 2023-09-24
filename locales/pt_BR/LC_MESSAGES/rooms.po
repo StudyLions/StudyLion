@@ -724,7 +724,7 @@ msgstr ""
 #: src/modules/rooms/settings.py:112
 msgctxt "guildset:rooms_slots"
 msgid "room_member_cap"
-msgstr "sala_max_membros"
+msgstr "sala_lim_membros"
 
 #: src/modules/rooms/settings.py:115
 msgctxt "guildset:rooms_slots|desc"
