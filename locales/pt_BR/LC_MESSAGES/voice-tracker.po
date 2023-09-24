@@ -428,7 +428,8 @@ msgstr "Selecione os Canais a Serem Não-Contabilizados"
 msgctxt "dash:voice_tracker|title"
 msgid "Voice Tracker Configuration ({commands[configure voice_rewards]})"
 msgstr ""
-"Configuração de Contador em Chamada ({commands[configure voice_rewards]})"
+"Configuração de Contabilização em Canais de Voz ({commands[configure "
+"voice_rewards]})"
 
 #: src/tracking/voice/settings.py:532
 msgctxt "dash:voice_tracking|dropdown|placeholder"
