@@ -754,7 +754,7 @@ msgstr "Estatísticas sendo contadas desde {timestamp}"
 #, possible-python-brace-format
 msgctxt "ui:leaderboard|mode:voice|message:empty|desc"
 msgid "There has been no voice activity since {timestamp}"
-msgstr ""
+msgstr "Não houve atividade em canais de voz desde {timestamp}"
 
 #: src/modules/statistics/ui/leaderboard.py:468
 #, possible-python-brace-format
