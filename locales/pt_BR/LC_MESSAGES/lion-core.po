@@ -41,7 +41,7 @@ msgstr "Você não pode cobrar mais do que {coin}**{max}**!"
 #, possible-python-brace-format
 msgctxt "settype:coin|parse|error:too_small"
 msgid "You cannot set this to less than {coin}**{min}**!"
-msgstr ""
+msgstr "Você não pode cobrar menos do que {coin}**{min}**!"
 
 #: src/core/setting_types.py:75
 #, possible-python-brace-format
