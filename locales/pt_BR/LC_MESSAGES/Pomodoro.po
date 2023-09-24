@@ -332,7 +332,7 @@ msgstr "Temporizador"
 #: src/modules/pomodoro/cog.py:606
 msgctxt "cmd:pomodoro_create|new_channel|audit_reason"
 msgid "Creating Pomodoro Voice Channel"
-msgstr ""
+msgstr "Criando um Canal de Voz com Temporizador Pomodoro"
 
 #: src/modules/pomodoro/cog.py:615
 msgctxt "cmd:pomodoro_create|new_channel|error:channel_create_failed|title"
