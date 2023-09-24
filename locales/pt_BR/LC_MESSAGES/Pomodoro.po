@@ -432,7 +432,7 @@ msgstr "editar"
 #: src/modules/pomodoro/cog.py:775
 msgctxt "cmd:pomodoro_edit|desc"
 msgid "Reconfigure a pomodoro timer."
-msgstr ""
+msgstr "Edite a configuração de um Temporizador Pomodoro."
 
 #: src/modules/pomodoro/cog.py:779
 msgctxt "cmd:pomodoro_edit|param:channel"
