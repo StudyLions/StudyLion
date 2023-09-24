@@ -374,8 +374,7 @@ msgstr ""
 msgctxt "guildset:returning_message|embed_field|formatkeys|explanation"
 msgid "In *addition* to the placeholders supported by `welcome_message`"
 msgstr ""
-"Em *adição* aos espaços reservados, suportados pela "
-"ˋmensagem_de_boas_vindasˋ"
+"Em *adição* aos espaços reservados, suportados pela ˋmensagem_de_boasvindasˋ"
 
 #: src/modules/member_admin/settings.py:328
 msgctxt "guildset:returning_message|embed_field|formatkeys|"
