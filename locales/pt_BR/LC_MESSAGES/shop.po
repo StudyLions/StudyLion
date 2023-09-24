@@ -552,7 +552,7 @@ msgstr "Eu não tenho permissões suficientes para deletar o cargo."
 #: src/modules/shop/shops/colours.py:1044
 msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
 msgid "Failed to delete the role for an unknown reason."
-msgstr "Falha ao deletar o cargo, por um motivo desconhecido."
+msgstr "Houve uma falha ao deletar o cargo. Motivo desconhecido."
 
 #: src/modules/shop/shops/colours.py:1049
 msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
