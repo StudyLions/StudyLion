@@ -24,6 +24,9 @@ _p = babel._p
 
 
 class RankRefreshUI(MessageUI):
+    # Cache of live rank UIs, mainly for introspection
+    _running = set()
+
     def __init__(self, bot: LionBot, guild: discord.Guild, **kwargs):
         super().__init__(**kwargs)
         self.bot = bot
@@ -66,6 +69,7 @@ class RankRefreshUI(MessageUI):
 
     def start(self):
         self._loop_task = asyncio.create_task(self._refresh_loop(), name='Rank RefreshUI Monitor')
+        self._running.add(self)
 
     async def run(self, *args, **kwargs):
         await super().run(*args, **kwargs)
@@ -74,6 +78,7 @@ class RankRefreshUI(MessageUI):
     async def cleanup(self):
         if self._loop_task and not self._loop_task.done():
             self._loop_task.cancel()
+        self._running.discard(self)
         await super().cleanup()
 
     def progress_bar(self, value, minimum, maximum, width=10) -> str:
@@ -107,12 +112,13 @@ class RankRefreshUI(MessageUI):
         # Join all the sections together and return
         return ''.join(bar)
 
-    @log_wrap('refresh ui loop')
+    @log_wrap(action='refresh ui loop')
     async def _refresh_loop(self):
         while True:
             try:
-                await asyncio.sleep(1)
+                await asyncio.sleep(5)
                 await self._wakeup.wait()
+                self._wakeup.clear()
                 await self.refresh()
             except asyncio.CancelledError:
                 break

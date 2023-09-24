@@ -622,7 +622,7 @@ class RankCog(LionCog):
             error = t(_p(
                 'rank_refresh|error:unassignable_roles|desc',
                 "I have insufficient permissions to assign the following role(s):\n{roles}"
-            )).format(roles='\n'.join(role.mention for role in failing)),
+            )).format(roles='\n'.join(role.mention for role in failing))
             await ui.set_error(error)
             return
 
@@ -707,8 +707,8 @@ class RankCog(LionCog):
                     'rank_refresh|remove_roles|small_error',
                     "*Could not remove ranks from {member}*"
                 )).format(member=to_remove[index][0].mention)
-                self.ui.errors.append(error)
-                if len(self.ui.errors) > 10:
+                ui.errors.append(error)
+                if len(ui.errors) > 10:
                     await ui.set_error(
                         t(_p(
                             'rank_refresh|remove_roles|error:too_many_issues',
@@ -742,8 +742,8 @@ class RankCog(LionCog):
                     'rank_refresh|add_roles|small_error',
                     "*Could not add {role} to {member}*"
                 )).format(member=to_add[index][0].mention, role=to_add[index][1].mention)
-                self.ui.errors.append(error)
-                if len(self.ui.errors) > 10:
+                ui.errors.append(error)
+                if len(ui.errors) > 10:
                     await ui.set_error(
                         t(_p(
                             'rank_refresh|add_roles|error:too_many_issues',
