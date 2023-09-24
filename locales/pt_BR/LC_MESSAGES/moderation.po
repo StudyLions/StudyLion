@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-13 08:47+0300\n"
+"POT-Creation-Date: 2023-09-24 12:21+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
@@ -72,7 +72,7 @@ msgstr "Ticket #{ticketid} | {state} | {type}[Auto] | {name}"
 #, possible-python-brace-format
 msgctxt "ticket|title:manual"
 msgid "Ticket #{ticketid} | {state} | {type} | {name}"
-msgstr "Ticket #{ticketid} | {state} | {type} | {name}"
+msgstr "Registro #{ticketid} | {state} | {type} | {name}"
 
 #: src/modules/moderation/ticket.py:168
 msgctxt "ticket|field:target|name"
