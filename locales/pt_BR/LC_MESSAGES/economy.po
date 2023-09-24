@@ -453,6 +453,8 @@ msgid ""
 "I appreciate it, but you need it more than I do!\n"
 "(You cannot send coins to bots.)"
 msgstr ""
+"Eu adoraria ser agraciado, mas você precisa disto mais do que eu!\n"
+"(Você não pode enviar moedas aos bots.)"
 
 #: src/modules/economy/cog.py:742
 #, possible-python-brace-format
