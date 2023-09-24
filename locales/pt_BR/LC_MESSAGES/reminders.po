@@ -363,7 +363,7 @@ msgstr ""
 #: src/modules/reminders/data.py:79
 msgctxt "reminder_set|field:repeat|name"
 msgid "Repeats"
-msgstr ""
+msgstr "Repete"
 
 #: src/modules/reminders/data.py:83
 #, possible-python-brace-format
