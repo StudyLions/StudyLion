@@ -874,7 +874,7 @@ msgid "One session attended! Keep it up!"
 msgid_plural "**{streak}** sessions attended in a row! Good job!"
 msgstr[0] "Um check-in completado! Mantenha-se firme!"
 msgstr[1] "**{streak}** check-inˋs seguidos! Você fortalece este servidor!"
-msgstr[2] "**{streak}** check-ins seguidos! Bonito de se ver!"
+msgstr[2] "**{streak}** check-ins seguidos! Isso que é constância!"
 
 #: src/modules/schedule/ui/scheduleui.py:475
 msgctxt "ui:schedule|embed|field:stats|field:streak|value:positive"
