@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 22:43+0300\n"
+"POT-Creation-Date: 2023-09-13 08:47+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
@@ -21,22 +21,22 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: src/tracking/text/cog.py:249
+#: src/tracking/text/cog.py:254
 msgctxt "cmd:configure_message_exp"
 msgid "message_exp"
 msgstr "exp_message"
 
-#: src/tracking/text/cog.py:252
+#: src/tracking/text/cog.py:257
 msgctxt "cmd:configure_message_exp|desc"
 msgid "Configure Message Tracking & Experience"
 msgstr "Configurar Contabilizador de Mensagens e Experiência"
 
-#: src/tracking/text/cog.py:315
+#: src/tracking/text/cog.py:320
 msgctxt "cmd:leo_configure_exp_rates"
 msgid "experience_rates"
 msgstr "taxas_experiência"
 
-#: src/tracking/text/cog.py:318
+#: src/tracking/text/cog.py:323
 msgctxt "cmd:leo_configure_exp_rates|desc"
 msgid "Global experience rate configuration"
 msgstr "Configuração da Taxa global de experiência"
@@ -71,7 +71,7 @@ msgctxt "guildset:xp_per_period|desc"
 msgid ""
 "How much XP members will be given every 5 minute period they are active."
 msgstr ""
-"Quantidade de XP que os membros receberão a cada 5 min que eles estiverem "
+"Quantidade de EXP que os membros receberão a cada 5 min que eles estiverem "
 "ativos."
 
 #: src/tracking/text/settings.py:40
