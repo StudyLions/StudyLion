@@ -238,7 +238,7 @@ msgstr "Não pude criar o lembrete!"
 #: src/modules/reminders/ui.py:47
 msgctxt "ui:reminderlist|button:clear|confirm|title"
 msgid "Are You Sure?"
-msgstr ""
+msgstr "Você tem certeza?"
 
 #: src/modules/reminders/ui.py:50
 #, possible-python-brace-format
