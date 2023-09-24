@@ -803,6 +803,7 @@ msgstr "Nota"
 msgctxt "ui:rank_overview|embed|field:note|value:with_season"
 msgid "Ranks are determined by activity since {timestamp}."
 msgstr ""
+"Os níveis são determinados de acordo com a atividade desde {timestamp}."
 
 #: src/modules/ranks/ui/overview.py:419
 #, possible-python-brace-format
