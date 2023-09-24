@@ -871,7 +871,7 @@ msgstr ""
 #: src/modules/ranks/ui/editor.py:106
 msgctxt "ui:rank_editor|type:message|input:requires|label"
 msgid "Required Message Count"
-msgstr "Quantidade de Mensagens "
+msgstr "Quantidade de Mensagens Necessárias"
 
 #: src/modules/ranks/ui/editor.py:110
 msgctxt "ui:rank_editor|type:message|input:requires|placeholder"
