@@ -669,7 +669,7 @@ msgstr ""
 #: src/modules/schedule/ui/settingui.py:234
 msgctxt "dash:schedule|dropdown|placeholder"
 msgid "Scheduled Sessions Panel"
-msgstr "Painel de Check-inˋs"
+msgstr "Painel do Sistema de Check-inˋs"
 
 #: src/modules/schedule/ui/settingui.py:251
 msgctxt "dash:schedule|section:schedule_channels|name"
