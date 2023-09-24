@@ -319,7 +319,7 @@ msgstr "Seus lembretes"
 #: src/modules/reminders/ui.py:270
 msgctxt "ui:reminderlist|embed:list|footer"
 msgid "Click a reminder to jump back to the context!"
-msgstr ""
+msgstr "Clique em um lembrete para retornar ao conteúdo"
 
 #: src/modules/reminders/ui.py:277
 msgctxt "ui:reminderlist|embed:no_reminders|title"
