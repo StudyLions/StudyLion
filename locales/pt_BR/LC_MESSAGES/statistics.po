@@ -624,7 +624,7 @@ msgstr ""
 #: src/modules/statistics/ui/profile.py:92
 msgctxt "menu:stat_type|opt:voice|name"
 msgid "Voice Statistics"
-msgstr "Etatísticas em Voz"
+msgstr "Etatísticas em Canal de Voz"
 
 #: src/modules/statistics/ui/profile.py:97
 msgctxt "menu:stat_type|opt:text|name"
