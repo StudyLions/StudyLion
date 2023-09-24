@@ -161,6 +161,8 @@ msgstr "temporizador_canal"
 msgctxt "cmd:timer|param:channel|desc"
 msgid "Select a timer to display (by selecting the timer voice channel)"
 msgstr ""
+"Selecione um temporizador a mostrar (selecionando a sala correspondente a "
+"ele)."
 
 #: src/modules/pomodoro/cog.py:367 src/modules/pomodoro/cog.py:438
 #, possible-python-brace-format
