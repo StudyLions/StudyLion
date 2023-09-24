@@ -26,7 +26,7 @@ msgstr ""
 #: src/modules/economy/settingui.py:33
 msgctxt "ui:economy_config|embed|title"
 msgid "Economy Configuration Panel"
-msgstr "Painel de Configuração da Economia"
+msgstr "Painel de Configuração do Sistema Financeiro"
 
 #: src/modules/economy/settingui.py:68
 msgctxt "dash:economy|title"
