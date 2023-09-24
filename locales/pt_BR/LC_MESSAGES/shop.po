@@ -34,7 +34,7 @@ msgstr "loja"
 #: src/modules/shop/cog.py:118
 msgctxt "cmd:shop|desc"
 msgid "Purchase coloures, roles, and other goodies with LionCoins."
-msgstr ""
+msgstr "Comprar cores, cargos e outras coisas com as LionCoins."
 
 #: src/modules/shop/cog.py:125
 msgctxt "cmd:shop_open"
