@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-13 08:47+0300\n"
+"POT-Creation-Date: 2023-09-24 12:21+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
@@ -163,7 +163,7 @@ msgid ""
 "Please keep your video on at all times, and leave the channel if you need to disable it!"
 msgstr ""
 "Você foi desconectado do canal de vídeo {channel} por ter desabilitado seu vídeo.\n"
-"Por favor, deixê sua câmera ligada, e, caso precise desabilitar ou tampar, saia do canal. Retorne assim que for possível voltar às condições necessárias. "
+"Por favor, deixe sua câmera ligada, e, caso precise desabilitar ou tampar, saia do canal. Retorne assim que for possível voltar às condições necessárias. "
 
 #: src/modules/video_channels/cog.py:510
 msgctxt "cmd:configure_video"
@@ -178,7 +178,7 @@ msgstr "Configure canais somente para vídeo, e da Lista Negra."
 #: src/modules/video_channels/settings.py:29
 msgctxt "guildset:video_channels"
 msgid "video_channels"
-msgstr "somente_vídeo"
+msgstr "canais_de_vídeo"
 
 #: src/modules/video_channels/settings.py:32
 msgctxt "guildset:video_channels|desc"
