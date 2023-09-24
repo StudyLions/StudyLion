@@ -37,7 +37,7 @@ msgstr ""
 #: src/utils/cog.py:34
 msgctxt "cmd:page|error:no_pager"
 msgid "No pager listening in this channel!"
-msgstr "Nenhum pager listado neste canal!"
+msgstr "Não há nenhum painel sendo mostrado neste canal."
 
 #: src/utils/cog.py:45
 msgctxt "cmd:page_next"
