@@ -653,6 +653,8 @@ msgid ""
 "The provided name is too long! Channel names can be at most `100` "
 "characters."
 msgstr ""
+"O nome indicado é muito comprido! Os nomes de canais podem ter, no máximo, "
+"ˋ100ˋ caracteres."
 
 #: src/modules/pomodoro/options.py:240
 msgctxt "timerset:focus_length"
