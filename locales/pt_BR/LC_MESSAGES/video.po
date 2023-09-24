@@ -127,8 +127,8 @@ msgid ""
 "**You must enable your camera in camera-only rooms.**\n"
 "You have been disconnected from the video {channel} for not enabling your camera."
 msgstr ""
-"**Você precisa habilitar sua câmera em canais de uso de câmera obrigatórios!**\n"
-"Você foi desconectado do canal de vídeo {channel} por não ter habilitado sua câmera."
+"**Você precisa habilitar sua câmera em canais que o uso de câmera é obrigatório!**\n"
+"Você foi desconectado do canal de vídeo {channel} justamente por não ter habilitado sua câmera."
 
 #: src/modules/video_channels/cog.py:422
 msgctxt "video_watchdog|join_task|kick_after_grace|blacklist|title"
