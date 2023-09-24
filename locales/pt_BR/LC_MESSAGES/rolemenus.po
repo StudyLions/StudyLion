@@ -1532,7 +1532,8 @@ msgctxt "ui:menu_editor|button:repost|eidget:repost|error:perms|desc"
 msgid ""
 "I lack the `EMBED_LINKS` or `SEND_MESSAGES` permission in this channel."
 msgstr ""
-"Eu preciso de permissão para ˋEMBED_LINKSˋ ou ˋSEND_MESSAGESˋ neste canal."
+"Eu preciso de permissão para ˋINSERIR_LINKSˋ ou ˋENVIAR_MENSAGENSˋ neste "
+"canal."
 
 #: src/modules/rolemenus/ui/menueditor.py:902
 #, possible-python-brace-format
