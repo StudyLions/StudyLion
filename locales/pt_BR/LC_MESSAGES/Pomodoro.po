@@ -443,6 +443,8 @@ msgstr "canal_do_temporizador"
 msgctxt "cmd:pomodoro_edit|param:channel|desc"
 msgid "Select a timer voice channel to reconfigure."
 msgstr ""
+"Selecione um canal de voz com Temporizador Pomodoro para editar a "
+"configuração."
 
 #: src/modules/pomodoro/cog.py:826
 msgctxt "cmd:pomodoro_edit|error:no_timer"
