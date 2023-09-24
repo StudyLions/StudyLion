@@ -686,6 +686,8 @@ msgstr "Atualizar Níveis Classificatórios dos Membros"
 msgctxt "ui:rank_overview|button:clear|confirm"
 msgid "Are you sure you want to **delete all activity ranks** in this server?"
 msgstr ""
+"Você tem certeza que quer **apagar todos os Níveis de Atividade** deste "
+"servidor?"
 
 #: src/modules/ranks/ui/overview.py:127
 msgctxt "ui:rank_overview|button:clear|confirm|button:yes"
