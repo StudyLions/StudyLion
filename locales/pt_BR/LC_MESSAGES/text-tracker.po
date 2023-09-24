@@ -155,9 +155,9 @@ msgid ""
 "XP. If a category is selected, then all channels under the category will "
 "also be untracked."
 msgstr ""
-"Mensagens enviadas nestes canais não irá contar para acumular EXP em "
+"Mensagens enviadas nestes canais não irão contar para acumular EXP em "
 "Mensagens. Se uma categoria for selecionada, então todos os canais abaixo "
-"desta categoria, também serão não contabilizáveis."
+"desta categoria, também serão não-contabilizáveis."
 
 #: src/tracking/text/settings.py:107
 msgctxt "guildset:untracked_text_channels|accepts"
