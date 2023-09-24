@@ -958,9 +958,7 @@ msgstr "Não foi possível fazer este agendamento."
 #: src/modules/schedule/ui/sessionui.py:133
 msgctxt "ui:session|button:cancel|error:starting_soon"
 msgid "Too late! This session has started or is starting shortly."
-msgstr ""
-"Tarde demais para o check-in! Esta sessão já começou, ou irá a qualquer "
-"momento."
+msgstr "Tarde demais! Este horário já começou, ou irá a qualquer momento."
 
 #: src/modules/schedule/ui/sessionui.py:140
 msgctxt "ui:session|button:cancel|error:not_booked"
