@@ -532,7 +532,8 @@ msgstr ""
 msgctxt "timerset:inactivity_threshold|desc"
 msgid "How many timer cycles before kicking inactive members."
 msgstr ""
-"Quantidade de ciclos de temporizador antes de retirar um membro inativo.  "
+"Quantidade de ciclos do temporizador antes de retirar um membro que não "
+"esteja marcando presença.  "
 
 #: src/modules/pomodoro/options.py:112
 msgctxt "timerset:inactivity_length|desc"
