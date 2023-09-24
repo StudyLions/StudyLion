@@ -1093,7 +1093,7 @@ msgstr ""
 #: src/modules/schedule/core/session.py:492
 msgctxt "session|status:finished|field:attended"
 msgid "Attended"
-msgstr "Cumpriu"
+msgstr "Atendido"
 
 #: src/modules/schedule/core/session.py:497
 msgctxt "session|status:finished|field:missing"
