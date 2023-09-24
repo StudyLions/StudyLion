@@ -692,7 +692,7 @@ msgstr ""
 #: src/modules/ranks/ui/overview.py:127
 msgctxt "ui:rank_overview|button:clear|confirm|button:yes"
 msgid "Yes, clear ranks"
-msgstr ""
+msgstr "Sim, apagar Níveis de Atividade"
 
 #: src/modules/ranks/ui/overview.py:133
 msgctxt "ui:rank_overview|button:clear|confirm|button:no"
