@@ -149,7 +149,7 @@ msgstr ""
 #: src/modules/moderation/settings.py:20
 msgctxt "guildset:ticket_log"
 msgid "ticket_log"
-msgstr "ticket_log"
+msgstr "registro_de_logs"
 
 #: src/modules/moderation/settings.py:23
 msgctxt "guildset:ticket_log|desc"
