@@ -398,7 +398,7 @@ msgstr "Link de Miniatura de Imagem "
 #: src/utils/ui/msgeditor.py:477
 msgctxt "ui:msg_editor|modal:images|field:image|label"
 msgid "Embed Image URL"
-msgstr "Link de imagem integrada"
+msgstr "Inserir Link de imagem"
 
 #: src/utils/ui/msgeditor.py:487
 msgctxt "ui:msg_editor|modal:images|title"
