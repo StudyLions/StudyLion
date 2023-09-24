@@ -71,7 +71,7 @@ msgstr "pager2"
 
 #: src/modules/test/test.py:209
 msgid "prettyusers"
-msgstr "usuariosfofos"
+msgstr "usuáriosfofos"
 
 #: src/modules/test/test.py:259
 msgid "dmview"
