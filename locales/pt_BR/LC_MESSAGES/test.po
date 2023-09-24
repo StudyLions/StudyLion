@@ -75,7 +75,7 @@ msgstr "usuáriosfofos"
 
 #: src/modules/test/test.py:259
 msgid "dmview"
-msgstr "vermd"
+msgstr "ver_md"
 
 #: src/modules/test/test.py:270
 msgid "multiview"
