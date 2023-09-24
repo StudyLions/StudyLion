@@ -923,7 +923,7 @@ msgstr "> `{until}` | {start} - {end}"
 #: src/modules/schedule/ui/sessionui.py:52
 msgctxt "ui:sessionui|button:book|label"
 msgid "Book"
-msgstr "Check-in"
+msgstr "Agendar"
 
 #: src/modules/schedule/ui/sessionui.py:56
 msgctxt "ui:sessionui|button:cancel|label"
