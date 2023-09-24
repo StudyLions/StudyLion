@@ -240,7 +240,7 @@ msgstr "Você definiu o idioma da comunidade para {lang}."
 #: src/babel/enums.py:43
 msgctxt "localenames|locale:id"
 msgid "Indonesian"
-msgstr "Indonésio"
+msgstr "Indonesian"
 
 #: src/babel/enums.py:44
 msgctxt "localenames|locale:da"
