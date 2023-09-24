@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 22:43+0300\n"
+"POT-Creation-Date: 2023-09-24 12:21+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Ari Horesh, 2023\n"
 "Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
@@ -49,8 +49,8 @@ msgstr "הודעת חזרה לשרת"
 
 #: src/modules/member_admin/settingui.py:213
 msgctxt "ui:memberadmin|embed|title"
-msgid "Member Admin Configuration Panel"
-msgstr "אדמין משתמשים לוח בקרה"
+msgid "Greetings and Initial Roles Panel"
+msgstr ""
 
 #: src/modules/member_admin/settingui.py:257
 msgctxt "dash:member_admin|title"
@@ -72,32 +72,32 @@ msgctxt "dash:member_admin|section:initial_roles|name"
 msgid "Initial Roles ({commands[configure welcome]})"
 msgstr "רולים ראשוניים ({commands[configure welcome]})"
 
-#: src/modules/member_admin/cog.py:234
+#: src/modules/member_admin/cog.py:239
 msgctxt "cmd:resetmember"
 msgid "resetmember"
 msgstr "אפס משתמש"
 
-#: src/modules/member_admin/cog.py:237
+#: src/modules/member_admin/cog.py:242
 msgctxt "cmd:resetmember|desc"
 msgid "Reset (server-associated) member data for the target member or user."
 msgstr "אפס נתוני שרת עבור משתמש ספציפי"
 
-#: src/modules/member_admin/cog.py:241
+#: src/modules/member_admin/cog.py:246
 msgctxt "cmd:resetmember|param:target"
 msgid "member_to_reset"
 msgstr "משתמשים_לאיפוס"
 
-#: src/modules/member_admin/cog.py:242
+#: src/modules/member_admin/cog.py:247
 msgctxt "cmd:resetmember|param:saved_roles"
 msgid "saved_roles"
 msgstr "רולים_שמורים"
 
-#: src/modules/member_admin/cog.py:247
+#: src/modules/member_admin/cog.py:252
 msgctxt "cmd:resetmember|param:target|desc"
 msgid "Choose the member (current or past) you want to reset."
 msgstr "בחר את המשתמש (עכשווי או בעבר) שאתה רוצה לאפס."
 
-#: src/modules/member_admin/cog.py:251
+#: src/modules/member_admin/cog.py:256
 msgctxt "cmd:resetmember|param:saved_roles|desc"
 msgid ""
 "Clear the saved roles for this member, so their past roles are not restored "
@@ -106,7 +106,7 @@ msgstr ""
 "מחק את הרולים השמורים עבור המשתמש הזה, הרולים הקודמים שלהם לא ישוחזרו כשהוא "
 "יצטרך מחדש."
 
-#: src/modules/member_admin/cog.py:278
+#: src/modules/member_admin/cog.py:283
 #, possible-python-brace-format
 msgctxt "cmd:resetmember|reset:saved_roles|success"
 msgid ""
@@ -116,17 +116,17 @@ msgstr ""
 "הרולים השמורים עבור {target} אופסו. הם לא יקבלו את הרולים שלהם שוב בחזרה "
 "לשרת."
 
-#: src/modules/member_admin/cog.py:286
+#: src/modules/member_admin/cog.py:291
 msgctxt "cmd:resetmember|error:nothing_to_do"
 msgid "No reset operation selected, nothing to do."
 msgstr "איפוס לא נבחר, אין לי מה לעשות."
 
-#: src/modules/member_admin/cog.py:302
+#: src/modules/member_admin/cog.py:307
 msgctxt "cmd:configure_welcome"
 msgid "welcome"
 msgstr "ברוכים הבאים"
 
-#: src/modules/member_admin/cog.py:305
+#: src/modules/member_admin/cog.py:310
 msgctxt "cmd:configure_welcome|desc"
 msgid "Configure new member greetings and roles."
 msgstr "הגדר רולים והודעת שלומות למשתמש חדש"

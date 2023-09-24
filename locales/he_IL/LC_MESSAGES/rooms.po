@@ -99,7 +99,7 @@ msgstr "צור טיימר לחדר"
 #, possible-python-brace-format
 msgctxt "ui:room_status|button:timer|timer_created"
 msgid "Timer created successfully! Use {edit_cmd} to configure further."
-msgstr ""
+msgstr "הטיימר נבנה בהצלחה! השתמש ב{edit_cmd} כדי לשנות אותו."
 
 #: src/modules/rooms/roomui.py:254
 msgctxt "ui:room_status|button:timer|label:edit_timer"

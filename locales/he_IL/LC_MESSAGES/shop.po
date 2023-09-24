@@ -30,12 +30,12 @@ msgstr "ערוךחנות"
 #: src/modules/shop/cog.py:117
 msgctxt "cmd:shop"
 msgid "shop"
-msgstr ""
+msgstr "חנות"
 
 #: src/modules/shop/cog.py:118
 msgctxt "cmd:shop|desc"
 msgid "Purchase coloures, roles, and other goodies with LionCoins."
-msgstr ""
+msgstr "קנו צבעים, רולים, ודברים שונים באמצעות מטבעות!"
 
 #: src/modules/shop/cog.py:124
 msgctxt "cmd:shop_open"
@@ -611,12 +611,12 @@ msgstr "חנות רולי צבעים"
 #, possible-python-brace-format
 msgctxt "ui:colourstore|embed|footer:paged"
 msgid "Page {current}/{total}"
-msgstr ""
+msgstr "עמוד {current}/{total}"
 
 #: src/modules/shop/shops/colours.py:1264
 msgctxt "ui:colourstore|embed|field:warning|name"
 msgid "Note!"
-msgstr ""
+msgstr "פתקית!"
 
 #: src/modules/shop/shops/colours.py:1268
 #, possible-python-brace-format
@@ -624,4 +624,4 @@ msgctxt "ui:colourstore|embed|field:warning|value"
 msgid ""
 "Purchasing a new colour role will *replace* your currently colour {current} "
 "without refund!"
-msgstr ""
+msgstr "קנייה של צבע חדש *תחליף* את הצבע הנוכחי שלך {current} ללא החזר כספי!"

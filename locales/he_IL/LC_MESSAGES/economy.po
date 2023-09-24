@@ -428,7 +428,7 @@ msgctxt "cmd:send|error:sending-to-self"
 msgid ""
 "What is this, tax evasion?\n"
 "(You can not send coins to yourself.)"
-msgstr ""
+msgstr "מה זה? הלבנת מס? (אתם לא יכולים לשלוח מטבעות לעצמכם)"
 
 #: src/modules/economy/cog.py:732
 msgctxt "cmd:send|error:sending-to-leo"
@@ -436,6 +436,8 @@ msgid ""
 "I appreciate it, but you need it more than I do!\n"
 "(You cannot send coins to bots.)"
 msgstr ""
+"תודה רבה שאתה חושב עלינו, אבל אין צורך.\n"
+"(אי אפשר לשלוח מטבעות לבוטים)"
 
 #: src/modules/economy/cog.py:742
 #, possible-python-brace-format
@@ -444,6 +446,8 @@ msgid ""
 "{target} appreciates the gesture, but said they don't have any use for {coin}.\n"
 "(You cannot send coins to bots.)"
 msgstr ""
+"{target} מעריך את המחווה, אבל אין לא מה לעשות עם  {coin}.\n"
+"(אי אפשר לשלוח מטבעות לבוטים)"
 
 #: src/modules/economy/cog.py:770
 #, possible-python-brace-format
