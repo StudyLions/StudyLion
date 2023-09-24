@@ -522,7 +522,7 @@ msgstr "cargo"
 #: src/modules/shop/shops/colours.py:982
 msgctxt "cmd:editshop_colours_remove"
 msgid "delete_role"
-msgstr "delete_role"
+msgstr "excluir_cargo"
 
 #: src/modules/shop/shops/colours.py:987
 msgctxt "cmd:editshop_colours_remove|param:role|desc"
