@@ -673,7 +673,7 @@ msgstr "Selecione Tipo de Atividade"
 #: src/modules/statistics/ui/leaderboard.py:262
 msgctxt "ui:leaderboard|menu:stats|item:voice"
 msgid "Voice Activity"
-msgstr "Atividade em Voz"
+msgstr "Atividade em Canal de Voz"
 
 #: src/modules/statistics/ui/leaderboard.py:273
 msgctxt "ui:leaderboard|menu:stats|item:study"
