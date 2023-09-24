@@ -361,7 +361,7 @@ msgid ""
 msgstr ""
 "Membros que tiverem **qualquer** destes cargos não serão requisitados a "
 "ligar seus vídeos nos ˋcanais_de_vídeoˋ. Isto também os isenta do cargo "
-"ˋvídeo_listanegraˋ."
+"ˋlistanegra_câmeraˋ."
 
 #: src/modules/video_channels/settings.py:269
 msgctxt "guildset:video_exempt|accepts"
