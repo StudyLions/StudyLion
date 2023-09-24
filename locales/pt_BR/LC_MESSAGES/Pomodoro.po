@@ -112,7 +112,7 @@ msgstr "Temporizador parado! Entre {channel} para iniciar o timer."
 #: src/modules/pomodoro/timer.py:560
 msgctxt "timer|status|stopped:manual"
 msgid "Timer stopped! Press `Start` to restart the timer."
-msgstr "Temporizador parado! Precione ˋStartˋ para reiniciar o temporizador."
+msgstr "Temporizador parado! Pressione ˋStartˋ para reiniciar o temporizador."
 
 #: src/modules/pomodoro/settingui.py:39
 msgctxt "ui:timer_config|menu:channels|placeholder"
