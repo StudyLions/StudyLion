@@ -638,7 +638,7 @@ msgstr ""
 #: src/modules/rooms/settings.py:21
 msgctxt "guildset:room_category"
 msgid "rooms_category"
-msgstr "rooms_category"
+msgstr "salas_categoria"
 
 #: src/modules/rooms/settings.py:25
 msgctxt "guildset:rooms_category|desc"
