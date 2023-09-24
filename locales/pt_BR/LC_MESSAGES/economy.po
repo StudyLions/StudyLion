@@ -463,6 +463,8 @@ msgid ""
 "{target} appreciates the gesture, but said they don't have any use for {coin}.\n"
 "(You cannot send coins to bots.)"
 msgstr ""
+"{target} agradece a gentileza, mas recusou. Deve estar com moedas sobrando e não precisa de {coin}.\n"
+"(Você não pode enviar moedas para os bots) "
 
 #: src/modules/economy/cog.py:770
 #, possible-python-brace-format
