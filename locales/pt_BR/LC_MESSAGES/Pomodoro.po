@@ -574,7 +574,7 @@ msgstr ""
 #: src/modules/pomodoro/options.py:112
 msgctxt "timerset:inactivity_length|desc"
 msgid "The inactivity threshold must be a positive whole number!"
-msgstr ""
+msgstr "O limite de inatividade precisa ser um número positivo e inteiro!"
 
 #: src/modules/pomodoro/options.py:120
 msgctxt "timerset:manager_role"
