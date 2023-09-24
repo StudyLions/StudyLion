@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-27 16:37+0300\n"
+"POT-Creation-Date: 2023-09-24 12:21+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Interitio, 2023\n"
 "Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
@@ -31,38 +31,40 @@ msgctxt "settype:coin|parse|error:notinteger"
 msgid "The coin quantity must be a positive integer!"
 msgstr "כמות המטבעות חייבת להיות מספר שלם וחיובי!"
 
-#: src/core/setting_types.py:54
+#: src/core/setting_types.py:55
+#, possible-python-brace-format
 msgctxt "settype:coin|parse|error:too_large"
-msgid "Provided number of coins was too high!"
-msgstr "המספר שניתן גבוה מידי!"
+msgid "You cannot set this to more than {coin}**{max}**!"
+msgstr ""
 
-#: src/core/setting_types.py:60
-msgctxt "settype:coin|parse|error:too_large"
-msgid "Provided number of coins was too low!"
-msgstr "המספר שניתן נמוך מידי!"
+#: src/core/setting_types.py:63
+#, possible-python-brace-format
+msgctxt "settype:coin|parse|error:too_small"
+msgid "You cannot set this to less than {coin}**{min}**!"
+msgstr ""
 
-#: src/core/setting_types.py:71
+#: src/core/setting_types.py:75
 #, possible-python-brace-format
 msgctxt "settype:coin|formatted"
 msgid "{coin}**{amount}**"
 msgstr "{coin}**{amount}**"
 
-#: src/core/setting_types.py:87
+#: src/core/setting_types.py:91
 msgctxt "settype:message|accepts"
 msgid "JSON formatted raw message data"
 msgstr "מסמך נא בפורמט JSON "
 
-#: src/core/setting_types.py:102
+#: src/core/setting_types.py:106
 msgctxt "settype:message|download|error:not_json"
 msgid "The attached message data is not a JSON file!"
 msgstr "המסמך שהוספת הוא לא בפורמט JSON!"
 
-#: src/core/setting_types.py:107
+#: src/core/setting_types.py:111
 msgctxt "settype:message|download|error:size"
 msgid "The attached message data is too large!"
 msgstr "המסמך שהוספת גדול מידי!"
 
-#: src/core/setting_types.py:116
+#: src/core/setting_types.py:120
 msgctxt "settype:message|download|error:decoding"
 msgid ""
 "Could not decode the message data. Please ensure it is saved with the "
@@ -70,7 +72,7 @@ msgid ""
 msgstr ""
 "לא הצלחתי לקרוא את המסמך שלך. אתה בטוח ששמרת אותו בתור `UTF-8` encoding?"
 
-#: src/core/setting_types.py:173
+#: src/core/setting_types.py:177
 #, possible-python-brace-format
 msgctxt "settype:message|error_suffix"
 msgid ""
@@ -79,7 +81,7 @@ msgid ""
 msgstr ""
 "אתה יכול לראות, לערוץ ולתקן את הembed באמצעות [embed builder]({link})."
 
-#: src/core/setting_types.py:185
+#: src/core/setting_types.py:189
 #, possible-python-brace-format
 msgctxt "settype:message|error:invalid_json"
 msgid ""
@@ -89,7 +91,7 @@ msgstr ""
 "המסמך שהוצמד אינו מסמך JSON\n"
 "`{error}`"
 
-#: src/core/setting_types.py:193
+#: src/core/setting_types.py:197
 msgctxt "settype:message|error:json_missing_keys"
 msgid ""
 "Message data must be a JSON object with at least one of the following "
@@ -98,27 +100,27 @@ msgstr ""
 "המסמך חייב להיות JSON אם לפחות אחד מהאזורים הבאים:  `content`, `embed`, "
 "`embeds`"
 
-#: src/core/setting_types.py:202
+#: src/core/setting_types.py:206
 msgctxt "settype:message|error:json_embed_type"
 msgid "`embed` field must be a valid JSON object."
 msgstr "הembed חייב להיות מסמך JSON"
 
-#: src/core/setting_types.py:210
+#: src/core/setting_types.py:214
 msgctxt "settype:message|error:json_embeds_type"
 msgid "`embeds` field must be a list."
 msgstr "הembed חייב להיות רשימה."
 
-#: src/core/setting_types.py:217
+#: src/core/setting_types.py:221
 msgctxt "settype:message|error:json_embed_embeds"
 msgid "Message data cannot include both `embed` and `embeds`."
 msgstr "תוכן ההודעה לא יכול להכיל `embed` וגם `embeds`."
 
-#: src/core/setting_types.py:225
+#: src/core/setting_types.py:229
 msgctxt "settype:message|error:json_content_type"
 msgid "`content` field must be a string."
 msgstr "האזור של התוכן חייב להכין טקסט."
 
-#: src/core/setting_types.py:241
+#: src/core/setting_types.py:245
 #, possible-python-brace-format
 msgctxt "ui:settype:message|error:embed_conversion"
 msgid ""
@@ -128,7 +130,7 @@ msgstr ""
 "לא הצלחתי להבין את הembed\n"
 "**Error:** `{exception}`"
 
-#: src/core/setting_types.py:269
+#: src/core/setting_types.py:273
 msgctxt "settype:message|format:too_long"
 msgid "Too long to display! See Preview."
 msgstr "ארוך מידי כדי להראות! בדוק תצוגה מקדימה."
