@@ -393,6 +393,8 @@ msgstr "Nenhuma das tarefas em sua lista de tarefas corresponde com ˋ{imput}ˋ"
 msgctxt "cmd:tasks_remove_cmd|error:no_matching"
 msgid "No tasks on your tasklist matching all the given conditions!"
 msgstr ""
+"Nenhuma tarefas em sua lista de tarefas é compatível com as condições "
+"informadas."
 
 #: src/modules/tasklist/cog.py:803
 #, possible-python-brace-format
