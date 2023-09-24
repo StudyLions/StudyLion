@@ -100,7 +100,7 @@ msgstr "ˋAnkiˋ"
 #: src/modules/statistics/settings.py:42
 msgctxt "settype:stat|input_format:voice"
 msgid "Voice"
-msgstr "Em Canais de voz"
+msgstr "Em Canais de Voz"
 
 #: src/modules/statistics/settings.py:43
 msgctxt "settype:stat|input_format:text"
