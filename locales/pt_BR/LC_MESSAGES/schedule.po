@@ -844,7 +844,7 @@ msgstr[2] ""
 #: src/modules/schedule/ui/scheduleui.py:416
 msgctxt "ui:schedule|menu:cancel|placeholder"
 msgid "Cancel booked sessions"
-msgstr "Cancelar agendamentos de check-in."
+msgstr "Cancelar agendamentos de horário."
 
 #: src/modules/schedule/ui/scheduleui.py:438
 msgctxt "ui:schedule|embed|author"
