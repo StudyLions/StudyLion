@@ -199,7 +199,7 @@ msgstr "u, última, fim"
 #, possible-python-brace-format
 msgctxt "cmd:page|pager:Pager|error:parse"
 msgid "Could not understand page specification `{value}`."
-msgstr "Não pude entender a especificação ˋ{valor}ˋ."
+msgstr "Não pude entender a especificação da página ˋ{valor}ˋ."
 
 #: src/utils/ui/pagers.py:302
 #, possible-python-brace-format
