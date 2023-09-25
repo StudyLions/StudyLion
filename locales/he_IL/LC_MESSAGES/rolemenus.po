@@ -367,7 +367,7 @@ msgstr "עכשיו אשתמש בהודעה מותאמת אישית לתפריט.
 #: src/modules/rolemenus/cog.py:986
 msgctxt "cmd:rolemenu_edit|parse:custom_message|success"
 msgid "Custom menu message updated."
-msgstr ""
+msgstr "הודעת תפריט עודכנה."
 
 #: src/modules/rolemenus/cog.py:1001
 #, possible-python-brace-format
