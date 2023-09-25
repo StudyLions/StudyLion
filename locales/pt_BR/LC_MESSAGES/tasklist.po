@@ -179,7 +179,7 @@ msgstr "lista_de_tarefas"
 #: src/modules/tasklist/cog.py:469
 msgctxt "cmd:tasks_upload|param:append"
 msgid "append"
-msgstr "Acrescentar"
+msgstr "acrescentar"
 
 #: src/modules/tasklist/cog.py:474
 msgctxt "cmd:tasks_upload|param:tasklist|desc"
