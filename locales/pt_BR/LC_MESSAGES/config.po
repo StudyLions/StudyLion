@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 22:43+0300\n"
+"POT-Creation-Date: 2023-09-24 12:21+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
@@ -25,7 +25,7 @@ msgstr ""
 #: src/modules/config/general.py:41
 msgctxt "guildset:timezone"
 msgid "timezone"
-msgstr "fuso horário"
+msgstr "fuso_horário"
 
 #: src/modules/config/general.py:44
 msgctxt "guildset:timezone|desc"
