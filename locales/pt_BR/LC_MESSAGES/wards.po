@@ -93,8 +93,8 @@ msgstr "Eu não tenho permissões suficientes para adicionar ou remover {role}."
 msgctxt "ward:equippable_role|error:actor_perms"
 msgid "You need the `MANAGE_ROLES` permission before you can configure roles!"
 msgstr ""
-"Você precisa ter permissão de `MANAGE_ROLES` antes de poder configurar os "
-"cargos!"
+"Você precisa ter permissão de `GERENCIAR_CARGOS` antes de poder configurar "
+"os cargos!"
 
 #: src/wards.py:203
 #, possible-python-brace-format
