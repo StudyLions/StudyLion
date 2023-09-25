@@ -783,7 +783,7 @@ msgstr ""
 #: src/modules/rolemenus/roleoptions.py:240
 msgctxt "roleset:price|accepts"
 msgid "Amount of coins that the role costs when equipped."
-msgstr ""
+msgstr "כמות מטבעות שהרול עולה."
 
 #: src/modules/rolemenus/roleoptions.py:254
 #, possible-python-brace-format
