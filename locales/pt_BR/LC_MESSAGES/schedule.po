@@ -203,7 +203,7 @@ msgstr "<#{channelid}>"
 #: src/modules/schedule/settings.py:92
 msgctxt "guildset:session_room"
 msgid "session_room"
-msgstr "Sala_de_checkin"
+msgstr "sala_de_checkin"
 
 #: src/modules/schedule/settings.py:95
 msgctxt "guildset:session_room|desc"
@@ -400,8 +400,8 @@ msgstr "bonus_comprometimento_do_grupo"
 msgctxt "guildset:attendance_bonus|desc"
 msgid "Bonus reward given when all members attend a scheduled session."
 msgstr ""
-"Recompensa bônus a ser dada quando todos os membros agendados comparecerem "
-"para check-in naquele horário."
+"Recompensa de bônus para quando todos os membros agendados comparecerem ao "
+"check-in no horário."
 
 #: src/modules/schedule/settings.py:307
 msgctxt "guildset:attendance_bonus|long_desc"
