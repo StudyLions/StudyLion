@@ -714,6 +714,8 @@ msgid ""
 "**Note:** Could not retrieve member list from Discord, so some members may "
 "be missing. Try again in a minute!"
 msgstr ""
+"שימו לב: לא הצלחתי להשיג רשימה עדכנית של המשתמשים מדיסקורד, אז כמה משתמשים "
+"יהיו חסרים. אנא נסו שוב עוד דקה!"
 
 #: src/modules/statistics/ui/leaderboard.py:450
 #, possible-python-brace-format
