@@ -949,7 +949,7 @@ msgstr "הסרתם את הרול **{role}**, וקיבלתם את הכסף חזר
 #, possible-python-brace-format
 msgctxt "rolemenu|deselect|success:negrefund|desc"
 msgid "You have removed **{role}**, and have lost {coin} **{amount}**."
-msgstr ""
+msgstr "הסרתם את הרול **{role}**, ונלקחו ממכם  {coin} **{amount}**."
 
 #: src/modules/rolemenus/rolemenu.py:546
 #, possible-python-brace-format
