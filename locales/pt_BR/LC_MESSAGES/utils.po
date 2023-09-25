@@ -254,7 +254,7 @@ msgid ""
 "Error: {error}"
 msgstr ""
 "Falha de processamento! Não consegui analisar a link integrado.\n"
-"Error: {error}"
+"Erro: {error}"
 
 #: src/utils/ui/msgeditor.py:104
 #, possible-python-brace-format
