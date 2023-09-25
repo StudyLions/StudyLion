@@ -358,8 +358,8 @@ msgctxt "cmd:rolemenu_edit|error:my_perms"
 msgid ""
 "I lack the `MANAGE_ROLES` permission needed to offer roles from role menus."
 msgstr ""
-"Me falta permissão de ˋMANAGE_ROLESˋ, necessária para que eu possa oferecer "
-"cargos através dos menus."
+"Me falta permissão de ˋGERENCIAR_CARGOSˋ, necessária para que eu possa "
+"oferecer cargos através dos menus."
 
 #: src/modules/rolemenus/cog.py:894
 #, possible-python-brace-format
@@ -450,8 +450,8 @@ msgid ""
 "You need the `MANAGE_ROLES` permission in order to manage the server role "
 "menus."
 msgstr ""
-"Você precisa ter permissão de ˋMANAGE_ROLESˋ para que possa gerenciar os "
-"menus de cargo no servidor."
+"Você precisa ter permissão de ˋGERENCIAR_CARGOSˋ para que possa gerenciar os"
+" menus de cargo no servidor."
 
 #: src/modules/rolemenus/cog.py:1101
 #, possible-python-brace-format
