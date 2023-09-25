@@ -380,7 +380,7 @@ msgstr "יפנית"
 #: src/babel/enums.py:72
 msgctxt "localenames|locale:zh-TW"
 msgid "Chinese, Taiwan"
-msgstr ""
+msgstr "中国 TaIwan"
 
 #: src/babel/enums.py:73
 msgctxt "localenames|locale:ko"
