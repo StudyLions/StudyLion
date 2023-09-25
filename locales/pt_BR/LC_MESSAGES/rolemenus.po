@@ -56,7 +56,7 @@ msgid ""
 "I lack the `MANAGE_ROLES` permission required to offer roles from role "
 "menus."
 msgstr ""
-"Está faltando uma permissão de ˋMANAGE_ROLESˋ, necessária para "
+"Está faltando uma permissão de ˋGERENCIAR_CARGOSˋ, necessária para "
 "disponibilizar o menu de cargos."
 
 #: src/modules/rolemenus/cog.py:300
