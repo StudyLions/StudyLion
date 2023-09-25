@@ -65,7 +65,7 @@ msgstr ""
 #: src/utils/cog.py:59
 msgctxt "cmd:page_first"
 msgid "first"
-msgstr "Primeira"
+msgstr "primeira"
 
 #: src/utils/cog.py:60
 msgctxt "cmd:page_first|desc"
