@@ -125,7 +125,7 @@ msgstr "Nenhuma operação de resetar foi selecionada. Não tenho o que fazer."
 #: src/modules/member_admin/cog.py:307
 msgctxt "cmd:configure_welcome"
 msgid "welcome"
-msgstr "bem vindo"
+msgstr "bem_vindo"
 
 #: src/modules/member_admin/cog.py:310
 msgctxt "cmd:configure_welcome|desc"
