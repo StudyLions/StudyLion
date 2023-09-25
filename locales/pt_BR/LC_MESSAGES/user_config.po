@@ -85,7 +85,7 @@ msgstr ""
 #: src/modules/user_config/cog.py:96
 msgctxt "cmd:userconfig_timezone|param:timezone"
 msgid "timezone"
-msgstr "fuso horário"
+msgstr "fuso_horário"
 
 #: src/modules/user_config/cog.py:101
 msgctxt "cmd:userconfig_timezone|param:timezone|desc"
