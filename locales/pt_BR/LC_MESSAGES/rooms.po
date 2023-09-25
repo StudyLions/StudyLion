@@ -763,8 +763,8 @@ msgstr "sala_visibilidade"
 msgctxt "guildset:rooms_visible|desc"
 msgid "Whether private rented rooms are visible to non-members."
 msgstr ""
-"Se a sala particular deve se visível aos não membros. Eles ainda precisarão "
-"ser convidados para entrar."
+"Se a sala particular deve se visível a não membros. Eles ainda precisarão de"
+" convite para entrar."
 
 #: src/modules/rooms/settings.py:153
 msgctxt "guildset:rooms_visible|long_desc"
