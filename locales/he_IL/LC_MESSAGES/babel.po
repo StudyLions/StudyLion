@@ -310,7 +310,7 @@ msgstr "Português"
 #: src/babel/enums.py:58
 msgctxt "localenames|locale:ro"
 msgid "Romanian, Romania"
-msgstr ""
+msgstr "Romanian"
 
 #: src/babel/enums.py:59
 msgctxt "localenames|locale:fi"
