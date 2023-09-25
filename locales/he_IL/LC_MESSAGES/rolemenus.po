@@ -777,6 +777,8 @@ msgid ""
 "How many LionCoins should be deducted from a member's account when they equip this role through this menu.\n"
 "The price may be negative, in which case the member will instead be rewarded coins when they equip the role."
 msgstr ""
+"כמה מטבעות יוסרו מהמשתמש כשהוא בוחר ברול. \n"
+"המספר יכול להיות שלילי, במקרה כזה המשתמשים יקבלו מטבעות במקום."
 
 #: src/modules/rolemenus/roleoptions.py:240
 msgctxt "roleset:price|accepts"
