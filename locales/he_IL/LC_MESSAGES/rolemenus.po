@@ -794,7 +794,7 @@ msgstr "ללבוש את הרול הזה יעלה עכשיו {coin}**{price}**."
 #: src/modules/rolemenus/roleoptions.py:259
 msgctxt "roleset:price|set_response:zero"
 msgid "Equipping this role is now free."
-msgstr ""
+msgstr "ניתן עכשיו ללבוש את הרול הזה בחינם."
 
 #: src/modules/rolemenus/roleoptions.py:264
 #, possible-python-brace-format
