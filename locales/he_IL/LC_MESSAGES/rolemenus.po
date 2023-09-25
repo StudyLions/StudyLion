@@ -769,7 +769,7 @@ msgstr "מחיר"
 #: src/modules/rolemenus/roleoptions.py:229
 msgctxt "roleset:price|desc"
 msgid "Price of the role, in LionCoins. May be negative."
-msgstr ""
+msgstr "המחיר של הרול, במטבעות. יכול להיות מספר שלילי."
 
 #: src/modules/rolemenus/roleoptions.py:233
 msgctxt "roleset:price|long_desc"
