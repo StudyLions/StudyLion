@@ -61,7 +61,7 @@ msgstr ""
 #: src/modules/statistics/cog.py:113
 msgctxt "cmd:configure_statistics"
 msgid "statistics"
-msgstr "Estatísticas"
+msgstr "estatísticas"
 
 #: src/modules/statistics/cog.py:114
 msgctxt "cmd:configure_statistics|desc"
@@ -79,8 +79,8 @@ msgid ""
 "Time from which to start counting activity for rank badges and season "
 "leaderboards. (YYYY-MM-DD)"
 msgstr ""
-"Tempo a partir do qual as estatísticas estarão sendo contadas para as "
-"classificações e ranking do servidor. (AAAA-MM-DD)"
+"Tempo, de onde as estatísticas contarão para as classificações e ranking do "
+"servidor. (AAAA-MM-DD)"
 
 #: src/modules/statistics/settings.py:37
 msgctxt "settype:stat|output:voice"
