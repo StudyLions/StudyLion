@@ -410,8 +410,8 @@ msgid ""
 "role."
 msgstr ""
 "Eu não tenho permissão para colocar o cargo {mention}! Por favor, garanta "
-"que eu tenha a permissão de ˋMANAGE_ROLESˋ, e que meu cargo mais alto seja "
-"maior que este."
+"que eu tenha a permissão de ˋGERENCIAR_CARGOSˋ, e que meu cargo mais alto "
+"seja maior que este."
 
 #: src/modules/shop/shops/colours.py:748
 #, possible-python-brace-format
