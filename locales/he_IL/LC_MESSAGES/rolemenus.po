@@ -1471,6 +1471,8 @@ msgid ""
 "An unknown error ocurred while posting to {channel}!\n"
 "**Error:** `{exception}`"
 msgstr ""
+"שגיאה לא ידועה התרחשה כשניסיתי לשלוח לערוץ {channel}.\n"
+"השגיאה: `{exception}`"
 
 #: src/modules/rolemenus/ui/menueditor.py:915
 msgctxt "ui:menu_editor|button:repost|widget:repost|success|title"
