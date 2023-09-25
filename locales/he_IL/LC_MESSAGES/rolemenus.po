@@ -961,7 +961,7 @@ msgstr "הורדתם מעצמכם את הרול **{role}**."
 #, possible-python-brace-format
 msgctxt "rolemenu|select|error:required_role"
 msgid "You need to have the role **{role}** required to use this menu!"
-msgstr ""
+msgstr "אתם צריכים את הרול **{role}** כדי להשתמש בזה!"
 
 #: src/modules/rolemenus/rolemenu.py:574
 #, possible-python-brace-format
