@@ -235,7 +235,7 @@ msgstr "קבעת שהשפה של השרת תהייה {lang}."
 #: src/babel/enums.py:43
 msgctxt "localenames|locale:id"
 msgid "Indonesian"
-msgstr "Indonesian"
+msgstr "Bahasa Indonesia"
 
 #: src/babel/enums.py:44
 msgctxt "localenames|locale:da"
