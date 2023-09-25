@@ -293,8 +293,8 @@ msgid ""
 "Voice channel to create the timer in. (Defaults to your current channel, or "
 "makes a new one.)"
 msgstr ""
-"Canal de voz em que será criado o temporizador. (Por padrão, será seu canal "
-"atual, ou escolha um outro)"
+"Canal de voz no qual será criado o temporizador. (Por padrão será seu canal "
+"atual, ou escolha outro)"
 
 #: src/modules/pomodoro/cog.py:572
 msgctxt "cmd:pomodoro_create|new_channel|error:your_insufficient_perms|title"
