@@ -732,7 +732,7 @@ class RoleMenuCog(LionCog):
 
         # Parse menu options if given
         name = name.strip()
-        matching = await self.data.RoleMenu.fetch_where(name=name)
+        matching = await self.data.RoleMenu.fetch_where(name=name, guildid=ctx.guild.id)
         if matching:
             raise UserInputError(
                 t(_p(
