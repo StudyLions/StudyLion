@@ -174,6 +174,31 @@ class MsgEditor(MessageUI):
             "Add Embed"
         ))
 
+    @button(label="RM_EMBED_BUTTON_PLACEHOLDER", style=ButtonStyle.red)
+    async def rm_embed_button(self, press: discord.Interaction, pressed: Button):
+        """
+        Remove the existing embed from the message.
+        """
+        await press.response.defer()
+        t = self.bot.translator.t
+        data = self.copy_data()
+        data.pop('embed', None)
+        data.pop('embeds', None)
+        if not data.get('content', '').strip():
+            data['content'] = t(_p(
+                'ui:msg_editor|button:rm_embed|sample_content',
+                "Content Placeholder"
+            ))
+        await self.push_change(data)
+
+    async def rm_embed_button_refresh(self):
+        t = self.bot.translator.t
+        button = self.rm_embed_button
+        button.label = t(_p(
+            'ui:msg_editor|button:rm_embed|label',
+            "Remove Embed"
+        ))
+
     # -- Embed Mode --
 
     @button(label="BODY_BUTTON_PLACEHOLDER", style=ButtonStyle.blurple)
@@ -927,7 +952,7 @@ class MsgEditor(MessageUI):
         return MessageArgs(**args)
 
     async def refresh_layout(self):
-        await asyncio.gather(
+        to_refresh = (
             self.edit_button_refresh(),
             self.add_embed_button_refresh(),
             self.body_button_refresh(),
@@ -941,12 +966,16 @@ class MsgEditor(MessageUI):
             self.download_button_refresh(),
             self.undo_button_refresh(),
             self.redo_button_refresh(),
+            self.rm_embed_button_refresh(),
         )
+        await asyncio.gather(*to_refresh)
+
         if self.history[-1].get('embed', None):
             self.set_layout(
                 (self.body_button, self.author_button, self.footer_button, self.images_button, self.add_field_button),
                 (self.edit_field_menu,),
                 (self.delete_field_menu,),
+                (self.rm_embed_button,),
                 (self.save_button, self.download_button, self.undo_button, self.redo_button, self.quit_button),
             )
         else:
