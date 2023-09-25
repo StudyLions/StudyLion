@@ -1,0 +1,888 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Bruno Evangelista De Oliveira, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-24 12:21+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
+"Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#: src/modules/tasklist/cog.py:35
+msgctxt "argtype:Before|opt:HOUR"
+msgid "The last hour"
+msgstr "Última hora"
+
+#: src/modules/tasklist/cog.py:36
+msgctxt "argtype:Before|opt:HALFDAY"
+msgid "The last 12 hours"
+msgstr "Nas últimas 12 horas"
+
+#: src/modules/tasklist/cog.py:37
+msgctxt "argtype:Before|opt:DAY"
+msgid "The last 24 hours"
+msgstr "Nas últimas 24 horas"
+
+#: src/modules/tasklist/cog.py:38
+msgctxt "argtype:Before|opt:TODAY"
+msgid "Today"
+msgstr "Hoje"
+
+#: src/modules/tasklist/cog.py:39
+msgctxt "argtype:Before|opt:YESTERDAY"
+msgid "Yesterday"
+msgstr "Ontem"
+
+#: src/modules/tasklist/cog.py:40
+msgctxt "argtype:Before|opt:Monday"
+msgid "This Monday"
+msgstr "Esta Segunda"
+
+#: src/modules/tasklist/cog.py:41
+msgctxt "argtype:Before|opt:THISMONTH"
+msgid "This Month"
+msgstr "Este Mês"
+
+#: src/modules/tasklist/cog.py:205
+msgctxt "summon_tasklist|error:insufficient_perms|title"
+msgid "Uh-Oh, I cannot do that here!"
+msgstr "Oh-oh, eu não posso fazer isto!"
+
+#: src/modules/tasklist/cog.py:209
+msgctxt "summon_tasklist|error:insufficient_perms|desc"
+msgid ""
+"This channel is configured as a tasklist channel, but I lack the "
+"`EMBED_LINKS` or `SEND_MESSAGES` permission here! If you believe this is "
+"unintentional, please contact a server administrator."
+msgstr ""
+"Este canal é configurado como o Canal da Lista de Tarefas, mas me falta "
+"permissão para ˋINSERIR_LINKSˋ ou ˋENVIAR_MENSAGENSˋ aqui! Se você acredita "
+"que é um erro não intencional, por favor, contate a Administração do "
+"servidor."
+
+#: src/modules/tasklist/cog.py:258
+msgctxt "cmd:tasklist"
+msgid "tasklist"
+msgstr "lista_de_tarefas"
+
+#: src/modules/tasklist/cog.py:261
+msgctxt "cmd:tasklist|desc"
+msgid "Open your tasklist."
+msgstr "Abra sua lista de tarefas."
+
+#: src/modules/tasklist/cog.py:270
+msgctxt "group:tasks"
+msgid "tasks"
+msgstr "tarefas"
+
+#: src/modules/tasklist/cog.py:271
+msgctxt "group:tasks|desc"
+msgid "Base command group for tasklist commands."
+msgstr "Grupo de comandos-base para comandar as tarefas."
+
+#: src/modules/tasklist/cog.py:293
+msgctxt "argtype:taskid|error:no_tasks"
+msgid "Tasklist empty! No matching tasks."
+msgstr "Lista de tarefas vazia! Não há tarefas compatíveis."
+
+#: src/modules/tasklist/cog.py:330
+msgctxt "argtype:taskid|match:all"
+msgid "All tasks"
+msgstr "Todas as tarefas"
+
+#: src/modules/tasklist/cog.py:348
+#, possible-python-brace-format
+msgctxt "argtype:taskid|error:parse_multi"
+msgid "(Warning: {error})"
+msgstr "(Atenção: {error})"
+
+#: src/modules/tasklist/cog.py:382
+#, possible-python-brace-format
+msgctxt "argtype:taskid|error:no_matching"
+msgid "No tasks matching '{partial}'!"
+msgstr "Não há tarefas compatíveis '{partial}'!"
+
+#: src/modules/tasklist/cog.py:402
+msgctxt "cmd:tasks_new"
+msgid "new"
+msgstr "nova"
+
+#: src/modules/tasklist/cog.py:405
+msgctxt "cmd:tasks_new|desc"
+msgid "Add a new task to your tasklist."
+msgstr "Adicione uma nova tarefa na sua lista de tarefas."
+
+#: src/modules/tasklist/cog.py:409
+msgctxt "cmd:tasks_new|param:content"
+msgid "task"
+msgstr "tarefa"
+
+#: src/modules/tasklist/cog.py:410
+msgctxt "cmd:tasks_new|param:parent"
+msgid "parent"
+msgstr "tarefa-mãe"
+
+#: src/modules/tasklist/cog.py:413
+msgctxt "cmd:tasks_new|param:content|desc"
+msgid "Content of your new task."
+msgstr "Conteúdo da sua nova tarefa."
+
+#: src/modules/tasklist/cog.py:414
+msgctxt "cmd:tasks_new|param:parent"
+msgid "Parent of this task."
+msgstr "A tarefa-mãe desta tarefa."
+
+#: src/modules/tasklist/cog.py:434
+#, possible-python-brace-format
+msgctxt "cmd:tasks_new|error:parse_parent"
+msgid "Could not find parent task number `{input}` in your tasklist."
+msgstr ""
+"Não consegui encontrar o número ˋ{input}ˋ da tarefa-mãe em sua lista de "
+"tarefas. "
+
+#: src/modules/tasklist/cog.py:449
+#, possible-python-brace-format
+msgctxt "cmd:tasks_new|resp:success"
+msgid "{tick} Created task `{label}`."
+msgstr "{tick} Tarefa criada ˋ{label}ˋ."
+
+#: src/modules/tasklist/cog.py:461
+msgctxt "cmd:tasks_upload"
+msgid "upload"
+msgstr "enviar"
+
+#: src/modules/tasklist/cog.py:464
+msgctxt "cmd:tasks_upload|desc"
+msgid "Upload a list of tasks to append to or replace your tasklist."
+msgstr ""
+"Envie uma lista de tarefas para anexar ou substituir sua lista de tarefas "
+"atual."
+
+#: src/modules/tasklist/cog.py:468
+msgctxt "cmd:tasks_upload|param:tasklist"
+msgid "tasklist"
+msgstr "lista_de_tarefas"
+
+#: src/modules/tasklist/cog.py:469
+msgctxt "cmd:tasks_upload|param:append"
+msgid "append"
+msgstr "Acrescentar"
+
+#: src/modules/tasklist/cog.py:474
+msgctxt "cmd:tasks_upload|param:tasklist|desc"
+msgid ""
+"Text file containing a (standard markdown formatted) checklist of tasks to "
+"add or append."
+msgstr ""
+"Arquivo de texto (formatado com marcadores padrão) que contenha uma lista de"
+" tarefas para adicionar ou aumentar a sua."
+
+#: src/modules/tasklist/cog.py:478
+msgctxt "cmd:tasks_upload|param:append|desc"
+msgid ""
+"Whether to append the given tasks or replace your entire tasklist. Defaults "
+"to True."
+msgstr ""
+"Será para substituir ou aumentar a sua lista de tarefas atual. A "
+"configuração padrão retorna verdadeiro. "
+
+#: src/modules/tasklist/cog.py:494
+msgctxt "cmd:tasks_upload|error:not_text"
+msgid "The attached tasklist must be a text file!"
+msgstr "A lista anexada precisa ser um arquivo de texto!"
+
+#: src/modules/tasklist/cog.py:502
+msgctxt "cmd:tasks_upload|error:too_large"
+msgid "The attached tasklist was too large!"
+msgstr "A lista de tarefas era muito grande."
+
+#: src/modules/tasklist/cog.py:513
+msgctxt "cmd:tasks_upload|error:too_many_lines"
+msgid ""
+"Too many tasks! Refusing to process a tasklist with more than `1000` lines."
+msgstr ""
+"Muitas tarefas! Recusa ao tentar processar uma lista de tarefas com mais de "
+"1000 linhas."
+
+#: src/modules/tasklist/cog.py:519
+msgctxt "cmd:tasks_upload|error:decoding"
+msgid ""
+"Could not decode attached tasklist. Please make sure it is saved with the "
+"`UTF-8` encoding."
+msgstr ""
+"Não pude decodificar a lista de tarefas anexada. Por favor, confirme se ela "
+"está salva com o formato ˋUTF-8ˋ."
+
+#: src/modules/tasklist/cog.py:566
+#, possible-python-brace-format
+msgctxt "cmd:tasks_upload|resp:success"
+msgid "{tick} Updated your tasklist."
+msgstr "{tick} Lista atualizada."
+
+#: src/modules/tasklist/cog.py:578
+msgctxt "cmd:tasks_edit"
+msgid "edit"
+msgstr "editar"
+
+#: src/modules/tasklist/cog.py:581
+msgctxt "cmd:tasks_edit|desc"
+msgid "Edit a task in your tasklist."
+msgstr "Editar uma tarefa da lista de tarefas."
+
+#: src/modules/tasklist/cog.py:585
+msgctxt "cmd:tasks_edit|param:taskstr"
+msgid "task"
+msgstr "tarefa"
+
+#: src/modules/tasklist/cog.py:586
+msgctxt "cmd:tasks_edit|param:new_content"
+msgid "new_task"
+msgstr "nova_tarefa"
+
+#: src/modules/tasklist/cog.py:587
+msgctxt "cmd:tasks_edit|param:new_parent"
+msgid "new_parent"
+msgstr "nova_tarefamae"
+
+#: src/modules/tasklist/cog.py:590
+msgctxt "cmd:tasks_edit|param:taskstr|desc"
+msgid "Which task do you want to update?"
+msgstr "Qual tarefa você gostaria de atualizar?"
+
+#: src/modules/tasklist/cog.py:591
+msgctxt "cmd:tasks_edit|param:new_content|desc"
+msgid "What do you want to change the task to?"
+msgstr "Para qual conteúdo será transformada esta tarefa?"
+
+#: src/modules/tasklist/cog.py:592
+msgctxt "cmd:tasks_edit|param:new_parent|desc"
+msgid "Which task do you want to be the new parent?"
+msgstr "Qual tarefa você gostaria que fosse a nova tarefa-mãe?"
+
+#: src/modules/tasklist/cog.py:611
+#, possible-python-brace-format
+msgctxt "cmd:tasks_edit|error:parse_taskstr"
+msgid "Could not find target task number `{input}` in your tasklist."
+msgstr "Não pude encontrar a tarefa número ˋ{input}ˋ em sua lista."
+
+#: src/modules/tasklist/cog.py:627
+#, possible-python-brace-format
+msgctxt "cmd:tasks_edit|error:parse_parent"
+msgid "Could not find new parent task number `{input}` in your tasklist."
+msgstr "Não pude encontrar a tarefa-mãe número ˋ{input}ˋ em sua lista."
+
+#: src/modules/tasklist/cog.py:646
+#, possible-python-brace-format
+msgctxt "cmd:tasks_edit|resp:success|desc"
+msgid "{tick} Task `{label}` updated."
+msgstr "{tick} Tarefa ˋ{label}ˋ atualizada."
+
+#: src/modules/tasklist/cog.py:668
+msgctxt "ui:tasklist_single_editor|title"
+msgid "Edit Task"
+msgstr "Editar Tarefa"
+
+#: src/modules/tasklist/cog.py:683
+msgctxt "cmd:tasks_clear"
+msgid "clear"
+msgstr "apagar"
+
+#: src/modules/tasklist/cog.py:684
+msgctxt "cmd:tasks_clear|desc"
+msgid "Clear your tasklist."
+msgstr "Apagar sua lista de tarefas."
+
+#: src/modules/tasklist/cog.py:694
+msgctxt "cmd:tasks_clear|resp:success"
+msgid "Your tasklist has been cleared."
+msgstr "Sua lista de tarefas foi apagada."
+
+#: src/modules/tasklist/cog.py:702
+msgctxt "cmd:tasks_remove"
+msgid "remove"
+msgstr "remover"
+
+#: src/modules/tasklist/cog.py:705
+msgctxt "cmd:tasks_remove|desc"
+msgid ""
+"Remove tasks matching all the provided conditions. (E.g. remove tasks "
+"completed before today)."
+msgstr ""
+"Remover tarefas compatíveis com as descrições informadas. (Ex. remover "
+"tarefas concluídas antes de hoje)."
+
+#: src/modules/tasklist/cog.py:709
+msgctxt "cmd:tasks_remove|param:taskidstr"
+msgid "tasks"
+msgstr "tarefas"
+
+#: src/modules/tasklist/cog.py:710
+msgctxt "cmd:tasks_remove|param:created_before"
+msgid "created_before"
+msgstr "criadas_antes"
+
+#: src/modules/tasklist/cog.py:711
+msgctxt "cmd:tasks_remove|param:updated_before"
+msgid "updated_before"
+msgstr "atualizadas_antes"
+
+#: src/modules/tasklist/cog.py:712
+msgctxt "cmd:tasks_remove|param:completed"
+msgid "completed"
+msgstr "concluídas"
+
+#: src/modules/tasklist/cog.py:713
+msgctxt "cmd:tasks_remove|param:cascade"
+msgid "cascade"
+msgstr "cascata"
+
+#: src/modules/tasklist/cog.py:718
+msgctxt "cmd:tasks_remove|param:taskidstr|desc"
+msgid ""
+"List of task numbers or ranges to remove (e.g. 1, 2, 5-7, 8.1-3, 9-), or `-`"
+" to remove all."
+msgstr ""
+"Número das tarefas, da Lista de tarefas, ou o intervalo, que deseja remover "
+"(ex. 1, 2, 5-7, 8.1-3, 9-), ou ˋ-ˋ para remover todas."
+
+#: src/modules/tasklist/cog.py:722
+msgctxt "cmd:tasks_remove|param:created_before|desc"
+msgid "Only delete tasks created before the selected time."
+msgstr "Somente apague tarefas criadas antes da data selecionada."
+
+#: src/modules/tasklist/cog.py:726
+msgctxt "cmd:tasks_remove|param:updated_before|desc"
+msgid ""
+"Only deleted tasks update (i.e. completed or edited) before the selected "
+"time."
+msgstr ""
+"Somente apague tarefas atualizadas (completas ou editadas) antes da data "
+"selecionada."
+
+#: src/modules/tasklist/cog.py:730
+msgctxt "cmd:tasks_remove|param:completed"
+msgid "Only delete tasks which are (not) complete."
+msgstr "Somente apague tarefas que (não) foram completadas."
+
+#: src/modules/tasklist/cog.py:734
+msgctxt "cmd:tasks_remove|param:cascade"
+msgid "Whether to recursively remove subtasks of removed tasks."
+msgstr "Se as sub-tarefas também devem ser apagadas com as tarefas removidas."
+
+#: src/modules/tasklist/cog.py:766 src/modules/tasklist/cog.py:861
+#: src/modules/tasklist/cog.py:936
+#, possible-python-brace-format
+msgctxt "cmd:tasks_remove_cmd|error:no_matching"
+msgid "No tasks on your tasklist match `{input}`"
+msgstr "Nenhuma das tarefas em sua lista de tarefas corresponde com ˋ{input}ˋ"
+
+#: src/modules/tasklist/cog.py:790
+msgctxt "cmd:tasks_remove_cmd|error:no_matching"
+msgid "No tasks on your tasklist matching all the given conditions!"
+msgstr ""
+"Nenhuma das tarefas, em sua lista de tarefas, é compatível com as condições "
+"informadas."
+
+#: src/modules/tasklist/cog.py:803
+#, possible-python-brace-format
+msgctxt "cmd:tasks_remove|resp:success"
+msgid "{tick} Deleted task `{label}`"
+msgid_plural "{tick} Deleted `{count}` tasks from your tasklist."
+msgstr[0] "{tick} Tarefa apagada ˋ{label}ˋ"
+msgstr[1] "{tick} Apaguei ˋ{count}ˋ tarefas da sua lista de tarefas."
+msgstr[2] "{tick} Apaguei ˋ{count}ˋ tarefas da sua lista de tarefas."
+
+#: src/modules/tasklist/cog.py:821
+msgctxt "cmd:tasks_tick"
+msgid "tick"
+msgstr "ticar"
+
+#: src/modules/tasklist/cog.py:822
+msgctxt "cmd:tasks_tick|desc"
+msgid "Mark the given tasks as completed."
+msgstr "Marca as tarefas como completadas."
+
+#: src/modules/tasklist/cog.py:825
+msgctxt "cmd:tasks_tick|param:taskidstr"
+msgid "tasks"
+msgstr "tarefas"
+
+#: src/modules/tasklist/cog.py:826
+msgctxt "cmd:tasks_tick|param:cascade"
+msgid "cascade"
+msgstr "cascata"
+
+#: src/modules/tasklist/cog.py:831
+msgctxt "cmd:tasks_tick|param:taskidstr|desc"
+msgid ""
+"List of task numbers or ranges to tick (e.g. 1, 2, 5-7, 8.1-3, 9-) or '-' to"
+" tick all."
+msgstr ""
+"Lista de tarefas, ou intervalo de tarefas, a ticar (ex. 1, 2, 5-7, 8.1-3, "
+"9-), ou '-' para ticar todas."
+
+#: src/modules/tasklist/cog.py:835
+msgctxt "cmd:tasks_tick|param:cascade|desc"
+msgid "Whether to also mark all subtasks as complete."
+msgstr "Se deverá marcar também as sub-tarefas como completadas."
+
+#: src/modules/tasklist/cog.py:879
+#, possible-python-brace-format
+msgctxt "cmd:tasks_tick|resp:success"
+msgid "{tick} Marked `{label}` as complete."
+msgid_plural "{tick} Marked `{count}` tasks as complete."
+msgstr[0] "{tick} Marquei ˋ{label}ˋ como completada."
+msgstr[1] "{tick} Marquei ˋ{count}ˋ tarefas como completadas."
+msgstr[2] "{tick} Marquei ˋ{count}ˋ tarefas como completadas."
+
+#: src/modules/tasklist/cog.py:897
+msgctxt "cmd:tasks_untick"
+msgid "untick"
+msgstr "des-ticar"
+
+#: src/modules/tasklist/cog.py:898
+msgctxt "cmd:tasks_untick|desc"
+msgid "Mark the given tasks as incomplete."
+msgstr "Marca a tarefa indicada como incompleta."
+
+#: src/modules/tasklist/cog.py:901
+msgctxt "cmd:tasks_untick|param:taskidstr"
+msgid "taskids"
+msgstr "identificador da tarefa"
+
+#: src/modules/tasklist/cog.py:902
+msgctxt "cmd:tasks_untick|param:cascade"
+msgid "cascade"
+msgstr "cascata"
+
+#: src/modules/tasklist/cog.py:907
+msgctxt "cmd:tasks_untick|param:taskidstr|desc"
+msgid ""
+"List of task numbers or ranges to untick (e.g. 1, 2, 5-7, 8.1-3, 9-) or '-' "
+"to untick all."
+msgstr ""
+"Lista dos números das tarefas, ou intervalo, para des-ticar (ex. 1, 2, 5-7, "
+"8.1-3, 9-), ou '-' para des-ticar todos."
+
+#: src/modules/tasklist/cog.py:911
+msgctxt "cmd:tasks_untick|param:cascade|desc"
+msgid "Whether to also mark all subtasks as incomplete."
+msgstr "Se deverá marcar também as sub-tarefas como incompletas."
+
+#: src/modules/tasklist/cog.py:952
+#, possible-python-brace-format
+msgctxt "cmd:tasks_untick|resp:success"
+msgid "{tick} Marked `{label}` as incomplete."
+msgid_plural "{tick} Marked `{count}` tasks as incomplete."
+msgstr[0] "{tick} Marquei ˋ{label}ˋ como incompleta."
+msgstr[1] "{tick} Marquei ˋ{count}ˋ tarefas como incompletas."
+msgstr[2] "{tick} Marquei ˋ{count}ˋ tarefas como incompletas."
+
+#: src/modules/tasklist/cog.py:976
+msgctxt "cmd:configure_tasklist"
+msgid "tasklist"
+msgstr "lista_de_tarefas"
+
+#: src/modules/tasklist/cog.py:977
+msgctxt "cmd:configure_tasklist|desc"
+msgid "Tasklist configuration panel"
+msgstr "Painel de Configuração da Lista de Tarefas"
+
+#: src/modules/tasklist/cog.py:980
+msgctxt "cmd:configure_tasklist|param:reward"
+msgid "reward"
+msgstr "recompensa"
+
+#: src/modules/tasklist/cog.py:981
+msgctxt "cmd:configure_tasklist|param:reward_limit"
+msgid "reward_limit"
+msgstr "limite_de_recompensas"
+
+#: src/modules/tasklist/cog.py:1017
+#, possible-python-brace-format
+msgctxt "cmd:configure_tasklist|resp:success|desc"
+msgid ""
+"Members will now be rewarded {coin}**{amount}** for each task they complete "
+"up to a maximum of `{limit}` tasks per 24h."
+msgstr ""
+"Os membros serão recompensados com {coin}**{amount}** por cada tarefa "
+"completada por eles, até um máximo de ˋ{limit}ˋ tarefas por 24h."
+
+#: src/modules/tasklist/tasklist.py:267
+#, possible-python-brace-format
+msgctxt "tasklist|parse:multi-range|error:parents_match"
+msgid "Parents don't match in range `{range}`"
+msgstr "Tarefas-mãe não coincidem no intervalo ˋ{range}ˋ"
+
+#: src/modules/tasklist/tasklist.py:289
+#, possible-python-brace-format
+msgctxt "tasklist|parse:multi-range|error:parse"
+msgid "Could not parse `{range}` as a task number or range."
+msgstr "Não pude analisar ˋ{range}ˋ como um número ou intervalo."
+
+#: src/modules/tasklist/tasklist.py:320
+#, possible-python-brace-format
+msgctxt "modal:tasklist_bulk_editor|error:parse_task"
+msgid ""
+"Malformed taskline!\n"
+"`{input}`"
+msgstr ""
+"Linha de tarefas mal formatada.\n"
+"ˋ{input}ˋ"
+
+#: src/modules/tasklist/tasklist.py:332
+msgctxt "modal:tasklist_bulk_editor|error:task_too_long"
+msgid "Please keep your tasks under 100 characters!"
+msgstr "Por favor, mantenha suas tarefas com menos de 100 caracteres!"
+
+#: src/modules/tasklist/ui.py:39
+msgctxt "ui:tasklist_caller|button:tasklist|label"
+msgid "Open Tasklist"
+msgstr "Abrir Lista de Tarefas"
+
+#: src/modules/tasklist/ui.py:57
+msgctxt "modal:tasklist_single_editor|field:task|label"
+msgid "Task content"
+msgstr "Conteúdo da tarefa"
+
+#: src/modules/tasklist/ui.py:69
+msgctxt "modal:tasklist_single_editor|field:parent|label"
+msgid "Parent Task"
+msgstr "Tarefa-Mãe"
+
+#: src/modules/tasklist/ui.py:73
+msgctxt "modal:tasklist_single_editor|field:parent|placeholder"
+msgid "Enter a task number, e.g. 2.1"
+msgstr "Digite o número da tarefa, ex 2.1"
+
+#: src/modules/tasklist/ui.py:104
+msgctxt "modal:tasklist_bulk_editor|field:tasklist|label"
+msgid "Tasklist"
+msgstr "Lista de Tarefas"
+
+#: src/modules/tasklist/ui.py:108
+msgctxt "modal:tasklist_bulk_editor|field:tasklist|placeholder"
+msgid ""
+"- [ ] This is task 1, unfinished.\n"
+"- [x] This is task 2, finished.\n"
+"  - [ ] This is subtask 2.1."
+msgstr ""
+"- [ ] Esta é a tarefa 1.0, não finalizada.\n"
+"- [x] Esta é a tarefa 2.0, finalizada.\n"
+"  - [ ] Esta é a sub-tarefa 2.1."
+
+#: src/modules/tasklist/ui.py:130
+msgctxt "modal:tasklist_bulk_editor"
+msgid "Tasklist Editor"
+msgstr "Editor da Lista de Tarefas"
+
+#: src/modules/tasklist/ui.py:188
+msgctxt "ui:tasklist|menu:main|mode:toggle|placeholder"
+msgid "Select to Toggle"
+msgstr "Selecione para Alternar"
+
+#: src/modules/tasklist/ui.py:192
+#, possible-python-brace-format
+msgctxt "ui:tasklist|menu:sub|mode:toggle|placeholder"
+msgid "Toggle from {label}.*"
+msgstr "Alternar de {label}.*"
+
+#: src/modules/tasklist/ui.py:198
+msgctxt "ui:tasklist|menu:main|mode:edit|placeholder"
+msgid "Select to Edit"
+msgstr "Selecione para Editar"
+
+#: src/modules/tasklist/ui.py:202
+#, possible-python-brace-format
+msgctxt "ui:tasklist|menu:sub|mode:edit|placeholder"
+msgid "Edit from {label}.*"
+msgstr "Editar de {label}.*"
+
+#: src/modules/tasklist/ui.py:208
+msgctxt "ui:tasklist|menu:main|mode:delete|placeholder"
+msgid "Select to Delete"
+msgstr "Selecione para Deletar"
+
+#: src/modules/tasklist/ui.py:212
+#, possible-python-brace-format
+msgctxt "ui:tasklist|menu:sub|mode:delete|placeholder"
+msgid "Delete from {label}.*"
+msgstr "Apagar de {label}.*"
+
+#: src/modules/tasklist/ui.py:409
+#, possible-python-brace-format
+msgctxt "ui:tasklist_single_editor|field:parent|error:parse_id"
+msgid ""
+"Could not find the given parent task number `{input}` in your tasklist."
+msgstr ""
+"Não pude encontrar o número ˋ{input}ˋ da tarefa-mãe informado na sua lista "
+"de tarefas."
+
+#: src/modules/tasklist/ui.py:423
+#, possible-python-brace-format
+msgctxt "ui:tasklist_single_editor|field:parent|error:multiple_matching"
+msgid ""
+"Multiple tasks matching given parent task `{input}`. Please use a task "
+"number instead!"
+msgstr ""
+"Multiplas tarefas coincidem com a tarefa-mãe ˋ{input}ˋ. Por favor, use o "
+"número de tarefa."
+
+#: src/modules/tasklist/ui.py:430
+#, possible-python-brace-format
+msgctxt "ui:tasklist_single_editor|field:parent|error:no_matching"
+msgid "No tasks matching given parent task `{input}`."
+msgstr "Não há tarefas coincidindo com a Tarefa-Mãe ˋ{input}ˋ."
+
+#: src/modules/tasklist/ui.py:501
+msgctxt "ui:tasklist|menu:edit|modal:title"
+msgid "Edit task"
+msgstr "Editar tarefa"
+
+#: src/modules/tasklist/ui.py:596
+msgctxt "ui:tasklist_single_editor|title"
+msgid "Add task"
+msgstr "Adicionar Tarefa"
+
+#: src/modules/tasklist/ui.py:629
+msgctxt "ui:tasklist|button:edit_mode|label"
+msgid "Edit"
+msgstr "Editar"
+
+#: src/modules/tasklist/ui.py:645
+msgctxt "ui:tasklist|button:delete_mode|label"
+msgid "Delete"
+msgstr "Deletar"
+
+#: src/modules/tasklist/ui.py:661
+msgctxt "ui:tasklist|button:toggle_mode|label"
+msgid "Toggle"
+msgstr "Alternar"
+
+#: src/modules/tasklist/ui.py:678
+msgctxt "ui:tasklist|button:edit_bulk|error:too_long"
+msgid ""
+"Your tasklist is too long to be edited in a Discord text input! Use the save"
+" button and {cmds[tasks upload]} instead."
+msgstr ""
+"Sua lista de tarefas é muito longa para ser editada por uma entrada de texto"
+" do Discord! Use o botão salvar e {cmds[tasks upload]} pra isso."
+
+#: src/modules/tasklist/ui.py:692
+msgctxt "ui:tasklist|button:edit_bulk|label"
+msgid "Bulk Edit"
+msgstr "Edição em Escala"
+
+#: src/modules/tasklist/ui.py:705
+msgctxt "ui:tasklist|button:clear|label"
+msgid "Clear Tasklist"
+msgstr "Apagar Lista de Tarefas"
+
+#: src/modules/tasklist/ui.py:724
+#, possible-python-brace-format
+msgctxt "ui:tasklist|button:save|dm:contents"
+msgid "Your tasklist as of {now} is attached. Click here to jump back: {jump}"
+msgstr ""
+"Sua lista de tarefas como em {now}, foi anexada. Clique aqui para retornar: "
+"{jump}"
+
+#: src/modules/tasklist/ui.py:737
+msgctxt "ui:tasklist|button:save|error:dms"
+msgid "Could not DM you! Do you have me blocked? Tasklist attached below."
+msgstr ""
+"Não pude enviar mensagem direta a você! Você me bloqueou? Anexei a lista de "
+"tarefas aqui abaixo."
+
+#: src/modules/tasklist/ui.py:782
+msgctxt "ui:tasklist|error:wrong_user"
+msgid "This is not your tasklist!"
+msgstr "Esta não é sua lista de tarefas!"
+
+#: src/modules/tasklist/ui.py:824
+#, possible-python-brace-format
+msgctxt "ui:tasklist|embed|author"
+msgid "{name}'s tasklist ({completed}/{total} complete)"
+msgstr "Lista de Tarefas {name}ˋs ({completed}/{total} completos) "
+
+#: src/modules/tasklist/ui.py:846
+msgctxt "ui:tasklist|embed|description"
+msgid ""
+"**You have no tasks on your tasklist!**\n"
+"Add a task with {cmds[tasks new]}, or by pressing the {new_button} button below."
+msgstr ""
+"**Você não tem tarefas na sua lista de tarefas!**\n"
+"Adicione uma tarefa com {cmds[tasks new]}, ou clicando no {new_button} botão abaixo."
+
+#: src/modules/tasklist/settings.py:33
+msgctxt "guildset:task_reward"
+msgid "task_reward"
+msgstr "recompensa_tarefas"
+
+#: src/modules/tasklist/settings.py:36
+msgctxt "guildset:task_reward|desc"
+msgid "Number of LionCoins given for each completed task."
+msgstr "Número de LionCoins dadas por cada tarefa completada."
+
+#: src/modules/tasklist/settings.py:40
+msgctxt "guildset:task_reward|long_desc"
+msgid ""
+"The number of coins members will be rewarded each time they complete a task "
+"on their tasklist."
+msgstr ""
+"O número de moedas que os membros serão recompensados a cada vez que eles "
+"completarem uma tarefa da sua lista."
+
+#: src/modules/tasklist/settings.py:44
+msgctxt "guildset:task_reward|accepts"
+msgid "The number of LionCoins to reward per task."
+msgstr "O número de LionCoins a recompensar por tarefa."
+
+#: src/modules/tasklist/settings.py:56
+#, possible-python-brace-format
+msgctxt "guildset:task_reward|response"
+msgid ""
+"Members will now be rewarded {coin}**{amount}** for each completed task."
+msgstr ""
+"Os membros serão recompensados {coin}**{amount}** por cada tarefa "
+"completada."
+
+#: src/modules/tasklist/settings.py:65
+#, possible-python-brace-format
+msgctxt "guildset:task_reward|formatted"
+msgid "{coin}**{amount}** per task."
+msgstr "{coin}**{amount}** por tarefa."
+
+#: src/modules/tasklist/settings.py:73
+msgctxt "guildset:task_reward_limit"
+msgid "task_reward_limit"
+msgstr "Limite_recompensa_tarefas"
+
+#: src/modules/tasklist/settings.py:76
+msgctxt "guildset:task_reward_limit|desc"
+msgid "Maximum number of task rewards given per 24h."
+msgstr "Número máximo de recompensa por tarefas dadas em 24h."
+
+#: src/modules/tasklist/settings.py:80
+msgctxt "guildset:task_reward_limit|long_desc"
+msgid ""
+"Maximum number of times in each 24h period that members will be rewarded for"
+" completing a task."
+msgstr ""
+"Número máximo de vezes, em 24h de intervalo, que membros serão recompensados"
+" por completar uma tarefa."
+
+#: src/modules/tasklist/settings.py:85
+msgctxt "guildset:task_reward_limit|accepts"
+msgid "The maximum number of tasks to reward LC for per 24h."
+msgstr "O número máximo de tarefas a recompensar com LionCoins a cada 24h."
+
+#: src/modules/tasklist/settings.py:97
+#, possible-python-brace-format
+msgctxt "guildset:task_reward_limit|response"
+msgid ""
+"Members will now be rewarded for task completion at most **{amount}** times "
+"per 24h."
+msgstr ""
+"Os membros irão ser recompensados por tarefas completadas até **{amount}** "
+"vezes a cada 24h."
+
+#: src/modules/tasklist/settings.py:106
+#, possible-python-brace-format
+msgctxt "guildset:task_reward_limit|formatted"
+msgid "`{number}` per 24 hours."
+msgstr "ˋ{number}ˋ a cada 24 horas."
+
+#: src/modules/tasklist/settings.py:113
+msgctxt "guildset:tasklist_channels"
+msgid "tasklist_channels"
+msgstr "canal_lista_de_tarefas"
+
+#: src/modules/tasklist/settings.py:116
+msgctxt "guildset:tasklist_channels|desc"
+msgid "Channels in which to publicly display member tasklists."
+msgstr "Canal em que será publicado o mostrador de tarefas dos membros."
+
+#: src/modules/tasklist/settings.py:120
+#, possible-python-brace-format
+msgctxt "guildset:tasklist_channels|long_desc"
+msgid ""
+"A member's tasklist (from {cmds[tasklist]}) is usually only visible to the "
+"member themselves. If set, tasklists opened in `tasklist_channels` will be "
+"visible to all members, and the interface will have a much longer expiry "
+"period. If a category is provided, this will apply to all channels under the"
+" category."
+msgstr ""
+"O painel da Lista de Tarefas (de {cmds[tasklist]}) é normalmente mostrado "
+"somente ao membro. Se configurada esta opção, no ˋcanal_lista_de_tarefasˋ "
+"será publicada sua lista visível a todos os outros membros, e o tempo de "
+"interação com o painel será muito mais longo também. Se for informada uma "
+"categoria de canais, todos os canais dentro desta categoria estarão com "
+"estas características."
+
+#: src/modules/tasklist/settings.py:127
+msgctxt "guildset:tasklist_channels|accepts"
+msgid "Comma separated list of tasklist channel names or ids."
+msgstr "Nome ou IDˋs dos canais de Lista de Tarefas, separados por vírgula. "
+
+#: src/modules/tasklist/settings.py:144
+#, possible-python-brace-format
+msgctxt "guildset:tasklist_channels|set_response|set"
+msgid ""
+"Tasklists will now be publicly displayed in the following channels: "
+"{channels}"
+msgstr ""
+"A lista de tarefas, estará agora, visível publicamente nos seguintes canais:"
+" {channels}"
+
+#: src/modules/tasklist/settings.py:149
+msgctxt "guildset:tasklist_channels|set_response|unset"
+msgid "Member tasklists will never be publicly displayed."
+msgstr "A lista de tarefas dos membros não irá ficar visíveis publicamente."
+
+#: src/modules/tasklist/settings.py:158
+msgctxt "guildset:tasklist_channels|set_using"
+msgid "Channel selector below."
+msgstr "Selecione canal abaixo."
+
+#: src/modules/tasklist/settings.py:289
+msgctxt "ui:tasklist_config|button:close|label"
+msgid "Close"
+msgstr "Fechar"
+
+#: src/modules/tasklist/settings.py:290
+msgctxt "ui:tasklist_config|button:reset|label"
+msgid "Reset"
+msgstr "Resetar"
+
+#: src/modules/tasklist/settings.py:293
+msgctxt "ui:tasklist_config|menu:channels|placeholder"
+msgid "Set Tasklist Channels"
+msgstr "Configurar Canal da Lista de Tarefas"
+
+#: src/modules/tasklist/settings.py:311
+msgctxt "ui:tasklist_config|embed|title"
+msgid "Tasklist Configuration Panel"
+msgstr "Painel de Configuração da Lista de Tarefas"
+
+#: src/modules/tasklist/settings.py:320
+msgctxt "dash:tasklist|name"
+msgid "Tasklist Configuration ({commands[configure tasklist]})"
+msgstr "Configuração da Lista de Tarefas ({commands[configure tasklist]})"
+
+#: src/modules/tasklist/settings.py:323
+msgctxt "dash:tasklist|dropdown|placeholder"
+msgid "Tasklist Options Panel"
+msgstr "Painel de Opções da Lista de Tarefas"

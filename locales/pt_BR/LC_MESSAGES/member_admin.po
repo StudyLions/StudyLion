@@ -1,0 +1,455 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Bruno Evangelista De Oliveira, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-24 12:21+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
+"Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#: src/modules/member_admin/settingui.py:57
+msgctxt "ui:memberadmin|menu:greetch|placeholder"
+msgid "Select Greeting Channel"
+msgstr "Selecione o Canal de Saudações"
+
+#: src/modules/member_admin/settingui.py:86
+msgctxt "ui:memberadmin|menu:autoroles|placeholder"
+msgid "Select Autoroles"
+msgstr "Selecione os Cargos Automáticos"
+
+#: src/modules/member_admin/settingui.py:115
+msgctxt "ui:memberadmin|menu:bot_autoroles|placeholder"
+msgid "Select Bot Autoroles"
+msgstr "Selecione os Cargos Automáticos de Bot"
+
+#: src/modules/member_admin/settingui.py:156
+msgctxt "ui:member_admin|button:greet_msg|label"
+msgid "Greeting Msg"
+msgstr "Mensagem de Saudação"
+
+#: src/modules/member_admin/settingui.py:205
+msgctxt "ui:memberadmin|button:return_msg|label"
+msgid "Returning Msg"
+msgstr "Mensagem Retornando"
+
+#: src/modules/member_admin/settingui.py:213
+msgctxt "ui:memberadmin|embed|title"
+msgid "Greetings and Initial Roles Panel"
+msgstr "Painel de Saudações e Cargos Iniciais"
+
+#: src/modules/member_admin/settingui.py:257
+msgctxt "dash:member_admin|title"
+msgid "Greetings and Initial Roles ({commands[configure welcome]})"
+msgstr "Cargos Iniciais de Saudação ({commands[configure welcome]})"
+
+#: src/modules/member_admin/settingui.py:261
+msgctxt "dash:member_admin|dropdown|placeholder"
+msgid "Greetings and Initial Roles Panel"
+msgstr "Painel de Boas Vindas com Cargos Iniciais  "
+
+#: src/modules/member_admin/settingui.py:281
+msgctxt "dash:member_admin|section:greeting_messages|name"
+msgid "Greeting Messages ({commands[configure welcome]})"
+msgstr "Mensagens de Saudação ({commands[configure welcome]})"
+
+#: src/modules/member_admin/settingui.py:292
+msgctxt "dash:member_admin|section:initial_roles|name"
+msgid "Initial Roles ({commands[configure welcome]})"
+msgstr "Cargos Iniciais ({commands[configure welcome]})"
+
+#: src/modules/member_admin/cog.py:239
+msgctxt "cmd:resetmember"
+msgid "resetmember"
+msgstr "ResetarMembro"
+
+#: src/modules/member_admin/cog.py:242
+msgctxt "cmd:resetmember|desc"
+msgid "Reset (server-associated) member data for the target member or user."
+msgstr ""
+"Resetar dados (associados a este servidor) de membro para determinado "
+"usuário ou membro."
+
+#: src/modules/member_admin/cog.py:246
+msgctxt "cmd:resetmember|param:target"
+msgid "member_to_reset"
+msgstr "membro_a_resetar"
+
+#: src/modules/member_admin/cog.py:247
+msgctxt "cmd:resetmember|param:saved_roles"
+msgid "saved_roles"
+msgstr "cargos_salvos"
+
+#: src/modules/member_admin/cog.py:252
+msgctxt "cmd:resetmember|param:target|desc"
+msgid "Choose the member (current or past) you want to reset."
+msgstr "Escolha o membro(atual ou passado) que você quer resetar."
+
+#: src/modules/member_admin/cog.py:256
+msgctxt "cmd:resetmember|param:saved_roles|desc"
+msgid ""
+"Clear the saved roles for this member, so their past roles are not restored "
+"on rejoin."
+msgstr ""
+"Limpar os cargos salvos deste membro, então os cargos passados não serão "
+"restaurados novamente caso retorne."
+
+#: src/modules/member_admin/cog.py:283
+#, possible-python-brace-format
+msgctxt "cmd:resetmember|reset:saved_roles|success"
+msgid ""
+"The saved roles for {target} have been reset. They will not regain their "
+"roles if they rejoin."
+msgstr ""
+"Os cargos salvos de {target} foram resetados. Eles não irão recuperar os "
+"cargos caso retornem."
+
+#: src/modules/member_admin/cog.py:291
+msgctxt "cmd:resetmember|error:nothing_to_do"
+msgid "No reset operation selected, nothing to do."
+msgstr "Nenhuma operação de resetar foi selecionada. Não tenho o que fazer."
+
+#: src/modules/member_admin/cog.py:307
+msgctxt "cmd:configure_welcome"
+msgid "welcome"
+msgstr "bem vindo"
+
+#: src/modules/member_admin/cog.py:310
+msgctxt "cmd:configure_welcome|desc"
+msgid "Configure new member greetings and roles."
+msgstr "Configure as saudações e cargos do novo membro."
+
+#: src/modules/member_admin/settings.py:20
+msgctxt "guildset:greeting_message|formatkey:mention"
+msgid "Mention the new member."
+msgstr "Mencione o novo membro."
+
+#: src/modules/member_admin/settings.py:22
+msgctxt "guildset:greeting_message|formatkey:user_name"
+msgid "Display name of the new member."
+msgstr "Mostrar o nome do novo membro."
+
+#: src/modules/member_admin/settings.py:24
+msgctxt "guildset:greeting_message|formatkey:user_avatar"
+msgid "Avatar url of the new member."
+msgstr "Link do avatar do novo membro."
+
+#: src/modules/member_admin/settings.py:26
+msgctxt "guildset:greeting_message|formatkey:guild_name"
+msgid "Name of this server."
+msgstr "Nome deste servidor."
+
+#: src/modules/member_admin/settings.py:28
+msgctxt "guildset:greeting_message|formatkey:guild_icon"
+msgid "Server icon url."
+msgstr "Link do ícone do servidor."
+
+#: src/modules/member_admin/settings.py:30
+msgctxt "guildset:greeting_message|formatkey:studying_count"
+msgid "Number of current voice channel members."
+msgstr "Número atual de membros de canais de voz."
+
+#: src/modules/member_admin/settings.py:32
+msgctxt "guildset:greeting_message|formatkey:member_count"
+msgid "Number of members in the server."
+msgstr "Número de membros neste servidor."
+
+#: src/modules/member_admin/settings.py:40
+msgctxt "guildset:greeting_channel"
+msgid "welcome_channel"
+msgstr "canal_de_boas_vindas"
+
+#: src/modules/member_admin/settings.py:43
+msgctxt "guildset:greeting_channel|desc"
+msgid "Channel in which to welcome new members to the server."
+msgstr "Canal em que será recebido o novo membro no servidor."
+
+#: src/modules/member_admin/settings.py:47
+msgctxt "guildset:greeting_channel|long_desc"
+msgid ""
+"New members will be sent the configured `welcome_message` in this channel, "
+"and returning members will be sent the configured `returning_message`. Unset"
+" to send these message via direct message."
+msgstr ""
+"Novos membros irão receber a ˋmensagem_de_boas_vindasˋ neste canal. Membros "
+"que estão voltando após um tempo fora, receberão ˋmensagem_de_retornoˋ. "
+"Desative para que a mensagem seja enviada por Mensagem Direta. "
+
+#: src/modules/member_admin/settings.py:53
+msgctxt "guildset:greeting_channel|accepts"
+msgid "Name or id of the greeting channel, or 0 for DM."
+msgstr "Nome ou ID do canal de boas vindas. Ou 0 para Mensagens Diretas."
+
+#: src/modules/member_admin/settings.py:67
+msgctxt "guildset:greeting_channel|set_response:unset"
+msgid "Welcome messages will now be sent via direct message."
+msgstr "Mensagens de boas vindas serão enviadas por Mensagem Direta."
+
+#: src/modules/member_admin/settings.py:72
+#, possible-python-brace-format
+msgctxt "guildset:greeting_channel|set_response:set"
+msgid "Welcome messages will now be sent to {channel}"
+msgstr "Mensagens de boas vindas serão enviadas para {channel}"
+
+#: src/modules/member_admin/settings.py:84
+msgctxt "guildset:greeting_channel|formmatted:unset"
+msgid "Direct Message"
+msgstr "Mensagem Direta"
+
+#: src/modules/member_admin/settings.py:91
+msgctxt "guildset:greeting_message"
+msgid "welcome_message"
+msgstr "mensagem_de_boas_vindas"
+
+#: src/modules/member_admin/settings.py:95
+msgctxt "guildset:greeting_message|desc"
+msgid "Custom message used to greet new members when they join the server."
+msgstr ""
+"Mensagem personalizada usada para saudar novos membros quando eles entram no"
+" servidor."
+
+#: src/modules/member_admin/settings.py:99
+msgctxt "guildset:greeting_message|long_desc"
+msgid ""
+"When set, this message will be sent to the `welcome_channel` when a *new* "
+"member joins the server. If not set, no message will be sent."
+msgstr ""
+"Quando configurada, esta mensagem será enviada ao ˋcanal_de_boas_vindasˋ "
+"sempre que um *novo* membro entrar no servidor. Se não configurado, nenhuma "
+"mensagem será enviada."
+
+#: src/modules/member_admin/settings.py:104
+msgctxt "guildset:greeting_message|accepts"
+msgid "JSON formatted greeting message data"
+msgstr "Mensagem de boas vindas formatada como dados JSON"
+
+#: src/modules/member_admin/settings.py:108
+msgctxt "guildset:greeting_message|default"
+msgid ""
+"\n"
+"            {\n"
+"                \"embed\": {\n"
+"                    \"title\": \"Welcome {user_name}!\",\n"
+"                    \"thumbnail\": {\"url\": \"{user_avatar}\"},\n"
+"                    \"description\": \"Welcome to **{guild_name}**!\",\n"
+"                    \"footer\": {\n"
+"                        \"text\": \"You are the {member_count}th member!\"\n"
+"                    },\n"
+"                    \"color\": 15695665\n"
+"                }\n"
+"            }\n"
+"            "
+msgstr ""
+"\n"
+"            {\n"
+"                \"embed\": {\n"
+"                    \"title\": \"Bem Vindo, {user_name}!\",\n"
+"                    \"thumbnail\": {\"url\": \"{user_avatar}\"},\n"
+"                    \"description\": \"Bem vindo ao **{guild_name}**!\",\n"
+"                    \"footer\": {\n"
+"                        \"text\": \"Você é o  {member_count} membro!\"\n"
+"                    },\n"
+"                    \"color\": 15695665\n"
+"                }\n"
+"            }\n"
+"            "
+
+#: src/modules/member_admin/settings.py:136
+msgctxt "guildset:greeting_message|set_response:unset"
+msgid "Welcome message unset! New members will not be greeted."
+msgstr ""
+"Mensagem de boas vindas desabilitada! Novos membros não receberão saudações."
+
+#: src/modules/member_admin/settings.py:141
+msgctxt "guildset:greeting_message|set_response:set"
+msgid "The welcome message has been updated."
+msgstr "A mensagem de boas vindas foi atualizada."
+
+#: src/modules/member_admin/settings.py:153
+msgctxt "guildset:greeting_message|formmatted:unset"
+msgid "Not set, members will not be welcomed."
+msgstr "Não configurado. Membros não receberão boas vindas."
+
+#: src/modules/member_admin/settings.py:200
+msgctxt "guildset:greeting_message|embed_field|formatkeys|explanation"
+msgid "The following placeholders will be substituted with their values."
+msgstr "Os seguintes espaços serão substituídos por seus valores."
+
+#: src/modules/member_admin/settings.py:203
+msgctxt "guildset:greeting_message|embed_field|formatkeys|name"
+msgid "Placeholders"
+msgstr "Espaços reservados"
+
+#: src/modules/member_admin/settings.py:213
+msgctxt "guildset:returning_message"
+msgid "returning_message"
+msgstr "mensagem_de_retorno"
+
+#: src/modules/member_admin/settings.py:217
+msgctxt "guildset:returning_message|desc"
+msgid ""
+"Custom message used to greet returning members when they rejoin the server."
+msgstr ""
+"Mensagem personalizada de boas vindas usada quando um membro que saiu voltar"
+" a entrar no servidor."
+
+#: src/modules/member_admin/settings.py:221
+msgctxt "guildset:returning_message|long_desc"
+msgid ""
+"When set, this message will be sent to the `welcome_channel` when a member "
+"*returns* to the server. If not set, no message will be sent."
+msgstr ""
+"Quando configurada, esta mensagem será enviada para o ˋcanal_de_boas_vindasˋ"
+" assim que um membro *voltar a entrar* no servidor. Se não for configurada, "
+"nenhuma mensagem será enviada."
+
+#: src/modules/member_admin/settings.py:226
+msgctxt "guildset:returning_message|accepts"
+msgid "JSON formatted returning message data"
+msgstr "Mensagem de retorno em formato de dados JSON."
+
+#: src/modules/member_admin/settings.py:230
+msgctxt "guildset:returning_message|default"
+msgid ""
+"\n"
+"            {\n"
+"                \"embed\": {\n"
+"                    \"title\": \"Welcome Back {user_name}!\",\n"
+"                    \"thumbnail\": {\"url\": \"{User_avatar}\"},\n"
+"                    \"description\": \"Welcome back to **{guild_name}**!\\nYou were last seen <t:{last_time}:R>.\",\n"
+"                    \"color\": 15695665\n"
+"                }\n"
+"            }\n"
+"            "
+msgstr ""
+"\n"
+"            {\n"
+"                \"embed\": {\n"
+"                    \"title\": \"Bem vindo de volta {user_name}!\",\n"
+"                    \"thumbnail\": {\"url\": \"{User_avatar}\"},\n"
+"                    \"description\": \"Bem vindo de novo ao **{guild_name}**!\\n Você estava desaparecido desde <t:{last_time}:R>.\",\n"
+"                    \"color\": 15695665\n"
+"                }\n"
+"            }\n"
+"            "
+
+#: src/modules/member_admin/settings.py:247
+msgctxt "guildset:returning_message|formatkey:last_time"
+msgid "Unix timestamp of the last time the member was seen in the server."
+msgstr "Data/hora que o membro havia sido visto pela última vez."
+
+#: src/modules/member_admin/settings.py:258
+msgctxt "guildset:returning_message|set_response:unset"
+msgid "Returning member greeting unset! Will use `welcome_message` if set."
+msgstr ""
+"Mensagem para saudar membros que retornam não foi  configurada! Usaremos "
+"ˋmensagem_de_boas_vindasˋ se configurada.  "
+
+#: src/modules/member_admin/settings.py:263
+msgctxt "guildset:greeting_message|set_response:set"
+msgid "The returning member greeting has been updated."
+msgstr ""
+"A mensagem de saudação ao membro que estiver retornarnando foi atualizada."
+
+#: src/modules/member_admin/settings.py:275
+msgctxt "guildset:greeting_message|formmatted:unset"
+msgid "Not set, will use the `welcome_message` if set."
+msgstr ""
+"Não foi configurada. Usarei a ˋmensagem_de_boas_vindasˋ se esta estiver."
+
+#: src/modules/member_admin/settings.py:325
+msgctxt "guildset:returning_message|embed_field|formatkeys|explanation"
+msgid "In *addition* to the placeholders supported by `welcome_message`"
+msgstr ""
+"Em *adição* aos espaços reservados, suportados pela ˋmensagem_de_boasvindasˋ"
+
+#: src/modules/member_admin/settings.py:328
+msgctxt "guildset:returning_message|embed_field|formatkeys|"
+msgid "Placeholders"
+msgstr "Espaços reservados"
+
+#: src/modules/member_admin/settings.py:339
+msgctxt "guildset:autoroles"
+msgid "autoroles"
+msgstr "cargos_automáticos"
+
+#: src/modules/member_admin/settings.py:343
+msgctxt "guildset:autoroles|desc"
+msgid "Roles given to new members when they join the server."
+msgstr ""
+"Cargos a serem designados aos novos membros quando entrarem no servidor."
+
+#: src/modules/member_admin/settings.py:347
+msgctxt "guildset:autoroles|long_desc"
+msgid ""
+"These roles will be given when a member joins the server. If "
+"`role_persistence` is enabled, these roles will *not* be given to a "
+"returning member."
+msgstr ""
+"Estes cargos serão dados aos novos membros que entrarem ao servidor. Caso "
+"ˋcargo_persistenteˋ esteja ativado, estes cargos *não* serão dados para um "
+"membro que retorne ao servidor."
+
+#: src/modules/member_admin/settings.py:361
+msgctxt "guildset:bot_autoroles"
+msgid "bot_autoroles"
+msgstr "cargos_automáticos_bots"
+
+#: src/modules/member_admin/settings.py:365
+msgctxt "guildset:bot_autoroles|desc"
+msgid "Roles given to new bots when they join the server."
+msgstr "Cargos dados aos novos bots quando entrarem ao servidor."
+
+#: src/modules/member_admin/settings.py:369
+msgctxt "guildset:bot_autoroles|long_desc"
+msgid "These roles will be given when a bot joins the server."
+msgstr "Estes cargos serão dados quando um bot entrar no servidor."
+
+#: src/modules/member_admin/settings.py:382
+msgctxt "guildset:role_persistence"
+msgid "role_persistence"
+msgstr "cargo_persistente"
+
+#: src/modules/member_admin/settings.py:385
+msgctxt "guildset:role_persistence|desc"
+msgid "Whether member roles should be restored on rejoin."
+msgstr ""
+"Definir se os cargos de um membro devem ser restaurados em seu retorno.  "
+
+#: src/modules/member_admin/settings.py:389
+msgctxt "guildset:role_persistence|long_desc"
+msgid ""
+"If enabled, member roles will be stored when they leave the server, and then"
+" restored when they rejoin (instead of giving `autoroles`). Note that this "
+"may conflict with other bots who manage join roles."
+msgstr ""
+"Caso habilitado, os cargos dos membros serão salvos quando eles deixarem o "
+"servidor, e restaurados em seu retorno (ao invés de receberem os "
+"cargos_automáticos). Perceba que talvez isto entre em confilto com outros "
+"bots que também configurem cargos de boas vindas."
+
+#: src/modules/member_admin/settings.py:405
+msgctxt "guildset:role_persistence|set_response:off"
+msgid "Roles will not be restored when members rejoin."
+msgstr ""
+"Os cargos não serão restaurados no retorno de antigos membros ao servidor."
+
+#: src/modules/member_admin/settings.py:410
+msgctxt "guildset:greeting_message|set_response:on"
+msgid "Roles will now be restored when members rejoin."
+msgstr ""
+"A partir de agora. os cargos serão restaurados quando um membro antigo "
+"retorna ao servidor. "

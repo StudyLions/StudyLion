@@ -1,0 +1,635 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Bruno Evangelista De Oliveira, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-24 12:21+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
+"Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#: src/modules/shop/cog.py:108
+msgctxt "group:editshop"
+msgid "editshop"
+msgstr "editarloja"
+
+#: src/modules/shop/cog.py:117
+msgctxt "cmd:shop"
+msgid "shop"
+msgstr "loja"
+
+#: src/modules/shop/cog.py:118
+msgctxt "cmd:shop|desc"
+msgid "Purchase coloures, roles, and other goodies with LionCoins."
+msgstr "Comprar cores, cargos e outras coisas com as LionCoins."
+
+#: src/modules/shop/cog.py:125
+msgctxt "cmd:shop_open"
+msgid "open"
+msgstr "abrir"
+
+#: src/modules/shop/cog.py:126
+msgctxt "cmd:shop_open|desc"
+msgid "Open the server shop."
+msgstr "Abrir a loja do servidor."
+
+#: src/modules/shop/cog.py:153
+msgctxt "cmd:shop_open|error:no_shops"
+msgid "There is nothing to buy!"
+msgstr "Não há nada para comprar!"
+
+#: src/modules/shop/cog.py:215
+msgctxt "ui:stores|button:close|label"
+msgid "Close"
+msgstr "Fechar"
+
+#: src/modules/shop/cog.py:222
+msgctxt "ui:stores|button:close|response|title"
+msgid "Shop Closed"
+msgstr "Loja Fechada"
+
+#: src/modules/shop/shops/colours.py:105
+#, possible-python-brace-format
+msgctxt "ui:colourstore|menu:buycolours|label"
+msgid "{name} ({price} LC)"
+msgstr "{name} ({price} LC)"
+
+#: src/modules/shop/shops/colours.py:110
+#, possible-python-brace-format
+msgctxt "ui:colourstore|menu:buycolours|label"
+msgid "{name} (This is your colour!)"
+msgstr "{name} (Esta é sua cor!)"
+
+#: src/modules/shop/shops/colours.py:115
+#, possible-python-brace-format
+msgctxt "ui:colourstore|menu:buycolours|desc"
+msgid "Colour: {colour}"
+msgstr "Cor: {colour}"
+
+#: src/modules/shop/shops/colours.py:120
+msgctxt "ui:colourstore|menu:buycolours|desc"
+msgid "Colour: Unknown"
+msgstr "Cor: Desconhecida"
+
+#: src/modules/shop/shops/colours.py:134
+msgctxt "shop:colours|name"
+msgid "Colour Shop"
+msgstr "Loja de Cores"
+
+#: src/modules/shop/shops/colours.py:173
+msgctxt "shop:colour|purchase|error:not_purchasable"
+msgid "This item may not be purchased!"
+msgstr "Este item talvez não seja comprado!"
+
+#: src/modules/shop/shops/colours.py:186
+msgctxt "shop:colour|purchase|error:no_guild"
+msgid "Could not retrieve the server from Discord!"
+msgstr "Não foi possível acessar o servidor do Discord!"
+
+#: src/modules/shop/shops/colours.py:196
+msgctxt "shop:colour|purchase|error:no_member"
+msgid "Could not retrieve the member from Discord."
+msgstr "Não foi possível acessar o membro do Discord."
+
+#: src/modules/shop/shops/colours.py:206
+msgctxt "shop:colour|purchase|error:no_role"
+msgid "This colour role could not be found in the server."
+msgstr "Esta cor de cargo não pôde ser encontrada no servidor."
+
+#: src/modules/shop/shops/colours.py:215
+#, possible-python-brace-format
+msgctxt "shop:colour|purchase|error:low_balance"
+msgid ""
+"This item costs {coin}{amount}!\n"
+"Your balance is {coin}{balance}"
+msgstr ""
+"Este item custa {coin}{amount}!\n"
+"Seu saldo é {coin}{balance}"
+
+#: src/modules/shop/shops/colours.py:230
+msgctxt "shop:colour|purchase|error:owned"
+msgid "You already own this item!"
+msgstr "Você já comprou este item!"
+
+#: src/modules/shop/shops/colours.py:264
+msgctxt "shop:colour|purchase|error:failed_no_role"
+msgid "This colour role no longer exists!"
+msgstr "Esta cor de cargo não existe!"
+
+#: src/modules/shop/shops/colours.py:271
+msgctxt "shop:colour|purchase|error:failed_permissions"
+msgid "I do not have enough permissions to give you this colour role!"
+msgstr "Eu não tenho permissões suficientes para te dar esta cor de cargo."
+
+#: src/modules/shop/shops/colours.py:278
+msgctxt "shop:colour|purchase|error:failed_unknown"
+msgid "An unknown error occurred while giving you this colour role!"
+msgstr ""
+"Um erro desconhecido aconteceu enquanto era alterada sua cor de cargo."
+
+#: src/modules/shop/shops/colours.py:348
+msgctxt "grp:editshop_colours"
+msgid "colours"
+msgstr "cores"
+
+#: src/modules/shop/shops/colours.py:353
+msgctxt "cmd:editshop_colours_create"
+msgid "create"
+msgstr "criar"
+
+#: src/modules/shop/shops/colours.py:356
+msgctxt "cmd:editshop_colours_create|desc"
+msgid "Create a new colour role with the given colour."
+msgstr "Criar uma nova cor para um cargo, com a cor determinada. "
+
+#: src/modules/shop/shops/colours.py:360
+msgctxt "cmd:editshop_colours_create|param:colour"
+msgid "colour"
+msgstr "cor"
+
+#: src/modules/shop/shops/colours.py:361
+msgctxt "cmd:editshop_colours_create|param:name"
+msgid "name"
+msgstr "nome"
+
+#: src/modules/shop/shops/colours.py:362
+msgctxt "cmd:editshop_colours_create|param:price"
+msgid "price"
+msgstr "preço"
+
+#: src/modules/shop/shops/colours.py:367
+msgctxt "cmd:editshop_colours_create|param:colour|desc"
+msgid "What colour should the role be? (As a hex code, e.g. #AB22AB)"
+msgstr "De qual cor o cargo deverá ser? (Usando um código Hex, ex. #AB22AB)"
+
+#: src/modules/shop/shops/colours.py:371
+msgctxt "cmd:editshop_colours_create|param:name|desc"
+msgid "What should the colour role be called?"
+msgstr "Como a cor do cargo deverá ser chamada?"
+
+#: src/modules/shop/shops/colours.py:375
+msgctxt "cmd:editshop_colours_create|param:price|desc"
+msgid "How much should the colour role cost?"
+msgstr "Quanto deverá custar a cor do cargo?"
+
+#: src/modules/shop/shops/colours.py:397
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_create|error:parse_colour"
+msgid ""
+"I could not extract a colour value from `{colour}`!\n"
+"Please enter the colour as a hex string, e.g. `#FA0BC1`"
+msgstr ""
+"Eu não consegui extrair os dados de `{colour}`!\n"
+"Por favor, digite a cor como um código HEX ex. `#FA0BC1`"
+
+#: src/modules/shop/shops/colours.py:407
+msgctxt "cmd:editshop_colours_create|error:perms"
+msgid ""
+"I do not have permission to create server roles!\n"
+"Please either give me this permission, or create the role manually and use `/editshop colours add` instead."
+msgstr ""
+"Eu não tenho premissão para criar cargos do servidor!\n"
+"Por favor, primeiro me dê permissão, ou então crie o cargo manualmente e use  `/editarloja cores add`."
+
+#: src/modules/shop/shops/colours.py:424
+msgctxt "cmd:editshop_colours_create|error:max_colours"
+msgid ""
+"This server already has the maximum of `25` colour roles!\n"
+"Please remove some before adding or creating more."
+msgstr ""
+"Este servidor já possui o máximo de ˋ25ˋ cores de cargo!\n"
+"Por favor, remova alguma antes de adicionar ou criar outra."
+
+#: src/modules/shop/shops/colours.py:443
+msgctxt "cmd:editshop_colours_create|error:failed_unknown"
+msgid ""
+"An unknown Discord error occurred while creating your colour role!\n"
+"Please try again in a few minutes."
+msgstr ""
+"Um erro desconhecido do Discord ocorreu quando estava sendo criado sua cor de cargo!\n"
+"Por favor, tente novamente em alguns minutos."
+
+#: src/modules/shop/shops/colours.py:493
+msgctxt "cmd:editshop_colours_create|resp:done|title"
+msgid "Colour Role Created"
+msgstr " Cor de Cargo Criada"
+
+#: src/modules/shop/shops/colours.py:497
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_create|resp:done|desc"
+msgid ""
+"You have created the role {mention}, and added it to the colour shop for "
+"{coin}**{price}**!"
+msgstr ""
+"Você criou o cargo {mention}, e adicionou ele à loja de cores por "
+"{coin}**{price}**!"
+
+#: src/modules/shop/shops/colours.py:504
+msgctxt "cmd:editshop_colours_create|resp:done|field:position_note|value"
+msgid ""
+"The new colour role was added below all other roles. Remember a member's "
+"active colour is determined by their highest coloured role!"
+msgstr ""
+"A nova cor de cargo foi adicionada abaixo de todas as outras. Lembre-se que "
+"a cor ativa de um cargo é determinada pela equivalente à mais alta cor de "
+"cargo."
+
+#: src/modules/shop/shops/colours.py:508
+msgctxt "cmd:editshop_colours_create|resp:done|field:position_note|name"
+msgid "Note"
+msgstr "Nota"
+
+#: src/modules/shop/shops/colours.py:517
+msgctxt "cmd:editshop_colours_edit"
+msgid "edit"
+msgstr "editar"
+
+#: src/modules/shop/shops/colours.py:520
+msgctxt "cmd:editshop_colours_edit|desc"
+msgid "Edit the name, colour, or price of a colour role."
+msgstr "Edite o nome, cor ou preço de uma cor de cargo."
+
+#: src/modules/shop/shops/colours.py:524
+msgctxt "cmd:editshop_colours_edit|param:role"
+msgid "role"
+msgstr "cargo"
+
+#: src/modules/shop/shops/colours.py:525
+msgctxt "cmd:editshop_colours_edit|param:name"
+msgid "name"
+msgstr "nome"
+
+#: src/modules/shop/shops/colours.py:526
+msgctxt "cmd:editshop_colours_edit|param:colour"
+msgid "colour"
+msgstr "cor"
+
+#: src/modules/shop/shops/colours.py:527
+msgctxt "cmd:editshop_colours_edit|param:price"
+msgid "price"
+msgstr "preço"
+
+#: src/modules/shop/shops/colours.py:532
+msgctxt "cmd:editshop_colours_edit|param:role|desc"
+msgid "Select a colour role to edit."
+msgstr "Selecione a cor de um cargo para editar."
+
+#: src/modules/shop/shops/colours.py:536
+msgctxt "cmd:editshop_colours_edit|param:name|desc"
+msgid "New name to give the colour role."
+msgstr "Novo nome para dar a esta cor de cargo."
+
+#: src/modules/shop/shops/colours.py:540
+msgctxt "cmd:editshop_colours_edit|param:colour|desc"
+msgid "New colour for the colour role (as hex, e.g. #AB12AB)."
+msgstr "Nova cor para a cor de cargo (em código HEX, ex:. #AB12AB)."
+
+#: src/modules/shop/shops/colours.py:544
+msgctxt "cmd:editshop_colours_edit|param:price|desc"
+msgid "New price for the colour role."
+msgstr "Novo preço para a cor de cargo."
+
+#: src/modules/shop/shops/colours.py:573
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_edit|error:invalid_role"
+msgid "{mention} is not in the colour role shop!"
+msgstr "{mention} não está na loja de cores de cargo."
+
+#: src/modules/shop/shops/colours.py:587
+msgctxt "cmd:editshop_colours_edit|error:no_args"
+msgid "You must give me one of `name`, `colour`, or `price` to update!"
+msgstr "Você precisa me informar o ˋnomeˋ, ˋcorˋ ou ˋpreçoˋ para atualizar!"
+
+#: src/modules/shop/shops/colours.py:603
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_edit|error:parse_colour"
+msgid ""
+"I could not extract a colour value from `{colour}`!\n"
+"Please enter the colour as a hex string, e.g. `#FA0BC1`"
+msgstr ""
+"Eu não consegui extrair um código de cor de ˋ{colour}ˋ!\n"
+"Por favor, informe a cor como um código HEX, ex. ˋ#FA0BC1ˋ"
+
+#: src/modules/shop/shops/colours.py:618
+msgctxt "cmd:editshop_colours_edit|error:perms"
+msgid "I do not have sufficient server permissions to edit this role!"
+msgstr ""
+"Eu não tenho permissões suficientes no servidor para editar este cargo."
+
+#: src/modules/shop/shops/colours.py:634
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_edit|resp:done|line:price"
+msgid "{tick} Set price to {coin}**{price}**"
+msgstr "{tick} configurar o preço por {coin}**{price}**"
+
+#: src/modules/shop/shops/colours.py:651
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_edit|resp:done|line:role"
+msgid "{tick} Updated role to {mention}"
+msgstr "{tick} Cargo atualizado para {mention}"
+
+#: src/modules/shop/shops/colours.py:661
+msgctxt "cmd:editshop_colours_edit|resp:done|embed:title"
+msgid "Colour Role Updated"
+msgstr "Cor do Cargo Atualizada"
+
+#: src/modules/shop/shops/colours.py:667
+msgctxt "cmd:editshop_colours_auto"
+msgid "auto"
+msgstr "automático"
+
+#: src/modules/shop/shops/colours.py:668
+msgctxt "cmd:editshop_colours_auto|desc"
+msgid "Automatically create a set of colour roles."
+msgstr "Automaticamente crie uma sequência de cores de cargo."
+
+#: src/modules/shop/shops/colours.py:677
+msgctxt "cmd:editshop_colours_add"
+msgid "add"
+msgstr "adicionar"
+
+#: src/modules/shop/shops/colours.py:680
+msgctxt "cmd:editshop_colours_add|desc"
+msgid "Add an existing role to the colour shop."
+msgstr "Adicionar um cargo existente para a loja de cores de cargo."
+
+#: src/modules/shop/shops/colours.py:684
+msgctxt "cmd:editshop_colours_add|param:role"
+msgid "role"
+msgstr "cargo"
+
+#: src/modules/shop/shops/colours.py:685
+msgctxt "cmd:editshop_colours_add|param:price"
+msgid "price"
+msgstr "preço"
+
+#: src/modules/shop/shops/colours.py:690
+msgctxt "cmd:editshop_colours_add|param:role|desc"
+msgid "Select a role to add to the colour shop."
+msgstr "Selecione um cargo para adicionar à loja."
+
+#: src/modules/shop/shops/colours.py:694
+msgctxt "cmd:editshop_colours_add|param:price|desc"
+msgid "How much should this role cost?"
+msgstr "Quanto este cargo deveria custar?"
+
+#: src/modules/shop/shops/colours.py:719
+msgctxt "cmd:editshop_colours_add|error:max_colours"
+msgid ""
+"This server already has the maximum of `25` colour roles!\n"
+"Please remove some before adding or creating more."
+msgstr ""
+"Este servidor já possui o máximo de ˋ25ˋ cores de cargo!\n"
+"Por favor, remova alguma antes de adicionar ou criar outra."
+
+#: src/modules/shop/shops/colours.py:728
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_add|error:role_exists"
+msgid "The role {mention} is already registered as a colour role!"
+msgstr "O cargo {mention} já está registrado como uma cor de cargo."
+
+#: src/modules/shop/shops/colours.py:737
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_add|error:role_perms"
+msgid ""
+"I do not have enough permissions to assign the role {mention}! Please ensure"
+" I have the `MANAGE_ROLES` permission, and that my top role is above this "
+"role."
+msgstr ""
+"Eu não tenho permissão para colocar o cargo {mention}! Por favor, garanta "
+"que eu tenha a permissão de ˋGERENCIAR_CARGOSˋ, e que meu cargo mais alto "
+"seja maior que este."
+
+#: src/modules/shop/shops/colours.py:748
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_add|error:caller_perms"
+msgid ""
+"You do not have sufficient server permissions to assign {mention} to the "
+"shop! You must have `MANAGE_ROLES`, and your top role must be above this "
+"role."
+msgstr ""
+"Você não tem permissão suficiente para colocar {mention} na loja! Você "
+"precisa ter permissão para ˋGERENCIAR_CARGOSˋ, e seu maior cargo precisa "
+"estar acima deste."
+
+#: src/modules/shop/shops/colours.py:760
+msgctxt "cmd:editshop_colours_add|error:role_has_admin"
+msgid ""
+"I refuse to add an administrator role to the LionCoin shop. That is a really"
+" bad idea."
+msgstr ""
+"Eu me recuso a adicionar um cargo de Administrador à Loja de LionCoin. Isto "
+"é realmente uma péssima ideia."
+
+#: src/modules/shop/shops/colours.py:781
+msgctxt "cmd:editshop_colours_add|resp:done|embed:title"
+msgid "Colour Role Created"
+msgstr "Cor de Cargo Criada"
+
+#: src/modules/shop/shops/colours.py:784
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_add|resp:done|embed:desc"
+msgid "You have added {mention} to the colour shop for {coin}**{price}**!"
+msgstr "Você adicionou {mention} à loja de cores por {coin}**{price}**!"
+
+#: src/modules/shop/shops/colours.py:792
+msgctxt "cmd:editshop_colours_clear"
+msgid "clear"
+msgstr "limpar"
+
+#: src/modules/shop/shops/colours.py:795
+msgctxt "cmd:editshop_colours_clear|desc"
+msgid ""
+"Remove all the colour roles from the shop, and optionally delete the roles."
+msgstr ""
+"Remova todas as cores dos cargos da loja, e opcionalmente delete os cargos."
+
+#: src/modules/shop/shops/colours.py:799
+msgctxt "cmd:editshop_colours_clear|param:delete"
+msgid "delete_roles"
+msgstr "excluir_cargos"
+
+#: src/modules/shop/shops/colours.py:804
+msgctxt "cmd:editshop_colours_clear|param:delete|desc"
+msgid "Also delete the associated roles."
+msgstr "Também apague os cargos associados."
+
+#: src/modules/shop/shops/colours.py:846
+msgctxt "cmd:editshop_colours_clear|error:no_colours"
+msgid "There are no coloured roles to remove!"
+msgstr "Não há cargos coloridos para remover."
+
+#: src/modules/shop/shops/colours.py:890
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_clear|resp:done|line:clear"
+msgid "{tick} Colour shop cleared."
+msgstr "{tick} Loja de cores foi limpa."
+
+#: src/modules/shop/shops/colours.py:901
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_clear|resp:done|line:refunding"
+msgid "{loading} Refunded **{count}/{total}** members."
+msgstr "{loading} Reembolsados **{count}/{total}** membros."
+
+#: src/modules/shop/shops/colours.py:907
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_clear|resp:done|line:refunded"
+msgid "{tick} Refunded **{total}/{total}** members."
+msgstr "{tick} Reembolsados **{total}/{total}** membros."
+
+#: src/modules/shop/shops/colours.py:920
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_clear|resp:done|line:deleted_failed"
+msgid ""
+"{emoji} Deleted **{count}/{total}** colour roles. (**{failed}** failed!)"
+msgstr ""
+"{emoji} Apagadas **{count}/{total}** cores de cargo. (**{failed}** failed!)"
+
+#: src/modules/shop/shops/colours.py:925
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_clear|resp:done|line:deleted"
+msgid "{emoji} Deleted **{count}/{total}** colour roles."
+msgstr "{emoji} Apagadas **{count}/{total}** cores de cargo."
+
+#: src/modules/shop/shops/colours.py:974
+msgctxt "cmd:editshop_colours_remove"
+msgid "remove"
+msgstr "remover"
+
+#: src/modules/shop/shops/colours.py:977
+msgctxt "cmd:editshop_colours_remove|desc"
+msgid "Remove a specific colour role from the shop."
+msgstr "Remova uma cor de cargo específica da loja. "
+
+#: src/modules/shop/shops/colours.py:981
+msgctxt "cmd:editshop_colours_remove|param:role"
+msgid "role"
+msgstr "cargo"
+
+#: src/modules/shop/shops/colours.py:982
+msgctxt "cmd:editshop_colours_remove"
+msgid "delete_role"
+msgstr "excluir_cargo"
+
+#: src/modules/shop/shops/colours.py:987
+msgctxt "cmd:editshop_colours_remove|param:role|desc"
+msgid "Select the colour role to remove."
+msgstr "Selecione a cor de cargo para remover."
+
+#: src/modules/shop/shops/colours.py:991
+msgctxt "cmd:editshop_colours_remove|param:delete_role|desc"
+msgid "Whether to delete the associated role."
+msgstr "Se o cargo associado também deverá ser deletado."
+
+#: src/modules/shop/shops/colours.py:1016
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_remove|error:not_colour"
+msgid "{mention} is not in the colour role shop!"
+msgstr "{mention} não está na loja de cores de cargo!"
+
+#: src/modules/shop/shops/colours.py:1034
+msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
+msgid "Successfully deleted the role."
+msgstr "Cargo deletado com sucesso!"
+
+#: src/modules/shop/shops/colours.py:1039
+msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
+msgid "I do not have sufficient permissions to delete the role."
+msgstr "Eu não tenho permissões suficientes para deletar o cargo."
+
+#: src/modules/shop/shops/colours.py:1044
+msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
+msgid "Failed to delete the role for an unknown reason."
+msgstr "Houve uma falha ao deletar o cargo. Motivo desconhecido."
+
+#: src/modules/shop/shops/colours.py:1049
+msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
+msgid "Could not find the role in order to delete it."
+msgstr "Não consegui encontrar o cargo para deletá-lo."
+
+#: src/modules/shop/shops/colours.py:1060
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_remove|resp:done|embed:desc"
+msgid ""
+"Removed {mention} from the colour shop.\n"
+"{delete_line}"
+msgstr ""
+"Removida {mention} da loja de cargos.\n"
+"{delete_line}"
+
+#: src/modules/shop/shops/colours.py:1138
+msgctxt "ui:colourstore|menu:buycolours|embed:error|title"
+msgid "Purchase Failed!"
+msgstr "A compra falhou!"
+
+#: src/modules/shop/shops/colours.py:1149
+#, possible-python-brace-format
+msgctxt "ui:colourstore|menu:buycolours|resp:done|desc"
+msgid "{tick} You have purchased {mention}"
+msgstr "{tick} Você comprou {mention}"
+
+#: src/modules/shop/shops/colours.py:1184
+msgctxt "ui:colourstore|menu:buycolours|placeholder"
+msgid "There are no colour roles available to purchase!"
+msgstr "Não há cores de cargo disponíveis para venda!"
+
+#: src/modules/shop/shops/colours.py:1190
+msgctxt "ui:colourstore|menu:buycolours|placeholder"
+msgid "Select a colour role to purchase!"
+msgstr "Selecione uma cor de cargo para comprar!"
+
+#: src/modules/shop/shops/colours.py:1236
+#, possible-python-brace-format
+msgctxt "ui:colourstore|embed|line:owned_item"
+msgid "`[{j:02}]` | `{price} LC` | {mention} (You own this!)"
+msgstr "`[{j:02}]` | `{price} LC` | {mention} (Você tem isto!)"
+
+#: src/modules/shop/shops/colours.py:1241
+#, possible-python-brace-format
+msgctxt "ui:colourstore|embed|line:item"
+msgid "`[{j:02}]` | `{price} LC` | {mention}"
+msgstr "`[{j:02}]` | `{price} LC` | {mention}"
+
+#: src/modules/shop/shops/colours.py:1248
+msgctxt "ui:colourstore|embed|desc"
+msgid "No colour roles available for purchase!"
+msgstr "Não há cores de cargo disponíveis para compra."
+
+#: src/modules/shop/shops/colours.py:1251
+msgctxt "ui:colourstore|embed|title"
+msgid "Colour Role Shop"
+msgstr "Loja de Cores de Cargo"
+
+#: src/modules/shop/shops/colours.py:1257
+#, possible-python-brace-format
+msgctxt "ui:colourstore|embed|footer:paged"
+msgid "Page {current}/{total}"
+msgstr "Página {current}/{total}"
+
+#: src/modules/shop/shops/colours.py:1264
+msgctxt "ui:colourstore|embed|field:warning|name"
+msgid "Note!"
+msgstr "Atenção!"
+
+#: src/modules/shop/shops/colours.py:1268
+#, possible-python-brace-format
+msgctxt "ui:colourstore|embed|field:warning|value"
+msgid ""
+"Purchasing a new colour role will *replace* your currently colour {current} "
+"without refund!"
+msgstr ""
+"Comprando um cargo colorido, a sua cor atual {current} será *alterada*, sem "
+"devolução das moedas gastas nela."

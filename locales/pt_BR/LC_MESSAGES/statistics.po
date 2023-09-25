@@ -1,0 +1,774 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Bruno Evangelista De Oliveira, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-24 12:21+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
+"Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#: src/modules/statistics/cog.py:43
+msgctxt "cmd:me"
+msgid "me"
+msgstr "Eu"
+
+#: src/modules/statistics/cog.py:46
+msgctxt "cmd:me|desc"
+msgid "Display your personal profile and summary statistics."
+msgstr "Mostra seu perfil pessoal e resumo das suas estatísticas."
+
+#: src/modules/statistics/cog.py:56
+msgctxt "cmd:stats"
+msgid "stats"
+msgstr "estatísticas"
+
+#: src/modules/statistics/cog.py:59
+msgctxt "cmd:stats|desc"
+msgid "Weekly and monthly statistics for your recent activity."
+msgstr "Estatísticas semanais, e mensais, das suas atividades recentes."
+
+#: src/modules/statistics/cog.py:72
+msgctxt "cmd:leaderboard"
+msgid "leaderboard"
+msgstr "Classificação"
+
+#: src/modules/statistics/cog.py:75
+msgctxt "cmd:leaderboard|desc"
+msgid "Server leaderboard."
+msgstr "Classificação no servidor."
+
+#: src/modules/statistics/cog.py:90
+#, possible-python-brace-format
+msgctxt "cmd:leaderboard|chunking|desc"
+msgid "Requesting server member list from Discord, please wait {loading}"
+msgstr ""
+"Requisitando lista de membros para o Discord. Por favor, aguarde {loading}"
+
+#: src/modules/statistics/cog.py:113
+msgctxt "cmd:configure_statistics"
+msgid "statistics"
+msgstr "Estatísticas"
+
+#: src/modules/statistics/cog.py:114
+msgctxt "cmd:configure_statistics|desc"
+msgid "Statistics configuration panel"
+msgstr "Painel de configuração das estatísticas"
+
+#: src/modules/statistics/cog.py:117
+msgctxt "cmd:configure_statistics|param:season_start"
+msgid "season_start"
+msgstr "começo_estatísticas"
+
+#: src/modules/statistics/cog.py:122
+msgctxt "cmd:configure_statistics|param:season_start|desc"
+msgid ""
+"Time from which to start counting activity for rank badges and season "
+"leaderboards. (YYYY-MM-DD)"
+msgstr ""
+"Tempo a partir do qual as estatísticas estarão sendo contadas para as "
+"classificações e ranking do servidor. (AAAA-MM-DD)"
+
+#: src/modules/statistics/settings.py:37
+msgctxt "settype:stat|output:voice"
+msgid "`Voice`"
+msgstr "ˋEm Canais de Vozˋ"
+
+#: src/modules/statistics/settings.py:38
+msgctxt "settype:stat|output:text"
+msgid "`Text`"
+msgstr "ˋMensagemˋ"
+
+#: src/modules/statistics/settings.py:39
+msgctxt "settype:stat|output:anki"
+msgid "`Anki`"
+msgstr "ˋAnkiˋ"
+
+#: src/modules/statistics/settings.py:42
+msgctxt "settype:stat|input_format:voice"
+msgid "Voice"
+msgstr "Em Canais de Voz"
+
+#: src/modules/statistics/settings.py:43
+msgctxt "settype:stat|input_format:text"
+msgid "Text"
+msgstr "Mensagens"
+
+#: src/modules/statistics/settings.py:44
+msgctxt "settype:stat|input_format:anki"
+msgid "Anki"
+msgstr "Anki"
+
+#: src/modules/statistics/settings.py:47
+msgctxt "settype:stat|input_pattern:voice"
+msgid "voice|study"
+msgstr "voz|estudo"
+
+#: src/modules/statistics/settings.py:48
+msgctxt "settype:stat|input_pattern:text"
+msgid "text|messages"
+msgstr "texto|mensagens"
+
+#: src/modules/statistics/settings.py:49
+msgctxt "settype:stat|input_pattern:anki"
+msgid "anki"
+msgstr "anki"
+
+#: src/modules/statistics/settings.py:53
+msgctxt "settype:state|accepts"
+msgid "Voice/Text/Anki"
+msgstr "Voz/Texto/Anki"
+
+#: src/modules/statistics/settings.py:66
+msgctxt "userset:show_global_stats"
+msgid "global_stats"
+msgstr "estatísticas_globais"
+
+#: src/modules/statistics/settings.py:69
+msgctxt "userset:show_global_stats|desc"
+msgid "Whether displayed statistics include all your servers."
+msgstr "Se irá mostrar a estatística escolhida de todos os seus servidores."
+
+#: src/modules/statistics/settings.py:73
+msgctxt "userset:show_global_stats|long_desc"
+msgid ""
+"Whether statistics commands display combined stats for all servers or just "
+"your current server."
+msgstr ""
+"Se o comando de estatísticas deve mostrar as estatísticas combinadas de "
+"todos seus servidores, ou somente do servidor atual."
+
+#: src/modules/statistics/settings.py:88
+msgctxt "guildset:season_start"
+msgid "season_start"
+msgstr "começo_estatísticas"
+
+#: src/modules/statistics/settings.py:91
+msgctxt "guildset:season_start|desc"
+msgid "Start of the current statistics season."
+msgstr "Conta as estatísticas a partir desta data."
+
+#: src/modules/statistics/settings.py:95
+msgctxt "guildset:season_start|long_desc"
+msgid ""
+"Activity ranks will be determined based on tracked activity since this time, and the leaderboard will display activity since this time by default. Unset to disable seasons and use all-time statistics instead.\n"
+"Provided dates and times are assumed to be in the guild `timezone`, so set this first!"
+msgstr ""
+"Os Níveis de Classificação serão computados com base na atividade desde esta data, assim como a Tabela de Classificação do servidor. Para que sejam usadas as estatísticas desde o início do servidor, deixe sem configurações de data.\n"
+"Os dias e as horas das estatísticas são baseadas no ˋfuso horárioˋ do servidor, então, configure-o primeiro!"
+
+#: src/modules/statistics/settings.py:102
+msgctxt "guildset:season_start|accepts"
+msgid "The season start time in the form YYYY-MM-DD HH:MM"
+msgstr ""
+"Determine o marco temporal a para o começo das estatísticas de atividades. "
+"Use formato AAAA-MM-DD HH:MM"
+
+#: src/modules/statistics/settings.py:106
+msgctxt "guildset:season_start|notset"
+msgid "Not Set (Using all-time statistics)"
+msgstr "Não Configurado (Usando estatísticas desde o início dos registros)  "
+
+#: src/modules/statistics/settings.py:125
+#, possible-python-brace-format
+msgctxt "guildset:season_start|parse|error:future_time"
+msgid "Provided season start time {timestamp} is in the future!"
+msgstr ""
+"A data informada {timestamp} para começar a contar as estatísticas, é no "
+"futuro! "
+
+#: src/modules/statistics/settings.py:137
+#, possible-python-brace-format
+msgctxt "guildset:season_start|set_response|set"
+msgid ""
+"The leaderboard season and activity ranks will now count from {timestamp}. Member ranks will update when they are next active.\n"
+"Use {rank_cmd} and press **Refresh Member Ranks** to refresh all ranks immediately."
+msgstr ""
+"A Tabela de Classificação, e os Níveis de Atividade, serão contados desde {timestamp}. Os níveis dos membros serão atualizados assim que eles ficarem ativos novamente.\n"
+"Use {rank_cmd} e clique em **Atualizar Níveis dos Membros** para atualizar todos os níveis imediatamente."
+
+#: src/modules/statistics/settings.py:147
+#, possible-python-brace-format
+msgctxt "guildset:season_start|set_response|unset"
+msgid ""
+"The leaderboard and activity ranks will now count all-time statistics. Member ranks will update when they are next active.\n"
+"Use {rank_cmd} and press **Refresh Member Ranks** to refresh all ranks immediately."
+msgstr ""
+"A Tabela de Classificação e os Níveis de Atividade irão contar desde o início. Os membros terão seus níveis atualizados assim que ficarem ativos novamente.\n"
+"Use {rank_cmd} e clique em **Atualizar Níveis dos Membros** para atualizar todos os níveis imediatamente."
+
+#: src/modules/statistics/settings.py:159
+msgctxt "guildset:unranked_roles"
+msgid "unranked_roles"
+msgstr "cargos_não_contabilizados"
+
+#: src/modules/statistics/settings.py:162
+msgctxt "guildset:unranked_roles|desc"
+msgid "Roles to exclude from the leaderboards."
+msgstr "Cargos que não serão mostrados nas classificações."
+
+#: src/modules/statistics/settings.py:166
+msgctxt "guildset:unranked_roles|long_desc"
+msgid ""
+"When set, members with *any* of these roles will not appear on the "
+"/leaderboard ranking list."
+msgstr ""
+"Quando configurado, membros com *qualquer* destes cargos, não irão aparecer "
+"na /classificação do servidor."
+
+#: src/modules/statistics/settings.py:170
+msgctxt "guildset:unranked_roles|accepts"
+msgid "Comma separated list of unranked role names or ids."
+msgstr ""
+"Nome ou ID dos cargos não contabilizados para classificações, separados por "
+"vírgula."
+
+#: src/modules/statistics/settings.py:186
+msgctxt "guildset:unranked_roles|set_using"
+msgid "Role selector below."
+msgstr "Selecione o cargo abaixo."
+
+#: src/modules/statistics/settings.py:196
+#, possible-python-brace-format
+msgctxt "guildset:unranked_roles|set_response|set"
+msgid ""
+"Members of the following roles will not appear on the leaderboard: {roles}"
+msgstr ""
+"Os membros dos cargos seguintes não irão aparecer na Lista de Classificação:"
+" {roles}"
+
+#: src/modules/statistics/settings.py:203
+msgctxt "guildset:unranked_roles|set_response|unset"
+msgid "You have cleared the unranked role list."
+msgstr "Você limpou a lista de cargos não contabilizáveis."
+
+#: src/modules/statistics/settings.py:217
+msgctxt "guildset:visible_stats"
+msgid "visible_stats"
+msgstr "estatística_visível"
+
+#: src/modules/statistics/settings.py:220
+msgctxt "guildset:visible_stats|desc"
+msgid "Which statistics will be visible in the statistics commands."
+msgstr ""
+"Quais estatísticas poderão ser vistas através dos comandos de estatística "
+"deste servidor."
+
+#: src/modules/statistics/settings.py:224
+msgctxt "guildset:visible_stats|desc"
+msgid ""
+"Choose which statistics types to display in the leaderboard and statistics "
+"commands."
+msgstr ""
+"Escolha quais tipos de estatística a serem mostradas na Lista de "
+"Classificação e nos comandos de estatísticas deste servidor."
+
+#: src/modules/statistics/settings.py:228
+msgctxt "guildset:visible_stats|accepts"
+msgid "Voice, Text, Anki"
+msgstr "Voz, Mensagens, Anki"
+
+#: src/modules/statistics/settings.py:249
+msgctxt "guildset:visible_stats|set_using"
+msgid "Option menu below."
+msgstr "Opção de menu, abaixo."
+
+#: src/modules/statistics/settings.py:257
+#, possible-python-brace-format
+msgctxt "guildset:visible_stats|set_response"
+msgid "Members will be able to view the following statistics types: {types}"
+msgstr ""
+"Os membros estarão aptos a ver os seguintes tipos de estatísticas: {types} "
+
+#: src/modules/statistics/settings.py:267
+msgctxt "guildset:default_stat"
+msgid "default_stat"
+msgstr "estatística_padrão"
+
+#: src/modules/statistics/settings.py:270
+msgctxt "guildset:default_stat|desc"
+msgid "Statistic type to display by default in setting dialogues."
+msgstr ""
+"Tipo de estatística para ser mostrada como padrão na configuração de "
+"conversas."
+
+#: src/modules/statistics/settings.py:274
+msgctxt "guildset:default_stat|long_desc"
+msgid "Which statistic type to display by default in setting dialogues."
+msgstr ""
+"Qual o tipo de estatística para ser mostrada por padrão nas configurações de"
+" conversas."
+
+#: src/modules/statistics/settings.py:307
+msgctxt "ui:statistics_config|menu:unranked_roles|placeholder"
+msgid "Select Unranked Roles"
+msgstr "Selecione Cargos Não Contabilizáveis"
+
+#: src/modules/statistics/settings.py:331
+msgctxt "ui:statistics_config|menu:visible_stats|item:voice|mode:voice"
+msgid "Voice Activity"
+msgstr "Atividade em Canal de Voz"
+
+#: src/modules/statistics/settings.py:336
+msgctxt "ui:statistics_config|menu:visible_stats|item:voice|mode:study"
+msgid "Study Statistics"
+msgstr "Estatísticas de Estudos"
+
+#: src/modules/statistics/settings.py:346
+msgctxt "ui:statistics_config|menu:visible_stats|item:text"
+msgid "Message Activity"
+msgstr "Atividade em Conversas"
+
+#: src/modules/statistics/settings.py:354
+msgctxt "ui:statistics_config|menu:visible_stats|item:anki"
+msgid "Anki Reviews"
+msgstr "Revisões Anki"
+
+#: src/modules/statistics/settings.py:365
+msgctxt "ui:statistics_config|menu:visible_stats|placeholder"
+msgid "Select Visible Statistics"
+msgstr "Selecione Estatísticas Visíveis"
+
+#: src/modules/statistics/settings.py:386
+msgctxt "ui:statistics_config|embed|title"
+msgid "Statistics Configuration Panel"
+msgstr "Painel de Configuração de Estatísticas"
+
+#: src/modules/statistics/settings.py:408
+msgctxt "dash:stats|title"
+msgid "Activity Statistics Configuration ({commands[configure statistics]})"
+msgstr ""
+"Configuração das Estatísticas de Atividade ({commands[configure "
+"statistics]})"
+
+#: src/modules/statistics/settings.py:412
+msgctxt "dash:stats|dropdown|placeholder"
+msgid "Activity Statistics Panel"
+msgstr "Painel de Estatísticas de Atividade"
+
+#: src/modules/statistics/ui/goals.py:92
+msgctxt "ui:MonthlyUI|name"
+msgid "Monthly"
+msgstr "Mensal"
+
+#: src/modules/statistics/ui/goals.py:135
+msgctxt "ui:WeeklyUI|name"
+msgid "Weekly"
+msgstr "Semanal"
+
+#: src/modules/statistics/ui/summary.py:18
+msgctxt "ui:SummaryUI|name"
+msgid "Summary"
+msgstr "Sumário"
+
+#: src/modules/statistics/ui/weeklymonthly.py:96
+msgctxt "menu:stat_type|opt:weekly_voice|name"
+msgid "Weekly Voice Statistics"
+msgstr "Estatística Semanal em Canal de Voz"
+
+#: src/modules/statistics/ui/weeklymonthly.py:101
+msgctxt "menu:stat_type|opt:weekly_text|name"
+msgid "Weekly Text Statistics"
+msgstr "Estatística Semanal em Conversas"
+
+#: src/modules/statistics/ui/weeklymonthly.py:106
+msgctxt "menu:stat_type|opt:weekly_anki|name"
+msgid "Weekly Anki Statistics"
+msgstr "Estatística Semanal Anki"
+
+#: src/modules/statistics/ui/weeklymonthly.py:112
+msgctxt "menu:stat_type|opt:monthly_voice|name"
+msgid "Monthly Voice Statistics"
+msgstr "Estatística Mensal em Canal de Voz"
+
+#: src/modules/statistics/ui/weeklymonthly.py:117
+msgctxt "menu:stat_type|opt:monthly_text|name"
+msgid "Monthly Text Statistics"
+msgstr "Estatística Mensal em Conversas"
+
+#: src/modules/statistics/ui/weeklymonthly.py:122
+msgctxt "menu:stat_type|opt:monthly_anki|name"
+msgid "Monthly Anki Statistics"
+msgstr "Estatística Mensal Anki"
+
+#: src/modules/statistics/ui/weeklymonthly.py:144
+msgctxt "modal:goal_editor|field:task_goal|label"
+msgid "Task goal"
+msgstr "Meta de Tarefas"
+
+#: src/modules/statistics/ui/weeklymonthly.py:148
+msgctxt "modal:goal_editor|field:task_goal|placeholder"
+msgid "Enter the number of tasklist tasks you aim to do"
+msgstr "Digite o número de tarefas da lista-de-tarefas para ser o objetivo."
+
+#: src/modules/statistics/ui/weeklymonthly.py:159
+#, possible-python-brace-format
+msgctxt "modal:goal_editor|field:task_goal|error:NAN"
+msgid "The provided task goal `{input}` is not a number! Please try again."
+msgstr ""
+"A meta de tarefas informada ˋ{input}ˋ não é um número! Por favor, tente "
+"novamente."
+
+#: src/modules/statistics/ui/weeklymonthly.py:181
+msgctxt "modal:goal_editor|field:voice_goal|label"
+msgid "Study time goal"
+msgstr "Meta de Horas de Estudo"
+
+#: src/modules/statistics/ui/weeklymonthly.py:185
+msgctxt "modal:goal_editor|field:voice_goal|placeholder"
+msgid "Enter a number of hours of study to aim for."
+msgstr "Digite o número de horas de estudo para ser o objetivo."
+
+#: src/modules/statistics/ui/weeklymonthly.py:190
+msgctxt "modal:goal_editor|field:text_goal|label"
+msgid "Message goal"
+msgstr "Meta de Mensagens"
+
+#: src/modules/statistics/ui/weeklymonthly.py:194
+msgctxt "modal:goal_editor|field:text_goal|placeholder"
+msgid "Enter a message count to aim for."
+msgstr "Digite um valor de mensagens para ser o objetivo."
+
+#: src/modules/statistics/ui/weeklymonthly.py:199
+msgctxt "modal:goal_editor|field:anki_goal|label"
+msgid "Card goal"
+msgstr "Meta Cartões"
+
+#: src/modules/statistics/ui/weeklymonthly.py:203
+msgctxt "modal:goal_editor|field:anki_goal|label"
+msgid "Enter a number of card revisions to aim for."
+msgstr "Digite um número de revisões em cartões do Anki para ser o objetivo."
+
+#: src/modules/statistics/ui/weeklymonthly.py:216
+#, possible-python-brace-format
+msgctxt "modal:goal_editor|field:voice_goal|error:NAN"
+msgid ""
+"The provided study time goal `{input}` is not a number! Please try again."
+msgstr ""
+"A meta de estudos informada ˋ{input}ˋ não é um número! Por favor, tente "
+"novamente."
+
+#: src/modules/statistics/ui/weeklymonthly.py:223
+#, possible-python-brace-format
+msgctxt "modal:goal_editor|field:text_goal|error:NAN"
+msgid "The provided message goal `{input}` is not a number! Please try again."
+msgstr ""
+"A meta de conversas informada ˋ{input}ˋ não é um número! Por favor, tente "
+"novamente."
+
+#: src/modules/statistics/ui/weeklymonthly.py:230
+#, possible-python-brace-format
+msgctxt "modal:goal_editor|field:anki_goal|error:NAN"
+msgid "The provided card goal `{input}` is not a number! Please try again."
+msgstr ""
+"A meta de cartões informada ˋ{input}ˋ não é um número! Por favor, tente "
+"novamente."
+
+#: src/modules/statistics/ui/weeklymonthly.py:252
+msgctxt "modal:goal_editor|field:weekly_task_editor|label"
+msgid "Tasks to complete this week (one per line)"
+msgstr "Tarefas a completar nesta semana (uma por linha)"
+
+#: src/modules/statistics/ui/weeklymonthly.py:256
+msgctxt "modal:goal_editor|field:weekly_task_editor|placeholder"
+msgid ""
+"[ ] Write my biology essay\n"
+"[x] Complete the second maths assignment\n"
+msgstr ""
+"[ ] Escrever minha redação de biologia\n"
+"[x] Estudar na A Seita todos os dias da semana\n"
+
+#: src/modules/statistics/ui/weeklymonthly.py:262
+msgctxt "modal:goal_editor|field:monthly_task_editor|label"
+msgid "Tasks to complete this month (one per line)"
+msgstr "Tarefas para completar este mês (uma por linha)"
+
+#: src/modules/statistics/ui/weeklymonthly.py:266
+msgctxt "modal:goal_editor|field:monthly_task_editor|placeholder"
+msgid ""
+"[ ] Write my biology essay\n"
+"[x] Complete the second maths assignment\n"
+msgstr ""
+"[ ] Escrever minha redação de biologia\n"
+"[x] Estudar na A Seita todos os dias da semana\n"
+
+#: src/modules/statistics/ui/weeklymonthly.py:284
+#, possible-python-brace-format
+msgctxt "modal:goal_editor||field:task_editor|error:parse_general"
+msgid ""
+"Malformed task!\n"
+"`{input}`"
+msgstr ""
+"Tarefa fora do padrão!\n"
+"ˋ{input}ˋ"
+
+#: src/modules/statistics/ui/weeklymonthly.py:301
+msgctxt "modal:goal_editor|title"
+msgid "Weekly goal editor"
+msgstr "Editor Meta Semanal"
+
+#: src/modules/statistics/ui/weeklymonthly.py:306
+msgctxt "modal:goal_editor|monthly|title"
+msgid "Monthly goal editor"
+msgstr "Editor Meta Mensal"
+
+#: src/modules/statistics/ui/weeklymonthly.py:503
+msgctxt "ui:weeklymonthly|button:edit_goals|label"
+msgid "Edit Goals"
+msgstr "Editor Metas"
+
+#: src/modules/statistics/ui/weeklymonthly.py:519
+#, possible-python-brace-format
+msgctxt "ui:weeklymonthly|menu:period|monthly|label"
+msgid "{month} {year}"
+msgstr "{month} {year}"
+
+#: src/modules/statistics/ui/weeklymonthly.py:534
+#, possible-python-brace-format
+msgctxt "ui:weeklymonthly|menu:period|weekly|label"
+msgid "{year} W{week}"
+msgstr "{year} S{week}"
+
+#: src/modules/statistics/ui/weeklymonthly.py:538
+#, possible-python-brace-format
+msgctxt "ui:weeklymonthly|menu:period|weekly|desc"
+msgid ""
+"{start_day} {start_month} {start_year} to {end_day} {end_month} {end_year}"
+msgstr ""
+"{start_day} {start_month} {start_year} até {end_day} {end_month} {end_year}"
+
+#: src/modules/statistics/ui/weeklymonthly.py:616
+msgctxt "ui:weeklymonthly|button:period|close|label"
+msgid "Close Selector"
+msgstr "Fechar Seletor"
+
+#: src/modules/statistics/ui/weeklymonthly.py:621
+msgctxt "ui:weeklymonthly|button:period|weekly|label"
+msgid "Select Week"
+msgstr "Selecionar Semana"
+
+#: src/modules/statistics/ui/weeklymonthly.py:626
+msgctxt "ui:weeklymonthly|button:period|monthly|label"
+msgid "Select Month"
+msgstr "Selecionar Mês"
+
+#: src/modules/statistics/ui/weeklymonthly.py:691
+msgctxt "ui:weeklymonthly|menu:period|weekly|placeholder"
+msgid "Select a week to display"
+msgstr "Selecione uma semana para mostrar"
+
+#: src/modules/statistics/ui/weeklymonthly.py:696
+msgctxt "ui:weeklymonthly|menu:period|monthly|placeholder"
+msgid "Select a month to display"
+msgstr "Selecione um mês para mostrar"
+
+#: src/modules/statistics/ui/weeklymonthly.py:718
+msgctxt "ui:WeeklyMonthly|button:global|resp:success"
+msgid ""
+"You will now see combined statistics from all your servers (where "
+"applicable)! Press again to revert."
+msgstr ""
+"Você irá ver as estatísticas combinadas de todos os seus servidores (onde "
+"for possível)! Pressione novamente para desfazer."
+
+#: src/modules/statistics/ui/weeklymonthly.py:731
+msgctxt "ui:WeeklyMonthly|button:global|mode:local"
+msgid "Server Statistics"
+msgstr "Estatísticas do Servidor"
+
+#: src/modules/statistics/ui/weeklymonthly.py:736
+msgctxt "ui:WeeklyMonthly|button:global|mode:global"
+msgid "Global Statistics"
+msgstr "Estatísticas Globais"
+
+#: src/modules/statistics/ui/profile.py:41
+msgctxt "modal:profile_editor|field:editor|label"
+msgid "Profile Tags (One line per tag)"
+msgstr "Etiquetas de Perfil (uma linha por etiqueta)"
+
+#: src/modules/statistics/ui/profile.py:45
+msgctxt "modal:profile_editor|field:editor|placeholder"
+msgid ""
+"Mathematician\n"
+"Loves Cats"
+msgstr ""
+"Matematico\n"
+"AmaGatos"
+
+#: src/modules/statistics/ui/profile.py:53
+msgctxt "modal:profile_editor|title"
+msgid "Profile Tag Editor"
+msgstr "Editor Etiquetas Perfil"
+
+#: src/modules/statistics/ui/profile.py:71
+#, possible-python-brace-format
+msgctxt "modal:profile_editor|error:too_many_tags"
+msgid "Too many tags! You can have at most `{limit}` profile tags."
+msgstr ""
+"Muitas etiquetas de perfil! Você pode ter no máximo ˋ{limit}ˋ etiquetas de "
+"perfil."
+
+#: src/modules/statistics/ui/profile.py:92
+msgctxt "menu:stat_type|opt:voice|name"
+msgid "Voice Statistics"
+msgstr "Etatísticas em Canal de Voz"
+
+#: src/modules/statistics/ui/profile.py:97
+msgctxt "menu:stat_type|opt:text|name"
+msgid "Text Statistics"
+msgstr "Estatísticas em Conversas"
+
+#: src/modules/statistics/ui/profile.py:102
+msgctxt "menu:stat_type|opt:anki|name"
+msgid "Anki Statistics"
+msgstr "Estatísticas Anki"
+
+#: src/modules/statistics/ui/profile.py:190
+msgctxt "modal:profile_editor|resp:success"
+msgid "Your profile has been updated!"
+msgstr "Seu perfil foi atualizado!"
+
+#: src/modules/statistics/ui/profile.py:200
+msgctxt "ui:profile_card|button:edit|label"
+msgid "Edit Profile Badges"
+msgstr "Editar Distintivos Perfil"
+
+#: src/modules/statistics/ui/profile.py:219
+msgctxt "ui:profile_card|button:statistics|label:hide"
+msgid "Hide Statistics"
+msgstr "Ocultar Estatísticas"
+
+#: src/modules/statistics/ui/profile.py:224
+msgctxt "ui:profile_card|button:statistics|label:show"
+msgid "Show Statistics"
+msgstr "Mostrar Estatísticas"
+
+#: src/modules/statistics/ui/profile.py:253
+msgctxt "ui:Profile|button:global|resp:success"
+msgid ""
+"You will now see statistics from all you servers (where applicable)! Press "
+"again to revert."
+msgstr ""
+"Agora, você irá ver estatísticas de todos os seus servidores (em que "
+"possível)! Clique novamente para desfazer."
+
+#: src/modules/statistics/ui/leaderboard.py:253
+msgctxt "ui:leaderboard|menu:stats|placeholder"
+msgid "Select Activity Type"
+msgstr "Selecione Tipo de Atividade"
+
+#: src/modules/statistics/ui/leaderboard.py:262
+msgctxt "ui:leaderboard|menu:stats|item:voice"
+msgid "Voice Activity"
+msgstr "Atividade em Canal de Voz"
+
+#: src/modules/statistics/ui/leaderboard.py:273
+msgctxt "ui:leaderboard|menu:stats|item:study"
+msgid "Study Statistics"
+msgstr "Estatísticas de Estudos"
+
+#: src/modules/statistics/ui/leaderboard.py:284
+msgctxt "ui:leaderboard|menu:stats|item:message"
+msgid "Message Activity"
+msgstr "Atividade em Conversas"
+
+#: src/modules/statistics/ui/leaderboard.py:295
+msgctxt "ui:leaderboard|menu;stats|item:anki"
+msgid "Anki Cards Reviewed"
+msgstr "Cartões Anki Revisados"
+
+#: src/modules/statistics/ui/leaderboard.py:349
+msgctxt "ui:leaderboard|button:season|label"
+msgid "This Season"
+msgstr "Neste Período"
+
+#: src/modules/statistics/ui/leaderboard.py:353
+msgctxt "ui:leaderboard|button:day|label"
+msgid "Today"
+msgstr "Hoje"
+
+#: src/modules/statistics/ui/leaderboard.py:357
+msgctxt "ui:leaderboard|button:week|label"
+msgid "This Week"
+msgstr "Esta Semana"
+
+#: src/modules/statistics/ui/leaderboard.py:361
+msgctxt "ui:leaderboard|button:month|label"
+msgid "This Month"
+msgstr "Este Mês"
+
+#: src/modules/statistics/ui/leaderboard.py:365
+msgctxt "ui:leaderboard|button:alltime|label"
+msgid "All Time"
+msgstr "Desde Sempre"
+
+#: src/modules/statistics/ui/leaderboard.py:369
+msgctxt "ui:leaderboard|button:jump|label"
+msgid "Jump"
+msgstr "Ir"
+
+#: src/modules/statistics/ui/leaderboard.py:384
+msgctxt "ui:leaderboard|button:jump|input:title"
+msgid "Jump to page"
+msgstr "Ir para a página"
+
+#: src/modules/statistics/ui/leaderboard.py:388
+msgctxt "ui:leaderboard|button:jump|input:question"
+msgid "Page number to jump to"
+msgstr "Número da página para ir"
+
+#: src/modules/statistics/ui/leaderboard.py:399
+msgctxt "ui:leaderboard|button:jump|error:invalid_page"
+msgid "Invalid page number, please try again!"
+msgstr "Número da página inválido, por favor, tente novamente!"
+
+#: src/modules/statistics/ui/leaderboard.py:443
+msgctxt "ui:leaderboard|chunk_warning"
+msgid ""
+"**Note:** Could not retrieve member list from Discord, so some members may "
+"be missing. Try again in a minute!"
+msgstr ""
+"**Nota:** Não pude recuperar a lista de membros do Discord, então alguns "
+"membros podem estar faltando. Tente novamente em um minuto!"
+
+#: src/modules/statistics/ui/leaderboard.py:450
+#, possible-python-brace-format
+msgctxt "ui:leaderboard|since"
+msgid "Counting statistics since {timestamp}"
+msgstr "Estatísticas sendo contadas desde {timestamp}"
+
+#: src/modules/statistics/ui/leaderboard.py:463
+#, possible-python-brace-format
+msgctxt "ui:leaderboard|mode:voice|message:empty|desc"
+msgid "There has been no voice activity since {timestamp}"
+msgstr "Não houve atividade em canais de voz desde {timestamp}"
+
+#: src/modules/statistics/ui/leaderboard.py:468
+#, possible-python-brace-format
+msgctxt "ui:leaderboard|mode:text|message:empty|desc"
+msgid "There has been no message activity since {timestamp}"
+msgstr "Não houve atividade em conversas desde {timestamp}"
+
+#: src/modules/statistics/ui/leaderboard.py:473
+#, possible-python-brace-format
+msgctxt "ui:leaderboard|mode:anki|message:empty|desc"
+msgid "There have been no Anki cards reviewed since {timestamp}"
+msgstr "Não houve atividade em Cartões Anki desde {timestamp}"
+
+#: src/modules/statistics/ui/leaderboard.py:482
+msgctxt "ui:leaderboard|message:empty|title"
+msgid "Leaderboard Empty!"
+msgstr "Lista de Classificação Vazia!"

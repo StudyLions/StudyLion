@@ -1,0 +1,86 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Bruno Evangelista De Oliveira, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-24 12:21+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
+"Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#: src/modules/test/test.py:59 src/modules/test/test.py:66
+msgid "test"
+msgstr "teste"
+
+#: src/modules/test/test.py:67
+msgid "Test"
+msgstr "Teste"
+
+#: src/modules/test/test.py:74
+msgid "editor"
+msgstr "editor"
+
+#: src/modules/test/test.py:75
+msgid "Test message editor"
+msgstr "Teste do editor de mensagem"
+
+#: src/modules/test/test.py:101
+msgid "test_ephemeral"
+msgstr "teste_provisório"
+
+#: src/modules/test/test.py:102
+msgid "Test ephemeral delete and edit"
+msgstr "Apagar e editar Teste Provisório"
+
+#: src/modules/test/test.py:114
+msgid "colours"
+msgstr "cores"
+
+#: src/modules/test/test.py:115
+msgid "Test Ansi colours"
+msgstr "Teste cores Ansi"
+
+#: src/modules/test/test.py:135
+msgid "fail"
+msgstr "falha"
+
+#: src/modules/test/test.py:143
+msgid "failui"
+msgstr "falha"
+
+#: src/modules/test/test.py:150
+msgid "pager"
+msgstr "pager"
+
+#: src/modules/test/test.py:178
+msgid "pager2"
+msgstr "pager2"
+
+#: src/modules/test/test.py:209
+msgid "prettyusers"
+msgstr "usuáriosfofos"
+
+#: src/modules/test/test.py:259
+msgid "dmview"
+msgstr "ver_md"
+
+#: src/modules/test/test.py:270
+msgid "multiview"
+msgstr "multivisao"
+
+#: src/modules/test/test.py:287
+msgid "stats-card"
+msgstr "stats-cartões"
