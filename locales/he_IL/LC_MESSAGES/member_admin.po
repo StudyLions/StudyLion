@@ -50,7 +50,7 @@ msgstr "הודעת חזרה לשרת"
 #: src/modules/member_admin/settingui.py:213
 msgctxt "ui:memberadmin|embed|title"
 msgid "Greetings and Initial Roles Panel"
-msgstr ""
+msgstr "לוח בקרה של \"ברוכים הבאים\" ורולים ראשונים"
 
 #: src/modules/member_admin/settingui.py:257
 msgctxt "dash:member_admin|title"
