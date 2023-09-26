@@ -231,12 +231,12 @@ msgstr "Język został wyłączony."
 #, possible-python-brace-format
 msgctxt "guildset:locale|response"
 msgid "You have set the guild language to {lang}."
-msgstr ""
+msgstr "Język został ustawiony na {lang}."
 
 #: src/babel/enums.py:43
 msgctxt "localenames|locale:id"
 msgid "Indonesian"
-msgstr ""
+msgstr "Indonezja"
 
 #: src/babel/enums.py:44
 msgctxt "localenames|locale:da"
