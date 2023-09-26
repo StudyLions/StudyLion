@@ -276,7 +276,7 @@ msgstr "Chorwacki"
 #: src/babel/enums.py:51
 msgctxt "localenames|locale:it"
 msgid "Italian"
-msgstr ""
+msgstr "Włoski"
 
 #: src/babel/enums.py:52
 msgctxt "localenames|locale:lt"
