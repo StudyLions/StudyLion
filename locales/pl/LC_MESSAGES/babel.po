@@ -361,7 +361,7 @@ msgstr "Ukraiński"
 #: src/babel/enums.py:68
 msgctxt "localenames|locale:hi"
 msgid "Hindi"
-msgstr ""
+msgstr "Hindi"
 
 #: src/babel/enums.py:69
 msgctxt "localenames|locale:th"
