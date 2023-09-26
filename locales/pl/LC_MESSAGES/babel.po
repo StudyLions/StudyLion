@@ -296,7 +296,7 @@ msgstr "Holenderski"
 #: src/babel/enums.py:55
 msgctxt "localenames|locale:no"
 msgid "Norwegian"
-msgstr ""
+msgstr "Norweski"
 
 #: src/babel/enums.py:56
 msgctxt "localenames|locale:pl"
