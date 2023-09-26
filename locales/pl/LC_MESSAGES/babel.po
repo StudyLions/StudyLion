@@ -92,7 +92,7 @@ msgstr "Resetuj"
 #, possible-python-brace-format
 msgctxt "acmpl:language|no_match"
 msgid "No supported languages matching {partial}"
-msgstr ""
+msgstr "Brak obsługiwanych języków pasujących z {partial}"
 
 #: src/babel/utils.py:9
 msgctxt "utils|months"
