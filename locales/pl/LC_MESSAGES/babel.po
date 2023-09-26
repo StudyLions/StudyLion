@@ -120,7 +120,7 @@ msgstr "Obsługiwany"
 #: src/babel/settings.py:44
 msgctxt "settype:locale|formatted:unset"
 msgid "Unset"
-msgstr ""
+msgstr "Nieustawione"
 
 #: src/babel/settings.py:60
 #, possible-python-brace-format
