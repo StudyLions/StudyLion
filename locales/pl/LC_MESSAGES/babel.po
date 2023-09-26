@@ -61,7 +61,7 @@ msgstr "Nie można włączyć `{force_setting}` bez skonfigurowanego języka!"
 #: src/babel/cog.py:167
 msgctxt "cmd:configure_language|success"
 msgid "Language settings updated!"
-msgstr ""
+msgstr "Ustawienia językowe zaktualizowane!"
 
 #: src/babel/cog.py:183
 msgctxt "cmd:userconfig_language"
