@@ -218,6 +218,9 @@ msgid ""
 "Member's own configured language will override this for their commands "
 "unless `force_language` is enabled."
 msgstr ""
+"Domyślny język używany do odpowiedzi i interakcji na tym serwerze. Własny "
+"skonfigurowany język członka zastąpi ten dla jego poleceń, chyba że włączona"
+" jest opcja `force_language`."
 
 #: src/babel/settings.py:172
 msgctxt "guildset:locale|response"
