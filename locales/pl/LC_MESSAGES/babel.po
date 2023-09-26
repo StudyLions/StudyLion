@@ -376,7 +376,7 @@ msgstr "Chiński, Chiny"
 #: src/babel/enums.py:71
 msgctxt "localenames|locale:ja"
 msgid "Japanese"
-msgstr ""
+msgstr "Japoński"
 
 #: src/babel/enums.py:72
 msgctxt "localenames|locale:zh-TW"
