@@ -199,7 +199,7 @@ msgstr "Zawsze będę używał ustalonego języka na tym serwerze."
 #: src/babel/settings.py:139
 msgctxt "guildset:force_locale|response"
 msgid "I will now allow the members to set their own language here."
-msgstr ""
+msgstr "Pozwolę teraz członkom na ustawienie własnego języka."
 
 #: src/babel/settings.py:156
 msgctxt "guildset:locale"
