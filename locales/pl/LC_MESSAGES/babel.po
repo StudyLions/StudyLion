@@ -126,12 +126,12 @@ msgstr "Nieustawione"
 #, possible-python-brace-format
 msgctxt "settype:locale|error"
 msgid "Sorry, we do not support the language `{lang}` at this time!"
-msgstr ""
+msgstr "Przepraszamy, obecnie nie obsługujemy tego języka `{lang}`!"
 
 #: src/babel/settings.py:75
 msgctxt "userset:locale"
 msgid "language"
-msgstr ""
+msgstr "Język"
 
 #: src/babel/settings.py:76
 msgctxt "userset:locale|desc"
