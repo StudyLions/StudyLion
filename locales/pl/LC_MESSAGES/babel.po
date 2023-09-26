@@ -366,12 +366,12 @@ msgstr "Hindi"
 #: src/babel/enums.py:69
 msgctxt "localenames|locale:th"
 msgid "Thai"
-msgstr ""
+msgstr "Tajski"
 
 #: src/babel/enums.py:70
 msgctxt "localenames|locale:zh-CN"
 msgid "Chinese, China"
-msgstr ""
+msgstr "Chiński, Chiny"
 
 #: src/babel/enums.py:71
 msgctxt "localenames|locale:ja"
