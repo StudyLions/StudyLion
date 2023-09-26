@@ -178,6 +178,8 @@ msgid ""
 "When enabled, commands in this guild will always use the configured guild "
 "language, regardless of the member's personally configured language."
 msgstr ""
+"Gdy ta opcja jest włączona, polecenia będą zawsze używać skonfigurowanego "
+"języka, niezależnie od języka skonfigurowanego osobiście przez członka."
 
 #: src/babel/settings.py:119
 msgctxt "guildset:force_locale|output"
