@@ -99,6 +99,8 @@ msgctxt "utils|months"
 msgid ""
 "January,February,March,April,May,June,July,August,September,October,November,December"
 msgstr ""
+"Styczeń, luty, marzec, kwiecień, maj, czerwiec, lipiec, sierpień, wrzesień, "
+"październik, listopad, grudzień"
 
 #: src/babel/utils.py:14
 msgctxt "utils|short_months"
