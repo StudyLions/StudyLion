@@ -136,7 +136,7 @@ msgstr "Język"
 #: src/babel/settings.py:76
 msgctxt "userset:locale|desc"
 msgid "Your preferred language for interacting with me."
-msgstr ""
+msgstr "Preferowany język interakcji ze mną."
 
 #: src/babel/settings.py:79
 msgctxt "userset:locale|long_desc"
