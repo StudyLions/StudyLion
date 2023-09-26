@@ -81,12 +81,12 @@ msgstr "Język"
 #: src/babel/cog.py:195
 msgctxt "cmd:userconfig_language|param:language|desc"
 msgid "Which language do you want me to respond in?"
-msgstr "W jakim języku mam odpowiedzieć?"
+msgstr "W jakim języku mam odpowiadać?"
 
 #: src/babel/cog.py:211
 msgctxt "cmd:userconfig_language|button:reset|label"
 msgid "Reset"
-msgstr ""
+msgstr "Resetuj"
 
 #: src/babel/cog.py:252
 #, possible-python-brace-format
