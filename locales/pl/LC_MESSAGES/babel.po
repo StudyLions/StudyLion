@@ -336,7 +336,7 @@ msgstr "Turecki"
 #: src/babel/enums.py:63
 msgctxt "localenames|locale:cs"
 msgid "Czech"
-msgstr ""
+msgstr "Czeski"
 
 #: src/babel/enums.py:64
 msgctxt "localenames|locale:el"
