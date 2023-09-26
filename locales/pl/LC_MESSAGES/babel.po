@@ -56,7 +56,7 @@ msgstr "Skonfiguruj domyślny język, którego będę używał na tym serwerze."
 msgctxt "cmd:configure_language|error"
 msgid ""
 "You cannot enable `{force_setting}` without having a configured language!"
-msgstr ""
+msgstr "Nie można włączyć `{force_setting}` bez skonfigurowanego języka!"
 
 #: src/babel/cog.py:167
 msgctxt "cmd:configure_language|success"
