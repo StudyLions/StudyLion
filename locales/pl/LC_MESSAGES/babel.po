@@ -44,7 +44,7 @@ msgstr "Panel języka serwera"
 #: src/babel/cog.py:99
 msgctxt "cmd:configure_language"
 msgid "language"
-msgstr ""
+msgstr "Język"
 
 #: src/babel/cog.py:101
 msgctxt "cmd:configure_language|desc"
