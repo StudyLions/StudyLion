@@ -71,12 +71,12 @@ msgstr "Język"
 #: src/babel/cog.py:186
 msgctxt "cmd:userconfig_language|desc"
 msgid "Set your preferred interaction language."
-msgstr ""
+msgstr "Ustaw preferowany język interakcji."
 
 #: src/babel/cog.py:190
 msgctxt "cmd:userconfig_language|param:language"
 msgid "language"
-msgstr ""
+msgstr "Język"
 
 #: src/babel/cog.py:195
 msgctxt "cmd:userconfig_language|param:language|desc"
