@@ -35,4 +35,4 @@ msgstr "Wykonywanie dowolnego kodu za pomocą funkcji Exec"
 
 #: bot/modules/sysadmin/exec_cog.py:265
 msgid "eval"
-msgstr ""
+msgstr "eval"
