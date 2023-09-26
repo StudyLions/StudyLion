@@ -209,6 +209,9 @@ class EconomyData(Registry, name='economy'):
                         ]
                         # Execute refund transactions
                         return await cls.execute_transactions(*records)
+                    else:
+                        return []
+
 
     class ShopTransaction(RowModel):
         """
