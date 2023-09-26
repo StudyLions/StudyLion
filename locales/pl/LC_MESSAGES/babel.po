@@ -156,7 +156,7 @@ msgstr "Masz nieustawiony język."
 #, possible-python-brace-format
 msgctxt "userset:locale|response"
 msgid "You have set your language to {lang}."
-msgstr ""
+msgstr "Język został ustawiony na {lang}."
 
 #: src/babel/settings.py:110
 msgctxt "guildset:force_locale"
