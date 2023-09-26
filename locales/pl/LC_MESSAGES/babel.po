@@ -115,7 +115,7 @@ msgstr "Wprowadź obsługiwany język (np. 'en-GB')."
 #: src/babel/settings.py:34
 msgctxt "settype:locale|summary_table|field:supported|key"
 msgid "Supported"
-msgstr ""
+msgstr "Obsługiwany"
 
 #: src/babel/settings.py:44
 msgctxt "settype:locale|formatted:unset"
