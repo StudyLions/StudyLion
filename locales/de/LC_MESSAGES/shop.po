@@ -39,7 +39,7 @@ msgstr ""
 #: src/modules/shop/cog.py:125
 msgctxt "cmd:shop_open"
 msgid "open"
-msgstr "Öffnen"
+msgstr "öffne"
 
 #: src/modules/shop/cog.py:126
 msgctxt "cmd:shop_open|desc"
