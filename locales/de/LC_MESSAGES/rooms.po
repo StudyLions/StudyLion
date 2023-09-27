@@ -228,7 +228,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:351
 msgctxt "cmd:room_rent|param:name|desc"
 msgid "Name of your private voice channel."
-msgstr ""
+msgstr "Name deines privaten Sprachkanals"
 
 #: src/modules/rooms/cog.py:369
 msgctxt "cmd:room_rent|error:not_setup"
