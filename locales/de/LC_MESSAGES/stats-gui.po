@@ -65,12 +65,12 @@ msgstr "HEUTE"
 #: src/gui/cards/stats.py:122
 msgctxt "skin:stats|field:weekly"
 msgid "WEEKLY"
-msgstr ""
+msgstr "DIESE WOCHE"
 
 #: src/gui/cards/stats.py:126
 msgctxt "skin:stats|field:monthly"
 msgid "MONTHLY"
-msgstr ""
+msgstr "DIESEN MONAT"
 
 #: src/gui/cards/stats.py:130
 msgctxt "skin:stats|field:alltime"
@@ -80,7 +80,7 @@ msgstr ""
 #: src/gui/cards/stats.py:134
 msgctxt "skin:stats|field:time"
 msgid "TIME"
-msgstr ""
+msgstr "ZEIT"
 
 #: src/gui/cards/stats.py:138
 msgctxt "skin:stats|field:anki"
