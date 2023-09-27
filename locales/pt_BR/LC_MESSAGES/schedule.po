@@ -99,8 +99,7 @@ msgstr "Não pude cancelar {time} solicitado. Ele não foi agendado! "
 msgctxt "cmd:schedule|cancel_booking|error:too_soon"
 msgid "Cannot cancel {time} booking because it is running or starting soon!"
 msgstr ""
-"Não posso cancelar o horário {time} agendado, pois ele já começou, ou irá "
-"muito em breve."
+"Não pude cancelar {time} agendado. Ele já começou, ou irá muito em breve."
 
 #: src/modules/schedule/cog.py:787
 #, possible-python-brace-format
