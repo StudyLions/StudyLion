@@ -239,7 +239,7 @@ msgstr "Notiz"
 #: src/modules/shop/shops/colours.py:517
 msgctxt "cmd:editshop_colours_edit"
 msgid "edit"
-msgstr ""
+msgstr "Bearbeiten"
 
 #: src/modules/shop/shops/colours.py:520
 msgctxt "cmd:editshop_colours_edit|desc"
