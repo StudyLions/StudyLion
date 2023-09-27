@@ -413,8 +413,8 @@ msgid ""
 "Session members will be rewarded an additional {coin}**{amount}** when "
 "everyone attends."
 msgstr ""
-"Os membros serão recompensados com um adicional de {coin}**{amount}** quando"
-" ninguém faltar a um horário agendado."
+"Os membros receberão um adicional de {coin}**{amount}** quando ninguém "
+"faltar a um horário agendado."
 
 #: src/modules/schedule/settings.py:334
 #, possible-python-brace-format
