@@ -31,7 +31,7 @@ msgstr "Async"
 
 #: bot/modules/sysadmin/exec_cog.py:253 bot/modules/sysadmin/exec_cog.py:255
 msgid "Execute arbitrary code with Exec"
-msgstr ""
+msgstr "Beliebigen Code mit Exec ausführen"
 
 #: bot/modules/sysadmin/exec_cog.py:265
 msgid "eval"
