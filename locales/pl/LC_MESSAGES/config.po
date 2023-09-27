@@ -84,4 +84,4 @@ msgstr ""
 #: src/modules/config/dashboard.py:172
 msgctxt "ui:dashboard|menu:config|placeholder"
 msgid "Open Configuration Panel"
-msgstr ""
+msgstr "Otwórz panel konfiguracyjny"
