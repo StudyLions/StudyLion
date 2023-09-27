@@ -285,7 +285,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:472
 msgctxt "cmd:room_rent|success|title"
 msgid "Private Room Created!"
-msgstr ""
+msgstr "Privater Sprachkanal erstellt!"
 
 #: src/modules/rooms/cog.py:506
 #, possible-python-brace-format
@@ -318,7 +318,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:562
 msgctxt "cmd:room_status"
 msgid "status"
-msgstr ""
+msgstr "Status"
 
 #: src/modules/rooms/cog.py:565
 msgctxt "cmd:room_status|desc"
