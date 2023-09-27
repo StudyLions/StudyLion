@@ -76,7 +76,7 @@ msgstr ""
 #: src/modules/user_config/cog.py:96
 msgctxt "cmd:userconfig_timezone|param:timezone"
 msgid "timezone"
-msgstr ""
+msgstr "Zeitzone"
 
 #: src/modules/user_config/cog.py:101
 msgctxt "cmd:userconfig_timezone|param:timezone|desc"
@@ -92,7 +92,7 @@ msgstr ""
 #: src/modules/user_config/cog.py:121
 msgctxt "cmd:userconfig_timezone|button:reset|label"
 msgid "Reset"
-msgstr ""
+msgstr "Reset"
 
 #: src/modules/user_config/cog.py:133
 #, possible-python-brace-format
