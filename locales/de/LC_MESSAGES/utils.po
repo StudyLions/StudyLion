@@ -157,7 +157,7 @@ msgstr "Bearbeiten"
 #: src/utils/ui/config.py:192
 msgctxt "ui:guild_config_base|button:reset|label"
 msgid "Reset"
-msgstr ""
+msgstr "Reset"
 
 #: src/utils/ui/config.py:327
 msgctxt "ui:dashboard|error:section_too_long"
