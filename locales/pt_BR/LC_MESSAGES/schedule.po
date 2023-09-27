@@ -184,7 +184,7 @@ msgid ""
 "system."
 msgstr ""
 "O balcão de agendamentos do check-in foi desativado. Desligando o sistema de"
-" agendamento de check-in. "
+" check-in. "
 
 #: src/modules/schedule/settings.py:78
 msgctxt "guildset:session_lobby|formatted|unset"
