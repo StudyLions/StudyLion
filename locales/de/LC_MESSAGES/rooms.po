@@ -340,12 +340,12 @@ msgstr ""
 #: src/modules/rooms/cog.py:600
 msgctxt "cmd:room_invite|desc"
 msgid "Add members to your private room."
-msgstr ""
+msgstr "Füge deinem privaten Sprachkanal Mitglieder hinzu."
 
 #: src/modules/rooms/cog.py:604
 msgctxt "cmd:room_invite|param:members"
 msgid "members"
-msgstr ""
+msgstr "Mitglieder"
 
 #: src/modules/rooms/cog.py:609
 msgctxt "cmd:room_invite|param:members|desc"
