@@ -301,12 +301,12 @@ msgstr "Brasilianisches Portugiesisch"
 #: src/babel/enums.py:58
 msgctxt "localenames|locale:ro"
 msgid "Romanian, Romania"
-msgstr ""
+msgstr "Rumänisch"
 
 #: src/babel/enums.py:59
 msgctxt "localenames|locale:fi"
 msgid "Finnish"
-msgstr ""
+msgstr "Finnisch"
 
 #: src/babel/enums.py:60
 msgctxt "localenames|locale:sv-SE"
