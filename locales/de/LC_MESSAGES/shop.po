@@ -155,17 +155,17 @@ msgstr ""
 #: src/modules/shop/shops/colours.py:360
 msgctxt "cmd:editshop_colours_create|param:colour"
 msgid "colour"
-msgstr ""
+msgstr "Farbe"
 
 #: src/modules/shop/shops/colours.py:361
 msgctxt "cmd:editshop_colours_create|param:name"
 msgid "name"
-msgstr ""
+msgstr "Name"
 
 #: src/modules/shop/shops/colours.py:362
 msgctxt "cmd:editshop_colours_create|param:price"
 msgid "price"
-msgstr ""
+msgstr "Preis"
 
 #: src/modules/shop/shops/colours.py:367
 msgctxt "cmd:editshop_colours_create|param:colour|desc"
