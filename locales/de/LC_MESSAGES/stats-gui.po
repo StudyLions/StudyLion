@@ -60,7 +60,7 @@ msgstr "WORKOUTS"
 #: src/gui/cards/stats.py:118
 msgctxt "skin:stats|field:daily"
 msgid "DAILY"
-msgstr ""
+msgstr "HEUTE"
 
 #: src/gui/cards/stats.py:122
 msgctxt "skin:stats|field:weekly"
