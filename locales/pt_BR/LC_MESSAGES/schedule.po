@@ -414,7 +414,7 @@ msgid ""
 "everyone attends."
 msgstr ""
 "Os membros serão recompensados com um adicional de {coin}**{amount}** quando"
-" todos comparecerem para check-in em um horário agendado."
+" ninguém faltar a um horário agendado."
 
 #: src/modules/schedule/settings.py:334
 #, possible-python-brace-format
