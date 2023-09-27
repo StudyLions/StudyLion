@@ -254,17 +254,17 @@ msgstr "Rolle"
 #: src/modules/shop/shops/colours.py:525
 msgctxt "cmd:editshop_colours_edit|param:name"
 msgid "name"
-msgstr ""
+msgstr "Name"
 
 #: src/modules/shop/shops/colours.py:526
 msgctxt "cmd:editshop_colours_edit|param:colour"
 msgid "colour"
-msgstr ""
+msgstr "Farbe"
 
 #: src/modules/shop/shops/colours.py:527
 msgctxt "cmd:editshop_colours_edit|param:price"
 msgid "price"
-msgstr ""
+msgstr "Preis"
 
 #: src/modules/shop/shops/colours.py:532
 msgctxt "cmd:editshop_colours_edit|param:role|desc"
