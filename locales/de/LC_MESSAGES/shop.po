@@ -355,7 +355,7 @@ msgstr ""
 #: src/modules/shop/shops/colours.py:685
 msgctxt "cmd:editshop_colours_add|param:price"
 msgid "price"
-msgstr ""
+msgstr "Preis"
 
 #: src/modules/shop/shops/colours.py:690
 msgctxt "cmd:editshop_colours_add|param:role|desc"
