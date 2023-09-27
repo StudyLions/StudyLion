@@ -130,7 +130,7 @@ msgstr ""
 #: src/babel/settings.py:75
 msgctxt "userset:locale"
 msgid "language"
-msgstr ""
+msgstr "Sprache"
 
 #: src/babel/settings.py:76
 msgctxt "userset:locale|desc"
