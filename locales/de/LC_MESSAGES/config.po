@@ -58,12 +58,12 @@ msgstr ""
 #: src/modules/config/general.py:129
 msgctxt "cmd:configure_general|parse_failure:timezone"
 msgid "Could not set the timezone!"
-msgstr ""
+msgstr "Ich konnte deine Zeitzone nicht setzen!"
 
 #: src/modules/config/general.py:150
 msgctxt "cmd:configure_general|success"
 msgid "Settings Updated!"
-msgstr ""
+msgstr "Einstellungen aktualisiert!"
 
 #: src/modules/config/general.py:165
 msgctxt "cmd:configure_general|panel|title"
