@@ -540,7 +540,7 @@ msgstr ""
 #: src/modules/shop/shops/colours.py:1138
 msgctxt "ui:colourstore|menu:buycolours|embed:error|title"
 msgid "Purchase Failed!"
-msgstr ""
+msgstr "Kauf fehlgeschlagen!"
 
 #: src/modules/shop/shops/colours.py:1149
 #, possible-python-brace-format
