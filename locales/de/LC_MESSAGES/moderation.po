@@ -121,7 +121,7 @@ msgstr ""
 #: src/modules/moderation/ticket.py:212
 msgctxt "ticket|field:context|name"
 msgid "Context"
-msgstr ""
+msgstr "Kontext"
 
 #: src/modules/moderation/ticket.py:219
 msgctxt "ticket|field:notes|name"
