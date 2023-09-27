@@ -341,12 +341,12 @@ msgstr "Bulgarisch"
 #: src/babel/enums.py:66
 msgctxt "localenames|locale:ru"
 msgid "Russian"
-msgstr ""
+msgstr "Russisch"
 
 #: src/babel/enums.py:67
 msgctxt "localenames|locale:uk"
 msgid "Ukrainian"
-msgstr ""
+msgstr "Ukrainisch"
 
 #: src/babel/enums.py:68
 msgctxt "localenames|locale:hi"
