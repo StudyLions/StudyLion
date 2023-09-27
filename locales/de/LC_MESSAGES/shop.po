@@ -365,7 +365,7 @@ msgstr ""
 #: src/modules/shop/shops/colours.py:694
 msgctxt "cmd:editshop_colours_add|param:price|desc"
 msgid "How much should this role cost?"
-msgstr ""
+msgstr "Wie viel soll diese Rolle kosten?"
 
 #: src/modules/shop/shops/colours.py:719
 msgctxt "cmd:editshop_colours_add|error:max_colours"
