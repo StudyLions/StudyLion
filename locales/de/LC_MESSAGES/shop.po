@@ -350,7 +350,7 @@ msgstr ""
 #: src/modules/shop/shops/colours.py:684
 msgctxt "cmd:editshop_colours_add|param:role"
 msgid "role"
-msgstr ""
+msgstr "Rolle"
 
 #: src/modules/shop/shops/colours.py:685
 msgctxt "cmd:editshop_colours_add|param:price"
