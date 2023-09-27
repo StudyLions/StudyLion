@@ -85,8 +85,8 @@ msgid ""
 "Time slot `{provided}` not recognised. Please select a session to cancel "
 "from the autocomplete options."
 msgstr ""
-"Intervalo de tempo ˋ{provided}ˋ não reconhecido. Por favor, selecione um "
-"horário nas opções do autopreenchimento para cancelar. "
+"Intervalo ˋ{provided}ˋ não reconhecido. Favor selecionar um horário  do "
+"autopreenchimento a cancelar. "
 
 #: src/modules/schedule/cog.py:765
 #, possible-python-brace-format
