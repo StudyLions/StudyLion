@@ -396,7 +396,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:708
 msgctxt "cmd:room_kick|param:members"
 msgid "members"
-msgstr ""
+msgstr "Mitglieder"
 
 #: src/modules/rooms/cog.py:713
 msgctxt "cmd:room_kick|param:members|desc"
