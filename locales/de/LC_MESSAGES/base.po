@@ -27,7 +27,7 @@ msgstr "Du kannst dieses Interface nicht benutzen!"
 
 #: bot/modules/sysadmin/exec_cog.py:252 bot/modules/sysadmin/exec_cog.py:254
 msgid "async"
-msgstr "Async"
+msgstr "asynchron"
 
 #: bot/modules/sysadmin/exec_cog.py:253 bot/modules/sysadmin/exec_cog.py:255
 msgid "Execute arbitrary code with Exec"
@@ -35,4 +35,4 @@ msgstr "Beliebigen Code mit Exec ausführen"
 
 #: bot/modules/sysadmin/exec_cog.py:265
 msgid "eval"
-msgstr ""
+msgstr "vgl."
