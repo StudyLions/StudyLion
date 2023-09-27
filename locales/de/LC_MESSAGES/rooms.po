@@ -335,7 +335,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:597
 msgctxt "cmd:room_invite"
 msgid "invite"
-msgstr ""
+msgstr "einladen"
 
 #: src/modules/rooms/cog.py:600
 msgctxt "cmd:room_invite|desc"
@@ -386,7 +386,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:701
 msgctxt "cmd:room_kick"
 msgid "kick"
-msgstr ""
+msgstr "kick"
 
 #: src/modules/rooms/cog.py:704
 msgctxt "cmd:room_kick|desc"
