@@ -92,7 +92,7 @@ msgstr ""
 #: src/modules/shop/shops/colours.py:173
 msgctxt "shop:colour|purchase|error:not_purchasable"
 msgid "This item may not be purchased!"
-msgstr ""
+msgstr "Der Gegenstand kann nicht gekauft werden!"
 
 #: src/modules/shop/shops/colours.py:186
 msgctxt "shop:colour|purchase|error:no_guild"
