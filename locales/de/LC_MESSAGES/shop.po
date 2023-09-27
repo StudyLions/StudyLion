@@ -39,7 +39,7 @@ msgstr ""
 #: src/modules/shop/cog.py:125
 msgctxt "cmd:shop_open"
 msgid "open"
-msgstr "öffne"
+msgstr "öffnen"
 
 #: src/modules/shop/cog.py:126
 msgctxt "cmd:shop_open|desc"
@@ -54,7 +54,7 @@ msgstr ""
 #: src/modules/shop/cog.py:215
 msgctxt "ui:stores|button:close|label"
 msgid "Close"
-msgstr "Schließen"
+msgstr "schließen"
 
 #: src/modules/shop/cog.py:222
 msgctxt "ui:stores|button:close|response|title"
