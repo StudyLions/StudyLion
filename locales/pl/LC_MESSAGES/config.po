@@ -68,7 +68,7 @@ msgstr ""
 #: src/modules/config/general.py:165
 msgctxt "cmd:configure_general|panel|title"
 msgid "General Configuration Panel"
-msgstr ""
+msgstr "Ogólne ustawienia panelu konfiguracyjnego"
 
 #: src/modules/config/dashboard.py:98
 #, possible-python-brace-format
