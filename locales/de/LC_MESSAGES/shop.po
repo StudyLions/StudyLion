@@ -120,7 +120,7 @@ msgstr ""
 #: src/modules/shop/shops/colours.py:230
 msgctxt "shop:colour|purchase|error:owned"
 msgid "You already own this item!"
-msgstr ""
+msgstr "Du besitzt diesen Gegenstand bereits!"
 
 #: src/modules/shop/shops/colours.py:264
 msgctxt "shop:colour|purchase|error:failed_no_role"
@@ -140,7 +140,7 @@ msgstr ""
 #: src/modules/shop/shops/colours.py:348
 msgctxt "grp:editshop_colours"
 msgid "colours"
-msgstr ""
+msgstr "Farben"
 
 #: src/modules/shop/shops/colours.py:353
 msgctxt "cmd:editshop_colours_create"
