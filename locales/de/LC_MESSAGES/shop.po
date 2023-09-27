@@ -486,7 +486,7 @@ msgstr ""
 #: src/modules/shop/shops/colours.py:981
 msgctxt "cmd:editshop_colours_remove|param:role"
 msgid "role"
-msgstr ""
+msgstr "Rolle"
 
 #: src/modules/shop/shops/colours.py:982
 msgctxt "cmd:editshop_colours_remove"
