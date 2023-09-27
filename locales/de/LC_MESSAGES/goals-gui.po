@@ -97,7 +97,7 @@ msgstr ""
 #: src/gui/cards/goals.py:256
 msgctxt "ui:goals|monthly|title"
 msgid "MONTHLY STATISTICS"
-msgstr ""
+msgstr "MONATLICHE STATISTIK"
 
 #: src/gui/cards/goals.py:260
 msgctxt "ui:goals|monthly|task_header"
