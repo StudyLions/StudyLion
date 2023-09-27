@@ -404,7 +404,7 @@ msgstr ""
 #: src/modules/schedule/settings.py:312
 msgctxt "guildset:attendance_bonus|accepts"
 msgid "Bonus coins rewarded when everyone attends a session."
-msgstr "Recompensa, em moedas, por todos terem comparecido para check-in."
+msgstr "Recompensa, em moedas, por ninguém faltar ao check-in."
 
 #: src/modules/schedule/settings.py:324
 #, possible-python-brace-format
