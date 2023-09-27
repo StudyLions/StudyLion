@@ -397,7 +397,7 @@ msgid ""
 "they will be given this bonus in *addition* to the `attendance_reward`."
 msgstr ""
 "Quando todos os membros agendados conseguirem comparecer no horário, para o "
-"check-in, receberão este bônus, além da ˋrecompensa_de_checkinˋ."
+"check-in, receberão este bônus adicionalmente à ˋrecompensa_de_checkinˋ."
 
 #: src/modules/schedule/settings.py:312
 msgctxt "guildset:attendance_bonus|accepts"
