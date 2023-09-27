@@ -234,7 +234,7 @@ msgstr ""
 #: src/modules/shop/shops/colours.py:508
 msgctxt "cmd:editshop_colours_create|resp:done|field:position_note|name"
 msgid "Note"
-msgstr ""
+msgstr "Notiz"
 
 #: src/modules/shop/shops/colours.py:517
 msgctxt "cmd:editshop_colours_edit"
