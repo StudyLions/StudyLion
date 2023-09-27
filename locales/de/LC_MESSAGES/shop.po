@@ -476,7 +476,7 @@ msgstr ""
 #: src/modules/shop/shops/colours.py:974
 msgctxt "cmd:editshop_colours_remove"
 msgid "remove"
-msgstr ""
+msgstr "entfernen"
 
 #: src/modules/shop/shops/colours.py:977
 msgctxt "cmd:editshop_colours_remove|desc"
