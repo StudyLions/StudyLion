@@ -293,8 +293,8 @@ msgid ""
 "Activity in all (tracked) voice channels will now count towards session "
 "attendance."
 msgstr ""
-"A atividade em todos os canais de voz (contabilizáveis), agora irão contar "
-"como atendimento aos check-inˋs agendados."
+"Agora, a atividade nos canais de voz (contabilizáveis) irá contar como "
+"comparecimento para fins de check-in."
 
 #: src/modules/schedule/settings.py:181
 msgctxt "guildset:session_channels|formatted|unset"
