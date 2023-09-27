@@ -154,8 +154,7 @@ msgstr "balcão_de_agendamentos"
 #: src/modules/schedule/settings.py:39
 msgctxt "guildset:session_lobby|desc"
 msgid "Channel to post scheduled session announcement and status to."
-msgstr ""
-"Canal para mostrar o agendamento dos horários e estado dos check-in's."
+msgstr "Canal para o agendamento dos horários e estado dos check-in's."
 
 #: src/modules/schedule/settings.py:43
 msgctxt "guildset:session_lobby|long_desc"
