@@ -276,12 +276,12 @@ msgstr "Litauisch"
 #: src/babel/enums.py:53
 msgctxt "localenames|locale:hu"
 msgid "Hungarian"
-msgstr ""
+msgstr "Ungarisch"
 
 #: src/babel/enums.py:54
 msgctxt "localenames|locale:nl"
 msgid "Dutch"
-msgstr ""
+msgstr "Niederländisch"
 
 #: src/babel/enums.py:55
 msgctxt "localenames|locale:no"
