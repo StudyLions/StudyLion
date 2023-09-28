@@ -65,7 +65,7 @@ msgstr[2] ""
 #: src/modules/schedule/cog.py:523
 msgctxt "create_booking|error:already_booked"
 msgid "One or more requested timeslots are already booked!"
-msgstr "Um ou mais horários marcados, já estão agendados!"
+msgstr "Um ou mais, dos horários marcados, já estão agendados!"
 
 #: src/modules/schedule/cog.py:726
 msgctxt "cmd:schedule"
