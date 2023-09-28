@@ -682,7 +682,7 @@ msgstr "Agendamento cancelado com sucesso, e moedas ressarcidas."
 #: src/modules/schedule/ui/scheduleui.py:142
 msgctxt "ui:schedule|button:clear|label"
 msgid "Clear Schedule"
-msgstr "Limpar meus agendamentos."
+msgstr "Limpar agenda."
 
 #: src/modules/schedule/ui/scheduleui.py:158
 msgctxt "ui:schedule|button:about|label"
