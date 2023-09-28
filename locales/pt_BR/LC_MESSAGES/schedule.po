@@ -1050,7 +1050,7 @@ msgid ""
 "Everyone who attended was rewarded with {coin} **{reward}**! Some members did not attend so everyone missed out on the bonus {coin} **{bonus}**.\n"
 "**Members who missed their session have all future sessions cancelled without refund!*"
 msgstr ""
-"Todos que cumpriram o check-in neste horário serão recompensados com {coin} **{reward}**! Alguns membros faltaram  ao check-in, então ninguém ganhará o bônus {coin} **{bonus}**.\n"
+"Todos fizeram o check-in neste horário serão recompensados com {coin} **{reward}**! Como alguem faltou ao check-in, ninguém ganhará o bônus {coin} **{bonus}**.\n"
 "**Os membros que não compareceram podem ter os próximos agendamentos cancelados sem ressarcimento!**"
 
 #: src/modules/schedule/core/session.py:499
