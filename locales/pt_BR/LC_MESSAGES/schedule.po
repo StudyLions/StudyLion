@@ -578,8 +578,7 @@ msgctxt "guildset:schedule_blacklist_after|set_response|unset"
 msgid ""
 "Members will not be automatically blacklisted from booking scheduled "
 "sessions."
-msgstr ""
-"Os membros não serão colocados na Lista Negra de check-in automaticamente. "
+msgstr "Os membros não serão colocados na Lista Negra automaticamente. "
 
 #: src/modules/schedule/settings.py:511
 #, possible-python-brace-format
