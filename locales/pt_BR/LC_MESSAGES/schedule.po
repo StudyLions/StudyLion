@@ -692,7 +692,7 @@ msgstr "Sobre o Sistema de Check-inˋs."
 #: src/modules/schedule/ui/scheduleui.py:184
 msgctxt "ui:schedule|menu:booking|error:current_slot"
 msgid "You cannot schedule a currently running session!"
-msgstr "Você não pode fazer check-in em uma seção que já começou."
+msgstr "Você não pode agendar uma seção já começada."
 
 #: src/modules/schedule/ui/scheduleui.py:191
 msgctxt "ui:schedule|menu:booking|error:next_slot"
