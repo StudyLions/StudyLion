@@ -499,9 +499,8 @@ msgstr ""
 "de check-in. Se este cargo for adicionado manualmente, todos os agendamentos"
 " futuros do usuário serão cancelados. Isto evita que algum membro "
 "descomprometido continue a impedir aos demais atingirem o bônus de grupo com"
-" faltas seguidas. Alternativamente, considere desincentivar as faltas "
-"através de cobrança mais alta para os agendamentos (e também maior "
-"recompensa pelo check-in)."
+" faltas seguidas. Alternativamente, considere elevar o custo para os "
+"agendamentos (e também maior recompensa pelo check-in)."
 
 #: src/modules/schedule/settings.py:425
 msgctxt "guildset:schedule_blacklist_role|accepts"
