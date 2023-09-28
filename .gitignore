@@ -1,5 +1,14 @@
 src/modules/test/*
 
+pending-rewrite/
+logs/*
+notes/*
+tmp/*
+output/*
+locales/domains
+
+.idea/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
