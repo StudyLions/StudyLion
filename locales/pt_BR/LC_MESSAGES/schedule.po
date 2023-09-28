@@ -767,12 +767,12 @@ msgid "in <1 hour"
 msgid_plural "in {number} hours"
 msgstr[0] "Em < 1 hora"
 msgstr[1] "em {number} horas"
-msgstr[2] "em {number} hours"
+msgstr[2] "em {number} horas"
 
 #: src/modules/schedule/ui/scheduleui.py:340
 msgctxt "ui:schedule|format_until|now"
 msgid "right now!"
-msgstr "neste momento!"
+msgstr "agora!"
 
 #: src/modules/schedule/ui/scheduleui.py:362
 msgctxt "ui:schedule|menu:cancel|error:current_slot"
