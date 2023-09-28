@@ -419,7 +419,7 @@ msgstr "nota"
 #: src/modules/economy/cog.py:687
 msgctxt "cmd:send|param:target|desc"
 msgid "User to send the gift to"
-msgstr "Usuário que será presenteado"
+msgstr "Usuário a ser presenteado"
 
 #: src/modules/economy/cog.py:688
 msgctxt "cmd:send|param:amount|desc"
