@@ -879,7 +879,7 @@ msgid ""
 msgstr ""
 "**{attended}** atendidos de **{total}** agendados.\r\n"
 "**{percent}%** de constância.\r\n"
-"**{average}** em média por horário."
+"**{average}** média presente por horário."
 
 #: src/modules/schedule/ui/scheduleui.py:534
 #, possible-python-brace-format
