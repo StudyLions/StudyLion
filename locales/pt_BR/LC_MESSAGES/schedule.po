@@ -672,8 +672,7 @@ msgstr "Dicas para o usuário aqui."
 #: src/modules/schedule/ui/scheduleui.py:116
 msgctxt "ui:schedule|button:clear|error:nothing"
 msgid "No upcoming sessions to cancel! Your schedule is already clear."
-msgstr ""
-"Não há agendamentos para cancelar. Você já está sem horários agendados. "
+msgstr "Não há agendamentos a cancelar. Você já está sem horários. "
 
 #: src/modules/schedule/ui/scheduleui.py:129
 msgctxt "ui:schedule|button:clear|success"
