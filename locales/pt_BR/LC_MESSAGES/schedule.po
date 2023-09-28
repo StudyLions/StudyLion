@@ -993,9 +993,8 @@ msgid ""
 "I cancelled this scheduled session because I was unavailable. All members "
 "who booked the session have been refunded."
 msgstr ""
-"Eu cancelei este horário, pois eu estava com uns probleminhas no meu "
-"sistema. Mas fique tranquilo, eu devolvi as moedas de todos que fizeram "
-"agendamento para este horário."
+"Eu cancelei este horário, pois eu estava com uns probleminhas. Fique "
+"tranquilo, eu devolvi as moedas de todos que fizeram agendamento."
 
 #: src/modules/schedule/core/session.py:389
 msgctxt "session|status|desc:no_members"
