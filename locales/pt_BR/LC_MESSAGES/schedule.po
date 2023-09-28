@@ -524,8 +524,7 @@ msgstr "O cargo de Lista Negra do check-in está inativo."
 #, possible-python-brace-format
 msgctxt "guildset:schedule_blacklist_role|formatted|set"
 msgid "{role} members will not be able to book scheduled sessions."
-msgstr ""
-"Usuários {role} não estarão permitidos a fazer agendamento de horário. "
+msgstr "Membros {role} estarão impedidos de realizar agendamentos."
 
 #: src/modules/schedule/settings.py:458
 msgctxt "guildset:schedule_blacklist_role|formatted|unset"
