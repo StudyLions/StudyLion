@@ -362,7 +362,7 @@ msgid ""
 "Are you sure you want to reset the balance for everyone in {mention}?\n"
 "**{count}** members will be affected."
 msgstr ""
-"Você tem certeza que quer resetar o saldo de todo mundo em {mention}?\n"
+"Tem certeza que quer resetar o saldo de todo mundo em {mention}?\n"
 "**{count}** membros serão afetados por isto."
 
 #: src/modules/economy/cog.py:622
