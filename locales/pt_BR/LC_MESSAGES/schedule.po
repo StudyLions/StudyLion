@@ -852,7 +852,7 @@ msgstr[2] "**{streak}** check-ins seguidos! Isso que é constância!"
 #: src/modules/schedule/ui/scheduleui.py:475
 msgctxt "ui:schedule|embed|field:stats|field:streak|value:positive"
 msgid "No streak yet!"
-msgstr "Ainda não fez uma sequência!"
+msgstr "Sem sequências ainda!"
 
 #: src/modules/schedule/ui/scheduleui.py:483
 msgctxt "ui:schedule|embed|field:stats|name"
