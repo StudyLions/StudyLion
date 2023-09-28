@@ -518,7 +518,7 @@ msgstr ""
 #: src/modules/schedule/settings.py:443
 msgctxt "guildset:schedule_blacklist_role|set_response|unset"
 msgid "The schedule blacklist role has been unset."
-msgstr "O cargo de Lista Negra, do check-in, está desabilitado."
+msgstr "O cargo de Lista Negra do check-in está inativo."
 
 #: src/modules/schedule/settings.py:453
 #, possible-python-brace-format
