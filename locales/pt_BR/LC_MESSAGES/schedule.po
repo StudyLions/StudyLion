@@ -34,8 +34,7 @@ msgstr ""
 msgctxt "create_booking|error:no_member"
 msgid "An unknown Discord error occurred. Please try again in a few minutes."
 msgstr ""
-"Ocorreu um erro desconhecido no Discord. Por favor, tente novamente em "
-"alguns minutos. "
+"Erro desconhecido do Discord. Por favor, tente novamente em alguns minutos. "
 
 #: src/modules/schedule/cog.py:498
 msgctxt "create_booking|error:blacklisted"
