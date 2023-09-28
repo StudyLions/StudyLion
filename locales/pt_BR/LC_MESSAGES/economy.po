@@ -289,7 +289,7 @@ msgstr "{mention} tem atualmente {coins_emoji} {coins}."
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:single|author"
 msgid "Balance statement for {user}"
-msgstr "Extrato de saldo para {user}"
+msgstr "Extrato financeiro de {user}"
 
 #: src/modules/economy/cog.py:519
 msgctxt "cmd:economy_reset"
