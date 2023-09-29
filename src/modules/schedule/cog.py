@@ -415,7 +415,10 @@ class ScheduleCog(LionCog):
             tasks = []
             for (gid, uid), member in to_blacklist.items():
                 role = autoblacklisting[gid][1]
-                task = asyncio.create_task(member.add_role(role))
+                task = asyncio.create_task(member.add_roles(
+                    role,
+                    reason="Automatic scheduled session blacklist"
+                ))
                 tasks.append(task)
             # TODO: Logging and some error handling
             await asyncio.gather(*tasks, return_exceptions=True)
