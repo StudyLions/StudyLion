@@ -126,6 +126,7 @@ async def rolemenu_ctxcmd(interaction: discord.Interaction, message: discord.Mes
     else:
         menu = await RoleMenu.fetch(self.bot, menuid)
         menu._message = message
+        await menu.update_raw()
 
     # Open the editor
     editor = MenuEditor(self.bot, menu, callerid=interaction.user.id)
@@ -895,6 +896,7 @@ class RoleMenuCog(LionCog):
                 )).format(name=name)
             )
         await target.fetch_message()
+        await target.update_raw()
 
         # Parse provided options
         reposting = channel is not None

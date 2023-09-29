@@ -192,6 +192,20 @@ class RoleMenu:
             self._message = _message
         return self._message
 
+    async def update_raw(self):
+        """
+        Updates the saved raw message data for non-owned menus.
+        """
+        message = await self.fetch_message()
+        if not self.managed and message is not None:
+            message_data = {}
+            message_data['content'] = message.content
+            if message.embeds:
+                message_data['embed'] = message.embeds[0].to_dict()
+            rawmessage = json.dumps(message_data)
+            if rawmessage != self.data.rawmessage:
+                await self.data.update(rawmessage=rawmessage)
+
     def emoji_map(self):
         emoji_map = {}
         for mrole in self.roles:
