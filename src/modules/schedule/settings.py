@@ -400,6 +400,7 @@ class ScheduleSettings(SettingGroup):
                     "Minimum attendance must be an integer number of minutes between `1` and `60`."
                 ))
                 raise UserInputError(error)
+            return num
 
     @ScheduleConfig.register_model_setting
     class BlacklistRole(ModelData, RoleSetting):
