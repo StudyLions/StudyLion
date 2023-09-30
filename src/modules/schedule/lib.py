@@ -1,9 +1,13 @@
 import asyncio
 import itertools
 import datetime as dt
+from typing import Optional
 
-from . import logger, babel
+import discord
+
+from meta.logger import log_wrap
 from utils.ratelimits import Bucket
+from . import logger, babel
 
 _p, _np = babel._p, babel._np
 
@@ -88,3 +92,24 @@ def format_until(t, distance):
             'ui:schedule|format_until|now',
             "right now!"
         ))
+
+
+@log_wrap(action='Vacuum Channel')
+async def vacuum_channel(channel: discord.VoiceChannel, reason: Optional[str] = None):
+    """
+    Launch disconnect tasks for each voice channel member who does not have permission to connect.
+    """
+    me = channel.guild.me
+    if not channel.permissions_for(me).move_members:
+        # Nothing we can do
+        return
+
+    to_remove = [member for member in channel.members if not channel.permissions_for(member).connect]
+    for member in to_remove:
+        # Disconnect member from voice
+        # Extra check here since members may come and go while we are trying to remove
+        if member in channel.members:
+            try:
+                await member.edit(voice_channel=None, reason=reason)
+            except discord.HTTPException:
+                pass

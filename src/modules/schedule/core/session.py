@@ -12,7 +12,7 @@ from utils.lib import MessageArgs
 
 from .. import babel, logger
 from ..data import ScheduleData as Data
-from ..lib import slotid_to_utc
+from ..lib import slotid_to_utc, vacuum_channel
 from ..settings import ScheduleSettings as Settings
 from ..settings import ScheduleConfig
 from ..ui.sessionui import SessionUI
@@ -289,12 +289,16 @@ class ScheduledSession:
         Remove overwrites for non-members.
         """
         async with self.lock:
-            if not (members := list(self.members.values())):
-                return
             if not (guild := self.guild):
                 return
             if not (room := self.room_channel):
+                # Nothing to do
+                self.prepared = True
+                self.opened = True
                 return
+            members = list(self.members.values())
+
+            t = self.bot.translator.t
 
             if room.permissions_for(guild.me) >= my_room_permissions:
                 # Replace the member overwrites
@@ -314,17 +318,36 @@ class ScheduledSession:
                     if mobj:
                         overwrites[mobj] = discord.PermissionOverwrite(connect=True, view_channel=True)
                 try:
-                    await room.edit(overwrites=overwrites)
+                    await room.edit(
+                        overwrites=overwrites,
+                        reason=t(_p(
+                            'session|open|update_perms|audit_reason',
+                            "Opening configured scheduled session room."
+                        ))
+                    )
                 except discord.HTTPException:
                     logger.exception(
                         f"Unhandled discord exception received while opening schedule session room {self!r}"
                     )
                 else:
                     logger.debug(
-                        f"Opened schedule session room for session {self!r}"
+                        f"Opened schedule session room for session {self!r} with overwrites {overwrites}"
+                    )
+
+                # Cleanup members who should not be in the channel(s)
+                if room.type is discord.enums.ChannelType.category:
+                    channels = room.voice_channels
+                else:
+                    channels = [room]
+                for channel in channels:
+                    await vacuum_channel(
+                        channel,
+                        reason=t(_p(
+                            'session|open|clean_room|audit_reason',
+                            "Removing extra member from scheduled session room."
+                        ))
                     )
             else:
-                t = self.bot.translator.t
                 await self.send(
                     t(_p(
                         'session|open|error:room_permissions',
@@ -344,6 +367,8 @@ class ScheduledSession:
             await asyncio.sleep(ping_wait)
         except asyncio.CancelledError:
             return
+
+        # Ghost ping alert for missing members
         missing = [mid for mid, m in self.members.items() if m.total_clock == 0 and m.clock_start is None]
         if missing:
             ping = ''.join(f"<@{mid}>" for mid in missing)
@@ -361,6 +386,7 @@ class ScheduledSession:
             # In case we somehow left the guild in the meantime
             return
 
+        # DM alert for _still_ missing members
         missing = [mid for mid, m in self.members.items() if m.total_clock == 0 and m.clock_start is None]
         for mid in missing:
             member = self.guild.get_member(mid)
