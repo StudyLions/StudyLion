@@ -143,7 +143,7 @@ msgstr "Rütbe güncelleme bildirimleri **direkt mesaj** ile gönderilecektir."
 msgctxt ""
 "cmd:configure_ranks|response:updated|setting:notification|nodm_withchannel"
 msgid "Rank update notifications will be sent to {channel}."
-msgstr "Seviye güncelleme bildirimleri {channel} kanalına gönderilecektir"
+msgstr "Rütbe güncelleme bildirimleri {channel} kanalına gönderilecektir"
 
 #: src/modules/ranks/cog.py:885
 msgctxt ""
