@@ -2,8 +2,10 @@ import asyncio
 import itertools
 import datetime as dt
 
-from . import logger
+from . import logger, babel
 from utils.ratelimits import Bucket
+
+_p, _np = babel._p, babel._np
 
 
 def time_to_slotid(time: dt.datetime) -> int:
@@ -71,3 +73,18 @@ async def limit_concurrency(aws, limit):
         while done:
             yield done.pop()
     logger.debug(f"Completed {count} tasks")
+
+
+def format_until(t, distance):
+    if distance:
+        return t(_np(
+            'ui:schedule|format_until|positive',
+            "in <1 hour",
+            "in {number} hours",
+            distance
+        )).format(number=distance)
+    else:
+        return t(_p(
+            'ui:schedule|format_until|now',
+            "right now!"
+        ))
