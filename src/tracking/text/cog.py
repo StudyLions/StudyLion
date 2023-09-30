@@ -223,6 +223,7 @@ class TextTrackerCog(LionCog):
             channel.category_id
         except discord.ClientException:
             logger.debug(f"Ignoring message from channel with no parent: {message.channel}")
+            return
 
         # Untracked channel ward
         untracked = self.untracked_channels.get(guildid, [])
