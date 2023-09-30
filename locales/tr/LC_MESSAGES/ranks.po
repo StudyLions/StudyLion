@@ -149,7 +149,7 @@ msgstr "Rütbe güncelleme bildirimleri {channel} kanalına gönderilecektir"
 msgctxt ""
 "cmd:configure_ranks|response:updated|setting:notification|nodm_nochannel"
 msgid "Members will not be notified when their activity rank updates."
-msgstr "Üyeler aktivite seviyeleri güncellendiğinde bildirilmeyecekler."
+msgstr "Üyeler aktivite rütbeleri güncellendiğinde bildirilmeyecekler."
 
 #: src/modules/ranks/utils.py:13
 #, possible-python-brace-format
