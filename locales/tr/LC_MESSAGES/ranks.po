@@ -119,7 +119,7 @@ msgstr "rütbeler"
 #: src/modules/ranks/cog.py:808
 msgctxt "cmd:configure_ranks|desc"
 msgid "Configure Activity Ranks"
-msgstr "Aktivite Seviyelerini Ayarla"
+msgstr "Aktivite rütbelerini ayarla"
 
 #: src/modules/ranks/cog.py:868
 #, possible-python-brace-format
