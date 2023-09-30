@@ -307,7 +307,7 @@ msgstr "{cmd} veya aşağıdaki seçenek menüsü."
 #: src/modules/ranks/settings.py:103
 msgctxt "guildset:rank_channel"
 msgid "rank_channel"
-msgstr "seviye_kanalı"
+msgstr "rütbe_kanalı"
 
 #: src/modules/ranks/settings.py:106
 msgctxt "guildset:rank_channel|desc"
