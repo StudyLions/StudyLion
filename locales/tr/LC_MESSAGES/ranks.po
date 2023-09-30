@@ -102,7 +102,7 @@ msgid ""
 "Too many issues occurred while adding ranks! Please check my permissions and"
 " try again in a few minutes."
 msgstr ""
-"Seviyeleri eklerken çok fazla sorun oluştu! Lütfen izinlerimi kontrol et ve "
+"Rütbeleri eklerken çok fazla sorun oluştu! Lütfen izinlerimi kontrol et ve "
 "birkaç dakika içinde tekrar dene."
 
 #. ---------- Commands ----------
