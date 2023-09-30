@@ -68,7 +68,7 @@ msgstr ""
 #: src/modules/ranks/cog.py:694
 msgctxt "rank_refresh|remove_roles|audit"
 msgid "Removing invalid rank role."
-msgstr "Geçersiz seviye rolünü kaldırıyorum."
+msgstr "Geçersiz rütbe rolünü kaldırıyorum."
 
 #: src/modules/ranks/cog.py:708
 #, possible-python-brace-format
