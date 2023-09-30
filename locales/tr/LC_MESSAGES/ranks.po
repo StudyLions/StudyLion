@@ -129,7 +129,7 @@ msgid ""
 "Rank update notifications will be sent via **direct message** when possible,"
 " otherwise to {channel}"
 msgstr ""
-"Seviye güncelleme bildirimleri mümkünse **direkt mesaj** ile gönderilecek, "
+"Rütbe güncelleme bildirimleri mümkünse **direkt mesaj** ile gönderilecek, "
 "değilse {channel}' a gönderilecektir."
 
 #: src/modules/ranks/cog.py:874
