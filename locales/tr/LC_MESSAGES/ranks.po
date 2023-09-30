@@ -412,7 +412,7 @@ msgstr "Rütbeyi düzenlemekte başarısız oldum!"
 #: src/modules/ranks/ui/preview.py:109
 msgctxt "ui:rank_preview|button:edit|label"
 msgid "Edit"
-msgstr "Düzenlemek"
+msgstr "Düzenle"
 
 #: src/modules/ranks/ui/preview.py:142
 #, possible-python-brace-format
