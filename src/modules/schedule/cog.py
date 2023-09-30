@@ -243,6 +243,18 @@ class ScheduleCog(LionCog):
         logger.debug(f"Getting slotlock <slotid: {slotid}> (locked: {lock.locked()})")
         return lock
 
+    def get_active_session(self, guildid: int) -> Optional[ScheduledSession]:
+        """
+        Get the current active session for the given guildid, or None if no session is running.
+        """
+        slot = self.active_slots.get(self.nowid, None)
+        if slot is not None:
+            return slot.sessions.get(guildid, None)
+
+    async def get_config(self, guildid: int) -> ScheduleConfig:
+        config_data = await self.data.ScheduleGuild.fetch_or_create(guildid)
+        return ScheduleConfig(guildid, config_data)
+
     @log_wrap(action='Cancel Booking')
     async def cancel_bookings(self, *bookingids: tuple[int, int, int], refund=True):
         """
