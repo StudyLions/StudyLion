@@ -1,3 +1,4 @@
+from random import random
 from typing import Optional
 import datetime as dt
 import asyncio
@@ -335,12 +336,12 @@ class ScheduledSession:
             self.opened = True
 
     @log_wrap(action='Notify')
-    async def _notify(self, wait=60):
+    async def _notify(self, ping_wait=10, dm_wait=60):
         """
         Ghost ping members who have not yet attended.
         """
         try:
-            await asyncio.sleep(wait)
+            await asyncio.sleep(ping_wait)
         except asyncio.CancelledError:
             return
         missing = [mid for mid, m in self.members.items() if m.total_clock == 0 and m.clock_start is None]
@@ -349,6 +350,90 @@ class ScheduledSession:
             message = await self.send(ping)
             if message is not None:
                 asyncio.create_task(message.delete())
+        try:
+            # Random dither to spread out sharded notifications
+            dither = 30 * random()
+            await asyncio.sleep(dm_wait - ping_wait + dither)
+        except asyncio.CancelledError:
+            return
+
+        if not self.guild:
+            # In case we somehow left the guild in the meantime
+            return
+
+        missing = [mid for mid, m in self.members.items() if m.total_clock == 0 and m.clock_start is None]
+        for mid in missing:
+            member = self.guild.get_member(mid)
+            if member:
+                args = await self._notify_dm(member)
+                try:
+                    await member.send(**args.send_args)
+                except discord.HTTPException:
+                    # Discord really doesn't like failed DM requests
+                    # So take a moment of silence
+                    await asyncio.sleep(1)
+
+    async def _notify_dm(self, member: discord.Member) -> MessageArgs:
+        t = self.bot.translator.t
+        # Join line depends on guild setup
+        channels = self.channels_setting.value
+        room = self.room_channel
+        if room:
+            if room.type is discord.enums.ChannelType.category:
+                join_line = t(_p(
+                    'session|notify|dm|join_line:room_category',
+                    "Please attend your session by joining a voice channel under **{room}**!"
+                )).format(room=room.name)
+            else:
+                join_line = t(_p(
+                    'session|notify|dm|join_line:room_voice',
+                    "Please attend your session by joining {room}"
+                )).format(room=room.mention)
+        elif not channels:
+            join_line = t(_p(
+                'session|notify|dm|join_line:all_channels',
+                "Please attend your session by joining a tracked voice channel!"
+            ))
+        else:
+            # Expand channels into a list of valid voice channels
+            voice_channels = set()
+            for channel in channels:
+                if channel.type is discord.enums.ChannelType.category:
+                    voice_channels.update(channel.voice_channels)
+                elif channel.type is discord.enums.ChannelType.voice:
+                    voice_channels.add(channel)
+
+            # Now filter by connectivity and tracked
+            voice_tracker = self.bot.get_cog('VoiceTrackerCog')
+            valid = []
+            for channel in voice_channels:
+                if voice_tracker.is_untracked(channel):
+                    continue
+                if not channel.permissions_for(member).connect:
+                    continue
+                valid.append(channel)
+            join_line = t(_p(
+                'session|notify|dm|join_line:channels',
+                "Please attend your session by joining one of the following:"
+            ))
+            join_line = '\n'.join(join_line, *(channel.mention for channel in valid[:20]))
+            if len(valid) > 20:
+                join_line += '\n...'
+
+        embed = discord.Embed(
+            colour=discord.Colour.orange(),
+            title=t(_p(
+                'session|notify|dm|title',
+                "Your Scheduled Session has started!"
+            )),
+            description=t(_p(
+                'session|notify|dm|description',
+                "Your scheduled session in {dest} has now begun!"
+            )).format(
+                dest=self.lobby_channel.mention if self.lobby_channel else f"**{self.guild.name}**"
+            ) + '\n' + join_line
+        )
+        return MessageArgs(embed=embed)
 
     def notify(self):
         """
