@@ -56,7 +56,10 @@ class Bucket:
     def delay(self):
         self._leak()
         if self._level + 1 > self.max_level:
-            return (self._level + 1 - self.max_level) * self.leak_rate
+            delay = (self._level + 1 - self.max_level) * self.leak_rate
+        else:
+            delay = 0
+        return delay
 
     def _leak(self):
         if self._level:
