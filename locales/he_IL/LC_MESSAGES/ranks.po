@@ -46,6 +46,7 @@ msgstr "הגעת לדרגה חדשה!"
 msgctxt "rank_refresh|error:cannot_chunk|desc"
 msgid "Could not retrieve member list from Discord. Please try again later."
 msgstr ""
+"לא הצלחתי לקבל את הרשימה של המשתמשים מדיסקורד, אנא נסה שוב מאוחר יותר."
 
 #: src/modules/ranks/cog.py:614
 msgctxt "rank_refresh|error:roles_dne|desc"

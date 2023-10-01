@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 22:43+0300\n"
+"POT-Creation-Date: 2023-10-01 16:01+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Ari Horesh, 2023\n"
 "Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
@@ -108,34 +108,34 @@ msgctxt "cmd:page_select|acmpl|error:no_pager"
 msgid "No active pagers in this channel!"
 msgstr "אין פייגר שמקשיב לערוץ הזה"
 
-#: src/utils/transformers.py:43
+#: src/utils/transformers.py:45
 #, possible-python-brace-format
 msgctxt "utils:parse_dur|error"
 msgid "Cannot parse `{value}` as a duration."
 msgstr "לא הצלחתי להבין את `{value}` בתור ערך זמן."
 
-#: src/utils/transformers.py:68
+#: src/utils/transformers.py:71
 #, possible-python-brace-format
 msgctxt "util:Duration|acmpl|error"
 msgid "Cannot extract duration from \"{partial}\""
 msgstr "לא הצלחתי להבין את \"{partial}\""
 
-#: src/utils/lib.py:670
+#: src/utils/lib.py:679
 msgctxt "util:parse_dur|regex:day"
 msgid "(?P<value>\\d+)\\s*(?:(d)|(day))"
 msgstr "(?P<value>\\d+)\\s*(?:(d)|(day))"
 
-#: src/utils/lib.py:677
+#: src/utils/lib.py:686
 msgctxt "util:parse_dur|regex:hour"
 msgid "(?P<value>\\d+)\\s*(?:(h)|(hour))"
 msgstr "(?P<value>\\d+)\\s*(?:(h)|(hour))"
 
-#: src/utils/lib.py:684
+#: src/utils/lib.py:693
 msgctxt "util:parse_dur|regex:minute"
 msgid "(?P<value>\\d+)\\s*(?:(m)|(min))"
 msgstr "(?P<value>\\d+)\\s*(?:(m)|(min))"
 
-#: src/utils/lib.py:691
+#: src/utils/lib.py:700
 msgctxt "util:parse_dur|regex:second"
 msgid "(?P<value>\\d+)\\s*(?:(s)|(sec))"
 msgstr "(?P<value>\\d+)\\s*(?:(s)|(sec))"
@@ -284,238 +284,248 @@ msgctxt "ui:msg_editor|button:add_embed|label"
 msgid "Add Embed"
 msgstr "הוסף embed"
 
-#: src/utils/ui/msgeditor.py:192
+#: src/utils/ui/msgeditor.py:190
+msgctxt "ui:msg_editor|button:rm_embed|sample_content"
+msgid "Content Placeholder"
+msgstr ""
+
+#: src/utils/ui/msgeditor.py:199
+msgctxt "ui:msg_editor|button:rm_embed|label"
+msgid "Remove Embed"
+msgstr ""
+
+#: src/utils/ui/msgeditor.py:217
 msgctxt "ui:msg_editor|modal:body|field:content|label"
 msgid "Message Content"
 msgstr "תוכן הודעה"
 
-#: src/utils/ui/msgeditor.py:203
+#: src/utils/ui/msgeditor.py:228
 msgctxt "ui:msg_editor|modal:body|field:desc|label"
 msgid "Embed Description"
 msgstr "תיאור embed"
 
-#: src/utils/ui/msgeditor.py:214
+#: src/utils/ui/msgeditor.py:239
 msgctxt "ui:msg_editor|modal:body|field:title|label"
 msgid "Embed Title"
 msgstr "כותרת embed"
 
-#: src/utils/ui/msgeditor.py:225
+#: src/utils/ui/msgeditor.py:250
 msgctxt "ui:msg_editor|modal:body|field:colour|label"
 msgid "Embed Colour"
 msgstr "צבע embed"
 
-#: src/utils/ui/msgeditor.py:240
+#: src/utils/ui/msgeditor.py:265
 msgctxt "ui:msg_editor|modal:body|title"
 msgid "Message Body Editor"
 msgstr "עורך תוכן הודעה"
 
-#: src/utils/ui/msgeditor.py:265
+#: src/utils/ui/msgeditor.py:290
 msgctxt "ui:msg_editor|button:body|error:invalid_colour"
 msgid ""
 "Invalid colour format! Please enter colours as hex codes, e.g. `#E67E22`"
 msgstr "צבע לא נכון! הכנס hex `#E67E22` לדוגמא"
 
-#: src/utils/ui/msgeditor.py:285
+#: src/utils/ui/msgeditor.py:310
 msgctxt "ui:msg_editor|button:body|label"
 msgid "Body"
 msgstr "גוף"
 
-#: src/utils/ui/msgeditor.py:302
+#: src/utils/ui/msgeditor.py:327
 msgctxt "ui:msg_editor|modal:author|field:name|label"
 msgid "Author Name"
 msgstr "שם כותב"
 
-#: src/utils/ui/msgeditor.py:313
+#: src/utils/ui/msgeditor.py:338
 msgctxt "ui:msg_editor|modal:author|field:link|label"
 msgid "Author URL"
 msgstr "לינק לכותב"
 
-#: src/utils/ui/msgeditor.py:323
+#: src/utils/ui/msgeditor.py:348
 msgctxt "ui:msg_editor|modal:author|field:image|label"
 msgid "Author Image URL"
 msgstr "תמונה של הכותב"
 
-#: src/utils/ui/msgeditor.py:334
+#: src/utils/ui/msgeditor.py:359
 msgctxt "ui:msg_editor|modal:author|title"
 msgid "Embed Author Editor"
 msgstr "עורך כותב"
 
-#: src/utils/ui/msgeditor.py:360
+#: src/utils/ui/msgeditor.py:385
 msgctxt "ui:msg_editor|button:author|label"
 msgid "Author"
 msgstr "כותב"
 
-#: src/utils/ui/msgeditor.py:377
+#: src/utils/ui/msgeditor.py:402
 msgctxt "ui:msg_editor|modal:footer|field:text|label"
 msgid "Footer Text"
 msgstr "טקסט פוטר"
 
-#: src/utils/ui/msgeditor.py:388
+#: src/utils/ui/msgeditor.py:413
 msgctxt "ui:msg_editor|modal:footer|field:image|label"
 msgid "Footer Image URL"
 msgstr "לינק תמונה פוטר"
 
-#: src/utils/ui/msgeditor.py:398
+#: src/utils/ui/msgeditor.py:423
 msgctxt "ui:msg_editor|modal:footer|field:timestamp|label"
 msgid "Embed Timestamp (in ISO format)"
 msgstr "נקודת זמן (ISO format)"
 
-#: src/utils/ui/msgeditor.py:410
+#: src/utils/ui/msgeditor.py:435
 msgctxt "ui:msg_editor|modal:footer|title"
 msgid "Embed Footer Editor"
 msgstr "עורך כותב פוטר"
 
-#: src/utils/ui/msgeditor.py:429
+#: src/utils/ui/msgeditor.py:454
 msgctxt "ui:msg_editor|button:footer|error:invalid_timestamp"
 msgid "Invalid timestamp! Please enter the timestamp in ISO format."
 msgstr "אנא הכנס נקודת זמן בISO"
 
-#: src/utils/ui/msgeditor.py:449
+#: src/utils/ui/msgeditor.py:474
 msgctxt "ui:msg_editor|button:footer|label"
 msgid "Footer"
 msgstr "פוטר"
 
-#: src/utils/ui/msgeditor.py:467
+#: src/utils/ui/msgeditor.py:492
 msgctxt "ui:msg_editor|modal:images|field:thumb|label"
 msgid "Thumbnail Image URL"
 msgstr "לינק לתמונה"
 
-#: src/utils/ui/msgeditor.py:477
+#: src/utils/ui/msgeditor.py:502
 msgctxt "ui:msg_editor|modal:images|field:image|label"
 msgid "Embed Image URL"
 msgstr "לינק תמונה בembed"
 
-#: src/utils/ui/msgeditor.py:487
+#: src/utils/ui/msgeditor.py:512
 msgctxt "ui:msg_editor|modal:images|title"
 msgid "Embed images Editor"
 msgstr "עורך תמונה"
 
-#: src/utils/ui/msgeditor.py:517
+#: src/utils/ui/msgeditor.py:542
 msgctxt "ui:msg_editor|button:images|label"
 msgid "Images"
 msgstr "תמונות"
 
-#: src/utils/ui/msgeditor.py:535
+#: src/utils/ui/msgeditor.py:560
 msgctxt "ui:msg_editor|modal:add_field|field:position|label"
 msgid "Field number to insert at"
 msgstr "מספר אזור להכניס ב"
 
-#: src/utils/ui/msgeditor.py:545
+#: src/utils/ui/msgeditor.py:570
 msgctxt "ui:msg_editor|modal:add_field|field:name|label"
 msgid "Field name"
 msgstr "שם"
 
-#: src/utils/ui/msgeditor.py:555
+#: src/utils/ui/msgeditor.py:580
 msgctxt "ui:msg_editor|modal:add_field|field:value|label"
 msgid "Field value"
 msgstr "ערך"
 
-#: src/utils/ui/msgeditor.py:565
+#: src/utils/ui/msgeditor.py:590
 msgctxt "ui:msg_editor|modal:add_field|field:inline|label"
 msgid "Whether the field is inline"
 msgstr "האם התוכן בInline"
 
-#: src/utils/ui/msgeditor.py:569
+#: src/utils/ui/msgeditor.py:594
 msgctxt "ui:msg_editor|modal:add_field|field:inline|placeholder"
 msgid "True/False"
 msgstr "כן/לא"
 
-#: src/utils/ui/msgeditor.py:582
+#: src/utils/ui/msgeditor.py:607
 msgctxt "ui:msg_editor|modal:add_field|title"
 msgid "Add Embed Field"
 msgstr "הוסף תוכן embed"
 
-#: src/utils/ui/msgeditor.py:602
+#: src/utils/ui/msgeditor.py:627
 msgctxt "ui:msg_editor|modal:add_field|error:position_not_int"
 msgid "The field position must be an integer!"
 msgstr "המיקום של האזור חייב להיות מספר שלם!"
 
-#: src/utils/ui/msgeditor.py:621
+#: src/utils/ui/msgeditor.py:646
 msgctxt "ui:msg_editor|button:add_field|label"
 msgid "Add Field"
 msgstr "הוסף אזור"
 
-#: src/utils/ui/msgeditor.py:637
+#: src/utils/ui/msgeditor.py:662
 msgctxt "ui:msg_editor|format_field|name_placeholder"
 msgid "-"
 msgstr "-"
 
-#: src/utils/ui/msgeditor.py:666
+#: src/utils/ui/msgeditor.py:691
 msgctxt "ui:msg_editor|modal:edit_field|field:name|label"
 msgid "Field name"
 msgstr "שם"
 
-#: src/utils/ui/msgeditor.py:677
+#: src/utils/ui/msgeditor.py:702
 msgctxt "ui:msg_editor|modal:edit_field|field:value|label"
 msgid "Field value"
 msgstr "ערך"
 
-#: src/utils/ui/msgeditor.py:688
+#: src/utils/ui/msgeditor.py:713
 msgctxt "ui:msg_editor|modal:edit_field|field:inline|label"
 msgid "Whether the field is inline"
 msgstr "האם התוכן בInline"
 
-#: src/utils/ui/msgeditor.py:692
+#: src/utils/ui/msgeditor.py:717
 msgctxt "ui:msg_editor|modal:edit_field|field:inline|placeholder"
 msgid "True/False"
 msgstr "כן/לא"
 
-#: src/utils/ui/msgeditor.py:704
+#: src/utils/ui/msgeditor.py:729
 msgctxt "ui:msg_editor|modal:edit_field|title"
 msgid "Edit Embed Field"
 msgstr "ערוך תוכן embed"
 
-#: src/utils/ui/msgeditor.py:733
+#: src/utils/ui/msgeditor.py:758
 msgctxt "ui:msg_editor|menu:edit_field|placeholder"
 msgid "Edit Embed Field"
 msgstr "ערוך תוכן embed"
 
-#: src/utils/ui/msgeditor.py:772
+#: src/utils/ui/msgeditor.py:797
 msgctxt "ui:msg_deleteor|menu:delete_field|placeholder"
 msgid "Remove Embed Field"
 msgstr "הסר תוכן embed"
 
-#: src/utils/ui/msgeditor.py:808
+#: src/utils/ui/msgeditor.py:833
 msgctxt "ui:msg_editor|button:save|label"
 msgid "Save"
 msgstr "שמור"
 
-#: src/utils/ui/msgeditor.py:833
+#: src/utils/ui/msgeditor.py:858
 msgctxt "ui:msg_editor|button:download|label"
 msgid "Download"
 msgstr "הורד"
 
-#: src/utils/ui/msgeditor.py:852
+#: src/utils/ui/msgeditor.py:877
 msgctxt "ui:msg_editor|button:undo|label"
 msgid "Undo"
 msgstr "חזרו"
 
-#: src/utils/ui/msgeditor.py:872
+#: src/utils/ui/msgeditor.py:897
 msgctxt "ui:msg_editor|button:redo|label"
 msgid "Redo"
 msgstr "שחזר"
 
-#: src/utils/ui/msgeditor.py:891
+#: src/utils/ui/msgeditor.py:916
 msgctxt "ui:msg_editor|button:quit|confirm"
 msgid "You have unsaved changes! Are you sure you want to quit?"
 msgstr "יש לך שינויים שלא שמרת, אתה בטוח שאתה רוצה לעזוב עכשיו?"
 
-#: src/utils/ui/msgeditor.py:896
+#: src/utils/ui/msgeditor.py:921
 msgctxt "ui:msg_editor|button:quit|confirm|button:yes"
 msgid "Yes, Quit Now"
 msgstr "כן, עזוב עכשיו"
 
-#: src/utils/ui/msgeditor.py:902
+#: src/utils/ui/msgeditor.py:927
 msgctxt "ui:msg_editor|button:quit|confirm|button:no"
 msgid "No, Go Back"
 msgstr "לא, חזור אחורה"
 
-#: src/utils/ui/msgeditor.py:996
+#: src/utils/ui/msgeditor.py:1025
 msgctxt "ui:msg_editor|timeout_warning|title"
 msgid "Warning!"
 msgstr "זהירות!"
 
-#: src/utils/ui/msgeditor.py:1000
+#: src/utils/ui/msgeditor.py:1029
 #, possible-python-brace-format
 msgctxt "ui:msg_editor|timeout_warning|desc"
 msgid ""
@@ -523,7 +533,7 @@ msgid ""
 "editing."
 msgstr "התפריט יפוג ב {timestamp}. לחץ \"המשך\" למטה כדי להמשיך לערוך."
 
-#: src/utils/ui/msgeditor.py:1009
+#: src/utils/ui/msgeditor.py:1038
 msgctxt "ui:msg_editor|timeout_warning|continue"
 msgid "Continue"
 msgstr "המשך"
