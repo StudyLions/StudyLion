@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 22:43+0300\n"
+"POT-Creation-Date: 2023-10-01 16:01+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Eyüp Ramazan, 2023\n"
 "Language-Team: Turkish (https://app.transifex.com/leobot/teams/174919/tr/)\n"
@@ -110,34 +110,34 @@ msgctxt "cmd:page_select|acmpl|error:no_pager"
 msgid "No active pagers in this channel!"
 msgstr "Bu kanalda aktif bir çağrı cihazı yok!"
 
-#: src/utils/transformers.py:43
+#: src/utils/transformers.py:45
 #, possible-python-brace-format
 msgctxt "utils:parse_dur|error"
 msgid "Cannot parse `{value}` as a duration."
 msgstr "`{value}`, süre olarak çözümlenemiyor."
 
-#: src/utils/transformers.py:68
+#: src/utils/transformers.py:71
 #, possible-python-brace-format
 msgctxt "util:Duration|acmpl|error"
 msgid "Cannot extract duration from \"{partial}\""
 msgstr "\"{partial}\" öğesinden süre çıkarılamıyor"
 
-#: src/utils/lib.py:670
+#: src/utils/lib.py:679
 msgctxt "util:parse_dur|regex:day"
 msgid "(?P<value>\\d+)\\s*(?:(d)|(day))"
 msgstr "(?P<value>\\d+)\\s*(?:(g)|(gün))"
 
-#: src/utils/lib.py:677
+#: src/utils/lib.py:686
 msgctxt "util:parse_dur|regex:hour"
 msgid "(?P<value>\\d+)\\s*(?:(h)|(hour))"
 msgstr "(?P<value>\\d+)\\s*(?:(s)|(saat))"
 
-#: src/utils/lib.py:684
+#: src/utils/lib.py:693
 msgctxt "util:parse_dur|regex:minute"
 msgid "(?P<value>\\d+)\\s*(?:(m)|(min))"
 msgstr "(?P<value>\\d+)\\s*(?:(dk)|(dak)|(dakika))"
 
-#: src/utils/lib.py:691
+#: src/utils/lib.py:700
 msgctxt "util:parse_dur|regex:second"
 msgid "(?P<value>\\d+)\\s*(?:(s)|(sec))"
 msgstr "(?P<value>\\d+)\\s*(?:(sn)|(saniye))"
@@ -289,239 +289,249 @@ msgctxt "ui:msg_editor|button:add_embed|label"
 msgid "Add Embed"
 msgstr "Gömülü İçerik Ekle"
 
-#: src/utils/ui/msgeditor.py:192
+#: src/utils/ui/msgeditor.py:190
+msgctxt "ui:msg_editor|button:rm_embed|sample_content"
+msgid "Content Placeholder"
+msgstr ""
+
+#: src/utils/ui/msgeditor.py:199
+msgctxt "ui:msg_editor|button:rm_embed|label"
+msgid "Remove Embed"
+msgstr ""
+
+#: src/utils/ui/msgeditor.py:217
 msgctxt "ui:msg_editor|modal:body|field:content|label"
 msgid "Message Content"
 msgstr "Mesaj İçeriği"
 
-#: src/utils/ui/msgeditor.py:203
+#: src/utils/ui/msgeditor.py:228
 msgctxt "ui:msg_editor|modal:body|field:desc|label"
 msgid "Embed Description"
 msgstr "Gömülü İçerik Açıklaması"
 
-#: src/utils/ui/msgeditor.py:214
+#: src/utils/ui/msgeditor.py:239
 msgctxt "ui:msg_editor|modal:body|field:title|label"
 msgid "Embed Title"
 msgstr "Gömülü İçerşk Başlığı"
 
-#: src/utils/ui/msgeditor.py:225
+#: src/utils/ui/msgeditor.py:250
 msgctxt "ui:msg_editor|modal:body|field:colour|label"
 msgid "Embed Colour"
 msgstr "Gömülü İçerik Rengi"
 
-#: src/utils/ui/msgeditor.py:240
+#: src/utils/ui/msgeditor.py:265
 msgctxt "ui:msg_editor|modal:body|title"
 msgid "Message Body Editor"
 msgstr "Mesaj Gövdesi Editörü"
 
-#: src/utils/ui/msgeditor.py:265
+#: src/utils/ui/msgeditor.py:290
 msgctxt "ui:msg_editor|button:body|error:invalid_colour"
 msgid ""
 "Invalid colour format! Please enter colours as hex codes, e.g. `#E67E22`"
 msgstr ""
 "Geçersiz renk formatı! Lütfen renkleri hex kodu olarak girin, örn. `#E67E22`"
 
-#: src/utils/ui/msgeditor.py:285
+#: src/utils/ui/msgeditor.py:310
 msgctxt "ui:msg_editor|button:body|label"
 msgid "Body"
 msgstr "Gövde"
 
-#: src/utils/ui/msgeditor.py:302
+#: src/utils/ui/msgeditor.py:327
 msgctxt "ui:msg_editor|modal:author|field:name|label"
 msgid "Author Name"
 msgstr "Yazar Adı"
 
-#: src/utils/ui/msgeditor.py:313
+#: src/utils/ui/msgeditor.py:338
 msgctxt "ui:msg_editor|modal:author|field:link|label"
 msgid "Author URL"
 msgstr "Yazar URL'si"
 
-#: src/utils/ui/msgeditor.py:323
+#: src/utils/ui/msgeditor.py:348
 msgctxt "ui:msg_editor|modal:author|field:image|label"
 msgid "Author Image URL"
 msgstr "Yazar Resım URL'si"
 
-#: src/utils/ui/msgeditor.py:334
+#: src/utils/ui/msgeditor.py:359
 msgctxt "ui:msg_editor|modal:author|title"
 msgid "Embed Author Editor"
 msgstr "Gömülü İçerik Yazar Editörü"
 
-#: src/utils/ui/msgeditor.py:360
+#: src/utils/ui/msgeditor.py:385
 msgctxt "ui:msg_editor|button:author|label"
 msgid "Author"
 msgstr "Yazar"
 
-#: src/utils/ui/msgeditor.py:377
+#: src/utils/ui/msgeditor.py:402
 msgctxt "ui:msg_editor|modal:footer|field:text|label"
 msgid "Footer Text"
 msgstr "Altbilgi Metni"
 
-#: src/utils/ui/msgeditor.py:388
+#: src/utils/ui/msgeditor.py:413
 msgctxt "ui:msg_editor|modal:footer|field:image|label"
 msgid "Footer Image URL"
 msgstr "Altbilgi Resım URL'si"
 
-#: src/utils/ui/msgeditor.py:398
+#: src/utils/ui/msgeditor.py:423
 msgctxt "ui:msg_editor|modal:footer|field:timestamp|label"
 msgid "Embed Timestamp (in ISO format)"
 msgstr "Gömülü İçerik Zaman Damgası (ISO formatında)"
 
-#: src/utils/ui/msgeditor.py:410
+#: src/utils/ui/msgeditor.py:435
 msgctxt "ui:msg_editor|modal:footer|title"
 msgid "Embed Footer Editor"
 msgstr "Gömülü İçerik Altbilgi Düzenleyicisini"
 
-#: src/utils/ui/msgeditor.py:429
+#: src/utils/ui/msgeditor.py:454
 msgctxt "ui:msg_editor|button:footer|error:invalid_timestamp"
 msgid "Invalid timestamp! Please enter the timestamp in ISO format."
 msgstr "Geçersiz zaman damgası! Lütfen zaman damgasını ISO formatında girin."
 
-#: src/utils/ui/msgeditor.py:449
+#: src/utils/ui/msgeditor.py:474
 msgctxt "ui:msg_editor|button:footer|label"
 msgid "Footer"
 msgstr "Altbilgi"
 
-#: src/utils/ui/msgeditor.py:467
+#: src/utils/ui/msgeditor.py:492
 msgctxt "ui:msg_editor|modal:images|field:thumb|label"
 msgid "Thumbnail Image URL"
 msgstr "Küçük Resim URL'si"
 
-#: src/utils/ui/msgeditor.py:477
+#: src/utils/ui/msgeditor.py:502
 msgctxt "ui:msg_editor|modal:images|field:image|label"
 msgid "Embed Image URL"
 msgstr "Gömülü İçerik Resim URL'si"
 
-#: src/utils/ui/msgeditor.py:487
+#: src/utils/ui/msgeditor.py:512
 msgctxt "ui:msg_editor|modal:images|title"
 msgid "Embed images Editor"
 msgstr "Gömülü İçerik Resim Editörü"
 
-#: src/utils/ui/msgeditor.py:517
+#: src/utils/ui/msgeditor.py:542
 msgctxt "ui:msg_editor|button:images|label"
 msgid "Images"
 msgstr "Resimler"
 
-#: src/utils/ui/msgeditor.py:535
+#: src/utils/ui/msgeditor.py:560
 msgctxt "ui:msg_editor|modal:add_field|field:position|label"
 msgid "Field number to insert at"
 msgstr "Eklenecek alan numarası"
 
-#: src/utils/ui/msgeditor.py:545
+#: src/utils/ui/msgeditor.py:570
 msgctxt "ui:msg_editor|modal:add_field|field:name|label"
 msgid "Field name"
 msgstr "Alan adı"
 
-#: src/utils/ui/msgeditor.py:555
+#: src/utils/ui/msgeditor.py:580
 msgctxt "ui:msg_editor|modal:add_field|field:value|label"
 msgid "Field value"
 msgstr "Alan değeri"
 
-#: src/utils/ui/msgeditor.py:565
+#: src/utils/ui/msgeditor.py:590
 msgctxt "ui:msg_editor|modal:add_field|field:inline|label"
 msgid "Whether the field is inline"
 msgstr "Alanın satır içi olup olmadığı"
 
-#: src/utils/ui/msgeditor.py:569
+#: src/utils/ui/msgeditor.py:594
 msgctxt "ui:msg_editor|modal:add_field|field:inline|placeholder"
 msgid "True/False"
 msgstr "Doğru/Yanlış"
 
-#: src/utils/ui/msgeditor.py:582
+#: src/utils/ui/msgeditor.py:607
 msgctxt "ui:msg_editor|modal:add_field|title"
 msgid "Add Embed Field"
 msgstr "Embed Alanı Ekle"
 
-#: src/utils/ui/msgeditor.py:602
+#: src/utils/ui/msgeditor.py:627
 msgctxt "ui:msg_editor|modal:add_field|error:position_not_int"
 msgid "The field position must be an integer!"
 msgstr "Alan konumu bir tamsayı olmalıdır!"
 
-#: src/utils/ui/msgeditor.py:621
+#: src/utils/ui/msgeditor.py:646
 msgctxt "ui:msg_editor|button:add_field|label"
 msgid "Add Field"
 msgstr "Alan Ekle"
 
-#: src/utils/ui/msgeditor.py:637
+#: src/utils/ui/msgeditor.py:662
 msgctxt "ui:msg_editor|format_field|name_placeholder"
 msgid "-"
 msgstr "-"
 
-#: src/utils/ui/msgeditor.py:666
+#: src/utils/ui/msgeditor.py:691
 msgctxt "ui:msg_editor|modal:edit_field|field:name|label"
 msgid "Field name"
 msgstr "Alan adı"
 
-#: src/utils/ui/msgeditor.py:677
+#: src/utils/ui/msgeditor.py:702
 msgctxt "ui:msg_editor|modal:edit_field|field:value|label"
 msgid "Field value"
 msgstr "Alan değeri"
 
-#: src/utils/ui/msgeditor.py:688
+#: src/utils/ui/msgeditor.py:713
 msgctxt "ui:msg_editor|modal:edit_field|field:inline|label"
 msgid "Whether the field is inline"
 msgstr "Alanın satır içi olup olmadığı"
 
-#: src/utils/ui/msgeditor.py:692
+#: src/utils/ui/msgeditor.py:717
 msgctxt "ui:msg_editor|modal:edit_field|field:inline|placeholder"
 msgid "True/False"
 msgstr "Doğru/Yanlış"
 
-#: src/utils/ui/msgeditor.py:704
+#: src/utils/ui/msgeditor.py:729
 msgctxt "ui:msg_editor|modal:edit_field|title"
 msgid "Edit Embed Field"
 msgstr "Gömülü İçerik Alanını Düzenle"
 
-#: src/utils/ui/msgeditor.py:733
+#: src/utils/ui/msgeditor.py:758
 msgctxt "ui:msg_editor|menu:edit_field|placeholder"
 msgid "Edit Embed Field"
 msgstr "Gömülü İçerik Alanını Düzenle"
 
-#: src/utils/ui/msgeditor.py:772
+#: src/utils/ui/msgeditor.py:797
 msgctxt "ui:msg_deleteor|menu:delete_field|placeholder"
 msgid "Remove Embed Field"
 msgstr "Gömülü İçerik Alanını Kaldır"
 
-#: src/utils/ui/msgeditor.py:808
+#: src/utils/ui/msgeditor.py:833
 msgctxt "ui:msg_editor|button:save|label"
 msgid "Save"
 msgstr "Kaydet"
 
-#: src/utils/ui/msgeditor.py:833
+#: src/utils/ui/msgeditor.py:858
 msgctxt "ui:msg_editor|button:download|label"
 msgid "Download"
 msgstr "İndir"
 
-#: src/utils/ui/msgeditor.py:852
+#: src/utils/ui/msgeditor.py:877
 msgctxt "ui:msg_editor|button:undo|label"
 msgid "Undo"
 msgstr "Geri al"
 
-#: src/utils/ui/msgeditor.py:872
+#: src/utils/ui/msgeditor.py:897
 msgctxt "ui:msg_editor|button:redo|label"
 msgid "Redo"
 msgstr "İleri al"
 
-#: src/utils/ui/msgeditor.py:891
+#: src/utils/ui/msgeditor.py:916
 msgctxt "ui:msg_editor|button:quit|confirm"
 msgid "You have unsaved changes! Are you sure you want to quit?"
 msgstr "Kaydedilmemiş değişikliklerin var! Çıkmak istediğinden emin misin?"
 
-#: src/utils/ui/msgeditor.py:896
+#: src/utils/ui/msgeditor.py:921
 msgctxt "ui:msg_editor|button:quit|confirm|button:yes"
 msgid "Yes, Quit Now"
 msgstr "Evet, Şimdi Çık"
 
-#: src/utils/ui/msgeditor.py:902
+#: src/utils/ui/msgeditor.py:927
 msgctxt "ui:msg_editor|button:quit|confirm|button:no"
 msgid "No, Go Back"
 msgstr "Hayır, Geri Dön"
 
-#: src/utils/ui/msgeditor.py:996
+#: src/utils/ui/msgeditor.py:1025
 msgctxt "ui:msg_editor|timeout_warning|title"
 msgid "Warning!"
 msgstr "Uyarı!"
 
-#: src/utils/ui/msgeditor.py:1000
+#: src/utils/ui/msgeditor.py:1029
 #, possible-python-brace-format
 msgctxt "ui:msg_editor|timeout_warning|desc"
 msgid ""
@@ -531,7 +541,7 @@ msgstr ""
 "Bu arayüz {timestamp} zaman aşımına uğrayacaktır. Düzenlemeye devam etmek "
 "için aşağıdaki 'Devam' düğmesine basın."
 
-#: src/utils/ui/msgeditor.py:1009
+#: src/utils/ui/msgeditor.py:1038
 msgctxt "ui:msg_editor|timeout_warning|continue"
 msgid "Continue"
 msgstr "Devam"
