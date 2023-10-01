@@ -548,7 +548,7 @@ msgstr "Rütbe yenilenmesi tamamlandı!"
 #: src/modules/ranks/ui/refresh.py:148
 msgctxt "ui:refresh_ranks|embed|title:working"
 msgid "Refreshing your server ranks, please wait."
-msgstr "Sunucu rütbelerinizi yeniliyoruz, lütfen bekleyin."
+msgstr "Sunucu rütbelerinizi yeniliyorum, lütfen bekleyin."
 
 #: src/modules/ranks/ui/refresh.py:166
 #, possible-python-brace-format
