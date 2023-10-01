@@ -572,7 +572,7 @@ msgstr "**Rütbe rolleri yükleniyor:** {emoji}"
 #, possible-python-brace-format
 msgctxt "ui:refresh_ranks|embed|line:compute"
 msgid "**Computing correct ranks:** {emoji}"
-msgstr "**Doğru rütbelerin hesaplanması:** {emoji}"
+msgstr "**Doğru rütbeler hesaplanıyor:** {emoji}"
 
 #: src/modules/ranks/ui/refresh.py:207
 msgctxt "ui:refresh_ranks|embed|field:remove|name"
