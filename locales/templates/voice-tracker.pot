@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-24 12:21+0300\n"
+"POT-Creation-Date: 2023-10-01 16:01+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,129 +17,129 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/tracking/voice/cog.py:649
+#: src/tracking/voice/cog.py:661
 msgctxt "cmd:now"
 msgid "now"
 msgstr ""
 
-#: src/tracking/voice/cog.py:652
+#: src/tracking/voice/cog.py:664
 msgctxt "cmd:now|desc"
 msgid ""
 "Describe what you are working on, or see what your friends are working on!"
 msgstr ""
 
-#: src/tracking/voice/cog.py:656
+#: src/tracking/voice/cog.py:668
 msgctxt "cmd:now|param:tag"
 msgid "tag"
 msgstr ""
 
-#: src/tracking/voice/cog.py:657
+#: src/tracking/voice/cog.py:669
 msgctxt "cmd:now|param:user"
 msgid "user"
 msgstr ""
 
-#: src/tracking/voice/cog.py:658
+#: src/tracking/voice/cog.py:670
 msgctxt "cmd:now|param:clear"
 msgid "clear"
 msgstr ""
 
-#: src/tracking/voice/cog.py:663
+#: src/tracking/voice/cog.py:675
 msgctxt "cmd:now|param:tag|desc"
 msgid "Describe what you are working on in 10 characters or less!"
 msgstr ""
 
-#: src/tracking/voice/cog.py:667
+#: src/tracking/voice/cog.py:679
 msgctxt "cmd:now|param:user|desc"
 msgid "Check what a friend is working on."
 msgstr ""
 
-#: src/tracking/voice/cog.py:671
+#: src/tracking/voice/cog.py:683
 msgctxt "cmd:now|param:clear|desc"
 msgid "Unset your activity tag (or the target user's tag, for moderators)."
 msgstr ""
 
-#: src/tracking/voice/cog.py:698
+#: src/tracking/voice/cog.py:710
 msgctxt "cmd:now|target:self|error:target_inactive"
 msgid ""
 "You have no running session! Join a tracked voice channel to start a session."
 msgstr ""
 
-#: src/tracking/voice/cog.py:707
+#: src/tracking/voice/cog.py:719
 #, possible-python-brace-format
 msgctxt "cmd:now|target:other|error:target_inactive"
 msgid "{mention} has no running session!"
 msgstr ""
 
-#: src/tracking/voice/cog.py:722
+#: src/tracking/voice/cog.py:734
 msgctxt "cmd:now|target:self|mode:clear|success|title"
 msgid "Session Tag Cleared"
 msgstr ""
 
-#: src/tracking/voice/cog.py:726
+#: src/tracking/voice/cog.py:738
 msgctxt "cmd:now|target:self|mode:clear|success|desc"
 msgid "Successfully unset your session tag."
 msgstr ""
 
-#: src/tracking/voice/cog.py:735
+#: src/tracking/voice/cog.py:747
 msgctxt "cmd:now|target:other|mode:clear|error:perms|title"
 msgid "You can't do that!"
 msgstr ""
 
-#: src/tracking/voice/cog.py:739
+#: src/tracking/voice/cog.py:751
 msgctxt "cmd:now|target:other|mode:clear|error:perms|desc"
 msgid "You need to be a moderator to set or clear someone else's session tag."
 msgstr ""
 
-#: src/tracking/voice/cog.py:749
+#: src/tracking/voice/cog.py:761
 msgctxt "cmd:now|target:other|mode:clear|success|title"
 msgid "Session Tag Cleared!"
 msgstr ""
 
-#: src/tracking/voice/cog.py:753
+#: src/tracking/voice/cog.py:765
 #, possible-python-brace-format
 msgctxt "cmd:now|target:other|mode:clear|success|desc"
 msgid "Cleared {target}'s session tag."
 msgstr ""
 
-#: src/tracking/voice/cog.py:765
+#: src/tracking/voice/cog.py:777
 msgctxt "cmd:now|target:self|mode:set|success|title"
 msgid "Session Tag Set!"
 msgstr ""
 
-#: src/tracking/voice/cog.py:769
+#: src/tracking/voice/cog.py:781
 #, possible-python-brace-format
 msgctxt "cmd:now|target:self|mode:set|success|desc"
 msgid "You are now working on `{new_tag}`. Good luck!"
 msgstr ""
 
-#: src/tracking/voice/cog.py:778
+#: src/tracking/voice/cog.py:790
 msgctxt "cmd:now|target:other|mode:set|error:perms|title"
 msgid "You can't do that!"
 msgstr ""
 
-#: src/tracking/voice/cog.py:782
+#: src/tracking/voice/cog.py:794
 msgctxt "cmd:now|target:other|mode:set|error:perms|desc"
 msgid "You need to be a moderator to set or clear someone else's session tag!"
 msgstr ""
 
-#: src/tracking/voice/cog.py:792
+#: src/tracking/voice/cog.py:804
 msgctxt "cmd:now|target:other|mode:set|success|title"
 msgid "Session Tag Set!"
 msgstr ""
 
-#: src/tracking/voice/cog.py:796
+#: src/tracking/voice/cog.py:808
 #, possible-python-brace-format
 msgctxt "cmd:now|target:other|mode:set|success|desc"
 msgid "Set {target}'s session tag to `{new_tag}`."
 msgstr ""
 
-#: src/tracking/voice/cog.py:805
+#: src/tracking/voice/cog.py:817
 #, possible-python-brace-format
 msgctxt "cmd:now|target:self|mode:show_with_tag|desc"
 msgid "You have been working on **`{tag}`** in {channel} since {time}!"
 msgstr ""
 
-#: src/tracking/voice/cog.py:810
+#: src/tracking/voice/cog.py:822
 #, possible-python-brace-format
 msgctxt "cmd:now|target:self|mode:show_without_tag|desc"
 msgid ""
@@ -148,7 +148,7 @@ msgid ""
 "Use `/now <tag>` to set what you are working on."
 msgstr ""
 
-#: src/tracking/voice/cog.py:817
+#: src/tracking/voice/cog.py:829
 #, possible-python-brace-format
 msgctxt "cmd:now|target:other|mode:show_with_tag|desc"
 msgid ""
@@ -156,23 +156,23 @@ msgid ""
 "They have been working on **{tag}** since {time}."
 msgstr ""
 
-#: src/tracking/voice/cog.py:823
+#: src/tracking/voice/cog.py:835
 #, possible-python-brace-format
 msgctxt "cmd:now|target:other|mode:show_without_tag|desc"
 msgid "{target} has been working in {channel} since {time}!"
 msgstr ""
 
-#: src/tracking/voice/cog.py:846
+#: src/tracking/voice/cog.py:858
 msgctxt "cmd:configure_voice_rates"
 msgid "voice_rewards"
 msgstr ""
 
-#: src/tracking/voice/cog.py:849
+#: src/tracking/voice/cog.py:861
 msgctxt "cmd:configure_voice_rates|desc"
 msgid "Configure Voice tracking rewards and experience"
 msgstr ""
 
-#: src/tracking/voice/cog.py:906
+#: src/tracking/voice/cog.py:918
 #, possible-python-brace-format
 msgctxt "cmd:configure_voice_tracking|mode:voice|resp:success|desc"
 msgid ""
@@ -181,7 +181,7 @@ msgid ""
 "day."
 msgstr ""
 
-#: src/tracking/voice/cog.py:917
+#: src/tracking/voice/cog.py:929
 #, possible-python-brace-format
 msgctxt "cmd:configure_voice_tracking|mode:study|resp:success|desc"
 msgid ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-24 12:21+0300\n"
+"POT-Creation-Date: 2023-10-01 16:01+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -102,105 +102,105 @@ msgctxt "utils|short_months"
 msgid "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec"
 msgstr ""
 
-#: src/babel/settings.py:23
+#: src/babel/settings.py:24
 msgctxt "settype:locale|accepts"
 msgid "Enter a supported language (e.g. 'en-GB')."
 msgstr ""
 
-#: src/babel/settings.py:34
+#: src/babel/settings.py:35
 msgctxt "settype:locale|summary_table|field:supported|key"
 msgid "Supported"
 msgstr ""
 
-#: src/babel/settings.py:44
+#: src/babel/settings.py:45
 msgctxt "settype:locale|formatted:unset"
 msgid "Unset"
 msgstr ""
 
-#: src/babel/settings.py:60
+#: src/babel/settings.py:61
 #, possible-python-brace-format
 msgctxt "settype:locale|error"
 msgid "Sorry, we do not support the language `{lang}` at this time!"
 msgstr ""
 
-#: src/babel/settings.py:75
+#: src/babel/settings.py:76
 msgctxt "userset:locale"
 msgid "language"
 msgstr ""
 
-#: src/babel/settings.py:76
+#: src/babel/settings.py:77
 msgctxt "userset:locale|desc"
 msgid "Your preferred language for interacting with me."
 msgstr ""
 
-#: src/babel/settings.py:79
+#: src/babel/settings.py:80
 msgctxt "userset:locale|long_desc"
 msgid ""
 "The language you would prefer me to respond to commands and interactions in. "
 "Servers may be configured to override this with their own language."
 msgstr ""
 
-#: src/babel/settings.py:90
+#: src/babel/settings.py:91
 msgctxt "userset:locale|response"
 msgid "You have unset your language."
 msgstr ""
 
-#: src/babel/settings.py:92
+#: src/babel/settings.py:93
 #, possible-python-brace-format
 msgctxt "userset:locale|response"
 msgid "You have set your language to {lang}."
 msgstr ""
 
-#: src/babel/settings.py:110
+#: src/babel/settings.py:111
 msgctxt "guildset:force_locale"
 msgid "force_language"
 msgstr ""
 
-#: src/babel/settings.py:112
+#: src/babel/settings.py:113
 msgctxt "guildset:force_locale|desc"
 msgid ""
 "Whether to force all members to use the configured guild language when "
 "interacting with me."
 msgstr ""
 
-#: src/babel/settings.py:115
+#: src/babel/settings.py:116
 msgctxt "guildset:force_locale|long_desc"
 msgid ""
 "When enabled, commands in this guild will always use the configured guild "
 "language, regardless of the member's personally configured language."
 msgstr ""
 
-#: src/babel/settings.py:119
+#: src/babel/settings.py:120
 msgctxt "guildset:force_locale|output"
 msgid "Enabled (members will be forced to use the server language)"
 msgstr ""
 
-#: src/babel/settings.py:120
+#: src/babel/settings.py:121
 msgctxt "guildset:force_locale|output"
 msgid "Disabled (members may set their own language)"
 msgstr ""
 
-#: src/babel/settings.py:134
+#: src/babel/settings.py:135
 msgctxt "guildset:force_locale|response"
 msgid "I will always use the set language in this server."
 msgstr ""
 
-#: src/babel/settings.py:139
+#: src/babel/settings.py:140
 msgctxt "guildset:force_locale|response"
 msgid "I will now allow the members to set their own language here."
 msgstr ""
 
-#: src/babel/settings.py:156
+#: src/babel/settings.py:157
 msgctxt "guildset:locale"
 msgid "language"
 msgstr ""
 
-#: src/babel/settings.py:157
+#: src/babel/settings.py:158
 msgctxt "guildset:locale|desc"
 msgid "Your preferred language for interacting with me."
 msgstr ""
 
-#: src/babel/settings.py:160
+#: src/babel/settings.py:161
 msgctxt "guildset:locale|long_desc"
 msgid ""
 "The default language to use for responses and interactions in this server. "
@@ -208,12 +208,12 @@ msgid ""
 "unless `force_language` is enabled."
 msgstr ""
 
-#: src/babel/settings.py:172
+#: src/babel/settings.py:173
 msgctxt "guildset:locale|response"
 msgid "You have unset the guild language."
 msgstr ""
 
-#: src/babel/settings.py:174
+#: src/babel/settings.py:175
 #, possible-python-brace-format
 msgctxt "guildset:locale|response"
 msgid "You have set the guild language to {lang}."

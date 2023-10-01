@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-24 12:21+0300\n"
+"POT-Creation-Date: 2023-10-01 16:01+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,23 +22,28 @@ msgctxt "setting|formatted|notset"
 msgid "Not Set"
 msgstr ""
 
-#: src/settings/ui.py:338
+#: src/settings/ui.py:320
+msgctxt "setting|embed_field|too_long"
+msgid "Too long to display here!"
+msgstr ""
+
+#: src/settings/ui.py:354
 #, possible-python-brace-format
 msgctxt "setting|summary_embed|title"
 msgid "Configuration options for `{name}`"
 msgstr ""
 
-#: src/settings/ui.py:350
+#: src/settings/ui.py:366
 msgctxt "setting|summary_table|field:currently|key"
 msgid "Currently"
 msgstr ""
 
-#: src/settings/ui.py:357
+#: src/settings/ui.py:373
 msgctxt "setting|summary_table|field:default|key"
 msgid "By Default"
 msgstr ""
 
-#: src/settings/ui.py:364
+#: src/settings/ui.py:380
 msgctxt "setting|summary_table|field:set|key"
 msgid "Set Using"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-24 12:21+0300\n"
+"POT-Creation-Date: 2023-10-01 16:01+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,48 +27,48 @@ msgctxt "cmd:me|desc"
 msgid "Display your personal profile and summary statistics."
 msgstr ""
 
-#: src/modules/statistics/cog.py:56
+#: src/modules/statistics/cog.py:57
 msgctxt "cmd:stats"
 msgid "stats"
 msgstr ""
 
-#: src/modules/statistics/cog.py:59
+#: src/modules/statistics/cog.py:60
 msgctxt "cmd:stats|desc"
 msgid "Weekly and monthly statistics for your recent activity."
 msgstr ""
 
-#: src/modules/statistics/cog.py:72
+#: src/modules/statistics/cog.py:74
 msgctxt "cmd:leaderboard"
 msgid "leaderboard"
 msgstr ""
 
-#: src/modules/statistics/cog.py:75
+#: src/modules/statistics/cog.py:77
 msgctxt "cmd:leaderboard|desc"
 msgid "Server leaderboard."
 msgstr ""
 
-#: src/modules/statistics/cog.py:90
+#: src/modules/statistics/cog.py:92
 #, possible-python-brace-format
 msgctxt "cmd:leaderboard|chunking|desc"
 msgid "Requesting server member list from Discord, please wait {loading}"
 msgstr ""
 
-#: src/modules/statistics/cog.py:113
+#: src/modules/statistics/cog.py:115
 msgctxt "cmd:configure_statistics"
 msgid "statistics"
 msgstr ""
 
-#: src/modules/statistics/cog.py:114
+#: src/modules/statistics/cog.py:116
 msgctxt "cmd:configure_statistics|desc"
 msgid "Statistics configuration panel"
 msgstr ""
 
-#: src/modules/statistics/cog.py:117
+#: src/modules/statistics/cog.py:119
 msgctxt "cmd:configure_statistics|param:season_start"
 msgid "season_start"
 msgstr ""
 
-#: src/modules/statistics/cog.py:122
+#: src/modules/statistics/cog.py:124
 msgctxt "cmd:configure_statistics|param:season_start|desc"
 msgid ""
 "Time from which to start counting activity for rank badges and season "
