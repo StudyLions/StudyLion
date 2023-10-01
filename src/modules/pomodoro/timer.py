@@ -7,7 +7,7 @@ from datetime import timedelta, datetime
 import discord
 
 from meta import LionBot
-from meta.logger import log_wrap, log_context
+from meta.logger import log_wrap, log_context, set_logging_context
 from utils.lib import MessageArgs, utc_now, replace_multiple
 from core.lion_guild import LionGuild
 from core.data import CoreData
@@ -61,7 +61,7 @@ class Timer:
         log_context.set(f"tid: {self.data.channelid}")
 
         # State
-        self.last_seen: dict[int, int] = {}  # memberid -> last seen timestamp
+        self.last_seen: dict[int, datetime] = {}  # memberid -> last seen timestamp
         self.status_view: Optional[TimerStatusUI] = None  # Current TimerStatusUI
         self.last_status_message: Optional[discord.Message] = None  # Last deliever notification message
         self._hook: Optional[CoreData.LionHook] = None  # Cached notification webhook
@@ -384,7 +384,7 @@ class Timer:
             tasks = []
             after_tasks = []
             # Submit channel name update request
-            after_tasks.append(asyncio.create_task(self._update_channel_name()))
+            after_tasks.append(asyncio.create_task(self._update_channel_name(), name='Update-name'))
 
             if kick and (threshold := self.warning_threshold(from_stage)):
                 now = utc_now()
@@ -397,38 +397,65 @@ class Timer:
                     elif last_seen < threshold:
                         needs_kick.append(member)
 
-                for member in needs_kick:
-                    tasks.append(member.edit(voice_channel=None))
+                t = self.bot.translator.t
+                if self.channel and self.channel.permissions_for(self.channel.guild.me).move_members:
+                    for member in needs_kick:
+                        tasks.append(
+                            asyncio.create_task(
+                                member.edit(
+                                    voice_channel=None,
+                                    reason=t(_p(
+                                        'timer|disconnect|audit_reason',
+                                        "Disconnecting inactive member from timer."
+                                    ), locale=self.locale.value)
+                                ),
+                                name="Disconnect-timer-member"
+                            )
+                        )
 
                 notify_hook = await self.get_notification_webhook()
-                if needs_kick and notify_hook:
-                    t = self.bot.translator.t
-                    kick_message = t(_np(
-                        'timer|kicked_message',
-                        "{mentions} was removed from {channel} because they were inactive! "
-                        "Remember to press {tick} to register your presence every stage.",
-                        "{mentions} were removed from {channel} because they were inactive! "
-                        "Remember to press {tick} to register your presence every stage.",
-                        len(needs_kick)
-                    ), locale=self.locale.value).format(
-                        channel=f"<#{self.data.channelid}>",
-                        mentions=', '.join(member.mention for member in needs_kick),
-                        tick=self.bot.config.emojis.tick
-                    )
-                    tasks.append(notify_hook.send(kick_message))
+                if needs_kick and notify_hook and self.channel:
+                    if self.channel.permissions_for(self.channel.guild.me).move_members:
+                        kick_message = t(_np(
+                            'timer|kicked_message',
+                            "{mentions} was removed from {channel} because they were inactive! "
+                            "Remember to press {tick} to register your presence every stage.",
+                            "{mentions} were removed from {channel} because they were inactive! "
+                            "Remember to press {tick} to register your presence every stage.",
+                            len(needs_kick)
+                        ), locale=self.locale.value).format(
+                            channel=f"<#{self.data.channelid}>",
+                            mentions=', '.join(member.mention for member in needs_kick),
+                            tick=self.bot.config.emojis.tick
+                        )
+                    else:
+                        kick_message = t(_p(
+                            'timer|kick_failed',
+                            "**Warning!** Timer {channel} is configured to disconnect on inactivity, "
+                            "but I lack the 'Move Members' permission to do this!"
+                        ), locale=self.locale.value).format(
+                            channel=self.channel.mention
+                        )
+                    tasks.append(asyncio.create_task(notify_hook.send(kick_message), name='kick-message'))
 
             if self.voice_alerts:
-                after_tasks.append(asyncio.create_task(self._voice_alert(to_stage)))
+                after_tasks.append(asyncio.create_task(self._voice_alert(to_stage), name='voice-alert'))
 
-            if tasks:
+            for task in tasks:
                 try:
-                    await asyncio.gather(*tasks)
+                    await task
+                except discord.Forbidden:
+                    logger.warning(
+                        f"Unexpected forbidden during pre-task {task!r} for change stage in timer {self!r}"
+                    )
+                except discord.HTTPException:
+                    logger.warning(
+                        f"Unexpected API error during pre-task {task!r} for change stage in timer {self!r}"
+                    )
                 except Exception:
-                    logger.exception(f"Exception occurred during pre-tasks for change stage in timer {self!r}")
+                    logger.exception(f"Exception occurred during pre-task {task!r} for change stage in timer {self!r}")
 
-            print("Sending Status")
             await self.send_status()
-            print("Sent Status")
 
         if after_tasks:
             try:
@@ -444,7 +471,7 @@ class Timer:
         if not stage:
             return
 
-        if not self.channel or not self.channel.permissions_for(self.guild.me).speak:
+        if not self.guild or not self.channel or not self.channel.permissions_for(self.guild.me).speak:
             return
 
         async with self.lguild.voice_lock:
@@ -480,15 +507,16 @@ class Timer:
 
                     # Quit when we finish playing or after 10 seconds, whichever comes first
                     sleep_task = asyncio.create_task(asyncio.sleep(10))
-                    wait_task = asyncio.create_task(finished.wait())
+                    wait_task = asyncio.create_task(finished.wait(), name='timer-voice-waiting')
                     _, pending = await asyncio.wait([sleep_task, wait_task], return_when=asyncio.FIRST_COMPLETED)
                     for task in pending:
                         task.cancel()
 
-                    await self.guild.voice_client.disconnect(force=True)
+                    if self.guild and self.guild.voice_client:
+                        await self.guild.voice_client.disconnect(force=True)
             except Exception:
                 logger.exception(
-                    "Exception occurred while playing voice alert for timer {self!r}"
+                    f"Exception occurred while playing voice alert for timer {self!r}"
                 )
 
     def stageline(self, stage: Stage):
@@ -511,7 +539,7 @@ class Timer:
         )
         return stageline
 
-    async def current_status(self, with_notify=True, with_warnings=True) -> MessageArgs:
+    async def current_status(self, with_notify=True, with_warnings=True, render=True) -> MessageArgs:
         """
         Message arguments for the current timer status message.
         """
@@ -520,7 +548,7 @@ class Timer:
         ctx_locale.set(self.locale.value)
         stage = self.current_stage
 
-        if self.running:
+        if self.running and stage is not None:
             stageline = self.stageline(stage)
             warningline = ""
             needs_warning = []
@@ -530,7 +558,7 @@ class Timer:
                     last_seen = self.last_seen.get(member.id, None)
                     if last_seen is None:
                         last_seen = self.last_seen[member.id] = now
-                    elif last_seen < threshold:
+                    elif threshold and last_seen < threshold:
                         needs_warning.append(member)
                 if needs_warning:
                     warningline = t(_p(
@@ -567,13 +595,16 @@ class Timer:
 
         await ui.refresh()
 
-        card = await get_timer_card(self.bot, self, stage)
-        try:
-            await card.render()
-            file = card.as_file(f"pomodoro_{self.data.channelid}.png")
-            args = MessageArgs(content=content, file=file, view=ui)
-        except RenderingException:
-            args = MessageArgs(content=content, view=ui)
+        rawargs = dict(content=content, view=ui)
+
+        if render:
+            try:
+                card = await get_timer_card(self.bot, self, stage)
+                await card.render()
+                rawargs['file'] = card.as_file(f"pomodoro_{self.data.channelid}.png")
+            except RenderingException:
+                pass
+        args = MessageArgs(**rawargs)
 
         return args
 
@@ -764,12 +795,16 @@ class Timer:
                 f"Timer <tid: {channelid}> deleted. Reason given: {reason!r}"
             )
 
-    @log_wrap(action='Timer Loop')
+    @log_wrap(isolate=True, stack=())
     async def _runloop(self):
         """
         Main loop which controls the
         regular stage changes and status updates.
         """
+        set_logging_context(
+            action=f"TimerLoop {self.data.channelid}",
+            context=f"tid: {self.data.channelid}",
+        )
         # Allow updating with 10 seconds of drift to the next stage change
         drift = 10
 
@@ -785,6 +820,11 @@ class Timer:
 
         self._state = current = self.current_stage
         while True:
+            if current is None:
+                logger.exception(
+                    f"Closing timer loop because current state is None. Timer {self!r}"
+                )
+                break
             to_next_stage = (current.end - utc_now()).total_seconds()
 
             # TODO: Consider request rate and load
@@ -812,12 +852,18 @@ class Timer:
 
             if current.end < utc_now():
                 self._state = self.current_stage
-                task = asyncio.create_task(self.notify_change_stage(current, self._state))
+                task = asyncio.create_task(
+                    self.notify_change_stage(current, self._state),
+                    name='notify-change-stage'
+                )
                 background_tasks.add(task)
                 task.add_done_callback(background_tasks.discard)
                 current = self._state
             elif self.members:
-                task = asyncio.create_task(self._update_channel_name())
+                task = asyncio.create_task(
+                    self._update_channel_name(),
+                    name='regular-channel-update'
+                )
                 background_tasks.add(task)
                 task.add_done_callback(background_tasks.discard)
                 task = asyncio.create_task(self.update_status_card())
@@ -825,7 +871,13 @@ class Timer:
                 task.add_done_callback(background_tasks.discard)
 
         if background_tasks:
-            await asyncio.gather(*background_tasks)
+            try:
+                await asyncio.gather(*background_tasks)
+            except Exception:
+                logger.warning(
+                    f"Unexpected error while finishing background tasks for timer {self!r}",
+                    exc_info=True
+                )
 
     def launch(self):
         """

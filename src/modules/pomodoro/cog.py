@@ -12,6 +12,7 @@ from meta.logger import log_wrap
 from meta.sharding import THIS_SHARD
 from meta.monitor import ComponentMonitor, ComponentStatus, StatusLevel
 from utils.lib import utc_now
+from utils.ratelimits import limit_concurrency
 
 from wards import low_management_ward
 
@@ -48,16 +49,38 @@ class TimerCog(LionCog):
         self.timer_options = TimerOptions()
 
         self.ready = False
-        self.timers = defaultdict(dict)
+        self.timers: dict[int, dict[int, Timer]] = defaultdict(dict)
 
     async def _monitor(self):
+        timers = [timer for tguild in self.timers.values() for timer in tguild.values()]
+        state = (
+            "<TimerState"
+            " loaded={loaded}"
+            " guilds={guilds}"
+            " members={members}"
+            " running={running}"
+            " launched={launched}"
+            " looping={looping}"
+            " locked={locked}"
+            " voice_locked={voice_locked}"
+            ">"
+        )
+        data = dict(
+            loaded=len(timers),
+            guilds=len(set(timer.data.guildid for timer in timers)),
+            members=sum(len(timer.members) for timer in timers),
+            running=sum(1 for timer in timers if timer.running),
+            launched=sum(1 for timer in timers if timer._run_task and not timer._run_task.done()),
+            looping=sum(1 for timer in timers if timer._loop_task and not timer._loop_task.done()),
+            locked=sum(1 for timer in timers if timer._lock.locked()),
+            voice_locked=sum(1 for timer in timers if timer._voice_update_lock.locked()),
+        )
         if not self.ready:
             level = StatusLevel.STARTING
-            info = "(STARTING) Not ready. {timers} timers loaded."
+            info = f"(STARTING) Not ready. {state}"
         else:
             level = StatusLevel.OKAY
-            info = "(OK) {timers} timers loaded."
-        data = dict(timers=len(self.timers))
+            info = f"(OK) Ready. {state}"
         return ComponentStatus(level, info, info, data)
 
     async def cog_load(self):
@@ -79,14 +102,11 @@ class TimerCog(LionCog):
         Clears caches and stops run-tasks for each active timer.
         Does not exist until all timers have completed background tasks.
         """
-        timers = (timer for tguild in self.timers.values() for timer in tguild.values())
-        try:
-            await asyncio.gather(*(timer.unload() for timer in timers))
-        except Exception:
-            logger.exception(
-                "Exception encountered while unloading `TimerCog`"
-            )
+        timers = [timer for tguild in self.timers.values() for timer in tguild.values()]
         self.timers.clear()
+
+        if timers:
+            await self._unload_timers(timers)
 
     async def cog_check(self, ctx: LionContext):
         if not self.ready:
@@ -101,6 +121,20 @@ class TimerCog(LionCog):
         else:
             return True
 
+    @log_wrap(action='Unload Timers')
+    async def _unload_timers(self, timers: list[Timer]):
+        """
+        Unload all active timers.
+        """
+        tasks = [asyncio.create_task(timer.unload()) for timer in timers]
+        for timer, task in zip(timers, tasks):
+            try:
+                await task
+            except Exception:
+                logger.exception(
+                    f"Unexpected exception while unloading timer {timer!r}"
+                )
+
     async def _load_timers(self, timer_data: list[TimerData.Timer]):
         """
         Factored method to load a list of timers from data rows.
@@ -108,6 +142,7 @@ class TimerCog(LionCog):
         guildids = set()
         to_delete = []
         to_create = []
+        to_unload = []
         for row in timer_data:
             channel = self.bot.get_channel(row.channelid)
             if not channel:
@@ -115,6 +150,12 @@ class TimerCog(LionCog):
             else:
                 guildids.add(row.guildid)
                 to_create.append(row)
+            if row.guildid in self.timers:
+                if row.channelid in self.timers[row.guildid]:
+                    to_unload.append(self.timers[row.guildid].pop(row.channelid))
+
+        if to_unload:
+            await self._unload_timers(to_unload)
 
         if guildids:
             lguilds = await self.bot.core.lions.fetch_guilds(*guildids)
@@ -145,37 +186,57 @@ class TimerCog(LionCog):
         # Re-launch and update running timers
         for timer in to_launch:
             timer.launch()
-        tasks = [
-            asyncio.create_task(timer.update_status_card()) for timer in to_launch
-        ]
-        if tasks:
-            try:
-                await asyncio.gather(*tasks)
-            except Exception:
-                logger.exception(
-                    "Exception occurred updating timer status for running timers."
-                )
+
+        coros = [timer.update_status_card() for timer in to_launch]
+        if coros:
+            i = 0
+            async for task in limit_concurrency(coros, 10):
+                try:
+                    await task
+                except discord.HTTPException:
+                    timer = to_launch[i]
+                    logger.warning(
+                        f"Unhandled discord exception while updating timer status for {timer!r}",
+                        exc_info=True
+                    )
+                except Exception:
+                    timer = to_launch[i]
+                    logger.exception(
+                        f"Unexpected exception while updating timer status for {timer!r}",
+                        exc_info=True
+                    )
+                i += 1
         logger.info(
             f"Updated and launched {len(to_launch)} running timers."
         )
 
         # Update stopped timers
-        tasks = [
-            asyncio.create_task(timer.update_status_card()) for timer in to_update
-        ]
-        if tasks:
-            try:
-                await asyncio.gather(*tasks)
-            except Exception:
-                logger.exception(
-                    "Exception occurred updating timer status for stopped timers."
-                )
+        coros = [timer.update_status_card(render=False) for timer in to_update]
+        if coros:
+            i = 0
+            async for task in limit_concurrency(coros, 10):
+                try:
+                    await task
+                except discord.HTTPException:
+                    timer = to_update[i]
+                    logger.warning(
+                        f"Unhandled discord exception while updating timer status for {timer!r}",
+                        exc_info=True
+                    )
+                except Exception:
+                    timer = to_update[i]
+                    logger.exception(
+                        f"Unexpected exception while updating timer status for {timer!r}",
+                        exc_info=True
+                    )
+                i += 1
         logger.info(
             f"Updated {len(to_update)} stopped timers."
         )
 
         # Update timer registry
-        self.timers.update(timer_reg)
+        for gid, gtimers in timer_reg.items():
+            self.timers[gid].update(gtimers)
 
     @LionCog.listener('on_ready')
     @log_wrap(action='Init Timers')
@@ -185,10 +246,14 @@ class TimerCog(LionCog):
         """
         self.ready = False
         self.timers = defaultdict(dict)
+        if self.timers:
+            timers = [timer for tguild in self.timers.values() for timer in tguild.values()]
+            await self._unload_timers(timers)
+            self.timers.clear()
 
         # Fetch timers in guilds on this shard
-        # TODO: Join with guilds and filter by guilds we are still in
-        timer_data = await self.data.Timer.fetch_where(THIS_SHARD)
+        guildids = [guild.id for guild in self.bot.guilds]
+        timer_data = await self.data.Timer.fetch_where(guildid=guildids)
         await self._load_timers(timer_data)
 
         # Ready to handle events
