@@ -1,3 +1,4 @@
+from typing import Optional
 
 from settings import ModelData
 from settings.setting_types import StringSetting, BoolSetting
@@ -23,11 +24,11 @@ class LocaleSetting(StringSetting):
         "Enter a supported language (e.g. 'en-GB')."
     )
 
-    def _desc_table(self) -> list[str]:
+    def _desc_table(self, show_value: Optional[str] = None) -> list[tuple[str, str]]:
         translator = ctx_translator.get()
         t = translator.t
 
-        lines = super()._desc_table()
+        lines = super()._desc_table(show_value=show_value)
         lines.append((
             t(_p(
                 'settype:locale|summary_table|field:supported|key',

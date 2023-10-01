@@ -188,8 +188,8 @@ class MemberAdminSettings(SettingGroup):
             self.value = editor_data
             await self.write()
 
-        def _desc_table(self) -> list[str]:
-            lines = super()._desc_table()
+        def _desc_table(self, show_value: Optional[str] = None) -> list[tuple[str, str]]:
+            lines = super()._desc_table(show_value=show_value)
             t = ctx_translator.get().t
             keydescs = [
                 (key, t(value)) for key, value in self._subkey_desc.items()
@@ -313,8 +313,8 @@ class MemberAdminSettings(SettingGroup):
             self.value = editor_data
             await self.write()
 
-        def _desc_table(self) -> list[str]:
-            lines = super()._desc_table()
+        def _desc_table(self, show_value: Optional[str] = None) -> list[tuple[str, str]]:
+            lines = super()._desc_table(show_value=show_value)
             t = ctx_translator.get().t
             keydescs = [
                 (key, t(value)) for key, value in self._subkey_desc_returning.items()
