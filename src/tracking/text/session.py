@@ -105,12 +105,15 @@ class TextSession:
         """
         Process a message into the session.
         """
+        if not message.guild:
+            return
+
         if (message.author.id != self.userid) or (message.guild.id != self.guildid):
             raise ValueError("Invalid attempt to process message from a different member!")
 
         # Identify if we need to start a new period
-        tdiff = (message.created_at - self.this_period_start).total_seconds()
-        if self.this_period_start is not None and tdiff < self.period_length:
+        start = self.this_period_start
+        if start is not None and (message.created_at - start).total_seconds() < self.period_length:
             self.this_period_messages += 1
             self.this_period_words += len(message.content.split())
         else:
