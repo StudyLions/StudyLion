@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-13 08:47+0300\n"
+"POT-Creation-Date: 2023-10-01 16:01+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
@@ -148,22 +148,40 @@ msgstr "Média Diária:"
 
 #: src/gui/cards/monthly.py:320
 #, possible-python-brace-format
-msgctxt "ui:monthlystats|stats:daily_average|value"
+msgctxt "skin:monthlystats|mode:study|stats:daily_average|value"
 msgid "{count} hours"
-msgstr "{count} horas"
+msgstr ""
 
 #: src/gui/cards/monthly.py:324
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:voice|stats:daily_average|value"
+msgid "{count} hours"
+msgstr ""
+
+#: src/gui/cards/monthly.py:328
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:text|stats:daily_average|value"
+msgid "{count} msgs"
+msgstr ""
+
+#: src/gui/cards/monthly.py:332
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:anki|stats:daily_average|value"
+msgid "{count} cards"
+msgstr ""
+
+#: src/gui/cards/monthly.py:342
 msgctxt "ui:monthlystats|stats:days_active|key"
 msgid "Days Active:"
 msgstr "Dias Ativos:"
 
-#: src/gui/cards/monthly.py:328
+#: src/gui/cards/monthly.py:346
 #, possible-python-brace-format
 msgctxt "ui:monthlystats|stats:days_active|value"
 msgid "{count} days"
 msgstr "{count} dias"
 
-#: src/gui/cards/monthly.py:341
+#: src/gui/cards/monthly.py:359
 #, possible-python-brace-format
 msgctxt "skin:monthlystats|footer"
 msgid "Monthly Statistics • As of {day} {month} • {name} {discrim}"
