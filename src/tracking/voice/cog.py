@@ -79,6 +79,18 @@ class VoiceTrackerCog(LionCog):
         """
         return VoiceSession.get(self.bot, guildid, userid, **kwargs)
 
+    def is_untracked(self, channel) -> bool:
+        if not channel.guild:
+            raise ValueError("Untracked check invalid for private channels.")
+        untracked = self.untracked_channels.get(channel.guild.id, ())
+        if channel.id in untracked:
+            untracked = True
+        elif channel.category_id and channel.category_id in untracked:
+            untracked = True
+        else:
+            untracked = False
+        return untracked
+
     @LionCog.listener('on_ready')
     @log_wrap(action='Init Voice Sessions')
     async def initialise(self):

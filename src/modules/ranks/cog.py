@@ -269,6 +269,9 @@ class RankCog(LionCog):
         Handle batch of completed message sessions.
         """
         for guildid, userid, messages, guild_xp in session_data:
+            if not self.bot.get_guild(guildid):
+                # Ignore guilds we have left
+                continue
             lguild = await self.bot.core.lions.fetch_guild(guildid)
             rank_type = lguild.config.get('rank_type').value
             if rank_type in (RankType.MESSAGE, RankType.XP):
@@ -542,6 +545,9 @@ class RankCog(LionCog):
     @log_wrap(action="Voice Rank Hook")
     async def on_voice_session_complete(self, *session_data):
         for guildid, userid, duration, guild_xp in session_data:
+            if not self.bot.get_guild(guildid):
+                # Ignore guilds we have left
+                continue
             lguild = await self.bot.core.lions.fetch_guild(guildid)
             unranked_role_setting = await self.bot.get_cog('StatsCog').settings.UnrankedRoles.get(guildid)
             unranked_roleids = set(unranked_role_setting.data)

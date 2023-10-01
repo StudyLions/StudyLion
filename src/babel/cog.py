@@ -145,7 +145,7 @@ class BabelCog(LionCog):
                 t(_p(
                     'cmd:configure_language|error',
                     "You cannot enable `{force_setting}` without having a configured language!"
-                )).format(force_setting=t(LocaleSettings.ForceLocale.display_name))
+                )).format(force_setting=t(LocaleSettings.ForceLocale._display_name))
             )
         # TODO: Really need simultaneous model writes, or batched writes
         lines = []

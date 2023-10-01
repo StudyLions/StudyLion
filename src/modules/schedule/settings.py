@@ -25,6 +25,38 @@ class ScheduleConfig(ModelConfig):
     _model_settings = set()
     model = ScheduleData.ScheduleGuild
 
+    @property
+    def session_lobby(self):
+        return self.get(ScheduleSettings.SessionLobby.setting_id)
+
+    @property
+    def session_room(self):
+        return self.get(ScheduleSettings.SessionRoom.setting_id)
+
+    @property
+    def schedule_cost(self):
+        return self.get(ScheduleSettings.ScheduleCost.setting_id)
+
+    @property
+    def attendance_reward(self):
+        return self.get(ScheduleSettings.AttendanceReward.setting_id)
+
+    @property
+    def attendance_bonus(self):
+        return self.get(ScheduleSettings.AttendanceBonus.setting_id)
+
+    @property
+    def min_attendance(self):
+        return self.get(ScheduleSettings.MinAttendance.setting_id)
+
+    @property
+    def blacklist_role(self):
+        return self.get(ScheduleSettings.BlacklistRole.setting_id)
+
+    @property
+    def blacklist_after(self):
+        return self.get(ScheduleSettings.BlacklistAfter.setting_id)
+
 
 class ScheduleSettings(SettingGroup):
     @ScheduleConfig.register_model_setting
@@ -400,6 +432,7 @@ class ScheduleSettings(SettingGroup):
                     "Minimum attendance must be an integer number of minutes between `1` and `60`."
                 ))
                 raise UserInputError(error)
+            return num
 
     @ScheduleConfig.register_model_setting
     class BlacklistRole(ModelData, RoleSetting):

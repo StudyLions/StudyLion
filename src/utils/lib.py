@@ -4,6 +4,7 @@ import datetime
 import iso8601  # type: ignore
 import pytz
 import re
+import json
 from contextvars import Context
 
 import discord
@@ -764,7 +765,7 @@ class Timezoned:
         Return the start of the current month in the object's timezone
         """
         today = self.today
-        return today - datetime.timedelta(days=today.day)
+        return today - datetime.timedelta(days=(today.day - 1))
 
 
 def replace_multiple(format_string, mapping):
@@ -829,3 +830,60 @@ async def check_dm(user: discord.User | discord.Member) -> bool:
         return False
     except discord.HTTPException:
         return True
+
+
+async def command_lengths(tree) -> dict[str, int]:
+    cmds = tree.get_commands()
+    payloads = [
+        await cmd.get_translated_payload(tree.translator)
+        for cmd in cmds
+    ]
+    lens = {}
+    for command in payloads:
+        name = command['name']
+        crumbs = {}
+        cmd_len = lens[name] = _recurse_length(command, crumbs, (name,))
+        if name == 'configure' or cmd_len > 4000:
+            print(f"'{name}' over 4000. Breadcrumb Trail follows:")
+            lines = []
+            for loc, val in crumbs.items():
+                locstr = '.'.join(loc)
+                lines.append(f"{locstr}: {val}")
+            print('\n'.join(lines))
+            print(json.dumps(command, indent=2))
+    return lens
+
+def _recurse_length(payload, breadcrumbs={}, header=()) -> int:
+    total = 0
+    total_header = (*header, '')
+    breadcrumbs[total_header] = 0
+
+    if isinstance(payload, dict):
+        # Read strings that count towards command length
+        # String length is length of longest localisation, including default.
+        for key in ('name', 'description', 'value'):
+            if key in payload:
+                value = payload[key]
+                if isinstance(value, str):
+                    values = (value, *payload.get(key + '_localizations', {}).values())
+                    maxlen = max(map(len, values))
+                    total += maxlen
+                    breadcrumbs[(*header, key)] = maxlen
+
+        for key, value in payload.items():
+            loc = (*header, key)
+            total += _recurse_length(value, breadcrumbs, loc)
+    elif isinstance(payload, list):
+        for i, item in enumerate(payload):
+            if isinstance(item, dict) and 'name' in item:
+                loc = (*header, f"{i}<{item['name']}>")
+            else:
+                loc = (*header, str(i))
+            total += _recurse_length(item, breadcrumbs, loc)
+
+    if total:
+        breadcrumbs[total_header] = total
+    else:
+        breadcrumbs.pop(total_header)
+
+    return total

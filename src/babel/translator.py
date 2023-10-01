@@ -11,7 +11,7 @@ from discord.enums import Locale
 logger = logging.getLogger(__name__)
 
 
-SOURCE_LOCALE = 'en-GB'
+SOURCE_LOCALE = 'en_GB'
 ctx_locale: ContextVar[str] = ContextVar('locale', default=SOURCE_LOCALE)
 ctx_translator: ContextVar['LeoBabel'] = ContextVar('translator', default=None)  # type: ignore
 
@@ -71,6 +71,7 @@ class LeoBabel(Translator):
         self.translators.clear()
 
     def get_translator(self, locale, domain):
+        locale = locale.replace('-', '_') if locale else None
         if locale == SOURCE_LOCALE:
             translator = null
         elif locale in self.supported_locales and domain in self.supported_domains:
@@ -93,7 +94,8 @@ class LeoBabel(Translator):
         return lazystr._translate_with(translator)
 
     async def translate(self, string: locale_str, locale: Locale, context):
-        if locale.value in self.supported_locales:
+        loc = locale.value.replace('-', '_')
+        if loc in self.supported_locales:
             domain = string.extras.get('domain', None)
             if domain is None and isinstance(string, LazyStr):
                 logger.debug(
@@ -101,7 +103,7 @@ class LeoBabel(Translator):
                 )
                 return None
 
-            translator = self.get_translator(locale.value, domain)
+            translator = self.get_translator(loc, domain)
             if not isinstance(string, LazyStr):
                 lazy = LazyStr(Method.GETTEXT, string.message)
             else:

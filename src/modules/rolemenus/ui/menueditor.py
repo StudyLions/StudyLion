@@ -1144,3 +1144,4 @@ class MenuEditor(MessageUI):
         self.pagen = self.pagen % self.page_count
         self.page_block = blocks[self.pagen]
         await self.menu.fetch_message()
+        await self.menu.update_raw()

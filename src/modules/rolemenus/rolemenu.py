@@ -25,7 +25,7 @@ from . import logger, babel
 if TYPE_CHECKING:
     from .cog import RoleMenuCog
 
-_p = babel._p
+_p, _np = babel._p, babel._np
 
 MISSING = object()
 
@@ -191,6 +191,20 @@ class RoleMenu:
                     await self.data.update(messageid=None)
             self._message = _message
         return self._message
+
+    async def update_raw(self):
+        """
+        Updates the saved raw message data for non-owned menus.
+        """
+        message = await self.fetch_message()
+        if not self.managed and message is not None:
+            message_data = {}
+            message_data['content'] = message.content
+            if message.embeds:
+                message_data['embed'] = message.embeds[0].to_dict()
+            rawmessage = json.dumps(message_data)
+            if rawmessage != self.data.rawmessage:
+                await self.data.update(rawmessage=rawmessage)
 
     def emoji_map(self):
         emoji_map = {}
@@ -454,100 +468,252 @@ class RoleMenu:
             if emojikey(emoji) not in menu_emojis:
                 yield str(emoji)
 
-    async def _handle_selection(self, lion, member: discord.Member, menuroleid: int):
-        mrole = self.rolemap.get(menuroleid, None)
-        if mrole is None:
-            raise ValueError(f"Attempt to process event for invalid menuroleid {menuroleid}, THIS SHOULD NOT HAPPEN.")
-
-        guild = member.guild
-
+    async def _handle_positive(self, lion, member: discord.Member, mrole: RoleMenuRole) -> discord.Embed:
         t = self.bot.translator.t
-
+        guild = member.guild
         role = guild.get_role(mrole.data.roleid)
-        if role is None:
-            # This role no longer exists, nothing we can do
+        if not role:
+            raise ValueError("Calling _handle_positive without a valid role.")
+
+        price = mrole.config.price.value
+
+        obtainable = self.config.obtainable.value
+        remove_line = ''
+        if obtainable is not None:
+            # Check shared roles
+            menu_roles = {mrole.data.roleid: mrole for mrole in self.roles}
+            common = [role for role in member.roles if role.id in menu_roles]
+
+            if len(common) >= obtainable:
+                swap = None
+                if len(common) == 1 and not self.config.sticky.value:
+                    swap = menu_roles[common[0].id]
+                    # Check if LC will be lost by exchanging the role
+                    if (swap.config.price.value) > 0 and not self.config.refunds.value:
+                        swap = None
+                if swap is not None:
+                    # Do remove
+                    try:
+                        remove_embed = await self._handle_negative(lion, member, swap)
+                        remove_line = remove_embed.description
+                    except UserInputError:
+                        # If we failed to remove for some reason, pretend we didn't try
+                        swap = None
+
+                if swap is None:
+                    error = t(_np(
+                        'rolemenu|select|error:max_obtainable',
+                        "You can own at most one role from this menu! You currently own:",
+                        "You can own at most **{count}** roles from this menu! You currently own:",
+                        obtainable
+                    )).format(count=obtainable)
+                    error = '\n'.join((error, *(role.mention for role in common)))
+                    raise UserInputError(error)
+
+
+        if price:
+            # Check member balance
+            # TODO: More transaction safe (or rather check again after transaction)
+            await lion.data.refresh()
+            balance = lion.data.coins
+            if balance < price:
+                raise UserInputError(
+                    t(_p(
+                        'rolemenu|select|error:insufficient_funds',
+                        "The role **{role}** costs {coin}**{cost}**,"
+                            "but you only have {coin}**{balance}**!"
+                    )).format(
+                        role=role.name,
+                        coin=self.bot.config.emojis.coin,
+                        cost=price,
+                        balance=balance,
+                    )
+                )
+
+        try:
+            await member.add_roles(role)
+        except discord.Forbidden:
             raise UserInputError(
                 t(_p(
-                    'rolemenu|error:role_gone',
-                    "This role no longer exists!"
+                    'rolemenu|select|error:perms',
+                    "I don't have enough permissions to give you this role!"
                 ))
             )
-        if role in member.roles:
-            # Member already has the role, deselection case.
-            if self.config.sticky.value:
-                # Cannot deselect
-                raise UserInputError(
-                    t(_p(
-                        'rolemenu|deselect|error:sticky',
-                        "**{role}** is a sticky role, you cannot remove it with this menu!"
-                    )).format(role=role.name)
-                )
-
-            # Remove the role
-            try:
-                await member.remove_roles(role)
-            except discord.Forbidden:
-                raise UserInputError(
-                    t(_p(
-                        'rolemenu|deselect|error:perms',
-                        "I don't have enough permissions to remove this role from you!"
-                    ))
-                )
-            except discord.HTTPException:
-                raise UserInputError(
-                    t(_p(
-                        'rolemenu|deselect|error:discord',
-                        "An unknown error occurred removing your role! Please try again later."
-                    ))
-                )
-
-            # Update history
-            now = utc_now()
-            history = await self.cog.data.RoleMenuHistory.table.update_where(
-                menuid=self.data.menuid,
-                roleid=role.id,
-                userid=member.id,
-                removed_at=None,
-            ).set(removed_at=now)
-            await self.cog.cancel_expiring_tasks(*(row['equipid'] for row in history))
-
-            # Refund if required
-            transactionids = [row['transactionid'] for row in history]
-            if self.config.refunds.value and any(transactionids):
-                transactionids = [tid for tid in transactionids if tid]
-                economy: Economy = self.bot.get_cog('Economy')
-                refunded = await economy.data.Transaction.refund_transactions(*transactionids)
-                total_refund = sum(row.amount + row.bonus for row in refunded)
-            else:
-                total_refund = 0
-
-            # Ack the removal
-            embed = discord.Embed(
-                colour=discord.Colour.brand_green(),
-                title=t(_p(
-                    'rolemenu|deslect|success|title',
-                    "Role removed"
+        except discord.HTTPException:
+            raise UserInputError(
+                t(_p(
+                    'rolemenu|select|error:discord',
+                    "An unknown error occurred while assigning your role! "
+                        "Please try again later."
                 ))
             )
-            if total_refund > 0:
-                embed.description = t(_p(
-                    'rolemenu|deselect|success:refund|desc',
-                    "You have removed **{role}**, and been refunded {coin} **{amount}**."
-                )).format(role=role.name, coin=self.bot.config.emojis.coin, amount=total_refund)
-            if total_refund < 0:
-                # TODO: Consider disallowing them from removing roles if their balance would go negative
-                embed.description = t(_p(
-                    'rolemenu|deselect|success:negrefund|desc',
-                    "You have removed **{role}**, and have lost {coin} **{amount}**."
-                )).format(role=role.name, coin=self.bot.config.emojis.coin, amount=-total_refund)
-            else:
-                embed.description = t(_p(
-                    'rolemenu|deselect|success:norefund|desc',
-                    "You have unequipped **{role}**."
-                )).format(role=role.name)
-            return embed
+
+        now = utc_now()
+
+        # Create transaction if applicable
+        if price:
+            economy: Economy = self.bot.get_cog('Economy')
+            tx = await economy.data.Transaction.execute_transaction(
+                transaction_type=TransactionType.OTHER,
+                guildid=guild.id, actorid=member.id,
+                from_account=member.id, to_account=None,
+                amount=price
+            )
+            tid = tx.transactionid
         else:
-            # Member does not have the role, selection case.
+            tid = None
+
+        # Calculate expiry
+        duration = mrole.config.duration.value
+        if duration is not None:
+            expiry = now + dt.timedelta(seconds=duration)
+        else:
+            expiry = None
+
+        # Add to equip history
+        equip = await self.cog.data.RoleMenuHistory.create(
+            menuid=self.data.menuid, roleid=role.id,
+            userid=member.id,
+            obtained_at=now,
+            transactionid=tid,
+            expires_at=expiry
+        )
+        await self.cog.schedule_expiring(equip)
+
+        # Ack the selection
+        embed = discord.Embed(
+            colour=discord.Colour.brand_green(),
+            title=t(_p(
+                'rolemenu|select|success|title',
+                "Role equipped"
+            ))
+        )
+        if price:
+            embed.description = t(_p(
+                'rolemenu|select|success:purchase|desc',
+                "You have purchased the role **{role}** for {coin}**{amount}**"
+            )).format(role=role.name, coin=self.bot.config.emojis.coin, amount=price)
+        else:
+            embed.description = t(_p(
+                'rolemenu|select|success:nopurchase|desc',
+                "You have equipped **{role}**"
+            )).format(role=role.name)
+
+        if expiry is not None:
+            embed.description += '\n' + t(_p(
+                'rolemenu|select|expires_at',
+                "The role will expire at {timestamp}."
+            )).format(
+                    timestamp=discord.utils.format_dt(expiry)
+                )
+        if remove_line:
+            embed.description = '\n'.join((remove_line, embed.description))
+
+        # TODO Event logging
+        return embed
+
+    async def _handle_negative(self, lion, member: discord.Member, mrole: RoleMenuRole) -> discord.Embed:
+        t = self.bot.translator.t
+        guild = member.guild
+        role = guild.get_role(mrole.data.roleid)
+        if not role:
+            raise ValueError("Calling _handle_negative without a valid role.")
+
+        if self.config.sticky.value:
+            # Cannot deselect
+            raise UserInputError(
+                t(_p(
+                    'rolemenu|deselect|error:sticky',
+                    "**{role}** is a sticky role, you cannot remove it with this menu!"
+                )).format(role=role.name)
+            )
+
+        # Remove the role
+        try:
+            await member.remove_roles(role)
+        except discord.Forbidden:
+            raise UserInputError(
+                t(_p(
+                    'rolemenu|deselect|error:perms',
+                    "I don't have enough permissions to remove this role from you!"
+                ))
+            )
+        except discord.HTTPException:
+            raise UserInputError(
+                t(_p(
+                    'rolemenu|deselect|error:discord',
+                    "An unknown error occurred removing your role! Please try again later."
+                ))
+            )
+
+        # Update history
+        now = utc_now()
+        history = await self.cog.data.RoleMenuHistory.table.update_where(
+            menuid=self.data.menuid,
+            roleid=role.id,
+            userid=member.id,
+            removed_at=None,
+        ).set(removed_at=now)
+        await self.cog.cancel_expiring_tasks(*(row['equipid'] for row in history))
+
+        # Refund if required
+        transactionids = [row['transactionid'] for row in history]
+        if self.config.refunds.value and any(transactionids):
+            transactionids = [tid for tid in transactionids if tid]
+            economy: Economy = self.bot.get_cog('Economy')
+            refunded = await economy.data.Transaction.refund_transactions(*transactionids)
+            total_refund = sum(row.amount + row.bonus for row in refunded)
+        else:
+            total_refund = 0
+
+        # Ack the removal
+        embed = discord.Embed(
+            colour=discord.Colour.brand_green(),
+            title=t(_p(
+                'rolemenu|deslect|success|title',
+                "Role removed"
+            ))
+        )
+        if total_refund > 0:
+            embed.description = t(_p(
+                'rolemenu|deselect|success:refund|desc',
+                "You have removed **{role}**, and been refunded {coin} **{amount}**."
+            )).format(role=role.name, coin=self.bot.config.emojis.coin, amount=total_refund)
+        if total_refund < 0:
+            # TODO: Consider disallowing them from removing roles if their balance would go negative
+            embed.description = t(_p(
+                'rolemenu|deselect|success:negrefund|desc',
+                "You have removed **{role}**, and have lost {coin} **{amount}**."
+            )).format(role=role.name, coin=self.bot.config.emojis.coin, amount=-total_refund)
+        else:
+            embed.description = t(_p(
+                'rolemenu|deselect|success:norefund|desc',
+                "You have unequipped **{role}**."
+            )).format(role=role.name)
+        return embed
+
+    async def _handle_selection(self, lion, member: discord.Member, menuroleid: int):
+        lock_key = ('rmenu', member.id, member.guild.id)
+        async with self.bot.idlock(lock_key):
+            # TODO: Selection locking
+            mrole = self.rolemap.get(menuroleid, None)
+            if mrole is None:
+                raise ValueError(
+                    f"Attempt to process event for invalid menuroleid {menuroleid}, THIS SHOULD NOT HAPPEN."
+                )
+
+            guild = member.guild
+            t = self.bot.translator.t
+            role = guild.get_role(mrole.data.roleid)
+            if role is None:
+                # This role no longer exists, nothing we can do
+                raise UserInputError(
+                    t(_p(
+                        'rolemenu|error:role_gone',
+                        "The role **{name}** no longer exists!"
+                    )).format(name=mrole.data.label)
+                )
+
             required = self.config.required_role.data
             if required is not None:
                 # Check member has the required role
@@ -561,118 +727,12 @@ class RoleMenu:
                         )).format(role=name)
                     )
 
-            obtainable = self.config.obtainable.value
-            if obtainable is not None:
-                # Check shared roles
-                menu_roleids = {mrole.data.roleid for mrole in self.roles}
-                member_roleids = {role.id for role in member.roles}
-                common = len(menu_roleids.intersection(member_roleids))
-                if common >= obtainable:
-                    raise UserInputError(
-                        t(_p(
-                            'rolemenu|select|error:max_obtainable',
-                            "You already have the maximum of {obtainable} roles from this menu!"
-                        )).format(obtainable=obtainable)
-                    )
-
-            price = mrole.config.price.value
-            if price:
-                # Check member balance
-                # TODO: More transaction safe (or rather check again after transaction)
-                await lion.data.refresh()
-                balance = lion.data.coins
-                if balance < price:
-                    raise UserInputError(
-                        t(_p(
-                            'rolemenu|select|error:insufficient_funds',
-                            "The role **{role}** costs {coin}**{cost}**,"
-                            "but you only have {coin}**{balance}**!"
-                        )).format(
-                            role=role.name,
-                            coin=self.bot.config.emojis.coin,
-                            cost=price,
-                            balance=balance,
-                        )
-                    )
-
-            try:
-                await member.add_roles(role)
-            except discord.Forbidden:
-                raise UserInputError(
-                    t(_p(
-                        'rolemenu|select|error:perms',
-                        "I don't have enough permissions to give you this role!"
-                    ))
-                )
-            except discord.HTTPException:
-                raise UserInputError(
-                    t(_p(
-                        'rolemenu|select|error:discord',
-                        "An unknown error occurred while assigning your role! "
-                        "Please try again later."
-                    ))
-                )
-
-            now = utc_now()
-
-            # Create transaction if applicable
-            if price:
-                economy: Economy = self.bot.get_cog('Economy')
-                tx = await economy.data.Transaction.execute_transaction(
-                    transaction_type=TransactionType.OTHER,
-                    guildid=guild.id, actorid=member.id,
-                    from_account=member.id, to_account=None,
-                    amount=price
-                )
-                tid = tx.transactionid
+            if role in member.roles:
+                # Member already has the role, deselection case.
+                return await self._handle_negative(lion, member, mrole)
             else:
-                tid = None
-
-            # Calculate expiry
-            duration = mrole.config.duration.value
-            if duration is not None:
-                expiry = now + dt.timedelta(seconds=duration)
-            else:
-                expiry = None
-
-            # Add to equip history
-            equip = await self.cog.data.RoleMenuHistory.create(
-                menuid=self.data.menuid, roleid=role.id,
-                userid=member.id,
-                obtained_at=now,
-                transactionid=tid,
-                expires_at=expiry
-            )
-            await self.cog.schedule_expiring(equip)
-
-            # Ack the selection
-            embed = discord.Embed(
-                colour=discord.Colour.brand_green(),
-                title=t(_p(
-                    'rolemenu|select|success|title',
-                    "Role equipped"
-                ))
-            )
-            if price:
-                embed.description = t(_p(
-                    'rolemenu|select|success:purchase|desc',
-                    "You have purchased the role **{role}** for {coin}**{amount}**"
-                )).format(role=role.name, coin=self.bot.config.emojis.coin, amount=price)
-            else:
-                embed.description = t(_p(
-                    'rolemenu|select|success:nopurchase|desc',
-                    "You have equipped the role **{role}**"
-                )).format(role=role.name)
-
-            if expiry is not None:
-                embed.description += '\n' + t(_p(
-                    'rolemenu|select|expires_at',
-                    "The role will expire at {timestamp}."
-                )).format(
-                    timestamp=discord.utils.format_dt(expiry)
-                )
-            # TODO Event logging
-            return embed
+                # Member does not have the role, selection case.
+                return await self._handle_positive(lion, member, mrole)
 
     async def interactive_selection(self, interaction: discord.Interaction, menuroleid: int):
         """

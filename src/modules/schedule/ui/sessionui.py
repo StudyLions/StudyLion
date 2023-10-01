@@ -18,7 +18,7 @@ from .scheduleui import ScheduleUI
 if TYPE_CHECKING:
     from ..cog import ScheduleCog
 
-_p = babel._p
+_p, _np = babel._p, babel._np
 
 
 class SessionUI(LeoUI):
@@ -59,16 +59,21 @@ class SessionUI(LeoUI):
             'ui:sessionui|button:schedule|label',
             'Open Schedule'
         ), locale)
+        self.help_button.label = t(_p(
+            'ui:sessionui|button:help|label',
+            "How to Attend"
+        ))
 
     # ----- API -----
     async def reload(self):
         await self.init_components()
         if self.starting_soon:
             # Slot is about to start or slot has already started
-            self.set_layout((self.schedule_button,))
+            self.set_layout((self.schedule_button, self.help_button))
         else:
             self.set_layout(
-                (self.book_button, self.cancel_button, self.schedule_button),
+                (self.book_button, self.cancel_button,),
+                (self.schedule_button, self.help_button,),
             )
 
     # ----- UI Components -----
@@ -178,3 +183,141 @@ class SessionUI(LeoUI):
         ui = ScheduleUI(self.bot, press.guild, press.user.id)
         await ui.run(press)
         await ui.wait()
+
+    @button(label='HELP_PLACEHOLDER', style=ButtonStyle.grey, emoji=conf.emojis.question)
+    async def help_button(self, press: discord.Interaction, pressed: Button):
+        await press.response.defer(thinking=True, ephemeral=True)
+        t = self.bot.translator.t
+        babel = self.bot.get_cog('BabelCog')
+        locale = await babel.get_user_locale(press.user.id)
+        ctx_locale.set(locale)
+
+        schedule = await self.cog._fetch_schedule(press.user.id)
+        if self.slotid not in schedule:
+            # Tell them how to book
+            embed = discord.Embed(
+                colour=discord.Colour.brand_red(),
+                title=t(_p(
+                    'ui:session|button:help|embed:unbooked|title',
+                    'You have not booked this session!'
+                )),
+                description=t(_p(
+                    'ui:session|button:help|embed:unbooked|description',
+                    "You need to book this scheduled session before you can attend it! "
+                    "Press the **{book_label}** button to book the session."
+                )).format(book_label=self.book_button.label),
+            )
+        else:
+            embed = discord.Embed(
+                colour=discord.Colour.orange(),
+                title=t(_p(
+                    'ui:session|button:help|embed:help|title',
+                    "How to attend your scheduled session"
+                ))
+            )
+            config = await self.cog.get_config(self.guildid)
+
+            # Get required duration, and format it
+            duration = config.min_attendance.value
+            durstring = t(_np(
+                'ui:session|button:help|embed:help|minimum_attendance',
+                "at least one minute",
+                "at least `{duration}` minutes",
+                duration
+            )).format(duration=duration)
+
+            # Get session room
+            room = config.session_room.value
+
+            if room is None:
+                room_line = ''
+            elif room.type is discord.enums.ChannelType.category:
+                room_line = t(_p(
+                    'ui:session|button:help|embed:help|room_line:category',
+                    "The exclusive scheduled session category **{category}** "
+                    "will also be open to you during your scheduled session."
+                )).format(category=room.name)
+            else:
+                room_line = t(_p(
+                    'ui:session|button:help|embed:help|room_line:voice',
+                    "The exclusive scheduled session room {room} "
+                    "will also be open to you during your scheduled session."
+                )).format(room=room.mention)
+
+            # Get valid session channels, if set
+            channels = (await self.cog.settings.SessionChannels.get(self.guildid)).value
+
+            attend_args = dict(
+                minimum=durstring,
+                start=discord.utils.format_dt(slotid_to_utc(self.slotid), 't'),
+                end=discord.utils.format_dt(slotid_to_utc(self.slotid + 3600), 't'),
+            )
+
+            if room is not None and len(channels) == 1 and channels[0].id == room.id:
+                # Special case where session room is the only allowed channel/category
+                room_line = ''
+                if room.type is discord.enums.ChannelType.category:
+                    attend_line = t(_p(
+                        'ui:session|button:help|embed:help|attend_line:only_room_category',
+                        "To attend your scheduled session, "
+                        "join a voice channel in **{room}** for **{minimum}** "
+                        "between {start} and {end}."
+                    )).format(
+                        **attend_args,
+                        room=room.name
+                    )
+                else:
+                    attend_line = t(_p(
+                        'ui:session|button:help|embed:help|attend_line:only_room_channel',
+                        "To attend your scheduled session, "
+                        "join {room} for **{minimum}** "
+                        "between {start} and {end}."
+                    )).format(
+                        **attend_args,
+                        room=room.mention
+                    )
+            elif channels:
+                attend_line = t(_p(
+                    'ui:session|button:help|embed:help|attend_line:with_channels',
+                    "To attend your scheduled session, join a valid session voice channel for **{minimum}** "
+                    "between {start} and {end}."
+                )).format(**attend_args)
+                channel_string = ', '.join(
+                    f"**{channel.name}**" if (channel.type == discord.enums.ChannelType.category) else channel.mention
+                    for channel in channels
+                )
+                embed.add_field(
+                    name=t(_p(
+                        'ui:session|button:help|embed:help|field:channels|name',
+                        "Valid session channels"
+                    )),
+                    value=channel_string[:1024],
+                    inline=False
+                )
+            else:
+                attend_line = t(_p(
+                    'ui:session|button:help|embed:help|attend_line:all_channels',
+                    "To attend your scheduled session, join any tracked voice channel "
+                    "for **{minimum}** between {start} and {end}."
+                )).format(**attend_args)
+
+            embed.description = '\n'.join((attend_line, room_line))
+            embed.add_field(
+                name=t(_p(
+                    'ui:session|button:help|embed:help|field:rewards|name',
+                    "Rewards"
+                )),
+                value=t(_p(
+                    'ui:session|button:help|embed:help|field:rewards|value',
+                    "Everyone who attends the session will be rewarded with {coin}**{reward}**.\n"
+                    "If *everyone* successfully attends, you will also be awarded a bonus of {coin}**{bonus}**.\n"
+                    "Anyone who does *not* attend their booked session will have the rest of their schedule cancelled "
+                    "**without refund**, so beware!"
+                )).format(
+                    coin=conf.emojis.coin,
+                    reward=config.attendance_reward.value,
+                    bonus=config.attendance_bonus.value,
+                ),
+                inline=False
+            )
+        await press.edit_original_response(embed=embed)

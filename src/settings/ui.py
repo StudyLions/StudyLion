@@ -310,6 +310,22 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
         """
         name = self.display_name
         value = f"{self.long_desc}\n{self.desc_table}"
+        if len(value) > 1024:
+            t = ctx_translator.get().t
+            desc_table = '\n'.join(
+                tabulate(
+                    *self._desc_table(
+                        show_value=t(_p(
+                            'setting|embed_field|too_long',
+                            "Too long to display here!"
+                        ))
+                    )
+                )
+            )
+            value = f"{self.long_desc}\n{desc_table}"
+        if len(value) > 1024:
+            # Forcibly trim
+            value = value[:1020] + '...'
         return {'name': name, 'value': value}
 
     @property
@@ -341,14 +357,14 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
         embed.description = "{}\n{}".format(self.long_desc.format(self=self), self.desc_table)
         return embed
 
-    def _desc_table(self) -> list[str]:
+    def _desc_table(self, show_value: Optional[str] = None) -> list[tuple[str, str]]:
         t = ctx_translator.get().t
         lines = []
 
         # Currently line
         lines.append((
             t(_p('setting|summary_table|field:currently|key', "Currently")),
-            self.formatted or self.notset_str
+            show_value or (self.formatted or self.notset_str)
         ))
 
         # Default line
@@ -380,7 +396,7 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
         return TextInput(
             label=self.display_name,
             placeholder=self.accepts,
-            default=self.input_formatted,
+            default=self.input_formatted[:4000],
             required=self._required
         )
 

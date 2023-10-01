@@ -29,7 +29,7 @@ from .settings import ScheduleSettings, ScheduleConfig
 from .ui.scheduleui import ScheduleUI
 from .ui.settingui import ScheduleSettingUI
 from .core import TimeSlot, ScheduledSession, SessionMember
-from .lib import slotid_to_utc, time_to_slotid
+from .lib import slotid_to_utc, time_to_slotid, format_until
 
 _p, _np = babel._p, babel._np
 
@@ -243,6 +243,18 @@ class ScheduleCog(LionCog):
         logger.debug(f"Getting slotlock <slotid: {slotid}> (locked: {lock.locked()})")
         return lock
 
+    def get_active_session(self, guildid: int) -> Optional[ScheduledSession]:
+        """
+        Get the current active session for the given guildid, or None if no session is running.
+        """
+        slot = self.active_slots.get(self.nowid, None)
+        if slot is not None:
+            return slot.sessions.get(guildid, None)
+
+    async def get_config(self, guildid: int) -> ScheduleConfig:
+        config_data = await self.data.ScheduleGuild.fetch_or_create(guildid)
+        return ScheduleConfig(guildid, config_data)
+
     @log_wrap(action='Cancel Booking')
     async def cancel_bookings(self, *bookingids: tuple[int, int, int], refund=True):
         """
@@ -415,7 +427,10 @@ class ScheduleCog(LionCog):
             tasks = []
             for (gid, uid), member in to_blacklist.items():
                 role = autoblacklisting[gid][1]
-                task = asyncio.create_task(member.add_role(role))
+                task = asyncio.create_task(member.add_roles(
+                    role,
+                    reason="Automatic scheduled session blacklist"
+                ))
                 tasks.append(task)
             # TODO: Logging and some error handling
             await asyncio.gather(*tasks, return_exceptions=True)
@@ -729,12 +744,29 @@ class ScheduleCog(LionCog):
             "View and manage your scheduled session."
         )
     )
+    @appcmds.rename(
+        cancel=_p(
+            'cmd:schedule|param:cancel', "cancel"
+        ),
+        book=_p(
+            'cmd:schedule|param:book', "book"
+        ),
+    )
+    @appcmds.describe(
+        cancel=_p(
+            'cmd:schedule|param:cancel|desc',
+            "Select a booked timeslot to cancel."
+        ),
+        book=_p(
+            'cmd:schedule|param:book|desc',
+            "Select a timeslot to schedule. (Times shown in your set timezone.)"
+        ),
+    )
     @appcmds.guild_only
-    async def schedule_cmd(self, ctx: LionContext):
-        # TODO: Auotocomplete for book and cancel options
-        # Will require TTL caching for member schedules.
-        book = None
-        cancel = None
+    async def schedule_cmd(self, ctx: LionContext,
+                           cancel: Optional[str] = None,
+                           book: Optional[str] = None,
+                           ):
         if not ctx.guild:
             return
         if not ctx.interaction:
@@ -747,6 +779,9 @@ class ScheduleCog(LionCog):
         now = utc_now()
         lines: list[tuple[bool, str]] = []  # (error_status, msg)
 
+        if book or cancel:
+            await ctx.interaction.response.defer(thinking=True, ephemeral=True)
+
         if cancel is not None:
             schedule = await self._fetch_schedule(ctx.author.id)
             # Validate provided
@@ -756,7 +791,7 @@ class ScheduleCog(LionCog):
                     'cmd:schedule|cancel_booking|error:parse_slot',
                     "Time slot `{provided}` not recognised. "
                     "Please select a session to cancel from the autocomplete options."
-                ))
+                )).format(provided=cancel)
                 line = (True, error)
             elif (slotid := int(cancel)) not in schedule:
                 # Can't cancel slot because it isn't booked
@@ -799,8 +834,8 @@ class ScheduleCog(LionCog):
                     'cmd:schedule|create_booking|error:parse_slot',
                     "Time slot `{provided}` not recognised. "
                     "Please select a session to cancel from the autocomplete options."
-                ))
-                lines = (True, error)
+                )).format(provided=book)
+                line = (True, error)
             elif (slotid := int(book)) in schedule:
                 # Can't book because the slot is already booked
                 error = t(_p(
@@ -809,7 +844,7 @@ class ScheduleCog(LionCog):
                 )).format(
                     time=discord.utils.format_dt(slotid_to_utc(slotid), style='t')
                 )
-                lines = (True, error)
+                line = (True, error)
             elif (slotid_to_utc(slotid) - now).total_seconds() < 60:
                 # Can't book because it is running or about to start
                 error = t(_p(
@@ -823,7 +858,7 @@ class ScheduleCog(LionCog):
                 # The slotid is valid and bookable
                 # Run the booking
                 try:
-                    await self.create_booking(guildid, ctx.author.id)
+                    await self.create_booking(guildid, ctx.author.id, slotid)
                     ack = t(_p(
                         'cmd:schedule|create_booking|success',
                         "You have successfully scheduled a session at {time}."
@@ -856,6 +891,155 @@ class ScheduleCog(LionCog):
             await ui.run(ctx.interaction)
             await ui.wait()
 
+    @schedule_cmd.autocomplete('book')
+    async def schedule_cmd_book_acmpl(self, interaction: discord.Interaction, partial: str):
+        """
+        List the sessions available for the member to book.
+        """
+        # TODO: Warning about setting timezone?
+        userid = interaction.user.id
+        schedule = await self._fetch_schedule(userid)
+        t = self.bot.translator.t
+
+
+        if not interaction.guild or not isinstance(interaction.user, discord.Member):
+            choice = appcmds.Choice(
+                name=_p(
+                    'cmd:schedule|acmpl:book|error:not_in_guild',
+                    "You need to be in a server to book sessions!"
+                ),
+                value='None'
+            )
+            choices = [choice]
+        else:
+            member = interaction.user
+            # Check blacklist role
+            blacklist_role = (await self.settings.BlacklistRole.get(interaction.guild.id)).value
+            if blacklist_role and blacklist_role in member.roles:
+                choice = appcmds.Choice(
+                    name=_p(
+                        'cmd:schedule|acmpl:book|error:blacklisted',
+                        "Cannot Book -- Blacklisted"
+                    ),
+                    value='None'
+                )
+                choices = [choice]
+            else:
+                nowid = self.nowid
+                if ((slotid_to_utc(nowid + 3600) - utc_now()).total_seconds() < 60):
+                    # Start from next session instead
+                    nowid += 3600
+                upcoming = [nowid + 3600 * i for i in range(1, 25)]
+                upcoming = [slotid for slotid in upcoming if slotid not in schedule]
+                choices = []
+                # We can have a max of 25 acmpl choices
+                # But there are at most 24 sessions to book
+                # So we can use the top choice for a message
+
+                lion = await self.bot.core.lions.fetch_member(interaction.guild.id, member.id, member=member)
+                tz = lion.timezone
+                tzstring = t(_p(
+                    'cmd:schedule|acmpl:book|timezone_info',
+                    "Using timezone '{timezone}' where it is '{now}'. Change with '/my timezone'"
+                )).format(
+                    timezone=str(tz),
+                    now=dt.datetime.now(tz).strftime('%H:%M')
+                )
+                choices.append(
+                    appcmds.Choice(
+                        name=tzstring, value='None',
+                    )
+                )
+
+                slot_format = t(_p(
+                    'cmd:schedule|acmpl:book|format',
+                    "{start} - {end} ({until})"
+                ))
+                for slotid in upcoming:
+                    slot_start = slotid_to_utc(slotid).astimezone(tz).strftime('%H:%M')
+                    slot_end = slotid_to_utc(slotid + 3600).astimezone(tz).strftime('%H:%M')
+                    distance = int((slotid - nowid) // 3600)
+                    until = format_until(t, distance)
+                    name = slot_format.format(
+                        start=slot_start,
+                        end=slot_end,
+                        until=until
+                    )
+                    if partial.lower() in name.lower():
+                        choices.append(
+                            appcmds.Choice(
+                                name=name,
+                                value=str(slotid)
+                            )
+                        )
+                if len(choices) == 1:
+                    choices.append(
+                        appcmds.Choice(
+                            name=t(_p(
+                                "cmd:schedule|acmpl:book|no_matching",
+                                "No bookable sessions matching '{partial}'"
+                            )).format(partial=partial[:25]),
+                            value=partial
+                        )
+                    )
+        return choices
+
+    @schedule_cmd.autocomplete('cancel')
+    async def schedule_cmd_cancel_acmpl(self, interaction: discord.Interaction, partial: str):
+        user = interaction.user
+        schedule = await self._fetch_schedule(user.id)
+        t = self.bot.translator.t
+
+        choices = []
+
+        minid = self.nowid
+        if ((slotid_to_utc(self.nowid + 3600) - utc_now()).total_seconds() < 60):
+            minid = minid + 3600
+        can_cancel = list(slotid for slotid in schedule if slotid > minid)
+        if not can_cancel:
+            choice = appcmds.Choice(
+                name=_p(
+                    'cmd:schedule|acmpl:cancel|error:empty_schedule',
+                    "You do not have any upcoming sessions to cancel!"
+                ),
+                value='None'
+            )
+            choices.append(choice)
+        else:
+            lion = await self.bot.core.lions.fetch_member(interaction.guild.id, user.id)
+            tz = lion.timezone
+            for slotid in can_cancel:
+                slot_format = t(_p(
+                    'cmd:schedule|acmpl:book|format',
+                    "{start} - {end} ({until})"
+                ))
+                slot_start = slotid_to_utc(slotid).astimezone(tz).strftime('%H:%M')
+                slot_end = slotid_to_utc(slotid + 3600).astimezone(tz).strftime('%H:%M')
+                distance = int((slotid - minid) // 3600)
+                until = format_until(t, distance)
+                name = slot_format.format(
+                    start=slot_start,
+                    end=slot_end,
+                    until=until
+                )
+                if partial.lower() in name.lower():
+                    choices.append(
+                        appcmds.Choice(
+                            name=name,
+                            value=str(slotid)
+                        )
+                    )
+            if not choices:
+                choice = appcmds.Choice(
+                    name=t(_p(
+                        'cmd:schedule|acmpl:cancel|error:no_matching',
+                        "No cancellable sessions matching '{partial}'"
+                    )).format(partial=partial[:25]),
+                    value='None'
+                )
+                choices.append(choice)
+        return choices
+
     async def _fetch_schedule(self, userid, **kwargs):
         """
         Fetch the given user's schedule (i.e. booking map)
@@ -866,6 +1050,7 @@ class ScheduleCog(LionCog):
         bookings = await booking_model.fetch_where(
             booking_model.slotid >= nowid,
             userid=userid,
+            **kwargs
         ).order_by('slotid', ORDER.ASC)
 
         return {

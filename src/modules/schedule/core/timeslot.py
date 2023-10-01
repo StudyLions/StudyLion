@@ -19,7 +19,7 @@ from modules.economy.data import EconomyData, TransactionType
 
 from .. import babel, logger
 from ..data import ScheduleData as Data
-from ..lib import slotid_to_utc, batchrun_per_second, limit_concurrency
+from ..lib import slotid_to_utc, batchrun_per_second, limit_concurrency, vacuum_channel
 from ..settings import ScheduleSettings
 
 from .session import ScheduledSession
@@ -439,6 +439,75 @@ class TimeSlot:
                 f"Closed {len(sessions)} for scheduled session timeslot: {self!r}"
             )
 
+    @log_wrap(action='Tidy session rooms')
+    async def tidy_rooms(self, sessions: list[ScheduledSession]):
+        """
+        'Tidy Up' after sessions have been closed.
+
+        This cleans up permissions for sessions which do not have another running session,
+        and vacuums the channel.
+
+        Somewhat temporary measure,
+        workaround for the design flaw that channel permissions are only updated during open,
+        and hence are never cleared unless there is a next session.
+        Limitations include not clearing after a manual close.
+        """
+        t = self.bot.translator.t
+
+        for session in sessions:
+            if not session.guild:
+                # Can no longer access the session guild, nothing to clean up
+                logger.debug(f"Not tidying {session!r} because guild gone.")
+                continue
+            if not (room := session.room_channel):
+                # Session did not have a room to clean up
+                logger.debug(f"Not tidying {session!r} because room channel gone.")
+                continue
+            if not session.opened or session.cancelled:
+                # Not an active session, don't try to tidy up
+                logger.debug(f"Not tidying {session!r} because cancelled or not opened.")
+                continue
+            if (active := self.cog.get_active_session(session.guild.id)) is not None:
+                # Rely on the active session to set permissions and vacuum channel
+                logger.debug(f"Not tidying {session!r} because guild has active session {active!r}.")
+                continue
+            logger.debug(f"Tidying {session!r}.")
+
+            me = session.guild.me
+            if room.permissions_for(me).manage_roles:
+                overwrites = {
+                    target: overwrite for target, overwrite in room.overwrites.items()
+                    if not isinstance(target, discord.Member)
+                }
+                try:
+                    await room.edit(
+                        overwrites=overwrites,
+                        reason=t(_p(
+                            "session|closing|audit_reason",
+                            "Removing previous scheduled session member permissions."
+                        ))
+                    )
+                except discord.HTTPException:
+                    logger.warning(
+                        f"Unexpected exception occurred while tidying after sessions {session!r}",
+                        exc_info=True
+                    )
+                else:
+                    logger.debug(f"Updated room permissions while tidying {session!r}.")
+            if room.type is discord.enums.ChannelType.category:
+                channels = room.voice_channels
+            else:
+                channels = [room]
+            for channel in channels:
+                await vacuum_channel(
+                    channel,
+                    reason=t(_p(
+                        "session|closing|disconnecting|audit_reason",
+                        "Disconnecting previous scheduled session members."
+                    ))
+                )
+            logger.debug(f"Finished tidying {session!r}.")
+
     def launch(self) -> asyncio.Task:
         self.run_task = asyncio.create_task(self.run(), name=f"TimeSlot {self.slotid}")
         return self.run_task
@@ -475,6 +544,9 @@ class TimeSlot:
             logger.info(f"Active timeslot closing. {self!r}")
             await self.close(list(self.sessions.values()), consequences=True)
             logger.info(f"Active timeslot closed. {self!r}")
+            await asyncio.sleep(30)
+            await self.tidy_rooms(list(self.sessions.values()))
+            logger.info(f"Previous active timeslot tidied up. {self!r}")
         except asyncio.CancelledError:
             logger.info(
                 f"Deactivating active time slot: {self!r}"

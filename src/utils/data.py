@@ -1,7 +1,7 @@
 """
 Some useful pre-built Conditions for data queries.
 """
-from typing import Optional
+from typing import Optional, Any
 from itertools import chain
 
 from psycopg import sql
@@ -11,7 +11,7 @@ from data.base import Expression
 from constants import MAX_COINS
 
 
-def MULTIVALUE_IN(columns: tuple[str, ...], *data: tuple[...]) -> Condition:
+def MULTIVALUE_IN(columns: tuple[str, ...], *data: tuple[Any, ...]) -> Condition:
     """
     Condition constructor for filtering by multiple column equalities.
 
@@ -100,7 +100,7 @@ class TemporaryTable(Expression):
     ```
     """
 
-    def __init__(self, *columns: str, name: str = '_t', types: Optional[tuple[str]] = None):
+    def __init__(self, *columns: str, name: str = '_t', types: Optional[tuple[str, ...]] = None):
         self.name = name
         self.columns = columns
         self.types = types

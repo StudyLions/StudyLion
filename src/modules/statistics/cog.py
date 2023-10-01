@@ -46,6 +46,7 @@ class StatsCog(LionCog):
             "Display your personal profile and summary statistics."
         )
     )
+    @appcmds.guild_only
     async def me_cmd(self, ctx: LionContext):
         await ctx.interaction.response.defer(thinking=True)
         ui = ProfileUI(self.bot, ctx.author, ctx.guild)
@@ -59,6 +60,7 @@ class StatsCog(LionCog):
             "Weekly and monthly statistics for your recent activity."
         )
     )
+    @appcmds.guild_only
     async def stats_cmd(self, ctx: LionContext):
         """
         Statistics command.

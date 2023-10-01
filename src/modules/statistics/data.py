@@ -126,7 +126,7 @@ class StatsData(Registry):
 
         @classmethod
         @log_wrap(action='study_times_between')
-        async def study_times_between(cls, guildid: int, userid: int, *points) -> list[int]:
+        async def study_times_between(cls, guildid: Optional[int], userid: int, *points) -> list[int]:
             if len(points) < 2:
                 raise ValueError('Not enough block points given!')
 
@@ -165,8 +165,8 @@ class StatsData(Registry):
                     return (await cursor.fetchone()[0]) or 0
 
         @classmethod
-        @log_wrap(action='study_times_between')
-        async def study_times_since(cls, guildid: int, userid: int, *starts) -> int:
+        @log_wrap(action='study_times_since')
+        async def study_times_since(cls, guildid: Optional[int], userid: int, *starts) -> int:
             if len(starts) < 1:
                 raise ValueError('No starting points given!')
 

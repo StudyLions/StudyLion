@@ -126,6 +126,7 @@ async def rolemenu_ctxcmd(interaction: discord.Interaction, message: discord.Mes
     else:
         menu = await RoleMenu.fetch(self.bot, menuid)
         menu._message = message
+        await menu.update_raw()
 
     # Open the editor
     editor = MenuEditor(self.bot, menu, callerid=interaction.user.id)
@@ -732,7 +733,7 @@ class RoleMenuCog(LionCog):
 
         # Parse menu options if given
         name = name.strip()
-        matching = await self.data.RoleMenu.fetch_where(name=name)
+        matching = await self.data.RoleMenu.fetch_where(name=name, guildid=ctx.guild.id)
         if matching:
             raise UserInputError(
                 t(_p(
@@ -895,6 +896,7 @@ class RoleMenuCog(LionCog):
                 )).format(name=name)
             )
         await target.fetch_message()
+        await target.update_raw()
 
         # Parse provided options
         reposting = channel is not None
@@ -971,7 +973,41 @@ class RoleMenuCog(LionCog):
                 )
                 # TODO: Generate the custom message from the template if it doesn't exist
 
-        # TODO: Pathway for setting menu style
+        if menu_style is not None:
+            if not managed and not reposting:
+                raise UserInputError(
+                    t(_p(
+                        'cmd:rolemenu_edit|parse:style|error:not_managed',
+                        "Cannot change the style of a role menu attached to a message I did not send."
+                    ))
+                )
+            if menu_style is MenuType.REACTION:
+                # Check menu is suitable for moving to reactions
+                roles = target.roles
+                if len(roles) > 20:
+                    raise UserInputError(
+                        t(_p(
+                            'cmd:rolemenu_edit|parse:style|error:too_many_reactions',
+                            "Too many roles! Reaction role menus can have at most `20` roles."
+                        ))
+                    )
+                emojis = [mrole.config.emoji.value for mrole in roles]
+                emojis = [emoji for emoji in emojis if emoji]
+                uniq = set(emojis)
+                if len(uniq) != len(roles):
+                    raise UserInputError(
+                        t(_p(
+                            "cmd:rolemenu_edit|parse:style|error:incomplete_emojis",
+                            "Cannot switch to the reaction role style! Every role needs a distinct emoji first."
+                        ))
+                    )
+            update_args[self.data.RoleMenu.menutype.name] = menu_style
+            ack_lines.append(
+                t(_p(
+                    'cmd:rolemenu_edit|parse:style|success',
+                    "Updated role menu style."
+                ))
+            )
 
         if rawmessage is not None:
             msg_config = target.config.rawmessage
@@ -1019,6 +1055,11 @@ class RoleMenuCog(LionCog):
                 )).format(channel=channel.mention, exception=e.text))
         else:
             await target.update_message()
+            if menu_style is not None:
+                try:
+                    await target.update_reactons()
+                except SafeCancellation as e:
+                    error_lines.append(e.msg)
 
         # Ack the updates
         if ack_lines or error_lines:

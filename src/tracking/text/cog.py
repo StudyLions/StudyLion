@@ -148,6 +148,12 @@ class TextTrackerCog(LionCog):
         logger.info(
             f"Saving batch of {len(batch)} completed text sessions."
         )
+        if self.bot.core is None or self.bot.core.lions is None:
+            # Currently unloading, nothing we can do
+            logger.warning(
+                "Skipping text session batch due to unloaded modules."
+            )
+            return
 
         # Batch-fetch lguilds
         lguilds = await self.bot.core.lions.fetch_guilds(*{session.guildid for session in batch})
@@ -223,6 +229,7 @@ class TextTrackerCog(LionCog):
             channel.category_id
         except discord.ClientException:
             logger.debug(f"Ignoring message from channel with no parent: {message.channel}")
+            return
 
         # Untracked channel ward
         untracked = self.untracked_channels.get(guildid, [])
