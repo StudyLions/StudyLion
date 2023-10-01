@@ -34,7 +34,7 @@ async def get_stats_card(bot: LionBot, userid: int, guildid: int, mode: CardMode
     # Extract the study times for each period
     if mode in (CardMode.STUDY, CardMode.VOICE):
         model = data.VoiceSessionStats
-        refkey = (guildid, userid)
+        refkey = (guildid or None, userid)
         ref_since = model.study_times_since
         ref_between = model.study_times_between
     elif mode is CardMode.TEXT:

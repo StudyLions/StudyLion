@@ -76,7 +76,7 @@ async def get_profile_card(bot: LionBot, userid: int, guildid: int):
     else:
         next_rank = None
 
-    achievements = (0, 1)
+    achievements = (0, 1, 2, 3)
 
     card = ProfileCard(
         user=username,
