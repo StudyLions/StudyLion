@@ -287,7 +287,7 @@ msgstr "הוסף embed"
 #: src/utils/ui/msgeditor.py:190
 msgctxt "ui:msg_editor|button:rm_embed|sample_content"
 msgid "Content Placeholder"
-msgstr ""
+msgstr "תופס מקום לתוכן"
 
 #: src/utils/ui/msgeditor.py:199
 msgctxt "ui:msg_editor|button:rm_embed|label"
