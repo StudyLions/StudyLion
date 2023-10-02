@@ -80,12 +80,12 @@ msgstr "צפה או נהל את הסשנים שקבעת בלו\"ז."
 #: src/modules/schedule/cog.py:749
 msgctxt "cmd:schedule|param:cancel"
 msgid "cancel"
-msgstr ""
+msgstr "בטל"
 
 #: src/modules/schedule/cog.py:752
 msgctxt "cmd:schedule|param:book"
 msgid "book"
-msgstr ""
+msgstr "קבע"
 
 #: src/modules/schedule/cog.py:758
 msgctxt "cmd:schedule|param:cancel|desc"
