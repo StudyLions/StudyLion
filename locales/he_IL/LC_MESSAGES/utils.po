@@ -292,7 +292,7 @@ msgstr "תופס מקום לתוכן"
 #: src/utils/ui/msgeditor.py:199
 msgctxt "ui:msg_editor|button:rm_embed|label"
 msgid "Remove Embed"
-msgstr ""
+msgstr "הסר אמבד"
 
 #: src/utils/ui/msgeditor.py:217
 msgctxt "ui:msg_editor|modal:body|field:content|label"
