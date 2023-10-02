@@ -162,7 +162,7 @@ msgstr "{count} שעות"
 #, possible-python-brace-format
 msgctxt "skin:monthlystats|mode:text|stats:daily_average|value"
 msgid "{count} msgs"
-msgstr ""
+msgstr "{count} הודעות"
 
 #: src/gui/cards/monthly.py:332
 #, possible-python-brace-format
