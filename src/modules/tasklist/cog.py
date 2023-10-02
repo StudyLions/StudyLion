@@ -764,7 +764,7 @@ class TasklistCog(LionCog):
                     embed=error_embed(t(_p(
                         'cmd:tasks_remove_cmd|error:no_matching',
                         "No tasks on your tasklist match `{input}`"
-                    ))).format(input=taskidstr)
+                    )).format(input=taskidstr))
                 )
                 return
 
@@ -788,7 +788,7 @@ class TasklistCog(LionCog):
                 embed=error_embed(t(_p(
                     'cmd:tasks_remove_cmd|error:no_matching',
                     "No tasks on your tasklist matching all the given conditions!"
-                ))).format(input=taskidstr)
+                )).format(input=taskidstr))
             )
             return
         taskids = [task.taskid for task in tasks]
@@ -859,7 +859,7 @@ class TasklistCog(LionCog):
                     embed=error_embed(t(_p(
                         'cmd:tasks_remove_cmd|error:no_matching',
                         "No tasks on your tasklist match `{input}`"
-                    ))).format(input=taskidstr)
+                    )).format(input=taskidstr))
                 )
                 return
 
@@ -934,7 +934,7 @@ class TasklistCog(LionCog):
                 embed=error_embed(t(_p(
                     'cmd:tasks_remove_cmd|error:no_matching',
                     "No tasks on your tasklist match `{input}`"
-                ))).format(input=taskidstr)
+                )).format(input=taskidstr))
             )
             return
 
@@ -942,7 +942,7 @@ class TasklistCog(LionCog):
         tasks = [task for task in tasks if task.completed_at is not None]
         taskids = [task.taskid for task in tasks]
         if taskids:
-            await tasklist.update_tasks(*taskids, cascade=cascade, completed_at=None)
+            await tasklist.update_tasks(*taskids, cascade=cascade or False, completed_at=None)
 
         # Ack changes and summon tasklist
         embed = discord.Embed(
