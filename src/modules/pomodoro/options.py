@@ -259,7 +259,7 @@ class TimerOptions(SettingGroup):
 
         @property
         def input_formatted(self):
-            return str(int(self._data // 60)) if self._data else None
+            return str(int(self._data // 60)) if self._data else '25'
 
         @classmethod
         async def _parse_string(cls, parent_id, string, **kwargs):
@@ -300,7 +300,7 @@ class TimerOptions(SettingGroup):
 
         @property
         def input_formatted(self):
-            return str(int(self._data // 60)) if self._data else None
+            return str(int(self._data // 60)) if self._data else '5'
 
         @classmethod
         async def _parse_string(cls, parent_id, string, **kwargs):

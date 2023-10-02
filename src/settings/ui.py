@@ -396,7 +396,7 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
         return TextInput(
             label=self.display_name,
             placeholder=self.accepts,
-            default=self.input_formatted[:4000],
+            default=self.input_formatted[:4000] if self.input_formatted else None,
             required=self._required
         )
 
