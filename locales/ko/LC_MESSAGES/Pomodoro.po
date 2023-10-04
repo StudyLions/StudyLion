@@ -112,7 +112,7 @@ msgstr "타이머가 멈췄어요! {channel}에 입장해서 타이머를 시작
 #: src/modules/pomodoro/timer.py:590
 msgctxt "timer|status|stopped:manual"
 msgid "Timer stopped! Press `Start` to restart the timer."
-msgstr ""
+msgstr "타이머가 멈췄어요! 'Start'를 눌러 타이머를 재시작하세요."
 
 #: src/modules/pomodoro/settingui.py:39
 msgctxt "ui:timer_config|menu:channels|placeholder"
