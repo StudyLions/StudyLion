@@ -79,6 +79,8 @@ msgid ""
 "**Warning!** Timer {channel} is configured to disconnect on inactivity, but "
 "I lack the 'Move Members' permission to do this!"
 msgstr ""
+"**경고!** 타이머 채널 {channel}은 비활성 시 연결이 해제되도록 설정되어 있으나, 저는 'Move Members' 권한이 "
+"부족해요!"
 
 #: src/modules/pomodoro/timer.py:529
 #, possible-python-brace-format
