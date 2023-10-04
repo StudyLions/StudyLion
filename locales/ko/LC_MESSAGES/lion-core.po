@@ -41,7 +41,7 @@ msgstr "{coin}**{max}** 보다 많이 설정할 수 없어요!"
 #, possible-python-brace-format
 msgctxt "settype:coin|parse|error:too_small"
 msgid "You cannot set this to less than {coin}**{min}**!"
-msgstr ""
+msgstr "{coin}**{min}** 보다 적게 설정할 수 없어요!"
 
 #: src/core/setting_types.py:75
 #, possible-python-brace-format
