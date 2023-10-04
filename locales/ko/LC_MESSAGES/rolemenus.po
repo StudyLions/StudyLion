@@ -194,7 +194,7 @@ msgstr "메뉴 선택 스타일 (버튼, 드랍다운, 반응)"
 #: src/modules/rolemenus/cog.py:632
 msgctxt "cmd:rolemenu_create|param:template"
 msgid "Template to use for the menu message body"
-msgstr ""
+msgstr "메뉴 메시지 본문 사용을 위한 템플릿"
 
 #: src/modules/rolemenus/cog.py:636
 msgctxt "cmd:rolemenu_create|param:rawmessage"
