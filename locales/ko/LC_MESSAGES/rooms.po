@@ -198,7 +198,7 @@ msgstr "대여"
 #: src/modules/rooms/cog.py:332
 msgctxt "cmd:room_rent|desc"
 msgid "Rent a private voice channel with LionCoins."
-msgstr ""
+msgstr "LionCoins으로 프리이빗 보이스 채널 대여"
 
 #: src/modules/rooms/cog.py:336
 msgctxt "cmd:room_rent|param:days"
