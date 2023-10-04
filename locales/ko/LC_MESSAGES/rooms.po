@@ -34,7 +34,7 @@ msgstr ""
 #: src/modules/rooms/settingui.py:62
 msgctxt "ui:rooms_config|embed|title"
 msgid "Private Room System Configuration Panel"
-msgstr "개인방 시스템 설정 패널"
+msgstr "프라이빗 룸 시스템 설정 패널"
 
 #: src/modules/rooms/settingui.py:98
 msgctxt "dash:rooms|title"
