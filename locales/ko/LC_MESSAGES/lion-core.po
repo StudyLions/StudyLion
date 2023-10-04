@@ -77,7 +77,7 @@ msgctxt "settype:message|error_suffix"
 msgid ""
 "You can view, test, and fix your embed using the online [embed "
 "builder]({link})."
-msgstr ""
+msgstr "임베드한 내용을 아래 온라인 링크에서 확인, 테스트, 수정할 수 있어요. [embed builder]({link})."
 
 #: src/core/setting_types.py:189
 #, possible-python-brace-format
