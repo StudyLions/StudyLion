@@ -187,7 +187,8 @@ msgctxt "cmd:timer|error:no_timer_in_channel"
 msgid ""
 "The channel {channel} is not a pomodoro timer room!\n"
 "Use {timers_cmd} to list the available timers in this server."
-msgstr "채널 {channel}는 포모도로 타이머 룸이 아니에요. {timers_cmd}"
+msgstr ""
+"채널 {channel}는 포모도로 타이머 룸이 아니에요. {timers_cmd} 명령어로 서버 내의 사용 가능한 타이머를 확인하세요."
 
 #: src/modules/pomodoro/cog.py:476
 msgctxt "cmd:timers"
