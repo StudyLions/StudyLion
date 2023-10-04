@@ -225,7 +225,7 @@ msgctxt "cmd:rolemenu_create|error:style_notmine"
 msgid ""
 "I cannot create a `{style}` style menu on a message I didn't send! (Discord "
 "restriction)."
-msgstr "제가 보내지 않은 메시지의 `{style}` 스타일 메뉴는 생성할 수 없어요."
+msgstr "제가 보내지 않은 메시지의 `{style}` 스타일 메뉴는 생성할 수 없어요. (디스코드 내 기능 제한)."
 
 #: src/modules/rolemenus/cog.py:719
 #, possible-python-brace-format
