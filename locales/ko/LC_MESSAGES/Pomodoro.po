@@ -198,7 +198,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:477
 msgctxt "cmd:timers|desc"
 msgid "List the available pomodoro timer rooms."
-msgstr ""
+msgstr "사용 가능한 포모도로 타이머 룸 목록을 보여줍니다."
 
 #: src/modules/pomodoro/cog.py:516
 #, possible-python-brace-format
