@@ -127,7 +127,7 @@ msgstr "타이머 설정 패널"
 #: src/modules/pomodoro/settingui.py:81
 msgctxt "dash:pomodoro|title"
 msgid "Pomodoro Configuration ({commands[configure pomodoro]})"
-msgstr ""
+msgstr "포모도로 설정  ({commands[configure pomodoro]})"
 
 #: src/modules/pomodoro/settingui.py:85
 msgctxt "dash:stats|dropdown|placeholder"
