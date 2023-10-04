@@ -146,7 +146,7 @@ msgstr "채널"
 #: src/modules/rooms/roomui.py:380
 msgctxt "ui:room_status|embed|field:owner|name"
 msgid "Owner"
-msgstr ""
+msgstr "소유자"
 
 #: src/modules/rooms/roomui.py:385
 msgctxt "ui:room_status|embed|field:created|name"
