@@ -101,7 +101,7 @@ msgctxt "timer|status|warningline"
 msgid ""
 "**Warning:** {mentions}, please press {tick} to avoid being removed on the "
 "next stage."
-msgstr ""
+msgstr "**경고:** {mentions}, 다음 단계에서 제외되지 않으려면 {tick}을 눌러주세요."
 
 #: src/modules/pomodoro/timer.py:585
 #, possible-python-brace-format
