@@ -98,7 +98,7 @@ msgstr "룸 타이머 생성"
 #, possible-python-brace-format
 msgctxt "ui:room_status|button:timer|timer_created"
 msgid "Timer created successfully! Use {edit_cmd} to configure further."
-msgstr ""
+msgstr "타이머가 잘 생성되었어요! {edit_cmd}로 추가 설정해 주세요."
 
 #: src/modules/rooms/roomui.py:254
 msgctxt "ui:room_status|button:timer|label:edit_timer"
