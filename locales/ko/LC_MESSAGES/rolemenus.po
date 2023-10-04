@@ -205,7 +205,7 @@ msgstr ""
 msgctxt "cmd:rolemenu_create|error:author_perms"
 msgid ""
 "You need the `MANAGE_ROLES` permission in order to create new role menus."
-msgstr ""
+msgstr "역할 메뉴 생성을 위해서는 `MANAGE_ROLES` 권한이 필요해요."
 
 #: src/modules/rolemenus/cog.py:672
 msgctxt "cmd:rolemenu_create|error:my_perms"
