@@ -59,7 +59,7 @@ msgstr "프라이빗 룸 맴버만 할 수 있어요!"
 #: src/modules/rooms/roomui.py:90
 msgctxt "ui:room_status|button:deposit|modal:deposit|title"
 msgid "Room Deposit"
-msgstr ""
+msgstr "룸 보증금"
 
 #: src/modules/rooms/roomui.py:94
 msgctxt "ui:room_status|button:deposit|modal:deposit|field:question|label"
