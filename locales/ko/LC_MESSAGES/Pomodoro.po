@@ -86,7 +86,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "timer|status|stage:focus|statusline"
 msgid "{channel} is now in **FOCUS**! Good luck, **BREAK** starts {timestamp}"
-msgstr "{channel}은 이제 **FOCUS**상태에요! 파이팅! **BREAK**은 {timestamp}에 시작해요."
+msgstr "{channel}은 이제 **집중**상태에요! 파이팅! **휴식**은 {timestamp}에 시작해요."
 
 #: src/modules/pomodoro/timer.py:534
 #, possible-python-brace-format
