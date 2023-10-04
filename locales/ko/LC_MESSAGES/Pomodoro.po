@@ -178,6 +178,8 @@ msgid ""
 "**I don't know what timer to show you.**\n"
 "No channel selected and you are not in a voice channel! Use {timers_cmd} to list the available timers in this server."
 msgstr ""
+"**제가 어떤 타이머를 보여줘야 할 지 모르겠어요.**\n"
+"채널 선택이 되지 않았고, 당신은 현재 음성 채널에 없어요. {timers_cmd} 명령어로 서버 내의 사용 가능한 타이머를 확인하세요."
 
 #: src/modules/pomodoro/cog.py:459
 #, possible-python-brace-format
