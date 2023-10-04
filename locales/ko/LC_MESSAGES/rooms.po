@@ -354,7 +354,7 @@ msgstr "맴버"
 #: src/modules/rooms/cog.py:609
 msgctxt "cmd:room_invite|param:members|desc"
 msgid "Mention the members you want to add."
-msgstr ""
+msgstr "추가를 원하는 맴버를 멘션하세요."
 
 #: src/modules/rooms/cog.py:623
 #, possible-python-brace-format
