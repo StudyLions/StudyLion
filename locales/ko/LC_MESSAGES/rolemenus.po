@@ -104,7 +104,7 @@ msgctxt "cmd:rolemenus|error:author_perms"
 msgid ""
 "You need the `MANAGE_ROLES` permission in order to manage the server role "
 "menus."
-msgstr ""
+msgstr "서버 역할 메뉴 관리를 위해서는 `MANAGE_ROLES` 권한이 필요해요."
 
 #: src/modules/rolemenus/cog.py:462
 msgctxt "cmd:rolemenus|error:my_perms"
