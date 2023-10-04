@@ -223,6 +223,8 @@ msgid ""
 "`{pattern}` timer is stopped with no members!\n"
 "Join {channel} to restart it."
 msgstr ""
+"맴버가 없어서 `{pattern}` 타이머가 멈췄어요.\n"
+"{channel}에 입장하여 다시 시작하세요."
 
 #: src/modules/pomodoro/cog.py:544
 #, possible-python-brace-format
