@@ -381,6 +381,8 @@ msgid ""
 "Too many members! You have invited `{count}` new members to your room, but "
 "you already have `{current}`, and the member cap is `{cap}`!"
 msgstr ""
+"맴버가 너무 많아요!  `{count}`명의 맴버를 초대했지만, 현재 `{current}`명의 맴버가 있고, 최대 룸 맴버가 "
+"`{cap}`명이라 초대가 되지 않았어요."
 
 #: src/modules/rooms/cog.py:693
 msgctxt "cmd:room_invite|success|ack"
