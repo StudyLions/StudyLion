@@ -207,6 +207,8 @@ msgid ""
 "**There are no available pomodoro timers!**\n"
 "Ask an admin to set up a new timer with {create_cmd}, or rent a private room with {room_cmd} and create one yourself!"
 msgstr ""
+"**이 서버는 타이머 설정이 되어있지 않아요!**\n"
+"먼저 서버 관리자에게 {create_cmd} 명령어로 타이머 설정을 요청하거나, {room_cmd} 명령어로 프라이빗 룸을 대여하거나 직접 만들어 보세요!"
 
 #: src/modules/pomodoro/cog.py:529
 #, possible-python-brace-format
