@@ -79,7 +79,7 @@ msgctxt "parse:message_link|suberror:malformed_link"
 msgid ""
 "Malformed message link. Please copy the link by right clicking the target "
 "message."
-msgstr ""
+msgstr "메시지 링크가 유효하지 않아요. 메시지를 우클릭하여 정확하게 링크를 복사하세요."
 
 #: src/modules/rolemenus/cog.py:323
 #, possible-python-brace-format
