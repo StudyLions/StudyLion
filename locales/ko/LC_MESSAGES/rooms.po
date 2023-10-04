@@ -315,6 +315,9 @@ msgid ""
 "An unknown error occurred while creating your private room.\n"
 "`{error}`"
 msgstr ""
+"프라이빗 룸을 생성할 수 없어요! 코인은 지급되지 않았어요.\n"
+"프라이빗 룸을 생성하는 중 알 수 없는 에러가 발생했어요.\n"
+"`{error}`"
 
 #: src/modules/rooms/cog.py:562
 msgctxt "cmd:room_status"
