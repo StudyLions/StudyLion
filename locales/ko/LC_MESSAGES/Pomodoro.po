@@ -107,7 +107,7 @@ msgstr "**경고:** {mentions}, 다음 단계에서 제외되지 않으려면 {t
 #, possible-python-brace-format
 msgctxt "timer|status|stopped:auto"
 msgid "Timer stopped! Join {channel} to start the timer."
-msgstr ""
+msgstr "타이머가 멈췄어요! {channel}에 입장해서 타이머를 시작하세요."
 
 #: src/modules/pomodoro/timer.py:590
 msgctxt "timer|status|stopped:manual"
