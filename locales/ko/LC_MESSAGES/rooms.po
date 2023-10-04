@@ -136,7 +136,7 @@ msgstr "맴버 탈퇴"
 #: src/modules/rooms/roomui.py:367
 msgctxt "ui:room_status|embed|title"
 msgid "Room Control Panel"
-msgstr ""
+msgstr "룸 설정 패널"
 
 #: src/modules/rooms/roomui.py:375
 msgctxt "ui:room_status|embed|field:channel|name"
