@@ -139,12 +139,12 @@ msgctxt "cmd_check:ready|failed"
 msgid ""
 "I am currently restarting! The Pomodoro timers will be unavailable until I "
 "have restarted. Thank you for your patience!"
-msgstr ""
+msgstr "저는 현재 재시작하고 있어요! 포모도로 타이머는 제가 재시작하기 전까지 사용할 수 없어요. 조금만 기다려 주세요!"
 
 #: src/modules/pomodoro/cog.py:401
 msgctxt "cmd:timer"
 msgid "timer"
-msgstr ""
+msgstr "타이머"
 
 #: src/modules/pomodoro/cog.py:402
 msgctxt "cmd:timer|desc"
