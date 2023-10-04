@@ -243,7 +243,7 @@ msgctxt "cmd:room_rent|error:insufficient_perms"
 msgid ""
 "I do not have enough permissions to create a new channel under the "
 "configured private room category!"
-msgstr ""
+msgstr "현재 설정된 프라이빗 룸 카테고리로는 새로운 채널을 개설할 수 있는 권한이 없어요!"
 
 #: src/modules/rooms/cog.py:394
 #, possible-python-brace-format
