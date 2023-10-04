@@ -132,7 +132,7 @@ msgstr "포모도로 설정  ({commands[configure pomodoro]})"
 #: src/modules/pomodoro/settingui.py:85
 msgctxt "dash:stats|dropdown|placeholder"
 msgid "Pomodoro Timer Panel"
-msgstr ""
+msgstr "포모도로 타이머 패널"
 
 #: src/modules/pomodoro/cog.py:116
 msgctxt "cmd_check:ready|failed"
