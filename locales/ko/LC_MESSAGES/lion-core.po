@@ -115,7 +115,7 @@ msgstr "메시지 데이터는 `embed`와 `embeds`를 둘 다 포함할 수 없�
 #: src/core/setting_types.py:229
 msgctxt "settype:message|error:json_content_type"
 msgid "`content` field must be a string."
-msgstr ""
+msgstr "`content` 필드값은 string이어야 해요."
 
 #: src/core/setting_types.py:245
 #, possible-python-brace-format
