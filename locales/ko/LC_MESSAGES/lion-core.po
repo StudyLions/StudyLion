@@ -86,6 +86,8 @@ msgid ""
 "The provided message data was not a valid JSON document!\n"
 "`{error}`"
 msgstr ""
+"제공된 메시지 데이터는 유효한 JSON 문서가 아니에요!\n"
+"`{error}`"
 
 #: src/core/setting_types.py:197
 msgctxt "settype:message|error:json_missing_keys"
