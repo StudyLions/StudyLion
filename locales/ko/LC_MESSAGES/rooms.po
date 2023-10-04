@@ -70,7 +70,7 @@ msgstr "LionCoin 보증금을 얼마나 지불할 건가요?"
 #, possible-python-brace-format
 msgctxt "ui:room_status|button:deposit|error:invalid_number"
 msgid "Cannot deposit `{inputted}` coins. Please enter a positive integer."
-msgstr ""
+msgstr "보증금 `{inputted}`을 지불할 수 없어요. 정수를 입력해 해주세요."
 
 #: src/modules/rooms/roomui.py:144
 #, possible-python-brace-format
