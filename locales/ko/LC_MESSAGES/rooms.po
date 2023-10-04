@@ -64,7 +64,7 @@ msgstr "룸 보증금"
 #: src/modules/rooms/roomui.py:94
 msgctxt "ui:room_status|button:deposit|modal:deposit|field:question|label"
 msgid "How many LionCoins do you want to deposit?"
-msgstr "LionCoin 보증금을 얼마나 지불할 건가요?"
+msgstr "LionCoins 보증금을 얼마나 지불할 건가요?"
 
 #: src/modules/rooms/roomui.py:112
 #, possible-python-brace-format
