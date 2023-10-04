@@ -372,7 +372,7 @@ msgstr "초대된 맴버 {mention}를 서버에서 찾을 수 없습니다."
 #: src/modules/rooms/cog.py:655
 msgctxt "cmd:room_invite|error:no_new_members"
 msgid "All members mentioned are already in the room!"
-msgstr ""
+msgstr "멘션한 맴버 모두가 모두 룸에 있어요!"
 
 #: src/modules/rooms/cog.py:669
 #, possible-python-brace-format
