@@ -97,7 +97,7 @@ msgstr ""
 #: src/modules/rolemenus/cog.py:438
 msgctxt "cmd:rolemenus|desc"
 msgid "View and configure the role menus in this server."
-msgstr ""
+msgstr "서버의 역할 메뉴 설정 및 확인."
 
 #: src/modules/rolemenus/cog.py:455
 msgctxt "cmd:rolemenus|error:author_perms"
