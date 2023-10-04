@@ -87,12 +87,12 @@ msgstr "보증금"
 #: src/modules/rooms/roomui.py:171
 msgctxt "ui:room_status|button:edit|label"
 msgid "Edit Room"
-msgstr ""
+msgstr "룸 수정"
 
 #: src/modules/rooms/roomui.py:204
 msgctxt "ui:room_status|button:timer|modal:add_timer|title"
 msgid "Create Room Timer"
-msgstr ""
+msgstr "룸 타이머 생성"
 
 #: src/modules/rooms/roomui.py:236
 #, possible-python-brace-format
