@@ -280,7 +280,7 @@ msgstr[0] "프라이빗 룸을 `{days}`일 대여하기 위해  {coin}**{require
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|success"
 msgid "Successfully created your private room {channel}!"
-msgstr "프라이빗 룸 {channel}을 성공적으로 생성했습니다!"
+msgstr "프라이빗 룸 {channel}을 성공적으로 생성했어요!"
 
 #: src/modules/rooms/cog.py:472
 msgctxt "cmd:room_rent|success|title"
