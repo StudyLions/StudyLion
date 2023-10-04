@@ -249,7 +249,7 @@ msgstr "현재 설정된 프라이빗 룸 카테고리로는 새로운 채널을
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|error:room_exists"
 msgid "You already own a private room! Click to visit: {channel}"
-msgstr ""
+msgstr "이미 소유한 프라이빗 룸이 있어요! 클릭하여 방문하세요.: {channel}"
 
 #: src/modules/rooms/cog.py:414
 #, possible-python-brace-format
