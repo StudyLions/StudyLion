@@ -151,7 +151,7 @@ msgstr "소유자"
 #: src/modules/rooms/roomui.py:385
 msgctxt "ui:room_status|embed|field:created|name"
 msgid "Created At"
-msgstr ""
+msgstr "생성일자"
 
 #: src/modules/rooms/roomui.py:395
 #, possible-python-brace-format
