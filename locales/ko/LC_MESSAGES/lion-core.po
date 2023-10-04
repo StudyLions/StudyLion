@@ -29,7 +29,7 @@ msgstr ""
 #: src/core/setting_types.py:47
 msgctxt "settype:coin|parse|error:notinteger"
 msgid "The coin quantity must be a positive integer!"
-msgstr "코인 개수는 양수여야 합니다."
+msgstr "코인 개수는 양수여야 해요!"
 
 #: src/core/setting_types.py:55
 #, possible-python-brace-format
