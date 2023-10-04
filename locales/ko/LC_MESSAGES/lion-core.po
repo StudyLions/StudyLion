@@ -52,7 +52,7 @@ msgstr ""
 #: src/core/setting_types.py:91
 msgctxt "settype:message|accepts"
 msgid "JSON formatted raw message data"
-msgstr "JSON 형식의 로우 데이터"
+msgstr "JSON 형식의 메시지 데이터"
 
 #: src/core/setting_types.py:106
 msgctxt "settype:message|download|error:not_json"
