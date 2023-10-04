@@ -105,7 +105,7 @@ msgstr "`embed` field는 유효한 JSON 객체여야 해요."
 #: src/core/setting_types.py:214
 msgctxt "settype:message|error:json_embeds_type"
 msgid "`embeds` field must be a list."
-msgstr ""
+msgstr "`embeds` 필드는 리스트 자료형(list)이어야 해요."
 
 #: src/core/setting_types.py:221
 msgctxt "settype:message|error:json_embed_embeds"
