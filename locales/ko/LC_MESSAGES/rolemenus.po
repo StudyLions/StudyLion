@@ -139,7 +139,7 @@ msgstr "메뉴 '{name}'를 찾을 수 없어요."
 #, possible-python-brace-format
 msgctxt "acmpl:menuroles|choice:no_matching|name"
 msgid "No roles in this menu matching '{partial}'"
-msgstr ""
+msgstr "메뉴 내 역할이 일치하지 않아요.  '{partial}'"
 
 #: src/modules/rolemenus/cog.py:582
 msgctxt "group:rolemenu"
