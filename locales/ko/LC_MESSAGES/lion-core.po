@@ -47,7 +47,7 @@ msgstr "{coin}**{min}** 보다 적게 설정할 수 없어요!"
 #, possible-python-brace-format
 msgctxt "settype:coin|formatted"
 msgid "{coin}**{amount}**"
-msgstr ""
+msgstr "{coin}**{amount}**"
 
 #: src/core/setting_types.py:91
 msgctxt "settype:message|accepts"
