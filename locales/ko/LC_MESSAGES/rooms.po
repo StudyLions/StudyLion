@@ -213,7 +213,7 @@ msgstr "맴버수"
 #: src/modules/rooms/cog.py:338
 msgctxt "cmd:room_rent|param:name"
 msgid "name"
-msgstr ""
+msgstr "이름"
 
 #: src/modules/rooms/cog.py:343
 msgctxt "cmd:room_rent|param:days|desc"
