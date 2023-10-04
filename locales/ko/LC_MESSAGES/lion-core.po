@@ -24,7 +24,7 @@ msgstr ""
 #: src/core/setting_types.py:31
 msgctxt "settype:coin|accepts"
 msgid "A positive integral number of coins."
-msgstr ""
+msgstr "양의 정수 개수의 동전."
 
 #: src/core/setting_types.py:47
 msgctxt "settype:coin|parse|error:notinteger"
