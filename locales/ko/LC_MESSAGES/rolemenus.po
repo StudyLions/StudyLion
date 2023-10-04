@@ -122,12 +122,12 @@ msgstr "역할 메뉴 불일치 '{partial}'"
 #: src/modules/rolemenus/cog.py:516
 msgctxt "acmpl:menuroles|param:menu|keyname"
 msgid "menu"
-msgstr ""
+msgstr "메뉴"
 
 #: src/modules/rolemenus/cog.py:522
 msgctxt "acmpl:menuroles|choice:no_menu|name"
 msgid "Please select a menu first"
-msgstr ""
+msgstr "메뉴를 선택해주세요."
 
 #: src/modules/rolemenus/cog.py:546
 #, possible-python-brace-format
