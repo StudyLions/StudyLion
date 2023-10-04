@@ -124,6 +124,8 @@ msgid ""
 "Could not parse the message embed data.\n"
 "**Error:** `{exception}`"
 msgstr ""
+"메시지 임베드 데이터를 변환할 수 없어요.\n"
+"**Error:** `{exception}`"
 
 #: src/core/setting_types.py:273
 msgctxt "settype:message|format:too_long"
