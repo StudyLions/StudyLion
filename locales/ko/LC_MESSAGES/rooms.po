@@ -223,7 +223,7 @@ msgstr "미리 구매한 일수 (기본값: 1)"
 #: src/modules/rooms/cog.py:347
 msgctxt "cmd:room_rent|param:members|desc"
 msgid "Mention the members you want to add to your private room."
-msgstr ""
+msgstr "프라이빗 룸에 추가하고 싶은 맴버를 멘션하세요."
 
 #: src/modules/rooms/cog.py:351
 msgctxt "cmd:room_rent|param:name|desc"
