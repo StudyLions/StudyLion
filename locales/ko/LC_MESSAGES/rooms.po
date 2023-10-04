@@ -188,7 +188,7 @@ msgstr "룸"
 #: src/modules/rooms/cog.py:322
 msgctxt "cmd:room|desc"
 msgid "Base command group for private room configuration."
-msgstr ""
+msgstr "프라이빗 룸 설정을 위한 기본 커맨드 그룹 "
 
 #: src/modules/rooms/cog.py:329
 msgctxt "cmd:room_rent"
