@@ -178,12 +178,12 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "ui:room_status|embed|field:members|name"
 msgid "Members ({count}/{cap})"
-msgstr ""
+msgstr "맴버수 ({count}/{cap})"
 
 #: src/modules/rooms/cog.py:321
 msgctxt "cmd:room"
 msgid "room"
-msgstr ""
+msgstr "룸"
 
 #: src/modules/rooms/cog.py:322
 msgctxt "cmd:room|desc"
