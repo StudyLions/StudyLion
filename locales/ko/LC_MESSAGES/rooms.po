@@ -39,7 +39,7 @@ msgstr "개인방 시스템 설정 패널"
 #: src/modules/rooms/settingui.py:98
 msgctxt "dash:rooms|title"
 msgid "Private Room Configuration ({commands[configure rooms]})"
-msgstr "개인방 설정  ({commands[configure rooms]})"
+msgstr "개인방 설정 ({commands[configure rooms]})"
 
 #: src/modules/rooms/settingui.py:102
 msgctxt "dash:economy|dropdown|placeholder"
