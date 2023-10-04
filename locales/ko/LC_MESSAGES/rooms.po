@@ -361,7 +361,7 @@ msgstr "추가를 원하는 맴버를 멘션하세요."
 msgctxt "cmd:room_invite|error:no_room"
 msgid ""
 "You do not own a private room! Use `/room rent` to rent one with {coin}!"
-msgstr ""
+msgstr "프라이빗 룸을 소유하고 있지 않아요!  {coin}를 지불하여 `/room rent` 명령어로 대여하세요."
 
 #: src/modules/rooms/cog.py:644
 #, possible-python-brace-format
