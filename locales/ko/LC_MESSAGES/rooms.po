@@ -255,7 +255,7 @@ msgstr "이미 소유한 프라이빗 룸이 있어요! 클릭하여 방문하�
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|error:member_not_found"
 msgid "Could not find the requested member {mention} in this server!"
-msgstr ""
+msgstr "서버에서 요청한 맴버 {mention}를 찾을 수 없어요!"
 
 #: src/modules/rooms/cog.py:428
 #, possible-python-brace-format
