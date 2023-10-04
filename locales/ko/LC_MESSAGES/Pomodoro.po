@@ -159,7 +159,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:410
 msgctxt "cmd:timer|param:channel|desc"
 msgid "Select a timer to display (by selecting the timer voice channel)"
-msgstr ""
+msgstr "타이머 보이스 채널을 선택하여 보여줄 타이머를 선택하세요."
 
 #: src/modules/pomodoro/cog.py:432 src/modules/pomodoro/cog.py:503
 #, possible-python-brace-format
