@@ -72,7 +72,7 @@ msgstr "권한이 충분하지 않아요! ` {channel}`의 MESSAGE_HISTORY` 권�
 #, possible-python-brace-format
 msgctxt "parse:message_link|suberror:channel_dne"
 msgid "The channel `{channelid}` could not be found in this server."
-msgstr ""
+msgstr "서버에서 채널  `{channelid}`을 찾을 수 없어요."
 
 #: src/modules/rolemenus/cog.py:316
 msgctxt "parse:message_link|suberror:malformed_link"
