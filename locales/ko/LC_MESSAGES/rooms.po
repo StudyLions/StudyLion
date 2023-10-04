@@ -285,7 +285,7 @@ msgstr "프라이빗 룸 {channel}을 성공적으로 생성했습니다!"
 #: src/modules/rooms/cog.py:472
 msgctxt "cmd:room_rent|success|title"
 msgid "Private Room Created!"
-msgstr ""
+msgstr "프라이빗 룸이 생성되었습니다."
 
 #: src/modules/rooms/cog.py:506
 #, possible-python-brace-format
