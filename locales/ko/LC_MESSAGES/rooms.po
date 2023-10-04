@@ -274,7 +274,7 @@ msgid ""
 msgid_plural ""
 "Are you sure you want to spend {coin}**{required}** to rent a private room "
 "for `{days}` days?"
-msgstr[0] ""
+msgstr[0] "프라이빗 룸을 `{days}`일 대여하기 위해  {coin}**{required}** 코인을 사용합니다. 괜찮을까요?"
 
 #: src/modules/rooms/cog.py:467
 #, possible-python-brace-format
