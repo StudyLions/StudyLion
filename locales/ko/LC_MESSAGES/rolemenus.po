@@ -247,7 +247,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_create|error:name_exists"
 msgid "A rolemenu called `{name}` already exists! Use {edit_cmd} to edit it."
-msgstr ""
+msgstr "역할 메뉴 `{name}`는 이미 존재해요. {edit_cmd}로 수정하세요."
 
 #: src/modules/rolemenus/cog.py:789
 msgctxt "cmd:rolemenu_edit"
