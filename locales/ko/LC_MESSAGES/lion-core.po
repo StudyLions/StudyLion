@@ -35,7 +35,7 @@ msgstr "코인 개수는 양수여야 합니다."
 #, possible-python-brace-format
 msgctxt "settype:coin|parse|error:too_large"
 msgid "You cannot set this to more than {coin}**{max}**!"
-msgstr ""
+msgstr "{coin}**{max}** 보다 많이 설정할 수 없어요!"
 
 #: src/core/setting_types.py:63
 #, possible-python-brace-format
