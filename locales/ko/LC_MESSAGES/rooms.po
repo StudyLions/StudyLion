@@ -141,7 +141,7 @@ msgstr "룸 설정 패널"
 #: src/modules/rooms/roomui.py:375
 msgctxt "ui:room_status|embed|field:channel|name"
 msgid "Channel"
-msgstr ""
+msgstr "채널"
 
 #: src/modules/rooms/roomui.py:380
 msgctxt "ui:room_status|embed|field:owner|name"
