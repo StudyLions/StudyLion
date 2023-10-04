@@ -217,7 +217,7 @@ msgstr "역할 제안을 위한 `MANAGE_ROLES` 권한이 부족해요."
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_create|error:message_exists"
 msgid "The message {link} already has a role menu! Use {edit_cmd} to edit it."
-msgstr ""
+msgstr "메시지  {link}는 이미 역할 메뉴가 있어요! {edit_cmd}로 수정하세요."
 
 #: src/modules/rolemenus/cog.py:712
 #, possible-python-brace-format
