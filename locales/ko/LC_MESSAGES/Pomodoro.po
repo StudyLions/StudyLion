@@ -70,7 +70,7 @@ msgid_plural ""
 "{mentions} were removed from {channel} because they were inactive! Remember "
 "to press {tick} to register your presence every stage."
 msgstr[0] ""
-"비활성 유저 {mentions}를 {channel} 에서 제외했어요. 활성 상태 등록을 위해 매 스테이지마다 {tick}을 눌러주세요."
+"비활성 유저 {mentions}를 {channel} 에서 제외했어요. 활성 상태 등록을 위해 매 단계마다 {tick}을 눌러주세요."
 
 #: src/modules/pomodoro/timer.py:434
 #, possible-python-brace-format
