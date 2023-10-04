@@ -58,7 +58,7 @@ msgstr ""
 #: src/modules/pomodoro/timer.py:409
 msgctxt "timer|disconnect|audit_reason"
 msgid "Disconnecting inactive member from timer."
-msgstr ""
+msgstr "타이머로부터 비활성 맴버 연결 해제"
 
 #: src/modules/pomodoro/timer.py:421
 #, possible-python-brace-format
