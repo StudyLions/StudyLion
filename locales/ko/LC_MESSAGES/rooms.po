@@ -236,6 +236,7 @@ msgid ""
 "The private room system has not been set up! A private room category needs "
 "to be set first with `/configure rooms`."
 msgstr ""
+"프라이빗 룸 시스템이 설정되지 않았어요! `/configure rooms` 명령어를 입력하고 프라이빗 룸 카테고리를 설정하세요."
 
 #: src/modules/rooms/cog.py:380
 msgctxt "cmd:room_rent|error:insufficient_perms"
