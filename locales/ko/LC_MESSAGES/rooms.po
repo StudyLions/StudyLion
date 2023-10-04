@@ -344,12 +344,12 @@ msgstr "초대"
 #: src/modules/rooms/cog.py:600
 msgctxt "cmd:room_invite|desc"
 msgid "Add members to your private room."
-msgstr ""
+msgstr "프라이빗 룸에 맴버 추가"
 
 #: src/modules/rooms/cog.py:604
 msgctxt "cmd:room_invite|param:members"
 msgid "members"
-msgstr ""
+msgstr "맴버"
 
 #: src/modules/rooms/cog.py:609
 msgctxt "cmd:room_invite|param:members|desc"
