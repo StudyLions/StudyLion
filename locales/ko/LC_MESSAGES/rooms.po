@@ -103,12 +103,12 @@ msgstr "타이머가 잘 생성되었어요! {edit_cmd}로 추가 설정해 주�
 #: src/modules/rooms/roomui.py:254
 msgctxt "ui:room_status|button:timer|label:edit_timer"
 msgid "Edit Timer"
-msgstr ""
+msgstr "타이머 수정"
 
 #: src/modules/rooms/roomui.py:261
 msgctxt "ui:room_status|button:timer|label:add_timer"
 msgid "Add Timer"
-msgstr ""
+msgstr "타이머 추가"
 
 #: src/modules/rooms/roomui.py:304
 #, possible-python-brace-format
