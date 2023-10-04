@@ -111,7 +111,7 @@ msgctxt "cmd:rolemenus|error:my_perms"
 msgid ""
 "I lack the `MANAGE_ROLES` permission required to offer roles from role "
 "menus."
-msgstr ""
+msgstr "역할 제안을 위한 `MANAGE_ROLES` 권한이 부족해요"
 
 #: src/modules/rolemenus/cog.py:497
 #, possible-python-brace-format
