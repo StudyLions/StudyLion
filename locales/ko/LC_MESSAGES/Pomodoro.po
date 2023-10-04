@@ -149,7 +149,7 @@ msgstr "타이머"
 #: src/modules/pomodoro/cog.py:402
 msgctxt "cmd:timer|desc"
 msgid "Show your current (or selected) pomodoro timer."
-msgstr ""
+msgstr "현재 (선택한) 포모도로 타이머를 보여준다."
 
 #: src/modules/pomodoro/cog.py:405
 msgctxt "cmd:timer|param:channel"
