@@ -304,6 +304,8 @@ msgid ""
 "Could not create your private room! You were not charged.\n"
 "I have insufficient permissions to create a private room channel."
 msgstr ""
+"프라이빗 룸을 생성할 수 없어요! 코인은 지불되지 않았어요.\n"
+"프라이빗 룸을 생성할 수 있는 권한이 충분하지 않아요."
 
 #: src/modules/rooms/cog.py:552
 #, possible-python-brace-format
