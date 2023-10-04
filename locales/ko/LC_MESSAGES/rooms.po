@@ -367,7 +367,7 @@ msgstr "프라이빗 룸을 소유하고 있지 않아요!  {coin}를 지불하�
 #, possible-python-brace-format
 msgctxt "cmd:room_invite|error:member_not_found"
 msgid "Could not find the invited member {mention} in this server!"
-msgstr ""
+msgstr "초대된 맴버 {mention}를 서버에서 찾을 수 없습니다."
 
 #: src/modules/rooms/cog.py:655
 msgctxt "cmd:room_invite|error:no_new_members"
