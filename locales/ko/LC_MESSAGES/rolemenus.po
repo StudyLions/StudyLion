@@ -117,7 +117,7 @@ msgstr "역할 제안을 위한 `MANAGE_ROLES` 권한이 부족해요"
 #, possible-python-brace-format
 msgctxt "acmpl:menus|choice:no_choices|name"
 msgid "No role menus matching '{partial}'"
-msgstr ""
+msgstr "역할 메뉴 불일치 '{partial}'"
 
 #: src/modules/rolemenus/cog.py:516
 msgctxt "acmpl:menuroles|param:menu|keyname"
