@@ -117,12 +117,12 @@ msgstr "타이머가 멈췄어요! 'Start'를 눌러 타이머를 재시작하�
 #: src/modules/pomodoro/settingui.py:39
 msgctxt "ui:timer_config|menu:channels|placeholder"
 msgid "Select Pomodoro Notification Channel"
-msgstr ""
+msgstr "포모도로 알림 채널 선택"
 
 #: src/modules/pomodoro/settingui.py:47
 msgctxt "ui:timer_config|embed|title"
 msgid "Timer Configuration Panel"
-msgstr ""
+msgstr "타이머 설정 패널"
 
 #: src/modules/pomodoro/settingui.py:81
 msgctxt "dash:pomodoro|title"
