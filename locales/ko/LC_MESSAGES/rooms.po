@@ -131,7 +131,7 @@ msgstr "맴버 추가"
 #: src/modules/rooms/roomui.py:359
 msgctxt "ui:room_status|menu:kick_menu|placeholder"
 msgid "Remove Members"
-msgstr "맴버 제외"
+msgstr "맴버 탈퇴"
 
 #: src/modules/rooms/roomui.py:367
 msgctxt "ui:room_status|embed|title"
