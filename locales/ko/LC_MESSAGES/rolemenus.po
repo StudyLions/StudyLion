@@ -133,7 +133,7 @@ msgstr "메뉴를 선택해주세요."
 #, possible-python-brace-format
 msgctxt "acmpl:menuroles|choice:invalid_menu|name"
 msgid "Menu '{name}' does not exist!"
-msgstr ""
+msgstr "메뉴 '{name}'를 찾을 수 없어요."
 
 #: src/modules/rolemenus/cog.py:575
 #, possible-python-brace-format
