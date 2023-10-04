@@ -218,7 +218,7 @@ msgstr "이름"
 #: src/modules/rooms/cog.py:343
 msgctxt "cmd:room_rent|param:days|desc"
 msgid "Number of days to pre-purchase. (Default: 1)"
-msgstr ""
+msgstr "미리 구매한 일수 (기본값: 1)"
 
 #: src/modules/rooms/cog.py:347
 msgctxt "cmd:room_rent|param:members|desc"
