@@ -57,7 +57,7 @@ msgstr "JSON 형식의 로우 데이터"
 #: src/core/setting_types.py:106
 msgctxt "settype:message|download|error:not_json"
 msgid "The attached message data is not a JSON file!"
-msgstr ""
+msgstr "첨부한 메시지 데이터는 JSON파일이 아니에요!"
 
 #: src/core/setting_types.py:111
 msgctxt "settype:message|download|error:size"
