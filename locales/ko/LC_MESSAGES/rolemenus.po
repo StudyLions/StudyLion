@@ -66,7 +66,7 @@ msgctxt "parse:message_link|suberror:no_perms"
 msgid ""
 "Insufficient permissions! I need the `MESSAGE_HISTORY` permission in "
 "{channel}."
-msgstr ""
+msgstr "권한이 충분하지 않아요! ` {channel}`의 MESSAGE_HISTORY` 권한이 필요해요."
 
 #: src/modules/rolemenus/cog.py:311
 #, possible-python-brace-format
