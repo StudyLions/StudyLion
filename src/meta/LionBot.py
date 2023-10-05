@@ -46,7 +46,7 @@ class LionBot(Bot):
 #        self.appdata = appdata
         self.config = config
         self.app_ipc = app_ipc
-        self.core: Optional['CoreCog'] = None
+        self.core: 'CoreCog' = None
         self.translator = translator
 
         self.system_monitor = SystemMonitor()

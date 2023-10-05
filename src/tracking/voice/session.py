@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, overload, Literal
 from enum import IntEnum
 from collections import defaultdict
 import datetime as dt
@@ -96,6 +96,13 @@ class VoiceSession:
         self._tag = None
         self._start_time = None
 
+    def cancel(self):
+        if self.start_task is not None:
+            self.start_task.cancel()
+        if self.expiry_task is not None:
+            self.expiry_task.cancel()
+        self._active_sessions_[self.guildid].pop(self.userid, None)
+
     @property
     def tag(self) -> Optional[str]:
         if self.data:
@@ -120,6 +127,16 @@ class VoiceSession:
             return SessionState.PENDING
         else:
             return SessionState.INACTIVE
+
+    @overload
+    @classmethod
+    def get(cls, bot: LionBot, guildid: int, userid: int, create: Literal[False]) -> Optional['VoiceSession']:
+        ...
+
+    @overload
+    @classmethod
+    def get(cls, bot: LionBot, guildid: int, userid: int, create: Literal[True] = True) -> 'VoiceSession':
+        ...
 
     @classmethod
     def get(cls, bot: LionBot, guildid: int, userid: int, create=True) -> Optional['VoiceSession']:
@@ -167,6 +184,7 @@ class VoiceSession:
 
         self.start_task = asyncio.create_task(self._start_after(delay, start_time))
         self.schedule_expiry(expire_time)
+        self._active_sessions_[self.guildid][self.userid] = self
 
     async def _start_after(self, delay: int, start_time: dt.datetime):
         """
@@ -174,7 +192,6 @@ class VoiceSession:
 
         Creates the tracked_channel if required.
         """
-        self._active_sessions_[self.guildid][self.userid] = self
         await asyncio.sleep(delay)
 
         logger.debug(

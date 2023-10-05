@@ -34,7 +34,7 @@ _p = babel._p
 class VoiceTrackerSettings(SettingGroup):
     class UntrackedChannels(ListData, ChannelListSetting):
         setting_id = 'untracked_channels'
-        _event = 'guild_setting_update_untracked_channels'
+        _event = 'guildset_untracked_channels'
         _set_cmd = 'configure voice_rewards'
 
         _display_name = _p('guildset:untracked_channels', "untracked_channels")
@@ -111,7 +111,7 @@ class VoiceTrackerSettings(SettingGroup):
 
     class HourlyReward(ModelData, IntegerSetting):
         setting_id = 'hourly_reward'
-        _event = 'guild_setting_update_hourly_reward'
+        _event = 'on_guildset_hourly_reward'
         _set_cmd = 'configure voice_rewards'
 
         _display_name = _p('guildset:hourly_reward', "hourly_reward")
@@ -191,7 +191,7 @@ class VoiceTrackerSettings(SettingGroup):
         Guild setting describing the per-hour LionCoin bonus given to "live" members during tracking.
         """
         setting_id = 'hourly_live_bonus'
-        _event = 'guild_setting_update_hourly_live_bonus'
+        _event = 'on_guildset_hourly_live_bonus'
         _set_cmd = 'configure voice_rewards'
 
         _display_name = _p('guildset:hourly_live_bonus', "hourly_live_bonus")
@@ -242,7 +242,7 @@ class VoiceTrackerSettings(SettingGroup):
 
     class DailyVoiceCap(ModelData, DurationSetting):
         setting_id = 'daily_voice_cap'
-        _event = 'guild_setting_update_daily_voice_cap'
+        _event = 'on_guildset_daily_voice_cap'
         _set_cmd = 'configure voice_rewards'
 
         _display_name = _p('guildset:daily_voice_cap', "daily_voice_cap")

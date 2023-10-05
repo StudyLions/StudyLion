@@ -173,14 +173,15 @@ class RoomCog(LionCog):
     # Setting event handlers
     @LionCog.listener('on_guildset_rooms_category')
     @log_wrap(action='Update Rooms Category')
-    async def _update_rooms_category(self, guildid: int, data: Optional[int]):
+    async def _update_rooms_category(self, guildid: int, setting: RoomSettings.Category):
         """
         Move all active private channels to the new category.
 
         This shouldn't affect the channel function at all.
         """
+        data = setting.data
         guild = self.bot.get_guild(guildid)
-        new_category = guild.get_channel(data) if guild else None
+        new_category = guild.get_channel(data) if guild and data else None
         if new_category:
             tasks = []
             for room in list(self._room_cache[guildid].values()):
@@ -196,10 +197,11 @@ class RoomCog(LionCog):
 
     @LionCog.listener('on_guildset_rooms_visible')
     @log_wrap(action='Update Rooms Visibility')
-    async def _update_rooms_visibility(self, guildid: int, data: bool):
+    async def _update_rooms_visibility(self, guildid: int, setting: RoomSettings.Visible):
         """
         Update the everyone override on each room to reflect the new setting.
         """
+        data = setting.data
         tasks = []
         for room in list(self._room_cache[guildid].values()):
             if room.channel:

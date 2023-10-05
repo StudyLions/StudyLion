@@ -343,7 +343,7 @@ class TimerCog(LionCog):
 
     @LionCog.listener('on_guildset_pomodoro_channel')
     @log_wrap(action='Update Pomodoro Channels')
-    async def _update_pomodoro_channels(self, guildid: int, data: Optional[int]):
+    async def _update_pomodoro_channels(self, guildid: int, setting: TimerSettings.PomodoroChannel):
         """
         Request a send_status for all guild timers which need to move channel.
         """
