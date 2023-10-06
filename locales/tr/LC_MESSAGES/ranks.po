@@ -583,7 +583,7 @@ msgstr "Üyelerden geçersiz rütbe rolleri kaldırılıyor"
 #, possible-python-brace-format
 msgctxt "ui:refresh_ranks|embed|field:remove|value"
 msgid "{progress} {done}/{total} removed"
-msgstr ""
+msgstr "{progress} {done}/{total} çıkarıldı"
 
 #: src/modules/ranks/ui/refresh.py:222
 #, possible-python-brace-format
