@@ -687,7 +687,7 @@ msgstr "İptal"
 #: src/modules/ranks/ui/overview.py:149
 msgctxt "ui:rank_overview|button:clear|label"
 msgid "Clear Ranks"
-msgstr "Rütbeleri Temizle"
+msgstr "Rütbeleri Sil"
 
 #: src/modules/ranks/ui/overview.py:179
 msgctxt "ui:rank_overview|button:create|label"
