@@ -631,7 +631,7 @@ msgstr "Ses Aktivitesi"
 #: src/modules/ranks/ui/config.py:98
 msgctxt "ui:rank_config|menu:types|option:xp"
 msgid "XP Earned"
-msgstr "Kazanılan XP'ler"
+msgstr "Kazanılan XP"
 
 #: src/modules/ranks/ui/config.py:106
 msgctxt "ui:rank_config|menu:types|option:messages"
