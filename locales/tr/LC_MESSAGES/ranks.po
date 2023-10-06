@@ -802,6 +802,9 @@ msgid ""
 "voice channel! Use the **Refresh Member Ranks** button below to update all "
 "members manually."
 msgstr ""
+"Dikkat! Rütbe, üye bir ses kanalından çıktığında güncellenir. Bütün üyelerin"
+" rütbelerini manuel olarak güncellemek için aşağıdaki **Üye Rütbelerini "
+"Güncelle** butonunan bas."
 
 #: src/modules/ranks/ui/editor.py:33
 msgctxt "ui:rank_editor|input:role_name|label"
