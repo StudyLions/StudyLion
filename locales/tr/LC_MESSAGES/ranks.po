@@ -782,6 +782,8 @@ msgstr "Not"
 msgctxt "ui:rank_overview|embed|field:note|value:with_season"
 msgid "Ranks are determined by activity since {timestamp}."
 msgstr ""
+"Rütbeler, {timestamp} tarihinden beri gözlenen aktiviteye göre "
+"hesaplanmıştır."
 
 #: src/modules/ranks/ui/overview.py:419
 #, possible-python-brace-format
