@@ -101,6 +101,7 @@ class RankOverviewUI(MessageUI):
         Refresh the current ranks,
         ensuring that all members have the correct rank.
         """
+        await press.response.defer(thinking=True)
         async with self.cog.ranklock(self.guild.id):
             await self.cog.interactive_rank_refresh(press, self.guild)
 
