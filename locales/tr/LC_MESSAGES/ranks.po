@@ -743,7 +743,7 @@ msgstr "Rolden yarat"
 #: src/modules/ranks/ui/overview.py:290
 msgctxt "ui:rank_overview|menu:ranks|placeholder"
 msgid "View or edit rank"
-msgstr "Rütbeyi gör veya edile"
+msgstr "Rütbeyi gör veya editle"
 
 #: src/modules/ranks/ui/overview.py:376
 msgctxt "ui:rank_overview|embed:noranks|desc"
