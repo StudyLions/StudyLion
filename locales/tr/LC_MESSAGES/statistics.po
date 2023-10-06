@@ -154,7 +154,7 @@ msgstr ""
 #: src/modules/statistics/settings.py:88
 msgctxt "guildset:season_start"
 msgid "season_start"
-msgstr "sezon_başlat"
+msgstr "sezon_başı"
 
 #: src/modules/statistics/settings.py:91
 msgctxt "guildset:season_start|desc"
