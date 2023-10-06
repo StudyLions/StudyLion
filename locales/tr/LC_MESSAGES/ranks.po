@@ -880,7 +880,7 @@ msgid ""
 "`requires`: Could not parse provided minimum message count! Please enter an "
 "integer."
 msgstr ""
-"'gerekenler': Elde edilen en düşük mesaj sayısı ayrıştırılamadı! Lütfen tam "
+"'gerektirir': Elde edilen en düşük mesaj sayısı ayrıştırılamadı! Lütfen tam "
 "sayı girin."
 
 #: src/modules/ranks/ui/editor.py:148
@@ -888,7 +888,7 @@ msgctxt "ui:rank_editor|type:xp|input:requires|error:parse"
 msgid ""
 "`requires`: Could not parse provided minimum XP! Please enter an integer."
 msgstr ""
-"'gerekenler': Elde edilen en düşük XP ayrıştırılamadı! Lütfen tam sayı "
+"'gerektirir': Elde edilen en düşük XP ayrıştırılamadı! Lütfen tam sayı "
 "girin."
 
 #: src/modules/ranks/ui/editor.py:162
