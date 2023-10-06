@@ -24,9 +24,9 @@ for name in conf.config.options('LOGGING_LEVELS', no_defaults=True):
 class AnalyticsServer:
     # TODO: Move these to the config
     # How often to request snapshots
-    snap_period = 120
+    snap_period = 900
     # How soon after a snapshot failure (e.g. not all shards online) to retry
-    snap_retry_period = 10
+    snap_retry_period = 60
 
     def __init__(self) -> None:
         self.db = Database(conf.data['args'])
