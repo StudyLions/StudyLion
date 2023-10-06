@@ -646,7 +646,7 @@ msgstr "Rütbe Bildirim Kanalını Seç"
 #: src/modules/ranks/ui/config.py:134
 msgctxt "ui:rank_config|embed|title"
 msgid "Ranks Configuration Panel"
-msgstr "Rütbe Yapılandırma Paneli"
+msgstr "Rütbe Konfigürasyon Paneli"
 
 #: src/modules/ranks/ui/config.py:171
 msgctxt "dash:rank|title"
