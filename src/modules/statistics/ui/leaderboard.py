@@ -41,6 +41,7 @@ class StatType(IntEnum):
 
 class LeaderboardUI(StatsUI):
     page_size = 10
+    guildid: int
 
     def __init__(self, bot, user, guild, **kwargs):
         super().__init__(bot, user, guild, **kwargs)
@@ -199,6 +200,9 @@ class LeaderboardUI(StatsUI):
                 mode = CardMode.TEXT
             elif self.stat_type is StatType.ANKI:
                 mode = CardMode.ANKI
+            else:
+                raise ValueError
+
             card = await get_leaderboard_card(
                 self.bot, self.userid, self.guildid,
                 mode,
