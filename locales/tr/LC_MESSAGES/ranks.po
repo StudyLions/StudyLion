@@ -600,7 +600,7 @@ msgstr "Üyelere rütbe rolleri veriliyor"
 #, possible-python-brace-format
 msgctxt "ui:refresh_ranks|embed|field:add|value"
 msgid "{progress} {done}/{total} given"
-msgstr ""
+msgstr "{progress} {done}/{total} verildi"
 
 #: src/modules/ranks/ui/refresh.py:245
 #, possible-python-brace-format
