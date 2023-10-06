@@ -758,7 +758,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "ui:rank_overview|embed|title|type:voice"
 msgid "Voice Ranks in {guild_name}"
-msgstr "{guild_name}'de ses rütbeleri"
+msgstr "{guild_name} Sunucusunun Ses Rütbeleri"
 
 #: src/modules/ranks/ui/overview.py:389
 #, possible-python-brace-format
