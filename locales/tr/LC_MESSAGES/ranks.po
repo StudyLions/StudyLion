@@ -733,7 +733,7 @@ msgstr "Seçilen rolü yönetemiyorum bu yüzden bu bir rütbe olamaz!"
 #: src/modules/ranks/ui/overview.py:249
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|title"
 msgid "Could not create rank!"
-msgstr "Rol yaratılamıyor!"
+msgstr "Rütbe yaratılamıyor!"
 
 #: src/modules/ranks/ui/overview.py:273
 msgctxt "ui:rank_overview|menu:roles|placeholder"
