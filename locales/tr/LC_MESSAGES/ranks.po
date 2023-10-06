@@ -871,7 +871,7 @@ msgid ""
 "`requires`: Could not parse provided minimum time! Please write a number of "
 "hours."
 msgstr ""
-"'gerekenler': Elde edilen en düşük zaman ayrıştırılamadı! Lütfen tam sayı "
+"'gerektirir': Elde edilen en düşük zaman ayrıştırılamadı! Lütfen tam sayı "
 "girin."
 
 #: src/modules/ranks/ui/editor.py:137
