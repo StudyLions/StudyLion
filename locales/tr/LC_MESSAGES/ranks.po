@@ -848,7 +848,7 @@ msgstr "Bu rütbeyi elde etmeden önce gereken ses saati"
 #: src/modules/ranks/ui/editor.py:97
 msgctxt "ui:rank_editor|type:xp|input:requires|label"
 msgid "Required XP"
-msgstr "Gerekli XP"
+msgstr "Gereken XP"
 
 #: src/modules/ranks/ui/editor.py:101
 msgctxt "ui:rank_editor|type:xp|input:requires|placeholder"
