@@ -775,7 +775,7 @@ msgstr "{guild_name}'de mesaj rütbeleri"
 #: src/modules/ranks/ui/overview.py:406
 msgctxt "ui:rank_overview|embed|field:note|name"
 msgid "Note"
-msgstr ""
+msgstr "Not"
 
 #: src/modules/ranks/ui/overview.py:412
 #, possible-python-brace-format
