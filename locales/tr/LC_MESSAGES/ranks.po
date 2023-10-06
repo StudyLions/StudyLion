@@ -722,7 +722,7 @@ msgid ""
 "This role is above my top role in the role hierarchy, so I cannot add or "
 "remove it!"
 msgstr ""
-"Bu rol rol hiyerarşisinde baştaki rolümden daha üstte yer aldığından onu "
+"Bu rol, rol hiyerarşisinde baştaki rolümden daha üstte yer aldığından onu "
 "ekleyemiyor veya kaldıramıyorum!"
 
 #: src/modules/ranks/ui/overview.py:243
