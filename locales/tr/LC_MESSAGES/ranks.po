@@ -770,7 +770,7 @@ msgstr "{guild_name} Sunucusunun XP Rütbeleri"
 #, possible-python-brace-format
 msgctxt "ui:rank_overview|embed|title|type:message"
 msgid "Message ranks in {guild_name}"
-msgstr "{guild_name}'de mesaj rütbeleri"
+msgstr "{guild_name} Sunucusunun Mesaj Rütbeleri"
 
 #: src/modules/ranks/ui/overview.py:406
 msgctxt "ui:rank_overview|embed|field:note|name"
