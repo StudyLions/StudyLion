@@ -237,7 +237,7 @@ class ChannelSetting(Generic[ParentID, CT], InteractiveSetting[ParentID, int, CT
 
     _selector_placeholder = "Select a Channel"
     channel_types: list[discord.ChannelType] = []
-    _allow_object = True
+    _allow_object = False
 
     @classmethod
     def _data_from_value(cls, parent_id, value, **kwargs):
@@ -368,7 +368,7 @@ class RoleSetting(InteractiveSetting[ParentID, int, Union[discord.Role, discord.
     _accepts = _p('settype:role|accepts', "A role name or id")
 
     _selector_placeholder = "Select a Role"
-    _allow_object = True
+    _allow_object = False
 
     @classmethod
     def _get_guildid(cls, parent_id: int, **kwargs) -> int:
