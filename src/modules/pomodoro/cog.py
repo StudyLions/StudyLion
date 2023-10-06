@@ -73,7 +73,7 @@ class TimerCog(LionCog):
             launched=sum(1 for timer in timers if timer._run_task and not timer._run_task.done()),
             looping=sum(1 for timer in timers if timer._loop_task and not timer._loop_task.done()),
             locked=sum(1 for timer in timers if timer._lock.locked()),
-            voice_locked=sum(1 for timer in timers if timer._voice_update_lock.locked()),
+            voice_locked=sum(1 for timer in timers if timer.voice_lock.locked()),
         )
         if not self.ready:
             level = StatusLevel.STARTING

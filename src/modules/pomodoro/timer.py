@@ -136,6 +136,10 @@ class Timer:
             channel = self.channel
         return channel
 
+    @property
+    def voice_lock(self):
+        return self.lguild.voice_lock
+
     async def get_notification_webhook(self) -> Optional[discord.Webhook]:
         channel = self.notification_channel
         if channel:
