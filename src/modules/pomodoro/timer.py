@@ -481,14 +481,13 @@ class Timer:
         async with self.lguild.voice_lock:
             try:
                 if self.guild.voice_client:
-                    print("Disconnecting")
                     await self.guild.voice_client.disconnect(force=True)
-                    print("Disconnected")
                 alert_file = focus_alert_path if stage.focused else break_alert_path
                 try:
-                    print("Connecting")
-                    voice_client = await self.channel.connect(timeout=60, reconnect=False)
-                    print("Connected")
+                    voice_client = await asyncio.wait_for(
+                        self.channel.connect(timeout=30, reconnect=False),
+                        timeout=60
+                    )
                 except asyncio.TimeoutError:
                     logger.warning(f"Timed out while connecting to voice channel in timer {self!r}")
                     return
@@ -515,13 +514,18 @@ class Timer:
                     _, pending = await asyncio.wait([sleep_task, wait_task], return_when=asyncio.FIRST_COMPLETED)
                     for task in pending:
                         task.cancel()
-
-                    if self.guild and self.guild.voice_client:
-                        await self.guild.voice_client.disconnect(force=True)
+            except asyncio.TimeoutError:
+                logger.warning(
+                    f"Timed out while sending voice alert for timer {self!r}",
+                    exc_info=True
+                )
             except Exception:
                 logger.exception(
                     f"Exception occurred while playing voice alert for timer {self!r}"
                 )
+            finally:
+                if self.guild and self.guild.voice_client:
+                    await self.guild.voice_client.disconnect(force=True)
 
     def stageline(self, stage: Stage):
         t = self.bot.translator.t
