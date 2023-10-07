@@ -10,6 +10,7 @@ from data import Condition
 from meta import LionBot, LionCog, LionContext
 from meta.logger import log_wrap
 from meta.sharding import THIS_SHARD
+from meta.monitor import ComponentMonitor, ComponentStatus, StatusLevel
 from utils.lib import utc_now
 from core.lion_guild import VoiceMode
 
@@ -34,6 +35,7 @@ class VoiceTrackerCog(LionCog):
         self.data = bot.db.load_registry(VoiceTrackerData())
         self.settings = VoiceTrackerSettings()
         self.babel = babel
+        self.monitor = ComponentMonitor('VoiceTracker', self._monitor)
 
         # State
         # Flag indicating whether local voice sessions have been initialised
@@ -45,7 +47,75 @@ class VoiceTrackerCog(LionCog):
 
         self.active_sessions = VoiceSession._active_sessions_
 
+    async def _monitor(self):
+        state = (
+            "<"
+                "VoiceTracker"
+                " initialised={initialised}"
+                " active={active}"
+                " pending={pending}"
+                " ongoing={ongoing}"
+                " locked={locked}"
+                " actual={actual}"
+                " channels={channels}"
+                " cached={cached}"
+                " initial_event={initial_event}"
+                " lock={lock}"
+                ">"
+        )
+        data = dict(
+            initialised=self.initialised.is_set(),
+            active=0,
+            pending=0,
+            ongoing=0,
+            locked=0,
+            actual=0,
+            channels=0,
+            cached=len(VoiceSession._sessions_),
+            initial_event=self.initialised,
+            lock=self.tracking_lock
+        )
+        channels = set()
+        for tguild in self.active_sessions.values():
+            for session in tguild.values():
+                data['active'] += 1
+                if session.activity is SessionState.ONGOING:
+                    data['ongoing'] += 1
+                elif session.activity is SessionState.PENDING:
+                    data['pending'] += 1
+
+                if session.lock.locked():
+                    data['locked'] += 1
+
+                if session.state:
+                    channels.add(session.state.channelid)
+        data['channels'] = len(channels)
+
+        for guild in self.bot.guilds:
+            for channel in guild.voice_channels:
+                if not self.is_untracked(channel):
+                    for member in channel.members:
+                        if member.voice and not member.bot:
+                            data['actual'] += 1
+
+        if not self.initialised.is_set():
+            level = StatusLevel.STARTING
+            info = f"(STARTING) Not initialised. {state}"
+        elif self.tracking_lock.locked():
+            level = StatusLevel.WAITING
+            info = f"(WAITING) Waiting for tracking lock. {state}"
+        elif data['actual'] != data['active']:
+            level = StatusLevel.UNSURE
+            info = f"(UNSURE) Actual sessions do not match active. {state}"
+        else:
+            level = StatusLevel.OKAY
+            info = f"(OK) Voice tracking operational. {state}"
+
+        return ComponentStatus(level, info, info, data)
+
+
     async def cog_load(self):
+        self.bot.system_monitor.add_component(self.monitor)
         await self.data.init()
 
         self.bot.core.guild_config.register_model_setting(self.settings.HourlyReward)
@@ -369,6 +439,9 @@ class VoiceTrackerCog(LionCog):
             # If tracked state did not change, ignore event
             return
 
+        bchannel = before.channel if before else None
+        achannel = after.channel if after else None
+
         # Take tracking lock
         async with self.tracking_lock:
             # Fetch tracked member session state
@@ -389,7 +462,7 @@ class VoiceTrackerCog(LionCog):
                                 "Voice event does not match session information! "
                                 f"Member '{member.name}' <uid:{member.id}> "
                                 f"of guild '{member.guild.name}' <gid:{member.guild.id}> "
-                                f"left channel '#{before.channel.name}' <cid:{leaving}> "
+                                f"left channel '{bchannel}' <cid:{leaving}> "
                                 f"during voice session in channel <cid:{tstate.channelid}>!"
                             )
                         # Close (or cancel) active session
@@ -399,16 +472,13 @@ class VoiceTrackerCog(LionCog):
                             " because they left the channel."
                         )
                         await session.close()
-                    elif (
-                        leaving not in untracked and
-                        not (before.channel.category_id and before.channel.category_id in untracked)
-                    ):
+                    elif not self.is_untracked(bchannel):
                         # Leaving tracked channel without an active session?
                         logger.warning(
                             "Voice event does not match session information! "
                             f"Member '{member.name}' <uid:{member.id}> "
                             f"of guild '{member.guild.name}' <gid:{member.guild.id}> "
-                            f"left tracked channel '#{before.channel.name}' <cid:{leaving}> "
+                            f"left tracked channel '{bchannel}' <cid:{leaving}> "
                             f"with no matching voice session!"
                         )
 
@@ -420,14 +490,11 @@ class VoiceTrackerCog(LionCog):
                             "Voice event does not match session information! "
                             f"Member '{member.name}' <uid:{member.id}> "
                             f"of guild '{member.guild.name}' <gid:{member.guild.id}> "
-                            f"joined channel '#{after.channel.name}' <cid:{joining}> "
+                            f"joined channel '{achannel}' <cid:{joining}> "
                             f"during voice session in channel <cid:{tstate.channelid}>!"
                         )
                         await session.close()
-                    if (
-                        joining not in untracked and
-                        not (after.channel.category_id and after.channel.category_id in untracked)
-                    ):
+                    if not self.is_untracked(achannel):
                         # If the channel they are joining is tracked, schedule a session start for them
                         delay, start, expiry = await self._session_boundaries_for(member.guild.id, member.id)
                         hourly_rate = await self._calculate_rate(member.guild.id, member.id, astate)
@@ -435,7 +502,7 @@ class VoiceTrackerCog(LionCog):
                         logger.debug(
                             f"Scheduling voice session for member `{member.name}' <uid:{member.id}> "
                             f"in guild '{member.guild.name}' <gid: member.guild.id> "
-                            f"in channel '{after.channel.name}' <cid: {after.channel.id}>. "
+                            f"in channel '{achannel}' <cid: {after.channel.id}>. "
                             f"Session will start at {start}, expire at {expiry}, and confirm in {delay}."
                         )
                         await session.schedule_start(delay, start, expiry, astate, hourly_rate)
