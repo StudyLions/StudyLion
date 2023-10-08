@@ -198,6 +198,9 @@ class TextTrackerCog(LionCog):
 
         # Batch-fetch lguilds
         lguilds = await self.bot.core.lions.fetch_guilds(*{session.guildid for session in batch})
+        await self.bot.core.lions.fetch_members(
+            *((session.guildid, session.userid) for session in batch)
+        )
 
         # Build data
         rows = []
