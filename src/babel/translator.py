@@ -1,8 +1,10 @@
-import gettext
+from typing import Optional
 import logging
 from contextvars import ContextVar
 from collections import defaultdict
 from enum import Enum
+
+import gettext
 
 from discord.app_commands import Translator, locale_str
 from discord.enums import Locale
@@ -70,7 +72,8 @@ class LeoBabel(Translator):
     async def unload(self):
         self.translators.clear()
 
-    def get_translator(self, locale, domain):
+    def get_translator(self, locale: Optional[str], domain):
+        locale = locale or SOURCE_LOCALE
         locale = locale.replace('-', '_') if locale else None
         if locale == SOURCE_LOCALE:
             translator = null

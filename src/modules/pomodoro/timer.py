@@ -780,7 +780,7 @@ class Timer:
             logger.info(f"Timer {self!r} has stopped. Auto restart is {'on' if auto_restart else 'off'}")
 
     @log_wrap(action="Destroy Timer")
-    async def destroy(self, reason: str = None):
+    async def destroy(self, reason: Optional[str] = None):
         """
         Deconstructs the timer, stopping all tasks.
         """
