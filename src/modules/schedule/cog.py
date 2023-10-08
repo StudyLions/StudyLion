@@ -982,7 +982,7 @@ class ScheduleCog(LionCog):
                             value=partial
                         )
                     )
-        return choices
+        return choices[:25]
 
     @schedule_cmd.autocomplete('cancel')
     async def schedule_cmd_cancel_acmpl(self, interaction: discord.Interaction, partial: str):

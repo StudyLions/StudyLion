@@ -32,7 +32,7 @@ class TaskMonitor(Generic[Taskid]):
         self.executor: Optional[Callable[[Taskid], Coroutine[Any, Any, None]]] = executor
 
         self._wakeup: asyncio.Event = asyncio.Event()
-        self._monitor_task: Optional[self.Task] = None
+        self._monitor_task: Optional[asyncio.Task] = None
 
         # Task data
         self._tasklist: list[Taskid] = []
@@ -41,6 +41,19 @@ class TaskMonitor(Generic[Taskid]):
         # Running map ensures we keep a reference to the running task
         # And allows simpler external cancellation if required
         self._running: dict[Taskid, asyncio.Future] = {}
+
+    def __repr__(self):
+        return (
+            "<"
+                f"{self.__class__.__name__}"
+                f" tasklist={len(self._tasklist)}"
+                f" taskmap={len(self._taskmap)}"
+                f" wakeup={self._wakeup.is_set()}"
+                f" bucket={self._bucket}"
+                f" running={len(self._running)}"
+                f" task={self._monitor_task}"
+                f">"
+        )
 
     def set_tasks(self, *tasks: tuple[Taskid, int]) -> None:
         """
