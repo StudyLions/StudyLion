@@ -41,7 +41,7 @@ class StatsUI(LeoUI):
         """
         ID of guild to render stats for, or None if global.
         """
-        return self.guild.id if not self._showing_global else None
+        return self.guild.id if self.guild and not self._showing_global else None
 
     @property
     def userid(self) -> int:
@@ -67,7 +67,8 @@ class StatsUI(LeoUI):
         Delete the output message and close the UI.
         """
         await press.response.defer()
-        await self._original.delete_original_response()
+        if self._original and not self._original.is_expired():
+            await self._original.delete_original_response()
         self._original = None
         await self.close()
 
@@ -93,7 +94,10 @@ class StatsUI(LeoUI):
         args = await self.make_message()
         if thinking is not None and not thinking.is_expired() and thinking.response.is_done():
             asyncio.create_task(thinking.delete_original_response())
-        await self._original.edit_original_response(**args.edit_args, view=self)
+        if self._original and not self._original.is_expired():
+            await self._original.edit_original_response(**args.edit_args, view=self)
+        else:
+            await self.close()
 
     async def refresh(self, thinking: Optional[discord.Interaction] = None):
         """

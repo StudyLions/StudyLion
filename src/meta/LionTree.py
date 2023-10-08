@@ -38,8 +38,9 @@ class LionTree(CommandTree):
             await self.error_reply(interaction, embed)
         except Exception:
             logger.exception(f"Unhandled exception in interaction: {interaction}", extra={'action': 'TreeError'})
-            embed = self.bugsplat(interaction, error)
-            await self.error_reply(interaction, embed)
+            if interaction.type is not InteractionType.autocomplete:
+                embed = self.bugsplat(interaction, error)
+                await self.error_reply(interaction, embed)
 
     async def error_reply(self, interaction, embed):
         if not interaction.is_expired():
@@ -144,7 +145,10 @@ class LionTree(CommandTree):
                 raise AppCommandError(
                     'This should not happen, but there is no focused element. This is a Discord bug.'
                 )
-            await command._invoke_autocomplete(interaction, focused, namespace)
+            try:
+                await command._invoke_autocomplete(interaction, focused, namespace)
+            except Exception as e:
+                await self.on_error(interaction, e)
             return
 
         set_logging_context(action=f"Run {command.qualified_name}")

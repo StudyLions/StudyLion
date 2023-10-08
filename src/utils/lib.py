@@ -765,7 +765,7 @@ class Timezoned:
         Return the start of the current month in the object's timezone
         """
         today = self.today
-        return today - datetime.timedelta(days=(today.day - 1))
+        return today.replace(day=1)
 
 
 def replace_multiple(format_string, mapping):

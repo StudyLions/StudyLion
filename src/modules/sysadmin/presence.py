@@ -242,6 +242,7 @@ class PresenceCtrl(LionCog):
         await self.data.init()
         if (leo_setting_cog := self.bot.get_cog('LeoSettings')) is not None:
             leo_setting_cog.bot_setting_groups.append(self.settings)
+            self.crossload_group(self.leo_group, leo_setting_cog.leo_group)
 
         await self.reload_presence()
         self.update_listeners()
@@ -372,7 +373,12 @@ class PresenceCtrl(LionCog):
                 "Unhandled exception occurred running client presence update loop. Closing loop."
             )
 
-    @cmds.hybrid_command(
+    @LionCog.placeholder_group
+    @cmds.hybrid_group('configure', with_app_command=False)
+    async def leo_group(self, ctx: LionContext):
+        ...
+
+    @leo_group.command(
         name="presence",
         description="Globally set the bot status and activity."
     )

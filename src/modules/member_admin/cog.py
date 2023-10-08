@@ -227,7 +227,8 @@ class MemberAdminCog(LionCog):
         logger.info(f"Cleared persisting roles for guild <gid:{guild.id}> because we left the guild.")
 
     @LionCog.listener('on_guildset_role_persistence')
-    async def clear_stored_roles(self, guildid, data):
+    async def clear_stored_roles(self, guildid, setting: MemberAdminSettings.RolePersistence):
+        data = setting.data
         if data is False:
             await self.data.past_roles.delete_where(guildid=guildid)
             logger.info(

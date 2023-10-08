@@ -6,7 +6,7 @@ from discord.ui.select import select, Select, SelectOption, RoleSelect
 from discord.ui.button import button, Button, ButtonStyle
 
 from meta import conf, LionBot
-from meta.errors import ResponseTimedOut
+from meta.errors import ResponseTimedOut, SafeCancellation
 from core.data import RankType
 from data import ORDER
 
@@ -16,7 +16,7 @@ from wards import equippable_role
 from babel.translator import ctx_translator
 
 from .. import babel, logger
-from ..data import AnyRankData
+from ..data import AnyRankData, RankData
 from ..utils import rank_model_from_type, format_stat_range, stat_data_to_value
 from .editor import RankEditor
 from .preview import RankPreviewUI
@@ -101,6 +101,7 @@ class RankOverviewUI(MessageUI):
         Refresh the current ranks,
         ensuring that all members have the correct rank.
         """
+        await press.response.defer(thinking=True)
         async with self.cog.ranklock(self.guild.id):
             await self.cog.interactive_rank_refresh(press, self.guild)
 
@@ -156,11 +157,21 @@ class RankOverviewUI(MessageUI):
 
         Errors if the client does not have permission to create roles.
         """
+        t = self.bot.translator.t
+        if not self.guild.me.guild_permissions.manage_roles:
+            raise SafeCancellation(t(_p(
+                'ui:rank_overview|button:create|error:my_permissions',
+                "I lack the 'Manage Roles' permission required to create rank roles!"
+            )))
+
         async def _create_callback(rank, submit: discord.Interaction):
             await submit.response.send_message(
                 embed=discord.Embed(
                     colour=discord.Colour.brand_green(),
-                    description="Rank Created!"
+                    description=t(_p(
+                        'ui:rank_overview|button:create|success',
+                        "Created a new rank {role}"
+                    )).format(role=f"<@&{rank.roleid}>")
                 ),
                 ephemeral=True
             )

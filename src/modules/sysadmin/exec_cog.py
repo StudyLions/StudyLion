@@ -329,7 +329,7 @@ class Exec(LionCog):
             results = [
                 appcmd.Choice(name=f"No peers found matching {partial}", value=partial)
             ]
-        return results
+        return results[:25]
 
     async_cmd.autocomplete('target')(_peer_acmpl)
 

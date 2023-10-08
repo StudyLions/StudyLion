@@ -13,6 +13,7 @@ from meta.errors import UserInputError
 from meta.logger import log_wrap, logging_context
 from meta.sharding import THIS_SHARD
 from meta.app import appname
+from meta.monitor import ComponentMonitor, ComponentStatus, StatusLevel
 from utils.lib import utc_now, error_embed
 
 from wards import low_management_ward, sys_admin_ward
@@ -42,9 +43,13 @@ class TextTrackerCog(LionCog):
         self.data = bot.db.load_registry(TextTrackerData())
         self.settings = TextTrackerSettings()
         self.global_settings = TextTrackerGlobalSettings()
+        self.monitor = ComponentMonitor('TextTracker', self._monitor)
         self.babel = babel
 
         self.sessionq = asyncio.Queue(maxsize=0)
+
+        self.ready = asyncio.Event()
+        self.errors = 0
 
         # Map of ongoing text sessions
         # guildid -> (userid -> TextSession)
@@ -54,7 +59,41 @@ class TextTrackerCog(LionCog):
 
         self.untracked_channels = self.settings.UntrackedTextChannels._cache
 
+    async def _monitor(self):
+        state = (
+            "<"
+                "TextTracker"
+                " ready={ready}"
+                " queued={queued}"
+                " errors={errors}"
+                " running={running}"
+                " consumer={consumer}"
+                ">"
+        )
+        data = dict(
+            ready=self.ready.is_set(),
+            queued=self.sessionq.qsize(),
+            errors=self.errors,
+            running=sum(len(usessions) for usessions in self.ongoing.values()),
+            consumer="'Running'" if (self._consumer_task and not self._consumer_task.done()) else "'Not Running'",
+        )
+        if not self.ready.is_set():
+            level = StatusLevel.STARTING
+            info = f"(STARTING) Not initialised. {state}"
+        elif not self._consumer_task:
+            level = StatusLevel.ERRORED
+            info = f"(ERROR) Consumer task not running. {state}"
+        elif self.errors > 1:
+            level = StatusLevel.UNSURE
+            info = f"(UNSURE) Errors occurred while consuming. {state}"
+        else:
+            level = StatusLevel.OKAY
+            info = f"(OK) Message tracking operational. {state}"
+
+        return ComponentStatus(level, info, info, data)
+
     async def cog_load(self):
+        self.bot.system_monitor.add_component(self.monitor)
         await self.data.init()
 
         self.bot.core.guild_config.register_model_setting(self.settings.XPPerPeriod)
@@ -83,6 +122,7 @@ class TextTrackerCog(LionCog):
             await self.initialise()
 
     async def cog_unload(self):
+        self.ready.clear()
         if self._consumer_task is not None:
             self._consumer_task.cancel()
 
@@ -104,7 +144,7 @@ class TextTrackerCog(LionCog):
         await self.bot.core.lions.fetch_member(session.guildid, session.userid)
         self.sessionq.put_nowait(session)
 
-    @log_wrap(stack=['Text Sessions', 'Message Event'])
+    @log_wrap(stack=['Text Sessions', 'Consumer'])
     async def _session_consumer(self):
         """
         Process completed sessions in batches of length `batchsize`.
@@ -132,6 +172,7 @@ class TextTrackerCog(LionCog):
                         logger.exception(
                             "Unknown exception processing batch of text sessions! Discarding and continuing."
                         )
+                        self.errors += 1
                     batch = []
                     counter = 0
                     last_time = time.monotonic()
@@ -157,6 +198,9 @@ class TextTrackerCog(LionCog):
 
         # Batch-fetch lguilds
         lguilds = await self.bot.core.lions.fetch_guilds(*{session.guildid for session in batch})
+        await self.bot.core.lions.fetch_members(
+            *((session.guildid, session.userid) for session in batch)
+        )
 
         # Build data
         rows = []
@@ -202,9 +246,11 @@ class TextTrackerCog(LionCog):
         """
         Launch the session consumer.
         """
+        self.ready.clear()
         if self._consumer_task and not self._consumer_task.cancelled():
             self._consumer_task.cancel()
-        self._consumer_task = asyncio.create_task(self._session_consumer())
+        self._consumer_task = asyncio.create_task(self._session_consumer(), name='text-session-consumer')
+        self.ready.set()
         logger.info("Launched text session consumer.")
 
     @LionCog.listener('on_message')

@@ -14,6 +14,7 @@ from meta import LionCog, LionBot, LionContext
 from meta.logger import log_wrap
 from meta.errors import ResponseTimedOut, UserInputError, UserCancelled, SafeCancellation
 from meta.sharding import THIS_SHARD
+from meta.monitor import ComponentMonitor, ComponentStatus, StatusLevel
 from utils.lib import utc_now, error_embed
 from utils.ui import Confirm, ChoicedEnum, Transformed, AButton, AsComponents
 from utils.transformers import DurationTransformer
@@ -142,6 +143,9 @@ class RoleMenuCog(LionCog):
     def __init__(self, bot: LionBot):
         self.bot = bot
         self.data = bot.db.load_registry(RoleMenuData())
+        self.monitor = ComponentMonitor('RoleMenus', self._monitor)
+
+        self.ready = asyncio.Event()
 
         # Menu caches
         self.live_menus = RoleMenu.attached_menus  # guildid -> messageid -> menuid
@@ -149,11 +153,42 @@ class RoleMenuCog(LionCog):
         # Expiry manage
         self.expiry_monitor = ExpiryMonitor(executor=self._expire)
 
+    async def _monitor(self):
+        state = (
+            "<"
+                "RoleMenus"
+                " ready={ready}"
+                " cached={cached}"
+                " views={views}"
+                " live={live}"
+                " expiry={expiry}"
+                ">"
+        )
+        data = dict(
+            ready=self.ready.is_set(),
+            live=sum(len(gmenus) for gmenus in self.live_menus.values()),
+            expiry=repr(self.expiry_monitor),
+            cached=len(RoleMenu._menus),
+            views=len(RoleMenu.menu_views),
+        )
+        if not self.ready.is_set():
+            level = StatusLevel.STARTING
+            info = f"(STARTING) Not initialised. {state}"
+        elif not self.expiry_monitor._monitor_task:
+            level = StatusLevel.ERRORED
+            info = f"(ERRORED) Expiry monitor not running. {state}"
+        else:
+            level = StatusLevel.OKAY
+            info = f"(OK) RoleMenu loaded and listening. {state}"
+
+        return ComponentStatus(level, info, info, data)
+
     # ----- Initialisation -----
     async def cog_load(self):
+        self.bot.system_monitor.add_component(self.monitor)
         await self.data.init()
 
-        self.bot.tree.add_command(rolemenu_ctxcmd)
+        self.bot.tree.add_command(rolemenu_ctxcmd, override=True)
 
         if self.bot.is_ready():
             await self.initialise()
@@ -164,17 +199,28 @@ class RoleMenuCog(LionCog):
         self.live_menus.clear()
         if self.expiry_monitor._monitor_task:
             self.expiry_monitor._monitor_task.cancel()
-        self.bot.tree.remove_command(rolemenu_ctxcmd)
 
     @LionCog.listener('on_ready')
     @log_wrap(action="Initialise Role Menus")
     async def initialise(self):
+        self.ready.clear()
+
+        # Clean up live menu tasks
+        for menu in list(RoleMenu._menus.values()):
+            menu.detach()
+        self.live_menus.clear()
+        if self.expiry_monitor._monitor_task:
+            self.expiry_monitor._monitor_task.cancel()
+
+        # Start monitor
         self.expiry_monitor = ExpiryMonitor(executor=self._expire)
         self.expiry_monitor.start()
 
+        # Load guilds
         guildids = [guild.id for guild in self.bot.guilds]
         if guildids:
             await self._initialise_guilds(*guildids)
+        self.ready.set()
 
     async def _initialise_guilds(self, *guildids):
         """
@@ -262,7 +308,7 @@ class RoleMenuCog(LionCog):
         If the bot is no longer in the server, ignores the expiry.
         If the member is no longer in the server, removes the role from persisted roles, if applicable.
         """
-        logger.debug(f"Expiring RoleMenu equipped role {equipid}")
+        logger.info(f"Expiring RoleMenu equipped role {equipid}")
         rows = await self.data.RoleMenuHistory.fetch_expiring_where(equipid=equipid)
         if rows:
             equip_row = rows[0]
@@ -277,6 +323,7 @@ class RoleMenuCog(LionCog):
                 await equip_row.update(removed_at=now)
         else:
             # equipid is no longer valid or is not expiring
+            logger.info(f"RoleMenu equipped role {equipid} is no longer valid or is not expiring.")
             pass
 
     # ----- Private Utils -----
@@ -487,7 +534,7 @@ class RoleMenuCog(LionCog):
                 choice_name = menu.data.name
                 choice_value = f"menuid:{menu.data.menuid}"
                 choices.append(
-                    appcmds.Choice(name=choice_name, value=choice_value)
+                    appcmds.Choice(name=choice_name[:100], value=choice_value)
                 )
 
         if not choices:
@@ -498,7 +545,7 @@ class RoleMenuCog(LionCog):
             )).format(partial=partial)
             choice_value = partial
             choice = appcmds.Choice(
-                name=choice_name, value=choice_value
+                name=choice_name[:100], value=choice_value
             )
             choices.append(choice)
 
@@ -522,7 +569,7 @@ class RoleMenuCog(LionCog):
                 "Please select a menu first"
             ))
             choice_value = partial
-            choices = [appcmds.Choice(name=choice_name, value=choice_value)]
+            choices = [appcmds.Choice(name=choice_name[:100], value=choice_value)]
         else:
             # Resolve the menu name
             menu: RoleMenu
@@ -544,7 +591,7 @@ class RoleMenuCog(LionCog):
                     name=t(_p(
                         'acmpl:menuroles|choice:invalid_menu|name',
                         "Menu '{name}' does not exist!"
-                    )).format(name=menu_name),
+                    )).format(name=menu_name)[:100],
                     value=partial
                 )
                 choices = [choice]
@@ -564,7 +611,7 @@ class RoleMenuCog(LionCog):
                         else:
                             name = mrole.data.label
                         choice = appcmds.Choice(
-                            name=name,
+                            name=name[:100],
                             value=f"<@&{mrole.data.roleid}>"
                         )
                         choices.append(choice)
@@ -573,7 +620,7 @@ class RoleMenuCog(LionCog):
                         name=t(_p(
                             'acmpl:menuroles|choice:no_matching|name',
                             "No roles in this menu matching '{partial}'"
-                        )).format(partial=partial),
+                        )).format(partial=partial)[:100],
                         value=partial
                     )
         return choices[:25]

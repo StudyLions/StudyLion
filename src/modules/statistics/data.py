@@ -122,7 +122,7 @@ class StatsData(Registry):
                         "SELECT study_time_between(%s, %s, %s, %s)",
                         (guildid, userid, _start, _end)
                     )
-                    return (await cursor.fetchone()[0]) or 0
+                    return (await cursor.fetchone())[0] or 0
 
         @classmethod
         @log_wrap(action='study_times_between')
@@ -162,11 +162,11 @@ class StatsData(Registry):
                         "SELECT study_time_since(%s, %s, %s)",
                         (guildid, userid, _start)
                     )
-                    return (await cursor.fetchone()[0]) or 0
+                    return (await cursor.fetchone())[0] or 0
 
         @classmethod
         @log_wrap(action='study_times_since')
-        async def study_times_since(cls, guildid: Optional[int], userid: int, *starts) -> int:
+        async def study_times_since(cls, guildid: Optional[int], userid: int, *starts) -> list[int]:
             if len(starts) < 1:
                 raise ValueError('No starting points given!')
 
@@ -251,7 +251,7 @@ class StatsData(Registry):
             return leaderboard
 
         @classmethod
-        @log_wrap('leaderboard_all')
+        @log_wrap(action='leaderboard_all')
         async def leaderboard_all(cls, guildid: int):
             """
             Return the all-time voice totals for the given guild.

@@ -20,6 +20,7 @@ class MetaUtils(LionCog):
             'cmd:page|desc',
             "Jump to a given page of the ouput of a previous command in this channel."
         ),
+        with_app_command=False
     )
     async def page_group(self, ctx: LionContext):
         """

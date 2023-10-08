@@ -166,7 +166,7 @@ class ProfileUI(StatsUI):
         t = self.bot.translator.t
         data: StatsData = self.bot.get_cog('StatsCog').data
 
-        tags = await data.ProfileTag.fetch_tags(self.guildid, self.userid)
+        tags = await data.ProfileTag.fetch_tags(self.guild.id, self.userid)
 
         modal = ProfileEditor()
         modal.editor.default = '\n'.join(tags)
@@ -177,7 +177,7 @@ class ProfileUI(StatsUI):
             await interaction.response.defer(thinking=True, ephemeral=True)
 
             # Set the new tags and refresh
-            await data.ProfileTag.set_tags(self.guildid, self.userid, new_tags)
+            await data.ProfileTag.set_tags(self.guild.id, self.userid, new_tags)
             if self._original is not None:
                 self._profile_card = None
                 await self.refresh(thinking=interaction)
@@ -310,7 +310,7 @@ class ProfileUI(StatsUI):
         """
         Create and render the XP and stats cards.
         """
-        card = await get_profile_card(self.bot, self.userid, self.guildid)
+        card = await get_profile_card(self.bot, self.userid, self.guild.id)
         if card:
             await card.render()
             self._profile_card = card

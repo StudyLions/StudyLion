@@ -237,7 +237,7 @@ class ChannelSetting(Generic[ParentID, CT], InteractiveSetting[ParentID, int, CT
 
     _selector_placeholder = "Select a Channel"
     channel_types: list[discord.ChannelType] = []
-    _allow_object = True
+    _allow_object = False
 
     @classmethod
     def _data_from_value(cls, parent_id, value, **kwargs):
@@ -368,7 +368,7 @@ class RoleSetting(InteractiveSetting[ParentID, int, Union[discord.Role, discord.
     _accepts = _p('settype:role|accepts', "A role name or id")
 
     _selector_placeholder = "Select a Role"
-    _allow_object = True
+    _allow_object = False
 
     @classmethod
     def _get_guildid(cls, parent_id: int, **kwargs) -> int:
@@ -915,7 +915,7 @@ class TimezoneSetting(InteractiveSetting[ParentID, str, TZT]):
                     name=t(_p(
                         'set_type:timezone|acmpl|no_matching',
                         "No timezones matching '{input}'!"
-                    )).format(input=partial),
+                    )).format(input=partial)[:100],
                     value=partial
                 )
             ]
@@ -930,7 +930,7 @@ class TimezoneSetting(InteractiveSetting[ParentID, str, TZT]):
                     "{tz} (Currently {now})"
                 )).format(tz=tz, now=nowstr)
                 choice = appcmds.Choice(
-                    name=name,
+                    name=name[:100],
                     value=tz
                 )
                 choices.append(choice)

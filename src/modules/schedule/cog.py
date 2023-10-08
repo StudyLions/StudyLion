@@ -904,10 +904,10 @@ class ScheduleCog(LionCog):
 
         if not interaction.guild or not isinstance(interaction.user, discord.Member):
             choice = appcmds.Choice(
-                name=_p(
+                name=t(_p(
                     'cmd:schedule|acmpl:book|error:not_in_guild',
                     "You need to be in a server to book sessions!"
-                ),
+                ))[:100],
                 value='None'
             )
             choices = [choice]
@@ -917,10 +917,10 @@ class ScheduleCog(LionCog):
             blacklist_role = (await self.settings.BlacklistRole.get(interaction.guild.id)).value
             if blacklist_role and blacklist_role in member.roles:
                 choice = appcmds.Choice(
-                    name=_p(
+                    name=t(_p(
                         'cmd:schedule|acmpl:book|error:blacklisted',
                         "Cannot Book -- Blacklisted"
-                    ),
+                    ))[:100],
                     value='None'
                 )
                 choices = [choice]
@@ -947,7 +947,7 @@ class ScheduleCog(LionCog):
                 )
                 choices.append(
                     appcmds.Choice(
-                        name=tzstring, value='None',
+                        name=tzstring[:100], value='None',
                     )
                 )
 
@@ -968,7 +968,7 @@ class ScheduleCog(LionCog):
                     if partial.lower() in name.lower():
                         choices.append(
                             appcmds.Choice(
-                                name=name,
+                                name=name[:100],
                                 value=str(slotid)
                             )
                         )
@@ -978,11 +978,11 @@ class ScheduleCog(LionCog):
                             name=t(_p(
                                 "cmd:schedule|acmpl:book|no_matching",
                                 "No bookable sessions matching '{partial}'"
-                            )).format(partial=partial[:25]),
+                            )).format(partial=partial[:25])[:100],
                             value=partial
                         )
                     )
-        return choices
+        return choices[:25]
 
     @schedule_cmd.autocomplete('cancel')
     async def schedule_cmd_cancel_acmpl(self, interaction: discord.Interaction, partial: str):
@@ -998,10 +998,10 @@ class ScheduleCog(LionCog):
         can_cancel = list(slotid for slotid in schedule if slotid > minid)
         if not can_cancel:
             choice = appcmds.Choice(
-                name=_p(
+                name=t(_p(
                     'cmd:schedule|acmpl:cancel|error:empty_schedule',
                     "You do not have any upcoming sessions to cancel!"
-                ),
+                ))[:100],
                 value='None'
             )
             choices.append(choice)
@@ -1025,7 +1025,7 @@ class ScheduleCog(LionCog):
                 if partial.lower() in name.lower():
                     choices.append(
                         appcmds.Choice(
-                            name=name,
+                            name=name[:100],
                             value=str(slotid)
                         )
                     )
@@ -1034,7 +1034,7 @@ class ScheduleCog(LionCog):
                     name=t(_p(
                         'cmd:schedule|acmpl:cancel|error:no_matching',
                         "No cancellable sessions matching '{partial}'"
-                    )).format(partial=partial[:25]),
+                    )).format(partial=partial[:25])[:100],
                     value='None'
                 )
                 choices.append(choice)

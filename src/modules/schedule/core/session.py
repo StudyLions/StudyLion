@@ -442,7 +442,7 @@ class ScheduledSession:
                 'session|notify|dm|join_line:channels',
                 "Please attend your session by joining one of the following:"
             ))
-            join_line = '\n'.join(join_line, *(channel.mention for channel in valid[:20]))
+            join_line = '\n'.join((join_line, *(channel.mention for channel in valid[:20])))
             if len(valid) > 20:
                 join_line += '\n...'
 

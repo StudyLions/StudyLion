@@ -236,7 +236,7 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
             Callable[[ParentID, SettingData], Coroutine[Any, Any, None]]
         """
         if self._event is not None and (bot := ctx_bot.get()) is not None:
-            bot.dispatch(self._event, self.parent_id, self.data)
+            bot.dispatch(self._event, self.parent_id, self)
 
     def get_listener(self, key):
         return self._listeners_.get(key, None)

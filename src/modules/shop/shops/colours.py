@@ -446,7 +446,7 @@ class ColourShopping(ShopCog):
                 ),
                 ephemeral=True
             )
-            await logger.warning(
+            logger.warning(
                 "Unexpected Discord exception occurred while creating a colour role.",
                 exc_info=True
             )
@@ -469,8 +469,13 @@ class ColourShopping(ShopCog):
             # Due to the imprecise nature of Discord role ordering, this may fail.
             try:
                 role = await role.edit(position=position)
-            except discord.Forbidden:
-                position = 0
+            except discord.HTTPException as e:
+                if e.code == 50013 or e.status == 403:
+                    # Forbidden case
+                    # But Discord sends its 'Missing Permissions' with a 400 code for position issues
+                    position = 0
+                else:
+                    raise
 
         # Now that the role is set up, add it to data
         item = await self.data.ShopItem.create(
@@ -1090,7 +1095,7 @@ class ColourShopping(ShopCog):
                 for i, item in enumerate(items, start=1)
             ]
             options = [option for option in options if partial.lower() in option[1].lower()]
-            return [appcmds.Choice(name=option[1], value=option[0]) for option in options]
+            return [appcmds.Choice(name=option[1][:100], value=option[0]) for option in options]
 
 
 class ColourStore(Store):

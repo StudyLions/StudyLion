@@ -301,7 +301,7 @@ class TextTrackerData(Registry):
                 FROM text_sessions
                 WHERE guildid = %s AND start_time >= %s
                 GROUP BY userid
-                ORDER BY 
+                ORDER BY user_total DESC
                 """
             )
             async with cls._connector.connection() as conn:
@@ -325,7 +325,7 @@ class TextTrackerData(Registry):
                 FROM text_sessions
                 WHERE guildid = %s
                 GROUP BY userid
-                ORDER BY 
+                ORDER BY user_total DESC
                 """
             )
             async with cls._connector.connection() as conn:
