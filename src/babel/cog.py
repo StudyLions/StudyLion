@@ -241,7 +241,7 @@ class BabelCog(LionCog):
         matching = {item for item in formatted if partial in item[1] or partial in item[0]}
         if matching:
             choices = [
-                appcmds.Choice(name=localestr, value=locale)
+                appcmds.Choice(name=localestr[:100], value=locale)
                 for locale, localestr in matching
             ]
         else:
@@ -250,7 +250,7 @@ class BabelCog(LionCog):
                     name=t(_p(
                         'acmpl:language|no_match',
                         "No supported languages matching {partial}"
-                    )).format(partial=partial),
+                )).format(partial=partial)[:100],
                     value=partial
                 )
             ]

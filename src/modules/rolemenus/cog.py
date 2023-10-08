@@ -534,7 +534,7 @@ class RoleMenuCog(LionCog):
                 choice_name = menu.data.name
                 choice_value = f"menuid:{menu.data.menuid}"
                 choices.append(
-                    appcmds.Choice(name=choice_name, value=choice_value)
+                    appcmds.Choice(name=choice_name[:100], value=choice_value)
                 )
 
         if not choices:
@@ -545,7 +545,7 @@ class RoleMenuCog(LionCog):
             )).format(partial=partial)
             choice_value = partial
             choice = appcmds.Choice(
-                name=choice_name, value=choice_value
+                name=choice_name[:100], value=choice_value
             )
             choices.append(choice)
 
@@ -569,7 +569,7 @@ class RoleMenuCog(LionCog):
                 "Please select a menu first"
             ))
             choice_value = partial
-            choices = [appcmds.Choice(name=choice_name, value=choice_value)]
+            choices = [appcmds.Choice(name=choice_name[:100], value=choice_value)]
         else:
             # Resolve the menu name
             menu: RoleMenu
@@ -591,7 +591,7 @@ class RoleMenuCog(LionCog):
                     name=t(_p(
                         'acmpl:menuroles|choice:invalid_menu|name',
                         "Menu '{name}' does not exist!"
-                    )).format(name=menu_name),
+                    )).format(name=menu_name)[:100],
                     value=partial
                 )
                 choices = [choice]
@@ -611,7 +611,7 @@ class RoleMenuCog(LionCog):
                         else:
                             name = mrole.data.label
                         choice = appcmds.Choice(
-                            name=name,
+                            name=name[:100],
                             value=f"<@&{mrole.data.roleid}>"
                         )
                         choices.append(choice)
@@ -620,7 +620,7 @@ class RoleMenuCog(LionCog):
                         name=t(_p(
                             'acmpl:menuroles|choice:no_matching|name',
                             "No roles in this menu matching '{partial}'"
-                        )).format(partial=partial),
+                        )).format(partial=partial)[:100],
                         value=partial
                     )
         return choices[:25]

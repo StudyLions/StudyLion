@@ -69,12 +69,12 @@ class DurationTransformer(Transformer):
                 name=t(_p(
                     'util:Duration|acmpl|error',
                     "Cannot extract duration from \"{partial}\""
-                )).format(partial=partial),
+                )).format(partial=partial)[:100],
                 value=partial
             )
         else:
             choice = appcmds.Choice(
-                name=strfdur(duration, short=False, show_days=True),
+                name=strfdur(duration, short=False, show_days=True)[:100],
                 value=partial
             )
         return [choice]

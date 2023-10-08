@@ -447,7 +447,7 @@ class Reminders(LionCog):
             ))
             value = 'None'
             choices = [
-                appcmds.Choice(name=name, value=value)
+                appcmds.Choice(name=name[:100], value=value)
             ]
         else:
             # Build list of reminder strings
@@ -463,7 +463,7 @@ class Reminders(LionCog):
                 # Build list of valid choices
                 choices = [
                     appcmds.Choice(
-                        name=string[0],
+                        name=string[0][:100],
                         value=f"rid:{string[1].reminderid}"
                     )
                     for string in matches
@@ -474,7 +474,7 @@ class Reminders(LionCog):
                         name=t(_p(
                             'cmd:reminders_cancel|acmpl:reminder|error:no_matches',
                             "You do not have any reminders matching \"{partial}\""
-                        )).format(partial=partial),
+                        )).format(partial=partial)[:100],
                         value=partial
                     )
                 ]
@@ -562,7 +562,7 @@ class Reminders(LionCog):
                 name=t(_p(
                     'cmd:remindme_at|acmpl:time|error:parse',
                     "Cannot parse \"{partial}\" as a time. Try the format HH:MM or YYYY-MM-DD HH:MM"
-                )).format(partial=partial),
+                )).format(partial=partial)[:100],
                 value=partial
             )
         return [choice]

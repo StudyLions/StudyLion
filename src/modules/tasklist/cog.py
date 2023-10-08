@@ -291,7 +291,7 @@ class TasklistCog(LionCog):
                     name=t(_p(
                         'argtype:taskid|error:no_tasks',
                         "Tasklist empty! No matching tasks."
-                    )),
+                    ))[:100],
                     value=partial
                 )
             ]
@@ -319,7 +319,7 @@ class TasklistCog(LionCog):
         if matching:
             # If matches were found, assume user wants one of the matches
             options = [
-                appcmds.Choice(name=task_string, value=label)
+                appcmds.Choice(name=task_string[:100], value=label)
                 for label, task_string in matching
             ]
         elif multi and partial.lower().strip() in ('-', 'all'):
@@ -328,7 +328,7 @@ class TasklistCog(LionCog):
                     name=t(_p(
                         'argtype:taskid|match:all',
                         "All tasks"
-                    )),
+                    ))[:100],
                     value='-'
                 )
             ]
@@ -353,7 +353,7 @@ class TasklistCog(LionCog):
                 multi_name = f"{partial[:remaining-1]} {error}"
 
             multi_option = appcmds.Choice(
-                name=multi_name,
+                name=multi_name[:100],
                 value=partial
             )
             options = [multi_option]
@@ -371,7 +371,7 @@ class TasklistCog(LionCog):
             if not matching:
                 matching = [(label, task) for label, task in labels if last_split.lower() in task.lower()]
             options.extend(
-                appcmds.Choice(name=task_string, value=label)
+                    appcmds.Choice(name=task_string[:100], value=label)
                 for label, task_string in matching
             )
         else:
@@ -380,7 +380,7 @@ class TasklistCog(LionCog):
                     name=t(_p(
                         'argtype:taskid|error:no_matching',
                         "No tasks matching '{partial}'!",
-                    )).format(partial=partial[:100]),
+                )).format(partial=partial[:100])[:100],
                     value=partial
                 )
             ]

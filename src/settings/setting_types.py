@@ -915,7 +915,7 @@ class TimezoneSetting(InteractiveSetting[ParentID, str, TZT]):
                     name=t(_p(
                         'set_type:timezone|acmpl|no_matching',
                         "No timezones matching '{input}'!"
-                    )).format(input=partial),
+                    )).format(input=partial)[:100],
                     value=partial
                 )
             ]
@@ -930,7 +930,7 @@ class TimezoneSetting(InteractiveSetting[ParentID, str, TZT]):
                     "{tz} (Currently {now})"
                 )).format(tz=tz, now=nowstr)
                 choice = appcmds.Choice(
-                    name=name,
+                    name=name[:100],
                     value=tz
                 )
                 choices.append(choice)

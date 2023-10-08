@@ -307,17 +307,17 @@ class Pager(BasePager):
                 "Current: Page {page}/{total}"
             )).format(page=num+1, total=total)
             choices = [
-                appcmds.Choice(name=string, value=str(num+1))
+                appcmds.Choice(name=string[:100], value=str(num+1))
                 for num, string in sorted(page_choices.items(), key=lambda t: t[0])
             ]
         else:
             # Particularly support page names here
             choices = [
                 appcmds.Choice(
-                    name='> ' * (i == num) + t(_p(
+                    name=('> ' * (i == num) + t(_p(
                         'cmd:page|acmpl|pager:Pager|choice:general',
                         "Page {page}"
-                    )).format(page=i+1),
+                    )).format(page=i+1))[:100],
                     value=str(i+1)
                 )
                 for i in range(0, total)
@@ -351,7 +351,7 @@ class Pager(BasePager):
                     name=t(_p(
                         'cmd:page|acmpl|pager:Page|choice:select',
                         "Selected: Page {page}/{total}"
-                    )).format(page=page_num+1, total=total),
+                    )).format(page=page_num+1, total=total)[:100],
                     value=str(page_num + 1)
                 )
                 return [choice, *choices]
@@ -361,7 +361,7 @@ class Pager(BasePager):
                         name=t(_p(
                             'cmd:page|acmpl|pager:Page|error:parse',
                             "No matching pages!"
-                        )).format(page=page_num, total=total),
+                        )).format(page=page_num, total=total)[:100],
                         value=partial
                     )
                 ]

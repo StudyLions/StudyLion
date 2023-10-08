@@ -1095,7 +1095,7 @@ class ColourShopping(ShopCog):
                 for i, item in enumerate(items, start=1)
             ]
             options = [option for option in options if partial.lower() in option[1].lower()]
-            return [appcmds.Choice(name=option[1], value=option[0]) for option in options]
+            return [appcmds.Choice(name=option[1][:100], value=option[0]) for option in options]
 
 
 class ColourStore(Store):
