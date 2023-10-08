@@ -728,7 +728,7 @@ class TasklistUI(BasePager):
             )
             try:
                 await press.user.send(contents, file=file, silent=True)
-            except discord.HTTPClient:
+            except discord.HTTPException:
                 fp.seek(0)
                 file = discord.File(fp, filename='tasklist.md')
                 await press.followup.send(
@@ -736,7 +736,7 @@ class TasklistUI(BasePager):
                         'ui:tasklist|button:save|error:dms',
                         "Could not DM you! Do you have me blocked? Tasklist attached below."
                     )),
-                    file=file
+                    file=file,
                 )
             else:
                 fp.seek(0)
