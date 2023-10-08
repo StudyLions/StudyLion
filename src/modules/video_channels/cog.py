@@ -393,7 +393,7 @@ class VideoCog(LionCog):
                     only_warn = True
 
             # Ack based on ticket created
-            alert_ref = message.to_reference(fail_if_not_exists=False)
+            alert_ref = message.to_reference(fail_if_not_exists=False) if message else None
             if only_warn:
                 # TODO: Warn ticket
                 warning = discord.Embed(
