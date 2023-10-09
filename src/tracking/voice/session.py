@@ -253,6 +253,8 @@ class VoiceSession:
             f"Expiring voice session for member <uid:{self.userid}> in guild <gid:{self.guildid}> "
             f"and channel <cid:{self.state.channelid}>."
         )
+        # TODO: Would be better not to close the session and wipe the state
+        # Instead start a new PENDING session.
         await self.close()
 
     async def update(self, new_state: Optional[TrackedVoiceState] = None, new_rate: Optional[int] = None):
