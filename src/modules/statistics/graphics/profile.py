@@ -17,11 +17,11 @@ async def get_profile_card(bot: LionBot, userid: int, guildid: int):
     ranks: Optional[RankCog] = bot.get_cog('RankCog')
     stats: Optional[StatsCog] = bot.get_cog('StatsCog')
     if ranks is None or stats is None:
-        return
+        raise ValueError("Cannot get profile card without ranks and stats cog loaded.")
 
     guild = bot.get_guild(guildid)
     if guild is None:
-        return
+        raise ValueError(f"Cannot get profile card without guild {guildid}")
 
     lion = await bot.core.lions.fetch_member(guildid, userid)
     luser = lion.luser
