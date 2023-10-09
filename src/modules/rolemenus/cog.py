@@ -308,7 +308,7 @@ class RoleMenuCog(LionCog):
         If the bot is no longer in the server, ignores the expiry.
         If the member is no longer in the server, removes the role from persisted roles, if applicable.
         """
-        logger.info(f"Expiring RoleMenu equipped role {equipid}")
+        logger.debug(f"Expiring RoleMenu equipped role {equipid}")
         rows = await self.data.RoleMenuHistory.fetch_expiring_where(equipid=equipid)
         if rows:
             equip_row = rows[0]
@@ -319,8 +319,22 @@ class RoleMenuCog(LionCog):
                 if role is not None:
                     lion = await self.bot.core.lions.fetch_member(guild.id, equip_row.userid)
                     await lion.remove_role(role)
+                    if (member := lion.member):
+                        if role in member.roles:
+                            logger.error(f"Expired {equipid}, but the member still has the role!")
+                        else:
+                            logger.info(f"Expired {equipid}, and successfully removed the role from the member!")
+                    else:
+                        logger.info(
+                            f"Expired {equipid} for non-existent member {equip_row.userid}. "
+                            "Removed from persistent roles."
+                        )
+                else:
+                    logger.info(f"Could not expire {equipid} because the role was not found.")
                 now = utc_now()
                 await equip_row.update(removed_at=now)
+            else:
+                logger.info(f"Could not expire {equipid} because the guild was not found.")
         else:
             # equipid is no longer valid or is not expiring
             logger.info(f"RoleMenu equipped role {equipid} is no longer valid or is not expiring.")
@@ -351,7 +365,7 @@ class RoleMenuCog(LionCog):
                     error = t(_p(
                         'parse:message_link|suberror:no_perms',
                         "Insufficient permissions! I need the `MESSAGE_HISTORY` permission in {channel}."
-                    )).format(channel=channel.menion)
+                    )).format(channel=channel.mention)
             else:
                 error = t(_p(
                     'parse:message_link|suberror:channel_dne',
