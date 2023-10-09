@@ -6,11 +6,28 @@ import discord
 from meta import LionBot
 from gui.cards import StatsCard
 from gui.base import CardMode
+from tracking.text.data import TextTrackerData
 
+from .. import babel
 from ..data import StatsData
 
 
+_p = babel._p
+
+
+def format_time(seconds):
+    return "{:02}:{:02}".format(
+        int(seconds // 3600),
+        int(seconds % 3600 // 60)
+    )
+
+
+def format_xp(messages, xp):
+    return f"{messages} ({xp} XP)"
+
+
 async def get_stats_card(bot: LionBot, userid: int, guildid: int, mode: CardMode):
+    t = bot.translator.t
     data: StatsData = bot.get_cog('StatsCog').data
 
     # TODO: Workouts
@@ -32,28 +49,41 @@ async def get_stats_card(bot: LionBot, userid: int, guildid: int, mode: CardMode
     )
 
     # Extract the study times for each period
-    if mode in (CardMode.STUDY, CardMode.VOICE):
+    if mode in (CardMode.STUDY, CardMode.VOICE, CardMode.ANKI):
         model = data.VoiceSessionStats
         refkey = (guildid or None, userid)
         ref_since = model.study_times_since
         ref_between = model.study_times_between
+
+        period_activity = await ref_since(*refkey, *period_timestamps)
+        period_strings = [format_time(activity) for activity in reversed(period_activity)]
+        month_activity = period_activity[1]
+        month_string = t(_p(
+            'gui:stats|mode:voice|month',
+            "{hours} hours"
+        )).format(hours=int(month_activity // 3600))
     elif mode is CardMode.TEXT:
+        msgmodel = TextTrackerData.TextSessions
         if guildid:
             model = data.MemberExp
+            msg_since = msgmodel.member_messages_since
             refkey = (guildid, userid)
         else:
             model = data.UserExp
+            msg_since = msgmodel.member_messages_between
             refkey = (userid,)
         ref_since = model.xp_since
         ref_between = model.xp_between
-    else:
-        # TODO ANKI
-        model = data.VoiceSessionStats
-        refkey = (guildid, userid)
-        ref_since = model.study_times_since
-        ref_between = model.study_times_between
 
-    study_times = await ref_since(*refkey, *period_timestamps)
+        xp_period_activity = await ref_since(*refkey, *period_timestamps)
+        msg_period_activity = await msg_since(*refkey, *period_timestamps)
+        period_strings = [
+            format_xp(msgs, xp)
+            for msgs, xp in zip(reversed(msg_period_activity), reversed(xp_period_activity))
+        ]
+        month_string = f"{xp_period_activity[1]} XP"
+    else:
+        raise ValueError(f"Mode {mode} not supported")
 
     # Get leaderboard position
     # TODO: Efficiency
@@ -89,7 +119,8 @@ async def get_stats_card(bot: LionBot, userid: int, guildid: int, mode: CardMode
 
     card = StatsCard(
         (position, 0),
-        list(reversed(study_times)),
+        period_strings,
+        month_string,
         100,
         streaks,
         skin={'mode': mode}
