@@ -1,5 +1,6 @@
 from typing import Optional
 import asyncio
+import itertools
 import datetime as dt
 
 import discord
@@ -71,7 +72,7 @@ class VoiceTrackerCog(LionCog):
             locked=0,
             actual=0,
             channels=0,
-            cached=len(VoiceSession._sessions_),
+            cached=sum(len(gsessions) for gsessions in VoiceSession._sessions_.values()),
             initial_event=self.initialised,
             lock=self.tracking_lock
         )
@@ -92,7 +93,7 @@ class VoiceTrackerCog(LionCog):
         data['channels'] = len(channels)
 
         for guild in self.bot.guilds:
-            for channel in guild.voice_channels:
+            for channel in itertools.chain(guild.voice_channels, guild.stage_channels):
                 if not self.is_untracked(channel):
                     for member in channel.members:
                         if member.voice and not member.bot:
@@ -143,7 +144,7 @@ class VoiceTrackerCog(LionCog):
         ...
 
     # ----- Cog API -----
-    def get_session(self, guildid, userid, **kwargs) -> Optional[VoiceSession]:
+    def get_session(self, guildid, userid, **kwargs):
         """
         Get the VoiceSession for the given member.
 
@@ -325,6 +326,8 @@ class VoiceTrackerCog(LionCog):
             active = self.active_sessions.pop(guild.id, {}).values()
             for session in active:
                 session.cancel()
+            # Clear registry
+            VoiceSession._sessions_.pop(guild.id, None)
 
             # Update untracked channel information for this guild
             self.untracked_channels.pop(guild.id, None)
@@ -332,7 +335,7 @@ class VoiceTrackerCog(LionCog):
 
             # Read tracked voice states
             states = {}
-            for channel in guild.voice_channels:
+            for channel in itertools.chain(guild.voice_channels, guild.stage_channels):
                 if not self.is_untracked(channel):
                     for member in channel.members:
                         if member.voice and not member.bot:
@@ -390,7 +393,7 @@ class VoiceTrackerCog(LionCog):
             # Read and save the tracked voice states of all visible voice channels
             states = {}
             for guild in self.bot.guilds:
-                for channel in guild.voice_channels:
+                for channel in itertools.chain(guild.voice_channels, guild.stage_channels):
                     if not self.is_untracked(channel):
                         for member in channel.members:
                             if member.voice and not member.bot:

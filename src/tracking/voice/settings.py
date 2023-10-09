@@ -457,6 +457,9 @@ class VoiceTrackerConfigUI(ConfigUI):
     @select(
         cls=ChannelSelect,
         placeholder="UNTRACKED_CHANNELS_PLACEHOLDER",
+        channel_types=[
+            discord.enums.ChannelType.voice, discord.enums.ChannelType.stage_voice, discord.enums.ChannelType.category
+        ],
         min_values=0, max_values=25
     )
     async def untracked_channels_menu(self, selection: discord.Interaction, selected):
