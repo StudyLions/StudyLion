@@ -19,6 +19,7 @@ from .data import StatsData
 from .ui import ProfileUI, WeeklyMonthlyUI, LeaderboardUI
 from .settings import StatisticsSettings, StatisticsConfigUI
 from .graphics.profilestats import get_full_profile
+from .achievements import get_achievements_for
 
 _p = babel._p
 
@@ -151,6 +152,38 @@ class StatsCog(LionCog):
         ui = LeaderboardUI(self.bot, ctx.author, ctx.guild)
         await ui.run(ctx.interaction)
         await ui.wait()
+
+    @cmds.hybrid_command(
+        name=_p('cmd:achievements', 'achievements'),
+        description=_p(
+            'cmd:achievements|desc',
+            "View your progress towards the activity achievement awards!"
+        )
+    )
+    @appcmds.guild_only
+    async def achievements_cmd(self, ctx: LionContext):
+        if not ctx.guild:
+            return
+        if not ctx.interaction:
+            return
+        t = self.bot.translator.t
+
+        await ctx.interaction.response.defer(thinking=True)
+
+        achievements = await get_achievements_for(self.bot, ctx.guild.id, ctx.author.id)
+        embed = discord.Embed(
+            title=t(_p(
+                'cmd:achievements|embed:title',
+                "Achievements"
+            )),
+            colour=discord.Colour.orange()
+        )
+        for achievement in achievements:
+            name, value = achievement.make_field()
+            embed.add_field(
+                name=name, value=value, inline=False
+            )
+        await ctx.reply(embed=embed)
 
     # Setting commands
     @LionCog.placeholder_group
