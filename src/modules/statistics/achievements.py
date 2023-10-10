@@ -161,7 +161,7 @@ class Workout(Achievement):
         record = await self.bot.core.data.workouts.select_one_where(
             guildid=self.guildid, userid=self.userid
         ).select(total='COUNT(*)')
-        return int(record['total'])
+        return int(record['total'] or 0)
 
 
 class VoiceHours(Achievement):
@@ -187,7 +187,7 @@ class VoiceHours(Achievement):
             guildid=self.guildid, userid=self.userid
         ).select(total='SUM(duration) / 3600').with_no_adapter()
         hours = records[0]['total'] if records else 0
-        return int(hours)
+        return int(hours or 0)
 
 
 class VoiceStreak(Achievement):
@@ -295,7 +295,7 @@ class Voting(Achievement):
         record = await self.bot.core.data.topgg.select_one_where(
             userid=self.userid
         ).select(total='COUNT(*)')
-        return int(record['total'])
+        return int(record['total'] or 0)
 
 
 class VoiceDays(Achievement):
@@ -324,7 +324,7 @@ class VoiceDays(Achievement):
             total="COUNT(DISTINCT(date_trunc('day', (start_time AT TIME ZONE 'utc') + interval '{} seconds')))".format(offset)
         ).with_no_adapter()
         days = records[0]['total'] if records else 0
-        return int(days)
+        return int(days or 0)
 
 
 class TasksComplete(Achievement):
@@ -354,7 +354,7 @@ class TasksComplete(Achievement):
         ).with_no_adapter()
 
         completed = records[0]['total'] if records else 0
-        return int(completed)
+        return int(completed or 0)
 
 
 class ScheduledSessions(Achievement):
@@ -383,7 +383,7 @@ class ScheduledSessions(Achievement):
             total='COUNT(*)'
         ).with_no_adapter()
 
-        return int(records[0]['total'] if records else 0)
+        return int((records[0]['total'] or 0) if records else 0)
 
 
 class MonthlyHours(Achievement):
@@ -411,7 +411,9 @@ class MonthlyHours(Achievement):
         ).select(
             _first='MIN(start_time)'
         ).with_no_adapter()
-        first_session = records[0]['_first'] if records else lion.today - dt.timedelta(days=1)
+        first_session = records[0]['_first'] if records else None
+        if not first_session:
+            return 0
 
         # Build the list of month start timestamps
         month_start = lion.month_start
