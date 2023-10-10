@@ -17,8 +17,9 @@ _p = babel._p
 
 class EconomyConfigUI(ConfigUI):
     setting_classes = (
+        EconomySettings.StartingFunds,
         EconomySettings.CoinsPerXP,
-        EconomySettings.AllowTransfers
+        EconomySettings.AllowTransfers,
     )
 
     def __init__(self, bot: LionBot,
@@ -44,11 +45,9 @@ class EconomyConfigUI(ConfigUI):
 
     async def reload(self):
         lguild = await self.bot.core.lions.fetch_guild(self.guildid)
-        coins_per_xp = lguild.config.get(self.settings.CoinsPerXP.setting_id)
-        allow_transfers = lguild.config.get(self.settings.AllowTransfers.setting_id)
-        self.instances = (
-            coins_per_xp,
-            allow_transfers
+        self.instances = tuple(
+            lguild.config.get(cls.setting_id)
+            for cls in self.setting_classes
         )
 
     async def refresh_components(self):
@@ -57,9 +56,9 @@ class EconomyConfigUI(ConfigUI):
             self.close_button_refresh(),
             self.reset_button_refresh(),
         )
-        self._layout = [
+        self.set_layout(
             (self.edit_button, self.reset_button, self.close_button),
-        ]
+        )
 
 
 class EconomyDashboard(DashboardSection):

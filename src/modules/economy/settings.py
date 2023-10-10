@@ -15,6 +15,7 @@ from meta.config import conf
 from meta.sharding import THIS_SHARD
 from meta.logger import log_wrap
 from core.data import CoreData
+from core.setting_types import CoinSetting
 from babel.translator import ctx_translator
 
 from . import babel, logger
@@ -29,7 +30,7 @@ class EconomySettings(SettingGroup):
         coins_per_100xp
         allow_transfers
     """
-    class CoinsPerXP(ModelData, IntegerSetting):
+    class CoinsPerXP(ModelData, CoinSetting):
         setting_id = 'coins_per_xp'
 
         _display_name = _p('guildset:coins_per_xp', "coins_per_100xp")
@@ -111,3 +112,32 @@ class EconomySettings(SettingGroup):
                 coin=conf.emojis.coin
             )
             return formatted
+
+    class StartingFunds(ModelData, CoinSetting):
+        setting_id = 'starting_funds'
+
+        _display_name = _p('guildset:starting_funds', "starting_funds")
+        _desc = _p(
+            'guildset:starting_funds|desc',
+            "How many LionCoins should a member start with."
+        )
+        _long_desc = _p(
+            'guildset:starting_funds|long_desc',
+            "Members will be given this number of coins when they first interact with me, or first join the server."
+        )
+        _accepts = _p(
+            'guildset:starting_funds|accepts',
+            "Number of coins to give to new members."
+        )
+        _default = 0
+
+        _model = CoreData.Guild
+        _column = CoreData.Guild.starting_funds.name
+
+        @property
+        def update_message(self):
+            t = ctx_translator.get().t
+            return t(_p(
+                'guildset:starting_funds|set_response',
+                "New members will now start with {amount}"
+            )).format(amount=self.formatted)
