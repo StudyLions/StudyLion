@@ -6,8 +6,6 @@ babel = LocalBabel('config')
 
 
 async def setup(bot):
-    from .general import GeneralSettingsCog
-    from .cog import DashCog
+    from .cog import GuildConfigCog
 
-    await bot.add_cog(GeneralSettingsCog(bot))
-    await bot.add_cog(DashCog(bot))
+    await bot.add_cog(GuildConfigCog(bot))
