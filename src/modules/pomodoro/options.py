@@ -57,7 +57,7 @@ class TimerOptions(SettingGroup):
         _allow_object = False
 
         @classmethod
-        async def _check_value(cls, parent_id: int, value: Optional[discord.abc.GuildChannel], **kwargs):
+        async def _check_value(cls, parent_id: int, value, **kwargs):
             if value is not None:
                 # TODO: Check we either have or can create a webhook
                 # TODO: Check we can send messages, embeds, and files

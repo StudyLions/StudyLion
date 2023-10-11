@@ -1,7 +1,12 @@
+from typing import Optional
+import discord
+
 from settings import ModelData
 from settings.setting_types import TimezoneSetting, ChannelSetting
 from settings.groups import SettingGroup
 
+from meta.context import ctx_bot
+from meta.errors import UserInputError
 from core.data import CoreData
 from babel.translator import ctx_translator
 
@@ -20,7 +25,8 @@ class GeneralSettings(SettingGroup):
         and the timezone used to display guild-wide statistics.
         """
         setting_id = 'timezone'
-        _event = 'guild_setting_update_timezone'
+        _event = 'guildset_timezone'
+        _set_cmd = 'configure general'
 
         _display_name = _p('guildset:timezone', "timezone")
         _desc = _p(
@@ -46,29 +52,24 @@ class GeneralSettings(SettingGroup):
                 "The guild timezone has been set to `{timezone}`."
             )).format(timezone=self.data)
 
-        @property
-        def set_str(self):
-            bot = ctx_bot.get()
-            return bot.core.mention_cmd('configure general') if bot else None
-
     class EventLog(ModelData, ChannelSetting):
         """
         Guild event log channel.
         """
         setting_id = 'eventlog'
         _event = 'guildset_eventlog'
+        _set_cmd = 'configure general'
 
         _display_name = _p('guildset:eventlog', "event_log")
         _desc = _p(
             'guildset:eventlog|desc',
-            "Channel to which to log server events, such as voice sessions and equipped roles."
+            "My audit log channel where I send server actions and events (e.g. rankgs and expiring roles)."
         )
-        # TODO: Reword
         _long_desc = _p(
             'guildset:eventlog|long_desc',
-            "An audit log for my own systems, "
-            "I will send most significant actions and events that occur through my interface "
-            "to this channel. For example, this includes:\n"
+            "If configured, I will log most significant actions taken "
+            "or events which occur through my interface, into this channel. "
+            "Logged events include, for example:\n"
             "- Member voice activity\n"
             "- Roles equipped and expiring from rolemenus\n"
             "- Privated rooms rented and expiring\n"
@@ -76,4 +77,34 @@ class GeneralSettings(SettingGroup):
             "I must have the 'Manage Webhooks' permission in this channel."
         )
 
-        # TODO: Updatestr
+        _model = CoreData.Guild
+        _column = CoreData.Guild.event_log_channel.name
+
+
+        @classmethod
+        async def _check_value(cls, parent_id: int, value: Optional[discord.abc.GuildChannel], **kwargs):
+            if value is not None:
+                t = ctx_translator.get().t
+                if not value.permissions_for(value.guild.me).manage_webhooks:
+                    raise UserInputError(
+                        t(_p(
+                            'guildset:eventlog|check_value|error:perms|perm:manage_webhooks',
+                            "Cannot set {channel} as an event log! I lack the 'Manage Webhooks' permission there."
+                        )).format(channel=value)
+                    )
+
+        @property
+        def update_message(self):
+            t = ctx_translator.get().t
+            channel = self.value
+            if channel is not None:
+                response = t(_p(
+                    'guildset:eventlog|response|set',
+                    "Events will now be logged to {channel}"
+                )).format(channel=channel.mention)
+            else:
+                response = t(_p(
+                    'guildset:eventlog|response|unset',
+                    "Guild events will no longer be logged."
+                ))
+            return response

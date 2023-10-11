@@ -4,6 +4,7 @@ import discord
 from discord.ui.select import select, ChannelSelect
 
 from meta import LionBot
+from meta.errors import UserInputError
 
 from utils.ui import ConfigUI, DashboardSection
 from utils.lib import MessageArgs
@@ -18,11 +19,11 @@ _p = babel._p
 class GeneralSettingUI(ConfigUI):
     setting_classes = (
         GeneralSettings.Timezone,
-        GeneralSettings.Eventlog,
+        GeneralSettings.EventLog,
     )
 
     def __init__(self, bot: LionBot, guildid: int, channelid: int, **kwargs):
-        self.settings = bot.get_cog('GeneralSettingsCog').settings
+        self.settings = bot.get_cog('GuildConfigCog').settings
         super().__init__(bot, guildid, channelid, **kwargs)
 
     # ----- UI Components -----
@@ -39,13 +40,10 @@ class GeneralSettingUI(ConfigUI):
         """
         await selection.response.defer(thinking=True, ephemeral=True)
 
-        setting = self.get_instance(GeneralSettings.Eventlog)
+        setting = self.get_instance(GeneralSettings.EventLog)
 
-        value = selected.values[0] if selected.values else None
-        if issue := (await setting.check_value(value)):
-            raise UserInputError(issue)
-
-        setting.value = value
+        value = selected.values[0].resolve() if selected.values else None
+        setting = await setting.from_value(self.guildid, value)
         await setting.write()
         await selection.delete_original_response()
 
@@ -103,5 +101,5 @@ class GeneralDashboard(DashboardSection):
         "dash:general|option|name",
         "General Configuration Panel"
     )
-    configui = GeneralSettingsUI
+    configui = GeneralSettingUI
     setting_classes = configui.setting_classes

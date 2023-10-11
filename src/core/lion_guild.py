@@ -80,7 +80,7 @@ class LionGuild(Timezoned):
         return GuildMode.StudyGuild
 
     @property
-    def timezone(self) -> pytz.timezone:
+    def timezone(self) -> str:
         return self.config.timezone.value
 
     @property
@@ -94,11 +94,3 @@ class LionGuild(Timezoned):
         if self.data.name != guild.name:
             await self.data.update(name=guild.name)
     
-    async def _event_log(self, ...):
-        ...
-
-    def event_log(self, **kwargs):
-        asyncio.create_task(self._event_log(**kwargs), name='event-log')
-
-    def error_log(self, ...):
-        ...

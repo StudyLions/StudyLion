@@ -1,3 +1,5 @@
+from typing import Optional
+
 import discord
 from discord import app_commands as appcmds
 from discord.ext import commands as cmds
@@ -22,7 +24,7 @@ class GuildConfigCog(LionCog):
 
     async def cog_load(self):
         self.bot.core.guild_config.register_model_setting(GeneralSettings.Timezone)
-        self.bot.core.guild_config.register_model_setting(GeneralSettings.Eventlog)
+        self.bot.core.guild_config.register_model_setting(GeneralSettings.EventLog)
 
         configcog = self.bot.get_cog('ConfigCog')
         if configcog is None:
@@ -36,42 +38,12 @@ class GuildConfigCog(LionCog):
     @appcmds.guild_only
     @appcmds.default_permissions(manage_guild=True)
     async def dashboard_cmd(self, ctx: LionContext):
+        if not ctx.guild or not ctx.interaction:
+            return
+
         ui = GuildDashboard(self.bot, ctx.guild, ctx.author.id, ctx.channel.id)
         await ui.run(ctx.interaction)
         await ui.wait()
-
-    @cmds.hybrid_group("configure", with_app_command=False)
-    async def configure_group(self, ctx: LionContext):
-        # Placeholder configure group command.
-        ...
-
-    @configure_group.command(
-        name=_p('cmd:configure_general', "general"),
-        description=_p('cmd:configure_general|desc', "General configuration panel")
-    )
-    @appcmds.rename(
-        timezone=GeneralSettings.Timezone._display_name,
-        event_log=GeneralSettings.EventLog._display_name,
-    )
-    @appcmds.describe(
-        timezone=GeneralSettings.Timezone._desc,
-        event_log=GeneralSettings.EventLog._display_name,
-    )
-    @appcmds.guild_only()
-    @appcmds.default_permissions(manage_guild=True)
-    @low_management_ward
-    async def cmd_configure_general(self, ctx: LionContext,
-                                    timezone: Optional[str] = None,
-                                    event_log: Optional[discord.TextChannel] = None,
-                                    ):
-        t = self.bot.translator.t
-
-        # Typechecker guards because they don't understand the check ward
-        if not ctx.guild:
-            return
-        if not ctx.interaction:
-            return
-        await ctx.interaction.response.defer(thinking=True)
 
     # ----- Configuration -----
     @LionCog.placeholder_group
@@ -90,7 +62,7 @@ class GuildConfigCog(LionCog):
     )
     @appcmds.describe(
         timezone=GeneralSettings.Timezone._desc,
-        event_log=GeneralSettings.EventLog._display_name,
+        event_log=GeneralSettings.EventLog._desc,
     )
     @appcmds.guild_only()
     @appcmds.default_permissions(manage_guild=True)
@@ -107,4 +79,34 @@ class GuildConfigCog(LionCog):
         if not ctx.interaction:
             return
         await ctx.interaction.response.defer(thinking=True)
-        # TODO
+
+        modified = []
+
+        if timezone is not None:
+            setting = self.settings.Timezone
+            instance = await setting.from_string(ctx.guild.id, timezone)
+            modified.append(instance)
+
+        if event_log is not None:
+            setting = self.settings.EventLog
+            instance = await setting.from_value(ctx.guild.id, event_log)
+            modified.append(instance)
+
+        if modified:
+            ack_lines = []
+            for instance in modified:
+                await instance.write()
+                ack_lines.append(instance.update_message)
+
+            tick = self.bot.config.emojis.tick
+            embed = discord.Embed(
+                colour=discord.Colour.brand_green(),
+                description='\n'.join(f"{tick} {line}" for line in ack_lines)
+            )
+            await ctx.reply(embed=embed)
+
+        if ctx.channel.id not in GeneralSettingUI._listening or not modified:
+            ui = GeneralSettingUI(self.bot, ctx.guild.id, ctx.channel.id)
+            await ui.run(ctx.interaction)
+            await ui.wait()
+
