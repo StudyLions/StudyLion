@@ -96,7 +96,6 @@ class VideoTicket(Ticket):
             **kwargs
         )
 
-
     async def _revert(self, reason=None):
         target = self.target
         blacklist = self.lguild.config.get(VideoSettings.VideoBlacklist.setting_id).value
