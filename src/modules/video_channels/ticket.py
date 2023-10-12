@@ -35,6 +35,8 @@ class VideoTicket(Ticket):
             **kwargs
         )
 
+        await ticket_data.update(created_at=utc_now().replace(tzinfo=None))
+
         lguild = await bot.core.lions.fetch_guild(member.guild.id, guild=member.guild)
         new_ticket = cls(lguild, ticket_data)
 
@@ -93,6 +95,7 @@ class VideoTicket(Ticket):
             duration=duration, expiry=expiry,
             **kwargs
         )
+
 
     async def _revert(self, reason=None):
         target = self.target
