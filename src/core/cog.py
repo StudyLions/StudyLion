@@ -1,5 +1,6 @@
 from typing import Optional
 from collections import defaultdict
+from weakref import WeakValueDictionary
 
 import discord
 import discord.app_commands as appcmd
@@ -16,6 +17,7 @@ from .lion import Lions
 from .lion_guild import GuildConfig
 from .lion_member import MemberConfig
 from .lion_user import UserConfig
+from .hooks import HookedChannel
 
 
 class keydefaultdict(defaultdict):
@@ -54,6 +56,7 @@ class CoreCog(LionCog):
         self.app_cmd_cache: list[discord.app_commands.AppCommand] = []
         self.cmd_name_cache: dict[str, discord.app_commands.AppCommand] = {}
         self.mention_cache: dict[str, str] = keydefaultdict(self.mention_cmd)
+        self.hook_cache: WeakValueDictionary[int, HookedChannel] = WeakValueDictionary()
 
     async def cog_load(self):
         # Fetch (and possibly create) core data rows.
@@ -91,7 +94,7 @@ class CoreCog(LionCog):
                 cache |= subcache
         return cache
 
-    def mention_cmd(self, name):
+    def mention_cmd(self, name: str):
         """
         Create an application command mention for the given names.
 
@@ -102,6 +105,12 @@ class CoreCog(LionCog):
         else:
             mention = f"</{name}:1110834049204891730>"
         return mention
+
+    def hooked_channel(self, channelid: int):
+        if (hooked := self.hook_cache.get(channelid, None)) is None:
+            hooked = HookedChannel(self.bot, channelid)
+            self.hook_cache[channelid] = hooked
+        return hooked
 
     async def cog_unload(self):
         await self.bot.remove_cog(self.lions.qualified_name)
