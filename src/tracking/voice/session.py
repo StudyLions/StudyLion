@@ -12,7 +12,9 @@ from meta import LionBot
 from data import WeakCache
 from .data import VoiceTrackerData
 
-from . import logger
+from . import logger, babel
+
+_p = babel._p
 
 
 class TrackedVoiceState:
@@ -243,20 +245,6 @@ class VoiceSession:
         delay = (expire_time - utc_now()).total_seconds()
         self.expiry_task = asyncio.create_task(self._expire_after(delay))
 
-    async def _expire_after(self, delay: int):
-        """
-        Expire a session which has exceeded the daily voice cap.
-        """
-        # TODO: Logging, and guild logging, and user notification (?)
-        await asyncio.sleep(delay)
-        logger.info(
-            f"Expiring voice session for member <uid:{self.userid}> in guild <gid:{self.guildid}> "
-            f"and channel <cid:{self.state.channelid}>."
-        )
-        # TODO: Would be better not to close the session and wipe the state
-        # Instead start a new PENDING session.
-        await self.close()
-
     async def update(self, new_state: Optional[TrackedVoiceState] = None, new_rate: Optional[int] = None):
         """
         Update the session state with the provided voice state or hourly rate.
@@ -282,26 +270,95 @@ class VoiceSession:
                     rate=self.hourly_rate
                 )
 
+    async def _expire_after(self, delay: int):
+        """
+        Expire a session which has exceeded the daily voice cap.
+        """
+        # TODO: Logging, and guild logging, and user notification (?)
+        await asyncio.sleep(delay)
+        logger.info(
+            f"Expiring voice session for member <uid:{self.userid}> in guild <gid:{self.guildid}> "
+            f"and channel <cid:{self.state.channelid}>."
+        )
+        async with self.lock:
+            await self._close()
+
+            if self.activity:
+                t = self.bot.translator.t
+                lguild = await self.bot.core.lions.fetch_guild(self.guildid)
+                if self.activity is SessionState.ONGOING and self.data is not None:
+                    lguild.log_event(
+                        t(_p(
+                            'eventlog|event:voice_session_expired|title',
+                            "Member Voice Session Expired"
+                        )),
+                        t(_p(
+                            'eventlog|event:voice_session_expired|desc',
+                            "{member}'s voice session in {channel} expired "
+                            "because they reached the daily voice cap."
+                        )).format(
+                            member=f"<@{self.userid}>",
+                            channel=f"<#{self.state.channelid}>",
+                        ),
+                        start=discord.utils.format_dt(self.data.start_time),
+                        coins_earned=int(self.data._total_coins_earned),
+                    )
+
+            if self.start_task is not None:
+                self.start_task.cancel()
+                self.start_task = None
+
+            self.data = None
+
+            cog = self.bot.get_cog('VoiceTrackerCog')
+            delay, start, expiry = await cog._session_boundaries_for(self.guildid, self.userid)
+            hourly_rate = await cog._calculate_rate(self.guildid, self.userid, self.state)
+
+            self.hourly_rate = hourly_rate
+            self._start_time = start
+
+            self.start_task = asyncio.create_task(self._start_after(delay, start))
+            self.schedule_expiry(expiry)
+
     async def close(self):
         """
         Close the session, or cancel the pending session. Idempotent.
         """
         async with self.lock:
-            if self.activity is SessionState.ONGOING:
-                # End the ongoing session
-                now = utc_now()
-                await self.data.close_study_session_at(self.guildid, self.userid, now)
-
-                # TODO: Something a bit saner/safer.. dispatch the finished session instead?
-                self.bot.dispatch('voice_session_end', self.data, now)
-
-                # Rank update
-                # TODO: Change to broadcasted event?
-                rank_cog = self.bot.get_cog('RankCog')
-                if rank_cog is not None:
-                    asyncio.create_task(rank_cog.on_voice_session_complete(
-                        (self.guildid, self.userid, int((utc_now() - self.data.start_time).total_seconds()), 0)
-                    ))
+            await self._close()
+            if self.activity:
+                t = self.bot.translator.t
+                lguild = await self.bot.core.lions.fetch_guild(self.guildid)
+                if self.activity is SessionState.ONGOING and self.data is not None:
+                    lguild.log_event(
+                        t(_p(
+                            'eventlog|event:voice_session_closed|title',
+                            "Member Voice Session Ended"
+                        )),
+                        t(_p(
+                            'eventlog|event:voice_session_closed|desc',
+                            "{member} completed their voice session in {channel}."
+                        )).format(
+                            member=f"<@{self.userid}>",
+                            channel=f"<#{self.state.channelid}>",
+                        ),
+                        start=discord.utils.format_dt(self.data.start_time),
+                        coins_earned=int(self.data._total_coins_earned),
+                    )
+                else:
+                    lguild.log_event(
+                        t(_p(
+                            'eventlog|event:voice_session_cancelled|title',
+                            "Member Voice Session Cancelled"
+                        )),
+                        t(_p(
+                            'eventlog|event:voice_session_cancelled|desc',
+                            "{member} left {channel} before their voice session started."
+                        )).format(
+                            member=f"<@{self.userid}>",
+                            channel=f"<#{self.state.channelid}>",
+                        ),
+                    )
 
             if self.start_task is not None:
                 self.start_task.cancel()
@@ -319,3 +376,20 @@ class VoiceSession:
 
             # Always release strong reference to session (to allow garbage collection)
             self._active_sessions_[self.guildid].pop(self.userid)
+
+    async def _close(self):
+        if self.activity is SessionState.ONGOING:
+            # End the ongoing session
+            now = utc_now()
+            await self.data.close_study_session_at(self.guildid, self.userid, now)
+
+            # TODO: Something a bit saner/safer.. dispatch the finished session instead?
+            self.bot.dispatch('voice_session_end', self.data, now)
+
+            # Rank update
+            # TODO: Change to broadcasted event?
+            rank_cog = self.bot.get_cog('RankCog')
+            if rank_cog is not None:
+                asyncio.create_task(rank_cog.on_voice_session_complete(
+                    (self.guildid, self.userid, int((utc_now() - self.data.start_time).total_seconds()), 0)
+                ))
