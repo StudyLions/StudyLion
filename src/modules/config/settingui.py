@@ -95,7 +95,7 @@ class GeneralSettingUI(ConfigUI):
 class GeneralDashboard(DashboardSection):
     section_name = _p(
         "dash:general|title",
-        "General Dashboard Settings ({commands[configure general]})"
+        "General Configuration ({commands[configure general]})"
     )
     _option_name = _p(
         "dash:general|option|name",
