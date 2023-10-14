@@ -191,12 +191,12 @@ msgstr "저는 서버 설정 언어만 사용할 거예요."
 #: src/babel/settings.py:140
 msgctxt "guildset:force_locale|response"
 msgid "I will now allow the members to set their own language here."
-msgstr ""
+msgstr "여기서는 개인 언어 설정을 허용하지 않아요."
 
 #: src/babel/settings.py:157
 msgctxt "guildset:locale"
 msgid "language"
-msgstr ""
+msgstr "언어"
 
 #: src/babel/settings.py:158
 msgctxt "guildset:locale|desc"
