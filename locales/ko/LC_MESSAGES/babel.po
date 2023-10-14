@@ -141,7 +141,7 @@ msgctxt "userset:locale|long_desc"
 msgid ""
 "The language you would prefer me to respond to commands and interactions in."
 " Servers may be configured to override this with their own language."
-msgstr ""
+msgstr "봇 응답과 상호작용에 사용하는 서버 기본 언어. 서버 언어 설정이 개인 언어 설정을 덮어쓸 수 있어요."
 
 #: src/babel/settings.py:91
 msgctxt "userset:locale|response"
