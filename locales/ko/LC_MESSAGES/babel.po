@@ -367,7 +367,7 @@ msgstr "중국어 간체자"
 #: src/babel/enums.py:71
 msgctxt "localenames|locale:ja"
 msgid "Japanese"
-msgstr ""
+msgstr "일본어"
 
 #: src/babel/enums.py:72
 msgctxt "localenames|locale:zh-TW"
@@ -377,7 +377,7 @@ msgstr "중국어 정체자"
 #: src/babel/enums.py:73
 msgctxt "localenames|locale:ko"
 msgid "Korean"
-msgstr ""
+msgstr "한국어"
 
 #: src/babel/enums.py:78
 msgctxt "localenames|locale:he"
