@@ -61,12 +61,12 @@ msgstr "언어 설정을 하지 않으면 `{force_setting}`을 활성화할 수 
 #: src/babel/cog.py:167
 msgctxt "cmd:configure_language|success"
 msgid "Language settings updated!"
-msgstr ""
+msgstr "언어 설정 완료!"
 
 #: src/babel/cog.py:183
 msgctxt "cmd:userconfig_language"
 msgid "language"
-msgstr ""
+msgstr "언어"
 
 #: src/babel/cog.py:186
 msgctxt "cmd:userconfig_language|desc"
