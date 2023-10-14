@@ -319,10 +319,15 @@ class RankCog(LionCog):
                 if roleid in rank_roleids and roleid != current_roleid
             ]
 
+            t = self.bot.translator.t
+            log_errors: list[str] = []
+            log_added = None
+            log_removed = None
+
             # Now update roles
             new_last_roleid = last_roleid
 
-            # TODO: Event log here, including errors
+            # TODO: Factor out role updates
             to_rm = [role for role in to_rm if role.is_assignable()]
             if to_rm:
                 try:
@@ -336,31 +341,67 @@ class RankCog(LionCog):
                         f"Removed old rank roles from <uid:{userid}> in <gid:{guildid}>: {roleids}"
                     )
                     new_last_roleid = None
-                except discord.HTTPException:
+                except discord.HTTPException as e:
                     logger.warning(
                         f"Unexpected error removing old rank roles from <uid:{member.id}> in <gid:{guild.id}>: {to_rm}",
                         exc_info=True
                     )
+                    log_errors.append(t(_p(
+                        'eventlog|event:rank_check|error:remove_failed',
+                        "Failed to remove old rank roles: `{error}`"
+                    )).format(error=str(e)))
+                log_removed = '\n'.join(role.mention for role in to_rm)
 
-            if to_add and to_add.is_assignable():
-                try:
-                    await member.add_roles(
-                        to_add,
-                        reason="Rewarding Activity Rank",
-                        atomic=True
-                    )
-                    logger.info(
-                        f"Rewarded rank role <rid:{to_add.id}> to <uid:{userid}> in <gid:{guildid}>."
-                    )
-                    new_last_roleid = to_add.id
-                except discord.HTTPException:
-                    logger.warning(
-                        f"Unexpected error giving <uid:{userid}> in <gid:{guildid}> their rank role <rid:{to_add.id}>",
-                        exc_info=True
-                    )
+            if to_add:
+                if to_add.is_assignable():
+                    try:
+                        await member.add_roles(
+                            to_add,
+                            reason="Rewarding Activity Rank",
+                            atomic=True
+                        )
+                        logger.info(
+                            f"Rewarded rank role <rid:{to_add.id}> to <uid:{userid}> in <gid:{guildid}>."
+                        )
+                        last_roleid=to_add.id
+                    except discord.HTTPException as e:
+                        logger.warning(
+                            f"Unexpected error giving <uid:{userid}> in <gid:{guildid}> "
+                            f"their rank role <rid:{to_add.id}>",
+                            exc_info=True
+                        )
+                        log_errors.append(t(_p(
+                            'eventlog|event:rank_check|error:add_failed',
+                            "Failed to add new rank role: `{error}`"
+                        )).format(error=str(e)))
+                else:
+                    log_errors.append(t(_p(
+                        'eventlog|event:rank_check|error:add_impossible',
+                        "Could not assign new activity rank role. Lacking permissions or invalid role."
+                    )))
+                log_added = to_add.mention
+            else:
+                log_errors.append(t(_p(
+                    'eventlog|event:rank_check|error:permissions',
+                    "Could not update activity rank roles, I lack the 'Manage Roles' permission."
+                )))
 
             if new_last_roleid != last_roleid:
                 await session_rank.rankrow.update(last_roleid=new_last_roleid)
+
+            if to_add or to_rm:
+                # Log rank role update
+                lguild = await self.bot.core.lions.fetch_guild(guildid)
+                lguild.log_event(
+                    t(_p(
+                        'eventlog|event:rank_check|name',
+                        "Member Activity Rank Roles Updated"
+                    )),
+                    memberid=member.id,
+                    roles_given=log_added,
+                    roles_taken=log_removed,
+                    errors=log_errors,
+                )
 
     @log_wrap(action="Update Rank")
     async def update_rank(self, session_rank):
@@ -390,6 +431,11 @@ class RankCog(LionCog):
         if member is None:
             return
 
+        t = self.bot.translator.t
+        log_errors: list[str] = []
+        log_added = None
+        log_removed = None
+
         last_roleid = session_rank.rankrow.last_roleid
 
         # Update ranks
@@ -409,7 +455,6 @@ class RankCog(LionCog):
             ]
 
             # Now update roles
-            # TODO: Event log here, including errors
             to_rm = [role for role in to_rm if role.is_assignable()]
             if to_rm:
                 try:
@@ -423,28 +468,50 @@ class RankCog(LionCog):
                         f"Removed old rank roles from <uid:{userid}> in <gid:{guildid}>: {roleids}"
                     )
                     last_roleid = None
-                except discord.HTTPException:
+                except discord.HTTPException as e:
                     logger.warning(
                         f"Unexpected error removing old rank roles from <uid:{member.id}> in <gid:{guild.id}>: {to_rm}",
                         exc_info=True
                     )
+                    log_errors.append(t(_p(
+                        'eventlog|event:new_rank|error:remove_failed',
+                        "Failed to remove old rank roles: `{error}`"
+                    )).format(error=str(e)))
+                log_removed = '\n'.join(role.mention for role in to_rm)
 
-            if to_add and to_add.is_assignable():
-                try:
-                    await member.add_roles(
-                        to_add,
-                        reason="Rewarding Activity Rank",
-                        atomic=True
-                    )
-                    logger.info(
-                        f"Rewarded rank role <rid:{to_add.id}> to <uid:{userid}> in <gid:{guildid}>."
-                    )
-                    last_roleid=to_add.id
-                except discord.HTTPException:
-                    logger.warning(
-                        f"Unexpected error giving <uid:{userid}> in <gid:{guildid}> their rank role <rid:{to_add.id}>",
-                        exc_info=True
-                    )
+            if to_add:
+                if to_add.is_assignable():
+                    try:
+                        await member.add_roles(
+                            to_add,
+                            reason="Rewarding Activity Rank",
+                            atomic=True
+                        )
+                        logger.info(
+                            f"Rewarded rank role <rid:{to_add.id}> to <uid:{userid}> in <gid:{guildid}>."
+                        )
+                        last_roleid=to_add.id
+                    except discord.HTTPException as e:
+                        logger.warning(
+                            f"Unexpected error giving <uid:{userid}> in <gid:{guildid}> "
+                            f"their rank role <rid:{to_add.id}>",
+                            exc_info=True
+                        )
+                        log_errors.append(t(_p(
+                            'eventlog|event:new_rank|error:add_failed',
+                            "Failed to add new rank role: `{error}`"
+                        )).format(error=str(e)))
+                else:
+                    log_errors.append(t(_p(
+                        'eventlog|event:new_rank|error:add_impossible',
+                        "Could not assign new activity rank role. Lacking permissions or invalid role."
+                    )))
+                log_added = to_add.mention
+        else:
+            log_errors.append(t(_p(
+                'eventlog|event:new_rank|error:permissions',
+                "Could not update activity rank roles, I lack the 'Manage Roles' permission."
+            )))
 
         # Update MemberRank row
         column = {
@@ -473,7 +540,29 @@ class RankCog(LionCog):
             )
 
         # Send notification
-        await self._notify_rank_update(guildid, userid, new_rank)
+        try:
+            await self._notify_rank_update(guildid, userid, new_rank)
+        except discord.HTTPException:
+            log_errors.append(t(_p(
+                'eventlog|event:new_rank|error:notify_failed',
+                "Could not notify member."
+            )))
+
+        # Log rank achieved
+        lguild.log_event(
+            t(_p(
+                'eventlog|event:new_rank|name',
+                "Member Achieved Activity rank"
+            )),
+            t(_p(
+                'eventlog|event:new_rank|desc',
+                "{member} earned the new activity rank {rank}"
+            )).format(member=member.mention, rank=f"<@&{new_rank.roleid}>"),
+            roles_given=log_added,
+            roles_taken=log_removed,
+            coins_earned=new_rank.reward,
+            errors=log_errors,
+        )
 
     async def _notify_rank_update(self, guildid, userid, new_rank):
         """
@@ -516,11 +605,7 @@ class RankCog(LionCog):
                     text = member.mention
 
                 # Post!
-                try:
-                    await destination.send(embed=embed, content=text)
-                except discord.HTTPException:
-                    # TODO: Logging, guild logging, invalidate channel if permissions are wrong
-                    pass
+                await destination.send(embed=embed, content=text)
 
     def get_message_map(self,
                         rank_type: RankType,
@@ -776,6 +861,24 @@ class RankCog(LionCog):
             )
         self.flush_guild_ranks(guild.id)
         await ui.set_done()
+
+        # Event log
+        lguild.log_event(
+            t(_p(
+                'eventlog|event:rank_refresh|name',
+                "Activity Ranks Refreshed"
+            )),
+            t(_p(
+                'eventlog|event:rank_refresh|desc',
+                "{actor} refresh member activity ranks.\n"
+                "**`{removed}`** invalid rank roles removed.\n"
+                "**`{added}`** new rank roles added."
+            )).format(
+                actor=interaction.user.mention,
+                removed=ui.removed,
+                added=ui.added,
+            )
+        )
 
     # ---------- Commands ----------
     @cmds.hybrid_command(name=_p('cmd:ranks', "ranks"))

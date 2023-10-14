@@ -254,6 +254,7 @@ class LionGuild(Timezoned):
                   *,
                   embed: Optional[discord.Embed] = None,
                   fields: dict[str, tuple[str, bool]]={},
+                  errors: list[str]=[],
                   **kwargs: str | int):
         """
         Synchronously log an event to the guild event log.
@@ -273,6 +274,9 @@ class LionGuild(Timezoned):
             May be used to completely customise log message.
         fields: dict[str, tuple[str, bool]]
             Optional embed fields to add.
+        errors: list[str]
+            Optional list of errors to add.
+            Errors will always be added last.
         kwargs: str | int
             Optional embed fields to add to the embed.
             These differ from `fields` in that the kwargs keys will be automatically matched and localised
@@ -282,7 +286,12 @@ class LionGuild(Timezoned):
         t = self.bot.translator.t
 
         # Build embed
-        base = embed if embed is not None else discord.Embed(colour=discord.Colour.dark_orange())
+        if embed is not None:
+            base = embed
+        else:
+            base = discord.Embed(
+                colour=(discord.Colour.brand_red() if errors else discord.Colour.dark_orange())
+            )
         if description is not None:
             base.description = description
         if title is not None:
@@ -315,6 +324,16 @@ class LionGuild(Timezoned):
                 name=key,
                 value=value,
                 inline=inline,
+            )
+
+        if errors:
+            error_name = t(_p(
+                'eventlog|field:errors|name',
+                "Errors"
+            ))
+            error_value = '\n'.join(f"- {line}" for line in errors)
+            base.add_field(
+                name=error_name, value=error_value, inline=False
             )
 
         # Send embed
