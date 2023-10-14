@@ -35,4 +35,4 @@ msgstr "exec로 임의 코드 실행"
 
 #: bot/modules/sysadmin/exec_cog.py:265
 msgid "eval"
-msgstr ""
+msgstr "eval"
