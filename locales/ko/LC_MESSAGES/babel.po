@@ -210,6 +210,8 @@ msgid ""
 "Member's own configured language will override this for their commands "
 "unless `force_language` is enabled."
 msgstr ""
+"봇 응답과 상호작용에 사용하는 서버 기본 언어. `force_language` 설정을 활성화하지 않는 한 개인 언어 설정이 따로 "
+"되어있으면 해당 설정을 따릅니다."
 
 #: src/babel/settings.py:173
 msgctxt "guildset:locale|response"
