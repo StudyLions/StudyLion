@@ -322,12 +322,12 @@ msgstr "베트남어"
 #: src/babel/enums.py:62
 msgctxt "localenames|locale:tr"
 msgid "Turkish"
-msgstr ""
+msgstr "터키어"
 
 #: src/babel/enums.py:63
 msgctxt "localenames|locale:cs"
 msgid "Czech"
-msgstr ""
+msgstr "체코어"
 
 #: src/babel/enums.py:64
 msgctxt "localenames|locale:el"
