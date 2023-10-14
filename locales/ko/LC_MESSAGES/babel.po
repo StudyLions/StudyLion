@@ -92,7 +92,7 @@ msgstr "초기화"
 #, possible-python-brace-format
 msgctxt "acmpl:language|no_match"
 msgid "No supported languages matching {partial}"
-msgstr ""
+msgstr "지원하지 않는 언어 매칭 {partial}"
 
 #: src/babel/utils.py:9
 msgctxt "utils|months"
