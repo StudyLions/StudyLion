@@ -272,12 +272,12 @@ msgstr "이탈리아어"
 #: src/babel/enums.py:52
 msgctxt "localenames|locale:lt"
 msgid "Lithuanian"
-msgstr ""
+msgstr "리투아니아어"
 
 #: src/babel/enums.py:53
 msgctxt "localenames|locale:hu"
 msgid "Hungarian"
-msgstr ""
+msgstr "헝가리어"
 
 #: src/babel/enums.py:54
 msgctxt "localenames|locale:nl"
