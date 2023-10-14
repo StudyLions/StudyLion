@@ -227,7 +227,7 @@ msgstr "길드 언어를 선택했어요. {lang}"
 #: src/babel/enums.py:43
 msgctxt "localenames|locale:id"
 msgid "Indonesian"
-msgstr ""
+msgstr "인도네시아어"
 
 #: src/babel/enums.py:44
 msgctxt "localenames|locale:da"
