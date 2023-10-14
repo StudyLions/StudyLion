@@ -152,7 +152,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "userset:locale|response"
 msgid "You have set your language to {lang}."
-msgstr ""
+msgstr "언어를 {lang}로 선택했어요."
 
 #: src/babel/settings.py:111
 msgctxt "guildset:force_locale"
