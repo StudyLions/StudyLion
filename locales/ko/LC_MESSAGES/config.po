@@ -79,7 +79,7 @@ msgstr "길드 대시보드 (Page {page}/{total})"
 #: src/modules/config/dashboard.py:109
 msgctxt "ui:dashboard|footer"
 msgid "Hover over setting names for a brief description"
-msgstr ""
+msgstr "설정 이름에 마우스를 올려놓으면 간단한 설명을 확인할 수 있어요."
 
 #: src/modules/config/dashboard.py:172
 msgctxt "ui:dashboard|menu:config|placeholder"
