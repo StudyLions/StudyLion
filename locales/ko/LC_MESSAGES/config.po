@@ -63,7 +63,7 @@ msgstr "타임존을 설정할 수 없어요!"
 #: src/modules/config/general.py:150
 msgctxt "cmd:configure_general|success"
 msgid "Settings Updated!"
-msgstr ""
+msgstr "설정을 적용했어요!"
 
 #: src/modules/config/general.py:165
 msgctxt "cmd:configure_general|panel|title"
