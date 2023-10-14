@@ -56,7 +56,7 @@ msgstr "제가 서버에서 사용할 기본 언어를 설정해 주세요."
 msgctxt "cmd:configure_language|error"
 msgid ""
 "You cannot enable `{force_setting}` without having a configured language!"
-msgstr ""
+msgstr "언어 설정을 하지 않으면 `{force_setting}`을 활성화할 수 없어요!"
 
 #: src/babel/cog.py:167
 msgctxt "cmd:configure_language|success"
