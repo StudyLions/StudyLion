@@ -98,7 +98,7 @@ msgstr "지원하지 않는 언어 매칭 {partial}"
 msgctxt "utils|months"
 msgid ""
 "January,February,March,April,May,June,July,August,September,October,November,December"
-msgstr ""
+msgstr "1월,2월,3월,4월,5월,6월,7월,8월,9월,10월,11월,12월"
 
 #: src/babel/utils.py:14
 msgctxt "utils|short_months"
