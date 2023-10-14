@@ -34,12 +34,12 @@ msgstr "언어 설정 패널"
 #: src/babel/settingui.py:83
 msgctxt "dash:locale|title"
 msgid "Server Language Configuration ({commands[configure language]})"
-msgstr ""
+msgstr "서버 언어 설정 ({commands[configure language]})"
 
 #: src/babel/settingui.py:87
 msgctxt "dash:locale|dropdown|placeholder"
 msgid "Server Language Panel"
-msgstr ""
+msgstr "서버 언어 패널"
 
 #: src/babel/cog.py:99
 msgctxt "cmd:configure_language"
