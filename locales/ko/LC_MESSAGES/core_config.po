@@ -29,4 +29,4 @@ msgstr "설정"
 #: src/core/config.py:29
 msgctxt "group:configure|desc"
 msgid "View and adjust my configuration options."
-msgstr ""
+msgstr "설정 옵션 조회 및 변경"
