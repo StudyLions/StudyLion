@@ -58,7 +58,7 @@ msgstr "일반 설정 패널"
 #: src/modules/config/general.py:129
 msgctxt "cmd:configure_general|parse_failure:timezone"
 msgid "Could not set the timezone!"
-msgstr ""
+msgstr "타임존을 설정할 수 없어요!"
 
 #: src/modules/config/general.py:150
 msgctxt "cmd:configure_general|success"
