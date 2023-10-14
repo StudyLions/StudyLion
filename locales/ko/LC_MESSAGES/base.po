@@ -27,11 +27,11 @@ msgstr "인터페이스를 사용할 수 없어요!"
 
 #: bot/modules/sysadmin/exec_cog.py:252 bot/modules/sysadmin/exec_cog.py:254
 msgid "async"
-msgstr ""
+msgstr "비동기"
 
 #: bot/modules/sysadmin/exec_cog.py:253 bot/modules/sysadmin/exec_cog.py:255
 msgid "Execute arbitrary code with Exec"
-msgstr ""
+msgstr "exec로 임의 코드 실행"
 
 #: bot/modules/sysadmin/exec_cog.py:265
 msgid "eval"
