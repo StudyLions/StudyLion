@@ -24,7 +24,7 @@ msgstr ""
 #: src/modules/config/general.py:41
 msgctxt "guildset:timezone"
 msgid "timezone"
-msgstr "타임존"
+msgstr "시간대"
 
 #: src/modules/config/general.py:44
 msgctxt "guildset:timezone|desc"
