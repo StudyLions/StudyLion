@@ -84,4 +84,4 @@ msgstr "설정 이름에 마우스를 올려놓으면 간단한 설명을 확인
 #: src/modules/config/dashboard.py:172
 msgctxt "ui:dashboard|menu:config|placeholder"
 msgid "Open Configuration Panel"
-msgstr ""
+msgstr "설정 패널 열기"
