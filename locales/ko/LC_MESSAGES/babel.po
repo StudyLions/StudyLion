@@ -44,7 +44,7 @@ msgstr "서버 언어 패널"
 #: src/babel/cog.py:99
 msgctxt "cmd:configure_language"
 msgid "language"
-msgstr ""
+msgstr "언어"
 
 #: src/babel/cog.py:101
 msgctxt "cmd:configure_language|desc"
