@@ -29,7 +29,7 @@ msgstr "타임존"
 #: src/modules/config/general.py:44
 msgctxt "guildset:timezone|desc"
 msgid "Guild timezone for statistics display."
-msgstr ""
+msgstr "통계 디스플레이를 위한 길드 타임존"
 
 #: src/modules/config/general.py:48
 msgctxt "guildset:timezone|long_desc"
