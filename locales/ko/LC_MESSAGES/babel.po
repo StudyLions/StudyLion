@@ -186,7 +186,7 @@ msgstr "비활성화 (각 맴버가 원하는 언어를 설정할 수 있습니�
 #: src/babel/settings.py:135
 msgctxt "guildset:force_locale|response"
 msgid "I will always use the set language in this server."
-msgstr ""
+msgstr "저는 서버 설정 언어만 사용할 거예요."
 
 #: src/babel/settings.py:140
 msgctxt "guildset:force_locale|response"
