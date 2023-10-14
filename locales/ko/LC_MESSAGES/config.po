@@ -37,7 +37,7 @@ msgid ""
 "Guild-wide timezone. Used to determine start of the day for the "
 "leaderboards, and as the default statistics timezone for members who have "
 "not set one."
-msgstr ""
+msgstr "길드 전용 시간대. 레더보드 시작일 기본값 설정 및 통계 시간대를 설정하지 않은 길드 맴버를 위해 사용해요."
 
 #: src/modules/config/general.py:62
 #, possible-python-brace-format
@@ -48,7 +48,7 @@ msgstr "길드 타임존이 설정되었어요. `{timezone}`"
 #: src/modules/config/general.py:94
 msgctxt "cmd:configure_general"
 msgid "general"
-msgstr ""
+msgstr "일반"
 
 #: src/modules/config/general.py:95
 msgctxt "cmd:configure_general|desc"
