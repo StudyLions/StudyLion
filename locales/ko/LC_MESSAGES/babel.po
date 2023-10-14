@@ -297,12 +297,12 @@ msgstr "폴란드어"
 #: src/babel/enums.py:57
 msgctxt "localenames|locale:pt-BR"
 msgid "Portuguese, Brazilian"
-msgstr ""
+msgstr "브라질 포르투갈어"
 
 #: src/babel/enums.py:58
 msgctxt "localenames|locale:ro"
 msgid "Romanian, Romania"
-msgstr ""
+msgstr "루마니아어"
 
 #: src/babel/enums.py:59
 msgctxt "localenames|locale:fi"
