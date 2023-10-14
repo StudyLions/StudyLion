@@ -81,7 +81,7 @@ msgstr "언어"
 #: src/babel/cog.py:195
 msgctxt "cmd:userconfig_language|param:language|desc"
 msgid "Which language do you want me to respond in?"
-msgstr ""
+msgstr "어떤 언어로 대답할까요?"
 
 #: src/babel/cog.py:211
 msgctxt "cmd:userconfig_language|button:reset|label"
