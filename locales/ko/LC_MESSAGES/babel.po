@@ -176,7 +176,7 @@ msgstr "활성화 시, 맴버 개인이 설정한 언어와 관계없이 이 길
 #: src/babel/settings.py:120
 msgctxt "guildset:force_locale|output"
 msgid "Enabled (members will be forced to use the server language)"
-msgstr ""
+msgstr "활성화 (모든 맴버는 서버에서 설정한 언어만 사용합니다.)"
 
 #: src/babel/settings.py:121
 msgctxt "guildset:force_locale|output"
