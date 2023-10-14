@@ -332,12 +332,12 @@ msgstr "체코어"
 #: src/babel/enums.py:64
 msgctxt "localenames|locale:el"
 msgid "Greek"
-msgstr ""
+msgstr "그리스어"
 
 #: src/babel/enums.py:65
 msgctxt "localenames|locale:bg"
 msgid "Bulgarian"
-msgstr ""
+msgstr "불가리아어"
 
 #: src/babel/enums.py:66
 msgctxt "localenames|locale:ru"
