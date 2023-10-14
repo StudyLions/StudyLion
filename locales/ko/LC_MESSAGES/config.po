@@ -74,7 +74,7 @@ msgstr "일반 설정 패널"
 #, possible-python-brace-format
 msgctxt "ui:dashboard|title"
 msgid "Guild Dashboard (Page {page}/{total})"
-msgstr ""
+msgstr "길드 대시보드 (Page {page}/{total})"
 
 #: src/modules/config/dashboard.py:109
 msgctxt "ui:dashboard|footer"
