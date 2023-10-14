@@ -262,12 +262,12 @@ msgstr "프랑스어"
 #: src/babel/enums.py:50
 msgctxt "localenames|locale:hr"
 msgid "Croatian"
-msgstr ""
+msgstr "크로아티아어"
 
 #: src/babel/enums.py:51
 msgctxt "localenames|locale:it"
 msgid "Italian"
-msgstr ""
+msgstr "이탈리아어"
 
 #: src/babel/enums.py:52
 msgctxt "localenames|locale:lt"
