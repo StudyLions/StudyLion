@@ -171,7 +171,7 @@ msgctxt "guildset:force_locale|long_desc"
 msgid ""
 "When enabled, commands in this guild will always use the configured guild "
 "language, regardless of the member's personally configured language."
-msgstr ""
+msgstr "활성화 시, 맴버 개인이 설정한 언어와 관계없이 이 길드의 커멘드는 설정한 언어로만 사용해야 해요."
 
 #: src/babel/settings.py:120
 msgctxt "guildset:force_locale|output"
