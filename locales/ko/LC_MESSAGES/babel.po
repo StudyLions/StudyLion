@@ -118,7 +118,7 @@ msgstr "지원"
 #: src/babel/settings.py:45
 msgctxt "settype:locale|formatted:unset"
 msgid "Unset"
-msgstr ""
+msgstr "설정 해제"
 
 #: src/babel/settings.py:61
 #, possible-python-brace-format
