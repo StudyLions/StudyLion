@@ -68,7 +68,7 @@ msgstr "설정을 적용했어요!"
 #: src/modules/config/general.py:165
 msgctxt "cmd:configure_general|panel|title"
 msgid "General Configuration Panel"
-msgstr ""
+msgstr "일반 설정 패널"
 
 #: src/modules/config/dashboard.py:98
 #, possible-python-brace-format
