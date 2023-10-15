@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-24 12:21+0300\n"
+"POT-Creation-Date: 2023-10-15 15:58+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
@@ -190,58 +190,99 @@ msgctxt "ui:room_status|embed|field:members|name"
 msgid "Members ({count}/{cap})"
 msgstr "Membros ({count}/{cap})"
 
-#: src/modules/rooms/cog.py:321
+#: src/modules/rooms/cog.py:175 src/modules/rooms/room.py:364
+msgctxt "room|eventlog|event:room_deleted|title"
+msgid "Private Room Deleted"
+msgstr ""
+
+#: src/modules/rooms/cog.py:179 src/modules/rooms/room.py:368
+#, possible-python-brace-format
+msgctxt "room|eventlog|event:room_deleted|desc"
+msgid "{owner}'s private room was deleted."
+msgstr ""
+
+#: src/modules/rooms/cog.py:270
+#, possible-python-brace-format
+msgctxt "create_room|create_channel|audit_reason"
+msgid "Creating Private Room for {ownerid}"
+msgstr ""
+
+#: src/modules/rooms/cog.py:279
+msgctxt "eventlog|event:private_room_create_error|name"
+msgid "Private Room Creation Failed"
+msgstr ""
+
+#: src/modules/rooms/cog.py:283
+#, possible-python-brace-format
+msgctxt "eventlog|event:private_room_create_error|desc"
+msgid ""
+"{owner} attempted to rent a new private room, but I could not create it!\n"
+"They were not charged."
+msgstr ""
+
+#: src/modules/rooms/cog.py:329
+msgctxt "eventlog|event:private_room_create|name"
+msgid "Private Room Rented"
+msgstr ""
+
+#: src/modules/rooms/cog.py:333
+#, possible-python-brace-format
+msgctxt "eventlog|event:private_room_create|desc"
+msgid "{owner} has rented a new private room {channel}!"
+msgstr ""
+
+#: src/modules/rooms/cog.py:368
 msgctxt "cmd:room"
 msgid "room"
 msgstr "sala"
 
-#: src/modules/rooms/cog.py:322
+#: src/modules/rooms/cog.py:369
 msgctxt "cmd:room|desc"
 msgid "Base command group for private room configuration."
 msgstr "Grupo de comandos base para configurações de salas particulares."
 
-#: src/modules/rooms/cog.py:329
+#: src/modules/rooms/cog.py:376
 msgctxt "cmd:room_rent"
 msgid "rent"
 msgstr "alugar"
 
-#: src/modules/rooms/cog.py:332
+#: src/modules/rooms/cog.py:379
 msgctxt "cmd:room_rent|desc"
 msgid "Rent a private voice channel with LionCoins."
 msgstr "Alugar um canal de voz privado com LionCoins."
 
-#: src/modules/rooms/cog.py:336
+#: src/modules/rooms/cog.py:383
 msgctxt "cmd:room_rent|param:days"
 msgid "days"
 msgstr "dias"
 
-#: src/modules/rooms/cog.py:337
+#: src/modules/rooms/cog.py:384
 msgctxt "cmd:room_rent|param:members"
 msgid "members"
 msgstr "membros"
 
-#: src/modules/rooms/cog.py:338
+#: src/modules/rooms/cog.py:385
 msgctxt "cmd:room_rent|param:name"
 msgid "name"
 msgstr "nome"
 
-#: src/modules/rooms/cog.py:343
+#: src/modules/rooms/cog.py:390
 msgctxt "cmd:room_rent|param:days|desc"
 msgid "Number of days to pre-purchase. (Default: 1)"
 msgstr "Numéro de dias para comprar antecipadamente. (Padrão: 1)"
 
-#: src/modules/rooms/cog.py:347
+#: src/modules/rooms/cog.py:394
 msgctxt "cmd:room_rent|param:members|desc"
 msgid "Mention the members you want to add to your private room."
 msgstr ""
 "Mencione o membro que você gostaria de adicionar à sua sala particular."
 
-#: src/modules/rooms/cog.py:351
+#: src/modules/rooms/cog.py:398
 msgctxt "cmd:room_rent|param:name|desc"
 msgid "Name of your private voice channel."
 msgstr "Nome do seu canal privado de voz."
 
-#: src/modules/rooms/cog.py:369
+#: src/modules/rooms/cog.py:416
 msgctxt "cmd:room_rent|error:not_setup"
 msgid ""
 "The private room system has not been set up! A private room category needs "
@@ -250,7 +291,7 @@ msgstr ""
 "O sistema de sala particular não foi configurado! É necessário configurar "
 "uma categoria de salas particular primeiro, com ˋ/configurar salasˋ."
 
-#: src/modules/rooms/cog.py:380
+#: src/modules/rooms/cog.py:427
 msgctxt "cmd:room_rent|error:insufficient_perms"
 msgid ""
 "I do not have enough permissions to create a new channel under the "
@@ -259,19 +300,19 @@ msgstr ""
 "Eu não tenho permissão suficiente para criar um novo canal dentro da "
 "categoria de salas particulares! "
 
-#: src/modules/rooms/cog.py:394
+#: src/modules/rooms/cog.py:441
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|error:room_exists"
 msgid "You already own a private room! Click to visit: {channel}"
 msgstr "Você já tem uma sala particular! Clique para visitar: {channel}"
 
-#: src/modules/rooms/cog.py:414
+#: src/modules/rooms/cog.py:461
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|error:member_not_found"
 msgid "Could not find the requested member {mention} in this server!"
 msgstr "Não pude encontrar o membro requisitado {mention} neste servidor!"
 
-#: src/modules/rooms/cog.py:428
+#: src/modules/rooms/cog.py:475
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|error:too_many_members"
 msgid ""
@@ -281,7 +322,7 @@ msgstr ""
 "Muitos membros! Você quis adicionar ˋ{count}ˋ membros para sua sala, mas a "
 "capacidade máxima de salas particulares é ˋ{cap}ˋ!"
 
-#: src/modules/rooms/cog.py:442
+#: src/modules/rooms/cog.py:489
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|confirm:purchase"
 msgid ""
@@ -300,18 +341,18 @@ msgstr[2] ""
 "Você confirma que quer gastar {coin}**{required}** para alugar uma sala "
 "particular por ˋ{days}ˋ dias?"
 
-#: src/modules/rooms/cog.py:467
+#: src/modules/rooms/cog.py:514
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|success"
 msgid "Successfully created your private room {channel}!"
 msgstr "Sua sala particular {channel} foi criada com sucesso!"
 
-#: src/modules/rooms/cog.py:472
+#: src/modules/rooms/cog.py:519
 msgctxt "cmd:room_rent|success|title"
 msgid "Private Room Created!"
 msgstr "Sala Particular Criada!"
 
-#: src/modules/rooms/cog.py:506
+#: src/modules/rooms/cog.py:553
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|error:insufficient_funds"
 msgid ""
@@ -330,7 +371,7 @@ msgstr[2] ""
 "Alugar uma sala particular por ˋ{days} dias, custa {coin}**{required}**, mas"
 " você só tem {coin}**{balance}**!"
 
-#: src/modules/rooms/cog.py:540
+#: src/modules/rooms/cog.py:587
 msgctxt "cmd:room_rent|error:my_permissions"
 msgid ""
 "Could not create your private room! You were not charged.\n"
@@ -339,7 +380,7 @@ msgstr ""
 "Não pude criar sua sala particular! Você não foi cobrado por isto.\n"
 "Eu não tenho permissão suficiente para criar uma sala particular."
 
-#: src/modules/rooms/cog.py:552
+#: src/modules/rooms/cog.py:598
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|error:unknown"
 msgid ""
@@ -351,17 +392,17 @@ msgstr ""
 "Um erro desconhecido ocorreu quando estava criando sua sala.\n"
 "ˋ{error}ˋ"
 
-#: src/modules/rooms/cog.py:562
+#: src/modules/rooms/cog.py:607
 msgctxt "cmd:room_status"
 msgid "status"
 msgstr "status"
 
-#: src/modules/rooms/cog.py:565
+#: src/modules/rooms/cog.py:610
 msgctxt "cmd:room_status|desc"
 msgid "Display the status of your current room."
 msgstr "Mostra o status da sua sala atual."
 
-#: src/modules/rooms/cog.py:582
+#: src/modules/rooms/cog.py:627
 msgctxt "cmd:room_status|error:no_target"
 msgid ""
 "Could not identify target private room! Please re-run the command in the "
@@ -370,27 +411,27 @@ msgstr ""
 "Não pude identificar a sala particular indicada! Por favor, repita o comando"
 " na sala particular que você gostaria de ver o status."
 
-#: src/modules/rooms/cog.py:597
+#: src/modules/rooms/cog.py:642
 msgctxt "cmd:room_invite"
 msgid "invite"
 msgstr "convidar"
 
-#: src/modules/rooms/cog.py:600
+#: src/modules/rooms/cog.py:645
 msgctxt "cmd:room_invite|desc"
 msgid "Add members to your private room."
 msgstr "Adicionar membros à sua sala particular."
 
-#: src/modules/rooms/cog.py:604
+#: src/modules/rooms/cog.py:649
 msgctxt "cmd:room_invite|param:members"
 msgid "members"
 msgstr "membros"
 
-#: src/modules/rooms/cog.py:609
+#: src/modules/rooms/cog.py:654
 msgctxt "cmd:room_invite|param:members|desc"
 msgid "Mention the members you want to add."
 msgstr "Mencione os membros que você quer adicionar."
 
-#: src/modules/rooms/cog.py:623
+#: src/modules/rooms/cog.py:668
 #, possible-python-brace-format
 msgctxt "cmd:room_invite|error:no_room"
 msgid ""
@@ -399,18 +440,18 @@ msgstr ""
 "Você não tem uma sala particular! Digite ˋ/sala alugarˋ para alugar uma por "
 "{coin}!"
 
-#: src/modules/rooms/cog.py:644
+#: src/modules/rooms/cog.py:689
 #, possible-python-brace-format
 msgctxt "cmd:room_invite|error:member_not_found"
 msgid "Could not find the invited member {mention} in this server!"
 msgstr "Não foi possível encontrar o membro {mention} nesse servidor!"
 
-#: src/modules/rooms/cog.py:655
+#: src/modules/rooms/cog.py:700
 msgctxt "cmd:room_invite|error:no_new_members"
 msgid "All members mentioned are already in the room!"
 msgstr "Todos os membros mencionados já estão na sala!"
 
-#: src/modules/rooms/cog.py:669
+#: src/modules/rooms/cog.py:714
 #, possible-python-brace-format
 msgctxt "cmd:room_invite|error:too_many_members"
 msgid ""
@@ -420,27 +461,27 @@ msgstr ""
 "Muitos membros! Você convidou `{count}` novos membros para sua sala, mas "
 "você já tem `{current}`, e a capacidade máxima de membros é de `{cap}`!"
 
-#: src/modules/rooms/cog.py:693
+#: src/modules/rooms/cog.py:738
 msgctxt "cmd:room_invite|success|ack"
 msgid "Members Invited successfully."
 msgstr "Membros convidados com sucesso."
 
-#: src/modules/rooms/cog.py:701
+#: src/modules/rooms/cog.py:746
 msgctxt "cmd:room_kick"
 msgid "kick"
 msgstr "expulsar"
 
-#: src/modules/rooms/cog.py:704
+#: src/modules/rooms/cog.py:749
 msgctxt "cmd:room_kick|desc"
 msgid "Remove a members from your private room."
 msgstr "Remover um membro da sua sala particular."
 
-#: src/modules/rooms/cog.py:708
+#: src/modules/rooms/cog.py:753
 msgctxt "cmd:room_kick|param:members"
 msgid "members"
 msgstr "membros"
 
-#: src/modules/rooms/cog.py:713
+#: src/modules/rooms/cog.py:758
 msgctxt "cmd:room_kick|param:members|desc"
 msgid ""
 "Mention the members you want to remove. Also accepts space-separated user "
@@ -449,7 +490,7 @@ msgstr ""
 "Mencione o membro que você quer remover. IDˋs de usuário, separadas por "
 "\"espaço\" também são aceitas."
 
-#: src/modules/rooms/cog.py:727
+#: src/modules/rooms/cog.py:772
 #, possible-python-brace-format
 msgctxt "cmd:room_kick|error:no_room"
 msgid ""
@@ -458,45 +499,45 @@ msgstr ""
 "Você não tem uma sala particular! Use `/room rent` para alugar uma com "
 "{coin}!"
 
-#: src/modules/rooms/cog.py:744
+#: src/modules/rooms/cog.py:789
 msgctxt "cmd:room_kick|error:no_matching_members"
 msgid "None of the mentioned members are in this room!"
 msgstr "Nenhum dos membros indicados está nessa sala!"
 
-#: src/modules/rooms/cog.py:761
+#: src/modules/rooms/cog.py:806
 msgctxt "cmd:room_kick|success|ack"
 msgid "Members removed."
 msgstr "Membros removidos."
 
-#: src/modules/rooms/cog.py:767
+#: src/modules/rooms/cog.py:812
 msgctxt "cmd:room_transfer"
 msgid "transfer"
 msgstr "transferir"
 
-#: src/modules/rooms/cog.py:770
+#: src/modules/rooms/cog.py:815
 msgctxt "cmd:room_transfer|desc"
 msgid "Transfer your private room to another room member. Not reversible!"
 msgstr ""
 "Transferir a titularidade da sua sala particular para outro membro. Isto não"
 " é reversível!"
 
-#: src/modules/rooms/cog.py:774
+#: src/modules/rooms/cog.py:819
 msgctxt "cmd:room_transfer|param:new_owner"
 msgid "new_owner"
 msgstr "novo_dono"
 
-#: src/modules/rooms/cog.py:779
+#: src/modules/rooms/cog.py:824
 msgctxt "cmd:room_transfer|param:new_owner"
 msgid "The room member you would like to transfer your room to."
 msgstr ""
 "O membro da sala, para quem você gostaria de transferir sua sala particular."
 
-#: src/modules/rooms/cog.py:793
+#: src/modules/rooms/cog.py:838
 msgctxt "cmd:room_transfer|error:no_room"
 msgid "You do not own a private room to transfer!"
 msgstr "Você não possui nenhuma sala particular para transferir!"
 
-#: src/modules/rooms/cog.py:805
+#: src/modules/rooms/cog.py:850
 #, possible-python-brace-format
 msgctxt "cmd:room_transfer|error:target_not_member"
 msgid ""
@@ -505,7 +546,7 @@ msgstr ""
 "{mention} não é um membro da sua sala particular! Você precisa convidá-lo "
 "primeiro."
 
-#: src/modules/rooms/cog.py:817
+#: src/modules/rooms/cog.py:862
 #, possible-python-brace-format
 msgctxt "cmd:room_transfer|error:target_has_room"
 msgid ""
@@ -514,7 +555,7 @@ msgstr ""
 "{mention} já possui uma sala! Cada membro pode ter apenas uma sala "
 "particular por vez."
 
-#: src/modules/rooms/cog.py:826
+#: src/modules/rooms/cog.py:871
 #, possible-python-brace-format
 msgctxt "cmd:room_transfer|confirm|question"
 msgid ""
@@ -524,7 +565,7 @@ msgstr ""
 "Tem certeza que você deseja transferir sua sala particular {channel} para "
 "{novo_dono}? Essa ação não é reversível!"
 
-#: src/modules/rooms/cog.py:846
+#: src/modules/rooms/cog.py:891
 #, possible-python-brace-format
 msgctxt "cmd:room_transfer|success|description"
 msgid ""
@@ -532,12 +573,12 @@ msgid ""
 msgstr ""
 "Você transferiu com sucesso a posse da sala {channel} para {novo_dono}."
 
-#: src/modules/rooms/cog.py:852
+#: src/modules/rooms/cog.py:897
 msgctxt "cmd:room_deposit"
 msgid "deposit"
 msgstr "depositar"
 
-#: src/modules/rooms/cog.py:855
+#: src/modules/rooms/cog.py:900
 msgctxt "cmd:room_deposit|desc"
 msgid ""
 "Deposit LionCoins in your private room bank to add more days. (Members may "
@@ -546,17 +587,17 @@ msgstr ""
 "Depositar LionCoins no caixa da sala particular para adicionar mais dias. "
 "(Todos podem depositar!)"
 
-#: src/modules/rooms/cog.py:859
+#: src/modules/rooms/cog.py:904
 msgctxt "cmd:room_deposit|param:coins"
 msgid "coins"
 msgstr "moedas"
 
-#: src/modules/rooms/cog.py:864
+#: src/modules/rooms/cog.py:909
 msgctxt "cmd:room_deposit|param:coins|desc"
 msgid "Number of coins to deposit."
 msgstr "Número de moedas para depositar."
 
-#: src/modules/rooms/cog.py:884
+#: src/modules/rooms/cog.py:929
 msgctxt "cmd:room_deposit|error:no_target"
 msgid ""
 "Could not identify target private room! Please re-run the command in the "
@@ -565,7 +606,7 @@ msgstr ""
 "Não pude identificar sala particular descrita! Por favor, use o comando "
 "novamente através da sala que você quer contribuir."
 
-#: src/modules/rooms/cog.py:900
+#: src/modules/rooms/cog.py:945
 #, possible-python-brace-format
 msgctxt "cmd:room_deposit|error:insufficient_funds"
 msgid ""
@@ -574,7 +615,7 @@ msgstr ""
 "Você não pode depositar {coin}**{amount}**! Você tem apenas "
 "{coin}**{balance}**."
 
-#: src/modules/rooms/cog.py:921
+#: src/modules/rooms/cog.py:966
 #, possible-python-brace-format
 msgctxt "cmd:room_depost|success"
 msgid ""
@@ -583,51 +624,114 @@ msgstr ""
 "Sucesso! Você contribuiu com {coin}**{amount}** para o caixa da sala "
 "particular."
 
-#: src/modules/rooms/cog.py:936
+#: src/modules/rooms/cog.py:981
 msgctxt "cmd:configure_rooms"
 msgid "rooms"
 msgstr "salas"
 
-#: src/modules/rooms/cog.py:937
+#: src/modules/rooms/cog.py:982
 msgctxt "cmd:configure_rooms|desc"
 msgid "Configure Rented Private Rooms"
 msgstr "Configurar Aluguel de Salas Particulares"
 
-#: src/modules/rooms/room.py:81
+#: src/modules/rooms/room.py:78
+msgctxt "room|eventlog|field:owner"
+msgid "Owner"
+msgstr ""
+
+#: src/modules/rooms/room.py:84
+msgctxt "room|eventlog|field:channel"
+msgid "Channel"
+msgstr ""
+
+#: src/modules/rooms/room.py:90
+msgctxt "room|eventlog|field:balance"
+msgid "Room Balance"
+msgstr ""
+
+#: src/modules/rooms/room.py:96
+msgctxt "room|eventlog|field:created"
+msgid "Created At"
+msgstr ""
+
+#: src/modules/rooms/room.py:102
+msgctxt "room|eventlog|field:tick"
+msgid "Next Rent Due"
+msgstr ""
+
+#: src/modules/rooms/room.py:108
+msgctxt "room|eventlog|field:members"
+msgid "Private Room Members"
+msgstr ""
+
+#: src/modules/rooms/room.py:123
 #, possible-python-brace-format
 msgctxt "room|notify:deposit|description"
 msgid "{member} has deposited {coin}**{amount}** into the room bank!"
 msgstr "{member} depositou {coin}**{amount}** no caixa da sala!"
 
-#: src/modules/rooms/room.py:104
+#: src/modules/rooms/room.py:146
 msgctxt "room|notify:new_members|title"
 msgid "New Members!"
 msgstr "Novos Membros!"
 
-#: src/modules/rooms/room.py:108
+#: src/modules/rooms/room.py:150
 #, possible-python-brace-format
 msgctxt "room|notify:new_members|desc"
 msgid "Welcome {members}"
 msgstr "Bem Vindos {members}"
 
-#: src/modules/rooms/room.py:183
+#: src/modules/rooms/room.py:156
+msgctxt "room|eventlog|event:new_members|title"
+msgid "Members invited to private room"
+msgstr ""
+
+#: src/modules/rooms/room.py:160
+#, possible-python-brace-format
+msgctxt "room|eventlog|event:new_members|desc"
+msgid "{owner} added members to their private room: {members}"
+msgstr ""
+
+#: src/modules/rooms/room.py:191
+msgctxt "room|eventlog|event:rm_members|title"
+msgid "Members removed from private room"
+msgstr ""
+
+#: src/modules/rooms/room.py:195
+#, possible-python-brace-format
+msgctxt "room|eventlog|event:rm_members|desc"
+msgid "{owner} removed members from their private room: {members}"
+msgstr ""
+
+#: src/modules/rooms/room.py:254
 #, possible-python-brace-format
 msgctxt "room|notify:transfer|description"
 msgid "{old_owner} has transferred private room ownership to {new_owner}"
 msgstr "{antigo_dono} transferiu a posse da sala particular para {novo_dono}"
 
-#: src/modules/rooms/room.py:247
+#: src/modules/rooms/room.py:318
 msgctxt "room|embed:expiry|title"
 msgid "Private Room Expired!"
 msgstr "Sala Particular Expirou!"
 
-#: src/modules/rooms/room.py:251
+#: src/modules/rooms/room.py:322
 #, possible-python-brace-format
 msgctxt "room|embed:expiry|description"
 msgid "Your private room in **{guild}** has expired!"
 msgstr "Sua sala particular em **{guild}** expirou!"
 
-#: src/modules/rooms/room.py:265
+#: src/modules/rooms/room.py:332
+msgctxt "room|eventlog|event:expired|title"
+msgid "Private Room Expired"
+msgstr ""
+
+#: src/modules/rooms/room.py:336
+#, possible-python-brace-format
+msgctxt "room|eventlog|event:expired|desc"
+msgid "{owner}'s private room has expired."
+msgstr ""
+
+#: src/modules/rooms/room.py:349
 #, possible-python-brace-format
 msgctxt "room|tick|rent_deducted"
 msgid "Daily rent deducted from room balance. New balance: {coin}**{amount}**"
