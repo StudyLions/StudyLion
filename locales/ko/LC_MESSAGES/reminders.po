@@ -51,7 +51,7 @@ msgctxt "parse_timestamp|error:parse"
 msgid ""
 "Could not parse `{given}` as a valid reminder time. Try entering the time in"
 " the form `HH:MM` or `YYYY-MM-DD HH:MM`."
-msgstr ""
+msgstr "리마인더 시간 형식에 맞지 않아요. 유효한 시간 정보를 `HH:MM`나 `YYYY-MM-DD HH:MM`형식으로 입력하세요."
 
 #: src/modules/reminders/cog.py:329
 msgctxt "cmd:reminders"
