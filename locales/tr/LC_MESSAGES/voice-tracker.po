@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 22:43+0300\n"
+"POT-Creation-Date: 2023-10-15 15:58+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Eyüp Ramazan, 2023\n"
 "Language-Team: Turkish (https://app.transifex.com/leobot/teams/174919/tr/)\n"
@@ -22,50 +22,96 @@ msgstr ""
 "Language: tr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/tracking/voice/cog.py:640
+#: src/tracking/voice/session.py:293
+msgctxt "eventlog|event:voice_session_expired|title"
+msgid "Member Voice Session Expired"
+msgstr ""
+
+#: src/tracking/voice/session.py:297
+#, possible-python-brace-format
+msgctxt "eventlog|event:voice_session_expired|desc"
+msgid ""
+"{member}'s voice session in {channel} expired because they reached the daily"
+" voice cap."
+msgstr ""
+
+#: src/tracking/voice/session.py:336
+msgctxt "eventlog|event:voice_session_closed|title"
+msgid "Member Voice Session Ended"
+msgstr ""
+
+#: src/tracking/voice/session.py:340
+#, possible-python-brace-format
+msgctxt "eventlog|event:voice_session_closed|desc"
+msgid "{member} completed their voice session in {channel}."
+msgstr ""
+
+#: src/tracking/voice/session.py:352
+msgctxt "eventlog|event:voice_session_cancelled|title"
+msgid "Member Voice Session Cancelled"
+msgstr ""
+
+#: src/tracking/voice/session.py:356
+#, possible-python-brace-format
+msgctxt "eventlog|event:voice_session_cancelled|desc"
+msgid "{member} left {channel} before their voice session started."
+msgstr ""
+
+#: src/tracking/voice/cog.py:518
+msgctxt "eventlog|event:voice_session_start|title"
+msgid "Member Joined Tracked Voice Channel"
+msgstr ""
+
+#: src/tracking/voice/cog.py:522
+#, possible-python-brace-format
+msgctxt "eventlog|event:voice_session_start|desc"
+msgid "{member} joined {channel}."
+msgstr ""
+
+#: src/tracking/voice/cog.py:657
 msgctxt "cmd:now"
 msgid "now"
 msgstr "şuan"
 
-#: src/tracking/voice/cog.py:643
+#: src/tracking/voice/cog.py:660
 msgctxt "cmd:now|desc"
 msgid ""
 "Describe what you are working on, or see what your friends are working on!"
 msgstr "Neye çalıştığını anlat ya da arkadaşlarının neye çalıştığını gör!"
 
-#: src/tracking/voice/cog.py:647
+#: src/tracking/voice/cog.py:664
 msgctxt "cmd:now|param:tag"
 msgid "tag"
 msgstr "etiket"
 
-#: src/tracking/voice/cog.py:648
+#: src/tracking/voice/cog.py:665
 msgctxt "cmd:now|param:user"
 msgid "user"
 msgstr "kullanıcı"
 
-#: src/tracking/voice/cog.py:649
+#: src/tracking/voice/cog.py:666
 msgctxt "cmd:now|param:clear"
 msgid "clear"
 msgstr "temizle"
 
-#: src/tracking/voice/cog.py:654
+#: src/tracking/voice/cog.py:671
 msgctxt "cmd:now|param:tag|desc"
 msgid "Describe what you are working on in 10 characters or less!"
 msgstr "Ne çalıştığını 10 ya da daha az karakterle açıkla!"
 
-#: src/tracking/voice/cog.py:658
+#: src/tracking/voice/cog.py:675
 msgctxt "cmd:now|param:user|desc"
 msgid "Check what a friend is working on."
 msgstr "Arkadaşlarının neye çalıştığına bak."
 
-#: src/tracking/voice/cog.py:662
+#: src/tracking/voice/cog.py:679
 msgctxt "cmd:now|param:clear|desc"
 msgid "Unset your activity tag (or the target user's tag, for moderators)."
 msgstr ""
 "Aktivite etiketinizi kaldırın (ya da hedef üye etiketini, moderatörler için "
 "geçerlidir)"
 
-#: src/tracking/voice/cog.py:689
+#: src/tracking/voice/cog.py:706
 msgctxt "cmd:now|target:self|error:target_inactive"
 msgid ""
 "You have no running session! Join a tracked voice channel to start a "
@@ -74,86 +120,86 @@ msgstr ""
 "Aktif bir oturumun yok! Oturum başlatmak için takip edilen bir ses kanalına "
 "gir."
 
-#: src/tracking/voice/cog.py:698
+#: src/tracking/voice/cog.py:715
 #, possible-python-brace-format
 msgctxt "cmd:now|target:other|error:target_inactive"
 msgid "{mention} has no running session!"
 msgstr "{mention} kullanıcısının aktif bir oturumu yok!"
 
-#: src/tracking/voice/cog.py:713
+#: src/tracking/voice/cog.py:730
 msgctxt "cmd:now|target:self|mode:clear|success|title"
 msgid "Session Tag Cleared"
 msgstr "Oturum Etiketi Temizlendi"
 
-#: src/tracking/voice/cog.py:717
+#: src/tracking/voice/cog.py:734
 msgctxt "cmd:now|target:self|mode:clear|success|desc"
 msgid "Successfully unset your session tag."
 msgstr "Oturum etiketin başarıyla temizlenmiştir."
 
-#: src/tracking/voice/cog.py:726
+#: src/tracking/voice/cog.py:743
 msgctxt "cmd:now|target:other|mode:clear|error:perms|title"
 msgid "You can't do that!"
 msgstr "Bunu yapamazsın!"
 
-#: src/tracking/voice/cog.py:730
+#: src/tracking/voice/cog.py:747
 msgctxt "cmd:now|target:other|mode:clear|error:perms|desc"
 msgid "You need to be a moderator to set or clear someone else's session tag."
 msgstr ""
 "Başka birinin oturum etiketini ayarlamak ya da temizlemek için moderatör "
 "olman gerekiyor."
 
-#: src/tracking/voice/cog.py:740
+#: src/tracking/voice/cog.py:757
 msgctxt "cmd:now|target:other|mode:clear|success|title"
 msgid "Session Tag Cleared!"
 msgstr "Oturum Etiketi Temizlendi!"
 
-#: src/tracking/voice/cog.py:744
+#: src/tracking/voice/cog.py:761
 #, possible-python-brace-format
 msgctxt "cmd:now|target:other|mode:clear|success|desc"
 msgid "Cleared {target}'s session tag."
 msgstr "{target} kullanıcısının oturum etiketi temizlendi."
 
-#: src/tracking/voice/cog.py:756
+#: src/tracking/voice/cog.py:773
 msgctxt "cmd:now|target:self|mode:set|success|title"
 msgid "Session Tag Set!"
 msgstr "Oturum etiketi ayarlandı!"
 
-#: src/tracking/voice/cog.py:760
+#: src/tracking/voice/cog.py:777
 #, possible-python-brace-format
 msgctxt "cmd:now|target:self|mode:set|success|desc"
 msgid "You are now working on `{new_tag}`. Good luck!"
 msgstr "Şimdi `{new_tag}` üzerine çalışıyorsun. İyi şanslar!"
 
-#: src/tracking/voice/cog.py:769
+#: src/tracking/voice/cog.py:786
 msgctxt "cmd:now|target:other|mode:set|error:perms|title"
 msgid "You can't do that!"
 msgstr "Bunu yapamazsın!"
 
-#: src/tracking/voice/cog.py:773
+#: src/tracking/voice/cog.py:790
 msgctxt "cmd:now|target:other|mode:set|error:perms|desc"
 msgid "You need to be a moderator to set or clear someone else's session tag!"
 msgstr ""
 "Başka birinin oturum etiketini ayarlamak ya da temizlemek için moderatör "
 "olman gerekiyor."
 
-#: src/tracking/voice/cog.py:783
+#: src/tracking/voice/cog.py:800
 msgctxt "cmd:now|target:other|mode:set|success|title"
 msgid "Session Tag Set!"
 msgstr "Oturum etiketi ayarlandı!"
 
-#: src/tracking/voice/cog.py:787
+#: src/tracking/voice/cog.py:804
 #, possible-python-brace-format
 msgctxt "cmd:now|target:other|mode:set|success|desc"
 msgid "Set {target}'s session tag to `{new_tag}`."
 msgstr "{target} kullanıcısının oturum etiketini `{new_tag}` olarak ayarla."
 
-#: src/tracking/voice/cog.py:796
+#: src/tracking/voice/cog.py:813
 #, possible-python-brace-format
 msgctxt "cmd:now|target:self|mode:show_with_tag|desc"
 msgid "You have been working on **`{tag}`** in {channel} since {time}!"
 msgstr "**`{tag}`** üzerine {channel} kanalında {time} beridir çalışıyorsun!"
 
-#: src/tracking/voice/cog.py:801
+#: src/tracking/voice/cog.py:818
 #, possible-python-brace-format
 msgctxt "cmd:now|target:self|mode:show_without_tag|desc"
 msgid ""
@@ -165,7 +211,7 @@ msgstr ""
 "\n"
 "Ne çalıştığını görmek için `/now <tag>` kullan."
 
-#: src/tracking/voice/cog.py:808
+#: src/tracking/voice/cog.py:825
 #, possible-python-brace-format
 msgctxt "cmd:now|target:other|mode:show_with_tag|desc"
 msgid ""
@@ -175,23 +221,23 @@ msgstr ""
 "{target} şu anda {channel} kanalında çalışıyor!\n"
 "**{tag}** üzerine {time}'dan beridir çalışıyor."
 
-#: src/tracking/voice/cog.py:814
+#: src/tracking/voice/cog.py:831
 #, possible-python-brace-format
 msgctxt "cmd:now|target:other|mode:show_without_tag|desc"
 msgid "{target} has been working in {channel} since {time}!"
 msgstr "{target} {channel} kanalında {time} zamandan beridir çalışıyor!"
 
-#: src/tracking/voice/cog.py:837
+#: src/tracking/voice/cog.py:854
 msgctxt "cmd:configure_voice_rates"
 msgid "voice_rewards"
 msgstr "ses_ödülleri"
 
-#: src/tracking/voice/cog.py:840
+#: src/tracking/voice/cog.py:857
 msgctxt "cmd:configure_voice_rates|desc"
 msgid "Configure Voice tracking rewards and experience"
 msgstr "Ses takibinin ödüllerini ve deneyimlerini konfigüre edin"
 
-#: src/tracking/voice/cog.py:897
+#: src/tracking/voice/cog.py:914
 #, possible-python-brace-format
 msgctxt "cmd:configure_voice_tracking|mode:voice|resp:success|desc"
 msgid ""
@@ -203,7 +249,7 @@ msgstr ""
 " başına toplam **{cap}** saate kadar {coin}**{base} (+ {bonus})** ile "
 "ödüllendirilecek."
 
-#: src/tracking/voice/cog.py:908
+#: src/tracking/voice/cog.py:925
 #, possible-python-brace-format
 msgctxt "cmd:configure_voice_tracking|mode:study|resp:success|desc"
 msgid ""
@@ -412,27 +458,27 @@ msgctxt "ui:voice_tracker_config|menu:untracked_channels|placeholder"
 msgid "Set Untracked Channels"
 msgstr "Takip Edilmeyen Kanalları Seç"
 
-#: src/tracking/voice/settings.py:428 src/tracking/voice/settings.py:482
+#: src/tracking/voice/settings.py:428 src/tracking/voice/settings.py:485
 msgctxt "ui:voice_tracker_config|mode:voice|embed|title"
 msgid "Voice Tracker Configuration Panel"
 msgstr "Ses Takibi Konfigürasyon Paneli"
 
-#: src/tracking/voice/settings.py:433 src/tracking/voice/settings.py:487
+#: src/tracking/voice/settings.py:433 src/tracking/voice/settings.py:490
 msgctxt "ui:voice_tracker_config|mode:study|embed|title"
 msgid "Study Tracker Configuration Panel"
 msgstr "Çalışma Sayacı Konfigürasyon Paneli "
 
-#: src/tracking/voice/settings.py:472
+#: src/tracking/voice/settings.py:475
 msgctxt "ui:voice_tracker_config|menu:untracked_channels|placeholder"
 msgid "Select Untracked Channels"
 msgstr "Takip Edilmeyen Kanalları Seç"
 
-#: src/tracking/voice/settings.py:528
+#: src/tracking/voice/settings.py:531
 msgctxt "dash:voice_tracker|title"
 msgid "Voice Tracker Configuration ({commands[configure voice_rewards]})"
 msgstr "Ses Takibi konfigürasyonu ({commands[configure voice_rewards]})"
 
-#: src/tracking/voice/settings.py:532
+#: src/tracking/voice/settings.py:535
 msgctxt "dash:voice_tracking|dropdown|placeholder"
 msgid "Voice Activity Panel"
 msgstr "Ses Aktivite Paneli"
