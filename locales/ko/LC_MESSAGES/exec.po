@@ -32,7 +32,7 @@ msgstr "비동기"
 
 #: src/modules/sysadmin/exec_cog.py:275
 msgid "Execute arbitrary code with Exec"
-msgstr ""
+msgstr "임의 코드 실행 `exec`"
 
 #: src/modules/sysadmin/exec_cog.py:337
 msgctxt "command"
