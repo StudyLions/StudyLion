@@ -43,7 +43,7 @@ msgctxt "create_reminder|error:cannot_dm"
 msgid ""
 "I cannot direct message you! Do you have me blocked or direct messages "
 "closed?"
-msgstr ""
+msgstr "당신에게 DM을 보낼 수 없어요! 혹시 저를 차단했거나 DM이 닫혀있나요?"
 
 #: src/modules/reminders/cog.py:186
 #, possible-python-brace-format
