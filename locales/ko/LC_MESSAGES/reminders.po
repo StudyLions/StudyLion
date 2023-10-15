@@ -62,7 +62,7 @@ msgstr "리마인더"
 #: src/modules/reminders/cog.py:332
 msgctxt "cmd:reminders|desc"
 msgid "View and set your reminders."
-msgstr ""
+msgstr "리마인더 조회 및 확인"
 
 #: src/modules/reminders/cog.py:353
 msgctxt "cmd:remindme"
