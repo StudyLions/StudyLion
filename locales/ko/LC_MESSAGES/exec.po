@@ -75,7 +75,7 @@ msgstr "다시 불러오기"
 
 #: src/modules/sysadmin/exec_cog.py:397
 msgid "Reload a given LionBot extension. Launches an ExecUI."
-msgstr ""
+msgstr "라이언봇 익스텐션을 다시 불러옵니다. ExecUI를 시작합니다."
 
 #: src/modules/sysadmin/exec_cog.py:400
 msgid "Name of the extension to reload. See autocomplete for options."
