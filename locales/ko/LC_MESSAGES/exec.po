@@ -42,7 +42,7 @@ msgstr "eval"
 #: src/modules/sysadmin/exec_cog.py:338
 msgctxt "command:eval"
 msgid "Execute arbitrary code with Eval"
-msgstr ""
+msgstr "임의 코드 실행 `eval`"
 
 #: src/modules/sysadmin/exec_cog.py:341
 msgctxt "command:eval|param:string"
