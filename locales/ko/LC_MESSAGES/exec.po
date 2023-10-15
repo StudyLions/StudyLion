@@ -62,7 +62,7 @@ msgstr "모든 샤드의 임의 코드 실행"
 #: src/modules/sysadmin/exec_cog.py:352
 msgctxt "command:asyncall|param:string"
 msgid "Cross-shard code to execute. Cannot reference ctx!"
-msgstr ""
+msgstr "샤드 간 교차로 코드 실행. ctx를 참고할 수는 없어요!"
 
 #: src/modules/sysadmin/exec_cog.py:353
 msgctxt "command:asyncall|param:target"
