@@ -8,6 +8,7 @@ from discord import app_commands as appcmds
 from meta import LionCog, LionBot, LionContext
 from meta.logger import log_wrap
 from meta.sharding import THIS_SHARD
+from babel.translator import ctx_locale
 from utils.lib import utc_now
 
 from wards import low_management_ward, equippable_role, high_management_ward
@@ -109,6 +110,23 @@ class MemberAdminCog(LionCog):
                     )
                 finally:
                     self._adding_roles.discard((member.guild.id, member.id))
+
+            t = self.bot.translator.t
+            ctx_locale.set(lion.lguild.locale)
+            lion.lguild.log_event(
+                title=t(_p(
+                    'eventlog|event:welcome|title',
+                    "New Member Joined"
+                )),
+                name=t(_p(
+                    'eventlog|event:welcome|desc',
+                    "{member} joined the server for the first time.",
+                )).format(
+                    member=member.mention
+                ),
+                roles_given='\n'.join(role.mention for role in roles) if roles else None,
+                balance=lion.data.coins,
+            )
         else:
             # Returning member
 
@@ -181,6 +199,39 @@ class MemberAdminCog(LionCog):
                     finally:
                         self._adding_roles.discard((member.guild.id, member.id))
 
+            t = self.bot.translator.t
+            ctx_locale.set(lion.lguild.locale)
+            lion.lguild.log_event(
+                title=t(_p(
+                    'eventlog|event:returning|title',
+                    "Member Rejoined"
+                )),
+                name=t(_p(
+                    'eventlog|event:returning|desc',
+                    "{member} rejoined the server.",
+                )).format(
+                    member=member.mention
+                ),
+                balance=lion.data.coins,
+                roles_given='\n'.join(role.mention for role in roles) if roles else None,
+                fields={
+                    t(_p(
+                        'eventlog|event:returning|field:first_joined',
+                        "First Joined"
+                    )): (
+                        discord.utils.format_dt(lion.data.first_joined) if lion.data.first_joined else 'Unknown',
+                        True
+                    ),
+                    t(_p(
+                        'eventlog|event:returning|field:last_seen',
+                        "Last Seen"
+                    )): (
+                        discord.utils.format_dt(lion.data.last_left) if lion.data.last_left else 'Unknown',
+                        True
+                    ),
+                },
+            )
+
     @LionCog.listener('on_raw_member_remove')
     @log_wrap(action="Farewell")
     async def admin_member_farewell(self, payload: discord.RawMemberRemoveEvent):
@@ -195,6 +246,7 @@ class MemberAdminCog(LionCog):
         await lion.data.update(last_left=utc_now())
 
         # Save member roles
+        roles = None
         async with self.bot.db.connection() as conn:
             self.bot.db.conn = conn
             async with conn.transaction():
@@ -206,6 +258,7 @@ class MemberAdminCog(LionCog):
                 print(type(payload.user))
                 if isinstance(payload.user, discord.Member) and payload.user.roles:
                     member = payload.user
+                    roles = member.roles
                     await self.data.past_roles.insert_many(
                         ('guildid', 'userid', 'roleid'),
                         *((guildid, userid, role.id) for role in member.roles)
@@ -213,7 +266,38 @@ class MemberAdminCog(LionCog):
         logger.debug(
             f"Stored persisting roles for member <uid:{userid}> in <gid:{guildid}>."
         )
-        # TODO: Event log, and include info about unchunked members
+
+        t = self.bot.translator.t
+        ctx_locale.set(lion.lguild.locale)
+        lion.lguild.log_event(
+            title=t(_p(
+                'eventlog|event:left|title',
+                "Member Left"
+            )),
+            name=t(_p(
+                'eventlog|event:left|desc',
+                "{member} left the server.",
+            )).format(
+                member=f"<@{userid}>"
+            ),
+            balance=lion.data.coins,
+            fields={
+                t(_p(
+                    'eventlog|event:left|field:stored_roles',
+                    "Stored Roles"
+                )): (
+                    '\n'.join(role.mention for role in roles) if roles is not None else 'None',
+                    True
+                ),
+                t(_p(
+                    'eventlog|event:left|field:first_joined',
+                    "First Joined"
+                )): (
+                    discord.utils.format_dt(lion.data.first_joined) if lion.data.first_joined else 'Unknown',
+                    True
+                ),
+            },
+        )
 
     @LionCog.listener('on_guild_join')
     async def admin_init_guild(self, guild: discord.Guild):

@@ -1,4 +1,5 @@
 import asyncio
+import pytz
 import datetime as dt
 from typing import Optional
 
@@ -161,7 +162,7 @@ class Ticket:
         embed = discord.Embed(
             title=title,
             description=data.content,
-            timestamp=data.created_at,
+            timestamp=data.created_at.replace(tzinfo=pytz.utc),
             colour=discord.Colour.orange()
         )
         embed.add_field(

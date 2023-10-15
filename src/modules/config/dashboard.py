@@ -22,6 +22,7 @@ from modules.statistics.settings import StatisticsDashboard
 from modules.member_admin.settingui import MemberAdminDashboard
 from modules.moderation.settingui import ModerationDashboard
 from modules.video_channels.settingui import VideoDashboard
+from modules.config.settingui import GeneralDashboard
 
 
 from . import babel, logger
@@ -35,7 +36,7 @@ class GuildDashboard(BasePager):
     Paged UI providing an overview of the guild configuration.
     """
     pages = [
-        (MemberAdminDashboard, LocaleDashboard, EconomyDashboard,),
+        (MemberAdminDashboard, LocaleDashboard, EconomyDashboard, GeneralDashboard,),
         (ModerationDashboard, VideoDashboard,),
         (VoiceTrackerDashboard, TextTrackerDashboard, RankDashboard, StatisticsDashboard,),
         (TasklistDashboard, RoomDashboard, TimerDashboard,),

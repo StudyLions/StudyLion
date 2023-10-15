@@ -71,6 +71,48 @@ class Room:
     def deleted(self):
         return bool(self.data.deleted_at)
 
+    def eventlog_fields(self) -> dict[str, tuple[str, bool]]:
+        t = self.bot.translator.t
+        fields = {
+            t(_p(
+                'room|eventlog|field:owner', "Owner"
+            )): (
+                f"<@{self.data.ownerid}>",
+                True
+            ),
+            t(_p(
+                'room|eventlog|field:channel', "Channel"
+            )): (
+                f"<#{self.data.channelid}>",
+                True
+            ),
+            t(_p(
+                'room|eventlog|field:balance', "Room Balance"
+            )): (
+                f"{self.bot.config.emojis.coin} **{self.data.coin_balance}**",
+                True
+            ),
+            t(_p(
+                'room|eventlog|field:created', "Created At"
+            )): (
+                discord.utils.format_dt(self.data.created_at, 'F'),
+                True
+            ),
+            t(_p(
+                'room|eventlog|field:tick', "Next Rent Due"
+            )): (
+                discord.utils.format_dt(self.next_tick, 'R'),
+                True
+            ),
+            t(_p(
+                'room|eventlog|field:members', "Private Room Members"
+            )): (
+                ','.join(f"<@{member}>" for member in self.members),
+                False
+            ),
+        }
+        return fields
+
     async def notify_deposit(self, member: discord.Member, amount: int):
         # Assumes locale is set correctly
         t = self.bot.translator.t
@@ -108,6 +150,20 @@ class Room:
                 "Welcome {members}"
             )).format(members=', '.join(f"<@{mid}>" for mid in memberids))
         )
+        self.lguild.log_event(
+            title=t(_p(
+                'room|eventlog|event:new_members|title',
+                "Members invited to private room"
+            )),
+            description=t(_p(
+                'room|eventlog|event:new_members|desc',
+                "{owner} added members to their private room: {members}"
+            )).format(
+                members=', '.join(f"<@{mid}>" for mid in memberids),
+                owner="<@{mid}>".format(mid=self.data.ownerid),
+            ),
+            fields=self.eventlog_fields()
+        )
         if self.channel:
             try:
                 await self.channel.send(embed=notification)
@@ -128,6 +184,21 @@ class Room:
         await member_data.table.delete_where(channelid=self.data.channelid, userid=list(memberids))
         self.members = list(set(self.members).difference(memberids))
         # No need to notify for removal
+        t = self.bot.translator.t
+        self.lguild.log_event(
+            title=t(_p(
+                'room|eventlog|event:rm_members|title',
+                "Members removed from private room"
+            )),
+            description=t(_p(
+                'room|eventlog|event:rm_members|desc',
+                "{owner} removed members from their private room: {members}"
+            )).format(
+                members=', '.join(f"<@{mid}>" for mid in memberids),
+                owner="<@{mid}>".format(mid=self.data.ownerid),
+            ),
+            fields=self.eventlog_fields()
+        )
         if self.channel:
             guild = self.channel.guild
             members = [guild.get_member(memberid) for memberid in memberids]
@@ -255,6 +326,19 @@ class Room:
                         await owner.send(embed=embed)
                     except discord.HTTPException:
                         pass
+                self.lguild.log_event(
+                    title=t(_p(
+                        'room|eventlog|event:expired|title',
+                        "Private Room Expired"
+                    )),
+                    description=t(_p(
+                        'room|eventlog|event:expired|desc',
+                        "{owner}'s private room has expired."
+                    )).format(
+                        owner="<@{mid}>".format(mid=self.data.ownerid),
+                    ),
+                    fields=self.eventlog_fields()
+                )
                 await self.destroy(reason='Room Expired')
             elif self.channel:
                 # Notify channel
@@ -274,6 +358,19 @@ class Room:
             else:
                 # No channel means room was deleted
                 # Just cleanup quietly
+                self.lguild.log_event(
+                    title=t(_p(
+                        'room|eventlog|event:room_deleted|title',
+                        "Private Room Deleted"
+                    )),
+                    description=t(_p(
+                        'room|eventlog|event:room_deleted|desc',
+                        "{owner}'s private room was deleted."
+                    )).format(
+                        owner="<@{mid}>".format(mid=self.data.ownerid),
+                    ),
+                    fields=self.eventlog_fields()
+                )
                 await self.destroy(reason='Channel Missing')
 
     @log_wrap(action="Destroy Room")

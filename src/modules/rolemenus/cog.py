@@ -15,10 +15,11 @@ from meta.logger import log_wrap
 from meta.errors import ResponseTimedOut, UserInputError, UserCancelled, SafeCancellation
 from meta.sharding import THIS_SHARD
 from meta.monitor import ComponentMonitor, ComponentStatus, StatusLevel
-from utils.lib import utc_now, error_embed
+from utils.lib import utc_now, error_embed, jumpto
 from utils.ui import Confirm, ChoicedEnum, Transformed, AButton, AsComponents
 from utils.transformers import DurationTransformer
 from utils.monitor import TaskMonitor
+from babel.translator import ctx_locale
 from constants import MAX_COINS
 from data import NULL
 
@@ -315,6 +316,11 @@ class RoleMenuCog(LionCog):
             menu = await self.data.RoleMenu.fetch(equip_row.menuid)
             guild = self.bot.get_guild(menu.guildid)
             if guild is not None:
+                log_errors = []
+                lguild = await self.bot.core.lions.fetch_guild(menu.guildid)
+                t = self.bot.translator.t
+                ctx_locale.set(lguild.locale)
+
                 role = guild.get_role(equip_row.roleid)
                 if role is not None:
                     lion = await self.bot.core.lions.fetch_member(guild.id, equip_row.userid)
@@ -322,6 +328,10 @@ class RoleMenuCog(LionCog):
                     if (member := lion.member):
                         if role in member.roles:
                             logger.error(f"Expired {equipid}, but the member still has the role!")
+                            log_errors.append(t(_p(
+                                'eventlog|event:rolemenu_role_expire|error:remove_failed',
+                                "Removed the role, but the member still has the role!!"
+                            )))
                         else:
                             logger.info(f"Expired {equipid}, and successfully removed the role from the member!")
                     else:
@@ -329,9 +339,56 @@ class RoleMenuCog(LionCog):
                             f"Expired {equipid} for non-existent member {equip_row.userid}. "
                             "Removed from persistent roles."
                         )
+                        log_errors.append(t(_p(
+                            'eventlog|event:rolemenu_role_expire|error:member_gone',
+                            "Member could not be found.. role has been removed from saved roles."
+                        )))
                 else:
                     logger.info(f"Could not expire {equipid} because the role was not found.")
+                    log_errors.append(t(_p(
+                        'eventlog|event:rolemenu_role_expire|error:no_role',
+                        "Role {role} no longer exists."
+                    )).format(role=f"`{equip_row.roleid}`"))
                 now = utc_now()
+                lguild.log_event(
+                    title=t(_p(
+                        'eventlog|event:rolemenu_role_expire|title',
+                        "Equipped role has expired"
+                    )),
+                    description=t(_p(
+                        'eventlog|event:rolemenu_role_expire|desc',
+                        "{member}'s role {role} has now expired."
+                    )).format(
+                        member=f"<@{equip_row.userid}>",
+                        role=f"<@&{equip_row.roleid}>",
+                    ),
+                    fields={
+                        t(_p(
+                            'eventlog|event:rolemenu_role_expire|field:menu',
+                            "Obtained From"
+                        )): (
+                            jumpto(
+                                menu.guildid, menu.channelid, menu.messageid
+                            ) if menu and menu.messageid else f"**{menu.name}**",
+                            True
+                        ),
+                        t(_p(
+                            'eventlog|event:rolemenu_role_expire|field:menu',
+                            "Obtained At"
+                        )): (
+                            discord.utils.format_dt(equip_row.obtained_at),
+                            True
+                        ),
+                        t(_p(
+                            'eventlog|event:rolemenu_role_expire|field:expiry',
+                            "Expiry"
+                        )): (
+                            discord.utils.format_dt(equip_row.expires_at),
+                            True
+                        ),
+                    },
+                    errors=log_errors
+                )
                 await equip_row.update(removed_at=now)
             else:
                 logger.info(f"Could not expire {equipid} because the guild was not found.")
