@@ -299,6 +299,20 @@ class Economy(LionCog):
                 ).set(
                     coins=set_to
                 )
+                ctx.lguild.log_event(
+                    title=t(_p(
+                        'eventlog|event:economy_set|title',
+                        "Moderator Set Economy Balance"
+                    )),
+                    description=t(_p(
+                        'eventlog|event:economy_set|desc',
+                        "{moderator} set {target}'s balance to {amount}."
+                    )).format(
+                        moderator=ctx.author.mention,
+                        target=target.mention,
+                        amount=f"{cemoji}**{set_to}**",
+                    )
+                )
             else:
                 if role:
                     if role.is_default():
@@ -360,6 +374,20 @@ class Economy(LionCog):
                         amount=add,
                         new_amount=results[0]['coins']
                     )
+                ctx.lguild.log_event(
+                    title=t(_p(
+                        'eventlog|event:economy_add|title',
+                        "Moderator Modified Economy Balance"
+                    )),
+                    description=t(_p(
+                        'eventlog|event:economy_set|desc',
+                        "{moderator} added {amount} to {target}'s balance."
+                    )).format(
+                        moderator=ctx.author.mention,
+                        target=target.mention,
+                        amount=f"{cemoji}**{add}**",
+                    )
+                )
 
             title = t(_np(
                 'cmd:economy_balance|embed:success|title',
@@ -782,7 +810,20 @@ class Economy(LionCog):
                     await ctx.alion.data.update(coins=(Member.coins - amount))
                     await target_lion.data.update(coins=(Member.coins + amount))
 
-            # TODO: Audit trail
+            ctx.lguild.log_event(
+                title=t(_p(
+                    "eventlog|event:send|title",
+                    "Coins Transferred"
+                )),
+                description=t(_p(
+                    'eventlog|event:send|desc',
+                    "{source} gifted {amount} to {target}"
+                )).format(
+                    source=ctx.author.mention,
+                    target=target.mention,
+                    amount=f"{self.bot.config.emojis.coin}**{amount}**"
+                ),
+            )
         await asyncio.create_task(wrapped(), name="wrapped-send")
 
         # Message target

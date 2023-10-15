@@ -609,7 +609,24 @@ class RoleMenu:
         if remove_line:
             embed.description = '\n'.join((remove_line, embed.description))
 
-        # TODO Event logging
+        lguild = await self.bot.core.lions.fetch_guild(self.data.guildid)
+        lguild.log_event(
+            title=t(_p(
+                'rolemenu|eventlog|event:role_equipped|title',
+                "Member equipped role from role menu"
+            )),
+            description=t(_p(
+                'rolemenu|eventlog|event:role_equipped|desc',
+                "{member} equipped {role} from {menu}"
+            )).format(
+                member=member.mention,
+                role=role.mention,
+                menu=self.jump_link
+            ),
+            roles_given=role.mention,
+            price=price,
+            expiry=discord.utils.format_dt(expiry) if expiry is not None else None,
+        )
         return embed
 
     async def _handle_negative(self, lion, member: discord.Member, mrole: RoleMenuRole) -> discord.Embed:
@@ -690,12 +707,29 @@ class RoleMenu:
                 'rolemenu|deselect|success:norefund|desc',
                 "You have unequipped **{role}**."
             )).format(role=role.name)
+
+        lguild = await self.bot.core.lions.fetch_guild(self.data.guildid)
+        lguild.log_event(
+            title=t(_p(
+                'rolemenu|eventlog|event:role_unequipped|title',
+                "Member unequipped role from role menu"
+            )),
+            description=t(_p(
+                'rolemenu|eventlog|event:role_unequipped|desc',
+                "{member} unequipped {role} from {menu}"
+            )).format(
+                member=member.mention,
+                role=role.mention,
+                menu=self.jump_link,
+            ),
+            roles_given=role.mention,
+            refund=total_refund,
+        )
         return embed
 
     async def _handle_selection(self, lion, member: discord.Member, menuroleid: int):
         lock_key = ('rmenu', member.id, member.guild.id)
         async with self.bot.idlock(lock_key):
-            # TODO: Selection locking
             mrole = self.rolemap.get(menuroleid, None)
             if mrole is None:
                 raise ValueError(

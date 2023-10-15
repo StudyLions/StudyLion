@@ -505,10 +505,27 @@ class VoiceTrackerCog(LionCog):
                         logger.debug(
                             f"Scheduling voice session for member `{member.name}' <uid:{member.id}> "
                             f"in guild '{member.guild.name}' <gid: member.guild.id> "
-                            f"in channel '{achannel}' <cid: {after.channel.id}>. "
+                            f"in channel '{achannel}' <cid: {achannel.id}>. "
                             f"Session will start at {start}, expire at {expiry}, and confirm in {delay}."
                         )
                         await session.schedule_start(delay, start, expiry, astate, hourly_rate)
+
+                        t = self.bot.translator.t
+                        lguild = await self.bot.core.lions.fetch_guild(member.guild.id)
+                        lguild.log_event(
+                            t(_p(
+                                'eventlog|event:voice_session_start|title',
+                                "Member Joined Tracked Voice Channel"
+                            )),
+                            t(_p(
+                                'eventlog|event:voice_session_start|desc',
+                                "{member} joined {channel}."
+                            )).format(
+                                member=member.mention, channel=achannel.mention,
+                            ),
+                            start=discord.utils.format_dt(start, 'F'),
+                            expiry=discord.utils.format_dt(expiry, 'R'),
+                        )
             elif session.activity:
                 # If the channelid did not change, the live state must have
                 # Recalculate the economy rate, and update the session
@@ -584,7 +601,8 @@ class VoiceTrackerCog(LionCog):
             start_time = now
             delay = 20
 
-        expiry = start_time + dt.timedelta(seconds=cap)
+        remaining = cap - studied_today
+        expiry = start_time + dt.timedelta(seconds=remaining)
         if expiry > tomorrow:
             expiry = tomorrow + dt.timedelta(seconds=cap)
 

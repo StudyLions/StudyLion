@@ -26,48 +26,6 @@ from . import babel
 _p = babel._p
 
 
-class GeneralSettings(SettingGroup):
-    class Timezone(ModelData, TimezoneSetting):
-        """
-        Guild timezone configuration.
-
-        Exposed via `/configure general timezone:`, and the standard interface.
-        The `timezone` setting acts as the default timezone for all members,
-        and the timezone used to display guild-wide statistics.
-        """
-        setting_id = 'timezone'
-        _event = 'guild_setting_update_timezone'
-
-        _display_name = _p('guildset:timezone', "timezone")
-        _desc = _p(
-            'guildset:timezone|desc',
-            "Guild timezone for statistics display."
-        )
-        _long_desc = _p(
-            'guildset:timezone|long_desc',
-            "Guild-wide timezone. "
-            "Used to determine start of the day for the leaderboards, "
-            "and as the default statistics timezone for members who have not set one."
-        )
-        _default = 'UTC'
-
-        _model = CoreData.Guild
-        _column = CoreData.Guild.timezone.name
-
-        @property
-        def update_message(self):
-            t = ctx_translator.get().t
-            return t(_p(
-                'guildset:timezone|response',
-                "The guild timezone has been set to `{timezone}`."
-            )).format(timezone=self.data)
-
-        @property
-        def set_str(self):
-            bot = ctx_bot.get()
-            return bot.core.mention_cmd('configure general') if bot else None
-
-
 class GeneralSettingsCog(LionCog):
     depends = {'CoreCog'}
 
@@ -87,24 +45,28 @@ class GeneralSettingsCog(LionCog):
     @LionCog.placeholder_group
     @cmds.hybrid_group("configure", with_app_command=False)
     async def configure_group(self, ctx: LionContext):
-        # Placeholder configure group command.
-        ...
+            # Placeholder configure group command.
+            ...
 
     @configure_group.command(
         name=_p('cmd:configure_general', "general"),
         description=_p('cmd:configure_general|desc', "General configuration panel")
     )
     @appcmds.rename(
-        timezone=GeneralSettings.Timezone._display_name
+        timezone=GeneralSettings.Timezone._display_name,
+        event_log=GeneralSettings.EventLog._display_name,
     )
     @appcmds.describe(
-        timezone=GeneralSettings.Timezone._desc
+        timezone=GeneralSettings.Timezone._desc,
+        event_log=GeneralSettings.EventLog._display_name,
     )
     @appcmds.guild_only()
     @appcmds.default_permissions(manage_guild=True)
     @low_management_ward
     async def cmd_configure_general(self, ctx: LionContext,
-                                    timezone: Optional[str] = None):
+                                    timezone: Optional[str] = None,
+                                    event_log: Optional[discord.TextChannel] = None,
+                                    ):
         t = self.bot.translator.t
 
         # Typechecker guards because they don't understand the check ward
@@ -149,25 +111,25 @@ class GeneralSettingsCog(LionCog):
                     'cmd:configure_general|success',
                     "Settings Updated!"
                 )),
-                description='\n'.join(
-                    f"{self.bot.config.emojis.tick} {line}" for line in results
-                )
+            description='\n'.join(
+                f"{self.bot.config.emojis.tick} {line}" for line in results
             )
-            await ctx.reply(embed=success_embed)
-            # TODO: Trigger configuration panel update if listening UI.
-        else:
-            # Show general configuration panel UI
-            # TODO Interactive UI
-            embed = discord.Embed(
-                colour=discord.Colour.orange(),
-                title=t(_p(
-                    'cmd:configure_general|panel|title',
-                    "General Configuration Panel"
-                ))
-            )
-            embed.add_field(
-                **ctx.lguild.config.timezone.embed_field
-            )
-            await ctx.reply(embed=embed)
+        )
+        await ctx.reply(embed=success_embed)
+        # TODO: Trigger configuration panel update if listening UI.
+    else:
+        # Show general configuration panel UI
+        # TODO Interactive UI
+        embed = discord.Embed(
+            colour=discord.Colour.orange(),
+            title=t(_p(
+                'cmd:configure_general|panel|title',
+                "General Configuration Panel"
+            ))
+        )
+        embed.add_field(
+            **ctx.lguild.config.timezone.embed_field
+        )
+        await ctx.reply(embed=embed)
 
     cmd_configure_general.autocomplete('timezone')(TimezoneSetting.parse_acmpl)

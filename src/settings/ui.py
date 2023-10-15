@@ -454,6 +454,12 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
         return cls(parent_id, data, **kwargs)
 
     @classmethod
+    async def from_value(cls, parent_id, value, **kwargs):
+        await cls._check_value(parent_id, value, **kwargs)
+        data = cls._data_from_value(parent_id, value, **kwargs)
+        return cls(parent_id, data, **kwargs)
+
+    @classmethod
     async def _parse_string(cls, parent_id, string: str, **kwargs) -> Optional[SettingData]:
         """
         Parse user provided string (usually from a TextInput) into raw setting data.
@@ -471,15 +477,14 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
         raise NotImplementedError
 
     @classmethod
-    async def _check_value(cls, parent_id, value, **kwargs) -> Optional[str]:
+    async def _check_value(cls, parent_id, value, **kwargs):
         """
         Check the provided value is valid.
 
         Many setting update methods now provide Discord objects instead of raw data or user strings.
         This method may be used for value-checking such a value.
 
-        Returns `None` if there are no issues, otherwise an error message.
-        Subclasses should override this to implement a value checker.
+        Raises UserInputError if the value fails validation.
         """
         pass
 

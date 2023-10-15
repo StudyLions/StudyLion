@@ -145,13 +145,11 @@ class TimerOptionsUI(MessageUI):
         value = selected.values[0] if selected.values else None
         setting = self.timer.config.get('notification_channel')
 
-        if issue := await setting._check_value(self.timer.data.channelid, value):
-            await selection.edit_original_response(embed=error_embed(issue))
-        else:
-            setting.value = value
-            await setting.write()
-            await self.timer.send_status()
-            await self.refresh(thinking=selection)
+        await setting._check_value(self.timer.data.channelid, value)
+        setting.value = value
+        await setting.write()
+        await self.timer.send_status()
+        await self.refresh(thinking=selection)
 
     async def refresh_notification_menu(self):
         self.notification_menu.placeholder = self.bot.translator.t(_p(
