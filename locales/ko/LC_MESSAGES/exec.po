@@ -83,7 +83,7 @@ msgstr "다시 불러올 익스텐션의 이름. 자동완성 옵션을 참고�
 
 #: src/modules/sysadmin/exec_cog.py:401
 msgid "Whether to force an extension reload even if it doesn't exist."
-msgstr ""
+msgstr "익스텍션 다시 불러오기가 없어도 강제 다시 불러오기 여부"
 
 #: src/modules/sysadmin/exec_cog.py:437
 msgid "shutdown"
