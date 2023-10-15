@@ -71,7 +71,7 @@ msgstr "타겟 샤드 앱 이름. 자동완성 옵션을 참고하세요."
 
 #: src/modules/sysadmin/exec_cog.py:396
 msgid "reload"
-msgstr ""
+msgstr "다시 불러오기"
 
 #: src/modules/sysadmin/exec_cog.py:397
 msgid "Reload a given LionBot extension. Launches an ExecUI."
