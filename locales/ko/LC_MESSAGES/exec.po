@@ -79,7 +79,7 @@ msgstr "라이언봇 익스텐션을 다시 불러옵니다. ExecUI를 시작합
 
 #: src/modules/sysadmin/exec_cog.py:400
 msgid "Name of the extension to reload. See autocomplete for options."
-msgstr ""
+msgstr "다시 불러올 익스텐션의 이름. 자동완성 옵션을 참고하세요."
 
 #: src/modules/sysadmin/exec_cog.py:401
 msgid "Whether to force an extension reload even if it doesn't exist."
