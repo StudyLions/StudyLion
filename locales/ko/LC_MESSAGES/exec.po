@@ -28,7 +28,7 @@ msgstr "봇 소유자만 할 수 있어요!"
 
 #: src/modules/sysadmin/exec_cog.py:274
 msgid "async"
-msgstr ""
+msgstr "비동기"
 
 #: src/modules/sysadmin/exec_cog.py:275
 msgid "Execute arbitrary code with Exec"
@@ -37,7 +37,7 @@ msgstr ""
 #: src/modules/sysadmin/exec_cog.py:337
 msgctxt "command"
 msgid "eval"
-msgstr ""
+msgstr "eval"
 
 #: src/modules/sysadmin/exec_cog.py:338
 msgctxt "command:eval"
