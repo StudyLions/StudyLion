@@ -91,4 +91,4 @@ msgstr "종료"
 
 #: src/modules/sysadmin/exec_cog.py:438
 msgid "Shutdown (or restart) the client."
-msgstr ""
+msgstr "클라이언트 종료 (혹은 재시작)"
