@@ -57,7 +57,7 @@ msgstr "비동기 콜"
 #: src/modules/sysadmin/exec_cog.py:349
 msgctxt "command:asyncall|desc"
 msgid "Execute arbitrary code on all shards."
-msgstr ""
+msgstr "모든 샤드의 임의 코드 실행"
 
 #: src/modules/sysadmin/exec_cog.py:352
 msgctxt "command:asyncall|param:string"
