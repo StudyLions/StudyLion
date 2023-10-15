@@ -67,7 +67,7 @@ msgstr "샤드 간 교차로 코드 실행. ctx를 참고할 수는 없어요!"
 #: src/modules/sysadmin/exec_cog.py:353
 msgctxt "command:asyncall|param:target"
 msgid "Target shard app name, see autocomplete for options."
-msgstr ""
+msgstr "타겟 샤드 앱 이름. 자동완성 옵션을 참고하세요."
 
 #: src/modules/sysadmin/exec_cog.py:396
 msgid "reload"
