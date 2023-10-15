@@ -57,6 +57,11 @@ event_fields = {
         "{coin} {{value}}".format(coin=conf.emojis.coin),
         True,
     ),
+    'balance' : (
+        _p('eventlog|field:balance|name', "Balance"),
+        "{coin} {{value}}".format(coin=conf.emojis.coin),
+        True,
+    ),
     'refund' : (
         _p('eventlog|field:refund|name', "Coins Refunded"),
         "{coin} {{value}}".format(coin=conf.emojis.coin),
