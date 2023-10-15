@@ -87,7 +87,7 @@ msgstr "익스텍션 다시 불러오기가 없어도 강제 다시 불러오기
 
 #: src/modules/sysadmin/exec_cog.py:437
 msgid "shutdown"
-msgstr ""
+msgstr "종료"
 
 #: src/modules/sysadmin/exec_cog.py:438
 msgid "Shutdown (or restart) the client."
