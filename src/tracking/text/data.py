@@ -288,6 +288,42 @@ class TextTrackerData(Registry):
                         tuple(chain((userid, guildid), points))
                     )
                     return [r['messages'] or 0 for r in await cursor.fetchall()]
+
+        @classmethod
+        @log_wrap(action='user_messages_since')
+        async def user_messages_since(cls, userid: int, *points):
+            """
+            Compute messages written between the given points.
+            """
+            query = sql.SQL(
+                """
+                SELECT
+                    (
+                        SELECT
+                            SUM(messages)
+                        FROM text_sessions s
+                        WHERE
+                            s.userid = %s
+                            AND s.start_time >= t._start
+                    ) AS messages
+                FROM
+                    (VALUES {})
+                    AS
+                t (_start)
+                ORDER BY t._start
+                """
+            ).format(
+                sql.SQL(', ').join(
+                    sql.SQL("({})").format(sql.Placeholder()) for _ in points
+                )
+            )
+            async with cls._connector.connection() as conn:
+                async with conn.cursor() as cursor:
+                    await cursor.execute(
+                        query,
+                        tuple(chain((userid,), points))
+                    )
+                    return [r['messages'] or 0 for r in await cursor.fetchall()]
         
         @classmethod
         @log_wrap(action='msgs_leaderboard_all')

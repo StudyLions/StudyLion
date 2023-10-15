@@ -373,3 +373,6 @@ class CoreData(Registry, name="core"):
             webhook = discord.Webhook.partial(self.webhookid, self.token, **kwargs)
             webhook.proxy = conf.bot.get('proxy', None)
             return webhook
+
+    workouts = Table('workout_sessions')
+    topgg = Table('topgg')

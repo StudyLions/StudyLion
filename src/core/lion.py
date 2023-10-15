@@ -150,7 +150,10 @@ class Lions(LionCog):
         if (lmember := self.lion_members.get(key, None)) is None:
             lguild = await self.fetch_guild(guildid, member.guild if member is not None else None)
             luser = await self.fetch_user(userid, member)
-            data = await self.data.Member.fetch_or_create(guildid, userid)
+            data = await self.data.Member.fetch_or_create(
+                guildid, userid,
+                coins=lguild.config.get('starting_funds').value
+            )
             lmember = LionMember(self.bot, data, lguild, luser, member)
             self.lion_members[key] = lmember
         return lmember
@@ -182,8 +185,8 @@ class Lions(LionCog):
             # Create any member rows that are still missing
             if missing:
                 new_rows = await self.data.Member.table.insert_many(
-                    ('guildid', 'userid'),
-                    *missing
+                    ('guildid', 'userid', 'coins'),
+                    *((gid, uid, lguilds[gid].config.get('starting_funds').value) for gid, uid in missing)
                 ).with_adapter(self.data.Member._make_rows)
                 rows = itertools.chain(rows, new_rows)
 

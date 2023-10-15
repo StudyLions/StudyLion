@@ -108,6 +108,9 @@ class ConfigUI(LeoUI):
         # Filter out settings which don't have input fields
         items = [item for item in items if item][:5]
         strings = [item.value for item in items]
+        if not items:
+            raise ValueError("Cannot make Config edit modal with no editable instances.")
+
         modal = ConfigEditor(*items, title=t(self.edit_modal_title))
 
         @modal.submit_callback()

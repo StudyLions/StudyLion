@@ -56,6 +56,7 @@ class Economy(LionCog):
 
         self.bot.core.guild_config.register_model_setting(self.settings.AllowTransfers)
         self.bot.core.guild_config.register_model_setting(self.settings.CoinsPerXP)
+        self.bot.core.guild_config.register_model_setting(self.settings.StartingFunds)
 
         configcog = self.bot.get_cog('ConfigCog')
         if configcog is None:
@@ -298,6 +299,20 @@ class Economy(LionCog):
                 ).set(
                     coins=set_to
                 )
+                ctx.lguild.log_event(
+                    title=t(_p(
+                        'eventlog|event:economy_set|title',
+                        "Moderator Set Economy Balance"
+                    )),
+                    description=t(_p(
+                        'eventlog|event:economy_set|desc',
+                        "{moderator} set {target}'s balance to {amount}."
+                    )).format(
+                        moderator=ctx.author.mention,
+                        target=target.mention,
+                        amount=f"{cemoji}**{set_to}**",
+                    )
+                )
             else:
                 if role:
                     if role.is_default():
@@ -359,6 +374,20 @@ class Economy(LionCog):
                         amount=add,
                         new_amount=results[0]['coins']
                     )
+                ctx.lguild.log_event(
+                    title=t(_p(
+                        'eventlog|event:economy_add|title',
+                        "Moderator Modified Economy Balance"
+                    )),
+                    description=t(_p(
+                        'eventlog|event:economy_set|desc',
+                        "{moderator} added {amount} to {target}'s balance."
+                    )).format(
+                        moderator=ctx.author.mention,
+                        target=target.mention,
+                        amount=f"{cemoji}**{add}**",
+                    )
+                )
 
             title = t(_np(
                 'cmd:economy_balance|embed:success|title',
@@ -781,7 +810,20 @@ class Economy(LionCog):
                     await ctx.alion.data.update(coins=(Member.coins - amount))
                     await target_lion.data.update(coins=(Member.coins + amount))
 
-            # TODO: Audit trail
+            ctx.lguild.log_event(
+                title=t(_p(
+                    "eventlog|event:send|title",
+                    "Coins Transferred"
+                )),
+                description=t(_p(
+                    'eventlog|event:send|desc',
+                    "{source} gifted {amount} to {target}"
+                )).format(
+                    source=ctx.author.mention,
+                    target=target.mention,
+                    amount=f"{self.bot.config.emojis.coin}**{amount}**"
+                ),
+            )
         await asyncio.create_task(wrapped(), name="wrapped-send")
 
         # Message target
@@ -847,11 +889,13 @@ class Economy(LionCog):
     )
     @appcmds.rename(
         allow_transfers=EconomySettings.AllowTransfers._display_name,
-        coins_per_xp=EconomySettings.CoinsPerXP._display_name
+        coins_per_xp=EconomySettings.CoinsPerXP._display_name,
+        starting_funds=EconomySettings.StartingFunds._display_name,
     )
     @appcmds.describe(
         allow_transfers=EconomySettings.AllowTransfers._desc,
-        coins_per_xp=EconomySettings.CoinsPerXP._desc
+        coins_per_xp=EconomySettings.CoinsPerXP._desc,
+        starting_funds=EconomySettings.StartingFunds._desc,
     )
     @appcmds.choices(
         allow_transfers=[
@@ -863,7 +907,9 @@ class Economy(LionCog):
     @moderator_ward
     async def configure_economy(self, ctx: LionContext,
                                 allow_transfers: Optional[appcmds.Choice[int]] = None,
-                                coins_per_xp: Optional[appcmds.Range[int, 0, 2**15]] = None):
+                                coins_per_xp: Optional[appcmds.Range[int, 0, MAX_COINS]] = None,
+                                starting_funds: Optional[appcmds.Range[int, 0, MAX_COINS]] = None,
+                                ):
         t = self.bot.translator.t
         if not ctx.interaction:
             return
@@ -872,6 +918,7 @@ class Economy(LionCog):
 
         setting_allow_transfers = ctx.lguild.config.get('allow_transfers')
         setting_coins_per_xp = ctx.lguild.config.get('coins_per_xp')
+        setting_starting_funds = ctx.lguild.config.get('starting_funds')
 
         modified = []
         if allow_transfers is not None:
@@ -882,6 +929,10 @@ class Economy(LionCog):
             setting_coins_per_xp.data = coins_per_xp
             await setting_coins_per_xp.write()
             modified.append(setting_coins_per_xp)
+        if starting_funds is not None:
+            setting_starting_funds.data = starting_funds
+            await setting_starting_funds.write()
+            modified.append(setting_starting_funds)
 
         if modified:
             desc = '\n'.join(f"{conf.emojis.tick} {setting.update_message}" for setting in modified)

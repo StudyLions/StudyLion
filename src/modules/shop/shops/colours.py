@@ -296,6 +296,23 @@ class ColourShop(Shop):
                             # TODO: Event log
                             pass
                     await self.data.MemberInventory.table.delete_where(inventoryid=owned.data.inventoryid)
+                else:
+                    owned_role = None
+
+                lguild = await self.bot.core.lions.fetch_guild(guild.id)
+                lguild.log_event(
+                    title=t(_p(
+                        'eventlog|event:purchase_colour|title',
+                        "Member Purchased Colour Role"
+                    )),
+                    description=t(_p(
+                        'eventlog|event:purchase_colour|desc',
+                        "{member} purchased {role} from the colour shop."
+                    )).format(member=member.mention, role=role.mention),
+                    price=item['price'],
+                    roles_given=role.mention,
+                    roles_taken=owned_role.mention if owned_role else None,
+                )
 
                 # Purchase complete, update the shop and customer
                 await self.refresh()

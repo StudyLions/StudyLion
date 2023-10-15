@@ -117,8 +117,20 @@ class LionMember(Timezoned):
                     f"<uid: {member.id}>, <gid: {member.guild.id}>, <rid: {role.id}>. "
                     f"Error: {repr(e)}",
                 )
+            else:
+                if role not in member.roles:
+                    logger.info(
+                        f"Removed role <rid: {role.id}> from member <uid: {self.userid}> in <gid: {self.guildid}>"
+                    )
+                else:
+                    logger.error(
+                        f"Tried to remove role <rid: {role.id}> "
+                        f"from member <uid: {self.userid}> in <gid: {self.guildid}>. "
+                        "Role remove succeeded, but member still has the role."
+                    )
         else:
             # Remove the role from persistent role storage
             cog = self.bot.get_cog('MemberAdminCog')
             if cog:
                 await cog.absent_remove_role(self.guildid, self.userid, role.id)
+            logger.info(f"Removed role <rid: {role.id}> from absent lion <uid: {self.userid}> in <gid: {self.guildid}>")
