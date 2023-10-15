@@ -25,7 +25,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "create_reminder|error:past"
 msgid "The provided reminder time {timestamp} is in the past!"
-msgstr "제공한 알림 시간 {timestamp}이 현재 시간보다 이전이에요!"
+msgstr "제공한 리마인더 시간 {timestamp}이 현재 시간보다 이전이에요!"
 
 #: src/modules/reminders/cog.py:123
 msgctxt "create_reminder|error:too_fast"
