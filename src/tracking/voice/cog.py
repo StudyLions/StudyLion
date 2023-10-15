@@ -601,9 +601,9 @@ class VoiceTrackerCog(LionCog):
             start_time = now
             delay = 20
 
-        remaining = cap - studied_today
+        remaining = max(cap - studied_today, 0)
         expiry = start_time + dt.timedelta(seconds=remaining)
-        if expiry > tomorrow:
+        if expiry >= tomorrow:
             expiry = tomorrow + dt.timedelta(seconds=cap)
 
         return (delay, start_time, expiry)
