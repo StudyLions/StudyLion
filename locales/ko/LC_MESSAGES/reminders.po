@@ -31,7 +31,7 @@ msgstr "제공한 알림 시간 {timestamp}이 현재 시간보다 이전이에�
 msgctxt "create_reminder|error:too_fast"
 msgid ""
 "You cannot set a repeating reminder with a period less than 10 minutes."
-msgstr ""
+msgstr "10분 미만의 시간을 반복 리마인더 기간으로 설정할 수 없어요."
 
 #: src/modules/reminders/cog.py:133
 msgctxt "create_reminder|error:too_many"
