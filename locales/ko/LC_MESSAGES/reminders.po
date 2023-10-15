@@ -36,7 +36,7 @@ msgstr "10분 미만의 시간을 반복 리마인더 기간으로 설정할 수
 #: src/modules/reminders/cog.py:133
 msgctxt "create_reminder|error:too_many"
 msgid "Sorry, you have reached the maximum of `25` reminders."
-msgstr ""
+msgstr "최대 리마인더 개수 `25`개에 도달했어요."
 
 #: src/modules/reminders/cog.py:149
 msgctxt "create_reminder|error:cannot_dm"
