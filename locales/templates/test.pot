@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-01 16:01+0300\n"
+"POT-Creation-Date: 2023-10-15 15:58+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,66 +17,66 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/test/test.py:59 src/modules/test/test.py:66
+#: src/modules/test/test.py:62 src/modules/test/test.py:145
 msgid "test"
 msgstr ""
 
-#: src/modules/test/test.py:67
+#: src/modules/test/test.py:146
 msgid "Test"
 msgstr ""
 
-#: src/modules/test/test.py:74
+#: src/modules/test/test.py:153
 msgid "editor"
 msgstr ""
 
-#: src/modules/test/test.py:75
+#: src/modules/test/test.py:154
 msgid "Test message editor"
 msgstr ""
 
-#: src/modules/test/test.py:101
+#: src/modules/test/test.py:180
 msgid "test_ephemeral"
 msgstr ""
 
-#: src/modules/test/test.py:102
+#: src/modules/test/test.py:181
 msgid "Test ephemeral delete and edit"
 msgstr ""
 
-#: src/modules/test/test.py:114
+#: src/modules/test/test.py:193
 msgid "colours"
 msgstr ""
 
-#: src/modules/test/test.py:115
+#: src/modules/test/test.py:194
 msgid "Test Ansi colours"
 msgstr ""
 
-#: src/modules/test/test.py:135
+#: src/modules/test/test.py:214
 msgid "fail"
 msgstr ""
 
-#: src/modules/test/test.py:143
+#: src/modules/test/test.py:222
 msgid "failui"
 msgstr ""
 
-#: src/modules/test/test.py:150
+#: src/modules/test/test.py:229
 msgid "pager"
 msgstr ""
 
-#: src/modules/test/test.py:178
+#: src/modules/test/test.py:257
 msgid "pager2"
 msgstr ""
 
-#: src/modules/test/test.py:209
+#: src/modules/test/test.py:288
 msgid "prettyusers"
 msgstr ""
 
-#: src/modules/test/test.py:259
+#: src/modules/test/test.py:338
 msgid "dmview"
 msgstr ""
 
-#: src/modules/test/test.py:270
+#: src/modules/test/test.py:349
 msgid "multiview"
 msgstr ""
 
-#: src/modules/test/test.py:287
+#: src/modules/test/test.py:366
 msgid "stats-card"
 msgstr ""

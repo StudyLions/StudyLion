@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-01 16:01+0300\n"
+"POT-Creation-Date: 2023-10-15 15:58+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,39 +67,92 @@ msgctxt "dash:member_admin|section:initial_roles|name"
 msgid "Initial Roles ({commands[configure welcome]})"
 msgstr ""
 
-#: src/modules/member_admin/cog.py:239
+#: src/modules/member_admin/cog.py:119
+msgctxt "eventlog|event:welcome|title"
+msgid "New Member Joined"
+msgstr ""
+
+#: src/modules/member_admin/cog.py:123
+#, possible-python-brace-format
+msgctxt "eventlog|event:welcome|desc"
+msgid "{member} joined the server for the first time."
+msgstr ""
+
+#: src/modules/member_admin/cog.py:207
+msgctxt "eventlog|event:returning|title"
+msgid "Member Rejoined"
+msgstr ""
+
+#: src/modules/member_admin/cog.py:211
+#, possible-python-brace-format
+msgctxt "eventlog|event:returning|desc"
+msgid "{member} rejoined the server."
+msgstr ""
+
+#: src/modules/member_admin/cog.py:220
+msgctxt "eventlog|event:returning|field:first_joined"
+msgid "First Joined"
+msgstr ""
+
+#: src/modules/member_admin/cog.py:227
+msgctxt "eventlog|event:returning|field:last_seen"
+msgid "Last Seen"
+msgstr ""
+
+#: src/modules/member_admin/cog.py:275
+msgctxt "eventlog|event:left|title"
+msgid "Member Left"
+msgstr ""
+
+#: src/modules/member_admin/cog.py:279
+#, possible-python-brace-format
+msgctxt "eventlog|event:left|desc"
+msgid "{member} left the server."
+msgstr ""
+
+#: src/modules/member_admin/cog.py:287
+msgctxt "eventlog|event:left|field:stored_roles"
+msgid "Stored Roles"
+msgstr ""
+
+#: src/modules/member_admin/cog.py:294
+msgctxt "eventlog|event:left|field:first_joined"
+msgid "First Joined"
+msgstr ""
+
+#: src/modules/member_admin/cog.py:324
 msgctxt "cmd:resetmember"
 msgid "resetmember"
 msgstr ""
 
-#: src/modules/member_admin/cog.py:242
+#: src/modules/member_admin/cog.py:327
 msgctxt "cmd:resetmember|desc"
 msgid "Reset (server-associated) member data for the target member or user."
 msgstr ""
 
-#: src/modules/member_admin/cog.py:246
+#: src/modules/member_admin/cog.py:331
 msgctxt "cmd:resetmember|param:target"
 msgid "member_to_reset"
 msgstr ""
 
-#: src/modules/member_admin/cog.py:247
+#: src/modules/member_admin/cog.py:332
 msgctxt "cmd:resetmember|param:saved_roles"
 msgid "saved_roles"
 msgstr ""
 
-#: src/modules/member_admin/cog.py:252
+#: src/modules/member_admin/cog.py:337
 msgctxt "cmd:resetmember|param:target|desc"
 msgid "Choose the member (current or past) you want to reset."
 msgstr ""
 
-#: src/modules/member_admin/cog.py:256
+#: src/modules/member_admin/cog.py:341
 msgctxt "cmd:resetmember|param:saved_roles|desc"
 msgid ""
 "Clear the saved roles for this member, so their past roles are not restored "
 "on rejoin."
 msgstr ""
 
-#: src/modules/member_admin/cog.py:283
+#: src/modules/member_admin/cog.py:368
 #, possible-python-brace-format
 msgctxt "cmd:resetmember|reset:saved_roles|success"
 msgid ""
@@ -107,17 +160,17 @@ msgid ""
 "roles if they rejoin."
 msgstr ""
 
-#: src/modules/member_admin/cog.py:291
+#: src/modules/member_admin/cog.py:376
 msgctxt "cmd:resetmember|error:nothing_to_do"
 msgid "No reset operation selected, nothing to do."
 msgstr ""
 
-#: src/modules/member_admin/cog.py:307
+#: src/modules/member_admin/cog.py:392
 msgctxt "cmd:configure_welcome"
 msgid "welcome"
 msgstr ""
 
-#: src/modules/member_admin/cog.py:310
+#: src/modules/member_admin/cog.py:395
 msgctxt "cmd:configure_welcome|desc"
 msgid "Configure new member greetings and roles."
 msgstr ""

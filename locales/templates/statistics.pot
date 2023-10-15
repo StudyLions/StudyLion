@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-01 16:01+0300\n"
+"POT-Creation-Date: 2023-10-15 15:58+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,58 +17,93 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/statistics/cog.py:43
+#: src/modules/statistics/cog.py:47
 msgctxt "cmd:me"
 msgid "me"
 msgstr ""
 
-#: src/modules/statistics/cog.py:46
+#: src/modules/statistics/cog.py:50
 msgctxt "cmd:me|desc"
-msgid "Display your personal profile and summary statistics."
+msgid "Edit your personal profile and see your statistics."
 msgstr ""
 
-#: src/modules/statistics/cog.py:57
+#: src/modules/statistics/cog.py:61
+msgctxt "cmd:profile"
+msgid "profile"
+msgstr ""
+
+#: src/modules/statistics/cog.py:64
+msgctxt "cmd:profile|desc"
+msgid "Display the target's profile and statistics summary."
+msgstr ""
+
+#: src/modules/statistics/cog.py:68
+msgctxt "cmd:profile|param:member"
+msgid "member"
+msgstr ""
+
+#: src/modules/statistics/cog.py:72
+msgctxt "cmd:profile|param:member|desc"
+msgid "Member to display profile for."
+msgstr ""
+
+#: src/modules/statistics/cog.py:105
 msgctxt "cmd:stats"
 msgid "stats"
 msgstr ""
 
-#: src/modules/statistics/cog.py:60
+#: src/modules/statistics/cog.py:108
 msgctxt "cmd:stats|desc"
 msgid "Weekly and monthly statistics for your recent activity."
 msgstr ""
 
-#: src/modules/statistics/cog.py:74
+#: src/modules/statistics/cog.py:122
 msgctxt "cmd:leaderboard"
 msgid "leaderboard"
 msgstr ""
 
-#: src/modules/statistics/cog.py:77
+#: src/modules/statistics/cog.py:125
 msgctxt "cmd:leaderboard|desc"
 msgid "Server leaderboard."
 msgstr ""
 
-#: src/modules/statistics/cog.py:92
+#: src/modules/statistics/cog.py:140
 #, possible-python-brace-format
 msgctxt "cmd:leaderboard|chunking|desc"
 msgid "Requesting server member list from Discord, please wait {loading}"
 msgstr ""
 
-#: src/modules/statistics/cog.py:115
+#: src/modules/statistics/cog.py:157
+msgctxt "cmd:achievements"
+msgid "achievements"
+msgstr ""
+
+#: src/modules/statistics/cog.py:160
+msgctxt "cmd:achievements|desc"
+msgid "View your progress towards the activity achievement awards!"
+msgstr ""
+
+#: src/modules/statistics/cog.py:177
+msgctxt "cmd:achievements|embed:title"
+msgid "Achievements"
+msgstr ""
+
+#: src/modules/statistics/cog.py:195
 msgctxt "cmd:configure_statistics"
 msgid "statistics"
 msgstr ""
 
-#: src/modules/statistics/cog.py:116
+#: src/modules/statistics/cog.py:196
 msgctxt "cmd:configure_statistics|desc"
 msgid "Statistics configuration panel"
 msgstr ""
 
-#: src/modules/statistics/cog.py:119
+#: src/modules/statistics/cog.py:199
 msgctxt "cmd:configure_statistics|param:season_start"
 msgid "season_start"
 msgstr ""
 
-#: src/modules/statistics/cog.py:124
+#: src/modules/statistics/cog.py:204
 msgctxt "cmd:configure_statistics|param:season_start|desc"
 msgid ""
 "Time from which to start counting activity for rank badges and season "
@@ -328,6 +363,12 @@ msgstr ""
 #: src/modules/statistics/settings.py:412
 msgctxt "dash:stats|dropdown|placeholder"
 msgid "Activity Statistics Panel"
+msgstr ""
+
+#: src/modules/statistics/graphics/stats.py:63
+#, possible-python-brace-format
+msgctxt "gui:stats|mode:voice|month"
+msgid "{hours} hours"
 msgstr ""
 
 #: src/modules/statistics/ui/goals.py:92
@@ -613,108 +654,108 @@ msgid ""
 "again to revert."
 msgstr ""
 
-#: src/modules/statistics/ui/leaderboard.py:253
+#: src/modules/statistics/ui/leaderboard.py:257
 msgctxt "ui:leaderboard|menu:stats|placeholder"
 msgid "Select Activity Type"
 msgstr ""
 
-#: src/modules/statistics/ui/leaderboard.py:262
+#: src/modules/statistics/ui/leaderboard.py:266
 msgctxt "ui:leaderboard|menu:stats|item:voice"
 msgid "Voice Activity"
 msgstr ""
 
-#: src/modules/statistics/ui/leaderboard.py:273
+#: src/modules/statistics/ui/leaderboard.py:277
 msgctxt "ui:leaderboard|menu:stats|item:study"
 msgid "Study Statistics"
 msgstr ""
 
-#: src/modules/statistics/ui/leaderboard.py:284
+#: src/modules/statistics/ui/leaderboard.py:288
 msgctxt "ui:leaderboard|menu:stats|item:message"
 msgid "Message Activity"
 msgstr ""
 
-#: src/modules/statistics/ui/leaderboard.py:295
+#: src/modules/statistics/ui/leaderboard.py:299
 msgctxt "ui:leaderboard|menu;stats|item:anki"
 msgid "Anki Cards Reviewed"
 msgstr ""
 
-#: src/modules/statistics/ui/leaderboard.py:349
+#: src/modules/statistics/ui/leaderboard.py:353
 msgctxt "ui:leaderboard|button:season|label"
 msgid "This Season"
 msgstr ""
 
-#: src/modules/statistics/ui/leaderboard.py:353
+#: src/modules/statistics/ui/leaderboard.py:357
 msgctxt "ui:leaderboard|button:day|label"
 msgid "Today"
 msgstr ""
 
-#: src/modules/statistics/ui/leaderboard.py:357
+#: src/modules/statistics/ui/leaderboard.py:361
 msgctxt "ui:leaderboard|button:week|label"
 msgid "This Week"
 msgstr ""
 
-#: src/modules/statistics/ui/leaderboard.py:361
+#: src/modules/statistics/ui/leaderboard.py:365
 msgctxt "ui:leaderboard|button:month|label"
 msgid "This Month"
 msgstr ""
 
-#: src/modules/statistics/ui/leaderboard.py:365
+#: src/modules/statistics/ui/leaderboard.py:369
 msgctxt "ui:leaderboard|button:alltime|label"
 msgid "All Time"
 msgstr ""
 
-#: src/modules/statistics/ui/leaderboard.py:369
+#: src/modules/statistics/ui/leaderboard.py:373
 msgctxt "ui:leaderboard|button:jump|label"
 msgid "Jump"
 msgstr ""
 
-#: src/modules/statistics/ui/leaderboard.py:384
+#: src/modules/statistics/ui/leaderboard.py:388
 msgctxt "ui:leaderboard|button:jump|input:title"
 msgid "Jump to page"
 msgstr ""
 
-#: src/modules/statistics/ui/leaderboard.py:388
+#: src/modules/statistics/ui/leaderboard.py:392
 msgctxt "ui:leaderboard|button:jump|input:question"
 msgid "Page number to jump to"
 msgstr ""
 
-#: src/modules/statistics/ui/leaderboard.py:399
+#: src/modules/statistics/ui/leaderboard.py:403
 msgctxt "ui:leaderboard|button:jump|error:invalid_page"
 msgid "Invalid page number, please try again!"
 msgstr ""
 
-#: src/modules/statistics/ui/leaderboard.py:443
+#: src/modules/statistics/ui/leaderboard.py:447
 msgctxt "ui:leaderboard|chunk_warning"
 msgid ""
 "**Note:** Could not retrieve member list from Discord, so some members may "
 "be missing. Try again in a minute!"
 msgstr ""
 
-#: src/modules/statistics/ui/leaderboard.py:450
+#: src/modules/statistics/ui/leaderboard.py:454
 #, possible-python-brace-format
 msgctxt "ui:leaderboard|since"
 msgid "Counting statistics since {timestamp}"
 msgstr ""
 
-#: src/modules/statistics/ui/leaderboard.py:463
+#: src/modules/statistics/ui/leaderboard.py:467
 #, possible-python-brace-format
 msgctxt "ui:leaderboard|mode:voice|message:empty|desc"
 msgid "There has been no voice activity since {timestamp}"
 msgstr ""
 
-#: src/modules/statistics/ui/leaderboard.py:468
+#: src/modules/statistics/ui/leaderboard.py:472
 #, possible-python-brace-format
 msgctxt "ui:leaderboard|mode:text|message:empty|desc"
 msgid "There has been no message activity since {timestamp}"
 msgstr ""
 
-#: src/modules/statistics/ui/leaderboard.py:473
+#: src/modules/statistics/ui/leaderboard.py:477
 #, possible-python-brace-format
 msgctxt "ui:leaderboard|mode:anki|message:empty|desc"
 msgid "There have been no Anki cards reviewed since {timestamp}"
 msgstr ""
 
-#: src/modules/statistics/ui/leaderboard.py:482
+#: src/modules/statistics/ui/leaderboard.py:486
 msgctxt "ui:leaderboard|message:empty|title"
 msgid "Leaderboard Empty!"
 msgstr ""

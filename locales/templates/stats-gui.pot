@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-01 16:01+0300\n"
+"POT-Creation-Date: 2023-10-15 15:58+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,121 +18,121 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. First column
-#: src/gui/cards/stats.py:72
+#: src/gui/cards/stats.py:61
 msgctxt "skin:stats|header:col1"
 msgid "STATISTICS"
 msgstr ""
 
-#: src/gui/cards/stats.py:75
+#: src/gui/cards/stats.py:64
 msgctxt "skin:stats|subheader:leaderboard"
 msgid "LEADERBOARD POSITION"
 msgstr ""
 
-#: src/gui/cards/stats.py:79
+#: src/gui/cards/stats.py:68
 msgctxt "skin:stats|mode:study|subheader:study"
 msgid "STUDY TIME"
 msgstr ""
 
-#: src/gui/cards/stats.py:83
+#: src/gui/cards/stats.py:72
 msgctxt "skin:stats|mode:voice|subheader:study"
 msgid "VOICE TIME"
 msgstr ""
 
-#: src/gui/cards/stats.py:87
+#: src/gui/cards/stats.py:76
 msgctxt "skin:stats|mode:text|subheader:study"
 msgid "MESSAGES"
 msgstr ""
 
-#: src/gui/cards/stats.py:91
+#: src/gui/cards/stats.py:80
 msgctxt "skin:stats|mode:anki|subheader:study"
 msgid "CARDS REVIEWED"
 msgstr ""
 
-#: src/gui/cards/stats.py:102
+#: src/gui/cards/stats.py:91
 msgctxt "skin:stats|subheader:workouts"
 msgid "WORKOUTS"
 msgstr ""
 
-#: src/gui/cards/stats.py:118
+#: src/gui/cards/stats.py:107
 msgctxt "skin:stats|field:daily"
 msgid "DAILY"
 msgstr ""
 
-#: src/gui/cards/stats.py:122
+#: src/gui/cards/stats.py:111
 msgctxt "skin:stats|field:weekly"
 msgid "WEEKLY"
 msgstr ""
 
-#: src/gui/cards/stats.py:126
+#: src/gui/cards/stats.py:115
 msgctxt "skin:stats|field:monthly"
 msgid "MONTHLY"
 msgstr ""
 
-#: src/gui/cards/stats.py:130
+#: src/gui/cards/stats.py:119
 msgctxt "skin:stats|field:alltime"
 msgid "ALL TIME"
 msgstr ""
 
-#: src/gui/cards/stats.py:134
+#: src/gui/cards/stats.py:123
 msgctxt "skin:stats|field:time"
 msgid "TIME"
 msgstr ""
 
-#: src/gui/cards/stats.py:138
+#: src/gui/cards/stats.py:127
 msgctxt "skin:stats|field:anki"
 msgid "ANKI: COMING SOON"
 msgstr ""
 
-#: src/gui/cards/stats.py:155
+#: src/gui/cards/stats.py:144
 msgctxt "skin:stats|mode:study|header:col2"
 msgid "STUDY STREAK"
 msgstr ""
 
-#: src/gui/cards/stats.py:159
+#: src/gui/cards/stats.py:148
 msgctxt "skin:stats|mode:voice|header:col2"
 msgid "VOICE STREAK"
 msgstr ""
 
-#: src/gui/cards/stats.py:163
+#: src/gui/cards/stats.py:152
 msgctxt "skin:stats|mode:text|header:col2"
 msgid "ACTIVITY STREAK"
 msgstr ""
 
-#: src/gui/cards/stats.py:167
+#: src/gui/cards/stats.py:156
 msgctxt "skin:stats|mode:anki|header:col2"
 msgid "ANKI REVIEW STREAK"
 msgstr ""
 
-#: src/gui/cards/stats.py:180
+#: src/gui/cards/stats.py:169
 #, possible-python-brace-format
 msgctxt "skin:stats|mode:study|field:col2_summary"
 msgid "{amount} HRS"
 msgstr ""
 
-#: src/gui/cards/stats.py:184
+#: src/gui/cards/stats.py:173
 #, possible-python-brace-format
 msgctxt "skin:stats|mode:voice|field:col2_summary"
 msgid "{amount} HRS"
 msgstr ""
 
-#: src/gui/cards/stats.py:188
+#: src/gui/cards/stats.py:177
 #, possible-python-brace-format
 msgctxt "skin:stats|mode:text|field:col2_summary"
 msgid "{amount} XP"
 msgstr ""
 
-#: src/gui/cards/stats.py:192
+#: src/gui/cards/stats.py:181
 #, possible-python-brace-format
 msgctxt "skin:stats|mode:anki|field:col2_summary"
 msgid "{amount} CARDS"
 msgstr ""
 
-#: src/gui/cards/stats.py:223
+#: src/gui/cards/stats.py:212
 msgctxt "skin:stats|cal|weekdays"
 msgid "S,M,T,W,T,F,S"
 msgstr ""
 
-#: src/gui/cards/stats.py:227
+#: src/gui/cards/stats.py:216
 msgctxt "skin:stats|cal|months"
 msgid ""
 "JANUARY,FEBRUARY,MARCH,APRIL,MAY,JUNE,JULY,AUGUST,SEPTEMBER,OCTOBER,NOVEMBER,"

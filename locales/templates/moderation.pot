@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-01 16:01+0300\n"
+"POT-Creation-Date: 2023-10-15 15:58+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,34 +57,34 @@ msgctxt "cmd:configure_moderation|desc"
 msgid "Configure general moderation settings."
 msgstr ""
 
-#: src/modules/moderation/ticket.py:147
+#: src/modules/moderation/ticket.py:148
 #, possible-python-brace-format
 msgctxt "ticket|title:auto"
 msgid "Ticket #{ticketid} | {state} | {type}[Auto] | {name}"
 msgstr ""
 
-#: src/modules/moderation/ticket.py:152
+#: src/modules/moderation/ticket.py:153
 #, possible-python-brace-format
 msgctxt "ticket|title:manual"
 msgid "Ticket #{ticketid} | {state} | {type} | {name}"
 msgstr ""
 
-#: src/modules/moderation/ticket.py:168
+#: src/modules/moderation/ticket.py:169
 msgctxt "ticket|field:target|name"
 msgid "Target"
 msgstr ""
 
-#: src/modules/moderation/ticket.py:173
+#: src/modules/moderation/ticket.py:174
 msgctxt "ticket|field:moderator|name"
 msgid "Moderator"
 msgstr ""
 
-#: src/modules/moderation/ticket.py:180
+#: src/modules/moderation/ticket.py:181
 msgctxt "ticket|field:expiry|mode:expiring|name"
 msgid "Expires At"
 msgstr ""
 
-#: src/modules/moderation/ticket.py:183
+#: src/modules/moderation/ticket.py:184
 #, possible-python-brace-format
 msgctxt "ticket|field:expiry|mode:expiring|value"
 msgid ""
@@ -92,44 +92,44 @@ msgid ""
 "Duration: `{duration}`"
 msgstr ""
 
-#: src/modules/moderation/ticket.py:191
+#: src/modules/moderation/ticket.py:192
 msgctxt "ticket|field:expiry|mode:expired|name"
 msgid "Expired"
 msgstr ""
 
-#: src/modules/moderation/ticket.py:194
+#: src/modules/moderation/ticket.py:195
 #, possible-python-brace-format
 msgctxt "ticket|field:expiry|mode:expired|value"
 msgid "{timestamp}"
 msgstr ""
 
-#: src/modules/moderation/ticket.py:201
+#: src/modules/moderation/ticket.py:202
 msgctxt "ticket|field:expiry|mode:open|name"
 msgid "Expiry"
 msgstr ""
 
-#: src/modules/moderation/ticket.py:204
+#: src/modules/moderation/ticket.py:205
 #, possible-python-brace-format
 msgctxt "ticket|field:expiry|mode:open|value"
 msgid "{timestamp}"
 msgstr ""
 
-#: src/modules/moderation/ticket.py:212
+#: src/modules/moderation/ticket.py:213
 msgctxt "ticket|field:context|name"
 msgid "Context"
 msgstr ""
 
-#: src/modules/moderation/ticket.py:219
+#: src/modules/moderation/ticket.py:220
 msgctxt "ticket|field:notes|name"
 msgid "Notes"
 msgstr ""
 
-#: src/modules/moderation/ticket.py:226
+#: src/modules/moderation/ticket.py:227
 msgctxt "ticket|field:pardoned|name"
 msgid "Pardoned"
 msgstr ""
 
-#: src/modules/moderation/ticket.py:229
+#: src/modules/moderation/ticket.py:230
 #, possible-python-brace-format
 msgctxt "ticket|field:pardoned|value"
 msgid ""

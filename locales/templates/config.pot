@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-01 16:01+0300\n"
+"POT-Creation-Date: 2023-10-15 15:58+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,67 +17,43 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/config/general.py:41
-msgctxt "guildset:timezone"
-msgid "timezone"
-msgstr ""
-
-#: src/modules/config/general.py:44
-msgctxt "guildset:timezone|desc"
-msgid "Guild timezone for statistics display."
-msgstr ""
-
-#: src/modules/config/general.py:48
-msgctxt "guildset:timezone|long_desc"
-msgid ""
-"Guild-wide timezone. Used to determine start of the day for the "
-"leaderboards, and as the default statistics timezone for members who have "
-"not set one."
-msgstr ""
-
-#: src/modules/config/general.py:62
-#, possible-python-brace-format
-msgctxt "guildset:timezone|response"
-msgid "The guild timezone has been set to `{timezone}`."
-msgstr ""
-
-#: src/modules/config/general.py:94
+#: src/modules/config/cog.py:56 src/modules/config/general.py:52
 msgctxt "cmd:configure_general"
 msgid "general"
 msgstr ""
 
-#: src/modules/config/general.py:95
+#: src/modules/config/cog.py:57 src/modules/config/general.py:53
 msgctxt "cmd:configure_general|desc"
 msgid "General configuration panel"
 msgstr ""
 
-#: src/modules/config/general.py:129
+#: src/modules/config/general.py:91
 msgctxt "cmd:configure_general|parse_failure:timezone"
 msgid "Could not set the timezone!"
 msgstr ""
 
-#: src/modules/config/general.py:150
+#: src/modules/config/general.py:112
 msgctxt "cmd:configure_general|success"
 msgid "Settings Updated!"
 msgstr ""
 
-#: src/modules/config/general.py:165
+#: src/modules/config/general.py:127
 msgctxt "cmd:configure_general|panel|title"
 msgid "General Configuration Panel"
 msgstr ""
 
-#: src/modules/config/dashboard.py:98
+#: src/modules/config/dashboard.py:99
 #, possible-python-brace-format
 msgctxt "ui:dashboard|title"
 msgid "Guild Dashboard (Page {page}/{total})"
 msgstr ""
 
-#: src/modules/config/dashboard.py:109
+#: src/modules/config/dashboard.py:110
 msgctxt "ui:dashboard|footer"
 msgid "Hover over setting names for a brief description"
 msgstr ""
 
-#: src/modules/config/dashboard.py:172
+#: src/modules/config/dashboard.py:173
 msgctxt "ui:dashboard|menu:config|placeholder"
 msgid "Open Configuration Panel"
 msgstr ""

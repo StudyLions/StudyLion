@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-01 16:01+0300\n"
+"POT-Creation-Date: 2023-10-15 15:58+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,88 +18,88 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: src/modules/economy/settingui.py:33
+#: src/modules/economy/settingui.py:34
 msgctxt "ui:economy_config|embed|title"
 msgid "Economy Configuration Panel"
 msgstr ""
 
-#: src/modules/economy/settingui.py:68
+#: src/modules/economy/settingui.py:67
 msgctxt "dash:economy|title"
 msgid "Economy Configuration ({commands[configure economy]})"
 msgstr ""
 
-#: src/modules/economy/settingui.py:72
+#: src/modules/economy/settingui.py:71
 msgctxt "dash:economy|dropdown|placeholder"
 msgid "Economy Panel"
 msgstr ""
 
 #. ----- Economy group commands -----
-#: src/modules/economy/cog.py:86
+#: src/modules/economy/cog.py:87
 msgctxt "cmd:economy"
 msgid "economy"
 msgstr ""
 
-#: src/modules/economy/cog.py:92
+#: src/modules/economy/cog.py:93
 msgctxt "cmd:economy_balance"
 msgid "balance"
 msgstr ""
 
-#: src/modules/economy/cog.py:95
+#: src/modules/economy/cog.py:96
 msgctxt "cmd:economy_balance|desc"
 msgid "Display or modify LionCoin balance for members and roles."
 msgstr ""
 
-#: src/modules/economy/cog.py:99
+#: src/modules/economy/cog.py:100
 msgctxt "cmd:economy_balance|param:target"
 msgid "target"
 msgstr ""
 
-#: src/modules/economy/cog.py:100
+#: src/modules/economy/cog.py:101
 msgctxt "cmd:economy_balance|param:add"
 msgid "add"
 msgstr ""
 
-#: src/modules/economy/cog.py:101
+#: src/modules/economy/cog.py:102
 msgctxt "cmd:economy_balance|param:set"
 msgid "set"
 msgstr ""
 
-#: src/modules/economy/cog.py:106
+#: src/modules/economy/cog.py:107
 msgctxt "cmd:economy_balance|param:target|desc"
 msgid ""
 "Target user or role to view or update. Use @everyone to update the entire "
 "guild."
 msgstr ""
 
-#: src/modules/economy/cog.py:110
+#: src/modules/economy/cog.py:111
 msgctxt "cmd:economy_balance|param:add|desc"
 msgid ""
 "Number of LionCoins to add to the target member's balance. May be negative "
 "to remove."
 msgstr ""
 
-#: src/modules/economy/cog.py:114
+#: src/modules/economy/cog.py:115
 msgctxt "cmd:economy_balance|param:set|set"
 msgid "New balance to set the target's balance to."
 msgstr ""
 
-#: src/modules/economy/cog.py:152
+#: src/modules/economy/cog.py:153
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|error:no_target"
 msgid "There are no valid members in {role.mention}! It has a total of `0` LC."
 msgstr ""
 
-#: src/modules/economy/cog.py:163
+#: src/modules/economy/cog.py:164
 msgctxt "cmd:economy_balance|error:target_is_bot"
 msgid "Bots cannot have coin balances!"
 msgstr ""
 
-#: src/modules/economy/cog.py:174
+#: src/modules/economy/cog.py:175
 msgctxt "cmd:economy_balance|error:args"
 msgid "You cannot simultaneously `set` and `add` member balances!"
 msgstr ""
 
-#: src/modules/economy/cog.py:223
+#: src/modules/economy/cog.py:224
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:success|affected"
 msgid "One user was affected."
@@ -107,7 +107,7 @@ msgid_plural "**{count}** users were affected."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/modules/economy/cog.py:229
+#: src/modules/economy/cog.py:230
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|confirm|affected"
 msgid "One user will be affected."
@@ -115,17 +115,17 @@ msgid_plural "**{count}** users will be affected."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/modules/economy/cog.py:236
+#: src/modules/economy/cog.py:237
 msgctxt "cmd:economy_balance|confirm|button:confirm"
 msgid "Yes, adjust balances"
 msgstr ""
 
-#: src/modules/economy/cog.py:240
+#: src/modules/economy/cog.py:241
 msgctxt "cmd:economy_balance|confirm|button:cancel"
 msgid "No, cancel"
 msgstr ""
 
-#: src/modules/economy/cog.py:247
+#: src/modules/economy/cog.py:248
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:success_set|desc"
 msgid ""
@@ -133,14 +133,14 @@ msgid ""
 "**{amount}**."
 msgstr ""
 
-#: src/modules/economy/cog.py:256
+#: src/modules/economy/cog.py:257
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|confirm_set|desc"
 msgid ""
 "Are you sure you want to set everyone's balance to {coin_emoji}**{amount}**?"
 msgstr ""
 
-#: src/modules/economy/cog.py:264
+#: src/modules/economy/cog.py:265
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:success_set|desc"
 msgid ""
@@ -148,7 +148,7 @@ msgid ""
 "**{amount}**."
 msgstr ""
 
-#: src/modules/economy/cog.py:273
+#: src/modules/economy/cog.py:274
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|confirm_set|desc"
 msgid ""
@@ -156,32 +156,43 @@ msgid ""
 "{coin_emoji}**{amount}**?"
 msgstr ""
 
-#: src/modules/economy/cog.py:290
+#: src/modules/economy/cog.py:291
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:success_set|desc"
 msgid "{user_mention} now has a balance of {coin_emoji}**{amount}**."
 msgstr ""
 
-#: src/modules/economy/cog.py:306
+#: src/modules/economy/cog.py:305
+msgctxt "eventlog|event:economy_set|title"
+msgid "Moderator Set Economy Balance"
+msgstr ""
+
+#: src/modules/economy/cog.py:309
+#, possible-python-brace-format
+msgctxt "eventlog|event:economy_set|desc"
+msgid "{moderator} set {target}'s balance to {amount}."
+msgstr ""
+
+#: src/modules/economy/cog.py:321
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:success_add|desc"
 msgid ""
 "All members of **{guild_name}** have been given {coin_emoji}**{amount}**."
 msgstr ""
 
-#: src/modules/economy/cog.py:315
+#: src/modules/economy/cog.py:330
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|confirm_add|desc"
 msgid "Are you sure you want to add **{amount}** to everyone's balance?"
 msgstr ""
 
-#: src/modules/economy/cog.py:323
+#: src/modules/economy/cog.py:338
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:success_add|desc"
 msgid "All members of {role_mention} have been given {coin_emoji}**{amount}**."
 msgstr ""
 
-#: src/modules/economy/cog.py:332
+#: src/modules/economy/cog.py:347
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|confirm_add|desc"
 msgid ""
@@ -189,7 +200,7 @@ msgid ""
 "{role_mention}?"
 msgstr ""
 
-#: src/modules/economy/cog.py:354
+#: src/modules/economy/cog.py:369
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:success_add|desc"
 msgid ""
@@ -197,26 +208,37 @@ msgid ""
 "{coin_emoji}**{new_amount}**."
 msgstr ""
 
-#: src/modules/economy/cog.py:365
+#: src/modules/economy/cog.py:380
+msgctxt "eventlog|event:economy_add|title"
+msgid "Moderator Modified Economy Balance"
+msgstr ""
+
+#: src/modules/economy/cog.py:384
+#, possible-python-brace-format
+msgctxt "eventlog|event:economy_set|desc"
+msgid "{moderator} added {amount} to {target}'s balance."
+msgstr ""
+
+#: src/modules/economy/cog.py:394
 msgctxt "cmd:economy_balance|embed:success|title"
 msgid "Account successfully updated."
 msgid_plural "Accounts successfully updated."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/modules/economy/cog.py:409
+#: src/modules/economy/cog.py:438
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:role_lb|author"
 msgid "Balance sheet for {name}"
 msgstr ""
 
-#: src/modules/economy/cog.py:415
+#: src/modules/economy/cog.py:444
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:role_lb|header"
 msgid "This server has a total balance of {coin_emoji}**{total}**."
 msgstr ""
 
-#: src/modules/economy/cog.py:423
+#: src/modules/economy/cog.py:452
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:role_lb|header"
 msgid ""
@@ -224,66 +246,66 @@ msgid ""
 "balance of {coin_emoji}**{total}**."
 msgstr ""
 
-#: src/modules/economy/cog.py:435
+#: src/modules/economy/cog.py:464
 msgctxt "cmd:economy_balance|embed:role_lb|row_format"
 msgid "`[{pos:>{numwidth}}]` | `{coins:>{coinwidth}} LC` | {mention}"
 msgstr ""
 
-#: src/modules/economy/cog.py:463
+#: src/modules/economy/cog.py:492
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:role_lb|footer"
 msgid "Page {page}/{total}"
 msgstr ""
 
-#: src/modules/economy/cog.py:473
+#: src/modules/economy/cog.py:502
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:role_lb|header"
 msgid "This server has a total balance of {coin_emoji}**0**."
 msgstr ""
 
-#: src/modules/economy/cog.py:480
+#: src/modules/economy/cog.py:509
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:role_lb|header"
 msgid "The role {role_mention} has a total balance of {coin_emoji}**0**."
 msgstr ""
 
-#: src/modules/economy/cog.py:500
+#: src/modules/economy/cog.py:529
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:single|desc"
 msgid "{mention} currently owns {coin_emoji} {coins}."
 msgstr ""
 
-#: src/modules/economy/cog.py:510
+#: src/modules/economy/cog.py:539
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:single|author"
 msgid "Balance statement for {user}"
 msgstr ""
 
-#: src/modules/economy/cog.py:519
+#: src/modules/economy/cog.py:548
 msgctxt "cmd:economy_reset"
 msgid "reset"
 msgstr ""
 
-#: src/modules/economy/cog.py:522
+#: src/modules/economy/cog.py:551
 msgctxt "cmd:economy_reset|desc"
 msgid ""
 "Reset the coin balance for a target user or role. (See also \"economy "
 "balance\".)"
 msgstr ""
 
-#: src/modules/economy/cog.py:526
+#: src/modules/economy/cog.py:555
 msgctxt "cmd:economy_reset|param:target"
 msgid "target"
 msgstr ""
 
-#: src/modules/economy/cog.py:531
+#: src/modules/economy/cog.py:560
 msgctxt "cmd:economy_reset|param:target|desc"
 msgid ""
 "Target user or role to view or update. Use @everyone to reset the entire "
 "guild."
 msgstr ""
 
-#: src/modules/economy/cog.py:558
+#: src/modules/economy/cog.py:587
 #, possible-python-brace-format
 msgctxt "cmd:economy_reset|confirm:reset_guild|desc"
 msgid ""
@@ -292,17 +314,17 @@ msgid ""
 "*This is not reversible!*"
 msgstr ""
 
-#: src/modules/economy/cog.py:566
+#: src/modules/economy/cog.py:595
 msgctxt "cmd:economy_reset|confirm:reset_guild|button:confirm"
 msgid "Yes, reset the economy"
 msgstr ""
 
-#: src/modules/economy/cog.py:570
+#: src/modules/economy/cog.py:599
 msgctxt "cmd:economy_reset|confirm:reset_guild|button:cancel"
 msgid "Cancel reset"
 msgstr ""
 
-#: src/modules/economy/cog.py:586
+#: src/modules/economy/cog.py:615
 #, possible-python-brace-format
 msgctxt "cmd:economy_reset|embed:success_guild|desc"
 msgid ""
@@ -310,13 +332,13 @@ msgid ""
 "**{amount}**."
 msgstr ""
 
-#: src/modules/economy/cog.py:603
+#: src/modules/economy/cog.py:632
 #, possible-python-brace-format
 msgctxt "cmd:economy_reset|error:no_target|desc"
 msgid "The role {mention} has no members to reset!"
 msgstr ""
 
-#: src/modules/economy/cog.py:613
+#: src/modules/economy/cog.py:642
 #, possible-python-brace-format
 msgctxt "cmd:economy_reset|confirm:reset_role|desc"
 msgid ""
@@ -324,17 +346,17 @@ msgid ""
 "**{count}** members will be affected."
 msgstr ""
 
-#: src/modules/economy/cog.py:622
+#: src/modules/economy/cog.py:651
 msgctxt "cmd:economy_reset|confirm:reset_role|button:confirm"
 msgid "Yes, complete economy reset"
 msgstr ""
 
-#: src/modules/economy/cog.py:626
+#: src/modules/economy/cog.py:655
 msgctxt "cmd:economy_reset|confirm:reset_role|button:cancel"
 msgid "Cancel"
 msgstr ""
 
-#: src/modules/economy/cog.py:643
+#: src/modules/economy/cog.py:672
 #, possible-python-brace-format
 msgctxt "cmd:economy_reset|embed:success_role|desc"
 msgid ""
@@ -342,72 +364,72 @@ msgid ""
 "**{amount}**."
 msgstr ""
 
-#: src/modules/economy/cog.py:665
+#: src/modules/economy/cog.py:694
 #, possible-python-brace-format
 msgctxt "cmd:economy_reset|embed:success_user|desc"
 msgid "{mention}'s balance has been reset to {coin_emoji}**{amount}**."
 msgstr ""
 
-#: src/modules/economy/cog.py:675
+#: src/modules/economy/cog.py:704
 msgctxt "cmd:send"
 msgid "send"
 msgstr ""
 
-#: src/modules/economy/cog.py:678
+#: src/modules/economy/cog.py:707
 msgctxt "cmd:send|desc"
 msgid "Gift the target user a certain number of LionCoins."
 msgstr ""
 
-#: src/modules/economy/cog.py:682
+#: src/modules/economy/cog.py:711
 msgctxt "cmd:send|param:target"
 msgid "target"
 msgstr ""
 
-#: src/modules/economy/cog.py:683
+#: src/modules/economy/cog.py:712
 msgctxt "cmd:send|param:amount"
 msgid "amount"
 msgstr ""
 
-#: src/modules/economy/cog.py:684
+#: src/modules/economy/cog.py:713
 msgctxt "cmd:send|param:note"
 msgid "note"
 msgstr ""
 
-#: src/modules/economy/cog.py:687
+#: src/modules/economy/cog.py:716
 msgctxt "cmd:send|param:target|desc"
 msgid "User to send the gift to"
 msgstr ""
 
-#: src/modules/economy/cog.py:688
+#: src/modules/economy/cog.py:717
 msgctxt "cmd:send|param:amount|desc"
 msgid "Number of coins to send"
 msgstr ""
 
-#: src/modules/economy/cog.py:689
+#: src/modules/economy/cog.py:718
 msgctxt "cmd:send|param:note|desc"
 msgid "Optional note to add to the gift."
 msgstr ""
 
-#: src/modules/economy/cog.py:713
+#: src/modules/economy/cog.py:742
 msgctxt "cmd:send|error:not_allowed"
 msgid "Sorry, this server has disabled LionCoin transfers!"
 msgstr ""
 
-#: src/modules/economy/cog.py:722
+#: src/modules/economy/cog.py:751
 msgctxt "cmd:send|error:sending-to-self"
 msgid ""
 "What is this, tax evasion?\n"
 "(You can not send coins to yourself.)"
 msgstr ""
 
-#: src/modules/economy/cog.py:732
+#: src/modules/economy/cog.py:761
 msgctxt "cmd:send|error:sending-to-leo"
 msgid ""
 "I appreciate it, but you need it more than I do!\n"
 "(You cannot send coins to bots.)"
 msgstr ""
 
-#: src/modules/economy/cog.py:742
+#: src/modules/economy/cog.py:771
 #, possible-python-brace-format
 msgctxt "cmd:send|error:sending-to-bot"
 msgid ""
@@ -416,7 +438,7 @@ msgid ""
 "(You cannot send coins to bots.)"
 msgstr ""
 
-#: src/modules/economy/cog.py:770
+#: src/modules/economy/cog.py:799
 #, possible-python-brace-format
 msgctxt "cmd:send|error:insufficient"
 msgid ""
@@ -424,19 +446,30 @@ msgid ""
 "`Current Balance:` {coin_emoji}{balance}"
 msgstr ""
 
-#: src/modules/economy/cog.py:791
+#: src/modules/economy/cog.py:816
+msgctxt "eventlog|event:send|title"
+msgid "Coins Transferred"
+msgstr ""
+
+#: src/modules/economy/cog.py:820
+#, possible-python-brace-format
+msgctxt "eventlog|event:send|desc"
+msgid "{source} gifted {amount} to {target}"
+msgstr ""
+
+#: src/modules/economy/cog.py:833
 #, possible-python-brace-format
 msgctxt "cmd:send|embed:gift|title"
 msgid "{user} sent you a gift!"
 msgstr ""
 
-#: src/modules/economy/cog.py:795
+#: src/modules/economy/cog.py:837
 #, possible-python-brace-format
 msgctxt "cmd:send|embed:gift|desc"
 msgid "{mention} sent you {coin_emoji}**{amount}**."
 msgstr ""
 
-#: src/modules/economy/cog.py:820
+#: src/modules/economy/cog.py:862
 #, possible-python-brace-format
 msgctxt "cmd:send|embed:ack|desc"
 msgid ""
@@ -444,85 +477,113 @@ msgid ""
 "{mention}!"
 msgstr ""
 
-#: src/modules/economy/cog.py:830
+#: src/modules/economy/cog.py:872
 msgctxt "cmd:send|embed:ack|desc|error:unreachable"
 msgid ""
 "Unfortunately, I was not able to message the recipient. Perhaps they have me "
 "blocked?"
 msgstr ""
 
-#: src/modules/economy/cog.py:842
+#: src/modules/economy/cog.py:884
 msgctxt "cmd:configure_economy"
 msgid "economy"
 msgstr ""
 
-#: src/modules/economy/cog.py:845
+#: src/modules/economy/cog.py:887
 msgctxt "cmd:configure_economy|desc"
 msgid "Configure LionCoin Economy"
 msgstr ""
 
-#: src/modules/economy/settings.py:35
+#: src/modules/economy/settings.py:36
 msgctxt "guildset:coins_per_xp"
 msgid "coins_per_100xp"
 msgstr ""
 
-#: src/modules/economy/settings.py:38
+#: src/modules/economy/settings.py:39
 msgctxt "guildset:coins_per_xp|desc"
 msgid "How many LionCoins to reward members per 100 XP they earn."
 msgstr ""
 
-#: src/modules/economy/settings.py:42
+#: src/modules/economy/settings.py:43
 msgctxt "guildset:coins_per_xp|long_desc"
 msgid ""
 "Members will be rewarded with this many LionCoins for every 100 XP they earn."
 msgstr ""
 
-#: src/modules/economy/settings.py:46
+#: src/modules/economy/settings.py:47
 msgctxt "guildset:coins_per_xp|long_desc"
 msgid "The number of coins to reward per 100 XP."
 msgstr ""
 
-#: src/modules/economy/settings.py:59
+#: src/modules/economy/settings.py:60
 #, possible-python-brace-format
 msgctxt "guildset:coins_per_xp|set_response"
 msgid ""
 "For every **100** XP they earn, members will now be given {coin}**{amount}**."
 msgstr ""
 
-#: src/modules/economy/settings.py:70
+#: src/modules/economy/settings.py:71
 msgctxt "guildset:allow_transfers"
 msgid "allow_transfers"
 msgstr ""
 
-#: src/modules/economy/settings.py:73
+#: src/modules/economy/settings.py:74
 msgctxt "guildset:allow_transfers|desc"
 msgid "Whether to allow members to transfer LionCoins to each other."
 msgstr ""
 
-#: src/modules/economy/settings.py:77
+#: src/modules/economy/settings.py:78
 msgctxt "guildset:allow_transfers|long_desc"
 msgid ""
 "If disabled, members will not be able to transfer LionCoins to each other."
 msgstr ""
 
-#: src/modules/economy/settings.py:85
+#: src/modules/economy/settings.py:86
 msgctxt "guildset:allow_transfers|outputs:true"
 msgid "Enabled (Coin transfers allowed.)"
 msgstr ""
 
-#: src/modules/economy/settings.py:86
+#: src/modules/economy/settings.py:87
 msgctxt "guildset:allow_transfers|outputs:false"
 msgid "Disabled (Coin transfers not allowed.)"
 msgstr ""
 
-#: src/modules/economy/settings.py:102
+#: src/modules/economy/settings.py:103
 #, possible-python-brace-format
 msgctxt "guildset:allow_transfers|set_response|set:true"
 msgid "Members will now be able to use {send_cmd} to transfer {coin}"
 msgstr ""
 
-#: src/modules/economy/settings.py:107
+#: src/modules/economy/settings.py:108
 #, possible-python-brace-format
 msgctxt "guildset:allow_transfers|set_response|set:false"
 msgid "Members will not be able to use {send_cmd} to transfer {coin}"
+msgstr ""
+
+#: src/modules/economy/settings.py:119
+msgctxt "guildset:starting_funds"
+msgid "starting_funds"
+msgstr ""
+
+#: src/modules/economy/settings.py:122
+msgctxt "guildset:starting_funds|desc"
+msgid "How many LionCoins should a member start with."
+msgstr ""
+
+#: src/modules/economy/settings.py:126
+msgctxt "guildset:starting_funds|long_desc"
+msgid ""
+"Members will be given this number of coins when they first interact with me, "
+"or first join the server."
+msgstr ""
+
+#: src/modules/economy/settings.py:130
+msgctxt "guildset:starting_funds|accepts"
+msgid "Number of coins to give to new members."
+msgstr ""
+
+#: src/modules/economy/settings.py:142
+#, possible-python-brace-format
+msgctxt "guildset:starting_funds|set_response"
+msgid "New members will now start with {amount}"
 msgstr ""
