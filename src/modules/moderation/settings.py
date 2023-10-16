@@ -148,7 +148,7 @@ class ModerationSettings(SettingGroup):
             if value:
                 resp = t(_p(
                     'guildset:mod_role|set_response:set',
-                    "Members with the {role} will be considered moderators."
+                    "Members with {role} will be considered moderators."
                 )).format(role=value.mention)
             else:
                 resp = t(_p(
@@ -167,3 +167,46 @@ class ModerationSettings(SettingGroup):
                     'guildset:mod_role|formatted:unset',
                     "Not Set."
                 ))
+
+    class AdminRole(ModelData, RoleSetting):
+        setting_id = "admin_role"
+        _event = 'guildset_admin_role'
+
+        _display_name = _p('guildset:admin_role', "admin_role")
+        _desc = _p(
+            'guildset:admin_role|desc',
+            "Server role allowing access to all administrator level functionality in Leo."
+        )
+        _long_desc = _p(
+            'guildset:admin_role|long_desc',
+            "Members with this role are considered to be server administrators, "
+            "allowing them to use all of my interfaces and commands, "
+            "except for managing roles that are above them in the role hierachy. "
+            "This setting allows giving members administrator-level permissions "
+            "over my systems, without actually giving the members admin server permissions. "
+            "Note that the role will also need to be given permission to see the commands "
+            "through the Discord server integrations interface."
+        )
+        _accepts = _p(
+            'guildset:admin_role|accepts',
+            "Admin role name or id."
+        )
+
+        _model = CoreData.Guild
+        _column = CoreData.Guild.admin_role.name
+
+        @property
+        def update_message(self) -> str:
+            t = ctx_translator.get().t
+            value = self.value
+            if value:
+                resp = t(_p(
+                    'guildset:admin_role|set_response:set',
+                    "Members with {role} will now be considered admins, and have access to my full interface."
+                )).format(role=value.mention)
+            else:
+                resp = t(_p(
+                    'guildset:admin_role|set_response:unset',
+                    "The admin role has been unset. Only members with administrator permissions will be considered admins."
+                ))
+            return resp

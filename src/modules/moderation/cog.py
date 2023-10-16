@@ -140,12 +140,13 @@ class ModerationCog(LionCog):
         )
     )
     @appcmds.rename(
+        adminrole=ModerationSettings.AdminRole._display_name,
         modrole=ModerationSettings.ModRole._display_name,
         ticket_log=ModerationSettings.TicketLog._display_name,
         alert_channel=ModerationSettings.AlertChannel._display_name,
     )
     @appcmds.describe(
-        modrole=ModerationSettings.ModRole._desc,
+        adminrole=ModerationSettings.AdminRole._desc,
         ticket_log=ModerationSettings.TicketLog._desc,
         alert_channel=ModerationSettings.AlertChannel._desc,
     )
@@ -154,6 +155,7 @@ class ModerationCog(LionCog):
                                    modrole: Optional[discord.Role] = None,
                                    ticket_log: Optional[discord.TextChannel] = None,
                                    alert_channel: Optional[discord.TextChannel] = None,
+                                   adminrole: Optional[discord.Role] = None,
                                    ):
         if not ctx.guild:
             return
@@ -167,6 +169,12 @@ class ModerationCog(LionCog):
             setting = self.settings.ModRole
             await setting._check_value(ctx.guild.id, modrole)
             instance = setting(ctx.guild.id, modrole.id)
+            modified.append(instance)
+
+        if adminrole is not None:
+            setting = self.settings.AdminRole
+            await setting._check_value(ctx.guild.id, adminrole)
+            instance = setting(ctx.guild.id, adminrole.id)
             modified.append(instance)
 
         if ticket_log is not None:
