@@ -7,6 +7,7 @@ from discord import ui
 from discord.ui.button import ButtonStyle, Button, button
 from discord.ui.modal import Modal
 from discord.ui.text_input import TextInput
+from meta.errors import UserInputError
 
 from utils.lib import tabulate, recover_context
 from utils.ui import FastModal
@@ -191,6 +192,9 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
     # Optional client event to dispatch when theis setting has been written
     # Event handlers should be of the form Callable[ParentID, SettingData]
     _event: Optional[str] = None
+
+    # Interaction ward that should be validated via interaction_check
+    _write_ward: Optional[Callable[[discord.Interaction], Coroutine[Any, Any, bool]]] = None
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -487,6 +491,16 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
         Raises UserInputError if the value fails validation.
         """
         pass
+
+    @classmethod
+    async def interaction_check(cls, parent_id, interaction: discord.Interaction, **kwargs):
+        if cls._write_ward is not None and not await cls._write_ward(interaction):
+            # TODO: Combine the check system so we can do customised errors here
+            t = ctx_translator.get().t
+            raise UserInputError(t(_p(
+                'setting|interaction_check|error',
+                "You do not have sufficient permissions to do this!"
+            )))
 
 
 """

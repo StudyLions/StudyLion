@@ -140,7 +140,7 @@ class RankCog(LionCog):
         self.bot.core.guild_config.register_model_setting(self.settings.DMRanks)
 
         configcog = self.bot.get_cog('ConfigCog')
-        self.crossload_group(self.configure_group, configcog.configure_group)
+        self.crossload_group(self.configure_group, configcog.admin_config_group)
 
     def ranklock(self, guildid):
         lock = self._rank_locks.get(guildid, None)
@@ -926,7 +926,6 @@ class RankCog(LionCog):
         dm_ranks=RankSettings.DMRanks._desc,
         rank_channel=RankSettings.RankChannel._desc,
     )
-    @appcmds.default_permissions(administrator=True)
     @high_management_ward
     async def configure_ranks_cmd(self, ctx: LionContext,
                                   rank_type: Optional[Transformed[RankTypeChoice, AppCommandOptionType.string]] = None,

@@ -430,7 +430,7 @@ class RankOverviewUI(MessageUI):
                     "Ranks are determined by *all-time* statistics.\n"
                     "To reward ranks from a later time (e.g. to have monthly/quarterly/yearly ranks) "
                     "set the `season_start` with {stats_cmd}"
-                )).format(stats_cmd=self.bot.core.mention_cmd('configure statistics'))
+                )).format(stats_cmd=self.bot.core.mention_cmd('admin config statistics'))
             if self.rank_type is RankType.VOICE:
                 addendum = t(_p(
                     'ui:rank_overview|embed|field:note|value|voice_addendum',

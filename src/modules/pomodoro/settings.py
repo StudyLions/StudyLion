@@ -4,6 +4,7 @@ from settings.setting_types import ChannelSetting
 
 from core.data import CoreData
 from babel.translator import ctx_translator
+from wards import low_management_iward
 
 from . import babel
 
@@ -14,7 +15,8 @@ class TimerSettings(SettingGroup):
     class PomodoroChannel(ModelData, ChannelSetting):
         setting_id = 'pomodoro_channel'
         _event = 'guildset_pomodoro_channel'
-        _set_cmd = 'configure pomodoro'
+        _set_cmd = 'config pomodoro'
+        _write_ward = low_management_iward
 
         _display_name = _p('guildset:pomodoro_channel', "pomodoro_channel")
         _desc = _p(

@@ -126,6 +126,7 @@ class ConfigUI(LeoUI):
                         new_data = None
                     else:
                         # If this raises a UserInputError, it will be caught and the modal retried
+                        await setting.interaction_check(setting.parent_id, interaction)
                         new_data = await setting._parse_string(setting.parent_id, input_value)
                     setting.data = new_data
                     modified.append(setting)

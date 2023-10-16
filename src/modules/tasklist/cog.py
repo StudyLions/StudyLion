@@ -139,7 +139,7 @@ class TasklistCog(LionCog):
         self.bot.add_view(TasklistCaller(self.bot))
 
         configcog = self.bot.get_cog('ConfigCog')
-        self.crossload_group(self.configure_group, configcog.configure_group)
+        self.crossload_group(self.configure_group, configcog.config_group)
 
     @LionCog.listener('on_tasks_completed')
     @log_wrap(action="reward tasks completed")
@@ -984,7 +984,6 @@ class TasklistCog(LionCog):
         reward=TasklistSettings.task_reward._desc,
         reward_limit=TasklistSettings.task_reward_limit._desc
     )
-    @appcmds.default_permissions(manage_guild=True)
     @low_management_ward
     async def configure_tasklist_cmd(self, ctx: LionContext,
                                      reward: Optional[int] = None,

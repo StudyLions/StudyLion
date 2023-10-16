@@ -5,6 +5,7 @@ from settings.setting_types import ChannelSetting, IntegerSetting, BoolSetting
 from meta import conf
 from core.data import CoreData
 from babel.translator import ctx_translator
+from wards import low_management_iward, high_management_iward
 
 from . import babel
 
@@ -15,7 +16,8 @@ class RoomSettings(SettingGroup):
     class Category(ModelData, ChannelSetting):
         setting_id = 'rooms_category'
         _event = 'guildset_rooms_category'
-        _set_cmd = 'configure rooms'
+        _set_cmd = 'admin config rooms'
+        _write_ward = high_management_iward
 
         _display_name = _p(
             'guildset:room_category', "rooms_category"
@@ -70,7 +72,8 @@ class RoomSettings(SettingGroup):
     class Rent(ModelData, IntegerSetting):
         setting_id = 'rooms_price'
         _event = 'guildset_rooms_price'
-        _set_cmd = 'configure rooms'
+        _set_cmd = 'admin config rooms'
+        _write_ward = low_management_iward
 
         _display_name = _p(
             'guildset:rooms_price', "room_rent"
@@ -107,7 +110,8 @@ class RoomSettings(SettingGroup):
     class MemberLimit(ModelData, IntegerSetting):
         setting_id = 'rooms_slots'
         _event = 'guildset_rooms_slots'
-        _set_cmd = 'configure rooms'
+        _set_cmd = 'admin config rooms'
+        _write_ward = low_management_iward
 
         _display_name = _p('guildset:rooms_slots', "room_member_cap")
         _desc = _p(
@@ -141,7 +145,8 @@ class RoomSettings(SettingGroup):
     class Visible(ModelData, BoolSetting):
         setting_id = 'rooms_visible'
         _event = 'guildset_rooms_visible'
-        _set_cmd = 'configure rooms'
+        _set_cmd = 'admin config rooms'
+        _write_ward = high_management_iward
 
         _display_name = _p('guildset:rooms_visible', "room_visibility")
         _desc = _p(

@@ -21,6 +21,7 @@ from utils.lib import MessageArgs
 from core.data import CoreData
 from core.lion_guild import VoiceMode
 from babel.translator import ctx_translator
+from wards import low_management_iward, high_management_iward
 
 from . import babel
 from .data import StatsData, StatisticType
@@ -83,7 +84,8 @@ class StatisticsSettings(SettingGroup):
         Time is assumed to be in set guild timezone (although supports +00 syntax)
         """
         setting_id = 'season_start'
-        _set_cmd = 'configure statistics'
+        _set_cmd = 'admin config statistics'
+        _write_ward = high_management_iward
 
         _display_name = _p('guildset:season_start', "season_start")
         _desc = _p(
@@ -155,6 +157,7 @@ class StatisticsSettings(SettingGroup):
         List of roles not displayed on the leaderboard
         """
         setting_id = 'unranked_roles'
+        _write_ward = high_management_iward
 
         _display_name = _p('guildset:unranked_roles', "unranked_roles")
         _desc = _p(
@@ -211,6 +214,7 @@ class StatisticsSettings(SettingGroup):
         Default is determined by current guild mode
         """
         setting_id = 'visible_stats'
+        _write_ward = high_management_iward
 
         _setting = StatTypeSetting
 
@@ -263,6 +267,7 @@ class StatisticsSettings(SettingGroup):
         Which of the three stats to display by default
         """
         setting_id = 'default_stat'
+        _write_ward = high_management_iward
 
         _display_name = _p('guildset:default_stat', "default_stat")
         _desc = _p(
@@ -294,6 +299,7 @@ class StatisticsConfigUI(ConfigUI):
         """
         await selection.response.defer(thinking=True)
         setting = self.instances[1]
+        await setting.interaction_check(setting.parent_id, selection)
         setting.value = selected.values
         await setting.write()
         # Don't need to refresh due to instance hooks
@@ -314,6 +320,7 @@ class StatisticsConfigUI(ConfigUI):
         """
         await selection.response.defer(thinking=True)
         setting = self.instances[2]
+        await setting.interaction_check(setting.parent_id, selection)
         data = [StatisticType((value,)) for value in selected.values]
         setting.data = data
         await setting.write()
@@ -405,7 +412,7 @@ class StatisticsConfigUI(ConfigUI):
 class StatisticsDashboard(DashboardSection):
     section_name = _p(
         'dash:stats|title',
-        "Activity Statistics Configuration ({commands[configure statistics]})"
+        "Activity Statistics Configuration ({commands[admin config statistics]})"
     )
     _option_name = _p(
         "dash:stats|dropdown|placeholder",

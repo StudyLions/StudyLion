@@ -51,7 +51,7 @@ class ModerationCog(LionCog):
                 "Moderation configuration will not crossload."
             )
         else:
-            self.crossload_group(self.configure_group, configcog.configure_group)
+            self.crossload_group(self.configure_group, configcog.admin_config_group)
 
         if self.bot.is_ready():
             await self.initialise()

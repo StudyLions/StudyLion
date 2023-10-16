@@ -133,7 +133,7 @@ class VoiceTrackerCog(LionCog):
                 "Attempting to load VoiceTrackerCog before ConfigCog! Cannot crossload configuration group."
             )
         else:
-            self.crossload_group(self.configure_group, configcog.configure_group)
+            self.crossload_group(self.configure_group, configcog.config_group)
 
         if self.bot.is_ready():
             await self.initialise()
@@ -867,7 +867,6 @@ class VoiceTrackerCog(LionCog):
         hourly_live_bonus=VoiceTrackerSettings.HourlyLiveBonus._desc,
         daily_voice_cap=VoiceTrackerSettings.DailyVoiceCap._desc,
     )
-    @appcmds.default_permissions(manage_guild=True)
     @low_management_ward
     async def configure_voice_tracking_cmd(self, ctx: LionContext,
                                            hourly_reward: Optional[int] = None,  # TODO: Change these to Ranges

@@ -41,7 +41,7 @@ class BabelCog(LionCog):
         self.bot.core.user_config.register_model_setting(LocaleSettings.UserLocale)
 
         configcog = self.bot.get_cog('ConfigCog')
-        self.crossload_group(self.configure_group, configcog.configure_group)
+        self.crossload_group(self.configure_group, configcog.config_group)
 
         userconfigcog = self.bot.get_cog('UserConfigCog')
         self.crossload_group(self.userconfig_group, userconfigcog.userconfig_group)
@@ -114,8 +114,6 @@ class BabelCog(LionCog):
         language=LocaleSettings.GuildLocale._display_name,
         force_language=LocaleSettings.ForceLocale._display_name
     )
-    @appcmds.guild_only()  # Can be removed when attached as a subcommand
-    @appcmds.default_permissions(manage_guild=True)
     @low_management_ward
     async def cmd_configure_language(self, ctx: LionContext,
                                      language: Optional[str] = None,

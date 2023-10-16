@@ -4,6 +4,7 @@ from settings.setting_types import BoolSetting, ChannelSetting, EnumSetting
 
 from core.data import RankType, CoreData
 from babel.translator import ctx_translator
+from wards import high_management_iward
 
 from . import babel
 
@@ -40,7 +41,8 @@ class RankSettings(SettingGroup):
 
         setting_id = 'rank_type'
         _event = 'guildset_rank_type'
-        _set_cmd = 'configure ranks'
+        _set_cmd = 'admin config ranks'
+        _write_ward = high_management_iward
 
         _display_name = _p('guildset:rank_type', "rank_type")
         _desc = _p(
@@ -98,7 +100,8 @@ class RankSettings(SettingGroup):
         If DMRanks is set, this will only be used when the target user has disabled DM notifications.
         """
         setting_id = 'rank_channel'
-        _set_cmd = 'configure ranks'
+        _set_cmd = 'admin config ranks'
+        _write_ward = high_management_iward
 
         _display_name = _p('guildset:rank_channel', "rank_channel")
         _desc = _p(
@@ -148,7 +151,8 @@ class RankSettings(SettingGroup):
         Whether to DM rank notifications.
         """
         setting_id = 'dm_ranks'
-        _set_cmd = 'configure ranks'
+        _set_cmd = 'admin config ranks'
+        _write_ward = high_management_iward
 
         _display_name = _p('guildset:dm_ranks', "dm_ranks")
         _desc = _p(

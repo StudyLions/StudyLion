@@ -14,6 +14,7 @@ from meta.sharding import THIS_SHARD
 from meta.logger import log_wrap
 from utils.lib import MessageArgs
 from utils.ui import LeoUI, ConfigUI, DashboardSection
+from wards import low_management_iward
 
 from core.data import CoreData
 from core.lion_guild import VoiceMode
@@ -35,7 +36,8 @@ class VoiceTrackerSettings(SettingGroup):
     class UntrackedChannels(ListData, ChannelListSetting):
         setting_id = 'untracked_channels'
         _event = 'guildset_untracked_channels'
-        _set_cmd = 'configure voice_rewards'
+        _set_cmd = 'config voice_rewards'
+        _write_ward = low_management_iward
 
         _display_name = _p('guildset:untracked_channels', "untracked_channels")
         _desc = _p(
@@ -112,7 +114,8 @@ class VoiceTrackerSettings(SettingGroup):
     class HourlyReward(ModelData, IntegerSetting):
         setting_id = 'hourly_reward'
         _event = 'on_guildset_hourly_reward'
-        _set_cmd = 'configure voice_rewards'
+        _set_cmd = 'config voice_rewards'
+        _write_ward = low_management_iward
 
         _display_name = _p('guildset:hourly_reward', "hourly_reward")
         _desc = _p(
@@ -192,7 +195,8 @@ class VoiceTrackerSettings(SettingGroup):
         """
         setting_id = 'hourly_live_bonus'
         _event = 'on_guildset_hourly_live_bonus'
-        _set_cmd = 'configure voice_rewards'
+        _set_cmd = 'config voice_rewards'
+        _write_ward = low_management_iward
 
         _display_name = _p('guildset:hourly_live_bonus', "hourly_live_bonus")
         _desc = _p(
@@ -243,7 +247,8 @@ class VoiceTrackerSettings(SettingGroup):
     class DailyVoiceCap(ModelData, DurationSetting):
         setting_id = 'daily_voice_cap'
         _event = 'on_guildset_daily_voice_cap'
-        _set_cmd = 'configure voice_rewards'
+        _set_cmd = 'config voice_rewards'
+        _write_ward = low_management_iward
 
         _display_name = _p('guildset:daily_voice_cap', "daily_voice_cap")
         _desc = _p(
@@ -465,6 +470,7 @@ class VoiceTrackerConfigUI(ConfigUI):
     async def untracked_channels_menu(self, selection: discord.Interaction, selected):
         await selection.response.defer()
         setting = self.instances[3]
+        await setting.interaction_check(setting.parent_id, selection)
         setting.value = selected.values
         await setting.write()
 
@@ -528,7 +534,7 @@ class VoiceTrackerConfigUI(ConfigUI):
 class VoiceTrackerDashboard(DashboardSection):
     section_name = _p(
         'dash:voice_tracker|title',
-        "Voice Tracker Configuration ({commands[configure voice_rewards]})"
+        "Voice Tracker Configuration ({commands[config voice_rewards]})"
     )
     _option_name = _p(
         "dash:voice_tracking|dropdown|placeholder",

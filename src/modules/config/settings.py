@@ -9,6 +9,7 @@ from meta.context import ctx_bot
 from meta.errors import UserInputError
 from core.data import CoreData
 from babel.translator import ctx_translator
+from wards import low_management_iward
 
 from . import babel
 
@@ -20,13 +21,14 @@ class GeneralSettings(SettingGroup):
         """
         Guild timezone configuration.
 
-        Exposed via `/configure general timezone:`, and the standard interface.
+        Exposed via `/config general timezone:`, and the standard interface.
         The `timezone` setting acts as the default timezone for all members,
         and the timezone used to display guild-wide statistics.
         """
         setting_id = 'timezone'
         _event = 'guildset_timezone'
-        _set_cmd = 'configure general'
+        _set_cmd = 'config general'
+        _write_ward = low_management_iward
 
         _display_name = _p('guildset:timezone', "timezone")
         _desc = _p(
@@ -58,7 +60,8 @@ class GeneralSettings(SettingGroup):
         """
         setting_id = 'eventlog'
         _event = 'guildset_eventlog'
-        _set_cmd = 'configure general'
+        _set_cmd = 'config general'
+        _write_ward = low_management_iward
 
         _display_name = _p('guildset:eventlog', "event_log")
         _desc = _p(

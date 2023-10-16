@@ -12,7 +12,7 @@ from core.lion_guild import VoiceMode
 from utils.lib import error_embed
 from utils.ui import LeoUI, AButton, utc_now
 from gui.base import CardMode
-from wards import low_management_ward
+from wards import high_management_ward
 
 from . import babel
 from .data import StatsData
@@ -41,7 +41,7 @@ class StatsCog(LionCog):
         self.bot.core.guild_config.register_setting(self.settings.UnrankedRoles)
 
         configcog = self.bot.get_cog('ConfigCog')
-        self.crossload_group(self.configure_group, configcog.configure_group)
+        self.crossload_group(self.configure_group, configcog.admin_config_group)
 
     @cmds.hybrid_command(
         name=_p('cmd:me', "me"),
@@ -204,8 +204,7 @@ class StatsCog(LionCog):
             "Time from which to start counting activity for rank badges and season leaderboards. (YYYY-MM-DD)"
         )
     )
-    @appcmds.default_permissions(manage_guild=True)
-    @low_management_ward
+    @high_management_ward
     async def configure_statistics_cmd(self, ctx: LionContext,
                                        season_start: Optional[str] = None):
         t = self.bot.translator.t

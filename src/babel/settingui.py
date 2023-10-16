@@ -29,6 +29,7 @@ class LocaleSettingUI(ConfigUI):
     async def force_button(self, press: discord.Interaction, pressed: Button):
         await press.response.defer()
         setting = next(inst for inst in self.instances if inst.setting_id == LocaleSettings.ForceLocale.setting_id)
+        await setting.interaction_check(self.guildid, press)
         setting.value = not setting.value
         await setting.write()
 
@@ -80,7 +81,7 @@ class LocaleSettingUI(ConfigUI):
 class LocaleDashboard(DashboardSection):
     section_name = _p(
         'dash:locale|title',
-        "Server Language Configuration ({commands[configure language]})"
+        "Server Language Configuration ({commands[config language]})"
     )
     _option_name = _p(
         "dash:locale|dropdown|placeholder",

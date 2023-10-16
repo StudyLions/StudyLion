@@ -16,7 +16,7 @@ from meta.app import appname
 from meta.monitor import ComponentMonitor, ComponentStatus, StatusLevel
 from utils.lib import utc_now, error_embed
 
-from wards import low_management_ward, sys_admin_ward
+from wards import low_management_ward, sys_admin_ward, low_management_iward
 from . import babel, logger
 from .data import TextTrackerData
 
@@ -116,7 +116,7 @@ class TextTrackerCog(LionCog):
                 "Attempting to load the TextTrackerCog before ConfigCog! Failed to crossload configuration group."
             )
         else:
-            self.crossload_group(self.configure_group, configcog.configure_group)
+            self.crossload_group(self.configure_group, configcog.config_group)
 
         if self.bot.is_ready():
             await self.initialise()
@@ -318,7 +318,6 @@ class TextTrackerCog(LionCog):
         xp_per_period=TextTrackerSettings.XPPerPeriod._desc,
         word_xp=TextTrackerSettings.WordXP._desc,
     )
-    @appcmds.default_permissions(manage_guild=True)
     @low_management_ward
     async def configure_text_tracking_cmd(self, ctx: LionContext,
                                           xp_per_period: Optional[appcmds.Range[int, 0, 2**15]] = None,

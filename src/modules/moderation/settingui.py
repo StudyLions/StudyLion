@@ -42,6 +42,7 @@ class ModerationSettingUI(ConfigUI):
         await selection.response.defer(thinking=True, ephemeral=True)
 
         setting = self.get_instance(ModerationSettings.TicketLog)
+        await setting.interaction_check(setting.parent_id, selection)
         setting.value = selected.values[0] if selected.values else None
         await setting.write()
         await selection.delete_original_response()
@@ -67,6 +68,7 @@ class ModerationSettingUI(ConfigUI):
         await selection.response.defer(thinking=True, ephemeral=True)
         
         setting = self.get_instance(ModerationSettings.AlertChannel)
+        await setting.interaction_check(setting.parent_id, selection)
         setting.value = selected.values[0] if selected.values else None
         await setting.write()
         await selection.delete_original_response()
@@ -92,6 +94,7 @@ class ModerationSettingUI(ConfigUI):
         await selection.response.defer(thinking=True, ephemeral=True)
         
         setting = self.get_instance(ModerationSettings.ModRole)
+        await setting.interaction_check(setting.parent_id, selection)
         setting.value = selected.values[0] if selected.values else None
         await setting.write()
         await selection.delete_original_response()
@@ -117,6 +120,7 @@ class ModerationSettingUI(ConfigUI):
         await selection.response.defer(thinking=True, ephemeral=True)
         
         setting = self.get_instance(ModerationSettings.AdminRole)
+        await setting.interaction_check(setting.parent_id, selection)
         setting.value = selected.values[0] if selected.values else None
         await setting.write()
         await selection.delete_original_response()
@@ -175,7 +179,7 @@ class ModerationSettingUI(ConfigUI):
 class ModerationDashboard(DashboardSection):
     section_name = _p(
         "dash:moderation|title",
-        "Moderation Settings ({commands[configure moderation]})"
+        "Moderation Settings ({commands[admin config moderation]})"
     )
     _option_name = _p(
         "dash:moderation|dropdown|placeholder",

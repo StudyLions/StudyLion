@@ -35,6 +35,7 @@ class TextTrackerConfigUI(ConfigUI):
     async def untracked_channels_menu(self, selection: discord.Interaction, selected):
         await selection.response.defer()
         setting = self.instances[2]
+        await setting.interaction_check(setting.parent_id, selection)
         setting.value = selected.values
         await setting.write()
 
@@ -86,7 +87,7 @@ class TextTrackerConfigUI(ConfigUI):
 class TextTrackerDashboard(DashboardSection):
     section_name = _p(
         'dash:text_tracking|title',
-        "Message XP configuration ({commands[configure message_exp]})",
+        "Message XP configuration ({commands[config message_exp]})",
     )
     _option_name = _p(
         "dash:text_tracking|dropdown|placeholder",

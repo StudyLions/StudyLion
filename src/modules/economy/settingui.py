@@ -64,7 +64,7 @@ class EconomyConfigUI(ConfigUI):
 class EconomyDashboard(DashboardSection):
     section_name = _p(
         'dash:economy|title',
-        "Economy Configuration ({commands[configure economy]})"
+        "Economy Configuration ({commands[config economy]})"
     )
     _option_name = _p(
         "dash:economy|dropdown|placeholder",

@@ -13,6 +13,7 @@ from utils.lib import tabulate
 from utils.ui import LeoUI, FastModal, error_handler_for, ModalRetryUI, DashboardSection
 from core.data import CoreData
 from babel.translator import ctx_translator
+from wards import low_management_iward, high_management_iward
 
 from . import babel
 from .data import TasklistData
@@ -28,7 +29,8 @@ class TasklistSettings(SettingGroup):
         Exposed via `/configure tasklist`, and the standard configuration interface.
         """
         setting_id = 'task_reward'
-        _set_cmd = 'configure tasklist'
+        _set_cmd = 'config tasklist'
+        _write_ward = low_management_iward
 
         _display_name = _p('guildset:task_reward', "task_reward")
         _desc = _p(
@@ -68,7 +70,8 @@ class TasklistSettings(SettingGroup):
 
     class task_reward_limit(ModelData, IntegerSetting):
         setting_id = 'task_reward_limit'
-        _set_cmd = 'configure tasklist'
+        _set_cmd = 'config tasklist'
+        _write_ward = low_management_iward
 
         _display_name = _p('guildset:task_reward_limit', "task_reward_limit")
         _desc = _p(
@@ -109,6 +112,7 @@ class TasklistSettings(SettingGroup):
 
     class tasklist_channels(ListData, ChannelListSetting):
         setting_id = 'tasklist_channels'
+        _write_ward = low_management_iward
 
         _display_name = _p('guildset:tasklist_channels', "tasklist_channels")
         _desc = _p(
@@ -317,7 +321,7 @@ class TasklistConfigUI(LeoUI):
 
 
 class TasklistDashboard(DashboardSection):
-    section_name = _p('dash:tasklist|name', "Tasklist Configuration ({commands[configure tasklist]})")
+    section_name = _p('dash:tasklist|name', "Tasklist Configuration ({commands[config tasklist]})")
     _option_name = _p(
         "dash:tasklist|dropdown|placeholder",
         "Tasklist Options Panel"

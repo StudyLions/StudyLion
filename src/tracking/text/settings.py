@@ -11,6 +11,7 @@ from meta.sharding import THIS_SHARD
 from meta.logger import log_wrap
 from core.data import CoreData
 from babel.translator import ctx_translator
+from wards import low_management_iward
 
 from . import babel, logger
 from .data import TextTrackerData
@@ -28,7 +29,8 @@ class TextTrackerSettings(SettingGroup):
     """
     class XPPerPeriod(ModelData, IntegerSetting):
         setting_id = 'xp_per_period'
-        _set_cmd = 'configure message_exp'
+        _set_cmd = 'config message_exp'
+        _write_ward = low_management_iward
 
         _display_name = _p('guildset:xp_per_period', "xp_per_5min")
         _desc = _p(
@@ -60,7 +62,8 @@ class TextTrackerSettings(SettingGroup):
 
     class WordXP(ModelData, IntegerSetting):
         setting_id = 'word_xp'
-        _set_cmd = 'configure message_exp'
+        _set_cmd = 'config message_exp'
+        _write_ward = low_management_iward
 
         _display_name = _p('guildset:word_xp', "xp_per_100words")
         _desc = _p(
@@ -91,6 +94,7 @@ class TextTrackerSettings(SettingGroup):
 
     class UntrackedTextChannels(ListData, ChannelListSetting):
         setting_id = 'untracked_text_channels'
+        _write_ward = low_management_iward
 
         _display_name = _p('guildset:untracked_text_channels', "untracked_text_channels")
         _desc = _p(

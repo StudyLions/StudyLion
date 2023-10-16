@@ -9,6 +9,7 @@ from settings import ListData, ModelData
 from settings.groups import SettingGroup
 from settings.setting_types import BoolSetting, ChannelSetting, RoleListSetting
 from utils.lib import recurse_map, replace_multiple, tabulate
+from wards import low_management_iward, high_management_iward
 
 from . import babel
 from .data import MemberAdminData
@@ -36,6 +37,7 @@ _greeting_subkey_desc = {
 class MemberAdminSettings(SettingGroup):
     class GreetingChannel(ModelData, ChannelSetting):
         setting_id = 'greeting_channel'
+        _write_ward = low_management_iward
 
         _display_name = _p('guildset:greeting_channel', "welcome_channel")
         _desc = _p(
@@ -87,6 +89,7 @@ class MemberAdminSettings(SettingGroup):
 
     class GreetingMessage(ModelData, MessageSetting):
         setting_id = 'greeting_message'
+        _write_ward = low_management_iward
 
         _display_name = _p(
             'guildset:greeting_message', "welcome_message"
@@ -209,6 +212,7 @@ class MemberAdminSettings(SettingGroup):
 
     class ReturningMessage(ModelData, MessageSetting):
         setting_id = 'returning_message'
+        _write_ward = low_management_iward
 
         _display_name = _p(
             'guildset:returning_message', "returning_message"
@@ -335,6 +339,7 @@ class MemberAdminSettings(SettingGroup):
 
     class Autoroles(ListData, RoleListSetting):
         setting_id = 'autoroles'
+        _write_ward = high_management_iward
 
         _display_name = _p(
             'guildset:autoroles', "autoroles"
@@ -357,6 +362,7 @@ class MemberAdminSettings(SettingGroup):
 
     class BotAutoroles(ListData, RoleListSetting):
         setting_id = 'bot_autoroles'
+        _write_ward = high_management_iward
 
         _display_name = _p(
             'guildset:bot_autoroles', "bot_autoroles"
@@ -379,6 +385,7 @@ class MemberAdminSettings(SettingGroup):
     class RolePersistence(ModelData, BoolSetting):
         setting_id = 'role_persistence'
         _event = 'guildset_role_persistence'
+        _write_ward = low_management_iward
 
         _display_name = _p('guildset:role_persistence', "role_persistence")
         _desc = _p(

@@ -90,7 +90,7 @@ class TimerCog(LionCog):
         self.bot.core.guild_config.register_model_setting(self.settings.PomodoroChannel)
 
         configcog = self.bot.get_cog('ConfigCog')
-        self.crossload_group(self.configure_group, configcog.configure_group)
+        self.crossload_group(self.configure_group, configcog.config_group)
 
         if self.bot.is_ready():
             await self.initialise()
@@ -977,7 +977,6 @@ class TimerCog(LionCog):
     @appcmds.describe(
         pomodoro_channel=TimerSettings.PomodoroChannel._desc
     )
-    @appcmds.default_permissions(manage_guild=True)
     @low_management_ward
     async def configure_pomodoro_command(self, ctx: LionContext,
                                          pomodoro_channel: Optional[discord.VoiceChannel | discord.TextChannel] = None):

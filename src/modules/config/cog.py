@@ -29,14 +29,14 @@ class GuildConfigCog(LionCog):
         configcog = self.bot.get_cog('ConfigCog')
         if configcog is None:
             raise ValueError("Cannot load GuildConfigCog without ConfigCog")
-        self.crossload_group(self.configure_group, configcog.configure_group)
+        self.crossload_group(self.configure_group, configcog.config_group)
 
     @cmds.hybrid_command(
         name="dashboard",
         description="At-a-glance view of the server's configuration."
     )
     @appcmds.guild_only
-    @appcmds.default_permissions(manage_guild=True)
+    @low_management_ward
     async def dashboard_cmd(self, ctx: LionContext):
         if not ctx.guild or not ctx.interaction:
             return
@@ -64,8 +64,6 @@ class GuildConfigCog(LionCog):
         timezone=GeneralSettings.Timezone._desc,
         event_log=GeneralSettings.EventLog._desc,
     )
-    @appcmds.guild_only()
-    @appcmds.default_permissions(manage_guild=True)
     @low_management_ward
     async def cmd_configure_general(self, ctx: LionContext,
                                     timezone: Optional[str] = None,

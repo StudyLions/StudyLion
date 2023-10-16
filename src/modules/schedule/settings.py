@@ -11,6 +11,7 @@ from meta import conf
 from meta.errors import UserInputError
 from meta.sharding import THIS_SHARD
 from meta.logger import log_wrap
+from wards import low_management_iward, high_management_iward
 
 from babel.translator import ctx_translator
 
@@ -63,7 +64,8 @@ class ScheduleSettings(SettingGroup):
     class SessionLobby(ModelData, ChannelSetting):
         setting_id = 'session_lobby'
         _event = 'guildset_session_lobby'
-        _set_cmd = 'configure schedule'
+        _set_cmd = 'admin config schedule'
+        _write_ward = high_management_iward
 
         _display_name = _p('guildset:session_lobby', "session_lobby")
         _desc = _p(
@@ -119,7 +121,8 @@ class ScheduleSettings(SettingGroup):
     @ScheduleConfig.register_model_setting
     class SessionRoom(ModelData, ChannelSetting):
         setting_id = 'session_room'
-        _set_cmd = 'configure schedule'
+        _set_cmd = 'admin config schedule'
+        _write_ward = high_management_iward
 
         _display_name = _p('guildset:session_room', "session_room")
         _desc = _p(
@@ -163,6 +166,7 @@ class ScheduleSettings(SettingGroup):
 
     class SessionChannels(ListData, ChannelListSetting):
         setting_id = 'session_channels'
+        _write_ward = high_management_iward
 
         _display_name = _p('guildset:session_channels', "session_channels")
         _desc = _p(
@@ -238,7 +242,8 @@ class ScheduleSettings(SettingGroup):
     @ScheduleConfig.register_model_setting
     class ScheduleCost(ModelData, CoinSetting):
         setting_id = 'schedule_cost'
-        _set_cmd = 'configure schedule'
+        _set_cmd = 'admin config schedule'
+        _write_ward = low_management_iward
 
         _display_name = _p('guildset:schedule_cost', "schedule_cost")
         _desc = _p(
@@ -283,7 +288,8 @@ class ScheduleSettings(SettingGroup):
     @ScheduleConfig.register_model_setting
     class AttendanceReward(ModelData, CoinSetting):
         setting_id = 'attendance_reward'
-        _set_cmd = 'configure schedule'
+        _set_cmd = 'admin config schedule'
+        _write_ward = low_management_iward
 
         _display_name = _p('guildset:attendance_reward', "attendance_reward")
         _desc = _p(
@@ -327,7 +333,8 @@ class ScheduleSettings(SettingGroup):
     @ScheduleConfig.register_model_setting
     class AttendanceBonus(ModelData, CoinSetting):
         setting_id = 'attendance_bonus'
-        _set_cmd = 'configure schedule'
+        _set_cmd = 'admin config schedule'
+        _write_ward = low_management_iward
 
         _display_name = _p('guildset:attendance_bonus', "group_attendance_bonus")
         _desc = _p(
@@ -370,7 +377,8 @@ class ScheduleSettings(SettingGroup):
     @ScheduleConfig.register_model_setting
     class MinAttendance(ModelData, IntegerSetting):
         setting_id = 'min_attendance'
-        _set_cmd = 'configure schedule'
+        _set_cmd = 'admin config schedule'
+        _write_ward = low_management_iward
 
         _display_name = _p('guildset:min_attendance', "min_attendance")
         _desc = _p(
@@ -437,8 +445,9 @@ class ScheduleSettings(SettingGroup):
     @ScheduleConfig.register_model_setting
     class BlacklistRole(ModelData, RoleSetting):
         setting_id = 'schedule_blacklist_role'
-        _set_cmd = 'configure schedule'
+        _set_cmd = 'admin config schedule'
         _event = 'guildset_schedule_blacklist_role'
+        _write_ward = high_management_iward
 
         _display_name = _p('guildset:schedule_blacklist_role', "schedule_blacklist_role")
         _desc = _p(
@@ -495,7 +504,8 @@ class ScheduleSettings(SettingGroup):
     @ScheduleConfig.register_model_setting
     class BlacklistAfter(ModelData, IntegerSetting):
         setting_id = 'schedule_blacklist_after'
-        _set_cmd = 'configure schedule'
+        _set_cmd = 'admin config schedule'
+        _write_ward = low_management_iward
 
         _display_name = _p('guildset:schedule_blacklist_after', "schedule_blacklist_after")
         _desc = _p(

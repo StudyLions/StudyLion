@@ -16,7 +16,7 @@ from utils.ui import Confirm
 from constants import MAX_COINS
 from core.data import CoreData
 
-from wards import low_management_ward
+from wards import high_management_ward
 
 from . import babel, logger
 from .data import RoomData
@@ -47,7 +47,7 @@ class RoomCog(LionCog):
             self.bot.core.guild_config.register_model_setting(setting)
 
         configcog = self.bot.get_cog('ConfigCog')
-        self.crossload_group(self.configure_group, configcog.configure_group)
+        self.crossload_group(self.configure_group, configcog.admin_config_group)
 
         if self.bot.is_ready():
             await self.initialise()
@@ -414,7 +414,7 @@ class RoomCog(LionCog):
                     t(_p(
                         'cmd:room_rent|error:not_setup',
                         "The private room system has not been set up! "
-                        "A private room category needs to be set first with `/configure rooms`."
+                        "A private room category needs to be set first with `/admin config rooms`."
                     ))
                 ), ephemeral=True
             )
@@ -987,8 +987,7 @@ class RoomCog(LionCog):
     @appcmds.describe(
         **{setting.setting_id: setting._desc for setting in RoomSettings.model_settings}
     )
-    @appcmds.default_permissions(manage_guild=True)
-    @low_management_ward
+    @high_management_ward
     async def configure_rooms_cmd(self, ctx: LionContext,
                                   rooms_category: Optional[discord.CategoryChannel] = None,
                                   rooms_price: Optional[Range[int, 0, MAX_COINS]] = None,

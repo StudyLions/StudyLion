@@ -46,7 +46,7 @@ class MemberAdminCog(LionCog):
                 "Configuration command cannot be crossloaded."
             )
         else:
-            self.crossload_group(self.configure_group, configcog.configure_group)
+            self.crossload_group(self.configure_group, configcog.config_group)
 
     # ----- Cog API -----
     async def absent_remove_role(self, guildid, userid, roleid):

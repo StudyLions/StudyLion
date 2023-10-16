@@ -17,6 +17,7 @@ from meta.logger import log_wrap
 from core.data import CoreData
 from core.setting_types import CoinSetting
 from babel.translator import ctx_translator
+from wards import low_management_iward
 
 from . import babel, logger
 from .data import EconomyData
@@ -32,6 +33,7 @@ class EconomySettings(SettingGroup):
     """
     class CoinsPerXP(ModelData, CoinSetting):
         setting_id = 'coins_per_xp'
+        _write_ward = low_management_iward
 
         _display_name = _p('guildset:coins_per_xp', "coins_per_100xp")
         _desc = _p(
@@ -63,10 +65,11 @@ class EconomySettings(SettingGroup):
         @property
         def set_str(self):
             bot = ctx_bot.get()
-            return bot.core.mention_cmd('configure economy') if bot else None
+            return bot.core.mention_cmd('config economy') if bot else None
 
     class AllowTransfers(ModelData, BoolSetting):
         setting_id = 'allow_transfers'
+        _write_ward = low_management_iward
 
         _display_name = _p('guildset:allow_transfers', "allow_transfers")
         _desc = _p(
@@ -91,7 +94,7 @@ class EconomySettings(SettingGroup):
         @property
         def set_str(self):
             bot = ctx_bot.get()
-            return bot.core.mention_cmd('configure economy') if bot else None
+            return bot.core.mention_cmd('config economy') if bot else None
 
         @property
         def update_message(self):
@@ -115,6 +118,7 @@ class EconomySettings(SettingGroup):
 
     class StartingFunds(ModelData, CoinSetting):
         setting_id = 'starting_funds'
+        _write_ward = low_management_iward
 
         _display_name = _p('guildset:starting_funds', "starting_funds")
         _desc = _p(
