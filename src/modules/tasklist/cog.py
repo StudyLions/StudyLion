@@ -261,6 +261,7 @@ class TasklistCog(LionCog):
             "Open your tasklist."
         )
     )
+    @appcmds.guild_only
     async def tasklist_cmd(self, ctx: LionContext):
         if not ctx.interaction:
             return
@@ -270,6 +271,7 @@ class TasklistCog(LionCog):
         name=_p('group:tasks', "tasks"),
         description=_p('group:tasks|desc', "Base command group for tasklist commands.")
     )
+    @appcmds.guild_only
     async def tasklist_group(self, ctx: LionContext):
         raise NotImplementedError
 
