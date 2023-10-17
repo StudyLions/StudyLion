@@ -353,12 +353,12 @@ msgstr "Tiếng Nga"
 #: src/babel/enums.py:67
 msgctxt "localenames|locale:uk"
 msgid "Ukrainian"
-msgstr ""
+msgstr "Tiếng Ukraine"
 
 #: src/babel/enums.py:68
 msgctxt "localenames|locale:hi"
 msgid "Hindi"
-msgstr ""
+msgstr "Tiếng Hindi"
 
 #: src/babel/enums.py:69
 msgctxt "localenames|locale:th"
