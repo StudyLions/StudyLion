@@ -157,7 +157,7 @@ msgstr "Bạn chưa cài đặt ngôn ngữ của bạn."
 #, possible-python-brace-format
 msgctxt "userset:locale|response"
 msgid "You have set your language to {lang}."
-msgstr ""
+msgstr "Bạn đã chỉnh ngôn ngữ của mình là {lang}."
 
 #: src/babel/settings.py:111
 msgctxt "guildset:force_locale"
