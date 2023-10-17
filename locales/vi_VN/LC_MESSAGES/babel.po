@@ -216,6 +216,8 @@ msgid ""
 "Member's own configured language will override this for their commands "
 "unless `force_language` is enabled."
 msgstr ""
+"Ngôn ngữ mặc định để tương tác trong máy chủ này. Ngôn ngữ riêng của thành "
+"viên sẽ bị ghi đè lên, trừ khi bạn bật `force_language`."
 
 #: src/babel/settings.py:173
 msgctxt "guildset:locale|response"
