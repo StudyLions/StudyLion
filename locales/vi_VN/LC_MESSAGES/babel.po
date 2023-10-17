@@ -162,7 +162,7 @@ msgstr "Bạn đã chỉnh ngôn ngữ của mình là {lang}."
 #: src/babel/settings.py:111
 msgctxt "guildset:force_locale"
 msgid "force_language"
-msgstr ""
+msgstr "force_language"
 
 #: src/babel/settings.py:113
 msgctxt "guildset:force_locale|desc"
