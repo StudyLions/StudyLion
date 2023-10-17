@@ -180,6 +180,8 @@ msgid ""
 "When enabled, commands in this guild will always use the configured guild "
 "language, regardless of the member's personally configured language."
 msgstr ""
+"Nếu được bật, mọi câu lệnh trong hội đều phải dùng ngôn ngữ chung đã cài "
+"đặt, kể cả khi thành viên đã chọn ngôn ngữ riêng."
 
 #: src/babel/settings.py:120
 msgctxt "guildset:force_locale|output"
