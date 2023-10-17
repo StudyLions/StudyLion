@@ -265,7 +265,7 @@ msgstr "Tiếng Pháp"
 #: src/babel/enums.py:50
 msgctxt "localenames|locale:hr"
 msgid "Croatian"
-msgstr ""
+msgstr "Tiếng Croatia"
 
 #: src/babel/enums.py:51
 msgctxt "localenames|locale:it"
