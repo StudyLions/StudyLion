@@ -245,12 +245,12 @@ msgstr "Tiếng Đức"
 #: src/babel/enums.py:46
 msgctxt "localenames|locale:en-GB"
 msgid "English, UK"
-msgstr ""
+msgstr "Tiếng Anh, Vương quốc Anh"
 
 #: src/babel/enums.py:47
 msgctxt "localenames|locale:en-US"
 msgid "English, US"
-msgstr ""
+msgstr "Tiếng Anh, Hoa Kỳ"
 
 #: src/babel/enums.py:48
 msgctxt "localenames|locale:es-ES"
