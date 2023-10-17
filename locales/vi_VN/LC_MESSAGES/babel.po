@@ -192,7 +192,7 @@ msgstr "Đã tắt (các thành viên có thể tự chỉnh ngôn ngữ của h
 #: src/babel/settings.py:135
 msgctxt "guildset:force_locale|response"
 msgid "I will always use the set language in this server."
-msgstr ""
+msgstr "Tôi sẽ luôn sử dụng ngôn ngữ bạn đã chọn trong máy chủ này."
 
 #: src/babel/settings.py:140
 msgctxt "guildset:force_locale|response"
