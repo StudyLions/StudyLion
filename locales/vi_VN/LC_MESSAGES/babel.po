@@ -148,6 +148,8 @@ msgid ""
 "The language you would prefer me to respond to commands and interactions in."
 " Servers may be configured to override this with their own language."
 msgstr ""
+"Ngôn ngữ bạn muốn tôi dùng để trả lời bạn. Các máy chủ có thể được đặt để bỏ"
+" qua ngôn ngữ của bạn và dùng ngôn ngữ họ đã chọn."
 
 #: src/babel/settings.py:91
 msgctxt "userset:locale|response"
