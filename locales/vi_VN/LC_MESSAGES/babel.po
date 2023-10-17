@@ -186,7 +186,7 @@ msgstr ""
 #: src/babel/settings.py:121
 msgctxt "guildset:force_locale|output"
 msgid "Disabled (members may set their own language)"
-msgstr ""
+msgstr "Đã tắt (các thành viên có thể tự chỉnh ngôn ngữ của họ)"
 
 #: src/babel/settings.py:135
 msgctxt "guildset:force_locale|response"
