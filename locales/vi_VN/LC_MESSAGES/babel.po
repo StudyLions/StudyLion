@@ -300,7 +300,7 @@ msgstr "Tiếng Ba Lan"
 #: src/babel/enums.py:57
 msgctxt "localenames|locale:pt-BR"
 msgid "Portuguese, Brazilian"
-msgstr ""
+msgstr "Tiếng Bồ Đào Nha, Brazil"
 
 #: src/babel/enums.py:58
 msgctxt "localenames|locale:ro"
