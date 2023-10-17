@@ -232,7 +232,7 @@ msgstr "Bạn chưa đặt ngôn ngữ của hội."
 #, possible-python-brace-format
 msgctxt "guildset:locale|response"
 msgid "You have set the guild language to {lang}."
-msgstr ""
+msgstr "Bạn đã đặt ngôn ngữ của Hội là {lang}."
 
 #: src/babel/enums.py:43
 msgctxt "localenames|locale:id"
