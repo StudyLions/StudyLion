@@ -325,7 +325,7 @@ msgstr "Tiếng Việt"
 #: src/babel/enums.py:62
 msgctxt "localenames|locale:tr"
 msgid "Turkish"
-msgstr ""
+msgstr "Tiếng Thổ Nhĩ Kỳ"
 
 #: src/babel/enums.py:63
 msgctxt "localenames|locale:cs"
