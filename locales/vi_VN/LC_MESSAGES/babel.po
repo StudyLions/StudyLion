@@ -181,7 +181,7 @@ msgstr ""
 #: src/babel/settings.py:120
 msgctxt "guildset:force_locale|output"
 msgid "Enabled (members will be forced to use the server language)"
-msgstr ""
+msgstr "Đã bật (thành viên phải dùng ngôn ngữ của máy chủ)"
 
 #: src/babel/settings.py:121
 msgctxt "guildset:force_locale|output"
