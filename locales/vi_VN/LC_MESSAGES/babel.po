@@ -315,12 +315,12 @@ msgstr "Tiếng Phần Lan"
 #: src/babel/enums.py:60
 msgctxt "localenames|locale:sv-SE"
 msgid "Swedish"
-msgstr ""
+msgstr "Tiếng Thuỵ Điển"
 
 #: src/babel/enums.py:61
 msgctxt "localenames|locale:vi"
 msgid "Vietnamese"
-msgstr ""
+msgstr "Tiếng Việt"
 
 #: src/babel/enums.py:62
 msgctxt "localenames|locale:tr"
