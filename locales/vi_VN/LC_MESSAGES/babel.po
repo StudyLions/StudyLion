@@ -129,7 +129,7 @@ msgstr "Chưa cài đặt"
 #, possible-python-brace-format
 msgctxt "settype:locale|error"
 msgid "Sorry, we do not support the language `{lang}` at this time!"
-msgstr "Xin lỗi, hiện chúng mình chưa hỗ trợ `{lang}`."
+msgstr "Xin lỗi, hiện chúng tôi chưa hỗ trợ `{lang}`."
 
 #: src/babel/settings.py:76
 msgctxt "userset:locale"
