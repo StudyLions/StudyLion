@@ -368,7 +368,7 @@ msgstr "Tiếng Thái"
 #: src/babel/enums.py:70
 msgctxt "localenames|locale:zh-CN"
 msgid "Chinese, China"
-msgstr ""
+msgstr "Tiếng Trung, Trung Quốc"
 
 #: src/babel/enums.py:71
 msgctxt "localenames|locale:ja"
@@ -378,7 +378,7 @@ msgstr "Tiếng Nhật"
 #: src/babel/enums.py:72
 msgctxt "localenames|locale:zh-TW"
 msgid "Chinese, Taiwan"
-msgstr ""
+msgstr "Tiếng Trung, Đài Loan"
 
 #: src/babel/enums.py:73
 msgctxt "localenames|locale:ko"
