@@ -172,7 +172,7 @@ msgid ""
 "interacting with me."
 msgstr ""
 "Có hay không bắt buộc thành viên sử dụng ngôn ngữ chung để tương tác với "
-"tôi."
+"mình."
 
 #: src/babel/settings.py:116
 msgctxt "guildset:force_locale|long_desc"
