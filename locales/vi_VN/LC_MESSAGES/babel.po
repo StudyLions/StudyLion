@@ -123,7 +123,7 @@ msgstr "Được hỗ trợ"
 #: src/babel/settings.py:45
 msgctxt "settype:locale|formatted:unset"
 msgid "Unset"
-msgstr ""
+msgstr "Chưa cài đặt"
 
 #: src/babel/settings.py:61
 #, possible-python-brace-format
