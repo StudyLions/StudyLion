@@ -171,6 +171,8 @@ msgid ""
 "Whether to force all members to use the configured guild language when "
 "interacting with me."
 msgstr ""
+"Có hay không bắt buộc thành viên sử dụng ngôn ngữ chung để tương tác với "
+"tôi."
 
 #: src/babel/settings.py:116
 msgctxt "guildset:force_locale|long_desc"
