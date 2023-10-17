@@ -251,7 +251,7 @@ msgstr "Tiếng Anh, Anh"
 #: src/babel/enums.py:47
 msgctxt "localenames|locale:en-US"
 msgid "English, US"
-msgstr "Tiếng Anh, Hoa Kỳ"
+msgstr "Tiếng Anh, Mỹ"
 
 #: src/babel/enums.py:48
 msgctxt "localenames|locale:es-ES"
