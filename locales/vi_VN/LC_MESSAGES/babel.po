@@ -343,12 +343,12 @@ msgstr "Tiếng Hy Lạp"
 #: src/babel/enums.py:65
 msgctxt "localenames|locale:bg"
 msgid "Bulgarian"
-msgstr ""
+msgstr "Tiếng Bulgaria"
 
 #: src/babel/enums.py:66
 msgctxt "localenames|locale:ru"
 msgid "Russian"
-msgstr ""
+msgstr "Tiếng Nga"
 
 #: src/babel/enums.py:67
 msgctxt "localenames|locale:uk"
