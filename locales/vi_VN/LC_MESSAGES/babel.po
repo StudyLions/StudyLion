@@ -35,7 +35,7 @@ msgstr "Bảng điều chỉnh ngôn ngữ"
 #: src/babel/settingui.py:83
 msgctxt "dash:locale|title"
 msgid "Server Language Configuration ({commands[configure language]})"
-msgstr ""
+msgstr "Cài đặt Ngôn ngữ Chung ({commands[configure language]})"
 
 #: src/babel/settingui.py:87
 msgctxt "dash:locale|dropdown|placeholder"
