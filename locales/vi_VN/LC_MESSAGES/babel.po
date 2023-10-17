@@ -280,7 +280,7 @@ msgstr "Tiếng Lithuania"
 #: src/babel/enums.py:53
 msgctxt "localenames|locale:hu"
 msgid "Hungarian"
-msgstr ""
+msgstr "Tiếng Hungary"
 
 #: src/babel/enums.py:54
 msgctxt "localenames|locale:nl"
