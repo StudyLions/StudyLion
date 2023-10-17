@@ -388,12 +388,12 @@ msgstr "Tiếng Hàn"
 #: src/babel/enums.py:78
 msgctxt "localenames|locale:he"
 msgid "Hebrew"
-msgstr "Tiếng Hebrew"
+msgstr "Tiếng Do Thái"
 
 #: src/babel/enums.py:79
 msgctxt "localenames|locale:he-IL"
 msgid "Hebrew"
-msgstr ""
+msgstr "Tiếng Do Thái"
 
 #: src/babel/enums.py:80
 msgctxt "localenames|locale:test"
