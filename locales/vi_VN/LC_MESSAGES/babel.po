@@ -388,7 +388,7 @@ msgstr "Tiếng Hàn"
 #: src/babel/enums.py:78
 msgctxt "localenames|locale:he"
 msgid "Hebrew"
-msgstr ""
+msgstr "Tiếng Hebrew"
 
 #: src/babel/enums.py:79
 msgctxt "localenames|locale:he-IL"
