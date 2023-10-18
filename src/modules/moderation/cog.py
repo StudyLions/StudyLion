@@ -8,11 +8,11 @@ from discord import app_commands as appcmds
 from discord.ui.text_input import TextInput, TextStyle
 
 from meta import LionCog, LionBot, LionContext
-from meta.errors import SafeCancellation
+from meta.errors import SafeCancellation, UserInputError
 from meta.logger import log_wrap
 from meta.sharding import THIS_SHARD
 from core.data import CoreData
-from utils.lib import utc_now
+from utils.lib import utc_now, parse_ranges
 from utils.ui import input
 
 from wards import low_management_ward, high_management_ward, equippable_role, moderator_ward
@@ -350,6 +350,126 @@ class ModerationCog(LionCog):
                     "*Could not deliver warning to the target.*"
                 ))
             )
+        await interaction.edit_original_response(embed=embed)
+
+    # Pardon user command
+    @cmds.hybrid_command(
+        name=_p('cmd:pardon', "pardon"),
+        description=_p(
+            'cmd:pardon|desc',
+            "Pardon moderation tickets to mark them as no longer in effect."
+        )
+    )
+    @appcmds.rename(
+        ticketids=_p(
+            'cmd:pardon|param:ticketids',
+            "tickets"
+        ),
+        reason=_p(
+            'cmd:pardon|param:reason',
+            "reason"
+        )
+    )
+    @appcmds.describe(
+        ticketids=_p(
+            'cmd:pardon|param:ticketids|desc',
+            "Comma separated list of ticket numbers to pardon."
+        ),
+        reason=_p(
+            'cmd:pardon|param:reason',
+            "Why these tickets are being pardoned."
+        )
+    )
+    @appcmds.default_permissions(manage_guild=True)
+    @appcmds.guild_only
+    @moderator_ward
+    async def cmd_pardon(self, ctx: LionContext,
+                         ticketids: str,
+                         reason: Optional[appcmds.Range[str, 0, 1024]] = None,
+                         ):
+        if not ctx.guild:
+            return
+        if not ctx.interaction:
+            return
+        t = self.bot.translator.t
+
+        # Prompt for pardon reason if not given
+        # Note we can't parse first since we need to do first response with the modal
+        if reason is None:
+            modal_title = t(_p(
+                'cmd:pardon|modal:reason|title',
+                "Pardon Tickets"
+            ))
+            input_field = TextInput(
+                label=t(_p(
+                    'cmd:pardon|modal:reason|field|label',
+                    "Why are you pardoning these tickets?"
+                )),
+                style=TextStyle.long,
+                min_length=0,
+                max_length=1024,
+            )
+            try:
+                interaction, reason = await input(
+                    ctx.interaction, modal_title, field=input_field, timeout=300,
+                )
+            except asyncio.TimeoutError:
+                raise SafeCancellation
+        else:
+            interaction = ctx.interaction
+
+        await interaction.response.defer(thinking=True)
+
+        # Parse provided ticketids
+        try:
+            parsed_ids = parse_ranges(ticketids)
+            errored = False
+        except ValueError:
+            errored = True
+            parsed_ids = []
+
+        if errored or not parsed_ids:
+            raise UserInputError(t(_p(
+                'cmd:pardon|error:parse_ticketids',
+                "Could not parse provided tickets as a list of ticket ids!"
+                " Please enter tickets as a comma separated list of ticket numbers,"
+                " for example `1, 2, 3`."
+            )))
+
+        # Now find these tickets
+        tickets = await Ticket.fetch_tickets(
+            bot=self.bot,
+            guildid=ctx.guild.id,
+            guild_ticketid=parsed_ids,
+        )
+        if not tickets:
+            raise UserInputError(t(_p(
+                'cmd:pardon|error:no_matching',
+                "No matching moderation tickets found to pardon!"
+            )))
+
+        # Pardon each ticket
+        for ticket in tickets:
+            await ticket.pardon(
+                modid=ctx.author.id,
+                reason=reason
+            )
+
+        # Now ack the pardon
+        count = len(tickets)
+        ticketstr = ', '.join(
+            f"[#{ticket.data.guild_ticketid}]({ticket.jump_url})" for ticket in tickets
+        )
+
+        embed = discord.Embed(
+            colour=discord.Colour.brand_green(),
+            description=t(_np(
+                'cmd:pardon|embed:success|title',
+                "Ticket {ticketstr} has been pardoned.",
+                "The following tickets have been pardoned:\n{ticketstr}",
+                count
+            )).format(ticketstr=ticketstr)
+        )
         await interaction.edit_original_response(embed=embed)
 
     # ----- Configuration -----

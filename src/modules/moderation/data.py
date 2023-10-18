@@ -105,6 +105,6 @@ class ModerationData(Registry):
         file_data = String()
         expiry = Timestamp()
         pardoned_by = Integer()
-        pardoned_at = Integer()
+        pardoned_at = Timestamp()
         pardoned_reason = String()
         created_at = Timestamp()

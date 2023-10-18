@@ -227,10 +227,10 @@ class Ticket:
                 name=t(_p('ticket|field:pardoned|name', "Pardoned")),
                 value=t(_p(
                     'ticket|field:pardoned|value',
-                    "Pardoned by <&{moderator}> at {timestamp}.\n{reason}"
+                    "Pardoned by <@{moderator}> at {timestamp}.\n{reason}"
                 )).format(
                     moderator=data.pardoned_by,
-                    timestamp=discord.utils.format_dt(timestamp),
+                    timestamp=discord.utils.format_dt(data.pardoned_at) if data.pardoned_at else 'Unknown',
                     reason=data.pardoned_reason or ''
                 ),
                 inline=False
@@ -297,9 +297,6 @@ class Ticket:
             self.expiring.cancel_tasks(self.data.ticketid)
             await self.post()
 
-    async def _revert(self):
-        raise NotImplementedError
-
     async def _expire(self):
         """
         Actual expiry method.
@@ -321,11 +318,16 @@ class Ticket:
         await self.post()
         # TODO: Post an extra note to the modlog about the expiry.
 
-    async def revert(self):
+    async def revert(self, reason: Optional[str] = None, **kwargs):
         """
         Revert this ticket.
+
+        By default this is a no-op.
+        Ticket types should override to implement any required revert logic.
+
+        The optional `reason` paramter is intended for any auditable actions.
         """
-        raise NotImplementedError
+        return
 
     async def expire(self):
         """
@@ -336,5 +338,31 @@ class Ticket:
         """
         await self._expire()
 
-    async def pardon(self):
-        raise NotImplementedError
+    async def pardon(self, modid: int, reason: str):
+        """
+        Pardon a ticket.
+
+        Specifically, set the state of the ticket to `PARDONED`,
+        with the given moderator and reason,
+        and revert the ticket if applicable.
+
+        If the ticket is already pardoned, this is a no-op.
+        """
+        if self.data.ticket_state != TicketState.PARDONED:
+            # Cancel expiry if it was scheduled
+            self.expiring.cancel_tasks(self.data.ticketid)
+
+            # Revert the ticket if it is currently active
+            if self.data.ticket_state in (TicketState.OPEN, TicketState.EXPIRING):
+                await self.revert(reason=f"Pardoned by {modid}")
+
+            # Set pardoned state
+            await self.data.update(
+                ticket_state=TicketState.PARDONED,
+                pardoned_at=utc_now(),
+                pardoned_by=modid,
+                pardoned_reason=reason
+            )
+
+            # Update ticket log message
+            await self.post()
