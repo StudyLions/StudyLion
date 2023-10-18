@@ -5,22 +5,26 @@ import asyncio
 import discord
 from discord.ext import commands as cmds
 from discord import app_commands as appcmds
+from discord.ui.text_input import TextInput, TextStyle
 
 from meta import LionCog, LionBot, LionContext
+from meta.errors import SafeCancellation
 from meta.logger import log_wrap
 from meta.sharding import THIS_SHARD
 from core.data import CoreData
 from utils.lib import utc_now
+from utils.ui import input
 
-from wards import low_management_ward, high_management_ward, equippable_role
+from wards import low_management_ward, high_management_ward, equippable_role, moderator_ward
 
 from . import babel, logger
 from .data import ModerationData, TicketType, TicketState
 from .settings import ModerationSettings
 from .settingui import ModerationSettingUI
 from .ticket import Ticket
+from .tickets import NoteTicket, WarnTicket
 
-_p = babel._p
+_p, _np = babel._p, babel._np
 
 
 class ModerationCog(LionCog):
@@ -125,6 +129,228 @@ class ModerationCog(LionCog):
         ...
 
     # ----- Commands -----
+    # modnote command
+    @cmds.hybrid_command(
+        name=_p('cmd:modnote', "modnote"),
+        description=_p(
+            'cmd:modnote|desc',
+            "Add a note to the target member's moderation record."
+        )
+    )
+    @appcmds.rename(
+        target=_p('cmd:modnote|param:target', "target"),
+        note=_p('cmd:modnote|param:note', "note"),
+    )
+    @appcmds.describe(
+        target=_p(
+            'cmd:modnote|param:target|desc',
+            "Target member or user to add a note to."
+        ),
+        note=_p(
+            'cmd:modnote|param:note|desc',
+            "Contents of the note."
+        ),
+    )
+    @appcmds.default_permissions(manage_guild=True)
+    @appcmds.guild_only
+    @moderator_ward
+    async def cmd_modnote(self, ctx: LionContext,
+                          target: discord.Member | discord.User,
+                          note: Optional[appcmds.Range[str, 1, 1024]] = None,
+                          ):
+        """
+        Create a NoteTicket on the given target.
+
+        If `note` is not given, prompts for the note content via modal.
+        """
+        if not ctx.guild:
+            return
+        if not ctx.interaction:
+            return
+        t = self.bot.translator.t
+
+        if note is None:
+            # Prompt for note via modal
+            modal_title = t(_p(
+                'cmd:modnote|modal:enter_note|title',
+                "Moderation Note"
+            ))
+            input_field = TextInput(
+                label=t(_p(
+                    'cmd:modnote|modal:enter_note|field|label',
+                    "Note Content",
+                )),
+                style=TextStyle.long,
+                min_length=1,
+                max_length=1024,
+            )
+            try:
+                interaction, note = await input(
+                    ctx.interaction, modal_title,
+                    field=input_field,
+                    timeout=300
+                )
+            except asyncio.TimeoutError:
+                # Moderator did not fill in the modal in time
+                # Just leave quietly
+                raise SafeCancellation
+        else:
+            interaction = ctx.interaction
+
+        await interaction.response.defer(thinking=True, ephemeral=True)
+
+        # Create NoteTicket
+        ticket = await NoteTicket.create(
+            bot=self.bot,
+            guildid=ctx.guild.id, userid=target.id,
+            moderatorid=ctx.author.id, content=note, expiry=None
+        )
+
+        # Write confirmation with ticket number and link to ticket if relevant
+        embed = discord.Embed(
+            colour=discord.Colour.orange(),
+            description=t(_p(
+                'cmd:modnote|embed:success|desc',
+                "Moderation note created as [Ticket #{ticket}]({jump_link})"
+            )).format(
+                ticket=ticket.data.guild_ticketid,
+                jump_link=ticket.jump_url or ctx.message.jump_url
+            )
+        )
+        await interaction.edit_original_response(embed=embed)
+
+    # Warning Ticket Command
+    @cmds.hybrid_command(
+        name=_p('cmd:warning', "warning"),
+        description=_p(
+            'cmd:warning|desc',
+            "Warn a member for a misdemeanour, and add it to their moderation record."
+        )
+    )
+    @appcmds.rename(
+        target=_p('cmd:warning|param:target', "target"),
+        reason=_p('cmd:warning|param:reason', "reason"),
+    )
+    @appcmds.describe(
+        target=_p(
+            'cmd:warning|param:target|desc',
+            "Target member to warn."
+        ),
+        reason=_p(
+            'cmd:warning|param:reason|desc',
+            "The reason why you are warning this member."
+        ),
+    )
+    @appcmds.default_permissions(manage_guild=True)
+    @appcmds.guild_only
+    @moderator_ward
+    async def cmd_warning(self, ctx: LionContext,
+                          target: discord.Member,
+                          reason: Optional[appcmds.Range[str, 0, 1024]] = None,
+                          ):
+        if not ctx.guild:
+            return
+        if not ctx.interaction:
+            return
+        t = self.bot.translator.t
+
+        # Prompt for warning reason if not given
+        if reason is None:
+            modal_title = t(_p(
+                'cmd:warning|modal:reason|title',
+                "Moderation Warning"
+            ))
+            input_field = TextInput(
+                label=t(_p(
+                    'cmd:warning|modal:reason|field|label',
+                    "Reason for the warning (visible to user)."
+                )),
+                style=TextStyle.long,
+                min_length=0,
+                max_length=1024,
+            )
+            try:
+                interaction, note = await input(
+                    ctx.interaction, modal_title,
+                    field=input_field,
+                    timeout=300,
+                )
+            except asyncio.TimeoutError:
+                raise SafeCancellation
+        else:
+            interaction = ctx.interaction
+
+        await interaction.response.defer(thinking=True, ephemeral=False)
+
+        # Create WarnTicket
+        ticket = await WarnTicket.create(
+            bot=self.bot,
+            guildid=ctx.guild.id, userid=target.id,
+            moderatorid=ctx.author.id, content=reason
+        )
+
+        # Post to user or moderation notify channel
+        alert_embed = discord.Embed(
+            colour=discord.Colour.dark_red(),
+            title=t(_p(
+                'cmd:warning|embed:user_alert|title',
+                "You have received a warning!"
+            )),
+            description=reason,
+        )
+        alert_embed.add_field(
+            name=t(_p(
+                'cmd:warning|embed:user_alert|field:note|name',
+                "Note"
+            )),
+            value=t(_p(
+                'cmd:warning|embed:user_alert|field:note|value',
+                "*Warnings appear in your moderation history."
+                " Continuing failure to comply with server rules and moderator"
+                " directions may result in more severe action."
+            ))
+        )
+        alert_embed.set_footer(
+            icon_url=ctx.guild.icon,
+            text=ctx.guild.name,
+        )
+        alert = await self.send_alert(target, embed=alert_embed)
+
+        # Ack the ticket creation, including alert status and warning count
+
+        warning_count = await ticket.count_warnings_for(
+            self.bot, ctx.guild.id, target.id
+        )
+        count_line = t(_np(
+            'cmd:warning|embed:success|line:count',
+            "This their first warning.",
+            "They have recieved **`{count}`** warnings.",
+            warning_count
+        )).format(count=warning_count)
+
+        embed = discord.Embed(
+            colour=discord.Colour.orange(),
+            description=t(_p(
+                'cmd:warning|embed:success|desc',
+                "[Ticket #{ticket}]({jump_link}) {user} has been warned."
+            )).format(
+                ticket=ticket.data.guild_ticketid,
+                jump_link=ticket.jump_url or ctx.message.jump_url,
+                user=target.mention,
+            ) + '\n' + count_line
+        )
+        if alert is None:
+            embed.add_field(
+                name=t(_p(
+                    'cmd:warning|embed:success|field:no_alert|name',
+                    "Note"
+                )),
+                value=t(_p(
+                    'cmd:warning|embed:success|field:no_alert|value',
+                    "*Could not deliver warning to the target.*"
+                ))
+            )
+        await interaction.edit_original_response(embed=embed)
 
     # ----- Configuration -----
     @LionCog.placeholder_group

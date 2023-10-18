@@ -99,11 +99,11 @@ class Ticket:
         return tickets
 
     @property
-    def guild(self):
+    def guild(self) -> Optional[discord.Guild]:
         return self.bot.get_guild(self.data.guildid)
 
     @property
-    def target(self):
+    def target(self) -> Optional[discord.Member]:
         guild = self.guild
         if guild:
             return guild.get_member(self.data.targetid)
@@ -111,7 +111,7 @@ class Ticket:
             return None
 
     @property
-    def type(self):
+    def type(self) -> TicketType:
         return self.data.ticket_type
 
     @property
