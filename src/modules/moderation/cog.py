@@ -12,7 +12,7 @@ from meta.errors import SafeCancellation, UserInputError
 from meta.logger import log_wrap
 from meta.sharding import THIS_SHARD
 from core.data import CoreData
-from utils.lib import utc_now, parse_ranges
+from utils.lib import utc_now, parse_ranges, parse_time_static
 from utils.ui import input
 
 from wards import low_management_ward, high_management_ward, equippable_role, moderator_ward
@@ -23,6 +23,7 @@ from .settings import ModerationSettings
 from .settingui import ModerationSettingUI
 from .ticket import Ticket
 from .tickets import NoteTicket, WarnTicket
+from .ticketui import TicketListUI, TicketFilter
 
 _p, _np = babel._p, babel._np
 
@@ -471,6 +472,105 @@ class ModerationCog(LionCog):
             )).format(ticketstr=ticketstr)
         )
         await interaction.edit_original_response(embed=embed)
+
+    # View tickets 
+    @cmds.hybrid_command(
+        name=_p('cmd:tickets', "tickets"),
+        description=_p(
+            'cmd:tickets|desc',
+            "View moderation tickets in this server."
+        )
+    )
+    @appcmds.rename(
+        target_user=_p('cmd:tickets|param:target', "target"),
+        ticket_type=_p('cmd:tickets|param:type', "type"),
+        ticket_state=_p('cmd:tickets|param:state', "ticket_state"),
+        include_pardoned=_p('cmd:tickets|param:pardoned', "include_pardoned"),
+        acting_moderator=_p('cmd:tickets|param:moderator', "acting_moderator"),
+        after=_p('cmd:tickets|param:after', "after"),
+        before=_p('cmd:tickets|param:before', "before"),
+    )
+    @appcmds.describe(
+        target_user=_p(
+            'cmd:tickets|param:target|desc',
+            "Filter by tickets acting on a given user."
+        ),
+        ticket_type=_p(
+            'cmd:tickets|param:type|desc',
+            "Filter by ticket type."
+        ),
+        ticket_state=_p(
+            'cmd:tickets|param:state|desc',
+            "Filter by ticket state."
+        ),
+        include_pardoned=_p(
+            'cmd:tickets|param:pardoned|desc',
+            "Whether to only show active tickets, or also include pardoned."
+        ),
+        acting_moderator=_p(
+            'cmd:tickets|param:moderator|desc',
+            "Filter by moderator responsible for the ticket."
+        ),
+        after=_p(
+            'cmd:tickets|param:after|desc',
+            "Only show tickets after this date (YYY-MM-DD HH:MM)"
+        ),
+        before=_p(
+            'cmd:tickets|param:before|desc',
+            "Only show tickets before this date (YYY-MM-DD HH:MM)"
+        ),
+    )
+    @appcmds.choices(
+        ticket_type=[
+            appcmds.Choice(name=typ.name, value=typ.name)
+            for typ in (TicketType.NOTE, TicketType.WARNING, TicketType.STUDY_BAN)
+        ],
+        ticket_state=[
+            appcmds.Choice(name=state.name, value=state.name)
+            for state in (
+                TicketState.OPEN, TicketState.EXPIRING, TicketState.EXPIRED, TicketState.PARDONED,
+            )
+        ]
+    )
+    @appcmds.default_permissions(manage_guild=True)
+    @appcmds.guild_only
+    @moderator_ward
+    async def tickets_cmd(self, ctx: LionContext,
+                          target_user: Optional[discord.User] = None,
+                          ticket_type: Optional[appcmds.Choice[str]] = None,
+                          ticket_state: Optional[appcmds.Choice[str]] = None,
+                          include_pardoned: Optional[bool] = None,
+                          acting_moderator: Optional[discord.User] = None,
+                          after: Optional[str] = None,
+                          before: Optional[str] = None,
+                          ):
+        if not ctx.guild:
+            return
+        if not ctx.interaction:
+            return
+
+        filters = TicketFilter(self.bot)
+        if target_user is not None:
+            filters.targetids = [target_user.id]
+        if ticket_type is not None:
+            filters.types = [TicketType[ticket_type.value]]
+        if ticket_state is not None:
+            filters.states = [TicketState[ticket_state.value]]
+        elif include_pardoned:
+            filters.states = None
+        else:
+            filters.states = [TicketState.OPEN, TicketState.EXPIRING]
+        if acting_moderator is not None:
+            filters.moderatorids = [acting_moderator.id]
+        if after is not None:
+            filters.after = await parse_time_static(after, ctx.lguild.timezone)
+        if before is not None:
+            filters.before = await parse_time_static(before, ctx.lguild.timezone)
+        
+
+        ticketsui = TicketListUI(self.bot, ctx.guild, ctx.author.id, filters=filters)
+        await ticketsui.run(ctx.interaction)
+        await ticketsui.wait()
 
     # ----- Configuration -----
     @LionCog.placeholder_group
