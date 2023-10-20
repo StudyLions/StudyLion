@@ -55,6 +55,8 @@ class StatsCog(LionCog):
         await ctx.interaction.response.defer(thinking=True)
         ui = ProfileUI(self.bot, ctx.author, ctx.guild)
         await ui.run(ctx.interaction)
+        if sponsors := self.bot.get_cog('SponsorCog'):
+            await sponsors.do_sponsor_prompt(ctx.interaction)
         await ui.wait()
 
     @cmds.hybrid_command(
@@ -101,6 +103,9 @@ class StatsCog(LionCog):
             file = discord.File(profile_data, 'profile.png')
             await ctx.reply(file=file)
 
+        if sponsors := self.bot.get_cog('SponsorCog'):
+            await sponsors.do_sponsor_prompt(ctx.interaction)
+
     @cmds.hybrid_command(
         name=_p('cmd:stats', "stats"),
         description=_p(
@@ -116,6 +121,10 @@ class StatsCog(LionCog):
         await ctx.interaction.response.defer(thinking=True)
         ui = WeeklyMonthlyUI(self.bot, ctx.author, ctx.guild)
         await ui.run(ctx.interaction)
+
+        if sponsors := self.bot.get_cog('SponsorCog'):
+            await sponsors.do_sponsor_prompt(ctx.interaction)
+
         await ui.wait()
 
     @cmds.hybrid_command(
@@ -151,6 +160,10 @@ class StatsCog(LionCog):
             await ctx.interaction.response.defer(thinking=True)
         ui = LeaderboardUI(self.bot, ctx.author, ctx.guild)
         await ui.run(ctx.interaction)
+
+        if sponsors := self.bot.get_cog('SponsorCog'):
+            await sponsors.do_sponsor_prompt(ctx.interaction)
+
         await ui.wait()
 
     @cmds.hybrid_command(

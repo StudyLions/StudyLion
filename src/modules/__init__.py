@@ -18,6 +18,7 @@ active = [
     '.moderation',
     '.video_channels',
     '.meta',
+    '.sponsors',
     '.test',
 ]
 
