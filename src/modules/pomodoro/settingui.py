@@ -79,7 +79,7 @@ class TimerConfigUI(ConfigUI):
 class TimerDashboard(DashboardSection):
     section_name = _p(
         'dash:pomodoro|title',
-        "Pomodoro Configuration ({commands[admin config pomodoro]})"
+        "Pomodoro Configuration ({commands[config pomodoro]})"
     )
     _option_name = _p(
         "dash:stats|dropdown|placeholder",

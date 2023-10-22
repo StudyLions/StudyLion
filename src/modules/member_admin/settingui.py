@@ -259,7 +259,7 @@ class MemberAdminUI(ConfigUI):
 class MemberAdminDashboard(DashboardSection):
     section_name = _p(
         "dash:member_admin|title",
-        "Greetings and Initial Roles ({commands[admin config welcome]})"
+        "Greetings and Initial Roles ({commands[config welcome]})"
     )
     _option_name = _p(
         "dash:member_admin|dropdown|placeholder",

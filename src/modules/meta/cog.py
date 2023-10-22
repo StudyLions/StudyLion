@@ -2,6 +2,7 @@ from typing import Optional
 import gc
 import sys
 import asyncio
+import logging
 
 import discord
 from discord.ext import commands as cmds
@@ -20,8 +21,15 @@ from .helpui import HelpUI
 
 _p = babel._p
 
+logger = logging.getLogger(__name__)
+
 
 created = utc_now()
+guide_link = "https://discord.studylions.com/tutorial"
+
+animation_link = (
+    "https://media.discordapp.net/attachments/879412267731542047/926837189814419486/ezgif.com-resize.gif"
+)
 
 
 class MetaCog(LionCog):
@@ -46,6 +54,51 @@ class MetaCog(LionCog):
             show_admin=await low_management(ctx.bot, ctx.author, ctx.guild),
         )
         await ui.run(ctx.interaction)
+
+    @LionCog.listener('on_guild_join')
+    async def post_join_message(self, guild: discord.Guild):
+        logger.debug(f"Sending join message to <gid: {guild.id}>")
+        # Send join message
+        t = self.bot.translator.t
+        message = t(_p(
+            'new_guild_join_message|desc',
+            "Thank you for inviting me to your community!\n"
+            "Get started by typing {help_cmd} to see my commands,"
+            " and {dash_cmd} to view and set up my configuration options!\n\n"
+            "If you need any help configuring me,"
+            " or would like to suggest a feature,"
+            " report a bug, and stay updated,"
+            " make sure to join our main support server by [clicking here]({support})."
+        )).format(
+            dash_cmd=self.bot.core.mention_cmd('dashboard'),
+            help_cmd=self.bot.core.mention_cmd('help'),
+            support=self.bot.config.bot.support_guild,
+        )
+        try:
+            await guild.me.edit(nick="Leo")
+        except discord.HTTPException:
+            pass
+        if (channel := guild.system_channel) and channel.permissions_for(guild.me).embed_links:
+            embed = discord.Embed(
+                description=message,
+                colour=discord.Colour.orange(),
+            )
+            embed.set_author(
+                name=t(_p(
+                    'new_guild_join_message|name',
+                    "Hello everyone! My name is Leo, the LionBot!"
+                )),
+                icon_url="https://cdn.discordapp.com/emojis/933610591459872868.webp"
+            )
+            embed.set_image(url=animation_link)
+
+            try:
+                await channel.send(embed=embed)
+            except discord.HTTPException:
+                logger.warning(
+                    f"Could not send join message to <gid: {guild.id}>",
+                    exc_info=True,
+                )
 
     @cmds.hybrid_command(
         name=_p('cmd:invite', "invite"),
