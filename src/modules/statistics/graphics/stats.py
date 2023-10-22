@@ -70,7 +70,7 @@ async def get_stats_card(bot: LionBot, userid: int, guildid: int, mode: CardMode
             refkey = (guildid, userid)
         else:
             model = data.UserExp
-            msg_since = msgmodel.member_messages_between
+            msg_since = msgmodel.user_messages_since
             refkey = (userid,)
         ref_since = model.xp_since
         ref_between = model.xp_between
