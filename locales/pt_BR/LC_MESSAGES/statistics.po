@@ -269,8 +269,8 @@ msgid ""
 "Whether statistics commands display combined stats for all servers or just "
 "your current server."
 msgstr ""
-"Se o comando de estatísticas deve mostrar as estatísticas combinadas de "
-"todos seus servidores, ou somente do servidor atual."
+"Se o comando de estatísticas deve mostrar estatísticas combinadas de seus "
+"servidores, ou somente do atual."
 
 #: src/modules/statistics/settings.py:90
 msgctxt "guildset:season_start"
