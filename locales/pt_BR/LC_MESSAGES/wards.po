@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-24 12:21+0300\n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
@@ -21,27 +21,26 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: src/wards.py:83
+#: src/wards.py:99
 msgctxt "ward:sys_admin|failed"
 msgid "You must be a bot owner to do this!"
 msgstr "Você precisa ser dono de um bot para fazer isto!"
 
-#: src/wards.py:99
+#: src/wards.py:115
 msgctxt "ward:high_management|failed"
 msgid ""
-"You must have the `ADMINISTRATOR` permission in this server to do this!"
+"You must have the `ADMINISTRATOR` permission or the configured `admin_role` "
+"to do this!"
 msgstr ""
-"Você precisa ter permissão de ˋADMINISTRADORˋ para fazer isto neste "
-"servidor."
 
-#: src/wards.py:115
+#: src/wards.py:131
 msgctxt "ward:low_management|failed"
-msgid "You must have the `MANAGE_GUILD` permission in this server to do this!"
+msgid ""
+"You must have the `MANAGE_GUILD` permission or the configured `mod_role` to "
+"do this!"
 msgstr ""
-"Você precisa ter permissão de `MANAGE_GUILD`, neste servidor, para poder "
-"fazer isto! "
 
-#: src/wards.py:127
+#: src/wards.py:143
 msgctxt "ward:moderator|failed"
 msgid ""
 "You must have the configured moderator role, or `MANAGE_GUILD` permissions "
@@ -50,13 +49,13 @@ msgstr ""
 "Você precisa de um cargo de Moderador ou permissão `MANAGE_GUILD` para fazer"
 " isto."
 
-#: src/wards.py:153
+#: src/wards.py:169
 #, possible-python-brace-format
 msgctxt "ward:equippable_role|error:bot_managed"
 msgid "I cannot manage {role} because it is managed by another bot!"
 msgstr "Eu não posso gerenciar {role}, pois ele é gerenciado por outro bot!"
 
-#: src/wards.py:160
+#: src/wards.py:176
 #, possible-python-brace-format
 msgctxt "ward:equippable_role|error:integration"
 msgid "I cannot manage {role} because it is managed by a server integration."
@@ -64,39 +63,39 @@ msgstr ""
 "Eu não posso gerenciar {role}, pois ele é gerenciado por uma integração do "
 "servidor."
 
-#: src/wards.py:167
+#: src/wards.py:183
 msgctxt "ward:equippable_role|error:default_role"
 msgid "I cannot manage the server's default role."
 msgstr "Eu não posso configurar os cargos padrão do servidor."
 
-#: src/wards.py:174
+#: src/wards.py:190
 msgctxt "ward:equippable_role|error:no_perms"
 msgid "I need the `MANAGE_ROLES` permission before I can manage roles!"
 msgstr ""
 "Eu preciso ter permissão de `GERENCIAR_CARGOS` antes de poder configurar "
 "cargos."
 
-#: src/wards.py:181
+#: src/wards.py:197
 #, possible-python-brace-format
 msgctxt "ward:equippable_role|error:my_top_role"
 msgid "I cannot assign or remove {role} because it is above my top role!"
 msgstr ""
 "Eu não consigo adicionar ou remover {role} por ser um cargo maior que o meu."
 
-#: src/wards.py:188
+#: src/wards.py:204
 #, possible-python-brace-format
 msgctxt "ward:equippable_role|error:not_assignable"
 msgid "I don't have sufficient permissions to assign or remove {role}."
 msgstr "Eu não tenho permissões suficientes para adicionar ou remover {role}."
 
-#: src/wards.py:196
+#: src/wards.py:212
 msgctxt "ward:equippable_role|error:actor_perms"
 msgid "You need the `MANAGE_ROLES` permission before you can configure roles!"
 msgstr ""
 "Você precisa ter permissão de `GERENCIAR_CARGOS` antes de poder configurar "
 "os cargos!"
 
-#: src/wards.py:203
+#: src/wards.py:219
 #, possible-python-brace-format
 msgctxt "ward:equippable_role|error:actor_top_role"
 msgid "You cannot configure {role} because it is above your top role!"
