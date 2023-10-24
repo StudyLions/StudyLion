@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-01 16:01+0300\n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Nour Ibram, 2023\n"
 "Language-Team: Arabic (https://app.transifex.com/leobot/teams/174919/ar/)\n"
@@ -21,35 +21,40 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: src/settings/ui.py:179
+#: src/settings/ui.py:180
 msgctxt "setting|formatted|notset"
 msgid "Not Set"
 msgstr ""
 
-#: src/settings/ui.py:320
+#: src/settings/ui.py:324
 msgctxt "setting|embed_field|too_long"
 msgid "Too long to display here!"
 msgstr ""
 
-#: src/settings/ui.py:354
+#: src/settings/ui.py:358
 #, possible-python-brace-format
 msgctxt "setting|summary_embed|title"
 msgid "Configuration options for `{name}`"
 msgstr ""
 
-#: src/settings/ui.py:366
+#: src/settings/ui.py:370
 msgctxt "setting|summary_table|field:currently|key"
 msgid "Currently"
 msgstr "حاليا"
 
-#: src/settings/ui.py:373
+#: src/settings/ui.py:377
 msgctxt "setting|summary_table|field:default|key"
 msgid "By Default"
 msgstr ""
 
-#: src/settings/ui.py:380
+#: src/settings/ui.py:384
 msgctxt "setting|summary_table|field:set|key"
 msgid "Set Using"
+msgstr ""
+
+#: src/settings/ui.py:502
+msgctxt "setting|interaction_check|error"
+msgid "You do not have sufficient permissions to do this!"
 msgstr ""
 
 #: src/settings/setting_types.py:48
