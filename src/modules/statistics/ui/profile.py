@@ -297,6 +297,10 @@ class ProfileUI(StatsUI):
                 (self.stats_button, self.edit_button, self.close_button)
             ]
 
+        voting = self.bot.get_cog('TopggCog')
+        if voting and not await voting.check_voted_recently(self.userid):
+            self._layout.append((voting.vote_button(),))
+
     async def _render_stats(self):
         """
         Create and render the profile card.

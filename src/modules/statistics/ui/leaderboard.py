@@ -538,6 +538,10 @@ class LeaderboardUI(StatsUI):
             page_row
         ]
 
+        voting = self.bot.get_cog('TopggCog')
+        if voting and not await voting.check_voted_recently(self.userid):
+            self._layout.append((voting.vote_button(),))
+
     async def reload(self):
         """
         Reload UI data, applying cache where possible.
