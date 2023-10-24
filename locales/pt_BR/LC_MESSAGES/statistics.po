@@ -708,7 +708,7 @@ msgid ""
 "applicable)! Press again to revert."
 msgstr ""
 "Você irá ver as estatísticas combinadas de todos os seus servidores (onde "
-"for possível)! Pressione novamente para desfazer."
+"possível)! Clique novamente para desfazer."
 
 #: src/modules/statistics/ui/weeklymonthly.py:731
 msgctxt "ui:WeeklyMonthly|button:global|mode:local"
