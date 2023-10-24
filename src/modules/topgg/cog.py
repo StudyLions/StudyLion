@@ -68,7 +68,7 @@ class TopggCog(LionCog):
         )
         await self._send_thanks_dm(userid)
 
-    async def voting_bonus(self, userid):
+    async def voting_bonus(self, guildid, userid, **kwargs):
         # Provides 1.25 multiplicative bonus if they have voted within 12h
         if await self.check_voted_recently(userid):
             return 1.25
