@@ -451,7 +451,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "guildset:attendance_reward|formatted"
 msgid "{coin}**{amount}** upon attendance."
-msgstr "{coint}**{amount}** por check-in."
+msgstr "{coin}**{amount}** por check-in."
 
 #: src/modules/schedule/settings.py:339
 msgctxt "guildset:attendance_bonus"
