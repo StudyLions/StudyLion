@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-01 16:01+0300\n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Eyüp Ramazan, 2023\n"
 "Language-Team: Turkish (https://app.transifex.com/leobot/teams/174919/tr/)\n"
@@ -21,36 +21,41 @@ msgstr ""
 "Language: tr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/settings/ui.py:179
+#: src/settings/ui.py:180
 msgctxt "setting|formatted|notset"
 msgid "Not Set"
 msgstr "Ayarlanmadı"
 
-#: src/settings/ui.py:320
+#: src/settings/ui.py:324
 msgctxt "setting|embed_field|too_long"
 msgid "Too long to display here!"
 msgstr ""
 
-#: src/settings/ui.py:354
+#: src/settings/ui.py:358
 #, possible-python-brace-format
 msgctxt "setting|summary_embed|title"
 msgid "Configuration options for `{name}`"
 msgstr "`{name}` için konfigürasyon seçenekleri"
 
-#: src/settings/ui.py:366
+#: src/settings/ui.py:370
 msgctxt "setting|summary_table|field:currently|key"
 msgid "Currently"
 msgstr "Anlık"
 
-#: src/settings/ui.py:373
+#: src/settings/ui.py:377
 msgctxt "setting|summary_table|field:default|key"
 msgid "By Default"
 msgstr "Varsayılan"
 
-#: src/settings/ui.py:380
+#: src/settings/ui.py:384
 msgctxt "setting|summary_table|field:set|key"
 msgid "Set Using"
 msgstr "Kullanımı ayarla"
+
+#: src/settings/ui.py:502
+msgctxt "setting|interaction_check|error"
+msgid "You do not have sufficient permissions to do this!"
+msgstr ""
 
 #: src/settings/setting_types.py:48
 msgctxt "settype:string|accepts"
