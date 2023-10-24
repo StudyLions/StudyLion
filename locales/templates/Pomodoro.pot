@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-15 15:58+0300\n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -109,22 +109,22 @@ msgctxt "timer|status|stopped:manual"
 msgid "Timer stopped! Press `Start` to restart the timer."
 msgstr ""
 
-#: src/modules/pomodoro/settingui.py:39
+#: src/modules/pomodoro/settingui.py:40
 msgctxt "ui:timer_config|menu:channels|placeholder"
 msgid "Select Pomodoro Notification Channel"
 msgstr ""
 
-#: src/modules/pomodoro/settingui.py:47
+#: src/modules/pomodoro/settingui.py:48
 msgctxt "ui:timer_config|embed|title"
 msgid "Timer Configuration Panel"
 msgstr ""
 
-#: src/modules/pomodoro/settingui.py:81
+#: src/modules/pomodoro/settingui.py:82
 msgctxt "dash:pomodoro|title"
-msgid "Pomodoro Configuration ({commands[configure pomodoro]})"
+msgid "Pomodoro Configuration ({commands[config pomodoro]})"
 msgstr ""
 
-#: src/modules/pomodoro/settingui.py:85
+#: src/modules/pomodoro/settingui.py:86
 msgctxt "dash:stats|dropdown|placeholder"
 msgid "Pomodoro Timer Panel"
 msgstr ""
@@ -625,17 +625,17 @@ msgctxt "timerset:break_length|desc"
 msgid "Please enter a positive number of minutes."
 msgstr ""
 
-#: src/modules/pomodoro/settings.py:19
+#: src/modules/pomodoro/settings.py:21
 msgctxt "guildset:pomodoro_channel"
 msgid "pomodoro_channel"
 msgstr ""
 
-#: src/modules/pomodoro/settings.py:22
+#: src/modules/pomodoro/settings.py:24
 msgctxt "guildset:pomodoro_channel|desc"
 msgid "Default central notification channel for pomodoro timers."
 msgstr ""
 
-#: src/modules/pomodoro/settings.py:26
+#: src/modules/pomodoro/settings.py:28
 msgctxt "guildset:pomodoro_channel|long_desc"
 msgid ""
 "Pomodoro timers which do not have a custom notification channel set will "
@@ -643,28 +643,28 @@ msgid ""
 "pomodoro notifications will default to the timer voice channel itself."
 msgstr ""
 
-#: src/modules/pomodoro/settings.py:33
+#: src/modules/pomodoro/settings.py:35
 msgctxt "guildset:pomodoro_channel|formatted|notset"
 msgid "Not Set (Will use timer voice channel.)"
 msgstr ""
 
-#: src/modules/pomodoro/settings.py:37
+#: src/modules/pomodoro/settings.py:39
 msgctxt "guildset:pomodoro_channel|accepts"
 msgid "Timer notification channel name or id."
 msgstr ""
 
-#: src/modules/pomodoro/settings.py:51
+#: src/modules/pomodoro/settings.py:53
 #, possible-python-brace-format
 msgctxt "guildset:pomodoro_channel|set_response|set"
 msgid "Pomodoro timer notifications will now default to {channel}"
 msgstr ""
 
-#: src/modules/pomodoro/settings.py:56
+#: src/modules/pomodoro/settings.py:58
 msgctxt "guildset:pomodoro_channel|set_response|unset"
 msgid "Pomodoro timer notifications will now default to their voice channel."
 msgstr ""
 
-#: src/modules/pomodoro/settings.py:66
+#: src/modules/pomodoro/settings.py:68
 #, possible-python-brace-format
 msgctxt "guildset:pomdoro_channel|set_using"
 msgid "{cmd} or channel selector below."

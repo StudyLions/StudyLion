@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-15 15:58+0300\n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,24 +115,32 @@ msgctxt "util:Duration|acmpl|error"
 msgid "Cannot extract duration from \"{partial}\""
 msgstr ""
 
-#: src/utils/lib.py:679
+#: src/utils/lib.py:683
 msgctxt "util:parse_dur|regex:day"
 msgid "(?P<value>\\d+)\\s*(?:(d)|(day))"
 msgstr ""
 
-#: src/utils/lib.py:686
+#: src/utils/lib.py:690
 msgctxt "util:parse_dur|regex:hour"
 msgid "(?P<value>\\d+)\\s*(?:(h)|(hour))"
 msgstr ""
 
-#: src/utils/lib.py:693
+#: src/utils/lib.py:697
 msgctxt "util:parse_dur|regex:minute"
 msgid "(?P<value>\\d+)\\s*(?:(m)|(min))"
 msgstr ""
 
-#: src/utils/lib.py:700
+#: src/utils/lib.py:704
 msgctxt "util:parse_dur|regex:second"
 msgid "(?P<value>\\d+)\\s*(?:(s)|(sec))"
+msgstr ""
+
+#: src/utils/lib.py:907
+#, possible-python-brace-format
+msgctxt "parse_timestamp|error:parse"
+msgid ""
+"Could not parse `{given}` as a valid reminder time. Try entering the time in "
+"the form `HH:MM` or `YYYY-MM-DD HH:MM`."
 msgstr ""
 
 #: src/utils/ui/config.py:35
@@ -145,17 +153,17 @@ msgctxt "ui:configui|check|not_permitted"
 msgid "You have insufficient server permissions to use this UI!"
 msgstr ""
 
-#: src/utils/ui/config.py:156
+#: src/utils/ui/config.py:157
 msgctxt "ui:configui|button:edit|label"
 msgid "Edit"
 msgstr ""
 
-#: src/utils/ui/config.py:195
+#: src/utils/ui/config.py:196
 msgctxt "ui:guild_config_base|button:reset|label"
 msgid "Reset"
 msgstr ""
 
-#: src/utils/ui/config.py:330
+#: src/utils/ui/config.py:331
 msgctxt "ui:dashboard|error:section_too_long"
 msgid ""
 "Oops, the settings in this configuration section are too large, and I can "

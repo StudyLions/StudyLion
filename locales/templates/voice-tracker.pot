@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-15 15:58+0300\n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -218,7 +218,7 @@ msgctxt "cmd:configure_voice_rates|desc"
 msgid "Configure Voice tracking rewards and experience"
 msgstr ""
 
-#: src/tracking/voice/cog.py:914
+#: src/tracking/voice/cog.py:913
 #, possible-python-brace-format
 msgctxt "cmd:configure_voice_tracking|mode:voice|resp:success|desc"
 msgid ""
@@ -227,7 +227,7 @@ msgid ""
 "day."
 msgstr ""
 
-#: src/tracking/voice/cog.py:925
+#: src/tracking/voice/cog.py:924
 #, possible-python-brace-format
 msgctxt "cmd:configure_voice_tracking|mode:study|resp:success|desc"
 msgid ""
@@ -236,145 +236,145 @@ msgid ""
 "up to a total of **{cap}** hours per server day."
 msgstr ""
 
-#: src/tracking/voice/settings.py:40
+#: src/tracking/voice/settings.py:42
 msgctxt "guildset:untracked_channels"
 msgid "untracked_channels"
 msgstr ""
 
-#: src/tracking/voice/settings.py:43
+#: src/tracking/voice/settings.py:45
 msgctxt "guildset:untracked_channels|desc"
 msgid "Channels which will be ignored for statistics tracking."
 msgstr ""
 
-#: src/tracking/voice/settings.py:47
+#: src/tracking/voice/settings.py:49
 msgctxt "guildset:untracked_channels|long_desc"
 msgid ""
 "Activity in these channels will not count towards a member's statistics. If "
 "a category is selected, all channels under the category will be untracked."
 msgstr ""
 
-#: src/tracking/voice/settings.py:52
+#: src/tracking/voice/settings.py:54
 msgctxt "guildset:untracked_channels|accepts"
 msgid "Comma separated list of untracked channel name/ids."
 msgstr ""
 
-#: src/tracking/voice/settings.py:56
+#: src/tracking/voice/settings.py:58
 msgctxt "guildset:untracked_channels|notset"
 msgid "Not Set (all voice channels will be tracked.)"
 msgstr ""
 
-#: src/tracking/voice/settings.py:73
+#: src/tracking/voice/settings.py:75
 msgctxt "guildset:untracked_channels|set"
 msgid "Channel selector below."
 msgstr ""
 
-#: src/tracking/voice/settings.py:82
+#: src/tracking/voice/settings.py:84
 #, possible-python-brace-format
 msgctxt "guildset:untracked_channels|set_response|set"
 msgid "Activity in the following channels will now be ignored: {channels}"
 msgstr ""
 
-#: src/tracking/voice/settings.py:89
+#: src/tracking/voice/settings.py:91
 msgctxt "guildset:untracked_channels|set_response|unset"
 msgid "All voice channels will now be tracked."
 msgstr ""
 
-#: src/tracking/voice/settings.py:117
+#: src/tracking/voice/settings.py:120
 msgctxt "guildset:hourly_reward"
 msgid "hourly_reward"
 msgstr ""
 
-#: src/tracking/voice/settings.py:120
+#: src/tracking/voice/settings.py:123
 msgctxt "guildset:hourly_reward|mode:voice|desc"
 msgid "LionCoins given per hour in a voice channel."
 msgstr ""
 
-#: src/tracking/voice/settings.py:124
+#: src/tracking/voice/settings.py:127
 msgctxt "guildset:hourly_reward|mode:voice|long_desc"
 msgid ""
 "Number of LionCoins to each member per hour that they stay in a tracked "
 "voice channel."
 msgstr ""
 
-#: src/tracking/voice/settings.py:128
+#: src/tracking/voice/settings.py:131
 msgctxt "guildset:hourly_reward|accepts"
 msgid "Number of coins to reward per hour in voice."
 msgstr ""
 
-#: src/tracking/voice/settings.py:144
+#: src/tracking/voice/settings.py:147
 #, possible-python-brace-format
 msgctxt "guildset:hourly_reward|formatted"
 msgid "{coin}**{amount}** per hour."
 msgstr ""
 
-#: src/tracking/voice/settings.py:159
+#: src/tracking/voice/settings.py:162
 #, possible-python-brace-format
 msgctxt "guildset:hourly_reward|mode:voice|response"
 msgid "Members will be given {coin}**{amount}** per hour in a voice channel!"
 msgstr ""
 
-#: src/tracking/voice/settings.py:171
+#: src/tracking/voice/settings.py:174
 msgctxt "guildset:hourly_reward|mode:study|desc"
 msgid "LionCoins given per hour of study."
 msgstr ""
 
-#: src/tracking/voice/settings.py:175
+#: src/tracking/voice/settings.py:178
 msgctxt "guildset:hourly_reward|mode:study|long_desc"
 msgid "Number of LionCoins given per hour of study, up to the daily hour cap."
 msgstr ""
 
-#: src/tracking/voice/settings.py:183
+#: src/tracking/voice/settings.py:186
 #, possible-python-brace-format
 msgctxt "guildset:hourly_reward|mode:study|response"
 msgid "Members will be given {coin}**{amount}** per hour that they study!"
 msgstr ""
 
-#: src/tracking/voice/settings.py:197
+#: src/tracking/voice/settings.py:201
 msgctxt "guildset:hourly_live_bonus"
 msgid "hourly_live_bonus"
 msgstr ""
 
-#: src/tracking/voice/settings.py:200
+#: src/tracking/voice/settings.py:204
 msgctxt "guildset:hourly_live_bonus|desc"
 msgid "Bonus Lioncoins given per hour when a member streams or video-chats."
 msgstr ""
 
-#: src/tracking/voice/settings.py:205
+#: src/tracking/voice/settings.py:209
 msgctxt "guildset:hourly_live_bonus|long_desc"
 msgid ""
 "When a member streams or video-chats in a channel they will be given this "
 "bonus *additionally* to the `hourly_reward`."
 msgstr ""
 
-#: src/tracking/voice/settings.py:210
+#: src/tracking/voice/settings.py:214
 msgctxt "guildset:hourly_live_bonus|accepts"
 msgid "Number of bonus coins to reward per hour when live."
 msgstr ""
 
-#: src/tracking/voice/settings.py:226
+#: src/tracking/voice/settings.py:230
 #, possible-python-brace-format
 msgctxt "guildset:hourly_live_bonus|formatted"
 msgid "{coin}**{amount}** bonus per hour when live."
 msgstr ""
 
-#: src/tracking/voice/settings.py:237
+#: src/tracking/voice/settings.py:241
 #, possible-python-brace-format
 msgctxt "guildset:hourly_live_bonus|response"
 msgid ""
 "Live members will now *additionally* be given {coin}**{amount}** per hour."
 msgstr ""
 
-#: src/tracking/voice/settings.py:248
+#: src/tracking/voice/settings.py:253
 msgctxt "guildset:daily_voice_cap"
 msgid "daily_voice_cap"
 msgstr ""
 
-#: src/tracking/voice/settings.py:251
+#: src/tracking/voice/settings.py:256
 msgctxt "guildset:daily_voice_cap|desc"
 msgid "Maximum number of hours per day to count for each member."
 msgstr ""
 
-#: src/tracking/voice/settings.py:255
+#: src/tracking/voice/settings.py:260
 msgctxt "guildset:daily_voice_cap|long_desc"
 msgid ""
 "Time spend in voice channels over this amount will not be tracked towards "
@@ -382,12 +382,12 @@ msgid ""
 "The start of the day is determined by the configured guild timezone."
 msgstr ""
 
-#: src/tracking/voice/settings.py:261
+#: src/tracking/voice/settings.py:266
 msgctxt "guildset:daily_voice_cap|accepts"
 msgid "The maximum number of voice hours to track per day."
 msgstr ""
 
-#: src/tracking/voice/settings.py:277
+#: src/tracking/voice/settings.py:282
 #, possible-python-brace-format
 msgctxt "guildset:daily_voice_cap|response"
 msgid ""
@@ -395,42 +395,42 @@ msgid ""
 "not affect members currently in voice channels.)"
 msgstr ""
 
-#: src/tracking/voice/settings.py:335
+#: src/tracking/voice/settings.py:340
 msgctxt "ui:voice_tracker_config|button:close|label"
 msgid "Close"
 msgstr ""
 
-#: src/tracking/voice/settings.py:349
+#: src/tracking/voice/settings.py:354
 msgctxt "ui:voice_tracker_config|button:reset|label"
 msgid "Reset"
 msgstr ""
 
-#: src/tracking/voice/settings.py:362
+#: src/tracking/voice/settings.py:367
 msgctxt "ui:voice_tracker_config|menu:untracked_channels|placeholder"
 msgid "Set Untracked Channels"
 msgstr ""
 
-#: src/tracking/voice/settings.py:428 src/tracking/voice/settings.py:485
+#: src/tracking/voice/settings.py:433 src/tracking/voice/settings.py:491
 msgctxt "ui:voice_tracker_config|mode:voice|embed|title"
 msgid "Voice Tracker Configuration Panel"
 msgstr ""
 
-#: src/tracking/voice/settings.py:433 src/tracking/voice/settings.py:490
+#: src/tracking/voice/settings.py:438 src/tracking/voice/settings.py:496
 msgctxt "ui:voice_tracker_config|mode:study|embed|title"
 msgid "Study Tracker Configuration Panel"
 msgstr ""
 
-#: src/tracking/voice/settings.py:475
+#: src/tracking/voice/settings.py:481
 msgctxt "ui:voice_tracker_config|menu:untracked_channels|placeholder"
 msgid "Select Untracked Channels"
 msgstr ""
 
-#: src/tracking/voice/settings.py:531
+#: src/tracking/voice/settings.py:537
 msgctxt "dash:voice_tracker|title"
-msgid "Voice Tracker Configuration ({commands[configure voice_rewards]})"
+msgid "Voice Tracker Configuration ({commands[config voice_rewards]})"
 msgstr ""
 
-#: src/tracking/voice/settings.py:535
+#: src/tracking/voice/settings.py:541
 msgctxt "dash:voice_tracking|dropdown|placeholder"
 msgid "Voice Activity Panel"
 msgstr ""

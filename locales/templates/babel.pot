@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-15 15:58+0300\n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,22 +17,22 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/babel/settingui.py:40
+#: src/babel/settingui.py:41
 msgctxt "ui:locale_config|button:force|label"
 msgid "Toggle Force"
 msgstr ""
 
-#: src/babel/settingui.py:49
+#: src/babel/settingui.py:50
 msgctxt "ui:locale_config|embed|title"
 msgid "Language Configuration Panel"
 msgstr ""
 
-#: src/babel/settingui.py:83
+#: src/babel/settingui.py:84
 msgctxt "dash:locale|title"
-msgid "Server Language Configuration ({commands[configure language]})"
+msgid "Server Language Configuration ({commands[config language]})"
 msgstr ""
 
-#: src/babel/settingui.py:87
+#: src/babel/settingui.py:88
 msgctxt "dash:locale|dropdown|placeholder"
 msgid "Server Language Panel"
 msgstr ""
@@ -47,44 +47,44 @@ msgctxt "cmd:configure_language|desc"
 msgid "Configure the default language I will use in this server."
 msgstr ""
 
-#: src/babel/cog.py:147
+#: src/babel/cog.py:145
 #, possible-python-brace-format
 msgctxt "cmd:configure_language|error"
 msgid ""
 "You cannot enable `{force_setting}` without having a configured language!"
 msgstr ""
 
-#: src/babel/cog.py:167
+#: src/babel/cog.py:165
 msgctxt "cmd:configure_language|success"
 msgid "Language settings updated!"
 msgstr ""
 
-#: src/babel/cog.py:183
+#: src/babel/cog.py:181
 msgctxt "cmd:userconfig_language"
 msgid "language"
 msgstr ""
 
-#: src/babel/cog.py:186
+#: src/babel/cog.py:184
 msgctxt "cmd:userconfig_language|desc"
 msgid "Set your preferred interaction language."
 msgstr ""
 
-#: src/babel/cog.py:190
+#: src/babel/cog.py:188
 msgctxt "cmd:userconfig_language|param:language"
 msgid "language"
 msgstr ""
 
-#: src/babel/cog.py:195
+#: src/babel/cog.py:193
 msgctxt "cmd:userconfig_language|param:language|desc"
 msgid "Which language do you want me to respond in?"
 msgstr ""
 
-#: src/babel/cog.py:211
+#: src/babel/cog.py:209
 msgctxt "cmd:userconfig_language|button:reset|label"
 msgid "Reset"
 msgstr ""
 
-#: src/babel/cog.py:252
+#: src/babel/cog.py:250
 #, possible-python-brace-format
 msgctxt "acmpl:language|no_match"
 msgid "No supported languages matching {partial}"
@@ -102,105 +102,105 @@ msgctxt "utils|short_months"
 msgid "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec"
 msgstr ""
 
-#: src/babel/settings.py:24
+#: src/babel/settings.py:25
 msgctxt "settype:locale|accepts"
 msgid "Enter a supported language (e.g. 'en-GB')."
 msgstr ""
 
-#: src/babel/settings.py:35
+#: src/babel/settings.py:36
 msgctxt "settype:locale|summary_table|field:supported|key"
 msgid "Supported"
 msgstr ""
 
-#: src/babel/settings.py:45
+#: src/babel/settings.py:46
 msgctxt "settype:locale|formatted:unset"
 msgid "Unset"
 msgstr ""
 
-#: src/babel/settings.py:61
+#: src/babel/settings.py:62
 #, possible-python-brace-format
 msgctxt "settype:locale|error"
 msgid "Sorry, we do not support the language `{lang}` at this time!"
 msgstr ""
 
-#: src/babel/settings.py:76
+#: src/babel/settings.py:77
 msgctxt "userset:locale"
 msgid "language"
 msgstr ""
 
-#: src/babel/settings.py:77
+#: src/babel/settings.py:78
 msgctxt "userset:locale|desc"
 msgid "Your preferred language for interacting with me."
 msgstr ""
 
-#: src/babel/settings.py:80
+#: src/babel/settings.py:81
 msgctxt "userset:locale|long_desc"
 msgid ""
 "The language you would prefer me to respond to commands and interactions in. "
 "Servers may be configured to override this with their own language."
 msgstr ""
 
-#: src/babel/settings.py:91
+#: src/babel/settings.py:92
 msgctxt "userset:locale|response"
 msgid "You have unset your language."
 msgstr ""
 
-#: src/babel/settings.py:93
+#: src/babel/settings.py:94
 #, possible-python-brace-format
 msgctxt "userset:locale|response"
 msgid "You have set your language to {lang}."
 msgstr ""
 
-#: src/babel/settings.py:111
+#: src/babel/settings.py:113
 msgctxt "guildset:force_locale"
 msgid "force_language"
 msgstr ""
 
-#: src/babel/settings.py:113
+#: src/babel/settings.py:115
 msgctxt "guildset:force_locale|desc"
 msgid ""
 "Whether to force all members to use the configured guild language when "
 "interacting with me."
 msgstr ""
 
-#: src/babel/settings.py:116
+#: src/babel/settings.py:118
 msgctxt "guildset:force_locale|long_desc"
 msgid ""
 "When enabled, commands in this guild will always use the configured guild "
 "language, regardless of the member's personally configured language."
 msgstr ""
 
-#: src/babel/settings.py:120
+#: src/babel/settings.py:122
 msgctxt "guildset:force_locale|output"
 msgid "Enabled (members will be forced to use the server language)"
 msgstr ""
 
-#: src/babel/settings.py:121
+#: src/babel/settings.py:123
 msgctxt "guildset:force_locale|output"
 msgid "Disabled (members may set their own language)"
 msgstr ""
 
-#: src/babel/settings.py:135
+#: src/babel/settings.py:137
 msgctxt "guildset:force_locale|response"
 msgid "I will always use the set language in this server."
 msgstr ""
 
-#: src/babel/settings.py:140
+#: src/babel/settings.py:142
 msgctxt "guildset:force_locale|response"
 msgid "I will now allow the members to set their own language here."
 msgstr ""
 
-#: src/babel/settings.py:157
+#: src/babel/settings.py:160
 msgctxt "guildset:locale"
 msgid "language"
 msgstr ""
 
-#: src/babel/settings.py:158
+#: src/babel/settings.py:161
 msgctxt "guildset:locale|desc"
 msgid "Your preferred language for interacting with me."
 msgstr ""
 
-#: src/babel/settings.py:161
+#: src/babel/settings.py:164
 msgctxt "guildset:locale|long_desc"
 msgid ""
 "The default language to use for responses and interactions in this server. "
@@ -208,12 +208,12 @@ msgid ""
 "unless `force_language` is enabled."
 msgstr ""
 
-#: src/babel/settings.py:173
+#: src/babel/settings.py:176
 msgctxt "guildset:locale|response"
 msgid "You have unset the guild language."
 msgstr ""
 
-#: src/babel/settings.py:175
+#: src/babel/settings.py:178
 #, possible-python-brace-format
 msgctxt "guildset:locale|response"
 msgid "You have set the guild language to {lang}."

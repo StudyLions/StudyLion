@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-15 15:58+0300\n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 
 #: src/modules/economy/settingui.py:67
 msgctxt "dash:economy|title"
-msgid "Economy Configuration ({commands[configure economy]})"
+msgid "Economy Configuration ({commands[config economy]})"
 msgstr ""
 
 #: src/modules/economy/settingui.py:71
@@ -494,95 +494,95 @@ msgctxt "cmd:configure_economy|desc"
 msgid "Configure LionCoin Economy"
 msgstr ""
 
-#: src/modules/economy/settings.py:36
+#: src/modules/economy/settings.py:38
 msgctxt "guildset:coins_per_xp"
 msgid "coins_per_100xp"
 msgstr ""
 
-#: src/modules/economy/settings.py:39
+#: src/modules/economy/settings.py:41
 msgctxt "guildset:coins_per_xp|desc"
 msgid "How many LionCoins to reward members per 100 XP they earn."
 msgstr ""
 
-#: src/modules/economy/settings.py:43
+#: src/modules/economy/settings.py:45
 msgctxt "guildset:coins_per_xp|long_desc"
 msgid ""
 "Members will be rewarded with this many LionCoins for every 100 XP they earn."
 msgstr ""
 
-#: src/modules/economy/settings.py:47
+#: src/modules/economy/settings.py:49
 msgctxt "guildset:coins_per_xp|long_desc"
 msgid "The number of coins to reward per 100 XP."
 msgstr ""
 
-#: src/modules/economy/settings.py:60
+#: src/modules/economy/settings.py:62
 #, possible-python-brace-format
 msgctxt "guildset:coins_per_xp|set_response"
 msgid ""
 "For every **100** XP they earn, members will now be given {coin}**{amount}**."
 msgstr ""
 
-#: src/modules/economy/settings.py:71
+#: src/modules/economy/settings.py:74
 msgctxt "guildset:allow_transfers"
 msgid "allow_transfers"
 msgstr ""
 
-#: src/modules/economy/settings.py:74
+#: src/modules/economy/settings.py:77
 msgctxt "guildset:allow_transfers|desc"
 msgid "Whether to allow members to transfer LionCoins to each other."
 msgstr ""
 
-#: src/modules/economy/settings.py:78
+#: src/modules/economy/settings.py:81
 msgctxt "guildset:allow_transfers|long_desc"
 msgid ""
 "If disabled, members will not be able to transfer LionCoins to each other."
 msgstr ""
 
-#: src/modules/economy/settings.py:86
+#: src/modules/economy/settings.py:89
 msgctxt "guildset:allow_transfers|outputs:true"
 msgid "Enabled (Coin transfers allowed.)"
 msgstr ""
 
-#: src/modules/economy/settings.py:87
+#: src/modules/economy/settings.py:90
 msgctxt "guildset:allow_transfers|outputs:false"
 msgid "Disabled (Coin transfers not allowed.)"
 msgstr ""
 
-#: src/modules/economy/settings.py:103
+#: src/modules/economy/settings.py:106
 #, possible-python-brace-format
 msgctxt "guildset:allow_transfers|set_response|set:true"
 msgid "Members will now be able to use {send_cmd} to transfer {coin}"
 msgstr ""
 
-#: src/modules/economy/settings.py:108
+#: src/modules/economy/settings.py:111
 #, possible-python-brace-format
 msgctxt "guildset:allow_transfers|set_response|set:false"
 msgid "Members will not be able to use {send_cmd} to transfer {coin}"
 msgstr ""
 
-#: src/modules/economy/settings.py:119
+#: src/modules/economy/settings.py:123
 msgctxt "guildset:starting_funds"
 msgid "starting_funds"
 msgstr ""
 
-#: src/modules/economy/settings.py:122
+#: src/modules/economy/settings.py:126
 msgctxt "guildset:starting_funds|desc"
 msgid "How many LionCoins should a member start with."
 msgstr ""
 
-#: src/modules/economy/settings.py:126
+#: src/modules/economy/settings.py:130
 msgctxt "guildset:starting_funds|long_desc"
 msgid ""
 "Members will be given this number of coins when they first interact with me, "
 "or first join the server."
 msgstr ""
 
-#: src/modules/economy/settings.py:130
+#: src/modules/economy/settings.py:134
 msgctxt "guildset:starting_funds|accepts"
 msgid "Number of coins to give to new members."
 msgstr ""
 
-#: src/modules/economy/settings.py:142
+#: src/modules/economy/settings.py:146
 #, possible-python-brace-format
 msgctxt "guildset:starting_funds|set_response"
 msgid "New members will now start with {amount}"

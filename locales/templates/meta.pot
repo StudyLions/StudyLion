@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-15 15:58+0300\n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,14 +17,251 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/meta/cog.py:23
+#: src/modules/meta/cog.py:40
 msgctxt "cmd:help"
 msgid "help"
 msgstr ""
 
-#: src/modules/meta/cog.py:26
+#: src/modules/meta/cog.py:43
 msgctxt "cmd:help|desc"
 msgid "See a brief summary of my commands and features."
+msgstr ""
+
+#: src/modules/meta/cog.py:65
+#, possible-python-brace-format
+msgctxt "new_guild_join_message|desc"
+msgid ""
+"Thank you for inviting me to your community!\n"
+"Get started by typing {help_cmd} to see my commands, and {dash_cmd} to view "
+"and set up my configuration options!\n"
+"\n"
+"If you need any help configuring me, or would like to suggest a feature, "
+"report a bug, and stay updated, make sure to join our main support server by "
+"[clicking here]({support})."
+msgstr ""
+
+#: src/modules/meta/cog.py:89
+msgctxt "new_guild_join_message|name"
+msgid "Hello everyone! My name is Leo, the LionBot!"
+msgstr ""
+
+#: src/modules/meta/cog.py:104
+msgctxt "cmd:invite"
+msgid "invite"
+msgstr ""
+
+#: src/modules/meta/cog.py:107
+msgctxt "cmd:invite|desc"
+msgid "Invite LionBot to your own server."
+msgstr ""
+
+#: src/modules/meta/cog.py:117
+#, possible-python-brace-format
+msgctxt "cmd:invite|embed|desc"
+msgid "[Click here]({invite_link}) to add me to your server."
+msgstr ""
+
+#: src/modules/meta/cog.py:125
+msgctxt "cmd:invite|embed|field:tips|name"
+msgid "Setup Tips"
+msgstr ""
+
+#: src/modules/meta/cog.py:129
+#, possible-python-brace-format
+msgctxt "cmd:invite|embed|field:tips|value"
+msgid ""
+"Remember to check out {help_cmd} for the important command list, including "
+"the admin page which displays the hidden admin-level configuration commands "
+"like {dashboard}!\n"
+"Also, if you have any issues or questions, you can join our [support server]"
+"({support_link}) to talk to our friendly support team!"
+msgstr ""
+
+#: src/modules/meta/cog.py:144
+msgctxt "cmd:support"
+msgid "support"
+msgstr ""
+
+#: src/modules/meta/cog.py:147
+msgctxt "cmd:support|desc"
+msgid "Have an issue or a question? Speak to my friendly support team here."
+msgstr ""
+
+#: src/modules/meta/cog.py:155
+#, possible-python-brace-format
+msgctxt "cmd:support|response"
+msgid ""
+"Speak to my friendly support team by joining this server and making a ticket "
+"in the support channel!\n"
+"{support_link}"
+msgstr ""
+
+#: src/modules/meta/cog.py:163
+msgctxt "cmd:nerd"
+msgid "nerd"
+msgstr ""
+
+#: src/modules/meta/cog.py:166
+msgctxt "cmd:nerd|desc"
+msgid "View hidden details and statistics about me ('nerd statistics')"
+msgstr ""
+
+#: src/modules/meta/cog.py:179
+msgctxt "cmd:nerd|title"
+msgid "Nerd Statistics"
+msgstr ""
+
+#: src/modules/meta/cog.py:202
+msgctxt "cmd:nerd|field:currently|name"
+msgid "Currently"
+msgstr ""
+
+#: src/modules/meta/cog.py:205
+#, possible-python-brace-format
+msgctxt "cmd:nerd|field:currently|value"
+msgid "`{people}` people active in `{rooms}` rooms of `{guilds}` guilds."
+msgstr ""
+
+#: src/modules/meta/cog.py:221
+msgctxt "cmd:nerd|field:recorded|name"
+msgid "Recorded"
+msgstr ""
+
+#: src/modules/meta/cog.py:224
+#, possible-python-brace-format
+msgctxt "cmd:nerd|field:recorded|value"
+msgid ""
+"`{hours}` voice hours from `{users}` people across `{sessions}` sessions."
+msgstr ""
+
+#: src/modules/meta/cog.py:238
+msgctxt "cmd:nerd|field:registered|name"
+msgid "Registered"
+msgstr ""
+
+#: src/modules/meta/cog.py:241
+#, possible-python-brace-format
+msgctxt "cmd:nerd|field:registered|value"
+msgid "`{users}` users and `{guilds}` guilds."
+msgstr ""
+
+#: src/modules/meta/cog.py:255
+msgctxt "cmd:nerd|field:tasks|name"
+msgid "Tasks"
+msgstr ""
+
+#: src/modules/meta/cog.py:258
+#, possible-python-brace-format
+msgctxt "cmd:nerd|field:tasks|value"
+msgid "`{tasks}` tasks completed out of `{total}`."
+msgstr ""
+
+#: src/modules/meta/cog.py:271
+msgctxt "cmd:nerd|field:timers|name"
+msgid "Timers"
+msgstr ""
+
+#: src/modules/meta/cog.py:274
+#, possible-python-brace-format
+msgctxt "cmd:nerd|field:timers|value"
+msgid "`{timers}` timers running across `{guilds}` guilds."
+msgstr ""
+
+#: src/modules/meta/cog.py:283
+msgctxt "cmd:nerd|section:bot_stats|name"
+msgid "Bot Stats"
+msgstr ""
+
+#: src/modules/meta/cog.py:293
+msgctxt "cmd:nerd|field:shard|name"
+msgid "Shard"
+msgstr ""
+
+#: src/modules/meta/cog.py:296
+#, possible-python-brace-format
+msgctxt "cmd:nerd|field:shard|value"
+msgid "`{shard_number}` of `{shard_count}`"
+msgstr ""
+
+#: src/modules/meta/cog.py:302
+msgctxt "cmd:nerd|field:guilds|name"
+msgid "Guilds"
+msgstr ""
+
+#: src/modules/meta/cog.py:305
+#, possible-python-brace-format
+msgctxt "cmd:nerd|field:guilds|value"
+msgid "`{guilds}` guilds with `{count}` total members."
+msgstr ""
+
+#: src/modules/meta/cog.py:315
+msgctxt "cmd:nerd|field:version|name"
+msgid "Leo Version"
+msgstr ""
+
+#: src/modules/meta/cog.py:318
+#, possible-python-brace-format
+msgctxt "cmd:nerd|field:version|value"
+msgid "`v{version}`, last updated {timestamp} from `{reason}`."
+msgstr ""
+
+#: src/modules/meta/cog.py:330
+msgctxt "cmd:nerd|field:py_version|name"
+msgid "Py Version"
+msgstr ""
+
+#: src/modules/meta/cog.py:333
+#, possible-python-brace-format
+msgctxt "cmd:nerd|field:py_version|value"
+msgid "`{py_version}` running discord.py `{dpy_version}`"
+msgstr ""
+
+#: src/modules/meta/cog.py:341
+msgctxt "cmd:nerd|section:process_section|name"
+msgid "Process"
+msgstr ""
+
+#: src/modules/meta/cog.py:351
+msgctxt "cmd:nerd|field:handling|name"
+msgid "Handling"
+msgstr ""
+
+#: src/modules/meta/cog.py:354
+#, possible-python-brace-format
+msgctxt "cmd:nerd|field:handling|name"
+msgid "`{events}` active commands and events."
+msgstr ""
+
+#: src/modules/meta/cog.py:362
+msgctxt "cmd:nerd|field:working|name"
+msgid "Working On"
+msgstr ""
+
+#: src/modules/meta/cog.py:365
+#, possible-python-brace-format
+msgctxt "cmd:nerd|field:working|value"
+msgid "`{tasks}` background tasks."
+msgstr ""
+
+#: src/modules/meta/cog.py:371
+msgctxt "cmd:nerd|field:objects|name"
+msgid "Objects"
+msgstr ""
+
+#: src/modules/meta/cog.py:374
+#, possible-python-brace-format
+msgctxt "cmd:nerd|field:objects|value"
+msgid "`{objects}` loaded in memory."
+msgstr ""
+
+#: src/modules/meta/cog.py:384
+msgctxt "cmd:nerd|field:uptime|name"
+msgid "Uptime"
+msgstr ""
+
+#: src/modules/meta/cog.py:390
+msgctxt "cmd:nerd|section:shard_section|name"
+msgid "Shard Statistics"
 msgstr ""
 
 #: src/modules/meta/help_sections.py:40
@@ -78,9 +315,9 @@ msgid ""
 "    Use {cmd_dashboard} to see an overview of the server configuration,     "
 "and quickly jump to the feature configuration panels to modify settings.\n"
 "\n"
-"    Configuration panels are also accessible directly through the `/"
-"configure` commands     and most features may be configured through these "
-"commands.\n"
+"    Most settings may also be directly set through the `/config` and `/admin "
+"config` commands,     depending on whether the settings require moderator "
+"(manage server) or admin level permissions, respectively.\n"
 "\n"
 "    Other relevant commands for guild configuration below:\n"
 "    `/editshop`: Add/Edit/Remove colour roles from the {coin} shop.\n"

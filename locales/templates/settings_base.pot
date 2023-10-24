@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-15 15:58+0300\n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,35 +17,40 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/settings/ui.py:179
+#: src/settings/ui.py:180
 msgctxt "setting|formatted|notset"
 msgid "Not Set"
 msgstr ""
 
-#: src/settings/ui.py:320
+#: src/settings/ui.py:324
 msgctxt "setting|embed_field|too_long"
 msgid "Too long to display here!"
 msgstr ""
 
-#: src/settings/ui.py:354
+#: src/settings/ui.py:358
 #, possible-python-brace-format
 msgctxt "setting|summary_embed|title"
 msgid "Configuration options for `{name}`"
 msgstr ""
 
-#: src/settings/ui.py:366
+#: src/settings/ui.py:370
 msgctxt "setting|summary_table|field:currently|key"
 msgid "Currently"
 msgstr ""
 
-#: src/settings/ui.py:373
+#: src/settings/ui.py:377
 msgctxt "setting|summary_table|field:default|key"
 msgid "By Default"
 msgstr ""
 
-#: src/settings/ui.py:380
+#: src/settings/ui.py:384
 msgctxt "setting|summary_table|field:set|key"
 msgid "Set Using"
+msgstr ""
+
+#: src/settings/ui.py:502
+msgctxt "setting|interaction_check|error"
+msgid "You do not have sufficient permissions to do this!"
 msgstr ""
 
 #: src/settings/setting_types.py:48

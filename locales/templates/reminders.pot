@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-15 15:58+0300\n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,112 +59,112 @@ msgctxt "cmd:reminders|desc"
 msgid "View and set your reminders."
 msgstr ""
 
-#: src/modules/reminders/cog.py:353
+#: src/modules/reminders/cog.py:354
 msgctxt "cmd:remindme"
 msgid "remindme"
 msgstr ""
 
-#: src/modules/reminders/cog.py:354
+#: src/modules/reminders/cog.py:355
 msgctxt "cmd:remindme|desc"
 msgid "View and set task reminders."
 msgstr ""
 
-#: src/modules/reminders/cog.py:361
+#: src/modules/reminders/cog.py:363
 msgctxt "cmd:reminders_cancel"
 msgid "cancel"
 msgstr ""
 
-#: src/modules/reminders/cog.py:364
+#: src/modules/reminders/cog.py:366
 msgctxt "cmd:reminders_cancel|desc"
 msgid ""
 "Cancel a single reminder. Use /reminders to clear or cancel multiple "
 "reminders."
 msgstr ""
 
-#: src/modules/reminders/cog.py:368
+#: src/modules/reminders/cog.py:370
 msgctxt "cmd:reminders_cancel|param:reminder"
 msgid "reminder"
 msgstr ""
 
-#: src/modules/reminders/cog.py:373
+#: src/modules/reminders/cog.py:375
 msgctxt "cmd:reminders_cancel|param:reminder|desc"
 msgid "Start typing, then select a reminder to cancel."
 msgstr ""
 
-#: src/modules/reminders/cog.py:392
+#: src/modules/reminders/cog.py:394
 msgctxt "cmd:reminders_cancel|error:no_reminders"
 msgid "There are no reminders to cancel!"
 msgstr ""
 
-#: src/modules/reminders/cog.py:416
+#: src/modules/reminders/cog.py:418
 msgctxt "cmd:reminders_cancel|error:no_match"
 msgid ""
 "I am not sure which reminder you want to cancel. Please try again, selecting "
 "a reminder from the list of choices."
 msgstr ""
 
-#: src/modules/reminders/cog.py:429
+#: src/modules/reminders/cog.py:431
 msgctxt "cmd:reminders_cancel|embed:success|desc"
 msgid "Reminder successfully cancelled."
 msgstr ""
 
-#: src/modules/reminders/cog.py:446
+#: src/modules/reminders/cog.py:448
 msgctxt "cmd:reminders_cancel|acmpl:reminder|error:no_reminders"
 msgid "There are no reminders to cancel!"
 msgstr ""
 
-#: src/modules/reminders/cog.py:476
+#: src/modules/reminders/cog.py:478
 #, possible-python-brace-format
 msgctxt "cmd:reminders_cancel|acmpl:reminder|error:no_matches"
 msgid "You do not have any reminders matching \"{partial}\""
 msgstr ""
 
-#: src/modules/reminders/cog.py:484
+#: src/modules/reminders/cog.py:486
 msgctxt "cmd:remindme_at"
 msgid "at"
 msgstr ""
 
-#: src/modules/reminders/cog.py:487
+#: src/modules/reminders/cog.py:489
 msgctxt "cmd:remindme_at|desc"
 msgid "Schedule a reminder for a particular time."
 msgstr ""
 
-#: src/modules/reminders/cog.py:491
+#: src/modules/reminders/cog.py:493
 msgctxt "cmd:remindme_at|param:time"
 msgid "time"
 msgstr ""
 
-#: src/modules/reminders/cog.py:492
+#: src/modules/reminders/cog.py:494
 msgctxt "cmd:remindme_at|param:reminder"
 msgid "reminder"
 msgstr ""
 
-#: src/modules/reminders/cog.py:493
+#: src/modules/reminders/cog.py:495
 msgctxt "cmd:remindme_at|param:every"
 msgid "repeat_every"
 msgstr ""
 
-#: src/modules/reminders/cog.py:498
+#: src/modules/reminders/cog.py:500
 msgctxt "cmd:remindme_at|param:time|desc"
 msgid "When you want to be reminded. (E.g. `4pm` or `16:00`)."
 msgstr ""
 
-#: src/modules/reminders/cog.py:502
+#: src/modules/reminders/cog.py:504
 msgctxt "cmd:remindme_at|param:reminder|desc"
 msgid "What should the reminder be?"
 msgstr ""
 
-#: src/modules/reminders/cog.py:506
+#: src/modules/reminders/cog.py:508
 msgctxt "cmd:remindme_at|param:every|desc"
 msgid "How often to repeat this reminder."
 msgstr ""
 
-#: src/modules/reminders/cog.py:533
+#: src/modules/reminders/cog.py:535
 msgctxt "cmd:remindme_at|error|title"
 msgid "Could not create reminder!"
 msgstr ""
 
-#: src/modules/reminders/cog.py:564
+#: src/modules/reminders/cog.py:566
 #, possible-python-brace-format
 msgctxt "cmd:remindme_at|acmpl:time|error:parse"
 msgid ""
@@ -172,47 +172,47 @@ msgid ""
 "MM"
 msgstr ""
 
-#: src/modules/reminders/cog.py:571
+#: src/modules/reminders/cog.py:573
 msgctxt "cmd:remindme_in"
 msgid "in"
 msgstr ""
 
-#: src/modules/reminders/cog.py:574
+#: src/modules/reminders/cog.py:576
 msgctxt "cmd:remindme_in|desc"
 msgid "Schedule a reminder for a given amount of time in the future."
 msgstr ""
 
-#: src/modules/reminders/cog.py:578
+#: src/modules/reminders/cog.py:580
 msgctxt "cmd:remindme_in|param:time"
 msgid "time"
 msgstr ""
 
-#: src/modules/reminders/cog.py:579
+#: src/modules/reminders/cog.py:581
 msgctxt "cmd:remindme_in|param:reminder"
 msgid "reminder"
 msgstr ""
 
-#: src/modules/reminders/cog.py:580
+#: src/modules/reminders/cog.py:582
 msgctxt "cmd:remindme_in|param:every"
 msgid "repeat_every"
 msgstr ""
 
-#: src/modules/reminders/cog.py:585
+#: src/modules/reminders/cog.py:587
 msgctxt "cmd:remindme_in|param:time|desc"
 msgid "How far into the future to set the reminder (e.g. 1 day 10h 5m)."
 msgstr ""
 
-#: src/modules/reminders/cog.py:589
+#: src/modules/reminders/cog.py:591
 msgctxt "cmd:remindme_in|param:reminder|desc"
 msgid "What should the reminder be?"
 msgstr ""
 
-#: src/modules/reminders/cog.py:593
+#: src/modules/reminders/cog.py:595
 msgctxt "cmd:remindme_in|param:every|desc"
 msgid "How often to repeat this reminder. (e.g. 1 day, or 2h)"
 msgstr ""
 
-#: src/modules/reminders/cog.py:619
+#: src/modules/reminders/cog.py:621
 msgctxt "cmd:remindme_in|error|title"
 msgid "Could not create reminder!"
 msgstr ""

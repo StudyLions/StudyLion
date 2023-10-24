@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-15 15:58+0300\n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,27 +18,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: src/modules/rooms/settingui.py:38
+#: src/modules/rooms/settingui.py:39
 msgctxt "ui:room_config|menu:category|placeholder"
 msgid "Select Private Room Category"
 msgstr ""
 
-#: src/modules/rooms/settingui.py:52
+#: src/modules/rooms/settingui.py:54
 msgctxt "ui:room_config|button:visible|label"
 msgid "Toggle Room Visibility"
 msgstr ""
 
-#: src/modules/rooms/settingui.py:62
+#: src/modules/rooms/settingui.py:64
 msgctxt "ui:rooms_config|embed|title"
 msgid "Private Room System Configuration Panel"
 msgstr ""
 
-#: src/modules/rooms/settingui.py:98
+#: src/modules/rooms/settingui.py:100
 msgctxt "dash:rooms|title"
-msgid "Private Room Configuration ({commands[configure rooms]})"
+msgid "Private Room Configuration ({commands[admin config rooms]})"
 msgstr ""
 
-#: src/modules/rooms/settingui.py:102
+#: src/modules/rooms/settingui.py:104
 msgctxt "dash:economy|dropdown|placeholder"
 msgid "Private Room Panel"
 msgstr ""
@@ -273,7 +273,7 @@ msgstr ""
 msgctxt "cmd:room_rent|error:not_setup"
 msgid ""
 "The private room system has not been set up! A private room category needs "
-"to be set first with `/configure rooms`."
+"to be set first with `/admin config rooms`."
 msgstr ""
 
 #: src/modules/rooms/cog.py:427
@@ -326,7 +326,7 @@ msgctxt "cmd:room_rent|success|title"
 msgid "Private Room Created!"
 msgstr ""
 
-#: src/modules/rooms/cog.py:553
+#: src/modules/rooms/cog.py:572
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|error:insufficient_funds"
 msgid ""
@@ -338,14 +338,14 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/modules/rooms/cog.py:587
+#: src/modules/rooms/cog.py:606
 msgctxt "cmd:room_rent|error:my_permissions"
 msgid ""
 "Could not create your private room! You were not charged.\n"
 "I have insufficient permissions to create a private room channel."
 msgstr ""
 
-#: src/modules/rooms/cog.py:598
+#: src/modules/rooms/cog.py:617
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|error:unknown"
 msgid ""
@@ -354,62 +354,62 @@ msgid ""
 "`{error}`"
 msgstr ""
 
-#: src/modules/rooms/cog.py:607
+#: src/modules/rooms/cog.py:626
 msgctxt "cmd:room_status"
 msgid "status"
 msgstr ""
 
-#: src/modules/rooms/cog.py:610
+#: src/modules/rooms/cog.py:629
 msgctxt "cmd:room_status|desc"
 msgid "Display the status of your current room."
 msgstr ""
 
-#: src/modules/rooms/cog.py:627
+#: src/modules/rooms/cog.py:646
 msgctxt "cmd:room_status|error:no_target"
 msgid ""
 "Could not identify target private room! Please re-run the command in the "
 "private room you wish to view the status of."
 msgstr ""
 
-#: src/modules/rooms/cog.py:642
+#: src/modules/rooms/cog.py:661
 msgctxt "cmd:room_invite"
 msgid "invite"
 msgstr ""
 
-#: src/modules/rooms/cog.py:645
+#: src/modules/rooms/cog.py:664
 msgctxt "cmd:room_invite|desc"
 msgid "Add members to your private room."
 msgstr ""
 
-#: src/modules/rooms/cog.py:649
+#: src/modules/rooms/cog.py:668
 msgctxt "cmd:room_invite|param:members"
 msgid "members"
 msgstr ""
 
-#: src/modules/rooms/cog.py:654
+#: src/modules/rooms/cog.py:673
 msgctxt "cmd:room_invite|param:members|desc"
 msgid "Mention the members you want to add."
 msgstr ""
 
-#: src/modules/rooms/cog.py:668
+#: src/modules/rooms/cog.py:687
 #, possible-python-brace-format
 msgctxt "cmd:room_invite|error:no_room"
 msgid ""
 "You do not own a private room! Use `/room rent` to rent one with {coin}!"
 msgstr ""
 
-#: src/modules/rooms/cog.py:689
+#: src/modules/rooms/cog.py:708
 #, possible-python-brace-format
 msgctxt "cmd:room_invite|error:member_not_found"
 msgid "Could not find the invited member {mention} in this server!"
 msgstr ""
 
-#: src/modules/rooms/cog.py:700
+#: src/modules/rooms/cog.py:719
 msgctxt "cmd:room_invite|error:no_new_members"
 msgid "All members mentioned are already in the room!"
 msgstr ""
 
-#: src/modules/rooms/cog.py:714
+#: src/modules/rooms/cog.py:733
 #, possible-python-brace-format
 msgctxt "cmd:room_invite|error:too_many_members"
 msgid ""
@@ -417,89 +417,89 @@ msgid ""
 "you already have `{current}`, and the member cap is `{cap}`!"
 msgstr ""
 
-#: src/modules/rooms/cog.py:738
+#: src/modules/rooms/cog.py:757
 msgctxt "cmd:room_invite|success|ack"
 msgid "Members Invited successfully."
 msgstr ""
 
-#: src/modules/rooms/cog.py:746
+#: src/modules/rooms/cog.py:765
 msgctxt "cmd:room_kick"
 msgid "kick"
 msgstr ""
 
-#: src/modules/rooms/cog.py:749
+#: src/modules/rooms/cog.py:768
 msgctxt "cmd:room_kick|desc"
 msgid "Remove a members from your private room."
 msgstr ""
 
-#: src/modules/rooms/cog.py:753
+#: src/modules/rooms/cog.py:772
 msgctxt "cmd:room_kick|param:members"
 msgid "members"
 msgstr ""
 
-#: src/modules/rooms/cog.py:758
+#: src/modules/rooms/cog.py:777
 msgctxt "cmd:room_kick|param:members|desc"
 msgid ""
 "Mention the members you want to remove. Also accepts space-separated user "
 "ids."
 msgstr ""
 
-#: src/modules/rooms/cog.py:772
+#: src/modules/rooms/cog.py:791
 #, possible-python-brace-format
 msgctxt "cmd:room_kick|error:no_room"
 msgid ""
 "You do not own a private room! Use `/room rent` to rent one with {coin}!"
 msgstr ""
 
-#: src/modules/rooms/cog.py:789
+#: src/modules/rooms/cog.py:808
 msgctxt "cmd:room_kick|error:no_matching_members"
 msgid "None of the mentioned members are in this room!"
 msgstr ""
 
-#: src/modules/rooms/cog.py:806
+#: src/modules/rooms/cog.py:825
 msgctxt "cmd:room_kick|success|ack"
 msgid "Members removed."
 msgstr ""
 
-#: src/modules/rooms/cog.py:812
+#: src/modules/rooms/cog.py:831
 msgctxt "cmd:room_transfer"
 msgid "transfer"
 msgstr ""
 
-#: src/modules/rooms/cog.py:815
+#: src/modules/rooms/cog.py:834
 msgctxt "cmd:room_transfer|desc"
 msgid "Transfer your private room to another room member. Not reversible!"
 msgstr ""
 
-#: src/modules/rooms/cog.py:819
+#: src/modules/rooms/cog.py:838
 msgctxt "cmd:room_transfer|param:new_owner"
 msgid "new_owner"
 msgstr ""
 
-#: src/modules/rooms/cog.py:824
+#: src/modules/rooms/cog.py:843
 msgctxt "cmd:room_transfer|param:new_owner"
 msgid "The room member you would like to transfer your room to."
 msgstr ""
 
-#: src/modules/rooms/cog.py:838
+#: src/modules/rooms/cog.py:857
 msgctxt "cmd:room_transfer|error:no_room"
 msgid "You do not own a private room to transfer!"
 msgstr ""
 
-#: src/modules/rooms/cog.py:850
+#: src/modules/rooms/cog.py:869
 #, possible-python-brace-format
 msgctxt "cmd:room_transfer|error:target_not_member"
 msgid ""
 "{mention} is not a member of your private room! You must invite them first."
 msgstr ""
 
-#: src/modules/rooms/cog.py:862
+#: src/modules/rooms/cog.py:881
 #, possible-python-brace-format
 msgctxt "cmd:room_transfer|error:target_has_room"
 msgid "{mention} already owns a room! Members can only own one room at a time."
 msgstr ""
 
-#: src/modules/rooms/cog.py:871
+#: src/modules/rooms/cog.py:890
 #, possible-python-brace-format
 msgctxt "cmd:room_transfer|confirm|question"
 msgid ""
@@ -507,62 +507,62 @@ msgid ""
 "{new_owner}? This action is not reversible!"
 msgstr ""
 
-#: src/modules/rooms/cog.py:891
+#: src/modules/rooms/cog.py:910
 #, possible-python-brace-format
 msgctxt "cmd:room_transfer|success|description"
 msgid ""
 "You have successfully transferred ownership of {channel} to {new_owner}."
 msgstr ""
 
-#: src/modules/rooms/cog.py:897
+#: src/modules/rooms/cog.py:916
 msgctxt "cmd:room_deposit"
 msgid "deposit"
 msgstr ""
 
-#: src/modules/rooms/cog.py:900
+#: src/modules/rooms/cog.py:919
 msgctxt "cmd:room_deposit|desc"
 msgid ""
 "Deposit LionCoins in your private room bank to add more days. (Members may "
 "also deposit!)"
 msgstr ""
 
-#: src/modules/rooms/cog.py:904
+#: src/modules/rooms/cog.py:923
 msgctxt "cmd:room_deposit|param:coins"
 msgid "coins"
 msgstr ""
 
-#: src/modules/rooms/cog.py:909
+#: src/modules/rooms/cog.py:928
 msgctxt "cmd:room_deposit|param:coins|desc"
 msgid "Number of coins to deposit."
 msgstr ""
 
-#: src/modules/rooms/cog.py:929
+#: src/modules/rooms/cog.py:948
 msgctxt "cmd:room_deposit|error:no_target"
 msgid ""
 "Could not identify target private room! Please re-run the command in the "
 "private room you wish to contribute to."
 msgstr ""
 
-#: src/modules/rooms/cog.py:945
+#: src/modules/rooms/cog.py:964
 #, possible-python-brace-format
 msgctxt "cmd:room_deposit|error:insufficient_funds"
 msgid ""
 "You cannot deposit {coin}**{amount}**! You only have {coin}**{balance}**."
 msgstr ""
 
-#: src/modules/rooms/cog.py:966
+#: src/modules/rooms/cog.py:985
 #, possible-python-brace-format
 msgctxt "cmd:room_depost|success"
 msgid ""
 "Success! You have contributed {coin}**{amount}** to the private room bank."
 msgstr ""
 
-#: src/modules/rooms/cog.py:981
+#: src/modules/rooms/cog.py:1000
 msgctxt "cmd:configure_rooms"
 msgid "rooms"
 msgstr ""
 
-#: src/modules/rooms/cog.py:982
+#: src/modules/rooms/cog.py:1001
 msgctxt "cmd:configure_rooms|desc"
 msgid "Configure Rented Private Rooms"
 msgstr ""
@@ -670,17 +670,17 @@ msgctxt "room|tick|rent_deducted"
 msgid "Daily rent deducted from room balance. New balance: {coin}**{amount}**"
 msgstr ""
 
-#: src/modules/rooms/settings.py:21
+#: src/modules/rooms/settings.py:23
 msgctxt "guildset:room_category"
 msgid "rooms_category"
 msgstr ""
 
-#: src/modules/rooms/settings.py:25
+#: src/modules/rooms/settings.py:27
 msgctxt "guildset:rooms_category|desc"
 msgid "Category in which to create private voice channels."
 msgstr ""
 
-#: src/modules/rooms/settings.py:29
+#: src/modules/rooms/settings.py:31
 msgctxt "guildset:room_category|long_desc"
 msgid ""
 "When a member uses {cmds[room rent]} to rent a new private room, a private "
@@ -689,19 +689,19 @@ msgid ""
 "to manage permissions."
 msgstr ""
 
-#: src/modules/rooms/settings.py:37
+#: src/modules/rooms/settings.py:39
 msgctxt "guildset:room_category|accepts"
 msgid "Private room category name or id."
 msgstr ""
 
-#: src/modules/rooms/settings.py:51
+#: src/modules/rooms/settings.py:53
 msgctxt "guildset:rooms_category|set_response:unset"
 msgid ""
 "The private room category has been unset. Existing private rooms will not be "
 "affected. Delete the channels manually to remove the private rooms."
 msgstr ""
 
-#: src/modules/rooms/settings.py:57
+#: src/modules/rooms/settings.py:59
 #, possible-python-brace-format
 msgctxt "guildset:rooms_category|set_response:set"
 msgid ""
@@ -709,51 +709,51 @@ msgid ""
 "be moved."
 msgstr ""
 
-#: src/modules/rooms/settings.py:67
+#: src/modules/rooms/settings.py:69
 #, possible-python-brace-format
 msgctxt "guildset:room_category|set_using"
 msgid "{cmd} or category selector below."
 msgstr ""
 
-#: src/modules/rooms/settings.py:76
+#: src/modules/rooms/settings.py:79
 msgctxt "guildset:rooms_price"
 msgid "room_rent"
 msgstr ""
 
-#: src/modules/rooms/settings.py:80
+#: src/modules/rooms/settings.py:83
 msgctxt "guildset:rooms_rent|desc"
 msgid "Daily rent price for a private room."
 msgstr ""
 
-#: src/modules/rooms/settings.py:84
+#: src/modules/rooms/settings.py:87
 msgctxt "guildset:rooms_rent|long_desc"
 msgid ""
 "Members will be charged this many LionCoins for each day they rent a private "
 "room."
 msgstr ""
 
-#: src/modules/rooms/settings.py:88
+#: src/modules/rooms/settings.py:91
 msgctxt "guildset:rooms_rent|accepts"
 msgid "Number of LionCoins charged per day for a private room."
 msgstr ""
 
-#: src/modules/rooms/settings.py:100
+#: src/modules/rooms/settings.py:103
 #, possible-python-brace-format
 msgctxt "guildset:rooms_price|set_response"
 msgid "Private rooms will now cost {coin}**{amount}** per 24 hours."
 msgstr ""
 
-#: src/modules/rooms/settings.py:112
+#: src/modules/rooms/settings.py:116
 msgctxt "guildset:rooms_slots"
 msgid "room_member_cap"
 msgstr ""
 
-#: src/modules/rooms/settings.py:115
+#: src/modules/rooms/settings.py:119
 msgctxt "guildset:rooms_slots|desc"
 msgid "Maximum number of members in each private room."
 msgstr ""
 
-#: src/modules/rooms/settings.py:119
+#: src/modules/rooms/settings.py:123
 msgctxt "guildset:rooms_slots|long_desc"
 msgid ""
 "Private room owners may invite other members to their private room via the "
@@ -761,70 +761,70 @@ msgid ""
 "maximum number of members a private room may hold."
 msgstr ""
 
-#: src/modules/rooms/settings.py:125
+#: src/modules/rooms/settings.py:129
 msgctxt "guildset:rooms_slots|accepts"
 msgid "Maximum number of members allowed per private room."
 msgstr ""
 
-#: src/modules/rooms/settings.py:137
+#: src/modules/rooms/settings.py:141
 #, possible-python-brace-format
 msgctxt "guildset:rooms_slots|set_response"
 msgid "Private rooms are now capped to **{amount}** members."
 msgstr ""
 
-#: src/modules/rooms/settings.py:146
+#: src/modules/rooms/settings.py:151
 msgctxt "guildset:rooms_visible"
 msgid "room_visibility"
 msgstr ""
 
-#: src/modules/rooms/settings.py:149
+#: src/modules/rooms/settings.py:154
 msgctxt "guildset:rooms_visible|desc"
 msgid "Whether private rented rooms are visible to non-members."
 msgstr ""
 
-#: src/modules/rooms/settings.py:153
+#: src/modules/rooms/settings.py:158
 msgctxt "guildset:rooms_visible|long_desc"
 msgid ""
 "If enabled, new private rooms will be created with the `VIEW_CHANNEL` "
 "permission enabled for the `@everyone` role."
 msgstr ""
 
-#: src/modules/rooms/settings.py:157
+#: src/modules/rooms/settings.py:162
 msgctxt "guildset:rooms_visible|accepts"
 msgid "Visible/Invisible"
 msgstr ""
 
-#: src/modules/rooms/settings.py:159
+#: src/modules/rooms/settings.py:164
 msgctxt "guildset:rooms_visible|output:true"
 msgid "Visible"
 msgstr ""
 
-#: src/modules/rooms/settings.py:160
+#: src/modules/rooms/settings.py:165
 msgctxt "guildset:rooms_visible|output:false"
 msgid "Invisible"
 msgstr ""
 
-#: src/modules/rooms/settings.py:166
+#: src/modules/rooms/settings.py:171
 msgctxt "guildset:rooms_visible|parse:truthy_values"
 msgid "visible|enabled|yes|true|on|enable|1"
 msgstr ""
 
-#: src/modules/rooms/settings.py:170
+#: src/modules/rooms/settings.py:175
 msgctxt "guildset:rooms_visible|parse:falsey_values"
 msgid "invisible|disabled|no|false|off|disable|0"
 msgstr ""
 
-#: src/modules/rooms/settings.py:182
+#: src/modules/rooms/settings.py:187
 msgctxt "guildset:rooms_visible|set_response:enabled"
 msgid "Private rooms will now be visible to everyone."
 msgstr ""
 
-#: src/modules/rooms/settings.py:187
+#: src/modules/rooms/settings.py:192
 msgctxt "guildset:rooms_visible|set_response:disabled"
 msgid "Private rooms will now only be visible to their members (and admins)."
 msgstr ""
 
-#: src/modules/rooms/settings.py:197
+#: src/modules/rooms/settings.py:202
 #, possible-python-brace-format
 msgctxt "guildset:rooms_visible|set_using"
 msgid "{cmd} or toggle below."
