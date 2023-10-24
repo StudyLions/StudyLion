@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-01 16:01+0300\n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Ronin DeMentira, 2023\n"
 "Language-Team: Spanish (Latin America) (https://app.transifex.com/leobot/teams/174919/es_419/)\n"
@@ -209,7 +209,7 @@ msgctxt "cmd:configure_schedule|desc"
 msgid "Configure Scheduled Session system"
 msgstr "Configurar el sistema de sesiones programadas"
 
-#: src/modules/schedule/lib.py:86 src/modules/schedule/ui/scheduleui.py:333
+#: src/modules/schedule/lib.py:86 src/modules/schedule/ui/scheduleui.py:347
 #, possible-python-brace-format
 msgctxt "ui:schedule|format_until|positive"
 msgid "in <1 hour"
@@ -218,23 +218,23 @@ msgstr[0] "en <1 hora"
 msgstr[1] "en {number} horas"
 msgstr[2] "en {number} horas"
 
-#: src/modules/schedule/lib.py:93 src/modules/schedule/ui/scheduleui.py:340
+#: src/modules/schedule/lib.py:93 src/modules/schedule/ui/scheduleui.py:354
 msgctxt "ui:schedule|format_until|now"
 msgid "right now!"
 msgstr "¡ahora mismo!"
 
-#: src/modules/schedule/settings.py:68
+#: src/modules/schedule/settings.py:70
 msgctxt "guildset:session_lobby"
 msgid "session_lobby"
 msgstr "lobbyde_sesión"
 
-#: src/modules/schedule/settings.py:71
+#: src/modules/schedule/settings.py:73
 msgctxt "guildset:session_lobby|desc"
 msgid "Channel to post scheduled session announcement and status to."
 msgstr ""
 "Canal en el que publicar el anuncio y el estado de la sesión programada."
 
-#: src/modules/schedule/settings.py:75
+#: src/modules/schedule/settings.py:77
 msgctxt "guildset:session_lobby|long_desc"
 msgid ""
 "Channel in which to announce scheduled sessions and post their status. I must have the `MANAGE_WEBHOOKS` permission in this channel.\n"
@@ -243,19 +243,19 @@ msgstr ""
 "Canal en el que anunciar las sesiones programadas y publicar su estado. Debo tener el permiso `MANAGE_WEBHOOKS` en este canal.\n"
 "**Esto debe estar configurado para que el sistema de sesiones programadas funcione.**"
 
-#: src/modules/schedule/settings.py:81
+#: src/modules/schedule/settings.py:83
 msgctxt "guildset:session_lobby|accepts"
 msgid "Name or id of the session lobby channel."
 msgstr "Nombre o id del canal del lobby de la sesión."
 
-#: src/modules/schedule/settings.py:95
+#: src/modules/schedule/settings.py:97
 #, possible-python-brace-format
 msgctxt "guildset:session_lobby|set_response|set"
 msgid "Scheduled sessions will now be announced in {channel}"
 msgstr ""
 "Las sesiones programadas se anunciarán a partir de ahora en {channel}."
 
-#: src/modules/schedule/settings.py:100
+#: src/modules/schedule/settings.py:102
 msgctxt "guildset:session_lobby|set_response|unset"
 msgid ""
 "The schedule session lobby has been unset. Shutting down scheduled session "
@@ -264,29 +264,29 @@ msgstr ""
 "Se ha desactivado el sistema de sesiones programadas. Cierre del sistema de "
 "sesiones programadas."
 
-#: src/modules/schedule/settings.py:110
+#: src/modules/schedule/settings.py:112
 msgctxt "guildset:session_lobby|formatted|unset"
 msgid "`Not Set` (The scheduled session system is disabled.)"
 msgstr "`Not Set` (El sistema de sesiones programadas está desactivado.)"
 
-#: src/modules/schedule/settings.py:115
+#: src/modules/schedule/settings.py:117
 #, possible-python-brace-format
 msgctxt "guildset:session_lobby|formatted|set"
 msgid "<#{channelid}>"
 msgstr "<#{channelid}>"
 
-#: src/modules/schedule/settings.py:124
+#: src/modules/schedule/settings.py:127
 msgctxt "guildset:session_room"
 msgid "session_room"
 msgstr "sala_sesión"
 
-#: src/modules/schedule/settings.py:127
+#: src/modules/schedule/settings.py:130
 msgctxt "guildset:session_room|desc"
 msgid "Special voice channel open to scheduled session members."
 msgstr ""
 "Canal de voz especial abierto a los miembros de las sesiones programadas."
 
-#: src/modules/schedule/settings.py:131
+#: src/modules/schedule/settings.py:134
 msgctxt "guildset:session_room|long_desc"
 msgid ""
 "If set, this voice channel serves as a dedicated room for scheduled session "
@@ -310,35 +310,35 @@ msgstr ""
 "sobreescrituras de permisos se aplicarán a todos los canales *sincronizados*"
 " bajo la categoría, como de costumbre."
 
-#: src/modules/schedule/settings.py:141
+#: src/modules/schedule/settings.py:144
 msgctxt "guildset:session_room|accepts"
 msgid "Name or id of the session room voice channel."
 msgstr "Nombre o id del canal de voz de la sala de sesiones."
 
-#: src/modules/schedule/settings.py:155
+#: src/modules/schedule/settings.py:158
 #, possible-python-brace-format
 msgctxt "guildset:session_room|set_response|set"
 msgid "Schedule session members will now be given access to {channel}"
 msgstr ""
 "Los miembros de la sesión de programación tendrán ahora acceso al {channel}."
 
-#: src/modules/schedule/settings.py:160
+#: src/modules/schedule/settings.py:163
 msgctxt "guildset:session_room|set_response|unset"
 msgid "The dedicated schedule session room has been removed."
 msgstr "Se ha suprimido la sala dedicada a las sesiones programadas."
 
-#: src/modules/schedule/settings.py:167
+#: src/modules/schedule/settings.py:171
 msgctxt "guildset:session_channels"
 msgid "session_channels"
 msgstr "canalesde_sesión"
 
-#: src/modules/schedule/settings.py:170
+#: src/modules/schedule/settings.py:174
 msgctxt "guildset:session_channels|desc"
 msgid "Voice channels in which to track activity for scheduled sessions."
 msgstr ""
 "Canales de voz en los que seguir la actividad de las sesiones programadas."
 
-#: src/modules/schedule/settings.py:174
+#: src/modules/schedule/settings.py:178
 msgctxt "guildset:session_channels|long_desc"
 msgid ""
 "Only activity in these channels (and in `session_room` if set) will count "
@@ -352,12 +352,12 @@ msgstr ""
 "seguimiento de la actividad también respeta el ajuste "
 "`untracked_voice_channels`."
 
-#: src/modules/schedule/settings.py:181
+#: src/modules/schedule/settings.py:185
 msgctxt "guildset:session_channels|accepts"
 msgid "Comma separated list of session channel names or ids."
 msgstr "Lista separada por comas de nombres o ids de canales de sesión."
 
-#: src/modules/schedule/settings.py:198
+#: src/modules/schedule/settings.py:202
 #, possible-python-brace-format
 msgctxt "guildset:session_channels|set_response|set"
 msgid ""
@@ -367,7 +367,7 @@ msgstr ""
 "La actividad en las siguientes sesiones contará ahora para la asistencia a "
 "las sesiones programadas: {channels}"
 
-#: src/modules/schedule/settings.py:203
+#: src/modules/schedule/settings.py:207
 msgctxt "guildset:session_channels|set_response|unset"
 msgid ""
 "Activity in all (tracked) voice channels will now count towards session "
@@ -376,22 +376,22 @@ msgstr ""
 "La actividad en todos los canales de voz (seguidos) contará ahora para la "
 "asistencia a la sesión."
 
-#: src/modules/schedule/settings.py:213
+#: src/modules/schedule/settings.py:217
 msgctxt "guildset:session_channels|formatted|unset"
 msgid "All Channels (excluding `untracked_channels`)"
 msgstr "Todos los canales (excepto `untracked_channels`)"
 
-#: src/modules/schedule/settings.py:243
+#: src/modules/schedule/settings.py:248
 msgctxt "guildset:schedule_cost"
 msgid "schedule_cost"
 msgstr "horario_coste"
 
-#: src/modules/schedule/settings.py:246
+#: src/modules/schedule/settings.py:251
 msgctxt "guildset:schedule_cost|desc"
 msgid "Booking cost for each scheduled session."
 msgstr "Coste de reserva para cada sesión programada."
 
-#: src/modules/schedule/settings.py:250
+#: src/modules/schedule/settings.py:255
 msgctxt "guildset:schedule_cost|long_desc"
 msgid ""
 "Members will be charged this many LionCoins for each scheduled session they "
@@ -400,12 +400,12 @@ msgstr ""
 "A los socios se les cobrará esta cantidad de LionCoins por cada sesión "
 "programada que reserven."
 
-#: src/modules/schedule/settings.py:254
+#: src/modules/schedule/settings.py:259
 msgctxt "guildset:schedule_cost|accepts"
 msgid "Price of each session booking (non-negative integer)."
 msgstr "Precio de la reserva de cada sesión (número entero no negativo)."
 
-#: src/modules/schedule/settings.py:266
+#: src/modules/schedule/settings.py:271
 #, possible-python-brace-format
 msgctxt "guildset:schedule_cost|set_response"
 msgid ""
@@ -414,23 +414,23 @@ msgstr ""
 "Las reservas de sesiones programadas ahora costarán {coin} **{amount}** por "
 "franja horaria."
 
-#: src/modules/schedule/settings.py:279
+#: src/modules/schedule/settings.py:284
 #, possible-python-brace-format
 msgctxt "guildset:schedule_cost|formatted"
 msgid "{coin}**{amount}** per booking."
 msgstr "{coin}**{importe}** por reserva."
 
-#: src/modules/schedule/settings.py:288
+#: src/modules/schedule/settings.py:294
 msgctxt "guildset:attendance_reward"
 msgid "attendance_reward"
 msgstr "premio_presencia"
 
-#: src/modules/schedule/settings.py:291
+#: src/modules/schedule/settings.py:297
 msgctxt "guildset:attendance_reward|desc"
 msgid "Reward for attending a booked scheduled session."
 msgstr "Recompensa por asistir a una sesión programada reservada."
 
-#: src/modules/schedule/settings.py:295
+#: src/modules/schedule/settings.py:301
 msgctxt "guildset:attendance_reward|long_desc"
 msgid ""
 "When a member successfully attends a scheduled session they booked, they "
@@ -441,12 +441,12 @@ msgstr ""
 " recibirá esta cantidad de LionCoins. Por lo general, esta cantidad debe ser"
 " superior a la del parámetro `schedule_cost`."
 
-#: src/modules/schedule/settings.py:301
+#: src/modules/schedule/settings.py:307
 msgctxt "guildset:attendance_reward|accepts"
 msgid "Number of coins to reward session attendance."
 msgstr "Número de monedas para premiar la asistencia a la sesión."
 
-#: src/modules/schedule/settings.py:313
+#: src/modules/schedule/settings.py:319
 #, possible-python-brace-format
 msgctxt "guildset:attendance_reward|set_response"
 msgid ""
@@ -456,25 +456,25 @@ msgstr ""
 "Los miembros serán recompensados con {coin}**{amount}** cuando asistan a una"
 " sesión programada."
 
-#: src/modules/schedule/settings.py:323
+#: src/modules/schedule/settings.py:329
 #, possible-python-brace-format
 msgctxt "guildset:attendance_reward|formatted"
 msgid "{coin}**{amount}** upon attendance."
 msgstr "{coin}**{amount}** al asistir."
 
-#: src/modules/schedule/settings.py:332
+#: src/modules/schedule/settings.py:339
 msgctxt "guildset:attendance_bonus"
 msgid "group_attendance_bonus"
 msgstr "bonus_asistencia_grupo"
 
-#: src/modules/schedule/settings.py:335
+#: src/modules/schedule/settings.py:342
 msgctxt "guildset:attendance_bonus|desc"
 msgid "Bonus reward given when all members attend a scheduled session."
 msgstr ""
 "Recompensa de bonificación concedida cuando todos los miembros asisten a una"
 " sesión programada."
 
-#: src/modules/schedule/settings.py:339
+#: src/modules/schedule/settings.py:346
 msgctxt "guildset:attendance_bonus|long_desc"
 msgid ""
 "When all members who have booked a session successfully attend the session, "
@@ -483,14 +483,14 @@ msgstr ""
 "Cuando todos los miembros que hayan reservado una sesión asistan a ella, "
 "recibirán esta bonificación *además* de la `attendance_reward`."
 
-#: src/modules/schedule/settings.py:344
+#: src/modules/schedule/settings.py:351
 msgctxt "guildset:attendance_bonus|accepts"
 msgid "Bonus coins rewarded when everyone attends a session."
 msgstr ""
 "Monedas de bonificación recompensadas cuando todo el mundo asiste a una "
 "sesión."
 
-#: src/modules/schedule/settings.py:356
+#: src/modules/schedule/settings.py:363
 #, possible-python-brace-format
 msgctxt "guildset:attendance_bonus|set_response"
 msgid ""
@@ -500,7 +500,7 @@ msgstr ""
 "Los miembros de la sesión recibirán una {coin}**{cantidad}** adicional "
 "cuando asistan todos."
 
-#: src/modules/schedule/settings.py:366
+#: src/modules/schedule/settings.py:373
 #, possible-python-brace-format
 msgctxt "guildset:attendance_bonus|formatted"
 msgid "{coin}**{amount}** bonus when all booked members attend."
@@ -508,17 +508,17 @@ msgstr ""
 "{coin}**{amount}** de bonificación cuando asistan todos los miembros "
 "inscritos."
 
-#: src/modules/schedule/settings.py:375
+#: src/modules/schedule/settings.py:383
 msgctxt "guildset:min_attendance"
 msgid "min_attendance"
 msgstr "asistencia_mínima"
 
-#: src/modules/schedule/settings.py:378
+#: src/modules/schedule/settings.py:386
 msgctxt "guildset:min_attendance|desc"
 msgid "Minimum attendance before reward eligability."
 msgstr "Asistencia mínima para tener derecho a recompensa."
 
-#: src/modules/schedule/settings.py:382
+#: src/modules/schedule/settings.py:390
 msgctxt "guildset:min_attendance|long_desc"
 msgid ""
 "Scheduled session members will need to attend the session for at least this "
@@ -529,12 +529,12 @@ msgstr ""
 " al menos este número de minutos antes de que se marque que han asistido (y,"
 " por tanto, se les recompense)."
 
-#: src/modules/schedule/settings.py:387
+#: src/modules/schedule/settings.py:395
 msgctxt "guildset:min_attendance|accepts"
 msgid "Number of minutes (1-60) before attendance is counted."
 msgstr "Número de minutos (1-60) antes de que se cuente la asistencia."
 
-#: src/modules/schedule/settings.py:401
+#: src/modules/schedule/settings.py:409
 #, possible-python-brace-format
 msgctxt "guildset:min_attendance|set_response"
 msgid ""
@@ -544,13 +544,13 @@ msgstr ""
 "Los miembros serán recompensados después de haber asistido a las sesiones "
 "reservadas durante al menos **`{amount}`** minutos."
 
-#: src/modules/schedule/settings.py:411
+#: src/modules/schedule/settings.py:419
 #, possible-python-brace-format
 msgctxt "guildset:min_attendance|formatted"
 msgid "**`{amount}`** minutes"
 msgstr "**`{amount}`** minutos"
 
-#: src/modules/schedule/settings.py:432
+#: src/modules/schedule/settings.py:440
 msgctxt "guildset:min_attendance|parse|error"
 msgid ""
 "Minimum attendance must be an integer number of minutes between `1` and "
@@ -559,17 +559,17 @@ msgstr ""
 "La asistencia mínima debe ser un número entero de minutos comprendido entre "
 "`1` y `60`."
 
-#: src/modules/schedule/settings.py:443
+#: src/modules/schedule/settings.py:452
 msgctxt "guildset:schedule_blacklist_role"
 msgid "schedule_blacklist_role"
 msgstr "horario_listanegra_rol"
 
-#: src/modules/schedule/settings.py:446
+#: src/modules/schedule/settings.py:455
 msgctxt "guildset:schedule_blacklist_role|desc"
 msgid "Role which disables scheduled session booking."
 msgstr "Rol que desactiva la reserva de sesiones programadas."
 
-#: src/modules/schedule/settings.py:450
+#: src/modules/schedule/settings.py:459
 msgctxt "guildset:schedule_blacklist_role|long_desc"
 msgid ""
 "Members with this role will not be allowed to book scheduled sessions in "
@@ -587,46 +587,46 @@ msgstr ""
 "reserva (y recompensa) muy alto para proporcionar un fuerte desincentivo "
 "para no asistir a una sesión."
 
-#: src/modules/schedule/settings.py:458
+#: src/modules/schedule/settings.py:467
 msgctxt "guildset:schedule_blacklist_role|accepts"
 msgid "Blacklist role name or id."
 msgstr "Nombre o id del rol de la lista negra."
 
-#: src/modules/schedule/settings.py:471
+#: src/modules/schedule/settings.py:480
 #, possible-python-brace-format
 msgctxt "guildset:schedule_blacklist_role|set_response|set"
 msgid "Members with {role} will be unable to book scheduled sessions."
 msgstr "Los miembros con {role} no podrán reservar sesiones programadas."
 
-#: src/modules/schedule/settings.py:476
+#: src/modules/schedule/settings.py:485
 msgctxt "guildset:schedule_blacklist_role|set_response|unset"
 msgid "The schedule blacklist role has been unset."
 msgstr "El rol de lista negra de horarios ha sido desactivada."
 
-#: src/modules/schedule/settings.py:486
+#: src/modules/schedule/settings.py:495
 #, possible-python-brace-format
 msgctxt "guildset:schedule_blacklist_role|formatted|set"
 msgid "{role} members will not be able to book scheduled sessions."
 msgstr "Los miembros con el {role} no podrán reservar sesiones programadas."
 
-#: src/modules/schedule/settings.py:491
+#: src/modules/schedule/settings.py:500
 msgctxt "guildset:schedule_blacklist_role|formatted|unset"
 msgid "Not Set"
 msgstr "No fijado"
 
-#: src/modules/schedule/settings.py:500
+#: src/modules/schedule/settings.py:510
 msgctxt "guildset:schedule_blacklist_after"
 msgid "schedule_blacklist_after"
 msgstr "programar_listanegra_despuésde"
 
-#: src/modules/schedule/settings.py:503
+#: src/modules/schedule/settings.py:513
 msgctxt "guildset:schedule_blacklist_after|desc"
 msgid "Number of missed sessions within 24h before blacklisting."
 msgstr ""
 "Número de sesiones perdidas en las 24 horas anteriores a la inclusión en la "
 "lista negra."
 
-#: src/modules/schedule/settings.py:507
+#: src/modules/schedule/settings.py:517
 msgctxt "guildset:schedule_blacklist_after|long_desc"
 msgid ""
 "Members who miss more than this number of booked sessions in a single 24 "
@@ -639,12 +639,12 @@ msgstr ""
 "No tiene efecto si el rol `blacklist_role` no está configurado o si no tengo"
 " permisos suficientes para asignar el rol blacklist."
 
-#: src/modules/schedule/settings.py:514
+#: src/modules/schedule/settings.py:524
 msgctxt "guildset:schedule_blacklist_after|accepts"
 msgid "A number of missed sessions (1-24) before blacklisting."
 msgstr "Número de sesiones perdidas (1-24) antes de entrar en la lista negra."
 
-#: src/modules/schedule/settings.py:529
+#: src/modules/schedule/settings.py:539
 #, possible-python-brace-format
 msgctxt "guildset:schedule_blacklist_after|set_response|set"
 msgid ""
@@ -654,7 +654,7 @@ msgstr ""
 "Los miembros serán incluidos en la lista negra después de **`{amount}`** "
 "sesiones perdidas dentro de `24h`."
 
-#: src/modules/schedule/settings.py:534
+#: src/modules/schedule/settings.py:544
 msgctxt "guildset:schedule_blacklist_after|set_response|unset"
 msgid ""
 "Members will not be automatically blacklisted from booking scheduled "
@@ -663,18 +663,18 @@ msgstr ""
 "Los miembros no entrarán automáticamente en la lista negra de reserva de "
 "sesiones programadas."
 
-#: src/modules/schedule/settings.py:544
+#: src/modules/schedule/settings.py:554
 #, possible-python-brace-format
 msgctxt "guildset:schedule_blacklist_after|formatted|set"
 msgid "Blacklist after **`{amount}`** missed sessions within `24h`."
 msgstr "Lista negra después de **`{amount}`** sesiones perdidas en `24h`."
 
-#: src/modules/schedule/settings.py:549
+#: src/modules/schedule/settings.py:559
 msgctxt "guildset:schedule_blacklist_after|formatted|unset"
 msgid "Do not automatically blacklist."
 msgstr "No poner automáticamente en la lista negra."
 
-#: src/modules/schedule/settings.py:561
+#: src/modules/schedule/settings.py:571
 msgctxt "guildset:schedule_blacklist_role|parse|error"
 msgid "Blacklist threshold must be a number between `1` and `24`."
 msgstr "El umbral de la lista negra debe ser un número entre `1` y `24`."
@@ -684,110 +684,119 @@ msgctxt "ui:schedule_config|button:page0|label"
 msgid "Page 1"
 msgstr "Página 1"
 
-#: src/modules/schedule/ui/settingui.py:88
+#: src/modules/schedule/ui/settingui.py:89
 msgctxt "ui:schedule_config|menu:lobby|placeholder"
 msgid "Select Lobby Channel"
 msgstr "Seleccione el canal del lobby"
 
-#: src/modules/schedule/ui/settingui.py:105
+#: src/modules/schedule/ui/settingui.py:107
 msgctxt "ui:schedule_config|menu:room|placeholder"
 msgid "Select Session Room"
 msgstr "Seleccione la sala de la sesión"
 
-#: src/modules/schedule/ui/settingui.py:123
+#: src/modules/schedule/ui/settingui.py:126
 msgctxt "ui:schedule_config|menu:channels|placeholder"
 msgid "Select Session Channels"
 msgstr "Seleccionar canales de sesión"
 
-#: src/modules/schedule/ui/settingui.py:137
+#: src/modules/schedule/ui/settingui.py:140
 msgctxt "ui:schedule_config|button:page1|label"
 msgid "Page 2"
 msgstr "Página 2"
 
-#: src/modules/schedule/ui/settingui.py:152
+#: src/modules/schedule/ui/settingui.py:155
 msgctxt "ui:schedule_config|button:page2|label"
 msgid "Page 3"
 msgstr "Página 3"
 
-#: src/modules/schedule/ui/settingui.py:169
+#: src/modules/schedule/ui/settingui.py:173
 msgctxt "ui:schedule_config|menu:blacklist_role|placeholder"
 msgid "Select Blacklist Role"
 msgstr "Seleccionar rol de lista negra"
 
-#: src/modules/schedule/ui/settingui.py:177
+#: src/modules/schedule/ui/settingui.py:181
 msgctxt "ui:schedule_config|embed|title"
 msgid "Scheduled Session Configuration Panel"
 msgstr "Panel de configuración de sesiones programadas"
 
-#: src/modules/schedule/ui/settingui.py:230
-msgctxt "dash:schedule|title"
-msgid "Scheduled Session Configuration ({commands[configure schedule]})"
-msgstr ""
-"Configuración de sesiones programadas ({commands[configure schedule]})"
-
 #: src/modules/schedule/ui/settingui.py:234
+msgctxt "dash:schedule|title"
+msgid "Scheduled Session Configuration ({commands[admin config schedule]})"
+msgstr ""
+
+#: src/modules/schedule/ui/settingui.py:238
 msgctxt "dash:schedule|dropdown|placeholder"
 msgid "Scheduled Sessions Panel"
 msgstr "Sesiones programadas Panel"
 
-#: src/modules/schedule/ui/settingui.py:251
+#: src/modules/schedule/ui/settingui.py:255
 msgctxt "dash:schedule|section:schedule_channels|name"
-msgid "Scheduled Session Channels ({commands[configure schedule]})"
-msgstr "Canales de sesión programados ({commands[configure schedule]})"
+msgid "Scheduled Session Channels ({commands[admin config schedule]})"
+msgstr ""
 
-#: src/modules/schedule/ui/settingui.py:261
+#: src/modules/schedule/ui/settingui.py:265
 msgctxt "dash:schedule|section:schedule_rewards|name"
-msgid "Scheduled Session Rewards ({commands[configure schedule]})"
-msgstr "Recompensas por sesión programada ({commands[configure schedule]})"
+msgid "Scheduled Session Rewards ({commands[admin config schedule]})"
+msgstr ""
 
-#: src/modules/schedule/ui/settingui.py:271
+#: src/modules/schedule/ui/settingui.py:275
 msgctxt "dash:schedule|section:schedule_blacklist|name"
-msgid "Scheduled Session Blacklist ({commands[configure schedule]})"
-msgstr "Lista negra de sesiones programadas ({commands[configure schedule]})"
+msgid "Scheduled Session Blacklist ({commands[admin config schedule]})"
+msgstr ""
 
 #: src/modules/schedule/ui/scheduleui.py:31
 msgctxt "ui:schedule|about"
-msgid "Guide tips here TBD"
-msgstr "Guía de consejos aquí TBD"
+msgid ""
+"**Do you think you can commit to a schedule and stick to it?**\n"
+"**Schedule voice sessions here and get rewarded for keeping yourself accountable!**\n"
+"\n"
+"Use the menu below to book timeslots using LionCoins. If you are active (in the dedicated voice channels) during these times, you will be rewarded, along with a large bonus if everyone who scheduled that slot made it!\n"
+"Beware though, if you fail to make it, all your booked sessions will be cancelled with no refund! And if you keep failing to attend your scheduled sessions, you may be forbidden from booking them in future.\n"
+"\n"
+"When your scheduled session starts, you will recieve a ping from the schedule channel, which will have more information about how to attend your session.\n"
+"If you discover you can't make your scheduled session, please be responsible and use this command to cancel or clear your schedule!\n"
+"\n"
+"**Note:** *Make sure your timezone is set correctly (with `/my timezone`), or the times I tell might not make sense!*"
+msgstr ""
 
-#: src/modules/schedule/ui/scheduleui.py:116
+#: src/modules/schedule/ui/scheduleui.py:130
 msgctxt "ui:schedule|button:clear|error:nothing"
 msgid "No upcoming sessions to cancel! Your schedule is already clear."
 msgstr "No tiene que cancelar ninguna sesión. Su agenda ya está despejada."
 
-#: src/modules/schedule/ui/scheduleui.py:129
+#: src/modules/schedule/ui/scheduleui.py:143
 msgctxt "ui:schedule|button:clear|success"
 msgid "Successfully cancelled and refunded your upcoming scheduled sessions."
 msgstr "Cancelado con éxito y reembolsado sus próximas sesiones programadas."
 
-#: src/modules/schedule/ui/scheduleui.py:142
+#: src/modules/schedule/ui/scheduleui.py:156
 msgctxt "ui:schedule|button:clear|label"
 msgid "Clear Schedule"
 msgstr "Despejar Calendario "
 
-#: src/modules/schedule/ui/scheduleui.py:158
+#: src/modules/schedule/ui/scheduleui.py:172
 msgctxt "ui:schedule|button:about|label"
 msgid "About Schedule"
 msgstr "Sobre el horario"
 
-#: src/modules/schedule/ui/scheduleui.py:184
+#: src/modules/schedule/ui/scheduleui.py:198
 msgctxt "ui:schedule|menu:booking|error:current_slot"
 msgid "You cannot schedule a currently running session!"
 msgstr "No se puede programar una sesión en curso."
 
-#: src/modules/schedule/ui/scheduleui.py:191
+#: src/modules/schedule/ui/scheduleui.py:205
 msgctxt "ui:schedule|menu:booking|error:next_slot"
 msgid "Too late! You cannot schedule a session starting in the next minute."
 msgstr ""
 "Demasiado tarde. No puede programar una sesión que comienza en el minuto "
 "siguiente."
 
-#: src/modules/schedule/ui/scheduleui.py:198
+#: src/modules/schedule/ui/scheduleui.py:212
 msgctxt "ui:schedule|menu:booking|error:already_booked"
 msgid "You have already booked one or more of the requested sessions!"
 msgstr "Ya ha reservado una o varias de las sesiones solicitadas."
 
-#: src/modules/schedule/ui/scheduleui.py:211
+#: src/modules/schedule/ui/scheduleui.py:225
 #, possible-python-brace-format
 msgctxt "ui:schedule|menu:booking|error:insufficient_balance"
 msgid ""
@@ -797,7 +806,7 @@ msgstr ""
 "Para reservar `{count}` sesiones programadas se necesitan "
 "{coin}**{required}**, pero sólo tiene {coin}**{balance}**."
 
-#: src/modules/schedule/ui/scheduleui.py:227
+#: src/modules/schedule/ui/scheduleui.py:241
 #, possible-python-brace-format
 msgctxt "ui:schedule|menu:booking|success"
 msgid "Successfully booked your scheduled session at {times}."
@@ -812,34 +821,34 @@ msgstr[2] ""
 "Se han reservado con éxito las siguientes sesiones programadas.\n"
 "{times}"
 
-#: src/modules/schedule/ui/scheduleui.py:250
+#: src/modules/schedule/ui/scheduleui.py:264
 msgctxt "ui:schedule|menu:booking|placeholder:blacklisted"
 msgid "Book Sessions (Cannot book - Blacklisted)"
 msgstr "Book Sessions (No se puede reservar - En la lista negra)"
 
-#: src/modules/schedule/ui/scheduleui.py:258
+#: src/modules/schedule/ui/scheduleui.py:272
 #, possible-python-brace-format
 msgctxt "ui:schedule|menu:booking|placeholder:regular"
 msgid "Book Sessions ({amount} LC)"
 msgstr "Reservar sesiones ({amount} LC)"
 
-#: src/modules/schedule/ui/scheduleui.py:303
+#: src/modules/schedule/ui/scheduleui.py:317
 #, possible-python-brace-format
 msgctxt "ui:schedule|menu:slots|option|format"
 msgid "{day} {time} ({until})"
 msgstr "{day} {time} ({until})"
 
-#: src/modules/schedule/ui/scheduleui.py:307
+#: src/modules/schedule/ui/scheduleui.py:321
 msgctxt "ui:schedule|menu:slots|option|day:today"
 msgid "Today"
 msgstr "Hoy"
 
-#: src/modules/schedule/ui/scheduleui.py:311
+#: src/modules/schedule/ui/scheduleui.py:325
 msgctxt "ui:schedule|menu:slots|option|day:tomorrow"
 msgid "Tomorrow"
 msgstr "Mañana"
 
-#: src/modules/schedule/ui/scheduleui.py:362
+#: src/modules/schedule/ui/scheduleui.py:376
 msgctxt "ui:schedule|menu:cancel|error:current_slot"
 msgid ""
 "You cannot cancel a currently running *scheduled* session! Please attend it "
@@ -848,7 +857,7 @@ msgstr ""
 "No puede cancelar una sesión *programada* en curso. Por favor, asista si es "
 "posible."
 
-#: src/modules/schedule/ui/scheduleui.py:368
+#: src/modules/schedule/ui/scheduleui.py:382
 msgctxt "ui:schedule|menu:cancel|error:too_late"
 msgid ""
 "Too late! You cannot cancel a scheduled session within a minute of it "
@@ -857,12 +866,12 @@ msgstr ""
 "Demasiado tarde! No puede cancelar una sesión programada a menos de un "
 "minuto de su inicio. Por favor, asista si es posible."
 
-#: src/modules/schedule/ui/scheduleui.py:385
+#: src/modules/schedule/ui/scheduleui.py:399
 msgctxt "ui:schedule|menu:cancel|error:already_cancelled"
 msgid "The selected bookings no longer exist! Nothing to cancel."
 msgstr "Las reservas seleccionadas ya no existen. No hay nada que cancelar."
 
-#: src/modules/schedule/ui/scheduleui.py:395
+#: src/modules/schedule/ui/scheduleui.py:409
 #, possible-python-brace-format
 msgctxt "ui:schedule|menu:cancel|success"
 msgid ""
@@ -881,32 +890,32 @@ msgstr[2] ""
 "Canceladas y reembolsadas con éxito sus reservas de sesiones programadas:\n"
 "{times}."
 
-#: src/modules/schedule/ui/scheduleui.py:416
+#: src/modules/schedule/ui/scheduleui.py:430
 msgctxt "ui:schedule|menu:cancel|placeholder"
 msgid "Cancel booked sessions"
 msgstr "Cancelar sesiones reservadas"
 
-#: src/modules/schedule/ui/scheduleui.py:438
+#: src/modules/schedule/ui/scheduleui.py:452
 msgctxt "ui:schedule|embed|author"
 msgid "Your Scheduled Sessions and Past Statistics"
 msgstr "Sesiones programadas y estadísticas anteriores"
 
-#: src/modules/schedule/ui/scheduleui.py:450
+#: src/modules/schedule/ui/scheduleui.py:464
 msgctxt "ui:schedule|embed|field:stats|field:recent"
 msgid "Recent"
 msgstr "Reciente"
 
-#: src/modules/schedule/ui/scheduleui.py:457
+#: src/modules/schedule/ui/scheduleui.py:471
 msgctxt "ui:schedule|embed|field:stats|field:alltime"
 msgid "All Time"
 msgstr "De todos los tiempos"
 
-#: src/modules/schedule/ui/scheduleui.py:463
+#: src/modules/schedule/ui/scheduleui.py:477
 msgctxt "ui:schedule|embed|field:stats|field:streak"
 msgid "Streak"
 msgstr "Racha"
 
-#: src/modules/schedule/ui/scheduleui.py:468
+#: src/modules/schedule/ui/scheduleui.py:482
 #, possible-python-brace-format
 msgctxt "ui:schedule|embed|field:stats|field:streak|value:zero"
 msgid "One session attended! Keep it up!"
@@ -915,27 +924,27 @@ msgstr[0] "¡Una sesión atendida! ¡Sigue así!"
 msgstr[1] "¡**{streak}** sesiones asistidas seguidas! ¡Buen trabajo!"
 msgstr[2] "¡**{streak}** sesiones asistidas seguidas! ¡Buen trabajo!"
 
-#: src/modules/schedule/ui/scheduleui.py:475
+#: src/modules/schedule/ui/scheduleui.py:489
 msgctxt "ui:schedule|embed|field:stats|field:streak|value:positive"
 msgid "No streak yet!"
 msgstr "¡Aún no hay racha!"
 
-#: src/modules/schedule/ui/scheduleui.py:483
+#: src/modules/schedule/ui/scheduleui.py:497
 msgctxt "ui:schedule|embed|field:stats|name"
 msgid "Session Statistics"
 msgstr "Estadísticas de la sesión"
 
-#: src/modules/schedule/ui/scheduleui.py:502
+#: src/modules/schedule/ui/scheduleui.py:516
 msgctxt "ui:schedule|embed|field:upcoming|name"
 msgid "Upcoming Sessions"
 msgstr "Próximas sesiones"
 
-#: src/modules/schedule/ui/scheduleui.py:506
+#: src/modules/schedule/ui/scheduleui.py:520
 msgctxt "ui:schedule|embed|field:upcoming|value:empty"
 msgid "No sessions scheduled yet!"
 msgstr "Aún no hay sesiones programadas."
 
-#: src/modules/schedule/ui/scheduleui.py:520
+#: src/modules/schedule/ui/scheduleui.py:534
 #, possible-python-brace-format
 msgctxt "ui:schedule|embed|stats_format"
 msgid ""
@@ -947,13 +956,13 @@ msgstr ""
 "**{percent}%** índice de asistencia.\n"
 "**{average}** tiempo medio de asistencia."
 
-#: src/modules/schedule/ui/scheduleui.py:534
+#: src/modules/schedule/ui/scheduleui.py:548
 #, possible-python-brace-format
 msgctxt "ui:schedule|booking_format:short"
 msgid "`{until}` | {start} - {end}"
 msgstr "`{until}` Yo {start} - {end}"
 
-#: src/modules/schedule/ui/scheduleui.py:538
+#: src/modules/schedule/ui/scheduleui.py:552
 #, possible-python-brace-format
 msgctxt "ui:schedule|booking_format:long"
 msgid "> `{until}` | {start} - {end}"
