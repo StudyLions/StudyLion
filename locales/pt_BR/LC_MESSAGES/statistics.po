@@ -65,7 +65,7 @@ msgstr "Estatísticas semanais, e mensais, das suas atividades recentes."
 #: src/modules/statistics/cog.py:122
 msgctxt "cmd:leaderboard"
 msgid "leaderboard"
-msgstr "Classificação"
+msgstr "classificação"
 
 #: src/modules/statistics/cog.py:125
 msgctxt "cmd:leaderboard|desc"
