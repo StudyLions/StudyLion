@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-24 12:21+0300\n"
+"POT-Creation-Date: 2023-10-15 15:58+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Ari Horesh, 2023\n"
 "Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
@@ -21,6 +21,79 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: he_IL\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
+
+#: src/core/lion_guild.py:31
+msgctxt "eventlog|field:start|name"
+msgid "Start"
+msgstr ""
+
+#: src/core/lion_guild.py:36
+msgctxt "eventlog|field:expiry|name"
+msgid "Expires"
+msgstr ""
+
+#: src/core/lion_guild.py:41
+msgctxt "eventlog|field:roles_given|name"
+msgid "Roles Given"
+msgstr ""
+
+#: src/core/lion_guild.py:46
+msgctxt "eventlog|field:roles_given|name"
+msgid "Roles Taken"
+msgstr ""
+
+#: src/core/lion_guild.py:51
+msgctxt "eventlog|field:coins_earned|name"
+msgid "Coins Earned"
+msgstr ""
+
+#: src/core/lion_guild.py:56
+msgctxt "eventlog|field:price|name"
+msgid "Price"
+msgstr ""
+
+#: src/core/lion_guild.py:61
+msgctxt "eventlog|field:balance|name"
+msgid "Balance"
+msgstr ""
+
+#: src/core/lion_guild.py:66
+msgctxt "eventlog|field:refund|name"
+msgid "Coins Refunded"
+msgstr ""
+
+#: src/core/lion_guild.py:71
+msgctxt "eventlog|field:memberid|name"
+msgid "Member"
+msgstr ""
+
+#: src/core/lion_guild.py:76
+msgctxt "eventlog|field:channelid|name"
+msgid "Channel"
+msgstr ""
+
+#: src/core/lion_guild.py:208
+msgctxt "eventlog|error:manage_webhooks"
+msgid ""
+"This channel is configured as an event log, but I am missing the 'Manage "
+"Webhooks' permission here."
+msgstr ""
+
+#: src/core/lion_guild.py:220
+#, possible-python-brace-format
+msgctxt "eventlog|create|name"
+msgid "{bot_name} Event Log"
+msgstr ""
+
+#: src/core/lion_guild.py:224
+msgctxt "eventlog|create|audit_reason"
+msgid "Creating event log webhook"
+msgstr ""
+
+#: src/core/lion_guild.py:342
+msgctxt "eventlog|field:errors|name"
+msgid "Errors"
+msgstr ""
 
 #: src/core/setting_types.py:31
 msgctxt "settype:coin|accepts"

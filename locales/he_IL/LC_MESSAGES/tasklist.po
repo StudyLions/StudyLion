@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-13 08:47+0300\n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Ari Horesh, 2023\n"
 "Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
@@ -83,101 +83,101 @@ msgctxt "cmd:tasklist|desc"
 msgid "Open your tasklist."
 msgstr "פתח את רשימת המטלות שלך"
 
-#: src/modules/tasklist/cog.py:270
+#: src/modules/tasklist/cog.py:271
 msgctxt "group:tasks"
 msgid "tasks"
 msgstr "מטלות"
 
-#: src/modules/tasklist/cog.py:271
+#: src/modules/tasklist/cog.py:272
 msgctxt "group:tasks|desc"
 msgid "Base command group for tasklist commands."
 msgstr "הפקודה הבסיסית לקבוצת רשימת המטלות"
 
-#: src/modules/tasklist/cog.py:293
+#: src/modules/tasklist/cog.py:295
 msgctxt "argtype:taskid|error:no_tasks"
 msgid "Tasklist empty! No matching tasks."
 msgstr "רשימת המטלות ריקה! אין מטלות מתאימות."
 
-#: src/modules/tasklist/cog.py:330
+#: src/modules/tasklist/cog.py:332
 msgctxt "argtype:taskid|match:all"
 msgid "All tasks"
 msgstr "כל המטלות"
 
-#: src/modules/tasklist/cog.py:348
+#: src/modules/tasklist/cog.py:350
 #, possible-python-brace-format
 msgctxt "argtype:taskid|error:parse_multi"
 msgid "(Warning: {error})"
 msgstr "(אזהרה: {error})"
 
-#: src/modules/tasklist/cog.py:382
+#: src/modules/tasklist/cog.py:384
 #, possible-python-brace-format
 msgctxt "argtype:taskid|error:no_matching"
 msgid "No tasks matching '{partial}'!"
 msgstr "אין מטלות שמתאימות ל'{partial}'!"
 
-#: src/modules/tasklist/cog.py:402
+#: src/modules/tasklist/cog.py:404
 msgctxt "cmd:tasks_new"
 msgid "new"
 msgstr "חדש"
 
-#: src/modules/tasklist/cog.py:405
+#: src/modules/tasklist/cog.py:407
 msgctxt "cmd:tasks_new|desc"
 msgid "Add a new task to your tasklist."
 msgstr "הוסף מטלה לרשימת המטלות שלך"
 
-#: src/modules/tasklist/cog.py:409
+#: src/modules/tasklist/cog.py:411
 msgctxt "cmd:tasks_new|param:content"
 msgid "task"
 msgstr "מטלה"
 
-#: src/modules/tasklist/cog.py:410
+#: src/modules/tasklist/cog.py:412
 msgctxt "cmd:tasks_new|param:parent"
 msgid "parent"
 msgstr "הורה"
 
-#: src/modules/tasklist/cog.py:413
+#: src/modules/tasklist/cog.py:415
 msgctxt "cmd:tasks_new|param:content|desc"
 msgid "Content of your new task."
 msgstr "התוכן של המטלה החדשה שלך"
 
-#: src/modules/tasklist/cog.py:414
+#: src/modules/tasklist/cog.py:416
 msgctxt "cmd:tasks_new|param:parent"
 msgid "Parent of this task."
 msgstr "ההורה של המטלה הזו."
 
-#: src/modules/tasklist/cog.py:434
+#: src/modules/tasklist/cog.py:436
 #, possible-python-brace-format
 msgctxt "cmd:tasks_new|error:parse_parent"
 msgid "Could not find parent task number `{input}` in your tasklist."
 msgstr "לא הצלחתי למצוא את ההורה מספר `{input}` ברשימה שלך."
 
-#: src/modules/tasklist/cog.py:449
+#: src/modules/tasklist/cog.py:451
 #, possible-python-brace-format
 msgctxt "cmd:tasks_new|resp:success"
 msgid "{tick} Created task `{label}`."
 msgstr "{tick} מטלה שנוצרה `{label}`."
 
-#: src/modules/tasklist/cog.py:461
+#: src/modules/tasklist/cog.py:463
 msgctxt "cmd:tasks_upload"
 msgid "upload"
 msgstr "העלה"
 
-#: src/modules/tasklist/cog.py:464
+#: src/modules/tasklist/cog.py:466
 msgctxt "cmd:tasks_upload|desc"
 msgid "Upload a list of tasks to append to or replace your tasklist."
 msgstr "העלה רשימת משימות כדי להרחיב או להחליף את הרשימה שלך."
 
-#: src/modules/tasklist/cog.py:468
+#: src/modules/tasklist/cog.py:470
 msgctxt "cmd:tasks_upload|param:tasklist"
 msgid "tasklist"
 msgstr "רשימת מטלות"
 
-#: src/modules/tasklist/cog.py:469
+#: src/modules/tasklist/cog.py:471
 msgctxt "cmd:tasks_upload|param:append"
 msgid "append"
 msgstr "הרחב"
 
-#: src/modules/tasklist/cog.py:474
+#: src/modules/tasklist/cog.py:476
 msgctxt "cmd:tasks_upload|param:tasklist|desc"
 msgid ""
 "Text file containing a (standard markdown formatted) checklist of tasks to "
@@ -185,126 +185,126 @@ msgid ""
 msgstr ""
 "מסמך טקסט המכיל רשימת מטלות כדי להוסיף או להחליף את הרשימה המקורית שלך."
 
-#: src/modules/tasklist/cog.py:478
+#: src/modules/tasklist/cog.py:480
 msgctxt "cmd:tasks_upload|param:append|desc"
 msgid ""
 "Whether to append the given tasks or replace your entire tasklist. Defaults "
 "to True."
 msgstr "האם להחליף או להרחיב את הרשימה הנוכחית. ברירית המחדל היא True."
 
-#: src/modules/tasklist/cog.py:494
+#: src/modules/tasklist/cog.py:496
 msgctxt "cmd:tasks_upload|error:not_text"
 msgid "The attached tasklist must be a text file!"
 msgstr "הרשימה שהוספת חייבת להיות מסמך טקסט!"
 
-#: src/modules/tasklist/cog.py:502
+#: src/modules/tasklist/cog.py:504
 msgctxt "cmd:tasks_upload|error:too_large"
 msgid "The attached tasklist was too large!"
 msgstr "הקובץ שהוספת גדול מידי."
 
-#: src/modules/tasklist/cog.py:513
+#: src/modules/tasklist/cog.py:515
 msgctxt "cmd:tasks_upload|error:too_many_lines"
 msgid ""
 "Too many tasks! Refusing to process a tasklist with more than `1000` lines."
 msgstr "יותר מידי משימות. אני לא יכול לקבל מסמך שיש בו יותר מאלף שורות."
 
-#: src/modules/tasklist/cog.py:519
+#: src/modules/tasklist/cog.py:521
 msgctxt "cmd:tasks_upload|error:decoding"
 msgid ""
 "Could not decode attached tasklist. Please make sure it is saved with the "
 "`UTF-8` encoding."
 msgstr "אני לא הצלחתי לקרוא את המסמך. אתה בטוח ששמת אותו בתור קובץ `UTF-8`?"
 
-#: src/modules/tasklist/cog.py:566
+#: src/modules/tasklist/cog.py:568
 #, possible-python-brace-format
 msgctxt "cmd:tasks_upload|resp:success"
 msgid "{tick} Updated your tasklist."
 msgstr "{tick} הרשימה שלך עודכנה בהצלחה."
 
-#: src/modules/tasklist/cog.py:578
+#: src/modules/tasklist/cog.py:580
 msgctxt "cmd:tasks_edit"
 msgid "edit"
 msgstr "ערוך"
 
-#: src/modules/tasklist/cog.py:581
+#: src/modules/tasklist/cog.py:583
 msgctxt "cmd:tasks_edit|desc"
 msgid "Edit a task in your tasklist."
 msgstr "ערוך מטלה מהרשימה שלך."
 
-#: src/modules/tasklist/cog.py:585
+#: src/modules/tasklist/cog.py:587
 msgctxt "cmd:tasks_edit|param:taskstr"
 msgid "task"
 msgstr "מטלה"
 
-#: src/modules/tasklist/cog.py:586
+#: src/modules/tasklist/cog.py:588
 msgctxt "cmd:tasks_edit|param:new_content"
 msgid "new_task"
 msgstr "מטלה_חדשה"
 
-#: src/modules/tasklist/cog.py:587
+#: src/modules/tasklist/cog.py:589
 msgctxt "cmd:tasks_edit|param:new_parent"
 msgid "new_parent"
 msgstr "הורה_חדשה"
 
-#: src/modules/tasklist/cog.py:590
+#: src/modules/tasklist/cog.py:592
 msgctxt "cmd:tasks_edit|param:taskstr|desc"
 msgid "Which task do you want to update?"
 msgstr "איזו מטלה אתם רוצים לעדכן?"
 
-#: src/modules/tasklist/cog.py:591
+#: src/modules/tasklist/cog.py:593
 msgctxt "cmd:tasks_edit|param:new_content|desc"
 msgid "What do you want to change the task to?"
 msgstr "למה אתם רוצים לשנות את המטלה?"
 
-#: src/modules/tasklist/cog.py:592
+#: src/modules/tasklist/cog.py:594
 msgctxt "cmd:tasks_edit|param:new_parent|desc"
 msgid "Which task do you want to be the new parent?"
 msgstr "איזו מטלה אתם רוצים לקבוע בתור ההורה החדש?"
 
-#: src/modules/tasklist/cog.py:611
+#: src/modules/tasklist/cog.py:613
 #, possible-python-brace-format
 msgctxt "cmd:tasks_edit|error:parse_taskstr"
 msgid "Could not find target task number `{input}` in your tasklist."
 msgstr "לא הצלחתי למצוא את המטלה מספר `{input}` ברשימה שלך."
 
-#: src/modules/tasklist/cog.py:627
+#: src/modules/tasklist/cog.py:629
 #, possible-python-brace-format
 msgctxt "cmd:tasks_edit|error:parse_parent"
 msgid "Could not find new parent task number `{input}` in your tasklist."
 msgstr "לא הצלחתי למצוא את המטלת הורה מספר `{input}` ברשימה שלך."
 
-#: src/modules/tasklist/cog.py:646
+#: src/modules/tasklist/cog.py:648
 #, possible-python-brace-format
 msgctxt "cmd:tasks_edit|resp:success|desc"
 msgid "{tick} Task `{label}` updated."
 msgstr "{tick} המטלה `{label}` עודכנה בהצלחה."
 
-#: src/modules/tasklist/cog.py:668
+#: src/modules/tasklist/cog.py:670
 msgctxt "ui:tasklist_single_editor|title"
 msgid "Edit Task"
 msgstr "ערוך מטלה"
 
-#: src/modules/tasklist/cog.py:683
+#: src/modules/tasklist/cog.py:685
 msgctxt "cmd:tasks_clear"
 msgid "clear"
 msgstr "נקה"
 
-#: src/modules/tasklist/cog.py:684
+#: src/modules/tasklist/cog.py:686
 msgctxt "cmd:tasks_clear|desc"
 msgid "Clear your tasklist."
 msgstr "נקה את רשימת המטלות."
 
-#: src/modules/tasklist/cog.py:694
+#: src/modules/tasklist/cog.py:696
 msgctxt "cmd:tasks_clear|resp:success"
 msgid "Your tasklist has been cleared."
 msgstr "רשימת המטלות שלך נוקתה בהצלחה."
 
-#: src/modules/tasklist/cog.py:702
+#: src/modules/tasklist/cog.py:704
 msgctxt "cmd:tasks_remove"
 msgid "remove"
 msgstr "הסר"
 
-#: src/modules/tasklist/cog.py:705
+#: src/modules/tasklist/cog.py:707
 msgctxt "cmd:tasks_remove|desc"
 msgid ""
 "Remove tasks matching all the provided conditions. (E.g. remove tasks "
@@ -312,73 +312,73 @@ msgid ""
 msgstr ""
 "הסר מטלות שמתאימות לתנאים שניתנו לי (לדוגמא מטלות שהושלמו לפני היום וכו')"
 
-#: src/modules/tasklist/cog.py:709
+#: src/modules/tasklist/cog.py:711
 msgctxt "cmd:tasks_remove|param:taskidstr"
 msgid "tasks"
 msgstr "מטלות"
 
-#: src/modules/tasklist/cog.py:710
+#: src/modules/tasklist/cog.py:712
 msgctxt "cmd:tasks_remove|param:created_before"
 msgid "created_before"
 msgstr "הושלמו_לפני"
 
-#: src/modules/tasklist/cog.py:711
+#: src/modules/tasklist/cog.py:713
 msgctxt "cmd:tasks_remove|param:updated_before"
 msgid "updated_before"
 msgstr "עודכנו_לפני"
 
-#: src/modules/tasklist/cog.py:712
+#: src/modules/tasklist/cog.py:714
 msgctxt "cmd:tasks_remove|param:completed"
 msgid "completed"
 msgstr "הושלמו"
 
-#: src/modules/tasklist/cog.py:713
+#: src/modules/tasklist/cog.py:715
 msgctxt "cmd:tasks_remove|param:cascade"
 msgid "cascade"
 msgstr "מפל"
 
-#: src/modules/tasklist/cog.py:718
+#: src/modules/tasklist/cog.py:720
 msgctxt "cmd:tasks_remove|param:taskidstr|desc"
 msgid ""
 "List of task numbers or ranges to remove (e.g. 1, 2, 5-7, 8.1-3, 9-), or `-`"
 " to remove all."
 msgstr "טווח של רשימת מטלות להסרה (לדוגמא 1-15, 8.1.1.1-20 וכו')."
 
-#: src/modules/tasklist/cog.py:722
+#: src/modules/tasklist/cog.py:724
 msgctxt "cmd:tasks_remove|param:created_before|desc"
 msgid "Only delete tasks created before the selected time."
 msgstr "הסר רק משימות שנוספט לפני זמן ספציפי."
 
-#: src/modules/tasklist/cog.py:726
+#: src/modules/tasklist/cog.py:728
 msgctxt "cmd:tasks_remove|param:updated_before|desc"
 msgid ""
 "Only deleted tasks update (i.e. completed or edited) before the selected "
 "time."
 msgstr "מחק רק משימות שעודכנו (הושלמו או נערכו) לפני זמן ספציפי."
 
-#: src/modules/tasklist/cog.py:730
+#: src/modules/tasklist/cog.py:732
 msgctxt "cmd:tasks_remove|param:completed"
 msgid "Only delete tasks which are (not) complete."
 msgstr "מחק רק משימות שלא הושלמו."
 
-#: src/modules/tasklist/cog.py:734
+#: src/modules/tasklist/cog.py:736
 msgctxt "cmd:tasks_remove|param:cascade"
 msgid "Whether to recursively remove subtasks of removed tasks."
 msgstr "האם למחוק סאב-מטלות מאותה המטלה שנמחקה."
 
-#: src/modules/tasklist/cog.py:766 src/modules/tasklist/cog.py:861
-#: src/modules/tasklist/cog.py:936
+#: src/modules/tasklist/cog.py:768 src/modules/tasklist/cog.py:863
+#: src/modules/tasklist/cog.py:938
 #, possible-python-brace-format
 msgctxt "cmd:tasks_remove_cmd|error:no_matching"
 msgid "No tasks on your tasklist match `{input}`"
 msgstr "שום מטלה ברשימה שלך תואמת ל  `{input}`"
 
-#: src/modules/tasklist/cog.py:790
+#: src/modules/tasklist/cog.py:792
 msgctxt "cmd:tasks_remove_cmd|error:no_matching"
 msgid "No tasks on your tasklist matching all the given conditions!"
 msgstr "שום מטלה ברשימה שלך מתאימה לתנאים שהצגת."
 
-#: src/modules/tasklist/cog.py:803
+#: src/modules/tasklist/cog.py:805
 #, possible-python-brace-format
 msgctxt "cmd:tasks_remove|resp:success"
 msgid "{tick} Deleted task `{label}`"
@@ -388,39 +388,39 @@ msgstr[1] "{tick} שתי מטלות נמחקו מהרשימה שלך."
 msgstr[2] "{tick} הרבה מרשימות נמחקו מהרשימה שלך."
 msgstr[3] "{tick}  `{count}` מטלות נמחקו מהרשימה שלך."
 
-#: src/modules/tasklist/cog.py:821
+#: src/modules/tasklist/cog.py:823
 msgctxt "cmd:tasks_tick"
 msgid "tick"
 msgstr "סימון"
 
-#: src/modules/tasklist/cog.py:822
+#: src/modules/tasklist/cog.py:824
 msgctxt "cmd:tasks_tick|desc"
 msgid "Mark the given tasks as completed."
 msgstr "סמן את המטלות שסומנו שמושלמות."
 
-#: src/modules/tasklist/cog.py:825
+#: src/modules/tasklist/cog.py:827
 msgctxt "cmd:tasks_tick|param:taskidstr"
 msgid "tasks"
 msgstr "מטלות"
 
-#: src/modules/tasklist/cog.py:826
+#: src/modules/tasklist/cog.py:828
 msgctxt "cmd:tasks_tick|param:cascade"
 msgid "cascade"
 msgstr "מפל"
 
-#: src/modules/tasklist/cog.py:831
+#: src/modules/tasklist/cog.py:833
 msgctxt "cmd:tasks_tick|param:taskidstr|desc"
 msgid ""
 "List of task numbers or ranges to tick (e.g. 1, 2, 5-7, 8.1-3, 9-) or '-' to"
 " tick all."
 msgstr "טווח של רשימת מטלות להשלמה (לדוגמא 1-15, 8.1.1.1-20 וכו')."
 
-#: src/modules/tasklist/cog.py:835
+#: src/modules/tasklist/cog.py:837
 msgctxt "cmd:tasks_tick|param:cascade|desc"
 msgid "Whether to also mark all subtasks as complete."
 msgstr "האם לסמן גם את כל הסאב-מטלות כשמושלמות."
 
-#: src/modules/tasklist/cog.py:879
+#: src/modules/tasklist/cog.py:881
 #, possible-python-brace-format
 msgctxt "cmd:tasks_tick|resp:success"
 msgid "{tick} Marked `{label}` as complete."
@@ -430,39 +430,39 @@ msgstr[1] "{tick} שתי מטלות סומנו שמושלמות מהרשימה �
 msgstr[2] "{tick} הרבה מרשימות סומנו שמושלמות ברשימה שלך."
 msgstr[3] "{tick}  `{count}` מטלות סומנו שמושלמות מהרשימה שלך."
 
-#: src/modules/tasklist/cog.py:897
+#: src/modules/tasklist/cog.py:899
 msgctxt "cmd:tasks_untick"
 msgid "untick"
 msgstr "הסר סימון"
 
-#: src/modules/tasklist/cog.py:898
+#: src/modules/tasklist/cog.py:900
 msgctxt "cmd:tasks_untick|desc"
 msgid "Mark the given tasks as incomplete."
 msgstr "סמן את המטלות שסומנו כלא מושלמות."
 
-#: src/modules/tasklist/cog.py:901
+#: src/modules/tasklist/cog.py:903
 msgctxt "cmd:tasks_untick|param:taskidstr"
 msgid "taskids"
 msgstr "תז מטלות"
 
-#: src/modules/tasklist/cog.py:902
+#: src/modules/tasklist/cog.py:904
 msgctxt "cmd:tasks_untick|param:cascade"
 msgid "cascade"
 msgstr "מפל"
 
-#: src/modules/tasklist/cog.py:907
+#: src/modules/tasklist/cog.py:909
 msgctxt "cmd:tasks_untick|param:taskidstr|desc"
 msgid ""
 "List of task numbers or ranges to untick (e.g. 1, 2, 5-7, 8.1-3, 9-) or '-' "
 "to untick all."
 msgstr "טווח של רשימת מטלות להסרת ההשלמה (לדוגמא 1-15, 8.1.1.1-20 וכו')."
 
-#: src/modules/tasklist/cog.py:911
+#: src/modules/tasklist/cog.py:913
 msgctxt "cmd:tasks_untick|param:cascade|desc"
 msgid "Whether to also mark all subtasks as incomplete."
 msgstr "האם לסמן גם את כל הסאב-מטלות כלא מושלמות."
 
-#: src/modules/tasklist/cog.py:952
+#: src/modules/tasklist/cog.py:954
 #, possible-python-brace-format
 msgctxt "cmd:tasks_untick|resp:success"
 msgid "{tick} Marked `{label}` as incomplete."
@@ -472,27 +472,27 @@ msgstr[1] "{tick} שתי מטלות סומנו כלא מושלמות מהרשי�
 msgstr[2] "{tick} הרבה מרשימות סומנו כלא מושלמות ברשימה שלך."
 msgstr[3] "{tick}  `{count}` מטלות סומנו כלא מושלמות מהרשימה שלך."
 
-#: src/modules/tasklist/cog.py:976
+#: src/modules/tasklist/cog.py:978
 msgctxt "cmd:configure_tasklist"
 msgid "tasklist"
 msgstr "רשימת מטלות"
 
-#: src/modules/tasklist/cog.py:977
+#: src/modules/tasklist/cog.py:979
 msgctxt "cmd:configure_tasklist|desc"
 msgid "Tasklist configuration panel"
 msgstr "תפריט הגדרות רשימת מטלות"
 
-#: src/modules/tasklist/cog.py:980
+#: src/modules/tasklist/cog.py:982
 msgctxt "cmd:configure_tasklist|param:reward"
 msgid "reward"
 msgstr "פרס"
 
-#: src/modules/tasklist/cog.py:981
+#: src/modules/tasklist/cog.py:983
 msgctxt "cmd:configure_tasklist|param:reward_limit"
 msgid "reward_limit"
 msgstr "מגבלת_פרס"
 
-#: src/modules/tasklist/cog.py:1017
+#: src/modules/tasklist/cog.py:1018
 #, possible-python-brace-format
 msgctxt "cmd:configure_tasklist|resp:success|desc"
 msgid ""
@@ -701,52 +701,52 @@ msgstr ""
 "**אין לך מטלות ברשימה**\n"
 "הוסף מטלות עם {cmds[tasks new]}, או באמצעות לחיצה על {new_button}. "
 
-#: src/modules/tasklist/settings.py:33
+#: src/modules/tasklist/settings.py:35
 msgctxt "guildset:task_reward"
 msgid "task_reward"
 msgstr "פרס_מטלה"
 
-#: src/modules/tasklist/settings.py:36
+#: src/modules/tasklist/settings.py:38
 msgctxt "guildset:task_reward|desc"
 msgid "Number of LionCoins given for each completed task."
 msgstr "מספר מטבעות שאתן למשתמש עבור כל מטלה שהושלמה."
 
-#: src/modules/tasklist/settings.py:40
+#: src/modules/tasklist/settings.py:42
 msgctxt "guildset:task_reward|long_desc"
 msgid ""
 "The number of coins members will be rewarded each time they complete a task "
 "on their tasklist."
 msgstr "מספר המטבעות שמשתמשים יקבלו כל פעם שהם משלימים מטלה מהרשימה שלהם."
 
-#: src/modules/tasklist/settings.py:44
+#: src/modules/tasklist/settings.py:46
 msgctxt "guildset:task_reward|accepts"
 msgid "The number of LionCoins to reward per task."
 msgstr "מספר המטבעות לתת לכל מטלה."
 
-#: src/modules/tasklist/settings.py:56
+#: src/modules/tasklist/settings.py:58
 #, possible-python-brace-format
 msgctxt "guildset:task_reward|response"
 msgid ""
 "Members will now be rewarded {coin}**{amount}** for each completed task."
 msgstr "המשתמשים של השרת יקבלו {coin}**{amount}** על כל מטלה שהם ישלימו."
 
-#: src/modules/tasklist/settings.py:65
+#: src/modules/tasklist/settings.py:67
 #, possible-python-brace-format
 msgctxt "guildset:task_reward|formatted"
 msgid "{coin}**{amount}** per task."
 msgstr "{coin}**{amount}** עבור כל מטלה."
 
-#: src/modules/tasklist/settings.py:73
+#: src/modules/tasklist/settings.py:76
 msgctxt "guildset:task_reward_limit"
 msgid "task_reward_limit"
 msgstr "מגבלת_מטבעות_לכל_מטלה"
 
-#: src/modules/tasklist/settings.py:76
+#: src/modules/tasklist/settings.py:79
 msgctxt "guildset:task_reward_limit|desc"
 msgid "Maximum number of task rewards given per 24h."
 msgstr "מספר המטלות המקסימלי שזכאי לפרס ביממה."
 
-#: src/modules/tasklist/settings.py:80
+#: src/modules/tasklist/settings.py:83
 msgctxt "guildset:task_reward_limit|long_desc"
 msgid ""
 "Maximum number of times in each 24h period that members will be rewarded for"
@@ -755,12 +755,12 @@ msgstr ""
 "מספר הפעמים המקסימלי כל יממה שמשתמשים יוכלו לקבל פרס על כל מטלה שהם ישלימו "
 "בשרת."
 
-#: src/modules/tasklist/settings.py:85
+#: src/modules/tasklist/settings.py:88
 msgctxt "guildset:task_reward_limit|accepts"
 msgid "The maximum number of tasks to reward LC for per 24h."
 msgstr "המספר המקסימלי של משימות שיקבלו מטבעות כל 24 שעות."
 
-#: src/modules/tasklist/settings.py:97
+#: src/modules/tasklist/settings.py:100
 #, possible-python-brace-format
 msgctxt "guildset:task_reward_limit|response"
 msgid ""
@@ -768,23 +768,23 @@ msgid ""
 "per 24h."
 msgstr "המשתמשים יקבלו מעכשיו פרס רק **{amount}** פעמים ביממה."
 
-#: src/modules/tasklist/settings.py:106
+#: src/modules/tasklist/settings.py:109
 #, possible-python-brace-format
 msgctxt "guildset:task_reward_limit|formatted"
 msgid "`{number}` per 24 hours."
 msgstr "`{number}` ביממה."
 
-#: src/modules/tasklist/settings.py:113
+#: src/modules/tasklist/settings.py:117
 msgctxt "guildset:tasklist_channels"
 msgid "tasklist_channels"
 msgstr "ערוצי_מטלות"
 
-#: src/modules/tasklist/settings.py:116
+#: src/modules/tasklist/settings.py:120
 msgctxt "guildset:tasklist_channels|desc"
 msgid "Channels in which to publicly display member tasklists."
 msgstr "ערוצים ציבוריים שבהם משתמשים יכולים להשתמש ברשימות שלהם."
 
-#: src/modules/tasklist/settings.py:120
+#: src/modules/tasklist/settings.py:124
 #, possible-python-brace-format
 msgctxt "guildset:tasklist_channels|long_desc"
 msgid ""
@@ -801,12 +801,12 @@ msgstr ""
 "להוסיף את הקטגוריה של החדרים הפרטיים ואז כולם יוכלו לשתף רשימת מטלות אחד עם "
 "השני."
 
-#: src/modules/tasklist/settings.py:127
+#: src/modules/tasklist/settings.py:131
 msgctxt "guildset:tasklist_channels|accepts"
 msgid "Comma separated list of tasklist channel names or ids."
 msgstr "רשימה מופרדת עם פסיקים של הערוצים המוגדרים שערוצי רשימת מטלות."
 
-#: src/modules/tasklist/settings.py:144
+#: src/modules/tasklist/settings.py:148
 #, possible-python-brace-format
 msgctxt "guildset:tasklist_channels|set_response|set"
 msgid ""
@@ -814,42 +814,42 @@ msgid ""
 "{channels}"
 msgstr "רשימת המטלות יהיו ציבוריות בערוצים הבאים: {channels}"
 
-#: src/modules/tasklist/settings.py:149
+#: src/modules/tasklist/settings.py:153
 msgctxt "guildset:tasklist_channels|set_response|unset"
 msgid "Member tasklists will never be publicly displayed."
 msgstr "רשימת המטלות של המשתמשים לעולם לא תהייה ציבורית."
 
-#: src/modules/tasklist/settings.py:158
+#: src/modules/tasklist/settings.py:162
 msgctxt "guildset:tasklist_channels|set_using"
 msgid "Channel selector below."
 msgstr "בחירת ערוצים בתחתית."
 
-#: src/modules/tasklist/settings.py:289
+#: src/modules/tasklist/settings.py:293
 msgctxt "ui:tasklist_config|button:close|label"
 msgid "Close"
 msgstr "סגור"
 
-#: src/modules/tasklist/settings.py:290
+#: src/modules/tasklist/settings.py:294
 msgctxt "ui:tasklist_config|button:reset|label"
 msgid "Reset"
 msgstr "אפס"
 
-#: src/modules/tasklist/settings.py:293
+#: src/modules/tasklist/settings.py:297
 msgctxt "ui:tasklist_config|menu:channels|placeholder"
 msgid "Set Tasklist Channels"
 msgstr "קבע ערוצי מטלות"
 
-#: src/modules/tasklist/settings.py:311
+#: src/modules/tasklist/settings.py:315
 msgctxt "ui:tasklist_config|embed|title"
 msgid "Tasklist Configuration Panel"
 msgstr "תפריט הגדרות רשימת מטלות"
 
-#: src/modules/tasklist/settings.py:320
+#: src/modules/tasklist/settings.py:324
 msgctxt "dash:tasklist|name"
-msgid "Tasklist Configuration ({commands[configure tasklist]})"
-msgstr "תפריט רשימת מטלות ({commands[configure tasklist]})"
+msgid "Tasklist Configuration ({commands[config tasklist]})"
+msgstr ""
 
-#: src/modules/tasklist/settings.py:323
+#: src/modules/tasklist/settings.py:327
 msgctxt "dash:tasklist|dropdown|placeholder"
 msgid "Tasklist Options Panel"
 msgstr "תפריט הגדרות רשימת מטלות"

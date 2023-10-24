@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-24 12:21+0300\n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Ari Horesh, 2023\n"
 "Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
@@ -22,58 +22,93 @@ msgstr ""
 "Language: he_IL\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
 
-#: src/modules/statistics/cog.py:43
+#: src/modules/statistics/cog.py:47
 msgctxt "cmd:me"
 msgid "me"
 msgstr "אני"
 
-#: src/modules/statistics/cog.py:46
+#: src/modules/statistics/cog.py:50
 msgctxt "cmd:me|desc"
-msgid "Display your personal profile and summary statistics."
-msgstr "הצג את הפרופיל האישי שלך וסיכום סטטיסטיקות הפעילות שלך."
+msgid "Edit your personal profile and see your statistics."
+msgstr ""
 
-#: src/modules/statistics/cog.py:56
+#: src/modules/statistics/cog.py:63
+msgctxt "cmd:profile"
+msgid "profile"
+msgstr ""
+
+#: src/modules/statistics/cog.py:66
+msgctxt "cmd:profile|desc"
+msgid "Display the target's profile and statistics summary."
+msgstr ""
+
+#: src/modules/statistics/cog.py:70
+msgctxt "cmd:profile|param:member"
+msgid "member"
+msgstr ""
+
+#: src/modules/statistics/cog.py:74
+msgctxt "cmd:profile|param:member|desc"
+msgid "Member to display profile for."
+msgstr ""
+
+#: src/modules/statistics/cog.py:110
 msgctxt "cmd:stats"
 msgid "stats"
 msgstr "סטטיסטיקות"
 
-#: src/modules/statistics/cog.py:59
+#: src/modules/statistics/cog.py:113
 msgctxt "cmd:stats|desc"
 msgid "Weekly and monthly statistics for your recent activity."
 msgstr "סטטיסטיקות שבועיות וחודשיות של הפעילות האחרונה שלך."
 
-#: src/modules/statistics/cog.py:72
+#: src/modules/statistics/cog.py:131
 msgctxt "cmd:leaderboard"
 msgid "leaderboard"
 msgstr "לוח השגים"
 
-#: src/modules/statistics/cog.py:75
+#: src/modules/statistics/cog.py:134
 msgctxt "cmd:leaderboard|desc"
 msgid "Server leaderboard."
 msgstr "לוח השגים של השרת"
 
-#: src/modules/statistics/cog.py:90
+#: src/modules/statistics/cog.py:149
 #, possible-python-brace-format
 msgctxt "cmd:leaderboard|chunking|desc"
 msgid "Requesting server member list from Discord, please wait {loading}"
 msgstr "מבקש רשימת חברים מדיסקורד, אנא המתן {loading}"
 
-#: src/modules/statistics/cog.py:113
+#: src/modules/statistics/cog.py:170
+msgctxt "cmd:achievements"
+msgid "achievements"
+msgstr ""
+
+#: src/modules/statistics/cog.py:173
+msgctxt "cmd:achievements|desc"
+msgid "View your progress towards the activity achievement awards!"
+msgstr ""
+
+#: src/modules/statistics/cog.py:190
+msgctxt "cmd:achievements|embed:title"
+msgid "Achievements"
+msgstr ""
+
+#: src/modules/statistics/cog.py:208
 msgctxt "cmd:configure_statistics"
 msgid "statistics"
 msgstr "סטטיסטיקות"
 
-#: src/modules/statistics/cog.py:114
+#: src/modules/statistics/cog.py:209
 msgctxt "cmd:configure_statistics|desc"
 msgid "Statistics configuration panel"
 msgstr "תפריט הגדרות סטטיסטיקת פעילות"
 
-#: src/modules/statistics/cog.py:117
+#: src/modules/statistics/cog.py:212
 msgctxt "cmd:configure_statistics|param:season_start"
 msgid "season_start"
 msgstr "התחלת_סשן"
 
-#: src/modules/statistics/cog.py:122
+#: src/modules/statistics/cog.py:217
 msgctxt "cmd:configure_statistics|param:season_start|desc"
 msgid ""
 "Time from which to start counting activity for rank badges and season "
@@ -82,67 +117,152 @@ msgstr ""
 "הזמן שבו אתחיל לספור את הפעילות של האנשים (אנחנו קוראים לזה \"עונה\") (YYYY-"
 "MM-DD)"
 
-#: src/modules/statistics/settings.py:37
+#: src/modules/statistics/achievements.py:77
+msgctxt "achievement|congrats"
+msgid "Congratulations! You have completed this challenge."
+msgstr ""
+
+#: src/modules/statistics/achievements.py:146
+msgctxt "achievement:workout|name"
+msgid "It's about Power"
+msgstr ""
+
+#: src/modules/statistics/achievements.py:150
+msgctxt "achievement:workout|subtext"
+msgid "Workout 50 times"
+msgstr ""
+
+#: src/modules/statistics/achievements.py:170
+msgctxt "achievement:voicehours|name"
+msgid "Dream Big"
+msgstr ""
+
+#: src/modules/statistics/achievements.py:174
+msgctxt "achievement:voicehours|subtext"
+msgid "Study a total of 1000 hours"
+msgstr ""
+
+#: src/modules/statistics/achievements.py:196
+msgctxt "achievement:voicestreak|name"
+msgid "Consistency is Key"
+msgstr ""
+
+#: src/modules/statistics/achievements.py:200
+msgctxt "achievement:voicestreak|subtext"
+msgid "Reach a 100-day voice streak"
+msgstr ""
+
+#: src/modules/statistics/achievements.py:283
+msgctxt "achievement:voting|name"
+msgid "We're a Team"
+msgstr ""
+
+#: src/modules/statistics/achievements.py:287
+msgctxt "achievement:voting|subtext"
+msgid "Vote 100 times on top.gg"
+msgstr ""
+
+#: src/modules/statistics/achievements.py:304
+msgctxt "achievement:days|name"
+msgid "Aim For The Moon"
+msgstr ""
+
+#: src/modules/statistics/achievements.py:308
+msgctxt "achievement:days|subtext"
+msgid "Join Voice on 90 different days"
+msgstr ""
+
+#: src/modules/statistics/achievements.py:333
+msgctxt "achievement:tasks|name"
+msgid "One Step at a Time"
+msgstr ""
+
+#: src/modules/statistics/achievements.py:337
+msgctxt "achievement:tasks|subtext"
+msgid "Complete 1000 tasks"
+msgstr ""
+
+#: src/modules/statistics/achievements.py:363
+msgctxt "achievement:schedule|name"
+msgid "Be Accountable"
+msgstr ""
+
+#: src/modules/statistics/achievements.py:367
+msgctxt "achievement:schedule|subtext"
+msgid "Attend 500 Scheduled Sessions"
+msgstr ""
+
+#: src/modules/statistics/achievements.py:392
+msgctxt "achievement:monthlyhours|name"
+msgid "The 30 Days Challenge"
+msgstr ""
+
+#: src/modules/statistics/achievements.py:396
+msgctxt "achievement:monthlyhours|subtext"
+msgid "Be active for 100 hours in a month"
+msgstr ""
+
+#: src/modules/statistics/settings.py:38
 msgctxt "settype:stat|output:voice"
 msgid "`Voice`"
 msgstr "`קול`"
 
-#: src/modules/statistics/settings.py:38
+#: src/modules/statistics/settings.py:39
 msgctxt "settype:stat|output:text"
 msgid "`Text`"
 msgstr "טקסט"
 
-#: src/modules/statistics/settings.py:39
+#: src/modules/statistics/settings.py:40
 msgctxt "settype:stat|output:anki"
 msgid "`Anki`"
 msgstr "אנקי"
 
-#: src/modules/statistics/settings.py:42
+#: src/modules/statistics/settings.py:43
 msgctxt "settype:stat|input_format:voice"
 msgid "Voice"
 msgstr "קול"
 
-#: src/modules/statistics/settings.py:43
+#: src/modules/statistics/settings.py:44
 msgctxt "settype:stat|input_format:text"
 msgid "Text"
 msgstr "טקסט"
 
-#: src/modules/statistics/settings.py:44
+#: src/modules/statistics/settings.py:45
 msgctxt "settype:stat|input_format:anki"
 msgid "Anki"
 msgstr "אנקי"
 
-#: src/modules/statistics/settings.py:47
+#: src/modules/statistics/settings.py:48
 msgctxt "settype:stat|input_pattern:voice"
 msgid "voice|study"
 msgstr "קול|למידה"
 
-#: src/modules/statistics/settings.py:48
+#: src/modules/statistics/settings.py:49
 msgctxt "settype:stat|input_pattern:text"
 msgid "text|messages"
 msgstr "טקסט|הודעות"
 
-#: src/modules/statistics/settings.py:49
+#: src/modules/statistics/settings.py:50
 msgctxt "settype:stat|input_pattern:anki"
 msgid "anki"
 msgstr "אנקי"
 
-#: src/modules/statistics/settings.py:53
+#: src/modules/statistics/settings.py:54
 msgctxt "settype:state|accepts"
 msgid "Voice/Text/Anki"
 msgstr "קול/טקסט/אנקי"
 
-#: src/modules/statistics/settings.py:66
+#: src/modules/statistics/settings.py:67
 msgctxt "userset:show_global_stats"
 msgid "global_stats"
 msgstr "סטטיסטיקות_גלובליות"
 
-#: src/modules/statistics/settings.py:69
+#: src/modules/statistics/settings.py:70
 msgctxt "userset:show_global_stats|desc"
 msgid "Whether displayed statistics include all your servers."
 msgstr "האם הסטטיסטקות יכללו את כל השרתים שאתה נמצא בהם ביחד."
 
-#: src/modules/statistics/settings.py:73
+#: src/modules/statistics/settings.py:74
 msgctxt "userset:show_global_stats|long_desc"
 msgid ""
 "Whether statistics commands display combined stats for all servers or just "
@@ -151,17 +271,17 @@ msgstr ""
 "האם פקודות סטטיקטיקה יראו את הפעילות של המשתמשים מכל השרתים או רק השרת "
 "הנוכחי."
 
-#: src/modules/statistics/settings.py:88
+#: src/modules/statistics/settings.py:90
 msgctxt "guildset:season_start"
 msgid "season_start"
 msgstr "התחלת_סשן"
 
-#: src/modules/statistics/settings.py:91
+#: src/modules/statistics/settings.py:93
 msgctxt "guildset:season_start|desc"
 msgid "Start of the current statistics season."
 msgstr "התחל את העונה החדשה של הסטטיסטיקות בשרת."
 
-#: src/modules/statistics/settings.py:95
+#: src/modules/statistics/settings.py:97
 msgctxt "guildset:season_start|long_desc"
 msgid ""
 "Activity ranks will be determined based on tracked activity since this time, and the leaderboard will display activity since this time by default. Unset to disable seasons and use all-time statistics instead.\n"
@@ -170,23 +290,23 @@ msgstr ""
 "דרגות יקבעו על בסיס פעילות מהזמן הזה, ולוח השיאים יוצג מהזמן הזה. הסר על מנת לבטל \"עונות\" ולהשתמש בלוח שיאים מכל הזמנים במקום.\n"
 "התאריכים שניתנים מושפעים מאזור הזמן שקבעתם בהגדרות שרת שלכם, אז תהיו בטוחים ששינית את אזור הזמן קודם!"
 
-#: src/modules/statistics/settings.py:102
+#: src/modules/statistics/settings.py:104
 msgctxt "guildset:season_start|accepts"
 msgid "The season start time in the form YYYY-MM-DD HH:MM"
 msgstr "אנא השתמשו בYYYY-MM-DD HH:MM"
 
-#: src/modules/statistics/settings.py:106
+#: src/modules/statistics/settings.py:108
 msgctxt "guildset:season_start|notset"
 msgid "Not Set (Using all-time statistics)"
 msgstr "לא נבחר (משתמש בסטטיסטיקות מכל הזמנים)"
 
-#: src/modules/statistics/settings.py:125
+#: src/modules/statistics/settings.py:127
 #, possible-python-brace-format
 msgctxt "guildset:season_start|parse|error:future_time"
 msgid "Provided season start time {timestamp} is in the future!"
 msgstr "התאריך שהבאת לתחילת העונה {timestamp} הוא בעתיד!"
 
-#: src/modules/statistics/settings.py:137
+#: src/modules/statistics/settings.py:139
 #, possible-python-brace-format
 msgctxt "guildset:season_start|set_response|set"
 msgid ""
@@ -196,7 +316,7 @@ msgstr ""
 "לוח השיאים עכשיו יציג את הסטטיסטיקות של של העונה שקבעת שתתחיל מ{timestamp}. הדרגות של האנשים יעודכנו בפעם הבאה שהם יהיו פעילים.\n"
 "השתמשו ב {rank_cmd} אם אתם רוצים לעדכן אותם באופן מיידי."
 
-#: src/modules/statistics/settings.py:147
+#: src/modules/statistics/settings.py:149
 #, possible-python-brace-format
 msgctxt "guildset:season_start|set_response|unset"
 msgid ""
@@ -206,141 +326,148 @@ msgstr ""
 "לוח השיאים עכשיו יציג את הסטטיסטיקות של של המכל הזמנים עד הפעם הבאה שתפעילו את הופציה הזה. הדרגות של האנשים יעודכנו בפעם הבאה שהם יהיו פעילים.\n"
 "השתמשו ב {rank_cmd} אם אתם רוצים לעדכן אותם באופן מיידי."
 
-#: src/modules/statistics/settings.py:159
+#: src/modules/statistics/settings.py:162
 msgctxt "guildset:unranked_roles"
 msgid "unranked_roles"
 msgstr "רולים_ללא_מעקב"
 
-#: src/modules/statistics/settings.py:162
+#: src/modules/statistics/settings.py:165
 msgctxt "guildset:unranked_roles|desc"
 msgid "Roles to exclude from the leaderboards."
 msgstr "רולים שלא אציג בלוח השיאים."
 
-#: src/modules/statistics/settings.py:166
+#: src/modules/statistics/settings.py:169
 msgctxt "guildset:unranked_roles|long_desc"
 msgid ""
 "When set, members with *any* of these roles will not appear on the "
 "/leaderboard ranking list."
 msgstr "כשמופעל, אנשים עם *אחד* מהרולים האלו לא יופיע בלוח השיאים."
 
-#: src/modules/statistics/settings.py:170
+#: src/modules/statistics/settings.py:173
 msgctxt "guildset:unranked_roles|accepts"
 msgid "Comma separated list of unranked role names or ids."
 msgstr ""
 "רשימה מופרדת עם פסיקים של הערוצים, רולים, אנשים ומספר זהות של מי שלא תרצו "
 "שאתן לו דרגות."
 
-#: src/modules/statistics/settings.py:186
+#: src/modules/statistics/settings.py:189
 msgctxt "guildset:unranked_roles|set_using"
 msgid "Role selector below."
 msgstr "בחירת רולים בתחתית."
 
-#: src/modules/statistics/settings.py:196
+#: src/modules/statistics/settings.py:199
 #, possible-python-brace-format
 msgctxt "guildset:unranked_roles|set_response|set"
 msgid ""
 "Members of the following roles will not appear on the leaderboard: {roles}"
 msgstr "אנשים עם הרולים הבאים לא יפיעו בלוח השיאים: {roles}"
 
-#: src/modules/statistics/settings.py:203
+#: src/modules/statistics/settings.py:206
 msgctxt "guildset:unranked_roles|set_response|unset"
 msgid "You have cleared the unranked role list."
 msgstr "ניקית את הרשימה של הרולים שאני לא עוקב אחריהם."
 
-#: src/modules/statistics/settings.py:217
+#: src/modules/statistics/settings.py:221
 msgctxt "guildset:visible_stats"
 msgid "visible_stats"
 msgstr "סטטיסטיקות_זמינות"
 
-#: src/modules/statistics/settings.py:220
+#: src/modules/statistics/settings.py:224
 msgctxt "guildset:visible_stats|desc"
 msgid "Which statistics will be visible in the statistics commands."
 msgstr ""
 "איזה סוג סטטיסטיקה יהיה זמין כמשתמשים ישתמשו בפקודה שמראה להם את הסטטיסטיקה "
 "שלהם."
 
-#: src/modules/statistics/settings.py:224
+#: src/modules/statistics/settings.py:228
 msgctxt "guildset:visible_stats|desc"
 msgid ""
 "Choose which statistics types to display in the leaderboard and statistics "
 "commands."
 msgstr "בחר באיזה סוג סטטיסטיקה לוח השיאים ופקודות הסטטיסטיקה ישתמשו."
 
-#: src/modules/statistics/settings.py:228
+#: src/modules/statistics/settings.py:232
 msgctxt "guildset:visible_stats|accepts"
 msgid "Voice, Text, Anki"
 msgstr "קול, טקסט, אנקי"
 
-#: src/modules/statistics/settings.py:249
+#: src/modules/statistics/settings.py:253
 msgctxt "guildset:visible_stats|set_using"
 msgid "Option menu below."
 msgstr "תפריט בחירה למטה."
 
-#: src/modules/statistics/settings.py:257
+#: src/modules/statistics/settings.py:261
 #, possible-python-brace-format
 msgctxt "guildset:visible_stats|set_response"
 msgid "Members will be able to view the following statistics types: {types}"
 msgstr "משתמשים יוכלו לראות את הסוגי סטטיסטיקה הבאים: {types}"
 
-#: src/modules/statistics/settings.py:267
+#: src/modules/statistics/settings.py:272
 msgctxt "guildset:default_stat"
 msgid "default_stat"
 msgstr "ברירתמחדל_סטטיסטיקה"
 
-#: src/modules/statistics/settings.py:270
+#: src/modules/statistics/settings.py:275
 msgctxt "guildset:default_stat|desc"
 msgid "Statistic type to display by default in setting dialogues."
 msgstr "סוג הסטטיסטיקה שתרצו לראות כשאתם משחקים עם ההגדרות."
 
-#: src/modules/statistics/settings.py:274
+#: src/modules/statistics/settings.py:279
 msgctxt "guildset:default_stat|long_desc"
 msgid "Which statistic type to display by default in setting dialogues."
 msgstr "איזה סוג סטטיסטיקה תרצו להראות כברירת מחדל בהגדרות?"
 
-#: src/modules/statistics/settings.py:307
+#: src/modules/statistics/settings.py:313
 msgctxt "ui:statistics_config|menu:unranked_roles|placeholder"
 msgid "Select Unranked Roles"
 msgstr "בחר רולים ללא מעקב"
 
-#: src/modules/statistics/settings.py:331
+#: src/modules/statistics/settings.py:338
 msgctxt "ui:statistics_config|menu:visible_stats|item:voice|mode:voice"
 msgid "Voice Activity"
 msgstr "פעילות חדרי קול"
 
-#: src/modules/statistics/settings.py:336
+#: src/modules/statistics/settings.py:343
 msgctxt "ui:statistics_config|menu:visible_stats|item:voice|mode:study"
 msgid "Study Statistics"
 msgstr "סטטיסטיקת למידה"
 
-#: src/modules/statistics/settings.py:346
+#: src/modules/statistics/settings.py:353
 msgctxt "ui:statistics_config|menu:visible_stats|item:text"
 msgid "Message Activity"
 msgstr "פעילות הודעות"
 
-#: src/modules/statistics/settings.py:354
+#: src/modules/statistics/settings.py:361
 msgctxt "ui:statistics_config|menu:visible_stats|item:anki"
 msgid "Anki Reviews"
 msgstr "ביקורות אנקי"
 
-#: src/modules/statistics/settings.py:365
+#: src/modules/statistics/settings.py:372
 msgctxt "ui:statistics_config|menu:visible_stats|placeholder"
 msgid "Select Visible Statistics"
 msgstr "בחר סטטיסטקות ציבוריות"
 
-#: src/modules/statistics/settings.py:386
+#: src/modules/statistics/settings.py:393
 msgctxt "ui:statistics_config|embed|title"
 msgid "Statistics Configuration Panel"
 msgstr "תפריט הגדרות סטטיסטיקת פעילות"
 
-#: src/modules/statistics/settings.py:408
+#: src/modules/statistics/settings.py:415
 msgctxt "dash:stats|title"
-msgid "Activity Statistics Configuration ({commands[configure statistics]})"
-msgstr "תפריט סטטיסטיקת פעילות ({commands[configure statistics]})"
+msgid ""
+"Activity Statistics Configuration ({commands[admin config statistics]})"
+msgstr ""
 
-#: src/modules/statistics/settings.py:412
+#: src/modules/statistics/settings.py:419
 msgctxt "dash:stats|dropdown|placeholder"
 msgid "Activity Statistics Panel"
 msgstr "תפריט סטטיסטיקת פעילות"
+
+#: src/modules/statistics/graphics/stats.py:63
+#, possible-python-brace-format
+msgctxt "gui:stats|mode:voice|month"
+msgid "{hours} hours"
+msgstr ""
 
 #: src/modules/statistics/ui/goals.py:92
 msgctxt "ui:MonthlyUI|name"
@@ -638,77 +765,77 @@ msgstr ""
 "עכשיו תוכל לראות סטטיסטיקות מכל השרתים שבהם אתה נמצא! (וגם אני). לחץ שוב על "
 "מנת לראות סטטיסטיקות רק מהשרת הזה."
 
-#: src/modules/statistics/ui/leaderboard.py:253
+#: src/modules/statistics/ui/leaderboard.py:257
 msgctxt "ui:leaderboard|menu:stats|placeholder"
 msgid "Select Activity Type"
 msgstr "בחר סוג פעילות"
 
-#: src/modules/statistics/ui/leaderboard.py:262
+#: src/modules/statistics/ui/leaderboard.py:266
 msgctxt "ui:leaderboard|menu:stats|item:voice"
 msgid "Voice Activity"
 msgstr "פעילות חדרי קול"
 
-#: src/modules/statistics/ui/leaderboard.py:273
+#: src/modules/statistics/ui/leaderboard.py:277
 msgctxt "ui:leaderboard|menu:stats|item:study"
 msgid "Study Statistics"
 msgstr "סטטיסטיקת למידה"
 
-#: src/modules/statistics/ui/leaderboard.py:284
+#: src/modules/statistics/ui/leaderboard.py:288
 msgctxt "ui:leaderboard|menu:stats|item:message"
 msgid "Message Activity"
 msgstr "פעילות הודעות"
 
-#: src/modules/statistics/ui/leaderboard.py:295
+#: src/modules/statistics/ui/leaderboard.py:299
 msgctxt "ui:leaderboard|menu;stats|item:anki"
 msgid "Anki Cards Reviewed"
 msgstr "קלפי אנקי שהושלמו"
 
-#: src/modules/statistics/ui/leaderboard.py:349
+#: src/modules/statistics/ui/leaderboard.py:353
 msgctxt "ui:leaderboard|button:season|label"
 msgid "This Season"
 msgstr "בעונה הזו"
 
-#: src/modules/statistics/ui/leaderboard.py:353
+#: src/modules/statistics/ui/leaderboard.py:357
 msgctxt "ui:leaderboard|button:day|label"
 msgid "Today"
 msgstr "היום"
 
-#: src/modules/statistics/ui/leaderboard.py:357
+#: src/modules/statistics/ui/leaderboard.py:361
 msgctxt "ui:leaderboard|button:week|label"
 msgid "This Week"
 msgstr "בשבוע הזה"
 
-#: src/modules/statistics/ui/leaderboard.py:361
+#: src/modules/statistics/ui/leaderboard.py:365
 msgctxt "ui:leaderboard|button:month|label"
 msgid "This Month"
 msgstr "בחודש הנוכחי"
 
-#: src/modules/statistics/ui/leaderboard.py:365
+#: src/modules/statistics/ui/leaderboard.py:369
 msgctxt "ui:leaderboard|button:alltime|label"
 msgid "All Time"
 msgstr "כל הזמנים"
 
-#: src/modules/statistics/ui/leaderboard.py:369
+#: src/modules/statistics/ui/leaderboard.py:373
 msgctxt "ui:leaderboard|button:jump|label"
 msgid "Jump"
 msgstr "קפוץ"
 
-#: src/modules/statistics/ui/leaderboard.py:384
+#: src/modules/statistics/ui/leaderboard.py:388
 msgctxt "ui:leaderboard|button:jump|input:title"
 msgid "Jump to page"
 msgstr "קפוץ אל עמוד"
 
-#: src/modules/statistics/ui/leaderboard.py:388
+#: src/modules/statistics/ui/leaderboard.py:392
 msgctxt "ui:leaderboard|button:jump|input:question"
 msgid "Page number to jump to"
 msgstr "מספר עמוד לקפוץ אליו"
 
-#: src/modules/statistics/ui/leaderboard.py:399
+#: src/modules/statistics/ui/leaderboard.py:403
 msgctxt "ui:leaderboard|button:jump|error:invalid_page"
 msgid "Invalid page number, please try again!"
 msgstr "מספר עמוד לא נכון, אנא נסה שוב!"
 
-#: src/modules/statistics/ui/leaderboard.py:443
+#: src/modules/statistics/ui/leaderboard.py:447
 msgctxt "ui:leaderboard|chunk_warning"
 msgid ""
 "**Note:** Could not retrieve member list from Discord, so some members may "
@@ -717,31 +844,31 @@ msgstr ""
 "שימו לב: לא הצלחתי להשיג רשימה עדכנית של המשתמשים מדיסקורד, אז כמה משתמשים "
 "יהיו חסרים. אנא נסו שוב עוד דקה!"
 
-#: src/modules/statistics/ui/leaderboard.py:450
+#: src/modules/statistics/ui/leaderboard.py:454
 #, possible-python-brace-format
 msgctxt "ui:leaderboard|since"
 msgid "Counting statistics since {timestamp}"
 msgstr "סופר סטטיסטיקות מ  {timestamp}"
 
-#: src/modules/statistics/ui/leaderboard.py:463
+#: src/modules/statistics/ui/leaderboard.py:467
 #, possible-python-brace-format
 msgctxt "ui:leaderboard|mode:voice|message:empty|desc"
 msgid "There has been no voice activity since {timestamp}"
 msgstr "לא הייתה פעילות קולית מאז {timestamp}"
 
-#: src/modules/statistics/ui/leaderboard.py:468
+#: src/modules/statistics/ui/leaderboard.py:472
 #, possible-python-brace-format
 msgctxt "ui:leaderboard|mode:text|message:empty|desc"
 msgid "There has been no message activity since {timestamp}"
 msgstr "לא הייתה פעילות הודעות מאז {timestamp}"
 
-#: src/modules/statistics/ui/leaderboard.py:473
+#: src/modules/statistics/ui/leaderboard.py:477
 #, possible-python-brace-format
 msgctxt "ui:leaderboard|mode:anki|message:empty|desc"
 msgid "There have been no Anki cards reviewed since {timestamp}"
 msgstr "לא היו שום קלפי אנקי שבוצעו מאז {timestamp}"
 
-#: src/modules/statistics/ui/leaderboard.py:482
+#: src/modules/statistics/ui/leaderboard.py:486
 msgctxt "ui:leaderboard|message:empty|title"
 msgid "Leaderboard Empty!"
 msgstr "לוח ההישגים ריק!"
