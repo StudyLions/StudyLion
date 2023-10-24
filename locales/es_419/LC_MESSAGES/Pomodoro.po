@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-01 16:01+0300\n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Ronin DeMentira, 2023\n"
 "Language-Team: Spanish (Latin America) (https://app.transifex.com/leobot/teams/174919/es_419/)\n"
@@ -32,18 +32,18 @@ msgctxt "timer|stage:focus|name"
 msgid "FOCUS"
 msgstr "ENFOQUE"
 
-#: src/modules/pomodoro/timer.py:160
+#: src/modules/pomodoro/timer.py:164
 #, possible-python-brace-format
 msgctxt "timer|webhook|name"
 msgid "{bot_name} Pomodoro"
 msgstr "{bot_name} Pomodoro"
 
-#: src/modules/pomodoro/timer.py:164
+#: src/modules/pomodoro/timer.py:168
 msgctxt "timer|webhook|audit_reason"
 msgid "Pomodoro Notifications"
 msgstr "Notificaciones Pomodoro"
 
-#: src/modules/pomodoro/timer.py:175
+#: src/modules/pomodoro/timer.py:179
 msgctxt "timer|webhook|error:insufficient_permissions"
 msgid ""
 "I require the `MANAGE_WEBHOOKS` permission to send pomodoro notifications "
@@ -52,18 +52,18 @@ msgstr ""
 "¡Necesito el permiso `MANAGE_WEBHOOKS` para enviar notificaciones pomodoro "
 "aquí!"
 
-#: src/modules/pomodoro/timer.py:234
+#: src/modules/pomodoro/timer.py:238
 #, possible-python-brace-format
 msgctxt "timer|default_base_name"
 msgid "Timer {pattern}"
 msgstr "Temporizador {pattern}"
 
-#: src/modules/pomodoro/timer.py:409
+#: src/modules/pomodoro/timer.py:413
 msgctxt "timer|disconnect|audit_reason"
 msgid "Disconnecting inactive member from timer."
 msgstr ""
 
-#: src/modules/pomodoro/timer.py:421
+#: src/modules/pomodoro/timer.py:425
 #, possible-python-brace-format
 msgctxt "timer|kicked_message"
 msgid ""
@@ -82,7 +82,7 @@ msgstr[2] ""
 "¡{mentions} fueron eliminadas del {channel} por estar inactivas! Recuerda "
 "pulsar {tick} para registrar tu presencia en cada etapa."
 
-#: src/modules/pomodoro/timer.py:434
+#: src/modules/pomodoro/timer.py:438
 #, possible-python-brace-format
 msgctxt "timer|kick_failed"
 msgid ""
@@ -90,7 +90,7 @@ msgid ""
 "I lack the 'Move Members' permission to do this!"
 msgstr ""
 
-#: src/modules/pomodoro/timer.py:529
+#: src/modules/pomodoro/timer.py:537
 #, possible-python-brace-format
 msgctxt "timer|status|stage:focus|statusline"
 msgid "{channel} is now in **FOCUS**! Good luck, **BREAK** starts {timestamp}"
@@ -98,7 +98,7 @@ msgstr ""
 "¡{channel} está ahora en **FOCUS**! Buena suerte, **BREAK** comienza "
 "{timestamp}"
 
-#: src/modules/pomodoro/timer.py:534
+#: src/modules/pomodoro/timer.py:542
 #, possible-python-brace-format
 msgctxt "timer|status|stage:break|statusline"
 msgid ""
@@ -107,7 +107,7 @@ msgstr ""
 "¡{channel} está ahora en **BREAK**! Tómese un descanso, **FOCUS** comienza "
 "{timestamp}"
 
-#: src/modules/pomodoro/timer.py:566
+#: src/modules/pomodoro/timer.py:574
 #, possible-python-brace-format
 msgctxt "timer|status|warningline"
 msgid ""
@@ -117,33 +117,33 @@ msgstr ""
 "**Advertencia:** {mentions}, por favor pulse {tick} para evitar ser "
 "eliminado en la siguiente etapa."
 
-#: src/modules/pomodoro/timer.py:585
+#: src/modules/pomodoro/timer.py:593
 #, possible-python-brace-format
 msgctxt "timer|status|stopped:auto"
 msgid "Timer stopped! Join {channel} to start the timer."
 msgstr "¡Temporizador parado! Únete a {channel} para iniciar el temporizador."
 
-#: src/modules/pomodoro/timer.py:590
+#: src/modules/pomodoro/timer.py:598
 msgctxt "timer|status|stopped:manual"
 msgid "Timer stopped! Press `Start` to restart the timer."
 msgstr "¡Temporizador parado! Pulse `Start` para reiniciar el temporizador."
 
-#: src/modules/pomodoro/settingui.py:39
+#: src/modules/pomodoro/settingui.py:40
 msgctxt "ui:timer_config|menu:channels|placeholder"
 msgid "Select Pomodoro Notification Channel"
 msgstr "Seleccione el canal de notificación Pomodoro"
 
-#: src/modules/pomodoro/settingui.py:47
+#: src/modules/pomodoro/settingui.py:48
 msgctxt "ui:timer_config|embed|title"
 msgid "Timer Configuration Panel"
 msgstr "Panel de configuración del temporizador"
 
-#: src/modules/pomodoro/settingui.py:81
+#: src/modules/pomodoro/settingui.py:82
 msgctxt "dash:pomodoro|title"
-msgid "Pomodoro Configuration ({commands[configure pomodoro]})"
-msgstr "Configuración de Pomodoro ({commands[configure pomodoro]})"
+msgid "Pomodoro Configuration ({commands[config pomodoro]})"
+msgstr ""
 
-#: src/modules/pomodoro/settingui.py:85
+#: src/modules/pomodoro/settingui.py:86
 msgctxt "dash:stats|dropdown|placeholder"
 msgid "Pomodoro Timer Panel"
 msgstr "Panel Temporizador Pomodoro"
@@ -706,18 +706,18 @@ msgctxt "timerset:break_length|desc"
 msgid "Please enter a positive number of minutes."
 msgstr "Introduzca un número positivo de minutos."
 
-#: src/modules/pomodoro/settings.py:19
+#: src/modules/pomodoro/settings.py:21
 msgctxt "guildset:pomodoro_channel"
 msgid "pomodoro_channel"
 msgstr "canal_pomodoro"
 
-#: src/modules/pomodoro/settings.py:22
+#: src/modules/pomodoro/settings.py:24
 msgctxt "guildset:pomodoro_channel|desc"
 msgid "Default central notification channel for pomodoro timers."
 msgstr ""
 "Canal de notificación central por defecto para los temporizadores pomodoro."
 
-#: src/modules/pomodoro/settings.py:26
+#: src/modules/pomodoro/settings.py:28
 msgctxt "guildset:pomodoro_channel|long_desc"
 msgid ""
 "Pomodoro timers which do not have a custom notification channel set will "
@@ -729,17 +729,17 @@ msgstr ""
 "este canal. Si no se establece este ajuste, las notificaciones de pomodoro "
 "se enviarán por defecto al propio canal de voz del temporizador."
 
-#: src/modules/pomodoro/settings.py:33
+#: src/modules/pomodoro/settings.py:35
 msgctxt "guildset:pomodoro_channel|formatted|notset"
 msgid "Not Set (Will use timer voice channel.)"
 msgstr "No configurado (Utilizará el canal de voz del temporizador.)"
 
-#: src/modules/pomodoro/settings.py:37
+#: src/modules/pomodoro/settings.py:39
 msgctxt "guildset:pomodoro_channel|accepts"
 msgid "Timer notification channel name or id."
 msgstr "Nombre o id del canal de notificación del temporizador."
 
-#: src/modules/pomodoro/settings.py:51
+#: src/modules/pomodoro/settings.py:53
 #, possible-python-brace-format
 msgctxt "guildset:pomodoro_channel|set_response|set"
 msgid "Pomodoro timer notifications will now default to {channel}"
@@ -747,14 +747,14 @@ msgstr ""
 "Las notificaciones del temporizador Pomodoro ahora se enviarán por defecto a"
 " {channel}."
 
-#: src/modules/pomodoro/settings.py:56
+#: src/modules/pomodoro/settings.py:58
 msgctxt "guildset:pomodoro_channel|set_response|unset"
 msgid "Pomodoro timer notifications will now default to their voice channel."
 msgstr ""
 "Las notificaciones del temporizador Pomodoro ahora se mostrarán por defecto "
 "en su canal de voz."
 
-#: src/modules/pomodoro/settings.py:66
+#: src/modules/pomodoro/settings.py:68
 #, possible-python-brace-format
 msgctxt "guildset:pomdoro_channel|set_using"
 msgid "{cmd} or channel selector below."
@@ -881,35 +881,35 @@ msgctxt "ui:timer_options|menu:voice_channel|placeholder"
 msgid "Set Voice Channel"
 msgstr "Ajustar canal de voz"
 
-#: src/modules/pomodoro/ui/config.py:159
+#: src/modules/pomodoro/ui/config.py:157
 msgctxt "ui:timer_options|menu:notification_channel|placeholder"
 msgid "Set Notification Channel"
 msgstr "Establecer canal de notificación"
 
-#: src/modules/pomodoro/ui/config.py:174
+#: src/modules/pomodoro/ui/config.py:172
 msgctxt "ui:timer_options|menu:manager_role|placeholder"
 msgid "Set Manager Role"
 msgstr "Seleccionar rol del directivo"
 
-#: src/modules/pomodoro/ui/config.py:183
+#: src/modules/pomodoro/ui/config.py:181
 #, possible-python-brace-format
 msgctxt "ui:timer_options|embed|title"
 msgid "Timer Control Panel for {channel}"
 msgstr "Panel de control del temporizador para {channel}"
 
-#: src/modules/pomodoro/ui/config.py:190
+#: src/modules/pomodoro/ui/config.py:188
 msgctxt "ui:timer_options|embed|footer"
 msgid "Hover over the option names to view descriptions."
 msgstr ""
 "Pase el ratón por encima de los nombres de las opciones para ver las "
 "descripciones."
 
-#: src/modules/pomodoro/ui/config.py:202
+#: src/modules/pomodoro/ui/config.py:200
 msgctxt "ui:timer_options|embed|field:pattern|name"
 msgid "Pattern"
 msgstr "Diseño"
 
-#: src/modules/pomodoro/ui/config.py:205
+#: src/modules/pomodoro/ui/config.py:203
 #, possible-python-brace-format
 msgctxt "ui:timer_options|embed|field:pattern|value"
 msgid ""
@@ -919,12 +919,12 @@ msgstr ""
 "**`{focus_len} minutos`** focus\n"
 "**`{break_len} minutos`** break"
 
-#: src/modules/pomodoro/ui/config.py:216
+#: src/modules/pomodoro/ui/config.py:214
 msgctxt "ui:timer_options|embed|field:channel_name|name"
 msgid "Channel Name Preview"
 msgstr "Vista previa del nombre del canal"
 
-#: src/modules/pomodoro/ui/config.py:220
+#: src/modules/pomodoro/ui/config.py:218
 #, possible-python-brace-format
 msgctxt "ui:timer_options|embed|field:channel_name|value"
 msgid ""
@@ -934,19 +934,19 @@ msgstr ""
 "**`{name}`**\n"
 "(El nombre real del canal puede no coincidir debido a los límites de velocidad)."
 
-#: src/modules/pomodoro/ui/config.py:230
+#: src/modules/pomodoro/ui/config.py:228
 msgctxt "ui:timer_options|embed|field:issues|name"
 msgid "Issues"
 msgstr "Cuestiones"
 
-#: src/modules/pomodoro/ui/config.py:248
+#: src/modules/pomodoro/ui/config.py:246
 msgctxt "ui:timer_options|issue:no_voice_channel"
 msgid "The configured voice channel does not exist! Please update it below."
 msgstr ""
 "El canal de voz configurado no existe. Por favor, actualícelo a "
 "continuación."
 
-#: src/modules/pomodoro/ui/config.py:259
+#: src/modules/pomodoro/ui/config.py:257
 #, possible-python-brace-format
 msgctxt "ui:timer_options|issue:cannot_speak"
 msgid ""
@@ -955,7 +955,7 @@ msgstr ""
 "Las alertas de voz están activadas, pero no tengo permisos para hablar en "
 "{channel}."
 
-#: src/modules/pomodoro/ui/config.py:266
+#: src/modules/pomodoro/ui/config.py:264
 #, possible-python-brace-format
 msgctxt "ui:timer_options|issue:cannot_change_name"
 msgid ""
@@ -964,12 +964,12 @@ msgstr ""
 "¡No puedo actualizar el nombre de {channel}! (Necesita permiso "
 "`MANAGE_CHANNELS`)"
 
-#: src/modules/pomodoro/ui/config.py:277
+#: src/modules/pomodoro/ui/config.py:275
 msgctxt "ui:timer_options|issue:notif_channel_dne"
 msgid "Configured notification channel does not exist!"
 msgstr "El canal de notificación configurado no existe."
 
-#: src/modules/pomodoro/ui/config.py:286
+#: src/modules/pomodoro/ui/config.py:284
 #, possible-python-brace-format
 msgctxt "ui:timer_options|issue:notif_channel_write"
 msgid ""
@@ -979,7 +979,7 @@ msgstr ""
 "No puedo adjuntar archivos (`ATTACH_FILES`) ni enviar incrustaciones "
 "(`EMBED_LINKS`) en {channel}"
 
-#: src/modules/pomodoro/ui/config.py:294
+#: src/modules/pomodoro/ui/config.py:292
 #, possible-python-brace-format
 msgctxt "ui:timer_options|issues:cannot_make_webhooks"
 msgid ""
