@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-01 16:01+0300\n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Ari Horesh, 2023\n"
 "Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
@@ -33,77 +33,77 @@ msgid ""
 "Jump to a given page of the ouput of a previous command in this channel."
 msgstr "קפוץ לעמוד ספציפי של התוצאות של הפקודה הקודמת בערוץ הזה."
 
-#: src/utils/cog.py:34
+#: src/utils/cog.py:35
 msgctxt "cmd:page|error:no_pager"
 msgid "No pager listening in this channel!"
 msgstr "אין פייגר שמקשיב לערוץ הזה"
 
-#: src/utils/cog.py:45
+#: src/utils/cog.py:46
 msgctxt "cmd:page_next"
 msgid "next"
 msgstr "הבא"
 
-#: src/utils/cog.py:46
+#: src/utils/cog.py:47
 msgctxt "cmd:page_next|desc"
 msgid "Jump to the next page of output."
 msgstr "קפוץ לעמוד הבא של התוצאות."
 
-#: src/utils/cog.py:52
+#: src/utils/cog.py:53
 msgctxt "cmd:page_prev"
 msgid "prev"
 msgstr "הקודם"
 
-#: src/utils/cog.py:53
+#: src/utils/cog.py:54
 msgctxt "cmd:page_prev|desc"
 msgid "Jump to the previous page of output."
 msgstr "קפוץ לעמוד הקודם של התוצאות."
 
-#: src/utils/cog.py:59
+#: src/utils/cog.py:60
 msgctxt "cmd:page_first"
 msgid "first"
 msgstr "ראשון"
 
-#: src/utils/cog.py:60
+#: src/utils/cog.py:61
 msgctxt "cmd:page_first|desc"
 msgid "Jump to the first page of output."
 msgstr "קפוץ לעמוד הראשון של התוצאה"
 
-#: src/utils/cog.py:66
+#: src/utils/cog.py:67
 msgctxt "cmd:page_last"
 msgid "last"
 msgstr "אחרון"
 
-#: src/utils/cog.py:67
+#: src/utils/cog.py:68
 msgctxt "cmd:page_last|desc"
 msgid "Jump to the last page of output."
 msgstr "קפוץ לעמוד האחרון של התוצאה"
 
-#: src/utils/cog.py:73
+#: src/utils/cog.py:74
 msgctxt "cmd:page_select"
 msgid "select"
 msgstr "בחר"
 
-#: src/utils/cog.py:74
+#: src/utils/cog.py:75
 msgctxt "cmd:page_select|desc"
 msgid "Select a page of the output to jump to."
 msgstr "בחר עמוד ספציפי לקפוץ אליו"
 
-#: src/utils/cog.py:77
+#: src/utils/cog.py:78
 msgctxt "cmd:page_select|param:page"
 msgid "page"
 msgstr "עמוד"
 
-#: src/utils/cog.py:80
+#: src/utils/cog.py:81
 msgctxt "cmd:page_select|param:page|desc"
 msgid "The page name or number to jump to."
 msgstr "ציין מספר עמוד לקפוץ אליו"
 
-#: src/utils/cog.py:86
+#: src/utils/cog.py:87
 msgctxt "cmd:page_select|error:no_pager"
 msgid "No pager listening in this channel!"
 msgstr "אין פייגר שמקשיב לערוץ הזה"
 
-#: src/utils/cog.py:97
+#: src/utils/cog.py:98
 msgctxt "cmd:page_select|acmpl|error:no_pager"
 msgid "No active pagers in this channel!"
 msgstr "אין פייגר שמקשיב לערוץ הזה"
@@ -120,25 +120,33 @@ msgctxt "util:Duration|acmpl|error"
 msgid "Cannot extract duration from \"{partial}\""
 msgstr "לא הצלחתי להבין את \"{partial}\""
 
-#: src/utils/lib.py:679
+#: src/utils/lib.py:683
 msgctxt "util:parse_dur|regex:day"
 msgid "(?P<value>\\d+)\\s*(?:(d)|(day))"
 msgstr "(?P<value>\\d+)\\s*(?:(d)|(day))"
 
-#: src/utils/lib.py:686
+#: src/utils/lib.py:690
 msgctxt "util:parse_dur|regex:hour"
 msgid "(?P<value>\\d+)\\s*(?:(h)|(hour))"
 msgstr "(?P<value>\\d+)\\s*(?:(h)|(hour))"
 
-#: src/utils/lib.py:693
+#: src/utils/lib.py:697
 msgctxt "util:parse_dur|regex:minute"
 msgid "(?P<value>\\d+)\\s*(?:(m)|(min))"
 msgstr "(?P<value>\\d+)\\s*(?:(m)|(min))"
 
-#: src/utils/lib.py:700
+#: src/utils/lib.py:704
 msgctxt "util:parse_dur|regex:second"
 msgid "(?P<value>\\d+)\\s*(?:(s)|(sec))"
 msgstr "(?P<value>\\d+)\\s*(?:(s)|(sec))"
+
+#: src/utils/lib.py:907
+#, possible-python-brace-format
+msgctxt "parse_timestamp|error:parse"
+msgid ""
+"Could not parse `{given}` as a valid reminder time. Try entering the time in"
+" the form `HH:MM` or `YYYY-MM-DD HH:MM`."
+msgstr ""
 
 #: src/utils/ui/config.py:35
 msgctxt "ui:configui|modal:edit|title"
@@ -150,17 +158,17 @@ msgctxt "ui:configui|check|not_permitted"
 msgid "You have insufficient server permissions to use this UI!"
 msgstr "אין לך הרשאות מתאימות בשרת עצמו כדי להשתמש בתפריט הזה!"
 
-#: src/utils/ui/config.py:153
+#: src/utils/ui/config.py:157
 msgctxt "ui:configui|button:edit|label"
 msgid "Edit"
 msgstr "ערוך"
 
-#: src/utils/ui/config.py:192
+#: src/utils/ui/config.py:196
 msgctxt "ui:guild_config_base|button:reset|label"
 msgid "Reset"
 msgstr "אפס"
 
-#: src/utils/ui/config.py:327
+#: src/utils/ui/config.py:331
 msgctxt "ui:dashboard|error:section_too_long"
 msgid ""
 "Oops, the settings in this configuration section are too large, and I can "
@@ -287,12 +295,12 @@ msgstr "הוסף embed"
 #: src/utils/ui/msgeditor.py:190
 msgctxt "ui:msg_editor|button:rm_embed|sample_content"
 msgid "Content Placeholder"
-msgstr ""
+msgstr "תופס מקום לתוכן"
 
 #: src/utils/ui/msgeditor.py:199
 msgctxt "ui:msg_editor|button:rm_embed|label"
 msgid "Remove Embed"
-msgstr ""
+msgstr "הסר אמבד"
 
 #: src/utils/ui/msgeditor.py:217
 msgctxt "ui:msg_editor|modal:body|field:content|label"

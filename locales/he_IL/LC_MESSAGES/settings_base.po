@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-01 16:01+0300\n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Ari Horesh, 2023\n"
 "Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
@@ -22,36 +22,41 @@ msgstr ""
 "Language: he_IL\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
 
-#: src/settings/ui.py:179
+#: src/settings/ui.py:180
 msgctxt "setting|formatted|notset"
 msgid "Not Set"
 msgstr "לא נקבע."
 
-#: src/settings/ui.py:320
+#: src/settings/ui.py:324
 msgctxt "setting|embed_field|too_long"
 msgid "Too long to display here!"
 msgstr ""
 
-#: src/settings/ui.py:354
+#: src/settings/ui.py:358
 #, possible-python-brace-format
 msgctxt "setting|summary_embed|title"
 msgid "Configuration options for `{name}`"
 msgstr "הגדרות של `{name}`."
 
-#: src/settings/ui.py:366
+#: src/settings/ui.py:370
 msgctxt "setting|summary_table|field:currently|key"
 msgid "Currently"
 msgstr "כרגע"
 
-#: src/settings/ui.py:373
+#: src/settings/ui.py:377
 msgctxt "setting|summary_table|field:default|key"
 msgid "By Default"
 msgstr "כברירת מחדל"
 
-#: src/settings/ui.py:380
+#: src/settings/ui.py:384
 msgctxt "setting|summary_table|field:set|key"
 msgid "Set Using"
 msgstr "בחר באמצעות"
+
+#: src/settings/ui.py:502
+msgctxt "setting|interaction_check|error"
+msgid "You do not have sufficient permissions to do this!"
+msgstr ""
 
 #: src/settings/setting_types.py:48
 msgctxt "settype:string|accepts"

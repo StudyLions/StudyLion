@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-24 12:21+0300\n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Ari Horesh, 2023\n"
 "Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
@@ -37,23 +37,94 @@ msgctxt "cmd:configure_ranks|param:rank_type|choice:message"
 msgid "Message"
 msgstr "הודעה"
 
-#: src/modules/ranks/cog.py:495
+#: src/modules/ranks/cog.py:351
+#, possible-python-brace-format
+msgctxt "eventlog|event:rank_check|error:remove_failed"
+msgid "Failed to remove old rank roles: `{error}`"
+msgstr ""
+
+#: src/modules/ranks/cog.py:375
+#, possible-python-brace-format
+msgctxt "eventlog|event:rank_check|error:add_failed"
+msgid "Failed to add new rank role: `{error}`"
+msgstr ""
+
+#: src/modules/ranks/cog.py:380
+msgctxt "eventlog|event:rank_check|error:add_impossible"
+msgid ""
+"Could not assign new activity rank role. Lacking permissions or invalid "
+"role."
+msgstr ""
+
+#: src/modules/ranks/cog.py:386
+msgctxt "eventlog|event:rank_check|error:permissions"
+msgid ""
+"Could not update activity rank roles, I lack the 'Manage Roles' permission."
+msgstr ""
+
+#: src/modules/ranks/cog.py:398
+msgctxt "eventlog|event:rank_check|name"
+msgid "Member Activity Rank Roles Updated"
+msgstr ""
+
+#: src/modules/ranks/cog.py:478
+#, possible-python-brace-format
+msgctxt "eventlog|event:new_rank|error:remove_failed"
+msgid "Failed to remove old rank roles: `{error}`"
+msgstr ""
+
+#: src/modules/ranks/cog.py:502
+#, possible-python-brace-format
+msgctxt "eventlog|event:new_rank|error:add_failed"
+msgid "Failed to add new rank role: `{error}`"
+msgstr ""
+
+#: src/modules/ranks/cog.py:507
+msgctxt "eventlog|event:new_rank|error:add_impossible"
+msgid ""
+"Could not assign new activity rank role. Lacking permissions or invalid "
+"role."
+msgstr ""
+
+#: src/modules/ranks/cog.py:513
+msgctxt "eventlog|event:new_rank|error:permissions"
+msgid ""
+"Could not update activity rank roles, I lack the 'Manage Roles' permission."
+msgstr ""
+
+#: src/modules/ranks/cog.py:548
+msgctxt "eventlog|event:new_rank|error:notify_failed"
+msgid "Could not notify member."
+msgstr ""
+
+#: src/modules/ranks/cog.py:555
+msgctxt "eventlog|event:new_rank|name"
+msgid "Member Achieved Activity rank"
+msgstr ""
+
+#: src/modules/ranks/cog.py:559
+#, possible-python-brace-format
+msgctxt "eventlog|event:new_rank|desc"
+msgid "{member} earned the new activity rank {rank}"
+msgstr ""
+
+#: src/modules/ranks/cog.py:587
 msgctxt "event:rank_update|embed:notify"
 msgid "New Activity Rank Attained!"
 msgstr "הגעת לדרגה חדשה!"
 
-#: src/modules/ranks/cog.py:601
+#: src/modules/ranks/cog.py:692
 msgctxt "rank_refresh|error:cannot_chunk|desc"
 msgid "Could not retrieve member list from Discord. Please try again later."
 msgstr ""
 "לא הצלחתי לקבל את הרשימה של המשתמשים מדיסקורד, אנא נסה שוב מאוחר יותר."
 
-#: src/modules/ranks/cog.py:614
+#: src/modules/ranks/cog.py:705
 msgctxt "rank_refresh|error:roles_dne|desc"
 msgid "Some ranks have invalid or deleted roles! Please remove them first."
 msgstr "כמה דרגות לא זמינות או נמחקו! אנא מחק אותם קודם."
 
-#: src/modules/ranks/cog.py:624
+#: src/modules/ranks/cog.py:715
 #, possible-python-brace-format
 msgctxt "rank_refresh|error:unassignable_roles|desc"
 msgid ""
@@ -63,18 +134,18 @@ msgstr ""
 "אין לי מספיק הרשאות כדי לתת את הרולים הבאים:\n"
 "{roles}"
 
-#: src/modules/ranks/cog.py:694
+#: src/modules/ranks/cog.py:785
 msgctxt "rank_refresh|remove_roles|audit"
 msgid "Removing invalid rank role."
 msgstr "מוחק דרגות לא זמינות."
 
-#: src/modules/ranks/cog.py:708
+#: src/modules/ranks/cog.py:799
 #, possible-python-brace-format
 msgctxt "rank_refresh|remove_roles|small_error"
 msgid "*Could not remove ranks from {member}*"
 msgstr "*לא הצלחתי למחוק את הדרגה מ{member}*"
 
-#: src/modules/ranks/cog.py:715
+#: src/modules/ranks/cog.py:806
 msgctxt "rank_refresh|remove_roles|error:too_many_issues"
 msgid ""
 "Too many issues occurred while removing ranks! Please check my permissions "
@@ -83,18 +154,18 @@ msgstr ""
 "יותר מידי בעיות קרו כשניסיתי למחוק את הדרגות! אנא בדוק את ההרשאות שלי ונסה "
 "שוב בעוד כמה דקות."
 
-#: src/modules/ranks/cog.py:729
+#: src/modules/ranks/cog.py:820
 msgctxt "rank_refresh|add_roles|audit"
 msgid "Adding rank role from refresh"
 msgstr "מוסיף דרגות מאופציית הרענון"
 
-#: src/modules/ranks/cog.py:743
+#: src/modules/ranks/cog.py:834
 #, possible-python-brace-format
 msgctxt "rank_refresh|add_roles|small_error"
 msgid "*Could not add {role} to {member}*"
 msgstr "*לא הצלחתי להוסיף את {role} ל{member}*"
 
-#: src/modules/ranks/cog.py:750
+#: src/modules/ranks/cog.py:841
 msgctxt "rank_refresh|add_roles|error:too_many_issues"
 msgid ""
 "Too many issues occurred while adding ranks! Please check my permissions and"
@@ -103,23 +174,37 @@ msgstr ""
 "יותר מידי בעיות קרו כשניסיתי להוסיף את הדרגות! אנא בדוק את ההרשאות שלי ונסה "
 "שוב בעוד כמה דקות."
 
+#: src/modules/ranks/cog.py:869
+msgctxt "eventlog|event:rank_refresh|name"
+msgid "Activity Ranks Refreshed"
+msgstr ""
+
+#: src/modules/ranks/cog.py:873
+#, possible-python-brace-format
+msgctxt "eventlog|event:rank_refresh|desc"
+msgid ""
+"{actor} refresh member activity ranks.\n"
+"**`{removed}`** invalid rank roles removed.\n"
+"**`{added}`** new rank roles added."
+msgstr ""
+
 #. ---------- Commands ----------
-#: src/modules/ranks/cog.py:775
+#: src/modules/ranks/cog.py:884
 msgctxt "cmd:ranks"
 msgid "ranks"
 msgstr "דרגה"
 
-#: src/modules/ranks/cog.py:807
+#: src/modules/ranks/cog.py:916
 msgctxt "cmd:configure_ranks"
 msgid "ranks"
 msgstr "דרגות"
 
-#: src/modules/ranks/cog.py:808
+#: src/modules/ranks/cog.py:917
 msgctxt "cmd:configure_ranks|desc"
 msgid "Configure Activity Ranks"
 msgstr "הגדר דרגות פעילות"
 
-#: src/modules/ranks/cog.py:868
+#: src/modules/ranks/cog.py:976
 #, possible-python-brace-format
 msgctxt ""
 "cmd:configure_ranks|response:updated|setting:notification|withdm_withchannel"
@@ -130,20 +215,20 @@ msgstr ""
 "כמשתמש יקבל דרגה אני אשלח את ההתראות בהודעה פרטית, אם לא הצלחתי, אשלח אותה "
 "אל  {channel}"
 
-#: src/modules/ranks/cog.py:874
+#: src/modules/ranks/cog.py:982
 msgctxt ""
 "cmd:configure_ranks|response:updated|setting:notification|withdm_nochannel"
 msgid "Rank update notifications will be sent via **direct message**."
 msgstr "עדכון ההתראות ישלח ב**הודעה פרטית.**"
 
-#: src/modules/ranks/cog.py:880
+#: src/modules/ranks/cog.py:988
 #, possible-python-brace-format
 msgctxt ""
 "cmd:configure_ranks|response:updated|setting:notification|nodm_withchannel"
 msgid "Rank update notifications will be sent to {channel}."
 msgstr "התראות בנוגע לדרגות ישלחו אל {channel}."
 
-#: src/modules/ranks/cog.py:885
+#: src/modules/ranks/cog.py:993
 msgctxt ""
 "cmd:configure_ranks|response:updated|setting:notification|nodm_nochannel"
 msgid "Members will not be notified when their activity rank updates."
@@ -203,57 +288,57 @@ msgctxt "formatstring:rank_message|key:requires"
 msgid "{rank_requires}"
 msgstr "{דרגה_דרושה}"
 
-#: src/modules/ranks/settings.py:26
+#: src/modules/ranks/settings.py:27
 msgctxt "guildset:rank_type|output:voice"
 msgid "`Voice`"
 msgstr "`קול`"
 
-#: src/modules/ranks/settings.py:27
+#: src/modules/ranks/settings.py:28
 msgctxt "guildset:rank_type|output:xp"
 msgid "`Exp`"
 msgstr "נקודות ניסיון"
 
-#: src/modules/ranks/settings.py:28
+#: src/modules/ranks/settings.py:29
 msgctxt "guildset:rank_type|output:message"
 msgid "`Messages`"
 msgstr "הודעות"
 
-#: src/modules/ranks/settings.py:31
+#: src/modules/ranks/settings.py:32
 msgctxt "guildset:rank_type|input_format:voice"
 msgid "Voice"
 msgstr "קול"
 
-#: src/modules/ranks/settings.py:32
+#: src/modules/ranks/settings.py:33
 msgctxt "guildset:rank_type|input_format:xp"
 msgid "Exp"
 msgstr "נקודות ניסיון"
 
-#: src/modules/ranks/settings.py:33
+#: src/modules/ranks/settings.py:34
 msgctxt "guildset:rank_type|input_format:message"
 msgid "Messages"
 msgstr "הודעות"
 
-#: src/modules/ranks/settings.py:36
+#: src/modules/ranks/settings.py:37
 msgctxt "guildset:rank_type|input_pattern:voice"
 msgid "voice|study"
 msgstr "קול|למידה"
 
-#: src/modules/ranks/settings.py:37
+#: src/modules/ranks/settings.py:38
 msgctxt "guildset:rank_type|input_pattern:voice"
 msgid "text|message|messages"
 msgstr "טקסט|הודעה|הודעות"
 
-#: src/modules/ranks/settings.py:38
+#: src/modules/ranks/settings.py:39
 msgctxt "guildset:rank_type|input_pattern:xp"
 msgid "xp|exp|experience"
 msgstr "נק|נקודות|נקודות ניסיון"
 
-#: src/modules/ranks/settings.py:45
+#: src/modules/ranks/settings.py:47
 msgctxt "guildset:rank_type"
 msgid "rank_type"
 msgstr "סוג_דרגה"
 
-#: src/modules/ranks/settings.py:48
+#: src/modules/ranks/settings.py:50
 msgctxt "guildset:rank_type|desc"
 msgid ""
 "The type of statistic (messages | xp | voice hours) used to determine "
@@ -262,7 +347,7 @@ msgstr ""
 "סוג הסטטיסטיקה (הודעות | נקודות ניסיון | שעות קול) שמשומש כדי לקבוע את "
 "הדרגות."
 
-#: src/modules/ranks/settings.py:52
+#: src/modules/ranks/settings.py:54
 msgctxt "guildset:rank_type|long_desc"
 msgid ""
 "Which statistic is used to reward activity ranks.\n"
@@ -271,43 +356,43 @@ msgstr ""
 "איזה סוג סטטיסטיקה אשתמש כדי לקבוע דרגות עבור המשתמשים שלכם!\n"
 "לדוגמא, `קול` יתן לאנשים דרגות לפי כמה זמן הם נמצאים בחדרי קול, `נקודות ניסיון` הם מדד של המילים שהם שולחים בשרת, ב`הודעות` זה פשוט כמה הודעות משתמש שלח בשרת בלי קשר לכמות המילים."
 
-#: src/modules/ranks/settings.py:59
+#: src/modules/ranks/settings.py:61
 msgctxt "guildset:rank_type|accepts"
 msgid "Voice/Exp/Messages"
 msgstr "קול|נקודות|הודעות"
 
-#: src/modules/ranks/settings.py:71
+#: src/modules/ranks/settings.py:73
 msgctxt "guildset:rank_type|set_response|type:voice"
 msgid "Members will be awarded activity ranks based on `Voice Activity`."
 msgstr "משתמשים יקבלו דרגות בהתאם לכמות הזמן שהם מבלים בחדרים הקוליים."
 
-#: src/modules/ranks/settings.py:76
+#: src/modules/ranks/settings.py:78
 msgctxt "guildset:rank_type|set_response|type:messages"
 msgid "Members will be awarded activity ranks based on `Messages Sent`."
 msgstr "משתמשים יקבלו דרגות בהתאם לכמות ההודעות שהם שולחים בשרת."
 
-#: src/modules/ranks/settings.py:81
+#: src/modules/ranks/settings.py:83
 msgctxt "guildset:rank_type|set_response|type:xp"
 msgid "Members will be awarded activity ranks based on `Message XP Earned`."
 msgstr "משתמשים יקבלו דרגות בהתאם לכמות ו**איכות** ההודעות שהם שולחים בשרת."
 
-#: src/modules/ranks/settings.py:91
+#: src/modules/ranks/settings.py:93
 #, possible-python-brace-format
 msgctxt "guildset:rank_channel|set_using"
 msgid "{cmd} or option menu below."
 msgstr "{cmd} או תפריט הבחירה למטה."
 
-#: src/modules/ranks/settings.py:103
+#: src/modules/ranks/settings.py:106
 msgctxt "guildset:rank_channel"
 msgid "rank_channel"
 msgstr "ערוץ_דרגות"
 
-#: src/modules/ranks/settings.py:106
+#: src/modules/ranks/settings.py:109
 msgctxt "guildset:rank_channel|desc"
 msgid "The channel in which to send rank update notifications."
 msgstr "הערוץ שבו אשלח התראות בנוגע לעדכוני דרגות."
 
-#: src/modules/ranks/settings.py:110
+#: src/modules/ranks/settings.py:113
 msgctxt "guildset:rank_channel|long_desc"
 msgid ""
 "Whenever a user advances a rank, a congratulatory message will be sent in "
@@ -319,18 +404,18 @@ msgstr ""
 "הזאתי. אם הפעלתם דרגות_הודעה_פרטית, הערוץ הזה רק ישומש כשמשתמש בחר לא לקבל "
 "הודעות פרטיות."
 
-#: src/modules/ranks/settings.py:116
+#: src/modules/ranks/settings.py:119
 msgctxt "guildset:rank_channel|accepts"
 msgid "Rank notification channel name or id."
 msgstr "שם או מספר זהות של הערוץ התראות."
 
-#: src/modules/ranks/settings.py:128
+#: src/modules/ranks/settings.py:131
 #, possible-python-brace-format
 msgctxt "guildset:rank_channel|set_response|set"
 msgid "Rank update messages will be sent to {channel}."
 msgstr "התראות בנוגע לדרגות ישלחו אל {channel}."
 
-#: src/modules/ranks/settings.py:133
+#: src/modules/ranks/settings.py:136
 msgctxt "guildset:rank_channel|set_response|unset"
 msgid ""
 "Rank update messages will be ignored or sent via DM (if `dm_ranks` is "
@@ -339,24 +424,24 @@ msgstr ""
 "התראות דרגה לא יקבלו התראה או פשוט ישלחו בהודעה פרטית אם הפעלתם את "
 "`דרגות_הודעה_פרטית`"
 
-#: src/modules/ranks/settings.py:143
+#: src/modules/ranks/settings.py:146
 #, possible-python-brace-format
 msgctxt "guildset:rank_channel|set_using"
 msgid "{cmd} or channel selector below."
 msgstr "{cmd} או בחירת ערוצים בתחתית."
 
-#: src/modules/ranks/settings.py:153
+#: src/modules/ranks/settings.py:157
 msgctxt "guildset:dm_ranks"
 msgid "dm_ranks"
 msgstr "דרגות_הודעה_פרטית"
 
-#: src/modules/ranks/settings.py:156
+#: src/modules/ranks/settings.py:160
 msgctxt "guildset:dm_ranks|desc"
 msgid ""
 "Whether to send rank advancement notifications through direct messages."
 msgstr "האם או לא לשלוח התראות בנוגע להתקדמות בדרגות בהודעה פרטית."
 
-#: src/modules/ranks/settings.py:160
+#: src/modules/ranks/settings.py:164
 msgctxt "guildset:dm_ranks|long_desc"
 msgid ""
 "If enabled, congratulatory messages for rank advancement will be direct "
@@ -364,12 +449,12 @@ msgid ""
 "`rank_channel`."
 msgstr "אם מופעל, הודעת איחולים תישלח למשתמש בהודעה פרטית כמשתמש עולה בדרגה."
 
-#: src/modules/ranks/settings.py:174
+#: src/modules/ranks/settings.py:178
 msgctxt "guildset:dm_ranks|response:true"
 msgid "I will direct message members upon rank advancement."
 msgstr "אני אשלח למשתמש הודעה פרטית שהוא עולה דרגה."
 
-#: src/modules/ranks/settings.py:179
+#: src/modules/ranks/settings.py:183
 msgctxt "guildset:dm_ranks|response:false"
 msgid "I will never direct message members upon rank advancement."
 msgstr "אני *לעולם לא* אשלח למשתמש הודעה פרטית שהוא עולה דרגה."
@@ -604,94 +689,308 @@ msgctxt "ui:rank_config|button:overview|label"
 msgid "Edit Ranks"
 msgstr "ערוך דרגות"
 
-#: src/modules/ranks/ui/config.py:82
+#: src/modules/ranks/ui/config.py:83
 msgctxt "ui:rank_config|menu:types|placeholder"
 msgid "Select Statistic Type"
 msgstr "בחר סוג סטטיסטיקה"
 
-#: src/modules/ranks/ui/config.py:90
+#: src/modules/ranks/ui/config.py:91
 msgctxt "ui:rank_config|menu:types|option:voice"
 msgid "Voice Activity"
 msgstr "פעילות חדרי קול"
 
-#: src/modules/ranks/ui/config.py:98
+#: src/modules/ranks/ui/config.py:99
 msgctxt "ui:rank_config|menu:types|option:xp"
 msgid "XP Earned"
 msgstr "רווח נקודות ניסיון "
 
-#: src/modules/ranks/ui/config.py:106
+#: src/modules/ranks/ui/config.py:107
 msgctxt "ui:rank_config|menu:types|option:messages"
 msgid "Messages Sent"
 msgstr "הודעות שנשלחו"
 
-#: src/modules/ranks/ui/config.py:126
+#: src/modules/ranks/ui/config.py:128
 msgctxt "ui:rank_config|menu:channels|placeholder"
 msgid "Select Rank Notification Channel"
 msgstr "בחר בערוץ התראות לעדכוני דרגות"
 
-#: src/modules/ranks/ui/config.py:134
+#: src/modules/ranks/ui/config.py:136
 msgctxt "ui:rank_config|embed|title"
 msgid "Ranks Configuration Panel"
 msgstr "תפריט עריכת דרגות"
 
-#: src/modules/ranks/ui/config.py:171
+#: src/modules/ranks/ui/config.py:173
 msgctxt "dash:rank|title"
-msgid "Rank Configuration ({commands[configure ranks]})"
-msgstr "עריכת דרגות ({commands[configure ranks]})"
+msgid "Rank Configuration ({commands[admin config ranks]})"
+msgstr ""
 
-#: src/modules/ranks/ui/config.py:175
+#: src/modules/ranks/ui/config.py:177
 msgctxt "dash:rank|dropdown|placeholder"
 msgid "Activity Rank Panel"
 msgstr "תפריט דרגות פעילות"
 
-#: src/modules/ranks/ui/overview.py:95
+#: src/modules/ranks/ui/templates.py:20 src/modules/ranks/ui/editor.py:207
+#, possible-python-brace-format
+msgctxt "ui:rank_editor|input:message|default|type:voice"
+msgid ""
+"Congratulations {user_mention}!\n"
+"For working hard for **{requires}**, you have achieved the rank of **{role_name}** in **{guild_name}**! Keep up the good work."
+msgstr ""
+"כל הכבוד על העבודה הקשה {user_mention}!\n"
+"עבדתם קשה והצלחתם להגיע אל **{requires}**, מאחר ועבדתם כל כך קשה, הצלחתם להשיג את **{role_name}** בשרת **{guild_name}**! בהצלחה בהמשך!"
+
+#: src/modules/ranks/ui/templates.py:27
+#, possible-python-brace-format
+msgctxt "ui:rank_editor|input:message|default|type:xp"
+msgid ""
+"Congratulations {user_mention}!\n"
+"For earning **{requires}**, you have achieved the guild rank of **{role_name}** in **{guild_name}**!"
+msgstr ""
+
+#: src/modules/ranks/ui/templates.py:34
+#, possible-python-brace-format
+msgctxt "ui:rank_editor|input:message|default|type:msg"
+msgid ""
+"Congratulations {user_mention}!\n"
+"For sending **{requires}**, you have achieved the guild rank of **{role_name}** in **{guild_name}**!"
+msgstr ""
+
+#: src/modules/ranks/ui/templates.py:47
+msgctxt "rank_autocreate|template|type:study_voice|level:1"
+msgid "Voice Level 1 (1h)"
+msgstr ""
+
+#: src/modules/ranks/ui/templates.py:55
+msgctxt "rank_autocreate|template|type:study_voice|level:2"
+msgid "Voice Level 2 (3h)"
+msgstr ""
+
+#: src/modules/ranks/ui/templates.py:63
+msgctxt "rank_autocreate|template|type:study_voice|level:3"
+msgid "Voice Level 3 (6h)"
+msgstr ""
+
+#: src/modules/ranks/ui/templates.py:71
+msgctxt "rank_autocreate|template|type:study_voice|level:4"
+msgid "Voice Level 4 (10h)"
+msgstr ""
+
+#: src/modules/ranks/ui/templates.py:79
+msgctxt "rank_autocreate|template|type:study_voice|level:5"
+msgid "Voice Level 5 (20h)"
+msgstr ""
+
+#: src/modules/ranks/ui/templates.py:87
+msgctxt "rank_autocreate|template|type:study_voice|level:6"
+msgid "Voice Level 6 (40h)"
+msgstr ""
+
+#: src/modules/ranks/ui/templates.py:95
+msgctxt "rank_autocreate|template|type:study_voice|level:7"
+msgid "Voice Level 7 (80h)"
+msgstr ""
+
+#: src/modules/ranks/ui/templates.py:106
+msgctxt "rank_autocreate|template|type:general_voice|level:1"
+msgid "Voice Level 1 (1h)"
+msgstr ""
+
+#: src/modules/ranks/ui/templates.py:114
+msgctxt "rank_autocreate|template|type:general_voice|level:2"
+msgid "Voice Level 2 (2h)"
+msgstr ""
+
+#: src/modules/ranks/ui/templates.py:122
+msgctxt "rank_autocreate|template|type:general_voice|level:3"
+msgid "Voice Level 3 (4h)"
+msgstr ""
+
+#: src/modules/ranks/ui/templates.py:130
+msgctxt "rank_autocreate|template|type:general_voice|level:4"
+msgid "Voice Level 4 (8h)"
+msgstr ""
+
+#: src/modules/ranks/ui/templates.py:138
+msgctxt "rank_autocreate|template|type:general_voice|level:5"
+msgid "Voice Level 5 (16h)"
+msgstr ""
+
+#: src/modules/ranks/ui/templates.py:146
+msgctxt "rank_autocreate|template|type:general_voice|level:6"
+msgid "Voice Level 6 (32h)"
+msgstr ""
+
+#: src/modules/ranks/ui/templates.py:154
+msgctxt "rank_autocreate|template|type:general_voice|level:7"
+msgid "Voice Level 7 (64h)"
+msgstr ""
+
+#: src/modules/ranks/ui/templates.py:169
+msgctxt "rank_autocreate|template|type:xp|level:1"
+msgid "XP Level 1 (2000)"
+msgstr ""
+
+#: src/modules/ranks/ui/templates.py:177
+msgctxt "rank_autocreate|template|type:xp|level:2"
+msgid "XP Level 2 (4000)"
+msgstr ""
+
+#: src/modules/ranks/ui/templates.py:185
+msgctxt "rank_autocreate|template|type:xp|level:3"
+msgid "XP Level 3 (8000)"
+msgstr ""
+
+#: src/modules/ranks/ui/templates.py:193
+msgctxt "rank_autocreate|template|type:xp|level:4"
+msgid "XP Level 4 (16000)"
+msgstr ""
+
+#: src/modules/ranks/ui/templates.py:201
+msgctxt "rank_autocreate|template|type:xp|level:5"
+msgid "XP Level 5 (32000)"
+msgstr ""
+
+#: src/modules/ranks/ui/templates.py:209
+msgctxt "rank_autocreate|template|type:xp|level:6"
+msgid "XP Level 6 (64000)"
+msgstr ""
+
+#: src/modules/ranks/ui/templates.py:217
+msgctxt "rank_autocreate|template|type:xp|level:7"
+msgid "XP Level 7 (128000)"
+msgstr ""
+
+#: src/modules/ranks/ui/templates.py:232
+msgctxt "rank_autocreate|template|type:msg|level:1"
+msgid "Message Level 1 (200)"
+msgstr ""
+
+#: src/modules/ranks/ui/templates.py:240
+msgctxt "rank_autocreate|template|type:msg|level:2"
+msgid "Message Level 2 (400)"
+msgstr ""
+
+#: src/modules/ranks/ui/templates.py:248
+msgctxt "rank_autocreate|template|type:msg|level:3"
+msgid "Message Level 3 (800)"
+msgstr ""
+
+#: src/modules/ranks/ui/templates.py:256
+msgctxt "rank_autocreate|template|type:msg|level:4"
+msgid "Message Level 4 (1600)"
+msgstr ""
+
+#: src/modules/ranks/ui/templates.py:264
+msgctxt "rank_autocreate|template|type:msg|level:5"
+msgid "Message Level 5 (3200)"
+msgstr ""
+
+#: src/modules/ranks/ui/templates.py:272
+msgctxt "rank_autocreate|template|type:msg|level:6"
+msgid "Message Level 6 (6400)"
+msgstr ""
+
+#: src/modules/ranks/ui/templates.py:280
+msgctxt "rank_autocreate|template|type:msg|level:7"
+msgid "Message Level 7 (12800)"
+msgstr ""
+
+#: src/modules/ranks/ui/overview.py:97
+msgctxt "ui:rank_overview|button:auto|error:already_created"
+msgid "The rank roles have already been created!"
+msgstr ""
+
+#: src/modules/ranks/ui/overview.py:105
+msgctxt "ui:rank_overview|button:auto|error:my_permissions"
+msgid "I lack the 'Manage Roles' permission required to create rank roles!"
+msgstr ""
+
+#: src/modules/ranks/ui/overview.py:114
+msgctxt "ui:rank_overview|button:auto|error:invalid_template"
+msgid "Unable to determine rank role template!"
+msgstr ""
+
+#: src/modules/ranks/ui/overview.py:137
+msgctxt "ui:rank_overview|button|auto|role_creation|error:forbidden"
+msgid ""
+"An error occurred while autocreating rank roles!\n"
+"I lack the 'Manage Roles' permission required to create rank roles!"
+msgstr ""
+
+#: src/modules/ranks/ui/overview.py:145
+msgctxt "ui:rank_overview|button:auto|role_creation|error:unknown"
+msgid ""
+"An error occurred while autocreating rank roles!\n"
+"Please check the server has enough space for new roles and try again."
+msgstr ""
+
+#: src/modules/ranks/ui/overview.py:152
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|button:auto|role_creation|success"
+msgid ""
+"Successfully created the following rank roles:\n"
+"{roles}"
+msgstr ""
+
+#: src/modules/ranks/ui/overview.py:162
 msgctxt "ui:rank_overview|button:auto|label"
 msgid "Auto Create"
 msgstr "צור באופן אוטומטי"
 
-#: src/modules/ranks/ui/overview.py:110
+#: src/modules/ranks/ui/overview.py:178
 msgctxt "ui:rank_overview|button:refresh|label"
 msgid "Refresh Member Ranks"
 msgstr "רענן דרגות משתמשים"
 
-#: src/modules/ranks/ui/overview.py:122
+#: src/modules/ranks/ui/overview.py:190
 msgctxt "ui:rank_overview|button:clear|confirm"
 msgid "Are you sure you want to **delete all activity ranks** in this server?"
 msgstr "אתה בטוח שאתה רוצה למחוק את **כל הפעילות של הדרגות** מהשרת הזה?"
 
-#: src/modules/ranks/ui/overview.py:127
+#: src/modules/ranks/ui/overview.py:195
 msgctxt "ui:rank_overview|button:clear|confirm|button:yes"
 msgid "Yes, clear ranks"
 msgstr "כן, נקה דרגות"
 
-#: src/modules/ranks/ui/overview.py:133
+#: src/modules/ranks/ui/overview.py:201
 msgctxt "ui:rank_overview|button:clear|confirm|button:no"
 msgid "Cancel"
 msgstr "בטל"
 
-#: src/modules/ranks/ui/overview.py:149
+#: src/modules/ranks/ui/overview.py:217
 msgctxt "ui:rank_overview|button:clear|label"
 msgid "Clear Ranks"
 msgstr "אפס דרגות"
 
-#: src/modules/ranks/ui/overview.py:179
+#: src/modules/ranks/ui/overview.py:231
+msgctxt "ui:rank_overview|button:create|error:my_permissions"
+msgid "I lack the 'Manage Roles' permission required to create rank roles!"
+msgstr ""
+
+#: src/modules/ranks/ui/overview.py:240
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|button:create|success"
+msgid "Created a new rank {role}"
+msgstr ""
+
+#: src/modules/ranks/ui/overview.py:257
 msgctxt "ui:rank_overview|button:create|label"
 msgid "Create Rank"
 msgstr "צור דרגה!"
 
-#: src/modules/ranks/ui/overview.py:222
+#: src/modules/ranks/ui/overview.py:300
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:is_default"
 msgid "The @everyone role cannot be removed, and cannot be a rank!"
 msgstr "הרול @everyone לא יכול להיות דרגה ולא יכול להמחק."
 
-#: src/modules/ranks/ui/overview.py:227
+#: src/modules/ranks/ui/overview.py:305
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:is_managed"
 msgid ""
 "The role is managed by another application or integration, and cannot be a "
 "rank!"
 msgstr "הרול הזה מנוהל על ידי בוט אחר ואני לא יכול לגשת אליו."
 
-#: src/modules/ranks/ui/overview.py:232
+#: src/modules/ranks/ui/overview.py:310
 msgctxt ""
 "ui:rank_overview|menu:roles|error:not_assignable|suberror:no_permissions"
 msgid ""
@@ -701,72 +1000,75 @@ msgstr ""
 "אין לי את ההרשאה  `MANAGE_ROLES` בשרת הזה. אנא הוסף אותי שוב עם ההרשאות "
 "הנכונות."
 
-#: src/modules/ranks/ui/overview.py:237
+#: src/modules/ranks/ui/overview.py:315
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:above_me"
 msgid ""
 "This role is above my top role in the role hierarchy, so I cannot add or "
 "remove it!"
 msgstr "הרול הזה נמצא מעליי ברשימה של הרולים של השרת אז אין לי איך לגשת אליו."
 
-#: src/modules/ranks/ui/overview.py:243
+#: src/modules/ranks/ui/overview.py:321
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:other"
 msgid "I am not able to manage the selected role, so it cannot be a rank!"
 msgstr "אני לא יכול לגשת לרול שבחרת, ולכן הוא לא יכול להיות דרגה בשרת."
 
-#: src/modules/ranks/ui/overview.py:249
+#: src/modules/ranks/ui/overview.py:327
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|title"
 msgid "Could not create rank!"
 msgstr "לא הצלחתי ליצור דרגה!"
 
-#: src/modules/ranks/ui/overview.py:273
+#: src/modules/ranks/ui/overview.py:351
 msgctxt "ui:rank_overview|menu:roles|placeholder"
 msgid "Create from role"
 msgstr "צור מרול ספציפי"
 
-#: src/modules/ranks/ui/overview.py:290
+#: src/modules/ranks/ui/overview.py:368
 msgctxt "ui:rank_overview|menu:ranks|placeholder"
 msgid "View or edit rank"
 msgstr "צפה או ערוך דרגה"
 
-#: src/modules/ranks/ui/overview.py:376
+#: src/modules/ranks/ui/overview.py:454
 msgctxt "ui:rank_overview|embed:noranks|desc"
-msgid ""
-"No activity ranks have been set up!\n"
-"Press 'AUTO' to automatically create a standard heirachy of voice | text | xp ranks, or select a role or press Create below!"
+msgid "No activity ranks have been set up!"
 msgstr ""
-"דרגות לא הוגדרו עבור השרת הזה!\n"
-"לחץ על \"צור באופן אוטומטי\" על מנת ליצור דרגות סטנדרטיות, או בחר ברול ספציפי וצור אחד בעצמך!"
 
-#: src/modules/ranks/ui/overview.py:384
+#: src/modules/ranks/ui/overview.py:459
+msgctxt "ui:rank_overview|embed:noranks|desc|admin_addendum"
+msgid ""
+"Press 'Auto Create' to automatically create a standard heirachy of ranks.\n"
+"To manually create ranks, press 'Create Rank' below, or select a role!"
+msgstr ""
+
+#: src/modules/ranks/ui/overview.py:468
 #, possible-python-brace-format
 msgctxt "ui:rank_overview|embed|title|type:voice"
 msgid "Voice Ranks in {guild_name}"
 msgstr "דרגות פעילות בחדרי קול ב {guild_name}"
 
-#: src/modules/ranks/ui/overview.py:389
+#: src/modules/ranks/ui/overview.py:473
 #, possible-python-brace-format
 msgctxt "ui:rank_overview|embed|title|type:xp"
 msgid "XP ranks in {guild_name}"
 msgstr "דרגות לפי נקודות ניסיון ב {guild_name}"
 
-#: src/modules/ranks/ui/overview.py:394
+#: src/modules/ranks/ui/overview.py:478
 #, possible-python-brace-format
 msgctxt "ui:rank_overview|embed|title|type:message"
 msgid "Message ranks in {guild_name}"
 msgstr "דרגות לפי כמות הודעות ב {guild_name}"
 
-#: src/modules/ranks/ui/overview.py:406
+#: src/modules/ranks/ui/overview.py:490
 msgctxt "ui:rank_overview|embed|field:note|name"
 msgid "Note"
 msgstr "פתקית"
 
-#: src/modules/ranks/ui/overview.py:412
+#: src/modules/ranks/ui/overview.py:496
 #, possible-python-brace-format
 msgctxt "ui:rank_overview|embed|field:note|value:with_season"
 msgid "Ranks are determined by activity since {timestamp}."
 msgstr "דרגות נקבעות על ידי פעילות מתאריך {timestamp}."
 
-#: src/modules/ranks/ui/overview.py:419
+#: src/modules/ranks/ui/overview.py:503
 #, possible-python-brace-format
 msgctxt "ui:rank_overview|embed|field:note|value:without_season"
 msgid ""
@@ -776,7 +1078,7 @@ msgstr ""
 "דרגות יקבעו על ידי פעילות *מכל הזמנים*.\n"
 "כדי לתת דרגה מזמן אחר (לדוגמא מחודש ספציפי או שנה וכו') השתמשו ב {stats_cmd} וקבעו את `התחלת_עונה` "
 
-#: src/modules/ranks/ui/overview.py:426
+#: src/modules/ranks/ui/overview.py:510
 msgctxt "ui:rank_overview|embed|field:note|value|voice_addendum"
 msgid ""
 "Also note that ranks will only be updated when a member leaves a tracked "
@@ -889,16 +1191,6 @@ msgstr "דרגה הודעות"
 msgctxt "ui:rank_editor|input:message|placeholder"
 msgid "Congratulatory message sent to the user upon achieving this rank."
 msgstr "הודעת איחולים תישלח למשתמש כשהוא יגיע לדרגה הזו."
-
-#: src/modules/ranks/ui/editor.py:207
-#, possible-python-brace-format
-msgctxt "ui:rank_editor|input:message|default|type:voice"
-msgid ""
-"Congratulations {user_mention}!\n"
-"For working hard for **{requires}**, you have achieved the rank of **{role_name}** in **{guild_name}**! Keep up the good work."
-msgstr ""
-"כל הכבוד על העבודה הקשה {user_mention}!\n"
-"עבדתם קשה והצלחתם להגיע אל **{requires}**, מאחר ועבדתם כל כך קשה, הצלחתם להשיג את **{role_name}** בשרת **{guild_name}**! בהצלחה בהמשך!"
 
 #: src/modules/ranks/ui/editor.py:262
 msgctxt "ui:rank_editor|mode:edit|title"

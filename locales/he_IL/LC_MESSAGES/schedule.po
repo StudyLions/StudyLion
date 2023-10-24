@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-01 16:01+0300\n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Ari Horesh, 2023\n"
 "Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
@@ -80,12 +80,12 @@ msgstr "צפה או נהל את הסשנים שקבעת בלו\"ז."
 #: src/modules/schedule/cog.py:749
 msgctxt "cmd:schedule|param:cancel"
 msgid "cancel"
-msgstr ""
+msgstr "בטל"
 
 #: src/modules/schedule/cog.py:752
 msgctxt "cmd:schedule|param:book"
 msgid "book"
-msgstr ""
+msgstr "קבע"
 
 #: src/modules/schedule/cog.py:758
 msgctxt "cmd:schedule|param:cancel|desc"
@@ -199,7 +199,7 @@ msgctxt "cmd:configure_schedule|desc"
 msgid "Configure Scheduled Session system"
 msgstr "תפריט הגדרות מערכת הלו\"זים"
 
-#: src/modules/schedule/lib.py:86 src/modules/schedule/ui/scheduleui.py:333
+#: src/modules/schedule/lib.py:86 src/modules/schedule/ui/scheduleui.py:347
 #, possible-python-brace-format
 msgctxt "ui:schedule|format_until|positive"
 msgid "in <1 hour"
@@ -209,22 +209,22 @@ msgstr[1] "העוד שעתיים"
 msgstr[2] "בעוד {number} שעות"
 msgstr[3] "בעוד {number} שעות"
 
-#: src/modules/schedule/lib.py:93 src/modules/schedule/ui/scheduleui.py:340
+#: src/modules/schedule/lib.py:93 src/modules/schedule/ui/scheduleui.py:354
 msgctxt "ui:schedule|format_until|now"
 msgid "right now!"
 msgstr "כרגע!"
 
-#: src/modules/schedule/settings.py:68
+#: src/modules/schedule/settings.py:70
 msgctxt "guildset:session_lobby"
 msgid "session_lobby"
 msgstr "לובי_סשנים"
 
-#: src/modules/schedule/settings.py:71
+#: src/modules/schedule/settings.py:73
 msgctxt "guildset:session_lobby|desc"
 msgid "Channel to post scheduled session announcement and status to."
 msgstr "הערוץ שבו אשלח התראות והכרזות של מערכת הלו\"זים"
 
-#: src/modules/schedule/settings.py:75
+#: src/modules/schedule/settings.py:77
 msgctxt "guildset:session_lobby|long_desc"
 msgid ""
 "Channel in which to announce scheduled sessions and post their status. I must have the `MANAGE_WEBHOOKS` permission in this channel.\n"
@@ -233,46 +233,46 @@ msgstr ""
 "הערוץ שבו אכריז על מערכת הלוזים והססטוס שלהם. אני צריך את ההרשאה  "
 "`MANAGE_WEBHOOKS` בערוץ כדי לעשות את זה. "
 
-#: src/modules/schedule/settings.py:81
+#: src/modules/schedule/settings.py:83
 msgctxt "guildset:session_lobby|accepts"
 msgid "Name or id of the session lobby channel."
 msgstr "שם או מספר מזהה של חדר הלובי של הסשנים."
 
-#: src/modules/schedule/settings.py:95
+#: src/modules/schedule/settings.py:97
 #, possible-python-brace-format
 msgctxt "guildset:session_lobby|set_response|set"
 msgid "Scheduled sessions will now be announced in {channel}"
 msgstr "עדכונים של מערכת הסשנים יהיו מוכרזים ב {channel}"
 
-#: src/modules/schedule/settings.py:100
+#: src/modules/schedule/settings.py:102
 msgctxt "guildset:session_lobby|set_response|unset"
 msgid ""
 "The schedule session lobby has been unset. Shutting down scheduled session "
 "system."
 msgstr "הלובי של מערכת הסשנים הוסר, מכבה את מערכת הסשנים."
 
-#: src/modules/schedule/settings.py:110
+#: src/modules/schedule/settings.py:112
 msgctxt "guildset:session_lobby|formatted|unset"
 msgid "`Not Set` (The scheduled session system is disabled.)"
 msgstr "`לא נקבע` (מערכת הלו\"זים מבוטלת)"
 
-#: src/modules/schedule/settings.py:115
+#: src/modules/schedule/settings.py:117
 #, possible-python-brace-format
 msgctxt "guildset:session_lobby|formatted|set"
 msgid "<#{channelid}>"
 msgstr "<#{channelid}>"
 
-#: src/modules/schedule/settings.py:124
+#: src/modules/schedule/settings.py:127
 msgctxt "guildset:session_room"
 msgid "session_room"
 msgstr "חדר_סשנים"
 
-#: src/modules/schedule/settings.py:127
+#: src/modules/schedule/settings.py:130
 msgctxt "guildset:session_room|desc"
 msgid "Special voice channel open to scheduled session members."
 msgstr "ערוץ קול מיוחד שאפשר רק לאנשים שקבעו סשן."
 
-#: src/modules/schedule/settings.py:131
+#: src/modules/schedule/settings.py:134
 msgctxt "guildset:session_room|long_desc"
 msgid ""
 "If set, this voice channel serves as a dedicated room for scheduled session "
@@ -291,33 +291,33 @@ msgstr ""
 "`VIEW_CHANNEL` כדי לעשות את זה, והרול שלי צריך להיות הכי גבוה בהיררכיה של "
 "הרולים."
 
-#: src/modules/schedule/settings.py:141
+#: src/modules/schedule/settings.py:144
 msgctxt "guildset:session_room|accepts"
 msgid "Name or id of the session room voice channel."
 msgstr "שם או מספר מזהה של חדר הקול של הסשנים."
 
-#: src/modules/schedule/settings.py:155
+#: src/modules/schedule/settings.py:158
 #, possible-python-brace-format
 msgctxt "guildset:session_room|set_response|set"
 msgid "Schedule session members will now be given access to {channel}"
 msgstr "משתמשים במערכת הסשנים יקבלו הרשאה אל {channel}"
 
-#: src/modules/schedule/settings.py:160
+#: src/modules/schedule/settings.py:163
 msgctxt "guildset:session_room|set_response|unset"
 msgid "The dedicated schedule session room has been removed."
 msgstr "החדר קולי של מערכת הסשנים הוסר."
 
-#: src/modules/schedule/settings.py:167
+#: src/modules/schedule/settings.py:171
 msgctxt "guildset:session_channels"
 msgid "session_channels"
 msgstr "חדרי_סשנים"
 
-#: src/modules/schedule/settings.py:170
+#: src/modules/schedule/settings.py:174
 msgctxt "guildset:session_channels|desc"
 msgid "Voice channels in which to track activity for scheduled sessions."
 msgstr "חדרי קול שבהם אעקוב אחרי פעילות במערכת הסשנים."
 
-#: src/modules/schedule/settings.py:174
+#: src/modules/schedule/settings.py:178
 msgctxt "guildset:session_channels|long_desc"
 msgid ""
 "Only activity in these channels (and in `session_room` if set) will count "
@@ -328,12 +328,12 @@ msgstr ""
 "רק פעילות בערוצים האלו תחשב בתור נוכחות במערכת הלו\"זים. אם בחרתם בקטגוריה, "
 "כל הערוצים מתחת לקטגוריה הזו יבחרו."
 
-#: src/modules/schedule/settings.py:181
+#: src/modules/schedule/settings.py:185
 msgctxt "guildset:session_channels|accepts"
 msgid "Comma separated list of session channel names or ids."
 msgstr "רשימה מופרדת עם פסיקים של הערוצים המוגדרים כערוצי סשנים."
 
-#: src/modules/schedule/settings.py:198
+#: src/modules/schedule/settings.py:202
 #, possible-python-brace-format
 msgctxt "guildset:session_channels|set_response|set"
 msgid ""
@@ -341,64 +341,64 @@ msgid ""
 "attendance: {channels}"
 msgstr "פעילות בסשנים הבאים עכשיו יחשבו כנוכחות במערכת הסשנים: {channels}"
 
-#: src/modules/schedule/settings.py:203
+#: src/modules/schedule/settings.py:207
 msgctxt "guildset:session_channels|set_response|unset"
 msgid ""
 "Activity in all (tracked) voice channels will now count towards session "
 "attendance."
 msgstr "פעילו בכל ערוצי הקול יחשבו בתור נוכחות במערכת הסשנים."
 
-#: src/modules/schedule/settings.py:213
+#: src/modules/schedule/settings.py:217
 msgctxt "guildset:session_channels|formatted|unset"
 msgid "All Channels (excluding `untracked_channels`)"
 msgstr "כל הערוצים (ללא הערוצים שלא נעקבים)"
 
-#: src/modules/schedule/settings.py:243
+#: src/modules/schedule/settings.py:248
 msgctxt "guildset:schedule_cost"
 msgid "schedule_cost"
 msgstr "מחיר_סשן"
 
-#: src/modules/schedule/settings.py:246
+#: src/modules/schedule/settings.py:251
 msgctxt "guildset:schedule_cost|desc"
 msgid "Booking cost for each scheduled session."
 msgstr "מחיר לקביעת כל סשן בלו\"ז."
 
-#: src/modules/schedule/settings.py:250
+#: src/modules/schedule/settings.py:255
 msgctxt "guildset:schedule_cost|long_desc"
 msgid ""
 "Members will be charged this many LionCoins for each scheduled session they "
 "book."
 msgstr "משתמשים יצטרכו לשלם את כמות המטבעות הזו כדי לקבוע סשן בלו\"ז."
 
-#: src/modules/schedule/settings.py:254
+#: src/modules/schedule/settings.py:259
 msgctxt "guildset:schedule_cost|accepts"
 msgid "Price of each session booking (non-negative integer)."
 msgstr "מחיר של כל סשן (מספר שלם חיובי)."
 
-#: src/modules/schedule/settings.py:266
+#: src/modules/schedule/settings.py:271
 #, possible-python-brace-format
 msgctxt "guildset:schedule_cost|set_response"
 msgid ""
 "Schedule session bookings will now cost {coin} **{amount}** per timeslot."
 msgstr "קביעת סשן יעלה עכשיו  {coin}**{amount}** כל פגישה."
 
-#: src/modules/schedule/settings.py:279
+#: src/modules/schedule/settings.py:284
 #, possible-python-brace-format
 msgctxt "guildset:schedule_cost|formatted"
 msgid "{coin}**{amount}** per booking."
 msgstr "{coin}**{amount}** עבור כל סשן."
 
-#: src/modules/schedule/settings.py:288
+#: src/modules/schedule/settings.py:294
 msgctxt "guildset:attendance_reward"
 msgid "attendance_reward"
 msgstr "פרס_נוכחות"
 
-#: src/modules/schedule/settings.py:291
+#: src/modules/schedule/settings.py:297
 msgctxt "guildset:attendance_reward|desc"
 msgid "Reward for attending a booked scheduled session."
 msgstr "פרס עבור נוכחות במערכת הלו\"זים."
 
-#: src/modules/schedule/settings.py:295
+#: src/modules/schedule/settings.py:301
 msgctxt "guildset:attendance_reward|long_desc"
 msgid ""
 "When a member successfully attends a scheduled session they booked, they "
@@ -406,12 +406,12 @@ msgid ""
 "`schedule_cost` setting."
 msgstr "כאשר מישהו נכח בהצלחה במערכת הלו\"זים הוא יקבל פרס של מטבעות."
 
-#: src/modules/schedule/settings.py:301
+#: src/modules/schedule/settings.py:307
 msgctxt "guildset:attendance_reward|accepts"
 msgid "Number of coins to reward session attendance."
 msgstr "מספר מטבעות שמשתמש יקבל בעקבות נוכחות מוצלחת בחדר הלו\"זים."
 
-#: src/modules/schedule/settings.py:313
+#: src/modules/schedule/settings.py:319
 #, possible-python-brace-format
 msgctxt "guildset:attendance_reward|set_response"
 msgid ""
@@ -419,23 +419,23 @@ msgid ""
 "session."
 msgstr "משתמשים יקבלו  {coin}**{amount}** כשהם משתתפים בסשן."
 
-#: src/modules/schedule/settings.py:323
+#: src/modules/schedule/settings.py:329
 #, possible-python-brace-format
 msgctxt "guildset:attendance_reward|formatted"
 msgid "{coin}**{amount}** upon attendance."
 msgstr "{coin}**{amount}** עבור נוכחות מוצלחת."
 
-#: src/modules/schedule/settings.py:332
+#: src/modules/schedule/settings.py:339
 msgctxt "guildset:attendance_bonus"
 msgid "group_attendance_bonus"
 msgstr "פרס_נוכחות_קבוצתית"
 
-#: src/modules/schedule/settings.py:335
+#: src/modules/schedule/settings.py:342
 msgctxt "guildset:attendance_bonus|desc"
 msgid "Bonus reward given when all members attend a scheduled session."
 msgstr "בונוס ינתן לכל המשתמשים כאשר כל מי שקבע את הסשן נכח בהצלחה."
 
-#: src/modules/schedule/settings.py:339
+#: src/modules/schedule/settings.py:346
 msgctxt "guildset:attendance_bonus|long_desc"
 msgid ""
 "When all members who have booked a session successfully attend the session, "
@@ -444,12 +444,12 @@ msgstr ""
 "כאשר כל המשתמשים שקבעו את הסשן הצטרפו לסשן בהצלחה, אני אתן בונוס לכולם בנוסף"
 " לפרס שמגיע להם על נוכחות."
 
-#: src/modules/schedule/settings.py:344
+#: src/modules/schedule/settings.py:351
 msgctxt "guildset:attendance_bonus|accepts"
 msgid "Bonus coins rewarded when everyone attends a session."
 msgstr "בונוס שכולם יקבלו שכולם משתתפים בסשן."
 
-#: src/modules/schedule/settings.py:356
+#: src/modules/schedule/settings.py:363
 #, possible-python-brace-format
 msgctxt "guildset:attendance_bonus|set_response"
 msgid ""
@@ -457,23 +457,23 @@ msgid ""
 "everyone attends."
 msgstr "משתתפים יקבלו בונוס של {coin}**{amount}**  אם כל מי שקבע השתתף בסשן."
 
-#: src/modules/schedule/settings.py:366
+#: src/modules/schedule/settings.py:373
 #, possible-python-brace-format
 msgctxt "guildset:attendance_bonus|formatted"
 msgid "{coin}**{amount}** bonus when all booked members attend."
 msgstr "{coin}**{amount}** בונוס כאשר כל מי שקבע את הסשן הצטרף."
 
-#: src/modules/schedule/settings.py:375
+#: src/modules/schedule/settings.py:383
 msgctxt "guildset:min_attendance"
 msgid "min_attendance"
 msgstr "נוכחות_מינימלית"
 
-#: src/modules/schedule/settings.py:378
+#: src/modules/schedule/settings.py:386
 msgctxt "guildset:min_attendance|desc"
 msgid "Minimum attendance before reward eligability."
 msgstr "זמן מינימלי לפני שאחשיב את הנוכחות כמוצלחת."
 
-#: src/modules/schedule/settings.py:382
+#: src/modules/schedule/settings.py:390
 msgctxt "guildset:min_attendance|long_desc"
 msgid ""
 "Scheduled session members will need to attend the session for at least this "
@@ -483,12 +483,12 @@ msgstr ""
 "משתמשים יצטרכו להישאר בחדר לתקופת זמן הזו לפני שאחשיב את הנוכחות שלהם "
 "שמוצלחת. "
 
-#: src/modules/schedule/settings.py:387
+#: src/modules/schedule/settings.py:395
 msgctxt "guildset:min_attendance|accepts"
 msgid "Number of minutes (1-60) before attendance is counted."
 msgstr "מספר הדקות (1-60) לפני שאחשיב נוכחות בחדר כמוצלחת."
 
-#: src/modules/schedule/settings.py:401
+#: src/modules/schedule/settings.py:409
 #, possible-python-brace-format
 msgctxt "guildset:min_attendance|set_response"
 msgid ""
@@ -496,30 +496,30 @@ msgid ""
 "least **`{amount}`** minutes."
 msgstr "הסשן יחושב כשמוצלח אחרי **`{amount}`** דקות."
 
-#: src/modules/schedule/settings.py:411
+#: src/modules/schedule/settings.py:419
 #, possible-python-brace-format
 msgctxt "guildset:min_attendance|formatted"
 msgid "**`{amount}`** minutes"
 msgstr "**`{amount}`** דקות"
 
-#: src/modules/schedule/settings.py:432
+#: src/modules/schedule/settings.py:440
 msgctxt "guildset:min_attendance|parse|error"
 msgid ""
 "Minimum attendance must be an integer number of minutes between `1` and "
 "`60`."
 msgstr "מספר הדקות חייב להיות מספר שלם בין 1 ל60"
 
-#: src/modules/schedule/settings.py:443
+#: src/modules/schedule/settings.py:452
 msgctxt "guildset:schedule_blacklist_role"
 msgid "schedule_blacklist_role"
 msgstr "סשנים_רשימה_שחורה"
 
-#: src/modules/schedule/settings.py:446
+#: src/modules/schedule/settings.py:455
 msgctxt "guildset:schedule_blacklist_role|desc"
 msgid "Role which disables scheduled session booking."
 msgstr "רולים שחוסמים מפני קביעה לחדר לוז\"ים"
 
-#: src/modules/schedule/settings.py:450
+#: src/modules/schedule/settings.py:459
 msgctxt "guildset:schedule_blacklist_role|long_desc"
 msgid ""
 "Members with this role will not be allowed to book scheduled sessions in "
@@ -533,44 +533,44 @@ msgstr ""
 "אנשים שמעצבנים אנשים אחרים על ידי קביעה של סשנים והברזה חוזרת ונשנת. הם לא "
 "יוכלו להשתמש בפונקציה הזו של הבוט בשרת הזה."
 
-#: src/modules/schedule/settings.py:458
+#: src/modules/schedule/settings.py:467
 msgctxt "guildset:schedule_blacklist_role|accepts"
 msgid "Blacklist role name or id."
 msgstr "רול או מספר זהות של רשימה שחורה."
 
-#: src/modules/schedule/settings.py:471
+#: src/modules/schedule/settings.py:480
 #, possible-python-brace-format
 msgctxt "guildset:schedule_blacklist_role|set_response|set"
 msgid "Members with {role} will be unable to book scheduled sessions."
 msgstr "משתמשים עם הרול הזה {role} לא יוכלו לקבוע פגישות לוז\"ים יותר."
 
-#: src/modules/schedule/settings.py:476
+#: src/modules/schedule/settings.py:485
 msgctxt "guildset:schedule_blacklist_role|set_response|unset"
 msgid "The schedule blacklist role has been unset."
 msgstr "הרשימה השחורה של מערכת הסשנים נמחקה."
 
-#: src/modules/schedule/settings.py:486
+#: src/modules/schedule/settings.py:495
 #, possible-python-brace-format
 msgctxt "guildset:schedule_blacklist_role|formatted|set"
 msgid "{role} members will not be able to book scheduled sessions."
 msgstr "{role} לא יוכלו להשתמש במערכת הלו\"זים."
 
-#: src/modules/schedule/settings.py:491
+#: src/modules/schedule/settings.py:500
 msgctxt "guildset:schedule_blacklist_role|formatted|unset"
 msgid "Not Set"
 msgstr "לא נקבע."
 
-#: src/modules/schedule/settings.py:500
+#: src/modules/schedule/settings.py:510
 msgctxt "guildset:schedule_blacklist_after"
 msgid "schedule_blacklist_after"
 msgstr "סשן_רשימהשחורה_לאחרכמהזמן"
 
-#: src/modules/schedule/settings.py:503
+#: src/modules/schedule/settings.py:513
 msgctxt "guildset:schedule_blacklist_after|desc"
 msgid "Number of missed sessions within 24h before blacklisting."
 msgstr "מספר הסשנים שהוברזו ב24 לפני שאכניס אותם לרשימה השחורה."
 
-#: src/modules/schedule/settings.py:507
+#: src/modules/schedule/settings.py:517
 msgctxt "guildset:schedule_blacklist_after|long_desc"
 msgid ""
 "Members who miss more than this number of booked sessions in a single 24 "
@@ -582,13 +582,13 @@ msgstr ""
 " ולא יוכלו להצטרף לחדר סשנים. סימו לב שחייבות להיות לי הרשאות נכונות כדי "
 "שאצליח לתת את הרול הזה לאנשים."
 
-#: src/modules/schedule/settings.py:514
+#: src/modules/schedule/settings.py:524
 msgctxt "guildset:schedule_blacklist_after|accepts"
 msgid "A number of missed sessions (1-24) before blacklisting."
 msgstr ""
 "מספר הסשנים שהוברזו (בין 1 ל24) האחרונות לפני שאכניס אותם לרשימה השחורה."
 
-#: src/modules/schedule/settings.py:529
+#: src/modules/schedule/settings.py:539
 #, possible-python-brace-format
 msgctxt "guildset:schedule_blacklist_after|set_response|set"
 msgid ""
@@ -598,14 +598,14 @@ msgstr ""
 "משתמשים יכנסו לרשימה השחורה לאחר  **`{amount}`** סשנים שהם הבריזו מהם ב24 "
 "שעות."
 
-#: src/modules/schedule/settings.py:534
+#: src/modules/schedule/settings.py:544
 msgctxt "guildset:schedule_blacklist_after|set_response|unset"
 msgid ""
 "Members will not be automatically blacklisted from booking scheduled "
 "sessions."
 msgstr "משתמשים לא יכנסו לרשימה השחורה אוטומטית."
 
-#: src/modules/schedule/settings.py:544
+#: src/modules/schedule/settings.py:554
 #, possible-python-brace-format
 msgctxt "guildset:schedule_blacklist_after|formatted|set"
 msgid "Blacklist after **`{amount}`** missed sessions within `24h`."
@@ -613,12 +613,12 @@ msgstr ""
 "משתמשים יכנסו לרשימה השחורה לאחר  **`{amount}`** סשנים שהם הבריזו מהם ב24 "
 "שעות."
 
-#: src/modules/schedule/settings.py:549
+#: src/modules/schedule/settings.py:559
 msgctxt "guildset:schedule_blacklist_after|formatted|unset"
 msgid "Do not automatically blacklist."
 msgstr "אל תכניס לרשימה השחורה אוטומטית."
 
-#: src/modules/schedule/settings.py:561
+#: src/modules/schedule/settings.py:571
 msgctxt "guildset:schedule_blacklist_role|parse|error"
 msgid "Blacklist threshold must be a number between `1` and `24`."
 msgstr "המספר של הרשימה השחורה חייב להיות מספר בין 1 ל24."
@@ -628,107 +628,117 @@ msgctxt "ui:schedule_config|button:page0|label"
 msgid "Page 1"
 msgstr "עמוד 1"
 
-#: src/modules/schedule/ui/settingui.py:88
+#: src/modules/schedule/ui/settingui.py:89
 msgctxt "ui:schedule_config|menu:lobby|placeholder"
 msgid "Select Lobby Channel"
 msgstr "בחר ערוץ לובי"
 
-#: src/modules/schedule/ui/settingui.py:105
+#: src/modules/schedule/ui/settingui.py:107
 msgctxt "ui:schedule_config|menu:room|placeholder"
 msgid "Select Session Room"
 msgstr "בחר ערוץ סשנים"
 
-#: src/modules/schedule/ui/settingui.py:123
+#: src/modules/schedule/ui/settingui.py:126
 msgctxt "ui:schedule_config|menu:channels|placeholder"
 msgid "Select Session Channels"
 msgstr "בחר ערוצי סשנים"
 
-#: src/modules/schedule/ui/settingui.py:137
+#: src/modules/schedule/ui/settingui.py:140
 msgctxt "ui:schedule_config|button:page1|label"
 msgid "Page 2"
 msgstr "עמוד 2"
 
-#: src/modules/schedule/ui/settingui.py:152
+#: src/modules/schedule/ui/settingui.py:155
 msgctxt "ui:schedule_config|button:page2|label"
 msgid "Page 3"
 msgstr "עמוד 3"
 
-#: src/modules/schedule/ui/settingui.py:169
+#: src/modules/schedule/ui/settingui.py:173
 msgctxt "ui:schedule_config|menu:blacklist_role|placeholder"
 msgid "Select Blacklist Role"
 msgstr "בחר רול לרשימה השחורה"
 
-#: src/modules/schedule/ui/settingui.py:177
+#: src/modules/schedule/ui/settingui.py:181
 msgctxt "ui:schedule_config|embed|title"
 msgid "Scheduled Session Configuration Panel"
 msgstr "תפריט הגדרות מערכת לו\"זים"
 
-#: src/modules/schedule/ui/settingui.py:230
-msgctxt "dash:schedule|title"
-msgid "Scheduled Session Configuration ({commands[configure schedule]})"
-msgstr "ניהול מערכת הלו\"זים ({commands[configure schedule]})"
-
 #: src/modules/schedule/ui/settingui.py:234
+msgctxt "dash:schedule|title"
+msgid "Scheduled Session Configuration ({commands[admin config schedule]})"
+msgstr ""
+
+#: src/modules/schedule/ui/settingui.py:238
 msgctxt "dash:schedule|dropdown|placeholder"
 msgid "Scheduled Sessions Panel"
 msgstr "תפריט הגדרות מערכת לו\"זים"
 
-#: src/modules/schedule/ui/settingui.py:251
+#: src/modules/schedule/ui/settingui.py:255
 msgctxt "dash:schedule|section:schedule_channels|name"
-msgid "Scheduled Session Channels ({commands[configure schedule]})"
-msgstr "ניהול מערכת הלו\"זים ({commands[configure schedule]})"
+msgid "Scheduled Session Channels ({commands[admin config schedule]})"
+msgstr ""
 
-#: src/modules/schedule/ui/settingui.py:261
+#: src/modules/schedule/ui/settingui.py:265
 msgctxt "dash:schedule|section:schedule_rewards|name"
-msgid "Scheduled Session Rewards ({commands[configure schedule]})"
-msgstr "ניהול פרסים מערכת לו\"זים ({commands[configure schedule]})"
+msgid "Scheduled Session Rewards ({commands[admin config schedule]})"
+msgstr ""
 
-#: src/modules/schedule/ui/settingui.py:271
+#: src/modules/schedule/ui/settingui.py:275
 msgctxt "dash:schedule|section:schedule_blacklist|name"
-msgid "Scheduled Session Blacklist ({commands[configure schedule]})"
-msgstr "ניהול מערכת הלו\"זים רשימה שחורה ({commands[configure schedule]})"
+msgid "Scheduled Session Blacklist ({commands[admin config schedule]})"
+msgstr ""
 
 #: src/modules/schedule/ui/scheduleui.py:31
 msgctxt "ui:schedule|about"
-msgid "Guide tips here TBD"
-msgstr "Guide tips here TBD"
+msgid ""
+"**Do you think you can commit to a schedule and stick to it?**\n"
+"**Schedule voice sessions here and get rewarded for keeping yourself accountable!**\n"
+"\n"
+"Use the menu below to book timeslots using LionCoins. If you are active (in the dedicated voice channels) during these times, you will be rewarded, along with a large bonus if everyone who scheduled that slot made it!\n"
+"Beware though, if you fail to make it, all your booked sessions will be cancelled with no refund! And if you keep failing to attend your scheduled sessions, you may be forbidden from booking them in future.\n"
+"\n"
+"When your scheduled session starts, you will recieve a ping from the schedule channel, which will have more information about how to attend your session.\n"
+"If you discover you can't make your scheduled session, please be responsible and use this command to cancel or clear your schedule!\n"
+"\n"
+"**Note:** *Make sure your timezone is set correctly (with `/my timezone`), or the times I tell might not make sense!*"
+msgstr ""
 
-#: src/modules/schedule/ui/scheduleui.py:116
+#: src/modules/schedule/ui/scheduleui.py:130
 msgctxt "ui:schedule|button:clear|error:nothing"
 msgid "No upcoming sessions to cancel! Your schedule is already clear."
 msgstr "אין סשנים שקבעתם שאתם יכולים לבטל! הלו\"ז שלכם כבר ריק."
 
-#: src/modules/schedule/ui/scheduleui.py:129
+#: src/modules/schedule/ui/scheduleui.py:143
 msgctxt "ui:schedule|button:clear|success"
 msgid "Successfully cancelled and refunded your upcoming scheduled sessions."
 msgstr "ביטלתי והחזרתי את המטבעות עבור הסשנים העתידיים שלכם."
 
-#: src/modules/schedule/ui/scheduleui.py:142
+#: src/modules/schedule/ui/scheduleui.py:156
 msgctxt "ui:schedule|button:clear|label"
 msgid "Clear Schedule"
 msgstr "נקה יומן"
 
-#: src/modules/schedule/ui/scheduleui.py:158
+#: src/modules/schedule/ui/scheduleui.py:172
 msgctxt "ui:schedule|button:about|label"
 msgid "About Schedule"
 msgstr "מידע על הלו\"ז"
 
-#: src/modules/schedule/ui/scheduleui.py:184
+#: src/modules/schedule/ui/scheduleui.py:198
 msgctxt "ui:schedule|menu:booking|error:current_slot"
 msgid "You cannot schedule a currently running session!"
 msgstr "אתה לא יכול לקבוע סשן שכבר רץ כרגע."
 
-#: src/modules/schedule/ui/scheduleui.py:191
+#: src/modules/schedule/ui/scheduleui.py:205
 msgctxt "ui:schedule|menu:booking|error:next_slot"
 msgid "Too late! You cannot schedule a session starting in the next minute."
 msgstr "מאוחר מידי! אי אפשר לקבוע סשן שמתחיל ממש בכל כרגע."
 
-#: src/modules/schedule/ui/scheduleui.py:198
+#: src/modules/schedule/ui/scheduleui.py:212
 msgctxt "ui:schedule|menu:booking|error:already_booked"
 msgid "You have already booked one or more of the requested sessions!"
 msgstr "כבר קבעתם אחד או יותר מהסשנים הללו."
 
-#: src/modules/schedule/ui/scheduleui.py:211
+#: src/modules/schedule/ui/scheduleui.py:225
 #, possible-python-brace-format
 msgctxt "ui:schedule|menu:booking|error:insufficient_balance"
 msgid ""
@@ -738,7 +748,7 @@ msgstr ""
 "כדי לקבוע `{count}` סשנים צריך  {coin}**{required}**, אבל יש לכם רק "
 "{coin}**{balance}**!"
 
-#: src/modules/schedule/ui/scheduleui.py:227
+#: src/modules/schedule/ui/scheduleui.py:241
 #, possible-python-brace-format
 msgctxt "ui:schedule|menu:booking|success"
 msgid "Successfully booked your scheduled session at {times}."
@@ -758,34 +768,34 @@ msgstr[3] ""
 "הצלחתי לקבוע את הסשנים הבאים בהצלחה\n"
 "{times}"
 
-#: src/modules/schedule/ui/scheduleui.py:250
+#: src/modules/schedule/ui/scheduleui.py:264
 msgctxt "ui:schedule|menu:booking|placeholder:blacklisted"
 msgid "Book Sessions (Cannot book - Blacklisted)"
 msgstr "קביעת סשנים (לא ניתן לקבוע - רשימה שחורה)"
 
-#: src/modules/schedule/ui/scheduleui.py:258
+#: src/modules/schedule/ui/scheduleui.py:272
 #, possible-python-brace-format
 msgctxt "ui:schedule|menu:booking|placeholder:regular"
 msgid "Book Sessions ({amount} LC)"
 msgstr "קבע בלו\"ז ({amount} LC)"
 
-#: src/modules/schedule/ui/scheduleui.py:303
+#: src/modules/schedule/ui/scheduleui.py:317
 #, possible-python-brace-format
 msgctxt "ui:schedule|menu:slots|option|format"
 msgid "{day} {time} ({until})"
 msgstr "{day} {time} ({until})"
 
-#: src/modules/schedule/ui/scheduleui.py:307
+#: src/modules/schedule/ui/scheduleui.py:321
 msgctxt "ui:schedule|menu:slots|option|day:today"
 msgid "Today"
 msgstr "היום"
 
-#: src/modules/schedule/ui/scheduleui.py:311
+#: src/modules/schedule/ui/scheduleui.py:325
 msgctxt "ui:schedule|menu:slots|option|day:tomorrow"
 msgid "Tomorrow"
 msgstr "מחר"
 
-#: src/modules/schedule/ui/scheduleui.py:362
+#: src/modules/schedule/ui/scheduleui.py:376
 msgctxt "ui:schedule|menu:cancel|error:current_slot"
 msgid ""
 "You cannot cancel a currently running *scheduled* session! Please attend it "
@@ -794,7 +804,7 @@ msgstr ""
 "לא ניתן לבטל סשן שכבר התחיל. אנא השתדל להצטרף אליו, או שתמנע מחבריך לקבל "
 "בונוס."
 
-#: src/modules/schedule/ui/scheduleui.py:368
+#: src/modules/schedule/ui/scheduleui.py:382
 msgctxt "ui:schedule|menu:cancel|error:too_late"
 msgid ""
 "Too late! You cannot cancel a scheduled session within a minute of it "
@@ -803,12 +813,12 @@ msgstr ""
 "מאוחר מידי! לא ניתן לבטל סשן כל כך קרוב ממתי שהוא מתחיל. אנא הצטרף אליו כדי "
 "לא למנוע מחבריך לקבל את הבונוס שלהם."
 
-#: src/modules/schedule/ui/scheduleui.py:385
+#: src/modules/schedule/ui/scheduleui.py:399
 msgctxt "ui:schedule|menu:cancel|error:already_cancelled"
 msgid "The selected bookings no longer exist! Nothing to cancel."
 msgstr "הסשן שבחרת כבר לא קיים! אין לי מה לבטל."
 
-#: src/modules/schedule/ui/scheduleui.py:395
+#: src/modules/schedule/ui/scheduleui.py:409
 #, possible-python-brace-format
 msgctxt "ui:schedule|menu:cancel|success"
 msgid ""
@@ -830,32 +840,32 @@ msgstr[3] ""
 "ביטלתי והחזרתי את הכסף על הסשנים הבאים: \n"
 "{times}."
 
-#: src/modules/schedule/ui/scheduleui.py:416
+#: src/modules/schedule/ui/scheduleui.py:430
 msgctxt "ui:schedule|menu:cancel|placeholder"
 msgid "Cancel booked sessions"
 msgstr "בטל סשנים שנקבעו"
 
-#: src/modules/schedule/ui/scheduleui.py:438
+#: src/modules/schedule/ui/scheduleui.py:452
 msgctxt "ui:schedule|embed|author"
 msgid "Your Scheduled Sessions and Past Statistics"
 msgstr "הלו\"ז שלך וסטטיסטיקות קודמות"
 
-#: src/modules/schedule/ui/scheduleui.py:450
+#: src/modules/schedule/ui/scheduleui.py:464
 msgctxt "ui:schedule|embed|field:stats|field:recent"
 msgid "Recent"
 msgstr "לאחרונה"
 
-#: src/modules/schedule/ui/scheduleui.py:457
+#: src/modules/schedule/ui/scheduleui.py:471
 msgctxt "ui:schedule|embed|field:stats|field:alltime"
 msgid "All Time"
 msgstr "כל הזמנים"
 
-#: src/modules/schedule/ui/scheduleui.py:463
+#: src/modules/schedule/ui/scheduleui.py:477
 msgctxt "ui:schedule|embed|field:stats|field:streak"
 msgid "Streak"
 msgstr "רצף"
 
-#: src/modules/schedule/ui/scheduleui.py:468
+#: src/modules/schedule/ui/scheduleui.py:482
 #, possible-python-brace-format
 msgctxt "ui:schedule|embed|field:stats|field:streak|value:zero"
 msgid "One session attended! Keep it up!"
@@ -865,27 +875,27 @@ msgstr[1] "נכחת בשתי סשנים! כל הכבוד!"
 msgstr[2] "נכחת בהרבה סשנים! כל הכבוד!"
 msgstr[3] "**{streak}** סשנים ברצף! כל הכבוד!"
 
-#: src/modules/schedule/ui/scheduleui.py:475
+#: src/modules/schedule/ui/scheduleui.py:489
 msgctxt "ui:schedule|embed|field:stats|field:streak|value:positive"
 msgid "No streak yet!"
 msgstr "אין רצף כרגע!"
 
-#: src/modules/schedule/ui/scheduleui.py:483
+#: src/modules/schedule/ui/scheduleui.py:497
 msgctxt "ui:schedule|embed|field:stats|name"
 msgid "Session Statistics"
 msgstr "סטטיסטיקת נוכחות"
 
-#: src/modules/schedule/ui/scheduleui.py:502
+#: src/modules/schedule/ui/scheduleui.py:516
 msgctxt "ui:schedule|embed|field:upcoming|name"
 msgid "Upcoming Sessions"
 msgstr "סשנים עתידיים"
 
-#: src/modules/schedule/ui/scheduleui.py:506
+#: src/modules/schedule/ui/scheduleui.py:520
 msgctxt "ui:schedule|embed|field:upcoming|value:empty"
 msgid "No sessions scheduled yet!"
 msgstr "שום סשן לא נקבע עדיין!"
 
-#: src/modules/schedule/ui/scheduleui.py:520
+#: src/modules/schedule/ui/scheduleui.py:534
 #, possible-python-brace-format
 msgctxt "ui:schedule|embed|stats_format"
 msgid ""
@@ -897,13 +907,13 @@ msgstr ""
 "**{percent}%** אחוזי נוכחות.\n"
 "**{average}** זמן נוכחות ממוצע."
 
-#: src/modules/schedule/ui/scheduleui.py:534
+#: src/modules/schedule/ui/scheduleui.py:548
 #, possible-python-brace-format
 msgctxt "ui:schedule|booking_format:short"
 msgid "`{until}` | {start} - {end}"
 msgstr "`{until}` | {start} - {end}"
 
-#: src/modules/schedule/ui/scheduleui.py:538
+#: src/modules/schedule/ui/scheduleui.py:552
 #, possible-python-brace-format
 msgctxt "ui:schedule|booking_format:long"
 msgid "> `{until}` | {start} - {end}"

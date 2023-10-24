@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-24 12:21+0300\n"
+"POT-Creation-Date: 2023-10-15 15:58+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
@@ -21,27 +21,27 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: src/modules/rolemenus/cog.py:41
+#: src/modules/rolemenus/cog.py:43
 msgctxt "argtype:menu_style|opt:reaction"
 msgid "Reaction Roles"
 msgstr "Cargos por Reação"
 
-#: src/modules/rolemenus/cog.py:45
+#: src/modules/rolemenus/cog.py:47
 msgctxt "argtype:menu_style|opt:button"
 msgid "Button Menu"
 msgstr "Botão do Menu"
 
-#: src/modules/rolemenus/cog.py:49
+#: src/modules/rolemenus/cog.py:51
 msgctxt "argtype:menu_style|opt:dropdown"
 msgid "Dropdown Menu"
 msgstr "Menu Suspenso"
 
-#: src/modules/rolemenus/cog.py:68
+#: src/modules/rolemenus/cog.py:70
 msgctxt "ctxcmd:rolemenu"
 msgid "Role Menu Editor"
 msgstr "Editor de Cargos"
 
-#: src/modules/rolemenus/cog.py:81
+#: src/modules/rolemenus/cog.py:83
 msgctxt "ctxcmd:rolemenu|error:author_perms"
 msgid ""
 "You need the `MANAGE_ROLES` permission in order to manage the server role "
@@ -50,7 +50,7 @@ msgstr ""
 "Você precisa ter permissão ˋGERENCIAR_CARGOSˋ para que possa gerenciar as "
 "configurações dos cargos."
 
-#: src/modules/rolemenus/cog.py:88
+#: src/modules/rolemenus/cog.py:90
 msgctxt "ctxcmd:rolemenus|error:my_perms"
 msgid ""
 "I lack the `MANAGE_ROLES` permission required to offer roles from role "
@@ -59,12 +59,54 @@ msgstr ""
 "Está faltando uma permissão de ˋGERENCIAR_CARGOSˋ, necessária para "
 "disponibilizar o menu de cargos."
 
-#: src/modules/rolemenus/cog.py:300
+#: src/modules/rolemenus/cog.py:333
+msgctxt "eventlog|event:rolemenu_role_expire|error:remove_failed"
+msgid "Removed the role, but the member still has the role!!"
+msgstr ""
+
+#: src/modules/rolemenus/cog.py:344
+msgctxt "eventlog|event:rolemenu_role_expire|error:member_gone"
+msgid "Member could not be found.. role has been removed from saved roles."
+msgstr ""
+
+#: src/modules/rolemenus/cog.py:350
+#, possible-python-brace-format
+msgctxt "eventlog|event:rolemenu_role_expire|error:no_role"
+msgid "Role {role} no longer exists."
+msgstr ""
+
+#: src/modules/rolemenus/cog.py:356
+msgctxt "eventlog|event:rolemenu_role_expire|title"
+msgid "Equipped role has expired"
+msgstr ""
+
+#: src/modules/rolemenus/cog.py:360
+#, possible-python-brace-format
+msgctxt "eventlog|event:rolemenu_role_expire|desc"
+msgid "{member}'s role {role} has now expired."
+msgstr ""
+
+#: src/modules/rolemenus/cog.py:368
+msgctxt "eventlog|event:rolemenu_role_expire|field:menu"
+msgid "Obtained From"
+msgstr ""
+
+#: src/modules/rolemenus/cog.py:377
+msgctxt "eventlog|event:rolemenu_role_expire|field:menu"
+msgid "Obtained At"
+msgstr ""
+
+#: src/modules/rolemenus/cog.py:384
+msgctxt "eventlog|event:rolemenu_role_expire|field:expiry"
+msgid "Expiry"
+msgstr ""
+
+#: src/modules/rolemenus/cog.py:419
 msgctxt "parse:message_link|suberror:message_dne"
 msgid "Could not find the linked message, has it been deleted?"
 msgstr "Não pude encontrar a mensagem referida. Ela foi deletada?"
 
-#: src/modules/rolemenus/cog.py:305
+#: src/modules/rolemenus/cog.py:424
 #, possible-python-brace-format
 msgctxt "parse:message_link|suberror:no_perms"
 msgid ""
@@ -74,13 +116,13 @@ msgstr ""
 "Permissões insuficientes! Eu preciso de permissões para ˋMESSAGE_HISTORYˋ em"
 " {channel}."
 
-#: src/modules/rolemenus/cog.py:310
+#: src/modules/rolemenus/cog.py:429
 #, possible-python-brace-format
 msgctxt "parse:message_link|suberror:channel_dne"
 msgid "The channel `{channelid}` could not be found in this server."
 msgstr "O canal ˋ{channelid}ˋ não pôde ser encontrado neste servidor."
 
-#: src/modules/rolemenus/cog.py:315
+#: src/modules/rolemenus/cog.py:434
 msgctxt "parse:message_link|suberror:malformed_link"
 msgid ""
 "Malformed message link. Please copy the link by right clicking the target "
@@ -89,7 +131,7 @@ msgstr ""
 "O link para a mensagem referida está inconsistente. Por favor, copie o link "
 "clicando com o botão direito do mouse sobre a mensagem."
 
-#: src/modules/rolemenus/cog.py:322
+#: src/modules/rolemenus/cog.py:441
 #, possible-python-brace-format
 msgctxt "parse:message_link|error"
 msgid ""
@@ -99,17 +141,17 @@ msgstr ""
 "Uma falha ocorreu com o link da mensagem informado.\n"
 "**ERRO:** {error}"
 
-#: src/modules/rolemenus/cog.py:434
+#: src/modules/rolemenus/cog.py:553
 msgctxt "cmd:rolemenus"
 msgid "rolemenus"
 msgstr "menucargos"
 
-#: src/modules/rolemenus/cog.py:437
+#: src/modules/rolemenus/cog.py:556
 msgctxt "cmd:rolemenus|desc"
 msgid "View and configure the role menus in this server."
 msgstr "Veja e configure o menu de cargos neste servidor."
 
-#: src/modules/rolemenus/cog.py:454
+#: src/modules/rolemenus/cog.py:573
 msgctxt "cmd:rolemenus|error:author_perms"
 msgid ""
 "You need the `MANAGE_ROLES` permission in order to manage the server role "
@@ -118,7 +160,7 @@ msgstr ""
 "Você precisa de permissão para ˋGERENCIAR_CARGOSˋ para que possa gerenciar o"
 " menu de cargos do servidor."
 
-#: src/modules/rolemenus/cog.py:461
+#: src/modules/rolemenus/cog.py:580
 msgctxt "cmd:rolemenus|error:my_perms"
 msgid ""
 "I lack the `MANAGE_ROLES` permission required to offer roles from role "
@@ -127,99 +169,99 @@ msgstr ""
 "Não tenho permissão de ˋGERENCIAR_CARGOSˋ, necessária para oferecer um menu "
 "de cargos."
 
-#: src/modules/rolemenus/cog.py:496
+#: src/modules/rolemenus/cog.py:615
 #, possible-python-brace-format
 msgctxt "acmpl:menus|choice:no_choices|name"
 msgid "No role menus matching '{partial}'"
 msgstr "Não há coincidência com o menu de cargos '{partial}'"
 
-#: src/modules/rolemenus/cog.py:515
+#: src/modules/rolemenus/cog.py:634
 msgctxt "acmpl:menuroles|param:menu|keyname"
 msgid "menu"
 msgstr "menu"
 
-#: src/modules/rolemenus/cog.py:521
+#: src/modules/rolemenus/cog.py:640
 msgctxt "acmpl:menuroles|choice:no_menu|name"
 msgid "Please select a menu first"
 msgstr "Por favor, primeiramente selecione um menu"
 
-#: src/modules/rolemenus/cog.py:545
+#: src/modules/rolemenus/cog.py:664
 #, possible-python-brace-format
 msgctxt "acmpl:menuroles|choice:invalid_menu|name"
 msgid "Menu '{name}' does not exist!"
 msgstr "Menu '{name}' não existe!"
 
-#: src/modules/rolemenus/cog.py:574
+#: src/modules/rolemenus/cog.py:693
 #, possible-python-brace-format
 msgctxt "acmpl:menuroles|choice:no_matching|name"
 msgid "No roles in this menu matching '{partial}'"
 msgstr "Nenhum cargo neste menu confere com este '{partial}' "
 
-#: src/modules/rolemenus/cog.py:581
+#: src/modules/rolemenus/cog.py:700
 msgctxt "group:rolemenu"
 msgid "rolemenu"
 msgstr "menucargo"
 
-#: src/modules/rolemenus/cog.py:584
+#: src/modules/rolemenus/cog.py:703
 msgctxt "group:rolemenu|desc"
 msgid "Base command group for role menu configuration."
 msgstr "Grupo de comandos base para configuração do menu  de cargos. "
 
-#: src/modules/rolemenus/cog.py:593
+#: src/modules/rolemenus/cog.py:712
 msgctxt "cmd:rolemenu_create"
 msgid "newmenu"
 msgstr "novomenu"
 
-#: src/modules/rolemenus/cog.py:596
+#: src/modules/rolemenus/cog.py:715
 msgctxt "cmd:rolemenu_create|desc"
 msgid "Create a new role menu (optionally using an existing message)"
 msgstr ""
 "Crie um novo menu de cargo (opcionalmente, use mensagens já existentes)"
 
-#: src/modules/rolemenus/cog.py:610
+#: src/modules/rolemenus/cog.py:729
 msgctxt "cmd:rolemenu_create|param:message"
 msgid "message_link"
 msgstr "link_mensagem"
 
-#: src/modules/rolemenus/cog.py:611
+#: src/modules/rolemenus/cog.py:730
 msgctxt "cmd:rolemenu_create|param:menu_style"
 msgid "menu_style"
 msgstr "estilo_menu"
 
-#: src/modules/rolemenus/cog.py:612
+#: src/modules/rolemenus/cog.py:731
 msgctxt "cmd:rolemenu_create|param:remplate"
 msgid "template"
 msgstr "modelo"
 
-#: src/modules/rolemenus/cog.py:613
+#: src/modules/rolemenus/cog.py:732
 msgctxt "cmd:rolemenu_create|param:rawmessage"
 msgid "custom_message"
 msgstr "mensagem_personalizada"
 
-#: src/modules/rolemenus/cog.py:623
+#: src/modules/rolemenus/cog.py:742
 msgctxt "cmd:rolemenu_create|param:message|desc"
 msgid "Link to an existing message to turn it into a (reaction) role menu"
 msgstr ""
 "Link de uma mensagem, já existente, para transforma-la em um painel (por "
 "reação) de cargos."
 
-#: src/modules/rolemenus/cog.py:627
+#: src/modules/rolemenus/cog.py:746
 msgctxt "cmd:rolemenu_create|param:menu_style"
 msgid "Selection style for this menu (using buttons, dropdowns, or reactions)"
 msgstr ""
 "Estilo de seleção para este menu (usando botões, menu suspenso, ou reações)"
 
-#: src/modules/rolemenus/cog.py:631
+#: src/modules/rolemenus/cog.py:750
 msgctxt "cmd:rolemenu_create|param:template"
 msgid "Template to use for the menu message body"
 msgstr "Modelo a usar para o corpo da mensagem do menu"
 
-#: src/modules/rolemenus/cog.py:635
+#: src/modules/rolemenus/cog.py:754
 msgctxt "cmd:rolemenu_create|param:rawmessage"
 msgid "Attach a custom menu message to use"
 msgstr "Anexe uma mensagem personalizada a usar"
 
-#: src/modules/rolemenus/cog.py:664
+#: src/modules/rolemenus/cog.py:783
 msgctxt "cmd:rolemenu_create|error:author_perms"
 msgid ""
 "You need the `MANAGE_ROLES` permission in order to create new role menus."
@@ -227,7 +269,7 @@ msgstr ""
 "Você precisa ter permissão para ˋGERENCIAR_CARGOSˋ para que possa criar "
 "novos menus de cargo."
 
-#: src/modules/rolemenus/cog.py:671
+#: src/modules/rolemenus/cog.py:790
 msgctxt "cmd:rolemenu_create|error:my_perms"
 msgid ""
 "I lack the `MANAGE_ROLES` permission needed to offer roles from role menus."
@@ -235,7 +277,7 @@ msgstr ""
 "Não tenho permissão de ˋGERENCIAR_CARGOSˋ, necessária para oferecer cargos "
 "por um menu de cargos."
 
-#: src/modules/rolemenus/cog.py:690
+#: src/modules/rolemenus/cog.py:809
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_create|error:message_exists"
 msgid "The message {link} already has a role menu! Use {edit_cmd} to edit it."
@@ -243,7 +285,7 @@ msgstr ""
 "A mensagem {link} já é usada como um menu de cargos! Use {edit_cmd} para "
 "editá-la."
 
-#: src/modules/rolemenus/cog.py:711
+#: src/modules/rolemenus/cog.py:830
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_create|error:style_notmine"
 msgid ""
@@ -253,7 +295,7 @@ msgstr ""
 "Eu não posso criar o ˋ{style}ˋ estilo de um menu, em uma mensagem que não "
 "foi enviada por mim! (Há uma restrição do Discord). "
 
-#: src/modules/rolemenus/cog.py:718
+#: src/modules/rolemenus/cog.py:837
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_create|error:rawmessage_notmine"
 msgid ""
@@ -263,7 +305,7 @@ msgstr ""
 "Não pude aplicar um menu personalizado na mensagem {message}, pois ela não "
 "pertence a mim! "
 
-#: src/modules/rolemenus/cog.py:727
+#: src/modules/rolemenus/cog.py:846
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_create|error:template_notmine"
 msgid ""
@@ -273,87 +315,87 @@ msgstr ""
 "Não pude aplicar um modelo de mensagem à {message} pois ela não pertence a "
 "mim! "
 
-#: src/modules/rolemenus/cog.py:740
+#: src/modules/rolemenus/cog.py:859
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_create|error:name_exists"
 msgid "A rolemenu called `{name}` already exists! Use {edit_cmd} to edit it."
 msgstr ""
 "Um cargomenu chamado ˋ{name}ˋ já existe! Use {edit_cmd} para editá-lo."
 
-#: src/modules/rolemenus/cog.py:788
+#: src/modules/rolemenus/cog.py:907
 msgctxt "cmd:rolemenu_edit"
 msgid "editmenu"
 msgstr "editarmenu"
 
-#: src/modules/rolemenus/cog.py:791
+#: src/modules/rolemenus/cog.py:910
 msgctxt "cmd:rolemenu_edit|desc"
 msgid "Edit an existing role menu."
 msgstr "Editar um menu de cargos existente."
 
-#: src/modules/rolemenus/cog.py:800
+#: src/modules/rolemenus/cog.py:919
 msgctxt "cmd:rolemenu_edit|param:name"
 msgid "name"
 msgstr "nome"
 
-#: src/modules/rolemenus/cog.py:801
+#: src/modules/rolemenus/cog.py:920
 msgctxt "cmd:rolemenu_edit|param:new_name"
 msgid "new_name"
 msgstr "novo_nome"
 
-#: src/modules/rolemenus/cog.py:802
+#: src/modules/rolemenus/cog.py:921
 msgctxt "cmd:rolemenu_edit|param:channel"
 msgid "new_channel"
 msgstr "novo_canal"
 
-#: src/modules/rolemenus/cog.py:807
+#: src/modules/rolemenus/cog.py:926
 msgctxt "cmd:rolemenu_edit|param:menu_style"
 msgid "menu_style"
 msgstr "menu_estilo"
 
-#: src/modules/rolemenus/cog.py:808
+#: src/modules/rolemenus/cog.py:927
 msgctxt "cmd:rolemenu_edit|param:remplate"
 msgid "template"
 msgstr "modelo"
 
-#: src/modules/rolemenus/cog.py:809
+#: src/modules/rolemenus/cog.py:928
 msgctxt "cmd:rolemenu_edit|param:rawmessage"
 msgid "custom_message"
 msgstr "mensagem_personalizada"
 
-#: src/modules/rolemenus/cog.py:814
+#: src/modules/rolemenus/cog.py:933
 msgctxt "cmd:rolemenu_edit|param:name|desc"
 msgid "Name of the menu to edit"
 msgstr "Nome do menu a ser editado"
 
-#: src/modules/rolemenus/cog.py:818
+#: src/modules/rolemenus/cog.py:937
 msgctxt "cmd:rolemenu_edit|param:channel|desc"
 msgid "Server channel to move the menu to"
 msgstr "Canal do servidor para que possa mover o menu"
 
-#: src/modules/rolemenus/cog.py:827
+#: src/modules/rolemenus/cog.py:946
 msgctxt "cmd:rolemenu_edit|param:menu_style"
 msgid "Selection style for this menu (using buttons, dropdowns, or reactions)"
 msgstr ""
 "Selecione o estilo de menu (usando botões, reações, ou painel suspenso) "
 
-#: src/modules/rolemenus/cog.py:831
+#: src/modules/rolemenus/cog.py:950
 msgctxt "cmd:rolemenu_edit|param:template"
 msgid "Template to use for the menu message body"
 msgstr "Modelo a ser usado para no corpo da mensagem "
 
-#: src/modules/rolemenus/cog.py:835
+#: src/modules/rolemenus/cog.py:954
 msgctxt "cmd:rolemenu_edit|param:rawmessage"
 msgid "Attach a custom menu message to use"
 msgstr "Anexe uma mensagem personalizada a usar no menu"
 
-#: src/modules/rolemenus/cog.py:864
+#: src/modules/rolemenus/cog.py:983
 msgctxt "cmd:rolemenu_edit|error:author_perms"
 msgid "You need the `MANAGE_ROLES` permission in order to edit role menus."
 msgstr ""
 "Você precisa ter permissão de ˋGERENCIAR_CARGOSˋ para poder editar menus de "
 "cargo."
 
-#: src/modules/rolemenus/cog.py:871
+#: src/modules/rolemenus/cog.py:990
 msgctxt "cmd:rolemenu_edit|error:my_perms"
 msgid ""
 "I lack the `MANAGE_ROLES` permission needed to offer roles from role menus."
@@ -361,19 +403,19 @@ msgstr ""
 "Me falta permissão de ˋGERENCIAR_CARGOSˋ, necessária para que eu possa "
 "oferecer cargos através dos menus."
 
-#: src/modules/rolemenus/cog.py:894
+#: src/modules/rolemenus/cog.py:1013
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_edit|error:menu_not_found"
 msgid "This server does not have a role menu called `{name}`!"
 msgstr "Este servidor não tem um menu de cargos chamado ˋ{name}ˋ!"
 
-#: src/modules/rolemenus/cog.py:914
+#: src/modules/rolemenus/cog.py:1034
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_edit|parse:new_name|error:name_exists"
 msgid "A role menu with the name **{new_name}** already exists!"
 msgstr "Um menu de cargos com o nome **{new_name}** já existe!"
 
-#: src/modules/rolemenus/cog.py:951
+#: src/modules/rolemenus/cog.py:1071
 msgctxt "cmd:rolemenu_edit|parse:template|error:not_managed"
 msgid ""
 "Cannot set a template message for a role menu attached to a message I did "
@@ -382,29 +424,52 @@ msgstr ""
 "Não posso usar o modelo de mensagem para um menu de cargo anexado a uma "
 "mensagem que eu não enviei."
 
-#: src/modules/rolemenus/cog.py:962
+#: src/modules/rolemenus/cog.py:1082
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_edit|parse:template|success:template"
 msgid "Now using the `{name}` menu message template."
 msgstr "Agora usando o modelo ˋ{name}ˋ de mensagem. "
 
-#: src/modules/rolemenus/cog.py:969
+#: src/modules/rolemenus/cog.py:1089
 msgctxt "cmd:rolemenu_edit|parse:template|success:custom"
 msgid "Now using a custom menu message."
 msgstr "Agora usando uma mensagem personalizada de menu."
 
-#: src/modules/rolemenus/cog.py:986
+#: src/modules/rolemenus/cog.py:1099
+msgctxt "cmd:rolemenu_edit|parse:style|error:not_managed"
+msgid ""
+"Cannot change the style of a role menu attached to a message I did not send."
+msgstr ""
+
+#: src/modules/rolemenus/cog.py:1109
+msgctxt "cmd:rolemenu_edit|parse:style|error:too_many_reactions"
+msgid "Too many roles! Reaction role menus can have at most `20` roles."
+msgstr ""
+
+#: src/modules/rolemenus/cog.py:1119
+msgctxt "cmd:rolemenu_edit|parse:style|error:incomplete_emojis"
+msgid ""
+"Cannot switch to the reaction role style! Every role needs a distinct emoji "
+"first."
+msgstr ""
+
+#: src/modules/rolemenus/cog.py:1126
+msgctxt "cmd:rolemenu_edit|parse:style|success"
+msgid "Updated role menu style."
+msgstr ""
+
+#: src/modules/rolemenus/cog.py:1140
 msgctxt "cmd:rolemenu_edit|parse:custom_message|success"
 msgid "Custom menu message updated."
 msgstr "Mensagem personalizada do menu atualizada!"
 
-#: src/modules/rolemenus/cog.py:1001
+#: src/modules/rolemenus/cog.py:1155
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_edit|repost|success"
 msgid "The role menu is now available at {message}"
 msgstr "O novo menu de cargos está disponivel agora em {message} "
 
-#: src/modules/rolemenus/cog.py:1012
+#: src/modules/rolemenus/cog.py:1166
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_edit|repost|error:forbidden"
 msgid ""
@@ -414,7 +479,7 @@ msgstr ""
 "Não pude atualizar o canal. Falta a permissão de ˋINSERIR_LINKSˋ ou de "
 "ˋENVIAR_MENSAGENSˋ no {channel}."
 
-#: src/modules/rolemenus/cog.py:1017
+#: src/modules/rolemenus/cog.py:1171
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_edit|repost|error:unknown"
 msgid ""
@@ -424,27 +489,27 @@ msgstr ""
 "Um erro desconhecido aconteceu, na tentativa de repostar o menu em {channel}.\n"
 "**Erro:** ˋ{exception}ˋ"
 
-#: src/modules/rolemenus/cog.py:1051
+#: src/modules/rolemenus/cog.py:1210
 msgctxt "cmd:rolemenu_delete"
 msgid "delmenu"
 msgstr "apagarmenu"
 
-#: src/modules/rolemenus/cog.py:1054
+#: src/modules/rolemenus/cog.py:1213
 msgctxt "cmd:rolemenu_delete|desc"
 msgid "Delete a role menu."
 msgstr "Apagar um menu de cargos."
 
-#: src/modules/rolemenus/cog.py:1058
+#: src/modules/rolemenus/cog.py:1217
 msgctxt "cmd:rolemenu_delete|param:name"
 msgid "menu"
 msgstr "menu"
 
-#: src/modules/rolemenus/cog.py:1063
+#: src/modules/rolemenus/cog.py:1222
 msgctxt "cmd:rolemenu_delete|param:name|desc"
 msgid "Name of the rolemenu to delete."
 msgstr "Nome do menucargo a apagar."
 
-#: src/modules/rolemenus/cog.py:1078
+#: src/modules/rolemenus/cog.py:1237
 msgctxt "cmd:rolemenu_delete|error:author_perms"
 msgid ""
 "You need the `MANAGE_ROLES` permission in order to manage the server role "
@@ -453,13 +518,13 @@ msgstr ""
 "Você precisa ter permissão de ˋGERENCIAR_CARGOSˋ para que possa gerenciar os"
 " menus de cargo no servidor."
 
-#: src/modules/rolemenus/cog.py:1101
+#: src/modules/rolemenus/cog.py:1260
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delete|error:menu_not_found"
 msgid "This server does not have a role menu called `{name}`!"
 msgstr "Este servidor não possui um menu de cargo chamado ˋ{name}ˋ!"
 
-#: src/modules/rolemenus/cog.py:1109
+#: src/modules/rolemenus/cog.py:1268
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delete|confirm|title"
 msgid ""
@@ -469,193 +534,193 @@ msgstr ""
 "Você tem certeza que quer apagar o menu de cargos **{name}**? Esta operação "
 "é irreversível!"
 
-#: src/modules/rolemenus/cog.py:1114
+#: src/modules/rolemenus/cog.py:1273
 msgctxt "cmd:rolemenu_delete|confirm|button:yes"
 msgid "Yes, Delete Now"
 msgstr "Sim, Apagar Agora"
 
-#: src/modules/rolemenus/cog.py:1119
+#: src/modules/rolemenus/cog.py:1278
 msgctxt "cmd:rolemenu_delete|confirm|button:no"
 msgid "No, Cancel"
 msgstr "Não, Cancelar"
 
-#: src/modules/rolemenus/cog.py:1144
+#: src/modules/rolemenus/cog.py:1303
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delete|success|desc"
 msgid "Successfully deleted the menu **{name}**"
 msgstr "Menu **{name}** apagado com sucesso!"
 
-#: src/modules/rolemenus/cog.py:1152
+#: src/modules/rolemenus/cog.py:1311
 msgctxt "cmd:rolemenu_addrole"
 msgid "addrole"
 msgstr "addcargo"
 
-#: src/modules/rolemenus/cog.py:1155
+#: src/modules/rolemenus/cog.py:1314
 msgctxt "cmd:rolemenu_addrole|desc"
 msgid "Add a new role to an existing role menu."
 msgstr "Adicionar um novo cargo a um menu existente."
 
-#: src/modules/rolemenus/cog.py:1160
+#: src/modules/rolemenus/cog.py:1319
 msgctxt "cmd:rolemenu_addrole|param:menu"
 msgid "menu"
 msgstr "menu"
 
-#: src/modules/rolemenus/cog.py:1163
+#: src/modules/rolemenus/cog.py:1322
 msgctxt "cmd:rolemenu_addrole|param:role"
 msgid "role"
 msgstr "cargo"
 
-#: src/modules/rolemenus/cog.py:1174
+#: src/modules/rolemenus/cog.py:1333
 msgctxt "cmd:rolemenu_addrole|param:menu|desc"
 msgid "Name of the menu to add a role to"
 msgstr "Nome do menu ao qual devo adicionar o cargo"
 
-#: src/modules/rolemenus/cog.py:1178
+#: src/modules/rolemenus/cog.py:1337
 msgctxt "cmd:rolemenu_addrole|param:role|desc"
 msgid "Role to add to the menu"
 msgstr "Nome do cargo a adicionar ao menu"
 
-#: src/modules/rolemenus/cog.py:1186
+#: src/modules/rolemenus/cog.py:1345
 msgctxt "cmd:rolemenu_addrole|param:duration|desc"
 msgid "Lifetime of the role after selection in minutes."
 msgstr "Tempo de vida do cargo após a seleção, em minutos."
 
-#: src/modules/rolemenus/cog.py:1234
+#: src/modules/rolemenus/cog.py:1393
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_addrole|error:menu_not_found"
 msgid "This server does not have a role menu called `{name}`!"
 msgstr "Este servidor não tem um menu de cargos chamado ˋ{name}ˋ!"
 
-#: src/modules/rolemenus/cog.py:1319
+#: src/modules/rolemenus/cog.py:1478
 msgctxt "cmd:rolemenu_addrole|success:create|title"
 msgid "Added Menu Role"
 msgstr "Menu de Cargos Adicionado"
 
-#: src/modules/rolemenus/cog.py:1323
+#: src/modules/rolemenus/cog.py:1482
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_addrole|success:create|desc"
 msgid "Add the role {role} to the menu **{menu}**."
 msgstr "Adicione o cargo {role} ao menu **{menu}**."
 
-#: src/modules/rolemenus/cog.py:1341
+#: src/modules/rolemenus/cog.py:1500
 msgctxt "cmd:rolemenu_addrole|success:edit|title"
 msgid "Menu Role updated"
 msgstr "Menu de Cargo atualizado"
 
-#: src/modules/rolemenus/cog.py:1353
+#: src/modules/rolemenus/cog.py:1512
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_addrole|error:role_exists"
 msgid "The role {role} is already selectable from the menu **{menu}**"
 msgstr "O cargo {role} já pode ser escolhido através do menu **{menu}**."
 
-#: src/modules/rolemenus/cog.py:1371
+#: src/modules/rolemenus/cog.py:1530
 msgctxt "cmd:rolemenu_addrole|success|error:reaction|name"
 msgid "Note"
 msgstr "Nota"
 
-#: src/modules/rolemenus/cog.py:1383
+#: src/modules/rolemenus/cog.py:1542
 msgctxt "cmd:rolemenu_addrole|success|button:editor|label"
 msgid "Edit Menu"
 msgstr "Editar Menu"
 
-#: src/modules/rolemenus/cog.py:1400
+#: src/modules/rolemenus/cog.py:1559
 msgctxt "cmd:rolemenu_editrole"
 msgid "editrole"
 msgstr "editarcargo"
 
-#: src/modules/rolemenus/cog.py:1403
+#: src/modules/rolemenus/cog.py:1562
 msgctxt "cmd:rolemenu_editrole|desc"
 msgid "Edit role options in an existing role menu."
 msgstr "Editar opções de cargo em um menu existente. "
 
-#: src/modules/rolemenus/cog.py:1408
+#: src/modules/rolemenus/cog.py:1567
 msgctxt "cmd:rolemenu_editrole|param:menu"
 msgid "menu"
 msgstr "menu"
 
-#: src/modules/rolemenus/cog.py:1411
+#: src/modules/rolemenus/cog.py:1570
 msgctxt "cmd:rolemenu_editrole|param:menu_role"
 msgid "menu_role"
 msgstr "menu_de_cargos"
 
-#: src/modules/rolemenus/cog.py:1414
+#: src/modules/rolemenus/cog.py:1573
 msgctxt "cmd:rolemenu_editrole|param:role"
 msgid "new_role"
 msgstr "novo_cargo"
 
-#: src/modules/rolemenus/cog.py:1425
+#: src/modules/rolemenus/cog.py:1584
 msgctxt "cmd:rolemenu_editrole|param:menu|desc"
 msgid "Name of the menu to edit the role for"
 msgstr "Nome do menu de onde você quer editar o cargo"
 
-#: src/modules/rolemenus/cog.py:1429
+#: src/modules/rolemenus/cog.py:1588
 msgctxt "cmd:rolemenu_editrole|param:menu_role|desc"
 msgid "Label, name, or mention of the menu role to edit."
 msgstr "Rótulo, nome ou menção do menu de cargos a ser editado."
 
-#: src/modules/rolemenus/cog.py:1433
+#: src/modules/rolemenus/cog.py:1592
 msgctxt "cmd:rolemenu_editrole|param:role|desc"
 msgid "New server role this menu role should give."
 msgstr "Cargo que este menu de cargos deve dar aos novatos do servidor."
 
-#: src/modules/rolemenus/cog.py:1441
+#: src/modules/rolemenus/cog.py:1600
 msgctxt "cmd:rolemenu_editrole|param:duration|desc"
 msgid "Lifetime of the role after selection in minutes."
 msgstr "A duração que este cargo terá, depois de selecionado, em minutos."
 
-#: src/modules/rolemenus/cog.py:1482
+#: src/modules/rolemenus/cog.py:1641
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_editrole|error:menu_not_found"
 msgid "This server does not have a role menu called `{name}`!"
 msgstr "Este servidor não tem um menu de cargos chamado ˋ{name}ˋ!"
 
-#: src/modules/rolemenus/cog.py:1510
+#: src/modules/rolemenus/cog.py:1669
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_editrole|error:role_not_found"
 msgid "The menu **{menu}** does not have the role **{name}**"
 msgstr "O menu **{menu}** não tem o cargo **{name}**"
 
-#: src/modules/rolemenus/cog.py:1576
+#: src/modules/rolemenus/cog.py:1735
 msgctxt "cmd:rolemenu_editrole|success|title"
 msgid "Role menu role updated"
 msgstr "Cargos do menu de cargos foram atualizados"
 
-#: src/modules/rolemenus/cog.py:1591
+#: src/modules/rolemenus/cog.py:1750
 msgctxt "cmd:rolemenu_editrole|success|error:reaction|name"
 msgid "Warning!"
 msgstr "Atenção!"
 
-#: src/modules/rolemenus/cog.py:1616
+#: src/modules/rolemenus/cog.py:1775
 msgctxt "cmd:rolemenu_delrole"
 msgid "delrole"
 msgstr "apagarcargo"
 
-#: src/modules/rolemenus/cog.py:1619
+#: src/modules/rolemenus/cog.py:1778
 msgctxt "cmd:rolemenu_delrole|desc"
 msgid "Remove a role from a role menu."
 msgstr "Apaga um cargo de um menu de cargos"
 
-#: src/modules/rolemenus/cog.py:1623
+#: src/modules/rolemenus/cog.py:1782
 msgctxt "cmd:rolemenu_delrole|param:menu"
 msgid "menu"
 msgstr "menu"
 
-#: src/modules/rolemenus/cog.py:1624
+#: src/modules/rolemenus/cog.py:1783
 msgctxt "cmd:rolemenu_delrole|param:menu_role"
 msgid "menu_role"
 msgstr "menu_de_cargos"
 
-#: src/modules/rolemenus/cog.py:1629
+#: src/modules/rolemenus/cog.py:1788
 msgctxt "cmd:rolemenu_delrole|param:menu|desc"
 msgid "Name of the menu to delete the role from."
 msgstr "Nome do menu do qual será deletado o cargo"
 
-#: src/modules/rolemenus/cog.py:1633
+#: src/modules/rolemenus/cog.py:1792
 msgctxt "cmd:rolemenu_delrole|param:menu_role|desc"
 msgid "Name, label, or mention of the role to delete."
 msgstr "Nome, rótulo, ou menção do cargo a deletar."
 
-#: src/modules/rolemenus/cog.py:1651
+#: src/modules/rolemenus/cog.py:1810
 msgctxt "cmd:rolemenu_delrole|error:author_perms"
 msgid ""
 "You need the `MANAGE_ROLES` permission in order to manage the server role "
@@ -664,19 +729,19 @@ msgstr ""
 "Você precisa ter permissão de ˋGERENCIAR_CARGOSˋ para poder gerenciar o menu"
 " de cargos do servidor."
 
-#: src/modules/rolemenus/cog.py:1675
+#: src/modules/rolemenus/cog.py:1834
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delrole|error:menu_not_found"
 msgid "This server does not have a role menu called `{name}`!"
 msgstr "Este servidor não tem um menu de cargos chamado ˋ{name}ˋ!"
 
-#: src/modules/rolemenus/cog.py:1703
+#: src/modules/rolemenus/cog.py:1862
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delrole|error:role_not_found"
 msgid "The menu **{menu}** does not have the role **{name}**"
 msgstr "O menu **{menu}** não tem o cargo **{name}**"
 
-#: src/modules/rolemenus/cog.py:1720
+#: src/modules/rolemenus/cog.py:1879
 #, possible-python-brace-format
 msgctxt "cmd:rolemenu_delrole|success"
 msgid "The role **{name}** was successfully removed from the menu **{menu}**."
@@ -925,12 +990,12 @@ msgstr ""
 "Um menu em formato de uma coluna, alternável para uma simplificada loja de "
 "cargos."
 
-#: src/modules/rolemenus/rolemenu.py:280
+#: src/modules/rolemenus/rolemenu.py:294
 msgctxt "rolemenu|menu_message|error|title"
 msgid "ROLE MENU DISPLAY ERROR"
 msgstr "ERRO DO MOSTRADOR DO MENU DE CARGOS"
 
-#: src/modules/rolemenus/rolemenu.py:284
+#: src/modules/rolemenus/rolemenu.py:298
 #, possible-python-brace-format
 msgctxt "rolemenu|menu_message|error|desc"
 msgid ""
@@ -940,7 +1005,7 @@ msgstr ""
 "Um erro crítico ocorreu tentando mostrar este Menu de Cargos.\n"
 "Erro: ˋ{error}ˋ."
 
-#: src/modules/rolemenus/rolemenu.py:336
+#: src/modules/rolemenus/rolemenu.py:350
 #, possible-python-brace-format
 msgctxt "rolemenu|update_reactions|error"
 msgid ""
@@ -950,71 +1015,22 @@ msgstr ""
 "Não pude adicionar a reação {emoji}, pois eu não tenho acesso a este emoji! "
 "As reações do menu precisarão ser adicionadas manualmente."
 
-#: src/modules/rolemenus/rolemenu.py:381
+#: src/modules/rolemenus/rolemenu.py:395
 msgctxt "ui:rolemenu_dropdown|placeholder"
 msgid "Select Roles"
 msgstr "Selecione os Cargos."
 
-#: src/modules/rolemenus/rolemenu.py:472
-msgctxt "rolemenu|error:role_gone"
-msgid "This role no longer exists!"
-msgstr "Este cargo não existe mais!"
-
-#: src/modules/rolemenus/rolemenu.py:482
-#, possible-python-brace-format
-msgctxt "rolemenu|deselect|error:sticky"
-msgid "**{role}** is a sticky role, you cannot remove it with this menu!"
-msgstr ""
-"**{role}** é um cargo persistentel. Você não pode removê-lo neste menu!"
-
-#: src/modules/rolemenus/rolemenu.py:493
-msgctxt "rolemenu|deselect|error:perms"
-msgid "I don't have enough permissions to remove this role from you!"
-msgstr "Eu não tenho permissões suficientes para remover este seu cargo!"
-
-#: src/modules/rolemenus/rolemenu.py:500
-msgctxt "rolemenu|deselect|error:discord"
-msgid "An unknown error occurred removing your role! Please try again later."
-msgstr ""
-"Um erro desconhecido ocorreu enquanto seu cargo estava sendo retirado. Tente"
-" novamente mais tarde!"
-
-#: src/modules/rolemenus/rolemenu.py:529
-msgctxt "rolemenu|deslect|success|title"
-msgid "Role removed"
-msgstr "Cargo retirado"
-
-#: src/modules/rolemenus/rolemenu.py:535
-#, possible-python-brace-format
-msgctxt "rolemenu|deselect|success:refund|desc"
-msgid "You have removed **{role}**, and been refunded {coin} **{amount}**."
-msgstr "Você removeu o **{role}**, e foi ressarcido com {coin} **{amount}**."
-
-#: src/modules/rolemenus/rolemenu.py:541
-#, possible-python-brace-format
-msgctxt "rolemenu|deselect|success:negrefund|desc"
-msgid "You have removed **{role}**, and have lost {coin} **{amount}**."
-msgstr "Você removeu **{role}**, e perdeu {coin}**{amount}**."
-
-#: src/modules/rolemenus/rolemenu.py:546
-#, possible-python-brace-format
-msgctxt "rolemenu|deselect|success:norefund|desc"
-msgid "You have unequipped **{role}**."
-msgstr "Você retirou o **{role}**."
-
-#: src/modules/rolemenus/rolemenu.py:560
-#, possible-python-brace-format
-msgctxt "rolemenu|select|error:required_role"
-msgid "You need to have the role **{role}** required to use this menu!"
-msgstr "É necessário que você tenha o cargo **{role}** para usar este menu!"
-
-#: src/modules/rolemenus/rolemenu.py:574
+#: src/modules/rolemenus/rolemenu.py:506
 #, possible-python-brace-format
 msgctxt "rolemenu|select|error:max_obtainable"
-msgid "You already have the maximum of {obtainable} roles from this menu!"
-msgstr "Você já tem o máximo de {obtainable} cargos permitidos deste menu."
+msgid "You can own at most one role from this menu! You currently own:"
+msgid_plural ""
+"You can own at most **{count}** roles from this menu! You currently own:"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
-#: src/modules/rolemenus/rolemenu.py:588
+#: src/modules/rolemenus/rolemenu.py:523
 #, possible-python-brace-format
 msgctxt "rolemenu|select|error:insufficient_funds"
 msgid ""
@@ -1024,13 +1040,13 @@ msgstr ""
 "O cargo **{role}** custa {coins}**{cost}**, mas você tem apenas "
 "{coin}**{balance}**!"
 
-#: src/modules/rolemenus/rolemenu.py:604
+#: src/modules/rolemenus/rolemenu.py:539
 msgctxt "rolemenu|select|error:perms"
 msgid "I don't have enough permissions to give you this role!"
 msgstr ""
 "Eu não tenho as permissões suficientes para atribuir este cargo a você!"
 
-#: src/modules/rolemenus/rolemenu.py:611
+#: src/modules/rolemenus/rolemenu.py:546
 msgctxt "rolemenu|select|error:discord"
 msgid ""
 "An unknown error occurred while assigning your role! Please try again later."
@@ -1038,30 +1054,106 @@ msgstr ""
 "Um erro desconhecido ocorreu enquanto estava atribuindo seu cargo. Por "
 "favor, tente mais tarde."
 
-#: src/modules/rolemenus/rolemenu.py:653
+#: src/modules/rolemenus/rolemenu.py:588
 msgctxt "rolemenu|select|success|title"
 msgid "Role equipped"
 msgstr "Cargo atribuído"
 
-#: src/modules/rolemenus/rolemenu.py:659
+#: src/modules/rolemenus/rolemenu.py:594
 #, possible-python-brace-format
 msgctxt "rolemenu|select|success:purchase|desc"
 msgid "You have purchased the role **{role}** for {coin}**{amount}**"
 msgstr "Você comprou o cargo **{role}** por {coin}**{amount}**."
 
-#: src/modules/rolemenus/rolemenu.py:664
+#: src/modules/rolemenus/rolemenu.py:599
 #, possible-python-brace-format
 msgctxt "rolemenu|select|success:nopurchase|desc"
-msgid "You have equipped the role **{role}**"
-msgstr "O cargo **{role}** foi atribuído a você"
+msgid "You have equipped **{role}**"
+msgstr ""
 
-#: src/modules/rolemenus/rolemenu.py:670
+#: src/modules/rolemenus/rolemenu.py:605
 #, possible-python-brace-format
 msgctxt "rolemenu|select|expires_at"
 msgid "The role will expire at {timestamp}."
 msgstr "O cargo irá expirar em {timestamp}."
 
-#: src/modules/rolemenus/rolemenu.py:724
+#: src/modules/rolemenus/rolemenu.py:616
+msgctxt "rolemenu|eventlog|event:role_equipped|title"
+msgid "Member equipped role from role menu"
+msgstr ""
+
+#: src/modules/rolemenus/rolemenu.py:620
+#, possible-python-brace-format
+msgctxt "rolemenu|eventlog|event:role_equipped|desc"
+msgid "{member} equipped {role} from {menu}"
+msgstr ""
+
+#: src/modules/rolemenus/rolemenu.py:644
+#, possible-python-brace-format
+msgctxt "rolemenu|deselect|error:sticky"
+msgid "**{role}** is a sticky role, you cannot remove it with this menu!"
+msgstr ""
+"**{role}** é um cargo persistentel. Você não pode removê-lo neste menu!"
+
+#: src/modules/rolemenus/rolemenu.py:655
+msgctxt "rolemenu|deselect|error:perms"
+msgid "I don't have enough permissions to remove this role from you!"
+msgstr "Eu não tenho permissões suficientes para remover este seu cargo!"
+
+#: src/modules/rolemenus/rolemenu.py:662
+msgctxt "rolemenu|deselect|error:discord"
+msgid "An unknown error occurred removing your role! Please try again later."
+msgstr ""
+"Um erro desconhecido ocorreu enquanto seu cargo estava sendo retirado. Tente"
+" novamente mais tarde!"
+
+#: src/modules/rolemenus/rolemenu.py:691
+msgctxt "rolemenu|deslect|success|title"
+msgid "Role removed"
+msgstr "Cargo retirado"
+
+#: src/modules/rolemenus/rolemenu.py:697
+#, possible-python-brace-format
+msgctxt "rolemenu|deselect|success:refund|desc"
+msgid "You have removed **{role}**, and been refunded {coin} **{amount}**."
+msgstr "Você removeu o **{role}**, e foi ressarcido com {coin} **{amount}**."
+
+#: src/modules/rolemenus/rolemenu.py:703
+#, possible-python-brace-format
+msgctxt "rolemenu|deselect|success:negrefund|desc"
+msgid "You have removed **{role}**, and have lost {coin} **{amount}**."
+msgstr "Você removeu **{role}**, e perdeu {coin}**{amount}**."
+
+#: src/modules/rolemenus/rolemenu.py:708
+#, possible-python-brace-format
+msgctxt "rolemenu|deselect|success:norefund|desc"
+msgid "You have unequipped **{role}**."
+msgstr "Você retirou o **{role}**."
+
+#: src/modules/rolemenus/rolemenu.py:715
+msgctxt "rolemenu|eventlog|event:role_unequipped|title"
+msgid "Member unequipped role from role menu"
+msgstr ""
+
+#: src/modules/rolemenus/rolemenu.py:719
+#, possible-python-brace-format
+msgctxt "rolemenu|eventlog|event:role_unequipped|desc"
+msgid "{member} unequipped {role} from {menu}"
+msgstr ""
+
+#: src/modules/rolemenus/rolemenu.py:747
+#, possible-python-brace-format
+msgctxt "rolemenu|error:role_gone"
+msgid "The role **{name}** no longer exists!"
+msgstr ""
+
+#: src/modules/rolemenus/rolemenu.py:760
+#, possible-python-brace-format
+msgctxt "rolemenu|select|error:required_role"
+msgid "You need to have the role **{role}** required to use this menu!"
+msgstr "É necessário que você tenha o cargo **{role}** para usar este menu!"
+
+#: src/modules/rolemenus/rolemenu.py:818
 #, possible-python-brace-format
 msgctxt "rolemenu|content:reactions"
 msgid "[Click here]({jump_link}) to jump back."

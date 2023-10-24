@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-24 12:21+0300\n"
+"POT-Creation-Date: 2023-10-15 15:58+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
@@ -140,52 +140,63 @@ msgid "An unknown error occurred while giving you this colour role!"
 msgstr ""
 "Um erro desconhecido aconteceu enquanto era alterada sua cor de cargo."
 
-#: src/modules/shop/shops/colours.py:348
+#: src/modules/shop/shops/colours.py:306
+msgctxt "eventlog|event:purchase_colour|title"
+msgid "Member Purchased Colour Role"
+msgstr ""
+
+#: src/modules/shop/shops/colours.py:310
+#, possible-python-brace-format
+msgctxt "eventlog|event:purchase_colour|desc"
+msgid "{member} purchased {role} from the colour shop."
+msgstr ""
+
+#: src/modules/shop/shops/colours.py:365
 msgctxt "grp:editshop_colours"
 msgid "colours"
 msgstr "cores"
 
-#: src/modules/shop/shops/colours.py:353
+#: src/modules/shop/shops/colours.py:370
 msgctxt "cmd:editshop_colours_create"
 msgid "create"
 msgstr "criar"
 
-#: src/modules/shop/shops/colours.py:356
+#: src/modules/shop/shops/colours.py:373
 msgctxt "cmd:editshop_colours_create|desc"
 msgid "Create a new colour role with the given colour."
 msgstr "Criar uma nova cor para um cargo, com a cor determinada. "
 
-#: src/modules/shop/shops/colours.py:360
+#: src/modules/shop/shops/colours.py:377
 msgctxt "cmd:editshop_colours_create|param:colour"
 msgid "colour"
 msgstr "cor"
 
-#: src/modules/shop/shops/colours.py:361
+#: src/modules/shop/shops/colours.py:378
 msgctxt "cmd:editshop_colours_create|param:name"
 msgid "name"
 msgstr "nome"
 
-#: src/modules/shop/shops/colours.py:362
+#: src/modules/shop/shops/colours.py:379
 msgctxt "cmd:editshop_colours_create|param:price"
 msgid "price"
 msgstr "preço"
 
-#: src/modules/shop/shops/colours.py:367
+#: src/modules/shop/shops/colours.py:384
 msgctxt "cmd:editshop_colours_create|param:colour|desc"
 msgid "What colour should the role be? (As a hex code, e.g. #AB22AB)"
 msgstr "De qual cor o cargo deverá ser? (Usando um código Hex, ex. #AB22AB)"
 
-#: src/modules/shop/shops/colours.py:371
+#: src/modules/shop/shops/colours.py:388
 msgctxt "cmd:editshop_colours_create|param:name|desc"
 msgid "What should the colour role be called?"
 msgstr "Como a cor do cargo deverá ser chamada?"
 
-#: src/modules/shop/shops/colours.py:375
+#: src/modules/shop/shops/colours.py:392
 msgctxt "cmd:editshop_colours_create|param:price|desc"
 msgid "How much should the colour role cost?"
 msgstr "Quanto deverá custar a cor do cargo?"
 
-#: src/modules/shop/shops/colours.py:397
+#: src/modules/shop/shops/colours.py:414
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_create|error:parse_colour"
 msgid ""
@@ -195,7 +206,7 @@ msgstr ""
 "Eu não consegui extrair os dados de `{colour}`!\n"
 "Por favor, digite a cor como um código HEX ex. `#FA0BC1`"
 
-#: src/modules/shop/shops/colours.py:407
+#: src/modules/shop/shops/colours.py:424
 msgctxt "cmd:editshop_colours_create|error:perms"
 msgid ""
 "I do not have permission to create server roles!\n"
@@ -204,7 +215,7 @@ msgstr ""
 "Eu não tenho premissão para criar cargos do servidor!\n"
 "Por favor, primeiro me dê permissão, ou então crie o cargo manualmente e use  `/editarloja cores add`."
 
-#: src/modules/shop/shops/colours.py:424
+#: src/modules/shop/shops/colours.py:441
 msgctxt "cmd:editshop_colours_create|error:max_colours"
 msgid ""
 "This server already has the maximum of `25` colour roles!\n"
@@ -213,7 +224,7 @@ msgstr ""
 "Este servidor já possui o máximo de ˋ25ˋ cores de cargo!\n"
 "Por favor, remova alguma antes de adicionar ou criar outra."
 
-#: src/modules/shop/shops/colours.py:443
+#: src/modules/shop/shops/colours.py:460
 msgctxt "cmd:editshop_colours_create|error:failed_unknown"
 msgid ""
 "An unknown Discord error occurred while creating your colour role!\n"
@@ -222,12 +233,12 @@ msgstr ""
 "Um erro desconhecido do Discord ocorreu quando estava sendo criado sua cor de cargo!\n"
 "Por favor, tente novamente em alguns minutos."
 
-#: src/modules/shop/shops/colours.py:493
+#: src/modules/shop/shops/colours.py:515
 msgctxt "cmd:editshop_colours_create|resp:done|title"
 msgid "Colour Role Created"
 msgstr " Cor de Cargo Criada"
 
-#: src/modules/shop/shops/colours.py:497
+#: src/modules/shop/shops/colours.py:519
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_create|resp:done|desc"
 msgid ""
@@ -237,7 +248,7 @@ msgstr ""
 "Você criou o cargo {mention}, e adicionou ele à loja de cores por "
 "{coin}**{price}**!"
 
-#: src/modules/shop/shops/colours.py:504
+#: src/modules/shop/shops/colours.py:526
 msgctxt "cmd:editshop_colours_create|resp:done|field:position_note|value"
 msgid ""
 "The new colour role was added below all other roles. Remember a member's "
@@ -247,73 +258,73 @@ msgstr ""
 "a cor ativa de um cargo é determinada pela equivalente à mais alta cor de "
 "cargo."
 
-#: src/modules/shop/shops/colours.py:508
+#: src/modules/shop/shops/colours.py:530
 msgctxt "cmd:editshop_colours_create|resp:done|field:position_note|name"
 msgid "Note"
 msgstr "Nota"
 
-#: src/modules/shop/shops/colours.py:517
+#: src/modules/shop/shops/colours.py:539
 msgctxt "cmd:editshop_colours_edit"
 msgid "edit"
 msgstr "editar"
 
-#: src/modules/shop/shops/colours.py:520
+#: src/modules/shop/shops/colours.py:542
 msgctxt "cmd:editshop_colours_edit|desc"
 msgid "Edit the name, colour, or price of a colour role."
 msgstr "Edite o nome, cor ou preço de uma cor de cargo."
 
-#: src/modules/shop/shops/colours.py:524
+#: src/modules/shop/shops/colours.py:546
 msgctxt "cmd:editshop_colours_edit|param:role"
 msgid "role"
 msgstr "cargo"
 
-#: src/modules/shop/shops/colours.py:525
+#: src/modules/shop/shops/colours.py:547
 msgctxt "cmd:editshop_colours_edit|param:name"
 msgid "name"
 msgstr "nome"
 
-#: src/modules/shop/shops/colours.py:526
+#: src/modules/shop/shops/colours.py:548
 msgctxt "cmd:editshop_colours_edit|param:colour"
 msgid "colour"
 msgstr "cor"
 
-#: src/modules/shop/shops/colours.py:527
+#: src/modules/shop/shops/colours.py:549
 msgctxt "cmd:editshop_colours_edit|param:price"
 msgid "price"
 msgstr "preço"
 
-#: src/modules/shop/shops/colours.py:532
+#: src/modules/shop/shops/colours.py:554
 msgctxt "cmd:editshop_colours_edit|param:role|desc"
 msgid "Select a colour role to edit."
 msgstr "Selecione a cor de um cargo para editar."
 
-#: src/modules/shop/shops/colours.py:536
+#: src/modules/shop/shops/colours.py:558
 msgctxt "cmd:editshop_colours_edit|param:name|desc"
 msgid "New name to give the colour role."
 msgstr "Novo nome para dar a esta cor de cargo."
 
-#: src/modules/shop/shops/colours.py:540
+#: src/modules/shop/shops/colours.py:562
 msgctxt "cmd:editshop_colours_edit|param:colour|desc"
 msgid "New colour for the colour role (as hex, e.g. #AB12AB)."
 msgstr "Nova cor para a cor de cargo (em código HEX, ex:. #AB12AB)."
 
-#: src/modules/shop/shops/colours.py:544
+#: src/modules/shop/shops/colours.py:566
 msgctxt "cmd:editshop_colours_edit|param:price|desc"
 msgid "New price for the colour role."
 msgstr "Novo preço para a cor de cargo."
 
-#: src/modules/shop/shops/colours.py:573
+#: src/modules/shop/shops/colours.py:595
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_edit|error:invalid_role"
 msgid "{mention} is not in the colour role shop!"
 msgstr "{mention} não está na loja de cores de cargo."
 
-#: src/modules/shop/shops/colours.py:587
+#: src/modules/shop/shops/colours.py:609
 msgctxt "cmd:editshop_colours_edit|error:no_args"
 msgid "You must give me one of `name`, `colour`, or `price` to update!"
 msgstr "Você precisa me informar o ˋnomeˋ, ˋcorˋ ou ˋpreçoˋ para atualizar!"
 
-#: src/modules/shop/shops/colours.py:603
+#: src/modules/shop/shops/colours.py:625
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_edit|error:parse_colour"
 msgid ""
@@ -323,70 +334,70 @@ msgstr ""
 "Eu não consegui extrair um código de cor de ˋ{colour}ˋ!\n"
 "Por favor, informe a cor como um código HEX, ex. ˋ#FA0BC1ˋ"
 
-#: src/modules/shop/shops/colours.py:618
+#: src/modules/shop/shops/colours.py:640
 msgctxt "cmd:editshop_colours_edit|error:perms"
 msgid "I do not have sufficient server permissions to edit this role!"
 msgstr ""
 "Eu não tenho permissões suficientes no servidor para editar este cargo."
 
-#: src/modules/shop/shops/colours.py:634
+#: src/modules/shop/shops/colours.py:656
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_edit|resp:done|line:price"
 msgid "{tick} Set price to {coin}**{price}**"
 msgstr "{tick} configurar o preço por {coin}**{price}**"
 
-#: src/modules/shop/shops/colours.py:651
+#: src/modules/shop/shops/colours.py:673
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_edit|resp:done|line:role"
 msgid "{tick} Updated role to {mention}"
 msgstr "{tick} Cargo atualizado para {mention}"
 
-#: src/modules/shop/shops/colours.py:661
+#: src/modules/shop/shops/colours.py:683
 msgctxt "cmd:editshop_colours_edit|resp:done|embed:title"
 msgid "Colour Role Updated"
 msgstr "Cor do Cargo Atualizada"
 
-#: src/modules/shop/shops/colours.py:667
+#: src/modules/shop/shops/colours.py:689
 msgctxt "cmd:editshop_colours_auto"
 msgid "auto"
 msgstr "automático"
 
-#: src/modules/shop/shops/colours.py:668
+#: src/modules/shop/shops/colours.py:690
 msgctxt "cmd:editshop_colours_auto|desc"
 msgid "Automatically create a set of colour roles."
 msgstr "Automaticamente crie uma sequência de cores de cargo."
 
-#: src/modules/shop/shops/colours.py:677
+#: src/modules/shop/shops/colours.py:699
 msgctxt "cmd:editshop_colours_add"
 msgid "add"
 msgstr "adicionar"
 
-#: src/modules/shop/shops/colours.py:680
+#: src/modules/shop/shops/colours.py:702
 msgctxt "cmd:editshop_colours_add|desc"
 msgid "Add an existing role to the colour shop."
 msgstr "Adicionar um cargo existente para a loja de cores de cargo."
 
-#: src/modules/shop/shops/colours.py:684
+#: src/modules/shop/shops/colours.py:706
 msgctxt "cmd:editshop_colours_add|param:role"
 msgid "role"
 msgstr "cargo"
 
-#: src/modules/shop/shops/colours.py:685
+#: src/modules/shop/shops/colours.py:707
 msgctxt "cmd:editshop_colours_add|param:price"
 msgid "price"
 msgstr "preço"
 
-#: src/modules/shop/shops/colours.py:690
+#: src/modules/shop/shops/colours.py:712
 msgctxt "cmd:editshop_colours_add|param:role|desc"
 msgid "Select a role to add to the colour shop."
 msgstr "Selecione um cargo para adicionar à loja."
 
-#: src/modules/shop/shops/colours.py:694
+#: src/modules/shop/shops/colours.py:716
 msgctxt "cmd:editshop_colours_add|param:price|desc"
 msgid "How much should this role cost?"
 msgstr "Quanto este cargo deveria custar?"
 
-#: src/modules/shop/shops/colours.py:719
+#: src/modules/shop/shops/colours.py:741
 msgctxt "cmd:editshop_colours_add|error:max_colours"
 msgid ""
 "This server already has the maximum of `25` colour roles!\n"
@@ -395,13 +406,13 @@ msgstr ""
 "Este servidor já possui o máximo de ˋ25ˋ cores de cargo!\n"
 "Por favor, remova alguma antes de adicionar ou criar outra."
 
-#: src/modules/shop/shops/colours.py:728
+#: src/modules/shop/shops/colours.py:750
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_add|error:role_exists"
 msgid "The role {mention} is already registered as a colour role!"
 msgstr "O cargo {mention} já está registrado como uma cor de cargo."
 
-#: src/modules/shop/shops/colours.py:737
+#: src/modules/shop/shops/colours.py:759
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_add|error:role_perms"
 msgid ""
@@ -413,7 +424,7 @@ msgstr ""
 "que eu tenha a permissão de ˋGERENCIAR_CARGOSˋ, e que meu cargo mais alto "
 "seja maior que este."
 
-#: src/modules/shop/shops/colours.py:748
+#: src/modules/shop/shops/colours.py:770
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_add|error:caller_perms"
 msgid ""
@@ -425,7 +436,7 @@ msgstr ""
 "precisa ter permissão para ˋGERENCIAR_CARGOSˋ, e seu maior cargo precisa "
 "estar acima deste."
 
-#: src/modules/shop/shops/colours.py:760
+#: src/modules/shop/shops/colours.py:782
 msgctxt "cmd:editshop_colours_add|error:role_has_admin"
 msgid ""
 "I refuse to add an administrator role to the LionCoin shop. That is a really"
@@ -434,63 +445,63 @@ msgstr ""
 "Eu me recuso a adicionar um cargo de Administrador à Loja de LionCoin. Isto "
 "é realmente uma péssima ideia."
 
-#: src/modules/shop/shops/colours.py:781
+#: src/modules/shop/shops/colours.py:803
 msgctxt "cmd:editshop_colours_add|resp:done|embed:title"
 msgid "Colour Role Created"
 msgstr "Cor de Cargo Criada"
 
-#: src/modules/shop/shops/colours.py:784
+#: src/modules/shop/shops/colours.py:806
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_add|resp:done|embed:desc"
 msgid "You have added {mention} to the colour shop for {coin}**{price}**!"
 msgstr "Você adicionou {mention} à loja de cores por {coin}**{price}**!"
 
-#: src/modules/shop/shops/colours.py:792
+#: src/modules/shop/shops/colours.py:814
 msgctxt "cmd:editshop_colours_clear"
 msgid "clear"
 msgstr "limpar"
 
-#: src/modules/shop/shops/colours.py:795
+#: src/modules/shop/shops/colours.py:817
 msgctxt "cmd:editshop_colours_clear|desc"
 msgid ""
 "Remove all the colour roles from the shop, and optionally delete the roles."
 msgstr ""
 "Remova todas as cores dos cargos da loja, e opcionalmente delete os cargos."
 
-#: src/modules/shop/shops/colours.py:799
+#: src/modules/shop/shops/colours.py:821
 msgctxt "cmd:editshop_colours_clear|param:delete"
 msgid "delete_roles"
 msgstr "excluir_cargos"
 
-#: src/modules/shop/shops/colours.py:804
+#: src/modules/shop/shops/colours.py:826
 msgctxt "cmd:editshop_colours_clear|param:delete|desc"
 msgid "Also delete the associated roles."
 msgstr "Também apague os cargos associados."
 
-#: src/modules/shop/shops/colours.py:846
+#: src/modules/shop/shops/colours.py:868
 msgctxt "cmd:editshop_colours_clear|error:no_colours"
 msgid "There are no coloured roles to remove!"
 msgstr "Não há cargos coloridos para remover."
 
-#: src/modules/shop/shops/colours.py:890
+#: src/modules/shop/shops/colours.py:912
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_clear|resp:done|line:clear"
 msgid "{tick} Colour shop cleared."
 msgstr "{tick} Loja de cores foi limpa."
 
-#: src/modules/shop/shops/colours.py:901
+#: src/modules/shop/shops/colours.py:923
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_clear|resp:done|line:refunding"
 msgid "{loading} Refunded **{count}/{total}** members."
 msgstr "{loading} Reembolsados **{count}/{total}** membros."
 
-#: src/modules/shop/shops/colours.py:907
+#: src/modules/shop/shops/colours.py:929
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_clear|resp:done|line:refunded"
 msgid "{tick} Refunded **{total}/{total}** members."
 msgstr "{tick} Reembolsados **{total}/{total}** membros."
 
-#: src/modules/shop/shops/colours.py:920
+#: src/modules/shop/shops/colours.py:942
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_clear|resp:done|line:deleted_failed"
 msgid ""
@@ -498,69 +509,69 @@ msgid ""
 msgstr ""
 "{emoji} Apagadas **{count}/{total}** cores de cargo. (**{failed}** failed!)"
 
-#: src/modules/shop/shops/colours.py:925
+#: src/modules/shop/shops/colours.py:947
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_clear|resp:done|line:deleted"
 msgid "{emoji} Deleted **{count}/{total}** colour roles."
 msgstr "{emoji} Apagadas **{count}/{total}** cores de cargo."
 
-#: src/modules/shop/shops/colours.py:974
+#: src/modules/shop/shops/colours.py:996
 msgctxt "cmd:editshop_colours_remove"
 msgid "remove"
 msgstr "remover"
 
-#: src/modules/shop/shops/colours.py:977
+#: src/modules/shop/shops/colours.py:999
 msgctxt "cmd:editshop_colours_remove|desc"
 msgid "Remove a specific colour role from the shop."
 msgstr "Remova uma cor de cargo específica da loja. "
 
-#: src/modules/shop/shops/colours.py:981
+#: src/modules/shop/shops/colours.py:1003
 msgctxt "cmd:editshop_colours_remove|param:role"
 msgid "role"
 msgstr "cargo"
 
-#: src/modules/shop/shops/colours.py:982
+#: src/modules/shop/shops/colours.py:1004
 msgctxt "cmd:editshop_colours_remove"
 msgid "delete_role"
 msgstr "excluir_cargo"
 
-#: src/modules/shop/shops/colours.py:987
+#: src/modules/shop/shops/colours.py:1009
 msgctxt "cmd:editshop_colours_remove|param:role|desc"
 msgid "Select the colour role to remove."
 msgstr "Selecione a cor de cargo para remover."
 
-#: src/modules/shop/shops/colours.py:991
+#: src/modules/shop/shops/colours.py:1013
 msgctxt "cmd:editshop_colours_remove|param:delete_role|desc"
 msgid "Whether to delete the associated role."
 msgstr "Se o cargo associado também deverá ser deletado."
 
-#: src/modules/shop/shops/colours.py:1016
+#: src/modules/shop/shops/colours.py:1038
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_remove|error:not_colour"
 msgid "{mention} is not in the colour role shop!"
 msgstr "{mention} não está na loja de cores de cargo!"
 
-#: src/modules/shop/shops/colours.py:1034
+#: src/modules/shop/shops/colours.py:1056
 msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
 msgid "Successfully deleted the role."
 msgstr "Cargo deletado com sucesso!"
 
-#: src/modules/shop/shops/colours.py:1039
+#: src/modules/shop/shops/colours.py:1061
 msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
 msgid "I do not have sufficient permissions to delete the role."
 msgstr "Eu não tenho permissões suficientes para deletar o cargo."
 
-#: src/modules/shop/shops/colours.py:1044
+#: src/modules/shop/shops/colours.py:1066
 msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
 msgid "Failed to delete the role for an unknown reason."
 msgstr "Houve uma falha ao deletar o cargo. Motivo desconhecido."
 
-#: src/modules/shop/shops/colours.py:1049
+#: src/modules/shop/shops/colours.py:1071
 msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
 msgid "Could not find the role in order to delete it."
 msgstr "Não consegui encontrar o cargo para deletá-lo."
 
-#: src/modules/shop/shops/colours.py:1060
+#: src/modules/shop/shops/colours.py:1082
 #, possible-python-brace-format
 msgctxt "cmd:editshop_colours_remove|resp:done|embed:desc"
 msgid ""
@@ -570,61 +581,61 @@ msgstr ""
 "Removida {mention} da loja de cargos.\n"
 "{delete_line}"
 
-#: src/modules/shop/shops/colours.py:1138
+#: src/modules/shop/shops/colours.py:1160
 msgctxt "ui:colourstore|menu:buycolours|embed:error|title"
 msgid "Purchase Failed!"
 msgstr "A compra falhou!"
 
-#: src/modules/shop/shops/colours.py:1149
+#: src/modules/shop/shops/colours.py:1171
 #, possible-python-brace-format
 msgctxt "ui:colourstore|menu:buycolours|resp:done|desc"
 msgid "{tick} You have purchased {mention}"
 msgstr "{tick} Você comprou {mention}"
 
-#: src/modules/shop/shops/colours.py:1184
+#: src/modules/shop/shops/colours.py:1206
 msgctxt "ui:colourstore|menu:buycolours|placeholder"
 msgid "There are no colour roles available to purchase!"
 msgstr "Não há cores de cargo disponíveis para venda!"
 
-#: src/modules/shop/shops/colours.py:1190
+#: src/modules/shop/shops/colours.py:1212
 msgctxt "ui:colourstore|menu:buycolours|placeholder"
 msgid "Select a colour role to purchase!"
 msgstr "Selecione uma cor de cargo para comprar!"
 
-#: src/modules/shop/shops/colours.py:1236
+#: src/modules/shop/shops/colours.py:1258
 #, possible-python-brace-format
 msgctxt "ui:colourstore|embed|line:owned_item"
 msgid "`[{j:02}]` | `{price} LC` | {mention} (You own this!)"
 msgstr "`[{j:02}]` | `{price} LC` | {mention} (Você tem isto!)"
 
-#: src/modules/shop/shops/colours.py:1241
+#: src/modules/shop/shops/colours.py:1263
 #, possible-python-brace-format
 msgctxt "ui:colourstore|embed|line:item"
 msgid "`[{j:02}]` | `{price} LC` | {mention}"
 msgstr "`[{j:02}]` | `{price} LC` | {mention}"
 
-#: src/modules/shop/shops/colours.py:1248
+#: src/modules/shop/shops/colours.py:1270
 msgctxt "ui:colourstore|embed|desc"
 msgid "No colour roles available for purchase!"
 msgstr "Não há cores de cargo disponíveis para compra."
 
-#: src/modules/shop/shops/colours.py:1251
+#: src/modules/shop/shops/colours.py:1273
 msgctxt "ui:colourstore|embed|title"
 msgid "Colour Role Shop"
 msgstr "Loja de Cores de Cargo"
 
-#: src/modules/shop/shops/colours.py:1257
+#: src/modules/shop/shops/colours.py:1279
 #, possible-python-brace-format
 msgctxt "ui:colourstore|embed|footer:paged"
 msgid "Page {current}/{total}"
 msgstr "Página {current}/{total}"
 
-#: src/modules/shop/shops/colours.py:1264
+#: src/modules/shop/shops/colours.py:1286
 msgctxt "ui:colourstore|embed|field:warning|name"
 msgid "Note!"
 msgstr "Atenção!"
 
-#: src/modules/shop/shops/colours.py:1268
+#: src/modules/shop/shops/colours.py:1290
 #, possible-python-brace-format
 msgctxt "ui:colourstore|embed|field:warning|value"
 msgid ""
