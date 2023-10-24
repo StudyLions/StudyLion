@@ -788,8 +788,8 @@ msgid ""
 "You will now see statistics from all you servers (where applicable)! Press "
 "again to revert."
 msgstr ""
-"Agora, você irá ver estatísticas de todos os seus servidores (em que "
-"possível)! Clique novamente para desfazer."
+"Agora você irá ver estatísticas de todos os seus servidores! Clique "
+"novamente para desfazer."
 
 #: src/modules/statistics/ui/leaderboard.py:257
 msgctxt "ui:leaderboard|menu:stats|placeholder"
