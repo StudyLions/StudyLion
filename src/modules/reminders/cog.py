@@ -332,6 +332,7 @@ class Reminders(LionCog):
             "View and set your reminders."
         )
     )
+    @appcmds.guild_only
     async def cmd_reminders(self, ctx: LionContext):
         """
         Display the reminder widget for this user.
@@ -353,6 +354,7 @@ class Reminders(LionCog):
         name=_p('cmd:remindme', "remindme"),
         description=_p('cmd:remindme|desc', "View and set task reminders."),
     )
+    @appcmds.guild_only
     async def remindme_group(self, ctx: LionContext):
         # Base command group for scheduling reminders.
         pass

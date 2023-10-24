@@ -41,6 +41,7 @@ class GeneralSettingUI(ConfigUI):
         await selection.response.defer(thinking=True, ephemeral=True)
 
         setting = self.get_instance(GeneralSettings.EventLog)
+        await setting.interaction_check(setting.parent_id, selection)
 
         value = selected.values[0].resolve() if selected.values else None
         setting = await setting.from_value(self.guildid, value)
@@ -95,7 +96,7 @@ class GeneralSettingUI(ConfigUI):
 class GeneralDashboard(DashboardSection):
     section_name = _p(
         "dash:general|title",
-        "General Configuration ({commands[configure general]})"
+        "General Configuration ({commands[config general]})"
     )
     _option_name = _p(
         "dash:general|option|name",

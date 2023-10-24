@@ -28,7 +28,21 @@ if TYPE_CHECKING:
 
 guide = _p(
     'ui:schedule|about',
-    "Guide tips here TBD"
+    "**Do you think you can commit to a schedule and stick to it?**\n"
+    "**Schedule voice sessions here and get rewarded for keeping yourself accountable!**\n\n"
+    "Use the menu below to book timeslots using LionCoins. "
+    "If you are active (in the dedicated voice channels) during these times, "
+    "you will be rewarded, along with a large bonus if everyone who scheduled that slot "
+    "made it!\n"
+    "Beware though, if you fail to make it, all your booked sessions will be cancelled "
+    "with no refund! And if you keep failing to attend your scheduled sessions, "
+    "you may be forbidden from booking them in future.\n\n"
+    "When your scheduled session starts, you will recieve a ping from the schedule channel, "
+    "which will have more information about how to attend your session.\n"
+    "If you discover you can't make your scheduled session, please be responsible "
+    "and use this command to cancel or clear your schedule!\n\n"
+    "**Note:** *Make sure your timezone is set correctly (with `/my timezone`), "
+    "or the times I tell might not make sense!*"
 )
 
 

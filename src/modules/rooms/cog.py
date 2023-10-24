@@ -16,7 +16,7 @@ from utils.ui import Confirm
 from constants import MAX_COINS
 from core.data import CoreData
 
-from wards import low_management_ward
+from wards import high_management_ward
 
 from . import babel, logger
 from .data import RoomData
@@ -47,7 +47,7 @@ class RoomCog(LionCog):
             self.bot.core.guild_config.register_model_setting(setting)
 
         configcog = self.bot.get_cog('ConfigCog')
-        self.crossload_group(self.configure_group, configcog.configure_group)
+        self.crossload_group(self.configure_group, configcog.admin_config_group)
 
         if self.bot.is_ready():
             await self.initialise()
@@ -414,7 +414,7 @@ class RoomCog(LionCog):
                     t(_p(
                         'cmd:room_rent|error:not_setup',
                         "The private room system has not been set up! "
-                        "A private room category needs to be set first with `/configure rooms`."
+                        "A private room category needs to be set first with `/admin config rooms`."
                     ))
                 ), ephemeral=True
             )
@@ -523,12 +523,31 @@ class RoomCog(LionCog):
             self._start(room)
 
             # Send tips message
-            # TODO: Actual tips.
-            await room.channel.send(
-                    "{mention} welcome to your private room! You may use the menu below to configure it.".format(
-                    mention=ctx.author.mention
-                )
+            tips = (
+                "Welcome to your very own private room {owner}!\n"
+                "You may use the control panel below to quickly configure your room, including:\n"
+                "- Inviting (and removing) members,\n"
+                "- Depositing LionCoins into the room bank to pay the daily rent, and\n"
+                "- Adding your very own Pomodoro timer to the room.\n\n"
+                "You also have elevated Discord permissions over the room itself!\n"
+                "This includes managing messages, and changing the name, region,"
+                " and bitrate of the channel, or even deleting the room entirely!"
+                " (Beware you will not be refunded in this case.)\n\n"
+                "Finally, you now have access to some new commands:\n"
+                "{status_cmd}: This brings up the room control panel again,"
+                " in case the interface below times out or is deleted/hidden.\n"
+                "{deposit_cmd}:  Room members may use this command to easily contribute LionCoins to the room bank.\n"
+                "{invite_cmd} and {kick_cmd}: Quickly invite (or remove) multiple members by mentioning them.\n"
+                "{transfer_cmd}: Transfer the room to another owner, keeping the balance (this is not reversible!)"
+            ).format(
+                owner=ctx.author.mention,
+                status_cmd=self.bot.core.mention_cmd('room status'),
+                deposit_cmd=self.bot.core.mention_cmd('room deposit'),
+                invite_cmd=self.bot.core.mention_cmd('room invite'),
+                kick_cmd=self.bot.core.mention_cmd('room kick'),
+                transfer_cmd=self.bot.core.mention_cmd('room transfer'),
             )
+            await room.channel.send(tips)
 
             # Send config UI
             ui = RoomUI(self.bot, room, callerid=ctx.author.id, timeout=None)
@@ -987,8 +1006,7 @@ class RoomCog(LionCog):
     @appcmds.describe(
         **{setting.setting_id: setting._desc for setting in RoomSettings.model_settings}
     )
-    @appcmds.default_permissions(manage_guild=True)
-    @low_management_ward
+    @high_management_ward
     async def configure_rooms_cmd(self, ctx: LionContext,
                                   rooms_category: Optional[discord.CategoryChannel] = None,
                                   rooms_price: Optional[Range[int, 0, MAX_COINS]] = None,

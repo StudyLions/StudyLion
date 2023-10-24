@@ -30,6 +30,7 @@ class TimerConfigUI(ConfigUI):
     async def channel_menu(self, selection: discord.Interaction, selected: ChannelSelect):
         await selection.response.defer()
         setting = self.instances[0]
+        await setting.interaction_check(setting.parent_id, selection)
         setting.value = selected.values[0] if selected.values else None
         await setting.write()
 
@@ -78,7 +79,7 @@ class TimerConfigUI(ConfigUI):
 class TimerDashboard(DashboardSection):
     section_name = _p(
         'dash:pomodoro|title',
-        "Pomodoro Configuration ({commands[configure pomodoro]})"
+        "Pomodoro Configuration ({commands[config pomodoro]})"
     )
     _option_name = _p(
         "dash:stats|dropdown|placeholder",

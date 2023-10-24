@@ -20,6 +20,7 @@ from ..data import AnyRankData, RankData
 from ..utils import rank_model_from_type, format_stat_range, stat_data_to_value
 from .editor import RankEditor
 from .preview import RankPreviewUI
+from .templates import get_guild_template
 
 _p = babel._p
 
@@ -87,7 +88,73 @@ class RankOverviewUI(MessageUI):
 
         Ranks are determined by rank type.
         """
-        await press.response.send_message("Not Implemented Yet")
+        t = self.bot.translator.t
+
+        # Prevent role creation spam
+        if await self.rank_model.table.select_where(guildid=self.guild.id):
+            return await press.response.send_message(content=t(_p(
+                'ui:rank_overview|button:auto|error:already_created',
+                "The rank roles have already been created!"
+            )), ephemeral=True)
+
+        await press.response.defer(thinking=True)
+
+        if not self.guild.me.guild_permissions.manage_roles:
+            raise SafeCancellation(t(_p(
+                'ui:rank_overview|button:auto|error:my_permissions',
+                "I lack the 'Manage Roles' permission required to create rank roles!"
+            )))
+
+        # Get rank role template based on set RankType and VoiceMode
+        template = get_guild_template(self.rank_type, self.lguild.guild_mode.voice)
+        if not template:
+            # Safely error if rank type or voice mode isn't an expected value
+            raise SafeCancellation(t(_p(
+                'ui:rank_overview|button:auto|error:invalid_template',
+                "Unable to determine rank role template!")))
+
+        roles = []
+        async with self.cog.ranklock(self.guild.id):
+            for rank in reversed(template):
+                try:
+                    colour = discord.Colour.from_str(rank.colour)
+                    role = await self.guild.create_role(name=t(rank.name), colour=colour)
+                    roles.append(role)
+                    await self.rank_model.create(
+                        roleid=role.id,
+                        guildid=self.guild.id,
+                        required=rank.required,
+                        reward=rank.reward,
+                        message=t(rank.message)
+                    )
+                    self.cog.flush_guild_ranks(self.guild.id)
+
+                # Error if manage roles is lost during the process. This shouldn't happen
+                except discord.Forbidden:
+                    self.cog.flush_guild_ranks(self.guild.id)
+                    raise SafeCancellation(t(_p(
+                        'ui:rank_overview|button|auto|role_creation|error:forbidden',
+                        "An error occurred while autocreating rank roles!\n"
+                        "I lack the 'Manage Roles' permission required to create rank roles!"
+                        )))
+
+                except discord.HTTPException:
+                    self.cog.flush_guild_ranks(self.guild.id)
+                    raise SafeCancellation(t(_p(
+                        'ui:rank_overview|button:auto|role_creation|error:unknown',
+                        "An error occurred while autocreating rank roles!\n"
+                        "Please check the server has enough space for new roles "
+                        "and try again."
+                    )))
+
+            success_msg = t(_p(
+                'ui:rank_overview|button:auto|role_creation|success',
+                "Successfully created the following rank roles:\n{roles}"
+                )).format(roles="\n".join(role.mention for role in roles))
+            embed = discord.Embed(
+                    colour=discord.Colour.brand_green(),
+                    description=success_msg)
+            await press.edit_original_response(embed=embed)
 
     async def auto_button_refresh(self):
         self.auto_button.label = self.bot.translator.t(_p(
@@ -384,11 +451,17 @@ class RankOverviewUI(MessageUI):
             # No ranks, give hints about adding ranks
             desc = t(_p(
                 'ui:rank_overview|embed:noranks|desc',
-                "No activity ranks have been set up!\n"
-                "Press 'AUTO' to automatically create a "
-                "standard heirachy of voice | text | xp ranks, "
-                "or select a role or press Create below!"
+                "No activity ranks have been set up!"
             ))
+            if show_note:
+                auto_addendum = t(_p(
+                    'ui:rank_overview|embed:noranks|desc|admin_addendum',
+                    "Press 'Auto Create' to automatically create a "
+                    "standard heirachy of ranks.\n"
+                    "To manually create ranks, press 'Create Rank' below, or select a role!"
+                ))
+                desc = "\n".join((desc, auto_addendum))
+
         if self.rank_type is RankType.VOICE:
             title = t(_p(
                 'ui:rank_overview|embed|title|type:voice',
@@ -430,7 +503,7 @@ class RankOverviewUI(MessageUI):
                     "Ranks are determined by *all-time* statistics.\n"
                     "To reward ranks from a later time (e.g. to have monthly/quarterly/yearly ranks) "
                     "set the `season_start` with {stats_cmd}"
-                )).format(stats_cmd=self.bot.core.mention_cmd('configure statistics'))
+                )).format(stats_cmd=self.bot.core.mention_cmd('admin config statistics'))
             if self.rank_type is RankType.VOICE:
                 addendum = t(_p(
                     'ui:rank_overview|embed|field:note|value|voice_addendum',

@@ -4,7 +4,7 @@ CREATE TABLE VersionHistory(
   time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
   author TEXT
 );
-INSERT INTO VersionHistory (version, author) VALUES (13, 'Initial Creation');
+INSERT INTO VersionHistory (version, author) VALUES (14, 'Initial Creation');
 
 
 CREATE OR REPLACE FUNCTION update_timestamp_column()
@@ -17,17 +17,6 @@ $$ language 'plpgsql';
 -- }}}
 
 -- App metadata {{{
-CREATE TABLE AppData(
-  appid TEXT PRIMARY KEY,
-  last_study_badge_scan TIMESTAMP 
-);
-
-CREATE TABLE AppConfig(
-  appid TEXT,
-  key TEXT,
-  value TEXT,
-  PRIMARY KEY(appid, key)
-);
 
 CREATE TABLE global_user_blacklist(
   userid BIGINT PRIMARY KEY,
@@ -50,6 +39,8 @@ CREATE TABLE app_config(
 
 CREATE TABLE bot_config(
   appname TEXT PRIMARY KEY REFERENCES app_config(appname) ON DELETE CASCADE,
+  sponsor_prompt TEXT,
+  sponsor_message TEXT,
   default_skin TEXT
 );
 

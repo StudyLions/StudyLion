@@ -69,6 +69,7 @@ class RankConfigUI(ConfigUI):
     async def type_menu(self, selection: discord.Interaction, selected: Select):
         await selection.response.defer(thinking=True)
         setting = self.instances[0]
+        await setting.interaction_check(setting.parent_id, selection)
         value = selected.values[0]
         data = RankType((value,))
         setting.data = data
@@ -117,6 +118,7 @@ class RankConfigUI(ConfigUI):
     async def channel_menu(self, selection: discord.Interaction, selected: ChannelSelect):
         await selection.response.defer()
         setting = self.instances[2]
+        await setting.interaction_check(setting.parent_id, selection)
         setting.value = selected.values[0] if selected.values else None
         await setting.write()
 
@@ -168,7 +170,7 @@ class RankConfigUI(ConfigUI):
 class RankDashboard(DashboardSection):
     section_name = _p(
         'dash:rank|title',
-        "Rank Configuration ({commands[configure ranks]})",
+        "Rank Configuration ({commands[admin config ranks]})",
     )
     _option_name = _p(
         "dash:rank|dropdown|placeholder",

@@ -17,7 +17,7 @@ from meta.monitor import ComponentMonitor, ComponentStatus, StatusLevel
 from utils.lib import utc_now, error_embed
 from utils.ui import Confirm
 from utils.data import MULTIVALUE_IN, MEMBERS
-from wards import low_management_ward
+from wards import high_management_ward
 from core.data import CoreData
 from data import NULL, ORDER
 from modules.economy.data import TransactionType
@@ -118,7 +118,7 @@ class ScheduleCog(LionCog):
         await self.settings.SessionChannels.setup(self.bot)
 
         configcog = self.bot.get_cog('ConfigCog')
-        self.crossload_group(self.configure_group, configcog.configure_group)
+        self.crossload_group(self.configure_group, configcog.admin_config_group)
 
         if self.bot.is_ready():
             await self.initialise()
@@ -1090,7 +1090,7 @@ class ScheduleCog(LionCog):
     @appcmds.describe(
         **{param: option._desc for param, option in config_params.items()}
     )
-    @low_management_ward
+    @high_management_ward
     async def configure_schedule_command(self, ctx: LionContext,
                                          session_lobby: Optional[discord.TextChannel | discord.VoiceChannel] = None,
                                          session_room: Optional[discord.VoiceChannel] = None,

@@ -45,6 +45,7 @@ class MemberAdminUI(ConfigUI):
         """
         await selection.response.defer(thinking=True, ephemeral=True)
         setting = self.get_instance(Settings.GreetingChannel)
+        await setting.interaction_check(setting.parent_id, selection)
         setting.value = selected.values[0] if selected.values else None
         await setting.write()
         await selection.delete_original_response()
@@ -73,6 +74,7 @@ class MemberAdminUI(ConfigUI):
             await equippable_role(self.bot, role, selection.user)
 
         setting = self.get_instance(Settings.Autoroles)
+        await setting.interaction_check(setting.parent_id, selection)
         setting.value = selected.values
         await setting.write()
         # Instance hooks will update the menu
@@ -102,6 +104,7 @@ class MemberAdminUI(ConfigUI):
             await equippable_role(self.bot, role, selection.user)
 
         setting = self.get_instance(Settings.BotAutoroles)
+        await setting.interaction_check(setting.parent_id, selection)
         setting.value = selected.values
         await setting.write()
         # Instance hooks will update the menu
@@ -131,6 +134,7 @@ class MemberAdminUI(ConfigUI):
         await press.response.defer(thinking=True, ephemeral=True)
         t = self.bot.translator.t
         setting = self.get_instance(Settings.GreetingMessage)
+        await setting.interaction_check(setting.parent_id, press)
 
         value = setting.value
         if value is None:
@@ -173,6 +177,7 @@ class MemberAdminUI(ConfigUI):
         await press.response.defer(thinking=True, ephemeral=True)
         t = self.bot.translator.t
         setting = self.get_instance(Settings.ReturningMessage)
+        await setting.interaction_check(setting.parent_id, press)
         greeting = self.get_instance(Settings.GreetingMessage)
 
         value = setting.value
@@ -254,7 +259,7 @@ class MemberAdminUI(ConfigUI):
 class MemberAdminDashboard(DashboardSection):
     section_name = _p(
         "dash:member_admin|title",
-        "Greetings and Initial Roles ({commands[configure welcome]})"
+        "Greetings and Initial Roles ({commands[config welcome]})"
     )
     _option_name = _p(
         "dash:member_admin|dropdown|placeholder",
@@ -278,7 +283,7 @@ class MemberAdminDashboard(DashboardSection):
         page.add_field(
             name=t(_p(
                 'dash:member_admin|section:greeting_messages|name',
-                "Greeting Messages ({commands[configure welcome]})"
+                "Greeting Messages ({commands[admin config welcome]})"
             )).format(commands=self.bot.core.mention_cache),
             value=table,
             inline=False
@@ -289,7 +294,7 @@ class MemberAdminDashboard(DashboardSection):
         page.add_field(
             name=t(_p(
                 'dash:member_admin|section:initial_roles|name',
-                "Initial Roles ({commands[configure welcome]})"
+                "Initial Roles ({commands[admin config welcome]})"
             )).format(commands=self.bot.core.mention_cache),
             value=table,
             inline=False

@@ -14,6 +14,7 @@ from meta.sharding import THIS_SHARD
 from meta.logger import log_wrap
 from core.data import CoreData
 from babel.translator import ctx_translator
+from wards import low_management_iward, high_management_iward
 
 from . import babel, logger
 from .data import VideoData
@@ -25,6 +26,7 @@ class VideoSettings(SettingGroup):
     class VideoChannels(ListData, ChannelListSetting):
         setting_id = "video_channels"
         _event = 'guildset_video_channels'
+        _write_ward = high_management_iward
         
         _display_name = _p('guildset:video_channels', "video_channels")
         _desc = _p(
@@ -101,6 +103,7 @@ class VideoSettings(SettingGroup):
     class VideoBlacklist(ModelData, RoleSetting):
         setting_id = "video_blacklist"
         _event = 'guildset_video_blacklist'
+        _write_ward = high_management_iward
         
         _display_name = _p('guildset:video_blacklist', "video_blacklist")
         _desc = _p(
@@ -158,6 +161,7 @@ class VideoSettings(SettingGroup):
     class VideoBlacklistDurations(ListData, ListSetting, InteractiveSetting):
         setting_id = 'video_durations'
         _setting = DurationSetting
+        _write_ward = high_management_iward
 
         _display_name = _p('guildset:video_durations', "video_blacklist_durations")
         _desc = _p(
@@ -217,6 +221,7 @@ class VideoSettings(SettingGroup):
     class VideoGracePeriod(ModelData, DurationSetting):
         setting_id = "video_grace_period"
         _event = 'guildset_video_grace_period'
+        _write_ward = high_management_iward
         
         _display_name = _p('guildset:video_grace_period', "video_grace_period")
         _desc = _p(
@@ -252,6 +257,7 @@ class VideoSettings(SettingGroup):
     class VideoExempt(ListData, RoleListSetting):
         setting_id = "video_exempt"
         _event = 'guildset_video_exempt'
+        _write_ward = high_management_iward
         
         _display_name = _p('guildset:video_exempt', "video_exempt")
         _desc = _p(

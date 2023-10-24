@@ -750,6 +750,11 @@ class WeeklyMonthlyUI(StatsUI):
             (self.type_menu,),
             (self.edit_button, self.select_button, self.global_button, self.close_button)
         ]
+
+        voting = self.bot.get_cog('TopggCog')
+        if voting and not await voting.check_voted_recently(self.userid):
+            self._layout.append((voting.vote_button(),))
+
         if self._showing_selector:
             await self.period_menu_refresh()
             self._layout.append((self.period_menu,))

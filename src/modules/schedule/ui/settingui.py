@@ -78,6 +78,7 @@ class ScheduleSettingUI(ConfigUI):
         # TODO: Setting value checks
         await selection.response.defer()
         setting = self.get_instance(ScheduleSettings.SessionLobby)
+        await setting.interaction_check(setting.parent_id, selection)
         setting.value = selected.values[0] if selected.values else None
         await setting.write()
 
@@ -95,6 +96,7 @@ class ScheduleSettingUI(ConfigUI):
     async def room_menu(self, selection: discord.Interaction, selected: ChannelSelect):
         await selection.response.defer()
         setting = self.get_instance(ScheduleSettings.SessionRoom)
+        await setting.interaction_check(setting.parent_id, selection)
         setting.value = selected.values[0] if selected.values else None
         await setting.write()
 
@@ -113,6 +115,7 @@ class ScheduleSettingUI(ConfigUI):
         # TODO: Consider XORing input
         await selection.response.defer()
         setting = self.get_instance(ScheduleSettings.SessionChannels)
+        await setting.interaction_check(setting.parent_id, selection)
         setting.value = selected.values
         await setting.write()
 
@@ -158,6 +161,7 @@ class ScheduleSettingUI(ConfigUI):
     async def blacklist_role_menu(self, selection: discord.Interaction, selected: RoleSelect):
         await selection.response.defer()
         setting = self.get_instance(ScheduleSettings.BlacklistRole)
+        await setting.interaction_check(setting.parent_id, selection)
         setting.value = selected.values[0] if selected.values else None
         # TODO: Warning for insufficient permissions?
         await setting.write()
@@ -227,7 +231,7 @@ class ScheduleSettingUI(ConfigUI):
 class ScheduleDashboard(DashboardSection):
     section_name = _p(
         'dash:schedule|title',
-        "Scheduled Session Configuration ({commands[configure schedule]})"
+        "Scheduled Session Configuration ({commands[admin config schedule]})"
     )
     _option_name = _p(
         "dash:schedule|dropdown|placeholder",
@@ -248,7 +252,7 @@ class ScheduleDashboard(DashboardSection):
         page.add_field(
             name=t(_p(
                 'dash:schedule|section:schedule_channels|name',
-                "Scheduled Session Channels ({commands[configure schedule]})",
+                "Scheduled Session Channels ({commands[admin config schedule]})",
             )).format(commands=self.bot.core.mention_cache),
             value=table,
             inline=False
@@ -258,7 +262,7 @@ class ScheduleDashboard(DashboardSection):
         page.add_field(
             name=t(_p(
                 'dash:schedule|section:schedule_rewards|name',
-                "Scheduled Session Rewards ({commands[configure schedule]})",
+                "Scheduled Session Rewards ({commands[admin config schedule]})",
             )).format(commands=self.bot.core.mention_cache),
             value=table,
             inline=False
@@ -268,7 +272,7 @@ class ScheduleDashboard(DashboardSection):
         page.add_field(
             name=t(_p(
                 'dash:schedule|section:schedule_blacklist|name',
-                "Scheduled Session Blacklist ({commands[configure schedule]})",
+                "Scheduled Session Blacklist ({commands[admin config schedule]})",
             )).format(commands=self.bot.core.mention_cache),
             value=table,
             inline=False

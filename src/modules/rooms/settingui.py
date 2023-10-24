@@ -29,6 +29,7 @@ class RoomSettingUI(ConfigUI):
     async def category_menu(self, selection: discord.Interaction, selected: ChannelSelect):
         await selection.response.defer()
         setting = self.instances[0]
+        await setting.interaction_check(setting.parent_id, selection)
         setting.value = selected.values[0] if selected.values else None
         await setting.write()
 
@@ -42,6 +43,7 @@ class RoomSettingUI(ConfigUI):
     async def visible_button(self, press: discord.Interaction, pressed: Button):
         await press.response.defer()
         setting = next(inst for inst in self.instances if inst.setting_id == RoomSettings.Visible.setting_id)
+        await setting.interaction_check(setting.parent_id, press)
         setting.value = not setting.value
         await setting.write()
 
@@ -95,7 +97,7 @@ class RoomSettingUI(ConfigUI):
 class RoomDashboard(DashboardSection):
     section_name = _p(
         'dash:rooms|title',
-        "Private Room Configuration ({commands[configure rooms]})"
+        "Private Room Configuration ({commands[admin config rooms]})"
     )
     _option_name = _p(
         "dash:economy|dropdown|placeholder",

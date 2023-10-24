@@ -64,7 +64,7 @@ class Economy(LionCog):
                 "Attempting to load the EconomyCog before ConfigCog! Failed to crossload configuration group."
             )
         else:
-            self.crossload_group(self.configure_group, configcog.configure_group)
+            self.crossload_group(self.configure_group, configcog.config_group)
 
     # ----- Economy Bonus registration -----
     def register_economy_bonus(self, bonus_coro, name=None):
@@ -903,7 +903,6 @@ class Economy(LionCog):
             appcmds.Choice(name=EconomySettings.AllowTransfers._outputs[False], value=0),
         ]
     )
-    @appcmds.default_permissions(manage_guild=True)
     @moderator_ward
     async def configure_economy(self, ctx: LionContext,
                                 allow_transfers: Optional[appcmds.Choice[int]] = None,

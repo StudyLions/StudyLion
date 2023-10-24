@@ -26,15 +26,31 @@ async def high_management(bot: LionBot, member: discord.Member, guild: discord.G
         return True
     if await sys_admin(bot, member.id):
         return True
-    return member.guild_permissions.administrator
+    if member.guild_permissions.administrator:
+        return True
 
+    lguild = await bot.core.lions.fetch_guild(guild.id)
+    adminrole = lguild.data.admin_role
+    roleids = [role.id for role in member.roles]
+    if (adminrole and adminrole in roleids):
+        return True
 
 async def low_management(bot: LionBot, member: discord.Member, guild: discord.Guild):
+    """
+    Low management is currently identified with moderator permissions.
+    """
     if not guild:
         return True
     if await high_management(bot, member, guild):
         return True
-    return member.guild_permissions.manage_guild
+    if member.guild_permissions.manage_guild:
+        return True
+
+    lguild = await bot.core.lions.fetch_guild(guild.id)
+    modrole = lguild.data.mod_role
+    roleids = [role.id for role in member.roles]
+    if (modrole and modrole in roleids):
+        return True
 
 
 # Interaction Wards, also return True/False
@@ -96,7 +112,7 @@ async def high_management_ward(ctx: LionContext) -> bool:
         raise CheckFailure(
             ctx.bot.translator.t(_p(
                 'ward:high_management|failed',
-                "You must have the `ADMINISTRATOR` permission in this server to do this!"
+                "You must have the `ADMINISTRATOR` permission or the configured `admin_role` to do this!"
             ))
         )
 
@@ -112,7 +128,7 @@ async def low_management_ward(ctx: LionContext) -> bool:
         raise CheckFailure(
             ctx.bot.translator.t(_p(
                 'ward:low_management|failed',
-                "You must have the `MANAGE_GUILD` permission in this server to do this!"
+                "You must have the `MANAGE_GUILD` permission or the configured `mod_role` to do this!"
             ))
         )
 

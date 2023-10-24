@@ -74,8 +74,8 @@ admin_extra = _p(
     Use {cmd_dashboard} to see an overview of the server configuration, \
     and quickly jump to the feature configuration panels to modify settings.
 
-    Configuration panels are also accessible directly through the `/configure` commands \
-    and most features may be configured through these commands.
+    Most settings may also be directly set through the `/config` and `/admin config` commands, \
+    depending on whether the settings require moderator (manage server) or admin level permissions, respectively.
 
     Other relevant commands for guild configuration below:
     `/editshop`: Add/Edit/Remove colour roles from the {coin} shop.

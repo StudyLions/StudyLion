@@ -18,9 +18,10 @@ _p = babel._p
 
 class ModerationSettingUI(ConfigUI):
     setting_classes = (
+        ModerationSettings.ModRole,
+        ModerationSettings.AdminRole,
         ModerationSettings.TicketLog,
         ModerationSettings.AlertChannel,
-        ModerationSettings.ModRole,
     )
 
     def __init__(self, bot: LionBot, guildid: int, channelid, **kwargs):
@@ -41,6 +42,7 @@ class ModerationSettingUI(ConfigUI):
         await selection.response.defer(thinking=True, ephemeral=True)
 
         setting = self.get_instance(ModerationSettings.TicketLog)
+        await setting.interaction_check(setting.parent_id, selection)
         setting.value = selected.values[0] if selected.values else None
         await setting.write()
         await selection.delete_original_response()
@@ -66,6 +68,7 @@ class ModerationSettingUI(ConfigUI):
         await selection.response.defer(thinking=True, ephemeral=True)
         
         setting = self.get_instance(ModerationSettings.AlertChannel)
+        await setting.interaction_check(setting.parent_id, selection)
         setting.value = selected.values[0] if selected.values else None
         await setting.write()
         await selection.delete_original_response()
@@ -91,6 +94,7 @@ class ModerationSettingUI(ConfigUI):
         await selection.response.defer(thinking=True, ephemeral=True)
         
         setting = self.get_instance(ModerationSettings.ModRole)
+        await setting.interaction_check(setting.parent_id, selection)
         setting.value = selected.values[0] if selected.values else None
         await setting.write()
         await selection.delete_original_response()
@@ -101,6 +105,32 @@ class ModerationSettingUI(ConfigUI):
         menu.placeholder = t(_p(
             'ui:moderation_config|menu:modrole|placeholder',
             "Select Moderator Role"
+        ))
+
+    # Admin Role Selector
+    @select(
+        cls=RoleSelect,
+        placeholder="ADMINROLE_MENU_PLACEHOLDER",
+        min_values=0, max_values=1
+    )
+    async def adminrole_menu(self, selection: discord.Interaction, selected: RoleSelect):
+        """
+        Single role selector for the `admin_role` setting.
+        """
+        await selection.response.defer(thinking=True, ephemeral=True)
+        
+        setting = self.get_instance(ModerationSettings.AdminRole)
+        await setting.interaction_check(setting.parent_id, selection)
+        setting.value = selected.values[0] if selected.values else None
+        await setting.write()
+        await selection.delete_original_response()
+    
+    async def adminrole_menu_refresh(self):
+        menu = self.adminrole_menu
+        t = self.bot.translator.t
+        menu.placeholder = t(_p(
+            'ui:moderation_config|menu:adminrole|placeholder',
+            "Select Admin Role"
         ))
 
     # ----- UI Flow -----
@@ -133,13 +163,15 @@ class ModerationSettingUI(ConfigUI):
             self.ticket_log_menu_refresh(),
             self.alert_channel_menu_refresh(),
             self.modrole_menu_refresh(),
+            self.adminrole_menu_refresh(),
         )
         await asyncio.gather(*component_refresh)
 
         self.set_layout(
+            (self.adminrole_menu,),
+            (self.modrole_menu,),
             (self.ticket_log_menu,),
             (self.alert_channel_menu,),
-            (self.modrole_menu,),
             (self.edit_button, self.reset_button, self.close_button,)
         )
 
@@ -147,7 +179,7 @@ class ModerationSettingUI(ConfigUI):
 class ModerationDashboard(DashboardSection):
     section_name = _p(
         "dash:moderation|title",
-        "Moderation Settings ({commands[configure moderation]})"
+        "Moderation Settings ({commands[admin config moderation]})"
     )
     _option_name = _p(
         "dash:moderation|dropdown|placeholder",

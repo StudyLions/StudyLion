@@ -1,6 +1,8 @@
-from typing import NamedTuple, Optional, Sequence, Union, overload, List
+from io import StringIO
+from typing import NamedTuple, Optional, Sequence, Union, overload, List, Any
 import collections
 import datetime
+import datetime as dt
 import iso8601  # type: ignore
 import pytz
 import re
@@ -11,8 +13,10 @@ import discord
 from discord.partial_emoji import _EmojiTag
 from discord import Embed, File, GuildSticker, StickerItem, AllowedMentions, Message, MessageReference, PartialMessage
 from discord.ui import View
+from dateutil.parser import parse, ParserError
 
 from babel.translator import ctx_translator
+from meta.errors import UserInputError
 
 from . import util_babel
 
@@ -887,3 +891,30 @@ def _recurse_length(payload, breadcrumbs={}, header=()) -> int:
         breadcrumbs.pop(total_header)
 
     return total
+
+async def parse_time_static(timestr, timezone):
+    timestr = timestr.strip()
+    default = dt.datetime.now(tz=timezone).replace(hour=0, minute=0, second=0, microsecond=0)
+    if not timestr:
+        return default
+    try:
+        ts = parse(timestr, fuzzy=True, default=default)
+    except ParserError:
+        t = ctx_translator.get().t
+        raise UserInputError(
+            t(_p(
+                'parse_timestamp|error:parse',
+                "Could not parse `{given}` as a valid reminder time. "
+                "Try entering the time in the form `HH:MM` or `YYYY-MM-DD HH:MM`."
+            )).format(given=timestr)
+        )
+    return ts
+
+def write_records(records: list[dict[str, Any]], stream: StringIO):
+    if records:
+        keys = records[0].keys()
+        stream.write(','.join(keys))
+        stream.write('\n')
+        for record in records:
+            stream.write(','.join(map(str, record.values())))
+            stream.write('\n')

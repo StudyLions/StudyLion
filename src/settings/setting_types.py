@@ -1381,7 +1381,7 @@ class StringListSetting(InteractiveSetting, ListSetting):
     _setting = StringSetting
 
 
-class GuildIDListSetting(InteractiveSetting, ListSetting):
+class GuildIDListSetting(ListSetting, InteractiveSetting):
     """
     List of guildids.
     """

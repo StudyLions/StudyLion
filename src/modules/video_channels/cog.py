@@ -57,7 +57,7 @@ class VideoCog(LionCog):
                 "Could not load ConfigCog. VideoCog configuration will not crossload."
             )
         else:
-            self.crossload_group(self.configure_group, configcog.configure_group)
+            self.crossload_group(self.configure_group, configcog.admin_config_group)
 
         if self.bot.is_ready():
             await self.initialise()
@@ -522,7 +522,7 @@ class VideoCog(LionCog):
         video_blacklist_durations=VideoSettings.VideoBlacklistDurations._desc,
         video_grace_period=VideoSettings.VideoGracePeriod._desc,
     )
-    @low_management_ward
+    @high_management_ward
     async def configure_video(self, ctx: LionContext,
                               video_blacklist: Optional[discord.Role] = None,
                               video_blacklist_durations: Optional[str] = None,
@@ -572,4 +572,3 @@ class VideoCog(LionCog):
             ui = VideoSettingUI(self.bot, ctx.guild.id, ctx.channel.id)
             await ui.run(ctx.interaction)
             await ui.wait()
-

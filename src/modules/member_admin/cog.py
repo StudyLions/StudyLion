@@ -1,15 +1,23 @@
+from io import StringIO
 from typing import Optional
 import asyncio
 
 import discord
 from discord.ext import commands as cmds
+from discord.enums import AppCommandOptionType
 from discord import app_commands as appcmds
+from psycopg import sql
+from data.queries import NULLS, ORDER
 
 from meta import LionCog, LionBot, LionContext
 from meta.logger import log_wrap
 from meta.sharding import THIS_SHARD
+from meta.errors import UserInputError, SafeCancellation
 from babel.translator import ctx_locale
-from utils.lib import utc_now
+from utils.lib import utc_now, parse_time_static, write_records
+from utils.ui import ChoicedEnum, Transformed
+from utils.ratelimits import Bucket, BucketFull, BucketOverFull
+from data import RawExpr, NULL
 
 from wards import low_management_ward, equippable_role, high_management_ward
 
@@ -21,6 +29,24 @@ from .settingui import MemberAdminUI
 _p = babel._p
 
 
+class DownloadableData(ChoicedEnum):
+    VOICE_LEADERBOARD = _p('cmd:admin_data|param:data_type|choice:voice_leaderboard', "Voice Leaderboard")
+    MSG_LEADERBOARD = _p('cmd:admin_data|param:data_type|choice:msg_leaderboard', "Message Leaderboard")
+    XP_LEADERBOARD = _p('cmd:admin_data|param:data_type|choice:xp_leaderboard', "XP Leaderboard")
+    ROLEMENU_EQUIP = _p('cmd:admin_data|param:data_type|choice:rolemenu_equip', "Rolemenu Roles Equipped")
+    TRANSACTIONS = _p('cmd:admin_data|param:data_type|choice:transactions', "Economy Transactions (Incomplete)")
+    BALANCES = _p('cmd:admin_data|param:data_type|choice:balances', "Economy Balances")
+    VOICE_SESSIONS = _p('cmd:admin_data|param:data_type|choice:voice_sessions', "Voice Sessions")
+
+    @property
+    def choice_name(self):
+        return self.value
+
+
+    @property
+    def choice_value(self):
+        return self.name
+
 class MemberAdminCog(LionCog):
     def __init__(self, bot: LionBot):
         self.bot = bot
@@ -30,6 +56,9 @@ class MemberAdminCog(LionCog):
 
         # Set of (guildid, userid) that are currently being added
         self._adding_roles = set()
+
+        # Map of guildid -> Bucket
+        self._data_request_buckets: dict[int, Bucket] = {}
 
     # ----- Initialisation -----
     async def cog_load(self):
@@ -46,7 +75,8 @@ class MemberAdminCog(LionCog):
                 "Configuration command cannot be crossloaded."
             )
         else:
-            self.crossload_group(self.configure_group, configcog.configure_group)
+            self.crossload_group(self.configure_group, configcog.config_group)
+            self.crossload_group(self.admin_group, configcog.admin_group)
 
     # ----- Cog API -----
     async def absent_remove_role(self, guildid, userid, roleid):
@@ -54,6 +84,12 @@ class MemberAdminCog(LionCog):
         Idempotently remove a role from a member who is no longer in the guild.
         """
         return await self.data.past_roles.delete_where(guildid=guildid, userid=userid, roleid=roleid)
+
+    def data_bucket_req(self, guildid: int):
+        bucket = self._data_request_buckets.get(guildid, None)
+        if bucket is None:
+            bucket = self._data_request_buckets[guildid] = Bucket(10, 10)
+        bucket.request()
 
     # ----- Event Handlers -----
     @LionCog.listener('on_member_join')
@@ -320,7 +356,15 @@ class MemberAdminCog(LionCog):
             )
 
     # ----- Cog Commands -----
-    @cmds.hybrid_command(
+    @LionCog.placeholder_group
+    @cmds.hybrid_group('admin', with_app_command=False)
+    async def admin_group(self, ctx: LionContext):
+        """
+        Substitute configure command group.
+        """
+        pass
+
+    @admin_group.command(
         name=_p('cmd:resetmember', "resetmember"),
         description=_p(
             'cmd:resetmember|desc',
@@ -342,7 +386,6 @@ class MemberAdminCog(LionCog):
         ),
     )
     @high_management_ward
-    @appcmds.default_permissions(administrator=True)
     async def cmd_resetmember(self, ctx: LionContext,
                               target: discord.User,
                               saved_roles: Optional[bool] = False,
@@ -378,6 +421,214 @@ class MemberAdminCog(LionCog):
                 ephemeral=True
             )
 
+    @admin_group.command(
+        name=_p('cmd:admin_data', "data"),
+        description=_p(
+            'cmd:admin_data|desc',
+            "Download various raw data for external analysis and backup."
+        )
+    )
+    @appcmds.rename(
+        data_type=_p('cmd:admin_data|param:data_type', "type"),
+        target=_p('cmd:admin_data|param:target', "target"),
+        start=_p('cmd:admin_data|param:start', "after"),
+        end=_p('cmd:admin_data|param:end', "before"),
+        limit=_p('cmd:admin_data|param:limit', "limit"),
+    )
+    @appcmds.describe(
+        data_type=_p(
+            'cmd:admin_data|param:data_type|desc',
+            "Select the type of data you want to download"
+        ),
+        target=_p(
+            'cmd:admin_data|param:target|desc',
+            "Filter the data by selecting a user or role"
+        ),
+        start=_p(
+            'cmd:admin_data|param:start|desc',
+            "Retrieve records created after this date and time in server timezone (YYYY-MM-DD HH:MM)"
+        ),
+        end=_p(
+            'cmd:admin_data|param:end|desc',
+            "Retrieve records created before this date and time in server timezone (YYYY-MM-DD HH:MM)"
+        ),
+        limit=_p(
+            'cmd:admin_data|param:limit|desc',
+            "Maximum number of records to retrieve."
+        )
+    )
+    @high_management_ward
+    async def cmd_data(self, ctx: LionContext,
+                       data_type: Transformed[DownloadableData, AppCommandOptionType.string],
+                       target: Optional[discord.User | discord.Member | discord.Role] = None,
+                       start: Optional[str] = None,
+                       end: Optional[str] = None,
+                       limit: appcmds.Range[int, 1, 100000] = 1000,
+                       ):
+        if not ctx.guild:
+            return
+        if not ctx.interaction:
+            return
+
+        t = self.bot.translator.t
+
+        # Parse arguments
+
+        userids: Optional[list[int]] = None
+        if target is None:
+            # All guild members
+            userids = None
+        elif isinstance(target, discord.Role):
+            # Members of the given role
+            userids = [member.id for member in target.members]
+        else:
+            # target is a user or member
+            userids = [target.id]
+
+        if start:
+            start_time = await parse_time_static(start, ctx.lguild.timezone)
+        else:
+            start_time = ctx.guild.created_at
+
+        if end:
+            end_time = await parse_time_static(end, ctx.lguild.timezone)
+        else:
+            end_time = utc_now()
+            
+        # Form query
+        if data_type is DownloadableData.VOICE_LEADERBOARD:
+            query = self.bot.core.data.Member.table.select_where()
+            query.select(
+                'guildid',
+                'userid',
+                total_time=RawExpr(
+                    sql.SQL("study_time_between(guildid, userid, %s, %s)"),
+                    (start_time, end_time)
+                )
+            )
+            query.order_by('total_time', ORDER.DESC, NULLS.LAST)
+        elif data_type is DownloadableData.MSG_LEADERBOARD:
+            from tracking.text.data import TextTrackerData as Data
+
+            query = Data.TextSessions.table.select_where()
+            query.select(
+                'guildid',
+                'userid',
+                total_messages="SUM(messages)"
+            )
+            query.where(
+                Data.TextSessions.start_time >= start_time,
+                Data.TextSessions.start_time < end_time,
+            )
+            query.group_by('guildid', 'userid')
+            query.order_by('total_messages', ORDER.DESC, NULLS.LAST)
+        elif data_type is DownloadableData.XP_LEADERBOARD:
+            from modules.statistics.data import StatsData as Data
+
+            query = Data.MemberExp.table.select_where()
+            query.select(
+                'guildid',
+                'userid',
+                total_xp="SUM(amount)"
+            )
+            query.where(
+                Data.MemberExp.earned_at >= start_time,
+                Data.MemberExp.earned_at < end_time,
+            )
+            query.group_by('guildid', 'userid')
+            query.order_by('total_xp', ORDER.DESC, NULLS.LAST)
+        elif data_type is DownloadableData.ROLEMENU_EQUIP:
+            from modules.rolemenus.data import RoleMenuData as Data
+
+            query = Data.RoleMenuHistory.table.select_where().leftjoin('role_menus', using=('menuid',))
+            query.select(
+                guildid=Data.RoleMenu.guildid,
+                userid=Data.RoleMenuHistory.userid,
+                menuid=Data.RoleMenu.menuid,
+                menu_messageid=Data.RoleMenu.messageid,
+                menu_name=Data.RoleMenu.name,
+                equipid=Data.RoleMenuHistory.equipid,
+                roleid=Data.RoleMenuHistory.roleid,
+                obtained_at=Data.RoleMenuHistory.obtained_at,
+                expires_at=Data.RoleMenuHistory.expires_at,
+                removed_at=Data.RoleMenuHistory.removed_at,
+                transactionid=Data.RoleMenuHistory.transactionid,
+            )
+            query.where(
+                Data.RoleMenuHistory.obtained_at >= start_time,
+                Data.RoleMenuHistory.obtained_at < end_time,
+            )
+            query.order_by(Data.RoleMenuHistory.obtained_at, ORDER.DESC)
+        elif data_type is DownloadableData.TRANSACTIONS:
+            raise SafeCancellation("Transaction data is not yet available")
+        elif data_type is DownloadableData.BALANCES:
+            raise SafeCancellation("Member balance data is not yet available")
+        elif data_type is DownloadableData.VOICE_SESSIONS:
+            raise SafeCancellation("Raw voice session data is not yet available")
+        else:
+            raise ValueError(f"Unknown data type requested {data_type}")
+
+        query.where(guildid=ctx.guild.id)
+        if userids:
+            query.where(userid=userids)
+        query.limit(limit)
+        query.with_no_adapter()
+
+        # Request bucket
+        try:
+            self.data_bucket_req(ctx.guild.id)
+        except BucketOverFull:
+            # Don't do anything, even respond to the interaction
+            raise SafeCancellation()
+        except BucketFull:
+            raise SafeCancellation(t(_p(
+                'cmd:admin_data|error:ratelimited',
+                "Too many requests! Please wait a few minutes before using this command again."
+            )))
+
+        # Run query
+        await ctx.interaction.response.defer(thinking=True)
+        results = await query
+
+        if results:
+            with StringIO() as stream:
+                write_records(results, stream)
+                stream.seek(0)
+                file = discord.File(stream, filename='data.csv')
+                await ctx.reply(file=file)
+        else:
+            await ctx.error_reply(
+                t(_p(
+                    'cmd:admin_data|error:no_results',
+                    "Your query had no results! Try relaxing your filters."
+                ))
+            )
+
+    @cmd_data.autocomplete('start')
+    @cmd_data.autocomplete('end')
+    async def cmd_data_acmpl_time(self, interaction: discord.Interaction, partial: str):
+        if not interaction.guild:
+            return []
+
+        lguild = await self.bot.core.lions.fetch_guild(interaction.guild.id)
+        timezone = lguild.timezone
+
+        t = self.bot.translator.t
+        try:
+            timestamp = await parse_time_static(partial, timezone)
+            choice = appcmds.Choice(
+                name=timestamp.strftime('%Y-%m-%d %H:%M'),
+                value=partial
+            )
+        except UserInputError:
+            choice = appcmds.Choice(
+                name=t(_p(
+                    'cmd:admin_data|acmpl:time|error:parse',
+                    "Cannot parse \"{partial}\" as a time. Try the format YYYY-MM-DD HH:MM"
+                )).format(partial=partial)[:100],
+                value=partial
+            )
+        return [choice]
 
     # ----- Config Commands -----
     @LionCog.placeholder_group

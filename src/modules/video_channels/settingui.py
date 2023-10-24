@@ -45,6 +45,7 @@ class VideoSettingUI(ConfigUI):
         await selection.response.defer(thinking=True, ephemeral=True)
 
         setting = self.get_instance(VideoSettings.VideoChannels)
+        await setting.interaction_check(setting.parent_id, selection)
         setting.value = selected.values
         await setting.write()
         await selection.delete_original_response()
@@ -70,6 +71,7 @@ class VideoSettingUI(ConfigUI):
         await selection.response.defer(thinking=True, ephemeral=True)
 
         setting = self.get_instance(VideoSettings.VideoExempt)
+        await setting.interaction_check(setting.parent_id, selection)
         setting.value = selected.values
         await setting.write()
         await selection.delete_original_response()
@@ -95,6 +97,7 @@ class VideoSettingUI(ConfigUI):
         await selection.response.defer(thinking=True, ephemeral=True)
 
         setting = self.get_instance(VideoSettings.VideoBlacklist)
+        await setting.interaction_check(setting.parent_id, selection)
         setting.value = selected.values[0] if selected.values else None
         if setting.value:
             await equippable_role(self.bot, setting.value, selection.user)
@@ -153,7 +156,7 @@ class VideoSettingUI(ConfigUI):
 class VideoDashboard(DashboardSection):
     section_name = _p(
         "dash:video|title",
-        "Video Channel Settings ({commands[configure video_channels]})"
+        "Video Channel Settings ({commands[admin config video_channels]})"
     )
     _option_name = _p(
         "dash:video|option|name",

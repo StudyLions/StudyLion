@@ -47,6 +47,8 @@ class CoreData(Registry, name="core"):
         ------
         CREATE TABLE bot_config(
             appname TEXT PRIMARY KEY REFERENCES app_config(appname) ON DELETE CASCADE,
+            sponsor_prompt TEXT,
+            sponsor_message TEXT,
             default_skin TEXT
         );
         """
@@ -54,6 +56,8 @@ class CoreData(Registry, name="core"):
 
         appname = String(primary=True)
         default_skin = String()
+        sponsor_prompt = String()
+        sponsor_message = String()
 
     class Shard(RowModel):
         """

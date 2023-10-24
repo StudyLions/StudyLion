@@ -7,6 +7,7 @@ from settings.groups import SettingGroup
 from meta.errors import UserInputError
 from meta.context import ctx_bot
 from core.data import CoreData
+from wards import low_management_iward
 
 from .translator import ctx_translator
 from . import babel
@@ -104,9 +105,10 @@ class LocaleSettings(SettingGroup):
         """
         Guild configuration for whether to force usage of the guild locale.
 
-        Exposed via `/configure language` command and standard configuration interface.
+        Exposed via `/config language` command and standard configuration interface.
         """
         setting_id = 'force_locale'
+        _write_ward = low_management_iward
 
         _display_name = _p('guildset:force_locale', 'force_language')
         _desc = _p('guildset:force_locale|desc',
@@ -144,15 +146,16 @@ class LocaleSettings(SettingGroup):
         def set_str(self):
             bot = ctx_bot.get()
             if bot:
-                return bot.core.mention_cmd('configure language')
+                return bot.core.mention_cmd('config language')
 
     class GuildLocale(ModelData, LocaleSetting):
         """
         Guild-configured locale.
 
-        Exposed via `/configure language` command, and standard configuration interface.
+        Exposed via `/config language` command, and standard configuration interface.
         """
         setting_id = 'guild_locale'
+        _write_ward = low_management_iward
 
         _display_name = _p('guildset:locale', 'language')
         _desc = _p('guildset:locale|desc', "Your preferred language for interacting with me.")
@@ -180,4 +183,4 @@ class LocaleSettings(SettingGroup):
         def set_str(self):
             bot = ctx_bot.get()
             if bot:
-                return bot.core.mention_cmd('configure language')
+                return bot.core.mention_cmd('config language')
