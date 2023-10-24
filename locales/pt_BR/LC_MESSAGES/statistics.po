@@ -348,7 +348,7 @@ msgid ""
 "/leaderboard ranking list."
 msgstr ""
 "Quando configurado, membros com *qualquer* destes cargos, não irão aparecer "
-"na /classificação do servidor."
+"na */classificação*."
 
 #: src/modules/statistics/settings.py:173
 msgctxt "guildset:unranked_roles|accepts"
