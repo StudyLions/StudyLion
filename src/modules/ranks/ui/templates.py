@@ -16,21 +16,21 @@ Reward message defaults
 """
 
 voice_reward_msg = _p(
-    'ui:rank_editor|input:message|default|type:voice',
+    'rank_autocreate|message_defaults|type:voice',
     "Congratulations {user_mention}!\n"
     "For working hard for **{requires}**, you have achieved the rank of "
     "**{role_name}** in **{guild_name}**! Keep up the good work."
 )
 
 xp_reward_msg = _p(
-    'ui:rank_editor|input:message|default|type:xp',
+    'rank_autocreate|message_defaults|type:xp',
     "Congratulations {user_mention}!\n"
     "For earning **{requires}**, you have achieved the guild rank of "
     "**{role_name}** in **{guild_name}**!"
 )
 
 msg_reward_msg = _p(
-    'ui:rank_editor|input:message|default|type:msg',
+    'rank_autocreate|message_defaults|type:msg',
     "Congratulations {user_mention}!\n"
     "For sending **{requires}**, you have achieved the guild rank of "
     "**{role_name}** in **{guild_name}**!"
