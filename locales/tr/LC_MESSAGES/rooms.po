@@ -571,8 +571,8 @@ msgid ""
 "Deposit LionCoins in your private room bank to add more days. (Members may "
 "also deposit!)"
 msgstr ""
-"Günü arttırmak için oda bankanıza biraz daha LionCoin aktarmanız "
-"gerekmektedir. (Ayrıca üyeler de aktarmalıdır!)"
+"Günü eklemek için oda bankanıza LC aktarabilirsin. (Diğer üyeler de "
+"aktarabilir!)"
 
 #: src/modules/rooms/cog.py:923
 msgctxt "cmd:room_deposit|param:coins"
