@@ -70,7 +70,7 @@ msgstr "lider tablosu"
 #: src/modules/statistics/cog.py:134
 msgctxt "cmd:leaderboard|desc"
 msgid "Server leaderboard."
-msgstr "Sunucu liderlik tablosu."
+msgstr "Sunucu lider tablosu."
 
 #: src/modules/statistics/cog.py:149
 #, possible-python-brace-format
