@@ -766,8 +766,8 @@ msgid ""
 "Private room category has been set to {channel}. Existing private rooms will"
 " be moved."
 msgstr ""
-"Özel oda kategorisi {channel}' ayarlandı. Mevcut özel odaların yeri "
-"değişecektir."
+"Özel oda kategorisi {channel} olarak ayarlandı. Mevcut özel odalar "
+"taşınacaktır."
 
 #: src/modules/rooms/settings.py:69
 #, possible-python-brace-format
