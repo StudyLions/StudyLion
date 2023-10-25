@@ -51,7 +51,7 @@ msgstr "Varsayılan"
 #: src/settings/ui.py:384
 msgctxt "setting|summary_table|field:set|key"
 msgid "Set Using"
-msgstr "Kullanımı ayarla"
+msgstr "Ayarlamak İçin"
 
 #: src/settings/ui.py:502
 msgctxt "setting|interaction_check|error"
