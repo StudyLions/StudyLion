@@ -102,6 +102,8 @@ msgstr "Oda Zamanlayıcısı Oluştur"
 msgctxt "ui:room_status|button:timer|timer_created"
 msgid "Timer created successfully! Use {edit_cmd} to configure further."
 msgstr ""
+"Zamanlayıcı başarıyla kuruldu! {edit_cmd} komutu ile konfigüre etmeye devam "
+"edebilirsin."
 
 #: src/modules/rooms/roomui.py:254
 msgctxt "ui:room_status|button:timer|label:edit_timer"
