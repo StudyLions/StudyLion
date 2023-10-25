@@ -220,7 +220,7 @@ msgstr "Sayı biçiminden gün, saat, dakika ve saniye, örnek `2d 4h 10s`"
 #: src/settings/setting_types.py:1352
 msgctxt "settype:channel_list|accepts"
 msgid "Comma separated list of channel ids."
-msgstr "Kanal ID'lerini virgülle ayırılmış listesi."
+msgstr "Kanal ID'lerinin virgülle ayırılmış listesi."
 
 #: src/settings/setting_types.py:1363
 msgctxt "settype:role_list|accepts"
