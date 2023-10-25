@@ -1,0 +1,1272 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Eyüp Ramazan, 2023
+# Serhat Acar, 2023
+# Havina Ru, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Havina Ru, 2023\n"
+"Language-Team: Turkish (https://app.transifex.com/leobot/teams/174919/tr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/modules/schedule/cog.py:493
+msgctxt "create_booking|error:no_lobby"
+msgid ""
+"This server has not set a `session_lobby`, so the scheduled session system "
+"is disabled!"
+msgstr ""
+"Bu sunucuda `oturum_lobisi` ayarlanmadı, bu nedenle oturum sistemi aktif "
+"değil!"
+
+#: src/modules/schedule/cog.py:505
+msgctxt "create_booking|error:no_member"
+msgid "An unknown Discord error occurred. Please try again in a few minutes."
+msgstr ""
+"Bilinmeyen bir Discord hatası oluştu. Birkaç dakika sonra tekrar deneyin."
+
+#: src/modules/schedule/cog.py:513
+msgctxt "create_booking|error:blacklisted"
+msgid ""
+"You have been blacklisted from the scheduled session system in this server."
+msgstr "Bu sunucudaki oturum sisteminden yasaklandınız."
+
+#: src/modules/schedule/cog.py:524
+#, possible-python-brace-format
+msgctxt "create_booking|error:insufficient_balance"
+msgid ""
+"Booking a session costs {coin}**{required}**, but you only have "
+"{coin}**{balance}**."
+msgid_plural ""
+"Booking `{count}` sessions costs {coin}**{required}**, but you only have "
+"{coin}**{balance}**."
+msgstr[0] ""
+"Bir oturum {coin}**{required}** miktar para istiyor ama senin sadece "
+"{coin}**{balance}** paran var."
+msgstr[1] ""
+"`{count}` adet oturum {coin}**{required}** miktar para istiyor ama senin "
+"sadece {coin}**{balance}** paran var"
+
+#: src/modules/schedule/cog.py:538
+msgctxt "create_booking|error:already_booked"
+msgid "One or more requested timeslots are already booked!"
+msgstr "Bir ya da daha fazla zaman dilimi çoktan ayırtıldı!"
+
+#: src/modules/schedule/cog.py:741
+msgctxt "cmd:schedule"
+msgid "schedule"
+msgstr "plan"
+
+#: src/modules/schedule/cog.py:744
+msgctxt "cmd:schedule|desc"
+msgid "View and manage your scheduled session."
+msgstr "Planlanmış oturumunuzu görün veya düzenleyin."
+
+#: src/modules/schedule/cog.py:749
+msgctxt "cmd:schedule|param:cancel"
+msgid "cancel"
+msgstr ""
+
+#: src/modules/schedule/cog.py:752
+msgctxt "cmd:schedule|param:book"
+msgid "book"
+msgstr ""
+
+#: src/modules/schedule/cog.py:758
+msgctxt "cmd:schedule|param:cancel|desc"
+msgid "Select a booked timeslot to cancel."
+msgstr ""
+
+#: src/modules/schedule/cog.py:762
+msgctxt "cmd:schedule|param:book|desc"
+msgid "Select a timeslot to schedule. (Times shown in your set timezone.)"
+msgstr ""
+
+#: src/modules/schedule/cog.py:792
+#, possible-python-brace-format
+msgctxt "cmd:schedule|cancel_booking|error:parse_slot"
+msgid ""
+"Time slot `{provided}` not recognised. Please select a session to cancel "
+"from the autocomplete options."
+msgstr ""
+"`{provided}` zaman dilimi hatırlanamadı. Lütfen iptal etmek için otomatik "
+"tamamlama seçeneklerinden bir oturum seçin."
+
+#: src/modules/schedule/cog.py:800
+#, possible-python-brace-format
+msgctxt "cmd:schedule|cancel_booking|error:not_booked"
+msgid "Could not cancel {time} booking because it is not booked!"
+msgstr "{time} oturumunu iptal edemiyorum çünkü ayırtılmış değil!"
+
+#: src/modules/schedule/cog.py:809
+#, possible-python-brace-format
+msgctxt "cmd:schedule|cancel_booking|error:too_soon"
+msgid "Cannot cancel {time} booking because it is running or starting soon!"
+msgstr ""
+"{time} oturumunu iptal edemiyorum çünkü devam ediyor ya da başlamak üzere!"
+
+#: src/modules/schedule/cog.py:822
+#, possible-python-brace-format
+msgctxt "cmd:schedule|cancel_booking|success"
+msgid "Successfully cancelled your booking at {time}."
+msgstr "{time} zamanındaki oturumunuzu başarıyla iptal ettim!"
+
+#: src/modules/schedule/cog.py:835
+#, possible-python-brace-format
+msgctxt "cmd:schedule|create_booking|error:parse_slot"
+msgid ""
+"Time slot `{provided}` not recognised. Please select a session to cancel "
+"from the autocomplete options."
+msgstr ""
+"`{provided}` zaman dilimi hatırlanamadı. Lütfen iptal etmek için otomatik "
+"tamamlama seçeneklerinden bir oturum seç."
+
+#: src/modules/schedule/cog.py:843
+#, possible-python-brace-format
+msgctxt "cmd:schedule|create_booking|error:already_booked"
+msgid "You have already booked a scheduled session for {time}."
+msgstr "{time} zamanında zaten ayırtılmış bir oturumun bulunuyor."
+
+#: src/modules/schedule/cog.py:852
+#, possible-python-brace-format
+msgctxt "cmd:schedule|create_booking|error:too_soon"
+msgid "Cannot book session at {time} because it is running or starting soon!"
+msgstr ""
+"{time} oturumunu ayırtamıyorum çünkü devam ediyor ya da başlamak üzere!"
+
+#: src/modules/schedule/cog.py:864
+#, possible-python-brace-format
+msgctxt "cmd:schedule|create_booking|success"
+msgid "You have successfully scheduled a session at {time}."
+msgstr "{time} zamanında başarıyla bir oturum zamanladın."
+
+#: src/modules/schedule/cog.py:909
+msgctxt "cmd:schedule|acmpl:book|error:not_in_guild"
+msgid "You need to be in a server to book sessions!"
+msgstr ""
+
+#: src/modules/schedule/cog.py:922
+msgctxt "cmd:schedule|acmpl:book|error:blacklisted"
+msgid "Cannot Book -- Blacklisted"
+msgstr ""
+
+#: src/modules/schedule/cog.py:943
+#, possible-python-brace-format
+msgctxt "cmd:schedule|acmpl:book|timezone_info"
+msgid ""
+"Using timezone '{timezone}' where it is '{now}'. Change with '/my timezone'"
+msgstr ""
+
+#: src/modules/schedule/cog.py:956 src/modules/schedule/cog.py:1014
+#, possible-python-brace-format
+msgctxt "cmd:schedule|acmpl:book|format"
+msgid "{start} - {end} ({until})"
+msgstr ""
+
+#: src/modules/schedule/cog.py:980
+#, possible-python-brace-format
+msgctxt "cmd:schedule|acmpl:book|no_matching"
+msgid "No bookable sessions matching '{partial}'"
+msgstr ""
+
+#: src/modules/schedule/cog.py:1003
+msgctxt "cmd:schedule|acmpl:cancel|error:empty_schedule"
+msgid "You do not have any upcoming sessions to cancel!"
+msgstr ""
+
+#: src/modules/schedule/cog.py:1036
+#, possible-python-brace-format
+msgctxt "cmd:schedule|acmpl:cancel|error:no_matching"
+msgid "No cancellable sessions matching '{partial}'"
+msgstr ""
+
+#: src/modules/schedule/cog.py:1081
+msgctxt "cmd:configure_schedule"
+msgid "schedule"
+msgstr "zamanla"
+
+#: src/modules/schedule/cog.py:1084
+msgctxt "cmd:configure_schedule|desc"
+msgid "Configure Scheduled Session system"
+msgstr "Zamanlanmış oturum sistemini konfigüre et"
+
+#: src/modules/schedule/lib.py:86 src/modules/schedule/ui/scheduleui.py:347
+#, possible-python-brace-format
+msgctxt "ui:schedule|format_until|positive"
+msgid "in <1 hour"
+msgid_plural "in {number} hours"
+msgstr[0] "<1 saat içinde"
+msgstr[1] "{number} saat içinde"
+
+#: src/modules/schedule/lib.py:93 src/modules/schedule/ui/scheduleui.py:354
+msgctxt "ui:schedule|format_until|now"
+msgid "right now!"
+msgstr "hemen şimdi!"
+
+#: src/modules/schedule/settings.py:70
+msgctxt "guildset:session_lobby"
+msgid "session_lobby"
+msgstr "oturum_lobisi"
+
+#: src/modules/schedule/settings.py:73
+msgctxt "guildset:session_lobby|desc"
+msgid "Channel to post scheduled session announcement and status to."
+msgstr "Zamanlanmış oturum duyurularını ve durumlarını göndereceğim kanal."
+
+#: src/modules/schedule/settings.py:77
+msgctxt "guildset:session_lobby|long_desc"
+msgid ""
+"Channel in which to announce scheduled sessions and post their status. I must have the `MANAGE_WEBHOOKS` permission in this channel.\n"
+"**This must be configured in order for the scheduled session system to function.**"
+msgstr ""
+"Zamanlanmış oturum duyurularını ve durumlarını göndereceğim kanal. Bu kanada `MANAGE_WEBHOOKS` yetkimin olması gerekiyor.\n"
+"**Zamanlanmış oturum sisteminin çalışabilmesi için bu sistemin ayarlanmış olması gerekiyor.**"
+
+#: src/modules/schedule/settings.py:83
+msgctxt "guildset:session_lobby|accepts"
+msgid "Name or id of the session lobby channel."
+msgstr "Oturum Lobi kanalının ismi ya da ID'si."
+
+#: src/modules/schedule/settings.py:97
+#, possible-python-brace-format
+msgctxt "guildset:session_lobby|set_response|set"
+msgid "Scheduled sessions will now be announced in {channel}"
+msgstr "Zamanlanmış oturumlar bundan sonra {channel} kanalında duyurulacak."
+
+#: src/modules/schedule/settings.py:102
+msgctxt "guildset:session_lobby|set_response|unset"
+msgid ""
+"The schedule session lobby has been unset. Shutting down scheduled session "
+"system."
+msgstr ""
+"Zamanlanmış oturum lobisi ayarlanmadı. Zamanlanmış oturum sistemini "
+"kapatıyorum."
+
+#: src/modules/schedule/settings.py:112
+msgctxt "guildset:session_lobby|formatted|unset"
+msgid "`Not Set` (The scheduled session system is disabled.)"
+msgstr "` Ayarlanmadı` (Zamanlanmış oturum sistemi devre dışı bırakıldı.)"
+
+#: src/modules/schedule/settings.py:117
+#, possible-python-brace-format
+msgctxt "guildset:session_lobby|formatted|set"
+msgid "<#{channelid}>"
+msgstr "<#{channelid}>"
+
+#: src/modules/schedule/settings.py:127
+msgctxt "guildset:session_room"
+msgid "session_room"
+msgstr "oturum_odası"
+
+#: src/modules/schedule/settings.py:130
+msgctxt "guildset:session_room|desc"
+msgid "Special voice channel open to scheduled session members."
+msgstr "Zamanlanmış oturum üyeleri için açılacak özel ses kanal"
+
+#: src/modules/schedule/settings.py:134
+msgctxt "guildset:session_room|long_desc"
+msgid ""
+"If set, this voice channel serves as a dedicated room for scheduled session "
+"members. During (and slightly before) each scheduled session, all members "
+"who have booked the session will be given permission to join the voice "
+"channel (via permission overwrites). I require the `MANAGE_CHANNEL`, "
+"`MANAGE_PERMISSIONS`, `CONNECT`, and `VIEW_CHANNEL` permissions in this "
+"channel, and my highest role must be higher than all permission overwrites "
+"set in the channel. Furthermore, if this is set to a *category* channel, "
+"then the permission overwrites will apply to all *synced* channels under the"
+" category, as usual."
+msgstr ""
+"Ayarlanırsa bu ses kanalı, zamanlanmış oturum üyeleri için özel bir oda "
+"görevi görür. Zamanlanan her oturum sırasında (ve biraz öncesinde), oturumu "
+"rezerve eden tüm üyelere ses kanalına katılma izni verilecektir (izin "
+"üzerine yazma yoluyla). Bu kanalda `MANAGE_CHANNEL`, `MANAGE_PERMISSIONS`, "
+"`CONNECT` ve `VIEW_CHANNEL` izinlerine ihtiyacım var ve en yüksek rolüm, "
+"kanalda ayarlanan tüm izin üzerine yazma işlemlerinden daha yüksek "
+"olmalıdır. Ayrıca, eğer bu bir *kategori'ye* ayarlanırsa, izin üzerine yazma"
+" işlemleri her zamanki gibi kategori altındaki tüm *senkronize* kanallara "
+"uygulanacaktır."
+
+#: src/modules/schedule/settings.py:144
+msgctxt "guildset:session_room|accepts"
+msgid "Name or id of the session room voice channel."
+msgstr "Zamanlanmış oturum ses kanalı ismi ya da ID'si."
+
+#: src/modules/schedule/settings.py:158
+#, possible-python-brace-format
+msgctxt "guildset:session_room|set_response|set"
+msgid "Schedule session members will now be given access to {channel}"
+msgstr ""
+"Zamanlanmış oturum üyelerinin {channel} kanalına bundan böyle "
+"erişebilecektir."
+
+#: src/modules/schedule/settings.py:163
+msgctxt "guildset:session_room|set_response|unset"
+msgid "The dedicated schedule session room has been removed."
+msgstr "Özel zamanlanmış oturum odası kaldırıldı."
+
+#: src/modules/schedule/settings.py:171
+msgctxt "guildset:session_channels"
+msgid "session_channels"
+msgstr "oturum_kanalları"
+
+#: src/modules/schedule/settings.py:174
+msgctxt "guildset:session_channels|desc"
+msgid "Voice channels in which to track activity for scheduled sessions."
+msgstr "Zamanlanmış oturumların takibinin yapılacağı ses kanalları."
+
+#: src/modules/schedule/settings.py:178
+msgctxt "guildset:session_channels|long_desc"
+msgid ""
+"Only activity in these channels (and in `session_room` if set) will count "
+"towards scheduled session attendance. If a category is selected, then all "
+"channels under the category will also be included. Activity tracking also "
+"respects the `untracked_voice_channels` setting."
+msgstr ""
+"Yalnızca bu kanallardaki (ve ayarlandıysa `session_room'dak`) etkinlik, "
+"zamanlanan oturum katılımına dahil edilecektir. Bir kategori seçilirse "
+"kategorinin altındaki tüm kanallar da dahil edilecektir. Etkinlik izleme "
+"aynı zamanda `untracked_voice_channels` ayarına da uyar."
+
+#: src/modules/schedule/settings.py:185
+msgctxt "guildset:session_channels|accepts"
+msgid "Comma separated list of session channel names or ids."
+msgstr "Oturum kanal isimlerinin veya id lerinin virgülle ayrılmış listesi."
+
+#: src/modules/schedule/settings.py:202
+#, possible-python-brace-format
+msgctxt "guildset:session_channels|set_response|set"
+msgid ""
+"Activity in the following sessions will now count towards scheduled session "
+"attendance: {channels}"
+msgstr ""
+"Şu oturumlardaki etkinlikler artık zamanlanmış oturum katılımına dahil "
+"edilecek: {channels}"
+
+#: src/modules/schedule/settings.py:207
+msgctxt "guildset:session_channels|set_response|unset"
+msgid ""
+"Activity in all (tracked) voice channels will now count towards session "
+"attendance."
+msgstr "Tüm ses kanalları (takip edilen) oturum katılımı olarak sayılacak."
+
+#: src/modules/schedule/settings.py:217
+msgctxt "guildset:session_channels|formatted|unset"
+msgid "All Channels (excluding `untracked_channels`)"
+msgstr "Tüm kanallar (`untracked_channels` haricindekiler)"
+
+#: src/modules/schedule/settings.py:248
+msgctxt "guildset:schedule_cost"
+msgid "schedule_cost"
+msgstr "oturum_tutarı"
+
+#: src/modules/schedule/settings.py:251
+msgctxt "guildset:schedule_cost|desc"
+msgid "Booking cost for each scheduled session."
+msgstr "Her zamanlanmış oturum için ayırtma ücreti."
+
+#: src/modules/schedule/settings.py:255
+msgctxt "guildset:schedule_cost|long_desc"
+msgid ""
+"Members will be charged this many LionCoins for each scheduled session they "
+"book."
+msgstr ""
+"Üyelerin hesaplarından her zamanlanmış oturum ayırtmalarında bu kadar "
+"LionCoin düşülecektir."
+
+#: src/modules/schedule/settings.py:259
+msgctxt "guildset:schedule_cost|accepts"
+msgid "Price of each session booking (non-negative integer)."
+msgstr "Her oturum ayırtmanın ücreti (negatif tam sayı olamaz)."
+
+#: src/modules/schedule/settings.py:271
+#, possible-python-brace-format
+msgctxt "guildset:schedule_cost|set_response"
+msgid ""
+"Schedule session bookings will now cost {coin} **{amount}** per timeslot."
+msgstr ""
+"Her bir zamanlanmış oturumu ayırtma bundan böyle  {coin} **{amount}**  "
+"tutacaktır."
+
+#: src/modules/schedule/settings.py:284
+#, possible-python-brace-format
+msgctxt "guildset:schedule_cost|formatted"
+msgid "{coin}**{amount}** per booking."
+msgstr " Her ayırtma {coin} **{amount}** ."
+
+#: src/modules/schedule/settings.py:294
+msgctxt "guildset:attendance_reward"
+msgid "attendance_reward"
+msgstr "katılım_ödülü"
+
+#: src/modules/schedule/settings.py:297
+msgctxt "guildset:attendance_reward|desc"
+msgid "Reward for attending a booked scheduled session."
+msgstr "Ayırtılmış zamanlanmış oturuma katılma ödülü."
+
+#: src/modules/schedule/settings.py:301
+msgctxt "guildset:attendance_reward|long_desc"
+msgid ""
+"When a member successfully attends a scheduled session they booked, they "
+"will be awarded this many LionCoins. Should generally be more than the "
+"`schedule_cost` setting."
+msgstr ""
+"Bir üye, ayırttığı zamanlanmış bir oturuma başarıyla katıldığında, kendisine"
+" şu kadar LionCoin verilecek. Genellikle `schedule_cost` ayarında daha fazla"
+" olmalıdır."
+
+#: src/modules/schedule/settings.py:307
+msgctxt "guildset:attendance_reward|accepts"
+msgid "Number of coins to reward session attendance."
+msgstr "Oturum katılımında ne kadar para ödülü verileceği."
+
+#: src/modules/schedule/settings.py:319
+#, possible-python-brace-format
+msgctxt "guildset:attendance_reward|set_response"
+msgid ""
+"Members will be rewarded {coin}**{amount}** when they attend a scheduled "
+"session."
+msgstr ""
+"Üyeler bundan böyle bir zamanlanmış oturuma katıldıklarında  "
+"{coin}**{amount}* ile ödüllendirileceklerdir."
+
+#: src/modules/schedule/settings.py:329
+#, possible-python-brace-format
+msgctxt "guildset:attendance_reward|formatted"
+msgid "{coin}**{amount}** upon attendance."
+msgstr "Katılım başına {coin}**{amount}**."
+
+#: src/modules/schedule/settings.py:339
+msgctxt "guildset:attendance_bonus"
+msgid "group_attendance_bonus"
+msgstr "grup_katılım_bonusu"
+
+#: src/modules/schedule/settings.py:342
+msgctxt "guildset:attendance_bonus|desc"
+msgid "Bonus reward given when all members attend a scheduled session."
+msgstr "Tüm kullanıcılar zamanlanmış oturuma katıldıklarında verilecek bonus."
+
+#: src/modules/schedule/settings.py:346
+msgctxt "guildset:attendance_bonus|long_desc"
+msgid ""
+"When all members who have booked a session successfully attend the session, "
+"they will be given this bonus in *addition* to the `attendance_reward`."
+msgstr ""
+"Oturumu ayırtan tüm üyeler oturuma başarıyla katıldıklarında ekstra olarak "
+"`attendance_reward` bonusunu alacaklar."
+
+#: src/modules/schedule/settings.py:351
+msgctxt "guildset:attendance_bonus|accepts"
+msgid "Bonus coins rewarded when everyone attends a session."
+msgstr "Oturuma herkes katıldığında ödüllendirilecek bonus para."
+
+#: src/modules/schedule/settings.py:363
+#, possible-python-brace-format
+msgctxt "guildset:attendance_bonus|set_response"
+msgid ""
+"Session members will be rewarded an additional {coin}**{amount}** when "
+"everyone attends."
+msgstr ""
+"Herkes katıldığında oturum üyeleri  {coin}**{amount}** ekstra para ile "
+"ödüllendirilecekler."
+
+#: src/modules/schedule/settings.py:373
+#, possible-python-brace-format
+msgctxt "guildset:attendance_bonus|formatted"
+msgid "{coin}**{amount}** bonus when all booked members attend."
+msgstr ""
+"Ayırtmış tüm üyeler katıldığında {coin}**{amount}** miktar bonus verilecek."
+
+#: src/modules/schedule/settings.py:383
+msgctxt "guildset:min_attendance"
+msgid "min_attendance"
+msgstr "minimum_katılım"
+
+#: src/modules/schedule/settings.py:386
+msgctxt "guildset:min_attendance|desc"
+msgid "Minimum attendance before reward eligability."
+msgstr "Ödül yeterliliği için minimum katılım."
+
+#: src/modules/schedule/settings.py:390
+msgctxt "guildset:min_attendance|long_desc"
+msgid ""
+"Scheduled session members will need to attend the session for at least this "
+"number of minutes before they are marked as having attended (and hence are "
+"rewarded)."
+msgstr ""
+"Zamanlanmış oturum üyelerinin katıldı olarak sayılabilmesi için en az bu "
+"kadar dakika süre katılım göstermesi gerekiyor. (ve bu nedenle "
+"ödüllendirilir)"
+
+#: src/modules/schedule/settings.py:395
+msgctxt "guildset:min_attendance|accepts"
+msgid "Number of minutes (1-60) before attendance is counted."
+msgstr "Katılımın sayılması için sayı cinsinden dakika (1-60)."
+
+#: src/modules/schedule/settings.py:409
+#, possible-python-brace-format
+msgctxt "guildset:min_attendance|set_response"
+msgid ""
+"Members will be rewarded after they have attended booked sessions for at "
+"least **`{amount}`** minutes."
+msgstr ""
+"**`{amount}`** dakika katılım sağladıklarında katıldıkları oturumdan "
+"ödüllendirileceklerdir."
+
+#: src/modules/schedule/settings.py:419
+#, possible-python-brace-format
+msgctxt "guildset:min_attendance|formatted"
+msgid "**`{amount}`** minutes"
+msgstr "**`{amount}`** dakika"
+
+#: src/modules/schedule/settings.py:440
+msgctxt "guildset:min_attendance|parse|error"
+msgid ""
+"Minimum attendance must be an integer number of minutes between `1` and "
+"`60`."
+msgstr ""
+"Minimum katılımın tam sayı olması ve `1` ile `60` arasında olması gerekiyor."
+
+#: src/modules/schedule/settings.py:452
+msgctxt "guildset:schedule_blacklist_role"
+msgid "schedule_blacklist_role"
+msgstr "zamanlanmış_karaliste_rolü"
+
+#: src/modules/schedule/settings.py:455
+msgctxt "guildset:schedule_blacklist_role|desc"
+msgid "Role which disables scheduled session booking."
+msgstr "Zamanlanmış oturum ayırtmayı devre dışı bırakan rol."
+
+#: src/modules/schedule/settings.py:459
+msgctxt "guildset:schedule_blacklist_role|long_desc"
+msgid ""
+"Members with this role will not be allowed to book scheduled sessions in "
+"this server. If the role is manually added, all future scheduled sessions "
+"for the user are cancelled. This provides a way to stop repeatedly "
+"unreliable members from blocking the group bonus for all members. "
+"Alternatively, consider setting the booking cost (and reward) very high to "
+"provide a strong disincentive for not attending a session."
+msgstr ""
+"Bu role sahip üyelerin bu sunucuda zamanlanmış oturumlar ayırtmasına "
+"yapmasına izin verilmeyecektir. Rol manuel olarak eklenirse kullanıcı için "
+"gelecekte zamanlanmış tüm oturumlar iptal edilir. Bu, sürekli olarak "
+"güvenilmez üyelerin grup bonusunu tüm üyeler için engellemesini engellemenin"
+" bir yolunu sağlar. Alternatif olarak, bir oturuma katılmamayı güçlü bir "
+"şekilde caydırmak için ayırtma ücretini (ve ödülünü) çok yüksek ayarlamayı "
+"düşünün."
+
+#: src/modules/schedule/settings.py:467
+msgctxt "guildset:schedule_blacklist_role|accepts"
+msgid "Blacklist role name or id."
+msgstr "Kara liste rolü ya da ID'si."
+
+#: src/modules/schedule/settings.py:480
+#, possible-python-brace-format
+msgctxt "guildset:schedule_blacklist_role|set_response|set"
+msgid "Members with {role} will be unable to book scheduled sessions."
+msgstr "{role} rolüne sahip üyeler zamanlanmış oturum ayırtamayacaklar."
+
+#: src/modules/schedule/settings.py:485
+msgctxt "guildset:schedule_blacklist_role|set_response|unset"
+msgid "The schedule blacklist role has been unset."
+msgstr "Oturum kara liste rolü ayarlanmadı."
+
+#: src/modules/schedule/settings.py:495
+#, possible-python-brace-format
+msgctxt "guildset:schedule_blacklist_role|formatted|set"
+msgid "{role} members will not be able to book scheduled sessions."
+msgstr "{role} üyeleri zamanlanmış oturum ayırtamayacaklar."
+
+#: src/modules/schedule/settings.py:500
+msgctxt "guildset:schedule_blacklist_role|formatted|unset"
+msgid "Not Set"
+msgstr "Ayarlanmadı"
+
+#: src/modules/schedule/settings.py:510
+msgctxt "guildset:schedule_blacklist_after"
+msgid "schedule_blacklist_after"
+msgstr "zamanlanmış_karaliste_sonra"
+
+#: src/modules/schedule/settings.py:513
+msgctxt "guildset:schedule_blacklist_after|desc"
+msgid "Number of missed sessions within 24h before blacklisting."
+msgstr ""
+"Kara listeye alınmadan önceki 24 saat içerisindeki kaçırılmış oturumların "
+"sayısı."
+
+#: src/modules/schedule/settings.py:517
+msgctxt "guildset:schedule_blacklist_after|long_desc"
+msgid ""
+"Members who miss more than this number of booked sessions in a single 24 "
+"hour period will be automatically given the `blacklist_role`. Has no effect "
+"if the `blacklist_role` is not set or if I do not have sufficient "
+"permissions to assign the blacklist role."
+msgstr ""
+"Tek 24 saatlik periyot içinde bu rezerve edilen oturum sayısından daha fazla"
+" oturum kaçıran üyelere otomatik olarak `blacklist_role` verilecektir. Eğer "
+"`blacklist_role` kurulmamışsa veya karaliste rolünü atamak için yeterli "
+"iznim yoksa işe yaramaz."
+
+#: src/modules/schedule/settings.py:524
+msgctxt "guildset:schedule_blacklist_after|accepts"
+msgid "A number of missed sessions (1-24) before blacklisting."
+msgstr "Karalisteye alınmadan önceki kaçırılmış oturum sayısı (1-24)."
+
+#: src/modules/schedule/settings.py:539
+#, possible-python-brace-format
+msgctxt "guildset:schedule_blacklist_after|set_response|set"
+msgid ""
+"Members will be blacklisted after **`{amount}`** missed sessions within "
+"`24h`."
+msgstr ""
+"Üyeler `24h` içinde **`{amount}`** kadar kaçırılan oturumdan sonra "
+"karalisteye alınacak."
+
+#: src/modules/schedule/settings.py:544
+msgctxt "guildset:schedule_blacklist_after|set_response|unset"
+msgid ""
+"Members will not be automatically blacklisted from booking scheduled "
+"sessions."
+msgstr ""
+"Üyeler zamanlanmış oturumları rezerve ederlerken otomatik olarak kara "
+"listeye alınmayacaklarç"
+
+#: src/modules/schedule/settings.py:554
+#, possible-python-brace-format
+msgctxt "guildset:schedule_blacklist_after|formatted|set"
+msgid "Blacklist after **`{amount}`** missed sessions within `24h`."
+msgstr ""
+" '24 saat' içinde**`{amount}`** tane kaçırılan oturumdan sonra kara listeye "
+"alın."
+
+#: src/modules/schedule/settings.py:559
+msgctxt "guildset:schedule_blacklist_after|formatted|unset"
+msgid "Do not automatically blacklist."
+msgstr "Otomatik bir şekilde karalisteleme."
+
+#: src/modules/schedule/settings.py:571
+msgctxt "guildset:schedule_blacklist_role|parse|error"
+msgid "Blacklist threshold must be a number between `1` and `24`."
+msgstr "Karaliste eşiği `1` ve`24` arasında bir numara olmalı."
+
+#: src/modules/schedule/ui/settingui.py:69
+msgctxt "ui:schedule_config|button:page0|label"
+msgid "Page 1"
+msgstr "Sayfa 1"
+
+#: src/modules/schedule/ui/settingui.py:89
+msgctxt "ui:schedule_config|menu:lobby|placeholder"
+msgid "Select Lobby Channel"
+msgstr "Lobi Kanalını Seç"
+
+#: src/modules/schedule/ui/settingui.py:107
+msgctxt "ui:schedule_config|menu:room|placeholder"
+msgid "Select Session Room"
+msgstr "Oturum Odasını Seç"
+
+#: src/modules/schedule/ui/settingui.py:126
+msgctxt "ui:schedule_config|menu:channels|placeholder"
+msgid "Select Session Channels"
+msgstr "Oturum Kanallarını Seç"
+
+#: src/modules/schedule/ui/settingui.py:140
+msgctxt "ui:schedule_config|button:page1|label"
+msgid "Page 2"
+msgstr "Sayfa 2"
+
+#: src/modules/schedule/ui/settingui.py:155
+msgctxt "ui:schedule_config|button:page2|label"
+msgid "Page 3"
+msgstr "Sayfa 3"
+
+#: src/modules/schedule/ui/settingui.py:173
+msgctxt "ui:schedule_config|menu:blacklist_role|placeholder"
+msgid "Select Blacklist Role"
+msgstr "Kara Liste Rolünü Seç"
+
+#: src/modules/schedule/ui/settingui.py:181
+msgctxt "ui:schedule_config|embed|title"
+msgid "Scheduled Session Configuration Panel"
+msgstr "Ayarlanmış Oturum Yapılandırma Paneli"
+
+#: src/modules/schedule/ui/settingui.py:234
+msgctxt "dash:schedule|title"
+msgid "Scheduled Session Configuration ({commands[admin config schedule]})"
+msgstr ""
+
+#: src/modules/schedule/ui/settingui.py:238
+msgctxt "dash:schedule|dropdown|placeholder"
+msgid "Scheduled Sessions Panel"
+msgstr "Ayarlanmış Oturumlar Paneli"
+
+#: src/modules/schedule/ui/settingui.py:255
+msgctxt "dash:schedule|section:schedule_channels|name"
+msgid "Scheduled Session Channels ({commands[admin config schedule]})"
+msgstr ""
+
+#: src/modules/schedule/ui/settingui.py:265
+msgctxt "dash:schedule|section:schedule_rewards|name"
+msgid "Scheduled Session Rewards ({commands[admin config schedule]})"
+msgstr ""
+
+#: src/modules/schedule/ui/settingui.py:275
+msgctxt "dash:schedule|section:schedule_blacklist|name"
+msgid "Scheduled Session Blacklist ({commands[admin config schedule]})"
+msgstr ""
+
+#: src/modules/schedule/ui/scheduleui.py:31
+msgctxt "ui:schedule|about"
+msgid ""
+"**Do you think you can commit to a schedule and stick to it?**\n"
+"**Schedule voice sessions here and get rewarded for keeping yourself accountable!**\n"
+"\n"
+"Use the menu below to book timeslots using LionCoins. If you are active (in the dedicated voice channels) during these times, you will be rewarded, along with a large bonus if everyone who scheduled that slot made it!\n"
+"Beware though, if you fail to make it, all your booked sessions will be cancelled with no refund! And if you keep failing to attend your scheduled sessions, you may be forbidden from booking them in future.\n"
+"\n"
+"When your scheduled session starts, you will recieve a ping from the schedule channel, which will have more information about how to attend your session.\n"
+"If you discover you can't make your scheduled session, please be responsible and use this command to cancel or clear your schedule!\n"
+"\n"
+"**Note:** *Make sure your timezone is set correctly (with `/my timezone`), or the times I tell might not make sense!*"
+msgstr ""
+
+#: src/modules/schedule/ui/scheduleui.py:130
+msgctxt "ui:schedule|button:clear|error:nothing"
+msgid "No upcoming sessions to cancel! Your schedule is already clear."
+msgstr "Yaklaşan oturum olmadığından iptal edilemiyor! Takvimin zaten temiz."
+
+#: src/modules/schedule/ui/scheduleui.py:143
+msgctxt "ui:schedule|button:clear|success"
+msgid "Successfully cancelled and refunded your upcoming scheduled sessions."
+msgstr "Yaklaşan ayarlanmış oturumların başarıyla iptal ve iade edildi."
+
+#: src/modules/schedule/ui/scheduleui.py:156
+msgctxt "ui:schedule|button:clear|label"
+msgid "Clear Schedule"
+msgstr "Takvimi Temizle"
+
+#: src/modules/schedule/ui/scheduleui.py:172
+msgctxt "ui:schedule|button:about|label"
+msgid "About Schedule"
+msgstr "Takvim Hakkında"
+
+#: src/modules/schedule/ui/scheduleui.py:198
+msgctxt "ui:schedule|menu:booking|error:current_slot"
+msgid "You cannot schedule a currently running session!"
+msgstr "Hali hazırda çalışan oturumu ayarlayamassın!"
+
+#: src/modules/schedule/ui/scheduleui.py:205
+msgctxt "ui:schedule|menu:booking|error:next_slot"
+msgid "Too late! You cannot schedule a session starting in the next minute."
+msgstr "Çok geç! 1 dakika sonra başlayan bir oturumu ayarlayamassın."
+
+#: src/modules/schedule/ui/scheduleui.py:212
+msgctxt "ui:schedule|menu:booking|error:already_booked"
+msgid "You have already booked one or more of the requested sessions!"
+msgstr "Zaten bir veya birden fazla talep edilen oturumları rezerve ettin!"
+
+#: src/modules/schedule/ui/scheduleui.py:225
+#, possible-python-brace-format
+msgctxt "ui:schedule|menu:booking|error:insufficient_balance"
+msgid ""
+"Booking `{count}` scheduled sessions requires {coin}**{required}**, but you "
+"only have {coin}**{balance}**!"
+msgstr ""
+"`{count}` ayarlanmış oturumları rezerve etmek için {coin}**{required}** "
+"gerekir, ama sadece {coin}**{balance}** kadarın var!"
+
+#: src/modules/schedule/ui/scheduleui.py:241
+#, possible-python-brace-format
+msgctxt "ui:schedule|menu:booking|success"
+msgid "Successfully booked your scheduled session at {times}."
+msgid_plural ""
+"Successfully booked the following scheduled sessions.\n"
+"{times}"
+msgstr[0] "Başarıyla ayarlanmış oturumun {times} da rezerve edildi."
+msgstr[1] ""
+"Başarıyla bir sonraki ayarlanmış oturumlar rezerve edildi.\n"
+"{times}"
+
+#: src/modules/schedule/ui/scheduleui.py:264
+msgctxt "ui:schedule|menu:booking|placeholder:blacklisted"
+msgid "Book Sessions (Cannot book - Blacklisted)"
+msgstr "Oturum Rezerve Et (Rezerve edilemiyor - Karalistede)"
+
+#: src/modules/schedule/ui/scheduleui.py:272
+#, possible-python-brace-format
+msgctxt "ui:schedule|menu:booking|placeholder:regular"
+msgid "Book Sessions ({amount} LC)"
+msgstr "Oturum Rezerve Et ({amount} LC)"
+
+#: src/modules/schedule/ui/scheduleui.py:317
+#, possible-python-brace-format
+msgctxt "ui:schedule|menu:slots|option|format"
+msgid "{day} {time} ({until})"
+msgstr "{day} {time} ({until})"
+
+#: src/modules/schedule/ui/scheduleui.py:321
+msgctxt "ui:schedule|menu:slots|option|day:today"
+msgid "Today"
+msgstr "Bugün"
+
+#: src/modules/schedule/ui/scheduleui.py:325
+msgctxt "ui:schedule|menu:slots|option|day:tomorrow"
+msgid "Tomorrow"
+msgstr "Yarın"
+
+#: src/modules/schedule/ui/scheduleui.py:376
+msgctxt "ui:schedule|menu:cancel|error:current_slot"
+msgid ""
+"You cannot cancel a currently running *scheduled* session! Please attend it "
+"if possible."
+msgstr ""
+"Hali hazırda çalışan *zamanlanmış* oturum iptal edilemiyor! Mümkünse katılın"
+" lütfen."
+
+#: src/modules/schedule/ui/scheduleui.py:382
+msgctxt "ui:schedule|menu:cancel|error:too_late"
+msgid ""
+"Too late! You cannot cancel a scheduled session within a minute of it "
+"starting. Please attend it if possible."
+msgstr ""
+"Çok geç! Zamanlanmış bir oturumu başladıktan sonraki bir dakika içinde iptal"
+" edemezsin. Mümkünse katıl lütfen."
+
+#: src/modules/schedule/ui/scheduleui.py:399
+msgctxt "ui:schedule|menu:cancel|error:already_cancelled"
+msgid "The selected bookings no longer exist! Nothing to cancel."
+msgstr "Seçilen rezerveler artık mevcut değil! İptal edilecek bir şey yok."
+
+#: src/modules/schedule/ui/scheduleui.py:409
+#, possible-python-brace-format
+msgctxt "ui:schedule|menu:cancel|success"
+msgid ""
+"Successfully cancelled and refunded your scheduled session booking for "
+"{times}."
+msgid_plural ""
+"Successfully cancelled and refunded your scheduled session bookings:\n"
+"{times}."
+msgstr[0] ""
+"Başarıyla {times} kadar rezerve ettiğin oturumlar iptal ve iade edildi."
+msgstr[1] ""
+"Başarıyla ayarladığın oturumlar iptal ve iade edildi\n"
+"{times}."
+
+#: src/modules/schedule/ui/scheduleui.py:430
+msgctxt "ui:schedule|menu:cancel|placeholder"
+msgid "Cancel booked sessions"
+msgstr "Rezerve edilen oturumları iptal et"
+
+#: src/modules/schedule/ui/scheduleui.py:452
+msgctxt "ui:schedule|embed|author"
+msgid "Your Scheduled Sessions and Past Statistics"
+msgstr "Ayarladığın Oturumlar ve Geçmiş İstatistikler"
+
+#: src/modules/schedule/ui/scheduleui.py:464
+msgctxt "ui:schedule|embed|field:stats|field:recent"
+msgid "Recent"
+msgstr "Son Zamanlar"
+
+#: src/modules/schedule/ui/scheduleui.py:471
+msgctxt "ui:schedule|embed|field:stats|field:alltime"
+msgid "All Time"
+msgstr "Tüm Zamanlar"
+
+#: src/modules/schedule/ui/scheduleui.py:477
+msgctxt "ui:schedule|embed|field:stats|field:streak"
+msgid "Streak"
+msgstr "Seri"
+
+#: src/modules/schedule/ui/scheduleui.py:482
+#, possible-python-brace-format
+msgctxt "ui:schedule|embed|field:stats|field:streak|value:zero"
+msgid "One session attended! Keep it up!"
+msgid_plural "**{streak}** sessions attended in a row! Good job!"
+msgstr[0] "Bir oturuma katılındı! Aynen böyle devam!"
+msgstr[1] "Ardarda katılan oturumlar: **{streak}** ! Tebrikler!"
+
+#: src/modules/schedule/ui/scheduleui.py:489
+msgctxt "ui:schedule|embed|field:stats|field:streak|value:positive"
+msgid "No streak yet!"
+msgstr "Henüz bir seri yok!"
+
+#: src/modules/schedule/ui/scheduleui.py:497
+msgctxt "ui:schedule|embed|field:stats|name"
+msgid "Session Statistics"
+msgstr "Oturum İstatistikleri"
+
+#: src/modules/schedule/ui/scheduleui.py:516
+msgctxt "ui:schedule|embed|field:upcoming|name"
+msgid "Upcoming Sessions"
+msgstr "Yaklaşan Oturumlar"
+
+#: src/modules/schedule/ui/scheduleui.py:520
+msgctxt "ui:schedule|embed|field:upcoming|value:empty"
+msgid "No sessions scheduled yet!"
+msgstr "Henüz ayarlanmış bir oturum yok!"
+
+#: src/modules/schedule/ui/scheduleui.py:534
+#, possible-python-brace-format
+msgctxt "ui:schedule|embed|stats_format"
+msgid ""
+"**{attended}** attended out of **{total}** booked.\r\n"
+"**{percent}%** attendance rate.\r\n"
+"**{average}** average attendance time."
+msgstr ""
+"**{total}** rezerve edilenden **{attended}** katıldı. \r\n"
+"Katılım oranı **{percent}%** \r\n"
+"Ortalama katılım zamanı **{average}** ."
+
+#: src/modules/schedule/ui/scheduleui.py:548
+#, possible-python-brace-format
+msgctxt "ui:schedule|booking_format:short"
+msgid "`{until}` | {start} - {end}"
+msgstr "`{until}` | {start} - {end}"
+
+#: src/modules/schedule/ui/scheduleui.py:552
+#, possible-python-brace-format
+msgctxt "ui:schedule|booking_format:long"
+msgid "> `{until}` | {start} - {end}"
+msgstr "> `{until}` | {start} - {end}"
+
+#: src/modules/schedule/ui/sessionui.py:52
+msgctxt "ui:sessionui|button:book|label"
+msgid "Book"
+msgstr "Rezerve"
+
+#: src/modules/schedule/ui/sessionui.py:56
+msgctxt "ui:sessionui|button:cancel|label"
+msgid "Cancel"
+msgstr "İptal"
+
+#: src/modules/schedule/ui/sessionui.py:60
+msgctxt "ui:sessionui|button:schedule|label"
+msgid "Open Schedule"
+msgstr "Açık Program"
+
+#: src/modules/schedule/ui/sessionui.py:64
+msgctxt "ui:sessionui|button:help|label"
+msgid "How to Attend"
+msgstr ""
+
+#: src/modules/schedule/ui/sessionui.py:92
+msgctxt "ui:session|button:book|error:starting_soon"
+msgid "Too late! This session has started or is starting shortly."
+msgstr "Çok geç! Bu oturum çoktan başladı veya hemen başlıyor."
+
+#: src/modules/schedule/ui/sessionui.py:99
+msgctxt "ui:session|button:book|error:already_booked"
+msgid "You are already a member of this session!"
+msgstr "Zaten bu oturumun bir üyesisin!"
+
+#: src/modules/schedule/ui/sessionui.py:106
+msgctxt "ui:session|button:book|success"
+msgid "Successfully booked this session."
+msgstr "Oturum başarılı bir şekilde rezerve edildi."
+
+#: src/modules/schedule/ui/sessionui.py:120
+msgctxt "ui:session|button:book|error|title"
+msgid "Could not book session"
+msgstr "Oturum rezerve edilemedi"
+
+#: src/modules/schedule/ui/sessionui.py:138
+msgctxt "ui:session|button:cancel|error:starting_soon"
+msgid "Too late! This session has started or is starting shortly."
+msgstr "Çok geç! Bu oturum çoktan başladı veya hemen başlıyor."
+
+#: src/modules/schedule/ui/sessionui.py:145
+msgctxt "ui:session|button:cancel|error:not_booked"
+msgid "You are not a member of this session!"
+msgstr "Bu oturumun bir üyesi değilsin!"
+
+#: src/modules/schedule/ui/sessionui.py:155
+msgctxt "ui:session|button:cancel|success"
+msgid "Successfully cancelled this session."
+msgstr "Oturum başarılı bir şekilde iptal edildi."
+
+#: src/modules/schedule/ui/sessionui.py:169
+msgctxt "ui:session|button:cancel|error|title"
+msgid "Could not cancel session"
+msgstr "Oturum iptal edilemedi"
+
+#: src/modules/schedule/ui/sessionui.py:202
+msgctxt "ui:session|button:help|embed:unbooked|title"
+msgid "You have not booked this session!"
+msgstr ""
+
+#: src/modules/schedule/ui/sessionui.py:206
+#, possible-python-brace-format
+msgctxt "ui:session|button:help|embed:unbooked|description"
+msgid ""
+"You need to book this scheduled session before you can attend it! Press the "
+"**{book_label}** button to book the session."
+msgstr ""
+
+#: src/modules/schedule/ui/sessionui.py:215
+msgctxt "ui:session|button:help|embed:help|title"
+msgid "How to attend your scheduled session"
+msgstr ""
+
+#: src/modules/schedule/ui/sessionui.py:224
+#, possible-python-brace-format
+msgctxt "ui:session|button:help|embed:help|minimum_attendance"
+msgid "at least one minute"
+msgid_plural "at least `{duration}` minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/modules/schedule/ui/sessionui.py:237
+#, possible-python-brace-format
+msgctxt "ui:session|button:help|embed:help|room_line:category"
+msgid ""
+"The exclusive scheduled session category **{category}** will also be open to"
+" you during your scheduled session."
+msgstr ""
+
+#: src/modules/schedule/ui/sessionui.py:243
+#, possible-python-brace-format
+msgctxt "ui:session|button:help|embed:help|room_line:voice"
+msgid ""
+"The exclusive scheduled session room {room} will also be open to you during "
+"your scheduled session."
+msgstr ""
+
+#: src/modules/schedule/ui/sessionui.py:262
+#, possible-python-brace-format
+msgctxt "ui:session|button:help|embed:help|attend_line:only_room_category"
+msgid ""
+"To attend your scheduled session, join a voice channel in **{room}** for "
+"**{minimum}** between {start} and {end}."
+msgstr ""
+
+#: src/modules/schedule/ui/sessionui.py:272
+#, possible-python-brace-format
+msgctxt "ui:session|button:help|embed:help|attend_line:only_room_channel"
+msgid ""
+"To attend your scheduled session, join {room} for **{minimum}** between "
+"{start} and {end}."
+msgstr ""
+
+#: src/modules/schedule/ui/sessionui.py:282
+#, possible-python-brace-format
+msgctxt "ui:session|button:help|embed:help|attend_line:with_channels"
+msgid ""
+"To attend your scheduled session, join a valid session voice channel for "
+"**{minimum}** between {start} and {end}."
+msgstr ""
+
+#: src/modules/schedule/ui/sessionui.py:292
+msgctxt "ui:session|button:help|embed:help|field:channels|name"
+msgid "Valid session channels"
+msgstr ""
+
+#: src/modules/schedule/ui/sessionui.py:300
+#, possible-python-brace-format
+msgctxt "ui:session|button:help|embed:help|attend_line:all_channels"
+msgid ""
+"To attend your scheduled session, join any tracked voice channel for "
+"**{minimum}** between {start} and {end}."
+msgstr ""
+
+#: src/modules/schedule/ui/sessionui.py:308
+msgctxt "ui:session|button:help|embed:help|field:rewards|name"
+msgid "Rewards"
+msgstr ""
+
+#: src/modules/schedule/ui/sessionui.py:312
+#, possible-python-brace-format
+msgctxt "ui:session|button:help|embed:help|field:rewards|value"
+msgid ""
+"Everyone who attends the session will be rewarded with {coin}**{reward}**.\n"
+"If *everyone* successfully attends, you will also be awarded a bonus of {coin}**{bonus}**.\n"
+"Anyone who does *not* attend their booked session will have the rest of their schedule cancelled **without refund**, so beware!"
+msgstr ""
+
+#: src/modules/schedule/core/session.py:197
+msgctxt "session|error:lobby_webhook_perms"
+msgid ""
+"Insufficient permissions to create a webhook in this channel. I require the "
+"`MANAGE_WEBHOOKS` permission."
+msgstr ""
+"Bu kanalda webhook oluşturmak için yeterli iznim yok. `MANAGE_WEBHOOKS` "
+"iznine ihtiyacım var."
+
+#: src/modules/schedule/core/session.py:281
+#, possible-python-brace-format
+msgctxt "session|prepare|error:room_permissions"
+msgid ""
+"Could not prepare the configured session room {room} for the next scheduled "
+"session! I require the `MANAGE_CHANNEL`, `MANAGE_ROLES`, `CONNECT` and "
+"`VIEW_CHANNEL` permissions."
+msgstr ""
+"Bir sonraki ayarlanmış oturum için yapılandırılmış oturum odası {room} "
+"hazırlanamadı! `MANAGE_CHANNEL`, `MANAGE_ROLES`, `CONNECT` ve `VIEW_CHANNEL`"
+" izinlerine ihtiyacım var."
+
+#: src/modules/schedule/core/session.py:325
+msgctxt "session|open|update_perms|audit_reason"
+msgid "Opening configured scheduled session room."
+msgstr ""
+
+#: src/modules/schedule/core/session.py:347
+msgctxt "session|open|clean_room|audit_reason"
+msgid "Removing extra member from scheduled session room."
+msgstr ""
+
+#: src/modules/schedule/core/session.py:354
+#, possible-python-brace-format
+msgctxt "session|open|error:room_permissions"
+msgid ""
+"Could not set up the configured session room {room} for this scheduled "
+"session! I require the `MANAGE_CHANNEL`, `MANAGE_ROLES`, `CONNECT` and "
+"`VIEW_CHANNEL` permissions."
+msgstr ""
+"Bir sonraki ayarlanmış oturum için yapılandırılmış oturum odası {room} "
+"kurulamadı! `MANAGE_CHANNEL`, `MANAGE_ROLES`, `CONNECT` ve `VIEW_CHANNEL` "
+"izinlerine ihtiyacım var."
+
+#: src/modules/schedule/core/session.py:411
+#, possible-python-brace-format
+msgctxt "session|notify|dm|join_line:room_category"
+msgid ""
+"Please attend your session by joining a voice channel under **{room}**!"
+msgstr ""
+
+#: src/modules/schedule/core/session.py:416
+#, possible-python-brace-format
+msgctxt "session|notify|dm|join_line:room_voice"
+msgid "Please attend your session by joining {room}"
+msgstr ""
+
+#: src/modules/schedule/core/session.py:421
+msgctxt "session|notify|dm|join_line:all_channels"
+msgid "Please attend your session by joining a tracked voice channel!"
+msgstr ""
+
+#: src/modules/schedule/core/session.py:443
+msgctxt "session|notify|dm|join_line:channels"
+msgid "Please attend your session by joining one of the following:"
+msgstr ""
+
+#: src/modules/schedule/core/session.py:453
+msgctxt "session|notify|dm|title"
+msgid "Your Scheduled Session has started!"
+msgstr ""
+
+#: src/modules/schedule/core/session.py:457
+#, possible-python-brace-format
+msgctxt "session|notify|dm|description"
+msgid "Your scheduled session in {dest} has now begun!"
+msgstr ""
+
+#: src/modules/schedule/core/session.py:482
+#, possible-python-brace-format
+msgctxt "session|status|title"
+msgid "Session {start} - {end}"
+msgstr "Oturum {start} - {end}"
+
+#: src/modules/schedule/core/session.py:493
+msgctxt "session|status|desc:cancelled"
+msgid ""
+"I cancelled this scheduled session because I was unavailable. All members "
+"who booked the session have been refunded."
+msgstr ""
+"Müsait olmadığımdan bu ayarlanmış oturumu iptal ettim. Bu oturumu rezerve "
+"edenlere para iadesi yapılacaktır."
+
+#: src/modules/schedule/core/session.py:500
+msgctxt "session|status|desc:no_members"
+msgid "*No members scheduled this session.*"
+msgstr "*Hiçbir üye bu oturumu planlamadı.*"
+
+#: src/modules/schedule/core/session.py:506
+#, possible-python-brace-format
+msgctxt "session|status:preparing|desc:has_members"
+msgid "Starting {start}"
+msgstr "Başlıyor {start}"
+
+#: src/modules/schedule/core/session.py:509
+msgctxt "session|status:preparing|field:members"
+msgid "Members"
+msgstr "Üyeler"
+
+#: src/modules/schedule/core/session.py:516
+#, possible-python-brace-format
+msgctxt "session|status:running|desc:has_members"
+msgid "Finishing {start}"
+msgstr "Bitiyor {start}"
+
+#: src/modules/schedule/core/session.py:550
+msgctxt "session|status:running|field:waiting"
+msgid "Waiting For"
+msgstr "Bekleniyor"
+
+#: src/modules/schedule/core/session.py:556
+msgctxt "session|status:running|field:attending"
+msgid "Attending"
+msgstr "Katılınıyor"
+
+#: src/modules/schedule/core/session.py:562
+msgctxt "session|status:running|field:attended"
+msgid "Attended"
+msgstr "Katıldı"
+
+#: src/modules/schedule/core/session.py:587
+#, possible-python-brace-format
+msgctxt "session|status:finished|desc:everyone_att"
+msgid ""
+"Everyone attended the session! All members were rewarded with {coin} "
+"**{reward} + {bonus}**!"
+msgstr ""
+"Herkes oturuma katıldı! Tüm üyeler {coin} **{reward} + {bonus}** ile "
+"ödüllendirilecek!"
+
+#: src/modules/schedule/core/session.py:598
+#, possible-python-brace-format
+msgctxt "session|status:finished|desc:some_att"
+msgid ""
+"Everyone who attended was rewarded with {coin} **{reward}**! Some members did not attend so everyone missed out on the bonus {coin} **{bonus}**.\n"
+"**Members who missed their session have all future sessions cancelled without refund!*"
+msgstr ""
+"Bu oturuma katılan herkes {coin} **{reward}** ile ödüllendirildi! Bazı üyeler katılmadı bu yüzden hiç kimse {coin} **{bonus}** bonusunu alamadı.\n"
+"**Bu oturumu kaçıranların gelecekteki oturumları iadesiz bir şekilde iptal olacak.**"
+
+#: src/modules/schedule/core/session.py:610
+msgctxt "session|status:finished|desc:some_att"
+msgid ""
+"No-one attended this session! No-one received rewards.\n"
+"**Members who missed their session have all future sessions cancelled without refund!*"
+msgstr ""
+"Kimse bu oturuma katılmadı! Kimse ödül almadı.\n"
+"**Bu oturumu kaçıranların gelecekteki oturumları iadesiz bir şekilde iptal olacak.**"
+
+#: src/modules/schedule/core/session.py:616
+msgctxt "session|status:finished|field:attended"
+msgid "Attended"
+msgstr "Katıldı"
+
+#: src/modules/schedule/core/session.py:621
+msgctxt "session|status:finished|field:missing"
+msgid "Missing"
+msgstr "Eksik"
+
+#: src/modules/schedule/core/timeslot.py:487
+msgctxt "session|closing|audit_reason"
+msgid "Removing previous scheduled session member permissions."
+msgstr ""
+
+#: src/modules/schedule/core/timeslot.py:506
+msgctxt "session|closing|disconnecting|audit_reason"
+msgid "Disconnecting previous scheduled session members."
+msgstr ""

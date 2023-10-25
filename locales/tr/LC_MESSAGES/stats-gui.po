@@ -1,0 +1,145 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Eyüp Ramazan, 2023
+# Havina Ru, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Havina Ru, 2023\n"
+"Language-Team: Turkish (https://app.transifex.com/leobot/teams/174919/tr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. First column
+#: src/gui/cards/stats.py:61
+msgctxt "skin:stats|header:col1"
+msgid "STATISTICS"
+msgstr "İSTATİSTİKLER"
+
+#: src/gui/cards/stats.py:64
+msgctxt "skin:stats|subheader:leaderboard"
+msgid "LEADERBOARD POSITION"
+msgstr "LİDER TABLOSU SIRASI"
+
+#: src/gui/cards/stats.py:68
+msgctxt "skin:stats|mode:study|subheader:study"
+msgid "STUDY TIME"
+msgstr "ÇALIŞMA SÜRESİ"
+
+#: src/gui/cards/stats.py:72
+msgctxt "skin:stats|mode:voice|subheader:study"
+msgid "VOICE TIME"
+msgstr "SES SÜRESİ"
+
+#: src/gui/cards/stats.py:76
+msgctxt "skin:stats|mode:text|subheader:study"
+msgid "MESSAGES"
+msgstr "MESAJLAR"
+
+#: src/gui/cards/stats.py:80
+msgctxt "skin:stats|mode:anki|subheader:study"
+msgid "CARDS REVIEWED"
+msgstr "Görüntülenen Kartlar"
+
+#: src/gui/cards/stats.py:91
+msgctxt "skin:stats|subheader:workouts"
+msgid "WORKOUTS"
+msgstr "ANTRENMANLAR"
+
+#: src/gui/cards/stats.py:107
+msgctxt "skin:stats|field:daily"
+msgid "DAILY"
+msgstr "GÜNLÜK"
+
+#: src/gui/cards/stats.py:111
+msgctxt "skin:stats|field:weekly"
+msgid "WEEKLY"
+msgstr "HAFTALIK"
+
+#: src/gui/cards/stats.py:115
+msgctxt "skin:stats|field:monthly"
+msgid "MONTHLY"
+msgstr "AYLIK"
+
+#: src/gui/cards/stats.py:119
+msgctxt "skin:stats|field:alltime"
+msgid "ALL TIME"
+msgstr "TÜM ZAMANLAR"
+
+#: src/gui/cards/stats.py:123
+msgctxt "skin:stats|field:time"
+msgid "TIME"
+msgstr "ZAMAN"
+
+#: src/gui/cards/stats.py:127
+msgctxt "skin:stats|field:anki"
+msgid "ANKI: COMING SOON"
+msgstr "ANKI: ÇOK YAKINDA"
+
+#: src/gui/cards/stats.py:144
+msgctxt "skin:stats|mode:study|header:col2"
+msgid "STUDY STREAK"
+msgstr "ÇALIŞMA SERİ"
+
+#: src/gui/cards/stats.py:148
+msgctxt "skin:stats|mode:voice|header:col2"
+msgid "VOICE STREAK"
+msgstr "SES SERİSİ"
+
+#: src/gui/cards/stats.py:152
+msgctxt "skin:stats|mode:text|header:col2"
+msgid "ACTIVITY STREAK"
+msgstr "AKTİVİTE SERİSİ"
+
+#: src/gui/cards/stats.py:156
+msgctxt "skin:stats|mode:anki|header:col2"
+msgid "ANKI REVIEW STREAK"
+msgstr "ANKI GÖRÜŞ SERİSİ"
+
+#: src/gui/cards/stats.py:169
+#, possible-python-brace-format
+msgctxt "skin:stats|mode:study|field:col2_summary"
+msgid "{amount} HRS"
+msgstr "{amount} SAAT"
+
+#: src/gui/cards/stats.py:173
+#, possible-python-brace-format
+msgctxt "skin:stats|mode:voice|field:col2_summary"
+msgid "{amount} HRS"
+msgstr "{amount} SAAT"
+
+#: src/gui/cards/stats.py:177
+#, possible-python-brace-format
+msgctxt "skin:stats|mode:text|field:col2_summary"
+msgid "{amount} XP"
+msgstr "{amount} XP"
+
+#: src/gui/cards/stats.py:181
+#, possible-python-brace-format
+msgctxt "skin:stats|mode:anki|field:col2_summary"
+msgid "{amount} CARDS"
+msgstr "{amount} Kartlar"
+
+#: src/gui/cards/stats.py:212
+msgctxt "skin:stats|cal|weekdays"
+msgid "S,M,T,W,T,F,S"
+msgstr "P,S,Ç,P,C,CTS,PZR"
+
+#: src/gui/cards/stats.py:216
+msgctxt "skin:stats|cal|months"
+msgid ""
+"JANUARY,FEBRUARY,MARCH,APRIL,MAY,JUNE,JULY,AUGUST,SEPTEMBER,OCTOBER,NOVEMBER,DECEMBER"
+msgstr ""
+"OCAK,ŞUBAT,MART,NİSAN,MAYIS,HAZİRAN,TEMMUZ,AĞUSTOS,EYLÜL,EKİM,KASIM,ARALIK"
