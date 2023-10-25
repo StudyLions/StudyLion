@@ -67,7 +67,7 @@ msgstr "Herhangi Bir Metin"
 #, possible-python-brace-format
 msgctxt "settype:string|error"
 msgid "Provided string is too long! Maximum length: {maxlen} characters."
-msgstr "Belirtilen dizi çok uzun! Maksimum uzunluk: {maxlen} karakter."
+msgstr "Belirtilen yazı çok uzun! Maksimum uzunluk: {maxlen} karakter."
 
 #: src/settings/setting_types.py:114
 msgctxt "settype:emoji|accepts"
