@@ -783,7 +783,7 @@ msgstr "oda_kira"
 #: src/modules/rooms/settings.py:83
 msgctxt "guildset:rooms_rent|desc"
 msgid "Daily rent price for a private room."
-msgstr "Özel oda için günlük kira ücreti."
+msgstr "Özel odanın günlük kira ücreti."
 
 #: src/modules/rooms/settings.py:87
 msgctxt "guildset:rooms_rent|long_desc"
