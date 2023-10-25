@@ -225,7 +225,7 @@ msgstr "Kanal ID'lerinin virgülle ayırılmış listesi."
 #: src/settings/setting_types.py:1363
 msgctxt "settype:role_list|accepts"
 msgid "Comma separated list of role ids."
-msgstr "Rol ID'lerini virgülle ayırılmış listesi."
+msgstr "Rol ID'lerinin virgülle ayırılmış listesi."
 
 #: src/settings/setting_types.py:1379
 msgctxt "settype:stringlist|accepts"
