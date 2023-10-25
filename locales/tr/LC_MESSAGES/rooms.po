@@ -879,7 +879,7 @@ msgstr "görünür|etkin|evet|doğru|açık|etkin|1"
 #: src/modules/rooms/settings.py:175
 msgctxt "guildset:rooms_visible|parse:falsey_values"
 msgid "invisible|disabled|no|false|off|disable|0"
-msgstr "görünmez|etkin değil|hayır|yanlış|kapalı|etkin değil|0"
+msgstr "görünmez|etkin değil|hayır|yanlış|kapalı|0"
 
 #: src/modules/rooms/settings.py:187
 msgctxt "guildset:rooms_visible|set_response:enabled"
