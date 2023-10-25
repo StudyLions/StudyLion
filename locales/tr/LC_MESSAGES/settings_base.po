@@ -235,4 +235,4 @@ msgstr "Dizgilerin virgülle ayırılmış listesi."
 #: src/settings/setting_types.py:1390
 msgctxt "settype:guildidlist|accepts"
 msgid "Comma separated list of guild ids."
-msgstr "Sunucu ID'lerini virgülle ayırılmış listesi."
+msgstr "Sunucu ID'lerinin virgülle ayırılmış listesi."
