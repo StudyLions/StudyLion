@@ -720,7 +720,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "room|tick|rent_deducted"
 msgid "Daily rent deducted from room balance. New balance: {coin}**{amount}**"
-msgstr "Günlük kira oda bakiyesinden düşülür. Yeni bakiye: {coin}**{amount}**"
+msgstr "Oda bakiyesinden günlük kira düşüldü. Yeni bakiye: {coin}**{amount}**"
 
 #: src/modules/rooms/settings.py:23
 msgctxt "guildset:room_category"
