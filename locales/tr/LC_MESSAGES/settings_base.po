@@ -131,7 +131,7 @@ msgstr "Açık"
 #: src/settings/setting_types.py:510
 msgctxt "settype:bool|output:false"
 msgid "Off"
-msgstr "Kapal"
+msgstr "Kapalı"
 
 #: src/settings/setting_types.py:511
 msgctxt "settype:bool|output:none"
