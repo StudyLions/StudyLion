@@ -41,7 +41,7 @@ msgstr "Özel Oda Sistemi Konfigürasyon Paneli"
 #: src/modules/rooms/settingui.py:100
 msgctxt "dash:rooms|title"
 msgid "Private Room Configuration ({commands[admin config rooms]})"
-msgstr ""
+msgstr "Özel Oda Konfıgürasyonu ({commands[admin config rooms]})"
 
 #: src/modules/rooms/settingui.py:104
 msgctxt "dash:economy|dropdown|placeholder"
