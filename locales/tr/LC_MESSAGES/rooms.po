@@ -617,7 +617,7 @@ msgstr "odalar"
 #: src/modules/rooms/cog.py:1001
 msgctxt "cmd:configure_rooms|desc"
 msgid "Configure Rented Private Rooms"
-msgstr "Kiralanmış Özel Odaları Yapılandır"
+msgstr "Kiralık Özel Oda Konfigürasyonu"
 
 #: src/modules/rooms/room.py:78
 msgctxt "room|eventlog|field:owner"
