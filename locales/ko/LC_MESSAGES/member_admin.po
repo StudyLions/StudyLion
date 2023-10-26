@@ -74,7 +74,7 @@ msgstr "초기 역할 ({commands[admin config welcome]})"
 #: src/modules/member_admin/cog.py:33
 msgctxt "cmd:admin_data|param:data_type|choice:voice_leaderboard"
 msgid "Voice Leaderboard"
-msgstr ""
+msgstr "음성 채널 순위표"
 
 #: src/modules/member_admin/cog.py:34
 msgctxt "cmd:admin_data|param:data_type|choice:msg_leaderboard"
