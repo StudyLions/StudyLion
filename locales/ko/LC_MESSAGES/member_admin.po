@@ -363,12 +363,12 @@ msgstr "이제 환영인사가 DM으로 전송됩니다."
 #, possible-python-brace-format
 msgctxt "guildset:greeting_channel|set_response:set"
 msgid "Welcome messages will now be sent to {channel}"
-msgstr ""
+msgstr "이제 환영인사가 {channel}채널로 전송됩니다."
 
 #: src/modules/member_admin/settings.py:87
 msgctxt "guildset:greeting_channel|formmatted:unset"
 msgid "Direct Message"
-msgstr ""
+msgstr "DM"
 
 #: src/modules/member_admin/settings.py:95
 msgctxt "guildset:greeting_message"
