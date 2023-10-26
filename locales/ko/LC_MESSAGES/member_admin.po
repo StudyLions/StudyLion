@@ -314,12 +314,12 @@ msgstr "신규 맴버 아바타 URL"
 #: src/modules/member_admin/settings.py:27
 msgctxt "guildset:greeting_message|formatkey:guild_name"
 msgid "Name of this server."
-msgstr ""
+msgstr "서버 이름 "
 
 #: src/modules/member_admin/settings.py:29
 msgctxt "guildset:greeting_message|formatkey:guild_icon"
 msgid "Server icon url."
-msgstr ""
+msgstr "서버 아이콘 URL"
 
 #: src/modules/member_admin/settings.py:31
 msgctxt "guildset:greeting_message|formatkey:studying_count"
