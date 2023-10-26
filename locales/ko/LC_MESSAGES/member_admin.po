@@ -278,7 +278,7 @@ msgstr "요청이 너무 많아요! 잠시 몇 분 기다렸다가 다시 명령
 #: src/modules/member_admin/cog.py:603
 msgctxt "cmd:admin_data|error:no_results"
 msgid "Your query had no results! Try relaxing your filters."
-msgstr ""
+msgstr "쿼리 결과가 없어요! 필터를 다시 잘 설정해 보세요."
 
 #: src/modules/member_admin/cog.py:627
 #, possible-python-brace-format
