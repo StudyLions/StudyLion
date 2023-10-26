@@ -126,7 +126,7 @@ msgstr "맴버 재접속"
 #, possible-python-brace-format
 msgctxt "eventlog|event:returning|desc"
 msgid "{member} rejoined the server."
-msgstr ""
+msgstr "{member}가 서버에 다시 접속했어요."
 
 #: src/modules/member_admin/cog.py:256
 msgctxt "eventlog|event:returning|field:first_joined"
