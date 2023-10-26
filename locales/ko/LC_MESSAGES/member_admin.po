@@ -79,12 +79,12 @@ msgstr "음성 채널 순위표"
 #: src/modules/member_admin/cog.py:34
 msgctxt "cmd:admin_data|param:data_type|choice:msg_leaderboard"
 msgid "Message Leaderboard"
-msgstr ""
+msgstr "메시지 채널 순위표"
 
 #: src/modules/member_admin/cog.py:35
 msgctxt "cmd:admin_data|param:data_type|choice:xp_leaderboard"
 msgid "XP Leaderboard"
-msgstr ""
+msgstr "XP 순위표"
 
 #: src/modules/member_admin/cog.py:36
 msgctxt "cmd:admin_data|param:data_type|choice:rolemenu_equip"
