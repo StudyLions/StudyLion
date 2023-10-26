@@ -115,12 +115,12 @@ msgstr "신규 맴버 합류"
 #, possible-python-brace-format
 msgctxt "eventlog|event:welcome|desc"
 msgid "{member} joined the server for the first time."
-msgstr ""
+msgstr "{member}가 서버에 처음 접속했어요."
 
 #: src/modules/member_admin/cog.py:243
 msgctxt "eventlog|event:returning|title"
 msgid "Member Rejoined"
-msgstr ""
+msgstr "맴버 재합류"
 
 #: src/modules/member_admin/cog.py:247
 #, possible-python-brace-format
