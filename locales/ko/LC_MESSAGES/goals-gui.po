@@ -92,14 +92,14 @@ msgstr "주간 통계"
 #: src/gui/cards/goals.py:246
 msgctxt "ui:goals|weekly|task_header"
 msgid "GOALS OF THE WEEK"
-msgstr ""
+msgstr "이번주 목표"
 
 #: src/gui/cards/goals.py:256
 msgctxt "ui:goals|monthly|title"
 msgid "MONTHLY STATISTICS"
-msgstr ""
+msgstr "월간 통계"
 
 #: src/gui/cards/goals.py:260
 msgctxt "ui:goals|monthly|task_header"
 msgid "GOALS OF THE MONTH"
-msgstr ""
+msgstr "이번달 목표"
