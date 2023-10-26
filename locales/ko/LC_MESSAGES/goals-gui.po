@@ -36,17 +36,17 @@ msgctxt "skin:goals|goal:attendance|name"
 msgid ""
 "ATTENDANCE\n"
 "RATE"
-msgstr ""
+msgstr "출석률"
 
 #: src/gui/cards/goals.py:141
 msgctxt "skin:goals|mode:study|goal:middle|above"
 msgid "STUDIED"
-msgstr ""
+msgstr "학습"
 
 #: src/gui/cards/goals.py:145
 msgctxt "skin:goals|mode:study|goal:middle|below"
 msgid "HOURS"
-msgstr ""
+msgstr "시간"
 
 #: src/gui/cards/goals.py:149
 msgctxt "skin:goals|mode:voice|goal:middle|above"
