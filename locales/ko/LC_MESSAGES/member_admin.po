@@ -120,7 +120,7 @@ msgstr "{member}가 서버에 처음 접속했어요."
 #: src/modules/member_admin/cog.py:243
 msgctxt "eventlog|event:returning|title"
 msgid "Member Rejoined"
-msgstr "맴버 재합류"
+msgstr "맴버 재접속"
 
 #: src/modules/member_admin/cog.py:247
 #, possible-python-brace-format
