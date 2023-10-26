@@ -242,7 +242,7 @@ msgstr ""
 #: src/modules/member_admin/cog.py:441
 msgctxt "cmd:admin_data|param:data_type|desc"
 msgid "Select the type of data you want to download"
-msgstr ""
+msgstr "다운로드를 원하는 데이터 타입을 선택하세요."
 
 #: src/modules/member_admin/cog.py:445
 msgctxt "cmd:admin_data|param:target|desc"
