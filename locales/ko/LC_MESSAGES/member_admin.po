@@ -329,7 +329,7 @@ msgstr "현재 음성 채널 맴버수"
 #: src/modules/member_admin/settings.py:33
 msgctxt "guildset:greeting_message|formatkey:member_count"
 msgid "Number of members in the server."
-msgstr ""
+msgstr "현재 서버 전체 맴버수"
 
 #: src/modules/member_admin/settings.py:42
 msgctxt "guildset:greeting_channel"
