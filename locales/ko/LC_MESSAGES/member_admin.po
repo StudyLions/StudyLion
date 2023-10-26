@@ -141,13 +141,13 @@ msgstr "최근 접속 "
 #: src/modules/member_admin/cog.py:311
 msgctxt "eventlog|event:left|title"
 msgid "Member Left"
-msgstr ""
+msgstr "남은 맴버"
 
 #: src/modules/member_admin/cog.py:315
 #, possible-python-brace-format
 msgctxt "eventlog|event:left|desc"
 msgid "{member} left the server."
-msgstr ""
+msgstr "{member}가 서버를 떠났어요."
 
 #: src/modules/member_admin/cog.py:323
 msgctxt "eventlog|event:left|field:stored_roles"
