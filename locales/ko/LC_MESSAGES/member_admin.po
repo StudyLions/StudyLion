@@ -109,7 +109,7 @@ msgstr ""
 #: src/modules/member_admin/cog.py:155
 msgctxt "eventlog|event:welcome|title"
 msgid "New Member Joined"
-msgstr ""
+msgstr "신규 맴버 합류"
 
 #: src/modules/member_admin/cog.py:159
 #, possible-python-brace-format
