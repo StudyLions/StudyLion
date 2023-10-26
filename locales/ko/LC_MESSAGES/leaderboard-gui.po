@@ -50,19 +50,19 @@ msgstr "서버:"
 #, possible-python-brace-format
 msgctxt "skin:leaderboard|mode:study|top_hours_text"
 msgid "{amount} hours"
-msgstr ""
+msgstr "{amount} 시간"
 
 #: src/gui/cards/leaderboard.py:132
 #, possible-python-brace-format
 msgctxt "skin:leaderboard|mode:text|top_hours_text"
 msgid "{amount} XP"
-msgstr ""
+msgstr "{amount} XP"
 
 #: src/gui/cards/leaderboard.py:136
 #, possible-python-brace-format
 msgctxt "skin:leaderboard|mode:voice|top_hours_text"
 msgid "{amount} hours"
-msgstr ""
+msgstr "{amount} 시간"
 
 #: src/gui/cards/leaderboard.py:140
 #, possible-python-brace-format
