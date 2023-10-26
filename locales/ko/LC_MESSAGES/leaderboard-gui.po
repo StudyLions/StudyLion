@@ -34,12 +34,12 @@ msgstr "메시지 순위표"
 #: src/gui/cards/leaderboard.py:76
 msgctxt "skin:leaderboard|mode:voice|header_text"
 msgid "VOICE LEADERBOARD"
-msgstr ""
+msgstr "음성 순위표"
 
 #: src/gui/cards/leaderboard.py:80
 msgctxt "skin:leaderboard|mode:anki|header_text"
 msgid "ANKI REVIEW LEADERBOARD"
-msgstr ""
+msgstr "ANKI 리뷰 순위표"
 
 #: src/gui/cards/leaderboard.py:98
 msgctxt "skin:leaderboard|field:subheader_text"
