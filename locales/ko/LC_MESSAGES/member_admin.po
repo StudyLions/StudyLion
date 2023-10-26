@@ -49,7 +49,7 @@ msgstr "리턴 메시지"
 #: src/modules/member_admin/settingui.py:218
 msgctxt "ui:memberadmin|embed|title"
 msgid "Greetings and Initial Roles Panel"
-msgstr ""
+msgstr "환영인사 및 초기 역할 패널"
 
 #: src/modules/member_admin/settingui.py:262
 msgctxt "dash:member_admin|title"
