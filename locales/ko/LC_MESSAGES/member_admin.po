@@ -378,7 +378,7 @@ msgstr ""
 #: src/modules/member_admin/settings.py:99
 msgctxt "guildset:greeting_message|desc"
 msgid "Custom message used to greet new members when they join the server."
-msgstr ""
+msgstr "신규 맴버가 서버에 가입할 때 사용하는 커스텀 메시지"
 
 #: src/modules/member_admin/settings.py:103
 msgctxt "guildset:greeting_message|long_desc"
