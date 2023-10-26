@@ -304,7 +304,7 @@ msgstr "신규 맴버 멘션"
 #: src/modules/member_admin/settings.py:23
 msgctxt "guildset:greeting_message|formatkey:user_name"
 msgid "Display name of the new member."
-msgstr ""
+msgstr "신규 맴버 이름을 보여줍니다."
 
 #: src/modules/member_admin/settings.py:25
 msgctxt "guildset:greeting_message|formatkey:user_avatar"
