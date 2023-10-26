@@ -431,7 +431,7 @@ class Exec(LionCog):
             results = [
                 appcmd.Choice(name=f"No extensions found matching {partial}", value="None")
             ]
-        return results
+        return results[:25]
 
     @commands.hybrid_command(
         name=_('shutdown'),

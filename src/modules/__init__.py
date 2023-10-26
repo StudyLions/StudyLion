@@ -20,6 +20,7 @@ active = [
     '.meta',
     '.sponsors',
     '.topgg',
+    '.premium',
     '.test',
 ]
 

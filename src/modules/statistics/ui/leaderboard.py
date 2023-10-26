@@ -537,10 +537,11 @@ class LeaderboardUI(StatsUI):
             period_row,
             page_row
         ]
-
         voting = self.bot.get_cog('TopggCog')
         if voting and not await voting.check_voted_recently(self.userid):
-            self._layout.append((voting.vote_button(),))
+            premiumcog = self.bot.get_cog('PremiumCog')
+            if not (premiumcog and await premiumcog.is_premium_guild(self.guild.id)):
+                self._layout.append((voting.vote_button(),))
 
     async def reload(self):
         """
