@@ -182,7 +182,7 @@ msgstr ""
 #: src/modules/member_admin/cog.py:381
 msgctxt "cmd:resetmember|param:target|desc"
 msgid "Choose the member (current or past) you want to reset."
-msgstr ""
+msgstr "리셋을 원하는 (현재 혹은 과거의) 맴버를 선택하세요."
 
 #: src/modules/member_admin/cog.py:385
 msgctxt "cmd:resetmember|param:saved_roles|desc"
