@@ -212,7 +212,7 @@ msgstr ""
 #: src/modules/member_admin/cog.py:428
 msgctxt "cmd:admin_data|desc"
 msgid "Download various raw data for external analysis and backup."
-msgstr ""
+msgstr "데이터 분석 혹은 백업을 위해 다양한 원본 데이터를 다운로드합니다."
 
 #: src/modules/member_admin/cog.py:432
 msgctxt "cmd:admin_data|param:data_type"
