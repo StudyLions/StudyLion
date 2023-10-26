@@ -299,7 +299,7 @@ msgstr "신규 맴버 환영인사와 역할 설정"
 #: src/modules/member_admin/settings.py:21
 msgctxt "guildset:greeting_message|formatkey:mention"
 msgid "Mention the new member."
-msgstr ""
+msgstr "신규 맴버 멘션"
 
 #: src/modules/member_admin/settings.py:23
 msgctxt "guildset:greeting_message|formatkey:user_name"
