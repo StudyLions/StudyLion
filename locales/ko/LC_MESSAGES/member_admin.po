@@ -54,7 +54,7 @@ msgstr "환영인사 및 초기 역할 패널"
 #: src/modules/member_admin/settingui.py:262
 msgctxt "dash:member_admin|title"
 msgid "Greetings and Initial Roles ({commands[config welcome]})"
-msgstr ""
+msgstr "환영인사 및 초기 역할 ({commands[config welcome]})"
 
 #: src/modules/member_admin/settingui.py:266
 msgctxt "dash:member_admin|dropdown|placeholder"
