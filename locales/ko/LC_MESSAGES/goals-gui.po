@@ -51,22 +51,22 @@ msgstr "시간"
 #: src/gui/cards/goals.py:149
 msgctxt "skin:goals|mode:voice|goal:middle|above"
 msgid "CHATTED"
-msgstr ""
+msgstr "채팅"
 
 #: src/gui/cards/goals.py:153
 msgctxt "skin:goals|mode:voice|goal:middle|below"
 msgid "HOURS"
-msgstr ""
+msgstr "시간"
 
 #: src/gui/cards/goals.py:157
 msgctxt "skin:goals|mode:text|goal:middle|above"
 msgid "SENT"
-msgstr ""
+msgstr "전송"
 
 #: src/gui/cards/goals.py:161
 msgctxt "skin:goals|mode:text|goal:middle|below"
 msgid "MESSAGES"
-msgstr ""
+msgstr "메시지"
 
 #: src/gui/cards/goals.py:165
 msgctxt "skin:goals|mode:anki|goal:middle|above"
