@@ -19,6 +19,7 @@ from constants import MAX_COINS
 from . import logger, babel
 from .data import PremiumData, GemTransactionType
 from .ui.transactions import TransactionList
+from .ui.premium import PremiumUI
 from .errors import GemTransactionFailed, BalanceTooLow, BalanceTooHigh
 
 _p = babel._p
@@ -44,7 +45,7 @@ class PremiumCog(LionCog):
 
 
     # ----- API -----
-    def buy_gems_buttons(self) -> Button:
+    def buy_gems_button(self) -> Button:
         t = self.bot.translator.t
 
         button = Button(
@@ -89,7 +90,7 @@ class PremiumCog(LionCog):
         row = await self.data.PremiumGuild.fetch(guildid)
         now = utc_now()
 
-        premium = (row is not None) and (row.premium_until > now)
+        premium = (row is not None) and row.premium_until and (row.premium_until > now)
         return premium
 
     @log_wrap(isolate=True)
@@ -216,6 +217,7 @@ class PremiumCog(LionCog):
 
             try:
                 await self.gem_logger.send(embed=embed)
+                posted = True
             except discord.HTTPException:
                 pass
 
@@ -482,7 +484,6 @@ class PremiumCog(LionCog):
 
         await ctx.reply(embed=embed, ephemeral=True)
 
-
     @cmds.hybrid_command(
         name=_p('cmd:premium', "premium"),
         description=_p(
@@ -490,9 +491,16 @@ class PremiumCog(LionCog):
             "Upgrade your server with LionGems!"
         )
     )
+    @appcmds.guild_only
     async def cmd_premium(self, ctx: LionContext):
-        # TODO
-        ...
+        if not ctx.guild:
+            return
+        if not ctx.interaction:
+            return
+
+        ui = PremiumUI(self.bot, ctx.guild, ctx.luser, callerid=ctx.author.id)
+        await ui.run(ctx.interaction)
+        await ui.wait()
 
     # ----- Owner Commands -----
     @LionCog.placeholder_group
