@@ -167,7 +167,7 @@ msgstr ""
 #: src/modules/member_admin/cog.py:371
 msgctxt "cmd:resetmember|desc"
 msgid "Reset (server-associated) member data for the target member or user."
-msgstr "선택한 맴버나 유저의 서버 연관 맴버 데이터를 리셋합니다."
+msgstr "선택한 맴버나 유저의 맴버 데이터를 리셋합니다. (server-associated)"
 
 #: src/modules/member_admin/cog.py:375
 msgctxt "cmd:resetmember|param:target"
