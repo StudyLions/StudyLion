@@ -36,9 +36,13 @@ class SponsorCog(LionCog):
         """
         if not interaction.is_expired():
             # TODO: caching
-            whitelist = (await self.settings.Whitelist.get(self.bot.appname)).value
-            if interaction.guild and interaction.guild.id in whitelist:
-                return
+            if interaction.guild:
+                whitelist = (await self.settings.Whitelist.get(self.bot.appname)).value
+                if interaction.guild.id in whitelist:
+                    return
+                premiumcog = self.bot.get_cog('PremiumCog')
+                if premiumcog and await premiumcog.is_premium_guild(interaction.guild.id):
+                    return
             setting = await self.settings.SponsorPrompt.get(self.bot.appname)
             value = setting.value
             if value:
