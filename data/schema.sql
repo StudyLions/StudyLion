@@ -1218,7 +1218,7 @@ create TABLE timers(
   inactivity_threshold INTEGER,
   channel_name TEXT,
   pretty_name TEXT,
-  owenrid BIGINT REFERENCES user_config,
+  ownerid BIGINT REFERENCES user_config,
   manager_roleid BIGINT,
   last_messageid BIGINT,
   voice_alerts BOOLEAN,
