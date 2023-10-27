@@ -58,6 +58,10 @@ async def get_weekly_card(bot: LionBot, userid: int, guildid: int, offset: int, 
     else:
         username = (lion.data.display_name, '#????')
 
+    skin = await bot.get_cog('CustomSkinCog').get_skinargs_for(
+        guildid, userid, WeeklyStatsCard.card_id
+    )
+
     card = WeeklyStatsCard(
         user=username,
         timezone=str(lion.timezone),
@@ -68,6 +72,6 @@ async def get_weekly_card(bot: LionBot, userid: int, guildid: int, offset: int, 
             (int(session['start_time'].timestamp()), int(session['start_time'].timestamp() + int(session['duration'])))
             for session in sessions
         ],
-        skin={'mode': mode}
+        skin=skin | {'mode': mode}
     )
     return card
