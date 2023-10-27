@@ -74,7 +74,6 @@ class CoreCog(LionCog):
         self.bot.add_listener(self.shard_update_guilds, name='on_guild_join')
         self.bot.add_listener(self.shard_update_guilds, name='on_guild_remove')
 
-        self.bot.core = self
         await self.bot.add_cog(self.lions)
 
         # Load the app command cache
