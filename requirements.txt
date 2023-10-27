@@ -9,3 +9,5 @@ topggpy
 psutil
 pillow
 python-dateutil
+bidict
+frozendict
