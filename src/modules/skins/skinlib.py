@@ -91,7 +91,7 @@ class CustomSkin:
             for record in records:
                 card_id = record['card_id']
                 prop_name = record['property_name']
-                prop_value = record['property_value']
+                prop_value = record['value']
                 properties[card_id][prop_name] = prop_value
             if row.base_skin_id is not None:
                 base_skin_name = cog.appskin_names[row.base_skin_id]

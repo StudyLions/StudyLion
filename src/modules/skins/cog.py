@@ -21,6 +21,7 @@ from .data import CustomSkinData
 from .skinlib import appskin_as_choice, FrozenCustomSkin, CustomSkin
 from .settings import GlobalSkinSettings
 from .settingui import GlobalSkinSettingUI
+from .userskinui import UserSkinUI
 
 _p = babel._p
 
@@ -35,7 +36,6 @@ class CustomSkinCog(LionCog):
         # After initialisation, contains all the base skins available for this app
         self.appskin_names: bidict[int, str] = bidict()
 
-        # TODO: Move this to a bijection
         # Bijective cache of skin property ids <-> (card_id, property_name) tuples
         self.skin_properties: bidict[int, tuple[str, str]] = bidict()
 
@@ -245,8 +245,9 @@ class CustomSkinCog(LionCog):
     async def cmd_my_skin(self, ctx: LionContext):
         if not ctx.interaction:
             return
-        # TODO
-        ...
+        ui = UserSkinUI(self.bot, ctx.author.id, ctx.author.id)
+        await ui.run(ctx.interaction, ephemeral=True)
+        await ui.wait()
 
     # ----- Adminspace commands -----
     @LionCog.placeholder_group
