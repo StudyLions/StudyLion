@@ -56,6 +56,14 @@ class LionBot(Bot):
         self._locks = WeakValueDictionary()
         self._running_events = set()
 
+        self._talk_global_dispatch = app_ipc.register_route('dispatch')(self._handle_global_dispatch)
+
+    async def _handle_global_dispatch(self, event_name: str, *args, **kwargs):
+        self.dispatch(event_name, *args, **kwargs)
+
+    async def global_dispatch(self, event_name: str, *args, **kwargs):
+        await self._talk_global_dispatch(event_name, *args, **kwargs).broadcast(except_self=False)
+
     async def _monitor_status(self):
         if self.is_closed():
             level = StatusLevel.ERRORED
