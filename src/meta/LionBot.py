@@ -13,7 +13,7 @@ from aiohttp import ClientSession
 from data import Database
 from utils.lib import tabulate
 from gui.errors import RenderingException
-from babel.translator import ctx_locale
+from babel.translator import ctx_locale, LeoBabel
 
 from .config import Conf
 from .logger import logging_context, log_context, log_action_stack, log_wrap, set_logging_context
@@ -54,9 +54,9 @@ logger = logging.getLogger(__name__)
 
 class LionBot(Bot):
     def __init__(
-        self, *args, appname: str, shardname: str, db: Database, config: Conf,
+        self, *args, appname: str, shardname: str, db: Database, config: Conf, translator: LeoBabel,
         initial_extensions: List[str], web_client: ClientSession, app_ipc,
-        testing_guilds: List[int] = [], translator=None, **kwargs
+        testing_guilds: List[int] = [], **kwargs
     ):
         kwargs.setdefault('tree_cls', LionTree)
         super().__init__(*args, **kwargs)

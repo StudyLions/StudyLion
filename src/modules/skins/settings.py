@@ -16,6 +16,7 @@ _p = babel._p
 class GlobalSkinSettings(SettingGroup):
     class DefaultSkin(ModelData, StringSetting):
         setting_id = 'default_app_skin'
+        _event = 'botset_skin'
         _write_ward = sys_admin_iward
 
         _display_name = _p(

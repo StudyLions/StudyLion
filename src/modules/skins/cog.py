@@ -10,6 +10,7 @@ from frozendict import frozendict
 
 
 from meta import LionCog, LionBot, LionContext
+from meta.errors import UserInputError
 from meta.logger import log_wrap
 from utils.lib import MISSING, utc_now
 from wards import sys_admin_ward, low_management_ward
@@ -22,6 +23,7 @@ from .skinlib import appskin_as_choice, FrozenCustomSkin, CustomSkin
 from .settings import GlobalSkinSettings
 from .settingui import GlobalSkinSettingUI
 from .userskinui import UserSkinUI
+from .editor.skineditor import CustomSkinEditor
 
 _p = babel._p
 
@@ -46,6 +48,8 @@ class CustomSkinCog(LionCog):
         # Cache of custom skin id -> frozen custom skin
         self.custom_skins: LRUCache[int, FrozenCustomSkin] = LRUCache(maxsize=1000)
 
+        self.current_default: Optional[str] = None
+
     async def cog_load(self):
         await self.data.init()
 
@@ -61,6 +65,7 @@ class CustomSkinCog(LionCog):
 
         await self._reload_appskins()
         await self._reload_property_map()
+        await self.get_default_skin()
 
     async def _reload_property_map(self):
         """
@@ -123,6 +128,7 @@ class CustomSkinCog(LionCog):
         """
         setting = self.bot_settings.DefaultSkin
         instance = await setting.get(self.bot.appname)
+        self.current_default = instance.value
         return instance.value
 
     async def fetch_property_ids(self, *card_properties: tuple[str, str]) -> list[int]:
@@ -203,7 +209,7 @@ class CustomSkinCog(LionCog):
             skin_args = await self.args_for_skin(skinid, card_id)
             args.update(skin_args)
 
-        default = await self.get_default_skin()
+        default = self.current_default
         if default:
             args.setdefault("base_skin_id", default)
 
@@ -224,10 +230,19 @@ class CustomSkinCog(LionCog):
         Update cached args for given custom skin id.
         """
         self.custom_skins.pop(skinid, None)
-        custom_skin = await CustomSkin.fetch(skinid)
+        custom_skin = await CustomSkin.fetch(self.bot, skinid)
         if custom_skin is not None:
             skin = custom_skin.freeze()
             self.custom_skins[skinid] = skin
+
+    @LionCog.listener('on_botset_skin')
+    async def handle_botset_skin(self, appname, instance):
+        await self.bot.global_dispatch('global_botset_skin', appname)
+
+    @LionCog.listener('on_global_botset_skin')
+    async def refresh_default_skin(self, appname):
+        await self.bot.core.data.BotConfig.fetch(appname, cached=False)
+        await self.get_default_skin()
 
     # ----- Userspace commands -----
     @LionCog.placeholder_group
@@ -268,8 +283,40 @@ class CustomSkinCog(LionCog):
             return
         if not ctx.guild:
             return
-        # TODO
-        ...
+        t = self.bot.translator.t
+
+        # Check guild premium status
+        premiumcog = self.bot.get_cog('PremiumCog')
+        guild_row = await premiumcog.data.PremiumGuild.fetch(ctx.guild.id, cached=False)
+
+        if not guild_row:
+            raise UserInputError(
+                t(_p(
+                    'cmd:admin_brand|error:not_premium',
+                    "Only premium servers can modify their interface theme! "
+                    "Use the {premium} command to upgrade your server."
+                )).format(premium=self.bot.core.mention_cmd('premium'))
+            )
+
+        await ctx.interaction.response.defer(thinking=True, ephemeral=False)
+
+        if guild_row.custom_skin_id is None:
+            # Create new custom skin
+            skin_data = await self.data.CustomisedSkin.create(
+                base_skin_id=self.appskin_names.inverse[self.current_default] if self.current_default else None
+            )
+            await guild_row.update(custom_skin_id=skin_data.custom_skin_id)
+
+        skinid = guild_row.custom_skin_id
+        custom_skin = await CustomSkin.fetch(self.bot, skinid)
+        if custom_skin is None:
+            raise ValueError("Invalid custom skin id")
+
+        # Open the CustomSkinEditor with this skin
+        ui = CustomSkinEditor(custom_skin, callerid=ctx.author.id)
+        await ui.send(ctx.channel)
+        await ctx.interaction.delete_original_response()
+        await ui.wait()
 
     # ----- Owner commands -----
     @LionCog.placeholder_group

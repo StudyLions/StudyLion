@@ -110,7 +110,7 @@ class CustomSkin:
             async with conn.transaction():
                 skinid = self.skinid
                 await self.data.update(base_skin_id=self.base_skin_id)
-                await self.cog.data.skin_properties.delete_where(skinid=skinid)
+                await self.cog.data.skin_properties.delete_where(custom_skin_id=skinid)
 
                 props = {
                     (card, name): value
@@ -122,31 +122,37 @@ class CustomSkin:
                 await self.cog.fetch_property_ids(*props.keys())
 
                 # Now bulk insert
-                await self.cog.data.skin_properties.insert_many(
-                    ('custom_skin_id', 'property_id', 'value'),
-                    *(
-                        (skinid, self.cog.skin_properties[propkey], value)
-                        for propkey, value in props.items()
+                if props:
+                    await self.cog.data.skin_properties.insert_many(
+                        ('custom_skin_id', 'property_id', 'value'),
+                        *(
+                            (skinid, self.cog.skin_properties.inverse[propkey], value)
+                            for propkey, value in props.items()
+                        )
                     )
-                )
+        await self.bot.global_dispatch('skin_updated', skinid)
+
+    def get_prop(self, card_id: str, prop_name: str) -> Optional[str]:
+        return self.properties.get(card_id, {}).get(prop_name, None)
+
+    def set_prop(self, card_id: str, prop_name: str, value: Optional[str]):
+        cardprops = self.properties.get(card_id, None)
+        if value is None:
+            if cardprops is not None:
+                cardprops.pop(prop_name, None)
+        else:
+            if cardprops is None:
+                cardprops = self.properties[card_id] = {}
+            cardprops[prop_name] = value
 
     def resolve_propid(self, propid: int) -> tuple[str, str]:
         return self.cog.skin_properties[propid]
 
     def __getitem__(self, propid: int) -> Optional[str]:
-        card, name = self.resolve_propid(propid)
-        return self.properties.get(card, {}).get(name, None)
+        return self.get_prop(*self.resolve_propid(propid))
 
     def __setitem__(self, propid: int, value: Optional[str]):
-        card, name = self.resolve_propid(propid)
-        cardprops = self.properties.get(card, None)
-        if value is None:
-            if cardprops is not None:
-                cardprops.pop(name, None)
-        else:
-            if cardprops is None:
-                cardprops = self.properties[card] = {}
-            cardprops[name] = value
+        return self.set_prop(*self.resolve_propid(propid), value)
 
     def __delitem__(self, propid: int):
         card, name = self.resolve_propid(propid)
@@ -163,7 +169,7 @@ class CustomSkin:
         Update state from the given frozen state.
         """
         self.base_skin_name = frozen.base_skin_name
-        self.properties = dict((card, dict(props)) for card, props in frozen.properties)
+        self.properties = dict((card, dict(props)) for card, props in frozen.properties.items())
         return self
 
     def args_for(self, card_id: str):
