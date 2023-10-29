@@ -592,20 +592,25 @@ class RankCog(LionCog):
                 # Calculate destination
                 to_dm = lguild.config.get('dm_ranks').value
                 rank_channel = lguild.config.get('rank_channel').value
+                sent = False
 
-                if to_dm or not rank_channel:
+                if to_dm:
                     destination = member
                     embed.set_author(
                         name=guild.name,
                         icon_url=guild.icon.url if guild.icon else None
                     )
-                    text = None
-                else:
+                    try:
+                        await destination.send(embed=embed)
+                        sent = True
+                    except discord.HTTPException:
+                        if not rank_channel:
+                            raise
+
+                if not sent and rank_channel:
                     destination = rank_channel
                     text = member.mention
-
-                # Post!
-                await destination.send(embed=embed, content=text)
+                    await destination.send(content=text, embed=embed)
 
     def get_message_map(self,
                         rank_type: RankType,
