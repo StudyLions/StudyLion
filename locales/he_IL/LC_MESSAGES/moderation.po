@@ -1,0 +1,276 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Interitio, 2023
+# Ari Horesh, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-13 08:47+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Ari Horesh, 2023\n"
+"Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: he_IL\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
+
+#: src/modules/moderation/settingui.py:53
+msgctxt "ui:moderation_config|menu:ticket_log|placeholder"
+msgid "Select Ticket Log"
+msgstr "בחר ערוץ מעקב כרטיסים"
+
+#: src/modules/moderation/settingui.py:78
+msgctxt "ui:moderation_config|menu:alert_channel|placeholder"
+msgid "Select Alert Channel"
+msgstr "בחר ערוץ התראות"
+
+#: src/modules/moderation/settingui.py:103
+msgctxt "ui:moderation_config|menu:modrole|placeholder"
+msgid "Select Moderator Role"
+msgstr "בחר רול למנהלים"
+
+#: src/modules/moderation/settingui.py:111
+msgctxt "ui:moderation_config|embed|title"
+msgid "Moderation Configuration Panel"
+msgstr "תפריט הגדרות ניהול שרת"
+
+#: src/modules/moderation/settingui.py:150
+msgctxt "dash:moderation|title"
+msgid "Moderation Settings ({commands[configure moderation]})"
+msgstr "הגדרות ניהול ({commands[configure moderation]})"
+
+#: src/modules/moderation/settingui.py:154
+msgctxt "dash:moderation|dropdown|placeholder"
+msgid "Moderation Panel"
+msgstr "תפריט ניהול"
+
+#: src/modules/moderation/cog.py:136
+msgctxt "cmd:configure_moderation"
+msgid "moderation"
+msgstr "ניהול"
+
+#: src/modules/moderation/cog.py:139
+msgctxt "cmd:configure_moderation|desc"
+msgid "Configure general moderation settings."
+msgstr "בחר הגדרות ניהול כלליות."
+
+#: src/modules/moderation/ticket.py:147
+#, possible-python-brace-format
+msgctxt "ticket|title:auto"
+msgid "Ticket #{ticketid} | {state} | {type}[Auto] | {name}"
+msgstr "כרטיס #{ticketid} | {state} | {type}[Auto] | {name}"
+
+#: src/modules/moderation/ticket.py:152
+#, possible-python-brace-format
+msgctxt "ticket|title:manual"
+msgid "Ticket #{ticketid} | {state} | {type} | {name}"
+msgstr "כרטיס #{ticketid} | {state} | {type} | {name}"
+
+#: src/modules/moderation/ticket.py:168
+msgctxt "ticket|field:target|name"
+msgid "Target"
+msgstr "מטרה"
+
+#: src/modules/moderation/ticket.py:173
+msgctxt "ticket|field:moderator|name"
+msgid "Moderator"
+msgstr "מנהל"
+
+#: src/modules/moderation/ticket.py:180
+msgctxt "ticket|field:expiry|mode:expiring|name"
+msgid "Expires At"
+msgstr "תקף עד"
+
+#: src/modules/moderation/ticket.py:183
+#, possible-python-brace-format
+msgctxt "ticket|field:expiry|mode:expiring|value"
+msgid ""
+"{timestamp}\n"
+"Duration: `{duration}`"
+msgstr ""
+"{timestamp}\n"
+"זמן `{duration}`"
+
+#: src/modules/moderation/ticket.py:191
+msgctxt "ticket|field:expiry|mode:expired|name"
+msgid "Expired"
+msgstr "פג תוקף"
+
+#: src/modules/moderation/ticket.py:194
+#, possible-python-brace-format
+msgctxt "ticket|field:expiry|mode:expired|value"
+msgid "{timestamp}"
+msgstr "{timestamp}"
+
+#: src/modules/moderation/ticket.py:201
+msgctxt "ticket|field:expiry|mode:open|name"
+msgid "Expiry"
+msgstr "תוקף"
+
+#: src/modules/moderation/ticket.py:204
+#, possible-python-brace-format
+msgctxt "ticket|field:expiry|mode:open|value"
+msgid "{timestamp}"
+msgstr "{timestamp}"
+
+#: src/modules/moderation/ticket.py:212
+msgctxt "ticket|field:context|name"
+msgid "Context"
+msgstr "קונטקסט"
+
+#: src/modules/moderation/ticket.py:219
+msgctxt "ticket|field:notes|name"
+msgid "Notes"
+msgstr "פתקיות"
+
+#: src/modules/moderation/ticket.py:226
+msgctxt "ticket|field:pardoned|name"
+msgid "Pardoned"
+msgstr "נסלחו"
+
+#: src/modules/moderation/ticket.py:229
+#, possible-python-brace-format
+msgctxt "ticket|field:pardoned|value"
+msgid ""
+"Pardoned by <&{moderator}> at {timestamp}.\n"
+"{reason}"
+msgstr ""
+"נסלח על ידי <&{moderator}> at {timestamp}.\n"
+"{reason}"
+
+#: src/modules/moderation/settings.py:20
+msgctxt "guildset:ticket_log"
+msgid "ticket_log"
+msgstr "לוג_כרטיסים"
+
+#: src/modules/moderation/settings.py:23
+msgctxt "guildset:ticket_log|desc"
+msgid "Private moderation log to send tickets and moderation events."
+msgstr ""
+"לוח כרטיסים פרטי כדי לעדכן את כל המנהלים בנוגע לאירועים האחרונים שבוצעו על "
+"ידי מנהלים אחרים."
+
+#: src/modules/moderation/settings.py:27
+msgctxt "guildset:ticket_log|long_desc"
+msgid ""
+"Warnings, notes, video blacklists, and other moderation events will be "
+"posted as numbered tickets with context to this log."
+msgstr ""
+"אזהרות, פתקיות, רשימות שחורות של וידאו, ואירועי ניהול אחרים יפורסמו בלוח "
+"הזה."
+
+#: src/modules/moderation/settings.py:32
+msgctxt "guildset:ticket_log|accepts"
+msgid "Ticket channel name or id."
+msgstr "שם או מספר זהות של לוח הכרטיסים."
+
+#: src/modules/moderation/settings.py:46
+#, possible-python-brace-format
+msgctxt "guildset:ticket_log|set_response:set"
+msgid "Moderation tickets will be sent to {channel}"
+msgstr "כרטיסי ניהול ישלחו אל {channel}"
+
+#: src/modules/moderation/settings.py:51
+msgctxt "guildset:ticket_log|set_response:unset"
+msgid "Moderation tickets will not be logged to a channel."
+msgstr "כרטיסי ניהול יפסיקו להישלח אל הערוץ."
+
+#: src/modules/moderation/settings.py:63
+msgctxt "guildset:ticket_log|formatted:unset"
+msgid "Not Set."
+msgstr "לא נקבע."
+
+#: src/modules/moderation/settings.py:70
+msgctxt "guildset:alert_channel"
+msgid "alert_channel"
+msgstr "ערוץ_התראות"
+
+#: src/modules/moderation/settings.py:73
+msgctxt "guildset:alert_channel|desc"
+msgid "Moderation notification channel for members with DMs disabled."
+msgstr "ערוץ התראות ציבורי למשתמשים שסגרו את ההודעות הפרטיות שלהם."
+
+#: src/modules/moderation/settings.py:77
+msgctxt "guildset:alert_channel|long_desc"
+msgid ""
+"When I need to send a member a moderation-related notification (e.g. asking "
+"them to enable their video in a video channel) from this server, I will try "
+"to send it via direct messages. If this fails, I will instead mention the "
+"user in this channel."
+msgstr ""
+"כשאני צריך לשלוח למשתמש התראות ניהול (לדוגמא כשאני צריך לבקש מהם לפתוח את "
+"המצלמה בערוץ קולי), אנסה לשלוח להם הודעות בפרטי. אם לא אצליח, אשלח להם "
+"הודעות לערוץ הזה."
+
+#: src/modules/moderation/settings.py:84
+msgctxt "guildset:alert_channel|accepts"
+msgid "Alert channel name or id."
+msgstr "שם או מספר זהות של לוח התראות."
+
+#: src/modules/moderation/settings.py:99
+#, possible-python-brace-format
+msgctxt "guildset:alert_channel|set_response:set"
+msgid "Moderation alerts will be sent to {channel}"
+msgstr "התראות ניהול ישלחו אל {channel}"
+
+#: src/modules/moderation/settings.py:104
+msgctxt "guildset:alert_channel|set_response:unset"
+msgid "Moderation alerts will be ignored if the member cannot be reached."
+msgstr "התראות ניהול יתעלמו אם לא יהיה ניתן להגיע אל המשתמש."
+
+#: src/modules/moderation/settings.py:116
+msgctxt "guildset:alert_channel|formatted:unset"
+msgid "Not Set (Only alert via direct message.)"
+msgstr "לא נקבע (התראות ישלחו רק בהודעה פרטית)"
+
+#: src/modules/moderation/settings.py:123
+msgctxt "guildset:mod_role"
+msgid "mod_role"
+msgstr "רול_מנהלים"
+
+#: src/modules/moderation/settings.py:126
+msgctxt "guildset:mod_role|desc"
+msgid ""
+"Guild role permitted to view configuration and perform moderation tasks."
+msgstr "רול שמאפשר למשתמשים לראות את התפריט הזה ולבצע פעולות ניהול שונות."
+
+#: src/modules/moderation/settings.py:130
+msgctxt "guildset:mod_role|long_desc"
+msgid ""
+"Members with the set role will be able to access my configuration panels, "
+"and perform some moderation tasks, such as setting up pomodoro timers. "
+"Moderators cannot reconfigure most bot configuration, or perform operations "
+"they do not already have permission for in Discord."
+msgstr ""
+"משתמשים עם הרול הזה יוכלו לגשת תפריטים השונים, ולבצע פעולות ניהול כמו להקים "
+"טיימרים. מנהלים לא יכולים לשנות את ההגדרות הבסיסיות של הבוט עצמו. הם בגדול "
+"יכולים לבצע פעולות שהם גם ככה יכולים לעשות בדיסקורד בתור המנהלים שלכם."
+
+#: src/modules/moderation/settings.py:137
+msgctxt "guildset:mod_role|accepts"
+msgid "Moderation role name or id."
+msgstr "רול את מספר זהות של מנהלים."
+
+#: src/modules/moderation/settings.py:151
+#, possible-python-brace-format
+msgctxt "guildset:mod_role|set_response:set"
+msgid "Members with the {role} will be considered moderators."
+msgstr "משתמשים עם {role} יחשבו מנהלי שרת."
+
+#: src/modules/moderation/settings.py:156
+msgctxt "guildset:mod_role|set_response:unset"
+msgid "No members will be given moderation privileges."
+msgstr "שום משתמש יקבל הרשאות מנהלים."
+
+#: src/modules/moderation/settings.py:168
+msgctxt "guildset:mod_role|formatted:unset"
+msgid "Not Set."
+msgstr "לא נקבע."

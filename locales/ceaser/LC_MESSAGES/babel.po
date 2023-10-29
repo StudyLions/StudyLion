@@ -1,0 +1,389 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: you@example.com\n"
+"POT-Creation-Date: 2007-10-18 14:00+0100\n"
+"PO-Revision-Date: 2007-10-18 14:00+0100\n"
+"Last-Translator: you <you@example.com>\n"
+"Language-Team: English <yourteam@example.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/babel/settingui.py:40
+msgctxt "ui:locale_config|button:force|label"
+msgid "Toggle Force"
+msgstr "Uphhmf Gpsdf"
+
+#: src/babel/settingui.py:49
+msgctxt "ui:locale_config|embed|title"
+msgid "Language Configuration Panel"
+msgstr "Mbohvbhf Dpogjhvsbujpo Qbofm"
+
+#: src/babel/settingui.py:83
+msgctxt "dash:locale|title"
+msgid "Server Language Configuration ({commands[configure language]})"
+msgstr "Tfswfs Mbohvbhf Dpogjhvsbujpo ({commands[configure language]})"
+
+#: src/babel/settingui.py:87
+msgctxt "dash:locale|dropdown|placeholder"
+msgid "Server Language Panel"
+msgstr "Tfswfs Mbohvbhf Qbofm"
+
+#: src/babel/cog.py:99
+msgctxt "cmd:configure_language"
+msgid "language"
+msgstr "mbohvbhf"
+
+#: src/babel/cog.py:101
+msgctxt "cmd:configure_language|desc"
+msgid "Configure the default language I will use in this server."
+msgstr "Dpogjhvsf uif efgbvmu mbohvbhf J xjmm vtf jo uijt tfswfs."
+
+#: src/babel/cog.py:147
+#, possible-python-brace-format
+msgctxt "cmd:configure_language|error"
+msgid ""
+"You cannot enable `{force_setting}` without having a configured language!"
+msgstr ""
+"Zpv dboopu fobcmf `{force_setting}` xjuipvu ibwjoh b dpogjhvsfe mbohvbhf!"
+
+#: src/babel/cog.py:167
+msgctxt "cmd:configure_language|success"
+msgid "Language settings updated!"
+msgstr "Mbohvbhf tfuujoht vqebufe!"
+
+#: src/babel/cog.py:183
+msgctxt "cmd:userconfig_language"
+msgid "language"
+msgstr "mbohvbhf"
+
+#: src/babel/cog.py:186
+msgctxt "cmd:userconfig_language|desc"
+msgid "Set your preferred interaction language."
+msgstr "Tfu zpvs qsfgfssfe joufsbdujpo mbohvbhf."
+
+#: src/babel/cog.py:190
+msgctxt "cmd:userconfig_language|param:language"
+msgid "language"
+msgstr "mbohvbhf"
+
+#: src/babel/cog.py:195
+msgctxt "cmd:userconfig_language|param:language|desc"
+msgid "Which language do you want me to respond in?"
+msgstr "Xijdi mbohvbhf ep zpv xbou nf up sftqpoe jo?"
+
+#: src/babel/cog.py:211
+msgctxt "cmd:userconfig_language|button:reset|label"
+msgid "Reset"
+msgstr "Sftfu"
+
+#: src/babel/cog.py:251
+#, possible-python-brace-format
+msgctxt "acmpl:language|no_match"
+msgid "No supported languages matching {partial}"
+msgstr "Op tvqqpsufe mbohvbhft nbudijoh {partial}"
+
+#: src/babel/utils.py:9
+msgctxt "utils|months"
+msgid ""
+"January,February,March,April,May,June,July,August,September,October,November,December"
+msgstr ""
+"Kbovbsz,Gfcsvbsz,Nbsdi,Bqsjm,Nbz,Kvof,Kvmz,Bvhvtu,Tfqufncfs,Pdupcfs,Opwfncfs,Efdfncfs"
+
+#: src/babel/utils.py:14
+msgctxt "utils|short_months"
+msgid "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec"
+msgstr "Kbo,Gfc,Nbs,Bqs,Nbz,Kvo,Kvm,Bvh,Tfq,Pdu,Opw,Efd"
+
+#: src/babel/settings.py:23
+msgctxt "settype:locale|accepts"
+msgid "Enter a supported language (e.g. 'en-GB')."
+msgstr "Foufs b tvqqpsufe mbohvbhf (f.h. 'fo-HC')."
+
+#: src/babel/settings.py:34
+msgctxt "settype:locale|summary_table|field:supported|key"
+msgid "Supported"
+msgstr "Tvqqpsufe"
+
+#: src/babel/settings.py:44
+msgctxt "settype:locale|formatted:unset"
+msgid "Unset"
+msgstr "Votfu"
+
+#: src/babel/settings.py:60
+#, possible-python-brace-format
+msgctxt "settype:locale|error"
+msgid "Sorry, we do not support the language `{lang}` at this time!"
+msgstr "Tpssz, xf ep opu tvqqpsu uif mbohvbhf `{lang}` bu uijt ujnf!"
+
+#: src/babel/settings.py:75
+msgctxt "userset:locale"
+msgid "language"
+msgstr "mbohvbhf"
+
+#: src/babel/settings.py:76
+msgctxt "userset:locale|desc"
+msgid "Your preferred language for interacting with me."
+msgstr "Zpvs qsfgfssfe mbohvbhf gps joufsbdujoh xjui nf."
+
+#: src/babel/settings.py:79
+msgctxt "userset:locale|long_desc"
+msgid ""
+"The language you would prefer me to respond to commands and interactions in."
+" Servers may be configured to override this with their own language."
+msgstr ""
+"Uif mbohvbhf zpv xpvme qsfgfs nf up sftqpoe up dpnnboet boe joufsbdujpot jo."
+" Tfswfst nbz cf dpogjhvsfe up pwfssjef uijt xjui uifjs pxo mbohvbhf."
+
+#: src/babel/settings.py:90
+msgctxt "userset:locale|response"
+msgid "You have unset your language."
+msgstr "Zpv ibwf votfu zpvs mbohvbhf."
+
+#: src/babel/settings.py:92
+#, possible-python-brace-format
+msgctxt "userset:locale|response"
+msgid "You have set your language to {lang}."
+msgstr "Zpv ibwf tfu zpvs mbohvbhf up {lang}."
+
+#: src/babel/settings.py:110
+msgctxt "guildset:force_locale"
+msgid "force_language"
+msgstr "gpsdf_mbohvbhf"
+
+#: src/babel/settings.py:112
+msgctxt "guildset:force_locale|desc"
+msgid ""
+"Whether to force all members to use the configured guild language when "
+"interacting with me."
+msgstr ""
+"Xifuifs up gpsdf bmm nfncfst up vtf uif dpogjhvsfe hvjme mbohvbhf xifo "
+"joufsbdujoh xjui nf."
+
+#: src/babel/settings.py:115
+msgctxt "guildset:force_locale|long_desc"
+msgid ""
+"When enabled, commands in this guild will always use the configured guild "
+"language, regardless of the member's personally configured language."
+msgstr ""
+"Xifo fobcmfe, dpnnboet jo uijt hvjme xjmm bmxbzt vtf uif dpogjhvsfe hvjme "
+"mbohvbhf, sfhbsemftt pg uif nfncfs't qfstpobmmz dpogjhvsfe mbohvbhf."
+
+#: src/babel/settings.py:119
+msgctxt "guildset:force_locale|output"
+msgid "Enabled (members will be forced to use the server language)"
+msgstr "Fobcmfe (nfncfst xjmm cf gpsdfe up vtf uif tfswfs mbohvbhf)"
+
+#: src/babel/settings.py:120
+msgctxt "guildset:force_locale|output"
+msgid "Disabled (members may set their own language)"
+msgstr "Ejtbcmfe (nfncfst nbz tfu uifjs pxo mbohvbhf)"
+
+#: src/babel/settings.py:134
+msgctxt "guildset:force_locale|response"
+msgid "I will always use the set language in this server."
+msgstr "J xjmm bmxbzt vtf uif tfu mbohvbhf jo uijt tfswfs."
+
+#: src/babel/settings.py:139
+msgctxt "guildset:force_locale|response"
+msgid "I will now allow the members to set their own language here."
+msgstr "J xjmm opx bmmpx uif nfncfst up tfu uifjs pxo mbohvbhf ifsf."
+
+#: src/babel/settings.py:156
+msgctxt "guildset:locale"
+msgid "language"
+msgstr "mbohvbhf"
+
+#: src/babel/settings.py:157
+msgctxt "guildset:locale|desc"
+msgid "Your preferred language for interacting with me."
+msgstr "Zpvs qsfgfssfe mbohvbhf gps joufsbdujoh xjui nf."
+
+#: src/babel/settings.py:160
+msgctxt "guildset:locale|long_desc"
+msgid ""
+"The default language to use for responses and interactions in this server. "
+"Member's own configured language will override this for their commands "
+"unless `force_language` is enabled."
+msgstr ""
+"Uif efgbvmu mbohvbhf up vtf gps sftqpotft boe joufsbdujpot jo uijt tfswfs. "
+"Nfncfs't pxo dpogjhvsfe mbohvbhf xjmm pwfssjef uijt gps uifjs dpnnboet "
+"vomftt `gpsdf_mbohvbhf` jt fobcmfe."
+
+#: src/babel/settings.py:172
+msgctxt "guildset:locale|response"
+msgid "You have unset the guild language."
+msgstr "Zpv ibwf votfu uif hvjme mbohvbhf."
+
+#: src/babel/settings.py:174
+#, possible-python-brace-format
+msgctxt "guildset:locale|response"
+msgid "You have set the guild language to {lang}."
+msgstr "Zpv ibwf tfu uif hvjme mbohvbhf up {lang}."
+
+#: src/babel/enums.py:42
+msgctxt "localenames|locale:en-US"
+msgid "American English"
+msgstr "Bnfsjdbo Fohmjti"
+
+#: src/babel/enums.py:43
+msgctxt "localenames|locale:en-GB"
+msgid "British English"
+msgstr "Csjujti Fohmjti"
+
+#: src/babel/enums.py:44
+msgctxt "localenames|locale:bg"
+msgid "Bulgarian"
+msgstr "Cvmhbsjbo"
+
+#: src/babel/enums.py:45
+msgctxt "localenames|locale:zh-CN"
+msgid "Chinese"
+msgstr "Dijoftf"
+
+#: src/babel/enums.py:46
+msgctxt "localenames|locale:zh-TW"
+msgid "Taiwan Chinese"
+msgstr "Ubjxbo Dijoftf"
+
+#: src/babel/enums.py:47
+msgctxt "localenames|locale:hr"
+msgid "Croatian"
+msgstr "Dspbujbo"
+
+#: src/babel/enums.py:48
+msgctxt "localenames|locale:cs"
+msgid "Czech"
+msgstr "Dafdi"
+
+#: src/babel/enums.py:49
+msgctxt "localenames|locale:da"
+msgid "Danish"
+msgstr "Ebojti"
+
+#: src/babel/enums.py:50
+msgctxt "localenames|locale:nl"
+msgid "Dutch"
+msgstr "Evudi"
+
+#: src/babel/enums.py:51
+msgctxt "localenames|locale:fi"
+msgid "Finnish"
+msgstr "Gjoojti"
+
+#: src/babel/enums.py:52
+msgctxt "localenames|locale:fr"
+msgid "French"
+msgstr "Gsfodi"
+
+#: src/babel/enums.py:53
+msgctxt "localenames|locale:de"
+msgid "German"
+msgstr "Hfsnbo"
+
+#: src/babel/enums.py:54
+msgctxt "localenames|locale:el"
+msgid "Greek"
+msgstr "Hsffl"
+
+#: src/babel/enums.py:55
+msgctxt "localenames|locale:hi"
+msgid "Hindi"
+msgstr "Ijoej"
+
+#: src/babel/enums.py:56
+msgctxt "localenames|locale:hu"
+msgid "Hungarian"
+msgstr "Ivohbsjbo"
+
+#: src/babel/enums.py:57
+msgctxt "localenames|locale:it"
+msgid "Italian"
+msgstr "Jubmjbo"
+
+#: src/babel/enums.py:58
+msgctxt "localenames|locale:ja"
+msgid "Japanese"
+msgstr "Kbqboftf"
+
+#: src/babel/enums.py:59
+msgctxt "localenames|locale:ko"
+msgid "Korean"
+msgstr "Lpsfbo"
+
+#: src/babel/enums.py:60
+msgctxt "localenames|locale:lt"
+msgid "Lithuanian"
+msgstr "Mjuivbojbo"
+
+#: src/babel/enums.py:61
+msgctxt "localenames|locale:no"
+msgid "Norwegian"
+msgstr "Opsxfhjbo"
+
+#: src/babel/enums.py:62
+msgctxt "localenames|locale:pl"
+msgid "Polish"
+msgstr "Qpmjti"
+
+#: src/babel/enums.py:63
+msgctxt "localenames|locale:pt-BR"
+msgid "Brazil Portuguese"
+msgstr "Csbajm Qpsuvhvftf"
+
+#: src/babel/enums.py:64
+msgctxt "localenames|locale:ro"
+msgid "Romanian"
+msgstr "Spnbojbo"
+
+#: src/babel/enums.py:65
+msgctxt "localenames|locale:ru"
+msgid "Russian"
+msgstr "Svttjbo"
+
+#: src/babel/enums.py:66
+msgctxt "localenames|locale:es-ES"
+msgid "Spain Spanish"
+msgstr "Tqbjo Tqbojti"
+
+#: src/babel/enums.py:67
+msgctxt "localenames|locale:sv-SE"
+msgid "Swedish"
+msgstr "Txfejti"
+
+#: src/babel/enums.py:68
+msgctxt "localenames|locale:th"
+msgid "Thai"
+msgstr "Uibj"
+
+#: src/babel/enums.py:69
+msgctxt "localenames|locale:tr"
+msgid "Turkish"
+msgstr "Uvsljti"
+
+#: src/babel/enums.py:70
+msgctxt "localenames|locale:uk"
+msgid "Ukrainian"
+msgstr "Vlsbjojbo"
+
+#: src/babel/enums.py:71
+msgctxt "localenames|locale:vi"
+msgid "Vietnamese"
+msgstr "Wjfuobnftf"
+
+#: src/babel/enums.py:72
+msgctxt "localenames|locale:he"
+msgid "Hebrew"
+msgstr "Ifcsfx"
+
+#: src/babel/enums.py:73
+msgctxt "localenames|locale:he_IL"
+msgid "Hebrew (Israel)"
+msgstr "Ifcsfx (Jtsbfm)"

@@ -1,0 +1,90 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: you@example.com\n"
+"POT-Creation-Date: 2007-10-18 14:00+0100\n"
+"PO-Revision-Date: 2007-10-18 14:00+0100\n"
+"Last-Translator: you <you@example.com>\n"
+"Language-Team: English <yourteam@example.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/gui/cards/leaderboard.py:69
+msgctxt "skin:leaderboard|mode:study|header_text"
+msgid "STUDY TIME LEADERBOARD"
+msgstr "TUVEZ UJNF MFBEFSCPBSE"
+
+#: src/gui/cards/leaderboard.py:73
+msgctxt "skin:leaderboard|mode:text|header_text"
+msgid "MESSAGE LEADERBOARD"
+msgstr "NFTTBHF MFBEFSCPBSE"
+
+#: src/gui/cards/leaderboard.py:77
+msgctxt "skin:leaderboard|mode:voice|header_text"
+msgid "VOICE LEADERBOARD"
+msgstr "WPJDF MFBEFSCPBSE"
+
+#: src/gui/cards/leaderboard.py:81
+msgctxt "skin:leaderboard|mode:anki|header_text"
+msgid "ANKI REVIEW LEADERBOARD"
+msgstr "BOLJ SFWJFX MFBEFSCPBSE"
+
+#: src/gui/cards/leaderboard.py:99
+msgctxt "skin:leaderboard|field:subheader_text"
+msgid "SERVER: "
+msgstr "TFSWFS: "
+
+#: src/gui/cards/leaderboard.py:129
+#, possible-python-brace-format
+msgctxt "skin:leaderboard|mode:study|top_hours_text"
+msgid "{amount} hours"
+msgstr "{amount} ipvst"
+
+#: src/gui/cards/leaderboard.py:133
+#, possible-python-brace-format
+msgctxt "skin:leaderboard|mode:text|top_hours_text"
+msgid "{amount} XP"
+msgstr "{amount} YQ"
+
+#: src/gui/cards/leaderboard.py:137
+#, possible-python-brace-format
+msgctxt "skin:leaderboard|mode:voice|top_hours_text"
+msgid "{amount} hours"
+msgstr "{amount} ipvst"
+
+#: src/gui/cards/leaderboard.py:141
+#, possible-python-brace-format
+msgctxt "skin:leaderboard|mode:anki|top_hours_text"
+msgid "{amount} cards"
+msgstr "{amount} dbset"
+
+#: src/gui/cards/leaderboard.py:168
+#, possible-python-brace-format
+msgctxt "skin:leaderboard|mode:study|entry_hours_text"
+msgid "{HH:02d}:{MM:02d}"
+msgstr "{HH:02d}:{MM:02d}"
+
+#: src/gui/cards/leaderboard.py:172
+#, possible-python-brace-format
+msgctxt "skin:leaderboard|mode:text|entry_hours_text"
+msgid "{amount} XP"
+msgstr "{amount} YQ"
+
+#: src/gui/cards/leaderboard.py:176
+#, possible-python-brace-format
+msgctxt "skin:leaderboard|mode:voice|entry_hours_text"
+msgid "{HH:02d}:{MM:02d}"
+msgstr "{HH:02d}:{MM:02d}"
+
+#: src/gui/cards/leaderboard.py:180
+#, possible-python-brace-format
+msgctxt "skin:leaderboard|mode:anki|entry_hours_text"
+msgid "{amount} cards"
+msgstr "{amount} dbset"

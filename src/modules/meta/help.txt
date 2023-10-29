@@ -1,0 +1,57 @@
+Member View / Admin View / SuperAdmin View
+Compact / Full
+
+Compact Member:
+----------------------------
+# Personal Configuration
+View or adjust personal settings with the {/my} command.
+{/my timezone}: ...
+{/my language}: ...
+
+# Economy
+Earn coins through studying/chatting/voice activity
+then spend them in the {/shop} or {/send} them to others.
+You could also {/room rent} a private room!
+{/send}: ...
+{/shop}: ...
+{/room}: ...
+
+# Statistics
+...
+{/ranks}: ...
+{/me}: ...
+{/stats}: ...
+{/leaderboard}: ...
+
+# Utilities
+...
+{/reminders}: ...
+{/tasklist}: ...
+{/pomodoro}: ...
+{/schedule}: ...
+----------------------------
+
+Compact Admin
+----------------------------
+# General server configuration
+{/dashboard}:
+{/configure general}:
+{/configure language}:
+
+# Economy
+{/configure economy}:
+{/editshop}
+
+# Statistics
+{/ranks}: 
+{/configure ranks}:
+{/configure statistics}:
+{/configure voice_rewards}:
+{/configure message_exp}:
+
+# Utilities
+{/configure pomodoro}:
+{/configure rooms}:
+{/configure tasklist}
+{/timer admin}
+----------------------------

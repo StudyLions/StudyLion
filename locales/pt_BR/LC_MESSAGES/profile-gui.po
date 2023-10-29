@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Bruno Evangelista De Oliveira, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-28 22:43+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
+"Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#: src/gui/cards/profile.py:79
+msgctxt "skin:profile|header:profile"
+msgid "PROFILE"
+msgstr "PERFIL"
+
+#: src/gui/cards/profile.py:83
+msgctxt "skin:profile|header:achievements"
+msgid "ACHIEVEMENTS"
+msgstr "CONQUISTAS"
+
+#: src/gui/cards/profile.py:134
+msgctxt "skin:profile|field:rank_unranked_text"
+msgid "UNRANKED"
+msgstr "NÃO_RANKEADO"
+
+#: src/gui/cards/profile.py:138
+#, possible-python-brace-format
+msgctxt "skin:profile|field:rank_nextrank_text"
+msgid "NEXT RANK: {name} {rangestr}"
+msgstr "PRÓXIMO NÍVEL: {name} {rangestr}"
+
+#: src/gui/cards/profile.py:142
+msgctxt "skin:profile|field:rank_noranks_text"
+msgid "NO RANKS AVAILABLE"
+msgstr "NÃO HÁ RANKS DISPONÍVEIS"
+
+#: src/gui/cards/profile.py:146
+msgctxt "skin:profile|field:rank_maxrank_text"
+msgid "YOU HAVE REACHED THE MAXIMUM RANK"
+msgstr "VOCÊ ATINGIU O NÍVEL MÁXIMO"

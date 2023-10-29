@@ -1,0 +1,436 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Interitio, 2023
+# Ari Horesh, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-24 12:21+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Ari Horesh, 2023\n"
+"Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: he_IL\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
+
+#: src/modules/member_admin/settingui.py:57
+msgctxt "ui:memberadmin|menu:greetch|placeholder"
+msgid "Select Greeting Channel"
+msgstr "בחר ערוץ שלומות"
+
+#: src/modules/member_admin/settingui.py:86
+msgctxt "ui:memberadmin|menu:autoroles|placeholder"
+msgid "Select Autoroles"
+msgstr "בחר רולים אוטומטיים"
+
+#: src/modules/member_admin/settingui.py:115
+msgctxt "ui:memberadmin|menu:bot_autoroles|placeholder"
+msgid "Select Bot Autoroles"
+msgstr "בחר רולים אוטומטיים של בוטים"
+
+#: src/modules/member_admin/settingui.py:156
+msgctxt "ui:member_admin|button:greet_msg|label"
+msgid "Greeting Msg"
+msgstr "הודעת ברוכים הבאים"
+
+#: src/modules/member_admin/settingui.py:205
+msgctxt "ui:memberadmin|button:return_msg|label"
+msgid "Returning Msg"
+msgstr "הודעת חזרה לשרת"
+
+#: src/modules/member_admin/settingui.py:213
+msgctxt "ui:memberadmin|embed|title"
+msgid "Greetings and Initial Roles Panel"
+msgstr "לוח בקרה של \"ברוכים הבאים\" ורולים ראשונים"
+
+#: src/modules/member_admin/settingui.py:257
+msgctxt "dash:member_admin|title"
+msgid "Greetings and Initial Roles ({commands[configure welcome]})"
+msgstr "ברוכים הבאים ורולים ראשונים  ({commands[configure welcome]})"
+
+#: src/modules/member_admin/settingui.py:261
+msgctxt "dash:member_admin|dropdown|placeholder"
+msgid "Greetings and Initial Roles Panel"
+msgstr "לוח בקרה של \"ברוכים הבאים\" ורולים ראשונים"
+
+#: src/modules/member_admin/settingui.py:281
+msgctxt "dash:member_admin|section:greeting_messages|name"
+msgid "Greeting Messages ({commands[configure welcome]})"
+msgstr "ברוכים הבאים ({commands[configure welcome]})"
+
+#: src/modules/member_admin/settingui.py:292
+msgctxt "dash:member_admin|section:initial_roles|name"
+msgid "Initial Roles ({commands[configure welcome]})"
+msgstr "רולים ראשוניים ({commands[configure welcome]})"
+
+#: src/modules/member_admin/cog.py:239
+msgctxt "cmd:resetmember"
+msgid "resetmember"
+msgstr "אפס משתמש"
+
+#: src/modules/member_admin/cog.py:242
+msgctxt "cmd:resetmember|desc"
+msgid "Reset (server-associated) member data for the target member or user."
+msgstr "אפס נתוני שרת עבור משתמש ספציפי"
+
+#: src/modules/member_admin/cog.py:246
+msgctxt "cmd:resetmember|param:target"
+msgid "member_to_reset"
+msgstr "משתמשים_לאיפוס"
+
+#: src/modules/member_admin/cog.py:247
+msgctxt "cmd:resetmember|param:saved_roles"
+msgid "saved_roles"
+msgstr "רולים_שמורים"
+
+#: src/modules/member_admin/cog.py:252
+msgctxt "cmd:resetmember|param:target|desc"
+msgid "Choose the member (current or past) you want to reset."
+msgstr "בחר את המשתמש (עכשווי או בעבר) שאתה רוצה לאפס."
+
+#: src/modules/member_admin/cog.py:256
+msgctxt "cmd:resetmember|param:saved_roles|desc"
+msgid ""
+"Clear the saved roles for this member, so their past roles are not restored "
+"on rejoin."
+msgstr ""
+"מחק את הרולים השמורים עבור המשתמש הזה, הרולים הקודמים שלהם לא ישוחזרו כשהוא "
+"יצטרך מחדש."
+
+#: src/modules/member_admin/cog.py:283
+#, possible-python-brace-format
+msgctxt "cmd:resetmember|reset:saved_roles|success"
+msgid ""
+"The saved roles for {target} have been reset. They will not regain their "
+"roles if they rejoin."
+msgstr ""
+"הרולים השמורים עבור {target} אופסו. הם לא יקבלו את הרולים שלהם שוב בחזרה "
+"לשרת."
+
+#: src/modules/member_admin/cog.py:291
+msgctxt "cmd:resetmember|error:nothing_to_do"
+msgid "No reset operation selected, nothing to do."
+msgstr "איפוס לא נבחר, אין לי מה לעשות."
+
+#: src/modules/member_admin/cog.py:307
+msgctxt "cmd:configure_welcome"
+msgid "welcome"
+msgstr "ברוכים הבאים"
+
+#: src/modules/member_admin/cog.py:310
+msgctxt "cmd:configure_welcome|desc"
+msgid "Configure new member greetings and roles."
+msgstr "הגדר רולים והודעת שלומות למשתמש חדש"
+
+#: src/modules/member_admin/settings.py:20
+msgctxt "guildset:greeting_message|formatkey:mention"
+msgid "Mention the new member."
+msgstr "מתייג את המשתמש החדש."
+
+#: src/modules/member_admin/settings.py:22
+msgctxt "guildset:greeting_message|formatkey:user_name"
+msgid "Display name of the new member."
+msgstr "הצג את השם של המשתמש החדש."
+
+#: src/modules/member_admin/settings.py:24
+msgctxt "guildset:greeting_message|formatkey:user_avatar"
+msgid "Avatar url of the new member."
+msgstr "הלינק של המשתמש החדש."
+
+#: src/modules/member_admin/settings.py:26
+msgctxt "guildset:greeting_message|formatkey:guild_name"
+msgid "Name of this server."
+msgstr "השם של השרת."
+
+#: src/modules/member_admin/settings.py:28
+msgctxt "guildset:greeting_message|formatkey:guild_icon"
+msgid "Server icon url."
+msgstr "לינק לתמונת השרת."
+
+#: src/modules/member_admin/settings.py:30
+msgctxt "guildset:greeting_message|formatkey:studying_count"
+msgid "Number of current voice channel members."
+msgstr "משתמש אנשים בערוצי קול ברגע נתון."
+
+#: src/modules/member_admin/settings.py:32
+msgctxt "guildset:greeting_message|formatkey:member_count"
+msgid "Number of members in the server."
+msgstr "מספר משתמשים בשרת."
+
+#: src/modules/member_admin/settings.py:40
+msgctxt "guildset:greeting_channel"
+msgid "welcome_channel"
+msgstr "ערוץ_שלומות"
+
+#: src/modules/member_admin/settings.py:43
+msgctxt "guildset:greeting_channel|desc"
+msgid "Channel in which to welcome new members to the server."
+msgstr "ערוץ שבו אשלח \"שלומות\" (ברוכים הבאים) לאנשים שיצטרפו לשרת."
+
+#: src/modules/member_admin/settings.py:47
+msgctxt "guildset:greeting_channel|long_desc"
+msgid ""
+"New members will be sent the configured `welcome_message` in this channel, "
+"and returning members will be sent the configured `returning_message`. Unset"
+" to send these message via direct message."
+msgstr ""
+"משתמשים חדשים יקבלו את ההודעה שערכתם בערוץ הזה, ואנשים שחזרו יקבלו את הודעה "
+"החזרה שערכתם (אם ערכתם אחת). ניתן לבטל את הערוץ ואז ההודעות ישלחו למשתמשים "
+"בפרטי."
+
+#: src/modules/member_admin/settings.py:53
+msgctxt "guildset:greeting_channel|accepts"
+msgid "Name or id of the greeting channel, or 0 for DM."
+msgstr ""
+"שם או מספר מזהה של הערוץ ברוכים הבאים, או 0 ואשלח להם את ההודעה בפרטי."
+
+#: src/modules/member_admin/settings.py:67
+msgctxt "guildset:greeting_channel|set_response:unset"
+msgid "Welcome messages will now be sent via direct message."
+msgstr "הודעות ברוכים הבאים ישלחו עכשיו בפרטי."
+
+#: src/modules/member_admin/settings.py:72
+#, possible-python-brace-format
+msgctxt "guildset:greeting_channel|set_response:set"
+msgid "Welcome messages will now be sent to {channel}"
+msgstr "הערוץ ברוכים הבאים נקבע ל{channel}"
+
+#: src/modules/member_admin/settings.py:84
+msgctxt "guildset:greeting_channel|formmatted:unset"
+msgid "Direct Message"
+msgstr "הודעת פרטית"
+
+#: src/modules/member_admin/settings.py:91
+msgctxt "guildset:greeting_message"
+msgid "welcome_message"
+msgstr "הודעת_ברוכים_הבאים"
+
+#: src/modules/member_admin/settings.py:95
+msgctxt "guildset:greeting_message|desc"
+msgid "Custom message used to greet new members when they join the server."
+msgstr "הודעה מותאמת אישית שהמטרה שלה לקבל בברכה אנשים חדשים בשרת שלכם."
+
+#: src/modules/member_admin/settings.py:99
+msgctxt "guildset:greeting_message|long_desc"
+msgid ""
+"When set, this message will be sent to the `welcome_channel` when a *new* "
+"member joins the server. If not set, no message will be sent."
+msgstr ""
+"כאשר מופעל, ההודעה תשלח לערוץ הודעות ברוכים הבאים כאשר משתמש חדש מצטרף לשרת."
+" "
+
+#: src/modules/member_admin/settings.py:104
+msgctxt "guildset:greeting_message|accepts"
+msgid "JSON formatted greeting message data"
+msgstr "הודעת הברוכים הבאים בפורמט JSON"
+
+#: src/modules/member_admin/settings.py:108
+msgctxt "guildset:greeting_message|default"
+msgid ""
+"\n"
+"            {\n"
+"                \"embed\": {\n"
+"                    \"title\": \"Welcome {user_name}!\",\n"
+"                    \"thumbnail\": {\"url\": \"{user_avatar}\"},\n"
+"                    \"description\": \"Welcome to **{guild_name}**!\",\n"
+"                    \"footer\": {\n"
+"                        \"text\": \"You are the {member_count}th member!\"\n"
+"                    },\n"
+"                    \"color\": 15695665\n"
+"                }\n"
+"            }\n"
+"            "
+msgstr ""
+"\n"
+"            {\n"
+"                \"embed\": {\n"
+"                    \"title\": \"Welcome {user_name}!\",\n"
+"                    \"thumbnail\": {\"url\": \"{user_avatar}\"},\n"
+"                    \"description\": \"Welcome to **{guild_name}**!\",\n"
+"                    \"footer\": {\n"
+"                        \"text\": \"You are the {member_count}th member!\"\n"
+"                    },\n"
+"                    \"color\": 15695665\n"
+"                }\n"
+"            }\n"
+"            "
+
+#: src/modules/member_admin/settings.py:136
+msgctxt "guildset:greeting_message|set_response:unset"
+msgid "Welcome message unset! New members will not be greeted."
+msgstr "הודעת הברוכים הבאים בוטלה! לא אגיד שלום לאנשים חדשים."
+
+#: src/modules/member_admin/settings.py:141
+msgctxt "guildset:greeting_message|set_response:set"
+msgid "The welcome message has been updated."
+msgstr "הודעת הברוכים הבאים עודכנה"
+
+#: src/modules/member_admin/settings.py:153
+msgctxt "guildset:greeting_message|formmatted:unset"
+msgid "Not set, members will not be welcomed."
+msgstr "לא נקבע, משתמשים חדשים לא יקבלו הודעת ברוכים הבאים."
+
+#: src/modules/member_admin/settings.py:200
+msgctxt "guildset:greeting_message|embed_field|formatkeys|explanation"
+msgid "The following placeholders will be substituted with their values."
+msgstr "תופסי המקום הבאים יוחלפו עם הערך האמיתי שלהם."
+
+#: src/modules/member_admin/settings.py:203
+msgctxt "guildset:greeting_message|embed_field|formatkeys|name"
+msgid "Placeholders"
+msgstr "תופסי מקום"
+
+#: src/modules/member_admin/settings.py:213
+msgctxt "guildset:returning_message"
+msgid "returning_message"
+msgstr "הודעת_ברוכים_השבים"
+
+#: src/modules/member_admin/settings.py:217
+msgctxt "guildset:returning_message|desc"
+msgid ""
+"Custom message used to greet returning members when they rejoin the server."
+msgstr "הודעה מותאמת אישית שהמטרה שלה לקבל בברכה אנשים שחזרו לשרת שלכם."
+
+#: src/modules/member_admin/settings.py:221
+msgctxt "guildset:returning_message|long_desc"
+msgid ""
+"When set, this message will be sent to the `welcome_channel` when a member "
+"*returns* to the server. If not set, no message will be sent."
+msgstr ""
+"כאשר מופעל, אני אשלח הודעה לערוץ שקבעתם כשמשתמש *ישן* חוזר לשרת. אם לא "
+"הפעלתם את האופציה הזאתי, לא אשלח שום הודעה."
+
+#: src/modules/member_admin/settings.py:226
+msgctxt "guildset:returning_message|accepts"
+msgid "JSON formatted returning message data"
+msgstr "הודעת הברוכים השבים בפורמט JSON"
+
+#: src/modules/member_admin/settings.py:230
+msgctxt "guildset:returning_message|default"
+msgid ""
+"\n"
+"            {\n"
+"                \"embed\": {\n"
+"                    \"title\": \"Welcome Back {user_name}!\",\n"
+"                    \"thumbnail\": {\"url\": \"{User_avatar}\"},\n"
+"                    \"description\": \"Welcome back to **{guild_name}**!\\nYou were last seen <t:{last_time}:R>.\",\n"
+"                    \"color\": 15695665\n"
+"                }\n"
+"            }\n"
+"            "
+msgstr ""
+"\n"
+"            {\n"
+"                \"embed\": {\n"
+"                    \"title\": \"Welcome Back {user_name}!\",\n"
+"                    \"thumbnail\": {\"url\": \"{User_avatar}\"},\n"
+"                    \"description\": \"Welcome back to **{guild_name}**!\\nYou were last seen <t:{last_time}:R>.\",\n"
+"                    \"color\": 15695665\n"
+"                }\n"
+"            }\n"
+"            "
+
+#: src/modules/member_admin/settings.py:247
+msgctxt "guildset:returning_message|formatkey:last_time"
+msgid "Unix timestamp of the last time the member was seen in the server."
+msgstr "חותמת זמן שבה המשתמש נראה לאחרונה בשרת."
+
+#: src/modules/member_admin/settings.py:258
+msgctxt "guildset:returning_message|set_response:unset"
+msgid "Returning member greeting unset! Will use `welcome_message` if set."
+msgstr "הודעת \"ברוכים השבים\" הוסרה! אשתמש בהודעה הרגילה של \"ברוכים הבאים\""
+
+#: src/modules/member_admin/settings.py:263
+msgctxt "guildset:greeting_message|set_response:set"
+msgid "The returning member greeting has been updated."
+msgstr "הודעת ה\"ברוכים השבים\" עודכנה בהצלחה."
+
+#: src/modules/member_admin/settings.py:275
+msgctxt "guildset:greeting_message|formmatted:unset"
+msgid "Not set, will use the `welcome_message` if set."
+msgstr "לא נקבע, אני אשתמש ב\"הודעת ברוכים הבאים\" אם קבעתם אחת."
+
+#: src/modules/member_admin/settings.py:325
+msgctxt "guildset:returning_message|embed_field|formatkeys|explanation"
+msgid "In *addition* to the placeholders supported by `welcome_message`"
+msgstr "בנוסף לתופסי המקום שנתמכים בהודעת הברוכים הבאים"
+
+#: src/modules/member_admin/settings.py:328
+msgctxt "guildset:returning_message|embed_field|formatkeys|"
+msgid "Placeholders"
+msgstr "תופסי מקום"
+
+#: src/modules/member_admin/settings.py:339
+msgctxt "guildset:autoroles"
+msgid "autoroles"
+msgstr "רולים אוטומטיים"
+
+#: src/modules/member_admin/settings.py:343
+msgctxt "guildset:autoroles|desc"
+msgid "Roles given to new members when they join the server."
+msgstr "רולים שמשתמש חדש יקבל כשהוא יצטרף לשרת."
+
+#: src/modules/member_admin/settings.py:347
+msgctxt "guildset:autoroles|long_desc"
+msgid ""
+"These roles will be given when a member joins the server. If "
+"`role_persistence` is enabled, these roles will *not* be given to a "
+"returning member."
+msgstr ""
+"אלו הרולים שניתנים לכל משתמש חדש שמצטרף לשרת. אם הצמדת_רולים פעיל, אני לא "
+"אתן את הרולים האלו לאנשים שעזבו וחזרו לשרת, אלא אשחזר את הרולים המקוריים "
+"שלהם."
+
+#: src/modules/member_admin/settings.py:361
+msgctxt "guildset:bot_autoroles"
+msgid "bot_autoroles"
+msgstr "רולים_אוטומטיים_בוט"
+
+#: src/modules/member_admin/settings.py:365
+msgctxt "guildset:bot_autoroles|desc"
+msgid "Roles given to new bots when they join the server."
+msgstr "רולים שבוטים יקבלו אוטומטית כשתוסיפו אותם לשרת."
+
+#: src/modules/member_admin/settings.py:369
+msgctxt "guildset:bot_autoroles|long_desc"
+msgid "These roles will be given when a bot joins the server."
+msgstr "הרולים האלו יתנו לבוט כאשר הוא מצורף לשרת."
+
+#: src/modules/member_admin/settings.py:382
+msgctxt "guildset:role_persistence"
+msgid "role_persistence"
+msgstr "הצמדת_רולים"
+
+#: src/modules/member_admin/settings.py:385
+msgctxt "guildset:role_persistence|desc"
+msgid "Whether member roles should be restored on rejoin."
+msgstr "האם או לא להשאיר את הרולים אצל משתמש גם אם הם עזבו וחזרו לשרת."
+
+#: src/modules/member_admin/settings.py:389
+msgctxt "guildset:role_persistence|long_desc"
+msgid ""
+"If enabled, member roles will be stored when they leave the server, and then"
+" restored when they rejoin (instead of giving `autoroles`). Note that this "
+"may conflict with other bots who manage join roles."
+msgstr ""
+"אם אופציה זו עובדת, שאשר משתמש עוזר וחוזר לשרת, במקום לאפס את הרולים שלו, "
+"אני אחזיר לו את הרולים שהיו לו בעבר ואצמיד אותם חזרה אליו."
+
+#: src/modules/member_admin/settings.py:405
+msgctxt "guildset:role_persistence|set_response:off"
+msgid "Roles will not be restored when members rejoin."
+msgstr "רולים לא ישוחזרו כאשר משתמש חזור לשרת."
+
+#: src/modules/member_admin/settings.py:410
+msgctxt "guildset:greeting_message|set_response:on"
+msgid "Roles will now be restored when members rejoin."
+msgstr "הרולים מעכשיו ישוחזרו למשתמשים שעזבו וחזרו לשרת."

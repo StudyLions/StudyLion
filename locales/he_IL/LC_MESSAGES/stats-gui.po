@@ -1,0 +1,144 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Interitio, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-27 16:37+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Interitio, 2023\n"
+"Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: he_IL\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
+
+#. First column
+#: src/gui/cards/stats.py:72
+msgctxt "skin:stats|header:col1"
+msgid "STATISTICS"
+msgstr "סטטיסטיקות"
+
+#: src/gui/cards/stats.py:75
+msgctxt "skin:stats|subheader:leaderboard"
+msgid "LEADERBOARD POSITION"
+msgstr "מיקום בלוח הישגים"
+
+#: src/gui/cards/stats.py:79
+msgctxt "skin:stats|mode:study|subheader:study"
+msgid "STUDY TIME"
+msgstr "זמן למידה"
+
+#: src/gui/cards/stats.py:83
+msgctxt "skin:stats|mode:voice|subheader:study"
+msgid "VOICE TIME"
+msgstr "זמן בערוץ קול"
+
+#: src/gui/cards/stats.py:87
+msgctxt "skin:stats|mode:text|subheader:study"
+msgid "MESSAGES"
+msgstr "הודעות"
+
+#: src/gui/cards/stats.py:91
+msgctxt "skin:stats|mode:anki|subheader:study"
+msgid "CARDS REVIEWED"
+msgstr "קלפים שנעשו"
+
+#: src/gui/cards/stats.py:102
+msgctxt "skin:stats|subheader:workouts"
+msgid "WORKOUTS"
+msgstr "אימונים"
+
+#: src/gui/cards/stats.py:118
+msgctxt "skin:stats|field:daily"
+msgid "DAILY"
+msgstr "יומי"
+
+#: src/gui/cards/stats.py:122
+msgctxt "skin:stats|field:weekly"
+msgid "WEEKLY"
+msgstr "שבועי"
+
+#: src/gui/cards/stats.py:126
+msgctxt "skin:stats|field:monthly"
+msgid "MONTHLY"
+msgstr "חודשי"
+
+#: src/gui/cards/stats.py:130
+msgctxt "skin:stats|field:alltime"
+msgid "ALL TIME"
+msgstr "כל הזמנים"
+
+#: src/gui/cards/stats.py:134
+msgctxt "skin:stats|field:time"
+msgid "TIME"
+msgstr "זמן"
+
+#: src/gui/cards/stats.py:138
+msgctxt "skin:stats|field:anki"
+msgid "ANKI: COMING SOON"
+msgstr "אנקי: בקרוב"
+
+#: src/gui/cards/stats.py:155
+msgctxt "skin:stats|mode:study|header:col2"
+msgid "STUDY STREAK"
+msgstr "רצף למידה"
+
+#: src/gui/cards/stats.py:159
+msgctxt "skin:stats|mode:voice|header:col2"
+msgid "VOICE STREAK"
+msgstr "פעילות קולית רצף"
+
+#: src/gui/cards/stats.py:163
+msgctxt "skin:stats|mode:text|header:col2"
+msgid "ACTIVITY STREAK"
+msgstr "רצף פעילות"
+
+#: src/gui/cards/stats.py:167
+msgctxt "skin:stats|mode:anki|header:col2"
+msgid "ANKI REVIEW STREAK"
+msgstr "אנקי רצף"
+
+#: src/gui/cards/stats.py:180
+#, possible-python-brace-format
+msgctxt "skin:stats|mode:study|field:col2_summary"
+msgid "{amount} HRS"
+msgstr "{amount} שעות"
+
+#: src/gui/cards/stats.py:184
+#, possible-python-brace-format
+msgctxt "skin:stats|mode:voice|field:col2_summary"
+msgid "{amount} HRS"
+msgstr "{amount} שעות"
+
+#: src/gui/cards/stats.py:188
+#, possible-python-brace-format
+msgctxt "skin:stats|mode:text|field:col2_summary"
+msgid "{amount} XP"
+msgstr "{amount} נקודות"
+
+#: src/gui/cards/stats.py:192
+#, possible-python-brace-format
+msgctxt "skin:stats|mode:anki|field:col2_summary"
+msgid "{amount} CARDS"
+msgstr "{amount} כרטיסים"
+
+#: src/gui/cards/stats.py:223
+msgctxt "skin:stats|cal|weekdays"
+msgid "S,M,T,W,T,F,S"
+msgstr "ר,ש,ש,ר,ח,ש,ש"
+
+#: src/gui/cards/stats.py:227
+msgctxt "skin:stats|cal|months"
+msgid ""
+"JANUARY,FEBRUARY,MARCH,APRIL,MAY,JUNE,JULY,AUGUST,SEPTEMBER,OCTOBER,NOVEMBER,DECEMBER"
+msgstr ""
+"ינואר,פבואר,מרץ,אפריל,מאי,יוני,יולי,אוגוסט,ספטמבר,אוקטובר,נובמבר,דצמבר"

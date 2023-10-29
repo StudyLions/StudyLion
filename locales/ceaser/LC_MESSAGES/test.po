@@ -1,0 +1,81 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: you@example.com\n"
+"POT-Creation-Date: 2007-10-18 14:00+0100\n"
+"PO-Revision-Date: 2007-10-18 14:00+0100\n"
+"Last-Translator: you <you@example.com>\n"
+"Language-Team: English <yourteam@example.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/modules/test/test.py:59 src/modules/test/test.py:66
+msgid "test"
+msgstr "uftu"
+
+#: src/modules/test/test.py:67
+msgid "Test"
+msgstr "Uftu"
+
+#: src/modules/test/test.py:74
+msgid "editor"
+msgstr "fejups"
+
+#: src/modules/test/test.py:75
+msgid "Test message editor"
+msgstr "Uftu nfttbhf fejups"
+
+#: src/modules/test/test.py:101
+msgid "test_ephemeral"
+msgstr "uftu_fqifnfsbm"
+
+#: src/modules/test/test.py:102
+msgid "Test ephemeral delete and edit"
+msgstr "Uftu fqifnfsbm efmfuf boe feju"
+
+#: src/modules/test/test.py:114
+msgid "colours"
+msgstr "dpmpvst"
+
+#: src/modules/test/test.py:115
+msgid "Test Ansi colours"
+msgstr "Uftu Botj dpmpvst"
+
+#: src/modules/test/test.py:135
+msgid "fail"
+msgstr "gbjm"
+
+#: src/modules/test/test.py:143
+msgid "failui"
+msgstr "gbjmvj"
+
+#: src/modules/test/test.py:150
+msgid "pager"
+msgstr "qbhfs"
+
+#: src/modules/test/test.py:178
+msgid "pager2"
+msgstr "qbhfs2"
+
+#: src/modules/test/test.py:209
+msgid "prettyusers"
+msgstr "qsfuuzvtfst"
+
+#: src/modules/test/test.py:259
+msgid "dmview"
+msgstr "enwjfx"
+
+#: src/modules/test/test.py:270
+msgid "multiview"
+msgstr "nvmujwjfx"
+
+#: src/modules/test/test.py:287
+msgid "stats-card"
+msgstr "tubut-dbse"

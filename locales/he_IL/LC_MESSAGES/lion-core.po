@@ -1,0 +1,137 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Interitio, 2023
+# Ari Horesh, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-24 12:21+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Ari Horesh, 2023\n"
+"Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: he_IL\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
+
+#: src/core/setting_types.py:31
+msgctxt "settype:coin|accepts"
+msgid "A positive integral number of coins."
+msgstr "מספר מלא וחיובי של מספר מטבעות."
+
+#: src/core/setting_types.py:47
+msgctxt "settype:coin|parse|error:notinteger"
+msgid "The coin quantity must be a positive integer!"
+msgstr "כמות המטבעות חייבת להיות מספר שלם וחיובי!"
+
+#: src/core/setting_types.py:55
+#, possible-python-brace-format
+msgctxt "settype:coin|parse|error:too_large"
+msgid "You cannot set this to more than {coin}**{max}**!"
+msgstr "לא ניתן לבחור יותר מ{coin}**{max}**!"
+
+#: src/core/setting_types.py:63
+#, possible-python-brace-format
+msgctxt "settype:coin|parse|error:too_small"
+msgid "You cannot set this to less than {coin}**{min}**!"
+msgstr "לא ניתן לבחור פחות מ{coin}**{min}**!"
+
+#: src/core/setting_types.py:75
+#, possible-python-brace-format
+msgctxt "settype:coin|formatted"
+msgid "{coin}**{amount}**"
+msgstr "{coin}**{amount}**"
+
+#: src/core/setting_types.py:91
+msgctxt "settype:message|accepts"
+msgid "JSON formatted raw message data"
+msgstr "מסמך נא בפורמט JSON "
+
+#: src/core/setting_types.py:106
+msgctxt "settype:message|download|error:not_json"
+msgid "The attached message data is not a JSON file!"
+msgstr "המסמך שהוספת הוא לא בפורמט JSON!"
+
+#: src/core/setting_types.py:111
+msgctxt "settype:message|download|error:size"
+msgid "The attached message data is too large!"
+msgstr "המסמך שהוספת גדול מידי!"
+
+#: src/core/setting_types.py:120
+msgctxt "settype:message|download|error:decoding"
+msgid ""
+"Could not decode the message data. Please ensure it is saved with the "
+"`UTF-8` encoding."
+msgstr ""
+"לא הצלחתי לקרוא את המסמך שלך. אתה בטוח ששמרת אותו בתור `UTF-8` encoding?"
+
+#: src/core/setting_types.py:177
+#, possible-python-brace-format
+msgctxt "settype:message|error_suffix"
+msgid ""
+"You can view, test, and fix your embed using the online [embed "
+"builder]({link})."
+msgstr ""
+"אתה יכול לראות, לערוץ ולתקן את הembed באמצעות [embed builder]({link})."
+
+#: src/core/setting_types.py:189
+#, possible-python-brace-format
+msgctxt "settype:message|error:invalid_json"
+msgid ""
+"The provided message data was not a valid JSON document!\n"
+"`{error}`"
+msgstr ""
+"המסמך שהוצמד אינו מסמך JSON\n"
+"`{error}`"
+
+#: src/core/setting_types.py:197
+msgctxt "settype:message|error:json_missing_keys"
+msgid ""
+"Message data must be a JSON object with at least one of the following "
+"fields: `content`, `embed`, `embeds`"
+msgstr ""
+"המסמך חייב להיות JSON אם לפחות אחד מהאזורים הבאים:  `content`, `embed`, "
+"`embeds`"
+
+#: src/core/setting_types.py:206
+msgctxt "settype:message|error:json_embed_type"
+msgid "`embed` field must be a valid JSON object."
+msgstr "הembed חייב להיות מסמך JSON"
+
+#: src/core/setting_types.py:214
+msgctxt "settype:message|error:json_embeds_type"
+msgid "`embeds` field must be a list."
+msgstr "הembed חייב להיות רשימה."
+
+#: src/core/setting_types.py:221
+msgctxt "settype:message|error:json_embed_embeds"
+msgid "Message data cannot include both `embed` and `embeds`."
+msgstr "תוכן ההודעה לא יכול להכיל `embed` וגם `embeds`."
+
+#: src/core/setting_types.py:229
+msgctxt "settype:message|error:json_content_type"
+msgid "`content` field must be a string."
+msgstr "האזור של התוכן חייב להכין טקסט."
+
+#: src/core/setting_types.py:245
+#, possible-python-brace-format
+msgctxt "ui:settype:message|error:embed_conversion"
+msgid ""
+"Could not parse the message embed data.\n"
+"**Error:** `{exception}`"
+msgstr ""
+"לא הצלחתי להבין את הembed\n"
+"**Error:** `{exception}`"
+
+#: src/core/setting_types.py:273
+msgctxt "settype:message|format:too_long"
+msgid "Too long to display! See Preview."
+msgstr "ארוך מידי כדי להראות! בדוק תצוגה מקדימה."

@@ -1,0 +1,949 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: you@example.com\n"
+"POT-Creation-Date: 2007-10-18 14:00+0100\n"
+"PO-Revision-Date: 2007-10-18 14:00+0100\n"
+"Last-Translator: you <you@example.com>\n"
+"Language-Team: English <yourteam@example.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/modules/ranks/cog.py:76
+msgctxt "cmd:configure_ranks|param:rank_type|choice:voice"
+msgid "Voice"
+msgstr "Wpjdf"
+
+#: src/modules/ranks/cog.py:77
+msgctxt "cmd:configure_ranks|param:rank_type|choice:xp"
+msgid "XP"
+msgstr "YQ"
+
+#: src/modules/ranks/cog.py:78
+msgctxt "cmd:configure_ranks|param:rank_type|choice:message"
+msgid "Message"
+msgstr "Nfttbhf"
+
+#: src/modules/ranks/cog.py:406
+msgctxt "event:rank_update|embed:notify"
+msgid "New Activity Rank Attained!"
+msgstr "Ofx Bdujwjuz Sbol Buubjofe!"
+
+#: src/modules/ranks/cog.py:516
+msgctxt "rank_refresh|error:roles_dne|desc"
+msgid "Some ranks have invalid or deleted roles! Please remove them first."
+msgstr "Tpnf sbolt ibwf jowbmje ps efmfufe spmft! Qmfbtf sfnpwf uifn gjstu."
+
+#: src/modules/ranks/cog.py:526
+#, possible-python-brace-format
+msgctxt "rank_refresh|error:unassignable_roles|desc"
+msgid ""
+"I have insufficient permissions to assign the following role(s):\n"
+"{roles}"
+msgstr ""
+"J ibwf jotvggjdjfou qfsnjttjpot up bttjho uif gpmmpxjoh spmf(t):\n"
+"{roles}"
+
+#: src/modules/ranks/cog.py:596
+msgctxt "rank_refresh|remove_roles|audit"
+msgid "Removing invalid rank role."
+msgstr "Sfnpwjoh jowbmje sbol spmf."
+
+#: src/modules/ranks/cog.py:610
+#, possible-python-brace-format
+msgctxt "rank_refresh|remove_roles|small_error"
+msgid "*Could not remove ranks from {member}*"
+msgstr "*Dpvme opu sfnpwf sbolt gspn {member}*"
+
+#: src/modules/ranks/cog.py:617
+msgctxt "rank_refresh|remove_roles|error:too_many_issues"
+msgid ""
+"Too many issues occurred while removing ranks! Please check my permissions "
+"and try again in a few minutes."
+msgstr ""
+"Upp nboz jttvft pddvssfe xijmf sfnpwjoh sbolt! Qmfbtf difdl nz qfsnjttjpot "
+"boe usz bhbjo jo b gfx njovuft."
+
+#: src/modules/ranks/cog.py:631
+msgctxt "rank_refresh|add_roles|audit"
+msgid "Adding rank role from refresh"
+msgstr "Beejoh sbol spmf gspn sfgsfti"
+
+#: src/modules/ranks/cog.py:645
+#, possible-python-brace-format
+msgctxt "rank_refresh|add_roles|small_error"
+msgid "*Could not add {role} to {member}*"
+msgstr "*Dpvme opu bee {role} up {member}*"
+
+#: src/modules/ranks/cog.py:652
+msgctxt "rank_refresh|add_roles|error:too_many_issues"
+msgid ""
+"Too many issues occurred while adding ranks! Please check my permissions and"
+" try again in a few minutes."
+msgstr ""
+"Upp nboz jttvft pddvssfe xijmf beejoh sbolt! Qmfbtf difdl nz qfsnjttjpot boe"
+" usz bhbjo jo b gfx njovuft."
+
+#. ---------- Commands ----------
+#: src/modules/ranks/cog.py:677
+msgctxt "cmd:ranks"
+msgid "ranks"
+msgstr "sbolt"
+
+#: src/modules/ranks/cog.py:709
+msgctxt "cmd:configure_ranks"
+msgid "ranks"
+msgstr "sbolt"
+
+#: src/modules/ranks/cog.py:710
+msgctxt "cmd:configure_ranks|desc"
+msgid "Configure Activity Ranks"
+msgstr "Dpogjhvsf Bdujwjuz Sbolt"
+
+#: src/modules/ranks/cog.py:770
+#, possible-python-brace-format
+msgctxt ""
+"cmd:configure_ranks|response:updated|setting:notification|withdm_withchannel"
+msgid ""
+"Rank update notifications will be sent via **direct message** when possible,"
+" otherwise to {channel}"
+msgstr ""
+"Sbol vqebuf opujgjdbujpot xjmm cf tfou wjb **ejsfdu nfttbhf** xifo qpttjcmf,"
+" puifsxjtf up {channel}"
+
+#: src/modules/ranks/cog.py:776
+msgctxt ""
+"cmd:configure_ranks|response:updated|setting:notification|withdm_nochannel"
+msgid "Rank update notifications will be sent via **direct message**."
+msgstr "Sbol vqebuf opujgjdbujpot xjmm cf tfou wjb **ejsfdu nfttbhf**."
+
+#: src/modules/ranks/cog.py:782
+#, possible-python-brace-format
+msgctxt ""
+"cmd:configure_ranks|response:updated|setting:notification|nodm_withchannel"
+msgid "Rank update notifications will be sent to {channel}."
+msgstr "Sbol vqebuf opujgjdbujpot xjmm cf tfou up {channel}."
+
+#: src/modules/ranks/cog.py:787
+msgctxt ""
+"cmd:configure_ranks|response:updated|setting:notification|nodm_nochannel"
+msgid "Members will not be notified when their activity rank updates."
+msgstr "Nfncfst xjmm opu cf opujgjfe xifo uifjs bdujwjuz sbol vqebuft."
+
+#: src/modules/ranks/utils.py:13
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:role_name"
+msgid "{role_name}"
+msgstr "{role_name}"
+
+#: src/modules/ranks/utils.py:14
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:guild_name"
+msgid "{guild_name}"
+msgstr "{guild_name}"
+
+#: src/modules/ranks/utils.py:15
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:user_name"
+msgid "{user_name}"
+msgstr "{user_name}"
+
+#: src/modules/ranks/utils.py:16
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:role_id"
+msgid "{role_id}"
+msgstr "{role_id}"
+
+#: src/modules/ranks/utils.py:17
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:guild_id"
+msgid "{guild_id}"
+msgstr "{guild_id}"
+
+#: src/modules/ranks/utils.py:18
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:user_id"
+msgid "{user_id}"
+msgstr "{user_id}"
+
+#: src/modules/ranks/utils.py:19
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:role_mention"
+msgid "{role_mention}"
+msgstr "{role_mention}"
+
+#: src/modules/ranks/utils.py:20
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:user_mention"
+msgid "{user_mention}"
+msgstr "{user_mention}"
+
+#: src/modules/ranks/utils.py:21
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:requires"
+msgid "{rank_requires}"
+msgstr "{rank_requires}"
+
+#: src/modules/ranks/settings.py:26
+msgctxt "guildset:rank_type|output:voice"
+msgid "`Voice`"
+msgstr "`Wpjdf`"
+
+#: src/modules/ranks/settings.py:27
+msgctxt "guildset:rank_type|output:xp"
+msgid "`Exp`"
+msgstr "`Fyq`"
+
+#: src/modules/ranks/settings.py:28
+msgctxt "guildset:rank_type|output:message"
+msgid "`Messages`"
+msgstr "`Nfttbhft`"
+
+#: src/modules/ranks/settings.py:31
+msgctxt "guildset:rank_type|input_format:voice"
+msgid "Voice"
+msgstr "Wpjdf"
+
+#: src/modules/ranks/settings.py:32
+msgctxt "guildset:rank_type|input_format:xp"
+msgid "Exp"
+msgstr "Fyq"
+
+#: src/modules/ranks/settings.py:33
+msgctxt "guildset:rank_type|input_format:message"
+msgid "Messages"
+msgstr "Nfttbhft"
+
+#: src/modules/ranks/settings.py:36
+msgctxt "guildset:rank_type|input_pattern:voice"
+msgid "voice|study"
+msgstr "wpjdf|tuvez"
+
+#: src/modules/ranks/settings.py:37
+msgctxt "guildset:rank_type|input_pattern:voice"
+msgid "text|message|messages"
+msgstr "ufyu|nfttbhf|nfttbhft"
+
+#: src/modules/ranks/settings.py:38
+msgctxt "guildset:rank_type|input_pattern:xp"
+msgid "xp|exp|experience"
+msgstr "yq|fyq|fyqfsjfodf"
+
+#: src/modules/ranks/settings.py:45
+msgctxt "guildset:rank_type"
+msgid "rank_type"
+msgstr "sbol_uzqf"
+
+#: src/modules/ranks/settings.py:48
+msgctxt "guildset:rank_type|desc"
+msgid ""
+"The type of statistic (messages | xp | voice hours) used to determine "
+"activity ranks."
+msgstr ""
+"Uif uzqf pg tubujtujd (nfttbhft | yq | wpjdf ipvst) vtfe up efufsnjof "
+"bdujwjuz sbolt."
+
+#: src/modules/ranks/settings.py:52
+msgctxt "guildset:rank_type|long_desc"
+msgid ""
+"Which statistic is used to reward activity ranks.\n"
+"`Voice` is the number of hours active in tracked voice channels, `Exp` is a measure of message activity, and `Message` is a simple count of messages sent."
+msgstr ""
+"Xijdi tubujtujd jt vtfe up sfxbse bdujwjuz sbolt.\n"
+"`Wpjdf` jt uif ovncfs pg ipvst bdujwf jo usbdlfe wpjdf diboofmt, `Fyq` jt b nfbtvsf pg nfttbhf bdujwjuz, boe `Nfttbhf` jt b tjnqmf dpvou pg nfttbhft tfou."
+
+#: src/modules/ranks/settings.py:59
+msgctxt "guildset:rank_type|accepts"
+msgid "Voice/Exp/Messages"
+msgstr "Wpjdf/Fyq/Nfttbhft"
+
+#: src/modules/ranks/settings.py:71
+msgctxt "guildset:rank_type|set_response|type:voice"
+msgid "Members will be awarded activity ranks based on `Voice Activity`."
+msgstr "Nfncfst xjmm cf bxbsefe bdujwjuz sbolt cbtfe po `Wpjdf Bdujwjuz`."
+
+#: src/modules/ranks/settings.py:76
+msgctxt "guildset:rank_type|set_response|type:messages"
+msgid "Members will be awarded activity ranks based on `Messages Sent`."
+msgstr "Nfncfst xjmm cf bxbsefe bdujwjuz sbolt cbtfe po `Nfttbhft Tfou`."
+
+#: src/modules/ranks/settings.py:81
+msgctxt "guildset:rank_type|set_response|type:xp"
+msgid "Members will be awarded activity ranks based on `Message XP Earned`."
+msgstr "Nfncfst xjmm cf bxbsefe bdujwjuz sbolt cbtfe po `Nfttbhf YQ Fbsofe`."
+
+#: src/modules/ranks/settings.py:91
+#, possible-python-brace-format
+msgctxt "guildset:rank_channel|set_using"
+msgid "{cmd} or option menu below."
+msgstr "{cmd} ps pqujpo nfov cfmpx."
+
+#: src/modules/ranks/settings.py:103
+msgctxt "guildset:rank_channel"
+msgid "rank_channel"
+msgstr "sbol_diboofm"
+
+#: src/modules/ranks/settings.py:106
+msgctxt "guildset:rank_channel|desc"
+msgid "The channel in which to send rank update notifications."
+msgstr "Uif diboofm jo xijdi up tfoe sbol vqebuf opujgjdbujpot."
+
+#: src/modules/ranks/settings.py:110
+msgctxt "guildset:rank_channel|long_desc"
+msgid ""
+"Whenever a user advances a rank, a congratulatory message will be sent in "
+"this channel, if set. If `dm_ranks` is enabled, this channel will only be "
+"used when the user has opted not to receive DM notifications, or is "
+"otherwise unreachable."
+msgstr ""
+"Xifofwfs b vtfs bewbodft b sbol, b dpohsbuvmbupsz nfttbhf xjmm cf tfou jo "
+"uijt diboofm, jg tfu. Jg `en_sbolt` jt fobcmfe, uijt diboofm xjmm pomz cf "
+"vtfe xifo uif vtfs ibt pqufe opu up sfdfjwf EN opujgjdbujpot, ps jt "
+"puifsxjtf vosfbdibcmf."
+
+#: src/modules/ranks/settings.py:116
+msgctxt "guildset:rank_channel|accepts"
+msgid "Rank notification channel name or id."
+msgstr "Sbol opujgjdbujpo diboofm obnf ps je."
+
+#: src/modules/ranks/settings.py:128
+#, possible-python-brace-format
+msgctxt "guildset:rank_channel|set_response|set"
+msgid "Rank update messages will be sent to {channel}."
+msgstr "Sbol vqebuf nfttbhft xjmm cf tfou up {channel}."
+
+#: src/modules/ranks/settings.py:133
+msgctxt "guildset:rank_channel|set_response|unset"
+msgid ""
+"Rank update messages will be ignored or sent via DM (if `dm_ranks` is "
+"enabled)."
+msgstr ""
+"Sbol vqebuf nfttbhft xjmm cf jhopsfe ps tfou wjb EN (jg `en_sbolt` jt "
+"fobcmfe)."
+
+#: src/modules/ranks/settings.py:143
+#, possible-python-brace-format
+msgctxt "guildset:rank_channel|set_using"
+msgid "{cmd} or channel selector below."
+msgstr "{cmd} ps diboofm tfmfdups cfmpx."
+
+#: src/modules/ranks/settings.py:153
+msgctxt "guildset:dm_ranks"
+msgid "dm_ranks"
+msgstr "en_sbolt"
+
+#: src/modules/ranks/settings.py:156
+msgctxt "guildset:dm_ranks|desc"
+msgid ""
+"Whether to send rank advancement notifications through direct messages."
+msgstr ""
+"Xifuifs up tfoe sbol bewbodfnfou opujgjdbujpot uispvhi ejsfdu nfttbhft."
+
+#: src/modules/ranks/settings.py:160
+msgctxt "guildset:dm_ranks|long_desc"
+msgid ""
+"If enabled, congratulatory messages for rank advancement will be direct "
+"messaged to the user, instead of being sent to the configured "
+"`rank_channel`."
+msgstr ""
+"Jg fobcmfe, dpohsbuvmbupsz nfttbhft gps sbol bewbodfnfou xjmm cf ejsfdu "
+"nfttbhfe up uif vtfs, jotufbe pg cfjoh tfou up uif dpogjhvsfe "
+"`sbol_diboofm`."
+
+#: src/modules/ranks/settings.py:174
+msgctxt "guildset:dm_ranks|response:true"
+msgid "I will direct message members upon rank advancement."
+msgstr "J xjmm ejsfdu nfttbhf nfncfst vqpo sbol bewbodfnfou."
+
+#: src/modules/ranks/settings.py:179
+msgctxt "guildset:dm_ranks|response:false"
+msgid "I will never direct message members upon rank advancement."
+msgstr "J xjmm ofwfs ejsfdu nfttbhf nfncfst vqpo sbol bewbodfnfou."
+
+#: src/modules/ranks/ui/preview.py:74
+msgctxt "ui:rank_preview|button:edit|error:role_deleted"
+msgid ""
+"The role underlying this rank no longer exists! Please select a new role "
+"from the role menu."
+msgstr ""
+"Uif spmf voefsmzjoh uijt sbol op mpohfs fyjtut! Qmfbtf tfmfdu b ofx spmf "
+"gspn uif spmf nfov."
+
+#: src/modules/ranks/ui/preview.py:81
+msgctxt "ui:rank_preview|button:edit|error:role_not_assignable"
+msgid ""
+"I do not have permission to edit the underlying role! Please select a new "
+"role from the role menu, or ensure my top role is above the selected role."
+msgstr ""
+"J ep opu ibwf qfsnjttjpo up feju uif voefsmzjoh spmf! Qmfbtf tfmfdu b ofx "
+"spmf gspn uif spmf nfov, ps fotvsf nz upq spmf jt bcpwf uif tfmfdufe spmf."
+
+#: src/modules/ranks/ui/preview.py:90
+msgctxt "ui:rank_preview|button:edit|error|title"
+msgid "Failed to edit rank!"
+msgstr "Gbjmfe up feju sbol!"
+
+#: src/modules/ranks/ui/preview.py:108
+msgctxt "ui:rank_preview|button:edit|label"
+msgid "Edit"
+msgstr "Feju"
+
+#: src/modules/ranks/ui/preview.py:139
+#, possible-python-brace-format
+msgctxt "ui:rank_preview|button:delete|response:success|description|with_role"
+msgid ""
+"You have deleted the rank {mention}. Press the button below to also delete "
+"the role."
+msgstr ""
+"Zpv ibwf efmfufe uif sbol {mention}. Qsftt uif cvuupo cfmpx up bmtp efmfuf "
+"uif spmf."
+
+#: src/modules/ranks/ui/preview.py:144
+#, possible-python-brace-format
+msgctxt "ui:rank_preview|button:delete|response:success|description|no_role"
+msgid "You have deleted the rank {mention}."
+msgstr "Zpv ibwf efmfufe uif sbol {mention}."
+
+#: src/modules/ranks/ui/preview.py:150
+msgctxt "ui:rank_preview|button:delete|response:success|title"
+msgid "Rank Deleted"
+msgstr "Sbol Efmfufe"
+
+#: src/modules/ranks/ui/preview.py:160
+msgctxt ""
+"ui:rank_preview|button:delete|response:success|button:delete_role|label"
+msgid "Delete Role"
+msgstr "Efmfuf Spmf"
+
+#: src/modules/ranks/ui/preview.py:176
+#, possible-python-brace-format
+msgctxt ""
+"ui:rank_preview|button:delete|response:success|button:delete_role|response:errored|desc"
+msgid ""
+"You have deleted the rank **{name}**! Could not delete the role due to an "
+"unknown error."
+msgstr ""
+"Zpv ibwf efmfufe uif sbol **{name}**! Dpvme opu efmfuf uif spmf evf up bo "
+"volopxo fssps."
+
+#: src/modules/ranks/ui/preview.py:182
+#, possible-python-brace-format
+msgctxt ""
+"ui:rank_preview|button:delete|response:success|button:delete_role|response:success|desc"
+msgid "You have deleted the rank **{name}** along with the underlying role."
+msgstr "Zpv ibwf efmfufe uif sbol **{name}** bmpoh xjui uif voefsmzjoh spmf."
+
+#: src/modules/ranks/ui/preview.py:199
+msgctxt "ui:rank_preview|button:delete|label"
+msgid "Delete Rank"
+msgstr "Efmfuf Sbol"
+
+#: src/modules/ranks/ui/preview.py:219
+#, possible-python-brace-format
+msgctxt "ui:rank_preview|menu:roles|error:above_caller"
+msgid ""
+"You have insufficient permissions to assign {mention} as a rank role! You "
+"may only manage roles below your top role."
+msgstr ""
+"Zpv ibwf jotvggjdjfou qfsnjttjpot up bttjho {mention} bt b sbol spmf! Zpv "
+"nbz pomz nbobhf spmft cfmpx zpvs upq spmf."
+
+#: src/modules/ranks/ui/preview.py:225
+msgctxt "ui:rank_preview|menu:roles|error:above_caller|title"
+msgid "Insufficient permissions!"
+msgstr "Jotvggjdjfou qfsnjttjpot!"
+
+#: src/modules/ranks/ui/preview.py:241
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:is_default"
+msgid "The @everyone role cannot be removed, and cannot be a rank!"
+msgstr "Uif @fwfszpof spmf dboopu cf sfnpwfe, boe dboopu cf b sbol!"
+
+#: src/modules/ranks/ui/preview.py:246
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:is_managed"
+msgid ""
+"The role is managed by another application or integration, and cannot be a "
+"rank!"
+msgstr ""
+"Uif spmf jt nbobhfe cz bopuifs bqqmjdbujpo ps joufhsbujpo, boe dboopu cf b "
+"sbol!"
+
+#: src/modules/ranks/ui/preview.py:251
+msgctxt ""
+"ui:rank_preview|menu:roles|error:not_assignable|suberror:no_permissions"
+msgid ""
+"I do not have the `MANAGE_ROLES` permission in this server, so I cannot "
+"manage ranks!"
+msgstr ""
+"J ep opu ibwf uif `NBOBHF_SPMFT` qfsnjttjpo jo uijt tfswfs, tp J dboopu "
+"nbobhf sbolt!"
+
+#: src/modules/ranks/ui/preview.py:256
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:above_me"
+msgid ""
+"This role is above my top role in the role hierarchy, so I cannot add or "
+"remove it!"
+msgstr ""
+"Uijt spmf jt bcpwf nz upq spmf jo uif spmf ijfsbsdiz, tp J dboopu bee ps "
+"sfnpwf ju!"
+
+#: src/modules/ranks/ui/preview.py:262
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:other"
+msgid "I am not able to manage the selected role, so it cannot be a rank!"
+msgstr "J bn opu bcmf up nbobhf uif tfmfdufe spmf, tp ju dboopu cf b sbol!"
+
+#: src/modules/ranks/ui/preview.py:268
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|title"
+msgid "Could not update rank!"
+msgstr "Dpvme opu vqebuf sbol!"
+
+#: src/modules/ranks/ui/preview.py:278
+msgctxt "ui:rank_preview|menu:roles|placeholder"
+msgid "Update Rank Role"
+msgstr "Vqebuf Sbol Spmf"
+
+#: src/modules/ranks/ui/preview.py:290
+msgctxt "ui:rank_preview|embed|title"
+msgid "Rank Information"
+msgstr "Sbol Jogpsnbujpo"
+
+#: src/modules/ranks/ui/preview.py:297
+msgctxt "ui:rank_preview|embed|field:role|name"
+msgid "Role"
+msgstr "Spmf"
+
+#: src/modules/ranks/ui/preview.py:304
+msgctxt "ui:rank_preview|embed|field:required|name"
+msgid "Required"
+msgstr "Sfrvjsfe"
+
+#: src/modules/ranks/ui/preview.py:311
+msgctxt "ui:rank_preview|embed|field:reward|name"
+msgid "Reward"
+msgstr "Sfxbse"
+
+#: src/modules/ranks/ui/preview.py:320
+msgctxt "ui:rank_preview|embed|field:message"
+msgid "Congratulatory Message"
+msgstr "Dpohsbuvmbupsz Nfttbhf"
+
+#: src/modules/ranks/ui/refresh.py:125
+msgctxt "ui:refresh_ranks|embed|title:errored"
+msgid "Could not refresh the server ranks!"
+msgstr "Dpvme opu sfgsfti uif tfswfs sbolt!"
+
+#: src/modules/ranks/ui/refresh.py:133
+msgctxt "ui:refresh_ranks|embed|title:done"
+msgid "Rank refresh complete!"
+msgstr "Sbol sfgsfti dpnqmfuf!"
+
+#: src/modules/ranks/ui/refresh.py:139
+msgctxt "ui:refresh_ranks|embed|title:working"
+msgid "Refreshing your server ranks, please wait."
+msgstr "Sfgsftijoh zpvs tfswfs sbolt, qmfbtf xbju."
+
+#: src/modules/ranks/ui/refresh.py:157
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:ranks"
+msgid "**Loading server ranks:** {emoji}"
+msgstr "**Mpbejoh tfswfs sbolt:** {emoji}"
+
+#: src/modules/ranks/ui/refresh.py:167
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:members"
+msgid "**Loading server members:** {emoji}"
+msgstr "**Mpbejoh tfswfs nfncfst:** {emoji}"
+
+#: src/modules/ranks/ui/refresh.py:177
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:roles"
+msgid "**Loading rank roles:** {emoji}"
+msgstr "**Mpbejoh sbol spmft:** {emoji}"
+
+#: src/modules/ranks/ui/refresh.py:187
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:compute"
+msgid "**Computing correct ranks:** {emoji}"
+msgstr "**Dpnqvujoh dpssfdu sbolt:** {emoji}"
+
+#: src/modules/ranks/ui/refresh.py:198
+msgctxt "ui:refresh_ranks|embed|field:remove|name"
+msgid "Removing invalid rank roles from members"
+msgstr "Sfnpwjoh jowbmje sbol spmft gspn nfncfst"
+
+#: src/modules/ranks/ui/refresh.py:202
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|field:remove|value"
+msgid "{progress} {done}/{total} removed"
+msgstr "{progress} {done}/{total} sfnpwfe"
+
+#: src/modules/ranks/ui/refresh.py:213
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:remove"
+msgid "**Removed invalid ranks:** {done}/{target}"
+msgstr "**Sfnpwfe jowbmje sbolt:** {done}/{target}"
+
+#: src/modules/ranks/ui/refresh.py:221
+msgctxt "ui:refresh_ranks|embed|field:add|name"
+msgid "Giving members their rank roles"
+msgstr "Hjwjoh nfncfst uifjs sbol spmft"
+
+#: src/modules/ranks/ui/refresh.py:225
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|field:add|value"
+msgid "{progress} {done}/{total} given"
+msgstr "{progress} {done}/{total} hjwfo"
+
+#: src/modules/ranks/ui/refresh.py:236
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:add"
+msgid "**Updated member ranks:** {done}/{target}"
+msgstr "**Vqebufe nfncfs sbolt:** {done}/{target}"
+
+#: src/modules/ranks/ui/config.py:42
+msgctxt "ui:rankconfigui|check|not_permitted"
+msgid "You have insufficient server permissions to use this UI!"
+msgstr "Zpv ibwf jotvggjdjfou tfswfs qfsnjttjpot up vtf uijt VJ!"
+
+#: src/modules/ranks/ui/config.py:64
+msgctxt "ui:rank_config|button:overview|label"
+msgid "Edit Ranks"
+msgstr "Feju Sbolt"
+
+#: src/modules/ranks/ui/config.py:82
+msgctxt "ui:rank_config|menu:types|placeholder"
+msgid "Select Statistic Type"
+msgstr "Tfmfdu Tubujtujd Uzqf"
+
+#: src/modules/ranks/ui/config.py:90
+msgctxt "ui:rank_config|menu:types|option:voice"
+msgid "Voice Activity"
+msgstr "Wpjdf Bdujwjuz"
+
+#: src/modules/ranks/ui/config.py:98
+msgctxt "ui:rank_config|menu:types|option:xp"
+msgid "XP Earned"
+msgstr "YQ Fbsofe"
+
+#: src/modules/ranks/ui/config.py:106
+msgctxt "ui:rank_config|menu:types|option:messages"
+msgid "Messages Sent"
+msgstr "Nfttbhft Tfou"
+
+#: src/modules/ranks/ui/config.py:126
+msgctxt "ui:rank_config|menu:channels|placeholder"
+msgid "Select Rank Notification Channel"
+msgstr "Tfmfdu Sbol Opujgjdbujpo Diboofm"
+
+#: src/modules/ranks/ui/config.py:134
+msgctxt "ui:rank_config|embed|title"
+msgid "Ranks Configuration Panel"
+msgstr "Sbolt Dpogjhvsbujpo Qbofm"
+
+#: src/modules/ranks/ui/config.py:171
+msgctxt "dash:rank|title"
+msgid "Rank Configuration ({commands[configure ranks]})"
+msgstr "Sbol Dpogjhvsbujpo ({commands[configure ranks]})"
+
+#: src/modules/ranks/ui/config.py:175
+msgctxt "dash:rank|dropdown|placeholder"
+msgid "Activity Rank Panel"
+msgstr "Bdujwjuz Sbol Qbofm"
+
+#: src/modules/ranks/ui/overview.py:94
+msgctxt "ui:rank_overview|button:auto|label"
+msgid "Auto Create"
+msgstr "Bvup Dsfbuf"
+
+#: src/modules/ranks/ui/overview.py:109
+msgctxt "ui:rank_overview|button:refresh|label"
+msgid "Refresh Member Ranks"
+msgstr "Sfgsfti Nfncfs Sbolt"
+
+#: src/modules/ranks/ui/overview.py:121
+msgctxt "ui:rank_overview|button:clear|confirm"
+msgid "Are you sure you want to **delete all activity ranks** in this server?"
+msgstr ""
+"Bsf zpv tvsf zpv xbou up **efmfuf bmm bdujwjuz sbolt** jo uijt tfswfs?"
+
+#: src/modules/ranks/ui/overview.py:126
+msgctxt "ui:rank_overview|button:clear|confirm|button:yes"
+msgid "Yes, clear ranks"
+msgstr "Zft, dmfbs sbolt"
+
+#: src/modules/ranks/ui/overview.py:132
+msgctxt "ui:rank_overview|button:clear|confirm|button:no"
+msgid "Cancel"
+msgstr "Dbodfm"
+
+#: src/modules/ranks/ui/overview.py:148
+msgctxt "ui:rank_overview|button:clear|label"
+msgid "Clear Ranks"
+msgstr "Dmfbs Sbolt"
+
+#: src/modules/ranks/ui/overview.py:178
+msgctxt "ui:rank_overview|button:create|label"
+msgid "Create Rank"
+msgstr "Dsfbuf Sbol"
+
+#: src/modules/ranks/ui/overview.py:194
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|menu:roles|error:above_caller"
+msgid ""
+"You have insufficient permissions to assign {mention} as a rank role! You "
+"may only manage roles below your top role."
+msgstr ""
+"Zpv ibwf jotvggjdjfou qfsnjttjpot up bttjho {mention} bt b sbol spmf! Zpv "
+"nbz pomz nbobhf spmft cfmpx zpvs upq spmf."
+
+#: src/modules/ranks/ui/overview.py:200
+msgctxt "ui:rank_overview|menu:roles|error:above_caller|title"
+msgid "Insufficient permissions!"
+msgstr "Jotvggjdjfou qfsnjttjpot!"
+
+#: src/modules/ranks/ui/overview.py:233
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:is_default"
+msgid "The @everyone role cannot be removed, and cannot be a rank!"
+msgstr "Uif @fwfszpof spmf dboopu cf sfnpwfe, boe dboopu cf b sbol!"
+
+#: src/modules/ranks/ui/overview.py:238
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:is_managed"
+msgid ""
+"The role is managed by another application or integration, and cannot be a "
+"rank!"
+msgstr ""
+"Uif spmf jt nbobhfe cz bopuifs bqqmjdbujpo ps joufhsbujpo, boe dboopu cf b "
+"sbol!"
+
+#: src/modules/ranks/ui/overview.py:243
+msgctxt ""
+"ui:rank_overview|menu:roles|error:not_assignable|suberror:no_permissions"
+msgid ""
+"I do not have the `MANAGE_ROLES` permission in this server, so I cannot "
+"manage ranks!"
+msgstr ""
+"J ep opu ibwf uif `NBOBHF_SPMFT` qfsnjttjpo jo uijt tfswfs, tp J dboopu "
+"nbobhf sbolt!"
+
+#: src/modules/ranks/ui/overview.py:248
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:above_me"
+msgid ""
+"This role is above my top role in the role hierarchy, so I cannot add or "
+"remove it!"
+msgstr ""
+"Uijt spmf jt bcpwf nz upq spmf jo uif spmf ijfsbsdiz, tp J dboopu bee ps "
+"sfnpwf ju!"
+
+#: src/modules/ranks/ui/overview.py:254
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:other"
+msgid "I am not able to manage the selected role, so it cannot be a rank!"
+msgstr "J bn opu bcmf up nbobhf uif tfmfdufe spmf, tp ju dboopu cf b sbol!"
+
+#: src/modules/ranks/ui/overview.py:260
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|title"
+msgid "Could not create rank!"
+msgstr "Dpvme opu dsfbuf sbol!"
+
+#: src/modules/ranks/ui/overview.py:284
+msgctxt "ui:rank_overview|menu:roles|placeholder"
+msgid "Create from role"
+msgstr "Dsfbuf gspn spmf"
+
+#: src/modules/ranks/ui/overview.py:301
+msgctxt "ui:rank_overview|menu:ranks|placeholder"
+msgid "View or edit rank"
+msgstr "Wjfx ps feju sbol"
+
+#: src/modules/ranks/ui/overview.py:387
+msgctxt "ui:rank_overview|embed|field:note|name"
+msgid "Note"
+msgstr "Opuf"
+
+#: src/modules/ranks/ui/overview.py:393
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|field:note|value:with_season"
+msgid "Ranks are determined by activity since {timestamp}."
+msgstr "Sbolt bsf efufsnjofe cz bdujwjuz tjodf {timestamp}."
+
+#: src/modules/ranks/ui/overview.py:400
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|field:note|value:without_season"
+msgid ""
+"Ranks are determined by *all-time* statistics.\n"
+"To reward ranks from a later time (e.g. to have monthly/quarterly/yearly ranks) set the `season_start` with {stats_cmd}"
+msgstr ""
+"Sbolt bsf efufsnjofe cz *bmm-ujnf* tubujtujdt.\n"
+"Up sfxbse sbolt gspn b mbufs ujnf (f.h. up ibwf npouimz/rvbsufsmz/zfbsmz sbolt) tfu uif `tfbtpo_tubsu` xjui {stats_cmd}"
+
+#: src/modules/ranks/ui/overview.py:407
+msgctxt "ui:rank_overview|embed|field:note|value|voice_addendum"
+msgid ""
+"Also note that ranks will only be updated when a member leaves a tracked "
+"voice channel! Use the **Refresh Member Ranks** button below to update all "
+"members manually."
+msgstr ""
+"Bmtp opuf uibu sbolt xjmm pomz cf vqebufe xifo b nfncfs mfbwft b usbdlfe "
+"wpjdf diboofm! Vtf uif **Sfgsfti Nfncfs Sbolt** cvuupo cfmpx up vqebuf bmm "
+"nfncfst nbovbmmz."
+
+#: src/modules/ranks/ui/overview.py:415
+msgctxt "ui:rank_overview|embed:noranks|desc"
+msgid ""
+"No activity ranks have been set up!\n"
+"Press 'AUTO' to automatically create a standard heirachy of voice | text | xp ranks, or select a role or press Create below!"
+msgstr ""
+"Op bdujwjuz sbolt ibwf cffo tfu vq!\n"
+"Qsftt 'BVUP' up bvupnbujdbmmz dsfbuf b tuboebse ifjsbdiz pg wpjdf | ufyu | yq sbolt, ps tfmfdu b spmf ps qsftt Dsfbuf cfmpx!"
+
+#: src/modules/ranks/ui/overview.py:423
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|title|type:voice"
+msgid "Voice Ranks in {guild_name}"
+msgstr "Wpjdf Sbolt jo {guild_name}"
+
+#: src/modules/ranks/ui/overview.py:428
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|title|type:xp"
+msgid "XP ranks in {guild_name}"
+msgstr "YQ sbolt jo {guild_name}"
+
+#: src/modules/ranks/ui/overview.py:433
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|title|type:message"
+msgid "Message ranks in {guild_name}"
+msgstr "Nfttbhf sbolt jo {guild_name}"
+
+#: src/modules/ranks/ui/editor.py:33
+msgctxt "ui:rank_editor|input:role_name|label"
+msgid "Role Name"
+msgstr "Spmf Obnf"
+
+#: src/modules/ranks/ui/editor.py:37
+msgctxt "ui:rank_editor|input:role_name|placeholder"
+msgid "Name of the awarded guild role"
+msgstr "Obnf pg uif bxbsefe hvjme spmf"
+
+#: src/modules/ranks/ui/editor.py:53
+msgctxt "ui:rank_editor|input:role_colour|label"
+msgid "Role Colour"
+msgstr "Spmf Dpmpvs"
+
+#: src/modules/ranks/ui/editor.py:57
+msgctxt "ui:rank_editor|input:role_colour|placeholder"
+msgid "Colour of the awarded guild role, e.g. #AB1321"
+msgstr "Dpmpvs pg uif bxbsefe hvjme spmf, f.h. #BC1321"
+
+#: src/modules/ranks/ui/editor.py:69
+msgctxt "ui:rank_editor|input:role_colour|error:parse"
+msgid ""
+"`role_colour`: Could not parse colour! Please use `#<hex>` format e.g. "
+"`#AB1325`."
+msgstr ""
+"`spmf_dpmpvs`: Dpvme opu qbstf dpmpvs! Qmfbtf vtf `#<ify>` gpsnbu f.h. "
+"`#BC1325`."
+
+#: src/modules/ranks/ui/editor.py:88
+msgctxt "ui:rank_editor|type:voice|input:requires|label"
+msgid "Required Voice Hours"
+msgstr "Sfrvjsfe Wpjdf Ipvst"
+
+#: src/modules/ranks/ui/editor.py:92
+msgctxt "ui:rank_editor|type:voice|input:requires|placeholder"
+msgid "Number of voice hours before awarding this rank"
+msgstr "Ovncfs pg wpjdf ipvst cfgpsf bxbsejoh uijt sbol"
+
+#: src/modules/ranks/ui/editor.py:97
+msgctxt "ui:rank_editor|type:xp|input:requires|label"
+msgid "Required XP"
+msgstr "Sfrvjsfe YQ"
+
+#: src/modules/ranks/ui/editor.py:101
+msgctxt "ui:rank_editor|type:xp|input:requires|placeholder"
+msgid "Amount of XP needed before obtaining this rank"
+msgstr "Bnpvou pg YQ offefe cfgpsf pcubjojoh uijt sbol"
+
+#: src/modules/ranks/ui/editor.py:106
+msgctxt "ui:rank_editor|type:message|input:requires|label"
+msgid "Required Message Count"
+msgstr "Sfrvjsfe Nfttbhf Dpvou"
+
+#: src/modules/ranks/ui/editor.py:110
+msgctxt "ui:rank_editor|type:message|input:requires|placeholder"
+msgid "Number of messages needed before awarding rank"
+msgstr "Ovncfs pg nfttbhft offefe cfgpsf bxbsejoh sbol"
+
+#: src/modules/ranks/ui/editor.py:126
+msgctxt "ui:rank_editor|type:voice|input:requires|error:parse"
+msgid ""
+"`requires`: Could not parse provided minimum time! Please write a number of "
+"hours."
+msgstr ""
+"`sfrvjsft`: Dpvme opu qbstf qspwjefe njojnvn ujnf! Qmfbtf xsjuf b ovncfs pg "
+"ipvst."
+
+#: src/modules/ranks/ui/editor.py:137
+msgctxt "ui:rank_editor|type:message|input:requires|error:parse"
+msgid ""
+"`requires`: Could not parse provided minimum message count! Please enter an "
+"integer."
+msgstr ""
+"`sfrvjsft`: Dpvme opu qbstf qspwjefe njojnvn nfttbhf dpvou! Qmfbtf foufs bo "
+"joufhfs."
+
+#: src/modules/ranks/ui/editor.py:148
+msgctxt "ui:rank_editor|type:xp|input:requires|error:parse"
+msgid ""
+"`requires`: Could not parse provided minimum XP! Please enter an integer."
+msgstr ""
+"`sfrvjsft`: Dpvme opu qbstf qspwjefe njojnvn YQ! Qmfbtf foufs bo joufhfs."
+
+#: src/modules/ranks/ui/editor.py:162
+msgctxt "ui:rank_editor|input:reward|label"
+msgid "LionCoins awarded upon achieving this rank"
+msgstr "MjpoDpjot bxbsefe vqpo bdijfwjoh uijt sbol"
+
+#: src/modules/ranks/ui/editor.py:166
+msgctxt "ui:rank_editor|input:reward|placeholder"
+msgid "LionCoins awarded upon achieving this rank"
+msgstr "MjpoDpjot bxbsefe vqpo bdijfwjoh uijt sbol"
+
+#: src/modules/ranks/ui/editor.py:181
+msgctxt "ui:rank_editor|input:reward|error:parse"
+msgid "`reward`: Please enter an integer number of LionCoins."
+msgstr "`sfxbse`: Qmfbtf foufs bo joufhfs ovncfs pg MjpoDpjot."
+
+#: src/modules/ranks/ui/editor.py:197
+msgctxt "ui:rank_editor|input:message|label"
+msgid "Rank Message"
+msgstr "Sbol Nfttbhf"
+
+#: src/modules/ranks/ui/editor.py:201
+msgctxt "ui:rank_editor|input:message|placeholder"
+msgid "Congratulatory message sent to the user upon achieving this rank."
+msgstr "Dpohsbuvmbupsz nfttbhf tfou up uif vtfs vqpo bdijfwjoh uijt sbol."
+
+#: src/modules/ranks/ui/editor.py:207
+#, possible-python-brace-format
+msgctxt "ui:rank_editor|input:message|default|type:voice"
+msgid ""
+"Congratulations {user_mention}!\n"
+"For working hard for **{requires}**, you have achieved the rank of **{role_name}** in **{guild_name}**! Keep up the good work."
+msgstr ""
+"Dpohsbuvmbujpot {user_mention}!\n"
+"Gps xpsljoh ibse gps **{requires}**, zpv ibwf bdijfwfe uif sbol pg **{role_name}** jo **{guild_name}**! Lffq vq uif hppe xpsl."
+
+#: src/modules/ranks/ui/editor.py:262
+msgctxt "ui:rank_editor|mode:edit|title"
+msgid "Rank Editor"
+msgstr "Sbol Fejups"
+
+#: src/modules/ranks/ui/editor.py:317
+msgctxt "ui:rank_editor|mode:create|title"
+msgid "Rank Creator"
+msgstr "Sbol Dsfbups"

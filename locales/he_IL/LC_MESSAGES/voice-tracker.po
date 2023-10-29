@@ -1,0 +1,415 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Interitio, 2023
+# Ari Horesh, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-28 22:43+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Ari Horesh, 2023\n"
+"Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: he_IL\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
+
+#: src/tracking/voice/cog.py:640
+msgctxt "cmd:now"
+msgid "now"
+msgstr "עכשיו"
+
+#: src/tracking/voice/cog.py:643
+msgctxt "cmd:now|desc"
+msgid ""
+"Describe what you are working on, or see what your friends are working on!"
+msgstr "תאר על מה אתה עובד כרגע, וצפה מה חבריך עושים!"
+
+#: src/tracking/voice/cog.py:647
+msgctxt "cmd:now|param:tag"
+msgid "tag"
+msgstr "תאג"
+
+#: src/tracking/voice/cog.py:648
+msgctxt "cmd:now|param:user"
+msgid "user"
+msgstr "משתמש"
+
+#: src/tracking/voice/cog.py:649
+msgctxt "cmd:now|param:clear"
+msgid "clear"
+msgstr "נקה"
+
+#: src/tracking/voice/cog.py:654
+msgctxt "cmd:now|param:tag|desc"
+msgid "Describe what you are working on in 10 characters or less!"
+msgstr "תאר על מה אתה עובד ב10 תווים או פחות!"
+
+#: src/tracking/voice/cog.py:658
+msgctxt "cmd:now|param:user|desc"
+msgid "Check what a friend is working on."
+msgstr "בדוק על מה חברים שלך עובדים כרגע."
+
+#: src/tracking/voice/cog.py:662
+msgctxt "cmd:now|param:clear|desc"
+msgid "Unset your activity tag (or the target user's tag, for moderators)."
+msgstr "בטל את התאג פעילות שלך (או ציין תאג של אחד מהמשתמשים אם אתה המנהל)."
+
+#: src/tracking/voice/cog.py:689
+msgctxt "cmd:now|target:self|error:target_inactive"
+msgid ""
+"You have no running session! Join a tracked voice channel to start a "
+"session."
+msgstr "אין לך סשנים שרצים כרגע, הצטרף לערוץ קולי כדי להתחיל את הסשן שלך!"
+
+#: src/tracking/voice/cog.py:698
+#, possible-python-brace-format
+msgctxt "cmd:now|target:other|error:target_inactive"
+msgid "{mention} has no running session!"
+msgstr "ל {mention} אין שום סשן כרגע."
+
+#: src/tracking/voice/cog.py:713
+msgctxt "cmd:now|target:self|mode:clear|success|title"
+msgid "Session Tag Cleared"
+msgstr "תגית הסשן נוקתה"
+
+#: src/tracking/voice/cog.py:717
+msgctxt "cmd:now|target:self|mode:clear|success|desc"
+msgid "Successfully unset your session tag."
+msgstr "ניקיתי את התאגית שלך בהצלחה!"
+
+#: src/tracking/voice/cog.py:726
+msgctxt "cmd:now|target:other|mode:clear|error:perms|title"
+msgid "You can't do that!"
+msgstr "אתה לא יכול לעשות את זה!"
+
+#: src/tracking/voice/cog.py:730
+msgctxt "cmd:now|target:other|mode:clear|error:perms|desc"
+msgid "You need to be a moderator to set or clear someone else's session tag."
+msgstr "אתה צריך להיות מנהל כדי לקבוע או למחוק סשן תאג של מישהו אחר."
+
+#: src/tracking/voice/cog.py:740
+msgctxt "cmd:now|target:other|mode:clear|success|title"
+msgid "Session Tag Cleared!"
+msgstr "תאגית הסשן נוקתה!"
+
+#: src/tracking/voice/cog.py:744
+#, possible-python-brace-format
+msgctxt "cmd:now|target:other|mode:clear|success|desc"
+msgid "Cleared {target}'s session tag."
+msgstr "ניקיתי את התאג של {target}"
+
+#: src/tracking/voice/cog.py:756
+msgctxt "cmd:now|target:self|mode:set|success|title"
+msgid "Session Tag Set!"
+msgstr "תאג לסשן לא נקבע!"
+
+#: src/tracking/voice/cog.py:760
+#, possible-python-brace-format
+msgctxt "cmd:now|target:self|mode:set|success|desc"
+msgid "You are now working on `{new_tag}`. Good luck!"
+msgstr "אתה עובד על `{new_tag}` עכשיו, בהצלחה!"
+
+#: src/tracking/voice/cog.py:769
+msgctxt "cmd:now|target:other|mode:set|error:perms|title"
+msgid "You can't do that!"
+msgstr "אתה לא יכול לעשות את זה!"
+
+#: src/tracking/voice/cog.py:773
+msgctxt "cmd:now|target:other|mode:set|error:perms|desc"
+msgid "You need to be a moderator to set or clear someone else's session tag!"
+msgstr "אתה צריך להיות מנהל כדי לקבוע או למחוק סשן תאג של מישהו אחר."
+
+#: src/tracking/voice/cog.py:783
+msgctxt "cmd:now|target:other|mode:set|success|title"
+msgid "Session Tag Set!"
+msgstr "תאג לסשן לא נקבע!"
+
+#: src/tracking/voice/cog.py:787
+#, possible-python-brace-format
+msgctxt "cmd:now|target:other|mode:set|success|desc"
+msgid "Set {target}'s session tag to `{new_tag}`."
+msgstr "שנה את התאג של {target} אל `{new_tag}`."
+
+#: src/tracking/voice/cog.py:796
+#, possible-python-brace-format
+msgctxt "cmd:now|target:self|mode:show_with_tag|desc"
+msgid "You have been working on **`{tag}`** in {channel} since {time}!"
+msgstr "אתה עובד על  **`{tag}`** בערוץ {channel} במשך {time}!"
+
+#: src/tracking/voice/cog.py:801
+#, possible-python-brace-format
+msgctxt "cmd:now|target:self|mode:show_without_tag|desc"
+msgid ""
+"You have been working in {channel} since {time}!\n"
+"\n"
+"Use `/now <tag>` to set what you are working on."
+msgstr ""
+"אתה עובד ב{channel} במשך {time}!\n"
+"\n"
+" `/now <tag>` כדי להראות לכולם על מה אתה עובד תמשתמש ב."
+
+#: src/tracking/voice/cog.py:808
+#, possible-python-brace-format
+msgctxt "cmd:now|target:other|mode:show_with_tag|desc"
+msgid ""
+"{target} is current working in {channel}!\n"
+"They have been working on **{tag}** since {time}."
+msgstr ""
+"{target} עובד כרגע בערוץ  {channel}!\n"
+"הם עובדים על **{tag}** מאז {time}."
+
+#: src/tracking/voice/cog.py:814
+#, possible-python-brace-format
+msgctxt "cmd:now|target:other|mode:show_without_tag|desc"
+msgid "{target} has been working in {channel} since {time}!"
+msgstr "{target} עובד על  **`{tag}`** בערוץ {channel} במשך {time}!"
+
+#: src/tracking/voice/cog.py:837
+msgctxt "cmd:configure_voice_rates"
+msgid "voice_rewards"
+msgstr "פרס_ערוץ_קולי"
+
+#: src/tracking/voice/cog.py:840
+msgctxt "cmd:configure_voice_rates|desc"
+msgid "Configure Voice tracking rewards and experience"
+msgstr "ערוך מעקב זמנים ונקודות ניסיון"
+
+#: src/tracking/voice/cog.py:897
+#, possible-python-brace-format
+msgctxt "cmd:configure_voice_tracking|mode:voice|resp:success|desc"
+msgid ""
+"Members will now be rewarded {coin}**{base} (+ {bonus})** per hour they "
+"spend (live) in a voice channel, up to a total of **{cap}** hours per server"
+" day."
+msgstr ""
+"משתמשים עכשיו יקבלו {coin}**{base} (+ {bonus})** לכל שעה שהם מבלים בערוץ "
+"קולי, והם לא יוכלו לעבור **{cap}** ביממה. "
+
+#: src/tracking/voice/cog.py:908
+#, possible-python-brace-format
+msgctxt "cmd:configure_voice_tracking|mode:study|resp:success|desc"
+msgid ""
+"Members will now be rewarded {coin}**{base}** per hour of study in this "
+"server, with a bonus of {coin}**{bonus}** if they stream of display video, "
+"up to a total of **{cap}** hours per server day."
+msgstr ""
+"משתמשים יקבלו {coin}**{base}** על כל שעה שהם ילמדו בשרת הזה, עם בונוס של  "
+"{coin}**{bonus}** אם הם פותחים מצלמה או משתפים את המסך שלהם, עם המגבלה של "
+"**{cap}** שעות ביום."
+
+#: src/tracking/voice/settings.py:40
+msgctxt "guildset:untracked_channels"
+msgid "untracked_channels"
+msgstr "ערוצים_לא_נחשבים"
+
+#: src/tracking/voice/settings.py:43
+msgctxt "guildset:untracked_channels|desc"
+msgid "Channels which will be ignored for statistics tracking."
+msgstr "ערוצים שאתעלם מהם כשאעקוב אחרי סטטיסטיקה של אנשים."
+
+#: src/tracking/voice/settings.py:47
+msgctxt "guildset:untracked_channels|long_desc"
+msgid ""
+"Activity in these channels will not count towards a member's statistics. If "
+"a category is selected, all channels under the category will be untracked."
+msgstr ""
+"פעילות בערוצים האלו לא יחשבו בתור זמן בסטטיסטיקות של אנשים. אם קטגוריה "
+"נבחרה, כל הערוצים תחתה לא יחשבו."
+
+#: src/tracking/voice/settings.py:52
+msgctxt "guildset:untracked_channels|accepts"
+msgid "Comma separated list of untracked channel name/ids."
+msgstr "רשימה מופרדת עם פסיקים של הערוצים המוגדרים כערוצים לא נעקבים."
+
+#: src/tracking/voice/settings.py:56
+msgctxt "guildset:untracked_channels|notset"
+msgid "Not Set (all voice channels will be tracked.)"
+msgstr "לא נקבע. (כל הערוצי הקול ייחשבו)"
+
+#: src/tracking/voice/settings.py:73
+msgctxt "guildset:untracked_channels|set"
+msgid "Channel selector below."
+msgstr "בחירת ערוצים בתחתית."
+
+#: src/tracking/voice/settings.py:82
+#, possible-python-brace-format
+msgctxt "guildset:untracked_channels|set_response|set"
+msgid "Activity in the following channels will now be ignored: {channels}"
+msgstr "פעילות בערוצים הבאים יתעלמו על ידי: {channels}"
+
+#: src/tracking/voice/settings.py:89
+msgctxt "guildset:untracked_channels|set_response|unset"
+msgid "All voice channels will now be tracked."
+msgstr "כל שרתי הקול עכשיו יחשבו לסטטיסטיקה."
+
+#: src/tracking/voice/settings.py:117
+msgctxt "guildset:hourly_reward"
+msgid "hourly_reward"
+msgstr "פרס_שעתי"
+
+#: src/tracking/voice/settings.py:120
+msgctxt "guildset:hourly_reward|mode:voice|desc"
+msgid "LionCoins given per hour in a voice channel."
+msgstr "מטבעות שניתנות עבור כל שעה בערוץ קול."
+
+#: src/tracking/voice/settings.py:124
+msgctxt "guildset:hourly_reward|mode:voice|long_desc"
+msgid ""
+"Number of LionCoins to each member per hour that they stay in a tracked "
+"voice channel."
+msgstr "מספר מטבעות שכל משתמש יקבל בשעה כשהוא נשאר בערוץ קולי."
+
+#: src/tracking/voice/settings.py:128
+msgctxt "guildset:hourly_reward|accepts"
+msgid "Number of coins to reward per hour in voice."
+msgstr "מספר מטבעות שמשתמש יקבל כל שעה בערוץ קול."
+
+#: src/tracking/voice/settings.py:144
+#, possible-python-brace-format
+msgctxt "guildset:hourly_reward|formatted"
+msgid "{coin}**{amount}** per hour."
+msgstr "{coin}**{amount}** לשעה."
+
+#: src/tracking/voice/settings.py:159
+#, possible-python-brace-format
+msgctxt "guildset:hourly_reward|mode:voice|response"
+msgid "Members will be given {coin}**{amount}** per hour in a voice channel!"
+msgstr "משתמשים יקבלו {coin}**{amount}** כל שעה בערוץ קולי!"
+
+#: src/tracking/voice/settings.py:171
+msgctxt "guildset:hourly_reward|mode:study|desc"
+msgid "LionCoins given per hour of study."
+msgstr "מטבעות שניתנות עבור כל שעה של למידה."
+
+#: src/tracking/voice/settings.py:175
+msgctxt "guildset:hourly_reward|mode:study|long_desc"
+msgid "Number of LionCoins given per hour of study, up to the daily hour cap."
+msgstr "מספר מטבעות שיקבלו כל שעת למידה בערוץ קולי עד המגבלה."
+
+#: src/tracking/voice/settings.py:183
+#, possible-python-brace-format
+msgctxt "guildset:hourly_reward|mode:study|response"
+msgid "Members will be given {coin}**{amount}** per hour that they study!"
+msgstr "משתמשים יקבלו {coin}**{amount}** כל שעה שהם ילמדו בערוץ קולי!"
+
+#: src/tracking/voice/settings.py:197
+msgctxt "guildset:hourly_live_bonus"
+msgid "hourly_live_bonus"
+msgstr "בונוס_שעתי_מצלמה"
+
+#: src/tracking/voice/settings.py:200
+msgctxt "guildset:hourly_live_bonus|desc"
+msgid "Bonus Lioncoins given per hour when a member streams or video-chats."
+msgstr "בונוס שעתי שמשתמש מקבל כאשר הוא משתמש במצלמה או משתף מסך. "
+
+#: src/tracking/voice/settings.py:205
+msgctxt "guildset:hourly_live_bonus|long_desc"
+msgid ""
+"When a member streams or video-chats in a channel they will be given this "
+"bonus *additionally* to the `hourly_reward`."
+msgstr ""
+"כאשר משתמש פותח מצלמה או משתף מסך הם יקבלו את הבונוס הזה בנוסף למה שהם עושים"
+" כל שעה."
+
+#: src/tracking/voice/settings.py:210
+msgctxt "guildset:hourly_live_bonus|accepts"
+msgid "Number of bonus coins to reward per hour when live."
+msgstr ""
+"מספר מטבעות שמשתמש יקבל כל שעה בערוץ קול כשהם פותחים מצלמה או משתפים מסך."
+
+#: src/tracking/voice/settings.py:226
+#, possible-python-brace-format
+msgctxt "guildset:hourly_live_bonus|formatted"
+msgid "{coin}**{amount}** bonus per hour when live."
+msgstr "{coin}**{amount}** לשעה כשמשתמש פותח מצלמה או משתף מסך."
+
+#: src/tracking/voice/settings.py:237
+#, possible-python-brace-format
+msgctxt "guildset:hourly_live_bonus|response"
+msgid ""
+"Live members will now *additionally* be given {coin}**{amount}** per hour."
+msgstr "משתמשים שמשתפים מדיה יקבלו עכשיו {coin}**{amount}** כל שעה."
+
+#: src/tracking/voice/settings.py:248
+msgctxt "guildset:daily_voice_cap"
+msgid "daily_voice_cap"
+msgstr "מגבלת_מטבעות_יומית"
+
+#: src/tracking/voice/settings.py:251
+msgctxt "guildset:daily_voice_cap|desc"
+msgid "Maximum number of hours per day to count for each member."
+msgstr "מספר מקסימלי של שעות ביום שיחשבו לכל משתמש."
+
+#: src/tracking/voice/settings.py:255
+msgctxt "guildset:daily_voice_cap|long_desc"
+msgid ""
+"Time spend in voice channels over this amount will not be tracked towards "
+"the member's statistics. Tracking will resume at the start of the next day. "
+"The start of the day is determined by the configured guild timezone."
+msgstr ""
+"זמן שיעבור אחרי המגלבה הזו לא יחשב בסטטיסטקות של אנשים. אני אחזור לעקוב "
+"אחריהם יום אחרי, בחצות. "
+
+#: src/tracking/voice/settings.py:261
+msgctxt "guildset:daily_voice_cap|accepts"
+msgid "The maximum number of voice hours to track per day."
+msgstr "מספר השעון המקסימלי שאעקוב אחריו כל יממה."
+
+#: src/tracking/voice/settings.py:277
+#, possible-python-brace-format
+msgctxt "guildset:daily_voice_cap|response"
+msgid ""
+"Members will be tracked for at most {duration} per day. (**NOTE:** This will"
+" not affect members currently in voice channels.)"
+msgstr ""
+"משתמשים יעקבו לתקופה של מקסימום  {duration} ביום. וזה לא ישפיע על אנשים "
+"שכרגע לומדים בחדרים."
+
+#: src/tracking/voice/settings.py:335
+msgctxt "ui:voice_tracker_config|button:close|label"
+msgid "Close"
+msgstr "סגור"
+
+#: src/tracking/voice/settings.py:349
+msgctxt "ui:voice_tracker_config|button:reset|label"
+msgid "Reset"
+msgstr "אפס"
+
+#: src/tracking/voice/settings.py:362
+msgctxt "ui:voice_tracker_config|menu:untracked_channels|placeholder"
+msgid "Set Untracked Channels"
+msgstr "בחר ערוצים ללא מעקב"
+
+#: src/tracking/voice/settings.py:428 src/tracking/voice/settings.py:482
+msgctxt "ui:voice_tracker_config|mode:voice|embed|title"
+msgid "Voice Tracker Configuration Panel"
+msgstr "תפריט הגדרות ערוצי מצלמה"
+
+#: src/tracking/voice/settings.py:433 src/tracking/voice/settings.py:487
+msgctxt "ui:voice_tracker_config|mode:study|embed|title"
+msgid "Study Tracker Configuration Panel"
+msgstr "תפריט הגדרות ערוצי לימודים"
+
+#: src/tracking/voice/settings.py:472
+msgctxt "ui:voice_tracker_config|menu:untracked_channels|placeholder"
+msgid "Select Untracked Channels"
+msgstr "בחר ערוצים ללא מעקב"
+
+#: src/tracking/voice/settings.py:528
+msgctxt "dash:voice_tracker|title"
+msgid "Voice Tracker Configuration ({commands[configure voice_rewards]})"
+msgstr "הגדרות מעקב קולי ({commands[configure voice_rewards]})"
+
+#: src/tracking/voice/settings.py:532
+msgctxt "dash:voice_tracking|dropdown|placeholder"
+msgid "Voice Activity Panel"
+msgstr "תפריט פעילות חדרי קול"

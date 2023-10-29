@@ -1,0 +1,90 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: you@example.com\n"
+"POT-Creation-Date: 2007-10-18 14:00+0100\n"
+"PO-Revision-Date: 2007-10-18 14:00+0100\n"
+"Last-Translator: you <you@example.com>\n"
+"Language-Team: English <yourteam@example.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/wards.py:79
+msgctxt "ward:sys_admin|failed"
+msgid "You must be a bot owner to do this!"
+msgstr "Zpv nvtu cf b cpu pxofs up ep uijt!"
+
+#: src/wards.py:95
+msgctxt "ward:high_management|failed"
+msgid ""
+"You must have the `ADMINISTRATOR` permission in this server to do this!"
+msgstr ""
+"Zpv nvtu ibwf uif `BENJOJTUSBUPS` qfsnjttjpo jo uijt tfswfs up ep uijt!"
+
+#: src/wards.py:111
+msgctxt "ward:low_management|failed"
+msgid "You must have the `MANAGE_GUILD` permission in this server to do this!"
+msgstr ""
+"Zpv nvtu ibwf uif `NBOBHF_HVJME` qfsnjttjpo jo uijt tfswfs up ep uijt!"
+
+#: src/wards.py:123
+msgctxt "ward:moderator|failed"
+msgid ""
+"You must have the configured moderator role, or `MANAGE_GUILD` permissions "
+"to do this."
+msgstr ""
+"Zpv nvtu ibwf uif dpogjhvsfe npefsbups spmf, ps `NBOBHF_HVJME` qfsnjttjpot "
+"up ep uijt."
+
+#: src/wards.py:149
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:bot_managed"
+msgid "I cannot manage {role} because it is managed by another bot!"
+msgstr "J dboopu nbobhf {role} cfdbvtf ju jt nbobhfe cz bopuifs cpu!"
+
+#: src/wards.py:156
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:integration"
+msgid "I cannot manage {role} because it is managed by a server integration."
+msgstr "J dboopu nbobhf {role} cfdbvtf ju jt nbobhfe cz b tfswfs joufhsbujpo."
+
+#: src/wards.py:163
+msgctxt "ward:equippable_role|error:default_role"
+msgid "I cannot manage the server's default role."
+msgstr "J dboopu nbobhf uif tfswfs't efgbvmu spmf."
+
+#: src/wards.py:170
+msgctxt "ward:equippable_role|error:no_perms"
+msgid "I need the `MANAGE_ROLES` permission before I can manage roles!"
+msgstr "J offe uif `NBOBHF_SPMFT` qfsnjttjpo cfgpsf J dbo nbobhf spmft!"
+
+#: src/wards.py:177
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:my_top_role"
+msgid "I cannot assign or remove {role} because it is above my top role!"
+msgstr "J dboopu bttjho ps sfnpwf {role} cfdbvtf ju jt bcpwf nz upq spmf!"
+
+#: src/wards.py:184
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:not_assignable"
+msgid "I don't have sufficient permissions to assign or remove {role}."
+msgstr "J epo'u ibwf tvggjdjfou qfsnjttjpot up bttjho ps sfnpwf {role}."
+
+#: src/wards.py:192
+msgctxt "ward:equippable_role|error:actor_perms"
+msgid "You need the `MANAGE_ROLES` permission before you can configure roles!"
+msgstr ""
+"Zpv offe uif `NBOBHF_SPMFT` qfsnjttjpo cfgpsf zpv dbo dpogjhvsf spmft!"
+
+#: src/wards.py:199
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:actor_top_role"
+msgid "You cannot configure {role} because it is above your top role!"
+msgstr "Zpv dboopu dpogjhvsf {role} cfdbvtf ju jt bcpwf zpvs upq spmf!"

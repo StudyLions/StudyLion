@@ -1,0 +1,146 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Interitio, 2023
+# Ari Horesh, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-13 08:47+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Ari Horesh, 2023\n"
+"Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: he_IL\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
+
+#: src/modules/meta/cog.py:23
+msgctxt "cmd:help"
+msgid "help"
+msgstr "עזרה"
+
+#: src/modules/meta/cog.py:26
+msgctxt "cmd:help|desc"
+msgid "See a brief summary of my commands and features."
+msgstr "ראה הסבר קצר של רשימת הפקודות שלי!"
+
+#: src/modules/meta/help_sections.py:40
+#, possible-python-brace-format
+msgctxt "helptext|level:member|mode:study"
+msgid ""
+"\n"
+"    {config_emoji} Personal Configuration\n"
+"    *View or adjust personal settings with the {cmd_my} command.*\n"
+"    {cmd_my_timezone}: Timezone used to display your stats and set reminders.\n"
+"    {cmd_my_language}: Your preferred language for commands and interactions.\n"
+"\n"
+"\n"
+"    {stats_emoji} Statistics\n"
+"    *Study in voice channels to earn activity ranks and compete on the leaderboard!*\n"
+"    {cmd_me}: View your personal study profile and set your profile tags.\n"
+"    {cmd_stats}: View study statistics for the current and past weeks or months.\n"
+"    {cmd_ranks}: See the list of activity ranks.\n"
+"    {cmd_leaderboard}: Compete with other members on the server leaderboards.\n"
+"\n"
+"\n"
+"    {coin} Economy\n"
+"    *Earn coins through studying, then spend them on some well deserved rewards!*\n"
+"    {cmd_send}: Send your {coin} to another member.\n"
+"    {cmd_shop}: Purchase server roles with your {coin}.\n"
+"    {cmd_room}: Rent a private voice channel for you and your friends.\n"
+"\n"
+"\n"
+"    {utility_emoji} Utilities\n"
+"    *Some other utilities to help you stay productive while studying!*\n"
+"    {cmd_reminders}: Ask me to remind you about that important task!\n"
+"    {cmd_tasklist}: Create tasks and feel the satisfaction of checking them off.\n"
+"    {cmd_timers}: Stay productive using the classic *pomodoro technique*!\n"
+"    {cmd_schedule}: Schedule a shared study session and keep yourself accountable!\n"
+"    "
+msgstr ""
+"\n"
+"    {config_emoji} לוח בקרה אישי\n"
+"    {cmd_my} פתיחת התפריט האישי שלכם.\n"
+"    {cmd_my_timezone}: ניהול וקביעת אזור זמן.\n"
+"    {cmd_my_language}: ניהול וקביעת שפה אישית של התפריטים.\n"
+"\n"
+"\n"
+"    {stats_emoji} סטטיסטיקות\n"
+"    *הצטרף לערוץ קולי בזמן שאתה לומד על מנת לעקוב אחרי זמן הלמידה שלך!*\n"
+"    {cmd_me}: צפו בפרופיל האישי שלכם ובכרטיס הלימוד!\n"
+"    {cmd_stats}: בדקו את הסטטיסטיקות היומיות והחודשיות שלכם.\n"
+"    {cmd_ranks}: צפו בדרגות הזמינות בשרת הזה.\n"
+"    {cmd_leaderboard}: בדקו את ההשיגים שלכם ביחד לחברי השרת והקהילה העולמית!\n"
+"\n"
+"\n"
+"    {coin} כלכלה\n"
+"    *מרוויחים מטבעות על ידי למידה, שליחת הודעות, ותרומה לקהילה!*\n"
+"    {cmd_send}: שלח מטבעות לחבר!\n"
+"    {cmd_shop}: קנו רולים שונים וצבעים שהשרת הזה מציע!\n"
+"    {cmd_room}: צור חדר פרטי לך ולחבריך!\n"
+"\n"
+"\n"
+"    {utility_emoji} כלים שימושיים\n"
+"    *כלים שעוזרים לכם להיות יותר פרודקטיביים!*\n"
+"    {cmd_reminders}: בקש ממני להזכיר לך משהו חשוב!\n"
+"    {cmd_tasklist}: צור ונהל את רשימת המטלות שלך\n"
+"    {cmd_timers}: השתמש בטיימרים שונים ביחד עם אנשים (פומודורו)\n"
+"    {cmd_schedule}: קבע שעה ספציפית להיפגש ללמוד ביחד עם כמה חברים!\n"
+"    "
+
+#: src/modules/meta/help_sections.py:73
+#, possible-python-brace-format
+msgctxt "helptext|page:admin"
+msgid ""
+"\n"
+"    Use {cmd_dashboard} to see an overview of the server configuration,     and quickly jump to the feature configuration panels to modify settings.\n"
+"\n"
+"    Configuration panels are also accessible directly through the `/configure` commands     and most features may be configured through these commands.\n"
+"\n"
+"    Other relevant commands for guild configuration below:\n"
+"    `/editshop`: Add/Edit/Remove colour roles from the {coin} shop.\n"
+"    `/ranks`: Add/Edit/Refresh/Remove activity ranks.\n"
+"    `/pomodoro`: Add/Edit/Remove Pomodoro timers in voice channels.\n"
+"    `/rolemenus`: Allow members to equip roles from customisable messages.\n"
+"    `/economy balance`: Display and modify LionCoin balance for members and roles.\n"
+"    "
+msgstr ""
+"\n"
+"השתמש ב {cmd_dashboard} כדי לראות תיאור מקוצר של כל ההגדרות של הערוץ ובכדי לקפוץ לתפריטים השונים. \n"
+"\n"
+"התפריטים נגישים גם על ידי הפקודות הישירות, לדוגמא `/configure`\n"
+"\n"
+"עוד פקודות חשובות יוכלו להימצא פה:\n"
+" `/editshop`: כדי לשלוט בחנות צבעים של השרת.\n"
+" `/ranks`: כדי להכין דרגות עבור אנשים בשרת.\n"
+"`/timer admin`: כדי להכין טיימרים בשרת.\n"
+" `/rolemenus`: כדי להכין הודעות שאנשים יוכלו ללחוץ עליהן ולקבל רולים שונים.\n"
+"`/economy balance`: לשלוח במטבעות ובכלכלת השרת."
+
+#: src/modules/meta/help_sections.py:112
+msgctxt "helptext|level:member|title"
+msgid "Command Summary (for members)"
+msgstr "סיכום פקודות (עבור משתמשים)"
+
+#: src/modules/meta/help_sections.py:140
+msgctxt "helptext|level:admin|title"
+msgid "Command Summary (for server admins)"
+msgstr "סיכום פקודות (עבור אדמינים)"
+
+#: src/modules/meta/helpui.py:47
+msgctxt "ui:help|button:member_page|label"
+msgid "Member Page"
+msgstr "עמוד למשתמשים רגילים"
+
+#: src/modules/meta/helpui.py:59
+msgctxt "ui:help|button:admin_page|label"
+msgid "Admin Page"
+msgstr "עמוד לאדמינים"

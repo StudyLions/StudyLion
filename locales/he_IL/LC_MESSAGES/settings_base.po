@@ -1,0 +1,232 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Interitio, 2023
+# Ari Horesh, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-01 16:01+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Ari Horesh, 2023\n"
+"Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: he_IL\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
+
+#: src/settings/ui.py:179
+msgctxt "setting|formatted|notset"
+msgid "Not Set"
+msgstr "לא נקבע."
+
+#: src/settings/ui.py:320
+msgctxt "setting|embed_field|too_long"
+msgid "Too long to display here!"
+msgstr ""
+
+#: src/settings/ui.py:354
+#, possible-python-brace-format
+msgctxt "setting|summary_embed|title"
+msgid "Configuration options for `{name}`"
+msgstr "הגדרות של `{name}`."
+
+#: src/settings/ui.py:366
+msgctxt "setting|summary_table|field:currently|key"
+msgid "Currently"
+msgstr "כרגע"
+
+#: src/settings/ui.py:373
+msgctxt "setting|summary_table|field:default|key"
+msgid "By Default"
+msgstr "כברירת מחדל"
+
+#: src/settings/ui.py:380
+msgctxt "setting|summary_table|field:set|key"
+msgid "Set Using"
+msgstr "בחר באמצעות"
+
+#: src/settings/setting_types.py:48
+msgctxt "settype:string|accepts"
+msgid "Any Text"
+msgstr "כל טקסט"
+
+#: src/settings/setting_types.py:89
+#, possible-python-brace-format
+msgctxt "settype:string|error"
+msgid "Provided string is too long! Maximum length: {maxlen} characters."
+msgstr "הטקסט שהבאת לי ארוך מידי! אורך מקסימלי: {maxlen} תווים."
+
+#: src/settings/setting_types.py:114
+msgctxt "settype:emoji|accepts"
+msgid "Paste a builtin emoji, custom emoji, or emoji id."
+msgstr "הדבק אימוג'י או מספר זהות של אחד."
+
+#: src/settings/setting_types.py:167
+#, possible-python-brace-format
+msgctxt "settype:emoji|error:parse"
+msgid ""
+"Could not parse `{provided}` as a Discord emoji. Supported formats are "
+"builtin emojis (e.g. `{builtin}`), custom emojis (e.g. {custom}), or custom "
+"emoji ids (e.g. `{custom_id}`)."
+msgstr ""
+"לא הצלחתי להבין את `{provided}` כאמוג'י. אני תומך רק באמוג'ים של דיסקורד, "
+"שיש לכם בשרת, או במספר מזהה של אימוג'י ספציפי משרת אחד שאני נמצא בו."
+
+#: src/settings/setting_types.py:236
+msgctxt "settype:channel|accepts"
+msgid "A channel name or id"
+msgstr "שם ערוץ או מספר הזהות שלו"
+
+#: src/settings/setting_types.py:282
+#, possible-python-brace-format
+msgctxt "settype:channel|parse|error:not_found"
+msgid "Channel `{string}` could not be found in this guild!"
+msgstr "הערוץ `{string}` לא נמצא בשרת הזה."
+
+#: src/settings/setting_types.py:368
+msgctxt "settype:role|accepts"
+msgid "A role name or id"
+msgstr "שם רול או מספר הזהות שלו"
+
+#: src/settings/setting_types.py:430
+#, possible-python-brace-format
+msgctxt "settype:role|parse|error:not_found"
+msgid "Role `{string}` could not be found in this guild!"
+msgstr "הרול `{string}` לא נמצא בשרת הזה."
+
+#: src/settings/setting_types.py:495
+msgctxt "settype:bool|accepts"
+msgid "Enabled/Disabled"
+msgstr "הפעל/כבה"
+
+#: src/settings/setting_types.py:500
+msgctxt "settype:bool|parse:truthy_values"
+msgid "enabled|yes|true|on|enable|1"
+msgstr "מופעל/כן/נכון/דלוק/הפעל/1"
+
+#: src/settings/setting_types.py:504
+msgctxt "settype:bool|parse:falsey_values"
+msgid "disabled|no|false|off|disable|0"
+msgstr "כבוי/לא/לאנכון/כבוי/מנוטרל/0"
+
+#: src/settings/setting_types.py:509
+msgctxt "settype:bool|output:true"
+msgid "On"
+msgstr "דלוק"
+
+#: src/settings/setting_types.py:510
+msgctxt "settype:bool|output:false"
+msgid "Off"
+msgstr "כבוי"
+
+#: src/settings/setting_types.py:511
+msgctxt "settype:bool|output:none"
+msgid "Not Set"
+msgstr "לא נקבע."
+
+#: src/settings/setting_types.py:622
+msgctxt "settype:integer|accepts"
+msgid "An integer"
+msgstr "מספר שלם"
+
+#: src/settings/setting_types.py:685
+msgctxt "settype:emoji|desc"
+msgid "Unicode or custom emoji"
+msgstr "אוניקוד לאמוג'י "
+
+#: src/settings/setting_types.py:757
+msgctxt "settype:guildid|accepts"
+msgid "Any Snowflake ID"
+msgstr "Any Snowflake ID"
+
+#: src/settings/setting_types.py:826
+msgctxt "settype:timezone|accepts"
+msgid "A timezone name from the 'tz database' (e.g. 'Europe/London')"
+msgstr "אזור זמן מהארכיון של \"tz\" (לדוגמא 'Europe/London')"
+
+#: src/settings/setting_types.py:896
+msgctxt "settype:timezone|summary_table|field:supported|key"
+msgid "Supported"
+msgstr "נתמך"
+
+#: src/settings/setting_types.py:900
+#, possible-python-brace-format
+msgctxt "settype:timezone|summary_table|field:supported|value"
+msgid "Any timezone from the [tz database]({link})."
+msgstr "כל אזור זמן מפה [tz database]({link})."
+
+#: src/settings/setting_types.py:917
+#, possible-python-brace-format
+msgctxt "set_type:timezone|acmpl|no_matching"
+msgid "No timezones matching '{input}'!"
+msgstr "אין אזורי זמן שמתאימים ל'{input}'!"
+
+#: src/settings/setting_types.py:930
+#, possible-python-brace-format
+msgctxt "set_type:timezone|acmpl|choice"
+msgid "{tz} (Currently {now})"
+msgstr "{tz} (כרגע {now})"
+
+#: src/settings/setting_types.py:960
+msgctxt "settype:timestamp|accepts"
+msgid "A timestamp in the form YYYY-MM-DD HH:MM"
+msgstr "אנא השתמשו בYYYY-MM-DD HH:MM"
+
+#: src/settings/setting_types.py:989
+#, possible-python-brace-format
+msgctxt "settype:timestamp|parse|error:invalid"
+msgid ""
+"Could not parse `{provided}` as a timestamp. Please use `YYYY-MM-DD HH:MM` "
+"format."
+msgstr ""
+"לא הצלחתי להבין את  `{provided}`, אנא השתמש בפורמט `YYYY-MM-DD HH:MM` "
+"format."
+
+#: src/settings/setting_types.py:1020
+msgctxt "settype:raw|accepts"
+msgid "Anything"
+msgstr "כל אופציה"
+
+#: src/settings/setting_types.py:1073
+msgctxt "settype:enum|accepts"
+msgid "A valid option."
+msgstr "אופציה שעובדת."
+
+#: src/settings/setting_types.py:1123
+#, possible-python-brace-format
+msgctxt "settype:enum|parse|error:not_found"
+msgid "`{provided}` is not a valid option!"
+msgstr "`{provided}` אינו אופציה שעובדת!"
+
+#: src/settings/setting_types.py:1171
+msgctxt "settype:duration|accepts"
+msgid "A number of days, hours, minutes, and seconds, e.g. `2d 4h 10s`."
+msgstr "מספר ימים, שעות, דקות ושניות באנגלית, לדוגמא: `2d 4h 10s`."
+
+#: src/settings/setting_types.py:1352
+msgctxt "settype:channel_list|accepts"
+msgid "Comma separated list of channel ids."
+msgstr "תעודת זהות של ערוצים מופרדים באמצעות פסיק."
+
+#: src/settings/setting_types.py:1363
+msgctxt "settype:role_list|accepts"
+msgid "Comma separated list of role ids."
+msgstr "תעודת זהות של רולים מופרדים באמצעות פסיק."
+
+#: src/settings/setting_types.py:1379
+msgctxt "settype:stringlist|accepts"
+msgid "Comma separated strings."
+msgstr "טקסטים מופרדים באמצעות פסיק."
+
+#: src/settings/setting_types.py:1390
+msgctxt "settype:guildidlist|accepts"
+msgid "Comma separated list of guild ids."
+msgstr "תעודת זהות של שרתים מופרדים באמצעות פסיק."

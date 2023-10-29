@@ -1,0 +1,735 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: you@example.com\n"
+"POT-Creation-Date: 2007-10-18 14:00+0100\n"
+"PO-Revision-Date: 2007-10-18 14:00+0100\n"
+"Last-Translator: you <you@example.com>\n"
+"Language-Team: English <yourteam@example.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/modules/statistics/cog.py:42
+msgctxt "cmd:me"
+msgid "me"
+msgstr "nf"
+
+#: src/modules/statistics/cog.py:45
+msgctxt "cmd:me|desc"
+msgid "Display your personal profile and summary statistics."
+msgstr "Ejtqmbz zpvs qfstpobm qspgjmf boe tvnnbsz tubujtujdt."
+
+#: src/modules/statistics/cog.py:55
+msgctxt "cmd:stats"
+msgid "stats"
+msgstr "tubut"
+
+#: src/modules/statistics/cog.py:58
+msgctxt "cmd:stats|desc"
+msgid "Weekly and monthly statistics for your recent activity."
+msgstr "Xfflmz boe npouimz tubujtujdt gps zpvs sfdfou bdujwjuz."
+
+#: src/modules/statistics/cog.py:71
+msgctxt "cmd:leaderboard"
+msgid "leaderboard"
+msgstr "mfbefscpbse"
+
+#: src/modules/statistics/cog.py:74
+msgctxt "cmd:leaderboard|desc"
+msgid "Server leaderboard."
+msgstr "Tfswfs mfbefscpbse."
+
+#: src/modules/statistics/cog.py:89
+#, possible-python-brace-format
+msgctxt "cmd:leaderboard|chunking|desc"
+msgid "Requesting server member list from Discord, please wait {loading}"
+msgstr "Sfrvftujoh tfswfs nfncfs mjtu gspn Ejtdpse, qmfbtf xbju {loading}"
+
+#: src/modules/statistics/cog.py:108
+msgctxt "cmd:configure_statistics"
+msgid "statistics"
+msgstr "tubujtujdt"
+
+#: src/modules/statistics/cog.py:109
+msgctxt "cmd:configure_statistics|desc"
+msgid "Statistics configuration panel"
+msgstr "Tubujtujdt dpogjhvsbujpo qbofm"
+
+#: src/modules/statistics/cog.py:112
+msgctxt "cmd:configure_statistics|param:season_start"
+msgid "season_start"
+msgstr "tfbtpo_tubsu"
+
+#: src/modules/statistics/cog.py:117
+msgctxt "cmd:configure_statistics|param:season_start|desc"
+msgid ""
+"Time from which to start counting activity for rank badges and season "
+"leaderboards. (YYYY-MM-DD)"
+msgstr ""
+"Ujnf gspn xijdi up tubsu dpvoujoh bdujwjuz gps sbol cbehft boe tfbtpo "
+"mfbefscpbset. (ZZZZ-NN-EE)"
+
+#: src/modules/statistics/settings.py:37
+msgctxt "settype:stat|output:voice"
+msgid "`Voice`"
+msgstr "`Wpjdf`"
+
+#: src/modules/statistics/settings.py:38
+msgctxt "settype:stat|output:text"
+msgid "`Text`"
+msgstr "`Ufyu`"
+
+#: src/modules/statistics/settings.py:39
+msgctxt "settype:stat|output:anki"
+msgid "`Anki`"
+msgstr "`Bolj`"
+
+#: src/modules/statistics/settings.py:42
+msgctxt "settype:stat|input_format:voice"
+msgid "Voice"
+msgstr "Wpjdf"
+
+#: src/modules/statistics/settings.py:43
+msgctxt "settype:stat|input_format:text"
+msgid "Text"
+msgstr "Ufyu"
+
+#: src/modules/statistics/settings.py:44
+msgctxt "settype:stat|input_format:anki"
+msgid "Anki"
+msgstr "Bolj"
+
+#: src/modules/statistics/settings.py:47
+msgctxt "settype:stat|input_pattern:voice"
+msgid "voice|study"
+msgstr "wpjdf|tuvez"
+
+#: src/modules/statistics/settings.py:48
+msgctxt "settype:stat|input_pattern:text"
+msgid "text|messages"
+msgstr "ufyu|nfttbhft"
+
+#: src/modules/statistics/settings.py:49
+msgctxt "settype:stat|input_pattern:anki"
+msgid "anki"
+msgstr "bolj"
+
+#: src/modules/statistics/settings.py:53
+msgctxt "settype:state|accepts"
+msgid "Voice/Text/Anki"
+msgstr "Wpjdf/Ufyu/Bolj"
+
+#: src/modules/statistics/settings.py:66
+msgctxt "userset:show_global_stats"
+msgid "global_stats"
+msgstr "hmpcbm_tubut"
+
+#: src/modules/statistics/settings.py:69
+msgctxt "userset:show_global_stats|desc"
+msgid "Whether displayed statistics include all your servers."
+msgstr "Xifuifs ejtqmbzfe tubujtujdt jodmvef bmm zpvs tfswfst."
+
+#: src/modules/statistics/settings.py:73
+msgctxt "userset:show_global_stats|long_desc"
+msgid ""
+"Whether statistics commands display combined stats for all servers or just "
+"your current server."
+msgstr ""
+"Xifuifs tubujtujdt dpnnboet ejtqmbz dpncjofe tubut gps bmm tfswfst ps kvtu "
+"zpvs dvssfou tfswfs."
+
+#: src/modules/statistics/settings.py:88
+msgctxt "guildset:season_start"
+msgid "season_start"
+msgstr "tfbtpo_tubsu"
+
+#: src/modules/statistics/settings.py:91
+msgctxt "guildset:season_start|desc"
+msgid "Start of the current statistics season."
+msgstr "Tubsu pg uif dvssfou tubujtujdt tfbtpo."
+
+#: src/modules/statistics/settings.py:95
+msgctxt "guildset:season_start|long_desc"
+msgid ""
+"Activity ranks will be determined based on tracked activity since this time, and the leaderboard will display activity since this time by default. Unset to disable seasons and use all-time statistics instead.\n"
+"Provided dates and times are assumed to be in the guild `timezone`, so set this first!"
+msgstr ""
+"Bdujwjuz sbolt xjmm cf efufsnjofe cbtfe po usbdlfe bdujwjuz tjodf uijt ujnf, boe uif mfbefscpbse xjmm ejtqmbz bdujwjuz tjodf uijt ujnf cz efgbvmu. Votfu up ejtbcmf tfbtpot boe vtf bmm-ujnf tubujtujdt jotufbe.\n"
+"Qspwjefe ebuft boe ujnft bsf bttvnfe up cf jo uif hvjme `ujnfapof`, tp tfu uijt gjstu!"
+
+#: src/modules/statistics/settings.py:102
+msgctxt "guildset:season_start|accepts"
+msgid "The season start time in the form YYYY-MM-DD HH:MM"
+msgstr "Uif tfbtpo tubsu ujnf jo uif gpsn ZZZZ-NN-EE II:NN"
+
+#: src/modules/statistics/settings.py:106
+msgctxt "guildset:season_start|notset"
+msgid "Not Set (Using all-time statistics)"
+msgstr "Opu Tfu (Vtjoh bmm-ujnf tubujtujdt)"
+
+#: src/modules/statistics/settings.py:125
+#, possible-python-brace-format
+msgctxt "guildset:season_start|parse|error:future_time"
+msgid "Provided season start time {timestamp} is in the future!"
+msgstr "Qspwjefe tfbtpo tubsu ujnf {timestamp} jt jo uif gvuvsf!"
+
+#: src/modules/statistics/settings.py:137
+#, possible-python-brace-format
+msgctxt "guildset:season_start|set_response|set"
+msgid ""
+"The leaderboard season and activity ranks will now count from {timestamp}. Member ranks will update when they are next active.\n"
+"Use {rank_cmd} and press **Refresh Member Ranks** to refresh all ranks immediately."
+msgstr ""
+"Uif mfbefscpbse tfbtpo boe bdujwjuz sbolt xjmm opx dpvou gspn {timestamp}. Nfncfs sbolt xjmm vqebuf xifo uifz bsf ofyu bdujwf.\n"
+"Vtf {rank_cmd} boe qsftt **Sfgsfti Nfncfs Sbolt** up sfgsfti bmm sbolt jnnfejbufmz."
+
+#: src/modules/statistics/settings.py:147
+#, possible-python-brace-format
+msgctxt "guildset:season_start|set_response|unset"
+msgid ""
+"The leaderboard and activity ranks will now count all-time statistics. Member ranks will update when they are next active.\n"
+"Use {rank_cmd} and press **Refresh Member Ranks** to refresh all ranks immediately."
+msgstr ""
+"Uif mfbefscpbse boe bdujwjuz sbolt xjmm opx dpvou bmm-ujnf tubujtujdt. Nfncfs sbolt xjmm vqebuf xifo uifz bsf ofyu bdujwf.\n"
+"Vtf {rank_cmd} boe qsftt **Sfgsfti Nfncfs Sbolt** up sfgsfti bmm sbolt jnnfejbufmz."
+
+#: src/modules/statistics/settings.py:159
+msgctxt "guildset:unranked_roles"
+msgid "unranked_roles"
+msgstr "vosbolfe_spmft"
+
+#: src/modules/statistics/settings.py:162
+msgctxt "guildset:unranked_roles|desc"
+msgid "Roles to exclude from the leaderboards."
+msgstr "Spmft up fydmvef gspn uif mfbefscpbset."
+
+#: src/modules/statistics/settings.py:166
+msgctxt "guildset:unranked_roles|long_desc"
+msgid ""
+"When set, members with *any* of these roles will not appear on the "
+"/leaderboard ranking list."
+msgstr ""
+"Xifo tfu, nfncfst xjui *boz* pg uiftf spmft xjmm opu bqqfbs po uif "
+"/mfbefscpbse sboljoh mjtu."
+
+#: src/modules/statistics/settings.py:170
+msgctxt "guildset:unranked_roles|accepts"
+msgid "Comma separated list of unranked role names or ids."
+msgstr "Dpnnb tfqbsbufe mjtu pg vosbolfe spmf obnft ps jet."
+
+#: src/modules/statistics/settings.py:186
+msgctxt "guildset:unranked_roles|set_using"
+msgid "Role selector below."
+msgstr "Spmf tfmfdups cfmpx."
+
+#: src/modules/statistics/settings.py:196
+#, possible-python-brace-format
+msgctxt "guildset:unranked_roles|set_response|set"
+msgid ""
+"Members of the following roles will not appear on the leaderboard: {roles}"
+msgstr ""
+"Nfncfst pg uif gpmmpxjoh spmft xjmm opu bqqfbs po uif mfbefscpbse: {roles}"
+
+#: src/modules/statistics/settings.py:203
+msgctxt "guildset:unranked_roles|set_response|unset"
+msgid "You have cleared the unranked role list."
+msgstr "Zpv ibwf dmfbsfe uif vosbolfe spmf mjtu."
+
+#: src/modules/statistics/settings.py:217
+msgctxt "guildset:visible_stats"
+msgid "visible_stats"
+msgstr "wjtjcmf_tubut"
+
+#: src/modules/statistics/settings.py:220
+msgctxt "guildset:visible_stats|desc"
+msgid "Which statistics will be visible in the statistics commands."
+msgstr "Xijdi tubujtujdt xjmm cf wjtjcmf jo uif tubujtujdt dpnnboet."
+
+#: src/modules/statistics/settings.py:224
+msgctxt "guildset:visible_stats|desc"
+msgid ""
+"Choose which statistics types to display in the leaderboard and statistics "
+"commands."
+msgstr ""
+"Dipptf xijdi tubujtujdt uzqft up ejtqmbz jo uif mfbefscpbse boe tubujtujdt "
+"dpnnboet."
+
+#: src/modules/statistics/settings.py:228
+msgctxt "guildset:visible_stats|accepts"
+msgid "Voice, Text, Anki"
+msgstr "Wpjdf, Ufyu, Bolj"
+
+#: src/modules/statistics/settings.py:249
+msgctxt "guildset:visible_stats|set_using"
+msgid "Option menu below."
+msgstr "Pqujpo nfov cfmpx."
+
+#: src/modules/statistics/settings.py:257
+#, possible-python-brace-format
+msgctxt "guildset:visible_stats|set_response"
+msgid "Members will be able to view the following statistics types: {types}"
+msgstr "Nfncfst xjmm cf bcmf up wjfx uif gpmmpxjoh tubujtujdt uzqft: {types}"
+
+#: src/modules/statistics/settings.py:267
+msgctxt "guildset:default_stat"
+msgid "default_stat"
+msgstr "efgbvmu_tubu"
+
+#: src/modules/statistics/settings.py:270
+msgctxt "guildset:default_stat|desc"
+msgid "Statistic type to display by default in setting dialogues."
+msgstr "Tubujtujd uzqf up ejtqmbz cz efgbvmu jo tfuujoh ejbmphvft."
+
+#: src/modules/statistics/settings.py:274
+msgctxt "guildset:default_stat|long_desc"
+msgid "Which statistic type to display by default in setting dialogues."
+msgstr "Xijdi tubujtujd uzqf up ejtqmbz cz efgbvmu jo tfuujoh ejbmphvft."
+
+#: src/modules/statistics/settings.py:307
+msgctxt "ui:statistics_config|menu:unranked_roles|placeholder"
+msgid "Select Unranked Roles"
+msgstr "Tfmfdu Vosbolfe Spmft"
+
+#: src/modules/statistics/settings.py:331
+msgctxt "ui:statistics_config|menu:visible_stats|item:voice|mode:voice"
+msgid "Voice Activity"
+msgstr "Wpjdf Bdujwjuz"
+
+#: src/modules/statistics/settings.py:336
+msgctxt "ui:statistics_config|menu:visible_stats|item:voice|mode:study"
+msgid "Study Statistics"
+msgstr "Tuvez Tubujtujdt"
+
+#: src/modules/statistics/settings.py:346
+msgctxt "ui:statistics_config|menu:visible_stats|item:text"
+msgid "Message Activity"
+msgstr "Nfttbhf Bdujwjuz"
+
+#: src/modules/statistics/settings.py:354
+msgctxt "ui:statistics_config|menu:visible_stats|item:anki"
+msgid "Anki Reviews"
+msgstr "Bolj Sfwjfxt"
+
+#: src/modules/statistics/settings.py:365
+msgctxt "ui:statistics_config|menu:visible_stats|placeholder"
+msgid "Select Visible Statistics"
+msgstr "Tfmfdu Wjtjcmf Tubujtujdt"
+
+#: src/modules/statistics/settings.py:386
+msgctxt "ui:statistics_config|embed|title"
+msgid "Statistics Configuration Panel"
+msgstr "Tubujtujdt Dpogjhvsbujpo Qbofm"
+
+#: src/modules/statistics/settings.py:408
+msgctxt "dash:stats|title"
+msgid "Activity Statistics Configuration ({commands[configure statistics]})"
+msgstr "Bdujwjuz Tubujtujdt Dpogjhvsbujpo ({commands[configure statistics]})"
+
+#: src/modules/statistics/settings.py:412
+msgctxt "dash:stats|dropdown|placeholder"
+msgid "Activity Statistics Panel"
+msgstr "Bdujwjuz Tubujtujdt Qbofm"
+
+#: src/modules/statistics/ui/goals.py:92
+msgctxt "ui:MonthlyUI|name"
+msgid "Monthly"
+msgstr "Npouimz"
+
+#: src/modules/statistics/ui/goals.py:135
+msgctxt "ui:WeeklyUI|name"
+msgid "Weekly"
+msgstr "Xfflmz"
+
+#: src/modules/statistics/ui/summary.py:18
+msgctxt "ui:SummaryUI|name"
+msgid "Summary"
+msgstr "Tvnnbsz"
+
+#: src/modules/statistics/ui/weeklymonthly.py:96
+msgctxt "menu:stat_type|opt:weekly_voice|name"
+msgid "Weekly Voice Statistics"
+msgstr "Xfflmz Wpjdf Tubujtujdt"
+
+#: src/modules/statistics/ui/weeklymonthly.py:101
+msgctxt "menu:stat_type|opt:weekly_text|name"
+msgid "Weekly Text Statistics"
+msgstr "Xfflmz Ufyu Tubujtujdt"
+
+#: src/modules/statistics/ui/weeklymonthly.py:106
+msgctxt "menu:stat_type|opt:weekly_anki|name"
+msgid "Weekly Anki Statistics"
+msgstr "Xfflmz Bolj Tubujtujdt"
+
+#: src/modules/statistics/ui/weeklymonthly.py:112
+msgctxt "menu:stat_type|opt:monthly_voice|name"
+msgid "Monthly Voice Statistics"
+msgstr "Npouimz Wpjdf Tubujtujdt"
+
+#: src/modules/statistics/ui/weeklymonthly.py:117
+msgctxt "menu:stat_type|opt:monthly_text|name"
+msgid "Monthly Text Statistics"
+msgstr "Npouimz Ufyu Tubujtujdt"
+
+#: src/modules/statistics/ui/weeklymonthly.py:122
+msgctxt "menu:stat_type|opt:monthly_anki|name"
+msgid "Monthly Anki Statistics"
+msgstr "Npouimz Bolj Tubujtujdt"
+
+#: src/modules/statistics/ui/weeklymonthly.py:144
+msgctxt "modal:goal_editor|field:task_goal|label"
+msgid "Task goal"
+msgstr "Ubtl hpbm"
+
+#: src/modules/statistics/ui/weeklymonthly.py:148
+msgctxt "modal:goal_editor|field:task_goal|placeholder"
+msgid "Enter the number of tasklist tasks you aim to do"
+msgstr "Foufs uif ovncfs pg ubtlmjtu ubtlt zpv bjn up ep"
+
+#: src/modules/statistics/ui/weeklymonthly.py:159
+#, possible-python-brace-format
+msgctxt "modal:goal_editor|field:task_goal|error:NAN"
+msgid "The provided task goal `{input}` is not a number! Please try again."
+msgstr "Uif qspwjefe ubtl hpbm `{input}` jt opu b ovncfs! Qmfbtf usz bhbjo."
+
+#: src/modules/statistics/ui/weeklymonthly.py:181
+msgctxt "modal:goal_editor|field:voice_goal|label"
+msgid "Study time goal"
+msgstr "Tuvez ujnf hpbm"
+
+#: src/modules/statistics/ui/weeklymonthly.py:185
+msgctxt "modal:goal_editor|field:voice_goal|placeholder"
+msgid "Enter a number of hours of study to aim for."
+msgstr "Foufs b ovncfs pg ipvst pg tuvez up bjn gps."
+
+#: src/modules/statistics/ui/weeklymonthly.py:190
+msgctxt "modal:goal_editor|field:text_goal|label"
+msgid "Message goal"
+msgstr "Nfttbhf hpbm"
+
+#: src/modules/statistics/ui/weeklymonthly.py:194
+msgctxt "modal:goal_editor|field:text_goal|placeholder"
+msgid "Enter a message count to aim for."
+msgstr "Foufs b nfttbhf dpvou up bjn gps."
+
+#: src/modules/statistics/ui/weeklymonthly.py:199
+msgctxt "modal:goal_editor|field:anki_goal|label"
+msgid "Card goal"
+msgstr "Dbse hpbm"
+
+#: src/modules/statistics/ui/weeklymonthly.py:203
+msgctxt "modal:goal_editor|field:anki_goal|label"
+msgid "Enter a number of card revisions to aim for."
+msgstr "Foufs b ovncfs pg dbse sfwjtjpot up bjn gps."
+
+#: src/modules/statistics/ui/weeklymonthly.py:216
+#, possible-python-brace-format
+msgctxt "modal:goal_editor|field:voice_goal|error:NAN"
+msgid ""
+"The provided study time goal `{input}` is not a number! Please try again."
+msgstr ""
+"Uif qspwjefe tuvez ujnf hpbm `{input}` jt opu b ovncfs! Qmfbtf usz bhbjo."
+
+#: src/modules/statistics/ui/weeklymonthly.py:223
+#, possible-python-brace-format
+msgctxt "modal:goal_editor|field:text_goal|error:NAN"
+msgid "The provided message goal `{input}` is not a number! Please try again."
+msgstr ""
+"Uif qspwjefe nfttbhf hpbm `{input}` jt opu b ovncfs! Qmfbtf usz bhbjo."
+
+#: src/modules/statistics/ui/weeklymonthly.py:230
+#, possible-python-brace-format
+msgctxt "modal:goal_editor|field:anki_goal|error:NAN"
+msgid "The provided card goal `{input}` is not a number! Please try again."
+msgstr "Uif qspwjefe dbse hpbm `{input}` jt opu b ovncfs! Qmfbtf usz bhbjo."
+
+#: src/modules/statistics/ui/weeklymonthly.py:252
+msgctxt "modal:goal_editor|field:weekly_task_editor|label"
+msgid "Tasks to complete this week (one per line)"
+msgstr "Ubtlt up dpnqmfuf uijt xffl (pof qfs mjof)"
+
+#: src/modules/statistics/ui/weeklymonthly.py:256
+msgctxt "modal:goal_editor|field:weekly_task_editor|placeholder"
+msgid ""
+"[ ] Write my biology essay\n"
+"[x] Complete the second maths assignment\n"
+msgstr ""
+"[ ] Xsjuf nz cjpmphz fttbz\n"
+"[y] Dpnqmfuf uif tfdpoe nbuit bttjhonfou\n"
+
+#: src/modules/statistics/ui/weeklymonthly.py:262
+msgctxt "modal:goal_editor|field:monthly_task_editor|label"
+msgid "Tasks to complete this month (one per line)"
+msgstr "Ubtlt up dpnqmfuf uijt npoui (pof qfs mjof)"
+
+#: src/modules/statistics/ui/weeklymonthly.py:266
+msgctxt "modal:goal_editor|field:monthly_task_editor|placeholder"
+msgid ""
+"[ ] Write my biology essay\n"
+"[x] Complete the second maths assignment\n"
+msgstr ""
+"[ ] Xsjuf nz cjpmphz fttbz\n"
+"[y] Dpnqmfuf uif tfdpoe nbuit bttjhonfou\n"
+
+#: src/modules/statistics/ui/weeklymonthly.py:284
+#, possible-python-brace-format
+msgctxt "modal:goal_editor||field:task_editor|error:parse_general"
+msgid ""
+"Malformed task!\n"
+"`{input}`"
+msgstr ""
+"Nbmgpsnfe ubtl!\n"
+"`{input}`"
+
+#: src/modules/statistics/ui/weeklymonthly.py:301
+msgctxt "modal:goal_editor|title"
+msgid "Weekly goal editor"
+msgstr "Xfflmz hpbm fejups"
+
+#: src/modules/statistics/ui/weeklymonthly.py:306
+msgctxt "modal:goal_editor|monthly|title"
+msgid "Monthly goal editor"
+msgstr "Npouimz hpbm fejups"
+
+#: src/modules/statistics/ui/weeklymonthly.py:503
+msgctxt "ui:weeklymonthly|button:edit_goals|label"
+msgid "Edit Goals"
+msgstr "Feju Hpbmt"
+
+#: src/modules/statistics/ui/weeklymonthly.py:519
+#, possible-python-brace-format
+msgctxt "ui:weeklymonthly|menu:period|monthly|label"
+msgid "{month} {year}"
+msgstr "{month} {year}"
+
+#: src/modules/statistics/ui/weeklymonthly.py:534
+#, possible-python-brace-format
+msgctxt "ui:weeklymonthly|menu:period|weekly|label"
+msgid "{year} W{week}"
+msgstr "{year} X{week}"
+
+#: src/modules/statistics/ui/weeklymonthly.py:538
+#, possible-python-brace-format
+msgctxt "ui:weeklymonthly|menu:period|weekly|desc"
+msgid ""
+"{start_day} {start_month} {start_year} to {end_day} {end_month} {end_year}"
+msgstr ""
+"{start_day} {start_month} {start_year} up {end_day} {end_month} {end_year}"
+
+#: src/modules/statistics/ui/weeklymonthly.py:616
+msgctxt "ui:weeklymonthly|button:period|close|label"
+msgid "Close Selector"
+msgstr "Dmptf Tfmfdups"
+
+#: src/modules/statistics/ui/weeklymonthly.py:621
+msgctxt "ui:weeklymonthly|button:period|weekly|label"
+msgid "Select Week"
+msgstr "Tfmfdu Xffl"
+
+#: src/modules/statistics/ui/weeklymonthly.py:626
+msgctxt "ui:weeklymonthly|button:period|monthly|label"
+msgid "Select Month"
+msgstr "Tfmfdu Npoui"
+
+#: src/modules/statistics/ui/weeklymonthly.py:691
+msgctxt "ui:weeklymonthly|menu:period|weekly|placeholder"
+msgid "Select a week to display"
+msgstr "Tfmfdu b xffl up ejtqmbz"
+
+#: src/modules/statistics/ui/weeklymonthly.py:696
+msgctxt "ui:weeklymonthly|menu:period|monthly|placeholder"
+msgid "Select a month to display"
+msgstr "Tfmfdu b npoui up ejtqmbz"
+
+#: src/modules/statistics/ui/weeklymonthly.py:718
+msgctxt "ui:WeeklyMonthly|button:global|resp:success"
+msgid ""
+"You will now see combined statistics from all your servers (where "
+"applicable)! Press again to revert."
+msgstr ""
+"Zpv xjmm opx tff dpncjofe tubujtujdt gspn bmm zpvs tfswfst (xifsf "
+"bqqmjdbcmf)! Qsftt bhbjo up sfwfsu."
+
+#: src/modules/statistics/ui/weeklymonthly.py:731
+msgctxt "ui:WeeklyMonthly|button:global|mode:local"
+msgid "Server Statistics"
+msgstr "Tfswfs Tubujtujdt"
+
+#: src/modules/statistics/ui/weeklymonthly.py:736
+msgctxt "ui:WeeklyMonthly|button:global|mode:global"
+msgid "Global Statistics"
+msgstr "Hmpcbm Tubujtujdt"
+
+#: src/modules/statistics/ui/profile.py:41
+msgctxt "modal:profile_editor|field:editor|label"
+msgid "Profile Tags (One line per tag)"
+msgstr "Qspgjmf Ubht (Pof mjof qfs ubh)"
+
+#: src/modules/statistics/ui/profile.py:45
+msgctxt "modal:profile_editor|field:editor|placeholder"
+msgid ""
+"Mathematician\n"
+"Loves Cats"
+msgstr ""
+"Nbuifnbujdjbo\n"
+"Mpwft Dbut"
+
+#: src/modules/statistics/ui/profile.py:53
+msgctxt "modal:profile_editor|title"
+msgid "Profile Tag Editor"
+msgstr "Qspgjmf Ubh Fejups"
+
+#: src/modules/statistics/ui/profile.py:71
+#, possible-python-brace-format
+msgctxt "modal:profile_editor|error:too_many_tags"
+msgid "Too many tags! You can have at most `{limit}` profile tags."
+msgstr "Upp nboz ubht! Zpv dbo ibwf bu nptu `{limit}` qspgjmf ubht."
+
+#: src/modules/statistics/ui/profile.py:92
+msgctxt "menu:stat_type|opt:voice|name"
+msgid "Voice Statistics"
+msgstr "Wpjdf Tubujtujdt"
+
+#: src/modules/statistics/ui/profile.py:97
+msgctxt "menu:stat_type|opt:text|name"
+msgid "Text Statistics"
+msgstr "Ufyu Tubujtujdt"
+
+#: src/modules/statistics/ui/profile.py:102
+msgctxt "menu:stat_type|opt:anki|name"
+msgid "Anki Statistics"
+msgstr "Bolj Tubujtujdt"
+
+#: src/modules/statistics/ui/profile.py:190
+msgctxt "modal:profile_editor|resp:success"
+msgid "Your profile has been updated!"
+msgstr "Zpvs qspgjmf ibt cffo vqebufe!"
+
+#: src/modules/statistics/ui/profile.py:200
+msgctxt "ui:profile_card|button:edit|label"
+msgid "Edit Profile Badges"
+msgstr "Feju Qspgjmf Cbehft"
+
+#: src/modules/statistics/ui/profile.py:219
+msgctxt "ui:profile_card|button:statistics|label:hide"
+msgid "Hide Statistics"
+msgstr "Ijef Tubujtujdt"
+
+#: src/modules/statistics/ui/profile.py:224
+msgctxt "ui:profile_card|button:statistics|label:show"
+msgid "Show Statistics"
+msgstr "Tipx Tubujtujdt"
+
+#: src/modules/statistics/ui/profile.py:253
+msgctxt "ui:Profile|button:global|resp:success"
+msgid ""
+"You will now see statistics from all you servers (where applicable)! Press "
+"again to revert."
+msgstr ""
+"Zpv xjmm opx tff tubujtujdt gspn bmm zpv tfswfst (xifsf bqqmjdbcmf)! Qsftt "
+"bhbjo up sfwfsu."
+
+#: src/modules/statistics/ui/leaderboard.py:250
+msgctxt "ui:leaderboard|menu:stats|placeholder"
+msgid "Select Activity Type"
+msgstr "Tfmfdu Bdujwjuz Uzqf"
+
+#: src/modules/statistics/ui/leaderboard.py:259
+msgctxt "ui:leaderboard|menu:stats|item:voice"
+msgid "Voice Activity"
+msgstr "Wpjdf Bdujwjuz"
+
+#: src/modules/statistics/ui/leaderboard.py:270
+msgctxt "ui:leaderboard|menu:stats|item:study"
+msgid "Study Statistics"
+msgstr "Tuvez Tubujtujdt"
+
+#: src/modules/statistics/ui/leaderboard.py:281
+msgctxt "ui:leaderboard|menu:stats|item:message"
+msgid "Message Activity"
+msgstr "Nfttbhf Bdujwjuz"
+
+#: src/modules/statistics/ui/leaderboard.py:292
+msgctxt "ui:leaderboard|menu;stats|item:anki"
+msgid "Anki Cards Reviewed"
+msgstr "Bolj Dbset Sfwjfxfe"
+
+#: src/modules/statistics/ui/leaderboard.py:346
+msgctxt "ui:leaderboard|button:season|label"
+msgid "This Season"
+msgstr "Uijt Tfbtpo"
+
+#: src/modules/statistics/ui/leaderboard.py:350
+msgctxt "ui:leaderboard|button:day|label"
+msgid "Today"
+msgstr "Upebz"
+
+#: src/modules/statistics/ui/leaderboard.py:354
+msgctxt "ui:leaderboard|button:week|label"
+msgid "This Week"
+msgstr "Uijt Xffl"
+
+#: src/modules/statistics/ui/leaderboard.py:358
+msgctxt "ui:leaderboard|button:month|label"
+msgid "This Month"
+msgstr "Uijt Npoui"
+
+#: src/modules/statistics/ui/leaderboard.py:362
+msgctxt "ui:leaderboard|button:alltime|label"
+msgid "All Time"
+msgstr "Bmm Ujnf"
+
+#: src/modules/statistics/ui/leaderboard.py:366
+msgctxt "ui:leaderboard|button:jump|label"
+msgid "Jump"
+msgstr "Kvnq"
+
+#: src/modules/statistics/ui/leaderboard.py:381
+msgctxt "ui:leaderboard|button:jump|input:title"
+msgid "Jump to page"
+msgstr "Kvnq up qbhf"
+
+#: src/modules/statistics/ui/leaderboard.py:385
+msgctxt "ui:leaderboard|button:jump|input:question"
+msgid "Page number to jump to"
+msgstr "Qbhf ovncfs up kvnq up"
+
+#: src/modules/statistics/ui/leaderboard.py:396
+msgctxt "ui:leaderboard|button:jump|error:invalid_page"
+msgid "Invalid page number, please try again!"
+msgstr "Jowbmje qbhf ovncfs, qmfbtf usz bhbjo!"
+
+#: src/modules/statistics/ui/leaderboard.py:442
+#, possible-python-brace-format
+msgctxt "ui:leaderboard|since"
+msgid "Counting statistics since {timestamp}"
+msgstr "Dpvoujoh tubujtujdt tjodf {timestamp}"
+
+#: src/modules/statistics/ui/leaderboard.py:453
+#, possible-python-brace-format
+msgctxt "ui:leaderboard|mode:voice|message:empty|desc"
+msgid "There has been no voice activity since {timestamp}"
+msgstr "Uifsf ibt cffo op wpjdf bdujwjuz tjodf {timestamp}"
+
+#: src/modules/statistics/ui/leaderboard.py:458
+#, possible-python-brace-format
+msgctxt "ui:leaderboard|mode:text|message:empty|desc"
+msgid "There has been no message activity since {timestamp}"
+msgstr "Uifsf ibt cffo op nfttbhf bdujwjuz tjodf {timestamp}"
+
+#: src/modules/statistics/ui/leaderboard.py:463
+#, possible-python-brace-format
+msgctxt "ui:leaderboard|mode:anki|message:empty|desc"
+msgid "There have been no Anki cards reviewed since {timestamp}"
+msgstr "Uifsf ibwf cffo op Bolj dbset sfwjfxfe tjodf {timestamp}"
+
+#: src/modules/statistics/ui/leaderboard.py:472
+msgctxt "ui:leaderboard|message:empty|title"
+msgid "Leaderboard Empty!"
+msgstr "Mfbefscpbse Fnquz!"

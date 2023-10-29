@@ -1,0 +1,417 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Interitio, 2023
+# Ari Horesh, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-13 08:47+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Ari Horesh, 2023\n"
+"Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: he_IL\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
+
+#: src/modules/reminders/cog.py:114
+#, possible-python-brace-format
+msgctxt "create_reminder|error:past"
+msgid "The provided reminder time {timestamp} is in the past!"
+msgstr "התאריך שהבאת לתזכיר {timestamp} הוא בעבר!"
+
+#: src/modules/reminders/cog.py:123
+msgctxt "create_reminder|error:too_fast"
+msgid ""
+"You cannot set a repeating reminder with a period less than 10 minutes."
+msgstr "אתה לא יכול ליצור תזכיר עם אינטרבל של פחות מ10 דקות."
+
+#: src/modules/reminders/cog.py:133
+msgctxt "create_reminder|error:too_many"
+msgid "Sorry, you have reached the maximum of `25` reminders."
+msgstr "סליחה, הגעת למגבלה של 25 תזכירים!"
+
+#: src/modules/reminders/cog.py:149
+msgctxt "create_reminder|error:cannot_dm"
+msgid ""
+"I cannot direct message you! Do you have me blocked or direct messages "
+"closed?"
+msgstr ""
+"אני לא יכול לשלוח לך הודעות פרטיות! חסמת אותי במקרה או שאולי ההודעות הפרטיות"
+" שלך סגורות?"
+
+#: src/modules/reminders/cog.py:186
+#, possible-python-brace-format
+msgctxt "parse_timestamp|error:parse"
+msgid ""
+"Could not parse `{given}` as a valid reminder time. Try entering the time in"
+" the form `HH:MM` or `YYYY-MM-DD HH:MM`."
+msgstr ""
+"לא הצלחתי להבין את `{given}` כזמן. נסה להשתמש בפורמט הנכון `HH:MM` או `YYYY-"
+"MM-DD HH:MM`."
+
+#: src/modules/reminders/cog.py:329
+msgctxt "cmd:reminders"
+msgid "reminders"
+msgstr "תזכירים"
+
+#: src/modules/reminders/cog.py:332
+msgctxt "cmd:reminders|desc"
+msgid "View and set your reminders."
+msgstr "הצג וצור תזכירים."
+
+#: src/modules/reminders/cog.py:353
+msgctxt "cmd:remindme"
+msgid "remindme"
+msgstr "הזכרלי"
+
+#: src/modules/reminders/cog.py:354
+msgctxt "cmd:remindme|desc"
+msgid "View and set task reminders."
+msgstr "הצג וצור תזכירי מטלות."
+
+#: src/modules/reminders/cog.py:361
+msgctxt "cmd:reminders_cancel"
+msgid "cancel"
+msgstr "בטל"
+
+#: src/modules/reminders/cog.py:364
+msgctxt "cmd:reminders_cancel|desc"
+msgid ""
+"Cancel a single reminder. Use /reminders to clear or cancel multiple "
+"reminders."
+msgstr ""
+"בטל תזכור בודד. השתמש בתפריט ב  /reminders כדי לבטל כמה תזכירים בבת אחת."
+
+#: src/modules/reminders/cog.py:368
+msgctxt "cmd:reminders_cancel|param:reminder"
+msgid "reminder"
+msgstr "תזכיר"
+
+#: src/modules/reminders/cog.py:373
+msgctxt "cmd:reminders_cancel|param:reminder|desc"
+msgid "Start typing, then select a reminder to cancel."
+msgstr "התחל להקליד, ואז תבחר את התזכור הרלוונטי שתרצה לבטל."
+
+#: src/modules/reminders/cog.py:392
+msgctxt "cmd:reminders_cancel|error:no_reminders"
+msgid "There are no reminders to cancel!"
+msgstr "אין שום תזכירים לבטל!"
+
+#: src/modules/reminders/cog.py:416
+msgctxt "cmd:reminders_cancel|error:no_match"
+msgid ""
+"I am not sure which reminder you want to cancel. Please try again, selecting"
+" a reminder from the list of choices."
+msgstr ""
+"לא הצלחתי להבין איזה תזכיר אתה רוצה לבטל. אנא נסה שוב, תבחר את התזכיר "
+"מהרשימה של האופציות למטה."
+
+#: src/modules/reminders/cog.py:429
+msgctxt "cmd:reminders_cancel|embed:success|desc"
+msgid "Reminder successfully cancelled."
+msgstr "התזכור בוטל בהצלחה."
+
+#: src/modules/reminders/cog.py:446
+msgctxt "cmd:reminders_cancel|acmpl:reminder|error:no_reminders"
+msgid "There are no reminders to cancel!"
+msgstr "אין שום תזכירים לבטל!"
+
+#: src/modules/reminders/cog.py:476
+#, possible-python-brace-format
+msgctxt "cmd:reminders_cancel|acmpl:reminder|error:no_matches"
+msgid "You do not have any reminders matching \"{partial}\""
+msgstr "אין לכם שום תזכורים שמתאימים ל \"{partial}\""
+
+#: src/modules/reminders/cog.py:484
+msgctxt "cmd:remindme_at"
+msgid "at"
+msgstr "ב"
+
+#: src/modules/reminders/cog.py:487
+msgctxt "cmd:remindme_at|desc"
+msgid "Schedule a reminder for a particular time."
+msgstr "קבע תזכור לזמן ספציפי."
+
+#: src/modules/reminders/cog.py:491
+msgctxt "cmd:remindme_at|param:time"
+msgid "time"
+msgstr "זמן"
+
+#: src/modules/reminders/cog.py:492
+msgctxt "cmd:remindme_at|param:reminder"
+msgid "reminder"
+msgstr "תזכיר"
+
+#: src/modules/reminders/cog.py:493
+msgctxt "cmd:remindme_at|param:every"
+msgid "repeat_every"
+msgstr "חזור_כל"
+
+#: src/modules/reminders/cog.py:498
+msgctxt "cmd:remindme_at|param:time|desc"
+msgid "When you want to be reminded. (E.g. `4pm` or `16:00`)."
+msgstr "הזמן שבו תרצה את התזכור (באנגלית) לדוגמא: 4PM או 16:00"
+
+#: src/modules/reminders/cog.py:502
+msgctxt "cmd:remindme_at|param:reminder|desc"
+msgid "What should the reminder be?"
+msgstr "מה התזכיר צריך להיות?"
+
+#: src/modules/reminders/cog.py:506
+msgctxt "cmd:remindme_at|param:every|desc"
+msgid "How often to repeat this reminder."
+msgstr "באיזו תדירות שבה תרצה לקבל את התזכור הזה"
+
+#: src/modules/reminders/cog.py:533
+msgctxt "cmd:remindme_at|error|title"
+msgid "Could not create reminder!"
+msgstr "לא הצלחתי ליצור את התזכיר!"
+
+#: src/modules/reminders/cog.py:564
+#, possible-python-brace-format
+msgctxt "cmd:remindme_at|acmpl:time|error:parse"
+msgid ""
+"Cannot parse \"{partial}\" as a time. Try the format HH:MM or YYYY-MM-DD "
+"HH:MM"
+msgstr ""
+"לא הצלחתי להבין את \"{partial}\" בתור זמן. השתמשו בפורמט HH:MM או YYYY-MM-DD"
+" HH:MM"
+
+#: src/modules/reminders/cog.py:571
+msgctxt "cmd:remindme_in"
+msgid "in"
+msgstr "ב"
+
+#: src/modules/reminders/cog.py:574
+msgctxt "cmd:remindme_in|desc"
+msgid "Schedule a reminder for a given amount of time in the future."
+msgstr "קבע תזכיר זמן מסויים לתוך העתיד."
+
+#: src/modules/reminders/cog.py:578
+msgctxt "cmd:remindme_in|param:time"
+msgid "time"
+msgstr "זמן"
+
+#: src/modules/reminders/cog.py:579
+msgctxt "cmd:remindme_in|param:reminder"
+msgid "reminder"
+msgstr "תזכיר"
+
+#: src/modules/reminders/cog.py:580
+msgctxt "cmd:remindme_in|param:every"
+msgid "repeat_every"
+msgstr "חזור_כל"
+
+#: src/modules/reminders/cog.py:585
+msgctxt "cmd:remindme_in|param:time|desc"
+msgid "How far into the future to set the reminder (e.g. 1 day 10h 5m)."
+msgstr "עוד כמה זמן תרצו לקבל את התזכיר הזה? (e.g. 1 day 10h 5m)."
+
+#: src/modules/reminders/cog.py:589
+msgctxt "cmd:remindme_in|param:reminder|desc"
+msgid "What should the reminder be?"
+msgstr "מה התזכיר צריך להיות?"
+
+#: src/modules/reminders/cog.py:593
+msgctxt "cmd:remindme_in|param:every|desc"
+msgid "How often to repeat this reminder. (e.g. 1 day, or 2h)"
+msgstr "עד מתי תרצו לקבל את התזכיר הזה? (e.g. 1 day, or 2h)"
+
+#: src/modules/reminders/cog.py:619
+msgctxt "cmd:remindme_in|error|title"
+msgid "Could not create reminder!"
+msgstr "לא הצלחתי ליצור את התזכיר!"
+
+#: src/modules/reminders/ui.py:47
+msgctxt "ui:reminderlist|button:clear|confirm|title"
+msgid "Are You Sure?"
+msgstr "אתם בטוחים?"
+
+#: src/modules/reminders/ui.py:50
+#, possible-python-brace-format
+msgctxt "ui:reminderlist|button:clear|confirm|desc"
+msgid "Are you sure you want to delete your `{count}` reminder?"
+msgid_plural "Are you sure you want to clear your `{count}` reminders?"
+msgstr[0] "אתם בטוחים שאתם רוצים לנקות את התזכור?"
+msgstr[1] "אתם בטוחים שאתם רוצים לנקות שני תזכורים?"
+msgstr[2] "אתם בטוחים שאתם רוצים לנקות `{count}` תזכורים?"
+msgstr[3] "אתם בטוחים שאתם רוצים לנקות `{count}` תזכורים?"
+
+#: src/modules/reminders/ui.py:57
+msgctxt "ui:reminderlist|button:clear|confirm|button:yes"
+msgid "Yes, clear my reminders"
+msgstr "כן, נקה את התזכירים שלי"
+
+#: src/modules/reminders/ui.py:68
+msgctxt "ui:reminderlist|button:clear|success|desc"
+msgid "Your reminders have been cleared!"
+msgstr "התזכירים שלך נוקו!"
+
+#: src/modules/reminders/ui.py:77
+msgctxt "ui:reminderlist|button:clear|confirm|button:cancel"
+msgid "Cancel"
+msgstr "בטל"
+
+#: src/modules/reminders/ui.py:89
+msgctxt "ui:reminderlist|button:clear|label"
+msgid "Clear Reminders"
+msgstr "נקה תזכירים"
+
+#: src/modules/reminders/ui.py:110
+msgctxt "ui:reminderlist|button:new|modal|field:time|label"
+msgid "When would you like to be reminded?"
+msgstr "מה תרצה שאזכיר לך?"
+
+#: src/modules/reminders/ui.py:120
+msgctxt "ui:reminderlist|button:new|modal|field:repeat|label"
+msgid "How often should the reminder repeat?"
+msgstr "כל כמה זמן אני צריך להזכיר לך את זה?"
+
+#: src/modules/reminders/ui.py:124
+msgctxt "ui:reminderlist|button:new|modal|field:repeat|placeholder"
+msgid "1 day 10 hours 5 minutes (Leave empty for no repeat.)"
+msgstr ""
+"יום 1 10 שעות 5 דקות (באנגלית, השאר ריק אם אתה לא רוצה שהתזכיר יחזור על "
+"עצמו)"
+
+#: src/modules/reminders/ui.py:133
+msgctxt "ui:reminderlist|button:new|modal|field:content|label"
+msgid "What should I remind you?"
+msgstr "מה אני צריך להזכיר לך?"
+
+#: src/modules/reminders/ui.py:144
+msgctxt "ui:reminderlist|button:new|modal|title"
+msgid "Set a Reminder"
+msgstr "צור תזכיר"
+
+#: src/modules/reminders/ui.py:157
+#, possible-python-brace-format
+msgctxt "ui:reminderlist|button:new|modal|parse|error:interval"
+msgid "Cannot parse '{value}' as a duration."
+msgstr "לא הצלחתי להבין את `{value}` בתור אורך זמן."
+
+#: src/modules/reminders/ui.py:180
+msgctxt "ui:reminderlist|button:new|label"
+msgid "New Reminder"
+msgstr "תזכיר חדש"
+
+#: src/modules/reminders/ui.py:208
+msgctxt "ui:reminderlist|select:remove|placeholder"
+msgid "Select to cancel"
+msgstr "בחר כדי לבטל."
+
+#: src/modules/reminders/ui.py:264
+msgctxt "ui:reminderlist|embed:list|author"
+msgid "Your reminders"
+msgstr "התזכירים שלך"
+
+#: src/modules/reminders/ui.py:270
+msgctxt "ui:reminderlist|embed:list|footer"
+msgid "Click a reminder to jump back to the context!"
+msgstr "לחץ על תזכיר כדי לקפוץ לקונטקסט שלו!"
+
+#: src/modules/reminders/ui.py:277
+msgctxt "ui:reminderlist|embed:no_reminders|title"
+msgid "You have no reminders set!"
+msgstr "אין לך תזכירים!"
+
+#: src/modules/reminders/ui.py:286
+msgctxt "ui:reminderlist|embed|tips:name"
+msgid "Reminder Tips"
+msgstr "טיפים לקביעת תזכירים"
+
+#: src/modules/reminders/ui.py:290
+#, possible-python-brace-format
+msgctxt "ui:reminderlist|embed|tips:value"
+msgid ""
+"- Use {at_cmd} to set a reminder at a known time (e.g. `at 10 am`).\n"
+"- Use {in_cmd} to set a reminder in a certain time (e.g. `in 2 hours`).\n"
+"- Both commands support repeating reminders using the `every` parameter.\n"
+"- Remember to tell me your timezone with {timezone_cmd} if you haven't already!"
+msgstr ""
+"- השתמש ב  {at_cmd} כדי ליצור תזכיר בשעה ספציפית. \n"
+"השתמש ב{in_cmd} כדי ליצור תזכיר בעוד זמן ספציפי.\n"
+"- שתי הפקודות תומכות חזרה באינטרבל באמצעות שימוש ב `every`\n"
+"- תזכרו לקבוע את אזור הזמן שלכם ב  {timezone_cmd} וכמובן להשתמש באנגלית."
+
+#: src/modules/reminders/data.py:63
+msgctxt "reminder_set|title"
+msgid "Reminder Set!"
+msgstr "תזכיר נקבע!"
+
+#: src/modules/reminders/data.py:67
+#, possible-python-brace-format
+msgctxt "reminder_set|desc"
+msgid ""
+"At {timestamp} I will remind you about:\n"
+"> {content}"
+msgstr ""
+"כל {timestamp} אזכיר לך:\n"
+"> {content}"
+
+#: src/modules/reminders/data.py:79
+msgctxt "reminder_set|field:repeat|name"
+msgid "Repeats"
+msgstr "חזרות"
+
+#: src/modules/reminders/data.py:83
+#, possible-python-brace-format
+msgctxt "reminder_set|field:repeat|value"
+msgid ""
+"This reminder will repeat every `{interval}` (after the first reminder)."
+msgstr "התזכיר יחזור כל `{interval}` אחרי הפעם הראשונה שתקבלו אותו."
+
+#: src/modules/reminders/data.py:94
+msgctxt "reminder|embed"
+msgid "You asked me to remind you!"
+msgstr "ביקשת ממני להזכיר לך!"
+
+#: src/modules/reminders/data.py:102
+msgctxt "reminder|embed"
+msgid "Context?"
+msgstr "קונטקסט?"
+
+#: src/modules/reminders/data.py:104
+msgctxt "reminder|embed"
+msgid "Click Here"
+msgstr "לחץ פה"
+
+#: src/modules/reminders/data.py:111
+msgctxt "reminder|embed"
+msgid "Next reminder"
+msgstr "התזכיר הבא"
+
+#: src/modules/reminders/data.py:135
+#, possible-python-brace-format
+msgctxt "reminder|formatted|interval"
+msgid "Every day"
+msgid_plural "Every `{days}` days"
+msgstr[0] "כל יום אחד"
+msgstr[1] "כל יומיים"
+msgstr[2] "כל `{days}` ימים"
+msgstr[3] "כל `{days}` ימים"
+
+#: src/modules/reminders/data.py:144
+#, possible-python-brace-format
+msgctxt "reminder|formatted|interval"
+msgid "Every hour"
+msgid_plural "Every `{hours}` hours"
+msgstr[0] "כל שעה אחת"
+msgstr[1] "כל `{hours}` שעות"
+msgstr[2] "כל `{hours}` שעות"
+msgstr[3] "כל `{hours}` שעות"
+
+#: src/modules/reminders/data.py:153
+#, possible-python-brace-format
+msgctxt "reminder|formatted|interval"
+msgid "Every `{duration}`"
+msgstr "כל `{duration}`"

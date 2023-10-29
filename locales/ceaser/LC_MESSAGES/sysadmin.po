@@ -1,0 +1,199 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: you@example.com\n"
+"POT-Creation-Date: 2007-10-18 14:00+0100\n"
+"PO-Revision-Date: 2007-10-18 14:00+0100\n"
+"Last-Translator: you <you@example.com>\n"
+"Language-Team: English <yourteam@example.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/modules/sysadmin/presence.py:116
+msgctxt "botset:presence_status"
+msgid "online_status"
+msgstr "pomjof_tubuvt"
+
+#: src/modules/sysadmin/presence.py:117
+msgctxt "botset:presence_status|desc"
+msgid "Bot status indicator"
+msgstr "Cpu tubuvt joejdbups"
+
+#: src/modules/sysadmin/presence.py:120
+msgctxt "botset:presence_status|long_desc"
+msgid "Whether the bot account displays as online, idle, dnd, or offline."
+msgstr "Xifuifs uif cpu bddpvou ejtqmbzt bt pomjof, jemf, eoe, ps pggmjof."
+
+#: src/modules/sysadmin/presence.py:124
+msgctxt "botset:presence_status|accepts"
+msgid "Online/Idle/Dnd/Offline"
+msgstr "Pomjof/Jemf/Eoe/Pggmjof"
+
+#: src/modules/sysadmin/presence.py:133
+msgctxt "botset:presence_status|output:online"
+msgid "**Online**"
+msgstr "**Pomjof**"
+
+#: src/modules/sysadmin/presence.py:134
+msgctxt "botset:presence_status|output:idle"
+msgid "**Idle**"
+msgstr "**Jemf**"
+
+#: src/modules/sysadmin/presence.py:135
+msgctxt "botset:presence_status|output:dnd"
+msgid "**Do Not Disturb**"
+msgstr "**Ep Opu Ejtuvsc**"
+
+#: src/modules/sysadmin/presence.py:136
+msgctxt "botset:presence_status|output:offline"
+msgid "**Offline**"
+msgstr "**Pggmjof**"
+
+#: src/modules/sysadmin/presence.py:139
+msgctxt "botset:presence_status|input_format:online"
+msgid "Online"
+msgstr "Pomjof"
+
+#: src/modules/sysadmin/presence.py:140
+msgctxt "botset:presence_status|input_format:idle"
+msgid "Idle"
+msgstr "Jemf"
+
+#: src/modules/sysadmin/presence.py:141
+msgctxt "botset:presence_status|input_format:dnd"
+msgid "DND"
+msgstr "EOE"
+
+#: src/modules/sysadmin/presence.py:142
+msgctxt "botset:presence_status|input_format:offline"
+msgid "Offline"
+msgstr "Pggmjof"
+
+#: src/modules/sysadmin/presence.py:145
+msgctxt "botset:presence_status|input_pattern:online"
+msgid "on|online"
+msgstr "po|pomjof"
+
+#: src/modules/sysadmin/presence.py:146
+msgctxt "botset:presence_status|input_pattern:idle"
+msgid "idle"
+msgstr "jemf"
+
+#: src/modules/sysadmin/presence.py:147
+msgctxt "botset:presence_status|input_pattern:dnd"
+msgid "do not disturb|dnd"
+msgstr "ep opu ejtuvsc|eoe"
+
+#: src/modules/sysadmin/presence.py:148
+msgctxt "botset:presence_status|input_pattern:offline"
+msgid "off|offline|invisible"
+msgstr "pgg|pggmjof|jowjtjcmf"
+
+#: src/modules/sysadmin/presence.py:155
+msgctxt "botset:presence_type"
+msgid "activity_type"
+msgstr "bdujwjuz_uzqf"
+
+#: src/modules/sysadmin/presence.py:156
+msgctxt "botset:presence_type|desc"
+msgid "Type of presence activity"
+msgstr "Uzqf pg qsftfodf bdujwjuz"
+
+#: src/modules/sysadmin/presence.py:159
+msgctxt "botset:presence_type|long_desc"
+msgid ""
+"Whether the bot activity is shown as 'Listening', 'Playing', or 'Watching'."
+msgstr ""
+"Xifuifs uif cpu bdujwjuz jt tipxo bt 'Mjtufojoh', 'Qmbzjoh', ps 'Xbudijoh'."
+
+#: src/modules/sysadmin/presence.py:163
+msgctxt "botset:presence_type|accepts"
+msgid "Listening/Playing/Watching/Streaming"
+msgstr "Mjtufojoh/Qmbzjoh/Xbudijoh/Tusfbnjoh"
+
+#: src/modules/sysadmin/presence.py:172
+msgctxt "botset:presence_type|output:watching"
+msgid "**Watching**"
+msgstr "**Xbudijoh**"
+
+#: src/modules/sysadmin/presence.py:173
+msgctxt "botset:presence_type|output:listening"
+msgid "**Listening**"
+msgstr "**Mjtufojoh**"
+
+#: src/modules/sysadmin/presence.py:174
+msgctxt "botset:presence_type|output:playing"
+msgid "**Playing**"
+msgstr "**Qmbzjoh**"
+
+#: src/modules/sysadmin/presence.py:175
+msgctxt "botset:presence_type|output:streaming"
+msgid "**Streaming**"
+msgstr "**Tusfbnjoh**"
+
+#: src/modules/sysadmin/presence.py:178
+msgctxt "botset:presence_type|input_format:watching"
+msgid "Watching"
+msgstr "Xbudijoh"
+
+#: src/modules/sysadmin/presence.py:179
+msgctxt "botset:presence_type|input_format:listening"
+msgid "Listening"
+msgstr "Mjtufojoh"
+
+#: src/modules/sysadmin/presence.py:180
+msgctxt "botset:presence_type|input_format:playing"
+msgid "Playing"
+msgstr "Qmbzjoh"
+
+#: src/modules/sysadmin/presence.py:181
+msgctxt "botset:presence_type|input_format:streaming"
+msgid "Streaming"
+msgstr "Tusfbnjoh"
+
+#: src/modules/sysadmin/presence.py:184
+msgctxt "botset:presence_type|input_pattern:watching"
+msgid "watching"
+msgstr "xbudijoh"
+
+#: src/modules/sysadmin/presence.py:185
+msgctxt "botset:presence_type|input_pattern:listening"
+msgid "listening"
+msgstr "mjtufojoh"
+
+#: src/modules/sysadmin/presence.py:186
+msgctxt "botset:presence_type|input_pattern:playing"
+msgid "playing"
+msgstr "qmbzjoh"
+
+#: src/modules/sysadmin/presence.py:187
+msgctxt "botset:presence_type|input_pattern:streaming"
+msgid "streaming"
+msgstr "tusfbnjoh"
+
+#: src/modules/sysadmin/presence.py:194
+msgctxt "botset:presence_name"
+msgid "activity_name"
+msgstr "bdujwjuz_obnf"
+
+#: src/modules/sysadmin/presence.py:195
+msgctxt "botset:presence_name|desc"
+msgid "Name of the presence activity"
+msgstr "Obnf pg uif qsftfodf bdujwjuz"
+
+#: src/modules/sysadmin/presence.py:196
+msgctxt "botset:presence_name|long_desc"
+msgid "Presence activity name."
+msgstr "Qsftfodf bdujwjuz obnf."
+
+#: src/modules/sysadmin/presence.py:197
+msgctxt "botset:presence_name|accepts"
+msgid "The name of the activity to show."
+msgstr "Uif obnf pg uif bdujwjuz up tipx."

@@ -1,0 +1,419 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: you@example.com\n"
+"POT-Creation-Date: 2007-10-18 14:00+0100\n"
+"PO-Revision-Date: 2007-10-18 14:00+0100\n"
+"Last-Translator: you <you@example.com>\n"
+"Language-Team: English <yourteam@example.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/tracking/voice/cog.py:649
+msgctxt "cmd:now"
+msgid "now"
+msgstr "opx"
+
+#: src/tracking/voice/cog.py:652
+msgctxt "cmd:now|desc"
+msgid ""
+"Describe what you are working on, or see what your friends are working on!"
+msgstr ""
+"Eftdsjcf xibu zpv bsf xpsljoh po, ps tff xibu zpvs gsjfoet bsf xpsljoh po!"
+
+#: src/tracking/voice/cog.py:656
+msgctxt "cmd:now|param:tag"
+msgid "tag"
+msgstr "ubh"
+
+#: src/tracking/voice/cog.py:657
+msgctxt "cmd:now|param:user"
+msgid "user"
+msgstr "vtfs"
+
+#: src/tracking/voice/cog.py:658
+msgctxt "cmd:now|param:clear"
+msgid "clear"
+msgstr "dmfbs"
+
+#: src/tracking/voice/cog.py:663
+msgctxt "cmd:now|param:tag|desc"
+msgid "Describe what you are working on in 10 characters or less!"
+msgstr "Eftdsjcf xibu zpv bsf xpsljoh po jo 10 dibsbdufst ps mftt!"
+
+#: src/tracking/voice/cog.py:667
+msgctxt "cmd:now|param:user|desc"
+msgid "Check what a friend is working on."
+msgstr "Difdl xibu b gsjfoe jt xpsljoh po."
+
+#: src/tracking/voice/cog.py:671
+msgctxt "cmd:now|param:clear|desc"
+msgid "Unset your activity tag (or the target user's tag, for moderators)."
+msgstr "Votfu zpvs bdujwjuz ubh (ps uif ubshfu vtfs't ubh, gps npefsbupst)."
+
+#: src/tracking/voice/cog.py:698
+msgctxt "cmd:now|target:self|error:target_inactive"
+msgid ""
+"You have no running session! Join a tracked voice channel to start a "
+"session."
+msgstr ""
+"Zpv ibwf op svoojoh tfttjpo! Kpjo b usbdlfe wpjdf diboofm up tubsu b "
+"tfttjpo."
+
+#: src/tracking/voice/cog.py:707
+#, possible-python-brace-format
+msgctxt "cmd:now|target:other|error:target_inactive"
+msgid "{mention} has no running session!"
+msgstr "{mention} ibt op svoojoh tfttjpo!"
+
+#: src/tracking/voice/cog.py:722
+msgctxt "cmd:now|target:self|mode:clear|success|title"
+msgid "Session Tag Cleared"
+msgstr "Tfttjpo Ubh Dmfbsfe"
+
+#: src/tracking/voice/cog.py:726
+msgctxt "cmd:now|target:self|mode:clear|success|desc"
+msgid "Successfully unset your session tag."
+msgstr "Tvddfttgvmmz votfu zpvs tfttjpo ubh."
+
+#: src/tracking/voice/cog.py:735
+msgctxt "cmd:now|target:other|mode:clear|error:perms|title"
+msgid "You can't do that!"
+msgstr "Zpv dbo'u ep uibu!"
+
+#: src/tracking/voice/cog.py:739
+msgctxt "cmd:now|target:other|mode:clear|error:perms|desc"
+msgid "You need to be a moderator to set or clear someone else's session tag."
+msgstr ""
+"Zpv offe up cf b npefsbups up tfu ps dmfbs tpnfpof fmtf't tfttjpo ubh."
+
+#: src/tracking/voice/cog.py:749
+msgctxt "cmd:now|target:other|mode:clear|success|title"
+msgid "Session Tag Cleared!"
+msgstr "Tfttjpo Ubh Dmfbsfe!"
+
+#: src/tracking/voice/cog.py:753
+#, possible-python-brace-format
+msgctxt "cmd:now|target:other|mode:clear|success|desc"
+msgid "Cleared {target}'s session tag."
+msgstr "Dmfbsfe {target}'t tfttjpo ubh."
+
+#: src/tracking/voice/cog.py:765
+msgctxt "cmd:now|target:self|mode:set|success|title"
+msgid "Session Tag Set!"
+msgstr "Tfttjpo Ubh Tfu!"
+
+#: src/tracking/voice/cog.py:769
+#, possible-python-brace-format
+msgctxt "cmd:now|target:self|mode:set|success|desc"
+msgid "You are now working on `{new_tag}`. Good luck!"
+msgstr "Zpv bsf opx xpsljoh po `{new_tag}`. Hppe mvdl!"
+
+#: src/tracking/voice/cog.py:778
+msgctxt "cmd:now|target:other|mode:set|error:perms|title"
+msgid "You can't do that!"
+msgstr "Zpv dbo'u ep uibu!"
+
+#: src/tracking/voice/cog.py:782
+msgctxt "cmd:now|target:other|mode:set|error:perms|desc"
+msgid "You need to be a moderator to set or clear someone else's session tag!"
+msgstr ""
+"Zpv offe up cf b npefsbups up tfu ps dmfbs tpnfpof fmtf't tfttjpo ubh!"
+
+#: src/tracking/voice/cog.py:792
+msgctxt "cmd:now|target:other|mode:set|success|title"
+msgid "Session Tag Set!"
+msgstr "Tfttjpo Ubh Tfu!"
+
+#: src/tracking/voice/cog.py:796
+#, possible-python-brace-format
+msgctxt "cmd:now|target:other|mode:set|success|desc"
+msgid "Set {target}'s session tag to `{new_tag}`."
+msgstr "Tfu {target}'t tfttjpo ubh up `{new_tag}`."
+
+#: src/tracking/voice/cog.py:805
+#, possible-python-brace-format
+msgctxt "cmd:now|target:self|mode:show_with_tag|desc"
+msgid "You have been working on **`{tag}`** in {channel} since {time}!"
+msgstr "Zpv ibwf cffo xpsljoh po **`{tag}`** jo {channel} tjodf {time}!"
+
+#: src/tracking/voice/cog.py:810
+#, possible-python-brace-format
+msgctxt "cmd:now|target:self|mode:show_without_tag|desc"
+msgid ""
+"You have been working in {channel} since {time}!\n"
+"\n"
+"Use `/now <tag>` to set what you are working on."
+msgstr ""
+"Zpv ibwf cffo xpsljoh jo {channel} tjodf {time}!\n"
+"\n"
+"Vtf `/opx <ubh>` up tfu xibu zpv bsf xpsljoh po."
+
+#: src/tracking/voice/cog.py:817
+#, possible-python-brace-format
+msgctxt "cmd:now|target:other|mode:show_with_tag|desc"
+msgid ""
+"{target} is current working in {channel}!\n"
+"They have been working on **{tag}** since {time}."
+msgstr ""
+"{target} jt dvssfou xpsljoh jo {channel}!\n"
+"Uifz ibwf cffo xpsljoh po **{tag}** tjodf {time}."
+
+#: src/tracking/voice/cog.py:823
+#, possible-python-brace-format
+msgctxt "cmd:now|target:other|mode:show_without_tag|desc"
+msgid "{target} has been working in {channel} since {time}!"
+msgstr "{target} ibt cffo xpsljoh jo {channel} tjodf {time}!"
+
+#: src/tracking/voice/cog.py:846
+msgctxt "cmd:configure_voice_rates"
+msgid "voice_rewards"
+msgstr "wpjdf_sfxbset"
+
+#: src/tracking/voice/cog.py:849
+msgctxt "cmd:configure_voice_rates|desc"
+msgid "Configure Voice tracking rewards and experience"
+msgstr "Dpogjhvsf Wpjdf usbdljoh sfxbset boe fyqfsjfodf"
+
+#: src/tracking/voice/cog.py:906
+#, possible-python-brace-format
+msgctxt "cmd:configure_voice_tracking|mode:voice|resp:success|desc"
+msgid ""
+"Members will now be rewarded {coin}**{base} (+ {bonus})** per hour they "
+"spend (live) in a voice channel, up to a total of **{cap}** hours per server"
+" day."
+msgstr ""
+"Nfncfst xjmm opx cf sfxbsefe {coin}**{base} (+ {bonus})** qfs ipvs uifz "
+"tqfoe (mjwf) jo b wpjdf diboofm, vq up b upubm pg **{cap}** ipvst qfs tfswfs"
+" ebz."
+
+#: src/tracking/voice/cog.py:917
+#, possible-python-brace-format
+msgctxt "cmd:configure_voice_tracking|mode:study|resp:success|desc"
+msgid ""
+"Members will now be rewarded {coin}**{base}** per hour of study in this "
+"server, with a bonus of {coin}**{bonus}** if they stream of display video, "
+"up to a total of **{cap}** hours per server day."
+msgstr ""
+"Nfncfst xjmm opx cf sfxbsefe {coin}**{base}** qfs ipvs pg tuvez jo uijt "
+"tfswfs, xjui b cpovt pg {coin}**{bonus}** jg uifz tusfbn pg ejtqmbz wjefp, "
+"vq up b upubm pg **{cap}** ipvst qfs tfswfs ebz."
+
+#: src/tracking/voice/settings.py:40
+msgctxt "guildset:untracked_channels"
+msgid "untracked_channels"
+msgstr "vousbdlfe_diboofmt"
+
+#: src/tracking/voice/settings.py:43
+msgctxt "guildset:untracked_channels|desc"
+msgid "Channels which will be ignored for statistics tracking."
+msgstr "Diboofmt xijdi xjmm cf jhopsfe gps tubujtujdt usbdljoh."
+
+#: src/tracking/voice/settings.py:47
+msgctxt "guildset:untracked_channels|long_desc"
+msgid ""
+"Activity in these channels will not count towards a member's statistics. If "
+"a category is selected, all channels under the category will be untracked."
+msgstr ""
+"Bdujwjuz jo uiftf diboofmt xjmm opu dpvou upxbset b nfncfs't tubujtujdt. Jg "
+"b dbufhpsz jt tfmfdufe, bmm diboofmt voefs uif dbufhpsz xjmm cf vousbdlfe."
+
+#: src/tracking/voice/settings.py:52
+msgctxt "guildset:untracked_channels|accepts"
+msgid "Comma separated list of untracked channel name/ids."
+msgstr "Dpnnb tfqbsbufe mjtu pg vousbdlfe diboofm obnf/jet."
+
+#: src/tracking/voice/settings.py:56
+msgctxt "guildset:untracked_channels|notset"
+msgid "Not Set (all voice channels will be tracked.)"
+msgstr "Opu Tfu (bmm wpjdf diboofmt xjmm cf usbdlfe.)"
+
+#: src/tracking/voice/settings.py:73
+msgctxt "guildset:untracked_channels|set"
+msgid "Channel selector below."
+msgstr "Diboofm tfmfdups cfmpx."
+
+#: src/tracking/voice/settings.py:82
+#, possible-python-brace-format
+msgctxt "guildset:untracked_channels|set_response|set"
+msgid "Activity in the following channels will now be ignored: {channels}"
+msgstr "Bdujwjuz jo uif gpmmpxjoh diboofmt xjmm opx cf jhopsfe: {channels}"
+
+#: src/tracking/voice/settings.py:89
+msgctxt "guildset:untracked_channels|set_response|unset"
+msgid "All voice channels will now be tracked."
+msgstr "Bmm wpjdf diboofmt xjmm opx cf usbdlfe."
+
+#: src/tracking/voice/settings.py:117
+msgctxt "guildset:hourly_reward"
+msgid "hourly_reward"
+msgstr "ipvsmz_sfxbse"
+
+#: src/tracking/voice/settings.py:120
+msgctxt "guildset:hourly_reward|mode:voice|desc"
+msgid "LionCoins given per hour in a voice channel."
+msgstr "MjpoDpjot hjwfo qfs ipvs jo b wpjdf diboofm."
+
+#: src/tracking/voice/settings.py:124
+msgctxt "guildset:hourly_reward|mode:voice|long_desc"
+msgid ""
+"Number of LionCoins to each member per hour that they stay in a tracked "
+"voice channel."
+msgstr ""
+"Ovncfs pg MjpoDpjot up fbdi nfncfs qfs ipvs uibu uifz tubz jo b usbdlfe "
+"wpjdf diboofm."
+
+#: src/tracking/voice/settings.py:128
+msgctxt "guildset:hourly_reward|accepts"
+msgid "Number of coins to reward per hour in voice."
+msgstr "Ovncfs pg dpjot up sfxbse qfs ipvs jo wpjdf."
+
+#: src/tracking/voice/settings.py:144
+#, possible-python-brace-format
+msgctxt "guildset:hourly_reward|formatted"
+msgid "{coin}**{amount}** per hour."
+msgstr "{coin}**{amount}** qfs ipvs."
+
+#: src/tracking/voice/settings.py:159
+#, possible-python-brace-format
+msgctxt "guildset:hourly_reward|mode:voice|response"
+msgid "Members will be given {coin}**{amount}** per hour in a voice channel!"
+msgstr "Nfncfst xjmm cf hjwfo {coin}**{amount}** qfs ipvs jo b wpjdf diboofm!"
+
+#: src/tracking/voice/settings.py:171
+msgctxt "guildset:hourly_reward|mode:study|desc"
+msgid "LionCoins given per hour of study."
+msgstr "MjpoDpjot hjwfo qfs ipvs pg tuvez."
+
+#: src/tracking/voice/settings.py:175
+msgctxt "guildset:hourly_reward|mode:study|long_desc"
+msgid "Number of LionCoins given per hour of study, up to the daily hour cap."
+msgstr ""
+"Ovncfs pg MjpoDpjot hjwfo qfs ipvs pg tuvez, vq up uif ebjmz ipvs dbq."
+
+#: src/tracking/voice/settings.py:183
+#, possible-python-brace-format
+msgctxt "guildset:hourly_reward|mode:study|response"
+msgid "Members will be given {coin}**{amount}** per hour that they study!"
+msgstr "Nfncfst xjmm cf hjwfo {coin}**{amount}** qfs ipvs uibu uifz tuvez!"
+
+#: src/tracking/voice/settings.py:197
+msgctxt "guildset:hourly_live_bonus"
+msgid "hourly_live_bonus"
+msgstr "ipvsmz_mjwf_cpovt"
+
+#: src/tracking/voice/settings.py:200
+msgctxt "guildset:hourly_live_bonus|desc"
+msgid "Bonus Lioncoins given per hour when a member streams or video-chats."
+msgstr "Cpovt Mjpodpjot hjwfo qfs ipvs xifo b nfncfs tusfbnt ps wjefp-dibut."
+
+#: src/tracking/voice/settings.py:205
+msgctxt "guildset:hourly_live_bonus|long_desc"
+msgid ""
+"When a member streams or video-chats in a channel they will be given this "
+"bonus *additionally* to the `hourly_reward`."
+msgstr ""
+"Xifo b nfncfs tusfbnt ps wjefp-dibut jo b diboofm uifz xjmm cf hjwfo uijt "
+"cpovt *beejujpobmmz* up uif `ipvsmz_sfxbse`."
+
+#: src/tracking/voice/settings.py:210
+msgctxt "guildset:hourly_live_bonus|accepts"
+msgid "Number of bonus coins to reward per hour when live."
+msgstr "Ovncfs pg cpovt dpjot up sfxbse qfs ipvs xifo mjwf."
+
+#: src/tracking/voice/settings.py:226
+#, possible-python-brace-format
+msgctxt "guildset:hourly_live_bonus|formatted"
+msgid "{coin}**{amount}** bonus per hour when live."
+msgstr "{coin}**{amount}** cpovt qfs ipvs xifo mjwf."
+
+#: src/tracking/voice/settings.py:237
+#, possible-python-brace-format
+msgctxt "guildset:hourly_live_bonus|response"
+msgid ""
+"Live members will now *additionally* be given {coin}**{amount}** per hour."
+msgstr ""
+"Mjwf nfncfst xjmm opx *beejujpobmmz* cf hjwfo {coin}**{amount}** qfs ipvs."
+
+#: src/tracking/voice/settings.py:248
+msgctxt "guildset:daily_voice_cap"
+msgid "daily_voice_cap"
+msgstr "ebjmz_wpjdf_dbq"
+
+#: src/tracking/voice/settings.py:251
+msgctxt "guildset:daily_voice_cap|desc"
+msgid "Maximum number of hours per day to count for each member."
+msgstr "Nbyjnvn ovncfs pg ipvst qfs ebz up dpvou gps fbdi nfncfs."
+
+#: src/tracking/voice/settings.py:255
+msgctxt "guildset:daily_voice_cap|long_desc"
+msgid ""
+"Time spend in voice channels over this amount will not be tracked towards "
+"the member's statistics. Tracking will resume at the start of the next day. "
+"The start of the day is determined by the configured guild timezone."
+msgstr ""
+"Ujnf tqfoe jo wpjdf diboofmt pwfs uijt bnpvou xjmm opu cf usbdlfe upxbset "
+"uif nfncfs't tubujtujdt. Usbdljoh xjmm sftvnf bu uif tubsu pg uif ofyu ebz. "
+"Uif tubsu pg uif ebz jt efufsnjofe cz uif dpogjhvsfe hvjme ujnfapof."
+
+#: src/tracking/voice/settings.py:261
+msgctxt "guildset:daily_voice_cap|accepts"
+msgid "The maximum number of voice hours to track per day."
+msgstr "Uif nbyjnvn ovncfs pg wpjdf ipvst up usbdl qfs ebz."
+
+#: src/tracking/voice/settings.py:277
+#, possible-python-brace-format
+msgctxt "guildset:daily_voice_cap|response"
+msgid ""
+"Members will be tracked for at most {duration} per day. (**NOTE:** This will"
+" not affect members currently in voice channels.)"
+msgstr ""
+"Nfncfst xjmm cf usbdlfe gps bu nptu {duration} qfs ebz. (**OPUF:** Uijt xjmm"
+" opu bggfdu nfncfst dvssfoumz jo wpjdf diboofmt.)"
+
+#: src/tracking/voice/settings.py:335
+msgctxt "ui:voice_tracker_config|button:close|label"
+msgid "Close"
+msgstr "Dmptf"
+
+#: src/tracking/voice/settings.py:349
+msgctxt "ui:voice_tracker_config|button:reset|label"
+msgid "Reset"
+msgstr "Sftfu"
+
+#: src/tracking/voice/settings.py:362
+msgctxt "ui:voice_tracker_config|menu:untracked_channels|placeholder"
+msgid "Set Untracked Channels"
+msgstr "Tfu Vousbdlfe Diboofmt"
+
+#: src/tracking/voice/settings.py:428 src/tracking/voice/settings.py:482
+msgctxt "ui:voice_tracker_config|mode:voice|embed|title"
+msgid "Voice Tracker Configuration Panel"
+msgstr "Wpjdf Usbdlfs Dpogjhvsbujpo Qbofm"
+
+#: src/tracking/voice/settings.py:433 src/tracking/voice/settings.py:487
+msgctxt "ui:voice_tracker_config|mode:study|embed|title"
+msgid "Study Tracker Configuration Panel"
+msgstr "Tuvez Usbdlfs Dpogjhvsbujpo Qbofm"
+
+#: src/tracking/voice/settings.py:472
+msgctxt "ui:voice_tracker_config|menu:untracked_channels|placeholder"
+msgid "Select Untracked Channels"
+msgstr "Tfmfdu Vousbdlfe Diboofmt"
+
+#: src/tracking/voice/settings.py:528
+msgctxt "dash:voice_tracker|title"
+msgid "Voice Tracker Configuration ({commands[configure voice_rewards]})"
+msgstr "Wpjdf Usbdlfs Dpogjhvsbujpo ({commands[configure voice_rewards]})"
+
+#: src/tracking/voice/settings.py:532
+msgctxt "dash:voice_tracking|dropdown|placeholder"
+msgid "Voice Activity Panel"
+msgstr "Wpjdf Bdujwjuz Qbofm"

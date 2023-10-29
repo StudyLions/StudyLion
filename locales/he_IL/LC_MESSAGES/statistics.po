@@ -1,0 +1,747 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Interitio, 2023
+# Ari Horesh, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-24 12:21+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Ari Horesh, 2023\n"
+"Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: he_IL\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
+
+#: src/modules/statistics/cog.py:43
+msgctxt "cmd:me"
+msgid "me"
+msgstr "אני"
+
+#: src/modules/statistics/cog.py:46
+msgctxt "cmd:me|desc"
+msgid "Display your personal profile and summary statistics."
+msgstr "הצג את הפרופיל האישי שלך וסיכום סטטיסטיקות הפעילות שלך."
+
+#: src/modules/statistics/cog.py:56
+msgctxt "cmd:stats"
+msgid "stats"
+msgstr "סטטיסטיקות"
+
+#: src/modules/statistics/cog.py:59
+msgctxt "cmd:stats|desc"
+msgid "Weekly and monthly statistics for your recent activity."
+msgstr "סטטיסטיקות שבועיות וחודשיות של הפעילות האחרונה שלך."
+
+#: src/modules/statistics/cog.py:72
+msgctxt "cmd:leaderboard"
+msgid "leaderboard"
+msgstr "לוח השגים"
+
+#: src/modules/statistics/cog.py:75
+msgctxt "cmd:leaderboard|desc"
+msgid "Server leaderboard."
+msgstr "לוח השגים של השרת"
+
+#: src/modules/statistics/cog.py:90
+#, possible-python-brace-format
+msgctxt "cmd:leaderboard|chunking|desc"
+msgid "Requesting server member list from Discord, please wait {loading}"
+msgstr "מבקש רשימת חברים מדיסקורד, אנא המתן {loading}"
+
+#: src/modules/statistics/cog.py:113
+msgctxt "cmd:configure_statistics"
+msgid "statistics"
+msgstr "סטטיסטיקות"
+
+#: src/modules/statistics/cog.py:114
+msgctxt "cmd:configure_statistics|desc"
+msgid "Statistics configuration panel"
+msgstr "תפריט הגדרות סטטיסטיקת פעילות"
+
+#: src/modules/statistics/cog.py:117
+msgctxt "cmd:configure_statistics|param:season_start"
+msgid "season_start"
+msgstr "התחלת_סשן"
+
+#: src/modules/statistics/cog.py:122
+msgctxt "cmd:configure_statistics|param:season_start|desc"
+msgid ""
+"Time from which to start counting activity for rank badges and season "
+"leaderboards. (YYYY-MM-DD)"
+msgstr ""
+"הזמן שבו אתחיל לספור את הפעילות של האנשים (אנחנו קוראים לזה \"עונה\") (YYYY-"
+"MM-DD)"
+
+#: src/modules/statistics/settings.py:37
+msgctxt "settype:stat|output:voice"
+msgid "`Voice`"
+msgstr "`קול`"
+
+#: src/modules/statistics/settings.py:38
+msgctxt "settype:stat|output:text"
+msgid "`Text`"
+msgstr "טקסט"
+
+#: src/modules/statistics/settings.py:39
+msgctxt "settype:stat|output:anki"
+msgid "`Anki`"
+msgstr "אנקי"
+
+#: src/modules/statistics/settings.py:42
+msgctxt "settype:stat|input_format:voice"
+msgid "Voice"
+msgstr "קול"
+
+#: src/modules/statistics/settings.py:43
+msgctxt "settype:stat|input_format:text"
+msgid "Text"
+msgstr "טקסט"
+
+#: src/modules/statistics/settings.py:44
+msgctxt "settype:stat|input_format:anki"
+msgid "Anki"
+msgstr "אנקי"
+
+#: src/modules/statistics/settings.py:47
+msgctxt "settype:stat|input_pattern:voice"
+msgid "voice|study"
+msgstr "קול|למידה"
+
+#: src/modules/statistics/settings.py:48
+msgctxt "settype:stat|input_pattern:text"
+msgid "text|messages"
+msgstr "טקסט|הודעות"
+
+#: src/modules/statistics/settings.py:49
+msgctxt "settype:stat|input_pattern:anki"
+msgid "anki"
+msgstr "אנקי"
+
+#: src/modules/statistics/settings.py:53
+msgctxt "settype:state|accepts"
+msgid "Voice/Text/Anki"
+msgstr "קול/טקסט/אנקי"
+
+#: src/modules/statistics/settings.py:66
+msgctxt "userset:show_global_stats"
+msgid "global_stats"
+msgstr "סטטיסטיקות_גלובליות"
+
+#: src/modules/statistics/settings.py:69
+msgctxt "userset:show_global_stats|desc"
+msgid "Whether displayed statistics include all your servers."
+msgstr "האם הסטטיסטקות יכללו את כל השרתים שאתה נמצא בהם ביחד."
+
+#: src/modules/statistics/settings.py:73
+msgctxt "userset:show_global_stats|long_desc"
+msgid ""
+"Whether statistics commands display combined stats for all servers or just "
+"your current server."
+msgstr ""
+"האם פקודות סטטיקטיקה יראו את הפעילות של המשתמשים מכל השרתים או רק השרת "
+"הנוכחי."
+
+#: src/modules/statistics/settings.py:88
+msgctxt "guildset:season_start"
+msgid "season_start"
+msgstr "התחלת_סשן"
+
+#: src/modules/statistics/settings.py:91
+msgctxt "guildset:season_start|desc"
+msgid "Start of the current statistics season."
+msgstr "התחל את העונה החדשה של הסטטיסטיקות בשרת."
+
+#: src/modules/statistics/settings.py:95
+msgctxt "guildset:season_start|long_desc"
+msgid ""
+"Activity ranks will be determined based on tracked activity since this time, and the leaderboard will display activity since this time by default. Unset to disable seasons and use all-time statistics instead.\n"
+"Provided dates and times are assumed to be in the guild `timezone`, so set this first!"
+msgstr ""
+"דרגות יקבעו על בסיס פעילות מהזמן הזה, ולוח השיאים יוצג מהזמן הזה. הסר על מנת לבטל \"עונות\" ולהשתמש בלוח שיאים מכל הזמנים במקום.\n"
+"התאריכים שניתנים מושפעים מאזור הזמן שקבעתם בהגדרות שרת שלכם, אז תהיו בטוחים ששינית את אזור הזמן קודם!"
+
+#: src/modules/statistics/settings.py:102
+msgctxt "guildset:season_start|accepts"
+msgid "The season start time in the form YYYY-MM-DD HH:MM"
+msgstr "אנא השתמשו בYYYY-MM-DD HH:MM"
+
+#: src/modules/statistics/settings.py:106
+msgctxt "guildset:season_start|notset"
+msgid "Not Set (Using all-time statistics)"
+msgstr "לא נבחר (משתמש בסטטיסטיקות מכל הזמנים)"
+
+#: src/modules/statistics/settings.py:125
+#, possible-python-brace-format
+msgctxt "guildset:season_start|parse|error:future_time"
+msgid "Provided season start time {timestamp} is in the future!"
+msgstr "התאריך שהבאת לתחילת העונה {timestamp} הוא בעתיד!"
+
+#: src/modules/statistics/settings.py:137
+#, possible-python-brace-format
+msgctxt "guildset:season_start|set_response|set"
+msgid ""
+"The leaderboard season and activity ranks will now count from {timestamp}. Member ranks will update when they are next active.\n"
+"Use {rank_cmd} and press **Refresh Member Ranks** to refresh all ranks immediately."
+msgstr ""
+"לוח השיאים עכשיו יציג את הסטטיסטיקות של של העונה שקבעת שתתחיל מ{timestamp}. הדרגות של האנשים יעודכנו בפעם הבאה שהם יהיו פעילים.\n"
+"השתמשו ב {rank_cmd} אם אתם רוצים לעדכן אותם באופן מיידי."
+
+#: src/modules/statistics/settings.py:147
+#, possible-python-brace-format
+msgctxt "guildset:season_start|set_response|unset"
+msgid ""
+"The leaderboard and activity ranks will now count all-time statistics. Member ranks will update when they are next active.\n"
+"Use {rank_cmd} and press **Refresh Member Ranks** to refresh all ranks immediately."
+msgstr ""
+"לוח השיאים עכשיו יציג את הסטטיסטיקות של של המכל הזמנים עד הפעם הבאה שתפעילו את הופציה הזה. הדרגות של האנשים יעודכנו בפעם הבאה שהם יהיו פעילים.\n"
+"השתמשו ב {rank_cmd} אם אתם רוצים לעדכן אותם באופן מיידי."
+
+#: src/modules/statistics/settings.py:159
+msgctxt "guildset:unranked_roles"
+msgid "unranked_roles"
+msgstr "רולים_ללא_מעקב"
+
+#: src/modules/statistics/settings.py:162
+msgctxt "guildset:unranked_roles|desc"
+msgid "Roles to exclude from the leaderboards."
+msgstr "רולים שלא אציג בלוח השיאים."
+
+#: src/modules/statistics/settings.py:166
+msgctxt "guildset:unranked_roles|long_desc"
+msgid ""
+"When set, members with *any* of these roles will not appear on the "
+"/leaderboard ranking list."
+msgstr "כשמופעל, אנשים עם *אחד* מהרולים האלו לא יופיע בלוח השיאים."
+
+#: src/modules/statistics/settings.py:170
+msgctxt "guildset:unranked_roles|accepts"
+msgid "Comma separated list of unranked role names or ids."
+msgstr ""
+"רשימה מופרדת עם פסיקים של הערוצים, רולים, אנשים ומספר זהות של מי שלא תרצו "
+"שאתן לו דרגות."
+
+#: src/modules/statistics/settings.py:186
+msgctxt "guildset:unranked_roles|set_using"
+msgid "Role selector below."
+msgstr "בחירת רולים בתחתית."
+
+#: src/modules/statistics/settings.py:196
+#, possible-python-brace-format
+msgctxt "guildset:unranked_roles|set_response|set"
+msgid ""
+"Members of the following roles will not appear on the leaderboard: {roles}"
+msgstr "אנשים עם הרולים הבאים לא יפיעו בלוח השיאים: {roles}"
+
+#: src/modules/statistics/settings.py:203
+msgctxt "guildset:unranked_roles|set_response|unset"
+msgid "You have cleared the unranked role list."
+msgstr "ניקית את הרשימה של הרולים שאני לא עוקב אחריהם."
+
+#: src/modules/statistics/settings.py:217
+msgctxt "guildset:visible_stats"
+msgid "visible_stats"
+msgstr "סטטיסטיקות_זמינות"
+
+#: src/modules/statistics/settings.py:220
+msgctxt "guildset:visible_stats|desc"
+msgid "Which statistics will be visible in the statistics commands."
+msgstr ""
+"איזה סוג סטטיסטיקה יהיה זמין כמשתמשים ישתמשו בפקודה שמראה להם את הסטטיסטיקה "
+"שלהם."
+
+#: src/modules/statistics/settings.py:224
+msgctxt "guildset:visible_stats|desc"
+msgid ""
+"Choose which statistics types to display in the leaderboard and statistics "
+"commands."
+msgstr "בחר באיזה סוג סטטיסטיקה לוח השיאים ופקודות הסטטיסטיקה ישתמשו."
+
+#: src/modules/statistics/settings.py:228
+msgctxt "guildset:visible_stats|accepts"
+msgid "Voice, Text, Anki"
+msgstr "קול, טקסט, אנקי"
+
+#: src/modules/statistics/settings.py:249
+msgctxt "guildset:visible_stats|set_using"
+msgid "Option menu below."
+msgstr "תפריט בחירה למטה."
+
+#: src/modules/statistics/settings.py:257
+#, possible-python-brace-format
+msgctxt "guildset:visible_stats|set_response"
+msgid "Members will be able to view the following statistics types: {types}"
+msgstr "משתמשים יוכלו לראות את הסוגי סטטיסטיקה הבאים: {types}"
+
+#: src/modules/statistics/settings.py:267
+msgctxt "guildset:default_stat"
+msgid "default_stat"
+msgstr "ברירתמחדל_סטטיסטיקה"
+
+#: src/modules/statistics/settings.py:270
+msgctxt "guildset:default_stat|desc"
+msgid "Statistic type to display by default in setting dialogues."
+msgstr "סוג הסטטיסטיקה שתרצו לראות כשאתם משחקים עם ההגדרות."
+
+#: src/modules/statistics/settings.py:274
+msgctxt "guildset:default_stat|long_desc"
+msgid "Which statistic type to display by default in setting dialogues."
+msgstr "איזה סוג סטטיסטיקה תרצו להראות כברירת מחדל בהגדרות?"
+
+#: src/modules/statistics/settings.py:307
+msgctxt "ui:statistics_config|menu:unranked_roles|placeholder"
+msgid "Select Unranked Roles"
+msgstr "בחר רולים ללא מעקב"
+
+#: src/modules/statistics/settings.py:331
+msgctxt "ui:statistics_config|menu:visible_stats|item:voice|mode:voice"
+msgid "Voice Activity"
+msgstr "פעילות חדרי קול"
+
+#: src/modules/statistics/settings.py:336
+msgctxt "ui:statistics_config|menu:visible_stats|item:voice|mode:study"
+msgid "Study Statistics"
+msgstr "סטטיסטיקת למידה"
+
+#: src/modules/statistics/settings.py:346
+msgctxt "ui:statistics_config|menu:visible_stats|item:text"
+msgid "Message Activity"
+msgstr "פעילות הודעות"
+
+#: src/modules/statistics/settings.py:354
+msgctxt "ui:statistics_config|menu:visible_stats|item:anki"
+msgid "Anki Reviews"
+msgstr "ביקורות אנקי"
+
+#: src/modules/statistics/settings.py:365
+msgctxt "ui:statistics_config|menu:visible_stats|placeholder"
+msgid "Select Visible Statistics"
+msgstr "בחר סטטיסטקות ציבוריות"
+
+#: src/modules/statistics/settings.py:386
+msgctxt "ui:statistics_config|embed|title"
+msgid "Statistics Configuration Panel"
+msgstr "תפריט הגדרות סטטיסטיקת פעילות"
+
+#: src/modules/statistics/settings.py:408
+msgctxt "dash:stats|title"
+msgid "Activity Statistics Configuration ({commands[configure statistics]})"
+msgstr "תפריט סטטיסטיקת פעילות ({commands[configure statistics]})"
+
+#: src/modules/statistics/settings.py:412
+msgctxt "dash:stats|dropdown|placeholder"
+msgid "Activity Statistics Panel"
+msgstr "תפריט סטטיסטיקת פעילות"
+
+#: src/modules/statistics/ui/goals.py:92
+msgctxt "ui:MonthlyUI|name"
+msgid "Monthly"
+msgstr "חודשי"
+
+#: src/modules/statistics/ui/goals.py:135
+msgctxt "ui:WeeklyUI|name"
+msgid "Weekly"
+msgstr "שבועי"
+
+#: src/modules/statistics/ui/summary.py:18
+msgctxt "ui:SummaryUI|name"
+msgid "Summary"
+msgstr "סיכום"
+
+#: src/modules/statistics/ui/weeklymonthly.py:96
+msgctxt "menu:stat_type|opt:weekly_voice|name"
+msgid "Weekly Voice Statistics"
+msgstr "סיכום סטטיסטיקות שבועיות (קוליות)"
+
+#: src/modules/statistics/ui/weeklymonthly.py:101
+msgctxt "menu:stat_type|opt:weekly_text|name"
+msgid "Weekly Text Statistics"
+msgstr "סטטיסטיקות טקסט שבועיות"
+
+#: src/modules/statistics/ui/weeklymonthly.py:106
+msgctxt "menu:stat_type|opt:weekly_anki|name"
+msgid "Weekly Anki Statistics"
+msgstr "סטטיסטיקות אנקי שבועיות"
+
+#: src/modules/statistics/ui/weeklymonthly.py:112
+msgctxt "menu:stat_type|opt:monthly_voice|name"
+msgid "Monthly Voice Statistics"
+msgstr "סטטיסטיקות קול חודשיות"
+
+#: src/modules/statistics/ui/weeklymonthly.py:117
+msgctxt "menu:stat_type|opt:monthly_text|name"
+msgid "Monthly Text Statistics"
+msgstr "סטטיסטיקות טקסט חודשיות"
+
+#: src/modules/statistics/ui/weeklymonthly.py:122
+msgctxt "menu:stat_type|opt:monthly_anki|name"
+msgid "Monthly Anki Statistics"
+msgstr "סטטיסטיקות אנקי חודשיות"
+
+#: src/modules/statistics/ui/weeklymonthly.py:144
+msgctxt "modal:goal_editor|field:task_goal|label"
+msgid "Task goal"
+msgstr "מטרת מטלות"
+
+#: src/modules/statistics/ui/weeklymonthly.py:148
+msgctxt "modal:goal_editor|field:task_goal|placeholder"
+msgid "Enter the number of tasklist tasks you aim to do"
+msgstr "הכנס את מספר המטלות שאתה מכוון להגיע אליו"
+
+#: src/modules/statistics/ui/weeklymonthly.py:159
+#, possible-python-brace-format
+msgctxt "modal:goal_editor|field:task_goal|error:NAN"
+msgid "The provided task goal `{input}` is not a number! Please try again."
+msgstr "המטרה שהבאת `{input}` אינה מספר, אנא נסו שוב."
+
+#: src/modules/statistics/ui/weeklymonthly.py:181
+msgctxt "modal:goal_editor|field:voice_goal|label"
+msgid "Study time goal"
+msgstr "מטרת זמן למידה"
+
+#: src/modules/statistics/ui/weeklymonthly.py:185
+msgctxt "modal:goal_editor|field:voice_goal|placeholder"
+msgid "Enter a number of hours of study to aim for."
+msgstr "הכנס את מספר השעות שאתה רוצה ללמוד."
+
+#: src/modules/statistics/ui/weeklymonthly.py:190
+msgctxt "modal:goal_editor|field:text_goal|label"
+msgid "Message goal"
+msgstr "מטרת הודעות"
+
+#: src/modules/statistics/ui/weeklymonthly.py:194
+msgctxt "modal:goal_editor|field:text_goal|placeholder"
+msgid "Enter a message count to aim for."
+msgstr "הכנס את מספר ההודעות שתרצה לשלוח."
+
+#: src/modules/statistics/ui/weeklymonthly.py:199
+msgctxt "modal:goal_editor|field:anki_goal|label"
+msgid "Card goal"
+msgstr "מטרות כרטיסים"
+
+#: src/modules/statistics/ui/weeklymonthly.py:203
+msgctxt "modal:goal_editor|field:anki_goal|label"
+msgid "Enter a number of card revisions to aim for."
+msgstr "הכנס את מספר הקלפים שתרצה לעשות."
+
+#: src/modules/statistics/ui/weeklymonthly.py:216
+#, possible-python-brace-format
+msgctxt "modal:goal_editor|field:voice_goal|error:NAN"
+msgid ""
+"The provided study time goal `{input}` is not a number! Please try again."
+msgstr "המטרה שהבאת `{input}` אינה מספר, אנא נסו שוב."
+
+#: src/modules/statistics/ui/weeklymonthly.py:223
+#, possible-python-brace-format
+msgctxt "modal:goal_editor|field:text_goal|error:NAN"
+msgid "The provided message goal `{input}` is not a number! Please try again."
+msgstr "המטרה שהבאת `{input}` אינה מספר, אנא נסו שוב."
+
+#: src/modules/statistics/ui/weeklymonthly.py:230
+#, possible-python-brace-format
+msgctxt "modal:goal_editor|field:anki_goal|error:NAN"
+msgid "The provided card goal `{input}` is not a number! Please try again."
+msgstr "המטרה שהבאת `{input}` אינה מספר, אנא נסו שוב."
+
+#: src/modules/statistics/ui/weeklymonthly.py:252
+msgctxt "modal:goal_editor|field:weekly_task_editor|label"
+msgid "Tasks to complete this week (one per line)"
+msgstr "מטלות להשלים בשבוע הזה (אחת בכל שורה)"
+
+#: src/modules/statistics/ui/weeklymonthly.py:256
+msgctxt "modal:goal_editor|field:weekly_task_editor|placeholder"
+msgid ""
+"[ ] Write my biology essay\n"
+"[x] Complete the second maths assignment\n"
+msgstr ""
+"[ ] לקרוא את הסיכום ביולוגיה שלי\n"
+"[x] להגיש שיעורי בית למורה שאני שונא\n"
+
+#: src/modules/statistics/ui/weeklymonthly.py:262
+msgctxt "modal:goal_editor|field:monthly_task_editor|label"
+msgid "Tasks to complete this month (one per line)"
+msgstr "מטלות להשלים בחודש הזה (אחת בכל שורה)"
+
+#: src/modules/statistics/ui/weeklymonthly.py:266
+msgctxt "modal:goal_editor|field:monthly_task_editor|placeholder"
+msgid ""
+"[ ] Write my biology essay\n"
+"[x] Complete the second maths assignment\n"
+msgstr ""
+"[ ] לקרוא את הסיכום ביולוגיה שלי\n"
+"[x] להגיש שיעורי בית למורה שאני שונא\n"
+
+#: src/modules/statistics/ui/weeklymonthly.py:284
+#, possible-python-brace-format
+msgctxt "modal:goal_editor||field:task_editor|error:parse_general"
+msgid ""
+"Malformed task!\n"
+"`{input}`"
+msgstr ""
+"מטלה שגויה!\n"
+"`{input}`"
+
+#: src/modules/statistics/ui/weeklymonthly.py:301
+msgctxt "modal:goal_editor|title"
+msgid "Weekly goal editor"
+msgstr "עורך מטרות שבועיות"
+
+#: src/modules/statistics/ui/weeklymonthly.py:306
+msgctxt "modal:goal_editor|monthly|title"
+msgid "Monthly goal editor"
+msgstr "ערוך מטרות חודשיות"
+
+#: src/modules/statistics/ui/weeklymonthly.py:503
+msgctxt "ui:weeklymonthly|button:edit_goals|label"
+msgid "Edit Goals"
+msgstr "ערוך מטרות"
+
+#: src/modules/statistics/ui/weeklymonthly.py:519
+#, possible-python-brace-format
+msgctxt "ui:weeklymonthly|menu:period|monthly|label"
+msgid "{month} {year}"
+msgstr "{month} {year}"
+
+#: src/modules/statistics/ui/weeklymonthly.py:534
+#, possible-python-brace-format
+msgctxt "ui:weeklymonthly|menu:period|weekly|label"
+msgid "{year} W{week}"
+msgstr "{year} W{week}"
+
+#: src/modules/statistics/ui/weeklymonthly.py:538
+#, possible-python-brace-format
+msgctxt "ui:weeklymonthly|menu:period|weekly|desc"
+msgid ""
+"{start_day} {start_month} {start_year} to {end_day} {end_month} {end_year}"
+msgstr ""
+"{start_day} {start_month} {start_year} to {end_day} {end_month} {end_year}"
+
+#: src/modules/statistics/ui/weeklymonthly.py:616
+msgctxt "ui:weeklymonthly|button:period|close|label"
+msgid "Close Selector"
+msgstr "סגור תפריט"
+
+#: src/modules/statistics/ui/weeklymonthly.py:621
+msgctxt "ui:weeklymonthly|button:period|weekly|label"
+msgid "Select Week"
+msgstr "בחר שבוע"
+
+#: src/modules/statistics/ui/weeklymonthly.py:626
+msgctxt "ui:weeklymonthly|button:period|monthly|label"
+msgid "Select Month"
+msgstr "בחר חודש"
+
+#: src/modules/statistics/ui/weeklymonthly.py:691
+msgctxt "ui:weeklymonthly|menu:period|weekly|placeholder"
+msgid "Select a week to display"
+msgstr "בחר שבוע להצגה"
+
+#: src/modules/statistics/ui/weeklymonthly.py:696
+msgctxt "ui:weeklymonthly|menu:period|monthly|placeholder"
+msgid "Select a month to display"
+msgstr "בחר חודש להצגה"
+
+#: src/modules/statistics/ui/weeklymonthly.py:718
+msgctxt "ui:WeeklyMonthly|button:global|resp:success"
+msgid ""
+"You will now see combined statistics from all your servers (where "
+"applicable)! Press again to revert."
+msgstr ""
+"עכשיו תוכל לראות סטטיסטיקות מכל השרתים שבהם אתה נמצא! (וגם אני). לחץ שוב על "
+"מנת לראות סטטיסטיקות רק מהשרת הזה."
+
+#: src/modules/statistics/ui/weeklymonthly.py:731
+msgctxt "ui:WeeklyMonthly|button:global|mode:local"
+msgid "Server Statistics"
+msgstr "סטטיסטיקות שקת"
+
+#: src/modules/statistics/ui/weeklymonthly.py:736
+msgctxt "ui:WeeklyMonthly|button:global|mode:global"
+msgid "Global Statistics"
+msgstr "סטטיסטיקות גלובליות"
+
+#: src/modules/statistics/ui/profile.py:41
+msgctxt "modal:profile_editor|field:editor|label"
+msgid "Profile Tags (One line per tag)"
+msgstr "תאגי כרטיס (שורה חדשה עבור כל תאג)"
+
+#: src/modules/statistics/ui/profile.py:45
+msgctxt "modal:profile_editor|field:editor|placeholder"
+msgid ""
+"Mathematician\n"
+"Loves Cats"
+msgstr ""
+"מתמטיקאי\n"
+"אוהב חתולים"
+
+#: src/modules/statistics/ui/profile.py:53
+msgctxt "modal:profile_editor|title"
+msgid "Profile Tag Editor"
+msgstr "עורך כרטיס אישי"
+
+#: src/modules/statistics/ui/profile.py:71
+#, possible-python-brace-format
+msgctxt "modal:profile_editor|error:too_many_tags"
+msgid "Too many tags! You can have at most `{limit}` profile tags."
+msgstr "יותר מידי תאגים! אתה יכול להוסיף רק `{limit}` לכרטיס שלך."
+
+#: src/modules/statistics/ui/profile.py:92
+msgctxt "menu:stat_type|opt:voice|name"
+msgid "Voice Statistics"
+msgstr "סטטיסטיקות קול"
+
+#: src/modules/statistics/ui/profile.py:97
+msgctxt "menu:stat_type|opt:text|name"
+msgid "Text Statistics"
+msgstr "סטטיסטיקות טקסט"
+
+#: src/modules/statistics/ui/profile.py:102
+msgctxt "menu:stat_type|opt:anki|name"
+msgid "Anki Statistics"
+msgstr "סטטיסטיקות אנקי"
+
+#: src/modules/statistics/ui/profile.py:190
+msgctxt "modal:profile_editor|resp:success"
+msgid "Your profile has been updated!"
+msgstr "הפרופיל שלך עודכן!"
+
+#: src/modules/statistics/ui/profile.py:200
+msgctxt "ui:profile_card|button:edit|label"
+msgid "Edit Profile Badges"
+msgstr "ערוך תגיות כרטיס תלמיד"
+
+#: src/modules/statistics/ui/profile.py:219
+msgctxt "ui:profile_card|button:statistics|label:hide"
+msgid "Hide Statistics"
+msgstr "הסתדר סטטיסטיקה"
+
+#: src/modules/statistics/ui/profile.py:224
+msgctxt "ui:profile_card|button:statistics|label:show"
+msgid "Show Statistics"
+msgstr "הצג סטטיסטיקות"
+
+#: src/modules/statistics/ui/profile.py:253
+msgctxt "ui:Profile|button:global|resp:success"
+msgid ""
+"You will now see statistics from all you servers (where applicable)! Press "
+"again to revert."
+msgstr ""
+"עכשיו תוכל לראות סטטיסטיקות מכל השרתים שבהם אתה נמצא! (וגם אני). לחץ שוב על "
+"מנת לראות סטטיסטיקות רק מהשרת הזה."
+
+#: src/modules/statistics/ui/leaderboard.py:253
+msgctxt "ui:leaderboard|menu:stats|placeholder"
+msgid "Select Activity Type"
+msgstr "בחר סוג פעילות"
+
+#: src/modules/statistics/ui/leaderboard.py:262
+msgctxt "ui:leaderboard|menu:stats|item:voice"
+msgid "Voice Activity"
+msgstr "פעילות חדרי קול"
+
+#: src/modules/statistics/ui/leaderboard.py:273
+msgctxt "ui:leaderboard|menu:stats|item:study"
+msgid "Study Statistics"
+msgstr "סטטיסטיקת למידה"
+
+#: src/modules/statistics/ui/leaderboard.py:284
+msgctxt "ui:leaderboard|menu:stats|item:message"
+msgid "Message Activity"
+msgstr "פעילות הודעות"
+
+#: src/modules/statistics/ui/leaderboard.py:295
+msgctxt "ui:leaderboard|menu;stats|item:anki"
+msgid "Anki Cards Reviewed"
+msgstr "קלפי אנקי שהושלמו"
+
+#: src/modules/statistics/ui/leaderboard.py:349
+msgctxt "ui:leaderboard|button:season|label"
+msgid "This Season"
+msgstr "בעונה הזו"
+
+#: src/modules/statistics/ui/leaderboard.py:353
+msgctxt "ui:leaderboard|button:day|label"
+msgid "Today"
+msgstr "היום"
+
+#: src/modules/statistics/ui/leaderboard.py:357
+msgctxt "ui:leaderboard|button:week|label"
+msgid "This Week"
+msgstr "בשבוע הזה"
+
+#: src/modules/statistics/ui/leaderboard.py:361
+msgctxt "ui:leaderboard|button:month|label"
+msgid "This Month"
+msgstr "בחודש הנוכחי"
+
+#: src/modules/statistics/ui/leaderboard.py:365
+msgctxt "ui:leaderboard|button:alltime|label"
+msgid "All Time"
+msgstr "כל הזמנים"
+
+#: src/modules/statistics/ui/leaderboard.py:369
+msgctxt "ui:leaderboard|button:jump|label"
+msgid "Jump"
+msgstr "קפוץ"
+
+#: src/modules/statistics/ui/leaderboard.py:384
+msgctxt "ui:leaderboard|button:jump|input:title"
+msgid "Jump to page"
+msgstr "קפוץ אל עמוד"
+
+#: src/modules/statistics/ui/leaderboard.py:388
+msgctxt "ui:leaderboard|button:jump|input:question"
+msgid "Page number to jump to"
+msgstr "מספר עמוד לקפוץ אליו"
+
+#: src/modules/statistics/ui/leaderboard.py:399
+msgctxt "ui:leaderboard|button:jump|error:invalid_page"
+msgid "Invalid page number, please try again!"
+msgstr "מספר עמוד לא נכון, אנא נסה שוב!"
+
+#: src/modules/statistics/ui/leaderboard.py:443
+msgctxt "ui:leaderboard|chunk_warning"
+msgid ""
+"**Note:** Could not retrieve member list from Discord, so some members may "
+"be missing. Try again in a minute!"
+msgstr ""
+"שימו לב: לא הצלחתי להשיג רשימה עדכנית של המשתמשים מדיסקורד, אז כמה משתמשים "
+"יהיו חסרים. אנא נסו שוב עוד דקה!"
+
+#: src/modules/statistics/ui/leaderboard.py:450
+#, possible-python-brace-format
+msgctxt "ui:leaderboard|since"
+msgid "Counting statistics since {timestamp}"
+msgstr "סופר סטטיסטיקות מ  {timestamp}"
+
+#: src/modules/statistics/ui/leaderboard.py:463
+#, possible-python-brace-format
+msgctxt "ui:leaderboard|mode:voice|message:empty|desc"
+msgid "There has been no voice activity since {timestamp}"
+msgstr "לא הייתה פעילות קולית מאז {timestamp}"
+
+#: src/modules/statistics/ui/leaderboard.py:468
+#, possible-python-brace-format
+msgctxt "ui:leaderboard|mode:text|message:empty|desc"
+msgid "There has been no message activity since {timestamp}"
+msgstr "לא הייתה פעילות הודעות מאז {timestamp}"
+
+#: src/modules/statistics/ui/leaderboard.py:473
+#, possible-python-brace-format
+msgctxt "ui:leaderboard|mode:anki|message:empty|desc"
+msgid "There have been no Anki cards reviewed since {timestamp}"
+msgstr "לא היו שום קלפי אנקי שבוצעו מאז {timestamp}"
+
+#: src/modules/statistics/ui/leaderboard.py:482
+msgctxt "ui:leaderboard|message:empty|title"
+msgid "Leaderboard Empty!"
+msgstr "לוח ההישגים ריק!"

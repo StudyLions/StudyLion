@@ -1,0 +1,3 @@
+# Questions
+- New GUI designs or sample layouts for each card in general mode?
+- New achievements? Should they be customisable?

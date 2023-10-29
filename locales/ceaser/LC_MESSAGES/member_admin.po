@@ -1,0 +1,431 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: you@example.com\n"
+"POT-Creation-Date: 2007-10-18 14:00+0100\n"
+"PO-Revision-Date: 2007-10-18 14:00+0100\n"
+"Last-Translator: you <you@example.com>\n"
+"Language-Team: English <yourteam@example.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/modules/member_admin/settingui.py:57
+msgctxt "ui:memberadmin|menu:greetch|placeholder"
+msgid "Select Greeting Channel"
+msgstr "Tfmfdu Hsffujoh Diboofm"
+
+#: src/modules/member_admin/settingui.py:86
+msgctxt "ui:memberadmin|menu:autoroles|placeholder"
+msgid "Select Autoroles"
+msgstr "Tfmfdu Bvupspmft"
+
+#: src/modules/member_admin/settingui.py:115
+msgctxt "ui:memberadmin|menu:bot_autoroles|placeholder"
+msgid "Select Bot Autoroles"
+msgstr "Tfmfdu Cpu Bvupspmft"
+
+#: src/modules/member_admin/settingui.py:156
+msgctxt "ui:member_admin|button:greet_msg|label"
+msgid "Greeting Msg"
+msgstr "Hsffujoh Nth"
+
+#: src/modules/member_admin/settingui.py:205
+msgctxt "ui:memberadmin|button:return_msg|label"
+msgid "Returning Msg"
+msgstr "Sfuvsojoh Nth"
+
+#: src/modules/member_admin/settingui.py:213
+msgctxt "ui:memberadmin|embed|title"
+msgid "Member Admin Configuration Panel"
+msgstr "Nfncfs Benjo Dpogjhvsbujpo Qbofm"
+
+#: src/modules/member_admin/settingui.py:257
+msgctxt "dash:member_admin|title"
+msgid "Greetings and Initial Roles ({commands[configure welcome]})"
+msgstr "Hsffujoht boe Jojujbm Spmft ({commands[configure welcome]})"
+
+#: src/modules/member_admin/settingui.py:261
+msgctxt "dash:member_admin|dropdown|placeholder"
+msgid "Greetings and Initial Roles Panel"
+msgstr "Hsffujoht boe Jojujbm Spmft Qbofm"
+
+#: src/modules/member_admin/settingui.py:281
+msgctxt "dash:member_admin|section:greeting_messages|name"
+msgid "Greeting Messages ({commands[configure welcome]})"
+msgstr "Hsffujoh Nfttbhft ({commands[configure welcome]})"
+
+#: src/modules/member_admin/settingui.py:292
+msgctxt "dash:member_admin|section:initial_roles|name"
+msgid "Initial Roles ({commands[configure welcome]})"
+msgstr "Jojujbm Spmft ({commands[configure welcome]})"
+
+#: src/modules/member_admin/cog.py:234
+msgctxt "cmd:resetmember"
+msgid "resetmember"
+msgstr "sftfunfncfs"
+
+#: src/modules/member_admin/cog.py:237
+msgctxt "cmd:resetmember|desc"
+msgid "Reset (server-associated) member data for the target member or user."
+msgstr "Sftfu (tfswfs-bttpdjbufe) nfncfs ebub gps uif ubshfu nfncfs ps vtfs."
+
+#: src/modules/member_admin/cog.py:241
+msgctxt "cmd:resetmember|param:target"
+msgid "member_to_reset"
+msgstr "nfncfs_up_sftfu"
+
+#: src/modules/member_admin/cog.py:242
+msgctxt "cmd:resetmember|param:saved_roles"
+msgid "saved_roles"
+msgstr "tbwfe_spmft"
+
+#: src/modules/member_admin/cog.py:247
+msgctxt "cmd:resetmember|param:target|desc"
+msgid "Choose the member (current or past) you want to reset."
+msgstr "Dipptf uif nfncfs (dvssfou ps qbtu) zpv xbou up sftfu."
+
+#: src/modules/member_admin/cog.py:251
+msgctxt "cmd:resetmember|param:saved_roles|desc"
+msgid ""
+"Clear the saved roles for this member, so their past roles are not restored "
+"on rejoin."
+msgstr ""
+"Dmfbs uif tbwfe spmft gps uijt nfncfs, tp uifjs qbtu spmft bsf opu sftupsfe "
+"po sfkpjo."
+
+#: src/modules/member_admin/cog.py:278
+#, possible-python-brace-format
+msgctxt "cmd:resetmember|reset:saved_roles|success"
+msgid ""
+"The saved roles for {target} have been reset. They will not regain their "
+"roles if they rejoin."
+msgstr ""
+"Uif tbwfe spmft gps {target} ibwf cffo sftfu. Uifz xjmm opu sfhbjo uifjs "
+"spmft jg uifz sfkpjo."
+
+#: src/modules/member_admin/cog.py:286
+msgctxt "cmd:resetmember|error:nothing_to_do"
+msgid "No reset operation selected, nothing to do."
+msgstr "Op sftfu pqfsbujpo tfmfdufe, opuijoh up ep."
+
+#: src/modules/member_admin/cog.py:302
+msgctxt "cmd:configure_welcome"
+msgid "welcome"
+msgstr "xfmdpnf"
+
+#: src/modules/member_admin/cog.py:305
+msgctxt "cmd:configure_welcome|desc"
+msgid "Configure new member greetings and roles."
+msgstr "Dpogjhvsf ofx nfncfs hsffujoht boe spmft."
+
+#: src/modules/member_admin/settings.py:20
+msgctxt "guildset:greeting_message|formatkey:mention"
+msgid "Mention the new member."
+msgstr "Nfoujpo uif ofx nfncfs."
+
+#: src/modules/member_admin/settings.py:22
+msgctxt "guildset:greeting_message|formatkey:user_name"
+msgid "Display name of the new member."
+msgstr "Ejtqmbz obnf pg uif ofx nfncfs."
+
+#: src/modules/member_admin/settings.py:24
+msgctxt "guildset:greeting_message|formatkey:user_avatar"
+msgid "Avatar url of the new member."
+msgstr "Bwbubs vsm pg uif ofx nfncfs."
+
+#: src/modules/member_admin/settings.py:26
+msgctxt "guildset:greeting_message|formatkey:guild_name"
+msgid "Name of this server."
+msgstr "Obnf pg uijt tfswfs."
+
+#: src/modules/member_admin/settings.py:28
+msgctxt "guildset:greeting_message|formatkey:guild_icon"
+msgid "Server icon url."
+msgstr "Tfswfs jdpo vsm."
+
+#: src/modules/member_admin/settings.py:30
+msgctxt "guildset:greeting_message|formatkey:studying_count"
+msgid "Number of current voice channel members."
+msgstr "Ovncfs pg dvssfou wpjdf diboofm nfncfst."
+
+#: src/modules/member_admin/settings.py:32
+msgctxt "guildset:greeting_message|formatkey:member_count"
+msgid "Number of members in the server."
+msgstr "Ovncfs pg nfncfst jo uif tfswfs."
+
+#: src/modules/member_admin/settings.py:40
+msgctxt "guildset:greeting_channel"
+msgid "welcome_channel"
+msgstr "xfmdpnf_diboofm"
+
+#: src/modules/member_admin/settings.py:43
+msgctxt "guildset:greeting_channel|desc"
+msgid "Channel in which to welcome new members to the server."
+msgstr "Diboofm jo xijdi up xfmdpnf ofx nfncfst up uif tfswfs."
+
+#: src/modules/member_admin/settings.py:47
+msgctxt "guildset:greeting_channel|long_desc"
+msgid ""
+"New members will be sent the configured `welcome_message` in this channel, "
+"and returning members will be sent the configured `returning_message`. Unset"
+" to send these message via direct message."
+msgstr ""
+"Ofx nfncfst xjmm cf tfou uif dpogjhvsfe `xfmdpnf_nfttbhf` jo uijt diboofm, "
+"boe sfuvsojoh nfncfst xjmm cf tfou uif dpogjhvsfe `sfuvsojoh_nfttbhf`. Votfu"
+" up tfoe uiftf nfttbhf wjb ejsfdu nfttbhf."
+
+#: src/modules/member_admin/settings.py:53
+msgctxt "guildset:greeting_channel|accepts"
+msgid "Name or id of the greeting channel, or 0 for DM."
+msgstr "Obnf ps je pg uif hsffujoh diboofm, ps 0 gps EN."
+
+#: src/modules/member_admin/settings.py:67
+msgctxt "guildset:greeting_channel|set_response:unset"
+msgid "Welcome messages will now be sent via direct message."
+msgstr "Xfmdpnf nfttbhft xjmm opx cf tfou wjb ejsfdu nfttbhf."
+
+#: src/modules/member_admin/settings.py:72
+#, possible-python-brace-format
+msgctxt "guildset:greeting_channel|set_response:set"
+msgid "Welcome messages will now be sent to {channel}"
+msgstr "Xfmdpnf nfttbhft xjmm opx cf tfou up {channel}"
+
+#: src/modules/member_admin/settings.py:84
+msgctxt "guildset:greeting_channel|formmatted:unset"
+msgid "Direct Message"
+msgstr "Ejsfdu Nfttbhf"
+
+#: src/modules/member_admin/settings.py:91
+msgctxt "guildset:greeting_message"
+msgid "welcome_message"
+msgstr "xfmdpnf_nfttbhf"
+
+#: src/modules/member_admin/settings.py:95
+msgctxt "guildset:greeting_message|desc"
+msgid "Custom message used to greet new members when they join the server."
+msgstr "Dvtupn nfttbhf vtfe up hsffu ofx nfncfst xifo uifz kpjo uif tfswfs."
+
+#: src/modules/member_admin/settings.py:99
+msgctxt "guildset:greeting_message|long_desc"
+msgid ""
+"When set, this message will be sent to the `welcome_channel` when a *new* "
+"member joins the server. If not set, no message will be sent."
+msgstr ""
+"Xifo tfu, uijt nfttbhf xjmm cf tfou up uif `xfmdpnf_diboofm` xifo b *ofx* "
+"nfncfs kpjot uif tfswfs. Jg opu tfu, op nfttbhf xjmm cf tfou."
+
+#: src/modules/member_admin/settings.py:104
+msgctxt "guildset:greeting_message|accepts"
+msgid "JSON formatted greeting message data"
+msgstr "KTPO gpsnbuufe hsffujoh nfttbhf ebub"
+
+#: src/modules/member_admin/settings.py:108
+msgctxt "guildset:greeting_message|default"
+msgid ""
+"\n"
+"            {\n"
+"                \"embed\": {\n"
+"                    \"title\": \"Welcome {user_name}!\",\n"
+"                    \"thumbnail\": {\"url\": \"{user_avatar}\"},\n"
+"                    \"description\": \"Welcome to **{guild_name}**!\",\n"
+"                    \"footer\": {\n"
+"                        \"text\": \"You are the {member_count}th member!\"\n"
+"                    },\n"
+"                    \"color\": 15695665\n"
+"                }\n"
+"            }\n"
+"            "
+msgstr ""
+"\n"
+"            {\n"
+"                \"embed\": {\n"
+"                    \"ujumf\": \"Xfmdpnf {user_name}!\",\n"
+"                    \"uivncobjm\": {\"url\": \"{vtfs_bwbubs}\"},\n"
+"                    \"eftdsjqujpo\": \"Xfmdpnf up **{guild_name}**!\",\n"
+"                    \"gppufs\": {\n"
+"                        \"text\": \"You are the {nfncfs_dpvou}th member!\"\n"
+"                    },\n"
+"                    \"dpmps\": 15695665\n"
+"                }\n"
+"            }\n"
+"            "
+
+#: src/modules/member_admin/settings.py:136
+msgctxt "guildset:greeting_message|set_response:unset"
+msgid "Welcome message unset! New members will not be greeted."
+msgstr "Xfmdpnf nfttbhf votfu! Ofx nfncfst xjmm opu cf hsffufe."
+
+#: src/modules/member_admin/settings.py:141
+msgctxt "guildset:greeting_message|set_response:set"
+msgid "The welcome message has been updated."
+msgstr "Uif xfmdpnf nfttbhf ibt cffo vqebufe."
+
+#: src/modules/member_admin/settings.py:153
+msgctxt "guildset:greeting_message|formmatted:unset"
+msgid "Not set, members will not be welcomed."
+msgstr "Opu tfu, nfncfst xjmm opu cf xfmdpnfe."
+
+#: src/modules/member_admin/settings.py:200
+msgctxt "guildset:greeting_message|embed_field|formatkeys|explanation"
+msgid "The following placeholders will be substituted with their values."
+msgstr "Uif gpmmpxjoh qmbdfipmefst xjmm cf tvctujuvufe xjui uifjs wbmvft."
+
+#: src/modules/member_admin/settings.py:203
+msgctxt "guildset:greeting_message|embed_field|formatkeys|name"
+msgid "Placeholders"
+msgstr "Qmbdfipmefst"
+
+#: src/modules/member_admin/settings.py:213
+msgctxt "guildset:returning_message"
+msgid "returning_message"
+msgstr "sfuvsojoh_nfttbhf"
+
+#: src/modules/member_admin/settings.py:217
+msgctxt "guildset:returning_message|desc"
+msgid ""
+"Custom message used to greet returning members when they rejoin the server."
+msgstr ""
+"Dvtupn nfttbhf vtfe up hsffu sfuvsojoh nfncfst xifo uifz sfkpjo uif tfswfs."
+
+#: src/modules/member_admin/settings.py:221
+msgctxt "guildset:returning_message|long_desc"
+msgid ""
+"When set, this message will be sent to the `welcome_channel` when a member "
+"*returns* to the server. If not set, no message will be sent."
+msgstr ""
+"Xifo tfu, uijt nfttbhf xjmm cf tfou up uif `xfmdpnf_diboofm` xifo b nfncfs "
+"*sfuvsot* up uif tfswfs. Jg opu tfu, op nfttbhf xjmm cf tfou."
+
+#: src/modules/member_admin/settings.py:226
+msgctxt "guildset:returning_message|accepts"
+msgid "JSON formatted returning message data"
+msgstr "KTPO gpsnbuufe sfuvsojoh nfttbhf ebub"
+
+#: src/modules/member_admin/settings.py:230
+msgctxt "guildset:returning_message|default"
+msgid ""
+"\n"
+"            {\n"
+"                \"embed\": {\n"
+"                    \"title\": \"Welcome Back {user_name}!\",\n"
+"                    \"thumbnail\": {\"url\": \"{User_avatar}\"},\n"
+"                    \"description\": \"Welcome back to **{guild_name}**!\\nYou were last seen <t:{last_time}:R>.\",\n"
+"                    \"color\": 15695665\n"
+"                }\n"
+"            }\n"
+"            "
+msgstr ""
+"\n"
+"            {\n"
+"                \"embed\": {\n"
+"                    \"ujumf\": \"Xfmdpnf Cbdl {user_name}!\",\n"
+"                    \"uivncobjm\": {\"url\": \"{Vtfs_bwbubs}\"},\n"
+"                    \"eftdsjqujpo\": \"Xfmdpnf cbdl up **{guild_name}**!\\oZpv xfsf mbtu tffo <u:{last_time}:S>.\",\n"
+"                    \"dpmps\": 15695665\n"
+"                }\n"
+"            }\n"
+"            "
+
+#: src/modules/member_admin/settings.py:247
+msgctxt "guildset:returning_message|formatkey:last_time"
+msgid "Unix timestamp of the last time the member was seen in the server."
+msgstr "Vojy ujnftubnq pg uif mbtu ujnf uif nfncfs xbt tffo jo uif tfswfs."
+
+#: src/modules/member_admin/settings.py:258
+msgctxt "guildset:returning_message|set_response:unset"
+msgid "Returning member greeting unset! Will use `welcome_message` if set."
+msgstr "Sfuvsojoh nfncfs hsffujoh votfu! Xjmm vtf `xfmdpnf_nfttbhf` jg tfu."
+
+#: src/modules/member_admin/settings.py:263
+msgctxt "guildset:greeting_message|set_response:set"
+msgid "The returning member greeting has been updated."
+msgstr "Uif sfuvsojoh nfncfs hsffujoh ibt cffo vqebufe."
+
+#: src/modules/member_admin/settings.py:275
+msgctxt "guildset:greeting_message|formmatted:unset"
+msgid "Not set, will use the `welcome_message` if set."
+msgstr "Opu tfu, xjmm vtf uif `xfmdpnf_nfttbhf` jg tfu."
+
+#: src/modules/member_admin/settings.py:325
+msgctxt "guildset:returning_message|embed_field|formatkeys|explanation"
+msgid "In *addition* to the placeholders supported by `welcome_message`"
+msgstr "Jo *beejujpo* up uif qmbdfipmefst tvqqpsufe cz `xfmdpnf_nfttbhf`"
+
+#: src/modules/member_admin/settings.py:328
+msgctxt "guildset:returning_message|embed_field|formatkeys|"
+msgid "Placeholders"
+msgstr "Qmbdfipmefst"
+
+#: src/modules/member_admin/settings.py:339
+msgctxt "guildset:autoroles"
+msgid "autoroles"
+msgstr "bvupspmft"
+
+#: src/modules/member_admin/settings.py:343
+msgctxt "guildset:autoroles|desc"
+msgid "Roles given to new members when they join the server."
+msgstr "Spmft hjwfo up ofx nfncfst xifo uifz kpjo uif tfswfs."
+
+#: src/modules/member_admin/settings.py:347
+msgctxt "guildset:autoroles|long_desc"
+msgid ""
+"These roles will be given when a member joins the server. If "
+"`role_persistence` is enabled, these roles will *not* be given to a "
+"returning member."
+msgstr ""
+"Uiftf spmft xjmm cf hjwfo xifo b nfncfs kpjot uif tfswfs. Jg "
+"`spmf_qfstjtufodf` jt fobcmfe, uiftf spmft xjmm *opu* cf hjwfo up b "
+"sfuvsojoh nfncfs."
+
+#: src/modules/member_admin/settings.py:361
+msgctxt "guildset:bot_autoroles"
+msgid "bot_autoroles"
+msgstr "cpu_bvupspmft"
+
+#: src/modules/member_admin/settings.py:365
+msgctxt "guildset:bot_autoroles|desc"
+msgid "Roles given to new bots when they join the server."
+msgstr "Spmft hjwfo up ofx cput xifo uifz kpjo uif tfswfs."
+
+#: src/modules/member_admin/settings.py:369
+msgctxt "guildset:bot_autoroles|long_desc"
+msgid "These roles will be given when a bot joins the server."
+msgstr "Uiftf spmft xjmm cf hjwfo xifo b cpu kpjot uif tfswfs."
+
+#: src/modules/member_admin/settings.py:382
+msgctxt "guildset:role_persistence"
+msgid "role_persistence"
+msgstr "spmf_qfstjtufodf"
+
+#: src/modules/member_admin/settings.py:385
+msgctxt "guildset:role_persistence|desc"
+msgid "Whether member roles should be restored on rejoin."
+msgstr "Xifuifs nfncfs spmft tipvme cf sftupsfe po sfkpjo."
+
+#: src/modules/member_admin/settings.py:389
+msgctxt "guildset:role_persistence|long_desc"
+msgid ""
+"If enabled, member roles will be stored when they leave the server, and then"
+" restored when they rejoin (instead of giving `autoroles`). Note that this "
+"may conflict with other bots who manage join roles."
+msgstr ""
+"Jg fobcmfe, nfncfs spmft xjmm cf tupsfe xifo uifz mfbwf uif tfswfs, boe uifo"
+" sftupsfe xifo uifz sfkpjo (jotufbe pg hjwjoh `bvupspmft`). Opuf uibu uijt "
+"nbz dpogmjdu xjui puifs cput xip nbobhf kpjo spmft."
+
+#: src/modules/member_admin/settings.py:405
+msgctxt "guildset:role_persistence|set_response:off"
+msgid "Roles will not be restored when members rejoin."
+msgstr "Spmft xjmm opu cf sftupsfe xifo nfncfst sfkpjo."
+
+#: src/modules/member_admin/settings.py:410
+msgctxt "guildset:greeting_message|set_response:on"
+msgid "Roles will now be restored when members rejoin."
+msgstr "Spmft xjmm opx cf sftupsfe xifo nfncfst sfkpjo."

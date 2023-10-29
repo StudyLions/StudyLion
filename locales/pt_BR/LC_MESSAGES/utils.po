@@ -1,0 +1,546 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Bruno Evangelista De Oliveira, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-24 12:21+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
+"Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#: src/utils/cog.py:18
+msgctxt "cmd:page"
+msgid "page"
+msgstr "página"
+
+#: src/utils/cog.py:21
+msgctxt "cmd:page|desc"
+msgid ""
+"Jump to a given page of the ouput of a previous command in this channel."
+msgstr ""
+"Comando utilizado para ir diretamente para uma determinada página de um "
+"painel que esteja sendo mostrado pelo Lion neste canal."
+
+#: src/utils/cog.py:34
+msgctxt "cmd:page|error:no_pager"
+msgid "No pager listening in this channel!"
+msgstr "Não há nenhum painel sendo mostrado neste canal."
+
+#: src/utils/cog.py:45
+msgctxt "cmd:page_next"
+msgid "next"
+msgstr "próximo"
+
+#: src/utils/cog.py:46
+msgctxt "cmd:page_next|desc"
+msgid "Jump to the next page of output."
+msgstr ""
+"Comando utilizado para ir para a próxima página do painel mostrado no canal."
+
+#: src/utils/cog.py:52
+msgctxt "cmd:page_prev"
+msgid "prev"
+msgstr "anterior"
+
+#: src/utils/cog.py:53
+msgctxt "cmd:page_prev|desc"
+msgid "Jump to the previous page of output."
+msgstr ""
+"Comando utilizado para ir para a página anterior do painel mostrado no "
+"canal."
+
+#: src/utils/cog.py:59
+msgctxt "cmd:page_first"
+msgid "first"
+msgstr "Primeira"
+
+#: src/utils/cog.py:60
+msgctxt "cmd:page_first|desc"
+msgid "Jump to the first page of output."
+msgstr ""
+"Comando utilizado para ir para a primeira página do painel mostrado no "
+"canal."
+
+#: src/utils/cog.py:66
+msgctxt "cmd:page_last"
+msgid "last"
+msgstr "última"
+
+#: src/utils/cog.py:67
+msgctxt "cmd:page_last|desc"
+msgid "Jump to the last page of output."
+msgstr ""
+"Comando utilizado para ir para a última página do painel mostrado no canal."
+
+#: src/utils/cog.py:73
+msgctxt "cmd:page_select"
+msgid "select"
+msgstr "selecionar"
+
+#: src/utils/cog.py:74
+msgctxt "cmd:page_select|desc"
+msgid "Select a page of the output to jump to."
+msgstr "Comando utilizado para selecionar a página para ir diretamente a ela."
+
+#: src/utils/cog.py:77
+msgctxt "cmd:page_select|param:page"
+msgid "page"
+msgstr "página"
+
+#: src/utils/cog.py:80
+msgctxt "cmd:page_select|param:page|desc"
+msgid "The page name or number to jump to."
+msgstr "O nome da página ou número para ir até ela."
+
+#: src/utils/cog.py:86
+msgctxt "cmd:page_select|error:no_pager"
+msgid "No pager listening in this channel!"
+msgstr "Sem pager listado neste canal!"
+
+#: src/utils/cog.py:97
+msgctxt "cmd:page_select|acmpl|error:no_pager"
+msgid "No active pagers in this channel!"
+msgstr "Não há pagers ativos neste canal!"
+
+#: src/utils/transformers.py:45
+#, possible-python-brace-format
+msgctxt "utils:parse_dur|error"
+msgid "Cannot parse `{value}` as a duration."
+msgstr "Não pude analisar ˋ{value}ˋ como uma duração."
+
+#: src/utils/transformers.py:71
+#, possible-python-brace-format
+msgctxt "util:Duration|acmpl|error"
+msgid "Cannot extract duration from \"{partial}\""
+msgstr "Não pude extrair a duração de ˋ{partial}ˋ"
+
+#: src/utils/lib.py:678
+msgctxt "util:parse_dur|regex:day"
+msgid "(?P<value>\\d+)\\s*(?:(d)|(day))"
+msgstr "(?P<value>\\d+)\\s*(?:(d)|(dia))"
+
+#: src/utils/lib.py:685
+msgctxt "util:parse_dur|regex:hour"
+msgid "(?P<value>\\d+)\\s*(?:(h)|(hour))"
+msgstr "(?P<value>\\d+)\\s*(?:(h)|(hora))"
+
+#: src/utils/lib.py:692
+msgctxt "util:parse_dur|regex:minute"
+msgid "(?P<value>\\d+)\\s*(?:(m)|(min))"
+msgstr "(?P<value>\\d+)\\s*(?:(m)|(min))"
+
+#: src/utils/lib.py:699
+msgctxt "util:parse_dur|regex:second"
+msgid "(?P<value>\\d+)\\s*(?:(s)|(sec))"
+msgstr "(?P<value>\\d+)\\s*(?:(s)|(seg))"
+
+#: src/utils/ui/config.py:35
+msgctxt "ui:configui|modal:edit|title"
+msgid "Setting Editor"
+msgstr "Configurando Editor"
+
+#: src/utils/ui/config.py:75
+msgctxt "ui:configui|check|not_permitted"
+msgid "You have insufficient server permissions to use this UI!"
+msgstr ""
+"Você não tem permissões suficientes para usar esta Interface do Usuário "
+"deste servidor!"
+
+#: src/utils/ui/config.py:153
+msgctxt "ui:configui|button:edit|label"
+msgid "Edit"
+msgstr "Editar"
+
+#: src/utils/ui/config.py:192
+msgctxt "ui:guild_config_base|button:reset|label"
+msgid "Reset"
+msgstr "Resetar"
+
+#: src/utils/ui/config.py:327
+msgctxt "ui:dashboard|error:section_too_long"
+msgid ""
+"Oops, the settings in this configuration section are too large, and I can "
+"not display them here! Please view the settings in the linked configuration "
+"panel instead."
+msgstr ""
+"Oops, as configurações nesta seção são muito compridas e eu não posso "
+"mostrá-las aqui! Por favor, veja mais detalhes da configuração no painel "
+"específico desta função."
+
+#. List of valid keys indicating movement to the next page
+#: src/utils/ui/pagers.py:50
+msgctxt "cmd:page|pager:Pager|options:next"
+msgid "n, nxt, next, forward, +"
+msgstr "p, próximo, pxm, diante, +"
+
+#. List of valid keys indicating movement to the previous page
+#: src/utils/ui/pagers.py:53
+msgctxt "cmd:page|pager:Pager|options:prev"
+msgid "p, prev, back, -"
+msgstr "a, ant, anterior, atrás, -"
+
+#. List of valid keys indicating movement to the first page
+#: src/utils/ui/pagers.py:56
+msgctxt "cmd:page|pager:Pager|options:first"
+msgid "f, first, one, start"
+msgstr "1, prim, primeira, começo"
+
+#. List of valid keys indicating movement to the last page
+#: src/utils/ui/pagers.py:59
+msgctxt "cmd:page|pager:Pager|options:last"
+msgid "l, last, end"
+msgstr "u, última, fim"
+
+#: src/utils/ui/pagers.py:273
+#, possible-python-brace-format
+msgctxt "cmd:page|pager:Pager|error:parse"
+msgid "Could not understand page specification `{value}`."
+msgstr "Não pude entender a especificação da página ˋ{valor}ˋ."
+
+#: src/utils/ui/pagers.py:302
+#, possible-python-brace-format
+msgctxt "cmd:page|acmpl|pager:Pager|choice:last"
+msgid "Last: Page {page}/{total}"
+msgstr "Última: Página {page}/{total}"
+
+#: src/utils/ui/pagers.py:307
+#, possible-python-brace-format
+msgctxt "cmd:page|acmpl|pager:Pager|choice:current"
+msgid "Current: Page {page}/{total}"
+msgstr "Atual: Página {page}/{total}"
+
+#: src/utils/ui/pagers.py:319
+#, possible-python-brace-format
+msgctxt "cmd:page|acmpl|pager:Pager|choice:general"
+msgid "Page {page}"
+msgstr "Página {page}"
+
+#: src/utils/ui/pagers.py:353
+#, possible-python-brace-format
+msgctxt "cmd:page|acmpl|pager:Page|choice:select"
+msgid "Selected: Page {page}/{total}"
+msgstr "Selecionada: Página {page}/{total}"
+
+#: src/utils/ui/pagers.py:363
+msgctxt "cmd:page|acmpl|pager:Page|error:parse"
+msgid "No matching pages!"
+msgstr "Não há páginas compatíveis."
+
+#: src/utils/ui/msgeditor.py:75
+msgctxt "ui:msg_editor|error:empty"
+msgid "Rendering failed! The message content and embed cannot both be empty."
+msgstr ""
+"Falha de processamento! O conteúdo da mensagem e o link da integração não "
+"podem estar vazios."
+
+#: src/utils/ui/msgeditor.py:86
+#, possible-python-brace-format
+msgctxt "ui:msg_editor|error:embed_failed"
+msgid ""
+"Rendering failed! Could not parse the embed.\n"
+"Error: {error}"
+msgstr ""
+"Falha de processamento! Não consegui analisar a link integrado.\n"
+"Erro: {error}"
+
+#: src/utils/ui/msgeditor.py:104
+#, possible-python-brace-format
+msgctxt "ui:msg_editor|error:invalid_change"
+msgid ""
+"Rendering failed! The message was not modified.\n"
+"Error: `{text}`"
+msgstr ""
+"Falha de processamento! A mensagem não foi modificada.\n"
+"Erro: ˋ{text}ˋ"
+
+#: src/utils/ui/msgeditor.py:123
+msgctxt "ui:msg_editor|modal:content|field:content|label"
+msgid "Message Content"
+msgstr "Conteúdo da Mensagem"
+
+#: src/utils/ui/msgeditor.py:132
+msgctxt "ui:msg_editor|modal:content|title"
+msgid "Content Editor"
+msgstr "Editor de Conteúdo"
+
+#: src/utils/ui/msgeditor.py:150
+msgctxt "ui:msg_editor|button:edit|label"
+msgid "Edit Content"
+msgstr "Editar Conteúdo"
+
+#: src/utils/ui/msgeditor.py:162
+msgctxt "ui:msg_editor|button:add_embed|sample_embed|title"
+msgid "Title Placeholder"
+msgstr "Espaço para Título"
+
+#: src/utils/ui/msgeditor.py:163
+msgctxt "ui:msg_editor|button:add_embed|sample_embed|description"
+msgid "Description Placeholder"
+msgstr "Descrição do Espaço"
+
+#: src/utils/ui/msgeditor.py:174
+msgctxt "ui:msg_editor|button:add_embed|label"
+msgid "Add Embed"
+msgstr "Adicionar Integração"
+
+#: src/utils/ui/msgeditor.py:192
+msgctxt "ui:msg_editor|modal:body|field:content|label"
+msgid "Message Content"
+msgstr "Conteúdo da Mensagem"
+
+#: src/utils/ui/msgeditor.py:203
+msgctxt "ui:msg_editor|modal:body|field:desc|label"
+msgid "Embed Description"
+msgstr "Descrição da Integração"
+
+#: src/utils/ui/msgeditor.py:214
+msgctxt "ui:msg_editor|modal:body|field:title|label"
+msgid "Embed Title"
+msgstr "Título integrado"
+
+#: src/utils/ui/msgeditor.py:225
+msgctxt "ui:msg_editor|modal:body|field:colour|label"
+msgid "Embed Colour"
+msgstr "Cor em Integração"
+
+#: src/utils/ui/msgeditor.py:240
+msgctxt "ui:msg_editor|modal:body|title"
+msgid "Message Body Editor"
+msgstr "Editor de Corpo de Mensagem"
+
+#: src/utils/ui/msgeditor.py:265
+msgctxt "ui:msg_editor|button:body|error:invalid_colour"
+msgid ""
+"Invalid colour format! Please enter colours as hex codes, e.g. `#E67E22`"
+msgstr ""
+"Cor em formato inválido! Por favor, insira cores como códigos HEX, Ex. "
+"ˋ#E67E22ˋ"
+
+#: src/utils/ui/msgeditor.py:285
+msgctxt "ui:msg_editor|button:body|label"
+msgid "Body"
+msgstr "Corpo"
+
+#: src/utils/ui/msgeditor.py:302
+msgctxt "ui:msg_editor|modal:author|field:name|label"
+msgid "Author Name"
+msgstr "Nome do Autor"
+
+#: src/utils/ui/msgeditor.py:313
+msgctxt "ui:msg_editor|modal:author|field:link|label"
+msgid "Author URL"
+msgstr "Link do Autor"
+
+#: src/utils/ui/msgeditor.py:323
+msgctxt "ui:msg_editor|modal:author|field:image|label"
+msgid "Author Image URL"
+msgstr "Link da Imagem do Autor"
+
+#: src/utils/ui/msgeditor.py:334
+msgctxt "ui:msg_editor|modal:author|title"
+msgid "Embed Author Editor"
+msgstr "Editor Integrado do Autor"
+
+#: src/utils/ui/msgeditor.py:360
+msgctxt "ui:msg_editor|button:author|label"
+msgid "Author"
+msgstr "Autor"
+
+#: src/utils/ui/msgeditor.py:377
+msgctxt "ui:msg_editor|modal:footer|field:text|label"
+msgid "Footer Text"
+msgstr "Texto de Rodapé"
+
+#: src/utils/ui/msgeditor.py:388
+msgctxt "ui:msg_editor|modal:footer|field:image|label"
+msgid "Footer Image URL"
+msgstr "Link da Image de Rodapé"
+
+#: src/utils/ui/msgeditor.py:398
+msgctxt "ui:msg_editor|modal:footer|field:timestamp|label"
+msgid "Embed Timestamp (in ISO format)"
+msgstr "Link integrado de Data/Hora (em formato ISO)"
+
+#: src/utils/ui/msgeditor.py:410
+msgctxt "ui:msg_editor|modal:footer|title"
+msgid "Embed Footer Editor"
+msgstr "Editor de Rodapé Integrado"
+
+#: src/utils/ui/msgeditor.py:429
+msgctxt "ui:msg_editor|button:footer|error:invalid_timestamp"
+msgid "Invalid timestamp! Please enter the timestamp in ISO format."
+msgstr ""
+"Tempo Data/Hora inválidos! Por favor, adicione a Data/Hora em formato ISO."
+
+#: src/utils/ui/msgeditor.py:449
+msgctxt "ui:msg_editor|button:footer|label"
+msgid "Footer"
+msgstr "Rodapé"
+
+#: src/utils/ui/msgeditor.py:467
+msgctxt "ui:msg_editor|modal:images|field:thumb|label"
+msgid "Thumbnail Image URL"
+msgstr "Link de Miniatura de Imagem "
+
+#: src/utils/ui/msgeditor.py:477
+msgctxt "ui:msg_editor|modal:images|field:image|label"
+msgid "Embed Image URL"
+msgstr "Inserir Link de imagem"
+
+#: src/utils/ui/msgeditor.py:487
+msgctxt "ui:msg_editor|modal:images|title"
+msgid "Embed images Editor"
+msgstr "Editor de Imagens Integrado"
+
+#: src/utils/ui/msgeditor.py:517
+msgctxt "ui:msg_editor|button:images|label"
+msgid "Images"
+msgstr "Imagens"
+
+#: src/utils/ui/msgeditor.py:535
+msgctxt "ui:msg_editor|modal:add_field|field:position|label"
+msgid "Field number to insert at"
+msgstr "Campo de Número a inserir "
+
+#: src/utils/ui/msgeditor.py:545
+msgctxt "ui:msg_editor|modal:add_field|field:name|label"
+msgid "Field name"
+msgstr "Nome do Campo"
+
+#: src/utils/ui/msgeditor.py:555
+msgctxt "ui:msg_editor|modal:add_field|field:value|label"
+msgid "Field value"
+msgstr "Valor do Campo"
+
+#: src/utils/ui/msgeditor.py:565
+msgctxt "ui:msg_editor|modal:add_field|field:inline|label"
+msgid "Whether the field is inline"
+msgstr "Se o campo é linear"
+
+#: src/utils/ui/msgeditor.py:569
+msgctxt "ui:msg_editor|modal:add_field|field:inline|placeholder"
+msgid "True/False"
+msgstr "Verdadeiro/Falso"
+
+#: src/utils/ui/msgeditor.py:582
+msgctxt "ui:msg_editor|modal:add_field|title"
+msgid "Add Embed Field"
+msgstr "Adicionar Campo Integrado"
+
+#: src/utils/ui/msgeditor.py:602
+msgctxt "ui:msg_editor|modal:add_field|error:position_not_int"
+msgid "The field position must be an integer!"
+msgstr "O valor do campo precisa ser um valor inteiro!"
+
+#: src/utils/ui/msgeditor.py:621
+msgctxt "ui:msg_editor|button:add_field|label"
+msgid "Add Field"
+msgstr "Adicione Campo"
+
+#: src/utils/ui/msgeditor.py:637
+msgctxt "ui:msg_editor|format_field|name_placeholder"
+msgid "-"
+msgstr "-"
+
+#: src/utils/ui/msgeditor.py:666
+msgctxt "ui:msg_editor|modal:edit_field|field:name|label"
+msgid "Field name"
+msgstr "Nome do campo"
+
+#: src/utils/ui/msgeditor.py:677
+msgctxt "ui:msg_editor|modal:edit_field|field:value|label"
+msgid "Field value"
+msgstr "Valor do campo"
+
+#: src/utils/ui/msgeditor.py:688
+msgctxt "ui:msg_editor|modal:edit_field|field:inline|label"
+msgid "Whether the field is inline"
+msgstr "Se o campo é linear"
+
+#: src/utils/ui/msgeditor.py:692
+msgctxt "ui:msg_editor|modal:edit_field|field:inline|placeholder"
+msgid "True/False"
+msgstr "Verdadeiro/Falso"
+
+#: src/utils/ui/msgeditor.py:704
+msgctxt "ui:msg_editor|modal:edit_field|title"
+msgid "Edit Embed Field"
+msgstr "Editar Campo Integrado"
+
+#: src/utils/ui/msgeditor.py:733
+msgctxt "ui:msg_editor|menu:edit_field|placeholder"
+msgid "Edit Embed Field"
+msgstr "Editar Campo Integrado"
+
+#: src/utils/ui/msgeditor.py:772
+msgctxt "ui:msg_deleteor|menu:delete_field|placeholder"
+msgid "Remove Embed Field"
+msgstr "Remover Campo Integrado"
+
+#: src/utils/ui/msgeditor.py:808
+msgctxt "ui:msg_editor|button:save|label"
+msgid "Save"
+msgstr "Salvar"
+
+#: src/utils/ui/msgeditor.py:833
+msgctxt "ui:msg_editor|button:download|label"
+msgid "Download"
+msgstr "Download"
+
+#: src/utils/ui/msgeditor.py:852
+msgctxt "ui:msg_editor|button:undo|label"
+msgid "Undo"
+msgstr "Desfazer"
+
+#: src/utils/ui/msgeditor.py:872
+msgctxt "ui:msg_editor|button:redo|label"
+msgid "Redo"
+msgstr "Refazer"
+
+#: src/utils/ui/msgeditor.py:891
+msgctxt "ui:msg_editor|button:quit|confirm"
+msgid "You have unsaved changes! Are you sure you want to quit?"
+msgstr "Você tem mudanças não salvas! Tem certeza que deseja sair?"
+
+#: src/utils/ui/msgeditor.py:896
+msgctxt "ui:msg_editor|button:quit|confirm|button:yes"
+msgid "Yes, Quit Now"
+msgstr "Sim! Sair Agora."
+
+#: src/utils/ui/msgeditor.py:902
+msgctxt "ui:msg_editor|button:quit|confirm|button:no"
+msgid "No, Go Back"
+msgstr "Não, Retornar."
+
+#: src/utils/ui/msgeditor.py:996
+msgctxt "ui:msg_editor|timeout_warning|title"
+msgid "Warning!"
+msgstr "Atenção!"
+
+#: src/utils/ui/msgeditor.py:1000
+#, possible-python-brace-format
+msgctxt "ui:msg_editor|timeout_warning|desc"
+msgid ""
+"This interface will time out {timestamp}. Press 'Continue' below to keep "
+"editing."
+msgstr ""
+"Esta interface irá finalizar em {timestamp}. Para continuar editando, "
+"pressione ˋContinuarˋ."
+
+#: src/utils/ui/msgeditor.py:1009
+msgctxt "ui:msg_editor|timeout_warning|continue"
+msgid "Continue"
+msgstr "Continuar"

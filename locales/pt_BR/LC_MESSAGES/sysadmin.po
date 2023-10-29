@@ -1,0 +1,207 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Aline Souki, 2023
+# Bruno Evangelista De Oliveira, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-13 08:47+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
+"Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#: src/modules/sysadmin/presence.py:116
+msgctxt "botset:presence_status"
+msgid "online_status"
+msgstr "online_status"
+
+#: src/modules/sysadmin/presence.py:117
+msgctxt "botset:presence_status|desc"
+msgid "Bot status indicator"
+msgstr "Indicador de sitação do bot "
+
+#: src/modules/sysadmin/presence.py:120
+msgctxt "botset:presence_status|long_desc"
+msgid "Whether the bot account displays as online, idle, dnd, or offline."
+msgstr ""
+"Se o usuário do bot é mostrado como online, ausente, não perturbe ou "
+"offline. "
+
+#: src/modules/sysadmin/presence.py:124
+msgctxt "botset:presence_status|accepts"
+msgid "Online/Idle/Dnd/Offline"
+msgstr "Online/Inativa/Não Perturbe/Offline"
+
+#: src/modules/sysadmin/presence.py:133
+msgctxt "botset:presence_status|output:online"
+msgid "**Online**"
+msgstr "**Online**"
+
+#: src/modules/sysadmin/presence.py:134
+msgctxt "botset:presence_status|output:idle"
+msgid "**Idle**"
+msgstr "**Ausente**"
+
+#: src/modules/sysadmin/presence.py:135
+msgctxt "botset:presence_status|output:dnd"
+msgid "**Do Not Disturb**"
+msgstr "**Ocupado**"
+
+#: src/modules/sysadmin/presence.py:136
+msgctxt "botset:presence_status|output:offline"
+msgid "**Offline**"
+msgstr "**Offline**"
+
+#: src/modules/sysadmin/presence.py:139
+msgctxt "botset:presence_status|input_format:online"
+msgid "Online"
+msgstr "Online"
+
+#: src/modules/sysadmin/presence.py:140
+msgctxt "botset:presence_status|input_format:idle"
+msgid "Idle"
+msgstr "Ausente"
+
+#: src/modules/sysadmin/presence.py:141
+msgctxt "botset:presence_status|input_format:dnd"
+msgid "DND"
+msgstr "Não Perturbe"
+
+#: src/modules/sysadmin/presence.py:142
+msgctxt "botset:presence_status|input_format:offline"
+msgid "Offline"
+msgstr "Offline"
+
+#: src/modules/sysadmin/presence.py:145
+msgctxt "botset:presence_status|input_pattern:online"
+msgid "on|online"
+msgstr "on|online"
+
+#: src/modules/sysadmin/presence.py:146
+msgctxt "botset:presence_status|input_pattern:idle"
+msgid "idle"
+msgstr "ausente"
+
+#: src/modules/sysadmin/presence.py:147
+msgctxt "botset:presence_status|input_pattern:dnd"
+msgid "do not disturb|dnd"
+msgstr "não perturbe|np"
+
+#: src/modules/sysadmin/presence.py:148
+msgctxt "botset:presence_status|input_pattern:offline"
+msgid "off|offline|invisible"
+msgstr "off|offline|invisível"
+
+#: src/modules/sysadmin/presence.py:155
+msgctxt "botset:presence_type"
+msgid "activity_type"
+msgstr "tipo_de_atividade"
+
+#: src/modules/sysadmin/presence.py:156
+msgctxt "botset:presence_type|desc"
+msgid "Type of presence activity"
+msgstr "Tipo de atividade atual"
+
+#: src/modules/sysadmin/presence.py:159
+msgctxt "botset:presence_type|long_desc"
+msgid ""
+"Whether the bot activity is shown as 'Listening', 'Playing', or 'Watching'."
+msgstr ""
+"Se a atividade do bot é mostrada como 'Ouvindo', 'Jogando' ou 'Assistindo'."
+
+#: src/modules/sysadmin/presence.py:163
+msgctxt "botset:presence_type|accepts"
+msgid "Listening/Playing/Watching/Streaming"
+msgstr "Ouvindo/Jogando/Assistindo/Transmitindo"
+
+#: src/modules/sysadmin/presence.py:172
+msgctxt "botset:presence_type|output:watching"
+msgid "**Watching**"
+msgstr "**Assistindo**"
+
+#: src/modules/sysadmin/presence.py:173
+msgctxt "botset:presence_type|output:listening"
+msgid "**Listening**"
+msgstr "**Ouvindo**"
+
+#: src/modules/sysadmin/presence.py:174
+msgctxt "botset:presence_type|output:playing"
+msgid "**Playing**"
+msgstr "**Jogando**"
+
+#: src/modules/sysadmin/presence.py:175
+msgctxt "botset:presence_type|output:streaming"
+msgid "**Streaming**"
+msgstr "**Transmitindo**"
+
+#: src/modules/sysadmin/presence.py:178
+msgctxt "botset:presence_type|input_format:watching"
+msgid "Watching"
+msgstr "Assistindo"
+
+#: src/modules/sysadmin/presence.py:179
+msgctxt "botset:presence_type|input_format:listening"
+msgid "Listening"
+msgstr "Ouvindo"
+
+#: src/modules/sysadmin/presence.py:180
+msgctxt "botset:presence_type|input_format:playing"
+msgid "Playing"
+msgstr "Jogando"
+
+#: src/modules/sysadmin/presence.py:181
+msgctxt "botset:presence_type|input_format:streaming"
+msgid "Streaming"
+msgstr "Transmitindo"
+
+#: src/modules/sysadmin/presence.py:184
+msgctxt "botset:presence_type|input_pattern:watching"
+msgid "watching"
+msgstr "assistindo"
+
+#: src/modules/sysadmin/presence.py:185
+msgctxt "botset:presence_type|input_pattern:listening"
+msgid "listening"
+msgstr "ouvindo"
+
+#: src/modules/sysadmin/presence.py:186
+msgctxt "botset:presence_type|input_pattern:playing"
+msgid "playing"
+msgstr "jogando"
+
+#: src/modules/sysadmin/presence.py:187
+msgctxt "botset:presence_type|input_pattern:streaming"
+msgid "streaming"
+msgstr "transmitindo"
+
+#: src/modules/sysadmin/presence.py:194
+msgctxt "botset:presence_name"
+msgid "activity_name"
+msgstr "nome_da_atividade"
+
+#: src/modules/sysadmin/presence.py:195
+msgctxt "botset:presence_name|desc"
+msgid "Name of the presence activity"
+msgstr "Nome da atividade atual"
+
+#: src/modules/sysadmin/presence.py:196
+msgctxt "botset:presence_name|long_desc"
+msgid "Presence activity name."
+msgstr "Nome da atividade atual."
+
+#: src/modules/sysadmin/presence.py:197
+msgctxt "botset:presence_name|accepts"
+msgid "The name of the activity to show."
+msgstr "Nome da atividade a mostrar."

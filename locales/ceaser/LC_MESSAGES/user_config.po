@@ -1,0 +1,102 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: you@example.com\n"
+"POT-Creation-Date: 2007-10-18 14:00+0100\n"
+"PO-Revision-Date: 2007-10-18 14:00+0100\n"
+"Last-Translator: you <you@example.com>\n"
+"Language-Team: English <yourteam@example.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/modules/user_config/cog.py:38
+msgctxt "userset:timezone"
+msgid "timezone"
+msgstr "ujnfapof"
+
+#: src/modules/user_config/cog.py:41
+msgctxt "userset:timezone|desc"
+msgid "Timezone in which to display statistics."
+msgstr "Ujnfapof jo xijdi up ejtqmbz tubujtujdt."
+
+#: src/modules/user_config/cog.py:45
+msgctxt "userset:timezone|long_desc"
+msgid ""
+"All personal time-related features of StudyLion will use this timezone for "
+"you, including personal statistics. Note that leaderboards will still be "
+"shown in the server's own timezone."
+msgstr ""
+"Bmm qfstpobm ujnf-sfmbufe gfbuvsft pg TuvezMjpo xjmm vtf uijt ujnfapof gps "
+"zpv, jodmvejoh qfstpobm tubujtujdt. Opuf uibu mfbefscpbset xjmm tujmm cf "
+"tipxo jo uif tfswfs't pxo ujnfapof."
+
+#: src/modules/user_config/cog.py:60
+#, possible-python-brace-format
+msgctxt "userset:timezone|response:set"
+msgid "Your personal timezone has been set to `{timezone}`."
+msgstr "Zpvs qfstpobm ujnfapof ibt cffo tfu up `{timezone}`."
+
+#: src/modules/user_config/cog.py:65
+msgctxt "userset:timezone|response:unset"
+msgid ""
+"You have unset your timezone. Statistics will be displayed in the server "
+"timezone."
+msgstr ""
+"Zpv ibwf votfu zpvs ujnfapof. Tubujtujdt xjmm cf ejtqmbzfe jo uif tfswfs "
+"ujnfapof."
+
+#: src/modules/user_config/cog.py:81
+msgctxt "cmd:userconfig"
+msgid "my"
+msgstr "nz"
+
+#: src/modules/user_config/cog.py:82
+msgctxt "cmd:userconfig|desc"
+msgid "User configuration commands."
+msgstr "Vtfs dpogjhvsbujpo dpnnboet."
+
+#: src/modules/user_config/cog.py:89
+msgctxt "cmd:userconfig_timezone"
+msgid "timezone"
+msgstr "ujnfapof"
+
+#: src/modules/user_config/cog.py:92
+msgctxt "cmd:userconfig_timezone|desc"
+msgid ""
+"Set your personal timezone, used for displaying stats and setting reminders."
+msgstr ""
+"Tfu zpvs qfstpobm ujnfapof, vtfe gps ejtqmbzjoh tubut boe tfuujoh sfnjoefst."
+
+#: src/modules/user_config/cog.py:96
+msgctxt "cmd:userconfig_timezone|param:timezone"
+msgid "timezone"
+msgstr "ujnfapof"
+
+#: src/modules/user_config/cog.py:101
+msgctxt "cmd:userconfig_timezone|param:timezone|desc"
+msgid "What timezone are you in? Try typing your country or continent."
+msgstr "Xibu ujnfapof bsf zpv jo? Usz uzqjoh zpvs dpvousz ps dpoujofou."
+
+#: src/modules/user_config/cog.py:117
+#, possible-python-brace-format
+msgctxt "cmd:userconfig_timezone|response:set"
+msgid "Your timezone is currently set to {timezone}"
+msgstr "Zpvs ujnfapof jt dvssfoumz tfu up {timezone}"
+
+#: src/modules/user_config/cog.py:121
+msgctxt "cmd:userconfig_timezone|button:reset|label"
+msgid "Reset"
+msgstr "Sftfu"
+
+#: src/modules/user_config/cog.py:133
+#, possible-python-brace-format
+msgctxt "cmd:userconfig_timezone|response:unset"
+msgid "Your timezone is not set. Using the server timezone `{timezone}`."
+msgstr "Zpvs ujnfapof jt opu tfu. Vtjoh uif tfswfs ujnfapof `{timezone}`."

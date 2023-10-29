@@ -1,0 +1,102 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Bruno Evangelista De Oliveira, 2023
+# Aline Souki, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-28 22:43+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Aline Souki, 2023\n"
+"Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#: src/gui/cards/weekly.py:52
+msgctxt "skin:weeklystats|mode:study|title"
+msgid "STUDY HOURS"
+msgstr "HORAS ESTUDADAS"
+
+#: src/gui/cards/weekly.py:56
+msgctxt "skin:weeklystats|mode:voice|title"
+msgid "VOICE CHANNEL ACTIVITY"
+msgstr "ATIVIDADE EM CANAL DE VOZ"
+
+#: src/gui/cards/weekly.py:60
+msgctxt "skin:weeklystats|mode:text|title"
+msgid "MESSAGE ACTIVITY"
+msgstr "ATIVIDADE EM CONVERSAS"
+
+#: src/gui/cards/weekly.py:64
+msgctxt "skin::weeklystats|mode:anki|title"
+msgid "CARDS REVIEWED"
+msgstr "CARTÕES REVISADOS"
+
+#: src/gui/cards/weekly.py:137
+msgctxt "skin:weeklystats|weekdays"
+msgid "M,T,W,T,F,S,S"
+msgstr "S,T,Q,Q,S,S,D"
+
+#: src/gui/cards/weekly.py:207
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:study|summary:this_week"
+msgid "THIS WEEK: {amount} HOURS"
+msgstr "ESTA SEMANA: {amount} HORAS"
+
+#: src/gui/cards/weekly.py:211
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:voice|summary:this_week"
+msgid "THIS WEEK: {amount} HOURS"
+msgstr "ESTA SEMANA: {amount} HORAS"
+
+#: src/gui/cards/weekly.py:215
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:text|summary:this_week"
+msgid "THIS WEEK: {amount} MESSAGES"
+msgstr "ESTA SEMANA: {amount} MENSAGENS"
+
+#: src/gui/cards/weekly.py:219
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:text|summary:this_week"
+msgid "THIS WEEK: {amount} CARDS"
+msgstr "ESTA SEMANA: {amount} CARTÕES"
+
+#: src/gui/cards/weekly.py:240
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:study|summary:last_week"
+msgid "LAST WEEK: {amount} HOURS"
+msgstr "SEMANA PASSADA: {amount} HORAS"
+
+#: src/gui/cards/weekly.py:244
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:voice|summary:last_week"
+msgid "LAST WEEK: {amount} HOURS"
+msgstr "SEMANA PASSADA: {amount} HORAS"
+
+#: src/gui/cards/weekly.py:248
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:text|summary:last_week"
+msgid "LAST WEEK: {amount} MESSAGES"
+msgstr "SEMANA PASSADA: {amount} MENSAGENS"
+
+#: src/gui/cards/weekly.py:252
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:text|summary:last_week"
+msgid "LAST WEEK: {amount} CARDS"
+msgstr "SEMANA PASSADA: {amount} CARTÕES"
+
+#: src/gui/cards/weekly.py:272
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|footer"
+msgid "Weekly Statistics • As of {day} {month} • {name} {discrim}"
+msgstr "Estatísticas semanais • A partir de {day} {month} • {name} {discrim}"
