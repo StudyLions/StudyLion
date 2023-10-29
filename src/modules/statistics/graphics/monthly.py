@@ -121,6 +121,9 @@ async def get_monthly_card(bot: LionBot, userid: int, guildid: int, offset: int,
         username = (lion.data.display_name, '#????')
 
     # Request card
+    skin = await bot.get_cog('CustomSkinCog').get_skinargs_for(
+        guildid, userid, MonthlyStatsCard.card_id
+    )
     card = MonthlyStatsCard(
         user=username,
         timezone=str(lion.timezone),
@@ -129,6 +132,6 @@ async def get_monthly_card(bot: LionBot, userid: int, guildid: int, offset: int,
         monthly=monthly,
         current_streak=current_streak,
         longest_streak=longest_streak,
-        skin={'mode': mode}
+        skin=skin | {'mode': mode}
     )
     return card

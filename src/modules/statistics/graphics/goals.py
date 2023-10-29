@@ -122,6 +122,11 @@ async def get_goals_card(
     badges = await data.ProfileTag.fetch_tags(guildid, userid)
 
     card_cls = WeeklyGoalCard if weekly else MonthlyGoalCard
+
+    skin = await bot.get_cog('CustomSkinCog').get_skinargs_for(
+        guildid, userid, card_cls.card_id
+    )
+
     card = card_cls(
         name=username[0],
         discrim=username[1],
@@ -134,6 +139,6 @@ async def get_goals_card(
         attendance=attendance,
         goals=tasks,
         date=today,
-        skin={'mode': mode}
+        skin=skin | {'mode': mode}
     )
     return card

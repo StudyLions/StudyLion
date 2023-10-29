@@ -1,13 +1,13 @@
 
-## StudyLion - Discord Study & Productivity Bot
+## LionBot (formerly StudyLion) - Discord Study & Productivity Bot
 
-StudyLion is a Discord bot that tracks members' study and work time while offering members the ability to view their statistics and use productivity tools such as: To-do lists, pomodoro timers, reminders, and much more.
+LionBot is a Discord bot that tracks members' study and work time while offering members the ability to view their statistics and use productivity tools such as: To-do lists, pomodoro timers, reminders, and much more.
 
   
 
-[**Invite StudyLion here**](https://discord.studylions.com/invite "here"), and get started with `!help`.
+[**Invite LionBot here**](https://discord.com/oauth2/authorize?client_id=889078613817831495&permissions=8&scope=bot), and get started with `/help`.
 
-Join the [**support server**](https://discord.gg/studylions "support server") to contact us if you need help configuring the bot on your server, or start a [**discussion**](https://github.com/StudyLions/StudyLion/discussions "disscussion") to report issues and bugs.
+Join the [**support server**](https://discord.gg/the-study-lions-780195610154237993) to contact us if you need help configuring the bot on your server, or start a [**discussion**](https://github.com/LionBots/LionBot/discussions "disscussion") to report issues and bugs.
 
 
 
@@ -18,14 +18,11 @@ In the past couple of years, we noticed a new trend on Discord – instead of be
 
 
 
-This bot was founder by [Ari Horesh](https://www.youtube.com/arihoresh) (Ari Horesh#0001) to support these forming study communities and allow students all over the world to study better.
+This bot was founder by [Ari Horesh](https://www.youtube.com/arihoresh) (@AriHoresh) to support these forming study communities and allow students all over the world to study better.
 
 ### Self Hosting
 
-We offer private instances based on availablity (a private bot for your community) to server owners who want their own branding (logo, color scheme, private and seperate database, better response-rate, and customizability to the text itself). 
-If you are intrested, contact the founder at contact@arihoresh.com . 
-
-You can self-host and fork the bot using the following steps, but beware that this version **does not include** our visual graphical user interface, which is only include in the custom private instances or our the public instance.
+You can self-host and fork the bot using the following steps, but beware that we do not provide support for self-hosted instances. If you are interested in a privately managed instance (affordable paid service), contact Ari at contact@arihoresh.com
 
 Follow the steps below to self-host the bot.
 - Clone the repo recursively (which makes sure to include the cmdClient submodule, otherwise you need to initialise it separately) 
@@ -37,7 +34,6 @@ Follow the steps below to self-host the bot.
 We do not offer support for self-hosted bots, the code is provided as is without warranty of any kind. 
 
 ## Features
-
 
 - **Students Cards and Statistics**
 
@@ -108,8 +104,8 @@ Punish cheaters, audit-log, welcome message, and so much more using our full-sca
 
 ### Tutorials
 
-A command list and general documentation for StudyLion may be found using the `!help` command, and documentation for a specific command, e.g. `config`, may be found with `!help config`.
+A command list and general documentation for LionBot may be found using the `!help` command, and documentation for a specific command, e.g. `config`, may be found with `!help config`.
 
-Make sure to check the [full documentation](https://www.notion.so/izabellakis/StudyLion-Bot-Tutorials-f493268fcd12436c9674afef2e151707 "StudyLion Tutorial") to stay updated.
+Make sure to check the [full documentation](https://www.notion.so/izabellakis/LionBot-Bot-Tutorials-f493268fcd12436c9674afef2e151707 "LionBot Tutorial") to stay updated.
 
 <a href="https://imgur.com/ziPdJGw"><img src="https://i.imgur.com/ziPdJGws.png" title="source: imgur.com" /></a>

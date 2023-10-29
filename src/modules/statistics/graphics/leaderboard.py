@@ -60,8 +60,12 @@ async def get_leaderboard_card(
             highlight = position
 
     # Request Card
+
+    skin = await bot.get_cog('CustomSkinCog').get_skinargs_for(
+        guildid, None, LeaderboardCard.card_id
+    )
     card = LeaderboardCard(
-        skin={'mode': mode},
+        skin=skin | {'mode': mode},
         server_name=guild.name,
         entries=entries,
         highlight=highlight

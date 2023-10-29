@@ -1,3 +1,4 @@
+import logging
 from typing import Optional
 from collections import defaultdict
 from weakref import WeakValueDictionary
@@ -18,6 +19,8 @@ from .lion_guild import GuildConfig
 from .lion_member import MemberConfig
 from .lion_user import UserConfig
 from .hooks import HookedChannel
+
+logger = logging.getLogger(__name__)
 
 
 class keydefaultdict(defaultdict):
@@ -71,7 +74,6 @@ class CoreCog(LionCog):
         self.bot.add_listener(self.shard_update_guilds, name='on_guild_join')
         self.bot.add_listener(self.shard_update_guilds, name='on_guild_remove')
 
-        self.bot.core = self
         await self.bot.add_cog(self.lions)
 
         # Load the app command cache
@@ -127,3 +129,7 @@ class CoreCog(LionCog):
     @log_wrap(action='Update shard guilds')
     async def shard_update_guilds(self, guild):
         await self.shard_data.update(guild_count=len(self.bot.guilds))
+
+    @LionCog.listener('on_ping')
+    async def handle_ping(self, *args, **kwargs):
+        logger.info(f"Received ping with args {args}, kwargs {kwargs}")

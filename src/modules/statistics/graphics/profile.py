@@ -80,6 +80,10 @@ async def get_profile_card(bot: LionBot, userid: int, guildid: int):
     achievements = await get_achievements_for(bot, guildid, userid)
     achieved = tuple(ach.emoji_index for ach in achievements if ach.achieved)
 
+    skin = await bot.get_cog('CustomSkinCog').get_skinargs_for(
+        guildid, userid, ProfileCard.card_id
+    )
+
     card = ProfileCard(
         user=username,
         avatar=(userid, avatar),
@@ -88,6 +92,7 @@ async def get_profile_card(bot: LionBot, userid: int, guildid: int):
         achievements=achieved,
         current_rank=current_rank,
         rank_progress=rank_progress,
-        next_rank=next_rank
+        next_rank=next_rank,
+        skin=skin,
     )
     return card

@@ -46,6 +46,10 @@ async def get_timer_card(bot: LionBot, timer: 'Timer', stage: 'Stage'):
     else:
         card_cls = BreakTimerCard
 
+    skin = await bot.get_cog('CustomSkinCog').get_skinargs_for(
+        timer.data.guildid, None, card_cls.card_id
+    )
+
     return card_cls(
         name,
         remaining,

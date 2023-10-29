@@ -1,4 +1,4 @@
-from typing import List, Optional, TYPE_CHECKING
+from typing import List, Literal, LiteralString, Optional, TYPE_CHECKING, overload
 import logging
 import asyncio
 from weakref import WeakValueDictionary
@@ -13,7 +13,7 @@ from aiohttp import ClientSession
 from data import Database
 from utils.lib import tabulate
 from gui.errors import RenderingException
-from babel.translator import ctx_locale
+from babel.translator import ctx_locale, LeoBabel
 
 from .config import Conf
 from .logger import logging_context, log_context, log_action_stack, log_wrap, set_logging_context
@@ -24,16 +24,39 @@ from .errors import HandledException, SafeCancellation
 from .monitor import SystemMonitor, ComponentMonitor, StatusLevel, ComponentStatus
 
 if TYPE_CHECKING:
-    from core import CoreCog
+    from core.cog import CoreCog
+    from core.config import ConfigCog
+    from tracking.voice.cog import VoiceTrackerCog
+    from tracking.text.cog import TextTrackerCog
+    from modules.config.cog import GuildConfigCog
+    from modules.economy.cog import Economy
+    from modules.member_admin.cog import MemberAdminCog
+    from modules.meta.cog import MetaCog
+    from modules.moderation.cog import ModerationCog
+    from modules.pomodoro.cog import TimerCog
+    from modules.premium.cog import PremiumCog
+    from modules.ranks.cog import RankCog
+    from modules.reminders.cog import Reminders
+    from modules.rooms.cog import RoomCog
+    from modules.schedule.cog import ScheduleCog
+    from modules.shop.cog import ShopCog
+    from modules.skins.cog import CustomSkinCog
+    from modules.sponsors.cog import SponsorCog
+    from modules.statistics.cog import StatsCog
+    from modules.sysadmin.dash import LeoSettings
+    from modules.tasklist.cog import TasklistCog
+    from modules.topgg.cog import TopggCog
+    from modules.user_config.cog import UserConfigCog
+    from modules.video_channels.cog import VideoCog
 
 logger = logging.getLogger(__name__)
 
 
 class LionBot(Bot):
     def __init__(
-        self, *args, appname: str, shardname: str, db: Database, config: Conf,
+        self, *args, appname: str, shardname: str, db: Database, config: Conf, translator: LeoBabel,
         initial_extensions: List[str], web_client: ClientSession, app_ipc,
-        testing_guilds: List[int] = [], translator=None, **kwargs
+        testing_guilds: List[int] = [], **kwargs
     ):
         kwargs.setdefault('tree_cls', LionTree)
         super().__init__(*args, **kwargs)
@@ -46,7 +69,6 @@ class LionBot(Bot):
 #        self.appdata = appdata
         self.config = config
         self.app_ipc = app_ipc
-        self.core: 'CoreCog' = None
         self.translator = translator
 
         self.system_monitor = SystemMonitor()
@@ -55,6 +77,18 @@ class LionBot(Bot):
 
         self._locks = WeakValueDictionary()
         self._running_events = set()
+
+        self._talk_global_dispatch = app_ipc.register_route('dispatch')(self._handle_global_dispatch)
+
+    @property
+    def core(self):
+        return self.get_cog('CoreCog')
+
+    async def _handle_global_dispatch(self, event_name: str, *args, **kwargs):
+        self.dispatch(event_name, *args, **kwargs)
+
+    async def global_dispatch(self, event_name: str, *args, **kwargs):
+        await self._talk_global_dispatch(event_name, *args, **kwargs).broadcast(except_self=False)
 
     async def _monitor_status(self):
         if self.is_closed():
@@ -98,6 +132,112 @@ class LionBot(Bot):
             if not self.shard_count or (self.shard_id == ((guildid >> 22) % self.shard_count)):
                 self.tree.copy_global_to(guild=guild)
                 await self.tree.sync(guild=guild)
+
+    # To make the type checker happy about fetching cogs by name
+    # TODO: Move this to stubs at some point
+
+    @overload
+    def get_cog(self, name: Literal['CoreCog']) -> 'CoreCog':
+        ...
+
+    @overload
+    def get_cog(self, name: Literal['ConfigCog']) -> 'ConfigCog':
+        ...
+
+    @overload
+    def get_cog(self, name: Literal['VoiceTrackerCog']) -> 'VoiceTrackerCog':
+        ...
+
+    @overload
+    def get_cog(self, name: Literal['TextTrackerCog']) -> 'TextTrackerCog':
+        ...
+
+    @overload
+    def get_cog(self, name: Literal['GuildConfigCog']) -> 'GuildConfigCog':
+        ...
+
+    @overload
+    def get_cog(self, name: Literal['Economy']) -> 'Economy':
+        ...
+
+    @overload
+    def get_cog(self, name: Literal['MemberAdminCog']) -> 'MemberAdminCog':
+        ...
+
+    @overload
+    def get_cog(self, name: Literal['MetaCog']) -> 'MetaCog':
+        ...
+
+    @overload
+    def get_cog(self, name: Literal['ModerationCog']) -> 'ModerationCog':
+        ...
+
+    @overload
+    def get_cog(self, name: Literal['TimerCog']) -> 'TimerCog':
+        ...
+
+    @overload
+    def get_cog(self, name: Literal['PremiumCog']) -> 'PremiumCog':
+        ...
+
+    @overload
+    def get_cog(self, name: Literal['RankCog']) -> 'RankCog':
+        ...
+
+    @overload
+    def get_cog(self, name: Literal['Reminders']) -> 'Reminders':
+        ...
+
+    @overload
+    def get_cog(self, name: Literal['RoomCog']) -> 'RoomCog':
+        ...
+
+    @overload
+    def get_cog(self, name: Literal['ScheduleCog']) -> 'ScheduleCog':
+        ...
+
+    @overload
+    def get_cog(self, name: Literal['ShopCog']) -> 'ShopCog':
+        ...
+
+    @overload
+    def get_cog(self, name: Literal['CustomSkinCog']) -> 'CustomSkinCog':
+        ...
+
+    @overload
+    def get_cog(self, name: Literal['SponsorCog']) -> 'SponsorCog':
+        ...
+
+    @overload
+    def get_cog(self, name: Literal['StatsCog']) -> 'StatsCog':
+        ...
+
+    @overload
+    def get_cog(self, name: Literal['LeoSettings']) -> 'LeoSettings':
+        ...
+
+    @overload
+    def get_cog(self, name: Literal['TasklistCog']) -> 'TasklistCog':
+        ...
+
+    @overload
+    def get_cog(self, name: Literal['TopggCog']) -> 'TopggCog':
+        ...
+
+    @overload
+    def get_cog(self, name: Literal['UserConfigCog']) -> 'UserConfigCog':
+        ...
+
+    @overload
+    def get_cog(self, name: Literal['VideoCog']) -> 'VideoCog':
+        ...
+
+    @overload
+    def get_cog(self, name: str) -> Optional[Cog]:
+        ...
+
+    def get_cog(self, name: str) -> Optional[Cog]:
+        return super().get_cog(name)
 
     async def add_cog(self, cog: Cog, **kwargs):
         sup = super()

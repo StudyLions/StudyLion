@@ -5,6 +5,7 @@ from typing import Optional
 
 import discord
 from core.lion_guild import LionGuild
+from data.queries import ORDER
 from meta import LionBot
 from utils.lib import MessageArgs, jumpto, strfdelta, utc_now
 from utils.monitor import TaskMonitor
@@ -86,7 +87,9 @@ class Ticket:
         instantiate the correct classes.
         """
         registry: ModerationData = bot.db.registries['ModerationData']
-        rows = await registry.Ticket.fetch_where(*args, **kwargs)
+        rows = await registry.Ticket.fetch_where(*args, **kwargs).order_by(
+            'created_at', ORDER.DESC,
+        )
         tickets = []
         if rows:
             guildids = set(row.guildid for row in rows)

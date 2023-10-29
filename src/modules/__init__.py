@@ -4,6 +4,7 @@ active = [
     '.sysadmin',
     '.config',
     '.user_config',
+    '.skins',
     '.schedule',
     '.economy',
     '.ranks',
@@ -20,6 +21,7 @@ active = [
     '.meta',
     '.sponsors',
     '.topgg',
+    '.premium',
     '.test',
 ]
 
