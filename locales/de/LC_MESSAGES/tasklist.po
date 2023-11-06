@@ -618,12 +618,12 @@ msgstr ""
 #: src/modules/tasklist/ui.py:629
 msgctxt "ui:tasklist|button:edit_mode|label"
 msgid "Edit"
-msgstr ""
+msgstr "Bearbeiten"
 
 #: src/modules/tasklist/ui.py:645
 msgctxt "ui:tasklist|button:delete_mode|label"
 msgid "Delete"
-msgstr ""
+msgstr "Löschen"
 
 #: src/modules/tasklist/ui.py:661
 msgctxt "ui:tasklist|button:toggle_mode|label"
