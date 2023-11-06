@@ -518,13 +518,13 @@ msgstr ""
 #: src/modules/moderation/ticket.py:192
 msgctxt "ticket|field:expiry|mode:expired|name"
 msgid "Expired"
-msgstr ""
+msgstr "Expiré"
 
 #: src/modules/moderation/ticket.py:195
 #, possible-python-brace-format
 msgctxt "ticket|field:expiry|mode:expired|value"
 msgid "{timestamp}"
-msgstr ""
+msgstr "{timestamp}"
 
 #: src/modules/moderation/ticket.py:202
 msgctxt "ticket|field:expiry|mode:open|name"
