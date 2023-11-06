@@ -670,6 +670,9 @@ msgid ""
 "Moderators are never permitted to perform actions (such as giving roles) that they do not already have the Discord permissions for.\n"
 "Members with the 'Manage Guild' permission are always considered moderators."
 msgstr ""
+"Les membres ayant le rôle de modérateur sont considérés comme des modérateurs, et sont autorisés à utiliser les commandes de modération, telles que la visualisation et le pardon des tickets de modération, la création de notes de modération, et l'exécution de reconfigurations mineures par le biais de la commande `/config`.\n"
+"Les modérateurs ne sont jamais autorisés à effectuer des actions (telles que donner des rôles) pour lesquelles ils n'ont pas déjà les permissions Discord.\n"
+"Les membres disposant de la permission \"Gérer le serveur\" sont toujours considérés comme des modérateurs."
 
 #: src/modules/moderation/settings.py:145
 msgctxt "guildset:mod_role|accepts"
