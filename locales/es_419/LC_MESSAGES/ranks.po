@@ -901,7 +901,7 @@ msgstr "XP Nivel 7 (128000)"
 #: src/modules/ranks/ui/templates.py:232
 msgctxt "rank_autocreate|template|type:msg|level:1"
 msgid "Message Level 1 (200)"
-msgstr ""
+msgstr "Mensaje Nivel 1 (200)"
 
 #: src/modules/ranks/ui/templates.py:240
 msgctxt "rank_autocreate|template|type:msg|level:2"
