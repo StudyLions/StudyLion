@@ -944,7 +944,7 @@ msgstr ""
 #: src/modules/rolemenus/rolemenu.py:395
 msgctxt "ui:rolemenu_dropdown|placeholder"
 msgid "Select Roles"
-msgstr ""
+msgstr "Rollen auswählen"
 
 #: src/modules/rolemenus/rolemenu.py:506
 #, possible-python-brace-format
