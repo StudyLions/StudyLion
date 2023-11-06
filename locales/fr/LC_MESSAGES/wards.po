@@ -92,6 +92,8 @@ msgstr ""
 msgctxt "ward:equippable_role|error:not_assignable"
 msgid "I don't have sufficient permissions to assign or remove {role}."
 msgstr ""
+"Je n'ai pas les permissions suffisantes pour assigner ou retirer le rôle "
+"{role}."
 
 #: src/wards.py:212
 msgctxt "ward:equippable_role|error:actor_perms"
