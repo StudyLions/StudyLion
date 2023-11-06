@@ -54,7 +54,7 @@ msgstr "einladen"
 #: src/modules/meta/cog.py:107
 msgctxt "cmd:invite|desc"
 msgid "Invite LionBot to your own server."
-msgstr ""
+msgstr "Lade LionBot auf deinen eigenen Server ein."
 
 #: src/modules/meta/cog.py:117
 #, possible-python-brace-format
@@ -78,7 +78,7 @@ msgstr ""
 #: src/modules/meta/cog.py:144
 msgctxt "cmd:support"
 msgid "support"
-msgstr ""
+msgstr "Support"
 
 #: src/modules/meta/cog.py:147
 msgctxt "cmd:support|desc"
@@ -106,7 +106,7 @@ msgstr ""
 #: src/modules/meta/cog.py:179
 msgctxt "cmd:nerd|title"
 msgid "Nerd Statistics"
-msgstr ""
+msgstr "Nerd Statistik"
 
 #: src/modules/meta/cog.py:202
 msgctxt "cmd:nerd|field:currently|name"
