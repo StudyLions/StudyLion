@@ -162,7 +162,7 @@ msgstr ""
 #: src/modules/statistics/achievements.py:304
 msgctxt "achievement:days|name"
 msgid "Aim For The Moon"
-msgstr ""
+msgstr "Der Mond ist das Ziel"
 
 #: src/modules/statistics/achievements.py:308
 msgctxt "achievement:days|subtext"
