@@ -677,7 +677,7 @@ msgstr ""
 #: src/modules/moderation/settings.py:145
 msgctxt "guildset:mod_role|accepts"
 msgid "Moderation role name or id."
-msgstr ""
+msgstr "Nom ou ID du rôle de modérateur."
 
 #: src/modules/moderation/settings.py:159
 #, possible-python-brace-format
