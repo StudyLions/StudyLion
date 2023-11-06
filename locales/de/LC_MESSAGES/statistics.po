@@ -222,12 +222,12 @@ msgstr ""
 #: src/modules/statistics/settings.py:44
 msgctxt "settype:stat|input_format:text"
 msgid "Text"
-msgstr ""
+msgstr "Text"
 
 #: src/modules/statistics/settings.py:45
 msgctxt "settype:stat|input_format:anki"
 msgid "Anki"
-msgstr ""
+msgstr "Anki"
 
 #: src/modules/statistics/settings.py:48
 msgctxt "settype:stat|input_pattern:voice"
