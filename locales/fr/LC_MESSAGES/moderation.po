@@ -565,7 +565,7 @@ msgstr ""
 #: src/modules/moderation/settings.py:22
 msgctxt "guildset:ticket_log"
 msgid "ticket_log"
-msgstr ""
+msgstr "ticket_log"
 
 #: src/modules/moderation/settings.py:25
 msgctxt "guildset:ticket_log|desc"
