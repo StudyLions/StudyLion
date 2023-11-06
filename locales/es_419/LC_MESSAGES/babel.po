@@ -313,7 +313,7 @@ msgstr "Portugués, brasileño"
 #: src/babel/enums.py:58
 msgctxt "localenames|locale:ro"
 msgid "Romanian, Romania"
-msgstr ""
+msgstr "Rumano, Rumanía"
 
 #: src/babel/enums.py:59
 msgctxt "localenames|locale:fi"
@@ -373,7 +373,7 @@ msgstr "Tailandés"
 #: src/babel/enums.py:70
 msgctxt "localenames|locale:zh-CN"
 msgid "Chinese, China"
-msgstr ""
+msgstr "Chino, China"
 
 #: src/babel/enums.py:71
 msgctxt "localenames|locale:ja"
