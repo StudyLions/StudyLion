@@ -344,12 +344,12 @@ msgstr "Erstellt nach"
 #: src/modules/moderation/ticketui.py:70
 msgctxt "ticketfilter|field:before|name"
 msgid "Created Before"
-msgstr ""
+msgstr "Erstellt vor"
 
 #: src/modules/moderation/ticketui.py:78
 msgctxt "ticketfilter|field:targetids|name"
 msgid "Targets"
-msgstr ""
+msgstr "Ziel"
 
 #: src/modules/moderation/ticketui.py:86
 msgctxt "ticketfilter|field:moderatorids|name"
