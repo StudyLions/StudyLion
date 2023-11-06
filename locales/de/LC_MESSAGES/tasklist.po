@@ -114,7 +114,7 @@ msgstr ""
 #: src/modules/tasklist/cog.py:404
 msgctxt "cmd:tasks_new"
 msgid "new"
-msgstr ""
+msgstr "neu"
 
 #: src/modules/tasklist/cog.py:407
 msgctxt "cmd:tasks_new|desc"
@@ -124,7 +124,7 @@ msgstr ""
 #: src/modules/tasklist/cog.py:411
 msgctxt "cmd:tasks_new|param:content"
 msgid "task"
-msgstr ""
+msgstr "Aufgabe"
 
 #: src/modules/tasklist/cog.py:412
 msgctxt "cmd:tasks_new|param:parent"
