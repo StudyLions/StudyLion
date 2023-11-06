@@ -160,12 +160,12 @@ msgstr "spielt"
 #: src/modules/sysadmin/presence.py:181
 msgctxt "botset:presence_type|input_format:streaming"
 msgid "Streaming"
-msgstr ""
+msgstr "streamt"
 
 #: src/modules/sysadmin/presence.py:184
 msgctxt "botset:presence_type|input_pattern:watching"
 msgid "watching"
-msgstr ""
+msgstr "schaut"
 
 #: src/modules/sysadmin/presence.py:185
 msgctxt "botset:presence_type|input_pattern:listening"
