@@ -147,7 +147,7 @@ msgstr ""
 #: src/babel/settings.py:92
 msgctxt "userset:locale|response"
 msgid "You have unset your language."
-msgstr ""
+msgstr "Du hast die Sprache zurückgesetzt."
 
 #: src/babel/settings.py:94
 #, possible-python-brace-format
