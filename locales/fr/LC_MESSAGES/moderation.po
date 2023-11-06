@@ -118,12 +118,12 @@ msgstr ""
 #: src/modules/moderation/cog.py:232
 msgctxt "cmd:warning|param:target"
 msgid "target"
-msgstr ""
+msgstr "cible"
 
 #: src/modules/moderation/cog.py:233
 msgctxt "cmd:warning|param:reason"
 msgid "reason"
-msgstr ""
+msgstr "motif"
 
 #: src/modules/moderation/cog.py:238
 msgctxt "cmd:warning|param:target|desc"
