@@ -704,7 +704,7 @@ msgstr ""
 #: src/modules/pomodoro/ui/status.py:119
 msgctxt "ui:timer_status|button:edit|label"
 msgid "Options"
-msgstr ""
+msgstr "Optionen"
 
 #: src/modules/pomodoro/ui/status.py:138
 msgctxt "ui:timer_status|button:start|error:already_running"
@@ -726,7 +726,7 @@ msgstr ""
 #: src/modules/pomodoro/ui/status.py:168
 msgctxt "ui:timer_status|button:start|label"
 msgid "Start"
-msgstr ""
+msgstr "Start"
 
 #: src/modules/pomodoro/ui/status.py:190
 msgctxt "ui:timer_status|button:stop|error:not_manager|title"
