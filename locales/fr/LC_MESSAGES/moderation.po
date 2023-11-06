@@ -360,7 +360,7 @@ msgstr "Créé après"
 #: src/modules/moderation/ticketui.py:70
 msgctxt "ticketfilter|field:before|name"
 msgid "Created Before"
-msgstr ""
+msgstr "Créé avant"
 
 #: src/modules/moderation/ticketui.py:78
 msgctxt "ticketfilter|field:targetids|name"
