@@ -177,7 +177,7 @@ msgstr ""
 #: src/modules/moderation/cog.py:347
 msgctxt "cmd:warning|embed:success|field:no_alert|name"
 msgid "Note"
-msgstr ""
+msgstr "Notiz"
 
 #: src/modules/moderation/cog.py:351
 msgctxt "cmd:warning|embed:success|field:no_alert|value"
@@ -197,7 +197,7 @@ msgstr ""
 #: src/modules/moderation/cog.py:367
 msgctxt "cmd:pardon|param:ticketids"
 msgid "tickets"
-msgstr ""
+msgstr "Tickets"
 
 #: src/modules/moderation/cog.py:371
 msgctxt "cmd:pardon|param:reason"
