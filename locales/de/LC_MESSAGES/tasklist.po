@@ -277,7 +277,7 @@ msgstr ""
 #: src/modules/tasklist/cog.py:670
 msgctxt "ui:tasklist_single_editor|title"
 msgid "Edit Task"
-msgstr ""
+msgstr "Aufgabe bearbeiten"
 
 #: src/modules/tasklist/cog.py:685
 msgctxt "cmd:tasks_clear"
@@ -309,7 +309,7 @@ msgstr ""
 #: src/modules/tasklist/cog.py:711
 msgctxt "cmd:tasks_remove|param:taskidstr"
 msgid "tasks"
-msgstr ""
+msgstr "Aufgaben"
 
 #: src/modules/tasklist/cog.py:712
 msgctxt "cmd:tasks_remove|param:created_before"
