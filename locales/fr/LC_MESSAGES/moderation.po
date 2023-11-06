@@ -390,7 +390,7 @@ msgstr "Editer les filtres"
 #: src/modules/moderation/ticketui.py:199
 msgctxt "ui:tickets|button:select_ticket|label"
 msgid "Select Ticket"
-msgstr ""
+msgstr "Sélectionner un ticket"
 
 #: src/modules/moderation/ticketui.py:215
 msgctxt "ui:tickets|button:pardon|error:no_tickets"
