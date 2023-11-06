@@ -304,7 +304,7 @@ msgstr "Sortiere nach Tickettyp."
 #: src/modules/moderation/cog.py:504
 msgctxt "cmd:tickets|param:state|desc"
 msgid "Filter by ticket state."
-msgstr ""
+msgstr "Sortiere nach Ticketstatus."
 
 #: src/modules/moderation/cog.py:508
 msgctxt "cmd:tickets|param:pardoned|desc"
@@ -339,7 +339,7 @@ msgstr ""
 #: src/modules/moderation/ticketui.py:62
 msgctxt "ticketfilter|field:after|name"
 msgid "Created After"
-msgstr ""
+msgstr "Erstellt nach"
 
 #: src/modules/moderation/ticketui.py:70
 msgctxt "ticketfilter|field:before|name"
