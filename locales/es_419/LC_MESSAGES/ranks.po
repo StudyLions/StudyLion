@@ -790,6 +790,8 @@ msgid ""
 "Congratulations {user_mention}!\n"
 "For sending **{requires}**, you have achieved the guild rank of **{role_name}** in **{guild_name}**!"
 msgstr ""
+"¡Enhorabuena {user_mention}!\n"
+"Por enviar **{requires}**, ¡has alcanzado el rango de gremio de **{role_name}** en **{guild_name}**!"
 
 #: src/modules/ranks/ui/templates.py:47
 msgctxt "rank_autocreate|template|type:study_voice|level:1"
