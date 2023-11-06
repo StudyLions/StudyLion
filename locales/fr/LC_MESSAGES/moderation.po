@@ -350,7 +350,7 @@ msgstr "modération"
 #: src/modules/moderation/cog.py:585
 msgctxt "cmd:configure_moderation|desc"
 msgid "Configure general moderation settings."
-msgstr ""
+msgstr "Configurer les paramètres généraux de modération."
 
 #: src/modules/moderation/ticketui.py:62
 msgctxt "ticketfilter|field:after|name"
