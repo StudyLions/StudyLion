@@ -183,7 +183,7 @@ msgstr "[Ticket #{ticket}]({jump_link}) {user} a reçu un avertissement."
 #: src/modules/moderation/cog.py:347
 msgctxt "cmd:warning|embed:success|field:no_alert|name"
 msgid "Note"
-msgstr ""
+msgstr "Note"
 
 #: src/modules/moderation/cog.py:351
 msgctxt "cmd:warning|embed:success|field:no_alert|value"
