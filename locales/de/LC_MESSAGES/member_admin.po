@@ -433,7 +433,7 @@ msgstr ""
 #: src/modules/member_admin/settings.py:207
 msgctxt "guildset:greeting_message|embed_field|formatkeys|name"
 msgid "Placeholders"
-msgstr ""
+msgstr "Platzhalter"
 
 #: src/modules/member_admin/settings.py:218
 msgctxt "guildset:returning_message"
@@ -501,7 +501,7 @@ msgstr ""
 #: src/modules/member_admin/settings.py:333
 msgctxt "guildset:returning_message|embed_field|formatkeys|"
 msgid "Placeholders"
-msgstr ""
+msgstr "Platzhalter"
 
 #: src/modules/member_admin/settings.py:345
 msgctxt "guildset:autoroles"
