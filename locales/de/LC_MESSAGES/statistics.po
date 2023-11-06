@@ -192,7 +192,7 @@ msgstr ""
 #: src/modules/statistics/achievements.py:392
 msgctxt "achievement:monthlyhours|name"
 msgid "The 30 Days Challenge"
-msgstr ""
+msgstr "Die 30 Tage Challenge"
 
 #: src/modules/statistics/achievements.py:396
 msgctxt "achievement:monthlyhours|subtext"
