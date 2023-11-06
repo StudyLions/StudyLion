@@ -403,12 +403,12 @@ msgstr ""
 #: src/tracking/voice/settings.py:340
 msgctxt "ui:voice_tracker_config|button:close|label"
 msgid "Close"
-msgstr ""
+msgstr "schließen"
 
 #: src/tracking/voice/settings.py:354
 msgctxt "ui:voice_tracker_config|button:reset|label"
 msgid "Reset"
-msgstr ""
+msgstr "Reset"
 
 #: src/tracking/voice/settings.py:367
 msgctxt "ui:voice_tracker_config|menu:untracked_channels|placeholder"
