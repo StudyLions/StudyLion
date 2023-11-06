@@ -112,6 +112,8 @@ msgctxt "cmd:warning|desc"
 msgid ""
 "Warn a member for a misdemeanour, and add it to their moderation record."
 msgstr ""
+"Donner un avertissement à un membre pour un manquement, et l'ajouter à ses "
+"antécédents de modération."
 
 #: src/modules/moderation/cog.py:232
 msgctxt "cmd:warning|param:target"
