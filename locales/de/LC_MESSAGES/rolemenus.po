@@ -966,7 +966,7 @@ msgstr ""
 #: src/modules/rolemenus/rolemenu.py:539
 msgctxt "rolemenu|select|error:perms"
 msgid "I don't have enough permissions to give you this role!"
-msgstr ""
+msgstr "Ich habe keine Berechtigung dir diese Rolle zu geben!"
 
 #: src/modules/rolemenus/rolemenu.py:546
 msgctxt "rolemenu|select|error:discord"
