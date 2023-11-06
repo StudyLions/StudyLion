@@ -310,7 +310,7 @@ msgstr "avant"
 #: src/modules/moderation/cog.py:496
 msgctxt "cmd:tickets|param:target|desc"
 msgid "Filter by tickets acting on a given user."
-msgstr ""
+msgstr "Filtrer par tickets à propos d'un utilisateur."
 
 #: src/modules/moderation/cog.py:500
 msgctxt "cmd:tickets|param:type|desc"
