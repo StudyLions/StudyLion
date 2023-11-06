@@ -132,7 +132,7 @@ msgstr "Trainiere 50 mal"
 #: src/modules/statistics/achievements.py:170
 msgctxt "achievement:voicehours|name"
 msgid "Dream Big"
-msgstr ""
+msgstr "Träume hoch hinaus"
 
 #: src/modules/statistics/achievements.py:174
 msgctxt "achievement:voicehours|subtext"
