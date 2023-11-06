@@ -403,4 +403,4 @@ msgstr "Hebreo"
 #: src/babel/enums.py:80
 msgctxt "localenames|locale:test"
 msgid "Test Language"
-msgstr ""
+msgstr "Lenguaje de prueba"
