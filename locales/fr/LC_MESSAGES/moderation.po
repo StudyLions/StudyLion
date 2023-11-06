@@ -215,7 +215,7 @@ msgstr "motif"
 #: src/modules/moderation/cog.py:377
 msgctxt "cmd:pardon|param:ticketids|desc"
 msgid "Comma separated list of ticket numbers to pardon."
-msgstr ""
+msgstr "Liste séparé par des virgules de numéros de ticket à pardonner."
 
 #: src/modules/moderation/cog.py:381
 msgctxt "cmd:pardon|param:reason"
