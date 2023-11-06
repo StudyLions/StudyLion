@@ -665,7 +665,7 @@ msgstr ""
 #: src/modules/statistics/ui/weeklymonthly.py:731
 msgctxt "ui:WeeklyMonthly|button:global|mode:local"
 msgid "Server Statistics"
-msgstr ""
+msgstr "Server Statistik"
 
 #: src/modules/statistics/ui/weeklymonthly.py:736
 msgctxt "ui:WeeklyMonthly|button:global|mode:global"
