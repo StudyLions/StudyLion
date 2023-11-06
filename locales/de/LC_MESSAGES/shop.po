@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-15 15:58+0300\n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Sarah Vogel, 2023\n"
 "Language-Team: German (https://app.transifex.com/leobot/teams/174919/de/)\n"
@@ -156,7 +156,7 @@ msgstr "Farben"
 #: src/modules/shop/shops/colours.py:370
 msgctxt "cmd:editshop_colours_create"
 msgid "create"
-msgstr ""
+msgstr "erstellen"
 
 #: src/modules/shop/shops/colours.py:373
 msgctxt "cmd:editshop_colours_create|desc"
@@ -186,12 +186,12 @@ msgstr ""
 #: src/modules/shop/shops/colours.py:388
 msgctxt "cmd:editshop_colours_create|param:name|desc"
 msgid "What should the colour role be called?"
-msgstr ""
+msgstr "Wie soll die Rolle benannt werden?"
 
 #: src/modules/shop/shops/colours.py:392
 msgctxt "cmd:editshop_colours_create|param:price|desc"
 msgid "How much should the colour role cost?"
-msgstr ""
+msgstr "Wie viel soll diese Rolle kosten?"
 
 #: src/modules/shop/shops/colours.py:414
 #, possible-python-brace-format
