@@ -69,12 +69,12 @@ msgstr "Ajouter une note au dossier de modération du membre visé."
 #: src/modules/moderation/cog.py:142
 msgctxt "cmd:modnote|param:target"
 msgid "target"
-msgstr "Cible"
+msgstr "cible"
 
 #: src/modules/moderation/cog.py:143
 msgctxt "cmd:modnote|param:note"
 msgid "note"
-msgstr ""
+msgstr "note"
 
 #: src/modules/moderation/cog.py:148
 msgctxt "cmd:modnote|param:target|desc"
