@@ -79,7 +79,7 @@ msgstr "note"
 #: src/modules/moderation/cog.py:148
 msgctxt "cmd:modnote|param:target|desc"
 msgid "Target member or user to add a note to."
-msgstr ""
+msgstr "Cibler un membre ou un utilisateur pour lui ajouter aussi une note."
 
 #: src/modules/moderation/cog.py:152
 msgctxt "cmd:modnote|param:note|desc"
