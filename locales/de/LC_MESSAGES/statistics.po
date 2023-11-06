@@ -137,7 +137,7 @@ msgstr "Träume hoch hinaus"
 #: src/modules/statistics/achievements.py:174
 msgctxt "achievement:voicehours|subtext"
 msgid "Study a total of 1000 hours"
-msgstr ""
+msgstr "Lerne insgesamt 1000 Stunden"
 
 #: src/modules/statistics/achievements.py:196
 msgctxt "achievement:voicestreak|name"
