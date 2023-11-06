@@ -931,17 +931,19 @@ msgstr "Mensaje Nivel 6 (6400)"
 #: src/modules/ranks/ui/templates.py:280
 msgctxt "rank_autocreate|template|type:msg|level:7"
 msgid "Message Level 7 (12800)"
-msgstr ""
+msgstr "Mensaje Nivel 7 (12800)"
 
 #: src/modules/ranks/ui/overview.py:97
 msgctxt "ui:rank_overview|button:auto|error:already_created"
 msgid "The rank roles have already been created!"
-msgstr ""
+msgstr "¡Los roles de rango ya han sido creados!"
 
 #: src/modules/ranks/ui/overview.py:105
 msgctxt "ui:rank_overview|button:auto|error:my_permissions"
 msgid "I lack the 'Manage Roles' permission required to create rank roles!"
 msgstr ""
+"No dispongo del permiso \"Gestionar funciones\" necesario para crear "
+"funciones de rango."
 
 #: src/modules/ranks/ui/overview.py:114
 msgctxt "ui:rank_overview|button:auto|error:invalid_template"
