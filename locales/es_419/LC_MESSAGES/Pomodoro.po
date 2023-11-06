@@ -61,7 +61,7 @@ msgstr "Temporizador {pattern}"
 #: src/modules/pomodoro/timer.py:413
 msgctxt "timer|disconnect|audit_reason"
 msgid "Disconnecting inactive member from timer."
-msgstr ""
+msgstr "Desconexión del miembro inactivo por temporizador."
 
 #: src/modules/pomodoro/timer.py:425
 #, possible-python-brace-format
