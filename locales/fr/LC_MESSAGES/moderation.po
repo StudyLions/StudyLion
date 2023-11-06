@@ -133,7 +133,7 @@ msgstr "Choisissez le membre à qui donner un avertissement."
 #: src/modules/moderation/cog.py:242
 msgctxt "cmd:warning|param:reason|desc"
 msgid "The reason why you are warning this member."
-msgstr ""
+msgstr "Le motif pour lequel vous avez averti ce membre."
 
 #: src/modules/moderation/cog.py:262
 msgctxt "cmd:warning|modal:reason|title"
