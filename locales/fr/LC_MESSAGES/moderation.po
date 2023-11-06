@@ -749,6 +749,8 @@ msgid ""
 "Members with {role} will now be considered admins, and have access to my "
 "full interface."
 msgstr ""
+"Les membres avec le rôle {role} seront maintenant considérés comme des "
+"administrateurs, et ont accès à mon interface complète."
 
 #: src/modules/moderation/settings.py:221
 msgctxt "guildset:admin_role|set_response:unset"
