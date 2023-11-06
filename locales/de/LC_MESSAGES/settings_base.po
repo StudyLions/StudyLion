@@ -132,7 +132,7 @@ msgstr "Aus"
 #: src/settings/setting_types.py:511
 msgctxt "settype:bool|output:none"
 msgid "Not Set"
-msgstr ""
+msgstr "Nicht gesetzt"
 
 #: src/settings/setting_types.py:622
 msgctxt "settype:integer|accepts"
