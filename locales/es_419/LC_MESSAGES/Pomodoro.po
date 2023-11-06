@@ -89,6 +89,9 @@ msgid ""
 "**Warning!** Timer {channel} is configured to disconnect on inactivity, but "
 "I lack the 'Move Members' permission to do this!"
 msgstr ""
+"**Advertencia:** El temporizador {channel} está configurado para "
+"desconectarse en caso de inactividad, pero no dispongo del permiso \"Mover "
+"miembros\" para hacerlo."
 
 #: src/modules/pomodoro/timer.py:537
 #, possible-python-brace-format
@@ -141,7 +144,7 @@ msgstr "Panel de configuración del temporizador"
 #: src/modules/pomodoro/settingui.py:82
 msgctxt "dash:pomodoro|title"
 msgid "Pomodoro Configuration ({commands[config pomodoro]})"
-msgstr ""
+msgstr "Configuración de Pomodoro ({comandos[config pomodoro]})"
 
 #: src/modules/pomodoro/settingui.py:86
 msgctxt "dash:stats|dropdown|placeholder"
