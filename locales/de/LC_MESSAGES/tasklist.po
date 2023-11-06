@@ -229,7 +229,7 @@ msgstr ""
 #: src/modules/tasklist/cog.py:587
 msgctxt "cmd:tasks_edit|param:taskstr"
 msgid "task"
-msgstr ""
+msgstr "Aufgabe"
 
 #: src/modules/tasklist/cog.py:588
 msgctxt "cmd:tasks_edit|param:new_content"
