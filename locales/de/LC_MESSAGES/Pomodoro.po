@@ -743,7 +743,7 @@ msgstr ""
 #: src/modules/pomodoro/ui/status.py:204
 msgctxt "ui:timer_status|button:stop|label"
 msgid "Stop"
-msgstr ""
+msgstr "Stop"
 
 #: src/modules/pomodoro/ui/config.py:45
 msgctxt "ui:timer_options|error:timer_destroyed"
@@ -753,7 +753,7 @@ msgstr ""
 #: src/modules/pomodoro/ui/config.py:68
 msgctxt "ui:timer_options|button:edit|label"
 msgid "Edit"
-msgstr ""
+msgstr "Bearbeiten"
 
 #: src/modules/pomodoro/ui/config.py:84
 msgctxt "ui:timer_options|button:voice_alerts|label"
