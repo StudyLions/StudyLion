@@ -473,7 +473,7 @@ msgstr ""
 #: src/modules/tasklist/cog.py:982
 msgctxt "cmd:configure_tasklist|param:reward"
 msgid "reward"
-msgstr ""
+msgstr "Belohnung"
 
 #: src/modules/tasklist/cog.py:983
 msgctxt "cmd:configure_tasklist|param:reward_limit"
