@@ -96,11 +96,13 @@ msgctxt "eventlog|event:new_rank|error:permissions"
 msgid ""
 "Could not update activity rank roles, I lack the 'Manage Roles' permission."
 msgstr ""
+"No se han podido actualizar los roles de rango de actividad, me falta el "
+"permiso de 'Gestionar Roles'."
 
 #: src/modules/ranks/cog.py:548
 msgctxt "eventlog|event:new_rank|error:notify_failed"
 msgid "Could not notify member."
-msgstr ""
+msgstr "No se ha podido notificar al socio."
 
 #: src/modules/ranks/cog.py:555
 msgctxt "eventlog|event:new_rank|name"
