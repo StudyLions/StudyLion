@@ -238,6 +238,9 @@ msgid ""
 "Could not parse provided tickets as a list of ticket ids! Please enter "
 "tickets as a comma separated list of ticket numbers, for example `1, 2, 3`."
 msgstr ""
+"Impossible d'identifier les tickets fournis comme une liste d'identifiants "
+"de tickets ! Veuillez saisir les tickets sous la forme d'une liste de "
+"numéros de tickets séparés par des virgules, par exemple `1, 2, 3`."
 
 #: src/modules/moderation/cog.py:449
 msgctxt "cmd:pardon|error:no_matching"
