@@ -193,7 +193,7 @@ msgstr "*Impossible de délivrer l'avertissement au membre cible.*"
 #: src/modules/moderation/cog.py:358
 msgctxt "cmd:pardon"
 msgid "pardon"
-msgstr "excuse"
+msgstr "pardonner"
 
 #: src/modules/moderation/cog.py:361
 msgctxt "cmd:pardon|desc"
