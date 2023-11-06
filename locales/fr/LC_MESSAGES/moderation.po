@@ -148,12 +148,12 @@ msgstr "Motif de l'avertissement (visible par l'utilisateur)."
 #: src/modules/moderation/cog.py:298
 msgctxt "cmd:warning|embed:user_alert|title"
 msgid "You have received a warning!"
-msgstr ""
+msgstr "Vous avez reçu un avertissement!"
 
 #: src/modules/moderation/cog.py:305
 msgctxt "cmd:warning|embed:user_alert|field:note|name"
 msgid "Note"
-msgstr ""
+msgstr "Note"
 
 #: src/modules/moderation/cog.py:309
 msgctxt "cmd:warning|embed:user_alert|field:note|value"
