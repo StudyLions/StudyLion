@@ -298,7 +298,7 @@ msgstr ""
 #: src/modules/reminders/ui.py:264
 msgctxt "ui:reminderlist|embed:list|author"
 msgid "Your reminders"
-msgstr ""
+msgstr "Deine Erinnerungen"
 
 #: src/modules/reminders/ui.py:270
 msgctxt "ui:reminderlist|embed:list|footer"
