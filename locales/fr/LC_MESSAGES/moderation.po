@@ -642,6 +642,8 @@ msgstr "Les alertes de modération seront envoyées dans {channel}"
 msgctxt "guildset:alert_channel|set_response:unset"
 msgid "Moderation alerts will be ignored if the member cannot be reached."
 msgstr ""
+"Les alertes de modération seront ignorées si le membre ne peut être "
+"contacté."
 
 #: src/modules/moderation/settings.py:119
 msgctxt "guildset:alert_channel|formatted:unset"
