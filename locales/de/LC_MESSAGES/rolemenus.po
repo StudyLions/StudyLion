@@ -1027,7 +1027,7 @@ msgstr ""
 #: src/modules/rolemenus/rolemenu.py:691
 msgctxt "rolemenu|deslect|success|title"
 msgid "Role removed"
-msgstr ""
+msgstr "Rolle entfernt"
 
 #: src/modules/rolemenus/rolemenu.py:697
 #, possible-python-brace-format
@@ -1079,7 +1079,7 @@ msgstr ""
 #: src/modules/rolemenus/menuoptions.py:56
 msgctxt "menuset:name"
 msgid "name"
-msgstr ""
+msgstr "Name"
 
 #: src/modules/rolemenus/menuoptions.py:59
 msgctxt "menuset:name|desc"
