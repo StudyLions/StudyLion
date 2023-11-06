@@ -662,7 +662,7 @@ msgstr ""
 #: src/modules/moderation/settings.py:178
 msgctxt "guildset:mod_role|formatted:unset"
 msgid "Not Set."
-msgstr ""
+msgstr "Nicht gesetzt."
 
 #: src/modules/moderation/settings.py:186
 msgctxt "guildset:admin_role"
