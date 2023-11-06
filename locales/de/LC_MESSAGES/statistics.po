@@ -152,7 +152,7 @@ msgstr ""
 #: src/modules/statistics/achievements.py:283
 msgctxt "achievement:voting|name"
 msgid "We're a Team"
-msgstr ""
+msgstr "Wir sind ein Team"
 
 #: src/modules/statistics/achievements.py:287
 msgctxt "achievement:voting|subtext"
