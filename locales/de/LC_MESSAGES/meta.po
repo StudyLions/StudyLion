@@ -145,7 +145,7 @@ msgstr ""
 #: src/modules/meta/cog.py:255
 msgctxt "cmd:nerd|field:tasks|name"
 msgid "Tasks"
-msgstr ""
+msgstr "Aufgaben"
 
 #: src/modules/meta/cog.py:258
 #, possible-python-brace-format
