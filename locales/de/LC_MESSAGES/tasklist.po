@@ -82,7 +82,7 @@ msgstr ""
 #: src/modules/tasklist/cog.py:271
 msgctxt "group:tasks"
 msgid "tasks"
-msgstr ""
+msgstr "Aufgaben"
 
 #: src/modules/tasklist/cog.py:272
 msgctxt "group:tasks|desc"
