@@ -578,6 +578,9 @@ msgid ""
 "Warnings, notes, video blacklists, and other moderation events will be "
 "posted as numbered tickets with context to this log."
 msgstr ""
+"Attention, les notes, les blacklists de vidéo, et autres actes de modération"
+" vont être postés comme des tickets numérotés avec leur contexte dans ce "
+"journal."
 
 #: src/modules/moderation/settings.py:34
 msgctxt "guildset:ticket_log|accepts"
