@@ -24,12 +24,12 @@ msgstr ""
 #: src/modules/tasklist/cog.py:35
 msgctxt "argtype:Before|opt:HOUR"
 msgid "The last hour"
-msgstr ""
+msgstr "Die letzte Stunde"
 
 #: src/modules/tasklist/cog.py:36
 msgctxt "argtype:Before|opt:HALFDAY"
 msgid "The last 12 hours"
-msgstr ""
+msgstr "Die letzten 12 Stunden"
 
 #: src/modules/tasklist/cog.py:37
 msgctxt "argtype:Before|opt:DAY"
