@@ -854,12 +854,12 @@ msgstr ""
 #: src/modules/schedule/ui/sessionui.py:52
 msgctxt "ui:sessionui|button:book|label"
 msgid "Book"
-msgstr ""
+msgstr "buchen"
 
 #: src/modules/schedule/ui/sessionui.py:56
 msgctxt "ui:sessionui|button:cancel|label"
 msgid "Cancel"
-msgstr ""
+msgstr "abbrechen"
 
 #: src/modules/schedule/ui/sessionui.py:60
 msgctxt "ui:sessionui|button:schedule|label"
