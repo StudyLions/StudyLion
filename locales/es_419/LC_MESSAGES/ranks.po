@@ -1085,7 +1085,7 @@ msgstr "Ver o editar el rango"
 #: src/modules/ranks/ui/overview.py:454
 msgctxt "ui:rank_overview|embed:noranks|desc"
 msgid "No activity ranks have been set up!"
-msgstr ""
+msgstr "No se ha establecido ningún rango de actividad."
 
 #: src/modules/ranks/ui/overview.py:459
 msgctxt "ui:rank_overview|embed:noranks|desc|admin_addendum"
