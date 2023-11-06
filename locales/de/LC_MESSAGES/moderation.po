@@ -202,7 +202,7 @@ msgstr ""
 #: src/modules/moderation/cog.py:371
 msgctxt "cmd:pardon|param:reason"
 msgid "reason"
-msgstr ""
+msgstr "Begründung"
 
 #: src/modules/moderation/cog.py:377
 msgctxt "cmd:pardon|param:ticketids|desc"
