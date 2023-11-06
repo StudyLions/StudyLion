@@ -100,7 +100,7 @@ msgstr "Contenu de la note"
 #, possible-python-brace-format
 msgctxt "cmd:modnote|embed:success|desc"
 msgid "Moderation note created as [Ticket #{ticket}]({jump_link})"
-msgstr ""
+msgstr "Note de modération créée en tant que [Ticket #{ticket}]({jump_link})"
 
 #: src/modules/moderation/cog.py:225
 msgctxt "cmd:warning"
