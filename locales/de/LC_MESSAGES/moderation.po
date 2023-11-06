@@ -105,7 +105,7 @@ msgstr ""
 #: src/modules/moderation/cog.py:225
 msgctxt "cmd:warning"
 msgid "warning"
-msgstr ""
+msgstr "Ermahnung"
 
 #: src/modules/moderation/cog.py:228
 msgctxt "cmd:warning|desc"
