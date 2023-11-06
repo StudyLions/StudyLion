@@ -383,7 +383,7 @@ msgstr "Japonés"
 #: src/babel/enums.py:72
 msgctxt "localenames|locale:zh-TW"
 msgid "Chinese, Taiwan"
-msgstr ""
+msgstr "Chino, Taiwán"
 
 #: src/babel/enums.py:73
 msgctxt "localenames|locale:ko"
@@ -398,7 +398,7 @@ msgstr "Hebreo"
 #: src/babel/enums.py:79
 msgctxt "localenames|locale:he-IL"
 msgid "Hebrew"
-msgstr ""
+msgstr "Hebreo"
 
 #: src/babel/enums.py:80
 msgctxt "localenames|locale:test"
