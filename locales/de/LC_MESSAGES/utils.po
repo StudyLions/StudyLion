@@ -510,11 +510,13 @@ msgstr ""
 msgctxt "ui:msg_editor|button:quit|confirm"
 msgid "You have unsaved changes! Are you sure you want to quit?"
 msgstr ""
+"Deine Änderungen wurden nicht gespeichert! Bist du sicher, dass du beenden "
+"willst?"
 
 #: src/utils/ui/msgeditor.py:921
 msgctxt "ui:msg_editor|button:quit|confirm|button:yes"
 msgid "Yes, Quit Now"
-msgstr ""
+msgstr "Ja, jetzt beenden."
 
 #: src/utils/ui/msgeditor.py:927
 msgctxt "ui:msg_editor|button:quit|confirm|button:no"
