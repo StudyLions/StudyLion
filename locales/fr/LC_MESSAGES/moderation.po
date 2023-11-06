@@ -44,7 +44,7 @@ msgstr "Sélectionner le rôle d'administrateur"
 #: src/modules/moderation/settingui.py:141
 msgctxt "ui:moderation_config|embed|title"
 msgid "Moderation Configuration Panel"
-msgstr ""
+msgstr "Panel de configuration de la modération"
 
 #: src/modules/moderation/settingui.py:182
 msgctxt "dash:moderation|title"
