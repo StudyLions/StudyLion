@@ -740,7 +740,7 @@ msgstr ""
 #: src/modules/moderation/settings.py:203
 msgctxt "guildset:admin_role|accepts"
 msgid "Admin role name or id."
-msgstr ""
+msgstr "Nom ou ID du rôle administrateur."
 
 #: src/modules/moderation/settings.py:216
 #, possible-python-brace-format
