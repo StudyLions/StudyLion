@@ -451,7 +451,7 @@ msgstr "Numéro de page invalide, réessayez!"
 #, possible-python-brace-format
 msgctxt "ui:tickets|embed|title"
 msgid "Moderation Tickets in {guild}"
-msgstr "Tickets de modération in {guild}"
+msgstr "Tickets de modération dans {guild}"
 
 #: src/modules/moderation/ticketui.py:506
 msgctxt "ui:tickets|embed|desc:no_tickets"
