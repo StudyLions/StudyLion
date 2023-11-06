@@ -708,7 +708,7 @@ msgstr ""
 #: src/modules/statistics/ui/profile.py:102
 msgctxt "menu:stat_type|opt:anki|name"
 msgid "Anki Statistics"
-msgstr ""
+msgstr "Anki Statistik"
 
 #: src/modules/statistics/ui/profile.py:190
 msgctxt "modal:profile_editor|resp:success"
@@ -723,7 +723,7 @@ msgstr ""
 #: src/modules/statistics/ui/profile.py:219
 msgctxt "ui:profile_card|button:statistics|label:hide"
 msgid "Hide Statistics"
-msgstr ""
+msgstr "Statistik verbergen"
 
 #: src/modules/statistics/ui/profile.py:224
 msgctxt "ui:profile_card|button:statistics|label:show"
