@@ -270,17 +270,17 @@ msgstr "tickets"
 #: src/modules/moderation/cog.py:481
 msgctxt "cmd:tickets|desc"
 msgid "View moderation tickets in this server."
-msgstr ""
+msgstr "Voir les tickets de modération dans ce serveur."
 
 #: src/modules/moderation/cog.py:485
 msgctxt "cmd:tickets|param:target"
 msgid "target"
-msgstr ""
+msgstr "cible"
 
 #: src/modules/moderation/cog.py:486
 msgctxt "cmd:tickets|param:type"
 msgid "type"
-msgstr ""
+msgstr "type"
 
 #: src/modules/moderation/cog.py:487
 msgctxt "cmd:tickets|param:state"
