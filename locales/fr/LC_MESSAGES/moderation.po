@@ -410,7 +410,7 @@ msgstr "Pourquoi pardonnez-vous ces tickets?"
 #: src/modules/moderation/ticketui.py:252
 msgctxt "ui:tickets|button:pardon|label"
 msgid "Pardon All"
-msgstr ""
+msgstr "Tout pardonner"
 
 #: src/modules/moderation/ticketui.py:273
 msgctxt "ui:tickets|menu:filter_type|placeholder"
