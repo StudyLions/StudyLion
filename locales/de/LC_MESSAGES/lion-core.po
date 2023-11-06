@@ -92,7 +92,7 @@ msgstr ""
 #: src/core/lion_guild.py:342
 msgctxt "eventlog|field:errors|name"
 msgid "Errors"
-msgstr ""
+msgstr "Fehler"
 
 #: src/core/setting_types.py:31
 msgctxt "settype:coin|accepts"
