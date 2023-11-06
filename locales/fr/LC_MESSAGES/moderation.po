@@ -714,6 +714,8 @@ msgctxt "guildset:admin_role|desc"
 msgid ""
 "Server role allowing access to all administrator level functionality in Leo."
 msgstr ""
+"Rôle du serveur autorisant l'accès à tous les les fonctionnalités du niveau "
+"administrateur de Leo."
 
 #: src/modules/moderation/settings.py:193
 msgctxt "guildset:admin_role|long_desc"
