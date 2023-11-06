@@ -253,12 +253,12 @@ msgstr "Alemán"
 #: src/babel/enums.py:46
 msgctxt "localenames|locale:en-GB"
 msgid "English, UK"
-msgstr ""
+msgstr "Inglés, Reino Unido"
 
 #: src/babel/enums.py:47
 msgctxt "localenames|locale:en-US"
 msgid "English, US"
-msgstr ""
+msgstr "Inglés, US"
 
 #: src/babel/enums.py:48
 msgctxt "localenames|locale:es-ES"
