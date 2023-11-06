@@ -119,7 +119,7 @@ msgstr ""
 #: src/babel/settings.py:46
 msgctxt "settype:locale|formatted:unset"
 msgid "Unset"
-msgstr ""
+msgstr "entfernen"
 
 #: src/babel/settings.py:62
 #, possible-python-brace-format
