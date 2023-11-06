@@ -95,7 +95,7 @@ msgstr ""
 #: src/modules/statistics/cog.py:208
 msgctxt "cmd:configure_statistics"
 msgid "statistics"
-msgstr ""
+msgstr "Statistiken"
 
 #: src/modules/statistics/cog.py:209
 msgctxt "cmd:configure_statistics|desc"
