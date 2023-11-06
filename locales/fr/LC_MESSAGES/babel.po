@@ -266,7 +266,7 @@ msgstr "Anglais, US"
 #: src/babel/enums.py:48
 msgctxt "localenames|locale:es-ES"
 msgid "Spanish"
-msgstr ""
+msgstr "Espagnol"
 
 #: src/babel/enums.py:49
 msgctxt "localenames|locale:fr"
