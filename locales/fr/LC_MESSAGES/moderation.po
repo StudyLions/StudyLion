@@ -456,12 +456,12 @@ msgstr "Tickets de modération dans {guild}"
 #: src/modules/moderation/ticketui.py:506
 msgctxt "ui:tickets|embed|desc:no_tickets"
 msgid "No tickets matching the given criteria!"
-msgstr ""
+msgstr "Aucun ticket ne correspond aux critères donnés"
 
 #: src/modules/moderation/ticketui.py:515
 msgctxt "ui:tickets|embed|field:filters|name"
 msgid "Filters"
-msgstr ""
+msgstr "Filtres"
 
 #: src/modules/moderation/ticketui.py:603
 msgctxt "ui:ticket|button:pardon|modal:reason|title"
