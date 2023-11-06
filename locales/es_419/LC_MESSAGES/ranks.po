@@ -80,7 +80,7 @@ msgstr "Error al eliminar roles de rango antiguos: `{error}`."
 #, possible-python-brace-format
 msgctxt "eventlog|event:new_rank|error:add_failed"
 msgid "Failed to add new rank role: `{error}`"
-msgstr ""
+msgstr "Error al añadir un nuevo rol de rango: `{error}`."
 
 #: src/modules/ranks/cog.py:507
 msgctxt "eventlog|event:new_rank|error:add_impossible"
@@ -88,6 +88,8 @@ msgid ""
 "Could not assign new activity rank role. Lacking permissions or invalid "
 "role."
 msgstr ""
+"No se ha podido asignar un nuevo rol de rango de actividad. Faltan permisos "
+"o el rol no es válido."
 
 #: src/modules/ranks/cog.py:513
 msgctxt "eventlog|event:new_rank|error:permissions"
