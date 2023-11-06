@@ -871,12 +871,12 @@ msgstr "XP Nivel 1 (2000)"
 #: src/modules/ranks/ui/templates.py:177
 msgctxt "rank_autocreate|template|type:xp|level:2"
 msgid "XP Level 2 (4000)"
-msgstr ""
+msgstr "XP Nivel 2 (4000)"
 
 #: src/modules/ranks/ui/templates.py:185
 msgctxt "rank_autocreate|template|type:xp|level:3"
 msgid "XP Level 3 (8000)"
-msgstr ""
+msgstr "XP Nivel 3 (8000)"
 
 #: src/modules/ranks/ui/templates.py:193
 msgctxt "rank_autocreate|template|type:xp|level:4"
