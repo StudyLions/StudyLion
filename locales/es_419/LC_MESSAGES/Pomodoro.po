@@ -144,7 +144,7 @@ msgstr "Panel de configuración del temporizador"
 #: src/modules/pomodoro/settingui.py:82
 msgctxt "dash:pomodoro|title"
 msgid "Pomodoro Configuration ({commands[config pomodoro]})"
-msgstr "Configuración de Pomodoro ({comandos[config pomodoro]})"
+msgstr "Configuración de Pomodoro ({commands[config pomodoro]})"
 
 #: src/modules/pomodoro/settingui.py:86
 msgctxt "dash:stats|dropdown|placeholder"
