@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-01 16:01+0300\n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Sarah Vogel, 2023\n"
 "Language-Team: German (https://app.transifex.com/leobot/teams/174919/de/)\n"
@@ -172,7 +172,7 @@ msgstr ""
 #: src/gui/cards/monthly.py:342
 msgctxt "ui:monthlystats|stats:days_active|key"
 msgid "Days Active:"
-msgstr ""
+msgstr "Tage aktiv:"
 
 #: src/gui/cards/monthly.py:346
 #, possible-python-brace-format
