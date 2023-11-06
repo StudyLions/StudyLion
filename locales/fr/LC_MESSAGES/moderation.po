@@ -199,6 +199,8 @@ msgstr "pardonner"
 msgctxt "cmd:pardon|desc"
 msgid "Pardon moderation tickets to mark them as no longer in effect."
 msgstr ""
+"Pardonner un ticket de modération pour le marquer comme n'ayant plus "
+"d'effet."
 
 #: src/modules/moderation/cog.py:367
 msgctxt "cmd:pardon|param:ticketids"
