@@ -393,7 +393,7 @@ msgstr ""
 #: src/modules/tasklist/cog.py:827
 msgctxt "cmd:tasks_tick|param:taskidstr"
 msgid "tasks"
-msgstr ""
+msgstr "Aufgaben"
 
 #: src/modules/tasklist/cog.py:828
 msgctxt "cmd:tasks_tick|param:cascade"
