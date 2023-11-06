@@ -354,7 +354,7 @@ msgstr "Ziel"
 #: src/modules/moderation/ticketui.py:86
 msgctxt "ticketfilter|field:moderatorids|name"
 msgid "Moderators"
-msgstr ""
+msgstr "Moderator"
 
 #: src/modules/moderation/ticketui.py:94
 msgctxt "ticketfilter|field:types|name"
