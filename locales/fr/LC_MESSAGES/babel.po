@@ -401,7 +401,7 @@ msgstr "Hébreu"
 #: src/babel/enums.py:79
 msgctxt "localenames|locale:he-IL"
 msgid "Hebrew"
-msgstr ""
+msgstr "Hébreu"
 
 #: src/babel/enums.py:80
 msgctxt "localenames|locale:test"
