@@ -400,7 +400,7 @@ msgstr "Aucun ticket ne correspond à vos critères! Rien à pardonner."
 #: src/modules/moderation/ticketui.py:221
 msgctxt "ui:tickets|button:pardon|modal:reason|title"
 msgid "Pardon Tickets"
-msgstr ""
+msgstr "Pardonner les tickets"
 
 #: src/modules/moderation/ticketui.py:226
 msgctxt "ui:tickets|button:pardon|modal:reason|field|label"
