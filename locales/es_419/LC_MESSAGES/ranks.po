@@ -102,7 +102,7 @@ msgstr ""
 #: src/modules/ranks/cog.py:548
 msgctxt "eventlog|event:new_rank|error:notify_failed"
 msgid "Could not notify member."
-msgstr "No se ha podido notificar al socio."
+msgstr "No se ha podido notificar al miembro."
 
 #: src/modules/ranks/cog.py:555
 msgctxt "eventlog|event:new_rank|name"
