@@ -660,6 +660,8 @@ msgctxt "guildset:mod_role|desc"
 msgid ""
 "Server role permitted to perform moderation and minor bot configuration."
 msgstr ""
+"Rôle de serveur autorisé à effectuer de la modération et configuration "
+"mineure du bot."
 
 #: src/modules/moderation/settings.py:134
 msgctxt "guildset:mod_role|long_desc"
