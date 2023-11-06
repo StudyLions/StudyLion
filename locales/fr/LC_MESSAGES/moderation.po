@@ -161,6 +161,9 @@ msgid ""
 "*Warnings appear in your moderation history. Continuing failure to comply "
 "with server rules and moderator directions may result in more severe action."
 msgstr ""
+"Les avertissements apparaissent dans votre historique de modération. "
+"Continuer de manquer au règlement du serveur, vous conduira à de plus "
+"sévères sanctions."
 
 #: src/modules/moderation/cog.py:327
 #, possible-python-brace-format
