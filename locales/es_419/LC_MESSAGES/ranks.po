@@ -40,7 +40,7 @@ msgstr "Mensaje"
 #, possible-python-brace-format
 msgctxt "eventlog|event:rank_check|error:remove_failed"
 msgid "Failed to remove old rank roles: `{error}`"
-msgstr ""
+msgstr "Error al eliminar roles de rango antiguos: `{error}`."
 
 #: src/modules/ranks/cog.py:375
 #, possible-python-brace-format
