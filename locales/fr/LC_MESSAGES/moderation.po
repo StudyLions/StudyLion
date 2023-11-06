@@ -648,12 +648,12 @@ msgstr ""
 #: src/modules/moderation/settings.py:119
 msgctxt "guildset:alert_channel|formatted:unset"
 msgid "Not Set (Only alert via direct message.)"
-msgstr ""
+msgstr "Non défini (Alerte uniquement par message privé.)"
 
 #: src/modules/moderation/settings.py:127
 msgctxt "guildset:mod_role"
 msgid "mod_role"
-msgstr ""
+msgstr "mod_role"
 
 #: src/modules/moderation/settings.py:130
 msgctxt "guildset:mod_role|desc"
