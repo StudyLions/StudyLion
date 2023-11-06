@@ -670,7 +670,7 @@ msgstr "Server Statistik"
 #: src/modules/statistics/ui/weeklymonthly.py:736
 msgctxt "ui:WeeklyMonthly|button:global|mode:global"
 msgid "Global Statistics"
-msgstr ""
+msgstr "Globale Statistik"
 
 #: src/modules/statistics/ui/profile.py:41
 msgctxt "modal:profile_editor|field:editor|label"
