@@ -763,7 +763,7 @@ msgstr ""
 #: src/modules/pomodoro/ui/config.py:105
 msgctxt "ui:timer_options|button:delete|success|title"
 msgid "Timer Deleted"
-msgstr ""
+msgstr "Timer gelöscht"
 
 #: src/modules/pomodoro/ui/config.py:109
 #, possible-python-brace-format
