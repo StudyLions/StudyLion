@@ -811,12 +811,12 @@ msgstr "Nivel de Voz 3 (6h)"
 #: src/modules/ranks/ui/templates.py:71
 msgctxt "rank_autocreate|template|type:study_voice|level:4"
 msgid "Voice Level 4 (10h)"
-msgstr ""
+msgstr "Nivel de Voz 4 (10h)"
 
 #: src/modules/ranks/ui/templates.py:79
 msgctxt "rank_autocreate|template|type:study_voice|level:5"
 msgid "Voice Level 5 (20h)"
-msgstr ""
+msgstr "Nivel de Voz 5 (20h)"
 
 #: src/modules/ranks/ui/templates.py:87
 msgctxt "rank_autocreate|template|type:study_voice|level:6"
