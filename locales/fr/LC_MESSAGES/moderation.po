@@ -476,7 +476,7 @@ msgstr "Pourquoi vous pardonnez ce ticket ?"
 #: src/modules/moderation/ticketui.py:632
 msgctxt "ui:ticket|button:pardon|label"
 msgid "Pardon"
-msgstr ""
+msgstr "Pardonner         "
 
 #: src/modules/moderation/ticket.py:148
 #, possible-python-brace-format
