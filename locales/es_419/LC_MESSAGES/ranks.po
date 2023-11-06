@@ -1014,12 +1014,14 @@ msgstr "Borrar rangos"
 msgctxt "ui:rank_overview|button:create|error:my_permissions"
 msgid "I lack the 'Manage Roles' permission required to create rank roles!"
 msgstr ""
+"No dispongo del permiso \"Gestionar funciones\" necesario para crear "
+"funciones de rango."
 
 #: src/modules/ranks/ui/overview.py:240
 #, possible-python-brace-format
 msgctxt "ui:rank_overview|button:create|success"
 msgid "Created a new rank {role}"
-msgstr ""
+msgstr "Creado un nuevo rango {role}"
 
 #: src/modules/ranks/ui/overview.py:257
 msgctxt "ui:rank_overview|button:create|label"
