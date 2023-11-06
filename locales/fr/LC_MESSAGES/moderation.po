@@ -170,9 +170,9 @@ msgstr ""
 msgctxt "cmd:warning|embed:success|line:count"
 msgid "This their first warning."
 msgid_plural "They have recieved **`{count}`** warnings."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "C'est son premier avertissement."
+msgstr[1] "Il a reçu **`{count}`** avertissements."
+msgstr[2] "Il a reçu **`{count}`** avertissements."
 
 #: src/modules/moderation/cog.py:336
 #, possible-python-brace-format
