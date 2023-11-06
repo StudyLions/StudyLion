@@ -780,6 +780,8 @@ msgid ""
 "Congratulations {user_mention}!\n"
 "For earning **{requires}**, you have achieved the guild rank of **{role_name}** in **{guild_name}**!"
 msgstr ""
+"¡Enhorabuena {user_mention}!\n"
+"Por haber conseguido **{requires}**, ¡has alcanzado el rango de gremio de **{role_name}** en **{guild_name}**!"
 
 #: src/modules/ranks/ui/templates.py:34
 #, possible-python-brace-format
