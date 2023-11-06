@@ -107,7 +107,7 @@ msgstr "No se ha podido notificar al miembro."
 #: src/modules/ranks/cog.py:555
 msgctxt "eventlog|event:new_rank|name"
 msgid "Member Achieved Activity rank"
-msgstr ""
+msgstr "Miembro Rango de actividad alcanzado"
 
 #: src/modules/ranks/cog.py:559
 #, possible-python-brace-format
