@@ -35,7 +35,7 @@ msgstr "Panel de configuration de langue"
 #: src/babel/settingui.py:84
 msgctxt "dash:locale|title"
 msgid "Server Language Configuration ({commands[config language]})"
-msgstr ""
+msgstr "Configuration de la Langue du Serveur ({commands[config language]})"
 
 #: src/babel/settingui.py:88
 msgctxt "dash:locale|dropdown|placeholder"
