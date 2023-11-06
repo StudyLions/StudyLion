@@ -529,7 +529,7 @@ msgstr "{timestamp}"
 #: src/modules/moderation/ticket.py:202
 msgctxt "ticket|field:expiry|mode:open|name"
 msgid "Expiry"
-msgstr ""
+msgstr "Expiry"
 
 #: src/modules/moderation/ticket.py:205
 #, possible-python-brace-format
