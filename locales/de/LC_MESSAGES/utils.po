@@ -521,7 +521,7 @@ msgstr "Ja, jetzt beenden."
 #: src/utils/ui/msgeditor.py:927
 msgctxt "ui:msg_editor|button:quit|confirm|button:no"
 msgid "No, Go Back"
-msgstr ""
+msgstr "Nein, zurück."
 
 #: src/utils/ui/msgeditor.py:1025
 msgctxt "ui:msg_editor|timeout_warning|title"
