@@ -696,6 +696,8 @@ msgid ""
 "Only members with the 'Manage Guild' permission will be considered "
 "moderators."
 msgstr ""
+"Uniquement les membres avec la permission \"Gérer le serveur\" sont "
+"considérés comme des modérateurs."
 
 #: src/modules/moderation/settings.py:178
 msgctxt "guildset:mod_role|formatted:unset"
