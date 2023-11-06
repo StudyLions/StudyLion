@@ -503,7 +503,7 @@ msgstr "Modérateur"
 #: src/modules/moderation/ticket.py:181
 msgctxt "ticket|field:expiry|mode:expiring|name"
 msgid "Expires At"
-msgstr ""
+msgstr "Expire le "
 
 #: src/modules/moderation/ticket.py:184
 #, possible-python-brace-format
