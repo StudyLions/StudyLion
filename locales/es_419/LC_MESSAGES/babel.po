@@ -238,7 +238,7 @@ msgstr "Has establecido el idioma del servidor en {lang}."
 #: src/babel/enums.py:43
 msgctxt "localenames|locale:id"
 msgid "Indonesian"
-msgstr ""
+msgstr "Indonesia"
 
 #: src/babel/enums.py:44
 msgctxt "localenames|locale:da"
