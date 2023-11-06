@@ -188,7 +188,7 @@ msgstr "Note"
 #: src/modules/moderation/cog.py:351
 msgctxt "cmd:warning|embed:success|field:no_alert|value"
 msgid "*Could not deliver warning to the target.*"
-msgstr ""
+msgstr "*Impossible de délivrer l'avertissement au membre cible.*"
 
 #: src/modules/moderation/cog.py:358
 msgctxt "cmd:pardon"
