@@ -187,7 +187,7 @@ msgstr ""
 #: src/modules/ranks/cog.py:869
 msgctxt "eventlog|event:rank_refresh|name"
 msgid "Activity Ranks Refreshed"
-msgstr ""
+msgstr "Rangos de actividad renovados"
 
 #: src/modules/ranks/cog.py:873
 #, possible-python-brace-format
