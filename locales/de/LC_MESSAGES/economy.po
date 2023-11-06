@@ -377,7 +377,7 @@ msgstr ""
 #: src/modules/economy/cog.py:704
 msgctxt "cmd:send"
 msgid "send"
-msgstr ""
+msgstr "senden"
 
 #: src/modules/economy/cog.py:707
 msgctxt "cmd:send|desc"
@@ -387,12 +387,12 @@ msgstr ""
 #: src/modules/economy/cog.py:711
 msgctxt "cmd:send|param:target"
 msgid "target"
-msgstr ""
+msgstr "Ziel"
 
 #: src/modules/economy/cog.py:712
 msgctxt "cmd:send|param:amount"
 msgid "amount"
-msgstr ""
+msgstr "Menge"
 
 #: src/modules/economy/cog.py:713
 msgctxt "cmd:send|param:note"
