@@ -76,6 +76,8 @@ msgstr "Je ne peux pas gérer le rôle par défaut du serveur."
 msgctxt "ward:equippable_role|error:no_perms"
 msgid "I need the `MANAGE_ROLES` permission before I can manage roles!"
 msgstr ""
+"J'ai besoin de la permission `MANAGE_ROLES` avant de pouvoir gérer les "
+"rôles. "
 
 #: src/wards.py:197
 #, possible-python-brace-format
