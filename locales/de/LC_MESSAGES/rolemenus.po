@@ -1361,17 +1361,17 @@ msgstr ""
 #: src/modules/rolemenus/ui/menueditor.py:460
 msgctxt "ui:menu_editor|menu:add_roles|placeholder"
 msgid "Add Roles"
-msgstr ""
+msgstr "Rollen hinzufügen"
 
 #: src/modules/rolemenus/ui/menueditor.py:486
 msgctxt "ui:menu_editor|menu:edit_roles|placeholder"
 msgid "Edit Roles"
-msgstr ""
+msgstr "Rollen bearbeiten"
 
 #: src/modules/rolemenus/ui/menueditor.py:524
 msgctxt "ui:menu_editor|menu:del_role|placeholder"
 msgid "Remove Roles"
-msgstr ""
+msgstr "Rollen entfernen"
 
 #: src/modules/rolemenus/ui/menueditor.py:548
 msgctxt "ui:menu_editor|button:style|error:non-managed"
