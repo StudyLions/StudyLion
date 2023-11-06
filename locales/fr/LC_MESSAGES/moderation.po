@@ -415,7 +415,7 @@ msgstr "Tout pardonner"
 #: src/modules/moderation/ticketui.py:273
 msgctxt "ui:tickets|menu:filter_type|placeholder"
 msgid "Select Ticket Types"
-msgstr ""
+msgstr "Sélectionner les types de ticket"
 
 #: src/modules/moderation/ticketui.py:309
 msgctxt "ui:tickets|menu:filter_state|placeholder"
