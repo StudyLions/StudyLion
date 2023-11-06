@@ -866,7 +866,7 @@ msgstr "Nivel de Voz 7 (64h)"
 #: src/modules/ranks/ui/templates.py:169
 msgctxt "rank_autocreate|template|type:xp|level:1"
 msgid "XP Level 1 (2000)"
-msgstr ""
+msgstr "XP Nivel 1 (2000)"
 
 #: src/modules/ranks/ui/templates.py:177
 msgctxt "rank_autocreate|template|type:xp|level:2"
