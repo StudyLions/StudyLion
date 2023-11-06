@@ -96,7 +96,7 @@ msgstr ""
 #: src/modules/meta/cog.py:163
 msgctxt "cmd:nerd"
 msgid "nerd"
-msgstr ""
+msgstr "Nerd"
 
 #: src/modules/meta/cog.py:166
 msgctxt "cmd:nerd|desc"
