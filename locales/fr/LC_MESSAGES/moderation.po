@@ -315,7 +315,7 @@ msgstr "Filtrer par tickets à propos d'un utilisateur."
 #: src/modules/moderation/cog.py:500
 msgctxt "cmd:tickets|param:type|desc"
 msgid "Filter by ticket type."
-msgstr ""
+msgstr "Filtrer par type de ticket."
 
 #: src/modules/moderation/cog.py:504
 msgctxt "cmd:tickets|param:state|desc"
