@@ -151,7 +151,7 @@ msgstr ""
 #: src/modules/moderation/cog.py:305
 msgctxt "cmd:warning|embed:user_alert|field:note|name"
 msgid "Note"
-msgstr ""
+msgstr "Notiz"
 
 #: src/modules/moderation/cog.py:309
 msgctxt "cmd:warning|embed:user_alert|field:note|value"
