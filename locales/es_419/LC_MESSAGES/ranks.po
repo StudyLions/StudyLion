@@ -46,7 +46,7 @@ msgstr "Error al eliminar roles de rango antiguos: `{error}`."
 #, possible-python-brace-format
 msgctxt "eventlog|event:rank_check|error:add_failed"
 msgid "Failed to add new rank role: `{error}`"
-msgstr ""
+msgstr "Error al añadir un nuevo rol de rango: `{error}`."
 
 #: src/modules/ranks/cog.py:380
 msgctxt "eventlog|event:rank_check|error:add_impossible"
