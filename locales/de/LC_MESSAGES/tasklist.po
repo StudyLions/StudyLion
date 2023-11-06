@@ -608,7 +608,7 @@ msgstr ""
 #: src/modules/tasklist/ui.py:501
 msgctxt "ui:tasklist|menu:edit|modal:title"
 msgid "Edit task"
-msgstr ""
+msgstr "Aufgabe bearbeiten"
 
 #: src/modules/tasklist/ui.py:596
 msgctxt "ui:tasklist_single_editor|title"
