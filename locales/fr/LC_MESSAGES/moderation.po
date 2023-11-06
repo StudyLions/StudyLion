@@ -84,7 +84,7 @@ msgstr "Cibler un membre ou un utilisateur pour lui ajouter aussi une note."
 #: src/modules/moderation/cog.py:152
 msgctxt "cmd:modnote|param:note|desc"
 msgid "Contents of the note."
-msgstr ""
+msgstr "Contenu de la note."
 
 #: src/modules/moderation/cog.py:177
 msgctxt "cmd:modnote|modal:enter_note|title"
