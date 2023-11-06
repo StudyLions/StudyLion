@@ -89,12 +89,12 @@ msgstr "Contenu de la note."
 #: src/modules/moderation/cog.py:177
 msgctxt "cmd:modnote|modal:enter_note|title"
 msgid "Moderation Note"
-msgstr ""
+msgstr "Note de modération"
 
 #: src/modules/moderation/cog.py:182
 msgctxt "cmd:modnote|modal:enter_note|field|label"
 msgid "Note Content"
-msgstr ""
+msgstr "Contenu de la note"
 
 #: src/modules/moderation/cog.py:215
 #, possible-python-brace-format
