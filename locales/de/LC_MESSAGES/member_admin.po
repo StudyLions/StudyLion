@@ -314,7 +314,7 @@ msgstr ""
 #: src/modules/member_admin/settings.py:27
 msgctxt "guildset:greeting_message|formatkey:guild_name"
 msgid "Name of this server."
-msgstr ""
+msgstr "Name des Servers."
 
 #: src/modules/member_admin/settings.py:29
 msgctxt "guildset:greeting_message|formatkey:guild_icon"
