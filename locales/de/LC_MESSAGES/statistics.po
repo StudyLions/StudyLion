@@ -172,7 +172,7 @@ msgstr ""
 #: src/modules/statistics/achievements.py:333
 msgctxt "achievement:tasks|name"
 msgid "One Step at a Time"
-msgstr ""
+msgstr "Ein Schritt nach dem anderen"
 
 #: src/modules/statistics/achievements.py:337
 msgctxt "achievement:tasks|subtext"
