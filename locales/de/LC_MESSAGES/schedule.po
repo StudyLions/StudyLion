@@ -795,7 +795,7 @@ msgstr ""
 #: src/modules/schedule/ui/scheduleui.py:471
 msgctxt "ui:schedule|embed|field:stats|field:alltime"
 msgid "All Time"
-msgstr ""
+msgstr "Insgesamt"
 
 #: src/modules/schedule/ui/scheduleui.py:477
 msgctxt "ui:schedule|embed|field:stats|field:streak"
