@@ -385,7 +385,7 @@ msgstr "Etats des tickets"
 #: src/modules/moderation/ticketui.py:179
 msgctxt "ui:tickets|button:edit_filter|label"
 msgid "Edit Filters"
-msgstr ""
+msgstr "Editer les filtres"
 
 #: src/modules/moderation/ticketui.py:199
 msgctxt "ui:tickets|button:select_ticket|label"
