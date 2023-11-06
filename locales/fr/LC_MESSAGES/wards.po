@@ -50,6 +50,8 @@ msgid ""
 "You must have the configured moderator role, or `MANAGE_GUILD` permissions "
 "to do this."
 msgstr ""
+"Vous devez avoir le rôle de modérateur configuré, ou la permission  "
+"`MANAGE_GUILD` pour faire ça."
 
 #: src/wards.py:169
 #, possible-python-brace-format
