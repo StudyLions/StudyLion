@@ -24,7 +24,7 @@ msgstr ""
 #: src/core/config.py:28
 msgctxt "group:config"
 msgid "config"
-msgstr ""
+msgstr "config"
 
 #: src/core/config.py:29
 msgctxt "group:config|desc"
@@ -44,7 +44,7 @@ msgstr ""
 #: src/core/config.py:52
 msgctxt "group:admin_config"
 msgid "config"
-msgstr ""
+msgstr "config"
 
 #: src/core/config.py:53
 msgctxt "group:admin_config|desc"
