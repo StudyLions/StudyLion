@@ -49,7 +49,7 @@ msgstr "Hallo zusammen! Mein Name ist Leo, der LionBot!"
 #: src/modules/meta/cog.py:104
 msgctxt "cmd:invite"
 msgid "invite"
-msgstr ""
+msgstr "einladen"
 
 #: src/modules/meta/cog.py:107
 msgctxt "cmd:invite|desc"
