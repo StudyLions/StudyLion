@@ -466,7 +466,7 @@ msgstr "Filtres"
 #: src/modules/moderation/ticketui.py:603
 msgctxt "ui:ticket|button:pardon|modal:reason|title"
 msgid "Pardon Moderation Ticket"
-msgstr ""
+msgstr "Pardonner le ticket de modération"
 
 #: src/modules/moderation/ticketui.py:608
 msgctxt "ui:ticket|button:pardon|modal:reason|field|label"
