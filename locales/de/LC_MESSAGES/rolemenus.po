@@ -1533,12 +1533,12 @@ msgstr ""
 #: src/modules/rolemenus/ui/menueditor.py:967
 msgctxt "ui:menu_editor|button:repost|label:repost"
 msgid "Repost"
-msgstr ""
+msgstr "Repost"
 
 #: src/modules/rolemenus/ui/menueditor.py:972
 msgctxt "ui:menu_editor|button:repost|label:post"
 msgid "Post"
-msgstr ""
+msgstr "Post"
 
 #: src/modules/rolemenus/ui/menueditor.py:982
 msgctxt "ui:menu_editor|embed|title"
