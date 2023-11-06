@@ -612,6 +612,8 @@ msgstr "alert_channel"
 msgctxt "guildset:alert_channel|desc"
 msgid "Moderation notification channel for members with DMs disabled."
 msgstr ""
+"Salon de notification de modération pour les membres avec messages privés "
+"désactivé."
 
 #: src/modules/moderation/settings.py:80
 msgctxt "guildset:alert_channel|long_desc"
