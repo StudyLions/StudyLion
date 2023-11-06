@@ -546,7 +546,7 @@ msgstr ""
 #: src/modules/pomodoro/options.py:162
 msgctxt "timerset:base_name"
 msgid "name"
-msgstr ""
+msgstr "Name"
 
 #: src/modules/pomodoro/options.py:165
 msgctxt "timerset:base_name|desc"
