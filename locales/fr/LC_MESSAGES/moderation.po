@@ -330,7 +330,7 @@ msgstr "Affichier uniquement les fautes, ou également les fautes pardonnées."
 #: src/modules/moderation/cog.py:512
 msgctxt "cmd:tickets|param:moderator|desc"
 msgid "Filter by moderator responsible for the ticket."
-msgstr ""
+msgstr "Filtrer par modérateur responsable de ticket."
 
 #: src/modules/moderation/cog.py:516
 msgctxt "cmd:tickets|param:after|desc"
