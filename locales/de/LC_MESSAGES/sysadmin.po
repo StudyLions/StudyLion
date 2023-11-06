@@ -69,7 +69,7 @@ msgstr "Online"
 #: src/modules/sysadmin/presence.py:140
 msgctxt "botset:presence_status|input_format:idle"
 msgid "Idle"
-msgstr ""
+msgstr "untätig"
 
 #: src/modules/sysadmin/presence.py:141
 msgctxt "botset:presence_status|input_format:dnd"
@@ -89,7 +89,7 @@ msgstr ""
 #: src/modules/sysadmin/presence.py:146
 msgctxt "botset:presence_status|input_pattern:idle"
 msgid "idle"
-msgstr ""
+msgstr "untätig"
 
 #: src/modules/sysadmin/presence.py:147
 msgctxt "botset:presence_status|input_pattern:dnd"
