@@ -193,6 +193,8 @@ msgstr "Ich werde immer die auf diesem Server eingestellte Sprache verwenden."
 msgctxt "guildset:force_locale|response"
 msgid "I will now allow the members to set their own language here."
 msgstr ""
+"Ich werde es nicht erlauben, dass die Mitglieder hier selbst die Sprache "
+"einstellen."
 
 #: src/babel/settings.py:160
 msgctxt "guildset:locale"
