@@ -395,7 +395,7 @@ msgstr "Sélectionner un ticket"
 #: src/modules/moderation/ticketui.py:215
 msgctxt "ui:tickets|button:pardon|error:no_tickets"
 msgid "Not tickets matching the given criterial! Nothing to pardon."
-msgstr ""
+msgstr "Aucun ticket ne correspond à vos critères! Rien à pardonner."
 
 #: src/modules/moderation/ticketui.py:221
 msgctxt "ui:tickets|button:pardon|modal:reason|title"
