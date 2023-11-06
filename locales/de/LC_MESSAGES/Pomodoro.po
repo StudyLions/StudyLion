@@ -774,7 +774,7 @@ msgstr ""
 #: src/modules/pomodoro/ui/config.py:117
 msgctxt "ui:timer_options|button:delete|label"
 msgid "Delete"
-msgstr ""
+msgstr "Löschen"
 
 #: src/modules/pomodoro/ui/config.py:136
 msgctxt "ui:timer_options|menu:voice_channel|placeholder"
