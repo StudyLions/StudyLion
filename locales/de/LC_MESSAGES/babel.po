@@ -105,7 +105,7 @@ msgstr ""
 #: src/babel/utils.py:14
 msgctxt "utils|short_months"
 msgid "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec"
-msgstr ""
+msgstr "Jan,Feb,Mrz,Apr,Mai,Jun,Jul,Aug,Sep,Okt,Nov,Dez"
 
 #: src/babel/settings.py:25
 msgctxt "settype:locale|accepts"
