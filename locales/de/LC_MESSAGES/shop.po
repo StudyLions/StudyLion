@@ -186,7 +186,7 @@ msgstr ""
 #: src/modules/shop/shops/colours.py:388
 msgctxt "cmd:editshop_colours_create|param:name|desc"
 msgid "What should the colour role be called?"
-msgstr "Wie soll die Rolle benannt werden?"
+msgstr "Wie soll die farbige Rolle benannt werden?"
 
 #: src/modules/shop/shops/colours.py:392
 msgctxt "cmd:editshop_colours_create|param:price|desc"
