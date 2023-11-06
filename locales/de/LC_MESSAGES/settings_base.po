@@ -24,7 +24,7 @@ msgstr ""
 #: src/settings/ui.py:180
 msgctxt "setting|formatted|notset"
 msgid "Not Set"
-msgstr ""
+msgstr "Nicht gesetzt"
 
 #: src/settings/ui.py:324
 msgctxt "setting|embed_field|too_long"
