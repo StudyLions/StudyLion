@@ -965,6 +965,8 @@ msgid ""
 "An error occurred while autocreating rank roles!\n"
 "Please check the server has enough space for new roles and try again."
 msgstr ""
+"Se ha producido un error al autocrear los roles de rango.\n"
+"Por favor, comprueba que el servidor tiene espacio suficiente para nuevos roles e inténtalo de nuevo."
 
 #: src/modules/ranks/ui/overview.py:152
 #, possible-python-brace-format
@@ -973,6 +975,8 @@ msgid ""
 "Successfully created the following rank roles:\n"
 "{roles}"
 msgstr ""
+"Se han creado con éxito los siguientes roles de rango:\n"
+"{roles}"
 
 #: src/modules/ranks/ui/overview.py:162
 msgctxt "ui:rank_overview|button:auto|label"
