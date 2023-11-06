@@ -601,12 +601,12 @@ msgstr "Les tickets de modération ne seront pas dans loggés dans un salon."
 #: src/modules/moderation/settings.py:65
 msgctxt "guildset:ticket_log|formatted:unset"
 msgid "Not Set."
-msgstr ""
+msgstr "Non défini."
 
 #: src/modules/moderation/settings.py:73
 msgctxt "guildset:alert_channel"
 msgid "alert_channel"
-msgstr ""
+msgstr "alert_channel"
 
 #: src/modules/moderation/settings.py:76
 msgctxt "guildset:alert_channel|desc"
