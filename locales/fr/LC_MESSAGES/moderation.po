@@ -178,7 +178,7 @@ msgstr[2] "Il a reçu **`{count}`** avertissements."
 #, possible-python-brace-format
 msgctxt "cmd:warning|embed:success|desc"
 msgid "[Ticket #{ticket}]({jump_link}) {user} has been warned."
-msgstr ""
+msgstr "[Ticket #{ticket}]({jump_link}) {user} a reçu un avertissement."
 
 #: src/modules/moderation/cog.py:347
 msgctxt "cmd:warning|embed:success|field:no_alert|name"
