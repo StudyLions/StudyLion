@@ -340,7 +340,7 @@ msgstr "Afficher uniquement les tickets après cette date (YYY-MM-DD HH:MM)"
 #: src/modules/moderation/cog.py:520
 msgctxt "cmd:tickets|param:before|desc"
 msgid "Only show tickets before this date (YYY-MM-DD HH:MM)"
-msgstr ""
+msgstr "Afficher uniquement les tickets avant cette date (YYY-MM-DD HH:MM)"
 
 #: src/modules/moderation/cog.py:582
 msgctxt "cmd:configure_moderation"
