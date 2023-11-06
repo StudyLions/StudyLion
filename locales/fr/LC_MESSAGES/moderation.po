@@ -596,7 +596,7 @@ msgstr "Les tickets de modération on été envoyé dans {channel}"
 #: src/modules/moderation/settings.py:53
 msgctxt "guildset:ticket_log|set_response:unset"
 msgid "Moderation tickets will not be logged to a channel."
-msgstr ""
+msgstr "Les tickets de modération ne seront pas dans loggés dans un salon."
 
 #: src/modules/moderation/settings.py:65
 msgctxt "guildset:ticket_log|formatted:unset"
