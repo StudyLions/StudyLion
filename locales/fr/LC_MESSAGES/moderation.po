@@ -245,7 +245,7 @@ msgstr ""
 #: src/modules/moderation/cog.py:449
 msgctxt "cmd:pardon|error:no_matching"
 msgid "No matching moderation tickets found to pardon!"
-msgstr ""
+msgstr "Aucun ticket de modération à pardonenr trouvé!"
 
 #: src/modules/moderation/cog.py:469
 #, possible-python-brace-format
