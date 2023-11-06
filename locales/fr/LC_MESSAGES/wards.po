@@ -99,6 +99,8 @@ msgstr ""
 msgctxt "ward:equippable_role|error:actor_perms"
 msgid "You need the `MANAGE_ROLES` permission before you can configure roles!"
 msgstr ""
+"Vous avez besoin de la permission `MANAGE_ROLES` avant de pouvoir configurer"
+" les rôles!"
 
 #: src/wards.py:219
 #, possible-python-brace-format
