@@ -68,13 +68,13 @@ msgstr ""
 #: src/modules/ranks/cog.py:398
 msgctxt "eventlog|event:rank_check|name"
 msgid "Member Activity Rank Roles Updated"
-msgstr ""
+msgstr "Miembro Actividad Rango Roles Actualizado"
 
 #: src/modules/ranks/cog.py:478
 #, possible-python-brace-format
 msgctxt "eventlog|event:new_rank|error:remove_failed"
 msgid "Failed to remove old rank roles: `{error}`"
-msgstr ""
+msgstr "Error al eliminar roles de rango antiguos: `{error}`."
 
 #: src/modules/ranks/cog.py:502
 #, possible-python-brace-format
