@@ -70,7 +70,7 @@ msgstr ""
 #: src/tracking/voice/cog.py:657
 msgctxt "cmd:now"
 msgid "now"
-msgstr ""
+msgstr "jetzt"
 
 #: src/tracking/voice/cog.py:660
 msgctxt "cmd:now|desc"
