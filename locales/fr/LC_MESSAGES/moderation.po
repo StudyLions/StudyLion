@@ -225,12 +225,12 @@ msgstr "Pourquoi ces tickets vont être pardonnés."
 #: src/modules/moderation/cog.py:402
 msgctxt "cmd:pardon|modal:reason|title"
 msgid "Pardon Tickets"
-msgstr "Pardonner les fautes."
+msgstr "Pardonner les tickets."
 
 #: src/modules/moderation/cog.py:407
 msgctxt "cmd:pardon|modal:reason|field|label"
 msgid "Why are you pardoning these tickets?"
-msgstr "Pourquoi vous pardonnez ces fautes?"
+msgstr "Pourquoi vous pardonnez ces tickets?"
 
 #: src/modules/moderation/cog.py:435
 msgctxt "cmd:pardon|error:parse_ticketids"
