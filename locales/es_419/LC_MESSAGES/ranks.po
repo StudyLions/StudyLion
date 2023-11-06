@@ -916,12 +916,12 @@ msgstr "Mensaje Nivel 3 (800)"
 #: src/modules/ranks/ui/templates.py:256
 msgctxt "rank_autocreate|template|type:msg|level:4"
 msgid "Message Level 4 (1600)"
-msgstr ""
+msgstr "Mensaje Nivel 4 (1600)"
 
 #: src/modules/ranks/ui/templates.py:264
 msgctxt "rank_autocreate|template|type:msg|level:5"
 msgid "Message Level 5 (3200)"
-msgstr ""
+msgstr "Mensaje Nivel 5 (3200)"
 
 #: src/modules/ranks/ui/templates.py:272
 msgctxt "rank_autocreate|template|type:msg|level:6"
