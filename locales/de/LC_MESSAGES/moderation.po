@@ -299,7 +299,7 @@ msgstr ""
 #: src/modules/moderation/cog.py:500
 msgctxt "cmd:tickets|param:type|desc"
 msgid "Filter by ticket type."
-msgstr ""
+msgstr "Sortiere nach Tickettyp."
 
 #: src/modules/moderation/cog.py:504
 msgctxt "cmd:tickets|param:state|desc"
