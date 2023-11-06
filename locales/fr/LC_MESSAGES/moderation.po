@@ -59,7 +59,7 @@ msgstr "Panel de modération"
 #: src/modules/moderation/cog.py:135
 msgctxt "cmd:modnote"
 msgid "modnote"
-msgstr ""
+msgstr "Note de modération"
 
 #: src/modules/moderation/cog.py:138
 msgctxt "cmd:modnote|desc"
