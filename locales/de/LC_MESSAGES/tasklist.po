@@ -44,17 +44,17 @@ msgstr "Heute"
 #: src/modules/tasklist/cog.py:39
 msgctxt "argtype:Before|opt:YESTERDAY"
 msgid "Yesterday"
-msgstr ""
+msgstr "Gestern"
 
 #: src/modules/tasklist/cog.py:40
 msgctxt "argtype:Before|opt:Monday"
 msgid "This Monday"
-msgstr ""
+msgstr "Diesen Montag"
 
 #: src/modules/tasklist/cog.py:41
 msgctxt "argtype:Before|opt:THISMONTH"
 msgid "This Month"
-msgstr ""
+msgstr "Diesen Monat"
 
 #: src/modules/tasklist/cog.py:205
 msgctxt "summon_tasklist|error:insufficient_perms|title"
