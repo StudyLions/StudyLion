@@ -1093,6 +1093,8 @@ msgid ""
 "Press 'Auto Create' to automatically create a standard heirachy of ranks.\n"
 "To manually create ranks, press 'Create Rank' below, or select a role!"
 msgstr ""
+"Pulsa \"Crear automáticamente\" para crear automáticamente una serie estándar de rangos.\n"
+"Para crear rangos manualmente, pulsa \"Crear rango\" o selecciona un rol."
 
 #: src/modules/ranks/ui/overview.py:468
 #, possible-python-brace-format
