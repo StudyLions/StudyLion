@@ -622,6 +622,10 @@ msgid ""
 "to send it via direct messages. If this fails, I will instead mention the "
 "user in this channel."
 msgstr ""
+"Lorsque je dois envoyer à un membre une notification liée à la modération "
+"(ex, lui demander d'activer sa vidéo dans un salon vidéo) à partir de ce "
+"serveur, j'essaierai de l'envoyer en messages privés. En cas d'échec, je "
+"mentionnerai l'utilisateur dans ce salon."
 
 #: src/modules/moderation/settings.py:87
 msgctxt "guildset:alert_channel|accepts"
