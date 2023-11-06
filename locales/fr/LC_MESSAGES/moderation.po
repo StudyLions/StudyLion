@@ -540,12 +540,12 @@ msgstr "{timestamp}"
 #: src/modules/moderation/ticket.py:213
 msgctxt "ticket|field:context|name"
 msgid "Context"
-msgstr ""
+msgstr "Contexte"
 
 #: src/modules/moderation/ticket.py:220
 msgctxt "ticket|field:notes|name"
 msgid "Notes"
-msgstr ""
+msgstr "Notes"
 
 #: src/modules/moderation/ticket.py:227
 msgctxt "ticket|field:pardoned|name"
