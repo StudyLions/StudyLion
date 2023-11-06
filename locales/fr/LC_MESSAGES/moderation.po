@@ -128,7 +128,7 @@ msgstr "motif"
 #: src/modules/moderation/cog.py:238
 msgctxt "cmd:warning|param:target|desc"
 msgid "Target member to warn."
-msgstr ""
+msgstr "Choisissez le membre à qui donner un avertissement."
 
 #: src/modules/moderation/cog.py:242
 msgctxt "cmd:warning|param:reason|desc"
