@@ -127,7 +127,7 @@ msgstr ""
 #: src/modules/statistics/achievements.py:150
 msgctxt "achievement:workout|subtext"
 msgid "Workout 50 times"
-msgstr ""
+msgstr "Trainiere 50 mal"
 
 #: src/modules/statistics/achievements.py:170
 msgctxt "achievement:voicehours|name"
