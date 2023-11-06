@@ -5,6 +5,7 @@
 # 
 # Translators:
 # Interitio, 2023
+# Florian Monnier, 2023
 # 
 #, fuzzy
 msgid ""
@@ -13,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Interitio, 2023\n"
+"Last-Translator: Florian Monnier, 2023\n"
 "Language-Team: French (https://app.transifex.com/leobot/teams/174919/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -171,8 +172,8 @@ msgid ""
 "Whether to force all members to use the configured guild language when "
 "interacting with me."
 msgstr ""
-"S'il faut forcer tous les membres à utiliser la langue de guilde configurée "
-"quand ils interagissent avec moi."
+"S'il faut forcer tous les membres à utiliser la langue du serveur choisi "
+"lors d'interaction avec moi"
 
 #: src/babel/settings.py:118
 msgctxt "guildset:force_locale|long_desc"
