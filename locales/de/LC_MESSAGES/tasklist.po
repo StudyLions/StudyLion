@@ -97,7 +97,7 @@ msgstr ""
 #: src/modules/tasklist/cog.py:332
 msgctxt "argtype:taskid|match:all"
 msgid "All tasks"
-msgstr ""
+msgstr "Alle Aufgaben"
 
 #: src/modules/tasklist/cog.py:350
 #, possible-python-brace-format
