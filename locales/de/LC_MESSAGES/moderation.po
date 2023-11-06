@@ -578,7 +578,7 @@ msgstr ""
 #: src/modules/moderation/settings.py:65
 msgctxt "guildset:ticket_log|formatted:unset"
 msgid "Not Set."
-msgstr ""
+msgstr "Nicht gesetzt."
 
 #: src/modules/moderation/settings.py:73
 msgctxt "guildset:alert_channel"
