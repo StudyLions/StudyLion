@@ -831,7 +831,7 @@ msgstr "Nivel de Voz 7 (80h)"
 #: src/modules/ranks/ui/templates.py:106
 msgctxt "rank_autocreate|template|type:general_voice|level:1"
 msgid "Voice Level 1 (1h)"
-msgstr ""
+msgstr "Nivel de Voz 1 (1h)"
 
 #: src/modules/ranks/ui/templates.py:114
 msgctxt "rank_autocreate|template|type:general_voice|level:2"
