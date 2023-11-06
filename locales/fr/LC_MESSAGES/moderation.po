@@ -686,6 +686,9 @@ msgid ""
 "Members with {role} will be considered moderators. You may need to grant "
 "them access to view moderation commands via the server integration settings."
 msgstr ""
+"Les membres avec le rôle {role} sont considérés comme des modérateurs. Vous "
+"devez leur donner leurs accès pour qu'ils voient les commandes de "
+"modérations via les paramètres d'intégration du serveur."
 
 #: src/modules/moderation/settings.py:166
 msgctxt "guildset:mod_role|set_response:unset"
