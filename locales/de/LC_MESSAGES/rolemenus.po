@@ -1473,7 +1473,7 @@ msgstr ""
 #: src/modules/rolemenus/ui/menueditor.py:825
 msgctxt "ui:menu_editor|button:edit_msg|label"
 msgid "Edit Message"
-msgstr ""
+msgstr "Nachricht bearbeiten"
 
 #: src/modules/rolemenus/ui/menueditor.py:851
 msgctxt "ui:menu_editor|button:preview|label"
