@@ -57,7 +57,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "ward:equippable_role|error:bot_managed"
 msgid "I cannot manage {role} because it is managed by another bot!"
-msgstr ""
+msgstr "Je ne peux pas gérer le rôle {role} car il est géré par un autre bot."
 
 #: src/wards.py:176
 #, possible-python-brace-format
