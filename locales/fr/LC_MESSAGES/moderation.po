@@ -34,7 +34,7 @@ msgstr "Sélectionner le salon de alertes"
 #: src/modules/moderation/settingui.py:107
 msgctxt "ui:moderation_config|menu:modrole|placeholder"
 msgid "Select Moderator Role"
-msgstr ""
+msgstr "Sélectionner le rôle de modérateur"
 
 #: src/modules/moderation/settingui.py:133
 msgctxt "ui:moderation_config|menu:adminrole|placeholder"
