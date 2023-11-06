@@ -794,12 +794,12 @@ msgstr ""
 #: src/modules/tasklist/settings.py:293
 msgctxt "ui:tasklist_config|button:close|label"
 msgid "Close"
-msgstr ""
+msgstr "schließen"
 
 #: src/modules/tasklist/settings.py:294
 msgctxt "ui:tasklist_config|button:reset|label"
 msgid "Reset"
-msgstr ""
+msgstr "Reset"
 
 #: src/modules/tasklist/settings.py:297
 msgctxt "ui:tasklist_config|menu:channels|placeholder"
