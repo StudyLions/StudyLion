@@ -54,12 +54,16 @@ msgid ""
 "Could not assign new activity rank role. Lacking permissions or invalid "
 "role."
 msgstr ""
+"No se ha podido asignar un nuevo rol de rango de actividad. Faltan permisos "
+"o el rol no es válido."
 
 #: src/modules/ranks/cog.py:386
 msgctxt "eventlog|event:rank_check|error:permissions"
 msgid ""
 "Could not update activity rank roles, I lack the 'Manage Roles' permission."
 msgstr ""
+"No se han podido actualizar los roles de rango de actividad, me falta el "
+"permiso de 'Gestionar Roles'."
 
 #: src/modules/ranks/cog.py:398
 msgctxt "eventlog|event:rank_check|name"
