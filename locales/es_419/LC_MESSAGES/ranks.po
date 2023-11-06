@@ -197,6 +197,9 @@ msgid ""
 "**`{removed}`** invalid rank roles removed.\n"
 "**`{added}`** new rank roles added."
 msgstr ""
+"{actor} actualizar rangos de actividad de los miembros.\n"
+"**`{removed}`** funciones de rango no válidas eliminadas.\n"
+"**`{added}`** nuevos rangos añadidos."
 
 #. ---------- Commands ----------
 #: src/modules/ranks/cog.py:884
