@@ -756,7 +756,7 @@ msgstr "Panel de configuración de rangos"
 #: src/modules/ranks/ui/config.py:173
 msgctxt "dash:rank|title"
 msgid "Rank Configuration ({commands[admin config ranks]})"
-msgstr ""
+msgstr "Configuración de rangos ({commands[admin config ranks]})"
 
 #: src/modules/ranks/ui/config.py:177
 msgctxt "dash:rank|dropdown|placeholder"
