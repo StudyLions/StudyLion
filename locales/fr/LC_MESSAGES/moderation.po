@@ -630,7 +630,7 @@ msgstr ""
 #: src/modules/moderation/settings.py:87
 msgctxt "guildset:alert_channel|accepts"
 msgid "Alert channel name or id."
-msgstr ""
+msgstr "Nom ou ID du salon des alertes."
 
 #: src/modules/moderation/settings.py:102
 #, possible-python-brace-format
