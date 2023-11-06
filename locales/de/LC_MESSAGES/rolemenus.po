@@ -1478,7 +1478,7 @@ msgstr "Nachricht bearbeiten"
 #: src/modules/rolemenus/ui/menueditor.py:851
 msgctxt "ui:menu_editor|button:preview|label"
 msgid "Preview"
-msgstr ""
+msgstr "Vorschau"
 
 #: src/modules/rolemenus/ui/menueditor.py:867
 msgctxt "ui:menu_editor|button:repost|widget:repost|menu:channel|placeholder"
