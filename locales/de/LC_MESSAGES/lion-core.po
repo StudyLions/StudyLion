@@ -64,12 +64,12 @@ msgstr ""
 #: src/core/lion_guild.py:71
 msgctxt "eventlog|field:memberid|name"
 msgid "Member"
-msgstr ""
+msgstr "Mitglied"
 
 #: src/core/lion_guild.py:76
 msgctxt "eventlog|field:channelid|name"
 msgid "Channel"
-msgstr ""
+msgstr "Kanal"
 
 #: src/core/lion_guild.py:208
 msgctxt "eventlog|error:manage_webhooks"
