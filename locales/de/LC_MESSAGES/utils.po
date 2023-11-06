@@ -489,12 +489,12 @@ msgstr ""
 #: src/utils/ui/msgeditor.py:833
 msgctxt "ui:msg_editor|button:save|label"
 msgid "Save"
-msgstr ""
+msgstr "speichern"
 
 #: src/utils/ui/msgeditor.py:858
 msgctxt "ui:msg_editor|button:download|label"
 msgid "Download"
-msgstr ""
+msgstr "download"
 
 #: src/utils/ui/msgeditor.py:877
 msgctxt "ui:msg_editor|button:undo|label"
