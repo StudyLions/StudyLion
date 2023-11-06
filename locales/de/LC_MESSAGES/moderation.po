@@ -146,7 +146,7 @@ msgstr ""
 #: src/modules/moderation/cog.py:298
 msgctxt "cmd:warning|embed:user_alert|title"
 msgid "You have received a warning!"
-msgstr ""
+msgstr "Du bist ermahnt worden!"
 
 #: src/modules/moderation/cog.py:305
 msgctxt "cmd:warning|embed:user_alert|field:note|name"
