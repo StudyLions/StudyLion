@@ -487,7 +487,7 @@ msgstr "Moderator"
 #: src/modules/moderation/ticket.py:181
 msgctxt "ticket|field:expiry|mode:expiring|name"
 msgid "Expires At"
-msgstr ""
+msgstr "Läuft ab am"
 
 #: src/modules/moderation/ticket.py:184
 #, possible-python-brace-format
@@ -500,7 +500,7 @@ msgstr ""
 #: src/modules/moderation/ticket.py:192
 msgctxt "ticket|field:expiry|mode:expired|name"
 msgid "Expired"
-msgstr ""
+msgstr "Abgelaufen"
 
 #: src/modules/moderation/ticket.py:195
 #, possible-python-brace-format
