@@ -191,7 +191,7 @@ msgstr "Wie soll die farbige Rolle benannt werden?"
 #: src/modules/shop/shops/colours.py:392
 msgctxt "cmd:editshop_colours_create|param:price|desc"
 msgid "How much should the colour role cost?"
-msgstr "Wie viel soll diese Rolle kosten?"
+msgstr "Wie viel soll diese farbige Rolle kosten?"
 
 #: src/modules/shop/shops/colours.py:414
 #, possible-python-brace-format
