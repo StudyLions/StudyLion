@@ -435,7 +435,7 @@ msgstr "Sélectionner un ticket"
 #: src/modules/moderation/ticketui.py:402
 msgctxt "ui:tickets|button:jump|input:title"
 msgid "Jump to page"
-msgstr ""
+msgstr "Aller à la page"
 
 #: src/modules/moderation/ticketui.py:406
 msgctxt "ui:tickets|button:jump|input:question"
