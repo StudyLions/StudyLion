@@ -306,7 +306,7 @@ msgstr ""
 #: src/modules/ranks/settings.py:34
 msgctxt "guildset:rank_type|input_format:message"
 msgid "Messages"
-msgstr ""
+msgstr "Nachrichten"
 
 #: src/modules/ranks/settings.py:37
 msgctxt "guildset:rank_type|input_pattern:voice"
