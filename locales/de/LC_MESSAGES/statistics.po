@@ -90,7 +90,7 @@ msgstr ""
 #: src/modules/statistics/cog.py:190
 msgctxt "cmd:achievements|embed:title"
 msgid "Achievements"
-msgstr ""
+msgstr "Errungenschaften"
 
 #: src/modules/statistics/cog.py:208
 msgctxt "cmd:configure_statistics"
