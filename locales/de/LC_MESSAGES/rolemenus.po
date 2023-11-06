@@ -1458,12 +1458,12 @@ msgstr ""
 #: src/modules/rolemenus/ui/menueditor.py:746
 msgctxt "ui:menu_editor|button:delete|confirm|button:yes"
 msgid "Yes, Delete Now"
-msgstr ""
+msgstr "Ja, jetzt löschen"
 
 #: src/modules/rolemenus/ui/menueditor.py:751
 msgctxt "ui:menu_editor|button:delete|confirm|button:no"
 msgid "No, Go Back"
-msgstr ""
+msgstr "Nein, zurück."
 
 #: src/modules/rolemenus/ui/menueditor.py:768
 msgctxt "ui:menu_editor|button:delete|label"
