@@ -244,7 +244,7 @@ msgstr ""
 #: src/modules/tasklist/cog.py:592
 msgctxt "cmd:tasks_edit|param:taskstr|desc"
 msgid "Which task do you want to update?"
-msgstr ""
+msgstr "Welche Aufgabe möchtest du bearbeiten?"
 
 #: src/modules/tasklist/cog.py:593
 msgctxt "cmd:tasks_edit|param:new_content|desc"
