@@ -113,7 +113,7 @@ msgstr "Miembro Rango de actividad alcanzado"
 #, possible-python-brace-format
 msgctxt "eventlog|event:new_rank|desc"
 msgid "{member} earned the new activity rank {rank}"
-msgstr ""
+msgstr "{member} obtuvo el nuevo rango de actividad {rank}"
 
 #: src/modules/ranks/cog.py:587
 msgctxt "event:rank_update|embed:notify"
@@ -124,6 +124,8 @@ msgstr "¡Nuevo rango de actividad alcanzado!"
 msgctxt "rank_refresh|error:cannot_chunk|desc"
 msgid "Could not retrieve member list from Discord. Please try again later."
 msgstr ""
+"No se ha podido recuperar la lista de miembros de Discord. Vuelve a "
+"intentarlo más tarde."
 
 #: src/modules/ranks/cog.py:705
 msgctxt "rank_refresh|error:roles_dne|desc"
