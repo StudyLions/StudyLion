@@ -636,7 +636,7 @@ msgstr "Nom ou ID du salon des alertes."
 #, possible-python-brace-format
 msgctxt "guildset:alert_channel|set_response:set"
 msgid "Moderation alerts will be sent to {channel}"
-msgstr ""
+msgstr "Les alertes de modération seront envoyées dans {channel}"
 
 #: src/modules/moderation/settings.py:107
 msgctxt "guildset:alert_channel|set_response:unset"
