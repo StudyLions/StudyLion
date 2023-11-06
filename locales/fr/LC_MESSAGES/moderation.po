@@ -365,7 +365,7 @@ msgstr "Créé avant"
 #: src/modules/moderation/ticketui.py:78
 msgctxt "ticketfilter|field:targetids|name"
 msgid "Targets"
-msgstr ""
+msgstr "Cibles"
 
 #: src/modules/moderation/ticketui.py:86
 msgctxt "ticketfilter|field:moderatorids|name"
