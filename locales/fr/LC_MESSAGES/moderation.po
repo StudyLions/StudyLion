@@ -445,7 +445,7 @@ msgstr "Numéro de page où aller"
 #: src/modules/moderation/ticketui.py:417
 msgctxt "ui:tickets|button:jump|error:invalid_page"
 msgid "Invalid page number, please try again!"
-msgstr ""
+msgstr "Numéro de page invalide, réessayez!"
 
 #: src/modules/moderation/ticketui.py:496
 #, possible-python-brace-format
