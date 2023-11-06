@@ -241,7 +241,7 @@ msgstr "Vous avez changé la langue de la guilde à {lang}."
 #: src/babel/enums.py:43
 msgctxt "localenames|locale:id"
 msgid "Indonesian"
-msgstr ""
+msgstr "Indonénsien"
 
 #: src/babel/enums.py:44
 msgctxt "localenames|locale:da"
