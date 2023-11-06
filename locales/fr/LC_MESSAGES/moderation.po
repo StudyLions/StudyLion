@@ -138,7 +138,7 @@ msgstr "Le motif pour lequel vous avez averti ce membre."
 #: src/modules/moderation/cog.py:262
 msgctxt "cmd:warning|modal:reason|title"
 msgid "Moderation Warning"
-msgstr ""
+msgstr "Avertissement de la modération"
 
 #: src/modules/moderation/cog.py:267
 msgctxt "cmd:warning|modal:reason|field|label"
