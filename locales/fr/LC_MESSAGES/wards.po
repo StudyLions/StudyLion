@@ -41,6 +41,8 @@ msgid ""
 "You must have the `MANAGE_GUILD` permission or the configured `mod_role` to "
 "do this!"
 msgstr ""
+"VOus devez avoir la permission `MANAGE_GUILD` ou le `mod_role` configuré "
+"pour faire ça!"
 
 #: src/wards.py:143
 msgctxt "ward:moderator|failed"
