@@ -249,7 +249,7 @@ msgstr[1] ""
 #: src/modules/moderation/cog.py:478
 msgctxt "cmd:tickets"
 msgid "tickets"
-msgstr ""
+msgstr "Tickets"
 
 #: src/modules/moderation/cog.py:481
 msgctxt "cmd:tickets|desc"
@@ -259,7 +259,7 @@ msgstr ""
 #: src/modules/moderation/cog.py:485
 msgctxt "cmd:tickets|param:target"
 msgid "target"
-msgstr ""
+msgstr "Ziel"
 
 #: src/modules/moderation/cog.py:486
 msgctxt "cmd:tickets|param:type"
