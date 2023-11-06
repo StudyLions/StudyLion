@@ -69,7 +69,7 @@ msgstr ""
 #: src/modules/moderation/cog.py:142
 msgctxt "cmd:modnote|param:target"
 msgid "target"
-msgstr ""
+msgstr "Ziel"
 
 #: src/modules/moderation/cog.py:143
 msgctxt "cmd:modnote|param:note"
