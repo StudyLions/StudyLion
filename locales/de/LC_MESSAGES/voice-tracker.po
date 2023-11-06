@@ -86,7 +86,7 @@ msgstr ""
 #: src/tracking/voice/cog.py:665
 msgctxt "cmd:now|param:user"
 msgid "user"
-msgstr ""
+msgstr "User"
 
 #: src/tracking/voice/cog.py:666
 msgctxt "cmd:now|param:clear"
