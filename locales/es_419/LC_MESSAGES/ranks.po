@@ -956,6 +956,8 @@ msgid ""
 "An error occurred while autocreating rank roles!\n"
 "I lack the 'Manage Roles' permission required to create rank roles!"
 msgstr ""
+"Se ha producido un error al autocrear los roles de rango.\n"
+"No dispongo del permiso \"Gestionar funciones\" necesario para crear funciones de rango."
 
 #: src/modules/ranks/ui/overview.py:145
 msgctxt "ui:rank_overview|button:auto|role_creation|error:unknown"
