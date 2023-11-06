@@ -739,12 +739,12 @@ msgstr ""
 #: src/modules/schedule/ui/scheduleui.py:321
 msgctxt "ui:schedule|menu:slots|option|day:today"
 msgid "Today"
-msgstr ""
+msgstr "Heute"
 
 #: src/modules/schedule/ui/scheduleui.py:325
 msgctxt "ui:schedule|menu:slots|option|day:tomorrow"
 msgid "Tomorrow"
-msgstr ""
+msgstr "Morgen"
 
 #: src/modules/schedule/ui/scheduleui.py:376
 msgctxt "ui:schedule|menu:cancel|error:current_slot"
