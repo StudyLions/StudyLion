@@ -471,7 +471,7 @@ msgstr "Pardonner le ticket de modération"
 #: src/modules/moderation/ticketui.py:608
 msgctxt "ui:ticket|button:pardon|modal:reason|field|label"
 msgid "Why are you pardoning this ticket?"
-msgstr ""
+msgstr "Pourquoi vous pardonnez ce ticket ?"
 
 #: src/modules/moderation/ticketui.py:632
 msgctxt "ui:ticket|button:pardon|label"
