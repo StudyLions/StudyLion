@@ -493,12 +493,12 @@ msgstr "Ticket #{ticketid} | {state} | {type} | {name}"
 #: src/modules/moderation/ticket.py:169
 msgctxt "ticket|field:target|name"
 msgid "Target"
-msgstr ""
+msgstr "Cible"
 
 #: src/modules/moderation/ticket.py:174
 msgctxt "ticket|field:moderator|name"
 msgid "Moderator"
-msgstr ""
+msgstr "Modérateur"
 
 #: src/modules/moderation/ticket.py:181
 msgctxt "ticket|field:expiry|mode:expiring|name"
