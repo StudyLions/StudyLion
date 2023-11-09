@@ -573,7 +573,7 @@ msgstr ""
 #: src/modules/rooms/room.py:78
 msgctxt "room|eventlog|field:owner"
 msgid "Owner"
-msgstr ""
+msgstr "Besitzer"
 
 #: src/modules/rooms/room.py:84
 msgctxt "room|eventlog|field:channel"
