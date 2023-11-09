@@ -126,7 +126,7 @@ msgstr "Zurücksetzen"
 #, possible-python-brace-format
 msgctxt "settype:locale|error"
 msgid "Sorry, we do not support the language `{lang}` at this time!"
-msgstr ""
+msgstr "Entschuldige, wir unterstützen die Sprache `{lang}` noch nicht!"
 
 #: src/babel/settings.py:77
 msgctxt "userset:locale"
