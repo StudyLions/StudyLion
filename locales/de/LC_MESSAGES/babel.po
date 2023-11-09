@@ -183,7 +183,7 @@ msgstr "Aktiviert (Mitglieder müssen die Serversprache verwenden)"
 #: src/babel/settings.py:123
 msgctxt "guildset:force_locale|output"
 msgid "Disabled (members may set their own language)"
-msgstr ""
+msgstr "Deaktiviert (Mitglieder können ihre eigene Sprache setzen)"
 
 #: src/babel/settings.py:137
 msgctxt "guildset:force_locale|response"
