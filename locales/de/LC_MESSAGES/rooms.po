@@ -405,6 +405,8 @@ msgstr ""
 msgctxt "cmd:room_invite|error:member_not_found"
 msgid "Could not find the invited member {mention} in this server!"
 msgstr ""
+"Ich konnte das eingeladene Mitglied {mention} auf diesem Server nicht "
+"finden!"
 
 #: src/modules/rooms/cog.py:719
 msgctxt "cmd:room_invite|error:no_new_members"
