@@ -80,7 +80,7 @@ msgstr ""
 #: src/modules/statistics/cog.py:170
 msgctxt "cmd:achievements"
 msgid "achievements"
-msgstr ""
+msgstr "errungenschaften"
 
 #: src/modules/statistics/cog.py:173
 msgctxt "cmd:achievements|desc"
