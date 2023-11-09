@@ -795,12 +795,12 @@ msgstr ""
 #: src/modules/rooms/settings.py:162
 msgctxt "guildset:rooms_visible|accepts"
 msgid "Visible/Invisible"
-msgstr ""
+msgstr "Sichtbar/Unsichtbar"
 
 #: src/modules/rooms/settings.py:164
 msgctxt "guildset:rooms_visible|output:true"
 msgid "Visible"
-msgstr ""
+msgstr "Sichtbar"
 
 #: src/modules/rooms/settings.py:165
 msgctxt "guildset:rooms_visible|output:false"
