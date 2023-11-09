@@ -189,7 +189,7 @@ msgstr "Privater Kanal gelöscht"
 #, possible-python-brace-format
 msgctxt "room|eventlog|event:room_deleted|desc"
 msgid "{owner}'s private room was deleted."
-msgstr ""
+msgstr "Der private Kanal von {owner} wurde gelöscht."
 
 #: src/modules/rooms/cog.py:270
 #, possible-python-brace-format
