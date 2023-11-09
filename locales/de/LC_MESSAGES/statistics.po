@@ -24,7 +24,7 @@ msgstr ""
 #: src/modules/statistics/cog.py:47
 msgctxt "cmd:me"
 msgid "me"
-msgstr ""
+msgstr "ich"
 
 #: src/modules/statistics/cog.py:50
 msgctxt "cmd:me|desc"
@@ -34,7 +34,7 @@ msgstr ""
 #: src/modules/statistics/cog.py:63
 msgctxt "cmd:profile"
 msgid "profile"
-msgstr ""
+msgstr "profil"
 
 #: src/modules/statistics/cog.py:66
 msgctxt "cmd:profile|desc"
