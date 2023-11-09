@@ -200,7 +200,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:279
 msgctxt "eventlog|event:private_room_create_error|name"
 msgid "Private Room Creation Failed"
-msgstr ""
+msgstr "Erstellung des privaten Kanals ist fehlgeschlagen"
 
 #: src/modules/rooms/cog.py:283
 #, possible-python-brace-format
