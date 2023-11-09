@@ -29,7 +29,7 @@ msgstr ""
 #: src/modules/ranks/cog.py:77
 msgctxt "cmd:configure_ranks|param:rank_type|choice:xp"
 msgid "XP"
-msgstr ""
+msgstr "EXP"
 
 #: src/modules/ranks/cog.py:78
 msgctxt "cmd:configure_ranks|param:rank_type|choice:message"
