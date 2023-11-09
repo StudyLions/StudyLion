@@ -1100,7 +1100,7 @@ msgstr ""
 #: src/modules/schedule/core/session.py:509
 msgctxt "session|status:preparing|field:members"
 msgid "Members"
-msgstr ""
+msgstr "Mitglieder"
 
 #: src/modules/schedule/core/session.py:516
 #, possible-python-brace-format
@@ -1111,7 +1111,7 @@ msgstr ""
 #: src/modules/schedule/core/session.py:550
 msgctxt "session|status:running|field:waiting"
 msgid "Waiting For"
-msgstr ""
+msgstr "Warten auf"
 
 #: src/modules/schedule/core/session.py:556
 msgctxt "session|status:running|field:attending"
