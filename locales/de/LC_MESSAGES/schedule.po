@@ -904,7 +904,7 @@ msgstr "Du bist kein Teilnehmer dieser Session!"
 #: src/modules/schedule/ui/sessionui.py:155
 msgctxt "ui:session|button:cancel|success"
 msgid "Successfully cancelled this session."
-msgstr ""
+msgstr "Session wurde erfolgreich storniert."
 
 #: src/modules/schedule/ui/sessionui.py:169
 msgctxt "ui:session|button:cancel|error|title"
