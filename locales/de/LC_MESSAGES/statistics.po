@@ -472,12 +472,12 @@ msgstr "insgesamt"
 #: src/modules/statistics/ui/weeklymonthly.py:96
 msgctxt "menu:stat_type|opt:weekly_voice|name"
 msgid "Weekly Voice Statistics"
-msgstr ""
+msgstr "Wöchentliche Sprach Statistik"
 
 #: src/modules/statistics/ui/weeklymonthly.py:101
 msgctxt "menu:stat_type|opt:weekly_text|name"
 msgid "Weekly Text Statistics"
-msgstr ""
+msgstr "Wöchentliche Text Statistik"
 
 #: src/modules/statistics/ui/weeklymonthly.py:106
 msgctxt "menu:stat_type|opt:weekly_anki|name"
