@@ -879,7 +879,7 @@ msgstr "Zu spät! Die Session startet in kürze oder hat bereits begonnen!"
 #: src/modules/schedule/ui/sessionui.py:99
 msgctxt "ui:session|button:book|error:already_booked"
 msgid "You are already a member of this session!"
-msgstr ""
+msgstr "Du bist bereits Teilnehmer dieser Session!"
 
 #: src/modules/schedule/ui/sessionui.py:106
 msgctxt "ui:session|button:book|success"
