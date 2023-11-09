@@ -482,7 +482,7 @@ msgstr ""
 #: src/modules/statistics/ui/weeklymonthly.py:106
 msgctxt "menu:stat_type|opt:weekly_anki|name"
 msgid "Weekly Anki Statistics"
-msgstr ""
+msgstr "Wöchentliche Anki Statistik"
 
 #: src/modules/statistics/ui/weeklymonthly.py:112
 msgctxt "menu:stat_type|opt:monthly_voice|name"
@@ -497,7 +497,7 @@ msgstr ""
 #: src/modules/statistics/ui/weeklymonthly.py:122
 msgctxt "menu:stat_type|opt:monthly_anki|name"
 msgid "Monthly Anki Statistics"
-msgstr ""
+msgstr "Monatliche Anki Statistik"
 
 #: src/modules/statistics/ui/weeklymonthly.py:144
 msgctxt "modal:goal_editor|field:task_goal|label"
