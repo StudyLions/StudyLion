@@ -487,12 +487,12 @@ msgstr "Wöchentliche Anki Statistik"
 #: src/modules/statistics/ui/weeklymonthly.py:112
 msgctxt "menu:stat_type|opt:monthly_voice|name"
 msgid "Monthly Voice Statistics"
-msgstr ""
+msgstr "Monatliche Sprach Statistik"
 
 #: src/modules/statistics/ui/weeklymonthly.py:117
 msgctxt "menu:stat_type|opt:monthly_text|name"
 msgid "Monthly Text Statistics"
-msgstr ""
+msgstr "Monatliche Text Statistik"
 
 #: src/modules/statistics/ui/weeklymonthly.py:122
 msgctxt "menu:stat_type|opt:monthly_anki|name"
