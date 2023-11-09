@@ -219,7 +219,7 @@ msgstr "Privater Kanal gebucht"
 #, possible-python-brace-format
 msgctxt "eventlog|event:private_room_create|desc"
 msgid "{owner} has rented a new private room {channel}!"
-msgstr ""
+msgstr "{owner} hat einen neuen privaten Kanal {channel} gebucht!"
 
 #: src/modules/rooms/cog.py:368
 msgctxt "cmd:room"
