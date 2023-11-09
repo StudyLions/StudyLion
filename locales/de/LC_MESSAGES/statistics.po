@@ -247,7 +247,7 @@ msgstr "Anki"
 #: src/modules/statistics/settings.py:54
 msgctxt "settype:state|accepts"
 msgid "Voice/Text/Anki"
-msgstr ""
+msgstr "Sprach/Text/Anki"
 
 #: src/modules/statistics/settings.py:67
 msgctxt "userset:show_global_stats"
