@@ -239,7 +239,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:379
 msgctxt "cmd:room_rent|desc"
 msgid "Rent a private voice channel with LionCoins."
-msgstr ""
+msgstr "Buche dir einen privaten Kanal mit LionCoins."
 
 #: src/modules/rooms/cog.py:383
 msgctxt "cmd:room_rent|param:days"
