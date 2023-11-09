@@ -909,7 +909,7 @@ msgstr "Session wurde erfolgreich storniert."
 #: src/modules/schedule/ui/sessionui.py:169
 msgctxt "ui:session|button:cancel|error|title"
 msgid "Could not cancel session"
-msgstr ""
+msgstr "Ich konnte die Session nicht stornieren."
 
 #: src/modules/schedule/ui/sessionui.py:202
 msgctxt "ui:session|button:help|embed:unbooked|title"
