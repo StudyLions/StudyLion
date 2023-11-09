@@ -894,12 +894,12 @@ msgstr "Ich konnte die Session nicht buchen."
 #: src/modules/schedule/ui/sessionui.py:138
 msgctxt "ui:session|button:cancel|error:starting_soon"
 msgid "Too late! This session has started or is starting shortly."
-msgstr ""
+msgstr "Zu spät! Die Session startet in kürze oder hat bereits begonnen!"
 
 #: src/modules/schedule/ui/sessionui.py:145
 msgctxt "ui:session|button:cancel|error:not_booked"
 msgid "You are not a member of this session!"
-msgstr ""
+msgstr "Du bist kein Teilnehmer dieser Session!"
 
 #: src/modules/schedule/ui/sessionui.py:155
 msgctxt "ui:session|button:cancel|success"
