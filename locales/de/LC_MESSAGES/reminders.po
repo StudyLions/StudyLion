@@ -308,7 +308,7 @@ msgstr ""
 #: src/modules/reminders/ui.py:277
 msgctxt "ui:reminderlist|embed:no_reminders|title"
 msgid "You have no reminders set!"
-msgstr ""
+msgstr "Du hast keine Erinnerungen eingestellt!"
 
 #: src/modules/reminders/ui.py:286
 msgctxt "ui:reminderlist|embed|tips:name"
