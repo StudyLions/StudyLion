@@ -578,7 +578,7 @@ msgstr ""
 #: src/modules/rooms/room.py:84
 msgctxt "room|eventlog|field:channel"
 msgid "Channel"
-msgstr ""
+msgstr "Kanal"
 
 #: src/modules/rooms/room.py:90
 msgctxt "room|eventlog|field:balance"
@@ -588,7 +588,7 @@ msgstr ""
 #: src/modules/rooms/room.py:96
 msgctxt "room|eventlog|field:created"
 msgid "Created At"
-msgstr ""
+msgstr "Erstellt am"
 
 #: src/modules/rooms/room.py:102
 msgctxt "room|eventlog|field:tick"
