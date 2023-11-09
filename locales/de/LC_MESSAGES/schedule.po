@@ -914,7 +914,7 @@ msgstr "Ich konnte die Session nicht stornieren."
 #: src/modules/schedule/ui/sessionui.py:202
 msgctxt "ui:session|button:help|embed:unbooked|title"
 msgid "You have not booked this session!"
-msgstr ""
+msgstr "Du hast diese Session nicht gebucht!"
 
 #: src/modules/schedule/ui/sessionui.py:206
 #, possible-python-brace-format
