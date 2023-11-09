@@ -178,7 +178,7 @@ msgstr ""
 #: src/babel/settings.py:122
 msgctxt "guildset:force_locale|output"
 msgid "Enabled (members will be forced to use the server language)"
-msgstr ""
+msgstr "Aktiviert (Mitglieder müssen die Serversprache verwenden)"
 
 #: src/babel/settings.py:123
 msgctxt "guildset:force_locale|output"
