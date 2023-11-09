@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-24 12:21+0300\n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Sarah Vogel, 2023\n"
 "Language-Team: German (https://app.transifex.com/leobot/teams/174919/de/)\n"
@@ -29,7 +29,7 @@ msgstr "Zeitzone"
 #: src/modules/user_config/cog.py:41
 msgctxt "userset:timezone|desc"
 msgid "Timezone in which to display statistics."
-msgstr ""
+msgstr "Zeitzone, in welcher deine Statistik angezeigt wird."
 
 #: src/modules/user_config/cog.py:45
 msgctxt "userset:timezone|long_desc"
