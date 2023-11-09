@@ -927,7 +927,7 @@ msgstr ""
 #: src/modules/schedule/ui/sessionui.py:215
 msgctxt "ui:session|button:help|embed:help|title"
 msgid "How to attend your scheduled session"
-msgstr ""
+msgstr "Wie du an der gebuchten Session teilnimmst"
 
 #: src/modules/schedule/ui/sessionui.py:224
 #, possible-python-brace-format
