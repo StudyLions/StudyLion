@@ -234,7 +234,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:376
 msgctxt "cmd:room_rent"
 msgid "rent"
-msgstr ""
+msgstr "buchen"
 
 #: src/modules/rooms/cog.py:379
 msgctxt "cmd:room_rent|desc"
