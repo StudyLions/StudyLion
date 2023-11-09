@@ -432,7 +432,7 @@ msgstr "kick"
 #: src/modules/rooms/cog.py:768
 msgctxt "cmd:room_kick|desc"
 msgid "Remove a members from your private room."
-msgstr "Entferne ein Mitglied von deinem privaten Kanal."
+msgstr "Entferne ein Mitglied aus deinem privaten Kanal."
 
 #: src/modules/rooms/cog.py:772
 msgctxt "cmd:room_kick|param:members"
