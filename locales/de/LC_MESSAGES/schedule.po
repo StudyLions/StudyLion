@@ -993,7 +993,7 @@ msgstr ""
 #: src/modules/schedule/ui/sessionui.py:308
 msgctxt "ui:session|button:help|embed:help|field:rewards|name"
 msgid "Rewards"
-msgstr ""
+msgstr "Belohnungen"
 
 #: src/modules/schedule/ui/sessionui.py:312
 #, possible-python-brace-format
