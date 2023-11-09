@@ -615,7 +615,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "room|notify:new_members|desc"
 msgid "Welcome {members}"
-msgstr ""
+msgstr "Willkommen {members}"
 
 #: src/modules/rooms/room.py:156
 msgctxt "room|eventlog|event:new_members|title"
