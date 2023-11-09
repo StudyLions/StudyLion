@@ -157,7 +157,7 @@ msgstr "Wir sind ein Team"
 #: src/modules/statistics/achievements.py:287
 msgctxt "achievement:voting|subtext"
 msgid "Vote 100 times on top.gg"
-msgstr ""
+msgstr "Wähle 100 Mal auf top.gg"
 
 #: src/modules/statistics/achievements.py:304
 msgctxt "achievement:days|name"
