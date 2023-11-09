@@ -648,7 +648,7 @@ msgstr ""
 #: src/modules/rooms/room.py:318
 msgctxt "room|embed:expiry|title"
 msgid "Private Room Expired!"
-msgstr ""
+msgstr "Privater Kanal ist abgelaufen!"
 
 #: src/modules/rooms/room.py:322
 #, possible-python-brace-format
@@ -659,7 +659,7 @@ msgstr ""
 #: src/modules/rooms/room.py:332
 msgctxt "room|eventlog|event:expired|title"
 msgid "Private Room Expired"
-msgstr ""
+msgstr "Privater Kanal ist abgelaufen"
 
 #: src/modules/rooms/room.py:336
 #, possible-python-brace-format
