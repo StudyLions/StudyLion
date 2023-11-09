@@ -1217,7 +1217,7 @@ msgstr ""
 #: src/modules/rolemenus/menuoptions.py:228
 msgctxt "menuset:required_role|set_response:unset"
 msgid "Any member who can see the menu may use it."
-msgstr ""
+msgstr "Jedes Mitglied, das dieses Menü sehen kann, kann es auch benutzen."
 
 #: src/modules/rolemenus/menuoptions.py:236
 msgctxt "menuset:message"
