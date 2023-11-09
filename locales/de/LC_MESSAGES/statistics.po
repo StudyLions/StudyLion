@@ -795,7 +795,7 @@ msgstr ""
 #: src/modules/statistics/ui/leaderboard.py:388
 msgctxt "ui:leaderboard|button:jump|input:title"
 msgid "Jump to page"
-msgstr ""
+msgstr "Springe zu Seite"
 
 #: src/modules/statistics/ui/leaderboard.py:392
 msgctxt "ui:leaderboard|button:jump|input:question"
