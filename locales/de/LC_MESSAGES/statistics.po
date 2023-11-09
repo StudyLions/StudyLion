@@ -44,7 +44,7 @@ msgstr ""
 #: src/modules/statistics/cog.py:70
 msgctxt "cmd:profile|param:member"
 msgid "member"
-msgstr ""
+msgstr "mitglied"
 
 #: src/modules/statistics/cog.py:74
 msgctxt "cmd:profile|param:member|desc"
