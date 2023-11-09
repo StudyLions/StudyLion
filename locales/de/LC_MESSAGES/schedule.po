@@ -874,7 +874,7 @@ msgstr ""
 #: src/modules/schedule/ui/sessionui.py:92
 msgctxt "ui:session|button:book|error:starting_soon"
 msgid "Too late! This session has started or is starting shortly."
-msgstr ""
+msgstr "Zu spät! Die Session startet in kürze oder hat bereits begonnen!"
 
 #: src/modules/schedule/ui/sessionui.py:99
 msgctxt "ui:session|button:book|error:already_booked"
