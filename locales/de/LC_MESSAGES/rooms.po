@@ -213,7 +213,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:329
 msgctxt "eventlog|event:private_room_create|name"
 msgid "Private Room Rented"
-msgstr ""
+msgstr "Privater Kanal gebucht"
 
 #: src/modules/rooms/cog.py:333
 #, possible-python-brace-format
