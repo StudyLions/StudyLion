@@ -183,7 +183,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:175 src/modules/rooms/room.py:364
 msgctxt "room|eventlog|event:room_deleted|title"
 msgid "Private Room Deleted"
-msgstr ""
+msgstr "Privater Kanal gelöscht"
 
 #: src/modules/rooms/cog.py:179 src/modules/rooms/room.py:368
 #, possible-python-brace-format
@@ -326,7 +326,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:519
 msgctxt "cmd:room_rent|success|title"
 msgid "Private Room Created!"
-msgstr "Privater Sprachkanal erstellt!"
+msgstr "Privater Kanal erstellt!"
 
 #: src/modules/rooms/cog.py:572
 #, possible-python-brace-format
