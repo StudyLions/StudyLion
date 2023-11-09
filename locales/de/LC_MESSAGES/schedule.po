@@ -1116,12 +1116,12 @@ msgstr "Warten auf"
 #: src/modules/schedule/core/session.py:556
 msgctxt "session|status:running|field:attending"
 msgid "Attending"
-msgstr ""
+msgstr "Teilnehmend"
 
 #: src/modules/schedule/core/session.py:562
 msgctxt "session|status:running|field:attended"
 msgid "Attended"
-msgstr ""
+msgstr "Teilgenommen"
 
 #: src/modules/schedule/core/session.py:587
 #, possible-python-brace-format
