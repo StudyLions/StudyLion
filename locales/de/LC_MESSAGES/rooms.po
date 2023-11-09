@@ -381,7 +381,7 @@ msgstr "einladen"
 #: src/modules/rooms/cog.py:664
 msgctxt "cmd:room_invite|desc"
 msgid "Add members to your private room."
-msgstr "Füge deinem privaten Sprachkanal Mitglieder hinzu."
+msgstr "Füge deinem privaten Kanal Mitglieder hinzu."
 
 #: src/modules/rooms/cog.py:668
 msgctxt "cmd:room_invite|param:members"
@@ -432,7 +432,7 @@ msgstr "kick"
 #: src/modules/rooms/cog.py:768
 msgctxt "cmd:room_kick|desc"
 msgid "Remove a members from your private room."
-msgstr ""
+msgstr "Entferne ein Mitglied von deinem privaten Kanal."
 
 #: src/modules/rooms/cog.py:772
 msgctxt "cmd:room_kick|param:members"
