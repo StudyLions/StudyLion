@@ -115,7 +115,7 @@ msgstr ""
 #: src/babel/settings.py:36
 msgctxt "settype:locale|summary_table|field:supported|key"
 msgid "Supported"
-msgstr ""
+msgstr "unterstützt"
 
 #: src/babel/settings.py:46
 msgctxt "settype:locale|formatted:unset"
