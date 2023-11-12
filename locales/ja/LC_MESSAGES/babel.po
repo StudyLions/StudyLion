@@ -337,7 +337,7 @@ msgstr "ギリシャ語"
 #: src/babel/enums.py:65
 msgctxt "localenames|locale:bg"
 msgid "Bulgarian"
-msgstr ""
+msgstr "ブルガリア語"
 
 #: src/babel/enums.py:66
 msgctxt "localenames|locale:ru"
