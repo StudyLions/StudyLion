@@ -593,7 +593,7 @@ msgctxt "guildset:starting_funds|long_desc"
 msgid ""
 "Members will be given this number of coins when they first interact with me,"
 " or first join the server."
-msgstr ""
+msgstr "メンバーには、最初に私と話したとき、または最初にサーバーに参加したときに、この数のコインが与えられます。"
 
 #: src/modules/economy/settings.py:134
 msgctxt "guildset:starting_funds|accepts"
