@@ -86,7 +86,7 @@ msgstr "どの言語で返答すればいいですか?"
 #: src/babel/cog.py:209
 msgctxt "cmd:userconfig_language|button:reset|label"
 msgid "Reset"
-msgstr ""
+msgstr "リセット"
 
 #: src/babel/cog.py:250
 #, possible-python-brace-format
