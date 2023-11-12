@@ -196,7 +196,7 @@ msgstr "ここで、メンバーが自分の言語を設定することを許可
 #: src/babel/settings.py:160
 msgctxt "guildset:locale"
 msgid "language"
-msgstr ""
+msgstr "言語"
 
 #: src/babel/settings.py:161
 msgctxt "guildset:locale|desc"
