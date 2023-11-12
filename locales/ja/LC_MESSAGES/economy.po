@@ -440,7 +440,7 @@ msgid ""
 "(You cannot send coins to bots.)"
 msgstr ""
 "お気持ちは嬉しいですが、私よりもあなたの方が、それが必要ですよね！\n"
-"(ボットにコインを送信することはできません。)"
+"(ボットにコインを送ることはできません。)"
 
 #: src/modules/economy/cog.py:771
 #, possible-python-brace-format
