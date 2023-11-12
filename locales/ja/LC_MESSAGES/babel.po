@@ -113,7 +113,7 @@ msgstr "対応言語を入力してください (例: 'en-GB')."
 #: src/babel/settings.py:36
 msgctxt "settype:locale|summary_table|field:supported|key"
 msgid "Supported"
-msgstr ""
+msgstr "サポート済み"
 
 #: src/babel/settings.py:46
 msgctxt "settype:locale|formatted:unset"
