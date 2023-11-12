@@ -71,7 +71,7 @@ msgstr "Target shard app name, オプションについてはautocompleteを参�
 
 #: src/modules/sysadmin/exec_cog.py:396
 msgid "reload"
-msgstr ""
+msgstr "リロード"
 
 #: src/modules/sysadmin/exec_cog.py:397
 msgid "Reload a given LionBot extension. Launches an ExecUI."
