@@ -39,7 +39,7 @@ msgstr "ロールを付与"
 #: src/core/lion_guild.py:46
 msgctxt "eventlog|field:roles_given|name"
 msgid "Roles Taken"
-msgstr ""
+msgstr "ロールを剥奪"
 
 #: src/core/lion_guild.py:51
 msgctxt "eventlog|field:coins_earned|name"
