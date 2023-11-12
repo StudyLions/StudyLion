@@ -94,7 +94,7 @@ msgstr "付与されているロールメニュー"
 #: src/modules/member_admin/cog.py:37
 msgctxt "cmd:admin_data|param:data_type|choice:transactions"
 msgid "Economy Transactions (Incomplete)"
-msgstr ""
+msgstr "経済取引 (未完了)"
 
 #: src/modules/member_admin/cog.py:38
 msgctxt "cmd:admin_data|param:data_type|choice:balances"
