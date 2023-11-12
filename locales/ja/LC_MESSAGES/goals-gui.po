@@ -99,7 +99,7 @@ msgstr "週の目標"
 #: src/gui/cards/goals.py:256
 msgctxt "ui:goals|monthly|title"
 msgid "MONTHLY STATISTICS"
-msgstr ""
+msgstr "月間の統計"
 
 #: src/gui/cards/goals.py:260
 msgctxt "ui:goals|monthly|task_header"
