@@ -559,7 +559,7 @@ msgstr "無効にすると、メンバーはLionCoinを相互に送金できな�
 #: src/modules/economy/settings.py:89
 msgctxt "guildset:allow_transfers|outputs:true"
 msgid "Enabled (Coin transfers allowed.)"
-msgstr ""
+msgstr "有効（コイン送金が可能）"
 
 #: src/modules/economy/settings.py:90
 msgctxt "guildset:allow_transfers|outputs:false"
