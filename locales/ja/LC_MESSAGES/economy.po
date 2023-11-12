@@ -156,7 +156,7 @@ msgctxt "cmd:economy_balance|confirm_set|desc"
 msgid ""
 "Are you sure you want to set the balance of everyone with {role_mention} to "
 "{coin_emoji}**{amount}**?"
-msgstr ""
+msgstr "{role_mention} を持つ全員の残高を {coin_emoji}**{amount}** に設定してもよろしいですか?"
 
 #: src/modules/economy/cog.py:291
 #, possible-python-brace-format
