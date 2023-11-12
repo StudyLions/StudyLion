@@ -84,7 +84,7 @@ msgstr "メッセージリーダーボード"
 #: src/modules/member_admin/cog.py:35
 msgctxt "cmd:admin_data|param:data_type|choice:xp_leaderboard"
 msgid "XP Leaderboard"
-msgstr ""
+msgstr "XP リーダーボード"
 
 #: src/modules/member_admin/cog.py:36
 msgctxt "cmd:admin_data|param:data_type|choice:rolemenu_equip"
