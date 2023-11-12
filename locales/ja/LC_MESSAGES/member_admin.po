@@ -79,7 +79,7 @@ msgstr "Voice リーダーボード"
 #: src/modules/member_admin/cog.py:34
 msgctxt "cmd:admin_data|param:data_type|choice:msg_leaderboard"
 msgid "Message Leaderboard"
-msgstr ""
+msgstr "メッセージリーダーボード"
 
 #: src/modules/member_admin/cog.py:35
 msgctxt "cmd:admin_data|param:data_type|choice:xp_leaderboard"
