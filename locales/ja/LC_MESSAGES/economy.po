@@ -91,7 +91,7 @@ msgstr "対象メンバーの残高を更新します。"
 msgctxt "cmd:economy_balance|error:no_target"
 msgid ""
 "There are no valid members in {role.mention}! It has a total of `0` LC."
-msgstr "{role.mention} には有効なメンバーがいません！合計「0」LC があるよ。つまりないってわけ"
+msgstr "{role.mention} には有効なメンバーがいません！合計「0」LC があるよ。つまりないってわけ。"
 
 #: src/modules/economy/cog.py:164
 msgctxt "cmd:economy_balance|error:target_is_bot"
