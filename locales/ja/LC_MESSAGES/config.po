@@ -75,7 +75,7 @@ msgstr "サーバーダッシュボード (Page {page}/{total})"
 #: src/modules/config/dashboard.py:110
 msgctxt "ui:dashboard|footer"
 msgid "Hover over setting names for a brief description"
-msgstr ""
+msgstr "設定名の上にマウスを合わせると、簡単な説明が表示されます"
 
 #: src/modules/config/dashboard.py:173
 msgctxt "ui:dashboard|menu:config|placeholder"
