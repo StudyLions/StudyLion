@@ -201,7 +201,7 @@ msgctxt "cmd:economy_balance|confirm_add|desc"
 msgid ""
 "Are you sure you want to add {coin_emoji}**{amount}** to everyone in "
 "{role_mention}?"
-msgstr ""
+msgstr "{role_mention} 内の全員に {coin_emoji}**{amount}** を追加してもよろしいですか?"
 
 #: src/modules/economy/cog.py:369
 #, possible-python-brace-format
