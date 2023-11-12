@@ -449,6 +449,8 @@ msgid ""
 "{target} appreciates the gesture, but said they don't have any use for {coin}.\n"
 "(You cannot send coins to bots.)"
 msgstr ""
+"{target} はプレゼントに感謝してたけど、{coin} には使い道がないってさ。\n"
+"(ボットにコインを送信することはできません。)"
 
 #: src/modules/economy/cog.py:799
 #, possible-python-brace-format
