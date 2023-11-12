@@ -103,7 +103,7 @@ msgstr "1月,2月,3月,4月,5月,6月,7月,8月,9月,10月,11月,12月"
 #: src/babel/utils.py:14
 msgctxt "utils|short_months"
 msgid "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec"
-msgstr ""
+msgstr "1月,2月,3月,4月,5月,6月,7月,8月,9月,10月,11月,12月"
 
 #: src/babel/settings.py:25
 msgctxt "settype:locale|accepts"
