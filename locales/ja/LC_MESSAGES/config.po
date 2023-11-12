@@ -109,7 +109,7 @@ msgstr "サーバーのタイムゾーンは、 `{timezone}` に設定されま�
 #: src/modules/config/settings.py:66
 msgctxt "guildset:eventlog"
 msgid "event_log"
-msgstr ""
+msgstr "イベントログ"
 
 #: src/modules/config/settings.py:69
 msgctxt "guildset:eventlog|desc"
