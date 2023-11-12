@@ -34,7 +34,7 @@ msgstr "モデレーションレベルの設定を表示および変更します
 #: src/core/config.py:40
 msgctxt "group:admin"
 msgid "admin"
-msgstr ""
+msgstr "管理者"
 
 #: src/core/config.py:41
 msgctxt "group:admin|desc"
