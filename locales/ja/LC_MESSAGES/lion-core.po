@@ -87,7 +87,7 @@ msgstr "{bot_name} 活動ログ"
 #: src/core/lion_guild.py:224
 msgctxt "eventlog|create|audit_reason"
 msgid "Creating event log webhook"
-msgstr ""
+msgstr "活動ログの Webhook の作成"
 
 #: src/core/lion_guild.py:342
 msgctxt "eventlog|field:errors|name"
