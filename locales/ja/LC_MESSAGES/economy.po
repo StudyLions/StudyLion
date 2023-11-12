@@ -285,7 +285,7 @@ msgstr "{mention} は現在 {coin_emoji} {coins} を所有しています。"
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:single|author"
 msgid "Balance statement for {user}"
-msgstr ""
+msgstr "{user} の残高明細"
 
 #: src/modules/economy/cog.py:548
 msgctxt "cmd:economy_reset"
