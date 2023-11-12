@@ -252,7 +252,7 @@ msgstr "英語, 米"
 #: src/babel/enums.py:48
 msgctxt "localenames|locale:es-ES"
 msgid "Spanish"
-msgstr ""
+msgstr "スペイン語"
 
 #: src/babel/enums.py:49
 msgctxt "localenames|locale:fr"
