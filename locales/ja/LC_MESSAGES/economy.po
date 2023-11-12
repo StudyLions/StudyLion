@@ -548,7 +548,7 @@ msgstr "送金の許可"
 #: src/modules/economy/settings.py:77
 msgctxt "guildset:allow_transfers|desc"
 msgid "Whether to allow members to transfer LionCoins to each other."
-msgstr ""
+msgstr "メンバーが互いにLionCoinを送金できるようにするかどうか。"
 
 #: src/modules/economy/settings.py:81
 msgctxt "guildset:allow_transfers|long_desc"
