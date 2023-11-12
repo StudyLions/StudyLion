@@ -89,7 +89,7 @@ msgstr "XP リーダーボード"
 #: src/modules/member_admin/cog.py:36
 msgctxt "cmd:admin_data|param:data_type|choice:rolemenu_equip"
 msgid "Rolemenu Roles Equipped"
-msgstr ""
+msgstr "付与されているロールメニュー"
 
 #: src/modules/member_admin/cog.py:37
 msgctxt "cmd:admin_data|param:data_type|choice:transactions"
