@@ -162,7 +162,7 @@ msgstr "初めての参加"
 #: src/modules/member_admin/cog.py:368
 msgctxt "cmd:resetmember"
 msgid "resetmember"
-msgstr ""
+msgstr "メンバーリセット"
 
 #: src/modules/member_admin/cog.py:371
 msgctxt "cmd:resetmember|desc"
