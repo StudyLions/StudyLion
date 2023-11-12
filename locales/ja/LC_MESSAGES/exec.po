@@ -79,7 +79,7 @@ msgstr "特定の LionBot 拡張機能をリロードします。 ExecUIを起�
 
 #: src/modules/sysadmin/exec_cog.py:400
 msgid "Name of the extension to reload. See autocomplete for options."
-msgstr ""
+msgstr "リロードする拡張機能の名前。オプションについてはautocompleteを参照してください。"
 
 #: src/modules/sysadmin/exec_cog.py:401
 msgid "Whether to force an extension reload even if it doesn't exist."
