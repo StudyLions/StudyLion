@@ -44,7 +44,7 @@ msgstr "挨拶メッセージ"
 #: src/modules/member_admin/settingui.py:210
 msgctxt "ui:memberadmin|button:return_msg|label"
 msgid "Returning Msg"
-msgstr ""
+msgstr "返信メッセージ"
 
 #: src/modules/member_admin/settingui.py:218
 msgctxt "ui:memberadmin|embed|title"
