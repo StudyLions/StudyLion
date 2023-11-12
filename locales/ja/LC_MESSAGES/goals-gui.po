@@ -43,7 +43,7 @@ msgstr ""
 #: src/gui/cards/goals.py:141
 msgctxt "skin:goals|mode:study|goal:middle|above"
 msgid "STUDIED"
-msgstr ""
+msgstr "勉強済み"
 
 #: src/gui/cards/goals.py:145
 msgctxt "skin:goals|mode:study|goal:middle|below"
