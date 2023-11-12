@@ -34,7 +34,7 @@ msgstr "発言量順位表"
 #: src/gui/cards/leaderboard.py:76
 msgctxt "skin:leaderboard|mode:voice|header_text"
 msgid "VOICE LEADERBOARD"
-msgstr ""
+msgstr "Voice順位表"
 
 #: src/gui/cards/leaderboard.py:80
 msgctxt "skin:leaderboard|mode:anki|header_text"
