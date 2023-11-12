@@ -29,7 +29,7 @@ msgstr "設定"
 #: src/core/config.py:29
 msgctxt "group:config|desc"
 msgid "View and adjust moderation-level configuration."
-msgstr "モデレーションレベルの設定を表示および変更します。"
+msgstr "運営レベルの設定を表示および変更します。"
 
 #: src/core/config.py:40
 msgctxt "group:admin"
