@@ -96,7 +96,7 @@ msgstr "{role.mention} には有効なメンバーがいません！合計「0�
 #: src/modules/economy/cog.py:164
 msgctxt "cmd:economy_balance|error:target_is_bot"
 msgid "Bots cannot have coin balances!"
-msgstr ""
+msgstr "ボットにコインはあげないぞ！"
 
 #: src/modules/economy/cog.py:175
 msgctxt "cmd:economy_balance|error:args"
