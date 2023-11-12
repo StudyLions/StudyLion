@@ -128,6 +128,12 @@ msgid ""
 "- Activity ranks earned\n"
 "I must have the 'Manage Webhooks' permission in this channel."
 msgstr ""
+"設定されている場合、実行された最も重要なアクションまたはインターフェースを通じて発生したイベントが、このチャンネルに記録されます。ログに記録されるイベントには、たとえば次のようなものがあります。\n"
+"- メンバーの発言活動\n"
+"- ロールメニューから装備されたロールと期限切れになるロール\n"
+"- プライベートルームをレンタルしていて有効期限が切れている\n"
+"- 獲得したアクティビティランク\n"
+"このチャンネルは「Webhook の管理」権限が必要です。"
 
 #: src/modules/config/settings.py:95
 #, possible-python-brace-format
