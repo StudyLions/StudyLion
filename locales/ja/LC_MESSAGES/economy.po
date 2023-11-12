@@ -564,7 +564,7 @@ msgstr "有効（コイン送金が可能）"
 #: src/modules/economy/settings.py:90
 msgctxt "guildset:allow_transfers|outputs:false"
 msgid "Disabled (Coin transfers not allowed.)"
-msgstr ""
+msgstr "無効（コイン送金は不可能）"
 
 #: src/modules/economy/settings.py:106
 #, possible-python-brace-format
