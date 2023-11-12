@@ -228,7 +228,7 @@ msgstr "{moderator} が {target} の残高に {amount} を追加しました"
 msgctxt "cmd:economy_balance|embed:success|title"
 msgid "Account successfully updated."
 msgid_plural "Accounts successfully updated."
-msgstr[0] ""
+msgstr[0] "アカウントは正常に更新されました。"
 
 #: src/modules/economy/cog.py:438
 #, possible-python-brace-format
