@@ -174,7 +174,7 @@ msgstr ""
 #: src/core/setting_types.py:206
 msgctxt "settype:message|error:json_embed_type"
 msgid "`embed` field must be a valid JSON object."
-msgstr ""
+msgstr "「embed」フィールドは有効な JSON オブジェクトである必要があります。"
 
 #: src/core/setting_types.py:214
 msgctxt "settype:message|error:json_embeds_type"
