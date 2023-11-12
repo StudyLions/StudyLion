@@ -261,7 +261,7 @@ msgstr "`[{pos:>{numwidth}}]` | `{coins:>{coinwidth}} LC` | {mention}"
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:role_lb|footer"
 msgid "Page {page}/{total}"
-msgstr ""
+msgstr "ページ {page}/{total}"
 
 #: src/modules/economy/cog.py:502
 #, possible-python-brace-format
