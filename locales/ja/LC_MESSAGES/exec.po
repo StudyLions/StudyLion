@@ -91,4 +91,4 @@ msgstr "シャットダウン"
 
 #: src/modules/sysadmin/exec_cog.py:438
 msgid "Shutdown (or restart) the client."
-msgstr ""
+msgstr "クライアントをシャットダウン (または再起動) します。"
