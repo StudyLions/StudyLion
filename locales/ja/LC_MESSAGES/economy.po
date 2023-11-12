@@ -84,7 +84,7 @@ msgstr "対象メンバーの残高に追加するLion Coins の数。削除に�
 #: src/modules/economy/cog.py:115
 msgctxt "cmd:economy_balance|param:set|set"
 msgid "New balance to set the target's balance to."
-msgstr ""
+msgstr "対象メンバーの残高を更新します。"
 
 #: src/modules/economy/cog.py:153
 #, possible-python-brace-format
