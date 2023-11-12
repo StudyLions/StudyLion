@@ -554,7 +554,7 @@ msgstr "メンバーが互いにLionCoinを送金できるようにするかど�
 msgctxt "guildset:allow_transfers|long_desc"
 msgid ""
 "If disabled, members will not be able to transfer LionCoins to each other."
-msgstr "無効にすると、メンバーはLionCoinを相互に送金できなくなります"
+msgstr "無効にすると、メンバーはLionCoinを相互に送金できなくなります。"
 
 #: src/modules/economy/settings.py:89
 msgctxt "guildset:allow_transfers|outputs:true"
