@@ -581,7 +581,7 @@ msgstr "メンバーは {send_cmd} を使用して {coin} を送金すること�
 #: src/modules/economy/settings.py:123
 msgctxt "guildset:starting_funds"
 msgid "starting_funds"
-msgstr ""
+msgstr "初期資金"
 
 #: src/modules/economy/settings.py:126
 msgctxt "guildset:starting_funds|desc"
