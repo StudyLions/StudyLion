@@ -29,7 +29,7 @@ msgstr "開始"
 #: src/core/lion_guild.py:36
 msgctxt "eventlog|field:expiry|name"
 msgid "Expires"
-msgstr ""
+msgstr "期限切れ"
 
 #: src/core/lion_guild.py:41
 msgctxt "eventlog|field:roles_given|name"
