@@ -152,4 +152,4 @@ msgstr "これからは、イベントログは {channel} に記録されるよ�
 #: src/modules/config/settings.py:111
 msgctxt "guildset:eventlog|response|unset"
 msgid "Guild events will no longer be logged."
-msgstr "サーバーでのイベント(出来事)は記録されなくなります。"
+msgstr "サーバーでの活動は記録されなくなります。"
