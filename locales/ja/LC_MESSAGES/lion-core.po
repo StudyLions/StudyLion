@@ -49,7 +49,7 @@ msgstr "獲得コイン"
 #: src/core/lion_guild.py:56
 msgctxt "eventlog|field:price|name"
 msgid "Price"
-msgstr ""
+msgstr "価格"
 
 #: src/core/lion_guild.py:61
 msgctxt "eventlog|field:balance|name"
