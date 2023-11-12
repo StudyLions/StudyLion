@@ -543,7 +543,7 @@ msgstr "メンバーが **100** XP を獲得するごとに、{coin}**{amount}**
 #: src/modules/economy/settings.py:74
 msgctxt "guildset:allow_transfers"
 msgid "allow_transfers"
-msgstr ""
+msgstr "送金の許可"
 
 #: src/modules/economy/settings.py:77
 msgctxt "guildset:allow_transfers|desc"
