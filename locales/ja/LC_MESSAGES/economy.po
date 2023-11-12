@@ -538,7 +538,7 @@ msgctxt "guildset:coins_per_xp|set_response"
 msgid ""
 "For every **100** XP they earn, members will now be given "
 "{coin}**{amount}**."
-msgstr ""
+msgstr "メンバーが **100** XP を獲得するごとに、{coin}**{amount}** がメンバーに与えられます。"
 
 #: src/modules/economy/settings.py:74
 msgctxt "guildset:allow_transfers"
