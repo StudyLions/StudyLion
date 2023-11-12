@@ -312,7 +312,7 @@ msgstr "フィンランド語"
 #: src/babel/enums.py:60
 msgctxt "localenames|locale:sv-SE"
 msgid "Swedish"
-msgstr ""
+msgstr "スウェーデン語"
 
 #: src/babel/enums.py:61
 msgctxt "localenames|locale:vi"
