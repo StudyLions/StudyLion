@@ -222,7 +222,7 @@ msgstr "運営のLC残高の変更"
 #, possible-python-brace-format
 msgctxt "eventlog|event:economy_set|desc"
 msgid "{moderator} added {amount} to {target}'s balance."
-msgstr ""
+msgstr "{moderator} が {target} の残高に {amount} を追加しました"
 
 #: src/modules/economy/cog.py:394
 msgctxt "cmd:economy_balance|embed:success|title"
