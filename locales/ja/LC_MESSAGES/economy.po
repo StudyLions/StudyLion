@@ -297,7 +297,7 @@ msgctxt "cmd:economy_reset|desc"
 msgid ""
 "Reset the coin balance for a target user or role. (See also \"economy "
 "balance\".)"
-msgstr ""
+msgstr "対象のユーザーまたはロールのコイン残高をリセットします。 （「LC残高」も参照）"
 
 #: src/modules/economy/cog.py:555
 msgctxt "cmd:economy_reset|param:target"
