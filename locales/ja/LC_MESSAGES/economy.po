@@ -586,7 +586,7 @@ msgstr "初期資金"
 #: src/modules/economy/settings.py:126
 msgctxt "guildset:starting_funds|desc"
 msgid "How many LionCoins should a member start with."
-msgstr ""
+msgstr "メンバーは初期設定で、何枚のコインを持って始めるか。"
 
 #: src/modules/economy/settings.py:130
 msgctxt "guildset:starting_funds|long_desc"
