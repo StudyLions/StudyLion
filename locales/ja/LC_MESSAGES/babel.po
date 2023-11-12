@@ -129,7 +129,7 @@ msgstr "申し訳ありませんが、現在 `{lang}` という言語はサポ�
 #: src/babel/settings.py:77
 msgctxt "userset:locale"
 msgid "language"
-msgstr ""
+msgstr "言語"
 
 #: src/babel/settings.py:78
 msgctxt "userset:locale|desc"
