@@ -99,7 +99,7 @@ msgstr "経済取引 (未完了)"
 #: src/modules/member_admin/cog.py:38
 msgctxt "cmd:admin_data|param:data_type|choice:balances"
 msgid "Economy Balances"
-msgstr ""
+msgstr "経済残高"
 
 #: src/modules/member_admin/cog.py:39
 msgctxt "cmd:admin_data|param:data_type|choice:voice_sessions"
