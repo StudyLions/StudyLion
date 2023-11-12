@@ -186,7 +186,7 @@ msgstr "**{guild_name}** のメンバー全員に {coin_emoji}**{amount}** が�
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|confirm_add|desc"
 msgid "Are you sure you want to add **{amount}** to everyone's balance?"
-msgstr ""
+msgstr "**{amount}** を全員の残高に追加してもよろしいですか?"
 
 #: src/modules/economy/cog.py:338
 #, possible-python-brace-format
