@@ -317,7 +317,7 @@ msgstr ""
 #: src/babel/enums.py:61
 msgctxt "localenames|locale:vi"
 msgid "Vietnamese"
-msgstr ""
+msgstr "ベトナム語"
 
 #: src/babel/enums.py:62
 msgctxt "localenames|locale:tr"
