@@ -141,7 +141,7 @@ msgctxt "guildset:eventlog|check_value|error:perms|perm:manage_webhooks"
 msgid ""
 "Cannot set {channel} as an event log! I lack the 'Manage Webhooks' "
 "permission there."
-msgstr ""
+msgstr "{channel} には「Webhookの管理」権限がないため、{channel} をイベントログチャンネルとして設定できません！"
 
 #: src/modules/config/settings.py:106
 #, possible-python-brace-format
