@@ -49,4 +49,4 @@ msgstr "設定"
 #: src/core/config.py:53
 msgctxt "group:admin_config|desc"
 msgid "View and adjust admin-level configuration."
-msgstr ""
+msgstr "管理者レベルの構成を表示および変更します。"
