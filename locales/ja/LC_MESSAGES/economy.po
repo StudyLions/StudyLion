@@ -318,7 +318,7 @@ msgid ""
 "Are you sure you want to reset the coin balance for everyone in **{guild_name}**?\n"
 "*This is not reversible!*"
 msgstr ""
-"**{guild_name}** 内の、全員のコイン残高を再設定してもよろしいですか?\n"
+"**{guild_name}** 内の、全員のコイン残高をリセットしてもよろしいですか?\n"
 "*この変更は元には戻せません!*"
 
 #: src/modules/economy/cog.py:595
