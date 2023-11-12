@@ -302,7 +302,7 @@ msgstr "ポルトガル語, ブラジル"
 #: src/babel/enums.py:58
 msgctxt "localenames|locale:ro"
 msgid "Romanian, Romania"
-msgstr ""
+msgstr "ルーマニア語, ルーマニア"
 
 #: src/babel/enums.py:59
 msgctxt "localenames|locale:fi"
