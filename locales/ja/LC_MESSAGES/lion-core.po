@@ -76,7 +76,7 @@ msgctxt "eventlog|error:manage_webhooks"
 msgid ""
 "This channel is configured as an event log, but I am missing the 'Manage "
 "Webhooks' permission here."
-msgstr ""
+msgstr "このチャンネルは活動ログチャンネルとして設定されていますが、ここに「Webhook の管理」権限がないみたいです..."
 
 #: src/core/lion_guild.py:220
 #, possible-python-brace-format
