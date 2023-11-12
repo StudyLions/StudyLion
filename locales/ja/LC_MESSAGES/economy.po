@@ -55,7 +55,7 @@ msgstr "メンバーおよびロールの LionCoin 残高を表示または変�
 #: src/modules/economy/cog.py:100
 msgctxt "cmd:economy_balance|param:target"
 msgid "target"
-msgstr ""
+msgstr "対象"
 
 #: src/modules/economy/cog.py:101
 msgctxt "cmd:economy_balance|param:add"
