@@ -131,7 +131,7 @@ msgstr "{メンバー} がサーバーに再参加しました。"
 #: src/modules/member_admin/cog.py:256
 msgctxt "eventlog|event:returning|field:first_joined"
 msgid "First Joined"
-msgstr ""
+msgstr "初めての参加"
 
 #: src/modules/member_admin/cog.py:263
 msgctxt "eventlog|event:returning|field:last_seen"
