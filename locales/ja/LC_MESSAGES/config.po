@@ -59,7 +59,7 @@ msgstr "タイムゾーンが設定できませんでした！"
 #: src/modules/config/general.py:112
 msgctxt "cmd:configure_general|success"
 msgid "Settings Updated!"
-msgstr ""
+msgstr "設定が更新されました！"
 
 #: src/modules/config/general.py:127
 msgctxt "cmd:configure_general|panel|title"
