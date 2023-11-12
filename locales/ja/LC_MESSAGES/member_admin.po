@@ -69,7 +69,7 @@ msgstr "挨拶メッセージ ({commands[admin config welcome]})"
 #: src/modules/member_admin/settingui.py:297
 msgctxt "dash:member_admin|section:initial_roles|name"
 msgid "Initial Roles ({commands[admin config welcome]})"
-msgstr ""
+msgstr "初期ロール ({commands[admin config welcome]})"
 
 #: src/modules/member_admin/cog.py:33
 msgctxt "cmd:admin_data|param:data_type|choice:voice_leaderboard"
