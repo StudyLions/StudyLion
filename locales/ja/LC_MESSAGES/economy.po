@@ -460,7 +460,6 @@ msgid ""
 "`Current Balance:` {coin_emoji}{balance}"
 msgstr ""
 "これを行うには十分なLion Coinがありません！\n"
-"\n"
 "`現在の残高:` {coin_emoji}{balance}"
 
 #: src/modules/economy/cog.py:816
