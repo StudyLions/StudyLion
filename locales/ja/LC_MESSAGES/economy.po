@@ -173,7 +173,7 @@ msgstr "運営がLC残高を設定"
 #, possible-python-brace-format
 msgctxt "eventlog|event:economy_set|desc"
 msgid "{moderator} set {target}'s balance to {amount}."
-msgstr ""
+msgstr "{モデレーター} が {target} の残高を {amount} に設定しました"
 
 #: src/modules/economy/cog.py:321
 #, possible-python-brace-format
