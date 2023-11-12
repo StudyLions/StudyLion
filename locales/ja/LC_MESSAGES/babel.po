@@ -118,7 +118,7 @@ msgstr "サポート済み"
 #: src/babel/settings.py:46
 msgctxt "settype:locale|formatted:unset"
 msgid "Unset"
-msgstr "セットを解除"
+msgstr "設定を解除"
 
 #: src/babel/settings.py:62
 #, possible-python-brace-format
