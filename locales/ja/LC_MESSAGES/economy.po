@@ -108,7 +108,7 @@ msgstr "メンバー残高の「設定」と「追加」を同時に行うこと
 msgctxt "cmd:economy_balance|embed:success|affected"
 msgid "One user was affected."
 msgid_plural "**{count}** users were affected."
-msgstr[0] ""
+msgstr[0] "**{count}** 人のユーザーが影響を受けました。"
 
 #: src/modules/economy/cog.py:230
 #, possible-python-brace-format
