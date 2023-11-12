@@ -172,7 +172,7 @@ msgstr "対象のメンバー、またはユーザーの (サーバーに関連�
 #: src/modules/member_admin/cog.py:375
 msgctxt "cmd:resetmember|param:target"
 msgid "member_to_reset"
-msgstr ""
+msgstr "リセットするメンバー"
 
 #: src/modules/member_admin/cog.py:376
 msgctxt "cmd:resetmember|param:saved_roles"
