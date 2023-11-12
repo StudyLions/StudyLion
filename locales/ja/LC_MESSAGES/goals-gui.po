@@ -94,7 +94,7 @@ msgstr "週間の統計"
 #: src/gui/cards/goals.py:246
 msgctxt "ui:goals|weekly|task_header"
 msgid "GOALS OF THE WEEK"
-msgstr ""
+msgstr "週の目標"
 
 #: src/gui/cards/goals.py:256
 msgctxt "ui:goals|monthly|title"
