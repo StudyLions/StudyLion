@@ -290,7 +290,7 @@ msgstr "{user} の残高明細"
 #: src/modules/economy/cog.py:548
 msgctxt "cmd:economy_reset"
 msgid "reset"
-msgstr ""
+msgstr "リセット"
 
 #: src/modules/economy/cog.py:551
 msgctxt "cmd:economy_reset|desc"
