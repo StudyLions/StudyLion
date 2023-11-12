@@ -240,7 +240,7 @@ msgstr "{name} の通帳"
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:role_lb|header"
 msgid "This server has a total balance of {coin_emoji}**{total}**."
-msgstr ""
+msgstr "このサーバーの合計LCは {coin_emoji}**{total}** です。"
 
 #: src/modules/economy/cog.py:452
 #, possible-python-brace-format
