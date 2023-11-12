@@ -32,7 +32,7 @@ msgstr "非同期"
 
 #: src/modules/sysadmin/exec_cog.py:275
 msgid "Execute arbitrary code with Exec"
-msgstr ""
+msgstr "Execで任意のコードを実行する"
 
 #: src/modules/sysadmin/exec_cog.py:337
 msgctxt "command"
