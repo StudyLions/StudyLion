@@ -430,6 +430,8 @@ msgid ""
 "What is this, tax evasion?\n"
 "(You can not send coins to yourself.)"
 msgstr ""
+"なんだこれ、脱税？\n"
+"（自分にコインを送ることはできません。）"
 
 #: src/modules/economy/cog.py:761
 msgctxt "cmd:send|error:sending-to-leo"
