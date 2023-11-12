@@ -83,7 +83,7 @@ msgstr "リロードする拡張機能の名前。オプションについては
 
 #: src/modules/sysadmin/exec_cog.py:401
 msgid "Whether to force an extension reload even if it doesn't exist."
-msgstr ""
+msgstr "拡張機能が存在しない場合でも、強制的にリロードするかどうか。"
 
 #: src/modules/sysadmin/exec_cog.py:437
 msgid "shutdown"
