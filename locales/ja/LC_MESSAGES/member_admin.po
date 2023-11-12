@@ -54,7 +54,7 @@ msgstr "挨拶と初期ロールパネル"
 #: src/modules/member_admin/settingui.py:262
 msgctxt "dash:member_admin|title"
 msgid "Greetings and Initial Roles ({commands[config welcome]})"
-msgstr ""
+msgstr "挨拶と初期ロール ({commands[config welcome]})"
 
 #: src/modules/member_admin/settingui.py:266
 msgctxt "dash:member_admin|dropdown|placeholder"
