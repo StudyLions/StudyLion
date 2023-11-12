@@ -382,7 +382,7 @@ msgstr "{mention} さんの残高は {coin_emoji}**{amount}** にリセットさ
 #: src/modules/economy/cog.py:704
 msgctxt "cmd:send"
 msgid "send"
-msgstr "送る"
+msgstr "送金"
 
 #: src/modules/economy/cog.py:707
 msgctxt "cmd:send|desc"
