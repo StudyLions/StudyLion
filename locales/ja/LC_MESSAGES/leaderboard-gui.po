@@ -39,7 +39,7 @@ msgstr "Voice順位表"
 #: src/gui/cards/leaderboard.py:80
 msgctxt "skin:leaderboard|mode:anki|header_text"
 msgid "ANKI REVIEW LEADERBOARD"
-msgstr ""
+msgstr "ANKI REVIEW 順位表"
 
 #: src/gui/cards/leaderboard.py:98
 msgctxt "skin:leaderboard|field:subheader_text"
