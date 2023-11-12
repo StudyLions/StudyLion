@@ -34,7 +34,7 @@ msgstr "オートロールの選択"
 #: src/modules/member_admin/settingui.py:118
 msgctxt "ui:memberadmin|menu:bot_autoroles|placeholder"
 msgid "Select Bot Autoroles"
-msgstr ""
+msgstr "ボットのオートロールの選択"
 
 #: src/modules/member_admin/settingui.py:160
 msgctxt "ui:member_admin|button:greet_msg|label"
