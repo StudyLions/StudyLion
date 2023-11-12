@@ -498,7 +498,7 @@ msgctxt "cmd:send|embed:ack|desc|error:unreachable"
 msgid ""
 "Unfortunately, I was not able to message the recipient. Perhaps they have me"
 " blocked?"
-msgstr ""
+msgstr "残念ながら、受信者にメッセージを送信できませんでした。おそらく私はブロックされているね？"
 
 #: src/modules/economy/cog.py:884
 msgctxt "cmd:configure_economy"
