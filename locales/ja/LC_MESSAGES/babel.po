@@ -216,7 +216,7 @@ msgstr ""
 #: src/babel/settings.py:176
 msgctxt "guildset:locale|response"
 msgid "You have unset the guild language."
-msgstr ""
+msgstr "サーバー言語が設定されていません。"
 
 #: src/babel/settings.py:178
 #, possible-python-brace-format
