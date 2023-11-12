@@ -115,7 +115,7 @@ msgstr "新しいメンバーが参加しました"
 #, possible-python-brace-format
 msgctxt "eventlog|event:welcome|desc"
 msgid "{member} joined the server for the first time."
-msgstr "{メンバー} が初めてサーバーに参加しました。"
+msgstr "{member} が初めてサーバーに参加しました。"
 
 #: src/modules/member_admin/cog.py:243
 msgctxt "eventlog|event:returning|title"
