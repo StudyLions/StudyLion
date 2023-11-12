@@ -342,7 +342,7 @@ msgstr "ブルガリア語"
 #: src/babel/enums.py:66
 msgctxt "localenames|locale:ru"
 msgid "Russian"
-msgstr ""
+msgstr "ロシア語"
 
 #: src/babel/enums.py:67
 msgctxt "localenames|locale:uk"
