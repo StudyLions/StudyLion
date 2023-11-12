@@ -184,7 +184,7 @@ msgstr "「embeds」フィールドはリストでなければなりません。
 #: src/core/setting_types.py:221
 msgctxt "settype:message|error:json_embed_embeds"
 msgid "Message data cannot include both `embed` and `embeds`."
-msgstr ""
+msgstr "メッセージ データに「embed」と「embeds」の両方を含めることはできません。"
 
 #: src/core/setting_types.py:229
 msgctxt "settype:message|error:json_content_type"
