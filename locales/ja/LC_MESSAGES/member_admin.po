@@ -152,7 +152,7 @@ msgstr ""
 #: src/modules/member_admin/cog.py:323
 msgctxt "eventlog|event:left|field:stored_roles"
 msgid "Stored Roles"
-msgstr ""
+msgstr "保存されたロール"
 
 #: src/modules/member_admin/cog.py:330
 msgctxt "eventlog|event:left|field:first_joined"
