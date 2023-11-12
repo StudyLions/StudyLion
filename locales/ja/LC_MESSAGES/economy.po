@@ -604,4 +604,4 @@ msgstr "新規メンバーに付与するコインの数。"
 #, possible-python-brace-format
 msgctxt "guildset:starting_funds|set_response"
 msgid "New members will now start with {amount}"
-msgstr ""
+msgstr "新しいメンバーは {amount} を持って開始されます"
