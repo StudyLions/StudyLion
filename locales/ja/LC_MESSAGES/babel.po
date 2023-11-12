@@ -377,7 +377,7 @@ msgstr "中国語, 台湾"
 #: src/babel/enums.py:73
 msgctxt "localenames|locale:ko"
 msgid "Korean"
-msgstr ""
+msgstr "韓国語"
 
 #: src/babel/enums.py:78
 msgctxt "localenames|locale:he"
