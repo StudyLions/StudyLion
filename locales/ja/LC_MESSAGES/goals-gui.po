@@ -37,6 +37,8 @@ msgid ""
 "ATTENDANCE\n"
 "RATE"
 msgstr ""
+"出席\n"
+"レート"
 
 #: src/gui/cards/goals.py:141
 msgctxt "skin:goals|mode:study|goal:middle|above"
