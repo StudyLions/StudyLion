@@ -69,7 +69,7 @@ msgstr "メンバー"
 #: src/core/lion_guild.py:76
 msgctxt "eventlog|field:channelid|name"
 msgid "Channel"
-msgstr ""
+msgstr "チャンネル"
 
 #: src/core/lion_guild.py:208
 msgctxt "eventlog|error:manage_webhooks"
