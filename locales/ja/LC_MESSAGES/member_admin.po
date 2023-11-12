@@ -120,7 +120,7 @@ msgstr "{メンバー} が初めてサーバーに参加しました。"
 #: src/modules/member_admin/cog.py:243
 msgctxt "eventlog|event:returning|title"
 msgid "Member Rejoined"
-msgstr ""
+msgstr "メンバーが再加入しました"
 
 #: src/modules/member_admin/cog.py:247
 #, possible-python-brace-format
