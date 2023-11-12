@@ -439,6 +439,8 @@ msgid ""
 "I appreciate it, but you need it more than I do!\n"
 "(You cannot send coins to bots.)"
 msgstr ""
+"お気持ちは嬉しいですが、私よりもあなたの方が、それが必要ですよね！\n"
+"(ボットにコインを送信することはできません。)"
 
 #: src/modules/economy/cog.py:771
 #, possible-python-brace-format
