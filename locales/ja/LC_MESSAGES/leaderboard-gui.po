@@ -68,7 +68,7 @@ msgstr "{amount} 時間"
 #, possible-python-brace-format
 msgctxt "skin:leaderboard|mode:anki|top_hours_text"
 msgid "{amount} cards"
-msgstr ""
+msgstr "{amount} カード"
 
 #: src/gui/cards/leaderboard.py:167
 #, possible-python-brace-format
