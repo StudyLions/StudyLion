@@ -108,7 +108,7 @@ msgstr "コインの数量は正の整数でなければなりません！"
 #, possible-python-brace-format
 msgctxt "settype:coin|parse|error:too_large"
 msgid "You cannot set this to more than {coin}**{max}**!"
-msgstr ""
+msgstr "これを {coin}**{max}** を超える値に設定することはできません。"
 
 #: src/core/setting_types.py:63
 #, possible-python-brace-format
