@@ -64,7 +64,7 @@ msgstr "設定が更新されました！"
 #: src/modules/config/general.py:127
 msgctxt "cmd:configure_general|panel|title"
 msgid "General Configuration Panel"
-msgstr ""
+msgstr "一般設定パネル"
 
 #: src/modules/config/dashboard.py:99
 #, possible-python-brace-format
