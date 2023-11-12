@@ -357,7 +357,7 @@ msgstr "ヒンディー語"
 #: src/babel/enums.py:69
 msgctxt "localenames|locale:th"
 msgid "Thai"
-msgstr ""
+msgstr "タイ語"
 
 #: src/babel/enums.py:70
 msgctxt "localenames|locale:zh-CN"
