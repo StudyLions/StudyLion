@@ -90,7 +90,7 @@ msgstr "タイムゾーン"
 #: src/modules/config/settings.py:36
 msgctxt "guildset:timezone|desc"
 msgid "Guild timezone for statistics display."
-msgstr "統計表示されるサーバータイムゾーン"
+msgstr "統計表示のためのサーバータイムゾーン"
 
 #: src/modules/config/settings.py:40
 msgctxt "guildset:timezone|long_desc"
