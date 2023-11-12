@@ -75,7 +75,7 @@ msgstr "リロード"
 
 #: src/modules/sysadmin/exec_cog.py:397
 msgid "Reload a given LionBot extension. Launches an ExecUI."
-msgstr ""
+msgstr "特定の LionBot 拡張機能をリロードします。 ExecUIを起動します。"
 
 #: src/modules/sysadmin/exec_cog.py:400
 msgid "Name of the extension to reload. See autocomplete for options."
