@@ -58,7 +58,7 @@ msgstr "チャット"
 #: src/gui/cards/goals.py:153
 msgctxt "skin:goals|mode:voice|goal:middle|below"
 msgid "HOURS"
-msgstr ""
+msgstr "時間"
 
 #: src/gui/cards/goals.py:157
 msgctxt "skin:goals|mode:text|goal:middle|above"
