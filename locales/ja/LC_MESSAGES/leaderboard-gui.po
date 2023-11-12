@@ -44,7 +44,7 @@ msgstr "ANKI REVIEW 順位表"
 #: src/gui/cards/leaderboard.py:98
 msgctxt "skin:leaderboard|field:subheader_text"
 msgid "SERVER: "
-msgstr ""
+msgstr "サーバー:"
 
 #: src/gui/cards/leaderboard.py:128
 #, possible-python-brace-format
