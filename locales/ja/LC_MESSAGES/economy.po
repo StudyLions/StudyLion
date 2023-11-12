@@ -29,7 +29,7 @@ msgstr "経済設定パネル"
 #: src/modules/economy/settingui.py:67
 msgctxt "dash:economy|title"
 msgid "Economy Configuration ({commands[config economy]})"
-msgstr ""
+msgstr "経済設定 ({commands[config economy]})"
 
 #: src/modules/economy/settingui.py:71
 msgctxt "dash:economy|dropdown|placeholder"
