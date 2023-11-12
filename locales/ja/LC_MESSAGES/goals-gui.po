@@ -89,7 +89,7 @@ msgstr " {月} {日}時点 • {名前}"
 #: src/gui/cards/goals.py:242
 msgctxt "ui:goals|weekly|title"
 msgid "WEEKLY STATISTICS"
-msgstr ""
+msgstr "週間の統計"
 
 #: src/gui/cards/goals.py:246
 msgctxt "ui:goals|weekly|task_header"
