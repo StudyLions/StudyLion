@@ -125,7 +125,7 @@ msgstr "{coin}**{amount}**"
 #: src/core/setting_types.py:91
 msgctxt "settype:message|accepts"
 msgid "JSON formatted raw message data"
-msgstr ""
+msgstr "JSON 形式の未加工のメッセージデータ"
 
 #: src/core/setting_types.py:106
 msgctxt "settype:message|download|error:not_json"
