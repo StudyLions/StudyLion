@@ -152,7 +152,7 @@ msgstr "言語設定を解除しました"
 #, possible-python-brace-format
 msgctxt "userset:locale|response"
 msgid "You have set your language to {lang}."
-msgstr ""
+msgstr "言語を{lang}に設定しました。"
 
 #: src/babel/settings.py:113
 msgctxt "guildset:force_locale"
