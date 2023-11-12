@@ -142,7 +142,7 @@ msgctxt "settype:message|download|error:decoding"
 msgid ""
 "Could not decode the message data. Please ensure it is saved with the "
 "`UTF-8` encoding."
-msgstr ""
+msgstr "メッセージデータをdecodeできませんでした。 「UTF-8」エンコードで保存されていることを確認してください。"
 
 #: src/core/setting_types.py:177
 #, possible-python-brace-format
