@@ -97,7 +97,7 @@ msgstr "エラー"
 #: src/core/setting_types.py:31
 msgctxt "settype:coin|accepts"
 msgid "A positive integral number of coins."
-msgstr ""
+msgstr "正の整数のコイン"
 
 #: src/core/setting_types.py:47
 msgctxt "settype:coin|parse|error:notinteger"
