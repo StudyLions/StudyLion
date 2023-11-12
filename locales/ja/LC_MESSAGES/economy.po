@@ -570,7 +570,7 @@ msgstr "無効（コイン送金は不可能）"
 #, possible-python-brace-format
 msgctxt "guildset:allow_transfers|set_response|set:true"
 msgid "Members will now be able to use {send_cmd} to transfer {coin}"
-msgstr ""
+msgstr "メンバーは {send_cmd} を使用して {coin} を送金できるようになります"
 
 #: src/modules/economy/settings.py:111
 #, possible-python-brace-format
