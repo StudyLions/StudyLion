@@ -491,7 +491,7 @@ msgctxt "cmd:send|embed:ack|desc"
 msgid ""
 "**{coin_emoji}{amount}** has been deducted from your balance and sent to "
 "{mention}!"
-msgstr ""
+msgstr "**{coin_emoji}{amount}** が残高から差し引かれ、{mention} に送られました！"
 
 #: src/modules/economy/cog.py:872
 msgctxt "cmd:send|embed:ack|desc|error:unreachable"
