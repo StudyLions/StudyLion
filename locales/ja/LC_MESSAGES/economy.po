@@ -518,7 +518,7 @@ msgstr "100xpにつき1コイン"
 #: src/modules/economy/settings.py:41
 msgctxt "guildset:coins_per_xp|desc"
 msgid "How many LionCoins to reward members per 100 XP they earn."
-msgstr ""
+msgstr " 100 XP をメンバーが獲得するごとに、メンバーに報酬として与えるLionCoinの数。"
 
 #: src/modules/economy/settings.py:45
 msgctxt "guildset:coins_per_xp|long_desc"
