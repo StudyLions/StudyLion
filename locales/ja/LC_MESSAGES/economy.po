@@ -125,7 +125,7 @@ msgstr "はい、残高を変更します"
 #: src/modules/economy/cog.py:241
 msgctxt "cmd:economy_balance|confirm|button:cancel"
 msgid "No, cancel"
-msgstr ""
+msgstr "キャンセル"
 
 #: src/modules/economy/cog.py:248
 #, possible-python-brace-format
