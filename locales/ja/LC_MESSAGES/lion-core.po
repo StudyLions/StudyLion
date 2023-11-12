@@ -159,7 +159,7 @@ msgid ""
 "The provided message data was not a valid JSON document!\n"
 "`{error}`"
 msgstr ""
-"提供されたメッセージ データは有効な JSON ドキュメントではありませんでした！\n"
+"提供されたメッセージデータは有効な JSONドキュメントではありませんでした！\n"
 "`{error}`"
 
 #: src/core/setting_types.py:197
