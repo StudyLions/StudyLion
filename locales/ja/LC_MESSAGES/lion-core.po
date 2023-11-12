@@ -130,7 +130,7 @@ msgstr "JSON 形式の未加工のメッセージデータ"
 #: src/core/setting_types.py:106
 msgctxt "settype:message|download|error:not_json"
 msgid "The attached message data is not a JSON file!"
-msgstr ""
+msgstr "添付されたメッセージ データは JSON ファイルではありません。"
 
 #: src/core/setting_types.py:111
 msgctxt "settype:message|download|error:size"
