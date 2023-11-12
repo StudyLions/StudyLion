@@ -309,7 +309,7 @@ msgctxt "cmd:economy_reset|param:target|desc"
 msgid ""
 "Target user or role to view or update. Use @everyone to reset the entire "
 "guild."
-msgstr ""
+msgstr "表示または更新する、対象のユーザーまたはロール。 @everyone を使用してサーバー全体をリセットします。"
 
 #: src/modules/economy/cog.py:587
 #, possible-python-brace-format
