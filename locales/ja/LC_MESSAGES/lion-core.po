@@ -135,7 +135,7 @@ msgstr "添付されたメッセージ データは JSON ファイルではあ�
 #: src/core/setting_types.py:111
 msgctxt "settype:message|download|error:size"
 msgid "The attached message data is too large!"
-msgstr ""
+msgstr "添付されたメッセージデータが大きすぎます！"
 
 #: src/core/setting_types.py:120
 msgctxt "settype:message|download|error:decoding"
