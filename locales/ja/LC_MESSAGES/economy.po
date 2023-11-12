@@ -422,7 +422,7 @@ msgstr "ギフトに追加するオプションのメモ。"
 #: src/modules/economy/cog.py:742
 msgctxt "cmd:send|error:not_allowed"
 msgid "Sorry, this server has disabled LionCoin transfers!"
-msgstr ""
+msgstr "申し訳ありませんが、このサーバーでは LionCoin の送金が無効になっています！"
 
 #: src/modules/economy/cog.py:751
 msgctxt "cmd:send|error:sending-to-self"
