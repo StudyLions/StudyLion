@@ -80,7 +80,7 @@ msgstr "設定名の上にマウスを合わせると、簡単な説明が表示
 #: src/modules/config/dashboard.py:173
 msgctxt "ui:dashboard|menu:config|placeholder"
 msgid "Open Configuration Panel"
-msgstr ""
+msgstr "設定パネルを開く"
 
 #: src/modules/config/settings.py:33
 msgctxt "guildset:timezone"
