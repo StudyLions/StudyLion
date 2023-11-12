@@ -181,7 +181,7 @@ msgstr "有効 (メンバーは強制的にサーバー言語を使用します)
 #: src/babel/settings.py:123
 msgctxt "guildset:force_locale|output"
 msgid "Disabled (members may set their own language)"
-msgstr ""
+msgstr "無効（メンバーが個人で言語を設定可能）"
 
 #: src/babel/settings.py:137
 msgctxt "guildset:force_locale|response"
