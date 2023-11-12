@@ -189,7 +189,7 @@ msgstr "メッセージ データに「embed」と「embeds」の両方を含め
 #: src/core/setting_types.py:229
 msgctxt "settype:message|error:json_content_type"
 msgid "`content` field must be a string."
-msgstr "「content」フィールドは文字列でなければなりません"
+msgstr "「content」フィールドは文字列でなければなりません。"
 
 #: src/core/setting_types.py:245
 #, possible-python-brace-format
