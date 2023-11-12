@@ -59,7 +59,7 @@ msgstr "残高"
 #: src/core/lion_guild.py:66
 msgctxt "eventlog|field:refund|name"
 msgid "Coins Refunded"
-msgstr ""
+msgstr "払い戻されるコイン"
 
 #: src/core/lion_guild.py:71
 msgctxt "eventlog|field:memberid|name"
