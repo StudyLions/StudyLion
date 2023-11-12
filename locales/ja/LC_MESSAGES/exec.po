@@ -52,7 +52,7 @@ msgstr "査定するコード。"
 #: src/modules/sysadmin/exec_cog.py:348
 msgctxt "command"
 msgid "asyncall"
-msgstr ""
+msgstr "asyncall"
 
 #: src/modules/sysadmin/exec_cog.py:349
 msgctxt "command:asyncall|desc"
