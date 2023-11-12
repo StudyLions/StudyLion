@@ -302,7 +302,7 @@ msgstr "対象のユーザーまたはロールのコイン残高をリセット
 #: src/modules/economy/cog.py:555
 msgctxt "cmd:economy_reset|param:target"
 msgid "target"
-msgstr ""
+msgstr "対象"
 
 #: src/modules/economy/cog.py:560
 msgctxt "cmd:economy_reset|param:target|desc"
