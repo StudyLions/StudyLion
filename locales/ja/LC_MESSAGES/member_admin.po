@@ -104,7 +104,7 @@ msgstr "経済残高"
 #: src/modules/member_admin/cog.py:39
 msgctxt "cmd:admin_data|param:data_type|choice:voice_sessions"
 msgid "Voice Sessions"
-msgstr ""
+msgstr "ボイスセッション"
 
 #: src/modules/member_admin/cog.py:155
 msgctxt "eventlog|event:welcome|title"
