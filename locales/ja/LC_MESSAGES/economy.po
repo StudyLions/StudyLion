@@ -343,7 +343,7 @@ msgstr "**{guild_name}** の全員の残高が {coin_emoji}**{amount}** にリ�
 #, possible-python-brace-format
 msgctxt "cmd:economy_reset|error:no_target|desc"
 msgid "The role {mention} has no members to reset!"
-msgstr "ロール {mention} にはリセットするメンバーがありません！"
+msgstr "ロール {mention} にはリセットするメンバーがいません！"
 
 #: src/modules/economy/cog.py:642
 #, possible-python-brace-format
