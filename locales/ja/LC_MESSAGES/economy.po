@@ -216,7 +216,7 @@ msgstr ""
 #: src/modules/economy/cog.py:380
 msgctxt "eventlog|event:economy_add|title"
 msgid "Moderator Modified Economy Balance"
-msgstr ""
+msgstr "運営のLC残高の変更"
 
 #: src/modules/economy/cog.py:384
 #, possible-python-brace-format
