@@ -39,7 +39,7 @@ msgstr "一般設定 ({commands[config general]})"
 #: src/modules/config/settingui.py:103
 msgctxt "dash:general|option|name"
 msgid "General Configuration Panel"
-msgstr ""
+msgstr "一般設定パネル"
 
 #: src/modules/config/cog.py:56 src/modules/config/general.py:52
 msgctxt "cmd:configure_general"
