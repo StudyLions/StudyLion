@@ -67,7 +67,7 @@ msgstr "Cross-shard コードを実行します。 ctxは参照できません!"
 #: src/modules/sysadmin/exec_cog.py:353
 msgctxt "command:asyncall|param:target"
 msgid "Target shard app name, see autocomplete for options."
-msgstr ""
+msgstr "Target shard app name, オプションについてはautocompleteを参照してください。"
 
 #: src/modules/sysadmin/exec_cog.py:396
 msgid "reload"
