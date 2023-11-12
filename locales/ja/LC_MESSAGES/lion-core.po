@@ -102,7 +102,7 @@ msgstr "正の整数のコイン"
 #: src/core/setting_types.py:47
 msgctxt "settype:coin|parse|error:notinteger"
 msgid "The coin quantity must be a positive integer!"
-msgstr "コインの数量は正の整数でなければなりません"
+msgstr "コインの数量は正の整数でなければなりません！"
 
 #: src/core/setting_types.py:55
 #, possible-python-brace-format
