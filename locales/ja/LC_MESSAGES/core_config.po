@@ -39,12 +39,12 @@ msgstr "管理者"
 #: src/core/config.py:41
 msgctxt "group:admin|desc"
 msgid "Administrative commands."
-msgstr ""
+msgstr "管理者コマンド。"
 
 #: src/core/config.py:52
 msgctxt "group:admin_config"
 msgid "config"
-msgstr ""
+msgstr "設定"
 
 #: src/core/config.py:53
 msgctxt "group:admin_config|desc"
