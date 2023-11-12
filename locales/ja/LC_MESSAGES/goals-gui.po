@@ -104,4 +104,4 @@ msgstr "月間の統計"
 #: src/gui/cards/goals.py:260
 msgctxt "ui:goals|monthly|task_header"
 msgid "GOALS OF THE MONTH"
-msgstr ""
+msgstr "月の目標"
