@@ -477,7 +477,7 @@ msgstr "{source} は {target} に {amount} を贈りました"
 #, possible-python-brace-format
 msgctxt "cmd:send|embed:gift|title"
 msgid "{user} sent you a gift!"
-msgstr ""
+msgstr "{user} が、あなたにギフトを送りました!"
 
 #: src/modules/economy/cog.py:837
 #, possible-python-brace-format
