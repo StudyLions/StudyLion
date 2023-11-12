@@ -99,6 +99,8 @@ msgid ""
 "leaderboards, and as the default statistics timezone for members who have "
 "not set one."
 msgstr ""
+"ギルド全体のタイムゾーン。リーダーボードの 1 "
+"日の開始を決定するために使用され、タイムゾーンを設定していないメンバーのデフォルトのタイムゾーンとして使用されます。"
 
 #: src/modules/config/settings.py:54
 #, possible-python-brace-format
