@@ -50,7 +50,7 @@ msgstr "バランス"
 #: src/modules/economy/cog.py:96
 msgctxt "cmd:economy_balance|desc"
 msgid "Display or modify LionCoin balance for members and roles."
-msgstr ""
+msgstr "メンバーおよびロールの LionCoin 残高を表示または変更します。"
 
 #: src/modules/economy/cog.py:100
 msgctxt "cmd:economy_balance|param:target"
