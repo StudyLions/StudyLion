@@ -29,7 +29,7 @@ msgstr "イベントログを選択"
 #: src/modules/config/settingui.py:64
 msgctxt "ui:general_config|embed:title"
 msgid "General Configuration"
-msgstr ""
+msgstr "一般設定"
 
 #: src/modules/config/settingui.py:99
 msgctxt "dash:general|title"
