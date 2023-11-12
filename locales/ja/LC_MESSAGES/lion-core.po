@@ -168,6 +168,8 @@ msgid ""
 "Message data must be a JSON object with at least one of the following "
 "fields: `content`, `embed`, `embeds`"
 msgstr ""
+"メッセージ データは、次のフィールドの少なくとも 1 つを含む JSON オブジェクトである必要があります: "
+"`content`、`embed`、`embeds`"
 
 #: src/core/setting_types.py:206
 msgctxt "settype:message|error:json_embed_type"
