@@ -402,7 +402,7 @@ msgstr "金額"
 #: src/modules/economy/cog.py:713
 msgctxt "cmd:send|param:note"
 msgid "note"
-msgstr ""
+msgstr "注記"
 
 #: src/modules/economy/cog.py:716
 msgctxt "cmd:send|param:target|desc"
