@@ -70,7 +70,7 @@ msgstr "一般設定パネル"
 #, possible-python-brace-format
 msgctxt "ui:dashboard|title"
 msgid "Guild Dashboard (Page {page}/{total})"
-msgstr ""
+msgstr "サーバーダッシュボード (Page {page}/{total})"
 
 #: src/modules/config/dashboard.py:110
 msgctxt "ui:dashboard|footer"
