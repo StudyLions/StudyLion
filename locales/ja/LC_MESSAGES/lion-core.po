@@ -82,7 +82,7 @@ msgstr "このチャンネルは活動ログチャンネルとして設定され
 #, possible-python-brace-format
 msgctxt "eventlog|create|name"
 msgid "{bot_name} Event Log"
-msgstr ""
+msgstr "{bot_name} 活動ログ"
 
 #: src/core/lion_guild.py:224
 msgctxt "eventlog|create|audit_reason"
