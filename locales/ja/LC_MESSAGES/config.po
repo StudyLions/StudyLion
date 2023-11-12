@@ -147,7 +147,7 @@ msgstr "{channel} をイベントログチャンネルとして設定できま�
 #, possible-python-brace-format
 msgctxt "guildset:eventlog|response|set"
 msgid "Events will now be logged to {channel}"
-msgstr "これからは、イベントログは {channel} に記録されるようになります"
+msgstr "これからは、活動ログは {channel} に記録されるようになります"
 
 #: src/modules/config/settings.py:111
 msgctxt "guildset:eventlog|response|unset"
