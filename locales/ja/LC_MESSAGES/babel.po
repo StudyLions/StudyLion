@@ -61,7 +61,7 @@ msgstr "言語が設定されていない状態で、 `{force_setting}` を有�
 #: src/babel/cog.py:165
 msgctxt "cmd:configure_language|success"
 msgid "Language settings updated!"
-msgstr ""
+msgstr "言語設定が更新されました！"
 
 #: src/babel/cog.py:181
 msgctxt "cmd:userconfig_language"
