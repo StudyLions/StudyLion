@@ -136,7 +136,7 @@ msgstr "初めての参加"
 #: src/modules/member_admin/cog.py:263
 msgctxt "eventlog|event:returning|field:last_seen"
 msgid "Last Seen"
-msgstr ""
+msgstr "最後に見たのは"
 
 #: src/modules/member_admin/cog.py:311
 msgctxt "eventlog|event:left|title"
