@@ -146,7 +146,7 @@ msgstr "コマンドや会話に応答する言語。 サーバーは、自分�
 #: src/babel/settings.py:92
 msgctxt "userset:locale|response"
 msgid "You have unset your language."
-msgstr "言語設定を解除しました"
+msgstr "言語設定を解除しました。"
 
 #: src/babel/settings.py:94
 #, possible-python-brace-format
