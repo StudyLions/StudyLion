@@ -114,7 +114,7 @@ msgstr "これを {coin}**{max}** を超える値に設定することはでき�
 #, possible-python-brace-format
 msgctxt "settype:coin|parse|error:too_small"
 msgid "You cannot set this to less than {coin}**{min}**!"
-msgstr ""
+msgstr "これを {coin}**{min}** 未満に設定することはできません。"
 
 #: src/core/setting_types.py:75
 #, possible-python-brace-format
