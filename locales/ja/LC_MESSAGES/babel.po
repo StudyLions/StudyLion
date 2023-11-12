@@ -232,7 +232,7 @@ msgstr "インドンネシア語"
 #: src/babel/enums.py:44
 msgctxt "localenames|locale:da"
 msgid "Danish"
-msgstr ""
+msgstr "デンマーク語"
 
 #: src/babel/enums.py:45
 msgctxt "localenames|locale:de"
