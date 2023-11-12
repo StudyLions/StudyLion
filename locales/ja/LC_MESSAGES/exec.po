@@ -87,7 +87,7 @@ msgstr "拡張機能が存在しない場合でも、強制的にリロードす
 
 #: src/modules/sysadmin/exec_cog.py:437
 msgid "shutdown"
-msgstr ""
+msgstr "シャットダウン"
 
 #: src/modules/sysadmin/exec_cog.py:438
 msgid "Shutdown (or restart) the client."
