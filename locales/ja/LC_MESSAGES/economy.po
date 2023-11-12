@@ -598,7 +598,7 @@ msgstr "メンバーには、最初に私と話したとき、または最初に
 #: src/modules/economy/settings.py:134
 msgctxt "guildset:starting_funds|accepts"
 msgid "Number of coins to give to new members."
-msgstr ""
+msgstr "新規メンバーに付与するコインの数。"
 
 #: src/modules/economy/settings.py:146
 #, possible-python-brace-format
