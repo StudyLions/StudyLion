@@ -392,7 +392,7 @@ msgstr "対象ユーザーに任意の数のLion Coinをプレゼントします
 #: src/modules/economy/cog.py:711
 msgctxt "cmd:send|param:target"
 msgid "target"
-msgstr ""
+msgstr "対象"
 
 #: src/modules/economy/cog.py:712
 msgctxt "cmd:send|param:amount"
