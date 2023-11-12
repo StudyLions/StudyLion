@@ -417,7 +417,7 @@ msgstr "送るコインの数"
 #: src/modules/economy/cog.py:718
 msgctxt "cmd:send|param:note|desc"
 msgid "Optional note to add to the gift."
-msgstr ""
+msgstr "ギフトに追加するオプションのメモ。"
 
 #: src/modules/economy/cog.py:742
 msgctxt "cmd:send|error:not_allowed"
