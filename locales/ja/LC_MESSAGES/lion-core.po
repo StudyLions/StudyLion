@@ -64,7 +64,7 @@ msgstr "払い戻されるコイン"
 #: src/core/lion_guild.py:71
 msgctxt "eventlog|field:memberid|name"
 msgid "Member"
-msgstr ""
+msgstr "メンバー"
 
 #: src/core/lion_guild.py:76
 msgctxt "eventlog|field:channelid|name"
