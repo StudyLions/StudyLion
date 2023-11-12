@@ -141,7 +141,7 @@ msgstr ""
 #: src/modules/member_admin/cog.py:311
 msgctxt "eventlog|event:left|title"
 msgid "Member Left"
-msgstr ""
+msgstr "メンバーが脱退しました"
 
 #: src/modules/member_admin/cog.py:315
 #, possible-python-brace-format
