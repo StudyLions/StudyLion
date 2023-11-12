@@ -108,7 +108,7 @@ msgstr "1月,2月,3月,4月,5月,6月,7月,8月,9月,10月,11月,12月"
 #: src/babel/settings.py:25
 msgctxt "settype:locale|accepts"
 msgid "Enter a supported language (e.g. 'en-GB')."
-msgstr ""
+msgstr "対応言語を入力してください (例: 'en-GB')."
 
 #: src/babel/settings.py:36
 msgctxt "settype:locale|summary_table|field:supported|key"
