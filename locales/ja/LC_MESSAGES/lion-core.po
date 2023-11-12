@@ -120,7 +120,7 @@ msgstr "これを {coin}**{min}** 未満に設定することはできません�
 #, possible-python-brace-format
 msgctxt "settype:coin|formatted"
 msgid "{coin}**{amount}**"
-msgstr ""
+msgstr "{coin}**{amount}**"
 
 #: src/core/setting_types.py:91
 msgctxt "settype:message|accepts"
