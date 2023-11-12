@@ -465,7 +465,7 @@ msgstr ""
 #: src/modules/economy/cog.py:816
 msgctxt "eventlog|event:send|title"
 msgid "Coins Transferred"
-msgstr ""
+msgstr "コインは送金されました"
 
 #: src/modules/economy/cog.py:820
 #, possible-python-brace-format
