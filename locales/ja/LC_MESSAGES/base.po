@@ -35,4 +35,4 @@ msgstr ""
 
 #: bot/modules/sysadmin/exec_cog.py:265
 msgid "eval"
-msgstr ""
+msgstr "評価"
