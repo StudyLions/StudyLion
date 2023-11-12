@@ -273,7 +273,7 @@ msgstr "このサーバーの合計残高は {coin_emoji}**0** です。"
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:role_lb|header"
 msgid "The role {role_mention} has a total balance of {coin_emoji}**0**."
-msgstr ""
+msgstr "ロール {role_mention} の合計残高は {coin_emoji}**0** です。"
 
 #: src/modules/economy/cog.py:529
 #, possible-python-brace-format
