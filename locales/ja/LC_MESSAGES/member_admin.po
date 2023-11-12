@@ -147,7 +147,7 @@ msgstr "メンバーが脱退しました"
 #, possible-python-brace-format
 msgctxt "eventlog|event:left|desc"
 msgid "{member} left the server."
-msgstr ""
+msgstr "{member} がサーバーを脱退しました。"
 
 #: src/modules/member_admin/cog.py:323
 msgctxt "eventlog|event:left|field:stored_roles"
