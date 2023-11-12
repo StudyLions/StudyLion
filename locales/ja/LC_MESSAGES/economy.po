@@ -249,6 +249,8 @@ msgid ""
 "{role_mention} has `{count}` members with non-zero balance, with a total "
 "balance of {coin_emoji}**{total}**."
 msgstr ""
+"{role_mention} には、残高が0ではないメンバーが `{count}` 人おり、合計残高は {coin_emoji}**{total}** "
+"です。"
 
 #: src/modules/economy/cog.py:464
 msgctxt "cmd:economy_balance|embed:role_lb|row_format"
