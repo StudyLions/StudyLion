@@ -157,7 +157,7 @@ msgstr "言語を{lang}に設定しました。"
 #: src/babel/settings.py:113
 msgctxt "guildset:force_locale"
 msgid "force_language"
-msgstr "強制言語"
+msgstr "言語の強制"
 
 #: src/babel/settings.py:115
 msgctxt "guildset:force_locale|desc"
