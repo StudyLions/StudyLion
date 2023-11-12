@@ -63,7 +63,7 @@ msgstr "時間"
 #: src/gui/cards/goals.py:157
 msgctxt "skin:goals|mode:text|goal:middle|above"
 msgid "SENT"
-msgstr "送信済み"
+msgstr "送信"
 
 #: src/gui/cards/goals.py:161
 msgctxt "skin:goals|mode:text|goal:middle|below"
