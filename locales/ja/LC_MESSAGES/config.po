@@ -116,7 +116,7 @@ msgctxt "guildset:eventlog|desc"
 msgid ""
 "My audit log channel where I send server actions and events (e.g. rankgs and"
 " expiring roles)."
-msgstr "サーバーのアクションとイベント (ランクや期限切れのロールなど) を送信する監査ログ チャンネル。"
+msgstr "サーバーのアクションと活動 (ランクや期限切れのロールなど) を送信する監査ログ チャンネル。"
 
 #: src/modules/config/settings.py:73
 msgctxt "guildset:eventlog|long_desc"
