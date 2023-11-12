@@ -282,7 +282,7 @@ msgstr "ハンガリー語"
 #: src/babel/enums.py:54
 msgctxt "localenames|locale:nl"
 msgid "Dutch"
-msgstr ""
+msgstr "オランダ語"
 
 #: src/babel/enums.py:55
 msgctxt "localenames|locale:no"
