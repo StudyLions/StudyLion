@@ -176,7 +176,7 @@ msgstr "有効にすると、このサーバーのコマンドはメンバー個
 #: src/babel/settings.py:122
 msgctxt "guildset:force_locale|output"
 msgid "Enabled (members will be forced to use the server language)"
-msgstr ""
+msgstr "有効 (メンバーは強制的にサーバー言語を使用します)"
 
 #: src/babel/settings.py:123
 msgctxt "guildset:force_locale|output"
