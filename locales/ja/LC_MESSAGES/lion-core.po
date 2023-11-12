@@ -92,7 +92,7 @@ msgstr "活動ログの Webhook の作成"
 #: src/core/lion_guild.py:342
 msgctxt "eventlog|field:errors|name"
 msgid "Errors"
-msgstr ""
+msgstr "エラー"
 
 #: src/core/setting_types.py:31
 msgctxt "settype:coin|accepts"
