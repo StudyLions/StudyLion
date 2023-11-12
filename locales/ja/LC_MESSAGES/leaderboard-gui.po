@@ -29,7 +29,7 @@ msgstr "勉強時間リーダーボード"
 #: src/gui/cards/leaderboard.py:72
 msgctxt "skin:leaderboard|mode:text|header_text"
 msgid "MESSAGE LEADERBOARD"
-msgstr ""
+msgstr "発言量順位表"
 
 #: src/gui/cards/leaderboard.py:76
 msgctxt "skin:leaderboard|mode:voice|header_text"
