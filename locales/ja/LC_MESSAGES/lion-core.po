@@ -179,7 +179,7 @@ msgstr "「embed」フィールドは有効な JSON オブジェクトである�
 #: src/core/setting_types.py:214
 msgctxt "settype:message|error:json_embeds_type"
 msgid "`embeds` field must be a list."
-msgstr ""
+msgstr "「embeds」フィールドはリストでなければなりません。"
 
 #: src/core/setting_types.py:221
 msgctxt "settype:message|error:json_embed_embeds"
