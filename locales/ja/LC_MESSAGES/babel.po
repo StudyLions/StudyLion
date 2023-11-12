@@ -222,7 +222,7 @@ msgstr "サーバー言語が設定されていません。"
 #, possible-python-brace-format
 msgctxt "guildset:locale|response"
 msgid "You have set the guild language to {lang}."
-msgstr ""
+msgstr "サーバー言語を{lang}に設定しました。"
 
 #: src/babel/enums.py:43
 msgctxt "localenames|locale:id"
