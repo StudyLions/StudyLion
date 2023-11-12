@@ -37,7 +37,7 @@ msgstr "Execで任意のコードを実行する"
 #: src/modules/sysadmin/exec_cog.py:337
 msgctxt "command"
 msgid "eval"
-msgstr ""
+msgstr "評価"
 
 #: src/modules/sysadmin/exec_cog.py:338
 msgctxt "command:eval"
