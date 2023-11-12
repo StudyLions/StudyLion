@@ -210,8 +210,7 @@ msgid ""
 "Member's own configured language will override this for their commands "
 "unless `force_language` is enabled."
 msgstr ""
-"このサーバでの応答や対話に使用するデフォルトの言語。 `force_language` "
-"が有効になっていない限り、メンバー自身が設定した言語がコマンドに優先されます。"
+"このサーバでの応答や対話に使用するデフォルトの言語。 `言語の強制` が有効になっていない限り、メンバー自身が設定した言語がコマンドに優先されます。"
 
 #: src/babel/settings.py:176
 msgctxt "guildset:locale|response"
