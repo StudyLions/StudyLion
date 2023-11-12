@@ -54,7 +54,7 @@ msgstr "価格"
 #: src/core/lion_guild.py:61
 msgctxt "eventlog|field:balance|name"
 msgid "Balance"
-msgstr ""
+msgstr "残高"
 
 #: src/core/lion_guild.py:66
 msgctxt "eventlog|field:refund|name"
