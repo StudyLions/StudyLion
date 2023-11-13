@@ -289,7 +289,7 @@ msgstr "「{partial}」を時刻として解析できません。 YYYY-MM-DD HH:
 #: src/modules/member_admin/cog.py:643
 msgctxt "cmd:configure_welcome"
 msgid "welcome"
-msgstr ""
+msgstr "ようこそ"
 
 #: src/modules/member_admin/cog.py:646
 msgctxt "cmd:configure_welcome|desc"
