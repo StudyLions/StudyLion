@@ -440,7 +440,7 @@ msgstr "ウェルカムメッセージが更新されました。"
 #: src/modules/member_admin/settings.py:157
 msgctxt "guildset:greeting_message|formmatted:unset"
 msgid "Not set, members will not be welcomed."
-msgstr ""
+msgstr "設定されていない場合、メンバーにウェルカムメッセージは送信されません。"
 
 #: src/modules/member_admin/settings.py:204
 msgctxt "guildset:greeting_message|embed_field|formatkeys|explanation"
