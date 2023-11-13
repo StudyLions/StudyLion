@@ -319,7 +319,7 @@ msgstr "このサーバーの名前"
 #: src/modules/member_admin/settings.py:29
 msgctxt "guildset:greeting_message|formatkey:guild_icon"
 msgid "Server icon url."
-msgstr ""
+msgstr "サーバーアイコンのURL。"
 
 #: src/modules/member_admin/settings.py:31
 msgctxt "guildset:greeting_message|formatkey:studying_count"
