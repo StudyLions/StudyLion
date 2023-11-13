@@ -189,7 +189,7 @@ msgctxt "cmd:resetmember|param:saved_roles|desc"
 msgid ""
 "Clear the saved roles for this member, so their past roles are not restored "
 "on rejoin."
-msgstr ""
+msgstr "このメンバーの保存されたロールをクリアして、再参加時に過去のロールが復元されないようにします。"
 
 #: src/modules/member_admin/cog.py:411
 #, possible-python-brace-format
