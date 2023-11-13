@@ -359,7 +359,7 @@ msgstr "挨拶チャンネルの名前またはID、 DMの場合は 0。"
 #: src/modules/member_admin/settings.py:70
 msgctxt "guildset:greeting_channel|set_response:unset"
 msgid "Welcome messages will now be sent via direct message."
-msgstr ""
+msgstr "ウェルカム メッセージはダイレクト メッセージで送信されるようになります。"
 
 #: src/modules/member_admin/settings.py:75
 #, possible-python-brace-format
