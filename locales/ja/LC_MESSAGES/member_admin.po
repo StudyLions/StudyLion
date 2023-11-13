@@ -237,7 +237,7 @@ msgstr "前"
 #: src/modules/member_admin/cog.py:436
 msgctxt "cmd:admin_data|param:limit"
 msgid "limit"
-msgstr ""
+msgstr "リミット"
 
 #: src/modules/member_admin/cog.py:441
 msgctxt "cmd:admin_data|param:data_type|desc"
