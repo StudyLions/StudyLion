@@ -329,7 +329,7 @@ msgstr "現在の音声チャンネルにいるメンバーの数。"
 #: src/modules/member_admin/settings.py:33
 msgctxt "guildset:greeting_message|formatkey:member_count"
 msgid "Number of members in the server."
-msgstr ""
+msgstr "サーバー内のメンバーの数。"
 
 #: src/modules/member_admin/settings.py:42
 msgctxt "guildset:greeting_channel"
