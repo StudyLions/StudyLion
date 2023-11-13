@@ -232,7 +232,7 @@ msgstr "後"
 #: src/modules/member_admin/cog.py:435
 msgctxt "cmd:admin_data|param:end"
 msgid "before"
-msgstr ""
+msgstr "前"
 
 #: src/modules/member_admin/cog.py:436
 msgctxt "cmd:admin_data|param:limit"
