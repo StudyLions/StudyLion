@@ -309,7 +309,7 @@ msgstr "新しいメンバーの表示名。"
 #: src/modules/member_admin/settings.py:25
 msgctxt "guildset:greeting_message|formatkey:user_avatar"
 msgid "Avatar url of the new member."
-msgstr ""
+msgstr "新しいメンバーのアイコンの URL。"
 
 #: src/modules/member_admin/settings.py:27
 msgctxt "guildset:greeting_message|formatkey:guild_name"
