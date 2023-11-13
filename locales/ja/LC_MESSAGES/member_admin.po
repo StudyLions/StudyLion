@@ -380,7 +380,7 @@ msgstr "ウェルカムメッセージ"
 #: src/modules/member_admin/settings.py:99
 msgctxt "guildset:greeting_message|desc"
 msgid "Custom message used to greet new members when they join the server."
-msgstr ""
+msgstr "新しいメンバーがサーバーに参加するときに、挨拶するために使用されるカスタム メッセージ。"
 
 #: src/modules/member_admin/settings.py:103
 msgctxt "guildset:greeting_message|long_desc"
