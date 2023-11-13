@@ -197,7 +197,7 @@ msgctxt "cmd:resetmember|reset:saved_roles|success"
 msgid ""
 "The saved roles for {target} have been reset. They will not regain their "
 "roles if they rejoin."
-msgstr ""
+msgstr "{target} に保存されているロールがリセットされました。再参加してもロールは戻りません。"
 
 #: src/modules/member_admin/cog.py:419
 msgctxt "cmd:resetmember|error:nothing_to_do"
