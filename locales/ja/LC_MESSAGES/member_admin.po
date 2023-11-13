@@ -227,7 +227,7 @@ msgstr "対象"
 #: src/modules/member_admin/cog.py:434
 msgctxt "cmd:admin_data|param:start"
 msgid "after"
-msgstr ""
+msgstr "後"
 
 #: src/modules/member_admin/cog.py:435
 msgctxt "cmd:admin_data|param:end"
