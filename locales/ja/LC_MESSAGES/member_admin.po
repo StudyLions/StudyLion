@@ -182,7 +182,7 @@ msgstr "保存されたロール"
 #: src/modules/member_admin/cog.py:381
 msgctxt "cmd:resetmember|param:target|desc"
 msgid "Choose the member (current or past) you want to reset."
-msgstr ""
+msgstr "リセットしたいメンバー (現在または過去) を選択します。"
 
 #: src/modules/member_admin/cog.py:385
 msgctxt "cmd:resetmember|param:saved_roles|desc"
