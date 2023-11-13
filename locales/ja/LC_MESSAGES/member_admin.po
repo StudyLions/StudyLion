@@ -261,7 +261,7 @@ msgctxt "cmd:admin_data|param:end|desc"
 msgid ""
 "Retrieve records created before this date and time in server timezone (YYYY-"
 "MM-DD HH:MM)"
-msgstr ""
+msgstr "この日時より前に作成されたrecordsをサーバーのタイムゾーン (YYYY-MM-DD HH:MM) で取得します。"
 
 #: src/modules/member_admin/cog.py:457
 msgctxt "cmd:admin_data|param:limit|desc"
