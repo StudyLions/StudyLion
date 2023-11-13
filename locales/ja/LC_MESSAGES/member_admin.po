@@ -254,7 +254,7 @@ msgctxt "cmd:admin_data|param:start|desc"
 msgid ""
 "Retrieve records created after this date and time in server timezone (YYYY-"
 "MM-DD HH:MM)"
-msgstr ""
+msgstr "この日時以降に作成されたrecordsをサーバーのタイムゾーン (YYYY-MM-DD HH:MM) で取得します。"
 
 #: src/modules/member_admin/cog.py:453
 msgctxt "cmd:admin_data|param:end|desc"
