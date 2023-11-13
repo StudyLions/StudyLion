@@ -177,7 +177,7 @@ msgstr "リセットするメンバー"
 #: src/modules/member_admin/cog.py:376
 msgctxt "cmd:resetmember|param:saved_roles"
 msgid "saved_roles"
-msgstr ""
+msgstr "保存されたロール"
 
 #: src/modules/member_admin/cog.py:381
 msgctxt "cmd:resetmember|param:target|desc"
