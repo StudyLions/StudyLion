@@ -339,7 +339,7 @@ msgstr "挨拶チャンネル"
 #: src/modules/member_admin/settings.py:45
 msgctxt "guildset:greeting_channel|desc"
 msgid "Channel in which to welcome new members to the server."
-msgstr ""
+msgstr "新しいメンバーをサーバーに歓迎するチャンネル。"
 
 #: src/modules/member_admin/settings.py:49
 msgctxt "guildset:greeting_channel|long_desc"
