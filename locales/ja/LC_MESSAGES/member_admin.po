@@ -334,7 +334,7 @@ msgstr "サーバー内のメンバーの数。"
 #: src/modules/member_admin/settings.py:42
 msgctxt "guildset:greeting_channel"
 msgid "welcome_channel"
-msgstr ""
+msgstr "挨拶チャンネル"
 
 #: src/modules/member_admin/settings.py:45
 msgctxt "guildset:greeting_channel|desc"
