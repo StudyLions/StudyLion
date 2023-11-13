@@ -370,7 +370,7 @@ msgstr "ウェルカムメッセージは {channel} に送信されるように�
 #: src/modules/member_admin/settings.py:87
 msgctxt "guildset:greeting_channel|formmatted:unset"
 msgid "Direct Message"
-msgstr ""
+msgstr "ダイレクトメッセージ"
 
 #: src/modules/member_admin/settings.py:95
 msgctxt "guildset:greeting_message"
