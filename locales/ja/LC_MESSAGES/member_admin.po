@@ -294,7 +294,7 @@ msgstr "ようこそ"
 #: src/modules/member_admin/cog.py:646
 msgctxt "cmd:configure_welcome|desc"
 msgid "Configure new member greetings and roles."
-msgstr ""
+msgstr "新しいメンバーへの挨拶とロールを設定します。"
 
 #: src/modules/member_admin/settings.py:21
 msgctxt "guildset:greeting_message|formatkey:mention"
