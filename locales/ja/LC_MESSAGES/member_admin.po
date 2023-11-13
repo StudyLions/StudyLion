@@ -314,7 +314,7 @@ msgstr "新しいメンバーのアイコンの URL。"
 #: src/modules/member_admin/settings.py:27
 msgctxt "guildset:greeting_message|formatkey:guild_name"
 msgid "Name of this server."
-msgstr ""
+msgstr "このサーバーの名前"
 
 #: src/modules/member_admin/settings.py:29
 msgctxt "guildset:greeting_message|formatkey:guild_icon"
