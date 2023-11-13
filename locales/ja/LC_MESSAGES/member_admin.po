@@ -299,7 +299,7 @@ msgstr "新しいメンバーへの挨拶とロールを設定します。"
 #: src/modules/member_admin/settings.py:21
 msgctxt "guildset:greeting_message|formatkey:mention"
 msgid "Mention the new member."
-msgstr ""
+msgstr "新しいメンバーをメンション"
 
 #: src/modules/member_admin/settings.py:23
 msgctxt "guildset:greeting_message|formatkey:user_name"
