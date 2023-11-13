@@ -284,7 +284,7 @@ msgstr "探しましたが、何の成果も得られませんでした！フィ
 #, possible-python-brace-format
 msgctxt "cmd:admin_data|acmpl:time|error:parse"
 msgid "Cannot parse \"{partial}\" as a time. Try the format YYYY-MM-DD HH:MM"
-msgstr ""
+msgstr "「{partial}」を時刻として解析できません。 YYYY-MM-DD HH:MM の形式を試してください。"
 
 #: src/modules/member_admin/cog.py:643
 msgctxt "cmd:configure_welcome"
