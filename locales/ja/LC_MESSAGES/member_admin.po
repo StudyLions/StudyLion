@@ -217,7 +217,7 @@ msgstr "外部分析やバックアップ用に各種rawデータをダウンロ
 #: src/modules/member_admin/cog.py:432
 msgctxt "cmd:admin_data|param:data_type"
 msgid "type"
-msgstr ""
+msgstr "タイプ"
 
 #: src/modules/member_admin/cog.py:433
 msgctxt "cmd:admin_data|param:target"
