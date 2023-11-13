@@ -365,7 +365,7 @@ msgstr "ウェルカム メッセージはダイレクトメッセージで送�
 #, possible-python-brace-format
 msgctxt "guildset:greeting_channel|set_response:set"
 msgid "Welcome messages will now be sent to {channel}"
-msgstr ""
+msgstr "ウェルカムメッセージが {channel} に送信されるようになります"
 
 #: src/modules/member_admin/settings.py:87
 msgctxt "guildset:greeting_channel|formmatted:unset"
