@@ -202,7 +202,7 @@ msgstr "{target} に保存されているロールがリセットされました
 #: src/modules/member_admin/cog.py:419
 msgctxt "cmd:resetmember|error:nothing_to_do"
 msgid "No reset operation selected, nothing to do."
-msgstr ""
+msgstr "リセット操作が選択されていないため、何も行いません。"
 
 #: src/modules/member_admin/cog.py:425
 msgctxt "cmd:admin_data"
