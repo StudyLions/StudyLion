@@ -124,7 +124,7 @@ msgstr "設定を解除"
 #, possible-python-brace-format
 msgctxt "settype:locale|error"
 msgid "Sorry, we do not support the language `{lang}` at this time!"
-msgstr "申し訳ありませんが、現在 `{lang}` という言語はサポートしておりません！"
+msgstr "申し訳ありませんが、現在 「{lang}」という言語はサポートしておりません！"
 
 #: src/babel/settings.py:77
 msgctxt "userset:locale"
