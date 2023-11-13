@@ -273,7 +273,7 @@ msgctxt "cmd:admin_data|error:ratelimited"
 msgid ""
 "Too many requests! Please wait a few minutes before using this command "
 "again."
-msgstr ""
+msgstr "リクエストが多すぎます！このコマンドを再度使用する前に、数分待ってください。"
 
 #: src/modules/member_admin/cog.py:603
 msgctxt "cmd:admin_data|error:no_results"
