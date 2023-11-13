@@ -430,7 +430,7 @@ msgstr ""
 #: src/modules/member_admin/settings.py:140
 msgctxt "guildset:greeting_message|set_response:unset"
 msgid "Welcome message unset! New members will not be greeted."
-msgstr ""
+msgstr "ウェルカムメッセージが設定されていません!新しいメンバーにウェルカムメッセージは送信されません。"
 
 #: src/modules/member_admin/settings.py:145
 msgctxt "guildset:greeting_message|set_response:set"
