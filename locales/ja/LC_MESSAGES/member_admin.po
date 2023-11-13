@@ -222,7 +222,7 @@ msgstr "タイプ"
 #: src/modules/member_admin/cog.py:433
 msgctxt "cmd:admin_data|param:target"
 msgid "target"
-msgstr ""
+msgstr "対象"
 
 #: src/modules/member_admin/cog.py:434
 msgctxt "cmd:admin_data|param:start"
