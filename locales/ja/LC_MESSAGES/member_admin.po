@@ -394,7 +394,7 @@ msgstr ""
 #: src/modules/member_admin/settings.py:108
 msgctxt "guildset:greeting_message|accepts"
 msgid "JSON formatted greeting message data"
-msgstr ""
+msgstr "JSON形式の挨拶メッセージデータ"
 
 #: src/modules/member_admin/settings.py:112
 msgctxt "guildset:greeting_message|default"
