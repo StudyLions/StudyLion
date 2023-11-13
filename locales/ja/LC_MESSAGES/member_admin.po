@@ -207,7 +207,7 @@ msgstr "リセット操作が選択されていないため、何も行いませ
 #: src/modules/member_admin/cog.py:425
 msgctxt "cmd:admin_data"
 msgid "data"
-msgstr ""
+msgstr "データ"
 
 #: src/modules/member_admin/cog.py:428
 msgctxt "cmd:admin_data|desc"
