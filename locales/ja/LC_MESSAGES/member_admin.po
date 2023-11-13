@@ -435,7 +435,7 @@ msgstr "ウェルカムメッセージが設定されていません!新しい�
 #: src/modules/member_admin/settings.py:145
 msgctxt "guildset:greeting_message|set_response:set"
 msgid "The welcome message has been updated."
-msgstr ""
+msgstr "ウェルカムメッセージが更新されました。"
 
 #: src/modules/member_admin/settings.py:157
 msgctxt "guildset:greeting_message|formmatted:unset"
