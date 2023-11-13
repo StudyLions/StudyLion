@@ -247,7 +247,7 @@ msgstr "ダウンロードしたいデータの種類を選択してください
 #: src/modules/member_admin/cog.py:445
 msgctxt "cmd:admin_data|param:target|desc"
 msgid "Filter the data by selecting a user or role"
-msgstr ""
+msgstr "ユーザーまたはロールを選択して、データをフィルタリングする"
 
 #: src/modules/member_admin/cog.py:449
 msgctxt "cmd:admin_data|param:start|desc"
