@@ -445,7 +445,7 @@ msgstr "設定されていない場合、メンバーにウェルカムメッセ
 #: src/modules/member_admin/settings.py:204
 msgctxt "guildset:greeting_message|embed_field|formatkeys|explanation"
 msgid "The following placeholders will be substituted with their values."
-msgstr ""
+msgstr "現在入力されている値は、その値に置き換えられます。"
 
 #: src/modules/member_admin/settings.py:207
 msgctxt "guildset:greeting_message|embed_field|formatkeys|name"
