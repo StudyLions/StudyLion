@@ -375,7 +375,7 @@ msgstr "ダイレクトメッセージ"
 #: src/modules/member_admin/settings.py:95
 msgctxt "guildset:greeting_message"
 msgid "welcome_message"
-msgstr ""
+msgstr "ウェルカムメッセージ"
 
 #: src/modules/member_admin/settings.py:99
 msgctxt "guildset:greeting_message|desc"
