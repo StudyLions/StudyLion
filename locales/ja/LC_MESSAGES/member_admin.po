@@ -266,7 +266,7 @@ msgstr "この日時より前に作成されたrecordsをサーバーのタイ�
 #: src/modules/member_admin/cog.py:457
 msgctxt "cmd:admin_data|param:limit|desc"
 msgid "Maximum number of records to retrieve."
-msgstr ""
+msgstr "取得するrecordsの最大数。"
 
 #: src/modules/member_admin/cog.py:586
 msgctxt "cmd:admin_data|error:ratelimited"
