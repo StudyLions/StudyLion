@@ -324,7 +324,7 @@ msgstr "サーバーアイコンのURL。"
 #: src/modules/member_admin/settings.py:31
 msgctxt "guildset:greeting_message|formatkey:studying_count"
 msgid "Number of current voice channel members."
-msgstr ""
+msgstr "現在の音声チャンネルにいるメンバーの数。"
 
 #: src/modules/member_admin/settings.py:33
 msgctxt "guildset:greeting_message|formatkey:member_count"
