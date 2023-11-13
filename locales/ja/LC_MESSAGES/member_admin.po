@@ -388,6 +388,8 @@ msgid ""
 "When set, this message will be sent to the `welcome_channel` when a *new* "
 "member joins the server. If not set, no message will be sent."
 msgstr ""
+"設定すると、*新しい*メンバーがサーバーに参加したときに、このメッセージが "
+"「welcome_channe`」に送信されます。設定されていない場合、メッセージは送信されません。"
 
 #: src/modules/member_admin/settings.py:108
 msgctxt "guildset:greeting_message|accepts"
