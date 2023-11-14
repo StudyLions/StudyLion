@@ -219,7 +219,7 @@ msgstr "Py Version"
 #, possible-python-brace-format
 msgctxt "cmd:nerd|field:py_version|value"
 msgid "`{py_version}` running discord.py `{dpy_version}`"
-msgstr ""
+msgstr "`{py_version}` running discord.py `{dpy_version}`"
 
 #: src/modules/meta/cog.py:341
 msgctxt "cmd:nerd|section:process_section|name"
