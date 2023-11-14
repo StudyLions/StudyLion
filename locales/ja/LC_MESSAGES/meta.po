@@ -159,7 +159,7 @@ msgstr "タスク"
 #, possible-python-brace-format
 msgctxt "cmd:nerd|field:tasks|value"
 msgid "`{tasks}` tasks completed out of `{total}`."
-msgstr ""
+msgstr "`{total}` 個のうち `{tasks}` 個のタスクが完了しました。"
 
 #: src/modules/meta/cog.py:271
 msgctxt "cmd:nerd|field:timers|name"
