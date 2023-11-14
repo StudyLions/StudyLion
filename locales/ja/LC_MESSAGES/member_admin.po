@@ -535,7 +535,7 @@ msgstr "入力欄"
 #: src/modules/member_admin/settings.py:345
 msgctxt "guildset:autoroles"
 msgid "autoroles"
-msgstr ""
+msgstr "オートロール"
 
 #: src/modules/member_admin/settings.py:349
 msgctxt "guildset:autoroles|desc"
