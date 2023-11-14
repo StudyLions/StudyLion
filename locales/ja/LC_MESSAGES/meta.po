@@ -130,7 +130,7 @@ msgstr " `{guilds}` サーバーの `{rooms}` ルームで`{people}`人がアク
 #: src/modules/meta/cog.py:221
 msgctxt "cmd:nerd|field:recorded|name"
 msgid "Recorded"
-msgstr ""
+msgstr "記録済み"
 
 #: src/modules/meta/cog.py:224
 #, possible-python-brace-format
