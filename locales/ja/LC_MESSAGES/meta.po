@@ -125,9 +125,7 @@ msgstr "現在"
 #, possible-python-brace-format
 msgctxt "cmd:nerd|field:currently|value"
 msgid "`{people}` people active in `{rooms}` rooms of `{guilds}` guilds."
-msgstr ""
-"ギルド `{guilds}` の `{rooms}` ルームで`{people}`人がアクティブです<br><br data-mce-"
-"bogus=\"1\">"
+msgstr " `{guilds}` サーバーの `{rooms}` ルームで`{people}`人がアクティブです。"
 
 #: src/modules/meta/cog.py:221
 msgctxt "cmd:nerd|field:recorded|name"
