@@ -180,7 +180,7 @@ msgstr "ボットの統計"
 #: src/modules/meta/cog.py:293
 msgctxt "cmd:nerd|field:shard|name"
 msgid "Shard"
-msgstr ""
+msgstr "Shard"
 
 #: src/modules/meta/cog.py:296
 #, possible-python-brace-format
