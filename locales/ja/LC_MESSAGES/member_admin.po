@@ -525,7 +525,7 @@ msgstr "設定されていません。設定されている場合は「ウェル
 #: src/modules/member_admin/settings.py:330
 msgctxt "guildset:returning_message|embed_field|formatkeys|explanation"
 msgid "In *addition* to the placeholders supported by `welcome_message`"
-msgstr "「welcome_message」でサポートされている入力欄に *追加*"
+msgstr "「ウェルカムメッセージ」でサポートされている入力欄に *追加*"
 
 #: src/modules/member_admin/settings.py:333
 msgctxt "guildset:returning_message|embed_field|formatkeys|"
