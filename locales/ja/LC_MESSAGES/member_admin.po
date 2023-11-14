@@ -475,7 +475,7 @@ msgstr ""
 #: src/modules/member_admin/settings.py:231
 msgctxt "guildset:returning_message|accepts"
 msgid "JSON formatted returning message data"
-msgstr ""
+msgstr "JSON 形式で返されるメッセージ データ"
 
 #: src/modules/member_admin/settings.py:235
 msgctxt "guildset:returning_message|default"
