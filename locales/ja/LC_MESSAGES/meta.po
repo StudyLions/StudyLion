@@ -69,7 +69,7 @@ msgstr "[ここをクリック]({invite_link}) して私をあなたのサーバ
 #: src/modules/meta/cog.py:125
 msgctxt "cmd:invite|embed|field:tips|name"
 msgid "Setup Tips"
-msgstr ""
+msgstr "セットアップのヒント"
 
 #: src/modules/meta/cog.py:129
 #, possible-python-brace-format
