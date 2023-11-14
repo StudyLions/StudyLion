@@ -594,4 +594,4 @@ msgstr "メンバーが再参加してもロールは復元されません。"
 #: src/modules/member_admin/settings.py:418
 msgctxt "guildset:greeting_message|set_response:on"
 msgid "Roles will now be restored when members rejoin."
-msgstr ""
+msgstr "メンバーが再参加するとロールが復元されるようになります。"
