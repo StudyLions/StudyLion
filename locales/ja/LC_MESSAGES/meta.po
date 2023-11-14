@@ -213,7 +213,7 @@ msgstr "`v{version}`、最終アップデート日は `{reason}` により {time
 #: src/modules/meta/cog.py:330
 msgctxt "cmd:nerd|field:py_version|name"
 msgid "Py Version"
-msgstr ""
+msgstr "Py Version"
 
 #: src/modules/meta/cog.py:333
 #, possible-python-brace-format
