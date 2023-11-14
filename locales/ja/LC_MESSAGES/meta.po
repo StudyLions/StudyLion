@@ -142,7 +142,7 @@ msgstr "`{hours}` は、`{sessions}` セッション全体で `{users}` の音�
 #: src/modules/meta/cog.py:238
 msgctxt "cmd:nerd|field:registered|name"
 msgid "Registered"
-msgstr ""
+msgstr "登録済み"
 
 #: src/modules/meta/cog.py:241
 #, possible-python-brace-format
