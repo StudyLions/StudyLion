@@ -510,7 +510,7 @@ msgstr "メンバーがサーバー内で最後に確認されたときの Unix 
 #: src/modules/member_admin/settings.py:263
 msgctxt "guildset:returning_message|set_response:unset"
 msgid "Returning member greeting unset! Will use `welcome_message` if set."
-msgstr ""
+msgstr "復帰メンバーの挨拶が未設定です!設定されている場合は 「ウェルカムメッセージ」 を使用します。"
 
 #: src/modules/member_admin/settings.py:268
 msgctxt "guildset:greeting_message|set_response:set"
