@@ -58,7 +58,7 @@ msgstr "招待"
 #: src/modules/meta/cog.py:107
 msgctxt "cmd:invite|desc"
 msgid "Invite LionBot to your own server."
-msgstr ""
+msgstr "LionBot を自分のサーバーに招待します。"
 
 #: src/modules/meta/cog.py:117
 #, possible-python-brace-format
