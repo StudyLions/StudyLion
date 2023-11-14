@@ -53,7 +53,7 @@ msgstr "みなさんこんにちは！私の名前はLeo、LionBotです！"
 #: src/modules/meta/cog.py:104
 msgctxt "cmd:invite"
 msgid "invite"
-msgstr ""
+msgstr "招待"
 
 #: src/modules/meta/cog.py:107
 msgctxt "cmd:invite|desc"
