@@ -450,7 +450,7 @@ msgstr "現在入力されている値は、その値に置き換えられます
 #: src/modules/member_admin/settings.py:207
 msgctxt "guildset:greeting_message|embed_field|formatkeys|name"
 msgid "Placeholders"
-msgstr ""
+msgstr "記入欄"
 
 #: src/modules/member_admin/settings.py:218
 msgctxt "guildset:returning_message"
