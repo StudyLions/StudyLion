@@ -246,7 +246,7 @@ msgstr "開発"
 #, possible-python-brace-format
 msgctxt "cmd:nerd|field:working|value"
 msgid "`{tasks}` background tasks."
-msgstr ""
+msgstr "`{tasks}` のバックグラウンドタスク。"
 
 #: src/modules/meta/cog.py:371
 msgctxt "cmd:nerd|field:objects|name"
