@@ -559,7 +559,7 @@ msgstr "ボット_オートロール"
 #: src/modules/member_admin/settings.py:372
 msgctxt "guildset:bot_autoroles|desc"
 msgid "Roles given to new bots when they join the server."
-msgstr ""
+msgstr "新しいボットがサーバーに参加するときに与えられるロール。"
 
 #: src/modules/member_admin/settings.py:376
 msgctxt "guildset:bot_autoroles|long_desc"
