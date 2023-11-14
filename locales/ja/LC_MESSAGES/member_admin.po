@@ -515,7 +515,7 @@ msgstr "復帰メンバーへの挨拶が未設定です！設定されている
 #: src/modules/member_admin/settings.py:268
 msgctxt "guildset:greeting_message|set_response:set"
 msgid "The returning member greeting has been updated."
-msgstr ""
+msgstr "復帰メンバーへの挨拶を更新しました。"
 
 #: src/modules/member_admin/settings.py:280
 msgctxt "guildset:greeting_message|formmatted:unset"
