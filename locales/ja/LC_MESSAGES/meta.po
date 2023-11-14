@@ -40,6 +40,10 @@ msgid ""
 "\n"
 "If you need any help configuring me, or would like to suggest a feature, report a bug, and stay updated, make sure to join our main support server by [clicking here]({support})."
 msgstr ""
+"コミュニティに招待していただきありがとうございます！\n"
+"まず、「{help_cmd}」と入力してコマンドを表示し、「{dash_cmd}」と入力して構成オプションを表示および設定しましょう！\n"
+"\n"
+"設定に関するサポートが必要な場合、または機能の提案、バグの報告、最新情報の入手をご希望の場合は、[ここをクリック]({support}) してメイン サポート サーバーに参加してください。"
 
 #: src/modules/meta/cog.py:89
 msgctxt "new_guild_join_message|name"
