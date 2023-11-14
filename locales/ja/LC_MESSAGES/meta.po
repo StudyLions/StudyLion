@@ -197,7 +197,7 @@ msgstr "サーバー"
 #, possible-python-brace-format
 msgctxt "cmd:nerd|field:guilds|value"
 msgid "`{guilds}` guilds with `{count}` total members."
-msgstr ""
+msgstr " `{guilds}` サーバーには合計メンバーが `{count}` 人います。"
 
 #: src/modules/meta/cog.py:315
 msgctxt "cmd:nerd|field:version|name"
