@@ -148,7 +148,7 @@ msgstr "登録済み"
 #, possible-python-brace-format
 msgctxt "cmd:nerd|field:registered|value"
 msgid "`{users}` users and `{guilds}` guilds."
-msgstr ""
+msgstr "`{users}` ユーザーと `{guilds}` サーバー。"
 
 #: src/modules/meta/cog.py:255
 msgctxt "cmd:nerd|field:tasks|name"
