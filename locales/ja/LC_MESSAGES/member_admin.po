@@ -549,6 +549,7 @@ msgid ""
 "`role_persistence` is enabled, these roles will *not* be given to a "
 "returning member."
 msgstr ""
+"これらの役割は、メンバーがサーバーに参加するときに与えられます。 「ロール持続」が有効な場合、これらのロールは復帰メンバーに*与えられません*。"
 
 #: src/modules/member_admin/settings.py:368
 msgctxt "guildset:bot_autoroles"
