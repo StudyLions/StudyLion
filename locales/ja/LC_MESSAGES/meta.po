@@ -267,7 +267,7 @@ msgstr "稼働時間"
 #: src/modules/meta/cog.py:390
 msgctxt "cmd:nerd|section:shard_section|name"
 msgid "Shard Statistics"
-msgstr ""
+msgstr "Shard 統計"
 
 #: src/modules/meta/help_sections.py:40
 #, possible-python-brace-format
