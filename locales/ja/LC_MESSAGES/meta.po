@@ -119,7 +119,7 @@ msgstr "ガリ勉の統計"
 #: src/modules/meta/cog.py:202
 msgctxt "cmd:nerd|field:currently|name"
 msgid "Currently"
-msgstr ""
+msgstr "現在"
 
 #: src/modules/meta/cog.py:205
 #, possible-python-brace-format
