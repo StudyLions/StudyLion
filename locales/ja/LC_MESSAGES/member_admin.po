@@ -574,7 +574,7 @@ msgstr "ロール_持続"
 #: src/modules/member_admin/settings.py:393
 msgctxt "guildset:role_persistence|desc"
 msgid "Whether member roles should be restored on rejoin."
-msgstr ""
+msgstr "再参加時にメンバーのロールを復元するかどうか。"
 
 #: src/modules/member_admin/settings.py:397
 msgctxt "guildset:role_persistence|long_desc"
