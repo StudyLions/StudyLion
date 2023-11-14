@@ -48,7 +48,7 @@ msgstr ""
 #: src/modules/meta/cog.py:89
 msgctxt "new_guild_join_message|name"
 msgid "Hello everyone! My name is Leo, the LionBot!"
-msgstr ""
+msgstr "みなさんこんにちは！私の名前はLeo、LionBotです！"
 
 #: src/modules/meta/cog.py:104
 msgctxt "cmd:invite"
