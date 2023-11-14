@@ -461,7 +461,7 @@ msgstr "復帰メッセージ"
 msgctxt "guildset:returning_message|desc"
 msgid ""
 "Custom message used to greet returning members when they rejoin the server."
-msgstr ""
+msgstr "復帰メンバーがサーバーに再参加するときに挨拶するために使用されるカスタムメッセージ。"
 
 #: src/modules/member_admin/settings.py:226
 msgctxt "guildset:returning_message|long_desc"
