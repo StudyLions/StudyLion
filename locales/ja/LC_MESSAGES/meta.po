@@ -208,7 +208,7 @@ msgstr "Leo Version"
 #, possible-python-brace-format
 msgctxt "cmd:nerd|field:version|value"
 msgid "`v{version}`, last updated {timestamp} from `{reason}`."
-msgstr ""
+msgstr "`v{version}`、最終アップデート日は `{reason}` により {timestamp} です。"
 
 #: src/modules/meta/cog.py:330
 msgctxt "cmd:nerd|field:py_version|name"
