@@ -64,7 +64,7 @@ msgstr "LionBot を、あなたの自分のサーバーに招待します。"
 #, possible-python-brace-format
 msgctxt "cmd:invite|embed|desc"
 msgid "[Click here]({invite_link}) to add me to your server."
-msgstr ""
+msgstr "[ここをクリック]({invite_link}) して私をあなたのサーバーに追加してください。"
 
 #: src/modules/meta/cog.py:125
 msgctxt "cmd:invite|embed|field:tips|name"
