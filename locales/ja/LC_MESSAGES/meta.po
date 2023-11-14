@@ -257,7 +257,7 @@ msgstr "オブジェクト"
 #, possible-python-brace-format
 msgctxt "cmd:nerd|field:objects|value"
 msgid "`{objects}` loaded in memory."
-msgstr ""
+msgstr "`{objects}` がメモリにロードされました。"
 
 #: src/modules/meta/cog.py:384
 msgctxt "cmd:nerd|field:uptime|name"
