@@ -229,7 +229,7 @@ msgstr "プロセス"
 #: src/modules/meta/cog.py:351
 msgctxt "cmd:nerd|field:handling|name"
 msgid "Handling"
-msgstr ""
+msgstr "取り扱い"
 
 #: src/modules/meta/cog.py:354
 #, possible-python-brace-format
