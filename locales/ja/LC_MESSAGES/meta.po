@@ -191,7 +191,7 @@ msgstr ""
 #: src/modules/meta/cog.py:302
 msgctxt "cmd:nerd|field:guilds|name"
 msgid "Guilds"
-msgstr ""
+msgstr "サーバー"
 
 #: src/modules/meta/cog.py:305
 #, possible-python-brace-format
