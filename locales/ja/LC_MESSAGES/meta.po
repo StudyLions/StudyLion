@@ -164,7 +164,7 @@ msgstr ""
 #: src/modules/meta/cog.py:271
 msgctxt "cmd:nerd|field:timers|name"
 msgid "Timers"
-msgstr ""
+msgstr "タイマー"
 
 #: src/modules/meta/cog.py:274
 #, possible-python-brace-format
