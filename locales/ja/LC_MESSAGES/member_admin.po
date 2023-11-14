@@ -455,7 +455,7 @@ msgstr "記入欄"
 #: src/modules/member_admin/settings.py:218
 msgctxt "guildset:returning_message"
 msgid "returning_message"
-msgstr ""
+msgstr "復帰メッセージ"
 
 #: src/modules/member_admin/settings.py:222
 msgctxt "guildset:returning_message|desc"
