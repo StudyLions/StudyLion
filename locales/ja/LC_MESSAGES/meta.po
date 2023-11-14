@@ -114,7 +114,7 @@ msgstr "私に関する非表示の詳細と統計を表示します (ガリ勉�
 #: src/modules/meta/cog.py:179
 msgctxt "cmd:nerd|title"
 msgid "Nerd Statistics"
-msgstr ""
+msgstr "ガリ勉の統計"
 
 #: src/modules/meta/cog.py:202
 msgctxt "cmd:nerd|field:currently|name"
