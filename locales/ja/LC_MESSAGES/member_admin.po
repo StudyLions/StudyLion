@@ -530,7 +530,7 @@ msgstr "「ウェルカムメッセージ」でサポートされている入力
 #: src/modules/member_admin/settings.py:333
 msgctxt "guildset:returning_message|embed_field|formatkeys|"
 msgid "Placeholders"
-msgstr ""
+msgstr "入力欄"
 
 #: src/modules/member_admin/settings.py:345
 msgctxt "guildset:autoroles"
