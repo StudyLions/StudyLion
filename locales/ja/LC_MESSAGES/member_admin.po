@@ -505,7 +505,7 @@ msgstr ""
 #: src/modules/member_admin/settings.py:252
 msgctxt "guildset:returning_message|formatkey:last_time"
 msgid "Unix timestamp of the last time the member was seen in the server."
-msgstr ""
+msgstr "メンバーがサーバー内で最後に確認されたときの Unix タイムスタンプ。"
 
 #: src/modules/member_admin/settings.py:263
 msgctxt "guildset:returning_message|set_response:unset"
