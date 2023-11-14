@@ -540,7 +540,7 @@ msgstr "オートロール"
 #: src/modules/member_admin/settings.py:349
 msgctxt "guildset:autoroles|desc"
 msgid "Roles given to new members when they join the server."
-msgstr ""
+msgstr "新しいメンバーがサーバーに参加するときに与えられるロール。"
 
 #: src/modules/member_admin/settings.py:353
 msgctxt "guildset:autoroles|long_desc"
