@@ -251,7 +251,7 @@ msgstr "`{tasks}` のバックグラウンドタスク。"
 #: src/modules/meta/cog.py:371
 msgctxt "cmd:nerd|field:objects|name"
 msgid "Objects"
-msgstr ""
+msgstr "オブジェクト"
 
 #: src/modules/meta/cog.py:374
 #, possible-python-brace-format
