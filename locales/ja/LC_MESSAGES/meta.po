@@ -98,6 +98,8 @@ msgid ""
 "Speak to my friendly support team by joining this server and making a ticket in the support channel!\n"
 "{support_link}"
 msgstr ""
+"このサーバーに参加し、サポート チャンネルでチケットを作成して、私のフレンドリーなサポートチームに話しかけてください！\n"
+"{support_link}"
 
 #: src/modules/meta/cog.py:163
 msgctxt "cmd:nerd"
