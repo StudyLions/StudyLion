@@ -137,7 +137,7 @@ msgstr "記録済み"
 msgctxt "cmd:nerd|field:recorded|value"
 msgid ""
 "`{hours}` voice hours from `{users}` people across `{sessions}` sessions."
-msgstr ""
+msgstr "`{hours}` は、`{sessions}` セッション全体で `{users}` の音声時間です。"
 
 #: src/modules/meta/cog.py:238
 msgctxt "cmd:nerd|field:registered|name"
