@@ -554,7 +554,7 @@ msgstr ""
 #: src/modules/member_admin/settings.py:368
 msgctxt "guildset:bot_autoroles"
 msgid "bot_autoroles"
-msgstr ""
+msgstr "ボット_オートロール"
 
 #: src/modules/member_admin/settings.py:372
 msgctxt "guildset:bot_autoroles|desc"
