@@ -202,7 +202,7 @@ msgstr " `{guilds}` サーバーには合計メンバーが `{count}` 人いま�
 #: src/modules/meta/cog.py:315
 msgctxt "cmd:nerd|field:version|name"
 msgid "Leo Version"
-msgstr ""
+msgstr "Leo Version"
 
 #: src/modules/meta/cog.py:318
 #, possible-python-brace-format
