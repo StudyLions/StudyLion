@@ -262,7 +262,7 @@ msgstr "`{objects}` がメモリにロードされました。"
 #: src/modules/meta/cog.py:384
 msgctxt "cmd:nerd|field:uptime|name"
 msgid "Uptime"
-msgstr ""
+msgstr "稼働時間"
 
 #: src/modules/meta/cog.py:390
 msgctxt "cmd:nerd|section:shard_section|name"
