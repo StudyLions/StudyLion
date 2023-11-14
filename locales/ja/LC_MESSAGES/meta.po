@@ -240,7 +240,7 @@ msgstr "`{events}` のアクティブなコマンドと活動。"
 #: src/modules/meta/cog.py:362
 msgctxt "cmd:nerd|field:working|name"
 msgid "Working On"
-msgstr ""
+msgstr "開発"
 
 #: src/modules/meta/cog.py:365
 #, possible-python-brace-format
