@@ -470,7 +470,7 @@ msgid ""
 "*returns* to the server. If not set, no message will be sent."
 msgstr ""
 "設定すると、メンバーがサーバーに *戻ってきた*ときに、このメッセージが "
-"「welcome_channel」に送信されます。設定されていない場合、メッセージは送信されません。"
+"「ウェルカムチャンネル」に送信されます。設定されていない場合、メッセージは送信されません。"
 
 #: src/modules/member_admin/settings.py:231
 msgctxt "guildset:returning_message|accepts"
