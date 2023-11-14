@@ -175,7 +175,7 @@ msgstr "`{timers}` タイマーは `{guilds}` サーバー全体で実行され�
 #: src/modules/meta/cog.py:283
 msgctxt "cmd:nerd|section:bot_stats|name"
 msgid "Bot Stats"
-msgstr ""
+msgstr "ボットの統計"
 
 #: src/modules/meta/cog.py:293
 msgctxt "cmd:nerd|field:shard|name"
