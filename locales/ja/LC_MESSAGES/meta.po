@@ -109,7 +109,7 @@ msgstr "ヲタク用"
 #: src/modules/meta/cog.py:166
 msgctxt "cmd:nerd|desc"
 msgid "View hidden details and statistics about me ('nerd statistics')"
-msgstr "私に関する非表示の詳細と統計を表示します (ガリ勉の統計)"
+msgstr "私に関する非表示の詳細と統計を表示します (ヲタク用の統計)"
 
 #: src/modules/meta/cog.py:179
 msgctxt "cmd:nerd|title"
