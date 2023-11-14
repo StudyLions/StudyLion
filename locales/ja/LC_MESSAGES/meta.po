@@ -79,7 +79,6 @@ msgid ""
 "Also, if you have any issues or questions, you can join our [support server]({support_link}) to talk to our friendly support team!"
 msgstr ""
 "{help_cmd} で重要なコマンド リストを確認してください。これには、{dashboard} などの管理者レベルの非表示の設定コマンドを表示する管理ページも含まれます！\n"
-"\n"
 "また、問題や質問がある場合は、[サポート サーバー]({support_link}) に参加して、フレンドリーなサポートチームに相談してね！"
 
 #: src/modules/meta/cog.py:144
