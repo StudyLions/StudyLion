@@ -520,7 +520,7 @@ msgstr "復帰メンバーへの挨拶を更新しました。"
 #: src/modules/member_admin/settings.py:280
 msgctxt "guildset:greeting_message|formmatted:unset"
 msgid "Not set, will use the `welcome_message` if set."
-msgstr ""
+msgstr "設定されていません。設定されている場合は「ウェルカムメッセージ」が送信されます。"
 
 #: src/modules/member_admin/settings.py:330
 msgctxt "guildset:returning_message|embed_field|formatkeys|explanation"
