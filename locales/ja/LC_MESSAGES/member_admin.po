@@ -564,7 +564,7 @@ msgstr "新しいボットがサーバーに参加するときに与えられる
 #: src/modules/member_admin/settings.py:376
 msgctxt "guildset:bot_autoroles|long_desc"
 msgid "These roles will be given when a bot joins the server."
-msgstr ""
+msgstr "これらのロールは、ボットがサーバーに参加するときに与えられます。"
 
 #: src/modules/member_admin/settings.py:390
 msgctxt "guildset:role_persistence"
