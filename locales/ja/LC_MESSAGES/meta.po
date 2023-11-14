@@ -89,7 +89,7 @@ msgstr "サポート"
 #: src/modules/meta/cog.py:147
 msgctxt "cmd:support|desc"
 msgid "Have an issue or a question? Speak to my friendly support team here."
-msgstr ""
+msgstr "問題や質問がありますか?こちらのフレンドリーなサポートチームに是非ご相談を。"
 
 #: src/modules/meta/cog.py:155
 #, possible-python-brace-format
