@@ -170,7 +170,7 @@ msgstr "タイマー"
 #, possible-python-brace-format
 msgctxt "cmd:nerd|field:timers|value"
 msgid "`{timers}` timers running across `{guilds}` guilds."
-msgstr ""
+msgstr "`{timers}` タイマーは `{guilds}` サーバー全体で実行されます"
 
 #: src/modules/meta/cog.py:283
 msgctxt "cmd:nerd|section:bot_stats|name"
