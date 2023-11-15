@@ -186,7 +186,7 @@ msgstr "Shard"
 #, possible-python-brace-format
 msgctxt "cmd:nerd|field:shard|value"
 msgid "`{shard_number}` of `{shard_count}`"
-msgstr ""
+msgstr "`{shard_count}` あるうちの`{shard_number}`"
 
 #: src/modules/meta/cog.py:302
 msgctxt "cmd:nerd|field:guilds|name"
