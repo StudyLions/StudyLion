@@ -380,4 +380,4 @@ msgstr "メンバーページ"
 #: src/modules/meta/helpui.py:59
 msgctxt "ui:help|button:admin_page|label"
 msgid "Admin Page"
-msgstr ""
+msgstr "運営ページ"
