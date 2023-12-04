@@ -288,6 +288,8 @@ msgid ""
 "Activity ranks will be determined based on tracked activity since this time, and the leaderboard will display activity since this time by default. Unset to disable seasons and use all-time statistics instead.\n"
 "Provided dates and times are assumed to be in the guild `timezone`, so set this first!"
 msgstr ""
+"Los rangos de actividad se determinarán en base a la actividad seguida desde ese momento, y la tabla de clasificación mostrará la actividad desde ese momento por defecto. Desactiva esta opción para desactivar las temporadas y utilizar las estadísticas de todos los tiempos en su lugar.\n"
+"Se supone que las fechas y horas indicadas están en la `zona horaria` del gremio."
 
 #: src/modules/statistics/settings.py:104
 msgctxt "guildset:season_start|accepts"
