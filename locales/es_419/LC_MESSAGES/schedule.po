@@ -1003,7 +1003,7 @@ msgstr "Horario abierto"
 #: src/modules/schedule/ui/sessionui.py:64
 msgctxt "ui:sessionui|button:help|label"
 msgid "How to Attend"
-msgstr ""
+msgstr "Cómo asistir"
 
 #: src/modules/schedule/ui/sessionui.py:92
 msgctxt "ui:session|button:book|error:starting_soon"
@@ -1048,7 +1048,7 @@ msgstr "No se ha podido cancelar la sesión"
 #: src/modules/schedule/ui/sessionui.py:202
 msgctxt "ui:session|button:help|embed:unbooked|title"
 msgid "You have not booked this session!"
-msgstr ""
+msgstr "No ha reservado esta sesión."
 
 #: src/modules/schedule/ui/sessionui.py:206
 #, possible-python-brace-format
@@ -1057,11 +1057,13 @@ msgid ""
 "You need to book this scheduled session before you can attend it! Press the "
 "**{book_label}** button to book the session."
 msgstr ""
+"Debe reservar esta sesión programada antes de poder asistir a ella. Pulse el"
+" botón **{book_label}** para reservar la sesión."
 
 #: src/modules/schedule/ui/sessionui.py:215
 msgctxt "ui:session|button:help|embed:help|title"
 msgid "How to attend your scheduled session"
-msgstr ""
+msgstr "Cómo asistir a la sesión programada"
 
 #: src/modules/schedule/ui/sessionui.py:224
 #, possible-python-brace-format
