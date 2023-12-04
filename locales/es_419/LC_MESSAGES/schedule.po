@@ -184,7 +184,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:schedule|acmpl:book|format"
 msgid "{start} - {end} ({until})"
-msgstr ""
+msgstr "{start} - {end} ({until})"
 
 #: src/modules/schedule/cog.py:980
 #, possible-python-brace-format
