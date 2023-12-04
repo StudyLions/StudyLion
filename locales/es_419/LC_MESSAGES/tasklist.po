@@ -357,6 +357,8 @@ msgid ""
 "List of task numbers or ranges to remove (e.g. 1, 2, 5-7, 8.1-3, 9-), or `-`"
 " to remove all."
 msgstr ""
+"Lista de núm de tarea o rangos a eliminar (ejem, 1, 2, 5-7, 8.1-3, 9-) o `-`"
+" para eliminarlos todos."
 
 #: src/modules/tasklist/cog.py:724
 msgctxt "cmd:tasks_remove|param:created_before|desc"
