@@ -1180,12 +1180,12 @@ msgstr ""
 #: src/modules/schedule/core/session.py:325
 msgctxt "session|open|update_perms|audit_reason"
 msgid "Opening configured scheduled session room."
-msgstr ""
+msgstr "Apertura de la sala de sesiones programada."
 
 #: src/modules/schedule/core/session.py:347
 msgctxt "session|open|clean_room|audit_reason"
 msgid "Removing extra member from scheduled session room."
-msgstr ""
+msgstr "Retirada de un miembro extra de la sala de sesiones programada."
 
 #: src/modules/schedule/core/session.py:354
 #, possible-python-brace-format
@@ -1204,6 +1204,7 @@ msgctxt "session|notify|dm|join_line:room_category"
 msgid ""
 "Please attend your session by joining a voice channel under **{room}**!"
 msgstr ""
+"¡Por favor, asista a su sesión uniéndose a un canal de voz bajo **{room}**!"
 
 #: src/modules/schedule/core/session.py:416
 #, possible-python-brace-format
