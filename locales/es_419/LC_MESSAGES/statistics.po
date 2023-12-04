@@ -146,7 +146,7 @@ msgstr "Estudiar un total de 1000 horas"
 #: src/modules/statistics/achievements.py:196
 msgctxt "achievement:voicestreak|name"
 msgid "Consistency is Key"
-msgstr "La coherencia es la clave"
+msgstr "La consistencia es la clave"
 
 #: src/modules/statistics/achievements.py:200
 msgctxt "achievement:voicestreak|subtext"
