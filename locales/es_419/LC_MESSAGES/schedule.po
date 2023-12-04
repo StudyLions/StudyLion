@@ -1136,11 +1136,13 @@ msgid ""
 "To attend your scheduled session, join any tracked voice channel for "
 "**{minimum}** between {start} and {end}."
 msgstr ""
+"Para asistir a su sesión programada, únase a cualquier canal de voz "
+"rastreado durante **{minimum}** entre {start} y {end}."
 
 #: src/modules/schedule/ui/sessionui.py:308
 msgctxt "ui:session|button:help|embed:help|field:rewards|name"
 msgid "Rewards"
-msgstr ""
+msgstr "Recompensas"
 
 #: src/modules/schedule/ui/sessionui.py:312
 #, possible-python-brace-format
@@ -1150,6 +1152,9 @@ msgid ""
 "If *everyone* successfully attends, you will also be awarded a bonus of {coin}**{bonus}**.\n"
 "Anyone who does *not* attend their booked session will have the rest of their schedule cancelled **without refund**, so beware!"
 msgstr ""
+"Everyone who attends the session will be rewarded with {coin}**{reward}**.\n"
+"If *everyone* successfully attends, you will also be awarded a bonus of {coin}**{bonus}**.\n"
+"Anyone who does *not* attend their booked session will have the rest of their schedule cancelled **without refund**, so beware!"
 
 #: src/modules/schedule/core/session.py:197
 msgctxt "session|error:lobby_webhook_perms"
