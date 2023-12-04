@@ -814,6 +814,8 @@ msgstr "lista_tareas_canales"
 msgctxt "guildset:tasklist_channels|desc"
 msgid "Channels in which to publicly display member tasklists."
 msgstr ""
+"Canales en los que mostrar públicamente las listas de tareas de los "
+"miembros."
 
 #: src/modules/tasklist/settings.py:124
 #, possible-python-brace-format
@@ -825,6 +827,11 @@ msgid ""
 "period. If a category is provided, this will apply to all channels under the"
 " category."
 msgstr ""
+"La lista de tareas de un miembro (de {cmds[tasklist]}) normalmente sólo es "
+"visible para el propio miembro. Si se establece, las listas de tareas "
+"abiertas en `tasklist_channels` serán visibles para todos los miembros, y la"
+" interfaz tendrá un periodo de expiración mucho más largo. Si se proporciona"
+" una categoría, esto se aplicará a todos los canales bajo la categoría."
 
 #: src/modules/tasklist/settings.py:131
 msgctxt "guildset:tasklist_channels|accepts"
