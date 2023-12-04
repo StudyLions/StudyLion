@@ -1030,9 +1030,13 @@ msgctxt "rolemenu|select|error:max_obtainable"
 msgid "You can own at most one role from this menu! You currently own:"
 msgid_plural ""
 "You can own at most **{count}** roles from this menu! You currently own:"
-msgstr[0] ""
+msgstr[0] "Sólo puedes tener un papel de este menú. Actualmente posee:"
 msgstr[1] ""
+"¡Puedes poseer como máximo **{count}** roles de este menú! Actualmente "
+"posee:"
 msgstr[2] ""
+"¡Puedes poseer como máximo **{count}** roles de este menú! Actualmente "
+"posee:"
 
 #: src/modules/rolemenus/rolemenu.py:523
 #, possible-python-brace-format
