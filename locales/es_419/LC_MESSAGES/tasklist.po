@@ -258,12 +258,12 @@ msgstr "nuevo_padre"
 #: src/modules/tasklist/cog.py:592
 msgctxt "cmd:tasks_edit|param:taskstr|desc"
 msgid "Which task do you want to update?"
-msgstr ""
+msgstr "¿Qué tarea desea actualizar?"
 
 #: src/modules/tasklist/cog.py:593
 msgctxt "cmd:tasks_edit|param:new_content|desc"
 msgid "What do you want to change the task to?"
-msgstr ""
+msgstr "¿A qué quiere cambiar la tarea?"
 
 #: src/modules/tasklist/cog.py:594
 msgctxt "cmd:tasks_edit|param:new_parent|desc"
