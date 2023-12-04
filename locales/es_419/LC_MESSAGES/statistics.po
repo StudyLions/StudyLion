@@ -151,12 +151,12 @@ msgstr "La consistencia es la clave"
 #: src/modules/statistics/achievements.py:200
 msgctxt "achievement:voicestreak|subtext"
 msgid "Reach a 100-day voice streak"
-msgstr ""
+msgstr "Alcanzar una racha de 100 días de voz"
 
 #: src/modules/statistics/achievements.py:283
 msgctxt "achievement:voting|name"
 msgid "We're a Team"
-msgstr ""
+msgstr "Somos un equipo"
 
 #: src/modules/statistics/achievements.py:287
 msgctxt "achievement:voting|subtext"
