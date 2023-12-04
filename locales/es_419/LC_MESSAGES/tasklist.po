@@ -705,11 +705,13 @@ msgstr ""
 msgctxt "ui:tasklist|button:save|error:dms"
 msgid "Could not DM you! Do you have me blocked? Tasklist attached below."
 msgstr ""
+"No puedo enviarte un mensaje. ¿Me tienes bloqueado? Lista de tareas adjunta "
+"a continuación."
 
 #: src/modules/tasklist/ui.py:782
 msgctxt "ui:tasklist|error:wrong_user"
 msgid "This is not your tasklist!"
-msgstr ""
+msgstr "¡Esta no es tu lista de tareas!"
 
 #: src/modules/tasklist/ui.py:824
 #, possible-python-brace-format
