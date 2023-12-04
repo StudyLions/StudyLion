@@ -325,6 +325,8 @@ msgid ""
 "The leaderboard and activity ranks will now count all-time statistics. Member ranks will update when they are next active.\n"
 "Use {rank_cmd} and press **Refresh Member Ranks** to refresh all ranks immediately."
 msgstr ""
+"The leaderboard and activity ranks will now count all-time statistics. Member ranks will update when they are next active.\n"
+"Use {rank_cmd} and press **Refresh Member Ranks** to refresh all ranks immediately."
 
 #: src/modules/statistics/settings.py:162
 msgctxt "guildset:unranked_roles"
