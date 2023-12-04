@@ -481,7 +481,7 @@ msgstr ""
 #: src/modules/tasklist/cog.py:913
 msgctxt "cmd:tasks_untick|param:cascade|desc"
 msgid "Whether to also mark all subtasks as incomplete."
-msgstr ""
+msgstr "Si desea marcar también todas las subtareas como incompletas."
 
 #: src/modules/tasklist/cog.py:954
 #, possible-python-brace-format
