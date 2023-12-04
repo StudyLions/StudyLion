@@ -64,12 +64,12 @@ msgstr "Estadísticas semanales y mensuales de su actividad reciente."
 #: src/modules/statistics/cog.py:131
 msgctxt "cmd:leaderboard"
 msgid "leaderboard"
-msgstr ""
+msgstr "tabla de clasificación"
 
 #: src/modules/statistics/cog.py:134
 msgctxt "cmd:leaderboard|desc"
 msgid "Server leaderboard."
-msgstr ""
+msgstr "Clasificación del servidor."
 
 #: src/modules/statistics/cog.py:149
 #, possible-python-brace-format
