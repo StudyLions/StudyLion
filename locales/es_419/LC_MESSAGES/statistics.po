@@ -545,17 +545,17 @@ msgstr ""
 #: src/modules/statistics/ui/weeklymonthly.py:181
 msgctxt "modal:goal_editor|field:voice_goal|label"
 msgid "Study time goal"
-msgstr ""
+msgstr "Objetivo de tiempo de estudio"
 
 #: src/modules/statistics/ui/weeklymonthly.py:185
 msgctxt "modal:goal_editor|field:voice_goal|placeholder"
 msgid "Enter a number of hours of study to aim for."
-msgstr ""
+msgstr "Introduzca el número de horas de estudio que desea alcanzar."
 
 #: src/modules/statistics/ui/weeklymonthly.py:190
 msgctxt "modal:goal_editor|field:text_goal|label"
 msgid "Message goal"
-msgstr ""
+msgstr "Objetivo del mensaje"
 
 #: src/modules/statistics/ui/weeklymonthly.py:194
 msgctxt "modal:goal_editor|field:text_goal|placeholder"
