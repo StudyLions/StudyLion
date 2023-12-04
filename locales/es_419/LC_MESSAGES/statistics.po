@@ -39,12 +39,12 @@ msgstr "perfil"
 #: src/modules/statistics/cog.py:66
 msgctxt "cmd:profile|desc"
 msgid "Display the target's profile and statistics summary."
-msgstr ""
+msgstr "Muestra el perfil del objetivo y el resumen de estadísticas."
 
 #: src/modules/statistics/cog.py:70
 msgctxt "cmd:profile|param:member"
 msgid "member"
-msgstr ""
+msgstr "miembro"
 
 #: src/modules/statistics/cog.py:74
 msgctxt "cmd:profile|param:member|desc"
