@@ -500,12 +500,12 @@ msgstr "lista de tareas"
 #: src/modules/tasklist/cog.py:979
 msgctxt "cmd:configure_tasklist|desc"
 msgid "Tasklist configuration panel"
-msgstr ""
+msgstr "Panel de configuración de la lista de tareas"
 
 #: src/modules/tasklist/cog.py:982
 msgctxt "cmd:configure_tasklist|param:reward"
 msgid "reward"
-msgstr ""
+msgstr "recompensa"
 
 #: src/modules/tasklist/cog.py:983
 msgctxt "cmd:configure_tasklist|param:reward_limit"
