@@ -310,12 +310,12 @@ msgstr "Borra tu lista de tareas."
 #: src/modules/tasklist/cog.py:696
 msgctxt "cmd:tasks_clear|resp:success"
 msgid "Your tasklist has been cleared."
-msgstr ""
+msgstr "Tu lista de tareas ha sido borrada."
 
 #: src/modules/tasklist/cog.py:704
 msgctxt "cmd:tasks_remove"
 msgid "remove"
-msgstr ""
+msgstr "eliminar"
 
 #: src/modules/tasklist/cog.py:707
 msgctxt "cmd:tasks_remove|desc"
