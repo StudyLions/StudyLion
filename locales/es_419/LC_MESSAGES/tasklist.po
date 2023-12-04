@@ -156,12 +156,12 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:tasks_new|resp:success"
 msgid "{tick} Created task `{label}`."
-msgstr ""
+msgstr "{tick} Tarea creada `{label}`."
 
 #: src/modules/tasklist/cog.py:463
 msgctxt "cmd:tasks_upload"
 msgid "upload"
-msgstr ""
+msgstr "cargar"
 
 #: src/modules/tasklist/cog.py:466
 msgctxt "cmd:tasks_upload|desc"
