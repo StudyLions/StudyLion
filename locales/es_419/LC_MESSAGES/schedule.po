@@ -1121,11 +1121,13 @@ msgid ""
 "To attend your scheduled session, join a valid session voice channel for "
 "**{minimum}** between {start} and {end}."
 msgstr ""
+"Para asistir a la sesión programada, únase a un canal de voz de sesión "
+"válido durante **{minimum}** entre {start} y {end}."
 
 #: src/modules/schedule/ui/sessionui.py:292
 msgctxt "ui:session|button:help|embed:help|field:channels|name"
 msgid "Valid session channels"
-msgstr ""
+msgstr "Canales de sesión válidos"
 
 #: src/modules/schedule/ui/sessionui.py:300
 #, possible-python-brace-format
