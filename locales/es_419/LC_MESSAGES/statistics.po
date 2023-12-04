@@ -486,12 +486,12 @@ msgstr "Mensualmente"
 #: src/modules/statistics/ui/goals.py:135
 msgctxt "ui:WeeklyUI|name"
 msgid "Weekly"
-msgstr ""
+msgstr "Semanal"
 
 #: src/modules/statistics/ui/summary.py:18
 msgctxt "ui:SummaryUI|name"
 msgid "Summary"
-msgstr ""
+msgstr "Resumen"
 
 #: src/modules/statistics/ui/weeklymonthly.py:96
 msgctxt "menu:stat_type|opt:weekly_voice|name"
