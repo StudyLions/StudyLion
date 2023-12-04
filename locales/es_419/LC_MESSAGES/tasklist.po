@@ -100,13 +100,13 @@ msgstr "Lista de tareas vacía. No hay tareas coincidentes."
 #: src/modules/tasklist/cog.py:332
 msgctxt "argtype:taskid|match:all"
 msgid "All tasks"
-msgstr ""
+msgstr "Todas las tareas"
 
 #: src/modules/tasklist/cog.py:350
 #, possible-python-brace-format
 msgctxt "argtype:taskid|error:parse_multi"
 msgid "(Warning: {error})"
-msgstr ""
+msgstr "(Advertencia: {error})"
 
 #: src/modules/tasklist/cog.py:384
 #, possible-python-brace-format
