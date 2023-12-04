@@ -586,12 +586,16 @@ msgstr ""
 msgctxt "modal:goal_editor|field:text_goal|error:NAN"
 msgid "The provided message goal `{input}` is not a number! Please try again."
 msgstr ""
+"¡El objetivo del mensaje proporcionado `{input}` no es un número! Por favor,"
+" inténtelo de nuevo."
 
 #: src/modules/statistics/ui/weeklymonthly.py:230
 #, possible-python-brace-format
 msgctxt "modal:goal_editor|field:anki_goal|error:NAN"
 msgid "The provided card goal `{input}` is not a number! Please try again."
 msgstr ""
+"¡El objetivo de tarjeta proporcionado `{input}` no es un número! Por favor, "
+"inténtelo de nuevo."
 
 #: src/modules/statistics/ui/weeklymonthly.py:252
 msgctxt "modal:goal_editor|field:weekly_task_editor|label"
