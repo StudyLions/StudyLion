@@ -261,7 +261,7 @@ msgstr "estadísticas_globales"
 #: src/modules/statistics/settings.py:70
 msgctxt "userset:show_global_stats|desc"
 msgid "Whether displayed statistics include all your servers."
-msgstr ""
+msgstr "Si las estadísticas mostradas incluyen todos sus servidores."
 
 #: src/modules/statistics/settings.py:74
 msgctxt "userset:show_global_stats|long_desc"
@@ -269,6 +269,8 @@ msgid ""
 "Whether statistics commands display combined stats for all servers or just "
 "your current server."
 msgstr ""
+"Si los comandos de estadísticas muestran estadísticas combinadas para todos "
+"los servidores o sólo para tu servidor actual."
 
 #: src/modules/statistics/settings.py:90
 msgctxt "guildset:season_start"
