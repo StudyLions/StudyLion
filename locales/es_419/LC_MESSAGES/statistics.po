@@ -196,12 +196,12 @@ msgstr "Asistir a 500 sesiones programadas"
 #: src/modules/statistics/achievements.py:392
 msgctxt "achievement:monthlyhours|name"
 msgid "The 30 Days Challenge"
-msgstr ""
+msgstr "El reto de los 30 días"
 
 #: src/modules/statistics/achievements.py:396
 msgctxt "achievement:monthlyhours|subtext"
 msgid "Be active for 100 hours in a month"
-msgstr ""
+msgstr "Estar activo 100 horas al mes"
 
 #: src/modules/statistics/settings.py:38
 msgctxt "settype:stat|output:voice"
