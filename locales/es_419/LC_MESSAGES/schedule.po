@@ -190,7 +190,7 @@ msgstr "{start} - {end} ({until})"
 #, possible-python-brace-format
 msgctxt "cmd:schedule|acmpl:book|no_matching"
 msgid "No bookable sessions matching '{partial}'"
-msgstr ""
+msgstr "No hay sesiones reservables que coincidan con '{partial}'"
 
 #: src/modules/schedule/cog.py:1003
 msgctxt "cmd:schedule|acmpl:cancel|error:empty_schedule"
