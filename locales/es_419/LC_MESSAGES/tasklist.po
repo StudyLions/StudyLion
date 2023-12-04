@@ -610,18 +610,18 @@ msgstr "Seleccionar para editar"
 #, possible-python-brace-format
 msgctxt "ui:tasklist|menu:sub|mode:edit|placeholder"
 msgid "Edit from {label}.*"
-msgstr ""
+msgstr "Editar desde {label}.*"
 
 #: src/modules/tasklist/ui.py:208
 msgctxt "ui:tasklist|menu:main|mode:delete|placeholder"
 msgid "Select to Delete"
-msgstr ""
+msgstr "Seleccionar para borrar"
 
 #: src/modules/tasklist/ui.py:212
 #, possible-python-brace-format
 msgctxt "ui:tasklist|menu:sub|mode:delete|placeholder"
 msgid "Delete from {label}.*"
-msgstr ""
+msgstr "Borrar de {label}.*"
 
 #: src/modules/tasklist/ui.py:409
 #, possible-python-brace-format
