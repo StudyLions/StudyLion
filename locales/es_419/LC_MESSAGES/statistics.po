@@ -76,6 +76,8 @@ msgstr "Clasificación del servidor."
 msgctxt "cmd:leaderboard|chunking|desc"
 msgid "Requesting server member list from Discord, please wait {loading}"
 msgstr ""
+"Solicitando lista de miembros del servidor desde Discord, por favor espere "
+"{loading}"
 
 #: src/modules/statistics/cog.py:170
 msgctxt "cmd:achievements"
