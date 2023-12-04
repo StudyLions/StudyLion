@@ -112,12 +112,12 @@ msgstr "(Advertencia: {error})"
 #, possible-python-brace-format
 msgctxt "argtype:taskid|error:no_matching"
 msgid "No tasks matching '{partial}'!"
-msgstr ""
+msgstr "¡No hay tareas que coincidan con '{partial}'!"
 
 #: src/modules/tasklist/cog.py:404
 msgctxt "cmd:tasks_new"
 msgid "new"
-msgstr ""
+msgstr "nuevo"
 
 #: src/modules/tasklist/cog.py:407
 msgctxt "cmd:tasks_new|desc"
