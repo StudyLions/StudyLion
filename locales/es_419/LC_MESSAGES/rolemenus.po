@@ -1139,13 +1139,13 @@ msgstr "Has desequipado **{role}**."
 #: src/modules/rolemenus/rolemenu.py:715
 msgctxt "rolemenu|eventlog|event:role_unequipped|title"
 msgid "Member unequipped role from role menu"
-msgstr ""
+msgstr "Miembro rol no equipado del menú de roles"
 
 #: src/modules/rolemenus/rolemenu.py:719
 #, possible-python-brace-format
 msgctxt "rolemenu|eventlog|event:role_unequipped|desc"
 msgid "{member} unequipped {role} from {menu}"
-msgstr ""
+msgstr "{member} unequipped {role} from {menu}"
 
 #: src/modules/rolemenus/rolemenu.py:747
 #, possible-python-brace-format
