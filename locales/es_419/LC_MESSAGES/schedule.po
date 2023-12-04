@@ -1231,7 +1231,7 @@ msgstr "Su sesión programada ha comenzado."
 #, possible-python-brace-format
 msgctxt "session|notify|dm|description"
 msgid "Your scheduled session in {dest} has now begun!"
-msgstr ""
+msgstr "Su sesión programada en {dest} ha comenzado."
 
 #: src/modules/schedule/core/session.py:482
 #, possible-python-brace-format
@@ -1328,8 +1328,9 @@ msgstr "Desaparecido"
 msgctxt "session|closing|audit_reason"
 msgid "Removing previous scheduled session member permissions."
 msgstr ""
+"Eliminación de permisos de miembros de sesiones programadas anteriores."
 
 #: src/modules/schedule/core/timeslot.py:506
 msgctxt "session|closing|disconnecting|audit_reason"
 msgid "Disconnecting previous scheduled session members."
-msgstr ""
+msgstr "Desconexión de los miembros de sesiones programadas anteriormente."
