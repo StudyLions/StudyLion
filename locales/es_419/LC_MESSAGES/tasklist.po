@@ -377,19 +377,19 @@ msgstr ""
 #: src/modules/tasklist/cog.py:732
 msgctxt "cmd:tasks_remove|param:completed"
 msgid "Only delete tasks which are (not) complete."
-msgstr ""
+msgstr "Borre sólo las tareas que (no) estén completas."
 
 #: src/modules/tasklist/cog.py:736
 msgctxt "cmd:tasks_remove|param:cascade"
 msgid "Whether to recursively remove subtasks of removed tasks."
-msgstr ""
+msgstr "Si se eliminan recursivamente las subtareas de las tareas eliminadas."
 
 #: src/modules/tasklist/cog.py:768 src/modules/tasklist/cog.py:863
 #: src/modules/tasklist/cog.py:938
 #, possible-python-brace-format
 msgctxt "cmd:tasks_remove_cmd|error:no_matching"
 msgid "No tasks on your tasklist match `{input}`"
-msgstr ""
+msgstr "Ninguna tarea de su lista de tareas coincide con `{input}`."
 
 #: src/modules/tasklist/cog.py:792
 msgctxt "cmd:tasks_remove_cmd|error:no_matching"
