@@ -877,12 +877,12 @@ msgstr "Establecer canales de listas de tareas"
 #: src/modules/tasklist/settings.py:315
 msgctxt "ui:tasklist_config|embed|title"
 msgid "Tasklist Configuration Panel"
-msgstr ""
+msgstr "Panel de configuración de la lista de tareas"
 
 #: src/modules/tasklist/settings.py:324
 msgctxt "dash:tasklist|name"
 msgid "Tasklist Configuration ({commands[config tasklist]})"
-msgstr ""
+msgstr "Configuración de la lista de tareas ({commands[config tasklist]})"
 
 #: src/modules/tasklist/settings.py:327
 msgctxt "dash:tasklist|dropdown|placeholder"
