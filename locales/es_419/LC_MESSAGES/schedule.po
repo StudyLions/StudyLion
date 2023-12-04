@@ -1091,6 +1091,8 @@ msgid ""
 "The exclusive scheduled session room {room} will also be open to you during "
 "your scheduled session."
 msgstr ""
+"La sala exclusiva para sesiones programadas {room} también estará abierta "
+"para usted durante su sesión programada."
 
 #: src/modules/schedule/ui/sessionui.py:262
 #, possible-python-brace-format
