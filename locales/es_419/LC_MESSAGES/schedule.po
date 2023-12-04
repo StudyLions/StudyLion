@@ -1220,12 +1220,12 @@ msgstr "Asista a su sesión uniéndose a un canal de voz con seguimiento."
 #: src/modules/schedule/core/session.py:443
 msgctxt "session|notify|dm|join_line:channels"
 msgid "Please attend your session by joining one of the following:"
-msgstr ""
+msgstr "Por favor, asista a su sesión uniéndose a una de las siguientes:"
 
 #: src/modules/schedule/core/session.py:453
 msgctxt "session|notify|dm|title"
 msgid "Your Scheduled Session has started!"
-msgstr ""
+msgstr "Su sesión programada ha comenzado."
 
 #: src/modules/schedule/core/session.py:457
 #, possible-python-brace-format
