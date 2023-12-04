@@ -639,12 +639,14 @@ msgid ""
 "Multiple tasks matching given parent task `{input}`. Please use a task "
 "number instead!"
 msgstr ""
+"Múltiples tareas que coinciden con la tarea principal `{input}`. Utilice un "
+"número de tarea en su lugar."
 
 #: src/modules/tasklist/ui.py:430
 #, possible-python-brace-format
 msgctxt "ui:tasklist_single_editor|field:parent|error:no_matching"
 msgid "No tasks matching given parent task `{input}`."
-msgstr ""
+msgstr "No hay tareas que coincidan con la tarea principal `{input}`."
 
 #: src/modules/tasklist/ui.py:501
 msgctxt "ui:tasklist|menu:edit|modal:title"
