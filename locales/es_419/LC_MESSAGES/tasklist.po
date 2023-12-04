@@ -194,6 +194,8 @@ msgid ""
 "Whether to append the given tasks or replace your entire tasklist. Defaults "
 "to True."
 msgstr ""
+"Si añadir las tareas dadas o reemplazar toda la lista de tareas. Por defecto"
+" es True."
 
 #: src/modules/tasklist/cog.py:496
 msgctxt "cmd:tasks_upload|error:not_text"
