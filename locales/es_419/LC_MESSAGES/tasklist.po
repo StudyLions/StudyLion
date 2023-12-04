@@ -736,7 +736,7 @@ msgstr "recompensa_tarea"
 #: src/modules/tasklist/settings.py:38
 msgctxt "guildset:task_reward|desc"
 msgid "Number of LionCoins given for each completed task."
-msgstr ""
+msgstr "Número de LionCoins otorgados por cada tarea completada."
 
 #: src/modules/tasklist/settings.py:42
 msgctxt "guildset:task_reward|long_desc"
