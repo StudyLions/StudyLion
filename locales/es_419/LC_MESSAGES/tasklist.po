@@ -541,6 +541,8 @@ msgid ""
 "Malformed taskline!\n"
 "`{input}`"
 msgstr ""
+"¡Línea de tarea malformada!\n"
+"`{input}`"
 
 #: src/modules/tasklist/tasklist.py:332
 msgctxt "modal:tasklist_bulk_editor|error:task_too_long"
