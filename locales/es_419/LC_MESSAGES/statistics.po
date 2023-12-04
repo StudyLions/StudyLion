@@ -171,7 +171,7 @@ msgstr "Apunta a la luna"
 #: src/modules/statistics/achievements.py:308
 msgctxt "achievement:days|subtext"
 msgid "Join Voice on 90 different days"
-msgstr ""
+msgstr "Únete a un canal de voz en 90 días diferentes"
 
 #: src/modules/statistics/achievements.py:333
 msgctxt "achievement:tasks|name"
