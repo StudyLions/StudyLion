@@ -387,6 +387,8 @@ msgid ""
 "Choose which statistics types to display in the leaderboard and statistics "
 "commands."
 msgstr ""
+"Elige qué tipos de estadísticas mostrar en la tabla de clasificación y en "
+"los comandos de estadísticas."
 
 #: src/modules/statistics/settings.py:232
 msgctxt "guildset:visible_stats|accepts"
