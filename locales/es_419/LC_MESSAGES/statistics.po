@@ -315,6 +315,8 @@ msgid ""
 "The leaderboard season and activity ranks will now count from {timestamp}. Member ranks will update when they are next active.\n"
 "Use {rank_cmd} and press **Refresh Member Ranks** to refresh all ranks immediately."
 msgstr ""
+"Los rangos de temporada y actividad de la tabla clasificatoria ahora contarán a partir de {timestamp}. Los rangos de los miembros se actualizarán la próxima vez que estén activos.\n"
+"Utiliza {rank_cmd} y pulsa **Refrescar rangos de miembros** para actualizar todos los rangos inmediatamente."
 
 #: src/modules/statistics/settings.py:149
 #, possible-python-brace-format
