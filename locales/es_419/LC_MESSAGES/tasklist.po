@@ -671,7 +671,7 @@ msgstr "Borrar"
 #: src/modules/tasklist/ui.py:661
 msgctxt "ui:tasklist|button:toggle_mode|label"
 msgid "Toggle"
-msgstr ""
+msgstr "Alternar"
 
 #: src/modules/tasklist/ui.py:678
 msgctxt "ui:tasklist|button:edit_bulk|error:too_long"
@@ -679,6 +679,9 @@ msgid ""
 "Your tasklist is too long to be edited in a Discord text input! Use the save"
 " button and {cmds[tasks upload]} instead."
 msgstr ""
+"Tu lista de tareas es demasiado larga para ser editada en una entrada de "
+"texto de Discord. Utiliza el botón de guardar y {cmds[tasks upload]} en su "
+"lugar."
 
 #: src/modules/tasklist/ui.py:692
 msgctxt "ui:tasklist|button:edit_bulk|label"
