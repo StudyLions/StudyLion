@@ -295,17 +295,17 @@ msgstr "{tick} Tarea `{label}` actualizada."
 #: src/modules/tasklist/cog.py:670
 msgctxt "ui:tasklist_single_editor|title"
 msgid "Edit Task"
-msgstr ""
+msgstr "Editar tarea"
 
 #: src/modules/tasklist/cog.py:685
 msgctxt "cmd:tasks_clear"
 msgid "clear"
-msgstr ""
+msgstr "borrar"
 
 #: src/modules/tasklist/cog.py:686
 msgctxt "cmd:tasks_clear|desc"
 msgid "Clear your tasklist."
-msgstr ""
+msgstr "Borra tu lista de tareas."
 
 #: src/modules/tasklist/cog.py:696
 msgctxt "cmd:tasks_clear|resp:success"
