@@ -894,24 +894,24 @@ msgstr ""
 #: src/modules/rolemenus/roleoptions.py:240
 msgctxt "roleset:price|accepts"
 msgid "Amount of coins that the role costs when equipped."
-msgstr ""
+msgstr "Cantidad de monedas que cuesta el rol cuando está equipado."
 
 #: src/modules/rolemenus/roleoptions.py:254
 #, possible-python-brace-format
 msgctxt "roleset:price|set_response:positive"
 msgid "Equipping this role will now cost {coin}**{price}**."
-msgstr ""
+msgstr "Equipar este rol ahora costará {coin}**{price}**."
 
 #: src/modules/rolemenus/roleoptions.py:259
 msgctxt "roleset:price|set_response:zero"
 msgid "Equipping this role is now free."
-msgstr ""
+msgstr "Equipar este papel es ahora gratis."
 
 #: src/modules/rolemenus/roleoptions.py:264
 #, possible-python-brace-format
 msgctxt "roleset:price|set_response:negative"
 msgid "Equipping this role will now reward {coin}**{price}**."
-msgstr ""
+msgstr "Equipar este rol ahora recompensará con {coin}**{price}**."
 
 #: src/modules/rolemenus/roleoptions.py:272
 msgctxt "roleset:duration"
