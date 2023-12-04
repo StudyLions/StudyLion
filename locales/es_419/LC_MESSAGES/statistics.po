@@ -369,17 +369,17 @@ msgstr ""
 #: src/modules/statistics/settings.py:206
 msgctxt "guildset:unranked_roles|set_response|unset"
 msgid "You have cleared the unranked role list."
-msgstr ""
+msgstr "Has borrado la lista de roles no clasificados."
 
 #: src/modules/statistics/settings.py:221
 msgctxt "guildset:visible_stats"
 msgid "visible_stats"
-msgstr ""
+msgstr "estadísticas_visibles"
 
 #: src/modules/statistics/settings.py:224
 msgctxt "guildset:visible_stats|desc"
 msgid "Which statistics will be visible in the statistics commands."
-msgstr ""
+msgstr "Qué estadísticas serán visibles en los comandos de estadísticas."
 
 #: src/modules/statistics/settings.py:228
 msgctxt "guildset:visible_stats|desc"
