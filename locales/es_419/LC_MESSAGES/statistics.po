@@ -294,12 +294,12 @@ msgstr ""
 #: src/modules/statistics/settings.py:104
 msgctxt "guildset:season_start|accepts"
 msgid "The season start time in the form YYYY-MM-DD HH:MM"
-msgstr ""
+msgstr "La hora de inicio de la temporada en la forma AAAA-MM-DD HH:MM"
 
 #: src/modules/statistics/settings.py:108
 msgctxt "guildset:season_start|notset"
 msgid "Not Set (Using all-time statistics)"
-msgstr ""
+msgstr "No configurado (utilizando estadísticas de todos los tiempos)"
 
 #: src/modules/statistics/settings.py:127
 #, possible-python-brace-format
