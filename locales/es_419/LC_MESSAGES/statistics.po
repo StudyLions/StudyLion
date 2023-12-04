@@ -176,12 +176,12 @@ msgstr "Únete a un canal de voz en 90 días diferentes"
 #: src/modules/statistics/achievements.py:333
 msgctxt "achievement:tasks|name"
 msgid "One Step at a Time"
-msgstr ""
+msgstr "Paso a paso"
 
 #: src/modules/statistics/achievements.py:337
 msgctxt "achievement:tasks|subtext"
 msgid "Complete 1000 tasks"
-msgstr ""
+msgstr "Completar 1000 tareas"
 
 #: src/modules/statistics/achievements.py:363
 msgctxt "achievement:schedule|name"
