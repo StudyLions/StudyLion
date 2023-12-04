@@ -427,12 +427,12 @@ msgstr ""
 #: src/modules/statistics/settings.py:313
 msgctxt "ui:statistics_config|menu:unranked_roles|placeholder"
 msgid "Select Unranked Roles"
-msgstr ""
+msgstr "Seleccionar funciones no clasificadas"
 
 #: src/modules/statistics/settings.py:338
 msgctxt "ui:statistics_config|menu:visible_stats|item:voice|mode:voice"
 msgid "Voice Activity"
-msgstr ""
+msgstr "Actividad vocal"
 
 #: src/modules/statistics/settings.py:343
 msgctxt "ui:statistics_config|menu:visible_stats|item:voice|mode:study"
