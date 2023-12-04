@@ -438,7 +438,7 @@ msgstr ""
 #: src/modules/tasklist/cog.py:837
 msgctxt "cmd:tasks_tick|param:cascade|desc"
 msgid "Whether to also mark all subtasks as complete."
-msgstr ""
+msgstr "Si desea marcar también todas las subtareas como completas."
 
 #: src/modules/tasklist/cog.py:881
 #, possible-python-brace-format
