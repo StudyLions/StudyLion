@@ -753,17 +753,17 @@ msgstr "Estadísticas de texto"
 #: src/modules/statistics/ui/profile.py:102
 msgctxt "menu:stat_type|opt:anki|name"
 msgid "Anki Statistics"
-msgstr ""
+msgstr "Estadísticas Anki"
 
 #: src/modules/statistics/ui/profile.py:190
 msgctxt "modal:profile_editor|resp:success"
 msgid "Your profile has been updated!"
-msgstr ""
+msgstr "Tu perfil ha sido actualizado."
 
 #: src/modules/statistics/ui/profile.py:200
 msgctxt "ui:profile_card|button:edit|label"
 msgid "Edit Profile Badges"
-msgstr ""
+msgstr "Editar insignias de perfil"
 
 #: src/modules/statistics/ui/profile.py:219
 msgctxt "ui:profile_card|button:statistics|label:hide"
