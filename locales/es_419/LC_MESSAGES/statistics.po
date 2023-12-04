@@ -632,16 +632,18 @@ msgid ""
 "Malformed task!\n"
 "`{input}`"
 msgstr ""
+"¡Tarea malformada!\n"
+"`{input}`"
 
 #: src/modules/statistics/ui/weeklymonthly.py:301
 msgctxt "modal:goal_editor|title"
 msgid "Weekly goal editor"
-msgstr ""
+msgstr "Editor de objetivos semanales"
 
 #: src/modules/statistics/ui/weeklymonthly.py:306
 msgctxt "modal:goal_editor|monthly|title"
 msgid "Monthly goal editor"
-msgstr ""
+msgstr "Editor de objetivos mensuales"
 
 #: src/modules/statistics/ui/weeklymonthly.py:503
 msgctxt "ui:weeklymonthly|button:edit_goals|label"
