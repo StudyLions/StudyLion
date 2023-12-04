@@ -306,6 +306,7 @@ msgstr "No configurado (utilizando estadísticas de todos los tiempos)"
 msgctxt "guildset:season_start|parse|error:future_time"
 msgid "Provided season start time {timestamp} is in the future!"
 msgstr ""
+"Siempre que la hora de inicio de la temporada {timestamp} esté en el futuro."
 
 #: src/modules/statistics/settings.py:139
 #, possible-python-brace-format
