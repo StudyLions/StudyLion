@@ -803,12 +803,12 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "guildset:task_reward_limit|formatted"
 msgid "`{number}` per 24 hours."
-msgstr ""
+msgstr "`{number}` por 24 horas."
 
 #: src/modules/tasklist/settings.py:117
 msgctxt "guildset:tasklist_channels"
 msgid "tasklist_channels"
-msgstr ""
+msgstr "lista_tareas_canales"
 
 #: src/modules/tasklist/settings.py:120
 msgctxt "guildset:tasklist_channels|desc"
