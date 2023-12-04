@@ -832,12 +832,12 @@ msgstr "Este mes"
 #: src/modules/statistics/ui/leaderboard.py:369
 msgctxt "ui:leaderboard|button:alltime|label"
 msgid "All Time"
-msgstr ""
+msgstr "Todos los tiempos"
 
 #: src/modules/statistics/ui/leaderboard.py:373
 msgctxt "ui:leaderboard|button:jump|label"
 msgid "Jump"
-msgstr ""
+msgstr "Saltar"
 
 #: src/modules/statistics/ui/leaderboard.py:388
 msgctxt "ui:leaderboard|button:jump|input:title"
