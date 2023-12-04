@@ -1101,6 +1101,8 @@ msgid ""
 "To attend your scheduled session, join a voice channel in **{room}** for "
 "**{minimum}** between {start} and {end}."
 msgstr ""
+"Para asistir a su sesión programada, únase a un canal de voz en **{room}** "
+"durante **{minimum}** entre {start} y {end}."
 
 #: src/modules/schedule/ui/sessionui.py:272
 #, possible-python-brace-format
@@ -1109,6 +1111,8 @@ msgid ""
 "To attend your scheduled session, join {room} for **{minimum}** between "
 "{start} and {end}."
 msgstr ""
+"Para asistir a la sesión programada, acuda a la {sala} durante un "
+"**{mínimo}** entre el {inicio} y el {final}."
 
 #: src/modules/schedule/ui/sessionui.py:282
 #, possible-python-brace-format
