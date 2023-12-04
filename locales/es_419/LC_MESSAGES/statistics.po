@@ -404,12 +404,12 @@ msgstr "Menú de opciones a continuación."
 #, possible-python-brace-format
 msgctxt "guildset:visible_stats|set_response"
 msgid "Members will be able to view the following statistics types: {types}"
-msgstr ""
+msgstr "Los miembros podrán ver los siguientes tipos de estadísticas: {types}"
 
 #: src/modules/statistics/settings.py:272
 msgctxt "guildset:default_stat"
 msgid "default_stat"
-msgstr ""
+msgstr "default_stat"
 
 #: src/modules/statistics/settings.py:275
 msgctxt "guildset:default_stat|desc"
