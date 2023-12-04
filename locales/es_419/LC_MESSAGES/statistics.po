@@ -457,13 +457,15 @@ msgstr "Seleccionar estadísticas visibles"
 #: src/modules/statistics/settings.py:393
 msgctxt "ui:statistics_config|embed|title"
 msgid "Statistics Configuration Panel"
-msgstr ""
+msgstr "Panel de configuración de estadísticas"
 
 #: src/modules/statistics/settings.py:415
 msgctxt "dash:stats|title"
 msgid ""
 "Activity Statistics Configuration ({commands[admin config statistics]})"
 msgstr ""
+"Configuración de las estadísticas de actividad ({commands[admin config "
+"statistics]})"
 
 #: src/modules/statistics/settings.py:419
 msgctxt "dash:stats|dropdown|placeholder"
