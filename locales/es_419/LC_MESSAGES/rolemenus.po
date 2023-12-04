@@ -1093,7 +1093,7 @@ msgstr "Función equipada con miembros en el menú de funciones"
 #, possible-python-brace-format
 msgctxt "rolemenu|eventlog|event:role_equipped|desc"
 msgid "{member} equipped {role} from {menu}"
-msgstr ""
+msgstr "{member} equipado {role} de {menu}"
 
 #: src/modules/rolemenus/rolemenu.py:644
 #, possible-python-brace-format
@@ -1128,7 +1128,7 @@ msgstr "Has eliminado **{role}**, y se te ha reembolsado {coin} **{amount}**."
 #, possible-python-brace-format
 msgctxt "rolemenu|deselect|success:negrefund|desc"
 msgid "You have removed **{role}**, and have lost {coin} **{amount}**."
-msgstr ""
+msgstr "Has eliminado **{role}**, y has perdido {coin} **{amount}**."
 
 #: src/modules/rolemenus/rolemenu.py:708
 #, possible-python-brace-format
