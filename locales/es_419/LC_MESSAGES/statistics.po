@@ -97,12 +97,12 @@ msgstr "Logros"
 #: src/modules/statistics/cog.py:208
 msgctxt "cmd:configure_statistics"
 msgid "statistics"
-msgstr ""
+msgstr "estadísticas"
 
 #: src/modules/statistics/cog.py:209
 msgctxt "cmd:configure_statistics|desc"
 msgid "Statistics configuration panel"
-msgstr ""
+msgstr "Panel de configuración de estadísticas"
 
 #: src/modules/statistics/cog.py:212
 msgctxt "cmd:configure_statistics|param:season_start"
