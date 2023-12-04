@@ -1112,7 +1112,7 @@ msgid ""
 "{start} and {end}."
 msgstr ""
 "Para asistir a la sesión programada, acuda a la {sala} durante un "
-"**{mínimo}** entre el {inicio} y el {final}."
+"**{minimum}** entre el {start} y el {end}."
 
 #: src/modules/schedule/ui/sessionui.py:282
 #, possible-python-brace-format
