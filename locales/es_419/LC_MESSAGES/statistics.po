@@ -707,12 +707,12 @@ msgstr ""
 #: src/modules/statistics/ui/weeklymonthly.py:731
 msgctxt "ui:WeeklyMonthly|button:global|mode:local"
 msgid "Server Statistics"
-msgstr ""
+msgstr "Estadísticas del servidor"
 
 #: src/modules/statistics/ui/weeklymonthly.py:736
 msgctxt "ui:WeeklyMonthly|button:global|mode:global"
 msgid "Global Statistics"
-msgstr ""
+msgstr "Estadísticas mundiales"
 
 #: src/modules/statistics/ui/profile.py:41
 msgctxt "modal:profile_editor|field:editor|label"
