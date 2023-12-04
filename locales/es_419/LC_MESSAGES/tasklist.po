@@ -395,6 +395,7 @@ msgstr "Ninguna tarea de su lista de tareas coincide con `{input}`."
 msgctxt "cmd:tasks_remove_cmd|error:no_matching"
 msgid "No tasks on your tasklist matching all the given conditions!"
 msgstr ""
+"No hay tareas en su lista de tareas que cumplan todas las condiciones dadas."
 
 #: src/modules/tasklist/cog.py:805
 #, possible-python-brace-format
