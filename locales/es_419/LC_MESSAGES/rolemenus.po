@@ -447,6 +447,8 @@ msgstr ""
 msgctxt "cmd:rolemenu_edit|parse:style|error:too_many_reactions"
 msgid "Too many roles! Reaction role menus can have at most `20` roles."
 msgstr ""
+"¡Demasiados roles! Los menús de roles de reacción pueden tener como máximo "
+"`20` roles."
 
 #: src/modules/rolemenus/cog.py:1119
 msgctxt "cmd:rolemenu_edit|parse:style|error:incomplete_emojis"
@@ -454,16 +456,18 @@ msgid ""
 "Cannot switch to the reaction role style! Every role needs a distinct emoji "
 "first."
 msgstr ""
+"¡No se puede cambiar al estilo de rol de reacción! Cada rol necesita primero"
+" un emoji distinto."
 
 #: src/modules/rolemenus/cog.py:1126
 msgctxt "cmd:rolemenu_edit|parse:style|success"
 msgid "Updated role menu style."
-msgstr ""
+msgstr "Se ha actualizado el estilo del menú de roles."
 
 #: src/modules/rolemenus/cog.py:1140
 msgctxt "cmd:rolemenu_edit|parse:custom_message|success"
 msgid "Custom menu message updated."
-msgstr ""
+msgstr "Mensaje de menú personalizado actualizado."
 
 #: src/modules/rolemenus/cog.py:1155
 #, possible-python-brace-format
@@ -876,7 +880,7 @@ msgstr "precio"
 #: src/modules/rolemenus/roleoptions.py:229
 msgctxt "roleset:price|desc"
 msgid "Price of the role, in LionCoins. May be negative."
-msgstr ""
+msgstr "Precio del papel, en LionCoins. Puede ser negativo."
 
 #: src/modules/rolemenus/roleoptions.py:233
 msgctxt "roleset:price|long_desc"
@@ -884,6 +888,8 @@ msgid ""
 "How many LionCoins should be deducted from a member's account when they equip this role through this menu.\n"
 "The price may be negative, in which case the member will instead be rewarded coins when they equip the role."
 msgstr ""
+"Cuántas LionCoins se deducirán de la cuenta de un miembro cuando equipe este rol a través de este menú.\n"
+"El precio puede ser negativo, en cuyo caso el miembro será recompensado con monedas cuando equipe el rol."
 
 #: src/modules/rolemenus/roleoptions.py:240
 msgctxt "roleset:price|accepts"
