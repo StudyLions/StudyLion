@@ -857,12 +857,12 @@ msgstr "Las listas de tareas de los miembros nunca se mostrarán públicamente."
 #: src/modules/tasklist/settings.py:162
 msgctxt "guildset:tasklist_channels|set_using"
 msgid "Channel selector below."
-msgstr ""
+msgstr "Selector de canal abajo."
 
 #: src/modules/tasklist/settings.py:293
 msgctxt "ui:tasklist_config|button:close|label"
 msgid "Close"
-msgstr ""
+msgstr "Cerrar"
 
 #: src/modules/tasklist/settings.py:294
 msgctxt "ui:tasklist_config|button:reset|label"
