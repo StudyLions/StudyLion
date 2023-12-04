@@ -837,6 +837,7 @@ msgstr ""
 msgctxt "guildset:tasklist_channels|accepts"
 msgid "Comma separated list of tasklist channel names or ids."
 msgstr ""
+"Lista separada por comas de nombres o ids de canales de listas de tareas."
 
 #: src/modules/tasklist/settings.py:148
 #, possible-python-brace-format
@@ -845,6 +846,8 @@ msgid ""
 "Tasklists will now be publicly displayed in the following channels: "
 "{channels}"
 msgstr ""
+"Las listas de tareas se mostrarán públicamente en los siguientes canales: "
+"{canales}"
 
 #: src/modules/tasklist/settings.py:153
 msgctxt "guildset:tasklist_channels|set_response|unset"
