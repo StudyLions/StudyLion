@@ -432,8 +432,8 @@ msgid ""
 "List of task numbers or ranges to tick (e.g. 1, 2, 5-7, 8.1-3, 9-) or '-' to"
 " tick all."
 msgstr ""
-"List of task numbers or ranges to tick (e.g. 1, 2, 5-7, 8.1-3, 9-) or '-' to tick all.\n"
-" "
+"Lista de núm de tareas o intervalos para marcar (ejem, 1, 2, 5-7, 8.1-3, 9-)"
+" o \"-\" para marcar todo."
 
 #: src/modules/tasklist/cog.py:837
 msgctxt "cmd:tasks_tick|param:cascade|desc"
