@@ -80,28 +80,28 @@ msgstr "El rol {role} ya no existe."
 #: src/modules/rolemenus/cog.py:356
 msgctxt "eventlog|event:rolemenu_role_expire|title"
 msgid "Equipped role has expired"
-msgstr "La función Equipado ha expirado"
+msgstr "El rol Equipado ha expirado"
 
 #: src/modules/rolemenus/cog.py:360
 #, possible-python-brace-format
 msgctxt "eventlog|event:rolemenu_role_expire|desc"
 msgid "{member}'s role {role} has now expired."
-msgstr ""
+msgstr "El rol {role} de {member} ha expirado."
 
 #: src/modules/rolemenus/cog.py:368
 msgctxt "eventlog|event:rolemenu_role_expire|field:menu"
 msgid "Obtained From"
-msgstr ""
+msgstr "Obtenido de"
 
 #: src/modules/rolemenus/cog.py:377
 msgctxt "eventlog|event:rolemenu_role_expire|field:menu"
 msgid "Obtained At"
-msgstr ""
+msgstr "Obtenido en"
 
 #: src/modules/rolemenus/cog.py:384
 msgctxt "eventlog|event:rolemenu_role_expire|field:expiry"
 msgid "Expiry"
-msgstr ""
+msgstr "Caducidad"
 
 #: src/modules/rolemenus/cog.py:419
 msgctxt "parse:message_link|suberror:message_dne"
@@ -440,6 +440,8 @@ msgctxt "cmd:rolemenu_edit|parse:style|error:not_managed"
 msgid ""
 "Cannot change the style of a role menu attached to a message I did not send."
 msgstr ""
+"No puedo cambiar el estilo de un menú de función adjunto a un mensaje que no"
+" he enviado."
 
 #: src/modules/rolemenus/cog.py:1109
 msgctxt "cmd:rolemenu_edit|parse:style|error:too_many_reactions"
