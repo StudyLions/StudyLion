@@ -565,7 +565,7 @@ msgstr "Introduzca un recuento de mensajes al que aspirar."
 #: src/modules/statistics/ui/weeklymonthly.py:199
 msgctxt "modal:goal_editor|field:anki_goal|label"
 msgid "Card goal"
-msgstr "Gol de tarjeta"
+msgstr "Objetivo de tarjeta"
 
 #: src/modules/statistics/ui/weeklymonthly.py:203
 msgctxt "modal:goal_editor|field:anki_goal|label"
