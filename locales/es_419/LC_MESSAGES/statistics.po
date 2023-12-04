@@ -398,7 +398,7 @@ msgstr "Voz, texto, Anki"
 #: src/modules/statistics/settings.py:253
 msgctxt "guildset:visible_stats|set_using"
 msgid "Option menu below."
-msgstr ""
+msgstr "Menú de opciones a continuación."
 
 #: src/modules/statistics/settings.py:261
 #, possible-python-brace-format
