@@ -186,7 +186,7 @@ msgstr "Completar 1000 tareas"
 #: src/modules/statistics/achievements.py:363
 msgctxt "achievement:schedule|name"
 msgid "Be Accountable"
-msgstr ""
+msgstr "Sea responsable"
 
 #: src/modules/statistics/achievements.py:367
 msgctxt "achievement:schedule|subtext"
