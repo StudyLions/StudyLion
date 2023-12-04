@@ -344,11 +344,13 @@ msgid ""
 "When set, members with *any* of these roles will not appear on the "
 "/leaderboard ranking list."
 msgstr ""
+"Cuando se establece, los miembros con *cualquiera* de estos roles no "
+"aparecerán en la lista de clasificación de /leaderboard."
 
 #: src/modules/statistics/settings.py:173
 msgctxt "guildset:unranked_roles|accepts"
 msgid "Comma separated list of unranked role names or ids."
-msgstr ""
+msgstr "Lista separada por comas de nombres o ids de roles no clasificados."
 
 #: src/modules/statistics/settings.py:189
 msgctxt "guildset:unranked_roles|set_using"
