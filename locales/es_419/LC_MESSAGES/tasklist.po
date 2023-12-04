@@ -80,12 +80,12 @@ msgstr "lista de tareas"
 #: src/modules/tasklist/cog.py:261
 msgctxt "cmd:tasklist|desc"
 msgid "Open your tasklist."
-msgstr ""
+msgstr "Abra su lista de tareas."
 
 #: src/modules/tasklist/cog.py:271
 msgctxt "group:tasks"
 msgid "tasks"
-msgstr ""
+msgstr "tareas"
 
 #: src/modules/tasklist/cog.py:272
 msgctxt "group:tasks|desc"
