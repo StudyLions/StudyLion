@@ -283,12 +283,14 @@ msgstr ""
 msgctxt "cmd:tasks_edit|error:parse_parent"
 msgid "Could not find new parent task number `{input}` in your tasklist."
 msgstr ""
+"No se ha podido encontrar el nuevo número de tarea principal `{input}` en su"
+" lista de tareas."
 
 #: src/modules/tasklist/cog.py:648
 #, possible-python-brace-format
 msgctxt "cmd:tasks_edit|resp:success|desc"
 msgid "{tick} Task `{label}` updated."
-msgstr ""
+msgstr "{tick} Tarea `{label}` actualizada."
 
 #: src/modules/tasklist/cog.py:670
 msgctxt "ui:tasklist_single_editor|title"
