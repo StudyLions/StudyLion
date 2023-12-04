@@ -329,17 +329,17 @@ msgstr ""
 #: src/modules/tasklist/cog.py:711
 msgctxt "cmd:tasks_remove|param:taskidstr"
 msgid "tasks"
-msgstr ""
+msgstr "tareas"
 
 #: src/modules/tasklist/cog.py:712
 msgctxt "cmd:tasks_remove|param:created_before"
 msgid "created_before"
-msgstr ""
+msgstr "creado_antes"
 
 #: src/modules/tasklist/cog.py:713
 msgctxt "cmd:tasks_remove|param:updated_before"
 msgid "updated_before"
-msgstr ""
+msgstr "actualizado_antes"
 
 #: src/modules/tasklist/cog.py:714
 msgctxt "cmd:tasks_remove|param:completed"
