@@ -526,13 +526,13 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "tasklist|parse:multi-range|error:parents_match"
 msgid "Parents don't match in range `{range}`"
-msgstr ""
+msgstr "Los padres no coinciden en el rango `{range}`."
 
 #: src/modules/tasklist/tasklist.py:289
 #, possible-python-brace-format
 msgctxt "tasklist|parse:multi-range|error:parse"
 msgid "Could not parse `{range}` as a task number or range."
-msgstr ""
+msgstr "No se pudo analizar `{range}` como un número de tarea o rango."
 
 #: src/modules/tasklist/tasklist.py:320
 #, possible-python-brace-format
