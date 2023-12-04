@@ -516,12 +516,12 @@ msgstr "Estadísticas mensuales de voz"
 #: src/modules/statistics/ui/weeklymonthly.py:117
 msgctxt "menu:stat_type|opt:monthly_text|name"
 msgid "Monthly Text Statistics"
-msgstr ""
+msgstr "Estadísticas mensuales de texto"
 
 #: src/modules/statistics/ui/weeklymonthly.py:122
 msgctxt "menu:stat_type|opt:monthly_anki|name"
 msgid "Monthly Anki Statistics"
-msgstr ""
+msgstr "Estadísticas mensuales de Anki"
 
 #: src/modules/statistics/ui/weeklymonthly.py:144
 msgctxt "modal:goal_editor|field:task_goal|label"
