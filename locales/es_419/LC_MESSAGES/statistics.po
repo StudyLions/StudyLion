@@ -206,7 +206,7 @@ msgstr "Estar activo 100 horas al mes"
 #: src/modules/statistics/settings.py:38
 msgctxt "settype:stat|output:voice"
 msgid "`Voice`"
-msgstr ""
+msgstr "`Voz`"
 
 #: src/modules/statistics/settings.py:39
 msgctxt "settype:stat|output:text"
