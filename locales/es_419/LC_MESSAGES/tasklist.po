@@ -510,7 +510,7 @@ msgstr "recompensa"
 #: src/modules/tasklist/cog.py:983
 msgctxt "cmd:configure_tasklist|param:reward_limit"
 msgid "reward_limit"
-msgstr ""
+msgstr "limite_recompensa"
 
 #: src/modules/tasklist/cog.py:1018
 #, possible-python-brace-format
