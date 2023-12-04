@@ -142,13 +142,15 @@ msgstr "Contenido de su nueva tarea."
 #: src/modules/tasklist/cog.py:416
 msgctxt "cmd:tasks_new|param:parent"
 msgid "Parent of this task."
-msgstr ""
+msgstr "Padre de esta tarea."
 
 #: src/modules/tasklist/cog.py:436
 #, possible-python-brace-format
 msgctxt "cmd:tasks_new|error:parse_parent"
 msgid "Could not find parent task number `{input}` in your tasklist."
 msgstr ""
+"No se ha podido encontrar el número de tarea principal `{input}` en su lista"
+" de tareas."
 
 #: src/modules/tasklist/cog.py:451
 #, possible-python-brace-format
