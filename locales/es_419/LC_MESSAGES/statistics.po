@@ -49,7 +49,7 @@ msgstr "miembro"
 #: src/modules/statistics/cog.py:74
 msgctxt "cmd:profile|param:member|desc"
 msgid "Member to display profile for."
-msgstr ""
+msgstr "Miembro del que mostrar el perfil."
 
 #: src/modules/statistics/cog.py:110
 msgctxt "cmd:stats"
