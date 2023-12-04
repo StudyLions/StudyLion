@@ -475,6 +475,8 @@ msgid ""
 "List of task numbers or ranges to untick (e.g. 1, 2, 5-7, 8.1-3, 9-) or '-' "
 "to untick all."
 msgstr ""
+"Lista de núm de tareas q se deben desmarcar (ejem, 1, 2, 5-7, 8.1-3, 9-) o "
+"\"-\" para desmarcar todo."
 
 #: src/modules/tasklist/cog.py:913
 msgctxt "cmd:tasks_untick|param:cascade|desc"
