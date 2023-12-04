@@ -409,12 +409,12 @@ msgstr[2] "{tick} Tareas `{count}` eliminadas de su lista de tareas."
 #: src/modules/tasklist/cog.py:823
 msgctxt "cmd:tasks_tick"
 msgid "tick"
-msgstr ""
+msgstr "tick"
 
 #: src/modules/tasklist/cog.py:824
 msgctxt "cmd:tasks_tick|desc"
 msgid "Mark the given tasks as completed."
-msgstr ""
+msgstr "Marque las tareas dadas como completadas."
 
 #: src/modules/tasklist/cog.py:827
 msgctxt "cmd:tasks_tick|param:taskidstr"
