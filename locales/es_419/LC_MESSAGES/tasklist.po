@@ -462,12 +462,12 @@ msgstr "Marque las tareas dadas como incompletas."
 #: src/modules/tasklist/cog.py:903
 msgctxt "cmd:tasks_untick|param:taskidstr"
 msgid "taskids"
-msgstr ""
+msgstr "taskids"
 
 #: src/modules/tasklist/cog.py:904
 msgctxt "cmd:tasks_untick|param:cascade"
 msgid "cascade"
-msgstr ""
+msgstr "cascada"
 
 #: src/modules/tasklist/cog.py:909
 msgctxt "cmd:tasks_untick|param:taskidstr|desc"
