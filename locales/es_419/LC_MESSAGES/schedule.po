@@ -82,22 +82,24 @@ msgstr "Vea y gestione su sesión programada."
 #: src/modules/schedule/cog.py:749
 msgctxt "cmd:schedule|param:cancel"
 msgid "cancel"
-msgstr ""
+msgstr "cancelar"
 
 #: src/modules/schedule/cog.py:752
 msgctxt "cmd:schedule|param:book"
 msgid "book"
-msgstr ""
+msgstr "reservar"
 
 #: src/modules/schedule/cog.py:758
 msgctxt "cmd:schedule|param:cancel|desc"
 msgid "Select a booked timeslot to cancel."
-msgstr ""
+msgstr "Seleccione una franja horaria reservada para cancelarla."
 
 #: src/modules/schedule/cog.py:762
 msgctxt "cmd:schedule|param:book|desc"
 msgid "Select a timeslot to schedule. (Times shown in your set timezone.)"
 msgstr ""
+"Seleccione una franja horaria para programar. (Las horas se muestran en la "
+"zona horaria establecida)."
 
 #: src/modules/schedule/cog.py:792
 #, possible-python-brace-format
@@ -162,12 +164,12 @@ msgstr "Ha programado correctamente una sesión a las {time}."
 #: src/modules/schedule/cog.py:909
 msgctxt "cmd:schedule|acmpl:book|error:not_in_guild"
 msgid "You need to be in a server to book sessions!"
-msgstr ""
+msgstr "Es necesario estar en un servidor para reservar sesiones."
 
 #: src/modules/schedule/cog.py:922
 msgctxt "cmd:schedule|acmpl:book|error:blacklisted"
 msgid "Cannot Book -- Blacklisted"
-msgstr ""
+msgstr "No se puede reservar -- Lista negra"
 
 #: src/modules/schedule/cog.py:943
 #, possible-python-brace-format
@@ -175,6 +177,8 @@ msgctxt "cmd:schedule|acmpl:book|timezone_info"
 msgid ""
 "Using timezone '{timezone}' where it is '{now}'. Change with '/my timezone'"
 msgstr ""
+"Usando zona horaria '{timezone}' donde es '{now}'. Cambiar con '/my "
+"timezone'"
 
 #: src/modules/schedule/cog.py:956 src/modules/schedule/cog.py:1014
 #, possible-python-brace-format
