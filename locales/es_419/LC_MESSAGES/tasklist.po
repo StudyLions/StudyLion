@@ -54,12 +54,12 @@ msgstr "Este lunes"
 #: src/modules/tasklist/cog.py:41
 msgctxt "argtype:Before|opt:THISMONTH"
 msgid "This Month"
-msgstr ""
+msgstr "Este mes"
 
 #: src/modules/tasklist/cog.py:205
 msgctxt "summon_tasklist|error:insufficient_perms|title"
 msgid "Uh-Oh, I cannot do that here!"
-msgstr ""
+msgstr "Uh-Oh, ¡no puedo hacer eso aquí!"
 
 #: src/modules/tasklist/cog.py:209
 msgctxt "summon_tasklist|error:insufficient_perms|desc"
