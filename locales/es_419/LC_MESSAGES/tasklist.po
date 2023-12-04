@@ -44,12 +44,12 @@ msgstr "Hoy"
 #: src/modules/tasklist/cog.py:39
 msgctxt "argtype:Before|opt:YESTERDAY"
 msgid "Yesterday"
-msgstr ""
+msgstr "Ayer"
 
 #: src/modules/tasklist/cog.py:40
 msgctxt "argtype:Before|opt:Monday"
 msgid "This Monday"
-msgstr ""
+msgstr "Este lunes"
 
 #: src/modules/tasklist/cog.py:41
 msgctxt "argtype:Before|opt:THISMONTH"
