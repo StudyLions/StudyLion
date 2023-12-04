@@ -470,7 +470,7 @@ msgstr ""
 #: src/modules/statistics/settings.py:419
 msgctxt "dash:stats|dropdown|placeholder"
 msgid "Activity Statistics Panel"
-msgstr ""
+msgstr "Panel de estadísticas de actividad"
 
 #: src/modules/statistics/graphics/stats.py:63
 #, possible-python-brace-format
