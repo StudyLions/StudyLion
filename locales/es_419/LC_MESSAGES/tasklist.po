@@ -132,12 +132,12 @@ msgstr "tarea"
 #: src/modules/tasklist/cog.py:412
 msgctxt "cmd:tasks_new|param:parent"
 msgid "parent"
-msgstr ""
+msgstr "padre"
 
 #: src/modules/tasklist/cog.py:415
 msgctxt "cmd:tasks_new|param:content|desc"
 msgid "Content of your new task."
-msgstr ""
+msgstr "Contenido de su nueva tarea."
 
 #: src/modules/tasklist/cog.py:416
 msgctxt "cmd:tasks_new|param:parent"
