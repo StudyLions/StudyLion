@@ -673,17 +673,17 @@ msgstr ""
 #: src/modules/statistics/ui/weeklymonthly.py:616
 msgctxt "ui:weeklymonthly|button:period|close|label"
 msgid "Close Selector"
-msgstr ""
+msgstr "Cerrar Selector"
 
 #: src/modules/statistics/ui/weeklymonthly.py:621
 msgctxt "ui:weeklymonthly|button:period|weekly|label"
 msgid "Select Week"
-msgstr ""
+msgstr "Seleccionar semana"
 
 #: src/modules/statistics/ui/weeklymonthly.py:626
 msgctxt "ui:weeklymonthly|button:period|monthly|label"
 msgid "Select Month"
-msgstr ""
+msgstr "Seleccione el mes"
 
 #: src/modules/statistics/ui/weeklymonthly.py:691
 msgctxt "ui:weeklymonthly|menu:period|weekly|placeholder"
