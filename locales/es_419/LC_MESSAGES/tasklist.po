@@ -768,12 +768,12 @@ msgstr "{coin}**{amount}** por tarea."
 #: src/modules/tasklist/settings.py:76
 msgctxt "guildset:task_reward_limit"
 msgid "task_reward_limit"
-msgstr ""
+msgstr "limite_recompensa_tarea"
 
 #: src/modules/tasklist/settings.py:79
 msgctxt "guildset:task_reward_limit|desc"
 msgid "Maximum number of task rewards given per 24h."
-msgstr ""
+msgstr "Número máximo de recompensas por tarea concedidas en 24 horas."
 
 #: src/modules/tasklist/settings.py:83
 msgctxt "guildset:task_reward_limit|long_desc"
@@ -781,6 +781,8 @@ msgid ""
 "Maximum number of times in each 24h period that members will be rewarded for"
 " completing a task."
 msgstr ""
+"Número máximo de veces en cada periodo de 24h que los miembros serán "
+"recompensados por completar una tarea."
 
 #: src/modules/tasklist/settings.py:88
 msgctxt "guildset:task_reward_limit|accepts"
