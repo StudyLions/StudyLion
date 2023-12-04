@@ -251,12 +251,12 @@ msgstr "anki"
 #: src/modules/statistics/settings.py:54
 msgctxt "settype:state|accepts"
 msgid "Voice/Text/Anki"
-msgstr ""
+msgstr "Voz/Texto/Anki"
 
 #: src/modules/statistics/settings.py:67
 msgctxt "userset:show_global_stats"
 msgid "global_stats"
-msgstr ""
+msgstr "estadísticas_globales"
 
 #: src/modules/statistics/settings.py:70
 msgctxt "userset:show_global_stats|desc"
