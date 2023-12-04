@@ -526,18 +526,21 @@ msgstr "Estadísticas mensuales de Anki"
 #: src/modules/statistics/ui/weeklymonthly.py:144
 msgctxt "modal:goal_editor|field:task_goal|label"
 msgid "Task goal"
-msgstr ""
+msgstr "Objetivo de la tarea"
 
 #: src/modules/statistics/ui/weeklymonthly.py:148
 msgctxt "modal:goal_editor|field:task_goal|placeholder"
 msgid "Enter the number of tasklist tasks you aim to do"
 msgstr ""
+"Introduzca el número de tareas de la lista de tareas que pretende realizar"
 
 #: src/modules/statistics/ui/weeklymonthly.py:159
 #, possible-python-brace-format
 msgctxt "modal:goal_editor|field:task_goal|error:NAN"
 msgid "The provided task goal `{input}` is not a number! Please try again."
 msgstr ""
+"El objetivo de tarea proporcionado `{input}` no es un número. Inténtelo de "
+"nuevo."
 
 #: src/modules/statistics/ui/weeklymonthly.py:181
 msgctxt "modal:goal_editor|field:voice_goal|label"
