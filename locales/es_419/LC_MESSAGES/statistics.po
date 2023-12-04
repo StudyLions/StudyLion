@@ -693,7 +693,7 @@ msgstr "Seleccione la semana que desea visualizar"
 #: src/modules/statistics/ui/weeklymonthly.py:696
 msgctxt "ui:weeklymonthly|menu:period|monthly|placeholder"
 msgid "Select a month to display"
-msgstr ""
+msgstr "Seleccione el mes que desea visualizar"
 
 #: src/modules/statistics/ui/weeklymonthly.py:718
 msgctxt "ui:WeeklyMonthly|button:global|resp:success"
@@ -701,6 +701,8 @@ msgid ""
 "You will now see combined statistics from all your servers (where "
 "applicable)! Press again to revert."
 msgstr ""
+"Ahora verá las estadísticas combinadas de todos sus servidores (si procede)."
+" Pulse de nuevo para revertir."
 
 #: src/modules/statistics/ui/weeklymonthly.py:731
 msgctxt "ui:WeeklyMonthly|button:global|mode:local"
