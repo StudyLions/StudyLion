@@ -248,12 +248,12 @@ msgstr "tarea"
 #: src/modules/tasklist/cog.py:588
 msgctxt "cmd:tasks_edit|param:new_content"
 msgid "new_task"
-msgstr ""
+msgstr "nueva_tarea"
 
 #: src/modules/tasklist/cog.py:589
 msgctxt "cmd:tasks_edit|param:new_parent"
 msgid "new_parent"
-msgstr ""
+msgstr "nuevo_padre"
 
 #: src/modules/tasklist/cog.py:592
 msgctxt "cmd:tasks_edit|param:taskstr|desc"
