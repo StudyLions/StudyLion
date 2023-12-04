@@ -191,7 +191,7 @@ msgstr "Sea responsable"
 #: src/modules/statistics/achievements.py:367
 msgctxt "achievement:schedule|subtext"
 msgid "Attend 500 Scheduled Sessions"
-msgstr ""
+msgstr "Asistir a 500 sesiones programadas"
 
 #: src/modules/statistics/achievements.py:392
 msgctxt "achievement:monthlyhours|name"
