@@ -797,27 +797,27 @@ msgstr "Actividad vocal"
 #: src/modules/statistics/ui/leaderboard.py:277
 msgctxt "ui:leaderboard|menu:stats|item:study"
 msgid "Study Statistics"
-msgstr ""
+msgstr "Estadísticas del estudio"
 
 #: src/modules/statistics/ui/leaderboard.py:288
 msgctxt "ui:leaderboard|menu:stats|item:message"
 msgid "Message Activity"
-msgstr ""
+msgstr "Mensaje Actividad"
 
 #: src/modules/statistics/ui/leaderboard.py:299
 msgctxt "ui:leaderboard|menu;stats|item:anki"
 msgid "Anki Cards Reviewed"
-msgstr ""
+msgstr "Revisión de las tarjetas Anki"
 
 #: src/modules/statistics/ui/leaderboard.py:353
 msgctxt "ui:leaderboard|button:season|label"
 msgid "This Season"
-msgstr ""
+msgstr "Esta temporada"
 
 #: src/modules/statistics/ui/leaderboard.py:357
 msgctxt "ui:leaderboard|button:day|label"
 msgid "Today"
-msgstr ""
+msgstr "Hoy"
 
 #: src/modules/statistics/ui/leaderboard.py:361
 msgctxt "ui:leaderboard|button:week|label"
