@@ -622,6 +622,8 @@ msgid ""
 "[ ] Write my biology essay\n"
 "[x] Complete the second maths assignment\n"
 msgstr ""
+"[ ] Escribir mi ensayo de biología\n"
+"[x] Completar la segunda tarea de matemáticas\n"
 
 #: src/modules/statistics/ui/weeklymonthly.py:284
 #, possible-python-brace-format
