@@ -560,12 +560,12 @@ msgstr "Objetivo del mensaje"
 #: src/modules/statistics/ui/weeklymonthly.py:194
 msgctxt "modal:goal_editor|field:text_goal|placeholder"
 msgid "Enter a message count to aim for."
-msgstr ""
+msgstr "Introduzca un recuento de mensajes al que aspirar."
 
 #: src/modules/statistics/ui/weeklymonthly.py:199
 msgctxt "modal:goal_editor|field:anki_goal|label"
 msgid "Card goal"
-msgstr ""
+msgstr "Gol de tarjeta"
 
 #: src/modules/statistics/ui/weeklymonthly.py:203
 msgctxt "modal:goal_editor|field:anki_goal|label"
