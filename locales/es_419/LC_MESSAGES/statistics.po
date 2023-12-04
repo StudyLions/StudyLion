@@ -768,12 +768,12 @@ msgstr "Editar insignias de perfil"
 #: src/modules/statistics/ui/profile.py:219
 msgctxt "ui:profile_card|button:statistics|label:hide"
 msgid "Hide Statistics"
-msgstr ""
+msgstr "Ocultar estadísticas"
 
 #: src/modules/statistics/ui/profile.py:224
 msgctxt "ui:profile_card|button:statistics|label:show"
 msgid "Show Statistics"
-msgstr ""
+msgstr "v"
 
 #: src/modules/statistics/ui/profile.py:253
 msgctxt "ui:Profile|button:global|resp:success"
