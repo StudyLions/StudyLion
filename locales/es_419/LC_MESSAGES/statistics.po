@@ -476,12 +476,12 @@ msgstr "Panel de estadísticas de actividad"
 #, possible-python-brace-format
 msgctxt "gui:stats|mode:voice|month"
 msgid "{hours} hours"
-msgstr ""
+msgstr "{hours} horas"
 
 #: src/modules/statistics/ui/goals.py:92
 msgctxt "ui:MonthlyUI|name"
 msgid "Monthly"
-msgstr ""
+msgstr "Mensualmente"
 
 #: src/modules/statistics/ui/goals.py:135
 msgctxt "ui:WeeklyUI|name"
