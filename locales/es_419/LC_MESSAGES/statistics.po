@@ -852,7 +852,7 @@ msgstr "Número de página al que saltar"
 #: src/modules/statistics/ui/leaderboard.py:403
 msgctxt "ui:leaderboard|button:jump|error:invalid_page"
 msgid "Invalid page number, please try again!"
-msgstr ""
+msgstr "Número de página no válido, inténtelo de nuevo."
 
 #: src/modules/statistics/ui/leaderboard.py:447
 msgctxt "ui:leaderboard|chunk_warning"
