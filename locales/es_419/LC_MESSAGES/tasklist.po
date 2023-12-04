@@ -744,18 +744,20 @@ msgid ""
 "The number of coins members will be rewarded each time they complete a task "
 "on their tasklist."
 msgstr ""
+"El número de monedas que los miembros recibirán cada vez que completen una "
+"tarea de su lista de tareas."
 
 #: src/modules/tasklist/settings.py:46
 msgctxt "guildset:task_reward|accepts"
 msgid "The number of LionCoins to reward per task."
-msgstr ""
+msgstr "El número de LionCoins a recompensar por tarea."
 
 #: src/modules/tasklist/settings.py:58
 #, possible-python-brace-format
 msgctxt "guildset:task_reward|response"
 msgid ""
 "Members will now be rewarded {coin}**{amount}** for each completed task."
-msgstr ""
+msgstr "Los miembros recibirán {coin}**{amount}** por cada tarea completada."
 
 #: src/modules/tasklist/settings.py:67
 #, possible-python-brace-format
