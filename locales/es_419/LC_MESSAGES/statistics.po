@@ -501,7 +501,7 @@ msgstr "Estadísticas semanales de voz"
 #: src/modules/statistics/ui/weeklymonthly.py:101
 msgctxt "menu:stat_type|opt:weekly_text|name"
 msgid "Weekly Text Statistics"
-msgstr ""
+msgstr "Estadísticas semanales de texto"
 
 #: src/modules/statistics/ui/weeklymonthly.py:106
 msgctxt "menu:stat_type|opt:weekly_anki|name"
