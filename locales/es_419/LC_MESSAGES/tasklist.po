@@ -90,12 +90,12 @@ msgstr "tareas"
 #: src/modules/tasklist/cog.py:272
 msgctxt "group:tasks|desc"
 msgid "Base command group for tasklist commands."
-msgstr ""
+msgstr "Grupo de comandos base para los comandos de la lista de tareas."
 
 #: src/modules/tasklist/cog.py:295
 msgctxt "argtype:taskid|error:no_tasks"
 msgid "Tasklist empty! No matching tasks."
-msgstr ""
+msgstr "Lista de tareas vacía. No hay tareas coincidentes."
 
 #: src/modules/tasklist/cog.py:332
 msgctxt "argtype:taskid|match:all"
