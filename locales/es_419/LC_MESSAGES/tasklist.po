@@ -519,6 +519,8 @@ msgid ""
 "Members will now be rewarded {coin}**{amount}** for each task they complete "
 "up to a maximum of `{limit}` tasks per 24h."
 msgstr ""
+"Ahora los miembros recibirán {coin}**{amount}** por cada tarea que completen"
+" hasta un máximo de `{limit}` tareas por 24h."
 
 #: src/modules/tasklist/tasklist.py:267
 #, possible-python-brace-format
