@@ -1076,7 +1076,7 @@ msgstr "Ha adquirido el rol **{role}** por {coin}**{amount}**"
 #, possible-python-brace-format
 msgctxt "rolemenu|select|success:nopurchase|desc"
 msgid "You have equipped **{role}**"
-msgstr ""
+msgstr "Has equipado **{role}**"
 
 #: src/modules/rolemenus/rolemenu.py:605
 #, possible-python-brace-format
@@ -1087,7 +1087,7 @@ msgstr "El rol expirará en {timestamp}."
 #: src/modules/rolemenus/rolemenu.py:616
 msgctxt "rolemenu|eventlog|event:role_equipped|title"
 msgid "Member equipped role from role menu"
-msgstr ""
+msgstr "Función equipada con miembros en el menú de funciones"
 
 #: src/modules/rolemenus/rolemenu.py:620
 #, possible-python-brace-format
