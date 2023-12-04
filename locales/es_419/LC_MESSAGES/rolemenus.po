@@ -1638,6 +1638,8 @@ msgid ""
 "An unknown error ocurred while posting to {channel}!\n"
 "**Error:** `{exception}`"
 msgstr ""
+"Se ha producido un error desconocido al publicar en {channel}.\n"
+"**Error:** `{exception}`"
 
 #: src/modules/rolemenus/ui/menueditor.py:915
 msgctxt "ui:menu_editor|button:repost|widget:repost|success|title"
