@@ -115,6 +115,8 @@ msgid ""
 "Time from which to start counting activity for rank badges and season "
 "leaderboards. (YYYY-MM-DD)"
 msgstr ""
+"Momento desde que se empieza a contar para las insignias y las  "
+"clasificaciones. (AAAA-MM-DD)"
 
 #: src/modules/statistics/achievements.py:77
 msgctxt "achievement|congrats"
