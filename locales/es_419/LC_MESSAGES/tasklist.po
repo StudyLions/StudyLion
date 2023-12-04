@@ -686,12 +686,12 @@ msgstr ""
 #: src/modules/tasklist/ui.py:692
 msgctxt "ui:tasklist|button:edit_bulk|label"
 msgid "Bulk Edit"
-msgstr ""
+msgstr "Edición masiva"
 
 #: src/modules/tasklist/ui.py:705
 msgctxt "ui:tasklist|button:clear|label"
 msgid "Clear Tasklist"
-msgstr ""
+msgstr "Borrar lista de tareas"
 
 #: src/modules/tasklist/ui.py:724
 #, possible-python-brace-format
