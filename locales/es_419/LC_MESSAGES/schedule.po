@@ -727,6 +727,7 @@ msgstr "Panel de configuración de sesiones programadas"
 msgctxt "dash:schedule|title"
 msgid "Scheduled Session Configuration ({commands[admin config schedule]})"
 msgstr ""
+"Configuración de sesiones programadas ({commands[admin config schedule]})"
 
 #: src/modules/schedule/ui/settingui.py:238
 msgctxt "dash:schedule|dropdown|placeholder"
@@ -736,17 +737,19 @@ msgstr "Sesiones programadas Panel"
 #: src/modules/schedule/ui/settingui.py:255
 msgctxt "dash:schedule|section:schedule_channels|name"
 msgid "Scheduled Session Channels ({commands[admin config schedule]})"
-msgstr ""
+msgstr "Canales de sesión programados ({commands[admin config schedule]})"
 
 #: src/modules/schedule/ui/settingui.py:265
 msgctxt "dash:schedule|section:schedule_rewards|name"
 msgid "Scheduled Session Rewards ({commands[admin config schedule]})"
 msgstr ""
+"Recompensas de sesiones programadas ({commands[admin config schedule]})"
 
 #: src/modules/schedule/ui/settingui.py:275
 msgctxt "dash:schedule|section:schedule_blacklist|name"
 msgid "Scheduled Session Blacklist ({commands[admin config schedule]})"
 msgstr ""
+"Lista negra de sesiones programadas ({commands[admin config schedule]})"
 
 #: src/modules/schedule/ui/scheduleui.py:31
 msgctxt "ui:schedule|about"
@@ -762,6 +765,16 @@ msgid ""
 "\n"
 "**Note:** *Make sure your timezone is set correctly (with `/my timezone`), or the times I tell might not make sense!*"
 msgstr ""
+"**¿Crees que puedes comprometerte con un horario y cumplirlo?**\n"
+"**Programe sesiones de voz aquí y obtenga una recompensa por mantener su responsabilidad.\n"
+"\n"
+"Utilice el siguiente menú para reservar franjas horarias con LionCoins. Si estás activo (en los canales de voz dedicados) durante esas franjas horarias, recibirás una recompensa, además de una gran bonificación si todos los que programaron esa franja horaria lo consiguieron.\n"
+"Pero ten cuidado: si no lo consigues, todas las sesiones que hayas reservado se cancelarán sin derecho a reembolso. Y si sigue sin asistir a las sesiones programadas, se le podrá prohibir que las reserve en el futuro.\n"
+"\n"
+"Cuando comience tu sesión programada, recibirás un ping del canal de programación, que contendrá más información sobre cómo asistir a tu sesión.\n"
+"Si descubre que no puede asistir a la sesión programada, sea responsable y utilice este comando para cancelar o borrar su programación.\n"
+"\n"
+"**Nota:** *Asegúrate de que tu zona horaria está configurada correctamente (con `/my timezone`), o las horas que te diga podrían no tener sentido!*"
 
 #: src/modules/schedule/ui/scheduleui.py:130
 msgctxt "ui:schedule|button:clear|error:nothing"
