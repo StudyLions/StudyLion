@@ -860,12 +860,14 @@ msgid ""
 "**Note:** Could not retrieve member list from Discord, so some members may "
 "be missing. Try again in a minute!"
 msgstr ""
+"**Nota:** No se ha podido recuperar la lista de miembros de Discord, por lo "
+"que es posible que falten algunos. ¡Inténtalo de nuevo en un minuto!"
 
 #: src/modules/statistics/ui/leaderboard.py:454
 #, possible-python-brace-format
 msgctxt "ui:leaderboard|since"
 msgid "Counting statistics since {timestamp}"
-msgstr ""
+msgstr "Recuento de estadísticas desde {timestamp}"
 
 #: src/modules/statistics/ui/leaderboard.py:467
 #, possible-python-brace-format
