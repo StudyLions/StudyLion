@@ -668,6 +668,7 @@ msgctxt "ui:weeklymonthly|menu:period|weekly|desc"
 msgid ""
 "{start_day} {start_month} {start_year} to {end_day} {end_month} {end_year}"
 msgstr ""
+"{inicio_día} {inicio_mes} {inicio_año} a {fin_día} {fin_mes} {fin_año}"
 
 #: src/modules/statistics/ui/weeklymonthly.py:616
 msgctxt "ui:weeklymonthly|button:period|close|label"
