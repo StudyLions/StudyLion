@@ -648,13 +648,13 @@ msgstr "Editor de objetivos mensuales"
 #: src/modules/statistics/ui/weeklymonthly.py:503
 msgctxt "ui:weeklymonthly|button:edit_goals|label"
 msgid "Edit Goals"
-msgstr ""
+msgstr "Editar objetivos"
 
 #: src/modules/statistics/ui/weeklymonthly.py:519
 #, possible-python-brace-format
 msgctxt "ui:weeklymonthly|menu:period|monthly|label"
 msgid "{month} {year}"
-msgstr ""
+msgstr "{mes} {año}"
 
 #: src/modules/statistics/ui/weeklymonthly.py:534
 #, possible-python-brace-format
