@@ -141,12 +141,12 @@ msgstr "Soñar a lo grande"
 #: src/modules/statistics/achievements.py:174
 msgctxt "achievement:voicehours|subtext"
 msgid "Study a total of 1000 hours"
-msgstr ""
+msgstr "Estudiar un total de 1000 horas"
 
 #: src/modules/statistics/achievements.py:196
 msgctxt "achievement:voicestreak|name"
 msgid "Consistency is Key"
-msgstr ""
+msgstr "La coherencia es la clave"
 
 #: src/modules/statistics/achievements.py:200
 msgctxt "achievement:voicestreak|subtext"
