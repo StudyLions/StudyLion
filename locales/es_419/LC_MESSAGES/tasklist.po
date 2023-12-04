@@ -488,14 +488,14 @@ msgstr "Si desea marcar también todas las subtareas como incompletas."
 msgctxt "cmd:tasks_untick|resp:success"
 msgid "{tick} Marked `{label}` as incomplete."
 msgid_plural "{tick} Marked `{count}` tasks as incomplete."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "{tick} Marcado `{label}` como incompleto."
+msgstr[1] "{tick} Tareas `{count}` marcadas como incompletas."
+msgstr[2] "{tick} Tareas `{count}`  marcadas como incompletas."
 
 #: src/modules/tasklist/cog.py:978
 msgctxt "cmd:configure_tasklist"
 msgid "tasklist"
-msgstr ""
+msgstr "lista de tareas"
 
 #: src/modules/tasklist/cog.py:979
 msgctxt "cmd:configure_tasklist|desc"
