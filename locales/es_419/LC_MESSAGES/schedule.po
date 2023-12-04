@@ -195,13 +195,13 @@ msgstr "No hay sesiones reservables que coincidan con '{partial}'"
 #: src/modules/schedule/cog.py:1003
 msgctxt "cmd:schedule|acmpl:cancel|error:empty_schedule"
 msgid "You do not have any upcoming sessions to cancel!"
-msgstr ""
+msgstr "No tiene ninguna próxima sesión que cancelar."
 
 #: src/modules/schedule/cog.py:1036
 #, possible-python-brace-format
 msgctxt "cmd:schedule|acmpl:cancel|error:no_matching"
 msgid "No cancellable sessions matching '{partial}'"
-msgstr ""
+msgstr "No hay sesiones cancelables que coincidan con '{partial}'"
 
 #: src/modules/schedule/cog.py:1081
 msgctxt "cmd:configure_schedule"
