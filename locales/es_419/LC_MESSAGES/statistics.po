@@ -660,7 +660,7 @@ msgstr "{mes} {año}"
 #, possible-python-brace-format
 msgctxt "ui:weeklymonthly|menu:period|weekly|label"
 msgid "{year} W{week}"
-msgstr ""
+msgstr "{año} W{semana}"
 
 #: src/modules/statistics/ui/weeklymonthly.py:538
 #, possible-python-brace-format
