@@ -1081,6 +1081,8 @@ msgid ""
 "The exclusive scheduled session category **{category}** will also be open to"
 " you during your scheduled session."
 msgstr ""
+"La categoría exclusiva de la sesión programada **{category}** también estará"
+" abierta para usted durante su sesión programada."
 
 #: src/modules/schedule/ui/sessionui.py:243
 #, possible-python-brace-format
