@@ -415,11 +415,14 @@ msgstr "default_stat"
 msgctxt "guildset:default_stat|desc"
 msgid "Statistic type to display by default in setting dialogues."
 msgstr ""
+"Tipo de estadística a mostrar por defecto en los diálogos de configuración."
 
 #: src/modules/statistics/settings.py:279
 msgctxt "guildset:default_stat|long_desc"
 msgid "Which statistic type to display by default in setting dialogues."
 msgstr ""
+"Qué tipo de estadística mostrar por defecto en los diálogos de "
+"configuración."
 
 #: src/modules/statistics/settings.py:313
 msgctxt "ui:statistics_config|menu:unranked_roles|placeholder"
