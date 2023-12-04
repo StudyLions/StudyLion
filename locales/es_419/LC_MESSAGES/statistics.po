@@ -355,7 +355,7 @@ msgstr "Lista separada por comas de nombres o ids de roles no clasificados."
 #: src/modules/statistics/settings.py:189
 msgctxt "guildset:unranked_roles|set_using"
 msgid "Role selector below."
-msgstr ""
+msgstr "Selector de funciones a continuación."
 
 #: src/modules/statistics/settings.py:199
 #, possible-python-brace-format
@@ -363,6 +363,8 @@ msgctxt "guildset:unranked_roles|set_response|set"
 msgid ""
 "Members of the following roles will not appear on the leaderboard: {roles}"
 msgstr ""
+"Los miembros de los siguientes roles no aparecerán en la tabla de "
+"clasificación: {roles}"
 
 #: src/modules/statistics/settings.py:206
 msgctxt "guildset:unranked_roles|set_response|unset"
