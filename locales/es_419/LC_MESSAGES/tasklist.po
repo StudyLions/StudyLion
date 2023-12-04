@@ -588,12 +588,12 @@ msgstr ""
 #: src/modules/tasklist/ui.py:130
 msgctxt "modal:tasklist_bulk_editor"
 msgid "Tasklist Editor"
-msgstr ""
+msgstr "Editor de listas de tareas"
 
 #: src/modules/tasklist/ui.py:188
 msgctxt "ui:tasklist|menu:main|mode:toggle|placeholder"
 msgid "Select to Toggle"
-msgstr ""
+msgstr "Seleccionar para cambiar"
 
 #: src/modules/tasklist/ui.py:192
 #, possible-python-brace-format
