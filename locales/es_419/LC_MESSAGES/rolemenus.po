@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-15 15:58+0300\n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Ronin DeMentira, 2023\n"
 "Language-Team: Spanish (Latin America) (https://app.transifex.com/leobot/teams/174919/es_419/)\n"
@@ -62,23 +62,25 @@ msgstr ""
 #: src/modules/rolemenus/cog.py:333
 msgctxt "eventlog|event:rolemenu_role_expire|error:remove_failed"
 msgid "Removed the role, but the member still has the role!!"
-msgstr ""
+msgstr "Eliminado el rol, ¡¡¡pero el miembro sigue teniendo el rol!!!"
 
 #: src/modules/rolemenus/cog.py:344
 msgctxt "eventlog|event:rolemenu_role_expire|error:member_gone"
 msgid "Member could not be found.. role has been removed from saved roles."
 msgstr ""
+"No se ha podido encontrar al miembro.. el rol ha sido eliminado de los roles"
+" guardados."
 
 #: src/modules/rolemenus/cog.py:350
 #, possible-python-brace-format
 msgctxt "eventlog|event:rolemenu_role_expire|error:no_role"
 msgid "Role {role} no longer exists."
-msgstr ""
+msgstr "El rol {role} ya no existe."
 
 #: src/modules/rolemenus/cog.py:356
 msgctxt "eventlog|event:rolemenu_role_expire|title"
 msgid "Equipped role has expired"
-msgstr ""
+msgstr "La función Equipado ha expirado"
 
 #: src/modules/rolemenus/cog.py:360
 #, possible-python-brace-format
