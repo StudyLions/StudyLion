@@ -447,12 +447,12 @@ msgstr "Mensaje Actividad"
 #: src/modules/statistics/settings.py:361
 msgctxt "ui:statistics_config|menu:visible_stats|item:anki"
 msgid "Anki Reviews"
-msgstr ""
+msgstr "Reseñas de Anki"
 
 #: src/modules/statistics/settings.py:372
 msgctxt "ui:statistics_config|menu:visible_stats|placeholder"
 msgid "Select Visible Statistics"
-msgstr ""
+msgstr "Seleccionar estadísticas visibles"
 
 #: src/modules/statistics/settings.py:393
 msgctxt "ui:statistics_config|embed|title"
