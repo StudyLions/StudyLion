@@ -87,12 +87,12 @@ msgstr "logros"
 #: src/modules/statistics/cog.py:173
 msgctxt "cmd:achievements|desc"
 msgid "View your progress towards the activity achievement awards!"
-msgstr ""
+msgstr "Consulta tu progreso hacia los premios por logros en las actividades."
 
 #: src/modules/statistics/cog.py:190
 msgctxt "cmd:achievements|embed:title"
 msgid "Achievements"
-msgstr ""
+msgstr "Logros"
 
 #: src/modules/statistics/cog.py:208
 msgctxt "cmd:configure_statistics"
