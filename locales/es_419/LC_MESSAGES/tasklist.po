@@ -698,6 +698,8 @@ msgstr "Borrar lista de tareas"
 msgctxt "ui:tasklist|button:save|dm:contents"
 msgid "Your tasklist as of {now} is attached. Click here to jump back: {jump}"
 msgstr ""
+"Su lista de tareas a partir de {now} está adjunta. Haga clic aquí para "
+"volver atrás: {jump}"
 
 #: src/modules/tasklist/ui.py:737
 msgctxt "ui:tasklist|button:save|error:dms"
