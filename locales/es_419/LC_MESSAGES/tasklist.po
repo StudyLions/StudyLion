@@ -452,7 +452,7 @@ msgstr[2] "{tick} Tareas `{count}` marcadas como completas."
 #: src/modules/tasklist/cog.py:899
 msgctxt "cmd:tasks_untick"
 msgid "untick"
-msgstr ""
+msgstr "desmarcar"
 
 #: src/modules/tasklist/cog.py:900
 msgctxt "cmd:tasks_untick|desc"
