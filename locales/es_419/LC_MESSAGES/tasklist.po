@@ -581,6 +581,9 @@ msgid ""
 "- [x] This is task 2, finished.\n"
 "  - [ ] This is subtask 2.1."
 msgstr ""
+"- [ ] Esta es la tarea 1, sin terminar.\n"
+"- [x] Ésta es la tarea 2, terminada.\n"
+"- [ ] Esta es la subtarea 2.1."
 
 #: src/modules/tasklist/ui.py:130
 msgctxt "modal:tasklist_bulk_editor"
