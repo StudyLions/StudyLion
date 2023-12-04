@@ -842,12 +842,12 @@ msgstr "Saltar"
 #: src/modules/statistics/ui/leaderboard.py:388
 msgctxt "ui:leaderboard|button:jump|input:title"
 msgid "Jump to page"
-msgstr ""
+msgstr "Ir a la página"
 
 #: src/modules/statistics/ui/leaderboard.py:392
 msgctxt "ui:leaderboard|button:jump|input:question"
 msgid "Page number to jump to"
-msgstr ""
+msgstr "Número de página al que saltar"
 
 #: src/modules/statistics/ui/leaderboard.py:403
 msgctxt "ui:leaderboard|button:jump|error:invalid_page"
