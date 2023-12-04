@@ -885,9 +885,9 @@ msgstr "No ha habido actividad de mensajes desde {timestamp}."
 #, possible-python-brace-format
 msgctxt "ui:leaderboard|mode:anki|message:empty|desc"
 msgid "There have been no Anki cards reviewed since {timestamp}"
-msgstr ""
+msgstr "No se han revisado tarjetas Anki desde {timestamp}."
 
 #: src/modules/statistics/ui/leaderboard.py:486
 msgctxt "ui:leaderboard|message:empty|title"
 msgid "Leaderboard Empty!"
-msgstr ""
+msgstr "¡Leaderboard Vacío!"
