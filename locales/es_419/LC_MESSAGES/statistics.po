@@ -608,6 +608,8 @@ msgid ""
 "[ ] Write my biology essay\n"
 "[x] Complete the second maths assignment\n"
 msgstr ""
+"[ ] Escribir mi ensayo de biología\n"
+"[x] Completar la segunda tarea de matemáticas\n"
 
 #: src/modules/statistics/ui/weeklymonthly.py:262
 msgctxt "modal:goal_editor|field:monthly_task_editor|label"
