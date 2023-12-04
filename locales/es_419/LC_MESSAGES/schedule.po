@@ -1210,12 +1210,12 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "session|notify|dm|join_line:room_voice"
 msgid "Please attend your session by joining {room}"
-msgstr ""
+msgstr "Por favor, asista a su sesión uniéndose a la {room}"
 
 #: src/modules/schedule/core/session.py:421
 msgctxt "session|notify|dm|join_line:all_channels"
 msgid "Please attend your session by joining a tracked voice channel!"
-msgstr ""
+msgstr "Asista a su sesión uniéndose a un canal de voz con seguimiento."
 
 #: src/modules/schedule/core/session.py:443
 msgctxt "session|notify|dm|join_line:channels"
