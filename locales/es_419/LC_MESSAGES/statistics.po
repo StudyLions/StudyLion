@@ -121,12 +121,12 @@ msgstr ""
 #: src/modules/statistics/achievements.py:77
 msgctxt "achievement|congrats"
 msgid "Congratulations! You have completed this challenge."
-msgstr ""
+msgstr "Enhorabuena. Ha completado este reto."
 
 #: src/modules/statistics/achievements.py:146
 msgctxt "achievement:workout|name"
 msgid "It's about Power"
-msgstr ""
+msgstr "Se trata de poder"
 
 #: src/modules/statistics/achievements.py:150
 msgctxt "achievement:workout|subtext"
