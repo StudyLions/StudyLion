@@ -1151,13 +1151,13 @@ msgstr "{member} unequipped {role} from {menu}"
 #, possible-python-brace-format
 msgctxt "rolemenu|error:role_gone"
 msgid "The role **{name}** no longer exists!"
-msgstr ""
+msgstr "¡El rol **{name}** ya no existe!"
 
 #: src/modules/rolemenus/rolemenu.py:760
 #, possible-python-brace-format
 msgctxt "rolemenu|select|error:required_role"
 msgid "You need to have the role **{role}** required to use this menu!"
-msgstr ""
+msgstr "¡Necesitas tener el rol **{role}** requerido para usar este menú!"
 
 #: src/modules/rolemenus/rolemenu.py:818
 #, possible-python-brace-format
