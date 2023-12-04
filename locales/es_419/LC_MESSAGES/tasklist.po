@@ -212,6 +212,8 @@ msgctxt "cmd:tasks_upload|error:too_many_lines"
 msgid ""
 "Too many tasks! Refusing to process a tasklist with more than `1000` lines."
 msgstr ""
+"Demasiadas tareas Rechazo a procesar una lista de tareas con más de `1000` "
+"líneas."
 
 #: src/modules/tasklist/cog.py:521
 msgctxt "cmd:tasks_upload|error:decoding"
@@ -219,6 +221,8 @@ msgid ""
 "Could not decode attached tasklist. Please make sure it is saved with the "
 "`UTF-8` encoding."
 msgstr ""
+"No se ha podido descodificar la lista de tareas adjunta. Asegúrese de que se"
+" guarda con la codificación `UTF-8`."
 
 #: src/modules/tasklist/cog.py:568
 #, possible-python-brace-format
