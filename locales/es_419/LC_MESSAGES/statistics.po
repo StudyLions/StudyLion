@@ -161,12 +161,12 @@ msgstr "Somos un equipo"
 #: src/modules/statistics/achievements.py:287
 msgctxt "achievement:voting|subtext"
 msgid "Vote 100 times on top.gg"
-msgstr ""
+msgstr "Vota 100 veces en top.gg"
 
 #: src/modules/statistics/achievements.py:304
 msgctxt "achievement:days|name"
 msgid "Aim For The Moon"
-msgstr ""
+msgstr "Apunta a la luna"
 
 #: src/modules/statistics/achievements.py:308
 msgctxt "achievement:days|subtext"
