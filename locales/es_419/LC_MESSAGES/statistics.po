@@ -506,12 +506,12 @@ msgstr "Estadísticas semanales de texto"
 #: src/modules/statistics/ui/weeklymonthly.py:106
 msgctxt "menu:stat_type|opt:weekly_anki|name"
 msgid "Weekly Anki Statistics"
-msgstr ""
+msgstr "Estadísticas semanales de Anki"
 
 #: src/modules/statistics/ui/weeklymonthly.py:112
 msgctxt "menu:stat_type|opt:monthly_voice|name"
 msgid "Monthly Voice Statistics"
-msgstr ""
+msgstr "Estadísticas mensuales de voz"
 
 #: src/modules/statistics/ui/weeklymonthly.py:117
 msgctxt "menu:stat_type|opt:monthly_text|name"
