@@ -867,12 +867,12 @@ msgstr "Cerrar"
 #: src/modules/tasklist/settings.py:294
 msgctxt "ui:tasklist_config|button:reset|label"
 msgid "Reset"
-msgstr ""
+msgstr "Restablecer"
 
 #: src/modules/tasklist/settings.py:297
 msgctxt "ui:tasklist_config|menu:channels|placeholder"
 msgid "Set Tasklist Channels"
-msgstr ""
+msgstr "Establecer canales de listas de tareas"
 
 #: src/modules/tasklist/settings.py:315
 msgctxt "ui:tasklist_config|embed|title"
