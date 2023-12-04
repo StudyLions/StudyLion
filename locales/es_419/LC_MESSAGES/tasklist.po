@@ -661,12 +661,12 @@ msgstr "Añadir tarea"
 #: src/modules/tasklist/ui.py:629
 msgctxt "ui:tasklist|button:edit_mode|label"
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: src/modules/tasklist/ui.py:645
 msgctxt "ui:tasklist|button:delete_mode|label"
 msgid "Delete"
-msgstr ""
+msgstr "Borrar"
 
 #: src/modules/tasklist/ui.py:661
 msgctxt "ui:tasklist|button:toggle_mode|label"
