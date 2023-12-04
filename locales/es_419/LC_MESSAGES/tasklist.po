@@ -651,12 +651,12 @@ msgstr "No hay tareas que coincidan con la tarea principal `{input}`."
 #: src/modules/tasklist/ui.py:501
 msgctxt "ui:tasklist|menu:edit|modal:title"
 msgid "Edit task"
-msgstr ""
+msgstr "Editar tarea"
 
 #: src/modules/tasklist/ui.py:596
 msgctxt "ui:tasklist_single_editor|title"
 msgid "Add task"
-msgstr ""
+msgstr "Añadir tarea"
 
 #: src/modules/tasklist/ui.py:629
 msgctxt "ui:tasklist|button:edit_mode|label"
