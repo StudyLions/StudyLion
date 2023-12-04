@@ -54,12 +54,12 @@ msgstr "Miembro del que mostrar el perfil."
 #: src/modules/statistics/cog.py:110
 msgctxt "cmd:stats"
 msgid "stats"
-msgstr ""
+msgstr "Estadísticas"
 
 #: src/modules/statistics/cog.py:113
 msgctxt "cmd:stats|desc"
 msgid "Weekly and monthly statistics for your recent activity."
-msgstr ""
+msgstr "Estadísticas semanales y mensuales de su actividad reciente."
 
 #: src/modules/statistics/cog.py:131
 msgctxt "cmd:leaderboard"
