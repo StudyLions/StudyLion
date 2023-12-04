@@ -331,12 +331,12 @@ msgstr ""
 #: src/modules/statistics/settings.py:162
 msgctxt "guildset:unranked_roles"
 msgid "unranked_roles"
-msgstr ""
+msgstr "unranked_roles"
 
 #: src/modules/statistics/settings.py:165
 msgctxt "guildset:unranked_roles|desc"
 msgid "Roles to exclude from the leaderboards."
-msgstr ""
+msgstr "Roles a excluir de las tablas de clasificación."
 
 #: src/modules/statistics/settings.py:169
 msgctxt "guildset:unranked_roles|long_desc"
