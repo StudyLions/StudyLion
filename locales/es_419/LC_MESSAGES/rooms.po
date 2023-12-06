@@ -378,6 +378,8 @@ msgid ""
 "Could not create your private room! You were not charged.\n"
 "I have insufficient permissions to create a private room channel."
 msgstr ""
+"No se pudo crear su sala privada. No se te ha cobrado.\n"
+"No tengo permisos suficientes para crear un canal de sala privada."
 
 #: src/modules/rooms/cog.py:617
 #, possible-python-brace-format
