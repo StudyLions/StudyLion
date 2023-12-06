@@ -217,12 +217,12 @@ msgstr "Lista separada por comas de los números de ticket a perdonar."
 #: src/modules/moderation/cog.py:381
 msgctxt "cmd:pardon|param:reason"
 msgid "Why these tickets are being pardoned."
-msgstr "Por qué se perdonan estas multas."
+msgstr "Por qué se perdonan estos tickets."
 
 #: src/modules/moderation/cog.py:402
 msgctxt "cmd:pardon|modal:reason|title"
 msgid "Pardon Tickets"
-msgstr ""
+msgstr "Perdonar Tickets"
 
 #: src/modules/moderation/cog.py:407
 msgctxt "cmd:pardon|modal:reason|field|label"
