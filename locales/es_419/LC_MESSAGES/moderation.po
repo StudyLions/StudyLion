@@ -288,22 +288,22 @@ msgstr "estado_ticket"
 #: src/modules/moderation/cog.py:488
 msgctxt "cmd:tickets|param:pardoned"
 msgid "include_pardoned"
-msgstr ""
+msgstr "incluir_perdonados"
 
 #: src/modules/moderation/cog.py:489
 msgctxt "cmd:tickets|param:moderator"
 msgid "acting_moderator"
-msgstr ""
+msgstr "moderador_actuante"
 
 #: src/modules/moderation/cog.py:490
 msgctxt "cmd:tickets|param:after"
 msgid "after"
-msgstr ""
+msgstr "después de"
 
 #: src/modules/moderation/cog.py:491
 msgctxt "cmd:tickets|param:before"
 msgid "before"
-msgstr ""
+msgstr "antes de"
 
 #: src/modules/moderation/cog.py:496
 msgctxt "cmd:tickets|param:target|desc"
