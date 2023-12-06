@@ -600,6 +600,8 @@ msgid ""
 "Could not identify target private room! Please re-run the command in the "
 "private room you wish to contribute to."
 msgstr ""
+"No se ha podido identificar la sala privada de destino. Vuelva a ejecutar el"
+" comando en la sala privada a la que desea contribuir."
 
 #: src/modules/rooms/cog.py:964
 #, possible-python-brace-format
