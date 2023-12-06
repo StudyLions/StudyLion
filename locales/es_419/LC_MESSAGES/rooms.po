@@ -890,17 +890,17 @@ msgstr "Invisible"
 #: src/modules/rooms/settings.py:171
 msgctxt "guildset:rooms_visible|parse:truthy_values"
 msgid "visible|enabled|yes|true|on|enable|1"
-msgstr ""
+msgstr "visible|habilitado|sí|verdadero|activado|habilitado|1"
 
 #: src/modules/rooms/settings.py:175
 msgctxt "guildset:rooms_visible|parse:falsey_values"
 msgid "invisible|disabled|no|false|off|disable|0"
-msgstr ""
+msgstr "invisible|desactivado|no|falso|off|desactivar|0"
 
 #: src/modules/rooms/settings.py:187
 msgctxt "guildset:rooms_visible|set_response:enabled"
 msgid "Private rooms will now be visible to everyone."
-msgstr ""
+msgstr "Las salas privadas ahora serán visibles para todos."
 
 #: src/modules/rooms/settings.py:192
 msgctxt "guildset:rooms_visible|set_response:disabled"
