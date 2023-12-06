@@ -137,12 +137,12 @@ msgstr "Añadir miembros"
 #: src/modules/rooms/roomui.py:359
 msgctxt "ui:room_status|menu:kick_menu|placeholder"
 msgid "Remove Members"
-msgstr ""
+msgstr "Eliminar miembros"
 
 #: src/modules/rooms/roomui.py:367
 msgctxt "ui:room_status|embed|title"
 msgid "Room Control Panel"
-msgstr ""
+msgstr "Panel de control de la sala"
 
 #: src/modules/rooms/roomui.py:375
 msgctxt "ui:room_status|embed|field:channel|name"
