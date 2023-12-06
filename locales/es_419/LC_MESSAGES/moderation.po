@@ -643,11 +643,13 @@ msgstr "Las alertas de moderación se enviarán a {channel}."
 msgctxt "guildset:alert_channel|set_response:unset"
 msgid "Moderation alerts will be ignored if the member cannot be reached."
 msgstr ""
+"Las alertas de moderación se ignorarán si no se puede contactar con el "
+"miembro."
 
 #: src/modules/moderation/settings.py:119
 msgctxt "guildset:alert_channel|formatted:unset"
 msgid "Not Set (Only alert via direct message.)"
-msgstr ""
+msgstr "No configurado (Sólo alerta por mensaje directo.)"
 
 #: src/modules/moderation/settings.py:127
 msgctxt "guildset:mod_role"
