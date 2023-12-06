@@ -218,6 +218,8 @@ msgid ""
 "{owner} attempted to rent a new private room, but I could not create it!\n"
 "They were not charged."
 msgstr ""
+"{owner} intentó alquilar una nueva habitación privada, ¡pero no pude crearla!\n"
+"No se les cobró."
 
 #: src/modules/rooms/cog.py:329
 msgctxt "eventlog|event:private_room_create|name"
