@@ -810,18 +810,19 @@ msgstr ""
 #: src/modules/rooms/settings.py:91
 msgctxt "guildset:rooms_rent|accepts"
 msgid "Number of LionCoins charged per day for a private room."
-msgstr ""
+msgstr "Número de LionCoins cobrados al día por una habitación privada."
 
 #: src/modules/rooms/settings.py:103
 #, possible-python-brace-format
 msgctxt "guildset:rooms_price|set_response"
 msgid "Private rooms will now cost {coin}**{amount}** per 24 hours."
 msgstr ""
+"Las habitaciones privadas ahora costarán {coin}**{amount}** por 24 horas."
 
 #: src/modules/rooms/settings.py:116
 msgctxt "guildset:rooms_slots"
 msgid "room_member_cap"
-msgstr ""
+msgstr "room_member_cap"
 
 #: src/modules/rooms/settings.py:119
 msgctxt "guildset:rooms_slots|desc"
