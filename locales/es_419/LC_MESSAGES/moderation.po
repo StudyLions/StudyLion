@@ -147,12 +147,12 @@ msgstr "Motivo de la advertencia (visible para el usuario)."
 #: src/modules/moderation/cog.py:298
 msgctxt "cmd:warning|embed:user_alert|title"
 msgid "You have received a warning!"
-msgstr ""
+msgstr "Ha recibido una advertencia."
 
 #: src/modules/moderation/cog.py:305
 msgctxt "cmd:warning|embed:user_alert|field:note|name"
 msgid "Note"
-msgstr ""
+msgstr "Nota"
 
 #: src/modules/moderation/cog.py:309
 msgctxt "cmd:warning|embed:user_alert|field:note|value"
@@ -160,6 +160,9 @@ msgid ""
 "*Warnings appear in your moderation history. Continuing failure to comply "
 "with server rules and moderator directions may result in more severe action."
 msgstr ""
+"*Las advertencias aparecen en tu historial de moderación. El incumplimiento "
+"continuado de las normas del servidor y de las indicaciones de los "
+"moderadores puede dar lugar a acciones más severas."
 
 #: src/modules/moderation/cog.py:327
 #, possible-python-brace-format
