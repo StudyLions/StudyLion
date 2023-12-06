@@ -39,12 +39,12 @@ msgstr "Panel de configuración del sistema de salas privadas"
 #: src/modules/rooms/settingui.py:100
 msgctxt "dash:rooms|title"
 msgid "Private Room Configuration ({commands[admin config rooms]})"
-msgstr ""
+msgstr "Configuración de salas privadas ({commands[admin config rooms]})"
 
 #: src/modules/rooms/settingui.py:104
 msgctxt "dash:economy|dropdown|placeholder"
 msgid "Private Room Panel"
-msgstr ""
+msgstr "Panel de salas privadas"
 
 #: src/modules/rooms/roomui.py:56
 msgctxt "ui:room_status|error:owner_required"
