@@ -308,12 +308,12 @@ msgstr "antes de"
 #: src/modules/moderation/cog.py:496
 msgctxt "cmd:tickets|param:target|desc"
 msgid "Filter by tickets acting on a given user."
-msgstr ""
+msgstr "Filtrar por tickets que actúan sobre un usuario determinado."
 
 #: src/modules/moderation/cog.py:500
 msgctxt "cmd:tickets|param:type|desc"
 msgid "Filter by ticket type."
-msgstr ""
+msgstr "Filtrar por tipo de ticket."
 
 #: src/modules/moderation/cog.py:504
 msgctxt "cmd:tickets|param:state|desc"
