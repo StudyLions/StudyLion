@@ -409,16 +409,18 @@ msgid ""
 "Could not identify target private room! Please re-run the command in the "
 "private room you wish to view the status of."
 msgstr ""
+"No se ha podido identificar la sala privada de destino. Vuelva a ejecutar el"
+" comando en la sala privada de la que desea ver el estado."
 
 #: src/modules/rooms/cog.py:661
 msgctxt "cmd:room_invite"
 msgid "invite"
-msgstr ""
+msgstr "invitar a"
 
 #: src/modules/rooms/cog.py:664
 msgctxt "cmd:room_invite|desc"
 msgid "Add members to your private room."
-msgstr ""
+msgstr "Añade miembros a tu sala privada."
 
 #: src/modules/rooms/cog.py:668
 msgctxt "cmd:room_invite|param:members"
