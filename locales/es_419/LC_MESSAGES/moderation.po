@@ -252,14 +252,18 @@ msgid "Ticket {ticketstr} has been pardoned."
 msgid_plural ""
 "The following tickets have been pardoned:\n"
 "{ticketstr}"
-msgstr[0] ""
+msgstr[0] "El ticket {ticketstr} ha sido perdonado."
 msgstr[1] ""
+"Los siguientes tickets han sido perdonados:\n"
+"{ticketstr}"
 msgstr[2] ""
+"Los siguientes tickets han sido perdonados:\n"
+"{ticketstr}"
 
 #: src/modules/moderation/cog.py:478
 msgctxt "cmd:tickets"
 msgid "tickets"
-msgstr ""
+msgstr "tickets"
 
 #: src/modules/moderation/cog.py:481
 msgctxt "cmd:tickets|desc"
