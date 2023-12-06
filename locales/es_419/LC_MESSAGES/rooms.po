@@ -304,13 +304,14 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|error:room_exists"
 msgid "You already own a private room! Click to visit: {channel}"
-msgstr ""
+msgstr "¡Ya tienes una habitación privada! Haga clic para visitar: {channel}"
 
 #: src/modules/rooms/cog.py:461
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|error:member_not_found"
 msgid "Could not find the requested member {mention} in this server!"
 msgstr ""
+"No se ha podido encontrar el miembro {mention} solicitado en este servidor."
 
 #: src/modules/rooms/cog.py:475
 #, possible-python-brace-format
