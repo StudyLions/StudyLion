@@ -192,13 +192,13 @@ msgstr "Miembros ({count}/{cap})"
 #: src/modules/rooms/cog.py:175 src/modules/rooms/room.py:364
 msgctxt "room|eventlog|event:room_deleted|title"
 msgid "Private Room Deleted"
-msgstr ""
+msgstr "Sala privada Suprimida"
 
 #: src/modules/rooms/cog.py:179 src/modules/rooms/room.py:368
 #, possible-python-brace-format
 msgctxt "room|eventlog|event:room_deleted|desc"
 msgid "{owner}'s private room was deleted."
-msgstr ""
+msgstr "La habitación privada del {propietario} fue borrada."
 
 #: src/modules/rooms/cog.py:270
 #, possible-python-brace-format
