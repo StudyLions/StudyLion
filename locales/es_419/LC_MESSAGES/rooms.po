@@ -396,12 +396,12 @@ msgstr ""
 #: src/modules/rooms/cog.py:626
 msgctxt "cmd:room_status"
 msgid "status"
-msgstr ""
+msgstr "estado"
 
 #: src/modules/rooms/cog.py:629
 msgctxt "cmd:room_status|desc"
 msgid "Display the status of your current room."
-msgstr ""
+msgstr "Muestra el estado de la sala actual."
 
 #: src/modules/rooms/cog.py:646
 msgctxt "cmd:room_status|error:no_target"
