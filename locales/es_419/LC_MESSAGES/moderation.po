@@ -430,33 +430,33 @@ msgstr "Seleccionar Tickets objetivos"
 #: src/modules/moderation/ticketui.py:371
 msgctxt "ui:tickets|menu:tickets|placeholder"
 msgid "Select Ticket"
-msgstr ""
+msgstr "Seleccionar Ticket"
 
 #: src/modules/moderation/ticketui.py:402
 msgctxt "ui:tickets|button:jump|input:title"
 msgid "Jump to page"
-msgstr ""
+msgstr "Ir a la página"
 
 #: src/modules/moderation/ticketui.py:406
 msgctxt "ui:tickets|button:jump|input:question"
 msgid "Page number to jump to"
-msgstr ""
+msgstr "Número de página al que saltar"
 
 #: src/modules/moderation/ticketui.py:417
 msgctxt "ui:tickets|button:jump|error:invalid_page"
 msgid "Invalid page number, please try again!"
-msgstr ""
+msgstr "Número de página no válido, inténtelo de nuevo."
 
 #: src/modules/moderation/ticketui.py:496
 #, possible-python-brace-format
 msgctxt "ui:tickets|embed|title"
 msgid "Moderation Tickets in {guild}"
-msgstr ""
+msgstr "Entradas de moderación en {guild}"
 
 #: src/modules/moderation/ticketui.py:506
 msgctxt "ui:tickets|embed|desc:no_tickets"
 msgid "No tickets matching the given criteria!"
-msgstr ""
+msgstr "No hay entradas que coincidan con los criterios indicados."
 
 #: src/modules/moderation/ticketui.py:515
 msgctxt "ui:tickets|embed|field:filters|name"
