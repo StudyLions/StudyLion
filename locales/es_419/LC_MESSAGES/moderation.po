@@ -405,7 +405,7 @@ msgstr "Perdonar Tickets"
 #: src/modules/moderation/ticketui.py:226
 msgctxt "ui:tickets|button:pardon|modal:reason|field|label"
 msgid "Why are you pardoning these tickets?"
-msgstr ""
+msgstr "¿Por qué perdonas estos tickets?"
 
 #: src/modules/moderation/ticketui.py:252
 msgctxt "ui:tickets|button:pardon|label"
