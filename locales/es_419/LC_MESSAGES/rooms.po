@@ -656,13 +656,13 @@ msgstr "Próximo vencimiento del alquiler"
 #: src/modules/rooms/room.py:108
 msgctxt "room|eventlog|field:members"
 msgid "Private Room Members"
-msgstr ""
+msgstr "Miembros de la sala privada"
 
 #: src/modules/rooms/room.py:123
 #, possible-python-brace-format
 msgctxt "room|notify:deposit|description"
 msgid "{member} has deposited {coin}**{amount}** into the room bank!"
-msgstr ""
+msgstr "¡{member} ha depositado {coin}**{amount}** en el banco de la sala!"
 
 #: src/modules/rooms/room.py:146
 msgctxt "room|notify:new_members|title"
