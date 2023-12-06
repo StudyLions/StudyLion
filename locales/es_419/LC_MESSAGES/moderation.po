@@ -597,12 +597,12 @@ msgstr "Los tickets de moderación se enviarán a {channel}"
 #: src/modules/moderation/settings.py:53
 msgctxt "guildset:ticket_log|set_response:unset"
 msgid "Moderation tickets will not be logged to a channel."
-msgstr ""
+msgstr "Los tickets de moderación no se registrarán en un canal."
 
 #: src/modules/moderation/settings.py:65
 msgctxt "guildset:ticket_log|formatted:unset"
 msgid "Not Set."
-msgstr ""
+msgstr "No está configurado."
 
 #: src/modules/moderation/settings.py:73
 msgctxt "guildset:alert_channel"
