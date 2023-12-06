@@ -102,11 +102,12 @@ msgstr "Crear temporizador de sala"
 msgctxt "ui:room_status|button:timer|timer_created"
 msgid "Timer created successfully! Use {edit_cmd} to configure further."
 msgstr ""
+"¡Temporizador creado con éxito! Utilice {edit_cmd} para seguir configurando."
 
 #: src/modules/rooms/roomui.py:254
 msgctxt "ui:room_status|button:timer|label:edit_timer"
 msgid "Edit Timer"
-msgstr ""
+msgstr "Editar temporizador"
 
 #: src/modules/rooms/roomui.py:261
 msgctxt "ui:room_status|button:timer|label:add_timer"
