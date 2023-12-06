@@ -559,16 +559,19 @@ msgid ""
 "Pardoned by <@{moderator}> at {timestamp}.\n"
 "{reason}"
 msgstr ""
+"Perdonado por <@{moderator}> en {timestamp}.\n"
+"{reason}"
 
 #: src/modules/moderation/settings.py:22
 msgctxt "guildset:ticket_log"
 msgid "ticket_log"
-msgstr ""
+msgstr "ticket_log"
 
 #: src/modules/moderation/settings.py:25
 msgctxt "guildset:ticket_log|desc"
 msgid "Private moderation log to send tickets and moderation events."
 msgstr ""
+"Registro privado de moderación para enviar tickets y eventos de moderación."
 
 #: src/modules/moderation/settings.py:29
 msgctxt "guildset:ticket_log|long_desc"
