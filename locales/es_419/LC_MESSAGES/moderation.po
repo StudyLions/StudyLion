@@ -425,7 +425,7 @@ msgstr "Seleccione el estado del ticket"
 #: src/modules/moderation/ticketui.py:346
 msgctxt "ui:tickets|menu:filter_target|placeholder"
 msgid "Select Ticket Targets"
-msgstr ""
+msgstr "Seleccionar Tickets objetivos"
 
 #: src/modules/moderation/ticketui.py:371
 msgctxt "ui:tickets|menu:tickets|placeholder"
