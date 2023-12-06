@@ -667,13 +667,13 @@ msgstr "¡{member} ha depositado {coin}**{amount}** en el banco de la sala!"
 #: src/modules/rooms/room.py:146
 msgctxt "room|notify:new_members|title"
 msgid "New Members!"
-msgstr ""
+msgstr "Nuevos miembros"
 
 #: src/modules/rooms/room.py:150
 #, possible-python-brace-format
 msgctxt "room|notify:new_members|desc"
 msgid "Welcome {members}"
-msgstr ""
+msgstr "Bienvenidos {members}"
 
 #: src/modules/rooms/room.py:156
 msgctxt "room|eventlog|event:new_members|title"
