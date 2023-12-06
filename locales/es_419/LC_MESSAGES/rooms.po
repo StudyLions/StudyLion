@@ -791,12 +791,12 @@ msgstr "{cmd} o selector de categoría a continuación."
 #: src/modules/rooms/settings.py:79
 msgctxt "guildset:rooms_price"
 msgid "room_rent"
-msgstr ""
+msgstr "alquiler_habitacion"
 
 #: src/modules/rooms/settings.py:83
 msgctxt "guildset:rooms_rent|desc"
 msgid "Daily rent price for a private room."
-msgstr ""
+msgstr "Precio del alquiler diario de una habitación privada."
 
 #: src/modules/rooms/settings.py:87
 msgctxt "guildset:rooms_rent|long_desc"
@@ -804,6 +804,8 @@ msgid ""
 "Members will be charged this many LionCoins for each day they rent a private"
 " room."
 msgstr ""
+"A los socios se les cobrará esta cantidad de LionCoins por cada día que "
+"alquilen una sala privada."
 
 #: src/modules/rooms/settings.py:91
 msgctxt "guildset:rooms_rent|accepts"
