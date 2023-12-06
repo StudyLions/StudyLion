@@ -461,22 +461,22 @@ msgstr "No hay entradas que coincidan con los criterios indicados."
 #: src/modules/moderation/ticketui.py:515
 msgctxt "ui:tickets|embed|field:filters|name"
 msgid "Filters"
-msgstr ""
+msgstr "Filtros"
 
 #: src/modules/moderation/ticketui.py:603
 msgctxt "ui:ticket|button:pardon|modal:reason|title"
 msgid "Pardon Moderation Ticket"
-msgstr ""
+msgstr "Perdonar Ticket de Moderación"
 
 #: src/modules/moderation/ticketui.py:608
 msgctxt "ui:ticket|button:pardon|modal:reason|field|label"
 msgid "Why are you pardoning this ticket?"
-msgstr ""
+msgstr "¿Por qué perdonas este ticket?"
 
 #: src/modules/moderation/ticketui.py:632
 msgctxt "ui:ticket|button:pardon|label"
 msgid "Pardon"
-msgstr ""
+msgstr "Perdonar"
 
 #: src/modules/moderation/ticket.py:148
 #, possible-python-brace-format
