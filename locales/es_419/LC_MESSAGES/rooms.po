@@ -235,17 +235,17 @@ msgstr "¡{owner} ha alquilado una nueva sala privada {channel}!"
 #: src/modules/rooms/cog.py:368
 msgctxt "cmd:room"
 msgid "room"
-msgstr ""
+msgstr "habitación"
 
 #: src/modules/rooms/cog.py:369
 msgctxt "cmd:room|desc"
 msgid "Base command group for private room configuration."
-msgstr ""
+msgstr "Grupo de comandos base para la configuración de salas privadas."
 
 #: src/modules/rooms/cog.py:376
 msgctxt "cmd:room_rent"
 msgid "rent"
-msgstr ""
+msgstr "alquilar"
 
 #: src/modules/rooms/cog.py:379
 msgctxt "cmd:room_rent|desc"
