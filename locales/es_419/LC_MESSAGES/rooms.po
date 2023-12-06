@@ -157,7 +157,7 @@ msgstr "Propietario"
 #: src/modules/rooms/roomui.py:385
 msgctxt "ui:room_status|embed|field:created|name"
 msgid "Created At"
-msgstr ""
+msgstr "Creado en"
 
 #: src/modules/rooms/roomui.py:395
 #, possible-python-brace-format
@@ -167,6 +167,9 @@ msgid ""
 "The room will expire {expiry}.\n"
 "Use {room_deposit_cmd} to increase balance."
 msgstr ""
+"**Aviso:** Saldo de habitación insuficiente para pagar el próximo alquiler ({coin} **{rent}**).\n"
+"La habitación expirará {expiry}.\n"
+"Utiliza {room_deposit_cmd} para aumentar el saldo."
 
 #: src/modules/rooms/roomui.py:407
 #, possible-python-brace-format
