@@ -609,13 +609,14 @@ msgctxt "cmd:room_deposit|error:insufficient_funds"
 msgid ""
 "You cannot deposit {coin}**{amount}**! You only have {coin}**{balance}**."
 msgstr ""
+"No puede depositar {coin}**{amount}**. Sólo tiene {coin}**{balance}**."
 
 #: src/modules/rooms/cog.py:985
 #, possible-python-brace-format
 msgctxt "cmd:room_depost|success"
 msgid ""
 "Success! You have contributed {coin}**{amount}** to the private room bank."
-msgstr ""
+msgstr "Éxito. Has aportado {coin}**{amount}** al banco de la sala privada."
 
 #: src/modules/rooms/cog.py:1000
 msgctxt "cmd:configure_rooms"
