@@ -702,11 +702,12 @@ msgstr "{owner} eliminó miembros de su sala privada: {members}"
 msgctxt "room|notify:transfer|description"
 msgid "{old_owner} has transferred private room ownership to {new_owner}"
 msgstr ""
+"{old_owner} ha transferido la propiedad de la sala privada a {new_owner}"
 
 #: src/modules/rooms/room.py:318
 msgctxt "room|embed:expiry|title"
 msgid "Private Room Expired!"
-msgstr ""
+msgstr "Salón Privado ¡Caducado!"
 
 #: src/modules/rooms/room.py:322
 #, possible-python-brace-format
