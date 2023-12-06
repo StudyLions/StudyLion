@@ -260,12 +260,12 @@ msgstr "días"
 #: src/modules/rooms/cog.py:384
 msgctxt "cmd:room_rent|param:members"
 msgid "members"
-msgstr ""
+msgstr "miembros"
 
 #: src/modules/rooms/cog.py:385
 msgctxt "cmd:room_rent|param:name"
 msgid "name"
-msgstr ""
+msgstr "nombre"
 
 #: src/modules/rooms/cog.py:390
 msgctxt "cmd:room_rent|param:days|desc"
