@@ -204,12 +204,12 @@ msgstr "La habitación privada del {propietario} fue borrada."
 #, possible-python-brace-format
 msgctxt "create_room|create_channel|audit_reason"
 msgid "Creating Private Room for {ownerid}"
-msgstr ""
+msgstr "Crear sala privada para {ownerid}"
 
 #: src/modules/rooms/cog.py:279
 msgctxt "eventlog|event:private_room_create_error|name"
 msgid "Private Room Creation Failed"
-msgstr ""
+msgstr "Fallo en la creación de una sala privada"
 
 #: src/modules/rooms/cog.py:283
 #, possible-python-brace-format
