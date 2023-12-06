@@ -654,13 +654,15 @@ msgstr "No configurado (Sólo alerta por mensaje directo.)"
 #: src/modules/moderation/settings.py:127
 msgctxt "guildset:mod_role"
 msgid "mod_role"
-msgstr ""
+msgstr "mod_role"
 
 #: src/modules/moderation/settings.py:130
 msgctxt "guildset:mod_role|desc"
 msgid ""
 "Server role permitted to perform moderation and minor bot configuration."
 msgstr ""
+"Rol de servidor autorizado para realizar tareas de moderación y "
+"configuración menor de bots."
 
 #: src/modules/moderation/settings.py:134
 msgctxt "guildset:mod_role|long_desc"
@@ -669,6 +671,9 @@ msgid ""
 "Moderators are never permitted to perform actions (such as giving roles) that they do not already have the Discord permissions for.\n"
 "Members with the 'Manage Guild' permission are always considered moderators."
 msgstr ""
+"Los miembros con el rol de moderador son considerados moderadores, y se les permite usar comandos de moderador, como ver y perdonar tickets de moderación, crear notas de moderación, y realizar reconfiguraciones menores a través del comando `/config`.\n"
+"A los moderadores nunca se les permite realizar acciones (como dar roles) para las que no tengan ya los permisos de Discord.\n"
+"Los miembros con el permiso `Administrar Gremio` siempre son considerados moderadores."
 
 #: src/modules/moderation/settings.py:145
 msgctxt "guildset:mod_role|accepts"
