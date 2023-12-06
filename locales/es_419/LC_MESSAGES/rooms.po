@@ -280,7 +280,7 @@ msgstr "Menciona los miembros que quieres añadir a tu sala privada."
 #: src/modules/rooms/cog.py:398
 msgctxt "cmd:room_rent|param:name|desc"
 msgid "Name of your private voice channel."
-msgstr ""
+msgstr "Nombre de tu canal de voz privado."
 
 #: src/modules/rooms/cog.py:416
 msgctxt "cmd:room_rent|error:not_setup"
@@ -288,6 +288,8 @@ msgid ""
 "The private room system has not been set up! A private room category needs "
 "to be set first with `/admin config rooms`."
 msgstr ""
+"No se ha configurado el sistema de salas privadas. Una categoría de sala "
+"privada necesita ser configurada primero con `/admin config rooms`."
 
 #: src/modules/rooms/cog.py:427
 msgctxt "cmd:room_rent|error:insufficient_perms"
@@ -295,6 +297,8 @@ msgid ""
 "I do not have enough permissions to create a new channel under the "
 "configured private room category!"
 msgstr ""
+"No tengo permisos suficientes para crear un nuevo canal en la categoría de "
+"salas privadas configuradas."
 
 #: src/modules/rooms/cog.py:441
 #, possible-python-brace-format
