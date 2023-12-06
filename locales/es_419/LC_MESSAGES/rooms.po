@@ -587,12 +587,12 @@ msgstr ""
 #: src/modules/rooms/cog.py:923
 msgctxt "cmd:room_deposit|param:coins"
 msgid "coins"
-msgstr ""
+msgstr "monedas"
 
 #: src/modules/rooms/cog.py:928
 msgctxt "cmd:room_deposit|param:coins|desc"
 msgid "Number of coins to deposit."
-msgstr ""
+msgstr "Número de monedas a depositar."
 
 #: src/modules/rooms/cog.py:948
 msgctxt "cmd:room_deposit|error:no_target"
