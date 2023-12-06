@@ -689,13 +689,13 @@ msgstr "{owner} ha añadido miembros a su sala privada: {members}"
 #: src/modules/rooms/room.py:191
 msgctxt "room|eventlog|event:rm_members|title"
 msgid "Members removed from private room"
-msgstr ""
+msgstr "Miembros expulsados de una sala privada"
 
 #: src/modules/rooms/room.py:195
 #, possible-python-brace-format
 msgctxt "room|eventlog|event:rm_members|desc"
 msgid "{owner} removed members from their private room: {members}"
-msgstr ""
+msgstr "{owner} eliminó miembros de su sala privada: {members}"
 
 #: src/modules/rooms/room.py:254
 #, possible-python-brace-format
