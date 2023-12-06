@@ -529,23 +529,23 @@ msgstr "{timestamp}"
 #: src/modules/moderation/ticket.py:202
 msgctxt "ticket|field:expiry|mode:open|name"
 msgid "Expiry"
-msgstr ""
+msgstr "Caducidad"
 
 #: src/modules/moderation/ticket.py:205
 #, possible-python-brace-format
 msgctxt "ticket|field:expiry|mode:open|value"
 msgid "{timestamp}"
-msgstr ""
+msgstr "{timestamp}"
 
 #: src/modules/moderation/ticket.py:213
 msgctxt "ticket|field:context|name"
 msgid "Context"
-msgstr ""
+msgstr "Contexto"
 
 #: src/modules/moderation/ticket.py:220
 msgctxt "ticket|field:notes|name"
 msgid "Notes"
-msgstr ""
+msgstr "Notas"
 
 #: src/modules/moderation/ticket.py:227
 msgctxt "ticket|field:pardoned|name"
