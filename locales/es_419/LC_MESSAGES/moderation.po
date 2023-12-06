@@ -482,13 +482,13 @@ msgstr "Perdonar"
 #, possible-python-brace-format
 msgctxt "ticket|title:auto"
 msgid "Ticket #{ticketid} | {state} | {type}[Auto] | {name}"
-msgstr ""
+msgstr "Ticket #{ticketid} | {state} | {type}[Auto] | {name}"
 
 #: src/modules/moderation/ticket.py:153
 #, possible-python-brace-format
 msgctxt "ticket|title:manual"
 msgid "Ticket #{ticketid} | {state} | {type} | {name}"
-msgstr ""
+msgstr "Ticket #{ticketid} | {state} | {type} | {name}"
 
 #: src/modules/moderation/ticket.py:169
 msgctxt "ticket|field:target|name"
