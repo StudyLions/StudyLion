@@ -451,7 +451,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:719
 msgctxt "cmd:room_invite|error:no_new_members"
 msgid "All members mentioned are already in the room!"
-msgstr ""
+msgstr "Todos los miembros mencionados ya están en la sala."
 
 #: src/modules/rooms/cog.py:733
 #, possible-python-brace-format
@@ -460,6 +460,8 @@ msgid ""
 "Too many members! You have invited `{count}` new members to your room, but "
 "you already have `{current}`, and the member cap is `{cap}`!"
 msgstr ""
+"¡Demasiados miembros! Has invitado a `{count}` nuevos miembros a tu sala, "
+"pero ya tienes `{current}`, ¡y el límite de miembros es `{cap}`!"
 
 #: src/modules/rooms/cog.py:757
 msgctxt "cmd:room_invite|success|ack"
