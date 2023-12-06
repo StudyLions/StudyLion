@@ -623,17 +623,21 @@ msgid ""
 "to send it via direct messages. If this fails, I will instead mention the "
 "user in this channel."
 msgstr ""
+"Cuando tenga que enviar a un miembro una notificación relacionada con la "
+"moderación (por ejemplo, pedirle que habilite su vídeo en un canal de vídeo)"
+" desde este servidor, intentaré enviársela a través de mensajes directos. Si"
+" esto falla, en su lugar mencionaré al usuario en este canal."
 
 #: src/modules/moderation/settings.py:87
 msgctxt "guildset:alert_channel|accepts"
 msgid "Alert channel name or id."
-msgstr ""
+msgstr "Nombre o id del canal de alerta."
 
 #: src/modules/moderation/settings.py:102
 #, possible-python-brace-format
 msgctxt "guildset:alert_channel|set_response:set"
 msgid "Moderation alerts will be sent to {channel}"
-msgstr ""
+msgstr "Las alertas de moderación se enviarán a {channel}."
 
 #: src/modules/moderation/settings.py:107
 msgctxt "guildset:alert_channel|set_response:unset"
