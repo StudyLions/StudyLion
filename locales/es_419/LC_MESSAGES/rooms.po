@@ -621,17 +621,17 @@ msgstr "Éxito. Has aportado {coin}**{amount}** al banco de la sala privada."
 #: src/modules/rooms/cog.py:1000
 msgctxt "cmd:configure_rooms"
 msgid "rooms"
-msgstr ""
+msgstr "habitaciones"
 
 #: src/modules/rooms/cog.py:1001
 msgctxt "cmd:configure_rooms|desc"
 msgid "Configure Rented Private Rooms"
-msgstr ""
+msgstr "Configurar salas privadas alquiladas"
 
 #: src/modules/rooms/room.py:78
 msgctxt "room|eventlog|field:owner"
 msgid "Owner"
-msgstr ""
+msgstr "Propietario"
 
 #: src/modules/rooms/room.py:84
 msgctxt "room|eventlog|field:channel"
