@@ -339,27 +339,27 @@ msgstr "Mostrar sólo tickets después de esta fecha (AAAA-MM-DD HH:MM)"
 #: src/modules/moderation/cog.py:520
 msgctxt "cmd:tickets|param:before|desc"
 msgid "Only show tickets before this date (YYY-MM-DD HH:MM)"
-msgstr ""
+msgstr "Mostrar sólo tickets antes de esta fecha (AAAA-MM-DD HH:MM)"
 
 #: src/modules/moderation/cog.py:582
 msgctxt "cmd:configure_moderation"
 msgid "moderation"
-msgstr ""
+msgstr "moderación"
 
 #: src/modules/moderation/cog.py:585
 msgctxt "cmd:configure_moderation|desc"
 msgid "Configure general moderation settings."
-msgstr ""
+msgstr "Configure las opciones generales de moderación."
 
 #: src/modules/moderation/ticketui.py:62
 msgctxt "ticketfilter|field:after|name"
 msgid "Created After"
-msgstr ""
+msgstr "Creado después de"
 
 #: src/modules/moderation/ticketui.py:70
 msgctxt "ticketfilter|field:before|name"
 msgid "Created Before"
-msgstr ""
+msgstr "Creado antes de"
 
 #: src/modules/moderation/ticketui.py:78
 msgctxt "ticketfilter|field:targetids|name"
