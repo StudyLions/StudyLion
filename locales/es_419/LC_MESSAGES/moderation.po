@@ -493,17 +493,17 @@ msgstr "Ticket #{ticketid} | {state} | {type} | {name}"
 #: src/modules/moderation/ticket.py:169
 msgctxt "ticket|field:target|name"
 msgid "Target"
-msgstr ""
+msgstr "Objetivo"
 
 #: src/modules/moderation/ticket.py:174
 msgctxt "ticket|field:moderator|name"
 msgid "Moderator"
-msgstr ""
+msgstr "Moderador"
 
 #: src/modules/moderation/ticket.py:181
 msgctxt "ticket|field:expiry|mode:expiring|name"
 msgid "Expires At"
-msgstr ""
+msgstr "Caduca en"
 
 #: src/modules/moderation/ticket.py:184
 #, possible-python-brace-format
