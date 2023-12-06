@@ -498,18 +498,18 @@ msgctxt "cmd:room_kick|error:no_room"
 msgid ""
 "You do not own a private room! Use `/room rent` to rent one with {coin}!"
 msgstr ""
-"¡Usted no es dueño de una habitación privada! ¡Usa `/alquiler de habitación`"
-" para alquilar una con {coin}!"
+"¡Usted no es dueño de una habitación privada! ¡Usa `/room rent` para "
+"alquilar una con {coin}!"
 
 #: src/modules/rooms/cog.py:808
 msgctxt "cmd:room_kick|error:no_matching_members"
 msgid "None of the mentioned members are in this room!"
-msgstr ""
+msgstr "¡Ninguno de los miembros mencionados está en esta sala!"
 
 #: src/modules/rooms/cog.py:825
 msgctxt "cmd:room_kick|success|ack"
 msgid "Members removed."
-msgstr ""
+msgstr "Miembros retirados."
 
 #: src/modules/rooms/cog.py:831
 msgctxt "cmd:room_transfer"
