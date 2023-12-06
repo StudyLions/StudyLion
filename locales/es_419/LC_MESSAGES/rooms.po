@@ -827,7 +827,7 @@ msgstr "room_member_cap"
 #: src/modules/rooms/settings.py:119
 msgctxt "guildset:rooms_slots|desc"
 msgid "Maximum number of members in each private room."
-msgstr ""
+msgstr "Número máximo de miembros en cada sala privada."
 
 #: src/modules/rooms/settings.py:123
 msgctxt "guildset:rooms_slots|long_desc"
@@ -836,6 +836,10 @@ msgid ""
 "UI, or through the {cmds[room invite]} command. This setting limits the "
 "maximum number of members a private room may hold."
 msgstr ""
+"Los propietarios de salas privadas pueden invitar a otros miembros a su sala"
+" privada a través de la interfaz de usuario o mediante el comando {cmds[room"
+" invite]}. Este ajuste limita el número máximo de miembros que puede tener "
+"una sala privada."
 
 #: src/modules/rooms/settings.py:129
 msgctxt "guildset:rooms_slots|accepts"
