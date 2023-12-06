@@ -525,12 +525,12 @@ msgstr ""
 #: src/modules/rooms/cog.py:838
 msgctxt "cmd:room_transfer|param:new_owner"
 msgid "new_owner"
-msgstr ""
+msgstr "nuevo_propietario"
 
 #: src/modules/rooms/cog.py:843
 msgctxt "cmd:room_transfer|param:new_owner"
 msgid "The room member you would like to transfer your room to."
-msgstr ""
+msgstr "El miembro de la habitación al que desea transferir su habitación."
 
 #: src/modules/rooms/cog.py:857
 msgctxt "cmd:room_transfer|error:no_room"
