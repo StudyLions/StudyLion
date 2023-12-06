@@ -607,12 +607,13 @@ msgstr "No está configurado."
 #: src/modules/moderation/settings.py:73
 msgctxt "guildset:alert_channel"
 msgid "alert_channel"
-msgstr ""
+msgstr "canal_alerta"
 
 #: src/modules/moderation/settings.py:76
 msgctxt "guildset:alert_channel|desc"
 msgid "Moderation notification channel for members with DMs disabled."
 msgstr ""
+"Canal de notificación de moderación para miembros con DMs desactivados."
 
 #: src/modules/moderation/settings.py:80
 msgctxt "guildset:alert_channel|long_desc"
