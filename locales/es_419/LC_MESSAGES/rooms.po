@@ -855,12 +855,13 @@ msgstr "Las salas privadas ahora tienen un límite de **{amount}** miembros."
 #: src/modules/rooms/settings.py:151
 msgctxt "guildset:rooms_visible"
 msgid "room_visibility"
-msgstr ""
+msgstr "visibilidad_habitación"
 
 #: src/modules/rooms/settings.py:154
 msgctxt "guildset:rooms_visible|desc"
 msgid "Whether private rented rooms are visible to non-members."
 msgstr ""
+"Si las habitaciones privadas alquiladas son visibles para los no socios."
 
 #: src/modules/rooms/settings.py:158
 msgctxt "guildset:rooms_visible|long_desc"
@@ -868,6 +869,8 @@ msgid ""
 "If enabled, new private rooms will be created with the `VIEW_CHANNEL` "
 "permission enabled for the `@everyone` role."
 msgstr ""
+"Si se activa, se crearán nuevas salas privadas con el permiso `VIEW_CHANNEL`"
+" activado para el rol `@everyone`."
 
 #: src/modules/rooms/settings.py:162
 msgctxt "guildset:rooms_visible|accepts"
