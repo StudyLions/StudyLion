@@ -438,12 +438,15 @@ msgctxt "cmd:room_invite|error:no_room"
 msgid ""
 "You do not own a private room! Use `/room rent` to rent one with {coin}!"
 msgstr ""
+"¡Usted no es dueño de una habitación privada! ¡Usa `/alquiler de habitación`"
+" para alquilar una con {coin}!"
 
 #: src/modules/rooms/cog.py:708
 #, possible-python-brace-format
 msgctxt "cmd:room_invite|error:member_not_found"
 msgid "Could not find the invited member {mention} in this server!"
 msgstr ""
+"No se ha podido encontrar al miembro invitado {mention} en este servidor."
 
 #: src/modules/rooms/cog.py:719
 msgctxt "cmd:room_invite|error:no_new_members"
