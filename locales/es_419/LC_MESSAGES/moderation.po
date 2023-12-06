@@ -187,37 +187,37 @@ msgstr "Nota"
 #: src/modules/moderation/cog.py:351
 msgctxt "cmd:warning|embed:success|field:no_alert|value"
 msgid "*Could not deliver warning to the target.*"
-msgstr ""
+msgstr "*No se pudo entregar la advertencia al objetivo.*"
 
 #: src/modules/moderation/cog.py:358
 msgctxt "cmd:pardon"
 msgid "pardon"
-msgstr ""
+msgstr "Perdonar"
 
 #: src/modules/moderation/cog.py:361
 msgctxt "cmd:pardon|desc"
 msgid "Pardon moderation tickets to mark them as no longer in effect."
-msgstr ""
+msgstr "Perdone las entradas de moderación para marcarlas como no vigentes."
 
 #: src/modules/moderation/cog.py:367
 msgctxt "cmd:pardon|param:ticketids"
 msgid "tickets"
-msgstr ""
+msgstr "entradas"
 
 #: src/modules/moderation/cog.py:371
 msgctxt "cmd:pardon|param:reason"
 msgid "reason"
-msgstr ""
+msgstr "motivo"
 
 #: src/modules/moderation/cog.py:377
 msgctxt "cmd:pardon|param:ticketids|desc"
 msgid "Comma separated list of ticket numbers to pardon."
-msgstr ""
+msgstr "Lista separada por comas de los números de ticket a perdonar."
 
 #: src/modules/moderation/cog.py:381
 msgctxt "cmd:pardon|param:reason"
 msgid "Why these tickets are being pardoned."
-msgstr ""
+msgstr "Por qué se perdonan estas multas."
 
 #: src/modules/moderation/cog.py:402
 msgctxt "cmd:pardon|modal:reason|title"
