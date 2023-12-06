@@ -329,12 +329,12 @@ msgstr ""
 #: src/modules/moderation/cog.py:512
 msgctxt "cmd:tickets|param:moderator|desc"
 msgid "Filter by moderator responsible for the ticket."
-msgstr ""
+msgstr "Filtrar por moderador responsable del ticket."
 
 #: src/modules/moderation/cog.py:516
 msgctxt "cmd:tickets|param:after|desc"
 msgid "Only show tickets after this date (YYY-MM-DD HH:MM)"
-msgstr ""
+msgstr "Mostrar sólo tickets después de esta fecha (AAAA-MM-DD HH:MM)"
 
 #: src/modules/moderation/cog.py:520
 msgctxt "cmd:tickets|param:before|desc"
