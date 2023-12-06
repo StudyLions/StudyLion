@@ -346,12 +346,12 @@ msgstr[2] ""
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|success"
 msgid "Successfully created your private room {channel}!"
-msgstr "Has creado con éxito tu {canal} privado."
+msgstr "Has creado con éxito tu {channel} privado."
 
 #: src/modules/rooms/cog.py:519
 msgctxt "cmd:room_rent|success|title"
 msgid "Private Room Created!"
-msgstr ""
+msgstr "¡Sala privada creada!"
 
 #: src/modules/rooms/cog.py:572
 #, possible-python-brace-format
