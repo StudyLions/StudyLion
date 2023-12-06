@@ -678,7 +678,7 @@ msgstr ""
 #: src/modules/moderation/settings.py:145
 msgctxt "guildset:mod_role|accepts"
 msgid "Moderation role name or id."
-msgstr ""
+msgstr "Nombre o id del rol de moderación."
 
 #: src/modules/moderation/settings.py:159
 #, possible-python-brace-format
@@ -687,6 +687,9 @@ msgid ""
 "Members with {role} will be considered moderators. You may need to grant "
 "them access to view moderation commands via the server integration settings."
 msgstr ""
+"Los miembros con {role} serán considerados moderadores. Es posible que "
+"tengas que concederles acceso para ver los comandos de moderación a través "
+"de la configuración de integración del servidor."
 
 #: src/modules/moderation/settings.py:166
 msgctxt "guildset:mod_role|set_response:unset"
