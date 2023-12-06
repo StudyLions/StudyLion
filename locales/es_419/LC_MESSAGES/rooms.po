@@ -906,9 +906,11 @@ msgstr "Las salas privadas ahora serán visibles para todos."
 msgctxt "guildset:rooms_visible|set_response:disabled"
 msgid "Private rooms will now only be visible to their members (and admins)."
 msgstr ""
+"Las salas privadas ahora sólo serán visibles para sus miembros (y "
+"administradores)."
 
 #: src/modules/rooms/settings.py:202
 #, possible-python-brace-format
 msgctxt "guildset:rooms_visible|set_using"
 msgid "{cmd} or toggle below."
-msgstr ""
+msgstr "{cmd} o alternar abajo."
