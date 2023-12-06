@@ -779,12 +779,14 @@ msgid ""
 "Private room category has been set to {channel}. Existing private rooms will"
 " be moved."
 msgstr ""
+"La categoría de sala privada se ha establecido en {channel}. Las salas "
+"privadas existentes se moverán."
 
 #: src/modules/rooms/settings.py:69
 #, possible-python-brace-format
 msgctxt "guildset:room_category|set_using"
 msgid "{cmd} or category selector below."
-msgstr ""
+msgstr "{cmd} o selector de categoría a continuación."
 
 #: src/modules/rooms/settings.py:79
 msgctxt "guildset:rooms_price"
