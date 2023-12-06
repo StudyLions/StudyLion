@@ -713,12 +713,12 @@ msgstr "Salón Privado ¡Caducado!"
 #, possible-python-brace-format
 msgctxt "room|embed:expiry|description"
 msgid "Your private room in **{guild}** has expired!"
-msgstr ""
+msgstr "¡Tu sala privada en **{guild}** ha caducado!"
 
 #: src/modules/rooms/room.py:332
 msgctxt "room|eventlog|event:expired|title"
 msgid "Private Room Expired"
-msgstr ""
+msgstr "Salón privado Caducado"
 
 #: src/modules/rooms/room.py:336
 #, possible-python-brace-format
