@@ -731,16 +731,18 @@ msgstr "La habitación privada del {owner} ha caducado."
 msgctxt "room|tick|rent_deducted"
 msgid "Daily rent deducted from room balance. New balance: {coin}**{amount}**"
 msgstr ""
+"Alquiler diario deducido del saldo de la habitación. Nuevo saldo: "
+"{coin}**{amount}**"
 
 #: src/modules/rooms/settings.py:23
 msgctxt "guildset:room_category"
 msgid "rooms_category"
-msgstr ""
+msgstr "categoria_habitaciones"
 
 #: src/modules/rooms/settings.py:27
 msgctxt "guildset:rooms_category|desc"
 msgid "Category in which to create private voice channels."
-msgstr ""
+msgstr "Categoría en la que crear canales de voz privados."
 
 #: src/modules/rooms/settings.py:31
 msgctxt "guildset:room_category|long_desc"
