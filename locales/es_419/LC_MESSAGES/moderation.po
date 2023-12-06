@@ -324,6 +324,7 @@ msgstr "Filtrar por estado del ticket."
 msgctxt "cmd:tickets|param:pardoned|desc"
 msgid "Whether to only show active tickets, or also include pardoned."
 msgstr ""
+"Si desea mostrar sólo los tickets activos, o incluir también los indultados."
 
 #: src/modules/moderation/cog.py:512
 msgctxt "cmd:tickets|param:moderator|desc"
