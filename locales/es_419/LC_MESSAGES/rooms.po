@@ -481,7 +481,7 @@ msgstr "Retire a un miembro de su sala privada."
 #: src/modules/rooms/cog.py:772
 msgctxt "cmd:room_kick|param:members"
 msgid "members"
-msgstr ""
+msgstr "miembros"
 
 #: src/modules/rooms/cog.py:777
 msgctxt "cmd:room_kick|param:members|desc"
@@ -489,6 +489,8 @@ msgid ""
 "Mention the members you want to remove. Also accepts space-separated user "
 "ids."
 msgstr ""
+"Mencione los miembros que desea eliminar. También acepta identificadores de "
+"usuario separados por espacios."
 
 #: src/modules/rooms/cog.py:791
 #, possible-python-brace-format
@@ -496,6 +498,8 @@ msgctxt "cmd:room_kick|error:no_room"
 msgid ""
 "You do not own a private room! Use `/room rent` to rent one with {coin}!"
 msgstr ""
+"¡Usted no es dueño de una habitación privada! ¡Usa `/alquiler de habitación`"
+" para alquilar una con {coin}!"
 
 #: src/modules/rooms/cog.py:808
 msgctxt "cmd:room_kick|error:no_matching_members"
