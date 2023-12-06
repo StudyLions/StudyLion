@@ -697,16 +697,18 @@ msgid ""
 "Only members with the 'Manage Guild' permission will be considered "
 "moderators."
 msgstr ""
+"Sólo los miembros con el permiso 'Manage Guild' serán considerados "
+"moderadores."
 
 #: src/modules/moderation/settings.py:178
 msgctxt "guildset:mod_role|formatted:unset"
 msgid "Not Set."
-msgstr ""
+msgstr "No está configurado."
 
 #: src/modules/moderation/settings.py:186
 msgctxt "guildset:admin_role"
 msgid "admin_role"
-msgstr ""
+msgstr "rol_admin"
 
 #: src/modules/moderation/settings.py:189
 msgctxt "guildset:admin_role|desc"
