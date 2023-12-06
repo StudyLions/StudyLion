@@ -112,36 +112,37 @@ msgctxt "cmd:warning|desc"
 msgid ""
 "Warn a member for a misdemeanour, and add it to their moderation record."
 msgstr ""
+"Advertir a un miembro por una falta y añadirla a su historial de moderación."
 
 #: src/modules/moderation/cog.py:232
 msgctxt "cmd:warning|param:target"
 msgid "target"
-msgstr ""
+msgstr "objetivo"
 
 #: src/modules/moderation/cog.py:233
 msgctxt "cmd:warning|param:reason"
 msgid "reason"
-msgstr ""
+msgstr "motivo"
 
 #: src/modules/moderation/cog.py:238
 msgctxt "cmd:warning|param:target|desc"
 msgid "Target member to warn."
-msgstr ""
+msgstr "Miembro objetivo a avisar."
 
 #: src/modules/moderation/cog.py:242
 msgctxt "cmd:warning|param:reason|desc"
 msgid "The reason why you are warning this member."
-msgstr ""
+msgstr "La razón por la que advierte a este miembro."
 
 #: src/modules/moderation/cog.py:262
 msgctxt "cmd:warning|modal:reason|title"
 msgid "Moderation Warning"
-msgstr ""
+msgstr "Aviso de moderación"
 
 #: src/modules/moderation/cog.py:267
 msgctxt "cmd:warning|modal:reason|field|label"
 msgid "Reason for the warning (visible to user)."
-msgstr ""
+msgstr "Motivo de la advertencia (visible para el usuario)."
 
 #: src/modules/moderation/cog.py:298
 msgctxt "cmd:warning|embed:user_alert|title"
