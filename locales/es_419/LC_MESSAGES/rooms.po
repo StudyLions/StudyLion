@@ -181,13 +181,13 @@ msgstr "Próximo alquiler a pagar {time} (- {coin}**{rent}**)"
 #, possible-python-brace-format
 msgctxt "ui:room_status|embed|field:bank|name"
 msgid "Room Balance: {coin}**{amount}**"
-msgstr ""
+msgstr "Saldo de la habitación: {coin}**{amount}**"
 
 #: src/modules/rooms/roomui.py:428
 #, possible-python-brace-format
 msgctxt "ui:room_status|embed|field:members|name"
 msgid "Members ({count}/{cap})"
-msgstr ""
+msgstr "Miembros ({count}/{cap})"
 
 #: src/modules/rooms/cog.py:175 src/modules/rooms/room.py:364
 msgctxt "room|eventlog|event:room_deleted|title"
