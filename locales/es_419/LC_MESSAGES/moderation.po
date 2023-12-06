@@ -364,27 +364,27 @@ msgstr "Creado antes de"
 #: src/modules/moderation/ticketui.py:78
 msgctxt "ticketfilter|field:targetids|name"
 msgid "Targets"
-msgstr ""
+msgstr "Objetivos"
 
 #: src/modules/moderation/ticketui.py:86
 msgctxt "ticketfilter|field:moderatorids|name"
 msgid "Moderators"
-msgstr ""
+msgstr "Moderadores"
 
 #: src/modules/moderation/ticketui.py:94
 msgctxt "ticketfilter|field:types|name"
 msgid "Ticket Types"
-msgstr ""
+msgstr "Tipos de tickets"
 
 #: src/modules/moderation/ticketui.py:102
 msgctxt "ticketfilter|field:states|name"
 msgid "Ticket States"
-msgstr ""
+msgstr "Estados del ticket"
 
 #: src/modules/moderation/ticketui.py:179
 msgctxt "ui:tickets|button:edit_filter|label"
 msgid "Edit Filters"
-msgstr ""
+msgstr "Editar filtros"
 
 #: src/modules/moderation/ticketui.py:199
 msgctxt "ui:tickets|button:select_ticket|label"
