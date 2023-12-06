@@ -333,14 +333,20 @@ msgid_plural ""
 "Are you sure you want to spend {coin}**{required}** to rent a private room "
 "for `{days}` days?"
 msgstr[0] ""
+"¿Estás seguro de que quieres gastar {coin}**{required}** para alquilar una "
+"sala privada por `un` día?"
 msgstr[1] ""
+"¿Estás seguro de que quieres gastar {coin}**{required}** para alquilar una "
+"habitación privada durante `{days}` días?"
 msgstr[2] ""
+"¿Estás seguro de que quieres gastar {coin}**{required}** para alquilar una "
+"habitación privada durante `{days}` días?"
 
 #: src/modules/rooms/cog.py:514
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|success"
 msgid "Successfully created your private room {channel}!"
-msgstr ""
+msgstr "Has creado con éxito tu {canal} privado."
 
 #: src/modules/rooms/cog.py:519
 msgctxt "cmd:room_rent|success|title"
