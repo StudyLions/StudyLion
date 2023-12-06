@@ -678,13 +678,13 @@ msgstr "Bienvenidos {members}"
 #: src/modules/rooms/room.py:156
 msgctxt "room|eventlog|event:new_members|title"
 msgid "Members invited to private room"
-msgstr ""
+msgstr "Miembros invitados a la sala privada"
 
 #: src/modules/rooms/room.py:160
 #, possible-python-brace-format
 msgctxt "room|eventlog|event:new_members|desc"
 msgid "{owner} added members to their private room: {members}"
-msgstr ""
+msgstr "{owner} ha añadido miembros a su sala privada: {members}"
 
 #: src/modules/rooms/room.py:191
 msgctxt "room|eventlog|event:rm_members|title"
