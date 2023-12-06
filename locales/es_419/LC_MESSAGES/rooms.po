@@ -224,13 +224,13 @@ msgstr ""
 #: src/modules/rooms/cog.py:329
 msgctxt "eventlog|event:private_room_create|name"
 msgid "Private Room Rented"
-msgstr ""
+msgstr "Sala privada alquilada"
 
 #: src/modules/rooms/cog.py:333
 #, possible-python-brace-format
 msgctxt "eventlog|event:private_room_create|desc"
 msgid "{owner} has rented a new private room {channel}!"
-msgstr ""
+msgstr "¡{owner} ha alquilado una nueva sala privada {channel}!"
 
 #: src/modules/rooms/cog.py:368
 msgctxt "cmd:room"
