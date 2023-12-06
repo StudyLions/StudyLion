@@ -466,17 +466,17 @@ msgstr ""
 #: src/modules/rooms/cog.py:757
 msgctxt "cmd:room_invite|success|ack"
 msgid "Members Invited successfully."
-msgstr ""
+msgstr "Miembros Invitados con éxito."
 
 #: src/modules/rooms/cog.py:765
 msgctxt "cmd:room_kick"
 msgid "kick"
-msgstr ""
+msgstr "kick"
 
 #: src/modules/rooms/cog.py:768
 msgctxt "cmd:room_kick|desc"
 msgid "Remove a members from your private room."
-msgstr ""
+msgstr "Retire a un miembro de su sala privada."
 
 #: src/modules/rooms/cog.py:772
 msgctxt "cmd:room_kick|param:members"
