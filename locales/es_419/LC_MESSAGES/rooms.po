@@ -425,12 +425,12 @@ msgstr "Añade miembros a tu sala privada."
 #: src/modules/rooms/cog.py:668
 msgctxt "cmd:room_invite|param:members"
 msgid "members"
-msgstr ""
+msgstr "miembros"
 
 #: src/modules/rooms/cog.py:673
 msgctxt "cmd:room_invite|param:members|desc"
 msgid "Mention the members you want to add."
-msgstr ""
+msgstr "Menciona los miembros que quieres añadir."
 
 #: src/modules/rooms/cog.py:687
 #, possible-python-brace-format
