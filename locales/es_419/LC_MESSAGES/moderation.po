@@ -715,6 +715,8 @@ msgctxt "guildset:admin_role|desc"
 msgid ""
 "Server role allowing access to all administrator level functionality in Leo."
 msgstr ""
+"Función de servidor que permite acceder a todas las funciones de nivel de "
+"administrador en Leo."
 
 #: src/modules/moderation/settings.py:193
 msgctxt "guildset:admin_role|long_desc"
@@ -727,11 +729,18 @@ msgid ""
 "be given permission to see the commands through the Discord server "
 "integrations interface."
 msgstr ""
+"Los miembros con este rol son considerados administradores del servidor, "
+"permitiéndoles usar todas mis interfaces y comandos, excepto para "
+"administrar roles que están por encima de ellos en la jerarquía de roles. "
+"Esta configuración permite dar a los miembros permisos de administrador "
+"sobre mis sistemas, sin darles permisos de administrador del servidor. Ten "
+"en cuenta que el rol también necesitará permiso para ver los comandos a "
+"través de la interfaz de integración del servidor Discord."
 
 #: src/modules/moderation/settings.py:203
 msgctxt "guildset:admin_role|accepts"
 msgid "Admin role name or id."
-msgstr ""
+msgstr "Nombre o id del rol de administrador."
 
 #: src/modules/moderation/settings.py:216
 #, possible-python-brace-format
