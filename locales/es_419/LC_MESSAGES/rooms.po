@@ -646,12 +646,12 @@ msgstr "Balance de habitaciones"
 #: src/modules/rooms/room.py:96
 msgctxt "room|eventlog|field:created"
 msgid "Created At"
-msgstr ""
+msgstr "Creado en"
 
 #: src/modules/rooms/room.py:102
 msgctxt "room|eventlog|field:tick"
 msgid "Next Rent Due"
-msgstr ""
+msgstr "Próximo vencimiento del alquiler"
 
 #: src/modules/rooms/room.py:108
 msgctxt "room|eventlog|field:members"
