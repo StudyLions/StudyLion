@@ -169,15 +169,15 @@ msgstr ""
 msgctxt "cmd:warning|embed:success|line:count"
 msgid "This their first warning."
 msgid_plural "They have recieved **`{count}`** warnings."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Esta es su primera advertencia."
+msgstr[1] "Han recibido **`{count}`** avisos."
+msgstr[2] "Han recibido **`{count}`** avisos."
 
 #: src/modules/moderation/cog.py:336
 #, possible-python-brace-format
 msgctxt "cmd:warning|embed:success|desc"
 msgid "[Ticket #{ticket}]({jump_link}) {user} has been warned."
-msgstr ""
+msgstr "[Ticket #{ticket}]({jump_link}) {user} ha sido avisado."
 
 #: src/modules/moderation/cog.py:347
 msgctxt "cmd:warning|embed:success|field:no_alert|name"
