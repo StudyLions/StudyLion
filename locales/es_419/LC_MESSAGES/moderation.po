@@ -579,17 +579,20 @@ msgid ""
 "Warnings, notes, video blacklists, and other moderation events will be "
 "posted as numbered tickets with context to this log."
 msgstr ""
+"Las advertencias, notas, listas negras de vídeos y otros eventos de "
+"moderación se publicarán como entradas numeradas con contexto en este "
+"registro."
 
 #: src/modules/moderation/settings.py:34
 msgctxt "guildset:ticket_log|accepts"
 msgid "Ticket channel name or id."
-msgstr ""
+msgstr "Nombre o identificador del canal de tickets."
 
 #: src/modules/moderation/settings.py:48
 #, possible-python-brace-format
 msgctxt "guildset:ticket_log|set_response:set"
 msgid "Moderation tickets will be sent to {channel}"
-msgstr ""
+msgstr "Los tickets de moderación se enviarán a {channel}"
 
 #: src/modules/moderation/settings.py:53
 msgctxt "guildset:ticket_log|set_response:unset"
