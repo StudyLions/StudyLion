@@ -514,12 +514,13 @@ msgstr "Miembros retirados."
 #: src/modules/rooms/cog.py:831
 msgctxt "cmd:room_transfer"
 msgid "transfer"
-msgstr ""
+msgstr "transferencia"
 
 #: src/modules/rooms/cog.py:834
 msgctxt "cmd:room_transfer|desc"
 msgid "Transfer your private room to another room member. Not reversible!"
 msgstr ""
+"Transfiera su sala privada a otro miembro de la sala. No es reversible."
 
 #: src/modules/rooms/cog.py:838
 msgctxt "cmd:room_transfer|param:new_owner"
