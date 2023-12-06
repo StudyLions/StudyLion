@@ -410,17 +410,17 @@ msgstr "¿Por qué perdonas estos tickets?"
 #: src/modules/moderation/ticketui.py:252
 msgctxt "ui:tickets|button:pardon|label"
 msgid "Pardon All"
-msgstr ""
+msgstr "Perdonar a todos"
 
 #: src/modules/moderation/ticketui.py:273
 msgctxt "ui:tickets|menu:filter_type|placeholder"
 msgid "Select Ticket Types"
-msgstr ""
+msgstr "Seleccione el tipo de ticket"
 
 #: src/modules/moderation/ticketui.py:309
 msgctxt "ui:tickets|menu:filter_state|placeholder"
 msgid "Select Ticket States"
-msgstr ""
+msgstr "Seleccione el estado del ticket"
 
 #: src/modules/moderation/ticketui.py:346
 msgctxt "ui:tickets|menu:filter_target|placeholder"
