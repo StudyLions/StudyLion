@@ -1,0 +1,52 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Satoru Araragi, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Satoru Araragi, 2023\n"
+"Language-Team: Japanese (https://app.transifex.com/leobot/teams/174919/ja/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/core/config.py:28
+msgctxt "group:config"
+msgid "config"
+msgstr "設定"
+
+#: src/core/config.py:29
+msgctxt "group:config|desc"
+msgid "View and adjust moderation-level configuration."
+msgstr "運営レベルの設定を表示および変更します。"
+
+#: src/core/config.py:40
+msgctxt "group:admin"
+msgid "admin"
+msgstr "管理者"
+
+#: src/core/config.py:41
+msgctxt "group:admin|desc"
+msgid "Administrative commands."
+msgstr "管理者コマンド。"
+
+#: src/core/config.py:52
+msgctxt "group:admin_config"
+msgid "config"
+msgstr "設定"
+
+#: src/core/config.py:53
+msgctxt "group:admin_config|desc"
+msgid "View and adjust admin-level configuration."
+msgstr "管理者レベルの構成を表示および変更します。"
