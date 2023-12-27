@@ -575,7 +575,7 @@ msgstr "Erforderlich"
 #: src/modules/ranks/ui/preview.py:302
 msgctxt "ui:rank_preview|embed|field:reward|name"
 msgid "Reward"
-msgstr ""
+msgstr "Belohnung"
 
 #: src/modules/ranks/ui/preview.py:311
 msgctxt "ui:rank_preview|embed|field:message"
