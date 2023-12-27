@@ -441,6 +441,8 @@ msgstr "Ich werde Mitglieder bei Rangfortschritten direkt kontaktieren."
 msgctxt "guildset:dm_ranks|response:false"
 msgid "I will never direct message members upon rank advancement."
 msgstr ""
+"Ich werde niemals Mitglieder per Direktnachricht kontaktieren, wenn sie "
+"einen höheren Rang erreichen."
 
 #: src/modules/ranks/ui/preview.py:75
 msgctxt "ui:rank_preview|button:edit|error:role_deleted"
