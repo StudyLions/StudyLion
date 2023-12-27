@@ -123,7 +123,7 @@ msgstr "{amount} STD"
 #, possible-python-brace-format
 msgctxt "skin:stats|mode:text|field:col2_summary"
 msgid "{amount} XP"
-msgstr ""
+msgstr "{amount} EXP"
 
 #: src/gui/cards/stats.py:181
 #, possible-python-brace-format
