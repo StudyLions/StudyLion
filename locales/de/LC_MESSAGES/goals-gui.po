@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-24 12:21+0300\n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
 "Last-Translator: Sarah Vogel, 2023\n"
 "Language-Team: German (https://app.transifex.com/leobot/teams/174919/de/)\n"
@@ -92,7 +92,7 @@ msgstr "WÖCHENTLICHE STATISTIK"
 #: src/gui/cards/goals.py:246
 msgctxt "ui:goals|weekly|task_header"
 msgid "GOALS OF THE WEEK"
-msgstr ""
+msgstr "WOCHENZIELE"
 
 #: src/gui/cards/goals.py:256
 msgctxt "ui:goals|monthly|title"
@@ -102,4 +102,4 @@ msgstr "MONATLICHE STATISTIK"
 #: src/gui/cards/goals.py:260
 msgctxt "ui:goals|monthly|task_header"
 msgid "GOALS OF THE MONTH"
-msgstr ""
+msgstr "MONATSZIELE"
