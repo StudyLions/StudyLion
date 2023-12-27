@@ -59,7 +59,7 @@ msgstr ""
 #: src/modules/video_channels/cog.py:246
 msgctxt "video_watchdog|kick_blacklisted_member|notification|title"
 msgid "You have been disconnected."
-msgstr ""
+msgstr "Du wurdest getrennt."
 
 #: src/modules/video_channels/cog.py:250
 #, possible-python-brace-format
