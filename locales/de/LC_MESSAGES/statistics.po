@@ -197,7 +197,7 @@ msgstr "Die 30 Tage Challenge"
 #: src/modules/statistics/achievements.py:396
 msgctxt "achievement:monthlyhours|subtext"
 msgid "Be active for 100 hours in a month"
-msgstr ""
+msgstr "Sei in einem Monat 100 Stunden aktiv"
 
 #: src/modules/statistics/settings.py:38
 msgctxt "settype:stat|output:voice"
