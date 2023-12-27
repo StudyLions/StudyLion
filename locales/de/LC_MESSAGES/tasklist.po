@@ -292,7 +292,7 @@ msgstr "Lösche deine Aufgabenliste."
 #: src/modules/tasklist/cog.py:696
 msgctxt "cmd:tasks_clear|resp:success"
 msgid "Your tasklist has been cleared."
-msgstr ""
+msgstr "Deine Aufgabenliste wurde gelöscht."
 
 #: src/modules/tasklist/cog.py:704
 msgctxt "cmd:tasks_remove"
