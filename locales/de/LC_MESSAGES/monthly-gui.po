@@ -178,7 +178,7 @@ msgstr "Tage aktiv:"
 #, possible-python-brace-format
 msgctxt "ui:monthlystats|stats:days_active|value"
 msgid "{count} days"
-msgstr ""
+msgstr "{count} Tage"
 
 #: src/gui/cards/monthly.py:359
 #, possible-python-brace-format
