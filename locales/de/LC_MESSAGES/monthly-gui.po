@@ -45,13 +45,13 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "ui:monthlystats|mode:study|bar_value"
 msgid "{value} H"
-msgstr ""
+msgstr "{value} S"
 
 #: src/gui/cards/monthly.py:123
 #, possible-python-brace-format
 msgctxt "ui:monthlystats|mode:voice|bar_value"
 msgid "{value} H"
-msgstr ""
+msgstr "{value} S"
 
 #: src/gui/cards/monthly.py:127
 #, possible-python-brace-format
