@@ -77,7 +77,7 @@ msgstr "Aufgabenliste"
 #: src/modules/tasklist/cog.py:261
 msgctxt "cmd:tasklist|desc"
 msgid "Open your tasklist."
-msgstr ""
+msgstr "Öffne deine Aufgabenliste."
 
 #: src/modules/tasklist/cog.py:271
 msgctxt "group:tasks"
