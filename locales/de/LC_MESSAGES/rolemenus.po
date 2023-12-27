@@ -164,7 +164,7 @@ msgstr ""
 #: src/modules/rolemenus/cog.py:634
 msgctxt "acmpl:menuroles|param:menu|keyname"
 msgid "menu"
-msgstr ""
+msgstr "Menü"
 
 #: src/modules/rolemenus/cog.py:640
 msgctxt "acmpl:menuroles|choice:no_menu|name"
