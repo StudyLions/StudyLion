@@ -919,7 +919,7 @@ msgstr ""
 #: src/modules/ranks/ui/overview.py:195
 msgctxt "ui:rank_overview|button:clear|confirm|button:yes"
 msgid "Yes, clear ranks"
-msgstr ""
+msgstr "Ja, Ränge löschen"
 
 #: src/modules/ranks/ui/overview.py:201
 msgctxt "ui:rank_overview|button:clear|confirm|button:no"
@@ -929,7 +929,7 @@ msgstr "Abbrechen"
 #: src/modules/ranks/ui/overview.py:217
 msgctxt "ui:rank_overview|button:clear|label"
 msgid "Clear Ranks"
-msgstr ""
+msgstr "Ränge löschen"
 
 #: src/modules/ranks/ui/overview.py:231
 msgctxt "ui:rank_overview|button:create|error:my_permissions"
