@@ -49,7 +49,7 @@ msgstr ""
 #: src/modules/shop/cog.py:153
 msgctxt "cmd:shop_open|error:no_shops"
 msgid "There is nothing to buy!"
-msgstr ""
+msgstr "Es gibt nichts zu kaufen!"
 
 #: src/modules/shop/cog.py:215
 msgctxt "ui:stores|button:close|label"
