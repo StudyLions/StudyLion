@@ -112,7 +112,7 @@ msgstr ""
 #: src/modules/video_channels/cog.py:403
 msgctxt "video_watchdog|join_task|kick_after_grace|warning|title"
 msgid "You have received a warning!"
-msgstr ""
+msgstr "Du bist ermahnt worden!"
 
 #: src/modules/video_channels/cog.py:407
 #, possible-python-brace-format
@@ -143,7 +143,7 @@ msgstr ""
 #: src/modules/video_channels/cog.py:474
 msgctxt "video_watchdog|disabled_video_kick|notification|title"
 msgid "You have been disconnected."
-msgstr ""
+msgstr "Du wurdest getrennt."
 
 #: src/modules/video_channels/cog.py:478
 #, possible-python-brace-format
