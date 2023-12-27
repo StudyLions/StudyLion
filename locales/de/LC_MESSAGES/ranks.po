@@ -186,12 +186,12 @@ msgstr ""
 #: src/modules/ranks/cog.py:884
 msgctxt "cmd:ranks"
 msgid "ranks"
-msgstr ""
+msgstr "Ränge"
 
 #: src/modules/ranks/cog.py:916
 msgctxt "cmd:configure_ranks"
 msgid "ranks"
-msgstr ""
+msgstr "Ränge"
 
 #: src/modules/ranks/cog.py:917
 msgctxt "cmd:configure_ranks|desc"
