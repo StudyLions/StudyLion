@@ -959,6 +959,8 @@ msgid ""
 "The role is managed by another application or integration, and cannot be a "
 "rank!"
 msgstr ""
+"Die Rolle wird von einer anderen Anwendung oder Integration verwaltet und "
+"kann keinen Rang haben!"
 
 #: src/modules/ranks/ui/overview.py:310
 msgctxt ""
