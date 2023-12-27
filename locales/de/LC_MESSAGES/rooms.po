@@ -596,7 +596,7 @@ msgstr "Erstellt am"
 #: src/modules/rooms/room.py:102
 msgctxt "room|eventlog|field:tick"
 msgid "Next Rent Due"
-msgstr ""
+msgstr "Nächste Miete fällig"
 
 #: src/modules/rooms/room.py:108
 msgctxt "room|eventlog|field:members"
