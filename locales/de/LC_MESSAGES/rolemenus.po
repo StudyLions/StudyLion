@@ -522,7 +522,7 @@ msgstr "Menü"
 #: src/modules/rolemenus/cog.py:1322
 msgctxt "cmd:rolemenu_addrole|param:role"
 msgid "role"
-msgstr ""
+msgstr "Rolle"
 
 #: src/modules/rolemenus/cog.py:1333
 msgctxt "cmd:rolemenu_addrole|param:menu|desc"
