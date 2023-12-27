@@ -320,7 +320,7 @@ msgstr "Du hast keine Erinnerungen eingestellt!"
 #: src/modules/reminders/ui.py:286
 msgctxt "ui:reminderlist|embed|tips:name"
 msgid "Reminder Tips"
-msgstr "Tips für Erinnerungen"
+msgstr "Tipps für Erinnerungen"
 
 #: src/modules/reminders/ui.py:290
 #, possible-python-brace-format
