@@ -581,7 +581,7 @@ msgstr "Besitzer"
 #: src/modules/rooms/room.py:84
 msgctxt "room|eventlog|field:channel"
 msgid "Channel"
-msgstr "Kanal"
+msgstr "Channel"
 
 #: src/modules/rooms/room.py:90
 msgctxt "room|eventlog|field:balance"
@@ -651,7 +651,7 @@ msgstr ""
 #: src/modules/rooms/room.py:318
 msgctxt "room|embed:expiry|title"
 msgid "Private Room Expired!"
-msgstr "Privater Kanal ist abgelaufen!"
+msgstr "Privater Channel ist abgelaufen!"
 
 #: src/modules/rooms/room.py:322
 #, possible-python-brace-format
@@ -662,7 +662,7 @@ msgstr ""
 #: src/modules/rooms/room.py:332
 msgctxt "room|eventlog|event:expired|title"
 msgid "Private Room Expired"
-msgstr "Privater Kanal ist abgelaufen"
+msgstr "Privater Channel ist abgelaufen"
 
 #: src/modules/rooms/room.py:336
 #, possible-python-brace-format
