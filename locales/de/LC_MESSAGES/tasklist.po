@@ -516,7 +516,7 @@ msgstr ""
 #: src/modules/tasklist/ui.py:39
 msgctxt "ui:tasklist_caller|button:tasklist|label"
 msgid "Open Tasklist"
-msgstr ""
+msgstr "Öffne Aufgabenliste."
 
 #: src/modules/tasklist/ui.py:57
 msgctxt "modal:tasklist_single_editor|field:task|label"
@@ -536,7 +536,7 @@ msgstr ""
 #: src/modules/tasklist/ui.py:104
 msgctxt "modal:tasklist_bulk_editor|field:tasklist|label"
 msgid "Tasklist"
-msgstr ""
+msgstr "Aufgabenliste"
 
 #: src/modules/tasklist/ui.py:108
 msgctxt "modal:tasklist_bulk_editor|field:tasklist|placeholder"
