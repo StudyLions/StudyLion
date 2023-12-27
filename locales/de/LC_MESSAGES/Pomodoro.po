@@ -714,7 +714,7 @@ msgstr ""
 #: src/modules/pomodoro/ui/status.py:154
 msgctxt "ui:timer_status|button:start|error:not_manager|title"
 msgid "Insufficient permissions!"
-msgstr ""
+msgstr "Unzureichende Berechtigung!"
 
 #: src/modules/pomodoro/ui/status.py:158
 msgctxt "ui:timer_status|button:start|error:not_manager|desc"
