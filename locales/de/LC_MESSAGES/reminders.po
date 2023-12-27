@@ -232,7 +232,9 @@ msgctxt "ui:reminderlist|button:clear|confirm|desc"
 msgid "Are you sure you want to delete your `{count}` reminder?"
 msgid_plural "Are you sure you want to clear your `{count}` reminders?"
 msgstr[0] ""
+"Bist du dir sicher, dass du deine `{count}` Erinnerungen löschen willst?"
 msgstr[1] ""
+"Bist du dir sicher, dass du deine `{count}` Erinnerungen löschen willst?"
 
 #: src/modules/reminders/ui.py:57
 msgctxt "ui:reminderlist|button:clear|confirm|button:yes"
