@@ -254,7 +254,7 @@ msgstr "Abbrechen"
 #: src/modules/reminders/ui.py:89
 msgctxt "ui:reminderlist|button:clear|label"
 msgid "Clear Reminders"
-msgstr ""
+msgstr "Erinnerungen löschen"
 
 #: src/modules/reminders/ui.py:110
 msgctxt "ui:reminderlist|button:new|modal|field:time|label"
