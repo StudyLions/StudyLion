@@ -507,7 +507,7 @@ msgstr ""
 #: src/modules/rolemenus/cog.py:1311
 msgctxt "cmd:rolemenu_addrole"
 msgid "addrole"
-msgstr ""
+msgstr "rollehinzufügen"
 
 #: src/modules/rolemenus/cog.py:1314
 msgctxt "cmd:rolemenu_addrole|desc"
@@ -517,7 +517,7 @@ msgstr ""
 #: src/modules/rolemenus/cog.py:1319
 msgctxt "cmd:rolemenu_addrole|param:menu"
 msgid "menu"
-msgstr ""
+msgstr "Menü"
 
 #: src/modules/rolemenus/cog.py:1322
 msgctxt "cmd:rolemenu_addrole|param:role"
