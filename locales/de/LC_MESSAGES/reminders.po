@@ -370,7 +370,7 @@ msgstr "Hier klicken"
 #: src/modules/reminders/data.py:111
 msgctxt "reminder|embed"
 msgid "Next reminder"
-msgstr ""
+msgstr "Nächste Erinnerung"
 
 #: src/modules/reminders/data.py:135
 #, possible-python-brace-format
