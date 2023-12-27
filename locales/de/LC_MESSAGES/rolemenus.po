@@ -804,7 +804,7 @@ msgstr ""
 #: src/modules/rolemenus/roleoptions.py:218
 msgctxt "roleset:description|set_response:unset"
 msgid "The role description has been removed."
-msgstr ""
+msgstr "Die Rollenbeschreibung wurde entfernt."
 
 #: src/modules/rolemenus/roleoptions.py:226
 msgctxt "roleset:price"
