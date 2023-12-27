@@ -242,7 +242,7 @@ msgstr "Ja, lösche meine Erinnerungen."
 #: src/modules/reminders/ui.py:68
 msgctxt "ui:reminderlist|button:clear|success|desc"
 msgid "Your reminders have been cleared!"
-msgstr ""
+msgstr "Deine Erinnerungen wurden gelöscht!"
 
 #: src/modules/reminders/ui.py:77
 msgctxt "ui:reminderlist|button:clear|confirm|button:cancel"
