@@ -169,7 +169,7 @@ msgstr "Menü"
 #: src/modules/rolemenus/cog.py:640
 msgctxt "acmpl:menuroles|choice:no_menu|name"
 msgid "Please select a menu first"
-msgstr ""
+msgstr "Bitte wähle zuerst ein Menü aus."
 
 #: src/modules/rolemenus/cog.py:664
 #, possible-python-brace-format
@@ -216,7 +216,7 @@ msgstr ""
 #: src/modules/rolemenus/cog.py:731
 msgctxt "cmd:rolemenu_create|param:remplate"
 msgid "template"
-msgstr ""
+msgstr "Vorlage"
 
 #: src/modules/rolemenus/cog.py:732
 msgctxt "cmd:rolemenu_create|param:rawmessage"
