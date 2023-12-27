@@ -518,6 +518,7 @@ msgstr ""
 msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:is_default"
 msgid "The @everyone role cannot be removed, and cannot be a rank!"
 msgstr ""
+"Die @everyone Rolle kann nicht entfernt werden und kann keinen Rang haben!"
 
 #: src/modules/ranks/ui/preview.py:237
 msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:is_managed"
@@ -564,12 +565,12 @@ msgstr ""
 #: src/modules/ranks/ui/preview.py:288
 msgctxt "ui:rank_preview|embed|field:role|name"
 msgid "Role"
-msgstr ""
+msgstr "Rolle"
 
 #: src/modules/ranks/ui/preview.py:295
 msgctxt "ui:rank_preview|embed|field:required|name"
 msgid "Required"
-msgstr ""
+msgstr "Erforderlich"
 
 #: src/modules/ranks/ui/preview.py:302
 msgctxt "ui:rank_preview|embed|field:reward|name"
