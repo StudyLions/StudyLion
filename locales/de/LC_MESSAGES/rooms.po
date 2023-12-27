@@ -464,7 +464,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:825
 msgctxt "cmd:room_kick|success|ack"
 msgid "Members removed."
-msgstr ""
+msgstr "Mitglieder entfernt."
 
 #: src/modules/rooms/cog.py:831
 msgctxt "cmd:room_transfer"
