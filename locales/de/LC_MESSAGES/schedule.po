@@ -869,7 +869,7 @@ msgstr ""
 #: src/modules/schedule/ui/sessionui.py:64
 msgctxt "ui:sessionui|button:help|label"
 msgid "How to Attend"
-msgstr ""
+msgstr "Wie man beitritt"
 
 #: src/modules/schedule/ui/sessionui.py:92
 msgctxt "ui:session|button:book|error:starting_soon"
