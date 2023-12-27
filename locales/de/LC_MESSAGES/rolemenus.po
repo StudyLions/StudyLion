@@ -580,7 +580,7 @@ msgstr "Menü bearbeiten"
 #: src/modules/rolemenus/cog.py:1559
 msgctxt "cmd:rolemenu_editrole"
 msgid "editrole"
-msgstr ""
+msgstr "rollebearbeiten"
 
 #: src/modules/rolemenus/cog.py:1562
 msgctxt "cmd:rolemenu_editrole|desc"
