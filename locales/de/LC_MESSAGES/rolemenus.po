@@ -746,7 +746,7 @@ msgstr ""
 #: src/modules/rolemenus/roleoptions.py:118
 msgctxt "roleset:emoji"
 msgid "emoji"
-msgstr ""
+msgstr "emoji"
 
 #: src/modules/rolemenus/roleoptions.py:121
 msgctxt "roleset:emoji|desc"
