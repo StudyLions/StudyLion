@@ -224,7 +224,7 @@ msgstr "bearbeiten"
 #: src/modules/tasklist/cog.py:583
 msgctxt "cmd:tasks_edit|desc"
 msgid "Edit a task in your tasklist."
-msgstr ""
+msgstr "Bearbeite eine Aufgabe in deine Liste."
 
 #: src/modules/tasklist/cog.py:587
 msgctxt "cmd:tasks_edit|param:taskstr"
