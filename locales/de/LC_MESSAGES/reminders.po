@@ -161,7 +161,7 @@ msgstr "An was soll ich dich erinnern?"
 #: src/modules/reminders/cog.py:508
 msgctxt "cmd:remindme_at|param:every|desc"
 msgid "How often to repeat this reminder."
-msgstr ""
+msgstr "Wie oft soll diese Erinnerung wiederholt werden."
 
 #: src/modules/reminders/cog.py:535
 msgctxt "cmd:remindme_at|error|title"
@@ -199,7 +199,7 @@ msgstr "Erinnerung"
 #: src/modules/reminders/cog.py:582
 msgctxt "cmd:remindme_in|param:every"
 msgid "repeat_every"
-msgstr ""
+msgstr "wiederhole_jede"
 
 #: src/modules/reminders/cog.py:587
 msgctxt "cmd:remindme_in|param:time|desc"
