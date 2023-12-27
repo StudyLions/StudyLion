@@ -245,7 +245,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "guildset:session_lobby|formatted|set"
 msgid "<#{channelid}>"
-msgstr ""
+msgstr "<#{channelid}>"
 
 #: src/modules/schedule/settings.py:127
 msgctxt "guildset:session_room"
