@@ -904,7 +904,7 @@ msgstr ""
 #: src/modules/ranks/ui/overview.py:162
 msgctxt "ui:rank_overview|button:auto|label"
 msgid "Auto Create"
-msgstr ""
+msgstr "Auto erstellen"
 
 #: src/modules/ranks/ui/overview.py:178
 msgctxt "ui:rank_overview|button:refresh|label"
