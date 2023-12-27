@@ -194,7 +194,7 @@ msgstr "Zeit"
 #: src/modules/reminders/cog.py:581
 msgctxt "cmd:remindme_in|param:reminder"
 msgid "reminder"
-msgstr ""
+msgstr "Erinnerung"
 
 #: src/modules/reminders/cog.py:582
 msgctxt "cmd:remindme_in|param:every"
@@ -219,7 +219,7 @@ msgstr ""
 #: src/modules/reminders/cog.py:621
 msgctxt "cmd:remindme_in|error|title"
 msgid "Could not create reminder!"
-msgstr ""
+msgstr "Konnte Erinnerung nicht erstellen!"
 
 #: src/modules/reminders/ui.py:47
 msgctxt "ui:reminderlist|button:clear|confirm|title"
