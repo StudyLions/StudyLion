@@ -269,7 +269,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:398
 msgctxt "cmd:room_rent|param:name|desc"
 msgid "Name of your private voice channel."
-msgstr "Name deines privaten Sprachkanals"
+msgstr "Name deines privaten Sprachchannels."
 
 #: src/modules/rooms/cog.py:416
 msgctxt "cmd:room_rent|error:not_setup"
@@ -290,7 +290,7 @@ msgstr ""
 msgctxt "cmd:room_rent|error:room_exists"
 msgid "You already own a private room! Click to visit: {channel}"
 msgstr ""
-"Du hast bereits einen privaten Kanal! Klicke, um zu springen: {channel}"
+"Du hast bereits einen privaten Channel! Klicke, um zu springen: {channel}"
 
 #: src/modules/rooms/cog.py:461
 #, possible-python-brace-format
@@ -327,7 +327,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:519
 msgctxt "cmd:room_rent|success|title"
 msgid "Private Room Created!"
-msgstr "Privater Kanal erstellt!"
+msgstr "Privater Channel erstellt!"
 
 #: src/modules/rooms/cog.py:572
 #, possible-python-brace-format
