@@ -121,6 +121,8 @@ msgstr ""
 msgctxt "rank_refresh|error:roles_dne|desc"
 msgid "Some ranks have invalid or deleted roles! Please remove them first."
 msgstr ""
+"Einige Ränge haben ungültige oder gelöschte Rollen! Bitte entferne diese "
+"zuerst."
 
 #: src/modules/ranks/cog.py:715
 #, possible-python-brace-format
