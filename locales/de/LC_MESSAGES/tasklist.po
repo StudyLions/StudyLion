@@ -613,7 +613,7 @@ msgstr "Aufgabe bearbeiten"
 #: src/modules/tasklist/ui.py:596
 msgctxt "ui:tasklist_single_editor|title"
 msgid "Add task"
-msgstr ""
+msgstr "Aufgabe hinzufügen"
 
 #: src/modules/tasklist/ui.py:629
 msgctxt "ui:tasklist|button:edit_mode|label"
@@ -661,7 +661,7 @@ msgstr ""
 #: src/modules/tasklist/ui.py:782
 msgctxt "ui:tasklist|error:wrong_user"
 msgid "This is not your tasklist!"
-msgstr ""
+msgstr "Dies ist nicht Ihre Aufgabenliste!"
 
 #: src/modules/tasklist/ui.py:824
 #, possible-python-brace-format
