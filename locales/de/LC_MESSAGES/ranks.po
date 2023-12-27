@@ -1004,7 +1004,7 @@ msgstr ""
 #: src/modules/ranks/ui/overview.py:454
 msgctxt "ui:rank_overview|embed:noranks|desc"
 msgid "No activity ranks have been set up!"
-msgstr ""
+msgstr "Keine Aktivitätsränge wurden erstellt!"
 
 #: src/modules/ranks/ui/overview.py:459
 msgctxt "ui:rank_overview|embed:noranks|desc|admin_addendum"
