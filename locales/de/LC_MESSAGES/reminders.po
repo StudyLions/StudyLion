@@ -184,7 +184,7 @@ msgstr "in"
 #: src/modules/reminders/cog.py:576
 msgctxt "cmd:remindme_in|desc"
 msgid "Schedule a reminder for a given amount of time in the future."
-msgstr ""
+msgstr "Planen eine Erinnerung für eine bestimmte Zeit in der Zukunft."
 
 #: src/modules/reminders/cog.py:580
 msgctxt "cmd:remindme_in|param:time"
