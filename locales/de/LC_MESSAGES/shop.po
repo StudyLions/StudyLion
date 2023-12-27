@@ -562,7 +562,7 @@ msgstr ""
 #: src/modules/shop/shops/colours.py:1206
 msgctxt "ui:colourstore|menu:buycolours|placeholder"
 msgid "There are no colour roles available to purchase!"
-msgstr ""
+msgstr "Es gibt keine farbigen Rollen, die du kaufen könntest!"
 
 #: src/modules/shop/shops/colours.py:1212
 msgctxt "ui:colourstore|menu:buycolours|placeholder"
