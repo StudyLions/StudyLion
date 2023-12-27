@@ -156,6 +156,8 @@ msgstr ""
 msgctxt "ui:configui|check|not_permitted"
 msgid "You have insufficient server permissions to use this UI!"
 msgstr ""
+"Du hast nicht ausreichend Serverberechtigungen, um diese Benutzeroberfläche "
+"zu verwenden!"
 
 #: src/utils/ui/config.py:157
 msgctxt "ui:configui|button:edit|label"
@@ -258,7 +260,7 @@ msgstr ""
 #: src/utils/ui/msgeditor.py:123
 msgctxt "ui:msg_editor|modal:content|field:content|label"
 msgid "Message Content"
-msgstr ""
+msgstr "Nachrichteninhalt"
 
 #: src/utils/ui/msgeditor.py:132
 msgctxt "ui:msg_editor|modal:content|title"
@@ -268,7 +270,7 @@ msgstr ""
 #: src/utils/ui/msgeditor.py:150
 msgctxt "ui:msg_editor|button:edit|label"
 msgid "Edit Content"
-msgstr ""
+msgstr "Inhalt bearbeiten"
 
 #: src/utils/ui/msgeditor.py:162
 msgctxt "ui:msg_editor|button:add_embed|sample_embed|title"
