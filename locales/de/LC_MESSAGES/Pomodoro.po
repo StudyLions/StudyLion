@@ -433,7 +433,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:971
 msgctxt "cmd:configure_pomodoro"
 msgid "pomodoro"
-msgstr ""
+msgstr "pomodoro"
 
 #: src/modules/pomodoro/cog.py:972
 msgctxt "cmd:configure_pomodoro|desc"
@@ -603,7 +603,7 @@ msgstr ""
 #: src/modules/pomodoro/options.py:273
 msgctxt "timerset:focus_length|desc"
 msgid "Please enter a positive number of minutes."
-msgstr ""
+msgstr "Bitte gib eine positive Nummer an Minuten ein."
 
 #: src/modules/pomodoro/options.py:281
 msgctxt "timerset:break_length"
