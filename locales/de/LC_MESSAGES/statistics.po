@@ -182,7 +182,7 @@ msgstr ""
 #: src/modules/statistics/achievements.py:363
 msgctxt "achievement:schedule|name"
 msgid "Be Accountable"
-msgstr ""
+msgstr "Sei verantwortlich"
 
 #: src/modules/statistics/achievements.py:367
 msgctxt "achievement:schedule|subtext"
