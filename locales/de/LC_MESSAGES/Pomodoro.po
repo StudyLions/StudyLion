@@ -48,6 +48,8 @@ msgid ""
 "I require the `MANAGE_WEBHOOKS` permission to send pomodoro notifications "
 "here!"
 msgstr ""
+"Ich benötige die `MANAGE_WEBHOOKS` Berechtigung, um Pomodoro "
+"Benachrichtigungen zu senden!"
 
 #: src/modules/pomodoro/timer.py:238
 #, possible-python-brace-format
