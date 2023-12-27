@@ -377,8 +377,8 @@ msgstr "Nächste Erinnerung"
 msgctxt "reminder|formatted|interval"
 msgid "Every day"
 msgid_plural "Every `{days}` days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Jeden Tag"
+msgstr[1] "Alle `{days}` Tage"
 
 #: src/modules/reminders/data.py:144
 #, possible-python-brace-format
