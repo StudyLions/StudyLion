@@ -853,7 +853,7 @@ msgstr "Dauer"
 #: src/modules/rolemenus/roleoptions.py:275
 msgctxt "roleset:duration|desc"
 msgid "Lifetime of the role after selection"
-msgstr ""
+msgstr "Lebensdauer der Rolle nach der Auswahl"
 
 #: src/modules/rolemenus/roleoptions.py:279
 msgctxt "roleset:duration|long_desc"
@@ -865,7 +865,7 @@ msgstr ""
 #: src/modules/rolemenus/roleoptions.py:284
 msgctxt "roleset:duration|notset"
 msgid "Forever."
-msgstr ""
+msgstr "Für immer."
 
 #: src/modules/rolemenus/roleoptions.py:297
 #, possible-python-brace-format
