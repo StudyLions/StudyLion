@@ -945,7 +945,7 @@ msgstr ""
 #: src/modules/ranks/ui/overview.py:257
 msgctxt "ui:rank_overview|button:create|label"
 msgid "Create Rank"
-msgstr ""
+msgstr "Rang erstellen"
 
 #: src/modules/ranks/ui/overview.py:300
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:is_default"
