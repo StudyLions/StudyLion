@@ -76,7 +76,7 @@ msgstr ""
 #: src/gui/cards/goals.py:169
 msgctxt "skin:goals|mode:anki|goal:middle|below"
 msgid "CARDS"
-msgstr ""
+msgstr "KARTEN"
 
 #: src/gui/cards/goals.py:230
 #, possible-python-brace-format
