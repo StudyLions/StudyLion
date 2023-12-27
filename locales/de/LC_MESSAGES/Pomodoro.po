@@ -244,7 +244,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:571
 msgctxt "cmd:pomodoro"
 msgid "pomodoro"
-msgstr ""
+msgstr "pomodoro"
 
 #: src/modules/pomodoro/cog.py:572
 msgctxt "cmd:pomodoro|desc"
@@ -254,7 +254,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:579
 msgctxt "cmd:pomodoro_create"
 msgid "create"
-msgstr ""
+msgstr "erstellen"
 
 #: src/modules/pomodoro/cog.py:582
 msgctxt "cmd:pomodoro_create|desc"
