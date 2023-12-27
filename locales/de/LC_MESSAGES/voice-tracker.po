@@ -101,7 +101,7 @@ msgstr ""
 #: src/tracking/voice/cog.py:675
 msgctxt "cmd:now|param:user|desc"
 msgid "Check what a friend is working on."
-msgstr ""
+msgstr "Schaue, an was ein Freund arbeitet."
 
 #: src/tracking/voice/cog.py:679
 msgctxt "cmd:now|param:clear|desc"
