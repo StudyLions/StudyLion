@@ -301,7 +301,7 @@ msgstr ""
 #: src/modules/ranks/settings.py:33
 msgctxt "guildset:rank_type|input_format:xp"
 msgid "Exp"
-msgstr ""
+msgstr "EXP"
 
 #: src/modules/ranks/settings.py:34
 msgctxt "guildset:rank_type|input_format:message"
