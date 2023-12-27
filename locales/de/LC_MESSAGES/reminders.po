@@ -330,7 +330,7 @@ msgstr ""
 #: src/modules/reminders/data.py:63
 msgctxt "reminder_set|title"
 msgid "Reminder Set!"
-msgstr ""
+msgstr "Erinnerung eingestellt!"
 
 #: src/modules/reminders/data.py:67
 #, possible-python-brace-format
@@ -343,7 +343,7 @@ msgstr ""
 #: src/modules/reminders/data.py:79
 msgctxt "reminder_set|field:repeat|name"
 msgid "Repeats"
-msgstr ""
+msgstr "Wiederholungen"
 
 #: src/modules/reminders/data.py:83
 #, possible-python-brace-format
@@ -360,7 +360,7 @@ msgstr ""
 #: src/modules/reminders/data.py:102
 msgctxt "reminder|embed"
 msgid "Context?"
-msgstr ""
+msgstr "Kontext?"
 
 #: src/modules/reminders/data.py:104
 msgctxt "reminder|embed"
