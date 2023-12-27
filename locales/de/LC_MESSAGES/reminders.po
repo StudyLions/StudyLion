@@ -355,7 +355,7 @@ msgstr ""
 #: src/modules/reminders/data.py:94
 msgctxt "reminder|embed"
 msgid "You asked me to remind you!"
-msgstr ""
+msgstr "Du hast mich gebeten, dich daran zu erinnern!"
 
 #: src/modules/reminders/data.py:102
 msgctxt "reminder|embed"
