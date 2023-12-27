@@ -115,7 +115,7 @@ msgstr "Erinnerung erfolgreich abgebrochen."
 #: src/modules/reminders/cog.py:448
 msgctxt "cmd:reminders_cancel|acmpl:reminder|error:no_reminders"
 msgid "There are no reminders to cancel!"
-msgstr ""
+msgstr "Es gibt keine Erinnerungen zum abbrechen!"
 
 #: src/modules/reminders/cog.py:478
 #, possible-python-brace-format
