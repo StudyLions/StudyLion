@@ -661,7 +661,7 @@ msgstr ""
 #: src/modules/tasklist/ui.py:782
 msgctxt "ui:tasklist|error:wrong_user"
 msgid "This is not your tasklist!"
-msgstr "Dies ist nicht Ihre Aufgabenliste!"
+msgstr "Das ist nicht deine Aufgabenliste!"
 
 #: src/modules/tasklist/ui.py:824
 #, possible-python-brace-format
