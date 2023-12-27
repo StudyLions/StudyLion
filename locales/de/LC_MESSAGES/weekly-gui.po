@@ -80,13 +80,13 @@ msgstr "LETZTE WOCHE: {amount} STUNDEN"
 #, possible-python-brace-format
 msgctxt "skin:weeklystats|mode:voice|summary:last_week"
 msgid "LAST WEEK: {amount} HOURS"
-msgstr ""
+msgstr "LETZTE WOCHE: {amount} STUNDEN"
 
 #: src/gui/cards/weekly.py:248
 #, possible-python-brace-format
 msgctxt "skin:weeklystats|mode:text|summary:last_week"
 msgid "LAST WEEK: {amount} MESSAGES"
-msgstr ""
+msgstr "LETZTE WOCHE: {amount} NACHRICHTEN"
 
 #: src/gui/cards/weekly.py:252
 #, possible-python-brace-format
