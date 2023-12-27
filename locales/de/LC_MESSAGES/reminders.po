@@ -237,7 +237,7 @@ msgstr[1] ""
 #: src/modules/reminders/ui.py:57
 msgctxt "ui:reminderlist|button:clear|confirm|button:yes"
 msgid "Yes, clear my reminders"
-msgstr ""
+msgstr "Ja, lösche meine Erinnerungen."
 
 #: src/modules/reminders/ui.py:68
 msgctxt "ui:reminderlist|button:clear|success|desc"
