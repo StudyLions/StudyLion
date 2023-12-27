@@ -24,12 +24,12 @@ msgstr ""
 #: src/modules/pomodoro/timer.py:52
 msgctxt "timer|stage:break|name"
 msgid "BREAK"
-msgstr ""
+msgstr "PAUSE"
 
 #: src/modules/pomodoro/timer.py:53
 msgctxt "timer|stage:focus|name"
 msgid "FOCUS"
-msgstr ""
+msgstr "FOKUS"
 
 #: src/modules/pomodoro/timer.py:164
 #, possible-python-brace-format
