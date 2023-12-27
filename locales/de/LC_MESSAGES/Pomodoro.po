@@ -475,7 +475,7 @@ msgstr ""
 #: src/modules/pomodoro/options.py:33
 msgctxt "timerset:voice_channel"
 msgid "channel"
-msgstr "Kanal"
+msgstr "Channel"
 
 #: src/modules/pomodoro/options.py:36
 msgctxt "timerset:voice_channel|desc"
