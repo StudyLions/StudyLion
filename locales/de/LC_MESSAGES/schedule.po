@@ -193,8 +193,8 @@ msgstr ""
 msgctxt "ui:schedule|format_until|positive"
 msgid "in <1 hour"
 msgid_plural "in {number} hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "in <1 Stunde"
+msgstr[1] "in {number} Stunden"
 
 #: src/modules/schedule/lib.py:93 src/modules/schedule/ui/scheduleui.py:354
 msgctxt "ui:schedule|format_until|now"
