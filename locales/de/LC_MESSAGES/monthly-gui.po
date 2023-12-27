@@ -149,13 +149,13 @@ msgstr "Täglicher Durchschnitt:"
 #, possible-python-brace-format
 msgctxt "skin:monthlystats|mode:study|stats:daily_average|value"
 msgid "{count} hours"
-msgstr ""
+msgstr "{count} Stunden"
 
 #: src/gui/cards/monthly.py:324
 #, possible-python-brace-format
 msgctxt "skin:monthlystats|mode:voice|stats:daily_average|value"
 msgid "{count} hours"
-msgstr ""
+msgstr "{count} Stunden"
 
 #: src/gui/cards/monthly.py:328
 #, possible-python-brace-format
