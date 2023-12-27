@@ -166,7 +166,7 @@ msgstr ""
 #: src/modules/reminders/cog.py:535
 msgctxt "cmd:remindme_at|error|title"
 msgid "Could not create reminder!"
-msgstr ""
+msgstr "Konnte Erinnerung nicht erstellen!"
 
 #: src/modules/reminders/cog.py:566
 #, possible-python-brace-format
