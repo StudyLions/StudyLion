@@ -142,7 +142,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:401
 msgctxt "cmd:timer"
 msgid "timer"
-msgstr ""
+msgstr "Timer"
 
 #: src/modules/pomodoro/cog.py:402
 msgctxt "cmd:timer|desc"
