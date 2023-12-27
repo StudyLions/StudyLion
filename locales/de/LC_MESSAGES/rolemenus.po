@@ -1561,7 +1561,7 @@ msgstr ""
 #: src/modules/rolemenus/ui/menueditor.py:1010
 msgctxt "ui:menu_editor|embed|field:tips|name"
 msgid "Command Tips"
-msgstr ""
+msgstr "Befehlstipps"
 
 #: src/modules/rolemenus/ui/menueditor.py:1014
 #, possible-python-brace-format
