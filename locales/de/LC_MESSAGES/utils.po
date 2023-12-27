@@ -40,7 +40,7 @@ msgstr ""
 #: src/utils/cog.py:46
 msgctxt "cmd:page_next"
 msgid "next"
-msgstr ""
+msgstr "weiter"
 
 #: src/utils/cog.py:47
 msgctxt "cmd:page_next|desc"
@@ -50,7 +50,7 @@ msgstr ""
 #: src/utils/cog.py:53
 msgctxt "cmd:page_prev"
 msgid "prev"
-msgstr ""
+msgstr "zurück"
 
 #: src/utils/cog.py:54
 msgctxt "cmd:page_prev|desc"
