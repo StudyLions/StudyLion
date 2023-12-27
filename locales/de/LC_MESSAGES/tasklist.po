@@ -166,7 +166,7 @@ msgstr ""
 #: src/modules/tasklist/cog.py:470
 msgctxt "cmd:tasks_upload|param:tasklist"
 msgid "tasklist"
-msgstr ""
+msgstr "Aufgabenliste"
 
 #: src/modules/tasklist/cog.py:471
 msgctxt "cmd:tasks_upload|param:append"
