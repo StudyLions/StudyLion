@@ -62,13 +62,13 @@ msgstr "DIESE WOCHE: {amount} STUNDEN"
 #, possible-python-brace-format
 msgctxt "skin:weeklystats|mode:text|summary:this_week"
 msgid "THIS WEEK: {amount} MESSAGES"
-msgstr ""
+msgstr "DIESE WOCHE: {amount} NACHRICHTEN"
 
 #: src/gui/cards/weekly.py:219
 #, possible-python-brace-format
 msgctxt "skin:weeklystats|mode:text|summary:this_week"
 msgid "THIS WEEK: {amount} CARDS"
-msgstr ""
+msgstr "DIESE WOCHE: {amount} KARTEN"
 
 #: src/gui/cards/weekly.py:240
 #, possible-python-brace-format
