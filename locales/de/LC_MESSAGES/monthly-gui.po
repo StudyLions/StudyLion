@@ -74,13 +74,13 @@ msgstr "M,D,M,D,F,S,S"
 #, possible-python-brace-format
 msgctxt "skin:monthlystats|mode:study|summary:this_month"
 msgid "THIS MONTH: {amount} HOURS"
-msgstr ""
+msgstr "DIESEN MONAT: {amount} STUNDEN"
 
 #: src/gui/cards/monthly.py:167
 #, possible-python-brace-format
 msgctxt "skin:monthlystats|mode:voice|summary:this_month"
 msgid "THIS MONTH: {amount} HOURS"
-msgstr ""
+msgstr "DIESEN MONAT: {amount} STUNDEN"
 
 #: src/gui/cards/monthly.py:171
 #, possible-python-brace-format
