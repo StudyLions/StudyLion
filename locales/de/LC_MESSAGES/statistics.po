@@ -768,7 +768,7 @@ msgstr ""
 #: src/modules/statistics/ui/leaderboard.py:353
 msgctxt "ui:leaderboard|button:season|label"
 msgid "This Season"
-msgstr ""
+msgstr "Diese Saison"
 
 #: src/modules/statistics/ui/leaderboard.py:357
 msgctxt "ui:leaderboard|button:day|label"
