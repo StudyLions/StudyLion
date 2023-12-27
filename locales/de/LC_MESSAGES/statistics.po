@@ -177,7 +177,7 @@ msgstr "Ein Schritt nach dem anderen"
 #: src/modules/statistics/achievements.py:337
 msgctxt "achievement:tasks|subtext"
 msgid "Complete 1000 tasks"
-msgstr ""
+msgstr "Schließe 1000 Aufgaben ab"
 
 #: src/modules/statistics/achievements.py:363
 msgctxt "achievement:schedule|name"
