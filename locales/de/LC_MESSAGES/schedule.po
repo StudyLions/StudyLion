@@ -199,7 +199,7 @@ msgstr[1] ""
 #: src/modules/schedule/lib.py:93 src/modules/schedule/ui/scheduleui.py:354
 msgctxt "ui:schedule|format_until|now"
 msgid "right now!"
-msgstr ""
+msgstr "Jetzt!"
 
 #: src/modules/schedule/settings.py:70
 msgctxt "guildset:session_lobby"
