@@ -126,7 +126,7 @@ msgstr ""
 #: src/modules/reminders/cog.py:486
 msgctxt "cmd:remindme_at"
 msgid "at"
-msgstr ""
+msgstr "um"
 
 #: src/modules/reminders/cog.py:489
 msgctxt "cmd:remindme_at|desc"
@@ -141,7 +141,7 @@ msgstr "Zeit"
 #: src/modules/reminders/cog.py:494
 msgctxt "cmd:remindme_at|param:reminder"
 msgid "reminder"
-msgstr ""
+msgstr "Erinnerung"
 
 #: src/modules/reminders/cog.py:495
 msgctxt "cmd:remindme_at|param:every"
