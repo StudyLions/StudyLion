@@ -1154,7 +1154,7 @@ msgstr "Teilgenommen"
 #: src/modules/schedule/core/session.py:621
 msgctxt "session|status:finished|field:missing"
 msgid "Missing"
-msgstr ""
+msgstr "Fehlte"
 
 #: src/modules/schedule/core/timeslot.py:487
 msgctxt "session|closing|audit_reason"
