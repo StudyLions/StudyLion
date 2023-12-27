@@ -702,7 +702,7 @@ msgstr ""
 #: src/modules/rolemenus/roleoptions.py:57
 msgctxt "roleset:role"
 msgid "role"
-msgstr ""
+msgstr "Rolle"
 
 #: src/modules/rolemenus/roleoptions.py:60
 msgctxt "roleset:role|desc"
@@ -723,7 +723,7 @@ msgstr ""
 #: src/modules/rolemenus/roleoptions.py:88
 msgctxt "roleset:label"
 msgid "label"
-msgstr ""
+msgstr "Bezeichnung"
 
 #: src/modules/rolemenus/roleoptions.py:91
 msgctxt "roleset:label|desc"
