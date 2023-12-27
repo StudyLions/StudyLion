@@ -385,7 +385,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:837
 msgctxt "cmd:pomodoro_edit"
 msgid "edit"
-msgstr ""
+msgstr "bearbeiten"
 
 #: src/modules/pomodoro/cog.py:840
 msgctxt "cmd:pomodoro_edit|desc"
