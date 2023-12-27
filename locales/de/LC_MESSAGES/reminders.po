@@ -206,7 +206,7 @@ msgctxt "cmd:remindme_in|param:time|desc"
 msgid "How far into the future to set the reminder (e.g. 1 day 10h 5m)."
 msgstr ""
 "Wie weit in die Zukunft soll die Erinnerung eingestellt werden (z.B. 1 Tag "
-"10h 5m)?"
+"10h 5m)."
 
 #: src/modules/reminders/cog.py:591
 msgctxt "cmd:remindme_in|param:reminder|desc"
