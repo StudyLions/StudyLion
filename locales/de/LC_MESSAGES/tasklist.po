@@ -134,7 +134,7 @@ msgstr ""
 #: src/modules/tasklist/cog.py:415
 msgctxt "cmd:tasks_new|param:content|desc"
 msgid "Content of your new task."
-msgstr ""
+msgstr "Inhalt deiner neuen Aufgabe."
 
 #: src/modules/tasklist/cog.py:416
 msgctxt "cmd:tasks_new|param:parent"
