@@ -62,13 +62,13 @@ msgstr "{amount} EXP"
 #, possible-python-brace-format
 msgctxt "skin:leaderboard|mode:voice|top_hours_text"
 msgid "{amount} hours"
-msgstr ""
+msgstr "{amount} Stunden"
 
 #: src/gui/cards/leaderboard.py:140
 #, possible-python-brace-format
 msgctxt "skin:leaderboard|mode:anki|top_hours_text"
 msgid "{amount} cards"
-msgstr ""
+msgstr "{amount} Karten"
 
 #: src/gui/cards/leaderboard.py:167
 #, possible-python-brace-format
