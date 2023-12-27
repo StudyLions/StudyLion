@@ -567,7 +567,7 @@ msgstr "Es gibt keine farbigen Rollen, die du kaufen könntest!"
 #: src/modules/shop/shops/colours.py:1212
 msgctxt "ui:colourstore|menu:buycolours|placeholder"
 msgid "Select a colour role to purchase!"
-msgstr ""
+msgstr "Wähle eine farbige Rolle zum Kaufen aus!"
 
 #: src/modules/shop/shops/colours.py:1258
 #, possible-python-brace-format
