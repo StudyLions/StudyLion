@@ -91,7 +91,7 @@ msgstr ""
 #: src/modules/video_channels/cog.py:316
 msgctxt "video_watchdog|join_task|thanks:title"
 msgid "Thanks for enabling your video!"
-msgstr ""
+msgstr "Danke, dass du deine Kamera aktiviert hast!"
 
 #: src/modules/video_channels/cog.py:323
 msgctxt "video_watchdog|join_task|bye:title"
