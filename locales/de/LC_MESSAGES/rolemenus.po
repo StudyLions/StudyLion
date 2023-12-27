@@ -590,7 +590,7 @@ msgstr ""
 #: src/modules/rolemenus/cog.py:1567
 msgctxt "cmd:rolemenu_editrole|param:menu"
 msgid "menu"
-msgstr ""
+msgstr "Menü"
 
 #: src/modules/rolemenus/cog.py:1570
 msgctxt "cmd:rolemenu_editrole|param:menu_role"
@@ -642,7 +642,7 @@ msgstr ""
 #: src/modules/rolemenus/cog.py:1750
 msgctxt "cmd:rolemenu_editrole|success|error:reaction|name"
 msgid "Warning!"
-msgstr ""
+msgstr "Warnung!"
 
 #: src/modules/rolemenus/cog.py:1775
 msgctxt "cmd:rolemenu_delrole"
