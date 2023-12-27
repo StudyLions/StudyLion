@@ -98,7 +98,7 @@ msgstr ""
 #: src/modules/reminders/cog.py:394
 msgctxt "cmd:reminders_cancel|error:no_reminders"
 msgid "There are no reminders to cancel!"
-msgstr "Es gibt keine Erinnerungen zu stornieren!"
+msgstr "Es gibt keine Erinnerungen zum abbrechen!"
 
 #: src/modules/reminders/cog.py:418
 msgctxt "cmd:reminders_cancel|error:no_match"
