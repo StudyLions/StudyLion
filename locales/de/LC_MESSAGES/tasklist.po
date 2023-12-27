@@ -324,7 +324,7 @@ msgstr ""
 #: src/modules/tasklist/cog.py:714
 msgctxt "cmd:tasks_remove|param:completed"
 msgid "completed"
-msgstr ""
+msgstr "abgeschlossen"
 
 #: src/modules/tasklist/cog.py:715
 msgctxt "cmd:tasks_remove|param:cascade"
