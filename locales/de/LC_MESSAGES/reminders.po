@@ -269,7 +269,7 @@ msgstr "Wie oft soll ich die Erinnerung wiederholen?"
 #: src/modules/reminders/ui.py:124
 msgctxt "ui:reminderlist|button:new|modal|field:repeat|placeholder"
 msgid "1 day 10 hours 5 minutes (Leave empty for no repeat.)"
-msgstr ""
+msgstr "1 Tag 10 Stunden 5 Minuten (Leer lassen für keine Wiederholung.)"
 
 #: src/modules/reminders/ui.py:133
 msgctxt "ui:reminderlist|button:new|modal|field:content|label"
