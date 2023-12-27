@@ -141,7 +141,7 @@ msgstr ""
 #: src/modules/rooms/roomui.py:375
 msgctxt "ui:room_status|embed|field:channel|name"
 msgid "Channel"
-msgstr "Kanal"
+msgstr "Channel"
 
 #: src/modules/rooms/roomui.py:380
 msgctxt "ui:room_status|embed|field:owner|name"
@@ -183,7 +183,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:175 src/modules/rooms/room.py:364
 msgctxt "room|eventlog|event:room_deleted|title"
 msgid "Private Room Deleted"
-msgstr "Privater Kanal gelöscht"
+msgstr "Privater Channel gelöscht"
 
 #: src/modules/rooms/cog.py:179 src/modules/rooms/room.py:368
 #, possible-python-brace-format
