@@ -138,6 +138,8 @@ msgid ""
 "I am currently restarting! The Pomodoro timers will be unavailable until I "
 "have restarted. Thank you for your patience!"
 msgstr ""
+"Ich starte gerade neu! Die Pomodoro-Timer werden erst wieder verfügbar sein,"
+" wenn ich neu gestartet habe. Vielen Dank für deine Geduld!"
 
 #: src/modules/pomodoro/cog.py:401
 msgctxt "cmd:timer"
