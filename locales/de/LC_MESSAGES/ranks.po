@@ -827,12 +827,12 @@ msgstr "EXP Level 5 (32000)"
 #: src/modules/ranks/ui/templates.py:209
 msgctxt "rank_autocreate|template|type:xp|level:6"
 msgid "XP Level 6 (64000)"
-msgstr ""
+msgstr "EXP Level 6 (64000)"
 
 #: src/modules/ranks/ui/templates.py:217
 msgctxt "rank_autocreate|template|type:xp|level:7"
 msgid "XP Level 7 (128000)"
-msgstr ""
+msgstr "EXP Level 7 (128000)"
 
 #: src/modules/ranks/ui/templates.py:232
 msgctxt "rank_autocreate|template|type:msg|level:1"
