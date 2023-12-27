@@ -570,12 +570,12 @@ msgstr ""
 #: src/modules/rolemenus/cog.py:1530
 msgctxt "cmd:rolemenu_addrole|success|error:reaction|name"
 msgid "Note"
-msgstr ""
+msgstr "Notiz"
 
 #: src/modules/rolemenus/cog.py:1542
 msgctxt "cmd:rolemenu_addrole|success|button:editor|label"
 msgid "Edit Menu"
-msgstr ""
+msgstr "Menü bearbeiten"
 
 #: src/modules/rolemenus/cog.py:1559
 msgctxt "cmd:rolemenu_editrole"
