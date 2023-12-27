@@ -466,7 +466,7 @@ msgstr ""
 #: src/modules/ranks/ui/preview.py:109
 msgctxt "ui:rank_preview|button:edit|label"
 msgid "Edit"
-msgstr ""
+msgstr "Bearbeiten"
 
 #: src/modules/ranks/ui/preview.py:142
 #, possible-python-brace-format
