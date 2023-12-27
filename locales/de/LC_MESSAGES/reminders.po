@@ -32,6 +32,8 @@ msgctxt "create_reminder|error:too_fast"
 msgid ""
 "You cannot set a repeating reminder with a period less than 10 minutes."
 msgstr ""
+"Du kannst keine wiederholenden Erinnerung mit einem Zeitraum von weniger als"
+" 10 Minuten einstellen."
 
 #: src/modules/reminders/cog.py:133
 msgctxt "create_reminder|error:too_many"
