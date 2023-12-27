@@ -951,6 +951,7 @@ msgstr ""
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:is_default"
 msgid "The @everyone role cannot be removed, and cannot be a rank!"
 msgstr ""
+"Die @everyone Rolle kann nicht entfernt werden und kann keinen Rang haben!"
 
 #: src/modules/ranks/ui/overview.py:305
 msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:is_managed"
