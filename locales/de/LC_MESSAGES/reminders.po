@@ -259,7 +259,7 @@ msgstr "Erinnerungen löschen"
 #: src/modules/reminders/ui.py:110
 msgctxt "ui:reminderlist|button:new|modal|field:time|label"
 msgid "When would you like to be reminded?"
-msgstr ""
+msgstr "Wann soll ich dich erinnern?"
 
 #: src/modules/reminders/ui.py:120
 msgctxt "ui:reminderlist|button:new|modal|field:repeat|label"
