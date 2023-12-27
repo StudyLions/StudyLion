@@ -200,7 +200,7 @@ msgstr "Erstelle privaten Channel für {ownerid}"
 #: src/modules/rooms/cog.py:279
 msgctxt "eventlog|event:private_room_create_error|name"
 msgid "Private Room Creation Failed"
-msgstr "Erstellung des privaten Kanals ist fehlgeschlagen"
+msgstr "Erstellung des privaten Channels ist fehlgeschlagen"
 
 #: src/modules/rooms/cog.py:283
 #, possible-python-brace-format
@@ -213,13 +213,13 @@ msgstr ""
 #: src/modules/rooms/cog.py:329
 msgctxt "eventlog|event:private_room_create|name"
 msgid "Private Room Rented"
-msgstr "Privater Kanal gebucht"
+msgstr "Privater Channel gebucht"
 
 #: src/modules/rooms/cog.py:333
 #, possible-python-brace-format
 msgctxt "eventlog|event:private_room_create|desc"
 msgid "{owner} has rented a new private room {channel}!"
-msgstr "{owner} hat einen neuen privaten Kanal {channel} gebucht!"
+msgstr "{owner} hat einen neuen privaten Channel {channel} gebucht!"
 
 #: src/modules/rooms/cog.py:368
 msgctxt "cmd:room"
