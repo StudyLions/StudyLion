@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Ba Cong Nguyen, 2023
+# Ba Cong Nguyen, 2024
 # 
 #, fuzzy
 msgid ""
@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Ba Cong Nguyen, 2023\n"
+"Last-Translator: Ba Cong Nguyen, 2024\n"
 "Language-Team: Vietnamese (Viet Nam) (https://app.transifex.com/leobot/teams/174919/vi_VN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -39,7 +39,7 @@ msgstr "Cài đặt Tổng quan ({commands[config general]})"
 #: src/modules/config/settingui.py:103
 msgctxt "dash:general|option|name"
 msgid "General Configuration Panel"
-msgstr ""
+msgstr "Bảng Cài đặt Tổng quan"
 
 #: src/modules/config/cog.py:56 src/modules/config/general.py:52
 msgctxt "cmd:configure_general"
