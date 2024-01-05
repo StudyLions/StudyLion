@@ -54,7 +54,7 @@ msgstr ""
 #: src/modules/config/general.py:91
 msgctxt "cmd:configure_general|parse_failure:timezone"
 msgid "Could not set the timezone!"
-msgstr ""
+msgstr "Không thể chọn múi giờ."
 
 #: src/modules/config/general.py:112
 msgctxt "cmd:configure_general|success"
