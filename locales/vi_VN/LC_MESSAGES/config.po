@@ -85,7 +85,7 @@ msgstr ""
 #: src/modules/config/settings.py:33
 msgctxt "guildset:timezone"
 msgid "timezone"
-msgstr ""
+msgstr "múi giờ"
 
 #: src/modules/config/settings.py:36
 msgctxt "guildset:timezone|desc"
