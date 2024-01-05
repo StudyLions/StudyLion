@@ -59,7 +59,7 @@ msgstr "Không thể chọn múi giờ."
 #: src/modules/config/general.py:112
 msgctxt "cmd:configure_general|success"
 msgid "Settings Updated!"
-msgstr ""
+msgstr "Đã cập nhật cài đặt."
 
 #: src/modules/config/general.py:127
 msgctxt "cmd:configure_general|panel|title"
