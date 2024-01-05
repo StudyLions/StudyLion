@@ -104,12 +104,12 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "guildset:timezone|response"
 msgid "The guild timezone has been set to `{timezone}`."
-msgstr ""
+msgstr "Múi giờ của Hội đã được chọn là `{timezone}`."
 
 #: src/modules/config/settings.py:66
 msgctxt "guildset:eventlog"
 msgid "event_log"
-msgstr ""
+msgstr "event_log"
 
 #: src/modules/config/settings.py:69
 msgctxt "guildset:eventlog|desc"
