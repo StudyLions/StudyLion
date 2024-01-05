@@ -64,7 +64,7 @@ msgstr "Đã cập nhật cài đặt."
 #: src/modules/config/general.py:127
 msgctxt "cmd:configure_general|panel|title"
 msgid "General Configuration Panel"
-msgstr ""
+msgstr "Bảng Cài đặt Tổng quan"
 
 #: src/modules/config/dashboard.py:99
 #, possible-python-brace-format
