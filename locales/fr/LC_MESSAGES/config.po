@@ -145,6 +145,8 @@ msgid ""
 "Cannot set {channel} as an event log! I lack the 'Manage Webhooks' "
 "permission there."
 msgstr ""
+"Impossible de définir {channel} comme un journal d'événements ! Je manque de"
+" l'autorisation 'Gérer les webhooks' là-bas."
 
 #: src/modules/config/settings.py:106
 #, possible-python-brace-format
