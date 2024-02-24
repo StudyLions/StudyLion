@@ -76,7 +76,7 @@ msgstr ""
 #: src/modules/config/dashboard.py:110
 msgctxt "ui:dashboard|footer"
 msgid "Hover over setting names for a brief description"
-msgstr ""
+msgstr "Survolez les noms des paramètres pour une brève description"
 
 #: src/modules/config/dashboard.py:173
 msgctxt "ui:dashboard|menu:config|placeholder"
