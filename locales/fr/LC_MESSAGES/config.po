@@ -131,6 +131,12 @@ msgid ""
 "- Activity ranks earned\n"
 "I must have the 'Manage Webhooks' permission in this channel."
 msgstr ""
+"Si configuré, je consignerai les actions les plus significatives prises ou les événements qui se produisent via mon interface dans ce canal. Les événements consignés comprennent, par exemple:\n"
+"- Activité vocale des membres\n"
+"- Rôles donnés et expirant depuis le menu des rôles\n"
+"- Salles privées louées et expirant\n"
+"- Rangs d'activité acquis\n"
+"Je dois avoir l'autorisation 'Gérer les webhooks' dans ce canal."
 
 #: src/modules/config/settings.py:95
 #, possible-python-brace-format
