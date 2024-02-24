@@ -52,6 +52,7 @@ msgstr "solde"
 msgctxt "cmd:economy_balance|desc"
 msgid "Display or modify LionCoin balance for members and roles."
 msgstr ""
+"Afficher ou modifier le solde de LionCoin pour les membres et les rôles."
 
 #: src/modules/economy/cog.py:100
 msgctxt "cmd:economy_balance|param:target"
