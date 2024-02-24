@@ -86,7 +86,7 @@ msgstr "Ouvrir le panel de configuration"
 #: src/modules/config/settings.py:33
 msgctxt "guildset:timezone"
 msgid "timezone"
-msgstr ""
+msgstr "fuseau horaire"
 
 #: src/modules/config/settings.py:36
 msgctxt "guildset:timezone|desc"
