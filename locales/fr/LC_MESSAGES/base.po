@@ -36,4 +36,4 @@ msgstr "Exécuter du code arbitraire avec Exec"
 
 #: bot/modules/sysadmin/exec_cog.py:265
 msgid "eval"
-msgstr ""
+msgstr "eval"
