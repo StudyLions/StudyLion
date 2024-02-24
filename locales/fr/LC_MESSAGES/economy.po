@@ -5,6 +5,7 @@
 # 
 # Translators:
 # Interitio, 2023
+# houssem hoho, 2024
 # 
 #, fuzzy
 msgid ""
@@ -13,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Interitio, 2023\n"
+"Last-Translator: houssem hoho, 2024\n"
 "Language-Team: French (https://app.transifex.com/leobot/teams/174919/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,7 +30,7 @@ msgstr "Panel de Configuration de l'Économie"
 #: src/modules/economy/settingui.py:67
 msgctxt "dash:economy|title"
 msgid "Economy Configuration ({commands[config economy]})"
-msgstr ""
+msgstr "Configuration de l'économie ({commands[config economy]})"
 
 #: src/modules/economy/settingui.py:71
 msgctxt "dash:economy|dropdown|placeholder"
