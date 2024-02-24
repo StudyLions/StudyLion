@@ -186,7 +186,7 @@ msgstr "{user_mention} a maintenant un solde de {coin_emoji}**{amount}**."
 #: src/modules/economy/cog.py:305
 msgctxt "eventlog|event:economy_set|title"
 msgid "Moderator Set Economy Balance"
-msgstr ""
+msgstr "Modérateur Définir l'équilibre économique"
 
 #: src/modules/economy/cog.py:309
 #, possible-python-brace-format
