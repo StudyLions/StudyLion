@@ -109,6 +109,8 @@ msgstr "Les bots ne peuvent pas avoir de soldes de pièces !"
 msgctxt "cmd:economy_balance|error:args"
 msgid "You cannot simultaneously `set` and `add` member balances!"
 msgstr ""
+"Vous ne pouvez pas simultanément `mettre en place` et `ajouter` les soldes "
+"des membres !"
 
 #: src/modules/economy/cog.py:224
 #, possible-python-brace-format
