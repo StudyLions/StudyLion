@@ -117,9 +117,9 @@ msgstr ""
 msgctxt "cmd:economy_balance|embed:success|affected"
 msgid "One user was affected."
 msgid_plural "**{count}** users were affected."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Un utilisateur a été affecté."
+msgstr[1] "**{count}** utilisateurs ont été affectés."
+msgstr[2] "**{count}** utilisateurs ont été affectés."
 
 #: src/modules/economy/cog.py:230
 #, possible-python-brace-format
