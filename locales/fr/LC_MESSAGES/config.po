@@ -152,7 +152,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "guildset:eventlog|response|set"
 msgid "Events will now be logged to {channel}"
-msgstr ""
+msgstr "Les événements seront désormais enregistrés sur {channel}"
 
 #: src/modules/config/settings.py:111
 msgctxt "guildset:eventlog|response|unset"
