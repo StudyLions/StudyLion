@@ -89,7 +89,7 @@ msgstr ""
 #: src/modules/moderation/cog.py:177
 msgctxt "cmd:modnote|modal:enter_note|title"
 msgid "Moderation Note"
-msgstr ""
+msgstr "Moderationsnotiz"
 
 #: src/modules/moderation/cog.py:182
 msgctxt "cmd:modnote|modal:enter_note|field|label"
