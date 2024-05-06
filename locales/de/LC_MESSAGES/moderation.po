@@ -136,7 +136,7 @@ msgstr "Der Grund, warum du dieses Mitglied ermahnen möchtest."
 #: src/modules/moderation/cog.py:262
 msgctxt "cmd:warning|modal:reason|title"
 msgid "Moderation Warning"
-msgstr ""
+msgstr "Moderatorwarnung"
 
 #: src/modules/moderation/cog.py:267
 msgctxt "cmd:warning|modal:reason|field|label"
