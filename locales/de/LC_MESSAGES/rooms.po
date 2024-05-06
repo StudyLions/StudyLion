@@ -459,7 +459,7 @@ msgstr ""
 #: src/modules/rooms/cog.py:808
 msgctxt "cmd:room_kick|error:no_matching_members"
 msgid "None of the mentioned members are in this room!"
-msgstr ""
+msgstr "Keiner der erwähnten Mitglieder ist in diesem Raum!"
 
 #: src/modules/rooms/cog.py:825
 msgctxt "cmd:room_kick|success|ack"
