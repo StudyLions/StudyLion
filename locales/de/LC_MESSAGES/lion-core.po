@@ -59,7 +59,7 @@ msgstr ""
 #: src/core/lion_guild.py:66
 msgctxt "eventlog|field:refund|name"
 msgid "Coins Refunded"
-msgstr ""
+msgstr "Münzen zurückgegeben"
 
 #: src/core/lion_guild.py:71
 msgctxt "eventlog|field:memberid|name"
