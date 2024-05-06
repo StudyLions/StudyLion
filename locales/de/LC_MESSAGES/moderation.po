@@ -54,7 +54,7 @@ msgstr ""
 #: src/modules/moderation/settingui.py:186
 msgctxt "dash:moderation|dropdown|placeholder"
 msgid "Moderation Panel"
-msgstr ""
+msgstr "Moderationspanel"
 
 #: src/modules/moderation/cog.py:135
 msgctxt "cmd:modnote"
