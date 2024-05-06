@@ -847,7 +847,7 @@ msgstr "Nachrichten Level 2 (400)"
 #: src/modules/ranks/ui/templates.py:248
 msgctxt "rank_autocreate|template|type:msg|level:3"
 msgid "Message Level 3 (800)"
-msgstr ""
+msgstr "Nachrichten Level 3 (800)"
 
 #: src/modules/ranks/ui/templates.py:256
 msgctxt "rank_autocreate|template|type:msg|level:4"
