@@ -193,7 +193,7 @@ msgstr ""
 #: src/settings/setting_types.py:1020
 msgctxt "settype:raw|accepts"
 msgid "Anything"
-msgstr ""
+msgstr "Alles"
 
 #: src/settings/setting_types.py:1073
 msgctxt "settype:enum|accepts"
