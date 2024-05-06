@@ -44,7 +44,7 @@ msgstr "Rolle entfernt"
 #: src/core/lion_guild.py:51
 msgctxt "eventlog|field:coins_earned|name"
 msgid "Coins Earned"
-msgstr ""
+msgstr "Münzen verdient"
 
 #: src/core/lion_guild.py:56
 msgctxt "eventlog|field:price|name"
