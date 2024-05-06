@@ -131,6 +131,7 @@ msgstr ""
 msgctxt "shop:colour|purchase|error:failed_permissions"
 msgid "I do not have enough permissions to give you this colour role!"
 msgstr ""
+"Ich habe nicht ausreichend Berechtigung dir diese farbige Rolle zu geben!"
 
 #: src/modules/shop/shops/colours.py:278
 msgctxt "shop:colour|purchase|error:failed_unknown"
