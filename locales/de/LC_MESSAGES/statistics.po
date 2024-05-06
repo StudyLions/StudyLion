@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Sarah Vogel, 2023
+# Sarah Vogel, 2024
 # 
 #, fuzzy
 msgid ""
@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Sarah Vogel, 2023\n"
+"Last-Translator: Sarah Vogel, 2024\n"
 "Language-Team: German (https://app.transifex.com/leobot/teams/174919/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -54,7 +54,7 @@ msgstr ""
 #: src/modules/statistics/cog.py:110
 msgctxt "cmd:stats"
 msgid "stats"
-msgstr ""
+msgstr "stats"
 
 #: src/modules/statistics/cog.py:113
 msgctxt "cmd:stats|desc"
