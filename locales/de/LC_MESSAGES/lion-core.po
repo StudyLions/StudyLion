@@ -34,12 +34,12 @@ msgstr "Läuft ab"
 #: src/core/lion_guild.py:41
 msgctxt "eventlog|field:roles_given|name"
 msgid "Roles Given"
-msgstr ""
+msgstr "Rollen vergeben"
 
 #: src/core/lion_guild.py:46
 msgctxt "eventlog|field:roles_given|name"
 msgid "Roles Taken"
-msgstr ""
+msgstr "Rolle entfernt"
 
 #: src/core/lion_guild.py:51
 msgctxt "eventlog|field:coins_earned|name"
