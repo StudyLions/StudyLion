@@ -73,7 +73,7 @@ msgstr "MENSAJES"
 #: src/gui/cards/goals.py:165
 msgctxt "skin:goals|mode:anki|goal:middle|above"
 msgid "REVIEWED"
-msgstr ""
+msgstr "REVISADO"
 
 #: src/gui/cards/goals.py:169
 msgctxt "skin:goals|mode:anki|goal:middle|below"
