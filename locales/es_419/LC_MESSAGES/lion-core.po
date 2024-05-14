@@ -77,6 +77,8 @@ msgid ""
 "This channel is configured as an event log, but I am missing the 'Manage "
 "Webhooks' permission here."
 msgstr ""
+"Este canal está configurado como un registro de eventos, pero me falta el "
+"permiso 'Manage Webhooks' aquí."
 
 #: src/core/lion_guild.py:220
 #, possible-python-brace-format
