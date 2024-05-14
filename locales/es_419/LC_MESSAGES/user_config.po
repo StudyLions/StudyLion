@@ -29,7 +29,7 @@ msgstr "zona horaria"
 #: src/modules/user_config/cog.py:41
 msgctxt "userset:timezone|desc"
 msgid "Timezone in which to display statistics."
-msgstr ""
+msgstr "Zona horaria en la que se mostrarán las estadísticas."
 
 #: src/modules/user_config/cog.py:45
 msgctxt "userset:timezone|long_desc"
