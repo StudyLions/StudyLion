@@ -101,6 +101,9 @@ msgid ""
 "leaderboards, and as the default statistics timezone for members who have "
 "not set one."
 msgstr ""
+"Zona horaria de todo el gremio. Se utiliza para determinar el inicio del día"
+" en las tablas de clasificación y como zona horaria predeterminada para las "
+"estadísticas de los miembros que no han establecido una."
 
 #: src/modules/config/settings.py:54
 #, possible-python-brace-format
