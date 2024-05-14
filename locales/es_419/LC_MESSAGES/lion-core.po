@@ -104,7 +104,7 @@ msgstr "Un número entero positivo de monedas."
 #: src/core/setting_types.py:47
 msgctxt "settype:coin|parse|error:notinteger"
 msgid "The coin quantity must be a positive integer!"
-msgstr ""
+msgstr "¡La cantidad de monedas debe ser un número entero positivo!"
 
 #: src/core/setting_types.py:55
 #, possible-python-brace-format
