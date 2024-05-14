@@ -49,7 +49,7 @@ msgstr "general"
 #: src/modules/config/cog.py:57 src/modules/config/general.py:53
 msgctxt "cmd:configure_general|desc"
 msgid "General configuration panel"
-msgstr ""
+msgstr "Panel de configuración general"
 
 #: src/modules/config/general.py:91
 msgctxt "cmd:configure_general|parse_failure:timezone"
