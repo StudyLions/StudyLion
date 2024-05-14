@@ -172,7 +172,7 @@ msgstr "{count} tarjetas"
 #: src/gui/cards/monthly.py:342
 msgctxt "ui:monthlystats|stats:days_active|key"
 msgid "Days Active:"
-msgstr ""
+msgstr "Días de actividad:"
 
 #: src/gui/cards/monthly.py:346
 #, possible-python-brace-format
