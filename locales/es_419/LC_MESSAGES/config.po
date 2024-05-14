@@ -44,7 +44,7 @@ msgstr "Panel de configuración general"
 #: src/modules/config/cog.py:56 src/modules/config/general.py:52
 msgctxt "cmd:configure_general"
 msgid "general"
-msgstr ""
+msgstr "general"
 
 #: src/modules/config/cog.py:57 src/modules/config/general.py:53
 msgctxt "cmd:configure_general|desc"
