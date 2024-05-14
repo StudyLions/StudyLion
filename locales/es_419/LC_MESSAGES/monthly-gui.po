@@ -155,7 +155,7 @@ msgstr "{count} horas"
 #, possible-python-brace-format
 msgctxt "skin:monthlystats|mode:voice|stats:daily_average|value"
 msgid "{count} hours"
-msgstr ""
+msgstr "{count} horas"
 
 #: src/gui/cards/monthly.py:328
 #, possible-python-brace-format
