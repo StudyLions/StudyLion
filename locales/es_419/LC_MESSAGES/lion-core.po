@@ -54,7 +54,7 @@ msgstr "Precio"
 #: src/core/lion_guild.py:61
 msgctxt "eventlog|field:balance|name"
 msgid "Balance"
-msgstr ""
+msgstr "Saldo"
 
 #: src/core/lion_guild.py:66
 msgctxt "eventlog|field:refund|name"
