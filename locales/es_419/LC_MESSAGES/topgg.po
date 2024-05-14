@@ -35,4 +35,4 @@ msgstr "¡Gracias por apoyarme en Top.gg! {yay}"
 #: src/modules/topgg/cog.py:123
 msgctxt "embed:voting_thanks|desc"
 msgid "Thank you for supporting us, enjoy your LionCoins boost!"
-msgstr ""
+msgstr "Gracias por apoyarnos, ¡disfruta de tu aumento de LionCoins!"
