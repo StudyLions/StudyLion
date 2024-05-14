@@ -34,7 +34,7 @@ msgstr "LOGROS"
 #: src/gui/cards/profile.py:134
 msgctxt "skin:profile|field:rank_unranked_text"
 msgid "UNRANKED"
-msgstr ""
+msgstr "SIN RANGO"
 
 #: src/gui/cards/profile.py:138
 #, possible-python-brace-format
