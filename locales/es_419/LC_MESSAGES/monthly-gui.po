@@ -34,7 +34,7 @@ msgstr "ACTIVIDAD DE CANAL DE VOZ"
 #: src/gui/cards/monthly.py:48
 msgctxt "skin:monthlystats|mode:text|title"
 msgid "MESSAGE ACTIVITY"
-msgstr ""
+msgstr "ACTIVIDAD DE MENSAJES"
 
 #: src/gui/cards/monthly.py:52
 msgctxt "skin::monthlystats|mode:anki|title"
