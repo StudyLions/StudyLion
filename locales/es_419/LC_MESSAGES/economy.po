@@ -45,7 +45,7 @@ msgstr "economía"
 #: src/modules/economy/cog.py:93
 msgctxt "cmd:economy_balance"
 msgid "balance"
-msgstr "balance"
+msgstr "saldo"
 
 #: src/modules/economy/cog.py:96
 msgctxt "cmd:economy_balance|desc"
