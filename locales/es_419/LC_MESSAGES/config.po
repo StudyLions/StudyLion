@@ -24,7 +24,7 @@ msgstr ""
 #: src/modules/config/settingui.py:56
 msgctxt "ui:general_config|menu:event_log|placeholder"
 msgid "Select Event Log"
-msgstr ""
+msgstr "Seleccione Registro de Eventos"
 
 #: src/modules/config/settingui.py:64
 msgctxt "ui:general_config|embed:title"
