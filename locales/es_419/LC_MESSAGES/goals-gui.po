@@ -104,4 +104,4 @@ msgstr "ESTADÍSTICAS MENSUALES"
 #: src/gui/cards/goals.py:260
 msgctxt "ui:goals|monthly|task_header"
 msgid "GOALS OF THE MONTH"
-msgstr ""
+msgstr "METAS DEL MES"
