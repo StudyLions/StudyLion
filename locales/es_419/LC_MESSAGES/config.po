@@ -34,7 +34,7 @@ msgstr "Configuración general"
 #: src/modules/config/settingui.py:99
 msgctxt "dash:general|title"
 msgid "General Configuration ({commands[config general]})"
-msgstr ""
+msgstr "Configuración general ({commands[config general]})"
 
 #: src/modules/config/settingui.py:103
 msgctxt "dash:general|option|name"
