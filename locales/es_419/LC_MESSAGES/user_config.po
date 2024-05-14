@@ -24,7 +24,7 @@ msgstr ""
 #: src/modules/user_config/cog.py:38
 msgctxt "userset:timezone"
 msgid "timezone"
-msgstr "zona horaria"
+msgstr "zonahoraria"
 
 #: src/modules/user_config/cog.py:41
 msgctxt "userset:timezone|desc"
