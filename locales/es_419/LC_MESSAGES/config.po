@@ -143,6 +143,8 @@ msgid ""
 "Cannot set {channel} as an event log! I lack the 'Manage Webhooks' "
 "permission there."
 msgstr ""
+"¡No puedo establecer {channel} como registro de eventos! Me falta el permiso"
+" 'Manage Webhooks'."
 
 #: src/modules/config/settings.py:106
 #, possible-python-brace-format
