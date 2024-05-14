@@ -114,7 +114,7 @@ msgstr "La zona horaria del gremio se ha establecido a `{timezone}`."
 #: src/modules/config/settings.py:66
 msgctxt "guildset:eventlog"
 msgid "event_log"
-msgstr ""
+msgstr "event_log"
 
 #: src/modules/config/settings.py:69
 msgctxt "guildset:eventlog|desc"
