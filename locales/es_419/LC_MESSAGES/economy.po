@@ -73,6 +73,8 @@ msgid ""
 "Target user or role to view or update. Use @everyone to update the entire "
 "guild."
 msgstr ""
+"Usuario o rol objetivo para ver o actualizar. Utilice @everyone para "
+"actualizar todo el gremio."
 
 #: src/modules/economy/cog.py:111
 msgctxt "cmd:economy_balance|param:add|desc"
