@@ -89,7 +89,7 @@ msgstr "A partir de {day} {month} • {name}"
 #: src/gui/cards/goals.py:242
 msgctxt "ui:goals|weekly|title"
 msgid "WEEKLY STATISTICS"
-msgstr ""
+msgstr "ESTADÍSTICAS SEMANALES"
 
 #: src/gui/cards/goals.py:246
 msgctxt "ui:goals|weekly|task_header"
