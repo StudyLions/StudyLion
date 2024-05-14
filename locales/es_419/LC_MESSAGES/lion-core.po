@@ -110,7 +110,7 @@ msgstr "¡La cantidad de monedas debe ser un número entero positivo!"
 #, possible-python-brace-format
 msgctxt "settype:coin|parse|error:too_large"
 msgid "You cannot set this to more than {coin}**{max}**!"
-msgstr ""
+msgstr "¡No puede establecer un valor superior a {coin}**{max}**!"
 
 #: src/core/setting_types.py:63
 #, possible-python-brace-format
