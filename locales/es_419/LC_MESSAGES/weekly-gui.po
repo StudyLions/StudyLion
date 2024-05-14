@@ -29,7 +29,7 @@ msgstr "HORAS DE ESTUDIO"
 #: src/gui/cards/weekly.py:56
 msgctxt "skin:weeklystats|mode:voice|title"
 msgid "VOICE CHANNEL ACTIVITY"
-msgstr ""
+msgstr "ACTIVIDAD DE CANAL DE VOZ"
 
 #: src/gui/cards/weekly.py:60
 msgctxt "skin:weeklystats|mode:text|title"
