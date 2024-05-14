@@ -44,12 +44,12 @@ msgstr "Roles adquiridos"
 #: src/core/lion_guild.py:51
 msgctxt "eventlog|field:coins_earned|name"
 msgid "Coins Earned"
-msgstr ""
+msgstr "Monedas ganadas"
 
 #: src/core/lion_guild.py:56
 msgctxt "eventlog|field:price|name"
 msgid "Price"
-msgstr ""
+msgstr "Precio"
 
 #: src/core/lion_guild.py:61
 msgctxt "eventlog|field:balance|name"
