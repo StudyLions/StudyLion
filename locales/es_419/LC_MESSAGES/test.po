@@ -27,7 +27,7 @@ msgstr "prueba"
 
 #: src/modules/test/test.py:146
 msgid "Test"
-msgstr ""
+msgstr "Prueba"
 
 #: src/modules/test/test.py:153
 msgid "editor"
