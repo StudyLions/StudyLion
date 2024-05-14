@@ -35,7 +35,7 @@ msgstr "editor"
 
 #: src/modules/test/test.py:154
 msgid "Test message editor"
-msgstr ""
+msgstr "Editor de mensajes de prueba"
 
 #: src/modules/test/test.py:180
 msgid "test_ephemeral"
