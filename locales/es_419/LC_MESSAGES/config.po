@@ -64,7 +64,7 @@ msgstr "Configuración actualizada."
 #: src/modules/config/general.py:127
 msgctxt "cmd:configure_general|panel|title"
 msgid "General Configuration Panel"
-msgstr ""
+msgstr "Panel de configuración general"
 
 #: src/modules/config/dashboard.py:99
 #, possible-python-brace-format
