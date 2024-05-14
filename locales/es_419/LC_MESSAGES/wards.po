@@ -32,6 +32,8 @@ msgid ""
 "You must have the `ADMINISTRATOR` permission or the configured `admin_role` "
 "to do this!"
 msgstr ""
+"¡Debes tener el permiso `ADMINISTRATOR` o el rol `admin_role` configurado "
+"para hacer esto!"
 
 #: src/wards.py:131
 msgctxt "ward:low_management|failed"
