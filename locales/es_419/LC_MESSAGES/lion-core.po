@@ -84,7 +84,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "eventlog|create|name"
 msgid "{bot_name} Event Log"
-msgstr ""
+msgstr "{bot_name} Registro de Eventos"
 
 #: src/core/lion_guild.py:224
 msgctxt "eventlog|create|audit_reason"
