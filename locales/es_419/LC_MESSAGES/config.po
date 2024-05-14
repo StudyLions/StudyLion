@@ -148,4 +148,4 @@ msgstr "Los eventos se registrarán ahora en {channel}."
 #: src/modules/config/settings.py:111
 msgctxt "guildset:eventlog|response|unset"
 msgid "Guild events will no longer be logged."
-msgstr ""
+msgstr "Los eventos de gremio ya no se registrarán."
