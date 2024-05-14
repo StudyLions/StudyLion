@@ -98,4 +98,4 @@ msgstr "SEMANA PASADA: {amount} TARJETAS"
 #, possible-python-brace-format
 msgctxt "skin:weeklystats|footer"
 msgid "Weekly Statistics • As of {day} {month} • {name} {discrim}"
-msgstr ""
+msgstr "Estadísticas Semanales • A partir de {day} {month} • {name} {discrim}"
