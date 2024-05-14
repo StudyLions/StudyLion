@@ -29,9 +29,9 @@ msgstr "¡Utiliza /now para mostrar en qué estás trabajando!"
 #: src/gui/cards/timer.py:89
 msgctxt "skin:timer|stage:focus|field:stage_text"
 msgid "FOCUS"
-msgstr ""
+msgstr "ENFOQUE"
 
 #: src/gui/cards/timer.py:103
 msgctxt "skin:timer|stage:break|field:stage_text"
 msgid "BREAK"
-msgstr ""
+msgstr "DESCANSO"
