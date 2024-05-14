@@ -122,6 +122,8 @@ msgid ""
 "My audit log channel where I send server actions and events (e.g. rankgs and"
 " expiring roles)."
 msgstr ""
+"Mi canal de registro de auditoría donde envío acciones y eventos del "
+"servidor (por ejemplo, rangos y roles que expiran)."
 
 #: src/modules/config/settings.py:73
 msgctxt "guildset:eventlog|long_desc"
