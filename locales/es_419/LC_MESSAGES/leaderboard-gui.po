@@ -29,7 +29,7 @@ msgstr "TABLA DE CLASIFICACIÓN DEL TIEMPO DE ESTUDIO"
 #: src/gui/cards/leaderboard.py:72
 msgctxt "skin:leaderboard|mode:text|header_text"
 msgid "MESSAGE LEADERBOARD"
-msgstr ""
+msgstr "TABLA DE CLASIFICACIÓN DE MENSAJES"
 
 #: src/gui/cards/leaderboard.py:76
 msgctxt "skin:leaderboard|mode:voice|header_text"
