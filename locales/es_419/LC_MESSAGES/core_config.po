@@ -39,7 +39,7 @@ msgstr "admin"
 #: src/core/config.py:41
 msgctxt "group:admin|desc"
 msgid "Administrative commands."
-msgstr ""
+msgstr "Comandos administrativos."
 
 #: src/core/config.py:52
 msgctxt "group:admin_config"
