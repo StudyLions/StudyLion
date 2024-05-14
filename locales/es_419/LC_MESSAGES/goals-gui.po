@@ -29,7 +29,7 @@ msgstr "TAREAS REALIZADAS"
 #: src/gui/cards/goals.py:101
 msgctxt "skin:goals|goal:tasks|goal"
 msgid "GOAL: "
-msgstr ""
+msgstr "META:"
 
 #: src/gui/cards/goals.py:127
 msgctxt "skin:goals|goal:attendance|name"
