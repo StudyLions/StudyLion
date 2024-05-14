@@ -82,7 +82,7 @@ msgstr ""
 #: src/modules/config/dashboard.py:173
 msgctxt "ui:dashboard|menu:config|placeholder"
 msgid "Open Configuration Panel"
-msgstr ""
+msgstr "Abrir el panel de configuración"
 
 #: src/modules/config/settings.py:33
 msgctxt "guildset:timezone"
