@@ -34,7 +34,7 @@ msgstr "Expira en"
 #: src/core/lion_guild.py:41
 msgctxt "eventlog|field:roles_given|name"
 msgid "Roles Given"
-msgstr ""
+msgstr "Roles asignados"
 
 #: src/core/lion_guild.py:46
 msgctxt "eventlog|field:roles_given|name"
