@@ -50,7 +50,7 @@ msgstr "SERVIDOR:"
 #, possible-python-brace-format
 msgctxt "skin:leaderboard|mode:study|top_hours_text"
 msgid "{amount} hours"
-msgstr ""
+msgstr "{amount} horas"
 
 #: src/gui/cards/leaderboard.py:132
 #, possible-python-brace-format
