@@ -82,6 +82,7 @@ msgstr "zonahoraria"
 msgctxt "cmd:userconfig_timezone|param:timezone|desc"
 msgid "What timezone are you in? Try typing your country or continent."
 msgstr ""
+"¿En qué zona horaria te encuentras? Prueba escribiendo tu país o continente."
 
 #: src/modules/user_config/cog.py:117
 #, possible-python-brace-format
