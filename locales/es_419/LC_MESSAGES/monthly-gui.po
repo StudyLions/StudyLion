@@ -132,7 +132,7 @@ msgstr "{count} días"
 #: src/gui/cards/monthly.py:308
 msgctxt "ui:monthlystats|stats:longest_streak|key"
 msgid "Longest Streak:"
-msgstr ""
+msgstr "Racha más larga:"
 
 #: src/gui/cards/monthly.py:312
 #, possible-python-brace-format
