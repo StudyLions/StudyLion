@@ -44,7 +44,7 @@ msgstr "TABLA DE CLASIFICACIÓN DE ANKI"
 #: src/gui/cards/leaderboard.py:98
 msgctxt "skin:leaderboard|field:subheader_text"
 msgid "SERVER: "
-msgstr ""
+msgstr "SERVIDOR:"
 
 #: src/gui/cards/leaderboard.py:128
 #, possible-python-brace-format
