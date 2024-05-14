@@ -48,7 +48,7 @@ msgstr "ESTUDIADO"
 #: src/gui/cards/goals.py:145
 msgctxt "skin:goals|mode:study|goal:middle|below"
 msgid "HOURS"
-msgstr ""
+msgstr "HORAS"
 
 #: src/gui/cards/goals.py:149
 msgctxt "skin:goals|mode:voice|goal:middle|above"
