@@ -149,7 +149,7 @@ msgstr "Media diaria:"
 #, possible-python-brace-format
 msgctxt "skin:monthlystats|mode:study|stats:daily_average|value"
 msgid "{count} hours"
-msgstr ""
+msgstr "{count} horas"
 
 #: src/gui/cards/monthly.py:324
 #, possible-python-brace-format
