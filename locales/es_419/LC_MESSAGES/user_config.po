@@ -92,7 +92,7 @@ msgstr ""
 #: src/modules/user_config/cog.py:121
 msgctxt "cmd:userconfig_timezone|button:reset|label"
 msgid "Reset"
-msgstr ""
+msgstr "Restablecer"
 
 #: src/modules/user_config/cog.py:133
 #, possible-python-brace-format
