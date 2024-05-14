@@ -106,7 +106,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "guildset:timezone|response"
 msgid "The guild timezone has been set to `{timezone}`."
-msgstr ""
+msgstr "La zona horaria del gremio se ha establecido a `{timezone}`."
 
 #: src/modules/config/settings.py:66
 msgctxt "guildset:eventlog"
