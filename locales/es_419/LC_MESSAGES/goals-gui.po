@@ -99,7 +99,7 @@ msgstr "METAS DE LA SEMANA"
 #: src/gui/cards/goals.py:256
 msgctxt "ui:goals|monthly|title"
 msgid "MONTHLY STATISTICS"
-msgstr ""
+msgstr "ESTADÍSTICAS MENSUALES"
 
 #: src/gui/cards/goals.py:260
 msgctxt "ui:goals|monthly|task_header"
