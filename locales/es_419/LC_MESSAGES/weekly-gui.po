@@ -80,7 +80,7 @@ msgstr "SEMANA PASADA: {amount} HORAS"
 #, possible-python-brace-format
 msgctxt "skin:weeklystats|mode:voice|summary:last_week"
 msgid "LAST WEEK: {amount} HOURS"
-msgstr ""
+msgstr "SEMANA PASADA: {amount} HORAS"
 
 #: src/gui/cards/weekly.py:248
 #, possible-python-brace-format
