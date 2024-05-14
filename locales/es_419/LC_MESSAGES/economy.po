@@ -55,7 +55,7 @@ msgstr "Mostrar o modificar el saldo de LionCoin de los miembros y roles."
 #: src/modules/economy/cog.py:100
 msgctxt "cmd:economy_balance|param:target"
 msgid "target"
-msgstr ""
+msgstr "objetivo"
 
 #: src/modules/economy/cog.py:101
 msgctxt "cmd:economy_balance|param:add"
