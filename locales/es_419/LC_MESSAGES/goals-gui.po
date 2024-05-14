@@ -68,7 +68,7 @@ msgstr "ENVIADO"
 #: src/gui/cards/goals.py:161
 msgctxt "skin:goals|mode:text|goal:middle|below"
 msgid "MESSAGES"
-msgstr ""
+msgstr "MENSAJES"
 
 #: src/gui/cards/goals.py:165
 msgctxt "skin:goals|mode:anki|goal:middle|above"
