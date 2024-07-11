@@ -118,7 +118,6 @@ class CoreCog(LionCog):
         await self.bot.remove_cog(self.lions.qualified_name)
         self.bot.remove_listener(self.shard_update_guilds, name='on_guild_join')
         self.bot.remove_listener(self.shard_update_guilds, name='on_guild_leave')
-        self.bot.core = None
 
     @LionCog.listener('on_ready')
     @log_wrap(action='Touch shard data')

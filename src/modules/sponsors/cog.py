@@ -20,7 +20,7 @@ class SponsorCog(LionCog):
     def __init__(self, bot: LionBot):
         self.bot = bot
         self.data: SponsorData = bot.db.load_registry(SponsorData())
-        self.settings = SponsorSettings
+        self.settings = SponsorSettings()
 
         self.whitelisted = self.settings.Whitelist._cache
 

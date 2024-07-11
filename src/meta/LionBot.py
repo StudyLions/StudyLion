@@ -320,7 +320,7 @@ class LionBot(Bot):
         # TODO: Some of these could have more user-feedback
         logger.debug(f"Handling command error for {ctx}: {exception}")
         if isinstance(ctx.command, HybridCommand) and ctx.command.app_command:
-            cmd_str = ctx.command.app_command.to_dict()
+            cmd_str = ctx.command.app_command.to_dict(self.tree)
         else:
             cmd_str = str(ctx.command)
         try:
