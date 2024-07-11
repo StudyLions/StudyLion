@@ -4,8 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Bruno Evangelista De Oliveira, 2023
 # Interitio, 2023
+# Bruno Evangelista De Oliveira, 2023
 # 
 #, fuzzy
 msgid ""
@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Interitio, 2023\n"
+"Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -115,7 +115,7 @@ msgid ""
 "Time from which to start counting activity for rank badges and season "
 "leaderboards. (YYYY-MM-DD)"
 msgstr ""
-"Tempo, de onde as estatísticas contarão para as classificações e ranking do "
+"Desde quando as estatísticas contarão, para as classificações e ranking do "
 "servidor. (AAAA-MM-DD)"
 
 #: src/modules/statistics/achievements.py:77
@@ -269,8 +269,8 @@ msgid ""
 "Whether statistics commands display combined stats for all servers or just "
 "your current server."
 msgstr ""
-"Se o comando de estatísticas deve mostrar as estatísticas combinadas de "
-"todos seus servidores, ou somente do servidor atual."
+"Se o comando de estatísticas deve mostrar estatísticas combinadas de seus "
+"servidores, ou somente do atual."
 
 #: src/modules/statistics/settings.py:90
 msgctxt "guildset:season_start"
@@ -348,7 +348,7 @@ msgid ""
 "/leaderboard ranking list."
 msgstr ""
 "Quando configurado, membros com *qualquer* destes cargos, não irão aparecer "
-"na /classificação do servidor."
+"na */classificação*."
 
 #: src/modules/statistics/settings.py:173
 msgctxt "guildset:unranked_roles|accepts"
@@ -708,7 +708,7 @@ msgid ""
 "applicable)! Press again to revert."
 msgstr ""
 "Você irá ver as estatísticas combinadas de todos os seus servidores (onde "
-"for possível)! Pressione novamente para desfazer."
+"possível)! Clique novamente para desfazer."
 
 #: src/modules/statistics/ui/weeklymonthly.py:731
 msgctxt "ui:WeeklyMonthly|button:global|mode:local"
@@ -788,8 +788,8 @@ msgid ""
 "You will now see statistics from all you servers (where applicable)! Press "
 "again to revert."
 msgstr ""
-"Agora, você irá ver estatísticas de todos os seus servidores (em que "
-"possível)! Clique novamente para desfazer."
+"Agora você irá ver estatísticas de todos servidores (possíveis)! Clique "
+"novamente para desfazer."
 
 #: src/modules/statistics/ui/leaderboard.py:257
 msgctxt "ui:leaderboard|menu:stats|placeholder"
