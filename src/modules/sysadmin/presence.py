@@ -284,7 +284,7 @@ class PresenceCtrl(LionCog):
     async def reload_presence(self) -> None:
         # Reload the presence information from the appconfig table
         # TODO: When botconfig is done, these should load from settings, instead of directly from data
-        self.data.AppPresence._cache_.pop(appname, None)
+        self.data.AppPresence._cache_.pop((appname,), None)
         self.activity_type = (await self.settings.PresenceType.get(appname)).value.value[2]
         self.activity_format = (await self.settings.PresenceName.get(appname)).value
         self.status = (await self.settings.PresenceStatus.get(appname)).value.value[2]

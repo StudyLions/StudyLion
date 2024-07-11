@@ -47,8 +47,8 @@ class Connector:
         return AsyncConnectionPool(
             self._conn_args,
             open=False,
-            min_size=4,
-            max_size=8,
+            min_size=1,
+            max_size=4,
             configure=self._setup_connection,
             kwargs=self._conn_kwargs
         )

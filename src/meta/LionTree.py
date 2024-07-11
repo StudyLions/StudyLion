@@ -152,7 +152,7 @@ class LionTree(CommandTree):
             return
 
         set_logging_context(action=f"Run {command.qualified_name}")
-        logger.debug(f"Running command '{command.qualified_name}': {command.to_dict()}")
+        logger.debug(f"Running command '{command.qualified_name}': {command!r}")
         try:
             await command._invoke_with_namespace(interaction, namespace)
         except AppCommandError as e:

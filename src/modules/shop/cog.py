@@ -101,8 +101,9 @@ class Shopping(LionCog):
             self.active_cogs.append(shop_cog)
 
     async def cog_unload(self):
-        for shop in self.shops:
-            await shop.unload()
+        # for shop in self.shops:
+        #     await shop.unload()
+        pass
 
     @cmds.hybrid_group(
         name=_p('group:editshop', 'editshop')
