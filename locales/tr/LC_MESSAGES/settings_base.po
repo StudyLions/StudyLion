@@ -1,0 +1,238 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Eyüp Ramazan, 2023
+# Havina Ru, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Havina Ru, 2023\n"
+"Language-Team: Turkish (https://app.transifex.com/leobot/teams/174919/tr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/settings/ui.py:180
+msgctxt "setting|formatted|notset"
+msgid "Not Set"
+msgstr "Ayarlanmadı"
+
+#: src/settings/ui.py:324
+msgctxt "setting|embed_field|too_long"
+msgid "Too long to display here!"
+msgstr ""
+
+#: src/settings/ui.py:358
+#, possible-python-brace-format
+msgctxt "setting|summary_embed|title"
+msgid "Configuration options for `{name}`"
+msgstr "`{name}` için konfigürasyon seçenekleri"
+
+#: src/settings/ui.py:370
+msgctxt "setting|summary_table|field:currently|key"
+msgid "Currently"
+msgstr "Şuan"
+
+#: src/settings/ui.py:377
+msgctxt "setting|summary_table|field:default|key"
+msgid "By Default"
+msgstr "Varsayılan"
+
+#: src/settings/ui.py:384
+msgctxt "setting|summary_table|field:set|key"
+msgid "Set Using"
+msgstr "Ayarlamak İçin"
+
+#: src/settings/ui.py:502
+msgctxt "setting|interaction_check|error"
+msgid "You do not have sufficient permissions to do this!"
+msgstr ""
+
+#: src/settings/setting_types.py:48
+msgctxt "settype:string|accepts"
+msgid "Any Text"
+msgstr "Herhangi Bir Metin"
+
+#: src/settings/setting_types.py:89
+#, possible-python-brace-format
+msgctxt "settype:string|error"
+msgid "Provided string is too long! Maximum length: {maxlen} characters."
+msgstr "Belirtilen dizi çok uzun! Maksimum uzunluk: {maxlen} karakter."
+
+#: src/settings/setting_types.py:114
+msgctxt "settype:emoji|accepts"
+msgid "Paste a builtin emoji, custom emoji, or emoji id."
+msgstr "Default emoji, custom emoji ya da emoji id'sini yapıştırın."
+
+#: src/settings/setting_types.py:167
+#, possible-python-brace-format
+msgctxt "settype:emoji|error:parse"
+msgid ""
+"Could not parse `{provided}` as a Discord emoji. Supported formats are "
+"builtin emojis (e.g. `{builtin}`), custom emojis (e.g. {custom}), or custom "
+"emoji ids (e.g. `{custom_id}`)."
+msgstr ""
+"`{provided}`'ı Discord emojisi olarak alamazsın. Yerleşik (ör. `{builtin}`),"
+" özel emojiler (ör. {custom}) ya da özel emoji idleri (ör. `{custom_id}`) "
+"desteklenen formatlardır."
+
+#: src/settings/setting_types.py:236
+msgctxt "settype:channel|accepts"
+msgid "A channel name or id"
+msgstr "Kanal adı ya da ID'si"
+
+#: src/settings/setting_types.py:282
+#, possible-python-brace-format
+msgctxt "settype:channel|parse|error:not_found"
+msgid "Channel `{string}` could not be found in this guild!"
+msgstr "Kanal `{string}` bu sunucuda bulunamadı!"
+
+#: src/settings/setting_types.py:368
+msgctxt "settype:role|accepts"
+msgid "A role name or id"
+msgstr "Rol adı ya da ID'si"
+
+#: src/settings/setting_types.py:430
+#, possible-python-brace-format
+msgctxt "settype:role|parse|error:not_found"
+msgid "Role `{string}` could not be found in this guild!"
+msgstr "Rol `{string}` bu sunucuda bulunamadı!"
+
+#: src/settings/setting_types.py:495
+msgctxt "settype:bool|accepts"
+msgid "Enabled/Disabled"
+msgstr "Aktif/Devre Dışı"
+
+#: src/settings/setting_types.py:500
+msgctxt "settype:bool|parse:truthy_values"
+msgid "enabled|yes|true|on|enable|1"
+msgstr "etkin|evet|doğru|açık|etkin|1"
+
+#: src/settings/setting_types.py:504
+msgctxt "settype:bool|parse:falsey_values"
+msgid "disabled|no|false|off|disable|0"
+msgstr "devre dışı|hayır|yanlış|kapalı|kapat|0"
+
+#: src/settings/setting_types.py:509
+msgctxt "settype:bool|output:true"
+msgid "On"
+msgstr "Açık"
+
+#: src/settings/setting_types.py:510
+msgctxt "settype:bool|output:false"
+msgid "Off"
+msgstr "Kapalı"
+
+#: src/settings/setting_types.py:511
+msgctxt "settype:bool|output:none"
+msgid "Not Set"
+msgstr "Ayarlanmadı"
+
+#: src/settings/setting_types.py:622
+msgctxt "settype:integer|accepts"
+msgid "An integer"
+msgstr "Tam sayı"
+
+#: src/settings/setting_types.py:685
+msgctxt "settype:emoji|desc"
+msgid "Unicode or custom emoji"
+msgstr "Unicode ya da özel emoji"
+
+#: src/settings/setting_types.py:757
+msgctxt "settype:guildid|accepts"
+msgid "Any Snowflake ID"
+msgstr "Herhangi bir Snowflake ID'si"
+
+#: src/settings/setting_types.py:826
+msgctxt "settype:timezone|accepts"
+msgid "A timezone name from the 'tz database' (e.g. 'Europe/London')"
+msgstr "'tz database''den bir zaman dilimi adı  (ör. 'Avrupa/Londra')"
+
+#: src/settings/setting_types.py:896
+msgctxt "settype:timezone|summary_table|field:supported|key"
+msgid "Supported"
+msgstr "Desteklenen"
+
+#: src/settings/setting_types.py:900
+#, possible-python-brace-format
+msgctxt "settype:timezone|summary_table|field:supported|value"
+msgid "Any timezone from the [tz database]({link})."
+msgstr "[tz database]({link})'den herhangi bir zaman dilimi."
+
+#: src/settings/setting_types.py:917
+#, possible-python-brace-format
+msgctxt "set_type:timezone|acmpl|no_matching"
+msgid "No timezones matching '{input}'!"
+msgstr " '{input}' ile eşleşen bir zaman dilimi yok!"
+
+#: src/settings/setting_types.py:930
+#, possible-python-brace-format
+msgctxt "set_type:timezone|acmpl|choice"
+msgid "{tz} (Currently {now})"
+msgstr "{tz} (Şu anda {now})"
+
+#: src/settings/setting_types.py:960
+msgctxt "settype:timestamp|accepts"
+msgid "A timestamp in the form YYYY-MM-DD HH:MM"
+msgstr "YYYY-AA-GG SS:DD cinsinden zaman damgası."
+
+#: src/settings/setting_types.py:989
+#, possible-python-brace-format
+msgctxt "settype:timestamp|parse|error:invalid"
+msgid ""
+"Could not parse `{provided}` as a timestamp. Please use `YYYY-MM-DD HH:MM` "
+"format."
+msgstr ""
+".{provided} zaman damgası olarak alınamaz. Lütfen `YYYY-AA-GG SS:DD` "
+"formatını kullanın."
+
+#: src/settings/setting_types.py:1020
+msgctxt "settype:raw|accepts"
+msgid "Anything"
+msgstr "Herhangi bir şey"
+
+#: src/settings/setting_types.py:1073
+msgctxt "settype:enum|accepts"
+msgid "A valid option."
+msgstr "Geçerli bir seçenek."
+
+#: src/settings/setting_types.py:1123
+#, possible-python-brace-format
+msgctxt "settype:enum|parse|error:not_found"
+msgid "`{provided}` is not a valid option!"
+msgstr "`{provided}` geçerli bir seçenek değil!"
+
+#: src/settings/setting_types.py:1171
+msgctxt "settype:duration|accepts"
+msgid "A number of days, hours, minutes, and seconds, e.g. `2d 4h 10s`."
+msgstr "Sayı biçiminden gün, saat, dakika ve saniye, örnek `2d 4h 10s`"
+
+#: src/settings/setting_types.py:1352
+msgctxt "settype:channel_list|accepts"
+msgid "Comma separated list of channel ids."
+msgstr "Kanal ID'lerinin virgülle ayırılmış listesi."
+
+#: src/settings/setting_types.py:1363
+msgctxt "settype:role_list|accepts"
+msgid "Comma separated list of role ids."
+msgstr "Rol ID'lerinin virgülle ayırılmış listesi."
+
+#: src/settings/setting_types.py:1379
+msgctxt "settype:stringlist|accepts"
+msgid "Comma separated strings."
+msgstr "Dizgilerin virgülle ayırılmış listesi."
+
+#: src/settings/setting_types.py:1390
+msgctxt "settype:guildidlist|accepts"
+msgid "Comma separated list of guild ids."
+msgstr "Sunucu ID'lerinin virgülle ayırılmış listesi."

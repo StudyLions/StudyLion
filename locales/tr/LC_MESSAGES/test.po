@@ -1,0 +1,86 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Eyüp Ramazan, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-13 08:47+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Eyüp Ramazan, 2023\n"
+"Language-Team: Turkish (https://app.transifex.com/leobot/teams/174919/tr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/modules/test/test.py:59 src/modules/test/test.py:66
+msgid "test"
+msgstr "test"
+
+#: src/modules/test/test.py:67
+msgid "Test"
+msgstr "Test"
+
+#: src/modules/test/test.py:74
+msgid "editor"
+msgstr "editör"
+
+#: src/modules/test/test.py:75
+msgid "Test message editor"
+msgstr "Test Mesaj Editörü"
+
+#: src/modules/test/test.py:101
+msgid "test_ephemeral"
+msgstr "test_ephermal"
+
+#: src/modules/test/test.py:102
+msgid "Test ephemeral delete and edit"
+msgstr "Gizli mesajları test et, sil ve düzenle"
+
+#: src/modules/test/test.py:114
+msgid "colours"
+msgstr "renkler"
+
+#: src/modules/test/test.py:115
+msgid "Test Ansi colours"
+msgstr "Ansi Renklerini Test Et"
+
+#: src/modules/test/test.py:135
+msgid "fail"
+msgstr "başarısız"
+
+#: src/modules/test/test.py:143
+msgid "failui"
+msgstr ""
+
+#: src/modules/test/test.py:150
+msgid "pager"
+msgstr "çağrı cihazı"
+
+#: src/modules/test/test.py:178
+msgid "pager2"
+msgstr "çağrı cihazı 2"
+
+#: src/modules/test/test.py:209
+msgid "prettyusers"
+msgstr "tatlıüyeler"
+
+#: src/modules/test/test.py:259
+msgid "dmview"
+msgstr "dmgörünümü"
+
+#: src/modules/test/test.py:270
+msgid "multiview"
+msgstr "çoklugörünüm"
+
+#: src/modules/test/test.py:287
+msgid "stats-card"
+msgstr "istatistik-kartları"

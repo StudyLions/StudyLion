@@ -1,0 +1,188 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Furkan Bülbül, 2023
+# Havina Ru, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-01 16:01+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Havina Ru, 2023\n"
+"Language-Team: Turkish (https://app.transifex.com/leobot/teams/174919/tr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/gui/cards/monthly.py:40
+msgctxt "skin:monthlystats|mode:study|title"
+msgid "STUDY HOURS"
+msgstr "ÇALIŞMA SAATLERİ"
+
+#: src/gui/cards/monthly.py:44
+msgctxt "skin:monthlystats|mode:voice|title"
+msgid "VOICE CHANNEL ACTIVITY"
+msgstr "SES KANALI ETKINLIĞI"
+
+#: src/gui/cards/monthly.py:48
+msgctxt "skin:monthlystats|mode:text|title"
+msgid "MESSAGE ACTIVITY"
+msgstr "MESAJ ETKINLIĞI"
+
+#: src/gui/cards/monthly.py:52
+msgctxt "skin::monthlystats|mode:anki|title"
+msgid "CARDS REVIEWED"
+msgstr " ÇALIŞILAN KARTLAR"
+
+#: src/gui/cards/monthly.py:119
+#, possible-python-brace-format
+msgctxt "ui:monthlystats|mode:study|bar_value"
+msgid "{value} H"
+msgstr "{value} S"
+
+#: src/gui/cards/monthly.py:123
+#, possible-python-brace-format
+msgctxt "ui:monthlystats|mode:voice|bar_value"
+msgid "{value} H"
+msgstr "{value} S"
+
+#: src/gui/cards/monthly.py:127
+#, possible-python-brace-format
+msgctxt "ui:monthlystats|mode:text|bar_value"
+msgid "{value} M"
+msgstr "{value} M"
+
+#: src/gui/cards/monthly.py:131
+#, possible-python-brace-format
+msgctxt "ui:monthlystats|mode:anki|bar_value"
+msgid "{value} C"
+msgstr "{value} K"
+
+#: src/gui/cards/monthly.py:153
+msgctxt "skin:monthlystats|weekdays"
+msgid "M,T,W,T,F,S,S"
+msgstr "P,S,Ç,P,C,C,P"
+
+#: src/gui/cards/monthly.py:163
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:study|summary:this_month"
+msgid "THIS MONTH: {amount} HOURS"
+msgstr "BU AY: {amount} SAAT"
+
+#: src/gui/cards/monthly.py:167
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:voice|summary:this_month"
+msgid "THIS MONTH: {amount} HOURS"
+msgstr "BU AY: {amount} SAAT"
+
+#: src/gui/cards/monthly.py:171
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:text|summary:this_month"
+msgid "THIS MONTH: {amount} MESSAGES"
+msgstr "BU AY: {amount} MESAJ"
+
+#: src/gui/cards/monthly.py:175
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:text|summary:this_month"
+msgid "THIS MONTH: {amount} CARDS"
+msgstr "BU AY: {amount} KART"
+
+#: src/gui/cards/monthly.py:197
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:study|summary:last_month"
+msgid "LAST MONTH: {amount} HOURS"
+msgstr "GEÇEN AY: {amount} SAAT"
+
+#: src/gui/cards/monthly.py:201
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:voice|summary:last_month"
+msgid "LAST MONTH: {amount} HOURS"
+msgstr "GEÇEN AY: {amount} SAAT"
+
+#: src/gui/cards/monthly.py:205
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:text|summary:last_month"
+msgid "LAST MONTH: {amount} MESSAGES"
+msgstr "GEÇEN AY: {amount} MESAJ"
+
+#: src/gui/cards/monthly.py:209
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:text|summary:last_month"
+msgid "LAST MONTH: {amount} CARDS"
+msgstr "GEÇEN AY: {amount} KART"
+
+#: src/gui/cards/monthly.py:300
+msgctxt "ui:monthlystats|stats:current_streak|key"
+msgid "Current Streak:"
+msgstr "Şu Anki Seri:"
+
+#: src/gui/cards/monthly.py:304
+#, possible-python-brace-format
+msgctxt "ui:monthlystats|stats:current_streak|value"
+msgid "{count} days"
+msgstr "{count} gün"
+
+#: src/gui/cards/monthly.py:308
+msgctxt "ui:monthlystats|stats:longest_streak|key"
+msgid "Longest Streak:"
+msgstr "En Uzun Seri:"
+
+#: src/gui/cards/monthly.py:312
+#, possible-python-brace-format
+msgctxt "ui:monthlystats|stats:longest_streak|value"
+msgid "{count} days"
+msgstr "{count} gün"
+
+#: src/gui/cards/monthly.py:316
+msgctxt "ui:monthlystats|stats:daily_average|key"
+msgid "Daily Average:"
+msgstr "Günlük Ortalama:"
+
+#: src/gui/cards/monthly.py:320
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:study|stats:daily_average|value"
+msgid "{count} hours"
+msgstr ""
+
+#: src/gui/cards/monthly.py:324
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:voice|stats:daily_average|value"
+msgid "{count} hours"
+msgstr ""
+
+#: src/gui/cards/monthly.py:328
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:text|stats:daily_average|value"
+msgid "{count} msgs"
+msgstr ""
+
+#: src/gui/cards/monthly.py:332
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:anki|stats:daily_average|value"
+msgid "{count} cards"
+msgstr ""
+
+#: src/gui/cards/monthly.py:342
+msgctxt "ui:monthlystats|stats:days_active|key"
+msgid "Days Active:"
+msgstr "Aktif Günler:"
+
+#: src/gui/cards/monthly.py:346
+#, possible-python-brace-format
+msgctxt "ui:monthlystats|stats:days_active|value"
+msgid "{count} days"
+msgstr "{count} gün"
+
+#: src/gui/cards/monthly.py:359
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|footer"
+msgid "Monthly Statistics • As of {day} {month} • {name} {discrim}"
+msgstr " Aylık İstatistikler • {day} {month} itibariyle • {name} {discrim}"

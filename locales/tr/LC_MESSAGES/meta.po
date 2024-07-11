@@ -1,0 +1,365 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Eyüp Ramazan, 2023
+# Havina Ru, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Havina Ru, 2023\n"
+"Language-Team: Turkish (https://app.transifex.com/leobot/teams/174919/tr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/modules/meta/cog.py:40
+msgctxt "cmd:help"
+msgid "help"
+msgstr "yardım"
+
+#: src/modules/meta/cog.py:43
+msgctxt "cmd:help|desc"
+msgid "See a brief summary of my commands and features."
+msgstr "Benim komutlarım ve özelliklerim hakkında kısa bir özet görün."
+
+#: src/modules/meta/cog.py:65
+#, possible-python-brace-format
+msgctxt "new_guild_join_message|desc"
+msgid ""
+"Thank you for inviting me to your community!\n"
+"Get started by typing {help_cmd} to see my commands, and {dash_cmd} to view and set up my configuration options!\n"
+"\n"
+"If you need any help configuring me, or would like to suggest a feature, report a bug, and stay updated, make sure to join our main support server by [clicking here]({support})."
+msgstr ""
+
+#: src/modules/meta/cog.py:89
+msgctxt "new_guild_join_message|name"
+msgid "Hello everyone! My name is Leo, the LionBot!"
+msgstr ""
+
+#: src/modules/meta/cog.py:104
+msgctxt "cmd:invite"
+msgid "invite"
+msgstr ""
+
+#: src/modules/meta/cog.py:107
+msgctxt "cmd:invite|desc"
+msgid "Invite LionBot to your own server."
+msgstr ""
+
+#: src/modules/meta/cog.py:117
+#, possible-python-brace-format
+msgctxt "cmd:invite|embed|desc"
+msgid "[Click here]({invite_link}) to add me to your server."
+msgstr ""
+
+#: src/modules/meta/cog.py:125
+msgctxt "cmd:invite|embed|field:tips|name"
+msgid "Setup Tips"
+msgstr ""
+
+#: src/modules/meta/cog.py:129
+#, possible-python-brace-format
+msgctxt "cmd:invite|embed|field:tips|value"
+msgid ""
+"Remember to check out {help_cmd} for the important command list, including the admin page which displays the hidden admin-level configuration commands like {dashboard}!\n"
+"Also, if you have any issues or questions, you can join our [support server]({support_link}) to talk to our friendly support team!"
+msgstr ""
+
+#: src/modules/meta/cog.py:144
+msgctxt "cmd:support"
+msgid "support"
+msgstr ""
+
+#: src/modules/meta/cog.py:147
+msgctxt "cmd:support|desc"
+msgid "Have an issue or a question? Speak to my friendly support team here."
+msgstr ""
+
+#: src/modules/meta/cog.py:155
+#, possible-python-brace-format
+msgctxt "cmd:support|response"
+msgid ""
+"Speak to my friendly support team by joining this server and making a ticket in the support channel!\n"
+"{support_link}"
+msgstr ""
+
+#: src/modules/meta/cog.py:163
+msgctxt "cmd:nerd"
+msgid "nerd"
+msgstr ""
+
+#: src/modules/meta/cog.py:166
+msgctxt "cmd:nerd|desc"
+msgid "View hidden details and statistics about me ('nerd statistics')"
+msgstr ""
+
+#: src/modules/meta/cog.py:179
+msgctxt "cmd:nerd|title"
+msgid "Nerd Statistics"
+msgstr ""
+
+#: src/modules/meta/cog.py:202
+msgctxt "cmd:nerd|field:currently|name"
+msgid "Currently"
+msgstr ""
+
+#: src/modules/meta/cog.py:205
+#, possible-python-brace-format
+msgctxt "cmd:nerd|field:currently|value"
+msgid "`{people}` people active in `{rooms}` rooms of `{guilds}` guilds."
+msgstr ""
+
+#: src/modules/meta/cog.py:221
+msgctxt "cmd:nerd|field:recorded|name"
+msgid "Recorded"
+msgstr ""
+
+#: src/modules/meta/cog.py:224
+#, possible-python-brace-format
+msgctxt "cmd:nerd|field:recorded|value"
+msgid ""
+"`{hours}` voice hours from `{users}` people across `{sessions}` sessions."
+msgstr ""
+
+#: src/modules/meta/cog.py:238
+msgctxt "cmd:nerd|field:registered|name"
+msgid "Registered"
+msgstr ""
+
+#: src/modules/meta/cog.py:241
+#, possible-python-brace-format
+msgctxt "cmd:nerd|field:registered|value"
+msgid "`{users}` users and `{guilds}` guilds."
+msgstr ""
+
+#: src/modules/meta/cog.py:255
+msgctxt "cmd:nerd|field:tasks|name"
+msgid "Tasks"
+msgstr ""
+
+#: src/modules/meta/cog.py:258
+#, possible-python-brace-format
+msgctxt "cmd:nerd|field:tasks|value"
+msgid "`{tasks}` tasks completed out of `{total}`."
+msgstr ""
+
+#: src/modules/meta/cog.py:271
+msgctxt "cmd:nerd|field:timers|name"
+msgid "Timers"
+msgstr ""
+
+#: src/modules/meta/cog.py:274
+#, possible-python-brace-format
+msgctxt "cmd:nerd|field:timers|value"
+msgid "`{timers}` timers running across `{guilds}` guilds."
+msgstr ""
+
+#: src/modules/meta/cog.py:283
+msgctxt "cmd:nerd|section:bot_stats|name"
+msgid "Bot Stats"
+msgstr ""
+
+#: src/modules/meta/cog.py:293
+msgctxt "cmd:nerd|field:shard|name"
+msgid "Shard"
+msgstr ""
+
+#: src/modules/meta/cog.py:296
+#, possible-python-brace-format
+msgctxt "cmd:nerd|field:shard|value"
+msgid "`{shard_number}` of `{shard_count}`"
+msgstr ""
+
+#: src/modules/meta/cog.py:302
+msgctxt "cmd:nerd|field:guilds|name"
+msgid "Guilds"
+msgstr ""
+
+#: src/modules/meta/cog.py:305
+#, possible-python-brace-format
+msgctxt "cmd:nerd|field:guilds|value"
+msgid "`{guilds}` guilds with `{count}` total members."
+msgstr ""
+
+#: src/modules/meta/cog.py:315
+msgctxt "cmd:nerd|field:version|name"
+msgid "Leo Version"
+msgstr ""
+
+#: src/modules/meta/cog.py:318
+#, possible-python-brace-format
+msgctxt "cmd:nerd|field:version|value"
+msgid "`v{version}`, last updated {timestamp} from `{reason}`."
+msgstr ""
+
+#: src/modules/meta/cog.py:330
+msgctxt "cmd:nerd|field:py_version|name"
+msgid "Py Version"
+msgstr ""
+
+#: src/modules/meta/cog.py:333
+#, possible-python-brace-format
+msgctxt "cmd:nerd|field:py_version|value"
+msgid "`{py_version}` running discord.py `{dpy_version}`"
+msgstr ""
+
+#: src/modules/meta/cog.py:341
+msgctxt "cmd:nerd|section:process_section|name"
+msgid "Process"
+msgstr ""
+
+#: src/modules/meta/cog.py:351
+msgctxt "cmd:nerd|field:handling|name"
+msgid "Handling"
+msgstr ""
+
+#: src/modules/meta/cog.py:354
+#, possible-python-brace-format
+msgctxt "cmd:nerd|field:handling|name"
+msgid "`{events}` active commands and events."
+msgstr ""
+
+#: src/modules/meta/cog.py:362
+msgctxt "cmd:nerd|field:working|name"
+msgid "Working On"
+msgstr ""
+
+#: src/modules/meta/cog.py:365
+#, possible-python-brace-format
+msgctxt "cmd:nerd|field:working|value"
+msgid "`{tasks}` background tasks."
+msgstr ""
+
+#: src/modules/meta/cog.py:371
+msgctxt "cmd:nerd|field:objects|name"
+msgid "Objects"
+msgstr ""
+
+#: src/modules/meta/cog.py:374
+#, possible-python-brace-format
+msgctxt "cmd:nerd|field:objects|value"
+msgid "`{objects}` loaded in memory."
+msgstr ""
+
+#: src/modules/meta/cog.py:384
+msgctxt "cmd:nerd|field:uptime|name"
+msgid "Uptime"
+msgstr ""
+
+#: src/modules/meta/cog.py:390
+msgctxt "cmd:nerd|section:shard_section|name"
+msgid "Shard Statistics"
+msgstr ""
+
+#: src/modules/meta/help_sections.py:40
+#, possible-python-brace-format
+msgctxt "helptext|level:member|mode:study"
+msgid ""
+"\n"
+"    {config_emoji} Personal Configuration\n"
+"    *View or adjust personal settings with the {cmd_my} command.*\n"
+"    {cmd_my_timezone}: Timezone used to display your stats and set reminders.\n"
+"    {cmd_my_language}: Your preferred language for commands and interactions.\n"
+"\n"
+"\n"
+"    {stats_emoji} Statistics\n"
+"    *Study in voice channels to earn activity ranks and compete on the leaderboard!*\n"
+"    {cmd_me}: View your personal study profile and set your profile tags.\n"
+"    {cmd_stats}: View study statistics for the current and past weeks or months.\n"
+"    {cmd_ranks}: See the list of activity ranks.\n"
+"    {cmd_leaderboard}: Compete with other members on the server leaderboards.\n"
+"\n"
+"\n"
+"    {coin} Economy\n"
+"    *Earn coins through studying, then spend them on some well deserved rewards!*\n"
+"    {cmd_send}: Send your {coin} to another member.\n"
+"    {cmd_shop}: Purchase server roles with your {coin}.\n"
+"    {cmd_room}: Rent a private voice channel for you and your friends.\n"
+"\n"
+"\n"
+"    {utility_emoji} Utilities\n"
+"    *Some other utilities to help you stay productive while studying!*\n"
+"    {cmd_reminders}: Ask me to remind you about that important task!\n"
+"    {cmd_tasklist}: Create tasks and feel the satisfaction of checking them off.\n"
+"    {cmd_timers}: Stay productive using the classic *pomodoro technique*!\n"
+"    {cmd_schedule}: Schedule a shared study session and keep yourself accountable!\n"
+"    "
+msgstr ""
+"\n"
+"    {config_emoji} Kişisel Konfigürasyon\n"
+"    * {cmd_my} kullanarak kişisel ayarlarını görüntüle ya da değiştir *\n"
+"    {cmd_my_timezone}: İstatistiklerini görmek ve hatırlatıcılarını ayarlamak için kullandığın zaman dilimi.\n"
+"    {cmd_my_language}: Komutlar ve etkileşimler için tercih ettiğin dil.\n"
+"\n"
+"\n"
+"    {stats_emoji} İstatistikler\n"
+"    *Etkinlik başarımlarını kazanmak ve liderlik tablosunda yarışmak için ses kanallarında çalış!*\n"
+"    {cmd_me}: Kişisel çalışma profilini görmek ve çalışma etiketlerini ayarla.\n"
+"    {cmd_stats}: Şu anki ve geçmiş haftalık veya aylık çalışma istatistiklerini gör. \n"
+"    {cmd_ranks}: Aktivite başarımlarının listesini gör.\n"
+"    {cmd_leaderboard}: Sunucu liderlik tablosunda diğer üyelerle yarış.\n"
+"\n"
+"\n"
+"    {coin} Ekonomi\n"
+"    *Çalışarak para kazan ve kazandığın paraları çokça hak ettiiğn ödüllerde kullan!*\n"
+"    {cmd_send}:  {coin}'inini başka kullanıcılara gönder.\n"
+"    {cmd_shop}: {coin} aracılığıyla sunucu rollerini satın al.\n"
+"    {cmd_room}: Kendin ve arkadaşların için özel oda kirala.\n"
+"\n"
+"\n"
+"    {utility_emoji} Araçlar\n"
+"    *Çalışırken verimli kalmana yardımcı olacak diğer araçlar!*\n"
+"    {cmd_reminders}: Bana sana hatırlatmam gereken önemli bir şeyi söyleyebilirsin!\n"
+"    {cmd_tasklist}: Görevler belirle ve onları tamamlamanın rahatlatıcı etkisini gör.\n"
+"    {cmd_timers}: Klasik *pomodoro tekniğini* kullanarak verimli kal!\n"
+"    {cmd_schedule}: Paylaşabileceğiniz bir çalışma oturumu ayırt ve kendini sorumlu tut!\n"
+"    "
+
+#: src/modules/meta/help_sections.py:73
+#, possible-python-brace-format
+msgctxt "helptext|page:admin"
+msgid ""
+"\n"
+"    Use {cmd_dashboard} to see an overview of the server configuration,     and quickly jump to the feature configuration panels to modify settings.\n"
+"\n"
+"    Most settings may also be directly set through the `/config` and `/admin config` commands,     depending on whether the settings require moderator (manage server) or admin level permissions, respectively.\n"
+"\n"
+"    Other relevant commands for guild configuration below:\n"
+"    `/editshop`: Add/Edit/Remove colour roles from the {coin} shop.\n"
+"    `/ranks`: Add/Edit/Refresh/Remove activity ranks.\n"
+"    `/pomodoro`: Add/Edit/Remove Pomodoro timers in voice channels.\n"
+"    `/rolemenus`: Allow members to equip roles from customisable messages.\n"
+"    `/economy balance`: Display and modify LionCoin balance for members and roles.\n"
+"    "
+msgstr ""
+
+#: src/modules/meta/help_sections.py:112
+msgctxt "helptext|level:member|title"
+msgid "Command Summary (for members)"
+msgstr "Komut Özeti (üyeler için)"
+
+#: src/modules/meta/help_sections.py:140
+msgctxt "helptext|level:admin|title"
+msgid "Command Summary (for server admins)"
+msgstr "Komut Özeti (Sunucu yöneticileri için)"
+
+#: src/modules/meta/helpui.py:47
+msgctxt "ui:help|button:member_page|label"
+msgid "Member Page"
+msgstr "Üye Sayfası"
+
+#: src/modules/meta/helpui.py:59
+msgctxt "ui:help|button:admin_page|label"
+msgid "Admin Page"
+msgstr "Yönetici Sayfası"
