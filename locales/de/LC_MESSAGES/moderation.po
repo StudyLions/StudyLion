@@ -34,7 +34,7 @@ msgstr ""
 #: src/modules/moderation/settingui.py:107
 msgctxt "ui:moderation_config|menu:modrole|placeholder"
 msgid "Select Moderator Role"
-msgstr ""
+msgstr "Wähle die Moderatioren Rolle"
 
 #: src/modules/moderation/settingui.py:133
 msgctxt "ui:moderation_config|menu:adminrole|placeholder"
