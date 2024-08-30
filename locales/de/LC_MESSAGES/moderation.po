@@ -29,7 +29,7 @@ msgstr "Wähle den Ticket Log aus"
 #: src/modules/moderation/settingui.py:81
 msgctxt "ui:moderation_config|menu:alert_channel|placeholder"
 msgid "Select Alert Channel"
-msgstr ""
+msgstr "Wähle den Alert Kanal"
 
 #: src/modules/moderation/settingui.py:107
 msgctxt "ui:moderation_config|menu:modrole|placeholder"
