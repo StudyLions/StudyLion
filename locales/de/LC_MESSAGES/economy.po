@@ -412,7 +412,7 @@ msgstr "Anzahl der Münzen, die du senden möchtest"
 #: src/modules/economy/cog.py:718
 msgctxt "cmd:send|param:note|desc"
 msgid "Optional note to add to the gift."
-msgstr ""
+msgstr "Optionale Notiz zu deinem Geschenk"
 
 #: src/modules/economy/cog.py:742
 msgctxt "cmd:send|error:not_allowed"
