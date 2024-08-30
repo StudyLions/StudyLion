@@ -1,0 +1,107 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Sarah Vogel, 2024
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2023-08-28 13:43+0000\n"
+"Last-Translator: Sarah Vogel, 2024\n"
+"Language-Team: German (https://app.transifex.com/leobot/teams/174919/de/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/gui/cards/goals.py:97
+msgctxt "skin:goals|goal:tasks|name"
+msgid "TASKS DONE"
+msgstr "AUFGABEN ERLEDIGT"
+
+#: src/gui/cards/goals.py:101
+msgctxt "skin:goals|goal:tasks|goal"
+msgid "GOAL: "
+msgstr "ZIEL:"
+
+#: src/gui/cards/goals.py:127
+msgctxt "skin:goals|goal:attendance|name"
+msgid ""
+"ATTENDANCE\n"
+"RATE"
+msgstr ""
+"ANWESENHEITS\n"
+"QUOTE"
+
+#: src/gui/cards/goals.py:141
+msgctxt "skin:goals|mode:study|goal:middle|above"
+msgid "STUDIED"
+msgstr "GELERNT"
+
+#: src/gui/cards/goals.py:145
+msgctxt "skin:goals|mode:study|goal:middle|below"
+msgid "HOURS"
+msgstr "STUNDEN:"
+
+#: src/gui/cards/goals.py:149
+msgctxt "skin:goals|mode:voice|goal:middle|above"
+msgid "CHATTED"
+msgstr "CHAT"
+
+#: src/gui/cards/goals.py:153
+msgctxt "skin:goals|mode:voice|goal:middle|below"
+msgid "HOURS"
+msgstr "STUNDEN"
+
+#: src/gui/cards/goals.py:157
+msgctxt "skin:goals|mode:text|goal:middle|above"
+msgid "SENT"
+msgstr "GESCHICKT"
+
+#: src/gui/cards/goals.py:161
+msgctxt "skin:goals|mode:text|goal:middle|below"
+msgid "MESSAGES"
+msgstr "NACHRICHTEN"
+
+#: src/gui/cards/goals.py:165
+msgctxt "skin:goals|mode:anki|goal:middle|above"
+msgid "REVIEWED"
+msgstr ""
+
+#: src/gui/cards/goals.py:169
+msgctxt "skin:goals|mode:anki|goal:middle|below"
+msgid "CARDS"
+msgstr "KARTEN"
+
+#: src/gui/cards/goals.py:230
+#, possible-python-brace-format
+msgctxt "skin:goals|footer"
+msgid "As of {day} {month} • {name}"
+msgstr "Seit {day} {month} • {name}"
+
+#: src/gui/cards/goals.py:242
+msgctxt "ui:goals|weekly|title"
+msgid "WEEKLY STATISTICS"
+msgstr "WÖCHENTLICHE STATISTIK"
+
+#: src/gui/cards/goals.py:246
+msgctxt "ui:goals|weekly|task_header"
+msgid "GOALS OF THE WEEK"
+msgstr "WOCHENZIELE"
+
+#: src/gui/cards/goals.py:256
+msgctxt "ui:goals|monthly|title"
+msgid "MONTHLY STATISTICS"
+msgstr "MONATLICHE STATISTIK"
+
+#: src/gui/cards/goals.py:260
+msgctxt "ui:goals|monthly|task_header"
+msgid "GOALS OF THE MONTH"
+msgstr "MONATSZIELE"
