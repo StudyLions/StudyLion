@@ -407,7 +407,7 @@ msgstr "User, dem du das Geschenk senden möchtest"
 #: src/modules/economy/cog.py:717
 msgctxt "cmd:send|param:amount|desc"
 msgid "Number of coins to send"
-msgstr ""
+msgstr "Anzahl der Münzen, die du senden möchtest"
 
 #: src/modules/economy/cog.py:718
 msgctxt "cmd:send|param:note|desc"
