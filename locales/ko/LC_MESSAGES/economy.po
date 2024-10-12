@@ -60,7 +60,7 @@ msgstr "타깃"
 #: src/modules/economy/cog.py:101
 msgctxt "cmd:economy_balance|param:add"
 msgid "add"
-msgstr ""
+msgstr "추가"
 
 #: src/modules/economy/cog.py:102
 msgctxt "cmd:economy_balance|param:set"
