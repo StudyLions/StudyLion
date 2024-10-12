@@ -34,7 +34,7 @@ msgstr "경험치"
 #: src/modules/ranks/cog.py:78
 msgctxt "cmd:configure_ranks|param:rank_type|choice:message"
 msgid "Message"
-msgstr ""
+msgstr "메세지"
 
 #: src/modules/ranks/cog.py:351
 #, possible-python-brace-format
