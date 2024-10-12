@@ -49,7 +49,7 @@ msgstr ""
 #: src/modules/meta/cog.py:104
 msgctxt "cmd:invite"
 msgid "invite"
-msgstr ""
+msgstr "초대하기"
 
 #: src/modules/meta/cog.py:107
 msgctxt "cmd:invite|desc"
@@ -65,7 +65,7 @@ msgstr ""
 #: src/modules/meta/cog.py:125
 msgctxt "cmd:invite|embed|field:tips|name"
 msgid "Setup Tips"
-msgstr ""
+msgstr "설정 팁"
 
 #: src/modules/meta/cog.py:129
 #, possible-python-brace-format
