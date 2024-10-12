@@ -147,4 +147,4 @@ msgstr ""
 #: src/modules/config/settings.py:111
 msgctxt "guildset:eventlog|response|unset"
 msgid "Guild events will no longer be logged."
-msgstr ""
+msgstr "길드 이벤트가 더 이상 기록되지 않습니다."
