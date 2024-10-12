@@ -5,15 +5,16 @@
 # 
 # Translators:
 # Hong Shik Kim, 2023
+# GAHYEON SEO, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-15 15:58+0300\n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Hong Shik Kim, 2023\n"
+"Last-Translator: GAHYEON SEO, 2024\n"
 "Language-Team: Korean (https://app.transifex.com/leobot/teams/174919/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -69,7 +70,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "eventlog|event:rolemenu_role_expire|error:no_role"
 msgid "Role {role} no longer exists."
-msgstr ""
+msgstr "{role} 역할은 더 이상 존재하지 않습니다."
 
 #: src/modules/rolemenus/cog.py:356
 msgctxt "eventlog|event:rolemenu_role_expire|title"
