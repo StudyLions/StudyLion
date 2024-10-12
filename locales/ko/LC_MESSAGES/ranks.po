@@ -281,7 +281,7 @@ msgstr ""
 #: src/modules/ranks/settings.py:27
 msgctxt "guildset:rank_type|output:voice"
 msgid "`Voice`"
-msgstr ""
+msgstr "'음성'"
 
 #: src/modules/ranks/settings.py:28
 msgctxt "guildset:rank_type|output:xp"
