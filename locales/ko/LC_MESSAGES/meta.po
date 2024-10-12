@@ -64,7 +64,7 @@ msgstr "자신의 서버에 LionBot 초대하기."
 #, possible-python-brace-format
 msgctxt "cmd:invite|embed|desc"
 msgid "[Click here]({invite_link}) to add me to your server."
-msgstr ""
+msgstr "당신의 서버에 저를 추가하려면 여기를 누르세요. [Click here]({invite_link})"
 
 #: src/modules/meta/cog.py:125
 msgctxt "cmd:invite|embed|field:tips|name"
