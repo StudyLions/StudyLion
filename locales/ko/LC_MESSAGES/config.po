@@ -40,7 +40,7 @@ msgstr ""
 #: src/modules/config/settingui.py:103
 msgctxt "dash:general|option|name"
 msgid "General Configuration Panel"
-msgstr ""
+msgstr "일반 설정 패널"
 
 #: src/modules/config/cog.py:56 src/modules/config/general.py:52
 msgctxt "cmd:configure_general"
