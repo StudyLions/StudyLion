@@ -355,7 +355,7 @@ msgstr ""
 #: src/modules/economy/cog.py:655
 msgctxt "cmd:economy_reset|confirm:reset_role|button:cancel"
 msgid "Cancel"
-msgstr ""
+msgstr "취소"
 
 #: src/modules/economy/cog.py:672
 #, possible-python-brace-format
@@ -374,7 +374,7 @@ msgstr ""
 #: src/modules/economy/cog.py:704
 msgctxt "cmd:send"
 msgid "send"
-msgstr ""
+msgstr "보내기"
 
 #: src/modules/economy/cog.py:707
 msgctxt "cmd:send|desc"
@@ -384,7 +384,7 @@ msgstr ""
 #: src/modules/economy/cog.py:711
 msgctxt "cmd:send|param:target"
 msgid "target"
-msgstr ""
+msgstr "타깃"
 
 #: src/modules/economy/cog.py:712
 msgctxt "cmd:send|param:amount"
