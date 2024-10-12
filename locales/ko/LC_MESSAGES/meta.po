@@ -78,7 +78,7 @@ msgstr ""
 #: src/modules/meta/cog.py:144
 msgctxt "cmd:support"
 msgid "support"
-msgstr ""
+msgstr "서포트"
 
 #: src/modules/meta/cog.py:147
 msgctxt "cmd:support|desc"
