@@ -1,0 +1,38 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Emily, 2024
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2023-10-24 11:51+0000\n"
+"Last-Translator: Emily, 2024\n"
+"Language-Team: Spanish (Latin America) (https://app.transifex.com/leobot/teams/174919/es_419/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es_419\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#: src/modules/topgg/cog.py:92
+msgctxt "button:vote|label"
+msgid "Vote for me!"
+msgstr "¡Vota por mi!"
+
+#: src/modules/topgg/cog.py:119
+#, possible-python-brace-format
+msgctxt "embed:voting_thanks|title"
+msgid "Thank you for supporting me on Top.gg! {yay}"
+msgstr "¡Gracias por apoyarme en Top.gg! {yay}"
+
+#: src/modules/topgg/cog.py:123
+msgctxt "embed:voting_thanks|desc"
+msgid "Thank you for supporting us, enjoy your LionCoins boost!"
+msgstr "Gracias por apoyarnos, ¡disfruta de tu aumento de LionCoins!"
