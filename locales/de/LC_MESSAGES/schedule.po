@@ -830,7 +830,7 @@ msgstr "Kommende Sessions"
 #: src/modules/schedule/ui/scheduleui.py:520
 msgctxt "ui:schedule|embed|field:upcoming|value:empty"
 msgid "No sessions scheduled yet!"
-msgstr ""
+msgstr "Keine Sessions gebucht!"
 
 #: src/modules/schedule/ui/scheduleui.py:534
 #, possible-python-brace-format
@@ -845,7 +845,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "ui:schedule|booking_format:short"
 msgid "`{until}` | {start} - {end}"
-msgstr ""
+msgstr "`{until}` | {start} - {end}"
 
 #: src/modules/schedule/ui/scheduleui.py:552
 #, possible-python-brace-format
