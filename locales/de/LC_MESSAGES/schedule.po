@@ -1097,7 +1097,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "session|status:preparing|desc:has_members"
 msgid "Starting {start}"
-msgstr ""
+msgstr "Startet {start}"
 
 #: src/modules/schedule/core/session.py:509
 msgctxt "session|status:preparing|field:members"
