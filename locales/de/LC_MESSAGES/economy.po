@@ -254,13 +254,13 @@ msgstr ""
 #: src/modules/economy/cog.py:464
 msgctxt "cmd:economy_balance|embed:role_lb|row_format"
 msgid "`[{pos:>{numwidth}}]` | `{coins:>{coinwidth}} LC` | {mention}"
-msgstr ""
+msgstr "`[{pos:>{numwidth}}]` | `{coins:>{coinwidth}} LC` | {mention}"
 
 #: src/modules/economy/cog.py:492
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:role_lb|footer"
 msgid "Page {page}/{total}"
-msgstr ""
+msgstr "Seite {page}/{total}"
 
 #: src/modules/economy/cog.py:502
 #, possible-python-brace-format
@@ -479,6 +479,8 @@ msgid ""
 "**{coin_emoji}{amount}** has been deducted from your balance and sent to "
 "{mention}!"
 msgstr ""
+"**{coin_emoji}{amount}** wurde von deinem Konto abgezogen und an {mention} "
+"geschickt!"
 
 #: src/modules/economy/cog.py:872
 msgctxt "cmd:send|embed:ack|desc|error:unreachable"
