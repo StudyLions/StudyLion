@@ -429,7 +429,7 @@ msgstr "Seitenzahl, auf die du springen möchtest"
 #: src/modules/moderation/ticketui.py:417
 msgctxt "ui:tickets|button:jump|error:invalid_page"
 msgid "Invalid page number, please try again!"
-msgstr ""
+msgstr "Ungültige Seitenzahl, bitte versuche es erneut!"
 
 #: src/modules/moderation/ticketui.py:496
 #, possible-python-brace-format
