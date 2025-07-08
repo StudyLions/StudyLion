@@ -274,7 +274,7 @@ msgstr ""
 #: src/modules/schedule/settings.py:144
 msgctxt "guildset:session_room|accepts"
 msgid "Name or id of the session room voice channel."
-msgstr "Name oder ID des Sprachkanal Sitzungsraums."
+msgstr "Name oder ID der Voicechannel Session."
 
 #: src/modules/schedule/settings.py:158
 #, possible-python-brace-format
