@@ -663,7 +663,7 @@ msgstr ""
 #: src/modules/ranks/ui/config.py:64
 msgctxt "ui:rank_config|button:overview|label"
 msgid "Edit Ranks"
-msgstr ""
+msgstr "Ränge bearbeiten"
 
 #: src/modules/ranks/ui/config.py:83
 msgctxt "ui:rank_config|menu:types|placeholder"
