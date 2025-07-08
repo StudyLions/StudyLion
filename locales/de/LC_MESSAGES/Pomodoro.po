@@ -632,7 +632,7 @@ msgstr ""
 #: src/modules/pomodoro/settings.py:21
 msgctxt "guildset:pomodoro_channel"
 msgid "pomodoro_channel"
-msgstr ""
+msgstr "pomodoro_channel"
 
 #: src/modules/pomodoro/settings.py:24
 msgctxt "guildset:pomodoro_channel|desc"
