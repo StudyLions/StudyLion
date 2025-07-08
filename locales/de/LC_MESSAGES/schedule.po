@@ -79,7 +79,7 @@ msgstr "buchen"
 #: src/modules/schedule/cog.py:758
 msgctxt "cmd:schedule|param:cancel|desc"
 msgid "Select a booked timeslot to cancel."
-msgstr ""
+msgstr "Wähle ein gebuchtes Zeitfenster zum Absagen aus."
 
 #: src/modules/schedule/cog.py:762
 msgctxt "cmd:schedule|param:book|desc"
