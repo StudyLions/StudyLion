@@ -59,12 +59,12 @@ msgstr ""
 #: src/modules/schedule/cog.py:741
 msgctxt "cmd:schedule"
 msgid "schedule"
-msgstr ""
+msgstr "Buchungen"
 
 #: src/modules/schedule/cog.py:744
 msgctxt "cmd:schedule|desc"
 msgid "View and manage your scheduled session."
-msgstr ""
+msgstr "Deine Buchungen anzeigen und bearbeiten"
 
 #: src/modules/schedule/cog.py:749
 msgctxt "cmd:schedule|param:cancel"
@@ -85,6 +85,8 @@ msgstr "Wähle ein gebuchtes Zeitfenster zum Absagen aus."
 msgctxt "cmd:schedule|param:book|desc"
 msgid "Select a timeslot to schedule. (Times shown in your set timezone.)"
 msgstr ""
+"Welchen Zeitslot möchtest du buchen? (Die Zeiten werden in deiner gesetzten "
+"Zeitzone angezeigt)"
 
 #: src/modules/schedule/cog.py:792
 #, possible-python-brace-format
@@ -110,7 +112,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:schedule|cancel_booking|success"
 msgid "Successfully cancelled your booking at {time}."
-msgstr ""
+msgstr "Deine Buchung für {time} wurde storniert."
 
 #: src/modules/schedule/cog.py:835
 #, possible-python-brace-format
@@ -136,12 +138,12 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:schedule|create_booking|success"
 msgid "You have successfully scheduled a session at {time}."
-msgstr ""
+msgstr "Du hast eine Session für {time} gebucht."
 
 #: src/modules/schedule/cog.py:909
 msgctxt "cmd:schedule|acmpl:book|error:not_in_guild"
 msgid "You need to be in a server to book sessions!"
-msgstr ""
+msgstr "Du musst auf einem Server sein, um Sessions zu buchen!"
 
 #: src/modules/schedule/cog.py:922
 msgctxt "cmd:schedule|acmpl:book|error:blacklisted"
@@ -159,7 +161,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:schedule|acmpl:book|format"
 msgid "{start} - {end} ({until})"
-msgstr ""
+msgstr "{start} - {end} ({until})"
 
 #: src/modules/schedule/cog.py:980
 #, possible-python-brace-format
@@ -170,7 +172,7 @@ msgstr ""
 #: src/modules/schedule/cog.py:1003
 msgctxt "cmd:schedule|acmpl:cancel|error:empty_schedule"
 msgid "You do not have any upcoming sessions to cancel!"
-msgstr ""
+msgstr "Du hast keine kommenden Sessions, die du absagen kannst!"
 
 #: src/modules/schedule/cog.py:1036
 #, possible-python-brace-format
@@ -181,7 +183,7 @@ msgstr ""
 #: src/modules/schedule/cog.py:1081
 msgctxt "cmd:configure_schedule"
 msgid "schedule"
-msgstr ""
+msgstr "Buchungen"
 
 #: src/modules/schedule/cog.py:1084
 msgctxt "cmd:configure_schedule|desc"
