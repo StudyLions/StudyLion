@@ -503,7 +503,7 @@ msgstr "Rolle"
 #: src/modules/shop/shops/colours.py:1004
 msgctxt "cmd:editshop_colours_remove"
 msgid "delete_role"
-msgstr ""
+msgstr "rolle_löschen"
 
 #: src/modules/shop/shops/colours.py:1009
 msgctxt "cmd:editshop_colours_remove|param:role|desc"
