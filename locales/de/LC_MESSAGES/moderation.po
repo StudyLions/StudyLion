@@ -289,7 +289,7 @@ msgstr "danach"
 #: src/modules/moderation/cog.py:491
 msgctxt "cmd:tickets|param:before"
 msgid "before"
-msgstr "vorher"
+msgstr "davor"
 
 #: src/modules/moderation/cog.py:496
 msgctxt "cmd:tickets|param:target|desc"
