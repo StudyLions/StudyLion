@@ -568,7 +568,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "guildset:ticket_log|set_response:set"
 msgid "Moderation tickets will be sent to {channel}"
-msgstr ""
+msgstr "Moderationstickets werden an {channel} geschickt"
 
 #: src/modules/moderation/settings.py:53
 msgctxt "guildset:ticket_log|set_response:unset"
