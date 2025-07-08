@@ -452,7 +452,7 @@ msgstr ""
 #: src/modules/economy/cog.py:816
 msgctxt "eventlog|event:send|title"
 msgid "Coins Transferred"
-msgstr "Münzen wurden übertragen"
+msgstr "Münzen wurden gesendet"
 
 #: src/modules/economy/cog.py:820
 #, possible-python-brace-format
