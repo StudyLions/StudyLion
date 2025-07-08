@@ -151,7 +151,7 @@ msgstr "Besitzer"
 #: src/modules/rooms/roomui.py:385
 msgctxt "ui:room_status|embed|field:created|name"
 msgid "Created At"
-msgstr ""
+msgstr "Erstellt am"
 
 #: src/modules/rooms/roomui.py:395
 #, possible-python-brace-format
