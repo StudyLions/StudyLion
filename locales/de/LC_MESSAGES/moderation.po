@@ -364,7 +364,7 @@ msgstr "Tickettypen"
 #: src/modules/moderation/ticketui.py:102
 msgctxt "ticketfilter|field:states|name"
 msgid "Ticket States"
-msgstr ""
+msgstr "Ticketstatus"
 
 #: src/modules/moderation/ticketui.py:179
 msgctxt "ui:tickets|button:edit_filter|label"
