@@ -237,7 +237,7 @@ msgstr "davor"
 #: src/modules/member_admin/cog.py:436
 msgctxt "cmd:admin_data|param:limit"
 msgid "limit"
-msgstr ""
+msgstr "Limit"
 
 #: src/modules/member_admin/cog.py:441
 msgctxt "cmd:admin_data|param:data_type|desc"
@@ -289,7 +289,7 @@ msgstr ""
 #: src/modules/member_admin/cog.py:643
 msgctxt "cmd:configure_welcome"
 msgid "welcome"
-msgstr ""
+msgstr "Willkommen"
 
 #: src/modules/member_admin/cog.py:646
 msgctxt "cmd:configure_welcome|desc"
@@ -472,6 +472,16 @@ msgid ""
 "            }\n"
 "            "
 msgstr ""
+"\n"
+"            {\n"
+"                \"embed\": {\n"
+"                    \"title\": \"Welcome Back {user_name}!\",\n"
+"                    \"thumbnail\": {\"url\": \"{User_avatar}\"},\n"
+"                    \"description\": \"Willkommen zurück bei **{guild_name}**!\\nDu warst zuletzt <t:{last_time}:R>. hier\",\n"
+"                    \"color\": 15695665\n"
+"                }\n"
+"            }\n"
+"            "
 
 #: src/modules/member_admin/settings.py:252
 msgctxt "guildset:returning_message|formatkey:last_time"
