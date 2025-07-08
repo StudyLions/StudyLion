@@ -606,7 +606,7 @@ msgstr ""
 #: src/modules/schedule/ui/settingui.py:126
 msgctxt "ui:schedule_config|menu:channels|placeholder"
 msgid "Select Session Channels"
-msgstr ""
+msgstr "Wähle Session Channels"
 
 #: src/modules/schedule/ui/settingui.py:140
 msgctxt "ui:schedule_config|button:page1|label"
