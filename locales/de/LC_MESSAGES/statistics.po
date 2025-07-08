@@ -29,7 +29,7 @@ msgstr "ich"
 #: src/modules/statistics/cog.py:50
 msgctxt "cmd:me|desc"
 msgid "Edit your personal profile and see your statistics."
-msgstr ""
+msgstr "Bearbeite dein persönliches Profil und schau deine Statistik an."
 
 #: src/modules/statistics/cog.py:63
 msgctxt "cmd:profile"
