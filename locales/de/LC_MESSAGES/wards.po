@@ -38,7 +38,7 @@ msgctxt "ward:low_management|failed"
 msgid ""
 "You must have the `MANAGE_GUILD` permission or the configured `mod_role` to "
 "do this!"
-msgstr ""
+msgstr "Du brauchst `MANAGE_GUILD` oder `mod_role` um das zu tun!"
 
 #: src/wards.py:143
 msgctxt "ward:moderator|failed"
