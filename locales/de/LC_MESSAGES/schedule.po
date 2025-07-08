@@ -292,7 +292,7 @@ msgstr ""
 #: src/modules/schedule/settings.py:171
 msgctxt "guildset:session_channels"
 msgid "session_channels"
-msgstr ""
+msgstr "session_channels"
 
 #: src/modules/schedule/settings.py:174
 msgctxt "guildset:session_channels|desc"
