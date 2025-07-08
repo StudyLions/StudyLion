@@ -107,7 +107,7 @@ msgstr ""
 #: src/settings/setting_types.py:495
 msgctxt "settype:bool|accepts"
 msgid "Enabled/Disabled"
-msgstr ""
+msgstr "Aktiviert/Deaktiviert"
 
 #: src/settings/setting_types.py:500
 msgctxt "settype:bool|parse:truthy_values"
