@@ -512,7 +512,7 @@ msgstr ""
 #: src/modules/ranks/ui/preview.py:202
 msgctxt "ui:rank_preview|button:delete|label"
 msgid "Delete Rank"
-msgstr ""
+msgstr "Rang löschen"
 
 #: src/modules/ranks/ui/preview.py:232
 msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:is_default"
