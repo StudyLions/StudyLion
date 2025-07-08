@@ -724,7 +724,7 @@ msgstr ""
 #: src/modules/rooms/settings.py:79
 msgctxt "guildset:rooms_price"
 msgid "room_rent"
-msgstr ""
+msgstr "raum_mieten"
 
 #: src/modules/rooms/settings.py:83
 msgctxt "guildset:rooms_rent|desc"
