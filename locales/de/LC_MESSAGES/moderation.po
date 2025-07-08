@@ -414,7 +414,7 @@ msgstr "Wähle Ticketziele"
 #: src/modules/moderation/ticketui.py:371
 msgctxt "ui:tickets|menu:tickets|placeholder"
 msgid "Select Ticket"
-msgstr ""
+msgstr "Ticket auswählen"
 
 #: src/modules/moderation/ticketui.py:402
 msgctxt "ui:tickets|button:jump|input:title"
