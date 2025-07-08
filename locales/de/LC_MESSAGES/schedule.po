@@ -206,7 +206,7 @@ msgstr "Jetzt!"
 #: src/modules/schedule/settings.py:70
 msgctxt "guildset:session_lobby"
 msgid "session_lobby"
-msgstr ""
+msgstr "session_lobby"
 
 #: src/modules/schedule/settings.py:73
 msgctxt "guildset:session_lobby|desc"
