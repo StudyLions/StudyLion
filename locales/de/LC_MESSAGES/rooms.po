@@ -781,7 +781,7 @@ msgstr ""
 #: src/modules/rooms/settings.py:151
 msgctxt "guildset:rooms_visible"
 msgid "room_visibility"
-msgstr ""
+msgstr "raum_anzeige"
 
 #: src/modules/rooms/settings.py:154
 msgctxt "guildset:rooms_visible|desc"
