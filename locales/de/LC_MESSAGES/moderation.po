@@ -269,7 +269,7 @@ msgstr "Typ"
 #: src/modules/moderation/cog.py:487
 msgctxt "cmd:tickets|param:state"
 msgid "ticket_state"
-msgstr ""
+msgstr "ticket_status"
 
 #: src/modules/moderation/cog.py:488
 msgctxt "cmd:tickets|param:pardoned"
