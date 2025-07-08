@@ -359,7 +359,7 @@ msgstr "Moderator"
 #: src/modules/moderation/ticketui.py:94
 msgctxt "ticketfilter|field:types|name"
 msgid "Ticket Types"
-msgstr ""
+msgstr "Tickettypen"
 
 #: src/modules/moderation/ticketui.py:102
 msgctxt "ticketfilter|field:states|name"
