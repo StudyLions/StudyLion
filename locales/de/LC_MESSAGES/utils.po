@@ -193,7 +193,7 @@ msgstr ""
 #: src/utils/ui/pagers.py:56
 msgctxt "cmd:page|pager:Pager|options:first"
 msgid "f, first, one, start"
-msgstr ""
+msgstr "e, zuerst, Start"
 
 #. List of valid keys indicating movement to the last page
 #: src/utils/ui/pagers.py:59
@@ -211,25 +211,25 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "cmd:page|acmpl|pager:Pager|choice:last"
 msgid "Last: Page {page}/{total}"
-msgstr ""
+msgstr "Letzte: Seite {page}/{total}"
 
 #: src/utils/ui/pagers.py:307
 #, possible-python-brace-format
 msgctxt "cmd:page|acmpl|pager:Pager|choice:current"
 msgid "Current: Page {page}/{total}"
-msgstr ""
+msgstr "Aktuell: Seite {page}/{total}"
 
 #: src/utils/ui/pagers.py:319
 #, possible-python-brace-format
 msgctxt "cmd:page|acmpl|pager:Pager|choice:general"
 msgid "Page {page}"
-msgstr ""
+msgstr "Seite {page}"
 
 #: src/utils/ui/pagers.py:353
 #, possible-python-brace-format
 msgctxt "cmd:page|acmpl|pager:Page|choice:select"
 msgid "Selected: Page {page}/{total}"
-msgstr ""
+msgstr "Ausgewählt: Seite {page}/{total}"
 
 #: src/utils/ui/pagers.py:363
 msgctxt "cmd:page|acmpl|pager:Page|error:parse"
