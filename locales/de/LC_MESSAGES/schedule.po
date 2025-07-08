@@ -825,7 +825,7 @@ msgstr ""
 #: src/modules/schedule/ui/scheduleui.py:516
 msgctxt "ui:schedule|embed|field:upcoming|name"
 msgid "Upcoming Sessions"
-msgstr ""
+msgstr "Kommende Sessions"
 
 #: src/modules/schedule/ui/scheduleui.py:520
 msgctxt "ui:schedule|embed|field:upcoming|value:empty"
