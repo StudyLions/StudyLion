@@ -883,7 +883,7 @@ msgstr ""
 #: src/modules/rolemenus/templates.py:53
 msgctxt "template:simple|name"
 msgid "Simple Menu"
-msgstr ""
+msgstr "Einfaches Menü"
 
 #: src/modules/rolemenus/templates.py:57
 msgctxt "template:simple|desc"
@@ -1019,7 +1019,7 @@ msgstr ""
 #: src/modules/rolemenus/rolemenu.py:655
 msgctxt "rolemenu|deselect|error:perms"
 msgid "I don't have enough permissions to remove this role from you!"
-msgstr ""
+msgstr "Ich habe nicht ausreichend Berechtigung, um diese Rolle zu entfernen!"
 
 #: src/modules/rolemenus/rolemenu.py:662
 msgctxt "rolemenu|deselect|error:discord"
@@ -1313,12 +1313,12 @@ msgstr ""
 #: src/modules/rolemenus/ui/menueditor.py:151
 msgctxt "ui:menu_editor|button:options|label"
 msgid "Menu Options"
-msgstr ""
+msgstr "Menü Optionen"
 
 #: src/modules/rolemenus/ui/menueditor.py:179
 msgctxt "ui:menu_editor|button:bulk_edit|modal|title"
 msgid "Menu Options"
-msgstr ""
+msgstr "Menü Optionen"
 
 #: src/modules/rolemenus/ui/menueditor.py:218
 msgctxt "ui:menu_editor|button:bulk_edit|label"
@@ -1430,7 +1430,7 @@ msgstr ""
 #: src/modules/rolemenus/ui/menueditor.py:636
 msgctxt "ui:menu_editor|menu:style|option:dropdown|label"
 msgid "Dropdown Menu"
-msgstr ""
+msgstr "Dropdown Menü"
 
 #: src/modules/rolemenus/ui/menueditor.py:639
 msgctxt "ui:menu_editor|menu:style|option:dropdown|desc"
@@ -1445,7 +1445,7 @@ msgstr ""
 #: src/modules/rolemenus/ui/menueditor.py:719
 msgctxt "ui:menu_editor|menu:template|option:custom|label"
 msgid "Custom Message"
-msgstr ""
+msgstr "Benutzerdefinierte Nachricht"
 
 #: src/modules/rolemenus/ui/menueditor.py:724
 msgctxt "ui:menu_editor|menu:template|option:custom|description"
@@ -1490,7 +1490,7 @@ msgstr "Wähle neuen Channel"
 #: src/modules/rolemenus/ui/menueditor.py:885
 msgctxt "ui:menu_editor|button:repost|widget:repost|error:perms|title"
 msgid "Insufficient Permissions!"
-msgstr ""
+msgstr "Unzureichende Berechtigung!"
 
 #: src/modules/rolemenus/ui/menueditor.py:889
 msgctxt "ui:menu_editor|button:repost|eidget:repost|error:perms|desc"
