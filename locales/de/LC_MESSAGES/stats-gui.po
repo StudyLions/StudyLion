@@ -129,7 +129,7 @@ msgstr "{amount} EXP"
 #, possible-python-brace-format
 msgctxt "skin:stats|mode:anki|field:col2_summary"
 msgid "{amount} CARDS"
-msgstr ""
+msgstr "{amount} KARTEN"
 
 #: src/gui/cards/stats.py:212
 msgctxt "skin:stats|cal|weekdays"
