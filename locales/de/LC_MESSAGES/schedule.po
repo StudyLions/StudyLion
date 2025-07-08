@@ -936,8 +936,8 @@ msgstr "Wie du an der gebuchten Session teilnimmst"
 msgctxt "ui:session|button:help|embed:help|minimum_attendance"
 msgid "at least one minute"
 msgid_plural "at least `{duration}` minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "at least one minute"
+msgstr[1] "mindestens `{duration}` Minuten"
 
 #: src/modules/schedule/ui/sessionui.py:237
 #, possible-python-brace-format
