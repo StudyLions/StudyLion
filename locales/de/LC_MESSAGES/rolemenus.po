@@ -311,7 +311,7 @@ msgstr "Name"
 #: src/modules/rolemenus/cog.py:920
 msgctxt "cmd:rolemenu_edit|param:new_name"
 msgid "new_name"
-msgstr ""
+msgstr "neue_bezeichnung"
 
 #: src/modules/rolemenus/cog.py:921
 msgctxt "cmd:rolemenu_edit|param:channel"
