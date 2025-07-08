@@ -424,7 +424,7 @@ msgstr "Springe zu Seite"
 #: src/modules/moderation/ticketui.py:406
 msgctxt "ui:tickets|button:jump|input:question"
 msgid "Page number to jump to"
-msgstr ""
+msgstr "Seitenzahl, auf die du springen möchtest"
 
 #: src/modules/moderation/ticketui.py:417
 msgctxt "ui:tickets|button:jump|error:invalid_page"
