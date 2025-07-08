@@ -560,7 +560,7 @@ msgstr ""
 #: src/modules/ranks/ui/preview.py:281
 msgctxt "ui:rank_preview|embed|title"
 msgid "Rank Information"
-msgstr ""
+msgstr "Rang Information"
 
 #: src/modules/ranks/ui/preview.py:288
 msgctxt "ui:rank_preview|embed|field:role|name"
