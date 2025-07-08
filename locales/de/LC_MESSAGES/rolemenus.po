@@ -316,7 +316,7 @@ msgstr "neue_bezeichnung"
 #: src/modules/rolemenus/cog.py:921
 msgctxt "cmd:rolemenu_edit|param:channel"
 msgid "new_channel"
-msgstr ""
+msgstr "neuer_kanal"
 
 #: src/modules/rolemenus/cog.py:926
 msgctxt "cmd:rolemenu_edit|param:menu_style"
