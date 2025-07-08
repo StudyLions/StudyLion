@@ -399,7 +399,7 @@ msgstr ""
 #: src/modules/moderation/ticketui.py:273
 msgctxt "ui:tickets|menu:filter_type|placeholder"
 msgid "Select Ticket Types"
-msgstr ""
+msgstr "Wähle Tickettypen aus"
 
 #: src/modules/moderation/ticketui.py:309
 msgctxt "ui:tickets|menu:filter_state|placeholder"
