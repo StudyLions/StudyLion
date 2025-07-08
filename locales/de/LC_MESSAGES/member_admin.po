@@ -232,7 +232,7 @@ msgstr "danach"
 #: src/modules/member_admin/cog.py:435
 msgctxt "cmd:admin_data|param:end"
 msgid "before"
-msgstr ""
+msgstr "davor"
 
 #: src/modules/member_admin/cog.py:436
 msgctxt "cmd:admin_data|param:limit"
