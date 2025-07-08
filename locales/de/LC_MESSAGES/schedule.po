@@ -223,7 +223,7 @@ msgstr ""
 #: src/modules/schedule/settings.py:83
 msgctxt "guildset:session_lobby|accepts"
 msgid "Name or id of the session lobby channel."
-msgstr ""
+msgstr "Name oder ID des Session Lobby Channels."
 
 #: src/modules/schedule/settings.py:97
 #, possible-python-brace-format
