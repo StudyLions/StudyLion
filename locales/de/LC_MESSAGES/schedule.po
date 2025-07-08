@@ -1166,4 +1166,4 @@ msgstr ""
 #: src/modules/schedule/core/timeslot.py:506
 msgctxt "session|closing|disconnecting|audit_reason"
 msgid "Disconnecting previous scheduled session members."
-msgstr ""
+msgstr "Teilnehmer der vorherigen Session getrennt."
