@@ -1161,7 +1161,7 @@ msgstr "Fehlte"
 #: src/modules/schedule/core/timeslot.py:487
 msgctxt "session|closing|audit_reason"
 msgid "Removing previous scheduled session member permissions."
-msgstr ""
+msgstr "Berechtigungen der Teilnehmer der vorherigen Session entfernt."
 
 #: src/modules/schedule/core/timeslot.py:506
 msgctxt "session|closing|disconnecting|audit_reason"
