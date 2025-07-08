@@ -678,7 +678,7 @@ msgstr ""
 #: src/modules/ranks/ui/config.py:99
 msgctxt "ui:rank_config|menu:types|option:xp"
 msgid "XP Earned"
-msgstr ""
+msgstr "Verdiente EXP"
 
 #: src/modules/ranks/ui/config.py:107
 msgctxt "ui:rank_config|menu:types|option:messages"
