@@ -1485,7 +1485,7 @@ msgstr "Vorschau"
 #: src/modules/rolemenus/ui/menueditor.py:867
 msgctxt "ui:menu_editor|button:repost|widget:repost|menu:channel|placeholder"
 msgid "Select New Channel"
-msgstr ""
+msgstr "Wähle neuen Channel"
 
 #: src/modules/rolemenus/ui/menueditor.py:885
 msgctxt "ui:menu_editor|button:repost|widget:repost|error:perms|title"
