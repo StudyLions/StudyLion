@@ -336,7 +336,7 @@ msgstr ""
 #: src/modules/schedule/settings.py:248
 msgctxt "guildset:schedule_cost"
 msgid "schedule_cost"
-msgstr ""
+msgstr "buchung_kosten"
 
 #: src/modules/schedule/settings.py:251
 msgctxt "guildset:schedule_cost|desc"
