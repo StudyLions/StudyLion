@@ -326,7 +326,7 @@ msgstr ""
 #: src/modules/rolemenus/cog.py:927
 msgctxt "cmd:rolemenu_edit|param:remplate"
 msgid "template"
-msgstr ""
+msgstr "Vorlage"
 
 #: src/modules/rolemenus/cog.py:928
 msgctxt "cmd:rolemenu_edit|param:rawmessage"
