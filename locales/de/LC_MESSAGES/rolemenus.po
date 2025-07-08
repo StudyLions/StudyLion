@@ -100,7 +100,7 @@ msgstr "Läuft ab"
 #: src/modules/rolemenus/cog.py:419
 msgctxt "parse:message_link|suberror:message_dne"
 msgid "Could not find the linked message, has it been deleted?"
-msgstr ""
+msgstr "Ich konnte die Nachricht nicht finden, wurde sie gelöscht?"
 
 #: src/modules/rolemenus/cog.py:424
 #, possible-python-brace-format
