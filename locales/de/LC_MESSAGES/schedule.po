@@ -178,7 +178,7 @@ msgstr "Du hast keine kommenden Sessions, die du absagen kannst!"
 #, possible-python-brace-format
 msgctxt "cmd:schedule|acmpl:cancel|error:no_matching"
 msgid "No cancellable sessions matching '{partial}'"
-msgstr ""
+msgstr "Keine Sessions zum Absagen mit '{partial}' gefunden"
 
 #: src/modules/schedule/cog.py:1081
 msgctxt "cmd:configure_schedule"
