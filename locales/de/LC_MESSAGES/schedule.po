@@ -686,7 +686,7 @@ msgstr "Buchungen löschen"
 #: src/modules/schedule/ui/scheduleui.py:172
 msgctxt "ui:schedule|button:about|label"
 msgid "About Schedule"
-msgstr ""
+msgstr "Über Buchungen"
 
 #: src/modules/schedule/ui/scheduleui.py:198
 msgctxt "ui:schedule|menu:booking|error:current_slot"
@@ -736,7 +736,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "ui:schedule|menu:slots|option|format"
 msgid "{day} {time} ({until})"
-msgstr ""
+msgstr "{day} {time} ({until})"
 
 #: src/modules/schedule/ui/scheduleui.py:321
 msgctxt "ui:schedule|menu:slots|option|day:today"
