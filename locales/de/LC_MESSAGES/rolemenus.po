@@ -95,7 +95,7 @@ msgstr ""
 #: src/modules/rolemenus/cog.py:384
 msgctxt "eventlog|event:rolemenu_role_expire|field:expiry"
 msgid "Expiry"
-msgstr ""
+msgstr "Läuft ab"
 
 #: src/modules/rolemenus/cog.py:419
 msgctxt "parse:message_link|suberror:message_dne"
