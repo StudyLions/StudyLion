@@ -466,7 +466,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "ticket|title:auto"
 msgid "Ticket #{ticketid} | {state} | {type}[Auto] | {name}"
-msgstr ""
+msgstr "Ticket #{ticketid} | {state} | {type}[Auto] | {name}"
 
 #: src/modules/moderation/ticket.py:153
 #, possible-python-brace-format
