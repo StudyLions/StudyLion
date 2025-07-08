@@ -1470,7 +1470,7 @@ msgstr "Nein, zurück."
 #: src/modules/rolemenus/ui/menueditor.py:768
 msgctxt "ui:menu_editor|button:delete|label"
 msgid "Delete Menu"
-msgstr ""
+msgstr "Menü löschen"
 
 #: src/modules/rolemenus/ui/menueditor.py:825
 msgctxt "ui:menu_editor|button:edit_msg|label"
