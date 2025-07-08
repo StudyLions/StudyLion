@@ -64,6 +64,8 @@ msgstr ""
 msgctxt "eventlog|event:rolemenu_role_expire|error:member_gone"
 msgid "Member could not be found.. role has been removed from saved roles."
 msgstr ""
+"Mitglied konnte nicht gefunden werden... die Rolle wurde aus den "
+"gespeicherten Rollen entfernt."
 
 #: src/modules/rolemenus/cog.py:350
 #, possible-python-brace-format
