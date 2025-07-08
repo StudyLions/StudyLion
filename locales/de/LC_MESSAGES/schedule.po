@@ -681,7 +681,7 @@ msgstr ""
 #: src/modules/schedule/ui/scheduleui.py:156
 msgctxt "ui:schedule|button:clear|label"
 msgid "Clear Schedule"
-msgstr ""
+msgstr "Buchungen löschen"
 
 #: src/modules/schedule/ui/scheduleui.py:172
 msgctxt "ui:schedule|button:about|label"
