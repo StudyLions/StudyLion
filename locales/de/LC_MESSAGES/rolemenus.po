@@ -76,7 +76,7 @@ msgstr ""
 #: src/modules/rolemenus/cog.py:356
 msgctxt "eventlog|event:rolemenu_role_expire|title"
 msgid "Equipped role has expired"
-msgstr ""
+msgstr "Zugewiesene Rolle ist abgelaufen"
 
 #: src/modules/rolemenus/cog.py:360
 #, possible-python-brace-format
