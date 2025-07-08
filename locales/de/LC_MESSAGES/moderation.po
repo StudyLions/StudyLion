@@ -472,7 +472,7 @@ msgstr ""
 #, possible-python-brace-format
 msgctxt "ticket|title:manual"
 msgid "Ticket #{ticketid} | {state} | {type} | {name}"
-msgstr ""
+msgstr "Ticket #{ticketid} | {state} | {type} | {name}"
 
 #: src/modules/moderation/ticket.py:169
 msgctxt "ticket|field:target|name"
@@ -511,7 +511,7 @@ msgstr ""
 #: src/modules/moderation/ticket.py:202
 msgctxt "ticket|field:expiry|mode:open|name"
 msgid "Expiry"
-msgstr ""
+msgstr "Läuft ab"
 
 #: src/modules/moderation/ticket.py:205
 #, possible-python-brace-format
