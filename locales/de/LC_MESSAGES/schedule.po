@@ -353,7 +353,7 @@ msgstr ""
 #: src/modules/schedule/settings.py:259
 msgctxt "guildset:schedule_cost|accepts"
 msgid "Price of each session booking (non-negative integer)."
-msgstr ""
+msgstr "Preis pro gebuchter Session (nicht negative ganze Zahl)."
 
 #: src/modules/schedule/settings.py:271
 #, possible-python-brace-format
