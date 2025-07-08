@@ -793,7 +793,7 @@ msgstr "Insgesamt"
 #: src/modules/statistics/ui/leaderboard.py:373
 msgctxt "ui:leaderboard|button:jump|label"
 msgid "Jump"
-msgstr ""
+msgstr "Springe"
 
 #: src/modules/statistics/ui/leaderboard.py:388
 msgctxt "ui:leaderboard|button:jump|input:title"
