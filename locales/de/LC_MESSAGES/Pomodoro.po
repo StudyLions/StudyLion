@@ -472,7 +472,7 @@ msgstr "{name}"
 #, possible-python-brace-format
 msgctxt "formatstring:channel_name|key:pattern"
 msgid "{pattern}"
-msgstr ""
+msgstr "{pattern}"
 
 #: src/modules/pomodoro/options.py:33
 msgctxt "timerset:voice_channel"
