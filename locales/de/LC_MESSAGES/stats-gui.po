@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Sarah Vogel, 2023
+# Sarah Vogel, 2025
 # 
 #, fuzzy
 msgid ""
@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-24 14:37+0300\n"
 "PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Sarah Vogel, 2023\n"
+"Last-Translator: Sarah Vogel, 2025\n"
 "Language-Team: German (https://app.transifex.com/leobot/teams/174919/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -75,7 +75,7 @@ msgstr "DIESEN MONAT"
 #: src/gui/cards/stats.py:119
 msgctxt "skin:stats|field:alltime"
 msgid "ALL TIME"
-msgstr ""
+msgstr "GESAMTE ZEIT"
 
 #: src/gui/cards/stats.py:123
 msgctxt "skin:stats|field:time"
@@ -85,7 +85,7 @@ msgstr "ZEIT"
 #: src/gui/cards/stats.py:127
 msgctxt "skin:stats|field:anki"
 msgid "ANKI: COMING SOON"
-msgstr ""
+msgstr "ANKI: BALD VERFÜGBAR"
 
 #: src/gui/cards/stats.py:144
 msgctxt "skin:stats|mode:study|header:col2"
