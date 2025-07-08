@@ -496,6 +496,8 @@ msgid ""
 "{timestamp}\n"
 "Duration: `{duration}`"
 msgstr ""
+"{timestamp}\n"
+"Dauer: `{duration}`"
 
 #: src/modules/moderation/ticket.py:192
 msgctxt "ticket|field:expiry|mode:expired|name"
@@ -506,7 +508,7 @@ msgstr "Abgelaufen"
 #, possible-python-brace-format
 msgctxt "ticket|field:expiry|mode:expired|value"
 msgid "{timestamp}"
-msgstr ""
+msgstr "{timestamp}"
 
 #: src/modules/moderation/ticket.py:202
 msgctxt "ticket|field:expiry|mode:open|name"
