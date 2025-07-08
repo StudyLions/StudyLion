@@ -649,7 +649,7 @@ msgstr "Warnung!"
 #: src/modules/rolemenus/cog.py:1775
 msgctxt "cmd:rolemenu_delrole"
 msgid "delrole"
-msgstr ""
+msgstr "entfRolle"
 
 #: src/modules/rolemenus/cog.py:1778
 msgctxt "cmd:rolemenu_delrole|desc"
