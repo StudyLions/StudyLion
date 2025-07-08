@@ -117,7 +117,7 @@ msgstr ""
 #: src/modules/statistics/achievements.py:77
 msgctxt "achievement|congrats"
 msgid "Congratulations! You have completed this challenge."
-msgstr ""
+msgstr "Glückwunsch! Du hast diese Herausforderung gemeistert."
 
 #: src/modules/statistics/achievements.py:146
 msgctxt "achievement:workout|name"
@@ -187,7 +187,7 @@ msgstr "Sei verantwortlich"
 #: src/modules/statistics/achievements.py:367
 msgctxt "achievement:schedule|subtext"
 msgid "Attend 500 Scheduled Sessions"
-msgstr ""
+msgstr "Tritt 500 geplanten Sessions bei"
 
 #: src/modules/statistics/achievements.py:392
 msgctxt "achievement:monthlyhours|name"
@@ -252,7 +252,7 @@ msgstr "Sprach/Text/Anki"
 #: src/modules/statistics/settings.py:67
 msgctxt "userset:show_global_stats"
 msgid "global_stats"
-msgstr ""
+msgstr "globale_stats"
 
 #: src/modules/statistics/settings.py:70
 msgctxt "userset:show_global_stats|desc"
