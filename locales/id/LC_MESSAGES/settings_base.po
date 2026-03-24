@@ -1,0 +1,211 @@
+# Indonesian translation for LionBot - settings_base
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 19:57+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Indonesian\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/settings/ui.py:180
+msgctxt "setting|formatted|notset"
+msgid "Not Set"
+msgstr "Belum Diatur"
+
+#: src/settings/ui.py:324
+msgctxt "setting|embed_field|too_long"
+msgid "Too long to display here!"
+msgstr "Terlalu panjang untuk ditampilkan di sini!"
+
+#, possible-python-brace-format
+msgctxt "setting|summary_embed|title"
+msgid "Configuration options for `{name}`"
+msgstr "Opsi konfigurasi untuk `{name}`"
+
+#: src/settings/ui.py:370
+msgctxt "setting|summary_table|field:currently|key"
+msgid "Currently"
+msgstr "Saat ini"
+
+#: src/settings/ui.py:377
+msgctxt "setting|summary_table|field:default|key"
+msgid "By Default"
+msgstr "Default"
+
+#: src/settings/ui.py:384
+msgctxt "setting|summary_table|field:set|key"
+msgid "Set Using"
+msgstr "Atur menggunakan"
+
+#: src/settings/ui.py:502
+msgctxt "setting|interaction_check|error"
+msgid "You do not have sufficient permissions to do this!"
+msgstr "Anda tidak memiliki izin yang cukup untuk melakukan ini!"
+
+#: src/settings/setting_types.py:48
+msgctxt "settype:string|accepts"
+msgid "Any Text"
+msgstr "Teks apa saja"
+
+#, possible-python-brace-format
+msgctxt "settype:string|error"
+msgid "Provided string is too long! Maximum length: {maxlen} characters."
+msgstr "Teks yang diberikan terlalu panjang! Panjang maksimum: {maxlen} karakter."
+
+#: src/settings/setting_types.py:114
+msgctxt "settype:emoji|accepts"
+msgid "Paste a builtin emoji, custom emoji, or emoji id."
+msgstr "Tempelkan emoji bawaan, emoji kustom, atau ID emoji."
+
+#, possible-python-brace-format
+msgctxt "settype:emoji|error:parse"
+msgid "Could not parse `{provided}` as a Discord emoji. Supported formats are builtin emojis (e.g. `{builtin}`), custom emojis (e.g. {custom}), or custom emoji ids (e.g. `{custom_id}`)."
+msgstr "Tidak dapat mengurai `{provided}` sebagai emoji Discord. Format yang didukung adalah emoji bawaan (mis. `{builtin}`), emoji kustom (mis. {custom}), atau ID emoji kustom (mis. `{custom_id}`)."
+
+#: src/settings/setting_types.py:236
+msgctxt "settype:channel|accepts"
+msgid "A channel name or id"
+msgstr "Nama atau ID saluran"
+
+#, possible-python-brace-format
+msgctxt "settype:channel|parse|error:not_found"
+msgid "Channel `{string}` could not be found in this guild!"
+msgstr "Saluran `{string}` tidak ditemukan di server ini!"
+
+#: src/settings/setting_types.py:368
+msgctxt "settype:role|accepts"
+msgid "A role name or id"
+msgstr "Nama atau ID peran"
+
+#, possible-python-brace-format
+msgctxt "settype:role|parse|error:not_found"
+msgid "Role `{string}` could not be found in this guild!"
+msgstr "Peran `{string}` tidak ditemukan di server ini!"
+
+#: src/settings/setting_types.py:495
+msgctxt "settype:bool|accepts"
+msgid "Enabled/Disabled"
+msgstr "Diaktifkan/Dinonaktifkan"
+
+#: src/settings/setting_types.py:500
+msgctxt "settype:bool|parse:truthy_values"
+msgid "enabled|yes|true|on|enable|1"
+msgstr "diaktifkan|ya|benar|nyala|aktifkan|1"
+
+#: src/settings/setting_types.py:504
+msgctxt "settype:bool|parse:falsey_values"
+msgid "disabled|no|false|off|disable|0"
+msgstr "dinonaktifkan|tidak|salah|mati|nonaktifkan|0"
+
+#: src/settings/setting_types.py:509
+msgctxt "settype:bool|output:true"
+msgid "On"
+msgstr "Nyala"
+
+#: src/settings/setting_types.py:510
+msgctxt "settype:bool|output:false"
+msgid "Off"
+msgstr "Mati"
+
+#: src/settings/setting_types.py:511
+msgctxt "settype:bool|output:none"
+msgid "Not Set"
+msgstr "Belum Diatur"
+
+#: src/settings/setting_types.py:622
+msgctxt "settype:integer|accepts"
+msgid "An integer"
+msgstr "Bilangan bulat"
+
+#: src/settings/setting_types.py:685
+msgctxt "settype:emoji|desc"
+msgid "Unicode or custom emoji"
+msgstr "Emoji Unicode atau kustom"
+
+#: src/settings/setting_types.py:757
+msgctxt "settype:guildid|accepts"
+msgid "Any Snowflake ID"
+msgstr "Snowflake ID apa saja"
+
+#: src/settings/setting_types.py:826
+msgctxt "settype:timezone|accepts"
+msgid "A timezone name from the 'tz database' (e.g. 'Europe/London')"
+msgstr "Nama zona waktu dari 'tz database' (mis. 'Europe/London')"
+
+#: src/settings/setting_types.py:896
+msgctxt "settype:timezone|summary_table|field:supported|key"
+msgid "Supported"
+msgstr "Didukung"
+
+#, possible-python-brace-format
+msgctxt "settype:timezone|summary_table|field:supported|value"
+msgid "Any timezone from the [tz database]({link})."
+msgstr "Zona waktu apa saja dari [tz database]({link})."
+
+#, possible-python-brace-format
+msgctxt "set_type:timezone|acmpl|no_matching"
+msgid "No timezones matching '{input}'!"
+msgstr "Tidak ada zona waktu yang cocok dengan '{input}'!"
+
+#, possible-python-brace-format
+msgctxt "set_type:timezone|acmpl|choice"
+msgid "{tz} (Currently {now})"
+msgstr "{tz} (Saat ini {now})"
+
+#: src/settings/setting_types.py:960
+msgctxt "settype:timestamp|accepts"
+msgid "A timestamp in the form YYYY-MM-DD HH:MM"
+msgstr "Stempel waktu dalam format YYYY-MM-DD HH:MM"
+
+#, possible-python-brace-format
+msgctxt "settype:timestamp|parse|error:invalid"
+msgid "Could not parse `{provided}` as a timestamp. Please use `YYYY-MM-DD HH:MM` format."
+msgstr "Tidak dapat mengurai `{provided}` sebagai stempel waktu. Gunakan format `YYYY-MM-DD HH:MM`."
+
+#: src/settings/setting_types.py:1020
+msgctxt "settype:raw|accepts"
+msgid "Anything"
+msgstr "Apa saja"
+
+#: src/settings/setting_types.py:1073
+msgctxt "settype:enum|accepts"
+msgid "A valid option."
+msgstr "Opsi yang valid."
+
+#, possible-python-brace-format
+msgctxt "settype:enum|parse|error:not_found"
+msgid "`{provided}` is not a valid option!"
+msgstr "`{provided}` bukan opsi yang valid!"
+
+#: src/settings/setting_types.py:1171
+msgctxt "settype:duration|accepts"
+msgid "A number of days, hours, minutes, and seconds, e.g. `2d 4h 10s`."
+msgstr "Jumlah hari, jam, menit, dan detik, mis. `2d 4h 10s`."
+
+#: src/settings/setting_types.py:1352
+msgctxt "settype:channel_list|accepts"
+msgid "Comma separated list of channel ids."
+msgstr "Daftar ID saluran dipisahkan koma."
+
+#: src/settings/setting_types.py:1363
+msgctxt "settype:role_list|accepts"
+msgid "Comma separated list of role ids."
+msgstr "Daftar ID peran dipisahkan koma."
+
+#: src/settings/setting_types.py:1379
+msgctxt "settype:stringlist|accepts"
+msgid "Comma separated strings."
+msgstr "String dipisahkan koma."
+
+#: src/settings/setting_types.py:1390
+msgctxt "settype:guildidlist|accepts"
+msgid "Comma separated list of guild ids."
+msgstr "Daftar ID server dipisahkan koma."

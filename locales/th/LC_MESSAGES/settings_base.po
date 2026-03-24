@@ -1,0 +1,211 @@
+# Thai translation for LionBot - settings_base
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 19:57+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Thai\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/settings/ui.py:180
+msgctxt "setting|formatted|notset"
+msgid "Not Set"
+msgstr "ยังไม่ตั้งค่า"
+
+#: src/settings/ui.py:324
+msgctxt "setting|embed_field|too_long"
+msgid "Too long to display here!"
+msgstr "ยาวเกินไปที่จะแสดงที่นี่!"
+
+#, possible-python-brace-format
+msgctxt "setting|summary_embed|title"
+msgid "Configuration options for `{name}`"
+msgstr "ตัวเลือกการตั้งค่าสำหรับ `{name}`"
+
+#: src/settings/ui.py:370
+msgctxt "setting|summary_table|field:currently|key"
+msgid "Currently"
+msgstr "ปัจจุบัน"
+
+#: src/settings/ui.py:377
+msgctxt "setting|summary_table|field:default|key"
+msgid "By Default"
+msgstr "ค่าเริ่มต้น"
+
+#: src/settings/ui.py:384
+msgctxt "setting|summary_table|field:set|key"
+msgid "Set Using"
+msgstr "ตั้งค่าด้วย"
+
+#: src/settings/ui.py:502
+msgctxt "setting|interaction_check|error"
+msgid "You do not have sufficient permissions to do this!"
+msgstr "คุณไม่มีสิทธิ์เพียงพอที่จะทำสิ่งนี้!"
+
+#: src/settings/setting_types.py:48
+msgctxt "settype:string|accepts"
+msgid "Any Text"
+msgstr "ข้อความใดก็ได้"
+
+#, possible-python-brace-format
+msgctxt "settype:string|error"
+msgid "Provided string is too long! Maximum length: {maxlen} characters."
+msgstr "ข้อความที่ให้มายาวเกินไป! ความยาวสูงสุด: {maxlen} ตัวอักษร"
+
+#: src/settings/setting_types.py:114
+msgctxt "settype:emoji|accepts"
+msgid "Paste a builtin emoji, custom emoji, or emoji id."
+msgstr "วางอีโมจิในตัว อีโมจิกำหนดเอง หรือ ID อีโมจิ"
+
+#, possible-python-brace-format
+msgctxt "settype:emoji|error:parse"
+msgid "Could not parse `{provided}` as a Discord emoji. Supported formats are builtin emojis (e.g. `{builtin}`), custom emojis (e.g. {custom}), or custom emoji ids (e.g. `{custom_id}`)."
+msgstr "ไม่สามารถแยกวิเคราะห์ `{provided}` เป็นอีโมจิ Discord ได้ รูปแบบที่รองรับคืออีโมจิในตัว (เช่น `{builtin}`) อีโมจิกำหนดเอง (เช่น {custom}) หรือ ID อีโมจิกำหนดเอง (เช่น `{custom_id}`)"
+
+#: src/settings/setting_types.py:236
+msgctxt "settype:channel|accepts"
+msgid "A channel name or id"
+msgstr "ชื่อช่องหรือ ID"
+
+#, possible-python-brace-format
+msgctxt "settype:channel|parse|error:not_found"
+msgid "Channel `{string}` could not be found in this guild!"
+msgstr "ไม่พบช่อง `{string}` ในเซิร์ฟเวอร์นี้!"
+
+#: src/settings/setting_types.py:368
+msgctxt "settype:role|accepts"
+msgid "A role name or id"
+msgstr "ชื่อบทบาทหรือ ID"
+
+#, possible-python-brace-format
+msgctxt "settype:role|parse|error:not_found"
+msgid "Role `{string}` could not be found in this guild!"
+msgstr "ไม่พบบทบาท `{string}` ในเซิร์ฟเวอร์นี้!"
+
+#: src/settings/setting_types.py:495
+msgctxt "settype:bool|accepts"
+msgid "Enabled/Disabled"
+msgstr "เปิด/ปิด"
+
+#: src/settings/setting_types.py:500
+msgctxt "settype:bool|parse:truthy_values"
+msgid "enabled|yes|true|on|enable|1"
+msgstr "เปิด|ใช่|จริง|เปิดใช้|1"
+
+#: src/settings/setting_types.py:504
+msgctxt "settype:bool|parse:falsey_values"
+msgid "disabled|no|false|off|disable|0"
+msgstr "ปิด|ไม่|เท็จ|ปิดใช้|0"
+
+#: src/settings/setting_types.py:509
+msgctxt "settype:bool|output:true"
+msgid "On"
+msgstr "เปิด"
+
+#: src/settings/setting_types.py:510
+msgctxt "settype:bool|output:false"
+msgid "Off"
+msgstr "ปิด"
+
+#: src/settings/setting_types.py:511
+msgctxt "settype:bool|output:none"
+msgid "Not Set"
+msgstr "ยังไม่ตั้งค่า"
+
+#: src/settings/setting_types.py:622
+msgctxt "settype:integer|accepts"
+msgid "An integer"
+msgstr "จำนวนเต็ม"
+
+#: src/settings/setting_types.py:685
+msgctxt "settype:emoji|desc"
+msgid "Unicode or custom emoji"
+msgstr "อีโมจิ Unicode หรือกำหนดเอง"
+
+#: src/settings/setting_types.py:757
+msgctxt "settype:guildid|accepts"
+msgid "Any Snowflake ID"
+msgstr "Snowflake ID ใดก็ได้"
+
+#: src/settings/setting_types.py:826
+msgctxt "settype:timezone|accepts"
+msgid "A timezone name from the 'tz database' (e.g. 'Europe/London')"
+msgstr "ชื่อเขตเวลาจาก 'tz database' (เช่น 'Europe/London')"
+
+#: src/settings/setting_types.py:896
+msgctxt "settype:timezone|summary_table|field:supported|key"
+msgid "Supported"
+msgstr "รองรับ"
+
+#, possible-python-brace-format
+msgctxt "settype:timezone|summary_table|field:supported|value"
+msgid "Any timezone from the [tz database]({link})."
+msgstr "เขตเวลาใดก็ได้จาก [tz database]({link})"
+
+#, possible-python-brace-format
+msgctxt "set_type:timezone|acmpl|no_matching"
+msgid "No timezones matching '{input}'!"
+msgstr "ไม่พบเขตเวลาที่ตรงกับ '{input}'!"
+
+#, possible-python-brace-format
+msgctxt "set_type:timezone|acmpl|choice"
+msgid "{tz} (Currently {now})"
+msgstr "{tz} (ปัจจุบัน {now})"
+
+#: src/settings/setting_types.py:960
+msgctxt "settype:timestamp|accepts"
+msgid "A timestamp in the form YYYY-MM-DD HH:MM"
+msgstr "ประทับเวลาในรูปแบบ YYYY-MM-DD HH:MM"
+
+#, possible-python-brace-format
+msgctxt "settype:timestamp|parse|error:invalid"
+msgid "Could not parse `{provided}` as a timestamp. Please use `YYYY-MM-DD HH:MM` format."
+msgstr "ไม่สามารถแยกวิเคราะห์ `{provided}` เป็นประทับเวลาได้ กรุณาใช้รูปแบบ `YYYY-MM-DD HH:MM`"
+
+#: src/settings/setting_types.py:1020
+msgctxt "settype:raw|accepts"
+msgid "Anything"
+msgstr "อะไรก็ได้"
+
+#: src/settings/setting_types.py:1073
+msgctxt "settype:enum|accepts"
+msgid "A valid option."
+msgstr "ตัวเลือกที่ถูกต้อง"
+
+#, possible-python-brace-format
+msgctxt "settype:enum|parse|error:not_found"
+msgid "`{provided}` is not a valid option!"
+msgstr "`{provided}` ไม่ใช่ตัวเลือกที่ถูกต้อง!"
+
+#: src/settings/setting_types.py:1171
+msgctxt "settype:duration|accepts"
+msgid "A number of days, hours, minutes, and seconds, e.g. `2d 4h 10s`."
+msgstr "จำนวนวัน ชั่วโมง นาที และวินาที เช่น `2d 4h 10s`"
+
+#: src/settings/setting_types.py:1352
+msgctxt "settype:channel_list|accepts"
+msgid "Comma separated list of channel ids."
+msgstr "รายการ ID ช่องคั่นด้วยเครื่องหมายจุลภาค"
+
+#: src/settings/setting_types.py:1363
+msgctxt "settype:role_list|accepts"
+msgid "Comma separated list of role ids."
+msgstr "รายการ ID บทบาทคั่นด้วยเครื่องหมายจุลภาค"
+
+#: src/settings/setting_types.py:1379
+msgctxt "settype:stringlist|accepts"
+msgid "Comma separated strings."
+msgstr "สตริงคั่นด้วยเครื่องหมายจุลภาค"
+
+#: src/settings/setting_types.py:1390
+msgctxt "settype:guildidlist|accepts"
+msgid "Comma separated list of guild ids."
+msgstr "รายการ ID เซิร์ฟเวอร์คั่นด้วยเครื่องหมายจุลภาค"

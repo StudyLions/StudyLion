@@ -1,0 +1,835 @@
+# Croatian translation for LionBot - tasklist
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 21:43+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Croatian\n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: src/modules/tasklist/cog.py:35
+msgctxt "argtype:Before|opt:HOUR"
+msgid "The last hour"
+msgstr "Posljednji sat"
+
+#: src/modules/tasklist/cog.py:36
+msgctxt "argtype:Before|opt:HALFDAY"
+msgid "The last 12 hours"
+msgstr "Posljednjih 12 sati"
+
+#: src/modules/tasklist/cog.py:37
+msgctxt "argtype:Before|opt:DAY"
+msgid "The last 24 hours"
+msgstr "Posljednjih 24 sata"
+
+#: src/modules/tasklist/cog.py:38
+msgctxt "argtype:Before|opt:TODAY"
+msgid "Today"
+msgstr "Danas"
+
+#: src/modules/tasklist/cog.py:39
+msgctxt "argtype:Before|opt:YESTERDAY"
+msgid "Yesterday"
+msgstr "Jučer"
+
+#: src/modules/tasklist/cog.py:40
+msgctxt "argtype:Before|opt:Monday"
+msgid "This Monday"
+msgstr "Ovaj ponedjeljak"
+
+#: src/modules/tasklist/cog.py:41
+msgctxt "argtype:Before|opt:THISMONTH"
+msgid "This Month"
+msgstr "Ovaj mjesec"
+
+#: src/modules/tasklist/cog.py:205
+msgctxt "summon_tasklist|error:insufficient_perms|title"
+msgid "Uh-Oh, I cannot do that here!"
+msgstr "Oh, ne mogu to učiniti ovdje!"
+
+#: src/modules/tasklist/cog.py:209
+msgctxt "summon_tasklist|error:insufficient_perms|desc"
+msgid ""
+"This channel is configured as a tasklist channel, but I lack the "
+"`EMBED_LINKS` or `SEND_MESSAGES` permission here! If you believe this is "
+"unintentional, please contact a server administrator."
+msgstr ""
+"Ovaj kanal je konfiguriran kao kanal za zadatke, ali nemam dozvolu "
+"`EMBED_LINKS` ili `SEND_MESSAG..."
+
+#: src/modules/tasklist/cog.py:258
+msgctxt "cmd:tasklist"
+msgid "tasklist"
+msgstr "tasklist"
+
+#: src/modules/tasklist/cog.py:261
+msgctxt "cmd:tasklist|desc"
+msgid "Open your tasklist."
+msgstr "Otvorite svoju listu zadataka."
+
+#: src/modules/tasklist/cog.py:271
+msgctxt "group:tasks"
+msgid "tasks"
+msgstr "tasks"
+
+#: src/modules/tasklist/cog.py:272
+msgctxt "group:tasks|desc"
+msgid "Base command group for tasklist commands."
+msgstr "Osnovna grupa naredbi za listu zadataka."
+
+#: src/modules/tasklist/cog.py:295
+msgctxt "argtype:taskid|error:no_tasks"
+msgid "Tasklist empty! No matching tasks."
+msgstr "Lista zadataka je prazna! Nema odgovarajućih zadataka."
+
+#: src/modules/tasklist/cog.py:332
+msgctxt "argtype:taskid|match:all"
+msgid "All tasks"
+msgstr "Svi zadaci"
+
+#, possible-python-brace-format
+msgctxt "argtype:taskid|error:parse_multi"
+msgid "(Warning: {error})"
+msgstr "(Upozorenje: {error})"
+
+#, possible-python-brace-format
+msgctxt "argtype:taskid|error:no_matching"
+msgid "No tasks matching '{partial}'!"
+msgstr "Nema zadataka koji odgovaraju '{partial}'!"
+
+#: src/modules/tasklist/cog.py:404
+msgctxt "cmd:tasks_new"
+msgid "new"
+msgstr "new"
+
+#: src/modules/tasklist/cog.py:407
+msgctxt "cmd:tasks_new|desc"
+msgid "Add a new task to your tasklist."
+msgstr "Dodajte novi zadatak na svoju listu."
+
+#: src/modules/tasklist/cog.py:411
+msgctxt "cmd:tasks_new|param:content"
+msgid "task"
+msgstr "task"
+
+#: src/modules/tasklist/cog.py:412
+msgctxt "cmd:tasks_new|param:parent"
+msgid "parent"
+msgstr "parent"
+
+#: src/modules/tasklist/cog.py:415
+msgctxt "cmd:tasks_new|param:content|desc"
+msgid "Content of your new task."
+msgstr "Sadržaj vašeg novog zadatka."
+
+#: src/modules/tasklist/cog.py:416
+msgctxt "cmd:tasks_new|param:parent"
+msgid "Parent of this task."
+msgstr ""
+
+#, possible-python-brace-format
+msgctxt "cmd:tasks_new|error:parse_parent"
+msgid "Could not find parent task number `{input}` in your tasklist."
+msgstr "Nije moguće pronaći broj nadređenog zadatka `{input}` na vašoj listi."
+
+#, possible-python-brace-format
+msgctxt "cmd:tasks_new|resp:success"
+msgid "{tick} Created task `{label}`."
+msgstr "{tick} Stvoren zadatak `{label}`."
+
+#: src/modules/tasklist/cog.py:463
+msgctxt "cmd:tasks_upload"
+msgid "upload"
+msgstr "upload"
+
+#: src/modules/tasklist/cog.py:466
+msgctxt "cmd:tasks_upload|desc"
+msgid "Upload a list of tasks to append to or replace your tasklist."
+msgstr "Učitajte popis zadataka za dodavanje ili zamjenu vaše liste."
+
+#: src/modules/tasklist/cog.py:470
+msgctxt "cmd:tasks_upload|param:tasklist"
+msgid "tasklist"
+msgstr "tasklist"
+
+#: src/modules/tasklist/cog.py:471
+msgctxt "cmd:tasks_upload|param:append"
+msgid "append"
+msgstr "append"
+
+#: src/modules/tasklist/cog.py:476
+msgctxt "cmd:tasks_upload|param:tasklist|desc"
+msgid ""
+"Text file containing a (standard markdown formatted) checklist of tasks to "
+"add or append."
+msgstr ""
+"Tekstualna datoteka s popisom zadataka (standardni markdown format) za "
+"dodavanje."
+
+#: src/modules/tasklist/cog.py:480
+msgctxt "cmd:tasks_upload|param:append|desc"
+msgid ""
+"Whether to append the given tasks or replace your entire tasklist. Defaults "
+"to True."
+msgstr "Dodati dane zadatke ili zamijeniti cijelu listu. Zadano je True."
+
+#: src/modules/tasklist/cog.py:496
+msgctxt "cmd:tasks_upload|error:not_text"
+msgid "The attached tasklist must be a text file!"
+msgstr "Priložena lista zadataka mora biti tekstualna datoteka!"
+
+#: src/modules/tasklist/cog.py:504
+msgctxt "cmd:tasks_upload|error:too_large"
+msgid "The attached tasklist was too large!"
+msgstr "Priložena lista zadataka je prevelika!"
+
+#: src/modules/tasklist/cog.py:515
+msgctxt "cmd:tasks_upload|error:too_many_lines"
+msgid ""
+"Too many tasks! Refusing to process a tasklist with more than `1000` lines."
+msgstr "Previše zadataka! Odbijam obraditi listu s više od `1000` redaka."
+
+#: src/modules/tasklist/cog.py:521
+msgctxt "cmd:tasks_upload|error:decoding"
+msgid ""
+"Could not decode attached tasklist. Please make sure it is saved with the "
+"`UTF-8` encoding."
+msgstr ""
+"Nije moguće dekodirati priloženu listu. Provjerite je li spremljena s "
+"`UTF-8` kodiranjem."
+
+#, possible-python-brace-format
+msgctxt "cmd:tasks_upload|resp:success"
+msgid "{tick} Updated your tasklist."
+msgstr "{tick} Vaša lista zadataka je ažurirana."
+
+#: src/modules/tasklist/cog.py:580
+msgctxt "cmd:tasks_edit"
+msgid "edit"
+msgstr "edit"
+
+#: src/modules/tasklist/cog.py:583
+msgctxt "cmd:tasks_edit|desc"
+msgid "Edit a task in your tasklist."
+msgstr "Uredite zadatak na svojoj listi."
+
+#: src/modules/tasklist/cog.py:587
+msgctxt "cmd:tasks_edit|param:taskstr"
+msgid "task"
+msgstr "task"
+
+#: src/modules/tasklist/cog.py:588
+msgctxt "cmd:tasks_edit|param:new_content"
+msgid "new_task"
+msgstr "new_task"
+
+#: src/modules/tasklist/cog.py:589
+msgctxt "cmd:tasks_edit|param:new_parent"
+msgid "new_parent"
+msgstr "new_parent"
+
+#: src/modules/tasklist/cog.py:592
+msgctxt "cmd:tasks_edit|param:taskstr|desc"
+msgid "Which task do you want to update?"
+msgstr "Koji zadatak želite ažurirati?"
+
+#: src/modules/tasklist/cog.py:593
+msgctxt "cmd:tasks_edit|param:new_content|desc"
+msgid "What do you want to change the task to?"
+msgstr "Što želite promijeniti u zadatku?"
+
+#: src/modules/tasklist/cog.py:594
+msgctxt "cmd:tasks_edit|param:new_parent|desc"
+msgid "Which task do you want to be the new parent?"
+msgstr "Koji zadatak želite kao novi nadređeni?"
+
+#, possible-python-brace-format
+msgctxt "cmd:tasks_edit|error:parse_taskstr"
+msgid "Could not find target task number `{input}` in your tasklist."
+msgstr "Nije moguće pronaći ciljni broj zadatka `{input}` na vašoj listi."
+
+#, possible-python-brace-format
+msgctxt "cmd:tasks_edit|error:parse_parent"
+msgid "Could not find new parent task number `{input}` in your tasklist."
+msgstr ""
+"Nije moguće pronaći broj novog nadređenog zadatka `{input}` na vašoj listi."
+
+#, possible-python-brace-format
+msgctxt "cmd:tasks_edit|resp:success|desc"
+msgid "{tick} Task `{label}` updated."
+msgstr "{tick} Zadatak `{label}` ažuriran."
+
+#: src/modules/tasklist/cog.py:670
+msgctxt "ui:tasklist_single_editor|title"
+msgid "Edit Task"
+msgstr "Uredi zadatak"
+
+#: src/modules/tasklist/cog.py:685
+msgctxt "cmd:tasks_clear"
+msgid "clear"
+msgstr "clear"
+
+#: src/modules/tasklist/cog.py:686
+msgctxt "cmd:tasks_clear|desc"
+msgid "Clear your tasklist."
+msgstr "Očistite svoju listu zadataka."
+
+#: src/modules/tasklist/cog.py:696
+msgctxt "cmd:tasks_clear|resp:success"
+msgid "Your tasklist has been cleared."
+msgstr "Vaša lista zadataka je očišćena."
+
+#: src/modules/tasklist/cog.py:704
+msgctxt "cmd:tasks_remove"
+msgid "remove"
+msgstr "remove"
+
+#: src/modules/tasklist/cog.py:707
+msgctxt "cmd:tasks_remove|desc"
+msgid ""
+"Remove tasks matching all the provided conditions. (E.g. remove tasks "
+"completed before today)."
+msgstr ""
+"Uklonite zadatke koji odgovaraju svim navedenim uvjetima. (Npr. uklonite "
+"zadatke dovršene prije d..."
+
+#: src/modules/tasklist/cog.py:711
+msgctxt "cmd:tasks_remove|param:taskidstr"
+msgid "tasks"
+msgstr "tasks"
+
+#: src/modules/tasklist/cog.py:712
+msgctxt "cmd:tasks_remove|param:created_before"
+msgid "created_before"
+msgstr "created_before"
+
+#: src/modules/tasklist/cog.py:713
+msgctxt "cmd:tasks_remove|param:updated_before"
+msgid "updated_before"
+msgstr "updated_before"
+
+#: src/modules/tasklist/cog.py:714
+msgctxt "cmd:tasks_remove|param:completed"
+msgid "completed"
+msgstr "completed"
+
+#: src/modules/tasklist/cog.py:715
+msgctxt "cmd:tasks_remove|param:cascade"
+msgid "cascade"
+msgstr "cascade"
+
+#: src/modules/tasklist/cog.py:720
+msgctxt "cmd:tasks_remove|param:taskidstr|desc"
+msgid ""
+"List of task numbers or ranges to remove (e.g. 1, 2, 5-7, 8.1-3, 9-), or `-`"
+" to remove all."
+msgstr ""
+"Popis brojeva ili raspona zadataka za uklanjanje (npr. 1, 2, 5-7, 8.1-3, "
+"9-), ili `-` za uklanjan..."
+
+#: src/modules/tasklist/cog.py:724
+msgctxt "cmd:tasks_remove|param:created_before|desc"
+msgid "Only delete tasks created before the selected time."
+msgstr "Izbrišite samo zadatke stvorene prije odabranog vremena."
+
+#: src/modules/tasklist/cog.py:728
+msgctxt "cmd:tasks_remove|param:updated_before|desc"
+msgid ""
+"Only deleted tasks update (i.e. completed or edited) before the selected "
+"time."
+msgstr ""
+"Izbrišite samo zadatke ažurirane (dovršene ili uređene) prije odabranog "
+"vremena."
+
+#: src/modules/tasklist/cog.py:732
+msgctxt "cmd:tasks_remove|param:completed"
+msgid "Only delete tasks which are (not) complete."
+msgstr ""
+
+#: src/modules/tasklist/cog.py:736
+msgctxt "cmd:tasks_remove|param:cascade"
+msgid "Whether to recursively remove subtasks of removed tasks."
+msgstr ""
+
+#, possible-python-brace-format
+msgctxt "cmd:tasks_remove_cmd|error:no_matching"
+msgid "No tasks on your tasklist match `{input}`"
+msgstr "Nijedan zadatak na vašoj listi ne odgovara `{input}`"
+
+#: src/modules/tasklist/cog.py:792
+msgctxt "cmd:tasks_remove_cmd|error:no_matching"
+msgid "No tasks on your tasklist matching all the given conditions!"
+msgstr "Nijedan zadatak na vašoj listi ne odgovara svim navedenim uvjetima!"
+
+#, possible-python-brace-format
+msgctxt "cmd:tasks_remove|resp:success"
+msgid "{tick} Deleted task `{label}`"
+msgid_plural "{tick} Deleted `{count}` tasks from your tasklist."
+msgstr[0] "{tick} Izbrisan zadatak `{label}`"
+msgstr[1] "{tick} Izbrisano `{count}` zadataka s vaše liste."
+msgstr[2] "{tick} Izbrisano `{count}` zadataka s vaše liste."
+
+#: src/modules/tasklist/cog.py:823
+msgctxt "cmd:tasks_tick"
+msgid "tick"
+msgstr "tick"
+
+#: src/modules/tasklist/cog.py:824
+msgctxt "cmd:tasks_tick|desc"
+msgid "Mark the given tasks as completed."
+msgstr "Označite zadane zadatke kao dovršene."
+
+#: src/modules/tasklist/cog.py:827
+msgctxt "cmd:tasks_tick|param:taskidstr"
+msgid "tasks"
+msgstr "tasks"
+
+#: src/modules/tasklist/cog.py:828
+msgctxt "cmd:tasks_tick|param:cascade"
+msgid "cascade"
+msgstr "cascade"
+
+#: src/modules/tasklist/cog.py:833
+msgctxt "cmd:tasks_tick|param:taskidstr|desc"
+msgid ""
+"List of task numbers or ranges to tick (e.g. 1, 2, 5-7, 8.1-3, 9-) or '-' to"
+" tick all."
+msgstr ""
+"Popis brojeva ili raspona zadataka za označavanje (npr. 1, 2, 5-7, 8.1-3, "
+"9-) ili '-' za označava..."
+
+#: src/modules/tasklist/cog.py:837
+msgctxt "cmd:tasks_tick|param:cascade|desc"
+msgid "Whether to also mark all subtasks as complete."
+msgstr "Označiti i sve podzadatke kao dovršene."
+
+#, possible-python-brace-format
+msgctxt "cmd:tasks_tick|resp:success"
+msgid "{tick} Marked `{label}` as complete."
+msgid_plural "{tick} Marked `{count}` tasks as complete."
+msgstr[0] "{tick} `{label}` označen kao dovršen."
+msgstr[1] "{tick} `{count}` zadataka označeno kao dovršeni."
+msgstr[2] "{tick} `{count}` zadataka označeno kao dovršeni."
+
+#: src/modules/tasklist/cog.py:899
+msgctxt "cmd:tasks_untick"
+msgid "untick"
+msgstr "untick"
+
+#: src/modules/tasklist/cog.py:900
+msgctxt "cmd:tasks_untick|desc"
+msgid "Mark the given tasks as incomplete."
+msgstr "Označite zadane zadatke kao nedovršene."
+
+#: src/modules/tasklist/cog.py:903
+msgctxt "cmd:tasks_untick|param:taskidstr"
+msgid "taskids"
+msgstr "taskids"
+
+#: src/modules/tasklist/cog.py:904
+msgctxt "cmd:tasks_untick|param:cascade"
+msgid "cascade"
+msgstr "cascade"
+
+#: src/modules/tasklist/cog.py:909
+msgctxt "cmd:tasks_untick|param:taskidstr|desc"
+msgid ""
+"List of task numbers or ranges to untick (e.g. 1, 2, 5-7, 8.1-3, 9-) or '-' "
+"to untick all."
+msgstr ""
+"Popis brojeva ili raspona zadataka za poništenje označavanja (npr. 1, 2, "
+"5-7, 8.1-3, 9-) ili '-' ..."
+
+#: src/modules/tasklist/cog.py:913
+msgctxt "cmd:tasks_untick|param:cascade|desc"
+msgid "Whether to also mark all subtasks as incomplete."
+msgstr "Označiti i sve podzadatke kao nedovršene."
+
+#, possible-python-brace-format
+msgctxt "cmd:tasks_untick|resp:success"
+msgid "{tick} Marked `{label}` as incomplete."
+msgid_plural "{tick} Marked `{count}` tasks as incomplete."
+msgstr[0] "{tick} `{label}` označen kao nedovršen."
+msgstr[1] "{tick} `{count}` zadataka označeno kao nedovršeni."
+msgstr[2] "{tick} `{count}` zadataka označeno kao nedovršeni."
+
+#: src/modules/tasklist/cog.py:978
+msgctxt "cmd:configure_tasklist"
+msgid "tasklist"
+msgstr "tasklist"
+
+#: src/modules/tasklist/cog.py:979
+msgctxt "cmd:configure_tasklist|desc"
+msgid "Tasklist configuration panel"
+msgstr "Konfiguracijska ploča liste zadataka"
+
+#: src/modules/tasklist/cog.py:982
+msgctxt "cmd:configure_tasklist|param:reward"
+msgid "reward"
+msgstr "reward"
+
+#: src/modules/tasklist/cog.py:983
+msgctxt "cmd:configure_tasklist|param:reward_limit"
+msgid "reward_limit"
+msgstr "reward_limit"
+
+#, possible-python-brace-format
+msgctxt "cmd:configure_tasklist|resp:success|desc"
+msgid ""
+"Members will now be rewarded {coin}**{amount}** for each task they complete "
+"up to a maximum of `{limit}` tasks per 24h."
+msgstr ""
+"Članovi će sada biti nagrađeni s {coin}**{amount}** za svaki dovršeni "
+"zadatak, do maksimalno `{li..."
+
+#, possible-python-brace-format
+msgctxt "tasklist|parse:multi-range|error:parents_match"
+msgid "Parents don't match in range `{range}`"
+msgstr "Nadređeni se ne podudaraju u rasponu `{range}`"
+
+#, possible-python-brace-format
+msgctxt "tasklist|parse:multi-range|error:parse"
+msgid "Could not parse `{range}` as a task number or range."
+msgstr "Nije moguće analizirati `{range}` kao broj zadatka ili raspon."
+
+#, possible-python-brace-format
+msgctxt "modal:tasklist_bulk_editor|error:parse_task"
+msgid ""
+"Malformed taskline!\n"
+"`{input}`"
+msgstr ""
+"Neispravno formatiran redak zadatka!\n"
+"`{input}`"
+
+#: src/modules/tasklist/tasklist.py:332
+msgctxt "modal:tasklist_bulk_editor|error:task_too_long"
+msgid "Please keep your tasks under 100 characters!"
+msgstr "Zadatke držite ispod 100 znakova!"
+
+#: src/modules/tasklist/ui.py:39
+msgctxt "ui:tasklist_caller|button:tasklist|label"
+msgid "Open Tasklist"
+msgstr "Otvori listu"
+
+#: src/modules/tasklist/ui.py:57
+msgctxt "modal:tasklist_single_editor|field:task|label"
+msgid "Task content"
+msgstr "Sadržaj zadatka"
+
+#: src/modules/tasklist/ui.py:69
+msgctxt "modal:tasklist_single_editor|field:parent|label"
+msgid "Parent Task"
+msgstr "Nadređeni zadatak"
+
+#: src/modules/tasklist/ui.py:73
+msgctxt "modal:tasklist_single_editor|field:parent|placeholder"
+msgid "Enter a task number, e.g. 2.1"
+msgstr "Unesite broj zadatka, npr. 2.1"
+
+#: src/modules/tasklist/ui.py:104
+msgctxt "modal:tasklist_bulk_editor|field:tasklist|label"
+msgid "Tasklist"
+msgstr "Lista zadataka"
+
+#: src/modules/tasklist/ui.py:108
+msgctxt "modal:tasklist_bulk_editor|field:tasklist|placeholder"
+msgid ""
+"- [ ] This is task 1, unfinished.\n"
+"- [x] This is task 2, finished.\n"
+"  - [ ] This is subtask 2.1."
+msgstr ""
+"- [ ] Ovo je zadatak 1, nedovršen.\n"
+"- [x] Ovo je zadatak 2, dovršen.\n"
+"  - [ ] Ovo je podzadatak 2.1."
+
+#: src/modules/tasklist/ui.py:130
+msgctxt "modal:tasklist_bulk_editor"
+msgid "Tasklist Editor"
+msgstr "Uređivač liste"
+
+#: src/modules/tasklist/ui.py:188
+msgctxt "ui:tasklist|menu:main|mode:toggle|placeholder"
+msgid "Select to Toggle"
+msgstr "Odaberite za prebacivanje"
+
+#, possible-python-brace-format
+msgctxt "ui:tasklist|menu:sub|mode:toggle|placeholder"
+msgid "Toggle from {label}.*"
+msgstr "Prebacivanje iz {label}.*"
+
+#: src/modules/tasklist/ui.py:198
+msgctxt "ui:tasklist|menu:main|mode:edit|placeholder"
+msgid "Select to Edit"
+msgstr "Odaberite za uređivanje"
+
+#, possible-python-brace-format
+msgctxt "ui:tasklist|menu:sub|mode:edit|placeholder"
+msgid "Edit from {label}.*"
+msgstr "Uređivanje iz {label}.*"
+
+#: src/modules/tasklist/ui.py:208
+msgctxt "ui:tasklist|menu:main|mode:delete|placeholder"
+msgid "Select to Delete"
+msgstr "Odaberite za brisanje"
+
+#, possible-python-brace-format
+msgctxt "ui:tasklist|menu:sub|mode:delete|placeholder"
+msgid "Delete from {label}.*"
+msgstr "Brisanje iz {label}.*"
+
+#, possible-python-brace-format
+msgctxt "ui:tasklist_single_editor|field:parent|error:parse_id"
+msgid ""
+"Could not find the given parent task number `{input}` in your tasklist."
+msgstr ""
+"Nije moguće pronaći navedeni broj nadređenog zadatka `{input}` na vašoj "
+"listi."
+
+#, possible-python-brace-format
+msgctxt "ui:tasklist_single_editor|field:parent|error:multiple_matching"
+msgid ""
+"Multiple tasks matching given parent task `{input}`. Please use a task "
+"number instead!"
+msgstr ""
+"Više zadataka odgovara nadređenom zadatku `{input}`. Koristite broj zadatka!"
+
+#, possible-python-brace-format
+msgctxt "ui:tasklist_single_editor|field:parent|error:no_matching"
+msgid "No tasks matching given parent task `{input}`."
+msgstr "Nema zadataka koji odgovaraju nadređenom zadatku `{input}`."
+
+#: src/modules/tasklist/ui.py:501
+msgctxt "ui:tasklist|menu:edit|modal:title"
+msgid "Edit task"
+msgstr "Uredi zadatak"
+
+#: src/modules/tasklist/ui.py:596
+msgctxt "ui:tasklist_single_editor|title"
+msgid "Add task"
+msgstr "Dodaj zadatak"
+
+#: src/modules/tasklist/ui.py:629
+msgctxt "ui:tasklist|button:edit_mode|label"
+msgid "Edit"
+msgstr "Uredi"
+
+#: src/modules/tasklist/ui.py:645
+msgctxt "ui:tasklist|button:delete_mode|label"
+msgid "Delete"
+msgstr "Obriši"
+
+#: src/modules/tasklist/ui.py:661
+msgctxt "ui:tasklist|button:toggle_mode|label"
+msgid "Toggle"
+msgstr "Prebaci"
+
+#: src/modules/tasklist/ui.py:678
+msgctxt "ui:tasklist|button:edit_bulk|error:too_long"
+msgid ""
+"Your tasklist is too long to be edited in a Discord text input! Use the save"
+" button and {cmds[tasks upload]} instead."
+msgstr ""
+"Vaša lista je predugačka za uređivanje u Discord tekstualnom polju! "
+"Koristite gumb za spremanje i {cmds[tasks upload]}."
+
+#: src/modules/tasklist/ui.py:692
+msgctxt "ui:tasklist|button:edit_bulk|label"
+msgid "Bulk Edit"
+msgstr "Masovno uređivanje"
+
+#: src/modules/tasklist/ui.py:705
+msgctxt "ui:tasklist|button:clear|label"
+msgid "Clear Tasklist"
+msgstr "Očisti listu"
+
+#, possible-python-brace-format
+msgctxt "ui:tasklist|button:save|dm:contents"
+msgid "Your tasklist as of {now} is attached. Click here to jump back: {jump}"
+msgstr ""
+"Vaša lista zadataka od {now} je priložena. Kliknite ovdje za povratak: "
+"{jump}"
+
+#: src/modules/tasklist/ui.py:737
+msgctxt "ui:tasklist|button:save|error:dms"
+msgid "Could not DM you! Do you have me blocked? Tasklist attached below."
+msgstr ""
+"Nije moguće poslati vam privatnu poruku! Jeste li me blokirali? Lista je "
+"priložena ispod."
+
+#: src/modules/tasklist/ui.py:782
+msgctxt "ui:tasklist|error:wrong_user"
+msgid "This is not your tasklist!"
+msgstr "Ovo nije vaša lista zadataka!"
+
+#, possible-python-brace-format
+msgctxt "ui:tasklist|embed|author"
+msgid "{name}'s tasklist ({completed}/{total} complete)"
+msgstr "Lista zadataka – {name} ({completed}/{total} dovršeno)"
+
+#: src/modules/tasklist/ui.py:846
+msgctxt "ui:tasklist|embed|description"
+msgid ""
+"**You have no tasks on your tasklist!**\n"
+"Add a task with {cmds[tasks new]}, or by pressing the {new_button} button below."
+msgstr ""
+"**Nemate zadataka!**\n"
+"Dodajte zadatak s {cmds[tasks new]}, ili pritisnite gumb {new_button} ispod."
+
+#: src/modules/tasklist/settings.py:35
+msgctxt "guildset:task_reward"
+msgid "task_reward"
+msgstr "task_reward"
+
+#: src/modules/tasklist/settings.py:38
+msgctxt "guildset:task_reward|desc"
+msgid "Number of LionCoins given for each completed task."
+msgstr "Broj LionCoins za svaki dovršeni zadatak."
+
+#: src/modules/tasklist/settings.py:42
+msgctxt "guildset:task_reward|long_desc"
+msgid ""
+"The number of coins members will be rewarded each time they complete a task "
+"on their tasklist."
+msgstr ""
+"Broj novčića kojima će članovi biti nagrađeni svaki put kad dovrše zadatak."
+
+#: src/modules/tasklist/settings.py:46
+msgctxt "guildset:task_reward|accepts"
+msgid "The number of LionCoins to reward per task."
+msgstr "Broj LionCoins kao nagrada po zadatku."
+
+#, possible-python-brace-format
+msgctxt "guildset:task_reward|response"
+msgid ""
+"Members will now be rewarded {coin}**{amount}** for each completed task."
+msgstr ""
+"Članovi će sada biti nagrađeni s {coin}**{amount}** za svaki dovršeni "
+"zadatak."
+
+#, possible-python-brace-format
+msgctxt "guildset:task_reward|formatted"
+msgid "{coin}**{amount}** per task."
+msgstr "{coin}**{amount}** po zadatku."
+
+#: src/modules/tasklist/settings.py:76
+msgctxt "guildset:task_reward_limit"
+msgid "task_reward_limit"
+msgstr "task_reward_limit"
+
+#: src/modules/tasklist/settings.py:79
+msgctxt "guildset:task_reward_limit|desc"
+msgid "Maximum number of task rewards given per 24h."
+msgstr "Maksimalan broj nagrada za zadatke po 24h."
+
+#: src/modules/tasklist/settings.py:83
+msgctxt "guildset:task_reward_limit|long_desc"
+msgid ""
+"Maximum number of times in each 24h period that members will be rewarded for"
+" completing a task."
+msgstr ""
+"Maksimalan broj puta u svakom 24-satnom razdoblju koliko će članovi biti "
+"nagrađeni za dovršavanje zadataka."
+
+#: src/modules/tasklist/settings.py:88
+msgctxt "guildset:task_reward_limit|accepts"
+msgid "The maximum number of tasks to reward LC for per 24h."
+msgstr "Maksimalan broj zadataka za nagradu LC-a po 24h."
+
+#, possible-python-brace-format
+msgctxt "guildset:task_reward_limit|response"
+msgid ""
+"Members will now be rewarded for task completion at most **{amount}** times "
+"per 24h."
+msgstr ""
+"Članovi će sada biti nagrađeni za dovršavanje zadataka najviše **{amount}** "
+"puta po 24h."
+
+#, possible-python-brace-format
+msgctxt "guildset:task_reward_limit|formatted"
+msgid "`{number}` per 24 hours."
+msgstr "`{number}` po 24 sata."
+
+#: src/modules/tasklist/settings.py:117
+msgctxt "guildset:tasklist_channels"
+msgid "tasklist_channels"
+msgstr "tasklist_channels"
+
+#: src/modules/tasklist/settings.py:120
+msgctxt "guildset:tasklist_channels|desc"
+msgid "Channels in which to publicly display member tasklists."
+msgstr "Kanali u kojima se javno prikazuju liste zadataka."
+
+#, possible-python-brace-format
+msgctxt "guildset:tasklist_channels|long_desc"
+msgid ""
+"A member's tasklist (from {cmds[tasklist]}) is usually only visible to the "
+"member themselves. If set, tasklists opened in `tasklist_channels` will be "
+"visible to all members, and the interface will have a much longer expiry "
+"period. If a category is provided, this will apply to all channels under the"
+" category."
+msgstr ""
+"Lista zadataka člana (iz {cmds[tasklist]}) obično je vidljiva samo samom "
+"članu. Ako je postavljeno, liste otvorene u `tasklist_channels` bit će "
+"vidljive svim članovima, a sučelje će imati mnogo duži rok trajanja. Ako je "
+"navedena kategorija, primjenjuje se na sve kanale u kategoriji."
+
+#: src/modules/tasklist/settings.py:131
+msgctxt "guildset:tasklist_channels|accepts"
+msgid "Comma separated list of tasklist channel names or ids."
+msgstr "Zarezom odvojen popis naziva ili ID-ova kanala."
+
+#, possible-python-brace-format
+msgctxt "guildset:tasklist_channels|set_response|set"
+msgid ""
+"Tasklists will now be publicly displayed in the following channels: "
+"{channels}"
+msgstr ""
+"Liste zadataka će se sada javno prikazivati u sljedećim kanalima: {channels}"
+
+#: src/modules/tasklist/settings.py:153
+msgctxt "guildset:tasklist_channels|set_response|unset"
+msgid "Member tasklists will never be publicly displayed."
+msgstr "Liste zadataka članova nikada neće biti javno prikazane."
+
+#: src/modules/tasklist/settings.py:162
+msgctxt "guildset:tasklist_channels|set_using"
+msgid "Channel selector below."
+msgstr "Birač kanala ispod."
+
+#: src/modules/tasklist/settings.py:293
+msgctxt "ui:tasklist_config|button:close|label"
+msgid "Close"
+msgstr "Zatvori"
+
+#: src/modules/tasklist/settings.py:294
+msgctxt "ui:tasklist_config|button:reset|label"
+msgid "Reset"
+msgstr "Poništi"
+
+#: src/modules/tasklist/settings.py:297
+msgctxt "ui:tasklist_config|menu:channels|placeholder"
+msgid "Set Tasklist Channels"
+msgstr "Postavi kanale liste zadataka"
+
+#: src/modules/tasklist/settings.py:315
+msgctxt "ui:tasklist_config|embed|title"
+msgid "Tasklist Configuration Panel"
+msgstr "Konfiguracijska ploča liste zadataka"
+
+#: src/modules/tasklist/settings.py:324
+msgctxt "dash:tasklist|name"
+msgid "Tasklist Configuration ({commands[config tasklist]})"
+msgstr "Konfiguracija liste zadataka ({commands[config tasklist]})"
+
+#: src/modules/tasklist/settings.py:327
+msgctxt "dash:tasklist|dropdown|placeholder"
+msgid "Tasklist Options Panel"
+msgstr "Ploča opcija liste zadataka"

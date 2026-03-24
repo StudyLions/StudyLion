@@ -1,0 +1,369 @@
+# Hindi translation for LionBot - reminders
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 21:07+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Hindi\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#, possible-python-brace-format
+msgctxt "create_reminder|error:past"
+msgid "The provided reminder time {timestamp} is in the past!"
+msgstr "दिया गया रिमाइंडर समय {timestamp} बीत चुका है!"
+
+#: src/modules/reminders/cog.py:123
+msgctxt "create_reminder|error:too_fast"
+msgid "You cannot set a repeating reminder with a period less than 10 minutes."
+msgstr "आप 10 मिनट से कम अंतराल वाला दोहराने वाला रिमाइंडर सेट नहीं कर सकते।"
+
+#: src/modules/reminders/cog.py:133
+msgctxt "create_reminder|error:too_many"
+msgid "Sorry, you have reached the maximum of `25` reminders."
+msgstr "क्षमा करें, आप `25` रिमाइंडर की अधिकतम सीमा तक पहुँच गए हैं।"
+
+#: src/modules/reminders/cog.py:149
+msgctxt "create_reminder|error:cannot_dm"
+msgid "I cannot direct message you! Do you have me blocked or direct messages closed?"
+msgstr "मैं आपको सीधा संदेश नहीं भेज सकता! क्या आपने मुझे ब्लॉक किया है या सीधे संदेश बंद कर रखे हैं?"
+
+#, possible-python-brace-format
+msgctxt "parse_timestamp|error:parse"
+msgid "Could not parse `{given}` as a valid reminder time. Try entering the time in the form `HH:MM` or `YYYY-MM-DD HH:MM`."
+msgstr "`{given}` को एक मान्य रिमाइंडर समय के रूप में समझा नहीं जा सका। कृपया समय `HH:MM` या `YYYY-MM-DD HH:MM` के रूप में दर्ज करें।"
+
+#: src/modules/reminders/cog.py:329
+msgctxt "cmd:reminders"
+msgid "reminders"
+msgstr "reminders"
+
+#: src/modules/reminders/cog.py:332
+msgctxt "cmd:reminders|desc"
+msgid "View and set your reminders."
+msgstr "अपने रिमाइंडर देखें और सेट करें।"
+
+#: src/modules/reminders/cog.py:354
+msgctxt "cmd:remindme"
+msgid "remindme"
+msgstr "remindme"
+
+#: src/modules/reminders/cog.py:355
+msgctxt "cmd:remindme|desc"
+msgid "View and set task reminders."
+msgstr "कार्य रिमाइंडर देखें और सेट करें।"
+
+#: src/modules/reminders/cog.py:363
+msgctxt "cmd:reminders_cancel"
+msgid "cancel"
+msgstr "cancel"
+
+#: src/modules/reminders/cog.py:366
+msgctxt "cmd:reminders_cancel|desc"
+msgid "Cancel a single reminder. Use /reminders to clear or cancel multiple reminders."
+msgstr "एक रिमाइंडर रद्द करें। कई रिमाइंडर साफ़ या रद्द करने के लिए /reminders का उपयोग करें।"
+
+#: src/modules/reminders/cog.py:370
+msgctxt "cmd:reminders_cancel|param:reminder"
+msgid "reminder"
+msgstr "reminder"
+
+#: src/modules/reminders/cog.py:375
+msgctxt "cmd:reminders_cancel|param:reminder|desc"
+msgid "Start typing, then select a reminder to cancel."
+msgstr "टाइप करना शुरू करें, फिर रद्द करने के लिए एक रिमाइंडर चुनें।"
+
+#: src/modules/reminders/cog.py:394
+msgctxt "cmd:reminders_cancel|error:no_reminders"
+msgid "There are no reminders to cancel!"
+msgstr "रद्द करने के लिए कोई रिमाइंडर नहीं है!"
+
+#: src/modules/reminders/cog.py:418
+msgctxt "cmd:reminders_cancel|error:no_match"
+msgid "I am not sure which reminder you want to cancel. Please try again, selecting a reminder from the list of choices."
+msgstr "मुझे यकीन नहीं है कि आप कौन सा रिमाइंडर रद्द करना चाहते हैं। कृपया सूची से एक रिमाइंडर चुनकर पुनः प्रयास करें।"
+
+#: src/modules/reminders/cog.py:431
+msgctxt "cmd:reminders_cancel|embed:success|desc"
+msgid "Reminder successfully cancelled."
+msgstr "रिमाइंडर सफलतापूर्वक रद्द किया गया।"
+
+#: src/modules/reminders/cog.py:448
+msgctxt "cmd:reminders_cancel|acmpl:reminder|error:no_reminders"
+msgid "There are no reminders to cancel!"
+msgstr "रद्द करने के लिए कोई रिमाइंडर नहीं है!"
+
+#, possible-python-brace-format
+msgctxt "cmd:reminders_cancel|acmpl:reminder|error:no_matches"
+msgid "You do not have any reminders matching \"{partial}\""
+msgstr "आपके पास \"{partial}\" से मेल खाने वाला कोई रिमाइंडर नहीं है"
+
+#: src/modules/reminders/cog.py:486
+msgctxt "cmd:remindme_at"
+msgid "at"
+msgstr "at"
+
+#: src/modules/reminders/cog.py:489
+msgctxt "cmd:remindme_at|desc"
+msgid "Schedule a reminder for a particular time."
+msgstr "किसी विशेष समय के लिए रिमाइंडर शेड्यूल करें।"
+
+#: src/modules/reminders/cog.py:493
+msgctxt "cmd:remindme_at|param:time"
+msgid "time"
+msgstr "time"
+
+#: src/modules/reminders/cog.py:494
+msgctxt "cmd:remindme_at|param:reminder"
+msgid "reminder"
+msgstr "reminder"
+
+#: src/modules/reminders/cog.py:495
+msgctxt "cmd:remindme_at|param:every"
+msgid "repeat_every"
+msgstr "repeat_every"
+
+#: src/modules/reminders/cog.py:500
+msgctxt "cmd:remindme_at|param:time|desc"
+msgid "When you want to be reminded. (E.g. `4pm` or `16:00`)."
+msgstr "आप कब याद दिलाना चाहते हैं। (उदा. `4pm` या `16:00`)।"
+
+#: src/modules/reminders/cog.py:504
+msgctxt "cmd:remindme_at|param:reminder|desc"
+msgid "What should the reminder be?"
+msgstr "रिमाइंडर क्या होना चाहिए?"
+
+#: src/modules/reminders/cog.py:508
+msgctxt "cmd:remindme_at|param:every|desc"
+msgid "How often to repeat this reminder."
+msgstr "इस रिमाइंडर को कितनी बार दोहराना है।"
+
+#: src/modules/reminders/cog.py:535
+msgctxt "cmd:remindme_at|error|title"
+msgid "Could not create reminder!"
+msgstr "रिमाइंडर बनाया नहीं जा सका!"
+
+#, possible-python-brace-format
+msgctxt "cmd:remindme_at|acmpl:time|error:parse"
+msgid "Cannot parse \"{partial}\" as a time. Try the format HH:MM or YYYY-MM-DD HH:MM"
+msgstr "\"{partial}\" को समय के रूप में समझा नहीं जा सका। HH:MM या YYYY-MM-DD HH:MM प्रारूप आज़माएँ"
+
+#: src/modules/reminders/cog.py:573
+msgctxt "cmd:remindme_in"
+msgid "in"
+msgstr "in"
+
+#: src/modules/reminders/cog.py:576
+msgctxt "cmd:remindme_in|desc"
+msgid "Schedule a reminder for a given amount of time in the future."
+msgstr "भविष्य में एक निश्चित समय के लिए रिमाइंडर शेड्यूल करें।"
+
+#: src/modules/reminders/cog.py:580
+msgctxt "cmd:remindme_in|param:time"
+msgid "time"
+msgstr "time"
+
+#: src/modules/reminders/cog.py:581
+msgctxt "cmd:remindme_in|param:reminder"
+msgid "reminder"
+msgstr "reminder"
+
+#: src/modules/reminders/cog.py:582
+msgctxt "cmd:remindme_in|param:every"
+msgid "repeat_every"
+msgstr "repeat_every"
+
+#: src/modules/reminders/cog.py:587
+msgctxt "cmd:remindme_in|param:time|desc"
+msgid "How far into the future to set the reminder (e.g. 1 day 10h 5m)."
+msgstr "रिमाइंडर कितने समय बाद सेट करना है (उदा. 1 day 10h 5m)।"
+
+#: src/modules/reminders/cog.py:591
+msgctxt "cmd:remindme_in|param:reminder|desc"
+msgid "What should the reminder be?"
+msgstr "रिमाइंडर क्या होना चाहिए?"
+
+#: src/modules/reminders/cog.py:595
+msgctxt "cmd:remindme_in|param:every|desc"
+msgid "How often to repeat this reminder. (e.g. 1 day, or 2h)"
+msgstr "इस रिमाइंडर को कितनी बार दोहराना है। (उदा. 1 day या 2h)"
+
+#: src/modules/reminders/cog.py:621
+msgctxt "cmd:remindme_in|error|title"
+msgid "Could not create reminder!"
+msgstr "रिमाइंडर बनाया नहीं जा सका!"
+
+#: src/modules/reminders/ui.py:47
+msgctxt "ui:reminderlist|button:clear|confirm|title"
+msgid "Are You Sure?"
+msgstr "क्या आप सुनिश्चित हैं?"
+
+#, possible-python-brace-format
+msgctxt "ui:reminderlist|button:clear|confirm|desc"
+msgid "Are you sure you want to delete your `{count}` reminder?"
+msgid_plural "Are you sure you want to clear your `{count}` reminders?"
+msgstr[0] "क्या आप वाकई अपना `{count}` रिमाइंडर हटाना चाहते हैं?"
+msgstr[1] "क्या आप वाकई अपने `{count}` रिमाइंडर हटाना चाहते हैं?"
+
+#: src/modules/reminders/ui.py:57
+msgctxt "ui:reminderlist|button:clear|confirm|button:yes"
+msgid "Yes, clear my reminders"
+msgstr "हाँ, मेरे रिमाइंडर साफ़ करें"
+
+#: src/modules/reminders/ui.py:68
+msgctxt "ui:reminderlist|button:clear|success|desc"
+msgid "Your reminders have been cleared!"
+msgstr "आपके रिमाइंडर साफ़ कर दिए गए हैं!"
+
+#: src/modules/reminders/ui.py:77
+msgctxt "ui:reminderlist|button:clear|confirm|button:cancel"
+msgid "Cancel"
+msgstr "रद्द करें"
+
+#: src/modules/reminders/ui.py:89
+msgctxt "ui:reminderlist|button:clear|label"
+msgid "Clear Reminders"
+msgstr "रिमाइंडर साफ़ करें"
+
+#: src/modules/reminders/ui.py:110
+msgctxt "ui:reminderlist|button:new|modal|field:time|label"
+msgid "When would you like to be reminded?"
+msgstr "आप कब याद दिलाना चाहेंगे?"
+
+#: src/modules/reminders/ui.py:120
+msgctxt "ui:reminderlist|button:new|modal|field:repeat|label"
+msgid "How often should the reminder repeat?"
+msgstr "रिमाइंडर कितनी बार दोहराना चाहिए?"
+
+#: src/modules/reminders/ui.py:124
+msgctxt "ui:reminderlist|button:new|modal|field:repeat|placeholder"
+msgid "1 day 10 hours 5 minutes (Leave empty for no repeat.)"
+msgstr "1 day 10 hours 5 minutes (दोहराव न चाहें तो खाली छोड़ें।)"
+
+#: src/modules/reminders/ui.py:133
+msgctxt "ui:reminderlist|button:new|modal|field:content|label"
+msgid "What should I remind you?"
+msgstr "मुझे आपको किस बारे में याद दिलाना चाहिए?"
+
+#: src/modules/reminders/ui.py:144
+msgctxt "ui:reminderlist|button:new|modal|title"
+msgid "Set a Reminder"
+msgstr "रिमाइंडर सेट करें"
+
+#, possible-python-brace-format
+msgctxt "ui:reminderlist|button:new|modal|parse|error:interval"
+msgid "Cannot parse '{value}' as a duration."
+msgstr "'{value}' को अवधि के रूप में समझा नहीं जा सका।"
+
+#: src/modules/reminders/ui.py:180
+msgctxt "ui:reminderlist|button:new|label"
+msgid "New Reminder"
+msgstr "नया रिमाइंडर"
+
+#: src/modules/reminders/ui.py:208
+msgctxt "ui:reminderlist|select:remove|placeholder"
+msgid "Select to cancel"
+msgstr "रद्द करने के लिए चुनें"
+
+#: src/modules/reminders/ui.py:264
+msgctxt "ui:reminderlist|embed:list|author"
+msgid "Your reminders"
+msgstr "आपके रिमाइंडर"
+
+#: src/modules/reminders/ui.py:270
+msgctxt "ui:reminderlist|embed:list|footer"
+msgid "Click a reminder to jump back to the context!"
+msgstr "संदर्भ पर वापस जाने के लिए किसी रिमाइंडर पर क्लिक करें!"
+
+#: src/modules/reminders/ui.py:277
+msgctxt "ui:reminderlist|embed:no_reminders|title"
+msgid "You have no reminders set!"
+msgstr "आपने कोई रिमाइंडर सेट नहीं किया है!"
+
+#: src/modules/reminders/ui.py:286
+msgctxt "ui:reminderlist|embed|tips:name"
+msgid "Reminder Tips"
+msgstr "रिमाइंडर सुझाव"
+
+#, possible-python-brace-format
+msgctxt "ui:reminderlist|embed|tips:value"
+msgid ""
+"- Use {at_cmd} to set a reminder at a known time (e.g. `at 10 am`).\n"
+"- Use {in_cmd} to set a reminder in a certain time (e.g. `in 2 hours`).\n"
+"- Both commands support repeating reminders using the `every` parameter.\n"
+"- Remember to tell me your timezone with {timezone_cmd} if you haven't already!"
+msgstr ""
+"- एक निश्चित समय पर रिमाइंडर सेट करने के लिए {at_cmd} का उपयोग करें (उदा. `at 10 am`)।\n"
+"- एक निश्चित समय बाद रिमाइंडर सेट करने के लिए {in_cmd} का उपयोग करें (उदा. `in 2 hours`)।\n"
+"- दोनों कमांड `every` पैरामीटर का उपयोग करके दोहराने वाले रिमाइंडर का समर्थन करते हैं।\n"
+"- अगर आपने अभी तक नहीं किया है तो {timezone_cmd} से मुझे अपना टाइमज़ोन बताना याद रखें!"
+
+#: src/modules/reminders/data.py:63
+msgctxt "reminder_set|title"
+msgid "Reminder Set!"
+msgstr "रिमाइंडर सेट किया गया!"
+
+#, possible-python-brace-format
+msgctxt "reminder_set|desc"
+msgid ""
+"At {timestamp} I will remind you about:\n"
+"> {content}"
+msgstr ""
+"{timestamp} पर मैं आपको इसके बारे में याद दिलाऊंगा:\n"
+"> {content}"
+
+#: src/modules/reminders/data.py:79
+msgctxt "reminder_set|field:repeat|name"
+msgid "Repeats"
+msgstr "दोहराव"
+
+#, possible-python-brace-format
+msgctxt "reminder_set|field:repeat|value"
+msgid "This reminder will repeat every `{interval}` (after the first reminder)."
+msgstr "यह रिमाइंडर हर `{interval}` पर दोहराएगा (पहले रिमाइंडर के बाद)।"
+
+#: src/modules/reminders/data.py:94
+msgctxt "reminder|embed"
+msgid "You asked me to remind you!"
+msgstr "आपने मुझसे याद दिलाने को कहा था!"
+
+#: src/modules/reminders/data.py:102
+msgctxt "reminder|embed"
+msgid "Context?"
+msgstr "संदर्भ?"
+
+#: src/modules/reminders/data.py:104
+msgctxt "reminder|embed"
+msgid "Click Here"
+msgstr "यहाँ क्लिक करें"
+
+#: src/modules/reminders/data.py:111
+msgctxt "reminder|embed"
+msgid "Next reminder"
+msgstr "अगला रिमाइंडर"
+
+#, possible-python-brace-format
+msgctxt "reminder|formatted|interval"
+msgid "Every day"
+msgid_plural "Every `{days}` days"
+msgstr[0] "हर दिन"
+msgstr[1] "हर `{days}` दिन"
+
+#, possible-python-brace-format
+msgctxt "reminder|formatted|interval"
+msgid "Every hour"
+msgid_plural "Every `{hours}` hours"
+msgstr[0] "हर घंटे"
+msgstr[1] "हर `{hours}` घंटे"
+
+#, possible-python-brace-format
+msgctxt "reminder|formatted|interval"
+msgid "Every `{duration}`"
+msgstr "हर `{duration}`"

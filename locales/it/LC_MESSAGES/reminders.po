@@ -1,0 +1,369 @@
+# Italian translation for LionBot - reminders
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 21:07+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Italian\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#, possible-python-brace-format
+msgctxt "create_reminder|error:past"
+msgid "The provided reminder time {timestamp} is in the past!"
+msgstr "L'orario del promemoria {timestamp} è nel passato!"
+
+#: src/modules/reminders/cog.py:123
+msgctxt "create_reminder|error:too_fast"
+msgid "You cannot set a repeating reminder with a period less than 10 minutes."
+msgstr "Non puoi impostare un promemoria ricorrente con un intervallo inferiore a 10 minuti."
+
+#: src/modules/reminders/cog.py:133
+msgctxt "create_reminder|error:too_many"
+msgid "Sorry, you have reached the maximum of `25` reminders."
+msgstr "Spiacente, hai raggiunto il massimo di `25` promemoria."
+
+#: src/modules/reminders/cog.py:149
+msgctxt "create_reminder|error:cannot_dm"
+msgid "I cannot direct message you! Do you have me blocked or direct messages closed?"
+msgstr "Non posso inviarti un messaggio diretto! Mi hai bloccato o hai chiuso i messaggi diretti?"
+
+#, possible-python-brace-format
+msgctxt "parse_timestamp|error:parse"
+msgid "Could not parse `{given}` as a valid reminder time. Try entering the time in the form `HH:MM` or `YYYY-MM-DD HH:MM`."
+msgstr "Impossibile interpretare `{given}` come un orario di promemoria valido. Prova a inserire l'orario nel formato `HH:MM` o `YYYY-MM-DD HH:MM`."
+
+#: src/modules/reminders/cog.py:329
+msgctxt "cmd:reminders"
+msgid "reminders"
+msgstr "reminders"
+
+#: src/modules/reminders/cog.py:332
+msgctxt "cmd:reminders|desc"
+msgid "View and set your reminders."
+msgstr "Visualizza e imposta i tuoi promemoria."
+
+#: src/modules/reminders/cog.py:354
+msgctxt "cmd:remindme"
+msgid "remindme"
+msgstr "remindme"
+
+#: src/modules/reminders/cog.py:355
+msgctxt "cmd:remindme|desc"
+msgid "View and set task reminders."
+msgstr "Visualizza e imposta i promemoria delle attività."
+
+#: src/modules/reminders/cog.py:363
+msgctxt "cmd:reminders_cancel"
+msgid "cancel"
+msgstr "cancel"
+
+#: src/modules/reminders/cog.py:366
+msgctxt "cmd:reminders_cancel|desc"
+msgid "Cancel a single reminder. Use /reminders to clear or cancel multiple reminders."
+msgstr "Cancella un singolo promemoria. Usa /reminders per cancellare o annullare più promemoria."
+
+#: src/modules/reminders/cog.py:370
+msgctxt "cmd:reminders_cancel|param:reminder"
+msgid "reminder"
+msgstr "reminder"
+
+#: src/modules/reminders/cog.py:375
+msgctxt "cmd:reminders_cancel|param:reminder|desc"
+msgid "Start typing, then select a reminder to cancel."
+msgstr "Inizia a digitare, poi seleziona un promemoria da cancellare."
+
+#: src/modules/reminders/cog.py:394
+msgctxt "cmd:reminders_cancel|error:no_reminders"
+msgid "There are no reminders to cancel!"
+msgstr "Non ci sono promemoria da cancellare!"
+
+#: src/modules/reminders/cog.py:418
+msgctxt "cmd:reminders_cancel|error:no_match"
+msgid "I am not sure which reminder you want to cancel. Please try again, selecting a reminder from the list of choices."
+msgstr "Non sono sicuro quale promemoria vuoi cancellare. Riprova selezionando un promemoria dall'elenco."
+
+#: src/modules/reminders/cog.py:431
+msgctxt "cmd:reminders_cancel|embed:success|desc"
+msgid "Reminder successfully cancelled."
+msgstr "Promemoria cancellato con successo."
+
+#: src/modules/reminders/cog.py:448
+msgctxt "cmd:reminders_cancel|acmpl:reminder|error:no_reminders"
+msgid "There are no reminders to cancel!"
+msgstr "Non ci sono promemoria da cancellare!"
+
+#, possible-python-brace-format
+msgctxt "cmd:reminders_cancel|acmpl:reminder|error:no_matches"
+msgid "You do not have any reminders matching \"{partial}\""
+msgstr "Non hai promemoria corrispondenti a \"{partial}\""
+
+#: src/modules/reminders/cog.py:486
+msgctxt "cmd:remindme_at"
+msgid "at"
+msgstr "at"
+
+#: src/modules/reminders/cog.py:489
+msgctxt "cmd:remindme_at|desc"
+msgid "Schedule a reminder for a particular time."
+msgstr "Programma un promemoria per un orario specifico."
+
+#: src/modules/reminders/cog.py:493
+msgctxt "cmd:remindme_at|param:time"
+msgid "time"
+msgstr "time"
+
+#: src/modules/reminders/cog.py:494
+msgctxt "cmd:remindme_at|param:reminder"
+msgid "reminder"
+msgstr "reminder"
+
+#: src/modules/reminders/cog.py:495
+msgctxt "cmd:remindme_at|param:every"
+msgid "repeat_every"
+msgstr "repeat_every"
+
+#: src/modules/reminders/cog.py:500
+msgctxt "cmd:remindme_at|param:time|desc"
+msgid "When you want to be reminded. (E.g. `4pm` or `16:00`)."
+msgstr "Quando vuoi essere ricordato. (Es. `4pm` o `16:00`)."
+
+#: src/modules/reminders/cog.py:504
+msgctxt "cmd:remindme_at|param:reminder|desc"
+msgid "What should the reminder be?"
+msgstr "Quale dovrebbe essere il promemoria?"
+
+#: src/modules/reminders/cog.py:508
+msgctxt "cmd:remindme_at|param:every|desc"
+msgid "How often to repeat this reminder."
+msgstr "Con quale frequenza ripetere questo promemoria."
+
+#: src/modules/reminders/cog.py:535
+msgctxt "cmd:remindme_at|error|title"
+msgid "Could not create reminder!"
+msgstr "Impossibile creare il promemoria!"
+
+#, possible-python-brace-format
+msgctxt "cmd:remindme_at|acmpl:time|error:parse"
+msgid "Cannot parse \"{partial}\" as a time. Try the format HH:MM or YYYY-MM-DD HH:MM"
+msgstr "Impossibile interpretare \"{partial}\" come un orario. Prova il formato HH:MM o YYYY-MM-DD HH:MM"
+
+#: src/modules/reminders/cog.py:573
+msgctxt "cmd:remindme_in"
+msgid "in"
+msgstr "in"
+
+#: src/modules/reminders/cog.py:576
+msgctxt "cmd:remindme_in|desc"
+msgid "Schedule a reminder for a given amount of time in the future."
+msgstr "Programma un promemoria tra un determinato periodo di tempo."
+
+#: src/modules/reminders/cog.py:580
+msgctxt "cmd:remindme_in|param:time"
+msgid "time"
+msgstr "time"
+
+#: src/modules/reminders/cog.py:581
+msgctxt "cmd:remindme_in|param:reminder"
+msgid "reminder"
+msgstr "reminder"
+
+#: src/modules/reminders/cog.py:582
+msgctxt "cmd:remindme_in|param:every"
+msgid "repeat_every"
+msgstr "repeat_every"
+
+#: src/modules/reminders/cog.py:587
+msgctxt "cmd:remindme_in|param:time|desc"
+msgid "How far into the future to set the reminder (e.g. 1 day 10h 5m)."
+msgstr "Quanto tempo nel futuro impostare il promemoria (es. 1 day 10h 5m)."
+
+#: src/modules/reminders/cog.py:591
+msgctxt "cmd:remindme_in|param:reminder|desc"
+msgid "What should the reminder be?"
+msgstr "Quale dovrebbe essere il promemoria?"
+
+#: src/modules/reminders/cog.py:595
+msgctxt "cmd:remindme_in|param:every|desc"
+msgid "How often to repeat this reminder. (e.g. 1 day, or 2h)"
+msgstr "Con quale frequenza ripetere questo promemoria. (es. 1 day o 2h)"
+
+#: src/modules/reminders/cog.py:621
+msgctxt "cmd:remindme_in|error|title"
+msgid "Could not create reminder!"
+msgstr "Impossibile creare il promemoria!"
+
+#: src/modules/reminders/ui.py:47
+msgctxt "ui:reminderlist|button:clear|confirm|title"
+msgid "Are You Sure?"
+msgstr "Sei sicuro?"
+
+#, possible-python-brace-format
+msgctxt "ui:reminderlist|button:clear|confirm|desc"
+msgid "Are you sure you want to delete your `{count}` reminder?"
+msgid_plural "Are you sure you want to clear your `{count}` reminders?"
+msgstr[0] "Sei sicuro di voler eliminare il tuo `{count}` promemoria?"
+msgstr[1] "Sei sicuro di voler eliminare i tuoi `{count}` promemoria?"
+
+#: src/modules/reminders/ui.py:57
+msgctxt "ui:reminderlist|button:clear|confirm|button:yes"
+msgid "Yes, clear my reminders"
+msgstr "Sì, cancella i miei promemoria"
+
+#: src/modules/reminders/ui.py:68
+msgctxt "ui:reminderlist|button:clear|success|desc"
+msgid "Your reminders have been cleared!"
+msgstr "I tuoi promemoria sono stati cancellati!"
+
+#: src/modules/reminders/ui.py:77
+msgctxt "ui:reminderlist|button:clear|confirm|button:cancel"
+msgid "Cancel"
+msgstr "Annulla"
+
+#: src/modules/reminders/ui.py:89
+msgctxt "ui:reminderlist|button:clear|label"
+msgid "Clear Reminders"
+msgstr "Cancella promemoria"
+
+#: src/modules/reminders/ui.py:110
+msgctxt "ui:reminderlist|button:new|modal|field:time|label"
+msgid "When would you like to be reminded?"
+msgstr "Quando vorresti essere ricordato?"
+
+#: src/modules/reminders/ui.py:120
+msgctxt "ui:reminderlist|button:new|modal|field:repeat|label"
+msgid "How often should the reminder repeat?"
+msgstr "Con quale frequenza dovrebbe ripetersi il promemoria?"
+
+#: src/modules/reminders/ui.py:124
+msgctxt "ui:reminderlist|button:new|modal|field:repeat|placeholder"
+msgid "1 day 10 hours 5 minutes (Leave empty for no repeat.)"
+msgstr "1 day 10 hours 5 minutes (Lascia vuoto per non ripetere.)"
+
+#: src/modules/reminders/ui.py:133
+msgctxt "ui:reminderlist|button:new|modal|field:content|label"
+msgid "What should I remind you?"
+msgstr "Di cosa dovrei ricordarti?"
+
+#: src/modules/reminders/ui.py:144
+msgctxt "ui:reminderlist|button:new|modal|title"
+msgid "Set a Reminder"
+msgstr "Imposta un promemoria"
+
+#, possible-python-brace-format
+msgctxt "ui:reminderlist|button:new|modal|parse|error:interval"
+msgid "Cannot parse '{value}' as a duration."
+msgstr "Impossibile interpretare '{value}' come una durata."
+
+#: src/modules/reminders/ui.py:180
+msgctxt "ui:reminderlist|button:new|label"
+msgid "New Reminder"
+msgstr "Nuovo promemoria"
+
+#: src/modules/reminders/ui.py:208
+msgctxt "ui:reminderlist|select:remove|placeholder"
+msgid "Select to cancel"
+msgstr "Seleziona per cancellare"
+
+#: src/modules/reminders/ui.py:264
+msgctxt "ui:reminderlist|embed:list|author"
+msgid "Your reminders"
+msgstr "I tuoi promemoria"
+
+#: src/modules/reminders/ui.py:270
+msgctxt "ui:reminderlist|embed:list|footer"
+msgid "Click a reminder to jump back to the context!"
+msgstr "Clicca su un promemoria per tornare al contesto!"
+
+#: src/modules/reminders/ui.py:277
+msgctxt "ui:reminderlist|embed:no_reminders|title"
+msgid "You have no reminders set!"
+msgstr "Non hai promemoria impostati!"
+
+#: src/modules/reminders/ui.py:286
+msgctxt "ui:reminderlist|embed|tips:name"
+msgid "Reminder Tips"
+msgstr "Suggerimenti promemoria"
+
+#, possible-python-brace-format
+msgctxt "ui:reminderlist|embed|tips:value"
+msgid ""
+"- Use {at_cmd} to set a reminder at a known time (e.g. `at 10 am`).\n"
+"- Use {in_cmd} to set a reminder in a certain time (e.g. `in 2 hours`).\n"
+"- Both commands support repeating reminders using the `every` parameter.\n"
+"- Remember to tell me your timezone with {timezone_cmd} if you haven't already!"
+msgstr ""
+"- Usa {at_cmd} per impostare un promemoria a un'ora specifica (es. `at 10 am`).\n"
+"- Usa {in_cmd} per impostare un promemoria tra un certo tempo (es. `in 2 hours`).\n"
+"- Entrambi i comandi supportano promemoria ricorrenti con il parametro `every`.\n"
+"- Ricordati di comunicarmi il tuo fuso orario con {timezone_cmd} se non l'hai già fatto!"
+
+#: src/modules/reminders/data.py:63
+msgctxt "reminder_set|title"
+msgid "Reminder Set!"
+msgstr "Promemoria impostato!"
+
+#, possible-python-brace-format
+msgctxt "reminder_set|desc"
+msgid ""
+"At {timestamp} I will remind you about:\n"
+"> {content}"
+msgstr ""
+"Alle {timestamp} ti ricorderò di:\n"
+"> {content}"
+
+#: src/modules/reminders/data.py:79
+msgctxt "reminder_set|field:repeat|name"
+msgid "Repeats"
+msgstr "Ripetizioni"
+
+#, possible-python-brace-format
+msgctxt "reminder_set|field:repeat|value"
+msgid "This reminder will repeat every `{interval}` (after the first reminder)."
+msgstr "Questo promemoria si ripeterà ogni `{interval}` (dopo il primo promemoria)."
+
+#: src/modules/reminders/data.py:94
+msgctxt "reminder|embed"
+msgid "You asked me to remind you!"
+msgstr "Mi hai chiesto di ricordarti!"
+
+#: src/modules/reminders/data.py:102
+msgctxt "reminder|embed"
+msgid "Context?"
+msgstr "Contesto?"
+
+#: src/modules/reminders/data.py:104
+msgctxt "reminder|embed"
+msgid "Click Here"
+msgstr "Clicca qui"
+
+#: src/modules/reminders/data.py:111
+msgctxt "reminder|embed"
+msgid "Next reminder"
+msgstr "Prossimo promemoria"
+
+#, possible-python-brace-format
+msgctxt "reminder|formatted|interval"
+msgid "Every day"
+msgid_plural "Every `{days}` days"
+msgstr[0] "Ogni giorno"
+msgstr[1] "Ogni `{days}` giorni"
+
+#, possible-python-brace-format
+msgctxt "reminder|formatted|interval"
+msgid "Every hour"
+msgid_plural "Every `{hours}` hours"
+msgstr[0] "Ogni ora"
+msgstr[1] "Ogni `{hours}` ore"
+
+#, possible-python-brace-format
+msgctxt "reminder|formatted|interval"
+msgid "Every `{duration}`"
+msgstr "Ogni `{duration}`"

@@ -167,7 +167,14 @@ class CoreData(Registry, name="core"):
             force_locale BOOLEAN,
             season_start TIMESTAMPTZ,
             xp_per_period INTEGER,
-            xp_per_centiword INTEGER
+            xp_per_centiword INTEGER,
+            lg_drop_channel BIGINT,
+            lg_enabled BOOLEAN DEFAULT TRUE,
+            lg_guild_display_name VARCHAR(12),
+            lg_teaser_enabled BOOLEAN DEFAULT TRUE,
+            lg_activity_role BIGINT,
+            lg_drop_delete_after INTEGER,
+            leaderboard_role_filter_enabled BOOLEAN DEFAULT FALSE
         );
 
         """
@@ -241,6 +248,24 @@ class CoreData(Registry, name="core"):
         coins_per_centixp = Integer()
 
         allow_transfers = Bool()
+
+        # --- AI-MODIFIED (2026-03-16) ---
+        # Purpose: Guild channel for LionGotchi material drop notifications
+        lg_drop_channel = Integer()
+        # --- END AI-MODIFIED ---
+
+        # --- AI-MODIFIED (2026-03-20) ---
+        # Purpose: LionGotchi guild-level settings (dashboard-configurable)
+        lg_enabled = Bool()
+        lg_guild_display_name = String()
+        lg_teaser_enabled = Bool()
+        lg_activity_role = Integer()
+        lg_drop_delete_after = Integer()
+        # --- END AI-MODIFIED ---
+        # --- AI-MODIFIED (2026-03-23) ---
+        # Purpose: Leaderboard role filter toggle
+        leaderboard_role_filter_enabled = Bool()
+        # --- END AI-MODIFIED ---
 
     donator_roles = Table('donator_roles')
 

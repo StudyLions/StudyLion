@@ -1,0 +1,1072 @@
+# Korean translation for LionBot - ranks
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 23:20+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Korean\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/modules/ranks/cog.py:76
+msgctxt "cmd:configure_ranks|param:rank_type|choice:voice"
+msgid "Voice"
+msgstr "음성"
+
+#: src/modules/ranks/cog.py:77
+msgctxt "cmd:configure_ranks|param:rank_type|choice:xp"
+msgid "XP"
+msgstr "XP"
+
+#: src/modules/ranks/cog.py:78
+msgctxt "cmd:configure_ranks|param:rank_type|choice:message"
+msgid "Message"
+msgstr "메시지"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:rank_check|error:remove_failed"
+msgid "Failed to remove old rank roles: `{error}`"
+msgstr "이전 등급 역할 제거 실패: `{error}`"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:rank_check|error:add_failed"
+msgid "Failed to add new rank role: `{error}`"
+msgstr "새 등급 역할 추가 실패: `{error}`"
+
+#: src/modules/ranks/cog.py:380
+msgctxt "eventlog|event:rank_check|error:add_impossible"
+msgid "Could not assign new activity rank role. Lacking permissions or invalid role."
+msgstr "새 활동 등급 역할을 할당할 수 없습니다. 권한이 부족하거나 유효하지 않은 역할입니다."
+
+#: src/modules/ranks/cog.py:386
+msgctxt "eventlog|event:rank_check|error:permissions"
+msgid "Could not update activity rank roles, I lack the 'Manage Roles' permission."
+msgstr "활동 등급 역할을 업데이트할 수 없습니다. 'Manage Roles' 권한이 없습니다."
+
+#: src/modules/ranks/cog.py:398
+msgctxt "eventlog|event:rank_check|name"
+msgid "Member Activity Rank Roles Updated"
+msgstr "멤버 활동 등급 역할 업데이트됨"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:new_rank|error:remove_failed"
+msgid "Failed to remove old rank roles: `{error}`"
+msgstr "이전 등급 역할 제거 실패: `{error}`"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:new_rank|error:add_failed"
+msgid "Failed to add new rank role: `{error}`"
+msgstr "새 등급 역할 추가 실패: `{error}`"
+
+#: src/modules/ranks/cog.py:507
+msgctxt "eventlog|event:new_rank|error:add_impossible"
+msgid "Could not assign new activity rank role. Lacking permissions or invalid role."
+msgstr "새 활동 등급 역할을 할당할 수 없습니다. 권한이 부족하거나 유효하지 않은 역할입니다."
+
+#: src/modules/ranks/cog.py:513
+msgctxt "eventlog|event:new_rank|error:permissions"
+msgid "Could not update activity rank roles, I lack the 'Manage Roles' permission."
+msgstr "활동 등급 역할을 업데이트할 수 없습니다. 'Manage Roles' 권한이 없습니다."
+
+#: src/modules/ranks/cog.py:548
+msgctxt "eventlog|event:new_rank|error:notify_failed"
+msgid "Could not notify member."
+msgstr "멤버에게 알릴 수 없습니다."
+
+#: src/modules/ranks/cog.py:555
+msgctxt "eventlog|event:new_rank|name"
+msgid "Member Achieved Activity rank"
+msgstr "멤버가 활동 등급을 달성했습니다"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:new_rank|desc"
+msgid "{member} earned the new activity rank {rank}"
+msgstr "{member}이(가) 새 활동 등급 {rank}을(를) 달성했습니다"
+
+#: src/modules/ranks/cog.py:587
+msgctxt "event:rank_update|embed:notify"
+msgid "New Activity Rank Attained!"
+msgstr "새 활동 등급을 달성했습니다!"
+
+#: src/modules/ranks/cog.py:692
+msgctxt "rank_refresh|error:cannot_chunk|desc"
+msgid "Could not retrieve member list from Discord. Please try again later."
+msgstr "Discord에서 멤버 목록을 가져올 수 없습니다. 나중에 다시 시도해 주세요."
+
+#: src/modules/ranks/cog.py:705
+msgctxt "rank_refresh|error:roles_dne|desc"
+msgid "Some ranks have invalid or deleted roles! Please remove them first."
+msgstr "일부 등급에 유효하지 않거나 삭제된 역할이 있습니다! 먼저 제거해 주세요."
+
+#, possible-python-brace-format
+msgctxt "rank_refresh|error:unassignable_roles|desc"
+msgid ""
+"I have insufficient permissions to assign the following role(s):\n"
+"{roles}"
+msgstr ""
+"다음 역할을 할당할 권한이 부족합니다:\n"
+"{roles}"
+
+#: src/modules/ranks/cog.py:785
+msgctxt "rank_refresh|remove_roles|audit"
+msgid "Removing invalid rank role."
+msgstr "잘못된 등급 역할을 제거하는 중."
+
+#, possible-python-brace-format
+msgctxt "rank_refresh|remove_roles|small_error"
+msgid "*Could not remove ranks from {member}*"
+msgstr "*{member}의 등급을 제거할 수 없습니다*"
+
+#: src/modules/ranks/cog.py:806
+msgctxt "rank_refresh|remove_roles|error:too_many_issues"
+msgid "Too many issues occurred while removing ranks! Please check my permissions and try again in a few minutes."
+msgstr "등급 제거 중 너무 많은 문제가 발생했습니다! 권한을 확인하고 몇 분 후에 다시 시도해 주세요."
+
+#: src/modules/ranks/cog.py:820
+msgctxt "rank_refresh|add_roles|audit"
+msgid "Adding rank role from refresh"
+msgstr "새로고침에서 등급 역할 추가 중"
+
+#, possible-python-brace-format
+msgctxt "rank_refresh|add_roles|small_error"
+msgid "*Could not add {role} to {member}*"
+msgstr "*{member}에게 {role}을(를) 추가할 수 없습니다*"
+
+#: src/modules/ranks/cog.py:841
+msgctxt "rank_refresh|add_roles|error:too_many_issues"
+msgid "Too many issues occurred while adding ranks! Please check my permissions and try again in a few minutes."
+msgstr "등급 추가 중 너무 많은 문제가 발생했습니다! 권한을 확인하고 몇 분 후에 다시 시도해 주세요."
+
+#: src/modules/ranks/cog.py:869
+msgctxt "eventlog|event:rank_refresh|name"
+msgid "Activity Ranks Refreshed"
+msgstr "활동 등급이 새로고침되었습니다"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:rank_refresh|desc"
+msgid ""
+"{actor} refresh member activity ranks.\n"
+"**`{removed}`** invalid rank roles removed.\n"
+"**`{added}`** new rank roles added."
+msgstr ""
+"{actor}이(가) 멤버 활동 등급을 새로고침했습니다.\n"
+"**`{removed}`**개의 잘못된 등급 역할 제거됨.\n"
+"**`{added}`**개의 새 등급 역할 추가됨."
+
+#: src/modules/ranks/cog.py:884
+msgctxt "cmd:ranks"
+msgid "ranks"
+msgstr "ranks"
+
+#: src/modules/ranks/cog.py:916
+msgctxt "cmd:configure_ranks"
+msgid "ranks"
+msgstr "ranks"
+
+#: src/modules/ranks/cog.py:917
+msgctxt "cmd:configure_ranks|desc"
+msgid "Configure Activity Ranks"
+msgstr "활동 등급 설정"
+
+#, possible-python-brace-format
+msgctxt "cmd:configure_ranks|response:updated|setting:notification|withdm_withchannel"
+msgid "Rank update notifications will be sent via **direct message** when possible, otherwise to {channel}"
+msgstr "등급 업데이트 알림은 가능한 경우 **다이렉트 메시지**로, 그렇지 않으면 {channel}로 전송됩니다"
+
+#: src/modules/ranks/cog.py:982
+msgctxt "cmd:configure_ranks|response:updated|setting:notification|withdm_nochannel"
+msgid "Rank update notifications will be sent via **direct message**."
+msgstr "등급 업데이트 알림은 **다이렉트 메시지**로 전송됩니다."
+
+#, possible-python-brace-format
+msgctxt "cmd:configure_ranks|response:updated|setting:notification|nodm_withchannel"
+msgid "Rank update notifications will be sent to {channel}."
+msgstr "등급 업데이트 알림은 {channel}로 전송됩니다."
+
+#: src/modules/ranks/cog.py:993
+msgctxt "cmd:configure_ranks|response:updated|setting:notification|nodm_nochannel"
+msgid "Members will not be notified when their activity rank updates."
+msgstr "멤버의 활동 등급이 업데이트될 때 알림이 전송되지 않습니다."
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:role_name"
+msgid "{role_name}"
+msgstr "{role_name}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:guild_name"
+msgid "{guild_name}"
+msgstr "{guild_name}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:user_name"
+msgid "{user_name}"
+msgstr "{user_name}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:role_id"
+msgid "{role_id}"
+msgstr "{role_id}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:guild_id"
+msgid "{guild_id}"
+msgstr "{guild_id}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:user_id"
+msgid "{user_id}"
+msgstr "{user_id}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:role_mention"
+msgid "{role_mention}"
+msgstr "{role_mention}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:user_mention"
+msgid "{user_mention}"
+msgstr "{user_mention}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:requires"
+msgid "{rank_requires}"
+msgstr "{rank_requires}"
+
+#: src/modules/ranks/settings.py:27
+msgctxt "guildset:rank_type|output:voice"
+msgid "`Voice`"
+msgstr "`음성`"
+
+#: src/modules/ranks/settings.py:28
+msgctxt "guildset:rank_type|output:xp"
+msgid "`Exp`"
+msgstr "`Exp`"
+
+#: src/modules/ranks/settings.py:29
+msgctxt "guildset:rank_type|output:message"
+msgid "`Messages`"
+msgstr "`메시지`"
+
+#: src/modules/ranks/settings.py:32
+msgctxt "guildset:rank_type|input_format:voice"
+msgid "Voice"
+msgstr "음성"
+
+#: src/modules/ranks/settings.py:33
+msgctxt "guildset:rank_type|input_format:xp"
+msgid "Exp"
+msgstr "Exp"
+
+#: src/modules/ranks/settings.py:34
+msgctxt "guildset:rank_type|input_format:message"
+msgid "Messages"
+msgstr "메시지"
+
+#: src/modules/ranks/settings.py:37
+msgctxt "guildset:rank_type|input_pattern:voice"
+msgid "voice|study"
+msgstr "voice|study"
+
+#: src/modules/ranks/settings.py:38
+msgctxt "guildset:rank_type|input_pattern:voice"
+msgid "text|message|messages"
+msgstr "text|message|messages"
+
+#: src/modules/ranks/settings.py:39
+msgctxt "guildset:rank_type|input_pattern:xp"
+msgid "xp|exp|experience"
+msgstr "xp|exp|experience"
+
+#: src/modules/ranks/settings.py:47
+msgctxt "guildset:rank_type"
+msgid "rank_type"
+msgstr "rank_type"
+
+#: src/modules/ranks/settings.py:50
+msgctxt "guildset:rank_type|desc"
+msgid "The type of statistic (messages | xp | voice hours) used to determine activity ranks."
+msgstr "활동 등급을 결정하는 데 사용되는 통계 유형 (메시지 | XP | 음성 시간)."
+
+#: src/modules/ranks/settings.py:54
+msgctxt "guildset:rank_type|long_desc"
+msgid ""
+"Which statistic is used to reward activity ranks.\n"
+"`Voice` is the number of hours active in tracked voice channels, `Exp` is a measure of message activity, and `Message` is a simple count of messages sent."
+msgstr ""
+"활동 등급 보상에 사용되는 통계.\n"
+"`음성`은 추적 중인 음성 채널에서의 활동 시간, `Exp`는 메시지 활동 측정치, `메시지`는 보낸 메시지 수입니다."
+
+#: src/modules/ranks/settings.py:61
+msgctxt "guildset:rank_type|accepts"
+msgid "Voice/Exp/Messages"
+msgstr "Voice/Exp/Messages"
+
+#: src/modules/ranks/settings.py:73
+msgctxt "guildset:rank_type|set_response|type:voice"
+msgid "Members will be awarded activity ranks based on `Voice Activity`."
+msgstr "멤버는 `음성 활동`을 기준으로 활동 등급을 받게 됩니다."
+
+#: src/modules/ranks/settings.py:78
+msgctxt "guildset:rank_type|set_response|type:messages"
+msgid "Members will be awarded activity ranks based on `Messages Sent`."
+msgstr "멤버는 `보낸 메시지`를 기준으로 활동 등급을 받게 됩니다."
+
+#: src/modules/ranks/settings.py:83
+msgctxt "guildset:rank_type|set_response|type:xp"
+msgid "Members will be awarded activity ranks based on `Message XP Earned`."
+msgstr "멤버는 `획득한 메시지 XP`를 기준으로 활동 등급을 받게 됩니다."
+
+#, possible-python-brace-format
+msgctxt "guildset:rank_channel|set_using"
+msgid "{cmd} or option menu below."
+msgstr "{cmd} 또는 아래 옵션 메뉴."
+
+#: src/modules/ranks/settings.py:106
+msgctxt "guildset:rank_channel"
+msgid "rank_channel"
+msgstr "rank_channel"
+
+#: src/modules/ranks/settings.py:109
+msgctxt "guildset:rank_channel|desc"
+msgid "The channel in which to send rank update notifications."
+msgstr "등급 업데이트 알림을 보낼 채널."
+
+#: src/modules/ranks/settings.py:113
+msgctxt "guildset:rank_channel|long_desc"
+msgid "Whenever a user advances a rank, a congratulatory message will be sent in this channel, if set. If `dm_ranks` is enabled, this channel will only be used when the user has opted not to receive DM notifications, or is otherwise unreachable."
+msgstr "사용자가 등급을 올리면 설정된 경우 이 채널에 축하 메시지가 전송됩니다. `dm_ranks`가 활성화된 경우 사용자가 DM 알림을 거부했거나 연락이 불가능한 경우에만 이 채널이 사용됩니다."
+
+#: src/modules/ranks/settings.py:119
+msgctxt "guildset:rank_channel|accepts"
+msgid "Rank notification channel name or id."
+msgstr "등급 알림 채널 이름 또는 ID."
+
+#, possible-python-brace-format
+msgctxt "guildset:rank_channel|set_response|set"
+msgid "Rank update messages will be sent to {channel}."
+msgstr "등급 업데이트 메시지가 {channel}로 전송됩니다."
+
+#: src/modules/ranks/settings.py:136
+msgctxt "guildset:rank_channel|set_response|unset"
+msgid "Rank update messages will be ignored or sent via DM (if `dm_ranks` is enabled)."
+msgstr "등급 업데이트 메시지가 무시되거나 DM으로 전송됩니다 (`dm_ranks`가 활성화된 경우)."
+
+#, possible-python-brace-format
+msgctxt "guildset:rank_channel|set_using"
+msgid "{cmd} or channel selector below."
+msgstr "{cmd} 또는 아래 채널 선택기."
+
+#: src/modules/ranks/settings.py:157
+msgctxt "guildset:dm_ranks"
+msgid "dm_ranks"
+msgstr "dm_ranks"
+
+#: src/modules/ranks/settings.py:160
+msgctxt "guildset:dm_ranks|desc"
+msgid "Whether to send rank advancement notifications through direct messages."
+msgstr "등급 승급 알림을 다이렉트 메시지로 보낼지 여부."
+
+#: src/modules/ranks/settings.py:164
+msgctxt "guildset:dm_ranks|long_desc"
+msgid "If enabled, congratulatory messages for rank advancement will be direct messaged to the user, instead of being sent to the configured `rank_channel`."
+msgstr "활성화하면 등급 승급 축하 메시지가 설정된 `rank_channel` 대신 사용자에게 다이렉트 메시지로 전송됩니다."
+
+#: src/modules/ranks/settings.py:178
+msgctxt "guildset:dm_ranks|response:true"
+msgid "I will direct message members upon rank advancement."
+msgstr "등급 승급 시 멤버에게 다이렉트 메시지를 보내겠습니다."
+
+#: src/modules/ranks/settings.py:183
+msgctxt "guildset:dm_ranks|response:false"
+msgid "I will never direct message members upon rank advancement."
+msgstr "등급 승급 시 멤버에게 다이렉트 메시지를 보내지 않겠습니다."
+
+#: src/modules/ranks/ui/preview.py:75
+msgctxt "ui:rank_preview|button:edit|error:role_deleted"
+msgid "The role underlying this rank no longer exists! Please select a new role from the role menu."
+msgstr "이 등급의 역할이 더 이상 존재하지 않습니다! 역할 메뉴에서 새 역할을 선택해 주세요."
+
+#: src/modules/ranks/ui/preview.py:82
+msgctxt "ui:rank_preview|button:edit|error:role_not_assignable"
+msgid "I do not have permission to edit the underlying role! Please select a new role from the role menu, or ensure my top role is above the selected role."
+msgstr "역할을 편집할 권한이 없습니다! 새 역할을 선택하거나 내 최상위 역할이 선택한 역할보다 위에 있는지 확인해 주세요."
+
+#: src/modules/ranks/ui/preview.py:91
+msgctxt "ui:rank_preview|button:edit|error|title"
+msgid "Failed to edit rank!"
+msgstr "등급 편집 실패!"
+
+#: src/modules/ranks/ui/preview.py:109
+msgctxt "ui:rank_preview|button:edit|label"
+msgid "Edit"
+msgstr "편집"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_preview|button:delete|response:success|description|with_role"
+msgid "You have deleted the rank {mention}. Press the button below to also delete the role."
+msgstr "등급 {mention}을(를) 삭제했습니다. 역할도 삭제하려면 아래 버튼을 누르세요."
+
+#, possible-python-brace-format
+msgctxt "ui:rank_preview|button:delete|response:success|description|no_role"
+msgid "You have deleted the rank {mention}."
+msgstr "등급 {mention}을(를) 삭제했습니다."
+
+#: src/modules/ranks/ui/preview.py:153
+msgctxt "ui:rank_preview|button:delete|response:success|title"
+msgid "Rank Deleted"
+msgstr "등급 삭제됨"
+
+#: src/modules/ranks/ui/preview.py:163
+msgctxt "ui:rank_preview|button:delete|response:success|button:delete_role|label"
+msgid "Delete Role"
+msgstr "역할 삭제"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_preview|button:delete|response:success|button:delete_role|response:errored|desc"
+msgid "You have deleted the rank **{name}**! Could not delete the role due to an unknown error."
+msgstr "등급 **{name}**을(를) 삭제했습니다! 알 수 없는 오류로 역할을 삭제할 수 없습니다."
+
+#, possible-python-brace-format
+msgctxt "ui:rank_preview|button:delete|response:success|button:delete_role|response:success|desc"
+msgid "You have deleted the rank **{name}** along with the underlying role."
+msgstr "등급 **{name}**을(를) 역할과 함께 삭제했습니다."
+
+#: src/modules/ranks/ui/preview.py:202
+msgctxt "ui:rank_preview|button:delete|label"
+msgid "Delete Rank"
+msgstr "등급 삭제"
+
+#: src/modules/ranks/ui/preview.py:232
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:is_default"
+msgid "The @everyone role cannot be removed, and cannot be a rank!"
+msgstr "@everyone 역할은 제거할 수 없으며 등급이 될 수 없습니다!"
+
+#: src/modules/ranks/ui/preview.py:237
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:is_managed"
+msgid "The role is managed by another application or integration, and cannot be a rank!"
+msgstr "이 역할은 다른 애플리케이션이나 통합에 의해 관리되며 등급이 될 수 없습니다!"
+
+#: src/modules/ranks/ui/preview.py:242
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:no_permissions"
+msgid "I do not have the `MANAGE_ROLES` permission in this server, so I cannot manage ranks!"
+msgstr "이 서버에서 `MANAGE_ROLES` 권한이 없어 등급을 관리할 수 없습니다!"
+
+#: src/modules/ranks/ui/preview.py:247
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:above_me"
+msgid "This role is above my top role in the role hierarchy, so I cannot add or remove it!"
+msgstr "이 역할은 역할 계층에서 내 최상위 역할보다 위에 있어 추가하거나 제거할 수 없습니다!"
+
+#: src/modules/ranks/ui/preview.py:253
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:other"
+msgid "I am not able to manage the selected role, so it cannot be a rank!"
+msgstr "선택한 역할을 관리할 수 없으므로 등급이 될 수 없습니다!"
+
+#: src/modules/ranks/ui/preview.py:259
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|title"
+msgid "Could not update rank!"
+msgstr "등급을 업데이트할 수 없습니다!"
+
+#: src/modules/ranks/ui/preview.py:269
+msgctxt "ui:rank_preview|menu:roles|placeholder"
+msgid "Update Rank Role"
+msgstr "등급 역할 업데이트"
+
+#: src/modules/ranks/ui/preview.py:281
+msgctxt "ui:rank_preview|embed|title"
+msgid "Rank Information"
+msgstr "등급 정보"
+
+#: src/modules/ranks/ui/preview.py:288
+msgctxt "ui:rank_preview|embed|field:role|name"
+msgid "Role"
+msgstr "역할"
+
+#: src/modules/ranks/ui/preview.py:295
+msgctxt "ui:rank_preview|embed|field:required|name"
+msgid "Required"
+msgstr "필요량"
+
+#: src/modules/ranks/ui/preview.py:302
+msgctxt "ui:rank_preview|embed|field:reward|name"
+msgid "Reward"
+msgstr "보상"
+
+#: src/modules/ranks/ui/preview.py:311
+msgctxt "ui:rank_preview|embed|field:message"
+msgid "Congratulatory Message"
+msgstr "축하 메시지"
+
+#: src/modules/ranks/ui/refresh.py:134
+msgctxt "ui:refresh_ranks|embed|title:errored"
+msgid "Could not refresh the server ranks!"
+msgstr "서버 등급을 새로고침할 수 없습니다!"
+
+#: src/modules/ranks/ui/refresh.py:142
+msgctxt "ui:refresh_ranks|embed|title:done"
+msgid "Rank refresh complete!"
+msgstr "등급 새로고침 완료!"
+
+#: src/modules/ranks/ui/refresh.py:148
+msgctxt "ui:refresh_ranks|embed|title:working"
+msgid "Refreshing your server ranks, please wait."
+msgstr "서버 등급을 새로고침하는 중입니다. 잠시 기다려 주세요."
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:ranks"
+msgid "**Loading server ranks:** {emoji}"
+msgstr "**등급 로딩 중:** {emoji}"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:members"
+msgid "**Loading server members:** {emoji}"
+msgstr "**멤버 로딩 중:** {emoji}"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:roles"
+msgid "**Loading rank roles:** {emoji}"
+msgstr "**등급 역할 로딩 중:** {emoji}"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:compute"
+msgid "**Computing correct ranks:** {emoji}"
+msgstr "**올바른 등급 계산 중:** {emoji}"
+
+#: src/modules/ranks/ui/refresh.py:207
+msgctxt "ui:refresh_ranks|embed|field:remove|name"
+msgid "Removing invalid rank roles from members"
+msgstr "멤버로부터 잘못된 등급 역할 제거 중"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|field:remove|value"
+msgid "{progress} {done}/{total} removed"
+msgstr "{progress} {done}/{total} 제거됨"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:remove"
+msgid "**Removed invalid ranks:** {done}/{target}"
+msgstr "**제거된 잘못된 등급:** {done}/{target}"
+
+#: src/modules/ranks/ui/refresh.py:230
+msgctxt "ui:refresh_ranks|embed|field:add|name"
+msgid "Giving members their rank roles"
+msgstr "멤버에게 등급 역할 부여 중"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|field:add|value"
+msgid "{progress} {done}/{total} given"
+msgstr "{progress} {done}/{total} 부여됨"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:add"
+msgid "**Updated member ranks:** {done}/{target}"
+msgstr "**업데이트된 멤버 등급:** {done}/{target}"
+
+#: src/modules/ranks/ui/config.py:42
+msgctxt "ui:rankconfigui|check|not_permitted"
+msgid "You have insufficient server permissions to use this UI!"
+msgstr "이 UI를 사용할 서버 권한이 부족합니다!"
+
+#: src/modules/ranks/ui/config.py:64
+msgctxt "ui:rank_config|button:overview|label"
+msgid "Edit Ranks"
+msgstr "등급 편집"
+
+#: src/modules/ranks/ui/config.py:83
+msgctxt "ui:rank_config|menu:types|placeholder"
+msgid "Select Statistic Type"
+msgstr "통계 유형 선택"
+
+#: src/modules/ranks/ui/config.py:91
+msgctxt "ui:rank_config|menu:types|option:voice"
+msgid "Voice Activity"
+msgstr "음성 활동"
+
+#: src/modules/ranks/ui/config.py:99
+msgctxt "ui:rank_config|menu:types|option:xp"
+msgid "XP Earned"
+msgstr "획득 XP"
+
+#: src/modules/ranks/ui/config.py:107
+msgctxt "ui:rank_config|menu:types|option:messages"
+msgid "Messages Sent"
+msgstr "보낸 메시지"
+
+#: src/modules/ranks/ui/config.py:128
+msgctxt "ui:rank_config|menu:channels|placeholder"
+msgid "Select Rank Notification Channel"
+msgstr "등급 알림 채널 선택"
+
+#: src/modules/ranks/ui/config.py:136
+msgctxt "ui:rank_config|embed|title"
+msgid "Ranks Configuration Panel"
+msgstr "등급 설정 패널"
+
+#: src/modules/ranks/ui/config.py:173
+msgctxt "dash:rank|title"
+msgid "Rank Configuration ({commands[admin config ranks]})"
+msgstr "등급 설정 ({commands[admin config ranks]})"
+
+#: src/modules/ranks/ui/config.py:177
+msgctxt "dash:rank|dropdown|placeholder"
+msgid "Activity Rank Panel"
+msgstr "활동 등급 패널"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_editor|input:message|default|type:voice"
+msgid ""
+"Congratulations {user_mention}!\n"
+"For working hard for **{requires}**, you have achieved the rank of **{role_name}** in **{guild_name}**! Keep up the good work."
+msgstr ""
+"축하합니다 {user_mention}!\n"
+"**{requires}** 동안 열심히 노력하여 **{guild_name}**에서 **{role_name}** 등급을 달성했습니다! 계속 화이팅!"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_editor|input:message|default|type:xp"
+msgid ""
+"Congratulations {user_mention}!\n"
+"For earning **{requires}**, you have achieved the guild rank of **{role_name}** in **{guild_name}**!"
+msgstr ""
+"축하합니다 {user_mention}!\n"
+"**{requires}**를 획득하여 **{guild_name}**에서 **{role_name}** 등급을 달성했습니다!"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_editor|input:message|default|type:msg"
+msgid ""
+"Congratulations {user_mention}!\n"
+"For sending **{requires}**, you have achieved the guild rank of **{role_name}** in **{guild_name}**!"
+msgstr ""
+"축하합니다 {user_mention}!\n"
+"**{requires}**를 보내어 **{guild_name}**에서 **{role_name}** 등급을 달성했습니다!"
+
+#: src/modules/ranks/ui/templates.py:47
+msgctxt "rank_autocreate|template|type:study_voice|level:1"
+msgid "Voice Level 1 (1h)"
+msgstr "음성 레벨 1 (1시간)"
+
+#: src/modules/ranks/ui/templates.py:55
+msgctxt "rank_autocreate|template|type:study_voice|level:2"
+msgid "Voice Level 2 (3h)"
+msgstr "음성 레벨 2 (3시간)"
+
+#: src/modules/ranks/ui/templates.py:63
+msgctxt "rank_autocreate|template|type:study_voice|level:3"
+msgid "Voice Level 3 (6h)"
+msgstr "음성 레벨 3 (6시간)"
+
+#: src/modules/ranks/ui/templates.py:71
+msgctxt "rank_autocreate|template|type:study_voice|level:4"
+msgid "Voice Level 4 (10h)"
+msgstr "음성 레벨 4 (10시간)"
+
+#: src/modules/ranks/ui/templates.py:79
+msgctxt "rank_autocreate|template|type:study_voice|level:5"
+msgid "Voice Level 5 (20h)"
+msgstr "음성 레벨 5 (20시간)"
+
+#: src/modules/ranks/ui/templates.py:87
+msgctxt "rank_autocreate|template|type:study_voice|level:6"
+msgid "Voice Level 6 (40h)"
+msgstr "음성 레벨 6 (40시간)"
+
+#: src/modules/ranks/ui/templates.py:95
+msgctxt "rank_autocreate|template|type:study_voice|level:7"
+msgid "Voice Level 7 (80h)"
+msgstr "음성 레벨 7 (80시간)"
+
+#: src/modules/ranks/ui/templates.py:106
+msgctxt "rank_autocreate|template|type:general_voice|level:1"
+msgid "Voice Level 1 (1h)"
+msgstr "음성 레벨 1 (1시간)"
+
+#: src/modules/ranks/ui/templates.py:114
+msgctxt "rank_autocreate|template|type:general_voice|level:2"
+msgid "Voice Level 2 (2h)"
+msgstr "음성 레벨 2 (2시간)"
+
+#: src/modules/ranks/ui/templates.py:122
+msgctxt "rank_autocreate|template|type:general_voice|level:3"
+msgid "Voice Level 3 (4h)"
+msgstr "음성 레벨 3 (4시간)"
+
+#: src/modules/ranks/ui/templates.py:130
+msgctxt "rank_autocreate|template|type:general_voice|level:4"
+msgid "Voice Level 4 (8h)"
+msgstr "음성 레벨 4 (8시간)"
+
+#: src/modules/ranks/ui/templates.py:138
+msgctxt "rank_autocreate|template|type:general_voice|level:5"
+msgid "Voice Level 5 (16h)"
+msgstr "음성 레벨 5 (16시간)"
+
+#: src/modules/ranks/ui/templates.py:146
+msgctxt "rank_autocreate|template|type:general_voice|level:6"
+msgid "Voice Level 6 (32h)"
+msgstr "음성 레벨 6 (32시간)"
+
+#: src/modules/ranks/ui/templates.py:154
+msgctxt "rank_autocreate|template|type:general_voice|level:7"
+msgid "Voice Level 7 (64h)"
+msgstr "음성 레벨 7 (64시간)"
+
+#: src/modules/ranks/ui/templates.py:169
+msgctxt "rank_autocreate|template|type:xp|level:1"
+msgid "XP Level 1 (2000)"
+msgstr "XP 레벨 1 (2000)"
+
+#: src/modules/ranks/ui/templates.py:177
+msgctxt "rank_autocreate|template|type:xp|level:2"
+msgid "XP Level 2 (4000)"
+msgstr "XP 레벨 2 (4000)"
+
+#: src/modules/ranks/ui/templates.py:185
+msgctxt "rank_autocreate|template|type:xp|level:3"
+msgid "XP Level 3 (8000)"
+msgstr "XP 레벨 3 (8000)"
+
+#: src/modules/ranks/ui/templates.py:193
+msgctxt "rank_autocreate|template|type:xp|level:4"
+msgid "XP Level 4 (16000)"
+msgstr "XP 레벨 4 (16000)"
+
+#: src/modules/ranks/ui/templates.py:201
+msgctxt "rank_autocreate|template|type:xp|level:5"
+msgid "XP Level 5 (32000)"
+msgstr "XP 레벨 5 (32000)"
+
+#: src/modules/ranks/ui/templates.py:209
+msgctxt "rank_autocreate|template|type:xp|level:6"
+msgid "XP Level 6 (64000)"
+msgstr "XP 레벨 6 (64000)"
+
+#: src/modules/ranks/ui/templates.py:217
+msgctxt "rank_autocreate|template|type:xp|level:7"
+msgid "XP Level 7 (128000)"
+msgstr "XP 레벨 7 (128000)"
+
+#: src/modules/ranks/ui/templates.py:232
+msgctxt "rank_autocreate|template|type:msg|level:1"
+msgid "Message Level 1 (200)"
+msgstr "메시지 레벨 1 (200)"
+
+#: src/modules/ranks/ui/templates.py:240
+msgctxt "rank_autocreate|template|type:msg|level:2"
+msgid "Message Level 2 (400)"
+msgstr "메시지 레벨 2 (400)"
+
+#: src/modules/ranks/ui/templates.py:248
+msgctxt "rank_autocreate|template|type:msg|level:3"
+msgid "Message Level 3 (800)"
+msgstr "메시지 레벨 3 (800)"
+
+#: src/modules/ranks/ui/templates.py:256
+msgctxt "rank_autocreate|template|type:msg|level:4"
+msgid "Message Level 4 (1600)"
+msgstr "메시지 레벨 4 (1600)"
+
+#: src/modules/ranks/ui/templates.py:264
+msgctxt "rank_autocreate|template|type:msg|level:5"
+msgid "Message Level 5 (3200)"
+msgstr "메시지 레벨 5 (3200)"
+
+#: src/modules/ranks/ui/templates.py:272
+msgctxt "rank_autocreate|template|type:msg|level:6"
+msgid "Message Level 6 (6400)"
+msgstr "메시지 레벨 6 (6400)"
+
+#: src/modules/ranks/ui/templates.py:280
+msgctxt "rank_autocreate|template|type:msg|level:7"
+msgid "Message Level 7 (12800)"
+msgstr "메시지 레벨 7 (12800)"
+
+#: src/modules/ranks/ui/overview.py:97
+msgctxt "ui:rank_overview|button:auto|error:already_created"
+msgid "The rank roles have already been created!"
+msgstr "등급 역할은 이미 생성되었습니다!"
+
+#: src/modules/ranks/ui/overview.py:105
+msgctxt "ui:rank_overview|button:auto|error:my_permissions"
+msgid "I lack the 'Manage Roles' permission required to create rank roles!"
+msgstr "등급 역할을 생성하는 데 필요한 'Manage Roles' 권한이 없습니다!"
+
+#: src/modules/ranks/ui/overview.py:114
+msgctxt "ui:rank_overview|button:auto|error:invalid_template"
+msgid "Unable to determine rank role template!"
+msgstr "등급 역할 템플릿을 결정할 수 없습니다!"
+
+#: src/modules/ranks/ui/overview.py:137
+msgctxt "ui:rank_overview|button|auto|role_creation|error:forbidden"
+msgid ""
+"An error occurred while autocreating rank roles!\n"
+"I lack the 'Manage Roles' permission required to create rank roles!"
+msgstr ""
+"등급 역할 자동 생성 중 오류 발생!\n"
+"'Manage Roles' 권한이 없습니다!"
+
+#: src/modules/ranks/ui/overview.py:145
+msgctxt "ui:rank_overview|button:auto|role_creation|error:unknown"
+msgid ""
+"An error occurred while autocreating rank roles!\n"
+"Please check the server has enough space for new roles and try again."
+msgstr ""
+"자동 생성 중 오류!\n"
+"서버에 새 역할을 위한 공간이 있는지 확인해 주세요."
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|button:auto|role_creation|success"
+msgid ""
+"Successfully created the following rank roles:\n"
+"{roles}"
+msgstr ""
+"다음 등급 역할이 성공적으로 생성되었습니다:\n"
+"{roles}"
+
+#: src/modules/ranks/ui/overview.py:162
+msgctxt "ui:rank_overview|button:auto|label"
+msgid "Auto Create"
+msgstr "자동 생성"
+
+#: src/modules/ranks/ui/overview.py:178
+msgctxt "ui:rank_overview|button:refresh|label"
+msgid "Refresh Member Ranks"
+msgstr "멤버 등급 새로고침"
+
+#: src/modules/ranks/ui/overview.py:190
+msgctxt "ui:rank_overview|button:clear|confirm"
+msgid "Are you sure you want to **delete all activity ranks** in this server?"
+msgstr "이 서버의 **모든 활동 등급을 삭제**하시겠습니까?"
+
+#: src/modules/ranks/ui/overview.py:195
+msgctxt "ui:rank_overview|button:clear|confirm|button:yes"
+msgid "Yes, clear ranks"
+msgstr "예, 등급 삭제"
+
+#: src/modules/ranks/ui/overview.py:201
+msgctxt "ui:rank_overview|button:clear|confirm|button:no"
+msgid "Cancel"
+msgstr "취소"
+
+#: src/modules/ranks/ui/overview.py:217
+msgctxt "ui:rank_overview|button:clear|label"
+msgid "Clear Ranks"
+msgstr "등급 지우기"
+
+#: src/modules/ranks/ui/overview.py:231
+msgctxt "ui:rank_overview|button:create|error:my_permissions"
+msgid "I lack the 'Manage Roles' permission required to create rank roles!"
+msgstr "등급 역할을 생성하는 데 필요한 'Manage Roles' 권한이 없습니다!"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|button:create|success"
+msgid "Created a new rank {role}"
+msgstr "새 등급 {role} 생성됨"
+
+#: src/modules/ranks/ui/overview.py:257
+msgctxt "ui:rank_overview|button:create|label"
+msgid "Create Rank"
+msgstr "등급 생성"
+
+#: src/modules/ranks/ui/overview.py:300
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:is_default"
+msgid "The @everyone role cannot be removed, and cannot be a rank!"
+msgstr "@everyone 역할은 제거할 수 없으며 등급이 될 수 없습니다!"
+
+#: src/modules/ranks/ui/overview.py:305
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:is_managed"
+msgid "The role is managed by another application or integration, and cannot be a rank!"
+msgstr "이 역할은 다른 애플리케이션이나 통합에 의해 관리되며 등급이 될 수 없습니다!"
+
+#: src/modules/ranks/ui/overview.py:310
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:no_permissions"
+msgid "I do not have the `MANAGE_ROLES` permission in this server, so I cannot manage ranks!"
+msgstr "이 서버에서 `MANAGE_ROLES` 권한이 없어 등급을 관리할 수 없습니다!"
+
+#: src/modules/ranks/ui/overview.py:315
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:above_me"
+msgid "This role is above my top role in the role hierarchy, so I cannot add or remove it!"
+msgstr "이 역할은 역할 계층에서 내 최상위 역할보다 위에 있어 추가하거나 제거할 수 없습니다!"
+
+#: src/modules/ranks/ui/overview.py:321
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:other"
+msgid "I am not able to manage the selected role, so it cannot be a rank!"
+msgstr "선택한 역할을 관리할 수 없으므로 등급이 될 수 없습니다!"
+
+#: src/modules/ranks/ui/overview.py:327
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|title"
+msgid "Could not create rank!"
+msgstr "등급을 생성할 수 없습니다!"
+
+#: src/modules/ranks/ui/overview.py:351
+msgctxt "ui:rank_overview|menu:roles|placeholder"
+msgid "Create from role"
+msgstr "역할로 생성"
+
+#: src/modules/ranks/ui/overview.py:368
+msgctxt "ui:rank_overview|menu:ranks|placeholder"
+msgid "View or edit rank"
+msgstr "등급 보기 또는 편집"
+
+#: src/modules/ranks/ui/overview.py:454
+msgctxt "ui:rank_overview|embed:noranks|desc"
+msgid "No activity ranks have been set up!"
+msgstr "활동 등급이 설정되지 않았습니다!"
+
+#: src/modules/ranks/ui/overview.py:459
+msgctxt "ui:rank_overview|embed:noranks|desc|admin_addendum"
+msgid ""
+"Press 'Auto Create' to automatically create a standard heirachy of ranks.\n"
+"To manually create ranks, press 'Create Rank' below, or select a role!"
+msgstr ""
+"'자동 생성'을 눌러 표준 등급 계층을 자동 생성합니다.\n"
+"수동으로 생성하려면 '등급 생성'을 누르거나 역할을 선택하세요!"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|title|type:voice"
+msgid "Voice Ranks in {guild_name}"
+msgstr "{guild_name}의 음성 등급"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|title|type:xp"
+msgid "XP ranks in {guild_name}"
+msgstr "{guild_name}의 XP 등급"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|title|type:message"
+msgid "Message ranks in {guild_name}"
+msgstr "{guild_name}의 메시지 등급"
+
+#: src/modules/ranks/ui/overview.py:490
+msgctxt "ui:rank_overview|embed|field:note|name"
+msgid "Note"
+msgstr "참고"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|field:note|value:with_season"
+msgid "Ranks are determined by activity since {timestamp}."
+msgstr "등급은 {timestamp} 이후의 활동으로 결정됩니다."
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|field:note|value:without_season"
+msgid ""
+"Ranks are determined by *all-time* statistics.\n"
+"To reward ranks from a later time (e.g. to have monthly/quarterly/yearly ranks) set the `season_start` with {stats_cmd}"
+msgstr ""
+"등급은 *전체 기간* 통계에 의해 결정됩니다.\n"
+"이후 시점부터의 등급을 위해 {stats_cmd}로 `season_start`를 설정하세요"
+
+#: src/modules/ranks/ui/overview.py:510
+msgctxt "ui:rank_overview|embed|field:note|value|voice_addendum"
+msgid "Also note that ranks will only be updated when a member leaves a tracked voice channel! Use the **Refresh Member Ranks** button below to update all members manually."
+msgstr "등급은 멤버가 추적 중인 음성 채널을 나갈 때만 업데이트됩니다! 모든 멤버를 수동으로 업데이트하려면 아래의 **멤버 등급 새로고침** 버튼을 사용하세요."
+
+#: src/modules/ranks/ui/editor.py:33
+msgctxt "ui:rank_editor|input:role_name|label"
+msgid "Role Name"
+msgstr "역할 이름"
+
+#: src/modules/ranks/ui/editor.py:37
+msgctxt "ui:rank_editor|input:role_name|placeholder"
+msgid "Name of the awarded guild role"
+msgstr "부여되는 서버 역할 이름"
+
+#: src/modules/ranks/ui/editor.py:53
+msgctxt "ui:rank_editor|input:role_colour|label"
+msgid "Role Colour"
+msgstr "역할 색상"
+
+#: src/modules/ranks/ui/editor.py:57
+msgctxt "ui:rank_editor|input:role_colour|placeholder"
+msgid "Colour of the awarded guild role, e.g. #AB1321"
+msgstr "부여되는 역할 색상, 예: #AB1321"
+
+#: src/modules/ranks/ui/editor.py:69
+msgctxt "ui:rank_editor|input:role_colour|error:parse"
+msgid "`role_colour`: Could not parse colour! Please use `#<hex>` format e.g. `#AB1325`."
+msgstr "`role_colour`: 색상을 분석할 수 없습니다! `#<hex>` 형식을 사용하세요, 예: `#AB1325`."
+
+#: src/modules/ranks/ui/editor.py:88
+msgctxt "ui:rank_editor|type:voice|input:requires|label"
+msgid "Required Voice Hours"
+msgstr "필요한 음성 시간"
+
+#: src/modules/ranks/ui/editor.py:92
+msgctxt "ui:rank_editor|type:voice|input:requires|placeholder"
+msgid "Number of voice hours before awarding this rank"
+msgstr "이 등급을 부여하기 전 필요한 음성 시간 수"
+
+#: src/modules/ranks/ui/editor.py:97
+msgctxt "ui:rank_editor|type:xp|input:requires|label"
+msgid "Required XP"
+msgstr "필요한 XP"
+
+#: src/modules/ranks/ui/editor.py:101
+msgctxt "ui:rank_editor|type:xp|input:requires|placeholder"
+msgid "Amount of XP needed before obtaining this rank"
+msgstr "이 등급을 획득하기 전 필요한 XP 양"
+
+#: src/modules/ranks/ui/editor.py:106
+msgctxt "ui:rank_editor|type:message|input:requires|label"
+msgid "Required Message Count"
+msgstr "필요한 메시지 수"
+
+#: src/modules/ranks/ui/editor.py:110
+msgctxt "ui:rank_editor|type:message|input:requires|placeholder"
+msgid "Number of messages needed before awarding rank"
+msgstr "등급 부여 전 필요한 메시지 수"
+
+#: src/modules/ranks/ui/editor.py:126
+msgctxt "ui:rank_editor|type:voice|input:requires|error:parse"
+msgid "`requires`: Could not parse provided minimum time! Please write a number of hours."
+msgstr "`requires`: 제공된 최소 시간을 분석할 수 없습니다! 시간 수를 입력해 주세요."
+
+#: src/modules/ranks/ui/editor.py:137
+msgctxt "ui:rank_editor|type:message|input:requires|error:parse"
+msgid "`requires`: Could not parse provided minimum message count! Please enter an integer."
+msgstr "`requires`: 제공된 최소 메시지 수를 분석할 수 없습니다! 정수를 입력해 주세요."
+
+#: src/modules/ranks/ui/editor.py:148
+msgctxt "ui:rank_editor|type:xp|input:requires|error:parse"
+msgid "`requires`: Could not parse provided minimum XP! Please enter an integer."
+msgstr "`requires`: 제공된 최소 XP를 분석할 수 없습니다! 정수를 입력해 주세요."
+
+#: src/modules/ranks/ui/editor.py:162
+msgctxt "ui:rank_editor|input:reward|label"
+msgid "LionCoins awarded upon achieving this rank"
+msgstr "이 등급 달성 시 부여되는 LionCoins"
+
+#: src/modules/ranks/ui/editor.py:166
+msgctxt "ui:rank_editor|input:reward|placeholder"
+msgid "LionCoins awarded upon achieving this rank"
+msgstr "등급 달성 시 LionCoins"
+
+#: src/modules/ranks/ui/editor.py:181
+msgctxt "ui:rank_editor|input:reward|error:parse"
+msgid "`reward`: Please enter an integer number of LionCoins."
+msgstr "`reward`: LionCoins의 정수를 입력해 주세요."
+
+#: src/modules/ranks/ui/editor.py:197
+msgctxt "ui:rank_editor|input:message|label"
+msgid "Rank Message"
+msgstr "등급 메시지"
+
+#: src/modules/ranks/ui/editor.py:201
+msgctxt "ui:rank_editor|input:message|placeholder"
+msgid "Congratulatory message sent to the user upon achieving this rank."
+msgstr "등급 달성 시 전송되는 축하 메시지."
+
+#: src/modules/ranks/ui/editor.py:262
+msgctxt "ui:rank_editor|mode:edit|title"
+msgid "Rank Editor"
+msgstr "등급 편집기"
+
+#: src/modules/ranks/ui/editor.py:317
+msgctxt "ui:rank_editor|mode:create|title"
+msgid "Rank Creator"
+msgstr "등급 생성기"

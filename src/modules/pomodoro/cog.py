@@ -1,11 +1,13 @@
 from typing import Optional
 from collections import defaultdict
+from datetime import datetime, timedelta, date as _date
 import asyncio
 
 import discord
 from discord.ext import commands as cmds
 from discord.ext.commands.errors import CheckFailure
 from discord import app_commands as appcmds
+import psycopg.errors
 
 from meta import LionCog, LionBot, LionContext
 from meta.logger import log_wrap
@@ -18,7 +20,7 @@ from wards import low_management_ward
 
 from . import babel, logger
 from .data import TimerData
-from .lib import TimerRole
+from .lib import TimerRole, FOCUS_MODE_URL, DASHBOARD_SESSION_URL, POMODORO_PRESETS, WEBSITE_BASE_URL
 from .settings import TimerSettings
 from .settingui import TimerConfigUI
 from .timer import Timer
@@ -50,6 +52,10 @@ class TimerCog(LionCog):
 
         self.ready = False
         self.timers: dict[int, dict[int, Timer]] = defaultdict(dict)
+        # --- AI-MODIFIED (2026-03-16) ---
+        # Purpose: Track when members join timer channels for session summaries
+        self._session_joins: dict[tuple[int, int], 'datetime'] = {}
+        # --- END AI-MODIFIED ---
 
     async def _monitor(self):
         timers = [timer for tguild in self.timers.values() for timer in tguild.values()]
@@ -157,10 +163,17 @@ class TimerCog(LionCog):
         if to_unload:
             await self._unload_timers(to_unload)
 
+        # --- AI-MODIFIED (2026-03-22) ---
+        # Purpose: Guard against CoreCog not being loaded yet during on_ready race
         if guildids:
-            lguilds = await self.bot.core.lions.fetch_guilds(*guildids)
+            core = self.bot.core
+            if core is None:
+                logger.warning("CoreCog not available during timer load, skipping timer initialization.")
+                return
+            lguilds = await core.lions.fetch_guilds(*guildids)
         else:
             lguilds = []
+        # --- END AI-MODIFIED ---
 
         now = utc_now()
         to_launch = []
@@ -278,12 +291,30 @@ class TimerCog(LionCog):
             tasks = []
             if leaving is not None:
                 tasks.append(asyncio.create_task(leaving.update_status_card()))
+                # --- AI-MODIFIED (2026-03-16) ---
+                # Purpose: Send session summary when member leaves a running timer
+                tasks.append(asyncio.create_task(
+                    self._send_leave_summary(member, leaving)
+                ))
+                # --- END AI-MODIFIED ---
             if joining is not None:
                 joining.last_seen[member.id] = utc_now()
+                # --- AI-MODIFIED (2026-03-16) ---
+                # Purpose: Track member join time for session summary
+                self._session_joins[(joining.data.channelid, member.id)] = utc_now()
+                # --- END AI-MODIFIED ---
                 if not joining.running and joining.auto_restart:
                     tasks.append(asyncio.create_task(joining.start()))
                 else:
                     tasks.append(asyncio.create_task(joining.update_status_card()))
+
+            # --- AI-MODIFIED (2026-03-18) ---
+            # Purpose: Premium hooks as fire-and-forget background tasks (auto-role, economy, gamification)
+            if leaving is not None:
+                asyncio.create_task(self._premium_on_leave(member, leaving))
+            if joining is not None:
+                asyncio.create_task(self._premium_on_join(member, joining))
+            # --- END AI-MODIFIED ---
 
             if tasks:
                 try:
@@ -294,6 +325,179 @@ class TimerCog(LionCog):
                         f"Leaving: {leaving!r} "
                         f"Joining: {joining!r}"
                     )
+
+    # --- AI-MODIFIED (2026-03-16) ---
+    # Purpose: Send a session summary when a member leaves a pomodoro timer
+    async def _send_leave_summary(self, member: discord.Member, timer: Timer):
+        try:
+            if not timer.running or timer.destroyed:
+                return
+
+            join_key = (timer.data.channelid, member.id)
+            join_time = self._session_joins.pop(join_key, None)
+            if join_time is None:
+                return
+
+            now = utc_now()
+            duration_seconds = (now - join_time).total_seconds()
+            min_duration = timer.data.focus_length
+            if duration_seconds < min_duration:
+                return
+
+            interval = timer.data.focus_length + timer.data.break_length
+            cycles_completed = int(duration_seconds // interval)
+
+            hours = int(duration_seconds) // 3600
+            minutes = (int(duration_seconds) % 3600) // 60
+            if hours > 0:
+                duration_str = f"**{hours}h {minutes}m**"
+            else:
+                duration_str = f"**{minutes}m**"
+
+            t = self.bot.translator.t
+            description = t(_p(
+                'timer|leave_summary|desc',
+                "Great session, {mention}! You studied for {duration} and completed "
+                "**{cycles}** focus cycle(s). Keep it up!"
+            )).format(
+                mention=member.mention,
+                duration=duration_str,
+                cycles=cycles_completed
+            )
+
+            embed = discord.Embed(
+                colour=discord.Colour.green(),
+                description=description
+            )
+
+            link_view = discord.ui.View()
+            link_view.add_item(discord.ui.Button(
+                style=discord.ButtonStyle.link,
+                url=DASHBOARD_SESSION_URL,
+                label="Continue on the web"
+            ))
+
+            notify_hook = await timer.get_notification_webhook()
+            if notify_hook:
+                await notify_hook.send(embed=embed, view=link_view)
+        except discord.HTTPException:
+            logger.debug(
+                f"Failed to send leave summary for member {member.id} in timer {timer!r}"
+            )
+        except Exception:
+            logger.exception(
+                f"Unexpected error sending leave summary for member {member.id} in timer {timer!r}"
+            )
+    # --- END AI-MODIFIED ---
+
+    # --- AI-MODIFIED (2026-03-18) ---
+    # Purpose: Premium on-leave and on-join handlers (auto-role, focus power reset, economy bonus)
+    async def _premium_on_leave(self, member: discord.Member, timer: Timer):
+        try:
+            if not await timer._check_premium():
+                return
+
+            config = await timer.premium_config()
+            if config and config.focus_roleid:
+                try:
+                    role = member.guild.get_role(config.focus_roleid)
+                    if role and role in member.roles:
+                        await member.remove_roles(role, reason="Left pomodoro timer")
+                except discord.Forbidden:
+                    logger.debug(f"Missing MANAGE_ROLES for focus role removal in guild {timer.data.guildid}")
+                except Exception:
+                    logger.debug(f"Focus role removal failed for {member.id}, non-critical")
+
+            stage = timer.current_stage
+            if stage and stage.focused:
+                try:
+                    from .gamification import reset_focus_power
+                    await reset_focus_power(self.bot, member.id)
+                except Exception:
+                    logger.debug(f"Focus power reset failed for {member.id}, non-critical")
+
+            join_key = (timer.data.channelid, member.id)
+            join_time = self._session_joins.get(join_key)
+            if join_time:
+                session_minutes = (utc_now() - join_time).total_seconds() / 60
+                await self._apply_focus_bonus(member, timer, session_minutes)
+                await self._apply_liongotchi_bonus(member, timer, session_minutes)
+
+                if config and config.session_summary:
+                    try:
+                        from .summary import generate_individual_summary, send_summary_embed
+                        summary = await generate_individual_summary(
+                            self.bot, timer, member.id, session_minutes, session_minutes * 0.7
+                        )
+                        if summary:
+                            notif_channel = timer.notification_channel
+                            if notif_channel:
+                                await send_summary_embed(self.bot, notif_channel.id, summary)
+                    except Exception:
+                        logger.debug(f"Premium session summary failed for {member.id}, non-critical")
+        except Exception:
+            logger.debug(f"Premium leave handler failed for {member.id}, non-critical")
+
+    async def _premium_on_join(self, member: discord.Member, timer: Timer):
+        try:
+            if not await timer._check_premium():
+                return
+
+            config = await timer.premium_config()
+            stage = timer.current_stage
+            if config and config.focus_roleid and stage and stage.focused:
+                try:
+                    role = member.guild.get_role(config.focus_roleid)
+                    if role and role not in member.roles:
+                        await member.add_roles(role, reason="Joined pomodoro timer during focus")
+                except discord.Forbidden:
+                    logger.debug(f"Missing MANAGE_ROLES for focus role add in guild {timer.data.guildid}")
+                except Exception:
+                    logger.debug(f"Focus role add failed for {member.id}, non-critical")
+        except Exception:
+            logger.debug(f"Premium join handler failed for {member.id}, non-critical")
+
+    async def _apply_focus_bonus(self, member: discord.Member, timer: Timer, session_minutes: float):
+        try:
+            if not await timer._check_premium():
+                return
+            config = await timer.premium_config()
+            if not config or not config.coin_multiplier:
+                return
+
+            from .gamification import get_streak_data, get_focus_power_multiplier
+            streak = await get_streak_data(self.bot, member.id)
+            fp_mult = get_focus_power_multiplier(streak.get('focus_power', 0))
+
+            guild_config = await self.bot.core.data.Guild.fetch(timer.data.guildid)
+            coins_per_centixp = getattr(guild_config, 'coins_per_centixp', None) or 100
+            base_coins = int((session_minutes / 60) * coins_per_centixp * 0.01)
+            bonus = int(base_coins * 0.5 * fp_mult)
+            bonus = min(bonus, 1000)
+
+            if bonus > 0:
+                connector = self.data.Timer.table.connector
+                async with connector.connection() as conn:
+                    async with conn.cursor() as cursor:
+                        await cursor.execute(
+                            "INSERT INTO coin_transactions (guildid, userid, amount, bonus, from_account) "
+                            "VALUES (%s, %s, %s, TRUE, FALSE)",
+                            (timer.data.guildid, member.id, bonus)
+                        )
+                logger.debug(f"Awarded {bonus} pomodoro bonus coins to {member.id}")
+        except Exception:
+            logger.debug(f"Focus bonus failed for {member.id}, non-critical")
+
+    async def _apply_liongotchi_bonus(self, member: discord.Member, timer: Timer, session_minutes: float):
+        try:
+            lg_cog = self.bot.get_cog('LionGotchiCog')
+            if not lg_cog or not await timer._check_premium():
+                return
+            if hasattr(lg_cog, 'apply_pomodoro_bonus'):
+                await lg_cog.apply_pomodoro_bonus(member.id, timer.data.guildid, session_minutes)
+        except Exception:
+            logger.debug(f"LionGotchi pomodoro bonus failed for {member.id}, non-critical")
+    # --- END AI-MODIFIED ---
 
     @LionCog.listener('on_guild_remove')
     @log_wrap(action='Unload Guild Timers')
@@ -564,7 +768,21 @@ class TimerCog(LionCog):
                     timestamp=f"<t:{int(stage.end.timestamp())}:R>" if stage else None
                 )
                 embed.add_field(name=timer.channel.mention, value=status, inline=False)
-            await ctx.reply(embed=embed, ephemeral=False)
+            # --- AI-MODIFIED (2026-03-16) ---
+            # Purpose: Add website link buttons to timer list response
+            link_view = discord.ui.View()
+            link_view.add_item(discord.ui.Button(
+                style=discord.ButtonStyle.link,
+                url=FOCUS_MODE_URL,
+                label="Focus Mode"
+            ))
+            link_view.add_item(discord.ui.Button(
+                style=discord.ButtonStyle.link,
+                url=DASHBOARD_SESSION_URL,
+                label="Dashboard"
+            ))
+            await ctx.reply(embed=embed, view=link_view, ephemeral=False)
+            # --- END AI-MODIFIED ---
 
     # -- Admin Commands --
     @cmds.hybrid_group(
@@ -575,6 +793,8 @@ class TimerCog(LionCog):
     async def pomodoro_group(self, ctx: LionContext):
         ...
 
+    # --- AI-MODIFIED (2026-03-16) ---
+    # Purpose: Add preset parameter and make focus/break optional for quick-start
     @pomodoro_group.command(
         name=_p('cmd:pomodoro_create', "create"),
         description=_p(
@@ -584,6 +804,7 @@ class TimerCog(LionCog):
     )
     @appcmds.rename(
         channel=_p('cmd:pomodoro_create|param:channel', "timer_channel"),
+        preset=_p('cmd:pomodoro_create|param:preset', "preset"),
         **{param: option._display_name for param, (option, _) in _param_options.items()}
     )
     @appcmds.describe(
@@ -591,12 +812,23 @@ class TimerCog(LionCog):
             'cmd:pomodoro_create|param:channel|desc',
             "Voice channel to create the timer in. (Defaults to your current channel, or makes a new one.)"
         ),
+        preset=_p(
+            'cmd:pomodoro_create|param:preset|desc',
+            "Quick-start preset. Overridden by explicit focus/break values."
+        ),
         **{param: option._desc for param, (option, _) in _param_options.items()}
     )
+    @appcmds.choices(preset=[
+        appcmds.Choice(name="Classic (25/5)", value="classic"),
+        appcmds.Choice(name="Long Focus (50/10)", value="long_focus"),
+        appcmds.Choice(name="Short Sprint (15/3)", value="short_sprint"),
+        appcmds.Choice(name="Lecture (45/10)", value="lecture"),
+    ])
     async def cmd_pomodoro_create(self, ctx: LionContext,
-                                  focus_length: appcmds.Range[int, 1, 24*60],
-                                  break_length: appcmds.Range[int, 1, 24*60],
                                   channel: Optional[discord.VoiceChannel] = None,
+                                  preset: Optional[appcmds.Choice[str]] = None,
+                                  focus_length: Optional[appcmds.Range[int, 1, 24*60]] = None,
+                                  break_length: Optional[appcmds.Range[int, 1, 24*60]] = None,
                                   notification_channel: Optional[discord.TextChannel | discord.VoiceChannel] = None,
                                   inactivity_threshold: Optional[appcmds.Range[int, 0, 127]] = None,
                                   manager_role: Optional[discord.Role] = None,
@@ -604,6 +836,7 @@ class TimerCog(LionCog):
                                   name: Optional[appcmds.Range[str, 0, 100]] = None,
                                   channel_name: Optional[appcmds.Range[str, 0, 100]] = None,
                                   ):
+    # --- END AI-MODIFIED ---
         t = self.bot.translator.t
 
         # Type guards
@@ -611,6 +844,28 @@ class TimerCog(LionCog):
             return
         if not ctx.interaction:
             return
+
+        # --- AI-MODIFIED (2026-03-16) ---
+        # Purpose: Resolve focus/break from preset when not explicitly provided
+        preset_value = preset.value if isinstance(preset, appcmds.Choice) else preset
+        if preset_value and preset_value in POMODORO_PRESETS:
+            preset_focus, preset_break = POMODORO_PRESETS[preset_value]
+            if focus_length is None:
+                focus_length = preset_focus
+            if break_length is None:
+                break_length = preset_break
+
+        if focus_length is None or break_length is None:
+            embed = discord.Embed(
+                colour=discord.Colour.brand_red(),
+                description=t(_p(
+                    'cmd:pomodoro_create|error:no_lengths',
+                    "Please provide a **preset** or explicit **focus_length** and **break_length** values!"
+                ))
+            )
+            await ctx.reply(embed=embed, ephemeral=True)
+            return
+        # --- END AI-MODIFIED ---
 
         # Get private room if applicable
         room_cog = self.bot.get_cog('RoomCog')
@@ -747,8 +1002,30 @@ class TimerCog(LionCog):
             # Permission checks and input checking done
             await ctx.interaction.response.defer(thinking=True)
 
-            # Create timer
-            timer = await self.create_timer(**create_args)
+            # --- AI-MODIFIED (2026-03-22) ---
+            # Purpose: Catch DB-level duplicate key if timer exists in DB but not in memory
+            try:
+                # Create timer
+                timer = await self.create_timer(**create_args)
+            except psycopg.errors.UniqueViolation:
+                logger.warning(
+                    "UniqueViolation creating timer for channel %s (guild %s) -- already exists in DB",
+                    channel.id, channel.guild.id
+                )
+                embed = discord.Embed(
+                    colour=discord.Colour.brand_red(),
+                    description=t(_p(
+                        'cmd:pomodoro_create|add_timer|error:timer_exists',
+                        "A timer already exists in {channel}! "
+                        "Reconfigure it with {edit_cmd}."
+                    )).format(
+                        channel=channel.mention,
+                        edit_cmd=self.bot.core.mention_cmd('pomodoro edit')
+                    )
+                )
+                await ctx.interaction.followup.send(embed=embed, ephemeral=True)
+                return
+            # --- END AI-MODIFIED ---
 
             # Start timer
             await timer.start()
@@ -960,6 +1237,274 @@ class TimerCog(LionCog):
         ui = TimerOptionsUI(self.bot, timer, timer_role, callerid=ctx.author.id)
         await ui.run(ctx.interaction)
         await ui.wait()
+
+    # --- AI-MODIFIED (2026-03-16) ---
+    # Purpose: Add /pomodoro stats command for personal and server study statistics
+    @pomodoro_group.command(
+        name=_p('cmd:pomodoro_stats', "stats"),
+        description=_p('cmd:pomodoro_stats|desc', "View your Pomodoro study statistics.")
+    )
+    @appcmds.describe(
+        server=_p(
+            'cmd:pomodoro_stats|param:server|desc',
+            "Show server-wide stats instead of personal stats (admin only)."
+        )
+    )
+    async def cmd_pomodoro_stats(self, ctx: LionContext,
+                                 server: Optional[bool] = False):
+        t = self.bot.translator.t
+
+        if not ctx.guild:
+            return
+        if not ctx.interaction:
+            return
+
+        await ctx.interaction.response.defer(thinking=True, ephemeral=True)
+
+        connector = self.data.Timer.table.connector
+
+        def format_duration(seconds):
+            if seconds is None or seconds <= 0:
+                return "0m"
+            hours = int(seconds) // 3600
+            minutes = (int(seconds) % 3600) // 60
+            if hours > 0:
+                return f"{hours}h {minutes}m"
+            return f"{minutes}m"
+
+        try:
+            if server:
+                if not ctx.author.guild_permissions.administrator:
+                    embed = discord.Embed(
+                        colour=discord.Colour.brand_red(),
+                        description=t(_p(
+                            'cmd:pomodoro_stats|error:not_admin',
+                            "Server stats require administrator permissions!"
+                        ))
+                    )
+                    await ctx.interaction.edit_original_response(embed=embed)
+                    return
+
+                gid = ctx.guild.id
+                async with connector.connection() as conn:
+                    async with conn.cursor() as cursor:
+                        await cursor.execute(
+                            "WITH combined AS ("
+                            "  SELECT userid, start_time, duration FROM voice_sessions WHERE guildid = %s"
+                            "  UNION ALL"
+                            "  SELECT userid, start_time,"
+                            "    EXTRACT(EPOCH FROM (NOW() - start_time))::INTEGER"
+                            "  FROM voice_sessions_ongoing WHERE guildid = %s"
+                            ") SELECT"
+                            "  COUNT(*) as total_sessions,"
+                            "  COALESCE(SUM(duration), 0) as total_seconds,"
+                            "  COUNT(DISTINCT userid) as unique_users"
+                            " FROM combined"
+                            " WHERE start_time >= NOW() - INTERVAL '30 days'",
+                            (gid, gid)
+                        )
+                        server_row = await cursor.fetchone()
+
+                        await cursor.execute(
+                            "WITH combined AS ("
+                            "  SELECT userid, start_time, duration FROM voice_sessions WHERE guildid = %s"
+                            "  UNION ALL"
+                            "  SELECT userid, start_time,"
+                            "    EXTRACT(EPOCH FROM (NOW() - start_time))::INTEGER"
+                            "  FROM voice_sessions_ongoing WHERE guildid = %s"
+                            ") SELECT userid, SUM(duration) as total_seconds"
+                            " FROM combined"
+                            " WHERE start_time >= NOW() - INTERVAL '30 days'"
+                            " GROUP BY userid ORDER BY total_seconds DESC LIMIT 5",
+                            (gid, gid)
+                        )
+                        top_users = await cursor.fetchall()
+
+                active_timers = sum(
+                    1 for timer in self.get_guild_timers(ctx.guild.id).values()
+                    if timer.running
+                )
+
+                embed = discord.Embed(
+                    colour=discord.Colour.orange(),
+                    title=t(_p(
+                        'cmd:pomodoro_stats|server|title',
+                        "Server Study Stats \u2014 Last 30 Days"
+                    ))
+                )
+                embed.add_field(
+                    name=t(_p('cmd:pomodoro_stats|server|field:hours', "Total Study Time")),
+                    value=format_duration(server_row['total_seconds']),
+                    inline=True
+                )
+                embed.add_field(
+                    name=t(_p('cmd:pomodoro_stats|server|field:sessions', "Total Sessions")),
+                    value=str(server_row['total_sessions']),
+                    inline=True
+                )
+                embed.add_field(
+                    name=t(_p('cmd:pomodoro_stats|server|field:users', "Active Students")),
+                    value=str(server_row['unique_users']),
+                    inline=True
+                )
+                embed.add_field(
+                    name=t(_p('cmd:pomodoro_stats|server|field:timers', "Running Timers")),
+                    value=str(active_timers),
+                    inline=True
+                )
+
+                if top_users:
+                    leaderboard = "\n".join(
+                        f"**{i+1}.** <@{row['userid']}> \u2014 {format_duration(row['total_seconds'])}"
+                        for i, row in enumerate(top_users)
+                    )
+                    embed.add_field(
+                        name=t(_p('cmd:pomodoro_stats|server|field:top', "Top Studiers")),
+                        value=leaderboard,
+                        inline=False
+                    )
+
+                embed.set_footer(text=ctx.guild.name)
+
+                analytics_url = f"{WEBSITE_BASE_URL}/dashboard/servers/{ctx.guild.id}/pomodoro"
+                link_view = discord.ui.View()
+                link_view.add_item(discord.ui.Button(
+                    style=discord.ButtonStyle.link,
+                    url=analytics_url,
+                    label="View Full Analytics"
+                ))
+                await ctx.interaction.edit_original_response(embed=embed, view=link_view)
+
+            else:
+                uid = ctx.author.id
+                gid = ctx.guild.id
+                async with connector.connection() as conn:
+                    async with conn.cursor() as cursor:
+                        await cursor.execute(
+                            "WITH combined AS ("
+                            "  SELECT start_time, duration FROM voice_sessions"
+                            "    WHERE userid = %s AND guildid = %s"
+                            "  UNION ALL"
+                            "  SELECT start_time,"
+                            "    EXTRACT(EPOCH FROM (NOW() - start_time))::INTEGER"
+                            "  FROM voice_sessions_ongoing"
+                            "    WHERE userid = %s AND guildid = %s"
+                            ") SELECT"
+                            "  COUNT(*) as total_sessions,"
+                            "  COALESCE(SUM(duration), 0) as total_seconds,"
+                            "  COALESCE(MAX(duration), 0) as longest_session,"
+                            "  COALESCE(SUM(CASE WHEN start_time::date = CURRENT_DATE"
+                            "    THEN duration ELSE 0 END), 0) as today_seconds,"
+                            "  COALESCE(SUM(CASE WHEN start_time >= NOW() - INTERVAL '7 days'"
+                            "    THEN duration ELSE 0 END), 0) as week_seconds,"
+                            "  COALESCE(SUM(CASE WHEN start_time >= NOW() - INTERVAL '30 days'"
+                            "    THEN duration ELSE 0 END), 0) as month_seconds"
+                            " FROM combined",
+                            (uid, gid, uid, gid)
+                        )
+                        stats_row = await cursor.fetchone()
+
+                        await cursor.execute(
+                            "SELECT DISTINCT start_time::date as session_date"
+                            " FROM voice_sessions"
+                            " WHERE userid = %s AND guildid = %s"
+                            "   AND start_time >= NOW() - INTERVAL '365 days'"
+                            " ORDER BY session_date DESC",
+                            (uid, gid)
+                        )
+                        date_rows = await cursor.fetchall()
+
+                today = utc_now().date()
+                session_dates = [row['session_date'] for row in date_rows]
+                streak = 0
+                if session_dates:
+                    check = today
+                    if session_dates[0] == today or session_dates[0] == today - timedelta(days=1):
+                        for d in session_dates:
+                            if d == check:
+                                streak += 1
+                                check -= timedelta(days=1)
+                            elif d < check:
+                                break
+
+                if stats_row['total_sessions'] == 0:
+                    embed = discord.Embed(
+                        colour=discord.Colour.orange(),
+                        description=t(_p(
+                            'cmd:pomodoro_stats|personal|no_data',
+                            "You haven't studied in this server yet! "
+                            "Join a voice channel or pomodoro timer to start tracking."
+                        ))
+                    )
+                else:
+                    embed = discord.Embed(
+                        colour=discord.Colour.orange(),
+                        title=t(_p(
+                            'cmd:pomodoro_stats|personal|title',
+                            "Your Study Stats in {guild}"
+                        )).format(guild=ctx.guild.name)
+                    )
+                    embed.add_field(
+                        name=t(_p('cmd:pomodoro_stats|personal|field:sessions', "Total Sessions")),
+                        value=str(stats_row['total_sessions']),
+                        inline=True
+                    )
+                    embed.add_field(
+                        name=t(_p('cmd:pomodoro_stats|personal|field:hours', "Total Study Time")),
+                        value=format_duration(stats_row['total_seconds']),
+                        inline=True
+                    )
+                    embed.add_field(
+                        name=t(_p('cmd:pomodoro_stats|personal|field:longest', "Longest Session")),
+                        value=format_duration(stats_row['longest_session']),
+                        inline=True
+                    )
+                    embed.add_field(
+                        name=t(_p('cmd:pomodoro_stats|personal|field:streak', "Current Streak")),
+                        value=t(_p(
+                            'cmd:pomodoro_stats|personal|streak_value',
+                            "{days} day(s)"
+                        )).format(days=streak),
+                        inline=True
+                    )
+                    embed.add_field(name="\u200b", value="\u200b", inline=True)
+                    embed.add_field(name="\u200b", value="\u200b", inline=True)
+                    embed.add_field(
+                        name=t(_p('cmd:pomodoro_stats|personal|field:today', "Today")),
+                        value=format_duration(stats_row['today_seconds']),
+                        inline=True
+                    )
+                    embed.add_field(
+                        name=t(_p('cmd:pomodoro_stats|personal|field:week', "This Week")),
+                        value=format_duration(stats_row['week_seconds']),
+                        inline=True
+                    )
+                    embed.add_field(
+                        name=t(_p('cmd:pomodoro_stats|personal|field:month', "This Month")),
+                        value=format_duration(stats_row['month_seconds']),
+                        inline=True
+                    )
+                    embed.set_footer(text=ctx.guild.name)
+
+                link_view = discord.ui.View()
+                link_view.add_item(discord.ui.Button(
+                    style=discord.ButtonStyle.link,
+                    url=DASHBOARD_SESSION_URL,
+                    label="View Full Stats"
+                ))
+                await ctx.interaction.edit_original_response(embed=embed, view=link_view)
+
+        except Exception:
+            logger.exception("Exception occurred while fetching pomodoro stats.")
+            embed = discord.Embed(
+                colour=discord.Colour.brand_red(),
+                description=t(_p(
+                    'cmd:pomodoro_stats|error:query_failed',
+                    "Failed to load study statistics. Please try again later."
+                ))
+            )
+            await ctx.interaction.edit_original_response(embed=embed)
+    # --- END AI-MODIFIED ---
 
     # ----- Guild Config Commands -----
     @LionCog.placeholder_group

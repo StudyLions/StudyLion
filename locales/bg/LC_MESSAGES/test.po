@@ -1,0 +1,80 @@
+# Bulgarian translation for LionBot - test
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 18:50+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Bulgarian\n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/modules/test/test.py:62 src/modules/test/test.py:145
+msgid "test"
+msgstr "test"
+
+#: src/modules/test/test.py:146
+msgid "Test"
+msgstr "Test"
+
+#: src/modules/test/test.py:153
+msgid "editor"
+msgstr "editor"
+
+#: src/modules/test/test.py:154
+msgid "Test message editor"
+msgstr "Test message editor"
+
+#: src/modules/test/test.py:180
+msgid "test_ephemeral"
+msgstr "test_ephemeral"
+
+#: src/modules/test/test.py:181
+msgid "Test ephemeral delete and edit"
+msgstr "Test ephemeral delete and edit"
+
+#: src/modules/test/test.py:193
+msgid "colours"
+msgstr "colours"
+
+#: src/modules/test/test.py:194
+msgid "Test Ansi colours"
+msgstr "Test Ansi colours"
+
+#: src/modules/test/test.py:214
+msgid "fail"
+msgstr "fail"
+
+#: src/modules/test/test.py:222
+msgid "failui"
+msgstr "failui"
+
+#: src/modules/test/test.py:229
+msgid "pager"
+msgstr "pager"
+
+#: src/modules/test/test.py:257
+msgid "pager2"
+msgstr "pager2"
+
+#: src/modules/test/test.py:288
+msgid "prettyusers"
+msgstr "prettyusers"
+
+#: src/modules/test/test.py:338
+msgid "dmview"
+msgstr "dmview"
+
+#: src/modules/test/test.py:349
+msgid "multiview"
+msgstr "multiview"
+
+#: src/modules/test/test.py:366
+msgid "stats-card"
+msgstr "stats-card"

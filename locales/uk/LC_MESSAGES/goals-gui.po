@@ -1,0 +1,98 @@
+# Ukrainian translation for LionBot - goals-gui
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 18:50+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Ukrainian\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: src/gui/cards/goals.py:97
+msgctxt "skin:goals|goal:tasks|name"
+msgid "TASKS DONE"
+msgstr "ВИКОНАНО ЗАВДАНЬ"
+
+#: src/gui/cards/goals.py:101
+msgctxt "skin:goals|goal:tasks|goal"
+msgid "GOAL: "
+msgstr "ЦІЛЬ: "
+
+#: src/gui/cards/goals.py:127
+msgctxt "skin:goals|goal:attendance|name"
+msgid ""
+"ATTENDANCE\n"
+"RATE"
+msgstr "ВІДВІДУВАНІСТЬ"
+
+#: src/gui/cards/goals.py:141
+msgctxt "skin:goals|mode:study|goal:middle|above"
+msgid "STUDIED"
+msgstr "ВИВЧЕНО"
+
+#: src/gui/cards/goals.py:145
+msgctxt "skin:goals|mode:study|goal:middle|below"
+msgid "HOURS"
+msgstr "ГОДИН"
+
+#: src/gui/cards/goals.py:149
+msgctxt "skin:goals|mode:voice|goal:middle|above"
+msgid "CHATTED"
+msgstr "СПІЛКУВАННЯ"
+
+#: src/gui/cards/goals.py:153
+msgctxt "skin:goals|mode:voice|goal:middle|below"
+msgid "HOURS"
+msgstr "ГОДИН"
+
+#: src/gui/cards/goals.py:157
+msgctxt "skin:goals|mode:text|goal:middle|above"
+msgid "SENT"
+msgstr "НАДІСЛАНО"
+
+#: src/gui/cards/goals.py:161
+msgctxt "skin:goals|mode:text|goal:middle|below"
+msgid "MESSAGES"
+msgstr "ПОВІДОМЛЕНЬ"
+
+#: src/gui/cards/goals.py:165
+msgctxt "skin:goals|mode:anki|goal:middle|above"
+msgid "REVIEWED"
+msgstr "ПОВТОРЕНО"
+
+#: src/gui/cards/goals.py:169
+msgctxt "skin:goals|mode:anki|goal:middle|below"
+msgid "CARDS"
+msgstr "КАРТОК"
+
+#, possible-python-brace-format
+msgctxt "skin:goals|footer"
+msgid "As of {day} {month} • {name}"
+msgstr "Станом на {day} {month} • {name}"
+
+#: src/gui/cards/goals.py:242
+msgctxt "ui:goals|weekly|title"
+msgid "WEEKLY STATISTICS"
+msgstr "ТИЖНЕВА СТАТИСТИКА"
+
+#: src/gui/cards/goals.py:246
+msgctxt "ui:goals|weekly|task_header"
+msgid "GOALS OF THE WEEK"
+msgstr "ЦІЛІ ТИЖНЯ"
+
+#: src/gui/cards/goals.py:256
+msgctxt "ui:goals|monthly|title"
+msgid "MONTHLY STATISTICS"
+msgstr "МІСЯЧНА СТАТИСТИКА"
+
+#: src/gui/cards/goals.py:260
+msgctxt "ui:goals|monthly|task_header"
+msgid "GOALS OF THE MONTH"
+msgstr "ЦІЛІ МІСЯЦЯ"

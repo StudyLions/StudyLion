@@ -1,0 +1,820 @@
+# Thai translation for LionBot - rooms
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 23:11+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Thai\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/modules/rooms/settingui.py:39
+msgctxt "ui:room_config|menu:category|placeholder"
+msgid "Select Private Room Category"
+msgstr "เลือกหมวดหมู่ห้องส่วนตัว"
+
+#: src/modules/rooms/settingui.py:54
+msgctxt "ui:room_config|button:visible|label"
+msgid "Toggle Room Visibility"
+msgstr "สลับการมองเห็นห้อง"
+
+#: src/modules/rooms/settingui.py:64
+msgctxt "ui:rooms_config|embed|title"
+msgid "Private Room System Configuration Panel"
+msgstr "แผงการตั้งค่าระบบห้องส่วนตัว"
+
+#: src/modules/rooms/settingui.py:100
+msgctxt "dash:rooms|title"
+msgid "Private Room Configuration ({commands[admin config rooms]})"
+msgstr "การตั้งค่าห้องส่วนตัว ({commands[admin config rooms]})"
+
+#: src/modules/rooms/settingui.py:104
+msgctxt "dash:economy|dropdown|placeholder"
+msgid "Private Room Panel"
+msgstr "แผงห้องส่วนตัว"
+
+#: src/modules/rooms/roomui.py:56
+msgctxt "ui:room_status|error:owner_required"
+msgid "You must be the private room owner to do this!"
+msgstr "คุณต้องเป็นเจ้าของห้องส่วนตัวเพื่อทำสิ่งนี้!"
+
+#: src/modules/rooms/roomui.py:72
+msgctxt "ui:room_status|error:member_required"
+msgid "You need to be a member of the private room to do this!"
+msgstr "คุณต้องเป็นสมาชิกของห้องส่วนตัวเพื่อทำสิ่งนี้!"
+
+#: src/modules/rooms/roomui.py:90
+msgctxt "ui:room_status|button:deposit|modal:deposit|title"
+msgid "Room Deposit"
+msgstr "ฝากเงินห้อง"
+
+#: src/modules/rooms/roomui.py:94
+msgctxt "ui:room_status|button:deposit|modal:deposit|field:question|label"
+msgid "How many LionCoins do you want to deposit?"
+msgstr "คุณต้องการฝาก LionCoins กี่เหรียญ?"
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|button:deposit|error:invalid_number"
+msgid "Cannot deposit `{inputted}` coins. Please enter a positive integer."
+msgstr "ไม่สามารถฝาก `{inputted}` เหรียญได้ กรุณาใส่จำนวนเต็มบวก"
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|button:deposit|error:insufficient_funds"
+msgid ""
+"You cannot deposit {coin}**{amount}**! You only have {coin}**{balance}**."
+msgstr "คุณไม่สามารถฝาก{coin}**{amount}**ได้! คุณมีเพียง{coin}**{balance}**"
+
+#: src/modules/rooms/roomui.py:160
+msgctxt "ui:room_status|button:deposit|label"
+msgid "Deposit"
+msgstr "ฝากเงิน"
+
+#: src/modules/rooms/roomui.py:171
+msgctxt "ui:room_status|button:edit|label"
+msgid "Edit Room"
+msgstr "แก้ไขห้อง"
+
+#: src/modules/rooms/roomui.py:204
+msgctxt "ui:room_status|button:timer|modal:add_timer|title"
+msgid "Create Room Timer"
+msgstr "สร้างตัวจับเวลาห้อง"
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|button:timer|timer_created"
+msgid "Timer created successfully! Use {edit_cmd} to configure further."
+msgstr "สร้างตัวจับเวลาสำเร็จ! ใช้ {edit_cmd} เพื่อตั้งค่าเพิ่มเติม"
+
+#: src/modules/rooms/roomui.py:254
+msgctxt "ui:room_status|button:timer|label:edit_timer"
+msgid "Edit Timer"
+msgstr "แก้ไขตัวจับเวลา"
+
+#: src/modules/rooms/roomui.py:261
+msgctxt "ui:room_status|button:timer|label:add_timer"
+msgid "Add Timer"
+msgstr "เพิ่มตัวจับเวลา"
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|menu:invite|error:too_many_members"
+msgid ""
+"Too many members! You are inviting `{count}` new members to your room, but "
+"you already have `{current}` members! The member cap is `{cap}`."
+msgstr ""
+"สมาชิกมากเกินไป! คุณกำลังเชิญสมาชิกใหม่ `{count}` คน แต่มีสมาชิกอยู่แล้ว "
+"`{current}` คน! จำกัดที่ `{cap}` คน"
+
+#: src/modules/rooms/roomui.py:330
+msgctxt "ui:room_status|menu:invite_menu|placeholder:capped"
+msgid "Room member cap reached!"
+msgstr "ถึงจำนวนสมาชิกสูงสุดแล้ว!"
+
+#: src/modules/rooms/roomui.py:336
+msgctxt "ui:room_status|menu:invite_menu|placeholder:notcapped"
+msgid "Add Members"
+msgstr "เพิ่มสมาชิก"
+
+#: src/modules/rooms/roomui.py:359
+msgctxt "ui:room_status|menu:kick_menu|placeholder"
+msgid "Remove Members"
+msgstr "ลบสมาชิก"
+
+#: src/modules/rooms/roomui.py:367
+msgctxt "ui:room_status|embed|title"
+msgid "Room Control Panel"
+msgstr "แผงควบคุมห้อง"
+
+#: src/modules/rooms/roomui.py:375
+msgctxt "ui:room_status|embed|field:channel|name"
+msgid "Channel"
+msgstr "ช่อง"
+
+#: src/modules/rooms/roomui.py:380
+msgctxt "ui:room_status|embed|field:owner|name"
+msgid "Owner"
+msgstr "เจ้าของ"
+
+#: src/modules/rooms/roomui.py:385
+msgctxt "ui:room_status|embed|field:created|name"
+msgid "Created At"
+msgstr "สร้างเมื่อ"
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|embed|field:bank|value:expiring"
+msgid ""
+"**Warning:** Insufficient room balance to pay next rent ({coin} **{rent}**).\n"
+"The room will expire {expiry}.\n"
+"Use {room_deposit_cmd} to increase balance."
+msgstr ""
+"**คำเตือน:** ยอดเงินในห้องไม่เพียงพอสำหรับค่าเช่าครั้งถัดไป ({coin} **{rent}**)\n"
+"ห้องจะหมดอายุ{expiry}\n"
+"ใช้{room_deposit_cmd}เพื่อเพิ่มยอดเงิน"
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|embed|field:bank|value:notexpiring"
+msgid "Next rent due {time} (- {coin}**{rent}**)"
+msgstr "ค่าเช่าครั้งถัดไป {time} (- {coin}**{rent}**)"
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|embed|field:bank|name"
+msgid "Room Balance: {coin}**{amount}**"
+msgstr "ยอดเงินห้อง: {coin}**{amount}**"
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|embed|field:members|name"
+msgid "Members ({count}/{cap})"
+msgstr "สมาชิก ({count}/{cap})"
+
+#: src/modules/rooms/cog.py:175 src/modules/rooms/room.py:364
+msgctxt "room|eventlog|event:room_deleted|title"
+msgid "Private Room Deleted"
+msgstr "ลบห้องส่วนตัวแล้ว"
+
+#, possible-python-brace-format
+msgctxt "room|eventlog|event:room_deleted|desc"
+msgid "{owner}'s private room was deleted."
+msgstr "ห้องส่วนตัวของ{owner}ถูกลบแล้ว"
+
+#, possible-python-brace-format
+msgctxt "create_room|create_channel|audit_reason"
+msgid "Creating Private Room for {ownerid}"
+msgstr "กำลังสร้างห้องส่วนตัวสำหรับ{ownerid}"
+
+#: src/modules/rooms/cog.py:279
+msgctxt "eventlog|event:private_room_create_error|name"
+msgid "Private Room Creation Failed"
+msgstr "การสร้างห้องส่วนตัวล้มเหลว"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:private_room_create_error|desc"
+msgid ""
+"{owner} attempted to rent a new private room, but I could not create it!\n"
+"They were not charged."
+msgstr ""
+"{owner}พยายามเช่าห้องส่วนตัวใหม่ แต่ฉันไม่สามารถสร้างได้!\n"
+"ไม่ได้ถูกเรียกเก็บเงิน"
+
+#: src/modules/rooms/cog.py:329
+msgctxt "eventlog|event:private_room_create|name"
+msgid "Private Room Rented"
+msgstr "เช่าห้องส่วนตัวแล้ว"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:private_room_create|desc"
+msgid "{owner} has rented a new private room {channel}!"
+msgstr "{owner}ได้เช่าห้องส่วนตัวใหม่ {channel}!"
+
+#: src/modules/rooms/cog.py:368
+msgctxt "cmd:room"
+msgid "room"
+msgstr "room"
+
+#: src/modules/rooms/cog.py:369
+msgctxt "cmd:room|desc"
+msgid "Base command group for private room configuration."
+msgstr "กลุ่มคำสั่งหลักสำหรับการตั้งค่าห้องส่วนตัว"
+
+#: src/modules/rooms/cog.py:376
+msgctxt "cmd:room_rent"
+msgid "rent"
+msgstr "rent"
+
+#: src/modules/rooms/cog.py:379
+msgctxt "cmd:room_rent|desc"
+msgid "Rent a private voice channel with LionCoins."
+msgstr "เช่าช่องเสียงส่วนตัวด้วย LionCoins"
+
+#: src/modules/rooms/cog.py:383
+msgctxt "cmd:room_rent|param:days"
+msgid "days"
+msgstr "days"
+
+#: src/modules/rooms/cog.py:384
+msgctxt "cmd:room_rent|param:members"
+msgid "members"
+msgstr "members"
+
+#: src/modules/rooms/cog.py:385
+msgctxt "cmd:room_rent|param:name"
+msgid "name"
+msgstr "name"
+
+#: src/modules/rooms/cog.py:390
+msgctxt "cmd:room_rent|param:days|desc"
+msgid "Number of days to pre-purchase. (Default: 1)"
+msgstr "จำนวนวันที่ต้องการซื้อล่วงหน้า (ค่าเริ่มต้น: 1)"
+
+#: src/modules/rooms/cog.py:394
+msgctxt "cmd:room_rent|param:members|desc"
+msgid "Mention the members you want to add to your private room."
+msgstr "แท็กสมาชิกที่คุณต้องการเพิ่มในห้องส่วนตัวของคุณ"
+
+#: src/modules/rooms/cog.py:398
+msgctxt "cmd:room_rent|param:name|desc"
+msgid "Name of your private voice channel."
+msgstr "ชื่อช่องเสียงส่วนตัวของคุณ"
+
+#: src/modules/rooms/cog.py:416
+msgctxt "cmd:room_rent|error:not_setup"
+msgid ""
+"The private room system has not been set up! A private room category needs "
+"to be set first with `/admin config rooms`."
+msgstr ""
+"ระบบห้องส่วนตัวยังไม่ได้ตั้งค่า! ต้องตั้งค่าหมวดหมู่ก่อนด้วย `/admin config "
+"rooms`"
+
+#: src/modules/rooms/cog.py:427
+msgctxt "cmd:room_rent|error:insufficient_perms"
+msgid ""
+"I do not have enough permissions to create a new channel under the "
+"configured private room category!"
+msgstr "ฉันไม่มีสิทธิ์เพียงพอที่จะสร้างช่องใหม่ภายใต้หมวดหมู่ที่กำหนด!"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_rent|error:room_exists"
+msgid "You already own a private room! Click to visit: {channel}"
+msgstr "คุณมีห้องส่วนตัวอยู่แล้ว! คลิกเพื่อเยี่ยมชม: {channel}"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_rent|error:member_not_found"
+msgid "Could not find the requested member {mention} in this server!"
+msgstr "ไม่พบสมาชิก {mention} ที่ร้องขอในเซิร์ฟเวอร์นี้!"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_rent|error:too_many_members"
+msgid ""
+"Too many members! You have requested to add `{count}` members to your room, "
+"but the maximum private room size is `{cap}`!"
+msgstr ""
+"สมาชิกมากเกินไป! คุณขอเพิ่มสมาชิก `{count}` คน แต่ขนาดสูงสุดคือ `{cap}` คน!"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_rent|confirm:purchase"
+msgid ""
+"Are you sure you want to spend {coin}**{required}** to rent a private room "
+"for `one` day?"
+msgid_plural ""
+"Are you sure you want to spend {coin}**{required}** to rent a private room "
+"for `{days}` days?"
+msgstr[0] ""
+"คุณแน่ใจหรือไม่ว่าต้องการใช้{coin}**{required}**เพื่อเช่าห้องส่วนตัว "
+"`{days}` วัน?"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_rent|success"
+msgid "Successfully created your private room {channel}!"
+msgstr "สร้างห้องส่วนตัว{channel}ของคุณสำเร็จแล้ว!"
+
+#: src/modules/rooms/cog.py:519
+msgctxt "cmd:room_rent|success|title"
+msgid "Private Room Created!"
+msgstr "สร้างห้องส่วนตัวแล้ว!"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_rent|error:insufficient_funds"
+msgid ""
+"Renting a private room for `one` day costs {coin}**{required}**, but you "
+"only have {coin}**{balance}**!"
+msgid_plural ""
+"Renting a private room for `{days}` days costs {coin}**{required}**, but you"
+" only have {coin}**{balance}**!"
+msgstr[0] ""
+"การเช่าห้องส่วนตัว `{days}` วัน ต้องใช้{coin}**{required}** "
+"แต่คุณมีเพียง{coin}**{balance}**!"
+
+#: src/modules/rooms/cog.py:606
+msgctxt "cmd:room_rent|error:my_permissions"
+msgid ""
+"Could not create your private room! You were not charged.\n"
+"I have insufficient permissions to create a private room channel."
+msgstr ""
+"ไม่สามารถสร้างห้องส่วนตัวของคุณได้! คุณไม่ถูกเรียกเก็บเงิน\n"
+"ฉันมีสิทธิ์ไม่เพียงพอ"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_rent|error:unknown"
+msgid ""
+"Could not create your private room! You were not charged.\n"
+"An unknown error occurred while creating your private room.\n"
+"`{error}`"
+msgstr ""
+"ไม่สามารถสร้างห้องส่วนตัวของคุณได้! คุณไม่ถูกเรียกเก็บเงิน\n"
+"เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ\n"
+"`{error}`"
+
+#: src/modules/rooms/cog.py:626
+msgctxt "cmd:room_status"
+msgid "status"
+msgstr "status"
+
+#: src/modules/rooms/cog.py:629
+msgctxt "cmd:room_status|desc"
+msgid "Display the status of your current room."
+msgstr "แสดงสถานะห้องปัจจุบันของคุณ"
+
+#: src/modules/rooms/cog.py:646
+msgctxt "cmd:room_status|error:no_target"
+msgid ""
+"Could not identify target private room! Please re-run the command in the "
+"private room you wish to view the status of."
+msgstr ""
+"ไม่สามารถระบุห้องเป้าหมายได้! "
+"กรุณาเรียกใช้คำสั่งอีกครั้งในห้องที่คุณต้องการดูสถานะ"
+
+#: src/modules/rooms/cog.py:661
+msgctxt "cmd:room_invite"
+msgid "invite"
+msgstr "invite"
+
+#: src/modules/rooms/cog.py:664
+msgctxt "cmd:room_invite|desc"
+msgid "Add members to your private room."
+msgstr "เพิ่มสมาชิกในห้องส่วนตัวของคุณ"
+
+#: src/modules/rooms/cog.py:668
+msgctxt "cmd:room_invite|param:members"
+msgid "members"
+msgstr "members"
+
+#: src/modules/rooms/cog.py:673
+msgctxt "cmd:room_invite|param:members|desc"
+msgid "Mention the members you want to add."
+msgstr "แท็กสมาชิกที่คุณต้องการเพิ่ม"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_invite|error:no_room"
+msgid ""
+"You do not own a private room! Use `/room rent` to rent one with {coin}!"
+msgstr "คุณไม่มีห้องส่วนตัว! ใช้ `/room rent` เพื่อเช่าด้วย{coin}!"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_invite|error:member_not_found"
+msgid "Could not find the invited member {mention} in this server!"
+msgstr "ไม่พบสมาชิกที่ถูกเชิญ {mention} ในเซิร์ฟเวอร์นี้!"
+
+#: src/modules/rooms/cog.py:719
+msgctxt "cmd:room_invite|error:no_new_members"
+msgid "All members mentioned are already in the room!"
+msgstr "สมาชิกทั้งหมดที่กล่าวถึงอยู่ในห้องแล้ว!"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_invite|error:too_many_members"
+msgid ""
+"Too many members! You have invited `{count}` new members to your room, but "
+"you already have `{current}`, and the member cap is `{cap}`!"
+msgstr ""
+"สมาชิกมากเกินไป! คุณเชิญสมาชิกใหม่ `{count}` คน แต่มีอยู่แล้ว `{current}` คน"
+" และจำกัดที่ `{cap}` คน!"
+
+#: src/modules/rooms/cog.py:757
+msgctxt "cmd:room_invite|success|ack"
+msgid "Members Invited successfully."
+msgstr "เชิญสมาชิกสำเร็จ"
+
+#: src/modules/rooms/cog.py:765
+msgctxt "cmd:room_kick"
+msgid "kick"
+msgstr "kick"
+
+#: src/modules/rooms/cog.py:768
+msgctxt "cmd:room_kick|desc"
+msgid "Remove a members from your private room."
+msgstr "ลบสมาชิกออกจากห้องส่วนตัวของคุณ"
+
+#: src/modules/rooms/cog.py:772
+msgctxt "cmd:room_kick|param:members"
+msgid "members"
+msgstr "members"
+
+#: src/modules/rooms/cog.py:777
+msgctxt "cmd:room_kick|param:members|desc"
+msgid ""
+"Mention the members you want to remove. Also accepts space-separated user "
+"ids."
+msgstr "แท็กสมาชิกที่คุณต้องการลบ ยอมรับ ID ผู้ใช้ที่คั่นด้วยเว้นวรรคด้วย"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_kick|error:no_room"
+msgid ""
+"You do not own a private room! Use `/room rent` to rent one with {coin}!"
+msgstr "คุณไม่มีห้องส่วนตัว! ใช้ `/room rent` เพื่อเช่าด้วย{coin}!"
+
+#: src/modules/rooms/cog.py:808
+msgctxt "cmd:room_kick|error:no_matching_members"
+msgid "None of the mentioned members are in this room!"
+msgstr "ไม่มีสมาชิกที่กล่าวถึงอยู่ในห้องนี้!"
+
+#: src/modules/rooms/cog.py:825
+msgctxt "cmd:room_kick|success|ack"
+msgid "Members removed."
+msgstr "ลบสมาชิกแล้ว"
+
+#: src/modules/rooms/cog.py:831
+msgctxt "cmd:room_transfer"
+msgid "transfer"
+msgstr "transfer"
+
+#: src/modules/rooms/cog.py:834
+msgctxt "cmd:room_transfer|desc"
+msgid "Transfer your private room to another room member. Not reversible!"
+msgstr "โอนห้องให้สมาชิกคนอื่น ไม่สามารถย้อนกลับได้!"
+
+#: src/modules/rooms/cog.py:838
+msgctxt "cmd:room_transfer|param:new_owner"
+msgid "new_owner"
+msgstr "new_owner"
+
+#: src/modules/rooms/cog.py:843
+msgctxt "cmd:room_transfer|param:new_owner"
+msgid "The room member you would like to transfer your room to."
+msgstr ""
+
+#: src/modules/rooms/cog.py:857
+msgctxt "cmd:room_transfer|error:no_room"
+msgid "You do not own a private room to transfer!"
+msgstr "คุณไม่มีห้องส่วนตัวที่จะโอน!"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_transfer|error:target_not_member"
+msgid ""
+"{mention} is not a member of your private room! You must invite them first."
+msgstr "{mention} ไม่ใช่สมาชิกในห้องส่วนตัวของคุณ! คุณต้องเชิญพวกเขาก่อน"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_transfer|error:target_has_room"
+msgid ""
+"{mention} already owns a room! Members can only own one room at a time."
+msgstr "{mention} มีห้องอยู่แล้ว! สมาชิกสามารถเป็นเจ้าของได้เพียงห้องเดียว"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_transfer|confirm|question"
+msgid ""
+"Are you sure you wish to transfer your private room {channel} to "
+"{new_owner}? This action is not reversible!"
+msgstr ""
+"คุณแน่ใจหรือไม่ว่าต้องการโอนห้อง{channel}ให้{new_owner}? "
+"การดำเนินการนี้ไม่สามารถย้อนกลับได้!"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_transfer|success|description"
+msgid ""
+"You have successfully transferred ownership of {channel} to {new_owner}."
+msgstr "คุณได้โอนความเป็นเจ้าของ{channel}ให้{new_owner}เรียบร้อยแล้ว"
+
+#: src/modules/rooms/cog.py:916
+msgctxt "cmd:room_deposit"
+msgid "deposit"
+msgstr "deposit"
+
+#: src/modules/rooms/cog.py:919
+msgctxt "cmd:room_deposit|desc"
+msgid ""
+"Deposit LionCoins in your private room bank to add more days. (Members may "
+"also deposit!)"
+msgstr "ฝาก LionCoins ในธนาคารห้องเพื่อเพิ่มจำนวนวัน (สมาชิกก็สามารถฝากได้!)"
+
+#: src/modules/rooms/cog.py:923
+msgctxt "cmd:room_deposit|param:coins"
+msgid "coins"
+msgstr "coins"
+
+#: src/modules/rooms/cog.py:928
+msgctxt "cmd:room_deposit|param:coins|desc"
+msgid "Number of coins to deposit."
+msgstr "จำนวนเหรียญที่ต้องการฝาก"
+
+#: src/modules/rooms/cog.py:948
+msgctxt "cmd:room_deposit|error:no_target"
+msgid ""
+"Could not identify target private room! Please re-run the command in the "
+"private room you wish to contribute to."
+msgstr ""
+"ไม่สามารถระบุห้องเป้าหมายได้! "
+"กรุณาเรียกใช้คำสั่งอีกครั้งในห้องที่คุณต้องการฝากเงิน"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_deposit|error:insufficient_funds"
+msgid ""
+"You cannot deposit {coin}**{amount}**! You only have {coin}**{balance}**."
+msgstr "คุณไม่สามารถฝาก{coin}**{amount}**ได้! คุณมีเพียง{coin}**{balance}**"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_depost|success"
+msgid ""
+"Success! You have contributed {coin}**{amount}** to the private room bank."
+msgstr "สำเร็จ! คุณได้ฝาก{coin}**{amount}**เข้าธนาคารห้องแล้ว"
+
+#: src/modules/rooms/cog.py:1000
+msgctxt "cmd:configure_rooms"
+msgid "rooms"
+msgstr "rooms"
+
+#: src/modules/rooms/cog.py:1001
+msgctxt "cmd:configure_rooms|desc"
+msgid "Configure Rented Private Rooms"
+msgstr "ตั้งค่าห้องส่วนตัวที่เช่า"
+
+#: src/modules/rooms/room.py:78
+msgctxt "room|eventlog|field:owner"
+msgid "Owner"
+msgstr "เจ้าของ"
+
+#: src/modules/rooms/room.py:84
+msgctxt "room|eventlog|field:channel"
+msgid "Channel"
+msgstr "ช่อง"
+
+#: src/modules/rooms/room.py:90
+msgctxt "room|eventlog|field:balance"
+msgid "Room Balance"
+msgstr "ยอดเงินห้อง"
+
+#: src/modules/rooms/room.py:96
+msgctxt "room|eventlog|field:created"
+msgid "Created At"
+msgstr "สร้างเมื่อ"
+
+#: src/modules/rooms/room.py:102
+msgctxt "room|eventlog|field:tick"
+msgid "Next Rent Due"
+msgstr "ค่าเช่าครั้งถัดไป"
+
+#: src/modules/rooms/room.py:108
+msgctxt "room|eventlog|field:members"
+msgid "Private Room Members"
+msgstr "สมาชิกห้องส่วนตัว"
+
+#, possible-python-brace-format
+msgctxt "room|notify:deposit|description"
+msgid "{member} has deposited {coin}**{amount}** into the room bank!"
+msgstr "{member}ได้ฝาก{coin}**{amount}**เข้าธนาคารห้อง!"
+
+#: src/modules/rooms/room.py:146
+msgctxt "room|notify:new_members|title"
+msgid "New Members!"
+msgstr "สมาชิกใหม่!"
+
+#, possible-python-brace-format
+msgctxt "room|notify:new_members|desc"
+msgid "Welcome {members}"
+msgstr "ยินดีต้อนรับ {members}"
+
+#: src/modules/rooms/room.py:156
+msgctxt "room|eventlog|event:new_members|title"
+msgid "Members invited to private room"
+msgstr "เชิญสมาชิกเข้าห้องส่วนตัว"
+
+#, possible-python-brace-format
+msgctxt "room|eventlog|event:new_members|desc"
+msgid "{owner} added members to their private room: {members}"
+msgstr "{owner}เพิ่มสมาชิกในห้องส่วนตัว: {members}"
+
+#: src/modules/rooms/room.py:191
+msgctxt "room|eventlog|event:rm_members|title"
+msgid "Members removed from private room"
+msgstr "ลบสมาชิกออกจากห้องส่วนตัว"
+
+#, possible-python-brace-format
+msgctxt "room|eventlog|event:rm_members|desc"
+msgid "{owner} removed members from their private room: {members}"
+msgstr "{owner}ลบสมาชิกออกจากห้องส่วนตัว: {members}"
+
+#, possible-python-brace-format
+msgctxt "room|notify:transfer|description"
+msgid "{old_owner} has transferred private room ownership to {new_owner}"
+msgstr "{old_owner}ได้โอนความเป็นเจ้าของห้องให้{new_owner}"
+
+#: src/modules/rooms/room.py:318
+msgctxt "room|embed:expiry|title"
+msgid "Private Room Expired!"
+msgstr "ห้องส่วนตัวหมดอายุแล้ว!"
+
+#, possible-python-brace-format
+msgctxt "room|embed:expiry|description"
+msgid "Your private room in **{guild}** has expired!"
+msgstr "ห้องส่วนตัวของคุณใน**{guild}**หมดอายุแล้ว!"
+
+#: src/modules/rooms/room.py:332
+msgctxt "room|eventlog|event:expired|title"
+msgid "Private Room Expired"
+msgstr "ห้องส่วนตัวหมดอายุ"
+
+#, possible-python-brace-format
+msgctxt "room|eventlog|event:expired|desc"
+msgid "{owner}'s private room has expired."
+msgstr "ห้องส่วนตัวของ{owner}หมดอายุแล้ว"
+
+#, possible-python-brace-format
+msgctxt "room|tick|rent_deducted"
+msgid "Daily rent deducted from room balance. New balance: {coin}**{amount}**"
+msgstr "หักค่าเช่ารายวันจากยอดเงิน ยอดเงินใหม่: {coin}**{amount}**"
+
+#: src/modules/rooms/settings.py:23
+msgctxt "guildset:room_category"
+msgid "rooms_category"
+msgstr "rooms_category"
+
+#: src/modules/rooms/settings.py:27
+msgctxt "guildset:rooms_category|desc"
+msgid "Category in which to create private voice channels."
+msgstr "หมวดหมู่สำหรับสร้างช่องเสียงส่วนตัว"
+
+#: src/modules/rooms/settings.py:31
+msgctxt "guildset:room_category|long_desc"
+msgid ""
+"When a member uses {cmds[room rent]} to rent a new private room, a private "
+"voice channel will be created under this category, manageable by the member."
+" I must have permission to create new channels in this category, as well as "
+"to manage permissions."
+msgstr ""
+"เมื่อสมาชิกใช้{cmds[room rent]}จะสร้างช่องเสียงส่วนตัวภายใต้หมวดหมู่นี้ "
+"ฉันต้องมีสิทธิ์ในการสร้างช่องและจัดการสิทธิ์"
+
+#: src/modules/rooms/settings.py:39
+msgctxt "guildset:room_category|accepts"
+msgid "Private room category name or id."
+msgstr "ชื่อหรือ ID ของหมวดหมู่ห้องส่วนตัว"
+
+#: src/modules/rooms/settings.py:53
+msgctxt "guildset:rooms_category|set_response:unset"
+msgid ""
+"The private room category has been unset. Existing private rooms will not be"
+" affected. Delete the channels manually to remove the private rooms."
+msgstr ""
+"หมวดหมู่ห้องส่วนตัวถูกยกเลิกแล้ว ห้องที่มีอยู่จะไม่ได้รับผลกระทบ "
+"ลบช่องด้วยตนเอง"
+
+#, possible-python-brace-format
+msgctxt "guildset:rooms_category|set_response:set"
+msgid ""
+"Private room category has been set to {channel}. Existing private rooms will"
+" be moved."
+msgstr "หมวดหมู่ห้องส่วนตัวถูกตั้งค่าเป็น{channel} ห้องที่มีอยู่จะถูกย้าย"
+
+#, possible-python-brace-format
+msgctxt "guildset:room_category|set_using"
+msgid "{cmd} or category selector below."
+msgstr "{cmd} หรือตัวเลือกหมวดหมู่ด้านล่าง"
+
+#: src/modules/rooms/settings.py:79
+msgctxt "guildset:rooms_price"
+msgid "room_rent"
+msgstr "room_rent"
+
+#: src/modules/rooms/settings.py:83
+msgctxt "guildset:rooms_rent|desc"
+msgid "Daily rent price for a private room."
+msgstr "ราคาค่าเช่ารายวันสำหรับห้องส่วนตัว"
+
+#: src/modules/rooms/settings.py:87
+msgctxt "guildset:rooms_rent|long_desc"
+msgid ""
+"Members will be charged this many LionCoins for each day they rent a private"
+" room."
+msgstr ""
+"สมาชิกจะถูกเรียกเก็บ LionCoins จำนวนนี้สำหรับแต่ละวันที่เช่าห้องส่วนตัว"
+
+#: src/modules/rooms/settings.py:91
+msgctxt "guildset:rooms_rent|accepts"
+msgid "Number of LionCoins charged per day for a private room."
+msgstr "จำนวน LionCoins ที่เรียกเก็บต่อวันสำหรับห้องส่วนตัว"
+
+#, possible-python-brace-format
+msgctxt "guildset:rooms_price|set_response"
+msgid "Private rooms will now cost {coin}**{amount}** per 24 hours."
+msgstr "ห้องส่วนตัวจะมีราคา{coin}**{amount}**ต่อ 24 ชั่วโมง"
+
+#: src/modules/rooms/settings.py:116
+msgctxt "guildset:rooms_slots"
+msgid "room_member_cap"
+msgstr "room_member_cap"
+
+#: src/modules/rooms/settings.py:119
+msgctxt "guildset:rooms_slots|desc"
+msgid "Maximum number of members in each private room."
+msgstr "จำนวนสมาชิกสูงสุดในแต่ละห้องส่วนตัว"
+
+#: src/modules/rooms/settings.py:123
+msgctxt "guildset:rooms_slots|long_desc"
+msgid ""
+"Private room owners may invite other members to their private room via the "
+"UI, or through the {cmds[room invite]} command. This setting limits the "
+"maximum number of members a private room may hold."
+msgstr ""
+"เจ้าของห้องสามารถเชิญสมาชิกผ่านUI หรือคำสั่ง{cmds[room invite]} "
+"การตั้งค่านี้จำกัดจำนวนสมาชิกสูงสุด"
+
+#: src/modules/rooms/settings.py:129
+msgctxt "guildset:rooms_slots|accepts"
+msgid "Maximum number of members allowed per private room."
+msgstr "จำนวนสมาชิกสูงสุดที่อนุญาตต่อห้องส่วนตัว"
+
+#, possible-python-brace-format
+msgctxt "guildset:rooms_slots|set_response"
+msgid "Private rooms are now capped to **{amount}** members."
+msgstr "ห้องส่วนตัวจำกัดสูงสุด **{amount}** คนแล้ว"
+
+#: src/modules/rooms/settings.py:151
+msgctxt "guildset:rooms_visible"
+msgid "room_visibility"
+msgstr "room_visibility"
+
+#: src/modules/rooms/settings.py:154
+msgctxt "guildset:rooms_visible|desc"
+msgid "Whether private rented rooms are visible to non-members."
+msgstr "ห้องส่วนตัวที่เช่ามองเห็นได้โดยผู้ที่ไม่ใช่สมาชิกหรือไม่"
+
+#: src/modules/rooms/settings.py:158
+msgctxt "guildset:rooms_visible|long_desc"
+msgid ""
+"If enabled, new private rooms will be created with the `VIEW_CHANNEL` "
+"permission enabled for the `@everyone` role."
+msgstr ""
+"หากเปิดใช้งาน ห้องส่วนตัวใหม่จะถูกสร้างโดยเปิดสิทธิ์ `VIEW_CHANNEL` "
+"สำหรับบทบาท `@everyone`"
+
+#: src/modules/rooms/settings.py:162
+msgctxt "guildset:rooms_visible|accepts"
+msgid "Visible/Invisible"
+msgstr "มองเห็น/มองไม่เห็น"
+
+#: src/modules/rooms/settings.py:164
+msgctxt "guildset:rooms_visible|output:true"
+msgid "Visible"
+msgstr "มองเห็น"
+
+#: src/modules/rooms/settings.py:165
+msgctxt "guildset:rooms_visible|output:false"
+msgid "Invisible"
+msgstr "มองไม่เห็น"
+
+#: src/modules/rooms/settings.py:171
+msgctxt "guildset:rooms_visible|parse:truthy_values"
+msgid "visible|enabled|yes|true|on|enable|1"
+msgstr "visible|enabled|yes|true|on|enable|1"
+
+#: src/modules/rooms/settings.py:175
+msgctxt "guildset:rooms_visible|parse:falsey_values"
+msgid "invisible|disabled|no|false|off|disable|0"
+msgstr "invisible|disabled|no|false|off|disable|0"
+
+#: src/modules/rooms/settings.py:187
+msgctxt "guildset:rooms_visible|set_response:enabled"
+msgid "Private rooms will now be visible to everyone."
+msgstr "ห้องส่วนตัวจะมองเห็นได้โดยทุกคนแล้ว"
+
+#: src/modules/rooms/settings.py:192
+msgctxt "guildset:rooms_visible|set_response:disabled"
+msgid "Private rooms will now only be visible to their members (and admins)."
+msgstr "ห้องส่วนตัวจะมองเห็นได้เฉพาะสมาชิก (และผู้ดูแลระบบ) เท่านั้น"
+
+#, possible-python-brace-format
+msgctxt "guildset:rooms_visible|set_using"
+msgid "{cmd} or toggle below."
+msgstr "{cmd} หรือปุ่มสลับด้านล่าง"

@@ -7,7 +7,7 @@ from discord.ui.select import select, Select, SelectOption
 from discord.ui.button import button, Button, ButtonStyle
 from discord.ui.text_input import TextInput, TextStyle
 
-from meta import LionBot
+from meta import LionBot, WEBSITE_URL
 from meta.errors import UserInputError
 from utils.lib import utc_now, MessageArgs, parse_duration
 from utils.ui import MessageUI, AButton, AsComponents, ConfigEditor
@@ -34,6 +34,15 @@ class ReminderList(MessageUI):
 
         # UI state
         self._reminders = []
+
+        # --- AI-MODIFIED (2026-03-17) ---
+        # Purpose: Web link button to richer reminder management (calendar, timeline, presets)
+        self._web_button = discord.ui.Button(
+            label="Manage on Web", emoji="🌐",
+            url=f"{WEBSITE_URL}/dashboard/reminders",
+            style=ButtonStyle.link,
+        )
+        # --- END AI-MODIFIED ---
 
     # ----- UI API -----
     # ----- UI Components -----
@@ -227,15 +236,18 @@ class ReminderList(MessageUI):
         )
         await asyncio.gather(*to_refresh)
 
+        # --- AI-MODIFIED (2026-03-17) ---
+        # Purpose: Added web link button to reminder layout
         if self._reminders:
             self.set_layout(
-                (self.new_button, self.clear_button,),
+                (self.new_button, self.clear_button, self._web_button),
                 (self.cancel_menu,),
             )
         else:
             self.set_layout(
-                (self.new_button,),
+                (self.new_button, self._web_button),
             )
+        # --- END AI-MODIFIED ---
 
     async def make_message(self) -> MessageArgs:
         t = self.bot.translator.t

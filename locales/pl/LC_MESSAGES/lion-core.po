@@ -1,0 +1,184 @@
+# Polish translation for LionBot - lion-core
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 19:57+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Polish\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: src/core/lion_guild.py:31
+msgctxt "eventlog|field:start|name"
+msgid "Start"
+msgstr "Początek"
+
+#: src/core/lion_guild.py:36
+msgctxt "eventlog|field:expiry|name"
+msgid "Expires"
+msgstr "Wygasa"
+
+#: src/core/lion_guild.py:41
+msgctxt "eventlog|field:roles_given|name"
+msgid "Roles Given"
+msgstr "Przyznane role"
+
+#: src/core/lion_guild.py:46
+msgctxt "eventlog|field:roles_given|name"
+msgid "Roles Taken"
+msgstr "Odebrane role"
+
+#: src/core/lion_guild.py:51
+msgctxt "eventlog|field:coins_earned|name"
+msgid "Coins Earned"
+msgstr "Zdobyte monety"
+
+#: src/core/lion_guild.py:56
+msgctxt "eventlog|field:price|name"
+msgid "Price"
+msgstr "Cena"
+
+#: src/core/lion_guild.py:61
+msgctxt "eventlog|field:balance|name"
+msgid "Balance"
+msgstr "Saldo"
+
+#: src/core/lion_guild.py:66
+msgctxt "eventlog|field:refund|name"
+msgid "Coins Refunded"
+msgstr "Zwrócone monety"
+
+#: src/core/lion_guild.py:71
+msgctxt "eventlog|field:memberid|name"
+msgid "Member"
+msgstr "Członek"
+
+#: src/core/lion_guild.py:76
+msgctxt "eventlog|field:channelid|name"
+msgid "Channel"
+msgstr "Kanał"
+
+#: src/core/lion_guild.py:208
+msgctxt "eventlog|error:manage_webhooks"
+msgid "This channel is configured as an event log, but I am missing the 'Manage Webhooks' permission here."
+msgstr "Ten kanał jest skonfigurowany jako dziennik zdarzeń, ale brakuje mi uprawnienia 'Manage Webhooks' tutaj."
+
+#, possible-python-brace-format
+msgctxt "eventlog|create|name"
+msgid "{bot_name} Event Log"
+msgstr "{bot_name} Dziennik zdarzeń"
+
+#: src/core/lion_guild.py:224
+msgctxt "eventlog|create|audit_reason"
+msgid "Creating event log webhook"
+msgstr "Tworzenie webhooka dziennika zdarzeń"
+
+#: src/core/lion_guild.py:342
+msgctxt "eventlog|field:errors|name"
+msgid "Errors"
+msgstr "Błędy"
+
+#: src/core/setting_types.py:31
+msgctxt "settype:coin|accepts"
+msgid "A positive integral number of coins."
+msgstr "Dodatnia liczba całkowita monet."
+
+#: src/core/setting_types.py:47
+msgctxt "settype:coin|parse|error:notinteger"
+msgid "The coin quantity must be a positive integer!"
+msgstr "Ilość monet musi być dodatnią liczbą całkowitą!"
+
+#, possible-python-brace-format
+msgctxt "settype:coin|parse|error:too_large"
+msgid "You cannot set this to more than {coin}**{max}**!"
+msgstr "Nie możesz ustawić więcej niż {coin}**{max}**!"
+
+#, possible-python-brace-format
+msgctxt "settype:coin|parse|error:too_small"
+msgid "You cannot set this to less than {coin}**{min}**!"
+msgstr "Nie możesz ustawić mniej niż {coin}**{min}**!"
+
+#, possible-python-brace-format
+msgctxt "settype:coin|formatted"
+msgid "{coin}**{amount}**"
+msgstr "{coin}**{amount}**"
+
+#: src/core/setting_types.py:91
+msgctxt "settype:message|accepts"
+msgid "JSON formatted raw message data"
+msgstr "Surowe dane wiadomości w formacie JSON"
+
+#: src/core/setting_types.py:106
+msgctxt "settype:message|download|error:not_json"
+msgid "The attached message data is not a JSON file!"
+msgstr "Załączone dane wiadomości nie są plikiem JSON!"
+
+#: src/core/setting_types.py:111
+msgctxt "settype:message|download|error:size"
+msgid "The attached message data is too large!"
+msgstr "Załączone dane wiadomości są zbyt duże!"
+
+#: src/core/setting_types.py:120
+msgctxt "settype:message|download|error:decoding"
+msgid "Could not decode the message data. Please ensure it is saved with the `UTF-8` encoding."
+msgstr "Nie udało się zdekodować danych wiadomości. Upewnij się, że jest zapisana z kodowaniem `UTF-8`."
+
+#, possible-python-brace-format
+msgctxt "settype:message|error_suffix"
+msgid "You can view, test, and fix your embed using the online [embed builder]({link})."
+msgstr "Możesz wyświetlić, przetestować i naprawić swój embed za pomocą online [embed buildera]({link})."
+
+#, possible-python-brace-format
+msgctxt "settype:message|error:invalid_json"
+msgid ""
+"The provided message data was not a valid JSON document!\n"
+"`{error}`"
+msgstr ""
+"Podane dane wiadomości nie były prawidłowym dokumentem JSON!\n"
+"`{error}`"
+
+#: src/core/setting_types.py:197
+msgctxt "settype:message|error:json_missing_keys"
+msgid "Message data must be a JSON object with at least one of the following fields: `content`, `embed`, `embeds`"
+msgstr "Dane wiadomości muszą być obiektem JSON z co najmniej jednym z następujących pól: `content`, `embed`, `embeds`"
+
+#: src/core/setting_types.py:206
+msgctxt "settype:message|error:json_embed_type"
+msgid "`embed` field must be a valid JSON object."
+msgstr "Pole `embed` musi być prawidłowym obiektem JSON."
+
+#: src/core/setting_types.py:214
+msgctxt "settype:message|error:json_embeds_type"
+msgid "`embeds` field must be a list."
+msgstr "Pole `embeds` musi być listą."
+
+#: src/core/setting_types.py:221
+msgctxt "settype:message|error:json_embed_embeds"
+msgid "Message data cannot include both `embed` and `embeds`."
+msgstr "Dane wiadomości nie mogą zawierać jednocześnie `embed` i `embeds`."
+
+#: src/core/setting_types.py:229
+msgctxt "settype:message|error:json_content_type"
+msgid "`content` field must be a string."
+msgstr "Pole `content` musi być ciągiem znaków."
+
+#, possible-python-brace-format
+msgctxt "ui:settype:message|error:embed_conversion"
+msgid ""
+"Could not parse the message embed data.\n"
+"**Error:** `{exception}`"
+msgstr ""
+"Nie udało się przetworzyć danych embed wiadomości.\n"
+"**Błąd:** `{exception}`"
+
+#: src/core/setting_types.py:273
+msgctxt "settype:message|format:too_long"
+msgid "Too long to display! See Preview."
+msgstr "Zbyt długie do wyświetlenia! Zobacz Podgląd."

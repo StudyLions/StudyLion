@@ -1,0 +1,152 @@
+# Croatian translation for LionBot - config
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 19:57+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Croatian\n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: src/modules/config/settingui.py:56
+msgctxt "ui:general_config|menu:event_log|placeholder"
+msgid "Select Event Log"
+msgstr "Odaberite dnevnik događaja"
+
+#: src/modules/config/settingui.py:64
+msgctxt "ui:general_config|embed:title"
+msgid "General Configuration"
+msgstr "Opća konfiguracija"
+
+#: src/modules/config/settingui.py:99
+msgctxt "dash:general|title"
+msgid "General Configuration ({commands[config general]})"
+msgstr "Opća konfiguracija ({commands[config general]})"
+
+#: src/modules/config/settingui.py:103
+msgctxt "dash:general|option|name"
+msgid "General Configuration Panel"
+msgstr "Panel opće konfiguracije"
+
+#: src/modules/config/cog.py:56 src/modules/config/general.py:52
+msgctxt "cmd:configure_general"
+msgid "general"
+msgstr "general"
+
+#: src/modules/config/cog.py:57 src/modules/config/general.py:53
+msgctxt "cmd:configure_general|desc"
+msgid "General configuration panel"
+msgstr "Panel opće konfiguracije"
+
+#: src/modules/config/general.py:91
+msgctxt "cmd:configure_general|parse_failure:timezone"
+msgid "Could not set the timezone!"
+msgstr "Nije moguće postaviti vremensku zonu!"
+
+#: src/modules/config/general.py:112
+msgctxt "cmd:configure_general|success"
+msgid "Settings Updated!"
+msgstr "Postavke ažurirane!"
+
+#: src/modules/config/general.py:127
+msgctxt "cmd:configure_general|panel|title"
+msgid "General Configuration Panel"
+msgstr "Panel opće konfiguracije"
+
+#, possible-python-brace-format
+msgctxt "ui:dashboard|title"
+msgid "Guild Dashboard (Page {page}/{total})"
+msgstr "Nadzorna ploča poslužitelja (Stranica {page}/{total})"
+
+#: src/modules/config/dashboard.py:110
+msgctxt "ui:dashboard|footer"
+msgid "Hover over setting names for a brief description"
+msgstr "Zadržite pokazivač iznad naziva postavki za kratak opis"
+
+#: src/modules/config/dashboard.py:173
+msgctxt "ui:dashboard|menu:config|placeholder"
+msgid "Open Configuration Panel"
+msgstr "Otvori konfiguracijski panel"
+
+#: src/modules/config/settings.py:33
+msgctxt "guildset:timezone"
+msgid "timezone"
+msgstr "timezone"
+
+#: src/modules/config/settings.py:36
+msgctxt "guildset:timezone|desc"
+msgid "Guild timezone for statistics display."
+msgstr "Vremenska zona poslužitelja za prikaz statistika."
+
+#: src/modules/config/settings.py:40
+msgctxt "guildset:timezone|long_desc"
+msgid ""
+"Guild-wide timezone. Used to determine start of the day for the "
+"leaderboards, and as the default statistics timezone for members who have "
+"not set one."
+msgstr ""
+"Vremenska zona za cijeli poslužitelj. Koristi se za određivanje početka dana"
+" za ljestvice i kao zadana vremenska zona statistika za članove koji nisu "
+"postavili svoju."
+
+#, possible-python-brace-format
+msgctxt "guildset:timezone|response"
+msgid "The guild timezone has been set to `{timezone}`."
+msgstr "Vremenska zona poslužitelja postavljena je na `{timezone}`."
+
+#: src/modules/config/settings.py:66
+msgctxt "guildset:eventlog"
+msgid "event_log"
+msgstr "event_log"
+
+#: src/modules/config/settings.py:69
+msgctxt "guildset:eventlog|desc"
+msgid ""
+"My audit log channel where I send server actions and events (e.g. rankgs and"
+" expiring roles)."
+msgstr ""
+"Moj kanal revizijskog zapisa gdje šaljem radnje i događaje poslužitelja "
+"(npr. rangove i role koje..."
+
+#: src/modules/config/settings.py:73
+msgctxt "guildset:eventlog|long_desc"
+msgid ""
+"If configured, I will log most significant actions taken or events which occur through my interface, into this channel. Logged events include, for example:\n"
+"- Member voice activity\n"
+"- Roles equipped and expiring from rolemenus\n"
+"- Privated rooms rented and expiring\n"
+"- Activity ranks earned\n"
+"I must have the 'Manage Webhooks' permission in this channel."
+msgstr ""
+"Ako je konfigurirano, bilježit ću najznačajnije radnje ili događaje koji se događaju kroz moje sučelje u ovaj kanal. Zabilježeni događaji uključuju, na primjer:\n"
+"- Glasovna aktivnost članova\n"
+"- Role opremljene i koje istječu iz izbornika uloga\n"
+"- Privatne sobe iznajmljene i koje istječu\n"
+"- Zarađeni rangovi aktivnosti\n"
+"Moram imati dozvolu 'Manage Webhooks' u ovom kanalu."
+
+#, possible-python-brace-format
+msgctxt "guildset:eventlog|check_value|error:perms|perm:manage_webhooks"
+msgid ""
+"Cannot set {channel} as an event log! I lack the 'Manage Webhooks' "
+"permission there."
+msgstr ""
+"Nije moguće postaviti {channel} kao dnevnik događaja! Nedostaje mi dozvola "
+"'Manage Webhooks' tamo."
+
+#, possible-python-brace-format
+msgctxt "guildset:eventlog|response|set"
+msgid "Events will now be logged to {channel}"
+msgstr "Događaji će sada biti bilježeni u {channel}"
+
+#: src/modules/config/settings.py:111
+msgctxt "guildset:eventlog|response|unset"
+msgid "Guild events will no longer be logged."
+msgstr "Događaji poslužitelja više se neće bilježiti."

@@ -1,0 +1,98 @@
+# Finnish translation for LionBot - goals-gui
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 18:50+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Finnish\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/gui/cards/goals.py:97
+msgctxt "skin:goals|goal:tasks|name"
+msgid "TASKS DONE"
+msgstr "TEHTÄVÄT TEHTY"
+
+#: src/gui/cards/goals.py:101
+msgctxt "skin:goals|goal:tasks|goal"
+msgid "GOAL: "
+msgstr "TAVOITE: "
+
+#: src/gui/cards/goals.py:127
+msgctxt "skin:goals|goal:attendance|name"
+msgid ""
+"ATTENDANCE\n"
+"RATE"
+msgstr "LÄSNÄOLO"
+
+#: src/gui/cards/goals.py:141
+msgctxt "skin:goals|mode:study|goal:middle|above"
+msgid "STUDIED"
+msgstr "OPISKELTU"
+
+#: src/gui/cards/goals.py:145
+msgctxt "skin:goals|mode:study|goal:middle|below"
+msgid "HOURS"
+msgstr "TUNTIA"
+
+#: src/gui/cards/goals.py:149
+msgctxt "skin:goals|mode:voice|goal:middle|above"
+msgid "CHATTED"
+msgstr "JUTUSTELTU"
+
+#: src/gui/cards/goals.py:153
+msgctxt "skin:goals|mode:voice|goal:middle|below"
+msgid "HOURS"
+msgstr "TUNTIA"
+
+#: src/gui/cards/goals.py:157
+msgctxt "skin:goals|mode:text|goal:middle|above"
+msgid "SENT"
+msgstr "LÄHETETTY"
+
+#: src/gui/cards/goals.py:161
+msgctxt "skin:goals|mode:text|goal:middle|below"
+msgid "MESSAGES"
+msgstr "VIESTIÄ"
+
+#: src/gui/cards/goals.py:165
+msgctxt "skin:goals|mode:anki|goal:middle|above"
+msgid "REVIEWED"
+msgstr "KERRATTU"
+
+#: src/gui/cards/goals.py:169
+msgctxt "skin:goals|mode:anki|goal:middle|below"
+msgid "CARDS"
+msgstr "KORTTIA"
+
+#, possible-python-brace-format
+msgctxt "skin:goals|footer"
+msgid "As of {day} {month} • {name}"
+msgstr "{day} {month} mennessä • {name}"
+
+#: src/gui/cards/goals.py:242
+msgctxt "ui:goals|weekly|title"
+msgid "WEEKLY STATISTICS"
+msgstr "VIIKKOTILASTOT"
+
+#: src/gui/cards/goals.py:246
+msgctxt "ui:goals|weekly|task_header"
+msgid "GOALS OF THE WEEK"
+msgstr "VIIKON TAVOITTEET"
+
+#: src/gui/cards/goals.py:256
+msgctxt "ui:goals|monthly|title"
+msgid "MONTHLY STATISTICS"
+msgstr "KUUKAUSITILASTOT"
+
+#: src/gui/cards/goals.py:260
+msgctxt "ui:goals|monthly|task_header"
+msgid "GOALS OF THE MONTH"
+msgstr "KUUKAUDEN TAVOITTEET"

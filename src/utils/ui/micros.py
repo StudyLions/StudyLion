@@ -42,7 +42,13 @@ class FastModal(LeoModal):
         super().__init__(**kwargs)
         for item in items:
             self.add_item(item)
-        self._result: asyncio.Future[discord.Interaction] = asyncio.get_event_loop().create_future()
+        # --- AI-REPLACED (2026-03-14) ---
+        # Reason: get_event_loop() deprecated in async context
+        # --- Original code ---
+        # self._result: asyncio.Future[discord.Interaction] = asyncio.get_event_loop().create_future()
+        # --- End original code ---
+        self._result: asyncio.Future[discord.Interaction] = asyncio.get_running_loop().create_future()
+        # --- END AI-REPLACED ---
         self._waiters: List[Callable[[discord.Interaction], Coroutine]] = []
         self._error_handlers = self.__init__error_handlers__()
 
@@ -102,7 +108,12 @@ class FastModal(LeoModal):
     async def on_submit(self, interaction):
         print("On submit")
         old_result = self._result
-        self._result = asyncio.get_event_loop().create_future()
+        # --- AI-REPLACED (2026-03-14) ---
+        # --- Original code ---
+        # self._result = asyncio.get_event_loop().create_future()
+        # --- End original code ---
+        self._result = asyncio.get_running_loop().create_future()
+        # --- END AI-REPLACED ---
         old_result.set_result(interaction)
 
         tasks = []

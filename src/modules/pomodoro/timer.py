@@ -1,5 +1,6 @@
 from typing import Optional, TYPE_CHECKING
 import math
+import random
 from collections import namedtuple
 import asyncio
 from datetime import timedelta, datetime
@@ -18,7 +19,7 @@ from . import babel, logger
 from .data import TimerData
 from .ui import TimerStatusUI
 from .graphics import get_timer_card
-from .lib import TimerRole, channel_name_keys, focus_alert_path, break_alert_path
+from .lib import TimerRole, channel_name_keys, focus_alert_path, break_alert_path, BREAK_TIPS
 from .options import TimerConfig, TimerOptions
 
 from babel.settings import LocaleSettings
@@ -47,6 +48,15 @@ class Timer:
         '_run_task',
         '_loop_task',
         'destroyed',
+        # --- AI-MODIFIED (2026-03-18) ---
+        # Purpose: Premium status caching and cycle tracking
+        '_premium_cache',
+        '_premium_cache_time',
+        '_premium_config_cache',
+        '_premium_config_cache_time',
+        '_cycle_count',
+        '_last_sleep_interval',
+        # --- END AI-MODIFIED ---
     )
 
     break_name = _p('timer|stage:break|name', "BREAK")
@@ -82,6 +92,16 @@ class Timer:
         self._loop_task = None
 
         self.destroyed = False
+
+        # --- AI-MODIFIED (2026-03-18) ---
+        # Purpose: Premium caching (30 min TTL) and session cycle counter
+        self._premium_cache = None
+        self._premium_cache_time = None
+        self._premium_config_cache = None
+        self._premium_config_cache_time = None
+        self._cycle_count = 0
+        self._last_sleep_interval = 300
+        # --- END AI-MODIFIED ---
 
     def __repr__(self):
         # TODO: Add lock status and current state and stage
@@ -147,10 +167,21 @@ class Timer:
             if self._hook and self._hook.channelid == cid:
                 hook = self._hook
             else:
-                hook = self._hook = await self.bot.core.data.LionHook.fetch(cid)
+                # --- AI-MODIFIED (2026-03-22) ---
+                # Purpose: Guard against CoreCog not being loaded yet during on_ready race
+                core = self.bot.core
+                if core is None:
+                    return None
+                # --- END AI-MODIFIED ---
+                hook = self._hook = await core.data.LionHook.fetch(cid)
                 if not hook:
                     # Attempt to create and save webhook
                     # TODO: Localise
+                    # --- AI-MODIFIED (2026-03-22) ---
+                    # Purpose: Skip webhook creation for channel types that don't support it (e.g. CategoryChannel)
+                    if not hasattr(channel, 'create_webhook'):
+                        return None
+                    # --- END AI-MODIFIED ---
                     t = self.bot.translator.t
                     ctx_locale.set(self.locale.value)
                     try:
@@ -243,6 +274,45 @@ class Timer:
     def pattern(self) -> str:
         data = self.data
         return f"{int(data.focus_length // 60)}/{int(data.break_length // 60)}"
+
+    # --- AI-MODIFIED (2026-03-18) ---
+    # Purpose: Premium status check with 30-minute cache and fail-safe to False
+    async def _check_premium(self) -> bool:
+        try:
+            now = utc_now()
+            if self._premium_cache is not None and self._premium_cache_time is not None:
+                if (now - self._premium_cache_time).total_seconds() < 1800:
+                    return self._premium_cache
+            premcog = self.bot.get_cog('PremiumCog')
+            if premcog is None:
+                self._premium_cache = False
+                self._premium_cache_time = now
+                return False
+            result = await premcog.is_premium_guild(self.data.guildid)
+            self._premium_cache = result
+            self._premium_cache_time = now
+            return result
+        except Exception:
+            logger.debug(f"Premium check failed for guild {self.data.guildid}, defaulting to non-premium")
+            return False
+
+    async def premium_config(self):
+        try:
+            now = utc_now()
+            if self._premium_config_cache is not None and self._premium_config_cache_time is not None:
+                if (now - self._premium_config_cache_time).total_seconds() < 1800:
+                    return self._premium_config_cache
+            timercog = self.bot.get_cog('TimerCog')
+            if timercog is None:
+                return None
+            row = await timercog.data.PremiumPomodoroConfig.fetch(self.data.guildid)
+            self._premium_config_cache = row
+            self._premium_config_cache_time = now
+            return row
+        except Exception:
+            logger.debug(f"Premium config fetch failed for guild {self.data.guildid}")
+            return None
+    # --- END AI-MODIFIED ---
 
     def channel_name_map(self):
         """
@@ -445,6 +515,16 @@ class Timer:
             if self.voice_alerts:
                 after_tasks.append(asyncio.create_task(self._voice_alert(to_stage), name='voice-alert'))
 
+            # --- AI-MODIFIED (2026-03-18) ---
+            # Purpose: Track cycle count and trigger premium gamification on focus->break
+            if from_stage and from_stage.focused and to_stage and not to_stage.focused:
+                self._cycle_count += 1
+                asyncio.create_task(
+                    self._premium_on_stage_change(from_stage),
+                    name='premium-stage-change'
+                )
+            # --- END AI-MODIFIED ---
+
             for task in tasks:
                 try:
                     await task
@@ -494,7 +574,13 @@ class Timer:
 
                 with open(alert_file, 'rb') as audio_stream:
                     finished = asyncio.Event()
-                    loop = asyncio.get_event_loop()
+                    # --- AI-REPLACED (2026-03-14) ---
+                    # Reason: get_event_loop() deprecated in async context
+                    # --- Original code ---
+                    # loop = asyncio.get_event_loop()
+                    # --- End original code ---
+                    loop = asyncio.get_running_loop()
+                    # --- END AI-REPLACED ---
 
                     def voice_callback(error):
                         if error:
@@ -558,6 +644,25 @@ class Timer:
 
         if self.running and stage is not None:
             stageline = self.stageline(stage)
+
+            # --- AI-MODIFIED (2026-03-16) ---
+            # Purpose: Add cycle counter and break tip to status content
+            interval = self.data.focus_length + self.data.break_length
+            elapsed = (now - self.data.last_started).total_seconds()
+            cycle = int(elapsed // interval) + 1
+            cycleline = t(_p(
+                'timer|status|cycleline',
+                "\U0001F504 Cycle **{cycle}**"
+            )).format(cycle=cycle)
+
+            tipline = ""
+            if not stage.focused:
+                tipline = t(_p(
+                    'timer|status|tipline',
+                    "\U0001F4A1 *{tip}*"
+                )).format(tip=random.choice(BREAK_TIPS))
+            # --- END AI-MODIFIED ---
+
             warningline = ""
             needs_warning = []
             if with_warnings and self.inactivity_threshold > 0:
@@ -586,7 +691,17 @@ class Timer:
             if notifyline:
                 notifyline = f"||{notifyline}||"
 
-            content = "\n".join(string for string in (stageline, warningline, notifyline) if string)
+            # --- AI-MODIFIED (2026-03-17) ---
+            # Purpose: Include cycle counter, break tip, and web promo in status message
+            promoline = t(_p(
+                'timer|status|promoline',
+                "\u2728 *Tap **\U0001F4F1 Focus Mode** below to study on web or phone "
+                "\u2014 ambient sounds, study stats & more!*"
+            ))
+            content = "\n".join(
+                string for string in (stageline, cycleline, tipline, promoline, warningline, notifyline) if string
+            )
+            # --- END AI-MODIFIED ---
         elif self.auto_restart:
             content = t(_p(
                 'timer|status|stopped:auto',
@@ -607,9 +722,18 @@ class Timer:
 
         if render:
             try:
-                card = await get_timer_card(self.bot, self, stage)
+                # --- AI-MODIFIED (2026-03-18) ---
+                # Purpose: Pass premium flag and refresh data to card renderer
+                is_prem = await self._check_premium()
+                card = await get_timer_card(
+                    self.bot, self, stage,
+                    premium=is_prem,
+                    refresh_interval=getattr(self, '_last_sleep_interval', 300),
+                    cycle_count=self._cycle_count,
+                )
                 await card.render()
                 rawargs['file'] = card.as_file(f"pomodoro_{self.data.channelid}.png")
+                # --- END AI-MODIFIED ---
             except RenderingException:
                 pass
         args = MessageArgs(**rawargs)
@@ -704,11 +828,32 @@ class Timer:
                     self.last_status_message = last_message
                 except discord.NotFound:
                     repost = True
-                except discord.HTTPException:
-                    # Unexpected issue with sending the status message
-                    logger.exception(
-                        f"Exception occurred updating status for Timer {self!r}"
-                    )
+                # --- AI-MODIFIED (2026-03-19) ---
+                # Purpose: Handle 413 Payload Too Large by stripping attachments and retrying,
+                #          then falling back to a full repost if that also fails
+                except discord.HTTPException as exc:
+                    if exc.code == 40005:
+                        logger.warning(
+                            f"Timer {self!r} status edit hit 413 Payload Too Large, "
+                            "retrying without attachments"
+                        )
+                        stripped = {
+                            k: v for k, v in args.edit_args.items()
+                            if k != 'attachments'
+                        }
+                        try:
+                            await last_message.edit(**stripped)
+                            self.last_status_message = last_message
+                        except discord.HTTPException:
+                            logger.warning(
+                                f"Timer {self!r} stripped-attachment retry also failed, reposting"
+                            )
+                            repost = True
+                    else:
+                        logger.exception(
+                            f"Exception occurred updating status for Timer {self!r}"
+                        )
+                # --- END AI-MODIFIED ---
 
             if repost:
                 await self.send_status(delete_last=False, with_notify=False)
@@ -827,6 +972,10 @@ class Timer:
         background_tasks = set()
 
         self._state = current = self.current_stage
+        # --- AI-MODIFIED (2026-03-18) ---
+        # Purpose: Track _last_sleep_interval for card rendering refresh context
+        self._last_sleep_interval = 300
+        # --- END AI-MODIFIED ---
         while True:
             if current is None:
                 logger.exception(
@@ -835,11 +984,22 @@ class Timer:
                 break
             to_next_stage = (current.end - utc_now()).total_seconds()
 
-            # TODO: Consider request rate and load
-            if to_next_stage > 5 * 60 - drift:
-                time_to_sleep = 5 * 60
+            # --- AI-MODIFIED (2026-03-18) ---
+            # Purpose: Premium 2-min refresh with jitter; free 5-min with jitter.
+            # The elif/else branches preserve exact original behavior.
+            try:
+                is_prem = await self._check_premium()
+            except Exception:
+                is_prem = False
+
+            if is_prem and to_next_stage > 2 * 60 - drift:
+                time_to_sleep = 2 * 60 + random.randint(-10, 10)
+            elif to_next_stage > 5 * 60 - drift:
+                time_to_sleep = 5 * 60 + random.randint(-10, 10)
             else:
                 time_to_sleep = to_next_stage
+            self._last_sleep_interval = max(int(time_to_sleep), 60)
+            # --- END AI-MODIFIED ---
 
             self._run_task = asyncio.create_task(asyncio.sleep(time_to_sleep))
             try:
@@ -886,6 +1046,42 @@ class Timer:
                     f"Unexpected error while finishing background tasks for timer {self!r}",
                     exc_info=True
                 )
+
+    # --- AI-MODIFIED (2026-03-18) ---
+    # Purpose: Premium gamification hooks on stage change (fire-and-forget, fully isolated)
+    async def _premium_on_stage_change(self, from_stage):
+        try:
+            if not await self._check_premium():
+                return
+            focus_minutes = from_stage.duration / 60
+            for member in self.members:
+                try:
+                    from .gamification import update_streak, increment_focus_power, check_milestones, announce_milestone
+                    await update_streak(self.bot, member.id, int(focus_minutes))
+                    await increment_focus_power(self.bot, member.id)
+
+                    timercog = self.bot.get_cog('TimerCog')
+                    if timercog:
+                        row = await timercog.data.PomodoroStreak.fetch(member.id)
+                        if row:
+                            milestones = await check_milestones(
+                                self.bot, member.id, self.data.guildid,
+                                row.total_cycles_completed
+                            )
+                            notif_cid = self.data.notification_channelid or (
+                                self.lguild.config.get('pomodoro_channel').value.id
+                                if self.lguild.config.get('pomodoro_channel').value else None
+                            )
+                            for threshold, message in milestones:
+                                await announce_milestone(
+                                    self.bot, self.data.guildid, member.id,
+                                    threshold, message, notif_cid
+                                )
+                except Exception:
+                    logger.debug(f"Premium stage change hook failed for member {member.id}, non-critical")
+        except Exception:
+            logger.debug(f"Premium stage change handler failed for timer {self.data.channelid}, non-critical")
+    # --- END AI-MODIFIED ---
 
     def launch(self):
         """

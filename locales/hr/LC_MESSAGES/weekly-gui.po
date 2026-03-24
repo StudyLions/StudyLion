@@ -1,0 +1,86 @@
+# Croatian translation for LionBot - weekly-gui
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 18:50+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Croatian\n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: src/gui/cards/weekly.py:52
+msgctxt "skin:weeklystats|mode:study|title"
+msgid "STUDY HOURS"
+msgstr "SATI UČENJA"
+
+#: src/gui/cards/weekly.py:56
+msgctxt "skin:weeklystats|mode:voice|title"
+msgid "VOICE CHANNEL ACTIVITY"
+msgstr "AKTIVNOST GLASOVNOG KANALA"
+
+#: src/gui/cards/weekly.py:60
+msgctxt "skin:weeklystats|mode:text|title"
+msgid "MESSAGE ACTIVITY"
+msgstr "AKTIVNOST PORUKA"
+
+#: src/gui/cards/weekly.py:64
+msgctxt "skin::weeklystats|mode:anki|title"
+msgid "CARDS REVIEWED"
+msgstr "PREGLEDANE KARTICE"
+
+#: src/gui/cards/weekly.py:137
+msgctxt "skin:weeklystats|weekdays"
+msgid "M,T,W,T,F,S,S"
+msgstr "P,U,S,Č,P,S,N"
+
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:study|summary:this_week"
+msgid "THIS WEEK: {amount} HOURS"
+msgstr "OVAJ TJEDAN: {amount} SATI"
+
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:voice|summary:this_week"
+msgid "THIS WEEK: {amount} HOURS"
+msgstr "OVAJ TJEDAN: {amount} SATI"
+
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:text|summary:this_week"
+msgid "THIS WEEK: {amount} MESSAGES"
+msgstr "OVAJ TJEDAN: {amount} PORUKA"
+
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:text|summary:this_week"
+msgid "THIS WEEK: {amount} CARDS"
+msgstr "OVAJ TJEDAN: {amount} KARTICA"
+
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:study|summary:last_week"
+msgid "LAST WEEK: {amount} HOURS"
+msgstr "PROŠLI TJEDAN: {amount} SATI"
+
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:voice|summary:last_week"
+msgid "LAST WEEK: {amount} HOURS"
+msgstr "PROŠLI TJEDAN: {amount} SATI"
+
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:text|summary:last_week"
+msgid "LAST WEEK: {amount} MESSAGES"
+msgstr "PROŠLI TJEDAN: {amount} PORUKA"
+
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:text|summary:last_week"
+msgid "LAST WEEK: {amount} CARDS"
+msgstr "PROŠLI TJEDAN: {amount} KARTICA"
+
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|footer"
+msgid "Weekly Statistics • As of {day} {month} • {name} {discrim}"
+msgstr "Tjedna statistika • Na dan {day} {month} • {name} {discrim}"

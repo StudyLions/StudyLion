@@ -1,0 +1,732 @@
+# Polish translation for LionBot - moderation
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 22:18+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Polish\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: src/modules/moderation/settingui.py:55
+msgctxt "ui:moderation_config|menu:ticket_log|placeholder"
+msgid "Select Ticket Log"
+msgstr "Wybierz dziennik zgłoszeń"
+
+#: src/modules/moderation/settingui.py:81
+msgctxt "ui:moderation_config|menu:alert_channel|placeholder"
+msgid "Select Alert Channel"
+msgstr "Wybierz kanał alertów"
+
+#: src/modules/moderation/settingui.py:107
+msgctxt "ui:moderation_config|menu:modrole|placeholder"
+msgid "Select Moderator Role"
+msgstr "Wybierz rolę moderatora"
+
+#: src/modules/moderation/settingui.py:133
+msgctxt "ui:moderation_config|menu:adminrole|placeholder"
+msgid "Select Admin Role"
+msgstr "Wybierz rolę administratora"
+
+#: src/modules/moderation/settingui.py:141
+msgctxt "ui:moderation_config|embed|title"
+msgid "Moderation Configuration Panel"
+msgstr "Panel konfiguracji moderacji"
+
+#: src/modules/moderation/settingui.py:182
+msgctxt "dash:moderation|title"
+msgid "Moderation Settings ({commands[admin config moderation]})"
+msgstr "Ustawienia moderacji ({commands[admin config moderation]})"
+
+#: src/modules/moderation/settingui.py:186
+msgctxt "dash:moderation|dropdown|placeholder"
+msgid "Moderation Panel"
+msgstr "Panel moderacji"
+
+#: src/modules/moderation/cog.py:135
+msgctxt "cmd:modnote"
+msgid "modnote"
+msgstr "modnote"
+
+#: src/modules/moderation/cog.py:138
+msgctxt "cmd:modnote|desc"
+msgid "Add a note to the target member's moderation record."
+msgstr "Dodaj notatkę do rejestru moderacji wybranego członka."
+
+#: src/modules/moderation/cog.py:142
+msgctxt "cmd:modnote|param:target"
+msgid "target"
+msgstr "target"
+
+#: src/modules/moderation/cog.py:143
+msgctxt "cmd:modnote|param:note"
+msgid "note"
+msgstr "note"
+
+#: src/modules/moderation/cog.py:148
+msgctxt "cmd:modnote|param:target|desc"
+msgid "Target member or user to add a note to."
+msgstr "Członek lub użytkownik, do którego dodać notatkę."
+
+#: src/modules/moderation/cog.py:152
+msgctxt "cmd:modnote|param:note|desc"
+msgid "Contents of the note."
+msgstr "Zawartość notatki."
+
+#: src/modules/moderation/cog.py:177
+msgctxt "cmd:modnote|modal:enter_note|title"
+msgid "Moderation Note"
+msgstr "Notatka moderacji"
+
+#: src/modules/moderation/cog.py:182
+msgctxt "cmd:modnote|modal:enter_note|field|label"
+msgid "Note Content"
+msgstr "Zawartość notatki"
+
+#, possible-python-brace-format
+msgctxt "cmd:modnote|embed:success|desc"
+msgid "Moderation note created as [Ticket #{ticket}]({jump_link})"
+msgstr "Notatka moderacji utworzona jako [Zgłoszenie #{ticket}]({jump_link})"
+
+#: src/modules/moderation/cog.py:225
+msgctxt "cmd:warning"
+msgid "warning"
+msgstr "warning"
+
+#: src/modules/moderation/cog.py:228
+msgctxt "cmd:warning|desc"
+msgid ""
+"Warn a member for a misdemeanour, and add it to their moderation record."
+msgstr "Ostrzeż członka za wykroczenie i dodaj to do jego rejestru moderacji."
+
+#: src/modules/moderation/cog.py:232
+msgctxt "cmd:warning|param:target"
+msgid "target"
+msgstr "target"
+
+#: src/modules/moderation/cog.py:233
+msgctxt "cmd:warning|param:reason"
+msgid "reason"
+msgstr "reason"
+
+#: src/modules/moderation/cog.py:238
+msgctxt "cmd:warning|param:target|desc"
+msgid "Target member to warn."
+msgstr "Członek do ostrzeżenia."
+
+#: src/modules/moderation/cog.py:242
+msgctxt "cmd:warning|param:reason|desc"
+msgid "The reason why you are warning this member."
+msgstr "Powód ostrzeżenia tego członka."
+
+#: src/modules/moderation/cog.py:262
+msgctxt "cmd:warning|modal:reason|title"
+msgid "Moderation Warning"
+msgstr "Ostrzeżenie moderacji"
+
+#: src/modules/moderation/cog.py:267
+msgctxt "cmd:warning|modal:reason|field|label"
+msgid "Reason for the warning (visible to user)."
+msgstr "Powód ostrzeżenia (widoczny dla użytkownika)."
+
+#: src/modules/moderation/cog.py:298
+msgctxt "cmd:warning|embed:user_alert|title"
+msgid "You have received a warning!"
+msgstr "Otrzymałeś ostrzeżenie!"
+
+#: src/modules/moderation/cog.py:305
+msgctxt "cmd:warning|embed:user_alert|field:note|name"
+msgid "Note"
+msgstr "Uwaga"
+
+#: src/modules/moderation/cog.py:309
+msgctxt "cmd:warning|embed:user_alert|field:note|value"
+msgid ""
+"*Warnings appear in your moderation history. Continuing failure to comply "
+"with server rules and moderator directions may result in more severe action."
+msgstr ""
+"*Ostrzeżenia pojawiają się w historii moderacji. Kontynuowanie "
+"nieprzestrzegania zasad serwera i poleceń moderatorów może skutkować "
+"surowszymi działaniami."
+
+#, possible-python-brace-format
+msgctxt "cmd:warning|embed:success|line:count"
+msgid "This their first warning."
+msgid_plural "They have recieved **`{count}`** warnings."
+msgstr[0] "To ich pierwsze ostrzeżenie."
+msgstr[1] "Otrzymali **`{count}`** ostrzeżenia."
+msgstr[2] "Otrzymali **`{count}`** ostrzeżeń."
+
+#, possible-python-brace-format
+msgctxt "cmd:warning|embed:success|desc"
+msgid "[Ticket #{ticket}]({jump_link}) {user} has been warned."
+msgstr "[Zgłoszenie #{ticket}]({jump_link}) {user} otrzymał ostrzeżenie."
+
+#: src/modules/moderation/cog.py:347
+msgctxt "cmd:warning|embed:success|field:no_alert|name"
+msgid "Note"
+msgstr "Uwaga"
+
+#: src/modules/moderation/cog.py:351
+msgctxt "cmd:warning|embed:success|field:no_alert|value"
+msgid "*Could not deliver warning to the target.*"
+msgstr "*Nie udało się dostarczyć ostrzeżenia do celu.*"
+
+#: src/modules/moderation/cog.py:358
+msgctxt "cmd:pardon"
+msgid "pardon"
+msgstr "pardon"
+
+#: src/modules/moderation/cog.py:361
+msgctxt "cmd:pardon|desc"
+msgid "Pardon moderation tickets to mark them as no longer in effect."
+msgstr "Ułaskaw zgłoszenia moderacji, aby oznaczyć je jako nieobowiązujące."
+
+#: src/modules/moderation/cog.py:367
+msgctxt "cmd:pardon|param:ticketids"
+msgid "tickets"
+msgstr "tickets"
+
+#: src/modules/moderation/cog.py:371
+msgctxt "cmd:pardon|param:reason"
+msgid "reason"
+msgstr "reason"
+
+#: src/modules/moderation/cog.py:377
+msgctxt "cmd:pardon|param:ticketids|desc"
+msgid "Comma separated list of ticket numbers to pardon."
+msgstr "Lista numerów zgłoszeń do ułaskawienia oddzielona przecinkami."
+
+#: src/modules/moderation/cog.py:381
+msgctxt "cmd:pardon|param:reason"
+msgid "Why these tickets are being pardoned."
+msgstr ""
+
+#: src/modules/moderation/cog.py:402
+msgctxt "cmd:pardon|modal:reason|title"
+msgid "Pardon Tickets"
+msgstr "Ułaskaw zgłoszenia"
+
+#: src/modules/moderation/cog.py:407
+msgctxt "cmd:pardon|modal:reason|field|label"
+msgid "Why are you pardoning these tickets?"
+msgstr "Dlaczego ułaskawiasz te zgłoszenia?"
+
+#: src/modules/moderation/cog.py:435
+msgctxt "cmd:pardon|error:parse_ticketids"
+msgid ""
+"Could not parse provided tickets as a list of ticket ids! Please enter "
+"tickets as a comma separated list of ticket numbers, for example `1, 2, 3`."
+msgstr ""
+"Nie udało się przetworzyć podanych zgłoszeń jako listy identyfikatorów! "
+"Wprowadź jako listę oddzieloną przecinkami, na przykład `1, 2, 3`."
+
+#: src/modules/moderation/cog.py:449
+msgctxt "cmd:pardon|error:no_matching"
+msgid "No matching moderation tickets found to pardon!"
+msgstr "Nie znaleziono pasujących zgłoszeń moderacji do ułaskawienia!"
+
+#, possible-python-brace-format
+msgctxt "cmd:pardon|embed:success|title"
+msgid "Ticket {ticketstr} has been pardoned."
+msgid_plural ""
+"The following tickets have been pardoned:\n"
+"{ticketstr}"
+msgstr[0] "Zgłoszenie {ticketstr} zostało ułaskawione."
+msgstr[1] ""
+"Następujące zgłoszenia zostały ułaskawione:\n"
+"{ticketstr}"
+msgstr[2] ""
+"Następujące zgłoszenia zostały ułaskawione:\n"
+"{ticketstr}"
+
+#: src/modules/moderation/cog.py:478
+msgctxt "cmd:tickets"
+msgid "tickets"
+msgstr "tickets"
+
+#: src/modules/moderation/cog.py:481
+msgctxt "cmd:tickets|desc"
+msgid "View moderation tickets in this server."
+msgstr "Wyświetl zgłoszenia moderacji na tym serwerze."
+
+#: src/modules/moderation/cog.py:485
+msgctxt "cmd:tickets|param:target"
+msgid "target"
+msgstr "target"
+
+#: src/modules/moderation/cog.py:486
+msgctxt "cmd:tickets|param:type"
+msgid "type"
+msgstr "type"
+
+#: src/modules/moderation/cog.py:487
+msgctxt "cmd:tickets|param:state"
+msgid "ticket_state"
+msgstr "ticket_state"
+
+#: src/modules/moderation/cog.py:488
+msgctxt "cmd:tickets|param:pardoned"
+msgid "include_pardoned"
+msgstr "include_pardoned"
+
+#: src/modules/moderation/cog.py:489
+msgctxt "cmd:tickets|param:moderator"
+msgid "acting_moderator"
+msgstr "acting_moderator"
+
+#: src/modules/moderation/cog.py:490
+msgctxt "cmd:tickets|param:after"
+msgid "after"
+msgstr "after"
+
+#: src/modules/moderation/cog.py:491
+msgctxt "cmd:tickets|param:before"
+msgid "before"
+msgstr "before"
+
+#: src/modules/moderation/cog.py:496
+msgctxt "cmd:tickets|param:target|desc"
+msgid "Filter by tickets acting on a given user."
+msgstr "Filtruj według zgłoszeń dotyczących danego użytkownika."
+
+#: src/modules/moderation/cog.py:500
+msgctxt "cmd:tickets|param:type|desc"
+msgid "Filter by ticket type."
+msgstr "Filtruj według typu zgłoszenia."
+
+#: src/modules/moderation/cog.py:504
+msgctxt "cmd:tickets|param:state|desc"
+msgid "Filter by ticket state."
+msgstr "Filtruj według stanu zgłoszenia."
+
+#: src/modules/moderation/cog.py:508
+msgctxt "cmd:tickets|param:pardoned|desc"
+msgid "Whether to only show active tickets, or also include pardoned."
+msgstr "Czy pokazywać tylko aktywne zgłoszenia, czy też ułaskawione."
+
+#: src/modules/moderation/cog.py:512
+msgctxt "cmd:tickets|param:moderator|desc"
+msgid "Filter by moderator responsible for the ticket."
+msgstr "Filtruj według moderatora odpowiedzialnego za zgłoszenie."
+
+#: src/modules/moderation/cog.py:516
+msgctxt "cmd:tickets|param:after|desc"
+msgid "Only show tickets after this date (YYY-MM-DD HH:MM)"
+msgstr "Pokaż tylko zgłoszenia po tej dacie (RRRR-MM-DD GG:MM)"
+
+#: src/modules/moderation/cog.py:520
+msgctxt "cmd:tickets|param:before|desc"
+msgid "Only show tickets before this date (YYY-MM-DD HH:MM)"
+msgstr "Pokaż tylko zgłoszenia przed tą datą (RRRR-MM-DD GG:MM)"
+
+#: src/modules/moderation/cog.py:582
+msgctxt "cmd:configure_moderation"
+msgid "moderation"
+msgstr "moderation"
+
+#: src/modules/moderation/cog.py:585
+msgctxt "cmd:configure_moderation|desc"
+msgid "Configure general moderation settings."
+msgstr "Skonfiguruj ogólne ustawienia moderacji."
+
+#: src/modules/moderation/ticketui.py:62
+msgctxt "ticketfilter|field:after|name"
+msgid "Created After"
+msgstr "Utworzono po"
+
+#: src/modules/moderation/ticketui.py:70
+msgctxt "ticketfilter|field:before|name"
+msgid "Created Before"
+msgstr "Utworzono przed"
+
+#: src/modules/moderation/ticketui.py:78
+msgctxt "ticketfilter|field:targetids|name"
+msgid "Targets"
+msgstr "Cele"
+
+#: src/modules/moderation/ticketui.py:86
+msgctxt "ticketfilter|field:moderatorids|name"
+msgid "Moderators"
+msgstr "Moderatorzy"
+
+#: src/modules/moderation/ticketui.py:94
+msgctxt "ticketfilter|field:types|name"
+msgid "Ticket Types"
+msgstr "Typy zgłoszeń"
+
+#: src/modules/moderation/ticketui.py:102
+msgctxt "ticketfilter|field:states|name"
+msgid "Ticket States"
+msgstr "Stany zgłoszeń"
+
+#: src/modules/moderation/ticketui.py:179
+msgctxt "ui:tickets|button:edit_filter|label"
+msgid "Edit Filters"
+msgstr "Edytuj filtry"
+
+#: src/modules/moderation/ticketui.py:199
+msgctxt "ui:tickets|button:select_ticket|label"
+msgid "Select Ticket"
+msgstr "Wybierz zgłoszenie"
+
+#: src/modules/moderation/ticketui.py:215
+msgctxt "ui:tickets|button:pardon|error:no_tickets"
+msgid "Not tickets matching the given criterial! Nothing to pardon."
+msgstr "Brak zgłoszeń spełniających podane kryteria! Nie ma czego ułaskawiać."
+
+#: src/modules/moderation/ticketui.py:221
+msgctxt "ui:tickets|button:pardon|modal:reason|title"
+msgid "Pardon Tickets"
+msgstr "Ułaskaw zgłoszenia"
+
+#: src/modules/moderation/ticketui.py:226
+msgctxt "ui:tickets|button:pardon|modal:reason|field|label"
+msgid "Why are you pardoning these tickets?"
+msgstr "Dlaczego ułaskawiasz te zgłoszenia?"
+
+#: src/modules/moderation/ticketui.py:252
+msgctxt "ui:tickets|button:pardon|label"
+msgid "Pardon All"
+msgstr "Ułaskaw wszystkie"
+
+#: src/modules/moderation/ticketui.py:273
+msgctxt "ui:tickets|menu:filter_type|placeholder"
+msgid "Select Ticket Types"
+msgstr "Wybierz typy zgłoszeń"
+
+#: src/modules/moderation/ticketui.py:309
+msgctxt "ui:tickets|menu:filter_state|placeholder"
+msgid "Select Ticket States"
+msgstr "Wybierz stany zgłoszeń"
+
+#: src/modules/moderation/ticketui.py:346
+msgctxt "ui:tickets|menu:filter_target|placeholder"
+msgid "Select Ticket Targets"
+msgstr "Wybierz cele zgłoszeń"
+
+#: src/modules/moderation/ticketui.py:371
+msgctxt "ui:tickets|menu:tickets|placeholder"
+msgid "Select Ticket"
+msgstr "Wybierz zgłoszenie"
+
+#: src/modules/moderation/ticketui.py:402
+msgctxt "ui:tickets|button:jump|input:title"
+msgid "Jump to page"
+msgstr "Przejdź do strony"
+
+#: src/modules/moderation/ticketui.py:406
+msgctxt "ui:tickets|button:jump|input:question"
+msgid "Page number to jump to"
+msgstr "Numer strony do przejścia"
+
+#: src/modules/moderation/ticketui.py:417
+msgctxt "ui:tickets|button:jump|error:invalid_page"
+msgid "Invalid page number, please try again!"
+msgstr "Nieprawidłowy numer strony, spróbuj ponownie!"
+
+#, possible-python-brace-format
+msgctxt "ui:tickets|embed|title"
+msgid "Moderation Tickets in {guild}"
+msgstr "Zgłoszenia moderacji w {guild}"
+
+#: src/modules/moderation/ticketui.py:506
+msgctxt "ui:tickets|embed|desc:no_tickets"
+msgid "No tickets matching the given criteria!"
+msgstr "Brak zgłoszeń spełniających podane kryteria!"
+
+#: src/modules/moderation/ticketui.py:515
+msgctxt "ui:tickets|embed|field:filters|name"
+msgid "Filters"
+msgstr "Filtry"
+
+#: src/modules/moderation/ticketui.py:603
+msgctxt "ui:ticket|button:pardon|modal:reason|title"
+msgid "Pardon Moderation Ticket"
+msgstr "Ułaskaw zgłoszenie moderacji"
+
+#: src/modules/moderation/ticketui.py:608
+msgctxt "ui:ticket|button:pardon|modal:reason|field|label"
+msgid "Why are you pardoning this ticket?"
+msgstr "Dlaczego ułaskawiasz to zgłoszenie?"
+
+#: src/modules/moderation/ticketui.py:632
+msgctxt "ui:ticket|button:pardon|label"
+msgid "Pardon"
+msgstr "Ułaskaw"
+
+#, possible-python-brace-format
+msgctxt "ticket|title:auto"
+msgid "Ticket #{ticketid} | {state} | {type}[Auto] | {name}"
+msgstr "Zgłoszenie #{ticketid} | {state} | {type}[Auto] | {name}"
+
+#, possible-python-brace-format
+msgctxt "ticket|title:manual"
+msgid "Ticket #{ticketid} | {state} | {type} | {name}"
+msgstr "Zgłoszenie #{ticketid} | {state} | {type} | {name}"
+
+#: src/modules/moderation/ticket.py:169
+msgctxt "ticket|field:target|name"
+msgid "Target"
+msgstr "Cel"
+
+#: src/modules/moderation/ticket.py:174
+msgctxt "ticket|field:moderator|name"
+msgid "Moderator"
+msgstr "Moderator"
+
+#: src/modules/moderation/ticket.py:181
+msgctxt "ticket|field:expiry|mode:expiring|name"
+msgid "Expires At"
+msgstr "Wygasa"
+
+#, possible-python-brace-format
+msgctxt "ticket|field:expiry|mode:expiring|value"
+msgid ""
+"{timestamp}\n"
+"Duration: `{duration}`"
+msgstr ""
+"{timestamp}\n"
+"Czas trwania: `{duration}`"
+
+#: src/modules/moderation/ticket.py:192
+msgctxt "ticket|field:expiry|mode:expired|name"
+msgid "Expired"
+msgstr "Wygasłe"
+
+#, possible-python-brace-format
+msgctxt "ticket|field:expiry|mode:expired|value"
+msgid "{timestamp}"
+msgstr "{timestamp}"
+
+#: src/modules/moderation/ticket.py:202
+msgctxt "ticket|field:expiry|mode:open|name"
+msgid "Expiry"
+msgstr "Wygaśnięcie"
+
+#, possible-python-brace-format
+msgctxt "ticket|field:expiry|mode:open|value"
+msgid "{timestamp}"
+msgstr "{timestamp}"
+
+#: src/modules/moderation/ticket.py:213
+msgctxt "ticket|field:context|name"
+msgid "Context"
+msgstr "Kontekst"
+
+#: src/modules/moderation/ticket.py:220
+msgctxt "ticket|field:notes|name"
+msgid "Notes"
+msgstr "Notatki"
+
+#: src/modules/moderation/ticket.py:227
+msgctxt "ticket|field:pardoned|name"
+msgid "Pardoned"
+msgstr "Ułaskawione"
+
+#, possible-python-brace-format
+msgctxt "ticket|field:pardoned|value"
+msgid ""
+"Pardoned by <@{moderator}> at {timestamp}.\n"
+"{reason}"
+msgstr ""
+"Ułaskawione przez <@{moderator}> dnia {timestamp}.\n"
+"{reason}"
+
+#: src/modules/moderation/settings.py:22
+msgctxt "guildset:ticket_log"
+msgid "ticket_log"
+msgstr "ticket_log"
+
+#: src/modules/moderation/settings.py:25
+msgctxt "guildset:ticket_log|desc"
+msgid "Private moderation log to send tickets and moderation events."
+msgstr ""
+"Prywatny dziennik moderacji do wysyłania zgłoszeń i zdarzeń moderacji."
+
+#: src/modules/moderation/settings.py:29
+msgctxt "guildset:ticket_log|long_desc"
+msgid ""
+"Warnings, notes, video blacklists, and other moderation events will be "
+"posted as numbered tickets with context to this log."
+msgstr ""
+"Ostrzeżenia, notatki, czarne listy wideo i inne zdarzenia moderacji będą "
+"publikowane jako ponumerowane zgłoszenia z kontekstem w tym dzienniku."
+
+#: src/modules/moderation/settings.py:34
+msgctxt "guildset:ticket_log|accepts"
+msgid "Ticket channel name or id."
+msgstr "Nazwa lub ID kanału zgłoszeń."
+
+#, possible-python-brace-format
+msgctxt "guildset:ticket_log|set_response:set"
+msgid "Moderation tickets will be sent to {channel}"
+msgstr "Zgłoszenia moderacji będą wysyłane na {channel}"
+
+#: src/modules/moderation/settings.py:53
+msgctxt "guildset:ticket_log|set_response:unset"
+msgid "Moderation tickets will not be logged to a channel."
+msgstr "Zgłoszenia moderacji nie będą rejestrowane na kanale."
+
+#: src/modules/moderation/settings.py:65
+msgctxt "guildset:ticket_log|formatted:unset"
+msgid "Not Set."
+msgstr "Nie ustawiono."
+
+#: src/modules/moderation/settings.py:73
+msgctxt "guildset:alert_channel"
+msgid "alert_channel"
+msgstr "alert_channel"
+
+#: src/modules/moderation/settings.py:76
+msgctxt "guildset:alert_channel|desc"
+msgid "Moderation notification channel for members with DMs disabled."
+msgstr ""
+"Kanał powiadomień moderacji dla członków z wyłączonymi wiadomościami "
+"prywatnymi."
+
+#: src/modules/moderation/settings.py:80
+msgctxt "guildset:alert_channel|long_desc"
+msgid ""
+"When I need to send a member a moderation-related notification (e.g. asking "
+"them to enable their video in a video channel) from this server, I will try "
+"to send it via direct messages. If this fails, I will instead mention the "
+"user in this channel."
+msgstr ""
+"Gdy muszę wysłać członkowi powiadomienie związane z moderacją (np. prośbę o "
+"włączenie kamery w kanale wideo) z tego serwera, spróbuję wysłać je przez "
+"wiadomość prywatną. Jeśli się nie uda, wspomnę użytkownika w tym kanale."
+
+#: src/modules/moderation/settings.py:87
+msgctxt "guildset:alert_channel|accepts"
+msgid "Alert channel name or id."
+msgstr "Nazwa lub ID kanału alertów."
+
+#, possible-python-brace-format
+msgctxt "guildset:alert_channel|set_response:set"
+msgid "Moderation alerts will be sent to {channel}"
+msgstr "Alerty moderacji będą wysyłane na {channel}"
+
+#: src/modules/moderation/settings.py:107
+msgctxt "guildset:alert_channel|set_response:unset"
+msgid "Moderation alerts will be ignored if the member cannot be reached."
+msgstr ""
+"Alerty moderacji będą ignorowane, jeśli nie można skontaktować się z "
+"członkiem."
+
+#: src/modules/moderation/settings.py:119
+msgctxt "guildset:alert_channel|formatted:unset"
+msgid "Not Set (Only alert via direct message.)"
+msgstr "Nie ustawiono (Tylko alert przez wiadomość prywatną.)"
+
+#: src/modules/moderation/settings.py:127
+msgctxt "guildset:mod_role"
+msgid "mod_role"
+msgstr "mod_role"
+
+#: src/modules/moderation/settings.py:130
+msgctxt "guildset:mod_role|desc"
+msgid ""
+"Server role permitted to perform moderation and minor bot configuration."
+msgstr ""
+"Rola serwera z uprawnieniami do moderacji i drobnej konfiguracji bota."
+
+#: src/modules/moderation/settings.py:134
+msgctxt "guildset:mod_role|long_desc"
+msgid ""
+"Members with the moderator role are considered moderators, and are permitted to use moderator commands, such as viewing and pardoning moderation tickets, creating moderation notes, and performing minor reconfiguration through the `/config` command.\n"
+"Moderators are never permitted to perform actions (such as giving roles) that they do not already have the Discord permissions for.\n"
+"Members with the 'Manage Guild' permission are always considered moderators."
+msgstr ""
+"Członkowie z rolą moderatora są uważani za moderatorów i mogą używać poleceń moderatora, takich jak przeglądanie i ułaskawianie zgłoszeń, tworzenie notatek i drobna rekonfiguracja przez polecenie `/config`.\n"
+"Moderatorzy nigdy nie mogą wykonywać działań (takich jak nadawanie ról), do których nie mają uprawnień Discord.\n"
+"Członkowie z uprawnieniem 'Manage Guild' są zawsze uważani za moderatorów."
+
+#: src/modules/moderation/settings.py:145
+msgctxt "guildset:mod_role|accepts"
+msgid "Moderation role name or id."
+msgstr "Nazwa lub ID roli moderatora."
+
+#, possible-python-brace-format
+msgctxt "guildset:mod_role|set_response:set"
+msgid ""
+"Members with {role} will be considered moderators. You may need to grant "
+"them access to view moderation commands via the server integration settings."
+msgstr ""
+"Członkowie z {role} będą uważani za moderatorów. Może być konieczne "
+"przyznanie im dostępu do poleceń moderacji przez ustawienia integracji "
+"serwera."
+
+#: src/modules/moderation/settings.py:166
+msgctxt "guildset:mod_role|set_response:unset"
+msgid ""
+"Only members with the 'Manage Guild' permission will be considered "
+"moderators."
+msgstr ""
+"Tylko członkowie z uprawnieniem 'Manage Guild' będą uważani za moderatorów."
+
+#: src/modules/moderation/settings.py:178
+msgctxt "guildset:mod_role|formatted:unset"
+msgid "Not Set."
+msgstr "Nie ustawiono."
+
+#: src/modules/moderation/settings.py:186
+msgctxt "guildset:admin_role"
+msgid "admin_role"
+msgstr "admin_role"
+
+#: src/modules/moderation/settings.py:189
+msgctxt "guildset:admin_role|desc"
+msgid ""
+"Server role allowing access to all administrator level functionality in Leo."
+msgstr ""
+"Rola serwera umożliwiająca dostęp do wszystkich funkcji na poziomie "
+"administratora w Leo."
+
+#: src/modules/moderation/settings.py:193
+msgctxt "guildset:admin_role|long_desc"
+msgid ""
+"Members with this role are considered to be server administrators, allowing "
+"them to use all of my interfaces and commands, except for managing roles "
+"that are above them in the role hierachy. This setting allows giving members"
+" administrator-level permissions over my systems, without actually giving "
+"the members admin server permissions. Note that the role will also need to "
+"be given permission to see the commands through the Discord server "
+"integrations interface."
+msgstr ""
+"Członkowie z tą rolą są uważani za administratorów serwera i mogą używać "
+"wszystkich moich interfejsów i poleceń, z wyjątkiem zarządzania rolami "
+"wyższymi w hierarchii. To ustawienie pozwala nadać uprawnienia na poziomie "
+"administratora nad moimi systemami bez faktycznego nadawania uprawnień "
+"administratora serwera. Rola będzie również musiała otrzymać uprawnienia do "
+"widzenia poleceń przez interfejs integracji serwera Discord."
+
+#: src/modules/moderation/settings.py:203
+msgctxt "guildset:admin_role|accepts"
+msgid "Admin role name or id."
+msgstr "Nazwa lub ID roli administratora."
+
+#, possible-python-brace-format
+msgctxt "guildset:admin_role|set_response:set"
+msgid ""
+"Members with {role} will now be considered admins, and have access to my "
+"full interface."
+msgstr ""
+"Członkowie z {role} będą teraz uważani za administratorów i będą mieli "
+"dostęp do mojego pełnego interfejsu."
+
+#: src/modules/moderation/settings.py:221
+msgctxt "guildset:admin_role|set_response:unset"
+msgid ""
+"The admin role has been unset. Only members with administrator permissions "
+"will be considered admins."
+msgstr ""
+"Rola administratora została usunięta. Tylko członkowie z uprawnieniami "
+"administratora będą uważani za administratorów."

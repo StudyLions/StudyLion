@@ -1,0 +1,184 @@
+# Bulgarian translation for LionBot - lion-core
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 19:57+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Bulgarian\n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/core/lion_guild.py:31
+msgctxt "eventlog|field:start|name"
+msgid "Start"
+msgstr "Начало"
+
+#: src/core/lion_guild.py:36
+msgctxt "eventlog|field:expiry|name"
+msgid "Expires"
+msgstr "Изтича"
+
+#: src/core/lion_guild.py:41
+msgctxt "eventlog|field:roles_given|name"
+msgid "Roles Given"
+msgstr "Дадени роли"
+
+#: src/core/lion_guild.py:46
+msgctxt "eventlog|field:roles_given|name"
+msgid "Roles Taken"
+msgstr "Взети роли"
+
+#: src/core/lion_guild.py:51
+msgctxt "eventlog|field:coins_earned|name"
+msgid "Coins Earned"
+msgstr "Спечелени монети"
+
+#: src/core/lion_guild.py:56
+msgctxt "eventlog|field:price|name"
+msgid "Price"
+msgstr "Цена"
+
+#: src/core/lion_guild.py:61
+msgctxt "eventlog|field:balance|name"
+msgid "Balance"
+msgstr "Баланс"
+
+#: src/core/lion_guild.py:66
+msgctxt "eventlog|field:refund|name"
+msgid "Coins Refunded"
+msgstr "Възстановени монети"
+
+#: src/core/lion_guild.py:71
+msgctxt "eventlog|field:memberid|name"
+msgid "Member"
+msgstr "Член"
+
+#: src/core/lion_guild.py:76
+msgctxt "eventlog|field:channelid|name"
+msgid "Channel"
+msgstr "Канал"
+
+#: src/core/lion_guild.py:208
+msgctxt "eventlog|error:manage_webhooks"
+msgid "This channel is configured as an event log, but I am missing the 'Manage Webhooks' permission here."
+msgstr "Този канал е конфигуриран като журнал на събития, но ми липсва разрешението 'Manage Webhooks' тук."
+
+#, possible-python-brace-format
+msgctxt "eventlog|create|name"
+msgid "{bot_name} Event Log"
+msgstr "{bot_name} Журнал на събития"
+
+#: src/core/lion_guild.py:224
+msgctxt "eventlog|create|audit_reason"
+msgid "Creating event log webhook"
+msgstr "Създаване на уебхук за журнал на събития"
+
+#: src/core/lion_guild.py:342
+msgctxt "eventlog|field:errors|name"
+msgid "Errors"
+msgstr "Грешки"
+
+#: src/core/setting_types.py:31
+msgctxt "settype:coin|accepts"
+msgid "A positive integral number of coins."
+msgstr "Положително цяло число монети."
+
+#: src/core/setting_types.py:47
+msgctxt "settype:coin|parse|error:notinteger"
+msgid "The coin quantity must be a positive integer!"
+msgstr "Количеството монети трябва да е положително цяло число!"
+
+#, possible-python-brace-format
+msgctxt "settype:coin|parse|error:too_large"
+msgid "You cannot set this to more than {coin}**{max}**!"
+msgstr "Не можете да зададете повече от {coin}**{max}**!"
+
+#, possible-python-brace-format
+msgctxt "settype:coin|parse|error:too_small"
+msgid "You cannot set this to less than {coin}**{min}**!"
+msgstr "Не можете да зададете по-малко от {coin}**{min}**!"
+
+#, possible-python-brace-format
+msgctxt "settype:coin|formatted"
+msgid "{coin}**{amount}**"
+msgstr "{coin}**{amount}**"
+
+#: src/core/setting_types.py:91
+msgctxt "settype:message|accepts"
+msgid "JSON formatted raw message data"
+msgstr "JSON форматирани сурови данни за съобщение"
+
+#: src/core/setting_types.py:106
+msgctxt "settype:message|download|error:not_json"
+msgid "The attached message data is not a JSON file!"
+msgstr "Прикаченият файл с данни за съобщение не е JSON файл!"
+
+#: src/core/setting_types.py:111
+msgctxt "settype:message|download|error:size"
+msgid "The attached message data is too large!"
+msgstr "Прикаченият файл с данни за съобщение е твърде голям!"
+
+#: src/core/setting_types.py:120
+msgctxt "settype:message|download|error:decoding"
+msgid "Could not decode the message data. Please ensure it is saved with the `UTF-8` encoding."
+msgstr "Не можах да декодирам данните на съобщението. Моля, уверете се, че е запазено с кодиране `UTF-8`."
+
+#, possible-python-brace-format
+msgctxt "settype:message|error_suffix"
+msgid "You can view, test, and fix your embed using the online [embed builder]({link})."
+msgstr "Можете да прегледате, тествате и поправите вашия embed, като използвате онлайн [embed builder]({link})."
+
+#, possible-python-brace-format
+msgctxt "settype:message|error:invalid_json"
+msgid ""
+"The provided message data was not a valid JSON document!\n"
+"`{error}`"
+msgstr ""
+"Предоставените данни за съобщение не са валиден JSON документ!\n"
+"`{error}`"
+
+#: src/core/setting_types.py:197
+msgctxt "settype:message|error:json_missing_keys"
+msgid "Message data must be a JSON object with at least one of the following fields: `content`, `embed`, `embeds`"
+msgstr "Данните за съобщение трябва да са JSON обект с поне едно от следните полета: `content`, `embed`, `embeds`"
+
+#: src/core/setting_types.py:206
+msgctxt "settype:message|error:json_embed_type"
+msgid "`embed` field must be a valid JSON object."
+msgstr "Полето `embed` трябва да е валиден JSON обект."
+
+#: src/core/setting_types.py:214
+msgctxt "settype:message|error:json_embeds_type"
+msgid "`embeds` field must be a list."
+msgstr "Полето `embeds` трябва да е списък."
+
+#: src/core/setting_types.py:221
+msgctxt "settype:message|error:json_embed_embeds"
+msgid "Message data cannot include both `embed` and `embeds`."
+msgstr "Данните за съобщение не могат да включват едновременно `embed` и `embeds`."
+
+#: src/core/setting_types.py:229
+msgctxt "settype:message|error:json_content_type"
+msgid "`content` field must be a string."
+msgstr "Полето `content` трябва да е низ."
+
+#, possible-python-brace-format
+msgctxt "ui:settype:message|error:embed_conversion"
+msgid ""
+"Could not parse the message embed data.\n"
+"**Error:** `{exception}`"
+msgstr ""
+"Не можах да анализирам данните на embed на съобщението.\n"
+"**Грешка:** `{exception}`"
+
+#: src/core/setting_types.py:273
+msgctxt "settype:message|format:too_long"
+msgid "Too long to display! See Preview."
+msgstr "Твърде дълго за показване! Вижте предварителния преглед."

@@ -9,6 +9,8 @@ from . import babel
 _p = babel._p
 
 
+# --- AI-MODIFIED (2026-03-20) ---
+# Purpose: Added /pet and /petdrops to command map for LionGotchi help section
 cmd_map = {
     "cmd_my": "my",
     "cmd_my_timezone": "my timezone",
@@ -24,8 +26,11 @@ cmd_map = {
     "cmd_tasklist": "tasklist",
     "cmd_timers": "timers",
     "cmd_schedule": "schedule",
-    "cmd_dashboard": "dashboard"
+    "cmd_dashboard": "dashboard",
+    "cmd_pet": "pet",
+    "cmd_petdrops": "petdrops",
 }
+# --- END AI-MODIFIED ---
 
 emojis = {
     'config_emoji': conf.emojis.config,
@@ -65,6 +70,12 @@ member_study = _p(
     {cmd_tasklist}: Create tasks and feel the satisfaction of checking them off.
     {cmd_timers}: Stay productive using the classic *pomodoro technique*!
     {cmd_schedule}: Schedule a shared study session and keep yourself accountable!
+
+
+    \U0001F981 LionGotchi
+    *Adopt a virtual pet that grows alongside your study journey!*
+    {cmd_pet}: Adopt and manage your LionGotchi pet.
+    *Earn equipment drops while you study, grow a farm, customize your room, and trade on the marketplace!*
     """
 )
 
@@ -83,6 +94,7 @@ admin_extra = _p(
     `/pomodoro`: Add/Edit/Remove Pomodoro timers in voice channels.
     `/rolemenus`: Allow members to equip roles from customisable messages.
     `/economy balance`: Display and modify LionCoin balance for members and roles.
+    {cmd_petdrops}: Set the channel for LionGotchi drop notifications.
     """
 )
 

@@ -1,25 +1,18 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
-# Translators:
-# Interitio, 2023
-# Ari Horesh, 2023
-# 
-#, fuzzy
+# Hebrew translation for LionBot - video
+# AI-translated with human Transifex contributions where available.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: LionBot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-24 14:37+0300\n"
-"PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Ari Horesh, 2023\n"
-"Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
+"PO-Revision-Date: 2026-03-13 20:24+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Hebrew\n"
+"Language: he_IL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: he_IL\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
 
 #: src/modules/video_channels/settingui.py:58
@@ -45,7 +38,7 @@ msgstr "תפריט הגדרות ערוצי מצלמה"
 #: src/modules/video_channels/settingui.py:159
 msgctxt "dash:video|title"
 msgid "Video Channel Settings ({commands[admin config video_channels]})"
-msgstr ""
+msgstr "הגדרות ערוצי וידאו ({commands[admin config video_channels]})"
 
 #: src/modules/video_channels/settingui.py:163
 msgctxt "dash:video|option|name"
@@ -62,7 +55,6 @@ msgctxt "video_watchdog|kick_blacklisted_member|notification|title"
 msgid "You have been disconnected."
 msgstr "נותקת מהערוץ."
 
-#: src/modules/video_channels/cog.py:250
 #, possible-python-brace-format
 msgctxt "video_watchdog|kick_blacklisted_member|notification|desc"
 msgid ""
@@ -70,7 +62,6 @@ msgid ""
 "blacklisted from video channels in **{server}**."
 msgstr "נותקת מהערוץ {channel} כי אתה נמצא ברשימה השחורה בשרת **{server}**."
 
-#: src/modules/video_channels/cog.py:290
 #, possible-python-brace-format
 msgctxt "video_watchdog|join_task|jump_field"
 msgid "[Click to jump back]({link})"
@@ -81,7 +72,6 @@ msgctxt "video_watchdog|join_task|initial_request:title"
 msgid "Please enable your video!"
 msgstr "אנא הפעל את המצלמת וידאו שלך!"
 
-#: src/modules/video_channels/cog.py:301
 #, possible-python-brace-format
 msgctxt "video_watchdog|join_task|initial_request:description"
 msgid ""
@@ -106,7 +96,6 @@ msgctxt "video_watchdog|join_task|kick_after_grace|audit_reason"
 msgid "Member never enabled their video in video channel."
 msgstr "המשתמש לעולם לא הפעיל את המצלמה שלו בערוץ."
 
-#: src/modules/video_channels/cog.py:385
 #, possible-python-brace-format
 msgctxt "video_watchdog|join_task|kick_after_grace|ticket_reason"
 msgid "Failed to enable their video in time in the video channel {channel}"
@@ -117,7 +106,6 @@ msgctxt "video_watchdog|join_task|kick_after_grace|warning|title"
 msgid "You have received a warning!"
 msgstr "קיבלת אזהרה!"
 
-#: src/modules/video_channels/cog.py:407
 #, possible-python-brace-format
 msgctxt "video_watchdog|join_task|kick_after_grace|warning|desc"
 msgid ""
@@ -137,7 +125,6 @@ msgctxt "video_watchdog|join_task|kick_after_grace|blacklist|desc"
 msgid "You have been blacklisted from the video channels in this server."
 msgstr "נחסמת מהלהשתמש בערוצי וידאו בשרת הזה."
 
-#: src/modules/video_channels/cog.py:459
 #, possible-python-brace-format
 msgctxt "video_watchdog|disabled_video_kick|audit_reason"
 msgid ""
@@ -150,7 +137,6 @@ msgctxt "video_watchdog|disabled_video_kick|notification|title"
 msgid "You have been disconnected."
 msgstr "נותקת מהערוץ."
 
-#: src/modules/video_channels/cog.py:478
 #, possible-python-brace-format
 msgctxt "video_watchdog|disabled_video_kick|notification|desc"
 msgid ""
@@ -158,7 +144,7 @@ msgid ""
 "Please keep your video on at all times, and leave the channel if you need to disable it!"
 msgstr ""
 "נותקת מהערוץ {channel} כי ביטלת את המצלמה שלך\n"
-"אנא דאג להפעיל את המצלמה כל הזמן, ואם תרצה לכבות אותה, עזוב את הערוץ."
+"אנא דאג להפעיל את המצלמה כל הזמן, ואם תרצה לכבות או..."
 
 #: src/modules/video_channels/cog.py:510
 msgctxt "cmd:configure_video"
@@ -197,7 +183,6 @@ msgctxt "guildset:video_channels|accepts"
 msgid "Comma separated channel ids or names."
 msgstr "שמות או מספר זהות של ערוצים מופרדים בפסיקים"
 
-#: src/modules/video_channels/settings.py:69
 #, possible-python-brace-format
 msgctxt "guildset:video_channels|set_response:set"
 msgid ""
@@ -236,7 +221,6 @@ msgctxt "guildset:video_blacklist|accepts"
 msgid "Blacklist role name or id."
 msgstr "רול או מספר זהות של רשימה שחורה."
 
-#: src/modules/video_channels/settings.py:141
 #, possible-python-brace-format
 msgctxt "guildset:video_blacklist|set_response:set"
 msgid "Members who fail to keep their video on will be given {role}"
@@ -278,7 +262,6 @@ msgctxt "guildset:video_durations|accepts"
 msgid "Comma separated list of durations."
 msgstr "אורכים מופרדים באמצעות פסיק."
 
-#: src/modules/video_channels/settings.py:212
 #, possible-python-brace-format
 msgctxt "guildset:video_durations|set_response:set"
 msgid "Members will be automatically blacklisted for: {durations}"
@@ -318,7 +301,6 @@ msgctxt "guildset:video_grace_period|accepts"
 msgid "How many seconds to wait for a member to enable video."
 msgstr "כמה שניות לחכות למשתמשים עד שהם ידליקו את המצלמה שלהם."
 
-#: src/modules/video_channels/settings.py:253
 #, possible-python-brace-format
 msgctxt "guildset:video_grace_period|set_response:set"
 msgid "Members will now have **{duration}** to enable their video."
@@ -349,7 +331,6 @@ msgctxt "guildset:video_exempt|accepts"
 msgid "List of exempt role names or ids."
 msgstr "רשימה של שמות או מספר מזהה של רולים שלא יכללו."
 
-#: src/modules/video_channels/settings.py:290
 #, possible-python-brace-format
 msgctxt "guildset:video_exempt|set_response:set"
 msgid "The following roles will now be exempt from video channels: {roles}"

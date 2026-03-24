@@ -1,0 +1,1072 @@
+# Chinese (Traditional) translation for LionBot - ranks
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 23:20+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Chinese (Traditional)\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/modules/ranks/cog.py:76
+msgctxt "cmd:configure_ranks|param:rank_type|choice:voice"
+msgid "Voice"
+msgstr "語音"
+
+#: src/modules/ranks/cog.py:77
+msgctxt "cmd:configure_ranks|param:rank_type|choice:xp"
+msgid "XP"
+msgstr "XP"
+
+#: src/modules/ranks/cog.py:78
+msgctxt "cmd:configure_ranks|param:rank_type|choice:message"
+msgid "Message"
+msgstr "訊息"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:rank_check|error:remove_failed"
+msgid "Failed to remove old rank roles: `{error}`"
+msgstr "無法移除舊的等級角色：`{error}`"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:rank_check|error:add_failed"
+msgid "Failed to add new rank role: `{error}`"
+msgstr "無法添加新的等級角色：`{error}`"
+
+#: src/modules/ranks/cog.py:380
+msgctxt "eventlog|event:rank_check|error:add_impossible"
+msgid "Could not assign new activity rank role. Lacking permissions or invalid role."
+msgstr "無法分配新的活動等級角色。缺少權限或角色無效。"
+
+#: src/modules/ranks/cog.py:386
+msgctxt "eventlog|event:rank_check|error:permissions"
+msgid "Could not update activity rank roles, I lack the 'Manage Roles' permission."
+msgstr "無法更新活動等級角色，我缺少'Manage Roles'權限。"
+
+#: src/modules/ranks/cog.py:398
+msgctxt "eventlog|event:rank_check|name"
+msgid "Member Activity Rank Roles Updated"
+msgstr "成員活動等級角色已更新"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:new_rank|error:remove_failed"
+msgid "Failed to remove old rank roles: `{error}`"
+msgstr "無法移除舊的等級角色：`{error}`"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:new_rank|error:add_failed"
+msgid "Failed to add new rank role: `{error}`"
+msgstr "無法添加新的等級角色：`{error}`"
+
+#: src/modules/ranks/cog.py:507
+msgctxt "eventlog|event:new_rank|error:add_impossible"
+msgid "Could not assign new activity rank role. Lacking permissions or invalid role."
+msgstr "無法分配新的活動等級角色。缺少權限或角色無效。"
+
+#: src/modules/ranks/cog.py:513
+msgctxt "eventlog|event:new_rank|error:permissions"
+msgid "Could not update activity rank roles, I lack the 'Manage Roles' permission."
+msgstr "無法更新活動等級角色，我缺少'Manage Roles'權限。"
+
+#: src/modules/ranks/cog.py:548
+msgctxt "eventlog|event:new_rank|error:notify_failed"
+msgid "Could not notify member."
+msgstr "無法通知成員。"
+
+#: src/modules/ranks/cog.py:555
+msgctxt "eventlog|event:new_rank|name"
+msgid "Member Achieved Activity rank"
+msgstr "成員達到了活動等級"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:new_rank|desc"
+msgid "{member} earned the new activity rank {rank}"
+msgstr "{member}獲得了新的活動等級{rank}"
+
+#: src/modules/ranks/cog.py:587
+msgctxt "event:rank_update|embed:notify"
+msgid "New Activity Rank Attained!"
+msgstr "達到新的活動等級！"
+
+#: src/modules/ranks/cog.py:692
+msgctxt "rank_refresh|error:cannot_chunk|desc"
+msgid "Could not retrieve member list from Discord. Please try again later."
+msgstr "無法從Discord獲取成員列表。請稍後重試。"
+
+#: src/modules/ranks/cog.py:705
+msgctxt "rank_refresh|error:roles_dne|desc"
+msgid "Some ranks have invalid or deleted roles! Please remove them first."
+msgstr "某些等級有無效或已刪除的角色！請先刪除它們。"
+
+#, possible-python-brace-format
+msgctxt "rank_refresh|error:unassignable_roles|desc"
+msgid ""
+"I have insufficient permissions to assign the following role(s):\n"
+"{roles}"
+msgstr ""
+"我沒有足夠的權限來分配以下角色：\n"
+"{roles}"
+
+#: src/modules/ranks/cog.py:785
+msgctxt "rank_refresh|remove_roles|audit"
+msgid "Removing invalid rank role."
+msgstr "正在移除無效的等級角色。"
+
+#, possible-python-brace-format
+msgctxt "rank_refresh|remove_roles|small_error"
+msgid "*Could not remove ranks from {member}*"
+msgstr "*無法從{member}移除等級*"
+
+#: src/modules/ranks/cog.py:806
+msgctxt "rank_refresh|remove_roles|error:too_many_issues"
+msgid "Too many issues occurred while removing ranks! Please check my permissions and try again in a few minutes."
+msgstr "移除等級時出現太多問題！請檢查我的權限，幾分鐘後重試。"
+
+#: src/modules/ranks/cog.py:820
+msgctxt "rank_refresh|add_roles|audit"
+msgid "Adding rank role from refresh"
+msgstr "從重新整理中添加等級角色"
+
+#, possible-python-brace-format
+msgctxt "rank_refresh|add_roles|small_error"
+msgid "*Could not add {role} to {member}*"
+msgstr "*無法將{role}添加給{member}*"
+
+#: src/modules/ranks/cog.py:841
+msgctxt "rank_refresh|add_roles|error:too_many_issues"
+msgid "Too many issues occurred while adding ranks! Please check my permissions and try again in a few minutes."
+msgstr "添加等級時出現太多問題！請檢查我的權限，幾分鐘後重試。"
+
+#: src/modules/ranks/cog.py:869
+msgctxt "eventlog|event:rank_refresh|name"
+msgid "Activity Ranks Refreshed"
+msgstr "活動等級已重新整理"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:rank_refresh|desc"
+msgid ""
+"{actor} refresh member activity ranks.\n"
+"**`{removed}`** invalid rank roles removed.\n"
+"**`{added}`** new rank roles added."
+msgstr ""
+"{actor}重新整理了成員活動等級。\n"
+"**`{removed}`**個無效等級角色已移除。\n"
+"**`{added}`**個新等級角色已添加。"
+
+#: src/modules/ranks/cog.py:884
+msgctxt "cmd:ranks"
+msgid "ranks"
+msgstr "ranks"
+
+#: src/modules/ranks/cog.py:916
+msgctxt "cmd:configure_ranks"
+msgid "ranks"
+msgstr "ranks"
+
+#: src/modules/ranks/cog.py:917
+msgctxt "cmd:configure_ranks|desc"
+msgid "Configure Activity Ranks"
+msgstr "配置活動等級"
+
+#, possible-python-brace-format
+msgctxt "cmd:configure_ranks|response:updated|setting:notification|withdm_withchannel"
+msgid "Rank update notifications will be sent via **direct message** when possible, otherwise to {channel}"
+msgstr "等級更新通知將盡可能透過**私訊**發送，否則發送到{channel}"
+
+#: src/modules/ranks/cog.py:982
+msgctxt "cmd:configure_ranks|response:updated|setting:notification|withdm_nochannel"
+msgid "Rank update notifications will be sent via **direct message**."
+msgstr "等級更新通知將透過**私訊**發送。"
+
+#, possible-python-brace-format
+msgctxt "cmd:configure_ranks|response:updated|setting:notification|nodm_withchannel"
+msgid "Rank update notifications will be sent to {channel}."
+msgstr "等級更新通知將發送到{channel}。"
+
+#: src/modules/ranks/cog.py:993
+msgctxt "cmd:configure_ranks|response:updated|setting:notification|nodm_nochannel"
+msgid "Members will not be notified when their activity rank updates."
+msgstr "成員活動等級更新時不會收到通知。"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:role_name"
+msgid "{role_name}"
+msgstr "{role_name}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:guild_name"
+msgid "{guild_name}"
+msgstr "{guild_name}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:user_name"
+msgid "{user_name}"
+msgstr "{user_name}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:role_id"
+msgid "{role_id}"
+msgstr "{role_id}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:guild_id"
+msgid "{guild_id}"
+msgstr "{guild_id}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:user_id"
+msgid "{user_id}"
+msgstr "{user_id}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:role_mention"
+msgid "{role_mention}"
+msgstr "{role_mention}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:user_mention"
+msgid "{user_mention}"
+msgstr "{user_mention}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:requires"
+msgid "{rank_requires}"
+msgstr "{rank_requires}"
+
+#: src/modules/ranks/settings.py:27
+msgctxt "guildset:rank_type|output:voice"
+msgid "`Voice`"
+msgstr "`語音`"
+
+#: src/modules/ranks/settings.py:28
+msgctxt "guildset:rank_type|output:xp"
+msgid "`Exp`"
+msgstr "`Exp`"
+
+#: src/modules/ranks/settings.py:29
+msgctxt "guildset:rank_type|output:message"
+msgid "`Messages`"
+msgstr "`訊息`"
+
+#: src/modules/ranks/settings.py:32
+msgctxt "guildset:rank_type|input_format:voice"
+msgid "Voice"
+msgstr "語音"
+
+#: src/modules/ranks/settings.py:33
+msgctxt "guildset:rank_type|input_format:xp"
+msgid "Exp"
+msgstr "Exp"
+
+#: src/modules/ranks/settings.py:34
+msgctxt "guildset:rank_type|input_format:message"
+msgid "Messages"
+msgstr "訊息"
+
+#: src/modules/ranks/settings.py:37
+msgctxt "guildset:rank_type|input_pattern:voice"
+msgid "voice|study"
+msgstr "voice|study"
+
+#: src/modules/ranks/settings.py:38
+msgctxt "guildset:rank_type|input_pattern:voice"
+msgid "text|message|messages"
+msgstr "text|message|messages"
+
+#: src/modules/ranks/settings.py:39
+msgctxt "guildset:rank_type|input_pattern:xp"
+msgid "xp|exp|experience"
+msgstr "xp|exp|experience"
+
+#: src/modules/ranks/settings.py:47
+msgctxt "guildset:rank_type"
+msgid "rank_type"
+msgstr "rank_type"
+
+#: src/modules/ranks/settings.py:50
+msgctxt "guildset:rank_type|desc"
+msgid "The type of statistic (messages | xp | voice hours) used to determine activity ranks."
+msgstr "用於確定活動等級的統計類型（訊息 | XP | 語音小時）。"
+
+#: src/modules/ranks/settings.py:54
+msgctxt "guildset:rank_type|long_desc"
+msgid ""
+"Which statistic is used to reward activity ranks.\n"
+"`Voice` is the number of hours active in tracked voice channels, `Exp` is a measure of message activity, and `Message` is a simple count of messages sent."
+msgstr ""
+"用於獎勵活動等級的統計類型。\n"
+"`語音`是在被追蹤的語音頻道中活躍的小時數，`Exp`是訊息活動的衡量標準，`訊息`是發送訊息的簡單計數。"
+
+#: src/modules/ranks/settings.py:61
+msgctxt "guildset:rank_type|accepts"
+msgid "Voice/Exp/Messages"
+msgstr "Voice/Exp/Messages"
+
+#: src/modules/ranks/settings.py:73
+msgctxt "guildset:rank_type|set_response|type:voice"
+msgid "Members will be awarded activity ranks based on `Voice Activity`."
+msgstr "成員將根據`語音活動`獲得活動等級。"
+
+#: src/modules/ranks/settings.py:78
+msgctxt "guildset:rank_type|set_response|type:messages"
+msgid "Members will be awarded activity ranks based on `Messages Sent`."
+msgstr "成員將根據`已發送訊息`獲得活動等級。"
+
+#: src/modules/ranks/settings.py:83
+msgctxt "guildset:rank_type|set_response|type:xp"
+msgid "Members will be awarded activity ranks based on `Message XP Earned`."
+msgstr "成員將根據`獲得的訊息XP`獲得活動等級。"
+
+#, possible-python-brace-format
+msgctxt "guildset:rank_channel|set_using"
+msgid "{cmd} or option menu below."
+msgstr "{cmd}或下方的選項菜單。"
+
+#: src/modules/ranks/settings.py:106
+msgctxt "guildset:rank_channel"
+msgid "rank_channel"
+msgstr "rank_channel"
+
+#: src/modules/ranks/settings.py:109
+msgctxt "guildset:rank_channel|desc"
+msgid "The channel in which to send rank update notifications."
+msgstr "發送等級更新通知的頻道。"
+
+#: src/modules/ranks/settings.py:113
+msgctxt "guildset:rank_channel|long_desc"
+msgid "Whenever a user advances a rank, a congratulatory message will be sent in this channel, if set. If `dm_ranks` is enabled, this channel will only be used when the user has opted not to receive DM notifications, or is otherwise unreachable."
+msgstr "當用戶提升等級時，如果已設置，將在此頻道發送祝賀訊息。如果啟用了`dm_ranks`，此頻道僅在用戶選擇不接收私訊通知或無法聯繫時使用。"
+
+#: src/modules/ranks/settings.py:119
+msgctxt "guildset:rank_channel|accepts"
+msgid "Rank notification channel name or id."
+msgstr "等級通知頻道名稱或ID。"
+
+#, possible-python-brace-format
+msgctxt "guildset:rank_channel|set_response|set"
+msgid "Rank update messages will be sent to {channel}."
+msgstr "等級更新訊息將發送到{channel}。"
+
+#: src/modules/ranks/settings.py:136
+msgctxt "guildset:rank_channel|set_response|unset"
+msgid "Rank update messages will be ignored or sent via DM (if `dm_ranks` is enabled)."
+msgstr "等級更新訊息將被忽略或透過私訊發送（如果啟用了`dm_ranks`）。"
+
+#, possible-python-brace-format
+msgctxt "guildset:rank_channel|set_using"
+msgid "{cmd} or channel selector below."
+msgstr "{cmd}或下方的頻道選擇器。"
+
+#: src/modules/ranks/settings.py:157
+msgctxt "guildset:dm_ranks"
+msgid "dm_ranks"
+msgstr "dm_ranks"
+
+#: src/modules/ranks/settings.py:160
+msgctxt "guildset:dm_ranks|desc"
+msgid "Whether to send rank advancement notifications through direct messages."
+msgstr "是否透過私訊發送等級晉升通知。"
+
+#: src/modules/ranks/settings.py:164
+msgctxt "guildset:dm_ranks|long_desc"
+msgid "If enabled, congratulatory messages for rank advancement will be direct messaged to the user, instead of being sent to the configured `rank_channel`."
+msgstr "如果啟用，等級晉升的祝賀訊息將直接發送給用戶，而不是發送到配置的`rank_channel`。"
+
+#: src/modules/ranks/settings.py:178
+msgctxt "guildset:dm_ranks|response:true"
+msgid "I will direct message members upon rank advancement."
+msgstr "我將在等級晉升時向成員發送私訊。"
+
+#: src/modules/ranks/settings.py:183
+msgctxt "guildset:dm_ranks|response:false"
+msgid "I will never direct message members upon rank advancement."
+msgstr "我不會在等級晉升時向成員發送私訊。"
+
+#: src/modules/ranks/ui/preview.py:75
+msgctxt "ui:rank_preview|button:edit|error:role_deleted"
+msgid "The role underlying this rank no longer exists! Please select a new role from the role menu."
+msgstr "此等級的角色已不存在！請從角色菜單中選擇新角色。"
+
+#: src/modules/ranks/ui/preview.py:82
+msgctxt "ui:rank_preview|button:edit|error:role_not_assignable"
+msgid "I do not have permission to edit the underlying role! Please select a new role from the role menu, or ensure my top role is above the selected role."
+msgstr "我沒有編輯此角色的權限！請選擇新角色或確保我的最高角色在所選角色之上。"
+
+#: src/modules/ranks/ui/preview.py:91
+msgctxt "ui:rank_preview|button:edit|error|title"
+msgid "Failed to edit rank!"
+msgstr "編輯等級失敗！"
+
+#: src/modules/ranks/ui/preview.py:109
+msgctxt "ui:rank_preview|button:edit|label"
+msgid "Edit"
+msgstr "編輯"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_preview|button:delete|response:success|description|with_role"
+msgid "You have deleted the rank {mention}. Press the button below to also delete the role."
+msgstr "你已刪除等級{mention}。點擊下方按鈕同時刪除角色。"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_preview|button:delete|response:success|description|no_role"
+msgid "You have deleted the rank {mention}."
+msgstr "你已刪除等級{mention}。"
+
+#: src/modules/ranks/ui/preview.py:153
+msgctxt "ui:rank_preview|button:delete|response:success|title"
+msgid "Rank Deleted"
+msgstr "等級已刪除"
+
+#: src/modules/ranks/ui/preview.py:163
+msgctxt "ui:rank_preview|button:delete|response:success|button:delete_role|label"
+msgid "Delete Role"
+msgstr "刪除角色"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_preview|button:delete|response:success|button:delete_role|response:errored|desc"
+msgid "You have deleted the rank **{name}**! Could not delete the role due to an unknown error."
+msgstr "你已刪除等級**{name}**！由於未知錯誤無法刪除角色。"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_preview|button:delete|response:success|button:delete_role|response:success|desc"
+msgid "You have deleted the rank **{name}** along with the underlying role."
+msgstr "你已刪除等級**{name}**及其角色。"
+
+#: src/modules/ranks/ui/preview.py:202
+msgctxt "ui:rank_preview|button:delete|label"
+msgid "Delete Rank"
+msgstr "刪除等級"
+
+#: src/modules/ranks/ui/preview.py:232
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:is_default"
+msgid "The @everyone role cannot be removed, and cannot be a rank!"
+msgstr "@everyone角色無法移除，不能作為等級！"
+
+#: src/modules/ranks/ui/preview.py:237
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:is_managed"
+msgid "The role is managed by another application or integration, and cannot be a rank!"
+msgstr "該角色由其他應用程式或整合管理，不能作為等級！"
+
+#: src/modules/ranks/ui/preview.py:242
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:no_permissions"
+msgid "I do not have the `MANAGE_ROLES` permission in this server, so I cannot manage ranks!"
+msgstr "我在此伺服器中沒有`MANAGE_ROLES`權限，無法管理等級！"
+
+#: src/modules/ranks/ui/preview.py:247
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:above_me"
+msgid "This role is above my top role in the role hierarchy, so I cannot add or remove it!"
+msgstr "此角色在角色層級中高於我的最高角色，無法添加或移除！"
+
+#: src/modules/ranks/ui/preview.py:253
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:other"
+msgid "I am not able to manage the selected role, so it cannot be a rank!"
+msgstr "我無法管理所選角色，因此它不能作為等級！"
+
+#: src/modules/ranks/ui/preview.py:259
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|title"
+msgid "Could not update rank!"
+msgstr "無法更新等級！"
+
+#: src/modules/ranks/ui/preview.py:269
+msgctxt "ui:rank_preview|menu:roles|placeholder"
+msgid "Update Rank Role"
+msgstr "更新等級角色"
+
+#: src/modules/ranks/ui/preview.py:281
+msgctxt "ui:rank_preview|embed|title"
+msgid "Rank Information"
+msgstr "等級資訊"
+
+#: src/modules/ranks/ui/preview.py:288
+msgctxt "ui:rank_preview|embed|field:role|name"
+msgid "Role"
+msgstr "角色"
+
+#: src/modules/ranks/ui/preview.py:295
+msgctxt "ui:rank_preview|embed|field:required|name"
+msgid "Required"
+msgstr "要求"
+
+#: src/modules/ranks/ui/preview.py:302
+msgctxt "ui:rank_preview|embed|field:reward|name"
+msgid "Reward"
+msgstr "獎勵"
+
+#: src/modules/ranks/ui/preview.py:311
+msgctxt "ui:rank_preview|embed|field:message"
+msgid "Congratulatory Message"
+msgstr "祝賀訊息"
+
+#: src/modules/ranks/ui/refresh.py:134
+msgctxt "ui:refresh_ranks|embed|title:errored"
+msgid "Could not refresh the server ranks!"
+msgstr "無法重新整理伺服器等級！"
+
+#: src/modules/ranks/ui/refresh.py:142
+msgctxt "ui:refresh_ranks|embed|title:done"
+msgid "Rank refresh complete!"
+msgstr "等級重新整理完成！"
+
+#: src/modules/ranks/ui/refresh.py:148
+msgctxt "ui:refresh_ranks|embed|title:working"
+msgid "Refreshing your server ranks, please wait."
+msgstr "正在重新整理伺服器等級，請稍候。"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:ranks"
+msgid "**Loading server ranks:** {emoji}"
+msgstr "**正在載入等級：** {emoji}"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:members"
+msgid "**Loading server members:** {emoji}"
+msgstr "**正在載入成員：** {emoji}"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:roles"
+msgid "**Loading rank roles:** {emoji}"
+msgstr "**正在載入等級角色：** {emoji}"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:compute"
+msgid "**Computing correct ranks:** {emoji}"
+msgstr "**正在計算正確的等級：** {emoji}"
+
+#: src/modules/ranks/ui/refresh.py:207
+msgctxt "ui:refresh_ranks|embed|field:remove|name"
+msgid "Removing invalid rank roles from members"
+msgstr "正在從成員中移除無效的等級角色"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|field:remove|value"
+msgid "{progress} {done}/{total} removed"
+msgstr "{progress} {done}/{total} 已移除"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:remove"
+msgid "**Removed invalid ranks:** {done}/{target}"
+msgstr "**已移除無效等級：** {done}/{target}"
+
+#: src/modules/ranks/ui/refresh.py:230
+msgctxt "ui:refresh_ranks|embed|field:add|name"
+msgid "Giving members their rank roles"
+msgstr "正在為成員分配等級角色"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|field:add|value"
+msgid "{progress} {done}/{total} given"
+msgstr "{progress} {done}/{total} 已分配"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:add"
+msgid "**Updated member ranks:** {done}/{target}"
+msgstr "**已更新成員等級：** {done}/{target}"
+
+#: src/modules/ranks/ui/config.py:42
+msgctxt "ui:rankconfigui|check|not_permitted"
+msgid "You have insufficient server permissions to use this UI!"
+msgstr "您沒有足夠的伺服器權限來使用此介面！"
+
+#: src/modules/ranks/ui/config.py:64
+msgctxt "ui:rank_config|button:overview|label"
+msgid "Edit Ranks"
+msgstr "編輯等級"
+
+#: src/modules/ranks/ui/config.py:83
+msgctxt "ui:rank_config|menu:types|placeholder"
+msgid "Select Statistic Type"
+msgstr "選擇統計類型"
+
+#: src/modules/ranks/ui/config.py:91
+msgctxt "ui:rank_config|menu:types|option:voice"
+msgid "Voice Activity"
+msgstr "語音活動"
+
+#: src/modules/ranks/ui/config.py:99
+msgctxt "ui:rank_config|menu:types|option:xp"
+msgid "XP Earned"
+msgstr "獲得的XP"
+
+#: src/modules/ranks/ui/config.py:107
+msgctxt "ui:rank_config|menu:types|option:messages"
+msgid "Messages Sent"
+msgstr "已發送訊息"
+
+#: src/modules/ranks/ui/config.py:128
+msgctxt "ui:rank_config|menu:channels|placeholder"
+msgid "Select Rank Notification Channel"
+msgstr "選擇等級通知頻道"
+
+#: src/modules/ranks/ui/config.py:136
+msgctxt "ui:rank_config|embed|title"
+msgid "Ranks Configuration Panel"
+msgstr "等級配置面板"
+
+#: src/modules/ranks/ui/config.py:173
+msgctxt "dash:rank|title"
+msgid "Rank Configuration ({commands[admin config ranks]})"
+msgstr "等級配置 ({commands[admin config ranks]})"
+
+#: src/modules/ranks/ui/config.py:177
+msgctxt "dash:rank|dropdown|placeholder"
+msgid "Activity Rank Panel"
+msgstr "活動等級面板"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_editor|input:message|default|type:voice"
+msgid ""
+"Congratulations {user_mention}!\n"
+"For working hard for **{requires}**, you have achieved the rank of **{role_name}** in **{guild_name}**! Keep up the good work."
+msgstr ""
+"恭喜{user_mention}！\n"
+"憑藉**{requires}**的努力，你已在**{guild_name}**中達到**{role_name}**等級！繼續加油。"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_editor|input:message|default|type:xp"
+msgid ""
+"Congratulations {user_mention}!\n"
+"For earning **{requires}**, you have achieved the guild rank of **{role_name}** in **{guild_name}**!"
+msgstr ""
+"恭喜{user_mention}！\n"
+"憑藉獲得**{requires}**，你已在**{guild_name}**中達到**{role_name}**等級！"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_editor|input:message|default|type:msg"
+msgid ""
+"Congratulations {user_mention}!\n"
+"For sending **{requires}**, you have achieved the guild rank of **{role_name}** in **{guild_name}**!"
+msgstr ""
+"恭喜{user_mention}！\n"
+"憑藉發送**{requires}**，你已在**{guild_name}**中達到**{role_name}**等級！"
+
+#: src/modules/ranks/ui/templates.py:47
+msgctxt "rank_autocreate|template|type:study_voice|level:1"
+msgid "Voice Level 1 (1h)"
+msgstr "語音等級1（1小時）"
+
+#: src/modules/ranks/ui/templates.py:55
+msgctxt "rank_autocreate|template|type:study_voice|level:2"
+msgid "Voice Level 2 (3h)"
+msgstr "語音等級2（3小時）"
+
+#: src/modules/ranks/ui/templates.py:63
+msgctxt "rank_autocreate|template|type:study_voice|level:3"
+msgid "Voice Level 3 (6h)"
+msgstr "語音等級3（6小時）"
+
+#: src/modules/ranks/ui/templates.py:71
+msgctxt "rank_autocreate|template|type:study_voice|level:4"
+msgid "Voice Level 4 (10h)"
+msgstr "語音等級4（10小時）"
+
+#: src/modules/ranks/ui/templates.py:79
+msgctxt "rank_autocreate|template|type:study_voice|level:5"
+msgid "Voice Level 5 (20h)"
+msgstr "語音等級5（20小時）"
+
+#: src/modules/ranks/ui/templates.py:87
+msgctxt "rank_autocreate|template|type:study_voice|level:6"
+msgid "Voice Level 6 (40h)"
+msgstr "語音等級6（40小時）"
+
+#: src/modules/ranks/ui/templates.py:95
+msgctxt "rank_autocreate|template|type:study_voice|level:7"
+msgid "Voice Level 7 (80h)"
+msgstr "語音等級7（80小時）"
+
+#: src/modules/ranks/ui/templates.py:106
+msgctxt "rank_autocreate|template|type:general_voice|level:1"
+msgid "Voice Level 1 (1h)"
+msgstr "語音等級1（1小時）"
+
+#: src/modules/ranks/ui/templates.py:114
+msgctxt "rank_autocreate|template|type:general_voice|level:2"
+msgid "Voice Level 2 (2h)"
+msgstr "語音等級2（2小時）"
+
+#: src/modules/ranks/ui/templates.py:122
+msgctxt "rank_autocreate|template|type:general_voice|level:3"
+msgid "Voice Level 3 (4h)"
+msgstr "語音等級3（4小時）"
+
+#: src/modules/ranks/ui/templates.py:130
+msgctxt "rank_autocreate|template|type:general_voice|level:4"
+msgid "Voice Level 4 (8h)"
+msgstr "語音等級4（8小時）"
+
+#: src/modules/ranks/ui/templates.py:138
+msgctxt "rank_autocreate|template|type:general_voice|level:5"
+msgid "Voice Level 5 (16h)"
+msgstr "語音等級5（16小時）"
+
+#: src/modules/ranks/ui/templates.py:146
+msgctxt "rank_autocreate|template|type:general_voice|level:6"
+msgid "Voice Level 6 (32h)"
+msgstr "語音等級6（32小時）"
+
+#: src/modules/ranks/ui/templates.py:154
+msgctxt "rank_autocreate|template|type:general_voice|level:7"
+msgid "Voice Level 7 (64h)"
+msgstr "語音等級7（64小時）"
+
+#: src/modules/ranks/ui/templates.py:169
+msgctxt "rank_autocreate|template|type:xp|level:1"
+msgid "XP Level 1 (2000)"
+msgstr "XP等級1（2000）"
+
+#: src/modules/ranks/ui/templates.py:177
+msgctxt "rank_autocreate|template|type:xp|level:2"
+msgid "XP Level 2 (4000)"
+msgstr "XP等級2（4000）"
+
+#: src/modules/ranks/ui/templates.py:185
+msgctxt "rank_autocreate|template|type:xp|level:3"
+msgid "XP Level 3 (8000)"
+msgstr "XP等級3（8000）"
+
+#: src/modules/ranks/ui/templates.py:193
+msgctxt "rank_autocreate|template|type:xp|level:4"
+msgid "XP Level 4 (16000)"
+msgstr "XP等級4（16000）"
+
+#: src/modules/ranks/ui/templates.py:201
+msgctxt "rank_autocreate|template|type:xp|level:5"
+msgid "XP Level 5 (32000)"
+msgstr "XP等級5（32000）"
+
+#: src/modules/ranks/ui/templates.py:209
+msgctxt "rank_autocreate|template|type:xp|level:6"
+msgid "XP Level 6 (64000)"
+msgstr "XP等級6（64000）"
+
+#: src/modules/ranks/ui/templates.py:217
+msgctxt "rank_autocreate|template|type:xp|level:7"
+msgid "XP Level 7 (128000)"
+msgstr "XP等級7（128000）"
+
+#: src/modules/ranks/ui/templates.py:232
+msgctxt "rank_autocreate|template|type:msg|level:1"
+msgid "Message Level 1 (200)"
+msgstr "訊息等級1（200）"
+
+#: src/modules/ranks/ui/templates.py:240
+msgctxt "rank_autocreate|template|type:msg|level:2"
+msgid "Message Level 2 (400)"
+msgstr "訊息等級2（400）"
+
+#: src/modules/ranks/ui/templates.py:248
+msgctxt "rank_autocreate|template|type:msg|level:3"
+msgid "Message Level 3 (800)"
+msgstr "訊息等級3（800）"
+
+#: src/modules/ranks/ui/templates.py:256
+msgctxt "rank_autocreate|template|type:msg|level:4"
+msgid "Message Level 4 (1600)"
+msgstr "訊息等級4（1600）"
+
+#: src/modules/ranks/ui/templates.py:264
+msgctxt "rank_autocreate|template|type:msg|level:5"
+msgid "Message Level 5 (3200)"
+msgstr "訊息等級5（3200）"
+
+#: src/modules/ranks/ui/templates.py:272
+msgctxt "rank_autocreate|template|type:msg|level:6"
+msgid "Message Level 6 (6400)"
+msgstr "訊息等級6（6400）"
+
+#: src/modules/ranks/ui/templates.py:280
+msgctxt "rank_autocreate|template|type:msg|level:7"
+msgid "Message Level 7 (12800)"
+msgstr "訊息等級7（12800）"
+
+#: src/modules/ranks/ui/overview.py:97
+msgctxt "ui:rank_overview|button:auto|error:already_created"
+msgid "The rank roles have already been created!"
+msgstr "等級角色已建立！"
+
+#: src/modules/ranks/ui/overview.py:105
+msgctxt "ui:rank_overview|button:auto|error:my_permissions"
+msgid "I lack the 'Manage Roles' permission required to create rank roles!"
+msgstr "我缺少創建等級角色所需的'Manage Roles'權限！"
+
+#: src/modules/ranks/ui/overview.py:114
+msgctxt "ui:rank_overview|button:auto|error:invalid_template"
+msgid "Unable to determine rank role template!"
+msgstr "無法確定等級角色模板！"
+
+#: src/modules/ranks/ui/overview.py:137
+msgctxt "ui:rank_overview|button|auto|role_creation|error:forbidden"
+msgid ""
+"An error occurred while autocreating rank roles!\n"
+"I lack the 'Manage Roles' permission required to create rank roles!"
+msgstr ""
+"自動建立等級角色時出錯！\n"
+"我缺少'Manage Roles'權限！"
+
+#: src/modules/ranks/ui/overview.py:145
+msgctxt "ui:rank_overview|button:auto|role_creation|error:unknown"
+msgid ""
+"An error occurred while autocreating rank roles!\n"
+"Please check the server has enough space for new roles and try again."
+msgstr ""
+"自動建立時出錯！\n"
+"請檢查伺服器是否有足夠空間建立新角色。"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|button:auto|role_creation|success"
+msgid ""
+"Successfully created the following rank roles:\n"
+"{roles}"
+msgstr ""
+"已成功建立以下等級角色：\n"
+"{roles}"
+
+#: src/modules/ranks/ui/overview.py:162
+msgctxt "ui:rank_overview|button:auto|label"
+msgid "Auto Create"
+msgstr "自動建立"
+
+#: src/modules/ranks/ui/overview.py:178
+msgctxt "ui:rank_overview|button:refresh|label"
+msgid "Refresh Member Ranks"
+msgstr "重新整理成員等級"
+
+#: src/modules/ranks/ui/overview.py:190
+msgctxt "ui:rank_overview|button:clear|confirm"
+msgid "Are you sure you want to **delete all activity ranks** in this server?"
+msgstr "您確定要**刪除此伺服器中的所有活動等級**嗎？"
+
+#: src/modules/ranks/ui/overview.py:195
+msgctxt "ui:rank_overview|button:clear|confirm|button:yes"
+msgid "Yes, clear ranks"
+msgstr "是，清除等級"
+
+#: src/modules/ranks/ui/overview.py:201
+msgctxt "ui:rank_overview|button:clear|confirm|button:no"
+msgid "Cancel"
+msgstr "取消"
+
+#: src/modules/ranks/ui/overview.py:217
+msgctxt "ui:rank_overview|button:clear|label"
+msgid "Clear Ranks"
+msgstr "清除等級"
+
+#: src/modules/ranks/ui/overview.py:231
+msgctxt "ui:rank_overview|button:create|error:my_permissions"
+msgid "I lack the 'Manage Roles' permission required to create rank roles!"
+msgstr "我缺少創建等級角色所需的'Manage Roles'權限！"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|button:create|success"
+msgid "Created a new rank {role}"
+msgstr "已建立新等級{role}"
+
+#: src/modules/ranks/ui/overview.py:257
+msgctxt "ui:rank_overview|button:create|label"
+msgid "Create Rank"
+msgstr "建立等級"
+
+#: src/modules/ranks/ui/overview.py:300
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:is_default"
+msgid "The @everyone role cannot be removed, and cannot be a rank!"
+msgstr "@everyone角色無法移除，不能作為等級！"
+
+#: src/modules/ranks/ui/overview.py:305
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:is_managed"
+msgid "The role is managed by another application or integration, and cannot be a rank!"
+msgstr "該角色由其他應用程式或整合管理，不能作為等級！"
+
+#: src/modules/ranks/ui/overview.py:310
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:no_permissions"
+msgid "I do not have the `MANAGE_ROLES` permission in this server, so I cannot manage ranks!"
+msgstr "我在此伺服器中沒有`MANAGE_ROLES`權限，無法管理等級！"
+
+#: src/modules/ranks/ui/overview.py:315
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:above_me"
+msgid "This role is above my top role in the role hierarchy, so I cannot add or remove it!"
+msgstr "此角色在角色層級中高於我的最高角色，無法添加或移除！"
+
+#: src/modules/ranks/ui/overview.py:321
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:other"
+msgid "I am not able to manage the selected role, so it cannot be a rank!"
+msgstr "我無法管理所選角色，因此它不能作為等級！"
+
+#: src/modules/ranks/ui/overview.py:327
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|title"
+msgid "Could not create rank!"
+msgstr "無法建立等級！"
+
+#: src/modules/ranks/ui/overview.py:351
+msgctxt "ui:rank_overview|menu:roles|placeholder"
+msgid "Create from role"
+msgstr "從角色建立"
+
+#: src/modules/ranks/ui/overview.py:368
+msgctxt "ui:rank_overview|menu:ranks|placeholder"
+msgid "View or edit rank"
+msgstr "查看或編輯等級"
+
+#: src/modules/ranks/ui/overview.py:454
+msgctxt "ui:rank_overview|embed:noranks|desc"
+msgid "No activity ranks have been set up!"
+msgstr "尚未設置活動等級！"
+
+#: src/modules/ranks/ui/overview.py:459
+msgctxt "ui:rank_overview|embed:noranks|desc|admin_addendum"
+msgid ""
+"Press 'Auto Create' to automatically create a standard heirachy of ranks.\n"
+"To manually create ranks, press 'Create Rank' below, or select a role!"
+msgstr ""
+"點擊'自動建立'自動建立標準等級層次。\n"
+"手動建立請點擊'建立等級'或選擇角色！"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|title|type:voice"
+msgid "Voice Ranks in {guild_name}"
+msgstr "{guild_name}的語音等級"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|title|type:xp"
+msgid "XP ranks in {guild_name}"
+msgstr "{guild_name}的XP等級"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|title|type:message"
+msgid "Message ranks in {guild_name}"
+msgstr "{guild_name}的訊息等級"
+
+#: src/modules/ranks/ui/overview.py:490
+msgctxt "ui:rank_overview|embed|field:note|name"
+msgid "Note"
+msgstr "注意"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|field:note|value:with_season"
+msgid "Ranks are determined by activity since {timestamp}."
+msgstr "等級由{timestamp}以來的活動決定。"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|field:note|value:without_season"
+msgid ""
+"Ranks are determined by *all-time* statistics.\n"
+"To reward ranks from a later time (e.g. to have monthly/quarterly/yearly ranks) set the `season_start` with {stats_cmd}"
+msgstr ""
+"等級由*全部時間*統計數據決定。\n"
+"要從較晚時間開始計算等級，請使用{stats_cmd}設置`season_start`"
+
+#: src/modules/ranks/ui/overview.py:510
+msgctxt "ui:rank_overview|embed|field:note|value|voice_addendum"
+msgid "Also note that ranks will only be updated when a member leaves a tracked voice channel! Use the **Refresh Member Ranks** button below to update all members manually."
+msgstr "請注意，等級僅在成員離開被追蹤的語音頻道時才會更新！使用下方的**重新整理成員等級**按鈕手動更新所有成員。"
+
+#: src/modules/ranks/ui/editor.py:33
+msgctxt "ui:rank_editor|input:role_name|label"
+msgid "Role Name"
+msgstr "角色名稱"
+
+#: src/modules/ranks/ui/editor.py:37
+msgctxt "ui:rank_editor|input:role_name|placeholder"
+msgid "Name of the awarded guild role"
+msgstr "授予的伺服器角色名稱"
+
+#: src/modules/ranks/ui/editor.py:53
+msgctxt "ui:rank_editor|input:role_colour|label"
+msgid "Role Colour"
+msgstr "角色顏色"
+
+#: src/modules/ranks/ui/editor.py:57
+msgctxt "ui:rank_editor|input:role_colour|placeholder"
+msgid "Colour of the awarded guild role, e.g. #AB1321"
+msgstr "授予角色的顏色，如 #AB1321"
+
+#: src/modules/ranks/ui/editor.py:69
+msgctxt "ui:rank_editor|input:role_colour|error:parse"
+msgid "`role_colour`: Could not parse colour! Please use `#<hex>` format e.g. `#AB1325`."
+msgstr "`role_colour`: 無法解析顏色！請使用 `#<hex>` 格式，如 `#AB1325`。"
+
+#: src/modules/ranks/ui/editor.py:88
+msgctxt "ui:rank_editor|type:voice|input:requires|label"
+msgid "Required Voice Hours"
+msgstr "所需語音小時數"
+
+#: src/modules/ranks/ui/editor.py:92
+msgctxt "ui:rank_editor|type:voice|input:requires|placeholder"
+msgid "Number of voice hours before awarding this rank"
+msgstr "授予此等級前所需的語音小時數"
+
+#: src/modules/ranks/ui/editor.py:97
+msgctxt "ui:rank_editor|type:xp|input:requires|label"
+msgid "Required XP"
+msgstr "所需XP"
+
+#: src/modules/ranks/ui/editor.py:101
+msgctxt "ui:rank_editor|type:xp|input:requires|placeholder"
+msgid "Amount of XP needed before obtaining this rank"
+msgstr "獲得此等級前所需的XP數量"
+
+#: src/modules/ranks/ui/editor.py:106
+msgctxt "ui:rank_editor|type:message|input:requires|label"
+msgid "Required Message Count"
+msgstr "所需訊息數量"
+
+#: src/modules/ranks/ui/editor.py:110
+msgctxt "ui:rank_editor|type:message|input:requires|placeholder"
+msgid "Number of messages needed before awarding rank"
+msgstr "授予等級前所需的訊息數量"
+
+#: src/modules/ranks/ui/editor.py:126
+msgctxt "ui:rank_editor|type:voice|input:requires|error:parse"
+msgid "`requires`: Could not parse provided minimum time! Please write a number of hours."
+msgstr "`requires`: 無法解析提供的最低時間！請輸入小時數。"
+
+#: src/modules/ranks/ui/editor.py:137
+msgctxt "ui:rank_editor|type:message|input:requires|error:parse"
+msgid "`requires`: Could not parse provided minimum message count! Please enter an integer."
+msgstr "`requires`: 無法解析提供的最低訊息數！請輸入整數。"
+
+#: src/modules/ranks/ui/editor.py:148
+msgctxt "ui:rank_editor|type:xp|input:requires|error:parse"
+msgid "`requires`: Could not parse provided minimum XP! Please enter an integer."
+msgstr "`requires`: 無法解析提供的最低XP！請輸入整數。"
+
+#: src/modules/ranks/ui/editor.py:162
+msgctxt "ui:rank_editor|input:reward|label"
+msgid "LionCoins awarded upon achieving this rank"
+msgstr "達到此等級時獲得的LionCoins"
+
+#: src/modules/ranks/ui/editor.py:166
+msgctxt "ui:rank_editor|input:reward|placeholder"
+msgid "LionCoins awarded upon achieving this rank"
+msgstr "達到等級時的LionCoins"
+
+#: src/modules/ranks/ui/editor.py:181
+msgctxt "ui:rank_editor|input:reward|error:parse"
+msgid "`reward`: Please enter an integer number of LionCoins."
+msgstr "`reward`: 請輸入LionCoins的整數。"
+
+#: src/modules/ranks/ui/editor.py:197
+msgctxt "ui:rank_editor|input:message|label"
+msgid "Rank Message"
+msgstr "等級訊息"
+
+#: src/modules/ranks/ui/editor.py:201
+msgctxt "ui:rank_editor|input:message|placeholder"
+msgid "Congratulatory message sent to the user upon achieving this rank."
+msgstr "達到等級時發送的祝賀訊息。"
+
+#: src/modules/ranks/ui/editor.py:262
+msgctxt "ui:rank_editor|mode:edit|title"
+msgid "Rank Editor"
+msgstr "等級編輯器"
+
+#: src/modules/ranks/ui/editor.py:317
+msgctxt "ui:rank_editor|mode:create|title"
+msgid "Rank Creator"
+msgstr "等級建立器"

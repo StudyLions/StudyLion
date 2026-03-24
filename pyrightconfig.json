@@ -1,0 +1,33 @@
+{
+  "include": ["src"],
+  "exclude": [
+    "**/__pycache__",
+    "locales",
+    "data/migration",
+    "scripts",
+    "tests"
+  ],
+  "pythonVersion": "3.11",
+  "pythonPlatform": "Linux",
+  "typeCheckingMode": "basic",
+  "reportMissingImports": "warning",
+  "reportMissingModuleSource": "none",
+  "reportOptionalMemberAccess": "warning",
+  "reportGeneralTypeIssues": "warning",
+  "reportUnusedImport": "information",
+  "reportUnusedVariable": "information",
+  "reportMissingTypeStubs": "none",
+  "reportPrivateImportUsage": "none",
+  "reportAttributeAccessIssue": "warning",
+  "reportCallIssue": "warning",
+  "reportReturnType": "warning",
+  "reportArgumentType": "warning",
+  "reportIndexIssue": "warning",
+  "reportOperatorIssue": "warning",
+  "executionEnvironments": [
+    {
+      "root": "src",
+      "extraPaths": ["src"]
+    }
+  ]
+}

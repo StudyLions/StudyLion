@@ -36,27 +36,48 @@ async def get_full_profile(bot: LionBot, userid: int, guildid: int, mode: CardMo
     stats_data, profile_data = await asyncio.gather(*render_tasks)
     with BytesIO(stats_data) as stats_stream, BytesIO(profile_data) as profile_stream:
         with Image.open(stats_stream) as stats_image, Image.open(profile_stream) as profile_image:
-            # Create a new blank image of the correct dimenstions
-            stats_bbox = stats_image.getbbox(alpha_only=False)
-            profile_bbox = profile_image.getbbox(alpha_only=False)
-
-            if stats_bbox is None or profile_bbox is None:
-                # Should be impossible, image is already checked by GUI client
-                raise ValueError("Could not combine, empty stats or profile image.")
+            # --- AI-REPLACED (2026-03-19) ---
+            # Reason: Two bugs — (1) getbbox() returns tight content bounds smaller than
+            # the actual image, (2) supporter cards render as GIF (palette mode P) which
+            # is incompatible with alpha_composite (requires RGBA).
+            # What the new code does better: Converts both images to RGBA and uses actual
+            # image dimensions so compositing always succeeds regardless of source format.
+            # --- Original code (commented out for rollback) ---
+            # stats_bbox = stats_image.getbbox(alpha_only=False)
+            # profile_bbox = profile_image.getbbox(alpha_only=False)
+            #
+            # if stats_bbox is None or profile_bbox is None:
+            #     raise ValueError("Could not combine, empty stats or profile image.")
+            #
+            # combined = Image.new(
+            #     'RGBA',
+            #     (
+            #         max(stats_bbox[2], profile_bbox[2]),
+            #         stats_bbox[3] + card_gap + profile_bbox[3]
+            #     ),
+            #     color=None
+            # )
+            # with combined:
+            #     combined.alpha_composite(profile_image)
+            #     combined.alpha_composite(stats_image, (0, profile_bbox[3] + card_gap))
+            # --- End original code ---
+            profile_rgba = profile_image.convert('RGBA')
+            stats_rgba = stats_image.convert('RGBA')
 
             combined = Image.new(
                 'RGBA',
                 (
-                    max(stats_bbox[2], profile_bbox[2]),
-                    stats_bbox[3] + card_gap + profile_bbox[3]
+                    max(stats_rgba.width, profile_rgba.width),
+                    profile_rgba.height + card_gap + stats_rgba.height
                 ),
                 color=None
             )
             with combined:
-                combined.alpha_composite(profile_image)
-                combined.alpha_composite(stats_image, (0, profile_bbox[3] + card_gap))
+                combined.alpha_composite(profile_rgba)
+                combined.alpha_composite(stats_rgba, (0, profile_rgba.height + card_gap))
 
                 results = BytesIO()
                 combined.save(results, format='PNG', compress_type=3, compress_level=1)
                 results.seek(0)
                 return results
+            # --- END AI-REPLACED ---

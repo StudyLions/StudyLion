@@ -1,0 +1,211 @@
+# Hindi translation for LionBot - settings_base
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 19:57+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Hindi\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/settings/ui.py:180
+msgctxt "setting|formatted|notset"
+msgid "Not Set"
+msgstr "सेट नहीं"
+
+#: src/settings/ui.py:324
+msgctxt "setting|embed_field|too_long"
+msgid "Too long to display here!"
+msgstr "यहां प्रदर्शित करने के लिए बहुत लंबा!"
+
+#, possible-python-brace-format
+msgctxt "setting|summary_embed|title"
+msgid "Configuration options for `{name}`"
+msgstr "`{name}` के लिए कॉन्फ़िगरेशन विकल्प"
+
+#: src/settings/ui.py:370
+msgctxt "setting|summary_table|field:currently|key"
+msgid "Currently"
+msgstr "वर्तमान"
+
+#: src/settings/ui.py:377
+msgctxt "setting|summary_table|field:default|key"
+msgid "By Default"
+msgstr "डिफ़ॉल्ट"
+
+#: src/settings/ui.py:384
+msgctxt "setting|summary_table|field:set|key"
+msgid "Set Using"
+msgstr "इससे सेट करें"
+
+#: src/settings/ui.py:502
+msgctxt "setting|interaction_check|error"
+msgid "You do not have sufficient permissions to do this!"
+msgstr "इसके लिए आपके पास पर्याप्त अनुमतियां नहीं हैं!"
+
+#: src/settings/setting_types.py:48
+msgctxt "settype:string|accepts"
+msgid "Any Text"
+msgstr "कोई भी टेक्स्ट"
+
+#, possible-python-brace-format
+msgctxt "settype:string|error"
+msgid "Provided string is too long! Maximum length: {maxlen} characters."
+msgstr "दिया गया टेक्स्ट बहुत लंबा है! अधिकतम लंबाई: {maxlen} अक्षर।"
+
+#: src/settings/setting_types.py:114
+msgctxt "settype:emoji|accepts"
+msgid "Paste a builtin emoji, custom emoji, or emoji id."
+msgstr "एक बिल्ट-इन इमोजी, कस्टम इमोजी या इमोजी आईडी चिपकाएं।"
+
+#, possible-python-brace-format
+msgctxt "settype:emoji|error:parse"
+msgid "Could not parse `{provided}` as a Discord emoji. Supported formats are builtin emojis (e.g. `{builtin}`), custom emojis (e.g. {custom}), or custom emoji ids (e.g. `{custom_id}`)."
+msgstr "`{provided}` को Discord इमोजी के रूप में पार्स नहीं किया जा सका। समर्थित प्रारूप हैं: बिल्ट-इन इमोजी (जैसे `{builtin}`), कस्टम इमोजी (जैसे {custom}), या कस्टम इमोजी ID (जैसे `{custom_id}`)।"
+
+#: src/settings/setting_types.py:236
+msgctxt "settype:channel|accepts"
+msgid "A channel name or id"
+msgstr "एक चैनल नाम या आईडी"
+
+#, possible-python-brace-format
+msgctxt "settype:channel|parse|error:not_found"
+msgid "Channel `{string}` could not be found in this guild!"
+msgstr "चैनल `{string}` इस सर्वर में नहीं मिला!"
+
+#: src/settings/setting_types.py:368
+msgctxt "settype:role|accepts"
+msgid "A role name or id"
+msgstr "एक भूमिका नाम या आईडी"
+
+#, possible-python-brace-format
+msgctxt "settype:role|parse|error:not_found"
+msgid "Role `{string}` could not be found in this guild!"
+msgstr "भूमिका `{string}` इस सर्वर में नहीं मिली!"
+
+#: src/settings/setting_types.py:495
+msgctxt "settype:bool|accepts"
+msgid "Enabled/Disabled"
+msgstr "सक्षम/अक्षम"
+
+#: src/settings/setting_types.py:500
+msgctxt "settype:bool|parse:truthy_values"
+msgid "enabled|yes|true|on|enable|1"
+msgstr "सक्षम|हां|सही|चालू|1"
+
+#: src/settings/setting_types.py:504
+msgctxt "settype:bool|parse:falsey_values"
+msgid "disabled|no|false|off|disable|0"
+msgstr "अक्षम|नहीं|गलत|बंद|0"
+
+#: src/settings/setting_types.py:509
+msgctxt "settype:bool|output:true"
+msgid "On"
+msgstr "चालू"
+
+#: src/settings/setting_types.py:510
+msgctxt "settype:bool|output:false"
+msgid "Off"
+msgstr "बंद"
+
+#: src/settings/setting_types.py:511
+msgctxt "settype:bool|output:none"
+msgid "Not Set"
+msgstr "सेट नहीं"
+
+#: src/settings/setting_types.py:622
+msgctxt "settype:integer|accepts"
+msgid "An integer"
+msgstr "एक पूर्णांक"
+
+#: src/settings/setting_types.py:685
+msgctxt "settype:emoji|desc"
+msgid "Unicode or custom emoji"
+msgstr "Unicode या कस्टम इमोजी"
+
+#: src/settings/setting_types.py:757
+msgctxt "settype:guildid|accepts"
+msgid "Any Snowflake ID"
+msgstr "कोई भी Snowflake ID"
+
+#: src/settings/setting_types.py:826
+msgctxt "settype:timezone|accepts"
+msgid "A timezone name from the 'tz database' (e.g. 'Europe/London')"
+msgstr "'tz database' से टाइमज़ोन नाम (जैसे 'Europe/London')"
+
+#: src/settings/setting_types.py:896
+msgctxt "settype:timezone|summary_table|field:supported|key"
+msgid "Supported"
+msgstr "समर्थित"
+
+#, possible-python-brace-format
+msgctxt "settype:timezone|summary_table|field:supported|value"
+msgid "Any timezone from the [tz database]({link})."
+msgstr "[tz database]({link}) से कोई भी टाइमज़ोन।"
+
+#, possible-python-brace-format
+msgctxt "set_type:timezone|acmpl|no_matching"
+msgid "No timezones matching '{input}'!"
+msgstr "'{input}' से मेल खाने वाला कोई टाइमज़ोन नहीं!"
+
+#, possible-python-brace-format
+msgctxt "set_type:timezone|acmpl|choice"
+msgid "{tz} (Currently {now})"
+msgstr "{tz} (वर्तमान {now})"
+
+#: src/settings/setting_types.py:960
+msgctxt "settype:timestamp|accepts"
+msgid "A timestamp in the form YYYY-MM-DD HH:MM"
+msgstr "YYYY-MM-DD HH:MM प्रारूप में टाइमस्टैम्प"
+
+#, possible-python-brace-format
+msgctxt "settype:timestamp|parse|error:invalid"
+msgid "Could not parse `{provided}` as a timestamp. Please use `YYYY-MM-DD HH:MM` format."
+msgstr "`{provided}` को टाइमस्टैम्प के रूप में पार्स नहीं किया जा सका। कृपया `YYYY-MM-DD HH:MM` प्रारूप का उपयोग करें।"
+
+#: src/settings/setting_types.py:1020
+msgctxt "settype:raw|accepts"
+msgid "Anything"
+msgstr "कुछ भी"
+
+#: src/settings/setting_types.py:1073
+msgctxt "settype:enum|accepts"
+msgid "A valid option."
+msgstr "एक मान्य विकल्प।"
+
+#, possible-python-brace-format
+msgctxt "settype:enum|parse|error:not_found"
+msgid "`{provided}` is not a valid option!"
+msgstr "`{provided}` एक मान्य विकल्प नहीं है!"
+
+#: src/settings/setting_types.py:1171
+msgctxt "settype:duration|accepts"
+msgid "A number of days, hours, minutes, and seconds, e.g. `2d 4h 10s`."
+msgstr "दिनों, घंटों, मिनटों और सेकंडों की संख्या, जैसे `2d 4h 10s`।"
+
+#: src/settings/setting_types.py:1352
+msgctxt "settype:channel_list|accepts"
+msgid "Comma separated list of channel ids."
+msgstr "अल्पविराम से अलग किए गए चैनल आईडी की सूची।"
+
+#: src/settings/setting_types.py:1363
+msgctxt "settype:role_list|accepts"
+msgid "Comma separated list of role ids."
+msgstr "अल्पविराम से अलग किए गए भूमिका आईडी की सूची।"
+
+#: src/settings/setting_types.py:1379
+msgctxt "settype:stringlist|accepts"
+msgid "Comma separated strings."
+msgstr "अल्पविराम से अलग किए गए स्ट्रिंग।"
+
+#: src/settings/setting_types.py:1390
+msgctxt "settype:guildidlist|accepts"
+msgid "Comma separated list of guild ids."
+msgstr "अल्पविराम से अलग किए गए सर्वर आईडी की सूची।"

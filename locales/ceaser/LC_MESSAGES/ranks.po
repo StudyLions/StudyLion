@@ -799,7 +799,7 @@ msgid ""
 "Press 'AUTO' to automatically create a standard heirachy of voice | text | xp ranks, or select a role or press Create below!"
 msgstr ""
 "Op bdujwjuz sbolt ibwf cffo tfu vq!\n"
-"Qsftt 'BVUP' up bvupnbujdbmmz dsfbuf b tuboebse ifjsbdiz pg wpjdf | ufyu | yq sbolt, ps tfmfdu b spmf ps qsftt Dsfbuf cfmpx!"
+"Qsftt 'BVUP' up bvupnbujdbmmz dsfbuf b tuboebse ifjsbdiz pg w..."
 
 #: src/modules/ranks/ui/overview.py:423
 #, possible-python-brace-format

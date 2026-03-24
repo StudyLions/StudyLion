@@ -1,0 +1,366 @@
+# Chinese (Traditional) translation for LionBot - reminders
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 21:07+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Chinese (Traditional)\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#, possible-python-brace-format
+msgctxt "create_reminder|error:past"
+msgid "The provided reminder time {timestamp} is in the past!"
+msgstr "指定的提醒時間{timestamp}已經過去了！"
+
+#: src/modules/reminders/cog.py:123
+msgctxt "create_reminder|error:too_fast"
+msgid "You cannot set a repeating reminder with a period less than 10 minutes."
+msgstr "你不能設置間隔少於10分鐘的重複提醒。"
+
+#: src/modules/reminders/cog.py:133
+msgctxt "create_reminder|error:too_many"
+msgid "Sorry, you have reached the maximum of `25` reminders."
+msgstr "抱歉，你已達到`25`個提醒的上限。"
+
+#: src/modules/reminders/cog.py:149
+msgctxt "create_reminder|error:cannot_dm"
+msgid "I cannot direct message you! Do you have me blocked or direct messages closed?"
+msgstr "我無法向你發送私訊！你是否封鎖了我或關閉了私訊？"
+
+#, possible-python-brace-format
+msgctxt "parse_timestamp|error:parse"
+msgid "Could not parse `{given}` as a valid reminder time. Try entering the time in the form `HH:MM` or `YYYY-MM-DD HH:MM`."
+msgstr "無法將`{given}`解析為有效的提醒時間。請嘗試以`HH:MM`或`YYYY-MM-DD HH:MM`格式輸入時間。"
+
+#: src/modules/reminders/cog.py:329
+msgctxt "cmd:reminders"
+msgid "reminders"
+msgstr "reminders"
+
+#: src/modules/reminders/cog.py:332
+msgctxt "cmd:reminders|desc"
+msgid "View and set your reminders."
+msgstr "查看和設置你的提醒。"
+
+#: src/modules/reminders/cog.py:354
+msgctxt "cmd:remindme"
+msgid "remindme"
+msgstr "remindme"
+
+#: src/modules/reminders/cog.py:355
+msgctxt "cmd:remindme|desc"
+msgid "View and set task reminders."
+msgstr "查看和設置任務提醒。"
+
+#: src/modules/reminders/cog.py:363
+msgctxt "cmd:reminders_cancel"
+msgid "cancel"
+msgstr "cancel"
+
+#: src/modules/reminders/cog.py:366
+msgctxt "cmd:reminders_cancel|desc"
+msgid "Cancel a single reminder. Use /reminders to clear or cancel multiple reminders."
+msgstr "取消一個提醒。使用/reminders來清除或取消多個提醒。"
+
+#: src/modules/reminders/cog.py:370
+msgctxt "cmd:reminders_cancel|param:reminder"
+msgid "reminder"
+msgstr "reminder"
+
+#: src/modules/reminders/cog.py:375
+msgctxt "cmd:reminders_cancel|param:reminder|desc"
+msgid "Start typing, then select a reminder to cancel."
+msgstr "開始輸入，然後選擇要取消的提醒。"
+
+#: src/modules/reminders/cog.py:394
+msgctxt "cmd:reminders_cancel|error:no_reminders"
+msgid "There are no reminders to cancel!"
+msgstr "沒有可取消的提醒！"
+
+#: src/modules/reminders/cog.py:418
+msgctxt "cmd:reminders_cancel|error:no_match"
+msgid "I am not sure which reminder you want to cancel. Please try again, selecting a reminder from the list of choices."
+msgstr "我不確定你想取消哪個提醒。請重試，從列表中選擇一個提醒。"
+
+#: src/modules/reminders/cog.py:431
+msgctxt "cmd:reminders_cancel|embed:success|desc"
+msgid "Reminder successfully cancelled."
+msgstr "提醒已成功取消。"
+
+#: src/modules/reminders/cog.py:448
+msgctxt "cmd:reminders_cancel|acmpl:reminder|error:no_reminders"
+msgid "There are no reminders to cancel!"
+msgstr "沒有可取消的提醒！"
+
+#, possible-python-brace-format
+msgctxt "cmd:reminders_cancel|acmpl:reminder|error:no_matches"
+msgid "You do not have any reminders matching \"{partial}\""
+msgstr "你沒有與\"{partial}\"匹配的提醒"
+
+#: src/modules/reminders/cog.py:486
+msgctxt "cmd:remindme_at"
+msgid "at"
+msgstr "at"
+
+#: src/modules/reminders/cog.py:489
+msgctxt "cmd:remindme_at|desc"
+msgid "Schedule a reminder for a particular time."
+msgstr "為特定時間安排一個提醒。"
+
+#: src/modules/reminders/cog.py:493
+msgctxt "cmd:remindme_at|param:time"
+msgid "time"
+msgstr "time"
+
+#: src/modules/reminders/cog.py:494
+msgctxt "cmd:remindme_at|param:reminder"
+msgid "reminder"
+msgstr "reminder"
+
+#: src/modules/reminders/cog.py:495
+msgctxt "cmd:remindme_at|param:every"
+msgid "repeat_every"
+msgstr "repeat_every"
+
+#: src/modules/reminders/cog.py:500
+msgctxt "cmd:remindme_at|param:time|desc"
+msgid "When you want to be reminded. (E.g. `4pm` or `16:00`)."
+msgstr "你希望在什麼時候被提醒。（例如`4pm`或`16:00`）"
+
+#: src/modules/reminders/cog.py:504
+msgctxt "cmd:remindme_at|param:reminder|desc"
+msgid "What should the reminder be?"
+msgstr "提醒內容是什麼？"
+
+#: src/modules/reminders/cog.py:508
+msgctxt "cmd:remindme_at|param:every|desc"
+msgid "How often to repeat this reminder."
+msgstr "此提醒的重複頻率。"
+
+#: src/modules/reminders/cog.py:535
+msgctxt "cmd:remindme_at|error|title"
+msgid "Could not create reminder!"
+msgstr "無法建立提醒！"
+
+#, possible-python-brace-format
+msgctxt "cmd:remindme_at|acmpl:time|error:parse"
+msgid "Cannot parse \"{partial}\" as a time. Try the format HH:MM or YYYY-MM-DD HH:MM"
+msgstr "無法將\"{partial}\"解析為時間。請嘗試HH:MM或YYYY-MM-DD HH:MM格式"
+
+#: src/modules/reminders/cog.py:573
+msgctxt "cmd:remindme_in"
+msgid "in"
+msgstr "in"
+
+#: src/modules/reminders/cog.py:576
+msgctxt "cmd:remindme_in|desc"
+msgid "Schedule a reminder for a given amount of time in the future."
+msgstr "安排在未來指定時間後的提醒。"
+
+#: src/modules/reminders/cog.py:580
+msgctxt "cmd:remindme_in|param:time"
+msgid "time"
+msgstr "time"
+
+#: src/modules/reminders/cog.py:581
+msgctxt "cmd:remindme_in|param:reminder"
+msgid "reminder"
+msgstr "reminder"
+
+#: src/modules/reminders/cog.py:582
+msgctxt "cmd:remindme_in|param:every"
+msgid "repeat_every"
+msgstr "repeat_every"
+
+#: src/modules/reminders/cog.py:587
+msgctxt "cmd:remindme_in|param:time|desc"
+msgid "How far into the future to set the reminder (e.g. 1 day 10h 5m)."
+msgstr "提醒設置在未來多久之後（例如1 day 10h 5m）。"
+
+#: src/modules/reminders/cog.py:591
+msgctxt "cmd:remindme_in|param:reminder|desc"
+msgid "What should the reminder be?"
+msgstr "提醒內容是什麼？"
+
+#: src/modules/reminders/cog.py:595
+msgctxt "cmd:remindme_in|param:every|desc"
+msgid "How often to repeat this reminder. (e.g. 1 day, or 2h)"
+msgstr "此提醒的重複頻率。（例如1 day或2h）"
+
+#: src/modules/reminders/cog.py:621
+msgctxt "cmd:remindme_in|error|title"
+msgid "Could not create reminder!"
+msgstr "無法建立提醒！"
+
+#: src/modules/reminders/ui.py:47
+msgctxt "ui:reminderlist|button:clear|confirm|title"
+msgid "Are You Sure?"
+msgstr "你確定嗎？"
+
+#, possible-python-brace-format
+msgctxt "ui:reminderlist|button:clear|confirm|desc"
+msgid "Are you sure you want to delete your `{count}` reminder?"
+msgid_plural "Are you sure you want to clear your `{count}` reminders?"
+msgstr[0] "你確定要刪除`{count}`條提醒嗎？"
+
+#: src/modules/reminders/ui.py:57
+msgctxt "ui:reminderlist|button:clear|confirm|button:yes"
+msgid "Yes, clear my reminders"
+msgstr "是的，清除我的提醒"
+
+#: src/modules/reminders/ui.py:68
+msgctxt "ui:reminderlist|button:clear|success|desc"
+msgid "Your reminders have been cleared!"
+msgstr "你的提醒已被清除！"
+
+#: src/modules/reminders/ui.py:77
+msgctxt "ui:reminderlist|button:clear|confirm|button:cancel"
+msgid "Cancel"
+msgstr "取消"
+
+#: src/modules/reminders/ui.py:89
+msgctxt "ui:reminderlist|button:clear|label"
+msgid "Clear Reminders"
+msgstr "清除提醒"
+
+#: src/modules/reminders/ui.py:110
+msgctxt "ui:reminderlist|button:new|modal|field:time|label"
+msgid "When would you like to be reminded?"
+msgstr "你希望在什麼時候被提醒？"
+
+#: src/modules/reminders/ui.py:120
+msgctxt "ui:reminderlist|button:new|modal|field:repeat|label"
+msgid "How often should the reminder repeat?"
+msgstr "提醒應多久重複一次？"
+
+#: src/modules/reminders/ui.py:124
+msgctxt "ui:reminderlist|button:new|modal|field:repeat|placeholder"
+msgid "1 day 10 hours 5 minutes (Leave empty for no repeat.)"
+msgstr "1 day 10 hours 5 minutes（不需要重複則留空。）"
+
+#: src/modules/reminders/ui.py:133
+msgctxt "ui:reminderlist|button:new|modal|field:content|label"
+msgid "What should I remind you?"
+msgstr "需要我提醒你什麼？"
+
+#: src/modules/reminders/ui.py:144
+msgctxt "ui:reminderlist|button:new|modal|title"
+msgid "Set a Reminder"
+msgstr "設置提醒"
+
+#, possible-python-brace-format
+msgctxt "ui:reminderlist|button:new|modal|parse|error:interval"
+msgid "Cannot parse '{value}' as a duration."
+msgstr "無法將'{value}'解析為時長。"
+
+#: src/modules/reminders/ui.py:180
+msgctxt "ui:reminderlist|button:new|label"
+msgid "New Reminder"
+msgstr "新提醒"
+
+#: src/modules/reminders/ui.py:208
+msgctxt "ui:reminderlist|select:remove|placeholder"
+msgid "Select to cancel"
+msgstr "選擇以取消"
+
+#: src/modules/reminders/ui.py:264
+msgctxt "ui:reminderlist|embed:list|author"
+msgid "Your reminders"
+msgstr "你的提醒"
+
+#: src/modules/reminders/ui.py:270
+msgctxt "ui:reminderlist|embed:list|footer"
+msgid "Click a reminder to jump back to the context!"
+msgstr "點擊提醒跳轉回上下文！"
+
+#: src/modules/reminders/ui.py:277
+msgctxt "ui:reminderlist|embed:no_reminders|title"
+msgid "You have no reminders set!"
+msgstr "你還沒有設置任何提醒！"
+
+#: src/modules/reminders/ui.py:286
+msgctxt "ui:reminderlist|embed|tips:name"
+msgid "Reminder Tips"
+msgstr "提醒小貼士"
+
+#, possible-python-brace-format
+msgctxt "ui:reminderlist|embed|tips:value"
+msgid ""
+"- Use {at_cmd} to set a reminder at a known time (e.g. `at 10 am`).\n"
+"- Use {in_cmd} to set a reminder in a certain time (e.g. `in 2 hours`).\n"
+"- Both commands support repeating reminders using the `every` parameter.\n"
+"- Remember to tell me your timezone with {timezone_cmd} if you haven't already!"
+msgstr ""
+"- 使用{at_cmd}在指定時間設置提醒（例如`at 10 am`）。\n"
+"- 使用{in_cmd}在指定時間後設置提醒（例如`in 2 hours`）。\n"
+"- 兩個命令都支持使用`every`參數設置重複提醒。\n"
+"- 如果還沒有設置，請記得用{timezone_cmd}告訴我你的時區！"
+
+#: src/modules/reminders/data.py:63
+msgctxt "reminder_set|title"
+msgid "Reminder Set!"
+msgstr "提醒已設置！"
+
+#, possible-python-brace-format
+msgctxt "reminder_set|desc"
+msgid ""
+"At {timestamp} I will remind you about:\n"
+"> {content}"
+msgstr ""
+"在{timestamp}我會提醒你：\n"
+"> {content}"
+
+#: src/modules/reminders/data.py:79
+msgctxt "reminder_set|field:repeat|name"
+msgid "Repeats"
+msgstr "重複"
+
+#, possible-python-brace-format
+msgctxt "reminder_set|field:repeat|value"
+msgid "This reminder will repeat every `{interval}` (after the first reminder)."
+msgstr "此提醒將每隔`{interval}`重複一次（在第一次提醒之後）。"
+
+#: src/modules/reminders/data.py:94
+msgctxt "reminder|embed"
+msgid "You asked me to remind you!"
+msgstr "你請求我提醒你！"
+
+#: src/modules/reminders/data.py:102
+msgctxt "reminder|embed"
+msgid "Context?"
+msgstr "上下文？"
+
+#: src/modules/reminders/data.py:104
+msgctxt "reminder|embed"
+msgid "Click Here"
+msgstr "點擊這裡"
+
+#: src/modules/reminders/data.py:111
+msgctxt "reminder|embed"
+msgid "Next reminder"
+msgstr "下一個提醒"
+
+#, possible-python-brace-format
+msgctxt "reminder|formatted|interval"
+msgid "Every day"
+msgid_plural "Every `{days}` days"
+msgstr[0] "每天"
+
+#, possible-python-brace-format
+msgctxt "reminder|formatted|interval"
+msgid "Every hour"
+msgid_plural "Every `{hours}` hours"
+msgstr[0] "每小時"
+
+#, possible-python-brace-format
+msgctxt "reminder|formatted|interval"
+msgid "Every `{duration}`"
+msgstr "每`{duration}`"

@@ -1,0 +1,1191 @@
+# Hindi translation for LionBot - ranks
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 23:20+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Hindi\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/modules/ranks/cog.py:76
+msgctxt "cmd:configure_ranks|param:rank_type|choice:voice"
+msgid "Voice"
+msgstr "वॉइस"
+
+#: src/modules/ranks/cog.py:77
+msgctxt "cmd:configure_ranks|param:rank_type|choice:xp"
+msgid "XP"
+msgstr "XP"
+
+#: src/modules/ranks/cog.py:78
+msgctxt "cmd:configure_ranks|param:rank_type|choice:message"
+msgid "Message"
+msgstr "संदेश"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:rank_check|error:remove_failed"
+msgid "Failed to remove old rank roles: `{error}`"
+msgstr "पुराने रैंक रोल हटाने में विफल: `{error}`"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:rank_check|error:add_failed"
+msgid "Failed to add new rank role: `{error}`"
+msgstr "नया रैंक रोल जोड़ने में विफल: `{error}`"
+
+#: src/modules/ranks/cog.py:380
+msgctxt "eventlog|event:rank_check|error:add_impossible"
+msgid ""
+"Could not assign new activity rank role. Lacking permissions or invalid "
+"role."
+msgstr ""
+"नई गतिविधि रैंक भूमिका असाइन नहीं की जा सकी। अनुमतियाँ अनुपलब्ध या अमान्य "
+"भूमिका।"
+
+#: src/modules/ranks/cog.py:386
+msgctxt "eventlog|event:rank_check|error:permissions"
+msgid ""
+"Could not update activity rank roles, I lack the 'Manage Roles' permission."
+msgstr ""
+"गतिविधि रैंक रोल अपडेट नहीं कर सका, मेरे पास 'Manage Roles' अनुमति नहीं है।"
+
+#: src/modules/ranks/cog.py:398
+msgctxt "eventlog|event:rank_check|name"
+msgid "Member Activity Rank Roles Updated"
+msgstr "सदस्य गतिविधि रैंक रोल अपडेट किए गए"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:new_rank|error:remove_failed"
+msgid "Failed to remove old rank roles: `{error}`"
+msgstr "पुराने रैंक रोल हटाने में विफल: `{error}`"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:new_rank|error:add_failed"
+msgid "Failed to add new rank role: `{error}`"
+msgstr "नया रैंक रोल जोड़ने में विफल: `{error}`"
+
+#: src/modules/ranks/cog.py:507
+msgctxt "eventlog|event:new_rank|error:add_impossible"
+msgid ""
+"Could not assign new activity rank role. Lacking permissions or invalid "
+"role."
+msgstr ""
+"नई गतिविधि रैंक भूमिका असाइन नहीं की जा सकी। अनुमतियाँ अनुपलब्ध या अमान्य "
+"भूमिका।"
+
+#: src/modules/ranks/cog.py:513
+msgctxt "eventlog|event:new_rank|error:permissions"
+msgid ""
+"Could not update activity rank roles, I lack the 'Manage Roles' permission."
+msgstr ""
+"गतिविधि रैंक रोल अपडेट नहीं कर सका, मेरे पास 'Manage Roles' अनुमति नहीं है।"
+
+#: src/modules/ranks/cog.py:548
+msgctxt "eventlog|event:new_rank|error:notify_failed"
+msgid "Could not notify member."
+msgstr "सदस्य को सूचित नहीं किया जा सका।"
+
+#: src/modules/ranks/cog.py:555
+msgctxt "eventlog|event:new_rank|name"
+msgid "Member Achieved Activity rank"
+msgstr "सदस्य ने गतिविधि रैंक हासिल किया"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:new_rank|desc"
+msgid "{member} earned the new activity rank {rank}"
+msgstr "{member} ने नया गतिविधि रैंक {rank} अर्जित किया"
+
+#: src/modules/ranks/cog.py:587
+msgctxt "event:rank_update|embed:notify"
+msgid "New Activity Rank Attained!"
+msgstr "नया गतिविधि रैंक प्राप्त!"
+
+#: src/modules/ranks/cog.py:692
+msgctxt "rank_refresh|error:cannot_chunk|desc"
+msgid "Could not retrieve member list from Discord. Please try again later."
+msgstr ""
+"Discord से सदस्य सूची प्राप्त नहीं की जा सकी। कृपया बाद में पुनः प्रयास "
+"करें।"
+
+#: src/modules/ranks/cog.py:705
+msgctxt "rank_refresh|error:roles_dne|desc"
+msgid "Some ranks have invalid or deleted roles! Please remove them first."
+msgstr "कुछ रैंक में अमान्य या हटाई गई भूमिकाएँ हैं! कृपया पहले उन्हें हटाएं।"
+
+#, possible-python-brace-format
+msgctxt "rank_refresh|error:unassignable_roles|desc"
+msgid ""
+"I have insufficient permissions to assign the following role(s):\n"
+"{roles}"
+msgstr ""
+"मेरे पास निम्नलिखित भूमिका(ओं) को असाइन करने के लिए अपर्याप्त अनुमतियाँ हैं:\n"
+"{roles}"
+
+#: src/modules/ranks/cog.py:785
+msgctxt "rank_refresh|remove_roles|audit"
+msgid "Removing invalid rank role."
+msgstr "अमान्य रैंक रोल हटाया जा रहा है।"
+
+#, possible-python-brace-format
+msgctxt "rank_refresh|remove_roles|small_error"
+msgid "*Could not remove ranks from {member}*"
+msgstr "*{member} से रैंक नहीं हटाए जा सके*"
+
+#: src/modules/ranks/cog.py:806
+msgctxt "rank_refresh|remove_roles|error:too_many_issues"
+msgid ""
+"Too many issues occurred while removing ranks! Please check my permissions "
+"and try again in a few minutes."
+msgstr ""
+"रैंक हटाते समय बहुत अधिक समस्याएँ हुईं! कृपया मेरी अनुमतियाँ जाँचें और कुछ "
+"मिनटों में पुनः प्रयास करें।"
+
+#: src/modules/ranks/cog.py:820
+msgctxt "rank_refresh|add_roles|audit"
+msgid "Adding rank role from refresh"
+msgstr "रिफ्रेश से रैंक रोल जोड़ा जा रहा है"
+
+#, possible-python-brace-format
+msgctxt "rank_refresh|add_roles|small_error"
+msgid "*Could not add {role} to {member}*"
+msgstr "*{member} को {role} जोड़ नहीं सका*"
+
+#: src/modules/ranks/cog.py:841
+msgctxt "rank_refresh|add_roles|error:too_many_issues"
+msgid ""
+"Too many issues occurred while adding ranks! Please check my permissions and"
+" try again in a few minutes."
+msgstr ""
+"रैंक जोड़ते समय बहुत अधिक समस्याएँ हुईं! कृपया मेरी अनुमतियाँ जाँचें और कुछ "
+"मिनटों में पुनः प्रयास करें।"
+
+#: src/modules/ranks/cog.py:869
+msgctxt "eventlog|event:rank_refresh|name"
+msgid "Activity Ranks Refreshed"
+msgstr "गतिविधि रैंक रिफ्रेश किए गए"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:rank_refresh|desc"
+msgid ""
+"{actor} refresh member activity ranks.\n"
+"**`{removed}`** invalid rank roles removed.\n"
+"**`{added}`** new rank roles added."
+msgstr ""
+"{actor} ने सदस्य गतिविधि रैंक रिफ्रेश किए।\n"
+"**`{removed}`** अमान्य रैंक रोल हटाए गए।\n"
+"**`{added}`**..."
+
+#: src/modules/ranks/cog.py:884
+msgctxt "cmd:ranks"
+msgid "ranks"
+msgstr "ranks"
+
+#: src/modules/ranks/cog.py:916
+msgctxt "cmd:configure_ranks"
+msgid "ranks"
+msgstr "ranks"
+
+#: src/modules/ranks/cog.py:917
+msgctxt "cmd:configure_ranks|desc"
+msgid "Configure Activity Ranks"
+msgstr "गतिविधि रैंक कॉन्फ़िगर करें"
+
+#, possible-python-brace-format
+msgctxt ""
+"cmd:configure_ranks|response:updated|setting:notification|withdm_withchannel"
+msgid ""
+"Rank update notifications will be sent via **direct message** when possible,"
+" otherwise to {channel}"
+msgstr ""
+"रैंक अपडेट सूचनाएँ जब संभव हो **सीधे संदेश** द्वारा भेजी जाएंगी, अन्यथा "
+"{channel} में"
+
+#: src/modules/ranks/cog.py:982
+msgctxt ""
+"cmd:configure_ranks|response:updated|setting:notification|withdm_nochannel"
+msgid "Rank update notifications will be sent via **direct message**."
+msgstr "रैंक अपडेट सूचनाएँ **सीधे संदेश** द्वारा भेजी जाएंगी।"
+
+#, possible-python-brace-format
+msgctxt ""
+"cmd:configure_ranks|response:updated|setting:notification|nodm_withchannel"
+msgid "Rank update notifications will be sent to {channel}."
+msgstr "रैंक अपडेट सूचनाएँ {channel} में भेजी जाएंगी।"
+
+#: src/modules/ranks/cog.py:993
+msgctxt ""
+"cmd:configure_ranks|response:updated|setting:notification|nodm_nochannel"
+msgid "Members will not be notified when their activity rank updates."
+msgstr "सदस्यों को उनके गतिविधि रैंक अपडेट होने पर सूचित नहीं किया जाएगा।"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:role_name"
+msgid "{role_name}"
+msgstr "{role_name}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:guild_name"
+msgid "{guild_name}"
+msgstr "{guild_name}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:user_name"
+msgid "{user_name}"
+msgstr "{user_name}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:role_id"
+msgid "{role_id}"
+msgstr "{role_id}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:guild_id"
+msgid "{guild_id}"
+msgstr "{guild_id}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:user_id"
+msgid "{user_id}"
+msgstr "{user_id}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:role_mention"
+msgid "{role_mention}"
+msgstr "{role_mention}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:user_mention"
+msgid "{user_mention}"
+msgstr "{user_mention}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:requires"
+msgid "{rank_requires}"
+msgstr "{rank_requires}"
+
+#: src/modules/ranks/settings.py:27
+msgctxt "guildset:rank_type|output:voice"
+msgid "`Voice`"
+msgstr "`वॉइस`"
+
+#: src/modules/ranks/settings.py:28
+msgctxt "guildset:rank_type|output:xp"
+msgid "`Exp`"
+msgstr "`Exp`"
+
+#: src/modules/ranks/settings.py:29
+msgctxt "guildset:rank_type|output:message"
+msgid "`Messages`"
+msgstr "`संदेश`"
+
+#: src/modules/ranks/settings.py:32
+msgctxt "guildset:rank_type|input_format:voice"
+msgid "Voice"
+msgstr "वॉइस"
+
+#: src/modules/ranks/settings.py:33
+msgctxt "guildset:rank_type|input_format:xp"
+msgid "Exp"
+msgstr "Exp"
+
+#: src/modules/ranks/settings.py:34
+msgctxt "guildset:rank_type|input_format:message"
+msgid "Messages"
+msgstr "संदेश"
+
+#: src/modules/ranks/settings.py:37
+msgctxt "guildset:rank_type|input_pattern:voice"
+msgid "voice|study"
+msgstr "voice|study"
+
+#: src/modules/ranks/settings.py:38
+msgctxt "guildset:rank_type|input_pattern:voice"
+msgid "text|message|messages"
+msgstr "text|message|messages"
+
+#: src/modules/ranks/settings.py:39
+msgctxt "guildset:rank_type|input_pattern:xp"
+msgid "xp|exp|experience"
+msgstr "xp|exp|experience"
+
+#: src/modules/ranks/settings.py:47
+msgctxt "guildset:rank_type"
+msgid "rank_type"
+msgstr "rank_type"
+
+#: src/modules/ranks/settings.py:50
+msgctxt "guildset:rank_type|desc"
+msgid ""
+"The type of statistic (messages | xp | voice hours) used to determine "
+"activity ranks."
+msgstr ""
+"सांख्यिकी का प्रकार (संदेश | xp | वॉइस घंटे) जो गतिविधि रैंक निर्धारित करने "
+"के लिए उपयोग किया जात..."
+
+#: src/modules/ranks/settings.py:54
+msgctxt "guildset:rank_type|long_desc"
+msgid ""
+"Which statistic is used to reward activity ranks.\n"
+"`Voice` is the number of hours active in tracked voice channels, `Exp` is a measure of message activity, and `Message` is a simple count of messages sent."
+msgstr ""
+"कौन सी सांख्यिकी गतिविधि रैंक पुरस्कृत करने के लिए उपयोग की जाती है।\n"
+"`वॉइस` ट्रैक किए गए वॉइस चैनलों में सक्रिय घंटों की संख्या है, `Exp` संदेश गतिविधि का माप है, और `संदेश` भेजे गए संदेशों की सरल गिनती है।"
+
+#: src/modules/ranks/settings.py:61
+msgctxt "guildset:rank_type|accepts"
+msgid "Voice/Exp/Messages"
+msgstr "Voice/Exp/Messages"
+
+#: src/modules/ranks/settings.py:73
+msgctxt "guildset:rank_type|set_response|type:voice"
+msgid "Members will be awarded activity ranks based on `Voice Activity`."
+msgstr "सदस्यों को `वॉइस गतिविधि` के आधार पर गतिविधि रैंक प्रदान किए जाएंगे।"
+
+#: src/modules/ranks/settings.py:78
+msgctxt "guildset:rank_type|set_response|type:messages"
+msgid "Members will be awarded activity ranks based on `Messages Sent`."
+msgstr "सदस्यों को `भेजे गए संदेश` के आधार पर गतिविधि रैंक प्रदान किए जाएंगे।"
+
+#: src/modules/ranks/settings.py:83
+msgctxt "guildset:rank_type|set_response|type:xp"
+msgid "Members will be awarded activity ranks based on `Message XP Earned`."
+msgstr ""
+"सदस्यों को `अर्जित संदेश XP` के आधार पर गतिविधि रैंक प्रदान किए जाएंगे।"
+
+#, possible-python-brace-format
+msgctxt "guildset:rank_channel|set_using"
+msgid "{cmd} or option menu below."
+msgstr "{cmd} या नीचे विकल्प मेनू।"
+
+#: src/modules/ranks/settings.py:106
+msgctxt "guildset:rank_channel"
+msgid "rank_channel"
+msgstr "rank_channel"
+
+#: src/modules/ranks/settings.py:109
+msgctxt "guildset:rank_channel|desc"
+msgid "The channel in which to send rank update notifications."
+msgstr "वह चैनल जिसमें रैंक अपडेट सूचनाएँ भेजी जाएंगी।"
+
+#: src/modules/ranks/settings.py:113
+msgctxt "guildset:rank_channel|long_desc"
+msgid ""
+"Whenever a user advances a rank, a congratulatory message will be sent in "
+"this channel, if set. If `dm_ranks` is enabled, this channel will only be "
+"used when the user has opted not to receive DM notifications, or is "
+"otherwise unreachable."
+msgstr ""
+"जब कोई उपयोगकर्ता रैंक में आगे बढ़ता है, तो इस चैनल में एक बधाई संदेश भेजा "
+"जाएगा, यदि सेट है। यदि `dm_ranks` सक्षम है, तो इस चैनल का उपयोग केवल तब किया"
+" जाएगा जब उपयोगकर्ता ने DM सूचनाएँ प्राप्त न करने का विकल्प चुना हो।"
+
+#: src/modules/ranks/settings.py:119
+msgctxt "guildset:rank_channel|accepts"
+msgid "Rank notification channel name or id."
+msgstr "रैंक सूचना चैनल का नाम या id।"
+
+#, possible-python-brace-format
+msgctxt "guildset:rank_channel|set_response|set"
+msgid "Rank update messages will be sent to {channel}."
+msgstr "रैंक अपडेट संदेश {channel} में भेजे जाएंगे।"
+
+#: src/modules/ranks/settings.py:136
+msgctxt "guildset:rank_channel|set_response|unset"
+msgid ""
+"Rank update messages will be ignored or sent via DM (if `dm_ranks` is "
+"enabled)."
+msgstr ""
+"रैंक अपडेट संदेश अनदेखा किए जाएंगे या DM द्वारा भेजे जाएंगे (यदि `dm_ranks` "
+"सक्षम है)।"
+
+#, possible-python-brace-format
+msgctxt "guildset:rank_channel|set_using"
+msgid "{cmd} or channel selector below."
+msgstr "{cmd} या नीचे चैनल चयनकर्ता।"
+
+#: src/modules/ranks/settings.py:157
+msgctxt "guildset:dm_ranks"
+msgid "dm_ranks"
+msgstr "dm_ranks"
+
+#: src/modules/ranks/settings.py:160
+msgctxt "guildset:dm_ranks|desc"
+msgid ""
+"Whether to send rank advancement notifications through direct messages."
+msgstr "क्या रैंक उन्नति सूचनाएँ सीधे संदेशों के माध्यम से भेजनी हैं।"
+
+#: src/modules/ranks/settings.py:164
+msgctxt "guildset:dm_ranks|long_desc"
+msgid ""
+"If enabled, congratulatory messages for rank advancement will be direct "
+"messaged to the user, instead of being sent to the configured "
+"`rank_channel`."
+msgstr ""
+"यदि सक्षम है, तो रैंक उन्नति के लिए बधाई संदेश उपयोगकर्ता को सीधे संदेश भेजे"
+" जाएंगे, कॉन्फ़िगर किए गए `rank_channel` में भेजने के बजाय।"
+
+#: src/modules/ranks/settings.py:178
+msgctxt "guildset:dm_ranks|response:true"
+msgid "I will direct message members upon rank advancement."
+msgstr "मैं रैंक उन्नति पर सदस्यों को सीधे संदेश भेजूंगा।"
+
+#: src/modules/ranks/settings.py:183
+msgctxt "guildset:dm_ranks|response:false"
+msgid "I will never direct message members upon rank advancement."
+msgstr "मैं रैंक उन्नति पर सदस्यों को कभी सीधे संदेश नहीं भेजूंगा।"
+
+#: src/modules/ranks/ui/preview.py:75
+msgctxt "ui:rank_preview|button:edit|error:role_deleted"
+msgid ""
+"The role underlying this rank no longer exists! Please select a new role "
+"from the role menu."
+msgstr ""
+"इस रैंक की भूमिका अब मौजूद नहीं है! कृपया रोल मेनू से एक नई भूमिका चुनें।"
+
+#: src/modules/ranks/ui/preview.py:82
+msgctxt "ui:rank_preview|button:edit|error:role_not_assignable"
+msgid ""
+"I do not have permission to edit the underlying role! Please select a new "
+"role from the role menu, or ensure my top role is above the selected role."
+msgstr ""
+"मेरे पास इस भूमिका को संपादित करने की अनुमति नहीं है! कृपया नई भूमिका चुनें "
+"या सुनिश्चित करें कि मेरी शीर्ष भूमिका चयनित से ऊपर है।"
+
+#: src/modules/ranks/ui/preview.py:91
+msgctxt "ui:rank_preview|button:edit|error|title"
+msgid "Failed to edit rank!"
+msgstr "रैंक संपादित करने में विफल!"
+
+#: src/modules/ranks/ui/preview.py:109
+msgctxt "ui:rank_preview|button:edit|label"
+msgid "Edit"
+msgstr "संपादन"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_preview|button:delete|response:success|description|with_role"
+msgid ""
+"You have deleted the rank {mention}. Press the button below to also delete "
+"the role."
+msgstr ""
+"आपने रैंक {mention} हटा दिया है। भूमिका भी हटाने के लिए नीचे बटन दबाएं।"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_preview|button:delete|response:success|description|no_role"
+msgid "You have deleted the rank {mention}."
+msgstr "आपने रैंक {mention} हटा दिया है।"
+
+#: src/modules/ranks/ui/preview.py:153
+msgctxt "ui:rank_preview|button:delete|response:success|title"
+msgid "Rank Deleted"
+msgstr "रैंक हटा दिया गया"
+
+#: src/modules/ranks/ui/preview.py:163
+msgctxt ""
+"ui:rank_preview|button:delete|response:success|button:delete_role|label"
+msgid "Delete Role"
+msgstr "भूमिका हटाएं"
+
+#, possible-python-brace-format
+msgctxt ""
+"ui:rank_preview|button:delete|response:success|button:delete_role|response:errored|desc"
+msgid ""
+"You have deleted the rank **{name}**! Could not delete the role due to an "
+"unknown error."
+msgstr ""
+"आपने रैंक **{name}** हटा दिया है! अज्ञात त्रुटि के कारण भूमिका हटाई नहीं जा "
+"सकी।"
+
+#, possible-python-brace-format
+msgctxt ""
+"ui:rank_preview|button:delete|response:success|button:delete_role|response:success|desc"
+msgid "You have deleted the rank **{name}** along with the underlying role."
+msgstr "आपने रैंक **{name}** को भूमिका सहित हटा दिया है।"
+
+#: src/modules/ranks/ui/preview.py:202
+msgctxt "ui:rank_preview|button:delete|label"
+msgid "Delete Rank"
+msgstr "रैंक हटाएं"
+
+#: src/modules/ranks/ui/preview.py:232
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:is_default"
+msgid "The @everyone role cannot be removed, and cannot be a rank!"
+msgstr "@everyone भूमिका हटाई नहीं जा सकती और रैंक नहीं हो सकती!"
+
+#: src/modules/ranks/ui/preview.py:237
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:is_managed"
+msgid ""
+"The role is managed by another application or integration, and cannot be a "
+"rank!"
+msgstr ""
+"यह भूमिका किसी अन्य एप्लिकेशन या एकीकरण द्वारा प्रबंधित है और रैंक नहीं हो "
+"सकती!"
+
+#: src/modules/ranks/ui/preview.py:242
+msgctxt ""
+"ui:rank_preview|menu:roles|error:not_assignable|suberror:no_permissions"
+msgid ""
+"I do not have the `MANAGE_ROLES` permission in this server, so I cannot "
+"manage ranks!"
+msgstr ""
+"मेरे पास इस सर्वर में `MANAGE_ROLES` अनुमति नहीं है, इसलिए मैं रैंक प्रबंधित"
+" नहीं कर सकता!"
+
+#: src/modules/ranks/ui/preview.py:247
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:above_me"
+msgid ""
+"This role is above my top role in the role hierarchy, so I cannot add or "
+"remove it!"
+msgstr ""
+"यह भूमिका रोल पदानुक्रम में मेरी शीर्ष भूमिका से ऊपर है, इसलिए मैं इसे जोड़ "
+"या हटा नहीं सकता!"
+
+#: src/modules/ranks/ui/preview.py:253
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:other"
+msgid "I am not able to manage the selected role, so it cannot be a rank!"
+msgstr ""
+"मैं चयनित भूमिका को प्रबंधित करने में असमर्थ हूँ, इसलिए यह रैंक नहीं हो "
+"सकती!"
+
+#: src/modules/ranks/ui/preview.py:259
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|title"
+msgid "Could not update rank!"
+msgstr "रैंक अपडेट नहीं हो सका!"
+
+#: src/modules/ranks/ui/preview.py:269
+msgctxt "ui:rank_preview|menu:roles|placeholder"
+msgid "Update Rank Role"
+msgstr "रैंक रोल अपडेट करें"
+
+#: src/modules/ranks/ui/preview.py:281
+msgctxt "ui:rank_preview|embed|title"
+msgid "Rank Information"
+msgstr "रैंक जानकारी"
+
+#: src/modules/ranks/ui/preview.py:288
+msgctxt "ui:rank_preview|embed|field:role|name"
+msgid "Role"
+msgstr "भूमिका"
+
+#: src/modules/ranks/ui/preview.py:295
+msgctxt "ui:rank_preview|embed|field:required|name"
+msgid "Required"
+msgstr "आवश्यक"
+
+#: src/modules/ranks/ui/preview.py:302
+msgctxt "ui:rank_preview|embed|field:reward|name"
+msgid "Reward"
+msgstr "पुरस्कार"
+
+#: src/modules/ranks/ui/preview.py:311
+msgctxt "ui:rank_preview|embed|field:message"
+msgid "Congratulatory Message"
+msgstr "बधाई संदेश"
+
+#: src/modules/ranks/ui/refresh.py:134
+msgctxt "ui:refresh_ranks|embed|title:errored"
+msgid "Could not refresh the server ranks!"
+msgstr "सर्वर रैंक रिफ्रेश नहीं हो सके!"
+
+#: src/modules/ranks/ui/refresh.py:142
+msgctxt "ui:refresh_ranks|embed|title:done"
+msgid "Rank refresh complete!"
+msgstr "रैंक रिफ्रेश पूरा!"
+
+#: src/modules/ranks/ui/refresh.py:148
+msgctxt "ui:refresh_ranks|embed|title:working"
+msgid "Refreshing your server ranks, please wait."
+msgstr "सर्वर रैंक रिफ्रेश हो रहे हैं, कृपया प्रतीक्षा करें।"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:ranks"
+msgid "**Loading server ranks:** {emoji}"
+msgstr "**रैंक लोड हो रहे हैं:** {emoji}"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:members"
+msgid "**Loading server members:** {emoji}"
+msgstr "**सदस्य लोड हो रहे हैं:** {emoji}"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:roles"
+msgid "**Loading rank roles:** {emoji}"
+msgstr "**रैंक रोल लोड हो रहे हैं:** {emoji}"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:compute"
+msgid "**Computing correct ranks:** {emoji}"
+msgstr "**सही रैंक की गणना:** {emoji}"
+
+#: src/modules/ranks/ui/refresh.py:207
+msgctxt "ui:refresh_ranks|embed|field:remove|name"
+msgid "Removing invalid rank roles from members"
+msgstr "सदस्यों से अमान्य रैंक रोल हटाए जा रहे हैं"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|field:remove|value"
+msgid "{progress} {done}/{total} removed"
+msgstr "{progress} {done}/{total} हटाए गए"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:remove"
+msgid "**Removed invalid ranks:** {done}/{target}"
+msgstr "**हटाए गए अमान्य रैंक:** {done}/{target}"
+
+#: src/modules/ranks/ui/refresh.py:230
+msgctxt "ui:refresh_ranks|embed|field:add|name"
+msgid "Giving members their rank roles"
+msgstr "सदस्यों को उनके रैंक रोल दिए जा रहे हैं"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|field:add|value"
+msgid "{progress} {done}/{total} given"
+msgstr "{progress} {done}/{total} दिए गए"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:add"
+msgid "**Updated member ranks:** {done}/{target}"
+msgstr "**अपडेट किए गए सदस्य रैंक:** {done}/{target}"
+
+#: src/modules/ranks/ui/config.py:42
+msgctxt "ui:rankconfigui|check|not_permitted"
+msgid "You have insufficient server permissions to use this UI!"
+msgstr "आपके पास इस UI का उपयोग करने के लिए अपर्याप्त सर्वर अनुमतियाँ हैं!"
+
+#: src/modules/ranks/ui/config.py:64
+msgctxt "ui:rank_config|button:overview|label"
+msgid "Edit Ranks"
+msgstr "रैंक संपादित करें"
+
+#: src/modules/ranks/ui/config.py:83
+msgctxt "ui:rank_config|menu:types|placeholder"
+msgid "Select Statistic Type"
+msgstr "सांख्यिकी प्रकार चुनें"
+
+#: src/modules/ranks/ui/config.py:91
+msgctxt "ui:rank_config|menu:types|option:voice"
+msgid "Voice Activity"
+msgstr "वॉइस गतिविधि"
+
+#: src/modules/ranks/ui/config.py:99
+msgctxt "ui:rank_config|menu:types|option:xp"
+msgid "XP Earned"
+msgstr "अर्जित XP"
+
+#: src/modules/ranks/ui/config.py:107
+msgctxt "ui:rank_config|menu:types|option:messages"
+msgid "Messages Sent"
+msgstr "भेजे गए संदेश"
+
+#: src/modules/ranks/ui/config.py:128
+msgctxt "ui:rank_config|menu:channels|placeholder"
+msgid "Select Rank Notification Channel"
+msgstr "रैंक सूचना चैनल चुनें"
+
+#: src/modules/ranks/ui/config.py:136
+msgctxt "ui:rank_config|embed|title"
+msgid "Ranks Configuration Panel"
+msgstr "रैंक कॉन्फ़िगरेशन पैनल"
+
+#: src/modules/ranks/ui/config.py:173
+msgctxt "dash:rank|title"
+msgid "Rank Configuration ({commands[admin config ranks]})"
+msgstr "रैंक कॉन्फ़िगरेशन ({commands[admin config ranks]})"
+
+#: src/modules/ranks/ui/config.py:177
+msgctxt "dash:rank|dropdown|placeholder"
+msgid "Activity Rank Panel"
+msgstr "गतिविधि रैंक पैनल"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_editor|input:message|default|type:voice"
+msgid ""
+"Congratulations {user_mention}!\n"
+"For working hard for **{requires}**, you have achieved the rank of **{role_name}** in **{guild_name}**! Keep up the good work."
+msgstr ""
+"बधाई हो {user_mention}!\n"
+"**{requires}** के लिए कड़ी मेहनत करने पर, आपने **{guild_name}** में **{role_name}** रैंक हासिल किया है! अच्छा काम जारी रखें।"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_editor|input:message|default|type:xp"
+msgid ""
+"Congratulations {user_mention}!\n"
+"For earning **{requires}**, you have achieved the guild rank of **{role_name}** in **{guild_name}**!"
+msgstr ""
+"बधाई हो {user_mention}!\n"
+"**{requires}** अर्जित करने पर, आपने **{guild_name}** में **{role_name}** रैंक हासिल किया है!"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_editor|input:message|default|type:msg"
+msgid ""
+"Congratulations {user_mention}!\n"
+"For sending **{requires}**, you have achieved the guild rank of **{role_name}** in **{guild_name}**!"
+msgstr ""
+"बधाई हो {user_mention}!\n"
+"**{requires}** भेजने पर, आपने **{guild_name}** में **{role_name}** रैंक हासिल किया है!"
+
+#: src/modules/ranks/ui/templates.py:47
+msgctxt "rank_autocreate|template|type:study_voice|level:1"
+msgid "Voice Level 1 (1h)"
+msgstr "वॉइस स्तर 1 (1घं)"
+
+#: src/modules/ranks/ui/templates.py:55
+msgctxt "rank_autocreate|template|type:study_voice|level:2"
+msgid "Voice Level 2 (3h)"
+msgstr "वॉइस स्तर 2 (3घं)"
+
+#: src/modules/ranks/ui/templates.py:63
+msgctxt "rank_autocreate|template|type:study_voice|level:3"
+msgid "Voice Level 3 (6h)"
+msgstr "वॉइस स्तर 3 (6घं)"
+
+#: src/modules/ranks/ui/templates.py:71
+msgctxt "rank_autocreate|template|type:study_voice|level:4"
+msgid "Voice Level 4 (10h)"
+msgstr "वॉइस स्तर 4 (10घं)"
+
+#: src/modules/ranks/ui/templates.py:79
+msgctxt "rank_autocreate|template|type:study_voice|level:5"
+msgid "Voice Level 5 (20h)"
+msgstr "वॉइस स्तर 5 (20घं)"
+
+#: src/modules/ranks/ui/templates.py:87
+msgctxt "rank_autocreate|template|type:study_voice|level:6"
+msgid "Voice Level 6 (40h)"
+msgstr "वॉइस स्तर 6 (40घं)"
+
+#: src/modules/ranks/ui/templates.py:95
+msgctxt "rank_autocreate|template|type:study_voice|level:7"
+msgid "Voice Level 7 (80h)"
+msgstr "वॉइस स्तर 7 (80घं)"
+
+#: src/modules/ranks/ui/templates.py:106
+msgctxt "rank_autocreate|template|type:general_voice|level:1"
+msgid "Voice Level 1 (1h)"
+msgstr "वॉइस स्तर 1 (1घं)"
+
+#: src/modules/ranks/ui/templates.py:114
+msgctxt "rank_autocreate|template|type:general_voice|level:2"
+msgid "Voice Level 2 (2h)"
+msgstr "वॉइस स्तर 2 (2घं)"
+
+#: src/modules/ranks/ui/templates.py:122
+msgctxt "rank_autocreate|template|type:general_voice|level:3"
+msgid "Voice Level 3 (4h)"
+msgstr "वॉइस स्तर 3 (4घं)"
+
+#: src/modules/ranks/ui/templates.py:130
+msgctxt "rank_autocreate|template|type:general_voice|level:4"
+msgid "Voice Level 4 (8h)"
+msgstr "वॉइस स्तर 4 (8घं)"
+
+#: src/modules/ranks/ui/templates.py:138
+msgctxt "rank_autocreate|template|type:general_voice|level:5"
+msgid "Voice Level 5 (16h)"
+msgstr "वॉइस स्तर 5 (16घं)"
+
+#: src/modules/ranks/ui/templates.py:146
+msgctxt "rank_autocreate|template|type:general_voice|level:6"
+msgid "Voice Level 6 (32h)"
+msgstr "वॉइस स्तर 6 (32घं)"
+
+#: src/modules/ranks/ui/templates.py:154
+msgctxt "rank_autocreate|template|type:general_voice|level:7"
+msgid "Voice Level 7 (64h)"
+msgstr "वॉइस स्तर 7 (64घं)"
+
+#: src/modules/ranks/ui/templates.py:169
+msgctxt "rank_autocreate|template|type:xp|level:1"
+msgid "XP Level 1 (2000)"
+msgstr "XP स्तर 1 (2000)"
+
+#: src/modules/ranks/ui/templates.py:177
+msgctxt "rank_autocreate|template|type:xp|level:2"
+msgid "XP Level 2 (4000)"
+msgstr "XP स्तर 2 (4000)"
+
+#: src/modules/ranks/ui/templates.py:185
+msgctxt "rank_autocreate|template|type:xp|level:3"
+msgid "XP Level 3 (8000)"
+msgstr "XP स्तर 3 (8000)"
+
+#: src/modules/ranks/ui/templates.py:193
+msgctxt "rank_autocreate|template|type:xp|level:4"
+msgid "XP Level 4 (16000)"
+msgstr "XP स्तर 4 (16000)"
+
+#: src/modules/ranks/ui/templates.py:201
+msgctxt "rank_autocreate|template|type:xp|level:5"
+msgid "XP Level 5 (32000)"
+msgstr "XP स्तर 5 (32000)"
+
+#: src/modules/ranks/ui/templates.py:209
+msgctxt "rank_autocreate|template|type:xp|level:6"
+msgid "XP Level 6 (64000)"
+msgstr "XP स्तर 6 (64000)"
+
+#: src/modules/ranks/ui/templates.py:217
+msgctxt "rank_autocreate|template|type:xp|level:7"
+msgid "XP Level 7 (128000)"
+msgstr "XP स्तर 7 (128000)"
+
+#: src/modules/ranks/ui/templates.py:232
+msgctxt "rank_autocreate|template|type:msg|level:1"
+msgid "Message Level 1 (200)"
+msgstr "संदेश स्तर 1 (200)"
+
+#: src/modules/ranks/ui/templates.py:240
+msgctxt "rank_autocreate|template|type:msg|level:2"
+msgid "Message Level 2 (400)"
+msgstr "संदेश स्तर 2 (400)"
+
+#: src/modules/ranks/ui/templates.py:248
+msgctxt "rank_autocreate|template|type:msg|level:3"
+msgid "Message Level 3 (800)"
+msgstr "संदेश स्तर 3 (800)"
+
+#: src/modules/ranks/ui/templates.py:256
+msgctxt "rank_autocreate|template|type:msg|level:4"
+msgid "Message Level 4 (1600)"
+msgstr "संदेश स्तर 4 (1600)"
+
+#: src/modules/ranks/ui/templates.py:264
+msgctxt "rank_autocreate|template|type:msg|level:5"
+msgid "Message Level 5 (3200)"
+msgstr "संदेश स्तर 5 (3200)"
+
+#: src/modules/ranks/ui/templates.py:272
+msgctxt "rank_autocreate|template|type:msg|level:6"
+msgid "Message Level 6 (6400)"
+msgstr "संदेश स्तर 6 (6400)"
+
+#: src/modules/ranks/ui/templates.py:280
+msgctxt "rank_autocreate|template|type:msg|level:7"
+msgid "Message Level 7 (12800)"
+msgstr "संदेश स्तर 7 (12800)"
+
+#: src/modules/ranks/ui/overview.py:97
+msgctxt "ui:rank_overview|button:auto|error:already_created"
+msgid "The rank roles have already been created!"
+msgstr "रैंक रोल पहले से बन चुके हैं!"
+
+#: src/modules/ranks/ui/overview.py:105
+msgctxt "ui:rank_overview|button:auto|error:my_permissions"
+msgid "I lack the 'Manage Roles' permission required to create rank roles!"
+msgstr "मेरे पास रैंक रोल बनाने के लिए आवश्यक 'Manage Roles' अनुमति नहीं है!"
+
+#: src/modules/ranks/ui/overview.py:114
+msgctxt "ui:rank_overview|button:auto|error:invalid_template"
+msgid "Unable to determine rank role template!"
+msgstr "रैंक रोल टेम्पलेट निर्धारित करने में असमर्थ!"
+
+#: src/modules/ranks/ui/overview.py:137
+msgctxt "ui:rank_overview|button|auto|role_creation|error:forbidden"
+msgid ""
+"An error occurred while autocreating rank roles!\n"
+"I lack the 'Manage Roles' permission required to create rank roles!"
+msgstr ""
+"रैंक रोल स्वचालित रूप से बनाते समय त्रुटि!\n"
+"मेरे पास 'Manage Roles' अनुमति नहीं है!"
+
+#: src/modules/ranks/ui/overview.py:145
+msgctxt "ui:rank_overview|button:auto|role_creation|error:unknown"
+msgid ""
+"An error occurred while autocreating rank roles!\n"
+"Please check the server has enough space for new roles and try again."
+msgstr ""
+"स्वचालित रूप से बनाते समय त्रुटि!\n"
+"कृपया जाँचें कि सर्वर में नई भूमिकाओं के लिए पर्याप्त स्थान है।"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|button:auto|role_creation|success"
+msgid ""
+"Successfully created the following rank roles:\n"
+"{roles}"
+msgstr ""
+"निम्नलिखित रैंक रोल सफलतापूर्वक बनाए गए:\n"
+"{roles}"
+
+#: src/modules/ranks/ui/overview.py:162
+msgctxt "ui:rank_overview|button:auto|label"
+msgid "Auto Create"
+msgstr "स्वचालित निर्माण"
+
+#: src/modules/ranks/ui/overview.py:178
+msgctxt "ui:rank_overview|button:refresh|label"
+msgid "Refresh Member Ranks"
+msgstr "सदस्य रैंक रिफ्रेश करें"
+
+#: src/modules/ranks/ui/overview.py:190
+msgctxt "ui:rank_overview|button:clear|confirm"
+msgid "Are you sure you want to **delete all activity ranks** in this server?"
+msgstr "क्या आप वाकई इस सर्वर में **सभी गतिविधि रैंक हटाना** चाहते हैं?"
+
+#: src/modules/ranks/ui/overview.py:195
+msgctxt "ui:rank_overview|button:clear|confirm|button:yes"
+msgid "Yes, clear ranks"
+msgstr "हाँ, रैंक हटाएं"
+
+#: src/modules/ranks/ui/overview.py:201
+msgctxt "ui:rank_overview|button:clear|confirm|button:no"
+msgid "Cancel"
+msgstr "रद्द करें"
+
+#: src/modules/ranks/ui/overview.py:217
+msgctxt "ui:rank_overview|button:clear|label"
+msgid "Clear Ranks"
+msgstr "रैंक साफ़ करें"
+
+#: src/modules/ranks/ui/overview.py:231
+msgctxt "ui:rank_overview|button:create|error:my_permissions"
+msgid "I lack the 'Manage Roles' permission required to create rank roles!"
+msgstr "मेरे पास रैंक रोल बनाने के लिए आवश्यक 'Manage Roles' अनुमति नहीं है!"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|button:create|success"
+msgid "Created a new rank {role}"
+msgstr "नया रैंक बनाया गया {role}"
+
+#: src/modules/ranks/ui/overview.py:257
+msgctxt "ui:rank_overview|button:create|label"
+msgid "Create Rank"
+msgstr "रैंक बनाएं"
+
+#: src/modules/ranks/ui/overview.py:300
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:is_default"
+msgid "The @everyone role cannot be removed, and cannot be a rank!"
+msgstr "@everyone भूमिका हटाई नहीं जा सकती और रैंक नहीं हो सकती!"
+
+#: src/modules/ranks/ui/overview.py:305
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:is_managed"
+msgid ""
+"The role is managed by another application or integration, and cannot be a "
+"rank!"
+msgstr ""
+"यह भूमिका किसी अन्य एप्लिकेशन या एकीकरण द्वारा प्रबंधित है और रैंक नहीं हो "
+"सकती!"
+
+#: src/modules/ranks/ui/overview.py:310
+msgctxt ""
+"ui:rank_overview|menu:roles|error:not_assignable|suberror:no_permissions"
+msgid ""
+"I do not have the `MANAGE_ROLES` permission in this server, so I cannot "
+"manage ranks!"
+msgstr ""
+"मेरे पास इस सर्वर में `MANAGE_ROLES` अनुमति नहीं है, इसलिए मैं रैंक प्रबंधित"
+" नहीं कर सकता!"
+
+#: src/modules/ranks/ui/overview.py:315
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:above_me"
+msgid ""
+"This role is above my top role in the role hierarchy, so I cannot add or "
+"remove it!"
+msgstr ""
+"यह भूमिका रोल पदानुक्रम में मेरी शीर्ष भूमिका से ऊपर है, इसलिए मैं इसे जोड़ "
+"या हटा नहीं सकता!"
+
+#: src/modules/ranks/ui/overview.py:321
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:other"
+msgid "I am not able to manage the selected role, so it cannot be a rank!"
+msgstr ""
+"मैं चयनित भूमिका को प्रबंधित करने में असमर्थ हूँ, इसलिए यह रैंक नहीं हो "
+"सकती!"
+
+#: src/modules/ranks/ui/overview.py:327
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|title"
+msgid "Could not create rank!"
+msgstr "रैंक नहीं बनाया जा सका!"
+
+#: src/modules/ranks/ui/overview.py:351
+msgctxt "ui:rank_overview|menu:roles|placeholder"
+msgid "Create from role"
+msgstr "भूमिका से बनाएं"
+
+#: src/modules/ranks/ui/overview.py:368
+msgctxt "ui:rank_overview|menu:ranks|placeholder"
+msgid "View or edit rank"
+msgstr "रैंक देखें या संपादित करें"
+
+#: src/modules/ranks/ui/overview.py:454
+msgctxt "ui:rank_overview|embed:noranks|desc"
+msgid "No activity ranks have been set up!"
+msgstr "कोई गतिविधि रैंक सेट नहीं किया गया है!"
+
+#: src/modules/ranks/ui/overview.py:459
+msgctxt "ui:rank_overview|embed:noranks|desc|admin_addendum"
+msgid ""
+"Press 'Auto Create' to automatically create a standard heirachy of ranks.\n"
+"To manually create ranks, press 'Create Rank' below, or select a role!"
+msgstr ""
+"स्वचालित रूप से रैंक बनाने के लिए 'स्वचालित निर्माण' दबाएं।\n"
+"मैन्युअल रूप से बनाने के लिए 'रैंक बनाएं' दबाएं या भूमिका चुनें!"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|title|type:voice"
+msgid "Voice Ranks in {guild_name}"
+msgstr "{guild_name} में वॉइस रैंक"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|title|type:xp"
+msgid "XP ranks in {guild_name}"
+msgstr "{guild_name} में XP रैंक"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|title|type:message"
+msgid "Message ranks in {guild_name}"
+msgstr "{guild_name} में संदेश रैंक"
+
+#: src/modules/ranks/ui/overview.py:490
+msgctxt "ui:rank_overview|embed|field:note|name"
+msgid "Note"
+msgstr "नोट"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|field:note|value:with_season"
+msgid "Ranks are determined by activity since {timestamp}."
+msgstr "रैंक {timestamp} से गतिविधि द्वारा निर्धारित किए जाते हैं।"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|field:note|value:without_season"
+msgid ""
+"Ranks are determined by *all-time* statistics.\n"
+"To reward ranks from a later time (e.g. to have monthly/quarterly/yearly ranks) set the `season_start` with {stats_cmd}"
+msgstr ""
+"रैंक *सभी समय* के आँकड़ों द्वारा निर्धारित किए जाते हैं।\n"
+"बाद के समय से रैंक के लिए {stats_cmd} के साथ `season_start` सेट करें"
+
+#: src/modules/ranks/ui/overview.py:510
+msgctxt "ui:rank_overview|embed|field:note|value|voice_addendum"
+msgid ""
+"Also note that ranks will only be updated when a member leaves a tracked "
+"voice channel! Use the **Refresh Member Ranks** button below to update all "
+"members manually."
+msgstr ""
+"यह भी ध्यान दें कि रैंक केवल तब अपडेट होते हैं जब कोई सदस्य ट्रैक किए गए "
+"वॉइस चैनल से बाहर निकलता है! सभी सदस्यों को मैन्युअल रूप से अपडेट करने के "
+"लिए **सदस्य रैंक रिफ्रेश करें** बटन का उपयोग करें।"
+
+#: src/modules/ranks/ui/editor.py:33
+msgctxt "ui:rank_editor|input:role_name|label"
+msgid "Role Name"
+msgstr "भूमिका का नाम"
+
+#: src/modules/ranks/ui/editor.py:37
+msgctxt "ui:rank_editor|input:role_name|placeholder"
+msgid "Name of the awarded guild role"
+msgstr "प्रदत्त सर्वर भूमिका का नाम"
+
+#: src/modules/ranks/ui/editor.py:53
+msgctxt "ui:rank_editor|input:role_colour|label"
+msgid "Role Colour"
+msgstr "भूमिका का रंग"
+
+#: src/modules/ranks/ui/editor.py:57
+msgctxt "ui:rank_editor|input:role_colour|placeholder"
+msgid "Colour of the awarded guild role, e.g. #AB1321"
+msgstr "प्रदत्त भूमिका का रंग, जैसे #AB1321"
+
+#: src/modules/ranks/ui/editor.py:69
+msgctxt "ui:rank_editor|input:role_colour|error:parse"
+msgid ""
+"`role_colour`: Could not parse colour! Please use `#<hex>` format e.g. "
+"`#AB1325`."
+msgstr ""
+"`role_colour`: रंग पार्स नहीं हो सका! कृपया `#<hex>` प्रारूप का उपयोग करें, "
+"जैसे `#AB1325`।"
+
+#: src/modules/ranks/ui/editor.py:88
+msgctxt "ui:rank_editor|type:voice|input:requires|label"
+msgid "Required Voice Hours"
+msgstr "आवश्यक वॉइस घंटे"
+
+#: src/modules/ranks/ui/editor.py:92
+msgctxt "ui:rank_editor|type:voice|input:requires|placeholder"
+msgid "Number of voice hours before awarding this rank"
+msgstr "इस रैंक को प्रदान करने से पहले वॉइस घंटों की संख्या"
+
+#: src/modules/ranks/ui/editor.py:97
+msgctxt "ui:rank_editor|type:xp|input:requires|label"
+msgid "Required XP"
+msgstr "आवश्यक XP"
+
+#: src/modules/ranks/ui/editor.py:101
+msgctxt "ui:rank_editor|type:xp|input:requires|placeholder"
+msgid "Amount of XP needed before obtaining this rank"
+msgstr "इस रैंक प्राप्त करने से पहले आवश्यक XP की मात्रा"
+
+#: src/modules/ranks/ui/editor.py:106
+msgctxt "ui:rank_editor|type:message|input:requires|label"
+msgid "Required Message Count"
+msgstr "आवश्यक संदेश संख्या"
+
+#: src/modules/ranks/ui/editor.py:110
+msgctxt "ui:rank_editor|type:message|input:requires|placeholder"
+msgid "Number of messages needed before awarding rank"
+msgstr "रैंक प्रदान करने से पहले आवश्यक संदेशों की संख्या"
+
+#: src/modules/ranks/ui/editor.py:126
+msgctxt "ui:rank_editor|type:voice|input:requires|error:parse"
+msgid ""
+"`requires`: Could not parse provided minimum time! Please write a number of "
+"hours."
+msgstr ""
+"`requires`: प्रदान किया गया न्यूनतम समय पार्स नहीं हो सका! कृपया घंटों की "
+"संख्या लिखें।"
+
+#: src/modules/ranks/ui/editor.py:137
+msgctxt "ui:rank_editor|type:message|input:requires|error:parse"
+msgid ""
+"`requires`: Could not parse provided minimum message count! Please enter an "
+"integer."
+msgstr ""
+"`requires`: न्यूनतम संदेश संख्या पार्स नहीं हो सकी! कृपया एक पूर्णांक दर्ज "
+"करें।"
+
+#: src/modules/ranks/ui/editor.py:148
+msgctxt "ui:rank_editor|type:xp|input:requires|error:parse"
+msgid ""
+"`requires`: Could not parse provided minimum XP! Please enter an integer."
+msgstr ""
+"`requires`: न्यूनतम XP पार्स नहीं हो सका! कृपया एक पूर्णांक दर्ज करें।"
+
+#: src/modules/ranks/ui/editor.py:162
+msgctxt "ui:rank_editor|input:reward|label"
+msgid "LionCoins awarded upon achieving this rank"
+msgstr "इस रैंक प्राप्त करने पर दिए जाने वाले LionCoins"
+
+#: src/modules/ranks/ui/editor.py:166
+msgctxt "ui:rank_editor|input:reward|placeholder"
+msgid "LionCoins awarded upon achieving this rank"
+msgstr "इस रैंक प्राप्ति पर LionCoins"
+
+#: src/modules/ranks/ui/editor.py:181
+msgctxt "ui:rank_editor|input:reward|error:parse"
+msgid "`reward`: Please enter an integer number of LionCoins."
+msgstr "`reward`: कृपया LionCoins की पूर्णांक संख्या दर्ज करें।"
+
+#: src/modules/ranks/ui/editor.py:197
+msgctxt "ui:rank_editor|input:message|label"
+msgid "Rank Message"
+msgstr "रैंक संदेश"
+
+#: src/modules/ranks/ui/editor.py:201
+msgctxt "ui:rank_editor|input:message|placeholder"
+msgid "Congratulatory message sent to the user upon achieving this rank."
+msgstr "रैंक प्राप्ति पर भेजा गया बधाई संदेश।"
+
+#: src/modules/ranks/ui/editor.py:262
+msgctxt "ui:rank_editor|mode:edit|title"
+msgid "Rank Editor"
+msgstr "रैंक संपादक"
+
+#: src/modules/ranks/ui/editor.py:317
+msgctxt "ui:rank_editor|mode:create|title"
+msgid "Rank Creator"
+msgstr "रैंक निर्माता"

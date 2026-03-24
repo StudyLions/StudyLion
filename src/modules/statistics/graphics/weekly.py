@@ -62,6 +62,32 @@ async def get_weekly_card(bot: LionBot, userid: int, guildid: int, offset: int, 
         guildid, userid, WeeklyStatsCard.card_id
     )
 
+    # --- AI-MODIFIED (2026-03-20) ---
+    # Purpose: Fetch LionHeart supporter tier and card effect preferences
+    #          so animated effects apply to weekly cards too
+    premium_cog = bot.get_cog('PremiumCog')
+    supporter_tier = None
+    if premium_cog and hasattr(premium_cog, 'get_user_subscription_tier'):
+        try:
+            supporter_tier = await premium_cog.get_user_subscription_tier(userid)
+        except Exception:
+            supporter_tier = None
+
+    card_prefs = {}
+    if supporter_tier:
+        try:
+            prefs_row = await bot.db.fetchrow(
+                "SELECT effects_enabled, sparkle_color, ring_color, "
+                "sparkles_enabled, ring_enabled, edge_glow_enabled, particles_enabled, "
+                "effect_intensity, edge_glow_color, particle_color, particle_style, "
+                "animation_speed, border_style, seasonal_effects "
+                "FROM user_card_preferences WHERE userid = $1", userid
+            )
+            if prefs_row:
+                card_prefs = {k: prefs_row[k] for k in prefs_row.keys()}
+        except Exception:
+            pass
+
     card = WeeklyStatsCard(
         user=username,
         timezone=str(lion.timezone),
@@ -72,6 +98,9 @@ async def get_weekly_card(bot: LionBot, userid: int, guildid: int, offset: int, 
             (int(session['start_time'].timestamp()), int(session['start_time'].timestamp() + int(session['duration'])))
             for session in sessions
         ],
-        skin=skin | {'mode': mode}
+        skin=skin | {'mode': mode},
+        supporter_tier=supporter_tier,
+        **card_prefs,
     )
+    # --- END AI-MODIFIED ---
     return card

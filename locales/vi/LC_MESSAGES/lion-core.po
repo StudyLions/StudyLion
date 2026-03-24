@@ -1,0 +1,184 @@
+# Vietnamese translation for LionBot - lion-core
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 19:57+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Vietnamese\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/core/lion_guild.py:31
+msgctxt "eventlog|field:start|name"
+msgid "Start"
+msgstr "Bắt đầu"
+
+#: src/core/lion_guild.py:36
+msgctxt "eventlog|field:expiry|name"
+msgid "Expires"
+msgstr "Hết hạn"
+
+#: src/core/lion_guild.py:41
+msgctxt "eventlog|field:roles_given|name"
+msgid "Roles Given"
+msgstr "Vai trò được cấp"
+
+#: src/core/lion_guild.py:46
+msgctxt "eventlog|field:roles_given|name"
+msgid "Roles Taken"
+msgstr "Vai trò bị thu hồi"
+
+#: src/core/lion_guild.py:51
+msgctxt "eventlog|field:coins_earned|name"
+msgid "Coins Earned"
+msgstr "Xu kiếm được"
+
+#: src/core/lion_guild.py:56
+msgctxt "eventlog|field:price|name"
+msgid "Price"
+msgstr "Giá"
+
+#: src/core/lion_guild.py:61
+msgctxt "eventlog|field:balance|name"
+msgid "Balance"
+msgstr "Số dư"
+
+#: src/core/lion_guild.py:66
+msgctxt "eventlog|field:refund|name"
+msgid "Coins Refunded"
+msgstr "Xu được hoàn"
+
+#: src/core/lion_guild.py:71
+msgctxt "eventlog|field:memberid|name"
+msgid "Member"
+msgstr "Thành viên"
+
+#: src/core/lion_guild.py:76
+msgctxt "eventlog|field:channelid|name"
+msgid "Channel"
+msgstr "Kênh"
+
+#: src/core/lion_guild.py:208
+msgctxt "eventlog|error:manage_webhooks"
+msgid "This channel is configured as an event log, but I am missing the 'Manage Webhooks' permission here."
+msgstr "Kênh này được cấu hình làm nhật ký sự kiện, nhưng tôi thiếu quyền 'Manage Webhooks' ở đây."
+
+#, possible-python-brace-format
+msgctxt "eventlog|create|name"
+msgid "{bot_name} Event Log"
+msgstr "{bot_name} Nhật ký sự kiện"
+
+#: src/core/lion_guild.py:224
+msgctxt "eventlog|create|audit_reason"
+msgid "Creating event log webhook"
+msgstr "Đang tạo webhook nhật ký sự kiện"
+
+#: src/core/lion_guild.py:342
+msgctxt "eventlog|field:errors|name"
+msgid "Errors"
+msgstr "Lỗi"
+
+#: src/core/setting_types.py:31
+msgctxt "settype:coin|accepts"
+msgid "A positive integral number of coins."
+msgstr "Số xu nguyên dương."
+
+#: src/core/setting_types.py:47
+msgctxt "settype:coin|parse|error:notinteger"
+msgid "The coin quantity must be a positive integer!"
+msgstr "Số lượng xu phải là số nguyên dương!"
+
+#, possible-python-brace-format
+msgctxt "settype:coin|parse|error:too_large"
+msgid "You cannot set this to more than {coin}**{max}**!"
+msgstr "Bạn không thể đặt nhiều hơn {coin}**{max}**!"
+
+#, possible-python-brace-format
+msgctxt "settype:coin|parse|error:too_small"
+msgid "You cannot set this to less than {coin}**{min}**!"
+msgstr "Bạn không thể đặt ít hơn {coin}**{min}**!"
+
+#, possible-python-brace-format
+msgctxt "settype:coin|formatted"
+msgid "{coin}**{amount}**"
+msgstr "{coin}**{amount}**"
+
+#: src/core/setting_types.py:91
+msgctxt "settype:message|accepts"
+msgid "JSON formatted raw message data"
+msgstr "Dữ liệu tin nhắn thô định dạng JSON"
+
+#: src/core/setting_types.py:106
+msgctxt "settype:message|download|error:not_json"
+msgid "The attached message data is not a JSON file!"
+msgstr "Dữ liệu tin nhắn đính kèm không phải là tệp JSON!"
+
+#: src/core/setting_types.py:111
+msgctxt "settype:message|download|error:size"
+msgid "The attached message data is too large!"
+msgstr "Dữ liệu tin nhắn đính kèm quá lớn!"
+
+#: src/core/setting_types.py:120
+msgctxt "settype:message|download|error:decoding"
+msgid "Could not decode the message data. Please ensure it is saved with the `UTF-8` encoding."
+msgstr "Không thể giải mã dữ liệu tin nhắn. Vui lòng đảm bảo nó được lưu với mã hóa `UTF-8`."
+
+#, possible-python-brace-format
+msgctxt "settype:message|error_suffix"
+msgid "You can view, test, and fix your embed using the online [embed builder]({link})."
+msgstr "Bạn có thể xem, kiểm tra và sửa embed của mình bằng [embed builder]({link}) trực tuyến."
+
+#, possible-python-brace-format
+msgctxt "settype:message|error:invalid_json"
+msgid ""
+"The provided message data was not a valid JSON document!\n"
+"`{error}`"
+msgstr ""
+"Dữ liệu tin nhắn cung cấp không phải là tài liệu JSON hợp lệ!\n"
+"`{error}`"
+
+#: src/core/setting_types.py:197
+msgctxt "settype:message|error:json_missing_keys"
+msgid "Message data must be a JSON object with at least one of the following fields: `content`, `embed`, `embeds`"
+msgstr "Dữ liệu tin nhắn phải là đối tượng JSON với ít nhất một trong các trường sau: `content`, `embed`, `embeds`"
+
+#: src/core/setting_types.py:206
+msgctxt "settype:message|error:json_embed_type"
+msgid "`embed` field must be a valid JSON object."
+msgstr "Trường `embed` phải là đối tượng JSON hợp lệ."
+
+#: src/core/setting_types.py:214
+msgctxt "settype:message|error:json_embeds_type"
+msgid "`embeds` field must be a list."
+msgstr "Trường `embeds` phải là danh sách."
+
+#: src/core/setting_types.py:221
+msgctxt "settype:message|error:json_embed_embeds"
+msgid "Message data cannot include both `embed` and `embeds`."
+msgstr "Dữ liệu tin nhắn không thể bao gồm cả `embed` và `embeds`."
+
+#: src/core/setting_types.py:229
+msgctxt "settype:message|error:json_content_type"
+msgid "`content` field must be a string."
+msgstr "Trường `content` phải là chuỗi."
+
+#, possible-python-brace-format
+msgctxt "ui:settype:message|error:embed_conversion"
+msgid ""
+"Could not parse the message embed data.\n"
+"**Error:** `{exception}`"
+msgstr ""
+"Không thể phân tích dữ liệu embed tin nhắn.\n"
+"**Lỗi:** `{exception}`"
+
+#: src/core/setting_types.py:273
+msgctxt "settype:message|format:too_long"
+msgid "Too long to display! See Preview."
+msgstr "Quá dài để hiển thị! Xem Xem trước."

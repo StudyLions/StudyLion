@@ -13,7 +13,7 @@ from discord.ui.button import ButtonStyle, button, Button
 from discord.ui.text_input import TextInput, TextStyle
 from discord.ui.select import select, Select, SelectOption
 
-from meta import LionBot, LionCog, conf
+from meta import LionBot, LionCog, conf, WEBSITE_URL
 from meta.errors import UserInputError
 from utils.lib import MessageArgs
 from utils.ui import LeoUI, ModalRetryUI, FastModal, error_handler_for
@@ -247,20 +247,40 @@ class GoalEditor(FastModal):
         field = self.task_editor
 
         if self.stat_page.period is PeriodType.WEEKLY:
+            # --- AI-REPLACED (2026-03-23) ---
+            # Reason: 14+ locale translations exceed Discord's 45-char TextInput label limit
+            # What the new code does better: truncates label to 45 chars to prevent 400 Bad Request
+            # --- Original code (commented out for rollback) ---
+            # field.label = t(_p(
+            #     'modal:goal_editor|field:weekly_task_editor|label',
+            #     "Tasks to complete this week (one per line)"
+            # ))
+            # --- End original code ---
             field.label = t(_p(
                 'modal:goal_editor|field:weekly_task_editor|label',
                 "Tasks to complete this week (one per line)"
-            ))
+            ))[:45]
+            # --- END AI-REPLACED ---
             field.placeholder = t(_p(
                 'modal:goal_editor|field:weekly_task_editor|placeholder',
                 "[ ] Write my biology essay\n"
                 "[x] Complete the second maths assignment\n"
             ))
         else:
+            # --- AI-REPLACED (2026-03-23) ---
+            # Reason: 14+ locale translations exceed Discord's 45-char TextInput label limit
+            # What the new code does better: truncates label to 45 chars to prevent 400 Bad Request
+            # --- Original code (commented out for rollback) ---
+            # field.label = t(_p(
+            #     'modal:goal_editor|field:monthly_task_editor|label',
+            #     "Tasks to complete this month (one per line)"
+            # ))
+            # --- End original code ---
             field.label = t(_p(
                 'modal:goal_editor|field:monthly_task_editor|label',
                 "Tasks to complete this month (one per line)"
-            ))
+            ))[:45]
+            # --- END AI-REPLACED ---
             field.placeholder = t(_p(
                 'modal:goal_editor|field:monthly_task_editor|placeholder',
                 "[ ] Write my biology essay\n"
@@ -355,6 +375,20 @@ class WeeklyMonthlyUI(StatsUI):
         # Card data
         self._card_cache: dict[PageKey, tuple[Future[GoalCard], Future[StatsCard]]] = {}
 
+        # --- AI-MODIFIED (2026-03-17) ---
+        # Purpose: Web link buttons for richer stats dashboard and study history
+        self._web_stats_button = discord.ui.Button(
+            label="Full Stats", emoji="📊",
+            url=f"{WEBSITE_URL}/dashboard",
+            style=ButtonStyle.link,
+        )
+        self._web_history_button = discord.ui.Button(
+            label="Study History", emoji="📜",
+            url=f"{WEBSITE_URL}/dashboard/history",
+            style=ButtonStyle.link,
+        )
+        # --- END AI-MODIFIED ---
+
     @property
     def key(self) -> PageKey:
         return (self._showing_global, self._offset, self._stat_page)
@@ -390,8 +424,13 @@ class WeeklyMonthlyUI(StatsUI):
     async def cleanup(self):
         await super().cleanup()
 
-        # Card cache is potentially quite large, so explicitly garbage collect
-        del self._card_cache
+        # --- AI-MODIFIED (2026-03-23) ---
+        # Purpose: Use .clear() instead of del to avoid AttributeError if a late interaction arrives after cleanup
+        # --- Original code (commented out for rollback) ---
+        # del self._card_cache
+        # --- End original code ---
+        self._card_cache.clear()
+        # --- END AI-MODIFIED ---
         gc.collect()
 
     @select(placeholder="...")
@@ -484,7 +523,13 @@ class WeeklyMonthlyUI(StatsUI):
 
             if modified:
                 # Check whether the UI finished while we were interacting
-                if not self._stopped.done():
+                # --- AI-MODIFIED (2026-03-20) ---
+                # Purpose: Use public API instead of internal _stopped property
+                # --- Original code (commented out for rollback) ---
+                # if not self._stopped.done():
+                # --- End original code ---
+                if not self.is_finished():
+                # --- END AI-MODIFIED ---
                     # If either goal type was modified, clear the rendered cache and refresh
                     for page_key, (goalf, statf) in self._card_cache.items():
                         # If the stat period type is the same as the current period type
@@ -745,17 +790,25 @@ class WeeklyMonthlyUI(StatsUI):
             self.type_menu_refresh(),
             self.select_button_refresh(),
         )
-        # TODO: Lazy refresh
+        # --- AI-MODIFIED (2026-03-17) ---
+        # Purpose: Added web link buttons row for dashboard and study history
         self._layout = [
             (self.type_menu,),
-            (self.edit_button, self.select_button, self.global_button, self.close_button)
+            (self.edit_button, self.select_button, self.global_button, self.close_button),
+            (self._web_stats_button, self._web_history_button),
         ]
+        # --- END AI-MODIFIED ---
 
-        voting = self.bot.get_cog('TopggCog')
-        if voting and not await voting.check_voted_recently(self.userid):
-            premiumcog = self.bot.get_cog('PremiumCog')
-            if not (premiumcog and await premiumcog.is_premium_guild(self.guild.id)):
-                self._layout.append((voting.vote_button(),))
+        # --- AI-MODIFIED (2026-03-19) ---
+        # Purpose: Vote button now injected globally via _maybe_append_vote_button in StatsUI.refresh()
+        # --- Original code (commented out for rollback) ---
+        # voting = self.bot.get_cog('TopggCog')
+        # if voting and not await voting.check_voted_recently(self.userid):
+        #     premiumcog = self.bot.get_cog('PremiumCog')
+        #     if not (premiumcog and await premiumcog.is_premium_guild(self.guild.id)):
+        #         self._layout.append((await voting.vote_button_for_user(self.userid),))
+        # --- End original code ---
+        # --- END AI-MODIFIED ---
 
         if self._showing_selector:
             await self.period_menu_refresh()

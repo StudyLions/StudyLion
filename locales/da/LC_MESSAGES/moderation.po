@@ -1,0 +1,732 @@
+# Danish translation for LionBot - moderation
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 22:18+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Danish\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/modules/moderation/settingui.py:55
+msgctxt "ui:moderation_config|menu:ticket_log|placeholder"
+msgid "Select Ticket Log"
+msgstr "Vælg billetlog"
+
+#: src/modules/moderation/settingui.py:81
+msgctxt "ui:moderation_config|menu:alert_channel|placeholder"
+msgid "Select Alert Channel"
+msgstr "Vælg advarselskanal"
+
+#: src/modules/moderation/settingui.py:107
+msgctxt "ui:moderation_config|menu:modrole|placeholder"
+msgid "Select Moderator Role"
+msgstr "Vælg moderatorrolle"
+
+#: src/modules/moderation/settingui.py:133
+msgctxt "ui:moderation_config|menu:adminrole|placeholder"
+msgid "Select Admin Role"
+msgstr "Vælg administratorrolle"
+
+#: src/modules/moderation/settingui.py:141
+msgctxt "ui:moderation_config|embed|title"
+msgid "Moderation Configuration Panel"
+msgstr "Moderationskonfigurationspanel"
+
+#: src/modules/moderation/settingui.py:182
+msgctxt "dash:moderation|title"
+msgid "Moderation Settings ({commands[admin config moderation]})"
+msgstr "Moderationsindstillinger ({commands[admin config moderation]})"
+
+#: src/modules/moderation/settingui.py:186
+msgctxt "dash:moderation|dropdown|placeholder"
+msgid "Moderation Panel"
+msgstr "Moderationspanel"
+
+#: src/modules/moderation/cog.py:135
+msgctxt "cmd:modnote"
+msgid "modnote"
+msgstr "modnote"
+
+#: src/modules/moderation/cog.py:138
+msgctxt "cmd:modnote|desc"
+msgid "Add a note to the target member's moderation record."
+msgstr "Tilføj en note til målmedlemmets moderationsprotokol."
+
+#: src/modules/moderation/cog.py:142
+msgctxt "cmd:modnote|param:target"
+msgid "target"
+msgstr "target"
+
+#: src/modules/moderation/cog.py:143
+msgctxt "cmd:modnote|param:note"
+msgid "note"
+msgstr "note"
+
+#: src/modules/moderation/cog.py:148
+msgctxt "cmd:modnote|param:target|desc"
+msgid "Target member or user to add a note to."
+msgstr "Målmedlem eller bruger at tilføje en note til."
+
+#: src/modules/moderation/cog.py:152
+msgctxt "cmd:modnote|param:note|desc"
+msgid "Contents of the note."
+msgstr "Indholdet af noten."
+
+#: src/modules/moderation/cog.py:177
+msgctxt "cmd:modnote|modal:enter_note|title"
+msgid "Moderation Note"
+msgstr "Moderationsnote"
+
+#: src/modules/moderation/cog.py:182
+msgctxt "cmd:modnote|modal:enter_note|field|label"
+msgid "Note Content"
+msgstr "Noteindhold"
+
+#, possible-python-brace-format
+msgctxt "cmd:modnote|embed:success|desc"
+msgid "Moderation note created as [Ticket #{ticket}]({jump_link})"
+msgstr "Moderationsnote oprettet som [Billet #{ticket}]({jump_link})"
+
+#: src/modules/moderation/cog.py:225
+msgctxt "cmd:warning"
+msgid "warning"
+msgstr "warning"
+
+#: src/modules/moderation/cog.py:228
+msgctxt "cmd:warning|desc"
+msgid ""
+"Warn a member for a misdemeanour, and add it to their moderation record."
+msgstr ""
+"Advar et medlem for en forseelse og tilføj det til deres "
+"moderationsprotokol."
+
+#: src/modules/moderation/cog.py:232
+msgctxt "cmd:warning|param:target"
+msgid "target"
+msgstr "target"
+
+#: src/modules/moderation/cog.py:233
+msgctxt "cmd:warning|param:reason"
+msgid "reason"
+msgstr "reason"
+
+#: src/modules/moderation/cog.py:238
+msgctxt "cmd:warning|param:target|desc"
+msgid "Target member to warn."
+msgstr "Målmedlem at advare."
+
+#: src/modules/moderation/cog.py:242
+msgctxt "cmd:warning|param:reason|desc"
+msgid "The reason why you are warning this member."
+msgstr "Årsagen til at du advarer dette medlem."
+
+#: src/modules/moderation/cog.py:262
+msgctxt "cmd:warning|modal:reason|title"
+msgid "Moderation Warning"
+msgstr "Moderationsadvarsel"
+
+#: src/modules/moderation/cog.py:267
+msgctxt "cmd:warning|modal:reason|field|label"
+msgid "Reason for the warning (visible to user)."
+msgstr "Årsag for advarslen (synlig for brugeren)."
+
+#: src/modules/moderation/cog.py:298
+msgctxt "cmd:warning|embed:user_alert|title"
+msgid "You have received a warning!"
+msgstr "Du har modtaget en advarsel!"
+
+#: src/modules/moderation/cog.py:305
+msgctxt "cmd:warning|embed:user_alert|field:note|name"
+msgid "Note"
+msgstr "Note"
+
+#: src/modules/moderation/cog.py:309
+msgctxt "cmd:warning|embed:user_alert|field:note|value"
+msgid ""
+"*Warnings appear in your moderation history. Continuing failure to comply "
+"with server rules and moderator directions may result in more severe action."
+msgstr ""
+"*Advarsler vises i din moderationshistorik. Fortsat manglende overholdelse "
+"af serverregler og moderatoranvisninger kan resultere i strengere "
+"foranstaltninger."
+
+#, possible-python-brace-format
+msgctxt "cmd:warning|embed:success|line:count"
+msgid "This their first warning."
+msgid_plural "They have recieved **`{count}`** warnings."
+msgstr[0] "Dette er deres første advarsel."
+msgstr[1] "De har modtaget **`{count}`** advarsler."
+
+#, possible-python-brace-format
+msgctxt "cmd:warning|embed:success|desc"
+msgid "[Ticket #{ticket}]({jump_link}) {user} has been warned."
+msgstr "[Billet #{ticket}]({jump_link}) {user} er blevet advaret."
+
+#: src/modules/moderation/cog.py:347
+msgctxt "cmd:warning|embed:success|field:no_alert|name"
+msgid "Note"
+msgstr "Note"
+
+#: src/modules/moderation/cog.py:351
+msgctxt "cmd:warning|embed:success|field:no_alert|value"
+msgid "*Could not deliver warning to the target.*"
+msgstr "*Kunne ikke levere advarslen til målet.*"
+
+#: src/modules/moderation/cog.py:358
+msgctxt "cmd:pardon"
+msgid "pardon"
+msgstr "pardon"
+
+#: src/modules/moderation/cog.py:361
+msgctxt "cmd:pardon|desc"
+msgid "Pardon moderation tickets to mark them as no longer in effect."
+msgstr ""
+"Benåd moderationsbilletter for at markere dem som ikke længere gældende."
+
+#: src/modules/moderation/cog.py:367
+msgctxt "cmd:pardon|param:ticketids"
+msgid "tickets"
+msgstr "tickets"
+
+#: src/modules/moderation/cog.py:371
+msgctxt "cmd:pardon|param:reason"
+msgid "reason"
+msgstr "reason"
+
+#: src/modules/moderation/cog.py:377
+msgctxt "cmd:pardon|param:ticketids|desc"
+msgid "Comma separated list of ticket numbers to pardon."
+msgstr "Kommasepareret liste over billetnumre der skal benådes."
+
+#: src/modules/moderation/cog.py:381
+msgctxt "cmd:pardon|param:reason"
+msgid "Why these tickets are being pardoned."
+msgstr ""
+
+#: src/modules/moderation/cog.py:402
+msgctxt "cmd:pardon|modal:reason|title"
+msgid "Pardon Tickets"
+msgstr "Benåd billetter"
+
+#: src/modules/moderation/cog.py:407
+msgctxt "cmd:pardon|modal:reason|field|label"
+msgid "Why are you pardoning these tickets?"
+msgstr "Hvorfor benåder du disse billetter?"
+
+#: src/modules/moderation/cog.py:435
+msgctxt "cmd:pardon|error:parse_ticketids"
+msgid ""
+"Could not parse provided tickets as a list of ticket ids! Please enter "
+"tickets as a comma separated list of ticket numbers, for example `1, 2, 3`."
+msgstr ""
+"Kunne ikke fortolke de angivne billetter som en liste over billet-id'er! "
+"Indtast venligst billetter som en kommasepareret liste, for eksempel `1, 2, "
+"3`."
+
+#: src/modules/moderation/cog.py:449
+msgctxt "cmd:pardon|error:no_matching"
+msgid "No matching moderation tickets found to pardon!"
+msgstr "Ingen matchende moderationsbilletter fundet at benåde!"
+
+#, possible-python-brace-format
+msgctxt "cmd:pardon|embed:success|title"
+msgid "Ticket {ticketstr} has been pardoned."
+msgid_plural ""
+"The following tickets have been pardoned:\n"
+"{ticketstr}"
+msgstr[0] "Billet {ticketstr} er benådet."
+msgstr[1] ""
+"Følgende billetter er benådet:\n"
+"{ticketstr}"
+
+#: src/modules/moderation/cog.py:478
+msgctxt "cmd:tickets"
+msgid "tickets"
+msgstr "tickets"
+
+#: src/modules/moderation/cog.py:481
+msgctxt "cmd:tickets|desc"
+msgid "View moderation tickets in this server."
+msgstr "Se moderationsbilletter på denne server."
+
+#: src/modules/moderation/cog.py:485
+msgctxt "cmd:tickets|param:target"
+msgid "target"
+msgstr "target"
+
+#: src/modules/moderation/cog.py:486
+msgctxt "cmd:tickets|param:type"
+msgid "type"
+msgstr "type"
+
+#: src/modules/moderation/cog.py:487
+msgctxt "cmd:tickets|param:state"
+msgid "ticket_state"
+msgstr "ticket_state"
+
+#: src/modules/moderation/cog.py:488
+msgctxt "cmd:tickets|param:pardoned"
+msgid "include_pardoned"
+msgstr "include_pardoned"
+
+#: src/modules/moderation/cog.py:489
+msgctxt "cmd:tickets|param:moderator"
+msgid "acting_moderator"
+msgstr "acting_moderator"
+
+#: src/modules/moderation/cog.py:490
+msgctxt "cmd:tickets|param:after"
+msgid "after"
+msgstr "after"
+
+#: src/modules/moderation/cog.py:491
+msgctxt "cmd:tickets|param:before"
+msgid "before"
+msgstr "before"
+
+#: src/modules/moderation/cog.py:496
+msgctxt "cmd:tickets|param:target|desc"
+msgid "Filter by tickets acting on a given user."
+msgstr "Filtrér efter billetter der gælder en bestemt bruger."
+
+#: src/modules/moderation/cog.py:500
+msgctxt "cmd:tickets|param:type|desc"
+msgid "Filter by ticket type."
+msgstr "Filtrér efter billettype."
+
+#: src/modules/moderation/cog.py:504
+msgctxt "cmd:tickets|param:state|desc"
+msgid "Filter by ticket state."
+msgstr "Filtrér efter billetstatus."
+
+#: src/modules/moderation/cog.py:508
+msgctxt "cmd:tickets|param:pardoned|desc"
+msgid "Whether to only show active tickets, or also include pardoned."
+msgstr "Om kun aktive billetter skal vises, eller også benådede."
+
+#: src/modules/moderation/cog.py:512
+msgctxt "cmd:tickets|param:moderator|desc"
+msgid "Filter by moderator responsible for the ticket."
+msgstr "Filtrér efter moderator ansvarlig for billetten."
+
+#: src/modules/moderation/cog.py:516
+msgctxt "cmd:tickets|param:after|desc"
+msgid "Only show tickets after this date (YYY-MM-DD HH:MM)"
+msgstr "Vis kun billetter efter denne dato (ÅÅÅÅ-MM-DD TT:MM)"
+
+#: src/modules/moderation/cog.py:520
+msgctxt "cmd:tickets|param:before|desc"
+msgid "Only show tickets before this date (YYY-MM-DD HH:MM)"
+msgstr "Vis kun billetter før denne dato (ÅÅÅÅ-MM-DD TT:MM)"
+
+#: src/modules/moderation/cog.py:582
+msgctxt "cmd:configure_moderation"
+msgid "moderation"
+msgstr "moderation"
+
+#: src/modules/moderation/cog.py:585
+msgctxt "cmd:configure_moderation|desc"
+msgid "Configure general moderation settings."
+msgstr "Konfigurer generelle moderationsindstillinger."
+
+#: src/modules/moderation/ticketui.py:62
+msgctxt "ticketfilter|field:after|name"
+msgid "Created After"
+msgstr "Oprettet efter"
+
+#: src/modules/moderation/ticketui.py:70
+msgctxt "ticketfilter|field:before|name"
+msgid "Created Before"
+msgstr "Oprettet før"
+
+#: src/modules/moderation/ticketui.py:78
+msgctxt "ticketfilter|field:targetids|name"
+msgid "Targets"
+msgstr "Mål"
+
+#: src/modules/moderation/ticketui.py:86
+msgctxt "ticketfilter|field:moderatorids|name"
+msgid "Moderators"
+msgstr "Moderatorer"
+
+#: src/modules/moderation/ticketui.py:94
+msgctxt "ticketfilter|field:types|name"
+msgid "Ticket Types"
+msgstr "Billettyper"
+
+#: src/modules/moderation/ticketui.py:102
+msgctxt "ticketfilter|field:states|name"
+msgid "Ticket States"
+msgstr "Billetstatusser"
+
+#: src/modules/moderation/ticketui.py:179
+msgctxt "ui:tickets|button:edit_filter|label"
+msgid "Edit Filters"
+msgstr "Rediger filtre"
+
+#: src/modules/moderation/ticketui.py:199
+msgctxt "ui:tickets|button:select_ticket|label"
+msgid "Select Ticket"
+msgstr "Vælg billet"
+
+#: src/modules/moderation/ticketui.py:215
+msgctxt "ui:tickets|button:pardon|error:no_tickets"
+msgid "Not tickets matching the given criterial! Nothing to pardon."
+msgstr "Ingen billetter matcher de givne kriterier! Intet at benåde."
+
+#: src/modules/moderation/ticketui.py:221
+msgctxt "ui:tickets|button:pardon|modal:reason|title"
+msgid "Pardon Tickets"
+msgstr "Benåd billetter"
+
+#: src/modules/moderation/ticketui.py:226
+msgctxt "ui:tickets|button:pardon|modal:reason|field|label"
+msgid "Why are you pardoning these tickets?"
+msgstr "Hvorfor benåder du disse billetter?"
+
+#: src/modules/moderation/ticketui.py:252
+msgctxt "ui:tickets|button:pardon|label"
+msgid "Pardon All"
+msgstr "Benåd alle"
+
+#: src/modules/moderation/ticketui.py:273
+msgctxt "ui:tickets|menu:filter_type|placeholder"
+msgid "Select Ticket Types"
+msgstr "Vælg billettyper"
+
+#: src/modules/moderation/ticketui.py:309
+msgctxt "ui:tickets|menu:filter_state|placeholder"
+msgid "Select Ticket States"
+msgstr "Vælg billetstatusser"
+
+#: src/modules/moderation/ticketui.py:346
+msgctxt "ui:tickets|menu:filter_target|placeholder"
+msgid "Select Ticket Targets"
+msgstr "Vælg billetmål"
+
+#: src/modules/moderation/ticketui.py:371
+msgctxt "ui:tickets|menu:tickets|placeholder"
+msgid "Select Ticket"
+msgstr "Vælg billet"
+
+#: src/modules/moderation/ticketui.py:402
+msgctxt "ui:tickets|button:jump|input:title"
+msgid "Jump to page"
+msgstr "Gå til side"
+
+#: src/modules/moderation/ticketui.py:406
+msgctxt "ui:tickets|button:jump|input:question"
+msgid "Page number to jump to"
+msgstr "Sidenummer at gå til"
+
+#: src/modules/moderation/ticketui.py:417
+msgctxt "ui:tickets|button:jump|error:invalid_page"
+msgid "Invalid page number, please try again!"
+msgstr "Ugyldigt sidenummer, prøv venligst igen!"
+
+#, possible-python-brace-format
+msgctxt "ui:tickets|embed|title"
+msgid "Moderation Tickets in {guild}"
+msgstr "Moderationsbilletter i {guild}"
+
+#: src/modules/moderation/ticketui.py:506
+msgctxt "ui:tickets|embed|desc:no_tickets"
+msgid "No tickets matching the given criteria!"
+msgstr "Ingen billetter matcher de givne kriterier!"
+
+#: src/modules/moderation/ticketui.py:515
+msgctxt "ui:tickets|embed|field:filters|name"
+msgid "Filters"
+msgstr "Filtre"
+
+#: src/modules/moderation/ticketui.py:603
+msgctxt "ui:ticket|button:pardon|modal:reason|title"
+msgid "Pardon Moderation Ticket"
+msgstr "Benåd moderationsbillet"
+
+#: src/modules/moderation/ticketui.py:608
+msgctxt "ui:ticket|button:pardon|modal:reason|field|label"
+msgid "Why are you pardoning this ticket?"
+msgstr "Hvorfor benåder du denne billet?"
+
+#: src/modules/moderation/ticketui.py:632
+msgctxt "ui:ticket|button:pardon|label"
+msgid "Pardon"
+msgstr "Benåd"
+
+#, possible-python-brace-format
+msgctxt "ticket|title:auto"
+msgid "Ticket #{ticketid} | {state} | {type}[Auto] | {name}"
+msgstr "Billet #{ticketid} | {state} | {type}[Auto] | {name}"
+
+#, possible-python-brace-format
+msgctxt "ticket|title:manual"
+msgid "Ticket #{ticketid} | {state} | {type} | {name}"
+msgstr "Billet #{ticketid} | {state} | {type} | {name}"
+
+#: src/modules/moderation/ticket.py:169
+msgctxt "ticket|field:target|name"
+msgid "Target"
+msgstr "Mål"
+
+#: src/modules/moderation/ticket.py:174
+msgctxt "ticket|field:moderator|name"
+msgid "Moderator"
+msgstr "Moderator"
+
+#: src/modules/moderation/ticket.py:181
+msgctxt "ticket|field:expiry|mode:expiring|name"
+msgid "Expires At"
+msgstr "Udløber"
+
+#, possible-python-brace-format
+msgctxt "ticket|field:expiry|mode:expiring|value"
+msgid ""
+"{timestamp}\n"
+"Duration: `{duration}`"
+msgstr ""
+"{timestamp}\n"
+"Varighed: `{duration}`"
+
+#: src/modules/moderation/ticket.py:192
+msgctxt "ticket|field:expiry|mode:expired|name"
+msgid "Expired"
+msgstr "Udløbet"
+
+#, possible-python-brace-format
+msgctxt "ticket|field:expiry|mode:expired|value"
+msgid "{timestamp}"
+msgstr "{timestamp}"
+
+#: src/modules/moderation/ticket.py:202
+msgctxt "ticket|field:expiry|mode:open|name"
+msgid "Expiry"
+msgstr "Udløb"
+
+#, possible-python-brace-format
+msgctxt "ticket|field:expiry|mode:open|value"
+msgid "{timestamp}"
+msgstr "{timestamp}"
+
+#: src/modules/moderation/ticket.py:213
+msgctxt "ticket|field:context|name"
+msgid "Context"
+msgstr "Kontekst"
+
+#: src/modules/moderation/ticket.py:220
+msgctxt "ticket|field:notes|name"
+msgid "Notes"
+msgstr "Noter"
+
+#: src/modules/moderation/ticket.py:227
+msgctxt "ticket|field:pardoned|name"
+msgid "Pardoned"
+msgstr "Benådet"
+
+#, possible-python-brace-format
+msgctxt "ticket|field:pardoned|value"
+msgid ""
+"Pardoned by <@{moderator}> at {timestamp}.\n"
+"{reason}"
+msgstr ""
+"Benådet af <@{moderator}> den {timestamp}.\n"
+"{reason}"
+
+#: src/modules/moderation/settings.py:22
+msgctxt "guildset:ticket_log"
+msgid "ticket_log"
+msgstr "ticket_log"
+
+#: src/modules/moderation/settings.py:25
+msgctxt "guildset:ticket_log|desc"
+msgid "Private moderation log to send tickets and moderation events."
+msgstr ""
+"Privat moderationslog til at sende billetter og moderationsbegivenheder."
+
+#: src/modules/moderation/settings.py:29
+msgctxt "guildset:ticket_log|long_desc"
+msgid ""
+"Warnings, notes, video blacklists, and other moderation events will be "
+"posted as numbered tickets with context to this log."
+msgstr ""
+"Advarsler, noter, videoblokkeringer og andre moderationsbegivenheder vil "
+"blive opslået som nummererede billetter med kontekst i denne log."
+
+#: src/modules/moderation/settings.py:34
+msgctxt "guildset:ticket_log|accepts"
+msgid "Ticket channel name or id."
+msgstr "Billetkanalens navn eller id."
+
+#, possible-python-brace-format
+msgctxt "guildset:ticket_log|set_response:set"
+msgid "Moderation tickets will be sent to {channel}"
+msgstr "Moderationsbilletter vil blive sendt til {channel}"
+
+#: src/modules/moderation/settings.py:53
+msgctxt "guildset:ticket_log|set_response:unset"
+msgid "Moderation tickets will not be logged to a channel."
+msgstr "Moderationsbilletter vil ikke blive logget til en kanal."
+
+#: src/modules/moderation/settings.py:65
+msgctxt "guildset:ticket_log|formatted:unset"
+msgid "Not Set."
+msgstr "Ikke indstillet."
+
+#: src/modules/moderation/settings.py:73
+msgctxt "guildset:alert_channel"
+msgid "alert_channel"
+msgstr "alert_channel"
+
+#: src/modules/moderation/settings.py:76
+msgctxt "guildset:alert_channel|desc"
+msgid "Moderation notification channel for members with DMs disabled."
+msgstr "Moderationsmeddelelseskanal for medlemmer med DMs deaktiveret."
+
+#: src/modules/moderation/settings.py:80
+msgctxt "guildset:alert_channel|long_desc"
+msgid ""
+"When I need to send a member a moderation-related notification (e.g. asking "
+"them to enable their video in a video channel) from this server, I will try "
+"to send it via direct messages. If this fails, I will instead mention the "
+"user in this channel."
+msgstr ""
+"Når jeg skal sende et medlem en moderationsrelateret meddelelse (f.eks. bede"
+" dem om at aktivere deres video i en videokanal) fra denne server, vil jeg "
+"forsøge at sende den via direkte beskeder. Hvis dette mislykkes, vil jeg i "
+"stedet nævne brugeren i denne kanal."
+
+#: src/modules/moderation/settings.py:87
+msgctxt "guildset:alert_channel|accepts"
+msgid "Alert channel name or id."
+msgstr "Advarselskanalens navn eller id."
+
+#, possible-python-brace-format
+msgctxt "guildset:alert_channel|set_response:set"
+msgid "Moderation alerts will be sent to {channel}"
+msgstr "Moderationsadvarsler vil blive sendt til {channel}"
+
+#: src/modules/moderation/settings.py:107
+msgctxt "guildset:alert_channel|set_response:unset"
+msgid "Moderation alerts will be ignored if the member cannot be reached."
+msgstr ""
+"Moderationsadvarsler vil blive ignoreret, hvis medlemmet ikke kan nås."
+
+#: src/modules/moderation/settings.py:119
+msgctxt "guildset:alert_channel|formatted:unset"
+msgid "Not Set (Only alert via direct message.)"
+msgstr "Ikke indstillet (Kun advarsel via direkte besked.)"
+
+#: src/modules/moderation/settings.py:127
+msgctxt "guildset:mod_role"
+msgid "mod_role"
+msgstr "mod_role"
+
+#: src/modules/moderation/settings.py:130
+msgctxt "guildset:mod_role|desc"
+msgid ""
+"Server role permitted to perform moderation and minor bot configuration."
+msgstr ""
+"Serverrolle med tilladelse til at udføre moderation og mindre bot-"
+"konfiguration."
+
+#: src/modules/moderation/settings.py:134
+msgctxt "guildset:mod_role|long_desc"
+msgid ""
+"Members with the moderator role are considered moderators, and are permitted to use moderator commands, such as viewing and pardoning moderation tickets, creating moderation notes, and performing minor reconfiguration through the `/config` command.\n"
+"Moderators are never permitted to perform actions (such as giving roles) that they do not already have the Discord permissions for.\n"
+"Members with the 'Manage Guild' permission are always considered moderators."
+msgstr ""
+"Medlemmer med moderatorrollen betragtes som moderatorer og har tilladelse til at bruge moderatorkommandoer, såsom at se og benåde moderationsbilletter, oprette moderationsnoter og udføre mindre omkonfiguration gennem `/config`-kommandoen.\n"
+"Moderatorer har aldrig tilladelse til at udføre handlinger (såsom at give roller), som de ikke allerede har Discord-tilladelser til.\n"
+"Medlemmer med 'Manage Guild'-tilladelsen betragtes altid som moderatorer."
+
+#: src/modules/moderation/settings.py:145
+msgctxt "guildset:mod_role|accepts"
+msgid "Moderation role name or id."
+msgstr "Moderatorrollens navn eller id."
+
+#, possible-python-brace-format
+msgctxt "guildset:mod_role|set_response:set"
+msgid ""
+"Members with {role} will be considered moderators. You may need to grant "
+"them access to view moderation commands via the server integration settings."
+msgstr ""
+"Medlemmer med {role} vil blive betragtet som moderatorer. Du skal muligvis "
+"give dem adgang til at se moderationskommandoer via "
+"serverintegrationsindstillingerne."
+
+#: src/modules/moderation/settings.py:166
+msgctxt "guildset:mod_role|set_response:unset"
+msgid ""
+"Only members with the 'Manage Guild' permission will be considered "
+"moderators."
+msgstr ""
+"Kun medlemmer med 'Manage Guild'-tilladelsen vil blive betragtet som "
+"moderatorer."
+
+#: src/modules/moderation/settings.py:178
+msgctxt "guildset:mod_role|formatted:unset"
+msgid "Not Set."
+msgstr "Ikke indstillet."
+
+#: src/modules/moderation/settings.py:186
+msgctxt "guildset:admin_role"
+msgid "admin_role"
+msgstr "admin_role"
+
+#: src/modules/moderation/settings.py:189
+msgctxt "guildset:admin_role|desc"
+msgid ""
+"Server role allowing access to all administrator level functionality in Leo."
+msgstr ""
+"Serverrolle der giver adgang til al administratorniveau-funktionalitet i "
+"Leo."
+
+#: src/modules/moderation/settings.py:193
+msgctxt "guildset:admin_role|long_desc"
+msgid ""
+"Members with this role are considered to be server administrators, allowing "
+"them to use all of my interfaces and commands, except for managing roles "
+"that are above them in the role hierachy. This setting allows giving members"
+" administrator-level permissions over my systems, without actually giving "
+"the members admin server permissions. Note that the role will also need to "
+"be given permission to see the commands through the Discord server "
+"integrations interface."
+msgstr ""
+"Medlemmer med denne rolle betragtes som serveradministratorer og kan bruge "
+"alle mine grænseflader og kommandoer, undtagen at administrere roller over "
+"dem i hierarkiet. Denne indstilling tillader at give medlemmer "
+"administratorniveau-tilladelser over mine systemer uden at give dem faktiske"
+" admin-servertilladelser. Rollen skal også have tilladelse til at se "
+"kommandoerne via Discords serverintegrationsinterface."
+
+#: src/modules/moderation/settings.py:203
+msgctxt "guildset:admin_role|accepts"
+msgid "Admin role name or id."
+msgstr "Administratorrollens navn eller id."
+
+#, possible-python-brace-format
+msgctxt "guildset:admin_role|set_response:set"
+msgid ""
+"Members with {role} will now be considered admins, and have access to my "
+"full interface."
+msgstr ""
+"Medlemmer med {role} vil nu blive betragtet som administratorer og have "
+"adgang til min fulde grænseflade."
+
+#: src/modules/moderation/settings.py:221
+msgctxt "guildset:admin_role|set_response:unset"
+msgid ""
+"The admin role has been unset. Only members with administrator permissions "
+"will be considered admins."
+msgstr ""
+"Admin-rollen er blevet fjernet. Kun medlemmer med administratortilladelser "
+"vil blive betragtet som administratorer."

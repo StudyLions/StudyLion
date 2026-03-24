@@ -3,6 +3,7 @@ Additional abstract setting types useful for StudyLion settings.
 """
 from typing import Optional
 import json
+import logging
 import traceback
 
 import discord
@@ -15,6 +16,8 @@ from meta.errors import UserInputError
 from constants import MAX_COINS
 from babel.translator import ctx_translator
 from utils.lib import MessageArgs
+
+logger = logging.getLogger(__name__)
 
 from . import babel
 
@@ -150,13 +153,41 @@ class MessageSetting(StringSetting):
             data = None
         return data
 
+    # --- AI-REPLACED (2026-03-22) ---
+    # Reason: 12 guilds have raw-text greeting/returning messages that crash json.loads,
+    # breaking both /dashboard and member_join greeting flow.
+    # What the new code does better: Wraps non-JSON text as {"content": text} so
+    # greetings still send and the data self-heals on next write.
+    # --- Original code (commented out for rollback) ---
+    # @classmethod
+    # def _data_to_value(cls, parent_id: ParentID, data: Optional[str], **kwargs):
+    #     if data:
+    #         value = json.loads(data)
+    #     else:
+    #         value = None
+    #     return value
+    # --- End original code ---
     @classmethod
     def _data_to_value(cls, parent_id: ParentID, data: Optional[str], **kwargs):
         if data:
-            value = json.loads(data)
+            try:
+                value = json.loads(data)
+            except json.JSONDecodeError:
+                logger.warning(
+                    "Non-JSON MessageSetting for parent_id=%s, treating as plain text: %r",
+                    parent_id, data[:80]
+                )
+                value = {'content': data}
+            if not isinstance(value, dict):
+                logger.warning(
+                    "MessageSetting JSON is not a dict for parent_id=%s: type=%s",
+                    parent_id, type(value).__name__
+                )
+                value = None
+            return value
         else:
-            value = None
-        return value
+            return None
+    # --- END AI-REPLACED ---
 
     @classmethod
     async def _parse_string(cls, parent_id: ParentID, string: str, **kwargs):
@@ -259,12 +290,16 @@ class MessageSetting(StringSetting):
             }
         return json.dumps(value)
 
+    # --- AI-MODIFIED (2026-03-22) ---
+    # Purpose: Safety check in case _data_to_value returns None for truly unparseable data
     @classmethod
     def _format_data(cls, parent_id: ParentID, data: Optional[str], **kwargs):
         if not data:
             return None
 
         value = cls._data_to_value(parent_id, data, **kwargs)
+        if value is None:
+            return None
         content = value.get('content', "")
         if 'embed' in value or 'embeds' in value or len(content) > 100:
             t = ctx_translator.get().t
@@ -276,6 +311,7 @@ class MessageSetting(StringSetting):
             formatted = content
 
         return formatted
+    # --- END AI-MODIFIED ---
 
     @property
     def input_field(self):

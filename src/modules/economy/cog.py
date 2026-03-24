@@ -12,6 +12,7 @@ from data import ORDER
 
 from utils.ui import Confirm, Pager
 from utils.lib import error_embed, MessageArgs, utc_now
+from utils.data import SAFECOINS
 from wards import low_management_ward, moderator_ward
 from constants import MAX_COINS
 
@@ -121,7 +122,10 @@ class Economy(LionCog):
         ctx: LionContext,
         target: discord.User | discord.Member | discord.Role,
         set_to: Optional[appcmds.Range[int, 0, MAX_COINS]] = None,
-        add: Optional[int] = None
+        # --- AI-MODIFIED (2026-03-22) ---
+        # Purpose: Add range limit to prevent integer overflow in DB (int32 coins column)
+        add: Optional[appcmds.Range[int, -MAX_COINS, MAX_COINS]] = None
+        # --- END AI-MODIFIED ---
     ):
         t = self.bot.translator.t
         cemoji = self.bot.config.emojis.getemoji('coin')
@@ -357,37 +361,58 @@ class Economy(LionCog):
                         return
                     if not result:
                         return
+                # --- AI-MODIFIED (2026-03-22) ---
+                # Purpose: Use SAFECOINS to cap result at MAX_COINS, preventing int32 overflow
                 results = await self.bot.core.data.Member.table.update_where(
                     guildid=ctx.guild.id, userid=list(targetids)
                 ).set(
-                    coins=(self.bot.core.data.Member.coins + add)
+                    coins=SAFECOINS(self.bot.core.data.Member.coins + add)
                 )
-                # Single member case occurs afterwards so we can pick up the results
+                # --- END AI-MODIFIED ---
+                # --- AI-MODIFIED (2026-03-21) ---
+                # Purpose: Wrap .format() in try/except to handle malformed locale translations
+                # that crash with ValueError (e.g. truncated German translations with unclosed braces)
                 if not role:
-                    description = t(_p(
-                        'cmd:economy_balance|embed:success_add|desc',
+                    _add_desc_default = (
                         "{user_mention} was given {coin_emoji}**{amount}**, and "
                         "now has a balance of {coin_emoji}**{new_amount}**."
-                    )).format(
+                    )
+                    _add_desc_kwargs = dict(
                         user_mention=target.mention,
                         coin_emoji=cemoji,
                         amount=add,
                         new_amount=results[0]['coins']
                     )
+                    try:
+                        description = t(_p(
+                            'cmd:economy_balance|embed:success_add|desc',
+                            _add_desc_default
+                        )).format(**_add_desc_kwargs)
+                    except (ValueError, KeyError):
+                        description = _add_desc_default.format(**_add_desc_kwargs)
+
+                _log_desc_default = "{moderator} added {amount} to {target}'s balance."
+                _log_desc_kwargs = dict(
+                    moderator=ctx.author.mention,
+                    target=target.mention,
+                    amount=f"{cemoji}**{add}**",
+                )
+                try:
+                    _log_desc = t(_p(
+                        'eventlog|event:economy_set|desc',
+                        _log_desc_default
+                    )).format(**_log_desc_kwargs)
+                except (ValueError, KeyError):
+                    _log_desc = _log_desc_default.format(**_log_desc_kwargs)
+
                 ctx.lguild.log_event(
                     title=t(_p(
                         'eventlog|event:economy_add|title',
                         "Moderator Modified Economy Balance"
                     )),
-                    description=t(_p(
-                        'eventlog|event:economy_set|desc',
-                        "{moderator} added {amount} to {target}'s balance."
-                    )).format(
-                        moderator=ctx.author.mention,
-                        target=target.mention,
-                        amount=f"{cemoji}**{add}**",
-                    )
+                    description=_log_desc
                 )
+                # --- END AI-MODIFIED ---
 
             title = t(_np(
                 'cmd:economy_balance|embed:success|title',

@@ -1,0 +1,349 @@
+# Romanian translation for LionBot - video
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 20:24+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Romanian\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100>0 && n%100<20)) ? 1 : 2);\n"
+
+#: src/modules/video_channels/settingui.py:58
+msgctxt "ui:video_config|menu:channels|placeholder"
+msgid "Select Video Channels"
+msgstr "Selectați canalele video"
+
+#: src/modules/video_channels/settingui.py:84
+msgctxt "ui:video_config|menu:exempt|placeholder"
+msgid "Select Exempt Roles"
+msgstr "Selectați rolurile exceptate"
+
+#: src/modules/video_channels/settingui.py:112
+msgctxt "ui:video_config|menu:video_blacklist|placeholder"
+msgid "Select Blacklist Role"
+msgstr "Selectați rolul de pe lista neagră"
+
+#: src/modules/video_channels/settingui.py:120
+msgctxt "ui:video_config|embed|title"
+msgid "Video Channel Configuration Panel"
+msgstr "Panou de configurare a canalelor video"
+
+#: src/modules/video_channels/settingui.py:159
+msgctxt "dash:video|title"
+msgid "Video Channel Settings ({commands[admin config video_channels]})"
+msgstr "Setări canale video ({commands[admin config video_channels]})"
+
+#: src/modules/video_channels/settingui.py:163
+msgctxt "dash:video|option|name"
+msgid "Video Channel Panel"
+msgstr "Panou canal video"
+
+#: src/modules/video_channels/cog.py:229
+msgctxt "video_watchdog|kick_blacklisted_member|audit_reason"
+msgid "Removing video blacklisted member from a video channel."
+msgstr "Eliminarea unui membru de pe lista neagră dintr-un canal video."
+
+#: src/modules/video_channels/cog.py:246
+msgctxt "video_watchdog|kick_blacklisted_member|notification|title"
+msgid "You have been disconnected."
+msgstr "Ai fost deconectat."
+
+#, possible-python-brace-format
+msgctxt "video_watchdog|kick_blacklisted_member|notification|desc"
+msgid ""
+"You were disconnected from the video channel {channel} because you are "
+"blacklisted from video channels in **{server}**."
+msgstr ""
+"Ai fost deconectat din canalul video {channel} deoarece ești pe lista neagră"
+" în **{server}**."
+
+#, possible-python-brace-format
+msgctxt "video_watchdog|join_task|jump_field"
+msgid "[Click to jump back]({link})"
+msgstr "[Click pentru a reveni]({link})"
+
+#: src/modules/video_channels/cog.py:297
+msgctxt "video_watchdog|join_task|initial_request:title"
+msgid "Please enable your video!"
+msgstr "Te rugăm activează-ți camera video!"
+
+#, possible-python-brace-format
+msgctxt "video_watchdog|join_task|initial_request:description"
+msgid ""
+"**You have joined the video channel {channel}!**\n"
+"Please **enable your video** or **leave the channel** or you will be disconnected {timestamp} and potentially **blacklisted**."
+msgstr ""
+"**Ai intrat în canalul video {channel}!**\n"
+"Te rugăm **activează camera** sau **părăsește canalul** altfel vei fi deconectat {timestamp} și potențial **adăugat pe lista neagră**."
+
+#: src/modules/video_channels/cog.py:316
+msgctxt "video_watchdog|join_task|thanks:title"
+msgid "Thanks for enabling your video!"
+msgstr "Mulțumim că ai activat camera video!"
+
+#: src/modules/video_channels/cog.py:323
+msgctxt "video_watchdog|join_task|bye:title"
+msgid "Thanks for leaving the channel promptly!"
+msgstr "Mulțumim că ai părăsit canalul prompt!"
+
+#: src/modules/video_channels/cog.py:367
+msgctxt "video_watchdog|join_task|kick_after_grace|audit_reason"
+msgid "Member never enabled their video in video channel."
+msgstr "Membrul nu a activat niciodată camera video."
+
+#, possible-python-brace-format
+msgctxt "video_watchdog|join_task|kick_after_grace|ticket_reason"
+msgid "Failed to enable their video in time in the video channel {channel}"
+msgstr "Nu a activat camera video la timp în canalul {channel}"
+
+#: src/modules/video_channels/cog.py:403
+msgctxt "video_watchdog|join_task|kick_after_grace|warning|title"
+msgid "You have received a warning!"
+msgstr "Ai primit un avertisment!"
+
+#, possible-python-brace-format
+msgctxt "video_watchdog|join_task|kick_after_grace|warning|desc"
+msgid ""
+"**You must enable your camera in camera-only rooms.**\n"
+"You have been disconnected from the video {channel} for not enabling your camera."
+msgstr ""
+"**Trebuie să-ți activezi camera în camerele doar cu cameră.**\n"
+"Ai fost deconectat din video {chann..."
+
+#: src/modules/video_channels/cog.py:422
+msgctxt "video_watchdog|join_task|kick_after_grace|blacklist|title"
+msgid "You have been blacklisted!"
+msgstr "Ai fost adăugat pe lista neagră!"
+
+#: src/modules/video_channels/cog.py:426
+msgctxt "video_watchdog|join_task|kick_after_grace|blacklist|desc"
+msgid "You have been blacklisted from the video channels in this server."
+msgstr "Ai fost adăugat pe lista neagră a canalelor video din acest server."
+
+#, possible-python-brace-format
+msgctxt "video_watchdog|disabled_video_kick|audit_reason"
+msgid ""
+"Disconnected for disabling video for more than {number} seconds in video "
+"channel."
+msgstr "Deconectat pentru dezactivarea camerei mai mult de {number} secunde."
+
+#: src/modules/video_channels/cog.py:474
+msgctxt "video_watchdog|disabled_video_kick|notification|title"
+msgid "You have been disconnected."
+msgstr "Ai fost deconectat."
+
+#, possible-python-brace-format
+msgctxt "video_watchdog|disabled_video_kick|notification|desc"
+msgid ""
+"You were disconnected from the video channel {channel} because you disabled your video.\n"
+"Please keep your video on at all times, and leave the channel if you need to disable it!"
+msgstr ""
+"Ai fost deconectat din canalul video {channel} pentru că ai dezactivat camera.\n"
+"Te rugăm păstrează..."
+
+#: src/modules/video_channels/cog.py:510
+msgctxt "cmd:configure_video"
+msgid "video_channels"
+msgstr "video_channels"
+
+#: src/modules/video_channels/cog.py:512
+msgctxt "cmd:configure_video|desc"
+msgid "Configure video-only channels and blacklisting."
+msgstr "Configurați canalele doar video și lista neagră."
+
+#: src/modules/video_channels/settings.py:31
+msgctxt "guildset:video_channels"
+msgid "video_channels"
+msgstr "video_channels"
+
+#: src/modules/video_channels/settings.py:34
+msgctxt "guildset:video_channels|desc"
+msgid "List of voice channels and categories in which to enforce video."
+msgstr "Lista canalelor vocale și categoriilor unde video este obligatoriu."
+
+#: src/modules/video_channels/settings.py:38
+msgctxt "guildset:video_channels|long_desc"
+msgid ""
+"Member will be required to turn on their video in these channels.\n"
+"If they do not enable their video with `15` seconds of joining, they will be asked to enable it through a notification in direct messages or the `alert_channel`. If they still have not enabled it after the `video_grace_period` has passed, they will be kicked from the channel. Further, after the first offence (which is considered a warning), they will be given the `video_blacklist` role, if configured, which will stop them from joining video channels.\n"
+"As usual, if a category is configured, this will apply to all voice channels under the category."
+msgstr ""
+"Membrii vor trebui să activeze camera video în aceste canale.\n"
+"Dacă nu o fac în `15` secunde, vor fi notificați. După `video_grace_period` vor fi eliminați. După prima abatere (avertisment) vor primi rolul `video_blacklist`, dacă este configurat.\n"
+"Dacă este configurată o categorie, se aplică tuturor canalelor din ea."
+
+#: src/modules/video_channels/settings.py:52
+msgctxt "guildset:video_channels|accepts"
+msgid "Comma separated channel ids or names."
+msgstr "ID-uri sau nume de canale separate prin virgule."
+
+#, possible-python-brace-format
+msgctxt "guildset:video_channels|set_response:set"
+msgid ""
+"Members will be asked to turn on their video in the following channels: "
+"{channels}"
+msgstr ""
+"Membrii vor fi rugați să activeze camera video în următoarele canale: "
+"{channels}"
+
+#: src/modules/video_channels/settings.py:74
+msgctxt "guildset:video_channels|set_response:unset"
+msgid "Members will not be asked to turn on their video in any channels."
+msgstr "Membrii nu vor fi rugați să activeze camera video."
+
+#: src/modules/video_channels/settings.py:108
+msgctxt "guildset:video_blacklist"
+msgid "video_blacklist"
+msgstr "video_blacklist"
+
+#: src/modules/video_channels/settings.py:111
+msgctxt "guildset:video_blacklist|desc"
+msgid "Role given when members are blacklisted from video channels."
+msgstr "Rol acordat când membrii sunt adăugați pe lista neagră."
+
+#: src/modules/video_channels/settings.py:115
+msgctxt "guildset:video_blacklist|long_desc"
+msgid ""
+"This role will be automatically given after a member has failed to keep their video enabled in a video channel (see above).\n"
+"Members who have this role will not be able to join configured video channels. The role permissions may be freely configured by server admins to place further restrictions on the offender.\n"
+"The role may also be manually assigned, to the same effect.\n"
+"If this role is not set, no video blacklist will occur, and members will only be kicked from the channel and warned."
+msgstr ""
+"Acest rol se acordă automat dacă un membru nu păstrează camera activată.\n"
+"Membrii cu acest rol nu pot intra în canale video. Permisiunile pot fi configurate liber.\n"
+"Rolul poate fi și atribuit manual.\n"
+"Dacă nu este setat, nu va exista lista neagră și membrii vor fi doar eliminați și avertizați."
+
+#: src/modules/video_channels/settings.py:126
+msgctxt "guildset:video_blacklist|accepts"
+msgid "Blacklist role name or id."
+msgstr "Numele sau ID-ul rolului de pe lista neagră."
+
+#, possible-python-brace-format
+msgctxt "guildset:video_blacklist|set_response:set"
+msgid "Members who fail to keep their video on will be given {role}"
+msgstr "Membrii care nu păstrează camera pornită vor primi {role}"
+
+#: src/modules/video_channels/settings.py:146
+msgctxt "guildset:video_blacklist|set_response:unset"
+msgid ""
+"Members will no longer be automatically blacklisted from video channels."
+msgstr "Membrii nu vor mai fi adăugați automat pe lista neagră."
+
+#: src/modules/video_channels/settings.py:158
+msgctxt "guildset:video_blacklist|formatted:unset"
+msgid "Not Set. (Members will not be automatically blacklisted.)"
+msgstr "Nesetat. (Membrii nu vor fi adăugați automat pe lista neagră.)"
+
+#: src/modules/video_channels/settings.py:166
+msgctxt "guildset:video_durations"
+msgid "video_blacklist_durations"
+msgstr "video_blacklist_durations"
+
+#: src/modules/video_channels/settings.py:169
+msgctxt "guildset:video_durations|desc"
+msgid "Sequence of durations for automatic video blacklists."
+msgstr "Secvență de durate pentru listele negre video automate."
+
+#: src/modules/video_channels/settings.py:173
+msgctxt "guildset:video_durations|long_desc"
+msgid ""
+"When `video_blacklist` is set and members fail to turn on their video within the configured `video_grace_period`, they will be automatically blacklisted (i.e. given the `video_blacklist` role).\n"
+"This setting describes *how long* the member will be blacklisted for, for each offence.\n"
+"E.g. if this is set to `1d, 7d, 30d`, then on the first offence the member will be blacklisted for 1 day, on the second for 7 days, and on the third for 30 days. A subsequent offence will result in an infinite blacklist."
+msgstr ""
+"Când `video_blacklist` este setat și membrii nu activează camera în `video_grace_period`, vor fi adăugați automat pe lista neagră.\n"
+"Această setare descrie *cât timp* pentru fiecare abatere.\n"
+"Ex. `1d, 7d, 30d`: prima abatere - 1 zi, a doua - 7 zile, a treia - 30 zile. Următoarele duc la listă neagră permanentă."
+
+#: src/modules/video_channels/settings.py:185
+msgctxt "guildset:video_durations|accepts"
+msgid "Comma separated list of durations."
+msgstr "Lista de durate separată prin virgule."
+
+#, possible-python-brace-format
+msgctxt "guildset:video_durations|set_response:set"
+msgid "Members will be automatically blacklisted for: {durations}"
+msgstr "Membrii vor fi adăugați automat pe lista neagră pentru: {durations}"
+
+#: src/modules/video_channels/settings.py:217
+msgctxt "guildset:video_durations|set_response:unset"
+msgid "Video blacklists are now always permanent."
+msgstr "Listele negre video sunt acum întotdeauna permanente."
+
+#: src/modules/video_channels/settings.py:226
+msgctxt "guildset:video_grace_period"
+msgid "video_grace_period"
+msgstr "video_grace_period"
+
+#: src/modules/video_channels/settings.py:229
+msgctxt "guildset:video_grace_period|desc"
+msgid ""
+"How long to wait (in seconds) before kicking/blacklist members who don't "
+"enable their video."
+msgstr ""
+"Cât timp să așteptați (în secunde) înainte de eliminare/adăugare pe lista "
+"neagră."
+
+#: src/modules/video_channels/settings.py:233
+msgctxt "guildset:video_grace_period|long_desc"
+msgid ""
+"The length of time a member has to enable their video after joining a video "
+"channel. After this time, if they have not enabled their video, they will be"
+" kicked from the channel and potentially blacklisted from video channels."
+msgstr ""
+"Timpul pe care îl are un membru să activeze camera. După aceea va fi "
+"eliminat și potențial adăugat pe lista neagră."
+
+#: src/modules/video_channels/settings.py:239
+msgctxt "guildset:video_grace_period|accepts"
+msgid "How many seconds to wait for a member to enable video."
+msgstr "Câte secunde să așteptați pentru activarea camerei."
+
+#, possible-python-brace-format
+msgctxt "guildset:video_grace_period|set_response:set"
+msgid "Members will now have **{duration}** to enable their video."
+msgstr "Membrii vor avea acum **{duration}** pentru a activa camera."
+
+#: src/modules/video_channels/settings.py:262
+msgctxt "guildset:video_exempt"
+msgid "video_exempt"
+msgstr "video_exempt"
+
+#: src/modules/video_channels/settings.py:265
+msgctxt "guildset:video_exempt|desc"
+msgid "List of roles which are exempt from video channels."
+msgstr "Lista rolurilor exceptate de la canalele video."
+
+#: src/modules/video_channels/settings.py:269
+msgctxt "guildset:video_exempt|long_desc"
+msgid ""
+"Members who have **any** of these roles will not be required to enable their"
+" video in the `video_channels`. This also overrides the `video_blacklist` "
+"role."
+msgstr ""
+"Membrii cu **oricare** din aceste roluri nu vor trebui să activeze camera. "
+"Aceasta anulează și rolul `video_blacklist`."
+
+#: src/modules/video_channels/settings.py:275
+msgctxt "guildset:video_exempt|accepts"
+msgid "List of exempt role names or ids."
+msgstr "Lista numelor sau ID-urilor rolurilor exceptate."
+
+#, possible-python-brace-format
+msgctxt "guildset:video_exempt|set_response:set"
+msgid "The following roles will now be exempt from video channels: {roles}"
+msgstr ""
+"Următoarele roluri vor fi acum exceptate de la canalele video: {roles}"
+
+#: src/modules/video_channels/settings.py:295
+msgctxt "guildset:video_exempt|set_response:unset"
+msgid "No members will be exempt from video channel requirements."
+msgstr "Niciun membru nu va fi exceptat de la cerințele canalelor video."

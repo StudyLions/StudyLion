@@ -1,0 +1,86 @@
+# Finnish translation for LionBot - weekly-gui
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 18:50+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Finnish\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/gui/cards/weekly.py:52
+msgctxt "skin:weeklystats|mode:study|title"
+msgid "STUDY HOURS"
+msgstr "OPISKELUTUNNIT"
+
+#: src/gui/cards/weekly.py:56
+msgctxt "skin:weeklystats|mode:voice|title"
+msgid "VOICE CHANNEL ACTIVITY"
+msgstr "ÄÄNIKANAVAN AKTIIVISUUS"
+
+#: src/gui/cards/weekly.py:60
+msgctxt "skin:weeklystats|mode:text|title"
+msgid "MESSAGE ACTIVITY"
+msgstr "VIESTIEN AKTIIVISUUS"
+
+#: src/gui/cards/weekly.py:64
+msgctxt "skin::weeklystats|mode:anki|title"
+msgid "CARDS REVIEWED"
+msgstr "KERRATUT KORTIT"
+
+#: src/gui/cards/weekly.py:137
+msgctxt "skin:weeklystats|weekdays"
+msgid "M,T,W,T,F,S,S"
+msgstr "M,T,K,T,P,L,S"
+
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:study|summary:this_week"
+msgid "THIS WEEK: {amount} HOURS"
+msgstr "TÄLLÄ VIIKOLLA: {amount} TUNTIA"
+
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:voice|summary:this_week"
+msgid "THIS WEEK: {amount} HOURS"
+msgstr "TÄLLÄ VIIKOLLA: {amount} TUNTIA"
+
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:text|summary:this_week"
+msgid "THIS WEEK: {amount} MESSAGES"
+msgstr "TÄLLÄ VIIKOLLA: {amount} VIESTIÄ"
+
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:text|summary:this_week"
+msgid "THIS WEEK: {amount} CARDS"
+msgstr "TÄLLÄ VIIKOLLA: {amount} KORTTIA"
+
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:study|summary:last_week"
+msgid "LAST WEEK: {amount} HOURS"
+msgstr "VIIME VIIKOLLA: {amount} TUNTIA"
+
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:voice|summary:last_week"
+msgid "LAST WEEK: {amount} HOURS"
+msgstr "VIIME VIIKOLLA: {amount} TUNTIA"
+
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:text|summary:last_week"
+msgid "LAST WEEK: {amount} MESSAGES"
+msgstr "VIIME VIIKOLLA: {amount} VIESTIÄ"
+
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|mode:text|summary:last_week"
+msgid "LAST WEEK: {amount} CARDS"
+msgstr "VIIME VIIKOLLA: {amount} KORTTIA"
+
+#, possible-python-brace-format
+msgctxt "skin:weeklystats|footer"
+msgid "Weekly Statistics • As of {day} {month} • {name} {discrim}"
+msgstr "Viikkotilastot • {day} {month} mennessä • {name} {discrim}"

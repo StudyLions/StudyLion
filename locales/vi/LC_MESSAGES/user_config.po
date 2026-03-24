@@ -1,0 +1,86 @@
+# Vietnamese translation for LionBot - user_config
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 18:50+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Vietnamese\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/modules/user_config/cog.py:38
+msgctxt "userset:timezone"
+msgid "timezone"
+msgstr "timezone"
+
+#: src/modules/user_config/cog.py:41
+msgctxt "userset:timezone|desc"
+msgid "Timezone in which to display statistics."
+msgstr "Múi giờ để hiển thị thống kê."
+
+#: src/modules/user_config/cog.py:45
+msgctxt "userset:timezone|long_desc"
+msgid "All personal time-related features of StudyLion will use this timezone for you, including personal statistics. Note that leaderboards will still be shown in the server's own timezone."
+msgstr "Tất cả các tính năng thời gian cá nhân của StudyLion sẽ sử dụng múi giờ này cho bạn, bao gồm thống kê cá nhân. Lưu ý rằng bảng xếp hạng vẫn sẽ được hiển thị theo múi giờ của máy chủ."
+
+#, possible-python-brace-format
+msgctxt "userset:timezone|response:set"
+msgid "Your personal timezone has been set to `{timezone}`."
+msgstr "Múi giờ cá nhân của bạn đã được đặt thành `{timezone}`."
+
+#: src/modules/user_config/cog.py:65
+msgctxt "userset:timezone|response:unset"
+msgid "You have unset your timezone. Statistics will be displayed in the server timezone."
+msgstr "Bạn đã xóa múi giờ của mình. Thống kê sẽ được hiển thị theo múi giờ của máy chủ."
+
+#: src/modules/user_config/cog.py:81
+msgctxt "cmd:userconfig"
+msgid "my"
+msgstr "my"
+
+#: src/modules/user_config/cog.py:82
+msgctxt "cmd:userconfig|desc"
+msgid "User configuration commands."
+msgstr "Các lệnh cấu hình người dùng."
+
+#: src/modules/user_config/cog.py:89
+msgctxt "cmd:userconfig_timezone"
+msgid "timezone"
+msgstr "timezone"
+
+#: src/modules/user_config/cog.py:92
+msgctxt "cmd:userconfig_timezone|desc"
+msgid "Set your personal timezone, used for displaying stats and setting reminders."
+msgstr "Đặt múi giờ cá nhân của bạn, được sử dụng để hiển thị thống kê và đặt nhắc nhở."
+
+#: src/modules/user_config/cog.py:96
+msgctxt "cmd:userconfig_timezone|param:timezone"
+msgid "timezone"
+msgstr "timezone"
+
+#: src/modules/user_config/cog.py:101
+msgctxt "cmd:userconfig_timezone|param:timezone|desc"
+msgid "What timezone are you in? Try typing your country or continent."
+msgstr "Bạn ở múi giờ nào? Hãy thử nhập quốc gia hoặc châu lục của bạn."
+
+#, possible-python-brace-format
+msgctxt "cmd:userconfig_timezone|response:set"
+msgid "Your timezone is currently set to {timezone}"
+msgstr "Múi giờ của bạn hiện được đặt thành {timezone}"
+
+#: src/modules/user_config/cog.py:121
+msgctxt "cmd:userconfig_timezone|button:reset|label"
+msgid "Reset"
+msgstr "Đặt lại"
+
+#, possible-python-brace-format
+msgctxt "cmd:userconfig_timezone|response:unset"
+msgid "Your timezone is not set. Using the server timezone `{timezone}`."
+msgstr "Múi giờ của bạn chưa được đặt. Đang sử dụng múi giờ máy chủ `{timezone}`."

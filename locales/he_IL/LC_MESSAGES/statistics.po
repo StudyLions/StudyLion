@@ -1,25 +1,18 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
-# Translators:
-# Interitio, 2023
-# Ari Horesh, 2023
-# 
-#, fuzzy
+# Hebrew translation for LionBot - statistics
+# AI-translated with human Transifex contributions where available.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: LionBot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-24 14:37+0300\n"
-"PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Ari Horesh, 2023\n"
-"Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
+"PO-Revision-Date: 2026-03-13 21:59+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Hebrew\n"
+"Language: he_IL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: he_IL\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
 
 #: src/modules/statistics/cog.py:47
@@ -30,27 +23,27 @@ msgstr "אני"
 #: src/modules/statistics/cog.py:50
 msgctxt "cmd:me|desc"
 msgid "Edit your personal profile and see your statistics."
-msgstr ""
+msgstr "ערוך את הפרופיל האישי שלך וצפה בסטטיסטיקות."
 
 #: src/modules/statistics/cog.py:63
 msgctxt "cmd:profile"
 msgid "profile"
-msgstr ""
+msgstr "profile"
 
 #: src/modules/statistics/cog.py:66
 msgctxt "cmd:profile|desc"
 msgid "Display the target's profile and statistics summary."
-msgstr ""
+msgstr "הצג את הפרופיל וסיכום הסטטיסטיקות של היעד."
 
 #: src/modules/statistics/cog.py:70
 msgctxt "cmd:profile|param:member"
 msgid "member"
-msgstr ""
+msgstr "member"
 
 #: src/modules/statistics/cog.py:74
 msgctxt "cmd:profile|param:member|desc"
 msgid "Member to display profile for."
-msgstr ""
+msgstr "החבר שיש להציג את הפרופיל שלו."
 
 #: src/modules/statistics/cog.py:110
 msgctxt "cmd:stats"
@@ -65,14 +58,13 @@ msgstr "סטטיסטיקות שבועיות וחודשיות של הפעילות
 #: src/modules/statistics/cog.py:131
 msgctxt "cmd:leaderboard"
 msgid "leaderboard"
-msgstr "לוח השגים"
+msgstr "leaderboard"
 
 #: src/modules/statistics/cog.py:134
 msgctxt "cmd:leaderboard|desc"
 msgid "Server leaderboard."
 msgstr "לוח השגים של השרת"
 
-#: src/modules/statistics/cog.py:149
 #, possible-python-brace-format
 msgctxt "cmd:leaderboard|chunking|desc"
 msgid "Requesting server member list from Discord, please wait {loading}"
@@ -81,17 +73,17 @@ msgstr "מבקש רשימת חברים מדיסקורד, אנא המתן {loadin
 #: src/modules/statistics/cog.py:170
 msgctxt "cmd:achievements"
 msgid "achievements"
-msgstr ""
+msgstr "achievements"
 
 #: src/modules/statistics/cog.py:173
 msgctxt "cmd:achievements|desc"
 msgid "View your progress towards the activity achievement awards!"
-msgstr ""
+msgstr "צפה בהתקדמות שלך לקראת פרסי ההישגים!"
 
 #: src/modules/statistics/cog.py:190
 msgctxt "cmd:achievements|embed:title"
 msgid "Achievements"
-msgstr ""
+msgstr "הישגים"
 
 #: src/modules/statistics/cog.py:208
 msgctxt "cmd:configure_statistics"
@@ -120,87 +112,87 @@ msgstr ""
 #: src/modules/statistics/achievements.py:77
 msgctxt "achievement|congrats"
 msgid "Congratulations! You have completed this challenge."
-msgstr ""
+msgstr "מזל טוב! השלמת את האתגר הזה."
 
 #: src/modules/statistics/achievements.py:146
 msgctxt "achievement:workout|name"
 msgid "It's about Power"
-msgstr ""
+msgstr "הכל עניין של כוח"
 
 #: src/modules/statistics/achievements.py:150
 msgctxt "achievement:workout|subtext"
 msgid "Workout 50 times"
-msgstr ""
+msgstr "התאמן 50 פעמים"
 
 #: src/modules/statistics/achievements.py:170
 msgctxt "achievement:voicehours|name"
 msgid "Dream Big"
-msgstr ""
+msgstr "חלום בגדול"
 
 #: src/modules/statistics/achievements.py:174
 msgctxt "achievement:voicehours|subtext"
 msgid "Study a total of 1000 hours"
-msgstr ""
+msgstr "למד סך הכל 1000 שעות"
 
 #: src/modules/statistics/achievements.py:196
 msgctxt "achievement:voicestreak|name"
 msgid "Consistency is Key"
-msgstr ""
+msgstr "עקביות היא המפתח"
 
 #: src/modules/statistics/achievements.py:200
 msgctxt "achievement:voicestreak|subtext"
 msgid "Reach a 100-day voice streak"
-msgstr ""
+msgstr "הגע לרצף של 100 ימי קול"
 
 #: src/modules/statistics/achievements.py:283
 msgctxt "achievement:voting|name"
 msgid "We're a Team"
-msgstr ""
+msgstr "אנחנו צוות"
 
 #: src/modules/statistics/achievements.py:287
 msgctxt "achievement:voting|subtext"
 msgid "Vote 100 times on top.gg"
-msgstr ""
+msgstr "הצביעו 100 פעמים ב-top.gg"
 
 #: src/modules/statistics/achievements.py:304
 msgctxt "achievement:days|name"
 msgid "Aim For The Moon"
-msgstr ""
+msgstr "כוון לירח"
 
 #: src/modules/statistics/achievements.py:308
 msgctxt "achievement:days|subtext"
 msgid "Join Voice on 90 different days"
-msgstr ""
+msgstr "הצטרף לערוץ קולי ב-90 ימים שונים"
 
 #: src/modules/statistics/achievements.py:333
 msgctxt "achievement:tasks|name"
 msgid "One Step at a Time"
-msgstr ""
+msgstr "צעד אחר צעד"
 
 #: src/modules/statistics/achievements.py:337
 msgctxt "achievement:tasks|subtext"
 msgid "Complete 1000 tasks"
-msgstr ""
+msgstr "השלם 1000 משימות"
 
 #: src/modules/statistics/achievements.py:363
 msgctxt "achievement:schedule|name"
 msgid "Be Accountable"
-msgstr ""
+msgstr "היה אחראי"
 
 #: src/modules/statistics/achievements.py:367
 msgctxt "achievement:schedule|subtext"
 msgid "Attend 500 Scheduled Sessions"
-msgstr ""
+msgstr "השתתף ב-500 מפגשים מתוכננים"
 
 #: src/modules/statistics/achievements.py:392
 msgctxt "achievement:monthlyhours|name"
 msgid "The 30 Days Challenge"
-msgstr ""
+msgstr "אתגר 30 הימים"
 
 #: src/modules/statistics/achievements.py:396
 msgctxt "achievement:monthlyhours|subtext"
 msgid "Be active for 100 hours in a month"
-msgstr ""
+msgstr "היה פעיל 100 שעות בחודש"
 
 #: src/modules/statistics/settings.py:38
 msgctxt "settype:stat|output:voice"
@@ -300,13 +292,11 @@ msgctxt "guildset:season_start|notset"
 msgid "Not Set (Using all-time statistics)"
 msgstr "לא נבחר (משתמש בסטטיסטיקות מכל הזמנים)"
 
-#: src/modules/statistics/settings.py:127
 #, possible-python-brace-format
 msgctxt "guildset:season_start|parse|error:future_time"
 msgid "Provided season start time {timestamp} is in the future!"
 msgstr "התאריך שהבאת לתחילת העונה {timestamp} הוא בעתיד!"
 
-#: src/modules/statistics/settings.py:139
 #, possible-python-brace-format
 msgctxt "guildset:season_start|set_response|set"
 msgid ""
@@ -316,7 +306,6 @@ msgstr ""
 "לוח השיאים עכשיו יציג את הסטטיסטיקות של של העונה שקבעת שתתחיל מ{timestamp}. הדרגות של האנשים יעודכנו בפעם הבאה שהם יהיו פעילים.\n"
 "השתמשו ב {rank_cmd} אם אתם רוצים לעדכן אותם באופן מיידי."
 
-#: src/modules/statistics/settings.py:149
 #, possible-python-brace-format
 msgctxt "guildset:season_start|set_response|unset"
 msgid ""
@@ -355,7 +344,6 @@ msgctxt "guildset:unranked_roles|set_using"
 msgid "Role selector below."
 msgstr "בחירת רולים בתחתית."
 
-#: src/modules/statistics/settings.py:199
 #, possible-python-brace-format
 msgctxt "guildset:unranked_roles|set_response|set"
 msgid ""
@@ -396,7 +384,6 @@ msgctxt "guildset:visible_stats|set_using"
 msgid "Option menu below."
 msgstr "תפריט בחירה למטה."
 
-#: src/modules/statistics/settings.py:261
 #, possible-python-brace-format
 msgctxt "guildset:visible_stats|set_response"
 msgid "Members will be able to view the following statistics types: {types}"
@@ -456,18 +443,17 @@ msgstr "תפריט הגדרות סטטיסטיקת פעילות"
 msgctxt "dash:stats|title"
 msgid ""
 "Activity Statistics Configuration ({commands[admin config statistics]})"
-msgstr ""
+msgstr "הגדרת סטטיסטיקות פעילות ({commands[admin config statistics]})"
 
 #: src/modules/statistics/settings.py:419
 msgctxt "dash:stats|dropdown|placeholder"
 msgid "Activity Statistics Panel"
 msgstr "תפריט סטטיסטיקת פעילות"
 
-#: src/modules/statistics/graphics/stats.py:63
 #, possible-python-brace-format
 msgctxt "gui:stats|mode:voice|month"
 msgid "{hours} hours"
-msgstr ""
+msgstr "{hours} שעות"
 
 #: src/modules/statistics/ui/goals.py:92
 msgctxt "ui:MonthlyUI|name"
@@ -524,7 +510,6 @@ msgctxt "modal:goal_editor|field:task_goal|placeholder"
 msgid "Enter the number of tasklist tasks you aim to do"
 msgstr "הכנס את מספר המטלות שאתה מכוון להגיע אליו"
 
-#: src/modules/statistics/ui/weeklymonthly.py:159
 #, possible-python-brace-format
 msgctxt "modal:goal_editor|field:task_goal|error:NAN"
 msgid "The provided task goal `{input}` is not a number! Please try again."
@@ -560,20 +545,17 @@ msgctxt "modal:goal_editor|field:anki_goal|label"
 msgid "Enter a number of card revisions to aim for."
 msgstr "הכנס את מספר הקלפים שתרצה לעשות."
 
-#: src/modules/statistics/ui/weeklymonthly.py:216
 #, possible-python-brace-format
 msgctxt "modal:goal_editor|field:voice_goal|error:NAN"
 msgid ""
 "The provided study time goal `{input}` is not a number! Please try again."
 msgstr "המטרה שהבאת `{input}` אינה מספר, אנא נסו שוב."
 
-#: src/modules/statistics/ui/weeklymonthly.py:223
 #, possible-python-brace-format
 msgctxt "modal:goal_editor|field:text_goal|error:NAN"
 msgid "The provided message goal `{input}` is not a number! Please try again."
 msgstr "המטרה שהבאת `{input}` אינה מספר, אנא נסו שוב."
 
-#: src/modules/statistics/ui/weeklymonthly.py:230
 #, possible-python-brace-format
 msgctxt "modal:goal_editor|field:anki_goal|error:NAN"
 msgid "The provided card goal `{input}` is not a number! Please try again."
@@ -607,7 +589,6 @@ msgstr ""
 "[ ] לקרוא את הסיכום ביולוגיה שלי\n"
 "[x] להגיש שיעורי בית למורה שאני שונא\n"
 
-#: src/modules/statistics/ui/weeklymonthly.py:284
 #, possible-python-brace-format
 msgctxt "modal:goal_editor||field:task_editor|error:parse_general"
 msgid ""
@@ -632,19 +613,16 @@ msgctxt "ui:weeklymonthly|button:edit_goals|label"
 msgid "Edit Goals"
 msgstr "ערוך מטרות"
 
-#: src/modules/statistics/ui/weeklymonthly.py:519
 #, possible-python-brace-format
 msgctxt "ui:weeklymonthly|menu:period|monthly|label"
 msgid "{month} {year}"
 msgstr "{month} {year}"
 
-#: src/modules/statistics/ui/weeklymonthly.py:534
 #, possible-python-brace-format
 msgctxt "ui:weeklymonthly|menu:period|weekly|label"
 msgid "{year} W{week}"
 msgstr "{year} W{week}"
 
-#: src/modules/statistics/ui/weeklymonthly.py:538
 #, possible-python-brace-format
 msgctxt "ui:weeklymonthly|menu:period|weekly|desc"
 msgid ""
@@ -715,7 +693,6 @@ msgctxt "modal:profile_editor|title"
 msgid "Profile Tag Editor"
 msgstr "עורך כרטיס אישי"
 
-#: src/modules/statistics/ui/profile.py:71
 #, possible-python-brace-format
 msgctxt "modal:profile_editor|error:too_many_tags"
 msgid "Too many tags! You can have at most `{limit}` profile tags."
@@ -844,25 +821,21 @@ msgstr ""
 "שימו לב: לא הצלחתי להשיג רשימה עדכנית של המשתמשים מדיסקורד, אז כמה משתמשים "
 "יהיו חסרים. אנא נסו שוב עוד דקה!"
 
-#: src/modules/statistics/ui/leaderboard.py:454
 #, possible-python-brace-format
 msgctxt "ui:leaderboard|since"
 msgid "Counting statistics since {timestamp}"
 msgstr "סופר סטטיסטיקות מ  {timestamp}"
 
-#: src/modules/statistics/ui/leaderboard.py:467
 #, possible-python-brace-format
 msgctxt "ui:leaderboard|mode:voice|message:empty|desc"
 msgid "There has been no voice activity since {timestamp}"
 msgstr "לא הייתה פעילות קולית מאז {timestamp}"
 
-#: src/modules/statistics/ui/leaderboard.py:472
 #, possible-python-brace-format
 msgctxt "ui:leaderboard|mode:text|message:empty|desc"
 msgid "There has been no message activity since {timestamp}"
 msgstr "לא הייתה פעילות הודעות מאז {timestamp}"
 
-#: src/modules/statistics/ui/leaderboard.py:477
 #, possible-python-brace-format
 msgctxt "ui:leaderboard|mode:anki|message:empty|desc"
 msgid "There have been no Anki cards reviewed since {timestamp}"

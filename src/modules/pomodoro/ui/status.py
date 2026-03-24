@@ -10,7 +10,7 @@ from utils.ui import LeoUI
 from babel.translator import ctx_locale
 
 from .. import babel
-from ..lib import TimerRole
+from ..lib import TimerRole, FOCUS_MODE_URL, DASHBOARD_SESSION_URL
 from .config import TimerOptionsUI
 from .edit import TimerEditor
 
@@ -37,6 +37,22 @@ class TimerStatusUI(LeoUI):
         self.timer = timer
         self.channel = channel
         self.show_present = show_present
+
+        # --- AI-MODIFIED (2026-03-16) ---
+        # Purpose: Add website link buttons to timer status UI (visible to ALL users)
+        self.focus_link = Button(
+            style=ButtonStyle.link,
+            url=FOCUS_MODE_URL,
+            label="Focus Mode",
+            emoji="\U0001F4F1"
+        )
+        self.dashboard_link = Button(
+            style=ButtonStyle.link,
+            url=DASHBOARD_SESSION_URL,
+            label="View Stats",
+            emoji="\U0001F4CA"
+        )
+        # --- END AI-MODIFIED ---
 
     @property
     def locale(self):
@@ -215,11 +231,16 @@ class TimerStatusUI(LeoUI):
             self.refresh_stop_button(),
             self.refresh_start_button(),
         )
+        # --- AI-MODIFIED (2026-03-16) ---
+        # Purpose: Add website link buttons row to timer status layout
         if self.timer.running:
             self.set_layout(
-                (self.present_button, self.edit_button, self.stop_button)
+                (self.present_button, self.edit_button, self.stop_button),
+                (self.focus_link, self.dashboard_link)
             )
         else:
             self.set_layout(
-                (self.present_button, self.edit_button, self.start_button)
+                (self.present_button, self.edit_button, self.start_button),
+                (self.focus_link, self.dashboard_link)
             )
+        # --- END AI-MODIFIED ---

@@ -1,0 +1,196 @@
+# Romanian translation for LionBot - text-tracker
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 20:24+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Romanian\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100>0 && n%100<20)) ? 1 : 2);\n"
+
+#: src/tracking/text/cog.py:307
+msgctxt "cmd:configure_message_exp"
+msgid "message_exp"
+msgstr "message_exp"
+
+#: src/tracking/text/cog.py:310
+msgctxt "cmd:configure_message_exp|desc"
+msgid "Configure Message Tracking & Experience"
+msgstr "Configurați urmărirea mesajelor și experiența"
+
+#: src/tracking/text/cog.py:372
+msgctxt "cmd:leo_configure_exp_rates"
+msgid "experience_rates"
+msgstr "experience_rates"
+
+#: src/tracking/text/cog.py:375
+msgctxt "cmd:leo_configure_exp_rates|desc"
+msgid "Global experience rate configuration"
+msgstr "Configurare globală a ratei de experiență"
+
+#: src/tracking/text/ui.py:46
+msgctxt "ui:text_tracker_config|menu:untracked_channels|placeholder"
+msgid "Select Untracked Channels"
+msgstr "Selectați canalele neurmărite"
+
+#: src/tracking/text/ui.py:53
+msgctxt "ui:text_tracker_config|embed|title"
+msgid "Message Tracking Configuration Panel"
+msgstr "Panou de configurare a urmăririi mesajelor"
+
+#: src/tracking/text/ui.py:90
+msgctxt "dash:text_tracking|title"
+msgid "Message XP configuration ({commands[config message_exp]})"
+msgstr "Configurare XP pentru mesaje ({commands[config message_exp]})"
+
+#: src/tracking/text/ui.py:94
+msgctxt "dash:text_tracking|dropdown|placeholder"
+msgid "Message XP Panel"
+msgstr "Panou XP pentru mesaje"
+
+#: src/tracking/text/settings.py:35
+msgctxt "guildset:xp_per_period"
+msgid "xp_per_5min"
+msgstr "xp_per_5min"
+
+#: src/tracking/text/settings.py:38
+msgctxt "guildset:xp_per_period|desc"
+msgid "How much XP members will be given every 5 minute period they are active."
+msgstr "Cât XP vor primi membrii pentru fiecare perioadă activă de 5 minute."
+
+#: src/tracking/text/settings.py:42
+msgctxt "guildset:xp_per_period|long_desc"
+msgid "Amount of message XP to give members for each 5 minute period in which they are active (send a message). Note that this XP is only given *once* per period."
+msgstr "Cantitatea de XP pentru mesaje per perioadă activă de 5 minute (trimit un mesaj). Acest XP se acordă doar *o dată* per perioadă."
+
+#: src/tracking/text/settings.py:47
+msgctxt "guildset:xp_per_period|accepts"
+msgid "Number of message XP to reward per 5 minute active period."
+msgstr "Numărul de XP pentru mesaje ca recompensă per perioadă activă de 5 minute."
+
+#, possible-python-brace-format
+msgctxt "guildset:xp_per_period|set_response"
+msgid "For every **5** minutes they are active (i.e. in which they send a message), members will now be given **{amount}** XP."
+msgstr "Pentru fiecare **5** minute de activitate (adică trimit un mesaj), membrii vor primi acum **{amount}** XP."
+
+#: src/tracking/text/settings.py:68
+msgctxt "guildset:word_xp"
+msgid "xp_per_100words"
+msgstr "xp_per_100words"
+
+#: src/tracking/text/settings.py:71
+msgctxt "guildset:word_xp|desc"
+msgid "How much XP members will be given per hundred words they write."
+msgstr "Cât XP vor primi membrii pentru fiecare sută de cuvinte scrise."
+
+#: src/tracking/text/settings.py:75
+msgctxt "guildset:word_xp|long_desc"
+msgid "Amount of message XP to be given (additionally to the XP per period) for each hundred words. Useful for rewarding communication."
+msgstr "Cantitatea de XP pentru mesaje (în plus față de XP per perioadă) per sută de cuvinte. Util pentru recompensarea comunicării."
+
+#: src/tracking/text/settings.py:80
+msgctxt "guildset:word_xp|accepts"
+msgid "Number of XP to reward per hundred words sent."
+msgstr "Numărul de XP ca recompensă pentru fiecare sută de cuvinte trimise."
+
+#, possible-python-brace-format
+msgctxt "guildset:word_xp|set_response"
+msgid "For every **100** words they send, members will now be rewarded an additional **{amount}** XP."
+msgstr "Pentru fiecare **100** cuvinte trimise, membrii vor primi acum **{amount}** XP suplimentar."
+
+#: src/tracking/text/settings.py:99
+msgctxt "guildset:untracked_text_channels"
+msgid "untracked_text_channels"
+msgstr "untracked_text_channels"
+
+#: src/tracking/text/settings.py:102
+msgctxt "guildset:untracked_text_channels|desc"
+msgid "Channels in which Message XP will not be given."
+msgstr "Canalele în care nu se va acorda XP pentru mesaje."
+
+#: src/tracking/text/settings.py:106
+msgctxt "guildset:untracked_text_channels|long_desc"
+msgid "Messages sent in these channels will not count towards a member's message XP. If a category is selected, then all channels under the category will also be untracked."
+msgstr "Mesajele trimise în aceste canale nu vor conta pentru XP-ul de mesaje. Dacă este selectată o categorie, toate canalele din ea vor fi de asemenea neurmărite."
+
+#: src/tracking/text/settings.py:111
+msgctxt "guildset:untracked_text_channels|accepts"
+msgid "Comma separated list of untracked text channel names or ids."
+msgstr "Lista separată prin virgule a numelor sau ID-urilor canalelor text neurmărite."
+
+#: src/tracking/text/settings.py:115
+msgctxt "guildset:untracked_text_channels|notset"
+msgid "Not Set (all text channels will be tracked.)"
+msgstr "Nesetat (toate canalele text vor fi urmărite.)"
+
+#, possible-python-brace-format
+msgctxt "guildset:untracked_text_channels|set_response|set"
+msgid "Messages in or under the following channels will be ignored: {channels}"
+msgstr "Mesajele din următoarele canale vor fi ignorate: {channels}"
+
+#: src/tracking/text/settings.py:137
+msgctxt "guildset:untracked_text_channels|set_response|notset"
+msgid "Message XP will now be tracked in every channel."
+msgstr "XP-ul pentru mesaje va fi acum urmărit în fiecare canal."
+
+#: src/tracking/text/settings.py:146
+msgctxt "guildset:untracked_text_channels|set_using"
+msgid "Channel selector below"
+msgstr "Selector de canal mai jos"
+
+#: src/tracking/text/settings.py:177
+msgctxt "botset:xp_per_period"
+msgid "xp_per_5min"
+msgstr "xp_per_5min"
+
+#: src/tracking/text/settings.py:180
+msgctxt "botset:xp_per_period|desc"
+msgid "How much global XP members will be given every 5 minute period they are active."
+msgstr "Cât XP global vor primi membrii pentru fiecare perioadă activă de 5 minute."
+
+#: src/tracking/text/settings.py:184
+msgctxt "botset:xp_per_period|long_desc"
+msgid "Amount of global message XP to give members for each 5 minute period in which they are active (send a message). Note that this XP is only given *once* per period."
+msgstr "Cantitatea de XP global pentru mesaje per perioadă activă de 5 minute (trimiterea unui mesaj). Acest XP se acordă doar *o dată* per perioadă."
+
+#: src/tracking/text/settings.py:190
+msgctxt "botset:xp_per_period|accepts"
+msgid "Number of message XP to reward per 5 minute active period."
+msgstr "Numărul de XP pentru mesaje ca recompensă per perioadă activă de 5 minute."
+
+#, possible-python-brace-format
+msgctxt "leoset:xp_per_period|set_response"
+msgid "For every **5** minutes they are active (i.e. in which they send a message), all users will now be given **{amount}** global XP."
+msgstr "Pentru fiecare **5** minute de activitate (adică trimit un mesaj), toți utilizatorii vor primi acum **{amount}** XP global."
+
+#: src/tracking/text/settings.py:210
+msgctxt "botset:word_xp"
+msgid "xp_per_100words"
+msgstr "xp_per_100words"
+
+#: src/tracking/text/settings.py:213
+msgctxt "botset:word_xp|desc"
+msgid "How much global XP members will be given per hundred words they write."
+msgstr "Cât XP global vor primi membrii pentru fiecare sută de cuvinte scrise."
+
+#: src/tracking/text/settings.py:217
+msgctxt "botset:word_xp|long_desc"
+msgid "Amount of global message XP to be given (additionally to the XP per period) for each hundred words. Useful for rewarding communication."
+msgstr "Cantitatea de XP global pentru mesaje (în plus față de XP per perioadă) per sută de cuvinte. Util pentru recompensarea comunicării."
+
+#: src/tracking/text/settings.py:222
+msgctxt "botset:word_xp|accepts"
+msgid "Number of XP to reward per hundred words sent."
+msgstr "Numărul de XP ca recompensă pentru fiecare sută de cuvinte trimise."
+
+#, possible-python-brace-format
+msgctxt "leoset:word_xp|set_response"
+msgid "For every **100** words they send, users will now be rewarded an additional **{amount}** global XP."
+msgstr "Pentru fiecare **100** cuvinte trimise, utilizatorii vor primi acum **{amount}** XP global suplimentar."

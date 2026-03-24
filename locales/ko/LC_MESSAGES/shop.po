@@ -1,0 +1,578 @@
+# Korean translation for LionBot - shop
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 21:12+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Korean\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/modules/shop/cog.py:108
+msgctxt "group:editshop"
+msgid "editshop"
+msgstr "editshop"
+
+#: src/modules/shop/cog.py:117
+msgctxt "cmd:shop"
+msgid "shop"
+msgstr "shop"
+
+#: src/modules/shop/cog.py:118
+msgctxt "cmd:shop|desc"
+msgid "Purchase coloures, roles, and other goodies with LionCoins."
+msgstr "LionCoins로 색상, 역할 및 기타 아이템을 구매하세요."
+
+#: src/modules/shop/cog.py:125
+msgctxt "cmd:shop_open"
+msgid "open"
+msgstr "open"
+
+#: src/modules/shop/cog.py:126
+msgctxt "cmd:shop_open|desc"
+msgid "Open the server shop."
+msgstr "서버 상점을 엽니다."
+
+#: src/modules/shop/cog.py:153
+msgctxt "cmd:shop_open|error:no_shops"
+msgid "There is nothing to buy!"
+msgstr "구매할 수 있는 것이 없습니다!"
+
+#: src/modules/shop/cog.py:215
+msgctxt "ui:stores|button:close|label"
+msgid "Close"
+msgstr "닫기"
+
+#: src/modules/shop/cog.py:222
+msgctxt "ui:stores|button:close|response|title"
+msgid "Shop Closed"
+msgstr "상점 닫힘"
+
+#, possible-python-brace-format
+msgctxt "ui:colourstore|menu:buycolours|label"
+msgid "{name} ({price} LC)"
+msgstr "{name} ({price} LC)"
+
+#, possible-python-brace-format
+msgctxt "ui:colourstore|menu:buycolours|label"
+msgid "{name} (This is your colour!)"
+msgstr "{name} (이것은 당신의 색상입니다!)"
+
+#, possible-python-brace-format
+msgctxt "ui:colourstore|menu:buycolours|desc"
+msgid "Colour: {colour}"
+msgstr "색상: {colour}"
+
+#: src/modules/shop/shops/colours.py:120
+msgctxt "ui:colourstore|menu:buycolours|desc"
+msgid "Colour: Unknown"
+msgstr "색상: 알 수 없음"
+
+#: src/modules/shop/shops/colours.py:134
+msgctxt "shop:colours|name"
+msgid "Colour Shop"
+msgstr "색상 상점"
+
+#: src/modules/shop/shops/colours.py:173
+msgctxt "shop:colour|purchase|error:not_purchasable"
+msgid "This item may not be purchased!"
+msgstr "이 아이템은 구매할 수 없습니다!"
+
+#: src/modules/shop/shops/colours.py:186
+msgctxt "shop:colour|purchase|error:no_guild"
+msgid "Could not retrieve the server from Discord!"
+msgstr "Discord에서 서버를 가져올 수 없습니다!"
+
+#: src/modules/shop/shops/colours.py:196
+msgctxt "shop:colour|purchase|error:no_member"
+msgid "Could not retrieve the member from Discord."
+msgstr "Discord에서 멤버를 가져올 수 없습니다."
+
+#: src/modules/shop/shops/colours.py:206
+msgctxt "shop:colour|purchase|error:no_role"
+msgid "This colour role could not be found in the server."
+msgstr "이 색상 역할을 서버에서 찾을 수 없습니다."
+
+#, possible-python-brace-format
+msgctxt "shop:colour|purchase|error:low_balance"
+msgid ""
+"This item costs {coin}{amount}!\n"
+"Your balance is {coin}{balance}"
+msgstr ""
+"이 아이템의 가격은 {coin}{amount}입니다!\n"
+"잔액: {coin}{balance}"
+
+#: src/modules/shop/shops/colours.py:230
+msgctxt "shop:colour|purchase|error:owned"
+msgid "You already own this item!"
+msgstr "이미 이 아이템을 소유하고 있습니다!"
+
+#: src/modules/shop/shops/colours.py:264
+msgctxt "shop:colour|purchase|error:failed_no_role"
+msgid "This colour role no longer exists!"
+msgstr "이 색상 역할은 더 이상 존재하지 않습니다!"
+
+#: src/modules/shop/shops/colours.py:271
+msgctxt "shop:colour|purchase|error:failed_permissions"
+msgid "I do not have enough permissions to give you this colour role!"
+msgstr "이 색상 역할을 부여할 권한이 충분하지 않습니다!"
+
+#: src/modules/shop/shops/colours.py:278
+msgctxt "shop:colour|purchase|error:failed_unknown"
+msgid "An unknown error occurred while giving you this colour role!"
+msgstr "이 색상 역할을 부여하는 중 알 수 없는 오류가 발생했습니다!"
+
+#: src/modules/shop/shops/colours.py:306
+msgctxt "eventlog|event:purchase_colour|title"
+msgid "Member Purchased Colour Role"
+msgstr "멤버가 색상 역할을 구매했습니다"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:purchase_colour|desc"
+msgid "{member} purchased {role} from the colour shop."
+msgstr "{member}이(가) 색상 상점에서 {role}을(를) 구매했습니다."
+
+#: src/modules/shop/shops/colours.py:365
+msgctxt "grp:editshop_colours"
+msgid "colours"
+msgstr "colours"
+
+#: src/modules/shop/shops/colours.py:370
+msgctxt "cmd:editshop_colours_create"
+msgid "create"
+msgstr "create"
+
+#: src/modules/shop/shops/colours.py:373
+msgctxt "cmd:editshop_colours_create|desc"
+msgid "Create a new colour role with the given colour."
+msgstr "지정한 색상으로 새 색상 역할을 만듭니다."
+
+#: src/modules/shop/shops/colours.py:377
+msgctxt "cmd:editshop_colours_create|param:colour"
+msgid "colour"
+msgstr "colour"
+
+#: src/modules/shop/shops/colours.py:378
+msgctxt "cmd:editshop_colours_create|param:name"
+msgid "name"
+msgstr "name"
+
+#: src/modules/shop/shops/colours.py:379
+msgctxt "cmd:editshop_colours_create|param:price"
+msgid "price"
+msgstr "price"
+
+#: src/modules/shop/shops/colours.py:384
+msgctxt "cmd:editshop_colours_create|param:colour|desc"
+msgid "What colour should the role be? (As a hex code, e.g. #AB22AB)"
+msgstr "역할의 색상은 무엇으로 할까요? (16진수 코드로, 예: #AB22AB)"
+
+#: src/modules/shop/shops/colours.py:388
+msgctxt "cmd:editshop_colours_create|param:name|desc"
+msgid "What should the colour role be called?"
+msgstr "색상 역할의 이름은 무엇으로 할까요?"
+
+#: src/modules/shop/shops/colours.py:392
+msgctxt "cmd:editshop_colours_create|param:price|desc"
+msgid "How much should the colour role cost?"
+msgstr "색상 역할의 가격은 얼마로 할까요?"
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_create|error:parse_colour"
+msgid ""
+"I could not extract a colour value from `{colour}`!\n"
+"Please enter the colour as a hex string, e.g. `#FA0BC1`"
+msgstr ""
+"`{colour}`에서 색상 값을 추출할 수 없습니다!\n"
+"색상을 16진수 문자열로 입력하세요. 예: `#FA0BC1`"
+
+#: src/modules/shop/shops/colours.py:424
+msgctxt "cmd:editshop_colours_create|error:perms"
+msgid ""
+"I do not have permission to create server roles!\n"
+"Please either give me this permission, or create the role manually and use `/editshop colours add` instead."
+msgstr ""
+"서버 역할을 생성할 권한이 없습니다!\n"
+"이 권한을 부여하거나, 역할을 수동으로 만들고 `/editshop colours add`를 사용하세요."
+
+#: src/modules/shop/shops/colours.py:441
+msgctxt "cmd:editshop_colours_create|error:max_colours"
+msgid ""
+"This server already has the maximum of `25` colour roles!\n"
+"Please remove some before adding or creating more."
+msgstr ""
+"이 서버에는 이미 최대 `25`개의 색상 역할이 있습니다!\n"
+"더 추가하거나 만들기 전에 일부를 제거하세요."
+
+#: src/modules/shop/shops/colours.py:460
+msgctxt "cmd:editshop_colours_create|error:failed_unknown"
+msgid ""
+"An unknown Discord error occurred while creating your colour role!\n"
+"Please try again in a few minutes."
+msgstr ""
+"색상 역할을 생성하는 중 알 수 없는 Discord 오류가 발생했습니다!\n"
+"몇 분 후에 다시 시도하세요."
+
+#: src/modules/shop/shops/colours.py:515
+msgctxt "cmd:editshop_colours_create|resp:done|title"
+msgid "Colour Role Created"
+msgstr "색상 역할이 생성되었습니다"
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_create|resp:done|desc"
+msgid "You have created the role {mention}, and added it to the colour shop for {coin}**{price}**!"
+msgstr "역할 {mention}을(를) 생성하고 {coin}**{price}**에 색상 상점에 추가했습니다!"
+
+#: src/modules/shop/shops/colours.py:526
+msgctxt "cmd:editshop_colours_create|resp:done|field:position_note|value"
+msgid "The new colour role was added below all other roles. Remember a member's active colour is determined by their highest coloured role!"
+msgstr "새 색상 역할이 다른 모든 역할 아래에 추가되었습니다. 멤버의 활성 색상은 가장 높은 색상 역할에 의해 결정됩니다!"
+
+#: src/modules/shop/shops/colours.py:530
+msgctxt "cmd:editshop_colours_create|resp:done|field:position_note|name"
+msgid "Note"
+msgstr "참고"
+
+#: src/modules/shop/shops/colours.py:539
+msgctxt "cmd:editshop_colours_edit"
+msgid "edit"
+msgstr "edit"
+
+#: src/modules/shop/shops/colours.py:542
+msgctxt "cmd:editshop_colours_edit|desc"
+msgid "Edit the name, colour, or price of a colour role."
+msgstr "색상 역할의 이름, 색상 또는 가격을 편집합니다."
+
+#: src/modules/shop/shops/colours.py:546
+msgctxt "cmd:editshop_colours_edit|param:role"
+msgid "role"
+msgstr "role"
+
+#: src/modules/shop/shops/colours.py:547
+msgctxt "cmd:editshop_colours_edit|param:name"
+msgid "name"
+msgstr "name"
+
+#: src/modules/shop/shops/colours.py:548
+msgctxt "cmd:editshop_colours_edit|param:colour"
+msgid "colour"
+msgstr "colour"
+
+#: src/modules/shop/shops/colours.py:549
+msgctxt "cmd:editshop_colours_edit|param:price"
+msgid "price"
+msgstr "price"
+
+#: src/modules/shop/shops/colours.py:554
+msgctxt "cmd:editshop_colours_edit|param:role|desc"
+msgid "Select a colour role to edit."
+msgstr "편집할 색상 역할을 선택하세요."
+
+#: src/modules/shop/shops/colours.py:558
+msgctxt "cmd:editshop_colours_edit|param:name|desc"
+msgid "New name to give the colour role."
+msgstr "색상 역할의 새 이름."
+
+#: src/modules/shop/shops/colours.py:562
+msgctxt "cmd:editshop_colours_edit|param:colour|desc"
+msgid "New colour for the colour role (as hex, e.g. #AB12AB)."
+msgstr "색상 역할의 새 색상 (16진수, 예: #AB12AB)."
+
+#: src/modules/shop/shops/colours.py:566
+msgctxt "cmd:editshop_colours_edit|param:price|desc"
+msgid "New price for the colour role."
+msgstr "색상 역할의 새 가격."
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_edit|error:invalid_role"
+msgid "{mention} is not in the colour role shop!"
+msgstr "{mention}은(는) 색상 역할 상점에 없습니다!"
+
+#: src/modules/shop/shops/colours.py:609
+msgctxt "cmd:editshop_colours_edit|error:no_args"
+msgid "You must give me one of `name`, `colour`, or `price` to update!"
+msgstr "업데이트하려면 `name`, `colour` 또는 `price` 중 하나를 지정해야 합니다!"
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_edit|error:parse_colour"
+msgid ""
+"I could not extract a colour value from `{colour}`!\n"
+"Please enter the colour as a hex string, e.g. `#FA0BC1`"
+msgstr ""
+"`{colour}`에서 색상 값을 추출할 수 없습니다!\n"
+"색상을 16진수 문자열로 입력하세요. 예: `#FA0BC1`"
+
+#: src/modules/shop/shops/colours.py:640
+msgctxt "cmd:editshop_colours_edit|error:perms"
+msgid "I do not have sufficient server permissions to edit this role!"
+msgstr "이 역할을 편집할 서버 권한이 충분하지 않습니다!"
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_edit|resp:done|line:price"
+msgid "{tick} Set price to {coin}**{price}**"
+msgstr "{tick} 가격을 {coin}**{price}**(으)로 설정했습니다"
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_edit|resp:done|line:role"
+msgid "{tick} Updated role to {mention}"
+msgstr "{tick} 역할이 {mention}(으)로 업데이트되었습니다"
+
+#: src/modules/shop/shops/colours.py:683
+msgctxt "cmd:editshop_colours_edit|resp:done|embed:title"
+msgid "Colour Role Updated"
+msgstr "색상 역할이 업데이트되었습니다"
+
+#: src/modules/shop/shops/colours.py:689
+msgctxt "cmd:editshop_colours_auto"
+msgid "auto"
+msgstr "auto"
+
+#: src/modules/shop/shops/colours.py:690
+msgctxt "cmd:editshop_colours_auto|desc"
+msgid "Automatically create a set of colour roles."
+msgstr "색상 역할 세트를 자동으로 생성합니다."
+
+#: src/modules/shop/shops/colours.py:699
+msgctxt "cmd:editshop_colours_add"
+msgid "add"
+msgstr "add"
+
+#: src/modules/shop/shops/colours.py:702
+msgctxt "cmd:editshop_colours_add|desc"
+msgid "Add an existing role to the colour shop."
+msgstr "기존 역할을 색상 상점에 추가합니다."
+
+#: src/modules/shop/shops/colours.py:706
+msgctxt "cmd:editshop_colours_add|param:role"
+msgid "role"
+msgstr "role"
+
+#: src/modules/shop/shops/colours.py:707
+msgctxt "cmd:editshop_colours_add|param:price"
+msgid "price"
+msgstr "price"
+
+#: src/modules/shop/shops/colours.py:712
+msgctxt "cmd:editshop_colours_add|param:role|desc"
+msgid "Select a role to add to the colour shop."
+msgstr "색상 상점에 추가할 역할을 선택하세요."
+
+#: src/modules/shop/shops/colours.py:716
+msgctxt "cmd:editshop_colours_add|param:price|desc"
+msgid "How much should this role cost?"
+msgstr "이 역할의 가격은 얼마로 할까요?"
+
+#: src/modules/shop/shops/colours.py:741
+msgctxt "cmd:editshop_colours_add|error:max_colours"
+msgid ""
+"This server already has the maximum of `25` colour roles!\n"
+"Please remove some before adding or creating more."
+msgstr ""
+"이 서버에는 이미 최대 `25`개의 색상 역할이 있습니다!\n"
+"더 추가하거나 만들기 전에 일부를 제거하세요."
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_add|error:role_exists"
+msgid "The role {mention} is already registered as a colour role!"
+msgstr "역할 {mention}은(는) 이미 색상 역할로 등록되어 있습니다!"
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_add|error:role_perms"
+msgid "I do not have enough permissions to assign the role {mention}! Please ensure I have the `MANAGE_ROLES` permission, and that my top role is above this role."
+msgstr "역할 {mention}을(를) 할당할 권한이 충분하지 않습니다! `MANAGE_ROLES` 권한이 있고 최상위 역할이 이 역할보다 위에 있는지 확인하세요."
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_add|error:caller_perms"
+msgid "You do not have sufficient server permissions to assign {mention} to the shop! You must have `MANAGE_ROLES`, and your top role must be above this role."
+msgstr "{mention}을(를) 상점에 할당할 서버 권한이 충분하지 않습니다! `MANAGE_ROLES` 권한이 있어야 하며 최상위 역할이 이 역할보다 위에 있어야 합니다."
+
+#: src/modules/shop/shops/colours.py:782
+msgctxt "cmd:editshop_colours_add|error:role_has_admin"
+msgid "I refuse to add an administrator role to the LionCoin shop. That is a really bad idea."
+msgstr "LionCoin 상점에 관리자 역할을 추가하는 것을 거부합니다. 정말 나쁜 생각입니다."
+
+#: src/modules/shop/shops/colours.py:803
+msgctxt "cmd:editshop_colours_add|resp:done|embed:title"
+msgid "Colour Role Created"
+msgstr "색상 역할이 생성되었습니다"
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_add|resp:done|embed:desc"
+msgid "You have added {mention} to the colour shop for {coin}**{price}**!"
+msgstr "{mention}을(를) {coin}**{price}**에 색상 상점에 추가했습니다!"
+
+#: src/modules/shop/shops/colours.py:814
+msgctxt "cmd:editshop_colours_clear"
+msgid "clear"
+msgstr "clear"
+
+#: src/modules/shop/shops/colours.py:817
+msgctxt "cmd:editshop_colours_clear|desc"
+msgid "Remove all the colour roles from the shop, and optionally delete the roles."
+msgstr "상점에서 모든 색상 역할을 제거하고, 선택적으로 역할을 삭제합니다."
+
+#: src/modules/shop/shops/colours.py:821
+msgctxt "cmd:editshop_colours_clear|param:delete"
+msgid "delete_roles"
+msgstr "delete_roles"
+
+#: src/modules/shop/shops/colours.py:826
+msgctxt "cmd:editshop_colours_clear|param:delete|desc"
+msgid "Also delete the associated roles."
+msgstr "관련 역할도 삭제합니다."
+
+#: src/modules/shop/shops/colours.py:868
+msgctxt "cmd:editshop_colours_clear|error:no_colours"
+msgid "There are no coloured roles to remove!"
+msgstr "제거할 색상 역할이 없습니다!"
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_clear|resp:done|line:clear"
+msgid "{tick} Colour shop cleared."
+msgstr "{tick} 색상 상점이 비워졌습니다."
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_clear|resp:done|line:refunding"
+msgid "{loading} Refunded **{count}/{total}** members."
+msgstr "{loading} **{count}/{total}**명의 멤버에게 환불했습니다."
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_clear|resp:done|line:refunded"
+msgid "{tick} Refunded **{total}/{total}** members."
+msgstr "{tick} **{total}/{total}**명의 멤버에게 환불했습니다."
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_clear|resp:done|line:deleted_failed"
+msgid "{emoji} Deleted **{count}/{total}** colour roles. (**{failed}** failed!)"
+msgstr "{emoji} **{count}/{total}**개의 색상 역할을 삭제했습니다. (**{failed}**개 실패!)"
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_clear|resp:done|line:deleted"
+msgid "{emoji} Deleted **{count}/{total}** colour roles."
+msgstr "{emoji} **{count}/{total}**개의 색상 역할을 삭제했습니다."
+
+#: src/modules/shop/shops/colours.py:996
+msgctxt "cmd:editshop_colours_remove"
+msgid "remove"
+msgstr "remove"
+
+#: src/modules/shop/shops/colours.py:999
+msgctxt "cmd:editshop_colours_remove|desc"
+msgid "Remove a specific colour role from the shop."
+msgstr "상점에서 특정 색상 역할을 제거합니다."
+
+#: src/modules/shop/shops/colours.py:1003
+msgctxt "cmd:editshop_colours_remove|param:role"
+msgid "role"
+msgstr "role"
+
+#: src/modules/shop/shops/colours.py:1004
+msgctxt "cmd:editshop_colours_remove"
+msgid "delete_role"
+msgstr "delete_role"
+
+#: src/modules/shop/shops/colours.py:1009
+msgctxt "cmd:editshop_colours_remove|param:role|desc"
+msgid "Select the colour role to remove."
+msgstr "제거할 색상 역할을 선택하세요."
+
+#: src/modules/shop/shops/colours.py:1013
+msgctxt "cmd:editshop_colours_remove|param:delete_role|desc"
+msgid "Whether to delete the associated role."
+msgstr "관련 역할을 삭제할지 여부."
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_remove|error:not_colour"
+msgid "{mention} is not in the colour role shop!"
+msgstr "{mention}은(는) 색상 역할 상점에 없습니다!"
+
+#: src/modules/shop/shops/colours.py:1056
+msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
+msgid "Successfully deleted the role."
+msgstr "역할이 성공적으로 삭제되었습니다."
+
+#: src/modules/shop/shops/colours.py:1061
+msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
+msgid "I do not have sufficient permissions to delete the role."
+msgstr "역할을 삭제할 권한이 충분하지 않습니다."
+
+#: src/modules/shop/shops/colours.py:1066
+msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
+msgid "Failed to delete the role for an unknown reason."
+msgstr "알 수 없는 이유로 역할 삭제에 실패했습니다."
+
+#: src/modules/shop/shops/colours.py:1071
+msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
+msgid "Could not find the role in order to delete it."
+msgstr "삭제할 역할을 찾을 수 없습니다."
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_remove|resp:done|embed:desc"
+msgid ""
+"Removed {mention} from the colour shop.\n"
+"{delete_line}"
+msgstr ""
+"색상 상점에서 {mention}을(를) 제거했습니다.\n"
+"{delete_line}"
+
+#: src/modules/shop/shops/colours.py:1160
+msgctxt "ui:colourstore|menu:buycolours|embed:error|title"
+msgid "Purchase Failed!"
+msgstr "구매 실패!"
+
+#, possible-python-brace-format
+msgctxt "ui:colourstore|menu:buycolours|resp:done|desc"
+msgid "{tick} You have purchased {mention}"
+msgstr "{tick} {mention}을(를) 구매했습니다"
+
+#: src/modules/shop/shops/colours.py:1206
+msgctxt "ui:colourstore|menu:buycolours|placeholder"
+msgid "There are no colour roles available to purchase!"
+msgstr "구매 가능한 색상 역할이 없습니다!"
+
+#: src/modules/shop/shops/colours.py:1212
+msgctxt "ui:colourstore|menu:buycolours|placeholder"
+msgid "Select a colour role to purchase!"
+msgstr "구매할 색상 역할을 선택하세요!"
+
+#, possible-python-brace-format
+msgctxt "ui:colourstore|embed|line:owned_item"
+msgid "`[{j:02}]` | `{price} LC` | {mention} (You own this!)"
+msgstr "`[{j:02}]` | `{price} LC` | {mention} (보유 중!)"
+
+#, possible-python-brace-format
+msgctxt "ui:colourstore|embed|line:item"
+msgid "`[{j:02}]` | `{price} LC` | {mention}"
+msgstr "`[{j:02}]` | `{price} LC` | {mention}"
+
+#: src/modules/shop/shops/colours.py:1270
+msgctxt "ui:colourstore|embed|desc"
+msgid "No colour roles available for purchase!"
+msgstr "구매 가능한 색상 역할이 없습니다!"
+
+#: src/modules/shop/shops/colours.py:1273
+msgctxt "ui:colourstore|embed|title"
+msgid "Colour Role Shop"
+msgstr "색상 역할 상점"
+
+#, possible-python-brace-format
+msgctxt "ui:colourstore|embed|footer:paged"
+msgid "Page {current}/{total}"
+msgstr "페이지 {current}/{total}"
+
+#: src/modules/shop/shops/colours.py:1286
+msgctxt "ui:colourstore|embed|field:warning|name"
+msgid "Note!"
+msgstr "참고!"
+
+#, possible-python-brace-format
+msgctxt "ui:colourstore|embed|field:warning|value"
+msgid "Purchasing a new colour role will *replace* your currently colour {current} without refund!"
+msgstr "새 색상 역할을 구매하면 현재 색상 {current}이(가) 환불 없이 *교체*됩니다!"

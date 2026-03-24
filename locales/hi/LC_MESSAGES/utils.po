@@ -1,0 +1,514 @@
+# Hindi translation for LionBot - utils
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 21:36+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Hindi\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/utils/cog.py:18
+msgctxt "cmd:page"
+msgid "page"
+msgstr "page"
+
+#: src/utils/cog.py:21
+msgctxt "cmd:page|desc"
+msgid "Jump to a given page of the ouput of a previous command in this channel."
+msgstr "इस चैनल में पिछले कमांड के आउटपुट के किसी पेज पर जाएं।"
+
+#: src/utils/cog.py:35
+msgctxt "cmd:page|error:no_pager"
+msgid "No pager listening in this channel!"
+msgstr "इस चैनल में कोई पेजर नहीं!"
+
+#: src/utils/cog.py:46
+msgctxt "cmd:page_next"
+msgid "next"
+msgstr "next"
+
+#: src/utils/cog.py:47
+msgctxt "cmd:page_next|desc"
+msgid "Jump to the next page of output."
+msgstr "अगले पेज पर जाएं।"
+
+#: src/utils/cog.py:53
+msgctxt "cmd:page_prev"
+msgid "prev"
+msgstr "prev"
+
+#: src/utils/cog.py:54
+msgctxt "cmd:page_prev|desc"
+msgid "Jump to the previous page of output."
+msgstr "पिछले पेज पर जाएं।"
+
+#: src/utils/cog.py:60
+msgctxt "cmd:page_first"
+msgid "first"
+msgstr "first"
+
+#: src/utils/cog.py:61
+msgctxt "cmd:page_first|desc"
+msgid "Jump to the first page of output."
+msgstr "पहले पेज पर जाएं।"
+
+#: src/utils/cog.py:67
+msgctxt "cmd:page_last"
+msgid "last"
+msgstr "last"
+
+#: src/utils/cog.py:68
+msgctxt "cmd:page_last|desc"
+msgid "Jump to the last page of output."
+msgstr "अंतिम पेज पर जाएं।"
+
+#: src/utils/cog.py:74
+msgctxt "cmd:page_select"
+msgid "select"
+msgstr "select"
+
+#: src/utils/cog.py:75
+msgctxt "cmd:page_select|desc"
+msgid "Select a page of the output to jump to."
+msgstr "जाने के लिए आउटपुट का एक पेज चुनें।"
+
+#: src/utils/cog.py:78
+msgctxt "cmd:page_select|param:page"
+msgid "page"
+msgstr "page"
+
+#: src/utils/cog.py:81
+msgctxt "cmd:page_select|param:page|desc"
+msgid "The page name or number to jump to."
+msgstr "जाने के लिए पेज का नाम या नंबर।"
+
+#: src/utils/cog.py:87
+msgctxt "cmd:page_select|error:no_pager"
+msgid "No pager listening in this channel!"
+msgstr "इस चैनल में कोई पेजर नहीं!"
+
+#: src/utils/cog.py:98
+msgctxt "cmd:page_select|acmpl|error:no_pager"
+msgid "No active pagers in this channel!"
+msgstr "इस चैनल में कोई सक्रिय पेजर नहीं!"
+
+#, possible-python-brace-format
+msgctxt "utils:parse_dur|error"
+msgid "Cannot parse `{value}` as a duration."
+msgstr "`{value}` को अवधि के रूप में पार्स नहीं किया जा सकता।"
+
+#, possible-python-brace-format
+msgctxt "util:Duration|acmpl|error"
+msgid "Cannot extract duration from \"{partial}\""
+msgstr "\"{partial}\" से अवधि निकालने में असमर्थ"
+
+#: src/utils/lib.py:683
+msgctxt "util:parse_dur|regex:day"
+msgid "(?P<value>\\d+)\\s*(?:(d)|(day))"
+msgstr "(?P<value>\\d+)\\s*(?:(d)|(day))"
+
+#: src/utils/lib.py:690
+msgctxt "util:parse_dur|regex:hour"
+msgid "(?P<value>\\d+)\\s*(?:(h)|(hour))"
+msgstr "(?P<value>\\d+)\\s*(?:(h)|(hour))"
+
+#: src/utils/lib.py:697
+msgctxt "util:parse_dur|regex:minute"
+msgid "(?P<value>\\d+)\\s*(?:(m)|(min))"
+msgstr "(?P<value>\\d+)\\s*(?:(m)|(min))"
+
+#: src/utils/lib.py:704
+msgctxt "util:parse_dur|regex:second"
+msgid "(?P<value>\\d+)\\s*(?:(s)|(sec))"
+msgstr "(?P<value>\\d+)\\s*(?:(s)|(sec))"
+
+#, possible-python-brace-format
+msgctxt "parse_timestamp|error:parse"
+msgid "Could not parse `{given}` as a valid reminder time. Try entering the time in the form `HH:MM` or `YYYY-MM-DD HH:MM`."
+msgstr "`{given}` को वैध रिमाइंडर समय के रूप में पार्स नहीं किया जा सका। `HH:MM` या `YYYY-MM-DD HH:MM` प्रारूप आज़माएं।"
+
+#: src/utils/ui/config.py:35
+msgctxt "ui:configui|modal:edit|title"
+msgid "Setting Editor"
+msgstr "सेटिंग संपादक"
+
+#: src/utils/ui/config.py:75
+msgctxt "ui:configui|check|not_permitted"
+msgid "You have insufficient server permissions to use this UI!"
+msgstr "इस UI का उपयोग करने के लिए आपके पास अपर्याप्त सर्वर अनुमतियां हैं!"
+
+#: src/utils/ui/config.py:157
+msgctxt "ui:configui|button:edit|label"
+msgid "Edit"
+msgstr "संपादित करें"
+
+#: src/utils/ui/config.py:196
+msgctxt "ui:guild_config_base|button:reset|label"
+msgid "Reset"
+msgstr "रीसेट"
+
+#: src/utils/ui/config.py:331
+msgctxt "ui:dashboard|error:section_too_long"
+msgid "Oops, the settings in this configuration section are too large, and I can not display them here! Please view the settings in the linked configuration panel instead."
+msgstr "उफ़, इस कॉन्फ़िगरेशन अनुभाग की सेटिंग्स बहुत बड़ी हैं! कृपया लिंक किए गए कॉन्फ़िगरेशन पैनल में सेटिंग्स देखें।"
+
+#: src/utils/ui/pagers.py:50
+msgctxt "cmd:page|pager:Pager|options:next"
+msgid "n, nxt, next, forward, +"
+msgstr "n, nxt, next, forward, +"
+
+#: src/utils/ui/pagers.py:53
+msgctxt "cmd:page|pager:Pager|options:prev"
+msgid "p, prev, back, -"
+msgstr "p, prev, back, -"
+
+#: src/utils/ui/pagers.py:56
+msgctxt "cmd:page|pager:Pager|options:first"
+msgid "f, first, one, start"
+msgstr "f, first, one, start"
+
+#: src/utils/ui/pagers.py:59
+msgctxt "cmd:page|pager:Pager|options:last"
+msgid "l, last, end"
+msgstr "l, last, end"
+
+#, possible-python-brace-format
+msgctxt "cmd:page|pager:Pager|error:parse"
+msgid "Could not understand page specification `{value}`."
+msgstr "पेज विनिर्देश `{value}` समझ नहीं आया।"
+
+#, possible-python-brace-format
+msgctxt "cmd:page|acmpl|pager:Pager|choice:last"
+msgid "Last: Page {page}/{total}"
+msgstr "अंतिम: पेज {page}/{total}"
+
+#, possible-python-brace-format
+msgctxt "cmd:page|acmpl|pager:Pager|choice:current"
+msgid "Current: Page {page}/{total}"
+msgstr "वर्तमान: पेज {page}/{total}"
+
+#, possible-python-brace-format
+msgctxt "cmd:page|acmpl|pager:Pager|choice:general"
+msgid "Page {page}"
+msgstr "पेज {page}"
+
+#, possible-python-brace-format
+msgctxt "cmd:page|acmpl|pager:Page|choice:select"
+msgid "Selected: Page {page}/{total}"
+msgstr "चयनित: पेज {page}/{total}"
+
+#: src/utils/ui/pagers.py:363
+msgctxt "cmd:page|acmpl|pager:Page|error:parse"
+msgid "No matching pages!"
+msgstr "कोई मेल खाने वाले पेज नहीं!"
+
+#: src/utils/ui/msgeditor.py:75
+msgctxt "ui:msg_editor|error:empty"
+msgid "Rendering failed! The message content and embed cannot both be empty."
+msgstr "रेंडरिंग विफल! संदेश सामग्री और एम्बेड दोनों खाली नहीं हो सकते।"
+
+#, possible-python-brace-format
+msgctxt "ui:msg_editor|error:embed_failed"
+msgid ""
+"Rendering failed! Could not parse the embed.\n"
+"Error: {error}"
+msgstr ""
+"रेंडरिंग विफल! एम्बेड को पार्स नहीं किया जा सका।\n"
+"त्रुटि: {error}"
+
+#, possible-python-brace-format
+msgctxt "ui:msg_editor|error:invalid_change"
+msgid ""
+"Rendering failed! The message was not modified.\n"
+"Error: `{text}`"
+msgstr ""
+"रेंडरिंग विफल! संदेश संशोधित नहीं किया गया।\n"
+"त्रुटि: `{text}`"
+
+#: src/utils/ui/msgeditor.py:123
+msgctxt "ui:msg_editor|modal:content|field:content|label"
+msgid "Message Content"
+msgstr "संदेश सामग्री"
+
+#: src/utils/ui/msgeditor.py:132
+msgctxt "ui:msg_editor|modal:content|title"
+msgid "Content Editor"
+msgstr "सामग्री संपादक"
+
+#: src/utils/ui/msgeditor.py:150
+msgctxt "ui:msg_editor|button:edit|label"
+msgid "Edit Content"
+msgstr "सामग्री संपादित करें"
+
+#: src/utils/ui/msgeditor.py:162
+msgctxt "ui:msg_editor|button:add_embed|sample_embed|title"
+msgid "Title Placeholder"
+msgstr "शीर्षक प्लेसहोल्डर"
+
+#: src/utils/ui/msgeditor.py:163
+msgctxt "ui:msg_editor|button:add_embed|sample_embed|description"
+msgid "Description Placeholder"
+msgstr "विवरण प्लेसहोल्डर"
+
+#: src/utils/ui/msgeditor.py:174
+msgctxt "ui:msg_editor|button:add_embed|label"
+msgid "Add Embed"
+msgstr "एम्बेड जोड़ें"
+
+#: src/utils/ui/msgeditor.py:190
+msgctxt "ui:msg_editor|button:rm_embed|sample_content"
+msgid "Content Placeholder"
+msgstr "सामग्री प्लेसहोल्डर"
+
+#: src/utils/ui/msgeditor.py:199
+msgctxt "ui:msg_editor|button:rm_embed|label"
+msgid "Remove Embed"
+msgstr "एम्बेड हटाएं"
+
+#: src/utils/ui/msgeditor.py:217
+msgctxt "ui:msg_editor|modal:body|field:content|label"
+msgid "Message Content"
+msgstr "संदेश सामग्री"
+
+#: src/utils/ui/msgeditor.py:228
+msgctxt "ui:msg_editor|modal:body|field:desc|label"
+msgid "Embed Description"
+msgstr "एम्बेड विवरण"
+
+#: src/utils/ui/msgeditor.py:239
+msgctxt "ui:msg_editor|modal:body|field:title|label"
+msgid "Embed Title"
+msgstr "एम्बेड शीर्षक"
+
+#: src/utils/ui/msgeditor.py:250
+msgctxt "ui:msg_editor|modal:body|field:colour|label"
+msgid "Embed Colour"
+msgstr "एम्बेड रंग"
+
+#: src/utils/ui/msgeditor.py:265
+msgctxt "ui:msg_editor|modal:body|title"
+msgid "Message Body Editor"
+msgstr "संदेश बॉडी संपादक"
+
+#: src/utils/ui/msgeditor.py:290
+msgctxt "ui:msg_editor|button:body|error:invalid_colour"
+msgid "Invalid colour format! Please enter colours as hex codes, e.g. `#E67E22`"
+msgstr "अमान्य रंग प्रारूप! कृपया रंगों को हेक्स कोड के रूप में दर्ज करें, जैसे `#E67E22`"
+
+#: src/utils/ui/msgeditor.py:310
+msgctxt "ui:msg_editor|button:body|label"
+msgid "Body"
+msgstr "बॉडी"
+
+#: src/utils/ui/msgeditor.py:327
+msgctxt "ui:msg_editor|modal:author|field:name|label"
+msgid "Author Name"
+msgstr "लेखक का नाम"
+
+#: src/utils/ui/msgeditor.py:338
+msgctxt "ui:msg_editor|modal:author|field:link|label"
+msgid "Author URL"
+msgstr "लेखक URL"
+
+#: src/utils/ui/msgeditor.py:348
+msgctxt "ui:msg_editor|modal:author|field:image|label"
+msgid "Author Image URL"
+msgstr "लेखक छवि URL"
+
+#: src/utils/ui/msgeditor.py:359
+msgctxt "ui:msg_editor|modal:author|title"
+msgid "Embed Author Editor"
+msgstr "एम्बेड लेखक संपादक"
+
+#: src/utils/ui/msgeditor.py:385
+msgctxt "ui:msg_editor|button:author|label"
+msgid "Author"
+msgstr "लेखक"
+
+#: src/utils/ui/msgeditor.py:402
+msgctxt "ui:msg_editor|modal:footer|field:text|label"
+msgid "Footer Text"
+msgstr "फुटर टेक्स्ट"
+
+#: src/utils/ui/msgeditor.py:413
+msgctxt "ui:msg_editor|modal:footer|field:image|label"
+msgid "Footer Image URL"
+msgstr "फुटर छवि URL"
+
+#: src/utils/ui/msgeditor.py:423
+msgctxt "ui:msg_editor|modal:footer|field:timestamp|label"
+msgid "Embed Timestamp (in ISO format)"
+msgstr "एम्बेड टाइमस्टैम्प (ISO प्रारूप में)"
+
+#: src/utils/ui/msgeditor.py:435
+msgctxt "ui:msg_editor|modal:footer|title"
+msgid "Embed Footer Editor"
+msgstr "एम्बेड फुटर संपादक"
+
+#: src/utils/ui/msgeditor.py:454
+msgctxt "ui:msg_editor|button:footer|error:invalid_timestamp"
+msgid "Invalid timestamp! Please enter the timestamp in ISO format."
+msgstr "अमान्य टाइमस्टैम्प! कृपया ISO प्रारूप में टाइमस्टैम्प दर्ज करें।"
+
+#: src/utils/ui/msgeditor.py:474
+msgctxt "ui:msg_editor|button:footer|label"
+msgid "Footer"
+msgstr "फुटर"
+
+#: src/utils/ui/msgeditor.py:492
+msgctxt "ui:msg_editor|modal:images|field:thumb|label"
+msgid "Thumbnail Image URL"
+msgstr "थंबनेल छवि URL"
+
+#: src/utils/ui/msgeditor.py:502
+msgctxt "ui:msg_editor|modal:images|field:image|label"
+msgid "Embed Image URL"
+msgstr "एम्बेड छवि URL"
+
+#: src/utils/ui/msgeditor.py:512
+msgctxt "ui:msg_editor|modal:images|title"
+msgid "Embed images Editor"
+msgstr "एम्बेड छवि संपादक"
+
+#: src/utils/ui/msgeditor.py:542
+msgctxt "ui:msg_editor|button:images|label"
+msgid "Images"
+msgstr "छवियां"
+
+#: src/utils/ui/msgeditor.py:560
+msgctxt "ui:msg_editor|modal:add_field|field:position|label"
+msgid "Field number to insert at"
+msgstr "डालने के लिए फ़ील्ड नंबर"
+
+#: src/utils/ui/msgeditor.py:570
+msgctxt "ui:msg_editor|modal:add_field|field:name|label"
+msgid "Field name"
+msgstr "फ़ील्ड का नाम"
+
+#: src/utils/ui/msgeditor.py:580
+msgctxt "ui:msg_editor|modal:add_field|field:value|label"
+msgid "Field value"
+msgstr "फ़ील्ड मान"
+
+#: src/utils/ui/msgeditor.py:590
+msgctxt "ui:msg_editor|modal:add_field|field:inline|label"
+msgid "Whether the field is inline"
+msgstr "क्या फ़ील्ड इनलाइन है"
+
+#: src/utils/ui/msgeditor.py:594
+msgctxt "ui:msg_editor|modal:add_field|field:inline|placeholder"
+msgid "True/False"
+msgstr "True/False"
+
+#: src/utils/ui/msgeditor.py:607
+msgctxt "ui:msg_editor|modal:add_field|title"
+msgid "Add Embed Field"
+msgstr "एम्बेड फ़ील्ड जोड़ें"
+
+#: src/utils/ui/msgeditor.py:627
+msgctxt "ui:msg_editor|modal:add_field|error:position_not_int"
+msgid "The field position must be an integer!"
+msgstr "फ़ील्ड की स्थिति एक पूर्णांक होनी चाहिए!"
+
+#: src/utils/ui/msgeditor.py:646
+msgctxt "ui:msg_editor|button:add_field|label"
+msgid "Add Field"
+msgstr "फ़ील्ड जोड़ें"
+
+#: src/utils/ui/msgeditor.py:662
+msgctxt "ui:msg_editor|format_field|name_placeholder"
+msgid "-"
+msgstr "-"
+
+#: src/utils/ui/msgeditor.py:691
+msgctxt "ui:msg_editor|modal:edit_field|field:name|label"
+msgid "Field name"
+msgstr "फ़ील्ड का नाम"
+
+#: src/utils/ui/msgeditor.py:702
+msgctxt "ui:msg_editor|modal:edit_field|field:value|label"
+msgid "Field value"
+msgstr "फ़ील्ड मान"
+
+#: src/utils/ui/msgeditor.py:713
+msgctxt "ui:msg_editor|modal:edit_field|field:inline|label"
+msgid "Whether the field is inline"
+msgstr "क्या फ़ील्ड इनलाइन है"
+
+#: src/utils/ui/msgeditor.py:717
+msgctxt "ui:msg_editor|modal:edit_field|field:inline|placeholder"
+msgid "True/False"
+msgstr "True/False"
+
+#: src/utils/ui/msgeditor.py:729
+msgctxt "ui:msg_editor|modal:edit_field|title"
+msgid "Edit Embed Field"
+msgstr "एम्बेड फ़ील्ड संपादित करें"
+
+#: src/utils/ui/msgeditor.py:758
+msgctxt "ui:msg_editor|menu:edit_field|placeholder"
+msgid "Edit Embed Field"
+msgstr "एम्बेड फ़ील्ड संपादित करें"
+
+#: src/utils/ui/msgeditor.py:797
+msgctxt "ui:msg_deleteor|menu:delete_field|placeholder"
+msgid "Remove Embed Field"
+msgstr "एम्बेड फ़ील्ड हटाएं"
+
+#: src/utils/ui/msgeditor.py:833
+msgctxt "ui:msg_editor|button:save|label"
+msgid "Save"
+msgstr "सहेजें"
+
+#: src/utils/ui/msgeditor.py:858
+msgctxt "ui:msg_editor|button:download|label"
+msgid "Download"
+msgstr "डाउनलोड"
+
+#: src/utils/ui/msgeditor.py:877
+msgctxt "ui:msg_editor|button:undo|label"
+msgid "Undo"
+msgstr "पूर्ववत करें"
+
+#: src/utils/ui/msgeditor.py:897
+msgctxt "ui:msg_editor|button:redo|label"
+msgid "Redo"
+msgstr "फिर से करें"
+
+#: src/utils/ui/msgeditor.py:916
+msgctxt "ui:msg_editor|button:quit|confirm"
+msgid "You have unsaved changes! Are you sure you want to quit?"
+msgstr "आपके पास सहेजे नहीं गए परिवर्तन हैं! क्या आप वाकई छोड़ना चाहते हैं?"
+
+#: src/utils/ui/msgeditor.py:921
+msgctxt "ui:msg_editor|button:quit|confirm|button:yes"
+msgid "Yes, Quit Now"
+msgstr "हां, अभी छोड़ें"
+
+#: src/utils/ui/msgeditor.py:927
+msgctxt "ui:msg_editor|button:quit|confirm|button:no"
+msgid "No, Go Back"
+msgstr "नहीं, वापस जाएं"
+
+#: src/utils/ui/msgeditor.py:1025
+msgctxt "ui:msg_editor|timeout_warning|title"
+msgid "Warning!"
+msgstr "चेतावनी!"
+
+#, possible-python-brace-format
+msgctxt "ui:msg_editor|timeout_warning|desc"
+msgid "This interface will time out {timestamp}. Press 'Continue' below to keep editing."
+msgstr "यह इंटरफ़ेस {timestamp} पर समय समाप्त हो जाएगा। संपादन जारी रखने के लिए नीचे 'जारी रखें' दबाएं।"
+
+#: src/utils/ui/msgeditor.py:1038
+msgctxt "ui:msg_editor|timeout_warning|continue"
+msgid "Continue"
+msgstr "जारी रखें"

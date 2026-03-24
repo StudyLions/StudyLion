@@ -5,7 +5,7 @@ from discord.ui.select import select, Select, SelectOption
 from discord.ui.button import button, Button, ButtonStyle
 
 from constants import HINT_ICON
-from meta import conf, LionBot
+from meta import conf, LionBot, WEBSITE_URL
 from utils.lib import MessageArgs, utc_now
 from utils.ui import BasePager
 
@@ -194,10 +194,18 @@ class GuildDashboard(BasePager):
     async def refresh(self):
         await super().refresh()
         await self.config_menu_refresh()
+        # --- AI-MODIFIED (2026-03-17) ---
+        # Purpose: Added web link button for easier server settings management on website
+        _web = discord.ui.Button(
+            label="Configure on Web", emoji="🌐",
+            url=f"{WEBSITE_URL}/dashboard/servers/{self.guildid}/settings",
+            style=discord.ButtonStyle.link,
+        )
         self.set_layout(
             (self.config_menu,),
-            (self.prev_page_button, self.next_page_button)
+            (self.prev_page_button, _web, self.next_page_button)
         )
+        # --- END AI-MODIFIED ---
 
     async def redraw(self, *args):
         await self.refresh()

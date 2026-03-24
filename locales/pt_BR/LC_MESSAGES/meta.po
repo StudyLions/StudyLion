@@ -1,25 +1,19 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
-# Translators:
-# Bruno Evangelista De Oliveira, 2023
-# 
-#, fuzzy
+# Portuguese (Brazil) translation for LionBot - meta
+# AI-translated with human Transifex contributions where available.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: LionBot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-24 14:37+0300\n"
-"PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
-"Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
+"PO-Revision-Date: 2026-03-13 19:57+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
-"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: src/modules/meta/cog.py:40
 msgctxt "cmd:help"
@@ -31,7 +25,6 @@ msgctxt "cmd:help|desc"
 msgid "See a brief summary of my commands and features."
 msgstr "Veja um breve sumário dos meus comandos e ferramentas."
 
-#: src/modules/meta/cog.py:65
 #, possible-python-brace-format
 msgctxt "new_guild_join_message|desc"
 msgid ""
@@ -40,228 +33,220 @@ msgid ""
 "\n"
 "If you need any help configuring me, or would like to suggest a feature, report a bug, and stay updated, make sure to join our main support server by [clicking here]({support})."
 msgstr ""
+"Thank you for inviting me to your community!\n"
+"Get started by typing {help_cmd} to see my commands,..."
 
 #: src/modules/meta/cog.py:89
 msgctxt "new_guild_join_message|name"
 msgid "Hello everyone! My name is Leo, the LionBot!"
-msgstr ""
+msgstr "Hello everyone! My name is Leo, the LionBot!"
 
 #: src/modules/meta/cog.py:104
 msgctxt "cmd:invite"
 msgid "invite"
-msgstr ""
+msgstr "invite"
 
 #: src/modules/meta/cog.py:107
 msgctxt "cmd:invite|desc"
 msgid "Invite LionBot to your own server."
-msgstr ""
+msgstr "Convide o LionBot para o seu servidor."
 
-#: src/modules/meta/cog.py:117
 #, possible-python-brace-format
 msgctxt "cmd:invite|embed|desc"
 msgid "[Click here]({invite_link}) to add me to your server."
-msgstr ""
+msgstr "[Clique aqui]({invite_link}) para me adicionar ao seu servidor."
 
 #: src/modules/meta/cog.py:125
 msgctxt "cmd:invite|embed|field:tips|name"
 msgid "Setup Tips"
-msgstr ""
+msgstr "Dicas de configuração"
 
-#: src/modules/meta/cog.py:129
 #, possible-python-brace-format
 msgctxt "cmd:invite|embed|field:tips|value"
 msgid ""
 "Remember to check out {help_cmd} for the important command list, including the admin page which displays the hidden admin-level configuration commands like {dashboard}!\n"
 "Also, if you have any issues or questions, you can join our [support server]({support_link}) to talk to our friendly support team!"
 msgstr ""
+"Remember to check out {help_cmd} for the important command list, including the admin page which displays the hidden admin-level configuration commands like {dashboard}!\n"
+"Also, if you have any issues or questions, you can join our [support server]({support_link}) to talk to our friendly support team!"
 
 #: src/modules/meta/cog.py:144
 msgctxt "cmd:support"
 msgid "support"
-msgstr ""
+msgstr "support"
 
 #: src/modules/meta/cog.py:147
 msgctxt "cmd:support|desc"
 msgid "Have an issue or a question? Speak to my friendly support team here."
 msgstr ""
+"Tem um problema ou pergunta? Fale com minha equipe de suporte amigável aqui."
 
-#: src/modules/meta/cog.py:155
 #, possible-python-brace-format
 msgctxt "cmd:support|response"
 msgid ""
 "Speak to my friendly support team by joining this server and making a ticket in the support channel!\n"
 "{support_link}"
 msgstr ""
+"Speak to my friendly support team by joining this server and making a ticket in the support channel!\n"
+"{support_link}"
 
 #: src/modules/meta/cog.py:163
 msgctxt "cmd:nerd"
 msgid "nerd"
-msgstr ""
+msgstr "nerd"
 
 #: src/modules/meta/cog.py:166
 msgctxt "cmd:nerd|desc"
 msgid "View hidden details and statistics about me ('nerd statistics')"
-msgstr ""
+msgstr "Ver detalhes ocultos e estatísticas sobre mim ('estatísticas nerd')"
 
 #: src/modules/meta/cog.py:179
 msgctxt "cmd:nerd|title"
 msgid "Nerd Statistics"
-msgstr ""
+msgstr "Estatísticas Nerd"
 
 #: src/modules/meta/cog.py:202
 msgctxt "cmd:nerd|field:currently|name"
 msgid "Currently"
-msgstr ""
+msgstr "Atualmente"
 
-#: src/modules/meta/cog.py:205
 #, possible-python-brace-format
 msgctxt "cmd:nerd|field:currently|value"
 msgid "`{people}` people active in `{rooms}` rooms of `{guilds}` guilds."
-msgstr ""
+msgstr "`{people}` people active in `{rooms}` rooms of `{guilds}` guilds."
 
 #: src/modules/meta/cog.py:221
 msgctxt "cmd:nerd|field:recorded|name"
 msgid "Recorded"
-msgstr ""
+msgstr "Registrado"
 
-#: src/modules/meta/cog.py:224
 #, possible-python-brace-format
 msgctxt "cmd:nerd|field:recorded|value"
 msgid ""
 "`{hours}` voice hours from `{users}` people across `{sessions}` sessions."
 msgstr ""
+"`{hours}` voice hours from `{users}` people across `{sessions}` sessions."
 
 #: src/modules/meta/cog.py:238
 msgctxt "cmd:nerd|field:registered|name"
 msgid "Registered"
-msgstr ""
+msgstr "Registrado"
 
-#: src/modules/meta/cog.py:241
 #, possible-python-brace-format
 msgctxt "cmd:nerd|field:registered|value"
 msgid "`{users}` users and `{guilds}` guilds."
-msgstr ""
+msgstr "`{users}` users and `{guilds}` guilds."
 
 #: src/modules/meta/cog.py:255
 msgctxt "cmd:nerd|field:tasks|name"
 msgid "Tasks"
-msgstr ""
+msgstr "Tarefas"
 
-#: src/modules/meta/cog.py:258
 #, possible-python-brace-format
 msgctxt "cmd:nerd|field:tasks|value"
 msgid "`{tasks}` tasks completed out of `{total}`."
-msgstr ""
+msgstr "`{tasks}` tasks completed out of `{total}`."
 
 #: src/modules/meta/cog.py:271
 msgctxt "cmd:nerd|field:timers|name"
 msgid "Timers"
-msgstr ""
+msgstr "Temporizadores"
 
-#: src/modules/meta/cog.py:274
 #, possible-python-brace-format
 msgctxt "cmd:nerd|field:timers|value"
 msgid "`{timers}` timers running across `{guilds}` guilds."
-msgstr ""
+msgstr "`{timers}` timers running across `{guilds}` guilds."
 
 #: src/modules/meta/cog.py:283
 msgctxt "cmd:nerd|section:bot_stats|name"
 msgid "Bot Stats"
-msgstr ""
+msgstr "Estatísticas do bot"
 
 #: src/modules/meta/cog.py:293
 msgctxt "cmd:nerd|field:shard|name"
 msgid "Shard"
-msgstr ""
+msgstr "Shard"
 
-#: src/modules/meta/cog.py:296
 #, possible-python-brace-format
 msgctxt "cmd:nerd|field:shard|value"
 msgid "`{shard_number}` of `{shard_count}`"
-msgstr ""
+msgstr "`{shard_number}` of `{shard_count}`"
 
 #: src/modules/meta/cog.py:302
 msgctxt "cmd:nerd|field:guilds|name"
 msgid "Guilds"
-msgstr ""
+msgstr "Guilds"
 
-#: src/modules/meta/cog.py:305
 #, possible-python-brace-format
 msgctxt "cmd:nerd|field:guilds|value"
 msgid "`{guilds}` guilds with `{count}` total members."
-msgstr ""
+msgstr "`{guilds}` guilds with `{count}` total members."
 
 #: src/modules/meta/cog.py:315
 msgctxt "cmd:nerd|field:version|name"
 msgid "Leo Version"
-msgstr ""
+msgstr "Leo Version"
 
-#: src/modules/meta/cog.py:318
 #, possible-python-brace-format
 msgctxt "cmd:nerd|field:version|value"
 msgid "`v{version}`, last updated {timestamp} from `{reason}`."
-msgstr ""
+msgstr "`v{version}`, last updated {timestamp} from `{reason}`."
 
 #: src/modules/meta/cog.py:330
 msgctxt "cmd:nerd|field:py_version|name"
 msgid "Py Version"
-msgstr ""
+msgstr "Py Version"
 
-#: src/modules/meta/cog.py:333
 #, possible-python-brace-format
 msgctxt "cmd:nerd|field:py_version|value"
 msgid "`{py_version}` running discord.py `{dpy_version}`"
-msgstr ""
+msgstr "`{py_version}` running discord.py `{dpy_version}`"
 
 #: src/modules/meta/cog.py:341
 msgctxt "cmd:nerd|section:process_section|name"
 msgid "Process"
-msgstr ""
+msgstr "Processo"
 
 #: src/modules/meta/cog.py:351
 msgctxt "cmd:nerd|field:handling|name"
 msgid "Handling"
-msgstr ""
+msgstr "Processando"
 
-#: src/modules/meta/cog.py:354
 #, possible-python-brace-format
 msgctxt "cmd:nerd|field:handling|name"
 msgid "`{events}` active commands and events."
-msgstr ""
+msgstr "`{events}` active commands and events."
 
 #: src/modules/meta/cog.py:362
 msgctxt "cmd:nerd|field:working|name"
 msgid "Working On"
-msgstr ""
+msgstr "Trabalhando em"
 
-#: src/modules/meta/cog.py:365
 #, possible-python-brace-format
 msgctxt "cmd:nerd|field:working|value"
 msgid "`{tasks}` background tasks."
-msgstr ""
+msgstr "`{tasks}` background tasks."
 
 #: src/modules/meta/cog.py:371
 msgctxt "cmd:nerd|field:objects|name"
 msgid "Objects"
-msgstr ""
+msgstr "Objetos"
 
-#: src/modules/meta/cog.py:374
 #, possible-python-brace-format
 msgctxt "cmd:nerd|field:objects|value"
 msgid "`{objects}` loaded in memory."
-msgstr ""
+msgstr "`{objects}` loaded in memory."
 
 #: src/modules/meta/cog.py:384
 msgctxt "cmd:nerd|field:uptime|name"
 msgid "Uptime"
-msgstr ""
+msgstr "Uptime"
 
 #: src/modules/meta/cog.py:390
 msgctxt "cmd:nerd|section:shard_section|name"
 msgid "Shard Statistics"
-msgstr ""
+msgstr "Shard Statistics"
 
-#: src/modules/meta/help_sections.py:40
 #, possible-python-brace-format
 msgctxt "helptext|level:member|mode:study"
 msgid ""
@@ -324,7 +309,6 @@ msgstr ""
 "    {cmd_timers}: Se mantenha produtivo com a clássica *Técnica Pomodoro*!\n"
 "    {cmd_schedule}: Faça o agendamento de horários de estudos, e se comprometa a chegar a tempo de fazer os seus Check-ins."
 
-#: src/modules/meta/help_sections.py:73
 #, possible-python-brace-format
 msgctxt "helptext|page:admin"
 msgid ""
@@ -341,6 +325,18 @@ msgid ""
 "    `/economy balance`: Display and modify LionCoin balance for members and roles.\n"
 "    "
 msgstr ""
+"\n"
+"    Use {cmd_dashboard} to see an overview of the server configuration,     and quickly jump to the feature configuration panels to modify settings.\n"
+"\n"
+"    Most settings may also be directly set through the `/config` and `/admin config` commands,     depending on whether the settings require moderator (manage server) or admin level permissions, respectively.\n"
+"\n"
+"    Other relevant commands for guild configuration below:\n"
+"    `/editshop`: Add/Edit/Remove colour roles from the {coin} shop.\n"
+"    `/ranks`: Add/Edit/Refresh/Remove activity ranks.\n"
+"    `/pomodoro`: Add/Edit/Remove Pomodoro timers in voice channels.\n"
+"    `/rolemenus`: Allow members to equip roles from customisable messages.\n"
+"    `/economy balance`: Display and modify LionCoin balance for members and roles.\n"
+"    "
 
 #: src/modules/meta/help_sections.py:112
 msgctxt "helptext|level:member|title"

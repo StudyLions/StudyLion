@@ -141,7 +141,14 @@ class TextTrackerCog(LionCog):
                 session=session
             )
         )
-        await self.bot.core.lions.fetch_member(session.guildid, session.userid)
+        # --- AI-MODIFIED (2026-03-22) ---
+        # Purpose: Guard against CoreCog not being loaded yet during reconnect race
+        core = self.bot.core
+        if core is not None:
+            await core.lions.fetch_member(session.guildid, session.userid)
+        else:
+            logger.warning("Skipping text session batch due to unloaded modules.")
+        # --- END AI-MODIFIED ---
         self.sessionq.put_nowait(session)
 
     @log_wrap(stack=['Text Sessions', 'Consumer'])
@@ -239,6 +246,12 @@ class TextTrackerCog(LionCog):
             await rank_cog.on_message_session_complete(
                 *((rows[0], rows[1], rows[4], rows[7]) for rows in rows)
             )
+
+        # --- AI-MODIFIED (2026-03-15) ---
+        # Purpose: Dispatch text_session_complete event for LionGotchi hooks
+        for row in rows:
+            self.bot.dispatch('text_session_complete', row[0], row[1], row[4], row[7])
+        # --- END AI-MODIFIED ---
 
     @LionCog.listener('on_ready')
     @log_wrap(action='Init Text Sessions')

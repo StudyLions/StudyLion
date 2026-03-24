@@ -1,0 +1,396 @@
+# Chinese (Simplified) translation for LionBot - voice-tracker
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 20:24+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Chinese (Simplified)\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/tracking/voice/session.py:293
+msgctxt "eventlog|event:voice_session_expired|title"
+msgid "Member Voice Session Expired"
+msgstr "成员语音会话已过期"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:voice_session_expired|desc"
+msgid "{member}'s voice session in {channel} expired because they reached the daily voice cap."
+msgstr "{member}在{channel}的语音会话已过期，因为达到了每日上限。"
+
+#: src/tracking/voice/session.py:336
+msgctxt "eventlog|event:voice_session_closed|title"
+msgid "Member Voice Session Ended"
+msgstr "成员语音会话已结束"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:voice_session_closed|desc"
+msgid "{member} completed their voice session in {channel}."
+msgstr "{member}在{channel}完成了语音会话。"
+
+#: src/tracking/voice/session.py:352
+msgctxt "eventlog|event:voice_session_cancelled|title"
+msgid "Member Voice Session Cancelled"
+msgstr "成员语音会话已取消"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:voice_session_cancelled|desc"
+msgid "{member} left {channel} before their voice session started."
+msgstr "{member}在语音会话开始前离开了{channel}。"
+
+#: src/tracking/voice/cog.py:518
+msgctxt "eventlog|event:voice_session_start|title"
+msgid "Member Joined Tracked Voice Channel"
+msgstr "成员加入了追踪的语音频道"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:voice_session_start|desc"
+msgid "{member} joined {channel}."
+msgstr "{member}加入了{channel}。"
+
+#: src/tracking/voice/cog.py:657
+msgctxt "cmd:now"
+msgid "now"
+msgstr "now"
+
+#: src/tracking/voice/cog.py:660
+msgctxt "cmd:now|desc"
+msgid "Describe what you are working on, or see what your friends are working on!"
+msgstr "描述你正在做什么，或者看看你的朋友在做什么！"
+
+#: src/tracking/voice/cog.py:664
+msgctxt "cmd:now|param:tag"
+msgid "tag"
+msgstr "tag"
+
+#: src/tracking/voice/cog.py:665
+msgctxt "cmd:now|param:user"
+msgid "user"
+msgstr "user"
+
+#: src/tracking/voice/cog.py:666
+msgctxt "cmd:now|param:clear"
+msgid "clear"
+msgstr "clear"
+
+#: src/tracking/voice/cog.py:671
+msgctxt "cmd:now|param:tag|desc"
+msgid "Describe what you are working on in 10 characters or less!"
+msgstr "用10个字符或更少描述你正在做什么！"
+
+#: src/tracking/voice/cog.py:675
+msgctxt "cmd:now|param:user|desc"
+msgid "Check what a friend is working on."
+msgstr "查看朋友正在做什么。"
+
+#: src/tracking/voice/cog.py:679
+msgctxt "cmd:now|param:clear|desc"
+msgid "Unset your activity tag (or the target user's tag, for moderators)."
+msgstr "取消你的活动标签（或目标用户的标签，适用于管理员）。"
+
+#: src/tracking/voice/cog.py:706
+msgctxt "cmd:now|target:self|error:target_inactive"
+msgid "You have no running session! Join a tracked voice channel to start a session."
+msgstr "你没有正在进行的会话！加入一个追踪的语音频道来开始。"
+
+#, possible-python-brace-format
+msgctxt "cmd:now|target:other|error:target_inactive"
+msgid "{mention} has no running session!"
+msgstr "{mention}没有正在进行的会话！"
+
+#: src/tracking/voice/cog.py:730
+msgctxt "cmd:now|target:self|mode:clear|success|title"
+msgid "Session Tag Cleared"
+msgstr "会话标签已清除"
+
+#: src/tracking/voice/cog.py:734
+msgctxt "cmd:now|target:self|mode:clear|success|desc"
+msgid "Successfully unset your session tag."
+msgstr "成功取消了你的会话标签。"
+
+#: src/tracking/voice/cog.py:743
+msgctxt "cmd:now|target:other|mode:clear|error:perms|title"
+msgid "You can't do that!"
+msgstr "你不能这样做！"
+
+#: src/tracking/voice/cog.py:747
+msgctxt "cmd:now|target:other|mode:clear|error:perms|desc"
+msgid "You need to be a moderator to set or clear someone else's session tag."
+msgstr "你需要是管理员才能设置或清除他人的会话标签。"
+
+#: src/tracking/voice/cog.py:757
+msgctxt "cmd:now|target:other|mode:clear|success|title"
+msgid "Session Tag Cleared!"
+msgstr "会话标签已清除！"
+
+#, possible-python-brace-format
+msgctxt "cmd:now|target:other|mode:clear|success|desc"
+msgid "Cleared {target}'s session tag."
+msgstr "已清除{target}的会话标签。"
+
+#: src/tracking/voice/cog.py:773
+msgctxt "cmd:now|target:self|mode:set|success|title"
+msgid "Session Tag Set!"
+msgstr "会话标签已设置！"
+
+#, possible-python-brace-format
+msgctxt "cmd:now|target:self|mode:set|success|desc"
+msgid "You are now working on `{new_tag}`. Good luck!"
+msgstr "你现在正在做`{new_tag}`。祝你好运！"
+
+#: src/tracking/voice/cog.py:786
+msgctxt "cmd:now|target:other|mode:set|error:perms|title"
+msgid "You can't do that!"
+msgstr "你不能这样做！"
+
+#: src/tracking/voice/cog.py:790
+msgctxt "cmd:now|target:other|mode:set|error:perms|desc"
+msgid "You need to be a moderator to set or clear someone else's session tag!"
+msgstr "你需要是管理员才能设置或清除他人的会话标签！"
+
+#: src/tracking/voice/cog.py:800
+msgctxt "cmd:now|target:other|mode:set|success|title"
+msgid "Session Tag Set!"
+msgstr "会话标签已设置！"
+
+#, possible-python-brace-format
+msgctxt "cmd:now|target:other|mode:set|success|desc"
+msgid "Set {target}'s session tag to `{new_tag}`."
+msgstr "已将{target}的会话标签设置为`{new_tag}`。"
+
+#, possible-python-brace-format
+msgctxt "cmd:now|target:self|mode:show_with_tag|desc"
+msgid "You have been working on **`{tag}`** in {channel} since {time}!"
+msgstr "你从{time}开始在{channel}做**`{tag}`**！"
+
+#, possible-python-brace-format
+msgctxt "cmd:now|target:self|mode:show_without_tag|desc"
+msgid ""
+"You have been working in {channel} since {time}!\n"
+"\n"
+"Use `/now <tag>` to set what you are working on."
+msgstr ""
+"你从{time}开始在{channel}工作！\n"
+"\n"
+"使用`/now <tag>`设置你正在做的事情。"
+
+#, possible-python-brace-format
+msgctxt "cmd:now|target:other|mode:show_with_tag|desc"
+msgid ""
+"{target} is current working in {channel}!\n"
+"They have been working on **{tag}** since {time}."
+msgstr ""
+"{target}正在{channel}工作！\n"
+"他们从{time}开始做**{tag}**。"
+
+#, possible-python-brace-format
+msgctxt "cmd:now|target:other|mode:show_without_tag|desc"
+msgid "{target} has been working in {channel} since {time}!"
+msgstr "{target}从{time}开始在{channel}工作！"
+
+#: src/tracking/voice/cog.py:854
+msgctxt "cmd:configure_voice_rates"
+msgid "voice_rewards"
+msgstr "voice_rewards"
+
+#: src/tracking/voice/cog.py:857
+msgctxt "cmd:configure_voice_rates|desc"
+msgid "Configure Voice tracking rewards and experience"
+msgstr "配置语音追踪奖励和经验值"
+
+#, possible-python-brace-format
+msgctxt "cmd:configure_voice_tracking|mode:voice|resp:success|desc"
+msgid "Members will now be rewarded {coin}**{base} (+ {bonus})** per hour they spend (live) in a voice channel, up to a total of **{cap}** hours per server day."
+msgstr "成员在语音频道每小时将获得{coin}**{base} (+ {bonus})**，每服务器日最多**{cap}**小时。"
+
+#, possible-python-brace-format
+msgctxt "cmd:configure_voice_tracking|mode:study|resp:success|desc"
+msgid "Members will now be rewarded {coin}**{base}** per hour of study in this server, with a bonus of {coin}**{bonus}** if they stream of display video, up to a total of **{cap}** hours per server day."
+msgstr "成员每小时学习将获得{coin}**{base}**，如果直播或显示视频则额外获得{coin}**{bonus}**，每天最多**{cap}**小时。"
+
+#: src/tracking/voice/settings.py:42
+msgctxt "guildset:untracked_channels"
+msgid "untracked_channels"
+msgstr "untracked_channels"
+
+#: src/tracking/voice/settings.py:45
+msgctxt "guildset:untracked_channels|desc"
+msgid "Channels which will be ignored for statistics tracking."
+msgstr "将被统计追踪忽略的频道。"
+
+#: src/tracking/voice/settings.py:49
+msgctxt "guildset:untracked_channels|long_desc"
+msgid "Activity in these channels will not count towards a member's statistics. If a category is selected, all channels under the category will be untracked."
+msgstr "这些频道中的活动不会计入统计。如果选择了分类，该分类下的所有频道也将不被追踪。"
+
+#: src/tracking/voice/settings.py:54
+msgctxt "guildset:untracked_channels|accepts"
+msgid "Comma separated list of untracked channel name/ids."
+msgstr "未追踪的频道名称/ID的逗号分隔列表。"
+
+#: src/tracking/voice/settings.py:58
+msgctxt "guildset:untracked_channels|notset"
+msgid "Not Set (all voice channels will be tracked.)"
+msgstr "未设置（所有语音频道将被追踪。）"
+
+#: src/tracking/voice/settings.py:75
+msgctxt "guildset:untracked_channels|set"
+msgid "Channel selector below."
+msgstr "下方频道选择器。"
+
+#, possible-python-brace-format
+msgctxt "guildset:untracked_channels|set_response|set"
+msgid "Activity in the following channels will now be ignored: {channels}"
+msgstr "以下频道中的活动将被忽略: {channels}"
+
+#: src/tracking/voice/settings.py:91
+msgctxt "guildset:untracked_channels|set_response|unset"
+msgid "All voice channels will now be tracked."
+msgstr "所有语音频道现在将被追踪。"
+
+#: src/tracking/voice/settings.py:120
+msgctxt "guildset:hourly_reward"
+msgid "hourly_reward"
+msgstr "hourly_reward"
+
+#: src/tracking/voice/settings.py:123
+msgctxt "guildset:hourly_reward|mode:voice|desc"
+msgid "LionCoins given per hour in a voice channel."
+msgstr "语音频道中每小时给予的LionCoins。"
+
+#: src/tracking/voice/settings.py:127
+msgctxt "guildset:hourly_reward|mode:voice|long_desc"
+msgid "Number of LionCoins to each member per hour that they stay in a tracked voice channel."
+msgstr "在追踪的语音频道中每位成员每小时获得的LionCoins数量。"
+
+#: src/tracking/voice/settings.py:131
+msgctxt "guildset:hourly_reward|accepts"
+msgid "Number of coins to reward per hour in voice."
+msgstr "语音中每小时奖励的硬币数量。"
+
+#, possible-python-brace-format
+msgctxt "guildset:hourly_reward|formatted"
+msgid "{coin}**{amount}** per hour."
+msgstr "每小时{coin}**{amount}**。"
+
+#, possible-python-brace-format
+msgctxt "guildset:hourly_reward|mode:voice|response"
+msgid "Members will be given {coin}**{amount}** per hour in a voice channel!"
+msgstr "成员在语音频道每小时将获得{coin}**{amount}**！"
+
+#: src/tracking/voice/settings.py:174
+msgctxt "guildset:hourly_reward|mode:study|desc"
+msgid "LionCoins given per hour of study."
+msgstr "每小时学习给予的LionCoins。"
+
+#: src/tracking/voice/settings.py:178
+msgctxt "guildset:hourly_reward|mode:study|long_desc"
+msgid "Number of LionCoins given per hour of study, up to the daily hour cap."
+msgstr "每小时学习给予的LionCoins数量，直到每日上限。"
+
+#, possible-python-brace-format
+msgctxt "guildset:hourly_reward|mode:study|response"
+msgid "Members will be given {coin}**{amount}** per hour that they study!"
+msgstr "成员每小时学习将获得{coin}**{amount}**！"
+
+#: src/tracking/voice/settings.py:201
+msgctxt "guildset:hourly_live_bonus"
+msgid "hourly_live_bonus"
+msgstr "hourly_live_bonus"
+
+#: src/tracking/voice/settings.py:204
+msgctxt "guildset:hourly_live_bonus|desc"
+msgid "Bonus Lioncoins given per hour when a member streams or video-chats."
+msgstr "成员直播或视频聊天时每小时额外获得的LionCoins。"
+
+#: src/tracking/voice/settings.py:209
+msgctxt "guildset:hourly_live_bonus|long_desc"
+msgid "When a member streams or video-chats in a channel they will be given this bonus *additionally* to the `hourly_reward`."
+msgstr "当成员直播或视频聊天时，将在`hourly_reward`的基础上*额外*获得此奖励。"
+
+#: src/tracking/voice/settings.py:214
+msgctxt "guildset:hourly_live_bonus|accepts"
+msgid "Number of bonus coins to reward per hour when live."
+msgstr "直播时每小时奖励的额外硬币数。"
+
+#, possible-python-brace-format
+msgctxt "guildset:hourly_live_bonus|formatted"
+msgid "{coin}**{amount}** bonus per hour when live."
+msgstr "直播时每小时{coin}**{amount}**奖励。"
+
+#, possible-python-brace-format
+msgctxt "guildset:hourly_live_bonus|response"
+msgid "Live members will now *additionally* be given {coin}**{amount}** per hour."
+msgstr "直播成员现在每小时将*额外*获得{coin}**{amount}**。"
+
+#: src/tracking/voice/settings.py:253
+msgctxt "guildset:daily_voice_cap"
+msgid "daily_voice_cap"
+msgstr "daily_voice_cap"
+
+#: src/tracking/voice/settings.py:256
+msgctxt "guildset:daily_voice_cap|desc"
+msgid "Maximum number of hours per day to count for each member."
+msgstr "每位成员每天计算的最大小时数。"
+
+#: src/tracking/voice/settings.py:260
+msgctxt "guildset:daily_voice_cap|long_desc"
+msgid "Time spend in voice channels over this amount will not be tracked towards the member's statistics. Tracking will resume at the start of the next day. The start of the day is determined by the configured guild timezone."
+msgstr "超过此数量的语音频道时间不会被追踪。追踪将在下一天开始时恢复，以服务器时区为准。"
+
+#: src/tracking/voice/settings.py:266
+msgctxt "guildset:daily_voice_cap|accepts"
+msgid "The maximum number of voice hours to track per day."
+msgstr "每天追踪的最大语音小时数。"
+
+#, possible-python-brace-format
+msgctxt "guildset:daily_voice_cap|response"
+msgid "Members will be tracked for at most {duration} per day. (**NOTE:** This will not affect members currently in voice channels.)"
+msgstr "成员每天最多被追踪{duration}。（**注意：**这不会影响当前在语音频道中的成员。）"
+
+#: src/tracking/voice/settings.py:340
+msgctxt "ui:voice_tracker_config|button:close|label"
+msgid "Close"
+msgstr "关闭"
+
+#: src/tracking/voice/settings.py:354
+msgctxt "ui:voice_tracker_config|button:reset|label"
+msgid "Reset"
+msgstr "重置"
+
+#: src/tracking/voice/settings.py:367
+msgctxt "ui:voice_tracker_config|menu:untracked_channels|placeholder"
+msgid "Set Untracked Channels"
+msgstr "设置未追踪频道"
+
+#: src/tracking/voice/settings.py:433 src/tracking/voice/settings.py:491
+msgctxt "ui:voice_tracker_config|mode:voice|embed|title"
+msgid "Voice Tracker Configuration Panel"
+msgstr "语音追踪器配置面板"
+
+#: src/tracking/voice/settings.py:438 src/tracking/voice/settings.py:496
+msgctxt "ui:voice_tracker_config|mode:study|embed|title"
+msgid "Study Tracker Configuration Panel"
+msgstr "学习追踪器配置面板"
+
+#: src/tracking/voice/settings.py:481
+msgctxt "ui:voice_tracker_config|menu:untracked_channels|placeholder"
+msgid "Select Untracked Channels"
+msgstr "选择未追踪频道"
+
+#: src/tracking/voice/settings.py:537
+msgctxt "dash:voice_tracker|title"
+msgid "Voice Tracker Configuration ({commands[config voice_rewards]})"
+msgstr "语音追踪器配置 ({commands[config voice_rewards]})"
+
+#: src/tracking/voice/settings.py:541
+msgctxt "dash:voice_tracking|dropdown|placeholder"
+msgid "Voice Activity Panel"
+msgstr "语音活动面板"

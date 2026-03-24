@@ -1,28 +1,20 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
-# Translators:
-# Eyüp Ramazan, 2023
-# Havina Ru, 2023
-# 
-#, fuzzy
+# Turkish translation for LionBot - stats-gui
+# AI-translated with human Transifex contributions where available.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: LionBot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-24 14:37+0300\n"
-"PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Havina Ru, 2023\n"
-"Language-Team: Turkish (https://app.transifex.com/leobot/teams/174919/tr/)\n"
+"PO-Revision-Date: 2026-03-13 19:00+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Turkish\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: tr\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. First column
 #: src/gui/cards/stats.py:61
 msgctxt "skin:stats|header:col1"
 msgid "STATISTICS"
@@ -108,25 +100,21 @@ msgctxt "skin:stats|mode:anki|header:col2"
 msgid "ANKI REVIEW STREAK"
 msgstr "ANKI GÖRÜŞ SERİSİ"
 
-#: src/gui/cards/stats.py:169
 #, possible-python-brace-format
 msgctxt "skin:stats|mode:study|field:col2_summary"
 msgid "{amount} HRS"
 msgstr "{amount} SAAT"
 
-#: src/gui/cards/stats.py:173
 #, possible-python-brace-format
 msgctxt "skin:stats|mode:voice|field:col2_summary"
 msgid "{amount} HRS"
 msgstr "{amount} SAAT"
 
-#: src/gui/cards/stats.py:177
 #, possible-python-brace-format
 msgctxt "skin:stats|mode:text|field:col2_summary"
 msgid "{amount} XP"
 msgstr "{amount} XP"
 
-#: src/gui/cards/stats.py:181
 #, possible-python-brace-format
 msgctxt "skin:stats|mode:anki|field:col2_summary"
 msgid "{amount} CARDS"
@@ -139,7 +127,5 @@ msgstr "P,S,Ç,P,C,CTS,PZR"
 
 #: src/gui/cards/stats.py:216
 msgctxt "skin:stats|cal|months"
-msgid ""
-"JANUARY,FEBRUARY,MARCH,APRIL,MAY,JUNE,JULY,AUGUST,SEPTEMBER,OCTOBER,NOVEMBER,DECEMBER"
-msgstr ""
-"OCAK,ŞUBAT,MART,NİSAN,MAYIS,HAZİRAN,TEMMUZ,AĞUSTOS,EYLÜL,EKİM,KASIM,ARALIK"
+msgid "JANUARY,FEBRUARY,MARCH,APRIL,MAY,JUNE,JULY,AUGUST,SEPTEMBER,OCTOBER,NOVEMBER,DECEMBER"
+msgstr "OCAK,ŞUBAT,MART,NİSAN,MAYIS,HAZİRAN,TEMMUZ,AĞUSTOS,EYLÜL,EKİM,KASIM,ARALIK"

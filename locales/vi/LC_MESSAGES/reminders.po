@@ -1,0 +1,366 @@
+# Vietnamese translation for LionBot - reminders
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 21:07+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Vietnamese\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#, possible-python-brace-format
+msgctxt "create_reminder|error:past"
+msgid "The provided reminder time {timestamp} is in the past!"
+msgstr "Thời gian nhắc nhở {timestamp} đã qua rồi!"
+
+#: src/modules/reminders/cog.py:123
+msgctxt "create_reminder|error:too_fast"
+msgid "You cannot set a repeating reminder with a period less than 10 minutes."
+msgstr "Bạn không thể đặt lời nhắc lặp lại với khoảng thời gian dưới 10 phút."
+
+#: src/modules/reminders/cog.py:133
+msgctxt "create_reminder|error:too_many"
+msgid "Sorry, you have reached the maximum of `25` reminders."
+msgstr "Xin lỗi, bạn đã đạt giới hạn tối đa `25` lời nhắc."
+
+#: src/modules/reminders/cog.py:149
+msgctxt "create_reminder|error:cannot_dm"
+msgid "I cannot direct message you! Do you have me blocked or direct messages closed?"
+msgstr "Tôi không thể gửi tin nhắn trực tiếp cho bạn! Bạn đã chặn tôi hoặc tắt tin nhắn trực tiếp?"
+
+#, possible-python-brace-format
+msgctxt "parse_timestamp|error:parse"
+msgid "Could not parse `{given}` as a valid reminder time. Try entering the time in the form `HH:MM` or `YYYY-MM-DD HH:MM`."
+msgstr "Không thể phân tích `{given}` thành thời gian nhắc nhở hợp lệ. Hãy thử nhập thời gian theo định dạng `HH:MM` hoặc `YYYY-MM-DD HH:MM`."
+
+#: src/modules/reminders/cog.py:329
+msgctxt "cmd:reminders"
+msgid "reminders"
+msgstr "reminders"
+
+#: src/modules/reminders/cog.py:332
+msgctxt "cmd:reminders|desc"
+msgid "View and set your reminders."
+msgstr "Xem và đặt lời nhắc của bạn."
+
+#: src/modules/reminders/cog.py:354
+msgctxt "cmd:remindme"
+msgid "remindme"
+msgstr "remindme"
+
+#: src/modules/reminders/cog.py:355
+msgctxt "cmd:remindme|desc"
+msgid "View and set task reminders."
+msgstr "Xem và đặt lời nhắc nhiệm vụ."
+
+#: src/modules/reminders/cog.py:363
+msgctxt "cmd:reminders_cancel"
+msgid "cancel"
+msgstr "cancel"
+
+#: src/modules/reminders/cog.py:366
+msgctxt "cmd:reminders_cancel|desc"
+msgid "Cancel a single reminder. Use /reminders to clear or cancel multiple reminders."
+msgstr "Hủy một lời nhắc. Sử dụng /reminders để xóa hoặc hủy nhiều lời nhắc."
+
+#: src/modules/reminders/cog.py:370
+msgctxt "cmd:reminders_cancel|param:reminder"
+msgid "reminder"
+msgstr "reminder"
+
+#: src/modules/reminders/cog.py:375
+msgctxt "cmd:reminders_cancel|param:reminder|desc"
+msgid "Start typing, then select a reminder to cancel."
+msgstr "Bắt đầu nhập, sau đó chọn lời nhắc cần hủy."
+
+#: src/modules/reminders/cog.py:394
+msgctxt "cmd:reminders_cancel|error:no_reminders"
+msgid "There are no reminders to cancel!"
+msgstr "Không có lời nhắc nào để hủy!"
+
+#: src/modules/reminders/cog.py:418
+msgctxt "cmd:reminders_cancel|error:no_match"
+msgid "I am not sure which reminder you want to cancel. Please try again, selecting a reminder from the list of choices."
+msgstr "Tôi không chắc bạn muốn hủy lời nhắc nào. Vui lòng thử lại bằng cách chọn lời nhắc từ danh sách."
+
+#: src/modules/reminders/cog.py:431
+msgctxt "cmd:reminders_cancel|embed:success|desc"
+msgid "Reminder successfully cancelled."
+msgstr "Đã hủy lời nhắc thành công."
+
+#: src/modules/reminders/cog.py:448
+msgctxt "cmd:reminders_cancel|acmpl:reminder|error:no_reminders"
+msgid "There are no reminders to cancel!"
+msgstr "Không có lời nhắc nào để hủy!"
+
+#, possible-python-brace-format
+msgctxt "cmd:reminders_cancel|acmpl:reminder|error:no_matches"
+msgid "You do not have any reminders matching \"{partial}\""
+msgstr "Bạn không có lời nhắc nào phù hợp với \"{partial}\""
+
+#: src/modules/reminders/cog.py:486
+msgctxt "cmd:remindme_at"
+msgid "at"
+msgstr "at"
+
+#: src/modules/reminders/cog.py:489
+msgctxt "cmd:remindme_at|desc"
+msgid "Schedule a reminder for a particular time."
+msgstr "Lên lịch nhắc nhở vào một thời điểm cụ thể."
+
+#: src/modules/reminders/cog.py:493
+msgctxt "cmd:remindme_at|param:time"
+msgid "time"
+msgstr "time"
+
+#: src/modules/reminders/cog.py:494
+msgctxt "cmd:remindme_at|param:reminder"
+msgid "reminder"
+msgstr "reminder"
+
+#: src/modules/reminders/cog.py:495
+msgctxt "cmd:remindme_at|param:every"
+msgid "repeat_every"
+msgstr "repeat_every"
+
+#: src/modules/reminders/cog.py:500
+msgctxt "cmd:remindme_at|param:time|desc"
+msgid "When you want to be reminded. (E.g. `4pm` or `16:00`)."
+msgstr "Khi nào bạn muốn được nhắc. (VD: `4pm` hoặc `16:00`)."
+
+#: src/modules/reminders/cog.py:504
+msgctxt "cmd:remindme_at|param:reminder|desc"
+msgid "What should the reminder be?"
+msgstr "Nội dung nhắc nhở là gì?"
+
+#: src/modules/reminders/cog.py:508
+msgctxt "cmd:remindme_at|param:every|desc"
+msgid "How often to repeat this reminder."
+msgstr "Tần suất lặp lại lời nhắc này."
+
+#: src/modules/reminders/cog.py:535
+msgctxt "cmd:remindme_at|error|title"
+msgid "Could not create reminder!"
+msgstr "Không thể tạo lời nhắc!"
+
+#, possible-python-brace-format
+msgctxt "cmd:remindme_at|acmpl:time|error:parse"
+msgid "Cannot parse \"{partial}\" as a time. Try the format HH:MM or YYYY-MM-DD HH:MM"
+msgstr "Không thể phân tích \"{partial}\" thành thời gian. Hãy thử định dạng HH:MM hoặc YYYY-MM-DD HH:MM"
+
+#: src/modules/reminders/cog.py:573
+msgctxt "cmd:remindme_in"
+msgid "in"
+msgstr "in"
+
+#: src/modules/reminders/cog.py:576
+msgctxt "cmd:remindme_in|desc"
+msgid "Schedule a reminder for a given amount of time in the future."
+msgstr "Lên lịch nhắc nhở sau một khoảng thời gian nhất định."
+
+#: src/modules/reminders/cog.py:580
+msgctxt "cmd:remindme_in|param:time"
+msgid "time"
+msgstr "time"
+
+#: src/modules/reminders/cog.py:581
+msgctxt "cmd:remindme_in|param:reminder"
+msgid "reminder"
+msgstr "reminder"
+
+#: src/modules/reminders/cog.py:582
+msgctxt "cmd:remindme_in|param:every"
+msgid "repeat_every"
+msgstr "repeat_every"
+
+#: src/modules/reminders/cog.py:587
+msgctxt "cmd:remindme_in|param:time|desc"
+msgid "How far into the future to set the reminder (e.g. 1 day 10h 5m)."
+msgstr "Đặt lời nhắc bao lâu trong tương lai (VD: 1 day 10h 5m)."
+
+#: src/modules/reminders/cog.py:591
+msgctxt "cmd:remindme_in|param:reminder|desc"
+msgid "What should the reminder be?"
+msgstr "Nội dung nhắc nhở là gì?"
+
+#: src/modules/reminders/cog.py:595
+msgctxt "cmd:remindme_in|param:every|desc"
+msgid "How often to repeat this reminder. (e.g. 1 day, or 2h)"
+msgstr "Tần suất lặp lại lời nhắc này. (VD: 1 day hoặc 2h)"
+
+#: src/modules/reminders/cog.py:621
+msgctxt "cmd:remindme_in|error|title"
+msgid "Could not create reminder!"
+msgstr "Không thể tạo lời nhắc!"
+
+#: src/modules/reminders/ui.py:47
+msgctxt "ui:reminderlist|button:clear|confirm|title"
+msgid "Are You Sure?"
+msgstr "Bạn có chắc không?"
+
+#, possible-python-brace-format
+msgctxt "ui:reminderlist|button:clear|confirm|desc"
+msgid "Are you sure you want to delete your `{count}` reminder?"
+msgid_plural "Are you sure you want to clear your `{count}` reminders?"
+msgstr[0] "Bạn có chắc muốn xóa `{count}` lời nhắc không?"
+
+#: src/modules/reminders/ui.py:57
+msgctxt "ui:reminderlist|button:clear|confirm|button:yes"
+msgid "Yes, clear my reminders"
+msgstr "Có, xóa lời nhắc của tôi"
+
+#: src/modules/reminders/ui.py:68
+msgctxt "ui:reminderlist|button:clear|success|desc"
+msgid "Your reminders have been cleared!"
+msgstr "Lời nhắc của bạn đã được xóa!"
+
+#: src/modules/reminders/ui.py:77
+msgctxt "ui:reminderlist|button:clear|confirm|button:cancel"
+msgid "Cancel"
+msgstr "Hủy"
+
+#: src/modules/reminders/ui.py:89
+msgctxt "ui:reminderlist|button:clear|label"
+msgid "Clear Reminders"
+msgstr "Xóa lời nhắc"
+
+#: src/modules/reminders/ui.py:110
+msgctxt "ui:reminderlist|button:new|modal|field:time|label"
+msgid "When would you like to be reminded?"
+msgstr "Bạn muốn được nhắc nhở khi nào?"
+
+#: src/modules/reminders/ui.py:120
+msgctxt "ui:reminderlist|button:new|modal|field:repeat|label"
+msgid "How often should the reminder repeat?"
+msgstr "Lời nhắc nên lặp lại bao lâu?"
+
+#: src/modules/reminders/ui.py:124
+msgctxt "ui:reminderlist|button:new|modal|field:repeat|placeholder"
+msgid "1 day 10 hours 5 minutes (Leave empty for no repeat.)"
+msgstr "1 day 10 hours 5 minutes (Để trống nếu không muốn lặp lại.)"
+
+#: src/modules/reminders/ui.py:133
+msgctxt "ui:reminderlist|button:new|modal|field:content|label"
+msgid "What should I remind you?"
+msgstr "Tôi nên nhắc bạn về điều gì?"
+
+#: src/modules/reminders/ui.py:144
+msgctxt "ui:reminderlist|button:new|modal|title"
+msgid "Set a Reminder"
+msgstr "Đặt lời nhắc"
+
+#, possible-python-brace-format
+msgctxt "ui:reminderlist|button:new|modal|parse|error:interval"
+msgid "Cannot parse '{value}' as a duration."
+msgstr "Không thể phân tích '{value}' thành khoảng thời gian."
+
+#: src/modules/reminders/ui.py:180
+msgctxt "ui:reminderlist|button:new|label"
+msgid "New Reminder"
+msgstr "Lời nhắc mới"
+
+#: src/modules/reminders/ui.py:208
+msgctxt "ui:reminderlist|select:remove|placeholder"
+msgid "Select to cancel"
+msgstr "Chọn để hủy"
+
+#: src/modules/reminders/ui.py:264
+msgctxt "ui:reminderlist|embed:list|author"
+msgid "Your reminders"
+msgstr "Lời nhắc của bạn"
+
+#: src/modules/reminders/ui.py:270
+msgctxt "ui:reminderlist|embed:list|footer"
+msgid "Click a reminder to jump back to the context!"
+msgstr "Nhấp vào lời nhắc để quay lại ngữ cảnh!"
+
+#: src/modules/reminders/ui.py:277
+msgctxt "ui:reminderlist|embed:no_reminders|title"
+msgid "You have no reminders set!"
+msgstr "Bạn chưa đặt lời nhắc nào!"
+
+#: src/modules/reminders/ui.py:286
+msgctxt "ui:reminderlist|embed|tips:name"
+msgid "Reminder Tips"
+msgstr "Mẹo nhắc nhở"
+
+#, possible-python-brace-format
+msgctxt "ui:reminderlist|embed|tips:value"
+msgid ""
+"- Use {at_cmd} to set a reminder at a known time (e.g. `at 10 am`).\n"
+"- Use {in_cmd} to set a reminder in a certain time (e.g. `in 2 hours`).\n"
+"- Both commands support repeating reminders using the `every` parameter.\n"
+"- Remember to tell me your timezone with {timezone_cmd} if you haven't already!"
+msgstr ""
+"- Sử dụng {at_cmd} để đặt lời nhắc vào thời điểm cụ thể (VD: `at 10 am`).\n"
+"- Sử dụng {in_cmd} để đặt lời nhắc sau một khoảng thời gian (VD: `in 2 hours`).\n"
+"- Cả hai lệnh đều hỗ trợ nhắc nhở lặp lại bằng tham số `every`.\n"
+"- Hãy nhớ cho tôi biết múi giờ của bạn bằng {timezone_cmd} nếu bạn chưa làm!"
+
+#: src/modules/reminders/data.py:63
+msgctxt "reminder_set|title"
+msgid "Reminder Set!"
+msgstr "Đã đặt lời nhắc!"
+
+#, possible-python-brace-format
+msgctxt "reminder_set|desc"
+msgid ""
+"At {timestamp} I will remind you about:\n"
+"> {content}"
+msgstr ""
+"Vào lúc {timestamp} tôi sẽ nhắc bạn về:\n"
+"> {content}"
+
+#: src/modules/reminders/data.py:79
+msgctxt "reminder_set|field:repeat|name"
+msgid "Repeats"
+msgstr "Lặp lại"
+
+#, possible-python-brace-format
+msgctxt "reminder_set|field:repeat|value"
+msgid "This reminder will repeat every `{interval}` (after the first reminder)."
+msgstr "Lời nhắc này sẽ lặp lại mỗi `{interval}` (sau lần nhắc đầu tiên)."
+
+#: src/modules/reminders/data.py:94
+msgctxt "reminder|embed"
+msgid "You asked me to remind you!"
+msgstr "Bạn đã nhờ tôi nhắc nhở!"
+
+#: src/modules/reminders/data.py:102
+msgctxt "reminder|embed"
+msgid "Context?"
+msgstr "Ngữ cảnh?"
+
+#: src/modules/reminders/data.py:104
+msgctxt "reminder|embed"
+msgid "Click Here"
+msgstr "Nhấp vào đây"
+
+#: src/modules/reminders/data.py:111
+msgctxt "reminder|embed"
+msgid "Next reminder"
+msgstr "Lời nhắc tiếp theo"
+
+#, possible-python-brace-format
+msgctxt "reminder|formatted|interval"
+msgid "Every day"
+msgid_plural "Every `{days}` days"
+msgstr[0] "Mỗi ngày"
+
+#, possible-python-brace-format
+msgctxt "reminder|formatted|interval"
+msgid "Every hour"
+msgid_plural "Every `{hours}` hours"
+msgstr[0] "Mỗi giờ"
+
+#, possible-python-brace-format
+msgctxt "reminder|formatted|interval"
+msgid "Every `{duration}`"
+msgstr "Mỗi `{duration}`"

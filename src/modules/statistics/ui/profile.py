@@ -7,7 +7,7 @@ from discord.ui.button import ButtonStyle, button, Button
 from discord.ui.text_input import TextInput, TextStyle
 from discord.ui.select import select, Select, SelectOption
 
-from meta import LionBot, LionCog, conf
+from meta import LionBot, LionCog, conf, WEBSITE_URL
 from meta.errors import UserInputError
 from utils.lib import MessageArgs
 from utils.ui import LeoUI, ModalRetryUI, FastModal, error_handler_for
@@ -128,6 +128,15 @@ class ProfileUI(StatsUI):
         self._xp_card = None
         self._stats_card: Optional[StatsCard] = None
         self._stats_future: Optional[asyncio.Future] = None
+
+        # --- AI-MODIFIED (2026-03-17) ---
+        # Purpose: Web link button to drive users to the richer website profile editor
+        self._web_button = discord.ui.Button(
+            label="Edit on Web", emoji="🌐",
+            url=f"{WEBSITE_URL}/dashboard/profile",
+            style=ButtonStyle.link,
+        )
+        # --- END AI-MODIFIED ---
 
     @select(placeholder="...")
     async def type_menu(self, selection: discord.Interaction, menu: Select):
@@ -287,21 +296,29 @@ class ProfileUI(StatsUI):
             self.close_button_refresh(),
             self.type_menu_refresh()
         )
+        # --- AI-MODIFIED (2026-03-17) ---
+        # Purpose: Include web link button in layout
         if self._showing_stats:
             self._layout = [
                 (self.type_menu,),
-                (self.stats_button, self.global_button, self.edit_button, self.close_button)
+                (self.stats_button, self.global_button, self.edit_button, self._web_button, self.close_button)
             ]
         else:
             self._layout = [
-                (self.stats_button, self.edit_button, self.close_button)
+                (self.stats_button, self.edit_button, self._web_button, self.close_button)
             ]
+        # --- END AI-MODIFIED ---
 
-        voting = self.bot.get_cog('TopggCog')
-        if voting and not await voting.check_voted_recently(self.userid):
-            premiumcog = self.bot.get_cog('PremiumCog')
-            if not (premiumcog and await premiumcog.is_premium_guild(self.guild.id)):
-                self._layout.append((voting.vote_button(),))
+        # --- AI-MODIFIED (2026-03-19) ---
+        # Purpose: Vote button now injected globally via _maybe_append_vote_button in StatsUI.refresh()
+        # --- Original code (commented out for rollback) ---
+        # voting = self.bot.get_cog('TopggCog')
+        # if voting and not await voting.check_voted_recently(self.userid):
+        #     premiumcog = self.bot.get_cog('PremiumCog')
+        #     if not (premiumcog and await premiumcog.is_premium_guild(self.guild.id)):
+        #         self._layout.append((await voting.vote_button_for_user(self.userid),))
+        # --- End original code ---
+        # --- END AI-MODIFIED ---
 
     async def _render_stats(self):
         """

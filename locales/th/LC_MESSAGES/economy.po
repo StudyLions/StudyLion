@@ -1,0 +1,581 @@
+# Thai translation for LionBot - economy
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 21:10+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Thai\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/modules/economy/settingui.py:34
+msgctxt "ui:economy_config|embed|title"
+msgid "Economy Configuration Panel"
+msgstr "แผงตั้งค่าเศรษฐกิจ"
+
+#: src/modules/economy/settingui.py:67
+msgctxt "dash:economy|title"
+msgid "Economy Configuration ({commands[config economy]})"
+msgstr "การตั้งค่าเศรษฐกิจ ({commands[config economy]})"
+
+#: src/modules/economy/settingui.py:71
+msgctxt "dash:economy|dropdown|placeholder"
+msgid "Economy Panel"
+msgstr "แผงเศรษฐกิจ"
+
+#: src/modules/economy/cog.py:87
+msgctxt "cmd:economy"
+msgid "economy"
+msgstr "economy"
+
+#: src/modules/economy/cog.py:93
+msgctxt "cmd:economy_balance"
+msgid "balance"
+msgstr "balance"
+
+#: src/modules/economy/cog.py:96
+msgctxt "cmd:economy_balance|desc"
+msgid "Display or modify LionCoin balance for members and roles."
+msgstr "แสดงหรือแก้ไขยอดเหรียญ LionCoin สำหรับสมาชิกและบทบาท"
+
+#: src/modules/economy/cog.py:100
+msgctxt "cmd:economy_balance|param:target"
+msgid "target"
+msgstr "target"
+
+#: src/modules/economy/cog.py:101
+msgctxt "cmd:economy_balance|param:add"
+msgid "add"
+msgstr "add"
+
+#: src/modules/economy/cog.py:102
+msgctxt "cmd:economy_balance|param:set"
+msgid "set"
+msgstr "set"
+
+#: src/modules/economy/cog.py:107
+msgctxt "cmd:economy_balance|param:target|desc"
+msgid ""
+"Target user or role to view or update. Use @everyone to update the entire "
+"guild."
+msgstr ""
+"ผู้ใช้หรือบทบาทเป้าหมายที่จะดูหรืออัปเดต ใช้ @everyone "
+"เพื่ออัปเดตทั้งเซิร์ฟเวอร์"
+
+#: src/modules/economy/cog.py:111
+msgctxt "cmd:economy_balance|param:add|desc"
+msgid ""
+"Number of LionCoins to add to the target member's balance. May be negative "
+"to remove."
+msgstr ""
+"จำนวน LionCoins ที่จะเพิ่มในยอดเหรียญของสมาชิกเป้าหมาย "
+"อาจเป็นค่าลบเพื่อหักออก"
+
+#: src/modules/economy/cog.py:115
+msgctxt "cmd:economy_balance|param:set|set"
+msgid "New balance to set the target's balance to."
+msgstr "ยอดเหรียญใหม่ที่จะตั้งให้เป้าหมาย"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|error:no_target"
+msgid ""
+"There are no valid members in {role.mention}! It has a total of `0` LC."
+msgstr "ไม่มีสมาชิกที่ถูกต้องใน {role.mention}! ยอดรวมเป็น `0` LC"
+
+#: src/modules/economy/cog.py:164
+msgctxt "cmd:economy_balance|error:target_is_bot"
+msgid "Bots cannot have coin balances!"
+msgstr "บอทไม่สามารถมียอดเหรียญได้!"
+
+#: src/modules/economy/cog.py:175
+msgctxt "cmd:economy_balance|error:args"
+msgid "You cannot simultaneously `set` and `add` member balances!"
+msgstr "คุณไม่สามารถ `set` และ `add` ยอดเหรียญพร้อมกันได้!"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:success|affected"
+msgid "One user was affected."
+msgid_plural "**{count}** users were affected."
+msgstr[0] "**{count}** ผู้ใช้ได้รับผลกระทบ"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|confirm|affected"
+msgid "One user will be affected."
+msgid_plural "**{count}** users will be affected."
+msgstr[0] "**{count}** ผู้ใช้จะได้รับผลกระทบ"
+
+#: src/modules/economy/cog.py:237
+msgctxt "cmd:economy_balance|confirm|button:confirm"
+msgid "Yes, adjust balances"
+msgstr "ใช่ ปรับยอดเหรียญ"
+
+#: src/modules/economy/cog.py:241
+msgctxt "cmd:economy_balance|confirm|button:cancel"
+msgid "No, cancel"
+msgstr "ไม่ ยกเลิก"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:success_set|desc"
+msgid ""
+"All members of **{guild_name}** have had their balance set to "
+"{coin_emoji}**{amount}**."
+msgstr ""
+"สมาชิกทุกคนใน **{guild_name}** ถูกตั้งยอดเหรียญเป็น {coin_emoji}**{amount}**"
+" แล้ว"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|confirm_set|desc"
+msgid ""
+"Are you sure you want to set everyone's balance to {coin_emoji}**{amount}**?"
+msgstr ""
+"คุณแน่ใจหรือไม่ว่าต้องการตั้งยอดเหรียญของทุกคนเป็น {coin_emoji}**{amount}**?"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:success_set|desc"
+msgid ""
+"All members of {role_mention} have had their balance set to "
+"{coin_emoji}**{amount}**."
+msgstr ""
+"สมาชิกทุกคนใน {role_mention} ถูกตั้งยอดเหรียญเป็น {coin_emoji}**{amount}** "
+"แล้ว"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|confirm_set|desc"
+msgid ""
+"Are you sure you want to set the balance of everyone with {role_mention} to "
+"{coin_emoji}**{amount}**?"
+msgstr ""
+"คุณแน่ใจหรือไม่ว่าต้องการตั้งยอดเหรียญของทุกคนที่มี {role_mention} เป็น "
+"{coin_emoji}**{amount}**?"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:success_set|desc"
+msgid "{user_mention} now has a balance of {coin_emoji}**{amount}**."
+msgstr "{user_mention} มียอดเหรียญ {coin_emoji}**{amount}** แล้ว"
+
+#: src/modules/economy/cog.py:305
+msgctxt "eventlog|event:economy_set|title"
+msgid "Moderator Set Economy Balance"
+msgstr "ผู้ดูแลตั้งค่ายอดเหรียญเศรษฐกิจ"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:economy_set|desc"
+msgid "{moderator} set {target}'s balance to {amount}."
+msgstr "{moderator} ตั้งยอดเหรียญของ {target} เป็น {amount}"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:success_add|desc"
+msgid ""
+"All members of **{guild_name}** have been given {coin_emoji}**{amount}**."
+msgstr "สมาชิกทุกคนใน **{guild_name}** ได้รับ {coin_emoji}**{amount}** แล้ว"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|confirm_add|desc"
+msgid "Are you sure you want to add **{amount}** to everyone's balance?"
+msgstr "คุณแน่ใจหรือไม่ว่าต้องการเพิ่ม **{amount}** ให้ยอดเหรียญของทุกคน?"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:success_add|desc"
+msgid ""
+"All members of {role_mention} have been given {coin_emoji}**{amount}**."
+msgstr "สมาชิกทุกคนใน {role_mention} ได้รับ {coin_emoji}**{amount}** แล้ว"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|confirm_add|desc"
+msgid ""
+"Are you sure you want to add {coin_emoji}**{amount}** to everyone in "
+"{role_mention}?"
+msgstr ""
+"คุณแน่ใจหรือไม่ว่าต้องการเพิ่ม {coin_emoji}**{amount}** ให้ทุกคนใน "
+"{role_mention}?"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:success_add|desc"
+msgid ""
+"{user_mention} was given {coin_emoji}**{amount}**, and now has a balance of "
+"{coin_emoji}**{new_amount}**."
+msgstr ""
+"{user_mention} ได้รับ {coin_emoji}**{amount}** และตอนนี้มียอดเหรียญ "
+"{coin_emoji}**{new_amount}**"
+
+#: src/modules/economy/cog.py:380
+msgctxt "eventlog|event:economy_add|title"
+msgid "Moderator Modified Economy Balance"
+msgstr "ผู้ดูแลแก้ไขยอดเหรียญเศรษฐกิจ"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:economy_set|desc"
+msgid "{moderator} added {amount} to {target}'s balance."
+msgstr "{moderator} เพิ่ม {amount} ให้ยอดเหรียญของ {target}"
+
+#: src/modules/economy/cog.py:394
+msgctxt "cmd:economy_balance|embed:success|title"
+msgid "Account successfully updated."
+msgid_plural "Accounts successfully updated."
+msgstr[0] "อัปเดตบัญชีเรียบร้อยแล้ว"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:role_lb|author"
+msgid "Balance sheet for {name}"
+msgstr "รายการยอดเหรียญของ {name}"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:role_lb|header"
+msgid "This server has a total balance of {coin_emoji}**{total}**."
+msgstr "เซิร์ฟเวอร์นี้มียอดเหรียญรวม {coin_emoji}**{total}**"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:role_lb|header"
+msgid ""
+"{role_mention} has `{count}` members with non-zero balance, with a total "
+"balance of {coin_emoji}**{total}**."
+msgstr ""
+"{role_mention} มีสมาชิก `{count}` คนที่มียอดเหรียญไม่เป็นศูนย์ ยอดรวม "
+"{coin_emoji}**{total}**"
+
+#: src/modules/economy/cog.py:464
+msgctxt "cmd:economy_balance|embed:role_lb|row_format"
+msgid "`[{pos:>{numwidth}}]` | `{coins:>{coinwidth}} LC` | {mention}"
+msgstr "`[{pos:>{numwidth}}]` | `{coins:>{coinwidth}} LC` | {mention}"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:role_lb|footer"
+msgid "Page {page}/{total}"
+msgstr "หน้า {page}/{total}"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:role_lb|header"
+msgid "This server has a total balance of {coin_emoji}**0**."
+msgstr "เซิร์ฟเวอร์นี้มียอดเหรียญรวม {coin_emoji}**0**"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:role_lb|header"
+msgid "The role {role_mention} has a total balance of {coin_emoji}**0**."
+msgstr "บทบาท {role_mention} มียอดเหรียญรวม {coin_emoji}**0**"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:single|desc"
+msgid "{mention} currently owns {coin_emoji} {coins}."
+msgstr "{mention} มี {coin_emoji} {coins} อยู่ในขณะนี้"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:single|author"
+msgid "Balance statement for {user}"
+msgstr "รายการยอดเหรียญของ {user}"
+
+#: src/modules/economy/cog.py:548
+msgctxt "cmd:economy_reset"
+msgid "reset"
+msgstr "reset"
+
+#: src/modules/economy/cog.py:551
+msgctxt "cmd:economy_reset|desc"
+msgid ""
+"Reset the coin balance for a target user or role. (See also \"economy "
+"balance\".)"
+msgstr ""
+"รีเซ็ตยอดเหรียญสำหรับผู้ใช้หรือบทบาทเป้าหมาย (ดู \"economy balance\" ด้วย)"
+
+#: src/modules/economy/cog.py:555
+msgctxt "cmd:economy_reset|param:target"
+msgid "target"
+msgstr "target"
+
+#: src/modules/economy/cog.py:560
+msgctxt "cmd:economy_reset|param:target|desc"
+msgid ""
+"Target user or role to view or update. Use @everyone to reset the entire "
+"guild."
+msgstr "ผู้ใช้หรือบทบาทเป้าหมาย ใช้ @everyone เพื่อรีเซ็ตทั้งเซิร์ฟเวอร์"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_reset|confirm:reset_guild|desc"
+msgid ""
+"Are you sure you want to reset the coin balance for everyone in **{guild_name}**?\n"
+"*This is not reversible!*"
+msgstr ""
+"คุณแน่ใจหรือไม่ว่าต้องการรีเซ็ตยอดเหรียญของทุกคนใน **{guild_name}**?\n"
+"*การกระทำนี้ไม่สามารถย้อนกลั..."
+
+#: src/modules/economy/cog.py:595
+msgctxt "cmd:economy_reset|confirm:reset_guild|button:confirm"
+msgid "Yes, reset the economy"
+msgstr "ใช่ รีเซ็ตเศรษฐกิจ"
+
+#: src/modules/economy/cog.py:599
+msgctxt "cmd:economy_reset|confirm:reset_guild|button:cancel"
+msgid "Cancel reset"
+msgstr "ยกเลิกการรีเซ็ต"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_reset|embed:success_guild|desc"
+msgid ""
+"Everyone in **{guild_name}** has had their balance reset to "
+"{coin_emoji}**{amount}**."
+msgstr ""
+"ยอดเหรียญของทุกคนใน **{guild_name}** ถูกรีเซ็ตเป็น {coin_emoji}**{amount}** "
+"แล้ว"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_reset|error:no_target|desc"
+msgid "The role {mention} has no members to reset!"
+msgstr "บทบาท {mention} ไม่มีสมาชิกที่จะรีเซ็ต!"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_reset|confirm:reset_role|desc"
+msgid ""
+"Are you sure you want to reset the balance for everyone in {mention}?\n"
+"**{count}** members will be affected."
+msgstr ""
+"คุณแน่ใจหรือไม่ว่าต้องการรีเซ็ตยอดเหรียญของทุกคนใน {mention}?\n"
+"**{count}** สมาชิกจะได้รับผลกระทบ"
+
+#: src/modules/economy/cog.py:651
+msgctxt "cmd:economy_reset|confirm:reset_role|button:confirm"
+msgid "Yes, complete economy reset"
+msgstr "ใช่ รีเซ็ตเศรษฐกิจทั้งหมด"
+
+#: src/modules/economy/cog.py:655
+msgctxt "cmd:economy_reset|confirm:reset_role|button:cancel"
+msgid "Cancel"
+msgstr "ยกเลิก"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_reset|embed:success_role|desc"
+msgid ""
+"Everyone in {role_mention} has had their coin balance reset to "
+"{coin_emoji}**{amount}**."
+msgstr ""
+"ยอดเหรียญของทุกคนใน {role_mention} ถูกรีเซ็ตเป็น {coin_emoji}**{amount}** "
+"แล้ว"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_reset|embed:success_user|desc"
+msgid "{mention}'s balance has been reset to {coin_emoji}**{amount}**."
+msgstr "ยอดเหรียญของ {mention} ถูกรีเซ็ตเป็น {coin_emoji}**{amount}** แล้ว"
+
+#: src/modules/economy/cog.py:704
+msgctxt "cmd:send"
+msgid "send"
+msgstr "send"
+
+#: src/modules/economy/cog.py:707
+msgctxt "cmd:send|desc"
+msgid "Gift the target user a certain number of LionCoins."
+msgstr "มอบ LionCoins จำนวนหนึ่งให้ผู้ใช้เป้าหมาย"
+
+#: src/modules/economy/cog.py:711
+msgctxt "cmd:send|param:target"
+msgid "target"
+msgstr "target"
+
+#: src/modules/economy/cog.py:712
+msgctxt "cmd:send|param:amount"
+msgid "amount"
+msgstr "amount"
+
+#: src/modules/economy/cog.py:713
+msgctxt "cmd:send|param:note"
+msgid "note"
+msgstr "note"
+
+#: src/modules/economy/cog.py:716
+msgctxt "cmd:send|param:target|desc"
+msgid "User to send the gift to"
+msgstr "ผู้ใช้ที่จะส่งของขวัญให้"
+
+#: src/modules/economy/cog.py:717
+msgctxt "cmd:send|param:amount|desc"
+msgid "Number of coins to send"
+msgstr "จำนวนเหรียญที่จะส่ง"
+
+#: src/modules/economy/cog.py:718
+msgctxt "cmd:send|param:note|desc"
+msgid "Optional note to add to the gift."
+msgstr "หมายเหตุเพิ่มเติม (ไม่บังคับ)"
+
+#: src/modules/economy/cog.py:742
+msgctxt "cmd:send|error:not_allowed"
+msgid "Sorry, this server has disabled LionCoin transfers!"
+msgstr "ขออภัย เซิร์ฟเวอร์นี้ปิดใช้งานการโอน LionCoin แล้ว!"
+
+#: src/modules/economy/cog.py:751
+msgctxt "cmd:send|error:sending-to-self"
+msgid ""
+"What is this, tax evasion?\n"
+"(You can not send coins to yourself.)"
+msgstr ""
+"นี่คืออะไร หนีภาษีหรือ?\n"
+"(คุณไม่สามารถส่งเหรียญให้ตัวเองได้)"
+
+#: src/modules/economy/cog.py:761
+msgctxt "cmd:send|error:sending-to-leo"
+msgid ""
+"I appreciate it, but you need it more than I do!\n"
+"(You cannot send coins to bots.)"
+msgstr ""
+"ขอบคุณ แต่คุณต้องการมันมากกว่าฉัน!\n"
+"(คุณไม่สามารถส่งเหรียญให้บอทได้)"
+
+#, possible-python-brace-format
+msgctxt "cmd:send|error:sending-to-bot"
+msgid ""
+"{target} appreciates the gesture, but said they don't have any use for {coin}.\n"
+"(You cannot send coins to bots.)"
+msgstr ""
+"{target} ซาบซึ้งในน้ำใจ แต่บอกว่าไม่มีประโยชน์สำหรับ {coin}\n"
+"(คุณไม่สามารถส่งเหรียญให้บอทได้)"
+
+#, possible-python-brace-format
+msgctxt "cmd:send|error:insufficient"
+msgid ""
+"You do not have enough lioncoins to do this!\n"
+"`Current Balance:` {coin_emoji}{balance}"
+msgstr ""
+"คุณมี LionCoins ไม่เพียงพอ!\n"
+"`ยอดเหรียญปัจจุบัน:` {coin_emoji}{balance}"
+
+#: src/modules/economy/cog.py:816
+msgctxt "eventlog|event:send|title"
+msgid "Coins Transferred"
+msgstr "โอนเหรียญสำเร็จ"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:send|desc"
+msgid "{source} gifted {amount} to {target}"
+msgstr "{source} มอบ {amount} ให้ {target}"
+
+#, possible-python-brace-format
+msgctxt "cmd:send|embed:gift|title"
+msgid "{user} sent you a gift!"
+msgstr "{user} ส่งของขวัญให้คุณ!"
+
+#, possible-python-brace-format
+msgctxt "cmd:send|embed:gift|desc"
+msgid "{mention} sent you {coin_emoji}**{amount}**."
+msgstr "{mention} ส่ง {coin_emoji}**{amount}** ให้คุณ"
+
+#, possible-python-brace-format
+msgctxt "cmd:send|embed:ack|desc"
+msgid ""
+"**{coin_emoji}{amount}** has been deducted from your balance and sent to "
+"{mention}!"
+msgstr ""
+"**{coin_emoji}{amount}** ถูกหักจากยอดเหรียญของคุณและส่งให้ {mention} แล้ว!"
+
+#: src/modules/economy/cog.py:872
+msgctxt "cmd:send|embed:ack|desc|error:unreachable"
+msgid ""
+"Unfortunately, I was not able to message the recipient. Perhaps they have me"
+" blocked?"
+msgstr "ขออภัย ฉันไม่สามารถส่งข้อความถึงผู้รับได้ บางทีพวกเขาอาจบล็อกฉันอยู่?"
+
+#: src/modules/economy/cog.py:884
+msgctxt "cmd:configure_economy"
+msgid "economy"
+msgstr "economy"
+
+#: src/modules/economy/cog.py:887
+msgctxt "cmd:configure_economy|desc"
+msgid "Configure LionCoin Economy"
+msgstr "ตั้งค่าเศรษฐกิจ LionCoin"
+
+#: src/modules/economy/settings.py:38
+msgctxt "guildset:coins_per_xp"
+msgid "coins_per_100xp"
+msgstr "coins_per_100xp"
+
+#: src/modules/economy/settings.py:41
+msgctxt "guildset:coins_per_xp|desc"
+msgid "How many LionCoins to reward members per 100 XP they earn."
+msgstr "จำนวน LionCoins ที่ให้ต่อ 100 XP"
+
+#: src/modules/economy/settings.py:45
+msgctxt "guildset:coins_per_xp|long_desc"
+msgid ""
+"Members will be rewarded with this many LionCoins for every 100 XP they "
+"earn."
+msgstr "สมาชิกจะได้รับ LionCoins จำนวนนี้ต่อทุกๆ 100 XP ที่ได้รับ"
+
+#: src/modules/economy/settings.py:49
+msgctxt "guildset:coins_per_xp|long_desc"
+msgid "The number of coins to reward per 100 XP."
+msgstr "จำนวนเหรียญที่ให้ต่อ 100 XP"
+
+#, possible-python-brace-format
+msgctxt "guildset:coins_per_xp|set_response"
+msgid ""
+"For every **100** XP they earn, members will now be given "
+"{coin}**{amount}**."
+msgstr "ทุกๆ **100** XP ที่ได้รับ สมาชิกจะได้รับ {coin}**{amount}**"
+
+#: src/modules/economy/settings.py:74
+msgctxt "guildset:allow_transfers"
+msgid "allow_transfers"
+msgstr "allow_transfers"
+
+#: src/modules/economy/settings.py:77
+msgctxt "guildset:allow_transfers|desc"
+msgid "Whether to allow members to transfer LionCoins to each other."
+msgstr "อนุญาตให้สมาชิกโอน LionCoins ให้กันหรือไม่"
+
+#: src/modules/economy/settings.py:81
+msgctxt "guildset:allow_transfers|long_desc"
+msgid ""
+"If disabled, members will not be able to transfer LionCoins to each other."
+msgstr "หากปิดใช้งาน สมาชิกจะไม่สามารถโอน LionCoins ให้กันได้"
+
+#: src/modules/economy/settings.py:89
+msgctxt "guildset:allow_transfers|outputs:true"
+msgid "Enabled (Coin transfers allowed.)"
+msgstr "เปิดใช้งาน (อนุญาตการโอนเหรียญ)"
+
+#: src/modules/economy/settings.py:90
+msgctxt "guildset:allow_transfers|outputs:false"
+msgid "Disabled (Coin transfers not allowed.)"
+msgstr "ปิดใช้งาน (ไม่อนุญาตการโอนเหรียญ)"
+
+#, possible-python-brace-format
+msgctxt "guildset:allow_transfers|set_response|set:true"
+msgid "Members will now be able to use {send_cmd} to transfer {coin}"
+msgstr "สมาชิกสามารถใช้ {send_cmd} เพื่อโอน {coin} ได้แล้ว"
+
+#, possible-python-brace-format
+msgctxt "guildset:allow_transfers|set_response|set:false"
+msgid "Members will not be able to use {send_cmd} to transfer {coin}"
+msgstr "สมาชิกจะไม่สามารถใช้ {send_cmd} เพื่อโอน {coin} ได้"
+
+#: src/modules/economy/settings.py:123
+msgctxt "guildset:starting_funds"
+msgid "starting_funds"
+msgstr "starting_funds"
+
+#: src/modules/economy/settings.py:126
+msgctxt "guildset:starting_funds|desc"
+msgid "How many LionCoins should a member start with."
+msgstr "สมาชิกควรเริ่มต้นด้วย LionCoins เท่าไหร่"
+
+#: src/modules/economy/settings.py:130
+msgctxt "guildset:starting_funds|long_desc"
+msgid ""
+"Members will be given this number of coins when they first interact with me,"
+" or first join the server."
+msgstr ""
+"สมาชิกจะได้รับเหรียญจำนวนนี้เมื่อโต้ตอบครั้งแรกหรือเข้าร่วมเซิร์ฟเวอร์"
+
+#: src/modules/economy/settings.py:134
+msgctxt "guildset:starting_funds|accepts"
+msgid "Number of coins to give to new members."
+msgstr "จำนวนเหรียญสำหรับสมาชิกใหม่"
+
+#, possible-python-brace-format
+msgctxt "guildset:starting_funds|set_response"
+msgid "New members will now start with {amount}"
+msgstr "สมาชิกใหม่จะเริ่มต้นด้วย {amount}"

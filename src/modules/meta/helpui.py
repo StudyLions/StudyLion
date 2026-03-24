@@ -4,7 +4,7 @@ import asyncio
 import discord
 from discord.ui.button import button, Button, ButtonStyle
 
-from meta import LionBot, conf
+from meta import LionBot, conf, WEBSITE_URL
 from utils.ui import MessageUI
 from utils.lib import MessageArgs
 
@@ -78,6 +78,13 @@ class HelpUI(MessageUI):
         return message
 
     async def refresh_layout(self):
+        # --- AI-MODIFIED (2026-03-17) ---
+        # Purpose: Added web link button for full tutorials on website
+        _web = discord.ui.Button(
+            label="Full Tutorials", emoji="📖",
+            url=f"{WEBSITE_URL}/tutorials",
+            style=discord.ButtonStyle.link,
+        )
         if self.show_admin:
             await asyncio.gather(
                 self.close_button_refresh(),
@@ -86,10 +93,13 @@ class HelpUI(MessageUI):
             )
             switcher = self.member_page_button if self.page else self.admin_page_button
             self.set_layout(
-                (switcher, self.close_button)
+                (switcher, _web, self.close_button)
             )
         else:
-            self.set_layout()
+            self.set_layout(
+                (_web,)
+            )
+        # --- END AI-MODIFIED ---
 
     async def reload(self):
         self.member_page = await make_member_page(self.bot, self.caller, self.guild)

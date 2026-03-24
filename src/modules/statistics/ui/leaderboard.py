@@ -1,3 +1,4 @@
+from typing import Optional
 from enum import IntEnum
 import asyncio
 
@@ -7,7 +8,7 @@ from discord.ui.select import select, Select, SelectOption
 
 from gui.base import CardMode
 
-from meta import LionBot, conf
+from meta import LionBot, conf, WEBSITE_URL
 from utils.lib import MessageArgs
 from utils.ui import input
 from core.lion_guild import VoiceMode
@@ -73,10 +74,26 @@ class LeaderboardUI(StatsUI):
         self.lb_data = {}
 
         # Cache of the cards already displayed
-        # (type, period) -> (pagen -> Optional[Future[Card]])
+        # (type, period, filter_role_id) -> (pagen -> Optional[Future[Card]])
         self.cache = {}
 
         self.was_chunked: bool = guild.chunked
+
+        # --- AI-MODIFIED (2026-03-17) ---
+        # Purpose: Web link button for richer leaderboard with podium, filters, periods
+        self._web_button = discord.ui.Button(
+            label="Full Leaderboard", emoji="🌐",
+            url=f"{WEBSITE_URL}/dashboard/leaderboard",
+            style=ButtonStyle.link,
+        )
+        # --- END AI-MODIFIED ---
+
+        # --- AI-MODIFIED (2026-03-23) ---
+        # Purpose: Role filter state for /leaderboard "Filter by Role" feature
+        self.filter_role_id: Optional[int] = None
+        self.available_filter_roles: list[int] = []
+        self.role_filter_enabled: bool = False
+        # --- END AI-MODIFIED ---
 
     async def run(self, interaction: discord.Interaction):
         self._original = interaction
@@ -96,6 +113,18 @@ class LeaderboardUI(StatsUI):
         alltime = (lguild.data.first_joined_at or interaction.guild.created_at).astimezone(lguild.timezone)
         periods[LBPeriod.ALLTIME] = alltime
         self.period_starts = periods
+
+        # --- AI-MODIFIED (2026-03-24) ---
+        # Purpose: Load role filter configuration for this guild (with cog safety check)
+        self.role_filter_enabled = bool(lguild.data.leaderboard_role_filter_enabled)
+        stats_cog = self.bot.get_cog('StatsCog')
+        if self.role_filter_enabled and stats_cog is not None:
+            filter_setting = await stats_cog.settings.LeaderboardFilterRoles.get(self.guildid)
+            self.available_filter_roles = list(filter_setting.data) if filter_setting.data else []
+        else:
+            self.available_filter_roles = []
+        self.filter_role_id = None
+        # --- END AI-MODIFIED ---
 
         self.focused = True
         await self.refresh()
@@ -140,8 +169,15 @@ class LeaderboardUI(StatsUI):
         # Filter out members which are not in the server and unranked roles and bots
         # Usually hits cache
         self.was_chunked = self.guild.chunked
-        unranked_setting = await self.bot.get_cog('StatsCog').settings.UnrankedRoles.get(self.guild.id)
-        unranked_roleids = set(unranked_setting.data)
+        # --- AI-MODIFIED (2026-03-24) ---
+        # Purpose: Guard against StatsCog being None during shard reconnect/startup
+        stats_cog = self.bot.get_cog('StatsCog')
+        if stats_cog is not None:
+            unranked_setting = await stats_cog.settings.UnrankedRoles.get(self.guild.id)
+            unranked_roleids = set(unranked_setting.data)
+        else:
+            unranked_roleids = set()
+        # --- END AI-MODIFIED ---
         true_leaderboard = []
         guild = self.guild
         for userid, stat_total in data:
@@ -170,11 +206,24 @@ class LeaderboardUI(StatsUI):
 
         return result
 
+    # --- AI-MODIFIED (2026-03-23) ---
+    # Purpose: Apply role filter on top of cached leaderboard data
     async def current_data(self):
         """
-        Helper method to retrieve the leaderboard data for the current mode.
+        Helper method to retrieve the leaderboard data for the current mode,
+        with role filter applied if active.
         """
-        return await self.fetch_lb_data(self.stat_type, self.current_period)
+        data = await self.fetch_lb_data(self.stat_type, self.current_period)
+        if self.filter_role_id is not None:
+            guild = self.guild
+            filter_id = self.filter_role_id
+            data = [
+                (uid, total) for uid, total in data
+                if (m := guild.get_member(uid)) and
+                   any(r.id == filter_id for r in m.roles)
+            ]
+        return data
+    # --- END AI-MODIFIED ---
 
     async def _render_card(self, stat_type, period, pagen, data):
         """
@@ -214,18 +263,39 @@ class LeaderboardUI(StatsUI):
             # Leaderboard is empty
             return None
 
+    # --- AI-MODIFIED (2026-03-23) ---
+    # Purpose: Use filtered data and include filter_role_id in cache key
+    # --- Original code (commented out for rollback) ---
+    # async def fetch_page(self, stat_type, period, pagen):
+    #     lb_data = await self.fetch_lb_data(stat_type, period)
+    #     if lb_data:
+    #         pagen %= (len(lb_data) // self.page_size) + (1 if len(lb_data) % self.page_size else 0)
+    #     else:
+    #         pagen = 0
+    #     key = (stat_type, period, pagen)
+    #     if (future := self.cache.get(key, None)) is not None and not future.cancelled():
+    #         card = await future
+    #     else:
+    #         future = asyncio.create_task(self._render_card(
+    #             stat_type, period, pagen, lb_data
+    #         ))
+    #         self.cache[key] = future
+    #         card = await future
+    #     return card
+    # --- End original code ---
     async def fetch_page(self, stat_type, period, pagen):
         """
         Fetch the requested leaderboard page as a rendered LeaderboardCard.
 
-        Applies cache where possible.
+        Applies cache where possible. Cache key includes filter_role_id
+        so that different role filters produce separate cached cards.
         """
-        lb_data = await self.fetch_lb_data(stat_type, period)
+        lb_data = await self.current_data()
         if lb_data:
             pagen %= (len(lb_data) // self.page_size) + (1 if len(lb_data) % self.page_size else 0)
         else:
             pagen = 0
-        key = (stat_type, period, pagen)
+        key = (stat_type, period, self.filter_role_id, pagen)
         if (future := self.cache.get(key, None)) is not None and not future.cancelled():
             card = await future
         else:
@@ -238,6 +308,7 @@ class LeaderboardUI(StatsUI):
             self.cache[key] = future
             card = await future
         return card
+    # --- END AI-MODIFIED ---
 
     # UI interface
     @select(placeholder="Select Activity Type")
@@ -303,6 +374,52 @@ class LeaderboardUI(StatsUI):
                 )
             )
         menu.options = options
+
+    # --- AI-MODIFIED (2026-03-23) ---
+    # Purpose: Role filter dropdown for /leaderboard "Filter by Role" feature
+    @select(placeholder="Filter by Role")
+    async def role_filter_menu(self, selection: discord.Interaction, selected):
+        if selected.values:
+            await selection.response.defer(thinking=True)
+            value = selected.values[0]
+            if value == "none":
+                self.filter_role_id = None
+            else:
+                self.filter_role_id = int(value)
+            self.focused = True
+            self.pagen = 0
+            await self.refresh(thinking=selection)
+
+    async def role_filter_menu_refresh(self):
+        t = self.bot.translator.t
+        menu = self.role_filter_menu
+        menu.placeholder = t(_p(
+            'ui:leaderboard|menu:role_filter|placeholder',
+            "Filter by Role"
+        ))
+        options = [
+            SelectOption(
+                label=t(_p(
+                    'ui:leaderboard|menu:role_filter|item:all',
+                    "All Members"
+                )),
+                value="none",
+                default=(self.filter_role_id is None),
+            )
+        ]
+        guild = self.guild
+        for role_id in self.available_filter_roles:
+            role = guild.get_role(role_id)
+            if role:
+                options.append(
+                    SelectOption(
+                        label=role.name[:100],
+                        value=str(role.id),
+                        default=(self.filter_role_id == role.id),
+                    )
+                )
+        menu.options = options
+    # --- END AI-MODIFIED ---
 
     @button(label="This Season", style=ButtonStyle.grey)
     async def season_button(self, press: discord.Interaction, pressed: Button):
@@ -453,6 +570,17 @@ class LeaderboardUI(StatsUI):
                 'ui:leaderboard|since',
                 "Counting statistics since {timestamp}"
             )).format(timestamp=discord.utils.format_dt(period_start))
+            # --- AI-MODIFIED (2026-03-23) ---
+            # Purpose: Show active role filter in leaderboard header
+            if self.filter_role_id is not None:
+                role = self.guild.get_role(self.filter_role_id)
+                role_name = role.name if role else str(self.filter_role_id)
+                filter_line = t(_p(
+                    'ui:leaderboard|filter_active',
+                    "Filtered by role: **{role}**"
+                )).format(role=role_name)
+                header = '\n'.join((header, filter_line))
+            # --- END AI-MODIFIED ---
             if not self.was_chunked:
                 header = '\n'.join((header, chunk_warning))
             args = MessageArgs(
@@ -496,11 +624,18 @@ class LeaderboardUI(StatsUI):
 
     async def refresh_components(self):
         await self._prepare()
-        await asyncio.gather(
+        # --- AI-MODIFIED (2026-03-23) ---
+        # Purpose: Include role_filter_menu_refresh in gather when filter is available
+        refresh_tasks = [
             self.jump_button_refresh(),
             self.close_button_refresh(),
-            self.stat_menu_refresh()
-        )
+            self.stat_menu_refresh(),
+        ]
+        show_role_filter = self.role_filter_enabled and len(self.available_filter_roles) > 0
+        if show_role_filter:
+            refresh_tasks.append(self.role_filter_menu_refresh())
+        await asyncio.gather(*refresh_tasks)
+        # --- END AI-MODIFIED ---
 
         # Compute period row
         period_buttons = {
@@ -532,16 +667,28 @@ class LeaderboardUI(StatsUI):
             period_row = (*period_row, self.close_button)
             page_row = ()
 
+        # --- AI-MODIFIED (2026-03-23) ---
+        # Purpose: Conditionally include role filter select row; layout stays within 5 rows
         self._layout = [
             (self.stat_menu,),
-            period_row,
-            page_row
         ]
-        voting = self.bot.get_cog('TopggCog')
-        if voting and not await voting.check_voted_recently(self.userid):
-            premiumcog = self.bot.get_cog('PremiumCog')
-            if not (premiumcog and await premiumcog.is_premium_guild(self.guild.id)):
-                self._layout.append((voting.vote_button(),))
+        if show_role_filter:
+            self._layout.append((self.role_filter_menu,))
+        self._layout.append(period_row)
+        if page_row:
+            self._layout.append(page_row)
+        self._layout.append((self._web_button,))
+        # --- END AI-MODIFIED ---
+        # --- AI-MODIFIED (2026-03-19) ---
+        # Purpose: Vote button now injected globally via _maybe_append_vote_button in StatsUI.refresh()
+        # --- Original code (commented out for rollback) ---
+        # voting = self.bot.get_cog('TopggCog')
+        # if voting and not await voting.check_voted_recently(self.userid):
+        #     premiumcog = self.bot.get_cog('PremiumCog')
+        #     if not (premiumcog and await premiumcog.is_premium_guild(self.guild.id)):
+        #         self._layout.append((await voting.vote_button_for_user(self.userid),))
+        # --- End original code ---
+        # --- END AI-MODIFIED ---
 
     async def reload(self):
         """

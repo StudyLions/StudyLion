@@ -1,0 +1,398 @@
+# Greek translation for LionBot - reminders
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 21:07+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Greek\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#, possible-python-brace-format
+msgctxt "create_reminder|error:past"
+msgid "The provided reminder time {timestamp} is in the past!"
+msgstr "Ο χρόνος υπενθύμισης {timestamp} έχει ήδη περάσει!"
+
+#: src/modules/reminders/cog.py:123
+msgctxt "create_reminder|error:too_fast"
+msgid ""
+"You cannot set a repeating reminder with a period less than 10 minutes."
+msgstr ""
+"Δεν μπορείτε να ορίσετε μια επαναλαμβανόμενη υπενθύμιση με περίοδο μικρότερη"
+" από 10 λεπτά."
+
+#: src/modules/reminders/cog.py:133
+msgctxt "create_reminder|error:too_many"
+msgid "Sorry, you have reached the maximum of `25` reminders."
+msgstr "Λυπάμαι, έχετε φτάσει το μέγιστο των `25` υπενθυμίσεων."
+
+#: src/modules/reminders/cog.py:149
+msgctxt "create_reminder|error:cannot_dm"
+msgid ""
+"I cannot direct message you! Do you have me blocked or direct messages "
+"closed?"
+msgstr ""
+"Δεν μπορώ να σας στείλω προσωπικό μήνυμα! Με έχετε μπλοκάρει ή έχετε κλείσει"
+" τα προσωπικά μηνύματα;"
+
+#, possible-python-brace-format
+msgctxt "parse_timestamp|error:parse"
+msgid ""
+"Could not parse `{given}` as a valid reminder time. Try entering the time in"
+" the form `HH:MM` or `YYYY-MM-DD HH:MM`."
+msgstr ""
+"Δεν ήταν δυνατή η ανάλυση του `{given}` ως έγκυρη ώρα υπενθύμισης. Δοκιμάστε"
+" να εισάγετε την ώρα στη μορφή `HH:MM` ή `YYYY-MM-DD HH:MM`."
+
+#: src/modules/reminders/cog.py:329
+msgctxt "cmd:reminders"
+msgid "reminders"
+msgstr "reminders"
+
+#: src/modules/reminders/cog.py:332
+msgctxt "cmd:reminders|desc"
+msgid "View and set your reminders."
+msgstr "Προβολή και ρύθμιση των υπενθυμίσεών σας."
+
+#: src/modules/reminders/cog.py:354
+msgctxt "cmd:remindme"
+msgid "remindme"
+msgstr "remindme"
+
+#: src/modules/reminders/cog.py:355
+msgctxt "cmd:remindme|desc"
+msgid "View and set task reminders."
+msgstr "Προβολή και ρύθμιση υπενθυμίσεων εργασιών."
+
+#: src/modules/reminders/cog.py:363
+msgctxt "cmd:reminders_cancel"
+msgid "cancel"
+msgstr "cancel"
+
+#: src/modules/reminders/cog.py:366
+msgctxt "cmd:reminders_cancel|desc"
+msgid ""
+"Cancel a single reminder. Use /reminders to clear or cancel multiple "
+"reminders."
+msgstr ""
+"Ακύρωση μίας υπενθύμισης. Χρησιμοποιήστε /reminders για να διαγράψετε ή "
+"ακυρώσετε πολλές υπενθυμί..."
+
+#: src/modules/reminders/cog.py:370
+msgctxt "cmd:reminders_cancel|param:reminder"
+msgid "reminder"
+msgstr "reminder"
+
+#: src/modules/reminders/cog.py:375
+msgctxt "cmd:reminders_cancel|param:reminder|desc"
+msgid "Start typing, then select a reminder to cancel."
+msgstr ""
+"Ξεκινήστε να πληκτρολογείτε και μετά επιλέξτε μια υπενθύμιση για ακύρωση."
+
+#: src/modules/reminders/cog.py:394
+msgctxt "cmd:reminders_cancel|error:no_reminders"
+msgid "There are no reminders to cancel!"
+msgstr "Δεν υπάρχουν υπενθυμίσεις για ακύρωση!"
+
+#: src/modules/reminders/cog.py:418
+msgctxt "cmd:reminders_cancel|error:no_match"
+msgid ""
+"I am not sure which reminder you want to cancel. Please try again, selecting"
+" a reminder from the list of choices."
+msgstr ""
+"Δεν είμαι σίγουρος ποια υπενθύμιση θέλετε να ακυρώσετε. Δοκιμάστε ξανά, "
+"επιλέγοντας μια υπενθύμιση από τη λίστα."
+
+#: src/modules/reminders/cog.py:431
+msgctxt "cmd:reminders_cancel|embed:success|desc"
+msgid "Reminder successfully cancelled."
+msgstr "Η υπενθύμιση ακυρώθηκε επιτυχώς."
+
+#: src/modules/reminders/cog.py:448
+msgctxt "cmd:reminders_cancel|acmpl:reminder|error:no_reminders"
+msgid "There are no reminders to cancel!"
+msgstr "Δεν υπάρχουν υπενθυμίσεις για ακύρωση!"
+
+#, possible-python-brace-format
+msgctxt "cmd:reminders_cancel|acmpl:reminder|error:no_matches"
+msgid "You do not have any reminders matching \"{partial}\""
+msgstr "Δεν έχετε υπενθυμίσεις που ταιριάζουν με \"{partial}\""
+
+#: src/modules/reminders/cog.py:486
+msgctxt "cmd:remindme_at"
+msgid "at"
+msgstr "at"
+
+#: src/modules/reminders/cog.py:489
+msgctxt "cmd:remindme_at|desc"
+msgid "Schedule a reminder for a particular time."
+msgstr "Προγραμματίστε μια υπενθύμιση για μια συγκεκριμένη ώρα."
+
+#: src/modules/reminders/cog.py:493
+msgctxt "cmd:remindme_at|param:time"
+msgid "time"
+msgstr "time"
+
+#: src/modules/reminders/cog.py:494
+msgctxt "cmd:remindme_at|param:reminder"
+msgid "reminder"
+msgstr "reminder"
+
+#: src/modules/reminders/cog.py:495
+msgctxt "cmd:remindme_at|param:every"
+msgid "repeat_every"
+msgstr "repeat_every"
+
+#: src/modules/reminders/cog.py:500
+msgctxt "cmd:remindme_at|param:time|desc"
+msgid "When you want to be reminded. (E.g. `4pm` or `16:00`)."
+msgstr "Πότε θέλετε να σας υπενθυμίσω. (Π.χ. `4pm` ή `16:00`)."
+
+#: src/modules/reminders/cog.py:504
+msgctxt "cmd:remindme_at|param:reminder|desc"
+msgid "What should the reminder be?"
+msgstr "Τι θα πρέπει να είναι η υπενθύμιση;"
+
+#: src/modules/reminders/cog.py:508
+msgctxt "cmd:remindme_at|param:every|desc"
+msgid "How often to repeat this reminder."
+msgstr "Πόσο συχνά να επαναλαμβάνεται αυτή η υπενθύμιση."
+
+#: src/modules/reminders/cog.py:535
+msgctxt "cmd:remindme_at|error|title"
+msgid "Could not create reminder!"
+msgstr "Δεν ήταν δυνατή η δημιουργία υπενθύμισης!"
+
+#, possible-python-brace-format
+msgctxt "cmd:remindme_at|acmpl:time|error:parse"
+msgid ""
+"Cannot parse \"{partial}\" as a time. Try the format HH:MM or YYYY-MM-DD "
+"HH:MM"
+msgstr ""
+"Δεν μπορώ να αναγνωρίσω το \"{partial}\" ως ώρα. Δοκιμάστε τη μορφή HH:MM ή "
+"YYYY-MM-DD HH:MM"
+
+#: src/modules/reminders/cog.py:573
+msgctxt "cmd:remindme_in"
+msgid "in"
+msgstr "in"
+
+#: src/modules/reminders/cog.py:576
+msgctxt "cmd:remindme_in|desc"
+msgid "Schedule a reminder for a given amount of time in the future."
+msgstr "Προγραμματίστε μια υπενθύμιση μετά από ένα δεδομένο χρονικό διάστημα."
+
+#: src/modules/reminders/cog.py:580
+msgctxt "cmd:remindme_in|param:time"
+msgid "time"
+msgstr "time"
+
+#: src/modules/reminders/cog.py:581
+msgctxt "cmd:remindme_in|param:reminder"
+msgid "reminder"
+msgstr "reminder"
+
+#: src/modules/reminders/cog.py:582
+msgctxt "cmd:remindme_in|param:every"
+msgid "repeat_every"
+msgstr "repeat_every"
+
+#: src/modules/reminders/cog.py:587
+msgctxt "cmd:remindme_in|param:time|desc"
+msgid "How far into the future to set the reminder (e.g. 1 day 10h 5m)."
+msgstr "Πόσο μακριά στο μέλλον να ρυθμιστεί η υπενθύμιση (π.χ. 1 day 10h 5m)."
+
+#: src/modules/reminders/cog.py:591
+msgctxt "cmd:remindme_in|param:reminder|desc"
+msgid "What should the reminder be?"
+msgstr "Τι θα πρέπει να είναι η υπενθύμιση;"
+
+#: src/modules/reminders/cog.py:595
+msgctxt "cmd:remindme_in|param:every|desc"
+msgid "How often to repeat this reminder. (e.g. 1 day, or 2h)"
+msgstr "Πόσο συχνά να επαναλαμβάνεται αυτή η υπενθύμιση. (π.χ. 1 day ή 2h)"
+
+#: src/modules/reminders/cog.py:621
+msgctxt "cmd:remindme_in|error|title"
+msgid "Could not create reminder!"
+msgstr "Δεν ήταν δυνατή η δημιουργία υπενθύμισης!"
+
+#: src/modules/reminders/ui.py:47
+msgctxt "ui:reminderlist|button:clear|confirm|title"
+msgid "Are You Sure?"
+msgstr "Είστε σίγουροι;"
+
+#, possible-python-brace-format
+msgctxt "ui:reminderlist|button:clear|confirm|desc"
+msgid "Are you sure you want to delete your `{count}` reminder?"
+msgid_plural "Are you sure you want to clear your `{count}` reminders?"
+msgstr[0] ""
+"Είστε σίγουροι ότι θέλετε να διαγράψετε την `{count}` υπενθύμισή σας;"
+msgstr[1] ""
+"Είστε σίγουροι ότι θέλετε να διαγράψετε τις `{count}` υπενθυμίσεις σας;"
+
+#: src/modules/reminders/ui.py:57
+msgctxt "ui:reminderlist|button:clear|confirm|button:yes"
+msgid "Yes, clear my reminders"
+msgstr "Ναι, διαγράψτε τις υπενθυμίσεις μου"
+
+#: src/modules/reminders/ui.py:68
+msgctxt "ui:reminderlist|button:clear|success|desc"
+msgid "Your reminders have been cleared!"
+msgstr "Οι υπενθυμίσεις σας διαγράφηκαν!"
+
+#: src/modules/reminders/ui.py:77
+msgctxt "ui:reminderlist|button:clear|confirm|button:cancel"
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+#: src/modules/reminders/ui.py:89
+msgctxt "ui:reminderlist|button:clear|label"
+msgid "Clear Reminders"
+msgstr "Διαγραφή υπενθυμίσεων"
+
+#: src/modules/reminders/ui.py:110
+msgctxt "ui:reminderlist|button:new|modal|field:time|label"
+msgid "When would you like to be reminded?"
+msgstr "Πότε θα θέλατε να σας υπενθυμίσω;"
+
+#: src/modules/reminders/ui.py:120
+msgctxt "ui:reminderlist|button:new|modal|field:repeat|label"
+msgid "How often should the reminder repeat?"
+msgstr "Πόσο συχνά θα πρέπει να επαναλαμβάνεται η υπενθύμιση;"
+
+#: src/modules/reminders/ui.py:124
+msgctxt "ui:reminderlist|button:new|modal|field:repeat|placeholder"
+msgid "1 day 10 hours 5 minutes (Leave empty for no repeat.)"
+msgstr "1 day 10 hours 5 minutes (Αφήστε κενό για καμία επανάληψη.)"
+
+#: src/modules/reminders/ui.py:133
+msgctxt "ui:reminderlist|button:new|modal|field:content|label"
+msgid "What should I remind you?"
+msgstr "Τι θα πρέπει να σας υπενθυμίσω;"
+
+#: src/modules/reminders/ui.py:144
+msgctxt "ui:reminderlist|button:new|modal|title"
+msgid "Set a Reminder"
+msgstr "Ορισμός υπενθύμισης"
+
+#, possible-python-brace-format
+msgctxt "ui:reminderlist|button:new|modal|parse|error:interval"
+msgid "Cannot parse '{value}' as a duration."
+msgstr "Δεν μπορώ να αναγνωρίσω το '{value}' ως διάρκεια."
+
+#: src/modules/reminders/ui.py:180
+msgctxt "ui:reminderlist|button:new|label"
+msgid "New Reminder"
+msgstr "Νέα υπενθύμιση"
+
+#: src/modules/reminders/ui.py:208
+msgctxt "ui:reminderlist|select:remove|placeholder"
+msgid "Select to cancel"
+msgstr "Επιλέξτε για ακύρωση"
+
+#: src/modules/reminders/ui.py:264
+msgctxt "ui:reminderlist|embed:list|author"
+msgid "Your reminders"
+msgstr "Οι υπενθυμίσεις σας"
+
+#: src/modules/reminders/ui.py:270
+msgctxt "ui:reminderlist|embed:list|footer"
+msgid "Click a reminder to jump back to the context!"
+msgstr "Κάντε κλικ σε μια υπενθύμιση για να επιστρέψετε στο πλαίσιο!"
+
+#: src/modules/reminders/ui.py:277
+msgctxt "ui:reminderlist|embed:no_reminders|title"
+msgid "You have no reminders set!"
+msgstr "Δεν έχετε ορίσει υπενθυμίσεις!"
+
+#: src/modules/reminders/ui.py:286
+msgctxt "ui:reminderlist|embed|tips:name"
+msgid "Reminder Tips"
+msgstr "Συμβουλές υπενθύμισης"
+
+#, possible-python-brace-format
+msgctxt "ui:reminderlist|embed|tips:value"
+msgid ""
+"- Use {at_cmd} to set a reminder at a known time (e.g. `at 10 am`).\n"
+"- Use {in_cmd} to set a reminder in a certain time (e.g. `in 2 hours`).\n"
+"- Both commands support repeating reminders using the `every` parameter.\n"
+"- Remember to tell me your timezone with {timezone_cmd} if you haven't already!"
+msgstr ""
+"- Χρησιμοποιήστε {at_cmd} για να ορίσετε υπενθύμιση σε γνωστή ώρα (π.χ. `at 10 am`).\n"
+"- Χρησιμοποιήστε {in_cmd} για να ορίσετε υπενθύμιση σε ορισμένο χρόνο (π.χ. `in 2 hours`).\n"
+"- Και οι δύο εντολές υποστηρίζουν επαναλαμβανόμενες υπενθυμίσεις με την παράμετρο `every`.\n"
+"- Θυμηθείτε να μου πείτε τη ζώνη ώρας σας με {timezone_cmd} αν δεν το έχετε κάνει ήδη!"
+
+#: src/modules/reminders/data.py:63
+msgctxt "reminder_set|title"
+msgid "Reminder Set!"
+msgstr "Η υπενθύμιση ορίστηκε!"
+
+#, possible-python-brace-format
+msgctxt "reminder_set|desc"
+msgid ""
+"At {timestamp} I will remind you about:\n"
+"> {content}"
+msgstr ""
+"Στις {timestamp} θα σας υπενθυμίσω για:\n"
+"> {content}"
+
+#: src/modules/reminders/data.py:79
+msgctxt "reminder_set|field:repeat|name"
+msgid "Repeats"
+msgstr "Επαναλήψεις"
+
+#, possible-python-brace-format
+msgctxt "reminder_set|field:repeat|value"
+msgid ""
+"This reminder will repeat every `{interval}` (after the first reminder)."
+msgstr ""
+"Αυτή η υπενθύμιση θα επαναλαμβάνεται κάθε `{interval}` (μετά την πρώτη "
+"υπενθύμιση)."
+
+#: src/modules/reminders/data.py:94
+msgctxt "reminder|embed"
+msgid "You asked me to remind you!"
+msgstr "Μου ζητήσατε να σας υπενθυμίσω!"
+
+#: src/modules/reminders/data.py:102
+msgctxt "reminder|embed"
+msgid "Context?"
+msgstr "Πλαίσιο;"
+
+#: src/modules/reminders/data.py:104
+msgctxt "reminder|embed"
+msgid "Click Here"
+msgstr "Κάντε κλικ εδώ"
+
+#: src/modules/reminders/data.py:111
+msgctxt "reminder|embed"
+msgid "Next reminder"
+msgstr "Επόμενη υπενθύμιση"
+
+#, possible-python-brace-format
+msgctxt "reminder|formatted|interval"
+msgid "Every day"
+msgid_plural "Every `{days}` days"
+msgstr[0] "Κάθε μέρα"
+msgstr[1] "Κάθε `{days}` ημέρες"
+
+#, possible-python-brace-format
+msgctxt "reminder|formatted|interval"
+msgid "Every hour"
+msgid_plural "Every `{hours}` hours"
+msgstr[0] "Κάθε ώρα"
+msgstr[1] "Κάθε `{hours}` ώρες"
+
+#, possible-python-brace-format
+msgctxt "reminder|formatted|interval"
+msgid "Every `{duration}`"
+msgstr "Κάθε `{duration}`"

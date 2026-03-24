@@ -39,6 +39,10 @@ class StatsCog(LionCog):
         self.bot.core.user_config.register_model_setting(self.settings.UserGlobalStats)
         self.bot.core.guild_config.register_model_setting(self.settings.SeasonStart)
         self.bot.core.guild_config.register_setting(self.settings.UnrankedRoles)
+        # --- AI-MODIFIED (2026-03-23) ---
+        # Purpose: Register leaderboard filter roles setting
+        self.bot.core.guild_config.register_setting(self.settings.LeaderboardFilterRoles)
+        # --- END AI-MODIFIED ---
 
         configcog = self.bot.get_cog('ConfigCog')
         self.crossload_group(self.configure_group, configcog.admin_config_group)
@@ -55,8 +59,11 @@ class StatsCog(LionCog):
         await ctx.interaction.response.defer(thinking=True)
         ui = ProfileUI(self.bot, ctx.author, ctx.guild)
         await ui.run(ctx.interaction)
-        if sponsors := self.bot.get_cog('SponsorCog'):
-            await sponsors.do_sponsor_prompt(ctx.interaction)
+        # --- AI-MODIFIED (2026-03-15) ---
+        # Purpose: Disabled sponsor prompt (sponsor module removed)
+        # if sponsors := self.bot.get_cog('SponsorCog'):
+        #     await sponsors.do_sponsor_prompt(ctx.interaction)
+        # --- END AI-MODIFIED ---
         await ui.wait()
 
     @cmds.hybrid_command(
@@ -103,8 +110,11 @@ class StatsCog(LionCog):
             file = discord.File(profile_data, 'profile.png')
             await ctx.reply(file=file)
 
-        if sponsors := self.bot.get_cog('SponsorCog'):
-            await sponsors.do_sponsor_prompt(ctx.interaction)
+        # --- AI-MODIFIED (2026-03-15) ---
+        # Purpose: Disabled sponsor prompt (sponsor module removed)
+        # if sponsors := self.bot.get_cog('SponsorCog'):
+        #     await sponsors.do_sponsor_prompt(ctx.interaction)
+        # --- END AI-MODIFIED ---
 
     @cmds.hybrid_command(
         name=_p('cmd:stats', "stats"),
@@ -122,8 +132,11 @@ class StatsCog(LionCog):
         ui = WeeklyMonthlyUI(self.bot, ctx.author, ctx.guild)
         await ui.run(ctx.interaction)
 
-        if sponsors := self.bot.get_cog('SponsorCog'):
-            await sponsors.do_sponsor_prompt(ctx.interaction)
+        # --- AI-MODIFIED (2026-03-15) ---
+        # Purpose: Disabled sponsor prompt (sponsor module removed)
+        # if sponsors := self.bot.get_cog('SponsorCog'):
+        #     await sponsors.do_sponsor_prompt(ctx.interaction)
+        # --- END AI-MODIFIED ---
 
         await ui.wait()
 
@@ -161,8 +174,11 @@ class StatsCog(LionCog):
         ui = LeaderboardUI(self.bot, ctx.author, ctx.guild)
         await ui.run(ctx.interaction)
 
-        if sponsors := self.bot.get_cog('SponsorCog'):
-            await sponsors.do_sponsor_prompt(ctx.interaction)
+        # --- AI-MODIFIED (2026-03-15) ---
+        # Purpose: Disabled sponsor prompt (sponsor module removed)
+        # if sponsors := self.bot.get_cog('SponsorCog'):
+        #     await sponsors.do_sponsor_prompt(ctx.interaction)
+        # --- END AI-MODIFIED ---
 
         await ui.wait()
 

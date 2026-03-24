@@ -5,7 +5,7 @@ import datetime as dt
 import discord
 from discord.ui.button import button, Button, ButtonStyle
 
-from meta import LionBot, conf
+from meta import LionBot, conf, WEBSITE_URL
 from data import ORDER
 
 from utils.ui import MessageUI, input
@@ -175,14 +175,23 @@ class TransactionList(MessageUI):
         )
         await asyncio.gather(*to_refresh)
 
+        # --- AI-MODIFIED (2026-03-17) ---
+        # Purpose: Added web link button for gem management on website
+        _web = discord.ui.Button(
+            label="Manage Gems", emoji="🌐",
+            url=f"{WEBSITE_URL}/dashboard/gems",
+            style=discord.ButtonStyle.link,
+        )
         if self.page_count > 1:
             self.set_layout(
                 (self.prev_button, self.jump_button, self.quit_button, self.next_button),
+                (_web,),
             )
         else:
             self.set_layout(
-                (self.quit_button,)
+                (self.quit_button, _web),
             )
+        # --- END AI-MODIFIED ---
 
     async def reload(self):
         model = PremiumData.GemTransaction

@@ -1,0 +1,76 @@
+# Korean translation for LionBot - wards
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 18:50+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Korean\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/wards.py:99
+msgctxt "ward:sys_admin|failed"
+msgid "You must be a bot owner to do this!"
+msgstr "이 작업을 수행하려면 봇 소유자여야 합니다!"
+
+#: src/wards.py:115
+msgctxt "ward:high_management|failed"
+msgid "You must have the `ADMINISTRATOR` permission or the configured `admin_role` to do this!"
+msgstr "이 작업을 수행하려면 `ADMINISTRATOR` 권한 또는 설정된 `admin_role`이 필요합니다!"
+
+#: src/wards.py:131
+msgctxt "ward:low_management|failed"
+msgid "You must have the `MANAGE_GUILD` permission or the configured `mod_role` to do this!"
+msgstr "이 작업을 수행하려면 `MANAGE_GUILD` 권한 또는 설정된 `mod_role`이 필요합니다!"
+
+#: src/wards.py:143
+msgctxt "ward:moderator|failed"
+msgid "You must have the configured moderator role, or `MANAGE_GUILD` permissions to do this."
+msgstr "이 작업을 수행하려면 설정된 관리자 역할 또는 `MANAGE_GUILD` 권한이 필요합니다."
+
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:bot_managed"
+msgid "I cannot manage {role} because it is managed by another bot!"
+msgstr "{role}은(는) 다른 봇이 관리하고 있어 관리할 수 없습니다!"
+
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:integration"
+msgid "I cannot manage {role} because it is managed by a server integration."
+msgstr "{role}은(는) 서버 통합에 의해 관리되므로 관리할 수 없습니다."
+
+#: src/wards.py:183
+msgctxt "ward:equippable_role|error:default_role"
+msgid "I cannot manage the server's default role."
+msgstr "서버의 기본 역할은 관리할 수 없습니다."
+
+#: src/wards.py:190
+msgctxt "ward:equippable_role|error:no_perms"
+msgid "I need the `MANAGE_ROLES` permission before I can manage roles!"
+msgstr "역할을 관리하려면 `MANAGE_ROLES` 권한이 필요합니다!"
+
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:my_top_role"
+msgid "I cannot assign or remove {role} because it is above my top role!"
+msgstr "{role}이(가) 제 최상위 역할보다 위에 있어 부여하거나 제거할 수 없습니다!"
+
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:not_assignable"
+msgid "I don't have sufficient permissions to assign or remove {role}."
+msgstr "{role}을(를) 부여하거나 제거할 충분한 권한이 없습니다."
+
+#: src/wards.py:212
+msgctxt "ward:equippable_role|error:actor_perms"
+msgid "You need the `MANAGE_ROLES` permission before you can configure roles!"
+msgstr "역할을 설정하려면 `MANAGE_ROLES` 권한이 필요합니다!"
+
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:actor_top_role"
+msgid "You cannot configure {role} because it is above your top role!"
+msgstr "{role}이(가) 귀하의 최상위 역할보다 위에 있어 설정할 수 없습니다!"

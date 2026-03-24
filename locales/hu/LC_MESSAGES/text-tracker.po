@@ -1,0 +1,196 @@
+# Hungarian translation for LionBot - text-tracker
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 20:24+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Hungarian\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/tracking/text/cog.py:307
+msgctxt "cmd:configure_message_exp"
+msgid "message_exp"
+msgstr "message_exp"
+
+#: src/tracking/text/cog.py:310
+msgctxt "cmd:configure_message_exp|desc"
+msgid "Configure Message Tracking & Experience"
+msgstr "Üzenetkövetés és tapasztalat konfigurálása"
+
+#: src/tracking/text/cog.py:372
+msgctxt "cmd:leo_configure_exp_rates"
+msgid "experience_rates"
+msgstr "experience_rates"
+
+#: src/tracking/text/cog.py:375
+msgctxt "cmd:leo_configure_exp_rates|desc"
+msgid "Global experience rate configuration"
+msgstr "Globális tapasztalati arány konfiguráció"
+
+#: src/tracking/text/ui.py:46
+msgctxt "ui:text_tracker_config|menu:untracked_channels|placeholder"
+msgid "Select Untracked Channels"
+msgstr "Nem követett csatornák kiválasztása"
+
+#: src/tracking/text/ui.py:53
+msgctxt "ui:text_tracker_config|embed|title"
+msgid "Message Tracking Configuration Panel"
+msgstr "Üzenetkövetés konfigurációs panel"
+
+#: src/tracking/text/ui.py:90
+msgctxt "dash:text_tracking|title"
+msgid "Message XP configuration ({commands[config message_exp]})"
+msgstr "Üzenet XP konfiguráció ({commands[config message_exp]})"
+
+#: src/tracking/text/ui.py:94
+msgctxt "dash:text_tracking|dropdown|placeholder"
+msgid "Message XP Panel"
+msgstr "Üzenet XP panel"
+
+#: src/tracking/text/settings.py:35
+msgctxt "guildset:xp_per_period"
+msgid "xp_per_5min"
+msgstr "xp_per_5min"
+
+#: src/tracking/text/settings.py:38
+msgctxt "guildset:xp_per_period|desc"
+msgid "How much XP members will be given every 5 minute period they are active."
+msgstr "Mennyi XP-t kapnak a tagok minden 5 perces aktív időszakban."
+
+#: src/tracking/text/settings.py:42
+msgctxt "guildset:xp_per_period|long_desc"
+msgid "Amount of message XP to give members for each 5 minute period in which they are active (send a message). Note that this XP is only given *once* per period."
+msgstr "Üzenet XP mennyisége minden 5 perces időszakra, amelyben aktívak (üzenetet küldenek). Ez az XP időszakonként csak *egyszer* jár."
+
+#: src/tracking/text/settings.py:47
+msgctxt "guildset:xp_per_period|accepts"
+msgid "Number of message XP to reward per 5 minute active period."
+msgstr "Üzenet XP mennyisége jutalmul 5 perces aktív időszakonként."
+
+#, possible-python-brace-format
+msgctxt "guildset:xp_per_period|set_response"
+msgid "For every **5** minutes they are active (i.e. in which they send a message), members will now be given **{amount}** XP."
+msgstr "Minden **5** perces aktív időszakra (amelyben üzenetet küldenek) a tagok mostantól **{amount}** XP-t kapnak."
+
+#: src/tracking/text/settings.py:68
+msgctxt "guildset:word_xp"
+msgid "xp_per_100words"
+msgstr "xp_per_100words"
+
+#: src/tracking/text/settings.py:71
+msgctxt "guildset:word_xp|desc"
+msgid "How much XP members will be given per hundred words they write."
+msgstr "Mennyi XP-t kapnak a tagok minden száz leírt szó után."
+
+#: src/tracking/text/settings.py:75
+msgctxt "guildset:word_xp|long_desc"
+msgid "Amount of message XP to be given (additionally to the XP per period) for each hundred words. Useful for rewarding communication."
+msgstr "Üzenet XP mennyisége (az időszakonkénti XP-n felül) minden száz szó után. Hasznos a kommunikáció jutalmazására."
+
+#: src/tracking/text/settings.py:80
+msgctxt "guildset:word_xp|accepts"
+msgid "Number of XP to reward per hundred words sent."
+msgstr "XP mennyisége jutalmul minden száz elküldött szó után."
+
+#, possible-python-brace-format
+msgctxt "guildset:word_xp|set_response"
+msgid "For every **100** words they send, members will now be rewarded an additional **{amount}** XP."
+msgstr "Minden **100** elküldött szó után a tagok mostantól további **{amount}** XP-t kapnak."
+
+#: src/tracking/text/settings.py:99
+msgctxt "guildset:untracked_text_channels"
+msgid "untracked_text_channels"
+msgstr "untracked_text_channels"
+
+#: src/tracking/text/settings.py:102
+msgctxt "guildset:untracked_text_channels|desc"
+msgid "Channels in which Message XP will not be given."
+msgstr "Csatornák, ahol nem jár üzenet XP."
+
+#: src/tracking/text/settings.py:106
+msgctxt "guildset:untracked_text_channels|long_desc"
+msgid "Messages sent in these channels will not count towards a member's message XP. If a category is selected, then all channels under the category will also be untracked."
+msgstr "Az ezekben a csatornákban küldött üzenetek nem számítanak az üzenet XP-be. Ha kategória van kiválasztva, az alatta lévő összes csatorna is követetlen lesz."
+
+#: src/tracking/text/settings.py:111
+msgctxt "guildset:untracked_text_channels|accepts"
+msgid "Comma separated list of untracked text channel names or ids."
+msgstr "Vesszővel elválasztott lista a nem követett szöveges csatornák neveiről vagy azonosítóiról."
+
+#: src/tracking/text/settings.py:115
+msgctxt "guildset:untracked_text_channels|notset"
+msgid "Not Set (all text channels will be tracked.)"
+msgstr "Nincs beállítva (minden szöveges csatorna követve lesz.)"
+
+#, possible-python-brace-format
+msgctxt "guildset:untracked_text_channels|set_response|set"
+msgid "Messages in or under the following channels will be ignored: {channels}"
+msgstr "A következő csatornákban lévő üzenetek figyelmen kívül lesznek hagyva: {channels}"
+
+#: src/tracking/text/settings.py:137
+msgctxt "guildset:untracked_text_channels|set_response|notset"
+msgid "Message XP will now be tracked in every channel."
+msgstr "Az üzenet XP mostantól minden csatornában nyomon lesz követve."
+
+#: src/tracking/text/settings.py:146
+msgctxt "guildset:untracked_text_channels|set_using"
+msgid "Channel selector below"
+msgstr "Csatornaválasztó alább"
+
+#: src/tracking/text/settings.py:177
+msgctxt "botset:xp_per_period"
+msgid "xp_per_5min"
+msgstr "xp_per_5min"
+
+#: src/tracking/text/settings.py:180
+msgctxt "botset:xp_per_period|desc"
+msgid "How much global XP members will be given every 5 minute period they are active."
+msgstr "Mennyi globális XP-t kapnak a tagok minden 5 perces aktív időszakban."
+
+#: src/tracking/text/settings.py:184
+msgctxt "botset:xp_per_period|long_desc"
+msgid "Amount of global message XP to give members for each 5 minute period in which they are active (send a message). Note that this XP is only given *once* per period."
+msgstr "Globális üzenet XP mennyisége minden 5 perces aktív időszakra (üzenet küldése). Ez az XP időszakonként csak *egyszer* jár."
+
+#: src/tracking/text/settings.py:190
+msgctxt "botset:xp_per_period|accepts"
+msgid "Number of message XP to reward per 5 minute active period."
+msgstr "Üzenet XP mennyisége jutalmul 5 perces aktív időszakonként."
+
+#, possible-python-brace-format
+msgctxt "leoset:xp_per_period|set_response"
+msgid "For every **5** minutes they are active (i.e. in which they send a message), all users will now be given **{amount}** global XP."
+msgstr "Minden **5** perces aktív időszakra (amelyben üzenetet küldenek) minden felhasználó mostantól **{amount}** globális XP-t kap."
+
+#: src/tracking/text/settings.py:210
+msgctxt "botset:word_xp"
+msgid "xp_per_100words"
+msgstr "xp_per_100words"
+
+#: src/tracking/text/settings.py:213
+msgctxt "botset:word_xp|desc"
+msgid "How much global XP members will be given per hundred words they write."
+msgstr "Mennyi globális XP-t kapnak a tagok minden száz leírt szó után."
+
+#: src/tracking/text/settings.py:217
+msgctxt "botset:word_xp|long_desc"
+msgid "Amount of global message XP to be given (additionally to the XP per period) for each hundred words. Useful for rewarding communication."
+msgstr "Globális üzenet XP mennyisége (az időszakonkénti XP-n felül) minden száz szó után. Hasznos a kommunikáció jutalmazására."
+
+#: src/tracking/text/settings.py:222
+msgctxt "botset:word_xp|accepts"
+msgid "Number of XP to reward per hundred words sent."
+msgstr "XP mennyisége jutalmul minden száz elküldött szó után."
+
+#, possible-python-brace-format
+msgctxt "leoset:word_xp|set_response"
+msgid "For every **100** words they send, users will now be rewarded an additional **{amount}** global XP."
+msgstr "Minden **100** elküldött szó után a felhasználók mostantól további **{amount}** globális XP-t kapnak."

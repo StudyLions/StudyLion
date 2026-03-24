@@ -96,6 +96,40 @@ class LeoBabel(Translator):
         translator = self.get_translator(locale or lazystr.locale or ctx_locale.get(), domain)
         return lazystr._translate_with(translator)
 
+    # --- AI-MODIFIED (2026-03-15) ---
+    # Purpose: Sanitize command/parameter name translations for Discord.
+    # Discord requires command/param names to be lowercase, no spaces,
+    # only [-_a-z0-9] for Latin scripts (1-32 chars).
+    # Invalid name_localizations in ANY locale cause the ENTIRE sync
+    # to fail (HTTP 400), blocking ALL slash commands from registering.
+    # Fix: sanitize name translations (lowercase, spaces->underscores,
+    # strip invalid chars). Return None if result is empty.
+    # --- Original code (commented out for rollback) ---
+    # async def translate(self, string: locale_str, locale: Locale, context):
+    #     loc = locale.value.replace('-', '_')
+    #     if loc in self.supported_locales:
+    #         domain = string.extras.get('domain', None)
+    #         if domain is None and isinstance(string, LazyStr):
+    #             logger.debug(...)
+    #             return None
+    #         translator = self.get_translator(loc, domain)
+    #         if not isinstance(string, LazyStr):
+    #             lazy = LazyStr(Method.GETTEXT, string.message)
+    #         else:
+    #             lazy = string
+    #         return lazy._translate_with(translator)
+    # --- End original code ---
+    import re
+    _cmd_name_strip_re = re.compile(r'[^-_a-z0-9]')
+
+    @staticmethod
+    def _sanitize_cmd_name(name):
+        """Sanitize a translated command/parameter name for Discord API."""
+        s = name.lower().replace(' ', '_')
+        s = LeoBabel._cmd_name_strip_re.sub('', s)
+        s = s[:32].strip('-_')
+        return s if s else None
+
     async def translate(self, string: locale_str, locale: Locale, context):
         loc = locale.value.replace('-', '_')
         if loc in self.supported_locales:
@@ -111,7 +145,20 @@ class LeoBabel(Translator):
                 lazy = LazyStr(Method.GETTEXT, string.message)
             else:
                 lazy = string
-            return lazy._translate_with(translator)
+            result = lazy._translate_with(translator)
+
+            if result is not None and hasattr(context, 'location'):
+                from discord.app_commands import TranslationContextLocation
+                name_locations = (
+                    TranslationContextLocation.command_name,
+                    TranslationContextLocation.group_name,
+                    TranslationContextLocation.parameter_name,
+                )
+                if context.location in name_locations:
+                    result = self._sanitize_cmd_name(result)
+
+            return result
+    # --- END AI-MODIFIED ---
 
 
 class Method(Enum):

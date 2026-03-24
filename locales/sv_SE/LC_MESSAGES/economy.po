@@ -1,0 +1,591 @@
+# Swedish translation for LionBot - economy
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 21:10+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Swedish\n"
+"Language: sv_SE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/modules/economy/settingui.py:34
+msgctxt "ui:economy_config|embed|title"
+msgid "Economy Configuration Panel"
+msgstr "Ekonomikonfigurationspanel"
+
+#: src/modules/economy/settingui.py:67
+msgctxt "dash:economy|title"
+msgid "Economy Configuration ({commands[config economy]})"
+msgstr "Ekonomikonfiguration ({commands[config economy]})"
+
+#: src/modules/economy/settingui.py:71
+msgctxt "dash:economy|dropdown|placeholder"
+msgid "Economy Panel"
+msgstr "Ekonomipanel"
+
+#: src/modules/economy/cog.py:87
+msgctxt "cmd:economy"
+msgid "economy"
+msgstr "economy"
+
+#: src/modules/economy/cog.py:93
+msgctxt "cmd:economy_balance"
+msgid "balance"
+msgstr "balance"
+
+#: src/modules/economy/cog.py:96
+msgctxt "cmd:economy_balance|desc"
+msgid "Display or modify LionCoin balance for members and roles."
+msgstr "Visa eller ändra LionCoin-saldo för medlemmar och roller."
+
+#: src/modules/economy/cog.py:100
+msgctxt "cmd:economy_balance|param:target"
+msgid "target"
+msgstr "target"
+
+#: src/modules/economy/cog.py:101
+msgctxt "cmd:economy_balance|param:add"
+msgid "add"
+msgstr "add"
+
+#: src/modules/economy/cog.py:102
+msgctxt "cmd:economy_balance|param:set"
+msgid "set"
+msgstr "set"
+
+#: src/modules/economy/cog.py:107
+msgctxt "cmd:economy_balance|param:target|desc"
+msgid ""
+"Target user or role to view or update. Use @everyone to update the entire "
+"guild."
+msgstr ""
+"Målanvändare eller roll att visa eller uppdatera. Använd @everyone för att "
+"uppdatera hela servern."
+
+#: src/modules/economy/cog.py:111
+msgctxt "cmd:economy_balance|param:add|desc"
+msgid ""
+"Number of LionCoins to add to the target member's balance. May be negative "
+"to remove."
+msgstr ""
+"Antal LionCoins att lägga till på målmedlemmens saldo. Kan vara negativt för"
+" att ta bort."
+
+#: src/modules/economy/cog.py:115
+msgctxt "cmd:economy_balance|param:set|set"
+msgid "New balance to set the target's balance to."
+msgstr "Nytt saldo att ställa in målets saldo till."
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|error:no_target"
+msgid ""
+"There are no valid members in {role.mention}! It has a total of `0` LC."
+msgstr "Det finns inga giltiga medlemmar i {role.mention}! Totalt `0` LC."
+
+#: src/modules/economy/cog.py:164
+msgctxt "cmd:economy_balance|error:target_is_bot"
+msgid "Bots cannot have coin balances!"
+msgstr "Bottar kan inte ha myntsaldo!"
+
+#: src/modules/economy/cog.py:175
+msgctxt "cmd:economy_balance|error:args"
+msgid "You cannot simultaneously `set` and `add` member balances!"
+msgstr "Du kan inte samtidigt `set` och `add` medlemmars saldon!"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:success|affected"
+msgid "One user was affected."
+msgid_plural "**{count}** users were affected."
+msgstr[0] "En användare påverkades."
+msgstr[1] ""
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|confirm|affected"
+msgid "One user will be affected."
+msgid_plural "**{count}** users will be affected."
+msgstr[0] "En användare kommer att påverkas."
+msgstr[1] ""
+
+#: src/modules/economy/cog.py:237
+msgctxt "cmd:economy_balance|confirm|button:confirm"
+msgid "Yes, adjust balances"
+msgstr "Ja, justera saldon"
+
+#: src/modules/economy/cog.py:241
+msgctxt "cmd:economy_balance|confirm|button:cancel"
+msgid "No, cancel"
+msgstr "Nej, avbryt"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:success_set|desc"
+msgid ""
+"All members of **{guild_name}** have had their balance set to "
+"{coin_emoji}**{amount}**."
+msgstr ""
+"Alla medlemmar i **{guild_name}** har fått sitt saldo satt till "
+"{coin_emoji}**{amount}**."
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|confirm_set|desc"
+msgid ""
+"Are you sure you want to set everyone's balance to {coin_emoji}**{amount}**?"
+msgstr ""
+"Är du säker på att du vill sätta allas saldo till {coin_emoji}**{amount}**?"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:success_set|desc"
+msgid ""
+"All members of {role_mention} have had their balance set to "
+"{coin_emoji}**{amount}**."
+msgstr ""
+"Alla medlemmar i {role_mention} har fått sitt saldo satt till "
+"{coin_emoji}**{amount}**."
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|confirm_set|desc"
+msgid ""
+"Are you sure you want to set the balance of everyone with {role_mention} to "
+"{coin_emoji}**{amount}**?"
+msgstr ""
+"Är du säker på att du vill sätta saldot för alla med {role_mention} till "
+"{coin_emoji}**{amount}**?"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:success_set|desc"
+msgid "{user_mention} now has a balance of {coin_emoji}**{amount}**."
+msgstr "{user_mention} har nu ett saldo på {coin_emoji}**{amount}**."
+
+#: src/modules/economy/cog.py:305
+msgctxt "eventlog|event:economy_set|title"
+msgid "Moderator Set Economy Balance"
+msgstr "Moderator satte ekonomisaldo"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:economy_set|desc"
+msgid "{moderator} set {target}'s balance to {amount}."
+msgstr "{moderator} satte {target}s saldo till {amount}."
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:success_add|desc"
+msgid ""
+"All members of **{guild_name}** have been given {coin_emoji}**{amount}**."
+msgstr "Alla medlemmar i **{guild_name}** har fått {coin_emoji}**{amount}**."
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|confirm_add|desc"
+msgid "Are you sure you want to add **{amount}** to everyone's balance?"
+msgstr "Är du säker på att du vill lägga till **{amount}** till allas saldo?"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:success_add|desc"
+msgid ""
+"All members of {role_mention} have been given {coin_emoji}**{amount}**."
+msgstr "Alla medlemmar i {role_mention} har fått {coin_emoji}**{amount}**."
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|confirm_add|desc"
+msgid ""
+"Are you sure you want to add {coin_emoji}**{amount}** to everyone in "
+"{role_mention}?"
+msgstr ""
+"Är du säker på att du vill lägga till {coin_emoji}**{amount}** till alla i "
+"{role_mention}?"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:success_add|desc"
+msgid ""
+"{user_mention} was given {coin_emoji}**{amount}**, and now has a balance of "
+"{coin_emoji}**{new_amount}**."
+msgstr ""
+"{user_mention} fick {coin_emoji}**{amount}** och har nu ett saldo på "
+"{coin_emoji}**{new_amount}**."
+
+#: src/modules/economy/cog.py:380
+msgctxt "eventlog|event:economy_add|title"
+msgid "Moderator Modified Economy Balance"
+msgstr "Moderator ändrade ekonomisaldo"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:economy_set|desc"
+msgid "{moderator} added {amount} to {target}'s balance."
+msgstr "{moderator} lade till {amount} till {target}s saldo."
+
+#: src/modules/economy/cog.py:394
+msgctxt "cmd:economy_balance|embed:success|title"
+msgid "Account successfully updated."
+msgid_plural "Accounts successfully updated."
+msgstr[0] "Konto uppdaterat."
+msgstr[1] ""
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:role_lb|author"
+msgid "Balance sheet for {name}"
+msgstr "Saldobalans för {name}"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:role_lb|header"
+msgid "This server has a total balance of {coin_emoji}**{total}**."
+msgstr "Denna server har ett totalt saldo på {coin_emoji}**{total}**."
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:role_lb|header"
+msgid ""
+"{role_mention} has `{count}` members with non-zero balance, with a total "
+"balance of {coin_emoji}**{total}**."
+msgstr ""
+"{role_mention} har `{count}` medlemmar med saldo över noll, med ett totalt "
+"saldo på {coin_emoji}**{total}**."
+
+#: src/modules/economy/cog.py:464
+msgctxt "cmd:economy_balance|embed:role_lb|row_format"
+msgid "`[{pos:>{numwidth}}]` | `{coins:>{coinwidth}} LC` | {mention}"
+msgstr "`[{pos:>{numwidth}}]` | `{coins:>{coinwidth}} LC` | {mention}"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:role_lb|footer"
+msgid "Page {page}/{total}"
+msgstr "Sida {page}/{total}"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:role_lb|header"
+msgid "This server has a total balance of {coin_emoji}**0**."
+msgstr "Denna server har ett totalt saldo på {coin_emoji}**0**."
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:role_lb|header"
+msgid "The role {role_mention} has a total balance of {coin_emoji}**0**."
+msgstr "Rollen {role_mention} har ett totalt saldo på {coin_emoji}**0**."
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:single|desc"
+msgid "{mention} currently owns {coin_emoji} {coins}."
+msgstr "{mention} äger för närvarande {coin_emoji} {coins}."
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:single|author"
+msgid "Balance statement for {user}"
+msgstr "Saldobesked för {user}"
+
+#: src/modules/economy/cog.py:548
+msgctxt "cmd:economy_reset"
+msgid "reset"
+msgstr "reset"
+
+#: src/modules/economy/cog.py:551
+msgctxt "cmd:economy_reset|desc"
+msgid ""
+"Reset the coin balance for a target user or role. (See also \"economy "
+"balance\".)"
+msgstr ""
+"Återställ myntsaldo för en målanvändare eller roll. (Se även \"economy "
+"balance\".)"
+
+#: src/modules/economy/cog.py:555
+msgctxt "cmd:economy_reset|param:target"
+msgid "target"
+msgstr "target"
+
+#: src/modules/economy/cog.py:560
+msgctxt "cmd:economy_reset|param:target|desc"
+msgid ""
+"Target user or role to view or update. Use @everyone to reset the entire "
+"guild."
+msgstr ""
+"Målanvändare eller roll. Använd @everyone för att återställa hela servern."
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_reset|confirm:reset_guild|desc"
+msgid ""
+"Are you sure you want to reset the coin balance for everyone in **{guild_name}**?\n"
+"*This is not reversible!*"
+msgstr ""
+"Är du säker på att du vill återställa myntsaldot för alla i **{guild_name}**?\n"
+"*Detta kan inte ång..."
+
+#: src/modules/economy/cog.py:595
+msgctxt "cmd:economy_reset|confirm:reset_guild|button:confirm"
+msgid "Yes, reset the economy"
+msgstr "Ja, återställ ekonomin"
+
+#: src/modules/economy/cog.py:599
+msgctxt "cmd:economy_reset|confirm:reset_guild|button:cancel"
+msgid "Cancel reset"
+msgstr "Avbryt återställning"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_reset|embed:success_guild|desc"
+msgid ""
+"Everyone in **{guild_name}** has had their balance reset to "
+"{coin_emoji}**{amount}**."
+msgstr ""
+"Allas saldo i **{guild_name}** har återställts till "
+"{coin_emoji}**{amount}**."
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_reset|error:no_target|desc"
+msgid "The role {mention} has no members to reset!"
+msgstr "Rollen {mention} har inga medlemmar att återställa!"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_reset|confirm:reset_role|desc"
+msgid ""
+"Are you sure you want to reset the balance for everyone in {mention}?\n"
+"**{count}** members will be affected."
+msgstr ""
+"Är du säker på att du vill återställa saldot för alla i {mention}?\n"
+"**{count}** medlemmar kommer a..."
+
+#: src/modules/economy/cog.py:651
+msgctxt "cmd:economy_reset|confirm:reset_role|button:confirm"
+msgid "Yes, complete economy reset"
+msgstr "Ja, fullständig återställning"
+
+#: src/modules/economy/cog.py:655
+msgctxt "cmd:economy_reset|confirm:reset_role|button:cancel"
+msgid "Cancel"
+msgstr "Avbryt"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_reset|embed:success_role|desc"
+msgid ""
+"Everyone in {role_mention} has had their coin balance reset to "
+"{coin_emoji}**{amount}**."
+msgstr ""
+"Myntsaldot för alla i {role_mention} har återställts till "
+"{coin_emoji}**{amount}**."
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_reset|embed:success_user|desc"
+msgid "{mention}'s balance has been reset to {coin_emoji}**{amount}**."
+msgstr "Saldot för {mention} har återställts till {coin_emoji}**{amount}**."
+
+#: src/modules/economy/cog.py:704
+msgctxt "cmd:send"
+msgid "send"
+msgstr "send"
+
+#: src/modules/economy/cog.py:707
+msgctxt "cmd:send|desc"
+msgid "Gift the target user a certain number of LionCoins."
+msgstr "Ge målanvändaren ett visst antal LionCoins."
+
+#: src/modules/economy/cog.py:711
+msgctxt "cmd:send|param:target"
+msgid "target"
+msgstr "target"
+
+#: src/modules/economy/cog.py:712
+msgctxt "cmd:send|param:amount"
+msgid "amount"
+msgstr "amount"
+
+#: src/modules/economy/cog.py:713
+msgctxt "cmd:send|param:note"
+msgid "note"
+msgstr "note"
+
+#: src/modules/economy/cog.py:716
+msgctxt "cmd:send|param:target|desc"
+msgid "User to send the gift to"
+msgstr "Användare att skicka gåvan till"
+
+#: src/modules/economy/cog.py:717
+msgctxt "cmd:send|param:amount|desc"
+msgid "Number of coins to send"
+msgstr "Antal mynt att skicka"
+
+#: src/modules/economy/cog.py:718
+msgctxt "cmd:send|param:note|desc"
+msgid "Optional note to add to the gift."
+msgstr "Valfritt meddelande till gåvan."
+
+#: src/modules/economy/cog.py:742
+msgctxt "cmd:send|error:not_allowed"
+msgid "Sorry, this server has disabled LionCoin transfers!"
+msgstr "Tyvärr, denna server har inaktiverat LionCoin-överföringar!"
+
+#: src/modules/economy/cog.py:751
+msgctxt "cmd:send|error:sending-to-self"
+msgid ""
+"What is this, tax evasion?\n"
+"(You can not send coins to yourself.)"
+msgstr ""
+"Vad är det här, skattefusk?\n"
+"(Du kan inte skicka mynt till dig själv.)"
+
+#: src/modules/economy/cog.py:761
+msgctxt "cmd:send|error:sending-to-leo"
+msgid ""
+"I appreciate it, but you need it more than I do!\n"
+"(You cannot send coins to bots.)"
+msgstr ""
+"Jag uppskattar det, men du behöver dem mer än jag!\n"
+"(Du kan inte skicka mynt till bottar.)"
+
+#, possible-python-brace-format
+msgctxt "cmd:send|error:sending-to-bot"
+msgid ""
+"{target} appreciates the gesture, but said they don't have any use for {coin}.\n"
+"(You cannot send coins to bots.)"
+msgstr ""
+"{target} uppskattar gesten, men sa att de inte har användning för {coin}.\n"
+"(Du kan inte skicka mynt till bottar.)"
+
+#, possible-python-brace-format
+msgctxt "cmd:send|error:insufficient"
+msgid ""
+"You do not have enough lioncoins to do this!\n"
+"`Current Balance:` {coin_emoji}{balance}"
+msgstr ""
+"Du har inte tillräckligt med LionCoins!\n"
+"`Nuvarande saldo:` {coin_emoji}{balance}"
+
+#: src/modules/economy/cog.py:816
+msgctxt "eventlog|event:send|title"
+msgid "Coins Transferred"
+msgstr "Mynt överförda"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:send|desc"
+msgid "{source} gifted {amount} to {target}"
+msgstr "{source} gav {amount} till {target}"
+
+#, possible-python-brace-format
+msgctxt "cmd:send|embed:gift|title"
+msgid "{user} sent you a gift!"
+msgstr "{user} skickade dig en gåva!"
+
+#, possible-python-brace-format
+msgctxt "cmd:send|embed:gift|desc"
+msgid "{mention} sent you {coin_emoji}**{amount}**."
+msgstr "{mention} skickade dig {coin_emoji}**{amount}**."
+
+#, possible-python-brace-format
+msgctxt "cmd:send|embed:ack|desc"
+msgid ""
+"**{coin_emoji}{amount}** has been deducted from your balance and sent to "
+"{mention}!"
+msgstr ""
+"**{coin_emoji}{amount}** har dragits från ditt saldo och skickats till "
+"{mention}!"
+
+#: src/modules/economy/cog.py:872
+msgctxt "cmd:send|embed:ack|desc|error:unreachable"
+msgid ""
+"Unfortunately, I was not able to message the recipient. Perhaps they have me"
+" blocked?"
+msgstr ""
+"Tyvärr kunde jag inte skicka ett meddelande till mottagaren. Kanske har de "
+"blockerat mig?"
+
+#: src/modules/economy/cog.py:884
+msgctxt "cmd:configure_economy"
+msgid "economy"
+msgstr "economy"
+
+#: src/modules/economy/cog.py:887
+msgctxt "cmd:configure_economy|desc"
+msgid "Configure LionCoin Economy"
+msgstr "Konfigurera LionCoin-ekonomi"
+
+#: src/modules/economy/settings.py:38
+msgctxt "guildset:coins_per_xp"
+msgid "coins_per_100xp"
+msgstr "coins_per_100xp"
+
+#: src/modules/economy/settings.py:41
+msgctxt "guildset:coins_per_xp|desc"
+msgid "How many LionCoins to reward members per 100 XP they earn."
+msgstr "Hur många LionCoins att belöna per 100 XP."
+
+#: src/modules/economy/settings.py:45
+msgctxt "guildset:coins_per_xp|long_desc"
+msgid ""
+"Members will be rewarded with this many LionCoins for every 100 XP they "
+"earn."
+msgstr "Medlemmar belönas med detta antal LionCoins per 100 XP."
+
+#: src/modules/economy/settings.py:49
+msgctxt "guildset:coins_per_xp|long_desc"
+msgid "The number of coins to reward per 100 XP."
+msgstr "Antal mynt att belöna per 100 XP."
+
+#, possible-python-brace-format
+msgctxt "guildset:coins_per_xp|set_response"
+msgid ""
+"For every **100** XP they earn, members will now be given "
+"{coin}**{amount}**."
+msgstr "För varje **100** XP kommer medlemmar nu att få {coin}**{amount}**."
+
+#: src/modules/economy/settings.py:74
+msgctxt "guildset:allow_transfers"
+msgid "allow_transfers"
+msgstr "allow_transfers"
+
+#: src/modules/economy/settings.py:77
+msgctxt "guildset:allow_transfers|desc"
+msgid "Whether to allow members to transfer LionCoins to each other."
+msgstr "Om medlemmar ska kunna överföra LionCoins till varandra."
+
+#: src/modules/economy/settings.py:81
+msgctxt "guildset:allow_transfers|long_desc"
+msgid ""
+"If disabled, members will not be able to transfer LionCoins to each other."
+msgstr "Om inaktiverat kan medlemmar inte överföra LionCoins till varandra."
+
+#: src/modules/economy/settings.py:89
+msgctxt "guildset:allow_transfers|outputs:true"
+msgid "Enabled (Coin transfers allowed.)"
+msgstr "Aktiverat (Myntöverföringar tillåtna.)"
+
+#: src/modules/economy/settings.py:90
+msgctxt "guildset:allow_transfers|outputs:false"
+msgid "Disabled (Coin transfers not allowed.)"
+msgstr "Inaktiverat (Myntöverföringar ej tillåtna.)"
+
+#, possible-python-brace-format
+msgctxt "guildset:allow_transfers|set_response|set:true"
+msgid "Members will now be able to use {send_cmd} to transfer {coin}"
+msgstr "Medlemmar kan nu använda {send_cmd} för att överföra {coin}"
+
+#, possible-python-brace-format
+msgctxt "guildset:allow_transfers|set_response|set:false"
+msgid "Members will not be able to use {send_cmd} to transfer {coin}"
+msgstr ""
+"Medlemmar kommer inte kunna använda {send_cmd} för att överföra {coin}"
+
+#: src/modules/economy/settings.py:123
+msgctxt "guildset:starting_funds"
+msgid "starting_funds"
+msgstr "starting_funds"
+
+#: src/modules/economy/settings.py:126
+msgctxt "guildset:starting_funds|desc"
+msgid "How many LionCoins should a member start with."
+msgstr "Hur många LionCoins en medlem börjar med."
+
+#: src/modules/economy/settings.py:130
+msgctxt "guildset:starting_funds|long_desc"
+msgid ""
+"Members will be given this number of coins when they first interact with me,"
+" or first join the server."
+msgstr ""
+"Medlemmar får detta antal mynt vid första interaktionen eller när de går med"
+" i servern."
+
+#: src/modules/economy/settings.py:134
+msgctxt "guildset:starting_funds|accepts"
+msgid "Number of coins to give to new members."
+msgstr "Antal mynt till nya medlemmar."
+
+#, possible-python-brace-format
+msgctxt "guildset:starting_funds|set_response"
+msgid "New members will now start with {amount}"
+msgstr "Nya medlemmar börjar nu med {amount}"

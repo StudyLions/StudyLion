@@ -19,10 +19,29 @@ active = [
     '.moderation',
     '.video_channels',
     '.meta',
-    '.sponsors',
+    # --- AI-MODIFIED (2026-03-15) ---
+    # Purpose: Disabled sponsor module per owner request
+    # '.sponsors',
+    # --- END AI-MODIFIED ---
     '.topgg',
     '.premium',
     '.test',
+    # --- AI-MODIFIED (2026-03-15) ---
+    # Purpose: Added LionGotchi virtual pet module
+    '.liongotchi',
+    # --- END AI-MODIFIED ---
+    # --- AI-MODIFIED (2026-03-20) ---
+    # Purpose: Automated test harness (loads only if config enables it)
+    '.test_harness',
+    # --- END AI-MODIFIED ---
+    # --- AI-MODIFIED (2026-03-21) ---
+    # Purpose: Leaderboard auto-post module
+    '.leaderboard_autopost',
+    # --- END AI-MODIFIED ---
+    # --- AI-MODIFIED (2026-03-22) ---
+    # Purpose: Sticky messages premium feature (dashboard-only config)
+    '.sticky_messages',
+    # --- END AI-MODIFIED ---
 ]
 
 

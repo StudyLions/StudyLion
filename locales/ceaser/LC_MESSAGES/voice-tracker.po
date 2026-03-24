@@ -191,8 +191,7 @@ msgid ""
 " day."
 msgstr ""
 "Nfncfst xjmm opx cf sfxbsefe {coin}**{base} (+ {bonus})** qfs ipvs uifz "
-"tqfoe (mjwf) jo b wpjdf diboofm, vq up b upubm pg **{cap}** ipvst qfs tfswfs"
-" ebz."
+"tqfoe (mjwf) jo b wpjdf d..."
 
 #: src/tracking/voice/cog.py:917
 #, possible-python-brace-format
@@ -203,8 +202,7 @@ msgid ""
 "up to a total of **{cap}** hours per server day."
 msgstr ""
 "Nfncfst xjmm opx cf sfxbsefe {coin}**{base}** qfs ipvs pg tuvez jo uijt "
-"tfswfs, xjui b cpovt pg {coin}**{bonus}** jg uifz tusfbn pg ejtqmbz wjefp, "
-"vq up b upubm pg **{cap}** ipvst qfs tfswfs ebz."
+"tfswfs, xjui b cpovt pg {..."
 
 #: src/tracking/voice/settings.py:40
 msgctxt "guildset:untracked_channels"

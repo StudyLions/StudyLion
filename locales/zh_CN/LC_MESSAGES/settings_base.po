@@ -1,0 +1,211 @@
+# Chinese (Simplified) translation for LionBot - settings_base
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 19:57+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Chinese (Simplified)\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/settings/ui.py:180
+msgctxt "setting|formatted|notset"
+msgid "Not Set"
+msgstr "未设置"
+
+#: src/settings/ui.py:324
+msgctxt "setting|embed_field|too_long"
+msgid "Too long to display here!"
+msgstr "太长无法在此显示！"
+
+#, possible-python-brace-format
+msgctxt "setting|summary_embed|title"
+msgid "Configuration options for `{name}`"
+msgstr "`{name}`的配置选项"
+
+#: src/settings/ui.py:370
+msgctxt "setting|summary_table|field:currently|key"
+msgid "Currently"
+msgstr "当前"
+
+#: src/settings/ui.py:377
+msgctxt "setting|summary_table|field:default|key"
+msgid "By Default"
+msgstr "默认"
+
+#: src/settings/ui.py:384
+msgctxt "setting|summary_table|field:set|key"
+msgid "Set Using"
+msgstr "设置方式"
+
+#: src/settings/ui.py:502
+msgctxt "setting|interaction_check|error"
+msgid "You do not have sufficient permissions to do this!"
+msgstr "您没有足够的权限执行此操作！"
+
+#: src/settings/setting_types.py:48
+msgctxt "settype:string|accepts"
+msgid "Any Text"
+msgstr "任意文本"
+
+#, possible-python-brace-format
+msgctxt "settype:string|error"
+msgid "Provided string is too long! Maximum length: {maxlen} characters."
+msgstr "提供的字符串太长！最大长度：{maxlen}个字符。"
+
+#: src/settings/setting_types.py:114
+msgctxt "settype:emoji|accepts"
+msgid "Paste a builtin emoji, custom emoji, or emoji id."
+msgstr "粘贴内置表情、自定义表情或表情ID。"
+
+#, possible-python-brace-format
+msgctxt "settype:emoji|error:parse"
+msgid "Could not parse `{provided}` as a Discord emoji. Supported formats are builtin emojis (e.g. `{builtin}`), custom emojis (e.g. {custom}), or custom emoji ids (e.g. `{custom_id}`)."
+msgstr "无法将`{provided}`解析为Discord表情。支持的格式有内置表情（如`{builtin}`）、自定义表情（如{custom}）或自定义表情ID（如`{custom_id}`）。"
+
+#: src/settings/setting_types.py:236
+msgctxt "settype:channel|accepts"
+msgid "A channel name or id"
+msgstr "频道名称或ID"
+
+#, possible-python-brace-format
+msgctxt "settype:channel|parse|error:not_found"
+msgid "Channel `{string}` could not be found in this guild!"
+msgstr "在此服务器中找不到频道`{string}`！"
+
+#: src/settings/setting_types.py:368
+msgctxt "settype:role|accepts"
+msgid "A role name or id"
+msgstr "角色名称或ID"
+
+#, possible-python-brace-format
+msgctxt "settype:role|parse|error:not_found"
+msgid "Role `{string}` could not be found in this guild!"
+msgstr "在此服务器中找不到角色`{string}`！"
+
+#: src/settings/setting_types.py:495
+msgctxt "settype:bool|accepts"
+msgid "Enabled/Disabled"
+msgstr "启用/禁用"
+
+#: src/settings/setting_types.py:500
+msgctxt "settype:bool|parse:truthy_values"
+msgid "enabled|yes|true|on|enable|1"
+msgstr "启用|是|真|开|1"
+
+#: src/settings/setting_types.py:504
+msgctxt "settype:bool|parse:falsey_values"
+msgid "disabled|no|false|off|disable|0"
+msgstr "禁用|否|假|关|0"
+
+#: src/settings/setting_types.py:509
+msgctxt "settype:bool|output:true"
+msgid "On"
+msgstr "开"
+
+#: src/settings/setting_types.py:510
+msgctxt "settype:bool|output:false"
+msgid "Off"
+msgstr "关"
+
+#: src/settings/setting_types.py:511
+msgctxt "settype:bool|output:none"
+msgid "Not Set"
+msgstr "未设置"
+
+#: src/settings/setting_types.py:622
+msgctxt "settype:integer|accepts"
+msgid "An integer"
+msgstr "整数"
+
+#: src/settings/setting_types.py:685
+msgctxt "settype:emoji|desc"
+msgid "Unicode or custom emoji"
+msgstr "Unicode或自定义表情"
+
+#: src/settings/setting_types.py:757
+msgctxt "settype:guildid|accepts"
+msgid "Any Snowflake ID"
+msgstr "任意Snowflake ID"
+
+#: src/settings/setting_types.py:826
+msgctxt "settype:timezone|accepts"
+msgid "A timezone name from the 'tz database' (e.g. 'Europe/London')"
+msgstr "来自'tz database'的时区名称（如'Europe/London'）"
+
+#: src/settings/setting_types.py:896
+msgctxt "settype:timezone|summary_table|field:supported|key"
+msgid "Supported"
+msgstr "支持"
+
+#, possible-python-brace-format
+msgctxt "settype:timezone|summary_table|field:supported|value"
+msgid "Any timezone from the [tz database]({link})."
+msgstr "来自[tz database]({link})的任意时区。"
+
+#, possible-python-brace-format
+msgctxt "set_type:timezone|acmpl|no_matching"
+msgid "No timezones matching '{input}'!"
+msgstr "没有匹配'{input}'的时区！"
+
+#, possible-python-brace-format
+msgctxt "set_type:timezone|acmpl|choice"
+msgid "{tz} (Currently {now})"
+msgstr "{tz}（当前 {now}）"
+
+#: src/settings/setting_types.py:960
+msgctxt "settype:timestamp|accepts"
+msgid "A timestamp in the form YYYY-MM-DD HH:MM"
+msgstr "格式为YYYY-MM-DD HH:MM的时间戳"
+
+#, possible-python-brace-format
+msgctxt "settype:timestamp|parse|error:invalid"
+msgid "Could not parse `{provided}` as a timestamp. Please use `YYYY-MM-DD HH:MM` format."
+msgstr "无法将`{provided}`解析为时间戳。请使用`YYYY-MM-DD HH:MM`格式。"
+
+#: src/settings/setting_types.py:1020
+msgctxt "settype:raw|accepts"
+msgid "Anything"
+msgstr "任意内容"
+
+#: src/settings/setting_types.py:1073
+msgctxt "settype:enum|accepts"
+msgid "A valid option."
+msgstr "有效选项。"
+
+#, possible-python-brace-format
+msgctxt "settype:enum|parse|error:not_found"
+msgid "`{provided}` is not a valid option!"
+msgstr "`{provided}`不是有效选项！"
+
+#: src/settings/setting_types.py:1171
+msgctxt "settype:duration|accepts"
+msgid "A number of days, hours, minutes, and seconds, e.g. `2d 4h 10s`."
+msgstr "天、小时、分钟和秒数，例如 `2d 4h 10s`。"
+
+#: src/settings/setting_types.py:1352
+msgctxt "settype:channel_list|accepts"
+msgid "Comma separated list of channel ids."
+msgstr "逗号分隔的频道ID列表。"
+
+#: src/settings/setting_types.py:1363
+msgctxt "settype:role_list|accepts"
+msgid "Comma separated list of role ids."
+msgstr "逗号分隔的角色ID列表。"
+
+#: src/settings/setting_types.py:1379
+msgctxt "settype:stringlist|accepts"
+msgid "Comma separated strings."
+msgstr "逗号分隔的字符串。"
+
+#: src/settings/setting_types.py:1390
+msgctxt "settype:guildidlist|accepts"
+msgid "Comma separated list of guild ids."
+msgstr "逗号分隔的服务器ID列表。"

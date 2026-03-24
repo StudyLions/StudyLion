@@ -1,0 +1,902 @@
+# Hindi translation for LionBot - Pomodoro
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 22:22+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Hindi\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/modules/pomodoro/timer.py:52
+msgctxt "timer|stage:break|name"
+msgid "BREAK"
+msgstr "ब्रेक"
+
+#: src/modules/pomodoro/timer.py:53
+msgctxt "timer|stage:focus|name"
+msgid "FOCUS"
+msgstr "फोकस"
+
+#, possible-python-brace-format
+msgctxt "timer|webhook|name"
+msgid "{bot_name} Pomodoro"
+msgstr "{bot_name} पोमोडोरो"
+
+#: src/modules/pomodoro/timer.py:168
+msgctxt "timer|webhook|audit_reason"
+msgid "Pomodoro Notifications"
+msgstr "पोमोडोरो सूचनाएँ"
+
+#: src/modules/pomodoro/timer.py:179
+msgctxt "timer|webhook|error:insufficient_permissions"
+msgid ""
+"I require the `MANAGE_WEBHOOKS` permission to send pomodoro notifications "
+"here!"
+msgstr ""
+"मुझे यहाँ पोमोडोरो सूचनाएँ भेजने के लिए `MANAGE_WEBHOOKS` अनुमति चाहिए!"
+
+#, possible-python-brace-format
+msgctxt "timer|default_base_name"
+msgid "Timer {pattern}"
+msgstr "टाइमर {pattern}"
+
+#: src/modules/pomodoro/timer.py:413
+msgctxt "timer|disconnect|audit_reason"
+msgid "Disconnecting inactive member from timer."
+msgstr "निष्क्रिय सदस्य को टाइमर से डिस्कनेक्ट किया जा रहा है।"
+
+#, possible-python-brace-format
+msgctxt "timer|kicked_message"
+msgid ""
+"{mentions} was removed from {channel} because they were inactive! Remember "
+"to press {tick} to register your presence every stage."
+msgid_plural ""
+"{mentions} were removed from {channel} because they were inactive! Remember "
+"to press {tick} to register your presence every stage."
+msgstr[0] ""
+"{mentions} को {channel} से हटा दिया गया क्योंकि वे निष्क्रिय थे! हर चरण में "
+"अपनी उपस्थिति दर्ज करने के लिए {tick} दबाना याद रखें।"
+msgstr[1] ""
+"{mentions} को {channel} से हटा दिया गया क्योंकि वे निष्क्रिय थे! हर चरण में "
+"अपनी उपस्थिति दर्ज करने के लिए {tick} दबाना याद रखें।"
+
+#, possible-python-brace-format
+msgctxt "timer|kick_failed"
+msgid ""
+"**Warning!** Timer {channel} is configured to disconnect on inactivity, but "
+"I lack the 'Move Members' permission to do this!"
+msgstr ""
+"**चेतावनी!** टाइमर {channel} निष्क्रियता पर डिस्कनेक्ट करने के लिए कॉन्फ़िगर"
+" किया गया है, लेकिन मेरे पास 'Move Members' अनुमति नहीं है!"
+
+#, possible-python-brace-format
+msgctxt "timer|status|stage:focus|statusline"
+msgid "{channel} is now in **FOCUS**! Good luck, **BREAK** starts {timestamp}"
+msgstr ""
+"{channel} अब **फोकस** में है! शुभकामनाएँ, **ब्रेक** {timestamp} पर शुरू होगा"
+
+#, possible-python-brace-format
+msgctxt "timer|status|stage:break|statusline"
+msgid ""
+"{channel} is now on **BREAK**! Take a rest, **FOCUS** starts {timestamp}"
+msgstr ""
+"{channel} अब **ब्रेक** पर है! आराम करें, **फोकस** {timestamp} पर शुरू होगा"
+
+#, possible-python-brace-format
+msgctxt "timer|status|warningline"
+msgid ""
+"**Warning:** {mentions}, please press {tick} to avoid being removed on the "
+"next stage."
+msgstr ""
+"**चेतावनी:** {mentions}, अगले चरण में हटाए जाने से बचने के लिए कृपया {tick} "
+"दबाएं।"
+
+#, possible-python-brace-format
+msgctxt "timer|status|stopped:auto"
+msgid "Timer stopped! Join {channel} to start the timer."
+msgstr "टाइमर रुक गया! टाइमर शुरू करने के लिए {channel} में शामिल हों।"
+
+#: src/modules/pomodoro/timer.py:598
+msgctxt "timer|status|stopped:manual"
+msgid "Timer stopped! Press `Start` to restart the timer."
+msgstr "टाइमर रुक गया! टाइमर पुनः शुरू करने के लिए `Start` दबाएं।"
+
+#: src/modules/pomodoro/settingui.py:40
+msgctxt "ui:timer_config|menu:channels|placeholder"
+msgid "Select Pomodoro Notification Channel"
+msgstr "पोमोडोरो सूचना चैनल चुनें"
+
+#: src/modules/pomodoro/settingui.py:48
+msgctxt "ui:timer_config|embed|title"
+msgid "Timer Configuration Panel"
+msgstr "टाइमर कॉन्फ़िगरेशन पैनल"
+
+#: src/modules/pomodoro/settingui.py:82
+msgctxt "dash:pomodoro|title"
+msgid "Pomodoro Configuration ({commands[config pomodoro]})"
+msgstr "पोमोडोरो कॉन्फ़िगरेशन ({commands[config pomodoro]})"
+
+#: src/modules/pomodoro/settingui.py:86
+msgctxt "dash:stats|dropdown|placeholder"
+msgid "Pomodoro Timer Panel"
+msgstr "पोमोडोरो टाइमर पैनल"
+
+#: src/modules/pomodoro/cog.py:116
+msgctxt "cmd_check:ready|failed"
+msgid ""
+"I am currently restarting! The Pomodoro timers will be unavailable until I "
+"have restarted. Thank you for your patience!"
+msgstr ""
+"मैं अभी पुनः शुरू हो रहा हूँ! पोमोडोरो टाइमर मेरे पुनः शुरू होने तक अनुपलब्ध"
+" रहेंगे। आपके धैर्य के लिए धन्यवाद!"
+
+#: src/modules/pomodoro/cog.py:401
+msgctxt "cmd:timer"
+msgid "timer"
+msgstr "timer"
+
+#: src/modules/pomodoro/cog.py:402
+msgctxt "cmd:timer|desc"
+msgid "Show your current (or selected) pomodoro timer."
+msgstr "अपना वर्तमान (या चयनित) पोमोडोरो टाइमर दिखाएं।"
+
+#: src/modules/pomodoro/cog.py:405
+msgctxt "cmd:timer|param:channel"
+msgid "timer_channel"
+msgstr "timer_channel"
+
+#: src/modules/pomodoro/cog.py:410
+msgctxt "cmd:timer|param:channel|desc"
+msgid "Select a timer to display (by selecting the timer voice channel)"
+msgstr "प्रदर्शित करने के लिए एक टाइमर चुनें (टाइमर वॉइस चैनल चुनकर)"
+
+#, possible-python-brace-format
+msgctxt "cmd:timer|error:no_timers|desc"
+msgid ""
+"**This server has no timers set up!**\n"
+"Ask an admin to set up and configure a timer with {create_cmd} first, or rent a private room with {room_cmd} and create one yourself!"
+msgstr ""
+"**इस सर्वर पर कोई टाइमर सेटअप नहीं है!**\n"
+"किसी एडमिन से {create_cmd} के साथ टाइमर सेटअप करने को कह..."
+
+#, possible-python-brace-format
+msgctxt "cmd:timer|error:no_channel|desc"
+msgid ""
+"**I don't know what timer to show you.**\n"
+"No channel selected and you are not in a voice channel! Use {timers_cmd} to list the available timers in this server."
+msgstr ""
+"**मुझे नहीं पता कौन सा टाइमर दिखाना है।**\n"
+"कोई चैनल नहीं चुना और आप वॉइस चैनल में नहीं हैं! इस सर्..."
+
+#, possible-python-brace-format
+msgctxt "cmd:timer|error:no_timer_in_channel"
+msgid ""
+"The channel {channel} is not a pomodoro timer room!\n"
+"Use {timers_cmd} to list the available timers in this server."
+msgstr ""
+"चैनल {channel} एक पोमोडोरो टाइमर रूम नहीं है!\n"
+"इस सर्वर के उपलब्ध टाइमर देखने के लिए {timers_cmd} का उपयोग करें।"
+
+#: src/modules/pomodoro/cog.py:476
+msgctxt "cmd:timers"
+msgid "timers"
+msgstr "timers"
+
+#: src/modules/pomodoro/cog.py:477
+msgctxt "cmd:timers|desc"
+msgid "List the available pomodoro timer rooms."
+msgstr "उपलब्ध पोमोडोरो टाइमर रूम की सूची दिखाएं।"
+
+#, possible-python-brace-format
+msgctxt "cmd:timer|error:no_visible_timers|desc"
+msgid ""
+"**There are no available pomodoro timers!**\n"
+"Ask an admin to set up a new timer with {create_cmd}, or rent a private room with {room_cmd} and create one yourself!"
+msgstr ""
+"**कोई उपलब्ध पोमोडोरो टाइमर नहीं हैं!**\n"
+"किसी एडमिन से {create_cmd} के साथ नया टाइमर सेटअप करने को..."
+
+#, possible-python-brace-format
+msgctxt "cmd:timers|embed:timer_list|title"
+msgid "Pomodoro Timer Rooms in **{guild}**"
+msgstr "**{guild}** में पोमोडोरो टाइमर रूम"
+
+#, possible-python-brace-format
+msgctxt "cmd:timers|status:stopped_auto"
+msgid ""
+"`{pattern}` timer is stopped with no members!\n"
+"Join {channel} to restart it."
+msgstr ""
+"टाइमर `{pattern}` बिना सदस्यों के रुका हुआ है!\n"
+"इसे पुनः शुरू करने के लिए {channel} में शामिल हों।"
+
+#, possible-python-brace-format
+msgctxt "cmd:timers|status:stopped_manual"
+msgid ""
+"`{pattern}` timer is stopped with `{members}` members!\n"
+"Join {channel} and press `Start` to start it!"
+msgstr ""
+"टाइमर `{pattern}` `{members}` सदस्यों के साथ रुका हुआ है!\n"
+"{channel} में शामिल हों और `Start` दबाएं!"
+
+#, possible-python-brace-format
+msgctxt "cmd:timers|status:running_focus"
+msgid ""
+"`{pattern}` timer is running with `{members}` members!\n"
+"Currently **focusing**, with break starting {timestamp}"
+msgstr ""
+"टाइमर `{pattern}` `{members}` सदस्यों के साथ चल रहा है!\n"
+"वर्तमान में **फोकस** में, ब्रेक {timestamp} पर शुरू होगा"
+
+#, possible-python-brace-format
+msgctxt "cmd:timers|status:running_break"
+msgid ""
+"`{pattern}` timer is running with `{members}` members!\n"
+"Currently **resting**, with focus starting {timestamp}"
+msgstr ""
+"टाइमर `{pattern}` `{members}` सदस्यों के साथ चल रहा है!\n"
+"वर्तमान में **आराम** में, फोकस {timestamp} पर शुरू होगा"
+
+#: src/modules/pomodoro/cog.py:571
+msgctxt "cmd:pomodoro"
+msgid "pomodoro"
+msgstr "pomodoro"
+
+#: src/modules/pomodoro/cog.py:572
+msgctxt "cmd:pomodoro|desc"
+msgid "Create and configure pomodoro timer rooms."
+msgstr "पोमोडोरो टाइमर रूम बनाएं और कॉन्फ़िगर करें।"
+
+#: src/modules/pomodoro/cog.py:579
+msgctxt "cmd:pomodoro_create"
+msgid "create"
+msgstr "create"
+
+#: src/modules/pomodoro/cog.py:582
+msgctxt "cmd:pomodoro_create|desc"
+msgid "Create a new Pomodoro timer. Requires manage channel permissions."
+msgstr "एक नया पोमोडोरो टाइमर बनाएं। चैनल प्रबंधन अनुमतियाँ आवश्यक हैं।"
+
+#: src/modules/pomodoro/cog.py:586
+msgctxt "cmd:pomodoro_create|param:channel"
+msgid "timer_channel"
+msgstr "timer_channel"
+
+#: src/modules/pomodoro/cog.py:592
+msgctxt "cmd:pomodoro_create|param:channel|desc"
+msgid ""
+"Voice channel to create the timer in. (Defaults to your current channel, or "
+"makes a new one.)"
+msgstr ""
+"टाइमर बनाने के लिए वॉइस चैनल। (डिफ़ॉल्ट आपका वर्तमान चैनल, या एक नया बनाता "
+"है।)"
+
+#: src/modules/pomodoro/cog.py:637
+msgctxt "cmd:pomodoro_create|new_channel|error:your_insufficient_perms|title"
+msgid "Could not create pomodoro voice channel!"
+msgstr "पोमोडोरो वॉइस चैनल नहीं बनाया जा सका!"
+
+#: src/modules/pomodoro/cog.py:641
+msgctxt "cmd:pomodoro_create|new_channel|error:your_insufficient_perms"
+msgid ""
+"No `timer_channel` was provided, and you lack the 'Manage Channels` "
+"permission required to create a new timer room!"
+msgstr ""
+"कोई `timer_channel` प्रदान नहीं किया गया और आपके पास नया टाइमर रूम बनाने के "
+"लिए 'Manage Channels' अनुमति नहीं है!"
+
+#: src/modules/pomodoro/cog.py:652
+msgctxt "cmd:pomodoro_create|new_channel|error:my_insufficient_perms|title"
+msgid "Could not create pomodoro voice channel!"
+msgstr "पोमोडोरो वॉइस चैनल नहीं बनाया जा सका!"
+
+#: src/modules/pomodoro/cog.py:656
+msgctxt "cmd:pomodoro_create|new_channel|error:my_insufficient_perms|desc"
+msgid ""
+"No `timer_channel` was provided, and I lack the 'Manage Channels' permission"
+" required to create a new voice channel."
+msgstr ""
+"कोई `timer_channel` प्रदान नहीं किया गया और मेरे पास नया वॉइस चैनल बनाने के "
+"लिए 'Manage Channels'..."
+
+#: src/modules/pomodoro/cog.py:667
+msgctxt "cmd:pomodoro_create|new_channel|default_name"
+msgid "Timer"
+msgstr "टाइमर"
+
+#: src/modules/pomodoro/cog.py:671
+msgctxt "cmd:pomodoro_create|new_channel|audit_reason"
+msgid "Creating Pomodoro Voice Channel"
+msgstr "पोमोडोरो वॉइस चैनल बनाया जा रहा है"
+
+#: src/modules/pomodoro/cog.py:680
+msgctxt "cmd:pomodoro_create|new_channel|error:channel_create_failed|title"
+msgid "Could not create pomodoro voice channel!"
+msgstr "पोमोडोरो वॉइस चैनल नहीं बनाया जा सका!"
+
+#: src/modules/pomodoro/cog.py:684
+msgctxt "cmd:pomodoro_create|new_channel|error:channel_create_failed|desc"
+msgid ""
+"Failed to create a new pomodoro voice channel due to an unknown Discord "
+"communication error. Please try creating the channel manually and pass it to"
+" the `timer_channel` argument of this command."
+msgstr ""
+"एक अज्ञात Discord संचार त्रुटि के कारण नया पोमोडोरो वॉइस चैनल नहीं बनाया जा "
+"सका। कृपया चैनल मैन्य..."
+
+#, possible-python-brace-format
+msgctxt "cmd:pomodoro_create|add_timer|error:timer_exists"
+msgid "A timer already exists in {channel}! Reconfigure it with {edit_cmd}."
+msgstr ""
+"{channel} में पहले से एक टाइमर मौजूद है! {edit_cmd} के साथ इसे पुनः "
+"कॉन्फ़िगर करें।"
+
+#, possible-python-brace-format
+msgctxt "cmd:pomodoro_create|add_timer|error:your_insufficient_perms"
+msgid ""
+"You must have the 'Manage Channel' permission in {channel} in order to add a"
+" timer there!"
+msgstr ""
+"वहाँ टाइमर जोड़ने के लिए आपके पास {channel} में 'Manage Channel' अनुमति होनी"
+" चाहिए!"
+
+#: src/modules/pomodoro/cog.py:764
+msgctxt "cmd:pomodoro_create|response:success|content"
+msgid "Timer created successfully! Use the panel below to reconfigure."
+msgstr ""
+"टाइमर सफलतापूर्वक बनाया गया! पुनः कॉन्फ़िगर करने के लिए नीचे पैनल का उपयोग "
+"करें।"
+
+#: src/modules/pomodoro/cog.py:770
+msgctxt "cmd:pomodoro_destroy"
+msgid "destroy"
+msgstr "destroy"
+
+#: src/modules/pomodoro/cog.py:773
+msgctxt "cmd:pomodoro_destroy|desc"
+msgid "Remove a pomodoro timer from a voice channel."
+msgstr "वॉइस चैनल से पोमोडोरो टाइमर हटाएं।"
+
+#: src/modules/pomodoro/cog.py:777
+msgctxt "cmd:pomodoro_destroy|param:channel"
+msgid "timer_channel"
+msgstr "timer_channel"
+
+#: src/modules/pomodoro/cog.py:780
+msgctxt "cmd:pomodoro_destroy|param:channel"
+msgid "Select a timer voice channel to remove the timer from."
+msgstr ""
+
+#: src/modules/pomodoro/cog.py:798
+msgctxt "cmd:pomodoro_destroy|error:no_timer"
+msgid "This channel doesn't have an attached pomodoro timer!"
+msgstr "इस चैनल में कोई पोमोडोरो टाइमर जुड़ा नहीं है!"
+
+#: src/modules/pomodoro/cog.py:811
+msgctxt "cmd:pomodoro_destroy|error:insufficient_perms|owned"
+msgid ""
+"You need to be an administrator or own this channel to remove this timer!"
+msgstr ""
+"इस टाइमर को हटाने के लिए आपको एडमिनिस्ट्रेटर होना चाहिए या इस चैनल का मालिक "
+"होना चाहिए!"
+
+#, possible-python-brace-format
+msgctxt "cmd:pomodoro_destroy|error:insufficient_perms|notowned"
+msgid ""
+"You need to have the `Manage Channels` permission in {channel} to remove "
+"this timer!"
+msgstr ""
+"इस टाइमर को हटाने के लिए आपके पास {channel} में `Manage Channels` अनुमति "
+"होनी चाहिए!"
+
+#, possible-python-brace-format
+msgctxt "cmd:pomdoro_destroy|response:success|description"
+msgid "Timer successfully removed from {channel}."
+msgstr "{channel} से टाइमर सफलतापूर्वक हटा दिया गया।"
+
+#: src/modules/pomodoro/cog.py:837
+msgctxt "cmd:pomodoro_edit"
+msgid "edit"
+msgstr "edit"
+
+#: src/modules/pomodoro/cog.py:840
+msgctxt "cmd:pomodoro_edit|desc"
+msgid "Reconfigure a pomodoro timer."
+msgstr "पोमोडोरो टाइमर को पुनः कॉन्फ़िगर करें।"
+
+#: src/modules/pomodoro/cog.py:844
+msgctxt "cmd:pomodoro_edit|param:channel"
+msgid "timer_channel"
+msgstr "timer_channel"
+
+#: src/modules/pomodoro/cog.py:850
+msgctxt "cmd:pomodoro_edit|param:channel|desc"
+msgid "Select a timer voice channel to reconfigure."
+msgstr "पुनः कॉन्फ़िगर करने के लिए एक टाइमर वॉइस चैनल चुनें।"
+
+#: src/modules/pomodoro/cog.py:891
+msgctxt "cmd:pomodoro_edit|error:no_timer"
+msgid "This channel doesn't have an attached pomodoro timer to edit!"
+msgstr "इस चैनल में संपादित करने के लिए कोई पोमोडोरो टाइमर नहीं है!"
+
+#: src/modules/pomodoro/cog.py:904
+msgctxt "cmd:pomodoro_edit|error:insufficient_perms|role:other"
+msgid ""
+"Insufficient permissions to modifiy this timer!\n"
+"You need to be a server administrator, own this channel, or have the timer manager role."
+msgstr ""
+"इस टाइमर को संशोधित करने के लिए अपर्याप्त अनुमतियाँ!\n"
+"आपको सर्वर एडमिनिस्ट्रेटर, इस चैनल का मालिक, या टाइमर मैनेजर रोल वाला होना चाहिए।"
+
+#: src/modules/pomodoro/cog.py:925
+msgctxt "cmd:pomodoro_edit|error:insufficient_permissions|role_needed:admin"
+msgid "You need to be a guild admin to modify this option!"
+msgstr "इस विकल्प को संशोधित करने के लिए आपको गिल्ड एडमिन होना चाहिए!"
+
+#: src/modules/pomodoro/cog.py:930
+msgctxt "cmd:pomodoro_edit|error:insufficient_permissions|role_needed:owner"
+msgid "You need to be a channel owner or guild admin to modify this option!"
+msgstr ""
+"इस विकल्प को संशोधित करने के लिए आपको चैनल मालिक या गिल्ड एडमिन होना चाहिए!"
+
+#: src/modules/pomodoro/cog.py:935
+msgctxt "cmd:pomodoro_edit|error:insufficient_permissions|role_needed:manager"
+msgid ""
+"You need to be a guild admin or have the manager role to modify this option!"
+msgstr ""
+"इस विकल्प को संशोधित करने के लिए आपको गिल्ड एडमिन या मैनेजर रोल वाला होना "
+"चाहिए!"
+
+#: src/modules/pomodoro/cog.py:971
+msgctxt "cmd:configure_pomodoro"
+msgid "pomodoro"
+msgstr "pomodoro"
+
+#: src/modules/pomodoro/cog.py:972
+msgctxt "cmd:configure_pomodoro|desc"
+msgid "Configure Pomodoro Timer System"
+msgstr "पोमोडोरो टाइमर सिस्टम कॉन्फ़िगर करें"
+
+#, possible-python-brace-format
+msgctxt "formatstring:channel_name|key:remaining"
+msgid "{remaining}"
+msgstr "{remaining}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:channel_name|key:stage"
+msgid "{stage}"
+msgstr "{stage}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:channel_name|key:members"
+msgid "{members}"
+msgstr "{members}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:channel_name|key:name"
+msgid "{name}"
+msgstr "{name}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:channel_name|key:pattern"
+msgid "{pattern}"
+msgstr "{pattern}"
+
+#: src/modules/pomodoro/options.py:33
+msgctxt "timerset:voice_channel"
+msgid "channel"
+msgstr "channel"
+
+#: src/modules/pomodoro/options.py:36
+msgctxt "timerset:voice_channel|desc"
+msgid "Channel in which to track timer members and send alerts."
+msgstr "टाइमर सदस्यों को ट्रैक करने और अलर्ट भेजने के लिए चैनल।"
+
+#: src/modules/pomodoro/options.py:48
+msgctxt "timerset:notification_channel"
+msgid "notification_channel"
+msgstr "notification_channel"
+
+#: src/modules/pomodoro/options.py:51
+msgctxt "timerset:notification_channel|desc"
+msgid "Channel to which to send timer status cards and notifications."
+msgstr "टाइमर स्थिति कार्ड और सूचनाएँ भेजने के लिए चैनल।"
+
+#, possible-python-brace-format
+msgctxt "timerset:notification_channel|format:notset"
+msgid "Not Set (Using {channel})"
+msgstr "सेट नहीं ({channel} का उपयोग)"
+
+#: src/modules/pomodoro/options.py:83
+msgctxt "timerset:inactivity_threshold|inactivity_threshold"
+msgid "inactivity_threshold"
+msgstr "inactivity_threshold"
+
+#: src/modules/pomodoro/options.py:86
+msgctxt "timerset:inactivity_threshold|desc"
+msgid ""
+"Number of inactive focus+break stages before a member is removed from the "
+"timer."
+msgstr "सदस्य को हटाने से पहले निष्क्रिय फोकस+ब्रेक चरणों की संख्या।"
+
+#: src/modules/pomodoro/options.py:90
+msgctxt "timerset:inactivity_threshold|desc"
+msgid "How many timer cycles before kicking inactive members."
+msgstr "निष्क्रिय सदस्यों को हटाने से पहले कितने टाइमर चक्र।"
+
+#: src/modules/pomodoro/options.py:112
+msgctxt "timerset:inactivity_length|desc"
+msgid "The inactivity threshold must be a positive whole number!"
+msgstr "निष्क्रियता सीमा एक धनात्मक पूर्ण संख्या होनी चाहिए!"
+
+#: src/modules/pomodoro/options.py:120
+msgctxt "timerset:manager_role"
+msgid "manager_role"
+msgstr "manager_role"
+
+#: src/modules/pomodoro/options.py:123
+msgctxt "timerset:manager_role|desc"
+msgid "Role allowed to start, stop, and edit the focus/break lengths."
+msgstr "फोकस/ब्रेक अवधि शुरू, बंद और संपादित करने की अनुमति वाली भूमिका।"
+
+#: src/modules/pomodoro/options.py:137
+msgctxt "timerset:manager_role|format:notset"
+msgid "Not Set (Only Admins may start/stop or edit pattern)"
+msgstr ""
+"सेट नहीं (केवल एडमिन शुरू/बंद कर सकते हैं या पैटर्न संपादित कर सकते हैं)"
+
+#: src/modules/pomodoro/options.py:147
+msgctxt "timerset:voice_alerts"
+msgid "voice_alerts"
+msgstr "voice_alerts"
+
+#: src/modules/pomodoro/options.py:150
+msgctxt "timerset:voice_alerts|desc"
+msgid "Whether to join the voice channel and announce focus and break stages."
+msgstr "क्या वॉइस चैनल से जुड़ना और फोकस और ब्रेक चरणों की घोषणा करनी है।"
+
+#: src/modules/pomodoro/options.py:162
+msgctxt "timerset:base_name"
+msgid "name"
+msgstr "name"
+
+#: src/modules/pomodoro/options.py:165
+msgctxt "timerset:base_name|desc"
+msgid "Timer name, as shown on the timer card."
+msgstr "टाइमर का नाम, जैसा कि टाइमर कार्ड पर दिखाया गया है।"
+
+#: src/modules/pomodoro/options.py:169
+msgctxt "timerset:base_name|accepts"
+msgid "Any short name, shown on the timer card."
+msgstr "कोई भी छोटा नाम, टाइमर कार्ड पर दिखाया जाता है।"
+
+#: src/modules/pomodoro/options.py:184
+msgctxt "timerset:channel_name_format"
+msgid "channel_name"
+msgstr "channel_name"
+
+#, possible-python-brace-format
+msgctxt "timerset:channel_name_format|desc"
+msgid ""
+"Auto-updating voice channel name, accepting {remaining}, {name}, {pattern}, "
+"and {stage} keys."
+msgstr ""
+"स्वतः-अपडेट होने वाला वॉइस चैनल नाम, {remaining}, {name}, {pattern}, और "
+"{stage} कुंजियाँ स्वीकार ..."
+
+#, possible-python-brace-format
+msgctxt "timerset:channel_name|accepts"
+msgid ""
+"Timer channel name, with keys {remaining}, {name}, {pattern}, and {stage}."
+msgstr ""
+"टाइमर चैनल नाम, कुंजियों {remaining}, {name}, {pattern}, और {stage} के साथ।"
+
+#: src/modules/pomodoro/options.py:221
+msgctxt "timerset:channel_name_format|error:too_long"
+msgid ""
+"The provided name is too long! Channel names can be at most `100` "
+"characters."
+msgstr "दिया गया नाम बहुत लंबा है! चैनल नाम अधिकतम `100` अक्षर हो सकते हैं।"
+
+#: src/modules/pomodoro/options.py:240
+msgctxt "timerset:focus_length"
+msgid "focus_length"
+msgstr "focus_length"
+
+#: src/modules/pomodoro/options.py:243
+msgctxt "timerset:focus_length|desc"
+msgid "Length of the focus stage of the timer in minutes."
+msgstr "मिनटों में फोकस चरण की अवधि।"
+
+#: src/modules/pomodoro/options.py:248
+msgctxt "timerset:focus_length|accepts"
+msgid "A positive integer number of minutes."
+msgstr "मिनटों की एक धनात्मक पूर्णांक संख्या।"
+
+#: src/modules/pomodoro/options.py:273
+msgctxt "timerset:focus_length|desc"
+msgid "Please enter a positive number of minutes."
+msgstr "कृपया मिनटों की एक सकारात्मक संख्या दर्ज करें।"
+
+#: src/modules/pomodoro/options.py:281
+msgctxt "timerset:break_length"
+msgid "break_length"
+msgstr "break_length"
+
+#: src/modules/pomodoro/options.py:284
+msgctxt "timerset:break_length|desc"
+msgid "Length of the break stage of the timer in minutes."
+msgstr "मिनटों में ब्रेक चरण की अवधि।"
+
+#: src/modules/pomodoro/options.py:289
+msgctxt "timerset:break_length|accepts"
+msgid "A positive integer number of minutes."
+msgstr "मिनटों की एक धनात्मक पूर्णांक संख्या।"
+
+#: src/modules/pomodoro/options.py:314
+msgctxt "timerset:break_length|desc"
+msgid "Please enter a positive number of minutes."
+msgstr "कृपया मिनटों की एक सकारात्मक संख्या दर्ज करें।"
+
+#: src/modules/pomodoro/settings.py:21
+msgctxt "guildset:pomodoro_channel"
+msgid "pomodoro_channel"
+msgstr "pomodoro_channel"
+
+#: src/modules/pomodoro/settings.py:24
+msgctxt "guildset:pomodoro_channel|desc"
+msgid "Default central notification channel for pomodoro timers."
+msgstr "पोमोडोरो टाइमर के लिए डिफ़ॉल्ट केंद्रीय सूचना चैनल।"
+
+#: src/modules/pomodoro/settings.py:28
+msgctxt "guildset:pomodoro_channel|long_desc"
+msgid ""
+"Pomodoro timers which do not have a custom notification channel set will "
+"send timer notifications in this channel. If this setting is not set, "
+"pomodoro notifications will default to the timer voice channel itself."
+msgstr ""
+"जिन पोमोडोरो टाइमर में कस्टम नोटिफिकेशन चैनल सेट नहीं है, वे इस चैनल में "
+"नोटिफिकेशन भेजेंगे। अगर यह सेट नहीं है, तो टाइमर वॉइस चैनल का उपयोग किया "
+"जाएगा।"
+
+#: src/modules/pomodoro/settings.py:35
+msgctxt "guildset:pomodoro_channel|formatted|notset"
+msgid "Not Set (Will use timer voice channel.)"
+msgstr "सेट नहीं (टाइमर वॉइस चैनल का उपयोग किया जाएगा।)"
+
+#: src/modules/pomodoro/settings.py:39
+msgctxt "guildset:pomodoro_channel|accepts"
+msgid "Timer notification channel name or id."
+msgstr "टाइमर सूचना चैनल का नाम या आईडी।"
+
+#, possible-python-brace-format
+msgctxt "guildset:pomodoro_channel|set_response|set"
+msgid "Pomodoro timer notifications will now default to {channel}"
+msgstr "पोमोडोरो टाइमर सूचनाएँ अब डिफ़ॉल्ट रूप से {channel} पर जाएँगी"
+
+#: src/modules/pomodoro/settings.py:58
+msgctxt "guildset:pomodoro_channel|set_response|unset"
+msgid "Pomodoro timer notifications will now default to their voice channel."
+msgstr "पोमोडोरो टाइमर सूचनाएँ अब वॉइस चैनल पर जाएँगी।"
+
+#, possible-python-brace-format
+msgctxt "guildset:pomdoro_channel|set_using"
+msgid "{cmd} or channel selector below."
+msgstr "{cmd} या नीचे चैनल चयनकर्ता।"
+
+#: src/modules/pomodoro/ui/edit.py:63
+msgctxt "modal:timer_editor|title"
+msgid "Timer Option Editor"
+msgstr "टाइमर विकल्प संपादक"
+
+#: src/modules/pomodoro/ui/status.py:61
+msgctxt "ui:timer_status|button:present|ack"
+msgid ""
+"Thank you for marking your presence.\n"
+"Good luck and stay productive!"
+msgstr ""
+"उपस्थिति दर्ज करने के लिए धन्यवाद।\n"
+"शुभकामनाएँ और उत्पादक बने रहें!"
+
+#, possible-python-brace-format
+msgctxt "ui:timer_status|button:present|error:not_in_timer"
+msgid ""
+"You are not in this timer! Join the timer channel by pressing {channel}."
+msgstr "आप इस टाइमर में नहीं हैं! {channel} दबाकर टाइमर चैनल में शामिल हों।"
+
+#: src/modules/pomodoro/ui/status.py:82
+msgctxt "ui:timer_status|button:present|label"
+msgid "Present"
+msgstr "उपस्थित"
+
+#: src/modules/pomodoro/ui/status.py:106
+msgctxt "ui:timer_status|button:edit|error:no_permissions"
+msgid ""
+"Configuring this timer requires `MANAGE_CHANNEL` permissions on the timer "
+"channel, or the configured manager role!"
+msgstr ""
+"इस टाइमर को कॉन्फ़िगर करने के लिए `MANAGE_CHANNEL` अनुमतियाँ या कॉन्फ़िगर "
+"किया गया मैनेजर रोल आवश्यक है!"
+
+#: src/modules/pomodoro/ui/status.py:119
+msgctxt "ui:timer_status|button:edit|label"
+msgid "Options"
+msgstr "विकल्प"
+
+#: src/modules/pomodoro/ui/status.py:138
+msgctxt "ui:timer_status|button:start|error:already_running"
+msgid "Cannot start a timer that is already running!"
+msgstr "पहले से चल रहे टाइमर को शुरू नहीं कर सकते!"
+
+#: src/modules/pomodoro/ui/status.py:154
+msgctxt "ui:timer_status|button:start|error:not_manager|title"
+msgid "Insufficient permissions!"
+msgstr "अपर्याप्त अनुमतियाँ!"
+
+#: src/modules/pomodoro/ui/status.py:158
+msgctxt "ui:timer_status|button:start|error:not_manager|desc"
+msgid ""
+"Starting this timer requires `MANAGE_CHANNEL` permissions on the timer "
+"channel, or the configured `manager_role`!"
+msgstr ""
+"इस टाइमर को शुरू करने के लिए `MANAGE_CHANNEL` अनुमतियाँ या कॉन्फ़िगर किया "
+"गया `manager_role` आवश्..."
+
+#: src/modules/pomodoro/ui/status.py:168
+msgctxt "ui:timer_status|button:start|label"
+msgid "Start"
+msgstr "Start"
+
+#: src/modules/pomodoro/ui/status.py:190
+msgctxt "ui:timer_status|button:stop|error:not_manager|title"
+msgid "Insufficient permissions!"
+msgstr "अपर्याप्त अनुमतियाँ!"
+
+#: src/modules/pomodoro/ui/status.py:194
+msgctxt "ui:timer_status|button:stop|error:not_manager|desc"
+msgid ""
+"Stopping this timer requires `MANAGE_CHANNEL` permissions on the timer "
+"channel, or the configured `manager_role`!"
+msgstr ""
+"इस टाइमर को रोकने के लिए `MANAGE_CHANNEL` अनुमतियाँ या कॉन्फ़िगर किया गया "
+"`manager_role` आवश्यक है!"
+
+#: src/modules/pomodoro/ui/status.py:204
+msgctxt "ui:timer_status|button:stop|label"
+msgid "Stop"
+msgstr "Stop"
+
+#: src/modules/pomodoro/ui/config.py:45
+msgctxt "ui:timer_options|error:timer_destroyed"
+msgid "This timer no longer exists! Closing option menu."
+msgstr "यह टाइमर अब मौजूद नहीं है! विकल्प मेनू बंद हो रहा है।"
+
+#: src/modules/pomodoro/ui/config.py:68
+msgctxt "ui:timer_options|button:edit|label"
+msgid "Edit"
+msgstr "संपादित करें"
+
+#: src/modules/pomodoro/ui/config.py:84
+msgctxt "ui:timer_options|button:voice_alerts|label"
+msgid "Voice Alerts"
+msgstr "वॉइस अलर्ट"
+
+#: src/modules/pomodoro/ui/config.py:105
+msgctxt "ui:timer_options|button:delete|success|title"
+msgid "Timer Deleted"
+msgstr "टाइमर हटाया गया"
+
+#, possible-python-brace-format
+msgctxt "ui:timer_options|button:delete|success|description"
+msgid "The timer in {channel} has been removed."
+msgstr "{channel} का टाइमर हटा दिया गया है।"
+
+#: src/modules/pomodoro/ui/config.py:117
+msgctxt "ui:timer_options|button:delete|label"
+msgid "Delete"
+msgstr "हटाएं"
+
+#: src/modules/pomodoro/ui/config.py:136
+msgctxt "ui:timer_options|menu:voice_channel|placeholder"
+msgid "Set Voice Channel"
+msgstr "वॉइस चैनल सेट करें"
+
+#: src/modules/pomodoro/ui/config.py:157
+msgctxt "ui:timer_options|menu:notification_channel|placeholder"
+msgid "Set Notification Channel"
+msgstr "सूचना चैनल सेट करें"
+
+#: src/modules/pomodoro/ui/config.py:172
+msgctxt "ui:timer_options|menu:manager_role|placeholder"
+msgid "Set Manager Role"
+msgstr "मैनेजर रोल सेट करें"
+
+#, possible-python-brace-format
+msgctxt "ui:timer_options|embed|title"
+msgid "Timer Control Panel for {channel}"
+msgstr "{channel} के लिए टाइमर नियंत्रण पैनल"
+
+#: src/modules/pomodoro/ui/config.py:188
+msgctxt "ui:timer_options|embed|footer"
+msgid "Hover over the option names to view descriptions."
+msgstr "विवरण देखने के लिए विकल्प नामों पर होवर करें।"
+
+#: src/modules/pomodoro/ui/config.py:200
+msgctxt "ui:timer_options|embed|field:pattern|name"
+msgid "Pattern"
+msgstr "पैटर्न"
+
+#, possible-python-brace-format
+msgctxt "ui:timer_options|embed|field:pattern|value"
+msgid ""
+"**`{focus_len} minutes`** focus\n"
+"**`{break_len} minutes`** break"
+msgstr ""
+"**`{focus_len} मिनट`** फोकस\n"
+"**`{break_len} मिनट`** ब्रेक"
+
+#: src/modules/pomodoro/ui/config.py:214
+msgctxt "ui:timer_options|embed|field:channel_name|name"
+msgid "Channel Name Preview"
+msgstr "चैनल नाम पूर्वावलोकन"
+
+#, possible-python-brace-format
+msgctxt "ui:timer_options|embed|field:channel_name|value"
+msgid ""
+"**`{name}`**\n"
+"(The actual channel name may not match due to ratelimits.)"
+msgstr ""
+"**`{name}`**\n"
+"(दर सीमाओं के कारण वास्तविक चैनल नाम मेल नहीं खा सकता है।)"
+
+#: src/modules/pomodoro/ui/config.py:228
+msgctxt "ui:timer_options|embed|field:issues|name"
+msgid "Issues"
+msgstr "समस्याएं"
+
+#: src/modules/pomodoro/ui/config.py:246
+msgctxt "ui:timer_options|issue:no_voice_channel"
+msgid "The configured voice channel does not exist! Please update it below."
+msgstr "कॉन्फ़िगर किया गया वॉइस चैनल मौजूद नहीं है! कृपया नीचे अपडेट करें।"
+
+#, possible-python-brace-format
+msgctxt "ui:timer_options|issue:cannot_speak"
+msgid ""
+"Voice alerts are on, but I don't have speaking permissions in {channel}"
+msgstr ""
+"वॉइस अलर्ट चालू हैं, लेकिन मेरे पास {channel} में बोलने की अनुमति नहीं है"
+
+#, possible-python-brace-format
+msgctxt "ui:timer_options|issue:cannot_change_name"
+msgid ""
+"I cannot update the name of {channel}! (Needs `MANAGE_CHANNELS` permission)"
+msgstr ""
+"मैं {channel} का नाम अपडेट नहीं कर सकता! (`MANAGE_CHANNELS` अनुमति चाहिए)"
+
+#: src/modules/pomodoro/ui/config.py:275
+msgctxt "ui:timer_options|issue:notif_channel_dne"
+msgid "Configured notification channel does not exist!"
+msgstr "कॉन्फ़िगर किया गया सूचना चैनल मौजूद नहीं है!"
+
+#, possible-python-brace-format
+msgctxt "ui:timer_options|issue:notif_channel_write"
+msgid ""
+"I cannot attach files (`ATTACH_FILES`) or send embeds (`EMBED_LINKS`) in "
+"{channel}"
+msgstr ""
+"मैं {channel} में फ़ाइलें (`ATTACH_FILES`) संलग्न या एम्बेड (`EMBED_LINKS`) "
+"नहीं भेज सकता"
+
+#, possible-python-brace-format
+msgctxt "ui:timer_options|issues:cannot_make_webhooks"
+msgid ""
+"I cannot create the notification webhook (`MANAGE_WEBHOOKS`) in {channel}"
+msgstr "मैं {channel} में सूचना वेबहुक (`MANAGE_WEBHOOKS`) नहीं बना सकता"

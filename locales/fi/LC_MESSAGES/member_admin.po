@@ -1,0 +1,582 @@
+# Finnish translation for LionBot - member_admin
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 21:36+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Finnish\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/modules/member_admin/settingui.py:58
+msgctxt "ui:memberadmin|menu:greetch|placeholder"
+msgid "Select Greeting Channel"
+msgstr "Valitse tervehdyskanava"
+
+#: src/modules/member_admin/settingui.py:88
+msgctxt "ui:memberadmin|menu:autoroles|placeholder"
+msgid "Select Autoroles"
+msgstr "Valitse automaattiset roolit"
+
+#: src/modules/member_admin/settingui.py:118
+msgctxt "ui:memberadmin|menu:bot_autoroles|placeholder"
+msgid "Select Bot Autoroles"
+msgstr "Valitse bottien automaattiset roolit"
+
+#: src/modules/member_admin/settingui.py:160
+msgctxt "ui:member_admin|button:greet_msg|label"
+msgid "Greeting Msg"
+msgstr "Tervehdysviesti"
+
+#: src/modules/member_admin/settingui.py:210
+msgctxt "ui:memberadmin|button:return_msg|label"
+msgid "Returning Msg"
+msgstr "Paluuviesti"
+
+#: src/modules/member_admin/settingui.py:218
+msgctxt "ui:memberadmin|embed|title"
+msgid "Greetings and Initial Roles Panel"
+msgstr "Tervehdykset ja alkuroolit -paneeli"
+
+#: src/modules/member_admin/settingui.py:262
+msgctxt "dash:member_admin|title"
+msgid "Greetings and Initial Roles ({commands[config welcome]})"
+msgstr "Tervehdykset ja alkuroolit ({commands[config welcome]})"
+
+#: src/modules/member_admin/settingui.py:266
+msgctxt "dash:member_admin|dropdown|placeholder"
+msgid "Greetings and Initial Roles Panel"
+msgstr "Tervehdykset ja alkuroolit -paneeli"
+
+#: src/modules/member_admin/settingui.py:286
+msgctxt "dash:member_admin|section:greeting_messages|name"
+msgid "Greeting Messages ({commands[admin config welcome]})"
+msgstr "Tervehdysviestit ({commands[admin config welcome]})"
+
+#: src/modules/member_admin/settingui.py:297
+msgctxt "dash:member_admin|section:initial_roles|name"
+msgid "Initial Roles ({commands[admin config welcome]})"
+msgstr "Alkuroolit ({commands[admin config welcome]})"
+
+#: src/modules/member_admin/cog.py:33
+msgctxt "cmd:admin_data|param:data_type|choice:voice_leaderboard"
+msgid "Voice Leaderboard"
+msgstr "Äänitilasto"
+
+#: src/modules/member_admin/cog.py:34
+msgctxt "cmd:admin_data|param:data_type|choice:msg_leaderboard"
+msgid "Message Leaderboard"
+msgstr "Viestitilasto"
+
+#: src/modules/member_admin/cog.py:35
+msgctxt "cmd:admin_data|param:data_type|choice:xp_leaderboard"
+msgid "XP Leaderboard"
+msgstr "XP-tilasto"
+
+#: src/modules/member_admin/cog.py:36
+msgctxt "cmd:admin_data|param:data_type|choice:rolemenu_equip"
+msgid "Rolemenu Roles Equipped"
+msgstr "Roolivalikon roolit käytössä"
+
+#: src/modules/member_admin/cog.py:37
+msgctxt "cmd:admin_data|param:data_type|choice:transactions"
+msgid "Economy Transactions (Incomplete)"
+msgstr "Taloustapahtumat (keskeneräinen)"
+
+#: src/modules/member_admin/cog.py:38
+msgctxt "cmd:admin_data|param:data_type|choice:balances"
+msgid "Economy Balances"
+msgstr "Taloussaldot"
+
+#: src/modules/member_admin/cog.py:39
+msgctxt "cmd:admin_data|param:data_type|choice:voice_sessions"
+msgid "Voice Sessions"
+msgstr "Ääni-istunnot"
+
+#: src/modules/member_admin/cog.py:155
+msgctxt "eventlog|event:welcome|title"
+msgid "New Member Joined"
+msgstr "Uusi jäsen liittyi"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:welcome|desc"
+msgid "{member} joined the server for the first time."
+msgstr "{member} liittyi palvelimelle ensimmäistä kertaa."
+
+#: src/modules/member_admin/cog.py:243
+msgctxt "eventlog|event:returning|title"
+msgid "Member Rejoined"
+msgstr "Jäsen palasi"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:returning|desc"
+msgid "{member} rejoined the server."
+msgstr "{member} palasi palvelimelle."
+
+#: src/modules/member_admin/cog.py:256
+msgctxt "eventlog|event:returning|field:first_joined"
+msgid "First Joined"
+msgstr "Ensimmäinen liittyminen"
+
+#: src/modules/member_admin/cog.py:263
+msgctxt "eventlog|event:returning|field:last_seen"
+msgid "Last Seen"
+msgstr "Viimeksi nähty"
+
+#: src/modules/member_admin/cog.py:311
+msgctxt "eventlog|event:left|title"
+msgid "Member Left"
+msgstr "Jäsen lähti"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:left|desc"
+msgid "{member} left the server."
+msgstr "{member} lähti palvelimelta."
+
+#: src/modules/member_admin/cog.py:323
+msgctxt "eventlog|event:left|field:stored_roles"
+msgid "Stored Roles"
+msgstr "Tallennetut roolit"
+
+#: src/modules/member_admin/cog.py:330
+msgctxt "eventlog|event:left|field:first_joined"
+msgid "First Joined"
+msgstr "Ensimmäinen liittyminen"
+
+#: src/modules/member_admin/cog.py:368
+msgctxt "cmd:resetmember"
+msgid "resetmember"
+msgstr "resetmember"
+
+#: src/modules/member_admin/cog.py:371
+msgctxt "cmd:resetmember|desc"
+msgid "Reset (server-associated) member data for the target member or user."
+msgstr ""
+"Nollaa (palvelinkohtaiset) jäsentiedot kohdejäsenelle tai käyttäjälle."
+
+#: src/modules/member_admin/cog.py:375
+msgctxt "cmd:resetmember|param:target"
+msgid "member_to_reset"
+msgstr "member_to_reset"
+
+#: src/modules/member_admin/cog.py:376
+msgctxt "cmd:resetmember|param:saved_roles"
+msgid "saved_roles"
+msgstr "saved_roles"
+
+#: src/modules/member_admin/cog.py:381
+msgctxt "cmd:resetmember|param:target|desc"
+msgid "Choose the member (current or past) you want to reset."
+msgstr "Valitse jäsen (nykyinen tai entinen), jonka haluat nollata."
+
+#: src/modules/member_admin/cog.py:385
+msgctxt "cmd:resetmember|param:saved_roles|desc"
+msgid ""
+"Clear the saved roles for this member, so their past roles are not restored "
+"on rejoin."
+msgstr ""
+"Tyhjennä tämän jäsenen tallennetut roolit, jotta aiempia rooleja ei "
+"palauteta uudelleen liittyessä."
+
+#, possible-python-brace-format
+msgctxt "cmd:resetmember|reset:saved_roles|success"
+msgid ""
+"The saved roles for {target} have been reset. They will not regain their "
+"roles if they rejoin."
+msgstr ""
+"Tallennetut roolit käyttäjälle {target} on nollattu. He eivät saa roolejaan "
+"takaisin palatessaan."
+
+#: src/modules/member_admin/cog.py:419
+msgctxt "cmd:resetmember|error:nothing_to_do"
+msgid "No reset operation selected, nothing to do."
+msgstr "Ei nollaustoimintoa valittu, ei mitään tehtävää."
+
+#: src/modules/member_admin/cog.py:425
+msgctxt "cmd:admin_data"
+msgid "data"
+msgstr "data"
+
+#: src/modules/member_admin/cog.py:428
+msgctxt "cmd:admin_data|desc"
+msgid "Download various raw data for external analysis and backup."
+msgstr ""
+"Lataa erilaisia raakatietoja ulkoista analyysiä ja varmuuskopiointia varten."
+
+#: src/modules/member_admin/cog.py:432
+msgctxt "cmd:admin_data|param:data_type"
+msgid "type"
+msgstr "type"
+
+#: src/modules/member_admin/cog.py:433
+msgctxt "cmd:admin_data|param:target"
+msgid "target"
+msgstr "target"
+
+#: src/modules/member_admin/cog.py:434
+msgctxt "cmd:admin_data|param:start"
+msgid "after"
+msgstr "after"
+
+#: src/modules/member_admin/cog.py:435
+msgctxt "cmd:admin_data|param:end"
+msgid "before"
+msgstr "before"
+
+#: src/modules/member_admin/cog.py:436
+msgctxt "cmd:admin_data|param:limit"
+msgid "limit"
+msgstr "limit"
+
+#: src/modules/member_admin/cog.py:441
+msgctxt "cmd:admin_data|param:data_type|desc"
+msgid "Select the type of data you want to download"
+msgstr "Valitse ladattavan datan tyyppi"
+
+#: src/modules/member_admin/cog.py:445
+msgctxt "cmd:admin_data|param:target|desc"
+msgid "Filter the data by selecting a user or role"
+msgstr "Suodata tiedot valitsemalla käyttäjä tai rooli"
+
+#: src/modules/member_admin/cog.py:449
+msgctxt "cmd:admin_data|param:start|desc"
+msgid ""
+"Retrieve records created after this date and time in server timezone (YYYY-"
+"MM-DD HH:MM)"
+msgstr ""
+"Hae tietueet, jotka on luotu tämän päivämäärän ja kellonajan jälkeen "
+"palvelimen aikavyöhykkeessä ..."
+
+#: src/modules/member_admin/cog.py:453
+msgctxt "cmd:admin_data|param:end|desc"
+msgid ""
+"Retrieve records created before this date and time in server timezone (YYYY-"
+"MM-DD HH:MM)"
+msgstr ""
+"Hae tietueet, jotka on luotu ennen tätä päivämäärää ja kellonaikaa "
+"palvelimen aikavyöhykkeessä (V..."
+
+#: src/modules/member_admin/cog.py:457
+msgctxt "cmd:admin_data|param:limit|desc"
+msgid "Maximum number of records to retrieve."
+msgstr "Haettavien tietueiden enimmäismäärä."
+
+#: src/modules/member_admin/cog.py:586
+msgctxt "cmd:admin_data|error:ratelimited"
+msgid ""
+"Too many requests! Please wait a few minutes before using this command "
+"again."
+msgstr ""
+"Liian monta pyyntöä! Odota muutama minuutti ennen kuin käytät tätä komentoa "
+"uudelleen."
+
+#: src/modules/member_admin/cog.py:603
+msgctxt "cmd:admin_data|error:no_results"
+msgid "Your query had no results! Try relaxing your filters."
+msgstr "Haullasi ei ollut tuloksia! Kokeile löysätä suodattimia."
+
+#, possible-python-brace-format
+msgctxt "cmd:admin_data|acmpl:time|error:parse"
+msgid "Cannot parse \"{partial}\" as a time. Try the format YYYY-MM-DD HH:MM"
+msgstr ""
+"Ei voida jäsentää \"{partial}\" ajankohtana. Kokeile muotoa YYYY-MM-DD HH:MM"
+
+#: src/modules/member_admin/cog.py:643
+msgctxt "cmd:configure_welcome"
+msgid "welcome"
+msgstr "welcome"
+
+#: src/modules/member_admin/cog.py:646
+msgctxt "cmd:configure_welcome|desc"
+msgid "Configure new member greetings and roles."
+msgstr "Määritä uusien jäsenten tervehdykset ja roolit."
+
+#: src/modules/member_admin/settings.py:21
+msgctxt "guildset:greeting_message|formatkey:mention"
+msgid "Mention the new member."
+msgstr "Mainitse uusi jäsen."
+
+#: src/modules/member_admin/settings.py:23
+msgctxt "guildset:greeting_message|formatkey:user_name"
+msgid "Display name of the new member."
+msgstr "Uuden jäsenen näyttönimi."
+
+#: src/modules/member_admin/settings.py:25
+msgctxt "guildset:greeting_message|formatkey:user_avatar"
+msgid "Avatar url of the new member."
+msgstr "Uuden jäsenen avatar-URL."
+
+#: src/modules/member_admin/settings.py:27
+msgctxt "guildset:greeting_message|formatkey:guild_name"
+msgid "Name of this server."
+msgstr "Tämän palvelimen nimi."
+
+#: src/modules/member_admin/settings.py:29
+msgctxt "guildset:greeting_message|formatkey:guild_icon"
+msgid "Server icon url."
+msgstr "Palvelimen kuvakkeen URL."
+
+#: src/modules/member_admin/settings.py:31
+msgctxt "guildset:greeting_message|formatkey:studying_count"
+msgid "Number of current voice channel members."
+msgstr "Nykyisten äänikanavan jäsenten määrä."
+
+#: src/modules/member_admin/settings.py:33
+msgctxt "guildset:greeting_message|formatkey:member_count"
+msgid "Number of members in the server."
+msgstr "Palvelimen jäsenten lukumäärä."
+
+#: src/modules/member_admin/settings.py:42
+msgctxt "guildset:greeting_channel"
+msgid "welcome_channel"
+msgstr "welcome_channel"
+
+#: src/modules/member_admin/settings.py:45
+msgctxt "guildset:greeting_channel|desc"
+msgid "Channel in which to welcome new members to the server."
+msgstr "Kanava, jossa uudet jäsenet toivotetaan tervetulleiksi palvelimelle."
+
+#: src/modules/member_admin/settings.py:49
+msgctxt "guildset:greeting_channel|long_desc"
+msgid ""
+"New members will be sent the configured `welcome_message` in this channel, "
+"and returning members will be sent the configured `returning_message`. Unset"
+" to send these message via direct message."
+msgstr ""
+"Uudet jäsenet saavat määritetyn `welcome_message`-viestin tässä kanavassa ja"
+" palaavat jäsenet saavat `returning_message`-viestin. Poista asetus "
+"lähettääksesi viestit yksityisviestinä."
+
+#: src/modules/member_admin/settings.py:55
+msgctxt "guildset:greeting_channel|accepts"
+msgid "Name or id of the greeting channel, or 0 for DM."
+msgstr "Tervehdyskanavan nimi tai ID, tai 0 yksityisviestille."
+
+#: src/modules/member_admin/settings.py:70
+msgctxt "guildset:greeting_channel|set_response:unset"
+msgid "Welcome messages will now be sent via direct message."
+msgstr "Tervehdysviestit lähetetään nyt yksityisviestinä."
+
+#, possible-python-brace-format
+msgctxt "guildset:greeting_channel|set_response:set"
+msgid "Welcome messages will now be sent to {channel}"
+msgstr "Tervehdysviestit lähetetään nyt kanavalle {channel}"
+
+#: src/modules/member_admin/settings.py:87
+msgctxt "guildset:greeting_channel|formmatted:unset"
+msgid "Direct Message"
+msgstr "Yksityisviesti"
+
+#: src/modules/member_admin/settings.py:95
+msgctxt "guildset:greeting_message"
+msgid "welcome_message"
+msgstr "welcome_message"
+
+#: src/modules/member_admin/settings.py:99
+msgctxt "guildset:greeting_message|desc"
+msgid "Custom message used to greet new members when they join the server."
+msgstr ""
+"Mukautettu viesti uusien jäsenten tervehtimiseen liittyessään palvelimelle."
+
+#: src/modules/member_admin/settings.py:103
+msgctxt "guildset:greeting_message|long_desc"
+msgid ""
+"When set, this message will be sent to the `welcome_channel` when a *new* "
+"member joins the server. If not set, no message will be sent."
+msgstr ""
+"Kun asetettu, tämä viesti lähetetään `welcome_channel`-kanavalle, kun *uusi*"
+" jäsen liittyy palvelimelle. Jos ei asetettu, viestiä ei lähetetä."
+
+#: src/modules/member_admin/settings.py:108
+msgctxt "guildset:greeting_message|accepts"
+msgid "JSON formatted greeting message data"
+msgstr "JSON-muotoinen tervehdysviestidata"
+
+#: src/modules/member_admin/settings.py:112
+msgctxt "guildset:greeting_message|default"
+msgid ""
+"\n"
+"            {\n"
+"                \"embed\": {\n"
+"                    \"title\": \"Welcome {user_name}!\",\n"
+"                    \"thumbnail\": {\"url\": \"{user_avatar}\"},\n"
+"                    \"description\": \"Welcome to **{guild_name}**!\",\n"
+"                    \"footer\": {\n"
+"                        \"text\": \"You are the {member_count}th member!\"\n"
+"                    },\n"
+"                    \"color\": 15695665\n"
+"                }\n"
+"            }\n"
+"            "
+msgstr ""
+
+#: src/modules/member_admin/settings.py:140
+msgctxt "guildset:greeting_message|set_response:unset"
+msgid "Welcome message unset! New members will not be greeted."
+msgstr "Tervehdysviesti poistettu! Uusia jäseniä ei tervehditä."
+
+#: src/modules/member_admin/settings.py:145
+msgctxt "guildset:greeting_message|set_response:set"
+msgid "The welcome message has been updated."
+msgstr "Tervehdysviesti on päivitetty."
+
+#: src/modules/member_admin/settings.py:157
+msgctxt "guildset:greeting_message|formmatted:unset"
+msgid "Not set, members will not be welcomed."
+msgstr "Ei asetettu, jäseniä ei tervehditä."
+
+#: src/modules/member_admin/settings.py:204
+msgctxt "guildset:greeting_message|embed_field|formatkeys|explanation"
+msgid "The following placeholders will be substituted with their values."
+msgstr "Seuraavat paikkamerkit korvataan arvoillaan."
+
+#: src/modules/member_admin/settings.py:207
+msgctxt "guildset:greeting_message|embed_field|formatkeys|name"
+msgid "Placeholders"
+msgstr "Paikkamerkit"
+
+#: src/modules/member_admin/settings.py:218
+msgctxt "guildset:returning_message"
+msgid "returning_message"
+msgstr "returning_message"
+
+#: src/modules/member_admin/settings.py:222
+msgctxt "guildset:returning_message|desc"
+msgid ""
+"Custom message used to greet returning members when they rejoin the server."
+msgstr ""
+"Mukautettu viesti palaavien jäsenten tervehtimiseen liittyessään uudelleen."
+
+#: src/modules/member_admin/settings.py:226
+msgctxt "guildset:returning_message|long_desc"
+msgid ""
+"When set, this message will be sent to the `welcome_channel` when a member "
+"*returns* to the server. If not set, no message will be sent."
+msgstr ""
+"Kun asetettu, tämä viesti lähetetään `welcome_channel`-kanavalle, kun jäsen "
+"*palaa* palvelimelle. Jos ei asetettu, viestiä ei lähetetä."
+
+#: src/modules/member_admin/settings.py:231
+msgctxt "guildset:returning_message|accepts"
+msgid "JSON formatted returning message data"
+msgstr "JSON-muotoinen paluuviestidata"
+
+#: src/modules/member_admin/settings.py:235
+msgctxt "guildset:returning_message|default"
+msgid ""
+"\n"
+"            {\n"
+"                \"embed\": {\n"
+"                    \"title\": \"Welcome Back {user_name}!\",\n"
+"                    \"thumbnail\": {\"url\": \"{User_avatar}\"},\n"
+"                    \"description\": \"Welcome back to **{guild_name}**!\\\n"
+"You were last seen <t:{last_time}:R>.\",\n"
+"                    \"color\": 15695665\n"
+"                }\n"
+"            }\n"
+"            "
+msgstr ""
+
+#: src/modules/member_admin/settings.py:252
+msgctxt "guildset:returning_message|formatkey:last_time"
+msgid "Unix timestamp of the last time the member was seen in the server."
+msgstr "Unix-aikaleima, jolloin jäsen nähtiin viimeksi palvelimella."
+
+#: src/modules/member_admin/settings.py:263
+msgctxt "guildset:returning_message|set_response:unset"
+msgid "Returning member greeting unset! Will use `welcome_message` if set."
+msgstr "Paluutervehdys poistettu! Käyttää `welcome_message` jos asetettu."
+
+#: src/modules/member_admin/settings.py:268
+msgctxt "guildset:greeting_message|set_response:set"
+msgid "The returning member greeting has been updated."
+msgstr "Paluutervehdys on päivitetty."
+
+#: src/modules/member_admin/settings.py:280
+msgctxt "guildset:greeting_message|formmatted:unset"
+msgid "Not set, will use the `welcome_message` if set."
+msgstr "Ei asetettu, käyttää `welcome_message` jos asetettu."
+
+#: src/modules/member_admin/settings.py:330
+msgctxt "guildset:returning_message|embed_field|formatkeys|explanation"
+msgid "In *addition* to the placeholders supported by `welcome_message`"
+msgstr "`welcome_message`-viestin tukemien paikkamerkkien *lisäksi*"
+
+#: src/modules/member_admin/settings.py:333
+msgctxt "guildset:returning_message|embed_field|formatkeys|"
+msgid "Placeholders"
+msgstr "Paikkamerkit"
+
+#: src/modules/member_admin/settings.py:345
+msgctxt "guildset:autoroles"
+msgid "autoroles"
+msgstr "autoroles"
+
+#: src/modules/member_admin/settings.py:349
+msgctxt "guildset:autoroles|desc"
+msgid "Roles given to new members when they join the server."
+msgstr "Roolit, jotka annetaan uusille jäsenille liittyessään palvelimelle."
+
+#: src/modules/member_admin/settings.py:353
+msgctxt "guildset:autoroles|long_desc"
+msgid ""
+"These roles will be given when a member joins the server. If "
+"`role_persistence` is enabled, these roles will *not* be given to a "
+"returning member."
+msgstr ""
+"Nämä roolit annetaan jäsenen liittyessä palvelimelle. Jos `role_persistence`"
+" on käytössä, näitä rooleja *ei* anneta palaavalle jäsenelle."
+
+#: src/modules/member_admin/settings.py:368
+msgctxt "guildset:bot_autoroles"
+msgid "bot_autoroles"
+msgstr "bot_autoroles"
+
+#: src/modules/member_admin/settings.py:372
+msgctxt "guildset:bot_autoroles|desc"
+msgid "Roles given to new bots when they join the server."
+msgstr "Roolit, jotka annetaan uusille boteille liittyessään."
+
+#: src/modules/member_admin/settings.py:376
+msgctxt "guildset:bot_autoroles|long_desc"
+msgid "These roles will be given when a bot joins the server."
+msgstr "Nämä roolit annetaan botin liittyessä palvelimelle."
+
+#: src/modules/member_admin/settings.py:390
+msgctxt "guildset:role_persistence"
+msgid "role_persistence"
+msgstr "role_persistence"
+
+#: src/modules/member_admin/settings.py:393
+msgctxt "guildset:role_persistence|desc"
+msgid "Whether member roles should be restored on rejoin."
+msgstr "Pitäisikö jäsenten roolit palauttaa uudelleen liittyessä."
+
+#: src/modules/member_admin/settings.py:397
+msgctxt "guildset:role_persistence|long_desc"
+msgid ""
+"If enabled, member roles will be stored when they leave the server, and then"
+" restored when they rejoin (instead of giving `autoroles`). Note that this "
+"may conflict with other bots who manage join roles."
+msgstr ""
+"Jos käytössä, jäsenten roolit tallennetaan kun he poistuvat ja palautetaan "
+"liittyessään uudelleen (sen sijaan, että annettaisiin `autoroles`). Huomaa, "
+"että tämä saattaa olla ristiriidassa muiden liittymisrooleja hallitsevien "
+"bottien kanssa."
+
+#: src/modules/member_admin/settings.py:413
+msgctxt "guildset:role_persistence|set_response:off"
+msgid "Roles will not be restored when members rejoin."
+msgstr "Rooleja ei palauteta jäsenten liittyessä uudelleen."
+
+#: src/modules/member_admin/settings.py:418
+msgctxt "guildset:greeting_message|set_response:on"
+msgid "Roles will now be restored when members rejoin."
+msgstr "Roolit palautetaan nyt jäsenten liittyessä uudelleen."

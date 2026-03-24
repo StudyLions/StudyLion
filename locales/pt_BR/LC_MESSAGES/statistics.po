@@ -1,26 +1,19 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
-# Translators:
-# Interitio, 2023
-# Bruno Evangelista De Oliveira, 2023
-# 
-#, fuzzy
+# Portuguese (Brazil) translation for LionBot - statistics
+# AI-translated with human Transifex contributions where available.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: LionBot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-24 14:37+0300\n"
-"PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
-"Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
+"PO-Revision-Date: 2026-03-13 21:59+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
-"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: src/modules/statistics/cog.py:47
 msgctxt "cmd:me"
@@ -30,27 +23,27 @@ msgstr "eu"
 #: src/modules/statistics/cog.py:50
 msgctxt "cmd:me|desc"
 msgid "Edit your personal profile and see your statistics."
-msgstr ""
+msgstr "Edite seu perfil pessoal e veja suas estatísticas."
 
 #: src/modules/statistics/cog.py:63
 msgctxt "cmd:profile"
 msgid "profile"
-msgstr ""
+msgstr "profile"
 
 #: src/modules/statistics/cog.py:66
 msgctxt "cmd:profile|desc"
 msgid "Display the target's profile and statistics summary."
-msgstr ""
+msgstr "Exibir o perfil e o resumo de estatísticas do alvo."
 
 #: src/modules/statistics/cog.py:70
 msgctxt "cmd:profile|param:member"
 msgid "member"
-msgstr ""
+msgstr "member"
 
 #: src/modules/statistics/cog.py:74
 msgctxt "cmd:profile|param:member|desc"
 msgid "Member to display profile for."
-msgstr ""
+msgstr "Membro cujo perfil será exibido."
 
 #: src/modules/statistics/cog.py:110
 msgctxt "cmd:stats"
@@ -72,7 +65,6 @@ msgctxt "cmd:leaderboard|desc"
 msgid "Server leaderboard."
 msgstr "Classificação no servidor."
 
-#: src/modules/statistics/cog.py:149
 #, possible-python-brace-format
 msgctxt "cmd:leaderboard|chunking|desc"
 msgid "Requesting server member list from Discord, please wait {loading}"
@@ -82,17 +74,17 @@ msgstr ""
 #: src/modules/statistics/cog.py:170
 msgctxt "cmd:achievements"
 msgid "achievements"
-msgstr ""
+msgstr "achievements"
 
 #: src/modules/statistics/cog.py:173
 msgctxt "cmd:achievements|desc"
 msgid "View your progress towards the activity achievement awards!"
-msgstr ""
+msgstr "Veja seu progresso em direção às conquistas de atividade!"
 
 #: src/modules/statistics/cog.py:190
 msgctxt "cmd:achievements|embed:title"
 msgid "Achievements"
-msgstr ""
+msgstr "Conquistas"
 
 #: src/modules/statistics/cog.py:208
 msgctxt "cmd:configure_statistics"
@@ -121,87 +113,87 @@ msgstr ""
 #: src/modules/statistics/achievements.py:77
 msgctxt "achievement|congrats"
 msgid "Congratulations! You have completed this challenge."
-msgstr ""
+msgstr "Parabéns! Você completou este desafio."
 
 #: src/modules/statistics/achievements.py:146
 msgctxt "achievement:workout|name"
 msgid "It's about Power"
-msgstr ""
+msgstr "É sobre força"
 
 #: src/modules/statistics/achievements.py:150
 msgctxt "achievement:workout|subtext"
 msgid "Workout 50 times"
-msgstr ""
+msgstr "Treine 50 vezes"
 
 #: src/modules/statistics/achievements.py:170
 msgctxt "achievement:voicehours|name"
 msgid "Dream Big"
-msgstr ""
+msgstr "Sonhe grande"
 
 #: src/modules/statistics/achievements.py:174
 msgctxt "achievement:voicehours|subtext"
 msgid "Study a total of 1000 hours"
-msgstr ""
+msgstr "Estude um total de 1000 horas"
 
 #: src/modules/statistics/achievements.py:196
 msgctxt "achievement:voicestreak|name"
 msgid "Consistency is Key"
-msgstr ""
+msgstr "Consistência é a chave"
 
 #: src/modules/statistics/achievements.py:200
 msgctxt "achievement:voicestreak|subtext"
 msgid "Reach a 100-day voice streak"
-msgstr ""
+msgstr "Alcance uma sequência de 100 dias de voz"
 
 #: src/modules/statistics/achievements.py:283
 msgctxt "achievement:voting|name"
 msgid "We're a Team"
-msgstr ""
+msgstr "Somos uma equipe"
 
 #: src/modules/statistics/achievements.py:287
 msgctxt "achievement:voting|subtext"
 msgid "Vote 100 times on top.gg"
-msgstr ""
+msgstr "Vote 100 vezes no top.gg"
 
 #: src/modules/statistics/achievements.py:304
 msgctxt "achievement:days|name"
 msgid "Aim For The Moon"
-msgstr ""
+msgstr "Mire na lua"
 
 #: src/modules/statistics/achievements.py:308
 msgctxt "achievement:days|subtext"
 msgid "Join Voice on 90 different days"
-msgstr ""
+msgstr "Entre no canal de voz em 90 dias diferentes"
 
 #: src/modules/statistics/achievements.py:333
 msgctxt "achievement:tasks|name"
 msgid "One Step at a Time"
-msgstr ""
+msgstr "Um passo de cada vez"
 
 #: src/modules/statistics/achievements.py:337
 msgctxt "achievement:tasks|subtext"
 msgid "Complete 1000 tasks"
-msgstr ""
+msgstr "Complete 1000 tarefas"
 
 #: src/modules/statistics/achievements.py:363
 msgctxt "achievement:schedule|name"
 msgid "Be Accountable"
-msgstr ""
+msgstr "Seja responsável"
 
 #: src/modules/statistics/achievements.py:367
 msgctxt "achievement:schedule|subtext"
 msgid "Attend 500 Scheduled Sessions"
-msgstr ""
+msgstr "Participe de 500 sessões agendadas"
 
 #: src/modules/statistics/achievements.py:392
 msgctxt "achievement:monthlyhours|name"
 msgid "The 30 Days Challenge"
-msgstr ""
+msgstr "O desafio de 30 dias"
 
 #: src/modules/statistics/achievements.py:396
 msgctxt "achievement:monthlyhours|subtext"
 msgid "Be active for 100 hours in a month"
-msgstr ""
+msgstr "Esteja ativo por 100 horas em um mês"
 
 #: src/modules/statistics/settings.py:38
 msgctxt "settype:stat|output:voice"
@@ -303,7 +295,6 @@ msgctxt "guildset:season_start|notset"
 msgid "Not Set (Using all-time statistics)"
 msgstr "Não Configurado (Usando estatísticas desde o início dos registros)  "
 
-#: src/modules/statistics/settings.py:127
 #, possible-python-brace-format
 msgctxt "guildset:season_start|parse|error:future_time"
 msgid "Provided season start time {timestamp} is in the future!"
@@ -311,7 +302,6 @@ msgstr ""
 "A data informada {timestamp} para começar a contar as estatísticas, é no "
 "futuro! "
 
-#: src/modules/statistics/settings.py:139
 #, possible-python-brace-format
 msgctxt "guildset:season_start|set_response|set"
 msgid ""
@@ -321,7 +311,6 @@ msgstr ""
 "A Tabela de Classificação, e os Níveis de Atividade, serão contados desde {timestamp}. Os níveis dos membros serão atualizados assim que eles ficarem ativos novamente.\n"
 "Use {rank_cmd} e clique em **Atualizar Níveis dos Membros** para atualizar todos os níveis imediatamente."
 
-#: src/modules/statistics/settings.py:149
 #, possible-python-brace-format
 msgctxt "guildset:season_start|set_response|unset"
 msgid ""
@@ -362,7 +351,6 @@ msgctxt "guildset:unranked_roles|set_using"
 msgid "Role selector below."
 msgstr "Selecione o cargo abaixo."
 
-#: src/modules/statistics/settings.py:199
 #, possible-python-brace-format
 msgctxt "guildset:unranked_roles|set_response|set"
 msgid ""
@@ -395,7 +383,7 @@ msgid ""
 "commands."
 msgstr ""
 "Escolha quais tipos de estatística a serem mostradas na Lista de "
-"Classificação e nos comandos de estatísticas deste servidor."
+"Classificação e nos comandos de ..."
 
 #: src/modules/statistics/settings.py:232
 msgctxt "guildset:visible_stats|accepts"
@@ -407,7 +395,6 @@ msgctxt "guildset:visible_stats|set_using"
 msgid "Option menu below."
 msgstr "Opção de menu, abaixo."
 
-#: src/modules/statistics/settings.py:261
 #, possible-python-brace-format
 msgctxt "guildset:visible_stats|set_response"
 msgid "Members will be able to view the following statistics types: {types}"
@@ -473,17 +460,18 @@ msgctxt "dash:stats|title"
 msgid ""
 "Activity Statistics Configuration ({commands[admin config statistics]})"
 msgstr ""
+"Configuração de estatísticas de atividade ({commands[admin config "
+"statistics]})"
 
 #: src/modules/statistics/settings.py:419
 msgctxt "dash:stats|dropdown|placeholder"
 msgid "Activity Statistics Panel"
 msgstr "Painel de Estatísticas de Atividade"
 
-#: src/modules/statistics/graphics/stats.py:63
 #, possible-python-brace-format
 msgctxt "gui:stats|mode:voice|month"
 msgid "{hours} hours"
-msgstr ""
+msgstr "{hours} horas"
 
 #: src/modules/statistics/ui/goals.py:92
 msgctxt "ui:MonthlyUI|name"
@@ -540,7 +528,6 @@ msgctxt "modal:goal_editor|field:task_goal|placeholder"
 msgid "Enter the number of tasklist tasks you aim to do"
 msgstr "Digite o número de tarefas da lista-de-tarefas para ser o objetivo."
 
-#: src/modules/statistics/ui/weeklymonthly.py:159
 #, possible-python-brace-format
 msgctxt "modal:goal_editor|field:task_goal|error:NAN"
 msgid "The provided task goal `{input}` is not a number! Please try again."
@@ -578,7 +565,6 @@ msgctxt "modal:goal_editor|field:anki_goal|label"
 msgid "Enter a number of card revisions to aim for."
 msgstr "Digite um número de revisões em cartões do Anki para ser o objetivo."
 
-#: src/modules/statistics/ui/weeklymonthly.py:216
 #, possible-python-brace-format
 msgctxt "modal:goal_editor|field:voice_goal|error:NAN"
 msgid ""
@@ -587,7 +573,6 @@ msgstr ""
 "A meta de estudos informada ˋ{input}ˋ não é um número! Por favor, tente "
 "novamente."
 
-#: src/modules/statistics/ui/weeklymonthly.py:223
 #, possible-python-brace-format
 msgctxt "modal:goal_editor|field:text_goal|error:NAN"
 msgid "The provided message goal `{input}` is not a number! Please try again."
@@ -595,7 +580,6 @@ msgstr ""
 "A meta de conversas informada ˋ{input}ˋ não é um número! Por favor, tente "
 "novamente."
 
-#: src/modules/statistics/ui/weeklymonthly.py:230
 #, possible-python-brace-format
 msgctxt "modal:goal_editor|field:anki_goal|error:NAN"
 msgid "The provided card goal `{input}` is not a number! Please try again."
@@ -631,7 +615,6 @@ msgstr ""
 "[ ] Escrever minha redação de biologia\n"
 "[x] Estudar na A Seita todos os dias da semana\n"
 
-#: src/modules/statistics/ui/weeklymonthly.py:284
 #, possible-python-brace-format
 msgctxt "modal:goal_editor||field:task_editor|error:parse_general"
 msgid ""
@@ -656,19 +639,16 @@ msgctxt "ui:weeklymonthly|button:edit_goals|label"
 msgid "Edit Goals"
 msgstr "Editor Metas"
 
-#: src/modules/statistics/ui/weeklymonthly.py:519
 #, possible-python-brace-format
 msgctxt "ui:weeklymonthly|menu:period|monthly|label"
 msgid "{month} {year}"
 msgstr "{month} {year}"
 
-#: src/modules/statistics/ui/weeklymonthly.py:534
 #, possible-python-brace-format
 msgctxt "ui:weeklymonthly|menu:period|weekly|label"
 msgid "{year} W{week}"
 msgstr "{year} S{week}"
 
-#: src/modules/statistics/ui/weeklymonthly.py:538
 #, possible-python-brace-format
 msgctxt "ui:weeklymonthly|menu:period|weekly|desc"
 msgid ""
@@ -739,7 +719,6 @@ msgctxt "modal:profile_editor|title"
 msgid "Profile Tag Editor"
 msgstr "Editor Etiquetas Perfil"
 
-#: src/modules/statistics/ui/profile.py:71
 #, possible-python-brace-format
 msgctxt "modal:profile_editor|error:too_many_tags"
 msgid "Too many tags! You can have at most `{limit}` profile tags."
@@ -870,25 +849,21 @@ msgstr ""
 "**Nota:** Não pude recuperar a lista de membros do Discord, então alguns "
 "membros podem estar faltando. Tente novamente em um minuto!"
 
-#: src/modules/statistics/ui/leaderboard.py:454
 #, possible-python-brace-format
 msgctxt "ui:leaderboard|since"
 msgid "Counting statistics since {timestamp}"
 msgstr "Estatísticas sendo contadas desde {timestamp}"
 
-#: src/modules/statistics/ui/leaderboard.py:467
 #, possible-python-brace-format
 msgctxt "ui:leaderboard|mode:voice|message:empty|desc"
 msgid "There has been no voice activity since {timestamp}"
 msgstr "Não houve atividade em canais de voz desde {timestamp}"
 
-#: src/modules/statistics/ui/leaderboard.py:472
 #, possible-python-brace-format
 msgctxt "ui:leaderboard|mode:text|message:empty|desc"
 msgid "There has been no message activity since {timestamp}"
 msgstr "Não houve atividade em conversas desde {timestamp}"
 
-#: src/modules/statistics/ui/leaderboard.py:477
 #, possible-python-brace-format
 msgctxt "ui:leaderboard|mode:anki|message:empty|desc"
 msgid "There have been no Anki cards reviewed since {timestamp}"

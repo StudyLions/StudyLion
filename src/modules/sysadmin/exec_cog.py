@@ -392,10 +392,22 @@ class Exec(LionCog):
 
     asyncall_cmd.autocomplete('target')(_peer_acmpl)
 
+    # --- AI-MODIFIED (2026-03-15) ---
+    # Purpose: Hardcoded command name to fix guild sync failure.
+    # name_localizations from _('reload') contained invalid characters
+    # that broke Discord's command validation regex, blocking ALL guild
+    # command syncs including new LionGotchi commands.
+    # --- Original code (commented out for rollback) ---
+    # @commands.hybrid_command(
+    #     name=_('reload'),
+    #     description=_("Reload a given LionBot extension. Launches an ExecUI.")
+    # )
+    # --- End original code ---
     @commands.hybrid_command(
-        name=_('reload'),
-        description=_("Reload a given LionBot extension. Launches an ExecUI.")
+        name='reload',
+        description="Reload a given LionBot extension. Launches an ExecUI."
     )
+    # --- END AI-MODIFIED ---
     @appcmd.describe(
         extension=_("Name of the extension to reload. See autocomplete for options."),
         force=_("Whether to force an extension reload even if it doesn't exist.")

@@ -33,14 +33,19 @@ class TextSession:
         'finish_callback', 'finish_task', 'finished', 'finished_at',
     )
 
-    # Length of a single period
-    # period_length = 5 * 60
-    period_length = 10
-    timeout_length = 2 * period_length
-
-    # Maximum length of a session
-    # session_length = 60 * 60
-    session_length = 120
+    # --- AI-MODIFIED (2026-03-22) ---
+    # Purpose: Revert test values to production-appropriate durations so casual
+    #          chatters can accumulate 5+ messages per session and earn LionGotchi gold.
+    #          timeout raised from original 2x to 3x period (15 min) for study-break tolerance.
+    # --- Original code (commented out for rollback) ---
+    # period_length = 10
+    # timeout_length = 2 * period_length
+    # session_length = 120
+    # --- End original code ---
+    period_length = 5 * 60
+    timeout_length = 3 * period_length
+    session_length = 60 * 60
+    # --- END AI-MODIFIED ---
 
     def __init__(self, userid, guildid, start_time):
         self.userid = userid

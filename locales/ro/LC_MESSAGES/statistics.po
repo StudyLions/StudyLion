@@ -1,0 +1,860 @@
+# Romanian translation for LionBot - statistics
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 21:59+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Romanian\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100>0 && n%100<20)) ? 1 : 2);\n"
+
+#: src/modules/statistics/cog.py:47
+msgctxt "cmd:me"
+msgid "me"
+msgstr "me"
+
+#: src/modules/statistics/cog.py:50
+msgctxt "cmd:me|desc"
+msgid "Edit your personal profile and see your statistics."
+msgstr "Editați-vă profilul personal și vedeți-vă statisticile."
+
+#: src/modules/statistics/cog.py:63
+msgctxt "cmd:profile"
+msgid "profile"
+msgstr "profile"
+
+#: src/modules/statistics/cog.py:66
+msgctxt "cmd:profile|desc"
+msgid "Display the target's profile and statistics summary."
+msgstr "Afișează profilul și rezumatul statisticilor țintei."
+
+#: src/modules/statistics/cog.py:70
+msgctxt "cmd:profile|param:member"
+msgid "member"
+msgstr "member"
+
+#: src/modules/statistics/cog.py:74
+msgctxt "cmd:profile|param:member|desc"
+msgid "Member to display profile for."
+msgstr "Membrul al cărui profil va fi afișat."
+
+#: src/modules/statistics/cog.py:110
+msgctxt "cmd:stats"
+msgid "stats"
+msgstr "stats"
+
+#: src/modules/statistics/cog.py:113
+msgctxt "cmd:stats|desc"
+msgid "Weekly and monthly statistics for your recent activity."
+msgstr "Statistici săptămânale și lunare pentru activitatea dvs. recentă."
+
+#: src/modules/statistics/cog.py:131
+msgctxt "cmd:leaderboard"
+msgid "leaderboard"
+msgstr "leaderboard"
+
+#: src/modules/statistics/cog.py:134
+msgctxt "cmd:leaderboard|desc"
+msgid "Server leaderboard."
+msgstr "Clasamentul serverului."
+
+#, possible-python-brace-format
+msgctxt "cmd:leaderboard|chunking|desc"
+msgid "Requesting server member list from Discord, please wait {loading}"
+msgstr ""
+"Se solicită lista membrilor de pe Discord, vă rugăm așteptați {loading}"
+
+#: src/modules/statistics/cog.py:170
+msgctxt "cmd:achievements"
+msgid "achievements"
+msgstr "achievements"
+
+#: src/modules/statistics/cog.py:173
+msgctxt "cmd:achievements|desc"
+msgid "View your progress towards the activity achievement awards!"
+msgstr "Vedeți progresul dvs. spre premiile de realizări!"
+
+#: src/modules/statistics/cog.py:190
+msgctxt "cmd:achievements|embed:title"
+msgid "Achievements"
+msgstr "Realizări"
+
+#: src/modules/statistics/cog.py:208
+msgctxt "cmd:configure_statistics"
+msgid "statistics"
+msgstr "statistics"
+
+#: src/modules/statistics/cog.py:209
+msgctxt "cmd:configure_statistics|desc"
+msgid "Statistics configuration panel"
+msgstr "Panoul de configurare a statisticilor"
+
+#: src/modules/statistics/cog.py:212
+msgctxt "cmd:configure_statistics|param:season_start"
+msgid "season_start"
+msgstr "season_start"
+
+#: src/modules/statistics/cog.py:217
+msgctxt "cmd:configure_statistics|param:season_start|desc"
+msgid ""
+"Time from which to start counting activity for rank badges and season "
+"leaderboards. (YYYY-MM-DD)"
+msgstr ""
+"Momentul de la care se începe numărarea activității pentru ecusoanele de "
+"rang și clasamentele de ..."
+
+#: src/modules/statistics/achievements.py:77
+msgctxt "achievement|congrats"
+msgid "Congratulations! You have completed this challenge."
+msgstr "Felicitări! Ați finalizat această provocare."
+
+#: src/modules/statistics/achievements.py:146
+msgctxt "achievement:workout|name"
+msgid "It's about Power"
+msgstr "Totul e despre putere"
+
+#: src/modules/statistics/achievements.py:150
+msgctxt "achievement:workout|subtext"
+msgid "Workout 50 times"
+msgstr "Antrenează-te de 50 de ori"
+
+#: src/modules/statistics/achievements.py:170
+msgctxt "achievement:voicehours|name"
+msgid "Dream Big"
+msgstr "Visează mare"
+
+#: src/modules/statistics/achievements.py:174
+msgctxt "achievement:voicehours|subtext"
+msgid "Study a total of 1000 hours"
+msgstr "Studiază un total de 1000 de ore"
+
+#: src/modules/statistics/achievements.py:196
+msgctxt "achievement:voicestreak|name"
+msgid "Consistency is Key"
+msgstr "Consecvența este cheia"
+
+#: src/modules/statistics/achievements.py:200
+msgctxt "achievement:voicestreak|subtext"
+msgid "Reach a 100-day voice streak"
+msgstr "Atinge o serie de 100 de zile de voce"
+
+#: src/modules/statistics/achievements.py:283
+msgctxt "achievement:voting|name"
+msgid "We're a Team"
+msgstr "Suntem o echipă"
+
+#: src/modules/statistics/achievements.py:287
+msgctxt "achievement:voting|subtext"
+msgid "Vote 100 times on top.gg"
+msgstr "Votați de 100 de ori pe top.gg"
+
+#: src/modules/statistics/achievements.py:304
+msgctxt "achievement:days|name"
+msgid "Aim For The Moon"
+msgstr "Țintește spre lună"
+
+#: src/modules/statistics/achievements.py:308
+msgctxt "achievement:days|subtext"
+msgid "Join Voice on 90 different days"
+msgstr "Intră pe canalul vocal în 90 de zile diferite"
+
+#: src/modules/statistics/achievements.py:333
+msgctxt "achievement:tasks|name"
+msgid "One Step at a Time"
+msgstr "Pas cu pas"
+
+#: src/modules/statistics/achievements.py:337
+msgctxt "achievement:tasks|subtext"
+msgid "Complete 1000 tasks"
+msgstr "Finalizează 1000 de sarcini"
+
+#: src/modules/statistics/achievements.py:363
+msgctxt "achievement:schedule|name"
+msgid "Be Accountable"
+msgstr "Fii responsabil"
+
+#: src/modules/statistics/achievements.py:367
+msgctxt "achievement:schedule|subtext"
+msgid "Attend 500 Scheduled Sessions"
+msgstr "Participă la 500 de sesiuni programate"
+
+#: src/modules/statistics/achievements.py:392
+msgctxt "achievement:monthlyhours|name"
+msgid "The 30 Days Challenge"
+msgstr "Provocarea de 30 de zile"
+
+#: src/modules/statistics/achievements.py:396
+msgctxt "achievement:monthlyhours|subtext"
+msgid "Be active for 100 hours in a month"
+msgstr "Fii activ timp de 100 de ore într-o lună"
+
+#: src/modules/statistics/settings.py:38
+msgctxt "settype:stat|output:voice"
+msgid "`Voice`"
+msgstr "`Voce`"
+
+#: src/modules/statistics/settings.py:39
+msgctxt "settype:stat|output:text"
+msgid "`Text`"
+msgstr "`Text`"
+
+#: src/modules/statistics/settings.py:40
+msgctxt "settype:stat|output:anki"
+msgid "`Anki`"
+msgstr "`Anki`"
+
+#: src/modules/statistics/settings.py:43
+msgctxt "settype:stat|input_format:voice"
+msgid "Voice"
+msgstr "Voce"
+
+#: src/modules/statistics/settings.py:44
+msgctxt "settype:stat|input_format:text"
+msgid "Text"
+msgstr "Text"
+
+#: src/modules/statistics/settings.py:45
+msgctxt "settype:stat|input_format:anki"
+msgid "Anki"
+msgstr "Anki"
+
+#: src/modules/statistics/settings.py:48
+msgctxt "settype:stat|input_pattern:voice"
+msgid "voice|study"
+msgstr "voce|studiu|voice|study"
+
+#: src/modules/statistics/settings.py:49
+msgctxt "settype:stat|input_pattern:text"
+msgid "text|messages"
+msgstr "text|mesaje|messages"
+
+#: src/modules/statistics/settings.py:50
+msgctxt "settype:stat|input_pattern:anki"
+msgid "anki"
+msgstr "anki"
+
+#: src/modules/statistics/settings.py:54
+msgctxt "settype:state|accepts"
+msgid "Voice/Text/Anki"
+msgstr "Voce/Text/Anki"
+
+#: src/modules/statistics/settings.py:67
+msgctxt "userset:show_global_stats"
+msgid "global_stats"
+msgstr "global_stats"
+
+#: src/modules/statistics/settings.py:70
+msgctxt "userset:show_global_stats|desc"
+msgid "Whether displayed statistics include all your servers."
+msgstr "Dacă statisticile afișate includ toate serverele dvs."
+
+#: src/modules/statistics/settings.py:74
+msgctxt "userset:show_global_stats|long_desc"
+msgid ""
+"Whether statistics commands display combined stats for all servers or just "
+"your current server."
+msgstr ""
+"Dacă comenzile de statistici afișează date combinate pentru toate serverele "
+"sau doar pentru cel curent."
+
+#: src/modules/statistics/settings.py:90
+msgctxt "guildset:season_start"
+msgid "season_start"
+msgstr "season_start"
+
+#: src/modules/statistics/settings.py:93
+msgctxt "guildset:season_start|desc"
+msgid "Start of the current statistics season."
+msgstr "Începutul sezonului curent de statistici."
+
+#: src/modules/statistics/settings.py:97
+msgctxt "guildset:season_start|long_desc"
+msgid ""
+"Activity ranks will be determined based on tracked activity since this time, and the leaderboard will display activity since this time by default. Unset to disable seasons and use all-time statistics instead.\n"
+"Provided dates and times are assumed to be in the guild `timezone`, so set this first!"
+msgstr ""
+"Rangurile de activitate vor fi determinate pe baza activității urmărite de la acest moment, iar clasamentul va afișa activitatea de la acest moment în mod implicit. Dezactivați pentru a dezactiva sezoanele și a folosi statisticile din toate timpurile.\n"
+"Datele și orele furnizate sunt considerate în `timezone` serverului, deci setați-l mai întâi!"
+
+#: src/modules/statistics/settings.py:104
+msgctxt "guildset:season_start|accepts"
+msgid "The season start time in the form YYYY-MM-DD HH:MM"
+msgstr "Ora de început a sezonului în formatul YYYY-MM-DD HH:MM"
+
+#: src/modules/statistics/settings.py:108
+msgctxt "guildset:season_start|notset"
+msgid "Not Set (Using all-time statistics)"
+msgstr "Nesetat (Se folosesc statisticile din toate timpurile)"
+
+#, possible-python-brace-format
+msgctxt "guildset:season_start|parse|error:future_time"
+msgid "Provided season start time {timestamp} is in the future!"
+msgstr "Ora de început a sezonului furnizată {timestamp} este în viitor!"
+
+#, possible-python-brace-format
+msgctxt "guildset:season_start|set_response|set"
+msgid ""
+"The leaderboard season and activity ranks will now count from {timestamp}. Member ranks will update when they are next active.\n"
+"Use {rank_cmd} and press **Refresh Member Ranks** to refresh all ranks immediately."
+msgstr ""
+"Sezonul clasamentului și rangurile de activitate vor fi acum calculate de la {timestamp}. Rangurile membrilor se vor actualiza când vor fi activi din nou.\n"
+"Folosiți {rank_cmd} și apăsați **Refresh Member Ranks** pentru a reîmprospăta toate rangurile imediat."
+
+#, possible-python-brace-format
+msgctxt "guildset:season_start|set_response|unset"
+msgid ""
+"The leaderboard and activity ranks will now count all-time statistics. Member ranks will update when they are next active.\n"
+"Use {rank_cmd} and press **Refresh Member Ranks** to refresh all ranks immediately."
+msgstr ""
+"Clasamentul și rangurile de activitate vor număra acum statisticile din toate timpurile. Rangurile membrilor se vor actualiza când vor fi activi din nou.\n"
+"Folosiți {rank_cmd} și apăsați **Refresh Member Ranks** pentru a reîmprospăta toate rangurile imediat."
+
+#: src/modules/statistics/settings.py:162
+msgctxt "guildset:unranked_roles"
+msgid "unranked_roles"
+msgstr "unranked_roles"
+
+#: src/modules/statistics/settings.py:165
+msgctxt "guildset:unranked_roles|desc"
+msgid "Roles to exclude from the leaderboards."
+msgstr "Roluri de exclus din clasamente."
+
+#: src/modules/statistics/settings.py:169
+msgctxt "guildset:unranked_roles|long_desc"
+msgid ""
+"When set, members with *any* of these roles will not appear on the "
+"/leaderboard ranking list."
+msgstr ""
+"Când este setat, membrii cu *oricare* dintre aceste roluri nu vor apărea în "
+"clasamentul /leaderboard."
+
+#: src/modules/statistics/settings.py:173
+msgctxt "guildset:unranked_roles|accepts"
+msgid "Comma separated list of unranked role names or ids."
+msgstr ""
+"Lista separată prin virgule a numelor sau ID-urilor de roluri neclasificate."
+
+#: src/modules/statistics/settings.py:189
+msgctxt "guildset:unranked_roles|set_using"
+msgid "Role selector below."
+msgstr "Selector de roluri mai jos."
+
+#, possible-python-brace-format
+msgctxt "guildset:unranked_roles|set_response|set"
+msgid ""
+"Members of the following roles will not appear on the leaderboard: {roles}"
+msgstr "Membrii cu următoarele roluri nu vor apărea în clasament: {roles}"
+
+#: src/modules/statistics/settings.py:206
+msgctxt "guildset:unranked_roles|set_response|unset"
+msgid "You have cleared the unranked role list."
+msgstr "Ați golit lista rolurilor neclasificate."
+
+#: src/modules/statistics/settings.py:221
+msgctxt "guildset:visible_stats"
+msgid "visible_stats"
+msgstr "visible_stats"
+
+#: src/modules/statistics/settings.py:224
+msgctxt "guildset:visible_stats|desc"
+msgid "Which statistics will be visible in the statistics commands."
+msgstr "Care statistici vor fi vizibile în comenzile de statistici."
+
+#: src/modules/statistics/settings.py:228
+msgctxt "guildset:visible_stats|desc"
+msgid ""
+"Choose which statistics types to display in the leaderboard and statistics "
+"commands."
+msgstr ""
+"Alegeți ce tipuri de statistici să fie afișate în clasament și comenzile de "
+"statistici."
+
+#: src/modules/statistics/settings.py:232
+msgctxt "guildset:visible_stats|accepts"
+msgid "Voice, Text, Anki"
+msgstr "Voce, Text, Anki"
+
+#: src/modules/statistics/settings.py:253
+msgctxt "guildset:visible_stats|set_using"
+msgid "Option menu below."
+msgstr "Meniu de opțiuni mai jos."
+
+#, possible-python-brace-format
+msgctxt "guildset:visible_stats|set_response"
+msgid "Members will be able to view the following statistics types: {types}"
+msgstr "Membrii vor putea vedea următoarele tipuri de statistici: {types}"
+
+#: src/modules/statistics/settings.py:272
+msgctxt "guildset:default_stat"
+msgid "default_stat"
+msgstr "default_stat"
+
+#: src/modules/statistics/settings.py:275
+msgctxt "guildset:default_stat|desc"
+msgid "Statistic type to display by default in setting dialogues."
+msgstr "Tipul de statistică afișat implicit în dialogurile de setări."
+
+#: src/modules/statistics/settings.py:279
+msgctxt "guildset:default_stat|long_desc"
+msgid "Which statistic type to display by default in setting dialogues."
+msgstr "Ce tip de statistică să fie afișat implicit în dialogurile de setări."
+
+#: src/modules/statistics/settings.py:313
+msgctxt "ui:statistics_config|menu:unranked_roles|placeholder"
+msgid "Select Unranked Roles"
+msgstr "Selectați roluri neclasificate"
+
+#: src/modules/statistics/settings.py:338
+msgctxt "ui:statistics_config|menu:visible_stats|item:voice|mode:voice"
+msgid "Voice Activity"
+msgstr "Activitate vocală"
+
+#: src/modules/statistics/settings.py:343
+msgctxt "ui:statistics_config|menu:visible_stats|item:voice|mode:study"
+msgid "Study Statistics"
+msgstr "Statistici de studiu"
+
+#: src/modules/statistics/settings.py:353
+msgctxt "ui:statistics_config|menu:visible_stats|item:text"
+msgid "Message Activity"
+msgstr "Activitate de mesaje"
+
+#: src/modules/statistics/settings.py:361
+msgctxt "ui:statistics_config|menu:visible_stats|item:anki"
+msgid "Anki Reviews"
+msgstr "Recenzii Anki"
+
+#: src/modules/statistics/settings.py:372
+msgctxt "ui:statistics_config|menu:visible_stats|placeholder"
+msgid "Select Visible Statistics"
+msgstr "Selectați statisticile vizibile"
+
+#: src/modules/statistics/settings.py:393
+msgctxt "ui:statistics_config|embed|title"
+msgid "Statistics Configuration Panel"
+msgstr "Panoul de configurare a statisticilor"
+
+#: src/modules/statistics/settings.py:415
+msgctxt "dash:stats|title"
+msgid ""
+"Activity Statistics Configuration ({commands[admin config statistics]})"
+msgstr ""
+"Configurarea statisticilor de activitate ({commands[admin config "
+"statistics]})"
+
+#: src/modules/statistics/settings.py:419
+msgctxt "dash:stats|dropdown|placeholder"
+msgid "Activity Statistics Panel"
+msgstr "Panoul statisticilor de activitate"
+
+#, possible-python-brace-format
+msgctxt "gui:stats|mode:voice|month"
+msgid "{hours} hours"
+msgstr "{hours} ore"
+
+#: src/modules/statistics/ui/goals.py:92
+msgctxt "ui:MonthlyUI|name"
+msgid "Monthly"
+msgstr "Lunar"
+
+#: src/modules/statistics/ui/goals.py:135
+msgctxt "ui:WeeklyUI|name"
+msgid "Weekly"
+msgstr "Săptămânal"
+
+#: src/modules/statistics/ui/summary.py:18
+msgctxt "ui:SummaryUI|name"
+msgid "Summary"
+msgstr "Rezumat"
+
+#: src/modules/statistics/ui/weeklymonthly.py:96
+msgctxt "menu:stat_type|opt:weekly_voice|name"
+msgid "Weekly Voice Statistics"
+msgstr "Statistici vocale săptămânale"
+
+#: src/modules/statistics/ui/weeklymonthly.py:101
+msgctxt "menu:stat_type|opt:weekly_text|name"
+msgid "Weekly Text Statistics"
+msgstr "Statistici de text săptămânale"
+
+#: src/modules/statistics/ui/weeklymonthly.py:106
+msgctxt "menu:stat_type|opt:weekly_anki|name"
+msgid "Weekly Anki Statistics"
+msgstr "Statistici Anki săptămânale"
+
+#: src/modules/statistics/ui/weeklymonthly.py:112
+msgctxt "menu:stat_type|opt:monthly_voice|name"
+msgid "Monthly Voice Statistics"
+msgstr "Statistici vocale lunare"
+
+#: src/modules/statistics/ui/weeklymonthly.py:117
+msgctxt "menu:stat_type|opt:monthly_text|name"
+msgid "Monthly Text Statistics"
+msgstr "Statistici de text lunare"
+
+#: src/modules/statistics/ui/weeklymonthly.py:122
+msgctxt "menu:stat_type|opt:monthly_anki|name"
+msgid "Monthly Anki Statistics"
+msgstr "Statistici Anki lunare"
+
+#: src/modules/statistics/ui/weeklymonthly.py:144
+msgctxt "modal:goal_editor|field:task_goal|label"
+msgid "Task goal"
+msgstr "Obiectiv sarcini"
+
+#: src/modules/statistics/ui/weeklymonthly.py:148
+msgctxt "modal:goal_editor|field:task_goal|placeholder"
+msgid "Enter the number of tasklist tasks you aim to do"
+msgstr "Introduceți numărul de sarcini pe care doriți să le faceți"
+
+#, possible-python-brace-format
+msgctxt "modal:goal_editor|field:task_goal|error:NAN"
+msgid "The provided task goal `{input}` is not a number! Please try again."
+msgstr ""
+"Obiectivul de sarcini furnizat `{input}` nu este un număr! Încercați din "
+"nou."
+
+#: src/modules/statistics/ui/weeklymonthly.py:181
+msgctxt "modal:goal_editor|field:voice_goal|label"
+msgid "Study time goal"
+msgstr "Obiectiv timp de studiu"
+
+#: src/modules/statistics/ui/weeklymonthly.py:185
+msgctxt "modal:goal_editor|field:voice_goal|placeholder"
+msgid "Enter a number of hours of study to aim for."
+msgstr "Introduceți un număr de ore de studiu ca obiectiv."
+
+#: src/modules/statistics/ui/weeklymonthly.py:190
+msgctxt "modal:goal_editor|field:text_goal|label"
+msgid "Message goal"
+msgstr "Obiectiv mesaje"
+
+#: src/modules/statistics/ui/weeklymonthly.py:194
+msgctxt "modal:goal_editor|field:text_goal|placeholder"
+msgid "Enter a message count to aim for."
+msgstr "Introduceți un număr de mesaje ca obiectiv."
+
+#: src/modules/statistics/ui/weeklymonthly.py:199
+msgctxt "modal:goal_editor|field:anki_goal|label"
+msgid "Card goal"
+msgstr "Obiectiv carduri"
+
+#: src/modules/statistics/ui/weeklymonthly.py:203
+msgctxt "modal:goal_editor|field:anki_goal|label"
+msgid "Enter a number of card revisions to aim for."
+msgstr "Introduceți un număr de revizuiri de carduri ca obiectiv."
+
+#, possible-python-brace-format
+msgctxt "modal:goal_editor|field:voice_goal|error:NAN"
+msgid ""
+"The provided study time goal `{input}` is not a number! Please try again."
+msgstr ""
+"Obiectivul de timp de studiu furnizat `{input}` nu este un număr! Încercați "
+"din nou."
+
+#, possible-python-brace-format
+msgctxt "modal:goal_editor|field:text_goal|error:NAN"
+msgid "The provided message goal `{input}` is not a number! Please try again."
+msgstr ""
+"Obiectivul de mesaje furnizat `{input}` nu este un număr! Încercați din nou."
+
+#, possible-python-brace-format
+msgctxt "modal:goal_editor|field:anki_goal|error:NAN"
+msgid "The provided card goal `{input}` is not a number! Please try again."
+msgstr ""
+"Obiectivul de carduri furnizat `{input}` nu este un număr! Încercați din "
+"nou."
+
+#: src/modules/statistics/ui/weeklymonthly.py:252
+msgctxt "modal:goal_editor|field:weekly_task_editor|label"
+msgid "Tasks to complete this week (one per line)"
+msgstr "Sarcini de finalizat săptămâna aceasta (una pe linie)"
+
+#: src/modules/statistics/ui/weeklymonthly.py:256
+msgctxt "modal:goal_editor|field:weekly_task_editor|placeholder"
+msgid ""
+"[ ] Write my biology essay\n"
+"[x] Complete the second maths assignment\n"
+msgstr ""
+"[ ] Scrie eseul de biologie\n"
+"[x] Finalizează a doua temă la matematică\n"
+
+#: src/modules/statistics/ui/weeklymonthly.py:262
+msgctxt "modal:goal_editor|field:monthly_task_editor|label"
+msgid "Tasks to complete this month (one per line)"
+msgstr "Sarcini de finalizat luna aceasta (una pe linie)"
+
+#: src/modules/statistics/ui/weeklymonthly.py:266
+msgctxt "modal:goal_editor|field:monthly_task_editor|placeholder"
+msgid ""
+"[ ] Write my biology essay\n"
+"[x] Complete the second maths assignment\n"
+msgstr ""
+"[ ] Scrie eseul de biologie\n"
+"[x] Finalizează a doua temă la matematică\n"
+
+#, possible-python-brace-format
+msgctxt "modal:goal_editor||field:task_editor|error:parse_general"
+msgid ""
+"Malformed task!\n"
+"`{input}`"
+msgstr ""
+"Sarcină incorectă!\n"
+"`{input}`"
+
+#: src/modules/statistics/ui/weeklymonthly.py:301
+msgctxt "modal:goal_editor|title"
+msgid "Weekly goal editor"
+msgstr "Editor obiective săptămânale"
+
+#: src/modules/statistics/ui/weeklymonthly.py:306
+msgctxt "modal:goal_editor|monthly|title"
+msgid "Monthly goal editor"
+msgstr "Editor obiective lunare"
+
+#: src/modules/statistics/ui/weeklymonthly.py:503
+msgctxt "ui:weeklymonthly|button:edit_goals|label"
+msgid "Edit Goals"
+msgstr "Editare obiective"
+
+#, possible-python-brace-format
+msgctxt "ui:weeklymonthly|menu:period|monthly|label"
+msgid "{month} {year}"
+msgstr "{month} {year}"
+
+#, possible-python-brace-format
+msgctxt "ui:weeklymonthly|menu:period|weekly|label"
+msgid "{year} W{week}"
+msgstr "{year} W{week}"
+
+#, possible-python-brace-format
+msgctxt "ui:weeklymonthly|menu:period|weekly|desc"
+msgid ""
+"{start_day} {start_month} {start_year} to {end_day} {end_month} {end_year}"
+msgstr ""
+"{start_day} {start_month} {start_year} până la {end_day} {end_month} "
+"{end_year}"
+
+#: src/modules/statistics/ui/weeklymonthly.py:616
+msgctxt "ui:weeklymonthly|button:period|close|label"
+msgid "Close Selector"
+msgstr "Închide selectorul"
+
+#: src/modules/statistics/ui/weeklymonthly.py:621
+msgctxt "ui:weeklymonthly|button:period|weekly|label"
+msgid "Select Week"
+msgstr "Selectare săptămână"
+
+#: src/modules/statistics/ui/weeklymonthly.py:626
+msgctxt "ui:weeklymonthly|button:period|monthly|label"
+msgid "Select Month"
+msgstr "Selectare lună"
+
+#: src/modules/statistics/ui/weeklymonthly.py:691
+msgctxt "ui:weeklymonthly|menu:period|weekly|placeholder"
+msgid "Select a week to display"
+msgstr "Selectați o săptămână de afișat"
+
+#: src/modules/statistics/ui/weeklymonthly.py:696
+msgctxt "ui:weeklymonthly|menu:period|monthly|placeholder"
+msgid "Select a month to display"
+msgstr "Selectați o lună de afișat"
+
+#: src/modules/statistics/ui/weeklymonthly.py:718
+msgctxt "ui:WeeklyMonthly|button:global|resp:success"
+msgid ""
+"You will now see combined statistics from all your servers (where "
+"applicable)! Press again to revert."
+msgstr ""
+"Veți vedea acum statistici combinate de pe toate serverele dvs. (unde este "
+"cazul)! Apăsați din nou pentru a reveni."
+
+#: src/modules/statistics/ui/weeklymonthly.py:731
+msgctxt "ui:WeeklyMonthly|button:global|mode:local"
+msgid "Server Statistics"
+msgstr "Statistici server"
+
+#: src/modules/statistics/ui/weeklymonthly.py:736
+msgctxt "ui:WeeklyMonthly|button:global|mode:global"
+msgid "Global Statistics"
+msgstr "Statistici globale"
+
+#: src/modules/statistics/ui/profile.py:41
+msgctxt "modal:profile_editor|field:editor|label"
+msgid "Profile Tags (One line per tag)"
+msgstr "Etichete profil (una pe linie)"
+
+#: src/modules/statistics/ui/profile.py:45
+msgctxt "modal:profile_editor|field:editor|placeholder"
+msgid ""
+"Mathematician\n"
+"Loves Cats"
+msgstr ""
+"Matematician\n"
+"Iubește pisicile"
+
+#: src/modules/statistics/ui/profile.py:53
+msgctxt "modal:profile_editor|title"
+msgid "Profile Tag Editor"
+msgstr "Editor etichete profil"
+
+#, possible-python-brace-format
+msgctxt "modal:profile_editor|error:too_many_tags"
+msgid "Too many tags! You can have at most `{limit}` profile tags."
+msgstr ""
+"Prea multe etichete! Puteți avea cel mult `{limit}` etichete de profil."
+
+#: src/modules/statistics/ui/profile.py:92
+msgctxt "menu:stat_type|opt:voice|name"
+msgid "Voice Statistics"
+msgstr "Statistici vocale"
+
+#: src/modules/statistics/ui/profile.py:97
+msgctxt "menu:stat_type|opt:text|name"
+msgid "Text Statistics"
+msgstr "Statistici de text"
+
+#: src/modules/statistics/ui/profile.py:102
+msgctxt "menu:stat_type|opt:anki|name"
+msgid "Anki Statistics"
+msgstr "Statistici Anki"
+
+#: src/modules/statistics/ui/profile.py:190
+msgctxt "modal:profile_editor|resp:success"
+msgid "Your profile has been updated!"
+msgstr "Profilul dvs. a fost actualizat!"
+
+#: src/modules/statistics/ui/profile.py:200
+msgctxt "ui:profile_card|button:edit|label"
+msgid "Edit Profile Badges"
+msgstr "Editare ecusoane profil"
+
+#: src/modules/statistics/ui/profile.py:219
+msgctxt "ui:profile_card|button:statistics|label:hide"
+msgid "Hide Statistics"
+msgstr "Ascunde statisticile"
+
+#: src/modules/statistics/ui/profile.py:224
+msgctxt "ui:profile_card|button:statistics|label:show"
+msgid "Show Statistics"
+msgstr "Arată statisticile"
+
+#: src/modules/statistics/ui/profile.py:253
+msgctxt "ui:Profile|button:global|resp:success"
+msgid ""
+"You will now see statistics from all you servers (where applicable)! Press "
+"again to revert."
+msgstr ""
+"Veți vedea acum statistici de pe toate serverele dvs. (unde este cazul)! "
+"Apăsați din nou pentru a reveni."
+
+#: src/modules/statistics/ui/leaderboard.py:257
+msgctxt "ui:leaderboard|menu:stats|placeholder"
+msgid "Select Activity Type"
+msgstr "Selectați tipul de activitate"
+
+#: src/modules/statistics/ui/leaderboard.py:266
+msgctxt "ui:leaderboard|menu:stats|item:voice"
+msgid "Voice Activity"
+msgstr "Activitate vocală"
+
+#: src/modules/statistics/ui/leaderboard.py:277
+msgctxt "ui:leaderboard|menu:stats|item:study"
+msgid "Study Statistics"
+msgstr "Statistici de studiu"
+
+#: src/modules/statistics/ui/leaderboard.py:288
+msgctxt "ui:leaderboard|menu:stats|item:message"
+msgid "Message Activity"
+msgstr "Activitate de mesaje"
+
+#: src/modules/statistics/ui/leaderboard.py:299
+msgctxt "ui:leaderboard|menu;stats|item:anki"
+msgid "Anki Cards Reviewed"
+msgstr "Carduri Anki recenzate"
+
+#: src/modules/statistics/ui/leaderboard.py:353
+msgctxt "ui:leaderboard|button:season|label"
+msgid "This Season"
+msgstr "Acest sezon"
+
+#: src/modules/statistics/ui/leaderboard.py:357
+msgctxt "ui:leaderboard|button:day|label"
+msgid "Today"
+msgstr "Astăzi"
+
+#: src/modules/statistics/ui/leaderboard.py:361
+msgctxt "ui:leaderboard|button:week|label"
+msgid "This Week"
+msgstr "Această săptămână"
+
+#: src/modules/statistics/ui/leaderboard.py:365
+msgctxt "ui:leaderboard|button:month|label"
+msgid "This Month"
+msgstr "Această lună"
+
+#: src/modules/statistics/ui/leaderboard.py:369
+msgctxt "ui:leaderboard|button:alltime|label"
+msgid "All Time"
+msgstr "Tot timpul"
+
+#: src/modules/statistics/ui/leaderboard.py:373
+msgctxt "ui:leaderboard|button:jump|label"
+msgid "Jump"
+msgstr "Salt"
+
+#: src/modules/statistics/ui/leaderboard.py:388
+msgctxt "ui:leaderboard|button:jump|input:title"
+msgid "Jump to page"
+msgstr "Salt la pagina"
+
+#: src/modules/statistics/ui/leaderboard.py:392
+msgctxt "ui:leaderboard|button:jump|input:question"
+msgid "Page number to jump to"
+msgstr "Numărul paginii pentru salt"
+
+#: src/modules/statistics/ui/leaderboard.py:403
+msgctxt "ui:leaderboard|button:jump|error:invalid_page"
+msgid "Invalid page number, please try again!"
+msgstr "Număr de pagină invalid, încercați din nou!"
+
+#: src/modules/statistics/ui/leaderboard.py:447
+msgctxt "ui:leaderboard|chunk_warning"
+msgid ""
+"**Note:** Could not retrieve member list from Discord, so some members may "
+"be missing. Try again in a minute!"
+msgstr ""
+"**Notă:** Nu s-a putut obține lista membrilor de pe Discord, așa că unii "
+"membri pot lipsi. Încercați din nou într-un minut!"
+
+#, possible-python-brace-format
+msgctxt "ui:leaderboard|since"
+msgid "Counting statistics since {timestamp}"
+msgstr "Numărare statistici de la {timestamp}"
+
+#, possible-python-brace-format
+msgctxt "ui:leaderboard|mode:voice|message:empty|desc"
+msgid "There has been no voice activity since {timestamp}"
+msgstr "Nu a existat activitate vocală de la {timestamp}"
+
+#, possible-python-brace-format
+msgctxt "ui:leaderboard|mode:text|message:empty|desc"
+msgid "There has been no message activity since {timestamp}"
+msgstr "Nu a existat activitate de mesaje de la {timestamp}"
+
+#, possible-python-brace-format
+msgctxt "ui:leaderboard|mode:anki|message:empty|desc"
+msgid "There have been no Anki cards reviewed since {timestamp}"
+msgstr "Nu au fost recenzate carduri Anki de la {timestamp}"
+
+#: src/modules/statistics/ui/leaderboard.py:486
+msgctxt "ui:leaderboard|message:empty|title"
+msgid "Leaderboard Empty!"
+msgstr "Clasamentul este gol!"

@@ -28,6 +28,16 @@ class RoomData(Registry):
         created_at = Timestamp()
         last_tick = Timestamp()
         deleted_at = Timestamp()
+        # --- AI-MODIFIED (2026-03-22) ---
+        # Purpose: Freeze support for admin panel
+        frozen_at = Timestamp()
+        frozen_by = Integer()
+        # --- END AI-MODIFIED ---
+        # --- AI-MODIFIED (2026-03-23) ---
+        # Purpose: Dashboard rename support -- set to NOW() by dashboard,
+        # cleared by bot after syncing to Discord. NULL = no pending rename.
+        name_changed_at = Timestamp()
+        # --- END AI-MODIFIED ---
 
     class RoomMember(RowModel):
         """

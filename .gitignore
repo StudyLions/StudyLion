@@ -149,3 +149,15 @@ dmypy.json
 cython_debug/
 
 config/**
+
+# Secrets & credentials (defense-in-depth)
+*.conf
+secrets*
+*secret*
+*.pem
+*.key
+*.p12
+*.pfx
+.env*
+config.ini
+CONTEXT.md

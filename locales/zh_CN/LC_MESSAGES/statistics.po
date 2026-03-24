@@ -1,0 +1,814 @@
+# Chinese (Simplified) translation for LionBot - statistics
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 21:59+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Chinese (Simplified)\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/modules/statistics/cog.py:47
+msgctxt "cmd:me"
+msgid "me"
+msgstr "me"
+
+#: src/modules/statistics/cog.py:50
+msgctxt "cmd:me|desc"
+msgid "Edit your personal profile and see your statistics."
+msgstr "编辑个人资料并查看统计数据。"
+
+#: src/modules/statistics/cog.py:63
+msgctxt "cmd:profile"
+msgid "profile"
+msgstr "profile"
+
+#: src/modules/statistics/cog.py:66
+msgctxt "cmd:profile|desc"
+msgid "Display the target's profile and statistics summary."
+msgstr "显示目标的个人资料和统计摘要。"
+
+#: src/modules/statistics/cog.py:70
+msgctxt "cmd:profile|param:member"
+msgid "member"
+msgstr "member"
+
+#: src/modules/statistics/cog.py:74
+msgctxt "cmd:profile|param:member|desc"
+msgid "Member to display profile for."
+msgstr "要显示其个人资料的成员。"
+
+#: src/modules/statistics/cog.py:110
+msgctxt "cmd:stats"
+msgid "stats"
+msgstr "stats"
+
+#: src/modules/statistics/cog.py:113
+msgctxt "cmd:stats|desc"
+msgid "Weekly and monthly statistics for your recent activity."
+msgstr "您近期活动的每周和每月统计。"
+
+#: src/modules/statistics/cog.py:131
+msgctxt "cmd:leaderboard"
+msgid "leaderboard"
+msgstr "leaderboard"
+
+#: src/modules/statistics/cog.py:134
+msgctxt "cmd:leaderboard|desc"
+msgid "Server leaderboard."
+msgstr "服务器排行榜。"
+
+#, possible-python-brace-format
+msgctxt "cmd:leaderboard|chunking|desc"
+msgid "Requesting server member list from Discord, please wait {loading}"
+msgstr "正在从Discord获取服务器成员列表，请稍候 {loading}"
+
+#: src/modules/statistics/cog.py:170
+msgctxt "cmd:achievements"
+msgid "achievements"
+msgstr "achievements"
+
+#: src/modules/statistics/cog.py:173
+msgctxt "cmd:achievements|desc"
+msgid "View your progress towards the activity achievement awards!"
+msgstr "查看您在活动成就奖励方面的进度！"
+
+#: src/modules/statistics/cog.py:190
+msgctxt "cmd:achievements|embed:title"
+msgid "Achievements"
+msgstr "成就"
+
+#: src/modules/statistics/cog.py:208
+msgctxt "cmd:configure_statistics"
+msgid "statistics"
+msgstr "statistics"
+
+#: src/modules/statistics/cog.py:209
+msgctxt "cmd:configure_statistics|desc"
+msgid "Statistics configuration panel"
+msgstr "统计配置面板"
+
+#: src/modules/statistics/cog.py:212
+msgctxt "cmd:configure_statistics|param:season_start"
+msgid "season_start"
+msgstr "season_start"
+
+#: src/modules/statistics/cog.py:217
+msgctxt "cmd:configure_statistics|param:season_start|desc"
+msgid "Time from which to start counting activity for rank badges and season leaderboards. (YYYY-MM-DD)"
+msgstr "开始统计等级徽章和赛季排行榜活动的时间。(YYYY-MM-DD)"
+
+#: src/modules/statistics/achievements.py:77
+msgctxt "achievement|congrats"
+msgid "Congratulations! You have completed this challenge."
+msgstr "恭喜！您已完成此挑战。"
+
+#: src/modules/statistics/achievements.py:146
+msgctxt "achievement:workout|name"
+msgid "It's about Power"
+msgstr "力量至上"
+
+#: src/modules/statistics/achievements.py:150
+msgctxt "achievement:workout|subtext"
+msgid "Workout 50 times"
+msgstr "锻炼50次"
+
+#: src/modules/statistics/achievements.py:170
+msgctxt "achievement:voicehours|name"
+msgid "Dream Big"
+msgstr "敢于梦想"
+
+#: src/modules/statistics/achievements.py:174
+msgctxt "achievement:voicehours|subtext"
+msgid "Study a total of 1000 hours"
+msgstr "累计学习1000小时"
+
+#: src/modules/statistics/achievements.py:196
+msgctxt "achievement:voicestreak|name"
+msgid "Consistency is Key"
+msgstr "坚持就是胜利"
+
+#: src/modules/statistics/achievements.py:200
+msgctxt "achievement:voicestreak|subtext"
+msgid "Reach a 100-day voice streak"
+msgstr "达成100天语音连续记录"
+
+#: src/modules/statistics/achievements.py:283
+msgctxt "achievement:voting|name"
+msgid "We're a Team"
+msgstr "团队精神"
+
+#: src/modules/statistics/achievements.py:287
+msgctxt "achievement:voting|subtext"
+msgid "Vote 100 times on top.gg"
+msgstr "在top.gg上投票100次"
+
+#: src/modules/statistics/achievements.py:304
+msgctxt "achievement:days|name"
+msgid "Aim For The Moon"
+msgstr "志在星辰"
+
+#: src/modules/statistics/achievements.py:308
+msgctxt "achievement:days|subtext"
+msgid "Join Voice on 90 different days"
+msgstr "在90个不同的日子加入语音频道"
+
+#: src/modules/statistics/achievements.py:333
+msgctxt "achievement:tasks|name"
+msgid "One Step at a Time"
+msgstr "一步一个脚印"
+
+#: src/modules/statistics/achievements.py:337
+msgctxt "achievement:tasks|subtext"
+msgid "Complete 1000 tasks"
+msgstr "完成1000个任务"
+
+#: src/modules/statistics/achievements.py:363
+msgctxt "achievement:schedule|name"
+msgid "Be Accountable"
+msgstr "勇于负责"
+
+#: src/modules/statistics/achievements.py:367
+msgctxt "achievement:schedule|subtext"
+msgid "Attend 500 Scheduled Sessions"
+msgstr "参加500次预定学习会"
+
+#: src/modules/statistics/achievements.py:392
+msgctxt "achievement:monthlyhours|name"
+msgid "The 30 Days Challenge"
+msgstr "30天挑战"
+
+#: src/modules/statistics/achievements.py:396
+msgctxt "achievement:monthlyhours|subtext"
+msgid "Be active for 100 hours in a month"
+msgstr "一个月内活跃100小时"
+
+#: src/modules/statistics/settings.py:38
+msgctxt "settype:stat|output:voice"
+msgid "`Voice`"
+msgstr "`语音`"
+
+#: src/modules/statistics/settings.py:39
+msgctxt "settype:stat|output:text"
+msgid "`Text`"
+msgstr "`文字`"
+
+#: src/modules/statistics/settings.py:40
+msgctxt "settype:stat|output:anki"
+msgid "`Anki`"
+msgstr "`Anki`"
+
+#: src/modules/statistics/settings.py:43
+msgctxt "settype:stat|input_format:voice"
+msgid "Voice"
+msgstr "语音"
+
+#: src/modules/statistics/settings.py:44
+msgctxt "settype:stat|input_format:text"
+msgid "Text"
+msgstr "文字"
+
+#: src/modules/statistics/settings.py:45
+msgctxt "settype:stat|input_format:anki"
+msgid "Anki"
+msgstr "Anki"
+
+#: src/modules/statistics/settings.py:48
+msgctxt "settype:stat|input_pattern:voice"
+msgid "voice|study"
+msgstr "语音|学习|voice|study"
+
+#: src/modules/statistics/settings.py:49
+msgctxt "settype:stat|input_pattern:text"
+msgid "text|messages"
+msgstr "文字|消息|text|messages"
+
+#: src/modules/statistics/settings.py:50
+msgctxt "settype:stat|input_pattern:anki"
+msgid "anki"
+msgstr "anki"
+
+#: src/modules/statistics/settings.py:54
+msgctxt "settype:state|accepts"
+msgid "Voice/Text/Anki"
+msgstr "语音/文字/Anki"
+
+#: src/modules/statistics/settings.py:67
+msgctxt "userset:show_global_stats"
+msgid "global_stats"
+msgstr "global_stats"
+
+#: src/modules/statistics/settings.py:70
+msgctxt "userset:show_global_stats|desc"
+msgid "Whether displayed statistics include all your servers."
+msgstr "显示的统计数据是否包含您的所有服务器。"
+
+#: src/modules/statistics/settings.py:74
+msgctxt "userset:show_global_stats|long_desc"
+msgid "Whether statistics commands display combined stats for all servers or just your current server."
+msgstr "统计命令是显示所有服务器的合并数据还是仅显示当前服务器。"
+
+#: src/modules/statistics/settings.py:90
+msgctxt "guildset:season_start"
+msgid "season_start"
+msgstr "season_start"
+
+#: src/modules/statistics/settings.py:93
+msgctxt "guildset:season_start|desc"
+msgid "Start of the current statistics season."
+msgstr "当前统计赛季的开始。"
+
+#: src/modules/statistics/settings.py:97
+msgctxt "guildset:season_start|long_desc"
+msgid ""
+"Activity ranks will be determined based on tracked activity since this time, and the leaderboard will display activity since this time by default. Unset to disable seasons and use all-time statistics instead.\n"
+"Provided dates and times are assumed to be in the guild `timezone`, so set this first!"
+msgstr ""
+"活动等级将根据从此时开始追踪的活动确定，排行榜默认显示此时以来的活动。取消设置以禁用赛季并使用全时段统计。\n"
+"提供的日期和时间假定为服务器的`timezone`，请先设置！"
+
+#: src/modules/statistics/settings.py:104
+msgctxt "guildset:season_start|accepts"
+msgid "The season start time in the form YYYY-MM-DD HH:MM"
+msgstr "赛季开始时间，格式为 YYYY-MM-DD HH:MM"
+
+#: src/modules/statistics/settings.py:108
+msgctxt "guildset:season_start|notset"
+msgid "Not Set (Using all-time statistics)"
+msgstr "未设置（使用全时段统计）"
+
+#, possible-python-brace-format
+msgctxt "guildset:season_start|parse|error:future_time"
+msgid "Provided season start time {timestamp} is in the future!"
+msgstr "提供的赛季开始时间 {timestamp} 在未来！"
+
+#, possible-python-brace-format
+msgctxt "guildset:season_start|set_response|set"
+msgid ""
+"The leaderboard season and activity ranks will now count from {timestamp}. Member ranks will update when they are next active.\n"
+"Use {rank_cmd} and press **Refresh Member Ranks** to refresh all ranks immediately."
+msgstr ""
+"排行榜赛季和活动等级现在从 {timestamp} 开始计算。成员等级将在他们下次活跃时更新。\n"
+"使用 {rank_cmd} 并按 **Refresh Member Ranks** 立即刷新所有等级。"
+
+#, possible-python-brace-format
+msgctxt "guildset:season_start|set_response|unset"
+msgid ""
+"The leaderboard and activity ranks will now count all-time statistics. Member ranks will update when they are next active.\n"
+"Use {rank_cmd} and press **Refresh Member Ranks** to refresh all ranks immediately."
+msgstr ""
+"排行榜和活动等级现在将计算全时段统计。成员等级将在他们下次活跃时更新。\n"
+"使用 {rank_cmd} 并按 **Refresh Member Ranks** 立即刷新所有等级。"
+
+#: src/modules/statistics/settings.py:162
+msgctxt "guildset:unranked_roles"
+msgid "unranked_roles"
+msgstr "unranked_roles"
+
+#: src/modules/statistics/settings.py:165
+msgctxt "guildset:unranked_roles|desc"
+msgid "Roles to exclude from the leaderboards."
+msgstr "从排行榜中排除的身份组。"
+
+#: src/modules/statistics/settings.py:169
+msgctxt "guildset:unranked_roles|long_desc"
+msgid "When set, members with *any* of these roles will not appear on the /leaderboard ranking list."
+msgstr "设置后，拥有这些身份组中*任何一个*的成员将不会出现在 /leaderboard 排名中。"
+
+#: src/modules/statistics/settings.py:173
+msgctxt "guildset:unranked_roles|accepts"
+msgid "Comma separated list of unranked role names or ids."
+msgstr "以逗号分隔的未排名身份组名称或ID列表。"
+
+#: src/modules/statistics/settings.py:189
+msgctxt "guildset:unranked_roles|set_using"
+msgid "Role selector below."
+msgstr "下方的身份组选择器。"
+
+#, possible-python-brace-format
+msgctxt "guildset:unranked_roles|set_response|set"
+msgid "Members of the following roles will not appear on the leaderboard: {roles}"
+msgstr "以下身份组的成员将不会出现在排行榜上：{roles}"
+
+#: src/modules/statistics/settings.py:206
+msgctxt "guildset:unranked_roles|set_response|unset"
+msgid "You have cleared the unranked role list."
+msgstr "您已清除未排名身份组列表。"
+
+#: src/modules/statistics/settings.py:221
+msgctxt "guildset:visible_stats"
+msgid "visible_stats"
+msgstr "visible_stats"
+
+#: src/modules/statistics/settings.py:224
+msgctxt "guildset:visible_stats|desc"
+msgid "Which statistics will be visible in the statistics commands."
+msgstr "哪些统计数据将在统计命令中可见。"
+
+#: src/modules/statistics/settings.py:228
+msgctxt "guildset:visible_stats|desc"
+msgid "Choose which statistics types to display in the leaderboard and statistics commands."
+msgstr "选择在排行榜和统计命令中显示哪些统计类型。"
+
+#: src/modules/statistics/settings.py:232
+msgctxt "guildset:visible_stats|accepts"
+msgid "Voice, Text, Anki"
+msgstr "语音、文字、Anki"
+
+#: src/modules/statistics/settings.py:253
+msgctxt "guildset:visible_stats|set_using"
+msgid "Option menu below."
+msgstr "下方的选项菜单。"
+
+#, possible-python-brace-format
+msgctxt "guildset:visible_stats|set_response"
+msgid "Members will be able to view the following statistics types: {types}"
+msgstr "成员将能够查看以下统计类型：{types}"
+
+#: src/modules/statistics/settings.py:272
+msgctxt "guildset:default_stat"
+msgid "default_stat"
+msgstr "default_stat"
+
+#: src/modules/statistics/settings.py:275
+msgctxt "guildset:default_stat|desc"
+msgid "Statistic type to display by default in setting dialogues."
+msgstr "在设置对话框中默认显示的统计类型。"
+
+#: src/modules/statistics/settings.py:279
+msgctxt "guildset:default_stat|long_desc"
+msgid "Which statistic type to display by default in setting dialogues."
+msgstr "在设置对话框中默认显示哪种统计类型。"
+
+#: src/modules/statistics/settings.py:313
+msgctxt "ui:statistics_config|menu:unranked_roles|placeholder"
+msgid "Select Unranked Roles"
+msgstr "选择未排名身份组"
+
+#: src/modules/statistics/settings.py:338
+msgctxt "ui:statistics_config|menu:visible_stats|item:voice|mode:voice"
+msgid "Voice Activity"
+msgstr "语音活动"
+
+#: src/modules/statistics/settings.py:343
+msgctxt "ui:statistics_config|menu:visible_stats|item:voice|mode:study"
+msgid "Study Statistics"
+msgstr "学习统计"
+
+#: src/modules/statistics/settings.py:353
+msgctxt "ui:statistics_config|menu:visible_stats|item:text"
+msgid "Message Activity"
+msgstr "消息活动"
+
+#: src/modules/statistics/settings.py:361
+msgctxt "ui:statistics_config|menu:visible_stats|item:anki"
+msgid "Anki Reviews"
+msgstr "Anki复习"
+
+#: src/modules/statistics/settings.py:372
+msgctxt "ui:statistics_config|menu:visible_stats|placeholder"
+msgid "Select Visible Statistics"
+msgstr "选择可见统计"
+
+#: src/modules/statistics/settings.py:393
+msgctxt "ui:statistics_config|embed|title"
+msgid "Statistics Configuration Panel"
+msgstr "统计配置面板"
+
+#: src/modules/statistics/settings.py:415
+msgctxt "dash:stats|title"
+msgid "Activity Statistics Configuration ({commands[admin config statistics]})"
+msgstr "活动统计配置 ({commands[admin config statistics]})"
+
+#: src/modules/statistics/settings.py:419
+msgctxt "dash:stats|dropdown|placeholder"
+msgid "Activity Statistics Panel"
+msgstr "活动统计面板"
+
+#, possible-python-brace-format
+msgctxt "gui:stats|mode:voice|month"
+msgid "{hours} hours"
+msgstr "{hours}小时"
+
+#: src/modules/statistics/ui/goals.py:92
+msgctxt "ui:MonthlyUI|name"
+msgid "Monthly"
+msgstr "月度"
+
+#: src/modules/statistics/ui/goals.py:135
+msgctxt "ui:WeeklyUI|name"
+msgid "Weekly"
+msgstr "周度"
+
+#: src/modules/statistics/ui/summary.py:18
+msgctxt "ui:SummaryUI|name"
+msgid "Summary"
+msgstr "摘要"
+
+#: src/modules/statistics/ui/weeklymonthly.py:96
+msgctxt "menu:stat_type|opt:weekly_voice|name"
+msgid "Weekly Voice Statistics"
+msgstr "每周语音统计"
+
+#: src/modules/statistics/ui/weeklymonthly.py:101
+msgctxt "menu:stat_type|opt:weekly_text|name"
+msgid "Weekly Text Statistics"
+msgstr "每周文字统计"
+
+#: src/modules/statistics/ui/weeklymonthly.py:106
+msgctxt "menu:stat_type|opt:weekly_anki|name"
+msgid "Weekly Anki Statistics"
+msgstr "每周Anki统计"
+
+#: src/modules/statistics/ui/weeklymonthly.py:112
+msgctxt "menu:stat_type|opt:monthly_voice|name"
+msgid "Monthly Voice Statistics"
+msgstr "每月语音统计"
+
+#: src/modules/statistics/ui/weeklymonthly.py:117
+msgctxt "menu:stat_type|opt:monthly_text|name"
+msgid "Monthly Text Statistics"
+msgstr "每月文字统计"
+
+#: src/modules/statistics/ui/weeklymonthly.py:122
+msgctxt "menu:stat_type|opt:monthly_anki|name"
+msgid "Monthly Anki Statistics"
+msgstr "每月Anki统计"
+
+#: src/modules/statistics/ui/weeklymonthly.py:144
+msgctxt "modal:goal_editor|field:task_goal|label"
+msgid "Task goal"
+msgstr "任务目标"
+
+#: src/modules/statistics/ui/weeklymonthly.py:148
+msgctxt "modal:goal_editor|field:task_goal|placeholder"
+msgid "Enter the number of tasklist tasks you aim to do"
+msgstr "输入您计划完成的任务数量"
+
+#, possible-python-brace-format
+msgctxt "modal:goal_editor|field:task_goal|error:NAN"
+msgid "The provided task goal `{input}` is not a number! Please try again."
+msgstr "提供的任务目标 `{input}` 不是数字！请重试。"
+
+#: src/modules/statistics/ui/weeklymonthly.py:181
+msgctxt "modal:goal_editor|field:voice_goal|label"
+msgid "Study time goal"
+msgstr "学习时间目标"
+
+#: src/modules/statistics/ui/weeklymonthly.py:185
+msgctxt "modal:goal_editor|field:voice_goal|placeholder"
+msgid "Enter a number of hours of study to aim for."
+msgstr "输入目标学习小时数。"
+
+#: src/modules/statistics/ui/weeklymonthly.py:190
+msgctxt "modal:goal_editor|field:text_goal|label"
+msgid "Message goal"
+msgstr "消息目标"
+
+#: src/modules/statistics/ui/weeklymonthly.py:194
+msgctxt "modal:goal_editor|field:text_goal|placeholder"
+msgid "Enter a message count to aim for."
+msgstr "输入目标消息数量。"
+
+#: src/modules/statistics/ui/weeklymonthly.py:199
+msgctxt "modal:goal_editor|field:anki_goal|label"
+msgid "Card goal"
+msgstr "卡片目标"
+
+#: src/modules/statistics/ui/weeklymonthly.py:203
+msgctxt "modal:goal_editor|field:anki_goal|label"
+msgid "Enter a number of card revisions to aim for."
+msgstr "输入目标卡片复习数量。"
+
+#, possible-python-brace-format
+msgctxt "modal:goal_editor|field:voice_goal|error:NAN"
+msgid "The provided study time goal `{input}` is not a number! Please try again."
+msgstr "提供的学习时间目标 `{input}` 不是数字！请重试。"
+
+#, possible-python-brace-format
+msgctxt "modal:goal_editor|field:text_goal|error:NAN"
+msgid "The provided message goal `{input}` is not a number! Please try again."
+msgstr "提供的消息目标 `{input}` 不是数字！请重试。"
+
+#, possible-python-brace-format
+msgctxt "modal:goal_editor|field:anki_goal|error:NAN"
+msgid "The provided card goal `{input}` is not a number! Please try again."
+msgstr "提供的卡片目标 `{input}` 不是数字！请重试。"
+
+#: src/modules/statistics/ui/weeklymonthly.py:252
+msgctxt "modal:goal_editor|field:weekly_task_editor|label"
+msgid "Tasks to complete this week (one per line)"
+msgstr "本周要完成的任务（每行一个）"
+
+#: src/modules/statistics/ui/weeklymonthly.py:256
+msgctxt "modal:goal_editor|field:weekly_task_editor|placeholder"
+msgid ""
+"[ ] Write my biology essay\n"
+"[x] Complete the second maths assignment\n"
+msgstr ""
+"[ ] 写生物论文\n"
+"[x] 完成第二个数学作业\n"
+
+#: src/modules/statistics/ui/weeklymonthly.py:262
+msgctxt "modal:goal_editor|field:monthly_task_editor|label"
+msgid "Tasks to complete this month (one per line)"
+msgstr "本月要完成的任务（每行一个）"
+
+#: src/modules/statistics/ui/weeklymonthly.py:266
+msgctxt "modal:goal_editor|field:monthly_task_editor|placeholder"
+msgid ""
+"[ ] Write my biology essay\n"
+"[x] Complete the second maths assignment\n"
+msgstr ""
+"[ ] 写生物论文\n"
+"[x] 完成第二个数学作业\n"
+
+#, possible-python-brace-format
+msgctxt "modal:goal_editor||field:task_editor|error:parse_general"
+msgid ""
+"Malformed task!\n"
+"`{input}`"
+msgstr ""
+"任务格式错误！\n"
+"`{input}`"
+
+#: src/modules/statistics/ui/weeklymonthly.py:301
+msgctxt "modal:goal_editor|title"
+msgid "Weekly goal editor"
+msgstr "每周目标编辑器"
+
+#: src/modules/statistics/ui/weeklymonthly.py:306
+msgctxt "modal:goal_editor|monthly|title"
+msgid "Monthly goal editor"
+msgstr "每月目标编辑器"
+
+#: src/modules/statistics/ui/weeklymonthly.py:503
+msgctxt "ui:weeklymonthly|button:edit_goals|label"
+msgid "Edit Goals"
+msgstr "编辑目标"
+
+#, possible-python-brace-format
+msgctxt "ui:weeklymonthly|menu:period|monthly|label"
+msgid "{month} {year}"
+msgstr "{month} {year}"
+
+#, possible-python-brace-format
+msgctxt "ui:weeklymonthly|menu:period|weekly|label"
+msgid "{year} W{week}"
+msgstr "{year} W{week}"
+
+#, possible-python-brace-format
+msgctxt "ui:weeklymonthly|menu:period|weekly|desc"
+msgid "{start_day} {start_month} {start_year} to {end_day} {end_month} {end_year}"
+msgstr "{start_year} {start_month} {start_day} 至 {end_year} {end_month} {end_day}"
+
+#: src/modules/statistics/ui/weeklymonthly.py:616
+msgctxt "ui:weeklymonthly|button:period|close|label"
+msgid "Close Selector"
+msgstr "关闭选择器"
+
+#: src/modules/statistics/ui/weeklymonthly.py:621
+msgctxt "ui:weeklymonthly|button:period|weekly|label"
+msgid "Select Week"
+msgstr "选择周"
+
+#: src/modules/statistics/ui/weeklymonthly.py:626
+msgctxt "ui:weeklymonthly|button:period|monthly|label"
+msgid "Select Month"
+msgstr "选择月"
+
+#: src/modules/statistics/ui/weeklymonthly.py:691
+msgctxt "ui:weeklymonthly|menu:period|weekly|placeholder"
+msgid "Select a week to display"
+msgstr "选择要显示的周"
+
+#: src/modules/statistics/ui/weeklymonthly.py:696
+msgctxt "ui:weeklymonthly|menu:period|monthly|placeholder"
+msgid "Select a month to display"
+msgstr "选择要显示的月"
+
+#: src/modules/statistics/ui/weeklymonthly.py:718
+msgctxt "ui:WeeklyMonthly|button:global|resp:success"
+msgid "You will now see combined statistics from all your servers (where applicable)! Press again to revert."
+msgstr "您现在将看到所有服务器的合并统计数据（如适用）！再次按下可恢复。"
+
+#: src/modules/statistics/ui/weeklymonthly.py:731
+msgctxt "ui:WeeklyMonthly|button:global|mode:local"
+msgid "Server Statistics"
+msgstr "服务器统计"
+
+#: src/modules/statistics/ui/weeklymonthly.py:736
+msgctxt "ui:WeeklyMonthly|button:global|mode:global"
+msgid "Global Statistics"
+msgstr "全局统计"
+
+#: src/modules/statistics/ui/profile.py:41
+msgctxt "modal:profile_editor|field:editor|label"
+msgid "Profile Tags (One line per tag)"
+msgstr "个人资料标签（每行一个）"
+
+#: src/modules/statistics/ui/profile.py:45
+msgctxt "modal:profile_editor|field:editor|placeholder"
+msgid ""
+"Mathematician\n"
+"Loves Cats"
+msgstr ""
+"数学家\n"
+"喜欢猫"
+
+#: src/modules/statistics/ui/profile.py:53
+msgctxt "modal:profile_editor|title"
+msgid "Profile Tag Editor"
+msgstr "个人资料标签编辑器"
+
+#, possible-python-brace-format
+msgctxt "modal:profile_editor|error:too_many_tags"
+msgid "Too many tags! You can have at most `{limit}` profile tags."
+msgstr "标签太多！您最多可以拥有 `{limit}` 个个人资料标签。"
+
+#: src/modules/statistics/ui/profile.py:92
+msgctxt "menu:stat_type|opt:voice|name"
+msgid "Voice Statistics"
+msgstr "语音统计"
+
+#: src/modules/statistics/ui/profile.py:97
+msgctxt "menu:stat_type|opt:text|name"
+msgid "Text Statistics"
+msgstr "文字统计"
+
+#: src/modules/statistics/ui/profile.py:102
+msgctxt "menu:stat_type|opt:anki|name"
+msgid "Anki Statistics"
+msgstr "Anki统计"
+
+#: src/modules/statistics/ui/profile.py:190
+msgctxt "modal:profile_editor|resp:success"
+msgid "Your profile has been updated!"
+msgstr "您的个人资料已更新！"
+
+#: src/modules/statistics/ui/profile.py:200
+msgctxt "ui:profile_card|button:edit|label"
+msgid "Edit Profile Badges"
+msgstr "编辑个人资料徽章"
+
+#: src/modules/statistics/ui/profile.py:219
+msgctxt "ui:profile_card|button:statistics|label:hide"
+msgid "Hide Statistics"
+msgstr "隐藏统计"
+
+#: src/modules/statistics/ui/profile.py:224
+msgctxt "ui:profile_card|button:statistics|label:show"
+msgid "Show Statistics"
+msgstr "显示统计"
+
+#: src/modules/statistics/ui/profile.py:253
+msgctxt "ui:Profile|button:global|resp:success"
+msgid "You will now see statistics from all you servers (where applicable)! Press again to revert."
+msgstr "您现在将看到所有服务器的统计数据（如适用）！再次按下可恢复。"
+
+#: src/modules/statistics/ui/leaderboard.py:257
+msgctxt "ui:leaderboard|menu:stats|placeholder"
+msgid "Select Activity Type"
+msgstr "选择活动类型"
+
+#: src/modules/statistics/ui/leaderboard.py:266
+msgctxt "ui:leaderboard|menu:stats|item:voice"
+msgid "Voice Activity"
+msgstr "语音活动"
+
+#: src/modules/statistics/ui/leaderboard.py:277
+msgctxt "ui:leaderboard|menu:stats|item:study"
+msgid "Study Statistics"
+msgstr "学习统计"
+
+#: src/modules/statistics/ui/leaderboard.py:288
+msgctxt "ui:leaderboard|menu:stats|item:message"
+msgid "Message Activity"
+msgstr "消息活动"
+
+#: src/modules/statistics/ui/leaderboard.py:299
+msgctxt "ui:leaderboard|menu;stats|item:anki"
+msgid "Anki Cards Reviewed"
+msgstr "已复习Anki卡片"
+
+#: src/modules/statistics/ui/leaderboard.py:353
+msgctxt "ui:leaderboard|button:season|label"
+msgid "This Season"
+msgstr "本赛季"
+
+#: src/modules/statistics/ui/leaderboard.py:357
+msgctxt "ui:leaderboard|button:day|label"
+msgid "Today"
+msgstr "今天"
+
+#: src/modules/statistics/ui/leaderboard.py:361
+msgctxt "ui:leaderboard|button:week|label"
+msgid "This Week"
+msgstr "本周"
+
+#: src/modules/statistics/ui/leaderboard.py:365
+msgctxt "ui:leaderboard|button:month|label"
+msgid "This Month"
+msgstr "本月"
+
+#: src/modules/statistics/ui/leaderboard.py:369
+msgctxt "ui:leaderboard|button:alltime|label"
+msgid "All Time"
+msgstr "全部时间"
+
+#: src/modules/statistics/ui/leaderboard.py:373
+msgctxt "ui:leaderboard|button:jump|label"
+msgid "Jump"
+msgstr "跳转"
+
+#: src/modules/statistics/ui/leaderboard.py:388
+msgctxt "ui:leaderboard|button:jump|input:title"
+msgid "Jump to page"
+msgstr "跳转到页面"
+
+#: src/modules/statistics/ui/leaderboard.py:392
+msgctxt "ui:leaderboard|button:jump|input:question"
+msgid "Page number to jump to"
+msgstr "要跳转到的页码"
+
+#: src/modules/statistics/ui/leaderboard.py:403
+msgctxt "ui:leaderboard|button:jump|error:invalid_page"
+msgid "Invalid page number, please try again!"
+msgstr "无效的页码，请重试！"
+
+#: src/modules/statistics/ui/leaderboard.py:447
+msgctxt "ui:leaderboard|chunk_warning"
+msgid "**Note:** Could not retrieve member list from Discord, so some members may be missing. Try again in a minute!"
+msgstr "**注意：** 无法从Discord获取成员列表，因此部分成员可能缺失。请一分钟后重试！"
+
+#, possible-python-brace-format
+msgctxt "ui:leaderboard|since"
+msgid "Counting statistics since {timestamp}"
+msgstr "从 {timestamp} 开始统计"
+
+#, possible-python-brace-format
+msgctxt "ui:leaderboard|mode:voice|message:empty|desc"
+msgid "There has been no voice activity since {timestamp}"
+msgstr "自 {timestamp} 以来没有语音活动"
+
+#, possible-python-brace-format
+msgctxt "ui:leaderboard|mode:text|message:empty|desc"
+msgid "There has been no message activity since {timestamp}"
+msgstr "自 {timestamp} 以来没有消息活动"
+
+#, possible-python-brace-format
+msgctxt "ui:leaderboard|mode:anki|message:empty|desc"
+msgid "There have been no Anki cards reviewed since {timestamp}"
+msgstr "自 {timestamp} 以来没有复习Anki卡片"
+
+#: src/modules/statistics/ui/leaderboard.py:486
+msgctxt "ui:leaderboard|message:empty|title"
+msgid "Leaderboard Empty!"
+msgstr "排行榜为空！"

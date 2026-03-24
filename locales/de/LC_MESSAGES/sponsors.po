@@ -1,0 +1,110 @@
+# German translation for LionBot - sponsors
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 18:50+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: German\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/modules/sponsors/settingui.py:56
+msgctxt "ui:sponsors|button:sponsor_prompt|label"
+msgid "Sponsor Prompt"
+msgstr "Sponsor-Hinweis"
+
+#: src/modules/sponsors/settingui.py:85
+msgctxt "ui:sponsors|button:sponsor_message|label"
+msgid "Sponsor Message"
+msgstr "Sponsornachricht"
+
+#: src/modules/sponsors/settingui.py:92
+msgctxt "ui:sponsors|embed|title"
+msgid "Leo Sponsor Panel"
+msgstr "Leo Sponsor-Panel"
+
+#: src/modules/sponsors/cog.py:50
+msgctxt "cmd:sponsors"
+msgid "sponsors"
+msgstr "sponsors"
+
+#: src/modules/sponsors/cog.py:53
+msgctxt "cmd:sponsors|desc"
+msgid "Check out our wonderful partners!"
+msgstr "Schau bei unseren tollen Partnern vorbei!"
+
+#: src/modules/sponsors/cog.py:80
+msgctxt "cmd:leo_sponsors"
+msgid "sponsors"
+msgstr "sponsors"
+
+#: src/modules/sponsors/cog.py:84
+msgctxt "cmd:leo_sponsors|desc"
+msgid "Configure the sponsor text and whitelist."
+msgstr "Sponsortext und Whitelist konfigurieren."
+
+#: src/modules/sponsors/settings.py:20
+msgctxt "botset:sponsor_whitelist"
+msgid "sponsor_whitelist"
+msgstr "sponsor_whitelist"
+
+#: src/modules/sponsors/settings.py:24
+msgctxt "botset:sponsor_whitelist|desc"
+msgid "List of guildids where the sponsor prompt is not shown."
+msgstr ""
+"Liste der Server-IDs, in denen der Sponsor-Hinweis nicht angezeigt wird."
+
+#: src/modules/sponsors/settings.py:28
+msgctxt "botset:sponsor_whitelist|long_desc"
+msgid "The sponsor prompt will not appear in the set guilds."
+msgstr ""
+"Der Sponsor-Hinweis wird in den eingestellten Servern nicht angezeigt."
+
+#: src/modules/sponsors/settings.py:32
+msgctxt "botset:sponsor_whitelist|accetps"
+msgid "Comma separated list of guildids."
+msgstr "Kommagetrennte Liste von Server-IDs."
+
+#: src/modules/sponsors/settings.py:46
+msgctxt "botset:sponsor_prompt"
+msgid "sponsor_prompt"
+msgstr "sponsor_prompt"
+
+#: src/modules/sponsors/settings.py:50
+msgctxt "botset:sponsor_prompt|desc"
+msgid "Message to add underneath core commands."
+msgstr "Nachricht, die unter Kernbefehlen angezeigt wird."
+
+#: src/modules/sponsors/settings.py:54
+msgctxt "botset:sponsor_prompt|long_desc"
+msgid ""
+"Content of the message to send after core commands such as stats, reminding "
+"users to check the sponsors command."
+msgstr ""
+"Inhalt der Nachricht nach Kernbefehlen wie Statistiken, die Benutzer daran "
+"erinnert, den Sponsorbefehl zu überprüfen."
+
+#: src/modules/sponsors/settings.py:71
+msgctxt "botset:sponsor_message"
+msgid "sponsor_message"
+msgstr "sponsor_message"
+
+#: src/modules/sponsors/settings.py:75
+msgctxt "botset:sponsor_message|desc"
+msgid "Message to send in response to /sponsors command."
+msgstr "Nachricht als Antwort auf den /sponsors-Befehl."
+
+#: src/modules/sponsors/settings.py:79
+msgctxt "botset:sponsor_message|long_desc"
+msgid ""
+"Content of the message to send when a user runs the `/sponsors` command."
+msgstr ""
+"Inhalt der Nachricht, die gesendet wird, wenn ein Benutzer den "
+"`/sponsors`-Befehl ausführt."

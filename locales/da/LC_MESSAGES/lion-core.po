@@ -1,0 +1,184 @@
+# Danish translation for LionBot - lion-core
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 19:57+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Danish\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/core/lion_guild.py:31
+msgctxt "eventlog|field:start|name"
+msgid "Start"
+msgstr "Start"
+
+#: src/core/lion_guild.py:36
+msgctxt "eventlog|field:expiry|name"
+msgid "Expires"
+msgstr "Udløber"
+
+#: src/core/lion_guild.py:41
+msgctxt "eventlog|field:roles_given|name"
+msgid "Roles Given"
+msgstr "Roller givet"
+
+#: src/core/lion_guild.py:46
+msgctxt "eventlog|field:roles_given|name"
+msgid "Roles Taken"
+msgstr "Roller fjernet"
+
+#: src/core/lion_guild.py:51
+msgctxt "eventlog|field:coins_earned|name"
+msgid "Coins Earned"
+msgstr "Mønter optjent"
+
+#: src/core/lion_guild.py:56
+msgctxt "eventlog|field:price|name"
+msgid "Price"
+msgstr "Pris"
+
+#: src/core/lion_guild.py:61
+msgctxt "eventlog|field:balance|name"
+msgid "Balance"
+msgstr "Saldo"
+
+#: src/core/lion_guild.py:66
+msgctxt "eventlog|field:refund|name"
+msgid "Coins Refunded"
+msgstr "Mønter refunderet"
+
+#: src/core/lion_guild.py:71
+msgctxt "eventlog|field:memberid|name"
+msgid "Member"
+msgstr "Medlem"
+
+#: src/core/lion_guild.py:76
+msgctxt "eventlog|field:channelid|name"
+msgid "Channel"
+msgstr "Kanal"
+
+#: src/core/lion_guild.py:208
+msgctxt "eventlog|error:manage_webhooks"
+msgid "This channel is configured as an event log, but I am missing the 'Manage Webhooks' permission here."
+msgstr "Denne kanal er konfigureret som hændelseslog, men jeg mangler tilladelsen 'Manage Webhooks' her."
+
+#, possible-python-brace-format
+msgctxt "eventlog|create|name"
+msgid "{bot_name} Event Log"
+msgstr "{bot_name} Hændelseslog"
+
+#: src/core/lion_guild.py:224
+msgctxt "eventlog|create|audit_reason"
+msgid "Creating event log webhook"
+msgstr "Opretter webhook til hændelseslog"
+
+#: src/core/lion_guild.py:342
+msgctxt "eventlog|field:errors|name"
+msgid "Errors"
+msgstr "Fejl"
+
+#: src/core/setting_types.py:31
+msgctxt "settype:coin|accepts"
+msgid "A positive integral number of coins."
+msgstr "Et positivt heltal af mønter."
+
+#: src/core/setting_types.py:47
+msgctxt "settype:coin|parse|error:notinteger"
+msgid "The coin quantity must be a positive integer!"
+msgstr "Møntmængden skal være et positivt heltal!"
+
+#, possible-python-brace-format
+msgctxt "settype:coin|parse|error:too_large"
+msgid "You cannot set this to more than {coin}**{max}**!"
+msgstr "Du kan ikke sætte dette til mere end {coin}**{max}**!"
+
+#, possible-python-brace-format
+msgctxt "settype:coin|parse|error:too_small"
+msgid "You cannot set this to less than {coin}**{min}**!"
+msgstr "Du kan ikke sætte dette til mindre end {coin}**{min}**!"
+
+#, possible-python-brace-format
+msgctxt "settype:coin|formatted"
+msgid "{coin}**{amount}**"
+msgstr "{coin}**{amount}**"
+
+#: src/core/setting_types.py:91
+msgctxt "settype:message|accepts"
+msgid "JSON formatted raw message data"
+msgstr "JSON-formateret rå beskeddata"
+
+#: src/core/setting_types.py:106
+msgctxt "settype:message|download|error:not_json"
+msgid "The attached message data is not a JSON file!"
+msgstr "De vedhæftede beskeddata er ikke en JSON-fil!"
+
+#: src/core/setting_types.py:111
+msgctxt "settype:message|download|error:size"
+msgid "The attached message data is too large!"
+msgstr "De vedhæftede beskeddata er for store!"
+
+#: src/core/setting_types.py:120
+msgctxt "settype:message|download|error:decoding"
+msgid "Could not decode the message data. Please ensure it is saved with the `UTF-8` encoding."
+msgstr "Kunne ikke afkode beskeddata. Sørg venligst for, at de er gemt med `UTF-8`-kodning."
+
+#, possible-python-brace-format
+msgctxt "settype:message|error_suffix"
+msgid "You can view, test, and fix your embed using the online [embed builder]({link})."
+msgstr "Du kan se, teste og rette din embed ved hjælp af online [embed builder]({link})."
+
+#, possible-python-brace-format
+msgctxt "settype:message|error:invalid_json"
+msgid ""
+"The provided message data was not a valid JSON document!\n"
+"`{error}`"
+msgstr ""
+"De angivne beskeddata var ikke et gyldigt JSON-dokument!\n"
+"`{error}`"
+
+#: src/core/setting_types.py:197
+msgctxt "settype:message|error:json_missing_keys"
+msgid "Message data must be a JSON object with at least one of the following fields: `content`, `embed`, `embeds`"
+msgstr "Beskeddata skal være et JSON-objekt med mindst ét af følgende felter: `content`, `embed`, `embeds`"
+
+#: src/core/setting_types.py:206
+msgctxt "settype:message|error:json_embed_type"
+msgid "`embed` field must be a valid JSON object."
+msgstr "Feltet `embed` skal være et gyldigt JSON-objekt."
+
+#: src/core/setting_types.py:214
+msgctxt "settype:message|error:json_embeds_type"
+msgid "`embeds` field must be a list."
+msgstr "Feltet `embeds` skal være en liste."
+
+#: src/core/setting_types.py:221
+msgctxt "settype:message|error:json_embed_embeds"
+msgid "Message data cannot include both `embed` and `embeds`."
+msgstr "Beskeddata kan ikke indeholde både `embed` og `embeds`."
+
+#: src/core/setting_types.py:229
+msgctxt "settype:message|error:json_content_type"
+msgid "`content` field must be a string."
+msgstr "Feltet `content` skal være en streng."
+
+#, possible-python-brace-format
+msgctxt "ui:settype:message|error:embed_conversion"
+msgid ""
+"Could not parse the message embed data.\n"
+"**Error:** `{exception}`"
+msgstr ""
+"Kunne ikke analysere beskedens embed-data.\n"
+"**Fejl:** `{exception}`"
+
+#: src/core/setting_types.py:273
+msgctxt "settype:message|format:too_long"
+msgid "Too long to display! See Preview."
+msgstr "For langt til at vise! Se forhåndsvisning."

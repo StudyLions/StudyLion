@@ -1,0 +1,138 @@
+# Dutch translation for LionBot - config
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 19:57+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Dutch\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/modules/config/settingui.py:56
+msgctxt "ui:general_config|menu:event_log|placeholder"
+msgid "Select Event Log"
+msgstr "Selecteer gebeurtenislogboek"
+
+#: src/modules/config/settingui.py:64
+msgctxt "ui:general_config|embed:title"
+msgid "General Configuration"
+msgstr "Algemene configuratie"
+
+#: src/modules/config/settingui.py:99
+msgctxt "dash:general|title"
+msgid "General Configuration ({commands[config general]})"
+msgstr "Algemene configuratie ({commands[config general]})"
+
+#: src/modules/config/settingui.py:103
+msgctxt "dash:general|option|name"
+msgid "General Configuration Panel"
+msgstr "Algemeen configuratiepaneel"
+
+#: src/modules/config/cog.py:56 src/modules/config/general.py:52
+msgctxt "cmd:configure_general"
+msgid "general"
+msgstr "general"
+
+#: src/modules/config/cog.py:57 src/modules/config/general.py:53
+msgctxt "cmd:configure_general|desc"
+msgid "General configuration panel"
+msgstr "Algemeen configuratiepaneel"
+
+#: src/modules/config/general.py:91
+msgctxt "cmd:configure_general|parse_failure:timezone"
+msgid "Could not set the timezone!"
+msgstr "Kon de tijdzone niet instellen!"
+
+#: src/modules/config/general.py:112
+msgctxt "cmd:configure_general|success"
+msgid "Settings Updated!"
+msgstr "Instellingen bijgewerkt!"
+
+#: src/modules/config/general.py:127
+msgctxt "cmd:configure_general|panel|title"
+msgid "General Configuration Panel"
+msgstr "Algemeen configuratiepaneel"
+
+#, possible-python-brace-format
+msgctxt "ui:dashboard|title"
+msgid "Guild Dashboard (Page {page}/{total})"
+msgstr "Serverdashboard (Pagina {page}/{total})"
+
+#: src/modules/config/dashboard.py:110
+msgctxt "ui:dashboard|footer"
+msgid "Hover over setting names for a brief description"
+msgstr "Beweeg over instellingsnamen voor een korte beschrijving"
+
+#: src/modules/config/dashboard.py:173
+msgctxt "ui:dashboard|menu:config|placeholder"
+msgid "Open Configuration Panel"
+msgstr "Configuratiepaneel openen"
+
+#: src/modules/config/settings.py:33
+msgctxt "guildset:timezone"
+msgid "timezone"
+msgstr "timezone"
+
+#: src/modules/config/settings.py:36
+msgctxt "guildset:timezone|desc"
+msgid "Guild timezone for statistics display."
+msgstr "Servertijdzone voor statistiekenweergave."
+
+#: src/modules/config/settings.py:40
+msgctxt "guildset:timezone|long_desc"
+msgid "Guild-wide timezone. Used to determine start of the day for the leaderboards, and as the default statistics timezone for members who have not set one."
+msgstr "Serverbrede tijdzone. Wordt gebruikt om het begin van de dag te bepalen voor ranglijsten en als standaard statistiektijdzone voor leden die er geen hebben ingesteld."
+
+#, possible-python-brace-format
+msgctxt "guildset:timezone|response"
+msgid "The guild timezone has been set to `{timezone}`."
+msgstr "De servertijdzone is ingesteld op `{timezone}`."
+
+#: src/modules/config/settings.py:66
+msgctxt "guildset:eventlog"
+msgid "event_log"
+msgstr "event_log"
+
+#: src/modules/config/settings.py:69
+msgctxt "guildset:eventlog|desc"
+msgid "My audit log channel where I send server actions and events (e.g. rankgs and expiring roles)."
+msgstr "Mijn auditlogkanaal waar ik serveracties en gebeurtenissen stuur (bijv. rangen en verlopen rollen)."
+
+#: src/modules/config/settings.py:73
+msgctxt "guildset:eventlog|long_desc"
+msgid ""
+"If configured, I will log most significant actions taken or events which occur through my interface, into this channel. Logged events include, for example:\n"
+"- Member voice activity\n"
+"- Roles equipped and expiring from rolemenus\n"
+"- Privated rooms rented and expiring\n"
+"- Activity ranks earned\n"
+"I must have the 'Manage Webhooks' permission in this channel."
+msgstr ""
+"Indien geconfigureerd, log ik de belangrijkste acties of gebeurtenissen die via mijn interface plaatsvinden in dit kanaal. Gelogde gebeurtenissen omvatten bijvoorbeeld:\n"
+"- Spraakactiviteit van leden\n"
+"- Rollen uitgerust en verlopen uit rolmenu's\n"
+"- Privékanalen gehuurd en verlopen\n"
+"- Verdiende activiteitsrangen\n"
+"Ik moet de machtiging 'Manage Webhooks' hebben in dit kanaal."
+
+#, possible-python-brace-format
+msgctxt "guildset:eventlog|check_value|error:perms|perm:manage_webhooks"
+msgid "Cannot set {channel} as an event log! I lack the 'Manage Webhooks' permission there."
+msgstr "Kan {channel} niet als gebeurtenislogboek instellen! Ik mis de machtiging 'Manage Webhooks' daar."
+
+#, possible-python-brace-format
+msgctxt "guildset:eventlog|response|set"
+msgid "Events will now be logged to {channel}"
+msgstr "Gebeurtenissen worden nu gelogd naar {channel}"
+
+#: src/modules/config/settings.py:111
+msgctxt "guildset:eventlog|response|unset"
+msgid "Guild events will no longer be logged."
+msgstr "Servergebeurtenissen worden niet meer gelogd."

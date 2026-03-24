@@ -1,0 +1,514 @@
+# Ukrainian translation for LionBot - utils
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 21:36+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Ukrainian\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: src/utils/cog.py:18
+msgctxt "cmd:page"
+msgid "page"
+msgstr "page"
+
+#: src/utils/cog.py:21
+msgctxt "cmd:page|desc"
+msgid "Jump to a given page of the ouput of a previous command in this channel."
+msgstr "Перейти на сторінку виводу попередньої команди в цьому каналі."
+
+#: src/utils/cog.py:35
+msgctxt "cmd:page|error:no_pager"
+msgid "No pager listening in this channel!"
+msgstr "У цьому каналі немає активного пейджера!"
+
+#: src/utils/cog.py:46
+msgctxt "cmd:page_next"
+msgid "next"
+msgstr "next"
+
+#: src/utils/cog.py:47
+msgctxt "cmd:page_next|desc"
+msgid "Jump to the next page of output."
+msgstr "Перейти на наступну сторінку."
+
+#: src/utils/cog.py:53
+msgctxt "cmd:page_prev"
+msgid "prev"
+msgstr "prev"
+
+#: src/utils/cog.py:54
+msgctxt "cmd:page_prev|desc"
+msgid "Jump to the previous page of output."
+msgstr "Перейти на попередню сторінку."
+
+#: src/utils/cog.py:60
+msgctxt "cmd:page_first"
+msgid "first"
+msgstr "first"
+
+#: src/utils/cog.py:61
+msgctxt "cmd:page_first|desc"
+msgid "Jump to the first page of output."
+msgstr "Перейти на першу сторінку."
+
+#: src/utils/cog.py:67
+msgctxt "cmd:page_last"
+msgid "last"
+msgstr "last"
+
+#: src/utils/cog.py:68
+msgctxt "cmd:page_last|desc"
+msgid "Jump to the last page of output."
+msgstr "Перейти на останню сторінку."
+
+#: src/utils/cog.py:74
+msgctxt "cmd:page_select"
+msgid "select"
+msgstr "select"
+
+#: src/utils/cog.py:75
+msgctxt "cmd:page_select|desc"
+msgid "Select a page of the output to jump to."
+msgstr "Оберіть сторінку виводу для переходу."
+
+#: src/utils/cog.py:78
+msgctxt "cmd:page_select|param:page"
+msgid "page"
+msgstr "page"
+
+#: src/utils/cog.py:81
+msgctxt "cmd:page_select|param:page|desc"
+msgid "The page name or number to jump to."
+msgstr "Назва або номер сторінки."
+
+#: src/utils/cog.py:87
+msgctxt "cmd:page_select|error:no_pager"
+msgid "No pager listening in this channel!"
+msgstr "У цьому каналі немає активного пейджера!"
+
+#: src/utils/cog.py:98
+msgctxt "cmd:page_select|acmpl|error:no_pager"
+msgid "No active pagers in this channel!"
+msgstr "У цьому каналі немає активних пейджерів!"
+
+#, possible-python-brace-format
+msgctxt "utils:parse_dur|error"
+msgid "Cannot parse `{value}` as a duration."
+msgstr "Не вдається розпізнати `{value}` як тривалість."
+
+#, possible-python-brace-format
+msgctxt "util:Duration|acmpl|error"
+msgid "Cannot extract duration from \"{partial}\""
+msgstr "Не вдається витягнути тривалість з «{partial}»"
+
+#: src/utils/lib.py:683
+msgctxt "util:parse_dur|regex:day"
+msgid "(?P<value>\\d+)\\s*(?:(d)|(day))"
+msgstr "(?P<value>\\d+)\\s*(?:(d)|(day))"
+
+#: src/utils/lib.py:690
+msgctxt "util:parse_dur|regex:hour"
+msgid "(?P<value>\\d+)\\s*(?:(h)|(hour))"
+msgstr "(?P<value>\\d+)\\s*(?:(h)|(hour))"
+
+#: src/utils/lib.py:697
+msgctxt "util:parse_dur|regex:minute"
+msgid "(?P<value>\\d+)\\s*(?:(m)|(min))"
+msgstr "(?P<value>\\d+)\\s*(?:(m)|(min))"
+
+#: src/utils/lib.py:704
+msgctxt "util:parse_dur|regex:second"
+msgid "(?P<value>\\d+)\\s*(?:(s)|(sec))"
+msgstr "(?P<value>\\d+)\\s*(?:(s)|(sec))"
+
+#, possible-python-brace-format
+msgctxt "parse_timestamp|error:parse"
+msgid "Could not parse `{given}` as a valid reminder time. Try entering the time in the form `HH:MM` or `YYYY-MM-DD HH:MM`."
+msgstr "Не вдалося розпізнати `{given}` як дійсний час нагадування. Спробуйте формат `HH:MM` або `РРРР-ММ-ДД ГГ:ХХ`."
+
+#: src/utils/ui/config.py:35
+msgctxt "ui:configui|modal:edit|title"
+msgid "Setting Editor"
+msgstr "Редактор налаштувань"
+
+#: src/utils/ui/config.py:75
+msgctxt "ui:configui|check|not_permitted"
+msgid "You have insufficient server permissions to use this UI!"
+msgstr "У вас недостатньо прав на сервері для використання цього інтерфейсу!"
+
+#: src/utils/ui/config.py:157
+msgctxt "ui:configui|button:edit|label"
+msgid "Edit"
+msgstr "Редагувати"
+
+#: src/utils/ui/config.py:196
+msgctxt "ui:guild_config_base|button:reset|label"
+msgid "Reset"
+msgstr "Скинути"
+
+#: src/utils/ui/config.py:331
+msgctxt "ui:dashboard|error:section_too_long"
+msgid "Oops, the settings in this configuration section are too large, and I can not display them here! Please view the settings in the linked configuration panel instead."
+msgstr "Ой, налаштування в цьому розділі занадто великі, і я не можу показати їх тут! Будь ласка, перегляньте налаштування у пов'язаній панелі конфігурації."
+
+#: src/utils/ui/pagers.py:50
+msgctxt "cmd:page|pager:Pager|options:next"
+msgid "n, nxt, next, forward, +"
+msgstr "n, nxt, next, forward, +"
+
+#: src/utils/ui/pagers.py:53
+msgctxt "cmd:page|pager:Pager|options:prev"
+msgid "p, prev, back, -"
+msgstr "p, prev, back, -"
+
+#: src/utils/ui/pagers.py:56
+msgctxt "cmd:page|pager:Pager|options:first"
+msgid "f, first, one, start"
+msgstr "f, first, one, start"
+
+#: src/utils/ui/pagers.py:59
+msgctxt "cmd:page|pager:Pager|options:last"
+msgid "l, last, end"
+msgstr "l, last, end"
+
+#, possible-python-brace-format
+msgctxt "cmd:page|pager:Pager|error:parse"
+msgid "Could not understand page specification `{value}`."
+msgstr "Не вдалося зрозуміти специфікацію сторінки `{value}`."
+
+#, possible-python-brace-format
+msgctxt "cmd:page|acmpl|pager:Pager|choice:last"
+msgid "Last: Page {page}/{total}"
+msgstr "Остання: Сторінка {page}/{total}"
+
+#, possible-python-brace-format
+msgctxt "cmd:page|acmpl|pager:Pager|choice:current"
+msgid "Current: Page {page}/{total}"
+msgstr "Поточна: Сторінка {page}/{total}"
+
+#, possible-python-brace-format
+msgctxt "cmd:page|acmpl|pager:Pager|choice:general"
+msgid "Page {page}"
+msgstr "Сторінка {page}"
+
+#, possible-python-brace-format
+msgctxt "cmd:page|acmpl|pager:Page|choice:select"
+msgid "Selected: Page {page}/{total}"
+msgstr "Обрана: Сторінка {page}/{total}"
+
+#: src/utils/ui/pagers.py:363
+msgctxt "cmd:page|acmpl|pager:Page|error:parse"
+msgid "No matching pages!"
+msgstr "Немає відповідних сторінок!"
+
+#: src/utils/ui/msgeditor.py:75
+msgctxt "ui:msg_editor|error:empty"
+msgid "Rendering failed! The message content and embed cannot both be empty."
+msgstr "Помилка рендерингу! Вміст повідомлення та embed не можуть бути порожніми одночасно."
+
+#, possible-python-brace-format
+msgctxt "ui:msg_editor|error:embed_failed"
+msgid ""
+"Rendering failed! Could not parse the embed.\n"
+"Error: {error}"
+msgstr ""
+"Помилка рендерингу! Не вдалося розібрати embed.\n"
+"Помилка: {error}"
+
+#, possible-python-brace-format
+msgctxt "ui:msg_editor|error:invalid_change"
+msgid ""
+"Rendering failed! The message was not modified.\n"
+"Error: `{text}`"
+msgstr ""
+"Помилка рендерингу! Повідомлення не було змінено.\n"
+"Помилка: `{text}`"
+
+#: src/utils/ui/msgeditor.py:123
+msgctxt "ui:msg_editor|modal:content|field:content|label"
+msgid "Message Content"
+msgstr "Вміст повідомлення"
+
+#: src/utils/ui/msgeditor.py:132
+msgctxt "ui:msg_editor|modal:content|title"
+msgid "Content Editor"
+msgstr "Редактор вмісту"
+
+#: src/utils/ui/msgeditor.py:150
+msgctxt "ui:msg_editor|button:edit|label"
+msgid "Edit Content"
+msgstr "Редагувати вміст"
+
+#: src/utils/ui/msgeditor.py:162
+msgctxt "ui:msg_editor|button:add_embed|sample_embed|title"
+msgid "Title Placeholder"
+msgstr "Заповнювач заголовка"
+
+#: src/utils/ui/msgeditor.py:163
+msgctxt "ui:msg_editor|button:add_embed|sample_embed|description"
+msgid "Description Placeholder"
+msgstr "Заповнювач опису"
+
+#: src/utils/ui/msgeditor.py:174
+msgctxt "ui:msg_editor|button:add_embed|label"
+msgid "Add Embed"
+msgstr "Додати embed"
+
+#: src/utils/ui/msgeditor.py:190
+msgctxt "ui:msg_editor|button:rm_embed|sample_content"
+msgid "Content Placeholder"
+msgstr "Заповнювач вмісту"
+
+#: src/utils/ui/msgeditor.py:199
+msgctxt "ui:msg_editor|button:rm_embed|label"
+msgid "Remove Embed"
+msgstr "Видалити embed"
+
+#: src/utils/ui/msgeditor.py:217
+msgctxt "ui:msg_editor|modal:body|field:content|label"
+msgid "Message Content"
+msgstr "Вміст повідомлення"
+
+#: src/utils/ui/msgeditor.py:228
+msgctxt "ui:msg_editor|modal:body|field:desc|label"
+msgid "Embed Description"
+msgstr "Опис embed"
+
+#: src/utils/ui/msgeditor.py:239
+msgctxt "ui:msg_editor|modal:body|field:title|label"
+msgid "Embed Title"
+msgstr "Заголовок embed"
+
+#: src/utils/ui/msgeditor.py:250
+msgctxt "ui:msg_editor|modal:body|field:colour|label"
+msgid "Embed Colour"
+msgstr "Колір embed"
+
+#: src/utils/ui/msgeditor.py:265
+msgctxt "ui:msg_editor|modal:body|title"
+msgid "Message Body Editor"
+msgstr "Редактор тіла повідомлення"
+
+#: src/utils/ui/msgeditor.py:290
+msgctxt "ui:msg_editor|button:body|error:invalid_colour"
+msgid "Invalid colour format! Please enter colours as hex codes, e.g. `#E67E22`"
+msgstr "Невірний формат кольору! Введіть кольори як hex-коди, напр. `#E67E22`"
+
+#: src/utils/ui/msgeditor.py:310
+msgctxt "ui:msg_editor|button:body|label"
+msgid "Body"
+msgstr "Тіло"
+
+#: src/utils/ui/msgeditor.py:327
+msgctxt "ui:msg_editor|modal:author|field:name|label"
+msgid "Author Name"
+msgstr "Ім'я автора"
+
+#: src/utils/ui/msgeditor.py:338
+msgctxt "ui:msg_editor|modal:author|field:link|label"
+msgid "Author URL"
+msgstr "Author URL"
+
+#: src/utils/ui/msgeditor.py:348
+msgctxt "ui:msg_editor|modal:author|field:image|label"
+msgid "Author Image URL"
+msgstr "Author Image URL"
+
+#: src/utils/ui/msgeditor.py:359
+msgctxt "ui:msg_editor|modal:author|title"
+msgid "Embed Author Editor"
+msgstr "Редактор автора embed"
+
+#: src/utils/ui/msgeditor.py:385
+msgctxt "ui:msg_editor|button:author|label"
+msgid "Author"
+msgstr "Автор"
+
+#: src/utils/ui/msgeditor.py:402
+msgctxt "ui:msg_editor|modal:footer|field:text|label"
+msgid "Footer Text"
+msgstr "Текст підвалу"
+
+#: src/utils/ui/msgeditor.py:413
+msgctxt "ui:msg_editor|modal:footer|field:image|label"
+msgid "Footer Image URL"
+msgstr "Footer Image URL"
+
+#: src/utils/ui/msgeditor.py:423
+msgctxt "ui:msg_editor|modal:footer|field:timestamp|label"
+msgid "Embed Timestamp (in ISO format)"
+msgstr "Мітка часу embed (у форматі ISO)"
+
+#: src/utils/ui/msgeditor.py:435
+msgctxt "ui:msg_editor|modal:footer|title"
+msgid "Embed Footer Editor"
+msgstr "Редактор підвалу embed"
+
+#: src/utils/ui/msgeditor.py:454
+msgctxt "ui:msg_editor|button:footer|error:invalid_timestamp"
+msgid "Invalid timestamp! Please enter the timestamp in ISO format."
+msgstr "Невірна мітка часу! Введіть у форматі ISO."
+
+#: src/utils/ui/msgeditor.py:474
+msgctxt "ui:msg_editor|button:footer|label"
+msgid "Footer"
+msgstr "Підвал"
+
+#: src/utils/ui/msgeditor.py:492
+msgctxt "ui:msg_editor|modal:images|field:thumb|label"
+msgid "Thumbnail Image URL"
+msgstr "Thumbnail Image URL"
+
+#: src/utils/ui/msgeditor.py:502
+msgctxt "ui:msg_editor|modal:images|field:image|label"
+msgid "Embed Image URL"
+msgstr "Embed Image URL"
+
+#: src/utils/ui/msgeditor.py:512
+msgctxt "ui:msg_editor|modal:images|title"
+msgid "Embed images Editor"
+msgstr "Редактор зображень embed"
+
+#: src/utils/ui/msgeditor.py:542
+msgctxt "ui:msg_editor|button:images|label"
+msgid "Images"
+msgstr "Зображення"
+
+#: src/utils/ui/msgeditor.py:560
+msgctxt "ui:msg_editor|modal:add_field|field:position|label"
+msgid "Field number to insert at"
+msgstr "Номер поля для вставки"
+
+#: src/utils/ui/msgeditor.py:570
+msgctxt "ui:msg_editor|modal:add_field|field:name|label"
+msgid "Field name"
+msgstr "Назва поля"
+
+#: src/utils/ui/msgeditor.py:580
+msgctxt "ui:msg_editor|modal:add_field|field:value|label"
+msgid "Field value"
+msgstr "Значення поля"
+
+#: src/utils/ui/msgeditor.py:590
+msgctxt "ui:msg_editor|modal:add_field|field:inline|label"
+msgid "Whether the field is inline"
+msgstr "Чи є поле вбудованим"
+
+#: src/utils/ui/msgeditor.py:594
+msgctxt "ui:msg_editor|modal:add_field|field:inline|placeholder"
+msgid "True/False"
+msgstr "True/False"
+
+#: src/utils/ui/msgeditor.py:607
+msgctxt "ui:msg_editor|modal:add_field|title"
+msgid "Add Embed Field"
+msgstr "Додати поле embed"
+
+#: src/utils/ui/msgeditor.py:627
+msgctxt "ui:msg_editor|modal:add_field|error:position_not_int"
+msgid "The field position must be an integer!"
+msgstr "Позиція поля повинна бути цілим числом!"
+
+#: src/utils/ui/msgeditor.py:646
+msgctxt "ui:msg_editor|button:add_field|label"
+msgid "Add Field"
+msgstr "Додати поле"
+
+#: src/utils/ui/msgeditor.py:662
+msgctxt "ui:msg_editor|format_field|name_placeholder"
+msgid "-"
+msgstr "-"
+
+#: src/utils/ui/msgeditor.py:691
+msgctxt "ui:msg_editor|modal:edit_field|field:name|label"
+msgid "Field name"
+msgstr "Назва поля"
+
+#: src/utils/ui/msgeditor.py:702
+msgctxt "ui:msg_editor|modal:edit_field|field:value|label"
+msgid "Field value"
+msgstr "Значення поля"
+
+#: src/utils/ui/msgeditor.py:713
+msgctxt "ui:msg_editor|modal:edit_field|field:inline|label"
+msgid "Whether the field is inline"
+msgstr "Чи є поле вбудованим"
+
+#: src/utils/ui/msgeditor.py:717
+msgctxt "ui:msg_editor|modal:edit_field|field:inline|placeholder"
+msgid "True/False"
+msgstr "True/False"
+
+#: src/utils/ui/msgeditor.py:729
+msgctxt "ui:msg_editor|modal:edit_field|title"
+msgid "Edit Embed Field"
+msgstr "Редагувати поле embed"
+
+#: src/utils/ui/msgeditor.py:758
+msgctxt "ui:msg_editor|menu:edit_field|placeholder"
+msgid "Edit Embed Field"
+msgstr "Редагувати поле embed"
+
+#: src/utils/ui/msgeditor.py:797
+msgctxt "ui:msg_deleteor|menu:delete_field|placeholder"
+msgid "Remove Embed Field"
+msgstr "Видалити поле embed"
+
+#: src/utils/ui/msgeditor.py:833
+msgctxt "ui:msg_editor|button:save|label"
+msgid "Save"
+msgstr "Зберегти"
+
+#: src/utils/ui/msgeditor.py:858
+msgctxt "ui:msg_editor|button:download|label"
+msgid "Download"
+msgstr "Завантажити"
+
+#: src/utils/ui/msgeditor.py:877
+msgctxt "ui:msg_editor|button:undo|label"
+msgid "Undo"
+msgstr "Скасувати"
+
+#: src/utils/ui/msgeditor.py:897
+msgctxt "ui:msg_editor|button:redo|label"
+msgid "Redo"
+msgstr "Повторити"
+
+#: src/utils/ui/msgeditor.py:916
+msgctxt "ui:msg_editor|button:quit|confirm"
+msgid "You have unsaved changes! Are you sure you want to quit?"
+msgstr "У вас є незбережені зміни! Ви впевнені, що хочете вийти?"
+
+#: src/utils/ui/msgeditor.py:921
+msgctxt "ui:msg_editor|button:quit|confirm|button:yes"
+msgid "Yes, Quit Now"
+msgstr "Так, вийти зараз"
+
+#: src/utils/ui/msgeditor.py:927
+msgctxt "ui:msg_editor|button:quit|confirm|button:no"
+msgid "No, Go Back"
+msgstr "Ні, повернутися"
+
+#: src/utils/ui/msgeditor.py:1025
+msgctxt "ui:msg_editor|timeout_warning|title"
+msgid "Warning!"
+msgstr "Попередження!"
+
+#, possible-python-brace-format
+msgctxt "ui:msg_editor|timeout_warning|desc"
+msgid "This interface will time out {timestamp}. Press 'Continue' below to keep editing."
+msgstr "Цей інтерфейс вичерпає час {timestamp}. Натисніть «Продовжити» нижче, щоб продовжити редагування."
+
+#: src/utils/ui/msgeditor.py:1038
+msgctxt "ui:msg_editor|timeout_warning|continue"
+msgid "Continue"
+msgstr "Продовжити"

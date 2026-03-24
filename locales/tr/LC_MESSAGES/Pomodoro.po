@@ -1,26 +1,19 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
-# Translators:
-# Eyüp Ramazan, 2023
-# Havina Ru, 2023
-# 
-#, fuzzy
+# Turkish translation for LionBot - Pomodoro
+# AI-translated with human Transifex contributions where available.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: LionBot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-24 14:37+0300\n"
-"PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Havina Ru, 2023\n"
-"Language-Team: Turkish (https://app.transifex.com/leobot/teams/174919/tr/)\n"
+"PO-Revision-Date: 2026-03-13 22:22+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Turkish\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: tr\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/pomodoro/timer.py:52
 msgctxt "timer|stage:break|name"
@@ -32,7 +25,6 @@ msgctxt "timer|stage:focus|name"
 msgid "FOCUS"
 msgstr "ODAK"
 
-#: src/modules/pomodoro/timer.py:164
 #, possible-python-brace-format
 msgctxt "timer|webhook|name"
 msgid "{bot_name} Pomodoro"
@@ -52,7 +44,6 @@ msgstr ""
 "Buraya pomodoro bildirimlerini gönderebilmek için `WEBHOOK'LARI_YÖNET` "
 "iznine ihtiyacım var!"
 
-#: src/modules/pomodoro/timer.py:238
 #, possible-python-brace-format
 msgctxt "timer|default_base_name"
 msgid "Timer {pattern}"
@@ -61,9 +52,8 @@ msgstr "Sayaç {pattern}"
 #: src/modules/pomodoro/timer.py:413
 msgctxt "timer|disconnect|audit_reason"
 msgid "Disconnecting inactive member from timer."
-msgstr ""
+msgstr "Etkin olmayan üye zamanlayıcıdan çıkarılıyor."
 
-#: src/modules/pomodoro/timer.py:425
 #, possible-python-brace-format
 msgctxt "timer|kicked_message"
 msgid ""
@@ -77,25 +67,22 @@ msgstr[0] ""
 "Burada olduğunuzu belirtmek için her oturumda {tick} butonuna basmayı "
 "unutmayın!"
 msgstr[1] ""
-"{mentions} aktif olmadıklarından dolayı {channel} kanalından çıkartıldılar! "
-"Burada olduğunuzu belirtmek için {tick} butonuna basmayı unutmayın!"
 
-#: src/modules/pomodoro/timer.py:438
 #, possible-python-brace-format
 msgctxt "timer|kick_failed"
 msgid ""
 "**Warning!** Timer {channel} is configured to disconnect on inactivity, but "
 "I lack the 'Move Members' permission to do this!"
 msgstr ""
+"**Uyarı!** Zamanlayıcı {channel} hareketsizlikte bağlantı kesecek şekilde "
+"yapılandırılmış, ancak 'Move Members' iznim yok!"
 
-#: src/modules/pomodoro/timer.py:537
 #, possible-python-brace-format
 msgctxt "timer|status|stage:focus|statusline"
 msgid "{channel} is now in **FOCUS**! Good luck, **BREAK** starts {timestamp}"
 msgstr ""
 "{channel} şu anda **ODAKTA**! İyi şanslar, **ARA** {timestamp} başlayacak."
 
-#: src/modules/pomodoro/timer.py:542
 #, possible-python-brace-format
 msgctxt "timer|status|stage:break|statusline"
 msgid ""
@@ -103,7 +90,6 @@ msgid ""
 msgstr ""
 "{channel} şu anda **ARADA**! İyi şanslar, **ODAK** {timestamp} başlayacak."
 
-#: src/modules/pomodoro/timer.py:574
 #, possible-python-brace-format
 msgctxt "timer|status|warningline"
 msgid ""
@@ -113,7 +99,6 @@ msgstr ""
 "**UYARI:** {mentions}, bir sonraki oturumda atılmamak için lütfen {tick} "
 "butonuna basınız."
 
-#: src/modules/pomodoro/timer.py:593
 #, possible-python-brace-format
 msgctxt "timer|status|stopped:auto"
 msgid "Timer stopped! Join {channel} to start the timer."
@@ -138,7 +123,7 @@ msgstr "Sayaç Konfigürasyon Paneli"
 #: src/modules/pomodoro/settingui.py:82
 msgctxt "dash:pomodoro|title"
 msgid "Pomodoro Configuration ({commands[config pomodoro]})"
-msgstr ""
+msgstr "Pomodoro Yapılandırması ({commands[config pomodoro]})"
 
 #: src/modules/pomodoro/settingui.py:86
 msgctxt "dash:stats|dropdown|placeholder"
@@ -157,112 +142,120 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:401
 msgctxt "cmd:timer"
 msgid "timer"
-msgstr ""
+msgstr "timer"
 
 #: src/modules/pomodoro/cog.py:402
 msgctxt "cmd:timer|desc"
 msgid "Show your current (or selected) pomodoro timer."
-msgstr ""
+msgstr "Geçerli (veya seçili) pomodoro zamanlayıcınızı gösterin."
 
 #: src/modules/pomodoro/cog.py:405
 msgctxt "cmd:timer|param:channel"
 msgid "timer_channel"
-msgstr ""
+msgstr "timer_channel"
 
 #: src/modules/pomodoro/cog.py:410
 msgctxt "cmd:timer|param:channel|desc"
 msgid "Select a timer to display (by selecting the timer voice channel)"
 msgstr ""
+"Gösterilecek bir zamanlayıcı seçin (zamanlayıcının sesli kanalını seçerek)"
 
-#: src/modules/pomodoro/cog.py:432 src/modules/pomodoro/cog.py:503
 #, possible-python-brace-format
 msgctxt "cmd:timer|error:no_timers|desc"
 msgid ""
 "**This server has no timers set up!**\n"
 "Ask an admin to set up and configure a timer with {create_cmd} first, or rent a private room with {room_cmd} and create one yourself!"
 msgstr ""
+"**Bu sunucuda kurulu zamanlayıcı yok!**\n"
+"Bir yöneticiden {create_cmd} ile zamanlayıcı kurmasını is..."
 
-#: src/modules/pomodoro/cog.py:446
 #, possible-python-brace-format
 msgctxt "cmd:timer|error:no_channel|desc"
 msgid ""
 "**I don't know what timer to show you.**\n"
 "No channel selected and you are not in a voice channel! Use {timers_cmd} to list the available timers in this server."
 msgstr ""
+"**Hangi zamanlayıcıyı göstereceğimi bilmiyorum.**\n"
+"Kanal seçilmedi ve bir sesli kanalda değilsiniz..."
 
-#: src/modules/pomodoro/cog.py:459
 #, possible-python-brace-format
 msgctxt "cmd:timer|error:no_timer_in_channel"
 msgid ""
 "The channel {channel} is not a pomodoro timer room!\n"
 "Use {timers_cmd} to list the available timers in this server."
 msgstr ""
+"{channel} kanalı bir pomodoro zamanlayıcı odası değil!\n"
+"Bu sunucudaki mevcut zamanlayıcıları listelemek için {timers_cmd} kullanın."
 
 #: src/modules/pomodoro/cog.py:476
 msgctxt "cmd:timers"
 msgid "timers"
-msgstr ""
+msgstr "timers"
 
 #: src/modules/pomodoro/cog.py:477
 msgctxt "cmd:timers|desc"
 msgid "List the available pomodoro timer rooms."
-msgstr ""
+msgstr "Mevcut pomodoro zamanlayıcı odalarını listeleyin."
 
-#: src/modules/pomodoro/cog.py:516
 #, possible-python-brace-format
 msgctxt "cmd:timer|error:no_visible_timers|desc"
 msgid ""
 "**There are no available pomodoro timers!**\n"
 "Ask an admin to set up a new timer with {create_cmd}, or rent a private room with {room_cmd} and create one yourself!"
 msgstr ""
+"**Kullanılabilir pomodoro zamanlayıcısı yok!**\n"
+"Bir yöneticiden {create_cmd} ile yeni bir zamanlay..."
 
-#: src/modules/pomodoro/cog.py:529
 #, possible-python-brace-format
 msgctxt "cmd:timers|embed:timer_list|title"
 msgid "Pomodoro Timer Rooms in **{guild}**"
-msgstr ""
+msgstr "**{guild}** sunucusundaki Pomodoro Zamanlayıcı Odaları"
 
-#: src/modules/pomodoro/cog.py:538
 #, possible-python-brace-format
 msgctxt "cmd:timers|status:stopped_auto"
 msgid ""
 "`{pattern}` timer is stopped with no members!\n"
 "Join {channel} to restart it."
 msgstr ""
+"`{pattern}` zamanlayıcısı üye olmadan durdu!\n"
+"Yeniden başlatmak için {channel} kanalına katılın."
 
-#: src/modules/pomodoro/cog.py:544
 #, possible-python-brace-format
 msgctxt "cmd:timers|status:stopped_manual"
 msgid ""
 "`{pattern}` timer is stopped with `{members}` members!\n"
 "Join {channel} and press `Start` to start it!"
 msgstr ""
+"`{pattern}` zamanlayıcısı `{members}` üyeyle durdu!\n"
+"{channel} kanalına katılın ve `Start` düğmesine basın!"
 
-#: src/modules/pomodoro/cog.py:551
 #, possible-python-brace-format
 msgctxt "cmd:timers|status:running_focus"
 msgid ""
 "`{pattern}` timer is running with `{members}` members!\n"
 "Currently **focusing**, with break starting {timestamp}"
 msgstr ""
+"`{pattern}` zamanlayıcısı `{members}` üyeyle çalışıyor!\n"
+"Şu anda **odaklanma**, mola {timestamp} başlıyor"
 
-#: src/modules/pomodoro/cog.py:557
 #, possible-python-brace-format
 msgctxt "cmd:timers|status:running_break"
 msgid ""
 "`{pattern}` timer is running with `{members}` members!\n"
 "Currently **resting**, with focus starting {timestamp}"
 msgstr ""
+"`{pattern}` zamanlayıcısı `{members}` üyeyle çalışıyor!\n"
+"Şu anda **dinlenme**, odaklanma {timestamp} başlıyor"
 
 #: src/modules/pomodoro/cog.py:571
 msgctxt "cmd:pomodoro"
 msgid "pomodoro"
-msgstr ""
+msgstr "pomodoro"
 
 #: src/modules/pomodoro/cog.py:572
 msgctxt "cmd:pomodoro|desc"
 msgid "Create and configure pomodoro timer rooms."
-msgstr ""
+msgstr "Pomodoro zamanlayıcı odaları oluşturun ve yapılandırın."
 
 #: src/modules/pomodoro/cog.py:579
 msgctxt "cmd:pomodoro_create"
@@ -273,6 +266,7 @@ msgstr "oluştur"
 msgctxt "cmd:pomodoro_create|desc"
 msgid "Create a new Pomodoro timer. Requires manage channel permissions."
 msgstr ""
+"Yeni bir Pomodoro zamanlayıcısı oluşturun. Kanal yönetimi izni gerektirir."
 
 #: src/modules/pomodoro/cog.py:586
 msgctxt "cmd:pomodoro_create|param:channel"
@@ -291,7 +285,7 @@ msgstr ""
 #: src/modules/pomodoro/cog.py:637
 msgctxt "cmd:pomodoro_create|new_channel|error:your_insufficient_perms|title"
 msgid "Could not create pomodoro voice channel!"
-msgstr ""
+msgstr "Pomodoro sesli kanalı oluşturulamadı!"
 
 #: src/modules/pomodoro/cog.py:641
 msgctxt "cmd:pomodoro_create|new_channel|error:your_insufficient_perms"
@@ -299,11 +293,13 @@ msgid ""
 "No `timer_channel` was provided, and you lack the 'Manage Channels` "
 "permission required to create a new timer room!"
 msgstr ""
+"`timer_channel` belirtilmedi ve yeni bir oda oluşturmak için 'Manage "
+"Channels' izniniz yok!"
 
 #: src/modules/pomodoro/cog.py:652
 msgctxt "cmd:pomodoro_create|new_channel|error:my_insufficient_perms|title"
 msgid "Could not create pomodoro voice channel!"
-msgstr ""
+msgstr "Pomodoro sesli kanalı oluşturulamadı!"
 
 #: src/modules/pomodoro/cog.py:656
 msgctxt "cmd:pomodoro_create|new_channel|error:my_insufficient_perms|desc"
@@ -311,21 +307,23 @@ msgid ""
 "No `timer_channel` was provided, and I lack the 'Manage Channels' permission"
 " required to create a new voice channel."
 msgstr ""
+"`timer_channel` belirtilmedi ve yeni bir sesli kanal oluşturmak için 'Manage"
+" Channels' iznim yok."
 
 #: src/modules/pomodoro/cog.py:667
 msgctxt "cmd:pomodoro_create|new_channel|default_name"
 msgid "Timer"
-msgstr ""
+msgstr "Zamanlayıcı"
 
 #: src/modules/pomodoro/cog.py:671
 msgctxt "cmd:pomodoro_create|new_channel|audit_reason"
 msgid "Creating Pomodoro Voice Channel"
-msgstr ""
+msgstr "Pomodoro Sesli Kanalı Oluşturuluyor"
 
 #: src/modules/pomodoro/cog.py:680
 msgctxt "cmd:pomodoro_create|new_channel|error:channel_create_failed|title"
 msgid "Could not create pomodoro voice channel!"
-msgstr ""
+msgstr "Pomodoro sesli kanalı oluşturulamadı!"
 
 #: src/modules/pomodoro/cog.py:684
 msgctxt "cmd:pomodoro_create|new_channel|error:channel_create_failed|desc"
@@ -334,20 +332,24 @@ msgid ""
 "communication error. Please try creating the channel manually and pass it to"
 " the `timer_channel` argument of this command."
 msgstr ""
+"Bilinmeyen bir Discord iletişim hatası nedeniyle yeni pomodoro sesli kanalı "
+"oluşturulamadı. Lütfe..."
 
-#: src/modules/pomodoro/cog.py:701
 #, possible-python-brace-format
 msgctxt "cmd:pomodoro_create|add_timer|error:timer_exists"
 msgid "A timer already exists in {channel}! Reconfigure it with {edit_cmd}."
 msgstr ""
+"{channel} kanalında zaten bir zamanlayıcı var! {edit_cmd} ile yeniden "
+"yapılandırın."
 
-#: src/modules/pomodoro/cog.py:715
 #, possible-python-brace-format
 msgctxt "cmd:pomodoro_create|add_timer|error:your_insufficient_perms"
 msgid ""
 "You must have the 'Manage Channel' permission in {channel} in order to add a"
 " timer there!"
 msgstr ""
+"Oraya bir zamanlayıcı eklemek için {channel} kanalında 'Manage Channel' "
+"iznine sahip olmalısınız!"
 
 #: src/modules/pomodoro/cog.py:764
 msgctxt "cmd:pomodoro_create|response:success|content"
@@ -364,7 +366,7 @@ msgstr "yok_et"
 #: src/modules/pomodoro/cog.py:773
 msgctxt "cmd:pomodoro_destroy|desc"
 msgid "Remove a pomodoro timer from a voice channel."
-msgstr ""
+msgstr "Bir sesli kanaldan pomodoro zamanlayıcısını kaldırın."
 
 #: src/modules/pomodoro/cog.py:777
 msgctxt "cmd:pomodoro_destroy|param:channel"
@@ -389,15 +391,15 @@ msgstr ""
 "Bu kanaldaki sayacı kaldırmak için yönetici ya da bu kanalın sahibi olman "
 "gerekiyor!"
 
-#: src/modules/pomodoro/cog.py:820
 #, possible-python-brace-format
 msgctxt "cmd:pomodoro_destroy|error:insufficient_perms|notowned"
 msgid ""
 "You need to have the `Manage Channels` permission in {channel} to remove "
 "this timer!"
 msgstr ""
+"Bu zamanlayıcıyı kaldırmak için {channel} kanalında `Manage Channels` iznine"
+" sahip olmalısınız!"
 
-#: src/modules/pomodoro/cog.py:831
 #, possible-python-brace-format
 msgctxt "cmd:pomdoro_destroy|response:success|description"
 msgid "Timer successfully removed from {channel}."
@@ -411,7 +413,7 @@ msgstr "düzenle"
 #: src/modules/pomodoro/cog.py:840
 msgctxt "cmd:pomodoro_edit|desc"
 msgid "Reconfigure a pomodoro timer."
-msgstr ""
+msgstr "Bir pomodoro zamanlayıcısını yeniden yapılandırın."
 
 #: src/modules/pomodoro/cog.py:844
 msgctxt "cmd:pomodoro_edit|param:channel"
@@ -421,7 +423,7 @@ msgstr "sayaç_kanalı"
 #: src/modules/pomodoro/cog.py:850
 msgctxt "cmd:pomodoro_edit|param:channel|desc"
 msgid "Select a timer voice channel to reconfigure."
-msgstr ""
+msgstr "Yeniden yapılandırmak için bir zamanlayıcı sesli kanalı seçin."
 
 #: src/modules/pomodoro/cog.py:891
 msgctxt "cmd:pomodoro_edit|error:no_timer"
@@ -467,31 +469,26 @@ msgctxt "cmd:configure_pomodoro|desc"
 msgid "Configure Pomodoro Timer System"
 msgstr "Pomodoro Sayaç Sistemi Konfigürasyonu"
 
-#: src/modules/pomodoro/lib.py:19
 #, possible-python-brace-format
 msgctxt "formatstring:channel_name|key:remaining"
 msgid "{remaining}"
 msgstr "{kalan}"
 
-#: src/modules/pomodoro/lib.py:20
 #, possible-python-brace-format
 msgctxt "formatstring:channel_name|key:stage"
 msgid "{stage}"
 msgstr "{oturum}"
 
-#: src/modules/pomodoro/lib.py:21
 #, possible-python-brace-format
 msgctxt "formatstring:channel_name|key:members"
 msgid "{members}"
 msgstr "{üyeler}"
 
-#: src/modules/pomodoro/lib.py:22
 #, possible-python-brace-format
 msgctxt "formatstring:channel_name|key:name"
 msgid "{name}"
 msgstr "{isim}"
 
-#: src/modules/pomodoro/lib.py:23
 #, possible-python-brace-format
 msgctxt "formatstring:channel_name|key:pattern"
 msgid "{pattern}"
@@ -517,7 +514,6 @@ msgctxt "timerset:notification_channel|desc"
 msgid "Channel to which to send timer status cards and notifications."
 msgstr "Sayaç durum kartlarının ve bildirimlerin gönderileceği kanal."
 
-#: src/modules/pomodoro/options.py:73
 #, possible-python-brace-format
 msgctxt "timerset:notification_channel|format:notset"
 msgid "Not Set (Using {channel})"
@@ -545,7 +541,7 @@ msgstr "Aktif olmayan üyeleri atmadan önce kaç sayaç döngüsü bekleneceği
 #: src/modules/pomodoro/options.py:112
 msgctxt "timerset:inactivity_length|desc"
 msgid "The inactivity threshold must be a positive whole number!"
-msgstr ""
+msgstr "Hareketsizlik eşiği pozitif bir tam sayı olmalıdır!"
 
 #: src/modules/pomodoro/options.py:120
 msgctxt "timerset:manager_role"
@@ -596,17 +592,15 @@ msgctxt "timerset:channel_name_format"
 msgid "channel_name"
 msgstr "kanal_adı"
 
-#: src/modules/pomodoro/options.py:187
 #, possible-python-brace-format
 msgctxt "timerset:channel_name_format|desc"
 msgid ""
 "Auto-updating voice channel name, accepting {remaining}, {name}, {pattern}, "
 "and {stage} keys."
 msgstr ""
-"Ses kanalı adı otomatik olarak güncelleniyor; {kalan}, {isim}, {model} ve "
-"{oturum} kodları kabul ediliyor."
+"Otomatik güncellenen kanal adı; {remaining}, {name}, {pattern}, {stage} "
+"kodlarını kabul eder."
 
-#: src/modules/pomodoro/options.py:191
 #, possible-python-brace-format
 msgctxt "timerset:channel_name|accepts"
 msgid ""
@@ -618,7 +612,7 @@ msgctxt "timerset:channel_name_format|error:too_long"
 msgid ""
 "The provided name is too long! Channel names can be at most `100` "
 "characters."
-msgstr ""
+msgstr "Sağlanan ad çok uzun! Kanal adları en fazla `100` karakter olabilir."
 
 #: src/modules/pomodoro/options.py:240
 msgctxt "timerset:focus_length"
@@ -691,7 +685,6 @@ msgctxt "guildset:pomodoro_channel|accepts"
 msgid "Timer notification channel name or id."
 msgstr "Sayaç bildirim kanalı adı ya da ID'si."
 
-#: src/modules/pomodoro/settings.py:53
 #, possible-python-brace-format
 msgctxt "guildset:pomodoro_channel|set_response|set"
 msgid "Pomodoro timer notifications will now default to {channel}"
@@ -705,7 +698,6 @@ msgstr ""
 "Pomodoro sayaç bildirimleri kendi ses kanallarına varsayılan olarak "
 "ayarlandı."
 
-#: src/modules/pomodoro/settings.py:68
 #, possible-python-brace-format
 msgctxt "guildset:pomdoro_channel|set_using"
 msgid "{cmd} or channel selector below."
@@ -725,7 +717,6 @@ msgstr ""
 "Burada olduğunuzu bildirdiğin için teşekkürler.\n"
 "İyi şanslar ve verimli kal!"
 
-#: src/modules/pomodoro/ui/status.py:72
 #, possible-python-brace-format
 msgctxt "ui:timer_status|button:present|error:not_in_timer"
 msgid ""
@@ -770,7 +761,7 @@ msgid ""
 "channel, or the configured `manager_role`!"
 msgstr ""
 "Bu sayacı başlatmak sayaç kanalında `KANALI_YÖNET` yetkisi ya da ayarlanmış "
-"bir idareci rolü gerektirmektedir!"
+"bir idareci rolü gere..."
 
 #: src/modules/pomodoro/ui/status.py:168
 msgctxt "ui:timer_status|button:start|label"
@@ -789,7 +780,7 @@ msgid ""
 "channel, or the configured `manager_role`!"
 msgstr ""
 "Bu sayacı durdurmak sayaç kanalında `KANALI_YÖNET` yetkisi ya da ayarlanmış "
-"bir idareci rolü gerektirmektedir!"
+"bir idareci rolü gere..."
 
 #: src/modules/pomodoro/ui/status.py:204
 msgctxt "ui:timer_status|button:stop|label"
@@ -799,7 +790,7 @@ msgstr "Durdur"
 #: src/modules/pomodoro/ui/config.py:45
 msgctxt "ui:timer_options|error:timer_destroyed"
 msgid "This timer no longer exists! Closing option menu."
-msgstr ""
+msgstr "Bu zamanlayıcı artık mevcut değil! Seçenek menüsü kapatılıyor."
 
 #: src/modules/pomodoro/ui/config.py:68
 msgctxt "ui:timer_options|button:edit|label"
@@ -816,7 +807,6 @@ msgctxt "ui:timer_options|button:delete|success|title"
 msgid "Timer Deleted"
 msgstr "Sayaç Silindi"
 
-#: src/modules/pomodoro/ui/config.py:109
 #, possible-python-brace-format
 msgctxt "ui:timer_options|button:delete|success|description"
 msgid "The timer in {channel} has been removed."
@@ -842,7 +832,6 @@ msgctxt "ui:timer_options|menu:manager_role|placeholder"
 msgid "Set Manager Role"
 msgstr "İdareci Rolünü Ayarla"
 
-#: src/modules/pomodoro/ui/config.py:181
 #, possible-python-brace-format
 msgctxt "ui:timer_options|embed|title"
 msgid "Timer Control Panel for {channel}"
@@ -858,7 +847,6 @@ msgctxt "ui:timer_options|embed|field:pattern|name"
 msgid "Pattern"
 msgstr "Model"
 
-#: src/modules/pomodoro/ui/config.py:203
 #, possible-python-brace-format
 msgctxt "ui:timer_options|embed|field:pattern|value"
 msgid ""
@@ -873,7 +861,6 @@ msgctxt "ui:timer_options|embed|field:channel_name|name"
 msgid "Channel Name Preview"
 msgstr "Kanal Adı Önizlemesi"
 
-#: src/modules/pomodoro/ui/config.py:218
 #, possible-python-brace-format
 msgctxt "ui:timer_options|embed|field:channel_name|value"
 msgid ""
@@ -893,7 +880,6 @@ msgctxt "ui:timer_options|issue:no_voice_channel"
 msgid "The configured voice channel does not exist! Please update it below."
 msgstr "Ayarlanmış ses kanalı bulunmamaktadır! Lütfen aşağıdan güncelle."
 
-#: src/modules/pomodoro/ui/config.py:257
 #, possible-python-brace-format
 msgctxt "ui:timer_options|issue:cannot_speak"
 msgid ""
@@ -901,7 +887,6 @@ msgid ""
 msgstr ""
 "Ses uyarıları açık fakat {channel} kanalında konuşma iznim bulunmuyor."
 
-#: src/modules/pomodoro/ui/config.py:264
 #, possible-python-brace-format
 msgctxt "ui:timer_options|issue:cannot_change_name"
 msgid ""
@@ -915,7 +900,6 @@ msgctxt "ui:timer_options|issue:notif_channel_dne"
 msgid "Configured notification channel does not exist!"
 msgstr "Ayarlanmış bildirim kanalı bulunmamaktadır!"
 
-#: src/modules/pomodoro/ui/config.py:284
 #, possible-python-brace-format
 msgctxt "ui:timer_options|issue:notif_channel_write"
 msgid ""
@@ -925,7 +909,6 @@ msgstr ""
 "{channel} kanalına dosya ekleyemiyorum (`DOSYA_EKLE`) veya gömülü içerik "
 "(`BAĞLANTI_YERLEŞTİR`) gönderemiyorum."
 
-#: src/modules/pomodoro/ui/config.py:292
 #, possible-python-brace-format
 msgctxt "ui:timer_options|issues:cannot_make_webhooks"
 msgid ""

@@ -10,7 +10,7 @@ from discord.ui.select import select, Select, SelectOption
 from discord.ui.button import button, Button, ButtonStyle
 from discord.ui.text_input import TextInput, TextStyle
 
-from meta import conf
+from meta import conf, WEBSITE_URL
 from meta.logger import log_wrap
 from meta.errors import UserInputError
 from utils.lib import MessageArgs, utc_now
@@ -38,9 +38,24 @@ class TasklistCaller(LeoUI):
             'ui:tasklist_caller|button:tasklist|label',
             "Open Tasklist"
         ))
+        # --- AI-MODIFIED (2026-03-17) ---
+        # Purpose: Web link button to Todoist-style task board on website
+        self.add_item(discord.ui.Button(
+            label="Task Board", emoji="🌐",
+            url=f"{WEBSITE_URL}/dashboard/tasks",
+            style=ButtonStyle.link,
+        ))
+        # --- END AI-MODIFIED ---
 
     @button(label='TASKLIST_PLACEHOLDER', custom_id='open_tasklist', style=ButtonStyle.blurple)
     async def tasklist_callback(self, press: discord.Interaction, pressed: Button):
+        # --- AI-MODIFIED (2026-03-14) ---
+        # Purpose: Set locale for persistent view (not created from a command context)
+        from babel.translator import ctx_locale
+        babel_cog = self.bot.get_cog('BabelCog')
+        if babel_cog:
+            ctx_locale.set(await babel_cog.get_user_locale(press.user.id))
+        # --- END AI-MODIFIED ---
         cog = self.bot.get_cog('TasklistCog')
         await cog.call_tasklist(press)
 
@@ -103,12 +118,16 @@ class BulkEditor(LeoModal):
         self.tasklist_editor.label = t(_p(
             'modal:tasklist_bulk_editor|field:tasklist|label', "Tasklist"
         ))
-        self.tasklist_editor.placeholder = t(_p(
+        # --- AI-MODIFIED (2026-03-18) ---
+        # Purpose: Truncate placeholder to 100 chars (Discord limit); some translations exceed it
+        placeholder = t(_p(
             'modal:tasklist_bulk_editor|field:tasklist|placeholder',
             "- [ ] This is task 1, unfinished.\n"
             "- [x] This is task 2, finished.\n"
             "  - [ ] This is subtask 2.1."
         ))
+        self.tasklist_editor.placeholder = placeholder[:100]
+        # --- END AI-MODIFIED ---
 
     def __init__(self, tasklist: Tasklist, **kwargs):
         self.setup()
@@ -465,7 +484,13 @@ class TasklistUI(BasePager):
             shared_root = None
             for task in tasks:
                 pid = task.parentid
-                plabel = mapper[pid] if pid else ()
+                # --- AI-MODIFIED (2026-03-22) ---
+                # Purpose: Use .get() to avoid KeyError when parent task is not in visible set
+                # --- Original code (commented out for rollback) ---
+                # plabel = mapper[pid] if pid else ()
+                # --- End original code ---
+                plabel = mapper.get(pid, ()) if pid else ()
+                # --- END AI-MODIFIED ---
                 if shared_root:
                     shared_root = tuple(i for i, j in zip(shared_root, plabel) if i == j)
                 else:

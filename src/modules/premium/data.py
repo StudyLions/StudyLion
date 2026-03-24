@@ -78,6 +78,22 @@ class PremiumData(Registry):
         premium_until = Timestamp()
         custom_skin_id = Integer()
 
+    # --- AI-MODIFIED (2026-03-16) ---
+    # Purpose: LionHeart subscription tier tracking model
+    class UserSubscription(RowModel):
+        _tablename_ = 'user_subscriptions'
+        _cache_ = {}
+        userid = Integer(primary=True)
+        stripe_customer_id = String()
+        stripe_subscription_id = String()
+        tier = String()
+        status = String()
+        current_period_start = Timestamp()
+        current_period_end = Timestamp()
+        created_at = Timestamp()
+        updated_at = Timestamp()
+    # --- END AI-MODIFIED ---
+
     """
     CREATE TABLE premium_guild_contributions(
       contributionid SERIAL PRIMARY KEY,

@@ -1,0 +1,131 @@
+# Polish translation for LionBot - stats-gui
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 19:00+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Polish\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: src/gui/cards/stats.py:61
+msgctxt "skin:stats|header:col1"
+msgid "STATISTICS"
+msgstr "STATYSTYKI"
+
+#: src/gui/cards/stats.py:64
+msgctxt "skin:stats|subheader:leaderboard"
+msgid "LEADERBOARD POSITION"
+msgstr "POZYCJA W RANKINGU"
+
+#: src/gui/cards/stats.py:68
+msgctxt "skin:stats|mode:study|subheader:study"
+msgid "STUDY TIME"
+msgstr "CZAS NAUKI"
+
+#: src/gui/cards/stats.py:72
+msgctxt "skin:stats|mode:voice|subheader:study"
+msgid "VOICE TIME"
+msgstr "CZAS GŁOSOWY"
+
+#: src/gui/cards/stats.py:76
+msgctxt "skin:stats|mode:text|subheader:study"
+msgid "MESSAGES"
+msgstr "WIADOMOŚCI"
+
+#: src/gui/cards/stats.py:80
+msgctxt "skin:stats|mode:anki|subheader:study"
+msgid "CARDS REVIEWED"
+msgstr "POWTÓRZONE KARTY"
+
+#: src/gui/cards/stats.py:91
+msgctxt "skin:stats|subheader:workouts"
+msgid "WORKOUTS"
+msgstr "ĆWICZENIA"
+
+#: src/gui/cards/stats.py:107
+msgctxt "skin:stats|field:daily"
+msgid "DAILY"
+msgstr "DZIENNIE"
+
+#: src/gui/cards/stats.py:111
+msgctxt "skin:stats|field:weekly"
+msgid "WEEKLY"
+msgstr "TYGODNIOWO"
+
+#: src/gui/cards/stats.py:115
+msgctxt "skin:stats|field:monthly"
+msgid "MONTHLY"
+msgstr "MIESIĘCZNIE"
+
+#: src/gui/cards/stats.py:119
+msgctxt "skin:stats|field:alltime"
+msgid "ALL TIME"
+msgstr "ŁĄCZNIE"
+
+#: src/gui/cards/stats.py:123
+msgctxt "skin:stats|field:time"
+msgid "TIME"
+msgstr "CZAS"
+
+#: src/gui/cards/stats.py:127
+msgctxt "skin:stats|field:anki"
+msgid "ANKI: COMING SOON"
+msgstr "ANKI: WKRÓTCE"
+
+#: src/gui/cards/stats.py:144
+msgctxt "skin:stats|mode:study|header:col2"
+msgid "STUDY STREAK"
+msgstr "SERIA NAUKI"
+
+#: src/gui/cards/stats.py:148
+msgctxt "skin:stats|mode:voice|header:col2"
+msgid "VOICE STREAK"
+msgstr "SERIA GŁOSOWA"
+
+#: src/gui/cards/stats.py:152
+msgctxt "skin:stats|mode:text|header:col2"
+msgid "ACTIVITY STREAK"
+msgstr "SERIA AKTYWNOŚCI"
+
+#: src/gui/cards/stats.py:156
+msgctxt "skin:stats|mode:anki|header:col2"
+msgid "ANKI REVIEW STREAK"
+msgstr "SERIA POWTÓREK ANKI"
+
+#, possible-python-brace-format
+msgctxt "skin:stats|mode:study|field:col2_summary"
+msgid "{amount} HRS"
+msgstr "{amount} GODZ"
+
+#, possible-python-brace-format
+msgctxt "skin:stats|mode:voice|field:col2_summary"
+msgid "{amount} HRS"
+msgstr "{amount} GODZ"
+
+#, possible-python-brace-format
+msgctxt "skin:stats|mode:text|field:col2_summary"
+msgid "{amount} XP"
+msgstr "{amount} XP"
+
+#, possible-python-brace-format
+msgctxt "skin:stats|mode:anki|field:col2_summary"
+msgid "{amount} CARDS"
+msgstr "{amount} KART"
+
+#: src/gui/cards/stats.py:212
+msgctxt "skin:stats|cal|weekdays"
+msgid "S,M,T,W,T,F,S"
+msgstr "N,P,W,Ś,C,P,S"
+
+#: src/gui/cards/stats.py:216
+msgctxt "skin:stats|cal|months"
+msgid "JANUARY,FEBRUARY,MARCH,APRIL,MAY,JUNE,JULY,AUGUST,SEPTEMBER,OCTOBER,NOVEMBER,DECEMBER"
+msgstr "STYCZEŃ,LUTY,MARZEC,KWIECIEŃ,MAJ,CZERWIEC,LIPIEC,SIERPIEŃ,WRZESIEŃ,PAŹDZIERNIK,LISTOPAD,GRUDZIEŃ"

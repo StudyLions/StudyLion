@@ -1,27 +1,19 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
-# Translators:
-# Interitio, 2023
-# Havina Ru, 2023
-# Eyüp Ramazan, 2023
-# 
-#, fuzzy
+# Turkish translation for LionBot - video
+# AI-translated with human Transifex contributions where available.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: LionBot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-24 14:37+0300\n"
-"PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Eyüp Ramazan, 2023\n"
-"Language-Team: Turkish (https://app.transifex.com/leobot/teams/174919/tr/)\n"
+"PO-Revision-Date: 2026-03-13 20:24+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Turkish\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: tr\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/video_channels/settingui.py:58
 msgctxt "ui:video_config|menu:channels|placeholder"
@@ -46,7 +38,7 @@ msgstr "Video Kanalı Konfigürasyon Paneli"
 #: src/modules/video_channels/settingui.py:159
 msgctxt "dash:video|title"
 msgid "Video Channel Settings ({commands[admin config video_channels]})"
-msgstr ""
+msgstr "Video kanalı ayarları ({commands[admin config video_channels]})"
 
 #: src/modules/video_channels/settingui.py:163
 msgctxt "dash:video|option|name"
@@ -63,7 +55,6 @@ msgctxt "video_watchdog|kick_blacklisted_member|notification|title"
 msgid "You have been disconnected."
 msgstr "Bağlantın kesildi."
 
-#: src/modules/video_channels/cog.py:250
 #, possible-python-brace-format
 msgctxt "video_watchdog|kick_blacklisted_member|notification|desc"
 msgid ""
@@ -71,9 +62,8 @@ msgid ""
 "blacklisted from video channels in **{server}**."
 msgstr ""
 "Video kanalı {channel}'dan bağlantın kesildi çünkü **{server}**' "
-"sunucusundaki video kanallarında kara listeye alındınız."
+"sunucusundaki video kanallarında..."
 
-#: src/modules/video_channels/cog.py:290
 #, possible-python-brace-format
 msgctxt "video_watchdog|join_task|jump_field"
 msgid "[Click to jump back]({link})"
@@ -84,7 +74,6 @@ msgctxt "video_watchdog|join_task|initial_request:title"
 msgid "Please enable your video!"
 msgstr "Lütfen videonuzu etkinleştirin!"
 
-#: src/modules/video_channels/cog.py:301
 #, possible-python-brace-format
 msgctxt "video_watchdog|join_task|initial_request:description"
 msgid ""
@@ -109,7 +98,6 @@ msgctxt "video_watchdog|join_task|kick_after_grace|audit_reason"
 msgid "Member never enabled their video in video channel."
 msgstr "Üye video kanalındaki videosunu hiç etkinleştirmedi."
 
-#: src/modules/video_channels/cog.py:385
 #, possible-python-brace-format
 msgctxt "video_watchdog|join_task|kick_after_grace|ticket_reason"
 msgid "Failed to enable their video in time in the video channel {channel}"
@@ -120,7 +108,6 @@ msgctxt "video_watchdog|join_task|kick_after_grace|warning|title"
 msgid "You have received a warning!"
 msgstr "Bir uyarı aldınız!"
 
-#: src/modules/video_channels/cog.py:407
 #, possible-python-brace-format
 msgctxt "video_watchdog|join_task|kick_after_grace|warning|desc"
 msgid ""
@@ -128,7 +115,7 @@ msgid ""
 "You have been disconnected from the video {channel} for not enabling your camera."
 msgstr ""
 "**Kameraya özel odalarda kameranızı etkinleştirmelisiniz.**\n"
-"Kameranızı etkinleştirmediğiniz için video kanalı {kanal} ile bağlantınız kesildi."
+"Kameranızı etkinleştirmediğiniz için ..."
 
 #: src/modules/video_channels/cog.py:422
 msgctxt "video_watchdog|join_task|kick_after_grace|blacklist|title"
@@ -140,7 +127,6 @@ msgctxt "video_watchdog|join_task|kick_after_grace|blacklist|desc"
 msgid "You have been blacklisted from the video channels in this server."
 msgstr "Bu sunucudaki video kanallarından kara listeye alındınız."
 
-#: src/modules/video_channels/cog.py:459
 #, possible-python-brace-format
 msgctxt "video_watchdog|disabled_video_kick|audit_reason"
 msgid ""
@@ -155,7 +141,6 @@ msgctxt "video_watchdog|disabled_video_kick|notification|title"
 msgid "You have been disconnected."
 msgstr "Bağlantınız kesildi."
 
-#: src/modules/video_channels/cog.py:478
 #, possible-python-brace-format
 msgctxt "video_watchdog|disabled_video_kick|notification|desc"
 msgid ""
@@ -163,7 +148,7 @@ msgid ""
 "Please keep your video on at all times, and leave the channel if you need to disable it!"
 msgstr ""
 "Videonuzu devre dışı bıraktığınız için {kanal} video kanalından bağlantınız kesildi.\n"
-"Lütfen videonuzu her zaman açık tutun ve devre dışı bırakmanız gerekiyorsa kanaldan ayrılın!"
+"Lütfen video..."
 
 #: src/modules/video_channels/cog.py:510
 msgctxt "cmd:configure_video"
@@ -202,7 +187,6 @@ msgctxt "guildset:video_channels|accepts"
 msgid "Comma separated channel ids or names."
 msgstr "Kanal ID'leri veya adları (virgülle ayırın)."
 
-#: src/modules/video_channels/settings.py:69
 #, possible-python-brace-format
 msgctxt "guildset:video_channels|set_response:set"
 msgid ""
@@ -244,7 +228,6 @@ msgctxt "guildset:video_blacklist|accepts"
 msgid "Blacklist role name or id."
 msgstr "Kara liste rolü adı ya da ID'si"
 
-#: src/modules/video_channels/settings.py:141
 #, possible-python-brace-format
 msgctxt "guildset:video_blacklist|set_response:set"
 msgid "Members who fail to keep their video on will be given {role}"
@@ -289,7 +272,6 @@ msgctxt "guildset:video_durations|accepts"
 msgid "Comma separated list of durations."
 msgstr "Virgülle ayırılmış süre listesi."
 
-#: src/modules/video_channels/settings.py:212
 #, possible-python-brace-format
 msgctxt "guildset:video_durations|set_response:set"
 msgid "Members will be automatically blacklisted for: {durations}"
@@ -313,8 +295,8 @@ msgid ""
 "How long to wait (in seconds) before kicking/blacklist members who don't "
 "enable their video."
 msgstr ""
-"Kamerasını açmayan üye için atmadan/kara listeye almadan önce ne kadar süre "
-"(saniye cinsinden) bekleneceği."
+"Kamerasını açmayan üyeyi atmadan/kara listeye almadan önceki bekleme süresi "
+"(saniye)."
 
 #: src/modules/video_channels/settings.py:233
 msgctxt "guildset:video_grace_period|long_desc"
@@ -333,7 +315,6 @@ msgctxt "guildset:video_grace_period|accepts"
 msgid "How many seconds to wait for a member to enable video."
 msgstr "Üyenin kamerasını aktifleştirmesi için kaç saniye bekleneceği."
 
-#: src/modules/video_channels/settings.py:253
 #, possible-python-brace-format
 msgctxt "guildset:video_grace_period|set_response:set"
 msgid "Members will now have **{duration}** to enable their video."
@@ -367,7 +348,6 @@ msgctxt "guildset:video_exempt|accepts"
 msgid "List of exempt role names or ids."
 msgstr "Muaf rol adlarının veya kimliklerinin listesi."
 
-#: src/modules/video_channels/settings.py:290
 #, possible-python-brace-format
 msgctxt "guildset:video_exempt|set_response:set"
 msgid "The following roles will now be exempt from video channels: {roles}"

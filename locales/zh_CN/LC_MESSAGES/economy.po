@@ -1,0 +1,518 @@
+# Chinese (Simplified) translation for LionBot - economy
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 21:10+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Chinese (Simplified)\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/modules/economy/settingui.py:34
+msgctxt "ui:economy_config|embed|title"
+msgid "Economy Configuration Panel"
+msgstr "经济配置面板"
+
+#: src/modules/economy/settingui.py:67
+msgctxt "dash:economy|title"
+msgid "Economy Configuration ({commands[config economy]})"
+msgstr "经济配置（{commands[config economy]}）"
+
+#: src/modules/economy/settingui.py:71
+msgctxt "dash:economy|dropdown|placeholder"
+msgid "Economy Panel"
+msgstr "经济面板"
+
+#: src/modules/economy/cog.py:87
+msgctxt "cmd:economy"
+msgid "economy"
+msgstr "economy"
+
+#: src/modules/economy/cog.py:93
+msgctxt "cmd:economy_balance"
+msgid "balance"
+msgstr "balance"
+
+#: src/modules/economy/cog.py:96
+msgctxt "cmd:economy_balance|desc"
+msgid "Display or modify LionCoin balance for members and roles."
+msgstr "显示或修改成员和角色的LionCoin余额。"
+
+#: src/modules/economy/cog.py:100
+msgctxt "cmd:economy_balance|param:target"
+msgid "target"
+msgstr "target"
+
+#: src/modules/economy/cog.py:101
+msgctxt "cmd:economy_balance|param:add"
+msgid "add"
+msgstr "add"
+
+#: src/modules/economy/cog.py:102
+msgctxt "cmd:economy_balance|param:set"
+msgid "set"
+msgstr "set"
+
+#: src/modules/economy/cog.py:107
+msgctxt "cmd:economy_balance|param:target|desc"
+msgid "Target user or role to view or update. Use @everyone to update the entire guild."
+msgstr "要查看或更新的目标用户或角色。使用@everyone更新整个服务器。"
+
+#: src/modules/economy/cog.py:111
+msgctxt "cmd:economy_balance|param:add|desc"
+msgid "Number of LionCoins to add to the target member's balance. May be negative to remove."
+msgstr "要添加到目标成员余额的LionCoins数量。可以为负数以扣除。"
+
+#: src/modules/economy/cog.py:115
+msgctxt "cmd:economy_balance|param:set|set"
+msgid "New balance to set the target's balance to."
+msgstr "要为目标设置的新余额。"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|error:no_target"
+msgid "There are no valid members in {role.mention}! It has a total of `0` LC."
+msgstr "{role.mention}中没有有效成员！总计`0` LC。"
+
+#: src/modules/economy/cog.py:164
+msgctxt "cmd:economy_balance|error:target_is_bot"
+msgid "Bots cannot have coin balances!"
+msgstr "机器人不能拥有硬币余额！"
+
+#: src/modules/economy/cog.py:175
+msgctxt "cmd:economy_balance|error:args"
+msgid "You cannot simultaneously `set` and `add` member balances!"
+msgstr "不能同时使用`set`和`add`！"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:success|affected"
+msgid "One user was affected."
+msgid_plural "**{count}** users were affected."
+msgstr[0] "**{count}**位用户受到影响。"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|confirm|affected"
+msgid "One user will be affected."
+msgid_plural "**{count}** users will be affected."
+msgstr[0] "**{count}**位用户将受到影响。"
+
+#: src/modules/economy/cog.py:237
+msgctxt "cmd:economy_balance|confirm|button:confirm"
+msgid "Yes, adjust balances"
+msgstr "是的，调整余额"
+
+#: src/modules/economy/cog.py:241
+msgctxt "cmd:economy_balance|confirm|button:cancel"
+msgid "No, cancel"
+msgstr "不，取消"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:success_set|desc"
+msgid "All members of **{guild_name}** have had their balance set to {coin_emoji}**{amount}**."
+msgstr "**{guild_name}**的所有成员余额已设置为{coin_emoji}**{amount}**。"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|confirm_set|desc"
+msgid "Are you sure you want to set everyone's balance to {coin_emoji}**{amount}**?"
+msgstr "你确定要将所有人的余额设置为{coin_emoji}**{amount}**吗？"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:success_set|desc"
+msgid "All members of {role_mention} have had their balance set to {coin_emoji}**{amount}**."
+msgstr "{role_mention}的所有成员余额已设置为{coin_emoji}**{amount}**。"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|confirm_set|desc"
+msgid "Are you sure you want to set the balance of everyone with {role_mention} to {coin_emoji}**{amount}**?"
+msgstr "你确定要将所有拥有{role_mention}的成员余额设置为{coin_emoji}**{amount}**吗？"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:success_set|desc"
+msgid "{user_mention} now has a balance of {coin_emoji}**{amount}**."
+msgstr "{user_mention}的余额现在是{coin_emoji}**{amount}**。"
+
+#: src/modules/economy/cog.py:305
+msgctxt "eventlog|event:economy_set|title"
+msgid "Moderator Set Economy Balance"
+msgstr "管理员设置了经济余额"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:economy_set|desc"
+msgid "{moderator} set {target}'s balance to {amount}."
+msgstr "{moderator}将{target}的余额设置为{amount}。"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:success_add|desc"
+msgid "All members of **{guild_name}** have been given {coin_emoji}**{amount}**."
+msgstr "**{guild_name}**的所有成员已获得{coin_emoji}**{amount}**。"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|confirm_add|desc"
+msgid "Are you sure you want to add **{amount}** to everyone's balance?"
+msgstr "你确定要将**{amount}**添加到所有人的余额吗？"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:success_add|desc"
+msgid "All members of {role_mention} have been given {coin_emoji}**{amount}**."
+msgstr "{role_mention}的所有成员已获得{coin_emoji}**{amount}**。"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|confirm_add|desc"
+msgid "Are you sure you want to add {coin_emoji}**{amount}** to everyone in {role_mention}?"
+msgstr "你确定要给{role_mention}中的所有人添加{coin_emoji}**{amount}**吗？"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:success_add|desc"
+msgid "{user_mention} was given {coin_emoji}**{amount}**, and now has a balance of {coin_emoji}**{new_amount}**."
+msgstr "{user_mention}获得了{coin_emoji}**{amount}**，当前余额为{coin_emoji}**{new_amount}**。"
+
+#: src/modules/economy/cog.py:380
+msgctxt "eventlog|event:economy_add|title"
+msgid "Moderator Modified Economy Balance"
+msgstr "管理员修改了经济余额"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:economy_set|desc"
+msgid "{moderator} added {amount} to {target}'s balance."
+msgstr "{moderator}向{target}的余额添加了{amount}。"
+
+#: src/modules/economy/cog.py:394
+msgctxt "cmd:economy_balance|embed:success|title"
+msgid "Account successfully updated."
+msgid_plural "Accounts successfully updated."
+msgstr[0] "账户已成功更新。"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:role_lb|author"
+msgid "Balance sheet for {name}"
+msgstr "{name}的余额表"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:role_lb|header"
+msgid "This server has a total balance of {coin_emoji}**{total}**."
+msgstr "此服务器的总余额为{coin_emoji}**{total}**。"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:role_lb|header"
+msgid "{role_mention} has `{count}` members with non-zero balance, with a total balance of {coin_emoji}**{total}**."
+msgstr "{role_mention}有`{count}`个余额非零的成员，总余额为{coin_emoji}**{total}**。"
+
+#: src/modules/economy/cog.py:464
+msgctxt "cmd:economy_balance|embed:role_lb|row_format"
+msgid "`[{pos:>{numwidth}}]` | `{coins:>{coinwidth}} LC` | {mention}"
+msgstr "`[{pos:>{numwidth}}]` | `{coins:>{coinwidth}} LC` | {mention}"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:role_lb|footer"
+msgid "Page {page}/{total}"
+msgstr "第{page}/{total}页"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:role_lb|header"
+msgid "This server has a total balance of {coin_emoji}**0**."
+msgstr "此服务器的总余额为{coin_emoji}**0**。"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:role_lb|header"
+msgid "The role {role_mention} has a total balance of {coin_emoji}**0**."
+msgstr "角色{role_mention}的总余额为{coin_emoji}**0**。"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:single|desc"
+msgid "{mention} currently owns {coin_emoji} {coins}."
+msgstr "{mention}目前拥有{coin_emoji} {coins}。"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:single|author"
+msgid "Balance statement for {user}"
+msgstr "{user}的余额报表"
+
+#: src/modules/economy/cog.py:548
+msgctxt "cmd:economy_reset"
+msgid "reset"
+msgstr "reset"
+
+#: src/modules/economy/cog.py:551
+msgctxt "cmd:economy_reset|desc"
+msgid "Reset the coin balance for a target user or role. (See also \"economy balance\".)"
+msgstr "重置目标用户或角色的硬币余额。（另请参阅\"economy balance\"。）"
+
+#: src/modules/economy/cog.py:555
+msgctxt "cmd:economy_reset|param:target"
+msgid "target"
+msgstr "target"
+
+#: src/modules/economy/cog.py:560
+msgctxt "cmd:economy_reset|param:target|desc"
+msgid "Target user or role to view or update. Use @everyone to reset the entire guild."
+msgstr "目标用户或角色。使用@everyone重置整个服务器。"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_reset|confirm:reset_guild|desc"
+msgid ""
+"Are you sure you want to reset the coin balance for everyone in **{guild_name}**?\n"
+"*This is not reversible!*"
+msgstr ""
+"你确定要重置**{guild_name}**中所有人的硬币余额吗？\n"
+"*此操作不可逆！*"
+
+#: src/modules/economy/cog.py:595
+msgctxt "cmd:economy_reset|confirm:reset_guild|button:confirm"
+msgid "Yes, reset the economy"
+msgstr "是的，重置经济"
+
+#: src/modules/economy/cog.py:599
+msgctxt "cmd:economy_reset|confirm:reset_guild|button:cancel"
+msgid "Cancel reset"
+msgstr "取消重置"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_reset|embed:success_guild|desc"
+msgid "Everyone in **{guild_name}** has had their balance reset to {coin_emoji}**{amount}**."
+msgstr "**{guild_name}**中所有人的余额已重置为{coin_emoji}**{amount}**。"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_reset|error:no_target|desc"
+msgid "The role {mention} has no members to reset!"
+msgstr "角色{mention}没有可重置的成员！"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_reset|confirm:reset_role|desc"
+msgid ""
+"Are you sure you want to reset the balance for everyone in {mention}?\n"
+"**{count}** members will be affected."
+msgstr ""
+"你确定要重置{mention}中所有人的余额吗？\n"
+"**{count}**个成员将受到影响。"
+
+#: src/modules/economy/cog.py:651
+msgctxt "cmd:economy_reset|confirm:reset_role|button:confirm"
+msgid "Yes, complete economy reset"
+msgstr "是的，完全重置"
+
+#: src/modules/economy/cog.py:655
+msgctxt "cmd:economy_reset|confirm:reset_role|button:cancel"
+msgid "Cancel"
+msgstr "取消"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_reset|embed:success_role|desc"
+msgid "Everyone in {role_mention} has had their coin balance reset to {coin_emoji}**{amount}**."
+msgstr "{role_mention}中所有人的硬币余额已重置为{coin_emoji}**{amount}**。"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_reset|embed:success_user|desc"
+msgid "{mention}'s balance has been reset to {coin_emoji}**{amount}**."
+msgstr "{mention}的余额已重置为{coin_emoji}**{amount}**。"
+
+#: src/modules/economy/cog.py:704
+msgctxt "cmd:send"
+msgid "send"
+msgstr "send"
+
+#: src/modules/economy/cog.py:707
+msgctxt "cmd:send|desc"
+msgid "Gift the target user a certain number of LionCoins."
+msgstr "向目标用户赠送一定数量的LionCoins。"
+
+#: src/modules/economy/cog.py:711
+msgctxt "cmd:send|param:target"
+msgid "target"
+msgstr "target"
+
+#: src/modules/economy/cog.py:712
+msgctxt "cmd:send|param:amount"
+msgid "amount"
+msgstr "amount"
+
+#: src/modules/economy/cog.py:713
+msgctxt "cmd:send|param:note"
+msgid "note"
+msgstr "note"
+
+#: src/modules/economy/cog.py:716
+msgctxt "cmd:send|param:target|desc"
+msgid "User to send the gift to"
+msgstr "接收礼物的用户"
+
+#: src/modules/economy/cog.py:717
+msgctxt "cmd:send|param:amount|desc"
+msgid "Number of coins to send"
+msgstr "发送的硬币数量"
+
+#: src/modules/economy/cog.py:718
+msgctxt "cmd:send|param:note|desc"
+msgid "Optional note to add to the gift."
+msgstr "可选的礼物附言。"
+
+#: src/modules/economy/cog.py:742
+msgctxt "cmd:send|error:not_allowed"
+msgid "Sorry, this server has disabled LionCoin transfers!"
+msgstr "抱歉，此服务器已禁用LionCoin转账！"
+
+#: src/modules/economy/cog.py:751
+msgctxt "cmd:send|error:sending-to-self"
+msgid ""
+"What is this, tax evasion?\n"
+"(You can not send coins to yourself.)"
+msgstr ""
+"这是什么，逃税？\n"
+"（你不能给自己发送硬币。）"
+
+#: src/modules/economy/cog.py:761
+msgctxt "cmd:send|error:sending-to-leo"
+msgid ""
+"I appreciate it, but you need it more than I do!\n"
+"(You cannot send coins to bots.)"
+msgstr ""
+"谢谢你，但你比我更需要它！\n"
+"（你不能向机器人发送硬币。）"
+
+#, possible-python-brace-format
+msgctxt "cmd:send|error:sending-to-bot"
+msgid ""
+"{target} appreciates the gesture, but said they don't have any use for {coin}.\n"
+"(You cannot send coins to bots.)"
+msgstr ""
+"{target}感谢你的心意，但表示不需要{coin}。\n"
+"（你不能向机器人发送硬币。）"
+
+#, possible-python-brace-format
+msgctxt "cmd:send|error:insufficient"
+msgid ""
+"You do not have enough lioncoins to do this!\n"
+"`Current Balance:` {coin_emoji}{balance}"
+msgstr ""
+"你没有足够的LionCoins！\n"
+"`当前余额：` {coin_emoji}{balance}"
+
+#: src/modules/economy/cog.py:816
+msgctxt "eventlog|event:send|title"
+msgid "Coins Transferred"
+msgstr "硬币已转账"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:send|desc"
+msgid "{source} gifted {amount} to {target}"
+msgstr "{source}向{target}赠送了{amount}"
+
+#, possible-python-brace-format
+msgctxt "cmd:send|embed:gift|title"
+msgid "{user} sent you a gift!"
+msgstr "{user}给你发送了一份礼物！"
+
+#, possible-python-brace-format
+msgctxt "cmd:send|embed:gift|desc"
+msgid "{mention} sent you {coin_emoji}**{amount}**."
+msgstr "{mention}向你发送了{coin_emoji}**{amount}**。"
+
+#, possible-python-brace-format
+msgctxt "cmd:send|embed:ack|desc"
+msgid "**{coin_emoji}{amount}** has been deducted from your balance and sent to {mention}!"
+msgstr "**{coin_emoji}{amount}**已从你的余额中扣除并发送给{mention}！"
+
+#: src/modules/economy/cog.py:872
+msgctxt "cmd:send|embed:ack|desc|error:unreachable"
+msgid "Unfortunately, I was not able to message the recipient. Perhaps they have me blocked?"
+msgstr "很遗憾，我无法向收件人发送消息。也许他们屏蔽了我？"
+
+#: src/modules/economy/cog.py:884
+msgctxt "cmd:configure_economy"
+msgid "economy"
+msgstr "economy"
+
+#: src/modules/economy/cog.py:887
+msgctxt "cmd:configure_economy|desc"
+msgid "Configure LionCoin Economy"
+msgstr "配置LionCoin经济"
+
+#: src/modules/economy/settings.py:38
+msgctxt "guildset:coins_per_xp"
+msgid "coins_per_100xp"
+msgstr "coins_per_100xp"
+
+#: src/modules/economy/settings.py:41
+msgctxt "guildset:coins_per_xp|desc"
+msgid "How many LionCoins to reward members per 100 XP they earn."
+msgstr "每获得100 XP奖励多少LionCoins。"
+
+#: src/modules/economy/settings.py:45
+msgctxt "guildset:coins_per_xp|long_desc"
+msgid "Members will be rewarded with this many LionCoins for every 100 XP they earn."
+msgstr "成员每获得100 XP将获得此数量的LionCoins。"
+
+#: src/modules/economy/settings.py:49
+msgctxt "guildset:coins_per_xp|long_desc"
+msgid "The number of coins to reward per 100 XP."
+msgstr "每100 XP奖励的硬币数。"
+
+#, possible-python-brace-format
+msgctxt "guildset:coins_per_xp|set_response"
+msgid "For every **100** XP they earn, members will now be given {coin}**{amount}**."
+msgstr "每获得**100** XP，成员将获得{coin}**{amount}**。"
+
+#: src/modules/economy/settings.py:74
+msgctxt "guildset:allow_transfers"
+msgid "allow_transfers"
+msgstr "allow_transfers"
+
+#: src/modules/economy/settings.py:77
+msgctxt "guildset:allow_transfers|desc"
+msgid "Whether to allow members to transfer LionCoins to each other."
+msgstr "是否允许成员之间转账LionCoins。"
+
+#: src/modules/economy/settings.py:81
+msgctxt "guildset:allow_transfers|long_desc"
+msgid "If disabled, members will not be able to transfer LionCoins to each other."
+msgstr "如果禁用，成员将无法互相转账LionCoins。"
+
+#: src/modules/economy/settings.py:89
+msgctxt "guildset:allow_transfers|outputs:true"
+msgid "Enabled (Coin transfers allowed.)"
+msgstr "已启用（允许硬币转账。）"
+
+#: src/modules/economy/settings.py:90
+msgctxt "guildset:allow_transfers|outputs:false"
+msgid "Disabled (Coin transfers not allowed.)"
+msgstr "已禁用（不允许硬币转账。）"
+
+#, possible-python-brace-format
+msgctxt "guildset:allow_transfers|set_response|set:true"
+msgid "Members will now be able to use {send_cmd} to transfer {coin}"
+msgstr "成员现在可以使用{send_cmd}来转账{coin}"
+
+#, possible-python-brace-format
+msgctxt "guildset:allow_transfers|set_response|set:false"
+msgid "Members will not be able to use {send_cmd} to transfer {coin}"
+msgstr "成员将无法使用{send_cmd}来转账{coin}"
+
+#: src/modules/economy/settings.py:123
+msgctxt "guildset:starting_funds"
+msgid "starting_funds"
+msgstr "starting_funds"
+
+#: src/modules/economy/settings.py:126
+msgctxt "guildset:starting_funds|desc"
+msgid "How many LionCoins should a member start with."
+msgstr "成员初始LionCoins数量。"
+
+#: src/modules/economy/settings.py:130
+msgctxt "guildset:starting_funds|long_desc"
+msgid "Members will be given this number of coins when they first interact with me, or first join the server."
+msgstr "成员首次互动或加入服务器时将获得此数量的硬币。"
+
+#: src/modules/economy/settings.py:134
+msgctxt "guildset:starting_funds|accepts"
+msgid "Number of coins to give to new members."
+msgstr "新成员获得的硬币数。"
+
+#, possible-python-brace-format
+msgctxt "guildset:starting_funds|set_response"
+msgid "New members will now start with {amount}"
+msgstr "新成员现在将从{amount}开始"

@@ -12,6 +12,9 @@ from meta import LionBot, LionCog, conf
 from meta.errors import UserInputError
 from utils.lib import MessageArgs
 from utils.ui import LeoUI, ModalRetryUI, FastModal, error_handler_for
+# --- AI-MODIFIED (2026-03-19) ---
+from utils.ui.leo import _maybe_append_vote_button
+# --- END AI-MODIFIED ---
 from babel.translator import ctx_translator
 from gui.cards import ProfileCard, StatsCard
 
@@ -106,6 +109,9 @@ class StatsUI(LeoUI):
         async with self._refresh_lock:
             await self.reload()
             await self.refresh_components()
+            # --- AI-MODIFIED (2026-03-19) ---
+            await _maybe_append_vote_button(self)
+            # --- END AI-MODIFIED ---
             await self.redraw(thinking=thinking)
 
     async def run(self, interaction: discord.Interaction):

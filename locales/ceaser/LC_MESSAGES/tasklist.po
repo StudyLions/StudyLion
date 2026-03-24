@@ -64,8 +64,7 @@ msgid ""
 "unintentional, please contact a server administrator."
 msgstr ""
 "Uijt diboofm jt dpogjhvsfe bt b ubtlmjtu diboofm, cvu J mbdl uif "
-"`FNCFE_MJOLT` ps `TFOE_NFTTBHFT` qfsnjttjpo ifsf! Jg zpv cfmjfwf uijt jt "
-"vojoufoujpobm, qmfbtf dpoubdu b tfswfs benjojtusbups."
+"`FNCFE_MJOLT` ps `TFOE_NFTTBHFT`..."
 
 #: src/modules/tasklist/cog.py:258
 msgctxt "cmd:tasklist"
@@ -137,7 +136,7 @@ msgstr "Dpoufou pg zpvs ofx ubtl."
 #: src/modules/tasklist/cog.py:414
 msgctxt "cmd:tasks_new|param:parent"
 msgid "Parent of this task."
-msgstr "Qbsfou pg uijt ubtl."
+msgstr ""
 
 #: src/modules/tasklist/cog.py:434
 #, possible-python-brace-format
@@ -364,12 +363,12 @@ msgstr ""
 #: src/modules/tasklist/cog.py:730
 msgctxt "cmd:tasks_remove|param:completed"
 msgid "Only delete tasks which are (not) complete."
-msgstr "Pomz efmfuf ubtlt xijdi bsf (opu) dpnqmfuf."
+msgstr ""
 
 #: src/modules/tasklist/cog.py:734
 msgctxt "cmd:tasks_remove|param:cascade"
 msgid "Whether to recursively remove subtasks of removed tasks."
-msgstr "Xifuifs up sfdvstjwfmz sfnpwf tvcubtlt pg sfnpwfe ubtlt."
+msgstr ""
 
 #: src/modules/tasklist/cog.py:766 src/modules/tasklist/cog.py:861
 #: src/modules/tasklist/cog.py:936
@@ -503,7 +502,7 @@ msgid ""
 "up to a maximum of `{limit}` tasks per 24h."
 msgstr ""
 "Nfncfst xjmm opx cf sfxbsefe {coin}**{amount}** gps fbdi ubtl uifz dpnqmfuf "
-"vq up b nbyjnvn pg `{limit}` ubtlt qfs 24i."
+"vq up b nbyjnvn pg `{..."
 
 #: src/modules/tasklist/tasklist.py:267
 #, possible-python-brace-format

@@ -1,0 +1,518 @@
+# Korean translation for LionBot - economy
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 21:10+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Korean\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/modules/economy/settingui.py:34
+msgctxt "ui:economy_config|embed|title"
+msgid "Economy Configuration Panel"
+msgstr "경제 설정 패널"
+
+#: src/modules/economy/settingui.py:67
+msgctxt "dash:economy|title"
+msgid "Economy Configuration ({commands[config economy]})"
+msgstr "경제 설정 ({commands[config economy]})"
+
+#: src/modules/economy/settingui.py:71
+msgctxt "dash:economy|dropdown|placeholder"
+msgid "Economy Panel"
+msgstr "경제 패널"
+
+#: src/modules/economy/cog.py:87
+msgctxt "cmd:economy"
+msgid "economy"
+msgstr "economy"
+
+#: src/modules/economy/cog.py:93
+msgctxt "cmd:economy_balance"
+msgid "balance"
+msgstr "balance"
+
+#: src/modules/economy/cog.py:96
+msgctxt "cmd:economy_balance|desc"
+msgid "Display or modify LionCoin balance for members and roles."
+msgstr "멤버와 역할의 LionCoin 잔액을 표시하거나 수정합니다."
+
+#: src/modules/economy/cog.py:100
+msgctxt "cmd:economy_balance|param:target"
+msgid "target"
+msgstr "target"
+
+#: src/modules/economy/cog.py:101
+msgctxt "cmd:economy_balance|param:add"
+msgid "add"
+msgstr "add"
+
+#: src/modules/economy/cog.py:102
+msgctxt "cmd:economy_balance|param:set"
+msgid "set"
+msgstr "set"
+
+#: src/modules/economy/cog.py:107
+msgctxt "cmd:economy_balance|param:target|desc"
+msgid "Target user or role to view or update. Use @everyone to update the entire guild."
+msgstr "확인하거나 업데이트할 대상 사용자 또는 역할. 서버 전체를 업데이트하려면 @everyone을 사용하세요."
+
+#: src/modules/economy/cog.py:111
+msgctxt "cmd:economy_balance|param:add|desc"
+msgid "Number of LionCoins to add to the target member's balance. May be negative to remove."
+msgstr "대상 멤버의 잔액에 추가할 LionCoins 수. 음수로 차감할 수 있습니다."
+
+#: src/modules/economy/cog.py:115
+msgctxt "cmd:economy_balance|param:set|set"
+msgid "New balance to set the target's balance to."
+msgstr "대상의 잔액으로 설정할 새 잔액."
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|error:no_target"
+msgid "There are no valid members in {role.mention}! It has a total of `0` LC."
+msgstr "{role.mention}에 유효한 멤버가 없습니다! 총 `0` LC입니다."
+
+#: src/modules/economy/cog.py:164
+msgctxt "cmd:economy_balance|error:target_is_bot"
+msgid "Bots cannot have coin balances!"
+msgstr "봇은 코인 잔액을 가질 수 없습니다!"
+
+#: src/modules/economy/cog.py:175
+msgctxt "cmd:economy_balance|error:args"
+msgid "You cannot simultaneously `set` and `add` member balances!"
+msgstr "`set`과 `add`를 동시에 사용할 수 없습니다!"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:success|affected"
+msgid "One user was affected."
+msgid_plural "**{count}** users were affected."
+msgstr[0] "**{count}**명의 사용자가 영향을 받았습니다."
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|confirm|affected"
+msgid "One user will be affected."
+msgid_plural "**{count}** users will be affected."
+msgstr[0] "**{count}**명의 사용자가 영향을 받습니다."
+
+#: src/modules/economy/cog.py:237
+msgctxt "cmd:economy_balance|confirm|button:confirm"
+msgid "Yes, adjust balances"
+msgstr "예, 잔액 조정"
+
+#: src/modules/economy/cog.py:241
+msgctxt "cmd:economy_balance|confirm|button:cancel"
+msgid "No, cancel"
+msgstr "아니요, 취소"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:success_set|desc"
+msgid "All members of **{guild_name}** have had their balance set to {coin_emoji}**{amount}**."
+msgstr "**{guild_name}**의 모든 멤버의 잔액이 {coin_emoji}**{amount}**로 설정되었습니다."
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|confirm_set|desc"
+msgid "Are you sure you want to set everyone's balance to {coin_emoji}**{amount}**?"
+msgstr "모든 사용자의 잔액을 {coin_emoji}**{amount}**로 설정하시겠습니까?"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:success_set|desc"
+msgid "All members of {role_mention} have had their balance set to {coin_emoji}**{amount}**."
+msgstr "{role_mention}의 모든 멤버의 잔액이 {coin_emoji}**{amount}**로 설정되었습니다."
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|confirm_set|desc"
+msgid "Are you sure you want to set the balance of everyone with {role_mention} to {coin_emoji}**{amount}**?"
+msgstr "{role_mention}의 모든 사용자 잔액을 {coin_emoji}**{amount}**로 설정하시겠습니까?"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:success_set|desc"
+msgid "{user_mention} now has a balance of {coin_emoji}**{amount}**."
+msgstr "{user_mention}의 잔액이 {coin_emoji}**{amount}**가 되었습니다."
+
+#: src/modules/economy/cog.py:305
+msgctxt "eventlog|event:economy_set|title"
+msgid "Moderator Set Economy Balance"
+msgstr "관리자가 경제 잔액을 설정함"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:economy_set|desc"
+msgid "{moderator} set {target}'s balance to {amount}."
+msgstr "{moderator}이(가) {target}의 잔액을 {amount}로 설정했습니다."
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:success_add|desc"
+msgid "All members of **{guild_name}** have been given {coin_emoji}**{amount}**."
+msgstr "**{guild_name}**의 모든 멤버에게 {coin_emoji}**{amount}**가 지급되었습니다."
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|confirm_add|desc"
+msgid "Are you sure you want to add **{amount}** to everyone's balance?"
+msgstr "모든 사용자의 잔액에 **{amount}**를 추가하시겠습니까?"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:success_add|desc"
+msgid "All members of {role_mention} have been given {coin_emoji}**{amount}**."
+msgstr "{role_mention}의 모든 멤버에게 {coin_emoji}**{amount}**가 지급되었습니다."
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|confirm_add|desc"
+msgid "Are you sure you want to add {coin_emoji}**{amount}** to everyone in {role_mention}?"
+msgstr "{role_mention}의 모든 사용자에게 {coin_emoji}**{amount}**를 추가하시겠습니까?"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:success_add|desc"
+msgid "{user_mention} was given {coin_emoji}**{amount}**, and now has a balance of {coin_emoji}**{new_amount}**."
+msgstr "{user_mention}에게 {coin_emoji}**{amount}**가 지급되어 잔액이 {coin_emoji}**{new_amount}**가 되었습니다."
+
+#: src/modules/economy/cog.py:380
+msgctxt "eventlog|event:economy_add|title"
+msgid "Moderator Modified Economy Balance"
+msgstr "관리자가 경제 잔액을 수정함"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:economy_set|desc"
+msgid "{moderator} added {amount} to {target}'s balance."
+msgstr "{moderator}이(가) {target}의 잔액에 {amount}를 추가했습니다."
+
+#: src/modules/economy/cog.py:394
+msgctxt "cmd:economy_balance|embed:success|title"
+msgid "Account successfully updated."
+msgid_plural "Accounts successfully updated."
+msgstr[0] "계정이 성공적으로 업데이트되었습니다."
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:role_lb|author"
+msgid "Balance sheet for {name}"
+msgstr "{name} 잔액 현황"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:role_lb|header"
+msgid "This server has a total balance of {coin_emoji}**{total}**."
+msgstr "이 서버의 총 잔액은 {coin_emoji}**{total}**입니다."
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:role_lb|header"
+msgid "{role_mention} has `{count}` members with non-zero balance, with a total balance of {coin_emoji}**{total}**."
+msgstr "{role_mention}에 잔액이 있는 멤버가 `{count}`명이며, 총 잔액은 {coin_emoji}**{total}**입니다."
+
+#: src/modules/economy/cog.py:464
+msgctxt "cmd:economy_balance|embed:role_lb|row_format"
+msgid "`[{pos:>{numwidth}}]` | `{coins:>{coinwidth}} LC` | {mention}"
+msgstr "`[{pos:>{numwidth}}]` | `{coins:>{coinwidth}} LC` | {mention}"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:role_lb|footer"
+msgid "Page {page}/{total}"
+msgstr "페이지 {page}/{total}"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:role_lb|header"
+msgid "This server has a total balance of {coin_emoji}**0**."
+msgstr "이 서버의 총 잔액은 {coin_emoji}**0**입니다."
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:role_lb|header"
+msgid "The role {role_mention} has a total balance of {coin_emoji}**0**."
+msgstr "역할 {role_mention}의 총 잔액은 {coin_emoji}**0**입니다."
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:single|desc"
+msgid "{mention} currently owns {coin_emoji} {coins}."
+msgstr "{mention}은(는) 현재 {coin_emoji} {coins}을(를) 보유하고 있습니다."
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_balance|embed:single|author"
+msgid "Balance statement for {user}"
+msgstr "{user}의 잔액 명세"
+
+#: src/modules/economy/cog.py:548
+msgctxt "cmd:economy_reset"
+msgid "reset"
+msgstr "reset"
+
+#: src/modules/economy/cog.py:551
+msgctxt "cmd:economy_reset|desc"
+msgid "Reset the coin balance for a target user or role. (See also \"economy balance\".)"
+msgstr "대상 사용자 또는 역할의 코인 잔액을 초기화합니다. (\"economy balance\"도 참조하세요.)"
+
+#: src/modules/economy/cog.py:555
+msgctxt "cmd:economy_reset|param:target"
+msgid "target"
+msgstr "target"
+
+#: src/modules/economy/cog.py:560
+msgctxt "cmd:economy_reset|param:target|desc"
+msgid "Target user or role to view or update. Use @everyone to reset the entire guild."
+msgstr "대상 사용자 또는 역할. 서버 전체를 초기화하려면 @everyone을 사용하세요."
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_reset|confirm:reset_guild|desc"
+msgid ""
+"Are you sure you want to reset the coin balance for everyone in **{guild_name}**?\n"
+"*This is not reversible!*"
+msgstr ""
+"**{guild_name}**의 모든 사용자의 코인 잔액을 초기화하시겠습니까?\n"
+"*이 작업은 되돌릴 수 없습니다!*"
+
+#: src/modules/economy/cog.py:595
+msgctxt "cmd:economy_reset|confirm:reset_guild|button:confirm"
+msgid "Yes, reset the economy"
+msgstr "예, 경제 초기화"
+
+#: src/modules/economy/cog.py:599
+msgctxt "cmd:economy_reset|confirm:reset_guild|button:cancel"
+msgid "Cancel reset"
+msgstr "초기화 취소"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_reset|embed:success_guild|desc"
+msgid "Everyone in **{guild_name}** has had their balance reset to {coin_emoji}**{amount}**."
+msgstr "**{guild_name}**의 모든 사용자의 잔액이 {coin_emoji}**{amount}**로 초기화되었습니다."
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_reset|error:no_target|desc"
+msgid "The role {mention} has no members to reset!"
+msgstr "역할 {mention}에 초기화할 멤버가 없습니다!"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_reset|confirm:reset_role|desc"
+msgid ""
+"Are you sure you want to reset the balance for everyone in {mention}?\n"
+"**{count}** members will be affected."
+msgstr ""
+"{mention}의 모든 사용자의 잔액을 초기화하시겠습니까?\n"
+"**{count}**명의 멤버가 영향을 받습니다."
+
+#: src/modules/economy/cog.py:651
+msgctxt "cmd:economy_reset|confirm:reset_role|button:confirm"
+msgid "Yes, complete economy reset"
+msgstr "예, 경제 완전 초기화"
+
+#: src/modules/economy/cog.py:655
+msgctxt "cmd:economy_reset|confirm:reset_role|button:cancel"
+msgid "Cancel"
+msgstr "취소"
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_reset|embed:success_role|desc"
+msgid "Everyone in {role_mention} has had their coin balance reset to {coin_emoji}**{amount}**."
+msgstr "{role_mention}의 모든 사용자의 코인 잔액이 {coin_emoji}**{amount}**로 초기화되었습니다."
+
+#, possible-python-brace-format
+msgctxt "cmd:economy_reset|embed:success_user|desc"
+msgid "{mention}'s balance has been reset to {coin_emoji}**{amount}**."
+msgstr "{mention}의 잔액이 {coin_emoji}**{amount}**로 초기화되었습니다."
+
+#: src/modules/economy/cog.py:704
+msgctxt "cmd:send"
+msgid "send"
+msgstr "send"
+
+#: src/modules/economy/cog.py:707
+msgctxt "cmd:send|desc"
+msgid "Gift the target user a certain number of LionCoins."
+msgstr "대상 사용자에게 LionCoins를 선물합니다."
+
+#: src/modules/economy/cog.py:711
+msgctxt "cmd:send|param:target"
+msgid "target"
+msgstr "target"
+
+#: src/modules/economy/cog.py:712
+msgctxt "cmd:send|param:amount"
+msgid "amount"
+msgstr "amount"
+
+#: src/modules/economy/cog.py:713
+msgctxt "cmd:send|param:note"
+msgid "note"
+msgstr "note"
+
+#: src/modules/economy/cog.py:716
+msgctxt "cmd:send|param:target|desc"
+msgid "User to send the gift to"
+msgstr "선물을 보낼 사용자"
+
+#: src/modules/economy/cog.py:717
+msgctxt "cmd:send|param:amount|desc"
+msgid "Number of coins to send"
+msgstr "보낼 코인 수"
+
+#: src/modules/economy/cog.py:718
+msgctxt "cmd:send|param:note|desc"
+msgid "Optional note to add to the gift."
+msgstr "선물에 추가할 메모 (선택 사항)."
+
+#: src/modules/economy/cog.py:742
+msgctxt "cmd:send|error:not_allowed"
+msgid "Sorry, this server has disabled LionCoin transfers!"
+msgstr "죄송합니다, 이 서버에서는 LionCoin 전송이 비활성화되어 있습니다!"
+
+#: src/modules/economy/cog.py:751
+msgctxt "cmd:send|error:sending-to-self"
+msgid ""
+"What is this, tax evasion?\n"
+"(You can not send coins to yourself.)"
+msgstr ""
+"이건 뭐, 탈세인가요?\n"
+"(자기 자신에게 코인을 보낼 수 없습니다.)"
+
+#: src/modules/economy/cog.py:761
+msgctxt "cmd:send|error:sending-to-leo"
+msgid ""
+"I appreciate it, but you need it more than I do!\n"
+"(You cannot send coins to bots.)"
+msgstr ""
+"감사하지만, 당신이 더 필요하잖아요!\n"
+"(봇에게 코인을 보낼 수 없습니다.)"
+
+#, possible-python-brace-format
+msgctxt "cmd:send|error:sending-to-bot"
+msgid ""
+"{target} appreciates the gesture, but said they don't have any use for {coin}.\n"
+"(You cannot send coins to bots.)"
+msgstr ""
+"{target}은(는) 마음을 고맙게 여기지만, {coin}은(는) 필요 없다고 합니다.\n"
+"(봇에게 코인을 보낼 수 없습니다.)"
+
+#, possible-python-brace-format
+msgctxt "cmd:send|error:insufficient"
+msgid ""
+"You do not have enough lioncoins to do this!\n"
+"`Current Balance:` {coin_emoji}{balance}"
+msgstr ""
+"LionCoins가 부족합니다!\n"
+"`현재 잔액:` {coin_emoji}{balance}"
+
+#: src/modules/economy/cog.py:816
+msgctxt "eventlog|event:send|title"
+msgid "Coins Transferred"
+msgstr "코인 전송됨"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:send|desc"
+msgid "{source} gifted {amount} to {target}"
+msgstr "{source}이(가) {target}에게 {amount}를 선물했습니다"
+
+#, possible-python-brace-format
+msgctxt "cmd:send|embed:gift|title"
+msgid "{user} sent you a gift!"
+msgstr "{user}이(가) 선물을 보냈습니다!"
+
+#, possible-python-brace-format
+msgctxt "cmd:send|embed:gift|desc"
+msgid "{mention} sent you {coin_emoji}**{amount}**."
+msgstr "{mention}이(가) {coin_emoji}**{amount}**를 보냈습니다."
+
+#, possible-python-brace-format
+msgctxt "cmd:send|embed:ack|desc"
+msgid "**{coin_emoji}{amount}** has been deducted from your balance and sent to {mention}!"
+msgstr "**{coin_emoji}{amount}**가 잔액에서 차감되어 {mention}에게 전송되었습니다!"
+
+#: src/modules/economy/cog.py:872
+msgctxt "cmd:send|embed:ack|desc|error:unreachable"
+msgid "Unfortunately, I was not able to message the recipient. Perhaps they have me blocked?"
+msgstr "안타깝게도 수신자에게 메시지를 보낼 수 없었습니다. 차단되었을 수 있습니다."
+
+#: src/modules/economy/cog.py:884
+msgctxt "cmd:configure_economy"
+msgid "economy"
+msgstr "economy"
+
+#: src/modules/economy/cog.py:887
+msgctxt "cmd:configure_economy|desc"
+msgid "Configure LionCoin Economy"
+msgstr "LionCoin 경제 설정"
+
+#: src/modules/economy/settings.py:38
+msgctxt "guildset:coins_per_xp"
+msgid "coins_per_100xp"
+msgstr "coins_per_100xp"
+
+#: src/modules/economy/settings.py:41
+msgctxt "guildset:coins_per_xp|desc"
+msgid "How many LionCoins to reward members per 100 XP they earn."
+msgstr "100 XP당 보상할 LionCoins 수."
+
+#: src/modules/economy/settings.py:45
+msgctxt "guildset:coins_per_xp|long_desc"
+msgid "Members will be rewarded with this many LionCoins for every 100 XP they earn."
+msgstr "멤버는 100 XP마다 이만큼의 LionCoins를 받습니다."
+
+#: src/modules/economy/settings.py:49
+msgctxt "guildset:coins_per_xp|long_desc"
+msgid "The number of coins to reward per 100 XP."
+msgstr "100 XP당 보상 코인 수."
+
+#, possible-python-brace-format
+msgctxt "guildset:coins_per_xp|set_response"
+msgid "For every **100** XP they earn, members will now be given {coin}**{amount}**."
+msgstr "**100** XP마다 멤버에게 {coin}**{amount}**가 지급됩니다."
+
+#: src/modules/economy/settings.py:74
+msgctxt "guildset:allow_transfers"
+msgid "allow_transfers"
+msgstr "allow_transfers"
+
+#: src/modules/economy/settings.py:77
+msgctxt "guildset:allow_transfers|desc"
+msgid "Whether to allow members to transfer LionCoins to each other."
+msgstr "멤버 간 LionCoins 전송을 허용할지 여부."
+
+#: src/modules/economy/settings.py:81
+msgctxt "guildset:allow_transfers|long_desc"
+msgid "If disabled, members will not be able to transfer LionCoins to each other."
+msgstr "비활성화하면 멤버 간 LionCoins 전송이 불가능합니다."
+
+#: src/modules/economy/settings.py:89
+msgctxt "guildset:allow_transfers|outputs:true"
+msgid "Enabled (Coin transfers allowed.)"
+msgstr "활성화됨 (코인 전송 허용.)"
+
+#: src/modules/economy/settings.py:90
+msgctxt "guildset:allow_transfers|outputs:false"
+msgid "Disabled (Coin transfers not allowed.)"
+msgstr "비활성화됨 (코인 전송 불허.)"
+
+#, possible-python-brace-format
+msgctxt "guildset:allow_transfers|set_response|set:true"
+msgid "Members will now be able to use {send_cmd} to transfer {coin}"
+msgstr "멤버가 이제 {send_cmd}를 사용하여 {coin}을(를) 전송할 수 있습니다"
+
+#, possible-python-brace-format
+msgctxt "guildset:allow_transfers|set_response|set:false"
+msgid "Members will not be able to use {send_cmd} to transfer {coin}"
+msgstr "멤버가 {send_cmd}를 사용하여 {coin}을(를) 전송할 수 없습니다"
+
+#: src/modules/economy/settings.py:123
+msgctxt "guildset:starting_funds"
+msgid "starting_funds"
+msgstr "starting_funds"
+
+#: src/modules/economy/settings.py:126
+msgctxt "guildset:starting_funds|desc"
+msgid "How many LionCoins should a member start with."
+msgstr "멤버의 초기 LionCoins 수."
+
+#: src/modules/economy/settings.py:130
+msgctxt "guildset:starting_funds|long_desc"
+msgid "Members will be given this number of coins when they first interact with me, or first join the server."
+msgstr "멤버가 처음 상호작용하거나 서버에 참가할 때 이만큼의 코인을 받습니다."
+
+#: src/modules/economy/settings.py:134
+msgctxt "guildset:starting_funds|accepts"
+msgid "Number of coins to give to new members."
+msgstr "신규 멤버에게 줄 코인 수."
+
+#, possible-python-brace-format
+msgctxt "guildset:starting_funds|set_response"
+msgid "New members will now start with {amount}"
+msgstr "신규 멤버는 이제 {amount}로 시작합니다"

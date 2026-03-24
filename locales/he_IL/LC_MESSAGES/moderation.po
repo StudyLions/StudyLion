@@ -1,24 +1,18 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
-# Translators:
-# Interitio, 2023
-# 
-#, fuzzy
+# Hebrew translation for LionBot - moderation
+# AI-translated with human Transifex contributions where available.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: LionBot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-24 14:37+0300\n"
-"PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Interitio, 2023\n"
-"Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
+"PO-Revision-Date: 2026-03-13 22:18+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Hebrew\n"
+"Language: he_IL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: he_IL\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
 
 #: src/modules/moderation/settingui.py:55
@@ -39,7 +33,7 @@ msgstr "בחר רול למנהלים"
 #: src/modules/moderation/settingui.py:133
 msgctxt "ui:moderation_config|menu:adminrole|placeholder"
 msgid "Select Admin Role"
-msgstr ""
+msgstr "בחר תפקיד מנהל"
 
 #: src/modules/moderation/settingui.py:141
 msgctxt "ui:moderation_config|embed|title"
@@ -49,7 +43,7 @@ msgstr "תפריט הגדרות ניהול שרת"
 #: src/modules/moderation/settingui.py:182
 msgctxt "dash:moderation|title"
 msgid "Moderation Settings ({commands[admin config moderation]})"
-msgstr ""
+msgstr "הגדרות ניהול ({commands[admin config moderation]})"
 
 #: src/modules/moderation/settingui.py:186
 msgctxt "dash:moderation|dropdown|placeholder"
@@ -59,99 +53,98 @@ msgstr "תפריט ניהול"
 #: src/modules/moderation/cog.py:135
 msgctxt "cmd:modnote"
 msgid "modnote"
-msgstr ""
+msgstr "modnote"
 
 #: src/modules/moderation/cog.py:138
 msgctxt "cmd:modnote|desc"
 msgid "Add a note to the target member's moderation record."
-msgstr ""
+msgstr "הוסף הערה לרשומת הניהול של החבר המיועד."
 
 #: src/modules/moderation/cog.py:142
 msgctxt "cmd:modnote|param:target"
 msgid "target"
-msgstr ""
+msgstr "target"
 
 #: src/modules/moderation/cog.py:143
 msgctxt "cmd:modnote|param:note"
 msgid "note"
-msgstr ""
+msgstr "note"
 
 #: src/modules/moderation/cog.py:148
 msgctxt "cmd:modnote|param:target|desc"
 msgid "Target member or user to add a note to."
-msgstr ""
+msgstr "חבר או משתמש מיועד להוספת הערה."
 
 #: src/modules/moderation/cog.py:152
 msgctxt "cmd:modnote|param:note|desc"
 msgid "Contents of the note."
-msgstr ""
+msgstr "תוכן ההערה."
 
 #: src/modules/moderation/cog.py:177
 msgctxt "cmd:modnote|modal:enter_note|title"
 msgid "Moderation Note"
-msgstr ""
+msgstr "הערת ניהול"
 
 #: src/modules/moderation/cog.py:182
 msgctxt "cmd:modnote|modal:enter_note|field|label"
 msgid "Note Content"
-msgstr ""
+msgstr "תוכן ההערה"
 
-#: src/modules/moderation/cog.py:215
 #, possible-python-brace-format
 msgctxt "cmd:modnote|embed:success|desc"
 msgid "Moderation note created as [Ticket #{ticket}]({jump_link})"
-msgstr ""
+msgstr "הערת ניהול נוצרה כ-[כרטיס #{ticket}]({jump_link})"
 
 #: src/modules/moderation/cog.py:225
 msgctxt "cmd:warning"
 msgid "warning"
-msgstr ""
+msgstr "warning"
 
 #: src/modules/moderation/cog.py:228
 msgctxt "cmd:warning|desc"
 msgid ""
 "Warn a member for a misdemeanour, and add it to their moderation record."
-msgstr ""
+msgstr "הזהר חבר בגין עבירה והוסף זאת לרשומת הניהול שלו."
 
 #: src/modules/moderation/cog.py:232
 msgctxt "cmd:warning|param:target"
 msgid "target"
-msgstr ""
+msgstr "target"
 
 #: src/modules/moderation/cog.py:233
 msgctxt "cmd:warning|param:reason"
 msgid "reason"
-msgstr ""
+msgstr "reason"
 
 #: src/modules/moderation/cog.py:238
 msgctxt "cmd:warning|param:target|desc"
 msgid "Target member to warn."
-msgstr ""
+msgstr "חבר מיועד להזהרה."
 
 #: src/modules/moderation/cog.py:242
 msgctxt "cmd:warning|param:reason|desc"
 msgid "The reason why you are warning this member."
-msgstr ""
+msgstr "הסיבה שאתה מזהיר חבר זה."
 
 #: src/modules/moderation/cog.py:262
 msgctxt "cmd:warning|modal:reason|title"
 msgid "Moderation Warning"
-msgstr ""
+msgstr "אזהרת ניהול"
 
 #: src/modules/moderation/cog.py:267
 msgctxt "cmd:warning|modal:reason|field|label"
 msgid "Reason for the warning (visible to user)."
-msgstr ""
+msgstr "סיבת האזהרה (גלויה למשתמש)."
 
 #: src/modules/moderation/cog.py:298
 msgctxt "cmd:warning|embed:user_alert|title"
 msgid "You have received a warning!"
-msgstr ""
+msgstr "קיבלת אזהרה!"
 
 #: src/modules/moderation/cog.py:305
 msgctxt "cmd:warning|embed:user_alert|field:note|name"
 msgid "Note"
-msgstr ""
+msgstr "הערה"
 
 #: src/modules/moderation/cog.py:309
 msgctxt "cmd:warning|embed:user_alert|field:note|value"
@@ -159,57 +152,57 @@ msgid ""
 "*Warnings appear in your moderation history. Continuing failure to comply "
 "with server rules and moderator directions may result in more severe action."
 msgstr ""
+"*אזהרות מופיעות בהיסטוריית הניהול שלך. המשך אי-ציות לכללי השרת ולהנחיות "
+"המנהלים עלול לגרום לפעולות חמורות יותר."
 
-#: src/modules/moderation/cog.py:327
 #, possible-python-brace-format
 msgctxt "cmd:warning|embed:success|line:count"
 msgid "This their first warning."
 msgid_plural "They have recieved **`{count}`** warnings."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "זו האזהרה הראשונה שלהם."
+msgstr[1] "קיבלו **`{count}`** אזהרות."
+msgstr[2] "קיבלו **`{count}`** אזהרות."
+msgstr[3] "קיבלו **`{count}`** אזהרות."
 
-#: src/modules/moderation/cog.py:336
 #, possible-python-brace-format
 msgctxt "cmd:warning|embed:success|desc"
 msgid "[Ticket #{ticket}]({jump_link}) {user} has been warned."
-msgstr ""
+msgstr "[כרטיס #{ticket}]({jump_link}) {user} קיבל אזהרה."
 
 #: src/modules/moderation/cog.py:347
 msgctxt "cmd:warning|embed:success|field:no_alert|name"
 msgid "Note"
-msgstr ""
+msgstr "הערה"
 
 #: src/modules/moderation/cog.py:351
 msgctxt "cmd:warning|embed:success|field:no_alert|value"
 msgid "*Could not deliver warning to the target.*"
-msgstr ""
+msgstr "*לא ניתן להעביר את האזהרה ליעד.*"
 
 #: src/modules/moderation/cog.py:358
 msgctxt "cmd:pardon"
 msgid "pardon"
-msgstr ""
+msgstr "pardon"
 
 #: src/modules/moderation/cog.py:361
 msgctxt "cmd:pardon|desc"
 msgid "Pardon moderation tickets to mark them as no longer in effect."
-msgstr ""
+msgstr "חנינה לכרטיסי ניהול כדי לסמן אותם כלא בתוקף."
 
 #: src/modules/moderation/cog.py:367
 msgctxt "cmd:pardon|param:ticketids"
 msgid "tickets"
-msgstr ""
+msgstr "tickets"
 
 #: src/modules/moderation/cog.py:371
 msgctxt "cmd:pardon|param:reason"
 msgid "reason"
-msgstr ""
+msgstr "reason"
 
 #: src/modules/moderation/cog.py:377
 msgctxt "cmd:pardon|param:ticketids|desc"
 msgid "Comma separated list of ticket numbers to pardon."
-msgstr ""
+msgstr "רשימת מספרי כרטיסים לחנינה מופרדים בפסיקים."
 
 #: src/modules/moderation/cog.py:381
 msgctxt "cmd:pardon|param:reason"
@@ -219,12 +212,12 @@ msgstr ""
 #: src/modules/moderation/cog.py:402
 msgctxt "cmd:pardon|modal:reason|title"
 msgid "Pardon Tickets"
-msgstr ""
+msgstr "חנינה לכרטיסים"
 
 #: src/modules/moderation/cog.py:407
 msgctxt "cmd:pardon|modal:reason|field|label"
 msgid "Why are you pardoning these tickets?"
-msgstr ""
+msgstr "מדוע אתה מעניק חנינה לכרטיסים אלה?"
 
 #: src/modules/moderation/cog.py:435
 msgctxt "cmd:pardon|error:parse_ticketids"
@@ -232,103 +225,110 @@ msgid ""
 "Could not parse provided tickets as a list of ticket ids! Please enter "
 "tickets as a comma separated list of ticket numbers, for example `1, 2, 3`."
 msgstr ""
+"לא ניתן לנתח את הכרטיסים כרשימת מזהים! אנא הזן כרשימה מופרדת בפסיקים, לדוגמה"
+" `1, 2, 3`."
 
 #: src/modules/moderation/cog.py:449
 msgctxt "cmd:pardon|error:no_matching"
 msgid "No matching moderation tickets found to pardon!"
-msgstr ""
+msgstr "לא נמצאו כרטיסי ניהול תואמים לחנינה!"
 
-#: src/modules/moderation/cog.py:469
 #, possible-python-brace-format
 msgctxt "cmd:pardon|embed:success|title"
 msgid "Ticket {ticketstr} has been pardoned."
 msgid_plural ""
 "The following tickets have been pardoned:\n"
 "{ticketstr}"
-msgstr[0] ""
+msgstr[0] "כרטיס {ticketstr} קיבל חנינה."
 msgstr[1] ""
+"הכרטיסים הבאים קיבלו חנינה:\n"
+"{ticketstr}"
 msgstr[2] ""
+"הכרטיסים הבאים קיבלו חנינה:\n"
+"{ticketstr}"
 msgstr[3] ""
+"הכרטיסים הבאים קיבלו חנינה:\n"
+"{ticketstr}"
 
 #: src/modules/moderation/cog.py:478
 msgctxt "cmd:tickets"
 msgid "tickets"
-msgstr ""
+msgstr "tickets"
 
 #: src/modules/moderation/cog.py:481
 msgctxt "cmd:tickets|desc"
 msgid "View moderation tickets in this server."
-msgstr ""
+msgstr "הצג כרטיסי ניהול בשרת זה."
 
 #: src/modules/moderation/cog.py:485
 msgctxt "cmd:tickets|param:target"
 msgid "target"
-msgstr ""
+msgstr "target"
 
 #: src/modules/moderation/cog.py:486
 msgctxt "cmd:tickets|param:type"
 msgid "type"
-msgstr ""
+msgstr "type"
 
 #: src/modules/moderation/cog.py:487
 msgctxt "cmd:tickets|param:state"
 msgid "ticket_state"
-msgstr ""
+msgstr "ticket_state"
 
 #: src/modules/moderation/cog.py:488
 msgctxt "cmd:tickets|param:pardoned"
 msgid "include_pardoned"
-msgstr ""
+msgstr "include_pardoned"
 
 #: src/modules/moderation/cog.py:489
 msgctxt "cmd:tickets|param:moderator"
 msgid "acting_moderator"
-msgstr ""
+msgstr "acting_moderator"
 
 #: src/modules/moderation/cog.py:490
 msgctxt "cmd:tickets|param:after"
 msgid "after"
-msgstr ""
+msgstr "after"
 
 #: src/modules/moderation/cog.py:491
 msgctxt "cmd:tickets|param:before"
 msgid "before"
-msgstr ""
+msgstr "before"
 
 #: src/modules/moderation/cog.py:496
 msgctxt "cmd:tickets|param:target|desc"
 msgid "Filter by tickets acting on a given user."
-msgstr ""
+msgstr "סנן לפי כרטיסים הפועלים על משתמש נתון."
 
 #: src/modules/moderation/cog.py:500
 msgctxt "cmd:tickets|param:type|desc"
 msgid "Filter by ticket type."
-msgstr ""
+msgstr "סנן לפי סוג כרטיס."
 
 #: src/modules/moderation/cog.py:504
 msgctxt "cmd:tickets|param:state|desc"
 msgid "Filter by ticket state."
-msgstr ""
+msgstr "סנן לפי מצב כרטיס."
 
 #: src/modules/moderation/cog.py:508
 msgctxt "cmd:tickets|param:pardoned|desc"
 msgid "Whether to only show active tickets, or also include pardoned."
-msgstr ""
+msgstr "האם להציג רק כרטיסים פעילים, או גם כאלה שקיבלו חנינה."
 
 #: src/modules/moderation/cog.py:512
 msgctxt "cmd:tickets|param:moderator|desc"
 msgid "Filter by moderator responsible for the ticket."
-msgstr ""
+msgstr "סנן לפי מנחה אחראי על הכרטיס."
 
 #: src/modules/moderation/cog.py:516
 msgctxt "cmd:tickets|param:after|desc"
 msgid "Only show tickets after this date (YYY-MM-DD HH:MM)"
-msgstr ""
+msgstr "הצג רק כרטיסים אחרי תאריך זה (YYYY-MM-DD HH:MM)"
 
 #: src/modules/moderation/cog.py:520
 msgctxt "cmd:tickets|param:before|desc"
 msgid "Only show tickets before this date (YYY-MM-DD HH:MM)"
-msgstr ""
+msgstr "הצג רק כרטיסים לפני תאריך זה (YYYY-MM-DD HH:MM)"
 
 #: src/modules/moderation/cog.py:582
 msgctxt "cmd:configure_moderation"
@@ -343,136 +343,133 @@ msgstr "בחר הגדרות ניהול כלליות."
 #: src/modules/moderation/ticketui.py:62
 msgctxt "ticketfilter|field:after|name"
 msgid "Created After"
-msgstr ""
+msgstr "נוצר אחרי"
 
 #: src/modules/moderation/ticketui.py:70
 msgctxt "ticketfilter|field:before|name"
 msgid "Created Before"
-msgstr ""
+msgstr "נוצר לפני"
 
 #: src/modules/moderation/ticketui.py:78
 msgctxt "ticketfilter|field:targetids|name"
 msgid "Targets"
-msgstr ""
+msgstr "יעדים"
 
 #: src/modules/moderation/ticketui.py:86
 msgctxt "ticketfilter|field:moderatorids|name"
 msgid "Moderators"
-msgstr ""
+msgstr "מנחים"
 
 #: src/modules/moderation/ticketui.py:94
 msgctxt "ticketfilter|field:types|name"
 msgid "Ticket Types"
-msgstr ""
+msgstr "סוגי כרטיסים"
 
 #: src/modules/moderation/ticketui.py:102
 msgctxt "ticketfilter|field:states|name"
 msgid "Ticket States"
-msgstr ""
+msgstr "מצבי כרטיסים"
 
 #: src/modules/moderation/ticketui.py:179
 msgctxt "ui:tickets|button:edit_filter|label"
 msgid "Edit Filters"
-msgstr ""
+msgstr "ערוך מסננים"
 
 #: src/modules/moderation/ticketui.py:199
 msgctxt "ui:tickets|button:select_ticket|label"
 msgid "Select Ticket"
-msgstr ""
+msgstr "בחר כרטיס"
 
 #: src/modules/moderation/ticketui.py:215
 msgctxt "ui:tickets|button:pardon|error:no_tickets"
 msgid "Not tickets matching the given criterial! Nothing to pardon."
-msgstr ""
+msgstr "אין כרטיסים התואמים לקריטריונים הנתונים! אין מה לחון."
 
 #: src/modules/moderation/ticketui.py:221
 msgctxt "ui:tickets|button:pardon|modal:reason|title"
 msgid "Pardon Tickets"
-msgstr ""
+msgstr "חנינה לכרטיסים"
 
 #: src/modules/moderation/ticketui.py:226
 msgctxt "ui:tickets|button:pardon|modal:reason|field|label"
 msgid "Why are you pardoning these tickets?"
-msgstr ""
+msgstr "מדוע אתה מעניק חנינה לכרטיסים אלה?"
 
 #: src/modules/moderation/ticketui.py:252
 msgctxt "ui:tickets|button:pardon|label"
 msgid "Pardon All"
-msgstr ""
+msgstr "חנינה לכולם"
 
 #: src/modules/moderation/ticketui.py:273
 msgctxt "ui:tickets|menu:filter_type|placeholder"
 msgid "Select Ticket Types"
-msgstr ""
+msgstr "בחר סוגי כרטיסים"
 
 #: src/modules/moderation/ticketui.py:309
 msgctxt "ui:tickets|menu:filter_state|placeholder"
 msgid "Select Ticket States"
-msgstr ""
+msgstr "בחר מצבי כרטיסים"
 
 #: src/modules/moderation/ticketui.py:346
 msgctxt "ui:tickets|menu:filter_target|placeholder"
 msgid "Select Ticket Targets"
-msgstr ""
+msgstr "בחר יעדי כרטיסים"
 
 #: src/modules/moderation/ticketui.py:371
 msgctxt "ui:tickets|menu:tickets|placeholder"
 msgid "Select Ticket"
-msgstr ""
+msgstr "בחר כרטיס"
 
 #: src/modules/moderation/ticketui.py:402
 msgctxt "ui:tickets|button:jump|input:title"
 msgid "Jump to page"
-msgstr ""
+msgstr "דלג לעמוד"
 
 #: src/modules/moderation/ticketui.py:406
 msgctxt "ui:tickets|button:jump|input:question"
 msgid "Page number to jump to"
-msgstr ""
+msgstr "מספר עמוד לדילוג"
 
 #: src/modules/moderation/ticketui.py:417
 msgctxt "ui:tickets|button:jump|error:invalid_page"
 msgid "Invalid page number, please try again!"
-msgstr ""
+msgstr "מספר עמוד לא חוקי, נסה שוב!"
 
-#: src/modules/moderation/ticketui.py:496
 #, possible-python-brace-format
 msgctxt "ui:tickets|embed|title"
 msgid "Moderation Tickets in {guild}"
-msgstr ""
+msgstr "כרטיסי ניהול ב-{guild}"
 
 #: src/modules/moderation/ticketui.py:506
 msgctxt "ui:tickets|embed|desc:no_tickets"
 msgid "No tickets matching the given criteria!"
-msgstr ""
+msgstr "אין כרטיסים התואמים לקריטריונים הנתונים!"
 
 #: src/modules/moderation/ticketui.py:515
 msgctxt "ui:tickets|embed|field:filters|name"
 msgid "Filters"
-msgstr ""
+msgstr "מסננים"
 
 #: src/modules/moderation/ticketui.py:603
 msgctxt "ui:ticket|button:pardon|modal:reason|title"
 msgid "Pardon Moderation Ticket"
-msgstr ""
+msgstr "חנינה לכרטיס ניהול"
 
 #: src/modules/moderation/ticketui.py:608
 msgctxt "ui:ticket|button:pardon|modal:reason|field|label"
 msgid "Why are you pardoning this ticket?"
-msgstr ""
+msgstr "מדוע אתה מעניק חנינה לכרטיס זה?"
 
 #: src/modules/moderation/ticketui.py:632
 msgctxt "ui:ticket|button:pardon|label"
 msgid "Pardon"
-msgstr ""
+msgstr "חנינה"
 
-#: src/modules/moderation/ticket.py:148
 #, possible-python-brace-format
 msgctxt "ticket|title:auto"
 msgid "Ticket #{ticketid} | {state} | {type}[Auto] | {name}"
 msgstr "כרטיס #{ticketid} | {state} | {type}[Auto] | {name}"
 
-#: src/modules/moderation/ticket.py:153
 #, possible-python-brace-format
 msgctxt "ticket|title:manual"
 msgid "Ticket #{ticketid} | {state} | {type} | {name}"
@@ -493,7 +490,6 @@ msgctxt "ticket|field:expiry|mode:expiring|name"
 msgid "Expires At"
 msgstr "תקף עד"
 
-#: src/modules/moderation/ticket.py:184
 #, possible-python-brace-format
 msgctxt "ticket|field:expiry|mode:expiring|value"
 msgid ""
@@ -508,7 +504,6 @@ msgctxt "ticket|field:expiry|mode:expired|name"
 msgid "Expired"
 msgstr "פג תוקף"
 
-#: src/modules/moderation/ticket.py:195
 #, possible-python-brace-format
 msgctxt "ticket|field:expiry|mode:expired|value"
 msgid "{timestamp}"
@@ -519,7 +514,6 @@ msgctxt "ticket|field:expiry|mode:open|name"
 msgid "Expiry"
 msgstr "תוקף"
 
-#: src/modules/moderation/ticket.py:205
 #, possible-python-brace-format
 msgctxt "ticket|field:expiry|mode:open|value"
 msgid "{timestamp}"
@@ -540,13 +534,14 @@ msgctxt "ticket|field:pardoned|name"
 msgid "Pardoned"
 msgstr "נסלחו"
 
-#: src/modules/moderation/ticket.py:230
 #, possible-python-brace-format
 msgctxt "ticket|field:pardoned|value"
 msgid ""
 "Pardoned by <@{moderator}> at {timestamp}.\n"
 "{reason}"
 msgstr ""
+"חנינה על ידי <@{moderator}> ב-{timestamp}.\n"
+"{reason}"
 
 #: src/modules/moderation/settings.py:22
 msgctxt "guildset:ticket_log"
@@ -574,7 +569,6 @@ msgctxt "guildset:ticket_log|accepts"
 msgid "Ticket channel name or id."
 msgstr "שם או מספר זהות של לוח הכרטיסים."
 
-#: src/modules/moderation/settings.py:48
 #, possible-python-brace-format
 msgctxt "guildset:ticket_log|set_response:set"
 msgid "Moderation tickets will be sent to {channel}"
@@ -617,7 +611,6 @@ msgctxt "guildset:alert_channel|accepts"
 msgid "Alert channel name or id."
 msgstr "שם או מספר זהות של לוח התראות."
 
-#: src/modules/moderation/settings.py:102
 #, possible-python-brace-format
 msgctxt "guildset:alert_channel|set_response:set"
 msgid "Moderation alerts will be sent to {channel}"
@@ -642,7 +635,7 @@ msgstr "רול_מנהלים"
 msgctxt "guildset:mod_role|desc"
 msgid ""
 "Server role permitted to perform moderation and minor bot configuration."
-msgstr ""
+msgstr "תפקיד שרת עם הרשאה לבצע ניהול והגדרות בוט קטנות."
 
 #: src/modules/moderation/settings.py:134
 msgctxt "guildset:mod_role|long_desc"
@@ -651,26 +644,30 @@ msgid ""
 "Moderators are never permitted to perform actions (such as giving roles) that they do not already have the Discord permissions for.\n"
 "Members with the 'Manage Guild' permission are always considered moderators."
 msgstr ""
+"חברים עם תפקיד מנחה נחשבים למנחים ורשאים להשתמש בפקודות מנחה, כגון צפייה וחנינה של כרטיסים, יצירת הערות וביצוע הגדרות מחדש קטנות דרך פקודת `/config`.\n"
+"למנחים אין אישור לבצע פעולות (כמו הענקת תפקידים) שאין להם הרשאות Discord עבורן.\n"
+"חברים עם הרשאת 'Manage Guild' נחשבים תמיד למנחים."
 
 #: src/modules/moderation/settings.py:145
 msgctxt "guildset:mod_role|accepts"
 msgid "Moderation role name or id."
 msgstr "רול את מספר זהות של מנהלים."
 
-#: src/modules/moderation/settings.py:159
 #, possible-python-brace-format
 msgctxt "guildset:mod_role|set_response:set"
 msgid ""
 "Members with {role} will be considered moderators. You may need to grant "
 "them access to view moderation commands via the server integration settings."
 msgstr ""
+"חברים עם {role} ייחשבו למנחים. ייתכן שתצטרך להעניק להם גישה לצפות בפקודות "
+"ניהול דרך הגדרות השילוב של השרת."
 
 #: src/modules/moderation/settings.py:166
 msgctxt "guildset:mod_role|set_response:unset"
 msgid ""
 "Only members with the 'Manage Guild' permission will be considered "
 "moderators."
-msgstr ""
+msgstr "רק חברים עם הרשאת 'Manage Guild' ייחשבו למנחים."
 
 #: src/modules/moderation/settings.py:178
 msgctxt "guildset:mod_role|formatted:unset"
@@ -680,13 +677,13 @@ msgstr "לא נקבע."
 #: src/modules/moderation/settings.py:186
 msgctxt "guildset:admin_role"
 msgid "admin_role"
-msgstr ""
+msgstr "admin_role"
 
 #: src/modules/moderation/settings.py:189
 msgctxt "guildset:admin_role|desc"
 msgid ""
 "Server role allowing access to all administrator level functionality in Leo."
-msgstr ""
+msgstr "תפקיד שרת המאפשר גישה לכל הפונקציונליות ברמת מנהל ב-Leo."
 
 #: src/modules/moderation/settings.py:193
 msgctxt "guildset:admin_role|long_desc"
@@ -699,23 +696,26 @@ msgid ""
 "be given permission to see the commands through the Discord server "
 "integrations interface."
 msgstr ""
+"חברים עם תפקיד זה נחשבים למנהלי שרת ויכולים להשתמש בכל הממשקים והפקודות שלי,"
+" למעט ניהול תפקידים שמעליהם בהיררכיה. הגדרה זו מאפשרת להעניק הרשאות ברמת "
+"מנהל על המערכות שלי מבלי להעניק הרשאות מנהל שרת בפועל. התפקיד גם יצטרך לקבל "
+"הרשאה לראות את הפקודות דרך ממשק השילובים של שרת Discord."
 
 #: src/modules/moderation/settings.py:203
 msgctxt "guildset:admin_role|accepts"
 msgid "Admin role name or id."
-msgstr ""
+msgstr "שם או מזהה תפקיד מנהל."
 
-#: src/modules/moderation/settings.py:216
 #, possible-python-brace-format
 msgctxt "guildset:admin_role|set_response:set"
 msgid ""
 "Members with {role} will now be considered admins, and have access to my "
 "full interface."
-msgstr ""
+msgstr "חברים עם {role} ייחשבו כעת למנהלים ויקבלו גישה לממשק המלא שלי."
 
 #: src/modules/moderation/settings.py:221
 msgctxt "guildset:admin_role|set_response:unset"
 msgid ""
 "The admin role has been unset. Only members with administrator permissions "
 "will be considered admins."
-msgstr ""
+msgstr "תפקיד המנהל בוטל. רק חברים עם הרשאות מנהל ייחשבו למנהלים."

@@ -662,3 +662,7 @@ class StatsData(Registry):
 
     unranked_roles = Table('unranked_roles')
     visible_statistics = Table('visible_statistics')
+    # --- AI-MODIFIED (2026-03-23) ---
+    # Purpose: Table for roles users can filter the /leaderboard command by
+    leaderboard_filter_roles = Table('leaderboard_filter_roles')
+    # --- END AI-MODIFIED ---

@@ -1,0 +1,857 @@
+# Hindi translation for LionBot - rooms
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 23:11+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Hindi\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/modules/rooms/settingui.py:39
+msgctxt "ui:room_config|menu:category|placeholder"
+msgid "Select Private Room Category"
+msgstr "निजी कमरे की श्रेणी चुनें"
+
+#: src/modules/rooms/settingui.py:54
+msgctxt "ui:room_config|button:visible|label"
+msgid "Toggle Room Visibility"
+msgstr "कमरे की दृश्यता टॉगल करें"
+
+#: src/modules/rooms/settingui.py:64
+msgctxt "ui:rooms_config|embed|title"
+msgid "Private Room System Configuration Panel"
+msgstr "निजी कमरा प्रणाली कॉन्फ़िगरेशन पैनल"
+
+#: src/modules/rooms/settingui.py:100
+msgctxt "dash:rooms|title"
+msgid "Private Room Configuration ({commands[admin config rooms]})"
+msgstr "निजी कमरा कॉन्फ़िगरेशन ({commands[admin config rooms]})"
+
+#: src/modules/rooms/settingui.py:104
+msgctxt "dash:economy|dropdown|placeholder"
+msgid "Private Room Panel"
+msgstr "निजी कमरा पैनल"
+
+#: src/modules/rooms/roomui.py:56
+msgctxt "ui:room_status|error:owner_required"
+msgid "You must be the private room owner to do this!"
+msgstr "ऐसा करने के लिए आपको निजी कमरे का मालिक होना चाहिए!"
+
+#: src/modules/rooms/roomui.py:72
+msgctxt "ui:room_status|error:member_required"
+msgid "You need to be a member of the private room to do this!"
+msgstr "ऐसा करने के लिए आपको निजी कमरे का सदस्य होना चाहिए!"
+
+#: src/modules/rooms/roomui.py:90
+msgctxt "ui:room_status|button:deposit|modal:deposit|title"
+msgid "Room Deposit"
+msgstr "कमरा जमा"
+
+#: src/modules/rooms/roomui.py:94
+msgctxt "ui:room_status|button:deposit|modal:deposit|field:question|label"
+msgid "How many LionCoins do you want to deposit?"
+msgstr "आप कितने LionCoins जमा करना चाहते हैं?"
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|button:deposit|error:invalid_number"
+msgid "Cannot deposit `{inputted}` coins. Please enter a positive integer."
+msgstr ""
+"`{inputted}` सिक्के जमा नहीं किए जा सकते। कृपया एक सकारात्मक पूर्णांक दर्ज "
+"करें।"
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|button:deposit|error:insufficient_funds"
+msgid ""
+"You cannot deposit {coin}**{amount}**! You only have {coin}**{balance}**."
+msgstr ""
+"आप {coin}**{amount}** जमा नहीं कर सकते! आपके पास केवल {coin}**{balance}** "
+"है।"
+
+#: src/modules/rooms/roomui.py:160
+msgctxt "ui:room_status|button:deposit|label"
+msgid "Deposit"
+msgstr "जमा करें"
+
+#: src/modules/rooms/roomui.py:171
+msgctxt "ui:room_status|button:edit|label"
+msgid "Edit Room"
+msgstr "कमरा संपादित करें"
+
+#: src/modules/rooms/roomui.py:204
+msgctxt "ui:room_status|button:timer|modal:add_timer|title"
+msgid "Create Room Timer"
+msgstr "कमरा टाइमर बनाएं"
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|button:timer|timer_created"
+msgid "Timer created successfully! Use {edit_cmd} to configure further."
+msgstr ""
+"टाइमर सफलतापूर्वक बनाया गया! आगे कॉन्फ़िगर करने के लिए {edit_cmd} का उपयोग "
+"करें।"
+
+#: src/modules/rooms/roomui.py:254
+msgctxt "ui:room_status|button:timer|label:edit_timer"
+msgid "Edit Timer"
+msgstr "टाइमर संपादित करें"
+
+#: src/modules/rooms/roomui.py:261
+msgctxt "ui:room_status|button:timer|label:add_timer"
+msgid "Add Timer"
+msgstr "टाइमर जोड़ें"
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|menu:invite|error:too_many_members"
+msgid ""
+"Too many members! You are inviting `{count}` new members to your room, but "
+"you already have `{current}` members! The member cap is `{cap}`."
+msgstr ""
+"बहुत अधिक सदस्य! आप `{count}` नए सदस्यों को आमंत्रित कर रहे हैं, लेकिन आपके "
+"पास पहले से `{current}` सदस्य हैं! सीमा `{cap}` है।"
+
+#: src/modules/rooms/roomui.py:330
+msgctxt "ui:room_status|menu:invite_menu|placeholder:capped"
+msgid "Room member cap reached!"
+msgstr "कमरे की सदस्य सीमा पूरी हो गई!"
+
+#: src/modules/rooms/roomui.py:336
+msgctxt "ui:room_status|menu:invite_menu|placeholder:notcapped"
+msgid "Add Members"
+msgstr "सदस्य जोड़ें"
+
+#: src/modules/rooms/roomui.py:359
+msgctxt "ui:room_status|menu:kick_menu|placeholder"
+msgid "Remove Members"
+msgstr "सदस्य हटाएं"
+
+#: src/modules/rooms/roomui.py:367
+msgctxt "ui:room_status|embed|title"
+msgid "Room Control Panel"
+msgstr "कमरा नियंत्रण पैनल"
+
+#: src/modules/rooms/roomui.py:375
+msgctxt "ui:room_status|embed|field:channel|name"
+msgid "Channel"
+msgstr "चैनल"
+
+#: src/modules/rooms/roomui.py:380
+msgctxt "ui:room_status|embed|field:owner|name"
+msgid "Owner"
+msgstr "मालिक"
+
+#: src/modules/rooms/roomui.py:385
+msgctxt "ui:room_status|embed|field:created|name"
+msgid "Created At"
+msgstr "बनाया गया"
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|embed|field:bank|value:expiring"
+msgid ""
+"**Warning:** Insufficient room balance to pay next rent ({coin} **{rent}**).\n"
+"The room will expire {expiry}.\n"
+"Use {room_deposit_cmd} to increase balance."
+msgstr ""
+"**चेतावनी:** अगला किराया ({coin} **{rent}**) चुकाने के लिए कमरे का बैलेंस अपर्याप्त है।\n"
+"कमरा {expiry} को समाप्त हो जाएगा।\n"
+"बैलेंस बढ़ाने के लिए {room_deposit_cmd} का उपयोग करें।"
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|embed|field:bank|value:notexpiring"
+msgid "Next rent due {time} (- {coin}**{rent}**)"
+msgstr "अगला किराया {time} (- {coin}**{rent}**)"
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|embed|field:bank|name"
+msgid "Room Balance: {coin}**{amount}**"
+msgstr "कमरा बैलेंस: {coin}**{amount}**"
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|embed|field:members|name"
+msgid "Members ({count}/{cap})"
+msgstr "सदस्य ({count}/{cap})"
+
+#: src/modules/rooms/cog.py:175 src/modules/rooms/room.py:364
+msgctxt "room|eventlog|event:room_deleted|title"
+msgid "Private Room Deleted"
+msgstr "निजी कमरा हटाया गया"
+
+#, possible-python-brace-format
+msgctxt "room|eventlog|event:room_deleted|desc"
+msgid "{owner}'s private room was deleted."
+msgstr "{owner} का निजी कमरा हटा दिया गया।"
+
+#, possible-python-brace-format
+msgctxt "create_room|create_channel|audit_reason"
+msgid "Creating Private Room for {ownerid}"
+msgstr "{ownerid} के लिए निजी कमरा बनाया जा रहा है"
+
+#: src/modules/rooms/cog.py:279
+msgctxt "eventlog|event:private_room_create_error|name"
+msgid "Private Room Creation Failed"
+msgstr "निजी कमरा बनाना विफल रहा"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:private_room_create_error|desc"
+msgid ""
+"{owner} attempted to rent a new private room, but I could not create it!\n"
+"They were not charged."
+msgstr ""
+"{owner} ने एक नया निजी कमरा किराए पर लेने का प्रयास किया, लेकिन मैं इसे बना नहीं सका!\n"
+"उनसे शुल्क ..."
+
+#: src/modules/rooms/cog.py:329
+msgctxt "eventlog|event:private_room_create|name"
+msgid "Private Room Rented"
+msgstr "निजी कमरा किराए पर लिया गया"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:private_room_create|desc"
+msgid "{owner} has rented a new private room {channel}!"
+msgstr "{owner} ने एक नया निजी कमरा {channel} किराए पर लिया!"
+
+#: src/modules/rooms/cog.py:368
+msgctxt "cmd:room"
+msgid "room"
+msgstr "room"
+
+#: src/modules/rooms/cog.py:369
+msgctxt "cmd:room|desc"
+msgid "Base command group for private room configuration."
+msgstr "निजी कमरे की कॉन्फ़िगरेशन के लिए आधार कमांड समूह।"
+
+#: src/modules/rooms/cog.py:376
+msgctxt "cmd:room_rent"
+msgid "rent"
+msgstr "rent"
+
+#: src/modules/rooms/cog.py:379
+msgctxt "cmd:room_rent|desc"
+msgid "Rent a private voice channel with LionCoins."
+msgstr "LionCoins से एक निजी वॉइस चैनल किराए पर लें।"
+
+#: src/modules/rooms/cog.py:383
+msgctxt "cmd:room_rent|param:days"
+msgid "days"
+msgstr "days"
+
+#: src/modules/rooms/cog.py:384
+msgctxt "cmd:room_rent|param:members"
+msgid "members"
+msgstr "members"
+
+#: src/modules/rooms/cog.py:385
+msgctxt "cmd:room_rent|param:name"
+msgid "name"
+msgstr "name"
+
+#: src/modules/rooms/cog.py:390
+msgctxt "cmd:room_rent|param:days|desc"
+msgid "Number of days to pre-purchase. (Default: 1)"
+msgstr "पूर्व-खरीद के लिए दिनों की संख्या। (डिफ़ॉल्ट: 1)"
+
+#: src/modules/rooms/cog.py:394
+msgctxt "cmd:room_rent|param:members|desc"
+msgid "Mention the members you want to add to your private room."
+msgstr ""
+"उन सदस्यों का उल्लेख करें जिन्हें आप अपने निजी कमरे में जोड़ना चाहते हैं।"
+
+#: src/modules/rooms/cog.py:398
+msgctxt "cmd:room_rent|param:name|desc"
+msgid "Name of your private voice channel."
+msgstr "आपके निजी वॉइस चैनल का नाम।"
+
+#: src/modules/rooms/cog.py:416
+msgctxt "cmd:room_rent|error:not_setup"
+msgid ""
+"The private room system has not been set up! A private room category needs "
+"to be set first with `/admin config rooms`."
+msgstr ""
+"निजी कमरा प्रणाली सेट अप नहीं की गई है! पहले `/admin config rooms` से एक "
+"श्रेणी सेट करनी होगी।"
+
+#: src/modules/rooms/cog.py:427
+msgctxt "cmd:room_rent|error:insufficient_perms"
+msgid ""
+"I do not have enough permissions to create a new channel under the "
+"configured private room category!"
+msgstr ""
+"कॉन्फ़िगर की गई श्रेणी के अंतर्गत नया चैनल बनाने के लिए मेरे पास पर्याप्त "
+"अनुमतियाँ नहीं हैं!"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_rent|error:room_exists"
+msgid "You already own a private room! Click to visit: {channel}"
+msgstr ""
+"आपके पास पहले से एक निजी कमरा है! यहाँ जाने के लिए क्लिक करें: {channel}"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_rent|error:member_not_found"
+msgid "Could not find the requested member {mention} in this server!"
+msgstr "इस सर्वर में अनुरोधित सदस्य {mention} नहीं मिला!"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_rent|error:too_many_members"
+msgid ""
+"Too many members! You have requested to add `{count}` members to your room, "
+"but the maximum private room size is `{cap}`!"
+msgstr ""
+"बहुत अधिक सदस्य! आपने `{count}` सदस्य जोड़ने का अनुरोध किया, लेकिन अधिकतम "
+"सीमा `{cap}` है!"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_rent|confirm:purchase"
+msgid ""
+"Are you sure you want to spend {coin}**{required}** to rent a private room "
+"for `one` day?"
+msgid_plural ""
+"Are you sure you want to spend {coin}**{required}** to rent a private room "
+"for `{days}` days?"
+msgstr[0] ""
+"क्या आप वाकई {coin}**{required}** खर्च करके `1` दिन के लिए निजी कमरा किराए "
+"पर लेना चाहते हैं?"
+msgstr[1] ""
+"क्या आप वाकई {coin}**{required}** खर्च करके `{days}` दिनों के लिए निजी कमरा "
+"किराए पर लेना चाहते हैं?"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_rent|success"
+msgid "Successfully created your private room {channel}!"
+msgstr "आपका निजी कमरा {channel} सफलतापूर्वक बनाया गया!"
+
+#: src/modules/rooms/cog.py:519
+msgctxt "cmd:room_rent|success|title"
+msgid "Private Room Created!"
+msgstr "निजी कमरा बनाया गया!"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_rent|error:insufficient_funds"
+msgid ""
+"Renting a private room for `one` day costs {coin}**{required}**, but you "
+"only have {coin}**{balance}**!"
+msgid_plural ""
+"Renting a private room for `{days}` days costs {coin}**{required}**, but you"
+" only have {coin}**{balance}**!"
+msgstr[0] ""
+"`1` दिन के लिए निजी कमरा किराए पर लेने की लागत {coin}**{required}** है, "
+"लेकिन आपके पास केवल {coin}**{balance}** है!"
+msgstr[1] ""
+"`{days}` दिनों के लिए निजी कमरा किराए पर लेने की लागत {coin}**{required}** "
+"है, लेकिन आपके पास केवल {coin}**{balance}** है!"
+
+#: src/modules/rooms/cog.py:606
+msgctxt "cmd:room_rent|error:my_permissions"
+msgid ""
+"Could not create your private room! You were not charged.\n"
+"I have insufficient permissions to create a private room channel."
+msgstr ""
+"आपका निजी कमरा नहीं बनाया जा सका! आपसे शुल्क नहीं लिया गया।\n"
+"मेरे पास अपर्याप्त अनुमतियाँ हैं।"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_rent|error:unknown"
+msgid ""
+"Could not create your private room! You were not charged.\n"
+"An unknown error occurred while creating your private room.\n"
+"`{error}`"
+msgstr ""
+"आपका निजी कमरा नहीं बनाया जा सका! आपसे शुल्क नहीं लिया गया।\n"
+"एक अज्ञात त्रुटि हुई।\n"
+"`{error}`"
+
+#: src/modules/rooms/cog.py:626
+msgctxt "cmd:room_status"
+msgid "status"
+msgstr "status"
+
+#: src/modules/rooms/cog.py:629
+msgctxt "cmd:room_status|desc"
+msgid "Display the status of your current room."
+msgstr "अपने वर्तमान कमरे की स्थिति प्रदर्शित करें।"
+
+#: src/modules/rooms/cog.py:646
+msgctxt "cmd:room_status|error:no_target"
+msgid ""
+"Could not identify target private room! Please re-run the command in the "
+"private room you wish to view the status of."
+msgstr ""
+"लक्ष्य निजी कमरा पहचाना नहीं जा सका! कृपया उस कमरे में कमांड दोबारा चलाएं "
+"जिसका स्टेटस देखना चाहते हैं।"
+
+#: src/modules/rooms/cog.py:661
+msgctxt "cmd:room_invite"
+msgid "invite"
+msgstr "invite"
+
+#: src/modules/rooms/cog.py:664
+msgctxt "cmd:room_invite|desc"
+msgid "Add members to your private room."
+msgstr "अपने निजी कमरे में सदस्य जोड़ें।"
+
+#: src/modules/rooms/cog.py:668
+msgctxt "cmd:room_invite|param:members"
+msgid "members"
+msgstr "members"
+
+#: src/modules/rooms/cog.py:673
+msgctxt "cmd:room_invite|param:members|desc"
+msgid "Mention the members you want to add."
+msgstr "उन सदस्यों का उल्लेख करें जिन्हें आप जोड़ना चाहते हैं।"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_invite|error:no_room"
+msgid ""
+"You do not own a private room! Use `/room rent` to rent one with {coin}!"
+msgstr ""
+"आपके पास कोई निजी कमरा नहीं है! {coin} से एक किराए पर लेने के लिए `/room "
+"rent` का उपयोग करें!"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_invite|error:member_not_found"
+msgid "Could not find the invited member {mention} in this server!"
+msgstr "आमंत्रित सदस्य {mention} इस सर्वर में नहीं मिला!"
+
+#: src/modules/rooms/cog.py:719
+msgctxt "cmd:room_invite|error:no_new_members"
+msgid "All members mentioned are already in the room!"
+msgstr "उल्लिखित सभी सदस्य पहले से ही कमरे में हैं!"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_invite|error:too_many_members"
+msgid ""
+"Too many members! You have invited `{count}` new members to your room, but "
+"you already have `{current}`, and the member cap is `{cap}`!"
+msgstr ""
+"बहुत अधिक सदस्य! आपने `{count}` नए सदस्यों को आमंत्रित किया, लेकिन पहले से "
+"`{current}` हैं और सीमा `{cap}` है!"
+
+#: src/modules/rooms/cog.py:757
+msgctxt "cmd:room_invite|success|ack"
+msgid "Members Invited successfully."
+msgstr "सदस्य सफलतापूर्वक आमंत्रित किए गए।"
+
+#: src/modules/rooms/cog.py:765
+msgctxt "cmd:room_kick"
+msgid "kick"
+msgstr "kick"
+
+#: src/modules/rooms/cog.py:768
+msgctxt "cmd:room_kick|desc"
+msgid "Remove a members from your private room."
+msgstr "अपने निजी कमरे से सदस्यों को हटाएं।"
+
+#: src/modules/rooms/cog.py:772
+msgctxt "cmd:room_kick|param:members"
+msgid "members"
+msgstr "members"
+
+#: src/modules/rooms/cog.py:777
+msgctxt "cmd:room_kick|param:members|desc"
+msgid ""
+"Mention the members you want to remove. Also accepts space-separated user "
+"ids."
+msgstr ""
+"उन सदस्यों का उल्लेख करें जिन्हें आप हटाना चाहते हैं। स्पेस से अलग किए गए "
+"यूजर ID भी स्वीकार करता..."
+
+#, possible-python-brace-format
+msgctxt "cmd:room_kick|error:no_room"
+msgid ""
+"You do not own a private room! Use `/room rent` to rent one with {coin}!"
+msgstr ""
+"आपके पास कोई निजी कमरा नहीं है! {coin} से एक किराए पर लेने के लिए `/room "
+"rent` का उपयोग करें!"
+
+#: src/modules/rooms/cog.py:808
+msgctxt "cmd:room_kick|error:no_matching_members"
+msgid "None of the mentioned members are in this room!"
+msgstr "उल्लिखित कोई भी सदस्य इस कमरे में नहीं है!"
+
+#: src/modules/rooms/cog.py:825
+msgctxt "cmd:room_kick|success|ack"
+msgid "Members removed."
+msgstr "सदस्य हटाए गए।"
+
+#: src/modules/rooms/cog.py:831
+msgctxt "cmd:room_transfer"
+msgid "transfer"
+msgstr "transfer"
+
+#: src/modules/rooms/cog.py:834
+msgctxt "cmd:room_transfer|desc"
+msgid "Transfer your private room to another room member. Not reversible!"
+msgstr "अपना कमरा किसी अन्य सदस्य को स्थानांतरित करें। अपरिवर्तनीय!"
+
+#: src/modules/rooms/cog.py:838
+msgctxt "cmd:room_transfer|param:new_owner"
+msgid "new_owner"
+msgstr "new_owner"
+
+#: src/modules/rooms/cog.py:843
+msgctxt "cmd:room_transfer|param:new_owner"
+msgid "The room member you would like to transfer your room to."
+msgstr ""
+
+#: src/modules/rooms/cog.py:857
+msgctxt "cmd:room_transfer|error:no_room"
+msgid "You do not own a private room to transfer!"
+msgstr "आपके पास स्थानांतरित करने के लिए कोई निजी कमरा नहीं है!"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_transfer|error:target_not_member"
+msgid ""
+"{mention} is not a member of your private room! You must invite them first."
+msgstr ""
+"{mention} आपके निजी कमरे का सदस्य नहीं है! आपको पहले उन्हें आमंत्रित करना "
+"होगा।"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_transfer|error:target_has_room"
+msgid ""
+"{mention} already owns a room! Members can only own one room at a time."
+msgstr ""
+"{mention} के पास पहले से एक कमरा है! सदस्य एक समय में केवल एक कमरा रख सकते "
+"हैं।"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_transfer|confirm|question"
+msgid ""
+"Are you sure you wish to transfer your private room {channel} to "
+"{new_owner}? This action is not reversible!"
+msgstr ""
+"क्या आप वाकई अपना निजी कमरा {channel} को {new_owner} को स्थानांतरित करना "
+"चाहते हैं? यह क्रिया अपरिवर्तनीय है!"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_transfer|success|description"
+msgid ""
+"You have successfully transferred ownership of {channel} to {new_owner}."
+msgstr ""
+"आपने सफलतापूर्वक {channel} का स्वामित्व {new_owner} को स्थानांतरित कर दिया "
+"है।"
+
+#: src/modules/rooms/cog.py:916
+msgctxt "cmd:room_deposit"
+msgid "deposit"
+msgstr "deposit"
+
+#: src/modules/rooms/cog.py:919
+msgctxt "cmd:room_deposit|desc"
+msgid ""
+"Deposit LionCoins in your private room bank to add more days. (Members may "
+"also deposit!)"
+msgstr ""
+"और दिन जोड़ने के लिए अपने कमरे के बैंक में LionCoins जमा करें। (सदस्य भी जमा"
+" कर सकते हैं!)"
+
+#: src/modules/rooms/cog.py:923
+msgctxt "cmd:room_deposit|param:coins"
+msgid "coins"
+msgstr "coins"
+
+#: src/modules/rooms/cog.py:928
+msgctxt "cmd:room_deposit|param:coins|desc"
+msgid "Number of coins to deposit."
+msgstr "जमा करने के लिए सिक्कों की संख्या।"
+
+#: src/modules/rooms/cog.py:948
+msgctxt "cmd:room_deposit|error:no_target"
+msgid ""
+"Could not identify target private room! Please re-run the command in the "
+"private room you wish to contribute to."
+msgstr ""
+"लक्ष्य निजी कमरा पहचाना नहीं जा सका! कृपया उस कमरे में कमांड दोबारा चलाएं "
+"जिसमें आप योगदान करना चाहते हैं।"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_deposit|error:insufficient_funds"
+msgid ""
+"You cannot deposit {coin}**{amount}**! You only have {coin}**{balance}**."
+msgstr ""
+"आप {coin}**{amount}** जमा नहीं कर सकते! आपके पास केवल {coin}**{balance}** "
+"है।"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_depost|success"
+msgid ""
+"Success! You have contributed {coin}**{amount}** to the private room bank."
+msgstr "सफल! आपने कमरे के बैंक में {coin}**{amount}** का योगदान दिया।"
+
+#: src/modules/rooms/cog.py:1000
+msgctxt "cmd:configure_rooms"
+msgid "rooms"
+msgstr "rooms"
+
+#: src/modules/rooms/cog.py:1001
+msgctxt "cmd:configure_rooms|desc"
+msgid "Configure Rented Private Rooms"
+msgstr "किराए पर लिए गए निजी कमरों को कॉन्फ़िगर करें"
+
+#: src/modules/rooms/room.py:78
+msgctxt "room|eventlog|field:owner"
+msgid "Owner"
+msgstr "मालिक"
+
+#: src/modules/rooms/room.py:84
+msgctxt "room|eventlog|field:channel"
+msgid "Channel"
+msgstr "चैनल"
+
+#: src/modules/rooms/room.py:90
+msgctxt "room|eventlog|field:balance"
+msgid "Room Balance"
+msgstr "कमरा बैलेंस"
+
+#: src/modules/rooms/room.py:96
+msgctxt "room|eventlog|field:created"
+msgid "Created At"
+msgstr "बनाया गया"
+
+#: src/modules/rooms/room.py:102
+msgctxt "room|eventlog|field:tick"
+msgid "Next Rent Due"
+msgstr "अगला किराया"
+
+#: src/modules/rooms/room.py:108
+msgctxt "room|eventlog|field:members"
+msgid "Private Room Members"
+msgstr "निजी कमरे के सदस्य"
+
+#, possible-python-brace-format
+msgctxt "room|notify:deposit|description"
+msgid "{member} has deposited {coin}**{amount}** into the room bank!"
+msgstr "{member} ने कमरे के बैंक में {coin}**{amount}** जमा किया!"
+
+#: src/modules/rooms/room.py:146
+msgctxt "room|notify:new_members|title"
+msgid "New Members!"
+msgstr "नए सदस्य!"
+
+#, possible-python-brace-format
+msgctxt "room|notify:new_members|desc"
+msgid "Welcome {members}"
+msgstr "स्वागत है {members}"
+
+#: src/modules/rooms/room.py:156
+msgctxt "room|eventlog|event:new_members|title"
+msgid "Members invited to private room"
+msgstr "सदस्यों को निजी कमरे में आमंत्रित किया गया"
+
+#, possible-python-brace-format
+msgctxt "room|eventlog|event:new_members|desc"
+msgid "{owner} added members to their private room: {members}"
+msgstr "{owner} ने अपने निजी कमरे में सदस्य जोड़े: {members}"
+
+#: src/modules/rooms/room.py:191
+msgctxt "room|eventlog|event:rm_members|title"
+msgid "Members removed from private room"
+msgstr "सदस्यों को निजी कमरे से हटाया गया"
+
+#, possible-python-brace-format
+msgctxt "room|eventlog|event:rm_members|desc"
+msgid "{owner} removed members from their private room: {members}"
+msgstr "{owner} ने अपने निजी कमरे से सदस्यों को हटाया: {members}"
+
+#, possible-python-brace-format
+msgctxt "room|notify:transfer|description"
+msgid "{old_owner} has transferred private room ownership to {new_owner}"
+msgstr "{old_owner} ने कमरे का स्वामित्व {new_owner} को स्थानांतरित कर दिया"
+
+#: src/modules/rooms/room.py:318
+msgctxt "room|embed:expiry|title"
+msgid "Private Room Expired!"
+msgstr "निजी कमरा समाप्त हो गया!"
+
+#, possible-python-brace-format
+msgctxt "room|embed:expiry|description"
+msgid "Your private room in **{guild}** has expired!"
+msgstr "**{guild}** में आपका निजी कमरा समाप्त हो गया है!"
+
+#: src/modules/rooms/room.py:332
+msgctxt "room|eventlog|event:expired|title"
+msgid "Private Room Expired"
+msgstr "निजी कमरा समाप्त"
+
+#, possible-python-brace-format
+msgctxt "room|eventlog|event:expired|desc"
+msgid "{owner}'s private room has expired."
+msgstr "{owner} का निजी कमरा समाप्त हो गया है।"
+
+#, possible-python-brace-format
+msgctxt "room|tick|rent_deducted"
+msgid "Daily rent deducted from room balance. New balance: {coin}**{amount}**"
+msgstr "दैनिक किराया बैलेंस से काटा गया। नया बैलेंस: {coin}**{amount}**"
+
+#: src/modules/rooms/settings.py:23
+msgctxt "guildset:room_category"
+msgid "rooms_category"
+msgstr "rooms_category"
+
+#: src/modules/rooms/settings.py:27
+msgctxt "guildset:rooms_category|desc"
+msgid "Category in which to create private voice channels."
+msgstr "श्रेणी जिसमें निजी वॉइस चैनल बनाए जाएंगे।"
+
+#: src/modules/rooms/settings.py:31
+msgctxt "guildset:room_category|long_desc"
+msgid ""
+"When a member uses {cmds[room rent]} to rent a new private room, a private "
+"voice channel will be created under this category, manageable by the member."
+" I must have permission to create new channels in this category, as well as "
+"to manage permissions."
+msgstr ""
+"जब कोई सदस्य {cmds[room rent]} का उपयोग करता है, तो इस श्रेणी के अंतर्गत एक "
+"निजी वॉइस चैनल बनाया जाएगा। मुझे चैनल बनाने और अनुमतियाँ प्रबंधित करने की "
+"अनुमति चाहिए।"
+
+#: src/modules/rooms/settings.py:39
+msgctxt "guildset:room_category|accepts"
+msgid "Private room category name or id."
+msgstr "निजी कमरे की श्रेणी का नाम या ID।"
+
+#: src/modules/rooms/settings.py:53
+msgctxt "guildset:rooms_category|set_response:unset"
+msgid ""
+"The private room category has been unset. Existing private rooms will not be"
+" affected. Delete the channels manually to remove the private rooms."
+msgstr ""
+"निजी कमरे की श्रेणी हटा दी गई है। मौजूदा कमरे प्रभावित नहीं होंगे। चैनलों को"
+" मैन्युअल रूप से हटाएं।"
+
+#, possible-python-brace-format
+msgctxt "guildset:rooms_category|set_response:set"
+msgid ""
+"Private room category has been set to {channel}. Existing private rooms will"
+" be moved."
+msgstr ""
+"निजी कमरे की श्रेणी {channel} पर सेट की गई है। मौजूदा कमरे स्थानांतरित किए "
+"जाएंगे।"
+
+#, possible-python-brace-format
+msgctxt "guildset:room_category|set_using"
+msgid "{cmd} or category selector below."
+msgstr "{cmd} या नीचे श्रेणी चयनकर्ता।"
+
+#: src/modules/rooms/settings.py:79
+msgctxt "guildset:rooms_price"
+msgid "room_rent"
+msgstr "room_rent"
+
+#: src/modules/rooms/settings.py:83
+msgctxt "guildset:rooms_rent|desc"
+msgid "Daily rent price for a private room."
+msgstr "निजी कमरे का दैनिक किराया।"
+
+#: src/modules/rooms/settings.py:87
+msgctxt "guildset:rooms_rent|long_desc"
+msgid ""
+"Members will be charged this many LionCoins for each day they rent a private"
+" room."
+msgstr ""
+"सदस्यों से निजी कमरे के किराए के प्रत्येक दिन के लिए इतने LionCoins चार्ज "
+"किए जाएंगे।"
+
+#: src/modules/rooms/settings.py:91
+msgctxt "guildset:rooms_rent|accepts"
+msgid "Number of LionCoins charged per day for a private room."
+msgstr "निजी कमरे के लिए प्रतिदिन चार्ज किए जाने वाले LionCoins की संख्या।"
+
+#, possible-python-brace-format
+msgctxt "guildset:rooms_price|set_response"
+msgid "Private rooms will now cost {coin}**{amount}** per 24 hours."
+msgstr "निजी कमरों की कीमत अब 24 घंटों में {coin}**{amount}** होगी।"
+
+#: src/modules/rooms/settings.py:116
+msgctxt "guildset:rooms_slots"
+msgid "room_member_cap"
+msgstr "room_member_cap"
+
+#: src/modules/rooms/settings.py:119
+msgctxt "guildset:rooms_slots|desc"
+msgid "Maximum number of members in each private room."
+msgstr "प्रत्येक निजी कमरे में सदस्यों की अधिकतम संख्या।"
+
+#: src/modules/rooms/settings.py:123
+msgctxt "guildset:rooms_slots|long_desc"
+msgid ""
+"Private room owners may invite other members to their private room via the "
+"UI, or through the {cmds[room invite]} command. This setting limits the "
+"maximum number of members a private room may hold."
+msgstr ""
+"कमरे के मालिक UI या {cmds[room invite]} कमांड से अन्य सदस्यों को आमंत्रित कर"
+" सकते हैं। यह सेटिंग अधिकतम सदस्य संख्या सीमित करती है।"
+
+#: src/modules/rooms/settings.py:129
+msgctxt "guildset:rooms_slots|accepts"
+msgid "Maximum number of members allowed per private room."
+msgstr "प्रति निजी कमरे में अनुमत सदस्यों की अधिकतम संख्या।"
+
+#, possible-python-brace-format
+msgctxt "guildset:rooms_slots|set_response"
+msgid "Private rooms are now capped to **{amount}** members."
+msgstr "निजी कमरे अब **{amount}** सदस्यों तक सीमित हैं।"
+
+#: src/modules/rooms/settings.py:151
+msgctxt "guildset:rooms_visible"
+msgid "room_visibility"
+msgstr "room_visibility"
+
+#: src/modules/rooms/settings.py:154
+msgctxt "guildset:rooms_visible|desc"
+msgid "Whether private rented rooms are visible to non-members."
+msgstr "क्या किराए पर लिए गए निजी कमरे गैर-सदस्यों को दिखाई देते हैं।"
+
+#: src/modules/rooms/settings.py:158
+msgctxt "guildset:rooms_visible|long_desc"
+msgid ""
+"If enabled, new private rooms will be created with the `VIEW_CHANNEL` "
+"permission enabled for the `@everyone` role."
+msgstr ""
+"यदि सक्षम है, तो नए निजी कमरे `@everyone` भूमिका के लिए `VIEW_CHANNEL` "
+"अनुमति के साथ बनाए जाएंगे।"
+
+#: src/modules/rooms/settings.py:162
+msgctxt "guildset:rooms_visible|accepts"
+msgid "Visible/Invisible"
+msgstr "दृश्य/अदृश्य"
+
+#: src/modules/rooms/settings.py:164
+msgctxt "guildset:rooms_visible|output:true"
+msgid "Visible"
+msgstr "दृश्य"
+
+#: src/modules/rooms/settings.py:165
+msgctxt "guildset:rooms_visible|output:false"
+msgid "Invisible"
+msgstr "अदृश्य"
+
+#: src/modules/rooms/settings.py:171
+msgctxt "guildset:rooms_visible|parse:truthy_values"
+msgid "visible|enabled|yes|true|on|enable|1"
+msgstr "visible|enabled|yes|true|on|enable|1"
+
+#: src/modules/rooms/settings.py:175
+msgctxt "guildset:rooms_visible|parse:falsey_values"
+msgid "invisible|disabled|no|false|off|disable|0"
+msgstr "invisible|disabled|no|false|off|disable|0"
+
+#: src/modules/rooms/settings.py:187
+msgctxt "guildset:rooms_visible|set_response:enabled"
+msgid "Private rooms will now be visible to everyone."
+msgstr "निजी कमरे अब सभी को दिखाई देंगे।"
+
+#: src/modules/rooms/settings.py:192
+msgctxt "guildset:rooms_visible|set_response:disabled"
+msgid "Private rooms will now only be visible to their members (and admins)."
+msgstr "निजी कमरे अब केवल उनके सदस्यों (और व्यवस्थापकों) को दिखाई देंगे।"
+
+#, possible-python-brace-format
+msgctxt "guildset:rooms_visible|set_using"
+msgid "{cmd} or toggle below."
+msgstr "{cmd} या नीचे टॉगल।"

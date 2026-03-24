@@ -84,6 +84,62 @@ async def get_profile_card(bot: LionBot, userid: int, guildid: int):
         guildid, userid, ProfileCard.card_id
     )
 
+    # --- AI-MODIFIED (2026-03-16) ---
+    # Purpose: Fetch LionHeart supporter tier to pass to card
+    premium_cog = bot.get_cog('PremiumCog')
+    supporter_tier = None
+    if premium_cog and hasattr(premium_cog, 'get_user_subscription_tier'):
+        try:
+            supporter_tier = await premium_cog.get_user_subscription_tier(userid)
+        except Exception:
+            supporter_tier = None
+    # --- END AI-MODIFIED ---
+
+    # --- AI-MODIFIED (2026-03-20) ---
+    # Purpose: Fetch all card effect preferences (expanded for full customization)
+    card_prefs = {}
+    if supporter_tier:
+        try:
+            prefs_row = await bot.db.fetchrow(
+                "SELECT effects_enabled, sparkle_color, ring_color, "
+                "sparkles_enabled, ring_enabled, edge_glow_enabled, particles_enabled, "
+                "effect_intensity, edge_glow_color, particle_color, particle_style, "
+                "animation_speed, border_style, seasonal_effects "
+                "FROM user_card_preferences WHERE userid = $1", userid
+            )
+            if prefs_row:
+                card_prefs = {
+                    'effects_enabled': prefs_row['effects_enabled'],
+                    'sparkle_color': prefs_row['sparkle_color'],
+                    'ring_color': prefs_row['ring_color'],
+                    'sparkles_enabled': prefs_row['sparkles_enabled'],
+                    'ring_enabled': prefs_row['ring_enabled'],
+                    'edge_glow_enabled': prefs_row['edge_glow_enabled'],
+                    'particles_enabled': prefs_row['particles_enabled'],
+                    'effect_intensity': prefs_row['effect_intensity'],
+                    'edge_glow_color': prefs_row['edge_glow_color'],
+                    'particle_color': prefs_row['particle_color'],
+                    'particle_style': prefs_row['particle_style'],
+                    'animation_speed': prefs_row['animation_speed'],
+                    'border_style': prefs_row['border_style'],
+                    'seasonal_effects': prefs_row['seasonal_effects'],
+                }
+        except Exception:
+            pass
+
+    # --- Original code (commented out for rollback) ---
+    # card = ProfileCard(
+    #     user=username,
+    #     avatar=(userid, avatar),
+    #     coins=lion.data.coins, gems=luser.data.gems, gifts=0,
+    #     profile_badges=profile_badges,
+    #     achievements=achieved,
+    #     current_rank=current_rank,
+    #     rank_progress=rank_progress,
+    #     next_rank=next_rank,
+    #     skin=skin,
+    # )
+    # --- End original code ---
     card = ProfileCard(
         user=username,
         avatar=(userid, avatar),
@@ -94,5 +150,8 @@ async def get_profile_card(bot: LionBot, userid: int, guildid: int):
         rank_progress=rank_progress,
         next_rank=next_rank,
         skin=skin,
+        supporter_tier=supporter_tier,
+        **card_prefs,
     )
+    # --- END AI-MODIFIED ---
     return card

@@ -1,98 +1,89 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
-# Translators:
-# Bruno Evangelista De Oliveira, 2023
-# 
-#, fuzzy
+# Portuguese (Brazil) translation for LionBot - lion-core
+# AI-translated with human Transifex contributions where available.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: LionBot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-15 15:58+0300\n"
-"PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
-"Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 19:57+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
-"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: src/core/lion_guild.py:31
 msgctxt "eventlog|field:start|name"
 msgid "Start"
-msgstr ""
+msgstr "Início"
 
 #: src/core/lion_guild.py:36
 msgctxt "eventlog|field:expiry|name"
 msgid "Expires"
-msgstr ""
+msgstr "Expira"
 
 #: src/core/lion_guild.py:41
 msgctxt "eventlog|field:roles_given|name"
 msgid "Roles Given"
-msgstr ""
+msgstr "Cargos concedidos"
 
 #: src/core/lion_guild.py:46
 msgctxt "eventlog|field:roles_given|name"
 msgid "Roles Taken"
-msgstr ""
+msgstr "Cargos removidos"
 
 #: src/core/lion_guild.py:51
 msgctxt "eventlog|field:coins_earned|name"
 msgid "Coins Earned"
-msgstr ""
+msgstr "Moedas ganhas"
 
 #: src/core/lion_guild.py:56
 msgctxt "eventlog|field:price|name"
 msgid "Price"
-msgstr ""
+msgstr "Preço"
 
 #: src/core/lion_guild.py:61
 msgctxt "eventlog|field:balance|name"
 msgid "Balance"
-msgstr ""
+msgstr "Saldo"
 
 #: src/core/lion_guild.py:66
 msgctxt "eventlog|field:refund|name"
 msgid "Coins Refunded"
-msgstr ""
+msgstr "Moedas reembolsadas"
 
 #: src/core/lion_guild.py:71
 msgctxt "eventlog|field:memberid|name"
 msgid "Member"
-msgstr ""
+msgstr "Membro"
 
 #: src/core/lion_guild.py:76
 msgctxt "eventlog|field:channelid|name"
 msgid "Channel"
-msgstr ""
+msgstr "Canal"
 
 #: src/core/lion_guild.py:208
 msgctxt "eventlog|error:manage_webhooks"
-msgid ""
-"This channel is configured as an event log, but I am missing the 'Manage "
-"Webhooks' permission here."
-msgstr ""
+msgid "This channel is configured as an event log, but I am missing the 'Manage Webhooks' permission here."
+msgstr "Este canal está configurado como registro de eventos, mas falta-me a permissão 'Manage Webhooks' aqui."
 
-#: src/core/lion_guild.py:220
 #, possible-python-brace-format
 msgctxt "eventlog|create|name"
 msgid "{bot_name} Event Log"
-msgstr ""
+msgstr "{bot_name} Registro de eventos"
 
 #: src/core/lion_guild.py:224
 msgctxt "eventlog|create|audit_reason"
 msgid "Creating event log webhook"
-msgstr ""
+msgstr "Criando webhook de registro de eventos"
 
 #: src/core/lion_guild.py:342
 msgctxt "eventlog|field:errors|name"
 msgid "Errors"
-msgstr ""
+msgstr "Erros"
 
 #: src/core/setting_types.py:31
 msgctxt "settype:coin|accepts"
@@ -104,19 +95,16 @@ msgctxt "settype:coin|parse|error:notinteger"
 msgid "The coin quantity must be a positive integer!"
 msgstr "O número de moedas precisa ser inteiro e positivo!"
 
-#: src/core/setting_types.py:55
 #, possible-python-brace-format
 msgctxt "settype:coin|parse|error:too_large"
 msgid "You cannot set this to more than {coin}**{max}**!"
 msgstr "Você não pode cobrar mais do que {coin}**{max}**!"
 
-#: src/core/setting_types.py:63
 #, possible-python-brace-format
 msgctxt "settype:coin|parse|error:too_small"
 msgid "You cannot set this to less than {coin}**{min}**!"
 msgstr "Você não pode cobrar menos do que {coin}**{min}**!"
 
-#: src/core/setting_types.py:75
 #, possible-python-brace-format
 msgctxt "settype:coin|formatted"
 msgid "{coin}**{amount}**"
@@ -139,24 +127,14 @@ msgstr "A mensagem anexada é muito grande!"
 
 #: src/core/setting_types.py:120
 msgctxt "settype:message|download|error:decoding"
-msgid ""
-"Could not decode the message data. Please ensure it is saved with the "
-"`UTF-8` encoding."
-msgstr ""
-"Não consegui descompilar os dados da mensagem. Por favor, confirme que está "
-"codificada como ˋUTF-8ˋ."
+msgid "Could not decode the message data. Please ensure it is saved with the `UTF-8` encoding."
+msgstr "Não consegui descompilar os dados da mensagem. Por favor, confirme que está codificada como ˋUTF-8ˋ."
 
-#: src/core/setting_types.py:177
 #, possible-python-brace-format
 msgctxt "settype:message|error_suffix"
-msgid ""
-"You can view, test, and fix your embed using the online [embed "
-"builder]({link})."
-msgstr ""
-"Você pode ver, testar e corrigir sua incorporação usando o sistema online "
-"[embed builder]({link})."
+msgid "You can view, test, and fix your embed using the online [embed builder]({link})."
+msgstr "Você pode ver, testar e corrigir sua incorporação usando o sistema online [embed builder]({link})."
 
-#: src/core/setting_types.py:189
 #, possible-python-brace-format
 msgctxt "settype:message|error:invalid_json"
 msgid ""
@@ -168,12 +146,8 @@ msgstr ""
 
 #: src/core/setting_types.py:197
 msgctxt "settype:message|error:json_missing_keys"
-msgid ""
-"Message data must be a JSON object with at least one of the following "
-"fields: `content`, `embed`, `embeds`"
-msgstr ""
-"Os dados da mensagem precisam ser um objeto JSON com pelo menos os seguintes"
-" campos: ˋconteúdoˋ, ˋintegraçãoˋ, ˋintegraçõesˋ."
+msgid "Message data must be a JSON object with at least one of the following fields: `content`, `embed`, `embeds`"
+msgstr "Os dados da mensagem precisam ser um objeto JSON com pelo menos os seguintes campos: ˋconteúdoˋ, ˋintegraçãoˋ, ˋintegraçõesˋ."
 
 #: src/core/setting_types.py:206
 msgctxt "settype:message|error:json_embed_type"
@@ -188,15 +162,13 @@ msgstr "Os campos ˋintegraçõesˋ precisam ser uma lista."
 #: src/core/setting_types.py:221
 msgctxt "settype:message|error:json_embed_embeds"
 msgid "Message data cannot include both `embed` and `embeds`."
-msgstr ""
-"Os dados de mensagem não podem incluir ambos ˋintegraçãoˋ e ˋintegraçõesˋ."
+msgstr "Os dados de mensagem não podem incluir ambos ˋintegraçãoˋ e ˋintegraçõesˋ."
 
 #: src/core/setting_types.py:229
 msgctxt "settype:message|error:json_content_type"
 msgid "`content` field must be a string."
 msgstr "O campo ˋconteúdoˋ precisa ser do tipo string."
 
-#: src/core/setting_types.py:245
 #, possible-python-brace-format
 msgctxt "ui:settype:message|error:embed_conversion"
 msgid ""

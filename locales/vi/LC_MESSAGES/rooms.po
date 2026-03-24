@@ -1,0 +1,833 @@
+# Vietnamese translation for LionBot - rooms
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 23:11+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Vietnamese\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/modules/rooms/settingui.py:39
+msgctxt "ui:room_config|menu:category|placeholder"
+msgid "Select Private Room Category"
+msgstr "Chọn danh mục phòng riêng"
+
+#: src/modules/rooms/settingui.py:54
+msgctxt "ui:room_config|button:visible|label"
+msgid "Toggle Room Visibility"
+msgstr "Chuyển đổi hiển thị phòng"
+
+#: src/modules/rooms/settingui.py:64
+msgctxt "ui:rooms_config|embed|title"
+msgid "Private Room System Configuration Panel"
+msgstr "Bảng cấu hình hệ thống phòng riêng"
+
+#: src/modules/rooms/settingui.py:100
+msgctxt "dash:rooms|title"
+msgid "Private Room Configuration ({commands[admin config rooms]})"
+msgstr "Cấu hình phòng riêng ({commands[admin config rooms]})"
+
+#: src/modules/rooms/settingui.py:104
+msgctxt "dash:economy|dropdown|placeholder"
+msgid "Private Room Panel"
+msgstr "Bảng phòng riêng"
+
+#: src/modules/rooms/roomui.py:56
+msgctxt "ui:room_status|error:owner_required"
+msgid "You must be the private room owner to do this!"
+msgstr "Bạn phải là chủ phòng riêng để thực hiện điều này!"
+
+#: src/modules/rooms/roomui.py:72
+msgctxt "ui:room_status|error:member_required"
+msgid "You need to be a member of the private room to do this!"
+msgstr "Bạn cần là thành viên của phòng riêng để thực hiện điều này!"
+
+#: src/modules/rooms/roomui.py:90
+msgctxt "ui:room_status|button:deposit|modal:deposit|title"
+msgid "Room Deposit"
+msgstr "Nạp tiền phòng"
+
+#: src/modules/rooms/roomui.py:94
+msgctxt "ui:room_status|button:deposit|modal:deposit|field:question|label"
+msgid "How many LionCoins do you want to deposit?"
+msgstr "Bạn muốn nạp bao nhiêu LionCoins?"
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|button:deposit|error:invalid_number"
+msgid "Cannot deposit `{inputted}` coins. Please enter a positive integer."
+msgstr "Không thể nạp `{inputted}` xu. Vui lòng nhập một số nguyên dương."
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|button:deposit|error:insufficient_funds"
+msgid ""
+"You cannot deposit {coin}**{amount}**! You only have {coin}**{balance}**."
+msgstr "Bạn không thể nạp {coin}**{amount}**! Bạn chỉ có {coin}**{balance}**."
+
+#: src/modules/rooms/roomui.py:160
+msgctxt "ui:room_status|button:deposit|label"
+msgid "Deposit"
+msgstr "Nạp tiền"
+
+#: src/modules/rooms/roomui.py:171
+msgctxt "ui:room_status|button:edit|label"
+msgid "Edit Room"
+msgstr "Chỉnh sửa phòng"
+
+#: src/modules/rooms/roomui.py:204
+msgctxt "ui:room_status|button:timer|modal:add_timer|title"
+msgid "Create Room Timer"
+msgstr "Tạo hẹn giờ phòng"
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|button:timer|timer_created"
+msgid "Timer created successfully! Use {edit_cmd} to configure further."
+msgstr "Đã tạo hẹn giờ thành công! Sử dụng {edit_cmd} để cấu hình thêm."
+
+#: src/modules/rooms/roomui.py:254
+msgctxt "ui:room_status|button:timer|label:edit_timer"
+msgid "Edit Timer"
+msgstr "Chỉnh sửa hẹn giờ"
+
+#: src/modules/rooms/roomui.py:261
+msgctxt "ui:room_status|button:timer|label:add_timer"
+msgid "Add Timer"
+msgstr "Thêm hẹn giờ"
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|menu:invite|error:too_many_members"
+msgid ""
+"Too many members! You are inviting `{count}` new members to your room, but "
+"you already have `{current}` members! The member cap is `{cap}`."
+msgstr ""
+"Quá nhiều thành viên! Bạn đang mời `{count}` thành viên mới, nhưng đã có "
+"`{current}` thành viên! Giới hạn là `{cap}`."
+
+#: src/modules/rooms/roomui.py:330
+msgctxt "ui:room_status|menu:invite_menu|placeholder:capped"
+msgid "Room member cap reached!"
+msgstr "Đã đạt giới hạn thành viên!"
+
+#: src/modules/rooms/roomui.py:336
+msgctxt "ui:room_status|menu:invite_menu|placeholder:notcapped"
+msgid "Add Members"
+msgstr "Thêm thành viên"
+
+#: src/modules/rooms/roomui.py:359
+msgctxt "ui:room_status|menu:kick_menu|placeholder"
+msgid "Remove Members"
+msgstr "Xóa thành viên"
+
+#: src/modules/rooms/roomui.py:367
+msgctxt "ui:room_status|embed|title"
+msgid "Room Control Panel"
+msgstr "Bảng điều khiển phòng"
+
+#: src/modules/rooms/roomui.py:375
+msgctxt "ui:room_status|embed|field:channel|name"
+msgid "Channel"
+msgstr "Kênh"
+
+#: src/modules/rooms/roomui.py:380
+msgctxt "ui:room_status|embed|field:owner|name"
+msgid "Owner"
+msgstr "Chủ phòng"
+
+#: src/modules/rooms/roomui.py:385
+msgctxt "ui:room_status|embed|field:created|name"
+msgid "Created At"
+msgstr "Ngày tạo"
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|embed|field:bank|value:expiring"
+msgid ""
+"**Warning:** Insufficient room balance to pay next rent ({coin} **{rent}**).\n"
+"The room will expire {expiry}.\n"
+"Use {room_deposit_cmd} to increase balance."
+msgstr ""
+"**Cảnh báo:** Số dư phòng không đủ để trả tiền thuê tiếp theo ({coin} **{rent}**).\n"
+"Phòng sẽ hết hạn {expiry}.\n"
+"Sử dụng {room_deposit_cmd} để tăng số dư."
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|embed|field:bank|value:notexpiring"
+msgid "Next rent due {time} (- {coin}**{rent}**)"
+msgstr "Tiền thuê tiếp theo {time} (- {coin}**{rent}**)"
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|embed|field:bank|name"
+msgid "Room Balance: {coin}**{amount}**"
+msgstr "Số dư phòng: {coin}**{amount}**"
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|embed|field:members|name"
+msgid "Members ({count}/{cap})"
+msgstr "Thành viên ({count}/{cap})"
+
+#: src/modules/rooms/cog.py:175 src/modules/rooms/room.py:364
+msgctxt "room|eventlog|event:room_deleted|title"
+msgid "Private Room Deleted"
+msgstr "Phòng riêng đã bị xóa"
+
+#, possible-python-brace-format
+msgctxt "room|eventlog|event:room_deleted|desc"
+msgid "{owner}'s private room was deleted."
+msgstr "Phòng riêng của {owner} đã bị xóa."
+
+#, possible-python-brace-format
+msgctxt "create_room|create_channel|audit_reason"
+msgid "Creating Private Room for {ownerid}"
+msgstr "Đang tạo phòng riêng cho {ownerid}"
+
+#: src/modules/rooms/cog.py:279
+msgctxt "eventlog|event:private_room_create_error|name"
+msgid "Private Room Creation Failed"
+msgstr "Tạo phòng riêng thất bại"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:private_room_create_error|desc"
+msgid ""
+"{owner} attempted to rent a new private room, but I could not create it!\n"
+"They were not charged."
+msgstr ""
+"{owner} đã cố thuê phòng riêng mới, nhưng tôi không thể tạo được!\n"
+"Họ không bị tính phí."
+
+#: src/modules/rooms/cog.py:329
+msgctxt "eventlog|event:private_room_create|name"
+msgid "Private Room Rented"
+msgstr "Phòng riêng đã được thuê"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:private_room_create|desc"
+msgid "{owner} has rented a new private room {channel}!"
+msgstr "{owner} đã thuê phòng riêng mới {channel}!"
+
+#: src/modules/rooms/cog.py:368
+msgctxt "cmd:room"
+msgid "room"
+msgstr "room"
+
+#: src/modules/rooms/cog.py:369
+msgctxt "cmd:room|desc"
+msgid "Base command group for private room configuration."
+msgstr "Nhóm lệnh cơ bản để cấu hình phòng riêng."
+
+#: src/modules/rooms/cog.py:376
+msgctxt "cmd:room_rent"
+msgid "rent"
+msgstr "rent"
+
+#: src/modules/rooms/cog.py:379
+msgctxt "cmd:room_rent|desc"
+msgid "Rent a private voice channel with LionCoins."
+msgstr "Thuê kênh thoại riêng bằng LionCoins."
+
+#: src/modules/rooms/cog.py:383
+msgctxt "cmd:room_rent|param:days"
+msgid "days"
+msgstr "days"
+
+#: src/modules/rooms/cog.py:384
+msgctxt "cmd:room_rent|param:members"
+msgid "members"
+msgstr "members"
+
+#: src/modules/rooms/cog.py:385
+msgctxt "cmd:room_rent|param:name"
+msgid "name"
+msgstr "name"
+
+#: src/modules/rooms/cog.py:390
+msgctxt "cmd:room_rent|param:days|desc"
+msgid "Number of days to pre-purchase. (Default: 1)"
+msgstr "Số ngày mua trước. (Mặc định: 1)"
+
+#: src/modules/rooms/cog.py:394
+msgctxt "cmd:room_rent|param:members|desc"
+msgid "Mention the members you want to add to your private room."
+msgstr "Đề cập các thành viên bạn muốn thêm vào phòng riêng của mình."
+
+#: src/modules/rooms/cog.py:398
+msgctxt "cmd:room_rent|param:name|desc"
+msgid "Name of your private voice channel."
+msgstr "Tên kênh thoại riêng của bạn."
+
+#: src/modules/rooms/cog.py:416
+msgctxt "cmd:room_rent|error:not_setup"
+msgid ""
+"The private room system has not been set up! A private room category needs "
+"to be set first with `/admin config rooms`."
+msgstr ""
+"Hệ thống phòng riêng chưa được thiết lập! Cần đặt danh mục trước bằng "
+"`/admin config rooms`."
+
+#: src/modules/rooms/cog.py:427
+msgctxt "cmd:room_rent|error:insufficient_perms"
+msgid ""
+"I do not have enough permissions to create a new channel under the "
+"configured private room category!"
+msgstr "Tôi không có đủ quyền để tạo kênh mới trong danh mục đã cấu hình!"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_rent|error:room_exists"
+msgid "You already own a private room! Click to visit: {channel}"
+msgstr "Bạn đã sở hữu phòng riêng rồi! Nhấn để truy cập: {channel}"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_rent|error:member_not_found"
+msgid "Could not find the requested member {mention} in this server!"
+msgstr "Không tìm thấy thành viên {mention} được yêu cầu trong máy chủ này!"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_rent|error:too_many_members"
+msgid ""
+"Too many members! You have requested to add `{count}` members to your room, "
+"but the maximum private room size is `{cap}`!"
+msgstr ""
+"Quá nhiều thành viên! Bạn yêu cầu thêm `{count}` thành viên, nhưng kích "
+"thước tối đa là `{cap}`!"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_rent|confirm:purchase"
+msgid ""
+"Are you sure you want to spend {coin}**{required}** to rent a private room "
+"for `one` day?"
+msgid_plural ""
+"Are you sure you want to spend {coin}**{required}** to rent a private room "
+"for `{days}` days?"
+msgstr[0] ""
+"Bạn có chắc chắn muốn chi {coin}**{required}** để thuê phòng riêng trong "
+"`{days}` ngày không?"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_rent|success"
+msgid "Successfully created your private room {channel}!"
+msgstr "Đã tạo phòng riêng {channel} của bạn thành công!"
+
+#: src/modules/rooms/cog.py:519
+msgctxt "cmd:room_rent|success|title"
+msgid "Private Room Created!"
+msgstr "Đã tạo phòng riêng!"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_rent|error:insufficient_funds"
+msgid ""
+"Renting a private room for `one` day costs {coin}**{required}**, but you "
+"only have {coin}**{balance}**!"
+msgid_plural ""
+"Renting a private room for `{days}` days costs {coin}**{required}**, but you"
+" only have {coin}**{balance}**!"
+msgstr[0] ""
+"Thuê phòng riêng trong `{days}` ngày tốn {coin}**{required}**, nhưng bạn chỉ"
+" có {coin}**{balance}**!"
+
+#: src/modules/rooms/cog.py:606
+msgctxt "cmd:room_rent|error:my_permissions"
+msgid ""
+"Could not create your private room! You were not charged.\n"
+"I have insufficient permissions to create a private room channel."
+msgstr ""
+"Không thể tạo phòng riêng của bạn! Bạn không bị tính phí.\n"
+"Tôi không có đủ quyền."
+
+#, possible-python-brace-format
+msgctxt "cmd:room_rent|error:unknown"
+msgid ""
+"Could not create your private room! You were not charged.\n"
+"An unknown error occurred while creating your private room.\n"
+"`{error}`"
+msgstr ""
+"Không thể tạo phòng riêng của bạn! Bạn không bị tính phí.\n"
+"Đã xảy ra lỗi không xác định.\n"
+"`{error}`"
+
+#: src/modules/rooms/cog.py:626
+msgctxt "cmd:room_status"
+msgid "status"
+msgstr "status"
+
+#: src/modules/rooms/cog.py:629
+msgctxt "cmd:room_status|desc"
+msgid "Display the status of your current room."
+msgstr "Hiển thị trạng thái phòng hiện tại của bạn."
+
+#: src/modules/rooms/cog.py:646
+msgctxt "cmd:room_status|error:no_target"
+msgid ""
+"Could not identify target private room! Please re-run the command in the "
+"private room you wish to view the status of."
+msgstr ""
+"Không thể xác định phòng mục tiêu! Vui lòng chạy lại lệnh trong phòng bạn "
+"muốn xem trạng thái."
+
+#: src/modules/rooms/cog.py:661
+msgctxt "cmd:room_invite"
+msgid "invite"
+msgstr "invite"
+
+#: src/modules/rooms/cog.py:664
+msgctxt "cmd:room_invite|desc"
+msgid "Add members to your private room."
+msgstr "Thêm thành viên vào phòng riêng của bạn."
+
+#: src/modules/rooms/cog.py:668
+msgctxt "cmd:room_invite|param:members"
+msgid "members"
+msgstr "members"
+
+#: src/modules/rooms/cog.py:673
+msgctxt "cmd:room_invite|param:members|desc"
+msgid "Mention the members you want to add."
+msgstr "Đề cập các thành viên bạn muốn thêm."
+
+#, possible-python-brace-format
+msgctxt "cmd:room_invite|error:no_room"
+msgid ""
+"You do not own a private room! Use `/room rent` to rent one with {coin}!"
+msgstr ""
+"Bạn không sở hữu phòng riêng! Sử dụng `/room rent` để thuê bằng {coin}!"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_invite|error:member_not_found"
+msgid "Could not find the invited member {mention} in this server!"
+msgstr "Không tìm thấy thành viên được mời {mention}!"
+
+#: src/modules/rooms/cog.py:719
+msgctxt "cmd:room_invite|error:no_new_members"
+msgid "All members mentioned are already in the room!"
+msgstr "Tất cả thành viên được đề cập đã ở trong phòng rồi!"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_invite|error:too_many_members"
+msgid ""
+"Too many members! You have invited `{count}` new members to your room, but "
+"you already have `{current}`, and the member cap is `{cap}`!"
+msgstr ""
+"Quá nhiều thành viên! Bạn đã mời `{count}` mới, nhưng đã có `{current}` và "
+"giới hạn là `{cap}`!"
+
+#: src/modules/rooms/cog.py:757
+msgctxt "cmd:room_invite|success|ack"
+msgid "Members Invited successfully."
+msgstr "Đã mời thành viên thành công."
+
+#: src/modules/rooms/cog.py:765
+msgctxt "cmd:room_kick"
+msgid "kick"
+msgstr "kick"
+
+#: src/modules/rooms/cog.py:768
+msgctxt "cmd:room_kick|desc"
+msgid "Remove a members from your private room."
+msgstr "Xóa thành viên khỏi phòng riêng của bạn."
+
+#: src/modules/rooms/cog.py:772
+msgctxt "cmd:room_kick|param:members"
+msgid "members"
+msgstr "members"
+
+#: src/modules/rooms/cog.py:777
+msgctxt "cmd:room_kick|param:members|desc"
+msgid ""
+"Mention the members you want to remove. Also accepts space-separated user "
+"ids."
+msgstr ""
+"Đề cập các thành viên bạn muốn xóa. Cũng chấp nhận ID người dùng phân cách "
+"bằng dấu cách."
+
+#, possible-python-brace-format
+msgctxt "cmd:room_kick|error:no_room"
+msgid ""
+"You do not own a private room! Use `/room rent` to rent one with {coin}!"
+msgstr ""
+"Bạn không sở hữu phòng riêng! Sử dụng `/room rent` để thuê bằng {coin}!"
+
+#: src/modules/rooms/cog.py:808
+msgctxt "cmd:room_kick|error:no_matching_members"
+msgid "None of the mentioned members are in this room!"
+msgstr "Không có thành viên nào được đề cập trong phòng này!"
+
+#: src/modules/rooms/cog.py:825
+msgctxt "cmd:room_kick|success|ack"
+msgid "Members removed."
+msgstr "Đã xóa thành viên."
+
+#: src/modules/rooms/cog.py:831
+msgctxt "cmd:room_transfer"
+msgid "transfer"
+msgstr "transfer"
+
+#: src/modules/rooms/cog.py:834
+msgctxt "cmd:room_transfer|desc"
+msgid "Transfer your private room to another room member. Not reversible!"
+msgstr "Chuyển phòng cho thành viên khác. Không thể hoàn tác!"
+
+#: src/modules/rooms/cog.py:838
+msgctxt "cmd:room_transfer|param:new_owner"
+msgid "new_owner"
+msgstr "new_owner"
+
+#: src/modules/rooms/cog.py:843
+msgctxt "cmd:room_transfer|param:new_owner"
+msgid "The room member you would like to transfer your room to."
+msgstr ""
+
+#: src/modules/rooms/cog.py:857
+msgctxt "cmd:room_transfer|error:no_room"
+msgid "You do not own a private room to transfer!"
+msgstr "Bạn không có phòng riêng để chuyển!"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_transfer|error:target_not_member"
+msgid ""
+"{mention} is not a member of your private room! You must invite them first."
+msgstr ""
+"{mention} không phải là thành viên phòng riêng của bạn! Bạn phải mời họ "
+"trước."
+
+#, possible-python-brace-format
+msgctxt "cmd:room_transfer|error:target_has_room"
+msgid ""
+"{mention} already owns a room! Members can only own one room at a time."
+msgstr ""
+"{mention} đã sở hữu phòng! Thành viên chỉ có thể sở hữu một phòng cùng lúc."
+
+#, possible-python-brace-format
+msgctxt "cmd:room_transfer|confirm|question"
+msgid ""
+"Are you sure you wish to transfer your private room {channel} to "
+"{new_owner}? This action is not reversible!"
+msgstr ""
+"Bạn có chắc muốn chuyển phòng {channel} cho {new_owner}? Hành động này không"
+" thể hoàn tác!"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_transfer|success|description"
+msgid ""
+"You have successfully transferred ownership of {channel} to {new_owner}."
+msgstr "Bạn đã chuyển quyền sở hữu {channel} cho {new_owner} thành công."
+
+#: src/modules/rooms/cog.py:916
+msgctxt "cmd:room_deposit"
+msgid "deposit"
+msgstr "deposit"
+
+#: src/modules/rooms/cog.py:919
+msgctxt "cmd:room_deposit|desc"
+msgid ""
+"Deposit LionCoins in your private room bank to add more days. (Members may "
+"also deposit!)"
+msgstr ""
+"Nạp LionCoins vào ngân hàng phòng để thêm ngày. (Thành viên cũng có thể "
+"nạp!)"
+
+#: src/modules/rooms/cog.py:923
+msgctxt "cmd:room_deposit|param:coins"
+msgid "coins"
+msgstr "coins"
+
+#: src/modules/rooms/cog.py:928
+msgctxt "cmd:room_deposit|param:coins|desc"
+msgid "Number of coins to deposit."
+msgstr "Số xu cần nạp."
+
+#: src/modules/rooms/cog.py:948
+msgctxt "cmd:room_deposit|error:no_target"
+msgid ""
+"Could not identify target private room! Please re-run the command in the "
+"private room you wish to contribute to."
+msgstr ""
+"Không thể xác định phòng mục tiêu! Vui lòng chạy lại lệnh trong phòng bạn "
+"muốn đóng góp."
+
+#, possible-python-brace-format
+msgctxt "cmd:room_deposit|error:insufficient_funds"
+msgid ""
+"You cannot deposit {coin}**{amount}**! You only have {coin}**{balance}**."
+msgstr "Bạn không thể nạp {coin}**{amount}**! Bạn chỉ có {coin}**{balance}**."
+
+#, possible-python-brace-format
+msgctxt "cmd:room_depost|success"
+msgid ""
+"Success! You have contributed {coin}**{amount}** to the private room bank."
+msgstr "Thành công! Bạn đã đóng góp {coin}**{amount}** vào ngân hàng phòng."
+
+#: src/modules/rooms/cog.py:1000
+msgctxt "cmd:configure_rooms"
+msgid "rooms"
+msgstr "rooms"
+
+#: src/modules/rooms/cog.py:1001
+msgctxt "cmd:configure_rooms|desc"
+msgid "Configure Rented Private Rooms"
+msgstr "Cấu hình phòng riêng thuê"
+
+#: src/modules/rooms/room.py:78
+msgctxt "room|eventlog|field:owner"
+msgid "Owner"
+msgstr "Chủ phòng"
+
+#: src/modules/rooms/room.py:84
+msgctxt "room|eventlog|field:channel"
+msgid "Channel"
+msgstr "Kênh"
+
+#: src/modules/rooms/room.py:90
+msgctxt "room|eventlog|field:balance"
+msgid "Room Balance"
+msgstr "Số dư phòng"
+
+#: src/modules/rooms/room.py:96
+msgctxt "room|eventlog|field:created"
+msgid "Created At"
+msgstr "Ngày tạo"
+
+#: src/modules/rooms/room.py:102
+msgctxt "room|eventlog|field:tick"
+msgid "Next Rent Due"
+msgstr "Tiền thuê tiếp theo"
+
+#: src/modules/rooms/room.py:108
+msgctxt "room|eventlog|field:members"
+msgid "Private Room Members"
+msgstr "Thành viên phòng riêng"
+
+#, possible-python-brace-format
+msgctxt "room|notify:deposit|description"
+msgid "{member} has deposited {coin}**{amount}** into the room bank!"
+msgstr "{member} đã nạp {coin}**{amount}** vào ngân hàng phòng!"
+
+#: src/modules/rooms/room.py:146
+msgctxt "room|notify:new_members|title"
+msgid "New Members!"
+msgstr "Thành viên mới!"
+
+#, possible-python-brace-format
+msgctxt "room|notify:new_members|desc"
+msgid "Welcome {members}"
+msgstr "Chào mừng {members}"
+
+#: src/modules/rooms/room.py:156
+msgctxt "room|eventlog|event:new_members|title"
+msgid "Members invited to private room"
+msgstr "Thành viên được mời vào phòng riêng"
+
+#, possible-python-brace-format
+msgctxt "room|eventlog|event:new_members|desc"
+msgid "{owner} added members to their private room: {members}"
+msgstr "{owner} đã thêm thành viên vào phòng riêng: {members}"
+
+#: src/modules/rooms/room.py:191
+msgctxt "room|eventlog|event:rm_members|title"
+msgid "Members removed from private room"
+msgstr "Thành viên bị xóa khỏi phòng riêng"
+
+#, possible-python-brace-format
+msgctxt "room|eventlog|event:rm_members|desc"
+msgid "{owner} removed members from their private room: {members}"
+msgstr "{owner} đã xóa thành viên khỏi phòng riêng: {members}"
+
+#, possible-python-brace-format
+msgctxt "room|notify:transfer|description"
+msgid "{old_owner} has transferred private room ownership to {new_owner}"
+msgstr "{old_owner} đã chuyển quyền sở hữu phòng cho {new_owner}"
+
+#: src/modules/rooms/room.py:318
+msgctxt "room|embed:expiry|title"
+msgid "Private Room Expired!"
+msgstr "Phòng riêng đã hết hạn!"
+
+#, possible-python-brace-format
+msgctxt "room|embed:expiry|description"
+msgid "Your private room in **{guild}** has expired!"
+msgstr "Phòng riêng của bạn trong **{guild}** đã hết hạn!"
+
+#: src/modules/rooms/room.py:332
+msgctxt "room|eventlog|event:expired|title"
+msgid "Private Room Expired"
+msgstr "Phòng riêng đã hết hạn"
+
+#, possible-python-brace-format
+msgctxt "room|eventlog|event:expired|desc"
+msgid "{owner}'s private room has expired."
+msgstr "Phòng riêng của {owner} đã hết hạn."
+
+#, possible-python-brace-format
+msgctxt "room|tick|rent_deducted"
+msgid "Daily rent deducted from room balance. New balance: {coin}**{amount}**"
+msgstr ""
+"Tiền thuê hàng ngày đã được trừ từ số dư. Số dư mới: {coin}**{amount}**"
+
+#: src/modules/rooms/settings.py:23
+msgctxt "guildset:room_category"
+msgid "rooms_category"
+msgstr "rooms_category"
+
+#: src/modules/rooms/settings.py:27
+msgctxt "guildset:rooms_category|desc"
+msgid "Category in which to create private voice channels."
+msgstr "Danh mục để tạo kênh thoại riêng."
+
+#: src/modules/rooms/settings.py:31
+msgctxt "guildset:room_category|long_desc"
+msgid ""
+"When a member uses {cmds[room rent]} to rent a new private room, a private "
+"voice channel will be created under this category, manageable by the member."
+" I must have permission to create new channels in this category, as well as "
+"to manage permissions."
+msgstr ""
+"Khi thành viên sử dụng {cmds[room rent]}, một kênh thoại riêng sẽ được tạo "
+"trong danh mục này. Tôi cần quyền tạo kênh và quản lý quyền."
+
+#: src/modules/rooms/settings.py:39
+msgctxt "guildset:room_category|accepts"
+msgid "Private room category name or id."
+msgstr "Tên hoặc ID danh mục phòng riêng."
+
+#: src/modules/rooms/settings.py:53
+msgctxt "guildset:rooms_category|set_response:unset"
+msgid ""
+"The private room category has been unset. Existing private rooms will not be"
+" affected. Delete the channels manually to remove the private rooms."
+msgstr ""
+"Danh mục phòng riêng đã được gỡ. Các phòng hiện có sẽ không bị ảnh hưởng. "
+"Xóa các kênh theo cách thủ công."
+
+#, possible-python-brace-format
+msgctxt "guildset:rooms_category|set_response:set"
+msgid ""
+"Private room category has been set to {channel}. Existing private rooms will"
+" be moved."
+msgstr ""
+"Danh mục phòng riêng đã được đặt thành {channel}. Các phòng hiện có sẽ được "
+"di chuyển."
+
+#, possible-python-brace-format
+msgctxt "guildset:room_category|set_using"
+msgid "{cmd} or category selector below."
+msgstr "{cmd} hoặc bộ chọn danh mục bên dưới."
+
+#: src/modules/rooms/settings.py:79
+msgctxt "guildset:rooms_price"
+msgid "room_rent"
+msgstr "room_rent"
+
+#: src/modules/rooms/settings.py:83
+msgctxt "guildset:rooms_rent|desc"
+msgid "Daily rent price for a private room."
+msgstr "Giá thuê hàng ngày cho phòng riêng."
+
+#: src/modules/rooms/settings.py:87
+msgctxt "guildset:rooms_rent|long_desc"
+msgid ""
+"Members will be charged this many LionCoins for each day they rent a private"
+" room."
+msgstr ""
+"Thành viên sẽ bị tính phí bằng LionCoins cho mỗi ngày thuê phòng riêng."
+
+#: src/modules/rooms/settings.py:91
+msgctxt "guildset:rooms_rent|accepts"
+msgid "Number of LionCoins charged per day for a private room."
+msgstr "Số LionCoins tính phí mỗi ngày cho phòng riêng."
+
+#, possible-python-brace-format
+msgctxt "guildset:rooms_price|set_response"
+msgid "Private rooms will now cost {coin}**{amount}** per 24 hours."
+msgstr "Phòng riêng giờ sẽ có giá {coin}**{amount}** mỗi 24 giờ."
+
+#: src/modules/rooms/settings.py:116
+msgctxt "guildset:rooms_slots"
+msgid "room_member_cap"
+msgstr "room_member_cap"
+
+#: src/modules/rooms/settings.py:119
+msgctxt "guildset:rooms_slots|desc"
+msgid "Maximum number of members in each private room."
+msgstr "Số thành viên tối đa trong mỗi phòng riêng."
+
+#: src/modules/rooms/settings.py:123
+msgctxt "guildset:rooms_slots|long_desc"
+msgid ""
+"Private room owners may invite other members to their private room via the "
+"UI, or through the {cmds[room invite]} command. This setting limits the "
+"maximum number of members a private room may hold."
+msgstr ""
+"Chủ phòng có thể mời thành viên qua giao diện hoặc lệnh {cmds[room invite]}."
+" Cài đặt này giới hạn số thành viên tối đa."
+
+#: src/modules/rooms/settings.py:129
+msgctxt "guildset:rooms_slots|accepts"
+msgid "Maximum number of members allowed per private room."
+msgstr "Số thành viên tối đa được phép mỗi phòng riêng."
+
+#, possible-python-brace-format
+msgctxt "guildset:rooms_slots|set_response"
+msgid "Private rooms are now capped to **{amount}** members."
+msgstr "Phòng riêng giờ giới hạn **{amount}** thành viên."
+
+#: src/modules/rooms/settings.py:151
+msgctxt "guildset:rooms_visible"
+msgid "room_visibility"
+msgstr "room_visibility"
+
+#: src/modules/rooms/settings.py:154
+msgctxt "guildset:rooms_visible|desc"
+msgid "Whether private rented rooms are visible to non-members."
+msgstr "Phòng riêng thuê có hiển thị cho người không phải thành viên không."
+
+#: src/modules/rooms/settings.py:158
+msgctxt "guildset:rooms_visible|long_desc"
+msgid ""
+"If enabled, new private rooms will be created with the `VIEW_CHANNEL` "
+"permission enabled for the `@everyone` role."
+msgstr ""
+"Nếu bật, phòng mới sẽ được tạo với quyền `VIEW_CHANNEL` cho vai trò "
+"`@everyone`."
+
+#: src/modules/rooms/settings.py:162
+msgctxt "guildset:rooms_visible|accepts"
+msgid "Visible/Invisible"
+msgstr "Hiển thị/Ẩn"
+
+#: src/modules/rooms/settings.py:164
+msgctxt "guildset:rooms_visible|output:true"
+msgid "Visible"
+msgstr "Hiển thị"
+
+#: src/modules/rooms/settings.py:165
+msgctxt "guildset:rooms_visible|output:false"
+msgid "Invisible"
+msgstr "Ẩn"
+
+#: src/modules/rooms/settings.py:171
+msgctxt "guildset:rooms_visible|parse:truthy_values"
+msgid "visible|enabled|yes|true|on|enable|1"
+msgstr "visible|enabled|yes|true|on|enable|1"
+
+#: src/modules/rooms/settings.py:175
+msgctxt "guildset:rooms_visible|parse:falsey_values"
+msgid "invisible|disabled|no|false|off|disable|0"
+msgstr "invisible|disabled|no|false|off|disable|0"
+
+#: src/modules/rooms/settings.py:187
+msgctxt "guildset:rooms_visible|set_response:enabled"
+msgid "Private rooms will now be visible to everyone."
+msgstr "Phòng riêng giờ sẽ hiển thị cho tất cả mọi người."
+
+#: src/modules/rooms/settings.py:192
+msgctxt "guildset:rooms_visible|set_response:disabled"
+msgid "Private rooms will now only be visible to their members (and admins)."
+msgstr "Phòng riêng giờ chỉ hiển thị cho thành viên (và quản trị viên)."
+
+#, possible-python-brace-format
+msgctxt "guildset:rooms_visible|set_using"
+msgid "{cmd} or toggle below."
+msgstr "{cmd} hoặc nút chuyển đổi bên dưới."

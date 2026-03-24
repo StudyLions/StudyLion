@@ -1,27 +1,19 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
-# Translators:
-# Eyüp Ramazan, 2023
-# Furkan Bülbül, 2023
-# Havina Ru, 2023
-# 
-#, fuzzy
+# Turkish translation for LionBot - moderation
+# AI-translated with human Transifex contributions where available.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: LionBot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-24 14:37+0300\n"
-"PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Havina Ru, 2023\n"
-"Language-Team: Turkish (https://app.transifex.com/leobot/teams/174919/tr/)\n"
+"PO-Revision-Date: 2026-03-13 22:18+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Turkish\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: tr\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/moderation/settingui.py:55
 msgctxt "ui:moderation_config|menu:ticket_log|placeholder"
@@ -41,7 +33,7 @@ msgstr "Moderatör Rolünü Seç"
 #: src/modules/moderation/settingui.py:133
 msgctxt "ui:moderation_config|menu:adminrole|placeholder"
 msgid "Select Admin Role"
-msgstr ""
+msgstr "Yönetici rolünü seçin"
 
 #: src/modules/moderation/settingui.py:141
 msgctxt "ui:moderation_config|embed|title"
@@ -51,7 +43,7 @@ msgstr "Moderasyon Konfigürasyon Paneli"
 #: src/modules/moderation/settingui.py:182
 msgctxt "dash:moderation|title"
 msgid "Moderation Settings ({commands[admin config moderation]})"
-msgstr ""
+msgstr "Moderasyon ayarları ({commands[admin config moderation]})"
 
 #: src/modules/moderation/settingui.py:186
 msgctxt "dash:moderation|dropdown|placeholder"
@@ -61,99 +53,98 @@ msgstr "Moderasyon Paneli"
 #: src/modules/moderation/cog.py:135
 msgctxt "cmd:modnote"
 msgid "modnote"
-msgstr ""
+msgstr "modnote"
 
 #: src/modules/moderation/cog.py:138
 msgctxt "cmd:modnote|desc"
 msgid "Add a note to the target member's moderation record."
-msgstr ""
+msgstr "Hedef üyenin moderasyon kaydına bir not ekleyin."
 
 #: src/modules/moderation/cog.py:142
 msgctxt "cmd:modnote|param:target"
 msgid "target"
-msgstr ""
+msgstr "target"
 
 #: src/modules/moderation/cog.py:143
 msgctxt "cmd:modnote|param:note"
 msgid "note"
-msgstr ""
+msgstr "note"
 
 #: src/modules/moderation/cog.py:148
 msgctxt "cmd:modnote|param:target|desc"
 msgid "Target member or user to add a note to."
-msgstr ""
+msgstr "Not eklenecek hedef üye veya kullanıcı."
 
 #: src/modules/moderation/cog.py:152
 msgctxt "cmd:modnote|param:note|desc"
 msgid "Contents of the note."
-msgstr ""
+msgstr "Notun içeriği."
 
 #: src/modules/moderation/cog.py:177
 msgctxt "cmd:modnote|modal:enter_note|title"
 msgid "Moderation Note"
-msgstr ""
+msgstr "Moderasyon notu"
 
 #: src/modules/moderation/cog.py:182
 msgctxt "cmd:modnote|modal:enter_note|field|label"
 msgid "Note Content"
-msgstr ""
+msgstr "Not içeriği"
 
-#: src/modules/moderation/cog.py:215
 #, possible-python-brace-format
 msgctxt "cmd:modnote|embed:success|desc"
 msgid "Moderation note created as [Ticket #{ticket}]({jump_link})"
-msgstr ""
+msgstr "Moderasyon notu [Bilet #{ticket}]({jump_link}) olarak oluşturuldu"
 
 #: src/modules/moderation/cog.py:225
 msgctxt "cmd:warning"
 msgid "warning"
-msgstr ""
+msgstr "warning"
 
 #: src/modules/moderation/cog.py:228
 msgctxt "cmd:warning|desc"
 msgid ""
 "Warn a member for a misdemeanour, and add it to their moderation record."
-msgstr ""
+msgstr "Bir üyeyi kural ihlali için uyarın ve moderasyon kaydına ekleyin."
 
 #: src/modules/moderation/cog.py:232
 msgctxt "cmd:warning|param:target"
 msgid "target"
-msgstr ""
+msgstr "target"
 
 #: src/modules/moderation/cog.py:233
 msgctxt "cmd:warning|param:reason"
 msgid "reason"
-msgstr ""
+msgstr "reason"
 
 #: src/modules/moderation/cog.py:238
 msgctxt "cmd:warning|param:target|desc"
 msgid "Target member to warn."
-msgstr ""
+msgstr "Uyarılacak hedef üye."
 
 #: src/modules/moderation/cog.py:242
 msgctxt "cmd:warning|param:reason|desc"
 msgid "The reason why you are warning this member."
-msgstr ""
+msgstr "Bu üyeyi uyarma nedeniniz."
 
 #: src/modules/moderation/cog.py:262
 msgctxt "cmd:warning|modal:reason|title"
 msgid "Moderation Warning"
-msgstr ""
+msgstr "Moderasyon uyarısı"
 
 #: src/modules/moderation/cog.py:267
 msgctxt "cmd:warning|modal:reason|field|label"
 msgid "Reason for the warning (visible to user)."
-msgstr ""
+msgstr "Uyarının nedeni (kullanıcıya görünür)."
 
 #: src/modules/moderation/cog.py:298
 msgctxt "cmd:warning|embed:user_alert|title"
 msgid "You have received a warning!"
-msgstr ""
+msgstr "Bir uyarı aldınız!"
 
 #: src/modules/moderation/cog.py:305
 msgctxt "cmd:warning|embed:user_alert|field:note|name"
 msgid "Note"
-msgstr ""
+msgstr "Not"
 
 #: src/modules/moderation/cog.py:309
 msgctxt "cmd:warning|embed:user_alert|field:note|value"
@@ -161,55 +152,56 @@ msgid ""
 "*Warnings appear in your moderation history. Continuing failure to comply "
 "with server rules and moderator directions may result in more severe action."
 msgstr ""
+"*Uyarılar moderasyon geçmişinizde görünür. Sunucu kurallarına ve moderatör "
+"yönlendirmelerine uymamaya devam etmek daha sert yaptırımlara yol açabilir."
 
-#: src/modules/moderation/cog.py:327
 #, possible-python-brace-format
 msgctxt "cmd:warning|embed:success|line:count"
 msgid "This their first warning."
 msgid_plural "They have recieved **`{count}`** warnings."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Bu onların ilk uyarısı."
+msgstr[1] "**`{count}`** uyarı almışlar."
 
-#: src/modules/moderation/cog.py:336
 #, possible-python-brace-format
 msgctxt "cmd:warning|embed:success|desc"
 msgid "[Ticket #{ticket}]({jump_link}) {user} has been warned."
-msgstr ""
+msgstr "[Bilet #{ticket}]({jump_link}) {user} uyarıldı."
 
 #: src/modules/moderation/cog.py:347
 msgctxt "cmd:warning|embed:success|field:no_alert|name"
 msgid "Note"
-msgstr ""
+msgstr "Not"
 
 #: src/modules/moderation/cog.py:351
 msgctxt "cmd:warning|embed:success|field:no_alert|value"
 msgid "*Could not deliver warning to the target.*"
-msgstr ""
+msgstr "*Uyarı hedefe iletilemedi.*"
 
 #: src/modules/moderation/cog.py:358
 msgctxt "cmd:pardon"
 msgid "pardon"
-msgstr ""
+msgstr "pardon"
 
 #: src/modules/moderation/cog.py:361
 msgctxt "cmd:pardon|desc"
 msgid "Pardon moderation tickets to mark them as no longer in effect."
 msgstr ""
+"Moderasyon biletlerini af ederek artık geçerli olmadığını işaretleyin."
 
 #: src/modules/moderation/cog.py:367
 msgctxt "cmd:pardon|param:ticketids"
 msgid "tickets"
-msgstr ""
+msgstr "tickets"
 
 #: src/modules/moderation/cog.py:371
 msgctxt "cmd:pardon|param:reason"
 msgid "reason"
-msgstr ""
+msgstr "reason"
 
 #: src/modules/moderation/cog.py:377
 msgctxt "cmd:pardon|param:ticketids|desc"
 msgid "Comma separated list of ticket numbers to pardon."
-msgstr ""
+msgstr "Af edilecek bilet numaralarının virgülle ayrılmış listesi."
 
 #: src/modules/moderation/cog.py:381
 msgctxt "cmd:pardon|param:reason"
@@ -219,12 +211,12 @@ msgstr ""
 #: src/modules/moderation/cog.py:402
 msgctxt "cmd:pardon|modal:reason|title"
 msgid "Pardon Tickets"
-msgstr ""
+msgstr "Biletleri af et"
 
 #: src/modules/moderation/cog.py:407
 msgctxt "cmd:pardon|modal:reason|field|label"
 msgid "Why are you pardoning these tickets?"
-msgstr ""
+msgstr "Bu biletleri neden af ediyorsunuz?"
 
 #: src/modules/moderation/cog.py:435
 msgctxt "cmd:pardon|error:parse_ticketids"
@@ -232,101 +224,106 @@ msgid ""
 "Could not parse provided tickets as a list of ticket ids! Please enter "
 "tickets as a comma separated list of ticket numbers, for example `1, 2, 3`."
 msgstr ""
+"Sağlanan biletler bilet ID listesi olarak ayrıştırılamadı! Lütfen virgülle "
+"ayrılmış liste olarak girin, örneğin `1, 2, 3`."
 
 #: src/modules/moderation/cog.py:449
 msgctxt "cmd:pardon|error:no_matching"
 msgid "No matching moderation tickets found to pardon!"
-msgstr ""
+msgstr "Af edilecek eşleşen moderasyon bileti bulunamadı!"
 
-#: src/modules/moderation/cog.py:469
 #, possible-python-brace-format
 msgctxt "cmd:pardon|embed:success|title"
 msgid "Ticket {ticketstr} has been pardoned."
 msgid_plural ""
 "The following tickets have been pardoned:\n"
 "{ticketstr}"
-msgstr[0] ""
+msgstr[0] "Bilet {ticketstr} af edildi."
 msgstr[1] ""
+"Aşağıdaki biletler af edildi:\n"
+"{ticketstr}"
 
 #: src/modules/moderation/cog.py:478
 msgctxt "cmd:tickets"
 msgid "tickets"
-msgstr ""
+msgstr "tickets"
 
 #: src/modules/moderation/cog.py:481
 msgctxt "cmd:tickets|desc"
 msgid "View moderation tickets in this server."
-msgstr ""
+msgstr "Bu sunucudaki moderasyon biletlerini görüntüle."
 
 #: src/modules/moderation/cog.py:485
 msgctxt "cmd:tickets|param:target"
 msgid "target"
-msgstr ""
+msgstr "target"
 
 #: src/modules/moderation/cog.py:486
 msgctxt "cmd:tickets|param:type"
 msgid "type"
-msgstr ""
+msgstr "type"
 
 #: src/modules/moderation/cog.py:487
 msgctxt "cmd:tickets|param:state"
 msgid "ticket_state"
-msgstr ""
+msgstr "ticket_state"
 
 #: src/modules/moderation/cog.py:488
 msgctxt "cmd:tickets|param:pardoned"
 msgid "include_pardoned"
-msgstr ""
+msgstr "include_pardoned"
 
 #: src/modules/moderation/cog.py:489
 msgctxt "cmd:tickets|param:moderator"
 msgid "acting_moderator"
-msgstr ""
+msgstr "acting_moderator"
 
 #: src/modules/moderation/cog.py:490
 msgctxt "cmd:tickets|param:after"
 msgid "after"
-msgstr ""
+msgstr "after"
 
 #: src/modules/moderation/cog.py:491
 msgctxt "cmd:tickets|param:before"
 msgid "before"
-msgstr ""
+msgstr "before"
 
 #: src/modules/moderation/cog.py:496
 msgctxt "cmd:tickets|param:target|desc"
 msgid "Filter by tickets acting on a given user."
-msgstr ""
+msgstr "Belirli bir kullanıcıya uygulanan biletlere göre filtrele."
 
 #: src/modules/moderation/cog.py:500
 msgctxt "cmd:tickets|param:type|desc"
 msgid "Filter by ticket type."
-msgstr ""
+msgstr "Bilet türüne göre filtrele."
 
 #: src/modules/moderation/cog.py:504
 msgctxt "cmd:tickets|param:state|desc"
 msgid "Filter by ticket state."
-msgstr ""
+msgstr "Bilet durumuna göre filtrele."
 
 #: src/modules/moderation/cog.py:508
 msgctxt "cmd:tickets|param:pardoned|desc"
 msgid "Whether to only show active tickets, or also include pardoned."
 msgstr ""
+"Yalnızca aktif biletleri göstermek mi, yoksa af edilenleri de dahil etmek "
+"mi."
 
 #: src/modules/moderation/cog.py:512
 msgctxt "cmd:tickets|param:moderator|desc"
 msgid "Filter by moderator responsible for the ticket."
-msgstr ""
+msgstr "Bilet sorumlusu moderatöre göre filtrele."
 
 #: src/modules/moderation/cog.py:516
 msgctxt "cmd:tickets|param:after|desc"
 msgid "Only show tickets after this date (YYY-MM-DD HH:MM)"
-msgstr ""
+msgstr "Yalnızca bu tarihten sonraki biletleri göster (YYYY-AA-GG SS:DD)"
 
 #: src/modules/moderation/cog.py:520
 msgctxt "cmd:tickets|param:before|desc"
 msgid "Only show tickets before this date (YYY-MM-DD HH:MM)"
-msgstr ""
+msgstr "Yalnızca bu tarihten önceki biletleri göster (YYYY-AA-GG SS:DD)"
 
 #: src/modules/moderation/cog.py:582
 msgctxt "cmd:configure_moderation"
@@ -341,136 +338,133 @@ msgstr "Genel moderasyon ayarlarını ayarla"
 #: src/modules/moderation/ticketui.py:62
 msgctxt "ticketfilter|field:after|name"
 msgid "Created After"
-msgstr ""
+msgstr "Sonra oluşturulan"
 
 #: src/modules/moderation/ticketui.py:70
 msgctxt "ticketfilter|field:before|name"
 msgid "Created Before"
-msgstr ""
+msgstr "Önce oluşturulan"
 
 #: src/modules/moderation/ticketui.py:78
 msgctxt "ticketfilter|field:targetids|name"
 msgid "Targets"
-msgstr ""
+msgstr "Hedefler"
 
 #: src/modules/moderation/ticketui.py:86
 msgctxt "ticketfilter|field:moderatorids|name"
 msgid "Moderators"
-msgstr ""
+msgstr "Moderatörler"
 
 #: src/modules/moderation/ticketui.py:94
 msgctxt "ticketfilter|field:types|name"
 msgid "Ticket Types"
-msgstr ""
+msgstr "Bilet türleri"
 
 #: src/modules/moderation/ticketui.py:102
 msgctxt "ticketfilter|field:states|name"
 msgid "Ticket States"
-msgstr ""
+msgstr "Bilet durumları"
 
 #: src/modules/moderation/ticketui.py:179
 msgctxt "ui:tickets|button:edit_filter|label"
 msgid "Edit Filters"
-msgstr ""
+msgstr "Filtreleri düzenle"
 
 #: src/modules/moderation/ticketui.py:199
 msgctxt "ui:tickets|button:select_ticket|label"
 msgid "Select Ticket"
-msgstr ""
+msgstr "Bilet seç"
 
 #: src/modules/moderation/ticketui.py:215
 msgctxt "ui:tickets|button:pardon|error:no_tickets"
 msgid "Not tickets matching the given criterial! Nothing to pardon."
-msgstr ""
+msgstr "Verilen kriterlere uyan bilet yok! Af edilecek bir şey yok."
 
 #: src/modules/moderation/ticketui.py:221
 msgctxt "ui:tickets|button:pardon|modal:reason|title"
 msgid "Pardon Tickets"
-msgstr ""
+msgstr "Biletleri af et"
 
 #: src/modules/moderation/ticketui.py:226
 msgctxt "ui:tickets|button:pardon|modal:reason|field|label"
 msgid "Why are you pardoning these tickets?"
-msgstr ""
+msgstr "Bu biletleri neden af ediyorsunuz?"
 
 #: src/modules/moderation/ticketui.py:252
 msgctxt "ui:tickets|button:pardon|label"
 msgid "Pardon All"
-msgstr ""
+msgstr "Tümünü af et"
 
 #: src/modules/moderation/ticketui.py:273
 msgctxt "ui:tickets|menu:filter_type|placeholder"
 msgid "Select Ticket Types"
-msgstr ""
+msgstr "Bilet türlerini seçin"
 
 #: src/modules/moderation/ticketui.py:309
 msgctxt "ui:tickets|menu:filter_state|placeholder"
 msgid "Select Ticket States"
-msgstr ""
+msgstr "Bilet durumlarını seçin"
 
 #: src/modules/moderation/ticketui.py:346
 msgctxt "ui:tickets|menu:filter_target|placeholder"
 msgid "Select Ticket Targets"
-msgstr ""
+msgstr "Bilet hedeflerini seçin"
 
 #: src/modules/moderation/ticketui.py:371
 msgctxt "ui:tickets|menu:tickets|placeholder"
 msgid "Select Ticket"
-msgstr ""
+msgstr "Bilet seç"
 
 #: src/modules/moderation/ticketui.py:402
 msgctxt "ui:tickets|button:jump|input:title"
 msgid "Jump to page"
-msgstr ""
+msgstr "Sayfaya git"
 
 #: src/modules/moderation/ticketui.py:406
 msgctxt "ui:tickets|button:jump|input:question"
 msgid "Page number to jump to"
-msgstr ""
+msgstr "Gidilecek sayfa numarası"
 
 #: src/modules/moderation/ticketui.py:417
 msgctxt "ui:tickets|button:jump|error:invalid_page"
 msgid "Invalid page number, please try again!"
-msgstr ""
+msgstr "Geçersiz sayfa numarası, lütfen tekrar deneyin!"
 
-#: src/modules/moderation/ticketui.py:496
 #, possible-python-brace-format
 msgctxt "ui:tickets|embed|title"
 msgid "Moderation Tickets in {guild}"
-msgstr ""
+msgstr "{guild} sunucusundaki moderasyon biletleri"
 
 #: src/modules/moderation/ticketui.py:506
 msgctxt "ui:tickets|embed|desc:no_tickets"
 msgid "No tickets matching the given criteria!"
-msgstr ""
+msgstr "Verilen kriterlere uyan bilet yok!"
 
 #: src/modules/moderation/ticketui.py:515
 msgctxt "ui:tickets|embed|field:filters|name"
 msgid "Filters"
-msgstr ""
+msgstr "Filtreler"
 
 #: src/modules/moderation/ticketui.py:603
 msgctxt "ui:ticket|button:pardon|modal:reason|title"
 msgid "Pardon Moderation Ticket"
-msgstr ""
+msgstr "Moderasyon biletini af et"
 
 #: src/modules/moderation/ticketui.py:608
 msgctxt "ui:ticket|button:pardon|modal:reason|field|label"
 msgid "Why are you pardoning this ticket?"
-msgstr ""
+msgstr "Bu bileti neden af ediyorsunuz?"
 
 #: src/modules/moderation/ticketui.py:632
 msgctxt "ui:ticket|button:pardon|label"
 msgid "Pardon"
-msgstr ""
+msgstr "Af et"
 
-#: src/modules/moderation/ticket.py:148
 #, possible-python-brace-format
 msgctxt "ticket|title:auto"
 msgid "Ticket #{ticketid} | {state} | {type}[Auto] | {name}"
 msgstr "Talep #{ticketid} | {state} | {type}[Auto] | {name}"
 
-#: src/modules/moderation/ticket.py:153
 #, possible-python-brace-format
 msgctxt "ticket|title:manual"
 msgid "Ticket #{ticketid} | {state} | {type} | {name}"
@@ -491,7 +485,6 @@ msgctxt "ticket|field:expiry|mode:expiring|name"
 msgid "Expires At"
 msgstr "Süre Dolma Zamanı"
 
-#: src/modules/moderation/ticket.py:184
 #, possible-python-brace-format
 msgctxt "ticket|field:expiry|mode:expiring|value"
 msgid ""
@@ -506,7 +499,6 @@ msgctxt "ticket|field:expiry|mode:expired|name"
 msgid "Expired"
 msgstr "Süresi doldu"
 
-#: src/modules/moderation/ticket.py:195
 #, possible-python-brace-format
 msgctxt "ticket|field:expiry|mode:expired|value"
 msgid "{timestamp}"
@@ -517,7 +509,6 @@ msgctxt "ticket|field:expiry|mode:open|name"
 msgid "Expiry"
 msgstr "Geçerlilik"
 
-#: src/modules/moderation/ticket.py:205
 #, possible-python-brace-format
 msgctxt "ticket|field:expiry|mode:open|value"
 msgid "{timestamp}"
@@ -538,13 +529,14 @@ msgctxt "ticket|field:pardoned|name"
 msgid "Pardoned"
 msgstr "Affedildi"
 
-#: src/modules/moderation/ticket.py:230
 #, possible-python-brace-format
 msgctxt "ticket|field:pardoned|value"
 msgid ""
 "Pardoned by <@{moderator}> at {timestamp}.\n"
 "{reason}"
 msgstr ""
+"<@{moderator}> tarafından {timestamp} tarihinde af edildi.\n"
+"{reason}"
 
 #: src/modules/moderation/settings.py:22
 msgctxt "guildset:ticket_log"
@@ -572,7 +564,6 @@ msgctxt "guildset:ticket_log|accepts"
 msgid "Ticket channel name or id."
 msgstr "Talep kanal adı ya da ID'si."
 
-#: src/modules/moderation/settings.py:48
 #, possible-python-brace-format
 msgctxt "guildset:ticket_log|set_response:set"
 msgid "Moderation tickets will be sent to {channel}"
@@ -618,7 +609,6 @@ msgctxt "guildset:alert_channel|accepts"
 msgid "Alert channel name or id."
 msgstr "Uyarı kanalı adı ya da ID'si."
 
-#: src/modules/moderation/settings.py:102
 #, possible-python-brace-format
 msgctxt "guildset:alert_channel|set_response:set"
 msgid "Moderation alerts will be sent to {channel}"
@@ -644,6 +634,7 @@ msgctxt "guildset:mod_role|desc"
 msgid ""
 "Server role permitted to perform moderation and minor bot configuration."
 msgstr ""
+"Moderasyon ve küçük bot yapılandırması gerçekleştirme izni olan sunucu rolü."
 
 #: src/modules/moderation/settings.py:134
 msgctxt "guildset:mod_role|long_desc"
@@ -652,19 +643,24 @@ msgid ""
 "Moderators are never permitted to perform actions (such as giving roles) that they do not already have the Discord permissions for.\n"
 "Members with the 'Manage Guild' permission are always considered moderators."
 msgstr ""
+"Moderatör rolüne sahip üyeler moderatör olarak kabul edilir ve moderatör komutlarını kullanabilir, örneğin biletleri görüntüleme ve af etme, not oluşturma ve `/config` komutuyla küçük yeniden yapılandırma.\n"
+"Moderatörlerin, Discord izinleri olmayan eylemleri (rol verme gibi) gerçekleştirmesine asla izin verilmez.\n"
+"'Manage Guild' iznine sahip üyeler her zaman moderatör olarak kabul edilir."
 
 #: src/modules/moderation/settings.py:145
 msgctxt "guildset:mod_role|accepts"
 msgid "Moderation role name or id."
 msgstr "Moderasyon rol adı ya da ID'si."
 
-#: src/modules/moderation/settings.py:159
 #, possible-python-brace-format
 msgctxt "guildset:mod_role|set_response:set"
 msgid ""
 "Members with {role} will be considered moderators. You may need to grant "
 "them access to view moderation commands via the server integration settings."
 msgstr ""
+"{role} rolüne sahip üyeler moderatör olarak kabul edilecek. Sunucu "
+"entegrasyon ayarlarından moderasyon komutlarına erişim izni vermeniz "
+"gerekebilir."
 
 #: src/modules/moderation/settings.py:166
 msgctxt "guildset:mod_role|set_response:unset"
@@ -672,6 +668,7 @@ msgid ""
 "Only members with the 'Manage Guild' permission will be considered "
 "moderators."
 msgstr ""
+"Yalnızca 'Manage Guild' iznine sahip üyeler moderatör olarak kabul edilecek."
 
 #: src/modules/moderation/settings.py:178
 msgctxt "guildset:mod_role|formatted:unset"
@@ -681,13 +678,13 @@ msgstr "Ayarlanmadı."
 #: src/modules/moderation/settings.py:186
 msgctxt "guildset:admin_role"
 msgid "admin_role"
-msgstr ""
+msgstr "admin_role"
 
 #: src/modules/moderation/settings.py:189
 msgctxt "guildset:admin_role|desc"
 msgid ""
 "Server role allowing access to all administrator level functionality in Leo."
-msgstr ""
+msgstr "Leo'da tüm yönetici düzeyi işlevselliğe erişim sağlayan sunucu rolü."
 
 #: src/modules/moderation/settings.py:193
 msgctxt "guildset:admin_role|long_desc"
@@ -700,19 +697,26 @@ msgid ""
 "be given permission to see the commands through the Discord server "
 "integrations interface."
 msgstr ""
+"Bu role sahip üyeler sunucu yöneticisi olarak kabul edilir ve rol "
+"hiyerarşisinde üstlerindeki rolleri yönetme hariç tüm arayüzlerimi ve "
+"komutlarımı kullanabilir. Bu ayar, üyelere sunucu yönetici izinleri vermeden"
+" sistemlerim üzerinde yönetici düzeyi izinler vermeyi sağlar. Rolün ayrıca "
+"Discord sunucu entegrasyonları arayüzünden komutları görme izni alması "
+"gerekecektir."
 
 #: src/modules/moderation/settings.py:203
 msgctxt "guildset:admin_role|accepts"
 msgid "Admin role name or id."
-msgstr ""
+msgstr "Yönetici rolünün adı veya ID'si."
 
-#: src/modules/moderation/settings.py:216
 #, possible-python-brace-format
 msgctxt "guildset:admin_role|set_response:set"
 msgid ""
 "Members with {role} will now be considered admins, and have access to my "
 "full interface."
 msgstr ""
+"{role} rolüne sahip üyeler artık yönetici olarak kabul edilecek ve tam "
+"arayüzüme erişim sağlayacak."
 
 #: src/modules/moderation/settings.py:221
 msgctxt "guildset:admin_role|set_response:unset"
@@ -720,3 +724,5 @@ msgid ""
 "The admin role has been unset. Only members with administrator permissions "
 "will be considered admins."
 msgstr ""
+"Yönetici rolü kaldırıldı. Yalnızca yönetici izinlerine sahip üyeler yönetici"
+" olarak kabul edilecek."

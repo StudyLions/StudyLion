@@ -14,7 +14,7 @@ from babel.translator import ctx_translator
 from ..lib import MessageArgs, error_embed
 from .. import util_babel
 
-from .leo import LeoUI
+from .leo import LeoUI, _maybe_append_vote_button
 
 _p = util_babel._p
 
@@ -384,6 +384,9 @@ class Pager(BasePager):
     async def refresh(self):
         await super().refresh()
         self.set_layout(self.page_row)
+        # --- AI-MODIFIED (2026-03-19) ---
+        await _maybe_append_vote_button(self)
+        # --- END AI-MODIFIED ---
 
     async def redraw(self):
         await self.refresh()

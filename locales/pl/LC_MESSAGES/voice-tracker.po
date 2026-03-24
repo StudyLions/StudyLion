@@ -1,0 +1,441 @@
+# Polish translation for LionBot - voice-tracker
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 20:24+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Polish\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: src/tracking/voice/session.py:293
+msgctxt "eventlog|event:voice_session_expired|title"
+msgid "Member Voice Session Expired"
+msgstr "Sesja głosowa członka wygasła"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:voice_session_expired|desc"
+msgid ""
+"{member}'s voice session in {channel} expired because they reached the daily"
+" voice cap."
+msgstr ""
+"Sesja głosowa {member} w {channel} wygasła z powodu osiągnięcia dziennego "
+"limitu."
+
+#: src/tracking/voice/session.py:336
+msgctxt "eventlog|event:voice_session_closed|title"
+msgid "Member Voice Session Ended"
+msgstr "Sesja głosowa członka zakończona"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:voice_session_closed|desc"
+msgid "{member} completed their voice session in {channel}."
+msgstr "{member} zakończył sesję głosową w {channel}."
+
+#: src/tracking/voice/session.py:352
+msgctxt "eventlog|event:voice_session_cancelled|title"
+msgid "Member Voice Session Cancelled"
+msgstr "Sesja głosowa członka anulowana"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:voice_session_cancelled|desc"
+msgid "{member} left {channel} before their voice session started."
+msgstr "{member} opuścił {channel} przed rozpoczęciem sesji głosowej."
+
+#: src/tracking/voice/cog.py:518
+msgctxt "eventlog|event:voice_session_start|title"
+msgid "Member Joined Tracked Voice Channel"
+msgstr "Członek dołączył do śledzonego kanału głosowego"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:voice_session_start|desc"
+msgid "{member} joined {channel}."
+msgstr "{member} dołączył do {channel}."
+
+#: src/tracking/voice/cog.py:657
+msgctxt "cmd:now"
+msgid "now"
+msgstr "now"
+
+#: src/tracking/voice/cog.py:660
+msgctxt "cmd:now|desc"
+msgid ""
+"Describe what you are working on, or see what your friends are working on!"
+msgstr "Opisz, nad czym pracujesz, lub sprawdź, co robią twoi znajomi!"
+
+#: src/tracking/voice/cog.py:664
+msgctxt "cmd:now|param:tag"
+msgid "tag"
+msgstr "tag"
+
+#: src/tracking/voice/cog.py:665
+msgctxt "cmd:now|param:user"
+msgid "user"
+msgstr "user"
+
+#: src/tracking/voice/cog.py:666
+msgctxt "cmd:now|param:clear"
+msgid "clear"
+msgstr "clear"
+
+#: src/tracking/voice/cog.py:671
+msgctxt "cmd:now|param:tag|desc"
+msgid "Describe what you are working on in 10 characters or less!"
+msgstr "Opisz swoją pracę w 10 znakach lub mniej!"
+
+#: src/tracking/voice/cog.py:675
+msgctxt "cmd:now|param:user|desc"
+msgid "Check what a friend is working on."
+msgstr "Sprawdź, nad czym pracuje znajomy."
+
+#: src/tracking/voice/cog.py:679
+msgctxt "cmd:now|param:clear|desc"
+msgid "Unset your activity tag (or the target user's tag, for moderators)."
+msgstr ""
+"Usuń swój tag aktywności (lub tag użytkownika docelowego, dla moderatorów)."
+
+#: src/tracking/voice/cog.py:706
+msgctxt "cmd:now|target:self|error:target_inactive"
+msgid ""
+"You have no running session! Join a tracked voice channel to start a "
+"session."
+msgstr ""
+"Nie masz aktywnej sesji! Dołącz do śledzonego kanału głosowego, aby "
+"rozpocząć."
+
+#, possible-python-brace-format
+msgctxt "cmd:now|target:other|error:target_inactive"
+msgid "{mention} has no running session!"
+msgstr "{mention} nie ma aktywnej sesji!"
+
+#: src/tracking/voice/cog.py:730
+msgctxt "cmd:now|target:self|mode:clear|success|title"
+msgid "Session Tag Cleared"
+msgstr "Tag sesji usunięty"
+
+#: src/tracking/voice/cog.py:734
+msgctxt "cmd:now|target:self|mode:clear|success|desc"
+msgid "Successfully unset your session tag."
+msgstr "Twój tag sesji został usunięty."
+
+#: src/tracking/voice/cog.py:743
+msgctxt "cmd:now|target:other|mode:clear|error:perms|title"
+msgid "You can't do that!"
+msgstr "Nie możesz tego zrobić!"
+
+#: src/tracking/voice/cog.py:747
+msgctxt "cmd:now|target:other|mode:clear|error:perms|desc"
+msgid "You need to be a moderator to set or clear someone else's session tag."
+msgstr "Musisz być moderatorem, aby ustawić lub usunąć tag sesji innej osoby."
+
+#: src/tracking/voice/cog.py:757
+msgctxt "cmd:now|target:other|mode:clear|success|title"
+msgid "Session Tag Cleared!"
+msgstr "Tag sesji usunięty!"
+
+#, possible-python-brace-format
+msgctxt "cmd:now|target:other|mode:clear|success|desc"
+msgid "Cleared {target}'s session tag."
+msgstr "Usunięto tag sesji użytkownika {target}."
+
+#: src/tracking/voice/cog.py:773
+msgctxt "cmd:now|target:self|mode:set|success|title"
+msgid "Session Tag Set!"
+msgstr "Tag sesji ustawiony!"
+
+#, possible-python-brace-format
+msgctxt "cmd:now|target:self|mode:set|success|desc"
+msgid "You are now working on `{new_tag}`. Good luck!"
+msgstr "Teraz pracujesz nad `{new_tag}`. Powodzenia!"
+
+#: src/tracking/voice/cog.py:786
+msgctxt "cmd:now|target:other|mode:set|error:perms|title"
+msgid "You can't do that!"
+msgstr "Nie możesz tego zrobić!"
+
+#: src/tracking/voice/cog.py:790
+msgctxt "cmd:now|target:other|mode:set|error:perms|desc"
+msgid "You need to be a moderator to set or clear someone else's session tag!"
+msgstr "Musisz być moderatorem, aby ustawić lub usunąć tag sesji innej osoby!"
+
+#: src/tracking/voice/cog.py:800
+msgctxt "cmd:now|target:other|mode:set|success|title"
+msgid "Session Tag Set!"
+msgstr "Tag sesji ustawiony!"
+
+#, possible-python-brace-format
+msgctxt "cmd:now|target:other|mode:set|success|desc"
+msgid "Set {target}'s session tag to `{new_tag}`."
+msgstr "Ustawiono tag sesji {target} na `{new_tag}`."
+
+#, possible-python-brace-format
+msgctxt "cmd:now|target:self|mode:show_with_tag|desc"
+msgid "You have been working on **`{tag}`** in {channel} since {time}!"
+msgstr "Pracujesz nad **`{tag}`** w {channel} od {time}!"
+
+#, possible-python-brace-format
+msgctxt "cmd:now|target:self|mode:show_without_tag|desc"
+msgid ""
+"You have been working in {channel} since {time}!\n"
+"\n"
+"Use `/now <tag>` to set what you are working on."
+msgstr ""
+"Pracujesz w {channel} od {time}!\n"
+"\n"
+"Użyj `/now <tag>`, aby ustawić nad czym pracujesz."
+
+#, possible-python-brace-format
+msgctxt "cmd:now|target:other|mode:show_with_tag|desc"
+msgid ""
+"{target} is current working in {channel}!\n"
+"They have been working on **{tag}** since {time}."
+msgstr ""
+"{target} pracuje w {channel}!\n"
+"Pracują nad **{tag}** od {time}."
+
+#, possible-python-brace-format
+msgctxt "cmd:now|target:other|mode:show_without_tag|desc"
+msgid "{target} has been working in {channel} since {time}!"
+msgstr "{target} pracuje w {channel} od {time}!"
+
+#: src/tracking/voice/cog.py:854
+msgctxt "cmd:configure_voice_rates"
+msgid "voice_rewards"
+msgstr "voice_rewards"
+
+#: src/tracking/voice/cog.py:857
+msgctxt "cmd:configure_voice_rates|desc"
+msgid "Configure Voice tracking rewards and experience"
+msgstr "Konfiguruj nagrody i doświadczenie za śledzenie głosowe"
+
+#, possible-python-brace-format
+msgctxt "cmd:configure_voice_tracking|mode:voice|resp:success|desc"
+msgid ""
+"Members will now be rewarded {coin}**{base} (+ {bonus})** per hour they "
+"spend (live) in a voice channel, up to a total of **{cap}** hours per server"
+" day."
+msgstr ""
+"Członkowie będą teraz otrzymywać {coin}**{base} (+ {bonus})** za godzinę w "
+"kanale głosowym, do **..."
+
+#, possible-python-brace-format
+msgctxt "cmd:configure_voice_tracking|mode:study|resp:success|desc"
+msgid ""
+"Members will now be rewarded {coin}**{base}** per hour of study in this "
+"server, with a bonus of {coin}**{bonus}** if they stream of display video, "
+"up to a total of **{cap}** hours per server day."
+msgstr ""
+"Członkowie otrzymają {coin}**{base}** za godzinę nauki, z bonusem "
+"{coin}**{bonus}** przy streamin..."
+
+#: src/tracking/voice/settings.py:42
+msgctxt "guildset:untracked_channels"
+msgid "untracked_channels"
+msgstr "untracked_channels"
+
+#: src/tracking/voice/settings.py:45
+msgctxt "guildset:untracked_channels|desc"
+msgid "Channels which will be ignored for statistics tracking."
+msgstr "Kanały, które będą ignorowane w śledzeniu statystyk."
+
+#: src/tracking/voice/settings.py:49
+msgctxt "guildset:untracked_channels|long_desc"
+msgid ""
+"Activity in these channels will not count towards a member's statistics. If "
+"a category is selected, all channels under the category will be untracked."
+msgstr ""
+"Aktywność na tych kanałach nie będzie wliczana do statystyk. Jeśli wybrano "
+"kategorię, wszystkie kanały w niej nie będą śledzone."
+
+#: src/tracking/voice/settings.py:54
+msgctxt "guildset:untracked_channels|accepts"
+msgid "Comma separated list of untracked channel name/ids."
+msgstr ""
+"Lista nazw/identyfikatorów nieśledzonych kanałów rozdzielonych przecinkami."
+
+#: src/tracking/voice/settings.py:58
+msgctxt "guildset:untracked_channels|notset"
+msgid "Not Set (all voice channels will be tracked.)"
+msgstr "Nie ustawiono (wszystkie kanały głosowe będą śledzone.)"
+
+#: src/tracking/voice/settings.py:75
+msgctxt "guildset:untracked_channels|set"
+msgid "Channel selector below."
+msgstr "Selektor kanałów poniżej."
+
+#, possible-python-brace-format
+msgctxt "guildset:untracked_channels|set_response|set"
+msgid "Activity in the following channels will now be ignored: {channels}"
+msgstr ""
+"Aktywność na następujących kanałach będzie teraz ignorowana: {channels}"
+
+#: src/tracking/voice/settings.py:91
+msgctxt "guildset:untracked_channels|set_response|unset"
+msgid "All voice channels will now be tracked."
+msgstr "Wszystkie kanały głosowe będą teraz śledzone."
+
+#: src/tracking/voice/settings.py:120
+msgctxt "guildset:hourly_reward"
+msgid "hourly_reward"
+msgstr "hourly_reward"
+
+#: src/tracking/voice/settings.py:123
+msgctxt "guildset:hourly_reward|mode:voice|desc"
+msgid "LionCoins given per hour in a voice channel."
+msgstr "LionCoins za godzinę w kanale głosowym."
+
+#: src/tracking/voice/settings.py:127
+msgctxt "guildset:hourly_reward|mode:voice|long_desc"
+msgid ""
+"Number of LionCoins to each member per hour that they stay in a tracked "
+"voice channel."
+msgstr ""
+"Liczba LionCoins dla każdego członka za godzinę w śledzonym kanale głosowym."
+
+#: src/tracking/voice/settings.py:131
+msgctxt "guildset:hourly_reward|accepts"
+msgid "Number of coins to reward per hour in voice."
+msgstr "Liczba monet jako nagroda za godzinę w głosie."
+
+#, possible-python-brace-format
+msgctxt "guildset:hourly_reward|formatted"
+msgid "{coin}**{amount}** per hour."
+msgstr "{coin}**{amount}** na godzinę."
+
+#, possible-python-brace-format
+msgctxt "guildset:hourly_reward|mode:voice|response"
+msgid "Members will be given {coin}**{amount}** per hour in a voice channel!"
+msgstr "Członkowie otrzymają {coin}**{amount}** za godzinę w kanale głosowym!"
+
+#: src/tracking/voice/settings.py:174
+msgctxt "guildset:hourly_reward|mode:study|desc"
+msgid "LionCoins given per hour of study."
+msgstr "LionCoins za godzinę nauki."
+
+#: src/tracking/voice/settings.py:178
+msgctxt "guildset:hourly_reward|mode:study|long_desc"
+msgid "Number of LionCoins given per hour of study, up to the daily hour cap."
+msgstr "Liczba LionCoins za godzinę nauki, do dziennego limitu."
+
+#, possible-python-brace-format
+msgctxt "guildset:hourly_reward|mode:study|response"
+msgid "Members will be given {coin}**{amount}** per hour that they study!"
+msgstr "Członkowie otrzymają {coin}**{amount}** za godzinę nauki!"
+
+#: src/tracking/voice/settings.py:201
+msgctxt "guildset:hourly_live_bonus"
+msgid "hourly_live_bonus"
+msgstr "hourly_live_bonus"
+
+#: src/tracking/voice/settings.py:204
+msgctxt "guildset:hourly_live_bonus|desc"
+msgid "Bonus Lioncoins given per hour when a member streams or video-chats."
+msgstr "Bonus LionCoins za godzinę przy streamingu lub video-czacie."
+
+#: src/tracking/voice/settings.py:209
+msgctxt "guildset:hourly_live_bonus|long_desc"
+msgid ""
+"When a member streams or video-chats in a channel they will be given this "
+"bonus *additionally* to the `hourly_reward`."
+msgstr ""
+"Przy streamingu lub video-czacie, członkowie otrzymają ten bonus *dodatkowo*"
+" do `hourly_reward`."
+
+#: src/tracking/voice/settings.py:214
+msgctxt "guildset:hourly_live_bonus|accepts"
+msgid "Number of bonus coins to reward per hour when live."
+msgstr "Liczba bonusowych monet za godzinę na żywo."
+
+#, possible-python-brace-format
+msgctxt "guildset:hourly_live_bonus|formatted"
+msgid "{coin}**{amount}** bonus per hour when live."
+msgstr "{coin}**{amount}** bonus za godzinę na żywo."
+
+#, possible-python-brace-format
+msgctxt "guildset:hourly_live_bonus|response"
+msgid ""
+"Live members will now *additionally* be given {coin}**{amount}** per hour."
+msgstr ""
+"Członkowie na żywo będą teraz *dodatkowo* otrzymywać {coin}**{amount}** za "
+"godzinę."
+
+#: src/tracking/voice/settings.py:253
+msgctxt "guildset:daily_voice_cap"
+msgid "daily_voice_cap"
+msgstr "daily_voice_cap"
+
+#: src/tracking/voice/settings.py:256
+msgctxt "guildset:daily_voice_cap|desc"
+msgid "Maximum number of hours per day to count for each member."
+msgstr "Maksymalna liczba godzin dziennie na członka."
+
+#: src/tracking/voice/settings.py:260
+msgctxt "guildset:daily_voice_cap|long_desc"
+msgid ""
+"Time spend in voice channels over this amount will not be tracked towards "
+"the member's statistics. Tracking will resume at the start of the next day. "
+"The start of the day is determined by the configured guild timezone."
+msgstr ""
+"Czas w kanałach głosowych powyżej tego limitu nie będzie śledzony. Śledzenie"
+" wznowi się na początku następnego dnia według strefy czasowej serwera."
+
+#: src/tracking/voice/settings.py:266
+msgctxt "guildset:daily_voice_cap|accepts"
+msgid "The maximum number of voice hours to track per day."
+msgstr "Maksymalna liczba godzin głosowych do śledzenia dziennie."
+
+#, possible-python-brace-format
+msgctxt "guildset:daily_voice_cap|response"
+msgid ""
+"Members will be tracked for at most {duration} per day. (**NOTE:** This will"
+" not affect members currently in voice channels.)"
+msgstr ""
+"Członkowie będą śledzeni przez maksymalnie {duration} dziennie. (**UWAGA:** "
+"Nie dotyczy członków obecnie w kanałach głosowych.)"
+
+#: src/tracking/voice/settings.py:340
+msgctxt "ui:voice_tracker_config|button:close|label"
+msgid "Close"
+msgstr "Zamknij"
+
+#: src/tracking/voice/settings.py:354
+msgctxt "ui:voice_tracker_config|button:reset|label"
+msgid "Reset"
+msgstr "Resetuj"
+
+#: src/tracking/voice/settings.py:367
+msgctxt "ui:voice_tracker_config|menu:untracked_channels|placeholder"
+msgid "Set Untracked Channels"
+msgstr "Ustaw nieśledzone kanały"
+
+#: src/tracking/voice/settings.py:433 src/tracking/voice/settings.py:491
+msgctxt "ui:voice_tracker_config|mode:voice|embed|title"
+msgid "Voice Tracker Configuration Panel"
+msgstr "Panel konfiguracji śledzenia głosowego"
+
+#: src/tracking/voice/settings.py:438 src/tracking/voice/settings.py:496
+msgctxt "ui:voice_tracker_config|mode:study|embed|title"
+msgid "Study Tracker Configuration Panel"
+msgstr "Panel konfiguracji śledzenia nauki"
+
+#: src/tracking/voice/settings.py:481
+msgctxt "ui:voice_tracker_config|menu:untracked_channels|placeholder"
+msgid "Select Untracked Channels"
+msgstr "Wybierz nieśledzone kanały"
+
+#: src/tracking/voice/settings.py:537
+msgctxt "dash:voice_tracker|title"
+msgid "Voice Tracker Configuration ({commands[config voice_rewards]})"
+msgstr "Konfiguracja śledzenia głosowego ({commands[config voice_rewards]})"
+
+#: src/tracking/voice/settings.py:541
+msgctxt "dash:voice_tracking|dropdown|placeholder"
+msgid "Voice Activity Panel"
+msgstr "Panel aktywności głosowej"

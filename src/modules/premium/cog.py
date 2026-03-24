@@ -5,6 +5,8 @@ import discord
 from discord.ext import commands as cmds
 import discord.app_commands as appcmds
 
+from meta import conf, WEBSITE_URL
+
 from discord.ui.button import Button, ButtonStyle
 from discord.ui.text_input import TextInput, TextStyle
 
@@ -26,7 +28,10 @@ _p = babel._p
 
 
 class PremiumCog(LionCog):
-    buy_gems_link = "https://lionbot.org/donate"
+    # --- AI-MODIFIED (2026-03-17) ---
+    # Purpose: Use central config-driven URL instead of hardcoded domain
+    buy_gems_link = f"{WEBSITE_URL}/donate"
+    # --- END AI-MODIFIED ---
 
     def __init__(self, bot: LionBot):
         self.bot = bot
@@ -92,6 +97,24 @@ class PremiumCog(LionCog):
 
         premium = (row is not None) and row.premium_until and (row.premium_until > now)
         return premium
+
+    # --- AI-MODIFIED (2026-03-16) ---
+    # Purpose: LionHeart subscription tier checking for user perks
+    async def get_user_subscription_tier(self, userid: int) -> str:
+        """
+        Get the active subscription tier for a user.
+
+        Returns the tier string (e.g. 'LIONHEART', 'LIONHEART_PLUS', 'LIONHEART_PLUS_PLUS')
+        or 'NONE' if no active subscription.
+        """
+        try:
+            row = await self.data.UserSubscription.fetch(userid)
+            if row is not None and row.status == 'ACTIVE':
+                return row.tier or 'NONE'
+        except Exception:
+            logger.warning(f"Failed to fetch subscription tier for {userid}", exc_info=True)
+        return 'NONE'
+    # --- END AI-MODIFIED ---
 
     @log_wrap(isolate=True)
     async def _add_gems(self, userid: int, amount: int):
@@ -486,10 +509,13 @@ class PremiumCog(LionCog):
 
     @cmds.hybrid_command(
         name=_p('cmd:premium', "premium"),
+        # --- AI-MODIFIED (2026-03-22) ---
+        # Purpose: Updated description to reflect Stripe subscription model
         description=_p(
             'cmd:premium|desc',
-            "Upgrade your server with LionGems!"
+            "View server premium status and subscribe!"
         )
+        # --- END AI-MODIFIED ---
     )
     @appcmds.guild_only
     async def cmd_premium(self, ctx: LionContext):
@@ -501,6 +527,98 @@ class PremiumCog(LionCog):
         ui = PremiumUI(self.bot, ctx.guild, ctx.luser, callerid=ctx.author.id)
         await ui.run(ctx.interaction)
         await ui.wait()
+
+    # --- AI-MODIFIED (2026-03-16) ---
+    # Purpose: /donate slash command showing LionHeart tiers and links
+    @cmds.hybrid_command(
+        name=_p('cmd:donate', "donate"),
+        description=_p(
+            'cmd:donate|desc',
+            "Support LionBot and unlock premium perks!"
+        )
+    )
+    async def cmd_donate(self, ctx: LionContext):
+        t = self.bot.translator.t
+
+        embed = discord.Embed(
+            title=t(_p(
+                'cmd:donate|embed|title',
+                "❤️ Support LionBot"
+            )),
+            description=t(_p(
+                'cmd:donate|embed|description',
+                # --- AI-MODIFIED (2026-03-22) ---
+                # Purpose: Updated pricing from USD to EUR
+                "Become a **LionHeart** supporter to unlock exclusive perks!\n\n"
+                "🦁 **LionHeart** — €4.99/mo\n"
+                "• 500 LionGems/month\n"
+                "• 10 gems per vote (vs 5)\n"
+                "• 1.5x vote bonuses\n"
+                "• +15% drop rates & farm boosts\n"
+                "• Animated glowing profile cards (Blue)\n\n"
+                "🦁 **LionHeart+** — €9.99/mo\n"
+                "• 1,200 LionGems/month\n"
+                "• 15 gems per vote\n"
+                "• 1.75x vote bonuses\n"
+                "• +25% drop rates & farm boosts\n"
+                "• Animated glowing profile cards (Pink)\n\n"
+                "🦁 **LionHeart++** — €19.99/mo\n"
+                "• 3,000 LionGems/month\n"
+                "• 30 gems per vote\n"
+                "• 2.0x vote bonuses\n"
+                "• +50% drop rates & max farm boosts\n"
+                "• Plants never die from drought!\n"
+                "• Animated glowing profile cards (Gold)"
+                # --- END AI-MODIFIED ---
+            )),
+            color=discord.Color.gold()
+        )
+
+        user_tier = await self.get_user_subscription_tier(ctx.author.id)
+        if user_tier != 'NONE':
+            tier_names = {
+                'LIONHEART': 'LionHeart',
+                'LIONHEART_PLUS': 'LionHeart+',
+                'LIONHEART_PLUS_PLUS': 'LionHeart++',
+            }
+            embed.add_field(
+                name=t(_p(
+                    'cmd:donate|embed|field:current_tier|name',
+                    "Your Current Tier"
+                )),
+                value=t(_p(
+                    'cmd:donate|embed|field:current_tier|value',
+                    "✨ **{tier}**"
+                )).format(tier=tier_names.get(user_tier, user_tier)),
+                inline=False
+            )
+
+        # --- AI-MODIFIED (2026-03-17) ---
+        # Purpose: Use central WEBSITE_URL for footer and button URLs
+        embed.set_footer(
+            text=t(_p(
+                'cmd:donate|embed|footer',
+                "Subscribe on our website • {url}/donate"
+            )).format(url=WEBSITE_URL)
+        )
+
+        view = discord.ui.View()
+        view.add_item(discord.ui.Button(
+            label=t(_p('cmd:donate|button:subscribe|label', "Subscribe Now")),
+            url=f"{WEBSITE_URL}/donate",
+            style=discord.ButtonStyle.link,
+            emoji="❤️"
+        ))
+        view.add_item(discord.ui.Button(
+            label=t(_p('cmd:donate|button:manage|label', "Manage Subscription")),
+            url=f"{WEBSITE_URL}/donate#manage",
+            style=discord.ButtonStyle.link,
+            emoji="⚙️"
+        ))
+        # --- END AI-MODIFIED ---
+
+        await ctx.reply(embed=embed, view=view)
+    # --- END AI-MODIFIED ---
 
     # ----- Owner Commands -----
     @LionCog.placeholder_group

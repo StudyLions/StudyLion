@@ -127,11 +127,40 @@ class LionBot(Bot):
         for extension in self.initial_extensions:
             await self.load_extension(extension)
 
+        # --- AI-REPLACED (2026-03-15) ---
+        # Reason: copy_global_to duplicated every global command as a guild command,
+        # so admin guilds saw each slash command twice (old global + guild copy).
+        # Fix: do a global sync on shard 0 to keep global commands up-to-date,
+        # and sync admin guilds WITHOUT copy_global_to so only admin-only commands
+        # (LeoSettings, Exec, etc.) remain as guild commands.
+        # --- Original code (commented out for rollback) ---
+        # for guildid in self.testing_guilds:
+        #     guild = discord.Object(guildid)
+        #     if not self.shard_count or (self.shard_id == ((guildid >> 22) % self.shard_count)):
+        #         self.tree.copy_global_to(guild=guild)
+        #         try:
+        #             await self.tree.sync(guild=guild)
+        #         except discord.app_commands.errors.CommandSyncFailure as e:
+        #             logger.warning(f"Command sync failed for guild {guildid}: {e}")
+        # --- End original code ---
+
+        if not self.shard_count or self.shard_id == 0:
+            try:
+                await self.tree.sync()
+                logger.info("Global command tree synced successfully")
+            except discord.app_commands.errors.CommandSyncFailure as e:
+                logger.warning(f"Global command sync failed: {e}")
+
         for guildid in self.testing_guilds:
             guild = discord.Object(guildid)
             if not self.shard_count or (self.shard_id == ((guildid >> 22) % self.shard_count)):
                 self.tree.copy_global_to(guild=guild)
-                await self.tree.sync(guild=guild)
+                try:
+                    await self.tree.sync(guild=guild)
+                    logger.info(f"Guild command tree synced for {guildid}")
+                except discord.app_commands.errors.CommandSyncFailure as e:
+                    logger.warning(f"Command sync failed for guild {guildid}: {e}")
+        # --- END AI-REPLACED ---
 
     # To make the type checker happy about fetching cogs by name
     # TODO: Move this to stubs at some point

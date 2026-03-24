@@ -9,11 +9,48 @@ from discord.ui import Modal, View, Item
 
 from meta.logger import log_action_stack, logging_context
 from meta.errors import SafeCancellation
+# --- AI-MODIFIED (2026-03-14) ---
+# Purpose: Import babel context vars for locale resolution in UI dispatch
+from babel.translator import ctx_locale, ctx_translator, SOURCE_LOCALE
+# --- END AI-MODIFIED ---
 
 from gui.errors import RenderingException
 
 from . import logger
 from ..lib import MessageArgs, error_embed
+
+# --- AI-MODIFIED (2026-03-19) ---
+# Purpose: Global vote button injection for all LeoUI-based command UIs.
+# Always shows: gem reward when ready, countdown timer when on cooldown.
+# Skipped for premium guilds and UIs without required attributes.
+async def _maybe_append_vote_button(ui: 'LeoUI') -> None:
+    if ui._layout is None or len(ui._layout) >= 5:
+        return
+
+    bot = getattr(ui, 'bot', None)
+    if bot is None:
+        return
+
+    userid = getattr(ui, 'userid', None) or getattr(ui, '_callerid', None) or getattr(ui, '_ownerid', None)
+    if not userid:
+        user_obj = getattr(ui, 'user', None) or getattr(ui, 'caller', None)
+        if user_obj and hasattr(user_obj, 'id'):
+            userid = user_obj.id
+    if not userid:
+        return
+
+    try:
+        voting = bot.get_cog('TopggCog')
+        if not voting:
+            return
+
+        btn = await voting.vote_button_for_user(userid)
+        layout = list(ui._layout)
+        layout.append((btn,))
+        ui._layout = tuple(layout)
+    except Exception:
+        logger.debug("Vote button injection failed silently", exc_info=True)
+# --- END AI-MODIFIED ---
 
 __all__ = (
     'LeoUI',
@@ -58,25 +95,59 @@ class LeoUI(View):
         Currently exposes a hidden attribute of the underlying View.
         May be reimplemented in future.
         """
-        return self._View__stopped
+        # --- AI-MODIFIED (2026-03-20) ---
+        # Purpose: discord.py 2.7.1 moved __stopped from View to BaseView
+        # --- Original code (commented out for rollback) ---
+        # return self._View__stopped
+        # --- End original code ---
+        return self._BaseView__stopped
+        # --- END AI-MODIFIED ---
 
+    # --- AI-MODIFIED (2026-03-21) ---
+    # Purpose: Strip component 'id' fields from payloads to prevent duplicate ID
+    # errors. discord.py 2.7+ populates component IDs from Discord's auto-assigned
+    # values via _refresh(), but when the layout changes dynamically (e.g. TasklistUI
+    # toggling buttons), stale IDs collide with Discord's new auto-assignments.
+    # --- Original code (commented out for rollback) ---
+    # def to_components(self) -> List[Dict[str, Any]]:
+    #     """
+    #     Extending component generator to apply the set _layout, if it exists.
+    #     """
+    #     if self._layout is not None:
+    #         # Alternative rendering using layout
+    #         components = []
+    #         for i, row in enumerate(self._layout):
+    #             # Skip empty rows
+    #             if not row:
+    #                 continue
+    #
+    #             # Since we aren't relying on ViewWeights, manually check width here
+    #             if sum(item.width for item in row) > 5:
+    #                 raise ValueError(f"Row {i} of custom {self.__class__.__name__} is too wide!")
+    #
+    #             # Create the component dict for this row
+    #             components.append({
+    #                 'type': 1,
+    #                 'components': [item.to_component_dict() for item in row]
+    #             })
+    #     else:
+    #         components = super().to_components()
+    #
+    #     return components
+    # --- End original code ---
     def to_components(self) -> List[Dict[str, Any]]:
         """
         Extending component generator to apply the set _layout, if it exists.
         """
         if self._layout is not None:
-            # Alternative rendering using layout
             components = []
             for i, row in enumerate(self._layout):
-                # Skip empty rows
                 if not row:
                     continue
 
-                # Since we aren't relying on ViewWeights, manually check width here
                 if sum(item.width for item in row) > 5:
                     raise ValueError(f"Row {i} of custom {self.__class__.__name__} is too wide!")
 
-                # Create the component dict for this row
                 components.append({
                     'type': 1,
                     'components': [item.to_component_dict() for item in row]
@@ -84,7 +155,12 @@ class LeoUI(View):
         else:
             components = super().to_components()
 
+        for row in components:
+            for comp in row.get('components', []):
+                comp.pop('id', None)
+
         return components
+    # --- END AI-MODIFIED ---
 
     def set_layout(self, *rows: tuple[Item, ...]) -> None:
         """
@@ -140,7 +216,13 @@ class LeoUI(View):
         to include a pre_timeout task
         which may optionally refresh and hence cancel the timeout.
         """
-        if self._View__stopped.done():
+        # --- AI-MODIFIED (2026-03-20) ---
+        # Purpose: discord.py 2.7.1 moved __stopped to BaseView; use public API
+        # --- Original code (commented out for rollback) ---
+        # if self._View__stopped.done():
+        # --- End original code ---
+        if self.is_finished():
+        # --- END AI-MODIFIED ---
             # We are already stopped, nothing to do
             return
 
@@ -162,17 +244,28 @@ class LeoUI(View):
                 # The timeout was removed entirely, silently walk away
                 return
 
-            if self._View__stopped.done():
+            # --- AI-MODIFIED (2026-03-20) ---
+            # Purpose: discord.py 2.7.1 moved internals from View to BaseView
+            # --- Original code (commented out for rollback) ---
+            # if self._View__stopped.done():
+            #     return
+            # now = time.monotonic()
+            # if self._View__timeout_expiry is not None and now < self._View__timeout_expiry:
+            #     if self._View__timeout_task is None or self._View__timeout_task.done():
+            #         self._View__timeout_task = asyncio.create_task(self._View__timeout_task_impl())
+            # --- End original code ---
+            if self.is_finished():
                 # We stopped while waiting for the pre timeout.
                 # Or maybe another thread timed us out
                 # Either way, we are done here
                 return
 
             now = time.monotonic()
-            if self._View__timeout_expiry is not None and now < self._View__timeout_expiry:
+            if self._BaseView__timeout_expiry is not None and now < self._BaseView__timeout_expiry:
                 # The timeout was extended, make sure the timeout task is running then fade away
-                if self._View__timeout_task is None or self._View__timeout_task.done():
-                    self._View__timeout_task = asyncio.create_task(self._View__timeout_task_impl())
+                if self._BaseView__timeout_task is None or self._BaseView__timeout_task.done():
+                    self._BaseView__timeout_task = asyncio.create_task(self._BaseView__timeout_task_impl())
+            # --- END AI-MODIFIED ---
             else:
                 # Actually timeout, and call the post-timeout task for cleanup.
                 self._really_timeout()
@@ -191,18 +284,36 @@ class LeoUI(View):
         This copies View._dispatch_timeout, apart from the `on_timeout` dispatch,
         which is now handled by `__dispatch_timeout`.
         """
-        if self._View__stopped.done():
+        # --- AI-MODIFIED (2026-03-20) ---
+        # Purpose: discord.py 2.7.1 moved internals from View to BaseView
+        # --- Original code (commented out for rollback) ---
+        # if self._View__stopped.done():
+        #     return
+        # if self._View__cancel_callback:
+        #     self._View__cancel_callback(self)
+        #     self._View__cancel_callback = None
+        # self._View__stopped.set_result(True)
+        # --- End original code ---
+        if self.is_finished():
             return
 
-        if self._View__cancel_callback:
-            self._View__cancel_callback(self)
-            self._View__cancel_callback = None
+        if self._BaseView__cancel_callback:
+            self._BaseView__cancel_callback(self)
+            self._BaseView__cancel_callback = None
 
-        self._View__stopped.set_result(True)
+        self._BaseView__stopped.set_result(True)
+        # --- END AI-MODIFIED ---
 
-    def _dispatch_item(self, *args, **kwargs):
-        """Extending event dispatch to run in the instantiation context."""
-        return self._context.run(super()._dispatch_item, *args, **kwargs)
+    # --- AI-MODIFIED (2026-03-14) ---
+    # Purpose: Ensure translator and locale context are available for all UI interactions,
+    # especially persistent views that weren't created from a command context.
+    def _dispatch_item(self, item, interaction, /):
+        if self._context.get(ctx_translator, None) is None:
+            self._context.run(ctx_translator.set, interaction.client.translator)
+        if self._context.get(ctx_locale, SOURCE_LOCALE) == SOURCE_LOCALE and interaction.locale:
+            self._context.run(ctx_locale.set, interaction.locale.value)
+        return self._context.run(super()._dispatch_item, item, interaction)
+    # --- END AI-MODIFIED ---
 
     async def on_error(self, interaction: discord.Interaction, error: Exception, item: Item):
         """
@@ -378,6 +489,10 @@ class MessageUI(LeoUI):
         await self.reload()
         # Set the UI layout
         await self.refresh_layout()
+        # --- AI-MODIFIED (2026-03-19) ---
+        # Purpose: Inject vote button globally on all MessageUI commands
+        await _maybe_append_vote_button(self)
+        # --- END AI-MODIFIED ---
         # Fetch message arguments
         args = await self.make_message()
 
@@ -394,6 +509,9 @@ class MessageUI(LeoUI):
         """
         await self.reload()
         await self.refresh_layout()
+        # --- AI-MODIFIED (2026-03-19) ---
+        await _maybe_append_vote_button(self)
+        # --- END AI-MODIFIED ---
         args = await self.make_message()
         self._message = await channel.send(**args.send_args, view=self)
 
@@ -413,6 +531,9 @@ class MessageUI(LeoUI):
         If a thinking interaction is provided, deletes the response while redrawing.
         """
         await self.refresh_layout()
+        # --- AI-MODIFIED (2026-03-19) ---
+        await _maybe_append_vote_button(self)
+        # --- END AI-MODIFIED ---
         args = await self.make_message()
 
         if thinking is not None and not thinking.is_expired() and thinking.response.is_done():
@@ -459,15 +580,30 @@ class LeoModal(Modal):
             self._context = context
         self._context.run(log_action_stack.set, [*self._context[log_action_stack], self.__class__.__name__])
 
-    def _dispatch_submit(self, *args, **kwargs):
-        """
-        Extending event dispatch to run in the instantiation context.
-        """
-        return self._context.run(super()._dispatch_submit, *args, **kwargs)
+    # --- AI-MODIFIED (2026-03-14) ---
+    # Purpose: Ensure translator and locale context are available for modal interactions
+    # --- AI-REPLACED (2026-03-14) ---
+    # Reason: discord.py 2.7.1 added 'resolved' param to Modal._dispatch_submit
+    # --- Original code ---
+    # def _dispatch_submit(self, interaction, components, /):
+    #     ...
+    #     return self._context.run(super()._dispatch_submit, interaction, components)
+    # --- End original code ---
+    def _dispatch_submit(self, interaction, components, resolved, /):
+        if self._context.get(ctx_translator, None) is None:
+            self._context.run(ctx_translator.set, interaction.client.translator)
+        if self._context.get(ctx_locale, SOURCE_LOCALE) == SOURCE_LOCALE and interaction.locale:
+            self._context.run(ctx_locale.set, interaction.locale.value)
+        return self._context.run(super()._dispatch_submit, interaction, components, resolved)
+    # --- END AI-REPLACED ---
 
-    def _dispatch_item(self, *args, **kwargs):
-        """Extending event dispatch to run in the instantiation context."""
-        return self._context.run(super()._dispatch_item, *args, **kwargs)
+    def _dispatch_item(self, item, interaction, /):
+        if self._context.get(ctx_translator, None) is None:
+            self._context.run(ctx_translator.set, interaction.client.translator)
+        if self._context.get(ctx_locale, SOURCE_LOCALE) == SOURCE_LOCALE and interaction.locale:
+            self._context.run(ctx_locale.set, interaction.locale.value)
+        return self._context.run(super()._dispatch_item, item, interaction)
+    # --- END AI-MODIFIED ---
 
     async def on_error(self, interaction: discord.Interaction, error: Exception, *args):
         """

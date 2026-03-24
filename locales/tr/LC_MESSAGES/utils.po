@@ -1,27 +1,19 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
-# Translators:
-# Interitio, 2023
-# Havina Ru, 2023
-# Eyüp Ramazan, 2023
-# 
-#, fuzzy
+# Turkish translation for LionBot - utils
+# AI-translated with human Transifex contributions where available.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: LionBot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-24 14:37+0300\n"
-"PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Eyüp Ramazan, 2023\n"
-"Language-Team: Turkish (https://app.transifex.com/leobot/teams/174919/tr/)\n"
+"PO-Revision-Date: 2026-03-13 21:36+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Turkish\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: tr\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/utils/cog.py:18
 msgctxt "cmd:page"
@@ -110,13 +102,11 @@ msgctxt "cmd:page_select|acmpl|error:no_pager"
 msgid "No active pagers in this channel!"
 msgstr "Bu kanalda aktif bir çağrı cihazı yok!"
 
-#: src/utils/transformers.py:45
 #, possible-python-brace-format
 msgctxt "utils:parse_dur|error"
 msgid "Cannot parse `{value}` as a duration."
 msgstr "`{value}`, süre olarak çözümlenemiyor."
 
-#: src/utils/transformers.py:71
 #, possible-python-brace-format
 msgctxt "util:Duration|acmpl|error"
 msgid "Cannot extract duration from \"{partial}\""
@@ -142,13 +132,14 @@ msgctxt "util:parse_dur|regex:second"
 msgid "(?P<value>\\d+)\\s*(?:(s)|(sec))"
 msgstr "(?P<value>\\d+)\\s*(?:(sn)|(saniye))"
 
-#: src/utils/lib.py:907
 #, possible-python-brace-format
 msgctxt "parse_timestamp|error:parse"
 msgid ""
 "Could not parse `{given}` as a valid reminder time. Try entering the time in"
 " the form `HH:MM` or `YYYY-MM-DD HH:MM`."
 msgstr ""
+"`{given}` geçerli bir hatırlatma zamanı olarak ayrıştırılamadı. `HH:MM` veya"
+" `YYYY-AA-GG SS:DD` biçimini deneyin."
 
 #: src/utils/ui/config.py:35
 msgctxt "ui:configui|modal:edit|title"
@@ -181,55 +172,46 @@ msgstr ""
 "burada gösteremiyorum! Bunun yerine ayarları bağlantıdaki konfigürasyon "
 "panelinde inceleyebilirsin."
 
-#. List of valid keys indicating movement to the next page
 #: src/utils/ui/pagers.py:50
 msgctxt "cmd:page|pager:Pager|options:next"
 msgid "n, nxt, next, forward, +"
 msgstr "s, snr, sonraki, ileri, +"
 
-#. List of valid keys indicating movement to the previous page
 #: src/utils/ui/pagers.py:53
 msgctxt "cmd:page|pager:Pager|options:prev"
 msgid "p, prev, back, -"
 msgstr "ö, önceki, geri,-"
 
-#. List of valid keys indicating movement to the first page
 #: src/utils/ui/pagers.py:56
 msgctxt "cmd:page|pager:Pager|options:first"
 msgid "f, first, one, start"
 msgstr "i, ilk, birinci, başlangıç"
 
-#. List of valid keys indicating movement to the last page
 #: src/utils/ui/pagers.py:59
 msgctxt "cmd:page|pager:Pager|options:last"
 msgid "l, last, end"
 msgstr "s, son, sonuncu"
 
-#: src/utils/ui/pagers.py:273
 #, possible-python-brace-format
 msgctxt "cmd:page|pager:Pager|error:parse"
 msgid "Could not understand page specification `{value}`."
 msgstr "Sayfa belirtimi `{value}` anlaşılamadı."
 
-#: src/utils/ui/pagers.py:302
 #, possible-python-brace-format
 msgctxt "cmd:page|acmpl|pager:Pager|choice:last"
 msgid "Last: Page {page}/{total}"
 msgstr "Son: Sayfa {page}/{total}"
 
-#: src/utils/ui/pagers.py:307
 #, possible-python-brace-format
 msgctxt "cmd:page|acmpl|pager:Pager|choice:current"
 msgid "Current: Page {page}/{total}"
 msgstr "Şimdiki: Sayfa {page}/{total}"
 
-#: src/utils/ui/pagers.py:319
 #, possible-python-brace-format
 msgctxt "cmd:page|acmpl|pager:Pager|choice:general"
 msgid "Page {page}"
 msgstr "Sayfa {page}"
 
-#: src/utils/ui/pagers.py:353
 #, possible-python-brace-format
 msgctxt "cmd:page|acmpl|pager:Page|choice:select"
 msgid "Selected: Page {page}/{total}"
@@ -247,7 +229,6 @@ msgstr ""
 "İşlem başarısız oldu! Mesaj içeriği ve gömülü öğenin ikisi de boş olamaz, en"
 " azından birinde bilgi olmalı."
 
-#: src/utils/ui/msgeditor.py:86
 #, possible-python-brace-format
 msgctxt "ui:msg_editor|error:embed_failed"
 msgid ""
@@ -257,7 +238,6 @@ msgstr ""
 "İşlem başarısız oldu! Gömülü mesaj ayrıştırılamadı.\n"
 "Hata: {error}"
 
-#: src/utils/ui/msgeditor.py:104
 #, possible-python-brace-format
 msgctxt "ui:msg_editor|error:invalid_change"
 msgid ""
@@ -300,12 +280,12 @@ msgstr "Gömülü İçerik Ekle"
 #: src/utils/ui/msgeditor.py:190
 msgctxt "ui:msg_editor|button:rm_embed|sample_content"
 msgid "Content Placeholder"
-msgstr ""
+msgstr "İçerik yer tutucusu"
 
 #: src/utils/ui/msgeditor.py:199
 msgctxt "ui:msg_editor|button:rm_embed|label"
 msgid "Remove Embed"
-msgstr ""
+msgstr "Embed kaldır"
 
 #: src/utils/ui/msgeditor.py:217
 msgctxt "ui:msg_editor|modal:body|field:content|label"
@@ -539,7 +519,6 @@ msgctxt "ui:msg_editor|timeout_warning|title"
 msgid "Warning!"
 msgstr "Uyarı!"
 
-#: src/utils/ui/msgeditor.py:1029
 #, possible-python-brace-format
 msgctxt "ui:msg_editor|timeout_warning|desc"
 msgid ""
@@ -547,7 +526,7 @@ msgid ""
 "editing."
 msgstr ""
 "Bu arayüz {timestamp} zaman aşımına uğrayacaktır. Düzenlemeye devam etmek "
-"için aşağıdaki 'Devam' düğmesine basın."
+"için aşağıdaki 'Devam' ..."
 
 #: src/utils/ui/msgeditor.py:1038
 msgctxt "ui:msg_editor|timeout_warning|continue"

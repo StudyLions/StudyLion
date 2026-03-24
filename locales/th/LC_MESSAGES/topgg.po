@@ -1,0 +1,31 @@
+# Thai translation for LionBot - topgg
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 18:40+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Thai\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/modules/topgg/cog.py:92
+msgctxt "button:vote|label"
+msgid "Vote for me!"
+msgstr "โหวตให้ฉัน!"
+
+#, possible-python-brace-format
+msgctxt "embed:voting_thanks|title"
+msgid "Thank you for supporting me on Top.gg! {yay}"
+msgstr "ขอบคุณที่สนับสนุนฉันบน Top.gg! {yay}"
+
+#: src/modules/topgg/cog.py:123
+msgctxt "embed:voting_thanks|desc"
+msgid "Thank you for supporting us, enjoy your LionCoins boost!"
+msgstr "ขอบคุณสำหรับการสนับสนุน เพลิดเพลินกับโบนัส LionCoins ของคุณ!"

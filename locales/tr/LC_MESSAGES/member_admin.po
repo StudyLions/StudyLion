@@ -1,26 +1,19 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
-# Translators:
-# Eyüp Ramazan, 2023
-# Havina Ru, 2023
-# 
-#, fuzzy
+# Turkish translation for LionBot - member_admin
+# AI-translated with human Transifex contributions where available.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: LionBot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-24 14:37+0300\n"
-"PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Havina Ru, 2023\n"
-"Language-Team: Turkish (https://app.transifex.com/leobot/teams/174919/tr/)\n"
+"PO-Revision-Date: 2026-03-13 21:36+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Turkish\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: tr\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/member_admin/settingui.py:58
 msgctxt "ui:memberadmin|menu:greetch|placeholder"
@@ -50,12 +43,12 @@ msgstr "Geri Dönüş Mesajı"
 #: src/modules/member_admin/settingui.py:218
 msgctxt "ui:memberadmin|embed|title"
 msgid "Greetings and Initial Roles Panel"
-msgstr ""
+msgstr "Karşılama ve başlangıç rolleri paneli"
 
 #: src/modules/member_admin/settingui.py:262
 msgctxt "dash:member_admin|title"
 msgid "Greetings and Initial Roles ({commands[config welcome]})"
-msgstr ""
+msgstr "Karşılamalar ve başlangıç rolleri ({commands[config welcome]})"
 
 #: src/modules/member_admin/settingui.py:266
 msgctxt "dash:member_admin|dropdown|placeholder"
@@ -65,100 +58,97 @@ msgstr "Karşılama ve Başlangıç Rolleri Paneli"
 #: src/modules/member_admin/settingui.py:286
 msgctxt "dash:member_admin|section:greeting_messages|name"
 msgid "Greeting Messages ({commands[admin config welcome]})"
-msgstr ""
+msgstr "Karşılama mesajları ({commands[admin config welcome]})"
 
 #: src/modules/member_admin/settingui.py:297
 msgctxt "dash:member_admin|section:initial_roles|name"
 msgid "Initial Roles ({commands[admin config welcome]})"
-msgstr ""
+msgstr "Başlangıç rolleri ({commands[admin config welcome]})"
 
 #: src/modules/member_admin/cog.py:33
 msgctxt "cmd:admin_data|param:data_type|choice:voice_leaderboard"
 msgid "Voice Leaderboard"
-msgstr ""
+msgstr "Sesli sıralama"
 
 #: src/modules/member_admin/cog.py:34
 msgctxt "cmd:admin_data|param:data_type|choice:msg_leaderboard"
 msgid "Message Leaderboard"
-msgstr ""
+msgstr "Mesaj sıralaması"
 
 #: src/modules/member_admin/cog.py:35
 msgctxt "cmd:admin_data|param:data_type|choice:xp_leaderboard"
 msgid "XP Leaderboard"
-msgstr ""
+msgstr "XP sıralaması"
 
 #: src/modules/member_admin/cog.py:36
 msgctxt "cmd:admin_data|param:data_type|choice:rolemenu_equip"
 msgid "Rolemenu Roles Equipped"
-msgstr ""
+msgstr "Rol menüsü kuşanılmış roller"
 
 #: src/modules/member_admin/cog.py:37
 msgctxt "cmd:admin_data|param:data_type|choice:transactions"
 msgid "Economy Transactions (Incomplete)"
-msgstr ""
+msgstr "Ekonomi işlemleri (eksik)"
 
 #: src/modules/member_admin/cog.py:38
 msgctxt "cmd:admin_data|param:data_type|choice:balances"
 msgid "Economy Balances"
-msgstr ""
+msgstr "Ekonomi bakiyeleri"
 
 #: src/modules/member_admin/cog.py:39
 msgctxt "cmd:admin_data|param:data_type|choice:voice_sessions"
 msgid "Voice Sessions"
-msgstr ""
+msgstr "Sesli oturumlar"
 
 #: src/modules/member_admin/cog.py:155
 msgctxt "eventlog|event:welcome|title"
 msgid "New Member Joined"
-msgstr ""
+msgstr "Yeni üye katıldı"
 
-#: src/modules/member_admin/cog.py:159
 #, possible-python-brace-format
 msgctxt "eventlog|event:welcome|desc"
 msgid "{member} joined the server for the first time."
-msgstr ""
+msgstr "{member} sunucuya ilk kez katıldı."
 
 #: src/modules/member_admin/cog.py:243
 msgctxt "eventlog|event:returning|title"
 msgid "Member Rejoined"
-msgstr ""
+msgstr "Üye geri döndü"
 
-#: src/modules/member_admin/cog.py:247
 #, possible-python-brace-format
 msgctxt "eventlog|event:returning|desc"
 msgid "{member} rejoined the server."
-msgstr ""
+msgstr "{member} sunucuya geri döndü."
 
 #: src/modules/member_admin/cog.py:256
 msgctxt "eventlog|event:returning|field:first_joined"
 msgid "First Joined"
-msgstr ""
+msgstr "İlk katılım"
 
 #: src/modules/member_admin/cog.py:263
 msgctxt "eventlog|event:returning|field:last_seen"
 msgid "Last Seen"
-msgstr ""
+msgstr "Son görülme"
 
 #: src/modules/member_admin/cog.py:311
 msgctxt "eventlog|event:left|title"
 msgid "Member Left"
-msgstr ""
+msgstr "Üye ayrıldı"
 
-#: src/modules/member_admin/cog.py:315
 #, possible-python-brace-format
 msgctxt "eventlog|event:left|desc"
 msgid "{member} left the server."
-msgstr ""
+msgstr "{member} sunucudan ayrıldı."
 
 #: src/modules/member_admin/cog.py:323
 msgctxt "eventlog|event:left|field:stored_roles"
 msgid "Stored Roles"
-msgstr ""
+msgstr "Kaydedilmiş roller"
 
 #: src/modules/member_admin/cog.py:330
 msgctxt "eventlog|event:left|field:first_joined"
 msgid "First Joined"
-msgstr ""
+msgstr "İlk katılım"
 
 #: src/modules/member_admin/cog.py:368
 msgctxt "cmd:resetmember"
@@ -168,9 +158,7 @@ msgstr "üyeyisıfırla"
 #: src/modules/member_admin/cog.py:371
 msgctxt "cmd:resetmember|desc"
 msgid "Reset (server-associated) member data for the target member or user."
-msgstr ""
-"Hedef kullanıcının veya üyenin (sunucu-bağlantılı) kullanıcı verisini "
-"sıfırla."
+msgstr "Hedef kullanıcının veya üyenin (sunucu-bağlantılı) kullanıcı verisini sıfırla."
 
 #: src/modules/member_admin/cog.py:375
 msgctxt "cmd:resetmember|param:target"
@@ -189,22 +177,13 @@ msgstr "Sıfırlamak istediğiniz üyeyi seçiniz (eski veya yeni)."
 
 #: src/modules/member_admin/cog.py:385
 msgctxt "cmd:resetmember|param:saved_roles|desc"
-msgid ""
-"Clear the saved roles for this member, so their past roles are not restored "
-"on rejoin."
-msgstr ""
-"Üyenin kaydedilmiş rollerini temizleyin bu sayede geçmiş roller tekrardan "
-"katılmada verilmeyecektir."
+msgid "Clear the saved roles for this member, so their past roles are not restored on rejoin."
+msgstr "Üyenin kaydedilmiş rollerini temizleyin bu sayede geçmiş roller tekrardan katılmada verilmeyecektir."
 
-#: src/modules/member_admin/cog.py:411
 #, possible-python-brace-format
 msgctxt "cmd:resetmember|reset:saved_roles|success"
-msgid ""
-"The saved roles for {target} have been reset. They will not regain their "
-"roles if they rejoin."
-msgstr ""
-"{target} için kaydedilen roller sıfırlanmıştır. Eğer tekrar katılırlarsa "
-"rollerini alamayacaklar."
+msgid "The saved roles for {target} have been reset. They will not regain their roles if they rejoin."
+msgstr "{target} için kaydedilen roller sıfırlanmıştır. Eğer tekrar katılırlarsa rollerini alamayacaklar."
 
 #: src/modules/member_admin/cog.py:419
 msgctxt "cmd:resetmember|error:nothing_to_do"
@@ -214,84 +193,77 @@ msgstr "Sıfırlama işlemi seçilmedi, yapılacak bir şey yok."
 #: src/modules/member_admin/cog.py:425
 msgctxt "cmd:admin_data"
 msgid "data"
-msgstr ""
+msgstr "data"
 
 #: src/modules/member_admin/cog.py:428
 msgctxt "cmd:admin_data|desc"
 msgid "Download various raw data for external analysis and backup."
-msgstr ""
+msgstr "Harici analiz ve yedekleme için çeşitli ham verileri indirin."
 
 #: src/modules/member_admin/cog.py:432
 msgctxt "cmd:admin_data|param:data_type"
 msgid "type"
-msgstr ""
+msgstr "type"
 
 #: src/modules/member_admin/cog.py:433
 msgctxt "cmd:admin_data|param:target"
 msgid "target"
-msgstr ""
+msgstr "target"
 
 #: src/modules/member_admin/cog.py:434
 msgctxt "cmd:admin_data|param:start"
 msgid "after"
-msgstr ""
+msgstr "after"
 
 #: src/modules/member_admin/cog.py:435
 msgctxt "cmd:admin_data|param:end"
 msgid "before"
-msgstr ""
+msgstr "before"
 
 #: src/modules/member_admin/cog.py:436
 msgctxt "cmd:admin_data|param:limit"
 msgid "limit"
-msgstr ""
+msgstr "limit"
 
 #: src/modules/member_admin/cog.py:441
 msgctxt "cmd:admin_data|param:data_type|desc"
 msgid "Select the type of data you want to download"
-msgstr ""
+msgstr "İndirmek istediğiniz veri türünü seçin"
 
 #: src/modules/member_admin/cog.py:445
 msgctxt "cmd:admin_data|param:target|desc"
 msgid "Filter the data by selecting a user or role"
-msgstr ""
+msgstr "Bir kullanıcı veya rol seçerek verileri filtreleyin"
 
 #: src/modules/member_admin/cog.py:449
 msgctxt "cmd:admin_data|param:start|desc"
-msgid ""
-"Retrieve records created after this date and time in server timezone (YYYY-"
-"MM-DD HH:MM)"
-msgstr ""
+msgid "Retrieve records created after this date and time in server timezone (YYYY-MM-DD HH:MM)"
+msgstr "Sunucu saat diliminde bu tarih ve saatten sonra oluşturulan kayıtları al (YYYY-AA-GG SS:DD)"
 
 #: src/modules/member_admin/cog.py:453
 msgctxt "cmd:admin_data|param:end|desc"
-msgid ""
-"Retrieve records created before this date and time in server timezone (YYYY-"
-"MM-DD HH:MM)"
-msgstr ""
+msgid "Retrieve records created before this date and time in server timezone (YYYY-MM-DD HH:MM)"
+msgstr "Sunucu saat diliminde bu tarih ve saatten önce oluşturulan kayıtları al (YYYY-AA-GG SS:DD)"
 
 #: src/modules/member_admin/cog.py:457
 msgctxt "cmd:admin_data|param:limit|desc"
 msgid "Maximum number of records to retrieve."
-msgstr ""
+msgstr "Alınacak maksimum kayıt sayısı."
 
 #: src/modules/member_admin/cog.py:586
 msgctxt "cmd:admin_data|error:ratelimited"
-msgid ""
-"Too many requests! Please wait a few minutes before using this command "
-"again."
-msgstr ""
+msgid "Too many requests! Please wait a few minutes before using this command again."
+msgstr "Çok fazla istek! Bu komutu tekrar kullanmadan önce lütfen birkaç dakika bekleyin."
 
 #: src/modules/member_admin/cog.py:603
 msgctxt "cmd:admin_data|error:no_results"
 msgid "Your query had no results! Try relaxing your filters."
-msgstr ""
+msgstr "Sorgunuz sonuç vermedi! Filtrelerinizi gevşetmeyi deneyin."
 
-#: src/modules/member_admin/cog.py:627
 #, possible-python-brace-format
 msgctxt "cmd:admin_data|acmpl:time|error:parse"
 msgid "Cannot parse \"{partial}\" as a time. Try the format YYYY-MM-DD HH:MM"
-msgstr ""
+msgstr "\"{partial}\" zaman olarak ayrıştırılamıyor. YYYY-AA-GG SS:DD biçimini deneyin"
 
 #: src/modules/member_admin/cog.py:643
 msgctxt "cmd:configure_welcome"
@@ -350,14 +322,8 @@ msgstr "Sunucuya yeni gelen kullanıcılara hoş geldin mesajı atılacak kanal.
 
 #: src/modules/member_admin/settings.py:49
 msgctxt "guildset:greeting_channel|long_desc"
-msgid ""
-"New members will be sent the configured `welcome_message` in this channel, "
-"and returning members will be sent the configured `returning_message`. Unset"
-" to send these message via direct message."
-msgstr ""
-"Yeni üyeler için ayarlanmış `hoşgeldin_mesajı` ve tekrardan gelen üyeler "
-"için ayarlanmış `geridönüş_mesajı` bu kanala gelecektir. Direkt Mesaj olarak"
-" göndermek için ayarlamadan bırakınız."
+msgid "New members will be sent the configured `welcome_message` in this channel, and returning members will be sent the configured `returning_message`. Unset to send these message via direct message."
+msgstr "Yeni üyeler için ayarlanmış `hoşgeldin_mesajı` ve tekrardan gelen üyeler için ayarlanmış `geridönüş_mesajı` bu kanala gelecektir. Direkt Mesaj olarak göndermek için ayarlamadan bırakınız."
 
 #: src/modules/member_admin/settings.py:55
 msgctxt "guildset:greeting_channel|accepts"
@@ -369,7 +335,6 @@ msgctxt "guildset:greeting_channel|set_response:unset"
 msgid "Welcome messages will now be sent via direct message."
 msgstr "Hoş geldin mesajı artık direkt mesaj aracılığıyla gönderilecektir."
 
-#: src/modules/member_admin/settings.py:75
 #, possible-python-brace-format
 msgctxt "guildset:greeting_channel|set_response:set"
 msgid "Welcome messages will now be sent to {channel}"
@@ -392,12 +357,8 @@ msgstr "Yeni gelen üyeleri karşılamak için gönderilecek özel mesaj."
 
 #: src/modules/member_admin/settings.py:103
 msgctxt "guildset:greeting_message|long_desc"
-msgid ""
-"When set, this message will be sent to the `welcome_channel` when a *new* "
-"member joins the server. If not set, no message will be sent."
-msgstr ""
-"Ayarlandığında, bu mesaj `hoşgeldin_kanalı` kanalına *yeni* üye geldiğinde "
-"gönderilecektir. Ayarlanmadığında, mesaj gönderilmeyecektir."
+msgid "When set, this message will be sent to the `welcome_channel` when a *new* member joins the server. If not set, no message will be sent."
+msgstr "Ayarlandığında, bu mesaj `hoşgeldin_kanalı` kanalına *yeni* üye geldiğinde gönderilecektir. Ayarlanmadığında, mesaj gönderilmeyecektir."
 
 #: src/modules/member_admin/settings.py:108
 msgctxt "guildset:greeting_message|accepts"
@@ -467,18 +428,13 @@ msgstr "geridönüş_mesajı"
 
 #: src/modules/member_admin/settings.py:222
 msgctxt "guildset:returning_message|desc"
-msgid ""
-"Custom message used to greet returning members when they rejoin the server."
+msgid "Custom message used to greet returning members when they rejoin the server."
 msgstr "Geri dönen üyeleri karşılamak için gönderilecek özel mesaj."
 
 #: src/modules/member_admin/settings.py:226
 msgctxt "guildset:returning_message|long_desc"
-msgid ""
-"When set, this message will be sent to the `welcome_channel` when a member "
-"*returns* to the server. If not set, no message will be sent."
-msgstr ""
-"Ayarlandığında, bu mesaj `hoşgeldin_kanalı` kanalına üye sunucuya *geri "
-"döndüğünde* gönderilecektir. Ayarlanmadığında, mesaj gönderilmeyecektir."
+msgid "When set, this message will be sent to the `welcome_channel` when a member *returns* to the server. If not set, no message will be sent."
+msgstr "Ayarlandığında, bu mesaj `hoşgeldin_kanalı` kanalına üye sunucuya *geri döndüğünde* gönderilecektir. Ayarlanmadığında, mesaj gönderilmeyecektir."
 
 #: src/modules/member_admin/settings.py:231
 msgctxt "guildset:returning_message|accepts"
@@ -493,7 +449,8 @@ msgid ""
 "                \"embed\": {\n"
 "                    \"title\": \"Welcome Back {user_name}!\",\n"
 "                    \"thumbnail\": {\"url\": \"{User_avatar}\"},\n"
-"                    \"description\": \"Welcome back to **{guild_name}**!\\nYou were last seen <t:{last_time}:R>.\",\n"
+"                    \"description\": \"Welcome back to **{guild_name}**!\\\n"
+"You were last seen <t:{last_time}:R>.\",\n"
 "                    \"color\": 15695665\n"
 "                }\n"
 "            }\n"
@@ -504,7 +461,8 @@ msgstr ""
 "                \"embed\": {\n"
 "                    \"title\": \"Tekrar Hoş Geldin {user_name}!\",\n"
 "                    \"thumbnail\": {\"url\": \"{User_avatar}\"},\n"
-"                    \"description\": \"**{guild_name}** sunucusuna tekrardan hoş geldin!\\nEn son <t:{last_time}:R> göründün.\",\n"
+"                    \"description\": \"**{guild_name}** sunucusuna tekrardan hoş geldin!\\\n"
+"En son <t:{last_time}:R> göründün.\",\n"
 "                    \"color\": 15695665\n"
 "                }\n"
 "            }\n"
@@ -513,15 +471,12 @@ msgstr ""
 #: src/modules/member_admin/settings.py:252
 msgctxt "guildset:returning_message|formatkey:last_time"
 msgid "Unix timestamp of the last time the member was seen in the server."
-msgstr ""
-"Üyenin sunucuda göründüğü son zamanın Unix timestamp cinsinden ifadesi."
+msgstr "Üyenin sunucuda göründüğü son zamanın Unix timestamp cinsinden ifadesi."
 
 #: src/modules/member_admin/settings.py:263
 msgctxt "guildset:returning_message|set_response:unset"
 msgid "Returning member greeting unset! Will use `welcome_message` if set."
-msgstr ""
-"Geri dönen üye karşılaması kaldırıldı! Eğer ayarlandıysa `hoşgeldin_mesajı` "
-"kullanılacak."
+msgstr "Geri dönen üye karşılaması kaldırıldı! Eğer ayarlandıysa `hoşgeldin_mesajı` kullanılacak."
 
 #: src/modules/member_admin/settings.py:268
 msgctxt "guildset:greeting_message|set_response:set"
@@ -555,13 +510,8 @@ msgstr "Yeni üyeler sunucuya katıldıklarında verilecek roller."
 
 #: src/modules/member_admin/settings.py:353
 msgctxt "guildset:autoroles|long_desc"
-msgid ""
-"These roles will be given when a member joins the server. If "
-"`role_persistence` is enabled, these roles will *not* be given to a "
-"returning member."
-msgstr ""
-"Bir üye sunucuya katıldığında bu roller verilecek. Eğer `rol_kalıcılığı` "
-"aktifse, bu roller geri dönen üyeye *verilmeyecektir.*"
+msgid "These roles will be given when a member joins the server. If `role_persistence` is enabled, these roles will *not* be given to a returning member."
+msgstr "Bir üye sunucuya katıldığında bu roller verilecek. Eğer `rol_kalıcılığı` aktifse, bu roller geri dönen üyeye *verilmeyecektir.*"
 
 #: src/modules/member_admin/settings.py:368
 msgctxt "guildset:bot_autoroles"
@@ -586,20 +536,12 @@ msgstr "rol_kalıcılığı"
 #: src/modules/member_admin/settings.py:393
 msgctxt "guildset:role_persistence|desc"
 msgid "Whether member roles should be restored on rejoin."
-msgstr ""
-"Üyelerin sunucuya tekrar katıldıklarında rollerinin verilip verilmeyeceği."
+msgstr "Üyelerin sunucuya tekrar katıldıklarında rollerinin verilip verilmeyeceği."
 
 #: src/modules/member_admin/settings.py:397
 msgctxt "guildset:role_persistence|long_desc"
-msgid ""
-"If enabled, member roles will be stored when they leave the server, and then"
-" restored when they rejoin (instead of giving `autoroles`). Note that this "
-"may conflict with other bots who manage join roles."
-msgstr ""
-"Aktifleştirildiğinde, üyeler sunucudan çıktıklarında rolleri kaydedilecek ve"
-" tekrar girmeleri durumunda geri verilecek. (`otomatik_roller` yerine "
-"kullanılabilir) Katılma rollerini düzenleyen diğer botlarla karışıklık "
-"yaratabileceğini unutmayın."
+msgid "If enabled, member roles will be stored when they leave the server, and then restored when they rejoin (instead of giving `autoroles`). Note that this may conflict with other bots who manage join roles."
+msgstr "Aktifleştirildiğinde, üyeler sunucudan çıktıklarında rolleri kaydedilecek ve tekrar girmeleri durumunda geri verilecek. (`otomatik_roller` yerine kullanılabilir) Katılma rollerini düzenleyen diğer botlarla karışıklık yaratabileceğini unutmayın."
 
 #: src/modules/member_admin/settings.py:413
 msgctxt "guildset:role_persistence|set_response:off"

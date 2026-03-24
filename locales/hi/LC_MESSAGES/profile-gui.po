@@ -1,0 +1,46 @@
+# Hindi translation for LionBot - profile-gui
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 18:40+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Hindi\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/gui/cards/profile.py:79
+msgctxt "skin:profile|header:profile"
+msgid "PROFILE"
+msgstr "प्रोफ़ाइल"
+
+#: src/gui/cards/profile.py:83
+msgctxt "skin:profile|header:achievements"
+msgid "ACHIEVEMENTS"
+msgstr "उपलब्धियाँ"
+
+#: src/gui/cards/profile.py:134
+msgctxt "skin:profile|field:rank_unranked_text"
+msgid "UNRANKED"
+msgstr "अवर्गीकृत"
+
+#, possible-python-brace-format
+msgctxt "skin:profile|field:rank_nextrank_text"
+msgid "NEXT RANK: {name} {rangestr}"
+msgstr "अगला रैंक: {name} {rangestr}"
+
+#: src/gui/cards/profile.py:142
+msgctxt "skin:profile|field:rank_noranks_text"
+msgid "NO RANKS AVAILABLE"
+msgstr "कोई रैंक उपलब्ध नहीं"
+
+#: src/gui/cards/profile.py:146
+msgctxt "skin:profile|field:rank_maxrank_text"
+msgid "YOU HAVE REACHED THE MAXIMUM RANK"
+msgstr "आपने अधिकतम रैंक प्राप्त कर लिया है"

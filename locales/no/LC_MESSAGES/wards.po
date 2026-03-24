@@ -1,0 +1,76 @@
+# Norwegian translation for LionBot - wards
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 18:50+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Norwegian\n"
+"Language: no\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/wards.py:99
+msgctxt "ward:sys_admin|failed"
+msgid "You must be a bot owner to do this!"
+msgstr "Du må være bot-eier for å gjøre dette!"
+
+#: src/wards.py:115
+msgctxt "ward:high_management|failed"
+msgid "You must have the `ADMINISTRATOR` permission or the configured `admin_role` to do this!"
+msgstr "Du må ha `ADMINISTRATOR`-tillatelse eller den konfigurerte `admin_role` for å gjøre dette!"
+
+#: src/wards.py:131
+msgctxt "ward:low_management|failed"
+msgid "You must have the `MANAGE_GUILD` permission or the configured `mod_role` to do this!"
+msgstr "Du må ha `MANAGE_GUILD`-tillatelse eller den konfigurerte `mod_role` for å gjøre dette!"
+
+#: src/wards.py:143
+msgctxt "ward:moderator|failed"
+msgid "You must have the configured moderator role, or `MANAGE_GUILD` permissions to do this."
+msgstr "Du må ha den konfigurerte moderatorrollen eller `MANAGE_GUILD`-tillatelser for å gjøre dette."
+
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:bot_managed"
+msgid "I cannot manage {role} because it is managed by another bot!"
+msgstr "Jeg kan ikke administrere {role} fordi den administreres av en annen bot!"
+
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:integration"
+msgid "I cannot manage {role} because it is managed by a server integration."
+msgstr "Jeg kan ikke administrere {role} fordi den administreres av en serverintegrasjon."
+
+#: src/wards.py:183
+msgctxt "ward:equippable_role|error:default_role"
+msgid "I cannot manage the server's default role."
+msgstr "Jeg kan ikke administrere serverens standardrolle."
+
+#: src/wards.py:190
+msgctxt "ward:equippable_role|error:no_perms"
+msgid "I need the `MANAGE_ROLES` permission before I can manage roles!"
+msgstr "Jeg trenger `MANAGE_ROLES`-tillatelse for å kunne administrere roller!"
+
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:my_top_role"
+msgid "I cannot assign or remove {role} because it is above my top role!"
+msgstr "Jeg kan ikke tildele eller fjerne {role} fordi den er over min høyeste rolle!"
+
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:not_assignable"
+msgid "I don't have sufficient permissions to assign or remove {role}."
+msgstr "Jeg har ikke tilstrekkelige tillatelser til å tildele eller fjerne {role}."
+
+#: src/wards.py:212
+msgctxt "ward:equippable_role|error:actor_perms"
+msgid "You need the `MANAGE_ROLES` permission before you can configure roles!"
+msgstr "Du trenger `MANAGE_ROLES`-tillatelse for å konfigurere roller!"
+
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:actor_top_role"
+msgid "You cannot configure {role} because it is above your top role!"
+msgstr "Du kan ikke konfigurere {role} fordi den er over din høyeste rolle!"

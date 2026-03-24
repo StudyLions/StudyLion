@@ -1,0 +1,856 @@
+# Korean translation for LionBot - Pomodoro
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 22:22+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Korean\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/modules/pomodoro/timer.py:52
+msgctxt "timer|stage:break|name"
+msgid "BREAK"
+msgstr "휴식"
+
+#: src/modules/pomodoro/timer.py:53
+msgctxt "timer|stage:focus|name"
+msgid "FOCUS"
+msgstr "집중"
+
+#, possible-python-brace-format
+msgctxt "timer|webhook|name"
+msgid "{bot_name} Pomodoro"
+msgstr "{bot_name} 포모도로"
+
+#: src/modules/pomodoro/timer.py:168
+msgctxt "timer|webhook|audit_reason"
+msgid "Pomodoro Notifications"
+msgstr "포모도로 알림"
+
+#: src/modules/pomodoro/timer.py:179
+msgctxt "timer|webhook|error:insufficient_permissions"
+msgid ""
+"I require the `MANAGE_WEBHOOKS` permission to send pomodoro notifications "
+"here!"
+msgstr "여기에 포모도로 알림 전송을 위해 `MANAGE_WEBHOOKS` 권한이 필요해요."
+
+#, possible-python-brace-format
+msgctxt "timer|default_base_name"
+msgid "Timer {pattern}"
+msgstr "타이머 {pattern}"
+
+#: src/modules/pomodoro/timer.py:413
+msgctxt "timer|disconnect|audit_reason"
+msgid "Disconnecting inactive member from timer."
+msgstr "타이머로부터 비활성 맴버 연결 해제"
+
+#, possible-python-brace-format
+msgctxt "timer|kicked_message"
+msgid ""
+"{mentions} was removed from {channel} because they were inactive! Remember "
+"to press {tick} to register your presence every stage."
+msgid_plural ""
+"{mentions} were removed from {channel} because they were inactive! Remember "
+"to press {tick} to register your presence every stage."
+msgstr[0] ""
+"비활성 유저 {mentions}를 {channel} 에서 제외했어요. 활성 상태 등록을 위해 매 단계마다 {tick}을 눌러주세요."
+
+#, possible-python-brace-format
+msgctxt "timer|kick_failed"
+msgid ""
+"**Warning!** Timer {channel} is configured to disconnect on inactivity, but "
+"I lack the 'Move Members' permission to do this!"
+msgstr ""
+"**경고!** 타이머 채널 {channel}은 비활성 시 연결이 해제되도록 설정되어 있으나, 저는 'Move Members' 권한이 "
+"부족해요!"
+
+#, possible-python-brace-format
+msgctxt "timer|status|stage:focus|statusline"
+msgid "{channel} is now in **FOCUS**! Good luck, **BREAK** starts {timestamp}"
+msgstr "{channel}은 이제 **집중**상태에요! 파이팅! **휴식**은 {timestamp}에 시작해요."
+
+#, possible-python-brace-format
+msgctxt "timer|status|stage:break|statusline"
+msgid ""
+"{channel} is now on **BREAK**! Take a rest, **FOCUS** starts {timestamp}"
+msgstr "{channel}은 이제 **휴식**상태에요! 파이팅! **집중**은 {timestamp}에 시작해요."
+
+#, possible-python-brace-format
+msgctxt "timer|status|warningline"
+msgid ""
+"**Warning:** {mentions}, please press {tick} to avoid being removed on the "
+"next stage."
+msgstr "**경고:** {mentions}, 다음 단계에서 제외되지 않으려면 {tick}을 눌러주세요."
+
+#, possible-python-brace-format
+msgctxt "timer|status|stopped:auto"
+msgid "Timer stopped! Join {channel} to start the timer."
+msgstr "타이머가 멈췄어요! {channel}에 입장해서 타이머를 시작하세요."
+
+#: src/modules/pomodoro/timer.py:598
+msgctxt "timer|status|stopped:manual"
+msgid "Timer stopped! Press `Start` to restart the timer."
+msgstr "타이머가 멈췄어요! 'Start'를 눌러 타이머를 재시작하세요."
+
+#: src/modules/pomodoro/settingui.py:40
+msgctxt "ui:timer_config|menu:channels|placeholder"
+msgid "Select Pomodoro Notification Channel"
+msgstr "포모도로 알림 채널 선택"
+
+#: src/modules/pomodoro/settingui.py:48
+msgctxt "ui:timer_config|embed|title"
+msgid "Timer Configuration Panel"
+msgstr "타이머 설정 패널"
+
+#: src/modules/pomodoro/settingui.py:82
+msgctxt "dash:pomodoro|title"
+msgid "Pomodoro Configuration ({commands[config pomodoro]})"
+msgstr "포모도로 설정 ({commands[config pomodoro]})"
+
+#: src/modules/pomodoro/settingui.py:86
+msgctxt "dash:stats|dropdown|placeholder"
+msgid "Pomodoro Timer Panel"
+msgstr "포모도로 타이머 패널"
+
+#: src/modules/pomodoro/cog.py:116
+msgctxt "cmd_check:ready|failed"
+msgid ""
+"I am currently restarting! The Pomodoro timers will be unavailable until I "
+"have restarted. Thank you for your patience!"
+msgstr "저는 현재 재시작하고 있어요! 포모도로 타이머는 제가 재시작하기 전까지 사용할 수 없어요. 조금만 기다려 주세요!"
+
+#: src/modules/pomodoro/cog.py:401
+msgctxt "cmd:timer"
+msgid "timer"
+msgstr "타이머"
+
+#: src/modules/pomodoro/cog.py:402
+msgctxt "cmd:timer|desc"
+msgid "Show your current (or selected) pomodoro timer."
+msgstr "현재 (선택한) 포모도로 타이머를 보여준다."
+
+#: src/modules/pomodoro/cog.py:405
+msgctxt "cmd:timer|param:channel"
+msgid "timer_channel"
+msgstr "timer_channel"
+
+#: src/modules/pomodoro/cog.py:410
+msgctxt "cmd:timer|param:channel|desc"
+msgid "Select a timer to display (by selecting the timer voice channel)"
+msgstr "(타이머 음성 채널을 선택하여) 보여줄 타이머를 선택하세요."
+
+#, possible-python-brace-format
+msgctxt "cmd:timer|error:no_timers|desc"
+msgid ""
+"**This server has no timers set up!**\n"
+"Ask an admin to set up and configure a timer with {create_cmd} first, or rent a private room with {room_cmd} and create one yourself!"
+msgstr ""
+"**이 서버는 타이머 설정이 되어있지 않아요!**\n"
+"먼저 서버 관리자에게  {create_cmd} 명령어로 타이머 설정을 요청하거나,  {room_cmd} 명령어로 프라이빗 룸..."
+
+#, possible-python-brace-format
+msgctxt "cmd:timer|error:no_channel|desc"
+msgid ""
+"**I don't know what timer to show you.**\n"
+"No channel selected and you are not in a voice channel! Use {timers_cmd} to list the available timers in this server."
+msgstr ""
+"**제가 어떤 타이머를 보여줘야 할 지 모르겠어요.**\n"
+"채널 선택이 되지 않았고, 당신은 현재 음성 채널에 없어요. {timers_cmd} 명령어로 서버 내의 사용 가능한 타..."
+
+#, possible-python-brace-format
+msgctxt "cmd:timer|error:no_timer_in_channel"
+msgid ""
+"The channel {channel} is not a pomodoro timer room!\n"
+"Use {timers_cmd} to list the available timers in this server."
+msgstr ""
+"채널 {channel}는 포모도로 타이머 룸이 아니에요. {timers_cmd} 명령어로 서버 내의 사용 가능한 타이머를 확인하세요."
+
+#: src/modules/pomodoro/cog.py:476
+msgctxt "cmd:timers"
+msgid "timers"
+msgstr "timers"
+
+#: src/modules/pomodoro/cog.py:477
+msgctxt "cmd:timers|desc"
+msgid "List the available pomodoro timer rooms."
+msgstr "사용 가능한 포모도로 타이머 룸 목록을 보여줍니다."
+
+#, possible-python-brace-format
+msgctxt "cmd:timer|error:no_visible_timers|desc"
+msgid ""
+"**There are no available pomodoro timers!**\n"
+"Ask an admin to set up a new timer with {create_cmd}, or rent a private room with {room_cmd} and create one yourself!"
+msgstr ""
+"**이 서버는 타이머 설정이 되어있지 않아요!**\n"
+"먼저 서버 관리자에게 {create_cmd} 명령어로 타이머 설정을 요청하거나, {room_cmd} 명령어로 프라이빗 룸을 ..."
+
+#, possible-python-brace-format
+msgctxt "cmd:timers|embed:timer_list|title"
+msgid "Pomodoro Timer Rooms in **{guild}**"
+msgstr "**{guild}** 포모도로 타이머 룸"
+
+#, possible-python-brace-format
+msgctxt "cmd:timers|status:stopped_auto"
+msgid ""
+"`{pattern}` timer is stopped with no members!\n"
+"Join {channel} to restart it."
+msgstr ""
+"맴버가 없어서 `{pattern}` 타이머가 멈췄어요.\n"
+"{channel}에 입장하여 다시 시작하세요."
+
+#, possible-python-brace-format
+msgctxt "cmd:timers|status:stopped_manual"
+msgid ""
+"`{pattern}` timer is stopped with `{members}` members!\n"
+"Join {channel} and press `Start` to start it!"
+msgstr ""
+"`{pattern}` 타이머가 `{members}`명의 멤버와 함께 중지되어 있습니다!\n"
+"{channel}에 참여하고 `Start`를 눌러 시작하세요!"
+
+#, possible-python-brace-format
+msgctxt "cmd:timers|status:running_focus"
+msgid ""
+"`{pattern}` timer is running with `{members}` members!\n"
+"Currently **focusing**, with break starting {timestamp}"
+msgstr ""
+"`{pattern}` 타이머가 `{members}`명의 멤버와 함께 실행 중!\n"
+"현재 **집중** 중, 휴식 시작: {timestamp}"
+
+#, possible-python-brace-format
+msgctxt "cmd:timers|status:running_break"
+msgid ""
+"`{pattern}` timer is running with `{members}` members!\n"
+"Currently **resting**, with focus starting {timestamp}"
+msgstr ""
+"`{pattern}` 타이머가 `{members}`명의 멤버와 함께 실행 중!\n"
+"현재 **휴식** 중, 집중 시작: {timestamp}"
+
+#: src/modules/pomodoro/cog.py:571
+msgctxt "cmd:pomodoro"
+msgid "pomodoro"
+msgstr "pomodoro"
+
+#: src/modules/pomodoro/cog.py:572
+msgctxt "cmd:pomodoro|desc"
+msgid "Create and configure pomodoro timer rooms."
+msgstr "포모도로 타이머 방을 만들고 설정합니다."
+
+#: src/modules/pomodoro/cog.py:579
+msgctxt "cmd:pomodoro_create"
+msgid "create"
+msgstr "create"
+
+#: src/modules/pomodoro/cog.py:582
+msgctxt "cmd:pomodoro_create|desc"
+msgid "Create a new Pomodoro timer. Requires manage channel permissions."
+msgstr "새 포모도로 타이머를 만듭니다. 채널 관리 권한이 필요합니다."
+
+#: src/modules/pomodoro/cog.py:586
+msgctxt "cmd:pomodoro_create|param:channel"
+msgid "timer_channel"
+msgstr "timer_channel"
+
+#: src/modules/pomodoro/cog.py:592
+msgctxt "cmd:pomodoro_create|param:channel|desc"
+msgid ""
+"Voice channel to create the timer in. (Defaults to your current channel, or "
+"makes a new one.)"
+msgstr "타이머를 만들 음성 채널. (기본값은 현재 채널이거나 새로 만듭니다.)"
+
+#: src/modules/pomodoro/cog.py:637
+msgctxt "cmd:pomodoro_create|new_channel|error:your_insufficient_perms|title"
+msgid "Could not create pomodoro voice channel!"
+msgstr "포모도로 음성 채널을 만들 수 없습니다!"
+
+#: src/modules/pomodoro/cog.py:641
+msgctxt "cmd:pomodoro_create|new_channel|error:your_insufficient_perms"
+msgid ""
+"No `timer_channel` was provided, and you lack the 'Manage Channels` "
+"permission required to create a new timer room!"
+msgstr "`timer_channel`이 제공되지 않았으며 새 타이머 방을 만들 'Manage Channels' 권한이 없습니다!"
+
+#: src/modules/pomodoro/cog.py:652
+msgctxt "cmd:pomodoro_create|new_channel|error:my_insufficient_perms|title"
+msgid "Could not create pomodoro voice channel!"
+msgstr "포모도로 음성 채널을 만들 수 없습니다!"
+
+#: src/modules/pomodoro/cog.py:656
+msgctxt "cmd:pomodoro_create|new_channel|error:my_insufficient_perms|desc"
+msgid ""
+"No `timer_channel` was provided, and I lack the 'Manage Channels' permission"
+" required to create a new voice channel."
+msgstr "`timer_channel`이 제공되지 않았으며 새 음성 채널을 만들 'Manage Channels' 권한이 없습니다."
+
+#: src/modules/pomodoro/cog.py:667
+msgctxt "cmd:pomodoro_create|new_channel|default_name"
+msgid "Timer"
+msgstr "타이머"
+
+#: src/modules/pomodoro/cog.py:671
+msgctxt "cmd:pomodoro_create|new_channel|audit_reason"
+msgid "Creating Pomodoro Voice Channel"
+msgstr "포모도로 음성 채널 생성"
+
+#: src/modules/pomodoro/cog.py:680
+msgctxt "cmd:pomodoro_create|new_channel|error:channel_create_failed|title"
+msgid "Could not create pomodoro voice channel!"
+msgstr "포모도로 음성 채널을 만들 수 없습니다!"
+
+#: src/modules/pomodoro/cog.py:684
+msgctxt "cmd:pomodoro_create|new_channel|error:channel_create_failed|desc"
+msgid ""
+"Failed to create a new pomodoro voice channel due to an unknown Discord "
+"communication error. Please try creating the channel manually and pass it to"
+" the `timer_channel` argument of this command."
+msgstr ""
+"알 수 없는 Discord 통신 오류로 새 포모도로 음성 채널을 만들 수 없습니다. 채널을 수동으로 만들고 `timer_channel` "
+"인수로 전달해 주세요."
+
+#, possible-python-brace-format
+msgctxt "cmd:pomodoro_create|add_timer|error:timer_exists"
+msgid "A timer already exists in {channel}! Reconfigure it with {edit_cmd}."
+msgstr "{channel}에 이미 타이머가 있습니다! {edit_cmd}로 재설정하세요."
+
+#, possible-python-brace-format
+msgctxt "cmd:pomodoro_create|add_timer|error:your_insufficient_perms"
+msgid ""
+"You must have the 'Manage Channel' permission in {channel} in order to add a"
+" timer there!"
+msgstr "타이머를 추가하려면 {channel}에서 'Manage Channel' 권한이 있어야 합니다!"
+
+#: src/modules/pomodoro/cog.py:764
+msgctxt "cmd:pomodoro_create|response:success|content"
+msgid "Timer created successfully! Use the panel below to reconfigure."
+msgstr "타이머가 성공적으로 생성되었습니다! 아래 패널을 사용하여 재설정하세요."
+
+#: src/modules/pomodoro/cog.py:770
+msgctxt "cmd:pomodoro_destroy"
+msgid "destroy"
+msgstr "destroy"
+
+#: src/modules/pomodoro/cog.py:773
+msgctxt "cmd:pomodoro_destroy|desc"
+msgid "Remove a pomodoro timer from a voice channel."
+msgstr "음성 채널에서 포모도로 타이머를 제거합니다."
+
+#: src/modules/pomodoro/cog.py:777
+msgctxt "cmd:pomodoro_destroy|param:channel"
+msgid "timer_channel"
+msgstr "timer_channel"
+
+#: src/modules/pomodoro/cog.py:780
+msgctxt "cmd:pomodoro_destroy|param:channel"
+msgid "Select a timer voice channel to remove the timer from."
+msgstr ""
+
+#: src/modules/pomodoro/cog.py:798
+msgctxt "cmd:pomodoro_destroy|error:no_timer"
+msgid "This channel doesn't have an attached pomodoro timer!"
+msgstr "이 채널에는 연결된 포모도로 타이머가 없습니다!"
+
+#: src/modules/pomodoro/cog.py:811
+msgctxt "cmd:pomodoro_destroy|error:insufficient_perms|owned"
+msgid ""
+"You need to be an administrator or own this channel to remove this timer!"
+msgstr "이 타이머를 제거하려면 관리자이거나 이 채널의 소유자여야 합니다!"
+
+#, possible-python-brace-format
+msgctxt "cmd:pomodoro_destroy|error:insufficient_perms|notowned"
+msgid ""
+"You need to have the `Manage Channels` permission in {channel} to remove "
+"this timer!"
+msgstr "이 타이머를 제거하려면 {channel}에서 `Manage Channels` 권한이 필요합니다!"
+
+#, possible-python-brace-format
+msgctxt "cmd:pomdoro_destroy|response:success|description"
+msgid "Timer successfully removed from {channel}."
+msgstr "{channel}에서 타이머가 성공적으로 제거되었습니다."
+
+#: src/modules/pomodoro/cog.py:837
+msgctxt "cmd:pomodoro_edit"
+msgid "edit"
+msgstr "edit"
+
+#: src/modules/pomodoro/cog.py:840
+msgctxt "cmd:pomodoro_edit|desc"
+msgid "Reconfigure a pomodoro timer."
+msgstr "포모도로 타이머를 재설정합니다."
+
+#: src/modules/pomodoro/cog.py:844
+msgctxt "cmd:pomodoro_edit|param:channel"
+msgid "timer_channel"
+msgstr "timer_channel"
+
+#: src/modules/pomodoro/cog.py:850
+msgctxt "cmd:pomodoro_edit|param:channel|desc"
+msgid "Select a timer voice channel to reconfigure."
+msgstr "재설정할 타이머 음성 채널을 선택하세요."
+
+#: src/modules/pomodoro/cog.py:891
+msgctxt "cmd:pomodoro_edit|error:no_timer"
+msgid "This channel doesn't have an attached pomodoro timer to edit!"
+msgstr "이 채널에는 편집할 포모도로 타이머가 없습니다!"
+
+#: src/modules/pomodoro/cog.py:904
+msgctxt "cmd:pomodoro_edit|error:insufficient_perms|role:other"
+msgid ""
+"Insufficient permissions to modifiy this timer!\n"
+"You need to be a server administrator, own this channel, or have the timer manager role."
+msgstr ""
+"이 타이머를 수정할 권한이 부족합니다!\n"
+"서버 관리자이거나, 이 채널의 소유자이거나, 타이머 관리자 역할이 있어야 합니다."
+
+#: src/modules/pomodoro/cog.py:925
+msgctxt "cmd:pomodoro_edit|error:insufficient_permissions|role_needed:admin"
+msgid "You need to be a guild admin to modify this option!"
+msgstr "이 옵션을 수정하려면 서버 관리자여야 합니다!"
+
+#: src/modules/pomodoro/cog.py:930
+msgctxt "cmd:pomodoro_edit|error:insufficient_permissions|role_needed:owner"
+msgid "You need to be a channel owner or guild admin to modify this option!"
+msgstr "이 옵션을 수정하려면 채널 소유자이거나 서버 관리자여야 합니다!"
+
+#: src/modules/pomodoro/cog.py:935
+msgctxt "cmd:pomodoro_edit|error:insufficient_permissions|role_needed:manager"
+msgid ""
+"You need to be a guild admin or have the manager role to modify this option!"
+msgstr "이 옵션을 수정하려면 서버 관리자이거나 관리자 역할이 있어야 합니다!"
+
+#: src/modules/pomodoro/cog.py:971
+msgctxt "cmd:configure_pomodoro"
+msgid "pomodoro"
+msgstr "pomodoro"
+
+#: src/modules/pomodoro/cog.py:972
+msgctxt "cmd:configure_pomodoro|desc"
+msgid "Configure Pomodoro Timer System"
+msgstr "포모도로 타이머 시스템 설정"
+
+#, possible-python-brace-format
+msgctxt "formatstring:channel_name|key:remaining"
+msgid "{remaining}"
+msgstr "{remaining}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:channel_name|key:stage"
+msgid "{stage}"
+msgstr "{stage}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:channel_name|key:members"
+msgid "{members}"
+msgstr "{members}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:channel_name|key:name"
+msgid "{name}"
+msgstr "{name}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:channel_name|key:pattern"
+msgid "{pattern}"
+msgstr "{pattern}"
+
+#: src/modules/pomodoro/options.py:33
+msgctxt "timerset:voice_channel"
+msgid "channel"
+msgstr "channel"
+
+#: src/modules/pomodoro/options.py:36
+msgctxt "timerset:voice_channel|desc"
+msgid "Channel in which to track timer members and send alerts."
+msgstr "타이머 멤버를 추적하고 알림을 보내는 채널."
+
+#: src/modules/pomodoro/options.py:48
+msgctxt "timerset:notification_channel"
+msgid "notification_channel"
+msgstr "notification_channel"
+
+#: src/modules/pomodoro/options.py:51
+msgctxt "timerset:notification_channel|desc"
+msgid "Channel to which to send timer status cards and notifications."
+msgstr "타이머 상태 카드와 알림을 보내는 채널."
+
+#, possible-python-brace-format
+msgctxt "timerset:notification_channel|format:notset"
+msgid "Not Set (Using {channel})"
+msgstr "설정 안 됨 ({channel} 사용 중)"
+
+#: src/modules/pomodoro/options.py:83
+msgctxt "timerset:inactivity_threshold|inactivity_threshold"
+msgid "inactivity_threshold"
+msgstr "inactivity_threshold"
+
+#: src/modules/pomodoro/options.py:86
+msgctxt "timerset:inactivity_threshold|desc"
+msgid ""
+"Number of inactive focus+break stages before a member is removed from the "
+"timer."
+msgstr "멤버가 제거되기 전 비활성 집중+휴식 단계 수."
+
+#: src/modules/pomodoro/options.py:90
+msgctxt "timerset:inactivity_threshold|desc"
+msgid "How many timer cycles before kicking inactive members."
+msgstr "비활성 멤버를 추방하기 전 타이머 주기 수."
+
+#: src/modules/pomodoro/options.py:112
+msgctxt "timerset:inactivity_length|desc"
+msgid "The inactivity threshold must be a positive whole number!"
+msgstr "비활성 임계값은 양의 정수여야 합니다!"
+
+#: src/modules/pomodoro/options.py:120
+msgctxt "timerset:manager_role"
+msgid "manager_role"
+msgstr "manager_role"
+
+#: src/modules/pomodoro/options.py:123
+msgctxt "timerset:manager_role|desc"
+msgid "Role allowed to start, stop, and edit the focus/break lengths."
+msgstr "집중/휴식 시간을 시작, 중지 및 편집할 수 있는 역할."
+
+#: src/modules/pomodoro/options.py:137
+msgctxt "timerset:manager_role|format:notset"
+msgid "Not Set (Only Admins may start/stop or edit pattern)"
+msgstr "설정 안 됨 (관리자만 시작/중지 또는 패턴 편집 가능)"
+
+#: src/modules/pomodoro/options.py:147
+msgctxt "timerset:voice_alerts"
+msgid "voice_alerts"
+msgstr "voice_alerts"
+
+#: src/modules/pomodoro/options.py:150
+msgctxt "timerset:voice_alerts|desc"
+msgid "Whether to join the voice channel and announce focus and break stages."
+msgstr "음성 채널에 참여하여 집중 및 휴식 단계를 안내할지 여부."
+
+#: src/modules/pomodoro/options.py:162
+msgctxt "timerset:base_name"
+msgid "name"
+msgstr "name"
+
+#: src/modules/pomodoro/options.py:165
+msgctxt "timerset:base_name|desc"
+msgid "Timer name, as shown on the timer card."
+msgstr "타이머 카드에 표시되는 타이머 이름."
+
+#: src/modules/pomodoro/options.py:169
+msgctxt "timerset:base_name|accepts"
+msgid "Any short name, shown on the timer card."
+msgstr "타이머 카드에 표시되는 짧은 이름."
+
+#: src/modules/pomodoro/options.py:184
+msgctxt "timerset:channel_name_format"
+msgid "channel_name"
+msgstr "channel_name"
+
+#, possible-python-brace-format
+msgctxt "timerset:channel_name_format|desc"
+msgid ""
+"Auto-updating voice channel name, accepting {remaining}, {name}, {pattern}, "
+"and {stage} keys."
+msgstr "{remaining}, {name}, {pattern}, {stage} 키를 허용하는 자동 업데이트 음성 채널 이름."
+
+#, possible-python-brace-format
+msgctxt "timerset:channel_name|accepts"
+msgid ""
+"Timer channel name, with keys {remaining}, {name}, {pattern}, and {stage}."
+msgstr "타이머 채널 이름, 키: {remaining}, {name}, {pattern}, {stage}."
+
+#: src/modules/pomodoro/options.py:221
+msgctxt "timerset:channel_name_format|error:too_long"
+msgid ""
+"The provided name is too long! Channel names can be at most `100` "
+"characters."
+msgstr "제공된 이름이 너무 깁니다! 채널 이름은 최대 `100`자입니다."
+
+#: src/modules/pomodoro/options.py:240
+msgctxt "timerset:focus_length"
+msgid "focus_length"
+msgstr "focus_length"
+
+#: src/modules/pomodoro/options.py:243
+msgctxt "timerset:focus_length|desc"
+msgid "Length of the focus stage of the timer in minutes."
+msgstr "집중 단계의 시간(분)."
+
+#: src/modules/pomodoro/options.py:248
+msgctxt "timerset:focus_length|accepts"
+msgid "A positive integer number of minutes."
+msgstr "분 단위의 양의 정수."
+
+#: src/modules/pomodoro/options.py:273
+msgctxt "timerset:focus_length|desc"
+msgid "Please enter a positive number of minutes."
+msgstr "양의 분 수를 입력해 주세요."
+
+#: src/modules/pomodoro/options.py:281
+msgctxt "timerset:break_length"
+msgid "break_length"
+msgstr "break_length"
+
+#: src/modules/pomodoro/options.py:284
+msgctxt "timerset:break_length|desc"
+msgid "Length of the break stage of the timer in minutes."
+msgstr "휴식 단계의 시간(분)."
+
+#: src/modules/pomodoro/options.py:289
+msgctxt "timerset:break_length|accepts"
+msgid "A positive integer number of minutes."
+msgstr "분 단위의 양의 정수."
+
+#: src/modules/pomodoro/options.py:314
+msgctxt "timerset:break_length|desc"
+msgid "Please enter a positive number of minutes."
+msgstr "양의 분 수를 입력해 주세요."
+
+#: src/modules/pomodoro/settings.py:21
+msgctxt "guildset:pomodoro_channel"
+msgid "pomodoro_channel"
+msgstr "pomodoro_channel"
+
+#: src/modules/pomodoro/settings.py:24
+msgctxt "guildset:pomodoro_channel|desc"
+msgid "Default central notification channel for pomodoro timers."
+msgstr "포모도로 타이머의 기본 중앙 알림 채널."
+
+#: src/modules/pomodoro/settings.py:28
+msgctxt "guildset:pomodoro_channel|long_desc"
+msgid ""
+"Pomodoro timers which do not have a custom notification channel set will "
+"send timer notifications in this channel. If this setting is not set, "
+"pomodoro notifications will default to the timer voice channel itself."
+msgstr ""
+"사용자 지정 알림 채널이 설정되지 않은 포모도로 타이머는 이 채널에 알림을 보냅니다. 이 설정이 없으면 타이머 음성 채널이 기본값이 "
+"됩니다."
+
+#: src/modules/pomodoro/settings.py:35
+msgctxt "guildset:pomodoro_channel|formatted|notset"
+msgid "Not Set (Will use timer voice channel.)"
+msgstr "설정 안 됨 (타이머 음성 채널을 사용합니다.)"
+
+#: src/modules/pomodoro/settings.py:39
+msgctxt "guildset:pomodoro_channel|accepts"
+msgid "Timer notification channel name or id."
+msgstr "타이머 알림 채널 이름 또는 ID."
+
+#, possible-python-brace-format
+msgctxt "guildset:pomodoro_channel|set_response|set"
+msgid "Pomodoro timer notifications will now default to {channel}"
+msgstr "포모도로 타이머 알림이 이제 {channel}로 기본 설정됩니다"
+
+#: src/modules/pomodoro/settings.py:58
+msgctxt "guildset:pomodoro_channel|set_response|unset"
+msgid "Pomodoro timer notifications will now default to their voice channel."
+msgstr "포모도로 타이머 알림이 이제 음성 채널로 기본 설정됩니다."
+
+#, possible-python-brace-format
+msgctxt "guildset:pomdoro_channel|set_using"
+msgid "{cmd} or channel selector below."
+msgstr "{cmd} 또는 아래 채널 선택기."
+
+#: src/modules/pomodoro/ui/edit.py:63
+msgctxt "modal:timer_editor|title"
+msgid "Timer Option Editor"
+msgstr "타이머 옵션 편집기"
+
+#: src/modules/pomodoro/ui/status.py:61
+msgctxt "ui:timer_status|button:present|ack"
+msgid ""
+"Thank you for marking your presence.\n"
+"Good luck and stay productive!"
+msgstr ""
+"출석 등록 감사합니다.\n"
+"행운을 빌며, 생산적으로 활동하세요!"
+
+#, possible-python-brace-format
+msgctxt "ui:timer_status|button:present|error:not_in_timer"
+msgid ""
+"You are not in this timer! Join the timer channel by pressing {channel}."
+msgstr "이 타이머에 참여하고 있지 않습니다! {channel}을 눌러 타이머 채널에 참여하세요."
+
+#: src/modules/pomodoro/ui/status.py:82
+msgctxt "ui:timer_status|button:present|label"
+msgid "Present"
+msgstr "출석"
+
+#: src/modules/pomodoro/ui/status.py:106
+msgctxt "ui:timer_status|button:edit|error:no_permissions"
+msgid ""
+"Configuring this timer requires `MANAGE_CHANNEL` permissions on the timer "
+"channel, or the configured manager role!"
+msgstr "이 타이머를 설정하려면 `MANAGE_CHANNEL` 권한 또는 설정된 관리자 역할이 필요합니다!"
+
+#: src/modules/pomodoro/ui/status.py:119
+msgctxt "ui:timer_status|button:edit|label"
+msgid "Options"
+msgstr "옵션"
+
+#: src/modules/pomodoro/ui/status.py:138
+msgctxt "ui:timer_status|button:start|error:already_running"
+msgid "Cannot start a timer that is already running!"
+msgstr "이미 실행 중인 타이머는 시작할 수 없습니다!"
+
+#: src/modules/pomodoro/ui/status.py:154
+msgctxt "ui:timer_status|button:start|error:not_manager|title"
+msgid "Insufficient permissions!"
+msgstr "권한이 부족합니다!"
+
+#: src/modules/pomodoro/ui/status.py:158
+msgctxt "ui:timer_status|button:start|error:not_manager|desc"
+msgid ""
+"Starting this timer requires `MANAGE_CHANNEL` permissions on the timer "
+"channel, or the configured `manager_role`!"
+msgstr "이 타이머를 시작하려면 `MANAGE_CHANNEL` 권한 또는 설정된 `manager_role`이 필요합니다!"
+
+#: src/modules/pomodoro/ui/status.py:168
+msgctxt "ui:timer_status|button:start|label"
+msgid "Start"
+msgstr "Start"
+
+#: src/modules/pomodoro/ui/status.py:190
+msgctxt "ui:timer_status|button:stop|error:not_manager|title"
+msgid "Insufficient permissions!"
+msgstr "권한이 부족합니다!"
+
+#: src/modules/pomodoro/ui/status.py:194
+msgctxt "ui:timer_status|button:stop|error:not_manager|desc"
+msgid ""
+"Stopping this timer requires `MANAGE_CHANNEL` permissions on the timer "
+"channel, or the configured `manager_role`!"
+msgstr "이 타이머를 중지하려면 `MANAGE_CHANNEL` 권한 또는 설정된 `manager_role`이 필요합니다!"
+
+#: src/modules/pomodoro/ui/status.py:204
+msgctxt "ui:timer_status|button:stop|label"
+msgid "Stop"
+msgstr "Stop"
+
+#: src/modules/pomodoro/ui/config.py:45
+msgctxt "ui:timer_options|error:timer_destroyed"
+msgid "This timer no longer exists! Closing option menu."
+msgstr "이 타이머는 더 이상 존재하지 않습니다! 옵션 메뉴를 닫습니다."
+
+#: src/modules/pomodoro/ui/config.py:68
+msgctxt "ui:timer_options|button:edit|label"
+msgid "Edit"
+msgstr "편집"
+
+#: src/modules/pomodoro/ui/config.py:84
+msgctxt "ui:timer_options|button:voice_alerts|label"
+msgid "Voice Alerts"
+msgstr "음성 알림"
+
+#: src/modules/pomodoro/ui/config.py:105
+msgctxt "ui:timer_options|button:delete|success|title"
+msgid "Timer Deleted"
+msgstr "타이머 삭제됨"
+
+#, possible-python-brace-format
+msgctxt "ui:timer_options|button:delete|success|description"
+msgid "The timer in {channel} has been removed."
+msgstr "{channel}의 타이머가 제거되었습니다."
+
+#: src/modules/pomodoro/ui/config.py:117
+msgctxt "ui:timer_options|button:delete|label"
+msgid "Delete"
+msgstr "삭제"
+
+#: src/modules/pomodoro/ui/config.py:136
+msgctxt "ui:timer_options|menu:voice_channel|placeholder"
+msgid "Set Voice Channel"
+msgstr "음성 채널 설정"
+
+#: src/modules/pomodoro/ui/config.py:157
+msgctxt "ui:timer_options|menu:notification_channel|placeholder"
+msgid "Set Notification Channel"
+msgstr "알림 채널 설정"
+
+#: src/modules/pomodoro/ui/config.py:172
+msgctxt "ui:timer_options|menu:manager_role|placeholder"
+msgid "Set Manager Role"
+msgstr "관리자 역할 설정"
+
+#, possible-python-brace-format
+msgctxt "ui:timer_options|embed|title"
+msgid "Timer Control Panel for {channel}"
+msgstr "{channel}의 타이머 제어 패널"
+
+#: src/modules/pomodoro/ui/config.py:188
+msgctxt "ui:timer_options|embed|footer"
+msgid "Hover over the option names to view descriptions."
+msgstr "옵션 이름 위에 마우스를 올리면 설명을 볼 수 있습니다."
+
+#: src/modules/pomodoro/ui/config.py:200
+msgctxt "ui:timer_options|embed|field:pattern|name"
+msgid "Pattern"
+msgstr "패턴"
+
+#, possible-python-brace-format
+msgctxt "ui:timer_options|embed|field:pattern|value"
+msgid ""
+"**`{focus_len} minutes`** focus\n"
+"**`{break_len} minutes`** break"
+msgstr ""
+"**`{focus_len}분`** 집중\n"
+"**`{break_len}분`** 휴식"
+
+#: src/modules/pomodoro/ui/config.py:214
+msgctxt "ui:timer_options|embed|field:channel_name|name"
+msgid "Channel Name Preview"
+msgstr "채널 이름 미리보기"
+
+#, possible-python-brace-format
+msgctxt "ui:timer_options|embed|field:channel_name|value"
+msgid ""
+"**`{name}`**\n"
+"(The actual channel name may not match due to ratelimits.)"
+msgstr ""
+"**`{name}`**\n"
+"(속도 제한으로 인해 실제 채널 이름이 일치하지 않을 수 있습니다.)"
+
+#: src/modules/pomodoro/ui/config.py:228
+msgctxt "ui:timer_options|embed|field:issues|name"
+msgid "Issues"
+msgstr "문제"
+
+#: src/modules/pomodoro/ui/config.py:246
+msgctxt "ui:timer_options|issue:no_voice_channel"
+msgid "The configured voice channel does not exist! Please update it below."
+msgstr "설정된 음성 채널이 존재하지 않습니다! 아래에서 업데이트하세요."
+
+#, possible-python-brace-format
+msgctxt "ui:timer_options|issue:cannot_speak"
+msgid ""
+"Voice alerts are on, but I don't have speaking permissions in {channel}"
+msgstr "음성 알림이 켜져 있지만 {channel}에서 말하기 권한이 없습니다"
+
+#, possible-python-brace-format
+msgctxt "ui:timer_options|issue:cannot_change_name"
+msgid ""
+"I cannot update the name of {channel}! (Needs `MANAGE_CHANNELS` permission)"
+msgstr "{channel}의 이름을 업데이트할 수 없습니다! (`MANAGE_CHANNELS` 권한 필요)"
+
+#: src/modules/pomodoro/ui/config.py:275
+msgctxt "ui:timer_options|issue:notif_channel_dne"
+msgid "Configured notification channel does not exist!"
+msgstr "설정된 알림 채널이 존재하지 않습니다!"
+
+#, possible-python-brace-format
+msgctxt "ui:timer_options|issue:notif_channel_write"
+msgid ""
+"I cannot attach files (`ATTACH_FILES`) or send embeds (`EMBED_LINKS`) in "
+"{channel}"
+msgstr "{channel}에서 파일 첨부(`ATTACH_FILES`) 또는 임베드 전송(`EMBED_LINKS`)을 할 수 없습니다"
+
+#, possible-python-brace-format
+msgctxt "ui:timer_options|issues:cannot_make_webhooks"
+msgid ""
+"I cannot create the notification webhook (`MANAGE_WEBHOOKS`) in {channel}"
+msgstr "{channel}에서 알림 웹훅(`MANAGE_WEBHOOKS`)을 생성할 수 없습니다"

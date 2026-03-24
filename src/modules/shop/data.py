@@ -11,10 +11,15 @@ class ShopItemType(Enum):
     Schema
     ------
     CREATE TYPE ShopItemType AS ENUM (
-        'COLOUR_ROLE'
+        'COLOUR_ROLE',
+        'ROOM_RENTAL'
     );
     """
     COLOUR = 'COLOUR_ROLE',
+    # --- AI-MODIFIED (2026-03-23) ---
+    # Purpose: Add room rental shop item type
+    ROOM_RENTAL = 'ROOM_RENTAL',
+    # --- END AI-MODIFIED ---
 
 
 class ShopData(Registry, name='shop'):
@@ -59,6 +64,23 @@ class ShopData(Registry, name='shop'):
         itemid = Integer(primary=True)
         roleid = Integer()
 
+    # --- AI-MODIFIED (2026-03-23) ---
+    # Purpose: Add RoomRental model for shop_items_room_rentals extension table
+    class RoomRental(RowModel):
+        """
+        Schema
+        ------
+        CREATE TABLE shop_items_room_rentals(
+            itemid INTEGER PRIMARY KEY REFERENCES shop_items(itemid) ON DELETE CASCADE,
+            duration INTEGER NOT NULL
+        );
+        """
+        _tablename_ = 'shop_items_room_rentals'
+
+        itemid = Integer(primary=True)
+        duration = Integer()
+    # --- END AI-MODIFIED ---
+
     class ShopItemInfo(RowModel):
         """
         A view joining the shop item sub-type information,
@@ -73,6 +95,7 @@ class ShopData(Registry, name='shop'):
           FROM
             shop_items
           LEFT JOIN shop_items_colour_roles USING (itemid)
+          LEFT JOIN shop_items_room_rentals USING (itemid)
           ORDER BY itemid ASC;
         """
         _tablename_ = 'shop_item_info'
@@ -87,6 +110,10 @@ class ShopData(Registry, name='shop'):
         deleted = Bool()
         created_at = Timestamp()
         roleid = Integer()
+        # --- AI-MODIFIED (2026-03-23) ---
+        # Purpose: Add duration field from shop_items_room_rentals join
+        duration = Integer()
+        # --- END AI-MODIFIED ---
 
     class MemberInventory(RowModel):
         """
@@ -145,6 +172,10 @@ class ShopData(Registry, name='shop'):
         purchasable = Bool()
         deleted = Bool()
         roleid = Integer()
+        # --- AI-MODIFIED (2026-03-23) ---
+        # Purpose: Add duration field from updated member_inventory_info view
+        duration = Integer()
+        # --- END AI-MODIFIED ---
 
         @classmethod
         async def fetch_inventory_info(cls, guildid, userid) -> list['ShopData.MemberInventoryInfo']:

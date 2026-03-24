@@ -1,0 +1,850 @@
+# Chinese (Traditional) translation for LionBot - Pomodoro
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 22:22+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Chinese (Traditional)\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/modules/pomodoro/timer.py:52
+msgctxt "timer|stage:break|name"
+msgid "BREAK"
+msgstr "休息"
+
+#: src/modules/pomodoro/timer.py:53
+msgctxt "timer|stage:focus|name"
+msgid "FOCUS"
+msgstr "專注"
+
+#, possible-python-brace-format
+msgctxt "timer|webhook|name"
+msgid "{bot_name} Pomodoro"
+msgstr "{bot_name} 番茄鐘"
+
+#: src/modules/pomodoro/timer.py:168
+msgctxt "timer|webhook|audit_reason"
+msgid "Pomodoro Notifications"
+msgstr "番茄鐘通知"
+
+#: src/modules/pomodoro/timer.py:179
+msgctxt "timer|webhook|error:insufficient_permissions"
+msgid ""
+"I require the `MANAGE_WEBHOOKS` permission to send pomodoro notifications "
+"here!"
+msgstr "我需要`MANAGE_WEBHOOKS`權限才能在此發送番茄鐘通知！"
+
+#, possible-python-brace-format
+msgctxt "timer|default_base_name"
+msgid "Timer {pattern}"
+msgstr "計時器{pattern}"
+
+#: src/modules/pomodoro/timer.py:413
+msgctxt "timer|disconnect|audit_reason"
+msgid "Disconnecting inactive member from timer."
+msgstr "正在中斷不活躍成員與計時器的連線。"
+
+#, possible-python-brace-format
+msgctxt "timer|kicked_message"
+msgid ""
+"{mentions} was removed from {channel} because they were inactive! Remember "
+"to press {tick} to register your presence every stage."
+msgid_plural ""
+"{mentions} were removed from {channel} because they were inactive! Remember "
+"to press {tick} to register your presence every stage."
+msgstr[0] "{mentions}因不活躍被從{channel}中移除！請記得每個階段按{tick}來登記你的出席。"
+
+#, possible-python-brace-format
+msgctxt "timer|kick_failed"
+msgid ""
+"**Warning!** Timer {channel} is configured to disconnect on inactivity, but "
+"I lack the 'Move Members' permission to do this!"
+msgstr "**警告！** 計時器{channel}已設定為在不活躍時中斷連線，但我沒有'Move Members'權限！"
+
+#, possible-python-brace-format
+msgctxt "timer|status|stage:focus|statusline"
+msgid "{channel} is now in **FOCUS**! Good luck, **BREAK** starts {timestamp}"
+msgstr "{channel}現在處於**專注**模式！加油，**休息**將在{timestamp}開始"
+
+#, possible-python-brace-format
+msgctxt "timer|status|stage:break|statusline"
+msgid ""
+"{channel} is now on **BREAK**! Take a rest, **FOCUS** starts {timestamp}"
+msgstr "{channel}現在處於**休息**模式！休息一下，**專注**將在{timestamp}開始"
+
+#, possible-python-brace-format
+msgctxt "timer|status|warningline"
+msgid ""
+"**Warning:** {mentions}, please press {tick} to avoid being removed on the "
+"next stage."
+msgstr "**警告：** {mentions}，請按{tick}以避免在下一階段被移除。"
+
+#, possible-python-brace-format
+msgctxt "timer|status|stopped:auto"
+msgid "Timer stopped! Join {channel} to start the timer."
+msgstr "計時器已停止！加入{channel}來啟動計時器。"
+
+#: src/modules/pomodoro/timer.py:598
+msgctxt "timer|status|stopped:manual"
+msgid "Timer stopped! Press `Start` to restart the timer."
+msgstr "計時器已停止！按`Start`重新啟動計時器。"
+
+#: src/modules/pomodoro/settingui.py:40
+msgctxt "ui:timer_config|menu:channels|placeholder"
+msgid "Select Pomodoro Notification Channel"
+msgstr "選擇番茄鐘通知頻道"
+
+#: src/modules/pomodoro/settingui.py:48
+msgctxt "ui:timer_config|embed|title"
+msgid "Timer Configuration Panel"
+msgstr "計時器設定面板"
+
+#: src/modules/pomodoro/settingui.py:82
+msgctxt "dash:pomodoro|title"
+msgid "Pomodoro Configuration ({commands[config pomodoro]})"
+msgstr "番茄鐘設定（{commands[config pomodoro]}）"
+
+#: src/modules/pomodoro/settingui.py:86
+msgctxt "dash:stats|dropdown|placeholder"
+msgid "Pomodoro Timer Panel"
+msgstr "番茄鐘計時器面板"
+
+#: src/modules/pomodoro/cog.py:116
+msgctxt "cmd_check:ready|failed"
+msgid ""
+"I am currently restarting! The Pomodoro timers will be unavailable until I "
+"have restarted. Thank you for your patience!"
+msgstr "正在重新啟動中！番茄鐘計時器在重新啟動完成前將不可用。感謝您的耐心等待！"
+
+#: src/modules/pomodoro/cog.py:401
+msgctxt "cmd:timer"
+msgid "timer"
+msgstr "timer"
+
+#: src/modules/pomodoro/cog.py:402
+msgctxt "cmd:timer|desc"
+msgid "Show your current (or selected) pomodoro timer."
+msgstr "顯示你目前（或選定的）番茄鐘計時器。"
+
+#: src/modules/pomodoro/cog.py:405
+msgctxt "cmd:timer|param:channel"
+msgid "timer_channel"
+msgstr "timer_channel"
+
+#: src/modules/pomodoro/cog.py:410
+msgctxt "cmd:timer|param:channel|desc"
+msgid "Select a timer to display (by selecting the timer voice channel)"
+msgstr "選擇要顯示的計時器（透過選擇計時器語音頻道）"
+
+#, possible-python-brace-format
+msgctxt "cmd:timer|error:no_timers|desc"
+msgid ""
+"**This server has no timers set up!**\n"
+"Ask an admin to set up and configure a timer with {create_cmd} first, or rent a private room with {room_cmd} and create one yourself!"
+msgstr ""
+"**此伺服器沒有設定任何計時器！**\n"
+"請管理員先用{create_cmd}設定計時器，或用{room_cmd}租用私人房間自己建立一個！"
+
+#, possible-python-brace-format
+msgctxt "cmd:timer|error:no_channel|desc"
+msgid ""
+"**I don't know what timer to show you.**\n"
+"No channel selected and you are not in a voice channel! Use {timers_cmd} to list the available timers in this server."
+msgstr ""
+"**我不知道該顯示哪個計時器。**\n"
+"沒有選擇頻道且你不在語音頻道中！使用{timers_cmd}查看此伺服器的可用計時器。"
+
+#, possible-python-brace-format
+msgctxt "cmd:timer|error:no_timer_in_channel"
+msgid ""
+"The channel {channel} is not a pomodoro timer room!\n"
+"Use {timers_cmd} to list the available timers in this server."
+msgstr ""
+"頻道{channel}不是番茄鐘計時器房間！\n"
+"使用{timers_cmd}查看此伺服器的可用計時器。"
+
+#: src/modules/pomodoro/cog.py:476
+msgctxt "cmd:timers"
+msgid "timers"
+msgstr "timers"
+
+#: src/modules/pomodoro/cog.py:477
+msgctxt "cmd:timers|desc"
+msgid "List the available pomodoro timer rooms."
+msgstr "列出可用的番茄鐘計時器房間。"
+
+#, possible-python-brace-format
+msgctxt "cmd:timer|error:no_visible_timers|desc"
+msgid ""
+"**There are no available pomodoro timers!**\n"
+"Ask an admin to set up a new timer with {create_cmd}, or rent a private room with {room_cmd} and create one yourself!"
+msgstr ""
+"**沒有可用的番茄鐘計時器！**\n"
+"請管理員用{create_cmd}設定新計時器，或用{room_cmd}租用私人房間自己建立一個！"
+
+#, possible-python-brace-format
+msgctxt "cmd:timers|embed:timer_list|title"
+msgid "Pomodoro Timer Rooms in **{guild}**"
+msgstr "**{guild}**的番茄鐘計時器房間"
+
+#, possible-python-brace-format
+msgctxt "cmd:timers|status:stopped_auto"
+msgid ""
+"`{pattern}` timer is stopped with no members!\n"
+"Join {channel} to restart it."
+msgstr ""
+"`{pattern}`計時器已停止且沒有成員！\n"
+"加入{channel}來重新啟動。"
+
+#, possible-python-brace-format
+msgctxt "cmd:timers|status:stopped_manual"
+msgid ""
+"`{pattern}` timer is stopped with `{members}` members!\n"
+"Join {channel} and press `Start` to start it!"
+msgstr ""
+"`{pattern}`計時器已停止，有`{members}`名成員！\n"
+"加入{channel}並按`Start`來啟動！"
+
+#, possible-python-brace-format
+msgctxt "cmd:timers|status:running_focus"
+msgid ""
+"`{pattern}` timer is running with `{members}` members!\n"
+"Currently **focusing**, with break starting {timestamp}"
+msgstr ""
+"`{pattern}`計時器正在運行，有`{members}`名成員！\n"
+"目前**專注**中，休息將在{timestamp}開始"
+
+#, possible-python-brace-format
+msgctxt "cmd:timers|status:running_break"
+msgid ""
+"`{pattern}` timer is running with `{members}` members!\n"
+"Currently **resting**, with focus starting {timestamp}"
+msgstr ""
+"`{pattern}`計時器正在運行，有`{members}`名成員！\n"
+"目前**休息**中，專注將在{timestamp}開始"
+
+#: src/modules/pomodoro/cog.py:571
+msgctxt "cmd:pomodoro"
+msgid "pomodoro"
+msgstr "pomodoro"
+
+#: src/modules/pomodoro/cog.py:572
+msgctxt "cmd:pomodoro|desc"
+msgid "Create and configure pomodoro timer rooms."
+msgstr "建立和設定番茄鐘計時器房間。"
+
+#: src/modules/pomodoro/cog.py:579
+msgctxt "cmd:pomodoro_create"
+msgid "create"
+msgstr "create"
+
+#: src/modules/pomodoro/cog.py:582
+msgctxt "cmd:pomodoro_create|desc"
+msgid "Create a new Pomodoro timer. Requires manage channel permissions."
+msgstr "建立新的番茄鐘計時器。需要管理頻道權限。"
+
+#: src/modules/pomodoro/cog.py:586
+msgctxt "cmd:pomodoro_create|param:channel"
+msgid "timer_channel"
+msgstr "timer_channel"
+
+#: src/modules/pomodoro/cog.py:592
+msgctxt "cmd:pomodoro_create|param:channel|desc"
+msgid ""
+"Voice channel to create the timer in. (Defaults to your current channel, or "
+"makes a new one.)"
+msgstr "建立計時器的語音頻道。（預設為目前頻道，或建立新頻道。）"
+
+#: src/modules/pomodoro/cog.py:637
+msgctxt "cmd:pomodoro_create|new_channel|error:your_insufficient_perms|title"
+msgid "Could not create pomodoro voice channel!"
+msgstr "無法建立番茄鐘語音頻道！"
+
+#: src/modules/pomodoro/cog.py:641
+msgctxt "cmd:pomodoro_create|new_channel|error:your_insufficient_perms"
+msgid ""
+"No `timer_channel` was provided, and you lack the 'Manage Channels` "
+"permission required to create a new timer room!"
+msgstr "未提供`timer_channel`，且你沒有'Manage Channels'權限來建立新計時器房間！"
+
+#: src/modules/pomodoro/cog.py:652
+msgctxt "cmd:pomodoro_create|new_channel|error:my_insufficient_perms|title"
+msgid "Could not create pomodoro voice channel!"
+msgstr "無法建立番茄鐘語音頻道！"
+
+#: src/modules/pomodoro/cog.py:656
+msgctxt "cmd:pomodoro_create|new_channel|error:my_insufficient_perms|desc"
+msgid ""
+"No `timer_channel` was provided, and I lack the 'Manage Channels' permission"
+" required to create a new voice channel."
+msgstr "未提供`timer_channel`，且我沒有'Manage Channels'權限來建立新語音頻道。"
+
+#: src/modules/pomodoro/cog.py:667
+msgctxt "cmd:pomodoro_create|new_channel|default_name"
+msgid "Timer"
+msgstr "計時器"
+
+#: src/modules/pomodoro/cog.py:671
+msgctxt "cmd:pomodoro_create|new_channel|audit_reason"
+msgid "Creating Pomodoro Voice Channel"
+msgstr "正在建立番茄鐘語音頻道"
+
+#: src/modules/pomodoro/cog.py:680
+msgctxt "cmd:pomodoro_create|new_channel|error:channel_create_failed|title"
+msgid "Could not create pomodoro voice channel!"
+msgstr "無法建立番茄鐘語音頻道！"
+
+#: src/modules/pomodoro/cog.py:684
+msgctxt "cmd:pomodoro_create|new_channel|error:channel_create_failed|desc"
+msgid ""
+"Failed to create a new pomodoro voice channel due to an unknown Discord "
+"communication error. Please try creating the channel manually and pass it to"
+" the `timer_channel` argument of this command."
+msgstr "由於未知的Discord通訊錯誤，無法建立新的番茄鐘語音頻道。請嘗試手動建立頻道並將其作為`timer_channel`參數傳遞。"
+
+#, possible-python-brace-format
+msgctxt "cmd:pomodoro_create|add_timer|error:timer_exists"
+msgid "A timer already exists in {channel}! Reconfigure it with {edit_cmd}."
+msgstr "{channel}中已存在計時器！使用{edit_cmd}重新設定。"
+
+#, possible-python-brace-format
+msgctxt "cmd:pomodoro_create|add_timer|error:your_insufficient_perms"
+msgid ""
+"You must have the 'Manage Channel' permission in {channel} in order to add a"
+" timer there!"
+msgstr "你需要在{channel}中擁有'Manage Channel'權限才能在那裡添加計時器！"
+
+#: src/modules/pomodoro/cog.py:764
+msgctxt "cmd:pomodoro_create|response:success|content"
+msgid "Timer created successfully! Use the panel below to reconfigure."
+msgstr "計時器建立成功！使用下方面板重新設定。"
+
+#: src/modules/pomodoro/cog.py:770
+msgctxt "cmd:pomodoro_destroy"
+msgid "destroy"
+msgstr "destroy"
+
+#: src/modules/pomodoro/cog.py:773
+msgctxt "cmd:pomodoro_destroy|desc"
+msgid "Remove a pomodoro timer from a voice channel."
+msgstr "從語音頻道中移除番茄鐘計時器。"
+
+#: src/modules/pomodoro/cog.py:777
+msgctxt "cmd:pomodoro_destroy|param:channel"
+msgid "timer_channel"
+msgstr "timer_channel"
+
+#: src/modules/pomodoro/cog.py:780
+msgctxt "cmd:pomodoro_destroy|param:channel"
+msgid "Select a timer voice channel to remove the timer from."
+msgstr ""
+
+#: src/modules/pomodoro/cog.py:798
+msgctxt "cmd:pomodoro_destroy|error:no_timer"
+msgid "This channel doesn't have an attached pomodoro timer!"
+msgstr "此頻道沒有關聯的番茄鐘計時器！"
+
+#: src/modules/pomodoro/cog.py:811
+msgctxt "cmd:pomodoro_destroy|error:insufficient_perms|owned"
+msgid ""
+"You need to be an administrator or own this channel to remove this timer!"
+msgstr "你需要是管理員或擁有此頻道才能移除此計時器！"
+
+#, possible-python-brace-format
+msgctxt "cmd:pomodoro_destroy|error:insufficient_perms|notowned"
+msgid ""
+"You need to have the `Manage Channels` permission in {channel} to remove "
+"this timer!"
+msgstr "你需要在{channel}中擁有`Manage Channels`權限才能移除此計時器！"
+
+#, possible-python-brace-format
+msgctxt "cmd:pomdoro_destroy|response:success|description"
+msgid "Timer successfully removed from {channel}."
+msgstr "計時器已從{channel}成功移除。"
+
+#: src/modules/pomodoro/cog.py:837
+msgctxt "cmd:pomodoro_edit"
+msgid "edit"
+msgstr "edit"
+
+#: src/modules/pomodoro/cog.py:840
+msgctxt "cmd:pomodoro_edit|desc"
+msgid "Reconfigure a pomodoro timer."
+msgstr "重新設定番茄鐘計時器。"
+
+#: src/modules/pomodoro/cog.py:844
+msgctxt "cmd:pomodoro_edit|param:channel"
+msgid "timer_channel"
+msgstr "timer_channel"
+
+#: src/modules/pomodoro/cog.py:850
+msgctxt "cmd:pomodoro_edit|param:channel|desc"
+msgid "Select a timer voice channel to reconfigure."
+msgstr "選擇要重新設定的計時器語音頻道。"
+
+#: src/modules/pomodoro/cog.py:891
+msgctxt "cmd:pomodoro_edit|error:no_timer"
+msgid "This channel doesn't have an attached pomodoro timer to edit!"
+msgstr "此頻道沒有可編輯的番茄鐘計時器！"
+
+#: src/modules/pomodoro/cog.py:904
+msgctxt "cmd:pomodoro_edit|error:insufficient_perms|role:other"
+msgid ""
+"Insufficient permissions to modifiy this timer!\n"
+"You need to be a server administrator, own this channel, or have the timer manager role."
+msgstr ""
+"權限不足，無法修改此計時器！\n"
+"你需要是伺服器管理員、頻道擁有者或擁有計時器管理員角色。"
+
+#: src/modules/pomodoro/cog.py:925
+msgctxt "cmd:pomodoro_edit|error:insufficient_permissions|role_needed:admin"
+msgid "You need to be a guild admin to modify this option!"
+msgstr "你需要是伺服器管理員才能修改此選項！"
+
+#: src/modules/pomodoro/cog.py:930
+msgctxt "cmd:pomodoro_edit|error:insufficient_permissions|role_needed:owner"
+msgid "You need to be a channel owner or guild admin to modify this option!"
+msgstr "你需要是頻道擁有者或伺服器管理員才能修改此選項！"
+
+#: src/modules/pomodoro/cog.py:935
+msgctxt "cmd:pomodoro_edit|error:insufficient_permissions|role_needed:manager"
+msgid ""
+"You need to be a guild admin or have the manager role to modify this option!"
+msgstr "你需要是伺服器管理員或擁有管理員角色才能修改此選項！"
+
+#: src/modules/pomodoro/cog.py:971
+msgctxt "cmd:configure_pomodoro"
+msgid "pomodoro"
+msgstr "pomodoro"
+
+#: src/modules/pomodoro/cog.py:972
+msgctxt "cmd:configure_pomodoro|desc"
+msgid "Configure Pomodoro Timer System"
+msgstr "設定番茄鐘計時器系統"
+
+#, possible-python-brace-format
+msgctxt "formatstring:channel_name|key:remaining"
+msgid "{remaining}"
+msgstr "{remaining}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:channel_name|key:stage"
+msgid "{stage}"
+msgstr "{stage}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:channel_name|key:members"
+msgid "{members}"
+msgstr "{members}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:channel_name|key:name"
+msgid "{name}"
+msgstr "{name}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:channel_name|key:pattern"
+msgid "{pattern}"
+msgstr "{pattern}"
+
+#: src/modules/pomodoro/options.py:33
+msgctxt "timerset:voice_channel"
+msgid "channel"
+msgstr "channel"
+
+#: src/modules/pomodoro/options.py:36
+msgctxt "timerset:voice_channel|desc"
+msgid "Channel in which to track timer members and send alerts."
+msgstr "用於追蹤計時器成員和發送提醒的頻道。"
+
+#: src/modules/pomodoro/options.py:48
+msgctxt "timerset:notification_channel"
+msgid "notification_channel"
+msgstr "notification_channel"
+
+#: src/modules/pomodoro/options.py:51
+msgctxt "timerset:notification_channel|desc"
+msgid "Channel to which to send timer status cards and notifications."
+msgstr "用於發送計時器狀態卡和通知的頻道。"
+
+#, possible-python-brace-format
+msgctxt "timerset:notification_channel|format:notset"
+msgid "Not Set (Using {channel})"
+msgstr "未設定（使用{channel}）"
+
+#: src/modules/pomodoro/options.py:83
+msgctxt "timerset:inactivity_threshold|inactivity_threshold"
+msgid "inactivity_threshold"
+msgstr "inactivity_threshold"
+
+#: src/modules/pomodoro/options.py:86
+msgctxt "timerset:inactivity_threshold|desc"
+msgid ""
+"Number of inactive focus+break stages before a member is removed from the "
+"timer."
+msgstr "成員被移除前的非活躍專注+休息階段數。"
+
+#: src/modules/pomodoro/options.py:90
+msgctxt "timerset:inactivity_threshold|desc"
+msgid "How many timer cycles before kicking inactive members."
+msgstr "踢出不活躍成員前的計時器週期數。"
+
+#: src/modules/pomodoro/options.py:112
+msgctxt "timerset:inactivity_length|desc"
+msgid "The inactivity threshold must be a positive whole number!"
+msgstr "不活躍閾值必須是正整數！"
+
+#: src/modules/pomodoro/options.py:120
+msgctxt "timerset:manager_role"
+msgid "manager_role"
+msgstr "manager_role"
+
+#: src/modules/pomodoro/options.py:123
+msgctxt "timerset:manager_role|desc"
+msgid "Role allowed to start, stop, and edit the focus/break lengths."
+msgstr "允許啟動、停止和編輯專注/休息時長的角色。"
+
+#: src/modules/pomodoro/options.py:137
+msgctxt "timerset:manager_role|format:notset"
+msgid "Not Set (Only Admins may start/stop or edit pattern)"
+msgstr "未設定（僅管理員可以啟動/停止或編輯模式）"
+
+#: src/modules/pomodoro/options.py:147
+msgctxt "timerset:voice_alerts"
+msgid "voice_alerts"
+msgstr "voice_alerts"
+
+#: src/modules/pomodoro/options.py:150
+msgctxt "timerset:voice_alerts|desc"
+msgid "Whether to join the voice channel and announce focus and break stages."
+msgstr "是否加入語音頻道並宣布專注和休息階段。"
+
+#: src/modules/pomodoro/options.py:162
+msgctxt "timerset:base_name"
+msgid "name"
+msgstr "name"
+
+#: src/modules/pomodoro/options.py:165
+msgctxt "timerset:base_name|desc"
+msgid "Timer name, as shown on the timer card."
+msgstr "計時器名稱，顯示在計時器卡片上。"
+
+#: src/modules/pomodoro/options.py:169
+msgctxt "timerset:base_name|accepts"
+msgid "Any short name, shown on the timer card."
+msgstr "任意短名稱，顯示在計時器卡片上。"
+
+#: src/modules/pomodoro/options.py:184
+msgctxt "timerset:channel_name_format"
+msgid "channel_name"
+msgstr "channel_name"
+
+#, possible-python-brace-format
+msgctxt "timerset:channel_name_format|desc"
+msgid ""
+"Auto-updating voice channel name, accepting {remaining}, {name}, {pattern}, "
+"and {stage} keys."
+msgstr "自動更新的語音頻道名稱，接受{remaining}、{name}、{pattern}和{stage}鍵。"
+
+#, possible-python-brace-format
+msgctxt "timerset:channel_name|accepts"
+msgid ""
+"Timer channel name, with keys {remaining}, {name}, {pattern}, and {stage}."
+msgstr "計時器頻道名稱，使用鍵{remaining}、{name}、{pattern}和{stage}。"
+
+#: src/modules/pomodoro/options.py:221
+msgctxt "timerset:channel_name_format|error:too_long"
+msgid ""
+"The provided name is too long! Channel names can be at most `100` "
+"characters."
+msgstr "提供的名稱太長！頻道名稱最多`100`個字元。"
+
+#: src/modules/pomodoro/options.py:240
+msgctxt "timerset:focus_length"
+msgid "focus_length"
+msgstr "focus_length"
+
+#: src/modules/pomodoro/options.py:243
+msgctxt "timerset:focus_length|desc"
+msgid "Length of the focus stage of the timer in minutes."
+msgstr "專注階段的時長（分鐘）。"
+
+#: src/modules/pomodoro/options.py:248
+msgctxt "timerset:focus_length|accepts"
+msgid "A positive integer number of minutes."
+msgstr "正整數分鐘數。"
+
+#: src/modules/pomodoro/options.py:273
+msgctxt "timerset:focus_length|desc"
+msgid "Please enter a positive number of minutes."
+msgstr "請輸入正的分鐘數。"
+
+#: src/modules/pomodoro/options.py:281
+msgctxt "timerset:break_length"
+msgid "break_length"
+msgstr "break_length"
+
+#: src/modules/pomodoro/options.py:284
+msgctxt "timerset:break_length|desc"
+msgid "Length of the break stage of the timer in minutes."
+msgstr "休息階段的時長（分鐘）。"
+
+#: src/modules/pomodoro/options.py:289
+msgctxt "timerset:break_length|accepts"
+msgid "A positive integer number of minutes."
+msgstr "正整數分鐘數。"
+
+#: src/modules/pomodoro/options.py:314
+msgctxt "timerset:break_length|desc"
+msgid "Please enter a positive number of minutes."
+msgstr "請輸入正的分鐘數。"
+
+#: src/modules/pomodoro/settings.py:21
+msgctxt "guildset:pomodoro_channel"
+msgid "pomodoro_channel"
+msgstr "pomodoro_channel"
+
+#: src/modules/pomodoro/settings.py:24
+msgctxt "guildset:pomodoro_channel|desc"
+msgid "Default central notification channel for pomodoro timers."
+msgstr "番茄鐘計時器的預設中央通知頻道。"
+
+#: src/modules/pomodoro/settings.py:28
+msgctxt "guildset:pomodoro_channel|long_desc"
+msgid ""
+"Pomodoro timers which do not have a custom notification channel set will "
+"send timer notifications in this channel. If this setting is not set, "
+"pomodoro notifications will default to the timer voice channel itself."
+msgstr "沒有設定自訂通知頻道的番茄鐘計時器將在此頻道發送通知。如果未設定，將預設使用計時器語音頻道。"
+
+#: src/modules/pomodoro/settings.py:35
+msgctxt "guildset:pomodoro_channel|formatted|notset"
+msgid "Not Set (Will use timer voice channel.)"
+msgstr "未設定（將使用計時器語音頻道。）"
+
+#: src/modules/pomodoro/settings.py:39
+msgctxt "guildset:pomodoro_channel|accepts"
+msgid "Timer notification channel name or id."
+msgstr "計時器通知頻道名稱或ID。"
+
+#, possible-python-brace-format
+msgctxt "guildset:pomodoro_channel|set_response|set"
+msgid "Pomodoro timer notifications will now default to {channel}"
+msgstr "番茄鐘計時器通知現在將預設發送到{channel}"
+
+#: src/modules/pomodoro/settings.py:58
+msgctxt "guildset:pomodoro_channel|set_response|unset"
+msgid "Pomodoro timer notifications will now default to their voice channel."
+msgstr "番茄鐘計時器通知現在將預設發送到語音頻道。"
+
+#, possible-python-brace-format
+msgctxt "guildset:pomdoro_channel|set_using"
+msgid "{cmd} or channel selector below."
+msgstr "{cmd}或下方頻道選擇器。"
+
+#: src/modules/pomodoro/ui/edit.py:63
+msgctxt "modal:timer_editor|title"
+msgid "Timer Option Editor"
+msgstr "計時器選項編輯器"
+
+#: src/modules/pomodoro/ui/status.py:61
+msgctxt "ui:timer_status|button:present|ack"
+msgid ""
+"Thank you for marking your presence.\n"
+"Good luck and stay productive!"
+msgstr ""
+"感謝標記你的出席。\n"
+"祝你好運，保持高效！"
+
+#, possible-python-brace-format
+msgctxt "ui:timer_status|button:present|error:not_in_timer"
+msgid ""
+"You are not in this timer! Join the timer channel by pressing {channel}."
+msgstr "你不在此計時器中！按{channel}加入計時器頻道。"
+
+#: src/modules/pomodoro/ui/status.py:82
+msgctxt "ui:timer_status|button:present|label"
+msgid "Present"
+msgstr "在場"
+
+#: src/modules/pomodoro/ui/status.py:106
+msgctxt "ui:timer_status|button:edit|error:no_permissions"
+msgid ""
+"Configuring this timer requires `MANAGE_CHANNEL` permissions on the timer "
+"channel, or the configured manager role!"
+msgstr "設定此計時器需要`MANAGE_CHANNEL`權限或已設定的管理員角色！"
+
+#: src/modules/pomodoro/ui/status.py:119
+msgctxt "ui:timer_status|button:edit|label"
+msgid "Options"
+msgstr "選項"
+
+#: src/modules/pomodoro/ui/status.py:138
+msgctxt "ui:timer_status|button:start|error:already_running"
+msgid "Cannot start a timer that is already running!"
+msgstr "無法啟動已在運行的計時器！"
+
+#: src/modules/pomodoro/ui/status.py:154
+msgctxt "ui:timer_status|button:start|error:not_manager|title"
+msgid "Insufficient permissions!"
+msgstr "權限不足！"
+
+#: src/modules/pomodoro/ui/status.py:158
+msgctxt "ui:timer_status|button:start|error:not_manager|desc"
+msgid ""
+"Starting this timer requires `MANAGE_CHANNEL` permissions on the timer "
+"channel, or the configured `manager_role`!"
+msgstr "啟動此計時器需要`MANAGE_CHANNEL`權限或已設定的`manager_role`！"
+
+#: src/modules/pomodoro/ui/status.py:168
+msgctxt "ui:timer_status|button:start|label"
+msgid "Start"
+msgstr "Start"
+
+#: src/modules/pomodoro/ui/status.py:190
+msgctxt "ui:timer_status|button:stop|error:not_manager|title"
+msgid "Insufficient permissions!"
+msgstr "權限不足！"
+
+#: src/modules/pomodoro/ui/status.py:194
+msgctxt "ui:timer_status|button:stop|error:not_manager|desc"
+msgid ""
+"Stopping this timer requires `MANAGE_CHANNEL` permissions on the timer "
+"channel, or the configured `manager_role`!"
+msgstr "停止此計時器需要`MANAGE_CHANNEL`權限或已設定的`manager_role`！"
+
+#: src/modules/pomodoro/ui/status.py:204
+msgctxt "ui:timer_status|button:stop|label"
+msgid "Stop"
+msgstr "Stop"
+
+#: src/modules/pomodoro/ui/config.py:45
+msgctxt "ui:timer_options|error:timer_destroyed"
+msgid "This timer no longer exists! Closing option menu."
+msgstr "此計時器已不存在！正在關閉選項選單。"
+
+#: src/modules/pomodoro/ui/config.py:68
+msgctxt "ui:timer_options|button:edit|label"
+msgid "Edit"
+msgstr "編輯"
+
+#: src/modules/pomodoro/ui/config.py:84
+msgctxt "ui:timer_options|button:voice_alerts|label"
+msgid "Voice Alerts"
+msgstr "語音提醒"
+
+#: src/modules/pomodoro/ui/config.py:105
+msgctxt "ui:timer_options|button:delete|success|title"
+msgid "Timer Deleted"
+msgstr "計時器已刪除"
+
+#, possible-python-brace-format
+msgctxt "ui:timer_options|button:delete|success|description"
+msgid "The timer in {channel} has been removed."
+msgstr "{channel}中的計時器已被移除。"
+
+#: src/modules/pomodoro/ui/config.py:117
+msgctxt "ui:timer_options|button:delete|label"
+msgid "Delete"
+msgstr "刪除"
+
+#: src/modules/pomodoro/ui/config.py:136
+msgctxt "ui:timer_options|menu:voice_channel|placeholder"
+msgid "Set Voice Channel"
+msgstr "設定語音頻道"
+
+#: src/modules/pomodoro/ui/config.py:157
+msgctxt "ui:timer_options|menu:notification_channel|placeholder"
+msgid "Set Notification Channel"
+msgstr "設定通知頻道"
+
+#: src/modules/pomodoro/ui/config.py:172
+msgctxt "ui:timer_options|menu:manager_role|placeholder"
+msgid "Set Manager Role"
+msgstr "設定管理員角色"
+
+#, possible-python-brace-format
+msgctxt "ui:timer_options|embed|title"
+msgid "Timer Control Panel for {channel}"
+msgstr "{channel}的計時器控制面板"
+
+#: src/modules/pomodoro/ui/config.py:188
+msgctxt "ui:timer_options|embed|footer"
+msgid "Hover over the option names to view descriptions."
+msgstr "將滑鼠懸停在選項名稱上查看描述。"
+
+#: src/modules/pomodoro/ui/config.py:200
+msgctxt "ui:timer_options|embed|field:pattern|name"
+msgid "Pattern"
+msgstr "模式"
+
+#, possible-python-brace-format
+msgctxt "ui:timer_options|embed|field:pattern|value"
+msgid ""
+"**`{focus_len} minutes`** focus\n"
+"**`{break_len} minutes`** break"
+msgstr ""
+"**`{focus_len}分鐘`** 專注\n"
+"**`{break_len}分鐘`** 休息"
+
+#: src/modules/pomodoro/ui/config.py:214
+msgctxt "ui:timer_options|embed|field:channel_name|name"
+msgid "Channel Name Preview"
+msgstr "頻道名稱預覽"
+
+#, possible-python-brace-format
+msgctxt "ui:timer_options|embed|field:channel_name|value"
+msgid ""
+"**`{name}`**\n"
+"(The actual channel name may not match due to ratelimits.)"
+msgstr ""
+"**`{name}`**\n"
+"（由於速率限制，實際頻道名稱可能不匹配。）"
+
+#: src/modules/pomodoro/ui/config.py:228
+msgctxt "ui:timer_options|embed|field:issues|name"
+msgid "Issues"
+msgstr "問題"
+
+#: src/modules/pomodoro/ui/config.py:246
+msgctxt "ui:timer_options|issue:no_voice_channel"
+msgid "The configured voice channel does not exist! Please update it below."
+msgstr "設定的語音頻道不存在！請在下方更新。"
+
+#, possible-python-brace-format
+msgctxt "ui:timer_options|issue:cannot_speak"
+msgid ""
+"Voice alerts are on, but I don't have speaking permissions in {channel}"
+msgstr "語音提醒已開啟，但我沒有在{channel}中的發言權限"
+
+#, possible-python-brace-format
+msgctxt "ui:timer_options|issue:cannot_change_name"
+msgid ""
+"I cannot update the name of {channel}! (Needs `MANAGE_CHANNELS` permission)"
+msgstr "我無法更新{channel}的名稱！（需要`MANAGE_CHANNELS`權限）"
+
+#: src/modules/pomodoro/ui/config.py:275
+msgctxt "ui:timer_options|issue:notif_channel_dne"
+msgid "Configured notification channel does not exist!"
+msgstr "設定的通知頻道不存在！"
+
+#, possible-python-brace-format
+msgctxt "ui:timer_options|issue:notif_channel_write"
+msgid ""
+"I cannot attach files (`ATTACH_FILES`) or send embeds (`EMBED_LINKS`) in "
+"{channel}"
+msgstr "我無法在{channel}中附加檔案（`ATTACH_FILES`）或發送嵌入內容（`EMBED_LINKS`）"
+
+#, possible-python-brace-format
+msgctxt "ui:timer_options|issues:cannot_make_webhooks"
+msgid ""
+"I cannot create the notification webhook (`MANAGE_WEBHOOKS`) in {channel}"
+msgstr "我無法在{channel}中建立通知Webhook（`MANAGE_WEBHOOKS`）"

@@ -1,46 +1,39 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
-# Translators:
-# Interitio, 2023
-# Bruno Evangelista De Oliveira, 2023
-# 
-#, fuzzy
+# Portuguese (Brazil) translation for LionBot - config
+# AI-translated with human Transifex contributions where available.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: LionBot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-24 14:37+0300\n"
-"PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
-"Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
+"PO-Revision-Date: 2026-03-13 19:57+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
-"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: src/modules/config/settingui.py:56
 msgctxt "ui:general_config|menu:event_log|placeholder"
 msgid "Select Event Log"
-msgstr ""
+msgstr "Selecionar registro de eventos"
 
 #: src/modules/config/settingui.py:64
 msgctxt "ui:general_config|embed:title"
 msgid "General Configuration"
-msgstr ""
+msgstr "Configuração geral"
 
 #: src/modules/config/settingui.py:99
 msgctxt "dash:general|title"
 msgid "General Configuration ({commands[config general]})"
-msgstr ""
+msgstr "Configuração geral ({commands[config general]})"
 
 #: src/modules/config/settingui.py:103
 msgctxt "dash:general|option|name"
 msgid "General Configuration Panel"
-msgstr ""
+msgstr "Painel de configuração geral"
 
 #: src/modules/config/cog.py:56 src/modules/config/general.py:52
 msgctxt "cmd:configure_general"
@@ -67,7 +60,6 @@ msgctxt "cmd:configure_general|panel|title"
 msgid "General Configuration Panel"
 msgstr "Painel de Configuração Geral"
 
-#: src/modules/config/dashboard.py:99
 #, possible-python-brace-format
 msgctxt "ui:dashboard|title"
 msgid "Guild Dashboard (Page {page}/{total})"
@@ -87,12 +79,12 @@ msgstr "Abrir Painel de Configuração"
 #: src/modules/config/settings.py:33
 msgctxt "guildset:timezone"
 msgid "timezone"
-msgstr ""
+msgstr "timezone"
 
 #: src/modules/config/settings.py:36
 msgctxt "guildset:timezone|desc"
 msgid "Guild timezone for statistics display."
-msgstr ""
+msgstr "Fuso horário do servidor para exibição de estatísticas."
 
 #: src/modules/config/settings.py:40
 msgctxt "guildset:timezone|long_desc"
@@ -101,17 +93,19 @@ msgid ""
 "leaderboards, and as the default statistics timezone for members who have "
 "not set one."
 msgstr ""
+"Fuso horário de todo o servidor. Usado para determinar o início do dia nos "
+"rankings e como fuso horário padrão de estatísticas para membros que não "
+"definiram um."
 
-#: src/modules/config/settings.py:54
 #, possible-python-brace-format
 msgctxt "guildset:timezone|response"
 msgid "The guild timezone has been set to `{timezone}`."
-msgstr ""
+msgstr "O fuso horário do servidor foi definido como `{timezone}`."
 
 #: src/modules/config/settings.py:66
 msgctxt "guildset:eventlog"
 msgid "event_log"
-msgstr ""
+msgstr "event_log"
 
 #: src/modules/config/settings.py:69
 msgctxt "guildset:eventlog|desc"
@@ -119,6 +113,8 @@ msgid ""
 "My audit log channel where I send server actions and events (e.g. rankgs and"
 " expiring roles)."
 msgstr ""
+"Meu canal de registro de auditoria onde envio ações e eventos do servidor "
+"(ex.: rankings e cargos..."
 
 #: src/modules/config/settings.py:73
 msgctxt "guildset:eventlog|long_desc"
@@ -130,22 +126,28 @@ msgid ""
 "- Activity ranks earned\n"
 "I must have the 'Manage Webhooks' permission in this channel."
 msgstr ""
+"Se configurado, registrarei as ações mais significativas ou eventos que ocorrem através da minha interface neste canal. Os eventos registrados incluem, por exemplo:\n"
+"- Atividade de voz dos membros\n"
+"- Cargos equipados e expirando dos menus de cargos\n"
+"- Salas privadas alugadas e expirando\n"
+"- Rankings de atividade conquistados\n"
+"Eu preciso ter a permissão 'Manage Webhooks' neste canal."
 
-#: src/modules/config/settings.py:95
 #, possible-python-brace-format
 msgctxt "guildset:eventlog|check_value|error:perms|perm:manage_webhooks"
 msgid ""
 "Cannot set {channel} as an event log! I lack the 'Manage Webhooks' "
 "permission there."
 msgstr ""
+"Não é possível definir {channel} como registro de eventos! Falta-me a "
+"permissão 'Manage Webhooks' lá."
 
-#: src/modules/config/settings.py:106
 #, possible-python-brace-format
 msgctxt "guildset:eventlog|response|set"
 msgid "Events will now be logged to {channel}"
-msgstr ""
+msgstr "Os eventos agora serão registrados em {channel}"
 
 #: src/modules/config/settings.py:111
 msgctxt "guildset:eventlog|response|unset"
 msgid "Guild events will no longer be logged."
-msgstr ""
+msgstr "Os eventos do servidor não serão mais registrados."

@@ -1,0 +1,700 @@
+# Korean translation for LionBot - moderation
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 22:18+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Korean\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/modules/moderation/settingui.py:55
+msgctxt "ui:moderation_config|menu:ticket_log|placeholder"
+msgid "Select Ticket Log"
+msgstr "티켓 로그 선택"
+
+#: src/modules/moderation/settingui.py:81
+msgctxt "ui:moderation_config|menu:alert_channel|placeholder"
+msgid "Select Alert Channel"
+msgstr "알림 채널 선택"
+
+#: src/modules/moderation/settingui.py:107
+msgctxt "ui:moderation_config|menu:modrole|placeholder"
+msgid "Select Moderator Role"
+msgstr "관리자 역할 선택"
+
+#: src/modules/moderation/settingui.py:133
+msgctxt "ui:moderation_config|menu:adminrole|placeholder"
+msgid "Select Admin Role"
+msgstr "관리자 역할 선택"
+
+#: src/modules/moderation/settingui.py:141
+msgctxt "ui:moderation_config|embed|title"
+msgid "Moderation Configuration Panel"
+msgstr "관리 설정 패널"
+
+#: src/modules/moderation/settingui.py:182
+msgctxt "dash:moderation|title"
+msgid "Moderation Settings ({commands[admin config moderation]})"
+msgstr "관리 설정 ({commands[admin config moderation]})"
+
+#: src/modules/moderation/settingui.py:186
+msgctxt "dash:moderation|dropdown|placeholder"
+msgid "Moderation Panel"
+msgstr "관리 패널"
+
+#: src/modules/moderation/cog.py:135
+msgctxt "cmd:modnote"
+msgid "modnote"
+msgstr "modnote"
+
+#: src/modules/moderation/cog.py:138
+msgctxt "cmd:modnote|desc"
+msgid "Add a note to the target member's moderation record."
+msgstr "대상 멤버의 관리 기록에 메모를 추가합니다."
+
+#: src/modules/moderation/cog.py:142
+msgctxt "cmd:modnote|param:target"
+msgid "target"
+msgstr "target"
+
+#: src/modules/moderation/cog.py:143
+msgctxt "cmd:modnote|param:note"
+msgid "note"
+msgstr "note"
+
+#: src/modules/moderation/cog.py:148
+msgctxt "cmd:modnote|param:target|desc"
+msgid "Target member or user to add a note to."
+msgstr "메모를 추가할 대상 멤버 또는 사용자."
+
+#: src/modules/moderation/cog.py:152
+msgctxt "cmd:modnote|param:note|desc"
+msgid "Contents of the note."
+msgstr "메모의 내용."
+
+#: src/modules/moderation/cog.py:177
+msgctxt "cmd:modnote|modal:enter_note|title"
+msgid "Moderation Note"
+msgstr "관리 메모"
+
+#: src/modules/moderation/cog.py:182
+msgctxt "cmd:modnote|modal:enter_note|field|label"
+msgid "Note Content"
+msgstr "메모 내용"
+
+#, possible-python-brace-format
+msgctxt "cmd:modnote|embed:success|desc"
+msgid "Moderation note created as [Ticket #{ticket}]({jump_link})"
+msgstr "관리 메모가 [티켓 #{ticket}]({jump_link})로 생성되었습니다"
+
+#: src/modules/moderation/cog.py:225
+msgctxt "cmd:warning"
+msgid "warning"
+msgstr "warning"
+
+#: src/modules/moderation/cog.py:228
+msgctxt "cmd:warning|desc"
+msgid ""
+"Warn a member for a misdemeanour, and add it to their moderation record."
+msgstr "멤버에게 위반에 대해 경고하고 관리 기록에 추가합니다."
+
+#: src/modules/moderation/cog.py:232
+msgctxt "cmd:warning|param:target"
+msgid "target"
+msgstr "target"
+
+#: src/modules/moderation/cog.py:233
+msgctxt "cmd:warning|param:reason"
+msgid "reason"
+msgstr "reason"
+
+#: src/modules/moderation/cog.py:238
+msgctxt "cmd:warning|param:target|desc"
+msgid "Target member to warn."
+msgstr "경고할 대상 멤버."
+
+#: src/modules/moderation/cog.py:242
+msgctxt "cmd:warning|param:reason|desc"
+msgid "The reason why you are warning this member."
+msgstr "이 멤버를 경고하는 이유."
+
+#: src/modules/moderation/cog.py:262
+msgctxt "cmd:warning|modal:reason|title"
+msgid "Moderation Warning"
+msgstr "관리 경고"
+
+#: src/modules/moderation/cog.py:267
+msgctxt "cmd:warning|modal:reason|field|label"
+msgid "Reason for the warning (visible to user)."
+msgstr "경고 사유 (사용자에게 표시됨)."
+
+#: src/modules/moderation/cog.py:298
+msgctxt "cmd:warning|embed:user_alert|title"
+msgid "You have received a warning!"
+msgstr "경고를 받았습니다!"
+
+#: src/modules/moderation/cog.py:305
+msgctxt "cmd:warning|embed:user_alert|field:note|name"
+msgid "Note"
+msgstr "참고"
+
+#: src/modules/moderation/cog.py:309
+msgctxt "cmd:warning|embed:user_alert|field:note|value"
+msgid ""
+"*Warnings appear in your moderation history. Continuing failure to comply "
+"with server rules and moderator directions may result in more severe action."
+msgstr ""
+"*경고는 귀하의 관리 기록에 표시됩니다. 서버 규칙과 관리자 지시를 계속 따르지 않으면 더 엄격한 조치가 취해질 수 있습니다."
+
+#, possible-python-brace-format
+msgctxt "cmd:warning|embed:success|line:count"
+msgid "This their first warning."
+msgid_plural "They have recieved **`{count}`** warnings."
+msgstr[0] "**`{count}`**개의 경고를 받았습니다."
+
+#, possible-python-brace-format
+msgctxt "cmd:warning|embed:success|desc"
+msgid "[Ticket #{ticket}]({jump_link}) {user} has been warned."
+msgstr "[티켓 #{ticket}]({jump_link}) {user}에게 경고했습니다."
+
+#: src/modules/moderation/cog.py:347
+msgctxt "cmd:warning|embed:success|field:no_alert|name"
+msgid "Note"
+msgstr "참고"
+
+#: src/modules/moderation/cog.py:351
+msgctxt "cmd:warning|embed:success|field:no_alert|value"
+msgid "*Could not deliver warning to the target.*"
+msgstr "*대상에게 경고를 전달할 수 없습니다.*"
+
+#: src/modules/moderation/cog.py:358
+msgctxt "cmd:pardon"
+msgid "pardon"
+msgstr "pardon"
+
+#: src/modules/moderation/cog.py:361
+msgctxt "cmd:pardon|desc"
+msgid "Pardon moderation tickets to mark them as no longer in effect."
+msgstr "관리 티켓을 면제하여 더 이상 유효하지 않음으로 표시합니다."
+
+#: src/modules/moderation/cog.py:367
+msgctxt "cmd:pardon|param:ticketids"
+msgid "tickets"
+msgstr "tickets"
+
+#: src/modules/moderation/cog.py:371
+msgctxt "cmd:pardon|param:reason"
+msgid "reason"
+msgstr "reason"
+
+#: src/modules/moderation/cog.py:377
+msgctxt "cmd:pardon|param:ticketids|desc"
+msgid "Comma separated list of ticket numbers to pardon."
+msgstr "면제할 티켓 번호의 쉼표로 구분된 목록."
+
+#: src/modules/moderation/cog.py:381
+msgctxt "cmd:pardon|param:reason"
+msgid "Why these tickets are being pardoned."
+msgstr ""
+
+#: src/modules/moderation/cog.py:402
+msgctxt "cmd:pardon|modal:reason|title"
+msgid "Pardon Tickets"
+msgstr "티켓 면제"
+
+#: src/modules/moderation/cog.py:407
+msgctxt "cmd:pardon|modal:reason|field|label"
+msgid "Why are you pardoning these tickets?"
+msgstr "왜 이 티켓들을 면제하나요?"
+
+#: src/modules/moderation/cog.py:435
+msgctxt "cmd:pardon|error:parse_ticketids"
+msgid ""
+"Could not parse provided tickets as a list of ticket ids! Please enter "
+"tickets as a comma separated list of ticket numbers, for example `1, 2, 3`."
+msgstr "제공된 티켓을 티켓 ID 목록으로 분석할 수 없습니다! 쉼표로 구분된 목록으로 입력해 주세요. 예: `1, 2, 3`."
+
+#: src/modules/moderation/cog.py:449
+msgctxt "cmd:pardon|error:no_matching"
+msgid "No matching moderation tickets found to pardon!"
+msgstr "면제할 일치하는 관리 티켓을 찾을 수 없습니다!"
+
+#, possible-python-brace-format
+msgctxt "cmd:pardon|embed:success|title"
+msgid "Ticket {ticketstr} has been pardoned."
+msgid_plural ""
+"The following tickets have been pardoned:\n"
+"{ticketstr}"
+msgstr[0] ""
+"다음 티켓이 면제되었습니다:\n"
+"{ticketstr}"
+
+#: src/modules/moderation/cog.py:478
+msgctxt "cmd:tickets"
+msgid "tickets"
+msgstr "tickets"
+
+#: src/modules/moderation/cog.py:481
+msgctxt "cmd:tickets|desc"
+msgid "View moderation tickets in this server."
+msgstr "이 서버의 관리 티켓을 봅니다."
+
+#: src/modules/moderation/cog.py:485
+msgctxt "cmd:tickets|param:target"
+msgid "target"
+msgstr "target"
+
+#: src/modules/moderation/cog.py:486
+msgctxt "cmd:tickets|param:type"
+msgid "type"
+msgstr "type"
+
+#: src/modules/moderation/cog.py:487
+msgctxt "cmd:tickets|param:state"
+msgid "ticket_state"
+msgstr "ticket_state"
+
+#: src/modules/moderation/cog.py:488
+msgctxt "cmd:tickets|param:pardoned"
+msgid "include_pardoned"
+msgstr "include_pardoned"
+
+#: src/modules/moderation/cog.py:489
+msgctxt "cmd:tickets|param:moderator"
+msgid "acting_moderator"
+msgstr "acting_moderator"
+
+#: src/modules/moderation/cog.py:490
+msgctxt "cmd:tickets|param:after"
+msgid "after"
+msgstr "after"
+
+#: src/modules/moderation/cog.py:491
+msgctxt "cmd:tickets|param:before"
+msgid "before"
+msgstr "before"
+
+#: src/modules/moderation/cog.py:496
+msgctxt "cmd:tickets|param:target|desc"
+msgid "Filter by tickets acting on a given user."
+msgstr "지정된 사용자에 대한 티켓으로 필터링합니다."
+
+#: src/modules/moderation/cog.py:500
+msgctxt "cmd:tickets|param:type|desc"
+msgid "Filter by ticket type."
+msgstr "티켓 유형으로 필터링합니다."
+
+#: src/modules/moderation/cog.py:504
+msgctxt "cmd:tickets|param:state|desc"
+msgid "Filter by ticket state."
+msgstr "티켓 상태로 필터링합니다."
+
+#: src/modules/moderation/cog.py:508
+msgctxt "cmd:tickets|param:pardoned|desc"
+msgid "Whether to only show active tickets, or also include pardoned."
+msgstr "활성 티켓만 표시할지, 면제된 것도 포함할지."
+
+#: src/modules/moderation/cog.py:512
+msgctxt "cmd:tickets|param:moderator|desc"
+msgid "Filter by moderator responsible for the ticket."
+msgstr "티켓 담당 관리자로 필터링합니다."
+
+#: src/modules/moderation/cog.py:516
+msgctxt "cmd:tickets|param:after|desc"
+msgid "Only show tickets after this date (YYY-MM-DD HH:MM)"
+msgstr "이 날짜 이후의 티켓만 표시 (YYYY-MM-DD HH:MM)"
+
+#: src/modules/moderation/cog.py:520
+msgctxt "cmd:tickets|param:before|desc"
+msgid "Only show tickets before this date (YYY-MM-DD HH:MM)"
+msgstr "이 날짜 이전의 티켓만 표시 (YYYY-MM-DD HH:MM)"
+
+#: src/modules/moderation/cog.py:582
+msgctxt "cmd:configure_moderation"
+msgid "moderation"
+msgstr "moderation"
+
+#: src/modules/moderation/cog.py:585
+msgctxt "cmd:configure_moderation|desc"
+msgid "Configure general moderation settings."
+msgstr "일반 관리 설정을 구성합니다."
+
+#: src/modules/moderation/ticketui.py:62
+msgctxt "ticketfilter|field:after|name"
+msgid "Created After"
+msgstr "이후 생성"
+
+#: src/modules/moderation/ticketui.py:70
+msgctxt "ticketfilter|field:before|name"
+msgid "Created Before"
+msgstr "이전 생성"
+
+#: src/modules/moderation/ticketui.py:78
+msgctxt "ticketfilter|field:targetids|name"
+msgid "Targets"
+msgstr "대상"
+
+#: src/modules/moderation/ticketui.py:86
+msgctxt "ticketfilter|field:moderatorids|name"
+msgid "Moderators"
+msgstr "관리자"
+
+#: src/modules/moderation/ticketui.py:94
+msgctxt "ticketfilter|field:types|name"
+msgid "Ticket Types"
+msgstr "티켓 유형"
+
+#: src/modules/moderation/ticketui.py:102
+msgctxt "ticketfilter|field:states|name"
+msgid "Ticket States"
+msgstr "티켓 상태"
+
+#: src/modules/moderation/ticketui.py:179
+msgctxt "ui:tickets|button:edit_filter|label"
+msgid "Edit Filters"
+msgstr "필터 편집"
+
+#: src/modules/moderation/ticketui.py:199
+msgctxt "ui:tickets|button:select_ticket|label"
+msgid "Select Ticket"
+msgstr "티켓 선택"
+
+#: src/modules/moderation/ticketui.py:215
+msgctxt "ui:tickets|button:pardon|error:no_tickets"
+msgid "Not tickets matching the given criterial! Nothing to pardon."
+msgstr "지정된 기준에 맞는 티켓이 없습니다! 면제할 것이 없습니다."
+
+#: src/modules/moderation/ticketui.py:221
+msgctxt "ui:tickets|button:pardon|modal:reason|title"
+msgid "Pardon Tickets"
+msgstr "티켓 면제"
+
+#: src/modules/moderation/ticketui.py:226
+msgctxt "ui:tickets|button:pardon|modal:reason|field|label"
+msgid "Why are you pardoning these tickets?"
+msgstr "왜 이 티켓들을 면제하나요?"
+
+#: src/modules/moderation/ticketui.py:252
+msgctxt "ui:tickets|button:pardon|label"
+msgid "Pardon All"
+msgstr "모두 면제"
+
+#: src/modules/moderation/ticketui.py:273
+msgctxt "ui:tickets|menu:filter_type|placeholder"
+msgid "Select Ticket Types"
+msgstr "티켓 유형 선택"
+
+#: src/modules/moderation/ticketui.py:309
+msgctxt "ui:tickets|menu:filter_state|placeholder"
+msgid "Select Ticket States"
+msgstr "티켓 상태 선택"
+
+#: src/modules/moderation/ticketui.py:346
+msgctxt "ui:tickets|menu:filter_target|placeholder"
+msgid "Select Ticket Targets"
+msgstr "티켓 대상 선택"
+
+#: src/modules/moderation/ticketui.py:371
+msgctxt "ui:tickets|menu:tickets|placeholder"
+msgid "Select Ticket"
+msgstr "티켓 선택"
+
+#: src/modules/moderation/ticketui.py:402
+msgctxt "ui:tickets|button:jump|input:title"
+msgid "Jump to page"
+msgstr "페이지로 이동"
+
+#: src/modules/moderation/ticketui.py:406
+msgctxt "ui:tickets|button:jump|input:question"
+msgid "Page number to jump to"
+msgstr "이동할 페이지 번호"
+
+#: src/modules/moderation/ticketui.py:417
+msgctxt "ui:tickets|button:jump|error:invalid_page"
+msgid "Invalid page number, please try again!"
+msgstr "잘못된 페이지 번호입니다. 다시 시도해 주세요!"
+
+#, possible-python-brace-format
+msgctxt "ui:tickets|embed|title"
+msgid "Moderation Tickets in {guild}"
+msgstr "{guild}의 관리 티켓"
+
+#: src/modules/moderation/ticketui.py:506
+msgctxt "ui:tickets|embed|desc:no_tickets"
+msgid "No tickets matching the given criteria!"
+msgstr "지정된 기준에 맞는 티켓이 없습니다!"
+
+#: src/modules/moderation/ticketui.py:515
+msgctxt "ui:tickets|embed|field:filters|name"
+msgid "Filters"
+msgstr "필터"
+
+#: src/modules/moderation/ticketui.py:603
+msgctxt "ui:ticket|button:pardon|modal:reason|title"
+msgid "Pardon Moderation Ticket"
+msgstr "관리 티켓 면제"
+
+#: src/modules/moderation/ticketui.py:608
+msgctxt "ui:ticket|button:pardon|modal:reason|field|label"
+msgid "Why are you pardoning this ticket?"
+msgstr "왜 이 티켓을 면제하나요?"
+
+#: src/modules/moderation/ticketui.py:632
+msgctxt "ui:ticket|button:pardon|label"
+msgid "Pardon"
+msgstr "면제"
+
+#, possible-python-brace-format
+msgctxt "ticket|title:auto"
+msgid "Ticket #{ticketid} | {state} | {type}[Auto] | {name}"
+msgstr "티켓 #{ticketid} | {state} | {type}[자동] | {name}"
+
+#, possible-python-brace-format
+msgctxt "ticket|title:manual"
+msgid "Ticket #{ticketid} | {state} | {type} | {name}"
+msgstr "티켓 #{ticketid} | {state} | {type} | {name}"
+
+#: src/modules/moderation/ticket.py:169
+msgctxt "ticket|field:target|name"
+msgid "Target"
+msgstr "대상"
+
+#: src/modules/moderation/ticket.py:174
+msgctxt "ticket|field:moderator|name"
+msgid "Moderator"
+msgstr "관리자"
+
+#: src/modules/moderation/ticket.py:181
+msgctxt "ticket|field:expiry|mode:expiring|name"
+msgid "Expires At"
+msgstr "만료 시간"
+
+#, possible-python-brace-format
+msgctxt "ticket|field:expiry|mode:expiring|value"
+msgid ""
+"{timestamp}\n"
+"Duration: `{duration}`"
+msgstr ""
+"{timestamp}\n"
+"기간: `{duration}`"
+
+#: src/modules/moderation/ticket.py:192
+msgctxt "ticket|field:expiry|mode:expired|name"
+msgid "Expired"
+msgstr "만료됨"
+
+#, possible-python-brace-format
+msgctxt "ticket|field:expiry|mode:expired|value"
+msgid "{timestamp}"
+msgstr "{timestamp}"
+
+#: src/modules/moderation/ticket.py:202
+msgctxt "ticket|field:expiry|mode:open|name"
+msgid "Expiry"
+msgstr "만료"
+
+#, possible-python-brace-format
+msgctxt "ticket|field:expiry|mode:open|value"
+msgid "{timestamp}"
+msgstr "{timestamp}"
+
+#: src/modules/moderation/ticket.py:213
+msgctxt "ticket|field:context|name"
+msgid "Context"
+msgstr "맥락"
+
+#: src/modules/moderation/ticket.py:220
+msgctxt "ticket|field:notes|name"
+msgid "Notes"
+msgstr "메모"
+
+#: src/modules/moderation/ticket.py:227
+msgctxt "ticket|field:pardoned|name"
+msgid "Pardoned"
+msgstr "면제됨"
+
+#, possible-python-brace-format
+msgctxt "ticket|field:pardoned|value"
+msgid ""
+"Pardoned by <@{moderator}> at {timestamp}.\n"
+"{reason}"
+msgstr ""
+"<@{moderator}>에 의해 {timestamp}에 면제되었습니다.\n"
+"{reason}"
+
+#: src/modules/moderation/settings.py:22
+msgctxt "guildset:ticket_log"
+msgid "ticket_log"
+msgstr "ticket_log"
+
+#: src/modules/moderation/settings.py:25
+msgctxt "guildset:ticket_log|desc"
+msgid "Private moderation log to send tickets and moderation events."
+msgstr "티켓 및 관리 이벤트를 보내는 비공개 관리 로그."
+
+#: src/modules/moderation/settings.py:29
+msgctxt "guildset:ticket_log|long_desc"
+msgid ""
+"Warnings, notes, video blacklists, and other moderation events will be "
+"posted as numbered tickets with context to this log."
+msgstr "경고, 메모, 비디오 블랙리스트 및 기타 관리 이벤트가 번호가 매겨진 티켓으로 이 로그에 게시됩니다."
+
+#: src/modules/moderation/settings.py:34
+msgctxt "guildset:ticket_log|accepts"
+msgid "Ticket channel name or id."
+msgstr "티켓 채널 이름 또는 ID."
+
+#, possible-python-brace-format
+msgctxt "guildset:ticket_log|set_response:set"
+msgid "Moderation tickets will be sent to {channel}"
+msgstr "관리 티켓이 {channel}로 전송됩니다"
+
+#: src/modules/moderation/settings.py:53
+msgctxt "guildset:ticket_log|set_response:unset"
+msgid "Moderation tickets will not be logged to a channel."
+msgstr "관리 티켓이 채널에 기록되지 않습니다."
+
+#: src/modules/moderation/settings.py:65
+msgctxt "guildset:ticket_log|formatted:unset"
+msgid "Not Set."
+msgstr "설정되지 않음."
+
+#: src/modules/moderation/settings.py:73
+msgctxt "guildset:alert_channel"
+msgid "alert_channel"
+msgstr "alert_channel"
+
+#: src/modules/moderation/settings.py:76
+msgctxt "guildset:alert_channel|desc"
+msgid "Moderation notification channel for members with DMs disabled."
+msgstr "DM이 비활성화된 멤버를 위한 관리 알림 채널."
+
+#: src/modules/moderation/settings.py:80
+msgctxt "guildset:alert_channel|long_desc"
+msgid ""
+"When I need to send a member a moderation-related notification (e.g. asking "
+"them to enable their video in a video channel) from this server, I will try "
+"to send it via direct messages. If this fails, I will instead mention the "
+"user in this channel."
+msgstr ""
+"이 서버에서 멤버에게 관리 관련 알림을 보내야 할 때(예: 비디오 채널에서 비디오를 활성화하라고 요청), 다이렉트 메시지로 보내려고 "
+"시도합니다. 실패하면 대신 이 채널에서 사용자를 멘션합니다."
+
+#: src/modules/moderation/settings.py:87
+msgctxt "guildset:alert_channel|accepts"
+msgid "Alert channel name or id."
+msgstr "알림 채널 이름 또는 ID."
+
+#, possible-python-brace-format
+msgctxt "guildset:alert_channel|set_response:set"
+msgid "Moderation alerts will be sent to {channel}"
+msgstr "관리 알림이 {channel}로 전송됩니다"
+
+#: src/modules/moderation/settings.py:107
+msgctxt "guildset:alert_channel|set_response:unset"
+msgid "Moderation alerts will be ignored if the member cannot be reached."
+msgstr "멤버에게 연락할 수 없는 경우 관리 알림이 무시됩니다."
+
+#: src/modules/moderation/settings.py:119
+msgctxt "guildset:alert_channel|formatted:unset"
+msgid "Not Set (Only alert via direct message.)"
+msgstr "설정되지 않음 (다이렉트 메시지로만 알림.)"
+
+#: src/modules/moderation/settings.py:127
+msgctxt "guildset:mod_role"
+msgid "mod_role"
+msgstr "mod_role"
+
+#: src/modules/moderation/settings.py:130
+msgctxt "guildset:mod_role|desc"
+msgid ""
+"Server role permitted to perform moderation and minor bot configuration."
+msgstr "관리 및 경미한 봇 구성을 수행할 수 있는 서버 역할."
+
+#: src/modules/moderation/settings.py:134
+msgctxt "guildset:mod_role|long_desc"
+msgid ""
+"Members with the moderator role are considered moderators, and are permitted to use moderator commands, such as viewing and pardoning moderation tickets, creating moderation notes, and performing minor reconfiguration through the `/config` command.\n"
+"Moderators are never permitted to perform actions (such as giving roles) that they do not already have the Discord permissions for.\n"
+"Members with the 'Manage Guild' permission are always considered moderators."
+msgstr ""
+"관리자 역할을 가진 멤버는 관리자로 간주되며, 티켓 조회 및 면제, 메모 작성, `/config` 명령을 통한 경미한 재구성 등의 관리자 명령을 사용할 수 있습니다.\n"
+"관리자는 Discord 권한이 없는 작업(예: 역할 부여)을 수행할 수 없습니다.\n"
+"'Manage Guild' 권한을 가진 멤버는 항상 관리자로 간주됩니다."
+
+#: src/modules/moderation/settings.py:145
+msgctxt "guildset:mod_role|accepts"
+msgid "Moderation role name or id."
+msgstr "관리자 역할 이름 또는 ID."
+
+#, possible-python-brace-format
+msgctxt "guildset:mod_role|set_response:set"
+msgid ""
+"Members with {role} will be considered moderators. You may need to grant "
+"them access to view moderation commands via the server integration settings."
+msgstr "{role}을 가진 멤버는 관리자로 간주됩니다. 서버 통합 설정을 통해 관리 명령 접근 권한을 부여해야 할 수 있습니다."
+
+#: src/modules/moderation/settings.py:166
+msgctxt "guildset:mod_role|set_response:unset"
+msgid ""
+"Only members with the 'Manage Guild' permission will be considered "
+"moderators."
+msgstr "'Manage Guild' 권한을 가진 멤버만 관리자로 간주됩니다."
+
+#: src/modules/moderation/settings.py:178
+msgctxt "guildset:mod_role|formatted:unset"
+msgid "Not Set."
+msgstr "설정되지 않음."
+
+#: src/modules/moderation/settings.py:186
+msgctxt "guildset:admin_role"
+msgid "admin_role"
+msgstr "admin_role"
+
+#: src/modules/moderation/settings.py:189
+msgctxt "guildset:admin_role|desc"
+msgid ""
+"Server role allowing access to all administrator level functionality in Leo."
+msgstr "Leo의 모든 관리자 수준 기능에 대한 접근을 허용하는 서버 역할."
+
+#: src/modules/moderation/settings.py:193
+msgctxt "guildset:admin_role|long_desc"
+msgid ""
+"Members with this role are considered to be server administrators, allowing "
+"them to use all of my interfaces and commands, except for managing roles "
+"that are above them in the role hierachy. This setting allows giving members"
+" administrator-level permissions over my systems, without actually giving "
+"the members admin server permissions. Note that the role will also need to "
+"be given permission to see the commands through the Discord server "
+"integrations interface."
+msgstr ""
+"이 역할을 가진 멤버는 서버 관리자로 간주되어 역할 계층에서 상위 역할 관리를 제외한 모든 인터페이스와 명령을 사용할 수 있습니다. 이 "
+"설정을 통해 실제 서버 관리자 권한을 부여하지 않고도 시스템에 대한 관리자 수준 권한을 부여할 수 있습니다. 역할은 Discord 서버 "
+"통합 인터페이스를 통해 명령을 볼 수 있는 권한도 필요합니다."
+
+#: src/modules/moderation/settings.py:203
+msgctxt "guildset:admin_role|accepts"
+msgid "Admin role name or id."
+msgstr "관리자 역할 이름 또는 ID."
+
+#, possible-python-brace-format
+msgctxt "guildset:admin_role|set_response:set"
+msgid ""
+"Members with {role} will now be considered admins, and have access to my "
+"full interface."
+msgstr "{role}을 가진 멤버는 이제 관리자로 간주되며 전체 인터페이스에 접근할 수 있습니다."
+
+#: src/modules/moderation/settings.py:221
+msgctxt "guildset:admin_role|set_response:unset"
+msgid ""
+"The admin role has been unset. Only members with administrator permissions "
+"will be considered admins."
+msgstr "관리자 역할이 해제되었습니다. 관리자 권한을 가진 멤버만 관리자로 간주됩니다."

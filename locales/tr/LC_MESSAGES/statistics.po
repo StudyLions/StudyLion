@@ -1,26 +1,19 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
-# Translators:
-# Eyüp Ramazan, 2023
-# Havina Ru, 2023
-# 
-#, fuzzy
+# Turkish translation for LionBot - statistics
+# AI-translated with human Transifex contributions where available.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: LionBot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-24 14:37+0300\n"
-"PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Havina Ru, 2023\n"
-"Language-Team: Turkish (https://app.transifex.com/leobot/teams/174919/tr/)\n"
+"PO-Revision-Date: 2026-03-13 21:59+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Turkish\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: tr\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/statistics/cog.py:47
 msgctxt "cmd:me"
@@ -30,27 +23,27 @@ msgstr "ben"
 #: src/modules/statistics/cog.py:50
 msgctxt "cmd:me|desc"
 msgid "Edit your personal profile and see your statistics."
-msgstr ""
+msgstr "Kişisel profilini düzenle ve istatistiklerini gör."
 
 #: src/modules/statistics/cog.py:63
 msgctxt "cmd:profile"
 msgid "profile"
-msgstr ""
+msgstr "profile"
 
 #: src/modules/statistics/cog.py:66
 msgctxt "cmd:profile|desc"
 msgid "Display the target's profile and statistics summary."
-msgstr ""
+msgstr "Hedefin profilini ve istatistik özetini göster."
 
 #: src/modules/statistics/cog.py:70
 msgctxt "cmd:profile|param:member"
 msgid "member"
-msgstr ""
+msgstr "member"
 
 #: src/modules/statistics/cog.py:74
 msgctxt "cmd:profile|param:member|desc"
 msgid "Member to display profile for."
-msgstr ""
+msgstr "Profili gösterilecek üye."
 
 #: src/modules/statistics/cog.py:110
 msgctxt "cmd:stats"
@@ -65,33 +58,32 @@ msgstr "Son zamanlardaki aftalık ve aylık istatistiklerinizi görüntüleyin."
 #: src/modules/statistics/cog.py:131
 msgctxt "cmd:leaderboard"
 msgid "leaderboard"
-msgstr "lider tablosu"
+msgstr "lider_tablosu"
 
 #: src/modules/statistics/cog.py:134
 msgctxt "cmd:leaderboard|desc"
 msgid "Server leaderboard."
 msgstr "Sunucu lider tablosu."
 
-#: src/modules/statistics/cog.py:149
 #, possible-python-brace-format
 msgctxt "cmd:leaderboard|chunking|desc"
 msgid "Requesting server member list from Discord, please wait {loading}"
-msgstr ""
+msgstr "Discord'dan sunucu üye listesi isteniyor, lütfen bekleyin {loading}"
 
 #: src/modules/statistics/cog.py:170
 msgctxt "cmd:achievements"
 msgid "achievements"
-msgstr ""
+msgstr "achievements"
 
 #: src/modules/statistics/cog.py:173
 msgctxt "cmd:achievements|desc"
 msgid "View your progress towards the activity achievement awards!"
-msgstr ""
+msgstr "Etkinlik başarı ödüllerine doğru ilerlemenizi görüntüleyin!"
 
 #: src/modules/statistics/cog.py:190
 msgctxt "cmd:achievements|embed:title"
 msgid "Achievements"
-msgstr ""
+msgstr "Başarılar"
 
 #: src/modules/statistics/cog.py:208
 msgctxt "cmd:configure_statistics"
@@ -110,97 +102,93 @@ msgstr "sezon_başı"
 
 #: src/modules/statistics/cog.py:217
 msgctxt "cmd:configure_statistics|param:season_start|desc"
-msgid ""
-"Time from which to start counting activity for rank badges and season "
-"leaderboards. (YYYY-MM-DD)"
-msgstr ""
-"Rütbe rozetlerinin ve sezon lider tablosunun hesaplanmaya başlandığı tarih. "
-"(YYYY-AA-GG)"
+msgid "Time from which to start counting activity for rank badges and season leaderboards. (YYYY-MM-DD)"
+msgstr "Rütbe rozetlerinin ve sezon lider tablosunun hesaplanmaya başlandığı tarih. (YYYY-AA-GG)"
 
 #: src/modules/statistics/achievements.py:77
 msgctxt "achievement|congrats"
 msgid "Congratulations! You have completed this challenge."
-msgstr ""
+msgstr "Tebrikler! Bu görevi tamamladınız."
 
 #: src/modules/statistics/achievements.py:146
 msgctxt "achievement:workout|name"
 msgid "It's about Power"
-msgstr ""
+msgstr "Güç önemlidir"
 
 #: src/modules/statistics/achievements.py:150
 msgctxt "achievement:workout|subtext"
 msgid "Workout 50 times"
-msgstr ""
+msgstr "50 kez egzersiz yap"
 
 #: src/modules/statistics/achievements.py:170
 msgctxt "achievement:voicehours|name"
 msgid "Dream Big"
-msgstr ""
+msgstr "Büyük hayal kur"
 
 #: src/modules/statistics/achievements.py:174
 msgctxt "achievement:voicehours|subtext"
 msgid "Study a total of 1000 hours"
-msgstr ""
+msgstr "Toplam 1000 saat çalış"
 
 #: src/modules/statistics/achievements.py:196
 msgctxt "achievement:voicestreak|name"
 msgid "Consistency is Key"
-msgstr ""
+msgstr "Tutarlılık anahtardır"
 
 #: src/modules/statistics/achievements.py:200
 msgctxt "achievement:voicestreak|subtext"
 msgid "Reach a 100-day voice streak"
-msgstr ""
+msgstr "100 günlük sesli kanal serisi elde et"
 
 #: src/modules/statistics/achievements.py:283
 msgctxt "achievement:voting|name"
 msgid "We're a Team"
-msgstr ""
+msgstr "Biz bir takımız"
 
 #: src/modules/statistics/achievements.py:287
 msgctxt "achievement:voting|subtext"
 msgid "Vote 100 times on top.gg"
-msgstr ""
+msgstr "top.gg'de 100 kez oy ver"
 
 #: src/modules/statistics/achievements.py:304
 msgctxt "achievement:days|name"
 msgid "Aim For The Moon"
-msgstr ""
+msgstr "Ay'a nişan al"
 
 #: src/modules/statistics/achievements.py:308
 msgctxt "achievement:days|subtext"
 msgid "Join Voice on 90 different days"
-msgstr ""
+msgstr "90 farklı gün sesli kanala katıl"
 
 #: src/modules/statistics/achievements.py:333
 msgctxt "achievement:tasks|name"
 msgid "One Step at a Time"
-msgstr ""
+msgstr "Adım adım"
 
 #: src/modules/statistics/achievements.py:337
 msgctxt "achievement:tasks|subtext"
 msgid "Complete 1000 tasks"
-msgstr ""
+msgstr "1000 görev tamamla"
 
 #: src/modules/statistics/achievements.py:363
 msgctxt "achievement:schedule|name"
 msgid "Be Accountable"
-msgstr ""
+msgstr "Sorumlu ol"
 
 #: src/modules/statistics/achievements.py:367
 msgctxt "achievement:schedule|subtext"
 msgid "Attend 500 Scheduled Sessions"
-msgstr ""
+msgstr "500 planlı oturuma katıl"
 
 #: src/modules/statistics/achievements.py:392
 msgctxt "achievement:monthlyhours|name"
 msgid "The 30 Days Challenge"
-msgstr ""
+msgstr "30 günlük meydan okuma"
 
 #: src/modules/statistics/achievements.py:396
 msgctxt "achievement:monthlyhours|subtext"
 msgid "Be active for 100 hours in a month"
-msgstr ""
+msgstr "Bir ayda 100 saat aktif ol"
 
 #: src/modules/statistics/settings.py:38
 msgctxt "settype:stat|output:voice"
@@ -264,12 +252,8 @@ msgstr "Görüntülenen istatistiklerin tüm sunucularınızı içerip içermedi
 
 #: src/modules/statistics/settings.py:74
 msgctxt "userset:show_global_stats|long_desc"
-msgid ""
-"Whether statistics commands display combined stats for all servers or just "
-"your current server."
-msgstr ""
-"İstatistik komutlarının tüm sunucular için birleştirilmiş istatistikleri mi "
-"yoksa yalnızca mevcut sunucunuz için mi görüntüleyeceği."
+msgid "Whether statistics commands display combined stats for all servers or just your current server."
+msgstr "İstatistik komutlarının tüm sunucular için birleştirilmiş istatistikleri mi yoksa yalnızca mevcut sunucunuz için mi görüntüleyeceği."
 
 #: src/modules/statistics/settings.py:90
 msgctxt "guildset:season_start"
@@ -287,6 +271,8 @@ msgid ""
 "Activity ranks will be determined based on tracked activity since this time, and the leaderboard will display activity since this time by default. Unset to disable seasons and use all-time statistics instead.\n"
 "Provided dates and times are assumed to be in the guild `timezone`, so set this first!"
 msgstr ""
+"Etkinlik rütbeleri bu zamandan itibaren izlenen etkinliğe göre belirlenecek ve sıralama varsayılan olarak bu zamandan itibaren etkinliği gösterecektir. Sezonları devre dışı bırakmak ve tüm zamanların istatistiklerini kullanmak için kaldırın.\n"
+"Sağlanan tarih ve saatler sunucunun `timezone` diliminde kabul edilir, bu yüzden önce bunu ayarlayın!"
 
 #: src/modules/statistics/settings.py:104
 msgctxt "guildset:season_start|accepts"
@@ -298,27 +284,28 @@ msgctxt "guildset:season_start|notset"
 msgid "Not Set (Using all-time statistics)"
 msgstr "Ayarlanmadı (Tüm zamanların istatistiği kullanılıyor)"
 
-#: src/modules/statistics/settings.py:127
 #, possible-python-brace-format
 msgctxt "guildset:season_start|parse|error:future_time"
 msgid "Provided season start time {timestamp} is in the future!"
 msgstr "Belirtilen sezon başlangıç zamanı {timestamp} gelecekte yer alıyor!"
 
-#: src/modules/statistics/settings.py:139
 #, possible-python-brace-format
 msgctxt "guildset:season_start|set_response|set"
 msgid ""
 "The leaderboard season and activity ranks will now count from {timestamp}. Member ranks will update when they are next active.\n"
 "Use {rank_cmd} and press **Refresh Member Ranks** to refresh all ranks immediately."
 msgstr ""
+"Sıralama sezonu ve etkinlik rütbeleri artık {timestamp} tarihinden itibaren sayılacak. Üye rütbeleri bir sonraki etkinliklerinde güncellenecek.\n"
+"{rank_cmd} kullanın ve tüm rütbeleri hemen yenilemek için **Refresh Member Ranks** düğmesine basın."
 
-#: src/modules/statistics/settings.py:149
 #, possible-python-brace-format
 msgctxt "guildset:season_start|set_response|unset"
 msgid ""
 "The leaderboard and activity ranks will now count all-time statistics. Member ranks will update when they are next active.\n"
 "Use {rank_cmd} and press **Refresh Member Ranks** to refresh all ranks immediately."
 msgstr ""
+"Sıralama ve etkinlik rütbeleri artık tüm zamanların istatistiklerini sayacak. Üye rütbeleri bir sonraki etkinliklerinde güncellenecek.\n"
+"{rank_cmd} kullanın ve tüm rütbeleri hemen yenilemek için **Refresh Member Ranks** düğmesine basın."
 
 #: src/modules/statistics/settings.py:162
 msgctxt "guildset:unranked_roles"
@@ -332,12 +319,8 @@ msgstr "Lider tablosundan hariç tutulacak roller."
 
 #: src/modules/statistics/settings.py:169
 msgctxt "guildset:unranked_roles|long_desc"
-msgid ""
-"When set, members with *any* of these roles will not appear on the "
-"/leaderboard ranking list."
-msgstr ""
-"Ayarlandığında bu rollerden **herhangi birinde** bulunan kullanıcılar "
-"/leaderboard rütbe sıralamasında gösterilmeyecektir."
+msgid "When set, members with *any* of these roles will not appear on the /leaderboard ranking list."
+msgstr "Ayarlandığında bu rollerden **herhangi birinde** bulunan kullanıcılar /leaderboard rütbe sıralamasında gösterilmeyecektir."
 
 #: src/modules/statistics/settings.py:173
 msgctxt "guildset:unranked_roles|accepts"
@@ -349,13 +332,10 @@ msgctxt "guildset:unranked_roles|set_using"
 msgid "Role selector below."
 msgstr "Rol seçici aşağıdadır."
 
-#: src/modules/statistics/settings.py:199
 #, possible-python-brace-format
 msgctxt "guildset:unranked_roles|set_response|set"
-msgid ""
-"Members of the following roles will not appear on the leaderboard: {roles}"
-msgstr ""
-"Belirtilen rollere sahip üyeler lider tablosunda görünmeyecek: {roles}"
+msgid "Members of the following roles will not appear on the leaderboard: {roles}"
+msgstr "Belirtilen rollere sahip üyeler lider tablosunda görünmeyecek: {roles}"
 
 #: src/modules/statistics/settings.py:206
 msgctxt "guildset:unranked_roles|set_response|unset"
@@ -374,12 +354,8 @@ msgstr "İstatistik komutunda hangi istatistiklerin gösterileceği."
 
 #: src/modules/statistics/settings.py:228
 msgctxt "guildset:visible_stats|desc"
-msgid ""
-"Choose which statistics types to display in the leaderboard and statistics "
-"commands."
-msgstr ""
-"Lider tablosunda ve istatistik komutunda hangi istatistik türlerinin "
-"gösterileceğini seçin."
+msgid "Choose which statistics types to display in the leaderboard and statistics commands."
+msgstr "Lider tablosunda ve istatistik komutunda hangi istatistik türlerinin gösterileceğini seçin."
 
 #: src/modules/statistics/settings.py:232
 msgctxt "guildset:visible_stats|accepts"
@@ -391,12 +367,10 @@ msgctxt "guildset:visible_stats|set_using"
 msgid "Option menu below."
 msgstr "Seçenek menüsü aşağıda."
 
-#: src/modules/statistics/settings.py:261
 #, possible-python-brace-format
 msgctxt "guildset:visible_stats|set_response"
 msgid "Members will be able to view the following statistics types: {types}"
-msgstr ""
-"Üyeler bundan böyle bu istatistik türlerini görüntüleyebilecek: {types}"
+msgstr "Üyeler bundan böyle bu istatistik türlerini görüntüleyebilecek: {types}"
 
 #: src/modules/statistics/settings.py:272
 msgctxt "guildset:default_stat"
@@ -406,16 +380,12 @@ msgstr "varsayılan_istatistik"
 #: src/modules/statistics/settings.py:275
 msgctxt "guildset:default_stat|desc"
 msgid "Statistic type to display by default in setting dialogues."
-msgstr ""
-"Diyalogların ayarlanmasında varsayılan olarak görüntülenecek istatistik "
-"türü."
+msgstr "Diyalogların ayarlanmasında varsayılan olarak görüntülenecek istatistik türü."
 
 #: src/modules/statistics/settings.py:279
 msgctxt "guildset:default_stat|long_desc"
 msgid "Which statistic type to display by default in setting dialogues."
-msgstr ""
-"Diyalogların ayarlanmasında varsayılan olarak hangi istatistik türünün "
-"görüntüleneceği."
+msgstr "Diyalogların ayarlanmasında varsayılan olarak hangi istatistik türünün görüntüleneceği."
 
 #: src/modules/statistics/settings.py:313
 msgctxt "ui:statistics_config|menu:unranked_roles|placeholder"
@@ -454,20 +424,18 @@ msgstr "İstatistik Konfigürasyon Paneli"
 
 #: src/modules/statistics/settings.py:415
 msgctxt "dash:stats|title"
-msgid ""
-"Activity Statistics Configuration ({commands[admin config statistics]})"
-msgstr ""
+msgid "Activity Statistics Configuration ({commands[admin config statistics]})"
+msgstr "Etkinlik İstatistikleri Yapılandırması ({commands[admin config statistics]})"
 
 #: src/modules/statistics/settings.py:419
 msgctxt "dash:stats|dropdown|placeholder"
 msgid "Activity Statistics Panel"
 msgstr "Aktivite İstatistik Paneli"
 
-#: src/modules/statistics/graphics/stats.py:63
 #, possible-python-brace-format
 msgctxt "gui:stats|mode:voice|month"
 msgid "{hours} hours"
-msgstr ""
+msgstr "{hours} saat"
 
 #: src/modules/statistics/ui/goals.py:92
 msgctxt "ui:MonthlyUI|name"
@@ -524,12 +492,10 @@ msgctxt "modal:goal_editor|field:task_goal|placeholder"
 msgid "Enter the number of tasklist tasks you aim to do"
 msgstr "Yapmayı hedeflediğiniz görev listesi görev sayısını giriniz."
 
-#: src/modules/statistics/ui/weeklymonthly.py:159
 #, possible-python-brace-format
 msgctxt "modal:goal_editor|field:task_goal|error:NAN"
 msgid "The provided task goal `{input}` is not a number! Please try again."
-msgstr ""
-"Belirtilen görev hedefi `{input}` bir sayı değil! Lütfen tekrar deneyin."
+msgstr "Belirtilen görev hedefi `{input}` bir sayı değil! Lütfen tekrar deneyin."
 
 #: src/modules/statistics/ui/weeklymonthly.py:181
 msgctxt "modal:goal_editor|field:voice_goal|label"
@@ -561,28 +527,20 @@ msgctxt "modal:goal_editor|field:anki_goal|label"
 msgid "Enter a number of card revisions to aim for."
 msgstr "Hedeflediğiniz kart sayısını giriniz."
 
-#: src/modules/statistics/ui/weeklymonthly.py:216
 #, possible-python-brace-format
 msgctxt "modal:goal_editor|field:voice_goal|error:NAN"
-msgid ""
-"The provided study time goal `{input}` is not a number! Please try again."
-msgstr ""
-"Belirtilen çalışma zamanı hedefi `{input}` bir sayı değil! Lütfen tekrar "
-"deneyin."
+msgid "The provided study time goal `{input}` is not a number! Please try again."
+msgstr "Belirtilen çalışma zamanı hedefi `{input}` bir sayı değil! Lütfen tekrar deneyin."
 
-#: src/modules/statistics/ui/weeklymonthly.py:223
 #, possible-python-brace-format
 msgctxt "modal:goal_editor|field:text_goal|error:NAN"
 msgid "The provided message goal `{input}` is not a number! Please try again."
-msgstr ""
-"Belirtilen mesaj hedefi `{input}` bir sayı değil! Lütfen tekrar deneyin."
+msgstr "Belirtilen mesaj hedefi `{input}` bir sayı değil! Lütfen tekrar deneyin."
 
-#: src/modules/statistics/ui/weeklymonthly.py:230
 #, possible-python-brace-format
 msgctxt "modal:goal_editor|field:anki_goal|error:NAN"
 msgid "The provided card goal `{input}` is not a number! Please try again."
-msgstr ""
-"Belirtilen kart hedefi `{input}` bir sayı değil! Lütfen tekrar deneyin."
+msgstr "Belirtilen kart hedefi `{input}` bir sayı değil! Lütfen tekrar deneyin."
 
 #: src/modules/statistics/ui/weeklymonthly.py:252
 msgctxt "modal:goal_editor|field:weekly_task_editor|label"
@@ -612,7 +570,6 @@ msgstr ""
 "[ ] Biyoloji metnimi hazırla\n"
 "[x] İkinci matematik ödevimi tamamla\n"
 
-#: src/modules/statistics/ui/weeklymonthly.py:284
 #, possible-python-brace-format
 msgctxt "modal:goal_editor||field:task_editor|error:parse_general"
 msgid ""
@@ -637,25 +594,20 @@ msgctxt "ui:weeklymonthly|button:edit_goals|label"
 msgid "Edit Goals"
 msgstr "Hedefleri düzenle"
 
-#: src/modules/statistics/ui/weeklymonthly.py:519
 #, possible-python-brace-format
 msgctxt "ui:weeklymonthly|menu:period|monthly|label"
 msgid "{month} {year}"
 msgstr "{month} {year}"
 
-#: src/modules/statistics/ui/weeklymonthly.py:534
 #, possible-python-brace-format
 msgctxt "ui:weeklymonthly|menu:period|weekly|label"
 msgid "{year} W{week}"
 msgstr "{year} H{week}"
 
-#: src/modules/statistics/ui/weeklymonthly.py:538
 #, possible-python-brace-format
 msgctxt "ui:weeklymonthly|menu:period|weekly|desc"
-msgid ""
-"{start_day} {start_month} {start_year} to {end_day} {end_month} {end_year}"
-msgstr ""
-"{start_day} {start_month} {start_year} to {end_day} {end_month} {end_year}"
+msgid "{start_day} {start_month} {start_year} to {end_day} {end_month} {end_year}"
+msgstr "{start_day} {start_month} {start_year} to {end_day} {end_month} {end_year}"
 
 #: src/modules/statistics/ui/weeklymonthly.py:616
 msgctxt "ui:weeklymonthly|button:period|close|label"
@@ -684,12 +636,8 @@ msgstr "Görüntülenecek ayı seç"
 
 #: src/modules/statistics/ui/weeklymonthly.py:718
 msgctxt "ui:WeeklyMonthly|button:global|resp:success"
-msgid ""
-"You will now see combined statistics from all your servers (where "
-"applicable)! Press again to revert."
-msgstr ""
-"Şu anda tüm sunucularınızın birleştirilmiş istatistiklerini göreceksiniz "
-"(uygun olanları)! Geri almak için bir daha basın."
+msgid "You will now see combined statistics from all your servers (where applicable)! Press again to revert."
+msgstr "Şu anda tüm sunucularınızın birleştirilmiş istatistiklerini göreceksiniz (uygun olanları)! Geri almak için bir daha basın."
 
 #: src/modules/statistics/ui/weeklymonthly.py:731
 msgctxt "ui:WeeklyMonthly|button:global|mode:local"
@@ -720,7 +668,6 @@ msgctxt "modal:profile_editor|title"
 msgid "Profile Tag Editor"
 msgstr "Profil Etiketi Editörü"
 
-#: src/modules/statistics/ui/profile.py:71
 #, possible-python-brace-format
 msgctxt "modal:profile_editor|error:too_many_tags"
 msgid "Too many tags! You can have at most `{limit}` profile tags."
@@ -763,12 +710,8 @@ msgstr "İstatistikleri Göster"
 
 #: src/modules/statistics/ui/profile.py:253
 msgctxt "ui:Profile|button:global|resp:success"
-msgid ""
-"You will now see statistics from all you servers (where applicable)! Press "
-"again to revert."
-msgstr ""
-"Şu anda tüm sunucularınızın istatistiklerini göreceksiniz (uygun olanları)! "
-"Geri almak için bir daha basın."
+msgid "You will now see statistics from all you servers (where applicable)! Press again to revert."
+msgstr "Şu anda tüm sunucularınızın istatistiklerini göreceksiniz (uygun olanları)! Geri almak için bir daha basın."
 
 #: src/modules/statistics/ui/leaderboard.py:257
 msgctxt "ui:leaderboard|menu:stats|placeholder"
@@ -842,34 +785,28 @@ msgstr "Geçersiz sayfa numarası, lütfen tekrar deneyin!"
 
 #: src/modules/statistics/ui/leaderboard.py:447
 msgctxt "ui:leaderboard|chunk_warning"
-msgid ""
-"**Note:** Could not retrieve member list from Discord, so some members may "
-"be missing. Try again in a minute!"
-msgstr ""
+msgid "**Note:** Could not retrieve member list from Discord, so some members may be missing. Try again in a minute!"
+msgstr "**Not:** Discord'dan üye listesi alınamadı, bu yüzden bazı üyeler eksik olabilir. Bir dakika içinde tekrar deneyin!"
 
-#: src/modules/statistics/ui/leaderboard.py:454
 #, possible-python-brace-format
 msgctxt "ui:leaderboard|since"
 msgid "Counting statistics since {timestamp}"
-msgstr ""
+msgstr "{timestamp} tarihinden itibaren istatistik sayımı"
 
-#: src/modules/statistics/ui/leaderboard.py:467
 #, possible-python-brace-format
 msgctxt "ui:leaderboard|mode:voice|message:empty|desc"
 msgid "There has been no voice activity since {timestamp}"
-msgstr ""
+msgstr "{timestamp} tarihinden beri sesli etkinlik olmadı"
 
-#: src/modules/statistics/ui/leaderboard.py:472
 #, possible-python-brace-format
 msgctxt "ui:leaderboard|mode:text|message:empty|desc"
 msgid "There has been no message activity since {timestamp}"
-msgstr ""
+msgstr "{timestamp} tarihinden beri mesaj etkinliği olmadı"
 
-#: src/modules/statistics/ui/leaderboard.py:477
 #, possible-python-brace-format
 msgctxt "ui:leaderboard|mode:anki|message:empty|desc"
 msgid "There have been no Anki cards reviewed since {timestamp}"
-msgstr ""
+msgstr "{timestamp} tarihinden beri Anki kartı tekrarlanmadı"
 
 #: src/modules/statistics/ui/leaderboard.py:486
 msgctxt "ui:leaderboard|message:empty|title"

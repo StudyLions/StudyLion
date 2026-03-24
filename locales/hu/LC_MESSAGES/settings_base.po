@@ -1,0 +1,211 @@
+# Hungarian translation for LionBot - settings_base
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 19:57+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Hungarian\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/settings/ui.py:180
+msgctxt "setting|formatted|notset"
+msgid "Not Set"
+msgstr "Nincs beállítva"
+
+#: src/settings/ui.py:324
+msgctxt "setting|embed_field|too_long"
+msgid "Too long to display here!"
+msgstr "Túl hosszú az itteni megjelenítéshez!"
+
+#, possible-python-brace-format
+msgctxt "setting|summary_embed|title"
+msgid "Configuration options for `{name}`"
+msgstr "Konfigurációs beállítások a(z) `{name}` elemhez"
+
+#: src/settings/ui.py:370
+msgctxt "setting|summary_table|field:currently|key"
+msgid "Currently"
+msgstr "Jelenleg"
+
+#: src/settings/ui.py:377
+msgctxt "setting|summary_table|field:default|key"
+msgid "By Default"
+msgstr "Alapértelmezés"
+
+#: src/settings/ui.py:384
+msgctxt "setting|summary_table|field:set|key"
+msgid "Set Using"
+msgstr "Beállítás"
+
+#: src/settings/ui.py:502
+msgctxt "setting|interaction_check|error"
+msgid "You do not have sufficient permissions to do this!"
+msgstr "Nincs elegendő jogosultságod ehhez!"
+
+#: src/settings/setting_types.py:48
+msgctxt "settype:string|accepts"
+msgid "Any Text"
+msgstr "Bármilyen szöveg"
+
+#, possible-python-brace-format
+msgctxt "settype:string|error"
+msgid "Provided string is too long! Maximum length: {maxlen} characters."
+msgstr "A megadott szöveg túl hosszú! Maximális hossz: {maxlen} karakter."
+
+#: src/settings/setting_types.py:114
+msgctxt "settype:emoji|accepts"
+msgid "Paste a builtin emoji, custom emoji, or emoji id."
+msgstr "Illessz be egy beépített emojit, egyéni emojit vagy emoji azonosítót."
+
+#, possible-python-brace-format
+msgctxt "settype:emoji|error:parse"
+msgid "Could not parse `{provided}` as a Discord emoji. Supported formats are builtin emojis (e.g. `{builtin}`), custom emojis (e.g. {custom}), or custom emoji ids (e.g. `{custom_id}`)."
+msgstr "Nem sikerült a `{provided}` értéket Discord emojiként értelmezni. Támogatott formátumok: beépített emojik (pl. `{builtin}`), egyéni emojik (pl. {custom}) vagy egyéni emoji azonosítók (pl. `{custom_id}`)."
+
+#: src/settings/setting_types.py:236
+msgctxt "settype:channel|accepts"
+msgid "A channel name or id"
+msgstr "Egy csatorna neve vagy azonosítója"
+
+#, possible-python-brace-format
+msgctxt "settype:channel|parse|error:not_found"
+msgid "Channel `{string}` could not be found in this guild!"
+msgstr "A(z) `{string}` csatorna nem található ezen a szerveren!"
+
+#: src/settings/setting_types.py:368
+msgctxt "settype:role|accepts"
+msgid "A role name or id"
+msgstr "Egy szerepkör neve vagy azonosítója"
+
+#, possible-python-brace-format
+msgctxt "settype:role|parse|error:not_found"
+msgid "Role `{string}` could not be found in this guild!"
+msgstr "A(z) `{string}` szerepkör nem található ezen a szerveren!"
+
+#: src/settings/setting_types.py:495
+msgctxt "settype:bool|accepts"
+msgid "Enabled/Disabled"
+msgstr "Engedélyezve/Letiltva"
+
+#: src/settings/setting_types.py:500
+msgctxt "settype:bool|parse:truthy_values"
+msgid "enabled|yes|true|on|enable|1"
+msgstr "engedélyezve|igen|igaz|be|engedélyezés|1"
+
+#: src/settings/setting_types.py:504
+msgctxt "settype:bool|parse:falsey_values"
+msgid "disabled|no|false|off|disable|0"
+msgstr "letiltva|nem|hamis|ki|letiltás|0"
+
+#: src/settings/setting_types.py:509
+msgctxt "settype:bool|output:true"
+msgid "On"
+msgstr "Be"
+
+#: src/settings/setting_types.py:510
+msgctxt "settype:bool|output:false"
+msgid "Off"
+msgstr "Ki"
+
+#: src/settings/setting_types.py:511
+msgctxt "settype:bool|output:none"
+msgid "Not Set"
+msgstr "Nincs beállítva"
+
+#: src/settings/setting_types.py:622
+msgctxt "settype:integer|accepts"
+msgid "An integer"
+msgstr "Egy egész szám"
+
+#: src/settings/setting_types.py:685
+msgctxt "settype:emoji|desc"
+msgid "Unicode or custom emoji"
+msgstr "Unicode vagy egyéni emoji"
+
+#: src/settings/setting_types.py:757
+msgctxt "settype:guildid|accepts"
+msgid "Any Snowflake ID"
+msgstr "Bármilyen Snowflake ID"
+
+#: src/settings/setting_types.py:826
+msgctxt "settype:timezone|accepts"
+msgid "A timezone name from the 'tz database' (e.g. 'Europe/London')"
+msgstr "Egy időzóna neve a 'tz database'-ből (pl. 'Europe/London')"
+
+#: src/settings/setting_types.py:896
+msgctxt "settype:timezone|summary_table|field:supported|key"
+msgid "Supported"
+msgstr "Támogatott"
+
+#, possible-python-brace-format
+msgctxt "settype:timezone|summary_table|field:supported|value"
+msgid "Any timezone from the [tz database]({link})."
+msgstr "Bármilyen időzóna a [tz database]({link})-ből."
+
+#, possible-python-brace-format
+msgctxt "set_type:timezone|acmpl|no_matching"
+msgid "No timezones matching '{input}'!"
+msgstr "Nincs '{input}'-nak megfelelő időzóna!"
+
+#, possible-python-brace-format
+msgctxt "set_type:timezone|acmpl|choice"
+msgid "{tz} (Currently {now})"
+msgstr "{tz} (Jelenleg {now})"
+
+#: src/settings/setting_types.py:960
+msgctxt "settype:timestamp|accepts"
+msgid "A timestamp in the form YYYY-MM-DD HH:MM"
+msgstr "Egy időbélyeg YYYY-MM-DD HH:MM formátumban"
+
+#, possible-python-brace-format
+msgctxt "settype:timestamp|parse|error:invalid"
+msgid "Could not parse `{provided}` as a timestamp. Please use `YYYY-MM-DD HH:MM` format."
+msgstr "Nem sikerült a `{provided}` értéket időbélyegként értelmezni. Kérjük, használd a `YYYY-MM-DD HH:MM` formátumot."
+
+#: src/settings/setting_types.py:1020
+msgctxt "settype:raw|accepts"
+msgid "Anything"
+msgstr "Bármi"
+
+#: src/settings/setting_types.py:1073
+msgctxt "settype:enum|accepts"
+msgid "A valid option."
+msgstr "Egy érvényes lehetőség."
+
+#, possible-python-brace-format
+msgctxt "settype:enum|parse|error:not_found"
+msgid "`{provided}` is not a valid option!"
+msgstr "A(z) `{provided}` nem érvényes lehetőség!"
+
+#: src/settings/setting_types.py:1171
+msgctxt "settype:duration|accepts"
+msgid "A number of days, hours, minutes, and seconds, e.g. `2d 4h 10s`."
+msgstr "Napok, órák, percek és másodpercek száma, pl. `2d 4h 10s`."
+
+#: src/settings/setting_types.py:1352
+msgctxt "settype:channel_list|accepts"
+msgid "Comma separated list of channel ids."
+msgstr "Vesszővel elválasztott csatorna-azonosítók listája."
+
+#: src/settings/setting_types.py:1363
+msgctxt "settype:role_list|accepts"
+msgid "Comma separated list of role ids."
+msgstr "Vesszővel elválasztott szerepkör-azonosítók listája."
+
+#: src/settings/setting_types.py:1379
+msgctxt "settype:stringlist|accepts"
+msgid "Comma separated strings."
+msgstr "Vesszővel elválasztott szövegek."
+
+#: src/settings/setting_types.py:1390
+msgctxt "settype:guildidlist|accepts"
+msgid "Comma separated list of guild ids."
+msgstr "Vesszővel elválasztott szerver-azonosítók listája."

@@ -20,6 +20,10 @@ from modules.pomodoro.options import TimerOptions
 from . import babel, logger
 from .data import RoomData
 from .settings import RoomSettings
+# --- AI-MODIFIED (2026-03-22) ---
+# Purpose: Import dashboard URL for link button in room control panel
+from .lib import ROOM_DASHBOARD_URL
+# --- END AI-MODIFIED ---
 
 if TYPE_CHECKING:
     from .room import Room
@@ -37,10 +41,13 @@ class RoomUI(MessageUI):
     """
 
     def __init__(self, bot: LionBot, room: 'Room', **kwargs):
-        # Do we need to set the locale?
-        # The room never calls the UI itself, so we should always have context locale
-        # If this changes (e.g. persistent status), uncomment this.
-        # ctx_locale.set(room.lguild.config.get('guild_locale').value)
+        # --- AI-MODIFIED (2026-03-14) ---
+        # Purpose: Set guild locale for room UI so translations work if context is missing
+        from babel.translator import ctx_locale
+        guild_locale = room.lguild.config.get('guild_locale').value
+        if guild_locale:
+            ctx_locale.set(guild_locale)
+        # --- END AI-MODIFIED ---
         super().__init__(**kwargs)
         self.bot = bot
         self.room = room
@@ -433,6 +440,15 @@ class RoomUI(MessageUI):
         return MessageArgs(embed=embed)
 
     async def refresh_layout(self):
+        # --- AI-MODIFIED (2026-03-22) ---
+        # Purpose: Add "Dashboard" link button to room control panel layout
+        dashboard_link = Button(
+            style=ButtonStyle.link,
+            url=ROOM_DASHBOARD_URL,
+            label="Dashboard",
+            emoji="\U0001F4CA"
+        )
+        # --- END AI-MODIFIED ---
         if self._callerid == self.room.data.ownerid:
             # If the owner called, show full config UI
             await asyncio.gather(
@@ -444,11 +460,21 @@ class RoomUI(MessageUI):
                 self.invite_menu_refresh(),
                 self.kick_menu_refresh()
             )
+            # --- AI-MODIFIED (2026-03-22) ---
+            # Purpose: Include dashboard link button in owner layout
+            # --- Original code (commented out for rollback) ---
+            # self.set_layout(
+            #     (self.desposit_button, self.timer_button, self.refresh_button, self.close_button),
+            #     (self.invite_menu, ),
+            #     (self.kick_menu, )
+            # )
+            # --- End original code ---
             self.set_layout(
-                (self.desposit_button, self.timer_button, self.refresh_button, self.close_button),
+                (self.desposit_button, self.timer_button, dashboard_link, self.refresh_button, self.close_button),
                 (self.invite_menu, ),
                 (self.kick_menu, )
             )
+            # --- END AI-MODIFIED ---
         else:
             # Just show deposit button
             await asyncio.gather(
@@ -456,9 +482,17 @@ class RoomUI(MessageUI):
                 self.refresh_button_refresh(),
                 self.close_button_refresh(),
             )
+            # --- AI-MODIFIED (2026-03-22) ---
+            # Purpose: Include dashboard link button in member layout
+            # --- Original code (commented out for rollback) ---
+            # self.set_layout(
+            #     (self.desposit_button, self.refresh_button, self.close_button),
+            # )
+            # --- End original code ---
             self.set_layout(
-                (self.desposit_button, self.refresh_button, self.close_button),
+                (self.desposit_button, dashboard_link, self.refresh_button, self.close_button),
             )
+            # --- END AI-MODIFIED ---
 
     async def reload(self):
         """

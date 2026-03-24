@@ -1,0 +1,1186 @@
+# Lithuanian translation for LionBot - ranks
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 23:20+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Lithuanian\n"
+"Language: lt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: src/modules/ranks/cog.py:76
+msgctxt "cmd:configure_ranks|param:rank_type|choice:voice"
+msgid "Voice"
+msgstr "Balsas"
+
+#: src/modules/ranks/cog.py:77
+msgctxt "cmd:configure_ranks|param:rank_type|choice:xp"
+msgid "XP"
+msgstr "XP"
+
+#: src/modules/ranks/cog.py:78
+msgctxt "cmd:configure_ranks|param:rank_type|choice:message"
+msgid "Message"
+msgstr "Žinutė"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:rank_check|error:remove_failed"
+msgid "Failed to remove old rank roles: `{error}`"
+msgstr "Nepavyko pašalinti senų rango vaidmenų: `{error}`"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:rank_check|error:add_failed"
+msgid "Failed to add new rank role: `{error}`"
+msgstr "Nepavyko pridėti naujo rango vaidmens: `{error}`"
+
+#: src/modules/ranks/cog.py:380
+msgctxt "eventlog|event:rank_check|error:add_impossible"
+msgid ""
+"Could not assign new activity rank role. Lacking permissions or invalid "
+"role."
+msgstr ""
+"Nepavyko priskirti naujo veiklos rango vaidmens. Trūksta leidimų arba "
+"netinkamas vaidmuo."
+
+#: src/modules/ranks/cog.py:386
+msgctxt "eventlog|event:rank_check|error:permissions"
+msgid ""
+"Could not update activity rank roles, I lack the 'Manage Roles' permission."
+msgstr ""
+"Nepavyko atnaujinti veiklos rango vaidmenų, man trūksta 'Manage Roles' "
+"leidimo."
+
+#: src/modules/ranks/cog.py:398
+msgctxt "eventlog|event:rank_check|name"
+msgid "Member Activity Rank Roles Updated"
+msgstr "Nario veiklos rango vaidmenys atnaujinti"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:new_rank|error:remove_failed"
+msgid "Failed to remove old rank roles: `{error}`"
+msgstr "Nepavyko pašalinti senų rango vaidmenų: `{error}`"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:new_rank|error:add_failed"
+msgid "Failed to add new rank role: `{error}`"
+msgstr "Nepavyko pridėti naujo rango vaidmens: `{error}`"
+
+#: src/modules/ranks/cog.py:507
+msgctxt "eventlog|event:new_rank|error:add_impossible"
+msgid ""
+"Could not assign new activity rank role. Lacking permissions or invalid "
+"role."
+msgstr ""
+"Nepavyko priskirti naujo veiklos rango vaidmens. Trūksta leidimų arba "
+"netinkamas vaidmuo."
+
+#: src/modules/ranks/cog.py:513
+msgctxt "eventlog|event:new_rank|error:permissions"
+msgid ""
+"Could not update activity rank roles, I lack the 'Manage Roles' permission."
+msgstr ""
+"Nepavyko atnaujinti veiklos rango vaidmenų, man trūksta 'Manage Roles' "
+"leidimo."
+
+#: src/modules/ranks/cog.py:548
+msgctxt "eventlog|event:new_rank|error:notify_failed"
+msgid "Could not notify member."
+msgstr "Nepavyko pranešti nariui."
+
+#: src/modules/ranks/cog.py:555
+msgctxt "eventlog|event:new_rank|name"
+msgid "Member Achieved Activity rank"
+msgstr "Narys pasiekė veiklos rangą"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:new_rank|desc"
+msgid "{member} earned the new activity rank {rank}"
+msgstr "{member} užsidirbo naują veiklos rangą {rank}"
+
+#: src/modules/ranks/cog.py:587
+msgctxt "event:rank_update|embed:notify"
+msgid "New Activity Rank Attained!"
+msgstr "Pasiektas naujas veiklos rangas!"
+
+#: src/modules/ranks/cog.py:692
+msgctxt "rank_refresh|error:cannot_chunk|desc"
+msgid "Could not retrieve member list from Discord. Please try again later."
+msgstr "Nepavyko gauti narių sąrašo iš Discord. Bandykite vėliau."
+
+#: src/modules/ranks/cog.py:705
+msgctxt "rank_refresh|error:roles_dne|desc"
+msgid "Some ranks have invalid or deleted roles! Please remove them first."
+msgstr ""
+"Kai kurie rangai turi netinkamus arba ištrintus vaidmenis! Pirmiausia "
+"pašalinkite juos."
+
+#, possible-python-brace-format
+msgctxt "rank_refresh|error:unassignable_roles|desc"
+msgid ""
+"I have insufficient permissions to assign the following role(s):\n"
+"{roles}"
+msgstr ""
+"Neturiu pakankamai leidimų priskirti šiuos vaidmenis:\n"
+"{roles}"
+
+#: src/modules/ranks/cog.py:785
+msgctxt "rank_refresh|remove_roles|audit"
+msgid "Removing invalid rank role."
+msgstr "Šalinamas netinkamas rango vaidmuo."
+
+#, possible-python-brace-format
+msgctxt "rank_refresh|remove_roles|small_error"
+msgid "*Could not remove ranks from {member}*"
+msgstr "*Nepavyko pašalinti rangų nuo {member}*"
+
+#: src/modules/ranks/cog.py:806
+msgctxt "rank_refresh|remove_roles|error:too_many_issues"
+msgid ""
+"Too many issues occurred while removing ranks! Please check my permissions "
+"and try again in a few minutes."
+msgstr ""
+"Per daug problemų šalinant rangus! Patikrinkite mano leidimus ir bandykite "
+"dar kartą po kelių minučių."
+
+#: src/modules/ranks/cog.py:820
+msgctxt "rank_refresh|add_roles|audit"
+msgid "Adding rank role from refresh"
+msgstr "Pridedamas rango vaidmuo iš atnaujinimo"
+
+#, possible-python-brace-format
+msgctxt "rank_refresh|add_roles|small_error"
+msgid "*Could not add {role} to {member}*"
+msgstr "*Nepavyko pridėti {role} nariui {member}*"
+
+#: src/modules/ranks/cog.py:841
+msgctxt "rank_refresh|add_roles|error:too_many_issues"
+msgid ""
+"Too many issues occurred while adding ranks! Please check my permissions and"
+" try again in a few minutes."
+msgstr ""
+"Per daug problemų pridedant rangus! Patikrinkite mano leidimus ir bandykite "
+"dar kartą po kelių minučių."
+
+#: src/modules/ranks/cog.py:869
+msgctxt "eventlog|event:rank_refresh|name"
+msgid "Activity Ranks Refreshed"
+msgstr "Veiklos rangai atnaujinti"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:rank_refresh|desc"
+msgid ""
+"{actor} refresh member activity ranks.\n"
+"**`{removed}`** invalid rank roles removed.\n"
+"**`{added}`** new rank roles added."
+msgstr ""
+"{actor} atnaujino narių veiklos rangus.\n"
+"**`{removed}`** netinkamų rango vaidmenų pašalinta.\n"
+"**`{a..."
+
+#: src/modules/ranks/cog.py:884
+msgctxt "cmd:ranks"
+msgid "ranks"
+msgstr "ranks"
+
+#: src/modules/ranks/cog.py:916
+msgctxt "cmd:configure_ranks"
+msgid "ranks"
+msgstr "ranks"
+
+#: src/modules/ranks/cog.py:917
+msgctxt "cmd:configure_ranks|desc"
+msgid "Configure Activity Ranks"
+msgstr "Konfigūruoti veiklos rangus"
+
+#, possible-python-brace-format
+msgctxt ""
+"cmd:configure_ranks|response:updated|setting:notification|withdm_withchannel"
+msgid ""
+"Rank update notifications will be sent via **direct message** when possible,"
+" otherwise to {channel}"
+msgstr ""
+"Rango atnaujinimo pranešimai bus siunčiami **tiesiogine žinute**, kai "
+"įmanoma, kitu atveju į {channel}"
+
+#: src/modules/ranks/cog.py:982
+msgctxt ""
+"cmd:configure_ranks|response:updated|setting:notification|withdm_nochannel"
+msgid "Rank update notifications will be sent via **direct message**."
+msgstr "Rango atnaujinimo pranešimai bus siunčiami **tiesiogine žinute**."
+
+#, possible-python-brace-format
+msgctxt ""
+"cmd:configure_ranks|response:updated|setting:notification|nodm_withchannel"
+msgid "Rank update notifications will be sent to {channel}."
+msgstr "Rango atnaujinimo pranešimai bus siunčiami į {channel}."
+
+#: src/modules/ranks/cog.py:993
+msgctxt ""
+"cmd:configure_ranks|response:updated|setting:notification|nodm_nochannel"
+msgid "Members will not be notified when their activity rank updates."
+msgstr "Nariai nebus informuojami, kai jų veiklos rangas atnaujinamas."
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:role_name"
+msgid "{role_name}"
+msgstr "{role_name}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:guild_name"
+msgid "{guild_name}"
+msgstr "{guild_name}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:user_name"
+msgid "{user_name}"
+msgstr "{user_name}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:role_id"
+msgid "{role_id}"
+msgstr "{role_id}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:guild_id"
+msgid "{guild_id}"
+msgstr "{guild_id}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:user_id"
+msgid "{user_id}"
+msgstr "{user_id}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:role_mention"
+msgid "{role_mention}"
+msgstr "{role_mention}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:user_mention"
+msgid "{user_mention}"
+msgstr "{user_mention}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:requires"
+msgid "{rank_requires}"
+msgstr "{rank_requires}"
+
+#: src/modules/ranks/settings.py:27
+msgctxt "guildset:rank_type|output:voice"
+msgid "`Voice`"
+msgstr "`Balsas`"
+
+#: src/modules/ranks/settings.py:28
+msgctxt "guildset:rank_type|output:xp"
+msgid "`Exp`"
+msgstr "`Exp`"
+
+#: src/modules/ranks/settings.py:29
+msgctxt "guildset:rank_type|output:message"
+msgid "`Messages`"
+msgstr "`Žinutės`"
+
+#: src/modules/ranks/settings.py:32
+msgctxt "guildset:rank_type|input_format:voice"
+msgid "Voice"
+msgstr "Balsas"
+
+#: src/modules/ranks/settings.py:33
+msgctxt "guildset:rank_type|input_format:xp"
+msgid "Exp"
+msgstr "Exp"
+
+#: src/modules/ranks/settings.py:34
+msgctxt "guildset:rank_type|input_format:message"
+msgid "Messages"
+msgstr "Žinutės"
+
+#: src/modules/ranks/settings.py:37
+msgctxt "guildset:rank_type|input_pattern:voice"
+msgid "voice|study"
+msgstr "voice|study"
+
+#: src/modules/ranks/settings.py:38
+msgctxt "guildset:rank_type|input_pattern:voice"
+msgid "text|message|messages"
+msgstr "text|message|messages"
+
+#: src/modules/ranks/settings.py:39
+msgctxt "guildset:rank_type|input_pattern:xp"
+msgid "xp|exp|experience"
+msgstr "xp|exp|experience"
+
+#: src/modules/ranks/settings.py:47
+msgctxt "guildset:rank_type"
+msgid "rank_type"
+msgstr "rank_type"
+
+#: src/modules/ranks/settings.py:50
+msgctxt "guildset:rank_type|desc"
+msgid ""
+"The type of statistic (messages | xp | voice hours) used to determine "
+"activity ranks."
+msgstr ""
+"Statistikos tipas (žinutės | xp | balso valandos), naudojamas veiklos "
+"rangams nustatyti."
+
+#: src/modules/ranks/settings.py:54
+msgctxt "guildset:rank_type|long_desc"
+msgid ""
+"Which statistic is used to reward activity ranks.\n"
+"`Voice` is the number of hours active in tracked voice channels, `Exp` is a measure of message activity, and `Message` is a simple count of messages sent."
+msgstr ""
+"Kuri statistika naudojama veiklos rangams atlyginti.\n"
+"`Balsas` yra aktyvių valandų skaičius sekamose balso kanaluose, `Exp` yra žinučių veiklos matas, o `Žinutė` yra paprastas išsiųstų žinučių skaičius."
+
+#: src/modules/ranks/settings.py:61
+msgctxt "guildset:rank_type|accepts"
+msgid "Voice/Exp/Messages"
+msgstr "Voice/Exp/Messages"
+
+#: src/modules/ranks/settings.py:73
+msgctxt "guildset:rank_type|set_response|type:voice"
+msgid "Members will be awarded activity ranks based on `Voice Activity`."
+msgstr "Nariams bus skiriami veiklos rangai pagal `Balso veiklą`."
+
+#: src/modules/ranks/settings.py:78
+msgctxt "guildset:rank_type|set_response|type:messages"
+msgid "Members will be awarded activity ranks based on `Messages Sent`."
+msgstr "Nariams bus skiriami veiklos rangai pagal `Išsiųstas žinutes`."
+
+#: src/modules/ranks/settings.py:83
+msgctxt "guildset:rank_type|set_response|type:xp"
+msgid "Members will be awarded activity ranks based on `Message XP Earned`."
+msgstr "Nariams bus skiriami veiklos rangai pagal `Uždirbtą žinučių XP`."
+
+#, possible-python-brace-format
+msgctxt "guildset:rank_channel|set_using"
+msgid "{cmd} or option menu below."
+msgstr "{cmd} arba pasirinkimų meniu žemiau."
+
+#: src/modules/ranks/settings.py:106
+msgctxt "guildset:rank_channel"
+msgid "rank_channel"
+msgstr "rank_channel"
+
+#: src/modules/ranks/settings.py:109
+msgctxt "guildset:rank_channel|desc"
+msgid "The channel in which to send rank update notifications."
+msgstr "Kanalas, kuriame siunčiami rango atnaujinimo pranešimai."
+
+#: src/modules/ranks/settings.py:113
+msgctxt "guildset:rank_channel|long_desc"
+msgid ""
+"Whenever a user advances a rank, a congratulatory message will be sent in "
+"this channel, if set. If `dm_ranks` is enabled, this channel will only be "
+"used when the user has opted not to receive DM notifications, or is "
+"otherwise unreachable."
+msgstr ""
+"Kai vartotojas pakyla range, sveikinimo žinutė bus išsiųsta šiame kanale, "
+"jei nustatytas. Jei `dm_ranks` įjungtas, šis kanalas naudojamas tik kai "
+"vartotojas atsisakė DM pranešimų arba yra nepasiekiamas."
+
+#: src/modules/ranks/settings.py:119
+msgctxt "guildset:rank_channel|accepts"
+msgid "Rank notification channel name or id."
+msgstr "Rango pranešimų kanalo pavadinimas arba id."
+
+#, possible-python-brace-format
+msgctxt "guildset:rank_channel|set_response|set"
+msgid "Rank update messages will be sent to {channel}."
+msgstr "Rango atnaujinimo žinutės bus siunčiamos į {channel}."
+
+#: src/modules/ranks/settings.py:136
+msgctxt "guildset:rank_channel|set_response|unset"
+msgid ""
+"Rank update messages will be ignored or sent via DM (if `dm_ranks` is "
+"enabled)."
+msgstr ""
+"Rango atnaujinimo žinutės bus ignoruojamos arba siunčiamos per DM (jei "
+"`dm_ranks` įjungtas)."
+
+#, possible-python-brace-format
+msgctxt "guildset:rank_channel|set_using"
+msgid "{cmd} or channel selector below."
+msgstr "{cmd} arba kanalo pasirinkimą žemiau."
+
+#: src/modules/ranks/settings.py:157
+msgctxt "guildset:dm_ranks"
+msgid "dm_ranks"
+msgstr "dm_ranks"
+
+#: src/modules/ranks/settings.py:160
+msgctxt "guildset:dm_ranks|desc"
+msgid ""
+"Whether to send rank advancement notifications through direct messages."
+msgstr "Ar siųsti rango paaukštinimo pranešimus tiesioginėmis žinutėmis."
+
+#: src/modules/ranks/settings.py:164
+msgctxt "guildset:dm_ranks|long_desc"
+msgid ""
+"If enabled, congratulatory messages for rank advancement will be direct "
+"messaged to the user, instead of being sent to the configured "
+"`rank_channel`."
+msgstr ""
+"Jei įjungta, sveikinimo žinutės dėl rango paaukštinimo bus siunčiamos "
+"tiesioginiu pranešimu vartotojui, o ne į sukonfigūruotą `rank_channel`."
+
+#: src/modules/ranks/settings.py:178
+msgctxt "guildset:dm_ranks|response:true"
+msgid "I will direct message members upon rank advancement."
+msgstr "Siųsiu tiesiogines žinutes nariams dėl rango paaukštinimo."
+
+#: src/modules/ranks/settings.py:183
+msgctxt "guildset:dm_ranks|response:false"
+msgid "I will never direct message members upon rank advancement."
+msgstr "Niekada nesiųsiu tiesioginių žinučių nariams dėl rango paaukštinimo."
+
+#: src/modules/ranks/ui/preview.py:75
+msgctxt "ui:rank_preview|button:edit|error:role_deleted"
+msgid ""
+"The role underlying this rank no longer exists! Please select a new role "
+"from the role menu."
+msgstr "Šio rango vaidmuo nebegalioja! Pasirinkite naują vaidmenį iš meniu."
+
+#: src/modules/ranks/ui/preview.py:82
+msgctxt "ui:rank_preview|button:edit|error:role_not_assignable"
+msgid ""
+"I do not have permission to edit the underlying role! Please select a new "
+"role from the role menu, or ensure my top role is above the selected role."
+msgstr ""
+"Neturiu leidimo redaguoti vaidmens! Pasirinkite naują vaidmenį arba "
+"įsitikinkite, kad mano aukščiausias vaidmuo yra virš pasirinkto."
+
+#: src/modules/ranks/ui/preview.py:91
+msgctxt "ui:rank_preview|button:edit|error|title"
+msgid "Failed to edit rank!"
+msgstr "Nepavyko redaguoti rango!"
+
+#: src/modules/ranks/ui/preview.py:109
+msgctxt "ui:rank_preview|button:edit|label"
+msgid "Edit"
+msgstr "Redaguoti"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_preview|button:delete|response:success|description|with_role"
+msgid ""
+"You have deleted the rank {mention}. Press the button below to also delete "
+"the role."
+msgstr ""
+"Ištrynėte rangą {mention}. Paspauskite mygtuką žemiau, kad ištrintumėte ir "
+"vaidmenį."
+
+#, possible-python-brace-format
+msgctxt "ui:rank_preview|button:delete|response:success|description|no_role"
+msgid "You have deleted the rank {mention}."
+msgstr "Ištrynėte rangą {mention}."
+
+#: src/modules/ranks/ui/preview.py:153
+msgctxt "ui:rank_preview|button:delete|response:success|title"
+msgid "Rank Deleted"
+msgstr "Rangas ištrintas"
+
+#: src/modules/ranks/ui/preview.py:163
+msgctxt ""
+"ui:rank_preview|button:delete|response:success|button:delete_role|label"
+msgid "Delete Role"
+msgstr "Ištrinti vaidmenį"
+
+#, possible-python-brace-format
+msgctxt ""
+"ui:rank_preview|button:delete|response:success|button:delete_role|response:errored|desc"
+msgid ""
+"You have deleted the rank **{name}**! Could not delete the role due to an "
+"unknown error."
+msgstr ""
+"Ištrynėte rangą **{name}**! Nepavyko ištrinti vaidmens dėl nežinomos "
+"klaidos."
+
+#, possible-python-brace-format
+msgctxt ""
+"ui:rank_preview|button:delete|response:success|button:delete_role|response:success|desc"
+msgid "You have deleted the rank **{name}** along with the underlying role."
+msgstr "Ištrynėte rangą **{name}** kartu su vaidmeniu."
+
+#: src/modules/ranks/ui/preview.py:202
+msgctxt "ui:rank_preview|button:delete|label"
+msgid "Delete Rank"
+msgstr "Ištrinti rangą"
+
+#: src/modules/ranks/ui/preview.py:232
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:is_default"
+msgid "The @everyone role cannot be removed, and cannot be a rank!"
+msgstr "Vaidmuo @everyone negali būti pašalintas ir negali būti rangas!"
+
+#: src/modules/ranks/ui/preview.py:237
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:is_managed"
+msgid ""
+"The role is managed by another application or integration, and cannot be a "
+"rank!"
+msgstr ""
+"Vaidmuo valdomas kitos programos ar integracijos ir negali būti rangas!"
+
+#: src/modules/ranks/ui/preview.py:242
+msgctxt ""
+"ui:rank_preview|menu:roles|error:not_assignable|suberror:no_permissions"
+msgid ""
+"I do not have the `MANAGE_ROLES` permission in this server, so I cannot "
+"manage ranks!"
+msgstr ""
+"Neturiu `MANAGE_ROLES` leidimo šiame serveryje, todėl negaliu valdyti rangų!"
+
+#: src/modules/ranks/ui/preview.py:247
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:above_me"
+msgid ""
+"This role is above my top role in the role hierarchy, so I cannot add or "
+"remove it!"
+msgstr ""
+"Šis vaidmuo yra aukščiau mano aukščiausio vaidmens hierarchijoje, todėl "
+"negaliu jo pridėti ar pašalinti!"
+
+#: src/modules/ranks/ui/preview.py:253
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:other"
+msgid "I am not able to manage the selected role, so it cannot be a rank!"
+msgstr "Negaliu valdyti pasirinkto vaidmens, todėl jis negali būti rangas!"
+
+#: src/modules/ranks/ui/preview.py:259
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|title"
+msgid "Could not update rank!"
+msgstr "Nepavyko atnaujinti rango!"
+
+#: src/modules/ranks/ui/preview.py:269
+msgctxt "ui:rank_preview|menu:roles|placeholder"
+msgid "Update Rank Role"
+msgstr "Atnaujinti rango vaidmenį"
+
+#: src/modules/ranks/ui/preview.py:281
+msgctxt "ui:rank_preview|embed|title"
+msgid "Rank Information"
+msgstr "Rango informacija"
+
+#: src/modules/ranks/ui/preview.py:288
+msgctxt "ui:rank_preview|embed|field:role|name"
+msgid "Role"
+msgstr "Vaidmuo"
+
+#: src/modules/ranks/ui/preview.py:295
+msgctxt "ui:rank_preview|embed|field:required|name"
+msgid "Required"
+msgstr "Reikalaujama"
+
+#: src/modules/ranks/ui/preview.py:302
+msgctxt "ui:rank_preview|embed|field:reward|name"
+msgid "Reward"
+msgstr "Atlygis"
+
+#: src/modules/ranks/ui/preview.py:311
+msgctxt "ui:rank_preview|embed|field:message"
+msgid "Congratulatory Message"
+msgstr "Sveikinimo žinutė"
+
+#: src/modules/ranks/ui/refresh.py:134
+msgctxt "ui:refresh_ranks|embed|title:errored"
+msgid "Could not refresh the server ranks!"
+msgstr "Nepavyko atnaujinti serverio rangų!"
+
+#: src/modules/ranks/ui/refresh.py:142
+msgctxt "ui:refresh_ranks|embed|title:done"
+msgid "Rank refresh complete!"
+msgstr "Rangų atnaujinimas baigtas!"
+
+#: src/modules/ranks/ui/refresh.py:148
+msgctxt "ui:refresh_ranks|embed|title:working"
+msgid "Refreshing your server ranks, please wait."
+msgstr "Atnaujinami serverio rangai, palaukite."
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:ranks"
+msgid "**Loading server ranks:** {emoji}"
+msgstr "**Kraunami rangai:** {emoji}"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:members"
+msgid "**Loading server members:** {emoji}"
+msgstr "**Kraunami nariai:** {emoji}"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:roles"
+msgid "**Loading rank roles:** {emoji}"
+msgstr "**Kraunami rango vaidmenys:** {emoji}"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:compute"
+msgid "**Computing correct ranks:** {emoji}"
+msgstr "**Skaičiuojami teisingi rangai:** {emoji}"
+
+#: src/modules/ranks/ui/refresh.py:207
+msgctxt "ui:refresh_ranks|embed|field:remove|name"
+msgid "Removing invalid rank roles from members"
+msgstr "Šalinami netinkami rango vaidmenys nuo narių"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|field:remove|value"
+msgid "{progress} {done}/{total} removed"
+msgstr "{progress} {done}/{total} pašalinta"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:remove"
+msgid "**Removed invalid ranks:** {done}/{target}"
+msgstr "**Pašalinti netinkami rangai:** {done}/{target}"
+
+#: src/modules/ranks/ui/refresh.py:230
+msgctxt "ui:refresh_ranks|embed|field:add|name"
+msgid "Giving members their rank roles"
+msgstr "Suteikiami rango vaidmenys nariams"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|field:add|value"
+msgid "{progress} {done}/{total} given"
+msgstr "{progress} {done}/{total} suteikta"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:add"
+msgid "**Updated member ranks:** {done}/{target}"
+msgstr "**Atnaujinti narių rangai:** {done}/{target}"
+
+#: src/modules/ranks/ui/config.py:42
+msgctxt "ui:rankconfigui|check|not_permitted"
+msgid "You have insufficient server permissions to use this UI!"
+msgstr "Neturite pakankamai serverio leidimų naudoti šią sąsają!"
+
+#: src/modules/ranks/ui/config.py:64
+msgctxt "ui:rank_config|button:overview|label"
+msgid "Edit Ranks"
+msgstr "Redaguoti rangus"
+
+#: src/modules/ranks/ui/config.py:83
+msgctxt "ui:rank_config|menu:types|placeholder"
+msgid "Select Statistic Type"
+msgstr "Pasirinkite statistikos tipą"
+
+#: src/modules/ranks/ui/config.py:91
+msgctxt "ui:rank_config|menu:types|option:voice"
+msgid "Voice Activity"
+msgstr "Balso veikla"
+
+#: src/modules/ranks/ui/config.py:99
+msgctxt "ui:rank_config|menu:types|option:xp"
+msgid "XP Earned"
+msgstr "Uždirbta XP"
+
+#: src/modules/ranks/ui/config.py:107
+msgctxt "ui:rank_config|menu:types|option:messages"
+msgid "Messages Sent"
+msgstr "Išsiųstos žinutės"
+
+#: src/modules/ranks/ui/config.py:128
+msgctxt "ui:rank_config|menu:channels|placeholder"
+msgid "Select Rank Notification Channel"
+msgstr "Pasirinkite rango pranešimų kanalą"
+
+#: src/modules/ranks/ui/config.py:136
+msgctxt "ui:rank_config|embed|title"
+msgid "Ranks Configuration Panel"
+msgstr "Rangų konfigūracijos skydelis"
+
+#: src/modules/ranks/ui/config.py:173
+msgctxt "dash:rank|title"
+msgid "Rank Configuration ({commands[admin config ranks]})"
+msgstr "Rangų konfigūracija ({commands[admin config ranks]})"
+
+#: src/modules/ranks/ui/config.py:177
+msgctxt "dash:rank|dropdown|placeholder"
+msgid "Activity Rank Panel"
+msgstr "Veiklos rangų skydelis"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_editor|input:message|default|type:voice"
+msgid ""
+"Congratulations {user_mention}!\n"
+"For working hard for **{requires}**, you have achieved the rank of **{role_name}** in **{guild_name}**! Keep up the good work."
+msgstr ""
+"Sveikiname {user_mention}!\n"
+"Už sunkų darbą **{requires}**, pasiekėte rangą **{role_name}** serveryje **{guild_name}**! Taip ir toliau!"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_editor|input:message|default|type:xp"
+msgid ""
+"Congratulations {user_mention}!\n"
+"For earning **{requires}**, you have achieved the guild rank of **{role_name}** in **{guild_name}**!"
+msgstr ""
+"Sveikiname {user_mention}!\n"
+"Už **{requires}** uždirbimą pasiekėte rangą **{role_name}** serveryje **{guild_name}**!"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_editor|input:message|default|type:msg"
+msgid ""
+"Congratulations {user_mention}!\n"
+"For sending **{requires}**, you have achieved the guild rank of **{role_name}** in **{guild_name}**!"
+msgstr ""
+"Sveikiname {user_mention}!\n"
+"Už **{requires}** išsiuntimą pasiekėte rangą **{role_name}** serveryje **{guild_name}**!"
+
+#: src/modules/ranks/ui/templates.py:47
+msgctxt "rank_autocreate|template|type:study_voice|level:1"
+msgid "Voice Level 1 (1h)"
+msgstr "Balso lygis 1 (1val.)"
+
+#: src/modules/ranks/ui/templates.py:55
+msgctxt "rank_autocreate|template|type:study_voice|level:2"
+msgid "Voice Level 2 (3h)"
+msgstr "Balso lygis 2 (3val.)"
+
+#: src/modules/ranks/ui/templates.py:63
+msgctxt "rank_autocreate|template|type:study_voice|level:3"
+msgid "Voice Level 3 (6h)"
+msgstr "Balso lygis 3 (6val.)"
+
+#: src/modules/ranks/ui/templates.py:71
+msgctxt "rank_autocreate|template|type:study_voice|level:4"
+msgid "Voice Level 4 (10h)"
+msgstr "Balso lygis 4 (10val.)"
+
+#: src/modules/ranks/ui/templates.py:79
+msgctxt "rank_autocreate|template|type:study_voice|level:5"
+msgid "Voice Level 5 (20h)"
+msgstr "Balso lygis 5 (20val.)"
+
+#: src/modules/ranks/ui/templates.py:87
+msgctxt "rank_autocreate|template|type:study_voice|level:6"
+msgid "Voice Level 6 (40h)"
+msgstr "Balso lygis 6 (40val.)"
+
+#: src/modules/ranks/ui/templates.py:95
+msgctxt "rank_autocreate|template|type:study_voice|level:7"
+msgid "Voice Level 7 (80h)"
+msgstr "Balso lygis 7 (80val.)"
+
+#: src/modules/ranks/ui/templates.py:106
+msgctxt "rank_autocreate|template|type:general_voice|level:1"
+msgid "Voice Level 1 (1h)"
+msgstr "Balso lygis 1 (1val.)"
+
+#: src/modules/ranks/ui/templates.py:114
+msgctxt "rank_autocreate|template|type:general_voice|level:2"
+msgid "Voice Level 2 (2h)"
+msgstr "Balso lygis 2 (2val.)"
+
+#: src/modules/ranks/ui/templates.py:122
+msgctxt "rank_autocreate|template|type:general_voice|level:3"
+msgid "Voice Level 3 (4h)"
+msgstr "Balso lygis 3 (4val.)"
+
+#: src/modules/ranks/ui/templates.py:130
+msgctxt "rank_autocreate|template|type:general_voice|level:4"
+msgid "Voice Level 4 (8h)"
+msgstr "Balso lygis 4 (8val.)"
+
+#: src/modules/ranks/ui/templates.py:138
+msgctxt "rank_autocreate|template|type:general_voice|level:5"
+msgid "Voice Level 5 (16h)"
+msgstr "Balso lygis 5 (16val.)"
+
+#: src/modules/ranks/ui/templates.py:146
+msgctxt "rank_autocreate|template|type:general_voice|level:6"
+msgid "Voice Level 6 (32h)"
+msgstr "Balso lygis 6 (32val.)"
+
+#: src/modules/ranks/ui/templates.py:154
+msgctxt "rank_autocreate|template|type:general_voice|level:7"
+msgid "Voice Level 7 (64h)"
+msgstr "Balso lygis 7 (64val.)"
+
+#: src/modules/ranks/ui/templates.py:169
+msgctxt "rank_autocreate|template|type:xp|level:1"
+msgid "XP Level 1 (2000)"
+msgstr "XP lygis 1 (2000)"
+
+#: src/modules/ranks/ui/templates.py:177
+msgctxt "rank_autocreate|template|type:xp|level:2"
+msgid "XP Level 2 (4000)"
+msgstr "XP lygis 2 (4000)"
+
+#: src/modules/ranks/ui/templates.py:185
+msgctxt "rank_autocreate|template|type:xp|level:3"
+msgid "XP Level 3 (8000)"
+msgstr "XP lygis 3 (8000)"
+
+#: src/modules/ranks/ui/templates.py:193
+msgctxt "rank_autocreate|template|type:xp|level:4"
+msgid "XP Level 4 (16000)"
+msgstr "XP lygis 4 (16000)"
+
+#: src/modules/ranks/ui/templates.py:201
+msgctxt "rank_autocreate|template|type:xp|level:5"
+msgid "XP Level 5 (32000)"
+msgstr "XP lygis 5 (32000)"
+
+#: src/modules/ranks/ui/templates.py:209
+msgctxt "rank_autocreate|template|type:xp|level:6"
+msgid "XP Level 6 (64000)"
+msgstr "XP lygis 6 (64000)"
+
+#: src/modules/ranks/ui/templates.py:217
+msgctxt "rank_autocreate|template|type:xp|level:7"
+msgid "XP Level 7 (128000)"
+msgstr "XP lygis 7 (128000)"
+
+#: src/modules/ranks/ui/templates.py:232
+msgctxt "rank_autocreate|template|type:msg|level:1"
+msgid "Message Level 1 (200)"
+msgstr "Žinučių lygis 1 (200)"
+
+#: src/modules/ranks/ui/templates.py:240
+msgctxt "rank_autocreate|template|type:msg|level:2"
+msgid "Message Level 2 (400)"
+msgstr "Žinučių lygis 2 (400)"
+
+#: src/modules/ranks/ui/templates.py:248
+msgctxt "rank_autocreate|template|type:msg|level:3"
+msgid "Message Level 3 (800)"
+msgstr "Žinučių lygis 3 (800)"
+
+#: src/modules/ranks/ui/templates.py:256
+msgctxt "rank_autocreate|template|type:msg|level:4"
+msgid "Message Level 4 (1600)"
+msgstr "Žinučių lygis 4 (1600)"
+
+#: src/modules/ranks/ui/templates.py:264
+msgctxt "rank_autocreate|template|type:msg|level:5"
+msgid "Message Level 5 (3200)"
+msgstr "Žinučių lygis 5 (3200)"
+
+#: src/modules/ranks/ui/templates.py:272
+msgctxt "rank_autocreate|template|type:msg|level:6"
+msgid "Message Level 6 (6400)"
+msgstr "Žinučių lygis 6 (6400)"
+
+#: src/modules/ranks/ui/templates.py:280
+msgctxt "rank_autocreate|template|type:msg|level:7"
+msgid "Message Level 7 (12800)"
+msgstr "Žinučių lygis 7 (12800)"
+
+#: src/modules/ranks/ui/overview.py:97
+msgctxt "ui:rank_overview|button:auto|error:already_created"
+msgid "The rank roles have already been created!"
+msgstr "Rango vaidmenys jau sukurti!"
+
+#: src/modules/ranks/ui/overview.py:105
+msgctxt "ui:rank_overview|button:auto|error:my_permissions"
+msgid "I lack the 'Manage Roles' permission required to create rank roles!"
+msgstr ""
+"Man trūksta 'Manage Roles' leidimo, reikalingo rango vaidmenims kurti!"
+
+#: src/modules/ranks/ui/overview.py:114
+msgctxt "ui:rank_overview|button:auto|error:invalid_template"
+msgid "Unable to determine rank role template!"
+msgstr "Nepavyko nustatyti rango vaidmens šablono!"
+
+#: src/modules/ranks/ui/overview.py:137
+msgctxt "ui:rank_overview|button|auto|role_creation|error:forbidden"
+msgid ""
+"An error occurred while autocreating rank roles!\n"
+"I lack the 'Manage Roles' permission required to create rank roles!"
+msgstr ""
+"Klaida automatiškai kuriant rango vaidmenis!\n"
+"Man trūksta 'Manage Roles' leidimo!"
+
+#: src/modules/ranks/ui/overview.py:145
+msgctxt "ui:rank_overview|button:auto|role_creation|error:unknown"
+msgid ""
+"An error occurred while autocreating rank roles!\n"
+"Please check the server has enough space for new roles and try again."
+msgstr ""
+"Klaida automatiškai kuriant!\n"
+"Patikrinkite, ar serveryje yra vietos naujiems vaidmenims."
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|button:auto|role_creation|success"
+msgid ""
+"Successfully created the following rank roles:\n"
+"{roles}"
+msgstr ""
+"Sėkmingai sukurti šie rango vaidmenys:\n"
+"{roles}"
+
+#: src/modules/ranks/ui/overview.py:162
+msgctxt "ui:rank_overview|button:auto|label"
+msgid "Auto Create"
+msgstr "Automatinis kūrimas"
+
+#: src/modules/ranks/ui/overview.py:178
+msgctxt "ui:rank_overview|button:refresh|label"
+msgid "Refresh Member Ranks"
+msgstr "Atnaujinti narių rangus"
+
+#: src/modules/ranks/ui/overview.py:190
+msgctxt "ui:rank_overview|button:clear|confirm"
+msgid "Are you sure you want to **delete all activity ranks** in this server?"
+msgstr "Ar tikrai norite **ištrinti visus veiklos rangus** šiame serveryje?"
+
+#: src/modules/ranks/ui/overview.py:195
+msgctxt "ui:rank_overview|button:clear|confirm|button:yes"
+msgid "Yes, clear ranks"
+msgstr "Taip, ištrinti rangus"
+
+#: src/modules/ranks/ui/overview.py:201
+msgctxt "ui:rank_overview|button:clear|confirm|button:no"
+msgid "Cancel"
+msgstr "Atšaukti"
+
+#: src/modules/ranks/ui/overview.py:217
+msgctxt "ui:rank_overview|button:clear|label"
+msgid "Clear Ranks"
+msgstr "Išvalyti rangus"
+
+#: src/modules/ranks/ui/overview.py:231
+msgctxt "ui:rank_overview|button:create|error:my_permissions"
+msgid "I lack the 'Manage Roles' permission required to create rank roles!"
+msgstr ""
+"Man trūksta 'Manage Roles' leidimo, reikalingo rango vaidmenims kurti!"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|button:create|success"
+msgid "Created a new rank {role}"
+msgstr "Sukurtas naujas rangas {role}"
+
+#: src/modules/ranks/ui/overview.py:257
+msgctxt "ui:rank_overview|button:create|label"
+msgid "Create Rank"
+msgstr "Sukurti rangą"
+
+#: src/modules/ranks/ui/overview.py:300
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:is_default"
+msgid "The @everyone role cannot be removed, and cannot be a rank!"
+msgstr "Vaidmuo @everyone negali būti pašalintas ir negali būti rangas!"
+
+#: src/modules/ranks/ui/overview.py:305
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:is_managed"
+msgid ""
+"The role is managed by another application or integration, and cannot be a "
+"rank!"
+msgstr ""
+"Vaidmuo valdomas kitos programos ar integracijos ir negali būti rangas!"
+
+#: src/modules/ranks/ui/overview.py:310
+msgctxt ""
+"ui:rank_overview|menu:roles|error:not_assignable|suberror:no_permissions"
+msgid ""
+"I do not have the `MANAGE_ROLES` permission in this server, so I cannot "
+"manage ranks!"
+msgstr ""
+"Neturiu `MANAGE_ROLES` leidimo šiame serveryje, todėl negaliu valdyti rangų!"
+
+#: src/modules/ranks/ui/overview.py:315
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:above_me"
+msgid ""
+"This role is above my top role in the role hierarchy, so I cannot add or "
+"remove it!"
+msgstr ""
+"Šis vaidmuo yra aukščiau mano aukščiausio vaidmens hierarchijoje, todėl "
+"negaliu jo pridėti ar pašalinti!"
+
+#: src/modules/ranks/ui/overview.py:321
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:other"
+msgid "I am not able to manage the selected role, so it cannot be a rank!"
+msgstr "Negaliu valdyti pasirinkto vaidmens, todėl jis negali būti rangas!"
+
+#: src/modules/ranks/ui/overview.py:327
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|title"
+msgid "Could not create rank!"
+msgstr "Nepavyko sukurti rango!"
+
+#: src/modules/ranks/ui/overview.py:351
+msgctxt "ui:rank_overview|menu:roles|placeholder"
+msgid "Create from role"
+msgstr "Sukurti iš vaidmens"
+
+#: src/modules/ranks/ui/overview.py:368
+msgctxt "ui:rank_overview|menu:ranks|placeholder"
+msgid "View or edit rank"
+msgstr "Peržiūrėti ar redaguoti rangą"
+
+#: src/modules/ranks/ui/overview.py:454
+msgctxt "ui:rank_overview|embed:noranks|desc"
+msgid "No activity ranks have been set up!"
+msgstr "Veiklos rangai nenustatyti!"
+
+#: src/modules/ranks/ui/overview.py:459
+msgctxt "ui:rank_overview|embed:noranks|desc|admin_addendum"
+msgid ""
+"Press 'Auto Create' to automatically create a standard heirachy of ranks.\n"
+"To manually create ranks, press 'Create Rank' below, or select a role!"
+msgstr ""
+"Paspauskite 'Automatinis kūrimas', kad automatiškai sukurtumėte standartinę hierarchiją.\n"
+"Norint kurti rankiniu būdu, paspauskite 'Sukurti rangą' arba pasirinkite vaidmenį!"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|title|type:voice"
+msgid "Voice Ranks in {guild_name}"
+msgstr "Balso rangai serveryje {guild_name}"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|title|type:xp"
+msgid "XP ranks in {guild_name}"
+msgstr "XP rangai serveryje {guild_name}"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|title|type:message"
+msgid "Message ranks in {guild_name}"
+msgstr "Žinučių rangai serveryje {guild_name}"
+
+#: src/modules/ranks/ui/overview.py:490
+msgctxt "ui:rank_overview|embed|field:note|name"
+msgid "Note"
+msgstr "Pastaba"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|field:note|value:with_season"
+msgid "Ranks are determined by activity since {timestamp}."
+msgstr "Rangai nustatomi pagal veiklą nuo {timestamp}."
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|field:note|value:without_season"
+msgid ""
+"Ranks are determined by *all-time* statistics.\n"
+"To reward ranks from a later time (e.g. to have monthly/quarterly/yearly ranks) set the `season_start` with {stats_cmd}"
+msgstr ""
+"Rangai nustatomi pagal *visų laikų* statistiką.\n"
+"Norint nustatyti rangus nuo vėlesnio laiko, nustatykite `season_start` su {stats_cmd}"
+
+#: src/modules/ranks/ui/overview.py:510
+msgctxt "ui:rank_overview|embed|field:note|value|voice_addendum"
+msgid ""
+"Also note that ranks will only be updated when a member leaves a tracked "
+"voice channel! Use the **Refresh Member Ranks** button below to update all "
+"members manually."
+msgstr ""
+"Taip pat atkreipkite dėmesį, kad rangai atnaujinami tik kai narys palieka "
+"sekamą balso kanalą! Naudokite **Atnaujinti narių rangus** mygtuką rankiniam"
+" atnaujinimui."
+
+#: src/modules/ranks/ui/editor.py:33
+msgctxt "ui:rank_editor|input:role_name|label"
+msgid "Role Name"
+msgstr "Vaidmens pavadinimas"
+
+#: src/modules/ranks/ui/editor.py:37
+msgctxt "ui:rank_editor|input:role_name|placeholder"
+msgid "Name of the awarded guild role"
+msgstr "Suteikiamo vaidmens pavadinimas"
+
+#: src/modules/ranks/ui/editor.py:53
+msgctxt "ui:rank_editor|input:role_colour|label"
+msgid "Role Colour"
+msgstr "Vaidmens spalva"
+
+#: src/modules/ranks/ui/editor.py:57
+msgctxt "ui:rank_editor|input:role_colour|placeholder"
+msgid "Colour of the awarded guild role, e.g. #AB1321"
+msgstr "Suteikiamo vaidmens spalva, pvz. #AB1321"
+
+#: src/modules/ranks/ui/editor.py:69
+msgctxt "ui:rank_editor|input:role_colour|error:parse"
+msgid ""
+"`role_colour`: Could not parse colour! Please use `#<hex>` format e.g. "
+"`#AB1325`."
+msgstr ""
+"`role_colour`: Spalvos nepavyko perskaityti! Naudokite formatą `#<hex>`, "
+"pvz. `#AB1325`."
+
+#: src/modules/ranks/ui/editor.py:88
+msgctxt "ui:rank_editor|type:voice|input:requires|label"
+msgid "Required Voice Hours"
+msgstr "Reikalaujamos balso valandos"
+
+#: src/modules/ranks/ui/editor.py:92
+msgctxt "ui:rank_editor|type:voice|input:requires|placeholder"
+msgid "Number of voice hours before awarding this rank"
+msgstr "Balso valandų skaičius prieš skiriant rangą"
+
+#: src/modules/ranks/ui/editor.py:97
+msgctxt "ui:rank_editor|type:xp|input:requires|label"
+msgid "Required XP"
+msgstr "Reikalaujama XP"
+
+#: src/modules/ranks/ui/editor.py:101
+msgctxt "ui:rank_editor|type:xp|input:requires|placeholder"
+msgid "Amount of XP needed before obtaining this rank"
+msgstr "XP kiekis, reikalingas šiam rangui gauti"
+
+#: src/modules/ranks/ui/editor.py:106
+msgctxt "ui:rank_editor|type:message|input:requires|label"
+msgid "Required Message Count"
+msgstr "Reikalaujamas žinučių skaičius"
+
+#: src/modules/ranks/ui/editor.py:110
+msgctxt "ui:rank_editor|type:message|input:requires|placeholder"
+msgid "Number of messages needed before awarding rank"
+msgstr "Žinučių skaičius prieš skiriant rangą"
+
+#: src/modules/ranks/ui/editor.py:126
+msgctxt "ui:rank_editor|type:voice|input:requires|error:parse"
+msgid ""
+"`requires`: Could not parse provided minimum time! Please write a number of "
+"hours."
+msgstr ""
+"`requires`: Nepavyko perskaityti minimalaus laiko! Įrašykite valandų "
+"skaičių."
+
+#: src/modules/ranks/ui/editor.py:137
+msgctxt "ui:rank_editor|type:message|input:requires|error:parse"
+msgid ""
+"`requires`: Could not parse provided minimum message count! Please enter an "
+"integer."
+msgstr ""
+"`requires`: Nepavyko perskaityti minimalaus žinučių skaičiaus! Įveskite "
+"sveikąjį skaičių."
+
+#: src/modules/ranks/ui/editor.py:148
+msgctxt "ui:rank_editor|type:xp|input:requires|error:parse"
+msgid ""
+"`requires`: Could not parse provided minimum XP! Please enter an integer."
+msgstr ""
+"`requires`: Nepavyko perskaityti minimalaus XP! Įveskite sveikąjį skaičių."
+
+#: src/modules/ranks/ui/editor.py:162
+msgctxt "ui:rank_editor|input:reward|label"
+msgid "LionCoins awarded upon achieving this rank"
+msgstr "LionCoins, skiriami pasiekus šį rangą"
+
+#: src/modules/ranks/ui/editor.py:166
+msgctxt "ui:rank_editor|input:reward|placeholder"
+msgid "LionCoins awarded upon achieving this rank"
+msgstr "LionCoins pasiekus rangą"
+
+#: src/modules/ranks/ui/editor.py:181
+msgctxt "ui:rank_editor|input:reward|error:parse"
+msgid "`reward`: Please enter an integer number of LionCoins."
+msgstr "`reward`: Įveskite sveikąjį LionCoins skaičių."
+
+#: src/modules/ranks/ui/editor.py:197
+msgctxt "ui:rank_editor|input:message|label"
+msgid "Rank Message"
+msgstr "Rango žinutė"
+
+#: src/modules/ranks/ui/editor.py:201
+msgctxt "ui:rank_editor|input:message|placeholder"
+msgid "Congratulatory message sent to the user upon achieving this rank."
+msgstr "Sveikinimo žinutė pasiekus rangą."
+
+#: src/modules/ranks/ui/editor.py:262
+msgctxt "ui:rank_editor|mode:edit|title"
+msgid "Rank Editor"
+msgstr "Rango redaktorius"
+
+#: src/modules/ranks/ui/editor.py:317
+msgctxt "ui:rank_editor|mode:create|title"
+msgid "Rank Creator"
+msgstr "Rango kūrėjas"

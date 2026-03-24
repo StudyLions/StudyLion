@@ -1,0 +1,161 @@
+# Dutch translation for LionBot - monthly-gui
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 19:00+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Dutch\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/gui/cards/monthly.py:40
+msgctxt "skin:monthlystats|mode:study|title"
+msgid "STUDY HOURS"
+msgstr "STUDIE-UREN"
+
+#: src/gui/cards/monthly.py:44
+msgctxt "skin:monthlystats|mode:voice|title"
+msgid "VOICE CHANNEL ACTIVITY"
+msgstr "SPRAAKKANAAL ACTIVITEIT"
+
+#: src/gui/cards/monthly.py:48
+msgctxt "skin:monthlystats|mode:text|title"
+msgid "MESSAGE ACTIVITY"
+msgstr "BERICHTENACTIVITEIT"
+
+#: src/gui/cards/monthly.py:52
+msgctxt "skin::monthlystats|mode:anki|title"
+msgid "CARDS REVIEWED"
+msgstr "HERHAALDE KAARTEN"
+
+#, possible-python-brace-format
+msgctxt "ui:monthlystats|mode:study|bar_value"
+msgid "{value} H"
+msgstr "{value} U"
+
+#, possible-python-brace-format
+msgctxt "ui:monthlystats|mode:voice|bar_value"
+msgid "{value} H"
+msgstr "{value} U"
+
+#, possible-python-brace-format
+msgctxt "ui:monthlystats|mode:text|bar_value"
+msgid "{value} M"
+msgstr "{value} M"
+
+#, possible-python-brace-format
+msgctxt "ui:monthlystats|mode:anki|bar_value"
+msgid "{value} C"
+msgstr "{value} C"
+
+#: src/gui/cards/monthly.py:153
+msgctxt "skin:monthlystats|weekdays"
+msgid "M,T,W,T,F,S,S"
+msgstr "M,D,W,D,V,Z,Z"
+
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:study|summary:this_month"
+msgid "THIS MONTH: {amount} HOURS"
+msgstr "DEZE MAAND: {amount} UUR"
+
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:voice|summary:this_month"
+msgid "THIS MONTH: {amount} HOURS"
+msgstr "DEZE MAAND: {amount} UUR"
+
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:text|summary:this_month"
+msgid "THIS MONTH: {amount} MESSAGES"
+msgstr "DEZE MAAND: {amount} BERICHTEN"
+
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:text|summary:this_month"
+msgid "THIS MONTH: {amount} CARDS"
+msgstr "DEZE MAAND: {amount} KAARTEN"
+
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:study|summary:last_month"
+msgid "LAST MONTH: {amount} HOURS"
+msgstr "VORIGE MAAND: {amount} UUR"
+
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:voice|summary:last_month"
+msgid "LAST MONTH: {amount} HOURS"
+msgstr "VORIGE MAAND: {amount} UUR"
+
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:text|summary:last_month"
+msgid "LAST MONTH: {amount} MESSAGES"
+msgstr "VORIGE MAAND: {amount} BERICHTEN"
+
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:text|summary:last_month"
+msgid "LAST MONTH: {amount} CARDS"
+msgstr "VORIGE MAAND: {amount} KAARTEN"
+
+#: src/gui/cards/monthly.py:300
+msgctxt "ui:monthlystats|stats:current_streak|key"
+msgid "Current Streak:"
+msgstr "Huidige streak:"
+
+#, possible-python-brace-format
+msgctxt "ui:monthlystats|stats:current_streak|value"
+msgid "{count} days"
+msgstr "{count} dagen"
+
+#: src/gui/cards/monthly.py:308
+msgctxt "ui:monthlystats|stats:longest_streak|key"
+msgid "Longest Streak:"
+msgstr "Langste streak:"
+
+#, possible-python-brace-format
+msgctxt "ui:monthlystats|stats:longest_streak|value"
+msgid "{count} days"
+msgstr "{count} dagen"
+
+#: src/gui/cards/monthly.py:316
+msgctxt "ui:monthlystats|stats:daily_average|key"
+msgid "Daily Average:"
+msgstr "Dagelijks gemiddelde:"
+
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:study|stats:daily_average|value"
+msgid "{count} hours"
+msgstr "{count} uur"
+
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:voice|stats:daily_average|value"
+msgid "{count} hours"
+msgstr "{count} uur"
+
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:text|stats:daily_average|value"
+msgid "{count} msgs"
+msgstr "{count} ber."
+
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:anki|stats:daily_average|value"
+msgid "{count} cards"
+msgstr "{count} kaarten"
+
+#: src/gui/cards/monthly.py:342
+msgctxt "ui:monthlystats|stats:days_active|key"
+msgid "Days Active:"
+msgstr "Actieve dagen:"
+
+#, possible-python-brace-format
+msgctxt "ui:monthlystats|stats:days_active|value"
+msgid "{count} days"
+msgstr "{count} dagen"
+
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|footer"
+msgid "Monthly Statistics • As of {day} {month} • {name} {discrim}"
+msgstr "Maandelijkse statistieken • Per {day} {month} • {name} {discrim}"

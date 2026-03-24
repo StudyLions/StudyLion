@@ -23,6 +23,10 @@ from .data import RoomData
 from .settings import RoomSettings
 from .settingui import RoomSettingUI
 from .room import Room
+# --- AI-MODIFIED (2026-03-22) ---
+# Purpose: Import dashboard URL constants for link buttons in room messages
+from .lib import ROOM_DASHBOARD_URL, ROOM_ADMIN_URL_TEMPLATE
+# --- END AI-MODIFIED ---
 from .roomui import RoomUI
 from .lib import parse_members, owner_overwrite, member_overwrite, bot_overwrite
 
@@ -513,13 +517,34 @@ class RoomCog(LionCog):
                 'cmd:room_rent|success',
                 "Successfully created your private room {channel}!"
             )).format(channel=room.channel.mention)
+            # --- AI-MODIFIED (2026-03-22) ---
+            # Purpose: Add "Manage Room" dashboard link button to rent success
+            link_view = discord.ui.View()
+            link_view.add_item(discord.ui.Button(
+                style=discord.ButtonStyle.link,
+                url=ROOM_DASHBOARD_URL,
+                label="Manage Room"
+            ))
+            # --- END AI-MODIFIED ---
+            # --- AI-MODIFIED (2026-03-22) ---
+            # --- Original code (commented out for rollback) ---
+            # await ctx.reply(
+            #     embed=discord.Embed(
+            #         colour=discord.Colour.brand_green(),
+            #         title=t(_p('cmd:room_rent|success|title', "Private Room Created!")),
+            #         description=msg
+            #     )
+            # )
+            # --- End original code ---
             await ctx.reply(
                 embed=discord.Embed(
                     colour=discord.Colour.brand_green(),
                     title=t(_p('cmd:room_rent|success|title', "Private Room Created!")),
                     description=msg
-                )
+                ),
+                view=link_view
             )
+            # --- END AI-MODIFIED ---
             self._start(room)
 
             # Send tips message
@@ -749,6 +774,8 @@ class RoomCog(LionCog):
         await room.add_new_members([m.id for m in provided])
 
         # And ack
+        # --- AI-MODIFIED (2026-03-22) ---
+        # Purpose: Add "Manage Room" dashboard link button to invite success
         if ctx.channel.id != room.data.channelid:
             embed = discord.Embed(
                 colour=discord.Colour.brand_green(),
@@ -757,9 +784,16 @@ class RoomCog(LionCog):
                     "Members Invited successfully."
                 ))
             )
-            await ctx.reply(embed=embed)
+            link_view = discord.ui.View()
+            link_view.add_item(discord.ui.Button(
+                style=discord.ButtonStyle.link,
+                url=ROOM_DASHBOARD_URL,
+                label="Manage Room"
+            ))
+            await ctx.reply(embed=embed, view=link_view)
         else:
             await ctx.interaction.delete_original_response()
+        # --- END AI-MODIFIED ---
 
     @room_group.command(
         name=_p('cmd:room_kick', "kick"),
@@ -818,6 +852,8 @@ class RoomCog(LionCog):
         await room.rm_members(memberids)
 
         # And ack
+        # --- AI-MODIFIED (2026-03-22) ---
+        # Purpose: Add "Manage Room" dashboard link button to kick success
         embed = discord.Embed(
             colour=discord.Colour.brand_green(),
             title=t(_p(
@@ -825,7 +861,14 @@ class RoomCog(LionCog):
                 "Members removed."
             ))
         )
-        await ctx.reply(embed=embed)
+        link_view = discord.ui.View()
+        link_view.add_item(discord.ui.Button(
+            style=discord.ButtonStyle.link,
+            url=ROOM_DASHBOARD_URL,
+            label="Manage Room"
+        ))
+        await ctx.reply(embed=embed, view=link_view)
+        # --- END AI-MODIFIED ---
 
     @room_group.command(
         name=_p('cmd:room_transfer', "transfer"),
@@ -902,6 +945,14 @@ class RoomCog(LionCog):
         await room.transfer_ownership(new_owner)
 
         # Ack
+        # --- AI-MODIFIED (2026-03-22) ---
+        # Purpose: Add "Manage Room" dashboard link button to transfer success
+        link_view = discord.ui.View()
+        link_view.add_item(discord.ui.Button(
+            style=discord.ButtonStyle.link,
+            url=ROOM_DASHBOARD_URL,
+            label="Manage Room"
+        ))
         await ctx.reply(
             embed=discord.Embed(
                 colour=discord.Colour.brand_green(),
@@ -909,8 +960,10 @@ class RoomCog(LionCog):
                     'cmd:room_transfer|success|description',
                     "You have successfully transferred ownership of {channel} to {new_owner}."
                 )).format(channel=room.channel, new_owner=new_owner.mention)
-            )
+            ),
+            view=link_view
         )
+        # --- END AI-MODIFIED ---
 
     @room_group.command(
         name=_p('cmd:room_deposit', "deposit"),
@@ -979,16 +1032,228 @@ class RoomCog(LionCog):
         await room.notify_deposit(ctx.author, coins)
 
         # Ack the deposit
+        # --- AI-MODIFIED (2026-03-22) ---
+        # Purpose: Add "View Room" dashboard link button to deposit success
         if ctx.channel.id != room.data.channelid:
             ack_msg = t(_p(
                 'cmd:room_depost|success',
                 "Success! You have contributed {coin}**{amount}** to the private room bank."
             )).format(coin=self.bot.config.emojis.coin, amount=coins)
+            link_view = discord.ui.View()
+            link_view.add_item(discord.ui.Button(
+                style=discord.ButtonStyle.link,
+                url=ROOM_DASHBOARD_URL,
+                label="View Room"
+            ))
             await ctx.reply(
-                embed=discord.Embed(colour=discord.Colour.brand_green(), description=ack_msg)
+                embed=discord.Embed(colour=discord.Colour.brand_green(), description=ack_msg),
+                view=link_view
             )
         else:
             await ctx.interaction.delete_original_response()
+        # --- END AI-MODIFIED ---
+
+    # --- AI-MODIFIED (2026-03-23) ---
+    # Purpose: /room sound command — rent an available ambient sound bot to a private room
+    SOUND_CHOICES = [
+        appcmds.Choice(name="Rain", value="rain"),
+        appcmds.Choice(name="Campfire", value="campfire"),
+        appcmds.Choice(name="Ocean Waves", value="ocean"),
+        appcmds.Choice(name="Brown Noise", value="brown_noise"),
+        appcmds.Choice(name="White Noise", value="white_noise"),
+    ]
+
+    @room_group.command(
+        name=_p('cmd:room_sound', "sound"),
+        description=_p(
+            'cmd:room_sound|desc',
+            "Rent an ambient sound bot for your private room (costs LionCoins per hour)."
+        )
+    )
+    @appcmds.describe(
+        sound=_p('cmd:room_sound|param:sound', "The ambient sound to play"),
+        hours=_p('cmd:room_sound|param:hours', "How many hours to rent (1–24)"),
+    )
+    @appcmds.choices(sound=SOUND_CHOICES)
+    async def room_sound_cmd(
+        self, ctx: LionContext,
+        sound: appcmds.Choice[str],
+        hours: Range[int, 1, 24] = 1,
+    ):
+        t = self.bot.translator.t
+        if not ctx.guild or not ctx.interaction:
+            return
+
+        await ctx.interaction.response.defer(thinking=True, ephemeral=True)
+
+        room = self.get_channel_room(ctx.channel.id)
+        if room is None:
+            room = self.get_owned_room(ctx.guild.id, ctx.author.id)
+        if room is None:
+            await ctx.reply(
+                embed=error_embed(t(_p(
+                    'cmd:room_sound|error:no_room',
+                    "You don't have a private room! Use `/room rent` to create one first."
+                ))),
+                ephemeral=True,
+            )
+            return
+
+        guild_id = ctx.guild.id
+
+        async with self.bot.db.connection() as conn:
+            async with conn.cursor() as cur:
+                # Check if rental feature is enabled for this guild
+                await cur.execute(
+                    "SELECT room_rental_enabled, room_rental_hourly_rate "
+                    "FROM ambient_sounds_guild_config WHERE guildid = %s",
+                    [guild_id],
+                )
+                rental_cfg = await cur.fetchone()
+
+            if not rental_cfg or not rental_cfg['room_rental_enabled']:
+                await ctx.reply(
+                    embed=error_embed(t(_p(
+                        'cmd:room_sound|error:not_enabled',
+                        "Sound bot rentals are not enabled in this server. "
+                        "Ask an admin to enable it in the dashboard."
+                    ))),
+                    ephemeral=True,
+                )
+                return
+
+            hourly_rate = rental_cfg['room_rental_hourly_rate']
+            total_cost = hourly_rate * hours
+
+            async with conn.cursor() as cur:
+                # Check if room already has an active rental
+                await cur.execute(
+                    "SELECT rental_id FROM ambient_sounds_rentals "
+                    "WHERE guildid = %s AND channelid = %s AND ended_at IS NULL AND expires_at > NOW()",
+                    [guild_id, room.data.channelid],
+                )
+                existing = await cur.fetchone()
+
+            if existing:
+                await ctx.reply(
+                    embed=error_embed(t(_p(
+                        'cmd:room_sound|error:already_rented',
+                        "This room already has an active sound bot rental!"
+                    ))),
+                    ephemeral=True,
+                )
+                return
+
+            async with conn.cursor() as cur:
+                # Find an available bot (not currently configured or rented in this guild)
+                await cur.execute(
+                    "SELECT DISTINCT bot_number FROM ("
+                    "  SELECT bot_number FROM ambient_sounds_config "
+                    "  WHERE guildid = %s AND enabled = true AND channelid IS NOT NULL "
+                    "  UNION ALL "
+                    "  SELECT bot_number FROM ambient_sounds_rentals "
+                    "  WHERE guildid = %s AND ended_at IS NULL AND expires_at > NOW()"
+                    ") sub",
+                    [guild_id, guild_id],
+                )
+                busy_bots = await cur.fetchall()
+
+            busy_set = {r['bot_number'] for r in busy_bots}
+            available = [n for n in range(1, 6) if n not in busy_set]
+
+            if not available:
+                await ctx.reply(
+                    embed=error_embed(t(_p(
+                        'cmd:room_sound|error:no_bots',
+                        "All 5 sound bots are currently in use in this server. "
+                        "Try again later when one becomes available."
+                    ))),
+                    ephemeral=True,
+                )
+                return
+
+            bot_number = available[0]
+            coin_emoji = self.bot.config.emojis.coin
+
+            # Confirm with the user
+            confirm_embed = discord.Embed(
+                colour=discord.Colour.gold(),
+                title="Rent Sound Bot",
+                description=(
+                    f"**Sound:** {sound.name}\n"
+                    f"**Duration:** {hours} hour{'s' if hours > 1 else ''}\n"
+                    f"**Cost:** {coin_emoji}**{total_cost}** ({coin_emoji}{hourly_rate}/hr)\n"
+                    f"**Bot:** Sound Bot #{bot_number}\n\n"
+                    f"The bot will join your room and play this sound."
+                ),
+            )
+            confirm = Confirm(ctx.author.id)
+            confirm_msg = await ctx.reply(embed=confirm_embed, view=confirm, ephemeral=True)
+            await confirm.wait()
+
+            if not confirm.result:
+                try:
+                    await confirm_msg.edit(
+                        embed=discord.Embed(
+                            colour=discord.Colour.dark_grey(),
+                            description="Rental cancelled.",
+                        ),
+                        view=None,
+                    )
+                except Exception:
+                    pass
+                return
+
+            # Deduct coins
+            await ctx.alion.data.refresh()
+            member_balance = ctx.alion.data.coins
+            if member_balance < total_cost:
+                await confirm_msg.edit(
+                    embed=error_embed(t(_p(
+                        'cmd:room_sound|error:insufficient_funds',
+                        "You don't have enough LionCoins! "
+                        "You need {coin}**{cost}** but only have {coin}**{balance}**."
+                    )).format(coin=coin_emoji, cost=total_cost, balance=member_balance)),
+                    view=None,
+                )
+                return
+
+            await ctx.alion.data.update(coins=CoreData.Member.coins - total_cost)
+
+            # Create rental row
+            try:
+                await conn.execute(
+                    "INSERT INTO ambient_sounds_rentals "
+                    "(guildid, channelid, userid, bot_number, sound_type, volume, "
+                    " expires_at, total_cost) "
+                    "VALUES (%s, %s, %s, %s, %s, 50, NOW() + INTERVAL '%s hours', %s)",
+                    [guild_id, room.data.channelid, ctx.author.id, bot_number,
+                     sound.value, hours, total_cost],
+                )
+            except Exception as exc:
+                # Refund on failure
+                await ctx.alion.data.update(coins=CoreData.Member.coins + total_cost)
+                await confirm_msg.edit(
+                    embed=error_embed(
+                        f"Failed to create rental: {str(exc)[:100]}"
+                    ),
+                    view=None,
+                )
+                return
+
+            await confirm_msg.edit(
+                embed=discord.Embed(
+                    colour=discord.Colour.brand_green(),
+                    title="Sound Bot Rented!",
+                    description=(
+                        f"**{sound.name}** will start playing in your room shortly.\n"
+                        f"Sound Bot #{bot_number} will connect within a minute.\n\n"
+                        f"Duration: **{hours}h** • Cost: {coin_emoji}**{total_cost}**"
+                    ),
+                ),
+                view=None,
+            )
+    # --- END AI-MODIFIED ---
 
     # ----- Guild Configuration -----
     @LionCog.placeholder_group
@@ -1052,7 +1317,17 @@ class RoomCog(LionCog):
                 colour=discord.Colour.brand_green(),
                 description='\n'.join(f"{tick} {line}" for line in lines)
             )
-            await ctx.reply(embed=embed)
+            # --- AI-MODIFIED (2026-03-22) ---
+            # Purpose: Add "Room Admin Panel" dashboard link button to config response
+            admin_url = ROOM_ADMIN_URL_TEMPLATE.format(guild_id=ctx.guild.id)
+            link_view = discord.ui.View()
+            link_view.add_item(discord.ui.Button(
+                style=discord.ButtonStyle.link,
+                url=admin_url,
+                label="Room Admin Panel"
+            ))
+            await ctx.reply(embed=embed, view=link_view)
+            # --- END AI-MODIFIED ---
 
         if ctx.channel.id not in RoomSettingUI._listening or not modified:
             ui = RoomSettingUI(self.bot, ctx.guild.id, ctx.channel.id)

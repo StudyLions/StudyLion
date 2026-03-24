@@ -1,0 +1,184 @@
+# Greek translation for LionBot - lion-core
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 19:57+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Greek\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/core/lion_guild.py:31
+msgctxt "eventlog|field:start|name"
+msgid "Start"
+msgstr "Έναρξη"
+
+#: src/core/lion_guild.py:36
+msgctxt "eventlog|field:expiry|name"
+msgid "Expires"
+msgstr "Λήγει"
+
+#: src/core/lion_guild.py:41
+msgctxt "eventlog|field:roles_given|name"
+msgid "Roles Given"
+msgstr "Ρόλοι που δόθηκαν"
+
+#: src/core/lion_guild.py:46
+msgctxt "eventlog|field:roles_given|name"
+msgid "Roles Taken"
+msgstr "Ρόλοι που αφαιρέθηκαν"
+
+#: src/core/lion_guild.py:51
+msgctxt "eventlog|field:coins_earned|name"
+msgid "Coins Earned"
+msgstr "Νομίσματα που κερδήθηκαν"
+
+#: src/core/lion_guild.py:56
+msgctxt "eventlog|field:price|name"
+msgid "Price"
+msgstr "Τιμή"
+
+#: src/core/lion_guild.py:61
+msgctxt "eventlog|field:balance|name"
+msgid "Balance"
+msgstr "Υπόλοιπο"
+
+#: src/core/lion_guild.py:66
+msgctxt "eventlog|field:refund|name"
+msgid "Coins Refunded"
+msgstr "Νομίσματα που επιστράφηκαν"
+
+#: src/core/lion_guild.py:71
+msgctxt "eventlog|field:memberid|name"
+msgid "Member"
+msgstr "Μέλος"
+
+#: src/core/lion_guild.py:76
+msgctxt "eventlog|field:channelid|name"
+msgid "Channel"
+msgstr "Κανάλι"
+
+#: src/core/lion_guild.py:208
+msgctxt "eventlog|error:manage_webhooks"
+msgid "This channel is configured as an event log, but I am missing the 'Manage Webhooks' permission here."
+msgstr "Αυτό το κανάλι είναι διαμορφωμένο ως αρχείο καταγραφής συμβάντων, αλλά μου λείπει η άδεια 'Manage Webhooks' εδώ."
+
+#, possible-python-brace-format
+msgctxt "eventlog|create|name"
+msgid "{bot_name} Event Log"
+msgstr "{bot_name} Αρχείο καταγραφής συμβάντων"
+
+#: src/core/lion_guild.py:224
+msgctxt "eventlog|create|audit_reason"
+msgid "Creating event log webhook"
+msgstr "Δημιουργία webhook αρχείου καταγραφής συμβάντων"
+
+#: src/core/lion_guild.py:342
+msgctxt "eventlog|field:errors|name"
+msgid "Errors"
+msgstr "Σφάλματα"
+
+#: src/core/setting_types.py:31
+msgctxt "settype:coin|accepts"
+msgid "A positive integral number of coins."
+msgstr "Ένας θετικός ακέραιος αριθμός νομισμάτων."
+
+#: src/core/setting_types.py:47
+msgctxt "settype:coin|parse|error:notinteger"
+msgid "The coin quantity must be a positive integer!"
+msgstr "Η ποσότητα νομισμάτων πρέπει να είναι θετικός ακέραιος!"
+
+#, possible-python-brace-format
+msgctxt "settype:coin|parse|error:too_large"
+msgid "You cannot set this to more than {coin}**{max}**!"
+msgstr "Δεν μπορείτε να ορίσετε αυτό σε περισσότερο από {coin}**{max}**!"
+
+#, possible-python-brace-format
+msgctxt "settype:coin|parse|error:too_small"
+msgid "You cannot set this to less than {coin}**{min}**!"
+msgstr "Δεν μπορείτε να ορίσετε αυτό σε λιγότερο από {coin}**{min}**!"
+
+#, possible-python-brace-format
+msgctxt "settype:coin|formatted"
+msgid "{coin}**{amount}**"
+msgstr "{coin}**{amount}**"
+
+#: src/core/setting_types.py:91
+msgctxt "settype:message|accepts"
+msgid "JSON formatted raw message data"
+msgstr "Ακατέργαστα δεδομένα μηνύματος σε μορφή JSON"
+
+#: src/core/setting_types.py:106
+msgctxt "settype:message|download|error:not_json"
+msgid "The attached message data is not a JSON file!"
+msgstr "Τα συνημμένα δεδομένα μηνύματος δεν είναι αρχείο JSON!"
+
+#: src/core/setting_types.py:111
+msgctxt "settype:message|download|error:size"
+msgid "The attached message data is too large!"
+msgstr "Τα συνημμένα δεδομένα μηνύματος είναι πολύ μεγάλα!"
+
+#: src/core/setting_types.py:120
+msgctxt "settype:message|download|error:decoding"
+msgid "Could not decode the message data. Please ensure it is saved with the `UTF-8` encoding."
+msgstr "Δεν ήταν δυνατή η αποκωδικοποίηση των δεδομένων μηνύματος. Βεβαιωθείτε ότι είναι αποθηκευμένα με κωδικοποίηση `UTF-8`."
+
+#, possible-python-brace-format
+msgctxt "settype:message|error_suffix"
+msgid "You can view, test, and fix your embed using the online [embed builder]({link})."
+msgstr "Μπορείτε να προβάλετε, να δοκιμάσετε και να διορθώσετε το embed σας χρησιμοποιώντας τον διαδικτυακό [embed builder]({link})."
+
+#, possible-python-brace-format
+msgctxt "settype:message|error:invalid_json"
+msgid ""
+"The provided message data was not a valid JSON document!\n"
+"`{error}`"
+msgstr ""
+"Τα παρεχόμενα δεδομένα μηνύματος δεν ήταν έγκυρο έγγραφο JSON!\n"
+"`{error}`"
+
+#: src/core/setting_types.py:197
+msgctxt "settype:message|error:json_missing_keys"
+msgid "Message data must be a JSON object with at least one of the following fields: `content`, `embed`, `embeds`"
+msgstr "Τα δεδομένα μηνύματος πρέπει να είναι ένα αντικείμενο JSON με τουλάχιστον ένα από τα ακόλουθα πεδία: `content`, `embed`, `embeds`"
+
+#: src/core/setting_types.py:206
+msgctxt "settype:message|error:json_embed_type"
+msgid "`embed` field must be a valid JSON object."
+msgstr "Το πεδίο `embed` πρέπει να είναι ένα έγκυρο αντικείμενο JSON."
+
+#: src/core/setting_types.py:214
+msgctxt "settype:message|error:json_embeds_type"
+msgid "`embeds` field must be a list."
+msgstr "Το πεδίο `embeds` πρέπει να είναι λίστα."
+
+#: src/core/setting_types.py:221
+msgctxt "settype:message|error:json_embed_embeds"
+msgid "Message data cannot include both `embed` and `embeds`."
+msgstr "Τα δεδομένα μηνύματος δεν μπορούν να περιλαμβάνουν τόσο `embed` όσο και `embeds`."
+
+#: src/core/setting_types.py:229
+msgctxt "settype:message|error:json_content_type"
+msgid "`content` field must be a string."
+msgstr "Το πεδίο `content` πρέπει να είναι συμβολοσειρά."
+
+#, possible-python-brace-format
+msgctxt "ui:settype:message|error:embed_conversion"
+msgid ""
+"Could not parse the message embed data.\n"
+"**Error:** `{exception}`"
+msgstr ""
+"Δεν ήταν δυνατή η ανάλυση των δεδομένων embed του μηνύματος.\n"
+"**Σφάλμα:** `{exception}`"
+
+#: src/core/setting_types.py:273
+msgctxt "settype:message|format:too_long"
+msgid "Too long to display! See Preview."
+msgstr "Πολύ μεγάλο για εμφάνιση! Δείτε Προεπισκόπηση."

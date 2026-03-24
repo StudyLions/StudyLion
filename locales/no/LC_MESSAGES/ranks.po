@@ -1,0 +1,1200 @@
+# Norwegian translation for LionBot - ranks
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 23:20+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Norwegian\n"
+"Language: no\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/modules/ranks/cog.py:76
+msgctxt "cmd:configure_ranks|param:rank_type|choice:voice"
+msgid "Voice"
+msgstr "Stemme"
+
+#: src/modules/ranks/cog.py:77
+msgctxt "cmd:configure_ranks|param:rank_type|choice:xp"
+msgid "XP"
+msgstr "XP"
+
+#: src/modules/ranks/cog.py:78
+msgctxt "cmd:configure_ranks|param:rank_type|choice:message"
+msgid "Message"
+msgstr "Melding"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:rank_check|error:remove_failed"
+msgid "Failed to remove old rank roles: `{error}`"
+msgstr "Kunne ikke fjerne gamle rangroller: `{error}`"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:rank_check|error:add_failed"
+msgid "Failed to add new rank role: `{error}`"
+msgstr "Kunne ikke legge til ny rangrolle: `{error}`"
+
+#: src/modules/ranks/cog.py:380
+msgctxt "eventlog|event:rank_check|error:add_impossible"
+msgid ""
+"Could not assign new activity rank role. Lacking permissions or invalid "
+"role."
+msgstr ""
+"Kunne ikke tildele ny aktivitetsrangrolle. Manglende tillatelser eller "
+"ugyldig rolle."
+
+#: src/modules/ranks/cog.py:386
+msgctxt "eventlog|event:rank_check|error:permissions"
+msgid ""
+"Could not update activity rank roles, I lack the 'Manage Roles' permission."
+msgstr ""
+"Kan ikke oppdatere aktivitetsrangroller, jeg mangler tillatelsen 'Manage "
+"Roles'."
+
+#: src/modules/ranks/cog.py:398
+msgctxt "eventlog|event:rank_check|name"
+msgid "Member Activity Rank Roles Updated"
+msgstr "Medlemmets aktivitetsrangroller oppdatert"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:new_rank|error:remove_failed"
+msgid "Failed to remove old rank roles: `{error}`"
+msgstr "Kunne ikke fjerne gamle rangroller: `{error}`"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:new_rank|error:add_failed"
+msgid "Failed to add new rank role: `{error}`"
+msgstr "Kunne ikke legge til ny rangrolle: `{error}`"
+
+#: src/modules/ranks/cog.py:507
+msgctxt "eventlog|event:new_rank|error:add_impossible"
+msgid ""
+"Could not assign new activity rank role. Lacking permissions or invalid "
+"role."
+msgstr ""
+"Kunne ikke tildele ny aktivitetsrangrolle. Manglende tillatelser eller "
+"ugyldig rolle."
+
+#: src/modules/ranks/cog.py:513
+msgctxt "eventlog|event:new_rank|error:permissions"
+msgid ""
+"Could not update activity rank roles, I lack the 'Manage Roles' permission."
+msgstr ""
+"Kan ikke oppdatere aktivitetsrangroller, jeg mangler tillatelsen 'Manage "
+"Roles'."
+
+#: src/modules/ranks/cog.py:548
+msgctxt "eventlog|event:new_rank|error:notify_failed"
+msgid "Could not notify member."
+msgstr "Kunne ikke varsle medlemmet."
+
+#: src/modules/ranks/cog.py:555
+msgctxt "eventlog|event:new_rank|name"
+msgid "Member Achieved Activity rank"
+msgstr "Medlem oppnådde aktivitetsrang"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:new_rank|desc"
+msgid "{member} earned the new activity rank {rank}"
+msgstr "{member} har opptjent den nye aktivitetsrangen {rank}"
+
+#: src/modules/ranks/cog.py:587
+msgctxt "event:rank_update|embed:notify"
+msgid "New Activity Rank Attained!"
+msgstr "Ny aktivitetsrang oppnådd!"
+
+#: src/modules/ranks/cog.py:692
+msgctxt "rank_refresh|error:cannot_chunk|desc"
+msgid "Could not retrieve member list from Discord. Please try again later."
+msgstr ""
+"Kunne ikke hente medlemslisten fra Discord. Vennligst prøv igjen senere."
+
+#: src/modules/ranks/cog.py:705
+msgctxt "rank_refresh|error:roles_dne|desc"
+msgid "Some ranks have invalid or deleted roles! Please remove them first."
+msgstr ""
+"Noen ranger har ugyldige eller slettede roller! Vennligst fjern dem først."
+
+#, possible-python-brace-format
+msgctxt "rank_refresh|error:unassignable_roles|desc"
+msgid ""
+"I have insufficient permissions to assign the following role(s):\n"
+"{roles}"
+msgstr ""
+"Jeg har utilstrekkelige tillatelser til å tildele følgende rolle(r):\n"
+"{roles}"
+
+#: src/modules/ranks/cog.py:785
+msgctxt "rank_refresh|remove_roles|audit"
+msgid "Removing invalid rank role."
+msgstr "Fjerner ugyldig rangrolle."
+
+#, possible-python-brace-format
+msgctxt "rank_refresh|remove_roles|small_error"
+msgid "*Could not remove ranks from {member}*"
+msgstr "*Kunne ikke fjerne ranger fra {member}*"
+
+#: src/modules/ranks/cog.py:806
+msgctxt "rank_refresh|remove_roles|error:too_many_issues"
+msgid ""
+"Too many issues occurred while removing ranks! Please check my permissions "
+"and try again in a few minutes."
+msgstr ""
+"For mange problemer under fjerning av ranger! Sjekk tillatelsene mine og "
+"prøv igjen om noen minutter."
+
+#: src/modules/ranks/cog.py:820
+msgctxt "rank_refresh|add_roles|audit"
+msgid "Adding rank role from refresh"
+msgstr "Legger til rangrolle fra oppdatering"
+
+#, possible-python-brace-format
+msgctxt "rank_refresh|add_roles|small_error"
+msgid "*Could not add {role} to {member}*"
+msgstr "*Kunne ikke legge til {role} til {member}*"
+
+#: src/modules/ranks/cog.py:841
+msgctxt "rank_refresh|add_roles|error:too_many_issues"
+msgid ""
+"Too many issues occurred while adding ranks! Please check my permissions and"
+" try again in a few minutes."
+msgstr ""
+"For mange problemer under tillegging av ranger! Sjekk tillatelsene mine og "
+"prøv igjen om noen minutter."
+
+#: src/modules/ranks/cog.py:869
+msgctxt "eventlog|event:rank_refresh|name"
+msgid "Activity Ranks Refreshed"
+msgstr "Aktivitetsrangeringer oppdatert"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:rank_refresh|desc"
+msgid ""
+"{actor} refresh member activity ranks.\n"
+"**`{removed}`** invalid rank roles removed.\n"
+"**`{added}`** new rank roles added."
+msgstr ""
+"{actor} oppdaterte medlemmenes aktivitetsrangeringer.\n"
+"**`{removed}`** ugyldige rangroller fjernet..."
+
+#: src/modules/ranks/cog.py:884
+msgctxt "cmd:ranks"
+msgid "ranks"
+msgstr "ranks"
+
+#: src/modules/ranks/cog.py:916
+msgctxt "cmd:configure_ranks"
+msgid "ranks"
+msgstr "ranks"
+
+#: src/modules/ranks/cog.py:917
+msgctxt "cmd:configure_ranks|desc"
+msgid "Configure Activity Ranks"
+msgstr "Konfigurer aktivitetsrangeringer"
+
+#, possible-python-brace-format
+msgctxt ""
+"cmd:configure_ranks|response:updated|setting:notification|withdm_withchannel"
+msgid ""
+"Rank update notifications will be sent via **direct message** when possible,"
+" otherwise to {channel}"
+msgstr ""
+"Rangoppdateringsvarsler sendes via **direktemelding** når mulig, ellers til "
+"{channel}"
+
+#: src/modules/ranks/cog.py:982
+msgctxt ""
+"cmd:configure_ranks|response:updated|setting:notification|withdm_nochannel"
+msgid "Rank update notifications will be sent via **direct message**."
+msgstr "Rangoppdateringsvarsler sendes via **direktemelding**."
+
+#, possible-python-brace-format
+msgctxt ""
+"cmd:configure_ranks|response:updated|setting:notification|nodm_withchannel"
+msgid "Rank update notifications will be sent to {channel}."
+msgstr "Rangoppdateringsvarsler sendes til {channel}."
+
+#: src/modules/ranks/cog.py:993
+msgctxt ""
+"cmd:configure_ranks|response:updated|setting:notification|nodm_nochannel"
+msgid "Members will not be notified when their activity rank updates."
+msgstr "Medlemmer vil ikke bli varslet når deres aktivitetsrang oppdateres."
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:role_name"
+msgid "{role_name}"
+msgstr "{role_name}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:guild_name"
+msgid "{guild_name}"
+msgstr "{guild_name}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:user_name"
+msgid "{user_name}"
+msgstr "{user_name}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:role_id"
+msgid "{role_id}"
+msgstr "{role_id}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:guild_id"
+msgid "{guild_id}"
+msgstr "{guild_id}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:user_id"
+msgid "{user_id}"
+msgstr "{user_id}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:role_mention"
+msgid "{role_mention}"
+msgstr "{role_mention}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:user_mention"
+msgid "{user_mention}"
+msgstr "{user_mention}"
+
+#, possible-python-brace-format
+msgctxt "formatstring:rank_message|key:requires"
+msgid "{rank_requires}"
+msgstr "{rank_requires}"
+
+#: src/modules/ranks/settings.py:27
+msgctxt "guildset:rank_type|output:voice"
+msgid "`Voice`"
+msgstr "`Stemme`"
+
+#: src/modules/ranks/settings.py:28
+msgctxt "guildset:rank_type|output:xp"
+msgid "`Exp`"
+msgstr "`Exp`"
+
+#: src/modules/ranks/settings.py:29
+msgctxt "guildset:rank_type|output:message"
+msgid "`Messages`"
+msgstr "`Meldinger`"
+
+#: src/modules/ranks/settings.py:32
+msgctxt "guildset:rank_type|input_format:voice"
+msgid "Voice"
+msgstr "Stemme"
+
+#: src/modules/ranks/settings.py:33
+msgctxt "guildset:rank_type|input_format:xp"
+msgid "Exp"
+msgstr "Exp"
+
+#: src/modules/ranks/settings.py:34
+msgctxt "guildset:rank_type|input_format:message"
+msgid "Messages"
+msgstr "Meldinger"
+
+#: src/modules/ranks/settings.py:37
+msgctxt "guildset:rank_type|input_pattern:voice"
+msgid "voice|study"
+msgstr "voice|study"
+
+#: src/modules/ranks/settings.py:38
+msgctxt "guildset:rank_type|input_pattern:voice"
+msgid "text|message|messages"
+msgstr "text|message|messages"
+
+#: src/modules/ranks/settings.py:39
+msgctxt "guildset:rank_type|input_pattern:xp"
+msgid "xp|exp|experience"
+msgstr "xp|exp|experience"
+
+#: src/modules/ranks/settings.py:47
+msgctxt "guildset:rank_type"
+msgid "rank_type"
+msgstr "rank_type"
+
+#: src/modules/ranks/settings.py:50
+msgctxt "guildset:rank_type|desc"
+msgid ""
+"The type of statistic (messages | xp | voice hours) used to determine "
+"activity ranks."
+msgstr ""
+"Statistikktypen (meldinger | xp | stemmetimer) brukt til å bestemme "
+"aktivitetsrangeringer."
+
+#: src/modules/ranks/settings.py:54
+msgctxt "guildset:rank_type|long_desc"
+msgid ""
+"Which statistic is used to reward activity ranks.\n"
+"`Voice` is the number of hours active in tracked voice channels, `Exp` is a measure of message activity, and `Message` is a simple count of messages sent."
+msgstr ""
+"Hvilken statistikk som brukes for aktivitetsrangeringer.\n"
+"`Stemme` er antall timer aktiv i sporede stemmekanaler, `Exp` er et mål på meldingsaktivitet og `Melding` er en enkel telling av sendte meldinger."
+
+#: src/modules/ranks/settings.py:61
+msgctxt "guildset:rank_type|accepts"
+msgid "Voice/Exp/Messages"
+msgstr "Voice/Exp/Messages"
+
+#: src/modules/ranks/settings.py:73
+msgctxt "guildset:rank_type|set_response|type:voice"
+msgid "Members will be awarded activity ranks based on `Voice Activity`."
+msgstr ""
+"Medlemmer vil bli tildelt aktivitetsrangeringer basert på `Stemmeaktivitet`."
+
+#: src/modules/ranks/settings.py:78
+msgctxt "guildset:rank_type|set_response|type:messages"
+msgid "Members will be awarded activity ranks based on `Messages Sent`."
+msgstr ""
+"Medlemmer vil bli tildelt aktivitetsrangeringer basert på `Sendte "
+"meldinger`."
+
+#: src/modules/ranks/settings.py:83
+msgctxt "guildset:rank_type|set_response|type:xp"
+msgid "Members will be awarded activity ranks based on `Message XP Earned`."
+msgstr ""
+"Medlemmer vil bli tildelt aktivitetsrangeringer basert på `Opptjent "
+"meldings-XP`."
+
+#, possible-python-brace-format
+msgctxt "guildset:rank_channel|set_using"
+msgid "{cmd} or option menu below."
+msgstr "{cmd} eller valgmenyen nedenfor."
+
+#: src/modules/ranks/settings.py:106
+msgctxt "guildset:rank_channel"
+msgid "rank_channel"
+msgstr "rank_channel"
+
+#: src/modules/ranks/settings.py:109
+msgctxt "guildset:rank_channel|desc"
+msgid "The channel in which to send rank update notifications."
+msgstr "Kanalen der rangoppdateringsvarsler sendes."
+
+#: src/modules/ranks/settings.py:113
+msgctxt "guildset:rank_channel|long_desc"
+msgid ""
+"Whenever a user advances a rank, a congratulatory message will be sent in "
+"this channel, if set. If `dm_ranks` is enabled, this channel will only be "
+"used when the user has opted not to receive DM notifications, or is "
+"otherwise unreachable."
+msgstr ""
+"Når en bruker avanserer i rang, sendes en gratulasjon i denne kanalen, hvis "
+"satt. Hvis `dm_ranks` er aktivert, brukes denne kanalen bare når brukeren "
+"har valgt å ikke motta DM-varsler eller er utilgjengelig."
+
+#: src/modules/ranks/settings.py:119
+msgctxt "guildset:rank_channel|accepts"
+msgid "Rank notification channel name or id."
+msgstr "Rangvarslingskanalnavn eller id."
+
+#, possible-python-brace-format
+msgctxt "guildset:rank_channel|set_response|set"
+msgid "Rank update messages will be sent to {channel}."
+msgstr "Rangoppdateringsmeldinger sendes til {channel}."
+
+#: src/modules/ranks/settings.py:136
+msgctxt "guildset:rank_channel|set_response|unset"
+msgid ""
+"Rank update messages will be ignored or sent via DM (if `dm_ranks` is "
+"enabled)."
+msgstr ""
+"Rangoppdateringsmeldinger ignoreres eller sendes via DM (hvis `dm_ranks` er "
+"aktivert)."
+
+#, possible-python-brace-format
+msgctxt "guildset:rank_channel|set_using"
+msgid "{cmd} or channel selector below."
+msgstr "{cmd} eller kanalvelger nedenfor."
+
+#: src/modules/ranks/settings.py:157
+msgctxt "guildset:dm_ranks"
+msgid "dm_ranks"
+msgstr "dm_ranks"
+
+#: src/modules/ranks/settings.py:160
+msgctxt "guildset:dm_ranks|desc"
+msgid ""
+"Whether to send rank advancement notifications through direct messages."
+msgstr "Om rangopprykningsvarsler skal sendes via direktemeldinger."
+
+#: src/modules/ranks/settings.py:164
+msgctxt "guildset:dm_ranks|long_desc"
+msgid ""
+"If enabled, congratulatory messages for rank advancement will be direct "
+"messaged to the user, instead of being sent to the configured "
+"`rank_channel`."
+msgstr ""
+"Hvis aktivert, sendes gratulasjonsmeldinger for rangopprykning som "
+"direktemelding til brukeren i stedet for til den konfigurerte "
+"`rank_channel`."
+
+#: src/modules/ranks/settings.py:178
+msgctxt "guildset:dm_ranks|response:true"
+msgid "I will direct message members upon rank advancement."
+msgstr "Jeg vil sende direktemelding til medlemmer ved rangopprykning."
+
+#: src/modules/ranks/settings.py:183
+msgctxt "guildset:dm_ranks|response:false"
+msgid "I will never direct message members upon rank advancement."
+msgstr "Jeg vil aldri sende direktemelding til medlemmer ved rangopprykning."
+
+#: src/modules/ranks/ui/preview.py:75
+msgctxt "ui:rank_preview|button:edit|error:role_deleted"
+msgid ""
+"The role underlying this rank no longer exists! Please select a new role "
+"from the role menu."
+msgstr ""
+"Rollen bak denne rangen eksisterer ikke lenger! Velg en ny rolle fra "
+"rollemenyen."
+
+#: src/modules/ranks/ui/preview.py:82
+msgctxt "ui:rank_preview|button:edit|error:role_not_assignable"
+msgid ""
+"I do not have permission to edit the underlying role! Please select a new "
+"role from the role menu, or ensure my top role is above the selected role."
+msgstr ""
+"Jeg har ikke tillatelse til å redigere rollen! Velg en ny rolle eller sørg "
+"for at min øverste rolle er over den valgte."
+
+#: src/modules/ranks/ui/preview.py:91
+msgctxt "ui:rank_preview|button:edit|error|title"
+msgid "Failed to edit rank!"
+msgstr "Kunne ikke redigere rang!"
+
+#: src/modules/ranks/ui/preview.py:109
+msgctxt "ui:rank_preview|button:edit|label"
+msgid "Edit"
+msgstr "Rediger"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_preview|button:delete|response:success|description|with_role"
+msgid ""
+"You have deleted the rank {mention}. Press the button below to also delete "
+"the role."
+msgstr ""
+"Du har slettet rangen {mention}. Trykk på knappen nedenfor for å også slette"
+" rollen."
+
+#, possible-python-brace-format
+msgctxt "ui:rank_preview|button:delete|response:success|description|no_role"
+msgid "You have deleted the rank {mention}."
+msgstr "Du har slettet rangen {mention}."
+
+#: src/modules/ranks/ui/preview.py:153
+msgctxt "ui:rank_preview|button:delete|response:success|title"
+msgid "Rank Deleted"
+msgstr "Rang slettet"
+
+#: src/modules/ranks/ui/preview.py:163
+msgctxt ""
+"ui:rank_preview|button:delete|response:success|button:delete_role|label"
+msgid "Delete Role"
+msgstr "Slett rolle"
+
+#, possible-python-brace-format
+msgctxt ""
+"ui:rank_preview|button:delete|response:success|button:delete_role|response:errored|desc"
+msgid ""
+"You have deleted the rank **{name}**! Could not delete the role due to an "
+"unknown error."
+msgstr ""
+"Du har slettet rangen **{name}**! Rollen kunne ikke slettes på grunn av en "
+"ukjent feil."
+
+#, possible-python-brace-format
+msgctxt ""
+"ui:rank_preview|button:delete|response:success|button:delete_role|response:success|desc"
+msgid "You have deleted the rank **{name}** along with the underlying role."
+msgstr "Du har slettet rangen **{name}** sammen med rollen."
+
+#: src/modules/ranks/ui/preview.py:202
+msgctxt "ui:rank_preview|button:delete|label"
+msgid "Delete Rank"
+msgstr "Slett rang"
+
+#: src/modules/ranks/ui/preview.py:232
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:is_default"
+msgid "The @everyone role cannot be removed, and cannot be a rank!"
+msgstr "Rollen @everyone kan ikke fjernes og kan ikke være en rang!"
+
+#: src/modules/ranks/ui/preview.py:237
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:is_managed"
+msgid ""
+"The role is managed by another application or integration, and cannot be a "
+"rank!"
+msgstr ""
+"Rollen administreres av en annen applikasjon eller integrasjon og kan ikke "
+"være en rang!"
+
+#: src/modules/ranks/ui/preview.py:242
+msgctxt ""
+"ui:rank_preview|menu:roles|error:not_assignable|suberror:no_permissions"
+msgid ""
+"I do not have the `MANAGE_ROLES` permission in this server, so I cannot "
+"manage ranks!"
+msgstr ""
+"Jeg har ikke tillatelsen `MANAGE_ROLES` på denne serveren, så jeg kan ikke "
+"administrere ranger!"
+
+#: src/modules/ranks/ui/preview.py:247
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:above_me"
+msgid ""
+"This role is above my top role in the role hierarchy, so I cannot add or "
+"remove it!"
+msgstr ""
+"Denne rollen er over min høyeste rolle i hierarkiet, så jeg kan ikke legge "
+"til eller fjerne den!"
+
+#: src/modules/ranks/ui/preview.py:253
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|suberror:other"
+msgid "I am not able to manage the selected role, so it cannot be a rank!"
+msgstr ""
+"Jeg kan ikke administrere den valgte rollen, så den kan ikke være en rang!"
+
+#: src/modules/ranks/ui/preview.py:259
+msgctxt "ui:rank_preview|menu:roles|error:not_assignable|title"
+msgid "Could not update rank!"
+msgstr "Kunne ikke oppdatere rang!"
+
+#: src/modules/ranks/ui/preview.py:269
+msgctxt "ui:rank_preview|menu:roles|placeholder"
+msgid "Update Rank Role"
+msgstr "Oppdater rangrolle"
+
+#: src/modules/ranks/ui/preview.py:281
+msgctxt "ui:rank_preview|embed|title"
+msgid "Rank Information"
+msgstr "Ranginformasjon"
+
+#: src/modules/ranks/ui/preview.py:288
+msgctxt "ui:rank_preview|embed|field:role|name"
+msgid "Role"
+msgstr "Rolle"
+
+#: src/modules/ranks/ui/preview.py:295
+msgctxt "ui:rank_preview|embed|field:required|name"
+msgid "Required"
+msgstr "Påkrevd"
+
+#: src/modules/ranks/ui/preview.py:302
+msgctxt "ui:rank_preview|embed|field:reward|name"
+msgid "Reward"
+msgstr "Belønning"
+
+#: src/modules/ranks/ui/preview.py:311
+msgctxt "ui:rank_preview|embed|field:message"
+msgid "Congratulatory Message"
+msgstr "Gratulasjonsmelding"
+
+#: src/modules/ranks/ui/refresh.py:134
+msgctxt "ui:refresh_ranks|embed|title:errored"
+msgid "Could not refresh the server ranks!"
+msgstr "Kunne ikke oppdatere serverrangene!"
+
+#: src/modules/ranks/ui/refresh.py:142
+msgctxt "ui:refresh_ranks|embed|title:done"
+msgid "Rank refresh complete!"
+msgstr "Rangoppdatering fullført!"
+
+#: src/modules/ranks/ui/refresh.py:148
+msgctxt "ui:refresh_ranks|embed|title:working"
+msgid "Refreshing your server ranks, please wait."
+msgstr "Oppdaterer serverrangeringer, vennligst vent."
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:ranks"
+msgid "**Loading server ranks:** {emoji}"
+msgstr "**Laster ranger:** {emoji}"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:members"
+msgid "**Loading server members:** {emoji}"
+msgstr "**Laster medlemmer:** {emoji}"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:roles"
+msgid "**Loading rank roles:** {emoji}"
+msgstr "**Laster rangroller:** {emoji}"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:compute"
+msgid "**Computing correct ranks:** {emoji}"
+msgstr "**Beregner riktige ranger:** {emoji}"
+
+#: src/modules/ranks/ui/refresh.py:207
+msgctxt "ui:refresh_ranks|embed|field:remove|name"
+msgid "Removing invalid rank roles from members"
+msgstr "Fjerner ugyldige rangroller fra medlemmer"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|field:remove|value"
+msgid "{progress} {done}/{total} removed"
+msgstr "{progress} {done}/{total} fjernet"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:remove"
+msgid "**Removed invalid ranks:** {done}/{target}"
+msgstr "**Fjernede ugyldige ranger:** {done}/{target}"
+
+#: src/modules/ranks/ui/refresh.py:230
+msgctxt "ui:refresh_ranks|embed|field:add|name"
+msgid "Giving members their rank roles"
+msgstr "Gir medlemmer deres rangroller"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|field:add|value"
+msgid "{progress} {done}/{total} given"
+msgstr "{progress} {done}/{total} gitt"
+
+#, possible-python-brace-format
+msgctxt "ui:refresh_ranks|embed|line:add"
+msgid "**Updated member ranks:** {done}/{target}"
+msgstr "**Oppdaterte medlemsrangeringer:** {done}/{target}"
+
+#: src/modules/ranks/ui/config.py:42
+msgctxt "ui:rankconfigui|check|not_permitted"
+msgid "You have insufficient server permissions to use this UI!"
+msgstr ""
+"Du har utilstrekkelige servertillatelser til å bruke dette grensesnittet!"
+
+#: src/modules/ranks/ui/config.py:64
+msgctxt "ui:rank_config|button:overview|label"
+msgid "Edit Ranks"
+msgstr "Rediger ranger"
+
+#: src/modules/ranks/ui/config.py:83
+msgctxt "ui:rank_config|menu:types|placeholder"
+msgid "Select Statistic Type"
+msgstr "Velg statistikktype"
+
+#: src/modules/ranks/ui/config.py:91
+msgctxt "ui:rank_config|menu:types|option:voice"
+msgid "Voice Activity"
+msgstr "Stemmeaktivitet"
+
+#: src/modules/ranks/ui/config.py:99
+msgctxt "ui:rank_config|menu:types|option:xp"
+msgid "XP Earned"
+msgstr "Opptjent XP"
+
+#: src/modules/ranks/ui/config.py:107
+msgctxt "ui:rank_config|menu:types|option:messages"
+msgid "Messages Sent"
+msgstr "Sendte meldinger"
+
+#: src/modules/ranks/ui/config.py:128
+msgctxt "ui:rank_config|menu:channels|placeholder"
+msgid "Select Rank Notification Channel"
+msgstr "Velg rangvarslingskanal"
+
+#: src/modules/ranks/ui/config.py:136
+msgctxt "ui:rank_config|embed|title"
+msgid "Ranks Configuration Panel"
+msgstr "Konfigurasjonspanel for ranger"
+
+#: src/modules/ranks/ui/config.py:173
+msgctxt "dash:rank|title"
+msgid "Rank Configuration ({commands[admin config ranks]})"
+msgstr "Rangkonfigurasjon ({commands[admin config ranks]})"
+
+#: src/modules/ranks/ui/config.py:177
+msgctxt "dash:rank|dropdown|placeholder"
+msgid "Activity Rank Panel"
+msgstr "Aktivitetsrangpanel"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_editor|input:message|default|type:voice"
+msgid ""
+"Congratulations {user_mention}!\n"
+"For working hard for **{requires}**, you have achieved the rank of **{role_name}** in **{guild_name}**! Keep up the good work."
+msgstr ""
+"Gratulerer {user_mention}!\n"
+"For hardt arbeid i **{requires}** har du oppnådd rangen **{role_name}** i **{guild_name}**! Fortsett det gode arbeidet."
+
+#, possible-python-brace-format
+msgctxt "ui:rank_editor|input:message|default|type:xp"
+msgid ""
+"Congratulations {user_mention}!\n"
+"For earning **{requires}**, you have achieved the guild rank of **{role_name}** in **{guild_name}**!"
+msgstr ""
+"Gratulerer {user_mention}!\n"
+"For å ha opptjent **{requires}** har du oppnådd rangen **{role_name}** i **{guild_name}**!"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_editor|input:message|default|type:msg"
+msgid ""
+"Congratulations {user_mention}!\n"
+"For sending **{requires}**, you have achieved the guild rank of **{role_name}** in **{guild_name}**!"
+msgstr ""
+"Gratulerer {user_mention}!\n"
+"For å ha sendt **{requires}** har du oppnådd rangen **{role_name}** i **{guild_name}**!"
+
+#: src/modules/ranks/ui/templates.py:47
+msgctxt "rank_autocreate|template|type:study_voice|level:1"
+msgid "Voice Level 1 (1h)"
+msgstr "Stemmenivå 1 (1t)"
+
+#: src/modules/ranks/ui/templates.py:55
+msgctxt "rank_autocreate|template|type:study_voice|level:2"
+msgid "Voice Level 2 (3h)"
+msgstr "Stemmenivå 2 (3t)"
+
+#: src/modules/ranks/ui/templates.py:63
+msgctxt "rank_autocreate|template|type:study_voice|level:3"
+msgid "Voice Level 3 (6h)"
+msgstr "Stemmenivå 3 (6t)"
+
+#: src/modules/ranks/ui/templates.py:71
+msgctxt "rank_autocreate|template|type:study_voice|level:4"
+msgid "Voice Level 4 (10h)"
+msgstr "Stemmenivå 4 (10t)"
+
+#: src/modules/ranks/ui/templates.py:79
+msgctxt "rank_autocreate|template|type:study_voice|level:5"
+msgid "Voice Level 5 (20h)"
+msgstr "Stemmenivå 5 (20t)"
+
+#: src/modules/ranks/ui/templates.py:87
+msgctxt "rank_autocreate|template|type:study_voice|level:6"
+msgid "Voice Level 6 (40h)"
+msgstr "Stemmenivå 6 (40t)"
+
+#: src/modules/ranks/ui/templates.py:95
+msgctxt "rank_autocreate|template|type:study_voice|level:7"
+msgid "Voice Level 7 (80h)"
+msgstr "Stemmenivå 7 (80t)"
+
+#: src/modules/ranks/ui/templates.py:106
+msgctxt "rank_autocreate|template|type:general_voice|level:1"
+msgid "Voice Level 1 (1h)"
+msgstr "Stemmenivå 1 (1t)"
+
+#: src/modules/ranks/ui/templates.py:114
+msgctxt "rank_autocreate|template|type:general_voice|level:2"
+msgid "Voice Level 2 (2h)"
+msgstr "Stemmenivå 2 (2t)"
+
+#: src/modules/ranks/ui/templates.py:122
+msgctxt "rank_autocreate|template|type:general_voice|level:3"
+msgid "Voice Level 3 (4h)"
+msgstr "Stemmenivå 3 (4t)"
+
+#: src/modules/ranks/ui/templates.py:130
+msgctxt "rank_autocreate|template|type:general_voice|level:4"
+msgid "Voice Level 4 (8h)"
+msgstr "Stemmenivå 4 (8t)"
+
+#: src/modules/ranks/ui/templates.py:138
+msgctxt "rank_autocreate|template|type:general_voice|level:5"
+msgid "Voice Level 5 (16h)"
+msgstr "Stemmenivå 5 (16t)"
+
+#: src/modules/ranks/ui/templates.py:146
+msgctxt "rank_autocreate|template|type:general_voice|level:6"
+msgid "Voice Level 6 (32h)"
+msgstr "Stemmenivå 6 (32t)"
+
+#: src/modules/ranks/ui/templates.py:154
+msgctxt "rank_autocreate|template|type:general_voice|level:7"
+msgid "Voice Level 7 (64h)"
+msgstr "Stemmenivå 7 (64t)"
+
+#: src/modules/ranks/ui/templates.py:169
+msgctxt "rank_autocreate|template|type:xp|level:1"
+msgid "XP Level 1 (2000)"
+msgstr "XP-nivå 1 (2000)"
+
+#: src/modules/ranks/ui/templates.py:177
+msgctxt "rank_autocreate|template|type:xp|level:2"
+msgid "XP Level 2 (4000)"
+msgstr "XP-nivå 2 (4000)"
+
+#: src/modules/ranks/ui/templates.py:185
+msgctxt "rank_autocreate|template|type:xp|level:3"
+msgid "XP Level 3 (8000)"
+msgstr "XP-nivå 3 (8000)"
+
+#: src/modules/ranks/ui/templates.py:193
+msgctxt "rank_autocreate|template|type:xp|level:4"
+msgid "XP Level 4 (16000)"
+msgstr "XP-nivå 4 (16000)"
+
+#: src/modules/ranks/ui/templates.py:201
+msgctxt "rank_autocreate|template|type:xp|level:5"
+msgid "XP Level 5 (32000)"
+msgstr "XP-nivå 5 (32000)"
+
+#: src/modules/ranks/ui/templates.py:209
+msgctxt "rank_autocreate|template|type:xp|level:6"
+msgid "XP Level 6 (64000)"
+msgstr "XP-nivå 6 (64000)"
+
+#: src/modules/ranks/ui/templates.py:217
+msgctxt "rank_autocreate|template|type:xp|level:7"
+msgid "XP Level 7 (128000)"
+msgstr "XP-nivå 7 (128000)"
+
+#: src/modules/ranks/ui/templates.py:232
+msgctxt "rank_autocreate|template|type:msg|level:1"
+msgid "Message Level 1 (200)"
+msgstr "Meldingsnivå 1 (200)"
+
+#: src/modules/ranks/ui/templates.py:240
+msgctxt "rank_autocreate|template|type:msg|level:2"
+msgid "Message Level 2 (400)"
+msgstr "Meldingsnivå 2 (400)"
+
+#: src/modules/ranks/ui/templates.py:248
+msgctxt "rank_autocreate|template|type:msg|level:3"
+msgid "Message Level 3 (800)"
+msgstr "Meldingsnivå 3 (800)"
+
+#: src/modules/ranks/ui/templates.py:256
+msgctxt "rank_autocreate|template|type:msg|level:4"
+msgid "Message Level 4 (1600)"
+msgstr "Meldingsnivå 4 (1600)"
+
+#: src/modules/ranks/ui/templates.py:264
+msgctxt "rank_autocreate|template|type:msg|level:5"
+msgid "Message Level 5 (3200)"
+msgstr "Meldingsnivå 5 (3200)"
+
+#: src/modules/ranks/ui/templates.py:272
+msgctxt "rank_autocreate|template|type:msg|level:6"
+msgid "Message Level 6 (6400)"
+msgstr "Meldingsnivå 6 (6400)"
+
+#: src/modules/ranks/ui/templates.py:280
+msgctxt "rank_autocreate|template|type:msg|level:7"
+msgid "Message Level 7 (12800)"
+msgstr "Meldingsnivå 7 (12800)"
+
+#: src/modules/ranks/ui/overview.py:97
+msgctxt "ui:rank_overview|button:auto|error:already_created"
+msgid "The rank roles have already been created!"
+msgstr "Rangrollene er allerede opprettet!"
+
+#: src/modules/ranks/ui/overview.py:105
+msgctxt "ui:rank_overview|button:auto|error:my_permissions"
+msgid "I lack the 'Manage Roles' permission required to create rank roles!"
+msgstr ""
+"Jeg mangler tillatelsen 'Manage Roles' som kreves for å opprette rangroller!"
+
+#: src/modules/ranks/ui/overview.py:114
+msgctxt "ui:rank_overview|button:auto|error:invalid_template"
+msgid "Unable to determine rank role template!"
+msgstr "Kan ikke bestemme rangrollemal!"
+
+#: src/modules/ranks/ui/overview.py:137
+msgctxt "ui:rank_overview|button|auto|role_creation|error:forbidden"
+msgid ""
+"An error occurred while autocreating rank roles!\n"
+"I lack the 'Manage Roles' permission required to create rank roles!"
+msgstr ""
+"Feil under automatisk opprettelse av rangroller!\n"
+"Jeg mangler tillatelsen 'Manage Roles'!"
+
+#: src/modules/ranks/ui/overview.py:145
+msgctxt "ui:rank_overview|button:auto|role_creation|error:unknown"
+msgid ""
+"An error occurred while autocreating rank roles!\n"
+"Please check the server has enough space for new roles and try again."
+msgstr ""
+"Feil under automatisk opprettelse!\n"
+"Sjekk at serveren har plass til nye roller."
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|button:auto|role_creation|success"
+msgid ""
+"Successfully created the following rank roles:\n"
+"{roles}"
+msgstr ""
+"Følgende rangroller ble opprettet:\n"
+"{roles}"
+
+#: src/modules/ranks/ui/overview.py:162
+msgctxt "ui:rank_overview|button:auto|label"
+msgid "Auto Create"
+msgstr "Automatisk opprettelse"
+
+#: src/modules/ranks/ui/overview.py:178
+msgctxt "ui:rank_overview|button:refresh|label"
+msgid "Refresh Member Ranks"
+msgstr "Oppdater medlemsrangeringer"
+
+#: src/modules/ranks/ui/overview.py:190
+msgctxt "ui:rank_overview|button:clear|confirm"
+msgid "Are you sure you want to **delete all activity ranks** in this server?"
+msgstr ""
+"Er du sikker på at du vil **slette alle aktivitetsrangeringer** på denne "
+"serveren?"
+
+#: src/modules/ranks/ui/overview.py:195
+msgctxt "ui:rank_overview|button:clear|confirm|button:yes"
+msgid "Yes, clear ranks"
+msgstr "Ja, slett ranger"
+
+#: src/modules/ranks/ui/overview.py:201
+msgctxt "ui:rank_overview|button:clear|confirm|button:no"
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: src/modules/ranks/ui/overview.py:217
+msgctxt "ui:rank_overview|button:clear|label"
+msgid "Clear Ranks"
+msgstr "Tøm ranger"
+
+#: src/modules/ranks/ui/overview.py:231
+msgctxt "ui:rank_overview|button:create|error:my_permissions"
+msgid "I lack the 'Manage Roles' permission required to create rank roles!"
+msgstr ""
+"Jeg mangler tillatelsen 'Manage Roles' som kreves for å opprette rangroller!"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|button:create|success"
+msgid "Created a new rank {role}"
+msgstr "Ny rang opprettet {role}"
+
+#: src/modules/ranks/ui/overview.py:257
+msgctxt "ui:rank_overview|button:create|label"
+msgid "Create Rank"
+msgstr "Opprett rang"
+
+#: src/modules/ranks/ui/overview.py:300
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:is_default"
+msgid "The @everyone role cannot be removed, and cannot be a rank!"
+msgstr "Rollen @everyone kan ikke fjernes og kan ikke være en rang!"
+
+#: src/modules/ranks/ui/overview.py:305
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:is_managed"
+msgid ""
+"The role is managed by another application or integration, and cannot be a "
+"rank!"
+msgstr ""
+"Rollen administreres av en annen applikasjon eller integrasjon og kan ikke "
+"være en rang!"
+
+#: src/modules/ranks/ui/overview.py:310
+msgctxt ""
+"ui:rank_overview|menu:roles|error:not_assignable|suberror:no_permissions"
+msgid ""
+"I do not have the `MANAGE_ROLES` permission in this server, so I cannot "
+"manage ranks!"
+msgstr ""
+"Jeg har ikke tillatelsen `MANAGE_ROLES` på denne serveren, så jeg kan ikke "
+"administrere ranger!"
+
+#: src/modules/ranks/ui/overview.py:315
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:above_me"
+msgid ""
+"This role is above my top role in the role hierarchy, so I cannot add or "
+"remove it!"
+msgstr ""
+"Denne rollen er over min høyeste rolle i hierarkiet, så jeg kan ikke legge "
+"til eller fjerne den!"
+
+#: src/modules/ranks/ui/overview.py:321
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|suberror:other"
+msgid "I am not able to manage the selected role, so it cannot be a rank!"
+msgstr ""
+"Jeg kan ikke administrere den valgte rollen, så den kan ikke være en rang!"
+
+#: src/modules/ranks/ui/overview.py:327
+msgctxt "ui:rank_overview|menu:roles|error:not_assignable|title"
+msgid "Could not create rank!"
+msgstr "Kunne ikke opprette rang!"
+
+#: src/modules/ranks/ui/overview.py:351
+msgctxt "ui:rank_overview|menu:roles|placeholder"
+msgid "Create from role"
+msgstr "Opprett fra rolle"
+
+#: src/modules/ranks/ui/overview.py:368
+msgctxt "ui:rank_overview|menu:ranks|placeholder"
+msgid "View or edit rank"
+msgstr "Se eller rediger rang"
+
+#: src/modules/ranks/ui/overview.py:454
+msgctxt "ui:rank_overview|embed:noranks|desc"
+msgid "No activity ranks have been set up!"
+msgstr "Ingen aktivitetsrangeringer er satt opp!"
+
+#: src/modules/ranks/ui/overview.py:459
+msgctxt "ui:rank_overview|embed:noranks|desc|admin_addendum"
+msgid ""
+"Press 'Auto Create' to automatically create a standard heirachy of ranks.\n"
+"To manually create ranks, press 'Create Rank' below, or select a role!"
+msgstr ""
+"Trykk 'Automatisk opprettelse' for å automatisk opprette et standardhierarki.\n"
+"For å opprette manuelt, trykk 'Opprett rang' eller velg en rolle!"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|title|type:voice"
+msgid "Voice Ranks in {guild_name}"
+msgstr "Stemmerangeringer i {guild_name}"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|title|type:xp"
+msgid "XP ranks in {guild_name}"
+msgstr "XP-rangeringer i {guild_name}"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|title|type:message"
+msgid "Message ranks in {guild_name}"
+msgstr "Meldingsrangeringer i {guild_name}"
+
+#: src/modules/ranks/ui/overview.py:490
+msgctxt "ui:rank_overview|embed|field:note|name"
+msgid "Note"
+msgstr "Merknad"
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|field:note|value:with_season"
+msgid "Ranks are determined by activity since {timestamp}."
+msgstr "Rangeringer bestemmes av aktivitet siden {timestamp}."
+
+#, possible-python-brace-format
+msgctxt "ui:rank_overview|embed|field:note|value:without_season"
+msgid ""
+"Ranks are determined by *all-time* statistics.\n"
+"To reward ranks from a later time (e.g. to have monthly/quarterly/yearly ranks) set the `season_start` with {stats_cmd}"
+msgstr ""
+"Rangeringer bestemmes av *all-time* statistikk.\n"
+"For å belønne ranger fra et senere tidspunkt, sett `season_start` med {stats_cmd}"
+
+#: src/modules/ranks/ui/overview.py:510
+msgctxt "ui:rank_overview|embed|field:note|value|voice_addendum"
+msgid ""
+"Also note that ranks will only be updated when a member leaves a tracked "
+"voice channel! Use the **Refresh Member Ranks** button below to update all "
+"members manually."
+msgstr ""
+"Merk at rangeringer kun oppdateres når et medlem forlater en sporet "
+"stemmekanal! Bruk **Oppdater medlemsrangeringer** for manuell oppdatering."
+
+#: src/modules/ranks/ui/editor.py:33
+msgctxt "ui:rank_editor|input:role_name|label"
+msgid "Role Name"
+msgstr "Rollenavn"
+
+#: src/modules/ranks/ui/editor.py:37
+msgctxt "ui:rank_editor|input:role_name|placeholder"
+msgid "Name of the awarded guild role"
+msgstr "Navn på den tildelte serverrollen"
+
+#: src/modules/ranks/ui/editor.py:53
+msgctxt "ui:rank_editor|input:role_colour|label"
+msgid "Role Colour"
+msgstr "Rollefarge"
+
+#: src/modules/ranks/ui/editor.py:57
+msgctxt "ui:rank_editor|input:role_colour|placeholder"
+msgid "Colour of the awarded guild role, e.g. #AB1321"
+msgstr "Farge på den tildelte rollen, f.eks. #AB1321"
+
+#: src/modules/ranks/ui/editor.py:69
+msgctxt "ui:rank_editor|input:role_colour|error:parse"
+msgid ""
+"`role_colour`: Could not parse colour! Please use `#<hex>` format e.g. "
+"`#AB1325`."
+msgstr ""
+"`role_colour`: Kunne ikke analysere fargen! Bruk `#<hex>` format, f.eks. "
+"`#AB1325`."
+
+#: src/modules/ranks/ui/editor.py:88
+msgctxt "ui:rank_editor|type:voice|input:requires|label"
+msgid "Required Voice Hours"
+msgstr "Påkrevde stemmetimer"
+
+#: src/modules/ranks/ui/editor.py:92
+msgctxt "ui:rank_editor|type:voice|input:requires|placeholder"
+msgid "Number of voice hours before awarding this rank"
+msgstr "Antall stemmetimer før tildeling av denne rangen"
+
+#: src/modules/ranks/ui/editor.py:97
+msgctxt "ui:rank_editor|type:xp|input:requires|label"
+msgid "Required XP"
+msgstr "Påkrevd XP"
+
+#: src/modules/ranks/ui/editor.py:101
+msgctxt "ui:rank_editor|type:xp|input:requires|placeholder"
+msgid "Amount of XP needed before obtaining this rank"
+msgstr "Mengde XP som kreves for denne rangen"
+
+#: src/modules/ranks/ui/editor.py:106
+msgctxt "ui:rank_editor|type:message|input:requires|label"
+msgid "Required Message Count"
+msgstr "Påkrevd meldingsantall"
+
+#: src/modules/ranks/ui/editor.py:110
+msgctxt "ui:rank_editor|type:message|input:requires|placeholder"
+msgid "Number of messages needed before awarding rank"
+msgstr "Antall meldinger før tildeling av rang"
+
+#: src/modules/ranks/ui/editor.py:126
+msgctxt "ui:rank_editor|type:voice|input:requires|error:parse"
+msgid ""
+"`requires`: Could not parse provided minimum time! Please write a number of "
+"hours."
+msgstr ""
+"`requires`: Kunne ikke analysere oppgitt minimumstid! Skriv antall timer."
+
+#: src/modules/ranks/ui/editor.py:137
+msgctxt "ui:rank_editor|type:message|input:requires|error:parse"
+msgid ""
+"`requires`: Could not parse provided minimum message count! Please enter an "
+"integer."
+msgstr ""
+"`requires`: Kunne ikke analysere oppgitt minimum meldingsantall! Skriv et "
+"heltall."
+
+#: src/modules/ranks/ui/editor.py:148
+msgctxt "ui:rank_editor|type:xp|input:requires|error:parse"
+msgid ""
+"`requires`: Could not parse provided minimum XP! Please enter an integer."
+msgstr ""
+"`requires`: Kunne ikke analysere oppgitt minimum XP! Skriv et heltall."
+
+#: src/modules/ranks/ui/editor.py:162
+msgctxt "ui:rank_editor|input:reward|label"
+msgid "LionCoins awarded upon achieving this rank"
+msgstr "LionCoins tildelt ved oppnåelse av denne rangen"
+
+#: src/modules/ranks/ui/editor.py:166
+msgctxt "ui:rank_editor|input:reward|placeholder"
+msgid "LionCoins awarded upon achieving this rank"
+msgstr "LionCoins ved oppnåelse av rang"
+
+#: src/modules/ranks/ui/editor.py:181
+msgctxt "ui:rank_editor|input:reward|error:parse"
+msgid "`reward`: Please enter an integer number of LionCoins."
+msgstr "`reward`: Skriv et heltall med LionCoins."
+
+#: src/modules/ranks/ui/editor.py:197
+msgctxt "ui:rank_editor|input:message|label"
+msgid "Rank Message"
+msgstr "Rangmelding"
+
+#: src/modules/ranks/ui/editor.py:201
+msgctxt "ui:rank_editor|input:message|placeholder"
+msgid "Congratulatory message sent to the user upon achieving this rank."
+msgstr "Gratulasjonsmelding ved oppnåelse av rang."
+
+#: src/modules/ranks/ui/editor.py:262
+msgctxt "ui:rank_editor|mode:edit|title"
+msgid "Rank Editor"
+msgstr "Rangredaktør"
+
+#: src/modules/ranks/ui/editor.py:317
+msgctxt "ui:rank_editor|mode:create|title"
+msgid "Rank Creator"
+msgstr "Rangopprettelse"

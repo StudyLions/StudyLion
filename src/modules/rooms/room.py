@@ -16,13 +16,20 @@ from modules.pomodoro.timer import Timer
 from . import babel, logger
 from .data import RoomData
 from .roomui import RoomUI
-from .lib import owner_overwrite, member_overwrite
+# --- AI-MODIFIED (2026-03-22) ---
+# Purpose: Import ROOM_DASHBOARD_URL for link buttons in room notifications
+from .lib import owner_overwrite, member_overwrite, ROOM_DASHBOARD_URL
+# --- END AI-MODIFIED ---
 
 _p = babel._p
 
 
 class Room:
-    __slots__ = ('bot', 'data', 'lguild', 'members', '_tick_wait')
+    # --- AI-MODIFIED (2026-03-23) ---
+    # Purpose: Re-added _name_sync_task with safe implementation that only syncs
+    # when name_changed_at is set (i.e., dashboard explicitly renamed the room).
+    __slots__ = ('bot', 'data', 'lguild', 'members', '_tick_wait', '_name_sync_task')
+    # --- END AI-MODIFIED ---
 
     tick_length = timedelta(days=1)
     # tick_length = timedelta(hours=1)
@@ -37,6 +44,7 @@ class Room:
 
         # State
         self._tick_wait: Optional[asyncio.Task] = None
+        self._name_sync_task: Optional[asyncio.Task] = None
 
     @property
     def channel(self) -> Optional[discord.VoiceChannel]:
@@ -123,9 +131,23 @@ class Room:
                 "{member} has deposited {coin}**{amount}** into the room bank!"
             )).format(member=member.mention, coin=self.bot.config.emojis.coin, amount=amount)
         )
+        # --- AI-MODIFIED (2026-03-22) ---
+        # Purpose: Add "View Room" dashboard link button to deposit notification
+        link_view = discord.ui.View()
+        link_view.add_item(discord.ui.Button(
+            style=discord.ButtonStyle.link,
+            url=ROOM_DASHBOARD_URL,
+            label="View Room"
+        ))
+        # --- END AI-MODIFIED ---
         if self.channel:
             try:
-                await self.channel.send(embed=notification)
+                # --- AI-MODIFIED (2026-03-22) ---
+                # --- Original code (commented out for rollback) ---
+                # await self.channel.send(embed=notification)
+                # --- End original code ---
+                await self.channel.send(embed=notification, view=link_view)
+                # --- END AI-MODIFIED ---
             except discord.HTTPException:
                 pass
 
@@ -259,6 +281,56 @@ class Room:
             except discord.HTTPException:
                 pass
 
+    # --- AI-MODIFIED (2026-03-23) ---
+    # Purpose: Safe name sync loop -- ONLY syncs when name_changed_at is set in the DB,
+    # meaning the dashboard explicitly renamed the room. Clears name_changed_at after
+    # syncing so it never fires again for the same rename. User-initiated Discord renames
+    # (which don't touch name_changed_at) are never overwritten.
+    async def _name_sync_loop(self):
+        while not self.deleted:
+            try:
+                await asyncio.sleep(300)
+                if self.deleted:
+                    break
+                fresh = await RoomData.Room.fetch(self.data.channelid)
+                if not fresh or fresh.deleted_at:
+                    break
+                if fresh.name_changed_at is None:
+                    continue
+                db_name = fresh.name
+                if not db_name or not self.channel:
+                    continue
+                if self.channel.name != db_name:
+                    try:
+                        await self.channel.edit(name=db_name, reason="Room name synced from dashboard")
+                        logger.info(
+                            f"Synced dashboard rename for <cid: {self.data.channelid}> to '{db_name}'"
+                        )
+                    except discord.HTTPException as e:
+                        if e.status == 429:
+                            retry_after = getattr(e, 'retry_after', 60)
+                            logger.warning(
+                                f"Rate limited syncing dashboard rename for "
+                                f"<cid: {self.data.channelid}>, retry in {retry_after}s"
+                            )
+                            await asyncio.sleep(retry_after)
+                            continue
+                        else:
+                            logger.warning(
+                                f"Failed to sync dashboard rename for <cid: {self.data.channelid}>",
+                                exc_info=True
+                            )
+                self.data.name = db_name
+                await fresh.update(name_changed_at=None)
+            except asyncio.CancelledError:
+                break
+            except Exception:
+                logger.exception(
+                    f"Error in name sync loop for room <cid: {self.data.channelid}>"
+                )
+                await asyncio.sleep(60)
+    # --- END AI-MODIFIED ---
+
     @log_wrap(action="Room Runloop")
     async def run(self):
         """
@@ -269,6 +341,11 @@ class Room:
         """
         if self._tick_wait and not self._tick_wait.done():
             self._tick_wait.cancel()
+
+        # --- AI-MODIFIED (2026-03-23) ---
+        # Purpose: Launch safe name sync loop alongside the tick loop
+        self._name_sync_task = asyncio.create_task(self._name_sync_loop())
+        # --- END AI-MODIFIED ---
 
         while not self.deleted:
             now = utc_now()
@@ -284,6 +361,12 @@ class Room:
                     f"Unhandled exception while ticking for room: {self.data!r}"
                 )
 
+        # --- AI-MODIFIED (2026-03-23) ---
+        # Purpose: Cancel name sync task when run loop exits
+        if self._name_sync_task and not self._name_sync_task.done():
+            self._name_sync_task.cancel()
+        # --- END AI-MODIFIED ---
+
     @log_wrap(action="Room Tick")
     async def _tick(self):
         """
@@ -295,9 +378,37 @@ class Room:
         """
         t = self.bot.translator.t
         ctx_locale.set(self.lguild.config.get('guild_locale').value)
+
+        # --- AI-MODIFIED (2026-03-22) ---
+        # Purpose: Re-read room state from DB to detect dashboard-initiated changes
+        # (e.g., admin force-closed or froze the room via the website)
+        fresh = await RoomData.Room.fetch(self.data.channelid)
+        if fresh:
+            self.data.deleted_at = fresh.deleted_at
+            self.data.frozen_at = fresh.frozen_at
+            self.data.frozen_by = fresh.frozen_by
+            self.data.name = fresh.name
+        # --- END AI-MODIFIED ---
+
         if self.deleted:
             # Already deleted, nothing to do
             pass
+        # --- AI-MODIFIED (2026-03-22) ---
+        # Purpose: Skip rent deduction when room is frozen by admin; still sync name
+        elif self.data.frozen_at:
+            logger.debug(f"Room <cid: {self.data.channelid}> is frozen, skipping rent deduction")
+            await self.data.update(last_tick=utc_now())
+            if self.channel:
+                t = self.bot.translator.t
+                embed = discord.Embed(
+                    colour=discord.Colour.blue(),
+                    description="This room is **frozen** by a server admin. Rent is paused."
+                )
+                try:
+                    await self.channel.send(embed=embed)
+                except discord.HTTPException:
+                    pass
+        # --- END AI-MODIFIED ---
         else:
             # Run tick
             logger.debug(f"Tick running for room: {self.data!r}")
@@ -322,8 +433,23 @@ class Room:
                             "Your private room in **{guild}** has expired!"
                         )).format(guild=self.bot.get_guild(self.data.guildid))
                     )
+                    # --- AI-MODIFIED (2026-03-22) ---
+                    # Purpose: Add "View All Rooms" dashboard link button to expiry DM
+                    link_view = discord.ui.View()
+                    link_view.add_item(discord.ui.Button(
+                        style=discord.ButtonStyle.link,
+                        url=ROOM_DASHBOARD_URL,
+                        label="View All Rooms"
+                    ))
+                    # --- END AI-MODIFIED ---
                     try:
-                        await owner.send(embed=embed)
+                        # --- AI-MODIFIED (2026-03-22) ---
+                        # Purpose: Send expiry DM with dashboard link button
+                        # --- Original code (commented out for rollback) ---
+                        # await owner.send(embed=embed)
+                        # --- End original code ---
+                        await owner.send(embed=embed, view=link_view)
+                        # --- END AI-MODIFIED ---
                     except discord.HTTPException:
                         pass
                 self.lguild.log_event(
@@ -351,8 +477,22 @@ class Room:
                             coin=self.bot.config.emojis.coin, amount=self.data.coin_balance
                         )
                 )
+                # --- AI-MODIFIED (2026-03-22) ---
+                # Purpose: Add "Deposit Now" dashboard link button to tick notification
+                link_view = discord.ui.View()
+                link_view.add_item(discord.ui.Button(
+                    style=discord.ButtonStyle.link,
+                    url=ROOM_DASHBOARD_URL,
+                    label="Deposit Now"
+                ))
+                # --- END AI-MODIFIED ---
                 try:
-                    await self.channel.send(embed=embed)
+                    # --- AI-MODIFIED (2026-03-22) ---
+                    # --- Original code (commented out for rollback) ---
+                    # await self.channel.send(embed=embed)
+                    # --- End original code ---
+                    await self.channel.send(embed=embed, view=link_view)
+                    # --- END AI-MODIFIED ---
                 except discord.HTTPException:
                     pass
             else:
@@ -383,6 +523,11 @@ class Room:
         """
         if self._tick_wait:
             self._tick_wait.cancel()
+        # --- AI-MODIFIED (2026-03-23) ---
+        # Purpose: Cancel name sync task on room destroy
+        if self._name_sync_task and not self._name_sync_task.done():
+            self._name_sync_task.cancel()
+        # --- END AI-MODIFIED ---
 
         if self.channel:
             try:

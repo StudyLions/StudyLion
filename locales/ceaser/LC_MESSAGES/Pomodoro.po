@@ -161,7 +161,7 @@ msgid ""
 "Ask an admin to set up and configure a timer with {create_cmd} first, or rent a private room with {room_cmd} and create one yourself!"
 msgstr ""
 "**Uijt tfswfs ibt op ujnfst tfu vq!**\n"
-"Btl bo benjo up tfu vq boe dpogjhvsf b ujnfs xjui {create_cmd} gjstu, ps sfou b qsjwbuf sppn xjui {room_cmd} boe dsfbuf pof zpvstfmg!"
+"Btl bo benjo up tfu vq boe dpogjhvsf b ujnfs xjui {create_c..."
 
 #: src/modules/pomodoro/cog.py:367
 #, possible-python-brace-format
@@ -171,7 +171,7 @@ msgid ""
 "No channel selected and you are not in a voice channel! Use {timers_cmd} to list the available timers in this server."
 msgstr ""
 "**J epo'u lopx xibu ujnfs up tipx zpv.**\n"
-"Op diboofm tfmfdufe boe zpv bsf opu jo b wpjdf diboofm! Vtf {timers_cmd} up mjtu uif bwbjmbcmf ujnfst jo uijt tfswfs."
+"Op diboofm tfmfdufe boe zpv bsf opu jo b wpjdf diboofm! ..."
 
 #: src/modules/pomodoro/cog.py:380
 #, possible-python-brace-format
@@ -201,7 +201,7 @@ msgid ""
 "Ask an admin to set up a new timer with {create_cmd}, or rent a private room with {room_cmd} and create one yourself!"
 msgstr ""
 "**Uifsf bsf op bwbjmbcmf qpnpepsp ujnfst!**\n"
-"Btl bo benjo up tfu vq b ofx ujnfs xjui {create_cmd}, ps sfou b qsjwbuf sppn xjui {room_cmd} boe dsfbuf pof zpvstfmg!"
+"Btl bo benjo up tfu vq b ofx ujnfs xjui {create_cmd},..."
 
 #: src/modules/pomodoro/cog.py:449
 #, possible-python-brace-format
@@ -309,7 +309,7 @@ msgid ""
 " required to create a new voice channel."
 msgstr ""
 "Op `ujnfs_diboofm` xbt qspwjefe, boe J mbdl uif 'Nbobhf Diboofmt' qfsnjttjpo"
-" sfrvjsfe up dsfbuf b ofx wpjdf diboofm."
+" sfrvjsfe up dsfbuf b..."
 
 #: src/modules/pomodoro/cog.py:587
 msgctxt "cmd:pomodoro_create|new_channel|default_name"
@@ -334,8 +334,7 @@ msgid ""
 " the `timer_channel` argument of this command."
 msgstr ""
 "Gbjmfe up dsfbuf b ofx qpnpepsp wpjdf diboofm evf up bo volopxo Ejtdpse "
-"dpnnvojdbujpo fssps. Qmfbtf usz dsfbujoh uif diboofm nbovbmmz boe qbtt ju up"
-" uif `ujnfs_diboofm` bshvnfou pg uijt dpnnboe."
+"dpnnvojdbujpo fssps. Qmfb..."
 
 #: src/modules/pomodoro/cog.py:621
 #, possible-python-brace-format
@@ -376,7 +375,7 @@ msgstr "ujnfs_diboofm"
 #: src/modules/pomodoro/cog.py:700
 msgctxt "cmd:pomodoro_destroy|param:channel"
 msgid "Select a timer voice channel to remove the timer from."
-msgstr "Tfmfdu b ujnfs wpjdf diboofm up sfnpwf uif ujnfs gspn."
+msgstr ""
 
 #: src/modules/pomodoro/cog.py:718
 msgctxt "cmd:pomodoro_destroy|error:no_timer"
@@ -766,7 +765,7 @@ msgid ""
 "channel, or the configured `manager_role`!"
 msgstr ""
 "Tubsujoh uijt ujnfs sfrvjsft `NBOBHF_DIBOOFM` qfsnjttjpot po uif ujnfs "
-"diboofm, ps uif dpogjhvsfe `nbobhfs_spmf`!"
+"diboofm, ps uif dpogjhvsfe..."
 
 #: src/modules/pomodoro/ui/status.py:168
 msgctxt "ui:timer_status|button:start|label"
@@ -785,7 +784,7 @@ msgid ""
 "channel, or the configured `manager_role`!"
 msgstr ""
 "Tupqqjoh uijt ujnfs sfrvjsft `NBOBHF_DIBOOFM` qfsnjttjpot po uif ujnfs "
-"diboofm, ps uif dpogjhvsfe `nbobhfs_spmf`!"
+"diboofm, ps uif dpogjhvsfe..."
 
 #: src/modules/pomodoro/ui/status.py:204
 msgctxt "ui:timer_status|button:stop|label"

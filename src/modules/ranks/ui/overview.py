@@ -5,7 +5,7 @@ import discord
 from discord.ui.select import select, Select, SelectOption, RoleSelect
 from discord.ui.button import button, Button, ButtonStyle
 
-from meta import conf, LionBot
+from meta import conf, LionBot, WEBSITE_URL
 from meta.errors import ResponseTimedOut, SafeCancellation
 from core.data import RankType
 from data import ORDER
@@ -520,8 +520,15 @@ class RankOverviewUI(MessageUI):
         return MessageArgs(embed=embed)
 
     async def refresh_layout(self):
+        # --- AI-MODIFIED (2026-03-17) ---
+        # Purpose: Added web link button for richer rank details page on website
+        _web = discord.ui.Button(
+            label="Ranks on Web", emoji="🌐",
+            url=f"{WEBSITE_URL}/dashboard/servers/{self.guildid}/ranks",
+            style=discord.ButtonStyle.link,
+        )
+        # --- END AI-MODIFIED ---
         if len(self.blocks) > 1:
-            # If the guild has at least one rank setup
             await asyncio.gather(
                 self.rank_menu_refresh(),
                 self.role_menu_refresh(),
@@ -534,10 +541,9 @@ class RankOverviewUI(MessageUI):
                 (self.rank_menu,),
                 (self.role_menu,),
                 (self.refresh_button, self.create_button, self.clear_button),
-                (self.prev_page_button, self.quit_button, self.next_page_button)
+                (self.prev_page_button, self.quit_button, _web, self.next_page_button)
             )
         elif self.rank_block:
-            # If the guild has at least one rank setup
             await asyncio.gather(
                 self.rank_menu_refresh(),
                 self.role_menu_refresh(),
@@ -549,10 +555,9 @@ class RankOverviewUI(MessageUI):
             self.set_layout(
                 (self.rank_menu,),
                 (self.role_menu,),
-                (self.refresh_button, self.create_button, self.clear_button, self.quit_button)
+                (self.refresh_button, self.create_button, self.clear_button, _web, self.quit_button)
             )
         else:
-            # If the guild has no ranks set up
             await asyncio.gather(
                 self.role_menu_refresh(),
                 self.auto_button_refresh(),
@@ -561,7 +566,7 @@ class RankOverviewUI(MessageUI):
             )
             self.set_layout(
                 (self.role_menu,),
-                (self.auto_button, self.create_button, self.quit_button)
+                (self.auto_button, self.create_button, _web, self.quit_button)
             )
 
     async def reload(self):

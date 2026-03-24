@@ -579,7 +579,14 @@ class RankCog(LionCog):
 
                 # Build notification embed
                 rank_mapping = self.get_message_map(rank_type, guild, member, role, new_rank)
-                rank_message = replace_multiple(new_rank.message, rank_mapping)
+                # --- AI-MODIFIED (2026-03-21) ---
+                # Purpose: Guard against None rank message (admins who didn't set a custom message)
+                raw_message = new_rank.message or t(_p(
+                    'event:rank_update|default_message',
+                    "Congratulations {member}! You achieved the **{rank}** rank!"
+                ))
+                rank_message = replace_multiple(raw_message, rank_mapping)
+                # --- END AI-MODIFIED ---
                 embed = discord.Embed(
                     colour=discord.Colour.orange(),
                     title=t(_p(
@@ -607,10 +614,17 @@ class RankCog(LionCog):
                         if not rank_channel:
                             raise
 
-                if not sent and rank_channel:
-                    destination = rank_channel
-                    text = member.mention
-                    await destination.send(content=text, embed=embed)
+                # --- AI-MODIFIED (2026-03-23) ---
+                # Purpose: Always send to rank channel if configured, not just as DM fallback
+                # --- Original code (commented out for rollback) ---
+                # if not sent and rank_channel:
+                #     destination = rank_channel
+                #     text = member.mention
+                #     await destination.send(content=text, embed=embed)
+                # --- End original code ---
+                if rank_channel:
+                    await rank_channel.send(content=member.mention, embed=embed)
+                # --- END AI-MODIFIED ---
 
     def get_message_map(self,
                         rank_type: RankType,

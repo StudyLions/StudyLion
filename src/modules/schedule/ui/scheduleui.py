@@ -6,7 +6,7 @@ import discord
 from discord.ui.select import select, Select, SelectOption
 from discord.ui.button import button, Button, ButtonStyle
 
-from meta import conf, LionBot
+from meta import conf, LionBot, WEBSITE_URL
 from meta.errors import UserInputError
 from data import ORDER
 
@@ -581,17 +581,25 @@ class ScheduleUI(MessageUI):
             self.booking_menu_refresh(),
             self.cancel_menu_refresh(),
         )
+        # --- AI-MODIFIED (2026-03-17) ---
+        # Purpose: Added web link button for schedule on website with heatmap and analytics
+        _web = discord.ui.Button(
+            label="Schedule on Web", emoji="🌐",
+            url=f"{WEBSITE_URL}/dashboard/servers/{self.guildid}/schedule",
+            style=discord.ButtonStyle.link,
+        )
         if self.schedule and self.cancel_menu.options:
             self.set_layout(
-                (self.about_button, self.refresh_button, self.clear_button, self.quit_button),
+                (self.about_button, self.refresh_button, self.clear_button, _web, self.quit_button),
                 (self.booking_menu,),
                 (self.cancel_menu,),
             )
         else:
             self.set_layout(
-                (self.about_button, self.refresh_button, self.quit_button),
+                (self.about_button, self.refresh_button, _web, self.quit_button),
                 (self.booking_menu,)
             )
+        # --- END AI-MODIFIED ---
 
     async def reload(self):
         now = utc_now()

@@ -1,0 +1,514 @@
+# Chinese (Simplified) translation for LionBot - utils
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 21:36+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Chinese (Simplified)\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/utils/cog.py:18
+msgctxt "cmd:page"
+msgid "page"
+msgstr "page"
+
+#: src/utils/cog.py:21
+msgctxt "cmd:page|desc"
+msgid "Jump to a given page of the ouput of a previous command in this channel."
+msgstr "跳转到此频道中上一条命令输出的指定页面。"
+
+#: src/utils/cog.py:35
+msgctxt "cmd:page|error:no_pager"
+msgid "No pager listening in this channel!"
+msgstr "此频道没有活跃的分页器！"
+
+#: src/utils/cog.py:46
+msgctxt "cmd:page_next"
+msgid "next"
+msgstr "next"
+
+#: src/utils/cog.py:47
+msgctxt "cmd:page_next|desc"
+msgid "Jump to the next page of output."
+msgstr "跳转到下一页。"
+
+#: src/utils/cog.py:53
+msgctxt "cmd:page_prev"
+msgid "prev"
+msgstr "prev"
+
+#: src/utils/cog.py:54
+msgctxt "cmd:page_prev|desc"
+msgid "Jump to the previous page of output."
+msgstr "跳转到上一页。"
+
+#: src/utils/cog.py:60
+msgctxt "cmd:page_first"
+msgid "first"
+msgstr "first"
+
+#: src/utils/cog.py:61
+msgctxt "cmd:page_first|desc"
+msgid "Jump to the first page of output."
+msgstr "跳转到第一页。"
+
+#: src/utils/cog.py:67
+msgctxt "cmd:page_last"
+msgid "last"
+msgstr "last"
+
+#: src/utils/cog.py:68
+msgctxt "cmd:page_last|desc"
+msgid "Jump to the last page of output."
+msgstr "跳转到最后一页。"
+
+#: src/utils/cog.py:74
+msgctxt "cmd:page_select"
+msgid "select"
+msgstr "select"
+
+#: src/utils/cog.py:75
+msgctxt "cmd:page_select|desc"
+msgid "Select a page of the output to jump to."
+msgstr "选择要跳转到的输出页面。"
+
+#: src/utils/cog.py:78
+msgctxt "cmd:page_select|param:page"
+msgid "page"
+msgstr "page"
+
+#: src/utils/cog.py:81
+msgctxt "cmd:page_select|param:page|desc"
+msgid "The page name or number to jump to."
+msgstr "要跳转的页面名称或编号。"
+
+#: src/utils/cog.py:87
+msgctxt "cmd:page_select|error:no_pager"
+msgid "No pager listening in this channel!"
+msgstr "此频道没有活跃的分页器！"
+
+#: src/utils/cog.py:98
+msgctxt "cmd:page_select|acmpl|error:no_pager"
+msgid "No active pagers in this channel!"
+msgstr "此频道没有活跃的分页器！"
+
+#, possible-python-brace-format
+msgctxt "utils:parse_dur|error"
+msgid "Cannot parse `{value}` as a duration."
+msgstr "无法将`{value}`解析为持续时间。"
+
+#, possible-python-brace-format
+msgctxt "util:Duration|acmpl|error"
+msgid "Cannot extract duration from \"{partial}\""
+msgstr "无法从\"{partial}\"中提取持续时间"
+
+#: src/utils/lib.py:683
+msgctxt "util:parse_dur|regex:day"
+msgid "(?P<value>\\d+)\\s*(?:(d)|(day))"
+msgstr "(?P<value>\\d+)\\s*(?:(d)|(day))"
+
+#: src/utils/lib.py:690
+msgctxt "util:parse_dur|regex:hour"
+msgid "(?P<value>\\d+)\\s*(?:(h)|(hour))"
+msgstr "(?P<value>\\d+)\\s*(?:(h)|(hour))"
+
+#: src/utils/lib.py:697
+msgctxt "util:parse_dur|regex:minute"
+msgid "(?P<value>\\d+)\\s*(?:(m)|(min))"
+msgstr "(?P<value>\\d+)\\s*(?:(m)|(min))"
+
+#: src/utils/lib.py:704
+msgctxt "util:parse_dur|regex:second"
+msgid "(?P<value>\\d+)\\s*(?:(s)|(sec))"
+msgstr "(?P<value>\\d+)\\s*(?:(s)|(sec))"
+
+#, possible-python-brace-format
+msgctxt "parse_timestamp|error:parse"
+msgid "Could not parse `{given}` as a valid reminder time. Try entering the time in the form `HH:MM` or `YYYY-MM-DD HH:MM`."
+msgstr "无法将`{given}`解析为有效的提醒时间。请尝试`HH:MM`或`YYYY-MM-DD HH:MM`格式。"
+
+#: src/utils/ui/config.py:35
+msgctxt "ui:configui|modal:edit|title"
+msgid "Setting Editor"
+msgstr "设置编辑器"
+
+#: src/utils/ui/config.py:75
+msgctxt "ui:configui|check|not_permitted"
+msgid "You have insufficient server permissions to use this UI!"
+msgstr "您没有足够的服务器权限来使用此界面！"
+
+#: src/utils/ui/config.py:157
+msgctxt "ui:configui|button:edit|label"
+msgid "Edit"
+msgstr "编辑"
+
+#: src/utils/ui/config.py:196
+msgctxt "ui:guild_config_base|button:reset|label"
+msgid "Reset"
+msgstr "重置"
+
+#: src/utils/ui/config.py:331
+msgctxt "ui:dashboard|error:section_too_long"
+msgid "Oops, the settings in this configuration section are too large, and I can not display them here! Please view the settings in the linked configuration panel instead."
+msgstr "糟糕，此配置部分的设置太大，无法在此显示！请在链接的配置面板中查看设置。"
+
+#: src/utils/ui/pagers.py:50
+msgctxt "cmd:page|pager:Pager|options:next"
+msgid "n, nxt, next, forward, +"
+msgstr "n, nxt, next, forward, +"
+
+#: src/utils/ui/pagers.py:53
+msgctxt "cmd:page|pager:Pager|options:prev"
+msgid "p, prev, back, -"
+msgstr "p, prev, back, -"
+
+#: src/utils/ui/pagers.py:56
+msgctxt "cmd:page|pager:Pager|options:first"
+msgid "f, first, one, start"
+msgstr "f, first, one, start"
+
+#: src/utils/ui/pagers.py:59
+msgctxt "cmd:page|pager:Pager|options:last"
+msgid "l, last, end"
+msgstr "l, last, end"
+
+#, possible-python-brace-format
+msgctxt "cmd:page|pager:Pager|error:parse"
+msgid "Could not understand page specification `{value}`."
+msgstr "无法理解页面规格`{value}`。"
+
+#, possible-python-brace-format
+msgctxt "cmd:page|acmpl|pager:Pager|choice:last"
+msgid "Last: Page {page}/{total}"
+msgstr "最后: 第{page}/{total}页"
+
+#, possible-python-brace-format
+msgctxt "cmd:page|acmpl|pager:Pager|choice:current"
+msgid "Current: Page {page}/{total}"
+msgstr "当前: 第{page}/{total}页"
+
+#, possible-python-brace-format
+msgctxt "cmd:page|acmpl|pager:Pager|choice:general"
+msgid "Page {page}"
+msgstr "第{page}页"
+
+#, possible-python-brace-format
+msgctxt "cmd:page|acmpl|pager:Page|choice:select"
+msgid "Selected: Page {page}/{total}"
+msgstr "已选: 第{page}/{total}页"
+
+#: src/utils/ui/pagers.py:363
+msgctxt "cmd:page|acmpl|pager:Page|error:parse"
+msgid "No matching pages!"
+msgstr "没有匹配的页面！"
+
+#: src/utils/ui/msgeditor.py:75
+msgctxt "ui:msg_editor|error:empty"
+msgid "Rendering failed! The message content and embed cannot both be empty."
+msgstr "渲染失败！消息内容和嵌入不能同时为空。"
+
+#, possible-python-brace-format
+msgctxt "ui:msg_editor|error:embed_failed"
+msgid ""
+"Rendering failed! Could not parse the embed.\n"
+"Error: {error}"
+msgstr ""
+"渲染失败！无法解析嵌入。\n"
+"错误: {error}"
+
+#, possible-python-brace-format
+msgctxt "ui:msg_editor|error:invalid_change"
+msgid ""
+"Rendering failed! The message was not modified.\n"
+"Error: `{text}`"
+msgstr ""
+"渲染失败！消息未被修改。\n"
+"错误: `{text}`"
+
+#: src/utils/ui/msgeditor.py:123
+msgctxt "ui:msg_editor|modal:content|field:content|label"
+msgid "Message Content"
+msgstr "消息内容"
+
+#: src/utils/ui/msgeditor.py:132
+msgctxt "ui:msg_editor|modal:content|title"
+msgid "Content Editor"
+msgstr "内容编辑器"
+
+#: src/utils/ui/msgeditor.py:150
+msgctxt "ui:msg_editor|button:edit|label"
+msgid "Edit Content"
+msgstr "编辑内容"
+
+#: src/utils/ui/msgeditor.py:162
+msgctxt "ui:msg_editor|button:add_embed|sample_embed|title"
+msgid "Title Placeholder"
+msgstr "标题占位符"
+
+#: src/utils/ui/msgeditor.py:163
+msgctxt "ui:msg_editor|button:add_embed|sample_embed|description"
+msgid "Description Placeholder"
+msgstr "描述占位符"
+
+#: src/utils/ui/msgeditor.py:174
+msgctxt "ui:msg_editor|button:add_embed|label"
+msgid "Add Embed"
+msgstr "添加嵌入"
+
+#: src/utils/ui/msgeditor.py:190
+msgctxt "ui:msg_editor|button:rm_embed|sample_content"
+msgid "Content Placeholder"
+msgstr "内容占位符"
+
+#: src/utils/ui/msgeditor.py:199
+msgctxt "ui:msg_editor|button:rm_embed|label"
+msgid "Remove Embed"
+msgstr "移除嵌入"
+
+#: src/utils/ui/msgeditor.py:217
+msgctxt "ui:msg_editor|modal:body|field:content|label"
+msgid "Message Content"
+msgstr "消息内容"
+
+#: src/utils/ui/msgeditor.py:228
+msgctxt "ui:msg_editor|modal:body|field:desc|label"
+msgid "Embed Description"
+msgstr "嵌入描述"
+
+#: src/utils/ui/msgeditor.py:239
+msgctxt "ui:msg_editor|modal:body|field:title|label"
+msgid "Embed Title"
+msgstr "嵌入标题"
+
+#: src/utils/ui/msgeditor.py:250
+msgctxt "ui:msg_editor|modal:body|field:colour|label"
+msgid "Embed Colour"
+msgstr "嵌入颜色"
+
+#: src/utils/ui/msgeditor.py:265
+msgctxt "ui:msg_editor|modal:body|title"
+msgid "Message Body Editor"
+msgstr "消息正文编辑器"
+
+#: src/utils/ui/msgeditor.py:290
+msgctxt "ui:msg_editor|button:body|error:invalid_colour"
+msgid "Invalid colour format! Please enter colours as hex codes, e.g. `#E67E22`"
+msgstr "无效的颜色格式！请输入十六进制颜色代码，例如 `#E67E22`"
+
+#: src/utils/ui/msgeditor.py:310
+msgctxt "ui:msg_editor|button:body|label"
+msgid "Body"
+msgstr "正文"
+
+#: src/utils/ui/msgeditor.py:327
+msgctxt "ui:msg_editor|modal:author|field:name|label"
+msgid "Author Name"
+msgstr "作者名称"
+
+#: src/utils/ui/msgeditor.py:338
+msgctxt "ui:msg_editor|modal:author|field:link|label"
+msgid "Author URL"
+msgstr "作者URL"
+
+#: src/utils/ui/msgeditor.py:348
+msgctxt "ui:msg_editor|modal:author|field:image|label"
+msgid "Author Image URL"
+msgstr "作者图片URL"
+
+#: src/utils/ui/msgeditor.py:359
+msgctxt "ui:msg_editor|modal:author|title"
+msgid "Embed Author Editor"
+msgstr "嵌入作者编辑器"
+
+#: src/utils/ui/msgeditor.py:385
+msgctxt "ui:msg_editor|button:author|label"
+msgid "Author"
+msgstr "作者"
+
+#: src/utils/ui/msgeditor.py:402
+msgctxt "ui:msg_editor|modal:footer|field:text|label"
+msgid "Footer Text"
+msgstr "页脚文本"
+
+#: src/utils/ui/msgeditor.py:413
+msgctxt "ui:msg_editor|modal:footer|field:image|label"
+msgid "Footer Image URL"
+msgstr "页脚图片URL"
+
+#: src/utils/ui/msgeditor.py:423
+msgctxt "ui:msg_editor|modal:footer|field:timestamp|label"
+msgid "Embed Timestamp (in ISO format)"
+msgstr "嵌入时间戳（ISO格式）"
+
+#: src/utils/ui/msgeditor.py:435
+msgctxt "ui:msg_editor|modal:footer|title"
+msgid "Embed Footer Editor"
+msgstr "嵌入页脚编辑器"
+
+#: src/utils/ui/msgeditor.py:454
+msgctxt "ui:msg_editor|button:footer|error:invalid_timestamp"
+msgid "Invalid timestamp! Please enter the timestamp in ISO format."
+msgstr "无效的时间戳！请以ISO格式输入。"
+
+#: src/utils/ui/msgeditor.py:474
+msgctxt "ui:msg_editor|button:footer|label"
+msgid "Footer"
+msgstr "页脚"
+
+#: src/utils/ui/msgeditor.py:492
+msgctxt "ui:msg_editor|modal:images|field:thumb|label"
+msgid "Thumbnail Image URL"
+msgstr "缩略图URL"
+
+#: src/utils/ui/msgeditor.py:502
+msgctxt "ui:msg_editor|modal:images|field:image|label"
+msgid "Embed Image URL"
+msgstr "嵌入图片URL"
+
+#: src/utils/ui/msgeditor.py:512
+msgctxt "ui:msg_editor|modal:images|title"
+msgid "Embed images Editor"
+msgstr "嵌入图片编辑器"
+
+#: src/utils/ui/msgeditor.py:542
+msgctxt "ui:msg_editor|button:images|label"
+msgid "Images"
+msgstr "图片"
+
+#: src/utils/ui/msgeditor.py:560
+msgctxt "ui:msg_editor|modal:add_field|field:position|label"
+msgid "Field number to insert at"
+msgstr "要插入的字段编号"
+
+#: src/utils/ui/msgeditor.py:570
+msgctxt "ui:msg_editor|modal:add_field|field:name|label"
+msgid "Field name"
+msgstr "字段名称"
+
+#: src/utils/ui/msgeditor.py:580
+msgctxt "ui:msg_editor|modal:add_field|field:value|label"
+msgid "Field value"
+msgstr "字段值"
+
+#: src/utils/ui/msgeditor.py:590
+msgctxt "ui:msg_editor|modal:add_field|field:inline|label"
+msgid "Whether the field is inline"
+msgstr "字段是否内联"
+
+#: src/utils/ui/msgeditor.py:594
+msgctxt "ui:msg_editor|modal:add_field|field:inline|placeholder"
+msgid "True/False"
+msgstr "True/False"
+
+#: src/utils/ui/msgeditor.py:607
+msgctxt "ui:msg_editor|modal:add_field|title"
+msgid "Add Embed Field"
+msgstr "添加嵌入字段"
+
+#: src/utils/ui/msgeditor.py:627
+msgctxt "ui:msg_editor|modal:add_field|error:position_not_int"
+msgid "The field position must be an integer!"
+msgstr "字段位置必须是整数！"
+
+#: src/utils/ui/msgeditor.py:646
+msgctxt "ui:msg_editor|button:add_field|label"
+msgid "Add Field"
+msgstr "添加字段"
+
+#: src/utils/ui/msgeditor.py:662
+msgctxt "ui:msg_editor|format_field|name_placeholder"
+msgid "-"
+msgstr "-"
+
+#: src/utils/ui/msgeditor.py:691
+msgctxt "ui:msg_editor|modal:edit_field|field:name|label"
+msgid "Field name"
+msgstr "字段名称"
+
+#: src/utils/ui/msgeditor.py:702
+msgctxt "ui:msg_editor|modal:edit_field|field:value|label"
+msgid "Field value"
+msgstr "字段值"
+
+#: src/utils/ui/msgeditor.py:713
+msgctxt "ui:msg_editor|modal:edit_field|field:inline|label"
+msgid "Whether the field is inline"
+msgstr "字段是否内联"
+
+#: src/utils/ui/msgeditor.py:717
+msgctxt "ui:msg_editor|modal:edit_field|field:inline|placeholder"
+msgid "True/False"
+msgstr "True/False"
+
+#: src/utils/ui/msgeditor.py:729
+msgctxt "ui:msg_editor|modal:edit_field|title"
+msgid "Edit Embed Field"
+msgstr "编辑嵌入字段"
+
+#: src/utils/ui/msgeditor.py:758
+msgctxt "ui:msg_editor|menu:edit_field|placeholder"
+msgid "Edit Embed Field"
+msgstr "编辑嵌入字段"
+
+#: src/utils/ui/msgeditor.py:797
+msgctxt "ui:msg_deleteor|menu:delete_field|placeholder"
+msgid "Remove Embed Field"
+msgstr "移除嵌入字段"
+
+#: src/utils/ui/msgeditor.py:833
+msgctxt "ui:msg_editor|button:save|label"
+msgid "Save"
+msgstr "保存"
+
+#: src/utils/ui/msgeditor.py:858
+msgctxt "ui:msg_editor|button:download|label"
+msgid "Download"
+msgstr "下载"
+
+#: src/utils/ui/msgeditor.py:877
+msgctxt "ui:msg_editor|button:undo|label"
+msgid "Undo"
+msgstr "撤销"
+
+#: src/utils/ui/msgeditor.py:897
+msgctxt "ui:msg_editor|button:redo|label"
+msgid "Redo"
+msgstr "重做"
+
+#: src/utils/ui/msgeditor.py:916
+msgctxt "ui:msg_editor|button:quit|confirm"
+msgid "You have unsaved changes! Are you sure you want to quit?"
+msgstr "您有未保存的更改！确定要退出吗？"
+
+#: src/utils/ui/msgeditor.py:921
+msgctxt "ui:msg_editor|button:quit|confirm|button:yes"
+msgid "Yes, Quit Now"
+msgstr "是的，立即退出"
+
+#: src/utils/ui/msgeditor.py:927
+msgctxt "ui:msg_editor|button:quit|confirm|button:no"
+msgid "No, Go Back"
+msgstr "不，返回"
+
+#: src/utils/ui/msgeditor.py:1025
+msgctxt "ui:msg_editor|timeout_warning|title"
+msgid "Warning!"
+msgstr "警告！"
+
+#, possible-python-brace-format
+msgctxt "ui:msg_editor|timeout_warning|desc"
+msgid "This interface will time out {timestamp}. Press 'Continue' below to keep editing."
+msgstr "此界面将在 {timestamp} 超时。按下方的'继续'以继续编辑。"
+
+#: src/utils/ui/msgeditor.py:1038
+msgctxt "ui:msg_editor|timeout_warning|continue"
+msgid "Continue"
+msgstr "继续"

@@ -64,7 +64,7 @@ msgid ""
 "blacklisted from video channels in **{server}**."
 msgstr ""
 "Zpv xfsf ejtdpoofdufe gspn uif wjefp diboofm {channel} cfdbvtf zpv bsf "
-"cmbdlmjtufe gspn wjefp diboofmt jo **{server}**."
+"cmbdlmjtufe gspn wjefp dib..."
 
 #: src/modules/video_channels/cog.py:290
 #, possible-python-brace-format
@@ -121,7 +121,7 @@ msgid ""
 "You have been disconnected from the video {channel} for not enabling your camera."
 msgstr ""
 "**Zpv nvtu fobcmf zpvs dbnfsb jo dbnfsb-pomz sppnt.**\n"
-"Zpv ibwf cffo ejtdpoofdufe gspn uif wjefp {channel} gps opu fobcmjoh zpvs dbnfsb."
+"Zpv ibwf cffo ejtdpoofdufe gspn uif wjefp {..."
 
 #: src/modules/video_channels/cog.py:422
 msgctxt "video_watchdog|join_task|kick_after_grace|blacklist|title"
@@ -156,7 +156,7 @@ msgid ""
 "Please keep your video on at all times, and leave the channel if you need to disable it!"
 msgstr ""
 "Zpv xfsf ejtdpoofdufe gspn uif wjefp diboofm {channel} cfdbvtf zpv ejtbcmfe zpvs wjefp.\n"
-"Qmfbtf lffq zpvs wjefp po bu bmm ujnft, boe mfbwf uif diboofm jg zpv offe up ejtbcmf ju!"
+"Qmfbtf lf..."
 
 #: src/modules/video_channels/cog.py:510
 msgctxt "cmd:configure_video"

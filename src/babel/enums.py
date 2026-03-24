@@ -7,6 +7,10 @@ _p = babel._p
 class LocaleMap(Enum):
     american_english = 'en-US'
     british_english = 'en-GB'
+    # --- AI-MODIFIED (2026-03-13) ---
+    # Purpose: Added Indonesian locale to match locale_names dict
+    indonesian = 'id'
+    # --- END AI-MODIFIED ---
     bulgarian = 'bg'
     chinese = 'zh-CN'
     taiwan_chinese = 'zh-TW'

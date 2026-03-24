@@ -1,0 +1,443 @@
+# Romanian translation for LionBot - voice-tracker
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 20:24+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Romanian\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100>0 && n%100<20)) ? 1 : 2);\n"
+
+#: src/tracking/voice/session.py:293
+msgctxt "eventlog|event:voice_session_expired|title"
+msgid "Member Voice Session Expired"
+msgstr "Sesiunea vocală a membrului a expirat"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:voice_session_expired|desc"
+msgid ""
+"{member}'s voice session in {channel} expired because they reached the daily"
+" voice cap."
+msgstr ""
+"Sesiunea vocală a lui {member} în {channel} a expirat deoarece a atins "
+"limita zilnică."
+
+#: src/tracking/voice/session.py:336
+msgctxt "eventlog|event:voice_session_closed|title"
+msgid "Member Voice Session Ended"
+msgstr "Sesiunea vocală a membrului s-a încheiat"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:voice_session_closed|desc"
+msgid "{member} completed their voice session in {channel}."
+msgstr "{member} a finalizat sesiunea vocală în {channel}."
+
+#: src/tracking/voice/session.py:352
+msgctxt "eventlog|event:voice_session_cancelled|title"
+msgid "Member Voice Session Cancelled"
+msgstr "Sesiunea vocală a membrului a fost anulată"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:voice_session_cancelled|desc"
+msgid "{member} left {channel} before their voice session started."
+msgstr "{member} a părăsit {channel} înainte de începerea sesiunii vocale."
+
+#: src/tracking/voice/cog.py:518
+msgctxt "eventlog|event:voice_session_start|title"
+msgid "Member Joined Tracked Voice Channel"
+msgstr "Membrul s-a alăturat canalului vocal urmărit"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:voice_session_start|desc"
+msgid "{member} joined {channel}."
+msgstr "{member} s-a alăturat la {channel}."
+
+#: src/tracking/voice/cog.py:657
+msgctxt "cmd:now"
+msgid "now"
+msgstr "now"
+
+#: src/tracking/voice/cog.py:660
+msgctxt "cmd:now|desc"
+msgid ""
+"Describe what you are working on, or see what your friends are working on!"
+msgstr "Descrie la ce lucrezi sau vezi la ce lucrează prietenii tăi!"
+
+#: src/tracking/voice/cog.py:664
+msgctxt "cmd:now|param:tag"
+msgid "tag"
+msgstr "tag"
+
+#: src/tracking/voice/cog.py:665
+msgctxt "cmd:now|param:user"
+msgid "user"
+msgstr "user"
+
+#: src/tracking/voice/cog.py:666
+msgctxt "cmd:now|param:clear"
+msgid "clear"
+msgstr "clear"
+
+#: src/tracking/voice/cog.py:671
+msgctxt "cmd:now|param:tag|desc"
+msgid "Describe what you are working on in 10 characters or less!"
+msgstr "Descrie ce faci în 10 caractere sau mai puțin!"
+
+#: src/tracking/voice/cog.py:675
+msgctxt "cmd:now|param:user|desc"
+msgid "Check what a friend is working on."
+msgstr "Verifică la ce lucrează un prieten."
+
+#: src/tracking/voice/cog.py:679
+msgctxt "cmd:now|param:clear|desc"
+msgid "Unset your activity tag (or the target user's tag, for moderators)."
+msgstr ""
+"Elimină eticheta ta de activitate (sau a utilizatorului țintă, pentru "
+"moderatori)."
+
+#: src/tracking/voice/cog.py:706
+msgctxt "cmd:now|target:self|error:target_inactive"
+msgid ""
+"You have no running session! Join a tracked voice channel to start a "
+"session."
+msgstr ""
+"Nu ai nicio sesiune activă! Alătură-te unui canal vocal urmărit pentru a "
+"începe."
+
+#, possible-python-brace-format
+msgctxt "cmd:now|target:other|error:target_inactive"
+msgid "{mention} has no running session!"
+msgstr "{mention} nu are nicio sesiune activă!"
+
+#: src/tracking/voice/cog.py:730
+msgctxt "cmd:now|target:self|mode:clear|success|title"
+msgid "Session Tag Cleared"
+msgstr "Eticheta sesiunii ștearsă"
+
+#: src/tracking/voice/cog.py:734
+msgctxt "cmd:now|target:self|mode:clear|success|desc"
+msgid "Successfully unset your session tag."
+msgstr "Eticheta sesiunii a fost eliminată."
+
+#: src/tracking/voice/cog.py:743
+msgctxt "cmd:now|target:other|mode:clear|error:perms|title"
+msgid "You can't do that!"
+msgstr "Nu poți face asta!"
+
+#: src/tracking/voice/cog.py:747
+msgctxt "cmd:now|target:other|mode:clear|error:perms|desc"
+msgid "You need to be a moderator to set or clear someone else's session tag."
+msgstr ""
+"Trebuie să fii moderator pentru a seta sau șterge eticheta de sesiune a "
+"altcuiva."
+
+#: src/tracking/voice/cog.py:757
+msgctxt "cmd:now|target:other|mode:clear|success|title"
+msgid "Session Tag Cleared!"
+msgstr "Eticheta sesiunii ștearsă!"
+
+#, possible-python-brace-format
+msgctxt "cmd:now|target:other|mode:clear|success|desc"
+msgid "Cleared {target}'s session tag."
+msgstr "Eticheta sesiunii lui {target} a fost ștearsă."
+
+#: src/tracking/voice/cog.py:773
+msgctxt "cmd:now|target:self|mode:set|success|title"
+msgid "Session Tag Set!"
+msgstr "Eticheta sesiunii setată!"
+
+#, possible-python-brace-format
+msgctxt "cmd:now|target:self|mode:set|success|desc"
+msgid "You are now working on `{new_tag}`. Good luck!"
+msgstr "Acum lucrezi la `{new_tag}`. Succes!"
+
+#: src/tracking/voice/cog.py:786
+msgctxt "cmd:now|target:other|mode:set|error:perms|title"
+msgid "You can't do that!"
+msgstr "Nu poți face asta!"
+
+#: src/tracking/voice/cog.py:790
+msgctxt "cmd:now|target:other|mode:set|error:perms|desc"
+msgid "You need to be a moderator to set or clear someone else's session tag!"
+msgstr ""
+"Trebuie să fii moderator pentru a seta sau șterge eticheta de sesiune a "
+"altcuiva!"
+
+#: src/tracking/voice/cog.py:800
+msgctxt "cmd:now|target:other|mode:set|success|title"
+msgid "Session Tag Set!"
+msgstr "Eticheta sesiunii setată!"
+
+#, possible-python-brace-format
+msgctxt "cmd:now|target:other|mode:set|success|desc"
+msgid "Set {target}'s session tag to `{new_tag}`."
+msgstr "Eticheta sesiunii lui {target} a fost setată la `{new_tag}`."
+
+#, possible-python-brace-format
+msgctxt "cmd:now|target:self|mode:show_with_tag|desc"
+msgid "You have been working on **`{tag}`** in {channel} since {time}!"
+msgstr "Lucrezi la **`{tag}`** în {channel} din {time}!"
+
+#, possible-python-brace-format
+msgctxt "cmd:now|target:self|mode:show_without_tag|desc"
+msgid ""
+"You have been working in {channel} since {time}!\n"
+"\n"
+"Use `/now <tag>` to set what you are working on."
+msgstr ""
+"Lucrezi în {channel} din {time}!\n"
+"\n"
+"Folosește `/now <tag>` pentru a seta la ce lucrezi."
+
+#, possible-python-brace-format
+msgctxt "cmd:now|target:other|mode:show_with_tag|desc"
+msgid ""
+"{target} is current working in {channel}!\n"
+"They have been working on **{tag}** since {time}."
+msgstr ""
+"{target} lucrează în {channel}!\n"
+"Lucrează la **{tag}** din {time}."
+
+#, possible-python-brace-format
+msgctxt "cmd:now|target:other|mode:show_without_tag|desc"
+msgid "{target} has been working in {channel} since {time}!"
+msgstr "{target} lucrează în {channel} din {time}!"
+
+#: src/tracking/voice/cog.py:854
+msgctxt "cmd:configure_voice_rates"
+msgid "voice_rewards"
+msgstr "voice_rewards"
+
+#: src/tracking/voice/cog.py:857
+msgctxt "cmd:configure_voice_rates|desc"
+msgid "Configure Voice tracking rewards and experience"
+msgstr "Configurați recompensele și experiența urmăririi vocale"
+
+#, possible-python-brace-format
+msgctxt "cmd:configure_voice_tracking|mode:voice|resp:success|desc"
+msgid ""
+"Members will now be rewarded {coin}**{base} (+ {bonus})** per hour they "
+"spend (live) in a voice channel, up to a total of **{cap}** hours per server"
+" day."
+msgstr ""
+"Membrii vor primi {coin}**{base} (+ {bonus})** pe oră în canalul vocal, până"
+" la **{cap}** ore pe zi."
+
+#, possible-python-brace-format
+msgctxt "cmd:configure_voice_tracking|mode:study|resp:success|desc"
+msgid ""
+"Members will now be rewarded {coin}**{base}** per hour of study in this "
+"server, with a bonus of {coin}**{bonus}** if they stream of display video, "
+"up to a total of **{cap}** hours per server day."
+msgstr ""
+"Membrii vor primi {coin}**{base}** pe oră de studiu, cu bonus "
+"{coin}**{bonus}** pentru streaming ..."
+
+#: src/tracking/voice/settings.py:42
+msgctxt "guildset:untracked_channels"
+msgid "untracked_channels"
+msgstr "untracked_channels"
+
+#: src/tracking/voice/settings.py:45
+msgctxt "guildset:untracked_channels|desc"
+msgid "Channels which will be ignored for statistics tracking."
+msgstr "Canalele care vor fi ignorate pentru urmărirea statisticilor."
+
+#: src/tracking/voice/settings.py:49
+msgctxt "guildset:untracked_channels|long_desc"
+msgid ""
+"Activity in these channels will not count towards a member's statistics. If "
+"a category is selected, all channels under the category will be untracked."
+msgstr ""
+"Activitatea în aceste canale nu va conta în statistici. Dacă este selectată "
+"o categorie, toate canalele din ea vor fi neurmărite."
+
+#: src/tracking/voice/settings.py:54
+msgctxt "guildset:untracked_channels|accepts"
+msgid "Comma separated list of untracked channel name/ids."
+msgstr "Lista separată prin virgule a numelor/ID-urilor canalelor neurmărite."
+
+#: src/tracking/voice/settings.py:58
+msgctxt "guildset:untracked_channels|notset"
+msgid "Not Set (all voice channels will be tracked.)"
+msgstr "Nesetat (toate canalele vocale vor fi urmărite.)"
+
+#: src/tracking/voice/settings.py:75
+msgctxt "guildset:untracked_channels|set"
+msgid "Channel selector below."
+msgstr "Selector de canal mai jos."
+
+#, possible-python-brace-format
+msgctxt "guildset:untracked_channels|set_response|set"
+msgid "Activity in the following channels will now be ignored: {channels}"
+msgstr "Activitatea în următoarele canale va fi ignorată: {channels}"
+
+#: src/tracking/voice/settings.py:91
+msgctxt "guildset:untracked_channels|set_response|unset"
+msgid "All voice channels will now be tracked."
+msgstr "Toate canalele vocale vor fi urmărite acum."
+
+#: src/tracking/voice/settings.py:120
+msgctxt "guildset:hourly_reward"
+msgid "hourly_reward"
+msgstr "hourly_reward"
+
+#: src/tracking/voice/settings.py:123
+msgctxt "guildset:hourly_reward|mode:voice|desc"
+msgid "LionCoins given per hour in a voice channel."
+msgstr "LionCoins acordate pe oră într-un canal vocal."
+
+#: src/tracking/voice/settings.py:127
+msgctxt "guildset:hourly_reward|mode:voice|long_desc"
+msgid ""
+"Number of LionCoins to each member per hour that they stay in a tracked "
+"voice channel."
+msgstr ""
+"Numărul de LionCoins pentru fiecare membru pe oră într-un canal vocal "
+"urmărit."
+
+#: src/tracking/voice/settings.py:131
+msgctxt "guildset:hourly_reward|accepts"
+msgid "Number of coins to reward per hour in voice."
+msgstr "Numărul de monede ca recompensă pe oră în vocal."
+
+#, possible-python-brace-format
+msgctxt "guildset:hourly_reward|formatted"
+msgid "{coin}**{amount}** per hour."
+msgstr "{coin}**{amount}** pe oră."
+
+#, possible-python-brace-format
+msgctxt "guildset:hourly_reward|mode:voice|response"
+msgid "Members will be given {coin}**{amount}** per hour in a voice channel!"
+msgstr "Membrii vor primi {coin}**{amount}** pe oră într-un canal vocal!"
+
+#: src/tracking/voice/settings.py:174
+msgctxt "guildset:hourly_reward|mode:study|desc"
+msgid "LionCoins given per hour of study."
+msgstr "LionCoins acordate pe oră de studiu."
+
+#: src/tracking/voice/settings.py:178
+msgctxt "guildset:hourly_reward|mode:study|long_desc"
+msgid "Number of LionCoins given per hour of study, up to the daily hour cap."
+msgstr "Numărul de LionCoins pe oră de studiu, până la limita zilnică."
+
+#, possible-python-brace-format
+msgctxt "guildset:hourly_reward|mode:study|response"
+msgid "Members will be given {coin}**{amount}** per hour that they study!"
+msgstr "Membrii vor primi {coin}**{amount}** pe oră de studiu!"
+
+#: src/tracking/voice/settings.py:201
+msgctxt "guildset:hourly_live_bonus"
+msgid "hourly_live_bonus"
+msgstr "hourly_live_bonus"
+
+#: src/tracking/voice/settings.py:204
+msgctxt "guildset:hourly_live_bonus|desc"
+msgid "Bonus Lioncoins given per hour when a member streams or video-chats."
+msgstr "Bonus LionCoins pe oră la streaming sau video-chat."
+
+#: src/tracking/voice/settings.py:209
+msgctxt "guildset:hourly_live_bonus|long_desc"
+msgid ""
+"When a member streams or video-chats in a channel they will be given this "
+"bonus *additionally* to the `hourly_reward`."
+msgstr ""
+"La streaming sau video-chat, membrii vor primi acest bonus *în plus* la "
+"`hourly_reward`."
+
+#: src/tracking/voice/settings.py:214
+msgctxt "guildset:hourly_live_bonus|accepts"
+msgid "Number of bonus coins to reward per hour when live."
+msgstr "Numărul de monede bonus pe oră în direct."
+
+#, possible-python-brace-format
+msgctxt "guildset:hourly_live_bonus|formatted"
+msgid "{coin}**{amount}** bonus per hour when live."
+msgstr "{coin}**{amount}** bonus pe oră în direct."
+
+#, possible-python-brace-format
+msgctxt "guildset:hourly_live_bonus|response"
+msgid ""
+"Live members will now *additionally* be given {coin}**{amount}** per hour."
+msgstr "Membrii în direct vor primi *în plus* {coin}**{amount}** pe oră."
+
+#: src/tracking/voice/settings.py:253
+msgctxt "guildset:daily_voice_cap"
+msgid "daily_voice_cap"
+msgstr "daily_voice_cap"
+
+#: src/tracking/voice/settings.py:256
+msgctxt "guildset:daily_voice_cap|desc"
+msgid "Maximum number of hours per day to count for each member."
+msgstr "Numărul maxim de ore pe zi pentru fiecare membru."
+
+#: src/tracking/voice/settings.py:260
+msgctxt "guildset:daily_voice_cap|long_desc"
+msgid ""
+"Time spend in voice channels over this amount will not be tracked towards "
+"the member's statistics. Tracking will resume at the start of the next day. "
+"The start of the day is determined by the configured guild timezone."
+msgstr ""
+"Timpul în canalele vocale peste această limită nu va fi urmărit. Urmărirea "
+"se reia la începutul zilei următoare conform fusului orar al serverului."
+
+#: src/tracking/voice/settings.py:266
+msgctxt "guildset:daily_voice_cap|accepts"
+msgid "The maximum number of voice hours to track per day."
+msgstr "Numărul maxim de ore vocale de urmărit pe zi."
+
+#, possible-python-brace-format
+msgctxt "guildset:daily_voice_cap|response"
+msgid ""
+"Members will be tracked for at most {duration} per day. (**NOTE:** This will"
+" not affect members currently in voice channels.)"
+msgstr ""
+"Membrii vor fi urmăriți pentru maxim {duration} pe zi. (**NOTĂ:** Aceasta nu"
+" va afecta membrii aflați deja în canale vocale.)"
+
+#: src/tracking/voice/settings.py:340
+msgctxt "ui:voice_tracker_config|button:close|label"
+msgid "Close"
+msgstr "Închidere"
+
+#: src/tracking/voice/settings.py:354
+msgctxt "ui:voice_tracker_config|button:reset|label"
+msgid "Reset"
+msgstr "Resetare"
+
+#: src/tracking/voice/settings.py:367
+msgctxt "ui:voice_tracker_config|menu:untracked_channels|placeholder"
+msgid "Set Untracked Channels"
+msgstr "Setați canalele neurmărite"
+
+#: src/tracking/voice/settings.py:433 src/tracking/voice/settings.py:491
+msgctxt "ui:voice_tracker_config|mode:voice|embed|title"
+msgid "Voice Tracker Configuration Panel"
+msgstr "Panou de configurare a urmăririi vocale"
+
+#: src/tracking/voice/settings.py:438 src/tracking/voice/settings.py:496
+msgctxt "ui:voice_tracker_config|mode:study|embed|title"
+msgid "Study Tracker Configuration Panel"
+msgstr "Panou de configurare a urmăririi studiului"
+
+#: src/tracking/voice/settings.py:481
+msgctxt "ui:voice_tracker_config|menu:untracked_channels|placeholder"
+msgid "Select Untracked Channels"
+msgstr "Selectați canalele neurmărite"
+
+#: src/tracking/voice/settings.py:537
+msgctxt "dash:voice_tracker|title"
+msgid "Voice Tracker Configuration ({commands[config voice_rewards]})"
+msgstr "Configurare urmărire vocală ({commands[config voice_rewards]})"
+
+#: src/tracking/voice/settings.py:541
+msgctxt "dash:voice_tracking|dropdown|placeholder"
+msgid "Voice Activity Panel"
+msgstr "Panou de activitate vocală"

@@ -1,0 +1,578 @@
+# Hindi translation for LionBot - shop
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 21:12+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Hindi\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/modules/shop/cog.py:108
+msgctxt "group:editshop"
+msgid "editshop"
+msgstr "editshop"
+
+#: src/modules/shop/cog.py:117
+msgctxt "cmd:shop"
+msgid "shop"
+msgstr "shop"
+
+#: src/modules/shop/cog.py:118
+msgctxt "cmd:shop|desc"
+msgid "Purchase coloures, roles, and other goodies with LionCoins."
+msgstr "LionCoins से रंग, भूमिकाएँ और अन्य चीज़ें खरीदें।"
+
+#: src/modules/shop/cog.py:125
+msgctxt "cmd:shop_open"
+msgid "open"
+msgstr "open"
+
+#: src/modules/shop/cog.py:126
+msgctxt "cmd:shop_open|desc"
+msgid "Open the server shop."
+msgstr "सर्वर की दुकान खोलें।"
+
+#: src/modules/shop/cog.py:153
+msgctxt "cmd:shop_open|error:no_shops"
+msgid "There is nothing to buy!"
+msgstr "खरीदने के लिए कुछ नहीं है!"
+
+#: src/modules/shop/cog.py:215
+msgctxt "ui:stores|button:close|label"
+msgid "Close"
+msgstr "बंद करें"
+
+#: src/modules/shop/cog.py:222
+msgctxt "ui:stores|button:close|response|title"
+msgid "Shop Closed"
+msgstr "दुकान बंद"
+
+#, possible-python-brace-format
+msgctxt "ui:colourstore|menu:buycolours|label"
+msgid "{name} ({price} LC)"
+msgstr "{name} ({price} LC)"
+
+#, possible-python-brace-format
+msgctxt "ui:colourstore|menu:buycolours|label"
+msgid "{name} (This is your colour!)"
+msgstr "{name} (यह आपका रंग है!)"
+
+#, possible-python-brace-format
+msgctxt "ui:colourstore|menu:buycolours|desc"
+msgid "Colour: {colour}"
+msgstr "रंग: {colour}"
+
+#: src/modules/shop/shops/colours.py:120
+msgctxt "ui:colourstore|menu:buycolours|desc"
+msgid "Colour: Unknown"
+msgstr "रंग: अज्ञात"
+
+#: src/modules/shop/shops/colours.py:134
+msgctxt "shop:colours|name"
+msgid "Colour Shop"
+msgstr "रंग की दुकान"
+
+#: src/modules/shop/shops/colours.py:173
+msgctxt "shop:colour|purchase|error:not_purchasable"
+msgid "This item may not be purchased!"
+msgstr "यह आइटम खरीदा नहीं जा सकता!"
+
+#: src/modules/shop/shops/colours.py:186
+msgctxt "shop:colour|purchase|error:no_guild"
+msgid "Could not retrieve the server from Discord!"
+msgstr "Discord से सर्वर प्राप्त नहीं हो सका!"
+
+#: src/modules/shop/shops/colours.py:196
+msgctxt "shop:colour|purchase|error:no_member"
+msgid "Could not retrieve the member from Discord."
+msgstr "Discord से सदस्य प्राप्त नहीं हो सका।"
+
+#: src/modules/shop/shops/colours.py:206
+msgctxt "shop:colour|purchase|error:no_role"
+msgid "This colour role could not be found in the server."
+msgstr "यह रंग भूमिका सर्वर में नहीं मिली।"
+
+#, possible-python-brace-format
+msgctxt "shop:colour|purchase|error:low_balance"
+msgid ""
+"This item costs {coin}{amount}!\n"
+"Your balance is {coin}{balance}"
+msgstr ""
+"इस आइटम की कीमत {coin}{amount} है!\n"
+"आपका बैलेंस {coin}{balance} है"
+
+#: src/modules/shop/shops/colours.py:230
+msgctxt "shop:colour|purchase|error:owned"
+msgid "You already own this item!"
+msgstr "आप पहले से यह आइटम रखते हैं!"
+
+#: src/modules/shop/shops/colours.py:264
+msgctxt "shop:colour|purchase|error:failed_no_role"
+msgid "This colour role no longer exists!"
+msgstr "यह रंग भूमिका अब मौजूद नहीं है!"
+
+#: src/modules/shop/shops/colours.py:271
+msgctxt "shop:colour|purchase|error:failed_permissions"
+msgid "I do not have enough permissions to give you this colour role!"
+msgstr "मेरे पास आपको यह रंग भूमिका देने की पर्याप्त अनुमति नहीं है!"
+
+#: src/modules/shop/shops/colours.py:278
+msgctxt "shop:colour|purchase|error:failed_unknown"
+msgid "An unknown error occurred while giving you this colour role!"
+msgstr "यह रंग भूमिका देते समय एक अज्ञात त्रुटि हुई!"
+
+#: src/modules/shop/shops/colours.py:306
+msgctxt "eventlog|event:purchase_colour|title"
+msgid "Member Purchased Colour Role"
+msgstr "सदस्य ने रंग भूमिका खरीदी"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:purchase_colour|desc"
+msgid "{member} purchased {role} from the colour shop."
+msgstr "{member} ने रंग की दुकान से {role} खरीदा।"
+
+#: src/modules/shop/shops/colours.py:365
+msgctxt "grp:editshop_colours"
+msgid "colours"
+msgstr "colours"
+
+#: src/modules/shop/shops/colours.py:370
+msgctxt "cmd:editshop_colours_create"
+msgid "create"
+msgstr "create"
+
+#: src/modules/shop/shops/colours.py:373
+msgctxt "cmd:editshop_colours_create|desc"
+msgid "Create a new colour role with the given colour."
+msgstr "दिए गए रंग से एक नई रंग भूमिका बनाएं।"
+
+#: src/modules/shop/shops/colours.py:377
+msgctxt "cmd:editshop_colours_create|param:colour"
+msgid "colour"
+msgstr "colour"
+
+#: src/modules/shop/shops/colours.py:378
+msgctxt "cmd:editshop_colours_create|param:name"
+msgid "name"
+msgstr "name"
+
+#: src/modules/shop/shops/colours.py:379
+msgctxt "cmd:editshop_colours_create|param:price"
+msgid "price"
+msgstr "price"
+
+#: src/modules/shop/shops/colours.py:384
+msgctxt "cmd:editshop_colours_create|param:colour|desc"
+msgid "What colour should the role be? (As a hex code, e.g. #AB22AB)"
+msgstr "भूमिका का रंग क्या होना चाहिए? (Hex कोड के रूप में, जैसे #AB22AB)"
+
+#: src/modules/shop/shops/colours.py:388
+msgctxt "cmd:editshop_colours_create|param:name|desc"
+msgid "What should the colour role be called?"
+msgstr "रंग भूमिका का नाम क्या होना चाहिए?"
+
+#: src/modules/shop/shops/colours.py:392
+msgctxt "cmd:editshop_colours_create|param:price|desc"
+msgid "How much should the colour role cost?"
+msgstr "रंग भूमिका की कीमत कितनी होनी चाहिए?"
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_create|error:parse_colour"
+msgid ""
+"I could not extract a colour value from `{colour}`!\n"
+"Please enter the colour as a hex string, e.g. `#FA0BC1`"
+msgstr ""
+"`{colour}` से रंग मान निकालने में असमर्थ!\n"
+"कृपया रंग को hex स्ट्रिंग के रूप में दर्ज करें, जैसे `#FA0BC1`"
+
+#: src/modules/shop/shops/colours.py:424
+msgctxt "cmd:editshop_colours_create|error:perms"
+msgid ""
+"I do not have permission to create server roles!\n"
+"Please either give me this permission, or create the role manually and use `/editshop colours add` instead."
+msgstr ""
+"मेरे पास सर्वर भूमिकाएँ बनाने की अनुमति नहीं है!\n"
+"कृपया मुझे यह अनुमति दें, या भूमिका को मैन्युअल रूप से बनाएं और `/editshop colours add` का उपयोग करें।"
+
+#: src/modules/shop/shops/colours.py:441
+msgctxt "cmd:editshop_colours_create|error:max_colours"
+msgid ""
+"This server already has the maximum of `25` colour roles!\n"
+"Please remove some before adding or creating more."
+msgstr ""
+"इस सर्वर में पहले से अधिकतम `25` रंग भूमिकाएँ हैं!\n"
+"कृपया और जोड़ने या बनाने से पहले कुछ हटाएं।"
+
+#: src/modules/shop/shops/colours.py:460
+msgctxt "cmd:editshop_colours_create|error:failed_unknown"
+msgid ""
+"An unknown Discord error occurred while creating your colour role!\n"
+"Please try again in a few minutes."
+msgstr ""
+"आपकी रंग भूमिका बनाते समय एक अज्ञात Discord त्रुटि हुई!\n"
+"कृपया कुछ मिनट बाद पुनः प्रयास करें।"
+
+#: src/modules/shop/shops/colours.py:515
+msgctxt "cmd:editshop_colours_create|resp:done|title"
+msgid "Colour Role Created"
+msgstr "रंग भूमिका बनाई गई"
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_create|resp:done|desc"
+msgid "You have created the role {mention}, and added it to the colour shop for {coin}**{price}**!"
+msgstr "आपने भूमिका {mention} बनाई और इसे {coin}**{price}** में रंग की दुकान में जोड़ दिया!"
+
+#: src/modules/shop/shops/colours.py:526
+msgctxt "cmd:editshop_colours_create|resp:done|field:position_note|value"
+msgid "The new colour role was added below all other roles. Remember a member's active colour is determined by their highest coloured role!"
+msgstr "नई रंग भूमिका सभी अन्य भूमिकाओं के नीचे जोड़ी गई। याद रखें कि सदस्य का सक्रिय रंग उनकी सबसे ऊँची रंग भूमिका से निर्धारित होता है!"
+
+#: src/modules/shop/shops/colours.py:530
+msgctxt "cmd:editshop_colours_create|resp:done|field:position_note|name"
+msgid "Note"
+msgstr "नोट"
+
+#: src/modules/shop/shops/colours.py:539
+msgctxt "cmd:editshop_colours_edit"
+msgid "edit"
+msgstr "edit"
+
+#: src/modules/shop/shops/colours.py:542
+msgctxt "cmd:editshop_colours_edit|desc"
+msgid "Edit the name, colour, or price of a colour role."
+msgstr "रंग भूमिका का नाम, रंग या कीमत संपादित करें।"
+
+#: src/modules/shop/shops/colours.py:546
+msgctxt "cmd:editshop_colours_edit|param:role"
+msgid "role"
+msgstr "role"
+
+#: src/modules/shop/shops/colours.py:547
+msgctxt "cmd:editshop_colours_edit|param:name"
+msgid "name"
+msgstr "name"
+
+#: src/modules/shop/shops/colours.py:548
+msgctxt "cmd:editshop_colours_edit|param:colour"
+msgid "colour"
+msgstr "colour"
+
+#: src/modules/shop/shops/colours.py:549
+msgctxt "cmd:editshop_colours_edit|param:price"
+msgid "price"
+msgstr "price"
+
+#: src/modules/shop/shops/colours.py:554
+msgctxt "cmd:editshop_colours_edit|param:role|desc"
+msgid "Select a colour role to edit."
+msgstr "संपादित करने के लिए एक रंग भूमिका चुनें।"
+
+#: src/modules/shop/shops/colours.py:558
+msgctxt "cmd:editshop_colours_edit|param:name|desc"
+msgid "New name to give the colour role."
+msgstr "रंग भूमिका के लिए नया नाम।"
+
+#: src/modules/shop/shops/colours.py:562
+msgctxt "cmd:editshop_colours_edit|param:colour|desc"
+msgid "New colour for the colour role (as hex, e.g. #AB12AB)."
+msgstr "रंग भूमिका के लिए नया रंग (hex के रूप में, जैसे #AB12AB)।"
+
+#: src/modules/shop/shops/colours.py:566
+msgctxt "cmd:editshop_colours_edit|param:price|desc"
+msgid "New price for the colour role."
+msgstr "रंग भूमिका के लिए नई कीमत।"
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_edit|error:invalid_role"
+msgid "{mention} is not in the colour role shop!"
+msgstr "{mention} रंग भूमिका दुकान में नहीं है!"
+
+#: src/modules/shop/shops/colours.py:609
+msgctxt "cmd:editshop_colours_edit|error:no_args"
+msgid "You must give me one of `name`, `colour`, or `price` to update!"
+msgstr "अपडेट करने के लिए आपको मुझे `name`, `colour`, या `price` में से एक देना होगा!"
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_edit|error:parse_colour"
+msgid ""
+"I could not extract a colour value from `{colour}`!\n"
+"Please enter the colour as a hex string, e.g. `#FA0BC1`"
+msgstr ""
+"`{colour}` से रंग मान निकालने में असमर्थ!\n"
+"कृपया रंग को hex स्ट्रिंग के रूप में दर्ज करें, जैसे `#FA0BC1`"
+
+#: src/modules/shop/shops/colours.py:640
+msgctxt "cmd:editshop_colours_edit|error:perms"
+msgid "I do not have sufficient server permissions to edit this role!"
+msgstr "मेरे पास इस भूमिका को संपादित करने के लिए पर्याप्त सर्वर अनुमतियाँ नहीं हैं!"
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_edit|resp:done|line:price"
+msgid "{tick} Set price to {coin}**{price}**"
+msgstr "{tick} कीमत {coin}**{price}** पर सेट की गई"
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_edit|resp:done|line:role"
+msgid "{tick} Updated role to {mention}"
+msgstr "{tick} भूमिका {mention} में अपडेट की गई"
+
+#: src/modules/shop/shops/colours.py:683
+msgctxt "cmd:editshop_colours_edit|resp:done|embed:title"
+msgid "Colour Role Updated"
+msgstr "रंग भूमिका अपडेट की गई"
+
+#: src/modules/shop/shops/colours.py:689
+msgctxt "cmd:editshop_colours_auto"
+msgid "auto"
+msgstr "auto"
+
+#: src/modules/shop/shops/colours.py:690
+msgctxt "cmd:editshop_colours_auto|desc"
+msgid "Automatically create a set of colour roles."
+msgstr "स्वचालित रूप से रंग भूमिकाओं का एक सेट बनाएं।"
+
+#: src/modules/shop/shops/colours.py:699
+msgctxt "cmd:editshop_colours_add"
+msgid "add"
+msgstr "add"
+
+#: src/modules/shop/shops/colours.py:702
+msgctxt "cmd:editshop_colours_add|desc"
+msgid "Add an existing role to the colour shop."
+msgstr "रंग की दुकान में एक मौजूदा भूमिका जोड़ें।"
+
+#: src/modules/shop/shops/colours.py:706
+msgctxt "cmd:editshop_colours_add|param:role"
+msgid "role"
+msgstr "role"
+
+#: src/modules/shop/shops/colours.py:707
+msgctxt "cmd:editshop_colours_add|param:price"
+msgid "price"
+msgstr "price"
+
+#: src/modules/shop/shops/colours.py:712
+msgctxt "cmd:editshop_colours_add|param:role|desc"
+msgid "Select a role to add to the colour shop."
+msgstr "रंग की दुकान में जोड़ने के लिए एक भूमिका चुनें।"
+
+#: src/modules/shop/shops/colours.py:716
+msgctxt "cmd:editshop_colours_add|param:price|desc"
+msgid "How much should this role cost?"
+msgstr "इस भूमिका की कीमत कितनी होनी चाहिए?"
+
+#: src/modules/shop/shops/colours.py:741
+msgctxt "cmd:editshop_colours_add|error:max_colours"
+msgid ""
+"This server already has the maximum of `25` colour roles!\n"
+"Please remove some before adding or creating more."
+msgstr ""
+"इस सर्वर में पहले से अधिकतम `25` रंग भूमिकाएँ हैं!\n"
+"कृपया और जोड़ने या बनाने से पहले कुछ हटाएं।"
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_add|error:role_exists"
+msgid "The role {mention} is already registered as a colour role!"
+msgstr "भूमिका {mention} पहले से रंग भूमिका के रूप में पंजीकृत है!"
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_add|error:role_perms"
+msgid "I do not have enough permissions to assign the role {mention}! Please ensure I have the `MANAGE_ROLES` permission, and that my top role is above this role."
+msgstr "मेरे पास भूमिका {mention} को असाइन करने के लिए पर्याप्त अनुमतियाँ नहीं हैं! कृपया सुनिश्चित करें कि मेरे पास `MANAGE_ROLES` अनुमति है और मेरी शीर्ष भूमिका इस भूमिका से ऊपर है।"
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_add|error:caller_perms"
+msgid "You do not have sufficient server permissions to assign {mention} to the shop! You must have `MANAGE_ROLES`, and your top role must be above this role."
+msgstr "{mention} को दुकान में असाइन करने के लिए आपके पास पर्याप्त सर्वर अनुमतियाँ नहीं हैं! आपके पास `MANAGE_ROLES` होना चाहिए और आपकी शीर्ष भूमिका इस भूमिका से ऊपर होनी चाहिए।"
+
+#: src/modules/shop/shops/colours.py:782
+msgctxt "cmd:editshop_colours_add|error:role_has_admin"
+msgid "I refuse to add an administrator role to the LionCoin shop. That is a really bad idea."
+msgstr "मैं LionCoin दुकान में एडमिनिस्ट्रेटर भूमिका जोड़ने से इनकार करता हूं। यह सचमुच एक बुरा विचार है।"
+
+#: src/modules/shop/shops/colours.py:803
+msgctxt "cmd:editshop_colours_add|resp:done|embed:title"
+msgid "Colour Role Created"
+msgstr "रंग भूमिका बनाई गई"
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_add|resp:done|embed:desc"
+msgid "You have added {mention} to the colour shop for {coin}**{price}**!"
+msgstr "आपने {mention} को {coin}**{price}** में रंग की दुकान में जोड़ दिया!"
+
+#: src/modules/shop/shops/colours.py:814
+msgctxt "cmd:editshop_colours_clear"
+msgid "clear"
+msgstr "clear"
+
+#: src/modules/shop/shops/colours.py:817
+msgctxt "cmd:editshop_colours_clear|desc"
+msgid "Remove all the colour roles from the shop, and optionally delete the roles."
+msgstr "दुकान से सभी रंग भूमिकाएँ हटाएं और वैकल्पिक रूप से भूमिकाएँ हटाएं।"
+
+#: src/modules/shop/shops/colours.py:821
+msgctxt "cmd:editshop_colours_clear|param:delete"
+msgid "delete_roles"
+msgstr "delete_roles"
+
+#: src/modules/shop/shops/colours.py:826
+msgctxt "cmd:editshop_colours_clear|param:delete|desc"
+msgid "Also delete the associated roles."
+msgstr "संबंधित भूमिकाओं को भी हटाएं।"
+
+#: src/modules/shop/shops/colours.py:868
+msgctxt "cmd:editshop_colours_clear|error:no_colours"
+msgid "There are no coloured roles to remove!"
+msgstr "हटाने के लिए कोई रंग भूमिकाएँ नहीं हैं!"
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_clear|resp:done|line:clear"
+msgid "{tick} Colour shop cleared."
+msgstr "{tick} रंग की दुकान साफ़ की गई।"
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_clear|resp:done|line:refunding"
+msgid "{loading} Refunded **{count}/{total}** members."
+msgstr "{loading} **{count}/{total}** सदस्यों को रिफंड किया गया।"
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_clear|resp:done|line:refunded"
+msgid "{tick} Refunded **{total}/{total}** members."
+msgstr "{tick} **{total}/{total}** सदस्यों को रिफंड किया गया।"
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_clear|resp:done|line:deleted_failed"
+msgid "{emoji} Deleted **{count}/{total}** colour roles. (**{failed}** failed!)"
+msgstr "{emoji} **{count}/{total}** रंग भूमिकाएँ हटाई गईं। (**{failed}** विफल!)"
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_clear|resp:done|line:deleted"
+msgid "{emoji} Deleted **{count}/{total}** colour roles."
+msgstr "{emoji} **{count}/{total}** रंग भूमिकाएँ हटाई गईं।"
+
+#: src/modules/shop/shops/colours.py:996
+msgctxt "cmd:editshop_colours_remove"
+msgid "remove"
+msgstr "remove"
+
+#: src/modules/shop/shops/colours.py:999
+msgctxt "cmd:editshop_colours_remove|desc"
+msgid "Remove a specific colour role from the shop."
+msgstr "दुकान से एक विशिष्ट रंग भूमिका हटाएं।"
+
+#: src/modules/shop/shops/colours.py:1003
+msgctxt "cmd:editshop_colours_remove|param:role"
+msgid "role"
+msgstr "role"
+
+#: src/modules/shop/shops/colours.py:1004
+msgctxt "cmd:editshop_colours_remove"
+msgid "delete_role"
+msgstr "delete_role"
+
+#: src/modules/shop/shops/colours.py:1009
+msgctxt "cmd:editshop_colours_remove|param:role|desc"
+msgid "Select the colour role to remove."
+msgstr "हटाने के लिए रंग भूमिका चुनें।"
+
+#: src/modules/shop/shops/colours.py:1013
+msgctxt "cmd:editshop_colours_remove|param:delete_role|desc"
+msgid "Whether to delete the associated role."
+msgstr "क्या संबंधित भूमिका को हटाना है।"
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_remove|error:not_colour"
+msgid "{mention} is not in the colour role shop!"
+msgstr "{mention} रंग भूमिका दुकान में नहीं है!"
+
+#: src/modules/shop/shops/colours.py:1056
+msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
+msgid "Successfully deleted the role."
+msgstr "भूमिका सफलतापूर्वक हटाई गई।"
+
+#: src/modules/shop/shops/colours.py:1061
+msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
+msgid "I do not have sufficient permissions to delete the role."
+msgstr "मेरे पास भूमिका हटाने की पर्याप्त अनुमतियाँ नहीं हैं।"
+
+#: src/modules/shop/shops/colours.py:1066
+msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
+msgid "Failed to delete the role for an unknown reason."
+msgstr "अज्ञात कारण से भूमिका हटाने में विफल।"
+
+#: src/modules/shop/shops/colours.py:1071
+msgctxt "cmd:editshop_colours_remove|resp:done|line:delete"
+msgid "Could not find the role in order to delete it."
+msgstr "भूमिका को हटाने के लिए ढूंढ नहीं पाया।"
+
+#, possible-python-brace-format
+msgctxt "cmd:editshop_colours_remove|resp:done|embed:desc"
+msgid ""
+"Removed {mention} from the colour shop.\n"
+"{delete_line}"
+msgstr ""
+"{mention} को रंग की दुकान से हटा दिया गया।\n"
+"{delete_line}"
+
+#: src/modules/shop/shops/colours.py:1160
+msgctxt "ui:colourstore|menu:buycolours|embed:error|title"
+msgid "Purchase Failed!"
+msgstr "खरीद विफल!"
+
+#, possible-python-brace-format
+msgctxt "ui:colourstore|menu:buycolours|resp:done|desc"
+msgid "{tick} You have purchased {mention}"
+msgstr "{tick} आपने {mention} खरीदा"
+
+#: src/modules/shop/shops/colours.py:1206
+msgctxt "ui:colourstore|menu:buycolours|placeholder"
+msgid "There are no colour roles available to purchase!"
+msgstr "खरीदने के लिए कोई रंग भूमिकाएँ उपलब्ध नहीं हैं!"
+
+#: src/modules/shop/shops/colours.py:1212
+msgctxt "ui:colourstore|menu:buycolours|placeholder"
+msgid "Select a colour role to purchase!"
+msgstr "खरीदने के लिए एक रंग भूमिका चुनें!"
+
+#, possible-python-brace-format
+msgctxt "ui:colourstore|embed|line:owned_item"
+msgid "`[{j:02}]` | `{price} LC` | {mention} (You own this!)"
+msgstr "`[{j:02}]` | `{price} LC` | {mention} (आपके पास है!)"
+
+#, possible-python-brace-format
+msgctxt "ui:colourstore|embed|line:item"
+msgid "`[{j:02}]` | `{price} LC` | {mention}"
+msgstr "`[{j:02}]` | `{price} LC` | {mention}"
+
+#: src/modules/shop/shops/colours.py:1270
+msgctxt "ui:colourstore|embed|desc"
+msgid "No colour roles available for purchase!"
+msgstr "खरीदने के लिए कोई रंग भूमिकाएँ उपलब्ध नहीं!"
+
+#: src/modules/shop/shops/colours.py:1273
+msgctxt "ui:colourstore|embed|title"
+msgid "Colour Role Shop"
+msgstr "रंग भूमिका दुकान"
+
+#, possible-python-brace-format
+msgctxt "ui:colourstore|embed|footer:paged"
+msgid "Page {current}/{total}"
+msgstr "पृष्ठ {current}/{total}"
+
+#: src/modules/shop/shops/colours.py:1286
+msgctxt "ui:colourstore|embed|field:warning|name"
+msgid "Note!"
+msgstr "नोट!"
+
+#, possible-python-brace-format
+msgctxt "ui:colourstore|embed|field:warning|value"
+msgid "Purchasing a new colour role will *replace* your currently colour {current} without refund!"
+msgstr "एक नई रंग भूमिका खरीदने से आपका वर्तमान रंग {current} बिना रिफंड के *बदल* जाएगा!"

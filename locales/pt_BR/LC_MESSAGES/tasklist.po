@@ -1,25 +1,19 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
-# Translators:
-# Bruno Evangelista De Oliveira, 2023
-# 
-#, fuzzy
+# Portuguese (Brazil) translation for LionBot - tasklist
+# AI-translated with human Transifex contributions where available.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: LionBot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-24 14:37+0300\n"
-"PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
-"Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
+"PO-Revision-Date: 2026-03-13 21:43+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
-"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: src/modules/tasklist/cog.py:35
 msgctxt "argtype:Before|opt:HOUR"
@@ -69,9 +63,7 @@ msgid ""
 "unintentional, please contact a server administrator."
 msgstr ""
 "Este canal é configurado como o Canal da Lista de Tarefas, mas me falta "
-"permissão para ˋINSERIR_LINKSˋ ou ˋENVIAR_MENSAGENSˋ aqui! Se você acredita "
-"que é um erro não intencional, por favor, contate a Administração do "
-"servidor."
+"permissão para ˋINSERIR_L..."
 
 #: src/modules/tasklist/cog.py:258
 msgctxt "cmd:tasklist"
@@ -103,13 +95,11 @@ msgctxt "argtype:taskid|match:all"
 msgid "All tasks"
 msgstr "Todas as tarefas"
 
-#: src/modules/tasklist/cog.py:350
 #, possible-python-brace-format
 msgctxt "argtype:taskid|error:parse_multi"
 msgid "(Warning: {error})"
 msgstr "(Atenção: {error})"
 
-#: src/modules/tasklist/cog.py:384
 #, possible-python-brace-format
 msgctxt "argtype:taskid|error:no_matching"
 msgid "No tasks matching '{partial}'!"
@@ -143,9 +133,8 @@ msgstr "Conteúdo da sua nova tarefa."
 #: src/modules/tasklist/cog.py:416
 msgctxt "cmd:tasks_new|param:parent"
 msgid "Parent of this task."
-msgstr "A tarefa-mãe desta tarefa."
+msgstr ""
 
-#: src/modules/tasklist/cog.py:436
 #, possible-python-brace-format
 msgctxt "cmd:tasks_new|error:parse_parent"
 msgid "Could not find parent task number `{input}` in your tasklist."
@@ -153,7 +142,6 @@ msgstr ""
 "Não consegui encontrar o número ˋ{input}ˋ da tarefa-mãe em sua lista de "
 "tarefas. "
 
-#: src/modules/tasklist/cog.py:451
 #, possible-python-brace-format
 msgctxt "cmd:tasks_new|resp:success"
 msgid "{tick} Created task `{label}`."
@@ -226,7 +214,6 @@ msgstr ""
 "Não pude decodificar a lista de tarefas anexada. Por favor, confirme se ela "
 "está salva com o formato ˋUTF-8ˋ."
 
-#: src/modules/tasklist/cog.py:568
 #, possible-python-brace-format
 msgctxt "cmd:tasks_upload|resp:success"
 msgid "{tick} Updated your tasklist."
@@ -272,19 +259,16 @@ msgctxt "cmd:tasks_edit|param:new_parent|desc"
 msgid "Which task do you want to be the new parent?"
 msgstr "Qual tarefa você gostaria que fosse a nova tarefa-mãe?"
 
-#: src/modules/tasklist/cog.py:613
 #, possible-python-brace-format
 msgctxt "cmd:tasks_edit|error:parse_taskstr"
 msgid "Could not find target task number `{input}` in your tasklist."
 msgstr "Não pude encontrar a tarefa número ˋ{input}ˋ em sua lista."
 
-#: src/modules/tasklist/cog.py:629
 #, possible-python-brace-format
 msgctxt "cmd:tasks_edit|error:parse_parent"
 msgid "Could not find new parent task number `{input}` in your tasklist."
 msgstr "Não pude encontrar a tarefa-mãe número ˋ{input}ˋ em sua lista."
 
-#: src/modules/tasklist/cog.py:648
 #, possible-python-brace-format
 msgctxt "cmd:tasks_edit|resp:success|desc"
 msgid "{tick} Task `{label}` updated."
@@ -375,15 +359,13 @@ msgstr ""
 #: src/modules/tasklist/cog.py:732
 msgctxt "cmd:tasks_remove|param:completed"
 msgid "Only delete tasks which are (not) complete."
-msgstr "Somente apague tarefas que (não) foram completadas."
+msgstr ""
 
 #: src/modules/tasklist/cog.py:736
 msgctxt "cmd:tasks_remove|param:cascade"
 msgid "Whether to recursively remove subtasks of removed tasks."
-msgstr "Se as sub-tarefas também devem ser apagadas com as tarefas removidas."
+msgstr ""
 
-#: src/modules/tasklist/cog.py:768 src/modules/tasklist/cog.py:863
-#: src/modules/tasklist/cog.py:938
 #, possible-python-brace-format
 msgctxt "cmd:tasks_remove_cmd|error:no_matching"
 msgid "No tasks on your tasklist match `{input}`"
@@ -396,14 +378,12 @@ msgstr ""
 "Nenhuma das tarefas, em sua lista de tarefas, é compatível com as condições "
 "informadas."
 
-#: src/modules/tasklist/cog.py:805
 #, possible-python-brace-format
 msgctxt "cmd:tasks_remove|resp:success"
 msgid "{tick} Deleted task `{label}`"
 msgid_plural "{tick} Deleted `{count}` tasks from your tasklist."
 msgstr[0] "{tick} Tarefa apagada ˋ{label}ˋ"
-msgstr[1] "{tick} Apaguei ˋ{count}ˋ tarefas da sua lista de tarefas."
-msgstr[2] "{tick} Apaguei ˋ{count}ˋ tarefas da sua lista de tarefas."
+msgstr[1] ""
 
 #: src/modules/tasklist/cog.py:823
 msgctxt "cmd:tasks_tick"
@@ -439,14 +419,12 @@ msgctxt "cmd:tasks_tick|param:cascade|desc"
 msgid "Whether to also mark all subtasks as complete."
 msgstr "Se deverá marcar também as sub-tarefas como completadas."
 
-#: src/modules/tasklist/cog.py:881
 #, possible-python-brace-format
 msgctxt "cmd:tasks_tick|resp:success"
 msgid "{tick} Marked `{label}` as complete."
 msgid_plural "{tick} Marked `{count}` tasks as complete."
 msgstr[0] "{tick} Marquei ˋ{label}ˋ como completada."
-msgstr[1] "{tick} Marquei ˋ{count}ˋ tarefas como completadas."
-msgstr[2] "{tick} Marquei ˋ{count}ˋ tarefas como completadas."
+msgstr[1] ""
 
 #: src/modules/tasklist/cog.py:899
 msgctxt "cmd:tasks_untick"
@@ -482,14 +460,12 @@ msgctxt "cmd:tasks_untick|param:cascade|desc"
 msgid "Whether to also mark all subtasks as incomplete."
 msgstr "Se deverá marcar também as sub-tarefas como incompletas."
 
-#: src/modules/tasklist/cog.py:954
 #, possible-python-brace-format
 msgctxt "cmd:tasks_untick|resp:success"
 msgid "{tick} Marked `{label}` as incomplete."
 msgid_plural "{tick} Marked `{count}` tasks as incomplete."
 msgstr[0] "{tick} Marquei ˋ{label}ˋ como incompleta."
-msgstr[1] "{tick} Marquei ˋ{count}ˋ tarefas como incompletas."
-msgstr[2] "{tick} Marquei ˋ{count}ˋ tarefas como incompletas."
+msgstr[1] ""
 
 #: src/modules/tasklist/cog.py:978
 msgctxt "cmd:configure_tasklist"
@@ -511,7 +487,6 @@ msgctxt "cmd:configure_tasklist|param:reward_limit"
 msgid "reward_limit"
 msgstr "limite_recompensa"
 
-#: src/modules/tasklist/cog.py:1018
 #, possible-python-brace-format
 msgctxt "cmd:configure_tasklist|resp:success|desc"
 msgid ""
@@ -519,21 +494,18 @@ msgid ""
 "up to a maximum of `{limit}` tasks per 24h."
 msgstr ""
 "Os membros serão recompensados com {coin}**{amount}** por cada tarefa "
-"completada por eles, até um máximo de ˋ{limit}ˋ tarefas por 24h."
+"completada por eles, até um..."
 
-#: src/modules/tasklist/tasklist.py:267
 #, possible-python-brace-format
 msgctxt "tasklist|parse:multi-range|error:parents_match"
 msgid "Parents don't match in range `{range}`"
 msgstr "Tarefas-mãe não coincidem no intervalo ˋ{range}ˋ"
 
-#: src/modules/tasklist/tasklist.py:289
 #, possible-python-brace-format
 msgctxt "tasklist|parse:multi-range|error:parse"
 msgid "Could not parse `{range}` as a task number or range."
 msgstr "Não pude analisar ˋ{range}ˋ como um número ou intervalo."
 
-#: src/modules/tasklist/tasklist.py:320
 #, possible-python-brace-format
 msgctxt "modal:tasklist_bulk_editor|error:parse_task"
 msgid ""
@@ -594,7 +566,6 @@ msgctxt "ui:tasklist|menu:main|mode:toggle|placeholder"
 msgid "Select to Toggle"
 msgstr "Selecione para Alternar"
 
-#: src/modules/tasklist/ui.py:192
 #, possible-python-brace-format
 msgctxt "ui:tasklist|menu:sub|mode:toggle|placeholder"
 msgid "Toggle from {label}.*"
@@ -605,7 +576,6 @@ msgctxt "ui:tasklist|menu:main|mode:edit|placeholder"
 msgid "Select to Edit"
 msgstr "Selecione para Editar"
 
-#: src/modules/tasklist/ui.py:202
 #, possible-python-brace-format
 msgctxt "ui:tasklist|menu:sub|mode:edit|placeholder"
 msgid "Edit from {label}.*"
@@ -616,13 +586,11 @@ msgctxt "ui:tasklist|menu:main|mode:delete|placeholder"
 msgid "Select to Delete"
 msgstr "Selecione para Deletar"
 
-#: src/modules/tasklist/ui.py:212
 #, possible-python-brace-format
 msgctxt "ui:tasklist|menu:sub|mode:delete|placeholder"
 msgid "Delete from {label}.*"
 msgstr "Apagar de {label}.*"
 
-#: src/modules/tasklist/ui.py:409
 #, possible-python-brace-format
 msgctxt "ui:tasklist_single_editor|field:parent|error:parse_id"
 msgid ""
@@ -631,7 +599,6 @@ msgstr ""
 "Não pude encontrar o número ˋ{input}ˋ da tarefa-mãe informado na sua lista "
 "de tarefas."
 
-#: src/modules/tasklist/ui.py:423
 #, possible-python-brace-format
 msgctxt "ui:tasklist_single_editor|field:parent|error:multiple_matching"
 msgid ""
@@ -641,7 +608,6 @@ msgstr ""
 "Multiplas tarefas coincidem com a tarefa-mãe ˋ{input}ˋ. Por favor, use o "
 "número de tarefa."
 
-#: src/modules/tasklist/ui.py:430
 #, possible-python-brace-format
 msgctxt "ui:tasklist_single_editor|field:parent|error:no_matching"
 msgid "No tasks matching given parent task `{input}`."
@@ -691,7 +657,6 @@ msgctxt "ui:tasklist|button:clear|label"
 msgid "Clear Tasklist"
 msgstr "Apagar Lista de Tarefas"
 
-#: src/modules/tasklist/ui.py:724
 #, possible-python-brace-format
 msgctxt "ui:tasklist|button:save|dm:contents"
 msgid "Your tasklist as of {now} is attached. Click here to jump back: {jump}"
@@ -711,7 +676,6 @@ msgctxt "ui:tasklist|error:wrong_user"
 msgid "This is not your tasklist!"
 msgstr "Esta não é sua lista de tarefas!"
 
-#: src/modules/tasklist/ui.py:824
 #, possible-python-brace-format
 msgctxt "ui:tasklist|embed|author"
 msgid "{name}'s tasklist ({completed}/{total} complete)"
@@ -750,7 +714,6 @@ msgctxt "guildset:task_reward|accepts"
 msgid "The number of LionCoins to reward per task."
 msgstr "O número de LionCoins a recompensar por tarefa."
 
-#: src/modules/tasklist/settings.py:58
 #, possible-python-brace-format
 msgctxt "guildset:task_reward|response"
 msgid ""
@@ -759,7 +722,6 @@ msgstr ""
 "Os membros serão recompensados {coin}**{amount}** por cada tarefa "
 "completada."
 
-#: src/modules/tasklist/settings.py:67
 #, possible-python-brace-format
 msgctxt "guildset:task_reward|formatted"
 msgid "{coin}**{amount}** per task."
@@ -789,7 +751,6 @@ msgctxt "guildset:task_reward_limit|accepts"
 msgid "The maximum number of tasks to reward LC for per 24h."
 msgstr "O número máximo de tarefas a recompensar com LionCoins a cada 24h."
 
-#: src/modules/tasklist/settings.py:100
 #, possible-python-brace-format
 msgctxt "guildset:task_reward_limit|response"
 msgid ""
@@ -799,7 +760,6 @@ msgstr ""
 "Os membros irão ser recompensados por tarefas completadas até **{amount}** "
 "vezes a cada 24h."
 
-#: src/modules/tasklist/settings.py:109
 #, possible-python-brace-format
 msgctxt "guildset:task_reward_limit|formatted"
 msgid "`{number}` per 24 hours."
@@ -815,7 +775,6 @@ msgctxt "guildset:tasklist_channels|desc"
 msgid "Channels in which to publicly display member tasklists."
 msgstr "Canal em que será publicado o mostrador de tarefas dos membros."
 
-#: src/modules/tasklist/settings.py:124
 #, possible-python-brace-format
 msgctxt "guildset:tasklist_channels|long_desc"
 msgid ""
@@ -837,7 +796,6 @@ msgctxt "guildset:tasklist_channels|accepts"
 msgid "Comma separated list of tasklist channel names or ids."
 msgstr "Nome ou IDˋs dos canais de Lista de Tarefas, separados por vírgula. "
 
-#: src/modules/tasklist/settings.py:148
 #, possible-python-brace-format
 msgctxt "guildset:tasklist_channels|set_response|set"
 msgid ""
@@ -880,7 +838,7 @@ msgstr "Painel de Configuração da Lista de Tarefas"
 #: src/modules/tasklist/settings.py:324
 msgctxt "dash:tasklist|name"
 msgid "Tasklist Configuration ({commands[config tasklist]})"
-msgstr ""
+msgstr "Configuração da lista de tarefas ({commands[config tasklist]})"
 
 #: src/modules/tasklist/settings.py:327
 msgctxt "dash:tasklist|dropdown|placeholder"

@@ -165,7 +165,7 @@ msgid ""
 "{coin_emoji}**{amount}**?"
 msgstr ""
 "Bsf zpv tvsf zpv xbou up tfu uif cbmbodf pg fwfszpof xjui {role_mention} up "
-"{coin_emoji}**{amount}**?"
+"{coin_emoji}**{amount..."
 
 #: src/modules/economy/cog.py:290
 #, possible-python-brace-format
@@ -213,7 +213,7 @@ msgid ""
 "{coin_emoji}**{new_amount}**."
 msgstr ""
 "{user_mention} xbt hjwfo {coin_emoji}**{amount}**, boe opx ibt b cbmbodf pg "
-"{coin_emoji}**{new_amount}**."
+"{coin_emoji}**{new_am..."
 
 #: src/modules/economy/cog.py:365
 msgctxt "cmd:economy_balance|embed:success|title"
@@ -315,7 +315,7 @@ msgid ""
 "*This is not reversible!*"
 msgstr ""
 "Bsf zpv tvsf zpv xbou up sftfu uif dpjo cbmbodf gps fwfszpof jo **{guild_name}**?\n"
-"*Uijt jt opu sfwfstjcmf!*"
+"*Uijt jt opu sf..."
 
 #: src/modules/economy/cog.py:566
 msgctxt "cmd:economy_reset|confirm:reset_guild|button:confirm"
@@ -351,7 +351,7 @@ msgid ""
 "**{count}** members will be affected."
 msgstr ""
 "Bsf zpv tvsf zpv xbou up sftfu uif cbmbodf gps fwfszpof jo {mention}?\n"
-"**{count}** nfncfst xjmm cf bggfdufe."
+"**{count}** nfncfst xjmm cf..."
 
 #: src/modules/economy/cog.py:622
 msgctxt "cmd:economy_reset|confirm:reset_role|button:confirm"

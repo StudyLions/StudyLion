@@ -1,0 +1,152 @@
+# Hindi translation for LionBot - config
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 19:57+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Hindi\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/modules/config/settingui.py:56
+msgctxt "ui:general_config|menu:event_log|placeholder"
+msgid "Select Event Log"
+msgstr "इवेंट लॉग चुनें"
+
+#: src/modules/config/settingui.py:64
+msgctxt "ui:general_config|embed:title"
+msgid "General Configuration"
+msgstr "सामान्य कॉन्फ़िगरेशन"
+
+#: src/modules/config/settingui.py:99
+msgctxt "dash:general|title"
+msgid "General Configuration ({commands[config general]})"
+msgstr "सामान्य कॉन्फ़िगरेशन ({commands[config general]})"
+
+#: src/modules/config/settingui.py:103
+msgctxt "dash:general|option|name"
+msgid "General Configuration Panel"
+msgstr "सामान्य कॉन्फ़िगरेशन पैनल"
+
+#: src/modules/config/cog.py:56 src/modules/config/general.py:52
+msgctxt "cmd:configure_general"
+msgid "general"
+msgstr "general"
+
+#: src/modules/config/cog.py:57 src/modules/config/general.py:53
+msgctxt "cmd:configure_general|desc"
+msgid "General configuration panel"
+msgstr "सामान्य कॉन्फ़िगरेशन पैनल"
+
+#: src/modules/config/general.py:91
+msgctxt "cmd:configure_general|parse_failure:timezone"
+msgid "Could not set the timezone!"
+msgstr "समय क्षेत्र निर्धारित नहीं किया जा सका"
+
+#: src/modules/config/general.py:112
+msgctxt "cmd:configure_general|success"
+msgid "Settings Updated!"
+msgstr "सेटिंग्स अपडेट की गईं"
+
+#: src/modules/config/general.py:127
+msgctxt "cmd:configure_general|panel|title"
+msgid "General Configuration Panel"
+msgstr "सामान्य कॉन्फ़िगरेशन पैनल"
+
+#, possible-python-brace-format
+msgctxt "ui:dashboard|title"
+msgid "Guild Dashboard (Page {page}/{total})"
+msgstr "सर्वर डैशबोर्ड (पृष्ठ {page}/{total})"
+
+#: src/modules/config/dashboard.py:110
+msgctxt "ui:dashboard|footer"
+msgid "Hover over setting names for a brief description"
+msgstr "संक्षिप्त विवरण के लिए सेटिंग नामों पर होवर करें"
+
+#: src/modules/config/dashboard.py:173
+msgctxt "ui:dashboard|menu:config|placeholder"
+msgid "Open Configuration Panel"
+msgstr "कॉन्फ़िगरेशन पैनल खोलें"
+
+#: src/modules/config/settings.py:33
+msgctxt "guildset:timezone"
+msgid "timezone"
+msgstr "timezone"
+
+#: src/modules/config/settings.py:36
+msgctxt "guildset:timezone|desc"
+msgid "Guild timezone for statistics display."
+msgstr "सांख्यिकी प्रदर्शन के लिए सर्वर का टाइमज़ोन।"
+
+#: src/modules/config/settings.py:40
+msgctxt "guildset:timezone|long_desc"
+msgid ""
+"Guild-wide timezone. Used to determine start of the day for the "
+"leaderboards, and as the default statistics timezone for members who have "
+"not set one."
+msgstr ""
+"सर्वर-व्यापी टाइमज़ोन। लीडरबोर्ड के लिए दिन की शुरुआत निर्धारित करने और उन "
+"सदस्यों के लिए डिफ़ॉल्ट सांख्यिकी टाइमज़ोन के रूप में उपयोग किया जाता है "
+"जिन्होंने अपना टाइमज़ोन सेट नहीं किया है।"
+
+#, possible-python-brace-format
+msgctxt "guildset:timezone|response"
+msgid "The guild timezone has been set to `{timezone}`."
+msgstr "सर्वर का टाइमज़ोन `{timezone}` पर सेट किया गया है।"
+
+#: src/modules/config/settings.py:66
+msgctxt "guildset:eventlog"
+msgid "event_log"
+msgstr "event_log"
+
+#: src/modules/config/settings.py:69
+msgctxt "guildset:eventlog|desc"
+msgid ""
+"My audit log channel where I send server actions and events (e.g. rankgs and"
+" expiring roles)."
+msgstr ""
+"मेरा ऑडिट लॉग चैनल जहां मैं सर्वर क्रियाएं और इवेंट भेजता हूं (जैसे रैंक और "
+"समाप्त होने वाली भूमि..."
+
+#: src/modules/config/settings.py:73
+msgctxt "guildset:eventlog|long_desc"
+msgid ""
+"If configured, I will log most significant actions taken or events which occur through my interface, into this channel. Logged events include, for example:\n"
+"- Member voice activity\n"
+"- Roles equipped and expiring from rolemenus\n"
+"- Privated rooms rented and expiring\n"
+"- Activity ranks earned\n"
+"I must have the 'Manage Webhooks' permission in this channel."
+msgstr ""
+"यदि कॉन्फ़िगर किया गया है, तो मैं अपने इंटरफ़ेस के माध्यम से की गई सबसे महत्वपूर्ण क्रियाओं या घटनाओं को इस चैनल में लॉग करूंगा। लॉग की गई घटनाओं में शामिल हैं, उदाहरण के लिए:\n"
+"- सदस्य वॉइस गतिविधि\n"
+"- रोल मेनू से सुसज्जित और समाप्त होने वाली भूमिकाएं\n"
+"- किराए पर ली गई और समाप्त होने वाली निजी कक्षाएं\n"
+"- अर्जित गतिविधि रैंक\n"
+"इस चैनल में मुझे 'Manage Webhooks' अनुमति होनी चाहिए।"
+
+#, possible-python-brace-format
+msgctxt "guildset:eventlog|check_value|error:perms|perm:manage_webhooks"
+msgid ""
+"Cannot set {channel} as an event log! I lack the 'Manage Webhooks' "
+"permission there."
+msgstr ""
+"{channel} को इवेंट लॉग के रूप में सेट नहीं किया जा सकता! मेरे पास वहां "
+"'Manage Webhooks' अनुमति नहीं है।"
+
+#, possible-python-brace-format
+msgctxt "guildset:eventlog|response|set"
+msgid "Events will now be logged to {channel}"
+msgstr "इवेंट अब {channel} में लॉग किए जाएंगे"
+
+#: src/modules/config/settings.py:111
+msgctxt "guildset:eventlog|response|unset"
+msgid "Guild events will no longer be logged."
+msgstr "सर्वर इवेंट अब लॉग नहीं किए जाएंगे।"

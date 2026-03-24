@@ -1,144 +1,131 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
-# Translators:
-# Bruno Evangelista De Oliveira, 2023
-# 
-#, fuzzy
+# Portuguese (Brazil) translation for LionBot - stats-gui
+# AI-translated with human Transifex contributions where available.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: LionBot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-24 12:21+0300\n"
-"PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
-"Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 19:00+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
-"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#. First column
-#: src/gui/cards/stats.py:72
+#: src/gui/cards/stats.py:61
 msgctxt "skin:stats|header:col1"
 msgid "STATISTICS"
 msgstr "ESTATÍSTICAS"
 
-#: src/gui/cards/stats.py:75
+#: src/gui/cards/stats.py:64
 msgctxt "skin:stats|subheader:leaderboard"
 msgid "LEADERBOARD POSITION"
 msgstr "POSIÇÃO NA CLASSIFICAÇÃO"
 
-#: src/gui/cards/stats.py:79
+#: src/gui/cards/stats.py:68
 msgctxt "skin:stats|mode:study|subheader:study"
 msgid "STUDY TIME"
 msgstr "TEMPO ESTUDOS"
 
-#: src/gui/cards/stats.py:83
+#: src/gui/cards/stats.py:72
 msgctxt "skin:stats|mode:voice|subheader:study"
 msgid "VOICE TIME"
 msgstr "TEMPO EM CANAL DE VOZ"
 
-#: src/gui/cards/stats.py:87
+#: src/gui/cards/stats.py:76
 msgctxt "skin:stats|mode:text|subheader:study"
 msgid "MESSAGES"
 msgstr "MENSAGENS"
 
-#: src/gui/cards/stats.py:91
+#: src/gui/cards/stats.py:80
 msgctxt "skin:stats|mode:anki|subheader:study"
 msgid "CARDS REVIEWED"
 msgstr "CARTÕES REVISADOS"
 
-#: src/gui/cards/stats.py:102
+#: src/gui/cards/stats.py:91
 msgctxt "skin:stats|subheader:workouts"
 msgid "WORKOUTS"
 msgstr "EXERCÍCIOS"
 
-#: src/gui/cards/stats.py:118
+#: src/gui/cards/stats.py:107
 msgctxt "skin:stats|field:daily"
 msgid "DAILY"
 msgstr "DIÁRIO"
 
-#: src/gui/cards/stats.py:122
+#: src/gui/cards/stats.py:111
 msgctxt "skin:stats|field:weekly"
 msgid "WEEKLY"
 msgstr "SEMANAL"
 
-#: src/gui/cards/stats.py:126
+#: src/gui/cards/stats.py:115
 msgctxt "skin:stats|field:monthly"
 msgid "MONTHLY"
 msgstr "MENSAL"
 
-#: src/gui/cards/stats.py:130
+#: src/gui/cards/stats.py:119
 msgctxt "skin:stats|field:alltime"
 msgid "ALL TIME"
 msgstr "SEMPRE"
 
-#: src/gui/cards/stats.py:134
+#: src/gui/cards/stats.py:123
 msgctxt "skin:stats|field:time"
 msgid "TIME"
 msgstr "TEMPO"
 
-#: src/gui/cards/stats.py:138
+#: src/gui/cards/stats.py:127
 msgctxt "skin:stats|field:anki"
 msgid "ANKI: COMING SOON"
 msgstr "ANKI: EM BREVE"
 
-#: src/gui/cards/stats.py:155
+#: src/gui/cards/stats.py:144
 msgctxt "skin:stats|mode:study|header:col2"
 msgid "STUDY STREAK"
 msgstr "ETAPA DE ESTUDOS"
 
-#: src/gui/cards/stats.py:159
+#: src/gui/cards/stats.py:148
 msgctxt "skin:stats|mode:voice|header:col2"
 msgid "VOICE STREAK"
 msgstr "SEQUENCIAS EM CANAL DE VOZ"
 
-#: src/gui/cards/stats.py:163
+#: src/gui/cards/stats.py:152
 msgctxt "skin:stats|mode:text|header:col2"
 msgid "ACTIVITY STREAK"
 msgstr "ETAPA DA ATIVIDADE"
 
-#: src/gui/cards/stats.py:167
+#: src/gui/cards/stats.py:156
 msgctxt "skin:stats|mode:anki|header:col2"
 msgid "ANKI REVIEW STREAK"
 msgstr "ETAPA DE REVISÃO ANKI"
 
-#: src/gui/cards/stats.py:180
 #, possible-python-brace-format
 msgctxt "skin:stats|mode:study|field:col2_summary"
 msgid "{amount} HRS"
 msgstr "{amount} HRS"
 
-#: src/gui/cards/stats.py:184
 #, possible-python-brace-format
 msgctxt "skin:stats|mode:voice|field:col2_summary"
 msgid "{amount} HRS"
 msgstr "{amount} HRS"
 
-#: src/gui/cards/stats.py:188
 #, possible-python-brace-format
 msgctxt "skin:stats|mode:text|field:col2_summary"
 msgid "{amount} XP"
 msgstr "{amount} XP"
 
-#: src/gui/cards/stats.py:192
 #, possible-python-brace-format
 msgctxt "skin:stats|mode:anki|field:col2_summary"
 msgid "{amount} CARDS"
 msgstr "{amount} CARTÕES"
 
-#: src/gui/cards/stats.py:223
+#: src/gui/cards/stats.py:212
 msgctxt "skin:stats|cal|weekdays"
 msgid "S,M,T,W,T,F,S"
 msgstr "D,S,T,Q,Q,S,S"
 
-#: src/gui/cards/stats.py:227
+#: src/gui/cards/stats.py:216
 msgctxt "skin:stats|cal|months"
-msgid ""
-"JANUARY,FEBRUARY,MARCH,APRIL,MAY,JUNE,JULY,AUGUST,SEPTEMBER,OCTOBER,NOVEMBER,DECEMBER"
-msgstr ""
-"JANEIRO,FEVEREIRO,MARÇO,ABRIL,MAIO,JUNHO,JULHO,AGOSTO,SETEMBRO,OUTUBRO,NOVEMBRO,DEZEMBRO"
+msgid "JANUARY,FEBRUARY,MARCH,APRIL,MAY,JUNE,JULY,AUGUST,SEPTEMBER,OCTOBER,NOVEMBER,DECEMBER"
+msgstr "JANEIRO,FEVEREIRO,MARÇO,ABRIL,MAIO,JUNHO,JULHO,AGOSTO,SETEMBRO,OUTUBRO,NOVEMBRO,DEZEMBRO"

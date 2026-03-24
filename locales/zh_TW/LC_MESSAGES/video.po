@@ -1,0 +1,323 @@
+# Chinese (Traditional) translation for LionBot - video
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 20:24+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Chinese (Traditional)\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/modules/video_channels/settingui.py:58
+msgctxt "ui:video_config|menu:channels|placeholder"
+msgid "Select Video Channels"
+msgstr "選擇視訊頻道"
+
+#: src/modules/video_channels/settingui.py:84
+msgctxt "ui:video_config|menu:exempt|placeholder"
+msgid "Select Exempt Roles"
+msgstr "選擇豁免身分組"
+
+#: src/modules/video_channels/settingui.py:112
+msgctxt "ui:video_config|menu:video_blacklist|placeholder"
+msgid "Select Blacklist Role"
+msgstr "選擇黑名單身分組"
+
+#: src/modules/video_channels/settingui.py:120
+msgctxt "ui:video_config|embed|title"
+msgid "Video Channel Configuration Panel"
+msgstr "視訊頻道配置面板"
+
+#: src/modules/video_channels/settingui.py:159
+msgctxt "dash:video|title"
+msgid "Video Channel Settings ({commands[admin config video_channels]})"
+msgstr "視訊頻道設置 ({commands[admin config video_channels]})"
+
+#: src/modules/video_channels/settingui.py:163
+msgctxt "dash:video|option|name"
+msgid "Video Channel Panel"
+msgstr "視訊頻道面板"
+
+#: src/modules/video_channels/cog.py:229
+msgctxt "video_watchdog|kick_blacklisted_member|audit_reason"
+msgid "Removing video blacklisted member from a video channel."
+msgstr "正在將視訊黑名單成員從視訊頻道移除。"
+
+#: src/modules/video_channels/cog.py:246
+msgctxt "video_watchdog|kick_blacklisted_member|notification|title"
+msgid "You have been disconnected."
+msgstr "你已被斷開連線。"
+
+#, possible-python-brace-format
+msgctxt "video_watchdog|kick_blacklisted_member|notification|desc"
+msgid "You were disconnected from the video channel {channel} because you are blacklisted from video channels in **{server}**."
+msgstr "你被從視訊頻道{channel}斷開連線，因為你在**{server}**的視訊頻道黑名單中。"
+
+#, possible-python-brace-format
+msgctxt "video_watchdog|join_task|jump_field"
+msgid "[Click to jump back]({link})"
+msgstr "[點擊跳回]({link})"
+
+#: src/modules/video_channels/cog.py:297
+msgctxt "video_watchdog|join_task|initial_request:title"
+msgid "Please enable your video!"
+msgstr "請開啟你的視訊！"
+
+#, possible-python-brace-format
+msgctxt "video_watchdog|join_task|initial_request:description"
+msgid ""
+"**You have joined the video channel {channel}!**\n"
+"Please **enable your video** or **leave the channel** or you will be disconnected {timestamp} and potentially **blacklisted**."
+msgstr ""
+"**你已加入視訊頻道{channel}！**\n"
+"請**開啟視訊**或**離開頻道**，否則你將在{timestamp}被斷開連線並可能被**加入黑名單**。"
+
+#: src/modules/video_channels/cog.py:316
+msgctxt "video_watchdog|join_task|thanks:title"
+msgid "Thanks for enabling your video!"
+msgstr "感謝你開啟視訊！"
+
+#: src/modules/video_channels/cog.py:323
+msgctxt "video_watchdog|join_task|bye:title"
+msgid "Thanks for leaving the channel promptly!"
+msgstr "感謝你及時離開頻道！"
+
+#: src/modules/video_channels/cog.py:367
+msgctxt "video_watchdog|join_task|kick_after_grace|audit_reason"
+msgid "Member never enabled their video in video channel."
+msgstr "成員從未在視訊頻道中開啟視訊。"
+
+#, possible-python-brace-format
+msgctxt "video_watchdog|join_task|kick_after_grace|ticket_reason"
+msgid "Failed to enable their video in time in the video channel {channel}"
+msgstr "未能在視訊頻道{channel}中及時開啟視訊"
+
+#: src/modules/video_channels/cog.py:403
+msgctxt "video_watchdog|join_task|kick_after_grace|warning|title"
+msgid "You have received a warning!"
+msgstr "你收到了一個警告！"
+
+#, possible-python-brace-format
+msgctxt "video_watchdog|join_task|kick_after_grace|warning|desc"
+msgid ""
+"**You must enable your camera in camera-only rooms.**\n"
+"You have been disconnected from the video {channel} for not enabling your camera."
+msgstr ""
+"**你必須在僅攝影機房間中啟用攝影機。**\n"
+"因未啟用攝影機，你已被從視訊{channel}斷開連線。"
+
+#: src/modules/video_channels/cog.py:422
+msgctxt "video_watchdog|join_task|kick_after_grace|blacklist|title"
+msgid "You have been blacklisted!"
+msgstr "你已被加入黑名單！"
+
+#: src/modules/video_channels/cog.py:426
+msgctxt "video_watchdog|join_task|kick_after_grace|blacklist|desc"
+msgid "You have been blacklisted from the video channels in this server."
+msgstr "你已被加入此伺服器視訊頻道的黑名單。"
+
+#, possible-python-brace-format
+msgctxt "video_watchdog|disabled_video_kick|audit_reason"
+msgid "Disconnected for disabling video for more than {number} seconds in video channel."
+msgstr "因在視訊頻道中關閉視訊超過{number}秒而被斷開連線。"
+
+#: src/modules/video_channels/cog.py:474
+msgctxt "video_watchdog|disabled_video_kick|notification|title"
+msgid "You have been disconnected."
+msgstr "你已被斷開連線。"
+
+#, possible-python-brace-format
+msgctxt "video_watchdog|disabled_video_kick|notification|desc"
+msgid ""
+"You were disconnected from the video channel {channel} because you disabled your video.\n"
+"Please keep your video on at all times, and leave the channel if you need to disable it!"
+msgstr ""
+"你因關閉視訊而被從視訊頻道{channel}斷開連線。\n"
+"請始終保持視訊開啟，如需關閉請離開頻道！"
+
+#: src/modules/video_channels/cog.py:510
+msgctxt "cmd:configure_video"
+msgid "video_channels"
+msgstr "video_channels"
+
+#: src/modules/video_channels/cog.py:512
+msgctxt "cmd:configure_video|desc"
+msgid "Configure video-only channels and blacklisting."
+msgstr "配置僅視訊頻道和黑名單。"
+
+#: src/modules/video_channels/settings.py:31
+msgctxt "guildset:video_channels"
+msgid "video_channels"
+msgstr "video_channels"
+
+#: src/modules/video_channels/settings.py:34
+msgctxt "guildset:video_channels|desc"
+msgid "List of voice channels and categories in which to enforce video."
+msgstr "強制視訊的語音頻道和分類列表。"
+
+#: src/modules/video_channels/settings.py:38
+msgctxt "guildset:video_channels|long_desc"
+msgid ""
+"Member will be required to turn on their video in these channels.\n"
+"If they do not enable their video with `15` seconds of joining, they will be asked to enable it through a notification in direct messages or the `alert_channel`. If they still have not enabled it after the `video_grace_period` has passed, they will be kicked from the channel. Further, after the first offence (which is considered a warning), they will be given the `video_blacklist` role, if configured, which will stop them from joining video channels.\n"
+"As usual, if a category is configured, this will apply to all voice channels under the category."
+msgstr ""
+"成員必須在這些頻道中開啟視訊。\n"
+"如果`15`秒內未開啟，將收到通知。`video_grace_period`後仍未開啟將被踢出。首次違規（警告）後將被賦予`video_blacklist`身分組（如已配置）。\n"
+"如果配置了分類，則適用於其下所有頻道。"
+
+#: src/modules/video_channels/settings.py:52
+msgctxt "guildset:video_channels|accepts"
+msgid "Comma separated channel ids or names."
+msgstr "逗號分隔的頻道ID或名稱。"
+
+#, possible-python-brace-format
+msgctxt "guildset:video_channels|set_response:set"
+msgid "Members will be asked to turn on their video in the following channels: {channels}"
+msgstr "成員將被要求在以下頻道中開啟視訊: {channels}"
+
+#: src/modules/video_channels/settings.py:74
+msgctxt "guildset:video_channels|set_response:unset"
+msgid "Members will not be asked to turn on their video in any channels."
+msgstr "不會要求成員在任何頻道中開啟視訊。"
+
+#: src/modules/video_channels/settings.py:108
+msgctxt "guildset:video_blacklist"
+msgid "video_blacklist"
+msgstr "video_blacklist"
+
+#: src/modules/video_channels/settings.py:111
+msgctxt "guildset:video_blacklist|desc"
+msgid "Role given when members are blacklisted from video channels."
+msgstr "成員被加入黑名單時給予的身分組。"
+
+#: src/modules/video_channels/settings.py:115
+msgctxt "guildset:video_blacklist|long_desc"
+msgid ""
+"This role will be automatically given after a member has failed to keep their video enabled in a video channel (see above).\n"
+"Members who have this role will not be able to join configured video channels. The role permissions may be freely configured by server admins to place further restrictions on the offender.\n"
+"The role may also be manually assigned, to the same effect.\n"
+"If this role is not set, no video blacklist will occur, and members will only be kicked from the channel and warned."
+msgstr ""
+"此身分組將在成員未保持視訊開啟時自動給予。\n"
+"擁有此身分組的成員將無法加入視訊頻道。權限可由管理員自由配置。\n"
+"身分組也可手動分配。\n"
+"如未設置，將不會有黑名單，成員只會被踢出和警告。"
+
+#: src/modules/video_channels/settings.py:126
+msgctxt "guildset:video_blacklist|accepts"
+msgid "Blacklist role name or id."
+msgstr "黑名單身分組名稱或ID。"
+
+#, possible-python-brace-format
+msgctxt "guildset:video_blacklist|set_response:set"
+msgid "Members who fail to keep their video on will be given {role}"
+msgstr "未保持視訊開啟的成員將獲得{role}"
+
+#: src/modules/video_channels/settings.py:146
+msgctxt "guildset:video_blacklist|set_response:unset"
+msgid "Members will no longer be automatically blacklisted from video channels."
+msgstr "成員將不再被自動加入黑名單。"
+
+#: src/modules/video_channels/settings.py:158
+msgctxt "guildset:video_blacklist|formatted:unset"
+msgid "Not Set. (Members will not be automatically blacklisted.)"
+msgstr "未設置。（成員不會被自動加入黑名單。）"
+
+#: src/modules/video_channels/settings.py:166
+msgctxt "guildset:video_durations"
+msgid "video_blacklist_durations"
+msgstr "video_blacklist_durations"
+
+#: src/modules/video_channels/settings.py:169
+msgctxt "guildset:video_durations|desc"
+msgid "Sequence of durations for automatic video blacklists."
+msgstr "自動視訊黑名單的持續時間序列。"
+
+#: src/modules/video_channels/settings.py:173
+msgctxt "guildset:video_durations|long_desc"
+msgid ""
+"When `video_blacklist` is set and members fail to turn on their video within the configured `video_grace_period`, they will be automatically blacklisted (i.e. given the `video_blacklist` role).\n"
+"This setting describes *how long* the member will be blacklisted for, for each offence.\n"
+"E.g. if this is set to `1d, 7d, 30d`, then on the first offence the member will be blacklisted for 1 day, on the second for 7 days, and on the third for 30 days. A subsequent offence will result in an infinite blacklist."
+msgstr ""
+"當`video_blacklist`設置後，成員在`video_grace_period`內未開啟視訊將被自動加入黑名單。\n"
+"此設置描述每次違規的*黑名單時長*。\n"
+"例如`1d, 7d, 30d`：第1次違規1天，第2次7天，第3次30天。之後為永久。"
+
+#: src/modules/video_channels/settings.py:185
+msgctxt "guildset:video_durations|accepts"
+msgid "Comma separated list of durations."
+msgstr "逗號分隔的持續時間列表。"
+
+#, possible-python-brace-format
+msgctxt "guildset:video_durations|set_response:set"
+msgid "Members will be automatically blacklisted for: {durations}"
+msgstr "成員將被自動加入黑名單: {durations}"
+
+#: src/modules/video_channels/settings.py:217
+msgctxt "guildset:video_durations|set_response:unset"
+msgid "Video blacklists are now always permanent."
+msgstr "視訊黑名單現在始終是永久的。"
+
+#: src/modules/video_channels/settings.py:226
+msgctxt "guildset:video_grace_period"
+msgid "video_grace_period"
+msgstr "video_grace_period"
+
+#: src/modules/video_channels/settings.py:229
+msgctxt "guildset:video_grace_period|desc"
+msgid "How long to wait (in seconds) before kicking/blacklist members who don't enable their video."
+msgstr "在踢出/加入黑名單之前等待多長時間（秒）。"
+
+#: src/modules/video_channels/settings.py:233
+msgctxt "guildset:video_grace_period|long_desc"
+msgid "The length of time a member has to enable their video after joining a video channel. After this time, if they have not enabled their video, they will be kicked from the channel and potentially blacklisted from video channels."
+msgstr "成員加入後啟用視訊的時間。之後將被踢出並可能被加入黑名單。"
+
+#: src/modules/video_channels/settings.py:239
+msgctxt "guildset:video_grace_period|accepts"
+msgid "How many seconds to wait for a member to enable video."
+msgstr "等待成員啟用視訊的秒數。"
+
+#, possible-python-brace-format
+msgctxt "guildset:video_grace_period|set_response:set"
+msgid "Members will now have **{duration}** to enable their video."
+msgstr "成員現在有**{duration}**的時間來啟用視訊。"
+
+#: src/modules/video_channels/settings.py:262
+msgctxt "guildset:video_exempt"
+msgid "video_exempt"
+msgstr "video_exempt"
+
+#: src/modules/video_channels/settings.py:265
+msgctxt "guildset:video_exempt|desc"
+msgid "List of roles which are exempt from video channels."
+msgstr "從視訊頻道中豁免的身分組列表。"
+
+#: src/modules/video_channels/settings.py:269
+msgctxt "guildset:video_exempt|long_desc"
+msgid "Members who have **any** of these roles will not be required to enable their video in the `video_channels`. This also overrides the `video_blacklist` role."
+msgstr "擁有這些身分組中**任何一個**的成員不需要啟用視訊。這也會覆蓋`video_blacklist`身分組。"
+
+#: src/modules/video_channels/settings.py:275
+msgctxt "guildset:video_exempt|accepts"
+msgid "List of exempt role names or ids."
+msgstr "豁免身分組名稱或ID列表。"
+
+#, possible-python-brace-format
+msgctxt "guildset:video_exempt|set_response:set"
+msgid "The following roles will now be exempt from video channels: {roles}"
+msgstr "以下身分組現在將從視訊頻道中豁免: {roles}"
+
+#: src/modules/video_channels/settings.py:295
+msgctxt "guildset:video_exempt|set_response:unset"
+msgid "No members will be exempt from video channel requirements."
+msgstr "沒有成員將被豁免視訊頻道要求。"

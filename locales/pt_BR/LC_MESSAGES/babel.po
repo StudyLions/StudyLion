@@ -1,27 +1,19 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
-# Translators:
-# Interitio, 2023
-# Aline Souki, 2023
-# Bruno Evangelista De Oliveira, 2023
-# 
-#, fuzzy
+# Portuguese (Brazil) translation for LionBot - babel
+# AI-translated with human Transifex contributions where available.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: LionBot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-24 14:37+0300\n"
-"PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Bruno Evangelista De Oliveira, 2023\n"
-"Language-Team: Portuguese (Brazil) (https://app.transifex.com/leobot/teams/174919/pt_BR/)\n"
+"PO-Revision-Date: 2026-03-13 20:24+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
-"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: src/babel/settingui.py:41
 msgctxt "ui:locale_config|button:force|label"
@@ -36,7 +28,7 @@ msgstr "Painel de Configuração de Idioma"
 #: src/babel/settingui.py:84
 msgctxt "dash:locale|title"
 msgid "Server Language Configuration ({commands[config language]})"
-msgstr ""
+msgstr "Configuração de idioma do servidor ({commands[config language]})"
 
 #: src/babel/settingui.py:88
 msgctxt "dash:locale|dropdown|placeholder"
@@ -53,13 +45,10 @@ msgctxt "cmd:configure_language|desc"
 msgid "Configure the default language I will use in this server."
 msgstr "Configurar o idioma padrão que usarei neste servidor."
 
-#: src/babel/cog.py:145
 #, possible-python-brace-format
 msgctxt "cmd:configure_language|error"
-msgid ""
-"You cannot enable `{force_setting}` without having a configured language!"
-msgstr ""
-"Você não pode habilitar `{force_setting}` sem ter um idioma configurado!"
+msgid "You cannot enable `{force_setting}` without having a configured language!"
+msgstr "Você não pode habilitar `{force_setting}` sem ter um idioma configurado!"
 
 #: src/babel/cog.py:165
 msgctxt "cmd:configure_language|success"
@@ -91,7 +80,6 @@ msgctxt "cmd:userconfig_language|button:reset|label"
 msgid "Reset"
 msgstr "Redefinir"
 
-#: src/babel/cog.py:250
 #, possible-python-brace-format
 msgctxt "acmpl:language|no_match"
 msgid "No supported languages matching {partial}"
@@ -99,10 +87,8 @@ msgstr "Nenhum idioma suportado correspondente a {partial}"
 
 #: src/babel/utils.py:9
 msgctxt "utils|months"
-msgid ""
-"January,February,March,April,May,June,July,August,September,October,November,December"
-msgstr ""
-"Janeiro,Fevereiro,Março,Abril,Maio,Junho,Julho,Agosto,Setembro,Outubro,Novembro,Dezembro"
+msgid "January,February,March,April,May,June,July,August,September,October,November,December"
+msgstr "Janeiro,Fevereiro,Março,Abril,Maio,Junho,Julho,Agosto,Setembro,Outubro,Novembro,Dezembro"
 
 #: src/babel/utils.py:14
 msgctxt "utils|short_months"
@@ -124,7 +110,6 @@ msgctxt "settype:locale|formatted:unset"
 msgid "Unset"
 msgstr "Não definido"
 
-#: src/babel/settings.py:62
 #, possible-python-brace-format
 msgctxt "settype:locale|error"
 msgid "Sorry, we do not support the language `{lang}` at this time!"
@@ -142,20 +127,14 @@ msgstr "O seu idioma preferido para interagir comigo."
 
 #: src/babel/settings.py:81
 msgctxt "userset:locale|long_desc"
-msgid ""
-"The language you would prefer me to respond to commands and interactions in."
-" Servers may be configured to override this with their own language."
-msgstr ""
-"O idioma no qual você prefere que eu responda a comandos e interações. Os "
-"servidores podem ser configurados para substituir essa configuração pelo seu"
-" próprio idioma."
+msgid "The language you would prefer me to respond to commands and interactions in. Servers may be configured to override this with their own language."
+msgstr "O idioma no qual você prefere que eu responda a comandos e interações. Os servidores podem ser configurados para substituir essa configuração pelo seu próprio idioma."
 
 #: src/babel/settings.py:92
 msgctxt "userset:locale|response"
 msgid "You have unset your language."
 msgstr "Você removeu o seu idioma."
 
-#: src/babel/settings.py:94
 #, possible-python-brace-format
 msgctxt "userset:locale|response"
 msgid "You have set your language to {lang}."
@@ -168,22 +147,13 @@ msgstr "obrigar_idioma"
 
 #: src/babel/settings.py:115
 msgctxt "guildset:force_locale|desc"
-msgid ""
-"Whether to force all members to use the configured guild language when "
-"interacting with me."
-msgstr ""
-"Se deseja forçar aos membros a utilizarem o idioma do próprio servidor "
-"quando interagirem comigo."
+msgid "Whether to force all members to use the configured guild language when interacting with me."
+msgstr "Se deseja forçar aos membros a utilizarem o idioma do próprio servidor quando interagirem comigo."
 
 #: src/babel/settings.py:118
 msgctxt "guildset:force_locale|long_desc"
-msgid ""
-"When enabled, commands in this guild will always use the configured guild "
-"language, regardless of the member's personally configured language."
-msgstr ""
-"Quando ativado, os comandos neste servidor sempre utilizarão o idioma "
-"configurado do servidor, independentemente do idioma pessoal configurado "
-"pelo membro."
+msgid "When enabled, commands in this guild will always use the configured guild language, regardless of the member's personally configured language."
+msgstr "Quando ativado, os comandos neste servidor sempre utilizarão o idioma configurado do servidor, independentemente do idioma pessoal configurado pelo membro."
 
 #: src/babel/settings.py:122
 msgctxt "guildset:force_locale|output"
@@ -217,21 +187,14 @@ msgstr "Sua opção de idioma para interagir comigo."
 
 #: src/babel/settings.py:164
 msgctxt "guildset:locale|long_desc"
-msgid ""
-"The default language to use for responses and interactions in this server. "
-"Member's own configured language will override this for their commands "
-"unless `force_language` is enabled."
-msgstr ""
-"O idioma padrão para usar nas respostas e interações neste servidor. A "
-"configuração de idioma do membro vai se sobrepor ao idioma padrão nos "
-"comandos que ele/ela usar, a não ser que `force_language` esteja ativado."
+msgid "The default language to use for responses and interactions in this server. Member's own configured language will override this for their commands unless `force_language` is enabled."
+msgstr "O idioma padrão para usar nas respostas e interações neste servidor. A configuração de idioma do membro vai se sobrepor ao idioma padrão nos comandos que ele/ela usar, a não ser que `force_language` esteja ativado."
 
 #: src/babel/settings.py:176
 msgctxt "guildset:locale|response"
 msgid "You have unset the guild language."
 msgstr "Você desfez a configuração de idioma da comunidade."
 
-#: src/babel/settings.py:178
 #, possible-python-brace-format
 msgctxt "guildset:locale|response"
 msgid "You have set the guild language to {lang}."

@@ -8,7 +8,7 @@ from discord import app_commands as appcmds
 from discord.ui.select import select, Select, SelectOption
 from discord.ui.button import button, Button
 
-from meta import conf
+from meta import conf, WEBSITE_URL
 from meta import LionCog, LionContext, LionBot
 from meta.errors import SafeCancellation
 from meta.logger import log_wrap
@@ -1235,10 +1235,18 @@ class ColourStore(Store):
 
     async def refresh_layout(self):
         await self.select_colour_refresh()
+        # --- AI-MODIFIED (2026-03-17) ---
+        # Purpose: Added web link button to view shop on website
+        _web = discord.ui.Button(
+            label="Shop on Web", emoji="🌐",
+            url=f"{WEBSITE_URL}/dashboard/servers/{self.shop.customer.guildid}/shop",
+            style=discord.ButtonStyle.link,
+        )
         if self.page_count > 1:
-            buttons = (self.prev_page_button, *self.store_row, self.next_page_button)
+            buttons = (self.prev_page_button, *self.store_row, _web, self.next_page_button)
         else:
-            buttons = self.store_row
+            buttons = (*self.store_row, _web)
+        # --- END AI-MODIFIED ---
         if not self.select_colour.options:
             self._layout = [buttons]
         else:

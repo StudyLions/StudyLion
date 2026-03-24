@@ -67,6 +67,18 @@ class CustomSkinCog(LionCog):
         await self._reload_property_map()
         await self.get_default_skin()
 
+        # --- AI-MODIFIED (2026-03-13) ---
+        # Purpose: start HTTP render API on shard 0 for web dashboard card rendering
+        if self.bot.shard_id == 0:
+            from .render_api import RenderAPI
+            try:
+                render_port = self.bot.config.render_api.getint('port', 7100)
+            except Exception:
+                render_port = 7100
+            self._render_api = RenderAPI(self.bot, port=render_port)
+            await self._render_api.start()
+        # --- END AI-MODIFIED ---
+
     async def _reload_property_map(self):
         """
         Reload the skin property id to (card_id, property_name) bijection.
@@ -234,6 +246,22 @@ class CustomSkinCog(LionCog):
         if custom_skin is not None:
             skin = custom_skin.freeze()
             self.custom_skins[skinid] = skin
+
+    # --- AI-MODIFIED (2026-03-15) ---
+    # Purpose: cache invalidation for website branding changes (clears both
+    # PremiumGuild row cache and custom skin cache on every shard)
+    @LionCog.listener('on_branding_cache_invalidate')
+    async def handle_branding_invalidate(self, guildid: int, skinid: int):
+        premium_cog = self.bot.get_cog('PremiumCog')
+        if premium_cog:
+            premium_cog.data.PremiumGuild._cache_.pop(guildid, None)
+
+        if skinid:
+            self.custom_skins.pop(skinid, None)
+            custom_skin = await CustomSkin.fetch(self.bot, skinid)
+            if custom_skin is not None:
+                self.custom_skins[skinid] = custom_skin.freeze()
+    # --- END AI-MODIFIED ---
 
     @LionCog.listener('on_botset_skin')
     async def handle_botset_skin(self, appname, instance):

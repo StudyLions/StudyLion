@@ -1,0 +1,855 @@
+# French translation for LionBot - rooms
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 23:11+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: French\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/modules/rooms/settingui.py:39
+msgctxt "ui:room_config|menu:category|placeholder"
+msgid "Select Private Room Category"
+msgstr "Sélectionner la catégorie de salon privé"
+
+#: src/modules/rooms/settingui.py:54
+msgctxt "ui:room_config|button:visible|label"
+msgid "Toggle Room Visibility"
+msgstr "Basculer la visibilité du salon"
+
+#: src/modules/rooms/settingui.py:64
+msgctxt "ui:rooms_config|embed|title"
+msgid "Private Room System Configuration Panel"
+msgstr "Panneau de configuration du système de salons privés"
+
+#: src/modules/rooms/settingui.py:100
+msgctxt "dash:rooms|title"
+msgid "Private Room Configuration ({commands[admin config rooms]})"
+msgstr "Configuration des salons privés ({commands[admin config rooms]})"
+
+#: src/modules/rooms/settingui.py:104
+msgctxt "dash:economy|dropdown|placeholder"
+msgid "Private Room Panel"
+msgstr "Panneau des salons privés"
+
+#: src/modules/rooms/roomui.py:56
+msgctxt "ui:room_status|error:owner_required"
+msgid "You must be the private room owner to do this!"
+msgstr "Vous devez être le propriétaire du salon privé pour faire cela !"
+
+#: src/modules/rooms/roomui.py:72
+msgctxt "ui:room_status|error:member_required"
+msgid "You need to be a member of the private room to do this!"
+msgstr "Vous devez être membre du salon privé pour faire cela !"
+
+#: src/modules/rooms/roomui.py:90
+msgctxt "ui:room_status|button:deposit|modal:deposit|title"
+msgid "Room Deposit"
+msgstr "Dépôt de salon"
+
+#: src/modules/rooms/roomui.py:94
+msgctxt "ui:room_status|button:deposit|modal:deposit|field:question|label"
+msgid "How many LionCoins do you want to deposit?"
+msgstr "Combien de LionCoins voulez-vous déposer ?"
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|button:deposit|error:invalid_number"
+msgid "Cannot deposit `{inputted}` coins. Please enter a positive integer."
+msgstr ""
+"Impossible de déposer `{inputted}` pièces. Veuillez entrer un nombre entier "
+"positif."
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|button:deposit|error:insufficient_funds"
+msgid ""
+"You cannot deposit {coin}**{amount}**! You only have {coin}**{balance}**."
+msgstr ""
+"Vous ne pouvez pas déposer {coin}**{amount}** ! Vous n'avez que "
+"{coin}**{balance}**."
+
+#: src/modules/rooms/roomui.py:160
+msgctxt "ui:room_status|button:deposit|label"
+msgid "Deposit"
+msgstr "Déposer"
+
+#: src/modules/rooms/roomui.py:171
+msgctxt "ui:room_status|button:edit|label"
+msgid "Edit Room"
+msgstr "Modifier le salon"
+
+#: src/modules/rooms/roomui.py:204
+msgctxt "ui:room_status|button:timer|modal:add_timer|title"
+msgid "Create Room Timer"
+msgstr "Créer un minuteur de salon"
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|button:timer|timer_created"
+msgid "Timer created successfully! Use {edit_cmd} to configure further."
+msgstr ""
+"Minuteur créé avec succès ! Utilisez {edit_cmd} pour configurer davantage."
+
+#: src/modules/rooms/roomui.py:254
+msgctxt "ui:room_status|button:timer|label:edit_timer"
+msgid "Edit Timer"
+msgstr "Modifier le minuteur"
+
+#: src/modules/rooms/roomui.py:261
+msgctxt "ui:room_status|button:timer|label:add_timer"
+msgid "Add Timer"
+msgstr "Ajouter un minuteur"
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|menu:invite|error:too_many_members"
+msgid ""
+"Too many members! You are inviting `{count}` new members to your room, but "
+"you already have `{current}` members! The member cap is `{cap}`."
+msgstr ""
+"Trop de membres ! Vous invitez `{count}` nouveaux membres, mais vous avez "
+"déjà `{current}` membres ! La limite est `{cap}`."
+
+#: src/modules/rooms/roomui.py:330
+msgctxt "ui:room_status|menu:invite_menu|placeholder:capped"
+msgid "Room member cap reached!"
+msgstr "Limite de membres atteinte !"
+
+#: src/modules/rooms/roomui.py:336
+msgctxt "ui:room_status|menu:invite_menu|placeholder:notcapped"
+msgid "Add Members"
+msgstr "Ajouter des membres"
+
+#: src/modules/rooms/roomui.py:359
+msgctxt "ui:room_status|menu:kick_menu|placeholder"
+msgid "Remove Members"
+msgstr "Retirer des membres"
+
+#: src/modules/rooms/roomui.py:367
+msgctxt "ui:room_status|embed|title"
+msgid "Room Control Panel"
+msgstr "Panneau de contrôle du salon"
+
+#: src/modules/rooms/roomui.py:375
+msgctxt "ui:room_status|embed|field:channel|name"
+msgid "Channel"
+msgstr "Salon"
+
+#: src/modules/rooms/roomui.py:380
+msgctxt "ui:room_status|embed|field:owner|name"
+msgid "Owner"
+msgstr "Propriétaire"
+
+#: src/modules/rooms/roomui.py:385
+msgctxt "ui:room_status|embed|field:created|name"
+msgid "Created At"
+msgstr "Créé le"
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|embed|field:bank|value:expiring"
+msgid ""
+"**Warning:** Insufficient room balance to pay next rent ({coin} **{rent}**).\n"
+"The room will expire {expiry}.\n"
+"Use {room_deposit_cmd} to increase balance."
+msgstr ""
+"**Attention :** Solde insuffisant pour le prochain loyer ({coin} **{rent}**).\n"
+"Le salon expirera {expiry}.\n"
+"Utilisez {room_deposit_cmd} pour augmenter le solde."
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|embed|field:bank|value:notexpiring"
+msgid "Next rent due {time} (- {coin}**{rent}**)"
+msgstr "Prochain loyer {time} (- {coin}**{rent}**)"
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|embed|field:bank|name"
+msgid "Room Balance: {coin}**{amount}**"
+msgstr "Solde du salon : {coin}**{amount}**"
+
+#, possible-python-brace-format
+msgctxt "ui:room_status|embed|field:members|name"
+msgid "Members ({count}/{cap})"
+msgstr "Membres ({count}/{cap})"
+
+#: src/modules/rooms/cog.py:175 src/modules/rooms/room.py:364
+msgctxt "room|eventlog|event:room_deleted|title"
+msgid "Private Room Deleted"
+msgstr "Salon privé supprimé"
+
+#, possible-python-brace-format
+msgctxt "room|eventlog|event:room_deleted|desc"
+msgid "{owner}'s private room was deleted."
+msgstr "Le salon privé de {owner} a été supprimé."
+
+#, possible-python-brace-format
+msgctxt "create_room|create_channel|audit_reason"
+msgid "Creating Private Room for {ownerid}"
+msgstr "Création d'un salon privé pour {ownerid}"
+
+#: src/modules/rooms/cog.py:279
+msgctxt "eventlog|event:private_room_create_error|name"
+msgid "Private Room Creation Failed"
+msgstr "Échec de la création du salon privé"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:private_room_create_error|desc"
+msgid ""
+"{owner} attempted to rent a new private room, but I could not create it!\n"
+"They were not charged."
+msgstr ""
+"{owner} a tenté de louer un nouveau salon privé, mais je n'ai pas pu le créer !\n"
+"Il n'a pas été fa..."
+
+#: src/modules/rooms/cog.py:329
+msgctxt "eventlog|event:private_room_create|name"
+msgid "Private Room Rented"
+msgstr "Salon privé loué"
+
+#, possible-python-brace-format
+msgctxt "eventlog|event:private_room_create|desc"
+msgid "{owner} has rented a new private room {channel}!"
+msgstr "{owner} a loué un nouveau salon privé {channel} !"
+
+#: src/modules/rooms/cog.py:368
+msgctxt "cmd:room"
+msgid "room"
+msgstr "room"
+
+#: src/modules/rooms/cog.py:369
+msgctxt "cmd:room|desc"
+msgid "Base command group for private room configuration."
+msgstr "Groupe de commandes de base pour la configuration des salons privés."
+
+#: src/modules/rooms/cog.py:376
+msgctxt "cmd:room_rent"
+msgid "rent"
+msgstr "rent"
+
+#: src/modules/rooms/cog.py:379
+msgctxt "cmd:room_rent|desc"
+msgid "Rent a private voice channel with LionCoins."
+msgstr "Louez un salon vocal privé avec des LionCoins."
+
+#: src/modules/rooms/cog.py:383
+msgctxt "cmd:room_rent|param:days"
+msgid "days"
+msgstr "days"
+
+#: src/modules/rooms/cog.py:384
+msgctxt "cmd:room_rent|param:members"
+msgid "members"
+msgstr "members"
+
+#: src/modules/rooms/cog.py:385
+msgctxt "cmd:room_rent|param:name"
+msgid "name"
+msgstr "name"
+
+#: src/modules/rooms/cog.py:390
+msgctxt "cmd:room_rent|param:days|desc"
+msgid "Number of days to pre-purchase. (Default: 1)"
+msgstr "Nombre de jours à pré-acheter. (Par défaut : 1)"
+
+#: src/modules/rooms/cog.py:394
+msgctxt "cmd:room_rent|param:members|desc"
+msgid "Mention the members you want to add to your private room."
+msgstr ""
+"Mentionnez les membres que vous souhaitez ajouter à votre salon privé."
+
+#: src/modules/rooms/cog.py:398
+msgctxt "cmd:room_rent|param:name|desc"
+msgid "Name of your private voice channel."
+msgstr "Nom de votre salon vocal privé."
+
+#: src/modules/rooms/cog.py:416
+msgctxt "cmd:room_rent|error:not_setup"
+msgid ""
+"The private room system has not been set up! A private room category needs "
+"to be set first with `/admin config rooms`."
+msgstr ""
+"Le système de salons privés n'a pas été configuré ! Une catégorie doit "
+"d'abord être définie avec `/admin config rooms`."
+
+#: src/modules/rooms/cog.py:427
+msgctxt "cmd:room_rent|error:insufficient_perms"
+msgid ""
+"I do not have enough permissions to create a new channel under the "
+"configured private room category!"
+msgstr ""
+"Je n'ai pas assez de permissions pour créer un nouveau salon dans la "
+"catégorie configurée !"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_rent|error:room_exists"
+msgid "You already own a private room! Click to visit: {channel}"
+msgstr "Vous possédez déjà un salon privé ! Cliquez pour visiter : {channel}"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_rent|error:member_not_found"
+msgid "Could not find the requested member {mention} in this server!"
+msgstr "Impossible de trouver le membre demandé {mention} sur ce serveur !"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_rent|error:too_many_members"
+msgid ""
+"Too many members! You have requested to add `{count}` members to your room, "
+"but the maximum private room size is `{cap}`!"
+msgstr ""
+"Trop de membres ! Vous avez demandé d'ajouter `{count}` membres, mais la "
+"taille maximale est `{cap}` !"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_rent|confirm:purchase"
+msgid ""
+"Are you sure you want to spend {coin}**{required}** to rent a private room "
+"for `one` day?"
+msgid_plural ""
+"Are you sure you want to spend {coin}**{required}** to rent a private room "
+"for `{days}` days?"
+msgstr[0] ""
+"Êtes-vous sûr de vouloir dépenser {coin}**{required}** pour louer un salon "
+"privé pendant `1` jour ?"
+msgstr[1] ""
+"Êtes-vous sûr de vouloir dépenser {coin}**{required}** pour louer un salon "
+"privé pendant `{days}` jours ?"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_rent|success"
+msgid "Successfully created your private room {channel}!"
+msgstr "Votre salon privé {channel} a été créé avec succès !"
+
+#: src/modules/rooms/cog.py:519
+msgctxt "cmd:room_rent|success|title"
+msgid "Private Room Created!"
+msgstr "Salon privé créé !"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_rent|error:insufficient_funds"
+msgid ""
+"Renting a private room for `one` day costs {coin}**{required}**, but you "
+"only have {coin}**{balance}**!"
+msgid_plural ""
+"Renting a private room for `{days}` days costs {coin}**{required}**, but you"
+" only have {coin}**{balance}**!"
+msgstr[0] ""
+"Louer un salon privé pour `1` jour coûte {coin}**{required}**, mais vous "
+"n'avez que {coin}**{balance}** !"
+msgstr[1] ""
+"Louer un salon privé pour `{days}` jours coûte {coin}**{required}**, mais "
+"vous n'avez que {coin}**{balance}** !"
+
+#: src/modules/rooms/cog.py:606
+msgctxt "cmd:room_rent|error:my_permissions"
+msgid ""
+"Could not create your private room! You were not charged.\n"
+"I have insufficient permissions to create a private room channel."
+msgstr ""
+"Impossible de créer votre salon privé ! Vous n'avez pas été facturé.\n"
+"Je n'ai pas les permissions suffisantes."
+
+#, possible-python-brace-format
+msgctxt "cmd:room_rent|error:unknown"
+msgid ""
+"Could not create your private room! You were not charged.\n"
+"An unknown error occurred while creating your private room.\n"
+"`{error}`"
+msgstr ""
+"Impossible de créer votre salon privé ! Vous n'avez pas été facturé.\n"
+"Une erreur inconnue s'est produite.\n"
+"`{error}`"
+
+#: src/modules/rooms/cog.py:626
+msgctxt "cmd:room_status"
+msgid "status"
+msgstr "status"
+
+#: src/modules/rooms/cog.py:629
+msgctxt "cmd:room_status|desc"
+msgid "Display the status of your current room."
+msgstr "Afficher l'état de votre salon actuel."
+
+#: src/modules/rooms/cog.py:646
+msgctxt "cmd:room_status|error:no_target"
+msgid ""
+"Could not identify target private room! Please re-run the command in the "
+"private room you wish to view the status of."
+msgstr ""
+"Impossible d'identifier le salon cible ! Relancez la commande dans le salon "
+"souhaité."
+
+#: src/modules/rooms/cog.py:661
+msgctxt "cmd:room_invite"
+msgid "invite"
+msgstr "invite"
+
+#: src/modules/rooms/cog.py:664
+msgctxt "cmd:room_invite|desc"
+msgid "Add members to your private room."
+msgstr "Ajoutez des membres à votre salon privé."
+
+#: src/modules/rooms/cog.py:668
+msgctxt "cmd:room_invite|param:members"
+msgid "members"
+msgstr "members"
+
+#: src/modules/rooms/cog.py:673
+msgctxt "cmd:room_invite|param:members|desc"
+msgid "Mention the members you want to add."
+msgstr "Mentionnez les membres que vous souhaitez ajouter."
+
+#, possible-python-brace-format
+msgctxt "cmd:room_invite|error:no_room"
+msgid ""
+"You do not own a private room! Use `/room rent` to rent one with {coin}!"
+msgstr ""
+"Vous ne possédez pas de salon privé ! Utilisez `/room rent` pour en louer un"
+" avec {coin} !"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_invite|error:member_not_found"
+msgid "Could not find the invited member {mention} in this server!"
+msgstr "Le membre invité {mention} est introuvable !"
+
+#: src/modules/rooms/cog.py:719
+msgctxt "cmd:room_invite|error:no_new_members"
+msgid "All members mentioned are already in the room!"
+msgstr "Tous les membres mentionnés sont déjà dans le salon !"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_invite|error:too_many_members"
+msgid ""
+"Too many members! You have invited `{count}` new members to your room, but "
+"you already have `{current}`, and the member cap is `{cap}`!"
+msgstr ""
+"Trop de membres ! Vous avez invité `{count}` nouveaux membres, mais vous en "
+"avez déjà `{current}` et la limite est `{cap}` !"
+
+#: src/modules/rooms/cog.py:757
+msgctxt "cmd:room_invite|success|ack"
+msgid "Members Invited successfully."
+msgstr "Membres invités avec succès."
+
+#: src/modules/rooms/cog.py:765
+msgctxt "cmd:room_kick"
+msgid "kick"
+msgstr "kick"
+
+#: src/modules/rooms/cog.py:768
+msgctxt "cmd:room_kick|desc"
+msgid "Remove a members from your private room."
+msgstr "Retirez des membres de votre salon privé."
+
+#: src/modules/rooms/cog.py:772
+msgctxt "cmd:room_kick|param:members"
+msgid "members"
+msgstr "members"
+
+#: src/modules/rooms/cog.py:777
+msgctxt "cmd:room_kick|param:members|desc"
+msgid ""
+"Mention the members you want to remove. Also accepts space-separated user "
+"ids."
+msgstr ""
+"Mentionnez les membres à retirer. Accepte aussi les identifiants séparés par"
+" des espaces."
+
+#, possible-python-brace-format
+msgctxt "cmd:room_kick|error:no_room"
+msgid ""
+"You do not own a private room! Use `/room rent` to rent one with {coin}!"
+msgstr ""
+"Vous ne possédez pas de salon privé ! Utilisez `/room rent` pour en louer un"
+" avec {coin} !"
+
+#: src/modules/rooms/cog.py:808
+msgctxt "cmd:room_kick|error:no_matching_members"
+msgid "None of the mentioned members are in this room!"
+msgstr "Aucun des membres mentionnés n'est dans ce salon !"
+
+#: src/modules/rooms/cog.py:825
+msgctxt "cmd:room_kick|success|ack"
+msgid "Members removed."
+msgstr "Membres retirés."
+
+#: src/modules/rooms/cog.py:831
+msgctxt "cmd:room_transfer"
+msgid "transfer"
+msgstr "transfer"
+
+#: src/modules/rooms/cog.py:834
+msgctxt "cmd:room_transfer|desc"
+msgid "Transfer your private room to another room member. Not reversible!"
+msgstr "Transférez votre salon à un autre membre. Irréversible !"
+
+#: src/modules/rooms/cog.py:838
+msgctxt "cmd:room_transfer|param:new_owner"
+msgid "new_owner"
+msgstr "new_owner"
+
+#: src/modules/rooms/cog.py:843
+msgctxt "cmd:room_transfer|param:new_owner"
+msgid "The room member you would like to transfer your room to."
+msgstr ""
+
+#: src/modules/rooms/cog.py:857
+msgctxt "cmd:room_transfer|error:no_room"
+msgid "You do not own a private room to transfer!"
+msgstr "Vous ne possédez pas de salon privé à transférer !"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_transfer|error:target_not_member"
+msgid ""
+"{mention} is not a member of your private room! You must invite them first."
+msgstr ""
+"{mention} n'est pas membre de votre salon ! Vous devez d'abord l'inviter."
+
+#, possible-python-brace-format
+msgctxt "cmd:room_transfer|error:target_has_room"
+msgid ""
+"{mention} already owns a room! Members can only own one room at a time."
+msgstr ""
+"{mention} possède déjà un salon ! Les membres ne peuvent posséder qu'un seul"
+" salon à la fois."
+
+#, possible-python-brace-format
+msgctxt "cmd:room_transfer|confirm|question"
+msgid ""
+"Are you sure you wish to transfer your private room {channel} to "
+"{new_owner}? This action is not reversible!"
+msgstr ""
+"Êtes-vous sûr de vouloir transférer votre salon {channel} à {new_owner} ? "
+"Cette action est irréversible !"
+
+#, possible-python-brace-format
+msgctxt "cmd:room_transfer|success|description"
+msgid ""
+"You have successfully transferred ownership of {channel} to {new_owner}."
+msgstr "Vous avez transféré la propriété de {channel} à {new_owner}."
+
+#: src/modules/rooms/cog.py:916
+msgctxt "cmd:room_deposit"
+msgid "deposit"
+msgstr "deposit"
+
+#: src/modules/rooms/cog.py:919
+msgctxt "cmd:room_deposit|desc"
+msgid ""
+"Deposit LionCoins in your private room bank to add more days. (Members may "
+"also deposit!)"
+msgstr ""
+"Déposez des LionCoins dans la banque du salon pour ajouter des jours. (Les "
+"membres peuvent aussi !)"
+
+#: src/modules/rooms/cog.py:923
+msgctxt "cmd:room_deposit|param:coins"
+msgid "coins"
+msgstr "coins"
+
+#: src/modules/rooms/cog.py:928
+msgctxt "cmd:room_deposit|param:coins|desc"
+msgid "Number of coins to deposit."
+msgstr "Nombre de pièces à déposer."
+
+#: src/modules/rooms/cog.py:948
+msgctxt "cmd:room_deposit|error:no_target"
+msgid ""
+"Could not identify target private room! Please re-run the command in the "
+"private room you wish to contribute to."
+msgstr ""
+"Impossible d'identifier le salon cible ! Relancez la commande dans le salon "
+"auquel vous souhaitez contribuer."
+
+#, possible-python-brace-format
+msgctxt "cmd:room_deposit|error:insufficient_funds"
+msgid ""
+"You cannot deposit {coin}**{amount}**! You only have {coin}**{balance}**."
+msgstr ""
+"Vous ne pouvez pas déposer {coin}**{amount}** ! Vous n'avez que "
+"{coin}**{balance}**."
+
+#, possible-python-brace-format
+msgctxt "cmd:room_depost|success"
+msgid ""
+"Success! You have contributed {coin}**{amount}** to the private room bank."
+msgstr "Succès ! Vous avez contribué {coin}**{amount}** à la banque du salon."
+
+#: src/modules/rooms/cog.py:1000
+msgctxt "cmd:configure_rooms"
+msgid "rooms"
+msgstr "rooms"
+
+#: src/modules/rooms/cog.py:1001
+msgctxt "cmd:configure_rooms|desc"
+msgid "Configure Rented Private Rooms"
+msgstr "Configurer les salons privés loués"
+
+#: src/modules/rooms/room.py:78
+msgctxt "room|eventlog|field:owner"
+msgid "Owner"
+msgstr "Propriétaire"
+
+#: src/modules/rooms/room.py:84
+msgctxt "room|eventlog|field:channel"
+msgid "Channel"
+msgstr "Salon"
+
+#: src/modules/rooms/room.py:90
+msgctxt "room|eventlog|field:balance"
+msgid "Room Balance"
+msgstr "Solde du salon"
+
+#: src/modules/rooms/room.py:96
+msgctxt "room|eventlog|field:created"
+msgid "Created At"
+msgstr "Créé le"
+
+#: src/modules/rooms/room.py:102
+msgctxt "room|eventlog|field:tick"
+msgid "Next Rent Due"
+msgstr "Prochain loyer"
+
+#: src/modules/rooms/room.py:108
+msgctxt "room|eventlog|field:members"
+msgid "Private Room Members"
+msgstr "Membres du salon privé"
+
+#, possible-python-brace-format
+msgctxt "room|notify:deposit|description"
+msgid "{member} has deposited {coin}**{amount}** into the room bank!"
+msgstr "{member} a déposé {coin}**{amount}** dans la banque du salon !"
+
+#: src/modules/rooms/room.py:146
+msgctxt "room|notify:new_members|title"
+msgid "New Members!"
+msgstr "Nouveaux membres !"
+
+#, possible-python-brace-format
+msgctxt "room|notify:new_members|desc"
+msgid "Welcome {members}"
+msgstr "Bienvenue {members}"
+
+#: src/modules/rooms/room.py:156
+msgctxt "room|eventlog|event:new_members|title"
+msgid "Members invited to private room"
+msgstr "Membres invités au salon privé"
+
+#, possible-python-brace-format
+msgctxt "room|eventlog|event:new_members|desc"
+msgid "{owner} added members to their private room: {members}"
+msgstr "{owner} a ajouté des membres à son salon privé : {members}"
+
+#: src/modules/rooms/room.py:191
+msgctxt "room|eventlog|event:rm_members|title"
+msgid "Members removed from private room"
+msgstr "Membres retirés du salon privé"
+
+#, possible-python-brace-format
+msgctxt "room|eventlog|event:rm_members|desc"
+msgid "{owner} removed members from their private room: {members}"
+msgstr "{owner} a retiré des membres de son salon privé : {members}"
+
+#, possible-python-brace-format
+msgctxt "room|notify:transfer|description"
+msgid "{old_owner} has transferred private room ownership to {new_owner}"
+msgstr "{old_owner} a transféré la propriété du salon à {new_owner}"
+
+#: src/modules/rooms/room.py:318
+msgctxt "room|embed:expiry|title"
+msgid "Private Room Expired!"
+msgstr "Salon privé expiré !"
+
+#, possible-python-brace-format
+msgctxt "room|embed:expiry|description"
+msgid "Your private room in **{guild}** has expired!"
+msgstr "Votre salon privé dans **{guild}** a expiré !"
+
+#: src/modules/rooms/room.py:332
+msgctxt "room|eventlog|event:expired|title"
+msgid "Private Room Expired"
+msgstr "Salon privé expiré"
+
+#, possible-python-brace-format
+msgctxt "room|eventlog|event:expired|desc"
+msgid "{owner}'s private room has expired."
+msgstr "Le salon privé de {owner} a expiré."
+
+#, possible-python-brace-format
+msgctxt "room|tick|rent_deducted"
+msgid "Daily rent deducted from room balance. New balance: {coin}**{amount}**"
+msgstr "Loyer quotidien déduit du solde. Nouveau solde : {coin}**{amount}**"
+
+#: src/modules/rooms/settings.py:23
+msgctxt "guildset:room_category"
+msgid "rooms_category"
+msgstr "rooms_category"
+
+#: src/modules/rooms/settings.py:27
+msgctxt "guildset:rooms_category|desc"
+msgid "Category in which to create private voice channels."
+msgstr "Catégorie dans laquelle créer les salons vocaux privés."
+
+#: src/modules/rooms/settings.py:31
+msgctxt "guildset:room_category|long_desc"
+msgid ""
+"When a member uses {cmds[room rent]} to rent a new private room, a private "
+"voice channel will be created under this category, manageable by the member."
+" I must have permission to create new channels in this category, as well as "
+"to manage permissions."
+msgstr ""
+"Quand un membre utilise {cmds[room rent]}, un salon vocal privé sera créé "
+"dans cette catégorie. J'ai besoin des permissions pour créer des salons et "
+"gérer les permissions."
+
+#: src/modules/rooms/settings.py:39
+msgctxt "guildset:room_category|accepts"
+msgid "Private room category name or id."
+msgstr "Nom ou identifiant de la catégorie des salons privés."
+
+#: src/modules/rooms/settings.py:53
+msgctxt "guildset:rooms_category|set_response:unset"
+msgid ""
+"The private room category has been unset. Existing private rooms will not be"
+" affected. Delete the channels manually to remove the private rooms."
+msgstr ""
+"La catégorie des salons privés a été supprimée. Les salons existants ne "
+"seront pas affectés. Supprimez les salons manuellement."
+
+#, possible-python-brace-format
+msgctxt "guildset:rooms_category|set_response:set"
+msgid ""
+"Private room category has been set to {channel}. Existing private rooms will"
+" be moved."
+msgstr ""
+"La catégorie des salons privés a été définie sur {channel}. Les salons "
+"existants seront déplacés."
+
+#, possible-python-brace-format
+msgctxt "guildset:room_category|set_using"
+msgid "{cmd} or category selector below."
+msgstr "{cmd} ou sélecteur de catégorie ci-dessous."
+
+#: src/modules/rooms/settings.py:79
+msgctxt "guildset:rooms_price"
+msgid "room_rent"
+msgstr "room_rent"
+
+#: src/modules/rooms/settings.py:83
+msgctxt "guildset:rooms_rent|desc"
+msgid "Daily rent price for a private room."
+msgstr "Loyer quotidien d'un salon privé."
+
+#: src/modules/rooms/settings.py:87
+msgctxt "guildset:rooms_rent|long_desc"
+msgid ""
+"Members will be charged this many LionCoins for each day they rent a private"
+" room."
+msgstr ""
+"Les membres seront facturés ce nombre de LionCoins pour chaque jour de "
+"location d'un salon privé."
+
+#: src/modules/rooms/settings.py:91
+msgctxt "guildset:rooms_rent|accepts"
+msgid "Number of LionCoins charged per day for a private room."
+msgstr "Nombre de LionCoins facturés par jour pour un salon privé."
+
+#, possible-python-brace-format
+msgctxt "guildset:rooms_price|set_response"
+msgid "Private rooms will now cost {coin}**{amount}** per 24 hours."
+msgstr ""
+"Les salons privés coûteront désormais {coin}**{amount}** par 24 heures."
+
+#: src/modules/rooms/settings.py:116
+msgctxt "guildset:rooms_slots"
+msgid "room_member_cap"
+msgstr "room_member_cap"
+
+#: src/modules/rooms/settings.py:119
+msgctxt "guildset:rooms_slots|desc"
+msgid "Maximum number of members in each private room."
+msgstr "Nombre maximum de membres dans chaque salon privé."
+
+#: src/modules/rooms/settings.py:123
+msgctxt "guildset:rooms_slots|long_desc"
+msgid ""
+"Private room owners may invite other members to their private room via the "
+"UI, or through the {cmds[room invite]} command. This setting limits the "
+"maximum number of members a private room may hold."
+msgstr ""
+"Les propriétaires peuvent inviter des membres via l'interface ou la commande"
+" {cmds[room invite]}. Ce paramètre limite le nombre maximum de membres."
+
+#: src/modules/rooms/settings.py:129
+msgctxt "guildset:rooms_slots|accepts"
+msgid "Maximum number of members allowed per private room."
+msgstr "Nombre maximum de membres autorisés par salon privé."
+
+#, possible-python-brace-format
+msgctxt "guildset:rooms_slots|set_response"
+msgid "Private rooms are now capped to **{amount}** members."
+msgstr "Les salons privés sont maintenant limités à **{amount}** membres."
+
+#: src/modules/rooms/settings.py:151
+msgctxt "guildset:rooms_visible"
+msgid "room_visibility"
+msgstr "room_visibility"
+
+#: src/modules/rooms/settings.py:154
+msgctxt "guildset:rooms_visible|desc"
+msgid "Whether private rented rooms are visible to non-members."
+msgstr "Si les salons privés loués sont visibles pour les non-membres."
+
+#: src/modules/rooms/settings.py:158
+msgctxt "guildset:rooms_visible|long_desc"
+msgid ""
+"If enabled, new private rooms will be created with the `VIEW_CHANNEL` "
+"permission enabled for the `@everyone` role."
+msgstr ""
+"Si activé, les nouveaux salons seront créés avec la permission "
+"`VIEW_CHANNEL` pour le rôle `@everyone`."
+
+#: src/modules/rooms/settings.py:162
+msgctxt "guildset:rooms_visible|accepts"
+msgid "Visible/Invisible"
+msgstr "Visible/Invisible"
+
+#: src/modules/rooms/settings.py:164
+msgctxt "guildset:rooms_visible|output:true"
+msgid "Visible"
+msgstr "Visible"
+
+#: src/modules/rooms/settings.py:165
+msgctxt "guildset:rooms_visible|output:false"
+msgid "Invisible"
+msgstr "Invisible"
+
+#: src/modules/rooms/settings.py:171
+msgctxt "guildset:rooms_visible|parse:truthy_values"
+msgid "visible|enabled|yes|true|on|enable|1"
+msgstr "visible|enabled|yes|true|on|enable|1"
+
+#: src/modules/rooms/settings.py:175
+msgctxt "guildset:rooms_visible|parse:falsey_values"
+msgid "invisible|disabled|no|false|off|disable|0"
+msgstr "invisible|disabled|no|false|off|disable|0"
+
+#: src/modules/rooms/settings.py:187
+msgctxt "guildset:rooms_visible|set_response:enabled"
+msgid "Private rooms will now be visible to everyone."
+msgstr "Les salons privés seront maintenant visibles par tout le monde."
+
+#: src/modules/rooms/settings.py:192
+msgctxt "guildset:rooms_visible|set_response:disabled"
+msgid "Private rooms will now only be visible to their members (and admins)."
+msgstr ""
+"Les salons privés ne seront désormais visibles que par leurs membres (et les"
+" administrateurs)."
+
+#, possible-python-brace-format
+msgctxt "guildset:rooms_visible|set_using"
+msgid "{cmd} or toggle below."
+msgstr "{cmd} ou bouton ci-dessous."

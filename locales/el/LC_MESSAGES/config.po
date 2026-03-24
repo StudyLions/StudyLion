@@ -1,0 +1,153 @@
+# Greek translation for LionBot - config
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 19:57+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Greek\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/modules/config/settingui.py:56
+msgctxt "ui:general_config|menu:event_log|placeholder"
+msgid "Select Event Log"
+msgstr "Επιλέξτε αρχείο καταγραφής συμβάντων"
+
+#: src/modules/config/settingui.py:64
+msgctxt "ui:general_config|embed:title"
+msgid "General Configuration"
+msgstr "Γενική διαμόρφωση"
+
+#: src/modules/config/settingui.py:99
+msgctxt "dash:general|title"
+msgid "General Configuration ({commands[config general]})"
+msgstr "Γενική διαμόρφωση ({commands[config general]})"
+
+#: src/modules/config/settingui.py:103
+msgctxt "dash:general|option|name"
+msgid "General Configuration Panel"
+msgstr "Πίνακας γενικής διαμόρφωσης"
+
+#: src/modules/config/cog.py:56 src/modules/config/general.py:52
+msgctxt "cmd:configure_general"
+msgid "general"
+msgstr "general"
+
+#: src/modules/config/cog.py:57 src/modules/config/general.py:53
+msgctxt "cmd:configure_general|desc"
+msgid "General configuration panel"
+msgstr "Πίνακας γενικής διαμόρφωσης"
+
+#: src/modules/config/general.py:91
+msgctxt "cmd:configure_general|parse_failure:timezone"
+msgid "Could not set the timezone!"
+msgstr "Δεν ήταν δυνατός ο ορισμός της ζώνης ώρας!"
+
+#: src/modules/config/general.py:112
+msgctxt "cmd:configure_general|success"
+msgid "Settings Updated!"
+msgstr "Οι ρυθμίσεις ενημερώθηκαν!"
+
+#: src/modules/config/general.py:127
+msgctxt "cmd:configure_general|panel|title"
+msgid "General Configuration Panel"
+msgstr "Πίνακας γενικής διαμόρφωσης"
+
+#, possible-python-brace-format
+msgctxt "ui:dashboard|title"
+msgid "Guild Dashboard (Page {page}/{total})"
+msgstr "Πίνακας ελέγχου διακομιστή (Σελίδα {page}/{total})"
+
+#: src/modules/config/dashboard.py:110
+msgctxt "ui:dashboard|footer"
+msgid "Hover over setting names for a brief description"
+msgstr ""
+"Τοποθετήστε το ποντίκι πάνω από τα ονόματα ρυθμίσεων για σύντομη περιγραφή"
+
+#: src/modules/config/dashboard.py:173
+msgctxt "ui:dashboard|menu:config|placeholder"
+msgid "Open Configuration Panel"
+msgstr "Ανοίξτε τον πίνακα διαμόρφωσης"
+
+#: src/modules/config/settings.py:33
+msgctxt "guildset:timezone"
+msgid "timezone"
+msgstr "timezone"
+
+#: src/modules/config/settings.py:36
+msgctxt "guildset:timezone|desc"
+msgid "Guild timezone for statistics display."
+msgstr "Ζώνη ώρας διακομιστή για εμφάνιση στατιστικών."
+
+#: src/modules/config/settings.py:40
+msgctxt "guildset:timezone|long_desc"
+msgid ""
+"Guild-wide timezone. Used to determine start of the day for the "
+"leaderboards, and as the default statistics timezone for members who have "
+"not set one."
+msgstr ""
+"Ζώνη ώρας για όλο τον διακομιστή. Χρησιμοποιείται για τον καθορισμό της "
+"αρχής της ημέρας για τους πίνακες κατάταξης και ως προεπιλεγμένη ζώνη ώρας "
+"στατιστικών για μέλη που δεν έχουν ορίσει μία."
+
+#, possible-python-brace-format
+msgctxt "guildset:timezone|response"
+msgid "The guild timezone has been set to `{timezone}`."
+msgstr "Η ζώνη ώρας του διακομιστή ορίστηκε σε `{timezone}`."
+
+#: src/modules/config/settings.py:66
+msgctxt "guildset:eventlog"
+msgid "event_log"
+msgstr "event_log"
+
+#: src/modules/config/settings.py:69
+msgctxt "guildset:eventlog|desc"
+msgid ""
+"My audit log channel where I send server actions and events (e.g. rankgs and"
+" expiring roles)."
+msgstr ""
+"Το κανάλι αρχείου ελέγχου μου, όπου στέλνω ενέργειες και συμβάντα διακομιστή"
+" (π.χ. βαθμίδες και ρ..."
+
+#: src/modules/config/settings.py:73
+msgctxt "guildset:eventlog|long_desc"
+msgid ""
+"If configured, I will log most significant actions taken or events which occur through my interface, into this channel. Logged events include, for example:\n"
+"- Member voice activity\n"
+"- Roles equipped and expiring from rolemenus\n"
+"- Privated rooms rented and expiring\n"
+"- Activity ranks earned\n"
+"I must have the 'Manage Webhooks' permission in this channel."
+msgstr ""
+"Αν διαμορφωθεί, θα καταγράφω τις σημαντικότερες ενέργειες ή συμβάντα που συμβαίνουν μέσω της διεπαφής μου, σε αυτό το κανάλι. Τα καταγεγραμμένα συμβάντα περιλαμβάνουν, για παράδειγμα:\n"
+"- Φωνητική δραστηριότητα μελών\n"
+"- Ρόλοι που εξοπλίζονται και λήγουν από μενού ρόλων\n"
+"- Ιδιωτικά δωμάτια που νοικιάζονται και λήγουν\n"
+"- Βαθμίδες δραστηριότητας που κερδήθηκαν\n"
+"Πρέπει να έχω το δικαίωμα 'Manage Webhooks' σε αυτό το κανάλι."
+
+#, possible-python-brace-format
+msgctxt "guildset:eventlog|check_value|error:perms|perm:manage_webhooks"
+msgid ""
+"Cannot set {channel} as an event log! I lack the 'Manage Webhooks' "
+"permission there."
+msgstr ""
+"Δεν μπορώ να ορίσω το {channel} ως αρχείο καταγραφής συμβάντων! Μου λείπει η"
+" άδεια 'Manage Webhooks' εκεί."
+
+#, possible-python-brace-format
+msgctxt "guildset:eventlog|response|set"
+msgid "Events will now be logged to {channel}"
+msgstr "Τα συμβάντα θα καταγράφονται πλέον στο {channel}"
+
+#: src/modules/config/settings.py:111
+msgctxt "guildset:eventlog|response|unset"
+msgid "Guild events will no longer be logged."
+msgstr "Τα συμβάντα του διακομιστή δεν θα καταγράφονται πλέον."

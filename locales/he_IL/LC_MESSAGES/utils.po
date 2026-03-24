@@ -1,25 +1,18 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
-# Translators:
-# Interitio, 2023
-# Ari Horesh, 2023
-# 
-#, fuzzy
+# Hebrew translation for LionBot - utils
+# AI-translated with human Transifex contributions where available.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: LionBot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-24 14:37+0300\n"
-"PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Ari Horesh, 2023\n"
-"Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
+"PO-Revision-Date: 2026-03-13 21:36+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Hebrew\n"
+"Language: he_IL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: he_IL\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
 
 #: src/utils/cog.py:18
@@ -29,8 +22,7 @@ msgstr "עמוד"
 
 #: src/utils/cog.py:21
 msgctxt "cmd:page|desc"
-msgid ""
-"Jump to a given page of the ouput of a previous command in this channel."
+msgid "Jump to a given page of the ouput of a previous command in this channel."
 msgstr "קפוץ לעמוד ספציפי של התוצאות של הפקודה הקודמת בערוץ הזה."
 
 #: src/utils/cog.py:35
@@ -108,13 +100,11 @@ msgctxt "cmd:page_select|acmpl|error:no_pager"
 msgid "No active pagers in this channel!"
 msgstr "אין פייגר שמקשיב לערוץ הזה"
 
-#: src/utils/transformers.py:45
 #, possible-python-brace-format
 msgctxt "utils:parse_dur|error"
 msgid "Cannot parse `{value}` as a duration."
 msgstr "לא הצלחתי להבין את `{value}` בתור ערך זמן."
 
-#: src/utils/transformers.py:71
 #, possible-python-brace-format
 msgctxt "util:Duration|acmpl|error"
 msgid "Cannot extract duration from \"{partial}\""
@@ -140,13 +130,10 @@ msgctxt "util:parse_dur|regex:second"
 msgid "(?P<value>\\d+)\\s*(?:(s)|(sec))"
 msgstr "(?P<value>\\d+)\\s*(?:(s)|(sec))"
 
-#: src/utils/lib.py:907
 #, possible-python-brace-format
 msgctxt "parse_timestamp|error:parse"
-msgid ""
-"Could not parse `{given}` as a valid reminder time. Try entering the time in"
-" the form `HH:MM` or `YYYY-MM-DD HH:MM`."
-msgstr ""
+msgid "Could not parse `{given}` as a valid reminder time. Try entering the time in the form `HH:MM` or `YYYY-MM-DD HH:MM`."
+msgstr "לא ניתן לפענח את `{given}` כזמן תזכורת תקין. נסה את הפורמט `HH:MM` או `YYYY-MM-DD HH:MM`."
 
 #: src/utils/ui/config.py:35
 msgctxt "ui:configui|modal:edit|title"
@@ -170,63 +157,49 @@ msgstr "אפס"
 
 #: src/utils/ui/config.py:331
 msgctxt "ui:dashboard|error:section_too_long"
-msgid ""
-"Oops, the settings in this configuration section are too large, and I can "
-"not display them here! Please view the settings in the linked configuration "
-"panel instead."
-msgstr ""
-"אופס, ההגרות בתפריט הזה גדולות מידי, ואני לא יכול להראות אותן כאן! אנא צפו "
-"בהגדרות בתפריט ההגדרות במקום."
+msgid "Oops, the settings in this configuration section are too large, and I can not display them here! Please view the settings in the linked configuration panel instead."
+msgstr "אופס, ההגרות בתפריט הזה גדולות מידי, ואני לא יכול להראות אותן כאן! אנא צפו בהגדרות בתפריט ההגדרות במקום."
 
-#. List of valid keys indicating movement to the next page
 #: src/utils/ui/pagers.py:50
 msgctxt "cmd:page|pager:Pager|options:next"
 msgid "n, nxt, next, forward, +"
 msgstr "הבא, הבא, הבא, הבא, +"
 
-#. List of valid keys indicating movement to the previous page
 #: src/utils/ui/pagers.py:53
 msgctxt "cmd:page|pager:Pager|options:prev"
 msgid "p, prev, back, -"
 msgstr "הקודם, הקודם, הקודם, -"
 
-#. List of valid keys indicating movement to the first page
 #: src/utils/ui/pagers.py:56
 msgctxt "cmd:page|pager:Pager|options:first"
 msgid "f, first, one, start"
 msgstr "ראשון, ראשון, ראשון, התחל"
 
-#. List of valid keys indicating movement to the last page
 #: src/utils/ui/pagers.py:59
 msgctxt "cmd:page|pager:Pager|options:last"
 msgid "l, last, end"
 msgstr "אחרון, אחרון, אחרון"
 
-#: src/utils/ui/pagers.py:273
 #, possible-python-brace-format
 msgctxt "cmd:page|pager:Pager|error:parse"
 msgid "Could not understand page specification `{value}`."
 msgstr "לא הצלחתי להבין את `{value}`."
 
-#: src/utils/ui/pagers.py:302
 #, possible-python-brace-format
 msgctxt "cmd:page|acmpl|pager:Pager|choice:last"
 msgid "Last: Page {page}/{total}"
 msgstr "אחרון: עמוד {page}/{total}"
 
-#: src/utils/ui/pagers.py:307
 #, possible-python-brace-format
 msgctxt "cmd:page|acmpl|pager:Pager|choice:current"
 msgid "Current: Page {page}/{total}"
 msgstr "עכשווי: עמוד {page}/{total}"
 
-#: src/utils/ui/pagers.py:319
 #, possible-python-brace-format
 msgctxt "cmd:page|acmpl|pager:Pager|choice:general"
 msgid "Page {page}"
 msgstr "עמוד {page}"
 
-#: src/utils/ui/pagers.py:353
 #, possible-python-brace-format
 msgctxt "cmd:page|acmpl|pager:Page|choice:select"
 msgid "Selected: Page {page}/{total}"
@@ -242,7 +215,6 @@ msgctxt "ui:msg_editor|error:empty"
 msgid "Rendering failed! The message content and embed cannot both be empty."
 msgstr "ההעלאה נכשלה! ההודעה והembed לא יכולים להיות ריקים."
 
-#: src/utils/ui/msgeditor.py:86
 #, possible-python-brace-format
 msgctxt "ui:msg_editor|error:embed_failed"
 msgid ""
@@ -252,7 +224,6 @@ msgstr ""
 "ההעלאה נכשלה! ההודעה והembed לא קריאים.\n"
 "שגיאה: {error}"
 
-#: src/utils/ui/msgeditor.py:104
 #, possible-python-brace-format
 msgctxt "ui:msg_editor|error:invalid_change"
 msgid ""
@@ -329,8 +300,7 @@ msgstr "עורך תוכן הודעה"
 
 #: src/utils/ui/msgeditor.py:290
 msgctxt "ui:msg_editor|button:body|error:invalid_colour"
-msgid ""
-"Invalid colour format! Please enter colours as hex codes, e.g. `#E67E22`"
+msgid "Invalid colour format! Please enter colours as hex codes, e.g. `#E67E22`"
 msgstr "צבע לא נכון! הכנס hex `#E67E22` לדוגמא"
 
 #: src/utils/ui/msgeditor.py:310
@@ -533,12 +503,9 @@ msgctxt "ui:msg_editor|timeout_warning|title"
 msgid "Warning!"
 msgstr "זהירות!"
 
-#: src/utils/ui/msgeditor.py:1029
 #, possible-python-brace-format
 msgctxt "ui:msg_editor|timeout_warning|desc"
-msgid ""
-"This interface will time out {timestamp}. Press 'Continue' below to keep "
-"editing."
+msgid "This interface will time out {timestamp}. Press 'Continue' below to keep editing."
 msgstr "התפריט יפוג ב {timestamp}. לחץ \"המשך\" למטה כדי להמשיך לערוך."
 
 #: src/utils/ui/msgeditor.py:1038

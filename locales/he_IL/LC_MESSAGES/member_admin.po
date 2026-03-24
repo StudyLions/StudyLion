@@ -1,25 +1,18 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
-# Translators:
-# Interitio, 2023
-# Ari Horesh, 2023
-# 
-#, fuzzy
+# Hebrew translation for LionBot - member_admin
+# AI-translated with human Transifex contributions where available.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: LionBot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-24 14:37+0300\n"
-"PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Ari Horesh, 2023\n"
-"Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
+"PO-Revision-Date: 2026-03-13 21:36+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Hebrew\n"
+"Language: he_IL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: he_IL\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
 
 #: src/modules/member_admin/settingui.py:58
@@ -55,7 +48,7 @@ msgstr "לוח בקרה של \"ברוכים הבאים\" ורולים ראשונ
 #: src/modules/member_admin/settingui.py:262
 msgctxt "dash:member_admin|title"
 msgid "Greetings and Initial Roles ({commands[config welcome]})"
-msgstr ""
+msgstr "ברכות ותפקידים ראשוניים ({commands[config welcome]})"
 
 #: src/modules/member_admin/settingui.py:266
 msgctxt "dash:member_admin|dropdown|placeholder"
@@ -65,105 +58,102 @@ msgstr "לוח בקרה של \"ברוכים הבאים\" ורולים ראשונ
 #: src/modules/member_admin/settingui.py:286
 msgctxt "dash:member_admin|section:greeting_messages|name"
 msgid "Greeting Messages ({commands[admin config welcome]})"
-msgstr ""
+msgstr "הודעות ברכה ({commands[admin config welcome]})"
 
 #: src/modules/member_admin/settingui.py:297
 msgctxt "dash:member_admin|section:initial_roles|name"
 msgid "Initial Roles ({commands[admin config welcome]})"
-msgstr ""
+msgstr "תפקידים ראשוניים ({commands[admin config welcome]})"
 
 #: src/modules/member_admin/cog.py:33
 msgctxt "cmd:admin_data|param:data_type|choice:voice_leaderboard"
 msgid "Voice Leaderboard"
-msgstr ""
+msgstr "לוח דירוג קולי"
 
 #: src/modules/member_admin/cog.py:34
 msgctxt "cmd:admin_data|param:data_type|choice:msg_leaderboard"
 msgid "Message Leaderboard"
-msgstr ""
+msgstr "לוח דירוג הודעות"
 
 #: src/modules/member_admin/cog.py:35
 msgctxt "cmd:admin_data|param:data_type|choice:xp_leaderboard"
 msgid "XP Leaderboard"
-msgstr ""
+msgstr "לוח דירוג XP"
 
 #: src/modules/member_admin/cog.py:36
 msgctxt "cmd:admin_data|param:data_type|choice:rolemenu_equip"
 msgid "Rolemenu Roles Equipped"
-msgstr ""
+msgstr "תפקידי תפריט מצוידים"
 
 #: src/modules/member_admin/cog.py:37
 msgctxt "cmd:admin_data|param:data_type|choice:transactions"
 msgid "Economy Transactions (Incomplete)"
-msgstr ""
+msgstr "עסקאות כלכלה (לא שלם)"
 
 #: src/modules/member_admin/cog.py:38
 msgctxt "cmd:admin_data|param:data_type|choice:balances"
 msgid "Economy Balances"
-msgstr ""
+msgstr "יתרות כלכלה"
 
 #: src/modules/member_admin/cog.py:39
 msgctxt "cmd:admin_data|param:data_type|choice:voice_sessions"
 msgid "Voice Sessions"
-msgstr ""
+msgstr "הפעלות קוליות"
 
 #: src/modules/member_admin/cog.py:155
 msgctxt "eventlog|event:welcome|title"
 msgid "New Member Joined"
-msgstr ""
+msgstr "חבר חדש הצטרף"
 
-#: src/modules/member_admin/cog.py:159
 #, possible-python-brace-format
 msgctxt "eventlog|event:welcome|desc"
 msgid "{member} joined the server for the first time."
-msgstr ""
+msgstr "{member} הצטרף/ה לשרת בפעם הראשונה."
 
 #: src/modules/member_admin/cog.py:243
 msgctxt "eventlog|event:returning|title"
 msgid "Member Rejoined"
-msgstr ""
+msgstr "חבר חזר"
 
-#: src/modules/member_admin/cog.py:247
 #, possible-python-brace-format
 msgctxt "eventlog|event:returning|desc"
 msgid "{member} rejoined the server."
-msgstr ""
+msgstr "{member} חזר/ה לשרת."
 
 #: src/modules/member_admin/cog.py:256
 msgctxt "eventlog|event:returning|field:first_joined"
 msgid "First Joined"
-msgstr ""
+msgstr "הצטרפות ראשונה"
 
 #: src/modules/member_admin/cog.py:263
 msgctxt "eventlog|event:returning|field:last_seen"
 msgid "Last Seen"
-msgstr ""
+msgstr "נראה לאחרונה"
 
 #: src/modules/member_admin/cog.py:311
 msgctxt "eventlog|event:left|title"
 msgid "Member Left"
-msgstr ""
+msgstr "חבר עזב"
 
-#: src/modules/member_admin/cog.py:315
 #, possible-python-brace-format
 msgctxt "eventlog|event:left|desc"
 msgid "{member} left the server."
-msgstr ""
+msgstr "{member} עזב/ה את השרת."
 
 #: src/modules/member_admin/cog.py:323
 msgctxt "eventlog|event:left|field:stored_roles"
 msgid "Stored Roles"
-msgstr ""
+msgstr "תפקידים שנשמרו"
 
 #: src/modules/member_admin/cog.py:330
 msgctxt "eventlog|event:left|field:first_joined"
 msgid "First Joined"
-msgstr ""
+msgstr "הצטרפות ראשונה"
 
 #: src/modules/member_admin/cog.py:368
 msgctxt "cmd:resetmember"
 msgid "resetmember"
-msgstr "אפס משתמש"
+msgstr "resetmember"
 
 #: src/modules/member_admin/cog.py:371
 msgctxt "cmd:resetmember|desc"
@@ -194,7 +184,6 @@ msgstr ""
 "מחק את הרולים השמורים עבור המשתמש הזה, הרולים הקודמים שלהם לא ישוחזרו כשהוא "
 "יצטרך מחדש."
 
-#: src/modules/member_admin/cog.py:411
 #, possible-python-brace-format
 msgctxt "cmd:resetmember|reset:saved_roles|success"
 msgid ""
@@ -212,47 +201,47 @@ msgstr "איפוס לא נבחר, אין לי מה לעשות."
 #: src/modules/member_admin/cog.py:425
 msgctxt "cmd:admin_data"
 msgid "data"
-msgstr ""
+msgstr "data"
 
 #: src/modules/member_admin/cog.py:428
 msgctxt "cmd:admin_data|desc"
 msgid "Download various raw data for external analysis and backup."
-msgstr ""
+msgstr "הורד נתונים גולמיים שונים לניתוח חיצוני וגיבוי."
 
 #: src/modules/member_admin/cog.py:432
 msgctxt "cmd:admin_data|param:data_type"
 msgid "type"
-msgstr ""
+msgstr "type"
 
 #: src/modules/member_admin/cog.py:433
 msgctxt "cmd:admin_data|param:target"
 msgid "target"
-msgstr ""
+msgstr "target"
 
 #: src/modules/member_admin/cog.py:434
 msgctxt "cmd:admin_data|param:start"
 msgid "after"
-msgstr ""
+msgstr "after"
 
 #: src/modules/member_admin/cog.py:435
 msgctxt "cmd:admin_data|param:end"
 msgid "before"
-msgstr ""
+msgstr "before"
 
 #: src/modules/member_admin/cog.py:436
 msgctxt "cmd:admin_data|param:limit"
 msgid "limit"
-msgstr ""
+msgstr "limit"
 
 #: src/modules/member_admin/cog.py:441
 msgctxt "cmd:admin_data|param:data_type|desc"
 msgid "Select the type of data you want to download"
-msgstr ""
+msgstr "בחר את סוג הנתונים שברצונך להוריד"
 
 #: src/modules/member_admin/cog.py:445
 msgctxt "cmd:admin_data|param:target|desc"
 msgid "Filter the data by selecting a user or role"
-msgstr ""
+msgstr "סנן את הנתונים על ידי בחירת משתמש או תפקיד"
 
 #: src/modules/member_admin/cog.py:449
 msgctxt "cmd:admin_data|param:start|desc"
@@ -260,6 +249,7 @@ msgid ""
 "Retrieve records created after this date and time in server timezone (YYYY-"
 "MM-DD HH:MM)"
 msgstr ""
+"אחזר רשומות שנוצרו לאחר תאריך ושעה אלה באזור הזמן של השרת (YYYY-MM-DD HH:MM)"
 
 #: src/modules/member_admin/cog.py:453
 msgctxt "cmd:admin_data|param:end|desc"
@@ -267,34 +257,34 @@ msgid ""
 "Retrieve records created before this date and time in server timezone (YYYY-"
 "MM-DD HH:MM)"
 msgstr ""
+"אחזר רשומות שנוצרו לפני תאריך ושעה אלה באזור הזמן של השרת (YYYY-MM-DD HH:MM)"
 
 #: src/modules/member_admin/cog.py:457
 msgctxt "cmd:admin_data|param:limit|desc"
 msgid "Maximum number of records to retrieve."
-msgstr ""
+msgstr "מספר רשומות מרבי לאחזור."
 
 #: src/modules/member_admin/cog.py:586
 msgctxt "cmd:admin_data|error:ratelimited"
 msgid ""
 "Too many requests! Please wait a few minutes before using this command "
 "again."
-msgstr ""
+msgstr "יותר מדי בקשות! אנא המתן מספר דקות לפני שתשתמש בפקודה זו שוב."
 
 #: src/modules/member_admin/cog.py:603
 msgctxt "cmd:admin_data|error:no_results"
 msgid "Your query had no results! Try relaxing your filters."
-msgstr ""
+msgstr "לשאילתה שלך לא היו תוצאות! נסה להרחיב את המסננים."
 
-#: src/modules/member_admin/cog.py:627
 #, possible-python-brace-format
 msgctxt "cmd:admin_data|acmpl:time|error:parse"
 msgid "Cannot parse \"{partial}\" as a time. Try the format YYYY-MM-DD HH:MM"
-msgstr ""
+msgstr "לא ניתן לפענח את \"{partial}\" כזמן. נסה את הפורמט YYYY-MM-DD HH:MM"
 
 #: src/modules/member_admin/cog.py:643
 msgctxt "cmd:configure_welcome"
 msgid "welcome"
-msgstr "ברוכים הבאים"
+msgstr "welcome"
 
 #: src/modules/member_admin/cog.py:646
 msgctxt "cmd:configure_welcome|desc"
@@ -368,7 +358,6 @@ msgctxt "guildset:greeting_channel|set_response:unset"
 msgid "Welcome messages will now be sent via direct message."
 msgstr "הודעות ברוכים הבאים ישלחו עכשיו בפרטי."
 
-#: src/modules/member_admin/settings.py:75
 #, possible-python-brace-format
 msgctxt "guildset:greeting_channel|set_response:set"
 msgid "Welcome messages will now be sent to {channel}"
@@ -492,7 +481,8 @@ msgid ""
 "                \"embed\": {\n"
 "                    \"title\": \"Welcome Back {user_name}!\",\n"
 "                    \"thumbnail\": {\"url\": \"{User_avatar}\"},\n"
-"                    \"description\": \"Welcome back to **{guild_name}**!\\nYou were last seen <t:{last_time}:R>.\",\n"
+"                    \"description\": \"Welcome back to **{guild_name}**!\\\n"
+"You were last seen <t:{last_time}:R>.\",\n"
 "                    \"color\": 15695665\n"
 "                }\n"
 "            }\n"
@@ -503,7 +493,8 @@ msgstr ""
 "                \"embed\": {\n"
 "                    \"title\": \"Welcome Back {user_name}!\",\n"
 "                    \"thumbnail\": {\"url\": \"{User_avatar}\"},\n"
-"                    \"description\": \"Welcome back to **{guild_name}**!\\nYou were last seen <t:{last_time}:R>.\",\n"
+"                    \"description\": \"Welcome back to **{guild_name}**!\\\n"
+"You were last seen <t:{last_time}:R>.\",\n"
 "                    \"color\": 15695665\n"
 "                }\n"
 "            }\n"

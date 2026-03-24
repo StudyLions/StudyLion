@@ -1,25 +1,18 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
-# Translators:
-# Interitio, 2023
-# Ari Horesh, 2023
-# 
-#, fuzzy
+# Hebrew translation for LionBot - rooms
+# AI-translated with human Transifex contributions where available.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: LionBot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-24 14:37+0300\n"
-"PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Ari Horesh, 2023\n"
-"Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
+"PO-Revision-Date: 2026-03-13 23:11+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Hebrew\n"
+"Language: he_IL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: he_IL\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
 
 #: src/modules/rooms/settingui.py:39
@@ -40,7 +33,7 @@ msgstr "תפריט הגדרות חדרים פרטיים"
 #: src/modules/rooms/settingui.py:100
 msgctxt "dash:rooms|title"
 msgid "Private Room Configuration ({commands[admin config rooms]})"
-msgstr ""
+msgstr "תצורת חדרים פרטיים ({commands[admin config rooms]})"
 
 #: src/modules/rooms/settingui.py:104
 msgctxt "dash:economy|dropdown|placeholder"
@@ -67,13 +60,11 @@ msgctxt "ui:room_status|button:deposit|modal:deposit|field:question|label"
 msgid "How many LionCoins do you want to deposit?"
 msgstr "כמה מטבעות תרצה להוסיף לפיקדון?"
 
-#: src/modules/rooms/roomui.py:112
 #, possible-python-brace-format
 msgctxt "ui:room_status|button:deposit|error:invalid_number"
 msgid "Cannot deposit `{inputted}` coins. Please enter a positive integer."
 msgstr "לא הצלחתי להוסיף `{inputted}` מטבעות. אנא בחרו מספר שלם חיובי."
 
-#: src/modules/rooms/roomui.py:144
 #, possible-python-brace-format
 msgctxt "ui:room_status|button:deposit|error:insufficient_funds"
 msgid ""
@@ -95,7 +86,6 @@ msgctxt "ui:room_status|button:timer|modal:add_timer|title"
 msgid "Create Room Timer"
 msgstr "צור טיימר לחדר"
 
-#: src/modules/rooms/roomui.py:236
 #, possible-python-brace-format
 msgctxt "ui:room_status|button:timer|timer_created"
 msgid "Timer created successfully! Use {edit_cmd} to configure further."
@@ -111,7 +101,6 @@ msgctxt "ui:room_status|button:timer|label:add_timer"
 msgid "Add Timer"
 msgstr "הוסף טיימר"
 
-#: src/modules/rooms/roomui.py:304
 #, possible-python-brace-format
 msgctxt "ui:room_status|menu:invite|error:too_many_members"
 msgid ""
@@ -156,7 +145,6 @@ msgctxt "ui:room_status|embed|field:created|name"
 msgid "Created At"
 msgstr "נוצר ב"
 
-#: src/modules/rooms/roomui.py:395
 #, possible-python-brace-format
 msgctxt "ui:room_status|embed|field:bank|value:expiring"
 msgid ""
@@ -168,19 +156,16 @@ msgstr ""
 "החדר יפוג ב{expiry}.\n"
 "השתמשו ב {room_deposit_cmd} כדי להפקיד עוד מטבעות לפיקדון ולדחות את התוקף!"
 
-#: src/modules/rooms/roomui.py:407
 #, possible-python-brace-format
 msgctxt "ui:room_status|embed|field:bank|value:notexpiring"
 msgid "Next rent due {time} (- {coin}**{rent}**)"
 msgstr "השכירות הבאה: {time} (- {coin}**{rent}**)"
 
-#: src/modules/rooms/roomui.py:416
 #, possible-python-brace-format
 msgctxt "ui:room_status|embed|field:bank|name"
 msgid "Room Balance: {coin}**{amount}**"
 msgstr "בנק החדר:  {coin}**{amount}**"
 
-#: src/modules/rooms/roomui.py:428
 #, possible-python-brace-format
 msgctxt "ui:room_status|embed|field:members|name"
 msgid "Members ({count}/{cap})"
@@ -189,43 +174,41 @@ msgstr "חברים ({count}/{cap})"
 #: src/modules/rooms/cog.py:175 src/modules/rooms/room.py:364
 msgctxt "room|eventlog|event:room_deleted|title"
 msgid "Private Room Deleted"
-msgstr ""
+msgstr "חדר פרטי נמחק"
 
-#: src/modules/rooms/cog.py:179 src/modules/rooms/room.py:368
 #, possible-python-brace-format
 msgctxt "room|eventlog|event:room_deleted|desc"
 msgid "{owner}'s private room was deleted."
-msgstr ""
+msgstr "החדר הפרטי של {owner} נמחק."
 
-#: src/modules/rooms/cog.py:270
 #, possible-python-brace-format
 msgctxt "create_room|create_channel|audit_reason"
 msgid "Creating Private Room for {ownerid}"
-msgstr ""
+msgstr "יוצר חדר פרטי עבור {ownerid}"
 
 #: src/modules/rooms/cog.py:279
 msgctxt "eventlog|event:private_room_create_error|name"
 msgid "Private Room Creation Failed"
-msgstr ""
+msgstr "יצירת חדר פרטי נכשלה"
 
-#: src/modules/rooms/cog.py:283
 #, possible-python-brace-format
 msgctxt "eventlog|event:private_room_create_error|desc"
 msgid ""
 "{owner} attempted to rent a new private room, but I could not create it!\n"
 "They were not charged."
 msgstr ""
+"{owner} ניסה לשכור חדר פרטי חדש, אבל לא הצלחתי ליצור אותו!\n"
+"הם לא חויבו."
 
 #: src/modules/rooms/cog.py:329
 msgctxt "eventlog|event:private_room_create|name"
 msgid "Private Room Rented"
-msgstr ""
+msgstr "חדר פרטי הושכר"
 
-#: src/modules/rooms/cog.py:333
 #, possible-python-brace-format
 msgctxt "eventlog|event:private_room_create|desc"
 msgid "{owner} has rented a new private room {channel}!"
-msgstr ""
+msgstr "!{owner} שכר חדר פרטי חדש {channel}"
 
 #: src/modules/rooms/cog.py:368
 msgctxt "cmd:room"
@@ -283,6 +266,8 @@ msgid ""
 "The private room system has not been set up! A private room category needs "
 "to be set first with `/admin config rooms`."
 msgstr ""
+"מערכת החדרים הפרטיים לא הוגדרה! יש להגדיר קטגוריה תחילה עם `/admin config "
+"rooms`."
 
 #: src/modules/rooms/cog.py:427
 msgctxt "cmd:room_rent|error:insufficient_perms"
@@ -291,19 +276,16 @@ msgid ""
 "configured private room category!"
 msgstr "אין לי מספיק הראשות כדי ליצור חדרים מתחת לקטגוריה שנקבעה!"
 
-#: src/modules/rooms/cog.py:441
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|error:room_exists"
 msgid "You already own a private room! Click to visit: {channel}"
 msgstr "כבר יש לך חדר פרטי! לחץ פה כדי לעבור אליו: {channel}"
 
-#: src/modules/rooms/cog.py:461
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|error:member_not_found"
 msgid "Could not find the requested member {mention} in this server!"
 msgstr "לא הצלחתי למצוא את {mention} בשרת הזה!"
 
-#: src/modules/rooms/cog.py:475
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|error:too_many_members"
 msgid ""
@@ -313,7 +295,6 @@ msgstr ""
 "יותר מידי משתמשים! ביקשתם להוסיף `{count}` משתמשים לחדר שלכם, אבל המקסימום "
 "הוא `{cap}`!"
 
-#: src/modules/rooms/cog.py:489
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|confirm:purchase"
 msgid ""
@@ -326,16 +307,9 @@ msgstr[0] ""
 "אתם בטוחים שאתם רוצים להוציא {coin}**{required}** כדי לשכור את החדר הפרטי "
 "למשך תקופה של יממה?"
 msgstr[1] ""
-"אתם בטוחים שאתם רוצים להוציא {coin}**{required}** כדי לשכור את החדר הפרטי "
-"למשך תקופה של יומיים?"
 msgstr[2] ""
-"אתם בטוחים שאתם רוצים להוציא {coin}**{required}** כדי לשכור את החדר הפרטי "
-"למשך תקופה של `{days}` ימים?"
 msgstr[3] ""
-"אתם בטוחים שאתם רוצים להוציא {coin}**{required}** כדי לשכור את החדר הפרטי "
-"למשך תקופה של `{days}` ימים?"
 
-#: src/modules/rooms/cog.py:514
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|success"
 msgid "Successfully created your private room {channel}!"
@@ -346,7 +320,6 @@ msgctxt "cmd:room_rent|success|title"
 msgid "Private Room Created!"
 msgstr "החדר הפרטי נוצר בהצלחה!"
 
-#: src/modules/rooms/cog.py:572
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|error:insufficient_funds"
 msgid ""
@@ -359,14 +332,8 @@ msgstr[0] ""
 "לשכור חדר פרטי ליממה עולה {coin}**{required}**, אבל יש לכם רק "
 "{coin}**{balance}**!"
 msgstr[1] ""
-"לשכור חדר פרטי ליומיים עולה {coin}**{required}**, אבל יש לכם רק "
-"{coin}**{balance}**!"
 msgstr[2] ""
-"לשכור חדר פרטי ל `{days}` ימים עולה {coin}**{required}**, אבל יש לכם רק "
-"{coin}**{balance}**!"
 msgstr[3] ""
-"לשכור חדר פרטי ל `{days}` ימים עולה {coin}**{required}**, אבל יש לכם רק "
-"{coin}**{balance}**!"
 
 #: src/modules/rooms/cog.py:606
 msgctxt "cmd:room_rent|error:my_permissions"
@@ -377,7 +344,6 @@ msgstr ""
 "לא הצלחתי ליצור חדר פרטי! לא לקחתי ממך מטבעות.\n"
 "אין לי מספיק הרשאות כדי ליצור את החדר הפרטי."
 
-#: src/modules/rooms/cog.py:617
 #, possible-python-brace-format
 msgctxt "cmd:room_rent|error:unknown"
 msgid ""
@@ -428,14 +394,12 @@ msgctxt "cmd:room_invite|param:members|desc"
 msgid "Mention the members you want to add."
 msgstr "תייג את החברים שאתה רוצה להוסיף."
 
-#: src/modules/rooms/cog.py:687
 #, possible-python-brace-format
 msgctxt "cmd:room_invite|error:no_room"
 msgid ""
 "You do not own a private room! Use `/room rent` to rent one with {coin}!"
 msgstr "אין לך חדש פרטי! תשתמש ב  `/room rent` כדי ליצור אחד עם {coin}!"
 
-#: src/modules/rooms/cog.py:708
 #, possible-python-brace-format
 msgctxt "cmd:room_invite|error:member_not_found"
 msgid "Could not find the invited member {mention} in this server!"
@@ -446,7 +410,6 @@ msgctxt "cmd:room_invite|error:no_new_members"
 msgid "All members mentioned are already in the room!"
 msgstr "כל החברים שציינת כבר בחדר!"
 
-#: src/modules/rooms/cog.py:733
 #, possible-python-brace-format
 msgctxt "cmd:room_invite|error:too_many_members"
 msgid ""
@@ -484,7 +447,6 @@ msgid ""
 msgstr ""
 "תייג את החברים שאתה רוצה להעיף. אני יכול לקבל גם מספר זהות מופרד עם פסיקים."
 
-#: src/modules/rooms/cog.py:791
 #, possible-python-brace-format
 msgctxt "cmd:room_kick|error:no_room"
 msgid ""
@@ -519,21 +481,19 @@ msgstr "בעלים_חדש"
 #: src/modules/rooms/cog.py:843
 msgctxt "cmd:room_transfer|param:new_owner"
 msgid "The room member you would like to transfer your room to."
-msgstr "החבר שתרצה להעביר את החדר הזה אליו."
+msgstr ""
 
 #: src/modules/rooms/cog.py:857
 msgctxt "cmd:room_transfer|error:no_room"
 msgid "You do not own a private room to transfer!"
 msgstr "אין לך חדר פרטי להעביר!"
 
-#: src/modules/rooms/cog.py:869
 #, possible-python-brace-format
 msgctxt "cmd:room_transfer|error:target_not_member"
 msgid ""
 "{mention} is not a member of your private room! You must invite them first."
 msgstr "{mention} הוא לא חבר בחדר הפרטי שלך! אתם חייבים להזמין אותם קודם."
 
-#: src/modules/rooms/cog.py:881
 #, possible-python-brace-format
 msgctxt "cmd:room_transfer|error:target_has_room"
 msgid ""
@@ -541,7 +501,6 @@ msgid ""
 msgstr ""
 "ל{mention} יש כבר חדר משלו. אנשים יכולים להיות הבעלים רק של חדר אחד בכל פעם."
 
-#: src/modules/rooms/cog.py:890
 #, possible-python-brace-format
 msgctxt "cmd:room_transfer|confirm|question"
 msgid ""
@@ -551,7 +510,6 @@ msgstr ""
 "אתם בטוחים שאתם רוצים להעביר את החדר הפרטי שלך {channel} לבעלים החדש "
 "{new_owner}? לא תוכלו לחזור בכם אחרי שתאשרו."
 
-#: src/modules/rooms/cog.py:910
 #, possible-python-brace-format
 msgctxt "cmd:room_transfer|success|description"
 msgid ""
@@ -561,7 +519,7 @@ msgstr "העברת את הבעלות של  {channel} אל {new_owner}."
 #: src/modules/rooms/cog.py:916
 msgctxt "cmd:room_deposit"
 msgid "deposit"
-msgstr "הכנס לפיקדון"
+msgstr "deposit"
 
 #: src/modules/rooms/cog.py:919
 msgctxt "cmd:room_deposit|desc"
@@ -591,14 +549,12 @@ msgstr ""
 "לא הצלחתי לזהות את החדר הפרטי! אנא הרץ את הפקודה מחדש בחדר בתוך הפרטי שאתה "
 "רוצה להפקיד אליו מטבעות."
 
-#: src/modules/rooms/cog.py:964
 #, possible-python-brace-format
 msgctxt "cmd:room_deposit|error:insufficient_funds"
 msgid ""
 "You cannot deposit {coin}**{amount}**! You only have {coin}**{balance}**."
 msgstr "אתה לא יכול לשלם {coin}**{amount}**!  יש לך רק {coin}**{balance}**."
 
-#: src/modules/rooms/cog.py:985
 #, possible-python-brace-format
 msgctxt "cmd:room_depost|success"
 msgid ""
@@ -618,34 +574,33 @@ msgstr "הגדר חדרים פרטיים"
 #: src/modules/rooms/room.py:78
 msgctxt "room|eventlog|field:owner"
 msgid "Owner"
-msgstr ""
+msgstr "בעלים"
 
 #: src/modules/rooms/room.py:84
 msgctxt "room|eventlog|field:channel"
 msgid "Channel"
-msgstr ""
+msgstr "ערוץ"
 
 #: src/modules/rooms/room.py:90
 msgctxt "room|eventlog|field:balance"
 msgid "Room Balance"
-msgstr ""
+msgstr "יתרת חדר"
 
 #: src/modules/rooms/room.py:96
 msgctxt "room|eventlog|field:created"
 msgid "Created At"
-msgstr ""
+msgstr "נוצר ב"
 
 #: src/modules/rooms/room.py:102
 msgctxt "room|eventlog|field:tick"
 msgid "Next Rent Due"
-msgstr ""
+msgstr "שכירות הבאה"
 
 #: src/modules/rooms/room.py:108
 msgctxt "room|eventlog|field:members"
 msgid "Private Room Members"
-msgstr ""
+msgstr "חברי חדר פרטי"
 
-#: src/modules/rooms/room.py:123
 #, possible-python-brace-format
 msgctxt "room|notify:deposit|description"
 msgid "{member} has deposited {coin}**{amount}** into the room bank!"
@@ -656,7 +611,6 @@ msgctxt "room|notify:new_members|title"
 msgid "New Members!"
 msgstr "חברים חדשים!"
 
-#: src/modules/rooms/room.py:150
 #, possible-python-brace-format
 msgctxt "room|notify:new_members|desc"
 msgid "Welcome {members}"
@@ -665,26 +619,23 @@ msgstr "ברוכים הבאים {members}!"
 #: src/modules/rooms/room.py:156
 msgctxt "room|eventlog|event:new_members|title"
 msgid "Members invited to private room"
-msgstr ""
+msgstr "חברים הוזמנו לחדר פרטי"
 
-#: src/modules/rooms/room.py:160
 #, possible-python-brace-format
 msgctxt "room|eventlog|event:new_members|desc"
 msgid "{owner} added members to their private room: {members}"
-msgstr ""
+msgstr "{owner} הוסיף חברים לחדר הפרטי: {members}"
 
 #: src/modules/rooms/room.py:191
 msgctxt "room|eventlog|event:rm_members|title"
 msgid "Members removed from private room"
-msgstr ""
+msgstr "חברים הוסרו מהחדר הפרטי"
 
-#: src/modules/rooms/room.py:195
 #, possible-python-brace-format
 msgctxt "room|eventlog|event:rm_members|desc"
 msgid "{owner} removed members from their private room: {members}"
-msgstr ""
+msgstr "{owner} הסיר חברים מהחדר הפרטי: {members}"
 
-#: src/modules/rooms/room.py:254
 #, possible-python-brace-format
 msgctxt "room|notify:transfer|description"
 msgid "{old_owner} has transferred private room ownership to {new_owner}"
@@ -695,7 +646,6 @@ msgctxt "room|embed:expiry|title"
 msgid "Private Room Expired!"
 msgstr "החדר הפרטי פג תוקף!"
 
-#: src/modules/rooms/room.py:322
 #, possible-python-brace-format
 msgctxt "room|embed:expiry|description"
 msgid "Your private room in **{guild}** has expired!"
@@ -704,15 +654,13 @@ msgstr "החדר הפרטי שלך ב**{guild}** פג תוקף."
 #: src/modules/rooms/room.py:332
 msgctxt "room|eventlog|event:expired|title"
 msgid "Private Room Expired"
-msgstr ""
+msgstr "החדר הפרטי פג תוקף"
 
-#: src/modules/rooms/room.py:336
 #, possible-python-brace-format
 msgctxt "room|eventlog|event:expired|desc"
 msgid "{owner}'s private room has expired."
-msgstr ""
+msgstr "החדר הפרטי של {owner} פג תוקף."
 
-#: src/modules/rooms/room.py:349
 #, possible-python-brace-format
 msgctxt "room|tick|rent_deducted"
 msgid "Daily rent deducted from room balance. New balance: {coin}**{amount}**"
@@ -754,7 +702,6 @@ msgstr ""
 "הקטגוריה של החדרים הפרטיים הוסרה. חדרים שכבר קיימים לא יושפעו, תצטרכו למחוק "
 "את החדרים בצורה ידנית כדי להסיר אותם."
 
-#: src/modules/rooms/settings.py:59
 #, possible-python-brace-format
 msgctxt "guildset:rooms_category|set_response:set"
 msgid ""
@@ -764,7 +711,6 @@ msgstr ""
 "קטגורית חדרים פרטיים נקבעה ל{channel}. אני אעביר את החדרים הנוכחיים לאט לאט "
 "אל הקטגוריה החדשה, אין צורך לעשות זאת ידנית."
 
-#: src/modules/rooms/settings.py:69
 #, possible-python-brace-format
 msgctxt "guildset:room_category|set_using"
 msgid "{cmd} or category selector below."
@@ -793,7 +739,6 @@ msgctxt "guildset:rooms_rent|accepts"
 msgid "Number of LionCoins charged per day for a private room."
 msgstr "מספר מטבעות לתשלום עבור תקוף של יממה בחדר פרטי."
 
-#: src/modules/rooms/settings.py:103
 #, possible-python-brace-format
 msgctxt "guildset:rooms_price|set_response"
 msgid "Private rooms will now cost {coin}**{amount}** per 24 hours."
@@ -825,7 +770,6 @@ msgctxt "guildset:rooms_slots|accepts"
 msgid "Maximum number of members allowed per private room."
 msgstr "מספר אנשים מקסימלי שחדר פרטי יכול להכיל בשרת."
 
-#: src/modules/rooms/settings.py:141
 #, possible-python-brace-format
 msgctxt "guildset:rooms_slots|set_response"
 msgid "Private rooms are now capped to **{amount}** members."
@@ -887,7 +831,6 @@ msgctxt "guildset:rooms_visible|set_response:disabled"
 msgid "Private rooms will now only be visible to their members (and admins)."
 msgstr "חדרים פרטיים יהיו שקופים רק לחברים שלהם וכמובן לאדמינים של השרת."
 
-#: src/modules/rooms/settings.py:202
 #, possible-python-brace-format
 msgctxt "guildset:rooms_visible|set_using"
 msgid "{cmd} or toggle below."

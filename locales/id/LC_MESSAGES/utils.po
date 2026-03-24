@@ -1,0 +1,514 @@
+# Indonesian translation for LionBot - utils
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 21:36+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Indonesian\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/utils/cog.py:18
+msgctxt "cmd:page"
+msgid "page"
+msgstr "page"
+
+#: src/utils/cog.py:21
+msgctxt "cmd:page|desc"
+msgid "Jump to a given page of the ouput of a previous command in this channel."
+msgstr "Lompat ke halaman tertentu dari output perintah sebelumnya di channel ini."
+
+#: src/utils/cog.py:35
+msgctxt "cmd:page|error:no_pager"
+msgid "No pager listening in this channel!"
+msgstr "Tidak ada pager di channel ini!"
+
+#: src/utils/cog.py:46
+msgctxt "cmd:page_next"
+msgid "next"
+msgstr "next"
+
+#: src/utils/cog.py:47
+msgctxt "cmd:page_next|desc"
+msgid "Jump to the next page of output."
+msgstr "Lompat ke halaman berikutnya."
+
+#: src/utils/cog.py:53
+msgctxt "cmd:page_prev"
+msgid "prev"
+msgstr "prev"
+
+#: src/utils/cog.py:54
+msgctxt "cmd:page_prev|desc"
+msgid "Jump to the previous page of output."
+msgstr "Lompat ke halaman sebelumnya."
+
+#: src/utils/cog.py:60
+msgctxt "cmd:page_first"
+msgid "first"
+msgstr "first"
+
+#: src/utils/cog.py:61
+msgctxt "cmd:page_first|desc"
+msgid "Jump to the first page of output."
+msgstr "Lompat ke halaman pertama."
+
+#: src/utils/cog.py:67
+msgctxt "cmd:page_last"
+msgid "last"
+msgstr "last"
+
+#: src/utils/cog.py:68
+msgctxt "cmd:page_last|desc"
+msgid "Jump to the last page of output."
+msgstr "Lompat ke halaman terakhir."
+
+#: src/utils/cog.py:74
+msgctxt "cmd:page_select"
+msgid "select"
+msgstr "select"
+
+#: src/utils/cog.py:75
+msgctxt "cmd:page_select|desc"
+msgid "Select a page of the output to jump to."
+msgstr "Pilih halaman output yang ingin dituju."
+
+#: src/utils/cog.py:78
+msgctxt "cmd:page_select|param:page"
+msgid "page"
+msgstr "page"
+
+#: src/utils/cog.py:81
+msgctxt "cmd:page_select|param:page|desc"
+msgid "The page name or number to jump to."
+msgstr "Nama atau nomor halaman yang dituju."
+
+#: src/utils/cog.py:87
+msgctxt "cmd:page_select|error:no_pager"
+msgid "No pager listening in this channel!"
+msgstr "Tidak ada pager di channel ini!"
+
+#: src/utils/cog.py:98
+msgctxt "cmd:page_select|acmpl|error:no_pager"
+msgid "No active pagers in this channel!"
+msgstr "Tidak ada pager aktif di channel ini!"
+
+#, possible-python-brace-format
+msgctxt "utils:parse_dur|error"
+msgid "Cannot parse `{value}` as a duration."
+msgstr "Tidak dapat mengurai `{value}` sebagai durasi."
+
+#, possible-python-brace-format
+msgctxt "util:Duration|acmpl|error"
+msgid "Cannot extract duration from \"{partial}\""
+msgstr "Tidak dapat mengekstrak durasi dari \"{partial}\""
+
+#: src/utils/lib.py:683
+msgctxt "util:parse_dur|regex:day"
+msgid "(?P<value>\\d+)\\s*(?:(d)|(day))"
+msgstr "(?P<value>\\d+)\\s*(?:(d)|(day))"
+
+#: src/utils/lib.py:690
+msgctxt "util:parse_dur|regex:hour"
+msgid "(?P<value>\\d+)\\s*(?:(h)|(hour))"
+msgstr "(?P<value>\\d+)\\s*(?:(h)|(hour))"
+
+#: src/utils/lib.py:697
+msgctxt "util:parse_dur|regex:minute"
+msgid "(?P<value>\\d+)\\s*(?:(m)|(min))"
+msgstr "(?P<value>\\d+)\\s*(?:(m)|(min))"
+
+#: src/utils/lib.py:704
+msgctxt "util:parse_dur|regex:second"
+msgid "(?P<value>\\d+)\\s*(?:(s)|(sec))"
+msgstr "(?P<value>\\d+)\\s*(?:(s)|(sec))"
+
+#, possible-python-brace-format
+msgctxt "parse_timestamp|error:parse"
+msgid "Could not parse `{given}` as a valid reminder time. Try entering the time in the form `HH:MM` or `YYYY-MM-DD HH:MM`."
+msgstr "Tidak dapat mengurai `{given}` sebagai waktu pengingat yang valid. Coba format `HH:MM` atau `TTTT-BB-HH JJ:MM`."
+
+#: src/utils/ui/config.py:35
+msgctxt "ui:configui|modal:edit|title"
+msgid "Setting Editor"
+msgstr "Editor Pengaturan"
+
+#: src/utils/ui/config.py:75
+msgctxt "ui:configui|check|not_permitted"
+msgid "You have insufficient server permissions to use this UI!"
+msgstr "Anda tidak memiliki izin server yang cukup untuk menggunakan UI ini!"
+
+#: src/utils/ui/config.py:157
+msgctxt "ui:configui|button:edit|label"
+msgid "Edit"
+msgstr "Edit"
+
+#: src/utils/ui/config.py:196
+msgctxt "ui:guild_config_base|button:reset|label"
+msgid "Reset"
+msgstr "Reset"
+
+#: src/utils/ui/config.py:331
+msgctxt "ui:dashboard|error:section_too_long"
+msgid "Oops, the settings in this configuration section are too large, and I can not display them here! Please view the settings in the linked configuration panel instead."
+msgstr "Ups, pengaturan di bagian konfigurasi ini terlalu besar dan tidak dapat ditampilkan di sini! Silakan lihat pengaturan di panel konfigurasi yang terhubung."
+
+#: src/utils/ui/pagers.py:50
+msgctxt "cmd:page|pager:Pager|options:next"
+msgid "n, nxt, next, forward, +"
+msgstr "n, nxt, next, forward, +"
+
+#: src/utils/ui/pagers.py:53
+msgctxt "cmd:page|pager:Pager|options:prev"
+msgid "p, prev, back, -"
+msgstr "p, prev, back, -"
+
+#: src/utils/ui/pagers.py:56
+msgctxt "cmd:page|pager:Pager|options:first"
+msgid "f, first, one, start"
+msgstr "f, first, one, start"
+
+#: src/utils/ui/pagers.py:59
+msgctxt "cmd:page|pager:Pager|options:last"
+msgid "l, last, end"
+msgstr "l, last, end"
+
+#, possible-python-brace-format
+msgctxt "cmd:page|pager:Pager|error:parse"
+msgid "Could not understand page specification `{value}`."
+msgstr "Tidak dapat memahami spesifikasi halaman `{value}`."
+
+#, possible-python-brace-format
+msgctxt "cmd:page|acmpl|pager:Pager|choice:last"
+msgid "Last: Page {page}/{total}"
+msgstr "Terakhir: Halaman {page}/{total}"
+
+#, possible-python-brace-format
+msgctxt "cmd:page|acmpl|pager:Pager|choice:current"
+msgid "Current: Page {page}/{total}"
+msgstr "Saat Ini: Halaman {page}/{total}"
+
+#, possible-python-brace-format
+msgctxt "cmd:page|acmpl|pager:Pager|choice:general"
+msgid "Page {page}"
+msgstr "Halaman {page}"
+
+#, possible-python-brace-format
+msgctxt "cmd:page|acmpl|pager:Page|choice:select"
+msgid "Selected: Page {page}/{total}"
+msgstr "Dipilih: Halaman {page}/{total}"
+
+#: src/utils/ui/pagers.py:363
+msgctxt "cmd:page|acmpl|pager:Page|error:parse"
+msgid "No matching pages!"
+msgstr "Tidak ada halaman yang cocok!"
+
+#: src/utils/ui/msgeditor.py:75
+msgctxt "ui:msg_editor|error:empty"
+msgid "Rendering failed! The message content and embed cannot both be empty."
+msgstr "Rendering gagal! Konten pesan dan embed tidak boleh keduanya kosong."
+
+#, possible-python-brace-format
+msgctxt "ui:msg_editor|error:embed_failed"
+msgid ""
+"Rendering failed! Could not parse the embed.\n"
+"Error: {error}"
+msgstr ""
+"Rendering gagal! Tidak dapat mengurai embed.\n"
+"Error: {error}"
+
+#, possible-python-brace-format
+msgctxt "ui:msg_editor|error:invalid_change"
+msgid ""
+"Rendering failed! The message was not modified.\n"
+"Error: `{text}`"
+msgstr ""
+"Rendering gagal! Pesan tidak dimodifikasi.\n"
+"Error: `{text}`"
+
+#: src/utils/ui/msgeditor.py:123
+msgctxt "ui:msg_editor|modal:content|field:content|label"
+msgid "Message Content"
+msgstr "Konten Pesan"
+
+#: src/utils/ui/msgeditor.py:132
+msgctxt "ui:msg_editor|modal:content|title"
+msgid "Content Editor"
+msgstr "Editor Konten"
+
+#: src/utils/ui/msgeditor.py:150
+msgctxt "ui:msg_editor|button:edit|label"
+msgid "Edit Content"
+msgstr "Edit Konten"
+
+#: src/utils/ui/msgeditor.py:162
+msgctxt "ui:msg_editor|button:add_embed|sample_embed|title"
+msgid "Title Placeholder"
+msgstr "Placeholder Judul"
+
+#: src/utils/ui/msgeditor.py:163
+msgctxt "ui:msg_editor|button:add_embed|sample_embed|description"
+msgid "Description Placeholder"
+msgstr "Placeholder Deskripsi"
+
+#: src/utils/ui/msgeditor.py:174
+msgctxt "ui:msg_editor|button:add_embed|label"
+msgid "Add Embed"
+msgstr "Tambah Embed"
+
+#: src/utils/ui/msgeditor.py:190
+msgctxt "ui:msg_editor|button:rm_embed|sample_content"
+msgid "Content Placeholder"
+msgstr "Placeholder Konten"
+
+#: src/utils/ui/msgeditor.py:199
+msgctxt "ui:msg_editor|button:rm_embed|label"
+msgid "Remove Embed"
+msgstr "Hapus Embed"
+
+#: src/utils/ui/msgeditor.py:217
+msgctxt "ui:msg_editor|modal:body|field:content|label"
+msgid "Message Content"
+msgstr "Konten Pesan"
+
+#: src/utils/ui/msgeditor.py:228
+msgctxt "ui:msg_editor|modal:body|field:desc|label"
+msgid "Embed Description"
+msgstr "Deskripsi Embed"
+
+#: src/utils/ui/msgeditor.py:239
+msgctxt "ui:msg_editor|modal:body|field:title|label"
+msgid "Embed Title"
+msgstr "Judul Embed"
+
+#: src/utils/ui/msgeditor.py:250
+msgctxt "ui:msg_editor|modal:body|field:colour|label"
+msgid "Embed Colour"
+msgstr "Warna Embed"
+
+#: src/utils/ui/msgeditor.py:265
+msgctxt "ui:msg_editor|modal:body|title"
+msgid "Message Body Editor"
+msgstr "Editor Isi Pesan"
+
+#: src/utils/ui/msgeditor.py:290
+msgctxt "ui:msg_editor|button:body|error:invalid_colour"
+msgid "Invalid colour format! Please enter colours as hex codes, e.g. `#E67E22`"
+msgstr "Format warna tidak valid! Masukkan warna sebagai kode hex, mis. `#E67E22`"
+
+#: src/utils/ui/msgeditor.py:310
+msgctxt "ui:msg_editor|button:body|label"
+msgid "Body"
+msgstr "Isi"
+
+#: src/utils/ui/msgeditor.py:327
+msgctxt "ui:msg_editor|modal:author|field:name|label"
+msgid "Author Name"
+msgstr "Nama Penulis"
+
+#: src/utils/ui/msgeditor.py:338
+msgctxt "ui:msg_editor|modal:author|field:link|label"
+msgid "Author URL"
+msgstr "Author URL"
+
+#: src/utils/ui/msgeditor.py:348
+msgctxt "ui:msg_editor|modal:author|field:image|label"
+msgid "Author Image URL"
+msgstr "Author Image URL"
+
+#: src/utils/ui/msgeditor.py:359
+msgctxt "ui:msg_editor|modal:author|title"
+msgid "Embed Author Editor"
+msgstr "Editor Penulis Embed"
+
+#: src/utils/ui/msgeditor.py:385
+msgctxt "ui:msg_editor|button:author|label"
+msgid "Author"
+msgstr "Penulis"
+
+#: src/utils/ui/msgeditor.py:402
+msgctxt "ui:msg_editor|modal:footer|field:text|label"
+msgid "Footer Text"
+msgstr "Teks Footer"
+
+#: src/utils/ui/msgeditor.py:413
+msgctxt "ui:msg_editor|modal:footer|field:image|label"
+msgid "Footer Image URL"
+msgstr "Footer Image URL"
+
+#: src/utils/ui/msgeditor.py:423
+msgctxt "ui:msg_editor|modal:footer|field:timestamp|label"
+msgid "Embed Timestamp (in ISO format)"
+msgstr "Stempel Waktu Embed (dalam format ISO)"
+
+#: src/utils/ui/msgeditor.py:435
+msgctxt "ui:msg_editor|modal:footer|title"
+msgid "Embed Footer Editor"
+msgstr "Editor Footer Embed"
+
+#: src/utils/ui/msgeditor.py:454
+msgctxt "ui:msg_editor|button:footer|error:invalid_timestamp"
+msgid "Invalid timestamp! Please enter the timestamp in ISO format."
+msgstr "Stempel waktu tidak valid! Masukkan dalam format ISO."
+
+#: src/utils/ui/msgeditor.py:474
+msgctxt "ui:msg_editor|button:footer|label"
+msgid "Footer"
+msgstr "Footer"
+
+#: src/utils/ui/msgeditor.py:492
+msgctxt "ui:msg_editor|modal:images|field:thumb|label"
+msgid "Thumbnail Image URL"
+msgstr "Thumbnail Image URL"
+
+#: src/utils/ui/msgeditor.py:502
+msgctxt "ui:msg_editor|modal:images|field:image|label"
+msgid "Embed Image URL"
+msgstr "Embed Image URL"
+
+#: src/utils/ui/msgeditor.py:512
+msgctxt "ui:msg_editor|modal:images|title"
+msgid "Embed images Editor"
+msgstr "Editor Gambar Embed"
+
+#: src/utils/ui/msgeditor.py:542
+msgctxt "ui:msg_editor|button:images|label"
+msgid "Images"
+msgstr "Gambar"
+
+#: src/utils/ui/msgeditor.py:560
+msgctxt "ui:msg_editor|modal:add_field|field:position|label"
+msgid "Field number to insert at"
+msgstr "Nomor field untuk disisipkan"
+
+#: src/utils/ui/msgeditor.py:570
+msgctxt "ui:msg_editor|modal:add_field|field:name|label"
+msgid "Field name"
+msgstr "Nama field"
+
+#: src/utils/ui/msgeditor.py:580
+msgctxt "ui:msg_editor|modal:add_field|field:value|label"
+msgid "Field value"
+msgstr "Nilai field"
+
+#: src/utils/ui/msgeditor.py:590
+msgctxt "ui:msg_editor|modal:add_field|field:inline|label"
+msgid "Whether the field is inline"
+msgstr "Apakah field inline"
+
+#: src/utils/ui/msgeditor.py:594
+msgctxt "ui:msg_editor|modal:add_field|field:inline|placeholder"
+msgid "True/False"
+msgstr "True/False"
+
+#: src/utils/ui/msgeditor.py:607
+msgctxt "ui:msg_editor|modal:add_field|title"
+msgid "Add Embed Field"
+msgstr "Tambah Field Embed"
+
+#: src/utils/ui/msgeditor.py:627
+msgctxt "ui:msg_editor|modal:add_field|error:position_not_int"
+msgid "The field position must be an integer!"
+msgstr "Posisi field harus berupa bilangan bulat!"
+
+#: src/utils/ui/msgeditor.py:646
+msgctxt "ui:msg_editor|button:add_field|label"
+msgid "Add Field"
+msgstr "Tambah Field"
+
+#: src/utils/ui/msgeditor.py:662
+msgctxt "ui:msg_editor|format_field|name_placeholder"
+msgid "-"
+msgstr "-"
+
+#: src/utils/ui/msgeditor.py:691
+msgctxt "ui:msg_editor|modal:edit_field|field:name|label"
+msgid "Field name"
+msgstr "Nama field"
+
+#: src/utils/ui/msgeditor.py:702
+msgctxt "ui:msg_editor|modal:edit_field|field:value|label"
+msgid "Field value"
+msgstr "Nilai field"
+
+#: src/utils/ui/msgeditor.py:713
+msgctxt "ui:msg_editor|modal:edit_field|field:inline|label"
+msgid "Whether the field is inline"
+msgstr "Apakah field inline"
+
+#: src/utils/ui/msgeditor.py:717
+msgctxt "ui:msg_editor|modal:edit_field|field:inline|placeholder"
+msgid "True/False"
+msgstr "True/False"
+
+#: src/utils/ui/msgeditor.py:729
+msgctxt "ui:msg_editor|modal:edit_field|title"
+msgid "Edit Embed Field"
+msgstr "Edit Field Embed"
+
+#: src/utils/ui/msgeditor.py:758
+msgctxt "ui:msg_editor|menu:edit_field|placeholder"
+msgid "Edit Embed Field"
+msgstr "Edit Field Embed"
+
+#: src/utils/ui/msgeditor.py:797
+msgctxt "ui:msg_deleteor|menu:delete_field|placeholder"
+msgid "Remove Embed Field"
+msgstr "Hapus Field Embed"
+
+#: src/utils/ui/msgeditor.py:833
+msgctxt "ui:msg_editor|button:save|label"
+msgid "Save"
+msgstr "Simpan"
+
+#: src/utils/ui/msgeditor.py:858
+msgctxt "ui:msg_editor|button:download|label"
+msgid "Download"
+msgstr "Unduh"
+
+#: src/utils/ui/msgeditor.py:877
+msgctxt "ui:msg_editor|button:undo|label"
+msgid "Undo"
+msgstr "Urungkan"
+
+#: src/utils/ui/msgeditor.py:897
+msgctxt "ui:msg_editor|button:redo|label"
+msgid "Redo"
+msgstr "Ulangi"
+
+#: src/utils/ui/msgeditor.py:916
+msgctxt "ui:msg_editor|button:quit|confirm"
+msgid "You have unsaved changes! Are you sure you want to quit?"
+msgstr "Anda memiliki perubahan yang belum disimpan! Yakin ingin keluar?"
+
+#: src/utils/ui/msgeditor.py:921
+msgctxt "ui:msg_editor|button:quit|confirm|button:yes"
+msgid "Yes, Quit Now"
+msgstr "Ya, Keluar Sekarang"
+
+#: src/utils/ui/msgeditor.py:927
+msgctxt "ui:msg_editor|button:quit|confirm|button:no"
+msgid "No, Go Back"
+msgstr "Tidak, Kembali"
+
+#: src/utils/ui/msgeditor.py:1025
+msgctxt "ui:msg_editor|timeout_warning|title"
+msgid "Warning!"
+msgstr "Peringatan!"
+
+#, possible-python-brace-format
+msgctxt "ui:msg_editor|timeout_warning|desc"
+msgid "This interface will time out {timestamp}. Press 'Continue' below to keep editing."
+msgstr "Antarmuka ini akan kedaluwarsa {timestamp}. Tekan 'Lanjutkan' di bawah untuk terus mengedit."
+
+#: src/utils/ui/msgeditor.py:1038
+msgctxt "ui:msg_editor|timeout_warning|continue"
+msgid "Continue"
+msgstr "Lanjutkan"

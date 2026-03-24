@@ -262,6 +262,67 @@ class StatisticsSettings(SettingGroup):
             )).format(types=self.formatted)
             return resp
 
+    # --- AI-MODIFIED (2026-03-23) ---
+    # Purpose: Setting for roles that users can filter the /leaderboard by
+    class LeaderboardFilterRoles(ListData, RoleListSetting):
+        """
+        List of roles available as leaderboard filters.
+        When the guild has role filtering enabled and roles configured here,
+        users see a "Filter by Role" dropdown on the /leaderboard command.
+        """
+        setting_id = 'leaderboard_filter_roles'
+        _write_ward = high_management_iward
+
+        _display_name = _p('guildset:leaderboard_filter_roles', "leaderboard_filter_roles")
+        _desc = _p(
+            'guildset:leaderboard_filter_roles|desc',
+            "Roles available as leaderboard filters."
+        )
+        _long_desc = _p(
+            'guildset:leaderboard_filter_roles|long_desc',
+            "When the leaderboard role filter is enabled, users can filter the /leaderboard "
+            "to show only members with one of these roles."
+        )
+        _accepts = _p(
+            'guildset:leaderboard_filter_roles|accepts',
+            "Comma separated list of role names or ids."
+        )
+        _default = None
+
+        _table_interface = StatsData.leaderboard_filter_roles
+        _id_column = 'guildid'
+        _data_column = 'roleid'
+        _order_column = 'roleid'
+
+        _cache = {}
+
+        @property
+        def set_str(self):
+            t = ctx_translator.get().t
+            return t(_p(
+                'guildset:leaderboard_filter_roles|set_using',
+                "Role selector below."
+            ))
+
+        @property
+        def update_message(self) -> str:
+            t = ctx_translator.get().t
+            value = self.value
+            if value is not None:
+                resp = t(_p(
+                    'guildset:leaderboard_filter_roles|set_response|set',
+                    "The following roles are now available as leaderboard filters: {roles}"
+                )).format(
+                    roles=self.formatted
+                )
+            else:
+                resp = t(_p(
+                    'guildset:leaderboard_filter_roles|set_response|unset',
+                    "You have cleared the leaderboard filter role list."
+                ))
+            return resp
+    # --- END AI-MODIFIED ---
+
     class DefaultStat(ModelData, StatTypeSetting):
         """
         Which of the three stats to display by default
@@ -281,11 +342,15 @@ class StatisticsSettings(SettingGroup):
 
 
 class StatisticsConfigUI(ConfigUI):
+    # --- AI-MODIFIED (2026-03-23) ---
+    # Purpose: Added LeaderboardFilterRoles to config panel
     setting_classes = (
         StatisticsSettings.SeasonStart,
         StatisticsSettings.UnrankedRoles,
-        StatisticsSettings.VisibleStats
+        StatisticsSettings.VisibleStats,
+        StatisticsSettings.LeaderboardFilterRoles,
     )
+    # --- END AI-MODIFIED ---
 
     def __init__(self, bot: LionBot,
                  guildid: int, channelid: int, **kwargs):
@@ -302,8 +367,6 @@ class StatisticsConfigUI(ConfigUI):
         await setting.interaction_check(setting.parent_id, selection)
         setting.value = selected.values
         await setting.write()
-        # Don't need to refresh due to instance hooks
-        # await self.refresh(thinking=selection)
         await selection.delete_original_response()
 
     async def unranked_roles_menu_refresh(self):
@@ -372,6 +435,28 @@ class StatisticsConfigUI(ConfigUI):
             "Select Visible Statistics"
         ))
 
+    # --- AI-MODIFIED (2026-03-23) ---
+    # Purpose: RoleSelect for leaderboard filter roles
+    @select(cls=RoleSelect, placeholder='FILTER_ROLE_MENU', min_values=0, max_values=24)
+    async def filter_roles_menu(self, selection: discord.Interaction, selected):
+        """
+        Selection menu for the "leaderboard_filter_roles" setting.
+        """
+        await selection.response.defer(thinking=True)
+        setting = self.instances[3]
+        await setting.interaction_check(setting.parent_id, selection)
+        setting.value = selected.values
+        await setting.write()
+        await selection.delete_original_response()
+
+    async def filter_roles_menu_refresh(self):
+        t = self.bot.translator.t
+        self.filter_roles_menu.placeholder = t(_p(
+            'ui:statistics_config|menu:filter_roles|placeholder',
+            "Select Leaderboard Filter Roles"
+        ))
+    # --- END AI-MODIFIED ---
+
     async def refresh_components(self):
         await asyncio.gather(
             self.edit_button_refresh(),
@@ -379,12 +464,17 @@ class StatisticsConfigUI(ConfigUI):
             self.reset_button_refresh(),
             self.unranked_roles_menu_refresh(),
             self.stat_type_menu_refresh(),
+            self.filter_roles_menu_refresh(),
         )
+        # --- AI-MODIFIED (2026-03-23) ---
+        # Purpose: Added filter_roles_menu row to layout
         self._layout = [
             (self.unranked_roles_menu,),
+            (self.filter_roles_menu,),
             (self.stat_type_menu,),
             (self.edit_button, self.reset_button, self.close_button)
         ]
+        # --- END AI-MODIFIED ---
 
     async def make_message(self):
         t = self.bot.translator.t
@@ -401,8 +491,6 @@ class StatisticsConfigUI(ConfigUI):
         return MessageArgs(embed=embed)
 
     async def reload(self):
-        # Re-fetch data for each instance
-        # This should generally hit cache
         self.instances = [
             await setting.get(self.guildid)
             for setting in self.setting_classes

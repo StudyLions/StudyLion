@@ -1,0 +1,161 @@
+# Thai translation for LionBot - monthly-gui
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 19:00+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Thai\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/gui/cards/monthly.py:40
+msgctxt "skin:monthlystats|mode:study|title"
+msgid "STUDY HOURS"
+msgstr "ชั่วโมงเรียน"
+
+#: src/gui/cards/monthly.py:44
+msgctxt "skin:monthlystats|mode:voice|title"
+msgid "VOICE CHANNEL ACTIVITY"
+msgstr "กิจกรรมช่องเสียง"
+
+#: src/gui/cards/monthly.py:48
+msgctxt "skin:monthlystats|mode:text|title"
+msgid "MESSAGE ACTIVITY"
+msgstr "กิจกรรมข้อความ"
+
+#: src/gui/cards/monthly.py:52
+msgctxt "skin::monthlystats|mode:anki|title"
+msgid "CARDS REVIEWED"
+msgstr "การ์ดที่ทบทวน"
+
+#, possible-python-brace-format
+msgctxt "ui:monthlystats|mode:study|bar_value"
+msgid "{value} H"
+msgstr "{value} ชม"
+
+#, possible-python-brace-format
+msgctxt "ui:monthlystats|mode:voice|bar_value"
+msgid "{value} H"
+msgstr "{value} ชม"
+
+#, possible-python-brace-format
+msgctxt "ui:monthlystats|mode:text|bar_value"
+msgid "{value} M"
+msgstr "{value} M"
+
+#, possible-python-brace-format
+msgctxt "ui:monthlystats|mode:anki|bar_value"
+msgid "{value} C"
+msgstr "{value} C"
+
+#: src/gui/cards/monthly.py:153
+msgctxt "skin:monthlystats|weekdays"
+msgid "M,T,W,T,F,S,S"
+msgstr "จ,อ,พ,พ,ศ,ส,อ"
+
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:study|summary:this_month"
+msgid "THIS MONTH: {amount} HOURS"
+msgstr "เดือนนี้: {amount} ชั่วโมง"
+
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:voice|summary:this_month"
+msgid "THIS MONTH: {amount} HOURS"
+msgstr "เดือนนี้: {amount} ชั่วโมง"
+
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:text|summary:this_month"
+msgid "THIS MONTH: {amount} MESSAGES"
+msgstr "เดือนนี้: {amount} ข้อความ"
+
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:text|summary:this_month"
+msgid "THIS MONTH: {amount} CARDS"
+msgstr "เดือนนี้: {amount} การ์ด"
+
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:study|summary:last_month"
+msgid "LAST MONTH: {amount} HOURS"
+msgstr "เดือนก่อน: {amount} ชั่วโมง"
+
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:voice|summary:last_month"
+msgid "LAST MONTH: {amount} HOURS"
+msgstr "เดือนก่อน: {amount} ชั่วโมง"
+
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:text|summary:last_month"
+msgid "LAST MONTH: {amount} MESSAGES"
+msgstr "เดือนก่อน: {amount} ข้อความ"
+
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:text|summary:last_month"
+msgid "LAST MONTH: {amount} CARDS"
+msgstr "เดือนก่อน: {amount} การ์ด"
+
+#: src/gui/cards/monthly.py:300
+msgctxt "ui:monthlystats|stats:current_streak|key"
+msgid "Current Streak:"
+msgstr "สถิติต่อเนื่องปัจจุบัน:"
+
+#, possible-python-brace-format
+msgctxt "ui:monthlystats|stats:current_streak|value"
+msgid "{count} days"
+msgstr "{count} วัน"
+
+#: src/gui/cards/monthly.py:308
+msgctxt "ui:monthlystats|stats:longest_streak|key"
+msgid "Longest Streak:"
+msgstr "สถิติต่อเนื่องยาวที่สุด:"
+
+#, possible-python-brace-format
+msgctxt "ui:monthlystats|stats:longest_streak|value"
+msgid "{count} days"
+msgstr "{count} วัน"
+
+#: src/gui/cards/monthly.py:316
+msgctxt "ui:monthlystats|stats:daily_average|key"
+msgid "Daily Average:"
+msgstr "ค่าเฉลี่ยรายวัน:"
+
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:study|stats:daily_average|value"
+msgid "{count} hours"
+msgstr "{count} ชั่วโมง"
+
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:voice|stats:daily_average|value"
+msgid "{count} hours"
+msgstr "{count} ชั่วโมง"
+
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:text|stats:daily_average|value"
+msgid "{count} msgs"
+msgstr "{count} ข้อความ"
+
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|mode:anki|stats:daily_average|value"
+msgid "{count} cards"
+msgstr "{count} การ์ด"
+
+#: src/gui/cards/monthly.py:342
+msgctxt "ui:monthlystats|stats:days_active|key"
+msgid "Days Active:"
+msgstr "วันที่ใช้งาน:"
+
+#, possible-python-brace-format
+msgctxt "ui:monthlystats|stats:days_active|value"
+msgid "{count} days"
+msgstr "{count} วัน"
+
+#, possible-python-brace-format
+msgctxt "skin:monthlystats|footer"
+msgid "Monthly Statistics • As of {day} {month} • {name} {discrim}"
+msgstr "สถิติรายเดือน • ณ {day} {month} • {name} {discrim}"

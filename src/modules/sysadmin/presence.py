@@ -216,7 +216,12 @@ class PresenceCtrl(LionCog):
         '$in_vc': {'on_voice_state_update'},
         '$voice_channels': {'on_channel_add', 'on_channel_remove'},
         '$shard_members': {'on_member_join', 'on_member_leave'},
-        '$shard_guilds': {'on_guild_join', 'on_guild_leave'}
+        '$shard_guilds': {'on_guild_join', 'on_guild_leave'},
+        # --- AI-MODIFIED (2026-03-14) ---
+        # Purpose: Global (cross-shard) presence variables aggregated via shared DB table
+        '$total_in_vc': {'on_voice_state_update'},
+        '$total_guilds': {'on_guild_join', 'on_guild_leave'},
+        # --- END AI-MODIFIED ---
     }
 
     default_format = "$in_vc students in $voice_channels study rooms!"
@@ -259,9 +264,12 @@ class PresenceCtrl(LionCog):
         if self._loop_task is not None and not self._loop_task.done():
             self._loop_task.cancel("Unloading")
 
-        for event in self._listening:
+        # --- AI-MODIFIED (2026-03-18) ---
+        # Purpose: Iterate over a copy to avoid RuntimeError: Set changed size during iteration
+        for event in list(self._listening):
             self.bot.remove_listener(self.tick, event)
-            self._listening.discard(event)
+        self._listening.clear()
+        # --- END AI-MODIFIED ---
 
     def update_listeners(self):
         # Build the list of events that should trigger status updates
@@ -299,6 +307,42 @@ class PresenceCtrl(LionCog):
         self.status = status or self.status
         await self.talk_reload_presence().broadcast(except_self=False)
 
+    # --- AI-MODIFIED (2026-03-14) ---
+    # Purpose: Write this shard's presence stats to shared DB table for cross-shard aggregation
+    async def _write_shard_stats(self):
+        shard_id = self.bot.shard_id or 0
+        in_vc = sum(1 for m in self.bot.get_all_members() if m.voice and m.voice.channel)
+        guild_count = len(self.bot.guilds)
+        try:
+            async with self.bot.db.pool.connection() as conn:
+                await conn.execute(
+                    "INSERT INTO shard_presence_stats (shard_id, in_vc, guild_count, updated_at) "
+                    "VALUES (%s, %s, %s, now()) "
+                    "ON CONFLICT (shard_id) DO UPDATE SET "
+                    "in_vc = EXCLUDED.in_vc, guild_count = EXCLUDED.guild_count, "
+                    "updated_at = EXCLUDED.updated_at",
+                    (shard_id, in_vc, guild_count),
+                )
+        except Exception:
+            logger.warning("Failed to write shard presence stats, skipping.", exc_info=True)
+
+    async def _read_global_stats(self):
+        try:
+            async with self.bot.db.pool.connection() as conn:
+                cur = await conn.execute(
+                    "SELECT COALESCE(SUM(in_vc), 0) AS total_in_vc, "
+                    "COALESCE(SUM(guild_count), 0) AS total_guilds "
+                    "FROM shard_presence_stats "
+                    "WHERE updated_at > now() - INTERVAL '10 minutes'"
+                )
+                row = await cur.fetchone()
+            return int(row['total_in_vc']), int(row['total_guilds'])
+        except Exception:
+            logger.warning("Failed to read global presence stats, falling back to local.", exc_info=True)
+            local_vc = sum(1 for m in self.bot.get_all_members() if m.voice and m.voice.channel)
+            return local_vc, len(self.bot.guilds)
+    # --- END AI-MODIFIED ---
+
     async def format_activity(self, form: str) -> str:
         """
         Format the given string.
@@ -314,6 +358,14 @@ class PresenceCtrl(LionCog):
             # TODO: Waiting on study module data
             subs['voice_channels'] = sum(1 for c in self.bot.get_all_channels() if c.type == discord.ChannelType.voice)
 
+        # --- AI-MODIFIED (2026-03-14) ---
+        # Purpose: Add global (cross-shard) substitution variables from shared DB table
+        if '$total_in_vc' in form or '$total_guilds' in form:
+            total_in_vc, total_guilds = await self._read_global_stats()
+            subs['total_in_vc'] = f"{total_in_vc:,}"
+            subs['total_guilds'] = f"{total_guilds:,}"
+        # --- END AI-MODIFIED ---
+
         return Template(form).safe_substitute(subs)
 
     async def tick(self, *args, **kwargs):
@@ -326,6 +378,10 @@ class PresenceCtrl(LionCog):
     @log_wrap(action="Presence Update")
     async def _do_presence_update(self):
         try:
+            # --- AI-MODIFIED (2026-03-14) ---
+            # Purpose: Write this shard's stats to DB before formatting, so global totals stay fresh
+            await self._write_shard_stats()
+            # --- END AI-MODIFIED ---
             activity_name = await self.format_activity(self.activity_format)
             await self.bot.change_presence(
                 activity=discord.Activity(
@@ -385,7 +441,7 @@ class PresenceCtrl(LionCog):
     @appcmds.describe(
         status="Online status (online | idle | dnd | offline)",
         type="Activity type (watching | listening | playing | streaming)",
-        string="Activity name, supports substitutions $in_vc, $voice_channels, $shard_guilds, $shard_members"
+        string="Activity name, supports substitutions $in_vc, $voice_channels, $shard_guilds, $shard_members, $total_in_vc, $total_guilds"
     )
     @sys_admin_ward
     async def presence_cmd(

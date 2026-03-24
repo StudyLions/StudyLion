@@ -1,0 +1,394 @@
+# Hindi translation for LionBot - babel
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 20:24+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Hindi\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/babel/settingui.py:41
+msgctxt "ui:locale_config|button:force|label"
+msgid "Toggle Force"
+msgstr "बल टॉगल करें"
+
+#: src/babel/settingui.py:50
+msgctxt "ui:locale_config|embed|title"
+msgid "Language Configuration Panel"
+msgstr "भाषा कॉन्फ़िगरेशन पैनल"
+
+#: src/babel/settingui.py:84
+msgctxt "dash:locale|title"
+msgid "Server Language Configuration ({commands[config language]})"
+msgstr "सर्वर भाषा कॉन्फ़िगरेशन ({commands[config language]})"
+
+#: src/babel/settingui.py:88
+msgctxt "dash:locale|dropdown|placeholder"
+msgid "Server Language Panel"
+msgstr "सर्वर भाषा पैनल"
+
+#: src/babel/cog.py:99
+msgctxt "cmd:configure_language"
+msgid "language"
+msgstr "language"
+
+#: src/babel/cog.py:101
+msgctxt "cmd:configure_language|desc"
+msgid "Configure the default language I will use in this server."
+msgstr ""
+"मैं इस सर्वर में जिस डिफ़ॉल्ट भाषा का उपयोग करूंगा उसे कॉन्फ़िगर करें।"
+
+#, possible-python-brace-format
+msgctxt "cmd:configure_language|error"
+msgid ""
+"You cannot enable `{force_setting}` without having a configured language!"
+msgstr ""
+"`{force_setting}` को कॉन्फ़िगर की गई भाषा के बिना सक्षम नहीं किया जा सकता!"
+
+#: src/babel/cog.py:165
+msgctxt "cmd:configure_language|success"
+msgid "Language settings updated!"
+msgstr "भाषा सेटिंग अपडेट की गईं!"
+
+#: src/babel/cog.py:181
+msgctxt "cmd:userconfig_language"
+msgid "language"
+msgstr "language"
+
+#: src/babel/cog.py:184
+msgctxt "cmd:userconfig_language|desc"
+msgid "Set your preferred interaction language."
+msgstr "अपनी पसंदीदा इंटरैक्शन भाषा सेट करें."
+
+#: src/babel/cog.py:188
+msgctxt "cmd:userconfig_language|param:language"
+msgid "language"
+msgstr "language"
+
+#: src/babel/cog.py:193
+msgctxt "cmd:userconfig_language|param:language|desc"
+msgid "Which language do you want me to respond in?"
+msgstr "आप किस भाषा में मुझसे जवाब चाहते हैं?"
+
+#: src/babel/cog.py:209
+msgctxt "cmd:userconfig_language|button:reset|label"
+msgid "Reset"
+msgstr "रीसेट"
+
+#, possible-python-brace-format
+msgctxt "acmpl:language|no_match"
+msgid "No supported languages matching {partial}"
+msgstr "{partial} से मेल खाने वाली कोई समर्थित भाषा नहीं"
+
+#: src/babel/utils.py:9
+msgctxt "utils|months"
+msgid ""
+"January,February,March,April,May,June,July,August,September,October,November,December"
+msgstr ""
+"जनवरी, फरवरी, मार्च, अप्रैल, मई, जून, जुलाई, अगस्त, सितंबर, अक्टूबर, नवंबर, "
+"दिसंबर"
+
+#: src/babel/utils.py:14
+msgctxt "utils|short_months"
+msgid "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec"
+msgstr "जन,फर,मार,अप्रै,मई,जून,जुल,अग,सित,अक्टू,नव,दिस"
+
+#: src/babel/settings.py:25
+msgctxt "settype:locale|accepts"
+msgid "Enter a supported language (e.g. 'en-GB')."
+msgstr "एक समर्थित भाषा दर्ज करें (उदा. 'en-GB')।"
+
+#: src/babel/settings.py:36
+msgctxt "settype:locale|summary_table|field:supported|key"
+msgid "Supported"
+msgstr "समर्थित"
+
+#: src/babel/settings.py:46
+msgctxt "settype:locale|formatted:unset"
+msgid "Unset"
+msgstr "सेट नहीं"
+
+#, possible-python-brace-format
+msgctxt "settype:locale|error"
+msgid "Sorry, we do not support the language `{lang}` at this time!"
+msgstr "क्षमा करें, हम इस समय `{lang}` भाषा का समर्थन नहीं करते!"
+
+#: src/babel/settings.py:77
+msgctxt "userset:locale"
+msgid "language"
+msgstr "भाषा"
+
+#: src/babel/settings.py:78
+msgctxt "userset:locale|desc"
+msgid "Your preferred language for interacting with me."
+msgstr "मेरे साथ बातचीत के लिए आपकी पसंदीदा भाषा।"
+
+#: src/babel/settings.py:81
+msgctxt "userset:locale|long_desc"
+msgid ""
+"The language you would prefer me to respond to commands and interactions in."
+" Servers may be configured to override this with their own language."
+msgstr ""
+"वह भाषा जिसमें आप चाहते हैं कि मैं जवाब दूं। सर्वर अपनी भाषा से इसे ओवरराइड "
+"कर सकते हैं।"
+
+#: src/babel/settings.py:92
+msgctxt "userset:locale|response"
+msgid "You have unset your language."
+msgstr "आपने अपनी भाषा हटा दी है।"
+
+#, possible-python-brace-format
+msgctxt "userset:locale|response"
+msgid "You have set your language to {lang}."
+msgstr "आपने अपनी भाषा {lang} पर सेट कर दी है।"
+
+#: src/babel/settings.py:113
+msgctxt "guildset:force_locale"
+msgid "force_language"
+msgstr "force_language"
+
+#: src/babel/settings.py:115
+msgctxt "guildset:force_locale|desc"
+msgid ""
+"Whether to force all members to use the configured guild language when "
+"interacting with me."
+msgstr ""
+"क्या सभी सदस्यों को सर्वर की कॉन्फ़िगर की गई भाषा का उपयोग करने के लिए मजबूर"
+" करें।"
+
+#: src/babel/settings.py:118
+msgctxt "guildset:force_locale|long_desc"
+msgid ""
+"When enabled, commands in this guild will always use the configured guild "
+"language, regardless of the member's personally configured language."
+msgstr ""
+"सक्षम होने पर, कमांड हमेशा सर्वर भाषा का उपयोग करेंगे, सदस्य की व्यक्तिगत "
+"भाषा की परवाह किए बिना।"
+
+#: src/babel/settings.py:122
+msgctxt "guildset:force_locale|output"
+msgid "Enabled (members will be forced to use the server language)"
+msgstr "सक्षम (सदस्यों को सर्वर भाषा का उपयोग करने के लिए मजबूर किया जाएगा)"
+
+#: src/babel/settings.py:123
+msgctxt "guildset:force_locale|output"
+msgid "Disabled (members may set their own language)"
+msgstr "अक्षम (सदस्य अपनी भाषा सेट कर सकते हैं)"
+
+#: src/babel/settings.py:137
+msgctxt "guildset:force_locale|response"
+msgid "I will always use the set language in this server."
+msgstr "मैं इस सर्वर पर हमेशा सेट भाषा का उपयोग करूंगा।"
+
+#: src/babel/settings.py:142
+msgctxt "guildset:force_locale|response"
+msgid "I will now allow the members to set their own language here."
+msgstr "अब मैं सदस्यों को यहां अपनी भाषा सेट करने की अनुमति दूंगा।"
+
+#: src/babel/settings.py:160
+msgctxt "guildset:locale"
+msgid "language"
+msgstr "भाषा"
+
+#: src/babel/settings.py:161
+msgctxt "guildset:locale|desc"
+msgid "Your preferred language for interacting with me."
+msgstr "मेरे साथ बातचीत के लिए आपकी पसंदीदा भाषा।"
+
+#: src/babel/settings.py:164
+msgctxt "guildset:locale|long_desc"
+msgid ""
+"The default language to use for responses and interactions in this server. "
+"Member's own configured language will override this for their commands "
+"unless `force_language` is enabled."
+msgstr ""
+"इस सर्वर पर प्रतिक्रियाओं के लिए डिफ़ॉल्ट भाषा। सदस्य की अपनी भाषा इसे "
+"ओवरराइड करेगी, जब तक `force_language` सक्षम न हो।"
+
+#: src/babel/settings.py:176
+msgctxt "guildset:locale|response"
+msgid "You have unset the guild language."
+msgstr "आपने सर्वर भाषा हटा दी है।"
+
+#, possible-python-brace-format
+msgctxt "guildset:locale|response"
+msgid "You have set the guild language to {lang}."
+msgstr "आपने सर्वर भाषा {lang} पर सेट कर दी है।"
+
+#: src/babel/enums.py:43
+msgctxt "localenames|locale:id"
+msgid "Indonesian"
+msgstr "इन्डोनेशियाई"
+
+#: src/babel/enums.py:44
+msgctxt "localenames|locale:da"
+msgid "Danish"
+msgstr "डेनिश"
+
+#: src/babel/enums.py:45
+msgctxt "localenames|locale:de"
+msgid "German"
+msgstr "जर्मन"
+
+#: src/babel/enums.py:46
+msgctxt "localenames|locale:en-GB"
+msgid "English, UK"
+msgstr "English, UK"
+
+#: src/babel/enums.py:47
+msgctxt "localenames|locale:en-US"
+msgid "English, US"
+msgstr "English, US"
+
+#: src/babel/enums.py:48
+msgctxt "localenames|locale:es-ES"
+msgid "Spanish"
+msgstr "स्पेनिश"
+
+#: src/babel/enums.py:49
+msgctxt "localenames|locale:fr"
+msgid "French"
+msgstr "फ्रेंच"
+
+#: src/babel/enums.py:50
+msgctxt "localenames|locale:hr"
+msgid "Croatian"
+msgstr "क्रोएशियाई"
+
+#: src/babel/enums.py:51
+msgctxt "localenames|locale:it"
+msgid "Italian"
+msgstr "इतालवी"
+
+#: src/babel/enums.py:52
+msgctxt "localenames|locale:lt"
+msgid "Lithuanian"
+msgstr "लिथुआनियाई"
+
+#: src/babel/enums.py:53
+msgctxt "localenames|locale:hu"
+msgid "Hungarian"
+msgstr "हंगेरियन"
+
+#: src/babel/enums.py:54
+msgctxt "localenames|locale:nl"
+msgid "Dutch"
+msgstr "डच"
+
+#: src/babel/enums.py:55
+msgctxt "localenames|locale:no"
+msgid "Norwegian"
+msgstr "नॉर्वेजियन"
+
+#: src/babel/enums.py:56
+msgctxt "localenames|locale:pl"
+msgid "Polish"
+msgstr "पोलिश"
+
+#: src/babel/enums.py:57
+msgctxt "localenames|locale:pt-BR"
+msgid "Portuguese, Brazilian"
+msgstr "पुर्तगाली, ब्राज़ीलियाई"
+
+#: src/babel/enums.py:58
+msgctxt "localenames|locale:ro"
+msgid "Romanian, Romania"
+msgstr "रोमानियाई"
+
+#: src/babel/enums.py:59
+msgctxt "localenames|locale:fi"
+msgid "Finnish"
+msgstr "फिनिश"
+
+#: src/babel/enums.py:60
+msgctxt "localenames|locale:sv-SE"
+msgid "Swedish"
+msgstr "स्वीडिश"
+
+#: src/babel/enums.py:61
+msgctxt "localenames|locale:vi"
+msgid "Vietnamese"
+msgstr "वियतनामी"
+
+#: src/babel/enums.py:62
+msgctxt "localenames|locale:tr"
+msgid "Turkish"
+msgstr "तुर्की"
+
+#: src/babel/enums.py:63
+msgctxt "localenames|locale:cs"
+msgid "Czech"
+msgstr "चेक"
+
+#: src/babel/enums.py:64
+msgctxt "localenames|locale:el"
+msgid "Greek"
+msgstr "ग्रीक"
+
+#: src/babel/enums.py:65
+msgctxt "localenames|locale:bg"
+msgid "Bulgarian"
+msgstr "बुल्गारियाई"
+
+#: src/babel/enums.py:66
+msgctxt "localenames|locale:ru"
+msgid "Russian"
+msgstr "रूसी"
+
+#: src/babel/enums.py:67
+msgctxt "localenames|locale:uk"
+msgid "Ukrainian"
+msgstr "यूक्रेनी"
+
+#: src/babel/enums.py:68
+msgctxt "localenames|locale:hi"
+msgid "Hindi"
+msgstr "हिन्दी"
+
+#: src/babel/enums.py:69
+msgctxt "localenames|locale:th"
+msgid "Thai"
+msgstr "थाई"
+
+#: src/babel/enums.py:70
+msgctxt "localenames|locale:zh-CN"
+msgid "Chinese, China"
+msgstr "चीनी, चीन"
+
+#: src/babel/enums.py:71
+msgctxt "localenames|locale:ja"
+msgid "Japanese"
+msgstr "जापानी"
+
+#: src/babel/enums.py:72
+msgctxt "localenames|locale:zh-TW"
+msgid "Chinese, Taiwan"
+msgstr "चीनी, ताइवान"
+
+#: src/babel/enums.py:73
+msgctxt "localenames|locale:ko"
+msgid "Korean"
+msgstr "कोरियाई"
+
+#: src/babel/enums.py:78
+msgctxt "localenames|locale:he"
+msgid "Hebrew"
+msgstr "हिब्रू"
+
+#: src/babel/enums.py:79
+msgctxt "localenames|locale:he-IL"
+msgid "Hebrew"
+msgstr "हिब्रू"
+
+#: src/babel/enums.py:80
+msgctxt "localenames|locale:test"
+msgid "Test Language"
+msgstr "Test Language"

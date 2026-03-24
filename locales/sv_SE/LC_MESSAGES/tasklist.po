@@ -1,0 +1,838 @@
+# Swedish translation for LionBot - tasklist
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 21:43+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Swedish\n"
+"Language: sv_SE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/modules/tasklist/cog.py:35
+msgctxt "argtype:Before|opt:HOUR"
+msgid "The last hour"
+msgstr "Den senaste timmen"
+
+#: src/modules/tasklist/cog.py:36
+msgctxt "argtype:Before|opt:HALFDAY"
+msgid "The last 12 hours"
+msgstr "De senaste 12 timmarna"
+
+#: src/modules/tasklist/cog.py:37
+msgctxt "argtype:Before|opt:DAY"
+msgid "The last 24 hours"
+msgstr "De senaste 24 timmarna"
+
+#: src/modules/tasklist/cog.py:38
+msgctxt "argtype:Before|opt:TODAY"
+msgid "Today"
+msgstr "Idag"
+
+#: src/modules/tasklist/cog.py:39
+msgctxt "argtype:Before|opt:YESTERDAY"
+msgid "Yesterday"
+msgstr "Igår"
+
+#: src/modules/tasklist/cog.py:40
+msgctxt "argtype:Before|opt:Monday"
+msgid "This Monday"
+msgstr "Denna måndag"
+
+#: src/modules/tasklist/cog.py:41
+msgctxt "argtype:Before|opt:THISMONTH"
+msgid "This Month"
+msgstr "Denna månad"
+
+#: src/modules/tasklist/cog.py:205
+msgctxt "summon_tasklist|error:insufficient_perms|title"
+msgid "Uh-Oh, I cannot do that here!"
+msgstr "Hoppsan, det kan jag inte göra här!"
+
+#: src/modules/tasklist/cog.py:209
+msgctxt "summon_tasklist|error:insufficient_perms|desc"
+msgid ""
+"This channel is configured as a tasklist channel, but I lack the "
+"`EMBED_LINKS` or `SEND_MESSAGES` permission here! If you believe this is "
+"unintentional, please contact a server administrator."
+msgstr ""
+"Denna kanal är konfigurerad som en uppgiftslistekanal, men jag saknar "
+"behörigheten `EMBED_LINKS` ..."
+
+#: src/modules/tasklist/cog.py:258
+msgctxt "cmd:tasklist"
+msgid "tasklist"
+msgstr "tasklist"
+
+#: src/modules/tasklist/cog.py:261
+msgctxt "cmd:tasklist|desc"
+msgid "Open your tasklist."
+msgstr "Öppna din uppgiftslista."
+
+#: src/modules/tasklist/cog.py:271
+msgctxt "group:tasks"
+msgid "tasks"
+msgstr "tasks"
+
+#: src/modules/tasklist/cog.py:272
+msgctxt "group:tasks|desc"
+msgid "Base command group for tasklist commands."
+msgstr "Baskommandogrupp för uppgiftslistkommandon."
+
+#: src/modules/tasklist/cog.py:295
+msgctxt "argtype:taskid|error:no_tasks"
+msgid "Tasklist empty! No matching tasks."
+msgstr "Uppgiftslistan är tom! Inga matchande uppgifter."
+
+#: src/modules/tasklist/cog.py:332
+msgctxt "argtype:taskid|match:all"
+msgid "All tasks"
+msgstr "Alla uppgifter"
+
+#, possible-python-brace-format
+msgctxt "argtype:taskid|error:parse_multi"
+msgid "(Warning: {error})"
+msgstr "(Varning: {error})"
+
+#, possible-python-brace-format
+msgctxt "argtype:taskid|error:no_matching"
+msgid "No tasks matching '{partial}'!"
+msgstr "Inga uppgifter som matchar '{partial}'!"
+
+#: src/modules/tasklist/cog.py:404
+msgctxt "cmd:tasks_new"
+msgid "new"
+msgstr "new"
+
+#: src/modules/tasklist/cog.py:407
+msgctxt "cmd:tasks_new|desc"
+msgid "Add a new task to your tasklist."
+msgstr "Lägg till en ny uppgift i din uppgiftslista."
+
+#: src/modules/tasklist/cog.py:411
+msgctxt "cmd:tasks_new|param:content"
+msgid "task"
+msgstr "task"
+
+#: src/modules/tasklist/cog.py:412
+msgctxt "cmd:tasks_new|param:parent"
+msgid "parent"
+msgstr "parent"
+
+#: src/modules/tasklist/cog.py:415
+msgctxt "cmd:tasks_new|param:content|desc"
+msgid "Content of your new task."
+msgstr "Innehållet i din nya uppgift."
+
+#: src/modules/tasklist/cog.py:416
+msgctxt "cmd:tasks_new|param:parent"
+msgid "Parent of this task."
+msgstr ""
+
+#, possible-python-brace-format
+msgctxt "cmd:tasks_new|error:parse_parent"
+msgid "Could not find parent task number `{input}` in your tasklist."
+msgstr ""
+"Kunde inte hitta överordnat uppgiftsnummer `{input}` i din uppgiftslista."
+
+#, possible-python-brace-format
+msgctxt "cmd:tasks_new|resp:success"
+msgid "{tick} Created task `{label}`."
+msgstr "{tick} Uppgift `{label}` skapad."
+
+#: src/modules/tasklist/cog.py:463
+msgctxt "cmd:tasks_upload"
+msgid "upload"
+msgstr "upload"
+
+#: src/modules/tasklist/cog.py:466
+msgctxt "cmd:tasks_upload|desc"
+msgid "Upload a list of tasks to append to or replace your tasklist."
+msgstr "Ladda upp en lista med uppgifter att lägga till eller ersätta."
+
+#: src/modules/tasklist/cog.py:470
+msgctxt "cmd:tasks_upload|param:tasklist"
+msgid "tasklist"
+msgstr "tasklist"
+
+#: src/modules/tasklist/cog.py:471
+msgctxt "cmd:tasks_upload|param:append"
+msgid "append"
+msgstr "append"
+
+#: src/modules/tasklist/cog.py:476
+msgctxt "cmd:tasks_upload|param:tasklist|desc"
+msgid ""
+"Text file containing a (standard markdown formatted) checklist of tasks to "
+"add or append."
+msgstr ""
+"Textfil som innehåller en (standard markdown-formaterad) checklista med "
+"uppgifter att lägga till."
+
+#: src/modules/tasklist/cog.py:480
+msgctxt "cmd:tasks_upload|param:append|desc"
+msgid ""
+"Whether to append the given tasks or replace your entire tasklist. Defaults "
+"to True."
+msgstr ""
+"Om uppgifterna ska läggas till eller ersätta hela listan. Standard är True."
+
+#: src/modules/tasklist/cog.py:496
+msgctxt "cmd:tasks_upload|error:not_text"
+msgid "The attached tasklist must be a text file!"
+msgstr "Den bifogade uppgiftslistan måste vara en textfil!"
+
+#: src/modules/tasklist/cog.py:504
+msgctxt "cmd:tasks_upload|error:too_large"
+msgid "The attached tasklist was too large!"
+msgstr "Den bifogade uppgiftslistan var för stor!"
+
+#: src/modules/tasklist/cog.py:515
+msgctxt "cmd:tasks_upload|error:too_many_lines"
+msgid ""
+"Too many tasks! Refusing to process a tasklist with more than `1000` lines."
+msgstr ""
+"För många uppgifter! Vägrar bearbeta en uppgiftslista med mer än `1000` "
+"rader."
+
+#: src/modules/tasklist/cog.py:521
+msgctxt "cmd:tasks_upload|error:decoding"
+msgid ""
+"Could not decode attached tasklist. Please make sure it is saved with the "
+"`UTF-8` encoding."
+msgstr ""
+"Kunde inte avkoda den bifogade uppgiftslistan. Se till att den är sparad med"
+" `UTF-8`-kodning."
+
+#, possible-python-brace-format
+msgctxt "cmd:tasks_upload|resp:success"
+msgid "{tick} Updated your tasklist."
+msgstr "{tick} Din uppgiftslista har uppdaterats."
+
+#: src/modules/tasklist/cog.py:580
+msgctxt "cmd:tasks_edit"
+msgid "edit"
+msgstr "edit"
+
+#: src/modules/tasklist/cog.py:583
+msgctxt "cmd:tasks_edit|desc"
+msgid "Edit a task in your tasklist."
+msgstr "Redigera en uppgift i din uppgiftslista."
+
+#: src/modules/tasklist/cog.py:587
+msgctxt "cmd:tasks_edit|param:taskstr"
+msgid "task"
+msgstr "task"
+
+#: src/modules/tasklist/cog.py:588
+msgctxt "cmd:tasks_edit|param:new_content"
+msgid "new_task"
+msgstr "new_task"
+
+#: src/modules/tasklist/cog.py:589
+msgctxt "cmd:tasks_edit|param:new_parent"
+msgid "new_parent"
+msgstr "new_parent"
+
+#: src/modules/tasklist/cog.py:592
+msgctxt "cmd:tasks_edit|param:taskstr|desc"
+msgid "Which task do you want to update?"
+msgstr "Vilken uppgift vill du uppdatera?"
+
+#: src/modules/tasklist/cog.py:593
+msgctxt "cmd:tasks_edit|param:new_content|desc"
+msgid "What do you want to change the task to?"
+msgstr "Vad vill du ändra uppgiften till?"
+
+#: src/modules/tasklist/cog.py:594
+msgctxt "cmd:tasks_edit|param:new_parent|desc"
+msgid "Which task do you want to be the new parent?"
+msgstr "Vilken uppgift vill du ha som ny överordnad?"
+
+#, possible-python-brace-format
+msgctxt "cmd:tasks_edit|error:parse_taskstr"
+msgid "Could not find target task number `{input}` in your tasklist."
+msgstr "Kunde inte hitta måluppgiftsnummer `{input}` i din uppgiftslista."
+
+#, possible-python-brace-format
+msgctxt "cmd:tasks_edit|error:parse_parent"
+msgid "Could not find new parent task number `{input}` in your tasklist."
+msgstr ""
+"Kunde inte hitta nytt överordnat uppgiftsnummer `{input}` i din "
+"uppgiftslista."
+
+#, possible-python-brace-format
+msgctxt "cmd:tasks_edit|resp:success|desc"
+msgid "{tick} Task `{label}` updated."
+msgstr "{tick} Uppgift `{label}` uppdaterad."
+
+#: src/modules/tasklist/cog.py:670
+msgctxt "ui:tasklist_single_editor|title"
+msgid "Edit Task"
+msgstr "Redigera uppgift"
+
+#: src/modules/tasklist/cog.py:685
+msgctxt "cmd:tasks_clear"
+msgid "clear"
+msgstr "clear"
+
+#: src/modules/tasklist/cog.py:686
+msgctxt "cmd:tasks_clear|desc"
+msgid "Clear your tasklist."
+msgstr "Rensa din uppgiftslista."
+
+#: src/modules/tasklist/cog.py:696
+msgctxt "cmd:tasks_clear|resp:success"
+msgid "Your tasklist has been cleared."
+msgstr "Din uppgiftslista har rensats."
+
+#: src/modules/tasklist/cog.py:704
+msgctxt "cmd:tasks_remove"
+msgid "remove"
+msgstr "remove"
+
+#: src/modules/tasklist/cog.py:707
+msgctxt "cmd:tasks_remove|desc"
+msgid ""
+"Remove tasks matching all the provided conditions. (E.g. remove tasks "
+"completed before today)."
+msgstr ""
+"Ta bort uppgifter som matchar alla angivna villkor. (T.ex. ta bort uppgifter"
+" slutförda före idag)."
+
+#: src/modules/tasklist/cog.py:711
+msgctxt "cmd:tasks_remove|param:taskidstr"
+msgid "tasks"
+msgstr "tasks"
+
+#: src/modules/tasklist/cog.py:712
+msgctxt "cmd:tasks_remove|param:created_before"
+msgid "created_before"
+msgstr "created_before"
+
+#: src/modules/tasklist/cog.py:713
+msgctxt "cmd:tasks_remove|param:updated_before"
+msgid "updated_before"
+msgstr "updated_before"
+
+#: src/modules/tasklist/cog.py:714
+msgctxt "cmd:tasks_remove|param:completed"
+msgid "completed"
+msgstr "completed"
+
+#: src/modules/tasklist/cog.py:715
+msgctxt "cmd:tasks_remove|param:cascade"
+msgid "cascade"
+msgstr "cascade"
+
+#: src/modules/tasklist/cog.py:720
+msgctxt "cmd:tasks_remove|param:taskidstr|desc"
+msgid ""
+"List of task numbers or ranges to remove (e.g. 1, 2, 5-7, 8.1-3, 9-), or `-`"
+" to remove all."
+msgstr ""
+"Lista med uppgiftsnummer eller intervall att ta bort (t.ex. 1, 2, 5-7, "
+"8.1-3, 9-), eller `-` för ..."
+
+#: src/modules/tasklist/cog.py:724
+msgctxt "cmd:tasks_remove|param:created_before|desc"
+msgid "Only delete tasks created before the selected time."
+msgstr "Ta bara bort uppgifter skapade före den valda tiden."
+
+#: src/modules/tasklist/cog.py:728
+msgctxt "cmd:tasks_remove|param:updated_before|desc"
+msgid ""
+"Only deleted tasks update (i.e. completed or edited) before the selected "
+"time."
+msgstr ""
+"Ta bara bort uppgifter uppdaterade (slutförda eller redigerade) före den "
+"valda tiden."
+
+#: src/modules/tasklist/cog.py:732
+msgctxt "cmd:tasks_remove|param:completed"
+msgid "Only delete tasks which are (not) complete."
+msgstr ""
+
+#: src/modules/tasklist/cog.py:736
+msgctxt "cmd:tasks_remove|param:cascade"
+msgid "Whether to recursively remove subtasks of removed tasks."
+msgstr ""
+
+#, possible-python-brace-format
+msgctxt "cmd:tasks_remove_cmd|error:no_matching"
+msgid "No tasks on your tasklist match `{input}`"
+msgstr "Inga uppgifter i din uppgiftslista matchar `{input}`"
+
+#: src/modules/tasklist/cog.py:792
+msgctxt "cmd:tasks_remove_cmd|error:no_matching"
+msgid "No tasks on your tasklist matching all the given conditions!"
+msgstr "Inga uppgifter i din uppgiftslista matchar alla angivna villkor!"
+
+#, possible-python-brace-format
+msgctxt "cmd:tasks_remove|resp:success"
+msgid "{tick} Deleted task `{label}`"
+msgid_plural "{tick} Deleted `{count}` tasks from your tasklist."
+msgstr[0] "{tick} Uppgift `{label}` borttagen"
+msgstr[1] "{tick} `{count}` uppgifter borttagna från din uppgiftslista."
+
+#: src/modules/tasklist/cog.py:823
+msgctxt "cmd:tasks_tick"
+msgid "tick"
+msgstr "tick"
+
+#: src/modules/tasklist/cog.py:824
+msgctxt "cmd:tasks_tick|desc"
+msgid "Mark the given tasks as completed."
+msgstr "Markera de angivna uppgifterna som slutförda."
+
+#: src/modules/tasklist/cog.py:827
+msgctxt "cmd:tasks_tick|param:taskidstr"
+msgid "tasks"
+msgstr "tasks"
+
+#: src/modules/tasklist/cog.py:828
+msgctxt "cmd:tasks_tick|param:cascade"
+msgid "cascade"
+msgstr "cascade"
+
+#: src/modules/tasklist/cog.py:833
+msgctxt "cmd:tasks_tick|param:taskidstr|desc"
+msgid ""
+"List of task numbers or ranges to tick (e.g. 1, 2, 5-7, 8.1-3, 9-) or '-' to"
+" tick all."
+msgstr ""
+"Lista med uppgiftsnummer eller intervall att bocka av (t.ex. 1, 2, 5-7, "
+"8.1-3, 9-) eller '-' för ..."
+
+#: src/modules/tasklist/cog.py:837
+msgctxt "cmd:tasks_tick|param:cascade|desc"
+msgid "Whether to also mark all subtasks as complete."
+msgstr "Om alla underuppgifter också ska markeras som slutförda."
+
+#, possible-python-brace-format
+msgctxt "cmd:tasks_tick|resp:success"
+msgid "{tick} Marked `{label}` as complete."
+msgid_plural "{tick} Marked `{count}` tasks as complete."
+msgstr[0] "{tick} `{label}` markerad som slutförd."
+msgstr[1] "{tick} `{count}` uppgifter markerade som slutförda."
+
+#: src/modules/tasklist/cog.py:899
+msgctxt "cmd:tasks_untick"
+msgid "untick"
+msgstr "untick"
+
+#: src/modules/tasklist/cog.py:900
+msgctxt "cmd:tasks_untick|desc"
+msgid "Mark the given tasks as incomplete."
+msgstr "Markera de angivna uppgifterna som ofullständiga."
+
+#: src/modules/tasklist/cog.py:903
+msgctxt "cmd:tasks_untick|param:taskidstr"
+msgid "taskids"
+msgstr "taskids"
+
+#: src/modules/tasklist/cog.py:904
+msgctxt "cmd:tasks_untick|param:cascade"
+msgid "cascade"
+msgstr "cascade"
+
+#: src/modules/tasklist/cog.py:909
+msgctxt "cmd:tasks_untick|param:taskidstr|desc"
+msgid ""
+"List of task numbers or ranges to untick (e.g. 1, 2, 5-7, 8.1-3, 9-) or '-' "
+"to untick all."
+msgstr ""
+"Lista med uppgiftsnummer eller intervall att avbocka (t.ex. 1, 2, 5-7, "
+"8.1-3, 9-) eller '-' för a..."
+
+#: src/modules/tasklist/cog.py:913
+msgctxt "cmd:tasks_untick|param:cascade|desc"
+msgid "Whether to also mark all subtasks as incomplete."
+msgstr "Om alla underuppgifter också ska markeras som ofullständiga."
+
+#, possible-python-brace-format
+msgctxt "cmd:tasks_untick|resp:success"
+msgid "{tick} Marked `{label}` as incomplete."
+msgid_plural "{tick} Marked `{count}` tasks as incomplete."
+msgstr[0] "{tick} `{label}` markerad som ofullständig."
+msgstr[1] "{tick} `{count}` uppgifter markerade som ofullständiga."
+
+#: src/modules/tasklist/cog.py:978
+msgctxt "cmd:configure_tasklist"
+msgid "tasklist"
+msgstr "tasklist"
+
+#: src/modules/tasklist/cog.py:979
+msgctxt "cmd:configure_tasklist|desc"
+msgid "Tasklist configuration panel"
+msgstr "Konfigurationspanel för uppgiftslistan"
+
+#: src/modules/tasklist/cog.py:982
+msgctxt "cmd:configure_tasklist|param:reward"
+msgid "reward"
+msgstr "reward"
+
+#: src/modules/tasklist/cog.py:983
+msgctxt "cmd:configure_tasklist|param:reward_limit"
+msgid "reward_limit"
+msgstr "reward_limit"
+
+#, possible-python-brace-format
+msgctxt "cmd:configure_tasklist|resp:success|desc"
+msgid ""
+"Members will now be rewarded {coin}**{amount}** for each task they complete "
+"up to a maximum of `{limit}` tasks per 24h."
+msgstr ""
+"Medlemmar belönas nu med {coin}**{amount}** för varje slutförd uppgift, upp "
+"till `{limit}` uppgif..."
+
+#, possible-python-brace-format
+msgctxt "tasklist|parse:multi-range|error:parents_match"
+msgid "Parents don't match in range `{range}`"
+msgstr "Överordnade matchar inte i intervallet `{range}`"
+
+#, possible-python-brace-format
+msgctxt "tasklist|parse:multi-range|error:parse"
+msgid "Could not parse `{range}` as a task number or range."
+msgstr "Kunde inte tolka `{range}` som ett uppgiftsnummer eller intervall."
+
+#, possible-python-brace-format
+msgctxt "modal:tasklist_bulk_editor|error:parse_task"
+msgid ""
+"Malformed taskline!\n"
+"`{input}`"
+msgstr ""
+"Felformaterad uppgiftsrad!\n"
+"`{input}`"
+
+#: src/modules/tasklist/tasklist.py:332
+msgctxt "modal:tasklist_bulk_editor|error:task_too_long"
+msgid "Please keep your tasks under 100 characters!"
+msgstr "Håll dina uppgifter under 100 tecken!"
+
+#: src/modules/tasklist/ui.py:39
+msgctxt "ui:tasklist_caller|button:tasklist|label"
+msgid "Open Tasklist"
+msgstr "Öppna uppgiftslista"
+
+#: src/modules/tasklist/ui.py:57
+msgctxt "modal:tasklist_single_editor|field:task|label"
+msgid "Task content"
+msgstr "Uppgiftsinnehåll"
+
+#: src/modules/tasklist/ui.py:69
+msgctxt "modal:tasklist_single_editor|field:parent|label"
+msgid "Parent Task"
+msgstr "Överordnad uppgift"
+
+#: src/modules/tasklist/ui.py:73
+msgctxt "modal:tasklist_single_editor|field:parent|placeholder"
+msgid "Enter a task number, e.g. 2.1"
+msgstr "Ange ett uppgiftsnummer, t.ex. 2.1"
+
+#: src/modules/tasklist/ui.py:104
+msgctxt "modal:tasklist_bulk_editor|field:tasklist|label"
+msgid "Tasklist"
+msgstr "Uppgiftslista"
+
+#: src/modules/tasklist/ui.py:108
+msgctxt "modal:tasklist_bulk_editor|field:tasklist|placeholder"
+msgid ""
+"- [ ] This is task 1, unfinished.\n"
+"- [x] This is task 2, finished.\n"
+"  - [ ] This is subtask 2.1."
+msgstr ""
+"- [ ] Detta är uppgift 1, ej slutförd.\n"
+"- [x] Detta är uppgift 2, slutförd.\n"
+"  - [ ] Detta är deluppgift 2.1."
+
+#: src/modules/tasklist/ui.py:130
+msgctxt "modal:tasklist_bulk_editor"
+msgid "Tasklist Editor"
+msgstr "Uppgiftslistredigerare"
+
+#: src/modules/tasklist/ui.py:188
+msgctxt "ui:tasklist|menu:main|mode:toggle|placeholder"
+msgid "Select to Toggle"
+msgstr "Välj för att växla"
+
+#, possible-python-brace-format
+msgctxt "ui:tasklist|menu:sub|mode:toggle|placeholder"
+msgid "Toggle from {label}.*"
+msgstr "Växla från {label}.*"
+
+#: src/modules/tasklist/ui.py:198
+msgctxt "ui:tasklist|menu:main|mode:edit|placeholder"
+msgid "Select to Edit"
+msgstr "Välj för att redigera"
+
+#, possible-python-brace-format
+msgctxt "ui:tasklist|menu:sub|mode:edit|placeholder"
+msgid "Edit from {label}.*"
+msgstr "Redigera från {label}.*"
+
+#: src/modules/tasklist/ui.py:208
+msgctxt "ui:tasklist|menu:main|mode:delete|placeholder"
+msgid "Select to Delete"
+msgstr "Välj för att ta bort"
+
+#, possible-python-brace-format
+msgctxt "ui:tasklist|menu:sub|mode:delete|placeholder"
+msgid "Delete from {label}.*"
+msgstr "Ta bort från {label}.*"
+
+#, possible-python-brace-format
+msgctxt "ui:tasklist_single_editor|field:parent|error:parse_id"
+msgid ""
+"Could not find the given parent task number `{input}` in your tasklist."
+msgstr ""
+"Kunde inte hitta det angivna överordnade uppgiftsnumret `{input}` i din "
+"uppgiftslista."
+
+#, possible-python-brace-format
+msgctxt "ui:tasklist_single_editor|field:parent|error:multiple_matching"
+msgid ""
+"Multiple tasks matching given parent task `{input}`. Please use a task "
+"number instead!"
+msgstr ""
+"Flera uppgifter matchar överordnad uppgift `{input}`. Använd ett "
+"uppgiftsnummer!"
+
+#, possible-python-brace-format
+msgctxt "ui:tasklist_single_editor|field:parent|error:no_matching"
+msgid "No tasks matching given parent task `{input}`."
+msgstr "Inga uppgifter matchar överordnad uppgift `{input}`."
+
+#: src/modules/tasklist/ui.py:501
+msgctxt "ui:tasklist|menu:edit|modal:title"
+msgid "Edit task"
+msgstr "Redigera uppgift"
+
+#: src/modules/tasklist/ui.py:596
+msgctxt "ui:tasklist_single_editor|title"
+msgid "Add task"
+msgstr "Lägg till uppgift"
+
+#: src/modules/tasklist/ui.py:629
+msgctxt "ui:tasklist|button:edit_mode|label"
+msgid "Edit"
+msgstr "Redigera"
+
+#: src/modules/tasklist/ui.py:645
+msgctxt "ui:tasklist|button:delete_mode|label"
+msgid "Delete"
+msgstr "Ta bort"
+
+#: src/modules/tasklist/ui.py:661
+msgctxt "ui:tasklist|button:toggle_mode|label"
+msgid "Toggle"
+msgstr "Växla"
+
+#: src/modules/tasklist/ui.py:678
+msgctxt "ui:tasklist|button:edit_bulk|error:too_long"
+msgid ""
+"Your tasklist is too long to be edited in a Discord text input! Use the save"
+" button and {cmds[tasks upload]} instead."
+msgstr ""
+"Din uppgiftslista är för lång för att redigeras i Discord-textfält! Använd "
+"spara-knappen och {cmds[tasks upload]}."
+
+#: src/modules/tasklist/ui.py:692
+msgctxt "ui:tasklist|button:edit_bulk|label"
+msgid "Bulk Edit"
+msgstr "Massredigering"
+
+#: src/modules/tasklist/ui.py:705
+msgctxt "ui:tasklist|button:clear|label"
+msgid "Clear Tasklist"
+msgstr "Rensa lista"
+
+#, possible-python-brace-format
+msgctxt "ui:tasklist|button:save|dm:contents"
+msgid "Your tasklist as of {now} is attached. Click here to jump back: {jump}"
+msgstr ""
+"Din uppgiftslista från {now} bifogas. Klicka här för att hoppa tillbaka: "
+"{jump}"
+
+#: src/modules/tasklist/ui.py:737
+msgctxt "ui:tasklist|button:save|error:dms"
+msgid "Could not DM you! Do you have me blocked? Tasklist attached below."
+msgstr ""
+"Kunde inte skicka ett DM till dig! Har du blockerat mig? Uppgiftslistan "
+"bifogas nedan."
+
+#: src/modules/tasklist/ui.py:782
+msgctxt "ui:tasklist|error:wrong_user"
+msgid "This is not your tasklist!"
+msgstr "Det här är inte din uppgiftslista!"
+
+#, possible-python-brace-format
+msgctxt "ui:tasklist|embed|author"
+msgid "{name}'s tasklist ({completed}/{total} complete)"
+msgstr "{name}s uppgiftslista ({completed}/{total} slutförda)"
+
+#: src/modules/tasklist/ui.py:846
+msgctxt "ui:tasklist|embed|description"
+msgid ""
+"**You have no tasks on your tasklist!**\n"
+"Add a task with {cmds[tasks new]}, or by pressing the {new_button} button below."
+msgstr ""
+"**Du har inga uppgifter!**\n"
+"Lägg till en med {cmds[tasks new]}, eller tryck på {new_button}-knappen nedan."
+
+#: src/modules/tasklist/settings.py:35
+msgctxt "guildset:task_reward"
+msgid "task_reward"
+msgstr "task_reward"
+
+#: src/modules/tasklist/settings.py:38
+msgctxt "guildset:task_reward|desc"
+msgid "Number of LionCoins given for each completed task."
+msgstr "Antal LionCoins för varje slutförd uppgift."
+
+#: src/modules/tasklist/settings.py:42
+msgctxt "guildset:task_reward|long_desc"
+msgid ""
+"The number of coins members will be rewarded each time they complete a task "
+"on their tasklist."
+msgstr ""
+"Antalet mynt som medlemmar belönas med varje gång de slutför en uppgift."
+
+#: src/modules/tasklist/settings.py:46
+msgctxt "guildset:task_reward|accepts"
+msgid "The number of LionCoins to reward per task."
+msgstr "Antal LionCoins som belöning per uppgift."
+
+#, possible-python-brace-format
+msgctxt "guildset:task_reward|response"
+msgid ""
+"Members will now be rewarded {coin}**{amount}** for each completed task."
+msgstr ""
+"Medlemmar belönas nu med {coin}**{amount}** för varje slutförd uppgift."
+
+#, possible-python-brace-format
+msgctxt "guildset:task_reward|formatted"
+msgid "{coin}**{amount}** per task."
+msgstr "{coin}**{amount}** per uppgift."
+
+#: src/modules/tasklist/settings.py:76
+msgctxt "guildset:task_reward_limit"
+msgid "task_reward_limit"
+msgstr "task_reward_limit"
+
+#: src/modules/tasklist/settings.py:79
+msgctxt "guildset:task_reward_limit|desc"
+msgid "Maximum number of task rewards given per 24h."
+msgstr "Maximalt antal uppgiftsbelöningar per 24h."
+
+#: src/modules/tasklist/settings.py:83
+msgctxt "guildset:task_reward_limit|long_desc"
+msgid ""
+"Maximum number of times in each 24h period that members will be rewarded for"
+" completing a task."
+msgstr ""
+"Maximalt antal gånger per 24-timmarsperiod som medlemmar belönas för att "
+"slutföra en uppgift."
+
+#: src/modules/tasklist/settings.py:88
+msgctxt "guildset:task_reward_limit|accepts"
+msgid "The maximum number of tasks to reward LC for per 24h."
+msgstr "Maximalt antal uppgifter att belöna LC för per 24h."
+
+#, possible-python-brace-format
+msgctxt "guildset:task_reward_limit|response"
+msgid ""
+"Members will now be rewarded for task completion at most **{amount}** times "
+"per 24h."
+msgstr ""
+"Medlemmar belönas nu för uppgiftsslutförande max **{amount}** gånger per "
+"24h."
+
+#, possible-python-brace-format
+msgctxt "guildset:task_reward_limit|formatted"
+msgid "`{number}` per 24 hours."
+msgstr "`{number}` per 24 timmar."
+
+#: src/modules/tasklist/settings.py:117
+msgctxt "guildset:tasklist_channels"
+msgid "tasklist_channels"
+msgstr "tasklist_channels"
+
+#: src/modules/tasklist/settings.py:120
+msgctxt "guildset:tasklist_channels|desc"
+msgid "Channels in which to publicly display member tasklists."
+msgstr "Kanaler där uppgiftslistor visas offentligt."
+
+#, possible-python-brace-format
+msgctxt "guildset:tasklist_channels|long_desc"
+msgid ""
+"A member's tasklist (from {cmds[tasklist]}) is usually only visible to the "
+"member themselves. If set, tasklists opened in `tasklist_channels` will be "
+"visible to all members, and the interface will have a much longer expiry "
+"period. If a category is provided, this will apply to all channels under the"
+" category."
+msgstr ""
+"En medlems uppgiftslista (från {cmds[tasklist]}) är vanligtvis bara synlig "
+"för medlemmen själv. Om inställt, kommer uppgiftslistor öppnade i "
+"`tasklist_channels` att vara synliga för alla medlemmar, och gränssnittet "
+"kommer att ha en mycket längre utgångsperiod. Om en kategori anges, gäller "
+"detta alla kanaler under kategorin."
+
+#: src/modules/tasklist/settings.py:131
+msgctxt "guildset:tasklist_channels|accepts"
+msgid "Comma separated list of tasklist channel names or ids."
+msgstr "Kommaseparerad lista över kanalnamn eller ID:n."
+
+#, possible-python-brace-format
+msgctxt "guildset:tasklist_channels|set_response|set"
+msgid ""
+"Tasklists will now be publicly displayed in the following channels: "
+"{channels}"
+msgstr ""
+"Uppgiftslistor kommer nu att visas offentligt i följande kanaler: {channels}"
+
+#: src/modules/tasklist/settings.py:153
+msgctxt "guildset:tasklist_channels|set_response|unset"
+msgid "Member tasklists will never be publicly displayed."
+msgstr "Uppgiftslistor kommer aldrig att visas offentligt."
+
+#: src/modules/tasklist/settings.py:162
+msgctxt "guildset:tasklist_channels|set_using"
+msgid "Channel selector below."
+msgstr "Kanalväljare nedan."
+
+#: src/modules/tasklist/settings.py:293
+msgctxt "ui:tasklist_config|button:close|label"
+msgid "Close"
+msgstr "Stäng"
+
+#: src/modules/tasklist/settings.py:294
+msgctxt "ui:tasklist_config|button:reset|label"
+msgid "Reset"
+msgstr "Återställ"
+
+#: src/modules/tasklist/settings.py:297
+msgctxt "ui:tasklist_config|menu:channels|placeholder"
+msgid "Set Tasklist Channels"
+msgstr "Ställ in uppgiftslistkanaler"
+
+#: src/modules/tasklist/settings.py:315
+msgctxt "ui:tasklist_config|embed|title"
+msgid "Tasklist Configuration Panel"
+msgstr "Konfigurationspanel för uppgiftslistan"
+
+#: src/modules/tasklist/settings.py:324
+msgctxt "dash:tasklist|name"
+msgid "Tasklist Configuration ({commands[config tasklist]})"
+msgstr "Uppgiftslistkonfiguration ({commands[config tasklist]})"
+
+#: src/modules/tasklist/settings.py:327
+msgctxt "dash:tasklist|dropdown|placeholder"
+msgid "Tasklist Options Panel"
+msgstr "Uppgiftslistans alternativpanel"

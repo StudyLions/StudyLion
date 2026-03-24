@@ -1,0 +1,76 @@
+# Chinese (Traditional) translation for LionBot - wards
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 18:50+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Chinese (Traditional)\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/wards.py:99
+msgctxt "ward:sys_admin|failed"
+msgid "You must be a bot owner to do this!"
+msgstr "您必須是機器人擁有者才能執行此操作！"
+
+#: src/wards.py:115
+msgctxt "ward:high_management|failed"
+msgid "You must have the `ADMINISTRATOR` permission or the configured `admin_role` to do this!"
+msgstr "您必須擁有`ADMINISTRATOR`權限或已配置的`admin_role`才能執行此操作！"
+
+#: src/wards.py:131
+msgctxt "ward:low_management|failed"
+msgid "You must have the `MANAGE_GUILD` permission or the configured `mod_role` to do this!"
+msgstr "您必須擁有`MANAGE_GUILD`權限或已配置的`mod_role`才能執行此操作！"
+
+#: src/wards.py:143
+msgctxt "ward:moderator|failed"
+msgid "You must have the configured moderator role, or `MANAGE_GUILD` permissions to do this."
+msgstr "您必須擁有已配置的管理員角色或`MANAGE_GUILD`權限才能執行此操作。"
+
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:bot_managed"
+msgid "I cannot manage {role} because it is managed by another bot!"
+msgstr "我無法管理{role}，因為它由另一個機器人管理！"
+
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:integration"
+msgid "I cannot manage {role} because it is managed by a server integration."
+msgstr "我無法管理{role}，因為它由伺服器整合管理。"
+
+#: src/wards.py:183
+msgctxt "ward:equippable_role|error:default_role"
+msgid "I cannot manage the server's default role."
+msgstr "我無法管理伺服器的預設角色。"
+
+#: src/wards.py:190
+msgctxt "ward:equippable_role|error:no_perms"
+msgid "I need the `MANAGE_ROLES` permission before I can manage roles!"
+msgstr "我需要`MANAGE_ROLES`權限才能管理角色！"
+
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:my_top_role"
+msgid "I cannot assign or remove {role} because it is above my top role!"
+msgstr "我無法分配或移除{role}，因為它高於我的最高角色！"
+
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:not_assignable"
+msgid "I don't have sufficient permissions to assign or remove {role}."
+msgstr "我沒有足夠的權限來分配或移除{role}。"
+
+#: src/wards.py:212
+msgctxt "ward:equippable_role|error:actor_perms"
+msgid "You need the `MANAGE_ROLES` permission before you can configure roles!"
+msgstr "您需要`MANAGE_ROLES`權限才能配置角色！"
+
+#, possible-python-brace-format
+msgctxt "ward:equippable_role|error:actor_top_role"
+msgid "You cannot configure {role} because it is above your top role!"
+msgstr "您無法配置{role}，因為它高於您的最高角色！"

@@ -1420,4 +1420,58 @@ CREATE TABLE analytics.gui_renders(
 ) INHERITS (analytics.events);
 -- }}}
 
+-- User Subscriptions (Stripe-based LionHeart tiers) {{{
+-- --- AI-MODIFIED (2026-03-16) ---
+-- Purpose: LionHeart subscription tiers (user premium via Stripe recurring billing)
+CREATE TABLE user_subscriptions(
+  userid BIGINT PRIMARY KEY,
+  stripe_customer_id TEXT NOT NULL,
+  stripe_subscription_id TEXT,
+  tier TEXT NOT NULL DEFAULT 'NONE',
+  status TEXT NOT NULL DEFAULT 'INACTIVE',
+  current_period_start TIMESTAMPTZ,
+  current_period_end TIMESTAMPTZ,
+  created_at TIMESTAMPTZ DEFAULT now(),
+  updated_at TIMESTAMPTZ DEFAULT now()
+);
+CREATE INDEX user_subscriptions_stripe_customer ON user_subscriptions (stripe_customer_id);
+-- --- END AI-MODIFIED ---
+-- }}}
+
+-- User Card Preferences (LionHeart effect customization) {{{
+-- --- AI-MODIFIED (2026-03-17) ---
+-- Purpose: Per-user animated card effect preferences (color overrides, enable/disable)
+CREATE TABLE user_card_preferences(
+  userid BIGINT PRIMARY KEY,
+  effects_enabled BOOLEAN NOT NULL DEFAULT true,
+  sparkle_color TEXT,
+  ring_color TEXT,
+  created_at TIMESTAMPTZ DEFAULT now(),
+  updated_at TIMESTAMPTZ DEFAULT now()
+);
+-- --- END AI-MODIFIED ---
+-- }}}
+
+-- Sticky Messages (premium feature, dashboard-only config) {{{
+-- --- AI-MODIFIED (2026-03-22) ---
+-- Purpose: Sticky messages that auto-repost as the last message in a channel
+CREATE TABLE sticky_messages(
+    stickyid SERIAL PRIMARY KEY,
+    guildid BIGINT NOT NULL REFERENCES guild_config(guildid) ON DELETE CASCADE,
+    channelid BIGINT NOT NULL,
+    title TEXT,
+    content TEXT NOT NULL,
+    color INTEGER DEFAULT 3447003,
+    image_url TEXT,
+    footer_text TEXT,
+    interval_seconds INTEGER NOT NULL DEFAULT 60,
+    last_posted_id BIGINT,
+    enabled BOOLEAN NOT NULL DEFAULT TRUE,
+    created_by BIGINT,
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    UNIQUE(guildid, channelid)
+);
+-- --- END AI-MODIFIED ---
+-- }}}
+
 -- vim: set fdm=marker:

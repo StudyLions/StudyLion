@@ -1,0 +1,152 @@
+# German translation for LionBot - config
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 19:57+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: German\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/modules/config/settingui.py:56
+msgctxt "ui:general_config|menu:event_log|placeholder"
+msgid "Select Event Log"
+msgstr "Ereignisprotokoll auswählen"
+
+#: src/modules/config/settingui.py:64
+msgctxt "ui:general_config|embed:title"
+msgid "General Configuration"
+msgstr "Allgemeine Konfiguration"
+
+#: src/modules/config/settingui.py:99
+msgctxt "dash:general|title"
+msgid "General Configuration ({commands[config general]})"
+msgstr "Allgemeine Konfiguration ({commands[config general]})"
+
+#: src/modules/config/settingui.py:103
+msgctxt "dash:general|option|name"
+msgid "General Configuration Panel"
+msgstr "Allgemeines Konfigurationspanel"
+
+#: src/modules/config/cog.py:56 src/modules/config/general.py:52
+msgctxt "cmd:configure_general"
+msgid "general"
+msgstr "general"
+
+#: src/modules/config/cog.py:57 src/modules/config/general.py:53
+msgctxt "cmd:configure_general|desc"
+msgid "General configuration panel"
+msgstr "Allgemeines Konfigurationspanel"
+
+#: src/modules/config/general.py:91
+msgctxt "cmd:configure_general|parse_failure:timezone"
+msgid "Could not set the timezone!"
+msgstr "Ich konnte deine Zeitzone nicht setzen!"
+
+#: src/modules/config/general.py:112
+msgctxt "cmd:configure_general|success"
+msgid "Settings Updated!"
+msgstr "Einstellungen aktualisiert!"
+
+#: src/modules/config/general.py:127
+msgctxt "cmd:configure_general|panel|title"
+msgid "General Configuration Panel"
+msgstr "Allgemeines Konfigurationspanel"
+
+#, possible-python-brace-format
+msgctxt "ui:dashboard|title"
+msgid "Guild Dashboard (Page {page}/{total})"
+msgstr "Server-Dashboard (Seite {page}/{total})"
+
+#: src/modules/config/dashboard.py:110
+msgctxt "ui:dashboard|footer"
+msgid "Hover over setting names for a brief description"
+msgstr "Fahre über die Einstellungen für eine kurze Beschreibung"
+
+#: src/modules/config/dashboard.py:173
+msgctxt "ui:dashboard|menu:config|placeholder"
+msgid "Open Configuration Panel"
+msgstr "Konfigurationspanel öffnen"
+
+#: src/modules/config/settings.py:33
+msgctxt "guildset:timezone"
+msgid "timezone"
+msgstr "Zeitzone"
+
+#: src/modules/config/settings.py:36
+msgctxt "guildset:timezone|desc"
+msgid "Guild timezone for statistics display."
+msgstr "Server-Zeitzone für die Statistikanzeige."
+
+#: src/modules/config/settings.py:40
+msgctxt "guildset:timezone|long_desc"
+msgid ""
+"Guild-wide timezone. Used to determine start of the day for the "
+"leaderboards, and as the default statistics timezone for members who have "
+"not set one."
+msgstr ""
+"Serverweite Zeitzone. Wird verwendet, um den Tagesbeginn für die Ranglisten "
+"zu bestimmen und als Standard-Statistikzeitzone für Mitglieder, die keine "
+"eigene eingestellt haben."
+
+#, possible-python-brace-format
+msgctxt "guildset:timezone|response"
+msgid "The guild timezone has been set to `{timezone}`."
+msgstr "Die Server-Zeitzone wurde auf `{timezone}` eingestellt."
+
+#: src/modules/config/settings.py:66
+msgctxt "guildset:eventlog"
+msgid "event_log"
+msgstr "event_log"
+
+#: src/modules/config/settings.py:69
+msgctxt "guildset:eventlog|desc"
+msgid ""
+"My audit log channel where I send server actions and events (e.g. rankgs and"
+" expiring roles)."
+msgstr ""
+"Mein Audit-Log-Kanal, in dem ich Serveraktionen und Ereignisse sende (z.B. "
+"Ränge und ablaufende R..."
+
+#: src/modules/config/settings.py:73
+msgctxt "guildset:eventlog|long_desc"
+msgid ""
+"If configured, I will log most significant actions taken or events which occur through my interface, into this channel. Logged events include, for example:\n"
+"- Member voice activity\n"
+"- Roles equipped and expiring from rolemenus\n"
+"- Privated rooms rented and expiring\n"
+"- Activity ranks earned\n"
+"I must have the 'Manage Webhooks' permission in this channel."
+msgstr ""
+"Wenn konfiguriert, werde ich die wichtigsten Aktionen oder Ereignisse, die über meine Oberfläche stattfinden, in diesem Kanal protokollieren. Protokollierte Ereignisse umfassen zum Beispiel:\n"
+"- Sprachaktivität von Mitgliedern\n"
+"- Rollen, die aus Rollenmenüs ausgerüstet werden und ablaufen\n"
+"- Gemietete private Räume, die ablaufen\n"
+"- Verdiente Aktivitätsränge\n"
+"Ich benötige die Berechtigung 'Manage Webhooks' in diesem Kanal."
+
+#, possible-python-brace-format
+msgctxt "guildset:eventlog|check_value|error:perms|perm:manage_webhooks"
+msgid ""
+"Cannot set {channel} as an event log! I lack the 'Manage Webhooks' "
+"permission there."
+msgstr ""
+"Kann {channel} nicht als Ereignisprotokoll festlegen! Mir fehlt dort die "
+"Berechtigung 'Manage Webhooks'."
+
+#, possible-python-brace-format
+msgctxt "guildset:eventlog|response|set"
+msgid "Events will now be logged to {channel}"
+msgstr "Ereignisse werden jetzt in {channel} protokolliert"
+
+#: src/modules/config/settings.py:111
+msgctxt "guildset:eventlog|response|unset"
+msgid "Guild events will no longer be logged."
+msgstr "Serverereignisse werden nicht mehr protokolliert."

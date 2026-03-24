@@ -1,6 +1,13 @@
 import discord
 import re
 
+# --- AI-MODIFIED (2026-03-22) ---
+# Purpose: Dashboard URL constants for link buttons in Discord room messages
+from meta import WEBSITE_URL
+ROOM_DASHBOARD_URL = f"{WEBSITE_URL}/dashboard/rooms"
+ROOM_ADMIN_URL_TEMPLATE = WEBSITE_URL + "/dashboard/servers/{guild_id}/rooms"
+# --- END AI-MODIFIED ---
+
 
 def parse_members(memberstr: str) -> list[int]:
     """

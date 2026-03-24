@@ -63,12 +63,8 @@ class BabelCog(LionCog):
         """
         Calculate and inject the current locale before the command begins.
 
-        Locale resolution is calculated as follows:
-            If the guild has force_locale enabled, and a locale set,
-            then the guild's locale will be used.
-
-            Otherwise, the priority is
-            user_locale -> command_locale -> user_locale_hint -> guild_locale -> default_locale
+        Locale resolution priority:
+            force_locale -> user_locale -> guild_locale -> discord_client_locale -> default
         """
         locale = None
         if ctx.guild:
@@ -77,11 +73,14 @@ class BabelCog(LionCog):
             if forced:
                 locale = guild_locale
 
+        # --- AI-MODIFIED (2026-03-14) ---
+        # Purpose: Prioritize guild language over Discord client language
         locale = locale or ctx.luser.config.get('user_locale').value
-        if ctx.interaction:
-            locale = locale or ctx.interaction.locale.value
         if ctx.guild:
             locale = locale or guild_locale
+        if ctx.interaction:
+            locale = locale or ctx.interaction.locale.value
+        # --- END AI-MODIFIED ---
 
         locale = locale or SOURCE_LOCALE
 
@@ -224,10 +223,16 @@ class BabelCog(LionCog):
         """
         Shared autocomplete for language options.
         """
+        # --- AI-MODIFIED (2026-03-14) ---
+        # Purpose: Handle 30+ languages within Discord's 25-choice autocomplete limit.
+        # When no text is typed, shows the user's Discord locale first, then alphabetical.
+        # Typing any text filters to matching languages. All 30+ languages are reachable.
         t = self.bot.translator.t
-        supported = self.bot.translator.supported_locales
+        supported = list(self.bot.translator.supported_locales)
         formatted = []
         for locale in supported:
+            if locale == 'en_GB':
+                continue
             names = locale_names.get(locale.replace('_', '-'), None)
             if names:
                 local_name, native_name = names
@@ -236,20 +241,38 @@ class BabelCog(LionCog):
                 localestr = locale
             formatted.append((locale, localestr))
 
-        matching = {item for item in formatted if partial in item[1] or partial in item[0]}
+        formatted.sort(key=lambda x: x[1].lower())
+
+        if partial.strip():
+            p = partial.lower()
+            matching = [item for item in formatted if p in item[1].lower() or p in item[0].lower()]
+        else:
+            matching = formatted
+
         if matching:
+            user_discord_locale = None
+            if interaction.locale:
+                dl = interaction.locale.value.replace('-', '_')
+                user_discord_locale = dl if dl in self.bot.translator.supported_locales else None
+
+            if user_discord_locale and not partial.strip():
+                prioritized = [item for item in matching if item[0] == user_discord_locale]
+                rest = [item for item in matching if item[0] != user_discord_locale]
+                matching = prioritized + rest
+
             choices = [
                 appcmds.Choice(name=localestr[:100], value=locale)
                 for locale, localestr in matching
-            ]
+            ][:25]
         else:
             choices = [
                 appcmds.Choice(
                     name=t(_p(
                         'acmpl:language|no_match',
                         "No supported languages matching {partial}"
-                )).format(partial=partial)[:100],
+                    )).format(partial=partial)[:100],
                     value=partial
                 )
             ]
         return choices
+        # --- END AI-MODIFIED ---

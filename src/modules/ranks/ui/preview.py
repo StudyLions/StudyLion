@@ -303,8 +303,17 @@ class RankPreviewUI(MessageUI):
             )),
             value=f"{conf.emojis.coin}**{rank.reward}**"
         )
-        replace_map = {pkey: t(lkey) for pkey, lkey in rank_message_keys}
-        message = replace_multiple(rank.message, replace_map)
+        # --- AI-MODIFIED (2026-03-23) ---
+        # Purpose: Guard against None rank message (admins who didn't set a custom message)
+        if rank.message:
+            replace_map = {pkey: t(lkey) for pkey, lkey in rank_message_keys}
+            message = replace_multiple(rank.message, replace_map)
+        else:
+            message = t(_p(
+                'ui:rank_preview|embed|field:message|default',
+                "No custom message set."
+            ))
+        # --- END AI-MODIFIED ---
         embed.add_field(
             name=t(_p(
                 'ui:rank_preview|embed|field:message',

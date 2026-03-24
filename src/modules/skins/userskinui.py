@@ -8,7 +8,7 @@ from discord.ui.select import select, Select, SelectOption
 from gui.base.AppSkin import AppSkin
 from gui.base.Card import Card
 
-from meta import LionBot, conf
+from meta import LionBot, conf, WEBSITE_URL
 from meta.errors import ResponseTimedOut, UserInputError
 from meta.logger import log_wrap
 from modules.premium.data import GemTransactionType
@@ -519,11 +519,19 @@ class UserSkinUI(MessageUI):
         else:
             action = self.equip_button
 
+        # --- AI-MODIFIED (2026-03-17) ---
+        # Purpose: Added web link button for skin inventory with live previews
+        _web = discord.ui.Button(
+            label="All Skins", emoji="🌐",
+            url=f"{WEBSITE_URL}/dashboard/inventory",
+            style=discord.ButtonStyle.link,
+        )
         self.set_layout(
-            (self.gift_button, self.price_button, action, self.quit_button,),
+            (self.gift_button, self.price_button, action, _web, self.quit_button,),
             (self.skin_menu,),
             (self.card_menu,),
         )
+        # --- END AI-MODIFIED ---
 
     async def reload(self):
         """

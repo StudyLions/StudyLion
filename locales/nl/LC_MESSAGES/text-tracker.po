@@ -1,0 +1,196 @@
+# Dutch translation for LionBot - text-tracker
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 20:24+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Dutch\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/tracking/text/cog.py:307
+msgctxt "cmd:configure_message_exp"
+msgid "message_exp"
+msgstr "message_exp"
+
+#: src/tracking/text/cog.py:310
+msgctxt "cmd:configure_message_exp|desc"
+msgid "Configure Message Tracking & Experience"
+msgstr "Berichtentracking en ervaring configureren"
+
+#: src/tracking/text/cog.py:372
+msgctxt "cmd:leo_configure_exp_rates"
+msgid "experience_rates"
+msgstr "experience_rates"
+
+#: src/tracking/text/cog.py:375
+msgctxt "cmd:leo_configure_exp_rates|desc"
+msgid "Global experience rate configuration"
+msgstr "Globale ervaringssnelheid configuratie"
+
+#: src/tracking/text/ui.py:46
+msgctxt "ui:text_tracker_config|menu:untracked_channels|placeholder"
+msgid "Select Untracked Channels"
+msgstr "Selecteer niet-gevolgde kanalen"
+
+#: src/tracking/text/ui.py:53
+msgctxt "ui:text_tracker_config|embed|title"
+msgid "Message Tracking Configuration Panel"
+msgstr "Berichtentracking configuratiepaneel"
+
+#: src/tracking/text/ui.py:90
+msgctxt "dash:text_tracking|title"
+msgid "Message XP configuration ({commands[config message_exp]})"
+msgstr "Bericht-XP configuratie ({commands[config message_exp]})"
+
+#: src/tracking/text/ui.py:94
+msgctxt "dash:text_tracking|dropdown|placeholder"
+msgid "Message XP Panel"
+msgstr "Bericht-XP paneel"
+
+#: src/tracking/text/settings.py:35
+msgctxt "guildset:xp_per_period"
+msgid "xp_per_5min"
+msgstr "xp_per_5min"
+
+#: src/tracking/text/settings.py:38
+msgctxt "guildset:xp_per_period|desc"
+msgid "How much XP members will be given every 5 minute period they are active."
+msgstr "Hoeveel XP leden krijgen per 5 minuten actieve periode."
+
+#: src/tracking/text/settings.py:42
+msgctxt "guildset:xp_per_period|long_desc"
+msgid "Amount of message XP to give members for each 5 minute period in which they are active (send a message). Note that this XP is only given *once* per period."
+msgstr "Hoeveelheid bericht-XP per 5 minuten periode waarin ze actief zijn (een bericht sturen). Deze XP wordt slechts *één keer* per periode gegeven."
+
+#: src/tracking/text/settings.py:47
+msgctxt "guildset:xp_per_period|accepts"
+msgid "Number of message XP to reward per 5 minute active period."
+msgstr "Aantal bericht-XP als beloning per 5 minuten actieve periode."
+
+#, possible-python-brace-format
+msgctxt "guildset:xp_per_period|set_response"
+msgid "For every **5** minutes they are active (i.e. in which they send a message), members will now be given **{amount}** XP."
+msgstr "Voor elke **5** minuten dat ze actief zijn (d.w.z. een bericht sturen), krijgen leden nu **{amount}** XP."
+
+#: src/tracking/text/settings.py:68
+msgctxt "guildset:word_xp"
+msgid "xp_per_100words"
+msgstr "xp_per_100words"
+
+#: src/tracking/text/settings.py:71
+msgctxt "guildset:word_xp|desc"
+msgid "How much XP members will be given per hundred words they write."
+msgstr "Hoeveel XP leden krijgen per honderd geschreven woorden."
+
+#: src/tracking/text/settings.py:75
+msgctxt "guildset:word_xp|long_desc"
+msgid "Amount of message XP to be given (additionally to the XP per period) for each hundred words. Useful for rewarding communication."
+msgstr "Hoeveelheid bericht-XP (bovenop de XP per periode) per honderd woorden. Nuttig om communicatie te belonen."
+
+#: src/tracking/text/settings.py:80
+msgctxt "guildset:word_xp|accepts"
+msgid "Number of XP to reward per hundred words sent."
+msgstr "Aantal XP als beloning per honderd verzonden woorden."
+
+#, possible-python-brace-format
+msgctxt "guildset:word_xp|set_response"
+msgid "For every **100** words they send, members will now be rewarded an additional **{amount}** XP."
+msgstr "Voor elke **100** woorden die ze sturen, krijgen leden nu extra **{amount}** XP."
+
+#: src/tracking/text/settings.py:99
+msgctxt "guildset:untracked_text_channels"
+msgid "untracked_text_channels"
+msgstr "untracked_text_channels"
+
+#: src/tracking/text/settings.py:102
+msgctxt "guildset:untracked_text_channels|desc"
+msgid "Channels in which Message XP will not be given."
+msgstr "Kanalen waarin geen bericht-XP wordt gegeven."
+
+#: src/tracking/text/settings.py:106
+msgctxt "guildset:untracked_text_channels|long_desc"
+msgid "Messages sent in these channels will not count towards a member's message XP. If a category is selected, then all channels under the category will also be untracked."
+msgstr "Berichten in deze kanalen tellen niet mee voor bericht-XP. Als een categorie is geselecteerd, worden ook alle kanalen eronder niet gevolgd."
+
+#: src/tracking/text/settings.py:111
+msgctxt "guildset:untracked_text_channels|accepts"
+msgid "Comma separated list of untracked text channel names or ids."
+msgstr "Door komma's gescheiden lijst van niet-gevolgde tekstkanaalnamen of ID's."
+
+#: src/tracking/text/settings.py:115
+msgctxt "guildset:untracked_text_channels|notset"
+msgid "Not Set (all text channels will be tracked.)"
+msgstr "Niet ingesteld (alle tekstkanalen worden gevolgd.)"
+
+#, possible-python-brace-format
+msgctxt "guildset:untracked_text_channels|set_response|set"
+msgid "Messages in or under the following channels will be ignored: {channels}"
+msgstr "Berichten in de volgende kanalen worden genegeerd: {channels}"
+
+#: src/tracking/text/settings.py:137
+msgctxt "guildset:untracked_text_channels|set_response|notset"
+msgid "Message XP will now be tracked in every channel."
+msgstr "Bericht-XP wordt nu in elk kanaal gevolgd."
+
+#: src/tracking/text/settings.py:146
+msgctxt "guildset:untracked_text_channels|set_using"
+msgid "Channel selector below"
+msgstr "Kanaalkiezer hieronder"
+
+#: src/tracking/text/settings.py:177
+msgctxt "botset:xp_per_period"
+msgid "xp_per_5min"
+msgstr "xp_per_5min"
+
+#: src/tracking/text/settings.py:180
+msgctxt "botset:xp_per_period|desc"
+msgid "How much global XP members will be given every 5 minute period they are active."
+msgstr "Hoeveel globale XP leden krijgen per 5 minuten actieve periode."
+
+#: src/tracking/text/settings.py:184
+msgctxt "botset:xp_per_period|long_desc"
+msgid "Amount of global message XP to give members for each 5 minute period in which they are active (send a message). Note that this XP is only given *once* per period."
+msgstr "Hoeveelheid globale bericht-XP per 5 minuten actieve periode (bericht sturen). Deze XP wordt slechts *één keer* per periode gegeven."
+
+#: src/tracking/text/settings.py:190
+msgctxt "botset:xp_per_period|accepts"
+msgid "Number of message XP to reward per 5 minute active period."
+msgstr "Aantal bericht-XP als beloning per 5 minuten actieve periode."
+
+#, possible-python-brace-format
+msgctxt "leoset:xp_per_period|set_response"
+msgid "For every **5** minutes they are active (i.e. in which they send a message), all users will now be given **{amount}** global XP."
+msgstr "Voor elke **5** minuten dat ze actief zijn (d.w.z. een bericht sturen), krijgen alle gebruikers nu **{amount}** globale XP."
+
+#: src/tracking/text/settings.py:210
+msgctxt "botset:word_xp"
+msgid "xp_per_100words"
+msgstr "xp_per_100words"
+
+#: src/tracking/text/settings.py:213
+msgctxt "botset:word_xp|desc"
+msgid "How much global XP members will be given per hundred words they write."
+msgstr "Hoeveel globale XP leden krijgen per honderd geschreven woorden."
+
+#: src/tracking/text/settings.py:217
+msgctxt "botset:word_xp|long_desc"
+msgid "Amount of global message XP to be given (additionally to the XP per period) for each hundred words. Useful for rewarding communication."
+msgstr "Hoeveelheid globale bericht-XP (bovenop de XP per periode) per honderd woorden. Nuttig om communicatie te belonen."
+
+#: src/tracking/text/settings.py:222
+msgctxt "botset:word_xp|accepts"
+msgid "Number of XP to reward per hundred words sent."
+msgstr "Aantal XP als beloning per honderd verzonden woorden."
+
+#, possible-python-brace-format
+msgctxt "leoset:word_xp|set_response"
+msgid "For every **100** words they send, users will now be rewarded an additional **{amount}** global XP."
+msgstr "Voor elke **100** woorden die ze sturen, krijgen gebruikers nu extra **{amount}** globale XP."

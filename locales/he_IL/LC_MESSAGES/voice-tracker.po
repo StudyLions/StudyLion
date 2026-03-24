@@ -1,72 +1,61 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
-# Translators:
-# Interitio, 2023
-# Ari Horesh, 2023
-# 
-#, fuzzy
+# Hebrew translation for LionBot - voice-tracker
+# AI-translated with human Transifex contributions where available.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: LionBot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-24 14:37+0300\n"
-"PO-Revision-Date: 2023-08-28 13:43+0000\n"
-"Last-Translator: Ari Horesh, 2023\n"
-"Language-Team: Hebrew (Israel) (https://app.transifex.com/leobot/teams/174919/he_IL/)\n"
+"PO-Revision-Date: 2026-03-13 20:24+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Hebrew\n"
+"Language: he_IL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: he_IL\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
 
 #: src/tracking/voice/session.py:293
 msgctxt "eventlog|event:voice_session_expired|title"
 msgid "Member Voice Session Expired"
-msgstr ""
+msgstr "פג תוקף הפגישה הקולית של החבר"
 
-#: src/tracking/voice/session.py:297
 #, possible-python-brace-format
 msgctxt "eventlog|event:voice_session_expired|desc"
 msgid ""
 "{member}'s voice session in {channel} expired because they reached the daily"
 " voice cap."
-msgstr ""
+msgstr "הפגישה הקולית של {member} ב-{channel} פגה כי הגיעו למגבלה היומית."
 
 #: src/tracking/voice/session.py:336
 msgctxt "eventlog|event:voice_session_closed|title"
 msgid "Member Voice Session Ended"
-msgstr ""
+msgstr "הפגישה הקולית של החבר הסתיימה"
 
-#: src/tracking/voice/session.py:340
 #, possible-python-brace-format
 msgctxt "eventlog|event:voice_session_closed|desc"
 msgid "{member} completed their voice session in {channel}."
-msgstr ""
+msgstr "{member} השלים/ה את הפגישה הקולית ב-{channel}."
 
 #: src/tracking/voice/session.py:352
 msgctxt "eventlog|event:voice_session_cancelled|title"
 msgid "Member Voice Session Cancelled"
-msgstr ""
+msgstr "הפגישה הקולית של החבר בוטלה"
 
-#: src/tracking/voice/session.py:356
 #, possible-python-brace-format
 msgctxt "eventlog|event:voice_session_cancelled|desc"
 msgid "{member} left {channel} before their voice session started."
-msgstr ""
+msgstr "{member} עזב/ה את {channel} לפני שהפגישה הקולית התחילה."
 
 #: src/tracking/voice/cog.py:518
 msgctxt "eventlog|event:voice_session_start|title"
 msgid "Member Joined Tracked Voice Channel"
-msgstr ""
+msgstr "חבר הצטרף לערוץ קולי מעוקב"
 
-#: src/tracking/voice/cog.py:522
 #, possible-python-brace-format
 msgctxt "eventlog|event:voice_session_start|desc"
 msgid "{member} joined {channel}."
-msgstr ""
+msgstr "{member} הצטרף/ה ל-{channel}."
 
 #: src/tracking/voice/cog.py:657
 msgctxt "cmd:now"
@@ -116,7 +105,6 @@ msgid ""
 "session."
 msgstr "אין לך סשנים שרצים כרגע, הצטרף לערוץ קולי כדי להתחיל את הסשן שלך!"
 
-#: src/tracking/voice/cog.py:715
 #, possible-python-brace-format
 msgctxt "cmd:now|target:other|error:target_inactive"
 msgid "{mention} has no running session!"
@@ -147,7 +135,6 @@ msgctxt "cmd:now|target:other|mode:clear|success|title"
 msgid "Session Tag Cleared!"
 msgstr "תאגית הסשן נוקתה!"
 
-#: src/tracking/voice/cog.py:761
 #, possible-python-brace-format
 msgctxt "cmd:now|target:other|mode:clear|success|desc"
 msgid "Cleared {target}'s session tag."
@@ -158,7 +145,6 @@ msgctxt "cmd:now|target:self|mode:set|success|title"
 msgid "Session Tag Set!"
 msgstr "תאג לסשן לא נקבע!"
 
-#: src/tracking/voice/cog.py:777
 #, possible-python-brace-format
 msgctxt "cmd:now|target:self|mode:set|success|desc"
 msgid "You are now working on `{new_tag}`. Good luck!"
@@ -179,19 +165,16 @@ msgctxt "cmd:now|target:other|mode:set|success|title"
 msgid "Session Tag Set!"
 msgstr "תאג לסשן לא נקבע!"
 
-#: src/tracking/voice/cog.py:804
 #, possible-python-brace-format
 msgctxt "cmd:now|target:other|mode:set|success|desc"
 msgid "Set {target}'s session tag to `{new_tag}`."
 msgstr "שנה את התאג של {target} אל `{new_tag}`."
 
-#: src/tracking/voice/cog.py:813
 #, possible-python-brace-format
 msgctxt "cmd:now|target:self|mode:show_with_tag|desc"
 msgid "You have been working on **`{tag}`** in {channel} since {time}!"
 msgstr "אתה עובד על  **`{tag}`** בערוץ {channel} במשך {time}!"
 
-#: src/tracking/voice/cog.py:818
 #, possible-python-brace-format
 msgctxt "cmd:now|target:self|mode:show_without_tag|desc"
 msgid ""
@@ -203,7 +186,6 @@ msgstr ""
 "\n"
 " `/now <tag>` כדי להראות לכולם על מה אתה עובד תמשתמש ב."
 
-#: src/tracking/voice/cog.py:825
 #, possible-python-brace-format
 msgctxt "cmd:now|target:other|mode:show_with_tag|desc"
 msgid ""
@@ -213,7 +195,6 @@ msgstr ""
 "{target} עובד כרגע בערוץ  {channel}!\n"
 "הם עובדים על **{tag}** מאז {time}."
 
-#: src/tracking/voice/cog.py:831
 #, possible-python-brace-format
 msgctxt "cmd:now|target:other|mode:show_without_tag|desc"
 msgid "{target} has been working in {channel} since {time}!"
@@ -229,7 +210,6 @@ msgctxt "cmd:configure_voice_rates|desc"
 msgid "Configure Voice tracking rewards and experience"
 msgstr "ערוך מעקב זמנים ונקודות ניסיון"
 
-#: src/tracking/voice/cog.py:913
 #, possible-python-brace-format
 msgctxt "cmd:configure_voice_tracking|mode:voice|resp:success|desc"
 msgid ""
@@ -238,9 +218,8 @@ msgid ""
 " day."
 msgstr ""
 "משתמשים עכשיו יקבלו {coin}**{base} (+ {bonus})** לכל שעה שהם מבלים בערוץ "
-"קולי, והם לא יוכלו לעבור **{cap}** ביממה. "
+"קולי, והם לא יוכלו לעבור..."
 
-#: src/tracking/voice/cog.py:924
 #, possible-python-brace-format
 msgctxt "cmd:configure_voice_tracking|mode:study|resp:success|desc"
 msgid ""
@@ -249,8 +228,7 @@ msgid ""
 "up to a total of **{cap}** hours per server day."
 msgstr ""
 "משתמשים יקבלו {coin}**{base}** על כל שעה שהם ילמדו בשרת הזה, עם בונוס של  "
-"{coin}**{bonus}** אם הם פותחים מצלמה או משתפים את המסך שלהם, עם המגבלה של "
-"**{cap}** שעות ביום."
+"{coin}**{bonus}** אם הם..."
 
 #: src/tracking/voice/settings.py:42
 msgctxt "guildset:untracked_channels"
@@ -286,7 +264,6 @@ msgctxt "guildset:untracked_channels|set"
 msgid "Channel selector below."
 msgstr "בחירת ערוצים בתחתית."
 
-#: src/tracking/voice/settings.py:84
 #, possible-python-brace-format
 msgctxt "guildset:untracked_channels|set_response|set"
 msgid "Activity in the following channels will now be ignored: {channels}"
@@ -319,13 +296,11 @@ msgctxt "guildset:hourly_reward|accepts"
 msgid "Number of coins to reward per hour in voice."
 msgstr "מספר מטבעות שמשתמש יקבל כל שעה בערוץ קול."
 
-#: src/tracking/voice/settings.py:147
 #, possible-python-brace-format
 msgctxt "guildset:hourly_reward|formatted"
 msgid "{coin}**{amount}** per hour."
 msgstr "{coin}**{amount}** לשעה."
 
-#: src/tracking/voice/settings.py:162
 #, possible-python-brace-format
 msgctxt "guildset:hourly_reward|mode:voice|response"
 msgid "Members will be given {coin}**{amount}** per hour in a voice channel!"
@@ -341,7 +316,6 @@ msgctxt "guildset:hourly_reward|mode:study|long_desc"
 msgid "Number of LionCoins given per hour of study, up to the daily hour cap."
 msgstr "מספר מטבעות שיקבלו כל שעת למידה בערוץ קולי עד המגבלה."
 
-#: src/tracking/voice/settings.py:186
 #, possible-python-brace-format
 msgctxt "guildset:hourly_reward|mode:study|response"
 msgid "Members will be given {coin}**{amount}** per hour that they study!"
@@ -372,13 +346,11 @@ msgid "Number of bonus coins to reward per hour when live."
 msgstr ""
 "מספר מטבעות שמשתמש יקבל כל שעה בערוץ קול כשהם פותחים מצלמה או משתפים מסך."
 
-#: src/tracking/voice/settings.py:230
 #, possible-python-brace-format
 msgctxt "guildset:hourly_live_bonus|formatted"
 msgid "{coin}**{amount}** bonus per hour when live."
 msgstr "{coin}**{amount}** לשעה כשמשתמש פותח מצלמה או משתף מסך."
 
-#: src/tracking/voice/settings.py:241
 #, possible-python-brace-format
 msgctxt "guildset:hourly_live_bonus|response"
 msgid ""
@@ -410,7 +382,6 @@ msgctxt "guildset:daily_voice_cap|accepts"
 msgid "The maximum number of voice hours to track per day."
 msgstr "מספר השעון המקסימלי שאעקוב אחריו כל יממה."
 
-#: src/tracking/voice/settings.py:282
 #, possible-python-brace-format
 msgctxt "guildset:daily_voice_cap|response"
 msgid ""
@@ -453,7 +424,7 @@ msgstr "בחר ערוצים ללא מעקב"
 #: src/tracking/voice/settings.py:537
 msgctxt "dash:voice_tracker|title"
 msgid "Voice Tracker Configuration ({commands[config voice_rewards]})"
-msgstr ""
+msgstr "הגדרת מעקב קולי ({commands[config voice_rewards]})"
 
 #: src/tracking/voice/settings.py:541
 msgctxt "dash:voice_tracking|dropdown|placeholder"

@@ -1,0 +1,814 @@
+# Indonesian translation for LionBot - statistics
+# AI-translated with human Transifex contributions where available.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LionBot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-24 14:37+0300\n"
+"PO-Revision-Date: 2026-03-13 21:59+0000\n"
+"Last-Translator: AI (Claude)\n"
+"Language-Team: Indonesian\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/modules/statistics/cog.py:47
+msgctxt "cmd:me"
+msgid "me"
+msgstr "me"
+
+#: src/modules/statistics/cog.py:50
+msgctxt "cmd:me|desc"
+msgid "Edit your personal profile and see your statistics."
+msgstr "Edit profil pribadi dan lihat statistikmu."
+
+#: src/modules/statistics/cog.py:63
+msgctxt "cmd:profile"
+msgid "profile"
+msgstr "profile"
+
+#: src/modules/statistics/cog.py:66
+msgctxt "cmd:profile|desc"
+msgid "Display the target's profile and statistics summary."
+msgstr "Tampilkan profil dan ringkasan statistik target."
+
+#: src/modules/statistics/cog.py:70
+msgctxt "cmd:profile|param:member"
+msgid "member"
+msgstr "member"
+
+#: src/modules/statistics/cog.py:74
+msgctxt "cmd:profile|param:member|desc"
+msgid "Member to display profile for."
+msgstr "Anggota yang profilnya akan ditampilkan."
+
+#: src/modules/statistics/cog.py:110
+msgctxt "cmd:stats"
+msgid "stats"
+msgstr "stats"
+
+#: src/modules/statistics/cog.py:113
+msgctxt "cmd:stats|desc"
+msgid "Weekly and monthly statistics for your recent activity."
+msgstr "Statistik mingguan dan bulanan untuk aktivitas terbaru kamu."
+
+#: src/modules/statistics/cog.py:131
+msgctxt "cmd:leaderboard"
+msgid "leaderboard"
+msgstr "leaderboard"
+
+#: src/modules/statistics/cog.py:134
+msgctxt "cmd:leaderboard|desc"
+msgid "Server leaderboard."
+msgstr "Papan peringkat server."
+
+#, possible-python-brace-format
+msgctxt "cmd:leaderboard|chunking|desc"
+msgid "Requesting server member list from Discord, please wait {loading}"
+msgstr "Meminta daftar anggota server dari Discord, harap tunggu {loading}"
+
+#: src/modules/statistics/cog.py:170
+msgctxt "cmd:achievements"
+msgid "achievements"
+msgstr "achievements"
+
+#: src/modules/statistics/cog.py:173
+msgctxt "cmd:achievements|desc"
+msgid "View your progress towards the activity achievement awards!"
+msgstr "Lihat progresmu menuju penghargaan pencapaian aktivitas!"
+
+#: src/modules/statistics/cog.py:190
+msgctxt "cmd:achievements|embed:title"
+msgid "Achievements"
+msgstr "Pencapaian"
+
+#: src/modules/statistics/cog.py:208
+msgctxt "cmd:configure_statistics"
+msgid "statistics"
+msgstr "statistics"
+
+#: src/modules/statistics/cog.py:209
+msgctxt "cmd:configure_statistics|desc"
+msgid "Statistics configuration panel"
+msgstr "Panel konfigurasi statistik"
+
+#: src/modules/statistics/cog.py:212
+msgctxt "cmd:configure_statistics|param:season_start"
+msgid "season_start"
+msgstr "season_start"
+
+#: src/modules/statistics/cog.py:217
+msgctxt "cmd:configure_statistics|param:season_start|desc"
+msgid "Time from which to start counting activity for rank badges and season leaderboards. (YYYY-MM-DD)"
+msgstr "Waktu mulai menghitung aktivitas untuk lencana peringkat dan papan peringkat musiman. (YYYY-MM-DD)"
+
+#: src/modules/statistics/achievements.py:77
+msgctxt "achievement|congrats"
+msgid "Congratulations! You have completed this challenge."
+msgstr "Selamat! Kamu telah menyelesaikan tantangan ini."
+
+#: src/modules/statistics/achievements.py:146
+msgctxt "achievement:workout|name"
+msgid "It's about Power"
+msgstr "Ini soal kekuatan"
+
+#: src/modules/statistics/achievements.py:150
+msgctxt "achievement:workout|subtext"
+msgid "Workout 50 times"
+msgstr "Olahraga 50 kali"
+
+#: src/modules/statistics/achievements.py:170
+msgctxt "achievement:voicehours|name"
+msgid "Dream Big"
+msgstr "Bermimpi besar"
+
+#: src/modules/statistics/achievements.py:174
+msgctxt "achievement:voicehours|subtext"
+msgid "Study a total of 1000 hours"
+msgstr "Belajar total 1000 jam"
+
+#: src/modules/statistics/achievements.py:196
+msgctxt "achievement:voicestreak|name"
+msgid "Consistency is Key"
+msgstr "Konsistensi adalah kunci"
+
+#: src/modules/statistics/achievements.py:200
+msgctxt "achievement:voicestreak|subtext"
+msgid "Reach a 100-day voice streak"
+msgstr "Raih streak voice 100 hari"
+
+#: src/modules/statistics/achievements.py:283
+msgctxt "achievement:voting|name"
+msgid "We're a Team"
+msgstr "Kita satu tim"
+
+#: src/modules/statistics/achievements.py:287
+msgctxt "achievement:voting|subtext"
+msgid "Vote 100 times on top.gg"
+msgstr "Vote 100 kali di top.gg"
+
+#: src/modules/statistics/achievements.py:304
+msgctxt "achievement:days|name"
+msgid "Aim For The Moon"
+msgstr "Bidik bulan"
+
+#: src/modules/statistics/achievements.py:308
+msgctxt "achievement:days|subtext"
+msgid "Join Voice on 90 different days"
+msgstr "Bergabung ke voice di 90 hari berbeda"
+
+#: src/modules/statistics/achievements.py:333
+msgctxt "achievement:tasks|name"
+msgid "One Step at a Time"
+msgstr "Selangkah demi selangkah"
+
+#: src/modules/statistics/achievements.py:337
+msgctxt "achievement:tasks|subtext"
+msgid "Complete 1000 tasks"
+msgstr "Selesaikan 1000 tugas"
+
+#: src/modules/statistics/achievements.py:363
+msgctxt "achievement:schedule|name"
+msgid "Be Accountable"
+msgstr "Bertanggung jawab"
+
+#: src/modules/statistics/achievements.py:367
+msgctxt "achievement:schedule|subtext"
+msgid "Attend 500 Scheduled Sessions"
+msgstr "Hadiri 500 sesi terjadwal"
+
+#: src/modules/statistics/achievements.py:392
+msgctxt "achievement:monthlyhours|name"
+msgid "The 30 Days Challenge"
+msgstr "Tantangan 30 hari"
+
+#: src/modules/statistics/achievements.py:396
+msgctxt "achievement:monthlyhours|subtext"
+msgid "Be active for 100 hours in a month"
+msgstr "Aktif selama 100 jam dalam sebulan"
+
+#: src/modules/statistics/settings.py:38
+msgctxt "settype:stat|output:voice"
+msgid "`Voice`"
+msgstr "`Suara`"
+
+#: src/modules/statistics/settings.py:39
+msgctxt "settype:stat|output:text"
+msgid "`Text`"
+msgstr "`Teks`"
+
+#: src/modules/statistics/settings.py:40
+msgctxt "settype:stat|output:anki"
+msgid "`Anki`"
+msgstr "`Anki`"
+
+#: src/modules/statistics/settings.py:43
+msgctxt "settype:stat|input_format:voice"
+msgid "Voice"
+msgstr "Suara"
+
+#: src/modules/statistics/settings.py:44
+msgctxt "settype:stat|input_format:text"
+msgid "Text"
+msgstr "Teks"
+
+#: src/modules/statistics/settings.py:45
+msgctxt "settype:stat|input_format:anki"
+msgid "Anki"
+msgstr "Anki"
+
+#: src/modules/statistics/settings.py:48
+msgctxt "settype:stat|input_pattern:voice"
+msgid "voice|study"
+msgstr "suara|belajar|voice|study"
+
+#: src/modules/statistics/settings.py:49
+msgctxt "settype:stat|input_pattern:text"
+msgid "text|messages"
+msgstr "teks|pesan|text|messages"
+
+#: src/modules/statistics/settings.py:50
+msgctxt "settype:stat|input_pattern:anki"
+msgid "anki"
+msgstr "anki"
+
+#: src/modules/statistics/settings.py:54
+msgctxt "settype:state|accepts"
+msgid "Voice/Text/Anki"
+msgstr "Suara/Teks/Anki"
+
+#: src/modules/statistics/settings.py:67
+msgctxt "userset:show_global_stats"
+msgid "global_stats"
+msgstr "global_stats"
+
+#: src/modules/statistics/settings.py:70
+msgctxt "userset:show_global_stats|desc"
+msgid "Whether displayed statistics include all your servers."
+msgstr "Apakah statistik yang ditampilkan mencakup semua servermu."
+
+#: src/modules/statistics/settings.py:74
+msgctxt "userset:show_global_stats|long_desc"
+msgid "Whether statistics commands display combined stats for all servers or just your current server."
+msgstr "Apakah perintah statistik menampilkan data gabungan semua server atau hanya server saat ini."
+
+#: src/modules/statistics/settings.py:90
+msgctxt "guildset:season_start"
+msgid "season_start"
+msgstr "season_start"
+
+#: src/modules/statistics/settings.py:93
+msgctxt "guildset:season_start|desc"
+msgid "Start of the current statistics season."
+msgstr "Awal musim statistik saat ini."
+
+#: src/modules/statistics/settings.py:97
+msgctxt "guildset:season_start|long_desc"
+msgid ""
+"Activity ranks will be determined based on tracked activity since this time, and the leaderboard will display activity since this time by default. Unset to disable seasons and use all-time statistics instead.\n"
+"Provided dates and times are assumed to be in the guild `timezone`, so set this first!"
+msgstr ""
+"Peringkat aktivitas akan ditentukan berdasarkan aktivitas yang dilacak sejak waktu ini, dan papan peringkat akan menampilkan aktivitas sejak waktu ini secara default. Hapus untuk menonaktifkan musim dan menggunakan statistik sepanjang waktu.\n"
+"Tanggal dan waktu yang diberikan diasumsikan berada dalam `timezone` server, jadi atur ini terlebih dahulu!"
+
+#: src/modules/statistics/settings.py:104
+msgctxt "guildset:season_start|accepts"
+msgid "The season start time in the form YYYY-MM-DD HH:MM"
+msgstr "Waktu mulai musim dalam format YYYY-MM-DD HH:MM"
+
+#: src/modules/statistics/settings.py:108
+msgctxt "guildset:season_start|notset"
+msgid "Not Set (Using all-time statistics)"
+msgstr "Tidak diatur (Menggunakan statistik sepanjang waktu)"
+
+#, possible-python-brace-format
+msgctxt "guildset:season_start|parse|error:future_time"
+msgid "Provided season start time {timestamp} is in the future!"
+msgstr "Waktu mulai musim yang diberikan {timestamp} berada di masa depan!"
+
+#, possible-python-brace-format
+msgctxt "guildset:season_start|set_response|set"
+msgid ""
+"The leaderboard season and activity ranks will now count from {timestamp}. Member ranks will update when they are next active.\n"
+"Use {rank_cmd} and press **Refresh Member Ranks** to refresh all ranks immediately."
+msgstr ""
+"Musim papan peringkat dan peringkat aktivitas sekarang dihitung dari {timestamp}. Peringkat anggota akan diperbarui saat mereka aktif berikutnya.\n"
+"Gunakan {rank_cmd} dan tekan **Refresh Member Ranks** untuk memperbarui semua peringkat segera."
+
+#, possible-python-brace-format
+msgctxt "guildset:season_start|set_response|unset"
+msgid ""
+"The leaderboard and activity ranks will now count all-time statistics. Member ranks will update when they are next active.\n"
+"Use {rank_cmd} and press **Refresh Member Ranks** to refresh all ranks immediately."
+msgstr ""
+"Papan peringkat dan peringkat aktivitas sekarang menghitung statistik sepanjang waktu. Peringkat anggota akan diperbarui saat mereka aktif berikutnya.\n"
+"Gunakan {rank_cmd} dan tekan **Refresh Member Ranks** untuk memperbarui semua peringkat segera."
+
+#: src/modules/statistics/settings.py:162
+msgctxt "guildset:unranked_roles"
+msgid "unranked_roles"
+msgstr "unranked_roles"
+
+#: src/modules/statistics/settings.py:165
+msgctxt "guildset:unranked_roles|desc"
+msgid "Roles to exclude from the leaderboards."
+msgstr "Role yang dikecualikan dari papan peringkat."
+
+#: src/modules/statistics/settings.py:169
+msgctxt "guildset:unranked_roles|long_desc"
+msgid "When set, members with *any* of these roles will not appear on the /leaderboard ranking list."
+msgstr "Saat diatur, anggota dengan *salah satu* role ini tidak akan muncul di daftar peringkat /leaderboard."
+
+#: src/modules/statistics/settings.py:173
+msgctxt "guildset:unranked_roles|accepts"
+msgid "Comma separated list of unranked role names or ids."
+msgstr "Daftar nama role atau ID yang tidak berperingkat, dipisahkan koma."
+
+#: src/modules/statistics/settings.py:189
+msgctxt "guildset:unranked_roles|set_using"
+msgid "Role selector below."
+msgstr "Pemilih role di bawah."
+
+#, possible-python-brace-format
+msgctxt "guildset:unranked_roles|set_response|set"
+msgid "Members of the following roles will not appear on the leaderboard: {roles}"
+msgstr "Anggota dengan role berikut tidak akan muncul di papan peringkat: {roles}"
+
+#: src/modules/statistics/settings.py:206
+msgctxt "guildset:unranked_roles|set_response|unset"
+msgid "You have cleared the unranked role list."
+msgstr "Kamu telah mengosongkan daftar role yang tidak berperingkat."
+
+#: src/modules/statistics/settings.py:221
+msgctxt "guildset:visible_stats"
+msgid "visible_stats"
+msgstr "visible_stats"
+
+#: src/modules/statistics/settings.py:224
+msgctxt "guildset:visible_stats|desc"
+msgid "Which statistics will be visible in the statistics commands."
+msgstr "Statistik mana yang akan terlihat di perintah statistik."
+
+#: src/modules/statistics/settings.py:228
+msgctxt "guildset:visible_stats|desc"
+msgid "Choose which statistics types to display in the leaderboard and statistics commands."
+msgstr "Pilih jenis statistik mana yang akan ditampilkan di papan peringkat dan perintah statistik."
+
+#: src/modules/statistics/settings.py:232
+msgctxt "guildset:visible_stats|accepts"
+msgid "Voice, Text, Anki"
+msgstr "Suara, Teks, Anki"
+
+#: src/modules/statistics/settings.py:253
+msgctxt "guildset:visible_stats|set_using"
+msgid "Option menu below."
+msgstr "Menu pilihan di bawah."
+
+#, possible-python-brace-format
+msgctxt "guildset:visible_stats|set_response"
+msgid "Members will be able to view the following statistics types: {types}"
+msgstr "Anggota akan dapat melihat jenis statistik berikut: {types}"
+
+#: src/modules/statistics/settings.py:272
+msgctxt "guildset:default_stat"
+msgid "default_stat"
+msgstr "default_stat"
+
+#: src/modules/statistics/settings.py:275
+msgctxt "guildset:default_stat|desc"
+msgid "Statistic type to display by default in setting dialogues."
+msgstr "Jenis statistik yang ditampilkan secara default di dialog pengaturan."
+
+#: src/modules/statistics/settings.py:279
+msgctxt "guildset:default_stat|long_desc"
+msgid "Which statistic type to display by default in setting dialogues."
+msgstr "Jenis statistik mana yang ditampilkan secara default di dialog pengaturan."
+
+#: src/modules/statistics/settings.py:313
+msgctxt "ui:statistics_config|menu:unranked_roles|placeholder"
+msgid "Select Unranked Roles"
+msgstr "Pilih Role Tidak Berperingkat"
+
+#: src/modules/statistics/settings.py:338
+msgctxt "ui:statistics_config|menu:visible_stats|item:voice|mode:voice"
+msgid "Voice Activity"
+msgstr "Aktivitas suara"
+
+#: src/modules/statistics/settings.py:343
+msgctxt "ui:statistics_config|menu:visible_stats|item:voice|mode:study"
+msgid "Study Statistics"
+msgstr "Statistik belajar"
+
+#: src/modules/statistics/settings.py:353
+msgctxt "ui:statistics_config|menu:visible_stats|item:text"
+msgid "Message Activity"
+msgstr "Aktivitas pesan"
+
+#: src/modules/statistics/settings.py:361
+msgctxt "ui:statistics_config|menu:visible_stats|item:anki"
+msgid "Anki Reviews"
+msgstr "Ulasan Anki"
+
+#: src/modules/statistics/settings.py:372
+msgctxt "ui:statistics_config|menu:visible_stats|placeholder"
+msgid "Select Visible Statistics"
+msgstr "Pilih Statistik yang Terlihat"
+
+#: src/modules/statistics/settings.py:393
+msgctxt "ui:statistics_config|embed|title"
+msgid "Statistics Configuration Panel"
+msgstr "Panel konfigurasi statistik"
+
+#: src/modules/statistics/settings.py:415
+msgctxt "dash:stats|title"
+msgid "Activity Statistics Configuration ({commands[admin config statistics]})"
+msgstr "Konfigurasi Statistik Aktivitas ({commands[admin config statistics]})"
+
+#: src/modules/statistics/settings.py:419
+msgctxt "dash:stats|dropdown|placeholder"
+msgid "Activity Statistics Panel"
+msgstr "Panel Statistik Aktivitas"
+
+#, possible-python-brace-format
+msgctxt "gui:stats|mode:voice|month"
+msgid "{hours} hours"
+msgstr "{hours} jam"
+
+#: src/modules/statistics/ui/goals.py:92
+msgctxt "ui:MonthlyUI|name"
+msgid "Monthly"
+msgstr "Bulanan"
+
+#: src/modules/statistics/ui/goals.py:135
+msgctxt "ui:WeeklyUI|name"
+msgid "Weekly"
+msgstr "Mingguan"
+
+#: src/modules/statistics/ui/summary.py:18
+msgctxt "ui:SummaryUI|name"
+msgid "Summary"
+msgstr "Ringkasan"
+
+#: src/modules/statistics/ui/weeklymonthly.py:96
+msgctxt "menu:stat_type|opt:weekly_voice|name"
+msgid "Weekly Voice Statistics"
+msgstr "Statistik Suara Mingguan"
+
+#: src/modules/statistics/ui/weeklymonthly.py:101
+msgctxt "menu:stat_type|opt:weekly_text|name"
+msgid "Weekly Text Statistics"
+msgstr "Statistik Teks Mingguan"
+
+#: src/modules/statistics/ui/weeklymonthly.py:106
+msgctxt "menu:stat_type|opt:weekly_anki|name"
+msgid "Weekly Anki Statistics"
+msgstr "Statistik Anki Mingguan"
+
+#: src/modules/statistics/ui/weeklymonthly.py:112
+msgctxt "menu:stat_type|opt:monthly_voice|name"
+msgid "Monthly Voice Statistics"
+msgstr "Statistik Suara Bulanan"
+
+#: src/modules/statistics/ui/weeklymonthly.py:117
+msgctxt "menu:stat_type|opt:monthly_text|name"
+msgid "Monthly Text Statistics"
+msgstr "Statistik Teks Bulanan"
+
+#: src/modules/statistics/ui/weeklymonthly.py:122
+msgctxt "menu:stat_type|opt:monthly_anki|name"
+msgid "Monthly Anki Statistics"
+msgstr "Statistik Anki Bulanan"
+
+#: src/modules/statistics/ui/weeklymonthly.py:144
+msgctxt "modal:goal_editor|field:task_goal|label"
+msgid "Task goal"
+msgstr "Target tugas"
+
+#: src/modules/statistics/ui/weeklymonthly.py:148
+msgctxt "modal:goal_editor|field:task_goal|placeholder"
+msgid "Enter the number of tasklist tasks you aim to do"
+msgstr "Masukkan jumlah tugas yang ingin kamu selesaikan"
+
+#, possible-python-brace-format
+msgctxt "modal:goal_editor|field:task_goal|error:NAN"
+msgid "The provided task goal `{input}` is not a number! Please try again."
+msgstr "Target tugas yang diberikan `{input}` bukan angka! Silakan coba lagi."
+
+#: src/modules/statistics/ui/weeklymonthly.py:181
+msgctxt "modal:goal_editor|field:voice_goal|label"
+msgid "Study time goal"
+msgstr "Target waktu belajar"
+
+#: src/modules/statistics/ui/weeklymonthly.py:185
+msgctxt "modal:goal_editor|field:voice_goal|placeholder"
+msgid "Enter a number of hours of study to aim for."
+msgstr "Masukkan jumlah jam belajar yang ditargetkan."
+
+#: src/modules/statistics/ui/weeklymonthly.py:190
+msgctxt "modal:goal_editor|field:text_goal|label"
+msgid "Message goal"
+msgstr "Target pesan"
+
+#: src/modules/statistics/ui/weeklymonthly.py:194
+msgctxt "modal:goal_editor|field:text_goal|placeholder"
+msgid "Enter a message count to aim for."
+msgstr "Masukkan jumlah pesan yang ditargetkan."
+
+#: src/modules/statistics/ui/weeklymonthly.py:199
+msgctxt "modal:goal_editor|field:anki_goal|label"
+msgid "Card goal"
+msgstr "Target kartu"
+
+#: src/modules/statistics/ui/weeklymonthly.py:203
+msgctxt "modal:goal_editor|field:anki_goal|label"
+msgid "Enter a number of card revisions to aim for."
+msgstr "Masukkan jumlah revisi kartu yang ditargetkan."
+
+#, possible-python-brace-format
+msgctxt "modal:goal_editor|field:voice_goal|error:NAN"
+msgid "The provided study time goal `{input}` is not a number! Please try again."
+msgstr "Target waktu belajar yang diberikan `{input}` bukan angka! Silakan coba lagi."
+
+#, possible-python-brace-format
+msgctxt "modal:goal_editor|field:text_goal|error:NAN"
+msgid "The provided message goal `{input}` is not a number! Please try again."
+msgstr "Target pesan yang diberikan `{input}` bukan angka! Silakan coba lagi."
+
+#, possible-python-brace-format
+msgctxt "modal:goal_editor|field:anki_goal|error:NAN"
+msgid "The provided card goal `{input}` is not a number! Please try again."
+msgstr "Target kartu yang diberikan `{input}` bukan angka! Silakan coba lagi."
+
+#: src/modules/statistics/ui/weeklymonthly.py:252
+msgctxt "modal:goal_editor|field:weekly_task_editor|label"
+msgid "Tasks to complete this week (one per line)"
+msgstr "Tugas yang harus diselesaikan minggu ini (satu per baris)"
+
+#: src/modules/statistics/ui/weeklymonthly.py:256
+msgctxt "modal:goal_editor|field:weekly_task_editor|placeholder"
+msgid ""
+"[ ] Write my biology essay\n"
+"[x] Complete the second maths assignment\n"
+msgstr ""
+"[ ] Tulis esai biologi\n"
+"[x] Selesaikan tugas matematika kedua\n"
+
+#: src/modules/statistics/ui/weeklymonthly.py:262
+msgctxt "modal:goal_editor|field:monthly_task_editor|label"
+msgid "Tasks to complete this month (one per line)"
+msgstr "Tugas yang harus diselesaikan bulan ini (satu per baris)"
+
+#: src/modules/statistics/ui/weeklymonthly.py:266
+msgctxt "modal:goal_editor|field:monthly_task_editor|placeholder"
+msgid ""
+"[ ] Write my biology essay\n"
+"[x] Complete the second maths assignment\n"
+msgstr ""
+"[ ] Tulis esai biologi\n"
+"[x] Selesaikan tugas matematika kedua\n"
+
+#, possible-python-brace-format
+msgctxt "modal:goal_editor||field:task_editor|error:parse_general"
+msgid ""
+"Malformed task!\n"
+"`{input}`"
+msgstr ""
+"Tugas salah format!\n"
+"`{input}`"
+
+#: src/modules/statistics/ui/weeklymonthly.py:301
+msgctxt "modal:goal_editor|title"
+msgid "Weekly goal editor"
+msgstr "Editor target mingguan"
+
+#: src/modules/statistics/ui/weeklymonthly.py:306
+msgctxt "modal:goal_editor|monthly|title"
+msgid "Monthly goal editor"
+msgstr "Editor target bulanan"
+
+#: src/modules/statistics/ui/weeklymonthly.py:503
+msgctxt "ui:weeklymonthly|button:edit_goals|label"
+msgid "Edit Goals"
+msgstr "Edit Target"
+
+#, possible-python-brace-format
+msgctxt "ui:weeklymonthly|menu:period|monthly|label"
+msgid "{month} {year}"
+msgstr "{month} {year}"
+
+#, possible-python-brace-format
+msgctxt "ui:weeklymonthly|menu:period|weekly|label"
+msgid "{year} W{week}"
+msgstr "{year} W{week}"
+
+#, possible-python-brace-format
+msgctxt "ui:weeklymonthly|menu:period|weekly|desc"
+msgid "{start_day} {start_month} {start_year} to {end_day} {end_month} {end_year}"
+msgstr "{start_day} {start_month} {start_year} hingga {end_day} {end_month} {end_year}"
+
+#: src/modules/statistics/ui/weeklymonthly.py:616
+msgctxt "ui:weeklymonthly|button:period|close|label"
+msgid "Close Selector"
+msgstr "Tutup Pemilih"
+
+#: src/modules/statistics/ui/weeklymonthly.py:621
+msgctxt "ui:weeklymonthly|button:period|weekly|label"
+msgid "Select Week"
+msgstr "Pilih Minggu"
+
+#: src/modules/statistics/ui/weeklymonthly.py:626
+msgctxt "ui:weeklymonthly|button:period|monthly|label"
+msgid "Select Month"
+msgstr "Pilih Bulan"
+
+#: src/modules/statistics/ui/weeklymonthly.py:691
+msgctxt "ui:weeklymonthly|menu:period|weekly|placeholder"
+msgid "Select a week to display"
+msgstr "Pilih minggu untuk ditampilkan"
+
+#: src/modules/statistics/ui/weeklymonthly.py:696
+msgctxt "ui:weeklymonthly|menu:period|monthly|placeholder"
+msgid "Select a month to display"
+msgstr "Pilih bulan untuk ditampilkan"
+
+#: src/modules/statistics/ui/weeklymonthly.py:718
+msgctxt "ui:WeeklyMonthly|button:global|resp:success"
+msgid "You will now see combined statistics from all your servers (where applicable)! Press again to revert."
+msgstr "Kamu sekarang akan melihat statistik gabungan dari semua servermu (jika berlaku)! Tekan lagi untuk kembali."
+
+#: src/modules/statistics/ui/weeklymonthly.py:731
+msgctxt "ui:WeeklyMonthly|button:global|mode:local"
+msgid "Server Statistics"
+msgstr "Statistik Server"
+
+#: src/modules/statistics/ui/weeklymonthly.py:736
+msgctxt "ui:WeeklyMonthly|button:global|mode:global"
+msgid "Global Statistics"
+msgstr "Statistik Global"
+
+#: src/modules/statistics/ui/profile.py:41
+msgctxt "modal:profile_editor|field:editor|label"
+msgid "Profile Tags (One line per tag)"
+msgstr "Tag Profil (satu per baris)"
+
+#: src/modules/statistics/ui/profile.py:45
+msgctxt "modal:profile_editor|field:editor|placeholder"
+msgid ""
+"Mathematician\n"
+"Loves Cats"
+msgstr ""
+"Matematikawan\n"
+"Suka kucing"
+
+#: src/modules/statistics/ui/profile.py:53
+msgctxt "modal:profile_editor|title"
+msgid "Profile Tag Editor"
+msgstr "Editor Tag Profil"
+
+#, possible-python-brace-format
+msgctxt "modal:profile_editor|error:too_many_tags"
+msgid "Too many tags! You can have at most `{limit}` profile tags."
+msgstr "Terlalu banyak tag! Kamu bisa memiliki paling banyak `{limit}` tag profil."
+
+#: src/modules/statistics/ui/profile.py:92
+msgctxt "menu:stat_type|opt:voice|name"
+msgid "Voice Statistics"
+msgstr "Statistik Suara"
+
+#: src/modules/statistics/ui/profile.py:97
+msgctxt "menu:stat_type|opt:text|name"
+msgid "Text Statistics"
+msgstr "Statistik Teks"
+
+#: src/modules/statistics/ui/profile.py:102
+msgctxt "menu:stat_type|opt:anki|name"
+msgid "Anki Statistics"
+msgstr "Statistik Anki"
+
+#: src/modules/statistics/ui/profile.py:190
+msgctxt "modal:profile_editor|resp:success"
+msgid "Your profile has been updated!"
+msgstr "Profilmu telah diperbarui!"
+
+#: src/modules/statistics/ui/profile.py:200
+msgctxt "ui:profile_card|button:edit|label"
+msgid "Edit Profile Badges"
+msgstr "Edit Lencana Profil"
+
+#: src/modules/statistics/ui/profile.py:219
+msgctxt "ui:profile_card|button:statistics|label:hide"
+msgid "Hide Statistics"
+msgstr "Sembunyikan Statistik"
+
+#: src/modules/statistics/ui/profile.py:224
+msgctxt "ui:profile_card|button:statistics|label:show"
+msgid "Show Statistics"
+msgstr "Tampilkan Statistik"
+
+#: src/modules/statistics/ui/profile.py:253
+msgctxt "ui:Profile|button:global|resp:success"
+msgid "You will now see statistics from all you servers (where applicable)! Press again to revert."
+msgstr "Kamu sekarang akan melihat statistik dari semua servermu (jika berlaku)! Tekan lagi untuk kembali."
+
+#: src/modules/statistics/ui/leaderboard.py:257
+msgctxt "ui:leaderboard|menu:stats|placeholder"
+msgid "Select Activity Type"
+msgstr "Pilih Jenis Aktivitas"
+
+#: src/modules/statistics/ui/leaderboard.py:266
+msgctxt "ui:leaderboard|menu:stats|item:voice"
+msgid "Voice Activity"
+msgstr "Aktivitas suara"
+
+#: src/modules/statistics/ui/leaderboard.py:277
+msgctxt "ui:leaderboard|menu:stats|item:study"
+msgid "Study Statistics"
+msgstr "Statistik belajar"
+
+#: src/modules/statistics/ui/leaderboard.py:288
+msgctxt "ui:leaderboard|menu:stats|item:message"
+msgid "Message Activity"
+msgstr "Aktivitas pesan"
+
+#: src/modules/statistics/ui/leaderboard.py:299
+msgctxt "ui:leaderboard|menu;stats|item:anki"
+msgid "Anki Cards Reviewed"
+msgstr "Kartu Anki Diulas"
+
+#: src/modules/statistics/ui/leaderboard.py:353
+msgctxt "ui:leaderboard|button:season|label"
+msgid "This Season"
+msgstr "Musim ini"
+
+#: src/modules/statistics/ui/leaderboard.py:357
+msgctxt "ui:leaderboard|button:day|label"
+msgid "Today"
+msgstr "Hari ini"
+
+#: src/modules/statistics/ui/leaderboard.py:361
+msgctxt "ui:leaderboard|button:week|label"
+msgid "This Week"
+msgstr "Minggu ini"
+
+#: src/modules/statistics/ui/leaderboard.py:365
+msgctxt "ui:leaderboard|button:month|label"
+msgid "This Month"
+msgstr "Bulan ini"
+
+#: src/modules/statistics/ui/leaderboard.py:369
+msgctxt "ui:leaderboard|button:alltime|label"
+msgid "All Time"
+msgstr "Sepanjang waktu"
+
+#: src/modules/statistics/ui/leaderboard.py:373
+msgctxt "ui:leaderboard|button:jump|label"
+msgid "Jump"
+msgstr "Lompat"
+
+#: src/modules/statistics/ui/leaderboard.py:388
+msgctxt "ui:leaderboard|button:jump|input:title"
+msgid "Jump to page"
+msgstr "Lompat ke halaman"
+
+#: src/modules/statistics/ui/leaderboard.py:392
+msgctxt "ui:leaderboard|button:jump|input:question"
+msgid "Page number to jump to"
+msgstr "Nomor halaman tujuan"
+
+#: src/modules/statistics/ui/leaderboard.py:403
+msgctxt "ui:leaderboard|button:jump|error:invalid_page"
+msgid "Invalid page number, please try again!"
+msgstr "Nomor halaman tidak valid, silakan coba lagi!"
+
+#: src/modules/statistics/ui/leaderboard.py:447
+msgctxt "ui:leaderboard|chunk_warning"
+msgid "**Note:** Could not retrieve member list from Discord, so some members may be missing. Try again in a minute!"
+msgstr "**Catatan:** Tidak dapat mengambil daftar anggota dari Discord, jadi beberapa anggota mungkin hilang. Coba lagi dalam satu menit!"
+
+#, possible-python-brace-format
+msgctxt "ui:leaderboard|since"
+msgid "Counting statistics since {timestamp}"
+msgstr "Menghitung statistik sejak {timestamp}"
+
+#, possible-python-brace-format
+msgctxt "ui:leaderboard|mode:voice|message:empty|desc"
+msgid "There has been no voice activity since {timestamp}"
+msgstr "Tidak ada aktivitas suara sejak {timestamp}"
+
+#, possible-python-brace-format
+msgctxt "ui:leaderboard|mode:text|message:empty|desc"
+msgid "There has been no message activity since {timestamp}"
+msgstr "Tidak ada aktivitas pesan sejak {timestamp}"
+
+#, possible-python-brace-format
+msgctxt "ui:leaderboard|mode:anki|message:empty|desc"
+msgid "There have been no Anki cards reviewed since {timestamp}"
+msgstr "Tidak ada kartu Anki yang diulas sejak {timestamp}"
+
+#: src/modules/statistics/ui/leaderboard.py:486
+msgctxt "ui:leaderboard|message:empty|title"
+msgid "Leaderboard Empty!"
+msgstr "Papan peringkat kosong!"
