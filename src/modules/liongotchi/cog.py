@@ -8,6 +8,7 @@ import logging
 import asyncio
 import traceback
 import time as _time
+import math
 from datetime import datetime, timezone
 from io import BytesIO
 import random
@@ -41,6 +42,7 @@ from .gameplay import (
     DAILY_GOLD_CAP, DAILY_XP_CAP, DAILY_DROP_CAP, LG_MSG_COOLDOWN_SECONDS,
     LG_TEXT_SESSION_MSG_CAP,
     calc_mood, MOOD_MULTIPLIERS, MOOD_LABELS, MOOD_EMOJI,
+    award_family_xp, family_level_from_xp,
 )
 # --- END AI-MODIFIED ---
 
@@ -2491,6 +2493,2197 @@ class FarmView(discord.ui.View):
 
 
 # ============================================================
+# Friends System Views
+# ============================================================
+# --- AI-GENERATED (2026-03-24) ---
+# Purpose: Full friend system UI for Discord -- hub, pending requests,
+#          friends list, add friend modal, and friend pet care view.
+
+def _calc_max_friends(pet_level: int) -> int:
+    return min(20, 10 + (pet_level - 1) // 5)
+
+
+class FriendsHubView(discord.ui.View):
+    """Hub showing friend count, pending count, and navigation buttons."""
+
+    def __init__(self, cog: 'LionGotchiCog', user_id: int, guild_id: int):
+        super().__init__(timeout=120)
+        self.cog = cog
+        self.user_id = user_id
+        self.guild_id = guild_id
+        self.friend_count = 0
+        self.max_friends = 10
+        self.pending_count = 0
+        self.outgoing_count = 0
+
+    async def load_data(self):
+        pet = await _db_fetch(self.cog.bot,
+            "SELECT level FROM lg_pets WHERE userid = %s", self.user_id)
+        level = pet[0]['level'] if pet else 1
+        self.max_friends = _calc_max_friends(level)
+
+        friends = await _db_fetch(self.cog.bot,
+            "SELECT COUNT(*) AS cnt FROM lg_friends WHERE userid1 = %s OR userid2 = %s",
+            self.user_id, self.user_id)
+        self.friend_count = friends[0]['cnt'] if friends else 0
+
+        pending = await _db_fetch(self.cog.bot,
+            "SELECT COUNT(*) AS cnt FROM lg_friend_requests WHERE to_userid = %s AND status = 'PENDING'",
+            self.user_id)
+        self.pending_count = pending[0]['cnt'] if pending else 0
+
+        outgoing = await _db_fetch(self.cog.bot,
+            "SELECT COUNT(*) AS cnt FROM lg_friend_requests WHERE from_userid = %s AND status = 'PENDING'",
+            self.user_id)
+        self.outgoing_count = outgoing[0]['cnt'] if outgoing else 0
+
+        if self.pending_count > 0:
+            self.pending_button.style = discord.ButtonStyle.red
+            self.pending_button.label = f"Pending ({self.pending_count})"
+        else:
+            self.pending_button.style = discord.ButtonStyle.grey
+            self.pending_button.label = "Pending (0)"
+
+    def make_embed(self):
+        embed = discord.Embed(
+            title="\U0001F465 Friends",
+            description=(
+                f"**Friends:** {self.friend_count}/{self.max_friends}\n"
+                f"**Incoming requests:** {self.pending_count}\n"
+                f"**Outgoing requests:** {self.outgoing_count}\n\n"
+                "Visit a friend's pet to feed, bathe, or water their farm!"
+            ),
+            color=0x5865F2
+        )
+        embed.set_footer(text="Friend limit increases every 5 pet levels")
+        return embed
+
+    async def interaction_check(self, interaction: discord.Interaction) -> bool:
+        if interaction.user.id != self.user_id:
+            await interaction.response.send_message(
+                "Use `/pet` to open your own pet!", ephemeral=True)
+            return False
+        return True
+
+    @discord.ui.button(label="My Friends", emoji="\U0001F465", style=discord.ButtonStyle.green, row=0)
+    async def friends_list_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.response.defer()
+        view = FriendsListView(self.cog, self.user_id, self.guild_id)
+        await view.load_friends()
+        await interaction.edit_original_response(
+            content=None, embed=view.make_embed(), view=view, attachments=[])
+
+    @discord.ui.button(label="Pending (0)", emoji="\U0001F4E8", style=discord.ButtonStyle.grey, row=0)
+    async def pending_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.response.defer()
+        view = PendingRequestsView(self.cog, self.user_id, self.guild_id)
+        await view.load_requests()
+        await interaction.edit_original_response(
+            content=None, embed=view.make_embed(), view=view, attachments=[])
+
+    @discord.ui.button(label="Add Friend", emoji="\u2795", style=discord.ButtonStyle.blurple, row=0)
+    async def add_friend_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.response.send_modal(AddFriendModal(self.cog, self.user_id, self.guild_id))
+
+    @discord.ui.button(label="Back to Pet", emoji="\U0001F519", style=discord.ButtonStyle.grey, row=1)
+    async def back_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await self.cog._show_pet(interaction, edit=True)
+
+
+class PendingRequestsView(discord.ui.View):
+    """Shows incoming pending friend requests with accept/decline."""
+
+    PAGE_SIZE = 5
+
+    def __init__(self, cog: 'LionGotchiCog', user_id: int, guild_id: int):
+        super().__init__(timeout=120)
+        self.cog = cog
+        self.user_id = user_id
+        self.guild_id = guild_id
+        self.requests = []
+        self.page = 0
+
+    async def load_requests(self):
+        rows = await _db_fetch(self.cog.bot,
+            """SELECT fr.request_id, fr.from_userid, fr.created_at,
+                      uc.name AS sender_name, p.pet_name, p.level
+               FROM lg_friend_requests fr
+               JOIN user_config uc ON uc.userid = fr.from_userid
+               LEFT JOIN lg_pets p ON p.userid = fr.from_userid
+               WHERE fr.to_userid = %s AND fr.status = 'PENDING'
+               ORDER BY fr.created_at DESC""",
+            self.user_id)
+        self.requests = rows or []
+        self._update_buttons()
+
+    def _update_buttons(self):
+        total_pages = max(1, (len(self.requests) + self.PAGE_SIZE - 1) // self.PAGE_SIZE)
+        self.prev_button.disabled = self.page <= 0
+        self.next_button.disabled = self.page >= total_pages - 1
+
+        self.request_select.options = []
+        start = self.page * self.PAGE_SIZE
+        page_items = self.requests[start:start + self.PAGE_SIZE]
+        if page_items:
+            for req in page_items:
+                name = req['sender_name'] or str(req['from_userid'])
+                pet_info = f" (Lv.{req['level']} {req['pet_name']})" if req.get('pet_name') else ""
+                self.request_select.options.append(
+                    discord.SelectOption(
+                        label=f"{name}{pet_info}"[:100],
+                        value=str(req['request_id']),
+                        description="Select to accept or decline"
+                    )
+                )
+            self.request_select.disabled = False
+        else:
+            self.request_select.options = [
+                discord.SelectOption(label="No pending requests", value="none")
+            ]
+            self.request_select.disabled = True
+        self.accept_button.disabled = True
+        self.decline_button.disabled = True
+        self._selected_request_id = None
+
+    def make_embed(self):
+        if not self.requests:
+            return discord.Embed(
+                title="\U0001F4E8 Pending Friend Requests",
+                description="No pending requests!",
+                color=0x5865F2
+            )
+        total_pages = max(1, (len(self.requests) + self.PAGE_SIZE - 1) // self.PAGE_SIZE)
+        start = self.page * self.PAGE_SIZE
+        page_items = self.requests[start:start + self.PAGE_SIZE]
+
+        lines = []
+        for req in page_items:
+            name = req['sender_name'] or str(req['from_userid'])
+            pet_info = f" (Lv.{req['level']} {req['pet_name']})" if req.get('pet_name') else ""
+            ts = int(req['created_at'].timestamp()) if req.get('created_at') else 0
+            lines.append(f"\u2022 **{name}**{pet_info} \u2014 <t:{ts}:R>")
+
+        embed = discord.Embed(
+            title="\U0001F4E8 Pending Friend Requests",
+            description="\n".join(lines),
+            color=0x5865F2
+        )
+        embed.set_footer(text=f"Page {self.page + 1}/{total_pages} \u2022 {len(self.requests)} total \u2022 Select a request, then Accept or Decline")
+        return embed
+
+    async def interaction_check(self, interaction: discord.Interaction) -> bool:
+        if interaction.user.id != self.user_id:
+            await interaction.response.send_message(
+                "Use `/pet` to open your own pet!", ephemeral=True)
+            return False
+        return True
+
+    @discord.ui.select(placeholder="Select a request...", row=0, min_values=1, max_values=1)
+    async def request_select(self, interaction: discord.Interaction, select: discord.ui.Select):
+        val = select.values[0]
+        if val == "none":
+            await interaction.response.defer()
+            return
+        self._selected_request_id = int(val)
+        self.accept_button.disabled = False
+        self.decline_button.disabled = False
+        await interaction.response.edit_message(view=self)
+
+    @discord.ui.button(label="Accept", emoji="\u2705", style=discord.ButtonStyle.green, row=1, disabled=True)
+    async def accept_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.response.defer()
+        rid = self._selected_request_id
+        if not rid:
+            return
+
+        req = await _db_fetch(self.cog.bot,
+            "SELECT * FROM lg_friend_requests WHERE request_id = %s AND status = 'PENDING'", rid)
+        if not req:
+            await interaction.followup.send("Request no longer exists.", ephemeral=True)
+            await self.load_requests()
+            await interaction.edit_original_response(embed=self.make_embed(), view=self)
+            return
+
+        req = req[0]
+        from_id = req['from_userid']
+
+        my_pet = await _db_fetch(self.cog.bot, "SELECT level FROM lg_pets WHERE userid = %s", self.user_id)
+        their_pet = await _db_fetch(self.cog.bot, "SELECT level FROM lg_pets WHERE userid = %s", from_id)
+        if not my_pet or not their_pet:
+            await interaction.followup.send("One of you no longer has a pet.", ephemeral=True)
+            return
+
+        my_max = _calc_max_friends(my_pet[0]['level'])
+        their_max = _calc_max_friends(their_pet[0]['level'])
+
+        my_count = await _db_fetch(self.cog.bot,
+            "SELECT COUNT(*) AS cnt FROM lg_friends WHERE userid1 = %s OR userid2 = %s",
+            self.user_id, self.user_id)
+        their_count = await _db_fetch(self.cog.bot,
+            "SELECT COUNT(*) AS cnt FROM lg_friends WHERE userid1 = %s OR userid2 = %s",
+            from_id, from_id)
+
+        if (my_count[0]['cnt'] if my_count else 0) >= my_max:
+            await interaction.followup.send(f"You've reached your friend limit ({my_max}).", ephemeral=True)
+            return
+        if (their_count[0]['cnt'] if their_count else 0) >= their_max:
+            await interaction.followup.send("The sender has reached their friend limit.", ephemeral=True)
+            return
+
+        lower, upper = (self.user_id, from_id) if self.user_id < from_id else (from_id, self.user_id)
+        await _db_exec(self.cog.bot,
+            "INSERT INTO lg_friends (userid1, userid2) VALUES (%s, %s) ON CONFLICT DO NOTHING",
+            lower, upper)
+        await _db_exec(self.cog.bot,
+            "UPDATE lg_friend_requests SET status = 'ACCEPTED' WHERE request_id = %s", rid)
+
+        name_row = await _db_fetch(self.cog.bot,
+            "SELECT name FROM user_config WHERE userid = %s", from_id)
+        sender_name = name_row[0]['name'] if name_row and name_row[0].get('name') else str(from_id)
+        await interaction.followup.send(f"\u2705 You are now friends with **{sender_name}**!", ephemeral=True)
+        await self.load_requests()
+        await interaction.edit_original_response(embed=self.make_embed(), view=self)
+
+    @discord.ui.button(label="Decline", emoji="\u274C", style=discord.ButtonStyle.red, row=1, disabled=True)
+    async def decline_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.response.defer()
+        rid = self._selected_request_id
+        if not rid:
+            return
+
+        await _db_exec(self.cog.bot,
+            "UPDATE lg_friend_requests SET status = 'DECLINED' WHERE request_id = %s AND status = 'PENDING'",
+            rid)
+        await interaction.followup.send("\u274C Request declined.", ephemeral=True)
+        await self.load_requests()
+        await interaction.edit_original_response(embed=self.make_embed(), view=self)
+
+    @discord.ui.button(label="Prev", style=discord.ButtonStyle.grey, row=2, disabled=True)
+    async def prev_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        self.page = max(0, self.page - 1)
+        self._update_buttons()
+        await interaction.response.edit_message(embed=self.make_embed(), view=self)
+
+    @discord.ui.button(label="Next", style=discord.ButtonStyle.grey, row=2, disabled=True)
+    async def next_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        self.page += 1
+        self._update_buttons()
+        await interaction.response.edit_message(embed=self.make_embed(), view=self)
+
+    @discord.ui.button(label="Back", emoji="\U0001F519", style=discord.ButtonStyle.grey, row=2)
+    async def back_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.response.defer()
+        view = FriendsHubView(self.cog, self.user_id, self.guild_id)
+        await view.load_data()
+        await interaction.edit_original_response(
+            content=None, embed=view.make_embed(), view=view, attachments=[])
+
+
+class FriendsListView(discord.ui.View):
+    """Paginated list of friends with select to visit."""
+
+    PAGE_SIZE = 5
+
+    def __init__(self, cog: 'LionGotchiCog', user_id: int, guild_id: int):
+        super().__init__(timeout=120)
+        self.cog = cog
+        self.user_id = user_id
+        self.guild_id = guild_id
+        self.friends = []
+        self.page = 0
+
+    async def load_friends(self):
+        rows = await _db_fetch(self.cog.bot,
+            """SELECT f.userid1, f.userid2, f.created_at,
+                      uc.name AS friend_name,
+                      p.pet_name, p.level, p.food, p.bath, p.sleep
+               FROM lg_friends f
+               JOIN user_config uc ON uc.userid = CASE
+                   WHEN f.userid1 = %s THEN f.userid2 ELSE f.userid1 END
+               LEFT JOIN lg_pets p ON p.userid = CASE
+                   WHEN f.userid1 = %s THEN f.userid2 ELSE f.userid1 END
+               WHERE f.userid1 = %s OR f.userid2 = %s
+               ORDER BY p.level DESC NULLS LAST""",
+            self.user_id, self.user_id, self.user_id, self.user_id)
+        self.friends = []
+        for r in (rows or []):
+            fid = r['userid2'] if r['userid1'] == self.user_id else r['userid1']
+            self.friends.append({**r, 'friend_id': fid})
+        self._update_buttons()
+
+    def _update_buttons(self):
+        total_pages = max(1, (len(self.friends) + self.PAGE_SIZE - 1) // self.PAGE_SIZE)
+        self.prev_button.disabled = self.page <= 0
+        self.next_button.disabled = self.page >= total_pages - 1
+
+        self.friend_select.options = []
+        start = self.page * self.PAGE_SIZE
+        page_items = self.friends[start:start + self.PAGE_SIZE]
+        if page_items:
+            for f in page_items:
+                name = f['friend_name'] or str(f['friend_id'])
+                pet_info = f" \u2022 Lv.{f['level']} {f['pet_name']}" if f.get('pet_name') else ""
+                self.friend_select.options.append(
+                    discord.SelectOption(
+                        label=f"{name}{pet_info}"[:100],
+                        value=str(f['friend_id']),
+                        description="Visit this friend's pet"
+                    )
+                )
+            self.friend_select.disabled = False
+        else:
+            self.friend_select.options = [
+                discord.SelectOption(label="No friends yet", value="none")
+            ]
+            self.friend_select.disabled = True
+
+    def make_embed(self):
+        if not self.friends:
+            return discord.Embed(
+                title="\U0001F465 My Friends",
+                description="You don't have any friends yet!\nUse **Add Friend** from the Friends menu to send a request.",
+                color=0x5865F2
+            )
+        total_pages = max(1, (len(self.friends) + self.PAGE_SIZE - 1) // self.PAGE_SIZE)
+        start = self.page * self.PAGE_SIZE
+        page_items = self.friends[start:start + self.PAGE_SIZE]
+
+        e_steak = _lg_emoji('lg_steak', '\U0001F356')
+        e_soap = _lg_emoji('lg_soap', '\U0001F9FC')
+        e_sleep = _lg_emoji('lg_sleep', '\U0001F4A4')
+
+        lines = []
+        for f in page_items:
+            name = f['friend_name'] or str(f['friend_id'])
+            pet_name = f.get('pet_name') or '?'
+            level = f.get('level') or 1
+            food = f.get('food') or 0
+            bath = f.get('bath') or 0
+            sleep = f.get('sleep') or 0
+            bars = f"{e_steak}`{food}` {e_soap}`{bath}` {e_sleep}`{sleep}`"
+            lines.append(f"\u2022 **{name}** \u2014 {pet_name} (Lv.{level})\n  {bars}")
+
+        embed = discord.Embed(
+            title="\U0001F465 My Friends",
+            description="\n".join(lines),
+            color=0x5865F2
+        )
+        embed.set_footer(text=f"Page {self.page + 1}/{total_pages} \u2022 Select a friend to visit their pet")
+        return embed
+
+    async def interaction_check(self, interaction: discord.Interaction) -> bool:
+        if interaction.user.id != self.user_id:
+            await interaction.response.send_message(
+                "Use `/pet` to open your own pet!", ephemeral=True)
+            return False
+        return True
+
+    @discord.ui.select(placeholder="Select a friend to visit...", row=0, min_values=1, max_values=1)
+    async def friend_select(self, interaction: discord.Interaction, select: discord.ui.Select):
+        val = select.values[0]
+        if val == "none":
+            await interaction.response.defer()
+            return
+        target_id = int(val)
+        await interaction.response.defer()
+        view = FriendPetView(self.cog, self.user_id, target_id, self.guild_id)
+        await view.load_friend()
+        embed, file = await view.build_response()
+        kwargs = {'content': None, 'embed': embed, 'view': view}
+        if file:
+            kwargs['attachments'] = [file]
+        else:
+            kwargs['attachments'] = []
+        await interaction.edit_original_response(**kwargs)
+
+    @discord.ui.button(label="Prev", style=discord.ButtonStyle.grey, row=1, disabled=True)
+    async def prev_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        self.page = max(0, self.page - 1)
+        self._update_buttons()
+        await interaction.response.edit_message(embed=self.make_embed(), view=self)
+
+    @discord.ui.button(label="Next", style=discord.ButtonStyle.grey, row=1, disabled=True)
+    async def next_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        self.page += 1
+        self._update_buttons()
+        await interaction.response.edit_message(embed=self.make_embed(), view=self)
+
+    @discord.ui.button(label="Back", emoji="\U0001F519", style=discord.ButtonStyle.grey, row=1)
+    async def back_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.response.defer()
+        view = FriendsHubView(self.cog, self.user_id, self.guild_id)
+        await view.load_data()
+        await interaction.edit_original_response(
+            content=None, embed=view.make_embed(), view=view, attachments=[])
+
+
+class AddFriendModal(discord.ui.Modal, title="Add Friend"):
+    """Modal to send a friend request by Discord username or ID."""
+
+    query_input = discord.ui.TextInput(
+        label="Discord username or user ID",
+        placeholder="e.g. CoolUser or 123456789012345678",
+        min_length=1,
+        max_length=40,
+        required=True,
+    )
+
+    def __init__(self, cog: 'LionGotchiCog', user_id: int, guild_id: int):
+        super().__init__(timeout=120)
+        self.cog = cog
+        self.user_id = user_id
+        self.guild_id = guild_id
+
+    async def on_submit(self, interaction: discord.Interaction):
+        await interaction.response.defer(ephemeral=True)
+        query = self.query_input.value.strip()
+
+        target = None
+        if query.isdigit() and len(query) >= 17:
+            target = await _db_fetch(self.cog.bot,
+                "SELECT userid, name FROM user_config WHERE userid = %s", int(query))
+        if not target:
+            target = await _db_fetch(self.cog.bot,
+                "SELECT userid, name FROM user_config WHERE LOWER(name) = LOWER(%s)", query)
+        if not target:
+            await interaction.followup.send(
+                f"Could not find user **{query}**. Try their Discord user ID.", ephemeral=True)
+            return
+
+        target_id = target[0]['userid']
+        target_name = target[0]['name'] or str(target_id)
+
+        if target_id == self.user_id:
+            await interaction.followup.send("You can't add yourself!", ephemeral=True)
+            return
+
+        target_pet = await _db_fetch(self.cog.bot,
+            "SELECT level FROM lg_pets WHERE userid = %s", target_id)
+        if not target_pet:
+            await interaction.followup.send(
+                f"**{target_name}** doesn't have a pet yet.", ephemeral=True)
+            return
+
+        blocked = await _db_fetch(self.cog.bot,
+            """SELECT 1 FROM lg_blocks
+               WHERE (blocker_userid = %s AND blocked_userid = %s)
+                  OR (blocker_userid = %s AND blocked_userid = %s)""",
+            target_id, self.user_id, self.user_id, target_id)
+        if blocked:
+            await interaction.followup.send("Cannot send a friend request to this user.", ephemeral=True)
+            return
+
+        lower, upper = (self.user_id, target_id) if self.user_id < target_id else (target_id, self.user_id)
+        existing_friend = await _db_fetch(self.cog.bot,
+            "SELECT 1 FROM lg_friends WHERE userid1 = %s AND userid2 = %s", lower, upper)
+        if existing_friend:
+            await interaction.followup.send(
+                f"You're already friends with **{target_name}**!", ephemeral=True)
+            return
+
+        existing_req = await _db_fetch(self.cog.bot,
+            """SELECT 1 FROM lg_friend_requests
+               WHERE ((from_userid = %s AND to_userid = %s) OR (from_userid = %s AND to_userid = %s))
+                 AND status = 'PENDING'""",
+            self.user_id, target_id, target_id, self.user_id)
+        if existing_req:
+            await interaction.followup.send(
+                f"A pending request already exists between you and **{target_name}**.", ephemeral=True)
+            return
+
+        my_pet = await _db_fetch(self.cog.bot, "SELECT level FROM lg_pets WHERE userid = %s", self.user_id)
+        if not my_pet:
+            await interaction.followup.send("You need a pet first! Use `/pet`.", ephemeral=True)
+            return
+
+        my_max = _calc_max_friends(my_pet[0]['level'])
+        my_count = await _db_fetch(self.cog.bot,
+            "SELECT COUNT(*) AS cnt FROM lg_friends WHERE userid1 = %s OR userid2 = %s",
+            self.user_id, self.user_id)
+        if (my_count[0]['cnt'] if my_count else 0) >= my_max:
+            await interaction.followup.send(
+                f"You've reached your friend limit ({my_max}).", ephemeral=True)
+            return
+
+        their_max = _calc_max_friends(target_pet[0]['level'])
+        their_count = await _db_fetch(self.cog.bot,
+            "SELECT COUNT(*) AS cnt FROM lg_friends WHERE userid1 = %s OR userid2 = %s",
+            target_id, target_id)
+        if (their_count[0]['cnt'] if their_count else 0) >= their_max:
+            await interaction.followup.send(
+                f"**{target_name}** has reached their friend limit.", ephemeral=True)
+            return
+
+        # --- AI-MODIFIED (2026-03-24) ---
+        # Purpose: Rate limit friend requests to 10 per 24 hours per sender
+        RATE_LIMIT = 10
+        recent = await _db_fetch(self.cog.bot,
+            """SELECT COUNT(*) AS cnt FROM lg_friend_requests
+               WHERE from_userid = %s AND created_at >= NOW() - INTERVAL '24 hours'""",
+            self.user_id)
+        if recent and recent[0]['cnt'] >= RATE_LIMIT:
+            await interaction.followup.send(
+                f"You can only send {RATE_LIMIT} friend requests per day. Try again later.",
+                ephemeral=True)
+            return
+        # --- END AI-MODIFIED ---
+
+        await _db_exec(self.cog.bot,
+            """INSERT INTO lg_friend_requests (from_userid, to_userid, status)
+               VALUES (%s, %s, 'PENDING')
+               ON CONFLICT (from_userid, to_userid) DO UPDATE SET status = 'PENDING'""",
+            self.user_id, target_id)
+
+        await interaction.followup.send(
+            f"\U0001F4E8 Friend request sent to **{target_name}**!", ephemeral=True)
+
+
+class FriendPetView(discord.ui.View):
+    """View a friend's pet with care buttons and farm watering."""
+
+    def __init__(self, cog: 'LionGotchiCog', user_id: int, target_id: int, guild_id: int):
+        super().__init__(timeout=180)
+        self.cog = cog
+        self.user_id = user_id
+        self.target_id = target_id
+        self.guild_id = guild_id
+        self.target_name = "Friend"
+        self.target_pet_name = "Leo"
+        self.target_level = 1
+        self.target_food = 0
+        self.target_bath = 0
+        self.target_sleep = 0
+        self.today_fed = False
+        self.today_bathed = False
+        self.today_slept = False
+        self.today_watered_plots = set()
+        self.farm_plots = []
+        self._pet_state = None
+
+    async def load_friend(self):
+        config = await _db_fetch(self.cog.bot,
+            "SELECT name FROM user_config WHERE userid = %s", self.target_id)
+        self.target_name = config[0]['name'] if config else str(self.target_id)
+
+        pet = await _db_fetch(self.cog.bot,
+            """SELECT pet_name, level, food, bath, sleep, expression,
+                      active_gameboy_skin_id, active_room_id, xp
+               FROM lg_pets WHERE userid = %s""", self.target_id)
+        if pet:
+            p = pet[0]
+            self.target_pet_name = p['pet_name'] or 'Leo'
+            self.target_level = p['level'] or 1
+            self.target_food = p['food'] or 0
+            self.target_bath = p['bath'] or 0
+            self.target_sleep = p['sleep'] or 0
+
+        today_start = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
+        interactions = await _db_fetch(self.cog.bot,
+            """SELECT interaction_type, plot_id FROM lg_friend_interactions
+               WHERE actor_userid = %s AND target_userid = %s AND created_at >= %s""",
+            self.user_id, self.target_id, today_start)
+        for row in (interactions or []):
+            t = row['interaction_type']
+            if t == 'FEED':
+                self.today_fed = True
+            elif t == 'BATHE':
+                self.today_bathed = True
+            elif t == 'SLEEP':
+                self.today_slept = True
+            elif t == 'WATER' and row.get('plot_id') is not None:
+                self.today_watered_plots.add(row['plot_id'])
+
+        self.farm_plots = await _db_fetch(self.cog.bot,
+            """SELECT plot_id, seed_id, growth_stage, dead
+               FROM lg_user_farm WHERE userid = %s AND seed_id IS NOT NULL
+               ORDER BY plot_id""",
+            self.target_id) or []
+
+        self.feed_button.disabled = self.today_fed
+        self.bathe_button.disabled = self.today_bathed
+        self.sleep_button.disabled = self.today_slept
+        if self.today_fed:
+            self.feed_button.style = discord.ButtonStyle.grey
+        if self.today_bathed:
+            self.bathe_button.style = discord.ButtonStyle.grey
+        if self.today_slept:
+            self.sleep_button.style = discord.ButtonStyle.grey
+
+        plantable = [p for p in self.farm_plots if not p['dead']]
+        unwaterable = all(p['plot_id'] in self.today_watered_plots for p in plantable) if plantable else True
+        self.water_all_button.disabled = (not plantable) or unwaterable
+
+        try:
+            pet_obj = await self.cog.data.Pet.fetch(self.target_id)
+            if pet_obj:
+                self._pet_state = await self.cog._build_pet_state(pet_obj, None)
+        except Exception:
+            logger.exception("Failed to build pet state for friend %s", self.target_id)
+
+    async def build_response(self):
+        e_steak = _lg_emoji('lg_steak', '\U0001F356')
+        e_soap = _lg_emoji('lg_soap', '\U0001F9FC')
+        e_sleep_e = _lg_emoji('lg_sleep', '\U0001F4A4')
+
+        bar_food = "+" * self.target_food + "-" * (8 - self.target_food)
+        bar_bath = "+" * self.target_bath + "-" * (8 - self.target_bath)
+        bar_sleep = "+" * self.target_sleep + "-" * (8 - self.target_sleep)
+
+        mood = calc_mood(self.target_food, self.target_bath, self.target_sleep)
+        mood_label = MOOD_LABELS.get(mood, 'Okay')
+        mood_emoji = MOOD_EMOJI.get(mood_label, '\U0001F610')
+
+        fed_mark = " \u2705" if self.today_fed else ""
+        bathed_mark = " \u2705" if self.today_bathed else ""
+        slept_mark = " \u2705" if self.today_slept else ""
+
+        farm_line = ""
+        if self.farm_plots:
+            watered = len(self.today_watered_plots)
+            total = len([p for p in self.farm_plots if not p['dead']])
+            farm_line = f"\n\U0001F33F Farm: **{total}** plots planted"
+            if watered > 0:
+                farm_line += f" ({watered} watered today)"
+
+        embed = discord.Embed(
+            title=f"\U0001F465 {self.target_name}'s Pet",
+            description=(
+                f"**{self.target_pet_name}** \u2014 Level {self.target_level}\n"
+                f"{mood_emoji} Mood: **{mood_label}**\n\n"
+                f"{e_steak} Hunger `[{bar_food}]`{fed_mark}\n"
+                f"{e_soap} Clean `[{bar_bath}]`{bathed_mark}\n"
+                f"{e_sleep_e} Energy `[{bar_sleep}]`{slept_mark}"
+                f"{farm_line}\n\n"
+                "-# Care actions reset daily at midnight UTC"
+            ),
+            color=0x57F287
+        )
+
+        file = None
+        if self._pet_state:
+            try:
+                gif_bytes = await asyncio.to_thread(render_gameboy_frame, self._pet_state)
+                file = discord.File(BytesIO(gif_bytes), filename="friend_pet.gif")
+                embed.set_thumbnail(url="attachment://friend_pet.gif")
+            except Exception:
+                logger.exception("Failed to render friend pet")
+
+        return embed, file
+
+    async def interaction_check(self, interaction: discord.Interaction) -> bool:
+        if interaction.user.id != self.user_id:
+            await interaction.response.send_message(
+                "Use `/pet` to open your own pet!", ephemeral=True)
+            return False
+        return True
+
+    async def _do_care(self, interaction: discord.Interaction, care_type: str):
+        await interaction.response.defer()
+
+        lower, upper = (self.user_id, self.target_id) if self.user_id < self.target_id else (self.target_id, self.user_id)
+        friendship = await _db_fetch(self.cog.bot,
+            "SELECT 1 FROM lg_friends WHERE userid1 = %s AND userid2 = %s", lower, upper)
+        if not friendship:
+            await interaction.followup.send("You are not friends with this user.", ephemeral=True)
+            return
+
+        today_start = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
+        existing = await _db_fetch(self.cog.bot,
+            """SELECT 1 FROM lg_friend_interactions
+               WHERE actor_userid = %s AND target_userid = %s
+                 AND interaction_type = %s AND created_at >= %s""",
+            self.user_id, self.target_id, care_type, today_start)
+        if existing:
+            await interaction.followup.send(
+                f"You already used {care_type} on this pet today!", ephemeral=True)
+            return
+
+        # --- AI-MODIFIED (2026-03-25) ---
+        # Purpose: Map care types to actual DB column names (feed->food, bathe->bath)
+        care_col_map = {'feed': 'food', 'bathe': 'bath', 'sleep': 'sleep'}
+        col = care_col_map.get(care_type.lower(), care_type.lower())
+        # --- END AI-MODIFIED ---
+        await _db_exec(self.cog.bot,
+            f"UPDATE lg_pets SET {col} = LEAST({col} + 2, 8) WHERE userid = %s",
+            self.target_id)
+
+        await _db_exec(self.cog.bot,
+            """INSERT INTO lg_friend_interactions (actor_userid, target_userid, interaction_type)
+               VALUES (%s, %s, %s)""",
+            self.user_id, self.target_id, care_type)
+
+        if care_type == 'FEED':
+            self.today_fed = True
+        elif care_type == 'BATHE':
+            self.today_bathed = True
+        elif care_type == 'SLEEP':
+            self.today_slept = True
+
+        await self.load_friend()
+        embed, file = await self.build_response()
+        kwargs = {'embed': embed, 'view': self}
+        if file:
+            kwargs['attachments'] = [file]
+        await interaction.edit_original_response(**kwargs)
+
+    @discord.ui.button(label="Feed", emoji="\U0001F356", style=discord.ButtonStyle.green, row=0)
+    async def feed_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await self._do_care(interaction, 'FEED')
+
+    @discord.ui.button(label="Bathe", emoji="\U0001F9FC", style=discord.ButtonStyle.blurple, row=0)
+    async def bathe_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await self._do_care(interaction, 'BATHE')
+
+    @discord.ui.button(label="Sleep", emoji="\U0001F4A4", style=discord.ButtonStyle.grey, row=0)
+    async def sleep_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await self._do_care(interaction, 'SLEEP')
+
+    @discord.ui.button(label="Water All", emoji="\U0001F4A7", style=discord.ButtonStyle.green, row=1)
+    async def water_all_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.response.defer()
+
+        lower, upper = (self.user_id, self.target_id) if self.user_id < self.target_id else (self.target_id, self.user_id)
+        friendship = await _db_fetch(self.cog.bot,
+            "SELECT 1 FROM lg_friends WHERE userid1 = %s AND userid2 = %s", lower, upper)
+        if not friendship:
+            await interaction.followup.send("You are not friends with this user.", ephemeral=True)
+            return
+
+        today_start = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
+        plots = await _db_fetch(self.cog.bot,
+            """SELECT plot_id FROM lg_user_farm
+               WHERE userid = %s AND seed_id IS NOT NULL AND dead = false""",
+            self.target_id) or []
+
+        watered_count = 0
+        for plot in plots:
+            pid = plot['plot_id']
+            if pid in self.today_watered_plots:
+                continue
+            existing = await _db_fetch(self.cog.bot,
+                """SELECT 1 FROM lg_friend_interactions
+                   WHERE actor_userid = %s AND target_userid = %s
+                     AND interaction_type = 'WATER' AND plot_id = %s AND created_at >= %s""",
+                self.user_id, self.target_id, pid, today_start)
+            if existing:
+                self.today_watered_plots.add(pid)
+                continue
+
+            await _db_exec(self.cog.bot,
+                "UPDATE lg_user_farm SET last_watered = NOW() WHERE userid = %s AND plot_id = %s",
+                self.target_id, pid)
+            await _db_exec(self.cog.bot,
+                """INSERT INTO lg_friend_interactions (actor_userid, target_userid, interaction_type, plot_id)
+                   VALUES (%s, %s, 'WATER', %s)""",
+                self.user_id, self.target_id, pid)
+            self.today_watered_plots.add(pid)
+            watered_count += 1
+
+        if watered_count > 0:
+            xp_gained = watered_count * 5
+            await _db_exec(self.cog.bot,
+                "UPDATE lg_pets SET xp = xp + %s WHERE userid = %s",
+                xp_gained, self.user_id)
+            await interaction.followup.send(
+                f"\U0001F4A7 Watered **{watered_count}** plots! You gained **{xp_gained} XP**.",
+                ephemeral=True)
+        else:
+            await interaction.followup.send("No plots left to water today.", ephemeral=True)
+
+        await self.load_friend()
+        embed, file = await self.build_response()
+        kwargs = {'embed': embed, 'view': self}
+        if file:
+            kwargs['attachments'] = [file]
+        await interaction.edit_original_response(**kwargs)
+
+    @discord.ui.button(label="Back", emoji="\U0001F519", style=discord.ButtonStyle.grey, row=1)
+    async def back_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.response.defer()
+        view = FriendsListView(self.cog, self.user_id, self.guild_id)
+        await view.load_friends()
+        await interaction.edit_original_response(
+            content=None, embed=view.make_embed(), view=view, attachments=[])
+
+
+# --- END AI-GENERATED ---
+
+
+# ============================================================
+# Family Views (button-based GUI, no slash commands)
+# ============================================================
+# --- AI-GENERATED (2026-03-24) ---
+# Purpose: Full family management GUI accessible from PetView's Family button.
+#          Mirrors the Friends pattern: Hub -> sub-views -> Back to hub -> Back to pet.
+
+from .family_portrait_renderer import (
+    FamilyPortraitState, render_family_portrait, PRESET_THEMES, DEFAULT_THEME,
+)
+
+FAMILY_CREATE_COST = 10000
+FAMILY_NAME_MIN = 2
+FAMILY_NAME_MAX = 32
+
+import json as _json
+
+
+# --- AI-MODIFIED (2026-03-24) ---
+# Purpose: Sync permission defaults with website familyPermissions.ts DEFAULT_PERMISSIONS
+def _has_family_permission(role: str, perm_key: str, role_permissions: dict) -> bool:
+    """Check if a family role has a specific permission."""
+    if role == 'LEADER':
+        return True
+    defaults = {
+        'ADMIN': {
+            'edit_settings': True, 'invite_members': True, 'kick_members': True,
+            'promote_demote': False, 'withdraw_items': True, 'deposit_items': True,
+            'withdraw_gold': True, 'deposit_gold': True, 'plant_farm': True,
+            'harvest_farm': True, 'disband': False,
+        },
+        'MODERATOR': {
+            'edit_settings': False, 'invite_members': True, 'kick_members': False,
+            'promote_demote': False, 'withdraw_items': True, 'deposit_items': True,
+            'withdraw_gold': False, 'deposit_gold': True, 'plant_farm': True,
+            'harvest_farm': True, 'disband': False,
+        },
+        'MEMBER': {
+            'edit_settings': False, 'invite_members': False, 'kick_members': False,
+            'promote_demote': False, 'withdraw_items': False, 'deposit_items': True,
+            'withdraw_gold': False, 'deposit_gold': True, 'plant_farm': True,
+            'harvest_farm': True, 'disband': False,
+        },
+    }
+    role_defaults = defaults.get(role, {})
+    overrides = role_permissions.get(role, {}) if role_permissions else {}
+    merged = {**role_defaults, **overrides}
+    return merged.get(perm_key, False)
+# --- END AI-MODIFIED ---
+
+
+class FamilyHubView(discord.ui.View):
+    """Main family hub -- shows portrait if in family, or no-family state."""
+
+    def __init__(self, cog: 'LionGotchiCog', user_id: int, guild_id: int):
+        super().__init__(timeout=180)
+        self.cog = cog
+        self.user_id = user_id
+        self.guild_id = guild_id
+        self.family = None
+        self.membership = None
+        self.pending_count = 0
+        self._portrait_bytes = None
+
+    async def load_data(self):
+        mem = await _db_fetch(self.cog.bot,
+            """SELECT fm.family_id, fm.role::text AS role, f.name, f.level, f.xp, f.gold,
+                      f.max_members, f.description, f.icon_url, f.leader_userid,
+                      f.role_permissions, f.theme
+               FROM lg_family_members fm
+               JOIN lg_families f ON f.family_id = fm.family_id
+               WHERE fm.userid = %s AND fm.left_at IS NULL""",
+            self.user_id)
+        if mem:
+            self.membership = mem[0]
+            self.family = mem[0]
+
+        pending = await _db_fetch(self.cog.bot,
+            "SELECT COUNT(*) AS cnt FROM lg_family_invites WHERE to_userid = %s AND status = 'PENDING'",
+            self.user_id)
+        self.pending_count = pending[0]['cnt'] if pending else 0
+
+        if self.family:
+            members = await _db_fetch(self.cog.bot,
+                """SELECT fm.userid, fm.role::text AS role, uc.name,
+                          p.level, p.food, p.bath, p.sleep, p.expression,
+                          p.active_gameboy_skin_id, p.active_room_id, p.xp AS pet_xp
+                   FROM lg_family_members fm
+                   JOIN user_config uc ON uc.userid = fm.userid
+                   LEFT JOIN lg_pets p ON p.userid = fm.userid
+                   WHERE fm.family_id = %s AND fm.left_at IS NULL
+                   ORDER BY
+                       CASE fm.role::text
+                           WHEN 'LEADER' THEN 0 WHEN 'ADMIN' THEN 1
+                           WHEN 'MODERATOR' THEN 2 ELSE 3
+                       END, fm.joined_at""",
+                self.family['family_id'])
+
+            member_sprites = []
+            for m in (members or []):
+                if not m.get('level'):
+                    continue
+                try:
+                    pet_obj = await self.cog.data.Pet.fetch(m['userid'])
+                    if pet_obj:
+                        ps = await self.cog._build_pet_state(pet_obj, None)
+                        member_sprites.append((m['name'] or str(m['userid']), m['role'] or 'MEMBER', ps))
+                except Exception:
+                    logger.exception("Failed to build pet state for family member %s", m['userid'])
+
+            theme_raw = self.family.get('theme')
+            if isinstance(theme_raw, str):
+                try:
+                    theme_raw = _json.loads(theme_raw)
+                except Exception:
+                    theme_raw = {}
+            theme = theme_raw if isinstance(theme_raw, dict) else {}
+
+            rp_raw = self.family.get('role_permissions')
+            if isinstance(rp_raw, str):
+                try:
+                    rp_raw = _json.loads(rp_raw)
+                except Exception:
+                    rp_raw = {}
+
+            member_count_rows = await _db_fetch(self.cog.bot,
+                "SELECT COUNT(*) AS cnt FROM lg_family_members WHERE family_id = %s AND left_at IS NULL",
+                self.family['family_id'])
+            member_count = member_count_rows[0]['cnt'] if member_count_rows else len(member_sprites)
+
+            portrait_state = FamilyPortraitState(
+                family_name=self.family['name'] or 'Family',
+                family_level=self.family['level'] or 1,
+                family_xp=int(self.family['xp'] or 0),
+                family_gold=int(self.family['gold'] or 0),
+                member_count=member_count,
+                max_members=self.family['max_members'] or 10,
+                description=self.family.get('description') or '',
+                icon_url=self.family.get('icon_url') or '',
+                member_sprites=member_sprites,
+                theme=theme,
+            )
+            try:
+                self._portrait_bytes = await asyncio.to_thread(render_family_portrait, portrait_state)
+            except Exception:
+                logger.exception("Failed to render family portrait")
+                self._portrait_bytes = None
+
+        self._rebuild_buttons()
+
+    def _rebuild_buttons(self):
+        self.clear_items()
+        if self.family:
+            members_btn = discord.ui.Button(label="Members", emoji="\U0001F465",
+                                            style=discord.ButtonStyle.green, row=0)
+            members_btn.callback = self._open_members
+            self.add_item(members_btn)
+
+            farm_btn = discord.ui.Button(label="Farm", emoji="\U0001F33F",
+                                         style=discord.ButtonStyle.green, row=0)
+            farm_btn.callback = self._open_farm
+            self.add_item(farm_btn)
+
+            theme_btn = discord.ui.Button(label="Theme", emoji="\U0001F3A8",
+                                          style=discord.ButtonStyle.grey, row=0)
+            theme_btn.callback = self._open_theme
+            self.add_item(theme_btn)
+
+            role = (self.membership or {}).get('role', 'MEMBER')
+            rp_raw = self.family.get('role_permissions')
+            if isinstance(rp_raw, str):
+                try:
+                    rp_raw = _json.loads(rp_raw)
+                except Exception:
+                    rp_raw = {}
+            rp = rp_raw if isinstance(rp_raw, dict) else {}
+
+            if _has_family_permission(role, 'invite_members', rp):
+                invite_btn = discord.ui.Button(label="Invite", emoji="\u2795",
+                                               style=discord.ButtonStyle.blurple, row=1)
+                invite_btn.callback = self._invite_member
+                self.add_item(invite_btn)
+
+            is_leader = (self.family.get('leader_userid') == self.user_id)
+            leave_label = "Disband" if is_leader else "Leave"
+            leave_style = discord.ButtonStyle.red if is_leader else discord.ButtonStyle.grey
+            leave_btn = discord.ui.Button(label=leave_label, emoji="\U0001F6AA",
+                                          style=leave_style, row=1)
+            leave_btn.callback = self._leave_or_disband
+            self.add_item(leave_btn)
+
+            self.add_item(discord.ui.Button(
+                label="Manage", url=f"{WEBSITE_URL}/pet/family",
+                style=discord.ButtonStyle.link, row=1
+            ))
+        else:
+            create_btn = discord.ui.Button(label="Create Family", emoji="\U0001F3E0",
+                                           style=discord.ButtonStyle.green, row=0)
+            create_btn.callback = self._create_family
+            self.add_item(create_btn)
+
+            pending_label = f"Invites ({self.pending_count})" if self.pending_count > 0 else "Invites (0)"
+            pending_style = discord.ButtonStyle.red if self.pending_count > 0 else discord.ButtonStyle.grey
+            pending_btn = discord.ui.Button(label=pending_label, emoji="\U0001F4E8",
+                                            style=pending_style, row=0)
+            pending_btn.callback = self._open_invites
+            self.add_item(pending_btn)
+
+        back_btn = discord.ui.Button(label="Back to Pet", emoji="\U0001F519",
+                                     style=discord.ButtonStyle.grey, row=2)
+        back_btn.callback = self._back_to_pet
+        self.add_item(back_btn)
+
+    def make_content_and_file(self):
+        if self.family and self._portrait_bytes:
+            content = (
+                f"\U0001F3E0 **{self.family['name']}** \u2014 "
+                f"Your role: **{(self.membership or {}).get('role', 'MEMBER').capitalize()}**"
+            )
+            file = discord.File(BytesIO(self._portrait_bytes), filename="family_portrait.gif")
+            return content, file, None
+        elif self.family:
+            embed = discord.Embed(
+                title=f"\U0001F3E0 {self.family['name']}",
+                description=(
+                    f"**Level:** {self.family['level']}  |  "
+                    f"**Gold:** {int(self.family['gold'] or 0):,}\n"
+                    f"**Your role:** {(self.membership or {}).get('role', 'MEMBER').capitalize()}\n\n"
+                    "*Portrait failed to render -- try again later*"
+                ),
+                color=0x5865F2,
+            )
+            return None, None, embed
+        else:
+            embed = discord.Embed(
+                title="\U0001F3E0 Family",
+                description=(
+                    "You're not in a family yet!\n\n"
+                    f"Create one for **{FAMILY_CREATE_COST:,}G** or accept a pending invite.\n\n"
+                    "Families let you share farms, bank items, pool gold, "
+                    "and show off a group portrait of all members' pets!"
+                ),
+                color=0x5865F2,
+            )
+            if self.pending_count > 0:
+                embed.set_footer(text=f"You have {self.pending_count} pending invite(s)!")
+            return None, None, embed
+
+    async def interaction_check(self, interaction: discord.Interaction) -> bool:
+        if interaction.user.id != self.user_id:
+            await interaction.response.send_message(
+                "Use `/pet` to open your own pet!", ephemeral=True)
+            return False
+        return True
+
+    async def _open_members(self, interaction: discord.Interaction):
+        await interaction.response.defer()
+        view = FamilyMembersView(self.cog, self.user_id, self.guild_id, self.family['family_id'])
+        await view.load_members()
+        await interaction.edit_original_response(
+            content=None, embed=view.make_embed(), view=view, attachments=[])
+
+    async def _open_farm(self, interaction: discord.Interaction):
+        await interaction.response.defer()
+        view = FamilyFarmView(self.cog, self.user_id, self.guild_id, self.family['family_id'])
+        await view.load_farm()
+        content, file, embed = view.make_response()
+        kwargs = {'view': view}
+        if file:
+            kwargs['content'] = content
+            kwargs['embed'] = None
+            kwargs['attachments'] = [file]
+        else:
+            kwargs['content'] = None
+            kwargs['embed'] = embed
+            kwargs['attachments'] = []
+        await interaction.edit_original_response(**kwargs)
+
+    async def _open_theme(self, interaction: discord.Interaction):
+        await interaction.response.defer()
+        view = FamilyThemeView(self.cog, self.user_id, self.guild_id, self.family['family_id'],
+                               self.family.get('theme'))
+        await interaction.edit_original_response(
+            content=None, embed=view.make_embed(), view=view, attachments=[])
+
+    async def _invite_member(self, interaction: discord.Interaction):
+        await interaction.response.send_modal(
+            InviteMemberModal(self.cog, self.user_id, self.guild_id, self.family['family_id'],
+                              (self.membership or {}).get('role', 'MEMBER'),
+                              self.family.get('role_permissions')))
+
+    # --- AI-REPLACED (2026-03-24) ---
+    # Reason: Disband was deleting family without refunding treasury or bank items
+    # What the new code does better: Returns bank items to leader's inventory and
+    #   refunds treasury gold before deletion, matching website disband.ts behavior
+    # --- Original code (commented out for rollback) ---
+    # async def _leave_or_disband(self, interaction):
+    #     is_leader = (self.family.get('leader_userid') == self.user_id)
+    #     if is_leader:
+    #         await _db_exec(bot, "UPDATE lg_family_members SET left_at = NOW() WHERE family_id = %s", fid)
+    #         await _db_exec(bot, "DELETE FROM lg_families WHERE family_id = %s", fid)
+    #     else:
+    #         await _db_exec(bot, "UPDATE lg_family_members SET left_at = NOW() WHERE family_id = %s AND userid = %s", fid, uid)
+    # --- End original code ---
+    async def _leave_or_disband(self, interaction: discord.Interaction):
+        is_leader = (self.family.get('leader_userid') == self.user_id)
+        fid = self.family['family_id']
+        if is_leader:
+            bank_items = await _db_fetch(self.cog.bot,
+                "SELECT itemid, enhancement_level, quantity, scroll_data "
+                "FROM lg_family_bank WHERE family_id = %s", fid)
+            for item in (bank_items or []):
+                inv_rows = await _db_fetch(self.cog.bot,
+                    """INSERT INTO lg_user_inventory (userid, itemid, enhancement_level, quantity, source)
+                       VALUES (%s, %s, %s, %s, 'DROP') RETURNING inventoryid""",
+                    self.user_id, item['itemid'],
+                    item.get('enhancement_level') or 0,
+                    item.get('quantity') or 1)
+                sd = item.get('scroll_data')
+                if inv_rows and sd and isinstance(sd, list):
+                    inv_id = inv_rows[0]['inventoryid']
+                    for slot in sd:
+                        if isinstance(slot, dict) and 'slot_number' in slot:
+                            await _db_exec(self.cog.bot,
+                                """INSERT INTO lg_enhancement_slots
+                                   (inventoryid, slot_number, scroll_itemid, bonus_value)
+                                   VALUES (%s, %s, %s, %s)""",
+                                inv_id, slot['slot_number'],
+                                slot.get('scroll_itemid'),
+                                slot.get('bonus_value', 0))
+
+            family_gold = int(self.family.get('gold') or 0)
+            if family_gold > 0:
+                await _db_exec(self.cog.bot,
+                    "UPDATE user_config SET gold = gold + %s WHERE userid = %s",
+                    family_gold, self.user_id)
+
+            await _db_exec(self.cog.bot,
+                "UPDATE lg_family_members SET left_at = NOW() WHERE family_id = %s", fid)
+            await _db_exec(self.cog.bot,
+                "DELETE FROM lg_families WHERE family_id = %s", fid)
+
+            refund_parts = []
+            if bank_items:
+                refund_parts.append(f"{len(bank_items)} item(s) returned to inventory")
+            if family_gold > 0:
+                refund_parts.append(f"**{family_gold:,}G** treasury refunded")
+            refund_msg = (" | ".join(refund_parts) + "\n") if refund_parts else ""
+            await interaction.response.send_message(
+                f"\U0001F6AA Family **{self.family['name']}** has been disbanded.\n"
+                f"{refund_msg}",
+                ephemeral=True)
+        else:
+            await _db_exec(self.cog.bot,
+                "UPDATE lg_family_members SET left_at = NOW() WHERE family_id = %s AND userid = %s",
+                fid, self.user_id)
+            await interaction.response.send_message(
+                f"\U0001F6AA You left **{self.family['name']}**.",
+                ephemeral=True)
+        await self.cog._show_pet(interaction, edit=True)
+    # --- END AI-REPLACED ---
+
+    async def _create_family(self, interaction: discord.Interaction):
+        await interaction.response.send_modal(
+            CreateFamilyModal(self.cog, self.user_id, self.guild_id))
+
+    async def _open_invites(self, interaction: discord.Interaction):
+        await interaction.response.defer()
+        view = FamilyInvitesView(self.cog, self.user_id, self.guild_id)
+        await view.load_invites()
+        await interaction.edit_original_response(
+            content=None, embed=view.make_embed(), view=view, attachments=[])
+
+    async def _back_to_pet(self, interaction: discord.Interaction):
+        await self.cog._show_pet(interaction, edit=True)
+
+
+class CreateFamilyModal(discord.ui.Modal, title="Create Family"):
+    """Modal to create a new family."""
+
+    family_name_input = discord.ui.TextInput(
+        label="Family Name",
+        placeholder="Enter a name (2-32 characters)",
+        min_length=FAMILY_NAME_MIN,
+        max_length=FAMILY_NAME_MAX,
+    )
+
+    def __init__(self, cog: 'LionGotchiCog', user_id: int, guild_id: int):
+        super().__init__()
+        self.cog = cog
+        self.user_id = user_id
+        self.guild_id = guild_id
+
+    async def on_submit(self, interaction: discord.Interaction):
+        name = self.family_name_input.value.strip()
+        if len(name) < FAMILY_NAME_MIN or len(name) > FAMILY_NAME_MAX:
+            await interaction.response.send_message(
+                f"Name must be {FAMILY_NAME_MIN}-{FAMILY_NAME_MAX} characters.", ephemeral=True)
+            return
+
+        gold_rows = await _db_fetch(self.cog.bot,
+            "SELECT gold FROM user_config WHERE userid = %s", self.user_id)
+        gold = gold_rows[0]['gold'] if gold_rows else 0
+        if (gold or 0) < FAMILY_CREATE_COST:
+            await interaction.response.send_message(
+                f"You need **{FAMILY_CREATE_COST:,}G** to create a family. You have **{gold or 0:,}G**.",
+                ephemeral=True)
+            return
+
+        existing = await _db_fetch(self.cog.bot,
+            "SELECT family_id FROM lg_families WHERE LOWER(name) = LOWER(%s)", name)
+        if existing:
+            await interaction.response.send_message(
+                f"A family named **{name}** already exists. Choose a different name.", ephemeral=True)
+            return
+
+        already_in = await _db_fetch(self.cog.bot,
+            "SELECT family_id FROM lg_family_members WHERE userid = %s AND left_at IS NULL", self.user_id)
+        if already_in:
+            await interaction.response.send_message(
+                "You're already in a family! Leave first before creating a new one.", ephemeral=True)
+            return
+
+        await _db_exec(self.cog.bot,
+            "UPDATE user_config SET gold = gold - %s WHERE userid = %s",
+            FAMILY_CREATE_COST, self.user_id)
+
+        # --- AI-MODIFIED (2026-03-24) ---
+        # Purpose: Fix withdraw cap (1000->10000) and add farm+plot rows on create
+        family_rows = await _db_fetch(self.cog.bot,
+            """INSERT INTO lg_families (name, leader_userid, level, xp, gold, max_members, max_farms,
+                                        daily_gold_withdraw_cap, role_permissions, theme)
+               VALUES (%s, %s, 1, 0, 0, 10, 1, 10000, '{}', '{}')
+               RETURNING family_id""",
+            name, self.user_id)
+        family_id = family_rows[0]['family_id']
+
+        await _db_exec(self.cog.bot,
+            """INSERT INTO lg_family_members (family_id, userid, role, joined_at, contribution_xp)
+               VALUES (%s, %s, 'LEADER', NOW(), 0)""",
+            family_id, self.user_id)
+
+        await _db_exec(self.cog.bot,
+            """INSERT INTO lg_family_farms (family_id, farm_index, unlocked_at)
+               VALUES (%s, 0, NOW())""",
+            family_id)
+        await _db_exec(self.cog.bot,
+            """INSERT INTO lg_family_farm_plots (family_id, farm_index, plot_id)
+               SELECT %s, 0, generate_series(0, 14)""",
+            family_id)
+        # --- END AI-MODIFIED ---
+
+        await interaction.response.send_message(
+            f"\U0001F389 Family **{name}** created! You are the Leader.\n"
+            f"Cost: **{FAMILY_CREATE_COST:,}G**",
+            ephemeral=True)
+
+        hub = FamilyHubView(self.cog, self.user_id, self.guild_id)
+        await hub.load_data()
+        content, file, embed = hub.make_content_and_file()
+        kwargs = {'view': hub}
+        if file:
+            kwargs['content'] = content
+            kwargs['embed'] = None
+            kwargs['attachments'] = [file]
+        else:
+            kwargs['content'] = None
+            kwargs['embed'] = embed
+            kwargs['attachments'] = []
+        await interaction.edit_original_response(**kwargs)
+
+
+class FamilyInvitesView(discord.ui.View):
+    """Shows pending family invites with accept/decline."""
+
+    PAGE_SIZE = 5
+
+    def __init__(self, cog: 'LionGotchiCog', user_id: int, guild_id: int):
+        super().__init__(timeout=120)
+        self.cog = cog
+        self.user_id = user_id
+        self.guild_id = guild_id
+        self.invites = []
+        self.page = 0
+        self.selected_invite_id = None
+
+    async def load_invites(self):
+        self.invites = await _db_fetch(self.cog.bot,
+            """SELECT fi.invite_id, fi.family_id, fi.from_userid, fi.created_at,
+                      f.name AS family_name, f.level AS family_level,
+                      uc.name AS from_name
+               FROM lg_family_invites fi
+               JOIN lg_families f ON f.family_id = fi.family_id
+               LEFT JOIN user_config uc ON uc.userid = fi.from_userid
+               WHERE fi.to_userid = %s AND fi.status = 'PENDING'
+               ORDER BY fi.created_at DESC""",
+            self.user_id) or []
+        self._rebuild()
+
+    def _rebuild(self):
+        self.clear_items()
+        page_invites = self.invites[self.page * self.PAGE_SIZE:(self.page + 1) * self.PAGE_SIZE]
+
+        if page_invites:
+            options = [
+                discord.SelectOption(
+                    label=f"{inv['family_name']} (Lv.{inv['family_level'] or 1})",
+                    description=f"From: {inv['from_name'] or 'Unknown'}",
+                    value=str(inv['invite_id']),
+                )
+                for inv in page_invites
+            ]
+            select = discord.ui.Select(placeholder="Select an invite...", options=options, row=0)
+            select.callback = self._on_select
+            self.add_item(select)
+
+            accept_btn = discord.ui.Button(label="Accept", emoji="\u2705",
+                                           style=discord.ButtonStyle.green, row=1,
+                                           disabled=self.selected_invite_id is None)
+            accept_btn.callback = self._accept
+            self.add_item(accept_btn)
+
+            decline_btn = discord.ui.Button(label="Decline", emoji="\u274C",
+                                            style=discord.ButtonStyle.red, row=1,
+                                            disabled=self.selected_invite_id is None)
+            decline_btn.callback = self._decline
+            self.add_item(decline_btn)
+
+        total_pages = max(1, math.ceil(len(self.invites) / self.PAGE_SIZE))
+        if total_pages > 1:
+            prev_btn = discord.ui.Button(label="Prev", style=discord.ButtonStyle.grey,
+                                         row=2, disabled=self.page == 0)
+            prev_btn.callback = self._prev
+            self.add_item(prev_btn)
+            next_btn = discord.ui.Button(label="Next", style=discord.ButtonStyle.grey,
+                                         row=2, disabled=self.page >= total_pages - 1)
+            next_btn.callback = self._next
+            self.add_item(next_btn)
+
+        back_btn = discord.ui.Button(label="Back", emoji="\U0001F519",
+                                     style=discord.ButtonStyle.grey, row=2)
+        back_btn.callback = self._back
+        self.add_item(back_btn)
+
+    def make_embed(self):
+        if not self.invites:
+            return discord.Embed(
+                title="\U0001F4E8 Family Invites",
+                description="No pending invites.",
+                color=0x5865F2,
+            )
+        lines = []
+        for inv in self.invites[self.page * self.PAGE_SIZE:(self.page + 1) * self.PAGE_SIZE]:
+            lines.append(
+                f"\u2022 **{inv['family_name']}** (Lv.{inv['family_level'] or 1}) "
+                f"\u2014 from {inv['from_name'] or 'Unknown'}"
+            )
+        total_pages = max(1, math.ceil(len(self.invites) / self.PAGE_SIZE))
+        return discord.Embed(
+            title="\U0001F4E8 Family Invites",
+            description="\n".join(lines),
+            color=0x5865F2,
+        ).set_footer(text=f"Page {self.page + 1}/{total_pages} \u2022 Select an invite to accept or decline")
+
+    async def interaction_check(self, interaction: discord.Interaction) -> bool:
+        if interaction.user.id != self.user_id:
+            await interaction.response.send_message("Use `/pet` to open your own pet!", ephemeral=True)
+            return False
+        return True
+
+    async def _on_select(self, interaction: discord.Interaction):
+        self.selected_invite_id = int(interaction.data['values'][0])
+        self._rebuild()
+        await interaction.response.edit_message(embed=self.make_embed(), view=self)
+
+    # --- AI-REPLACED (2026-03-24) ---
+    # Reason: Missing 7-day leave cooldown and member cap checks (website has both)
+    # What the new code does better: Enforces cooldown after leaving a family and
+    #   checks member count vs level-based max before allowing join
+    # --- Original code (commented out for rollback) ---
+    # async def _accept(self, interaction):
+    #     already = await _db_fetch(bot, "SELECT family_id FROM lg_family_members WHERE userid=%s AND left_at IS NULL", uid)
+    #     if already: return "already in family"
+    #     inv = await _db_fetch(bot, "SELECT family_id FROM lg_family_invites WHERE invite_id=%s AND status='PENDING'", iid)
+    #     family_id = inv[0]['family_id']
+    #     await _db_exec(bot, "UPDATE lg_family_invites SET status='ACCEPTED' ...", iid)
+    #     await _db_exec(bot, "INSERT INTO lg_family_members ... ON CONFLICT DO UPDATE SET left_at=NULL", fid, uid)
+    # --- End original code ---
+    async def _accept(self, interaction: discord.Interaction):
+        if not self.selected_invite_id:
+            return
+        already = await _db_fetch(self.cog.bot,
+            "SELECT family_id FROM lg_family_members WHERE userid = %s AND left_at IS NULL",
+            self.user_id)
+        if already:
+            await interaction.response.send_message(
+                "You're already in a family! Leave first.", ephemeral=True)
+            return
+
+        COOLDOWN_DAYS = 7
+        last_left = await _db_fetch(self.cog.bot,
+            """SELECT left_at FROM lg_family_members
+               WHERE userid = %s AND left_at IS NOT NULL
+               ORDER BY left_at DESC LIMIT 1""",
+            self.user_id)
+        if last_left and last_left[0].get('left_at'):
+            left_at = last_left[0]['left_at']
+            if left_at.tzinfo is None:
+                left_at = left_at.replace(tzinfo=timezone.utc)
+            days_since = (datetime.now(timezone.utc) - left_at).total_seconds() / 86400
+            if days_since < COOLDOWN_DAYS:
+                remaining = int(COOLDOWN_DAYS - days_since) + 1
+                await interaction.response.send_message(
+                    f"You recently left a family. Cooldown: **{remaining} day(s)** remaining.",
+                    ephemeral=True)
+                return
+
+        inv = await _db_fetch(self.cog.bot,
+            "SELECT family_id FROM lg_family_invites WHERE invite_id = %s AND status = 'PENDING'",
+            self.selected_invite_id)
+        if not inv:
+            await interaction.response.send_message("Invite no longer valid.", ephemeral=True)
+            return
+
+        family_id = inv[0]['family_id']
+
+        fam_info = await _db_fetch(self.cog.bot,
+            "SELECT xp, max_members FROM lg_families WHERE family_id = %s", family_id)
+        if not fam_info:
+            await interaction.response.send_message("Family no longer exists.", ephemeral=True)
+            return
+        mem_count = await _db_fetch(self.cog.bot,
+            "SELECT COUNT(*) as cnt FROM lg_family_members WHERE family_id = %s AND left_at IS NULL",
+            family_id)
+        fam_xp = int(fam_info[0].get('xp') or 0)
+        fam_level = family_level_from_xp(fam_xp)
+        max_mem = max(fam_info[0].get('max_members') or 10, 10 + (fam_level - 1) // 2)
+        if (mem_count[0]['cnt'] or 0) >= max_mem:
+            await interaction.response.send_message(
+                "This family is full! They need to level up to unlock more slots.", ephemeral=True)
+            return
+
+        await _db_exec(self.cog.bot,
+            "UPDATE lg_family_invites SET status = 'ACCEPTED' WHERE invite_id = %s",
+            self.selected_invite_id)
+        await _db_exec(self.cog.bot,
+            """INSERT INTO lg_family_members (family_id, userid, role, joined_at, contribution_xp)
+               VALUES (%s, %s, 'MEMBER', NOW(), 0)
+               ON CONFLICT (family_id, userid) DO UPDATE SET left_at = NULL, role = 'MEMBER',
+               joined_at = NOW(), contribution_xp = 0""",
+            family_id, self.user_id)
+
+        await interaction.response.send_message("\u2705 You joined the family!", ephemeral=True)
+    # --- END AI-REPLACED ---
+
+        hub = FamilyHubView(self.cog, self.user_id, self.guild_id)
+        await hub.load_data()
+        content, file, embed = hub.make_content_and_file()
+        kwargs = {'view': hub}
+        if file:
+            kwargs['content'] = content
+            kwargs['embed'] = None
+            kwargs['attachments'] = [file]
+        else:
+            kwargs['content'] = None
+            kwargs['embed'] = embed
+            kwargs['attachments'] = []
+        await interaction.edit_original_response(**kwargs)
+
+    async def _decline(self, interaction: discord.Interaction):
+        if not self.selected_invite_id:
+            return
+        await _db_exec(self.cog.bot,
+            "UPDATE lg_family_invites SET status = 'DECLINED' WHERE invite_id = %s",
+            self.selected_invite_id)
+        self.selected_invite_id = None
+        await interaction.response.defer()
+        await self.load_invites()
+        await interaction.edit_original_response(embed=self.make_embed(), view=self)
+
+    async def _prev(self, interaction: discord.Interaction):
+        self.page = max(0, self.page - 1)
+        self.selected_invite_id = None
+        self._rebuild()
+        await interaction.response.edit_message(embed=self.make_embed(), view=self)
+
+    async def _next(self, interaction: discord.Interaction):
+        self.page += 1
+        self.selected_invite_id = None
+        self._rebuild()
+        await interaction.response.edit_message(embed=self.make_embed(), view=self)
+
+    async def _back(self, interaction: discord.Interaction):
+        await interaction.response.defer()
+        hub = FamilyHubView(self.cog, self.user_id, self.guild_id)
+        await hub.load_data()
+        content, file, embed = hub.make_content_and_file()
+        kwargs = {'view': hub}
+        if file:
+            kwargs['content'] = content
+            kwargs['embed'] = None
+            kwargs['attachments'] = [file]
+        else:
+            kwargs['content'] = None
+            kwargs['embed'] = embed
+            kwargs['attachments'] = []
+        await interaction.edit_original_response(**kwargs)
+
+
+class FamilyMembersView(discord.ui.View):
+    """Paginated list of family members. Select opens pet view."""
+
+    PAGE_SIZE = 10
+
+    def __init__(self, cog: 'LionGotchiCog', user_id: int, guild_id: int, family_id: int):
+        super().__init__(timeout=120)
+        self.cog = cog
+        self.user_id = user_id
+        self.guild_id = guild_id
+        self.family_id = family_id
+        self.members = []
+        self.page = 0
+
+    async def load_members(self):
+        self.members = await _db_fetch(self.cog.bot,
+            """SELECT fm.userid, fm.role::text AS role, fm.contribution_xp,
+                      uc.name, p.level, p.pet_name
+               FROM lg_family_members fm
+               JOIN user_config uc ON uc.userid = fm.userid
+               LEFT JOIN lg_pets p ON p.userid = fm.userid
+               WHERE fm.family_id = %s AND fm.left_at IS NULL
+               ORDER BY
+                   CASE fm.role::text
+                       WHEN 'LEADER' THEN 0 WHEN 'ADMIN' THEN 1
+                       WHEN 'MODERATOR' THEN 2 ELSE 3
+                   END, fm.joined_at""",
+            self.family_id) or []
+        self._rebuild()
+
+    def _rebuild(self):
+        self.clear_items()
+        page_members = self.members[self.page * self.PAGE_SIZE:(self.page + 1) * self.PAGE_SIZE]
+
+        if page_members:
+            options = [
+                discord.SelectOption(
+                    label=f"{m['name'] or str(m['userid'])} (Lv.{m['level'] or 1})",
+                    description=f"{(m['role'] or 'MEMBER').capitalize()} \u2022 {m['pet_name'] or 'Leo'}",
+                    value=str(m['userid']),
+                )
+                for m in page_members
+            ]
+            select = discord.ui.Select(placeholder="Select a member to view...", options=options, row=0)
+            select.callback = self._on_select
+            self.add_item(select)
+
+        total_pages = max(1, math.ceil(len(self.members) / self.PAGE_SIZE))
+        if total_pages > 1:
+            prev_btn = discord.ui.Button(label="Prev", style=discord.ButtonStyle.grey,
+                                         row=1, disabled=self.page == 0)
+            prev_btn.callback = self._prev
+            self.add_item(prev_btn)
+            next_btn = discord.ui.Button(label="Next", style=discord.ButtonStyle.grey,
+                                         row=1, disabled=self.page >= total_pages - 1)
+            next_btn.callback = self._next
+            self.add_item(next_btn)
+
+        back_btn = discord.ui.Button(label="Back", emoji="\U0001F519",
+                                     style=discord.ButtonStyle.grey, row=1)
+        back_btn.callback = self._back
+        self.add_item(back_btn)
+
+    def make_embed(self):
+        role_icons = {'LEADER': '\u2654', 'ADMIN': '\u2605', 'MODERATOR': '\u2666', 'MEMBER': '\u2022'}
+        lines = []
+        start = self.page * self.PAGE_SIZE
+        for m in self.members[start:start + self.PAGE_SIZE]:
+            icon = role_icons.get(m['role'], '\u2022')
+            xp = int(m['contribution_xp'] or 0)
+            lines.append(
+                f"{icon} **{m['name'] or str(m['userid'])}** \u2014 "
+                f"Lv.{m['level'] or 1} \u2022 {(m['role'] or 'MEMBER').capitalize()} "
+                f"\u2022 {xp:,} XP"
+            )
+        total_pages = max(1, math.ceil(len(self.members) / self.PAGE_SIZE))
+        desc = "\n".join(lines) if lines else "No members."
+        return discord.Embed(
+            title=f"\U0001F465 Family Members ({len(self.members)})",
+            description=desc,
+            color=0x5865F2,
+        ).set_footer(text=f"Page {self.page + 1}/{total_pages} \u2022 Select a member to view their pet")
+
+    async def interaction_check(self, interaction: discord.Interaction) -> bool:
+        if interaction.user.id != self.user_id:
+            await interaction.response.send_message("Use `/pet` to open your own pet!", ephemeral=True)
+            return False
+        return True
+
+    async def _on_select(self, interaction: discord.Interaction):
+        target_id = int(interaction.data['values'][0])
+        await interaction.response.defer()
+        view = FamilyMemberPetView(self.cog, self.user_id, target_id, self.guild_id, self.family_id)
+        await view.load_member()
+        embed, file = await view.build_response()
+        kwargs = {'embed': embed, 'view': view, 'content': None}
+        if file:
+            kwargs['attachments'] = [file]
+        else:
+            kwargs['attachments'] = []
+        await interaction.edit_original_response(**kwargs)
+
+    async def _prev(self, interaction: discord.Interaction):
+        self.page = max(0, self.page - 1)
+        self._rebuild()
+        await interaction.response.edit_message(embed=self.make_embed(), view=self)
+
+    async def _next(self, interaction: discord.Interaction):
+        self.page += 1
+        self._rebuild()
+        await interaction.response.edit_message(embed=self.make_embed(), view=self)
+
+    async def _back(self, interaction: discord.Interaction):
+        await interaction.response.defer()
+        hub = FamilyHubView(self.cog, self.user_id, self.guild_id)
+        await hub.load_data()
+        content, file, embed = hub.make_content_and_file()
+        kwargs = {'view': hub}
+        if file:
+            kwargs['content'] = content
+            kwargs['embed'] = None
+            kwargs['attachments'] = [file]
+        else:
+            kwargs['content'] = None
+            kwargs['embed'] = embed
+            kwargs['attachments'] = []
+        await interaction.edit_original_response(**kwargs)
+
+
+class FamilyMemberPetView(discord.ui.View):
+    """View a family member's pet with Gameboy render thumbnail."""
+
+    def __init__(self, cog: 'LionGotchiCog', user_id: int, target_id: int,
+                 guild_id: int, family_id: int):
+        super().__init__(timeout=180)
+        self.cog = cog
+        self.user_id = user_id
+        self.target_id = target_id
+        self.guild_id = guild_id
+        self.family_id = family_id
+        self.target_name = "Member"
+        self.target_pet_name = "Leo"
+        self.target_level = 1
+        self.target_food = 0
+        self.target_bath = 0
+        self.target_sleep = 0
+        self.target_role = "MEMBER"
+        self._pet_state = None
+
+    async def load_member(self):
+        config = await _db_fetch(self.cog.bot,
+            "SELECT name FROM user_config WHERE userid = %s", self.target_id)
+        self.target_name = config[0]['name'] if config else str(self.target_id)
+
+        pet = await _db_fetch(self.cog.bot,
+            "SELECT pet_name, level, food, bath, sleep FROM lg_pets WHERE userid = %s",
+            self.target_id)
+        if pet:
+            p = pet[0]
+            self.target_pet_name = p['pet_name'] or 'Leo'
+            self.target_level = p['level'] or 1
+            self.target_food = p['food'] or 0
+            self.target_bath = p['bath'] or 0
+            self.target_sleep = p['sleep'] or 0
+
+        mem = await _db_fetch(self.cog.bot,
+            "SELECT role::text AS role FROM lg_family_members WHERE family_id = %s AND userid = %s AND left_at IS NULL",
+            self.family_id, self.target_id)
+        if mem:
+            self.target_role = mem[0]['role'] or 'MEMBER'
+
+        try:
+            pet_obj = await self.cog.data.Pet.fetch(self.target_id)
+            if pet_obj:
+                self._pet_state = await self.cog._build_pet_state(pet_obj, None)
+        except Exception:
+            logger.exception("Failed to build pet state for family member %s", self.target_id)
+
+    async def build_response(self):
+        e_steak = _lg_emoji('lg_steak', '\U0001F356')
+        e_soap = _lg_emoji('lg_soap', '\U0001F9FC')
+        e_sleep_e = _lg_emoji('lg_sleep', '\U0001F4A4')
+
+        bar_food = "+" * self.target_food + "-" * (8 - self.target_food)
+        bar_bath = "+" * self.target_bath + "-" * (8 - self.target_bath)
+        bar_sleep = "+" * self.target_sleep + "-" * (8 - self.target_sleep)
+
+        mood = calc_mood(self.target_food, self.target_bath, self.target_sleep)
+        mood_label = MOOD_LABELS.get(mood, 'Okay')
+        mood_emoji = MOOD_EMOJI.get(mood_label, '\U0001F610')
+
+        role_icons = {'LEADER': '\u2654', 'ADMIN': '\u2605', 'MODERATOR': '\u2666', 'MEMBER': '\u2022'}
+        role_icon = role_icons.get(self.target_role, '\u2022')
+
+        embed = discord.Embed(
+            title=f"\U0001F3E0 {self.target_name}'s Pet",
+            description=(
+                f"**{self.target_pet_name}** \u2014 Level {self.target_level}\n"
+                f"{role_icon} Family role: **{self.target_role.capitalize()}**\n"
+                f"{mood_emoji} Mood: **{mood_label}**\n\n"
+                f"{e_steak} Hunger `[{bar_food}]`\n"
+                f"{e_soap} Clean `[{bar_bath}]`\n"
+                f"{e_sleep_e} Energy `[{bar_sleep}]`"
+            ),
+            color=0x57F287,
+        )
+
+        file = None
+        if self._pet_state:
+            try:
+                gif_bytes = await asyncio.to_thread(render_gameboy_frame, self._pet_state)
+                file = discord.File(BytesIO(gif_bytes), filename="member_pet.gif")
+                embed.set_thumbnail(url="attachment://member_pet.gif")
+            except Exception:
+                logger.exception("Failed to render family member pet")
+
+        return embed, file
+
+    async def interaction_check(self, interaction: discord.Interaction) -> bool:
+        if interaction.user.id != self.user_id:
+            await interaction.response.send_message("Use `/pet` to open your own pet!", ephemeral=True)
+            return False
+        return True
+
+    @discord.ui.button(label="Back", emoji="\U0001F519", style=discord.ButtonStyle.grey, row=0)
+    async def back_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.response.defer()
+        view = FamilyMembersView(self.cog, self.user_id, self.guild_id, self.family_id)
+        await view.load_members()
+        await interaction.edit_original_response(
+            content=None, embed=view.make_embed(), view=view, attachments=[])
+
+
+class FamilyFarmView(discord.ui.View):
+    """Read-only view of the family farm with rendered preview."""
+
+    def __init__(self, cog: 'LionGotchiCog', user_id: int, guild_id: int, family_id: int):
+        super().__init__(timeout=180)
+        self.cog = cog
+        self.user_id = user_id
+        self.guild_id = guild_id
+        self.family_id = family_id
+        self.plots = []
+        self._gif_bytes = None
+        self._farm_exists = False
+
+    async def load_farm(self):
+        farms = await _db_fetch(self.cog.bot,
+            "SELECT farm_index FROM lg_family_farms WHERE family_id = %s ORDER BY farm_index LIMIT 1",
+            self.family_id)
+        if not farms:
+            return
+
+        self._farm_exists = True
+        farm_index = farms[0]['farm_index']
+
+        # --- AI-MODIFIED (2026-03-24) ---
+        # Purpose: Removed s.type_id from query (column never existed in DB).
+        # type_id is now derived from asset_prefix, matching the personal farm code.
+        self.plots = await _db_fetch(self.cog.bot,
+            """SELECT fp.plot_id, fp.seed_id, fp.growth_stage, fp.dead, fp.rarity,
+                      fp.last_watered, fp.planted_at,
+                      s.plant_type::text AS plant_type, s.asset_prefix
+               FROM lg_family_farm_plots fp
+               LEFT JOIN lg_farm_seeds s ON s.seed_id = fp.seed_id
+               WHERE fp.family_id = %s AND fp.farm_index = %s
+               ORDER BY fp.plot_id""",
+            self.family_id, farm_index) or []
+        # --- END AI-MODIFIED ---
+
+        plot_dicts = []
+        from datetime import timezone as tz
+        now = datetime.now(tz.utc)
+        for p in self.plots:
+            is_watered = False
+            if p.get('last_watered'):
+                lw = p['last_watered']
+                if hasattr(lw, 'date'):
+                    is_watered = lw.date() == now.date()
+
+            # --- AI-MODIFIED (2026-03-24) ---
+            # Purpose: Derive type_id from asset_prefix (matching personal farm logic)
+            type_id = 1
+            plant_type = p.get('plant_type') or 'tree'
+            asset_prefix = p.get('asset_prefix') or ''
+            if asset_prefix:
+                parts = asset_prefix.split(':')
+                plant_type = parts[0] if parts else 'tree'
+                type_id = int(parts[1]) if len(parts) > 1 else 1
+            # --- END AI-MODIFIED ---
+
+            plot_dicts.append({
+                'plot_num': p['plot_id'],
+                'seed_id': p['seed_id'],
+                'growth_stage': p['growth_stage'] or 0,
+                'dead': p.get('dead', False),
+                'rarity': p.get('rarity') or 'COMMON',
+                'plant_type': plant_type,
+                'type_id': type_id,
+                'asset_prefix': asset_prefix,
+                'is_watered': is_watered,
+                'timer_text': None,
+                'timer_color': (255, 255, 255),
+            })
+
+        try:
+            pet = await self.cog._get_or_create_pet(self.user_id)
+            pet_state = await self.cog._build_pet_state(pet, None)
+        except Exception:
+            pet_state = None
+
+        state = FarmState(
+            plots=plot_dicts,
+            is_night=False,
+            just_watered=False,
+            gameboy_skin=pet_state.gameboy_skin if pet_state else "gameboy/frames/gameboy-basic-01.png",
+            pet_state=pet_state,
+        )
+        try:
+            self._gif_bytes = await asyncio.to_thread(render_farm_frame, state)
+        except Exception:
+            logger.exception("Failed to render family farm")
+        self._add_nav_buttons()
+
+    def make_response(self):
+        if not self._farm_exists:
+            embed = discord.Embed(
+                title="\U0001F33F Family Farm",
+                description="No farm unlocked yet.\n\nManage your family farm on the website!",
+                color=0x5865F2,
+            )
+            return None, None, embed
+
+        planted = sum(1 for p in self.plots if p.get('seed_id') and not p.get('dead'))
+        content = (
+            f"\U0001F33F **Family Farm** \u2014 {planted} plots planted\n\n"
+            "-# *Read-only preview. Manage the farm on the website.*"
+        )
+
+        file = None
+        if self._gif_bytes:
+            file = discord.File(BytesIO(self._gif_bytes), filename="family_farm.gif")
+
+        return content, file, None
+
+    async def interaction_check(self, interaction: discord.Interaction) -> bool:
+        if interaction.user.id != self.user_id:
+            await interaction.response.send_message("Use `/pet` to open your own pet!", ephemeral=True)
+            return False
+        return True
+
+    def _add_nav_buttons(self):
+        self.add_item(discord.ui.Button(
+            label="Manage", url=f"{WEBSITE_URL}/pet/family",
+            style=discord.ButtonStyle.link, row=0
+        ))
+        back_btn = discord.ui.Button(label="Back", emoji="\U0001F519",
+                                     style=discord.ButtonStyle.grey, row=0)
+        back_btn.callback = self._go_back
+        self.add_item(back_btn)
+
+    async def _go_back(self, interaction: discord.Interaction):
+        await interaction.response.defer()
+        hub = FamilyHubView(self.cog, self.user_id, self.guild_id)
+        await hub.load_data()
+        content, file, embed = hub.make_content_and_file()
+        kwargs = {'view': hub}
+        if file:
+            kwargs['content'] = content
+            kwargs['embed'] = None
+            kwargs['attachments'] = [file]
+        else:
+            kwargs['content'] = None
+            kwargs['embed'] = embed
+            kwargs['attachments'] = []
+        await interaction.edit_original_response(**kwargs)
+
+
+class FamilyThemeView(discord.ui.View):
+    """Select or customize family theme."""
+
+    def __init__(self, cog: 'LionGotchiCog', user_id: int, guild_id: int,
+                 family_id: int, current_theme=None):
+        super().__init__(timeout=120)
+        self.cog = cog
+        self.user_id = user_id
+        self.guild_id = guild_id
+        self.family_id = family_id
+        self.current_theme = current_theme if isinstance(current_theme, dict) else {}
+
+        theme_options = [
+            discord.SelectOption(label="Default", value="default", description="Classic blurple & gold"),
+            discord.SelectOption(label="Royal Gold", value="royal_gold", description="Dark bg, gold accents"),
+            discord.SelectOption(label="Ocean Blue", value="ocean_blue", description="Deep navy, aqua glow"),
+            discord.SelectOption(label="Forest Green", value="forest_green", description="Dark green, emerald"),
+            discord.SelectOption(label="Midnight", value="midnight", description="Near-black, silver & purple"),
+            discord.SelectOption(label="Sunset", value="sunset", description="Warm orange-purple gradient"),
+            discord.SelectOption(label="Cherry Blossom", value="cherry_blossom", description="Dark pink, magenta"),
+        ]
+        select = discord.ui.Select(placeholder="Choose a theme...", options=theme_options, row=0)
+        select.callback = self._on_theme_select
+        self.add_item(select)
+
+        back_btn = discord.ui.Button(label="Back", emoji="\U0001F519",
+                                     style=discord.ButtonStyle.grey, row=1)
+        back_btn.callback = self._back
+        self.add_item(back_btn)
+
+    def make_embed(self):
+        return discord.Embed(
+            title="\U0001F3A8 Family Theme",
+            description=(
+                "Choose a preset theme for your family portrait!\n\n"
+                "The theme changes the background colors, borders, "
+                "glow effects, and accent colors of your family card."
+            ),
+            color=0x5865F2,
+        )
+
+    async def interaction_check(self, interaction: discord.Interaction) -> bool:
+        if interaction.user.id != self.user_id:
+            await interaction.response.send_message("Use `/pet` to open your own pet!", ephemeral=True)
+            return False
+        return True
+
+    async def _on_theme_select(self, interaction: discord.Interaction):
+        theme_key = interaction.data['values'][0]
+        if theme_key == 'default':
+            theme = {}
+        else:
+            theme = PRESET_THEMES.get(theme_key, {})
+
+        await _db_exec(self.cog.bot,
+            "UPDATE lg_families SET theme = %s WHERE family_id = %s",
+            _json.dumps(theme), self.family_id)
+
+        await interaction.response.send_message(
+            f"\U0001F3A8 Theme set to **{theme_key.replace('_', ' ').title()}**!",
+            ephemeral=True)
+
+        hub = FamilyHubView(self.cog, self.user_id, self.guild_id)
+        await hub.load_data()
+        content, file, embed = hub.make_content_and_file()
+        kwargs = {'view': hub}
+        if file:
+            kwargs['content'] = content
+            kwargs['embed'] = None
+            kwargs['attachments'] = [file]
+        else:
+            kwargs['content'] = None
+            kwargs['embed'] = embed
+            kwargs['attachments'] = []
+        await interaction.edit_original_response(**kwargs)
+
+    async def _back(self, interaction: discord.Interaction):
+        await interaction.response.defer()
+        hub = FamilyHubView(self.cog, self.user_id, self.guild_id)
+        await hub.load_data()
+        content, file, embed = hub.make_content_and_file()
+        kwargs = {'view': hub}
+        if file:
+            kwargs['content'] = content
+            kwargs['embed'] = None
+            kwargs['attachments'] = [file]
+        else:
+            kwargs['content'] = None
+            kwargs['embed'] = embed
+            kwargs['attachments'] = []
+        await interaction.edit_original_response(**kwargs)
+
+
+class InviteMemberModal(discord.ui.Modal, title="Invite to Family"):
+    """Modal to invite a user to the family."""
+
+    target_input = discord.ui.TextInput(
+        label="Discord username or user ID",
+        placeholder="Enter their LionGotchi username or numeric ID",
+        min_length=1,
+        max_length=40,
+    )
+
+    def __init__(self, cog: 'LionGotchiCog', user_id: int, guild_id: int,
+                 family_id: int, role: str, role_permissions):
+        super().__init__()
+        self.cog = cog
+        self.user_id = user_id
+        self.guild_id = guild_id
+        self.family_id = family_id
+        self.role = role
+        self.role_permissions = role_permissions if isinstance(role_permissions, dict) else {}
+
+    async def on_submit(self, interaction: discord.Interaction):
+        target_str = self.target_input.value.strip()
+
+        if target_str.isdigit():
+            target_rows = await _db_fetch(self.cog.bot,
+                "SELECT userid, name FROM user_config WHERE userid = %s", int(target_str))
+        else:
+            target_rows = await _db_fetch(self.cog.bot,
+                "SELECT userid, name FROM user_config WHERE LOWER(name) = LOWER(%s)", target_str)
+
+        if not target_rows:
+            await interaction.response.send_message(
+                f"Could not find user **{target_str}**.", ephemeral=True)
+            return
+
+        target_id = target_rows[0]['userid']
+        target_name = target_rows[0]['name'] or str(target_id)
+
+        if target_id == self.user_id:
+            await interaction.response.send_message("You can't invite yourself!", ephemeral=True)
+            return
+
+        has_pet = await _db_fetch(self.cog.bot,
+            "SELECT userid FROM lg_pets WHERE userid = %s", target_id)
+        if not has_pet:
+            await interaction.response.send_message(
+                f"**{target_name}** doesn't have a LionGotchi pet yet.", ephemeral=True)
+            return
+
+        already_in = await _db_fetch(self.cog.bot,
+            "SELECT family_id FROM lg_family_members WHERE userid = %s AND left_at IS NULL",
+            target_id)
+        if already_in:
+            await interaction.response.send_message(
+                f"**{target_name}** is already in a family.", ephemeral=True)
+            return
+
+        pending = await _db_fetch(self.cog.bot,
+            "SELECT invite_id FROM lg_family_invites WHERE family_id = %s AND to_userid = %s AND status = 'PENDING'",
+            self.family_id, target_id)
+        if pending:
+            await interaction.response.send_message(
+                f"**{target_name}** already has a pending invite from your family.", ephemeral=True)
+            return
+
+        # --- AI-MODIFIED (2026-03-24) ---
+        # Purpose: Rate limit invites to prevent spam (max 10 per hour per inviter)
+        INVITE_RATE_MAX = 10
+        INVITE_RATE_WINDOW = 3600
+        now = _time.time()
+        inviter_times = self.cog._invite_send_rate.get(self.user_id, [])
+        inviter_times = [t for t in inviter_times if now - t < INVITE_RATE_WINDOW]
+        if len(inviter_times) >= INVITE_RATE_MAX:
+            await interaction.response.send_message(
+                "You're sending too many invites! Please wait before sending more.", ephemeral=True)
+            return
+        inviter_times.append(now)
+        self.cog._invite_send_rate[self.user_id] = inviter_times
+        # --- END AI-MODIFIED ---
+
+        await _db_exec(self.cog.bot,
+            """INSERT INTO lg_family_invites (family_id, from_userid, to_userid, status, created_at)
+               VALUES (%s, %s, %s, 'PENDING', NOW())
+               ON CONFLICT (family_id, to_userid)
+               DO UPDATE SET status = 'PENDING', from_userid = %s, created_at = NOW()""",
+            self.family_id, self.user_id, target_id, self.user_id)
+
+        await interaction.response.send_message(
+            f"\u2709\uFE0F Invite sent to **{target_name}**!", ephemeral=True)
+
+        # --- AI-MODIFIED (2026-03-24) ---
+        # Purpose: DM the invitee with accept/decline buttons, respecting notification prefs and rate limits
+        try:
+            target_pref_rows = await _db_fetch(self.cog.bot,
+                "SELECT drop_notif FROM lg_pets WHERE userid = %s", target_id)
+            pref = 'ALL'
+            if target_pref_rows:
+                pref = target_pref_rows[0].get('drop_notif') or 'ALL'
+                if hasattr(pref, 'value'):
+                    pref = pref.value
+            if pref == 'MUTED':
+                return
+
+            now = _time.time()
+            DM_RATE_MAX = 5
+            DM_RATE_WINDOW = 86400
+            target_times = self.cog._invite_dm_rate.get(target_id, [])
+            target_times = [t for t in target_times if now - t < DM_RATE_WINDOW]
+            if len(target_times) >= DM_RATE_MAX:
+                return
+            target_times.append(now)
+            self.cog._invite_dm_rate[target_id] = target_times
+
+            inv_rows = await _db_fetch(self.cog.bot,
+                "SELECT invite_id FROM lg_family_invites WHERE family_id = %s AND to_userid = %s AND status = 'PENDING'",
+                self.family_id, target_id)
+            invite_id = inv_rows[0]['invite_id'] if inv_rows else None
+            if not invite_id:
+                return
+
+            fam = await _db_fetch(self.cog.bot,
+                "SELECT name, level FROM lg_families WHERE family_id = %s", self.family_id)
+            family_name = fam[0]['name'] if fam else 'Unknown'
+            family_level = fam[0].get('level') or 1 if fam else 1
+
+            inviter_rows = await _db_fetch(self.cog.bot,
+                "SELECT name FROM user_config WHERE userid = %s", self.user_id)
+            inviter_name = inviter_rows[0]['name'] if inviter_rows else str(self.user_id)
+
+            mem_count = await _db_fetch(self.cog.bot,
+                "SELECT COUNT(*) as cnt FROM lg_family_members WHERE family_id = %s AND left_at IS NULL",
+                self.family_id)
+            member_count = mem_count[0]['cnt'] if mem_count else 0
+
+            embed = discord.Embed(
+                title="\U0001F4E8 Family Invite!",
+                description=(
+                    f"**{inviter_name}** has invited you to join their family!\n\n"
+                    f"\U0001F3E0 **{family_name}**\n"
+                    f"\u2B50 Level {family_level} \u2022 "
+                    f"{member_count} member{'s' if member_count != 1 else ''}\n\n"
+                    "Use the buttons below to respond, or visit `/pet` \u2192 Family."
+                ),
+                color=0x5865F2,
+            )
+            embed.set_footer(text=f"Manage families at {WEBSITE_URL}/pet/family")
+
+            user = self.cog.bot.get_user(target_id)
+            if user is None:
+                user = await self.cog.bot.fetch_user(target_id)
+            if user:
+                view = FamilyInviteNotificationView(invite_id)
+                await user.send(embed=embed, view=view)
+        except discord.Forbidden:
+            pass
+        except Exception:
+            logger.debug(f"Failed to DM family invite to {target_id}")
+        # --- END AI-MODIFIED ---
+
+
+# --- AI-MODIFIED (2026-03-24) ---
+# Purpose: Persistent view for family invite DM notifications with accept/decline/mute buttons
+class FamilyInviteNotificationView(discord.ui.View):
+    """Buttons attached to family invite DM notifications.
+    Uses dynamic custom_ids (invite_id encoded) handled by on_interaction listener."""
+
+    def __init__(self, invite_id: int):
+        super().__init__(timeout=None)
+        self.add_item(discord.ui.Button(
+            label="Accept", emoji="\u2705",
+            style=discord.ButtonStyle.green,
+            custom_id=f"lg:faminv:accept:{invite_id}"
+        ))
+        self.add_item(discord.ui.Button(
+            label="Decline", emoji="\u274C",
+            style=discord.ButtonStyle.red,
+            custom_id=f"lg:faminv:decline:{invite_id}"
+        ))
+        self.add_item(discord.ui.Button(
+            label="Notification Settings", emoji="\U0001F514",
+            style=discord.ButtonStyle.grey,
+            custom_id="lg:faminv:notif_toggle"
+        ))
+        self.add_item(discord.ui.Button(
+            label="View Family",
+            url=f"{WEBSITE_URL}/pet/family",
+            style=discord.ButtonStyle.link
+        ))
+# --- END AI-MODIFIED ---
+
+
+# --- END AI-GENERATED ---
+
+
+# ============================================================
 # Main Pet View
 # ============================================================
 # --- AI-REPLACED (2026-03-16) ---
@@ -2546,6 +4739,41 @@ class PetView(discord.ui.View):
             style=discord.ButtonStyle.link,
             row=1
         ))
+
+        # --- AI-MODIFIED (2026-03-24) ---
+        # Purpose: Friends button to open the friends hub view
+        friends_btn = discord.ui.Button(
+            label="Friends",
+            emoji="\U0001F465",
+            style=discord.ButtonStyle.blurple,
+            row=1
+        )
+        friends_btn.callback = self._open_friends
+        self.add_item(friends_btn)
+        # --- END AI-MODIFIED ---
+
+        # --- AI-MODIFIED (2026-03-24) ---
+        # Purpose: Family button to open the family hub view
+        family_btn = discord.ui.Button(
+            label="Family",
+            emoji="\U0001F3E0",
+            style=discord.ButtonStyle.blurple,
+            row=1
+        )
+        family_btn.callback = self._open_family
+        self.add_item(family_btn)
+        # --- END AI-MODIFIED ---
+
+        # --- AI-MODIFIED (2026-03-24) ---
+        # Purpose: Beta bug report link button to support server
+        self.add_item(discord.ui.Button(
+            label="Report a Bug",
+            emoji="\U0001F41B",
+            url="https://discord.gg/the-study-lions-780195610154237993",
+            style=discord.ButtonStyle.link,
+            row=2
+        ))
+        # --- END AI-MODIFIED ---
         # --- END AI-MODIFIED ---
 # --- END AI-REPLACED ---
 
@@ -2555,6 +4783,35 @@ class PetView(discord.ui.View):
             "UPDATE lg_pets SET fullscreen_mode = %s WHERE userid = %s",
             new_mode, self.user_id)
         await self.cog._show_pet(interaction, edit=True)
+
+    # --- AI-MODIFIED (2026-03-24) ---
+    # Purpose: Open the friends hub from the pet view
+    async def _open_friends(self, interaction: discord.Interaction):
+        await interaction.response.defer()
+        view = FriendsHubView(self.cog, self.user_id, self.guild_id)
+        await view.load_data()
+        await interaction.edit_original_response(
+            content=None, embed=view.make_embed(), view=view, attachments=[])
+    # --- END AI-MODIFIED ---
+
+    # --- AI-MODIFIED (2026-03-24) ---
+    # Purpose: Open the family hub from the pet view
+    async def _open_family(self, interaction: discord.Interaction):
+        await interaction.response.defer()
+        view = FamilyHubView(self.cog, self.user_id, self.guild_id)
+        await view.load_data()
+        content, file, embed = view.make_content_and_file()
+        kwargs = {'view': view}
+        if file:
+            kwargs['content'] = content
+            kwargs['embed'] = None
+            kwargs['attachments'] = [file]
+        else:
+            kwargs['content'] = None
+            kwargs['embed'] = embed
+            kwargs['attachments'] = []
+        await interaction.edit_original_response(**kwargs)
+    # --- END AI-MODIFIED ---
 
     async def interaction_check(self, interaction: discord.Interaction) -> bool:
         if interaction.user.id != self.user_id:
@@ -2697,6 +4954,11 @@ class LionGotchiCog(LionCog):
         # Purpose: TTL cache for guild LionGotchi config (avoids per-event DB queries)
         self._guild_lg_cache: dict[int, tuple[float, dict]] = {}
         self._guild_lg_cache_ttl = 300
+        # --- AI-MODIFIED (2026-03-24) ---
+        # Purpose: Rate limit tracking for family invite sends and DM notifications
+        self._invite_send_rate: dict[int, list[float]] = {}
+        self._invite_dm_rate: dict[int, list[float]] = {}
+        # --- END AI-MODIFIED ---
         # --- END AI-MODIFIED ---
 
     # --- AI-MODIFIED (2026-03-19) ---
@@ -2856,6 +5118,154 @@ class LionGotchiCog(LionCog):
         asyncio.create_task(self._populate_encounter_set())
         self._launch_status_task = asyncio.create_task(self._launch_status_rotation())
         # --- END AI-MODIFIED ---
+
+    # --- AI-MODIFIED (2026-03-24) ---
+    # Purpose: Persistent handler for family invite DM buttons (accept/decline/mute).
+    #          Uses on_interaction listener because accept/decline custom_ids contain
+    #          dynamic invite_ids and can't be registered as static persistent views.
+    @cmds.Cog.listener('on_interaction')
+    async def on_family_invite_interaction(self, interaction: discord.Interaction):
+        if interaction.type != discord.InteractionType.component:
+            return
+        cid = interaction.data.get('custom_id', '')
+        if not cid.startswith('lg:faminv:'):
+            return
+
+        if cid == 'lg:faminv:notif_toggle':
+            await _handle_notif_toggle(interaction)
+            return
+
+        try:
+            parts = cid.split(':')
+            action = parts[2]
+            invite_id = int(parts[3])
+        except (IndexError, ValueError):
+            return
+
+        uid = interaction.user.id
+        if action == 'accept':
+            await self._handle_dm_invite_accept(interaction, invite_id, uid)
+        elif action == 'decline':
+            await self._handle_dm_invite_decline(interaction, invite_id, uid)
+
+    async def _handle_dm_invite_accept(self, interaction: discord.Interaction, invite_id: int, uid: int):
+        try:
+            inv = await _db_fetch(self.bot,
+                """SELECT fi.family_id, fi.to_userid, f.name AS family_name, f.xp, f.max_members
+                   FROM lg_family_invites fi
+                   JOIN lg_families f ON f.family_id = fi.family_id
+                   WHERE fi.invite_id = %s AND fi.status = 'PENDING'""",
+                invite_id)
+            if not inv or inv[0]['to_userid'] != uid:
+                await interaction.response.edit_message(
+                    embed=discord.Embed(
+                        title="\u23F3 Invite Expired",
+                        description="This invite is no longer valid. It may have been accepted, declined, or withdrawn.",
+                        color=0x95a5a6,
+                    ).set_footer(text="Check /pet \u2192 Family for new invites"),
+                    view=None)
+                return
+
+            already = await _db_fetch(self.bot,
+                "SELECT family_id FROM lg_family_members WHERE userid = %s AND left_at IS NULL", uid)
+            if already:
+                await interaction.response.send_message(
+                    "You're already in a family! Leave your current family first.", ephemeral=True)
+                return
+
+            COOLDOWN_DAYS = 7
+            last_left = await _db_fetch(self.bot,
+                """SELECT left_at FROM lg_family_members
+                   WHERE userid = %s AND left_at IS NOT NULL
+                   ORDER BY left_at DESC LIMIT 1""", uid)
+            if last_left and last_left[0].get('left_at'):
+                left_at = last_left[0]['left_at']
+                if left_at.tzinfo is None:
+                    left_at = left_at.replace(tzinfo=timezone.utc)
+                days_since = (datetime.now(timezone.utc) - left_at).total_seconds() / 86400
+                if days_since < COOLDOWN_DAYS:
+                    remaining = int(COOLDOWN_DAYS - days_since) + 1
+                    await interaction.response.send_message(
+                        f"You recently left a family. Cooldown: **{remaining} day(s)** remaining.",
+                        ephemeral=True)
+                    return
+
+            family_id = inv[0]['family_id']
+            family_name = inv[0]['family_name'] or 'Unknown Family'
+
+            fam_xp = int(inv[0].get('xp') or 0)
+            fam_level = family_level_from_xp(fam_xp)
+            max_mem = max(inv[0].get('max_members') or 10, 10 + (fam_level - 1) // 2)
+            mem_count = await _db_fetch(self.bot,
+                "SELECT COUNT(*) as cnt FROM lg_family_members WHERE family_id = %s AND left_at IS NULL",
+                family_id)
+            if (mem_count[0]['cnt'] or 0) >= max_mem:
+                await interaction.response.send_message(
+                    "This family is full! They need to level up to unlock more slots.",
+                    ephemeral=True)
+                return
+
+            await _db_exec(self.bot,
+                "UPDATE lg_family_invites SET status = 'ACCEPTED' WHERE invite_id = %s", invite_id)
+            await _db_exec(self.bot,
+                """INSERT INTO lg_family_members (family_id, userid, role, joined_at, contribution_xp)
+                   VALUES (%s, %s, 'MEMBER', NOW(), 0)
+                   ON CONFLICT (family_id, userid) DO UPDATE SET left_at = NULL, role = 'MEMBER',
+                   joined_at = NOW(), contribution_xp = 0""",
+                family_id, uid)
+
+            await interaction.response.edit_message(
+                embed=discord.Embed(
+                    title="\u2705 Joined Family!",
+                    description=(
+                        f"You are now a member of **{family_name}**!\n\n"
+                        f"Use `/pet` \u2192 Family to see your new family."
+                    ),
+                    color=0x57F287,
+                ).set_footer(text=f"Manage your family at {WEBSITE_URL}/pet/family"),
+                view=None)
+        except Exception:
+            logger.debug(f"Failed to handle DM invite accept for user {uid}, invite {invite_id}")
+            if not interaction.response.is_done():
+                await interaction.response.send_message(
+                    "Something went wrong. Try `/pet` \u2192 Family instead.", ephemeral=True)
+
+    async def _handle_dm_invite_decline(self, interaction: discord.Interaction, invite_id: int, uid: int):
+        try:
+            inv = await _db_fetch(self.bot,
+                """SELECT fi.to_userid, f.name AS family_name
+                   FROM lg_family_invites fi
+                   JOIN lg_families f ON f.family_id = fi.family_id
+                   WHERE fi.invite_id = %s AND fi.status = 'PENDING'""",
+                invite_id)
+            if not inv or inv[0]['to_userid'] != uid:
+                await interaction.response.edit_message(
+                    embed=discord.Embed(
+                        title="\u23F3 Invite Expired",
+                        description="This invite is no longer valid. It may have been accepted, declined, or withdrawn.",
+                        color=0x95a5a6,
+                    ).set_footer(text="Check /pet \u2192 Family for new invites"),
+                    view=None)
+                return
+
+            family_name = inv[0]['family_name'] or 'Unknown Family'
+
+            await _db_exec(self.bot,
+                "UPDATE lg_family_invites SET status = 'DECLINED' WHERE invite_id = %s", invite_id)
+
+            await interaction.response.edit_message(
+                embed=discord.Embed(
+                    title="\u274C Invite Declined",
+                    description=f"You declined the invite from **{family_name}**.",
+                    color=0xED4245,
+                ).set_footer(text="You can always join a family later via /pet \u2192 Family"),
+                view=None)
+        except Exception:
+            logger.debug(f"Failed to handle DM invite decline for user {uid}, invite {invite_id}")
+            if not interaction.response.is_done():
+                await interaction.response.send_message(
+                    "Something went wrong. Try `/pet` \u2192 Family instead.", ephemeral=True)
+    # --- END AI-MODIFIED ---
 
     # --- AI-MODIFIED (2026-03-20) ---
     # Purpose: Periodically refresh pet count for social proof in first encounter messages
@@ -3453,7 +5863,9 @@ class LionGotchiCog(LionCog):
             f"{farm_line}"
             f"{bonus_section}\n\n"
             f"-# *All LionGotchi art is hand-drawn by real humans \u2014 1,000+ items over 12 months of work, not AI. "
-            f"Subscriptions & gems support our artists.*"
+            f"Subscriptions & gems support our artists.*\n"
+            f"-# \U0001F41B *LionGotchi is in Beta \u2014 help us improve! "
+            f"Click \"Report a Bug\" below.*"
         )
         # --- END AI-REPLACED ---
 
@@ -4392,6 +6804,12 @@ class LionGotchiCog(LionCog):
             if earned_xp > 0:
                 self._daily_xp_earned[userid] = self._daily_xp_earned.get(userid, 0) + earned_xp
 
+            # --- AI-MODIFIED (2026-03-24) ---
+            # Purpose: Award family XP proportional to pet XP earned (with all bonuses applied)
+            if earned_xp > 0:
+                await award_family_xp(self.bot, userid, earned_xp)
+            # --- END AI-MODIFIED ---
+
             drops = result.get('drops') if result else None
             if drops:
                 self._record_drop(userid)
@@ -4455,6 +6873,12 @@ class LionGotchiCog(LionCog):
                 self._daily_gold_earned[userid] = self._daily_gold_earned.get(userid, 0) + earned_gold
             if earned_xp > 0:
                 self._daily_xp_earned[userid] = self._daily_xp_earned.get(userid, 0) + earned_xp
+
+            # --- AI-MODIFIED (2026-03-24) ---
+            # Purpose: Award family XP proportional to pet XP earned (with all bonuses applied)
+            if earned_xp > 0:
+                await award_family_xp(self.bot, userid, earned_xp)
+            # --- END AI-MODIFIED ---
 
             levels = result.get('levels', 0) if result else 0
             if levels > 0:

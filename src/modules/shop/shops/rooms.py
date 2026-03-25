@@ -90,7 +90,13 @@ class RoomRentalShop(Shop):
         guild = self.bot.get_guild(self.customer.guildid)
         if guild is None:
             return False
-        lguild = self.bot.core.lions._guild_cache.get(guild.id)
+        # --- AI-MODIFIED (2026-03-25) ---
+        # Purpose: Fix AttributeError -- Lions uses lion_guilds, not _guild_cache
+        # --- Original code (commented out for rollback) ---
+        # lguild = self.bot.core.lions._guild_cache.get(guild.id)
+        # --- End original code ---
+        lguild = self.bot.core.lions.lion_guilds.get(guild.id)
+        # --- END AI-MODIFIED ---
         if lguild is None:
             return False
         cat = lguild.config.get(RoomSettings.Category.setting_id)
