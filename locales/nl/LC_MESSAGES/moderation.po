@@ -136,7 +136,7 @@ msgstr "Moderatiewaarschuwing"
 #: src/modules/moderation/cog.py:267
 msgctxt "cmd:warning|modal:reason|field|label"
 msgid "Reason for the warning (visible to user)."
-msgstr "Reden voor de waarschuwing (zichtbaar voor gebruiker)."
+msgstr "Reden waarschuwing (zichtbaar voor gebruiker)"
 
 #: src/modules/moderation/cog.py:298
 msgctxt "cmd:warning|embed:user_alert|title"

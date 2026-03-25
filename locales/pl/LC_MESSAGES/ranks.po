@@ -1169,7 +1169,7 @@ msgstr ""
 #: src/modules/ranks/ui/editor.py:162
 msgctxt "ui:rank_editor|input:reward|label"
 msgid "LionCoins awarded upon achieving this rank"
-msgstr "LionCoins przyznawane za osiągnięcie tej rangi"
+msgstr "LionCoins za osiągnięcie tej rangi"
 
 #: src/modules/ranks/ui/editor.py:166
 msgctxt "ui:rank_editor|input:reward|placeholder"

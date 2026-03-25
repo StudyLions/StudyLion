@@ -174,7 +174,8 @@ class CoreData(Registry, name="core"):
             lg_teaser_enabled BOOLEAN DEFAULT TRUE,
             lg_activity_role BIGINT,
             lg_drop_delete_after INTEGER,
-            leaderboard_role_filter_enabled BOOLEAN DEFAULT FALSE
+            leaderboard_role_filter_enabled BOOLEAN DEFAULT FALSE,
+            session_leave_summary BOOLEAN DEFAULT FALSE
         );
 
         """
@@ -227,6 +228,11 @@ class CoreData(Registry, name="core"):
         persist_roles = Bool()
 
         pomodoro_channel = Integer()
+
+        # --- AI-MODIFIED (2026-03-25) ---
+        # Purpose: Toggle for "Great session" leave summary messages in pomodoro channels
+        session_leave_summary = Bool()
+        # --- END AI-MODIFIED ---
 
         name = String()
 

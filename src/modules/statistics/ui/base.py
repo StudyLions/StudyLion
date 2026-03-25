@@ -20,7 +20,7 @@ from gui.cards import ProfileCard, StatsCard
 
 from ..graphics.stats import get_stats_card
 from ..data import StatsData
-from .. import babel
+from .. import babel, logger
 
 _p = babel._p
 
@@ -98,7 +98,17 @@ class StatsUI(LeoUI):
         if thinking is not None and not thinking.is_expired() and thinking.response.is_done():
             asyncio.create_task(thinking.delete_original_response())
         if self._original and not self._original.is_expired():
-            await self._original.edit_original_response(**args.edit_args, view=self)
+            # --- AI-MODIFIED (2026-03-25) ---
+            # Purpose: Catch OSError (aiohttp.ClientOSError / connection reset) and HTTPException
+            # that would otherwise escape as unhandled (matches MessageUI.redraw pattern in leo.py)
+            try:
+                await self._original.edit_original_response(**args.edit_args, view=self)
+            except (discord.HTTPException, OSError) as e:
+                logger.warning(
+                    f"StatsUI redraw failure in {self}: {repr(e)}"
+                )
+                await self.close()
+            # --- END AI-MODIFIED ---
         else:
             await self.close()
 

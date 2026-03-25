@@ -549,7 +549,7 @@ msgstr "Obiectiv carduri"
 #: src/modules/statistics/ui/weeklymonthly.py:203
 msgctxt "modal:goal_editor|field:anki_goal|label"
 msgid "Enter a number of card revisions to aim for."
-msgstr "Introduceți un număr de revizuiri de carduri ca obiectiv."
+msgstr "Număr de revizuiri de carduri ca obiectiv."
 
 #, possible-python-brace-format
 msgctxt "modal:goal_editor|field:voice_goal|error:NAN"
@@ -575,7 +575,7 @@ msgstr ""
 #: src/modules/statistics/ui/weeklymonthly.py:252
 msgctxt "modal:goal_editor|field:weekly_task_editor|label"
 msgid "Tasks to complete this week (one per line)"
-msgstr "Sarcini de finalizat săptămâna aceasta (una pe linie)"
+msgstr "Sarcini săptămâna aceasta (una pe linie)"
 
 #: src/modules/statistics/ui/weeklymonthly.py:256
 msgctxt "modal:goal_editor|field:weekly_task_editor|placeholder"
@@ -589,7 +589,7 @@ msgstr ""
 #: src/modules/statistics/ui/weeklymonthly.py:262
 msgctxt "modal:goal_editor|field:monthly_task_editor|label"
 msgid "Tasks to complete this month (one per line)"
-msgstr "Sarcini de finalizat luna aceasta (una pe linie)"
+msgstr "Sarcini luna aceasta (una pe linie)"
 
 #: src/modules/statistics/ui/weeklymonthly.py:266
 msgctxt "modal:goal_editor|field:monthly_task_editor|placeholder"

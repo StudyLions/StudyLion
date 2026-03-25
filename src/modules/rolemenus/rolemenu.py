@@ -441,11 +441,18 @@ class RoleMenu:
             args = await template.render_menu(self)
         else:
             raw = self.data.rawmessage
-            data = json.loads(raw)
-            args = MessageArgs(
-                content=data.get('content', ''),
-                embed=discord.Embed.from_dict(data['embed']) if 'embed' in data else None
-            )
+            # --- AI-MODIFIED (2026-03-24) ---
+            # Purpose: Fall back to default template when rawmessage is None
+            if raw is None:
+                template = templates[0]
+                args = await template.render_menu(self)
+            else:
+            # --- END AI-MODIFIED ---
+                data = json.loads(raw)
+                args = MessageArgs(
+                    content=data.get('content', ''),
+                    embed=discord.Embed.from_dict(data['embed']) if 'embed' in data else None
+                )
         return args
 
     def unused_emojis(self, include_defaults=True):

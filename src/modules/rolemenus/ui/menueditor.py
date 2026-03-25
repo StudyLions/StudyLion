@@ -652,8 +652,22 @@ class MenuEditor(MessageUI):
     async def _message_editor(self, interaction: discord.Interaction):
         # Spawn the message editor with the current rawmessage data.
         # If the rawmessage data is empty, use the current template instead.
+        # --- AI-MODIFIED (2026-03-24) ---
+        # Purpose: Guard against rawmessage being None — initialize from default template
+        raw = self.menu.data.rawmessage
+        if raw is None:
+            template = templates[0]
+            margs = await template.render_menu(self.menu)
+            raw_data = {
+                'content': margs.kwargs.get('content', ''),
+            }
+            if 'embed' in margs.kwargs:
+                raw_data['embed'] = margs.kwargs['embed'].to_dict()
+            raw = json.dumps(raw_data)
+            await self.menu.data.update(rawmessage=raw)
+        # --- END AI-MODIFIED ---
         editor = MsgEditor(
-            self.bot, json.loads(self.menu.data.rawmessage), callback=self._editor_callback, callerid=self._callerid
+            self.bot, json.loads(raw), callback=self._editor_callback, callerid=self._callerid
         )
         self._slaves.append(editor)
         await editor.run(interaction, ephemeral=True)
@@ -809,8 +823,19 @@ class MenuEditor(MessageUI):
                 update_args['rawmessage'] = rawjson
 
             await self.menu.data.update(**update_args)
-
-        # At this point we are certain the menu is in custom mode and has a rawmessage
+        # --- AI-MODIFIED (2026-03-24) ---
+        # Purpose: Handle edge case where templateid is already None but rawmessage is also None
+        elif not self.menu.data.rawmessage:
+            template = templates[0]
+            margs = await template.render_menu(self.menu)
+            raw = {
+                'content': margs.kwargs.get('content', ''),
+            }
+            if 'embed' in margs.kwargs:
+                raw['embed'] = margs.kwargs['embed'].to_dict()
+            rawjson = json.dumps(raw)
+            await self.menu.data.update(rawmessage=rawjson)
+        # --- END AI-MODIFIED ---
         # Spawn editor
         await self._message_editor(press)
         await self.refresh()

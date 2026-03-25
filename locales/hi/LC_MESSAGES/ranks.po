@@ -1158,7 +1158,7 @@ msgstr ""
 #: src/modules/ranks/ui/editor.py:162
 msgctxt "ui:rank_editor|input:reward|label"
 msgid "LionCoins awarded upon achieving this rank"
-msgstr "इस रैंक प्राप्त करने पर दिए जाने वाले LionCoins"
+msgstr "इस रैंक पर मिलने वाले LionCoins"
 
 #: src/modules/ranks/ui/editor.py:166
 msgctxt "ui:rank_editor|input:reward|placeholder"

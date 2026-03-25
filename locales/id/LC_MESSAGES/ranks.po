@@ -1166,7 +1166,7 @@ msgstr "`requires`: Tidak dapat mengurai XP minimum! Masukkan bilangan bulat."
 #: src/modules/ranks/ui/editor.py:162
 msgctxt "ui:rank_editor|input:reward|label"
 msgid "LionCoins awarded upon achieving this rank"
-msgstr "LionCoins yang diberikan saat mencapai rank ini"
+msgstr "LionCoins saat mencapai rank ini"
 
 #: src/modules/ranks/ui/editor.py:166
 msgctxt "ui:rank_editor|input:reward|placeholder"

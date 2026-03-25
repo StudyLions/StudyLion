@@ -241,7 +241,7 @@ msgstr "Kada biste željeli biti podsjećeni?"
 #: src/modules/reminders/ui.py:120
 msgctxt "ui:reminderlist|button:new|modal|field:repeat|label"
 msgid "How often should the reminder repeat?"
-msgstr "Koliko često bi se podsjetnik trebao ponavljati?"
+msgstr "Koliko često podsjetnik da se ponavlja?"
 
 #: src/modules/reminders/ui.py:124
 msgctxt "ui:reminderlist|button:new|modal|field:repeat|placeholder"

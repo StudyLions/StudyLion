@@ -333,6 +333,12 @@ class TimerCog(LionCog):
             if not timer.running or timer.destroyed:
                 return
 
+            # --- AI-MODIFIED (2026-03-25) ---
+            # Purpose: Respect guild toggle for session leave summaries (default off)
+            if not timer.lguild.data.session_leave_summary:
+                return
+            # --- END AI-MODIFIED ---
+
             join_key = (timer.data.channelid, member.id)
             join_time = self._session_joins.pop(join_key, None)
             if join_time is None:

@@ -312,6 +312,13 @@ class TasklistUI(BasePager):
                 # Or we don't have permission somehow
                 pass
             self._message = None
+        # --- AI-MODIFIED (2026-03-24) ---
+        # Purpose: After shard restarts, _message is None but old public tasklist
+        # messages remain in the channel with stale interactive components.
+        # Scan recent history to find and delete orphaned messages for this user.
+        elif resend and self._message is None:
+            await self._cleanup_orphaned_messages()
+        # --- END AI-MODIFIED ---
 
         # Redraw
         try:
@@ -320,6 +327,54 @@ class TasklistUI(BasePager):
             if self._message:
                 self._message = None
                 await self.redraw()
+
+    # --- AI-MODIFIED (2026-03-24) ---
+    # Purpose: Delete orphaned tasklist messages left after shard restarts.
+    # These messages have stale components that cause "this interaction failed".
+    _ORPHAN_FOOTER_PREFIX = "tluid:"
+
+    async def _cleanup_orphaned_messages(self):
+        """
+        Scan recent channel history for orphaned tasklist messages belonging
+        to this user and delete them. Orphaned messages are identified by:
+        1. Footer containing the user's ID (new messages), or
+        2. Embed author matching the user's display name + "'s tasklist" (legacy)
+        """
+        try:
+            bot_id = self.bot.user.id
+            marker = f"{self._ORPHAN_FOOTER_PREFIX}{self.userid}"
+            if self.guild:
+                member = self.guild.get_member(self.userid)
+            else:
+                member = self.bot.get_user(self.userid)
+            user_name = member.name if member else None
+
+            async for msg in self.channel.history(limit=30):
+                if msg.author.id != bot_id:
+                    continue
+                if not msg.embeds or not msg.components:
+                    continue
+                embed = msg.embeds[0]
+                footer_text = embed.footer.text if embed.footer else None
+                if footer_text and marker in footer_text:
+                    try:
+                        await msg.delete()
+                    except discord.HTTPException:
+                        pass
+                    continue
+                author_name = embed.author.name if embed.author else None
+                if (
+                    user_name
+                    and author_name
+                    and author_name.startswith(f"{user_name}'s tasklist")
+                ):
+                    try:
+                        await msg.delete()
+                    except discord.HTTPException:
+                        pass
+        except discord.HTTPException:
+            pass
+    # --- END AI-MODIFIED ---
 
     async def page_cmd(self, interaction: discord.Interaction, value: str):
         return await Pager.page_cmd(self, interaction, value)
@@ -874,6 +929,12 @@ class TasklistUI(BasePager):
                 cmds=self.bot.core.mention_cache,
                 new_button=conf.emojis.task_new
             )
+
+        # --- AI-MODIFIED (2026-03-24) ---
+        # Purpose: Tag public tasklist embeds with the owner's user ID so
+        # orphaned messages can be reliably found and cleaned up after restarts.
+        embed.set_footer(text=f"{self._ORPHAN_FOOTER_PREFIX}{self.userid}")
+        # --- END AI-MODIFIED ---
 
         page_args = MessageArgs(embed=embed)
         return page_args

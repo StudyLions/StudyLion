@@ -33,7 +33,10 @@ async def generate_individual_summary(
         from .gamification import get_streak_data, check_milestones
 
         streak_data = await get_streak_data(bot, userid)
-        new_milestones = await check_milestones(bot, userid, timer.data.guildid)
+        # --- AI-MODIFIED (2026-03-24) ---
+        # Purpose: pass cycles_completed as required total_cycles argument
+        new_milestones = await check_milestones(bot, userid, timer.data.guildid, cycles_completed)
+        # --- END AI-MODIFIED ---
 
         return {
             'timer_name': timer.base_name,

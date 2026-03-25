@@ -545,7 +545,7 @@ msgstr "เป้าหมายการ์ดที่ระบุ `{input}` �
 #: src/modules/statistics/ui/weeklymonthly.py:252
 msgctxt "modal:goal_editor|field:weekly_task_editor|label"
 msgid "Tasks to complete this week (one per line)"
-msgstr "ภารกิจที่ต้องทำสัปดาห์นี้ (หนึ่งรายการต่อบรรทัด)"
+msgstr "ภารกิจสัปดาห์นี้ (หนึ่งต่อบรรทัด)"
 
 #: src/modules/statistics/ui/weeklymonthly.py:256
 msgctxt "modal:goal_editor|field:weekly_task_editor|placeholder"
@@ -559,7 +559,7 @@ msgstr ""
 #: src/modules/statistics/ui/weeklymonthly.py:262
 msgctxt "modal:goal_editor|field:monthly_task_editor|label"
 msgid "Tasks to complete this month (one per line)"
-msgstr "ภารกิจที่ต้องทำเดือนนี้ (หนึ่งรายการต่อบรรทัด)"
+msgstr "ภารกิจเดือนนี้ (หนึ่งต่อบรรทัด)"
 
 #: src/modules/statistics/ui/weeklymonthly.py:266
 msgctxt "modal:goal_editor|field:monthly_task_editor|placeholder"

@@ -545,7 +545,7 @@ msgstr "Het opgegeven kaartendoel `{input}` is geen getal! Probeer het opnieuw."
 #: src/modules/statistics/ui/weeklymonthly.py:252
 msgctxt "modal:goal_editor|field:weekly_task_editor|label"
 msgid "Tasks to complete this week (one per line)"
-msgstr "Taken om deze week te voltooien (één per regel)"
+msgstr "Taken deze week (één per regel)"
 
 #: src/modules/statistics/ui/weeklymonthly.py:256
 msgctxt "modal:goal_editor|field:weekly_task_editor|placeholder"
@@ -559,7 +559,7 @@ msgstr ""
 #: src/modules/statistics/ui/weeklymonthly.py:262
 msgctxt "modal:goal_editor|field:monthly_task_editor|label"
 msgid "Tasks to complete this month (one per line)"
-msgstr "Taken om deze maand te voltooien (één per regel)"
+msgstr "Taken deze maand (één per regel)"
 
 #: src/modules/statistics/ui/weeklymonthly.py:266
 msgctxt "modal:goal_editor|field:monthly_task_editor|placeholder"

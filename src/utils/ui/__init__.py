@@ -12,6 +12,27 @@ from .transformed import *
 from .config import *
 from .msgeditor import *
 
+# --- AI-MODIFIED (2026-03-24) ---
+# Purpose: Monkey-patch InteractionResponse.send_modal to auto-truncate TextInput labels
+# and Modal titles to Discord's 45-character limit, preventing 400 Bad Request errors
+# from overly long translations.
+import discord
+from discord.ui import TextInput as _TextInput
+
+_original_send_modal = discord.InteractionResponse.send_modal
+
+async def _safe_send_modal(self, modal, /):
+    MAX_LABEL = 45
+    if hasattr(modal, 'title') and isinstance(modal.title, str) and len(modal.title) > MAX_LABEL:
+        modal.title = modal.title[:MAX_LABEL]
+    for item in modal.children:
+        if isinstance(item, _TextInput) and isinstance(item.label, str) and len(item.label) > MAX_LABEL:
+            item.label = item.label[:MAX_LABEL]
+    return await _original_send_modal(self, modal)
+
+discord.InteractionResponse.send_modal = _safe_send_modal
+# --- END AI-MODIFIED ---
+
 
 # def create_task_in(coro, context: Context):
 #     """

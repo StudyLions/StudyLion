@@ -525,7 +525,7 @@ msgstr "Kortmål"
 #: src/modules/statistics/ui/weeklymonthly.py:203
 msgctxt "modal:goal_editor|field:anki_goal|label"
 msgid "Enter a number of card revisions to aim for."
-msgstr "Skriv inn antall kortgjennomganger å sikte mot."
+msgstr "Antall kortgjennomganger å sikte mot."
 
 #, possible-python-brace-format
 msgctxt "modal:goal_editor|field:voice_goal|error:NAN"
@@ -559,7 +559,7 @@ msgstr ""
 #: src/modules/statistics/ui/weeklymonthly.py:262
 msgctxt "modal:goal_editor|field:monthly_task_editor|label"
 msgid "Tasks to complete this month (one per line)"
-msgstr "Oppgaver å fullføre denne måneden (én per linje)"
+msgstr "Oppgaver denne måneden (én per linje)"
 
 #: src/modules/statistics/ui/weeklymonthly.py:266
 msgctxt "modal:goal_editor|field:monthly_task_editor|placeholder"

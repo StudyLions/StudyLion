@@ -545,7 +545,7 @@ msgstr "Цель по карточкам"
 #: src/modules/statistics/ui/weeklymonthly.py:203
 msgctxt "modal:goal_editor|field:anki_goal|label"
 msgid "Enter a number of card revisions to aim for."
-msgstr "Введите целевое количество повторений карточек."
+msgstr "Целевое количество повторений карточек."
 
 #, possible-python-brace-format
 msgctxt "modal:goal_editor|field:voice_goal|error:NAN"

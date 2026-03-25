@@ -135,7 +135,7 @@ msgstr "मॉडरेशन चेतावनी"
 #: src/modules/moderation/cog.py:267
 msgctxt "cmd:warning|modal:reason|field|label"
 msgid "Reason for the warning (visible to user)."
-msgstr "चेतावनी का कारण (उपयोगकर्ता को दिखाई देता है)।"
+msgstr "चेतावनी का कारण (उपयोगकर्ता को दिखाई)।"
 
 #: src/modules/moderation/cog.py:298
 msgctxt "cmd:warning|embed:user_alert|title"

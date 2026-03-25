@@ -6,6 +6,7 @@ import asyncio
 from datetime import timedelta, datetime
 
 import discord
+import psycopg.errors
 
 from meta import LionBot
 from meta.logger import log_wrap, log_context, set_logging_context
@@ -40,6 +41,7 @@ class Timer:
         'status_view',
         'last_status_message',
         '_hook',
+        '_hook_lock',
         '_state',
         '_lock',
         '_last_voice_update',
@@ -75,6 +77,7 @@ class Timer:
         self.status_view: Optional[TimerStatusUI] = None  # Current TimerStatusUI
         self.last_status_message: Optional[discord.Message] = None  # Last deliever notification message
         self._hook: Optional[CoreData.LionHook] = None  # Cached notification webhook
+        self._hook_lock = asyncio.Lock()
 
         self._state: Optional[Stage] = None  # The currently active Stage
         self._lock = asyncio.Lock()  # Stage change and CRUD lock
@@ -175,46 +178,59 @@ class Timer:
                 # --- END AI-MODIFIED ---
                 hook = self._hook = await core.data.LionHook.fetch(cid)
                 if not hook:
-                    # Attempt to create and save webhook
-                    # TODO: Localise
-                    # --- AI-MODIFIED (2026-03-22) ---
-                    # Purpose: Skip webhook creation for channel types that don't support it (e.g. CategoryChannel)
-                    if not hasattr(channel, 'create_webhook'):
-                        return None
+                    # --- AI-MODIFIED (2026-03-25) ---
+                    # Purpose: Lock webhook creation to prevent concurrent INSERT race (UniqueViolation)
+                    async with self._hook_lock:
+                        hook = self._hook = await core.data.LionHook.fetch(cid, cached=False)
+                        if not hook:
+                            # --- AI-MODIFIED (2026-03-22) ---
+                            # Purpose: Skip webhook creation for channel types that don't support it (e.g. CategoryChannel)
+                            if not hasattr(channel, 'create_webhook'):
+                                return None
+                            # --- END AI-MODIFIED ---
+                            t = self.bot.translator.t
+                            ctx_locale.set(self.locale.value)
+                            try:
+                                if channel.permissions_for(channel.guild.me).manage_webhooks:
+                                    avatar = self.bot.user.avatar
+                                    avatar_data = (await avatar.to_file()).fp.read() if avatar else None
+                                    webhook = await channel.create_webhook(
+                                        avatar=avatar_data,
+                                        name=t(_p(
+                                            'timer|webhook|name',
+                                            "{bot_name} Pomodoro"
+                                        )).format(bot_name=self.bot.user.name),
+                                        reason=t(_p(
+                                            'timer|webhook|audit_reason',
+                                            "Pomodoro Notifications"
+                                        ))
+                                    )
+                                    try:
+                                        hook = await self.bot.core.data.LionHook.create(
+                                            channelid=channel.id,
+                                            token=webhook.token,
+                                            webhookid=webhook.id
+                                        )
+                                    except psycopg.errors.UniqueViolation:
+                                        logger.warning(
+                                            "UniqueViolation creating webhook for channel %s -- "
+                                            "already exists in DB, fetching existing row",
+                                            channel.id
+                                        )
+                                        core.data.LionHook._cache_.pop((cid,), None)
+                                        hook = await core.data.LionHook.fetch(cid, cached=False)
+                                elif channel.permissions_for(channel.guild.me).send_messages:
+                                    await channel.send(t(_p(
+                                        'timer|webhook|error:insufficient_permissions',
+                                        "I require the `MANAGE_WEBHOOKS` permission to send pomodoro notifications here!"
+                                    )))
+                            except discord.HTTPException:
+                                logger.warning(
+                                    "Unexpected Exception caught while creating timer notification webhook "
+                                    f"for timer: {self!r}",
+                                    exc_info=True
+                                )
                     # --- END AI-MODIFIED ---
-                    t = self.bot.translator.t
-                    ctx_locale.set(self.locale.value)
-                    try:
-                        if channel.permissions_for(channel.guild.me).manage_webhooks:
-                            avatar = self.bot.user.avatar
-                            avatar_data = (await avatar.to_file()).fp.read() if avatar else None
-                            webhook = await channel.create_webhook(
-                                avatar=avatar_data,
-                                name=t(_p(
-                                    'timer|webhook|name',
-                                    "{bot_name} Pomodoro"
-                                )).format(bot_name=self.bot.user.name),
-                                reason=t(_p(
-                                    'timer|webhook|audit_reason',
-                                    "Pomodoro Notifications"
-                                ))
-                            )
-                            hook = await self.bot.core.data.LionHook.create(
-                                channelid=channel.id,
-                                token=webhook.token,
-                                webhookid=webhook.id
-                            )
-                        elif channel.permissions_for(channel.guild.me).send_messages:
-                            await channel.send(t(_p(
-                                'timer|webhook|error:insufficient_permissions',
-                                "I require the `MANAGE_WEBHOOKS` permission to send pomodoro notifications here!"
-                            )))
-                    except discord.HTTPException:
-                        logger.warning(
-                            "Unexpected Exception caught while creating timer notification webhook "
-                            f"for timer: {self!r}",
-                            exc_info=True
-                        )
             if hook:
                 return hook.as_webhook(client=self.bot)
 
@@ -757,7 +773,10 @@ class Timer:
                     await self.last_status_message.delete()
                 else:
                     await notify_hook.delete_message(last_message_id)
-            except discord.HTTPException:
+            # --- AI-MODIFIED (2026-03-25) ---
+            # Purpose: Catch OSError (connection reset) alongside HTTPException on delete
+            except (discord.HTTPException, OSError):
+            # --- END AI-MODIFIED ---
                 logger.debug(
                     f"Timer {self!r} failed to delete last status message {last_message_id}"
                 )
@@ -785,8 +804,11 @@ class Timer:
                 # To avoid killing the client on an infinite loop (which should be impossible)
                 await asyncio.sleep(1)
                 await self.send_status(delete_last, **kwargs)
-        except discord.HTTPException:
+        # --- AI-MODIFIED (2026-03-25) ---
+        # Purpose: Catch OSError (incl. aiohttp.ClientOSError / connection reset) alongside HTTPException
+        except (discord.HTTPException, OSError):
             pass
+        # --- END AI-MODIFIED ---
 
         # Save last message id
         if last_message_id != self.data.last_messageid:
@@ -813,13 +835,18 @@ class Timer:
                 try:
                     if notify_hook:
                         last_message = await notify_hook.fetch_message(self.data.last_messageid)
-                except discord.HTTPException:
+                # --- AI-MODIFIED (2026-03-25) ---
+                # Purpose: Catch OSError (incl. ClientOSError/connection reset) alongside HTTPException
+                except (discord.HTTPException, OSError):
                     last_message = None
                     self.last_status_message = None
+                # --- END AI-MODIFIED ---
                 except Exception:
                     logger.exception(
                         f"Unhandled exception while updating timer last status for timer {self!r}"
                     )
+                    last_message = None
+                    self.last_status_message = None
 
             repost = last_message is None
             if not repost:
@@ -853,6 +880,14 @@ class Timer:
                         logger.exception(
                             f"Exception occurred updating status for Timer {self!r}"
                         )
+                # --- END AI-MODIFIED ---
+                # --- AI-MODIFIED (2026-03-25) ---
+                # Purpose: Catch OSError (incl. aiohttp.ClientOSError / connection reset) and repost
+                except OSError:
+                    logger.warning(
+                        f"Timer {self!r} status edit hit OSError (connection reset), reposting"
+                    )
+                    repost = True
                 # --- END AI-MODIFIED ---
 
             if repost:

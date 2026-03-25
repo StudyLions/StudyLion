@@ -574,7 +574,7 @@ msgstr ""
 #: src/modules/statistics/ui/weeklymonthly.py:252
 msgctxt "modal:goal_editor|field:weekly_task_editor|label"
 msgid "Tasks to complete this week (one per line)"
-msgstr "Šią savaitę atlikti užduotys (po vieną eilutėje)"
+msgstr "Savaitės užduotys (po vieną eilutėje)"
 
 #: src/modules/statistics/ui/weeklymonthly.py:256
 msgctxt "modal:goal_editor|field:weekly_task_editor|placeholder"
@@ -588,7 +588,7 @@ msgstr ""
 #: src/modules/statistics/ui/weeklymonthly.py:262
 msgctxt "modal:goal_editor|field:monthly_task_editor|label"
 msgid "Tasks to complete this month (one per line)"
-msgstr "Šį mėnesį atlikti užduotys (po vieną eilutėje)"
+msgstr "Šio mėnesio užduotys (po vieną eilutėje)"
 
 #: src/modules/statistics/ui/weeklymonthly.py:266
 msgctxt "modal:goal_editor|field:monthly_task_editor|placeholder"

@@ -1164,7 +1164,7 @@ msgstr "`requires`: Kon minimaal XP niet verwerken! Voer een geheel getal in."
 #: src/modules/ranks/ui/editor.py:162
 msgctxt "ui:rank_editor|input:reward|label"
 msgid "LionCoins awarded upon achieving this rank"
-msgstr "LionCoins toegekend bij het bereiken van deze rang"
+msgstr "LionCoins bij bereiken van deze rang"
 
 #: src/modules/ranks/ui/editor.py:166
 msgctxt "ui:rank_editor|input:reward|placeholder"

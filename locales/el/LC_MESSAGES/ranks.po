@@ -1173,7 +1173,7 @@ msgstr "`requires`: Αδυναμία ανάγνωσης ελάχιστων XP! �
 #: src/modules/ranks/ui/editor.py:162
 msgctxt "ui:rank_editor|input:reward|label"
 msgid "LionCoins awarded upon achieving this rank"
-msgstr "LionCoins που απονέμονται κατά την επίτευξη αυτής της τάξης"
+msgstr "LionCoins στην επίτευξη αυτής της τάξης"
 
 #: src/modules/ranks/ui/editor.py:166
 msgctxt "ui:rank_editor|input:reward|placeholder"

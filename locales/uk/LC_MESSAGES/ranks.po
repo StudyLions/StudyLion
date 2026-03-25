@@ -1160,7 +1160,7 @@ msgstr "`requires`: Не вдалося розпізнати мінімальн�
 #: src/modules/ranks/ui/editor.py:162
 msgctxt "ui:rank_editor|input:reward|label"
 msgid "LionCoins awarded upon achieving this rank"
-msgstr "LionCoins, що нараховуються при досягненні рангу"
+msgstr "LionCoins при досягненні рангу"
 
 #: src/modules/ranks/ui/editor.py:166
 msgctxt "ui:rank_editor|input:reward|placeholder"

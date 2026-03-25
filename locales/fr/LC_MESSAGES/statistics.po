@@ -558,7 +558,7 @@ msgstr "Objectif de cartes"
 #: src/modules/statistics/ui/weeklymonthly.py:203
 msgctxt "modal:goal_editor|field:anki_goal|label"
 msgid "Enter a number of card revisions to aim for."
-msgstr "Entrez un nombre de révisions de cartes à viser."
+msgstr "Nombre de révisions de cartes visé."
 
 #, possible-python-brace-format
 msgctxt "modal:goal_editor|field:voice_goal|error:NAN"
@@ -585,7 +585,7 @@ msgstr ""
 #: src/modules/statistics/ui/weeklymonthly.py:252
 msgctxt "modal:goal_editor|field:weekly_task_editor|label"
 msgid "Tasks to complete this week (one per line)"
-msgstr "Tâches à accomplir cette semaine (une par ligne)"
+msgstr "Tâches de la semaine (une par ligne)"
 
 #: src/modules/statistics/ui/weeklymonthly.py:256
 msgctxt "modal:goal_editor|field:weekly_task_editor|placeholder"

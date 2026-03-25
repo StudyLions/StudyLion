@@ -1171,7 +1171,7 @@ msgstr "`requires`: XP minimo non riconosciuto! Inserisci un intero."
 #: src/modules/ranks/ui/editor.py:162
 msgctxt "ui:rank_editor|input:reward|label"
 msgid "LionCoins awarded upon achieving this rank"
-msgstr "LionCoins assegnati al raggiungimento di questo grado"
+msgstr "LionCoins al raggiungimento del grado"
 
 #: src/modules/ranks/ui/editor.py:166
 msgctxt "ui:rank_editor|input:reward|placeholder"

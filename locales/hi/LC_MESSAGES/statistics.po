@@ -545,7 +545,7 @@ msgstr "प्रदान किया गया कार्ड लक्ष�
 #: src/modules/statistics/ui/weeklymonthly.py:252
 msgctxt "modal:goal_editor|field:weekly_task_editor|label"
 msgid "Tasks to complete this week (one per line)"
-msgstr "इस सप्ताह पूरे करने वाले कार्य (प्रति पंक्ति एक)"
+msgstr "इस सप्ताह के कार्य (प्रति पंक्ति एक)"
 
 #: src/modules/statistics/ui/weeklymonthly.py:256
 msgctxt "modal:goal_editor|field:weekly_task_editor|placeholder"
@@ -559,7 +559,7 @@ msgstr ""
 #: src/modules/statistics/ui/weeklymonthly.py:262
 msgctxt "modal:goal_editor|field:monthly_task_editor|label"
 msgid "Tasks to complete this month (one per line)"
-msgstr "इस महीने पूरे करने वाले कार्य (प्रति पंक्ति एक)"
+msgstr "इस महीने के कार्य (प्रति पंक्ति एक)"
 
 #: src/modules/statistics/ui/weeklymonthly.py:266
 msgctxt "modal:goal_editor|field:monthly_task_editor|placeholder"

@@ -270,27 +270,66 @@ def compose_room_scene(state: PetState) -> Image.Image:
                 if furniture_flips.get(layer_name, False):
                     layer = layer.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
 
-                # --- AI-MODIFIED (2026-03-16) ---
-                # Purpose: Apply per-layer scale around the center of the image
+                # --- AI-REPLACED (2026-03-25) ---
+                # Reason: Scale + offset were applied in two separate steps, each
+                #   clipping to 200x200. This double-clip lost pixels that the
+                #   website's single-pass canvas transform preserves.
+                # What the new code does better: Combines scale centering and
+                #   user offset into one composite call so clipping happens once,
+                #   matching the website renderer exactly.
+                # --- Original code (commented out for rollback) ---
+                # layer_scale = furniture_scales.get(layer_name, 1.0)
+                # if layer_scale != 1.0 and layer_scale > 0:
+                #     new_w = max(1, int(SCREEN_W * layer_scale))
+                #     new_h = max(1, int(SCREEN_H * layer_scale))
+                #     scaled = layer.resize((new_w, new_h), Image.Resampling.NEAREST)
+                #     layer = Image.new('RGBA', (SCREEN_W, SCREEN_H), (0, 0, 0, 0))
+                #     paste_x = (SCREEN_W - new_w) // 2
+                #     paste_y = (SCREEN_H - new_h) // 2
+                #     layer.alpha_composite(scaled, (paste_x, paste_y))
+                #
+                # offset = furniture_offsets.get(layer_name)
+                # if offset and (offset[0] != 0 or offset[1] != 0):
+                #     offset_canvas = Image.new('RGBA', (SCREEN_W, SCREEN_H), (0, 0, 0, 0))
+                #     ox, oy = int(offset[0]), int(offset[1])
+                #     offset_canvas.alpha_composite(layer, (ox, oy))
+                #     scene.alpha_composite(offset_canvas)
+                # else:
+                #     scene.alpha_composite(layer)
+                # --- End original code ---
                 layer_scale = furniture_scales.get(layer_name, 1.0)
+                offset = furniture_offsets.get(layer_name)
+                ox = int(offset[0]) if offset else 0
+                oy = int(offset[1]) if offset else 0
+
                 if layer_scale != 1.0 and layer_scale > 0:
                     new_w = max(1, int(SCREEN_W * layer_scale))
                     new_h = max(1, int(SCREEN_H * layer_scale))
                     scaled = layer.resize((new_w, new_h), Image.Resampling.NEAREST)
-                    layer = Image.new('RGBA', (SCREEN_W, SCREEN_H), (0, 0, 0, 0))
-                    paste_x = (SCREEN_W - new_w) // 2
-                    paste_y = (SCREEN_H - new_h) // 2
-                    layer.alpha_composite(scaled, (paste_x, paste_y))
-                # --- END AI-MODIFIED ---
-
-                offset = furniture_offsets.get(layer_name)
-                if offset and (offset[0] != 0 or offset[1] != 0):
-                    offset_canvas = Image.new('RGBA', (SCREEN_W, SCREEN_H), (0, 0, 0, 0))
-                    ox, oy = int(offset[0]), int(offset[1])
-                    offset_canvas.alpha_composite(layer, (ox, oy))
-                    scene.alpha_composite(offset_canvas)
+                    cx = (SCREEN_W - new_w) // 2 + ox
+                    cy = (SCREEN_H - new_h) // 2 + oy
+                    src_x = max(0, -cx)
+                    src_y = max(0, -cy)
+                    dst_x = max(0, cx)
+                    dst_y = max(0, cy)
+                    paste_w = min(new_w - src_x, SCREEN_W - dst_x)
+                    paste_h = min(new_h - src_y, SCREEN_H - dst_y)
+                    if paste_w > 0 and paste_h > 0:
+                        region = scaled.crop((src_x, src_y, src_x + paste_w, src_y + paste_h))
+                        scene.alpha_composite(region, (dst_x, dst_y))
+                elif ox != 0 or oy != 0:
+                    src_x = max(0, -ox)
+                    src_y = max(0, -oy)
+                    dst_x = max(0, ox)
+                    dst_y = max(0, oy)
+                    paste_w = min(SCREEN_W - src_x, SCREEN_W - dst_x)
+                    paste_h = min(SCREEN_H - src_y, SCREEN_H - dst_y)
+                    if paste_w > 0 and paste_h > 0:
+                        region = layer.crop((src_x, src_y, src_x + paste_w, src_y + paste_h))
+                        scene.alpha_composite(region, (dst_x, dst_y))
                 else:
                     scene.alpha_composite(layer)
+                # --- END AI-REPLACED ---
     # --- END AI-MODIFIED ---
 
     return scene

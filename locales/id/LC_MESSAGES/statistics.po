@@ -525,7 +525,7 @@ msgstr "Target kartu"
 #: src/modules/statistics/ui/weeklymonthly.py:203
 msgctxt "modal:goal_editor|field:anki_goal|label"
 msgid "Enter a number of card revisions to aim for."
-msgstr "Masukkan jumlah revisi kartu yang ditargetkan."
+msgstr "Jumlah revisi kartu yang ditargetkan."
 
 #, possible-python-brace-format
 msgctxt "modal:goal_editor|field:voice_goal|error:NAN"
@@ -545,7 +545,7 @@ msgstr "Target kartu yang diberikan `{input}` bukan angka! Silakan coba lagi."
 #: src/modules/statistics/ui/weeklymonthly.py:252
 msgctxt "modal:goal_editor|field:weekly_task_editor|label"
 msgid "Tasks to complete this week (one per line)"
-msgstr "Tugas yang harus diselesaikan minggu ini (satu per baris)"
+msgstr "Tugas minggu ini (satu per baris)"
 
 #: src/modules/statistics/ui/weeklymonthly.py:256
 msgctxt "modal:goal_editor|field:weekly_task_editor|placeholder"
@@ -559,7 +559,7 @@ msgstr ""
 #: src/modules/statistics/ui/weeklymonthly.py:262
 msgctxt "modal:goal_editor|field:monthly_task_editor|label"
 msgid "Tasks to complete this month (one per line)"
-msgstr "Tugas yang harus diselesaikan bulan ini (satu per baris)"
+msgstr "Tugas bulan ini (satu per baris)"
 
 #: src/modules/statistics/ui/weeklymonthly.py:266
 msgctxt "modal:goal_editor|field:monthly_task_editor|placeholder"

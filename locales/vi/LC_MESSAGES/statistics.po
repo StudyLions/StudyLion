@@ -545,7 +545,7 @@ msgstr "Mục tiêu thẻ được cung cấp `{input}` không phải là số! 
 #: src/modules/statistics/ui/weeklymonthly.py:252
 msgctxt "modal:goal_editor|field:weekly_task_editor|label"
 msgid "Tasks to complete this week (one per line)"
-msgstr "Nhiệm vụ cần hoàn thành tuần này (mỗi dòng một nhiệm vụ)"
+msgstr "Nhiệm vụ tuần này (mỗi dòng một)"
 
 #: src/modules/statistics/ui/weeklymonthly.py:256
 msgctxt "modal:goal_editor|field:weekly_task_editor|placeholder"
@@ -559,7 +559,7 @@ msgstr ""
 #: src/modules/statistics/ui/weeklymonthly.py:262
 msgctxt "modal:goal_editor|field:monthly_task_editor|label"
 msgid "Tasks to complete this month (one per line)"
-msgstr "Nhiệm vụ cần hoàn thành tháng này (mỗi dòng một nhiệm vụ)"
+msgstr "Nhiệm vụ tháng này (mỗi dòng một)"
 
 #: src/modules/statistics/ui/weeklymonthly.py:266
 msgctxt "modal:goal_editor|field:monthly_task_editor|placeholder"

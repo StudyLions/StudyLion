@@ -974,20 +974,11 @@ class RankCog(LionCog):
         #     )
         # --- End original code ---
         column = self._get_rankid_column(rank_type)
-        await self.bot.db.execute(
-            f"UPDATE member_ranks SET {column} = NULL WHERE guildid = $1",
-            guild.id
-        )
+        await self.data.MemberRank.table.update_where(guildid=guild.id).set(**{column: None})
         if true_member_ranks:
             for memberid, rank in true_member_ranks.items():
-                existing = await self.data.MemberRank.fetch(guild.id, memberid)
-                if existing:
-                    await existing.update(**{column: rank.rankid})
-                else:
-                    await self.data.MemberRank.create(
-                        guildid=guild.id, userid=memberid,
-                        **{column: rank.rankid}
-                    )
+                row = await self.data.MemberRank.fetch_or_create(guild.id, memberid)
+                await row.update(**{column: rank.rankid})
         self.flush_guild_ranks(guild.id)
         # --- END AI-MODIFIED ---
         await ui.set_done()

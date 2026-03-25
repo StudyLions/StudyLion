@@ -136,7 +136,7 @@ msgstr "Moderációs figyelmeztetés"
 #: src/modules/moderation/cog.py:267
 msgctxt "cmd:warning|modal:reason|field|label"
 msgid "Reason for the warning (visible to user)."
-msgstr "A figyelmeztetés oka (látható a felhasználónak)."
+msgstr "A figyelmeztetés oka (a felhasználónak)."
 
 #: src/modules/moderation/cog.py:298
 msgctxt "cmd:warning|embed:user_alert|title"

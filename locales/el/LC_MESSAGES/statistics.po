@@ -579,7 +579,7 @@ msgstr ""
 #: src/modules/statistics/ui/weeklymonthly.py:252
 msgctxt "modal:goal_editor|field:weekly_task_editor|label"
 msgid "Tasks to complete this week (one per line)"
-msgstr "Εργασίες για ολοκλήρωση αυτή την εβδομάδα (μία ανά γραμμή)"
+msgstr "Εβδομαδιαίες εργασίες (μία ανά γραμμή)"
 
 #: src/modules/statistics/ui/weeklymonthly.py:256
 msgctxt "modal:goal_editor|field:weekly_task_editor|placeholder"
@@ -593,7 +593,7 @@ msgstr ""
 #: src/modules/statistics/ui/weeklymonthly.py:262
 msgctxt "modal:goal_editor|field:monthly_task_editor|label"
 msgid "Tasks to complete this month (one per line)"
-msgstr "Εργασίες για ολοκλήρωση αυτόν τον μήνα (μία ανά γραμμή)"
+msgstr "Μηνιαίες εργασίες (μία ανά γραμμή)"
 
 #: src/modules/statistics/ui/weeklymonthly.py:266
 msgctxt "modal:goal_editor|field:monthly_task_editor|placeholder"

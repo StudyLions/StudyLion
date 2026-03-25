@@ -1352,3 +1352,70 @@ async def process_text_activity(bot, userid: int, message_count: int,
 # --- END AI-REPLACED ---
 
 # --- END AI-REPLACED ---
+
+
+# --- AI-GENERATED (2026-03-24) ---
+# Purpose: Family XP earning system -- award XP to user's family after pet XP is calculated
+def _family_xp_threshold(level: int) -> int:
+    """Cumulative XP needed to reach a given family level.
+    Matches the website formula in familyPermissions.ts."""
+    if level <= 1:
+        return 0
+    return int(500 * ((level - 1) ** 1.8))
+
+
+def family_level_from_xp(xp: int) -> int:
+    """Compute family level from cumulative XP.
+    Matches familyLevelFromXp in familyPermissions.ts."""
+    level = 1
+    while _family_xp_threshold(level + 1) <= xp:
+        level += 1
+    return level
+
+
+async def award_family_xp(bot, userid: int, xp_amount: int):
+    """Award XP to the user's family (if any) and update contribution + level.
+
+    Called after pet XP is awarded so all bonuses are already applied.
+    Silently skips if the user is not in a family.
+    """
+    if xp_amount <= 0:
+        return
+    # --- AI-MODIFIED (2026-03-24) ---
+    # Purpose: fix psycopg3 cursor usage -- conn.execute() returns a cursor,
+    # not rows. Must use cursor.fetchall()/fetchone() to get row data.
+    try:
+        async with bot.db.connection() as conn:
+            async with conn.cursor() as cur:
+                await cur.execute(
+                    "SELECT family_id FROM lg_family_members "
+                    "WHERE userid = %s AND left_at IS NULL LIMIT 1",
+                    [userid]
+                )
+                rows = await cur.fetchall()
+                if not rows:
+                    return
+                family_id = rows[0]['family_id']
+
+                await cur.execute(
+                    "UPDATE lg_family_members SET contribution_xp = contribution_xp + %s "
+                    "WHERE family_id = %s AND userid = %s AND left_at IS NULL",
+                    [xp_amount, family_id, userid]
+                )
+
+                await cur.execute(
+                    "UPDATE lg_families SET xp = xp + %s WHERE family_id = %s RETURNING xp",
+                    [xp_amount, family_id]
+                )
+                fam_rows = await cur.fetchall()
+                if fam_rows:
+                    new_xp = int(fam_rows[0]['xp'] or 0)
+                    new_level = family_level_from_xp(new_xp)
+                    await cur.execute(
+                        "UPDATE lg_families SET level = %s WHERE family_id = %s",
+                        [new_level, family_id]
+                    )
+    # --- END AI-MODIFIED ---
+    except Exception:
+        logger.exception("Error awarding family XP for userid=%s", userid)
+# --- END AI-GENERATED ---
