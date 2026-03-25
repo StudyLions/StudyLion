@@ -122,12 +122,13 @@ class RankCog(LionCog):
         self.data = bot.db.load_registry(RankData())
         self.settings = RankSettings()
 
-        # Cached guild ranks for all current guilds. guildid -> list[Rank]
+        # --- AI-MODIFIED (2026-03-25) ---
+        # Purpose: Cache keys changed from guildid to (guildid, rank_type) for multi-rank-type support
+        # Cached guild ranks: (guildid, rank_type) -> list[Rank]
         self._guild_ranks = {}
-        # Cached member SeasonRanks for recently active members
-        # guildid -> userid -> SeasonRank
-        # pop the guild whenever the season is updated or the rank type changes.
+        # Cached member SeasonRanks: (guildid, rank_type) -> LRUCache(userid -> SeasonRank)
         self._member_ranks = {}
+        # --- END AI-MODIFIED ---
 
         # Weakly referenced Locks for each guild to serialise rank actions
         self._rank_locks: dict[int, asyncio.Lock] = WeakValueDictionary()
@@ -138,6 +139,13 @@ class RankCog(LionCog):
         self.bot.core.guild_config.register_model_setting(self.settings.RankStatType)
         self.bot.core.guild_config.register_model_setting(self.settings.RankChannel)
         self.bot.core.guild_config.register_model_setting(self.settings.DMRanks)
+
+        # --- AI-MODIFIED (2026-03-25) ---
+        # Purpose: Register secondary rank type toggle settings
+        self.bot.core.guild_config.register_model_setting(self.settings.VoiceRanksEnabled)
+        self.bot.core.guild_config.register_model_setting(self.settings.MsgRanksEnabled)
+        self.bot.core.guild_config.register_model_setting(self.settings.XpRanksEnabled)
+        # --- END AI-MODIFIED ---
 
         configcog = self.bot.get_cog('ConfigCog')
         self.crossload_group(self.configure_group, configcog.admin_config_group)
@@ -150,29 +158,60 @@ class RankCog(LionCog):
         return lock
 
     # ---------- Event handlers ----------
-    # season_start setting event handler.. clears the guild season rank cache
+    # --- AI-MODIFIED (2026-03-25) ---
+    # Purpose: Updated cache flush to use (guildid, rank_type) keys; added secondary type handlers
     @LionCog.listener('on_guildset_season_start')
     async def handle_season_start(self, guildid, setting):
-        self._member_ranks.pop(guildid, None)
+        self.flush_guild_ranks(guildid)
 
-    # guild_leave event handler.. removes the guild from _guild_ranks and clears the season cache
     @LionCog.listener('on_guildset_rank_type')
     async def handle_rank_type(self, guildid, setting):
         self.flush_guild_ranks(guildid)
 
-    # rank_type setting event handler.. clears the guild season rank cache and the _guild_ranks cache
+    @LionCog.listener('on_guildset_voice_ranks_enabled')
+    async def handle_voice_ranks_enabled(self, guildid, setting):
+        self.flush_guild_ranks(guildid)
+
+    @LionCog.listener('on_guildset_msg_ranks_enabled')
+    async def handle_msg_ranks_enabled(self, guildid, setting):
+        self.flush_guild_ranks(guildid)
+
+    @LionCog.listener('on_guildset_xp_ranks_enabled')
+    async def handle_xp_ranks_enabled(self, guildid, setting):
+        self.flush_guild_ranks(guildid)
+    # --- END AI-MODIFIED ---
 
     # ---------- Cog API ----------
-    def _get_member_cache(self, guildid: int):
-        if (cached := self._member_ranks.get(guildid, None)) is None:
+    # --- AI-MODIFIED (2026-03-25) ---
+    # Purpose: Cache key changed to (guildid, rank_type); added get_enabled_rank_types
+    def _get_member_cache(self, guildid: int, rank_type: RankType):
+        cache_key = (guildid, rank_type)
+        if (cached := self._member_ranks.get(cache_key, None)) is None:
             guild = self.bot.get_guild(guildid)
             if guild and guild.member_count and guild.member_count > 1000:
                 size = guild.member_count // 10
             else:
                 size = 100
             cached = LRUCache(maxsize=size)
-            self._member_ranks[guildid] = cached
+            self._member_ranks[cache_key] = cached
         return cached
+
+    async def get_enabled_rank_types(self, guildid: int) -> set[RankType]:
+        """
+        Return the set of all enabled rank types for this guild.
+        Always includes the primary rank_type; secondary types included if toggled on.
+        """
+        lguild = await self.bot.core.lions.fetch_guild(guildid)
+        primary = lguild.config.get('rank_type').value
+        enabled = {primary}
+        if lguild.config.get('voice_ranks_enabled').value:
+            enabled.add(RankType.VOICE)
+        if lguild.config.get('msg_ranks_enabled').value:
+            enabled.add(RankType.MESSAGE)
+        if lguild.config.get('xp_ranks_enabled').value:
+            enabled.add(RankType.XP)
+        return enabled
+    # --- END AI-MODIFIED ---
 
     def _get_stats_model(self, rank_type):
         return {
@@ -195,25 +234,27 @@ class RankCog(LionCog):
             RankType.XP: 'current_xp_rankid'
         }[rank_type]
 
-    async def get_member_rank(self, guildid: int, userid: int) -> SeasonRank:
+    # --- AI-MODIFIED (2026-03-25) ---
+    # Purpose: Accept optional rank_type for multi-rank-type support; defaults to primary type
+    async def get_member_rank(self, guildid: int, userid: int, rank_type: Optional[RankType] = None) -> SeasonRank:
         """
         Fetch the SeasonRank info for the given member.
 
+        If rank_type is None, uses the guild's primary rank_type.
         Applies cache where possible.
         """
-        member_cache = self._get_member_cache(guildid)
-        if (season_rank := member_cache.get(userid, None)) is None:
-            # Fetch season rank anew
-            lguild = await self.bot.core.lions.fetch_guild(guildid)
+        lguild = await self.bot.core.lions.fetch_guild(guildid)
+        if rank_type is None:
             rank_type = lguild.config.get('rank_type').value
-            # TODO: Benchmark alltime efficiency
+
+        member_cache = self._get_member_cache(guildid, rank_type)
+        if (season_rank := member_cache.get(userid, None)) is None:
             season_start = lguild.config.get('season_start').value or datetime.datetime(1970, 1, 1)
             stat_data = self.bot.get_cog('StatsCog').data
             text_data = self.bot.get_cog('TextTrackerCog').data
             member_row = await self.data.MemberRank.fetch_or_create(guildid, userid)
             if rank_type is RankType.VOICE:
                 model = stat_data.VoiceSessionStats
-                # TODO: Should probably only used saved sessions here...
                 stat = (await model.study_times_since(guildid, userid, season_start))[0]
                 if rankid := member_row.current_voice_rankid:
                     current_rank = await self.data.VoiceRank.fetch(rankid)
@@ -234,63 +275,110 @@ class RankCog(LionCog):
                 else:
                     current_rank = None
 
-            ranks = await self.get_guild_ranks(guildid)
+            ranks = await self.get_guild_ranks(guildid, rank_type=rank_type)
             next_rank = None
             current = current_rank.required if current_rank is not None else 0
             next_rank = next((rank for rank in ranks if rank.required > current), None)
             season_rank = SeasonRank(guildid, userid, current_rank, next_rank, rank_type, stat, member_row)
             member_cache[userid] = season_rank
         return season_rank
+    # --- END AI-MODIFIED ---
 
-    async def get_guild_ranks(self, guildid: int, refresh=False) -> list[AnyRankData]:
+    # --- AI-MODIFIED (2026-03-25) ---
+    # Purpose: Accept optional rank_type param; cache keyed by (guildid, rank_type)
+    async def get_guild_ranks(self, guildid: int, refresh=False, rank_type: Optional[RankType] = None) -> list[AnyRankData]:
         """
-        Get the list of ranks of the correct type in the current guild.
+        Get the list of ranks of the given type in the current guild.
 
+        If rank_type is None, uses the guild's primary rank_type.
         Hits cache where possible, unless `refresh` is set.
         """
-        # TODO: Fill guild rank caches on cog_load
-        if refresh or (ranks := self._guild_ranks.get(guildid, None)) is None:
+        if rank_type is None:
             lguild = await self.bot.core.lions.fetch_guild(guildid)
             rank_type = lguild.config.get('rank_type').value
+
+        cache_key = (guildid, rank_type)
+        if refresh or (ranks := self._guild_ranks.get(cache_key, None)) is None:
             rank_model = rank_model_from_type(rank_type)
             ranks = await rank_model.fetch_where(guildid=guildid).order_by('required')
-            self._guild_ranks[guildid] = ranks
+            self._guild_ranks[cache_key] = ranks
         return ranks
 
     def flush_guild_ranks(self, guildid: int):
         """
-        Clear the caches for the given guild.
+        Clear all rank caches for the given guild (all types).
         """
-        self._guild_ranks.pop(guildid, None)
-        self._member_ranks.pop(guildid, None)
+        for rt in RankType:
+            self._guild_ranks.pop((guildid, rt), None)
+            self._member_ranks.pop((guildid, rt), None)
+    # --- END AI-MODIFIED ---
 
+    # --- AI-MODIFIED (2026-03-25) ---
+    # Purpose: Process all enabled rank types (not just primary) for message sessions
+    # --- Original code (commented out for rollback) ---
+    # async def on_message_session_complete(self, *session_data):
+    #     for guildid, userid, messages, guild_xp in session_data:
+    #         if not self.bot.get_guild(guildid):
+    #             continue
+    #         lguild = await self.bot.core.lions.fetch_guild(guildid)
+    #         rank_type = lguild.config.get('rank_type').value
+    #         if rank_type in (RankType.MESSAGE, RankType.XP):
+    #             async with self.ranklock(guildid):
+    #                 if (_members := self._member_ranks.get(guildid, None)) is not None and userid in _members:
+    #                     session_rank = _members[userid]
+    #                     session_rank.stat += messages if (rank_type is RankType.MESSAGE) else guild_xp
+    #                 else:
+    #                     session_rank = await self.get_member_rank(guildid, userid)
+    #                 if session_rank.next_rank is not None and session_rank.stat > session_rank.next_rank.required:
+    #                     task = asyncio.create_task(self.update_rank(session_rank), name='update-message-rank')
+    #                 else:
+    #                     task = asyncio.create_task(self._role_check(session_rank), name='rank-role-check')
+    #                 await task
+    # --- End original code ---
     async def on_message_session_complete(self, *session_data):
         """
         Handle batch of completed message sessions.
+        Processes all enabled rank types that are driven by message activity.
         """
         for guildid, userid, messages, guild_xp in session_data:
             if not self.bot.get_guild(guildid):
-                # Ignore guilds we have left
                 continue
-            lguild = await self.bot.core.lions.fetch_guild(guildid)
-            rank_type = lguild.config.get('rank_type').value
-            if rank_type in (RankType.MESSAGE, RankType.XP):
+            enabled = await self.get_enabled_rank_types(guildid)
+            for rtype in enabled:
+                if rtype not in (RankType.MESSAGE, RankType.XP):
+                    continue
+                stat_delta = messages if rtype is RankType.MESSAGE else guild_xp
                 async with self.ranklock(guildid):
-                    if (_members := self._member_ranks.get(guildid, None)) is not None and userid in _members:
+                    cache_key = (guildid, rtype)
+                    if (_members := self._member_ranks.get(cache_key, None)) is not None and userid in _members:
                         session_rank = _members[userid]
-                        session_rank.stat += messages if (rank_type is RankType.MESSAGE) else guild_xp
+                        session_rank.stat += stat_delta
                     else:
-                        session_rank = await self.get_member_rank(guildid, userid)
+                        session_rank = await self.get_member_rank(guildid, userid, rank_type=rtype)
 
                     if session_rank.next_rank is not None and session_rank.stat > session_rank.next_rank.required:
-                        task = asyncio.create_task(self.update_rank(session_rank), name='update-message-rank')
+                        task = asyncio.create_task(
+                            self.update_rank(session_rank, rank_type=rtype), name=f'update-{rtype.name.lower()}-rank'
+                        )
                     else:
-                        task = asyncio.create_task(self._role_check(session_rank), name='rank-role-check')
+                        task = asyncio.create_task(
+                            self._role_check(session_rank, rank_type=rtype), name=f'{rtype.name.lower()}-role-check'
+                        )
                     await task
+    # --- END AI-MODIFIED ---
 
-    async def _role_check(self, session_rank: SeasonRank):
+    # --- AI-MODIFIED (2026-03-25) ---
+    # Purpose: Accept rank_type param; only manage roles from this type's ladder;
+    #          removed last_roleid from rank_roleids to prevent cross-type removal;
+    #          fixed false "Manage Roles" error when to_add is None (member already has role)
+    # --- Original code (commented out for rollback) ---
+    # async def _role_check(self, session_rank: SeasonRank):
+    #     ... [see git history for original _role_check] ...
+    # --- End original code ---
+    async def _role_check(self, session_rank: SeasonRank, rank_type: Optional[RankType] = None):
         """
-        Update the member's rank roles, if required.
+        Update the member's rank roles for the given rank type, if required.
+        Only manages roles from this type's own rank ladder.
         """
         guildid = session_rank.guildid
         guild = self.bot.get_guild(guildid)
@@ -298,22 +386,21 @@ class RankCog(LionCog):
         userid = session_rank.userid
         member = guild.get_member(userid)
 
+        if rank_type is None:
+            lguild = await self.bot.core.lions.fetch_guild(guildid)
+            rank_type = lguild.config.get('rank_type').value
+
         if guild is not None and member is not None and guild.me.guild_permissions.manage_roles:
-            ranks = await self.get_guild_ranks(guildid)
+            ranks = await self.get_guild_ranks(guildid, rank_type=rank_type)
 
             crank = session_rank.current_rank
             current_roleid = crank.roleid if crank else None
 
-            # First gather rank roleids, note that the last_roleid is an 'honourary' roleid
-            last_roleid = session_rank.rankrow.last_roleid
             rank_roleids = {rank.roleid for rank in ranks}
-            rank_roleids.add(last_roleid)
 
-            # Gather member roleids
             mem_roleids = {role.id: role for role in member.roles}
 
-            # Calculate diffs
-            to_add = guild.get_role(current_roleid) if (current_roleid not in mem_roleids) else None
+            to_add = guild.get_role(current_roleid) if (current_roleid and current_roleid not in mem_roleids) else None
             to_rm = [
                 role for roleid, role in mem_roleids.items()
                 if roleid in rank_roleids and roleid != current_roleid
@@ -324,10 +411,6 @@ class RankCog(LionCog):
             log_added = None
             log_removed = None
 
-            # Now update roles
-            new_last_roleid = last_roleid
-
-            # TODO: Factor out role updates
             to_rm = [role for role in to_rm if role.is_assignable()]
             if to_rm:
                 try:
@@ -340,7 +423,6 @@ class RankCog(LionCog):
                     logger.info(
                         f"Removed old rank roles from <uid:{userid}> in <gid:{guildid}>: {roleids}"
                     )
-                    new_last_roleid = None
                 except discord.HTTPException as e:
                     logger.warning(
                         f"Unexpected error removing old rank roles from <uid:{member.id}> in <gid:{guild.id}>: {to_rm}",
@@ -363,7 +445,6 @@ class RankCog(LionCog):
                         logger.info(
                             f"Rewarded rank role <rid:{to_add.id}> to <uid:{userid}> in <gid:{guildid}>."
                         )
-                        last_roleid=to_add.id
                     except discord.HTTPException as e:
                         logger.warning(
                             f"Unexpected error giving <uid:{userid}> in <gid:{guildid}> "
@@ -380,17 +461,8 @@ class RankCog(LionCog):
                         "Could not assign new activity rank role. Lacking permissions or invalid role."
                     )))
                 log_added = to_add.mention
-            else:
-                log_errors.append(t(_p(
-                    'eventlog|event:rank_check|error:permissions',
-                    "Could not update activity rank roles, I lack the 'Manage Roles' permission."
-                )))
-
-            if new_last_roleid != last_roleid:
-                await session_rank.rankrow.update(last_roleid=new_last_roleid)
 
             if to_add or to_rm:
-                # Log rank role update
                 lguild = await self.bot.core.lions.fetch_guild(guildid)
                 lguild.log_event(
                     t(_p(
@@ -402,16 +474,23 @@ class RankCog(LionCog):
                     roles_taken=log_removed,
                     errors=log_errors,
                 )
+    # --- END AI-MODIFIED ---
 
+    # --- AI-MODIFIED (2026-03-25) ---
+    # Purpose: Accept explicit rank_type; only manage this type's roles; removed last_roleid from set
+    # --- Original code (commented out for rollback) ---
+    # async def update_rank(self, session_rank):
+    #     ... [see git history for original update_rank] ...
+    # --- End original code ---
     @log_wrap(action="Update Rank")
-    async def update_rank(self, session_rank):
-        # Identify target rank
+    async def update_rank(self, session_rank, rank_type: Optional[RankType] = None):
         guildid = session_rank.guildid
         userid = session_rank.userid
 
         lguild = await self.bot.core.lions.fetch_guild(guildid)
-        rank_type = lguild.config.get('rank_type').value
-        ranks = await self.get_guild_ranks(guildid)
+        if rank_type is None:
+            rank_type = lguild.config.get('rank_type').value
+        ranks = await self.get_guild_ranks(guildid, rank_type=rank_type)
         new_rank = None
         for rank in ranks:
             if rank.required <= session_rank.stat:
@@ -422,7 +501,6 @@ class RankCog(LionCog):
         if new_rank is None or new_rank is session_rank.current_rank:
             return
 
-        # Attempt to update role
         guild = self.bot.get_guild(guildid)
         if guild is None:
             return
@@ -436,25 +514,17 @@ class RankCog(LionCog):
         log_added = None
         log_removed = None
 
-        last_roleid = session_rank.rankrow.last_roleid
-
-        # Update ranks
         if guild.me.guild_permissions.manage_roles:
-            # First gather rank roleids, note that the last_roleid is an 'honourary' roleid
             rank_roleids = {rank.roleid for rank in ranks}
-            rank_roleids.add(last_roleid)
 
-            # Gather member roleids
             mem_roleids = {role.id: role for role in member.roles}
 
-            # Calculate diffs
             to_add = guild.get_role(new_rank.roleid) if (new_rank.roleid not in mem_roleids) else None
             to_rm = [
                 role for roleid, role in mem_roleids.items()
                 if roleid in rank_roleids and roleid != new_rank.roleid
             ]
 
-            # Now update roles
             to_rm = [role for role in to_rm if role.is_assignable()]
             if to_rm:
                 try:
@@ -467,7 +537,6 @@ class RankCog(LionCog):
                     logger.info(
                         f"Removed old rank roles from <uid:{userid}> in <gid:{guildid}>: {roleids}"
                     )
-                    last_roleid = None
                 except discord.HTTPException as e:
                     logger.warning(
                         f"Unexpected error removing old rank roles from <uid:{member.id}> in <gid:{guild.id}>: {to_rm}",
@@ -490,7 +559,6 @@ class RankCog(LionCog):
                         logger.info(
                             f"Rewarded rank role <rid:{to_add.id}> to <uid:{userid}> in <gid:{guildid}>."
                         )
-                        last_roleid=to_add.id
                     except discord.HTTPException as e:
                         logger.warning(
                             f"Unexpected error giving <uid:{userid}> in <gid:{guildid}> "
@@ -513,21 +581,14 @@ class RankCog(LionCog):
                 "Could not update activity rank roles, I lack the 'Manage Roles' permission."
             )))
 
-        # Update MemberRank row
-        column = {
-            RankType.MESSAGE: 'current_msg_rankid',
-            RankType.VOICE: 'current_voice_rankid',
-            RankType.XP: 'current_xp_rankid'
-        }[rank_type]
+        column = self._get_rankid_column(rank_type)
         await session_rank.rankrow.update(
-            **{column: new_rank.rankid, 'last_roleid': last_roleid}
+            **{column: new_rank.rankid}
         )
 
-        # Update SessionRank info
         session_rank.current_rank = new_rank
         session_rank.next_rank = next((rank for rank in ranks if rank.required > new_rank.required), None)
 
-        # Provide economy reward if required
         if new_rank.reward:
             economy: Economy = self.bot.get_cog('Economy')
             await economy.data.Transaction.execute_transaction(
@@ -539,16 +600,14 @@ class RankCog(LionCog):
                 amount=new_rank.reward
             )
 
-        # Send notification
         try:
-            await self._notify_rank_update(guildid, userid, new_rank)
+            await self._notify_rank_update(guildid, userid, new_rank, rank_type=rank_type)
         except discord.HTTPException:
             log_errors.append(t(_p(
                 'eventlog|event:new_rank|error:notify_failed',
                 "Could not notify member."
             )))
 
-        # Log rank achieved
         lguild.log_event(
             t(_p(
                 'eventlog|event:new_rank|name',
@@ -563,8 +622,11 @@ class RankCog(LionCog):
             coins_earned=new_rank.reward,
             errors=log_errors,
         )
+    # --- END AI-MODIFIED ---
 
-    async def _notify_rank_update(self, guildid, userid, new_rank):
+    # --- AI-MODIFIED (2026-03-25) ---
+    # Purpose: Accept explicit rank_type parameter for multi-rank-type notification
+    async def _notify_rank_update(self, guildid, userid, new_rank, rank_type: Optional[RankType] = None):
         """
         Notify the given member that they have achieved the new rank.
         """
@@ -575,7 +637,9 @@ class RankCog(LionCog):
             if member and role:
                 t = self.bot.translator.t
                 lguild = await self.bot.core.lions.fetch_guild(guildid)
-                rank_type = lguild.config.get('rank_type').value
+                if rank_type is None:
+                    rank_type = lguild.config.get('rank_type').value
+    # --- END AI-MODIFIED ---
 
                 # Build notification embed
                 rank_mapping = self.get_message_map(rank_type, guild, member, role, new_rank)
@@ -583,7 +647,7 @@ class RankCog(LionCog):
                 # Purpose: Guard against None rank message (admins who didn't set a custom message)
                 raw_message = new_rank.message or t(_p(
                     'event:rank_update|default_message',
-                    "Congratulations {member}! You achieved the **{rank}** rank!"
+                    "Congratulations {user_mention}! You achieved the **{role_name}** rank!"
                 ))
                 rank_message = replace_multiple(raw_message, rank_mapping)
                 # --- END AI-MODIFIED ---
@@ -646,48 +710,75 @@ class RankCog(LionCog):
         }
         return key_map
 
+    # --- AI-MODIFIED (2026-03-25) ---
+    # Purpose: Process voice ranks if VOICE is in the enabled set (primary or secondary)
+    # --- Original code (commented out for rollback) ---
+    # async def on_voice_session_complete(self, *session_data):
+    #     for guildid, userid, duration, guild_xp in session_data:
+    #         ...
+    #         rank_type = lguild.config.get('rank_type').value
+    #         if rank_type in (RankType.VOICE,):
+    #             async with self.ranklock(guildid):
+    #                 if (_members := self._member_ranks.get(guildid, None)) is not None and userid in _members:
+    #                     session_rank = _members[userid]
+    #                     ...
+    #                 else:
+    #                     session_rank = await self.get_member_rank(guildid, userid)
+    #                 if session_rank.next_rank is not None and session_rank.stat > session_rank.next_rank.required:
+    #                     task = asyncio.create_task(self.update_rank(session_rank), name='voice-rank-update')
+    #                 else:
+    #                     task = asyncio.create_task(self._role_check(session_rank), name='voice-role-check')
+    # --- End original code ---
     @log_wrap(action="Voice Rank Hook")
     async def on_voice_session_complete(self, *session_data):
         for guildid, userid, duration, guild_xp in session_data:
             if not self.bot.get_guild(guildid):
-                # Ignore guilds we have left
                 continue
             lguild = await self.bot.core.lions.fetch_guild(guildid)
             unranked_role_setting = await self.bot.get_cog('StatsCog').settings.UnrankedRoles.get(guildid)
             unranked_roleids = set(unranked_role_setting.data)
             guild = self.bot.get_guild(guildid)
             member = guild.get_member(userid) if guild else None
-            if not member or member.bot or any (role.id in unranked_roleids for role in member.roles):
+            if not member or member.bot or any(role.id in unranked_roleids for role in member.roles):
                 continue
-            rank_type = lguild.config.get('rank_type').value
-            if rank_type in (RankType.VOICE,):
+            enabled = await self.get_enabled_rank_types(guildid)
+            if RankType.VOICE in enabled:
                 async with self.ranklock(guildid):
-                    if (_members := self._member_ranks.get(guildid, None)) is not None and userid in _members:
+                    cache_key = (guildid, RankType.VOICE)
+                    if (_members := self._member_ranks.get(cache_key, None)) is not None and userid in _members:
                         session_rank = _members[userid]
-                        # TODO: Temporary measure
                         season_start = lguild.config.get('season_start').value or datetime.datetime(1970, 1, 1)
                         stat_data = self.bot.get_cog('StatsCog').data
                         session_rank.stat = (await stat_data.VoiceSessionStats.study_times_since(
                             guildid, userid, season_start)
                         )[0]
-                        # session_rank.stat += duration if (rank_type is RankType.VOICE) else guild_xp
                     else:
-                        session_rank = await self.get_member_rank(guildid, userid)
+                        session_rank = await self.get_member_rank(guildid, userid, rank_type=RankType.VOICE)
 
                     if session_rank.next_rank is not None and session_rank.stat > session_rank.next_rank.required:
-                        task = asyncio.create_task(self.update_rank(session_rank), name='voice-rank-update')
+                        task = asyncio.create_task(
+                            self.update_rank(session_rank, rank_type=RankType.VOICE), name='voice-rank-update'
+                        )
                     else:
-                        task = asyncio.create_task(self._role_check(session_rank), name='voice-role-check')
+                        task = asyncio.create_task(
+                            self._role_check(session_rank, rank_type=RankType.VOICE), name='voice-role-check'
+                        )
+                    await task
+    # --- END AI-MODIFIED ---
 
     async def on_xp_update(self, *xp_data):
         # Currently no-op since xp is given purely by message stats
         # Implement if xp ever becomes a combination of message and voice stats
         pass
 
+    # --- AI-MODIFIED (2026-03-25) ---
+    # Purpose: Accept optional rank_type for type-safe refresh that preserves other types' data
     @log_wrap(action='interactive rank refresh')
-    async def interactive_rank_refresh(self, interaction: discord.Interaction, guild: discord.Guild):
+    async def interactive_rank_refresh(self, interaction: discord.Interaction, guild: discord.Guild,
+                                       rank_type: Optional[RankType] = None):
         """
         Interactively update ranks for everyone in the given guild.
+        If rank_type is provided, only refreshes that type (preserving others).
         """
         t = self.bot.translator.t
         if not interaction.response.is_done():
@@ -696,8 +787,11 @@ class RankCog(LionCog):
         await ui.send(interaction.channel)
         ui.start()
 
-        # Retrieve fresh rank roles
-        ranks = await self.get_guild_ranks(guild.id, refresh=True)
+        # Retrieve fresh rank roles for the specified type
+        if rank_type is None:
+            lguild = await self.bot.core.lions.fetch_guild(guild.id)
+            rank_type = lguild.config.get('rank_type').value
+        ranks = await self.get_guild_ranks(guild.id, refresh=True, rank_type=rank_type)
         ui.stage_ranks = True
         ui.poke()
 
@@ -743,7 +837,6 @@ class RankCog(LionCog):
         # Compute season start and season leaderboard
         lguild = await self.bot.core.lions.fetch_guild(guild.id)
         season_start = lguild.config.get('season_start').value
-        rank_type = lguild.config.get('rank_type').value
         stats_model = self._get_stats_model(rank_type)
         if season_start:
             leaderboard = await stats_model.leaderboard_since(guild.id, season_start)
@@ -865,20 +958,38 @@ class RankCog(LionCog):
             ui.added += 1
             ui.poke()
 
-        # Save correct member ranks and given roles to data
-        # First clear the member rank data entirely
-        await self.data.MemberRank.table.delete_where(guildid=guild.id)
+        # --- AI-MODIFIED (2026-03-25) ---
+        # Purpose: Type-safe refresh - update only this type's column instead of delete-all
+        # --- Original code (commented out for rollback) ---
+        # await self.data.MemberRank.table.delete_where(guildid=guild.id)
+        # if true_member_ranks:
+        #     column = self._get_rankid_column(rank_type)
+        #     values = [
+        #         (guild.id, memberid, rank.rankid, rank.roleid)
+        #         for memberid, rank in true_member_ranks.items()
+        #     ]
+        #     await self.data.MemberRank.table.insert_many(
+        #         ('guildid', 'userid', column, 'last_roleid'),
+        #         *values
+        #     )
+        # --- End original code ---
+        column = self._get_rankid_column(rank_type)
+        await self.bot.db.execute(
+            f"UPDATE member_ranks SET {column} = NULL WHERE guildid = $1",
+            guild.id
+        )
         if true_member_ranks:
-            column = self._get_rankid_column(rank_type)
-            values = [
-                (guild.id, memberid, rank.rankid, rank.roleid)
-                for memberid, rank in true_member_ranks.items()
-            ]
-            await self.data.MemberRank.table.insert_many(
-                ('guildid', 'userid', column, 'last_roleid'),
-                *values
-            )
+            for memberid, rank in true_member_ranks.items():
+                existing = await self.data.MemberRank.fetch(guild.id, memberid)
+                if existing:
+                    await existing.update(**{column: rank.rankid})
+                else:
+                    await self.data.MemberRank.create(
+                        guildid=guild.id, userid=memberid,
+                        **{column: rank.rankid}
+                    )
         self.flush_guild_ranks(guild.id)
+        # --- END AI-MODIFIED ---
         await ui.set_done()
 
         # Event log

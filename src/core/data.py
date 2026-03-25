@@ -243,6 +243,13 @@ class CoreData(Registry, name="core"):
         rank_channel = Integer()
         dm_ranks = Bool()
 
+        # --- AI-MODIFIED (2026-03-25) ---
+        # Purpose: Multi-rank-type support toggles (secondary types)
+        voice_ranks_enabled = Bool()
+        msg_ranks_enabled = Bool()
+        xp_ranks_enabled = Bool()
+        # --- END AI-MODIFIED ---
+
         xp_per_period = Integer()
         xp_per_centiword = Integer()
         coins_per_centixp = Integer()

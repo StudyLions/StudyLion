@@ -28,6 +28,8 @@ _p = babel._p
 class RankOverviewUI(MessageUI):
     block_len = 25
 
+    # --- AI-MODIFIED (2026-03-25) ---
+    # Purpose: Added selected_type for multi-rank-type switching; defaults to primary
     def __init__(self, bot: LionBot, guild: discord.Guild, callerid: int, **kwargs):
         super().__init__(callerid=callerid, **kwargs)
         self.bot = bot
@@ -37,14 +39,15 @@ class RankOverviewUI(MessageUI):
 
         self.lguild = None
 
-        # List of ranks rows in ASC order
         self.ranks: list[AnyRankData] = []
         self.rank_type: RankType = None
+        self.selected_type: Optional[RankType] = None
 
         self.pagen = 0
         self.blocks = [[]]
 
         self.rank_preview: Optional[RankPreviewUI] = None
+    # --- END AI-MODIFIED ---
 
     @property
     def page_count(self):
@@ -70,6 +73,52 @@ class RankOverviewUI(MessageUI):
         await super().run(*args, **kwargs)
 
     # ----- UI Components -----
+    # --- AI-MODIFIED (2026-03-25) ---
+    # Purpose: Type selector for switching between Voice/XP/Message rank views
+    _type_name_map = {
+        'VOICE': RankType.VOICE,
+        'XP': RankType.XP,
+        'MESSAGE': RankType.MESSAGE,
+    }
+
+    @select(cls=Select, placeholder="TYPE_SELECTOR_PLACEHOLDER", min_values=1, max_values=1)
+    async def type_selector(self, selection: discord.Interaction, selected: Select):
+        """Switch between viewing different rank types."""
+        value = selected.values[0]
+        new_type = self._type_name_map.get(value, self.rank_type)
+        if new_type is not self.rank_type:
+            await selection.response.defer()
+            self.selected_type = new_type
+            self.pagen = 0
+            await self.refresh()
+        else:
+            await selection.response.defer()
+
+    async def type_selector_refresh(self):
+        t = self.bot.translator.t
+        self.type_selector.placeholder = t(_p(
+            'ui:rank_overview|menu:type_selector|placeholder',
+            "Select Rank Type"
+        ))
+        primary = self.lguild.config.get('rank_type').value if self.lguild else RankType.VOICE
+        options = []
+        for rt in (RankType.VOICE, RankType.XP, RankType.MESSAGE):
+            label_map = {
+                RankType.VOICE: "Voice Ranks",
+                RankType.XP: "XP Ranks",
+                RankType.MESSAGE: "Message Ranks",
+            }
+            label = label_map[rt]
+            if rt is primary:
+                label += " (Primary)"
+            options.append(SelectOption(
+                label=label,
+                value=rt.name,
+                default=(rt is self.rank_type)
+            ))
+        self.type_selector.options = options
+    # --- END AI-MODIFIED ---
+
     @button(emoji=conf.emojis.cancel, style=ButtonStyle.red)
     async def quit_button(self, press: discord.Interaction, pressed: Button):
         """
@@ -170,7 +219,10 @@ class RankOverviewUI(MessageUI):
         """
         await press.response.defer(thinking=True)
         async with self.cog.ranklock(self.guild.id):
-            await self.cog.interactive_rank_refresh(press, self.guild)
+            # --- AI-MODIFIED (2026-03-25) ---
+            # Purpose: Pass current rank_type for type-safe refresh
+            await self.cog.interactive_rank_refresh(press, self.guild, rank_type=self.rank_type)
+            # --- END AI-MODIFIED ---
 
     async def refresh_button_refresh(self):
         self.refresh_button.label = self.bot.translator.t(_p(
@@ -520,16 +572,16 @@ class RankOverviewUI(MessageUI):
         return MessageArgs(embed=embed)
 
     async def refresh_layout(self):
-        # --- AI-MODIFIED (2026-03-17) ---
-        # Purpose: Added web link button for richer rank details page on website
+        # --- AI-MODIFIED (2026-03-25) ---
+        # Purpose: Added type selector to all layouts for multi-rank-type switching
         _web = discord.ui.Button(
             label="Ranks on Web", emoji="🌐",
             url=f"{WEBSITE_URL}/dashboard/servers/{self.guildid}/ranks",
             style=discord.ButtonStyle.link,
         )
-        # --- END AI-MODIFIED ---
         if len(self.blocks) > 1:
             await asyncio.gather(
+                self.type_selector_refresh(),
                 self.rank_menu_refresh(),
                 self.role_menu_refresh(),
                 self.refresh_button_refresh(),
@@ -538,6 +590,7 @@ class RankOverviewUI(MessageUI):
                 self.quit_button_refresh(),
             )
             self.set_layout(
+                (self.type_selector,),
                 (self.rank_menu,),
                 (self.role_menu,),
                 (self.refresh_button, self.create_button, self.clear_button),
@@ -545,6 +598,7 @@ class RankOverviewUI(MessageUI):
             )
         elif self.rank_block:
             await asyncio.gather(
+                self.type_selector_refresh(),
                 self.rank_menu_refresh(),
                 self.role_menu_refresh(),
                 self.refresh_button_refresh(),
@@ -553,29 +607,40 @@ class RankOverviewUI(MessageUI):
                 self.quit_button_refresh(),
             )
             self.set_layout(
+                (self.type_selector,),
                 (self.rank_menu,),
                 (self.role_menu,),
                 (self.refresh_button, self.create_button, self.clear_button, _web, self.quit_button)
             )
         else:
             await asyncio.gather(
+                self.type_selector_refresh(),
                 self.role_menu_refresh(),
                 self.auto_button_refresh(),
                 self.create_button_refresh(),
                 self.quit_button_refresh(),
             )
             self.set_layout(
+                (self.type_selector,),
                 (self.role_menu,),
                 (self.auto_button, self.create_button, _web, self.quit_button)
             )
+        # --- END AI-MODIFIED ---
 
+    # --- AI-MODIFIED (2026-03-25) ---
+    # Purpose: Use selected_type if set (for type switching), otherwise primary type
     async def reload(self):
         """
         Refresh the rank list and type from data.
         """
         self.lguild = await self.bot.core.lions.fetch_guild(self.guildid)
-        self.rank_type = self.lguild.config.get('rank_type').value
-        ranks = self.ranks = await self.rank_model.fetch_where(
+        if self.selected_type is not None:
+            self.rank_type = self.selected_type
+        else:
+            self.rank_type = self.lguild.config.get('rank_type').value
+        rank_model = rank_model_from_type(self.rank_type)
+        ranks = self.ranks = await rank_model.fetch_where(
             guildid=self.guildid
         ).order_by('required', ORDER.ASC)
         self.blocks = [ranks[i:i + self.block_len] for i in range(0, len(ranks), self.block_len)] or [[]]
+    # --- END AI-MODIFIED ---

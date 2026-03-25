@@ -182,3 +182,114 @@ class RankSettings(SettingGroup):
                     'guildset:dm_ranks|response:false',
                     "I will never direct message members upon rank advancement."
                 ))
+
+    # --- AI-MODIFIED (2026-03-25) ---
+    # Purpose: Settings for enabling secondary rank types alongside the primary
+    class VoiceRanksEnabled(ModelData, BoolSetting):
+        setting_id = 'voice_ranks_enabled'
+        _set_cmd = 'admin config ranks'
+        _write_ward = high_management_iward
+        _event = 'guildset_voice_ranks_enabled'
+
+        _display_name = _p('guildset:voice_ranks_enabled', "voice_ranks_enabled")
+        _desc = _p(
+            'guildset:voice_ranks_enabled|desc',
+            "Also track and assign voice activity ranks (in addition to the primary rank type)."
+        )
+        _long_desc = _p(
+            'guildset:voice_ranks_enabled|long_desc',
+            "When enabled, voice activity ranks will be tracked and roles assigned "
+            "independently of the primary rank type. Members can earn roles from "
+            "both the primary type and voice ranks simultaneously."
+        )
+        _default = False
+
+        _model = CoreData.Guild
+        _column = CoreData.Guild.voice_ranks_enabled.name
+
+        @property
+        def update_message(self):
+            t = ctx_translator.get().t
+            if self.data:
+                return t(_p(
+                    'guildset:voice_ranks_enabled|response:true',
+                    "Voice activity ranks are now **enabled** as a secondary rank type."
+                ))
+            else:
+                return t(_p(
+                    'guildset:voice_ranks_enabled|response:false',
+                    "Voice activity ranks are now **disabled** as a secondary rank type."
+                ))
+
+    class MsgRanksEnabled(ModelData, BoolSetting):
+        setting_id = 'msg_ranks_enabled'
+        _set_cmd = 'admin config ranks'
+        _write_ward = high_management_iward
+        _event = 'guildset_msg_ranks_enabled'
+
+        _display_name = _p('guildset:msg_ranks_enabled', "msg_ranks_enabled")
+        _desc = _p(
+            'guildset:msg_ranks_enabled|desc',
+            "Also track and assign message count ranks (in addition to the primary rank type)."
+        )
+        _long_desc = _p(
+            'guildset:msg_ranks_enabled|long_desc',
+            "When enabled, message count ranks will be tracked and roles assigned "
+            "independently of the primary rank type. Members can earn roles from "
+            "both the primary type and message ranks simultaneously."
+        )
+        _default = False
+
+        _model = CoreData.Guild
+        _column = CoreData.Guild.msg_ranks_enabled.name
+
+        @property
+        def update_message(self):
+            t = ctx_translator.get().t
+            if self.data:
+                return t(_p(
+                    'guildset:msg_ranks_enabled|response:true',
+                    "Message count ranks are now **enabled** as a secondary rank type."
+                ))
+            else:
+                return t(_p(
+                    'guildset:msg_ranks_enabled|response:false',
+                    "Message count ranks are now **disabled** as a secondary rank type."
+                ))
+
+    class XpRanksEnabled(ModelData, BoolSetting):
+        setting_id = 'xp_ranks_enabled'
+        _set_cmd = 'admin config ranks'
+        _write_ward = high_management_iward
+        _event = 'guildset_xp_ranks_enabled'
+
+        _display_name = _p('guildset:xp_ranks_enabled', "xp_ranks_enabled")
+        _desc = _p(
+            'guildset:xp_ranks_enabled|desc',
+            "Also track and assign XP ranks (in addition to the primary rank type)."
+        )
+        _long_desc = _p(
+            'guildset:xp_ranks_enabled|long_desc',
+            "When enabled, XP ranks will be tracked and roles assigned "
+            "independently of the primary rank type. Members can earn roles from "
+            "both the primary type and XP ranks simultaneously."
+        )
+        _default = False
+
+        _model = CoreData.Guild
+        _column = CoreData.Guild.xp_ranks_enabled.name
+
+        @property
+        def update_message(self):
+            t = ctx_translator.get().t
+            if self.data:
+                return t(_p(
+                    'guildset:xp_ranks_enabled|response:true',
+                    "XP ranks are now **enabled** as a secondary rank type."
+                ))
+            else:
+                return t(_p(
+                    'guildset:xp_ranks_enabled|response:false',
+                    "XP ranks are now **disabled** as a secondary rank type."
+                ))
+    # --- END AI-MODIFIED ---

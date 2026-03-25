@@ -146,6 +146,9 @@ CREATE TABLE guild_config(
   rank_type RankType,
   rank_channel BIGINT,
   dm_ranks BOOLEAN,
+  voice_ranks_enabled BOOLEAN NOT NULL DEFAULT FALSE,
+  msg_ranks_enabled BOOLEAN NOT NULL DEFAULT FALSE,
+  xp_ranks_enabled BOOLEAN NOT NULL DEFAULT FALSE,
   renting_visible BOOLEAN,
   first_joined_at TIMESTAMPTZ DEFAULT now(),
   left_at TIMESTAMPTZ

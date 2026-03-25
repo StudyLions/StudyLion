@@ -19,11 +19,17 @@ _p = babel._p
 
 
 class RankConfigUI(ConfigUI):
+    # --- AI-MODIFIED (2026-03-25) ---
+    # Purpose: Added secondary rank type toggle settings to the config UI
     setting_classes = (
         RankSettings.RankStatType,
         RankSettings.DMRanks,
         RankSettings.RankChannel,
+        RankSettings.VoiceRanksEnabled,
+        RankSettings.MsgRanksEnabled,
+        RankSettings.XpRanksEnabled,
     )
+    # --- END AI-MODIFIED ---
 
     def __init__(self, bot: LionBot,
                  guildid: int, channelid: int, **kwargs):
@@ -128,6 +134,108 @@ class RankConfigUI(ConfigUI):
             "Select Rank Notification Channel"
         ))
 
+    # --- AI-MODIFIED (2026-03-25) ---
+    # Purpose: Toggle buttons for secondary rank types
+    @button(label="VOICE_TOGGLE_PLACEHOLDER", style=ButtonStyle.grey)
+    async def voice_toggle(self, press: discord.Interaction, pressed: Button):
+        await press.response.defer()
+        setting = self.instances[3]  # VoiceRanksEnabled
+        setting.data = not setting.data
+        await setting.write()
+
+    async def voice_toggle_refresh(self):
+        t = self.bot.translator.t
+        setting = self.instances[3]  # VoiceRanksEnabled
+        primary = self.instances[0].data  # RankStatType
+        if primary is RankType.VOICE:
+            self.voice_toggle.label = t(_p(
+                'ui:rank_config|button:voice_toggle|label:primary',
+                "Voice (Primary)"
+            ))
+            self.voice_toggle.style = ButtonStyle.blurple
+            self.voice_toggle.disabled = True
+        elif setting.data:
+            self.voice_toggle.label = t(_p(
+                'ui:rank_config|button:voice_toggle|label:enabled',
+                "Voice: ON"
+            ))
+            self.voice_toggle.style = ButtonStyle.green
+            self.voice_toggle.disabled = False
+        else:
+            self.voice_toggle.label = t(_p(
+                'ui:rank_config|button:voice_toggle|label:disabled',
+                "Voice: OFF"
+            ))
+            self.voice_toggle.style = ButtonStyle.grey
+            self.voice_toggle.disabled = False
+
+    @button(label="MSG_TOGGLE_PLACEHOLDER", style=ButtonStyle.grey)
+    async def msg_toggle(self, press: discord.Interaction, pressed: Button):
+        await press.response.defer()
+        setting = self.instances[4]  # MsgRanksEnabled
+        setting.data = not setting.data
+        await setting.write()
+
+    async def msg_toggle_refresh(self):
+        t = self.bot.translator.t
+        setting = self.instances[4]  # MsgRanksEnabled
+        primary = self.instances[0].data  # RankStatType
+        if primary is RankType.MESSAGE:
+            self.msg_toggle.label = t(_p(
+                'ui:rank_config|button:msg_toggle|label:primary',
+                "Messages (Primary)"
+            ))
+            self.msg_toggle.style = ButtonStyle.blurple
+            self.msg_toggle.disabled = True
+        elif setting.data:
+            self.msg_toggle.label = t(_p(
+                'ui:rank_config|button:msg_toggle|label:enabled',
+                "Messages: ON"
+            ))
+            self.msg_toggle.style = ButtonStyle.green
+            self.msg_toggle.disabled = False
+        else:
+            self.msg_toggle.label = t(_p(
+                'ui:rank_config|button:msg_toggle|label:disabled',
+                "Messages: OFF"
+            ))
+            self.msg_toggle.style = ButtonStyle.grey
+            self.msg_toggle.disabled = False
+
+    @button(label="XP_TOGGLE_PLACEHOLDER", style=ButtonStyle.grey)
+    async def xp_toggle(self, press: discord.Interaction, pressed: Button):
+        await press.response.defer()
+        setting = self.instances[5]  # XpRanksEnabled
+        setting.data = not setting.data
+        await setting.write()
+
+    async def xp_toggle_refresh(self):
+        t = self.bot.translator.t
+        setting = self.instances[5]  # XpRanksEnabled
+        primary = self.instances[0].data  # RankStatType
+        if primary is RankType.XP:
+            self.xp_toggle.label = t(_p(
+                'ui:rank_config|button:xp_toggle|label:primary',
+                "XP (Primary)"
+            ))
+            self.xp_toggle.style = ButtonStyle.blurple
+            self.xp_toggle.disabled = True
+        elif setting.data:
+            self.xp_toggle.label = t(_p(
+                'ui:rank_config|button:xp_toggle|label:enabled',
+                "XP: ON"
+            ))
+            self.xp_toggle.style = ButtonStyle.green
+            self.xp_toggle.disabled = False
+        else:
+            self.xp_toggle.label = t(_p(
+                'ui:rank_config|button:xp_toggle|label:disabled',
+                "XP: OFF"
+            ))
+            self.xp_toggle.style = ButtonStyle.grey
+            self.xp_toggle.disabled = False
+    # --- END AI-MODIFIED ---
+
     # ----- UI Flow -----
     async def make_message(self) -> MessageArgs:
         t = self.bot.translator.t
@@ -139,8 +247,35 @@ class RankConfigUI(ConfigUI):
             colour=discord.Colour.orange(),
             title=title
         )
-        for setting in self.instances:
+        for setting in self.instances[:3]:
             embed.add_field(**setting.embed_field, inline=False)
+
+        # --- AI-MODIFIED (2026-03-25) ---
+        # Purpose: Show secondary rank type toggles section
+        primary = self.instances[0].data
+        primary_label = {
+            RankType.VOICE: "Voice",
+            RankType.XP: "XP",
+            RankType.MESSAGE: "Messages",
+        }.get(primary, "?")
+        secondary_lines = [
+            t(_p(
+                'ui:rank_config|embed|field:secondary|header',
+                "Primary type (**{primary}**) is always active. Toggle additional types below:"
+            )).format(primary=primary_label)
+        ]
+        for setting in self.instances[3:]:
+            status = "ON" if setting.data else "OFF"
+            secondary_lines.append(f"- **{setting._display_name}**: {status}")
+        embed.add_field(
+            name=t(_p(
+                'ui:rank_config|embed|field:secondary|name',
+                "Secondary Rank Types"
+            )),
+            value='\n'.join(secondary_lines),
+            inline=False
+        )
+        # --- END AI-MODIFIED ---
 
         args = MessageArgs(embed=embed)
         return args
@@ -151,11 +286,16 @@ class RankConfigUI(ConfigUI):
             lguild.config.get(setting.setting_id) for setting in self.setting_classes
         )
 
+    # --- AI-MODIFIED (2026-03-25) ---
+    # Purpose: Include secondary rank type toggle buttons in layout
     async def refresh_components(self):
         await asyncio.gather(
             self.overview_button_refresh(),
             self.channel_menu_refresh(),
             self.type_menu_refresh(),
+            self.voice_toggle_refresh(),
+            self.msg_toggle_refresh(),
+            self.xp_toggle_refresh(),
             self.edit_button_refresh(),
             self.close_button_refresh(),
             self.reset_button_refresh(),
@@ -163,8 +303,10 @@ class RankConfigUI(ConfigUI):
         self._layout = [
             (self.type_menu,),
             (self.channel_menu,),
+            (self.voice_toggle, self.msg_toggle, self.xp_toggle),
             (self.overview_button, self.edit_button, self.reset_button, self.close_button)
         ]
+    # --- END AI-MODIFIED ---
 
 
 class RankDashboard(DashboardSection):
