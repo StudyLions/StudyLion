@@ -24,6 +24,17 @@ from .settingui import EconomyConfigUI
 _, _p, _np = babel._, babel._p, babel._np
 
 
+# --- AI-GENERATED (2026-03-30) ---
+# Purpose: Safe wrapper for t().format() to handle broken community translations
+# where translators accidentally translate placeholder names (e.g. {moderator} -> {モデレーター})
+def _safe_t_format(translated, default, **kwargs):
+    try:
+        return translated.format(**kwargs)
+    except (KeyError, ValueError):
+        return default.format(**kwargs)
+# --- END AI-GENERATED ---
+
+
 class Economy(LionCog):
     """
     Commands
@@ -244,43 +255,96 @@ class Economy(LionCog):
                     'cmd:economy_balance|confirm|button:cancel',
                     "No, cancel"
                 ))
+            # --- AI-MODIFIED (2026-03-30) ---
+            # Purpose: Wrap all .format() calls in safe formatter to handle
+            # broken translations (e.g. Japanese translating {moderator} -> {モデレーター})
+            # --- Original code (commented out for rollback) ---
+            # if set_to is not None:
+            #     if role:
+            #         if role.is_default():
+            #             description = t(_p(
+            #                 'cmd:economy_balance|embed:success_set|desc',
+            #                 "All members of **{guild_name}** have had their "
+            #                 "balance set to {coin_emoji}**{amount}**."
+            #             )).format(guild_name=ctx.guild.name, coin_emoji=cemoji, amount=set_to)
+            #             + '\n' + affected
+            #             conf_description = t(_p(
+            #                 'cmd:economy_balance|confirm_set|desc',
+            #                 "Are you sure you want to set everyone's balance to {coin_emoji}**{amount}**?"
+            #             )).format(coin_emoji=cemoji, amount=set_to) + '\n' + conf_affected
+            #         else:
+            #             description = t(_p(
+            #                 'cmd:economy_balance|embed:success_set|desc',
+            #                 "All members of {role_mention} have had their "
+            #                 "balance set to {coin_emoji}**{amount}**."
+            #             )).format(role_mention=role.mention, coin_emoji=cemoji, amount=set_to)
+            #             + '\n' + affected
+            #             conf_description = t(_p(
+            #                 'cmd:economy_balance|confirm_set|desc',
+            #                 "Are you sure you want to set the balance of everyone with {role_mention} "
+            #                 "to {coin_emoji}**{amount}**?"
+            #             )).format(role_mention=role.mention, coin_emoji=cemoji, amount=set_to)
+            #             + '\n' + conf_affected
+            #         confirm.embed.description = conf_description
+            #         try:
+            #             result = await confirm.ask(ctx.interaction, ephemeral=True)
+            #         except ResponseTimedOut:
+            #             return
+            #         if not result:
+            #             return
+            #     else:
+            #         description = t(_p(
+            #             'cmd:economy_balance|embed:success_set|desc',
+            #             "{user_mention} now has a balance of {coin_emoji}**{amount}**."
+            #         )).format(user_mention=target.mention, coin_emoji=cemoji, amount=set_to)
+            #     await self.bot.core.data.Member.table.update_where(
+            #         guildid=ctx.guild.id, userid=list(targetids)
+            #     ).set(coins=set_to)
+            #     ctx.lguild.log_event(
+            #         title=t(_p('eventlog|event:economy_set|title', "Moderator Set Economy Balance")),
+            #         description=t(_p(
+            #             'eventlog|event:economy_set|desc',
+            #             "{moderator} set {target}'s balance to {amount}."
+            #         )).format(moderator=ctx.author.mention, target=target.mention,
+            #                   amount=f"{cemoji}**{set_to}**")
+            #     )
+            # --- End original code ---
             if set_to is not None:
                 if role:
                     if role.is_default():
-                        description = t(_p(
-                            'cmd:economy_balance|embed:success_set|desc',
+                        _set_default = (
                             "All members of **{guild_name}** have had their "
                             "balance set to {coin_emoji}**{amount}**."
-                        )).format(
-                            guild_name=ctx.guild.name,
-                            coin_emoji=cemoji,
-                            amount=set_to
+                        )
+                        description = _safe_t_format(
+                            t(_p('cmd:economy_balance|embed:success_set|desc', _set_default)),
+                            _set_default,
+                            guild_name=ctx.guild.name, coin_emoji=cemoji, amount=set_to
                         ) + '\n' + affected
-                        conf_description = t(_p(
-                            'cmd:economy_balance|confirm_set|desc',
-                            "Are you sure you want to set everyone's balance to {coin_emoji}**{amount}**?"
-                        )).format(
-                            coin_emoji=cemoji,
-                            amount=set_to
+                        _conf_default = "Are you sure you want to set everyone's balance to {coin_emoji}**{amount}**?"
+                        conf_description = _safe_t_format(
+                            t(_p('cmd:economy_balance|confirm_set|desc', _conf_default)),
+                            _conf_default,
+                            coin_emoji=cemoji, amount=set_to
                         ) + '\n' + conf_affected
                     else:
-                        description = t(_p(
-                            'cmd:economy_balance|embed:success_set|desc',
+                        _set_default = (
                             "All members of {role_mention} have had their "
                             "balance set to {coin_emoji}**{amount}**."
-                        )).format(
-                            role_mention=role.mention,
-                            coin_emoji=cemoji,
-                            amount=set_to
+                        )
+                        description = _safe_t_format(
+                            t(_p('cmd:economy_balance|embed:success_set|desc', _set_default)),
+                            _set_default,
+                            role_mention=role.mention, coin_emoji=cemoji, amount=set_to
                         ) + '\n' + affected
-                        conf_description = t(_p(
-                            'cmd:economy_balance|confirm_set|desc',
+                        _conf_default = (
                             "Are you sure you want to set the balance of everyone with {role_mention} "
                             "to {coin_emoji}**{amount}**?"
-                        )).format(
-                            role_mention=role.mention,
-                            coin_emoji=cemoji,
-                            amount=set_to
+                        )
+                        conf_description = _safe_t_format(
+                            t(_p('cmd:economy_balance|confirm_set|desc', _conf_default)),
+                            _conf_default,
+                            role_mention=role.mention, coin_emoji=cemoji, amount=set_to
                         ) + '\n' + conf_affected
                     confirm.embed.description = conf_description
                     try:
@@ -290,70 +354,80 @@ class Economy(LionCog):
                     if not result:
                         return
                 else:
-                    description = t(_p(
-                        'cmd:economy_balance|embed:success_set|desc',
-                        "{user_mention} now has a balance of {coin_emoji}**{amount}**."
-                    )).format(
-                        user_mention=target.mention,
-                        coin_emoji=cemoji,
-                        amount=set_to
+                    _set_user_default = "{user_mention} now has a balance of {coin_emoji}**{amount}**."
+                    description = _safe_t_format(
+                        t(_p('cmd:economy_balance|embed:success_set|desc', _set_user_default)),
+                        _set_user_default,
+                        user_mention=target.mention, coin_emoji=cemoji, amount=set_to
                     )
                 await self.bot.core.data.Member.table.update_where(
                     guildid=ctx.guild.id, userid=list(targetids)
                 ).set(
                     coins=set_to
                 )
+                _log_set_default = "{moderator} set {target}'s balance to {amount}."
                 ctx.lguild.log_event(
                     title=t(_p(
                         'eventlog|event:economy_set|title',
                         "Moderator Set Economy Balance"
                     )),
-                    description=t(_p(
-                        'eventlog|event:economy_set|desc',
-                        "{moderator} set {target}'s balance to {amount}."
-                    )).format(
+                    description=_safe_t_format(
+                        t(_p('eventlog|event:economy_set|desc', _log_set_default)),
+                        _log_set_default,
                         moderator=ctx.author.mention,
                         target=target.mention,
                         amount=f"{cemoji}**{set_to}**",
                     )
                 )
+            # --- END AI-MODIFIED ---
             else:
+                # --- AI-MODIFIED (2026-03-30) ---
+                # Purpose: Wrap role-target add .format() calls in safe formatter
+                # --- Original code (commented out for rollback) ---
+                # if role:
+                #     if role.is_default():
+                #         description = t(_p(...)).format(guild_name=..., coin_emoji=..., amount=...)
+                #         conf_description = t(_p(...)).format(coin_emoji=..., amount=...)
+                #     else:
+                #         description = t(_p(...)).format(role_mention=..., coin_emoji=..., amount=...)
+                #         conf_description = t(_p(...)).format(coin_emoji=..., amount=..., role_mention=...)
+                # --- End original code ---
                 if role:
                     if role.is_default():
-                        description = t(_p(
-                            'cmd:economy_balance|embed:success_add|desc',
+                        _add_all_default = (
                             "All members of **{guild_name}** have been given "
                             "{coin_emoji}**{amount}**."
-                        )).format(
-                            guild_name=ctx.guild.name,
-                            coin_emoji=cemoji,
-                            amount=add
+                        )
+                        description = _safe_t_format(
+                            t(_p('cmd:economy_balance|embed:success_add|desc', _add_all_default)),
+                            _add_all_default,
+                            guild_name=ctx.guild.name, coin_emoji=cemoji, amount=add
                         ) + '\n' + affected
-                        conf_description = t(_p(
-                            'cmd:economy_balance|confirm_add|desc',
-                            "Are you sure you want to add **{amount}** to everyone's balance?"
-                        )).format(
-                            coin_emoji=cemoji,
-                            amount=add
+                        _conf_all_default = "Are you sure you want to add **{amount}** to everyone's balance?"
+                        conf_description = _safe_t_format(
+                            t(_p('cmd:economy_balance|confirm_add|desc', _conf_all_default)),
+                            _conf_all_default,
+                            coin_emoji=cemoji, amount=add
                         ) + '\n' + conf_affected
                     else:
-                        description = t(_p(
-                            'cmd:economy_balance|embed:success_add|desc',
+                        _add_role_default = (
                             "All members of {role_mention} have been given "
                             "{coin_emoji}**{amount}**."
-                        )).format(
-                            role_mention=role.mention,
-                            coin_emoji=cemoji,
-                            amount=add
+                        )
+                        description = _safe_t_format(
+                            t(_p('cmd:economy_balance|embed:success_add|desc', _add_role_default)),
+                            _add_role_default,
+                            role_mention=role.mention, coin_emoji=cemoji, amount=add
                         ) + '\n' + affected
-                        conf_description = t(_p(
-                            'cmd:economy_balance|confirm_add|desc',
+                        _conf_role_default = (
                             "Are you sure you want to add {coin_emoji}**{amount}** to everyone in {role_mention}?"
-                        )).format(
-                            coin_emoji=cemoji,
-                            amount=add,
-                            role_mention=role.mention
+                        )
+                        conf_description = _safe_t_format(
+                            t(_p('cmd:economy_balance|confirm_add|desc', _conf_role_default)),
+                            _conf_role_default,
+                            coin_emoji=cemoji, amount=add, role_mention=role.mention
                         ) + '\n' + conf_affected
+                # --- END AI-MODIFIED ---
                     confirm.embed.description = conf_description
                     try:
                         result = await confirm.ask(ctx.interaction, ephemeral=True)

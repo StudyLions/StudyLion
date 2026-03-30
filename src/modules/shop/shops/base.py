@@ -191,6 +191,22 @@ class Store(MessageUI):
         # Current interaction to use
         self._original = interaction
 
+    # --- AI-MODIFIED (2026-03-27) ---
+    # Purpose: Add helper to split button rows that exceed Discord's 5-width limit
+    @staticmethod
+    def _chunk_buttons(items, max_width=5):
+        rows, current, w = [], [], 0
+        for item in items:
+            if w + item.width > max_width and current:
+                rows.append(tuple(current))
+                current, w = [], 0
+            current.append(item)
+            w += item.width
+        if current:
+            rows.append(tuple(current))
+        return rows
+    # --- END AI-MODIFIED ---
+
     # ----- UI API -----
     def set_store_row(self, row):
         self.store_row = row

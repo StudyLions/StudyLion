@@ -1189,6 +1189,84 @@ async def process_farm_growth(bot, userid: int, voice_minutes: float = 0, messag
 # --- END AI-MODIFIED ---
 
 
+# --- AI-GENERATED (2026-03-30) ---
+# Purpose: Growth engine for family farm plots — all family members' activity contributes collaboratively
+async def process_family_farm_growth(bot, userid: int, voice_minutes: float = 0, message_count: int = 0, user_tier: str = 'NONE'):
+    """Distribute activity-based growth points to all active family farm plots.
+    Each family member's activity contributes to the shared family farm.
+    Uses the contributing user's tier for growth speed, but fixed 48h death timer and base water intervals."""
+    base_points = (voice_minutes * GROWTH_PER_VOICE_MINUTE + message_count * GROWTH_PER_TEXT_MESSAGE) * TIER_FARM_GROWTH_SPEED.get(user_tier, 1.0)
+    if base_points <= 0:
+        return
+    try:
+        async with bot.db.connection() as conn:
+            async with conn.cursor() as cur:
+                await cur.execute(
+                    "SELECT family_id FROM lg_family_members WHERE userid = %s AND left_at IS NULL",
+                    [userid]
+                )
+                row = await cur.fetchone()
+            if not row:
+                return
+            family_id = row['family_id']
+
+            async with conn.cursor() as cur:
+                await cur.execute(
+                    """SELECT fp.plot_id, fp.farm_index, fp.seed_id, fp.growth_stage, fp.growth_points,
+                              fp.last_watered, fp.dead,
+                              s.growth_points_needed, s.water_interval_hours
+                       FROM lg_family_farm_plots fp
+                       LEFT JOIN lg_farm_seeds s ON fp.seed_id = s.seed_id
+                       WHERE fp.family_id = %s AND fp.seed_id IS NOT NULL
+                         AND (fp.dead = false OR fp.dead IS NULL) AND (fp.growth_stage IS NULL OR fp.growth_stage < 5)""",
+                    [family_id]
+                )
+                active_plots = await cur.fetchall()
+
+            if not active_plots:
+                return
+
+            now = datetime.now(timezone.utc)
+            active_count = len(active_plots)
+            per_plot_base = base_points / active_count
+
+            for plot in active_plots:
+                water_interval = plot['water_interval_hours'] or 4
+                is_watered = False
+                if plot['last_watered']:
+                    lw = plot['last_watered']
+                    if lw.tzinfo is None:
+                        lw = lw.replace(tzinfo=timezone.utc)
+                    hours_since = (now - lw).total_seconds() / 3600
+                    if hours_since > DRY_DEATH_HOURS:
+                        await conn.execute(
+                            """UPDATE lg_family_farm_plots SET dead = true
+                               WHERE family_id = %s AND farm_index = %s AND plot_id = %s""",
+                            [family_id, plot['farm_index'], plot['plot_id']]
+                        )
+                        continue
+                    is_watered = hours_since < water_interval
+
+                multiplier = WATER_BOOST if is_watered else DRY_PENALTY
+                earned = per_plot_base * multiplier
+
+                new_points = (plot['growth_points'] or 0) + earned
+                points_needed = plot['growth_points_needed'] or 100
+                points_per_stage = points_needed / 5.0
+                current_stage = plot['growth_stage'] or 1
+                new_stage = min(5, max(current_stage, 1 + int(new_points / points_per_stage)))
+
+                await conn.execute(
+                    """UPDATE lg_family_farm_plots
+                       SET growth_points = %s, growth_stage = %s
+                       WHERE family_id = %s AND farm_index = %s AND plot_id = %s""",
+                    [new_points, new_stage, family_id, plot['farm_index'], plot['plot_id']]
+                )
+    except Exception:
+        logger.exception(f"Failed family farm growth for user {userid}")
+# --- END AI-GENERATED ---
+
+
 # --- AI-REPLACED (2026-03-16) ---
 # Reason: Materials removed; use try_item_drop instead of try_material_drop, return 'drops' key
 # What the new code does better: Drops equipment/scrolls directly instead of materials
@@ -1271,6 +1349,10 @@ async def process_voice_activity(bot, userid: int, duration_seconds: int,
         # --- END AI-MODIFIED ---
 
     await process_farm_growth(bot, userid, voice_minutes=voice_minutes, user_tier=user_tier)
+    # --- AI-MODIFIED (2026-03-30) ---
+    # Purpose: Also grow family farm plots from voice activity
+    await process_family_farm_growth(bot, userid, voice_minutes=voice_minutes, user_tier=user_tier)
+    # --- END AI-MODIFIED ---
 
     return {
         'drops': drops, 'levels': levels, 'new_level': new_level,
@@ -1410,11 +1492,30 @@ async def award_family_xp(bot, userid: int, xp_amount: int):
                 fam_rows = await cur.fetchall()
                 if fam_rows:
                     new_xp = int(fam_rows[0]['xp'] or 0)
+                    old_level = family_level_from_xp(max(0, new_xp - xp_amount))
                     new_level = family_level_from_xp(new_xp)
                     await cur.execute(
                         "UPDATE lg_families SET level = %s WHERE family_id = %s",
                         [new_level, family_id]
                     )
+                    # --- AI-MODIFIED (2026-03-30) ---
+                    # Purpose: Auto-unlock extra farms when family levels past thresholds
+                    old_max_farms = 1 + old_level // 5
+                    new_max_farms = 1 + new_level // 5
+                    if new_max_farms > old_max_farms:
+                        for fi in range(old_max_farms, new_max_farms):
+                            await cur.execute(
+                                "INSERT INTO lg_family_farms (family_id, farm_index, unlocked_at) "
+                                "VALUES (%s, %s, NOW()) ON CONFLICT DO NOTHING",
+                                [family_id, fi])
+                            await cur.execute(
+                                "INSERT INTO lg_family_farm_plots (family_id, farm_index, plot_id) "
+                                "SELECT %s, %s, generate_series(0, 14) ON CONFLICT DO NOTHING",
+                                [family_id, fi])
+                        await cur.execute(
+                            "UPDATE lg_families SET max_farms = %s WHERE family_id = %s",
+                            [new_max_farms, family_id])
+                    # --- END AI-MODIFIED ---
     # --- END AI-MODIFIED ---
     except Exception:
         logger.exception("Error awarding family XP for userid=%s", userid)

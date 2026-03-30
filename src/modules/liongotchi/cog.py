@@ -35,7 +35,7 @@ from .onboarding_renderer import OnboardingGIFs
 # Purpose: Import mood system functions alongside existing gameplay imports
 from .gameplay import (
     process_voice_activity, process_text_activity,
-    process_farm_growth,
+    process_farm_growth, process_family_farm_growth,
     attempt_enhance, calc_equipment_bonus,
     try_item_drop, ITEM_DROP_CHANCE_TEXT, ITEM_DROP_CHANCE_HARVEST,
     MAX_ENHANCEMENT_BY_RARITY, ENHANCEMENT_GOLD_BONUS, calc_level_penalty,
@@ -4278,13 +4278,17 @@ class FamilyFarmView(discord.ui.View):
         # Purpose: Removed s.type_id from query (column never existed in DB).
         # type_id is now derived from asset_prefix, matching the personal farm code.
         self.plots = await _db_fetch(self.cog.bot,
+            # --- AI-MODIFIED (2026-03-30) ---
+            # Purpose: Include water_interval_hours for correct watered visualization
             """SELECT fp.plot_id, fp.seed_id, fp.growth_stage, fp.dead, fp.rarity,
                       fp.last_watered, fp.planted_at,
-                      s.plant_type::text AS plant_type, s.asset_prefix
+                      s.plant_type::text AS plant_type, s.asset_prefix,
+                      s.water_interval_hours
                FROM lg_family_farm_plots fp
                LEFT JOIN lg_farm_seeds s ON s.seed_id = fp.seed_id
                WHERE fp.family_id = %s AND fp.farm_index = %s
                ORDER BY fp.plot_id""",
+            # --- END AI-MODIFIED ---
             self.family_id, farm_index) or []
         # --- END AI-MODIFIED ---
 
@@ -4292,11 +4296,25 @@ class FamilyFarmView(discord.ui.View):
         from datetime import timezone as tz
         now = datetime.now(tz.utc)
         for p in self.plots:
+            # --- AI-REPLACED (2026-03-30) ---
+            # Reason: Date-only comparison gave wrong soil colors; use water_interval_hours like personal farm
+            # What the new code does better: Matches the actual growth engine logic
+            # --- Original code (commented out for rollback) ---
+            # is_watered = False
+            # if p.get('last_watered'):
+            #     lw = p['last_watered']
+            #     if hasattr(lw, 'date'):
+            #         is_watered = lw.date() == now.date()
+            # --- End original code ---
             is_watered = False
             if p.get('last_watered'):
                 lw = p['last_watered']
-                if hasattr(lw, 'date'):
-                    is_watered = lw.date() == now.date()
+                if lw.tzinfo is None:
+                    lw = lw.replace(tzinfo=tz.utc)
+                water_interval = p.get('water_interval_hours') or 4
+                hours_since = (now - lw).total_seconds() / 3600
+                is_watered = hours_since < water_interval
+            # --- END AI-REPLACED ---
 
             # --- AI-MODIFIED (2026-03-24) ---
             # Purpose: Derive type_id from asset_prefix (matching personal farm logic)
@@ -5365,6 +5383,10 @@ class LionGotchiCog(LionCog):
                 # await process_farm_growth(self.bot, userid, message_count=count)
                 await process_farm_growth(self.bot, userid, message_count=count, user_tier=user_tier)
                 # --- END AI-MODIFIED ---
+                # --- AI-MODIFIED (2026-03-30) ---
+                # Purpose: Also grow family farm plots from message activity
+                await process_family_farm_growth(self.bot, userid, message_count=count, user_tier=user_tier)
+                # --- END AI-MODIFIED ---
             except Exception:
                 logger.exception(f"Farm growth flush failed for {userid}")
     # --- END AI-MODIFIED ---
@@ -5756,6 +5778,11 @@ class LionGotchiCog(LionCog):
             return
         # --- END AI-REPLACED ---
         pet = await self._get_or_create_pet(interaction.user.id)
+        # --- AI-MODIFIED (2026-03-26) ---
+        # Purpose: Refresh pet data from DB to pick up changes made by the website or other processes
+        if pet is not None and pet.data is not None:
+            await pet.refresh()
+        # --- END AI-MODIFIED ---
         pet = await self._apply_decay(pet)
         state = await self._build_pet_state(pet, interaction.guild)
         self._last_pet_name = state.pet_name
@@ -5935,8 +5962,12 @@ class LionGotchiCog(LionCog):
             "UPDATE lg_pets SET food = %s, expression = %s WHERE userid = %s",
             new_food, 'EATING', interaction.user.id
         )
+        # --- AI-MODIFIED (2026-03-26) ---
+        # Purpose: Sync in-memory cache after DB update so display reflects the change
+        if pet.data is not None:
+            pet.data['food'] = new_food
+        # --- END AI-MODIFIED ---
         self._feed_cooldowns[interaction.user.id] = now
-        pet = await self._get_or_create_pet(interaction.user.id)
         state = await self._build_pet_state(pet, interaction.guild)
         gif_bytes = await asyncio.to_thread(render_action_frame, state, 'feed')
         file = discord.File(BytesIO(gif_bytes), filename="feed.gif")
@@ -5991,8 +6022,12 @@ class LionGotchiCog(LionCog):
             "UPDATE lg_pets SET bath = %s, expression = %s WHERE userid = %s",
             new_bath, 'HAPPY', interaction.user.id
         )
+        # --- AI-MODIFIED (2026-03-26) ---
+        # Purpose: Sync in-memory cache after DB update so display reflects the change
+        if pet.data is not None:
+            pet.data['bath'] = new_bath
+        # --- END AI-MODIFIED ---
         self._bathe_cooldowns[interaction.user.id] = now
-        pet = await self._get_or_create_pet(interaction.user.id)
         state = await self._build_pet_state(pet, interaction.guild)
         gif_bytes = await asyncio.to_thread(render_action_frame, state, 'bathe')
         file = discord.File(BytesIO(gif_bytes), filename="bathe.gif")
@@ -6061,8 +6096,12 @@ class LionGotchiCog(LionCog):
             "UPDATE lg_pets SET sleep = %s, expression = %s WHERE userid = %s",
             new_sleep, 'SLEEPING', interaction.user.id
         )
+        # --- AI-MODIFIED (2026-03-26) ---
+        # Purpose: Sync in-memory cache after DB update so display reflects the change
+        if pet.data is not None:
+            pet.data['sleep'] = new_sleep
+        # --- END AI-MODIFIED ---
         self._sleep_cooldowns[interaction.user.id] = now
-        pet = await self._get_or_create_pet(interaction.user.id)
         state = await self._build_pet_state(pet, interaction.guild)
         gif_bytes = await asyncio.to_thread(render_action_frame, state, 'sleep')
         file = discord.File(BytesIO(gif_bytes), filename="sleep.gif")

@@ -134,9 +134,24 @@ class MetaCog(LionCog):
                 return ch
         return None
 
+    # --- AI-REPLACED (2026-03-26) ---
+    # Reason: Updated button labels -- "Explore Features" -> "Admin Tutorial", "Support Server" -> "Report a Bug / Ask for Help"
+    # --- Original code (commented out for rollback) ---
+    # def _build_welcome_view(self, guild: discord.Guild) -> discord.ui.View:
+    #     setup_url = f"{WEBSITE_URL}/dashboard/servers/{guild.id}/setup"
+    #     features_url = f"{WEBSITE_URL}/features"
+    #     support_url = str(self.bot.config.bot.support_guild)
+    #     donate_url = f"{WEBSITE_URL}/donate"
+    #     view = discord.ui.View()
+    #     view.add_item(discord.ui.Button(label="Quick Setup", emoji="\U0001FA84", url=setup_url, style=discord.ButtonStyle.link))
+    #     view.add_item(discord.ui.Button(label="Explore Features", emoji="\u2728", url=features_url, style=discord.ButtonStyle.link))
+    #     view.add_item(discord.ui.Button(label="Support Server", emoji="\U0001F91D", url=support_url, style=discord.ButtonStyle.link))
+    #     view.add_item(discord.ui.Button(label="Support Leo", emoji="\u2764\uFE0F", url=donate_url, style=discord.ButtonStyle.link))
+    #     return view
+    # --- End original code ---
     def _build_welcome_view(self, guild: discord.Guild) -> discord.ui.View:
         setup_url = f"{WEBSITE_URL}/dashboard/servers/{guild.id}/setup"
-        features_url = f"{WEBSITE_URL}/features"
+        tutorials_url = f"{WEBSITE_URL}/tutorials"
         support_url = str(self.bot.config.bot.support_guild)
         donate_url = f"{WEBSITE_URL}/donate"
 
@@ -146,11 +161,11 @@ class MetaCog(LionCog):
             url=setup_url, style=discord.ButtonStyle.link,
         ))
         view.add_item(discord.ui.Button(
-            label="Explore Features", emoji="\u2728",
-            url=features_url, style=discord.ButtonStyle.link,
+            label="Admin Tutorial", emoji="\U0001F4D6",
+            url=tutorials_url, style=discord.ButtonStyle.link,
         ))
         view.add_item(discord.ui.Button(
-            label="Support Server", emoji="\U0001F91D",
+            label="Report a Bug / Ask for Help", emoji="\U0001F41B",
             url=support_url, style=discord.ButtonStyle.link,
         ))
         view.add_item(discord.ui.Button(
@@ -158,6 +173,7 @@ class MetaCog(LionCog):
             url=donate_url, style=discord.ButtonStyle.link,
         ))
         return view
+    # --- END AI-REPLACED ---
 
     @LionCog.listener('on_guild_join')
     async def post_join_message(self, guild: discord.Guild):
@@ -170,14 +186,43 @@ class MetaCog(LionCog):
 
         t = self.bot.translator.t
 
+        # --- AI-REPLACED (2026-03-26) ---
+        # Reason: Shorter, warmer join message focused on family-business identity and asking users not to remove Leo
+        # What the new code does better: Less text clutter, emotional tone, encourages opening a ticket instead of removing
+        # --- Original code (commented out for rollback) ---
+        # embed = discord.Embed(
+        #     description=t(_p(
+        #         'new_guild_join_message|desc',
+        #         "Thank you for adding me to **{server_name}**! "
+        #         "I'm a powerful productivity and engagement bot that helps "
+        #         "gamify your server with activity tracking, rewards, and more.\n\n"
+        #         "Use {help_cmd} to explore commands, or click **Quick Setup** below "
+        #         "to configure me on the web in under 2 minutes!"
+        #     )).format(server_name=guild.name, help_cmd=self.bot.core.mention_cmd('help')),
+        #     colour=discord.Colour.orange(),
+        # )
+        # embed.set_author(name=t(_p('new_guild_join_message|name', "Hello everyone! I'm Leo, the LionBot!")),
+        #     icon_url="https://cdn.discordapp.com/emojis/933610591459872868.webp")
+        # embed.add_field(name="\U0001F4CA Study Tracking", value="Track voice & text activity, earn hourly coin rewards, and camera bonuses", inline=True)
+        # embed.add_field(name="\U0001F3C6 Ranks & Leaderboards", value="Competitive rank progression, profile cards, and server-wide leaderboards", inline=True)
+        # embed.add_field(name="\U0001F4B0 Economy & Shop", value="Virtual currency, colour role shop, room rentals, and coin transfers", inline=True)
+        # embed.add_field(name="\U0001F345 Pomodoro Timers", value="Focus sessions with streaks, milestones, and voice channel integration", inline=True)
+        # embed.add_field(name="\U0001F981 LionGotchi", value="Virtual pet companion with farming, crafting, equipment, and marketplace", inline=True)
+        # embed.add_field(name="\u2699\uFE0F And Much More", value="Moderation, role menus, video channels, schedules, tasks, and reminders", inline=True)
+        # embed.set_footer(text=f"Set up in under 2 minutes \u2022 {WEBSITE_URL}")
+        # --- End original code ---
         embed = discord.Embed(
             description=t(_p(
                 'new_guild_join_message|desc',
-                "Thank you for adding me to **{server_name}**! "
-                "I'm a powerful productivity and engagement bot that helps "
-                "gamify your server with activity tracking, rewards, and more.\n\n"
-                "Use {help_cmd} to explore commands, or click **Quick Setup** below "
-                "to configure me on the web in under 2 minutes!"
+                "Thanks for adding Leo to **{server_name}**! "
+                "Leo is built with love by a small family team \u2014 "
+                "this project means the world to us.\n\n"
+                "Leo is in active development with new features landing regularly. "
+                "If you run into a bug or need help setting up, "
+                "please don't remove Leo \u2014 join our server and open a ticket. "
+                "We're here to help personally!\n\n"
+                "Use {help_cmd} to explore commands, or click **Quick Setup** "
+                "below to get started in under 2 minutes."
             )).format(
                 server_name=guild.name,
                 help_cmd=self.bot.core.mention_cmd('help'),
@@ -191,45 +236,8 @@ class MetaCog(LionCog):
             )),
             icon_url="https://cdn.discordapp.com/emojis/933610591459872868.webp",
         )
-
-        embed.add_field(
-            name="\U0001F4CA Study Tracking",
-            value="Track voice & text activity, earn hourly coin rewards, and camera bonuses",
-            inline=True,
-        )
-        embed.add_field(
-            name="\U0001F3C6 Ranks & Leaderboards",
-            value="Competitive rank progression, profile cards, and server-wide leaderboards",
-            inline=True,
-        )
-        embed.add_field(
-            name="\U0001F4B0 Economy & Shop",
-            value="Virtual currency, colour role shop, room rentals, and coin transfers",
-            inline=True,
-        )
-        embed.add_field(
-            name="\U0001F345 Pomodoro Timers",
-            value="Focus sessions with streaks, milestones, and voice channel integration",
-            inline=True,
-        )
-        embed.add_field(
-            name="\U0001F981 LionGotchi",
-            value="Virtual pet companion with farming, crafting, equipment, and marketplace",
-            inline=True,
-        )
-        embed.add_field(
-            name="\u2699\uFE0F And Much More",
-            value="Moderation, role menus, video channels, schedules, tasks, and reminders",
-            inline=True,
-        )
-
-        # --- AI-MODIFIED (2026-03-22) ---
-        # Purpose: Removed broken set_image (dead 404 Discord CDN URL)
-        # --- Original code (commented out for rollback) ---
-        # embed.set_image(url=ONBOARDING_HERO_GIF)
-        # --- End original code ---
         embed.set_footer(text=f"Set up in under 2 minutes \u2022 {WEBSITE_URL}")
-        # --- END AI-MODIFIED ---
+        # --- END AI-REPLACED ---
 
         view = self._build_welcome_view(guild)
 
@@ -250,21 +258,43 @@ class MetaCog(LionCog):
             except discord.HTTPException:
                 owner = None
 
+        # --- AI-REPLACED (2026-03-26) ---
+        # Reason: Shorter, warmer DM to server owner with family-business tone
+        # --- Original code (commented out for rollback) ---
+        # if owner:
+        #     dm_embed = discord.Embed(
+        #         description=t(_p('new_guild_join_dm|desc',
+        #             "Thanks for adding Leo to **{server_name}**! "
+        #             "Here's how to get started:\n\n"
+        #             "**1.** Click **Quick Setup** below to configure your server on the web dashboard in under 2 minutes\n\n"
+        #             "**2.** Or use {dash_cmd} in Discord to manage settings at a glance\n\n"
+        #             "**3.** Need help? Join our support server \u2014 our team is happy to assist!\n\n"
+        #             "Once set up, your members can start earning rewards, climbing ranks, and more right away!"
+        #         )).format(server_name=guild.name, dash_cmd=self.bot.core.mention_cmd('dashboard')),
+        #         colour=discord.Colour.orange(),
+        #     )
+        #     dm_embed.set_author(name=t(_p('new_guild_join_dm|name', "Welcome to LionBot!")),
+        #         icon_url="https://cdn.discordapp.com/emojis/933610591459872868.webp")
+        #     dm_embed.set_footer(text=f"Set up {guild.name} \u2022 {WEBSITE_URL}")
+        #     dm_view = self._build_welcome_view(guild)
+        #     try:
+        #         await owner.send(embed=dm_embed, view=dm_view)
+        #     except discord.HTTPException:
+        #         logger.debug(f"Could not DM owner of <gid: {guild.id}>")
+        # --- End original code ---
         if owner:
             dm_embed = discord.Embed(
                 description=t(_p(
                     'new_guild_join_dm|desc',
                     "Thanks for adding Leo to **{server_name}**! "
-                    "Here's how to get started:\n\n"
-                    "**1.** Click **Quick Setup** below to configure your server "
-                    "on the web dashboard in under 2 minutes\n\n"
-                    "**2.** Or use {dash_cmd} in Discord to manage settings at a glance\n\n"
-                    "**3.** Need help? Join our support server \u2014 our team is happy to assist!\n\n"
-                    "Once set up, your members can start earning rewards, "
-                    "climbing ranks, and more right away!"
+                    "We're a small family team and we genuinely care about "
+                    "every server that uses Leo.\n\n"
+                    "Click **Quick Setup** below to configure your server "
+                    "in under 2 minutes. If you run into any issues, "
+                    "please don't hesitate to reach out \u2014 "
+                    "we're always happy to help!"
                 )).format(
                     server_name=guild.name,
-                    dash_cmd=self.bot.core.mention_cmd('dashboard'),
                 ),
                 colour=discord.Colour.orange(),
             )
@@ -285,6 +315,7 @@ class MetaCog(LionCog):
                 logger.debug(
                     f"Could not DM owner of <gid: {guild.id}>"
                 )
+        # --- END AI-REPLACED ---
     # --- END AI-REPLACED ---
 
     @cmds.hybrid_command(

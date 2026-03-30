@@ -883,10 +883,37 @@ CREATE VIEW voice_sessions_combined AS
     NOW() AS end_time
   FROM voice_sessions_ongoing;
 
+-- --- AI-MODIFIED (2026-03-27) ---
+-- Purpose: Guard against inverted date ranges (_start >= _end) which crash tstzrange
+-- --- Original code (commented out for rollback) ---
+-- CREATE FUNCTION study_time_between(_guildid BIGINT, _userid BIGINT, _start TIMESTAMPTZ, _end TIMESTAMPTZ)
+--   RETURNS INTEGER
+-- AS $$
+--   BEGIN
+--     RETURN (
+--       SELECT
+--         SUM(COALESCE(EXTRACT(EPOCH FROM (upper(part) - lower(part))), 0))
+--       FROM (
+--         SELECT
+--         unnest(range_agg(tstzrange(start_time, end_time)) * multirange(tstzrange(_start, _end))) AS part
+--         FROM voice_sessions_combined
+--         WHERE
+--           (_guildid IS NULL OR guildid=_guildid)
+--           AND userid=_userid
+--           AND start_time < _end
+--           AND end_time > _start
+--       ) AS disjoint_parts
+--     );
+--   END;
+-- $$ LANGUAGE PLPGSQL;
+-- --- End original code ---
 CREATE FUNCTION study_time_between(_guildid BIGINT, _userid BIGINT, _start TIMESTAMPTZ, _end TIMESTAMPTZ)
   RETURNS INTEGER
 AS $$
   BEGIN
+    IF _start >= _end THEN
+      RETURN 0;
+    END IF;
     RETURN (
       SELECT
         SUM(COALESCE(EXTRACT(EPOCH FROM (upper(part) - lower(part))), 0))
@@ -903,14 +930,30 @@ AS $$
     );
   END;
 $$ LANGUAGE PLPGSQL;
+-- --- END AI-MODIFIED ---
 
+-- --- AI-MODIFIED (2026-03-27) ---
+-- Purpose: Guard against future _timestamp which would invert the range passed to study_time_between
+-- --- Original code (commented out for rollback) ---
+-- CREATE FUNCTION study_time_since(_guildid BIGINT, _userid BIGINT, _timestamp TIMESTAMPTZ)
+--   RETURNS INTEGER
+-- AS $$
+--   BEGIN
+--     RETURN (SELECT study_time_between(_guildid, _userid, _timestamp, NOW()));
+--   END;
+-- $$ LANGUAGE PLPGSQL;
+-- --- End original code ---
 CREATE FUNCTION study_time_since(_guildid BIGINT, _userid BIGINT, _timestamp TIMESTAMPTZ)
   RETURNS INTEGER
 AS $$
   BEGIN
+    IF _timestamp > NOW() THEN
+      RETURN 0;
+    END IF;
     RETURN (SELECT study_time_between(_guildid, _userid, _timestamp, NOW()));
   END;
 $$ LANGUAGE PLPGSQL;
+-- --- END AI-MODIFIED ---
 
 -- }}}
 

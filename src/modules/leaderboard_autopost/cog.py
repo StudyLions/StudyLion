@@ -40,13 +40,20 @@ def _now_in_tz(tz_name: Optional[str]) -> dt.datetime:
     return dt.datetime.now(tz)
 
 
+# --- AI-MODIFIED (2026-03-30) ---
+# Purpose: Accept optional as_of datetime so catch-up posts use the
+# correct period (the one containing the missed scheduled time).
 def _compute_period_bounds(
     config, guild_tz: Optional[str], season_start: Optional[dt.datetime],
+    as_of: Optional[dt.datetime] = None,
 ) -> Tuple[dt.datetime, dt.datetime, str]:
     """
     Compute (period_start, period_end, human_period_str) based on
     config frequency, guild timezone, and scheduling options.
     Returns timezone-aware datetimes in guild TZ.
+
+    If *as_of* is given, compute the period containing that datetime
+    instead of the current moment.
     """
     import zoneinfo
     try:
@@ -54,7 +61,10 @@ def _compute_period_bounds(
     except Exception:
         tz = dt.timezone.utc
 
-    now = dt.datetime.now(tz)
+    now = as_of if as_of is not None else dt.datetime.now(tz)
+    if now.tzinfo is None:
+        now = now.replace(tzinfo=tz)
+    # --- END AI-MODIFIED ---
 
     freq = config.frequency
 
@@ -145,12 +155,16 @@ def _period_already_posted(config, period_start: dt.datetime) -> bool:
     return lp >= ps
 
 
-# --- AI-REPLACED (2026-03-22) ---
-# Reason: Original required exact day-of-week/month match, so posts were
-#   silently skipped if the bot was down for the entire scheduled day.
-# What the new code does better: Computes the scheduled datetime within
-#   the current period and checks now >= scheduled_dt, allowing catchup
-#   after downtime without waiting for the next period.
+# --- AI-REPLACED (2026-03-30) ---
+# Reason: Two bugs in the previous version:
+#   1. _period_already_posted compared last_posted_at against period_start,
+#      so a run_now early in the week blocked the scheduled end-of-week post.
+#   2. Once the period rolled over, the missed post from the previous period
+#      was permanently lost because scheduled_dt was computed for the new period.
+# What the new code does better: Computes the most recent PAST scheduled
+#   datetime (which may be in the previous period) and compares last_posted_at
+#   directly against it.  A run_now on Monday no longer blocks Sunday's post,
+#   and cross-period catch-up works automatically.
 # --- Original code (commented out for rollback) ---
 # def _should_post_now(config, guild_tz: Optional[str]) -> bool:
 #     """Determine if a config is due for posting right now."""
@@ -193,12 +207,13 @@ def _period_already_posted(config, period_start: dt.datetime) -> bool:
 #     period_start, _, _ = _compute_period_bounds(config, guild_tz, None)
 #     return not _period_already_posted(config, period_start)
 # --- End original code ---
-def _should_post_now(config, guild_tz: Optional[str]) -> bool:
-    """Determine if a config is due for posting right now.
+def _compute_last_scheduled_dt(
+    config, guild_tz: Optional[str],
+) -> dt.datetime:
+    """Return the most recent scheduled datetime that has already passed.
 
-    Computes the exact scheduled datetime within the current period and
-    checks ``now >= scheduled_dt``.  This allows the bot to catch up on
-    missed posts after downtime instead of silently skipping the period.
+    For weekly configs set to Sunday 20:00 Manila, if it is now Monday
+    03:00 Manila, this returns last Sunday 20:00 Manila.
     """
     import zoneinfo
     try:
@@ -211,12 +226,13 @@ def _should_post_now(config, guild_tz: Optional[str]) -> bool:
     post_hour = config.post_hour or 20
     post_minute = config.post_minute or 0
 
-    period_start, _, _ = _compute_period_bounds(config, guild_tz, None)
-
     if freq == 'daily':
-        scheduled_dt = now.replace(
+        candidate = now.replace(
             hour=post_hour, minute=post_minute, second=0, microsecond=0,
         )
+        if candidate > now:
+            candidate -= dt.timedelta(days=1)
+        return candidate
 
     elif freq == 'weekly':
         post_day = config.post_day if config.post_day is not None else 0
@@ -226,19 +242,33 @@ def _should_post_now(config, guild_tz: Optional[str]) -> bool:
         else:
             target_dow = post_day
 
-        days_ahead = (target_dow - period_start.weekday()) % 7
-        scheduled_dt = (period_start + dt.timedelta(days=days_ahead)).replace(
+        days_since = (now.weekday() - target_dow) % 7
+        candidate = (now - dt.timedelta(days=days_since)).replace(
             hour=post_hour, minute=post_minute, second=0, microsecond=0,
         )
+        if candidate > now:
+            candidate -= dt.timedelta(days=7)
+        return candidate
 
     elif freq == 'monthly':
         post_day = config.post_day if config.post_day is not None else 1
         last_day = calendar.monthrange(now.year, now.month)[1]
         actual_day = min(post_day, last_day)
-        scheduled_dt = now.replace(
+        candidate = now.replace(
             day=actual_day, hour=post_hour, minute=post_minute,
             second=0, microsecond=0,
         )
+        if candidate > now:
+            if now.month == 1:
+                py, pm = now.year - 1, 12
+            else:
+                py, pm = now.year, now.month - 1
+            prev_last = calendar.monthrange(py, pm)[1]
+            candidate = dt.datetime(
+                py, pm, min(post_day, prev_last),
+                post_hour, post_minute, 0, 0, tz,
+            )
+        return candidate
 
     elif freq == 'seasonal':
         mode = config.seasonal_mode or 'guild_season'
@@ -246,26 +276,61 @@ def _should_post_now(config, guild_tz: Optional[str]) -> bool:
             q = (now.month - 1) // 3
             q_end_month = q * 3 + 3
             last_day_qe = calendar.monthrange(now.year, q_end_month)[1]
-            scheduled_dt = now.replace(
+            candidate = now.replace(
                 month=q_end_month, day=last_day_qe,
                 hour=post_hour, minute=post_minute,
                 second=0, microsecond=0,
             )
-        else:
-            scheduled_dt = now.replace(
-                hour=post_hour, minute=post_minute,
-                second=0, microsecond=0,
-            )
-    else:
-        scheduled_dt = now.replace(
-            hour=post_hour, minute=post_minute,
-            second=0, microsecond=0,
-        )
+            if candidate > now:
+                pq = q - 1
+                if pq < 0:
+                    py, pq = now.year - 1, 3
+                else:
+                    py = now.year
+                pq_end = pq * 3 + 3
+                pq_last = calendar.monthrange(py, pq_end)[1]
+                candidate = dt.datetime(
+                    py, pq_end, pq_last,
+                    post_hour, post_minute, 0, 0, tz,
+                )
+            return candidate
 
-    if now < scheduled_dt:
-        return False
+    return now.replace(
+        hour=post_hour, minute=post_minute, second=0, microsecond=0,
+    )
 
-    return not _period_already_posted(config, period_start)
+
+def _should_post_now(config, guild_tz: Optional[str]) -> bool:
+    """Determine if a config is due for posting right now.
+
+    Computes the most recent past scheduled datetime and checks whether
+    ``last_posted_at`` is before it, meaning the post was missed.
+    Handles cross-period catch-up (e.g. Monday catch-up of a missed
+    Sunday post) and ensures a run_now on Monday does not block the
+    scheduled Sunday post.
+    """
+    import zoneinfo
+    try:
+        tz = zoneinfo.ZoneInfo(guild_tz) if guild_tz else dt.timezone.utc
+    except Exception:
+        tz = dt.timezone.utc
+
+    last_sched = _compute_last_scheduled_dt(config, guild_tz)
+
+    if config.last_posted_at is None:
+        if config.created_at is not None:
+            ca = config.created_at
+            if ca.tzinfo is None:
+                ca = ca.replace(tzinfo=dt.timezone.utc)
+            if ca.astimezone(tz) > last_sched:
+                return False
+        return True
+
+    lp = config.last_posted_at
+    if lp.tzinfo is None:
+        lp = lp.replace(tzinfo=dt.timezone.utc)
+
+    return lp.astimezone(tz) < last_sched
 # --- END AI-REPLACED ---
 
 
@@ -494,13 +559,35 @@ class LeaderboardAutopostCog(LionCog):
         is_test=False, is_run_now=False,
     ):
         """Execute a full leaderboard post cycle."""
-        period_start, period_end, period_str = _compute_period_bounds(
-            config, guild_tz, season_start,
-        )
-
+        # --- AI-MODIFIED (2026-03-30) ---
+        # Purpose: For scheduled posts, compute period as-of the last
+        # scheduled time so catch-up posts use the correct period's data.
+        # Also compare last_posted_at against the scheduled time (not
+        # period_start) so a run_now early in the period doesn't block
+        # the scheduled post.
         if not is_test and not is_run_now:
-            if _period_already_posted(config, period_start):
-                return
+            import zoneinfo
+            try:
+                tz = zoneinfo.ZoneInfo(guild_tz) if guild_tz else dt.timezone.utc
+            except Exception:
+                tz = dt.timezone.utc
+
+            last_sched = _compute_last_scheduled_dt(config, guild_tz)
+            if config.last_posted_at is not None:
+                lp = config.last_posted_at
+                if lp.tzinfo is None:
+                    lp = lp.replace(tzinfo=dt.timezone.utc)
+                if lp.astimezone(tz) >= last_sched:
+                    return
+
+            period_start, period_end, period_str = _compute_period_bounds(
+                config, guild_tz, season_start, as_of=last_sched,
+            )
+        else:
+            period_start, period_end, period_str = _compute_period_bounds(
+                config, guild_tz, season_start,
+            )
+        # --- END AI-MODIFIED ---
 
         lb_data = await self._fetch_leaderboard(config, period_start)
 

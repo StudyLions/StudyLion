@@ -58,11 +58,23 @@ class VoiceTrackerData(Registry):
                 else:
                     results[cid] = row
 
+            # --- AI-MODIFIED (2026-03-30) ---
+            # Purpose: Query only uncached channel IDs instead of all cidmap keys.
+            # Using cidmap.keys() caused KeyError when a cached channel was also
+            # returned by the DB query, since it was never added to to_fetch.
+            # --- Original code (commented out for rollback) ---
+            # if to_fetch:
+            #     rows = await cls.fetch_where(channelid=list(cidmap.keys()))
+            #     for row in rows:
+            #         results[row.channelid] = row
+            #         to_fetch.remove(row.channelid)
+            # --- End original code ---
             if to_fetch:
-                rows = await cls.fetch_where(channelid=list(cidmap.keys()))
+                rows = await cls.fetch_where(channelid=list(to_fetch))
                 for row in rows:
                     results[row.channelid] = row
-                    to_fetch.remove(row.channelid)
+                    to_fetch.discard(row.channelid)
+            # --- END AI-MODIFIED ---
             if to_fetch and create:
                 rows = await cls.table.insert_many(
                     ('channelid', 'guildid', 'deleted'),

@@ -335,12 +335,16 @@ class VoiceTrackerCog(LionCog):
 
             # Read tracked voice states
             states = {}
+            # --- AI-MODIFIED (2026-03-27) ---
+            voice_members = {}
+            # --- END AI-MODIFIED ---
             for channel in itertools.chain(guild.voice_channels, guild.stage_channels):
                 if not self.is_untracked(channel):
                     for member in channel.members:
                         if member.voice and not member.bot:
                             state = TrackedVoiceState.from_voice_state(member.voice)
                             states[(guild.id, member.id)] = state
+                            voice_members[(guild.id, member.id)] = member
             logger.debug(f"Loaded {len(states)} tracked voice states for <gid: {guild.id}>.")
 
             # Read ongoing session data
@@ -350,6 +354,17 @@ class VoiceTrackerCog(LionCog):
             )
 
             await self._load_sessions(states, ongoing)
+
+            # --- AI-MODIFIED (2026-03-27) ---
+            # Purpose: Sync display names for voice-active members so dashboard
+            # shows correct names instead of "Unknown"
+            for key, dmember in voice_members.items():
+                lmember = self.bot.core.lions.lion_members.get(key)
+                if lmember is not None:
+                    await lmember.touch_discord_model(dmember)
+                    await lmember.luser.touch_discord_model(dmember, seen=False)
+            # --- END AI-MODIFIED ---
+
             logger.info(
                 f"Completed guild voice session reload for <gid: {guild.id}> "
                 f"with '{len(self.active_sessions[guild.id])}' active sessions."
@@ -392,6 +407,10 @@ class VoiceTrackerCog(LionCog):
 
             # Read and save the tracked voice states of all visible voice channels
             states = {}
+            # --- AI-MODIFIED (2026-03-27) ---
+            # Purpose: Collect Discord member objects for name sync during init
+            voice_members = {}
+            # --- END AI-MODIFIED ---
             for guild in self.bot.guilds:
                 for channel in itertools.chain(guild.voice_channels, guild.stage_channels):
                     if not self.is_untracked(channel):
@@ -399,6 +418,7 @@ class VoiceTrackerCog(LionCog):
                             if member.voice and not member.bot:
                                 state = TrackedVoiceState.from_voice_state(member.voice)
                                 states[(guild.id, member.id)] = state
+                                voice_members[(guild.id, member.id)] = member
 
             logger.info(
                 f"Saved voice snapshot with {len(states)} tracked states. Re-enabling voice event handling."
@@ -412,6 +432,16 @@ class VoiceTrackerCog(LionCog):
             )
 
             await self._load_sessions(states, ongoing)
+
+            # --- AI-MODIFIED (2026-03-27) ---
+            # Purpose: Sync display names for voice-active members so dashboard
+            # shows correct names instead of "Unknown"
+            for key, dmember in voice_members.items():
+                lmember = self.bot.core.lions.lion_members.get(key)
+                if lmember is not None:
+                    await lmember.touch_discord_model(dmember)
+                    await lmember.luser.touch_discord_model(dmember, seen=False)
+            # --- END AI-MODIFIED ---
 
             self.initialised.set()
 
@@ -498,6 +528,13 @@ class VoiceTrackerCog(LionCog):
                         )
                         await session.close()
                     if not self.is_untracked(achannel):
+                        # --- AI-MODIFIED (2026-03-27) ---
+                        # Purpose: Sync member display name and avatar to DB on voice
+                        # channel join so dashboard shows names instead of "Unknown"
+                        lmember = await self.bot.core.lions.fetch_member(member.guild.id, member.id, member)
+                        await lmember.touch_discord_model(member)
+                        await lmember.luser.touch_discord_model(member)
+                        # --- END AI-MODIFIED ---
                         # If the channel they are joining is tracked, schedule a session start for them
                         delay, start, expiry = await self._session_boundaries_for(member.guild.id, member.id)
                         hourly_rate = await self._calculate_rate(member.guild.id, member.id, astate)

@@ -547,7 +547,10 @@ class TimerCog(LionCog):
         """
         If a voice channel with a timer was deleted, destroy the timer.
         """
-        timer = self.get_channel_timer(channel.id)
+        # --- AI-MODIFIED (2026-03-27) ---
+        # Purpose: Pass guild_id to bypass unreliable bot.get_channel cache lookup
+        timer = self.get_channel_timer(channel.id, guild_id=channel.guild.id)
+        # --- END AI-MODIFIED ---
         if timer is not None:
             await timer.destroy(reason="Voice Channel Deleted")
 
@@ -581,13 +584,30 @@ class TimerCog(LionCog):
         """
         return self.timers[guildid]
 
-    def get_channel_timer(self, channelid: int) -> Optional[Timer]:
+    # --- AI-REPLACED (2026-03-27) ---
+    # Reason: bot.get_channel() can miss the Discord cache, returning None even when
+    #   the timer exists in self.timers. This caused false negatives allowing duplicate INSERTs.
+    # What the new code does better: accepts an optional guild_id to bypass the unreliable cache lookup.
+    # --- Original code (commented out for rollback) ---
+    # def get_channel_timer(self, channelid: int) -> Optional[Timer]:
+    #     """
+    #     Get the timer bound to the given channel, or None if it does not exist.
+    #     """
+    #     channel = self.bot.get_channel(channelid)
+    #     if channel:
+    #         return self.timers[channel.guild.id].get(channelid, None)
+    # --- End original code ---
+    def get_channel_timer(self, channelid: int, guild_id: int = None) -> Optional[Timer]:
         """
         Get the timer bound to the given channel, or None if it does not exist.
         """
+        if guild_id is not None:
+            return self.timers[guild_id].get(channelid, None)
         channel = self.bot.get_channel(channelid)
         if channel:
             return self.timers[channel.guild.id].get(channelid, None)
+        return None
+    # --- END AI-REPLACED ---
 
     async def create_timer(self, **kwargs):
         timer_data = await self.data.Timer.create(**kwargs)
@@ -660,7 +680,10 @@ class TimerCog(LionCog):
                 )
 
         if channel is not None:
-            timer = self.get_channel_timer(channel.id)
+            # --- AI-MODIFIED (2026-03-27) ---
+            # Purpose: Pass guild_id to bypass unreliable bot.get_channel cache lookup
+            timer = self.get_channel_timer(channel.id, guild_id=channel.guild.id)
+            # --- END AI-MODIFIED ---
             if timer is None:
                 error = discord.Embed(
                     colour=discord.Colour.brand_red(),
@@ -953,7 +976,10 @@ class TimerCog(LionCog):
         if not channel:
             # Already handled the creation error
             pass
-        elif (self.get_channel_timer(channel.id)) is not None:
+        # --- AI-MODIFIED (2026-03-27) ---
+        # Purpose: Pass guild_id to bypass unreliable bot.get_channel cache lookup
+        elif (self.get_channel_timer(channel.id, guild_id=channel.guild.id)) is not None:
+        # --- END AI-MODIFIED ---
             # A timer already exists in the resolved channel
             embed = discord.Embed(
                 colour=discord.Colour.brand_red(),
@@ -1008,16 +1034,50 @@ class TimerCog(LionCog):
             # Permission checks and input checking done
             await ctx.interaction.response.defer(thinking=True)
 
-            # --- AI-MODIFIED (2026-03-22) ---
-            # Purpose: Catch DB-level duplicate key if timer exists in DB but not in memory
+            # --- AI-MODIFIED (2026-03-27) ---
+            # Purpose: Catch DB-level duplicate key if timer exists in DB but not in memory,
+            #   and recover state by loading the orphan timer into self.timers
+            # What the new code does better: after catching UniqueViolation, fetches the
+            #   existing timer from DB and loads it into memory so /pomodoro edit works
+            # --- Original code (commented out for rollback) ---
+            # # --- AI-MODIFIED (2026-03-22) ---
+            # try:
+            #     timer = await self.create_timer(**create_args)
+            # except psycopg.errors.UniqueViolation:
+            #     logger.warning(
+            #         "UniqueViolation creating timer for channel %s (guild %s) -- already exists in DB",
+            #         channel.id, channel.guild.id
+            #     )
+            #     embed = discord.Embed(
+            #         colour=discord.Colour.brand_red(),
+            #         description=t(_p(
+            #             'cmd:pomodoro_create|add_timer|error:timer_exists',
+            #             "A timer already exists in {channel}! "
+            #             "Reconfigure it with {edit_cmd}."
+            #         )).format(
+            #             channel=channel.mention,
+            #             edit_cmd=self.bot.core.mention_cmd('pomodoro edit')
+            #         )
+            #     )
+            #     await ctx.interaction.followup.send(embed=embed, ephemeral=True)
+            #     return
+            # # --- END AI-MODIFIED ---
+            # --- End original code ---
             try:
-                # Create timer
                 timer = await self.create_timer(**create_args)
             except psycopg.errors.UniqueViolation:
                 logger.warning(
                     "UniqueViolation creating timer for channel %s (guild %s) -- already exists in DB",
                     channel.id, channel.guild.id
                 )
+                try:
+                    existing = await self.data.Timer.fetch_where(channelid=channel.id)
+                    if existing:
+                        await self._load_timers(existing)
+                except Exception:
+                    logger.warning(
+                        "Failed to recover orphan timer for channel %s", channel.id, exc_info=True
+                    )
                 embed = discord.Embed(
                     colour=discord.Colour.brand_red(),
                     description=t(_p(
@@ -1072,7 +1132,10 @@ class TimerCog(LionCog):
             return
 
         # Check the timer actually exists
-        timer = self.get_channel_timer(channel.id)
+        # --- AI-MODIFIED (2026-03-27) ---
+        # Purpose: Pass guild_id to bypass unreliable bot.get_channel cache lookup
+        timer = self.get_channel_timer(channel.id, guild_id=channel.guild.id)
+        # --- END AI-MODIFIED ---
         if timer is None:
             embed = discord.Embed(
                 colour=discord.Colour.brand_red(),
@@ -1165,7 +1228,10 @@ class TimerCog(LionCog):
             return
 
         # Check the timer actually exists
-        timer = self.get_channel_timer(channel.id)
+        # --- AI-MODIFIED (2026-03-27) ---
+        # Purpose: Pass guild_id to bypass unreliable bot.get_channel cache lookup
+        timer = self.get_channel_timer(channel.id, guild_id=channel.guild.id)
+        # --- END AI-MODIFIED ---
         if timer is None:
             embed = discord.Embed(
                 colour=discord.Colour.brand_red(),

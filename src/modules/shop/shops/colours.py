@@ -1235,22 +1235,42 @@ class ColourStore(Store):
 
     async def refresh_layout(self):
         await self.select_colour_refresh()
-        # --- AI-MODIFIED (2026-03-17) ---
-        # Purpose: Added web link button to view shop on website
+        # --- AI-MODIFIED (2026-03-27) ---
+        # Purpose: Chunk buttons into rows of max 5 to prevent Discord overflow
+        # What the new code does better: splits buttons across multiple rows
+        #   instead of packing all into one row which crashes with >5 width
+        # --- Original code (commented out for rollback) ---
+        # # --- AI-MODIFIED (2026-03-17) ---
+        # _web = discord.ui.Button(
+        #     label="Shop on Web", emoji="🌐",
+        #     url=f"{WEBSITE_URL}/dashboard/servers/{self.shop.customer.guildid}/shop",
+        #     style=discord.ButtonStyle.link,
+        # )
+        # if self.page_count > 1:
+        #     buttons = (self.prev_page_button, *self.store_row, _web, self.next_page_button)
+        # else:
+        #     buttons = (*self.store_row, _web)
+        # # --- END AI-MODIFIED ---
+        # if not self.select_colour.options:
+        #     self._layout = [buttons]
+        # else:
+        #     self._layout = [(self.select_colour,), buttons]
+        # --- End original code ---
         _web = discord.ui.Button(
             label="Shop on Web", emoji="🌐",
             url=f"{WEBSITE_URL}/dashboard/servers/{self.shop.customer.guildid}/shop",
             style=discord.ButtonStyle.link,
         )
         if self.page_count > 1:
-            buttons = (self.prev_page_button, *self.store_row, _web, self.next_page_button)
+            all_buttons = (self.prev_page_button, *self.store_row, _web, self.next_page_button)
         else:
-            buttons = (*self.store_row, _web)
-        # --- END AI-MODIFIED ---
+            all_buttons = (*self.store_row, _web)
+        button_rows = self._chunk_buttons(all_buttons)
         if not self.select_colour.options:
-            self._layout = [buttons]
+            self._layout = [*button_rows]
         else:
-            self._layout = [(self.select_colour,), buttons]
+            self._layout = [(self.select_colour,), *button_rows]
+        # --- END AI-MODIFIED ---
 
     async def make_message(self) -> MessageArgs:
         t = self.shop.bot.translator.t

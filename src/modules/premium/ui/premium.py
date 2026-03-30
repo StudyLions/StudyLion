@@ -90,7 +90,7 @@ class PremiumUI(MessageUI):
             "to unlock exclusive features!\n\n"
             "- **Rebranding:** Customizable HEX colours and"
             " **beautiful premium skins** for all of your community members!\n"
-            "- **Remove the vote and sponsor prompt!**\n"
+            "- **Remove the vote prompt!**\n"
             "- **Ambient Sounds**, **Sticky Messages**, **Leaderboard Auto-Post**\n"
             "- **LionGotchi bonuses:** +15% Gold & +15% Drop rates for all members\n\n"
             "**Pricing:**\n"

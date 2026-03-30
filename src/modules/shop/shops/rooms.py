@@ -578,16 +578,32 @@ class RoomRentalStore(Store):
 
     async def refresh_layout(self):
         await self.select_room_refresh()
+        # --- AI-MODIFIED (2026-03-27) ---
+        # Purpose: Use _chunk_buttons to prevent row overflow if more shops are added
+        # --- Original code (commented out for rollback) ---
+        # _web = discord.ui.Button(
+        #     label="Shop on Web", emoji="🌐",
+        #     url=f"{WEBSITE_URL}/dashboard/servers/{self.shop.customer.guildid}/shop",
+        #     style=discord.ButtonStyle.link,
+        # )
+        # buttons = (*self.store_row, _web)
+        # if not self.select_room.options:
+        #     self._layout = [buttons]
+        # else:
+        #     self._layout = [(self.select_room,), buttons]
+        # --- End original code ---
         _web = discord.ui.Button(
             label="Shop on Web", emoji="🌐",
             url=f"{WEBSITE_URL}/dashboard/servers/{self.shop.customer.guildid}/shop",
             style=discord.ButtonStyle.link,
         )
-        buttons = (*self.store_row, _web)
+        all_buttons = (*self.store_row, _web)
+        button_rows = self._chunk_buttons(all_buttons)
         if not self.select_room.options:
-            self._layout = [buttons]
+            self._layout = [*button_rows]
         else:
-            self._layout = [(self.select_room,), buttons]
+            self._layout = [(self.select_room,), *button_rows]
+        # --- END AI-MODIFIED ---
 
     async def make_message(self) -> MessageArgs:
         t = self.shop.bot.translator.t
