@@ -18,6 +18,10 @@ active = [
     '.member_admin',
     '.moderation',
     '.video_channels',
+    # --- AI-MODIFIED (2026-03-31) ---
+    # Purpose: Screen share enforcement module (mirrors video_channels for self_stream)
+    '.screen_channels',
+    # --- END AI-MODIFIED ---
     '.meta',
     # --- AI-MODIFIED (2026-03-15) ---
     # Purpose: Disabled sponsor module per owner request
@@ -41,6 +45,10 @@ active = [
     # --- AI-MODIFIED (2026-03-22) ---
     # Purpose: Sticky messages premium feature (dashboard-only config)
     '.sticky_messages',
+    # --- END AI-MODIFIED ---
+    # --- AI-MODIFIED (2026-03-31) ---
+    # Purpose: Shared kanban boards (collaborative task lists)
+    '.shared_tasklist',
     # --- END AI-MODIFIED ---
 ]
 

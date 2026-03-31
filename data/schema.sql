@@ -1520,4 +1520,120 @@ CREATE TABLE sticky_messages(
 -- --- END AI-MODIFIED ---
 -- }}}
 
+-- Shared Tasklist (Kanban Boards) {{{
+-- --- AI-GENERATED (2026-03-31) ---
+-- Purpose: Collaborative kanban-style task boards with columns, members, and audit history
+
+CREATE TABLE shared_tasklist(
+  listid SERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  description TEXT,
+  ownerid BIGINT NOT NULL,
+  color TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW(),
+  deleted_at TIMESTAMPTZ
+);
+CREATE INDEX shared_tasklist_owners ON shared_tasklist (ownerid);
+ALTER TABLE shared_tasklist
+  ADD CONSTRAINT fk_shared_tasklist_owner
+  FOREIGN KEY (ownerid)
+  REFERENCES user_config (userid)
+  ON DELETE CASCADE
+  NOT VALID;
+
+CREATE TABLE shared_tasklist_column(
+  columnid SERIAL PRIMARY KEY,
+  listid INTEGER NOT NULL,
+  name TEXT NOT NULL,
+  position INTEGER NOT NULL,
+  color TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+CREATE INDEX shared_tasklist_column_lists ON shared_tasklist_column (listid);
+ALTER TABLE shared_tasklist_column
+  ADD CONSTRAINT fk_shared_tasklist_column_list
+  FOREIGN KEY (listid)
+  REFERENCES shared_tasklist (listid)
+  ON DELETE CASCADE
+  NOT VALID;
+
+CREATE TABLE shared_tasklist_member(
+  listid INTEGER NOT NULL,
+  userid BIGINT NOT NULL,
+  role TEXT NOT NULL DEFAULT 'viewer',
+  joined_at TIMESTAMPTZ DEFAULT NOW(),
+  invited_by BIGINT,
+  PRIMARY KEY (listid, userid)
+);
+CREATE INDEX shared_tasklist_member_users ON shared_tasklist_member (userid);
+ALTER TABLE shared_tasklist_member
+  ADD CONSTRAINT fk_shared_tasklist_member_list
+  FOREIGN KEY (listid)
+  REFERENCES shared_tasklist (listid)
+  ON DELETE CASCADE
+  NOT VALID;
+ALTER TABLE shared_tasklist_member
+  ADD CONSTRAINT fk_shared_tasklist_member_user
+  FOREIGN KEY (userid)
+  REFERENCES user_config (userid)
+  ON DELETE CASCADE
+  NOT VALID;
+
+CREATE TABLE shared_task(
+  taskid SERIAL PRIMARY KEY,
+  listid INTEGER NOT NULL,
+  columnid INTEGER,
+  content TEXT NOT NULL,
+  description TEXT,
+  position INTEGER NOT NULL DEFAULT 0,
+  color TEXT,
+  assignee_id BIGINT,
+  created_by BIGINT NOT NULL,
+  completed_at TIMESTAMPTZ,
+  deleted_at TIMESTAMPTZ,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  last_updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+CREATE INDEX shared_task_lists ON shared_task (listid);
+CREATE INDEX shared_task_columns ON shared_task (columnid);
+ALTER TABLE shared_task
+  ADD CONSTRAINT fk_shared_task_list
+  FOREIGN KEY (listid)
+  REFERENCES shared_tasklist (listid)
+  ON DELETE CASCADE
+  NOT VALID;
+ALTER TABLE shared_task
+  ADD CONSTRAINT fk_shared_task_column
+  FOREIGN KEY (columnid)
+  REFERENCES shared_tasklist_column (columnid)
+  ON DELETE SET NULL
+  NOT VALID;
+ALTER TABLE shared_task
+  ADD CONSTRAINT fk_shared_task_assignee
+  FOREIGN KEY (assignee_id)
+  REFERENCES user_config (userid)
+  ON DELETE SET NULL
+  NOT VALID;
+
+CREATE TABLE shared_task_history(
+  historyid SERIAL PRIMARY KEY,
+  listid INTEGER NOT NULL,
+  taskid INTEGER,
+  userid BIGINT NOT NULL,
+  action TEXT NOT NULL,
+  details JSONB,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+CREATE INDEX shared_task_history_lists ON shared_task_history (listid, created_at DESC);
+ALTER TABLE shared_task_history
+  ADD CONSTRAINT fk_shared_task_history_list
+  FOREIGN KEY (listid)
+  REFERENCES shared_tasklist (listid)
+  ON DELETE CASCADE
+  NOT VALID;
+
+-- --- END AI-GENERATED ---
+-- }}}
+
 -- vim: set fdm=marker:
