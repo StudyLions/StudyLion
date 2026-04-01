@@ -28,7 +28,10 @@ from .room import Room
 from .lib import ROOM_DASHBOARD_URL, ROOM_ADMIN_URL_TEMPLATE
 # --- END AI-MODIFIED ---
 from .roomui import RoomUI
-from .lib import parse_members, owner_overwrite, member_overwrite, bot_overwrite
+# --- AI-MODIFIED (2026-04-01) ---
+# Purpose: Import mod_role_overwrite for room moderator role feature
+from .lib import parse_members, owner_overwrite, member_overwrite, bot_overwrite, mod_role_overwrite
+# --- END AI-MODIFIED ---
 
 _p, _np = babel._p, babel._np
 
@@ -237,6 +240,52 @@ class RoomCog(LionCog):
                     "Unhandled exception updating private room visibility!"
                 )
 
+    # --- AI-MODIFIED (2026-04-01) ---
+    # Purpose: Update all active rooms when the room moderator role setting changes
+    @LionCog.listener('on_guildset_rooms_role')
+    @log_wrap(action='Update Rooms Moderator Role')
+    async def _update_rooms_role(self, guildid: int, setting: RoomSettings.RentingRole):
+        """
+        Update the mod role override on each room when the renting_role setting changes.
+        Detects old mod role overwrites by matching the mod_role_overwrite permission pair,
+        removes them, and adds the new role's overwrite if set.
+        """
+        new_role_id = setting.data
+        guild = self.bot.get_guild(guildid)
+        if not guild:
+            return
+
+        new_role = guild.get_role(new_role_id) if new_role_id else None
+        expected_pair = mod_role_overwrite.pair()
+
+        tasks = []
+        for room in list(self._room_cache[guildid].values()):
+            if not room.channel:
+                continue
+            for target, ow in room.channel.overwrites.items():
+                if not isinstance(target, discord.Role):
+                    continue
+                if target == guild.default_role:
+                    continue
+                if new_role and target.id == new_role.id:
+                    continue
+                if ow.pair() == expected_pair:
+                    tasks.append(
+                        room.channel.set_permissions(target, overwrite=None)
+                    )
+            if new_role:
+                tasks.append(
+                    room.channel.set_permissions(new_role, overwrite=mod_role_overwrite)
+                )
+        if tasks:
+            try:
+                await asyncio.gather(*tasks)
+            except Exception:
+                logger.exception(
+                    "Unhandled exception updating private room moderator role!"
+                )
+    # --- END AI-MODIFIED ---
+
     # ----- Room API -----
     @log_wrap(action="Create Room")
     async def create_private_room(self,
@@ -264,6 +313,15 @@ class RoomCog(LionCog):
         }
         for member in members:
             overwrites[member] = member_overwrite
+
+        # --- AI-MODIFIED (2026-04-01) ---
+        # Purpose: Add room moderator role overwrite if configured
+        renting_role_id = lguild.config.get(RoomSettings.RentingRole.setting_id).data
+        if renting_role_id:
+            renting_role = guild.get_role(renting_role_id)
+            if renting_role:
+                overwrites[renting_role] = mod_role_overwrite
+        # --- END AI-MODIFIED ---
 
         # Create channel
         try:
@@ -1255,6 +1313,101 @@ class RoomCog(LionCog):
             )
     # --- END AI-MODIFIED ---
 
+    # --- AI-MODIFIED (2026-04-01) ---
+    # Purpose: Add /room delete command so owners can close their own rooms and get a coin refund
+    @room_group.command(
+        name=_p('cmd:room_delete', "delete"),
+        description=_p(
+            'cmd:room_delete|desc',
+            "Permanently close your private room. Remaining balance is refunded."
+        )
+    )
+    async def room_delete_cmd(self, ctx: LionContext):
+        t = self.bot.translator.t
+        if not ctx.guild or not ctx.interaction:
+            return
+
+        await ctx.interaction.response.defer(thinking=True, ephemeral=True)
+
+        room = self.get_owned_room(ctx.guild.id, ctx.author.id)
+        if room is None:
+            await ctx.reply(
+                embed=error_embed(t(_p(
+                    'cmd:room_delete|error:no_room',
+                    "You don't own a private room in this server!"
+                ))),
+                ephemeral=True
+            )
+            return
+
+        balance = room.data.coin_balance
+        coin = self.bot.config.emojis.coin
+
+        confirm_embed = discord.Embed(
+            colour=discord.Colour.brand_red(),
+            title=t(_p(
+                'cmd:room_delete|confirm|title',
+                "Delete Private Room?"
+            )),
+            description=t(_p(
+                'cmd:room_delete|confirm|desc',
+                "Are you sure you want to permanently close your private room?\n\n"
+                "**This cannot be undone.** The voice channel will be deleted "
+                "and all members will lose access.\n\n"
+                "Remaining balance: {coin}**{balance}** (will be refunded to you)"
+            )).format(coin=coin, balance=balance)
+        )
+        try:
+            result = await Confirm(confirm_embed, ephemeral=True).ask(
+                ctx.interaction.followup.send, args=(ctx.author.id,), timeout=30
+            )
+        except ResponseTimedOut:
+            return
+
+        if not result:
+            return
+
+        if balance > 0:
+            await ctx.alion.data.update(coins=CoreData.Member.coins + balance)
+
+        room.lguild.log_event(
+            title=t(_p(
+                'room|eventlog|event:room_owner_deleted|title',
+                "Private Room Closed by Owner"
+            )),
+            description=t(_p(
+                'room|eventlog|event:room_owner_deleted|desc',
+                "{owner} closed their private room. {coin}**{balance}** was refunded."
+            )).format(
+                owner=f"<@{ctx.author.id}>",
+                coin=coin,
+                balance=balance,
+            ),
+            fields=room.eventlog_fields()
+        )
+
+        await room.destroy(reason="Owner deleted room")
+
+        await ctx.reply(
+            embed=discord.Embed(
+                colour=discord.Colour.brand_green(),
+                description=t(_p(
+                    'cmd:room_delete|success',
+                    "Your private room has been closed.{refund_msg}"
+                )).format(
+                    refund_msg=(
+                        " " + t(_p(
+                            'cmd:room_delete|success:refund',
+                            "{coin}**{balance}** has been refunded to your wallet."
+                        )).format(coin=coin, balance=balance)
+                        if balance > 0 else ""
+                    )
+                )
+            ),
+            ephemeral=True
+        )
+    # --- END AI-MODIFIED ---
+
     # ----- Guild Configuration -----
     @LionCog.placeholder_group
     @cmds.hybrid_group('configure', with_app_commands=False)
@@ -1272,11 +1425,15 @@ class RoomCog(LionCog):
         **{setting.setting_id: setting._desc for setting in RoomSettings.model_settings}
     )
     @high_management_ward
+    # --- AI-MODIFIED (2026-04-01) ---
+    # Purpose: Add rooms_role parameter for configuring room moderator role
     async def configure_rooms_cmd(self, ctx: LionContext,
                                   rooms_category: Optional[discord.CategoryChannel] = None,
                                   rooms_price: Optional[Range[int, 0, MAX_COINS]] = None,
                                   rooms_slots: Optional[Range[int, 1, MAX_COINS]] = None,
-                                  rooms_visible: Optional[bool] = None):
+                                  rooms_visible: Optional[bool] = None,
+                                  rooms_role: Optional[discord.Role] = None):
+    # --- END AI-MODIFIED ---
         # t = self.bot.translator.t
 
         # Type checking guards
@@ -1288,12 +1445,16 @@ class RoomCog(LionCog):
         # TODO: Value verification on the category channel for permissions
         await ctx.interaction.response.defer(thinking=True)
 
+        # --- AI-MODIFIED (2026-04-01) ---
+        # Purpose: Include rooms_role in the provided settings dict
         provided = {
             'rooms_category': rooms_category,
             'rooms_price': rooms_price,
             'rooms_slots': rooms_slots,
-            'rooms_visible': rooms_visible
+            'rooms_visible': rooms_visible,
+            'rooms_role': rooms_role,
         }
+        # --- END AI-MODIFIED ---
         modified = {(sid, val) for sid, val in provided.items() if val is not None}
         if modified:
             lines = []

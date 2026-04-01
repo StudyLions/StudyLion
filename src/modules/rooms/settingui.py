@@ -2,7 +2,10 @@ import asyncio
 
 import discord
 from discord.ui.button import button, Button, ButtonStyle
-from discord.ui.select import select, ChannelSelect
+# --- AI-MODIFIED (2026-04-01) ---
+# Purpose: Import RoleSelect for room moderator role config
+from discord.ui.select import select, ChannelSelect, RoleSelect
+# --- END AI-MODIFIED ---
 
 from meta import LionBot
 
@@ -56,6 +59,24 @@ class RoomSettingUI(ConfigUI):
         setting = next(inst for inst in self.instances if inst.setting_id == RoomSettings.Visible.setting_id)
         button.style = ButtonStyle.green if setting.value else ButtonStyle.grey
 
+    # --- AI-MODIFIED (2026-04-01) ---
+    # Purpose: Add role select for configuring room moderator role
+    @select(cls=RoleSelect, min_values=0, max_values=1,
+            placeholder='ROLE_PLACEHOLDER')
+    async def role_menu(self, selection: discord.Interaction, selected: RoleSelect):
+        await selection.response.defer()
+        setting = next(inst for inst in self.instances if inst.setting_id == RoomSettings.RentingRole.setting_id)
+        await setting.interaction_check(setting.parent_id, selection)
+        setting.value = selected.values[0] if selected.values else None
+        await setting.write()
+
+    async def role_menu_refresh(self):
+        self.role_menu.placeholder = self.bot.translator.t(_p(
+            'ui:room_config|menu:role|placeholder',
+            "Select Room Moderator Role"
+        ))
+    # --- END AI-MODIFIED ---
+
     # ----- UI Flow -----
     async def make_message(self) -> MessageArgs:
         t = self.bot.translator.t
@@ -81,8 +102,24 @@ class RoomSettingUI(ConfigUI):
         )
 
     async def refresh_components(self):
+        # --- AI-MODIFIED (2026-04-01) ---
+        # Purpose: Include role_menu in config panel refresh and layout
+        # --- Original code (commented out for rollback) ---
+        # await asyncio.gather(
+        #     self.category_menu_refresh(),
+        #     self.visible_button_refresh(),
+        #     self.edit_button_refresh(),
+        #     self.close_button_refresh(),
+        #     self.reset_button_refresh(),
+        # )
+        # self.set_layout(
+        #     (self.category_menu,),
+        #     (self.visible_button, self.edit_button, self.reset_button, self.close_button)
+        # )
+        # --- End original code ---
         await asyncio.gather(
             self.category_menu_refresh(),
+            self.role_menu_refresh(),
             self.visible_button_refresh(),
             self.edit_button_refresh(),
             self.close_button_refresh(),
@@ -90,8 +127,10 @@ class RoomSettingUI(ConfigUI):
         )
         self.set_layout(
             (self.category_menu,),
+            (self.role_menu,),
             (self.visible_button, self.edit_button, self.reset_button, self.close_button)
         )
+        # --- END AI-MODIFIED ---
 
 
 class RoomDashboard(DashboardSection):

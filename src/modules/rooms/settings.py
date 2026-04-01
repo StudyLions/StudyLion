@@ -1,6 +1,6 @@
 from settings import ModelData
 from settings.groups import SettingGroup
-from settings.setting_types import ChannelSetting, IntegerSetting, BoolSetting
+from settings.setting_types import ChannelSetting, IntegerSetting, BoolSetting, RoleSetting
 
 from meta import conf
 from core.data import CoreData
@@ -202,9 +202,69 @@ class RoomSettings(SettingGroup):
                 "{cmd} or toggle below."
             )).format(cmd=cmdstr)
 
+    # --- AI-MODIFIED (2026-04-01) ---
+    # Purpose: Add RentingRole setting so admins can assign a mod role that auto-gets perms on private rooms
+    class RentingRole(ModelData, RoleSetting):
+        setting_id = 'rooms_role'
+        _event = 'guildset_rooms_role'
+        _set_cmd = 'admin config rooms'
+        _write_ward = high_management_iward
+
+        _display_name = _p(
+            'guildset:rooms_role', "room_moderator_role"
+        )
+        _desc = _p(
+            'guildset:rooms_role|desc',
+            "Role that automatically gets moderation permissions in private rooms."
+        )
+        _long_desc = _p(
+            'guildset:rooms_role|long_desc',
+            "When set, this role will automatically receive permissions to "
+            "view, connect, and send messages in every private room. "
+            "This allows moderators to oversee private channels without needing an invite. "
+            "Changing this setting will update all existing active rooms."
+        )
+        _accepts = _p(
+            'guildset:rooms_role|accepts',
+            "Room moderator role name or id."
+        )
+        _default = None
+
+        _model = CoreData.Guild
+        _column = CoreData.Guild.renting_role.name
+
+        @property
+        def update_message(self) -> str:
+            t = ctx_translator.get().t
+            value = self.value
+            if value:
+                resp = t(_p(
+                    'guildset:rooms_role|set_response:set',
+                    "{role} will now automatically have moderation access to all private rooms."
+                )).format(role=value.mention)
+            else:
+                resp = t(_p(
+                    'guildset:rooms_role|set_response:unset',
+                    "No role will have automatic access to private rooms."
+                ))
+            return resp
+
+        @classmethod
+        def _format_data(cls, parent_id, data, **kwargs):
+            t = ctx_translator.get().t
+            if data is not None:
+                return super()._format_data(parent_id, data, **kwargs)
+            else:
+                return t(_p(
+                    'guildset:rooms_role|formatted:unset',
+                    "Not Set."
+                ))
+    # --- END AI-MODIFIED ---
+
     model_settings = (
         Category,
         Rent,
         MemberLimit,
         Visible,
+        RentingRole,
     )

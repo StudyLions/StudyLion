@@ -6,11 +6,17 @@ from discord.ui.button import button, Button, ButtonStyle
 from discord.ui.select import select, UserSelect
 
 from meta import LionBot, conf
-from meta.errors import UserInputError
+# --- AI-MODIFIED (2026-04-01) ---
+# Purpose: Import ResponseTimedOut for delete room confirmation flow
+from meta.errors import UserInputError, ResponseTimedOut
+# --- END AI-MODIFIED ---
 from meta.logger import log_wrap
 from babel.translator import ctx_locale
 from utils.lib import utc_now, MessageArgs, error_embed
-from utils.ui import MessageUI, input
+# --- AI-MODIFIED (2026-04-01) ---
+# Purpose: Import Confirm for delete room confirmation dialog
+from utils.ui import MessageUI, input, Confirm
+# --- END AI-MODIFIED ---
 from core.data import CoreData
 
 from modules.pomodoro.ui import TimerOptionsUI, TimerEditor
@@ -286,6 +292,65 @@ class RoomUI(MessageUI):
     async def close_button_refresh(self):
         pass
 
+    # --- AI-MODIFIED (2026-04-01) ---
+    # Purpose: Add "Delete Room" button so owners can close their room from the control panel
+    @button(label='DELETE_PLACEHOLDER', style=ButtonStyle.red)
+    async def delete_room_button(self, press: discord.Interaction, pressed: Button):
+        if not await self.owner_ward(press):
+            return
+
+        t = self.bot.translator.t
+        balance = self.room.data.coin_balance
+        coin = conf.emojis.coin
+
+        confirm_msg = t(_p(
+            'ui:room_status|button:delete_room|confirm',
+            "Are you sure you want to permanently close your private room?\n\n"
+            "**This cannot be undone.** The voice channel will be deleted "
+            "and all members will lose access.\n\n"
+            "Remaining balance: {coin}**{balance}** (will be refunded to you)"
+        )).format(coin=coin, balance=balance)
+
+        confirm = Confirm(confirm_msg, press.user.id)
+        try:
+            result = await confirm.ask(press, ephemeral=True)
+        except ResponseTimedOut:
+            return
+
+        if not result:
+            return
+
+        if balance > 0:
+            from core.data import CoreData
+            lmember = await self.bot.core.lions.fetch_member(self.room.data.guildid, press.user.id)
+            await lmember.data.update(coins=CoreData.Member.coins + balance)
+
+        self.room.lguild.log_event(
+            title=t(_p(
+                'room|eventlog|event:room_owner_deleted|title',
+                "Private Room Closed by Owner"
+            )),
+            description=t(_p(
+                'room|eventlog|event:room_owner_deleted|desc',
+                "{owner} closed their private room. {coin}**{balance}** was refunded."
+            )).format(
+                owner=f"<@{press.user.id}>",
+                coin=coin,
+                balance=balance,
+            ),
+            fields=self.room.eventlog_fields()
+        )
+
+        await self.room.destroy(reason="Owner deleted room via UI")
+        await self.quit()
+
+    async def delete_room_button_refresh(self):
+        self.delete_room_button.label = self.bot.translator.t(_p(
+            'ui:room_status|button:delete_room|label',
+            "Delete Room"
+        ))
+    # --- END AI-MODIFIED ---
+
     @select(cls=UserSelect, placeholder="INVITE_PLACEHOLDER", min_values=0, max_values=25)
     async def invite_menu(self, selection: discord.Interaction, selected: UserSelect):
         if not await self.owner_ward(selection):
@@ -451,26 +516,41 @@ class RoomUI(MessageUI):
         # --- END AI-MODIFIED ---
         if self._callerid == self.room.data.ownerid:
             # If the owner called, show full config UI
+            # --- AI-MODIFIED (2026-04-01) ---
+            # Purpose: Add delete_room_button refresh to owner layout
+            # --- Original code (commented out for rollback) ---
+            # await asyncio.gather(
+            #     self.desposit_button_refresh(),
+            #     # self.edit_button_refresh(),
+            #     self.refresh_button_refresh(),
+            #     self.close_button_refresh(),
+            #     self.timer_button_refresh(),
+            #     self.invite_menu_refresh(),
+            #     self.kick_menu_refresh()
+            # )
+            # --- End original code ---
             await asyncio.gather(
                 self.desposit_button_refresh(),
-                # self.edit_button_refresh(),
                 self.refresh_button_refresh(),
                 self.close_button_refresh(),
                 self.timer_button_refresh(),
+                self.delete_room_button_refresh(),
                 self.invite_menu_refresh(),
                 self.kick_menu_refresh()
             )
-            # --- AI-MODIFIED (2026-03-22) ---
-            # Purpose: Include dashboard link button in owner layout
+            # --- END AI-MODIFIED ---
+            # --- AI-MODIFIED (2026-04-01) ---
+            # Purpose: Include delete_room_button and dashboard link in owner layout
             # --- Original code (commented out for rollback) ---
             # self.set_layout(
-            #     (self.desposit_button, self.timer_button, self.refresh_button, self.close_button),
+            #     (self.desposit_button, self.timer_button, dashboard_link, self.refresh_button, self.close_button),
             #     (self.invite_menu, ),
             #     (self.kick_menu, )
             # )
             # --- End original code ---
             self.set_layout(
                 (self.desposit_button, self.timer_button, dashboard_link, self.refresh_button, self.close_button),
+                (self.delete_room_button,),
                 (self.invite_menu, ),
                 (self.kick_menu, )
             )

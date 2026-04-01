@@ -42,3 +42,13 @@ owner_overwrite.update(
     move_members=True,
 )
 bot_overwrite = discord.PermissionOverwrite.from_pair(*owner_overwrite.pair())
+
+# --- AI-MODIFIED (2026-04-01) ---
+# Purpose: Overwrite for the admin-configured room moderator role (view, connect, send msgs)
+mod_role_overwrite = discord.PermissionOverwrite(
+    view_channel=True,
+    connect=True,
+    send_messages=True,
+    read_message_history=True,
+)
+# --- END AI-MODIFIED ---
