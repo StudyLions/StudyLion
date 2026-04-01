@@ -17,6 +17,12 @@ import discord
 from discord.ext import commands as cmds
 from discord import app_commands as appcmds
 
+# --- AI-MODIFIED (2026-04-01) ---
+# Purpose: Add Babel localization for text branding support
+from . import babel
+_p = babel._p
+# --- END AI-MODIFIED ---
+
 from meta import LionBot, LionCog, LionContext, conf, WEBSITE_URL
 from .data import (
     LionGotchiData, LGExpression, LGEquipmentSlot, LGItemSource,
@@ -63,7 +69,13 @@ BATHE_COOLDOWN_SECONDS = 120
 SLEEP_COOLDOWN_SECONDS = 120
 NEEDS_DECAY_INTERVAL_HOURS = 6
 NEEDS_DECAY_AMOUNT = 1
-PET_WARNING_COOLDOWN_SECONDS = 4 * 3600
+# --- AI-MODIFIED (2026-04-01) ---
+# Purpose: Reduce pet warning spam -- once per week instead of every 4 hours
+# --- Original code (commented out for rollback) ---
+# PET_WARNING_COOLDOWN_SECONDS = 4 * 3600
+# --- End original code ---
+PET_WARNING_COOLDOWN_SECONDS = 7 * 24 * 3600
+# --- END AI-MODIFIED ---
 # --- END AI-REPLACED ---
 
 # --- AI-MODIFIED (2026-03-16) ---
@@ -131,73 +143,85 @@ async def _db_exec(bot, query: str, *args):
 # --- End original code ---
 ONBOARDING_PAGES = [
     {
-        'title': '\U0001F981 Welcome to LionGotchi!',
+        'title': _p('onboard:page1|title', '\U0001F981 Welcome to LionGotchi!'),
         'color': 0xffd700,
         'gif_key': 'welcome',
-        'description': (
-            "**LionGotchi** is your virtual pet that grows alongside "
-            "your study journey!\n\n"
-            "\U0001F43E **Adopt a pet** \u2014 name it, care for it, watch it level up\n"
-            "\u2694\uFE0F **Earn equipment** \u2014 gear drops while you study and chat\n"
-            "\U0001F331 **Grow a farm** \u2014 plant seeds, harvest rare crops\n"
-            "\U0001F3E0 **Customize a room** \u2014 furniture, themes, and trophies\n"
-            "\U0001F4B0 **Trade with others** \u2014 buy and sell on the marketplace\n\n"
-            "The more you study, the more you earn. Let's show you!"
+        'description': _p(
+            'onboard:page1|desc',
+            (
+                "**LionGotchi** is your virtual pet that grows alongside "
+                "your study journey!\n\n"
+                "\U0001F43E **Adopt a pet** \u2014 name it, care for it, watch it level up\n"
+                "\u2694\uFE0F **Earn equipment** \u2014 gear drops while you study and chat\n"
+                "\U0001F331 **Grow a farm** \u2014 plant seeds, harvest rare crops\n"
+                "\U0001F3E0 **Customize a room** \u2014 furniture, themes, and trophies\n"
+                "\U0001F4B0 **Trade with others** \u2014 buy and sell on the marketplace\n\n"
+                "The more you study, the more you earn. Let's show you!"
+            ),
         ),
-        'footer': 'Page 1/4',
+        'footer': _p('onboard:page1|footer', 'Page 1/4'),
     },
     {
-        'title': '\U0001F43E Pet Care & Equipment',
+        'title': _p('onboard:page2|title', '\U0001F43E Pet Care & Equipment'),
         'color': 0xff6b6b,
         'gif_key': 'equipment',
-        'description': (
-            "**Care for your pet** \u2014 it has three needs that decay over time:\n"
-            "\U0001F356 Food \u2022 \U0001F9FC Bath \u2022 \U0001F4A4 Sleep\n"
-            "Happy pets earn **more gold and XP** from your study sessions!\n\n"
-            "**Equipment drops** as you chat and study:\n"
-            "\u26AA Common \u2022 \U0001F7E2 Uncommon \u2022 \U0001F535 Rare \u2022 "
-            "\U0001F7E3 Epic \u2022 \U0001F7E0 Legendary \u2022 \U0001F534 Mythical\n\n"
-            "\U0001F6E1\uFE0F Equip gear to **head, face, body, back, and feet**\n"
-            "\U0001F4DC Use scrolls to **enhance** equipment for bigger bonuses\n"
-            f"\u2022 Manage gear: **{WEBSITE_URL}/pet/inventory**"
+        'description': _p(
+            'onboard:page2|desc',
+            (
+                "**Care for your pet** \u2014 it has three needs that decay over time:\n"
+                "\U0001F356 Food \u2022 \U0001F9FC Bath \u2022 \U0001F4A4 Sleep\n"
+                "Happy pets earn **more gold and XP** from your study sessions!\n\n"
+                "**Equipment drops** as you chat and study:\n"
+                "\u26AA Common \u2022 \U0001F7E2 Uncommon \u2022 \U0001F535 Rare \u2022 "
+                "\U0001F7E3 Epic \u2022 \U0001F7E0 Legendary \u2022 \U0001F534 Mythical\n\n"
+                "\U0001F6E1\uFE0F Equip gear to **head, face, body, back, and feet**\n"
+                "\U0001F4DC Use scrolls to **enhance** equipment for bigger bonuses\n"
+                f"\u2022 Manage gear: **{WEBSITE_URL}/pet/inventory**"
+            ),
         ),
-        'footer': 'Page 2/4',
+        'footer': _p('onboard:page2|footer', 'Page 2/4'),
     },
     {
-        'title': '\U0001F331 Farm & Marketplace',
+        'title': _p('onboard:page3|title', '\U0001F331 Farm & Marketplace'),
         'color': 0x2ecc71,
         'gif_key': 'farm',
-        'description': (
-            "**Your Farm** \u2014 15 plots to grow crops!\n"
-            "\U0001FAB4 Plant seeds \u2022 \U0001F4A7 Water daily \u2022 "
-            "\U0001F33E Harvest for gold and bonus drops\n"
-            "Your farm grows automatically as you study and chat.\n\n"
-            "**Marketplace** \u2014 trade with the whole community!\n"
-            "List equipment and scrolls for sale, browse rare items, "
-            "and build your collection.\n\n"
-            "**LionGems** \u2014 earn free gems by voting on top.gg!\n"
-            f"\u2022 Farm: **{WEBSITE_URL}/pet/farm**\n"
-            f"\u2022 Market: **{WEBSITE_URL}/pet/marketplace**"
+        'description': _p(
+            'onboard:page3|desc',
+            (
+                "**Your Farm** \u2014 15 plots to grow crops!\n"
+                "\U0001FAB4 Plant seeds \u2022 \U0001F4A7 Water daily \u2022 "
+                "\U0001F33E Harvest for gold and bonus drops\n"
+                "Your farm grows automatically as you study and chat.\n\n"
+                "**Marketplace** \u2014 trade with the whole community!\n"
+                "List equipment and scrolls for sale, browse rare items, "
+                "and build your collection.\n\n"
+                "**LionGems** \u2014 earn free gems by voting on top.gg!\n"
+                f"\u2022 Farm: **{WEBSITE_URL}/pet/farm**\n"
+                f"\u2022 Market: **{WEBSITE_URL}/pet/marketplace**"
+            ),
         ),
-        'footer': 'Page 3/4',
+        'footer': _p('onboard:page3|footer', 'Page 3/4'),
     },
     {
-        'title': '\U0001F680 Name Your Pet & Get Started!',
+        'title': _p('onboard:page4|title', '\U0001F680 Name Your Pet & Get Started!'),
         'color': 0xffd700,
         'gif_key': None,
-        'description': (
-            "You're ready! Tap **Adopt!** to name your pet and begin.\n\n"
-            "**Quick recap:**\n"
-            "\u2022 `/pet` \u2014 Check on your pet anytime\n"
-            "\u2022 Chat and study \u2014 Equipment drops automatically\n"
-            f"\u2022 **{WEBSITE_URL}/pet** \u2014 Your hub for farming, "
-            "room design, and the marketplace\n"
-            "\u2022 Vote on **top.gg** \u2014 Free gems every 12 hours\n\n"
-            "Your pet's name can be changed later, so don't worry "
-            "about picking the perfect one right now.\n\n"
-            "Good luck, and happy studying! \U0001F981"
+        'description': _p(
+            'onboard:page4|desc',
+            (
+                "You're ready! Tap **Adopt!** to name your pet and begin.\n\n"
+                "**Quick recap:**\n"
+                "\u2022 `/pet` \u2014 Check on your pet anytime\n"
+                "\u2022 Chat and study \u2014 Equipment drops automatically\n"
+                f"\u2022 **{WEBSITE_URL}/pet** \u2014 Your hub for farming, "
+                "room design, and the marketplace\n"
+                "\u2022 Vote on **top.gg** \u2014 Free gems every 12 hours\n\n"
+                "Your pet's name can be changed later, so don't worry "
+                "about picking the perfect one right now.\n\n"
+                "Good luck, and happy studying! \U0001F981"
+            ),
         ),
-        'footer': 'Page 4/4',
+        'footer': _p('onboard:page4|footer', 'Page 4/4'),
     },
 ]
 # --- END AI-REPLACED ---
@@ -227,7 +251,7 @@ class OnboardingView(discord.ui.View):
         self.page = 0
         self._onboarding_gifs: OnboardingGIFs = getattr(cog, '_onboarding_gifs', None)
         self.add_item(discord.ui.Button(
-            label='Learn More', emoji='\U0001F4D6',
+            label=_p('ui:onboard|button:learn_more|label', 'Learn More'), emoji='\U0001F4D6',
             style=discord.ButtonStyle.link,
             url=f'{WEBSITE_URL}/pet', row=1
         ))
@@ -240,7 +264,7 @@ class OnboardingView(discord.ui.View):
             description=data['description'],
             color=data['color']
         )
-        embed.set_footer(text=data['footer'] + f'  \u2022  {WEBSITE_URL}/pet')
+        embed.set_footer(text=f"{data['footer']}  \u2022  {WEBSITE_URL}/pet")
         gif_file = None
         gif_key = data.get('gif_key')
         if gif_key and self._onboarding_gifs:
@@ -258,7 +282,7 @@ class OnboardingView(discord.ui.View):
         self.next_btn.disabled = is_last
         self.adopt_btn.style = discord.ButtonStyle.green
 
-    @discord.ui.button(label='Back', emoji='\u25C0', style=discord.ButtonStyle.grey, row=0)
+    @discord.ui.button(label=_p('ui:onboard|button:back|label', 'Back'), emoji='\u25C0', style=discord.ButtonStyle.grey, row=0)
     async def back_btn(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             return
@@ -271,7 +295,7 @@ class OnboardingView(discord.ui.View):
                 embed=embed, view=self, attachments=attachments
             )
 
-    @discord.ui.button(label='Next', emoji='\u25B6', style=discord.ButtonStyle.blurple, row=0)
+    @discord.ui.button(label=_p('ui:onboard|button:next|label', 'Next'), emoji='\u25B6', style=discord.ButtonStyle.blurple, row=0)
     async def next_btn(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             return
@@ -284,7 +308,7 @@ class OnboardingView(discord.ui.View):
                 embed=embed, view=self, attachments=attachments
             )
 
-    @discord.ui.button(label='Adopt!', emoji='\U0001F43E', style=discord.ButtonStyle.green, row=0)
+    @discord.ui.button(label=_p('ui:onboard|button:adopt|label', 'Adopt!'), emoji='\U0001F43E', style=discord.ButtonStyle.green, row=0)
     async def adopt_btn(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             return
@@ -292,12 +316,12 @@ class OnboardingView(discord.ui.View):
         await interaction.response.send_modal(PetAdoptModal(self.cog))
 # --- END AI-REPLACED ---
 
-class PetAdoptModal(discord.ui.Modal, title="Name Your LionGotchi!"):
+class PetAdoptModal(discord.ui.Modal, title=_p('modal:adopt|title', 'Name Your LionGotchi!')):
     """Modal shown during onboarding to let users choose a name before pet creation."""
 
     name_input = discord.ui.TextInput(
-        label="Pet Name",
-        placeholder="Choose a name (max 12 chars)",
+        label=_p('modal:adopt|field:name|label', 'Pet Name'),
+        placeholder=_p('modal:adopt|field:name|placeholder', 'Choose a name (max 12 chars)'),
         default="Leo",
         max_length=12,
         required=True,
@@ -312,7 +336,7 @@ class PetAdoptModal(discord.ui.Modal, title="Name Your LionGotchi!"):
         pet = await self.cog._get_or_create_pet(interaction.user.id)
         if pet is None:
             await interaction.response.send_message(
-                "Something went wrong creating your pet. Try `/pet` again!",
+                _p('error:adopt|failed', 'Something went wrong creating your pet. Try `/pet` again!'),
                 ephemeral=True
             )
             return
@@ -328,10 +352,10 @@ class PetAdoptModal(discord.ui.Modal, title="Name Your LionGotchi!"):
 # ============================================================
 # Pet Name Modal (replaces /petname)
 # ============================================================
-class PetNameModal(discord.ui.Modal, title="Rename Your Pet"):
+class PetNameModal(discord.ui.Modal, title=_p('modal:rename|title', 'Rename Your Pet')):
     name_input = discord.ui.TextInput(
-        label="New Name",
-        placeholder="Enter a name (max 12 chars)",
+        label=_p('modal:rename|field:name|label', 'New Name'),
+        placeholder=_p('modal:rename|field:name|placeholder', 'Enter a name (max 12 chars)'),
         max_length=12,
         required=True,
     )
@@ -343,7 +367,9 @@ class PetNameModal(discord.ui.Modal, title="Rename Your Pet"):
     async def on_submit(self, interaction: discord.Interaction):
         name = self.name_input.value.strip()[:12]
         if not name:
-            await interaction.response.send_message("Invalid name!", ephemeral=True)
+            await interaction.response.send_message(
+                _p('error:rename|invalid_name', 'Invalid name!'), ephemeral=True
+            )
             return
         await _db_exec(self.cog.bot,
             "UPDATE lg_pets SET pet_name = %s WHERE userid = %s",
@@ -411,18 +437,23 @@ class InventoryView(discord.ui.View):
 
     def make_embed(self) -> discord.Embed:
         filter_labels = {
-            self.FILTER_EQUIPMENT: "\U0001F6E1\uFE0F Equipment",
-            self.FILTER_SCROLLS: "\U0001F4DC Scrolls",
+            self.FILTER_EQUIPMENT: f"\U0001F6E1\uFE0F {_p('ui:inventory|filter:equipment|label', 'Equipment')}",
+            self.FILTER_SCROLLS: f"\U0001F4DC {_p('ui:inventory|filter:scrolls|label', 'Scrolls')}",
         }
         embed = discord.Embed(
-            title=f"Inventory - {filter_labels[self.active_filter]}",
+            title=str(_p('embed:inventory|title', 'Inventory - {filter}')).format(
+                filter=str(filter_labels[self.active_filter])),
             color=discord.Color.gold()
         )
         if not self.items:
             if self.active_filter == self.FILTER_SCROLLS:
-                embed.description = "No scrolls yet! Keep studying to earn scroll drops."
+                embed.description = str(_p(
+                    'embed:inventory|desc:empty_scrolls',
+                    'No scrolls yet! Keep studying to earn scroll drops.'))
             else:
-                embed.description = "No equipment yet! Buy from the shop or earn drops from activity."
+                embed.description = str(_p(
+                    'embed:inventory|desc:empty_equip',
+                    'No equipment yet! Buy from the shop or earn drops from activity.'))
             return embed
 
         start = self.page * self.page_size
@@ -444,7 +475,10 @@ class InventoryView(discord.ui.View):
 
         embed.description = "\n".join(lines)
         total_pages = max(1, (len(self.items) + self.page_size - 1) // self.page_size)
-        embed.set_footer(text=f"Page {self.page + 1}/{total_pages} | {len(self.items)} items")
+        embed.set_footer(text=str(_p(
+            'embed:inventory|footer',
+            'Page {cur}/{total} | {count} items')).format(
+                cur=self.page + 1, total=total_pages, count=len(self.items)))
         return embed
 
     def refresh_buttons(self):
@@ -452,8 +486,8 @@ class InventoryView(discord.ui.View):
 
         # Filter tabs (row 0)
         for filt, label, emoji in [
-            (self.FILTER_EQUIPMENT, "Equipment", "\U0001F6E1\uFE0F"),
-            (self.FILTER_SCROLLS, "Scrolls", "\U0001F4DC"),
+            (self.FILTER_EQUIPMENT, _p('ui:inventory|filter:equipment|label', 'Equipment'), "\U0001F6E1\uFE0F"),
+            (self.FILTER_SCROLLS, _p('ui:inventory|filter:scrolls|label', 'Scrolls'), "\U0001F4DC"),
         ]:
             style = discord.ButtonStyle.blurple if filt == self.active_filter else discord.ButtonStyle.grey
             btn = discord.ui.Button(label=label, emoji=emoji, style=style, row=0)
@@ -463,10 +497,14 @@ class InventoryView(discord.ui.View):
         # Pagination (row 0)
         total_pages = max(1, (len(self.items) + self.page_size - 1) // self.page_size)
         if total_pages > 1:
-            prev_btn = discord.ui.Button(label="<", style=discord.ButtonStyle.grey, row=0, disabled=self.page == 0)
+            prev_btn = discord.ui.Button(
+                label=_p('ui:inventory|button:page_prev|label', '<'),
+                style=discord.ButtonStyle.grey, row=0, disabled=self.page == 0)
             prev_btn.callback = self.prev_page
             self.add_item(prev_btn)
-            next_btn = discord.ui.Button(label=">", style=discord.ButtonStyle.grey, row=0, disabled=self.page >= total_pages - 1)
+            next_btn = discord.ui.Button(
+                label=_p('ui:inventory|button:page_next|label', '>'),
+                style=discord.ButtonStyle.grey, row=0, disabled=self.page >= total_pages - 1)
             next_btn.callback = self.next_page
             self.add_item(next_btn)
 
@@ -476,10 +514,16 @@ class InventoryView(discord.ui.View):
             page_items = self.items[start:start + self.page_size]
             for it in page_items[:5]:
                 if it['equipped']:
-                    btn = discord.ui.Button(label=f"Unequip {it['name'][:12]}", style=discord.ButtonStyle.red, row=1)
+                    btn = discord.ui.Button(
+                        label=str(_p('ui:inventory|button:unequip|label', 'Unequip {name}')).format(
+                            name=it['name'][:12]),
+                        style=discord.ButtonStyle.red, row=1)
                     btn.callback = self._make_unequip_cb(it)
                 elif it.get('slot'):
-                    btn = discord.ui.Button(label=f"Equip {it['name'][:14]}", style=discord.ButtonStyle.green, row=1)
+                    btn = discord.ui.Button(
+                        label=str(_p('ui:inventory|button:equip|label', 'Equip {name}')).format(
+                            name=it['name'][:14]),
+                        style=discord.ButtonStyle.green, row=1)
                     btn.callback = self._make_equip_cb(it)
                 else:
                     continue
@@ -487,13 +531,13 @@ class InventoryView(discord.ui.View):
 
         # Enhance button (row 3)
         if self.active_filter == self.FILTER_EQUIPMENT:
-            enhance_btn = discord.ui.Button(label="Enhance", emoji="\u2728",
+            enhance_btn = discord.ui.Button(label=_p('ui:inventory|button:enhance|label', 'Enhance'), emoji="\u2728",
                                              style=discord.ButtonStyle.blurple, row=3)
             enhance_btn.callback = self._go_enhance
             self.add_item(enhance_btn)
 
         # Back button (row 3)
-        back_btn = discord.ui.Button(label="Back", emoji="\u2B05", style=discord.ButtonStyle.grey, row=3)
+        back_btn = discord.ui.Button(label=_p('ui:inventory|button:back|label', 'Back'), emoji="\u2B05", style=discord.ButtonStyle.grey, row=3)
         back_btn.callback = self.go_back
         self.add_item(back_btn)
 
@@ -510,7 +554,9 @@ class InventoryView(discord.ui.View):
         async def cb(interaction: discord.Interaction):
             slot = item['slot']
             if not slot:
-                await interaction.response.send_message("This item can't be equipped!", ephemeral=True)
+                await interaction.response.send_message(str(_p(
+                    'error:inventory|cannot_equip',
+                    "This item can't be equipped!")), ephemeral=True)
                 return
             existing = await _db_fetch(self.cog.bot,
                 "SELECT 1 FROM lg_pet_equipment WHERE userid = %s AND slot = %s",
@@ -606,17 +652,17 @@ class InventoryPaginatorView(discord.ui.View):
             self.add_item(next_btn)
 
         self.add_item(discord.ui.Button(
-            label="Equip", emoji="\U0001F6E1\uFE0F",
+            label=_p('ui:backpack|button:equip|label', 'Equip'), emoji="\U0001F6E1\uFE0F",
             url=f"{WEBSITE_URL}/pet/inventory",
             style=discord.ButtonStyle.link, row=1
         ))
         self.add_item(discord.ui.Button(
-            label="Buy & Sell", emoji="\U0001F4B0",
+            label=_p('ui:backpack|button:market|label', 'Buy & Sell'), emoji="\U0001F4B0",
             url=f"{WEBSITE_URL}/pet/marketplace",
             style=discord.ButtonStyle.link, row=1
         ))
         self.add_item(discord.ui.Button(
-            label="Enhance", emoji="\u2728",
+            label=_p('ui:backpack|button:enhance|label', 'Enhance'), emoji="\u2728",
             url=f"{WEBSITE_URL}/pet/enhancement",
             style=discord.ButtonStyle.link, row=1
         ))
@@ -633,14 +679,15 @@ class InventoryPaginatorView(discord.ui.View):
     def make_embed(self) -> discord.Embed:
         if not self.items:
             embed = discord.Embed(
-                title="\U0001F392 Your Backpack",
-                description=(
-                    "Your backpack is empty!\n\n"
-                    "Earn items by studying, farming, or buying from the marketplace."
-                ),
+                title=str(_p('embed:backpack|title', '\U0001F392 Your Backpack')),
+                description=str(_p(
+                    'embed:backpack|desc:empty',
+                    'Your backpack is empty!\n\n'
+                    'Earn items by studying, farming, or buying from the marketplace.')),
                 color=0x9e9e9e,
             )
-            embed.set_footer(text="0 items")
+            embed.set_footer(text=str(_p(
+                'embed:backpack|footer:count', '{n} items')).format(n=0))
             return embed
 
         start = self.page * self.PAGE_SIZE
@@ -672,16 +719,21 @@ class InventoryPaginatorView(discord.ui.View):
 
         total_items = sum(it.get('qty', 1) for it in self.items)
         embed = discord.Embed(
-            title="\U0001F392 Your Backpack",
+            title=str(_p('embed:backpack|title', '\U0001F392 Your Backpack')),
             description="\n".join(lines),
             color=self._page_color(),
         )
-        embed.set_footer(text=f"Page {self.page + 1}/{self.total_pages} \u2022 {total_items} total items \u2022 {len(self.items)} unique")
+        embed.set_footer(text=str(_p(
+            'embed:backpack|footer:page',
+            'Page {cur}/{total} \u2022 {total_qty} total items \u2022 {unique} unique')).format(
+                cur=self.page + 1, total=self.total_pages,
+                total_qty=total_items, unique=len(self.items)))
         return embed
 
     async def _prev(self, interaction: discord.Interaction):
         if interaction.user.id != self.user_id:
-            await interaction.response.send_message("This isn't your backpack!", ephemeral=True)
+            await interaction.response.send_message(str(_p(
+                'error:backpack|not_yours', "This isn't your backpack!")), ephemeral=True)
             return
         self.page = max(0, self.page - 1)
         self._build_buttons()
@@ -727,12 +779,12 @@ RARITY_EMBED_COLORS = {
 }
 
 RARITY_LABELS = {
-    'COMMON': 'Common',
-    'UNCOMMON': 'Uncommon',
-    'RARE': 'Rare',
-    'EPIC': 'Epic',
-    'LEGENDARY': 'Legendary',
-    'MYTHICAL': 'Mythical',
+    'COMMON': _p('rarity:common', 'Common'),
+    'UNCOMMON': _p('rarity:uncommon', 'Uncommon'),
+    'RARE': _p('rarity:rare', 'Rare'),
+    'EPIC': _p('rarity:epic', 'Epic'),
+    'LEGENDARY': _p('rarity:legendary', 'Legendary'),
+    'MYTHICAL': _p('rarity:mythical', 'Mythical'),
 }
 
 RARITY_EMOJI = {
@@ -818,7 +870,8 @@ async def _handle_open_pet(interaction: discord.Interaction):
     cog = _get_lg_cog(interaction)
     if not cog:
         await interaction.response.send_message(
-            "LionGotchi is reloading, try again in a moment!", ephemeral=True)
+            str(_p('error:lg_reloading', 'LionGotchi is reloading, try again in a moment!')),
+            ephemeral=True)
         return
     # --- AI-MODIFIED (2026-03-24) ---
     # Purpose: Handle errors gracefully after _show_pet may have deferred
@@ -828,10 +881,12 @@ async def _handle_open_pet(interaction: discord.Interaction):
         try:
             if not interaction.response.is_done():
                 await interaction.response.send_message(
-                    "Use `/pet` in a server to see your LionGotchi!", ephemeral=True)
+                    str(_p('error:use_slash_pet', 'Use `/pet` in a server to see your LionGotchi!')),
+                    ephemeral=True)
             else:
                 await interaction.followup.send(
-                    "Something went wrong. Try `/pet` again!", ephemeral=True)
+                    str(_p('error:pet_followup_failed', 'Something went wrong. Try `/pet` again!')),
+                    ephemeral=True)
         except Exception:
             pass
     # --- END AI-MODIFIED ---
@@ -840,14 +895,16 @@ async def _handle_notif_toggle(interaction: discord.Interaction):
     cog = _get_lg_cog(interaction)
     if not cog:
         await interaction.response.send_message(
-            "LionGotchi is reloading, try again in a moment!", ephemeral=True)
+            str(_p('error:lg_reloading', 'LionGotchi is reloading, try again in a moment!')),
+            ephemeral=True)
         return
     try:
         uid = interaction.user.id
         rows = await _db_fetch(cog.bot,
             "SELECT drop_notif FROM lg_pets WHERE userid = %s", uid)
         if not rows:
-            await interaction.response.send_message("You don't have a pet yet!", ephemeral=True)
+            await interaction.response.send_message(
+                str(_p('error:no_pet_yet', "You don't have a pet yet!")), ephemeral=True)
             return
         current = rows[0].get('drop_notif') or 'ALL'
         if hasattr(current, 'value'):
@@ -857,16 +914,24 @@ async def _handle_notif_toggle(interaction: discord.Interaction):
         await _db_exec(cog.bot,
             "UPDATE lg_pets SET drop_notif = %s WHERE userid = %s",
             new_pref, uid)
-        labels = {'ALL': 'Channel + DM', 'DM_ONLY': 'DM Only', 'MUTED': 'Muted'}
+        labels = {
+            'ALL': _p('notif:pref:channel_dm', 'Channel + DM'),
+            'DM_ONLY': _p('notif:pref:dm_only', 'DM Only'),
+            'MUTED': _p('notif:pref:muted', 'Muted'),
+        }
         await interaction.response.send_message(
-            f"LionGotchi notifications set to: **{labels[new_pref]}**\n"
-            f"(Click again to cycle: Channel+DM \u2192 DM Only \u2192 Muted)\n"
-            f"*This applies to drops, level-ups, and all pet notifications.*",
+            str(_p(
+                'notif:toggle:body',
+                'LionGotchi notifications set to: **{pref}**\n'
+                '(Click again to cycle: Channel+DM \u2192 DM Only \u2192 Muted)\n'
+                '*This applies to drops, level-ups, and all pet notifications.*'
+            )).format(pref=str(labels[new_pref])),
             ephemeral=True)
     except Exception:
         if not interaction.response.is_done():
             await interaction.response.send_message(
-                "Something went wrong, please try again!", ephemeral=True)
+                str(_p('error:generic_retry', 'Something went wrong, please try again!')),
+                ephemeral=True)
 # --- END AI-REPLACED ---
 
 
@@ -876,18 +941,18 @@ class DropNotificationView(discord.ui.View):
     def __init__(self, cog: 'LionGotchiCog | None' = None, user_id: int = 0):
         super().__init__(timeout=None)
         self.add_item(discord.ui.Button(
-            label="View Inventory",
+            label=_p('ui:drop_notif|button:view_inv|label', 'View Inventory'),
             url=f"{WEBSITE_URL}/pet",
             style=discord.ButtonStyle.link
         ))
 
-    @discord.ui.button(label="Open Pet", emoji="\U0001F43E",
+    @discord.ui.button(label=_p('ui:drop_notif|button:open_pet|label', 'Open Pet'), emoji="\U0001F43E",
                         style=discord.ButtonStyle.green,
                         custom_id="lg:drop:open_pet")
     async def open_pet(self, interaction: discord.Interaction, button: discord.ui.Button):
         await _handle_open_pet(interaction)
 
-    @discord.ui.button(label="Mute Drops", emoji="\U0001F515",
+    @discord.ui.button(label=_p('ui:drop_notif|button:mute|label', 'Mute Drops'), emoji="\U0001F515",
                         style=discord.ButtonStyle.grey,
                         custom_id="lg:drop:mute_toggle")
     async def mute_toggle(self, interaction: discord.Interaction, button: discord.ui.Button):
@@ -900,18 +965,18 @@ class LevelUpNotificationView(discord.ui.View):
     def __init__(self, cog: 'LionGotchiCog | None' = None, user_id: int = 0):
         super().__init__(timeout=None)
         self.add_item(discord.ui.Button(
-            label="View Pet",
+            label=_p('ui:levelup_notif|button:view_pet|label', 'View Pet'),
             url=f"{WEBSITE_URL}/pet",
             style=discord.ButtonStyle.link
         ))
 
-    @discord.ui.button(label="Open Pet", emoji="\U0001F43E",
+    @discord.ui.button(label=_p('ui:levelup_notif|button:open_pet|label', 'Open Pet'), emoji="\U0001F43E",
                         style=discord.ButtonStyle.green,
                         custom_id="lg:levelup:open_pet")
     async def open_pet(self, interaction: discord.Interaction, button: discord.ui.Button):
         await _handle_open_pet(interaction)
 
-    @discord.ui.button(label="Notification Settings", emoji="\U0001F514",
+    @discord.ui.button(label=_p('ui:levelup_notif|button:notif_settings|label', 'Notification Settings'), emoji="\U0001F514",
                         style=discord.ButtonStyle.grey,
                         custom_id="lg:levelup:notif_toggle")
     async def notif_settings(self, interaction: discord.Interaction, button: discord.ui.Button):
@@ -929,11 +994,12 @@ class FirstEncounterView(discord.ui.View):
 
     # --- AI-MODIFIED (2026-03-20) ---
     # Purpose: Use async _build_embed_and_file for GIF-enabled onboarding
-    @discord.ui.button(label="Adopt a Pet!", emoji="\U0001F43E", style=discord.ButtonStyle.green, row=0)
+    @discord.ui.button(label=_p('ui:first_encounter|button:adopt|label', 'Adopt a Pet!'), emoji="\U0001F43E", style=discord.ButtonStyle.green, row=0)
     async def adopt_pet(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             await interaction.response.send_message(
-                "Use `/pet` to adopt your own LionGotchi!", ephemeral=True
+                str(_p('error:adopt_own_pet', 'Use `/pet` to adopt your own LionGotchi!')),
+                ephemeral=True
             )
             return
         view = OnboardingView(self.cog, self.user_id)
@@ -944,12 +1010,13 @@ class FirstEncounterView(discord.ui.View):
         await interaction.response.send_message(**kwargs)
     # --- END AI-MODIFIED ---
 
-    @discord.ui.button(label="What is LionGotchi?", emoji="\U0001F4D6", style=discord.ButtonStyle.blurple, row=0)
+    @discord.ui.button(label=_p('ui:first_encounter|button:learn_more|label', 'What is LionGotchi?'), emoji="\U0001F4D6", style=discord.ButtonStyle.blurple, row=0)
     async def learn_more(self, interaction: discord.Interaction, button: discord.ui.Button):
         embed = discord.Embed(
-            title="\U0001F981 What is LionGotchi?",
+            title=str(_p('embed:what_is_lg|title', '\U0001F981 What is LionGotchi?')),
             color=0xffc107,
-            description=(
+            description=str(_p(
+                'embed:what_is_lg|desc',
                 "**LionGotchi** is a virtual pet system built into StudyLion!\n\n"
                 "\U0001F43E **Adopt a pet** and raise it as you study\n"
                 "\u2694\uFE0F **Earn equipment** and scrolls from activity\n"
@@ -959,9 +1026,11 @@ class FirstEncounterView(discord.ui.View):
                 "\u2B06\uFE0F **Enhance gear** for powerful bonuses\n\n"
                 "The more you study, the more rewards you earn.\n"
                 "Type `/pet` to get started!"
-            )
+            ))
         )
-        embed.set_footer(text=f"Explore more at {WEBSITE_URL}/pet")
+        embed.set_footer(text=str(_p(
+            'embed:what_is_lg|footer', 'Explore more at {url}'
+        )).format(url=f"{WEBSITE_URL}/pet"))
         await interaction.response.send_message(embed=embed, ephemeral=True)
 
 
@@ -996,7 +1065,7 @@ class FirstDropView(discord.ui.View):
     async def view_pet(self, interaction: discord.Interaction, button: discord.ui.Button):
         await _handle_open_pet(interaction)
 
-    @discord.ui.button(label="Mute Notifications", emoji="\U0001F515",
+    @discord.ui.button(label=_p('ui:first_drop|button:mute|label', 'Mute Notifications'), emoji="\U0001F515",
                         style=discord.ButtonStyle.grey,
                         custom_id="lg:firstdrop:mute_toggle")
     async def mute_toggle(self, interaction: discord.Interaction, button: discord.ui.Button):
@@ -1022,16 +1091,17 @@ class TeaserView(discord.ui.View):
         self.cog = cog
         self.user_id = user_id
         self.add_item(discord.ui.Button(
-            label="Learn More",
+            label=_p('ui:teaser|button:learn_more|label', 'Learn More'),
             url=f"{WEBSITE_URL}/pet",
             style=discord.ButtonStyle.link
         ))
 
-    @discord.ui.button(label="Adopt Now!", emoji="\U0001F43E", style=discord.ButtonStyle.green)
+    @discord.ui.button(label=_p('ui:teaser|button:adopt|label', 'Adopt Now!'), emoji="\U0001F43E", style=discord.ButtonStyle.green)
     async def adopt_now(self, interaction: discord.Interaction, button: discord.ui.Button):
         if not self.cog:
             await interaction.response.send_message(
-                "Use `/pet` to adopt your LionGotchi!", ephemeral=True
+                str(_p('error:adopt_slash_pet', 'Use `/pet` to adopt your LionGotchi!')),
+                ephemeral=True
             )
             return
         view = OnboardingView(self.cog, interaction.user.id)
@@ -1122,9 +1192,13 @@ class EnhanceView(discord.ui.View):
         return self._equip_select_embed()
 
     def _equip_select_embed(self) -> discord.Embed:
-        embed = discord.Embed(title="\u2728 Enhancement", color=discord.Color.purple())
+        embed = discord.Embed(
+            title=str(_p('embed:enhance|title', '\u2728 Enhancement')),
+            color=discord.Color.purple())
         if not self.equipment_items:
-            embed.description = "You have no equipment to enhance. Get items from the shop or crafting!"
+            embed.description = str(_p(
+                'embed:enhance|desc:no_equip',
+                'You have no equipment to enhance. Get items from the shop or crafting!'))
             return embed
         lines = []
         for eq in self.equipment_items[:25]:
@@ -1133,8 +1207,12 @@ class EnhanceView(discord.ui.View):
             max_lvl = MAX_ENHANCEMENT_BY_RARITY.get(rarity, 5)
             name = f"**{eq['name']}** +{lvl}" if lvl > 0 else f"**{eq['name']}**"
             lines.append(f"{name} ({rarity}) [{lvl}/{max_lvl}]")
-        embed.description = "Select an equipment item to enhance:\n\n" + "\n".join(lines)
-        embed.set_footer(text=f"You have {len(self.scroll_items)} scroll type(s) available")
+        embed.description = str(_p(
+            'embed:enhance|desc:pick_equip', 'Select an equipment item to enhance:\n\n'
+        )) + "\n".join(lines)
+        embed.set_footer(text=str(_p(
+            'embed:enhance|footer:scroll_count', 'You have {n} scroll type(s) available'
+        )).format(n=len(self.scroll_items)))
         return embed
 
     def _scroll_select_embed(self) -> discord.Embed:
@@ -1142,11 +1220,15 @@ class EnhanceView(discord.ui.View):
         lvl = eq['enhancement_level'] or 0
         rarity = eq['rarity'] if isinstance(eq['rarity'], str) else str(eq['rarity'])
         embed = discord.Embed(
-            title=f"\u2728 Enhance: {eq['name']} +{lvl}",
+            title=str(_p(
+                'embed:enhance|title:with_item', '\u2728 Enhance: {name} +{lvl}'
+            )).format(name=eq['name'], lvl=lvl),
             color=discord.Color.purple()
         )
         if not self.scroll_items:
-            embed.description = "You have no scrolls! Keep studying to earn scroll drops."
+            embed.description = str(_p(
+                'embed:enhance|desc:no_scrolls',
+                'You have no scrolls! Keep studying to earn scroll drops.'))
             return embed
         # --- AI-MODIFIED (2026-03-17) ---
         # Purpose: Show bonus_value info alongside success/destroy rates
@@ -1161,12 +1243,18 @@ class EnhanceView(discord.ui.View):
             # --- END AI-REPLACED ---
             bv = float(s.get('bonus_value', 1.0))
             gold_pct = bv * ENHANCEMENT_GOLD_BONUS * 100
-            lines.append(
-                f"**{s['name']}** x{s['quantity']}\n"
-                f"  Success: {eff_rate*100:.0f}% | Destroy: {float(s['destroy_rate'])*100:.0f}% | "
-                f"Bonus: **+{gold_pct:.1f}%** Gold/XP"
-            )
-        embed.description = "Select a scroll:\n\n" + "\n".join(lines)
+            lines.append(str(_p(
+                'embed:enhance|desc:scroll_line',
+                '**{name}** x{qty}\n'
+                '  Success: {succ}% | Destroy: {dest}% | Bonus: **+{gold}%** Gold/XP'
+            )).format(
+                name=s['name'], qty=s['quantity'],
+                succ=f'{eff_rate*100:.0f}', dest=f'{float(s["destroy_rate"])*100:.0f}',
+                gold=f'{gold_pct:.1f}',
+            ))
+        embed.description = str(_p(
+            'embed:enhance|desc:pick_scroll', 'Select a scroll:\n\n'
+        )) + "\n".join(lines)
         # --- END AI-MODIFIED ---
         return embed
 
@@ -1185,7 +1273,10 @@ class EnhanceView(discord.ui.View):
         # --- END AI-REPLACED ---
 
         embed = discord.Embed(
-            title=f"\u2728 Enhance {eq['name']} +{lvl} -> +{lvl+1}",
+            title=str(_p(
+                'embed:enhance|title:confirm',
+                '\u2728 Enhance {name} +{lvl} -> +{next_lvl}'
+            )).format(name=eq['name'], lvl=lvl, next_lvl=lvl + 1),
             color=discord.Color.purple()
         )
         # --- AI-MODIFIED (2026-03-17) ---
@@ -1193,18 +1284,31 @@ class EnhanceView(discord.ui.View):
         bv = float(sc.get('bonus_value', 1.0))
         gold_gain = bv * ENHANCEMENT_GOLD_BONUS * 100
         drop_gain = bv * ENHANCEMENT_DROP_BONUS * 100
-        embed.description = (
-            f"**Item:** {eq['name']} +{lvl} ({rarity}) [{lvl}/{max_lvl}]\n"
-            f"**Scroll:** {sc['name']} (x{sc['quantity']})\n\n"
-            f"**Success Rate:** {eff_rate*100:.0f}%\n"
-            f"**Destroy on Fail:** {float(sc['destroy_rate'])*100:.0f}%\n"
-            f"**Bonus on Success:** +{gold_gain:.1f}% Gold/XP, +{drop_gain:.2f}% Drop Rate\n\n"
+        embed.description = str(_p(
+            'embed:enhance|desc:confirm_body',
+            '**Item:** {iname} +{lvl} ({rarity}) [{lvl}/{max_lvl}]\n'
+            '**Scroll:** {sname} (x{sqty})\n\n'
+            '**Success Rate:** {srate}%\n'
+            '**Destroy on Fail:** {drate}%\n'
+            '**Bonus on Success:** +{gold}% Gold/XP, +{drop}% Drop Rate\n\n'
+        )).format(
+            iname=eq['name'], lvl=lvl, rarity=rarity, max_lvl=max_lvl,
+            sname=sc['name'], sqty=sc['quantity'],
+            srate=f'{eff_rate*100:.0f}', drate=f'{float(sc["destroy_rate"])*100:.0f}',
+            gold=f'{gold_gain:.1f}', drop=f'{drop_gain:.2f}',
         )
         if float(sc['destroy_rate']) > 0:
-            embed.description += "\u26A0\uFE0F If enhancement fails, there is a chance your item will be **destroyed**!"
+            embed.description += str(_p(
+                'embed:enhance|desc:warn_destroy',
+                '\u26A0\uFE0F If enhancement fails, there is a chance your item will be **destroyed**!'))
         else:
-            embed.description += "\u2705 This scroll has **0% destroy chance**."
-        embed.set_footer(text=f"Bonus value: {bv:.1f}x | Higher risk scrolls give more stats per level!")
+            embed.description += str(_p(
+                'embed:enhance|desc:no_destroy',
+                '\u2705 This scroll has **0% destroy chance**.'))
+        embed.set_footer(text=str(_p(
+            'embed:enhance|footer:confirm',
+            'Bonus value: {bv}x | Higher risk scrolls give more stats per level!'
+        )).format(bv=f'{bv:.1f}'))
         # --- END AI-MODIFIED ---
         return embed
 
@@ -1228,11 +1332,15 @@ class EnhanceView(discord.ui.View):
                     label=label[:100], value=str(eq['inventoryid']),
                     description=f"{rarity} | {eq['slot']}"
                 ))
-            select = discord.ui.Select(placeholder="Select equipment...", options=options, row=0)
+            select = discord.ui.Select(
+                placeholder=str(_p('ui:enhance|select:equip_placeholder', 'Select equipment...')),
+                options=options, row=0)
             select.callback = self._on_equip_selected
             self.add_item(select)
 
-        back_btn = discord.ui.Button(label="Back", emoji="\u2B05", style=discord.ButtonStyle.grey, row=1)
+        back_btn = discord.ui.Button(
+            label=_p('ui:enhance|button:back|label', 'Back'), emoji="\u2B05",
+            style=discord.ButtonStyle.grey, row=1)
         back_btn.callback = self.go_back
         self.add_item(back_btn)
 
@@ -1254,26 +1362,38 @@ class EnhanceView(discord.ui.View):
                 options.append(discord.SelectOption(
                     label=f"{s['name']} (x{s['quantity']})"[:100],
                     value=str(s['itemid']),
-                    description=f"{eff*100:.0f}% OK | {float(s['destroy_rate'])*100:.0f}% Destroy | {bv:.1f}x Bonus"
+                    description=str(_p(
+                        'ui:enhance|option:scroll_stats',
+                        '{eff}% OK | {dest}% Destroy | {bv}x Bonus'
+                    )).format(
+                        eff=f'{eff*100:.0f}',
+                        dest=f'{float(s["destroy_rate"])*100:.0f}',
+                        bv=f'{bv:.1f}',
+                    )
                 ))
             # --- END AI-MODIFIED ---
-            select = discord.ui.Select(placeholder="Select a scroll...", options=options, row=0)
+            select = discord.ui.Select(
+                placeholder=str(_p('ui:enhance|select:scroll_placeholder', 'Select a scroll...')),
+                options=options, row=0)
             select.callback = self._on_scroll_selected
             self.add_item(select)
 
-        back_btn = discord.ui.Button(label="Back to Items", emoji="\u2B05",
-                                      style=discord.ButtonStyle.grey, row=1)
+        back_btn = discord.ui.Button(
+            label=_p('ui:enhance|button:back_items|label', 'Back to Items'), emoji="\u2B05",
+            style=discord.ButtonStyle.grey, row=1)
         back_btn.callback = self._back_to_equip
         self.add_item(back_btn)
 
     def _build_confirm_buttons(self):
-        enhance_btn = discord.ui.Button(label="Enhance!", emoji="\u2728",
-                                         style=discord.ButtonStyle.danger, row=0)
+        enhance_btn = discord.ui.Button(
+            label=_p('ui:enhance|button:enhance|label', 'Enhance!'), emoji="\u2728",
+            style=discord.ButtonStyle.danger, row=0)
         enhance_btn.callback = self._do_enhance
         self.add_item(enhance_btn)
 
-        cancel_btn = discord.ui.Button(label="Cancel", emoji="\u274C",
-                                        style=discord.ButtonStyle.grey, row=0)
+        cancel_btn = discord.ui.Button(
+            label=_p('ui:enhance|button:cancel|label', 'Cancel'), emoji="\u274C",
+            style=discord.ButtonStyle.grey, row=0)
         cancel_btn.callback = self._back_to_equip
         self.add_item(cancel_btn)
 
@@ -1309,32 +1429,41 @@ class EnhanceView(discord.ui.View):
             bv = result.get('bonus_gained', 1.0)
             gold_gain = bv * ENHANCEMENT_GOLD_BONUS * 100
             glow = result.get('glow_tier', 'none')
-            glow_text = f" | Glow: **{glow.capitalize()}**" if glow != 'none' else ""
+            glow_text = (
+                str(_p('embed:enhance|glow_suffix', ' | Glow: **{glow}**')).format(
+                    glow=glow.capitalize())
+                if glow != 'none' else "")
             embed = discord.Embed(
-                title="\u2728 Enhancement Success!",
-                description=(
-                    f"**{self.selected_equip['name']}** is now **+{result['new_level']}**!\n\n"
-                    f"Gained: **+{gold_gain:.1f}%** Gold/XP from this scroll{glow_text}"
+                title=str(_p('embed:enhance|title:success', '\u2728 Enhancement Success!')),
+                description=str(_p(
+                    'embed:enhance|desc:success',
+                    '**{item}** is now **+{lvl}**!\n\n'
+                    'Gained: **+{gold}%** Gold/XP from this scroll{glow}'
+                )).format(
+                    item=self.selected_equip['name'], lvl=result['new_level'],
+                    gold=f'{gold_gain:.1f}', glow=glow_text,
                 ),
                 color=discord.Color.green()
             )
             # --- END AI-MODIFIED ---
         elif result['destroyed']:
             embed = discord.Embed(
-                title="\U0001F4A5 Item Destroyed!",
-                description=(
-                    f"**{self.selected_equip['name']}** was **destroyed** during enhancement.\n"
-                    f"The scroll was consumed."
-                ),
+                title=str(_p('embed:enhance|title:destroyed', '\U0001F4A5 Item Destroyed!')),
+                description=str(_p(
+                    'embed:enhance|desc:destroyed',
+                    '**{item}** was **destroyed** during enhancement.\n'
+                    'The scroll was consumed.'
+                )).format(item=self.selected_equip['name']),
                 color=discord.Color.red()
             )
         else:
             embed = discord.Embed(
-                title="\u274C Enhancement Failed",
-                description=(
-                    f"**{self.selected_equip['name']}** remains at +{result['new_level']}.\n"
-                    f"The scroll was consumed, but the item survived."
-                ),
+                title=str(_p('embed:enhance|title:failed', '\u274C Enhancement Failed')),
+                description=str(_p(
+                    'embed:enhance|desc:failed',
+                    '**{item}** remains at +{lvl}.\n'
+                    'The scroll was consumed, but the item survived.'
+                )).format(item=self.selected_equip['name'], lvl=result['new_level']),
                 color=discord.Color.orange()
             )
 
@@ -1400,22 +1529,33 @@ class RoomView(discord.ui.View):
     def make_embed(self) -> discord.Embed:
         if self.active_slot:
             embed = discord.Embed(
-                title=f"Room - {self.active_slot.title()}",
+                title=str(_p('embed:room|title:slot', 'Room - {slot}')).format(
+                    slot=self.active_slot.title()),
                 color=discord.Color.blue()
             )
             current = self.current_parts.get(self.active_slot, 'default')
-            embed.description = f"Current: **{current.split('/')[-1].replace('.png','').replace('_',' ').title()}**\n\nChoose a replacement:"
+            cur_name = current.split('/')[-1].replace('.png', '').replace('_', ' ').title()
+            embed.description = str(_p(
+                'embed:room|desc:current',
+                'Current: **{name}**\n\nChoose a replacement:'
+            )).format(name=cur_name)
             if not self.available_items:
-                embed.description += "\n\nNo items available for this slot yet."
+                embed.description += str(_p(
+                    'embed:room|desc:no_items',
+                    '\n\nNo items available for this slot yet.'
+                ))
         else:
-            embed = discord.Embed(title="Room Customization", color=discord.Color.blue())
-            lines = ["Pick a furniture slot to customize:\n"]
+            embed = discord.Embed(
+                title=_p('embed:room|title', 'Room Customization'),
+                color=discord.Color.blue())
+            lines = [str(_p('embed:room|desc:pick_slot', 'Pick a furniture slot to customize:\n'))]
+            default_lbl = str(_p('embed:room|default_name', 'Default'))
             for slot in FURNITURE_SLOTS:
                 current = self.current_parts.get(slot)
                 if current:
                     name = current.split('/')[-1].replace('.png', '').replace('_', ' ').title()
                 else:
-                    name = "Default"
+                    name = default_lbl
                 lines.append(f"**{slot.title()}**: {name}")
             embed.description = "\n".join(lines)
         return embed
@@ -1441,7 +1581,9 @@ class RoomView(discord.ui.View):
                     btn.callback = self._make_place_cb(it)
                     self.add_item(btn)
 
-            slots_btn = discord.ui.Button(label="Back to Slots", emoji="\u2B05", style=discord.ButtonStyle.grey, row=2)
+            slots_btn = discord.ui.Button(
+                label=_p('ui:room|button:back_slots|label', 'Back to Slots'),
+                emoji="\u2B05", style=discord.ButtonStyle.grey, row=2)
             slots_btn.callback = self.back_to_slots
             self.add_item(slots_btn)
         else:
@@ -1453,7 +1595,9 @@ class RoomView(discord.ui.View):
                 btn.callback = self._make_slot_cb(slot)
                 self.add_item(btn)
 
-            back_btn = discord.ui.Button(label="Back", emoji="\u2B05", style=discord.ButtonStyle.grey, row=2)
+            back_btn = discord.ui.Button(
+                label=_p('ui:room|button:back|label', 'Back'),
+                emoji="\u2B05", style=discord.ButtonStyle.grey, row=2)
             back_btn.callback = self.go_back
             self.add_item(back_btn)
 
@@ -1480,7 +1624,11 @@ class RoomView(discord.ui.View):
                     current_gold = balance[0]['gold'] if balance else 0
                     if current_gold < price:
                         await interaction.response.send_message(
-                            f"Not enough Gold! Need {price}, have {current_gold}.", ephemeral=True
+                            str(_p(
+                                'error:room|not_enough_gold',
+                                'Not enough Gold! Need {need}, have {have}.'
+                            )).format(need=price, have=current_gold),
+                            ephemeral=True
                         )
                         return
                     await _db_exec(self.cog.bot,
@@ -1565,26 +1713,36 @@ class SkinView(discord.ui.View):
     # --- END AI-REPLACED ---
 
     def make_embed(self) -> discord.Embed:
-        embed = discord.Embed(title="Gameboy Skins", color=discord.Color.purple())
+        embed = discord.Embed(
+            title=_p('embed:skins|title', 'Gameboy Skins'),
+            color=discord.Color.purple())
         start = self.page * self.page_size
         page_skins = self.skins[start:start + self.page_size]
         lines = []
+        active_suffix = str(_p('embed:skins|active_suffix', ' [ACTIVE]'))
         for s in page_skins:
-            active = " [ACTIVE]" if s['active'] else ""
+            active = active_suffix if s['active'] else ""
             lines.append(f"**{s['theme'].replace('_',' ').title()} {s['color'].title()}**{active}")
-        embed.description = "\n".join(lines) if lines else "No skins available."
+        embed.description = (
+            "\n".join(lines) if lines else str(_p('embed:skins|desc:empty', 'No skins available.')))
         total_pages = max(1, (len(self.skins) + self.page_size - 1) // self.page_size)
-        embed.set_footer(text=f"Page {self.page + 1}/{total_pages}")
+        embed.set_footer(text=str(_p(
+            'embed:skins|footer:page', 'Page {cur}/{total}')).format(
+                cur=self.page + 1, total=total_pages))
         return embed
 
     def refresh_buttons(self):
         self.clear_items()
         total_pages = max(1, (len(self.skins) + self.page_size - 1) // self.page_size)
         if total_pages > 1:
-            prev_btn = discord.ui.Button(label="<", style=discord.ButtonStyle.grey, row=0, disabled=self.page == 0)
+            prev_btn = discord.ui.Button(
+                label=_p('ui:skins|button:prev|label', '<'),
+                style=discord.ButtonStyle.grey, row=0, disabled=self.page == 0)
             prev_btn.callback = self.prev_page
             self.add_item(prev_btn)
-            next_btn = discord.ui.Button(label=">", style=discord.ButtonStyle.grey, row=0, disabled=self.page >= total_pages - 1)
+            next_btn = discord.ui.Button(
+                label=_p('ui:skins|button:next|label', '>'),
+                style=discord.ButtonStyle.grey, row=0, disabled=self.page >= total_pages - 1)
             next_btn.callback = self.next_page
             self.add_item(next_btn)
 
@@ -1598,7 +1756,9 @@ class SkinView(discord.ui.View):
             btn.callback = self._make_select_cb(s)
             self.add_item(btn)
 
-        back_btn = discord.ui.Button(label="Back", emoji="\u2B05", style=discord.ButtonStyle.grey, row=2)
+        back_btn = discord.ui.Button(
+            label=_p('ui:skins|button:back|label', 'Back'),
+            emoji="\u2B05", style=discord.ButtonStyle.grey, row=2)
         back_btn.callback = self.go_back
         self.add_item(back_btn)
 
@@ -1743,10 +1903,10 @@ class FarmView(discord.ui.View):
             elif not p['seed_id']:
                 pass
             elif (p['growth_stage'] or 0) >= 5:
-                timer_text = "READY!"
+                timer_text = str(_p('farm:status:ready', 'READY!'))
                 timer_color = (255, 215, 0)
             elif not is_watered and p['seed_id']:
-                timer_text = "DRY!"
+                timer_text = str(_p('farm:status:dry', 'DRY!'))
                 timer_color = (255, 100, 80)
             elif p['seed_id']:
                 pts = p.get('growth_points') or 0
@@ -1818,12 +1978,15 @@ class FarmView(discord.ui.View):
     # Purpose: Include TIER_HARVEST_GOLD_BONUS in displayed harvest gold
     def _plot_status(self, p) -> str:
         from .gameplay import RARITY_EMOJI, RARITY_GOLD_MULTIPLIER, TIER_HARVEST_GOLD_BONUS
-        e_coin = _lg_emoji('lg_coin', '\U0001F4B0')
         e_trophy = _lg_emoji('lg_trophy', '\U0001F3C6')
+        dead_lbl = str(_p('farm:status:dead', 'Dead'))
+        empty_lbl = str(_p('farm:status:empty', 'Empty'))
+        harvest_badge = str(_p('farm:plot|harvest_badge', 'HARVEST!'))
+        pts_lbl = str(_p('farm:plot|pts_label', 'pts'))
         if p['dead']:
-            return f"{_lg_emoji('lg_sick', chr(0x1F480))} Dead"
+            return f"{_lg_emoji('lg_sick', chr(0x1F480))} {dead_lbl}"
         if not p['seed_id']:
-            return "\u2B1C Empty"
+            return f"\u2B1C {empty_lbl}"
         name = p.get('seed_name') or 'Plant'
         rarity = p.get('rarity') or 'COMMON'
         r_emoji = RARITY_EMOJI.get(rarity, '')
@@ -1835,15 +1998,17 @@ class FarmView(discord.ui.View):
             gold_mult = RARITY_GOLD_MULTIPLIER.get(rarity, 1.0)
             tier_bonus = 1.0 + TIER_HARVEST_GOLD_BONUS.get(self.user_tier, 0.0)
             harvest_gold = int(base_gold * gold_mult * tier_bonus)
-            return f"{e_trophy} {r_prefix}{r_tag}{name} - **HARVEST!** (+{harvest_gold}G)"
-    # --- END AI-MODIFIED ---
+            return f"{e_trophy} {r_prefix}{r_tag}{name} - **{harvest_badge}** (+{harvest_gold}G)"
 
         pts = p.get('growth_points') or 0
         pts_needed = p.get('growth_points_needed') or 100
         bar_filled = "\u2588" * stage
         bar_empty = "\u2591" * (5 - stage)
         invested = p.get('gold_invested') or 0
-        return f"\U0001F331 {r_prefix}{r_tag}{name} [{bar_filled}{bar_empty}] {int(pts)}/{int(pts_needed)} pts ({invested}G)"
+        return (
+            f"\U0001F331 {r_prefix}{r_tag}{name} [{bar_filled}{bar_empty}] "
+            f"{int(pts)}/{int(pts_needed)} {pts_lbl} ({invested}G)"
+        )
     # --- END AI-REPLACED ---
     # --- END AI-MODIFIED ---
 
@@ -1853,8 +2018,9 @@ class FarmView(discord.ui.View):
         return f"[{filled}{empty}]"
 
     def make_embed(self) -> discord.Embed:
+        pet_name = self.cog._last_pet_name or str(_p('pet:fallback_name', 'Leo'))
         embed = discord.Embed(
-            title=f"\U0001F33F {self.cog._last_pet_name or 'Leo'}'s Farm",
+            title=str(_p('embed:farm|title', "\U0001F33F {pet}'s Farm")).format(pet=pet_name),
             color=discord.Color.green()
         )
         now = datetime.now(timezone.utc)
@@ -1879,16 +2045,16 @@ class FarmView(discord.ui.View):
 
         if active_count >= 10:
             load_emoji = "\U0001F534"
-            load_label = "HEAVY"
+            load_label = str(_p('embed:farm|load:heavy', 'HEAVY'))
         elif active_count >= 5:
             load_emoji = "\U0001F7E1"
-            load_label = "Medium"
+            load_label = str(_p('embed:farm|load:medium', 'Medium'))
         elif active_count >= 1:
             load_emoji = "\U0001F7E2"
-            load_label = "Light"
+            load_label = str(_p('embed:farm|load:light', 'Light'))
         else:
             load_emoji = "\u2B1C"
-            load_label = "Empty"
+            load_label = str(_p('embed:farm|load:empty', 'Empty'))
 
         # --- AI-MODIFIED (2026-03-15) ---
         # Purpose: Show rarity breakdown in farm header
@@ -1899,17 +2065,30 @@ class FarmView(discord.ui.View):
                 rarity_counts[r] = rarity_counts.get(r, 0) + 1
         # --- END AI-MODIFIED ---
 
-        header = f"{load_emoji} **Farm Load: {load_label}** \u2014 {active_count}/15 growing"
+        header = str(_p(
+            'embed:farm|header:load_line',
+            '{emoji} **Farm Load: {load}** \u2014 {active}/15 growing'
+        )).format(emoji=load_emoji, load=load_label, active=active_count)
         if rarity_counts and any(r != 'COMMON' for r in rarity_counts):
             parts = []
             for r in ('LEGENDARY', 'EPIC', 'RARE', 'UNCOMMON', 'COMMON'):
                 if r in rarity_counts:
-                    parts.append(f"{rarity_counts[r]}x {r.title()}")
+                    parts.append(str(_p(
+                        'embed:farm|rarity:count',
+                        '{count}\u00d7 {rarity}'
+                    )).format(count=rarity_counts[r], rarity=r.title()))
             if parts:
                 header += f" ({', '.join(parts)})"
         # --- AI-MODIFIED (2026-03-16) ---
         # Purpose: Use custom coin emoji for invested gold
-        header += f"\n{_lg_emoji('lg_coin', chr(0x1F4B0))} **Invested:** {total_invested}G across {planted} plants"
+        header += str(_p(
+            'embed:farm|header:invested',
+            '{coin} **Invested:** {gold}G across {planted} plants'
+        )).format(
+            coin=_lg_emoji('lg_coin', chr(0x1F4B0)),
+            gold=total_invested,
+            planted=planted,
+        )
         # --- END AI-MODIFIED ---
 
         if active_count > 0:
@@ -1917,22 +2096,41 @@ class FarmView(discord.ui.View):
             msgs_per_plot = avg_pts_needed / max(0.01, (2.0 / active_count) * 1.5)
             vc_min_per_plot = avg_pts_needed / max(0.01, (1.0 / active_count) * 1.5)
             vc_display = f"{int(vc_min_per_plot)}m" if vc_min_per_plot < 60 else f"{vc_min_per_plot / 60:.1f}h"
-            header += f"\n\U0001F4CA **To fully grow (watered):** ~{int(msgs_per_plot)} msgs or ~{vc_display} VC per plant"
+            header += str(_p(
+                'embed:farm|header:grow_estimate',
+                '\n\U0001F4CA **To fully grow (watered):** ~{msgs} msgs or ~{vc} VC per plant'
+            )).format(msgs=int(msgs_per_plot), vc=vc_display)
             if active_count >= 5:
                 solo_msgs = avg_pts_needed / (2.0 * 1.5)
-                header += f"\n\u26A0\uFE0F With 1 plant this would only take ~{int(solo_msgs)} msgs!"
+                header += str(_p(
+                    'embed:farm|header:solo_hint',
+                    '\n\u26A0\uFE0F With 1 plant this would only take ~{msgs} msgs!'
+                )).format(msgs=int(solo_msgs))
 
         status_parts = []
         if harvestable:
-            status_parts.append(f"\U0001F31F **{harvestable}** ready!")
+            status_parts.append(str(_p(
+                'embed:farm|status:ready_line',
+                '\U0001F31F **{n}** ready!'
+            )).format(n=harvestable))
         if dry:
-            status_parts.append(f"\U0001F4A7 **{dry}** thirsty")
+            status_parts.append(str(_p(
+                'embed:farm|status:thirsty',
+                '\U0001F4A7 **{n}** thirsty'
+            )).format(n=dry))
         if dead_count:
-            status_parts.append(f"\U0001F480 **{dead_count}** dead")
+            status_parts.append(str(_p(
+                'embed:farm|status:dead_line',
+                '\U0001F480 **{n}** dead'
+            )).format(n=dead_count))
         if empty_count:
-            status_parts.append(f"\u2B1C **{empty_count}** empty")
+            status_parts.append(str(_p(
+                'embed:farm|status:empty_line',
+                '\u2B1C **{n}** empty'
+            )).format(n=empty_count))
         if status_parts:
-            header += "\n" + "  \u2022  ".join(status_parts)
+            sep = str(_p('embed:farm|status:bullet_sep', '  \u2022  '))
+            header += "\n" + sep.join(status_parts)
 
         embed.description = header
 
@@ -1944,24 +2142,46 @@ class FarmView(discord.ui.View):
 
         col1 = "\n".join(plot_lines[:8])
         col2 = "\n".join(plot_lines[8:])
-        embed.add_field(name="Plots 1-8", value=col1 or "\u200b", inline=True)
-        embed.add_field(name="Plots 9-15", value=col2 or "\u200b", inline=True)
+        embed.add_field(
+            name=str(_p('embed:farm|field:plots1|name', 'Plots 1-8')),
+            value=col1 or "\u200b", inline=True)
+        embed.add_field(
+            name=str(_p('embed:farm|field:plots2|name', 'Plots 9-15')),
+            value=col2 or "\u200b", inline=True)
 
         hints = []
         if harvestable:
-            hints.append(f"\U0001F33E Harvest **{harvestable}** plants for Gold!")
+            hints.append(str(_p(
+                'embed:farm|hint:harvest',
+                '\U0001F33E Harvest **{n}** plants for Gold!'
+            )).format(n=harvestable))
         if dry:
-            hints.append(f"\U0001F4A7 **{dry}** plants need water or they'll die!")
+            hints.append(str(_p(
+                'embed:farm|hint:water',
+                '\U0001F4A7 **{n}** plants need water or they\'ll die!'
+            )).format(n=dry))
         if active_count == 0 and empty_count > 0:
-            hints.append(f"\U0001F331 Plant seeds to start growing! Be active in VC or chat to grow them.")
+            hints.append(str(_p(
+                'embed:farm|hint:start',
+                '\U0001F331 Plant seeds to start growing! Be active in VC or chat to grow them.'
+            )))
         elif active_count >= 10:
-            hints.append(f"\U0001F525 Heavy load! Growth is spread very thin. Consider harvesting some before planting more.")
+            hints.append(str(_p(
+                'embed:farm|hint:heavy',
+                '\U0001F525 Heavy load! Growth is spread very thin. Consider harvesting some before planting more.'
+            )))
         elif active_count > 0:
-            hints.append(f"\U0001F3A4 Voice chat & messages grow your plants. Water them for 1.5x boost!")
+            hints.append(str(_p(
+                'embed:farm|hint:growth',
+                '\U0001F3A4 Voice chat & messages grow your plants. Water them for 1.5x boost!'
+            )))
         if hints:
             embed.add_field(name="\u200b", value="\n".join(hints), inline=False)
 
-        embed.set_footer(text="Growth splits across all plants | More plants = slower each | Water = 1.5x boost")
+        embed.set_footer(text=str(_p(
+            'embed:farm|footer',
+            'Growth splits across all plants | More plants = slower each | Water = 1.5x boost'
+        )))
         return embed
     # --- END AI-REPLACED ---
 
@@ -1985,11 +2205,12 @@ class FarmView(discord.ui.View):
         self.refresh_buttons()
         # --- AI-MODIFIED (2026-03-17) ---
         # Purpose: Append artist attribution note to farm content
-        farm_content = (embed.description or "") + (
-            "\n\n-# *All LionGotchi art is hand-drawn by real humans \u2014 "
-            "1,000+ items over 12 months of work, not AI. "
-            "Subscriptions & gems support our artists.*"
-        )
+        farm_content = (embed.description or "") + str(_p(
+            'embed:farm|artist_note',
+            '\n\n-# *All LionGotchi art is hand-drawn by real humans \u2014 '
+            '1,000+ items over 12 months of work, not AI. '
+            'Subscriptions & gems support our artists.*'
+        ))
         # --- END AI-MODIFIED ---
         # --- AI-MODIFIED (2026-03-22) ---
         # Purpose: Handle deferred interactions to prevent Unknown Interaction (10062) timeouts
@@ -2011,20 +2232,26 @@ class FarmView(discord.ui.View):
         has_empty = any(not p['seed_id'] and not p['dead'] for p in self.plots)
 
         if has_planted:
-            water_btn = discord.ui.Button(label="Water All", emoji="\U0001F4A7",
-                                           style=discord.ButtonStyle.blurple, row=0)
+            water_btn = discord.ui.Button(
+                label=_p('ui:farm|button:water|label', 'Water All'),
+                emoji="\U0001F4A7",
+                style=discord.ButtonStyle.blurple, row=0)
             water_btn.callback = self.water_all
             self.add_item(water_btn)
 
         if has_harvestable:
-            harvest_btn = discord.ui.Button(label="Harvest All", emoji="\U0001F33E",
-                                             style=discord.ButtonStyle.green, row=0)
+            harvest_btn = discord.ui.Button(
+                label=_p('ui:farm|button:harvest|label', 'Harvest All'),
+                emoji="\U0001F33E",
+                style=discord.ButtonStyle.green, row=0)
             harvest_btn.callback = self.harvest_all
             self.add_item(harvest_btn)
 
         if has_dead:
-            clear_btn = discord.ui.Button(label="Clear Dead", emoji="\U0001F480",
-                                           style=discord.ButtonStyle.red, row=0)
+            clear_btn = discord.ui.Button(
+                label=_p('ui:farm|button:clear_dead|label', 'Clear Dead'),
+                emoji="\U0001F480",
+                style=discord.ButtonStyle.red, row=0)
             clear_btn.callback = self.clear_dead
             self.add_item(clear_btn)
 
@@ -2036,7 +2263,8 @@ class FarmView(discord.ui.View):
         )
         if has_removable:
             remove_btn = discord.ui.Button(
-                label="Remove Plant", emoji="\u2702\uFE0F",
+                label=_p('ui:farm|button:remove|label', 'Remove Plant'),
+                emoji="\u2702\uFE0F",
                 style=discord.ButtonStyle.grey, row=0
             )
             remove_btn.callback = self._on_remove_pressed
@@ -2047,13 +2275,14 @@ class FarmView(discord.ui.View):
             empty_plots = [p for p in self.plots if not p['seed_id'] and not p['dead']]
             options = [
                 discord.SelectOption(
-                    label=f"Plot {p['plot_id'] + 1}",
+                    label=str(_p('ui:farm|select:plot|label', 'Plot {num}')).format(
+                        num=p['plot_id'] + 1),
                     value=str(p['plot_id']),
-                    description="Empty plot"
+                    description=str(_p('ui:farm|select:plot|desc', 'Empty plot'))
                 ) for p in empty_plots[:25]
             ]
             plot_select = discord.ui.Select(
-                placeholder="Select an empty plot to plant...",
+                placeholder=_p('ui:farm|select:plot|placeholder', 'Select an empty plot to plant...'),
                 options=options, row=1
             )
             plot_select.callback = self._on_plot_selected
@@ -2061,7 +2290,11 @@ class FarmView(discord.ui.View):
 
         # --- AI-MODIFIED (2026-03-15) ---
         # Purpose: Add fullscreen toggle button to farm view
-        toggle_label = "\U0001F3AE Gameboy" if self.fullscreen else "\U0001F4FA Full Screen"
+        toggle_label = (
+            f"\U0001F3AE {str(_p('ui:farm|button:gameboy|label', 'Gameboy'))}"
+            if self.fullscreen
+            else f"\U0001F4FA {str(_p('ui:farm|button:fullscreen|label', 'Full Screen'))}"
+        )
         toggle_btn = discord.ui.Button(
             label=toggle_label,
             style=discord.ButtonStyle.blurple if self.fullscreen else discord.ButtonStyle.grey,
@@ -2081,8 +2314,10 @@ class FarmView(discord.ui.View):
         self.add_item(toggle_btn)
         # --- END AI-MODIFIED ---
 
-        back_btn = discord.ui.Button(label="Back to Pet", emoji="\u2B05",
-                                      style=discord.ButtonStyle.grey, row=3)
+        back_btn = discord.ui.Button(
+            label=_p('ui:farm|button:back|label', 'Back to Pet'),
+            emoji="\u2B05",
+            style=discord.ButtonStyle.grey, row=3)
         back_btn.callback = self.go_back
         self.add_item(back_btn)
 
@@ -2104,7 +2339,9 @@ class FarmView(discord.ui.View):
             "SELECT seed_id, name, plant_type, plant_cost, harvest_gold, growth_points_needed FROM lg_farm_seeds ORDER BY plant_cost"
         ) or []
         if not seeds:
-            await interaction.response.send_message("No seed types available!", ephemeral=True)
+            await interaction.response.send_message(
+                str(_p('error:farm|no_seeds', 'No seed types available!')),
+                ephemeral=True)
             return
 
         gold_rows = await _db_fetch(self.cog.bot,
@@ -2128,19 +2365,29 @@ class FarmView(discord.ui.View):
             discord.SelectOption(
                 label=s['name'],
                 value=str(s['seed_id']),
-                description=f"Cost: {_display_cost(s['plant_cost'] or 10)} | Harvest: {s['harvest_gold']}G | {s['growth_points_needed']} pts"
+                description=str(_p(
+                    'ui:farm|select:seed|option_desc',
+                    'Cost: {cost} | Harvest: {hg}G | {pts} pts'
+                )).format(
+                    cost=_display_cost(s['plant_cost'] or 10),
+                    hg=s['harvest_gold'],
+                    pts=s['growth_points_needed'],
+                )
             ) for s in seeds[:25]
         ]
         # --- END AI-MODIFIED ---
         view = discord.ui.View(timeout=60)
-        seed_select = discord.ui.Select(placeholder="Choose a seed to plant...",
-                                         options=options, row=0)
+        seed_select = discord.ui.Select(
+            placeholder=_p('ui:farm|select:seed|placeholder', 'Choose a seed to plant...'),
+            options=options, row=0)
 
         async def on_seed_chosen(seed_interaction: discord.Interaction):
             seed_id = int(seed_interaction.data['values'][0])
             chosen = next((s for s in seeds if s['seed_id'] == seed_id), None)
             if not chosen:
-                await seed_interaction.response.send_message("Seed not found!", ephemeral=True)
+                await seed_interaction.response.send_message(
+                    str(_p('error:farm|seed_not_found', 'Seed not found!')),
+                    ephemeral=True)
                 return
 
             # --- AI-MODIFIED (2026-03-16) ---
@@ -2161,7 +2408,10 @@ class FarmView(discord.ui.View):
             current_gold = fresh_gold[0]['gold'] if fresh_gold else 0
             if current_gold < cost:
                 await seed_interaction.response.send_message(
-                    f"\u274C Not enough gold! You need **{cost}G** but only have **{current_gold}G**.",
+                    str(_p(
+                        'error:farm|not_enough_gold',
+                        '\u274C Not enough gold! You need **{need}G** but only have **{have}G**.'
+                    )).format(need=cost, have=current_gold),
                     ephemeral=True)
                 return
 
@@ -2189,18 +2439,33 @@ class FarmView(discord.ui.View):
             await self.show_farm(seed_interaction)
 
             rarity_messages = {
-                'RARE': f"\u2764\uFE0F You found **Rare** seeds for **{chosen['name']}**! They glow with a red aura.",
-                'EPIC': f"\U0001F451 You found **Epic** seeds for **{chosen['name']}**! A golden light shines from the soil!",
-                'LEGENDARY': f"\u2B50 You found **Legendary** seeds for **{chosen['name']}**! Take great care \u2014 these have a much higher chance of dropping rare craft items!",
+                'RARE': str(_p(
+                    'farm:plant|rare',
+                    '\u2764\uFE0F You found **Rare** seeds for **{name}**! They glow with a red aura.'
+                )).format(name=chosen['name']),
+                'EPIC': str(_p(
+                    'farm:plant|epic',
+                    '\U0001F451 You found **Epic** seeds for **{name}**! A golden light shines from the soil!'
+                )).format(name=chosen['name']),
+                'LEGENDARY': str(_p(
+                    'farm:plant|legendary',
+                    '\u2B50 You found **Legendary** seeds for **{name}**! Take great care \u2014 these have a much higher chance of dropping rare craft items!'
+                )).format(name=chosen['name']),
             }
             msg = rarity_messages.get(rarity)
             if not msg and rarity == 'UNCOMMON':
-                msg = f"\U0001F539 Your **{chosen['name']}** seeds shimmer with an uncommon blue hue."
+                msg = str(_p(
+                    'farm:plant|uncommon',
+                    '\U0001F539 Your **{name}** seeds shimmer with an uncommon blue hue.'
+                )).format(name=chosen['name'])
             if msg:
                 gold_mult = RARITY_GOLD_MULTIPLIER.get(rarity, 1.0)
                 tier_bonus = 1.0 + TIER_HARVEST_GOLD_BONUS.get(self.user_tier, 0.0)
                 harvest = int((chosen['harvest_gold'] or 10) * gold_mult * tier_bonus)
-                msg += f"\n**Harvest value: {harvest}G** (x{gold_mult})"
+                msg += str(_p(
+                    'farm:plant|harvest_value_line',
+                    '\n**Harvest value: {harvest}G** (x{mult})'
+                )).format(harvest=harvest, mult=gold_mult)
                 try:
                     await seed_interaction.followup.send(msg, ephemeral=True)
                 except Exception:
@@ -2209,15 +2474,27 @@ class FarmView(discord.ui.View):
 
         seed_select.callback = on_seed_chosen
         view.add_item(seed_select)
-        cancel_btn = discord.ui.Button(label="Cancel", style=discord.ButtonStyle.grey, row=1)
+        cancel_btn = discord.ui.Button(
+            label=_p('ui:farm|button:cancel|label', 'Cancel'),
+            style=discord.ButtonStyle.grey, row=1)
         cancel_btn.callback = lambda i: self.show_farm(i)
         view.add_item(cancel_btn)
 
         # --- AI-MODIFIED (2026-03-16) ---
         # Purpose: Use custom coin emoji in planting embed
-        embed = discord.Embed(title=f"\U0001F331 Planting on Plot {plot_id + 1}",
-                               description=f"{_lg_emoji('lg_coin', chr(0x1F4B0))} Your gold: **{user_gold}G**\nChoose a seed from the dropdown below.",
-                               color=discord.Color.green())
+        embed = discord.Embed(
+            title=str(_p(
+                'embed:farm_plant|title',
+                '\U0001F331 Planting on Plot {n}'
+            )).format(n=plot_id + 1),
+            description=str(_p(
+                'embed:farm_plant|desc',
+                '{coin} Your gold: **{gold}G**\nChoose a seed from the dropdown below.'
+            )).format(
+                coin=_lg_emoji('lg_coin', chr(0x1F4B0)),
+                gold=user_gold,
+            ),
+            color=discord.Color.green())
         # --- END AI-MODIFIED ---
         await interaction.response.edit_message(embed=embed, view=view, attachments=[])
     # --- END AI-REPLACED ---
@@ -2300,9 +2577,17 @@ class FarmView(discord.ui.View):
                 name = p.get('seed_name') or 'Plant'
                 r_emoji = RARITY_EMOJI.get(rarity, '')
                 if rarity != 'COMMON':
-                    harvest_details.append(f"{r_emoji} **[{rarity}] {name}** \u2014 {plant_gold}G (x{gold_mult})")
+                    harvest_details.append(str(_p(
+                        'embed:harvest|detail:rare',
+                        '{r_emoji} **[{rarity}] {name}** \u2014 {gold}G (x{mult})'
+                    )).format(
+                        r_emoji=r_emoji, rarity=rarity, name=name,
+                        gold=plant_gold, mult=gold_mult))
                 else:
-                    harvest_details.append(f"{name} \u2014 {plant_gold}G")
+                    harvest_details.append(str(_p(
+                        'embed:harvest|detail:common',
+                        '{name} \u2014 {gold}G'
+                    )).format(name=name, gold=plant_gold))
 
                 drop_mult = RARITY_DROP_MULTIPLIER.get(rarity, 1.0)
                 # --- AI-MODIFIED (2026-03-24) ---
@@ -2341,33 +2626,67 @@ class FarmView(discord.ui.View):
             net_profit = total_harvest_gold - total_invested
             profit_emoji = e_coin if net_profit > 0 else "\U0001F4C9"
 
-            summary = f"**{e_trophy} Harvest Summary**\n"
-            summary += f"\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n"
+            summary = str(_p(
+                'embed:harvest|summary_title',
+                '**{trophy} Harvest Summary**\n'
+            )).format(trophy=e_trophy)
+            summary += str(_p(
+                'embed:harvest|summary_rule',
+                '\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n'
+            ))
             if harvest_details:
                 summary += "\n".join(harvest_details) + "\n\n"
-            summary += f"\U0001F331 Plants harvested: **{harvested}**\n"
-            summary += f"\U0001F4B8 Invested: **{total_invested}G**\n"
-            summary += f"{e_coin} Earned: **{total_harvest_gold}G**\n"
-            summary += f"{profit_emoji} Net profit: **{'+' if net_profit >= 0 else ''}{net_profit}G**\n\n"
+            summary += str(_p(
+                'embed:harvest|plants_count',
+                '\U0001F331 Plants harvested: **{n}**\n'
+            )).format(n=harvested)
+            summary += str(_p(
+                'embed:harvest|invested',
+                '\U0001F4B8 Invested: **{g}G**\n'
+            )).format(g=total_invested)
+            summary += str(_p(
+                'embed:harvest|earned',
+                '{coin} Earned: **{g}G**\n'
+            )).format(coin=e_coin, g=total_harvest_gold)
+            profit_sign = '+' if net_profit >= 0 else ''
+            summary += str(_p(
+                'embed:harvest|net_profit',
+                '{emoji} Net profit: **{sign}{g}G**\n\n'
+            )).format(emoji=profit_emoji, sign=profit_sign, g=net_profit)
 
             activity_parts = []
             if total_voice_min > 0:
-                activity_parts.append(f"\U0001F3A4 {int(total_voice_min)} voice min")
+                activity_parts.append(str(_p(
+                    'embed:harvest|activity:voice',
+                    '\U0001F3A4 {n} voice min'
+                )).format(n=int(total_voice_min)))
             if total_messages > 0:
-                activity_parts.append(f"\U0001F4AC {int(total_messages)} messages")
+                activity_parts.append(str(_p(
+                    'embed:harvest|activity:messages',
+                    '\U0001F4AC {n} messages'
+                )).format(n=int(total_messages)))
             if activity_parts:
-                summary += f"**Growth activity:** {', '.join(activity_parts)}\n"
+                summary += str(_p(
+                    'embed:harvest|growth_activity',
+                    '**Growth activity:** {parts}\n'
+                )).format(parts=', '.join(activity_parts))
 
             if all_drops:
                 drop_names = ', '.join(
                     f"**{d['name']}** ({RARITY_LABELS.get(_clean_rarity(d.get('rarity', 'COMMON')), d.get('rarity', 'Common'))})"
                     for d in all_drops
                 )
-                summary += f"\n{e_gift} **Bonus drops:** {drop_names}\n"
+                summary += str(_p(
+                    'embed:harvest|bonus_drops',
+                    '\n{gift} **Bonus drops:** {names}\n'
+                )).format(gift=e_gift, names=drop_names)
 
             bonus_text = format_bonus_summary(bonuses)
             if bonus_text:
-                summary += f"\n\u2500\u2500\u2500 **Active Bonuses** \u2500\u2500\u2500\n{bonus_text}"
+                summary += str(_p(
+                    'embed:harvest|active_bonuses',
+                    '\n\u2500\u2500\u2500 **Active Bonuses** \u2500\u2500\u2500\n{text}'
+                )).format(text=bonus_text)
 
             try:
                 await interaction.followup.send(summary, ephemeral=True)
@@ -2396,7 +2715,9 @@ class FarmView(discord.ui.View):
             if p['seed_id'] and not p['dead'] and (p.get('growth_stage') or 0) < 5
         ]
         if not removable:
-            await interaction.response.send_message("No plants to remove!", ephemeral=True)
+            await interaction.response.send_message(
+                str(_p('error:farm|no_plants_remove', 'No plants to remove!')),
+                ephemeral=True)
             return
 
         user_tier, _ = await self.cog._get_premium_context(
@@ -2412,14 +2733,23 @@ class FarmView(discord.ui.View):
             pts = int(p.get('growth_points') or 0)
             pts_needed = int(p.get('growth_points_needed') or 100)
             options.append(discord.SelectOption(
-                label=f"Plot {p['plot_id'] + 1} - {name}",
+                label=str(_p(
+                    'ui:farm|select:remove|label',
+                    'Plot {num} - {name}'
+                )).format(num=p['plot_id'] + 1, name=name),
                 value=str(p['plot_id']),
-                description=f"{pts}/{pts_needed} pts | Refund: {refund}G ({refund_pct}% of {invested}G)"
+                description=str(_p(
+                    'ui:farm|select:remove|option_desc',
+                    '{pts}/{pts_needed} pts | Refund: {refund}G ({refund_pct}% of {invested}G)'
+                )).format(
+                    pts=pts, pts_needed=pts_needed, refund=refund,
+                    refund_pct=refund_pct, invested=invested,
+                )
             ))
 
         view = discord.ui.View(timeout=60)
         remove_select = discord.ui.Select(
-            placeholder="Select a plant to remove...",
+            placeholder=_p('ui:farm|select:remove|placeholder', 'Select a plant to remove...'),
             options=options[:25], row=0
         )
 
@@ -2427,7 +2757,9 @@ class FarmView(discord.ui.View):
             plot_id = int(select_interaction.data['values'][0])
             plot = next((p for p in self.plots if p['plot_id'] == plot_id), None)
             if not plot or not plot['seed_id']:
-                await select_interaction.response.send_message("Plot not found!", ephemeral=True)
+                await select_interaction.response.send_message(
+                    str(_p('error:farm|plot_not_found', 'Plot not found!')),
+                    ephemeral=True)
                 return
 
             await select_interaction.response.defer()
@@ -2462,27 +2794,46 @@ class FarmView(discord.ui.View):
             try:
                 lost = invested - refund
                 tier_name = TIER_DISPLAY_NAMES.get(ut)
-                tier_note = f" ({tier_name} perk)" if tier_name and rr > 0.5 else ""
+                tier_note = (
+                    str(_p('embed:farm_remove|tier_note', ' ({tier} perk)')).format(tier=tier_name)
+                    if tier_name and rr > 0.5 else "")
+                lost_suffix = (
+                    str(_p('embed:farm_remove|lost_suffix', ' — lost {lost}G')).format(lost=lost)
+                    if lost > 0 else "")
                 await select_interaction.followup.send(
-                    f"\u2702\uFE0F Removed **{name}** from Plot {plot_id + 1}. "
-                    f"Refunded **{refund}G** ({rr_pct}% of {invested}G{tier_note})"
-                    f"{f' — lost {lost}G' if lost > 0 else ''}.",
+                    str(_p(
+                        'embed:farm_remove|result',
+                        '\u2702\uFE0F Removed **{name}** from Plot {plot}. '
+                        'Refunded **{refund}G** ({pct}% of {invested}G{tier_note}){lost_suffix}.'
+                    )).format(
+                        name=name, plot=plot_id + 1, refund=refund,
+                        pct=rr_pct, invested=invested, tier_note=tier_note,
+                        lost_suffix=lost_suffix,
+                    ),
                     ephemeral=True)
             except Exception:
                 pass
 
         remove_select.callback = on_remove_chosen
         view.add_item(remove_select)
-        cancel_btn = discord.ui.Button(label="Cancel", style=discord.ButtonStyle.grey, row=1)
+        cancel_btn = discord.ui.Button(
+            label=_p('ui:farm|button:cancel|label', 'Cancel'),
+            style=discord.ButtonStyle.grey, row=1)
         cancel_btn.callback = lambda i: self.show_farm(i)
         view.add_item(cancel_btn)
 
-        refund_desc = f"You'll get back **{refund_pct}%** of what you invested."
+        refund_desc = str(_p(
+            'embed:farm_remove|refund_desc',
+            "You'll get back **{pct}%** of what you invested."
+        )).format(pct=refund_pct)
         tier_name = TIER_DISPLAY_NAMES.get(user_tier)
         if tier_name and refund_rate > 0.5:
-            refund_desc += f"\n\U0001F49B {tier_name} perk: {refund_pct}% refund (base: 50%)"
+            refund_desc += str(_p(
+                'embed:farm_remove|tier_perk_line',
+                '\n\U0001F49B {tier} perk: {refund_pct}% refund (base: {base}%)'
+            )).format(tier=tier_name, refund_pct=refund_pct, base=50)
         embed = discord.Embed(
-            title="\u2702\uFE0F Remove a Plant",
+            title=str(_p('embed:farm_remove|title', '\u2702\uFE0F Remove a Plant')),
             description=refund_desc,
             color=discord.Color.orange())
         await interaction.response.edit_message(embed=embed, view=view, attachments=[])
@@ -2539,33 +2890,41 @@ class FriendsHubView(discord.ui.View):
 
         if self.pending_count > 0:
             self.pending_button.style = discord.ButtonStyle.red
-            self.pending_button.label = f"Pending ({self.pending_count})"
+            self.pending_button.label = str(_p(
+                'ui:friends|button:pending|label', "Pending ({count})")).format(count=self.pending_count)
         else:
             self.pending_button.style = discord.ButtonStyle.grey
-            self.pending_button.label = "Pending (0)"
+            self.pending_button.label = str(_p(
+                'ui:friends|button:pending|label', "Pending ({count})")).format(count=0)
 
     def make_embed(self):
         embed = discord.Embed(
-            title="\U0001F465 Friends",
-            description=(
-                f"**Friends:** {self.friend_count}/{self.max_friends}\n"
-                f"**Incoming requests:** {self.pending_count}\n"
-                f"**Outgoing requests:** {self.outgoing_count}\n\n"
+            title=_p('embed:friends_hub|title', "\U0001F465 Friends"),
+            description=str(_p(
+                'embed:friends_hub|desc',
+                "**Friends:** {friend_count}/{max_friends}\n"
+                "**Incoming requests:** {pending_count}\n"
+                "**Outgoing requests:** {outgoing_count}\n\n"
                 "Visit a friend's pet to feed, bathe, or water their farm!"
+            )).format(
+                friend_count=self.friend_count,
+                max_friends=self.max_friends,
+                pending_count=self.pending_count,
+                outgoing_count=self.outgoing_count,
             ),
             color=0x5865F2
         )
-        embed.set_footer(text="Friend limit increases every 5 pet levels")
+        embed.set_footer(text=_p('embed:friends_hub|footer', "Friend limit increases every 5 pet levels"))
         return embed
 
     async def interaction_check(self, interaction: discord.Interaction) -> bool:
         if interaction.user.id != self.user_id:
             await interaction.response.send_message(
-                "Use `/pet` to open your own pet!", ephemeral=True)
+                _p('error:general|not_your_pet', "Use `/pet` to open your own pet!"), ephemeral=True)
             return False
         return True
 
-    @discord.ui.button(label="My Friends", emoji="\U0001F465", style=discord.ButtonStyle.green, row=0)
+    @discord.ui.button(label=_p('ui:friends|button:my_friends|label', "My Friends"), emoji="\U0001F465", style=discord.ButtonStyle.green, row=0)
     async def friends_list_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer()
         view = FriendsListView(self.cog, self.user_id, self.guild_id)
@@ -2573,7 +2932,7 @@ class FriendsHubView(discord.ui.View):
         await interaction.edit_original_response(
             content=None, embed=view.make_embed(), view=view, attachments=[])
 
-    @discord.ui.button(label="Pending (0)", emoji="\U0001F4E8", style=discord.ButtonStyle.grey, row=0)
+    @discord.ui.button(label=str(_p('ui:friends|button:pending|label', "Pending ({count})")).format(count=0), emoji="\U0001F4E8", style=discord.ButtonStyle.grey, row=0)
     async def pending_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer()
         view = PendingRequestsView(self.cog, self.user_id, self.guild_id)
@@ -2581,11 +2940,11 @@ class FriendsHubView(discord.ui.View):
         await interaction.edit_original_response(
             content=None, embed=view.make_embed(), view=view, attachments=[])
 
-    @discord.ui.button(label="Add Friend", emoji="\u2795", style=discord.ButtonStyle.blurple, row=0)
+    @discord.ui.button(label=_p('ui:friends|button:add|label', "Add Friend"), emoji="\u2795", style=discord.ButtonStyle.blurple, row=0)
     async def add_friend_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.send_modal(AddFriendModal(self.cog, self.user_id, self.guild_id))
 
-    @discord.ui.button(label="Back to Pet", emoji="\U0001F519", style=discord.ButtonStyle.grey, row=1)
+    @discord.ui.button(label=_p('ui:friends|button:back_to_pet|label', "Back to Pet"), emoji="\U0001F519", style=discord.ButtonStyle.grey, row=1)
     async def back_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         await self.cog._show_pet(interaction, edit=True)
 
@@ -2632,13 +2991,16 @@ class PendingRequestsView(discord.ui.View):
                     discord.SelectOption(
                         label=f"{name}{pet_info}"[:100],
                         value=str(req['request_id']),
-                        description="Select to accept or decline"
+                        description=str(_p(
+                            'ui:pending|select|description', "Select to accept or decline"))
                     )
                 )
             self.request_select.disabled = False
         else:
             self.request_select.options = [
-                discord.SelectOption(label="No pending requests", value="none")
+                discord.SelectOption(
+                    label=str(_p('ui:pending|select|option:no_requests', "No pending requests")),
+                    value="none")
             ]
             self.request_select.disabled = True
         self.accept_button.disabled = True
@@ -2648,8 +3010,8 @@ class PendingRequestsView(discord.ui.View):
     def make_embed(self):
         if not self.requests:
             return discord.Embed(
-                title="\U0001F4E8 Pending Friend Requests",
-                description="No pending requests!",
+                title=_p('embed:pending_requests|title', "\U0001F4E8 Pending Friend Requests"),
+                description=_p('embed:pending_requests|desc:empty', "No pending requests!"),
                 color=0x5865F2
             )
         total_pages = max(1, (len(self.requests) + self.PAGE_SIZE - 1) // self.PAGE_SIZE)
@@ -2664,21 +3026,24 @@ class PendingRequestsView(discord.ui.View):
             lines.append(f"\u2022 **{name}**{pet_info} \u2014 <t:{ts}:R>")
 
         embed = discord.Embed(
-            title="\U0001F4E8 Pending Friend Requests",
+            title=_p('embed:pending_requests|title', "\U0001F4E8 Pending Friend Requests"),
             description="\n".join(lines),
             color=0x5865F2
         )
-        embed.set_footer(text=f"Page {self.page + 1}/{total_pages} \u2022 {len(self.requests)} total \u2022 Select a request, then Accept or Decline")
+        embed.set_footer(text=str(_p(
+            'embed:pending_requests|footer',
+            "Page {page}/{total_pages} \u2022 {total} total \u2022 Select a request, then Accept or Decline"
+        )).format(page=self.page + 1, total_pages=total_pages, total=len(self.requests)))
         return embed
 
     async def interaction_check(self, interaction: discord.Interaction) -> bool:
         if interaction.user.id != self.user_id:
             await interaction.response.send_message(
-                "Use `/pet` to open your own pet!", ephemeral=True)
+                _p('error:general|not_your_pet', "Use `/pet` to open your own pet!"), ephemeral=True)
             return False
         return True
 
-    @discord.ui.select(placeholder="Select a request...", row=0, min_values=1, max_values=1)
+    @discord.ui.select(placeholder=_p('ui:pending|select|placeholder', "Select a request..."), row=0, min_values=1, max_values=1)
     async def request_select(self, interaction: discord.Interaction, select: discord.ui.Select):
         val = select.values[0]
         if val == "none":
@@ -2689,7 +3054,7 @@ class PendingRequestsView(discord.ui.View):
         self.decline_button.disabled = False
         await interaction.response.edit_message(view=self)
 
-    @discord.ui.button(label="Accept", emoji="\u2705", style=discord.ButtonStyle.green, row=1, disabled=True)
+    @discord.ui.button(label=_p('ui:pending|button:accept|label', "Accept"), emoji="\u2705", style=discord.ButtonStyle.green, row=1, disabled=True)
     async def accept_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer()
         rid = self._selected_request_id
@@ -2699,7 +3064,8 @@ class PendingRequestsView(discord.ui.View):
         req = await _db_fetch(self.cog.bot,
             "SELECT * FROM lg_friend_requests WHERE request_id = %s AND status = 'PENDING'", rid)
         if not req:
-            await interaction.followup.send("Request no longer exists.", ephemeral=True)
+            await interaction.followup.send(
+                _p('error:pending|request_gone', "Request no longer exists."), ephemeral=True)
             await self.load_requests()
             await interaction.edit_original_response(embed=self.make_embed(), view=self)
             return
@@ -2710,7 +3076,8 @@ class PendingRequestsView(discord.ui.View):
         my_pet = await _db_fetch(self.cog.bot, "SELECT level FROM lg_pets WHERE userid = %s", self.user_id)
         their_pet = await _db_fetch(self.cog.bot, "SELECT level FROM lg_pets WHERE userid = %s", from_id)
         if not my_pet or not their_pet:
-            await interaction.followup.send("One of you no longer has a pet.", ephemeral=True)
+            await interaction.followup.send(
+                _p('error:friend|no_pet_pair', "One of you no longer has a pet."), ephemeral=True)
             return
 
         my_max = _calc_max_friends(my_pet[0]['level'])
@@ -2724,10 +3091,14 @@ class PendingRequestsView(discord.ui.View):
             from_id, from_id)
 
         if (my_count[0]['cnt'] if my_count else 0) >= my_max:
-            await interaction.followup.send(f"You've reached your friend limit ({my_max}).", ephemeral=True)
+            await interaction.followup.send(str(_p(
+                'error:friend|limit_reached', "You've reached your friend limit ({max}).")).format(max=my_max),
+                ephemeral=True)
             return
         if (their_count[0]['cnt'] if their_count else 0) >= their_max:
-            await interaction.followup.send("The sender has reached their friend limit.", ephemeral=True)
+            await interaction.followup.send(
+                _p('error:friend|sender_limit_reached', "The sender has reached their friend limit."),
+                ephemeral=True)
             return
 
         lower, upper = (self.user_id, from_id) if self.user_id < from_id else (from_id, self.user_id)
@@ -2740,11 +3111,13 @@ class PendingRequestsView(discord.ui.View):
         name_row = await _db_fetch(self.cog.bot,
             "SELECT name FROM user_config WHERE userid = %s", from_id)
         sender_name = name_row[0]['name'] if name_row and name_row[0].get('name') else str(from_id)
-        await interaction.followup.send(f"\u2705 You are now friends with **{sender_name}**!", ephemeral=True)
+        await interaction.followup.send(str(_p(
+            'success:friend|accepted', "\u2705 You are now friends with **{name}**!")).format(name=sender_name),
+            ephemeral=True)
         await self.load_requests()
         await interaction.edit_original_response(embed=self.make_embed(), view=self)
 
-    @discord.ui.button(label="Decline", emoji="\u274C", style=discord.ButtonStyle.red, row=1, disabled=True)
+    @discord.ui.button(label=_p('ui:pending|button:decline|label', "Decline"), emoji="\u274C", style=discord.ButtonStyle.red, row=1, disabled=True)
     async def decline_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer()
         rid = self._selected_request_id
@@ -2754,23 +3127,24 @@ class PendingRequestsView(discord.ui.View):
         await _db_exec(self.cog.bot,
             "UPDATE lg_friend_requests SET status = 'DECLINED' WHERE request_id = %s AND status = 'PENDING'",
             rid)
-        await interaction.followup.send("\u274C Request declined.", ephemeral=True)
+        await interaction.followup.send(
+            _p('ui:pending|message:declined', "\u274C Request declined."), ephemeral=True)
         await self.load_requests()
         await interaction.edit_original_response(embed=self.make_embed(), view=self)
 
-    @discord.ui.button(label="Prev", style=discord.ButtonStyle.grey, row=2, disabled=True)
+    @discord.ui.button(label=_p('ui:pending|button:prev|label', "Prev"), style=discord.ButtonStyle.grey, row=2, disabled=True)
     async def prev_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         self.page = max(0, self.page - 1)
         self._update_buttons()
         await interaction.response.edit_message(embed=self.make_embed(), view=self)
 
-    @discord.ui.button(label="Next", style=discord.ButtonStyle.grey, row=2, disabled=True)
+    @discord.ui.button(label=_p('ui:pending|button:next|label', "Next"), style=discord.ButtonStyle.grey, row=2, disabled=True)
     async def next_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         self.page += 1
         self._update_buttons()
         await interaction.response.edit_message(embed=self.make_embed(), view=self)
 
-    @discord.ui.button(label="Back", emoji="\U0001F519", style=discord.ButtonStyle.grey, row=2)
+    @discord.ui.button(label=_p('ui:friends|button:back|label', "Back"), emoji="\U0001F519", style=discord.ButtonStyle.grey, row=2)
     async def back_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer()
         view = FriendsHubView(self.cog, self.user_id, self.guild_id)
@@ -2827,21 +3201,26 @@ class FriendsListView(discord.ui.View):
                     discord.SelectOption(
                         label=f"{name}{pet_info}"[:100],
                         value=str(f['friend_id']),
-                        description="Visit this friend's pet"
+                        description=str(_p(
+                            'ui:friends_list|select|description', "Visit this friend's pet"))
                     )
                 )
             self.friend_select.disabled = False
         else:
             self.friend_select.options = [
-                discord.SelectOption(label="No friends yet", value="none")
+                discord.SelectOption(
+                    label=str(_p('ui:friends_list|select|option:no_friends', "No friends yet")),
+                    value="none")
             ]
             self.friend_select.disabled = True
 
     def make_embed(self):
         if not self.friends:
             return discord.Embed(
-                title="\U0001F465 My Friends",
-                description="You don't have any friends yet!\nUse **Add Friend** from the Friends menu to send a request.",
+                title=_p('embed:friends_list|title', "\U0001F465 My Friends"),
+                description=_p(
+                    'embed:friends_list|desc:empty',
+                    "You don't have any friends yet!\nUse **Add Friend** from the Friends menu to send a request."),
                 color=0x5865F2
             )
         total_pages = max(1, (len(self.friends) + self.PAGE_SIZE - 1) // self.PAGE_SIZE)
@@ -2864,21 +3243,24 @@ class FriendsListView(discord.ui.View):
             lines.append(f"\u2022 **{name}** \u2014 {pet_name} (Lv.{level})\n  {bars}")
 
         embed = discord.Embed(
-            title="\U0001F465 My Friends",
+            title=_p('embed:friends_list|title', "\U0001F465 My Friends"),
             description="\n".join(lines),
             color=0x5865F2
         )
-        embed.set_footer(text=f"Page {self.page + 1}/{total_pages} \u2022 Select a friend to visit their pet")
+        embed.set_footer(text=str(_p(
+            'embed:friends_list|footer',
+            "Page {page}/{total_pages} \u2022 Select a friend to visit their pet"
+        )).format(page=self.page + 1, total_pages=total_pages))
         return embed
 
     async def interaction_check(self, interaction: discord.Interaction) -> bool:
         if interaction.user.id != self.user_id:
             await interaction.response.send_message(
-                "Use `/pet` to open your own pet!", ephemeral=True)
+                _p('error:general|not_your_pet', "Use `/pet` to open your own pet!"), ephemeral=True)
             return False
         return True
 
-    @discord.ui.select(placeholder="Select a friend to visit...", row=0, min_values=1, max_values=1)
+    @discord.ui.select(placeholder=_p('ui:friends_list|select|placeholder', "Select a friend to visit..."), row=0, min_values=1, max_values=1)
     async def friend_select(self, interaction: discord.Interaction, select: discord.ui.Select):
         val = select.values[0]
         if val == "none":
@@ -2896,19 +3278,19 @@ class FriendsListView(discord.ui.View):
             kwargs['attachments'] = []
         await interaction.edit_original_response(**kwargs)
 
-    @discord.ui.button(label="Prev", style=discord.ButtonStyle.grey, row=1, disabled=True)
+    @discord.ui.button(label=_p('ui:friends_list|button:prev|label', "Prev"), style=discord.ButtonStyle.grey, row=1, disabled=True)
     async def prev_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         self.page = max(0, self.page - 1)
         self._update_buttons()
         await interaction.response.edit_message(embed=self.make_embed(), view=self)
 
-    @discord.ui.button(label="Next", style=discord.ButtonStyle.grey, row=1, disabled=True)
+    @discord.ui.button(label=_p('ui:friends_list|button:next|label', "Next"), style=discord.ButtonStyle.grey, row=1, disabled=True)
     async def next_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         self.page += 1
         self._update_buttons()
         await interaction.response.edit_message(embed=self.make_embed(), view=self)
 
-    @discord.ui.button(label="Back", emoji="\U0001F519", style=discord.ButtonStyle.grey, row=1)
+    @discord.ui.button(label=_p('ui:friends|button:back|label', "Back"), emoji="\U0001F519", style=discord.ButtonStyle.grey, row=1)
     async def back_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer()
         view = FriendsHubView(self.cog, self.user_id, self.guild_id)
@@ -2917,12 +3299,12 @@ class FriendsListView(discord.ui.View):
             content=None, embed=view.make_embed(), view=view, attachments=[])
 
 
-class AddFriendModal(discord.ui.Modal, title="Add Friend"):
+class AddFriendModal(discord.ui.Modal, title=_p('modal:add_friend|title', "Add Friend")):
     """Modal to send a friend request by Discord username or ID."""
 
     query_input = discord.ui.TextInput(
-        label="Discord username or user ID",
-        placeholder="e.g. CoolUser or 123456789012345678",
+        label=_p('modal:add_friend|field:query|label', "Discord username or user ID"),
+        placeholder=_p('modal:add_friend|field:query|placeholder', "e.g. CoolUser or 123456789012345678"),
         min_length=1,
         max_length=40,
         required=True,
@@ -2946,22 +3328,26 @@ class AddFriendModal(discord.ui.Modal, title="Add Friend"):
             target = await _db_fetch(self.cog.bot,
                 "SELECT userid, name FROM user_config WHERE LOWER(name) = LOWER(%s)", query)
         if not target:
-            await interaction.followup.send(
-                f"Could not find user **{query}**. Try their Discord user ID.", ephemeral=True)
+            await interaction.followup.send(str(_p(
+                'error:friend|not_found',
+                "Could not find user **{query}**. Try their Discord user ID.")).format(query=query),
+                ephemeral=True)
             return
 
         target_id = target[0]['userid']
         target_name = target[0]['name'] or str(target_id)
 
         if target_id == self.user_id:
-            await interaction.followup.send("You can't add yourself!", ephemeral=True)
+            await interaction.followup.send(
+                _p('error:friend|self_add', "You can't add yourself!"), ephemeral=True)
             return
 
         target_pet = await _db_fetch(self.cog.bot,
             "SELECT level FROM lg_pets WHERE userid = %s", target_id)
         if not target_pet:
-            await interaction.followup.send(
-                f"**{target_name}** doesn't have a pet yet.", ephemeral=True)
+            await interaction.followup.send(str(_p(
+                'error:friend|no_pet', "**{name}** doesn't have a pet yet.")).format(name=target_name),
+                ephemeral=True)
             return
 
         blocked = await _db_fetch(self.cog.bot,
@@ -2970,7 +3356,8 @@ class AddFriendModal(discord.ui.Modal, title="Add Friend"):
                   OR (blocker_userid = %s AND blocked_userid = %s)""",
             target_id, self.user_id, self.user_id, target_id)
         if blocked:
-            await interaction.followup.send("Cannot send a friend request to this user.", ephemeral=True)
+            await interaction.followup.send(
+                _p('error:friend|blocked', "Cannot send a friend request to this user."), ephemeral=True)
             return
 
         lower, upper = (self.user_id, target_id) if self.user_id < target_id else (target_id, self.user_id)
@@ -3022,8 +3409,9 @@ class AddFriendModal(discord.ui.Modal, title="Add Friend"):
                WHERE from_userid = %s AND created_at >= NOW() - INTERVAL '24 hours'""",
             self.user_id)
         if recent and recent[0]['cnt'] >= RATE_LIMIT:
-            await interaction.followup.send(
-                f"You can only send {RATE_LIMIT} friend requests per day. Try again later.",
+            await interaction.followup.send(str(_p(
+                'error:friend|rate_limited',
+                "You can only send {limit} friend requests per day. Try again later.")).format(limit=RATE_LIMIT),
                 ephemeral=True)
             return
         # --- END AI-MODIFIED ---
@@ -3034,8 +3422,9 @@ class AddFriendModal(discord.ui.Modal, title="Add Friend"):
                ON CONFLICT (from_userid, to_userid) DO UPDATE SET status = 'PENDING'""",
             self.user_id, target_id)
 
-        await interaction.followup.send(
-            f"\U0001F4E8 Friend request sent to **{target_name}**!", ephemeral=True)
+        await interaction.followup.send(str(_p(
+            'success:friend|request_sent', "\U0001F4E8 Friend request sent to **{name}**!")).format(name=target_name),
+            ephemeral=True)
 
 
 class FriendPetView(discord.ui.View):
@@ -3137,25 +3526,49 @@ class FriendPetView(discord.ui.View):
         bathed_mark = " \u2705" if self.today_bathed else ""
         slept_mark = " \u2705" if self.today_slept else ""
 
+        care_reset = str(_p(
+            'embed:friend_pet|care_reset', "-# Care actions reset daily at midnight UTC"))
+
         farm_line = ""
         if self.farm_plots:
             watered = len(self.today_watered_plots)
             total = len([p for p in self.farm_plots if not p['dead']])
-            farm_line = f"\n\U0001F33F Farm: **{total}** plots planted"
+            farm_line = str(_p(
+                'embed:friend_pet|farm_planted', "\n\U0001F33F Farm: **{total}** plots planted")).format(total=total)
             if watered > 0:
-                farm_line += f" ({watered} watered today)"
+                farm_line += str(_p(
+                    'embed:friend_pet|farm_watered_suffix', " ({watered} watered today)")).format(watered=watered)
+
+        desc = str(_p(
+            'embed:friend_pet|desc',
+            "**{pet_name}** \u2014 Level {level}\n"
+            "{mood_emoji} Mood: **{mood}**\n\n"
+            "{e_steak} Hunger `[{bar_food}]`{fed_mark}\n"
+            "{e_soap} Clean `[{bar_bath}]`{bathed_mark}\n"
+            "{e_sleep} Energy `[{bar_sleep}]`{slept_mark}"
+            "{farm_line}\n\n"
+            "{care_reset}"
+        )).format(
+            pet_name=self.target_pet_name,
+            level=self.target_level,
+            mood_emoji=mood_emoji,
+            mood=mood_label,
+            e_steak=e_steak,
+            bar_food=bar_food,
+            fed_mark=fed_mark,
+            e_soap=e_soap,
+            bar_bath=bar_bath,
+            bathed_mark=bathed_mark,
+            e_sleep=e_sleep_e,
+            bar_sleep=bar_sleep,
+            slept_mark=slept_mark,
+            farm_line=farm_line,
+            care_reset=care_reset,
+        )
 
         embed = discord.Embed(
-            title=f"\U0001F465 {self.target_name}'s Pet",
-            description=(
-                f"**{self.target_pet_name}** \u2014 Level {self.target_level}\n"
-                f"{mood_emoji} Mood: **{mood_label}**\n\n"
-                f"{e_steak} Hunger `[{bar_food}]`{fed_mark}\n"
-                f"{e_soap} Clean `[{bar_bath}]`{bathed_mark}\n"
-                f"{e_sleep_e} Energy `[{bar_sleep}]`{slept_mark}"
-                f"{farm_line}\n\n"
-                "-# Care actions reset daily at midnight UTC"
-            ),
+            title=str(_p('embed:friend_pet|title', "\U0001F465 {name}'s Pet")).format(name=self.target_name),
+            description=desc,
             color=0x57F287
         )
 
@@ -3173,7 +3586,7 @@ class FriendPetView(discord.ui.View):
     async def interaction_check(self, interaction: discord.Interaction) -> bool:
         if interaction.user.id != self.user_id:
             await interaction.response.send_message(
-                "Use `/pet` to open your own pet!", ephemeral=True)
+                _p('error:general|not_your_pet', "Use `/pet` to open your own pet!"), ephemeral=True)
             return False
         return True
 
@@ -3184,7 +3597,8 @@ class FriendPetView(discord.ui.View):
         friendship = await _db_fetch(self.cog.bot,
             "SELECT 1 FROM lg_friends WHERE userid1 = %s AND userid2 = %s", lower, upper)
         if not friendship:
-            await interaction.followup.send("You are not friends with this user.", ephemeral=True)
+            await interaction.followup.send(
+                _p('error:friend|not_friends', "You are not friends with this user."), ephemeral=True)
             return
 
         today_start = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
@@ -3194,8 +3608,10 @@ class FriendPetView(discord.ui.View):
                  AND interaction_type = %s AND created_at >= %s""",
             self.user_id, self.target_id, care_type, today_start)
         if existing:
-            await interaction.followup.send(
-                f"You already used {care_type} on this pet today!", ephemeral=True)
+            await interaction.followup.send(str(_p(
+                'error:friend_pet|care_used', "You already used {care} on this pet today!")).format(
+                    care=care_type.title()),
+                ephemeral=True)
             return
 
         # --- AI-MODIFIED (2026-03-25) ---
@@ -3226,19 +3642,19 @@ class FriendPetView(discord.ui.View):
             kwargs['attachments'] = [file]
         await interaction.edit_original_response(**kwargs)
 
-    @discord.ui.button(label="Feed", emoji="\U0001F356", style=discord.ButtonStyle.green, row=0)
+    @discord.ui.button(label=_p('ui:friend_pet|button:feed|label', "Feed"), emoji="\U0001F356", style=discord.ButtonStyle.green, row=0)
     async def feed_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         await self._do_care(interaction, 'FEED')
 
-    @discord.ui.button(label="Bathe", emoji="\U0001F9FC", style=discord.ButtonStyle.blurple, row=0)
+    @discord.ui.button(label=_p('ui:friend_pet|button:bathe|label', "Bathe"), emoji="\U0001F9FC", style=discord.ButtonStyle.blurple, row=0)
     async def bathe_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         await self._do_care(interaction, 'BATHE')
 
-    @discord.ui.button(label="Sleep", emoji="\U0001F4A4", style=discord.ButtonStyle.grey, row=0)
+    @discord.ui.button(label=_p('ui:friend_pet|button:sleep|label', "Sleep"), emoji="\U0001F4A4", style=discord.ButtonStyle.grey, row=0)
     async def sleep_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         await self._do_care(interaction, 'SLEEP')
 
-    @discord.ui.button(label="Water All", emoji="\U0001F4A7", style=discord.ButtonStyle.green, row=1)
+    @discord.ui.button(label=_p('ui:friend_pet|button:water|label', "Water All"), emoji="\U0001F4A7", style=discord.ButtonStyle.green, row=1)
     async def water_all_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer()
 
@@ -3246,7 +3662,8 @@ class FriendPetView(discord.ui.View):
         friendship = await _db_fetch(self.cog.bot,
             "SELECT 1 FROM lg_friends WHERE userid1 = %s AND userid2 = %s", lower, upper)
         if not friendship:
-            await interaction.followup.send("You are not friends with this user.", ephemeral=True)
+            await interaction.followup.send(
+                _p('error:friend|not_friends', "You are not friends with this user."), ephemeral=True)
             return
 
         today_start = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
@@ -3284,11 +3701,14 @@ class FriendPetView(discord.ui.View):
             await _db_exec(self.cog.bot,
                 "UPDATE lg_pets SET xp = xp + %s WHERE userid = %s",
                 xp_gained, self.user_id)
-            await interaction.followup.send(
-                f"\U0001F4A7 Watered **{watered_count}** plots! You gained **{xp_gained} XP**.",
+            await interaction.followup.send(str(_p(
+                'success:friend_pet|watered',
+                "\U0001F4A7 Watered **{count}** plots! You gained **{xp} XP**.")).format(
+                    count=watered_count, xp=xp_gained),
                 ephemeral=True)
         else:
-            await interaction.followup.send("No plots left to water today.", ephemeral=True)
+            await interaction.followup.send(
+                _p('error:friend_pet|no_plots_water', "No plots left to water today."), ephemeral=True)
 
         await self.load_friend()
         embed, file = await self.build_response()
@@ -3297,7 +3717,7 @@ class FriendPetView(discord.ui.View):
             kwargs['attachments'] = [file]
         await interaction.edit_original_response(**kwargs)
 
-    @discord.ui.button(label="Back", emoji="\U0001F519", style=discord.ButtonStyle.grey, row=1)
+    @discord.ui.button(label=_p('ui:friends|button:back|label', "Back"), emoji="\U0001F519", style=discord.ButtonStyle.grey, row=1)
     async def back_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer()
         view = FriendsListView(self.cog, self.user_id, self.guild_id)
@@ -3440,7 +3860,7 @@ class FamilyHubView(discord.ui.View):
             member_count = member_count_rows[0]['cnt'] if member_count_rows else len(member_sprites)
 
             portrait_state = FamilyPortraitState(
-                family_name=self.family['name'] or 'Family',
+                family_name=self.family['name'] or str(_p('display:family|default_name', 'Family')),
                 family_level=self.family['level'] or 1,
                 family_xp=int(self.family['xp'] or 0),
                 family_gold=int(self.family['gold'] or 0),
@@ -3462,17 +3882,17 @@ class FamilyHubView(discord.ui.View):
     def _rebuild_buttons(self):
         self.clear_items()
         if self.family:
-            members_btn = discord.ui.Button(label="Members", emoji="\U0001F465",
+            members_btn = discord.ui.Button(label=_p('ui:family|button:members|label', 'Members'), emoji="\U0001F465",
                                             style=discord.ButtonStyle.green, row=0)
             members_btn.callback = self._open_members
             self.add_item(members_btn)
 
-            farm_btn = discord.ui.Button(label="Farm", emoji="\U0001F33F",
+            farm_btn = discord.ui.Button(label=_p('ui:family|button:farm|label', 'Farm'), emoji="\U0001F33F",
                                          style=discord.ButtonStyle.green, row=0)
             farm_btn.callback = self._open_farm
             self.add_item(farm_btn)
 
-            theme_btn = discord.ui.Button(label="Theme", emoji="\U0001F3A8",
+            theme_btn = discord.ui.Button(label=_p('ui:family|button:theme|label', 'Theme'), emoji="\U0001F3A8",
                                           style=discord.ButtonStyle.grey, row=0)
             theme_btn.callback = self._open_theme
             self.add_item(theme_btn)
@@ -3487,13 +3907,15 @@ class FamilyHubView(discord.ui.View):
             rp = rp_raw if isinstance(rp_raw, dict) else {}
 
             if _has_family_permission(role, 'invite_members', rp):
-                invite_btn = discord.ui.Button(label="Invite", emoji="\u2795",
+                invite_btn = discord.ui.Button(label=_p('ui:family|button:invite|label', 'Invite'), emoji="\u2795",
                                                style=discord.ButtonStyle.blurple, row=1)
                 invite_btn.callback = self._invite_member
                 self.add_item(invite_btn)
 
             is_leader = (self.family.get('leader_userid') == self.user_id)
-            leave_label = "Disband" if is_leader else "Leave"
+            leave_label = (
+                _p('ui:family|button:disband|label', 'Disband') if is_leader
+                else _p('ui:family|button:leave|label', 'Leave'))
             leave_style = discord.ButtonStyle.red if is_leader else discord.ButtonStyle.grey
             leave_btn = discord.ui.Button(label=leave_label, emoji="\U0001F6AA",
                                           style=leave_style, row=1)
@@ -3501,66 +3923,82 @@ class FamilyHubView(discord.ui.View):
             self.add_item(leave_btn)
 
             self.add_item(discord.ui.Button(
-                label="Manage", url=f"{WEBSITE_URL}/pet/family",
+                label=_p('ui:family|button:manage|label', 'Manage'), url=f"{WEBSITE_URL}/pet/family",
                 style=discord.ButtonStyle.link, row=1
             ))
         else:
-            create_btn = discord.ui.Button(label="Create Family", emoji="\U0001F3E0",
+            create_btn = discord.ui.Button(label=_p('ui:family|button:create|label', 'Create Family'), emoji="\U0001F3E0",
                                            style=discord.ButtonStyle.green, row=0)
             create_btn.callback = self._create_family
             self.add_item(create_btn)
 
-            pending_label = f"Invites ({self.pending_count})" if self.pending_count > 0 else "Invites (0)"
+            pending_label = str(_p(
+                'ui:family|button:invites|label', 'Invites ({count})')).format(count=self.pending_count)
             pending_style = discord.ButtonStyle.red if self.pending_count > 0 else discord.ButtonStyle.grey
             pending_btn = discord.ui.Button(label=pending_label, emoji="\U0001F4E8",
                                             style=pending_style, row=0)
             pending_btn.callback = self._open_invites
             self.add_item(pending_btn)
 
-        back_btn = discord.ui.Button(label="Back to Pet", emoji="\U0001F519",
+        back_btn = discord.ui.Button(label=_p('ui:family_hub|button:back_to_pet|label', 'Back to Pet'), emoji="\U0001F519",
                                      style=discord.ButtonStyle.grey, row=2)
         back_btn.callback = self._back_to_pet
         self.add_item(back_btn)
 
     def make_content_and_file(self):
         if self.family and self._portrait_bytes:
-            content = (
-                f"\U0001F3E0 **{self.family['name']}** \u2014 "
-                f"Your role: **{(self.membership or {}).get('role', 'MEMBER').capitalize()}**"
+            content = str(_p(
+                'embed:family_hub|content:with_portrait',
+                '\U0001F3E0 **{name}** \u2014 Your role: **{role}**',
+            )).format(
+                name=self.family['name'],
+                role=(self.membership or {}).get('role', 'MEMBER').capitalize(),
             )
             file = discord.File(BytesIO(self._portrait_bytes), filename="family_portrait.gif")
             return content, file, None
         elif self.family:
             embed = discord.Embed(
-                title=f"\U0001F3E0 {self.family['name']}",
-                description=(
-                    f"**Level:** {self.family['level']}  |  "
-                    f"**Gold:** {int(self.family['gold'] or 0):,}\n"
-                    f"**Your role:** {(self.membership or {}).get('role', 'MEMBER').capitalize()}\n\n"
-                    "*Portrait failed to render -- try again later*"
+                title=str(_p('embed:family_hub|title:with_name', '\U0001F3E0 {name}')).format(
+                    name=self.family['name']),
+                description=str(_p(
+                    'embed:family_hub|desc:stats_no_portrait',
+                    '**Level:** {level}  |  **Gold:** {gold}\n**Your role:** {role}\n\n{portrait_fail}',
+                )).format(
+                    level=self.family['level'],
+                    gold=f"{int(self.family['gold'] or 0):,}",
+                    role=(self.membership or {}).get('role', 'MEMBER').capitalize(),
+                    portrait_fail=str(_p(
+                        'embed:family_hub|desc:portrait_fail',
+                        '*Portrait failed to render -- try again later*',
+                    )),
                 ),
                 color=0x5865F2,
             )
             return None, None, embed
         else:
             embed = discord.Embed(
-                title="\U0001F3E0 Family",
-                description=(
+                title=str(_p('embed:family_hub|title', '\U0001F3E0 Family')),
+                description=str(_p(
+                    'embed:family_hub|desc:no_family',
                     "You're not in a family yet!\n\n"
-                    f"Create one for **{FAMILY_CREATE_COST:,}G** or accept a pending invite.\n\n"
-                    "Families let you share farms, bank items, pool gold, "
-                    "and show off a group portrait of all members' pets!"
-                ),
+                    'Create one for **{cost}G** or accept a pending invite.\n\n'
+                    'Families let you share farms, bank items, pool gold, '
+                    "and show off a group portrait of all members' pets!",
+                )).format(cost=f'{FAMILY_CREATE_COST:,}'),
                 color=0x5865F2,
             )
             if self.pending_count > 0:
-                embed.set_footer(text=f"You have {self.pending_count} pending invite(s)!")
+                embed.set_footer(text=str(_p(
+                    'embed:family_hub|footer:pending_invites',
+                    'You have {count} pending invite(s)!',
+                )).format(count=self.pending_count))
             return None, None, embed
 
     async def interaction_check(self, interaction: discord.Interaction) -> bool:
         if interaction.user.id != self.user_id:
             await interaction.response.send_message(
-                "Use `/pet` to open your own pet!", ephemeral=True)
+                str(_p('error:family|use_own_pet', 'Use `/pet` to open your own pet!')),
+                ephemeral=True)
             return False
         return True
 
@@ -3653,20 +4091,31 @@ class FamilyHubView(discord.ui.View):
 
             refund_parts = []
             if bank_items:
-                refund_parts.append(f"{len(bank_items)} item(s) returned to inventory")
+                refund_parts.append(str(_p(
+                    'msg:family|disband|refund_items',
+                    '{count} item(s) returned to inventory',
+                )).format(count=len(bank_items)))
             if family_gold > 0:
-                refund_parts.append(f"**{family_gold:,}G** treasury refunded")
+                refund_parts.append(str(_p(
+                    'msg:family|disband|refund_gold',
+                    '**{gold}G** treasury refunded',
+                )).format(gold=f'{family_gold:,}'))
             refund_msg = (" | ".join(refund_parts) + "\n") if refund_parts else ""
             await interaction.response.send_message(
-                f"\U0001F6AA Family **{self.family['name']}** has been disbanded.\n"
-                f"{refund_msg}",
+                str(_p(
+                    'msg:family|disband|done',
+                    '\U0001F6AA Family **{name}** has been disbanded.\n{refund}',
+                )).format(name=self.family['name'], refund=refund_msg),
                 ephemeral=True)
         else:
             await _db_exec(self.cog.bot,
                 "UPDATE lg_family_members SET left_at = NOW() WHERE family_id = %s AND userid = %s",
                 fid, self.user_id)
             await interaction.response.send_message(
-                f"\U0001F6AA You left **{self.family['name']}**.",
+                str(_p(
+                    'msg:family|leave|done',
+                    '\U0001F6AA You left **{name}**.',
+                )).format(name=self.family['name']),
                 ephemeral=True)
         await self.cog._show_pet(interaction, edit=True)
     # --- END AI-REPLACED ---
@@ -3686,12 +4135,12 @@ class FamilyHubView(discord.ui.View):
         await self.cog._show_pet(interaction, edit=True)
 
 
-class CreateFamilyModal(discord.ui.Modal, title="Create Family"):
+class CreateFamilyModal(discord.ui.Modal, title=_p('modal:create_family|title', 'Create Family')):
     """Modal to create a new family."""
 
     family_name_input = discord.ui.TextInput(
-        label="Family Name",
-        placeholder="Enter a name (2-32 characters)",
+        label=_p('modal:create_family|field:name|label', 'Family Name'),
+        placeholder=_p('modal:create_family|field:name|placeholder', 'Enter a name (2-32 characters)'),
         min_length=FAMILY_NAME_MIN,
         max_length=FAMILY_NAME_MAX,
     )
@@ -3706,7 +4155,11 @@ class CreateFamilyModal(discord.ui.Modal, title="Create Family"):
         name = self.family_name_input.value.strip()
         if len(name) < FAMILY_NAME_MIN or len(name) > FAMILY_NAME_MAX:
             await interaction.response.send_message(
-                f"Name must be {FAMILY_NAME_MIN}-{FAMILY_NAME_MAX} characters.", ephemeral=True)
+                str(_p(
+                    'error:family|name_length',
+                    'Name must be {min}-{max} characters.',
+                )).format(min=FAMILY_NAME_MIN, max=FAMILY_NAME_MAX),
+                ephemeral=True)
             return
 
         gold_rows = await _db_fetch(self.cog.bot,
@@ -3714,7 +4167,10 @@ class CreateFamilyModal(discord.ui.Modal, title="Create Family"):
         gold = gold_rows[0]['gold'] if gold_rows else 0
         if (gold or 0) < FAMILY_CREATE_COST:
             await interaction.response.send_message(
-                f"You need **{FAMILY_CREATE_COST:,}G** to create a family. You have **{gold or 0:,}G**.",
+                str(_p(
+                    'error:family|not_enough_gold',
+                    'You need **{need}G** to create a family. You have **{have}G**.',
+                )).format(need=f'{FAMILY_CREATE_COST:,}', have=f'{gold or 0:,}'),
                 ephemeral=True)
             return
 
@@ -3722,14 +4178,22 @@ class CreateFamilyModal(discord.ui.Modal, title="Create Family"):
             "SELECT family_id FROM lg_families WHERE LOWER(name) = LOWER(%s)", name)
         if existing:
             await interaction.response.send_message(
-                f"A family named **{name}** already exists. Choose a different name.", ephemeral=True)
+                str(_p(
+                    'error:family|name_taken',
+                    'A family named **{name}** already exists. Choose a different name.',
+                )).format(name=name),
+                ephemeral=True)
             return
 
         already_in = await _db_fetch(self.cog.bot,
             "SELECT family_id FROM lg_family_members WHERE userid = %s AND left_at IS NULL", self.user_id)
         if already_in:
             await interaction.response.send_message(
-                "You're already in a family! Leave first before creating a new one.", ephemeral=True)
+                str(_p(
+                    'error:family|already_in_family',
+                    "You're already in a family! Leave first before creating a new one.",
+                )),
+                ephemeral=True)
             return
 
         await _db_exec(self.cog.bot,
@@ -3762,8 +4226,10 @@ class CreateFamilyModal(discord.ui.Modal, title="Create Family"):
         # --- END AI-MODIFIED ---
 
         await interaction.response.send_message(
-            f"\U0001F389 Family **{name}** created! You are the Leader.\n"
-            f"Cost: **{FAMILY_CREATE_COST:,}G**",
+            str(_p(
+                'success:family|created',
+                '\U0001F389 Family **{name}** created! You are the Leader.\nCost: **{cost}G**',
+            )).format(name=name, cost=f'{FAMILY_CREATE_COST:,}'),
             ephemeral=True)
 
         hub = FamilyHubView(self.cog, self.user_id, self.guild_id)
@@ -3905,7 +4371,11 @@ class FamilyInvitesView(discord.ui.View):
             self.user_id)
         if already:
             await interaction.response.send_message(
-                "You're already in a family! Leave first.", ephemeral=True)
+                str(_p(
+                    'error:family|already_in_family_invite',
+                    "You're already in a family! Leave first.",
+                )),
+                ephemeral=True)
             return
 
         COOLDOWN_DAYS = 7
@@ -3922,7 +4392,10 @@ class FamilyInvitesView(discord.ui.View):
             if days_since < COOLDOWN_DAYS:
                 remaining = int(COOLDOWN_DAYS - days_since) + 1
                 await interaction.response.send_message(
-                    f"You recently left a family. Cooldown: **{remaining} day(s)** remaining.",
+                    str(_p(
+                        'error:family|cooldown',
+                        'You recently left a family. Cooldown: **{days} day(s)** remaining.',
+                    )).format(days=remaining),
                     ephemeral=True)
                 return
 
@@ -3930,7 +4403,9 @@ class FamilyInvitesView(discord.ui.View):
             "SELECT family_id FROM lg_family_invites WHERE invite_id = %s AND status = 'PENDING'",
             self.selected_invite_id)
         if not inv:
-            await interaction.response.send_message("Invite no longer valid.", ephemeral=True)
+            await interaction.response.send_message(
+                str(_p('error:invite|not_found', 'Invite no longer valid.')),
+                ephemeral=True)
             return
 
         family_id = inv[0]['family_id']
@@ -3938,7 +4413,9 @@ class FamilyInvitesView(discord.ui.View):
         fam_info = await _db_fetch(self.cog.bot,
             "SELECT xp, max_members FROM lg_families WHERE family_id = %s", family_id)
         if not fam_info:
-            await interaction.response.send_message("Family no longer exists.", ephemeral=True)
+            await interaction.response.send_message(
+                str(_p('error:invite|family_gone', 'Family no longer exists.')),
+                ephemeral=True)
             return
         mem_count = await _db_fetch(self.cog.bot,
             "SELECT COUNT(*) as cnt FROM lg_family_members WHERE family_id = %s AND left_at IS NULL",
@@ -3948,7 +4425,11 @@ class FamilyInvitesView(discord.ui.View):
         max_mem = max(fam_info[0].get('max_members') or 10, 10 + (fam_level - 1) // 2)
         if (mem_count[0]['cnt'] or 0) >= max_mem:
             await interaction.response.send_message(
-                "This family is full! They need to level up to unlock more slots.", ephemeral=True)
+                str(_p(
+                    'error:family|full',
+                    'This family is full! They need to level up to unlock more slots.',
+                )),
+                ephemeral=True)
             return
 
         await _db_exec(self.cog.bot,
@@ -3961,8 +4442,9 @@ class FamilyInvitesView(discord.ui.View):
                joined_at = NOW(), contribution_xp = 0""",
             family_id, self.user_id)
 
-        await interaction.response.send_message("\u2705 You joined the family!", ephemeral=True)
-    # --- END AI-REPLACED ---
+        await interaction.response.send_message(
+            str(_p('success:family|joined', '\u2705 You joined the family!')),
+            ephemeral=True)
 
         hub = FamilyHubView(self.cog, self.user_id, self.guild_id)
         await hub.load_data()
@@ -3977,6 +4459,7 @@ class FamilyInvitesView(discord.ui.View):
             kwargs['embed'] = embed
             kwargs['attachments'] = []
         await interaction.edit_original_response(**kwargs)
+    # --- END AI-REPLACED ---
 
     async def _decline(self, interaction: discord.Interaction):
         if not self.selected_invite_id:
@@ -4055,28 +4538,39 @@ class FamilyMembersView(discord.ui.View):
         if page_members:
             options = [
                 discord.SelectOption(
-                    label=f"{m['name'] or str(m['userid'])} (Lv.{m['level'] or 1})",
-                    description=f"{(m['role'] or 'MEMBER').capitalize()} \u2022 {m['pet_name'] or 'Leo'}",
+                    label=str(_p(
+                        'ui:family_members|select:member|label',
+                        '{display} (Lv.{level})',
+                    )).format(display=m['name'] or str(m['userid']), level=m['level'] or 1),
+                    description=str(_p(
+                        'ui:family_members|select:member|desc',
+                        '{role} \u2022 {pet_name}',
+                    )).format(
+                        role=(m['role'] or 'MEMBER').capitalize(),
+                        pet_name=m['pet_name'] or str(_p('display:pet|default_name', 'Leo')),
+                    ),
                     value=str(m['userid']),
                 )
                 for m in page_members
             ]
-            select = discord.ui.Select(placeholder="Select a member to view...", options=options, row=0)
+            select = discord.ui.Select(
+                placeholder=_p('ui:family_members|select:placeholder', 'Select a member to view...'),
+                options=options, row=0)
             select.callback = self._on_select
             self.add_item(select)
 
         total_pages = max(1, math.ceil(len(self.members) / self.PAGE_SIZE))
         if total_pages > 1:
-            prev_btn = discord.ui.Button(label="Prev", style=discord.ButtonStyle.grey,
+            prev_btn = discord.ui.Button(label=_p('ui:family|button:prev|label', 'Prev'), style=discord.ButtonStyle.grey,
                                          row=1, disabled=self.page == 0)
             prev_btn.callback = self._prev
             self.add_item(prev_btn)
-            next_btn = discord.ui.Button(label="Next", style=discord.ButtonStyle.grey,
+            next_btn = discord.ui.Button(label=_p('ui:family|button:next|label', 'Next'), style=discord.ButtonStyle.grey,
                                          row=1, disabled=self.page >= total_pages - 1)
             next_btn.callback = self._next
             self.add_item(next_btn)
 
-        back_btn = discord.ui.Button(label="Back", emoji="\U0001F519",
+        back_btn = discord.ui.Button(label=_p('ui:family|button:back|label', 'Back'), emoji="\U0001F519",
                                      style=discord.ButtonStyle.grey, row=1)
         back_btn.callback = self._back
         self.add_item(back_btn)
@@ -4088,22 +4582,35 @@ class FamilyMembersView(discord.ui.View):
         for m in self.members[start:start + self.PAGE_SIZE]:
             icon = role_icons.get(m['role'], '\u2022')
             xp = int(m['contribution_xp'] or 0)
-            lines.append(
-                f"{icon} **{m['name'] or str(m['userid'])}** \u2014 "
-                f"Lv.{m['level'] or 1} \u2022 {(m['role'] or 'MEMBER').capitalize()} "
-                f"\u2022 {xp:,} XP"
-            )
+            lines.append(str(_p(
+                'embed:family_members|line',
+                '{icon} **{display}** \u2014 Lv.{level} \u2022 {role} \u2022 {xp} XP',
+            )).format(
+                icon=icon,
+                display=m['name'] or str(m['userid']),
+                level=m['level'] or 1,
+                role=(m['role'] or 'MEMBER').capitalize(),
+                xp=f'{xp:,}',
+            ))
         total_pages = max(1, math.ceil(len(self.members) / self.PAGE_SIZE))
-        desc = "\n".join(lines) if lines else "No members."
+        desc = "\n".join(lines) if lines else str(_p('embed:family_members|desc:empty', 'No members.'))
         return discord.Embed(
-            title=f"\U0001F465 Family Members ({len(self.members)})",
+            title=str(_p(
+                'embed:family_members|title',
+                '\U0001F465 Family Members ({count})',
+            )).format(count=len(self.members)),
             description=desc,
             color=0x5865F2,
-        ).set_footer(text=f"Page {self.page + 1}/{total_pages} \u2022 Select a member to view their pet")
+        ).set_footer(text=str(_p(
+            'embed:family_members|footer',
+            'Page {cur}/{total} \u2022 Select a member to view their pet',
+        )).format(cur=self.page + 1, total=total_pages))
 
     async def interaction_check(self, interaction: discord.Interaction) -> bool:
         if interaction.user.id != self.user_id:
-            await interaction.response.send_message("Use `/pet` to open your own pet!", ephemeral=True)
+            await interaction.response.send_message(
+                str(_p('error:family|use_own_pet', 'Use `/pet` to open your own pet!')),
+                ephemeral=True)
             return False
         return True
 
@@ -4213,14 +4720,31 @@ class FamilyMemberPetView(discord.ui.View):
         role_icon = role_icons.get(self.target_role, '\u2022')
 
         embed = discord.Embed(
-            title=f"\U0001F3E0 {self.target_name}'s Pet",
-            description=(
-                f"**{self.target_pet_name}** \u2014 Level {self.target_level}\n"
-                f"{role_icon} Family role: **{self.target_role.capitalize()}**\n"
-                f"{mood_emoji} Mood: **{mood_label}**\n\n"
-                f"{e_steak} Hunger `[{bar_food}]`\n"
-                f"{e_soap} Clean `[{bar_bath}]`\n"
-                f"{e_sleep_e} Energy `[{bar_sleep}]`"
+            title=str(_p(
+                'embed:family_member_pet|title',
+                "\U0001F3E0 {name}'s Pet",
+            )).format(name=self.target_name),
+            description=str(_p(
+                'embed:family_member_pet|desc',
+                '**{pet}** \u2014 Level {level}\n'
+                '{role_icon} Family role: **{role}**\n'
+                '{mood_emoji} Mood: **{mood}**\n\n'
+                '{e_steak} Hunger `[{bar_food}]`\n'
+                '{e_soap} Clean `[{bar_bath}]`\n'
+                '{e_sleep} Energy `[{bar_sleep}]`',
+            )).format(
+                pet=self.target_pet_name,
+                level=self.target_level,
+                role_icon=role_icon,
+                role=self.target_role.capitalize(),
+                mood_emoji=mood_emoji,
+                mood=mood_label,
+                e_steak=e_steak,
+                bar_food=bar_food,
+                e_soap=e_soap,
+                bar_bath=bar_bath,
+                e_sleep=e_sleep_e,
+                bar_sleep=bar_sleep,
             ),
             color=0x57F287,
         )
@@ -4238,11 +4762,13 @@ class FamilyMemberPetView(discord.ui.View):
 
     async def interaction_check(self, interaction: discord.Interaction) -> bool:
         if interaction.user.id != self.user_id:
-            await interaction.response.send_message("Use `/pet` to open your own pet!", ephemeral=True)
+            await interaction.response.send_message(
+                str(_p('error:family|use_own_pet', 'Use `/pet` to open your own pet!')),
+                ephemeral=True)
             return False
         return True
 
-    @discord.ui.button(label="Back", emoji="\U0001F519", style=discord.ButtonStyle.grey, row=0)
+    @discord.ui.button(label=_p('ui:family|button:back|label', 'Back'), emoji="\U0001F519", style=discord.ButtonStyle.grey, row=0)
     async def back_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer()
         view = FamilyMembersView(self.cog, self.user_id, self.guild_id, self.family_id)
@@ -4363,17 +4889,21 @@ class FamilyFarmView(discord.ui.View):
     def make_response(self):
         if not self._farm_exists:
             embed = discord.Embed(
-                title="\U0001F33F Family Farm",
-                description="No farm unlocked yet.\n\nManage your family farm on the website!",
+                title=str(_p('embed:family_farm|title', '\U0001F33F Family Farm')),
+                description=str(_p(
+                    'embed:family_farm|desc:no_farm',
+                    'No farm unlocked yet.\n\nManage your family farm on the website!',
+                )),
                 color=0x5865F2,
             )
             return None, None, embed
 
         planted = sum(1 for p in self.plots if p.get('seed_id') and not p.get('dead'))
-        content = (
-            f"\U0001F33F **Family Farm** \u2014 {planted} plots planted\n\n"
-            "-# *Read-only preview. Manage the farm on the website.*"
-        )
+        content = str(_p(
+            'embed:family_farm|content:preview',
+            '\U0001F33F **Family Farm** \u2014 {planted} plots planted\n\n'
+            '-# *Read-only preview. Manage the farm on the website.*',
+        )).format(planted=planted)
 
         file = None
         if self._gif_bytes:
@@ -4383,16 +4913,18 @@ class FamilyFarmView(discord.ui.View):
 
     async def interaction_check(self, interaction: discord.Interaction) -> bool:
         if interaction.user.id != self.user_id:
-            await interaction.response.send_message("Use `/pet` to open your own pet!", ephemeral=True)
+            await interaction.response.send_message(
+                str(_p('error:family|use_own_pet', 'Use `/pet` to open your own pet!')),
+                ephemeral=True)
             return False
         return True
 
     def _add_nav_buttons(self):
         self.add_item(discord.ui.Button(
-            label="Manage", url=f"{WEBSITE_URL}/pet/family",
+            label=_p('ui:family|button:manage|label', 'Manage'), url=f"{WEBSITE_URL}/pet/family",
             style=discord.ButtonStyle.link, row=0
         ))
-        back_btn = discord.ui.Button(label="Back", emoji="\U0001F519",
+        back_btn = discord.ui.Button(label=_p('ui:family|button:back|label', 'Back'), emoji="\U0001F519",
                                      style=discord.ButtonStyle.grey, row=0)
         back_btn.callback = self._go_back
         self.add_item(back_btn)
@@ -4427,37 +4959,63 @@ class FamilyThemeView(discord.ui.View):
         self.current_theme = current_theme if isinstance(current_theme, dict) else {}
 
         theme_options = [
-            discord.SelectOption(label="Default", value="default", description="Classic blurple & gold"),
-            discord.SelectOption(label="Royal Gold", value="royal_gold", description="Dark bg, gold accents"),
-            discord.SelectOption(label="Ocean Blue", value="ocean_blue", description="Deep navy, aqua glow"),
-            discord.SelectOption(label="Forest Green", value="forest_green", description="Dark green, emerald"),
-            discord.SelectOption(label="Midnight", value="midnight", description="Near-black, silver & purple"),
-            discord.SelectOption(label="Sunset", value="sunset", description="Warm orange-purple gradient"),
-            discord.SelectOption(label="Cherry Blossom", value="cherry_blossom", description="Dark pink, magenta"),
+            discord.SelectOption(
+                label=_p('ui:theme|preset:default|label', 'Default'),
+                value="default",
+                description=_p('ui:theme|preset:default|desc', 'Classic blurple & gold')),
+            discord.SelectOption(
+                label=_p('ui:theme|preset:royal_gold|label', 'Royal Gold'),
+                value="royal_gold",
+                description=_p('ui:theme|preset:royal_gold|desc', 'Dark bg, gold accents')),
+            discord.SelectOption(
+                label=_p('ui:theme|preset:ocean_blue|label', 'Ocean Blue'),
+                value="ocean_blue",
+                description=_p('ui:theme|preset:ocean_blue|desc', 'Deep navy, aqua glow')),
+            discord.SelectOption(
+                label=_p('ui:theme|preset:forest_green|label', 'Forest Green'),
+                value="forest_green",
+                description=_p('ui:theme|preset:forest_green|desc', 'Dark green, emerald')),
+            discord.SelectOption(
+                label=_p('ui:theme|preset:midnight|label', 'Midnight'),
+                value="midnight",
+                description=_p('ui:theme|preset:midnight|desc', 'Near-black, silver & purple')),
+            discord.SelectOption(
+                label=_p('ui:theme|preset:sunset|label', 'Sunset'),
+                value="sunset",
+                description=_p('ui:theme|preset:sunset|desc', 'Warm orange-purple gradient')),
+            discord.SelectOption(
+                label=_p('ui:theme|preset:cherry_blossom|label', 'Cherry Blossom'),
+                value="cherry_blossom",
+                description=_p('ui:theme|preset:cherry_blossom|desc', 'Dark pink, magenta')),
         ]
-        select = discord.ui.Select(placeholder="Choose a theme...", options=theme_options, row=0)
+        select = discord.ui.Select(
+            placeholder=_p('ui:theme|select:theme|placeholder', 'Choose a theme...'),
+            options=theme_options, row=0)
         select.callback = self._on_theme_select
         self.add_item(select)
 
-        back_btn = discord.ui.Button(label="Back", emoji="\U0001F519",
+        back_btn = discord.ui.Button(label=_p('ui:family|button:back|label', 'Back'), emoji="\U0001F519",
                                      style=discord.ButtonStyle.grey, row=1)
         back_btn.callback = self._back
         self.add_item(back_btn)
 
     def make_embed(self):
         return discord.Embed(
-            title="\U0001F3A8 Family Theme",
-            description=(
-                "Choose a preset theme for your family portrait!\n\n"
-                "The theme changes the background colors, borders, "
-                "glow effects, and accent colors of your family card."
-            ),
+            title=str(_p('embed:family_theme|title', '\U0001F3A8 Family Theme')),
+            description=str(_p(
+                'embed:family_theme|desc',
+                'Choose a preset theme for your family portrait!\n\n'
+                'The theme changes the background colors, borders, '
+                'glow effects, and accent colors of your family card.',
+            )),
             color=0x5865F2,
         )
 
     async def interaction_check(self, interaction: discord.Interaction) -> bool:
         if interaction.user.id != self.user_id:
-            await interaction.response.send_message("Use `/pet` to open your own pet!", ephemeral=True)
+            await interaction.response.send_message(
+                str(_p('error:family|use_own_pet', 'Use `/pet` to open your own pet!')),
+                ephemeral=True)
             return False
         return True
 
@@ -4472,8 +5030,23 @@ class FamilyThemeView(discord.ui.View):
             "UPDATE lg_families SET theme = %s WHERE family_id = %s",
             _json.dumps(theme), self.family_id)
 
+        theme_display_names = {
+            'default': str(_p('ui:theme|preset:default|label', 'Default')),
+            'royal_gold': str(_p('ui:theme|preset:royal_gold|label', 'Royal Gold')),
+            'ocean_blue': str(_p('ui:theme|preset:ocean_blue|label', 'Ocean Blue')),
+            'forest_green': str(_p('ui:theme|preset:forest_green|label', 'Forest Green')),
+            'midnight': str(_p('ui:theme|preset:midnight|label', 'Midnight')),
+            'sunset': str(_p('ui:theme|preset:sunset|label', 'Sunset')),
+            'cherry_blossom': str(_p('ui:theme|preset:cherry_blossom|label', 'Cherry Blossom')),
+        }
+        display_name = theme_display_names.get(
+            theme_key, theme_key.replace('_', ' ').title())
+
         await interaction.response.send_message(
-            f"\U0001F3A8 Theme set to **{theme_key.replace('_', ' ').title()}**!",
+            str(_p(
+                'msg:theme|set',
+                '\U0001F3A8 Theme set to **{name}**!',
+            )).format(name=display_name),
             ephemeral=True)
 
         hub = FamilyHubView(self.cog, self.user_id, self.guild_id)
@@ -4507,12 +5080,15 @@ class FamilyThemeView(discord.ui.View):
         await interaction.edit_original_response(**kwargs)
 
 
-class InviteMemberModal(discord.ui.Modal, title="Invite to Family"):
+class InviteMemberModal(discord.ui.Modal, title=_p('modal:invite_member|title', 'Invite to Family')):
     """Modal to invite a user to the family."""
 
     target_input = discord.ui.TextInput(
-        label="Discord username or user ID",
-        placeholder="Enter their LionGotchi username or numeric ID",
+        label=_p('modal:invite_member|field:target|label', 'Discord username or user ID'),
+        placeholder=_p(
+            'modal:invite_member|field:target|placeholder',
+            'Enter their LionGotchi username or numeric ID',
+        ),
         min_length=1,
         max_length=40,
     )
@@ -4539,21 +5115,31 @@ class InviteMemberModal(discord.ui.Modal, title="Invite to Family"):
 
         if not target_rows:
             await interaction.response.send_message(
-                f"Could not find user **{target_str}**.", ephemeral=True)
+                str(_p(
+                    'error:invite|not_found',
+                    'Could not find user **{target}**.',
+                )).format(target=target_str),
+                ephemeral=True)
             return
 
         target_id = target_rows[0]['userid']
         target_name = target_rows[0]['name'] or str(target_id)
 
         if target_id == self.user_id:
-            await interaction.response.send_message("You can't invite yourself!", ephemeral=True)
+            await interaction.response.send_message(
+                str(_p('error:invite|self_invite', "You can't invite yourself!")),
+                ephemeral=True)
             return
 
         has_pet = await _db_fetch(self.cog.bot,
             "SELECT userid FROM lg_pets WHERE userid = %s", target_id)
         if not has_pet:
             await interaction.response.send_message(
-                f"**{target_name}** doesn't have a LionGotchi pet yet.", ephemeral=True)
+                str(_p(
+                    'error:invite|no_pet',
+                    "**{name}** doesn't have a LionGotchi pet yet.",
+                )).format(name=target_name),
+                ephemeral=True)
             return
 
         already_in = await _db_fetch(self.cog.bot,
@@ -4561,7 +5147,11 @@ class InviteMemberModal(discord.ui.Modal, title="Invite to Family"):
             target_id)
         if already_in:
             await interaction.response.send_message(
-                f"**{target_name}** is already in a family.", ephemeral=True)
+                str(_p(
+                    'error:invite|target_in_family',
+                    '**{name}** is already in a family.',
+                )).format(name=target_name),
+                ephemeral=True)
             return
 
         pending = await _db_fetch(self.cog.bot,
@@ -4569,7 +5159,11 @@ class InviteMemberModal(discord.ui.Modal, title="Invite to Family"):
             self.family_id, target_id)
         if pending:
             await interaction.response.send_message(
-                f"**{target_name}** already has a pending invite from your family.", ephemeral=True)
+                str(_p(
+                    'error:invite|duplicate_pending',
+                    '**{name}** already has a pending invite from your family.',
+                )).format(name=target_name),
+                ephemeral=True)
             return
 
         # --- AI-MODIFIED (2026-03-24) ---
@@ -4595,7 +5189,11 @@ class InviteMemberModal(discord.ui.Modal, title="Invite to Family"):
             self.family_id, self.user_id, target_id, self.user_id)
 
         await interaction.response.send_message(
-            f"\u2709\uFE0F Invite sent to **{target_name}**!", ephemeral=True)
+            str(_p(
+                'success:invite|sent',
+                '\u2709\uFE0F Invite sent to **{name}**!',
+            )).format(name=target_name),
+            ephemeral=True)
 
         # --- AI-MODIFIED (2026-03-24) ---
         # Purpose: DM the invitee with accept/decline buttons, respecting notification prefs and rate limits
@@ -4641,18 +5239,31 @@ class InviteMemberModal(discord.ui.Modal, title="Invite to Family"):
                 self.family_id)
             member_count = mem_count[0]['cnt'] if mem_count else 0
 
+            member_line = str(_p(
+                'embed:family_invite|desc:members',
+                '{count} member(s)',
+            )).format(count=member_count)
+
             embed = discord.Embed(
-                title="\U0001F4E8 Family Invite!",
-                description=(
-                    f"**{inviter_name}** has invited you to join their family!\n\n"
-                    f"\U0001F3E0 **{family_name}**\n"
-                    f"\u2B50 Level {family_level} \u2022 "
-                    f"{member_count} member{'s' if member_count != 1 else ''}\n\n"
-                    "Use the buttons below to respond, or visit `/pet` \u2192 Family."
+                title=str(_p('embed:family_invite|title', '\U0001F4E8 Family Invite!')),
+                description=str(_p(
+                    'embed:family_invite|desc',
+                    '**{inviter}** has invited you to join their family!\n\n'
+                    '\U0001F3E0 **{family_name}**\n'
+                    '\u2B50 Level {family_level} \u2022 {member_line}\n\n'
+                    'Use the buttons below to respond, or visit `/pet` \u2192 Family.',
+                )).format(
+                    inviter=inviter_name,
+                    family_name=family_name,
+                    family_level=family_level,
+                    member_line=member_line,
                 ),
                 color=0x5865F2,
             )
-            embed.set_footer(text=f"Manage families at {WEBSITE_URL}/pet/family")
+            embed.set_footer(text=str(_p(
+                'embed:family_invite|footer',
+                'Manage families at {url}',
+            )).format(url=f'{WEBSITE_URL}/pet/family'))
 
             user = self.cog.bot.get_user(target_id)
             if user is None:
@@ -4676,22 +5287,22 @@ class FamilyInviteNotificationView(discord.ui.View):
     def __init__(self, invite_id: int):
         super().__init__(timeout=None)
         self.add_item(discord.ui.Button(
-            label="Accept", emoji="\u2705",
+            label=_p('ui:family_invite_notif|button:accept|label', 'Accept'), emoji="\u2705",
             style=discord.ButtonStyle.green,
             custom_id=f"lg:faminv:accept:{invite_id}"
         ))
         self.add_item(discord.ui.Button(
-            label="Decline", emoji="\u274C",
+            label=_p('ui:family_invite_notif|button:decline|label', 'Decline'), emoji="\u274C",
             style=discord.ButtonStyle.red,
             custom_id=f"lg:faminv:decline:{invite_id}"
         ))
         self.add_item(discord.ui.Button(
-            label="Notification Settings", emoji="\U0001F514",
+            label=_p('ui:family_invite_notif|button:notif_settings|label', 'Notification Settings'), emoji="\U0001F514",
             style=discord.ButtonStyle.grey,
             custom_id="lg:faminv:notif_toggle"
         ))
         self.add_item(discord.ui.Button(
-            label="View Family",
+            label=_p('ui:family_invite_notif|button:view_family|label', 'View Family'),
             url=f"{WEBSITE_URL}/pet/family",
             style=discord.ButtonStyle.link
         ))
@@ -4742,7 +5353,11 @@ class PetView(discord.ui.View):
         self.sleep_button.emoji = _lg_partial('lg_sleep', "\U0001F4A4")
         self.farm_button.emoji = _lg_partial('lg_trophy', "\U0001F33F")
 
-        toggle_label = "\U0001F3AE Gameboy" if fullscreen else "\U0001F4FA Full Screen"
+        toggle_label = (
+            str(_p('ui:pet|button:toggle|gameboy', "\U0001F3AE Gameboy"))
+            if fullscreen else
+            str(_p('ui:pet|button:toggle|fullscreen', "\U0001F4FA Full Screen"))
+        )
         toggle_btn = discord.ui.Button(
             label=toggle_label,
             style=discord.ButtonStyle.blurple if fullscreen else discord.ButtonStyle.grey,
@@ -4752,7 +5367,7 @@ class PetView(discord.ui.View):
         self.add_item(toggle_btn)
 
         self.add_item(discord.ui.Button(
-            label="Manage Pet",
+            label=_p('ui:pet|button:manage|label', "Manage Pet"),
             url=f"{WEBSITE_URL}/pet",
             style=discord.ButtonStyle.link,
             row=1
@@ -4761,7 +5376,7 @@ class PetView(discord.ui.View):
         # --- AI-MODIFIED (2026-03-24) ---
         # Purpose: Friends button to open the friends hub view
         friends_btn = discord.ui.Button(
-            label="Friends",
+            label=_p('ui:pet|button:friends|label', "Friends"),
             emoji="\U0001F465",
             style=discord.ButtonStyle.blurple,
             row=1
@@ -4773,7 +5388,7 @@ class PetView(discord.ui.View):
         # --- AI-MODIFIED (2026-03-24) ---
         # Purpose: Family button to open the family hub view
         family_btn = discord.ui.Button(
-            label="Family",
+            label=_p('ui:pet|button:family|label', "Family"),
             emoji="\U0001F3E0",
             style=discord.ButtonStyle.blurple,
             row=1
@@ -4785,7 +5400,7 @@ class PetView(discord.ui.View):
         # --- AI-MODIFIED (2026-03-24) ---
         # Purpose: Beta bug report link button to support server
         self.add_item(discord.ui.Button(
-            label="Report a Bug",
+            label=_p('ui:pet|button:report_bug|label', "Report a Bug"),
             emoji="\U0001F41B",
             url="https://discord.gg/the-study-lions-780195610154237993",
             style=discord.ButtonStyle.link,
@@ -4834,7 +5449,8 @@ class PetView(discord.ui.View):
     async def interaction_check(self, interaction: discord.Interaction) -> bool:
         if interaction.user.id != self.user_id:
             await interaction.response.send_message(
-                "This isn't your pet! Use `/pet` to see yours.", ephemeral=True
+                str(_p('error:pet|not_yours', "This isn't your pet! Use `/pet` to see yours.")),
+                ephemeral=True
             )
             return False
         return True
@@ -4907,13 +5523,14 @@ class PetView(discord.ui.View):
             logger.error(f"Inventory button failed: {e}\n{traceback.format_exc()}")
             try:
                 await interaction.response.send_message(
-                    "Could not load your backpack. Please try again.", ephemeral=True
+                    str(_p('error:backpack|load_failed', "Could not load your backpack. Please try again.")),
+                    ephemeral=True
                 )
             except Exception:
                 pass
     # --- END AI-REPLACED ---
 
-    @discord.ui.button(label="Farm", emoji="\U0001F33F", style=discord.ButtonStyle.green, row=0)
+    @discord.ui.button(label=_p('ui:pet|button:farm|label', "Farm"), emoji="\U0001F33F", style=discord.ButtonStyle.green, row=0)
     # --- END AI-MODIFIED ---
     async def farm_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer()
@@ -5667,7 +6284,10 @@ class LionGotchiCog(LionCog):
     #           f"{e_sleep} Sleep `[{bar_sleep}]` | {e_soap} Bath `[{bar_bath}]`"
     # --- End original code ---
     def _build_stats_text(self, state: PetState, pet, user_id: int,
-                          bonus_text: str = '') -> str:
+                          bonus_text: str = '',
+                          farm_line: str = '',
+                          include_beta: bool = False,
+                          bonus_section_header: bool = False) -> str:
         from .gameplay import xp_for_level
         xp_needed = xp_for_level(state.level)
         xp_current = pet.xp or 0
@@ -5684,10 +6304,11 @@ class LionGotchiCog(LionCog):
         mood_label = MOOD_LABELS.get(mood, 'Okay')
         mood_emoji = MOOD_EMOJI.get(mood_label, '\U0001F610')
         mood_mult = MOOD_MULTIPLIERS.get(mood, 1.0)
-        if mood_mult > 1.0:
-            mult_text = f" \u2014 **{mood_mult:.2f}x** Gold & XP"
-        elif mood_mult < 1.0:
-            mult_text = f" \u2014 **{mood_mult:.2f}x** Gold & XP"
+        if mood_mult != 1.0:
+            mult_text = str(_p(
+                'embed:pet_card|mood_mult',
+                " \u2014 **{mult:.2f}x** Gold & XP"
+            )).format(mult=mood_mult)
         else:
             mult_text = ""
 
@@ -5698,23 +6319,67 @@ class LionGotchiCog(LionCog):
             next_decay = last_decay.timestamp() + NEEDS_DECAY_INTERVAL_HOURS * 3600
             next_decay_rel = f"<t:{int(next_decay)}:R>"
         else:
-            next_decay_rel = "soon"
+            next_decay_rel = str(_p('embed:pet_card|decay_soon', "soon"))
 
-        text = (
-            f"**{state.pet_name}'s LionGotchi**\n\n"
-            f"{e_xp} **Level {state.level}** ({xp_current}/{xp_needed} XP)\n"
-            f"{e_coin} Gold: **{state.gold:,}** | \U0001f48e Gems: **{state.gems:,}**\n\n"
-            f"{mood_emoji} Mood: **{mood_label}**{mult_text}\n"
-            f"{e_steak} Hunger `[{bar_food}]` | {e_soap} Clean `[{bar_bath}]` | {e_sleep} Energy `[{bar_sleep}]`\n"
-            f"-# Next decay {next_decay_rel}"
+        hdr = str(_p(
+            'embed:pet_card|header',
+            "**{pet_name}'s LionGotchi**\n\n"
+        )).format(pet_name=state.pet_name)
+        lvl = str(_p(
+            'embed:pet_card|level_line',
+            "{e_xp} **Level {level}** ({xp_current}/{xp_needed} XP)\n"
+        )).format(
+            e_xp=e_xp, level=state.level,
+            xp_current=xp_current, xp_needed=xp_needed,
         )
+        gg = str(_p(
+            'embed:pet_card|gold_gems',
+            "{e_coin} Gold: **{gold:,}** | {gem_emoji} Gems: **{gems:,}**\n\n"
+        )).format(
+            e_coin=e_coin, gold=state.gold, gem_emoji='\U0001f48e', gems=state.gems,
+        )
+        mood_ln = str(_p(
+            'embed:pet_card|mood_line',
+            "{mood_emoji} Mood: **{mood_label}**{mult_text}\n"
+        )).format(
+            mood_emoji=mood_emoji, mood_label=mood_label, mult_text=mult_text,
+        )
+        needs = str(_p(
+            'embed:pet_card|needs_row',
+            "{e_steak} Hunger `[{bar_food}]` | {e_soap} Clean `[{bar_bath}]` | "
+            "{e_sleep} Energy `[{bar_sleep}]`\n"
+        )).format(
+            e_steak=e_steak, bar_food=bar_food, e_soap=e_soap, bar_bath=bar_bath,
+            e_sleep=e_sleep, bar_sleep=bar_sleep,
+        )
+        decay_ln = str(_p(
+            'embed:pet_card|next_decay',
+            "-# Next decay {when}"
+        )).format(when=next_decay_rel)
+
+        text = hdr + lvl + gg + mood_ln + needs + decay_ln
+        if farm_line:
+            text += "\n\n" + farm_line
         if bonus_text:
-            text += f"\n\n{bonus_text}"
-        text += (
+            if bonus_section_header:
+                text += str(_p(
+                    'embed:pet_card|active_bonuses_block',
+                    "\n\n\u2500\u2500\u2500 **Active Bonuses** \u2500\u2500\u2500\n{bonus}"
+                )).format(bonus=bonus_text)
+            else:
+                text += f"\n\n{bonus_text}"
+        text += str(_p(
+            'embed:pet_card|artist_note',
             "\n\n-# *All LionGotchi art is hand-drawn by real humans \u2014 "
             "1,000+ items over 12 months of work, not AI. "
             "Subscriptions & gems support our artists.*"
-        )
+        ))
+        if include_beta:
+            text += str(_p(
+                'embed:pet_card|beta_note',
+                "\n-# \U0001F41B *LionGotchi is in Beta \u2014 help us improve! "
+                "Click \"Report a Bug\" below.*"
+            ))
         return text
     # --- END AI-REPLACED ---
 
@@ -5816,10 +6481,6 @@ class LionGotchiCog(LionCog):
         # stats_text = f"{e_heart} Life `[{bar_life}]` | {e_steak} Food `[{bar_food}]`\n"
         #              f"{e_sleep} Sleep `[{bar_sleep}]` | {e_soap} Bath `[{bar_bath}]`"
         # --- End original code ---
-        from .gameplay import xp_for_level
-        xp_needed = xp_for_level(state.level)
-        xp_current = pet.xp or 0
-
         farm_planted = 0
         farm_ready = 0
         try:
@@ -5836,63 +6497,32 @@ class LionGotchiCog(LionCog):
             pass
 
         from .gameplay import calc_all_bonuses, format_bonus_summary
-        bonus_section = ""
+        bonus_text = ""
         try:
             user_tier, server_premium = await self._get_premium_context(
                 interaction.user.id, interaction.guild_id)
             bonuses = await calc_all_bonuses(self.bot, interaction.user.id,
                                               user_tier=user_tier, server_premium=server_premium)
-            bonus_text = format_bonus_summary(bonuses)
-            if bonus_text:
-                bonus_section = f"\n\n\u2500\u2500\u2500 **Active Bonuses** \u2500\u2500\u2500\n{bonus_text}"
+            bonus_text = format_bonus_summary(bonuses) or ""
         except Exception:
             pass
 
-        farm_line = f"\U0001F33F Farm: **{farm_planted}**/15 planted"
+        farm_line = str(_p(
+            'embed:pet_card|farm_planted',
+            "\U0001F33F Farm: **{planted}**/15 planted"
+        )).format(planted=farm_planted)
         if farm_ready:
-            farm_line += f" (**{farm_ready}** ready to harvest!)"
+            farm_line += str(_p(
+                'embed:pet_card|farm_ready',
+                " (**{ready}** ready to harvest!)"
+            )).format(ready=farm_ready)
 
-        bar_food = "+" * state.food + "-" * (8 - state.food)
-        bar_bath = "+" * state.bath + "-" * (8 - state.bath)
-        bar_sleep = "+" * state.sleep + "-" * (8 - state.sleep)
-
-        e_coin = _lg_emoji('lg_coin', '\U0001F4B0')
-        e_xp = _lg_emoji('lg_xp', '\u2B50')
-        e_steak = _lg_emoji('lg_steak', '\U0001F356')
-        e_sleep_e = _lg_emoji('lg_sleep', '\U0001F4A4')
-        e_soap = _lg_emoji('lg_soap', '\U0001F9FC')
-
-        mood = calc_mood(state.food, state.bath, state.sleep)
-        mood_label = MOOD_LABELS.get(mood, 'Okay')
-        mood_emoji = MOOD_EMOJI.get(mood_label, '\U0001F610')
-        mood_mult = MOOD_MULTIPLIERS.get(mood, 1.0)
-        if mood_mult != 1.0:
-            mult_text = f" \u2014 **{mood_mult:.2f}x** Gold & XP"
-        else:
-            mult_text = ""
-
-        last_decay = pet.last_decay_at
-        if last_decay and hasattr(last_decay, 'tzinfo'):
-            if last_decay.tzinfo is None:
-                last_decay = last_decay.replace(tzinfo=timezone.utc)
-            next_decay = last_decay.timestamp() + NEEDS_DECAY_INTERVAL_HOURS * 3600
-            next_decay_rel = f"<t:{int(next_decay)}:R>"
-        else:
-            next_decay_rel = "soon"
-
-        stats_text = (
-            f"**{state.pet_name}'s LionGotchi**\n\n"
-            f"{e_xp} **Level {state.level}** ({xp_current}/{xp_needed} XP)\n"
-            f"{e_coin} Gold: **{state.gold:,}** | \U0001f48e Gems: **{state.gems:,}**\n\n"
-            f"{mood_emoji} Mood: **{mood_label}**{mult_text}\n"
-            f"{e_steak} Hunger `[{bar_food}]` | {e_soap} Clean `[{bar_bath}]` | {e_sleep_e} Energy `[{bar_sleep}]`\n"
-            f"-# Next decay {next_decay_rel}\n\n"
-            f"{farm_line}"
-            f"{bonus_section}\n\n"
-            f"-# *All LionGotchi art is hand-drawn by real humans \u2014 1,000+ items over 12 months of work, not AI. "
-            f"Subscriptions & gems support our artists.*\n"
-            f"-# \U0001F41B *LionGotchi is in Beta \u2014 help us improve! "
-            f"Click \"Report a Bug\" below.*"
+        stats_text = self._build_stats_text(
+            state, pet, interaction.user.id,
+            bonus_text=bonus_text,
+            farm_line=farm_line,
+            include_beta=True,
+            bonus_section_header=bool(bonus_text),
         )
         # --- END AI-REPLACED ---
 
@@ -5921,17 +6551,18 @@ class LionGotchiCog(LionCog):
                 try:
                     tip_view = discord.ui.View()
                     tip_view.add_item(discord.ui.Button(
-                        label="Visit Website",
+                        label=_p('ui:pet|button:visit_website|label', "Visit Website"),
                         url=f"{WEBSITE_URL}/pet",
                         style=discord.ButtonStyle.link
                     ))
                     await interaction.followup.send(
-                        content=(
+                        content=str(_p(
+                            'tip:website_promo',
                             "**New in 2026!** Customize your room on our website "
                             "\u2014 drag and drop furniture, resize items, and "
                             "browse our full catalog!\n\n"
                             "We're back with a huge update and would love your feedback!"
-                        ),
+                        )),
                         ephemeral=True,
                         view=tip_view
                     )
@@ -5954,7 +6585,12 @@ class LionGotchiCog(LionCog):
         last = self._feed_cooldowns.get(interaction.user.id)
         if last and (now - last).total_seconds() < FEED_COOLDOWN_SECONDS:
             remaining = FEED_COOLDOWN_SECONDS - int((now - last).total_seconds())
-            await interaction.response.send_message(f"Your pet just ate! Try again in {remaining}s.", ephemeral=True)
+            await interaction.response.send_message(
+                str(_p(
+                    'error:feed|cooldown',
+                    "Your pet just ate! Try again in {remaining}s."
+                )).format(remaining=remaining),
+                ephemeral=True)
             return
         pet = await self._get_or_create_pet(interaction.user.id)
         new_food = min(8, pet.food + 2)
@@ -5973,7 +6609,8 @@ class LionGotchiCog(LionCog):
         file = discord.File(BytesIO(gif_bytes), filename="feed.gif")
         view = PetView(self, interaction.user.id, interaction.guild_id or 0)
         await interaction.response.edit_message(
-            content="\U0001F356 **nom nom nom!**", embed=None, attachments=[file], view=view
+            content=str(_p('pet:action:feed', "\U0001F356 **nom nom nom!**")),
+            embed=None, attachments=[file], view=view
         )
         await asyncio.sleep(3)
         await _db_exec(self.bot,
@@ -6014,7 +6651,12 @@ class LionGotchiCog(LionCog):
         last = self._bathe_cooldowns.get(interaction.user.id)
         if last and (now - last).total_seconds() < BATHE_COOLDOWN_SECONDS:
             remaining = BATHE_COOLDOWN_SECONDS - int((now - last).total_seconds())
-            await interaction.response.send_message(f"Your pet is already clean! Try again in {remaining}s.", ephemeral=True)
+            await interaction.response.send_message(
+                str(_p(
+                    'error:bathe|cooldown',
+                    "Your pet is already clean! Try again in {remaining}s."
+                )).format(remaining=remaining),
+                ephemeral=True)
             return
         pet = await self._get_or_create_pet(interaction.user.id)
         new_bath = min(8, pet.bath + 2)
@@ -6033,7 +6675,8 @@ class LionGotchiCog(LionCog):
         file = discord.File(BytesIO(gif_bytes), filename="bathe.gif")
         view = PetView(self, interaction.user.id, interaction.guild_id or 0)
         await interaction.response.edit_message(
-            content="\U0001F9FC **splashhh!**", embed=None, attachments=[file], view=view
+            content=str(_p('pet:action:bathe', "\U0001F9FC **splashhh!**")),
+            embed=None, attachments=[file], view=view
         )
         await asyncio.sleep(3)
         await _db_exec(self.bot,
@@ -6088,7 +6731,12 @@ class LionGotchiCog(LionCog):
         last = self._sleep_cooldowns.get(interaction.user.id)
         if last and (now - last).total_seconds() < SLEEP_COOLDOWN_SECONDS:
             remaining = SLEEP_COOLDOWN_SECONDS - int((now - last).total_seconds())
-            await interaction.response.send_message(f"Your pet just rested! Try again in {remaining}s.", ephemeral=True)
+            await interaction.response.send_message(
+                str(_p(
+                    'error:sleep|cooldown',
+                    "Your pet just rested! Try again in {remaining}s."
+                )).format(remaining=remaining),
+                ephemeral=True)
             return
         pet = await self._get_or_create_pet(interaction.user.id)
         new_sleep = min(8, pet.sleep + 2)
@@ -6107,7 +6755,8 @@ class LionGotchiCog(LionCog):
         file = discord.File(BytesIO(gif_bytes), filename="sleep.gif")
         view = PetView(self, interaction.user.id, interaction.guild_id or 0)
         await interaction.response.edit_message(
-            content="\U0001F4A4 **Zzz...**", embed=None, attachments=[file], view=view
+            content=str(_p('pet:action:sleep', "\U0001F4A4 **Zzz...**")),
+            embed=None, attachments=[file], view=view
         )
         await asyncio.sleep(3)
         await _db_exec(self.bot,
@@ -6279,24 +6928,31 @@ class LionGotchiCog(LionCog):
         pet_count = getattr(self, '_cached_pet_count', None)
         social_line = ""
         if pet_count and pet_count > 100:
-            social_line = f"\n\U0001F465 **{pet_count:,} students** already have a LionGotchi!\n"
+            social_line = str(_p(
+                'embed:first_encounter|social',
+                "\n\U0001F465 **{count:,} students** already have a LionGotchi!\n"
+            )).format(count=pet_count)
 
         embed = discord.Embed(
-            title="\U0001F981 You Found Something!",
+            title=str(_p('embed:first_encounter|title', "\U0001F981 You Found Something!")),
             color=0xffd700,
-            description=(
+            description=str(_p(
+                'embed:first_encounter|desc',
                 "While you were chatting, something caught your eye...\n\n"
                 "\u2728 **Equipment and scrolls** drop while you study!\n"
                 "Active members earn rare gear just by chatting and studying.\n"
-                f"{social_line}\n"
+                "{social_line}\n"
                 "\U0001F43E **Adopt a LionGotchi pet** to start collecting!\n"
                 "\u2694\uFE0F Equipment with stat bonuses \u2022 "
                 "\U0001F331 A farm to grow \u2022 "
                 "\U0001F4B0 A marketplace to trade\n\n"
                 "Type **`/pet`** or tap below to get started!"
-            )
+            )).format(social_line=social_line),
         )
-        embed.set_footer(text=f"The more you study, the more you earn \u2022 {WEBSITE_URL}/pet")
+        embed.set_footer(text=str(_p(
+            'embed:first_encounter|footer',
+            "The more you study, the more you earn \u2022 {url}"
+        )).format(url=f"{WEBSITE_URL}/pet"))
 
         gif_file = None
         try:
@@ -6337,29 +6993,33 @@ class LionGotchiCog(LionCog):
                                 guildid: int, channel):
         """Send a special celebration for a pet owner's very first item drop."""
         embed = discord.Embed(
-            title="\U0001F389 Your First Item Drop!",
+            title=str(_p('embed:first_drop|title', "\U0001F389 Your First Item Drop!")),
             color=0xffd700,
         )
+        scroll_lbl = str(_p('embed:first_drop|label_scroll', "[Scroll]"))
         drop_lines = []
         for d in drops:
             rarity = _clean_rarity(d.get('rarity', 'COMMON'))
             r_emoji = RARITY_EMOJI.get(rarity, '\u26AA')
             label = RARITY_LABELS.get(rarity, rarity.title())
             cat = d.get('category', '')
-            cat_label = f" [{cat.title()}]" if cat and cat != 'SCROLL' else (" [Scroll]" if cat == 'SCROLL' else "")
+            cat_label = f" [{cat.title()}]" if cat and cat != 'SCROLL' else (f" {scroll_lbl}" if cat == 'SCROLL' else "")
             drop_lines.append(f"{r_emoji} **{d['name']}**{cat_label} ({label})")
-        embed.description = (
-            "Your pet found its very first item!\n\n"
-            + "\n".join(drop_lines)
-            + "\n\n"
+        drops_block = "\n".join(drop_lines)
+        embed.description = str(_p(
+            'embed:first_drop|desc',
+            "Your pet found its very first item!\n\n{drops}\n\n"
             "\u2694\uFE0F **What now?** Equipment boosts your gold and XP earnings.\n"
             "\U0001F4DC Scrolls can enhance your equipment for even stronger boosts!\n"
-            f"\U0001F4E6 View your inventory at **{WEBSITE_URL}/pet**\n"
+            "\U0001F4E6 View your inventory at **{pet_url}**\n"
             "\U0001F4AC Keep chatting and studying to earn more drops!"
-        )
+        )).format(drops=drops_block, pet_url=f"{WEBSITE_URL}/pet")
         # --- AI-MODIFIED (2026-03-22) ---
         # Purpose: Mention VC Study Streak in first drop footer
-        embed.set_footer(text="Tip: The longer you study in VC each day, the rarer your drops become!")
+        embed.set_footer(text=str(_p(
+            'embed:first_drop|footer',
+            "Tip: The longer you study in VC each day, the rarer your drops become!"
+        )))
         # --- END AI-MODIFIED ---
     # --- END AI-MODIFIED ---
         view = FirstDropView(self, userid)
@@ -6409,16 +7069,18 @@ class LionGotchiCog(LionCog):
         )
         color = RARITY_EMBED_COLORS.get(best_rarity, 0x9e9e9e)
         embed = discord.Embed(
-            title="\U0001F381 Item Drop!",
+            title=str(_p('embed:drop|title', "\U0001F381 Item Drop!")),
             color=color
         )
+        scroll_drop_lbl = str(_p('embed:first_drop|label_scroll', "[Scroll]"))
         drop_lines = []
         for d in drops:
             rarity = _clean_rarity(d.get('rarity', 'COMMON'))
             r_emoji = RARITY_EMOJI.get(rarity, '\u26AA')
             label = RARITY_LABELS.get(rarity, rarity.title())
             cat = d.get('category', '')
-            cat_label = f" [{cat.title()}]" if cat and cat != 'SCROLL' else (" [Scroll]" if cat == 'SCROLL' else "")
+            cat_label = f" [{cat.title()}]" if cat and cat != 'SCROLL' else (
+                f" {scroll_drop_lbl}" if cat == 'SCROLL' else "")
             drop_lines.append(f"{r_emoji} **{d['name']}**{cat_label} ({label})")
 
         desc = "\n".join(drop_lines) + "\n"
@@ -6428,23 +7090,42 @@ class LionGotchiCog(LionCog):
             mins = vc_daily_min % 60
             time_str = f"{hours}h {mins}m" if hours else f"{mins}m"
             boost_pct = int((vc_boost - 1.0) * 100)
-            desc += f"\n\U0001F3AF **VC Study Streak**: {vc_tier} ({time_str} today) \u2014 +{boost_pct}% rare item chance"
+            desc += str(_p(
+                'embed:drop|tip:vc_streak',
+                "\n\U0001F3AF **VC Study Streak**: {tier} ({time_today}) \u2014 +{boost_pct}% rare item chance"
+            )).format(
+                tier=vc_tier,
+                time_today=f"{time_str} today",
+                boost_pct=boost_pct,
+            )
             next_tier = None
             for threshold, _, name in reversed(VC_RARITY_TIERS):
                 if threshold > vc_daily_min:
                     next_tier = (threshold, name)
             if next_tier:
                 mins_left = next_tier[0] - vc_daily_min
-                desc += f"\n\u23F1\uFE0F {mins_left} more min in VC to reach **{next_tier[1]}**!"
+                desc += str(_p(
+                    'embed:drop|tip:vc_unlock',
+                    "\n\u23F1\uFE0F {mins_left} more min in VC to reach **{tier_name}**!"
+                )).format(mins_left=mins_left, tier_name=next_tier[1])
         elif vc_daily_min > 0:
             next_threshold = 30
             mins_left = next_threshold - vc_daily_min
-            desc += f"\n\U0001F4A1 **Tip:** {mins_left} more min in VC today to unlock **Study Momentum** \u2014 better rarity drops!"
+            desc += str(_p(
+                'embed:drop|tip:study_momentum',
+                "\n\U0001F4A1 **Tip:** {mins_left} more min in VC today to unlock **Study Momentum** \u2014 better rarity drops!"
+            )).format(mins_left=mins_left)
         else:
-            desc += f"\n\U0001F4A1 **Tip:** Study in VC for 30+ min today to unlock rarer item drops!"
+            desc += str(_p(
+                'embed:drop|tip:vc_daily',
+                "\n\U0001F4A1 **Tip:** Study in VC for 30+ min today to unlock rarer item drops!"
+            ))
 
         embed.description = desc
-        footer_text = bonus_footer or f"Use /pet to view your LionGotchi \u2022 {WEBSITE_URL}/pet"
+        footer_text = bonus_footer or str(_p(
+            'embed:drop|footer',
+            "Use /pet to view your LionGotchi \u2022 {url}"
+        )).format(url=f"{WEBSITE_URL}/pet")
         embed.set_footer(text=footer_text)
         return embed
     # --- END AI-MODIFIED ---
@@ -6463,35 +7144,38 @@ class LionGotchiCog(LionCog):
         """Build a teaser embed with rotating hooks. Returns (embed, gif_key)."""
         hooks = [
             {
-                'title': '\u2728 Earn Gear While You Study!',
-                'description': (
+                'title': str(_p('embed:teaser:equipment|title', '\u2728 Earn Gear While You Study!')),
+                'description': str(_p(
+                    'embed:teaser:equipment|desc',
                     "**Equipment and scrolls** drop while you chat and study!\n\n"
                     "\u2694\uFE0F Equip gear for gold and XP bonuses\n"
                     "\U0001F4DC Enhance equipment with scrolls\n\n"
                     "Use `/pet` to adopt your LionGotchi and start collecting!"
-                ),
+                )),
                 'gif_key': 'equipment',
             },
             {
-                'title': '\U0001F331 Grow Your Own Farm!',
-                'description': (
+                'title': str(_p('embed:teaser:farm|title', '\U0001F331 Grow Your Own Farm!')),
+                'description': str(_p(
+                    'embed:teaser:farm|desc',
                     "LionGotchi pets come with a **15-plot farm**!\n\n"
                     "\U0001FAB4 Plant seeds \u2022 \U0001F4A7 Water daily \u2022 "
                     "\U0001F33E Harvest for gold\n"
                     "Your farm grows automatically as you study.\n\n"
                     "Use `/pet` to get started!"
-                ),
+                )),
                 'gif_key': 'farm',
             },
             {
-                'title': '\U0001F3E0 Your Pet Is Waiting!',
-                'description': (
+                'title': str(_p('embed:teaser:pet|title', '\U0001F3E0 Your Pet Is Waiting!')),
+                'description': str(_p(
+                    'embed:teaser:pet|desc',
                     "Adopt a **LionGotchi** \u2014 a virtual pet that grows "
                     "alongside your study sessions!\n\n"
                     "\U0001F43E Care for it \u2022 \u2694\uFE0F Gear it up \u2022 "
                     "\U0001F4B0 Trade with friends\n\n"
                     "Use `/pet` to adopt yours!"
-                ),
+                )),
                 'gif_key': 'welcome',
             },
         ]
@@ -6502,7 +7186,10 @@ class LionGotchiCog(LionCog):
             description=hook['description'],
             color=0xffd700,
         )
-        embed.set_footer(text=f"The more you study, the more you earn \u2022 {WEBSITE_URL}/pet")
+        embed.set_footer(text=str(_p(
+            'embed:first_encounter|footer',
+            "The more you study, the more you earn \u2022 {url}"
+        )).format(url=f"{WEBSITE_URL}/pet"))
         return embed, hook['gif_key']
     # --- END AI-REPLACED ---
 
@@ -6703,21 +7390,31 @@ class LionGotchiCog(LionCog):
         # --- AI-MODIFIED (2026-03-20) ---
         # Purpose: Show daily gold/XP cap progress in level-up notification
         daily_progress = self._format_daily_progress(userid)
-        desc = (
-            f"{e_xp} Your LionGotchi reached **Level {new_level}**!\n\n"
-            f"{e_coin} **+{level_gold}G** level-up bonus\n"
-            f"Session: **+{gold_earned}G** gold, **+{xp_earned}** XP\n"
-            f"{daily_progress}"
+        desc = str(_p(
+            'embed:levelup|desc',
+            "{e_xp} Your LionGotchi reached **Level {new_level}**!\n\n"
+            "{e_coin} **+{level_gold}G** level-up bonus\n"
+            "Session: **+{gold_earned}G** gold, **+{xp_earned}** XP\n"
+            "{daily_progress}"
+        )).format(
+            e_xp=e_xp, new_level=new_level, e_coin=e_coin, level_gold=level_gold,
+            gold_earned=gold_earned, xp_earned=xp_earned, daily_progress=daily_progress,
         )
         if bonus_text:
-            desc += f"\n\n\u2500\u2500\u2500 **Active Bonuses** \u2500\u2500\u2500\n{bonus_text}"
+            desc += str(_p(
+                'embed:pet_card|active_bonuses_block',
+                "\n\n\u2500\u2500\u2500 **Active Bonuses** \u2500\u2500\u2500\n{bonus}"
+            )).format(bonus=bonus_text)
 
         embed = discord.Embed(
-            title="\U0001F31F Level Up!",
+            title=str(_p('embed:levelup|title', "\U0001F31F Level Up!")),
             description=desc,
             color=0xFFD700
         )
-        embed.set_footer(text=f"Use /pet to view your LionGotchi \u2022 {WEBSITE_URL}/pet")
+        embed.set_footer(text=str(_p(
+            'embed:drop|footer',
+            "Use /pet to view your LionGotchi \u2022 {url}"
+        )).format(url=f"{WEBSITE_URL}/pet"))
         # --- END AI-MODIFIED ---
 
         send_dm = pref in ('ALL', 'DM_ONLY')
@@ -6932,17 +7629,68 @@ class LionGotchiCog(LionCog):
             logger.exception("Error in LionGotchi text_session_complete handler")
     # --- END AI-REPLACED ---
 
-    # --- AI-MODIFIED (2026-03-19) ---
-    # Purpose: DM notification when pet needs are critically low, with Open Pet /
-    #          Notification Settings / View Pet buttons matching existing notification style
+    # --- AI-REPLACED (2026-04-01) ---
+    # Reason: Pet warning DMs were too frequent (every 4h, in-memory cooldown reset on restart)
+    # What the new code does better: Cooldown is now 7 days and persisted in the DB
+    #   (last_pet_warning column) so it survives restarts and works across all 32 shards
+    # --- Original code (commented out for rollback) ---
+    # async def _check_pet_warning(self, userid: int, pet):
+    #     """Send a DM warning if any pet need is at 2 or below, rate-limited."""
+    #     try:
+    #         if pet.food > 2 and pet.bath > 2 and pet.sleep > 2:
+    #             return
+    #         now = datetime.now(timezone.utc)
+    #         last_warning = self._pet_warning_cooldowns.get(userid)
+    #         if last_warning and (now - last_warning).total_seconds() < PET_WARNING_COOLDOWN_SECONDS:
+    #             return
+    #         notif_pref = getattr(pet, 'drop_notif', 'ALL')
+    #         if hasattr(notif_pref, 'value'):
+    #             notif_pref = notif_pref.value
+    #         if notif_pref == 'MUTED':
+    #             return
+    #         low_needs = []
+    #         if pet.food <= 2:
+    #             low_needs.append("\U0001F356 Hunger")
+    #         if pet.bath <= 2:
+    #             low_needs.append("\U0001F9FC Cleanliness")
+    #         if pet.sleep <= 2:
+    #             low_needs.append("\U0001F4A4 Energy")
+    #         pet_name = pet.pet_name or "Leo"
+    #         mood = calc_mood(pet.food, pet.bath, pet.sleep)
+    #         mood_label = MOOD_LABELS.get(mood, 'Okay')
+    #         mood_mult = MOOD_MULTIPLIERS.get(mood, 1.0)
+    #         needs_text = ", ".join(low_needs)
+    #         embed = discord.Embed(
+    #             title=f"\U0001F43E {pet_name} needs attention!",
+    #             color=0xf0c040 if mood >= 3 else 0xe04040,
+    #             description=(
+    #                 f"**Low:** {needs_text}\n\n"
+    #                 f"Mood: **{mood_label}** ({mood_mult:.2f}x Gold & XP)\n\n"
+    #                 f"Start a study session or feed them before they get sad!"
+    #             ),
+    #         )
+    #         embed.set_footer(text=f"Use /pet to care for your LionGotchi \u2022 {WEBSITE_URL}/pet")
+    #         view = LevelUpNotificationView(self, userid)
+    #         user = self.bot.get_user(userid)
+    #         if user is None:
+    #             user = await self.bot.fetch_user(userid)
+    #         if user:
+    #             await user.send(embed=embed, view=view)
+    #             self._pet_warning_cooldowns[userid] = now
+    #     except discord.Forbidden:
+    #         pass
+    #     except Exception:
+    #         logger.debug(f"Failed to send pet warning to {userid}", exc_info=True)
+    # --- End original code ---
     async def _check_pet_warning(self, userid: int, pet):
-        """Send a DM warning if any pet need is at 2 or below, rate-limited."""
+        """Send a DM warning if any pet need is at 2 or below, rate-limited to once per week via DB."""
         try:
             if pet.food > 2 and pet.bath > 2 and pet.sleep > 2:
                 return
 
             now = datetime.now(timezone.utc)
-            last_warning = self._pet_warning_cooldowns.get(userid)
+
+            last_warning = getattr(pet, 'last_pet_warning', None)
             if last_warning and (now - last_warning).total_seconds() < PET_WARNING_COOLDOWN_SECONDS:
                 return
 
@@ -6954,11 +7702,11 @@ class LionGotchiCog(LionCog):
 
             low_needs = []
             if pet.food <= 2:
-                low_needs.append("\U0001F356 Hunger")
+                low_needs.append(str(_p('embed:pet_warning|need_hunger', "\U0001F356 Hunger")))
             if pet.bath <= 2:
-                low_needs.append("\U0001F9FC Cleanliness")
+                low_needs.append(str(_p('embed:pet_warning|need_clean', "\U0001F9FC Cleanliness")))
             if pet.sleep <= 2:
-                low_needs.append("\U0001F4A4 Energy")
+                low_needs.append(str(_p('embed:pet_warning|need_energy', "\U0001F4A4 Energy")))
 
             pet_name = pet.pet_name or "Leo"
             mood = calc_mood(pet.food, pet.bath, pet.sleep)
@@ -6967,15 +7715,24 @@ class LionGotchiCog(LionCog):
 
             needs_text = ", ".join(low_needs)
             embed = discord.Embed(
-                title=f"\U0001F43E {pet_name} needs attention!",
+                title=str(_p(
+                    'embed:pet_warning|title',
+                    "\U0001F43E {pet_name} needs attention!"
+                )).format(pet_name=pet_name),
                 color=0xf0c040 if mood >= 3 else 0xe04040,
-                description=(
-                    f"**Low:** {needs_text}\n\n"
-                    f"Mood: **{mood_label}** ({mood_mult:.2f}x Gold & XP)\n\n"
-                    f"Start a study session or feed them before they get sad!"
+                description=str(_p(
+                    'embed:pet_warning|desc',
+                    "**Low:** {needs}\n\n"
+                    "Mood: **{mood_label}** ({mood_mult:.2f}x Gold & XP)\n\n"
+                    "Start a study session or feed them before they get sad!"
+                )).format(
+                    needs=needs_text, mood_label=mood_label, mood_mult=mood_mult,
                 ),
             )
-            embed.set_footer(text=f"Use /pet to care for your LionGotchi \u2022 {WEBSITE_URL}/pet")
+            embed.set_footer(text=str(_p(
+                'embed:pet_warning|footer',
+                "Use /pet to care for your LionGotchi \u2022 {url}"
+            )).format(url=f"{WEBSITE_URL}/pet"))
 
             view = LevelUpNotificationView(self, userid)
 
@@ -6984,12 +7741,18 @@ class LionGotchiCog(LionCog):
                 user = await self.bot.fetch_user(userid)
             if user:
                 await user.send(embed=embed, view=view)
-                self._pet_warning_cooldowns[userid] = now
+                async with self.bot.db.connection() as conn:
+                    await conn.execute(
+                        "UPDATE lg_pets SET last_pet_warning = %s WHERE userid = %s",
+                        [now, userid]
+                    )
+                if pet.data is not None:
+                    pet.data['last_pet_warning'] = now
         except discord.Forbidden:
             pass
         except Exception:
             logger.debug(f"Failed to send pet warning to {userid}", exc_info=True)
-    # --- END AI-MODIFIED ---
+    # --- END AI-REPLACED ---
 
     # ---- Slash commands ----
 
@@ -7003,11 +7766,16 @@ class LionGotchiCog(LionCog):
     # --- AI-MODIFIED (2026-03-16) ---
     # Purpose: Admin command to set/clear the guild's LionGotchi drop notification channel
 
+    # --- AI-MODIFIED (2026-04-01) ---
+    # Purpose: Fix misleading "leave empty to clear" text -- Discord slash commands
+    # don't allow submitting an empty channel field. Changed to instruct users to
+    # omit the option entirely to clear.
     @cmds.hybrid_command(
         name="petdrops",
-        description="(Admin) Set the channel for LionGotchi drop notifications"
+        description="(Admin) Set or clear the LionGotchi drop notification channel"
     )
-    @appcmds.describe(channel="Channel for drop notifications (leave empty to clear)")
+    @appcmds.describe(channel="Channel for drop notifications (omit this option to clear)")
+    # --- END AI-MODIFIED ---
     @cmds.has_permissions(administrator=True)
     async def petdrops_cmd(self, ctx: LionContext,
                            channel: discord.TextChannel = None):
