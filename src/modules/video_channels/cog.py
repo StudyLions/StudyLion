@@ -13,9 +13,10 @@ from meta import LionCog, LionBot, LionContext
 from meta.logger import log_wrap
 from meta.sharding import THIS_SHARD
 from core.data import CoreData
-from utils.lib import utc_now
+from utils.lib import utc_now, strfdelta
 from wards import high_management_ward, low_management_ward, equippable_role
 from modules.moderation.cog import ModerationCog
+from modules.moderation.data import TicketType, TicketState
 
 
 from . import babel, logger
@@ -238,24 +239,51 @@ class VideoCog(LionCog):
             # And the event lock should wait for this to be complete anyway
             pass
 
-        # TODO: Notify through the moderation alert API
+        # --- AI-MODIFIED (2026-04-03) ---
+        # Purpose: Add blacklist expiry info to the disconnection notification
+        modcog: ModerationCog = self.bot.get_cog('ModerationCog')
+        expiry_str = t(_p(
+            'video_watchdog|blacklist|expiry:permanent',
+            "Permanent"
+        ))
+        try:
+            active_tickets = await VideoTicket.fetch_tickets(
+                self.bot,
+                guildid=member.guild.id,
+                targetid=member.id,
+                ticket_type=TicketType.STUDY_BAN,
+                ticket_state=TicketState.EXPIRING,
+            )
+            if active_tickets and active_tickets[0].data.expiry:
+                expiry_str = discord.utils.format_dt(active_tickets[0].data.expiry, 'R')
+        except Exception:
+            pass
+
         embed = discord.Embed(
             colour=discord.Colour.brand_red(),
             title=t(_p(
                 'video_watchdog|kick_blacklisted_member|notification|title',
                 "You have been disconnected."
             )),
+            # --- Original description (commented out for rollback) ---
+            # description=t(_p(
+            #     'video_watchdog|kick_blacklisted_member|notification|desc',
+            #     "You were disconnected from the video channel {channel} because you are "
+            #     "blacklisted from video channels in **{server}**."
+            # )).format(channel=channel.mention, server=channel.guild.name),
+            # --- End original description ---
             description=t(_p(
                 'video_watchdog|kick_blacklisted_member|notification|desc',
                 "You were disconnected from the video channel {channel} because you are "
-                "blacklisted from video channels in **{server}**."
-            )).format(channel=channel.mention, server=channel.guild.name),
+                "blacklisted from video channels in **{server}**.\n"
+                "**Your blacklist expires:** {expiry}"
+            )).format(channel=channel.mention, server=channel.guild.name, expiry=expiry_str),
         )
-        modcog: ModerationCog = self.bot.get_cog('ModerationCog')
         await modcog.send_alert(
             member,
             embed=embed
         )
+        # --- END AI-MODIFIED ---
 
     async def _joined_video_channel(self, member: discord.Member, channel: discord.VoiceChannel):
         """
@@ -415,6 +443,40 @@ class VideoCog(LionCog):
                 if not lion.data.video_warned:
                     await lion.data.update(video_warned=True)
             else:
+                # --- AI-REPLACED (2026-04-03) ---
+                # Reason: Blacklist embed was static with no details about duration or offense count
+                # What the new code does better: Adds duration, offense count, expiry, server,
+                #   and channel as format placeholders -- users see ban details, and premium
+                #   servers can customize via Text Branding
+                # --- Original code (commented out for rollback) ---
+                # alert = discord.Embed(
+                #     colour=discord.Colour.brand_red(),
+                #     title=t(_p(
+                #         'video_watchdog|join_task|kick_after_grace|blacklist|title',
+                #         "You have been blacklisted!"
+                #     )),
+                #     description=t(_p(
+                #         'video_watchdog|join_task|kick_after_grace|blacklist|desc',
+                #         "You have been blacklisted from the video channels in this server."
+                #     )),
+                #     timestamp=utc_now()
+                # ).add_field(name='', value=jump_field)
+                # # TODO: Add duration
+                # await modcog.send_alert(member, embed=alert, reference=alert_ref)
+                # --- End original code ---
+                violation_number = getattr(ticket, 'violation_number', None) or '?'
+                if ticket and ticket.data.duration:
+                    duration_str = strfdelta(dt.timedelta(seconds=ticket.data.duration))
+                    expiry_str = discord.utils.format_dt(ticket.data.expiry, 'R')
+                else:
+                    duration_str = t(_p(
+                        'video_watchdog|blacklist|duration:permanent',
+                        "Permanent"
+                    ))
+                    expiry_str = t(_p(
+                        'video_watchdog|blacklist|expiry:never',
+                        "Never"
+                    ))
                 alert = discord.Embed(
                     colour=discord.Colour.brand_red(),
                     title=t(_p(
@@ -423,12 +485,21 @@ class VideoCog(LionCog):
                     )),
                     description=t(_p(
                         'video_watchdog|join_task|kick_after_grace|blacklist|desc',
-                        "You have been blacklisted from the video channels in this server."
-                    )),
+                        "You have been blacklisted from the video channels in **{server}** "
+                        "(offense #{count}).\n"
+                        "**Duration:** {duration}\n"
+                        "**Expires:** {expiry}"
+                    )).format(
+                        server=channel.guild.name,
+                        channel=channel.mention,
+                        count=violation_number,
+                        duration=duration_str,
+                        expiry=expiry_str,
+                    ),
                     timestamp=utc_now()
                 ).add_field(name='', value=jump_field)
-                # TODO: Add duration
                 await modcog.send_alert(member, embed=alert, reference=alert_ref)
+                # --- END AI-REPLACED ---
             
     async def _disabled_video_kick(self, member: discord.Member, channel: discord.VoiceChannel):
         """

@@ -1,3 +1,9 @@
+# ============================================================
+# AI-GENERATED FILE
+# Created: 2026-03-31
+# Purpose: Screen share blacklist ticket type
+#          (mirrors video_channels/ticket.py)
+# ============================================================
 import datetime as dt
 
 import discord
@@ -9,26 +15,26 @@ from modules.moderation.data import TicketType, TicketState, ModerationData
 from modules.moderation.ticket import Ticket, ticket_factory
 
 from . import babel, logger
-from .settings import VideoSettings
+from .settings import ScreenSettings
 
 _p = babel._p
 
 
-@ticket_factory(TicketType.STUDY_BAN)
-class VideoTicket(Ticket):
+@ticket_factory(TicketType.SCREEN_BAN)
+class ScreenTicket(Ticket):
     __slots__ = ('violation_number',)
 
     @classmethod
     async def create(
         cls, bot: LionBot, member: discord.Member,
-        moderatorid: int, reason: str, expiry=None, 
+        moderatorid: int, reason: str, expiry=None,
         **kwargs
     ):
         modcog: ModerationCog = bot.get_cog('ModerationCog')
         ticket_data = await modcog.data.Ticket.create(
             guildid=member.guild.id,
             targetid=member.id,
-            ticket_type=TicketType.STUDY_BAN,
+            ticket_type=TicketType.SCREEN_BAN,
             ticket_state=TicketState.EXPIRING if expiry else TicketState.OPEN,
             moderator_id=moderatorid,
             auto=(moderatorid == bot.user.id),
@@ -42,13 +48,11 @@ class VideoTicket(Ticket):
         lguild = await bot.core.lions.fetch_guild(member.guild.id, guild=member.guild)
         new_ticket = cls(lguild, ticket_data)
 
-        # Schedule expiry if required
         if expiry:
             cls.expiring.schedule_task(ticket_data.ticketid, expiry.timestamp())
 
         await new_ticket.post()
 
-        # Cancel any existent expiring video blacklists
         tickets = await cls.fetch_tickets(
             bot,
             (modcog.data.Ticket.ticketid != new_ticket.data.ticketid),
@@ -66,11 +70,10 @@ class VideoTicket(Ticket):
         modcog: ModerationCog = bot.get_cog('ModerationCog')
         lguild = await bot.core.lions.fetch_guild(target.guild.id, guild=target.guild)
 
-        blacklist = lguild.config.get(VideoSettings.VideoBlacklist.setting_id).value
+        blacklist = lguild.config.get(ScreenSettings.ScreenBlacklist.setting_id).value
         if not blacklist:
             return
 
-        # This will propagate HTTPException if needed
         await target.add_roles(blacklist, reason=reason)
 
         Ticket = modcog.data.Ticket
@@ -78,11 +81,11 @@ class VideoTicket(Ticket):
             (Ticket.ticket_state != TicketState.PARDONED),
             guildid=target.guild.id,
             targetid=target.id,
-            ticket_type=TicketType.STUDY_BAN,
+            ticket_type=TicketType.SCREEN_BAN,
         ).with_no_adapter().select(ticket_count="COUNT(*)")
         count = row[0]['ticket_count'] if row else 0
 
-        durations = (await VideoSettings.VideoBlacklistDurations.get(target.guild.id)).value
+        durations = (await ScreenSettings.ScreenBlacklistDurations.get(target.guild.id)).value
         if count < len(durations):
             durations.sort()
             duration = durations[count]
@@ -112,9 +115,7 @@ class VideoTicket(Ticket):
     # --- Original code (commented out for rollback) ---
     # async def _revert(self, reason=None):
     #     target = self.target
-    #     blacklist = self.lguild.config.get(VideoSettings.VideoBlacklist.setting_id).value
-    #
-    #     # TODO: User lion.remove_role instead
+    #     blacklist = self.lguild.config.get(ScreenSettings.ScreenBlacklist.setting_id).value
     #
     #     if target and blacklist in target.roles:
     #         try:
@@ -127,7 +128,7 @@ class VideoTicket(Ticket):
     # --- End original code ---
     async def _revert(self, reason=None):
         target = self.target
-        blacklist = self.lguild.config.get(VideoSettings.VideoBlacklist.setting_id).value
+        blacklist = self.lguild.config.get(ScreenSettings.ScreenBlacklist.setting_id).value
 
         reverted = False
         if target and blacklist in target.roles:
@@ -142,13 +143,13 @@ class VideoTicket(Ticket):
             embed = discord.Embed(
                 colour=discord.Colour.brand_green(),
                 title=t(_p(
-                    'video_ticket|revert|notification|title',
+                    'screen_ticket|revert|notification|title',
                     "Your blacklist has been lifted!"
                 )),
                 description=t(_p(
-                    'video_ticket|revert|notification|desc',
-                    "Your video channel blacklist in **{server}** has been lifted.\n"
-                    "You may now rejoin video channels."
+                    'screen_ticket|revert|notification|desc',
+                    "Your screen share channel blacklist in **{server}** has been lifted.\n"
+                    "You may now rejoin screen share channels."
                 )).format(server=target.guild.name),
                 timestamp=utc_now()
             )
