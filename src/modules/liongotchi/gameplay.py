@@ -8,6 +8,14 @@ import random
 import logging
 from datetime import datetime, timezone
 
+# --- AI-MODIFIED (2026-04-01) ---
+# Purpose: Add Babel localization for text branding support
+# LazyStr (from babel._p) is not JSON-serializable; resolve to plain str.
+from . import babel
+def _p(context, message):
+    return str(babel._p(context, message))
+# --- END AI-MODIFIED ---
+
 logger = logging.getLogger(__name__)
 
 # --- AI-REPLACED (2026-03-17) ---
@@ -160,13 +168,26 @@ def calc_glow_intensity(enhancement_level: int) -> int:
 
 # --- AI-MODIFIED (2026-03-22) ---
 # Purpose: VC Study Streak -- daily voice time boosts rarity of all drops
+# --- AI-REPLACED (2026-04-01) ---
+# Reason: Wrap VC rarity tier names in _p() for text branding support
+# What the new code does better: Makes rarity tier labels customizable
+# --- Original code (commented out for rollback) ---
+# VC_RARITY_TIERS = [
+#     (300, 4.0, 'Mythical Focus'),
+#     (180, 3.0, 'Legendary Focus'),
+#     (120, 2.0, 'Epic Focus'),
+#     (60,  1.5, 'Rare Focus'),
+#     (30,  1.25, 'Study Momentum'),
+# ]
+# --- End original code ---
 VC_RARITY_TIERS = [
-    (300, 4.0, 'Mythical Focus'),
-    (180, 3.0, 'Legendary Focus'),
-    (120, 2.0, 'Epic Focus'),
-    (60,  1.5, 'Rare Focus'),
-    (30,  1.25, 'Study Momentum'),
+    (300, 4.0, _p('vc_tier:mythical_focus', 'Mythical Focus')),
+    (180, 3.0, _p('vc_tier:legendary_focus', 'Legendary Focus')),
+    (120, 2.0, _p('vc_tier:epic_focus', 'Epic Focus')),
+    (60,  1.5, _p('vc_tier:rare_focus', 'Rare Focus')),
+    (30,  1.25, _p('vc_tier:study_momentum', 'Study Momentum')),
 ]
+# --- END AI-REPLACED ---
 
 
 def calc_vc_rarity_boost(daily_voice_minutes: float) -> tuple[float, str]:
@@ -396,8 +417,8 @@ def format_bonus_footer(bonuses: dict) -> str:
     if total_drop > 0:
         parts.append(f"+{total_drop * 100:.0f}% Drops")
     if not parts:
-        return "Enhance equipment & subscribe to LionHeart for bonuses!"
-    return "Your bonuses: " + " | ".join(parts)
+        return str(_p('bonus:footer|no_bonuses', "Enhance equipment & subscribe to LionHeart for bonuses!"))
+    return str(_p('bonus:footer|prefix', "Your bonuses: ")) + " | ".join(parts)
 # --- END AI-MODIFIED ---
 
 
@@ -431,13 +452,26 @@ MOOD_DROP_MULTIPLIERS = {
     0: 0.0,
 }
 
+# --- AI-REPLACED (2026-04-01) ---
+# Reason: Wrap mood labels in _p() for text branding support
+# What the new code does better: Makes mood labels customizable via text branding
+# --- Original code (commented out for rollback) ---
+# MOOD_LABELS = {
+#     8: 'Ecstatic', 7: 'Ecstatic',
+#     6: 'Happy', 5: 'Happy',
+#     4: 'Okay', 3: 'Okay',
+#     2: 'Sad', 1: 'Sad',
+#     0: 'Fainted',
+# }
+# --- End original code ---
 MOOD_LABELS = {
-    8: 'Ecstatic', 7: 'Ecstatic',
-    6: 'Happy', 5: 'Happy',
-    4: 'Okay', 3: 'Okay',
-    2: 'Sad', 1: 'Sad',
-    0: 'Fainted',
+    8: _p('mood:ecstatic', 'Ecstatic'), 7: _p('mood:ecstatic', 'Ecstatic'),
+    6: _p('mood:happy', 'Happy'), 5: _p('mood:happy', 'Happy'),
+    4: _p('mood:okay', 'Okay'), 3: _p('mood:okay', 'Okay'),
+    2: _p('mood:sad', 'Sad'), 1: _p('mood:sad', 'Sad'),
+    0: _p('mood:fainted', 'Fainted'),
 }
+# --- END AI-REPLACED ---
 
 MOOD_EMOJI = {
     'Ecstatic': '\u2728', 'Happy': '\U0001F60A',
@@ -638,33 +672,80 @@ async def award_gold(bot, userid: int, amount: int, tx_type: str, description: s
 #         logger.exception(f"Failed to award XP to {userid}")
 #         return 0
 # --- End original code ---
+# --- AI-REPLACED (2026-04-01) ---
+# Reason: Fix cross-shard cache staleness race condition causing pet level demotion.
+#   Pet.fetch() returns cached data from the local shard's memory. With 32 shards,
+#   a level-up on shard A is invisible to shard B's cache. When shard B later writes
+#   back absolute level/xp values from its stale cache, it overwrites shard A's level-up.
+# What the new code does better: Uses SELECT FOR UPDATE inside an explicit transaction
+#   to read fresh level/xp directly from the DB (bypassing cache) with a row lock,
+#   preventing any concurrent shard from reading the same row until the update commits.
+# --- Previous AI code (commented out for rollback) ---
+# async def award_xp_and_check_level(bot, userid: int, xp_amount: int) -> dict:
+#     if xp_amount <= 0:
+#         return {'levels_gained': 0, 'new_level': None}
+#     lg_cog = bot.get_cog('LionGotchiCog')
+#     if lg_cog is None:
+#         return {'levels_gained': 0, 'new_level': None}
+#     try:
+#         pet = await lg_cog.data.Pet.fetch(userid)
+#         if pet is None:
+#             return {'levels_gained': 0, 'new_level': None}
+#         new_xp = (pet.xp or 0) + xp_amount
+#         new_level, remaining_xp, levels_gained = check_level_up(pet.level or 1, new_xp)
+#         async with bot.db.connection() as conn:
+#             await conn.execute(
+#                 "UPDATE lg_pets SET level = %s, xp = %s WHERE userid = %s",
+#                 [new_level, remaining_xp, userid]
+#             )
+#         if pet.data is not None:
+#             pet.data['level'] = new_level
+#             pet.data['xp'] = remaining_xp
+#         if levels_gained > 0:
+#             bonus_gold = levels_gained * LEVEL_UP_GOLD_BONUS
+#             await award_gold(bot, userid, bonus_gold, 'LEVEL_UP',
+#                              f'Level up to {new_level}')
+#         return {'levels_gained': levels_gained, 'new_level': new_level}
+#     except Exception:
+#         logger.exception(f"Failed to award XP to {userid}")
+#         return {'levels_gained': 0, 'new_level': None}
+# --- End previous AI code ---
 async def award_xp_and_check_level(bot, userid: int, xp_amount: int) -> dict:
     """Award XP, check for level ups.
 
     Returns dict with 'levels_gained' and 'new_level', or empty dict on failure.
+    Uses SELECT FOR UPDATE to prevent cross-shard race conditions.
     """
     if xp_amount <= 0:
         return {'levels_gained': 0, 'new_level': None}
-    lg_cog = bot.get_cog('LionGotchiCog')
-    if lg_cog is None:
-        return {'levels_gained': 0, 'new_level': None}
     try:
-        pet = await lg_cog.data.Pet.fetch(userid)
-        if pet is None:
-            return {'levels_gained': 0, 'new_level': None}
-
-        new_xp = (pet.xp or 0) + xp_amount
-        new_level, remaining_xp, levels_gained = check_level_up(pet.level or 1, new_xp)
-
         async with bot.db.connection() as conn:
-            await conn.execute(
-                "UPDATE lg_pets SET level = %s, xp = %s WHERE userid = %s",
-                [new_level, remaining_xp, userid]
-            )
+            async with conn.transaction():
+                async with conn.cursor() as cur:
+                    await cur.execute(
+                        "SELECT level, xp FROM lg_pets WHERE userid = %s FOR UPDATE",
+                        [userid]
+                    )
+                    row = await cur.fetchone()
+                    if row is None:
+                        return {'levels_gained': 0, 'new_level': None}
 
-        if pet.data is not None:
-            pet.data['level'] = new_level
-            pet.data['xp'] = remaining_xp
+                    current_level = row['level'] or 1
+                    current_xp = row['xp'] or 0
+                    new_xp = current_xp + xp_amount
+                    new_level, remaining_xp, levels_gained = check_level_up(current_level, new_xp)
+
+                    await cur.execute(
+                        "UPDATE lg_pets SET level = %s, xp = %s WHERE userid = %s",
+                        [new_level, remaining_xp, userid]
+                    )
+
+        lg_cog = bot.get_cog('LionGotchiCog')
+        if lg_cog:
+            pet = lg_cog.data.Pet._cache_.get((userid,), None)
+            if pet is not None and pet.data is not None:
+                pet.data['level'] = new_level
+                pet.data['xp'] = remaining_xp
 
         if levels_gained > 0:
             bonus_gold = levels_gained * LEVEL_UP_GOLD_BONUS
@@ -687,32 +768,67 @@ async def award_xp_and_check_level(bot, userid: int, xp_amount: int) -> dict:
 #     new_sleep = min(8, (pet.sleep or 0) + sleep)
 #     await conn.execute("UPDATE lg_pets SET food = %s, sleep = %s WHERE userid = %s", ...)
 # --- End original code ---
+# --- AI-REPLACED (2026-04-01) ---
+# Reason: Fix cross-shard cache staleness -- Pet.fetch() returns stale need values
+#   from the local shard's memory cache. Writing absolute values back can overwrite
+#   changes made by other shards or the website.
+# What the new code does better: Uses atomic SQL LEAST(col + increment, 8) to increment
+#   needs directly in the DB without reading first. Uses RETURNING to update the cache.
+# --- Previous AI code (commented out for rollback) ---
+# async def refill_needs(bot, userid: int, food: int = 0, bath: int = 0, sleep: int = 0):
+#     if food <= 0 and bath <= 0 and sleep <= 0:
+#         return
+#     lg_cog = bot.get_cog('LionGotchiCog')
+#     if lg_cog is None:
+#         return
+#     try:
+#         pet = await lg_cog.data.Pet.fetch(userid)
+#         if pet is None:
+#             return
+#         new_food = min(8, (pet.food or 0) + food)
+#         new_bath = min(8, (pet.bath or 0) + bath)
+#         new_sleep = min(8, (pet.sleep or 0) + sleep)
+#         async with bot.db.connection() as conn:
+#             await conn.execute(
+#                 "UPDATE lg_pets SET food = %s, bath = %s, sleep = %s WHERE userid = %s",
+#                 [new_food, new_bath, new_sleep, userid]
+#             )
+#         if pet.data is not None:
+#             pet.data['food'] = new_food
+#             pet.data['bath'] = new_bath
+#             pet.data['sleep'] = new_sleep
+#     except Exception:
+#         logger.exception(f"Failed to refill needs for {userid}")
+# --- End previous AI code ---
 async def refill_needs(bot, userid: int, food: int = 0, bath: int = 0, sleep: int = 0):
-    """Refill pet needs from activity."""
+    """Refill pet needs from activity.
+
+    Uses atomic SQL to avoid cross-shard cache staleness.
+    """
     if food <= 0 and bath <= 0 and sleep <= 0:
         return
-    lg_cog = bot.get_cog('LionGotchiCog')
-    if lg_cog is None:
-        return
     try:
-        pet = await lg_cog.data.Pet.fetch(userid)
-        if pet is None:
-            return
-        new_food = min(8, (pet.food or 0) + food)
-        new_bath = min(8, (pet.bath or 0) + bath)
-        new_sleep = min(8, (pet.sleep or 0) + sleep)
         async with bot.db.connection() as conn:
-            await conn.execute(
-                "UPDATE lg_pets SET food = %s, bath = %s, sleep = %s WHERE userid = %s",
-                [new_food, new_bath, new_sleep, userid]
-            )
-        # --- AI-MODIFIED (2026-03-21) ---
-        # Purpose: Keep cached pet object in sync after raw SQL update
-        if pet.data is not None:
-            pet.data['food'] = new_food
-            pet.data['bath'] = new_bath
-            pet.data['sleep'] = new_sleep
-        # --- END AI-MODIFIED ---
+            async with conn.cursor() as cur:
+                await cur.execute(
+                    """UPDATE lg_pets
+                       SET food  = LEAST(food  + %s, 8),
+                           bath  = LEAST(bath  + %s, 8),
+                           sleep = LEAST(sleep + %s, 8)
+                       WHERE userid = %s
+                       RETURNING food, bath, sleep""",
+                    [food, bath, sleep, userid]
+                )
+                row = await cur.fetchone()
+
+        if row:
+            lg_cog = bot.get_cog('LionGotchiCog')
+            if lg_cog:
+                pet = lg_cog.data.Pet._cache_.get((userid,), None)
+                if pet is not None and pet.data is not None:
+                    pet.data['food'] = row['food']
+                    pet.data['bath'] = row['bath']
+                    pet.data['sleep'] = row['sleep']
     except Exception:
         logger.exception(f"Failed to refill needs for {userid}")
 # --- END AI-REPLACED ---
@@ -938,21 +1054,21 @@ async def attempt_enhance(bot, userid: int, inventory_id: int, scroll_itemid: in
                 )
                 eq_rows = await cur.fetchall()
                 if not eq_rows:
-                    result['error'] = "Item not found in your inventory."
+                    result['error'] = str(_p('error:enhance|item_not_found', "Item not found in your inventory."))
                     return result
                 eq = eq_rows[0]
                 result['item_name'] = eq['name']
 
                 if eq['category'] in ('MATERIAL', 'SCROLL', 'FURNITURE', 'ROOM',
                                        'GAMEBOY_SKIN', 'FARM_SEED', 'CONSUMABLE'):
-                    result['error'] = "This item cannot be enhanced."
+                    result['error'] = str(_p('error:enhance|not_enhanceable', "This item cannot be enhanced."))
                     return result
 
                 rarity_str = eq['rarity'] if isinstance(eq['rarity'], str) else str(eq['rarity'])
                 max_level = MAX_ENHANCEMENT_BY_RARITY.get(rarity_str, 5)
                 current_level = eq['enhancement_level'] or 0
                 if current_level >= max_level:
-                    result['error'] = f"This item is already at max enhancement (+{max_level})."
+                    result['error'] = str(_p('error:enhance|max_level', "This item is already at max enhancement (+{max_level}).")).format(max_level=max_level)
                     return result
 
                 await cur.execute(
@@ -965,7 +1081,7 @@ async def attempt_enhance(bot, userid: int, inventory_id: int, scroll_itemid: in
                 )
                 scroll_rows = await cur.fetchall()
                 if not scroll_rows:
-                    result['error'] = "You don't have that scroll."
+                    result['error'] = str(_p('error:enhance|no_scroll', "You don't have that scroll."))
                     return result
                 scroll_inv = scroll_rows[0]
                 result['scroll_name'] = scroll_inv['name']
@@ -976,7 +1092,7 @@ async def attempt_enhance(bot, userid: int, inventory_id: int, scroll_itemid: in
                 )
                 prop_rows = await cur.fetchall()
                 if not prop_rows:
-                    result['error'] = "Invalid scroll (no properties defined)."
+                    result['error'] = str(_p('error:enhance|invalid_scroll', "Invalid scroll (no properties defined)."))
                     return result
                 props = prop_rows[0]
 
@@ -1076,7 +1192,7 @@ async def attempt_enhance(bot, userid: int, inventory_id: int, scroll_itemid: in
         return result
     except Exception:
         logger.exception(f"Enhancement failed for user {userid}")
-        result['error'] = "An unexpected error occurred."
+        result['error'] = str(_p('error:enhance|unexpected', "An unexpected error occurred."))
         return result
 # --- END AI-REPLACED ---
 
@@ -1164,26 +1280,53 @@ async def process_farm_growth(bot, userid: int, voice_minutes: float = 0, messag
                         continue
                     is_watered = hours_since < water_interval
 
+                # --- AI-MODIFIED (2026-04-03) ---
+                # Purpose: Atomic increment for growth_points to prevent race condition
+                #   between voice session end and message flush both calling this function.
+                #   Old code did read-modify-write (SET growth_points = absolute_value) which
+                #   could lose updates if two calls interleaved at await points.
+                #   Also fixed messages_earned to use float division (was int-truncating to 0
+                #   when message_count < active_count).
+                # --- Original code (commented out for rollback) ---
+                # multiplier = WATER_BOOST if is_watered else TIER_DRY_PENALTY.get(user_tier, 0.5)
+                # earned = per_plot_base * multiplier
+                # new_points = (plot['growth_points'] or 0) + earned
+                # points_needed = plot['growth_points_needed'] or 100
+                # points_per_stage = points_needed / 5.0
+                # current_stage = plot['growth_stage'] or 1
+                # new_stage = min(5, max(current_stage, 1 + int(new_points / points_per_stage)))
+                # vm_add = (voice_minutes / active_count) if voice_minutes else 0
+                # msg_add = int(message_count / active_count) if message_count else 0
+                # await conn.execute(
+                #     """UPDATE lg_user_farm
+                #        SET growth_points = %s, growth_stage = %s,
+                #            voice_minutes_earned = voice_minutes_earned + %s,
+                #            messages_earned = messages_earned + %s
+                #        WHERE userid = %s AND plot_id = %s""",
+                #     [new_points, new_stage, vm_add, msg_add, userid, plot['plot_id']]
+                # )
+                # --- End original code ---
                 multiplier = WATER_BOOST if is_watered else TIER_DRY_PENALTY.get(user_tier, 0.5)
                 earned = per_plot_base * multiplier
 
-                new_points = (plot['growth_points'] or 0) + earned
+                expected_new_points = (plot['growth_points'] or 0) + earned
                 points_needed = plot['growth_points_needed'] or 100
                 points_per_stage = points_needed / 5.0
-                current_stage = plot['growth_stage'] or 1
-                new_stage = min(5, max(current_stage, 1 + int(new_points / points_per_stage)))
+                new_stage = min(5, max(1, 1 + int(expected_new_points / points_per_stage)))
 
                 vm_add = (voice_minutes / active_count) if voice_minutes else 0
-                msg_add = int(message_count / active_count) if message_count else 0
+                msg_add = (message_count / active_count) if message_count else 0
 
                 await conn.execute(
                     """UPDATE lg_user_farm
-                       SET growth_points = %s, growth_stage = %s,
+                       SET growth_points = growth_points + %s,
+                           growth_stage = GREATEST(growth_stage, %s),
                            voice_minutes_earned = voice_minutes_earned + %s,
                            messages_earned = messages_earned + %s
                        WHERE userid = %s AND plot_id = %s""",
-                    [new_points, new_stage, vm_add, msg_add, userid, plot['plot_id']]
+                    [earned, new_stage, vm_add, msg_add, userid, plot['plot_id']]
                 )
+                # --- END AI-MODIFIED ---
     except Exception:
         logger.exception(f"Failed farm growth for {userid}")
 # --- END AI-MODIFIED ---
@@ -1247,21 +1390,39 @@ async def process_family_farm_growth(bot, userid: int, voice_minutes: float = 0,
                         continue
                     is_watered = hours_since < water_interval
 
+                # --- AI-MODIFIED (2026-04-03) ---
+                # Purpose: Atomic increment for family farm growth_points (same race fix as personal farm)
+                # --- Original code (commented out for rollback) ---
+                # multiplier = WATER_BOOST if is_watered else DRY_PENALTY
+                # earned = per_plot_base * multiplier
+                # new_points = (plot['growth_points'] or 0) + earned
+                # points_needed = plot['growth_points_needed'] or 100
+                # points_per_stage = points_needed / 5.0
+                # current_stage = plot['growth_stage'] or 1
+                # new_stage = min(5, max(current_stage, 1 + int(new_points / points_per_stage)))
+                # await conn.execute(
+                #     """UPDATE lg_family_farm_plots
+                #        SET growth_points = %s, growth_stage = %s
+                #        WHERE family_id = %s AND farm_index = %s AND plot_id = %s""",
+                #     [new_points, new_stage, family_id, plot['farm_index'], plot['plot_id']]
+                # )
+                # --- End original code ---
                 multiplier = WATER_BOOST if is_watered else DRY_PENALTY
                 earned = per_plot_base * multiplier
 
-                new_points = (plot['growth_points'] or 0) + earned
+                expected_new_points = (plot['growth_points'] or 0) + earned
                 points_needed = plot['growth_points_needed'] or 100
                 points_per_stage = points_needed / 5.0
-                current_stage = plot['growth_stage'] or 1
-                new_stage = min(5, max(current_stage, 1 + int(new_points / points_per_stage)))
+                new_stage = min(5, max(1, 1 + int(expected_new_points / points_per_stage)))
 
                 await conn.execute(
                     """UPDATE lg_family_farm_plots
-                       SET growth_points = %s, growth_stage = %s
+                       SET growth_points = growth_points + %s,
+                           growth_stage = GREATEST(growth_stage, %s)
                        WHERE family_id = %s AND farm_index = %s AND plot_id = %s""",
-                    [new_points, new_stage, family_id, plot['farm_index'], plot['plot_id']]
+                    [earned, new_stage, family_id, plot['farm_index'], plot['plot_id']]
                 )
+                # --- END AI-MODIFIED ---
     except Exception:
         logger.exception(f"Failed family farm growth for user {userid}")
 # --- END AI-GENERATED ---

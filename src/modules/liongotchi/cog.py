@@ -19,8 +19,12 @@ from discord import app_commands as appcmds
 
 # --- AI-MODIFIED (2026-04-01) ---
 # Purpose: Add Babel localization for text branding support
+# LazyStr (from babel._p) is not JSON-serializable; discord.py's
+# json.dumps crashes when LazyStr appears in button labels or message
+# payloads.  Resolve to plain str immediately so every call site is safe.
 from . import babel
-_p = babel._p
+def _p(context, message):
+    return str(babel._p(context, message))
 # --- END AI-MODIFIED ---
 
 from meta import LionBot, LionCog, LionContext, conf, WEBSITE_URL
@@ -2091,21 +2095,48 @@ class FarmView(discord.ui.View):
         )
         # --- END AI-MODIFIED ---
 
+        # --- AI-MODIFIED (2026-04-03) ---
+        # Purpose: Fix ETA calculation -- was using old hardcoded constants (1.0 voice, 1.5 water)
+        #   instead of actual values (GROWTH_PER_VOICE_MINUTE=3.0, WATER_BOOST=2.0), showing 4x too slow
+        # --- Original code (commented out for rollback) ---
+        # if active_count > 0:
+        #     avg_pts_needed = sum(p.get('growth_points_needed') or 100 for p in active) / active_count
+        #     msgs_per_plot = avg_pts_needed / max(0.01, (2.0 / active_count) * 1.5)
+        #     vc_min_per_plot = avg_pts_needed / max(0.01, (1.0 / active_count) * 1.5)
+        #     vc_display = f"{int(vc_min_per_plot)}m" if vc_min_per_plot < 60 else f"{vc_min_per_plot / 60:.1f}h"
+        #     header += str(_p(
+        #         'embed:farm|header:grow_estimate',
+        #         '\n\U0001F4CA **To fully grow (watered):** ~{msgs} msgs or ~{vc} VC per plant'
+        #     )).format(msgs=int(msgs_per_plot), vc=vc_display)
+        #     if active_count >= 5:
+        #         solo_msgs = avg_pts_needed / (2.0 * 1.5)
+        #         header += str(_p(
+        #             'embed:farm|header:solo_hint',
+        #             '\n\u26A0\uFE0F With 1 plant this would only take ~{msgs} msgs!'
+        #         )).format(msgs=int(solo_msgs))
+        # --- End original code ---
         if active_count > 0:
-            avg_pts_needed = sum(p.get('growth_points_needed') or 100 for p in active) / active_count
-            msgs_per_plot = avg_pts_needed / max(0.01, (2.0 / active_count) * 1.5)
-            vc_min_per_plot = avg_pts_needed / max(0.01, (1.0 / active_count) * 1.5)
+            from .gameplay import GROWTH_PER_VOICE_MINUTE, GROWTH_PER_TEXT_MESSAGE, WATER_BOOST
+            avg_remaining = sum(
+                max(0, (p.get('growth_points_needed') or 100) - (p.get('growth_points') or 0))
+                for p in active
+            ) / active_count
+            watered_msg_rate = (GROWTH_PER_TEXT_MESSAGE / active_count) * WATER_BOOST
+            watered_vc_rate = (GROWTH_PER_VOICE_MINUTE / active_count) * WATER_BOOST
+            msgs_per_plot = avg_remaining / max(0.01, watered_msg_rate)
+            vc_min_per_plot = avg_remaining / max(0.01, watered_vc_rate)
             vc_display = f"{int(vc_min_per_plot)}m" if vc_min_per_plot < 60 else f"{vc_min_per_plot / 60:.1f}h"
             header += str(_p(
                 'embed:farm|header:grow_estimate',
-                '\n\U0001F4CA **To fully grow (watered):** ~{msgs} msgs or ~{vc} VC per plant'
+                '\n\U0001F4CA **To finish growing (watered):** ~{msgs} msgs or ~{vc} VC per plant'
             )).format(msgs=int(msgs_per_plot), vc=vc_display)
             if active_count >= 5:
-                solo_msgs = avg_pts_needed / (2.0 * 1.5)
+                solo_msgs = avg_remaining / max(0.01, GROWTH_PER_TEXT_MESSAGE * WATER_BOOST)
                 header += str(_p(
                     'embed:farm|header:solo_hint',
                     '\n\u26A0\uFE0F With 1 plant this would only take ~{msgs} msgs!'
                 )).format(msgs=int(solo_msgs))
+        # --- END AI-MODIFIED ---
 
         status_parts = []
         if harvestable:
@@ -4281,23 +4312,32 @@ class FamilyInvitesView(discord.ui.View):
         if page_invites:
             options = [
                 discord.SelectOption(
-                    label=f"{inv['family_name']} (Lv.{inv['family_level'] or 1})",
-                    description=f"From: {inv['from_name'] or 'Unknown'}",
+                    label=str(_p(
+                        'ui:family_invites|select:invite|label',
+                        '{family_name} (Lv.{level})',
+                    )).format(family_name=inv['family_name'], level=inv['family_level'] or 1),
+                    description=str(_p(
+                        'ui:family_invites|select:invite|desc',
+                        'From: {from_name}',
+                    )).format(from_name=inv['from_name'] or str(_p(
+                        'ui:family_invites|unknown_sender', 'Unknown'))),
                     value=str(inv['invite_id']),
                 )
                 for inv in page_invites
             ]
-            select = discord.ui.Select(placeholder="Select an invite...", options=options, row=0)
+            select = discord.ui.Select(
+                placeholder=_p('ui:family_invites|select:placeholder', 'Select an invite...'),
+                options=options, row=0)
             select.callback = self._on_select
             self.add_item(select)
 
-            accept_btn = discord.ui.Button(label="Accept", emoji="\u2705",
+            accept_btn = discord.ui.Button(label=_p('ui:family_invites|button:accept|label', 'Accept'), emoji="\u2705",
                                            style=discord.ButtonStyle.green, row=1,
                                            disabled=self.selected_invite_id is None)
             accept_btn.callback = self._accept
             self.add_item(accept_btn)
 
-            decline_btn = discord.ui.Button(label="Decline", emoji="\u274C",
+            decline_btn = discord.ui.Button(label=_p('ui:family_invites|button:decline|label', 'Decline'), emoji="\u274C",
                                             style=discord.ButtonStyle.red, row=1,
                                             disabled=self.selected_invite_id is None)
             decline_btn.callback = self._decline
@@ -4305,16 +4345,16 @@ class FamilyInvitesView(discord.ui.View):
 
         total_pages = max(1, math.ceil(len(self.invites) / self.PAGE_SIZE))
         if total_pages > 1:
-            prev_btn = discord.ui.Button(label="Prev", style=discord.ButtonStyle.grey,
+            prev_btn = discord.ui.Button(label=_p('ui:family|button:prev|label', 'Prev'), style=discord.ButtonStyle.grey,
                                          row=2, disabled=self.page == 0)
             prev_btn.callback = self._prev
             self.add_item(prev_btn)
-            next_btn = discord.ui.Button(label="Next", style=discord.ButtonStyle.grey,
+            next_btn = discord.ui.Button(label=_p('ui:family|button:next|label', 'Next'), style=discord.ButtonStyle.grey,
                                          row=2, disabled=self.page >= total_pages - 1)
             next_btn.callback = self._next
             self.add_item(next_btn)
 
-        back_btn = discord.ui.Button(label="Back", emoji="\U0001F519",
+        back_btn = discord.ui.Button(label=_p('ui:family|button:back|label', 'Back'), emoji="\U0001F519",
                                      style=discord.ButtonStyle.grey, row=2)
         back_btn.callback = self._back
         self.add_item(back_btn)
@@ -4322,26 +4362,35 @@ class FamilyInvitesView(discord.ui.View):
     def make_embed(self):
         if not self.invites:
             return discord.Embed(
-                title="\U0001F4E8 Family Invites",
-                description="No pending invites.",
+                title=str(_p('embed:family_invites|title', '\U0001F4E8 Family Invites')),
+                description=str(_p('embed:family_invites|desc:empty', 'No pending invites.')),
                 color=0x5865F2,
             )
         lines = []
         for inv in self.invites[self.page * self.PAGE_SIZE:(self.page + 1) * self.PAGE_SIZE]:
-            lines.append(
-                f"\u2022 **{inv['family_name']}** (Lv.{inv['family_level'] or 1}) "
-                f"\u2014 from {inv['from_name'] or 'Unknown'}"
-            )
+            lines.append(str(_p(
+                'embed:family_invites|line',
+                '\u2022 **{family_name}** (Lv.{level}) \u2014 from {from_name}',
+            )).format(
+                family_name=inv['family_name'],
+                level=inv['family_level'] or 1,
+                from_name=inv['from_name'] or str(_p('ui:family_invites|unknown_sender', 'Unknown')),
+            ))
         total_pages = max(1, math.ceil(len(self.invites) / self.PAGE_SIZE))
         return discord.Embed(
-            title="\U0001F4E8 Family Invites",
+            title=str(_p('embed:family_invites|title', '\U0001F4E8 Family Invites')),
             description="\n".join(lines),
             color=0x5865F2,
-        ).set_footer(text=f"Page {self.page + 1}/{total_pages} \u2022 Select an invite to accept or decline")
+        ).set_footer(text=str(_p(
+            'embed:family_invites|footer',
+            'Page {cur}/{total} \u2022 Select an invite to accept or decline',
+        )).format(cur=self.page + 1, total=total_pages))
 
     async def interaction_check(self, interaction: discord.Interaction) -> bool:
         if interaction.user.id != self.user_id:
-            await interaction.response.send_message("Use `/pet` to open your own pet!", ephemeral=True)
+            await interaction.response.send_message(
+                str(_p('error:family|use_own_pet', 'Use `/pet` to open your own pet!')),
+                ephemeral=True)
             return False
         return True
 
@@ -5794,10 +5843,16 @@ class LionGotchiCog(LionCog):
             if not inv or inv[0]['to_userid'] != uid:
                 await interaction.response.edit_message(
                     embed=discord.Embed(
-                        title="\u23F3 Invite Expired",
-                        description="This invite is no longer valid. It may have been accepted, declined, or withdrawn.",
+                        title=str(_p('embed:invite_expired|title', '\u23F3 Invite Expired')),
+                        description=str(_p(
+                            'embed:invite_expired|desc',
+                            'This invite is no longer valid. It may have been accepted, declined, or withdrawn.',
+                        )),
                         color=0x95a5a6,
-                    ).set_footer(text="Check /pet \u2192 Family for new invites"),
+                    ).set_footer(text=str(_p(
+                        'embed:invite_expired|footer',
+                        'Check /pet \u2192 Family for new invites',
+                    ))),
                     view=None)
                 return
 
@@ -5805,7 +5860,11 @@ class LionGotchiCog(LionCog):
                 "SELECT family_id FROM lg_family_members WHERE userid = %s AND left_at IS NULL", uid)
             if already:
                 await interaction.response.send_message(
-                    "You're already in a family! Leave your current family first.", ephemeral=True)
+                    str(_p(
+                        'error:family|already_in_family_dm',
+                        "You're already in a family! Leave your current family first.",
+                    )),
+                    ephemeral=True)
                 return
 
             COOLDOWN_DAYS = 7
@@ -5821,7 +5880,10 @@ class LionGotchiCog(LionCog):
                 if days_since < COOLDOWN_DAYS:
                     remaining = int(COOLDOWN_DAYS - days_since) + 1
                     await interaction.response.send_message(
-                        f"You recently left a family. Cooldown: **{remaining} day(s)** remaining.",
+                        str(_p(
+                            'error:family|cooldown',
+                            'You recently left a family. Cooldown: **{days} day(s)** remaining.',
+                        )).format(days=remaining),
                         ephemeral=True)
                     return
 
@@ -5836,7 +5898,10 @@ class LionGotchiCog(LionCog):
                 family_id)
             if (mem_count[0]['cnt'] or 0) >= max_mem:
                 await interaction.response.send_message(
-                    "This family is full! They need to level up to unlock more slots.",
+                    str(_p(
+                        'error:family|full',
+                        'This family is full! They need to level up to unlock more slots.',
+                    )),
                     ephemeral=True)
                 return
 
@@ -5851,19 +5916,27 @@ class LionGotchiCog(LionCog):
 
             await interaction.response.edit_message(
                 embed=discord.Embed(
-                    title="\u2705 Joined Family!",
-                    description=(
-                        f"You are now a member of **{family_name}**!\n\n"
-                        f"Use `/pet` \u2192 Family to see your new family."
-                    ),
+                    title=str(_p('embed:joined_family|title', '\u2705 Joined Family!')),
+                    description=str(_p(
+                        'embed:joined_family|desc',
+                        'You are now a member of **{name}**!\n\n'
+                        'Use `/pet` \u2192 Family to see your new family.',
+                    )).format(name=family_name),
                     color=0x57F287,
-                ).set_footer(text=f"Manage your family at {WEBSITE_URL}/pet/family"),
+                ).set_footer(text=str(_p(
+                    'embed:joined_family|footer',
+                    'Manage your family at {url}',
+                )).format(url=f'{WEBSITE_URL}/pet/family')),
                 view=None)
         except Exception:
             logger.debug(f"Failed to handle DM invite accept for user {uid}, invite {invite_id}")
             if not interaction.response.is_done():
                 await interaction.response.send_message(
-                    "Something went wrong. Try `/pet` \u2192 Family instead.", ephemeral=True)
+                    str(_p(
+                        'error:invite|generic_retry',
+                        'Something went wrong. Try `/pet` \u2192 Family instead.',
+                    )),
+                    ephemeral=True)
 
     async def _handle_dm_invite_decline(self, interaction: discord.Interaction, invite_id: int, uid: int):
         try:
@@ -5876,10 +5949,16 @@ class LionGotchiCog(LionCog):
             if not inv or inv[0]['to_userid'] != uid:
                 await interaction.response.edit_message(
                     embed=discord.Embed(
-                        title="\u23F3 Invite Expired",
-                        description="This invite is no longer valid. It may have been accepted, declined, or withdrawn.",
+                        title=str(_p('embed:invite_expired|title', '\u23F3 Invite Expired')),
+                        description=str(_p(
+                            'embed:invite_expired|desc',
+                            'This invite is no longer valid. It may have been accepted, declined, or withdrawn.',
+                        )),
                         color=0x95a5a6,
-                    ).set_footer(text="Check /pet \u2192 Family for new invites"),
+                    ).set_footer(text=str(_p(
+                        'embed:invite_expired|footer',
+                        'Check /pet \u2192 Family for new invites',
+                    ))),
                     view=None)
                 return
 
@@ -5890,16 +5969,26 @@ class LionGotchiCog(LionCog):
 
             await interaction.response.edit_message(
                 embed=discord.Embed(
-                    title="\u274C Invite Declined",
-                    description=f"You declined the invite from **{family_name}**.",
+                    title=str(_p('embed:invite_declined|title', '\u274C Invite Declined')),
+                    description=str(_p(
+                        'embed:invite_declined|desc',
+                        'You declined the invite from **{name}**.',
+                    )).format(name=family_name),
                     color=0xED4245,
-                ).set_footer(text="You can always join a family later via /pet \u2192 Family"),
+                ).set_footer(text=str(_p(
+                    'embed:invite_declined|footer',
+                    'You can always join a family later via /pet \u2192 Family',
+                ))),
                 view=None)
         except Exception:
             logger.debug(f"Failed to handle DM invite decline for user {uid}, invite {invite_id}")
             if not interaction.response.is_done():
                 await interaction.response.send_message(
-                    "Something went wrong. Try `/pet` \u2192 Family instead.", ephemeral=True)
+                    str(_p(
+                        'error:invite|generic_retry',
+                        'Something went wrong. Try `/pet` \u2192 Family instead.',
+                    )),
+                    ephemeral=True)
     # --- END AI-MODIFIED ---
 
     # --- AI-MODIFIED (2026-03-20) ---
