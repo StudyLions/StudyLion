@@ -351,6 +351,50 @@ class RoomUI(MessageUI):
         ))
     # --- END AI-MODIFIED ---
 
+    # --- AI-MODIFIED (2026-04-03) ---
+    # Purpose: Let non-owner members leave the room from the control panel
+    @button(label='LEAVE_PLACEHOLDER', style=ButtonStyle.red)
+    async def leave_room_button(self, press: discord.Interaction, pressed: Button):
+        if press.user.id == self.room.data.ownerid:
+            t = self.bot.translator.t
+            await press.response.send_message(
+                embed=discord.Embed(
+                    colour=discord.Colour.brand_red(),
+                    description=t(_p(
+                        'ui:room_status|button:leave|error:is_owner',
+                        "You are the room owner! Use **Delete Room** to close the room, "
+                        "or transfer ownership first."
+                    ))
+                ),
+                ephemeral=True
+            )
+            return
+
+        t = self.bot.translator.t
+        confirm_msg = t(_p(
+            'ui:room_status|button:leave|confirm',
+            "Are you sure you want to leave this private room? "
+            "You will lose access until the owner invites you back."
+        ))
+        confirm = Confirm(confirm_msg, press.user.id)
+        try:
+            result = await confirm.ask(press, ephemeral=True)
+        except ResponseTimedOut:
+            return
+
+        if not result:
+            return
+
+        await self.room.leave_member(press.user.id)
+        await self.quit()
+
+    async def leave_room_button_refresh(self):
+        self.leave_room_button.label = self.bot.translator.t(_p(
+            'ui:room_status|button:leave|label',
+            "Leave Room"
+        ))
+    # --- END AI-MODIFIED ---
+
     @select(cls=UserSelect, placeholder="INVITE_PLACEHOLDER", min_values=0, max_values=25)
     async def invite_menu(self, selection: discord.Interaction, selected: UserSelect):
         if not await self.owner_ward(selection):
@@ -556,21 +600,26 @@ class RoomUI(MessageUI):
             )
             # --- END AI-MODIFIED ---
         else:
-            # Just show deposit button
+            # --- AI-MODIFIED (2026-04-03) ---
+            # Purpose: Add leave_room_button to member layout so members can leave voluntarily
+            # --- Original code (commented out for rollback) ---
+            # await asyncio.gather(
+            #     self.desposit_button_refresh(),
+            #     self.refresh_button_refresh(),
+            #     self.close_button_refresh(),
+            # )
+            # self.set_layout(
+            #     (self.desposit_button, dashboard_link, self.refresh_button, self.close_button),
+            # )
+            # --- End original code ---
             await asyncio.gather(
                 self.desposit_button_refresh(),
                 self.refresh_button_refresh(),
                 self.close_button_refresh(),
+                self.leave_room_button_refresh(),
             )
-            # --- AI-MODIFIED (2026-03-22) ---
-            # Purpose: Include dashboard link button in member layout
-            # --- Original code (commented out for rollback) ---
-            # self.set_layout(
-            #     (self.desposit_button, self.refresh_button, self.close_button),
-            # )
-            # --- End original code ---
             self.set_layout(
-                (self.desposit_button, dashboard_link, self.refresh_button, self.close_button),
+                (self.desposit_button, dashboard_link, self.refresh_button, self.leave_room_button, self.close_button),
             )
             # --- END AI-MODIFIED ---
 

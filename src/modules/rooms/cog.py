@@ -53,6 +53,12 @@ class RoomCog(LionCog):
         for setting in self.settings.model_settings:
             self.bot.core.guild_config.register_model_setting(setting)
 
+        # --- AI-MODIFIED (2026-04-01) ---
+        # Purpose: Register ListData-based role gate settings (separate tables, not guild_config columns)
+        for setting in self.settings.list_settings:
+            self.bot.core.guild_config.register_setting(setting)
+        # --- END AI-MODIFIED ---
+
         configcog = self.bot.get_cog('ConfigCog')
         self.crossload_group(self.configure_group, configcog.admin_config_group)
 
@@ -78,6 +84,86 @@ class RoomCog(LionCog):
         else:
             rooms = guild_rooms
         return rooms
+
+    # --- AI-MODIFIED (2026-04-01) ---
+    # Purpose: Count rooms owned by a user (for max_per_user enforcement)
+    def count_owned_rooms(self, guildid: int, userid: int) -> int:
+        return sum(
+            1 for room in self._room_cache[guildid].values()
+            if room.data.ownerid == userid
+        )
+    # --- END AI-MODIFIED ---
+
+    # --- AI-MODIFIED (2026-04-01) ---
+    # Purpose: Check cooldown — returns remaining seconds, or 0 if no cooldown active
+    async def get_cooldown_remaining(self, guildid: int, userid: int, cooldown_minutes: int) -> int:
+        if not cooldown_minutes:
+            return 0
+        from datetime import timedelta
+        rows = await self.data.Room.table.select_where(
+            guildid=guildid, ownerid=userid
+        ).with_no_cache().order_by('deleted_at', ORDER='DESC').limit(1)
+        if not rows:
+            return 0
+        last_deleted = rows[0]['deleted_at']
+        if last_deleted is None:
+            return 0
+        now = utc_now()
+        cooldown_end = last_deleted + timedelta(minutes=cooldown_minutes)
+        remaining = (cooldown_end - now).total_seconds()
+        return max(0, int(remaining))
+    # --- END AI-MODIFIED ---
+
+    # --- AI-MODIFIED (2026-04-01) ---
+    # Purpose: Check whether a member satisfies the room rent role gate (required + any-of roles)
+    async def check_rent_role_gate(self, guild: 'discord.Guild', member: 'discord.Member'):
+        """
+        Check if the member passes the role gate for room renting.
+
+        Returns (allowed: bool, error_message: str | None).
+        Gracefully handles deleted roles by filtering them out.
+        If all roles in a list are deleted/gone, treats it as "not configured".
+        """
+        t = self.bot.translator.t
+        member_role_ids = {r.id for r in member.roles}
+
+        required_setting = await RoomSettings.RentRequiredRoles.get(guild.id)
+        required_data = required_setting.data if required_setting.data else []
+        required_roles = [guild.get_role(rid) for rid in required_data]
+        required_roles = [r for r in required_roles if r is not None]
+
+        anyof_setting = await RoomSettings.RentAnyOfRoles.get(guild.id)
+        anyof_data = anyof_setting.data if anyof_setting.data else []
+        anyof_roles = [guild.get_role(rid) for rid in anyof_data]
+        anyof_roles = [r for r in anyof_roles if r is not None]
+
+        missing_required = [r for r in required_roles if r.id not in member_role_ids]
+        if required_roles and missing_required:
+            role_names = ', '.join(f"**{r.name}**" for r in missing_required)
+            msg = t(_p(
+                'cmd:room_rent|error:missing_required_roles',
+                "You need the following role(s) to rent a room: {roles}"
+            )).format(roles=role_names)
+            if anyof_roles:
+                anyof_names = ', '.join(f"**{r.name}**" for r in anyof_roles)
+                msg += '\n' + t(_p(
+                    'cmd:room_rent|error:missing_required_roles:also_need_anyof',
+                    "You also need at least one of: {roles}"
+                )).format(roles=anyof_names)
+            return False, msg
+
+        if anyof_roles:
+            has_any = any(r.id in member_role_ids for r in anyof_roles)
+            if not has_any:
+                anyof_names = ', '.join(f"**{r.name}**" for r in anyof_roles)
+                msg = t(_p(
+                    'cmd:room_rent|error:missing_anyof_roles',
+                    "You need at least one of the following roles to rent a room: {roles}"
+                )).format(roles=anyof_names)
+                return False, msg
+
+        return True, None
+    # --- END AI-MODIFIED ---
 
     async def _prepare_rooms(self, room_data: list[RoomData.Room]):
         """
@@ -323,6 +409,16 @@ class RoomCog(LionCog):
                 overwrites[renting_role] = mod_role_overwrite
         # --- END AI-MODIFIED ---
 
+        # --- AI-MODIFIED (2026-04-01) ---
+        # Purpose: Copy category permission overwrites when sync_perms is enabled
+        if lguild.config.get(RoomSettings.SyncPerms.setting_id).value:
+            category = lguild.config.get(RoomSettings.Category.setting_id).value
+            if category:
+                for target, ow in category.overwrites.items():
+                    if target not in overwrites:
+                        overwrites[target] = ow
+        # --- END AI-MODIFIED ---
+
         # Create channel
         try:
             channel = await guild.create_voice_channel(
@@ -493,18 +589,79 @@ class RoomCog(LionCog):
             )
             return
 
-        # Check that the author doesn't already own a room
-        room = self.get_owned_room(ctx.guild.id, ctx.author.id)
-        if room is not None and room.channel:
-            await ctx.reply(
-                embed=error_embed(
-                    t(_p(
-                        'cmd:room_rent|error:room_exists',
-                        "You already own a private room! Click to visit: {channel}"
-                    )).format(channel=room.channel.mention)
-                ), ephemeral=True
-            )
+        # --- AI-MODIFIED (2026-04-01) ---
+        # Purpose: Check role gate before other checks so users get the most relevant error first
+        allowed, role_error = await self.check_rent_role_gate(ctx.guild, ctx.author)
+        if not allowed:
+            await ctx.reply(embed=error_embed(role_error), ephemeral=True)
             return
+        # --- END AI-MODIFIED ---
+
+        # --- AI-MODIFIED (2026-04-01) ---
+        # Purpose: Replace single-room check with count-based check using max_per_user setting
+        max_rooms = ctx.lguild.config.get(RoomSettings.MaxPerUser.setting_id).value
+        owned_count = self.count_owned_rooms(ctx.guild.id, ctx.author.id)
+        if owned_count >= max_rooms:
+            existing = self.get_owned_room(ctx.guild.id, ctx.author.id)
+            channel_note = ""
+            if existing and existing.channel:
+                channel_note = " " + t(_p(
+                    'cmd:room_rent|error:room_exists:visit',
+                    "Click to visit: {channel}"
+                )).format(channel=existing.channel.mention)
+            if max_rooms == 1:
+                msg = t(_p(
+                    'cmd:room_rent|error:room_exists',
+                    "You already own a private room!{visit}"
+                )).format(visit=channel_note)
+            else:
+                msg = t(_p(
+                    'cmd:room_rent|error:max_rooms',
+                    "You already own **{count}** room(s), which is the maximum allowed!{visit}"
+                )).format(count=owned_count, visit=channel_note)
+            await ctx.reply(embed=error_embed(msg), ephemeral=True)
+            return
+        # --- END AI-MODIFIED ---
+
+        # --- AI-MODIFIED (2026-04-01) ---
+        # Purpose: Validate room name against the admin-configured name_limit setting
+        if name:
+            name_limit = ctx.lguild.config.get(RoomSettings.NameLimit.setting_id).value
+            if len(name) > name_limit:
+                await ctx.reply(
+                    embed=error_embed(
+                        t(_p(
+                            'cmd:room_rent|error:name_too_long',
+                            "Room name is too long! Maximum length is **{limit}** characters, "
+                            "but yours is **{length}**."
+                        )).format(limit=name_limit, length=len(name))
+                    ), ephemeral=True
+                )
+                return
+        # --- END AI-MODIFIED ---
+
+        # --- AI-MODIFIED (2026-04-01) ---
+        # Purpose: Enforce creation cooldown after a room expires/is deleted
+        cooldown_minutes = ctx.lguild.config.get(RoomSettings.Cooldown.setting_id).value
+        if cooldown_minutes:
+            remaining = await self.get_cooldown_remaining(ctx.guild.id, ctx.author.id, cooldown_minutes)
+            if remaining > 0:
+                mins_left = remaining // 60
+                secs_left = remaining % 60
+                if mins_left > 0:
+                    time_str = f"**{mins_left}** minute(s)"
+                else:
+                    time_str = f"**{secs_left}** second(s)"
+                await ctx.reply(
+                    embed=error_embed(
+                        t(_p(
+                            'cmd:room_rent|error:cooldown',
+                            "You must wait {time} before renting a new room!"
+                        )).format(time=time_str)
+                    ), ephemeral=True
+                )
+                return
+        # --- END AI-MODIFIED ---
 
         # Check that provided members actually exist
         memberids = set(parse_members(members)) if members else set()
@@ -928,6 +1085,89 @@ class RoomCog(LionCog):
         await ctx.reply(embed=embed, view=link_view)
         # --- END AI-MODIFIED ---
 
+    # --- AI-MODIFIED (2026-04-03) ---
+    # Purpose: Let non-owner members voluntarily leave a private room
+    @room_group.command(
+        name=_p('cmd:room_leave', "leave"),
+        description=_p(
+            'cmd:room_leave|desc',
+            "Leave a private room you are a member of."
+        )
+    )
+    async def room_leave_cmd(self, ctx: LionContext):
+        t = self.bot.translator.t
+        if not ctx.guild or not ctx.interaction:
+            return
+
+        room = self.get_channel_room(ctx.channel.id)
+        if room is None:
+            for r in self._room_cache[ctx.guild.id].values():
+                if ctx.author.id in r.members:
+                    room = r
+                    break
+
+        if room is None:
+            await ctx.reply(
+                embed=error_embed(t(_p(
+                    'cmd:room_leave|error:no_room',
+                    "You are not a member of any private room in this server! "
+                    "Run this command inside the room you wish to leave."
+                ))),
+                ephemeral=True
+            )
+            return
+
+        if ctx.author.id == room.data.ownerid:
+            await ctx.reply(
+                embed=error_embed(t(_p(
+                    'cmd:room_leave|error:is_owner',
+                    "You are the owner of this room! "
+                    "Use {delete_cmd} to close the room, or {transfer_cmd} to transfer ownership first."
+                )).format(
+                    delete_cmd=self.bot.core.mention_cmd('room delete'),
+                    transfer_cmd=self.bot.core.mention_cmd('room transfer'),
+                )),
+                ephemeral=True
+            )
+            return
+
+        if ctx.author.id not in room.members:
+            await ctx.reply(
+                embed=error_embed(t(_p(
+                    'cmd:room_leave|error:not_member',
+                    "You are not a member of this private room!"
+                ))),
+                ephemeral=True
+            )
+            return
+
+        confirm_msg = t(_p(
+            'cmd:room_leave|confirm',
+            "Are you sure you want to leave {channel}? "
+            "You will lose access until the owner invites you back."
+        )).format(channel=room.channel.mention if room.channel else "this room")
+        confirm = Confirm(confirm_msg, ctx.author.id)
+        try:
+            result = await confirm.ask(ctx.interaction, ephemeral=True)
+        except ResponseTimedOut:
+            result = False
+        if not result:
+            return
+
+        await room.leave_member(ctx.author.id)
+
+        await ctx.reply(
+            embed=discord.Embed(
+                colour=discord.Colour.brand_green(),
+                description=t(_p(
+                    'cmd:room_leave|success',
+                    "You have left the private room."
+                ))
+            ),
+            ephemeral=True
+        )
+    # --- END AI-MODIFIED ---
+
     @room_group.command(
         name=_p('cmd:room_transfer', "transfer"),
         description=_p(
@@ -1064,6 +1304,25 @@ class RoomCog(LionCog):
             )
             return
 
+        # --- AI-MODIFIED (2026-04-01) ---
+        # Purpose: Enforce minimum deposit amount from admin setting
+        min_deposit = ctx.lguild.config.get(RoomSettings.MinDeposit.setting_id).value
+        if min_deposit and coins < min_deposit:
+            await ctx.reply(
+                embed=error_embed(t(_p(
+                    'cmd:room_deposit|error:below_minimum',
+                    "The minimum deposit is {coin}**{minimum}**! "
+                    "You tried to deposit {coin}**{amount}**."
+                )).format(
+                    coin=self.bot.config.emojis.coin,
+                    minimum=min_deposit,
+                    amount=coins
+                )),
+                ephemeral=True
+            )
+            return
+        # --- END AI-MODIFIED ---
+
         # Start Transaction
         # TODO: Economy transaction
         await ctx.alion.data.refresh()
@@ -1119,6 +1378,7 @@ class RoomCog(LionCog):
         appcmds.Choice(name="Ocean Waves", value="ocean"),
         appcmds.Choice(name="Brown Noise", value="brown_noise"),
         appcmds.Choice(name="White Noise", value="white_noise"),
+        appcmds.Choice(name="LoFi", value="lofi"),
     ]
 
     @room_group.command(
@@ -1426,13 +1686,19 @@ class RoomCog(LionCog):
     )
     @high_management_ward
     # --- AI-MODIFIED (2026-04-01) ---
-    # Purpose: Add rooms_role parameter for configuring room moderator role
+    # Purpose: Add all room setting parameters including 6 newly-wired settings
     async def configure_rooms_cmd(self, ctx: LionContext,
                                   rooms_category: Optional[discord.CategoryChannel] = None,
                                   rooms_price: Optional[Range[int, 0, MAX_COINS]] = None,
                                   rooms_slots: Optional[Range[int, 1, MAX_COINS]] = None,
                                   rooms_visible: Optional[bool] = None,
-                                  rooms_role: Optional[discord.Role] = None):
+                                  rooms_role: Optional[discord.Role] = None,
+                                  rooms_sync_perms: Optional[bool] = None,
+                                  rooms_max_per_user: Optional[Range[int, 1, 100]] = None,
+                                  rooms_name_limit: Optional[Range[int, 1, 100]] = None,
+                                  rooms_min_deposit: Optional[Range[int, 0, MAX_COINS]] = None,
+                                  rooms_auto_extend: Optional[bool] = None,
+                                  rooms_cooldown: Optional[Range[int, 0, 10080]] = None):
     # --- END AI-MODIFIED ---
         # t = self.bot.translator.t
 
@@ -1446,13 +1712,19 @@ class RoomCog(LionCog):
         await ctx.interaction.response.defer(thinking=True)
 
         # --- AI-MODIFIED (2026-04-01) ---
-        # Purpose: Include rooms_role in the provided settings dict
+        # Purpose: Include all room settings in the provided dict
         provided = {
             'rooms_category': rooms_category,
             'rooms_price': rooms_price,
             'rooms_slots': rooms_slots,
             'rooms_visible': rooms_visible,
             'rooms_role': rooms_role,
+            'rooms_sync_perms': rooms_sync_perms,
+            'rooms_max_per_user': rooms_max_per_user,
+            'rooms_name_limit': rooms_name_limit,
+            'rooms_min_deposit': rooms_min_deposit,
+            'rooms_auto_extend': rooms_auto_extend,
+            'rooms_cooldown': rooms_cooldown,
         }
         # --- END AI-MODIFIED ---
         modified = {(sid, val) for sid, val in provided.items() if val is not None}

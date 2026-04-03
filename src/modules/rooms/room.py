@@ -234,6 +234,49 @@ class Room:
                     )
         return
 
+    # --- AI-MODIFIED (2026-04-03) ---
+    # Purpose: Allow a non-owner member to voluntarily leave the room
+    async def leave_member(self, memberid: int):
+        member_data = self.bot.get_cog('RoomCog').data.RoomMember
+        await member_data.table.delete_where(channelid=self.data.channelid, userid=[memberid])
+        self.members = [m for m in self.members if m != memberid]
+        t = self.bot.translator.t
+        self.lguild.log_event(
+            title=t(_p(
+                'room|eventlog|event:member_left|title',
+                "Member left private room"
+            )),
+            description=t(_p(
+                'room|eventlog|event:member_left|desc',
+                "<@{member}> left {owner}'s private room."
+            )).format(
+                member=memberid,
+                owner=self.data.ownerid,
+            ),
+            fields=self.eventlog_fields()
+        )
+        if self.channel:
+            guild = self.channel.guild
+            member = guild.get_member(memberid)
+            if member and member.id != self.data.ownerid and member != guild.me:
+                await self.channel.set_permissions(
+                    member,
+                    overwrite=None,
+                    reason="Member left private room voluntarily."
+                )
+            notification = discord.Embed(
+                colour=discord.Colour.orange(),
+                description=t(_p(
+                    'room|notify:member_left|desc',
+                    "<@{member}> has left the room."
+                )).format(member=memberid)
+            )
+            try:
+                await self.channel.send(embed=notification)
+            except discord.HTTPException:
+                pass
+    # --- END AI-MODIFIED ---
+
     async def transfer_ownership(self, new_owner):
         member_data = self.bot.get_cog('RoomCog').data.RoomMember
         old_ownerid = self.data.ownerid
@@ -419,53 +462,102 @@ class Room:
                 last_tick=utc_now()
             )
 
-            # If balance is negative, expire room, otherwise notify channel
+            # If balance is negative, try auto-extend or expire room
             if self.data.coin_balance < 0:
-                if owner := self.bot.get_user(self.data.ownerid):
-                    embed = discord.Embed(
-                        colour=discord.Colour.red(),
+                # --- AI-MODIFIED (2026-04-01) ---
+                # Purpose: Auto-extend by charging owner's wallet when room bank is empty
+                from .settings import RoomSettings
+                from core.data import CoreData
+                auto_extend = self.lguild.config.get(RoomSettings.AutoExtend.setting_id).value
+                auto_extended = False
+                if auto_extend:
+                    try:
+                        rent = self.rent
+                        owner_lion = await self.bot.core.lions.fetch_member(self.data.guildid, self.data.ownerid)
+                        await owner_lion.data.refresh()
+                        if owner_lion.data.coins >= rent:
+                            await owner_lion.data.update(coins=CoreData.Member.coins - rent)
+                            await self.data.update(coin_balance=RoomData.Room.coin_balance + rent)
+                            auto_extended = True
+                            coin = self.bot.config.emojis.coin
+                            if self.channel:
+                                embed = discord.Embed(
+                                    colour=discord.Colour.gold(),
+                                    description=t(_p(
+                                        'room|tick|auto_extend',
+                                        "Room bank was empty! {coin}**{rent}** was automatically "
+                                        "deducted from the owner's wallet. "
+                                        "New room balance: {coin}**{balance}**"
+                                    )).format(
+                                        coin=coin, rent=rent,
+                                        balance=self.data.coin_balance
+                                    )
+                                )
+                                link_view = discord.ui.View()
+                                link_view.add_item(discord.ui.Button(
+                                    style=discord.ButtonStyle.link,
+                                    url=ROOM_DASHBOARD_URL,
+                                    label="Deposit Now"
+                                ))
+                                try:
+                                    await self.channel.send(embed=embed, view=link_view)
+                                except discord.HTTPException:
+                                    pass
+                            logger.info(
+                                f"Auto-extended room <cid: {self.data.channelid}> "
+                                f"by charging owner {self.data.ownerid} {rent} coins"
+                            )
+                    except Exception:
+                        logger.exception(
+                            f"Failed to auto-extend room <cid: {self.data.channelid}>"
+                        )
+                # --- END AI-MODIFIED ---
+
+                if not auto_extended:
+                    if owner := self.bot.get_user(self.data.ownerid):
+                        embed = discord.Embed(
+                            colour=discord.Colour.red(),
+                            title=t(_p(
+                                'room|embed:expiry|title',
+                                "Private Room Expired!"
+                            )),
+                            description=t(_p(
+                                'room|embed:expiry|description',
+                                "Your private room in **{guild}** has expired!"
+                            )).format(guild=self.bot.get_guild(self.data.guildid))
+                        )
+                        # --- AI-MODIFIED (2026-03-22) ---
+                        # Purpose: Add "View All Rooms" dashboard link button to expiry DM
+                        link_view = discord.ui.View()
+                        link_view.add_item(discord.ui.Button(
+                            style=discord.ButtonStyle.link,
+                            url=ROOM_DASHBOARD_URL,
+                            label="View All Rooms"
+                        ))
+                        # --- END AI-MODIFIED ---
+                        try:
+                            # --- AI-MODIFIED (2026-03-22) ---
+                            # --- Original code (commented out for rollback) ---
+                            # await owner.send(embed=embed)
+                            # --- End original code ---
+                            await owner.send(embed=embed, view=link_view)
+                            # --- END AI-MODIFIED ---
+                        except discord.HTTPException:
+                            pass
+                    self.lguild.log_event(
                         title=t(_p(
-                            'room|embed:expiry|title',
-                            "Private Room Expired!"
+                            'room|eventlog|event:expired|title',
+                            "Private Room Expired"
                         )),
                         description=t(_p(
-                            'room|embed:expiry|description',
-                            "Your private room in **{guild}** has expired!"
-                        )).format(guild=self.bot.get_guild(self.data.guildid))
+                            'room|eventlog|event:expired|desc',
+                            "{owner}'s private room has expired."
+                        )).format(
+                            owner="<@{mid}>".format(mid=self.data.ownerid),
+                        ),
+                        fields=self.eventlog_fields()
                     )
-                    # --- AI-MODIFIED (2026-03-22) ---
-                    # Purpose: Add "View All Rooms" dashboard link button to expiry DM
-                    link_view = discord.ui.View()
-                    link_view.add_item(discord.ui.Button(
-                        style=discord.ButtonStyle.link,
-                        url=ROOM_DASHBOARD_URL,
-                        label="View All Rooms"
-                    ))
-                    # --- END AI-MODIFIED ---
-                    try:
-                        # --- AI-MODIFIED (2026-03-22) ---
-                        # Purpose: Send expiry DM with dashboard link button
-                        # --- Original code (commented out for rollback) ---
-                        # await owner.send(embed=embed)
-                        # --- End original code ---
-                        await owner.send(embed=embed, view=link_view)
-                        # --- END AI-MODIFIED ---
-                    except discord.HTTPException:
-                        pass
-                self.lguild.log_event(
-                    title=t(_p(
-                        'room|eventlog|event:expired|title',
-                        "Private Room Expired"
-                    )),
-                    description=t(_p(
-                        'room|eventlog|event:expired|desc',
-                        "{owner}'s private room has expired."
-                    )).format(
-                        owner="<@{mid}>".format(mid=self.data.ownerid),
-                    ),
-                    fields=self.eventlog_fields()
-                )
-                await self.destroy(reason='Room Expired')
+                    await self.destroy(reason='Room Expired')
             elif self.channel:
                 # Notify channel
                 embed = discord.Embed(
