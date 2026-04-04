@@ -457,21 +457,77 @@ class ScheduleUI(MessageUI):
             # Info message
             embed.description = t(guide)
         else:
-            # Statistics table
-            stats_fields = {}
+            # --- AI-REPLACED (2026-04-04) ---
+            # Reason: Dict with multi-line values caused dark bars in Discord embed
+            # What the new code does better: Each stat is a separate labeled entry
+            # --- Original code (commented out for rollback) ---
+            # stats_fields = {}
+            # recent_key = t(_p(
+            #     'ui:schedule|embed|field:stats|field:recent',
+            #     "Recent"
+            # ))
+            # recent_value = self._format_stats(*self.recent_stats, self.recent_avg)
+            # stats_fields[recent_key] = recent_value
+            # if self.recent_stats[1] == 100:
+            #     alltime_key = t(_p(
+            #         'ui:schedule|embed|field:stats|field:alltime',
+            #         "All Time"
+            #     ))
+            #     alltime_value = self._format_stats(*self.all_stats, self.all_avg)
+            #     stats_fields[alltime_key] = alltime_value
+            # streak_key = t(_p(
+            #     'ui:schedule|embed|field:stats|field:streak',
+            #     "Streak"
+            # ))
+            # if self.streak:
+            #     streak_value = t(_np(
+            #         'ui:schedule|embed|field:stats|field:streak|value:zero',
+            #         "One session attended! Keep it up!",
+            #         "**{streak}** sessions attended in a row! Good job!",
+            #         self.streak,
+            #     )).format(streak=self.streak)
+            # else:
+            #     streak_value = t(_p(
+            #         'ui:schedule|embed|field:stats|field:streak|value:positive',
+            #         "No streak yet!"
+            #     ))
+            # stats_fields[streak_key] = streak_value
+            # table = tabulate(*stats_fields.items())
+            # --- End original code ---
+            stats_entries = []
             recent_key = t(_p(
                 'ui:schedule|embed|field:stats|field:recent',
                 "Recent"
             ))
-            recent_value = self._format_stats(*self.recent_stats, self.recent_avg)
-            stats_fields[recent_key] = recent_value
+            rate_key = t(_p(
+                'ui:schedule|embed|field:stats|field:rate',
+                "Rate"
+            ))
+            avg_key = t(_p(
+                'ui:schedule|embed|field:stats|field:avg_time',
+                "Avg Time"
+            ))
+            attended_str, rate_str, avg_str = self._format_stats(
+                *self.recent_stats, self.recent_avg
+            )
+            stats_entries.extend([
+                (recent_key, attended_str),
+                (rate_key, rate_str),
+                (avg_key, avg_str),
+            ])
             if self.recent_stats[1] == 100:
                 alltime_key = t(_p(
                     'ui:schedule|embed|field:stats|field:alltime',
                     "All Time"
                 ))
-                alltime_value = self._format_stats(*self.all_stats, self.all_avg)
-                stats_fields[alltime_key] = alltime_value
+                attended_str, rate_str, avg_str = self._format_stats(
+                    *self.all_stats, self.all_avg
+                )
+                stats_entries.extend([
+                    (alltime_key, attended_str),
+                    (rate_key, rate_str),
+                    (avg_key, avg_str),
+                ])
             streak_key = t(_p(
                 'ui:schedule|embed|field:stats|field:streak',
                 "Streak"
@@ -488,9 +544,9 @@ class ScheduleUI(MessageUI):
                     'ui:schedule|embed|field:stats|field:streak|value:positive',
                     "No streak yet!"
                 ))
-            stats_fields[streak_key] = streak_value
-
-            table = tabulate(*stats_fields.items())
+            stats_entries.append((streak_key, streak_value))
+            table = tabulate(*stats_entries)
+            # --- END AI-REPLACED ---
             embed.add_field(
                 name=t(_p(
                     'ui:schedule|embed|field:stats|name',
@@ -527,19 +583,42 @@ class ScheduleUI(MessageUI):
                 )
         return MessageArgs(embed=embed)
 
+    # --- AI-REPLACED (2026-04-04) ---
+    # Reason: Multi-line value caused tabulate() to render continuation lines as dark bars
+    # What the new code does better: Returns 3 separate strings for individual tabulate entries
+    # --- Original code (commented out for rollback) ---
+    # def _format_stats(self, attended, total, average):
+    #     t = self.bot.translator.t
+    #     return t(_p(
+    #         'ui:schedule|embed|stats_format',
+    #         "**{attended}** attended out of **{total}** booked.\r\n"
+    #         "**{percent}%** attendance rate.\r\n"
+    #         "**{average}** average attendance time."
+    #     )).format(
+    #         attended=attended,
+    #         total=total,
+    #         percent=math.ceil(attended/total * 100) if total else 0,
+    #         average=f"{int(average // 60)}:{average % 60:02}"
+    #     )
+    # --- End original code ---
     def _format_stats(self, attended, total, average):
         t = self.bot.translator.t
-        return t(_p(
-            'ui:schedule|embed|stats_format',
-            "**{attended}** attended out of **{total}** booked.\r\n"
-            "**{percent}%** attendance rate.\r\n"
+        percent = math.ceil(attended/total * 100) if total else 0
+        avg_str = f"{int(average // 60)}:{average % 60:02}"
+        attended_str = t(_p(
+            'ui:schedule|embed|stats_format|attended',
+            "**{attended}** attended out of **{total}** booked."
+        )).format(attended=attended, total=total)
+        rate_str = t(_p(
+            'ui:schedule|embed|stats_format|rate',
+            "**{percent}%** attendance rate."
+        )).format(percent=percent)
+        avg_time_str = t(_p(
+            'ui:schedule|embed|stats_format|avg_time',
             "**{average}** average attendance time."
-        )).format(
-            attended=attended,
-            total=total,
-            percent=math.ceil(attended/total * 100) if total else 0,
-            average=f"{int(average // 60)}:{average % 60:02}"
-        )
+        )).format(average=avg_str)
+        return (attended_str, rate_str, avg_time_str)
+    # --- END AI-REPLACED ---
 
     def _format_bookings(self, bookings, show_guild=False):
         t = self.bot.translator.t

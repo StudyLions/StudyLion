@@ -228,13 +228,22 @@ class ScheduledSession:
 
     @log_wrap(action='Session Prepare')
     async def prepare(self, **kwargs):
-        """
-        Execute prepare stage for this guild.
-        """
+        # --- AI-REPLACED (2026-04-04) ---
+        # Reason: No pre-session notification existed
+        # What the new code does better: Sends DM reminders ~15 min before session
+        # --- Original code (commented out for rollback) ---
+        # async with self.lock:
+        #     await self.prepare_room()
+        #     await self.update_status(**kwargs)
+        #     self.prepared = True
+        # --- End original code ---
         async with self.lock:
             await self.prepare_room()
             await self.update_status(**kwargs)
             self.prepared = True
+            if self.members:
+                asyncio.create_task(self._send_reminders())
+        # --- END AI-REPLACED ---
 
     @log_wrap(action='Prepare Room')
     async def prepare_room(self):
@@ -358,35 +367,133 @@ class ScheduledSession:
             self.prepared = True
             self.opened = True
 
+    # --- AI-GENERATED (2026-04-04) ---
+    # Purpose: Send DM reminders to booked members during prepare phase (~15 min before session)
+    @log_wrap(action='Send Reminders')
+    async def _send_reminders(self):
+        """Send DM reminders to booked members ~15 min before session starts."""
+        t = self.bot.translator.t
+        guild = self.guild
+        if not guild or not self.members:
+            return
+        for mid in self.members:
+            member = guild.get_member(mid)
+            if not member and not guild.chunked:
+                self.bot.request_chunking_for(guild)
+                try:
+                    member = await guild.fetch_member(mid)
+                except discord.HTTPException:
+                    member = None
+            if member:
+                embed = discord.Embed(
+                    colour=discord.Colour.orange(),
+                    title=t(_p(
+                        'session|reminder|dm|title',
+                        "Upcoming Scheduled Session"
+                    )),
+                    description=t(_p(
+                        'session|reminder|dm|description',
+                        "Your scheduled session in **{guild}** starts {start}!\n"
+                        "Make sure you're ready to join a voice channel."
+                    )).format(
+                        guild=guild.name,
+                        start=discord.utils.format_dt(self.starts_at, 'R'),
+                    )
+                )
+                try:
+                    await member.send(embed=embed)
+                except discord.HTTPException:
+                    await asyncio.sleep(1)
+    # --- END AI-GENERATED ---
+
+    # --- AI-REPLACED (2026-04-04) ---
+    # Reason: Ghost ping via webhook was unreliable for push notifications
+    # What the new code does better: Sends ping via channel.send() with delay before delete
+    # --- Original code (commented out for rollback) ---
+    # @log_wrap(action='Notify')
+    # async def _notify(self, ping_wait=10, dm_wait=60):
+    #     """
+    #     Ghost ping members who have not yet attended.
+    #     """
+    #     try:
+    #         await asyncio.sleep(ping_wait)
+    #     except asyncio.CancelledError:
+    #         return
+    #
+    #     # Ghost ping alert for missing members
+    #     missing = [mid for mid, m in self.members.items() if m.total_clock == 0 and m.clock_start is None]
+    #     if missing:
+    #         ping = ''.join(f"<@{mid}>" for mid in missing)
+    #         message = await self.send(ping)
+    #         if message is not None:
+    #             asyncio.create_task(message.delete())
+    #     try:
+    #         # Random dither to spread out sharded notifications
+    #         dither = 30 * random()
+    #         await asyncio.sleep(dm_wait - ping_wait + dither)
+    #     except asyncio.CancelledError:
+    #         return
+    #
+    #     if not self.guild:
+    #         # In case we somehow left the guild in the meantime
+    #         return
+    #
+    #     # DM alert for _still_ missing members
+    #     missing = [mid for mid, m in self.members.items() if m.total_clock == 0 and m.clock_start is None]
+    #     for mid in missing:
+    #         member = self.guild.get_member(mid)
+    #         if member:
+    #             args = await self._notify_dm(member)
+    #             try:
+    #                 await member.send(**args.send_args)
+    #             except discord.HTTPException:
+    #                 # Discord really doesn't like failed DM requests
+    #                 # So take a moment of silence
+    #                 await asyncio.sleep(1)
+    # --- End original code ---
     @log_wrap(action='Notify')
     async def _notify(self, ping_wait=10, dm_wait=60):
         """
-        Ghost ping members who have not yet attended.
+        Ping members who have not yet attended via channel message,
+        then DM members still missing after dm_wait.
         """
         try:
             await asyncio.sleep(ping_wait)
         except asyncio.CancelledError:
             return
 
-        # Ghost ping alert for missing members
+        t = self.bot.translator.t
         missing = [mid for mid, m in self.members.items() if m.total_clock == 0 and m.clock_start is None]
         if missing:
-            ping = ''.join(f"<@{mid}>" for mid in missing)
-            message = await self.send(ping)
-            if message is not None:
-                asyncio.create_task(message.delete())
+            ping = ' '.join(f"<@{mid}>" for mid in missing)
+            alert_text = t(_p(
+                'session|notify|ping_alert',
+                "Your scheduled session has started! Join a voice channel now."
+            ))
+            channel = self.lobby_channel
+            if channel and channel.permissions_for(channel.guild.me).send_messages:
+                try:
+                    message = await channel.send(f"{ping}\n{alert_text}")
+                    await asyncio.sleep(5)
+                    try:
+                        await message.delete()
+                    except discord.HTTPException:
+                        pass
+                except discord.HTTPException:
+                    logger.warning(
+                        f"Failed to send session start ping for session {self!r}",
+                        exc_info=True
+                    )
+
         try:
-            # Random dither to spread out sharded notifications
             dither = 30 * random()
             await asyncio.sleep(dm_wait - ping_wait + dither)
         except asyncio.CancelledError:
             return
 
         if not self.guild:
-            # In case we somehow left the guild in the meantime
             return
 
-        # DM alert for _still_ missing members
         missing = [mid for mid, m in self.members.items() if m.total_clock == 0 and m.clock_start is None]
         for mid in missing:
             member = self.guild.get_member(mid)
@@ -395,9 +502,8 @@ class ScheduledSession:
                 try:
                     await member.send(**args.send_args)
                 except discord.HTTPException:
-                    # Discord really doesn't like failed DM requests
-                    # So take a moment of silence
                     await asyncio.sleep(1)
+    # --- END AI-REPLACED ---
 
     async def _notify_dm(self, member: discord.Member) -> MessageArgs:
         t = self.bot.translator.t
