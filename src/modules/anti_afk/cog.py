@@ -20,7 +20,7 @@ from utils.lib import utc_now
 
 from . import logger, babel
 from .data import AntiAfkData
-from .ui import AntiAfkConfirmView, AntiAfkPersistentView, CUSTOM_ID_PREFIX
+from .ui import AntiAfkConfirmView, CUSTOM_ID_PREFIX
 
 _p = babel._p
 
@@ -104,12 +104,67 @@ class AntiAfkCog(LionCog):
     # ─── Lifecycle ───────────────────────────────────────────
 
     async def cog_load(self):
-        self.bot.add_view(AntiAfkPersistentView(self.bot))
         self._main_loop_task = asyncio.create_task(self._main_loop())
         logger.info(
             f"AntiAfkCog loaded on shard {self.bot.shard_id}. "
             f"Main loop started."
         )
+
+    @LionCog.listener('on_interaction')
+    async def on_anti_afk_interaction(self, interaction: discord.Interaction):
+        """Handle anti-afk confirm button presses via on_interaction.
+
+        Uses on_interaction (not bot.add_view) because each button has
+        a dynamic custom_id containing the guild ID. Static persistent
+        views require exact custom_id match and can't handle this.
+        Same pattern as LionGotchi family invites.
+        """
+        if interaction.type != discord.InteractionType.component:
+            return
+
+        custom_id = ''
+        if interaction.data:
+            custom_id = interaction.data.get('custom_id', '')
+
+        if not custom_id.startswith(CUSTOM_ID_PREFIX + ':'):
+            return
+
+        parts = custom_id.split(':')
+        guildid = interaction.guild_id
+        if not guildid and len(parts) >= 3:
+            try:
+                guildid = int(parts[2])
+            except (ValueError, IndexError):
+                pass
+
+        if not guildid:
+            await interaction.response.send_message(
+                "Could not identify the server for this check.",
+                ephemeral=True,
+            )
+            return
+
+        userid = interaction.user.id
+        handled = await self.handle_confirm(guildid, userid)
+
+        if handled:
+            embed = discord.Embed(
+                colour=discord.Colour.brand_green(),
+                description=(
+                    "\u2705 Confirmed! Your check timer has been reset. "
+                    "Stay productive!"
+                ),
+            )
+        else:
+            embed = discord.Embed(
+                colour=discord.Colour.greyple(),
+                description="No active check found for you. You're all good!",
+            )
+
+        try:
+            await interaction.response.send_message(embed=embed, ephemeral=True)
+        except discord.HTTPException:
+            pass
 
     async def cog_unload(self):
         if self._main_loop_task and not self._main_loop_task.done():
@@ -374,6 +429,8 @@ class AntiAfkCog(LionCog):
                         continue
                     if self._has_exempt_role(member, config):
                         continue
+                    if member.id in self._tracked.get(guild.id, {}):
+                        continue
 
                     tu = TrackedUser(guild.id, member.id, channel.id)
                     self._tracked[guild.id][member.id] = tu
@@ -443,6 +500,13 @@ class AntiAfkCog(LionCog):
                 elapsed = now_mono - tu.last_check_at
                 if elapsed < check_interval_sec:
                     continue
+
+                # Hard-reject: never send a prompt within grace_period
+                # of the last one, even if the state machine has a bug
+                if tu.last_prompt_sent_at is not None:
+                    since_last = now_mono - tu.last_prompt_sent_at
+                    if since_last < grace_period_sec:
+                        continue
 
                 # Check channel still exists and user is in it
                 channel = guild.get_channel(tu.channelid)
@@ -571,7 +635,7 @@ class AntiAfkCog(LionCog):
             description=''.join(description_parts),
         )
 
-        view = AntiAfkConfirmView(self.bot, guild.id, [tu.userid for tu in users])
+        view = AntiAfkConfirmView(guild.id)
 
         try:
             await channel.send(embed=embed, view=view)
@@ -639,7 +703,7 @@ class AntiAfkCog(LionCog):
             )
             embed.set_footer(text=f"Server: {guild.name}")
 
-            view = AntiAfkConfirmView(self.bot, guild.id, [tu.userid])
+            view = AntiAfkConfirmView(guild.id)
 
             try:
                 await member.send(embed=embed, view=view)
@@ -710,7 +774,7 @@ class AntiAfkCog(LionCog):
             ),
         )
 
-        view = AntiAfkConfirmView(self.bot, guild.id, [tu.userid for tu in users])
+        view = AntiAfkConfirmView(guild.id)
 
         try:
             await channel.send(embed=embed, view=view)

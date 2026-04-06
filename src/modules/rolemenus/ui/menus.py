@@ -237,11 +237,21 @@ class MenuList(MessageUI):
         # Order menu data by (message_exists, channel_position, messageid)
         sorted_menu_data = sorted(menu_data, key=self._sort_key)
 
-        # Fetch associated menus, load into self.menus
+        # --- AI-MODIFIED (2026-04-06) ---
+        # Purpose: reload_roles() after fetch to pick up roles added via the website dashboard,
+        # which bypass the bot's in-memory cache
+        # --- Original code (commented out for rollback) ---
+        # menus = []
+        # for data in sorted_menu_data:
+        #     menu = await RoleMenu.fetch(self.bot, data.menuid)
+        #     menus.append(menu)
+        # --- End original code ---
         menus = []
         for data in sorted_menu_data:
             menu = await RoleMenu.fetch(self.bot, data.menuid)
+            await menu.reload_roles()
             menus.append(menu)
+        # --- END AI-MODIFIED ---
 
         self.menus = menus
 
