@@ -118,6 +118,10 @@ class CoreData(Registry, name="core"):
         last_seen = Timestamp()
         locale = String()
         locale_hint = String()
+        # --- AI-MODIFIED (2026-04-06) ---
+        # Purpose: User preference to mute schedule DM reminders
+        schedule_dm_muted = Bool()
+        # --- END AI-MODIFIED ---
 
     class Guild(RowModel):
         """
@@ -152,6 +156,8 @@ class CoreData(Registry, name="core"):
             accountability_price INTEGER,
             video_studyban BOOLEAN,
             video_grace_period INTEGER,
+            screenban_role BIGINT,
+            screen_grace_period INTEGER,
             greeting_channel BIGINT,
             greeting_message TEXT,
             returning_message TEXT,
@@ -208,6 +214,18 @@ class CoreData(Registry, name="core"):
         renting_role = Integer()
         renting_sync_perms = Bool()
         renting_visible = Bool()
+        # --- AI-MODIFIED (2026-04-01) ---
+        # Purpose: ORM fields for 5 room settings that exist in DB but were missing from bot model
+        renting_max_per_user = Integer()
+        renting_name_limit = Integer()
+        renting_min_deposit = Integer()
+        renting_auto_extend = Bool()
+        renting_cooldown = Integer()
+        # --- END AI-MODIFIED ---
+        # --- AI-MODIFIED (2026-04-04) ---
+        # Purpose: Toggle for join/leave notification embeds inside private room channels
+        renting_notifications = Bool()
+        # --- END AI-MODIFIED ---
 
         accountability_category = Integer()
         accountability_lobby = Integer()
@@ -219,6 +237,12 @@ class CoreData(Registry, name="core"):
         video_grace_period = Integer()
 
         studyban_role = Integer()
+
+        # --- AI-MODIFIED (2026-03-31) ---
+        # Purpose: Screen share enforcement columns (mirrors video_channels)
+        screenban_role = Integer()
+        screen_grace_period = Integer()
+        # --- END AI-MODIFIED ---
 
         greeting_channel = Integer()
         greeting_message = String()
@@ -300,6 +324,7 @@ class CoreData(Registry, name="core"):
             last_workout_start TIMESTAMP,
             last_study_badgeid INTEGER REFERENCES study_badges ON DELETE SET NULL,
             video_warned BOOLEAN DEFAULT FALSE,
+            screen_warned BOOLEAN DEFAULT FALSE,
             display_name TEXT,
             first_joined TIMESTAMPTZ DEFAULT now(),
             last_left TIMESTAMPTZ,
@@ -322,6 +347,10 @@ class CoreData(Registry, name="core"):
         last_workout_start = Timestamp()
         last_study_badgeid = Integer()
         video_warned = Bool()
+        # --- AI-MODIFIED (2026-03-31) ---
+        # Purpose: Screen share enforcement warning flag (mirrors video_warned)
+        screen_warned = Bool()
+        # --- END AI-MODIFIED ---
         display_name = String()
 
         first_joined = Timestamp()

@@ -120,6 +120,12 @@ class ScheduleCog(LionCog):
         configcog = self.bot.get_cog('ConfigCog')
         self.crossload_group(self.configure_group, configcog.admin_config_group)
 
+        # --- AI-MODIFIED (2026-04-06) ---
+        # Purpose: Register persistent mute toggle view so buttons survive bot restarts
+        from .core.session import ScheduleReminderView
+        self.bot.add_view(ScheduleReminderView())
+        # --- END AI-MODIFIED ---
+
         if self.bot.is_ready():
             await self.initialise()
 

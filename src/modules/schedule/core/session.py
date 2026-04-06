@@ -33,6 +33,60 @@ member_room_permissions = discord.PermissionOverwrite(
 )
 
 
+# --- AI-MODIFIED (2026-04-06) ---
+# Purpose: Persistent mute toggle button for schedule DM notifications
+class ScheduleReminderView(discord.ui.View):
+    """Persistent buttons attached to schedule DM notifications.
+    Follows the same pattern as LionGotchi's DropNotificationView."""
+
+    def __init__(self):
+        super().__init__(timeout=None)
+
+    @discord.ui.button(
+        label="Mute Schedule Reminders",
+        emoji="\U0001F515",
+        style=discord.ButtonStyle.grey,
+        custom_id="schedule:reminder:mute_toggle"
+    )
+    async def mute_toggle(self, interaction: discord.Interaction, button: discord.ui.Button):
+        uid = interaction.user.id
+        try:
+            bot = interaction.client
+            async with bot.db.connection() as conn:
+                async with conn.cursor() as cur:
+                    await cur.execute(
+                        "SELECT schedule_dm_muted FROM user_config WHERE userid = %s",
+                        [uid]
+                    )
+                    row = await cur.fetchone()
+                    current = bool(row.get('schedule_dm_muted', False)) if row else False
+
+                new_val = not current
+                await conn.execute(
+                    "UPDATE user_config SET schedule_dm_muted = %s WHERE userid = %s",
+                    [new_val, uid]
+                )
+
+            if new_val:
+                await interaction.response.send_message(
+                    "Schedule reminders **muted**. You won't receive DMs for upcoming sessions.\n"
+                    "Click the button again or visit your dashboard Profile to unmute.",
+                    ephemeral=True
+                )
+            else:
+                await interaction.response.send_message(
+                    "Schedule reminders **unmuted**. You'll receive DMs before your scheduled sessions.",
+                    ephemeral=True
+                )
+        except Exception:
+            logger.warning(f"Failed to toggle schedule mute for user {uid}", exc_info=True)
+            await interaction.response.send_message(
+                "Something went wrong. Please try again in a moment.",
+                ephemeral=True
+            )
+# --- END AI-MODIFIED ---
+
+
 class ScheduledSession:
     """
     Guild-local context for a scheduled session timeslot.
@@ -238,11 +292,13 @@ class ScheduledSession:
         #     self.prepared = True
         # --- End original code ---
         async with self.lock:
+            first_prepare = self.data.messageid is None
             await self.prepare_room()
             await self.update_status(**kwargs)
             self.prepared = True
-            if self.members:
+            if self.members and first_prepare:
                 asyncio.create_task(self._send_reminders())
+                asyncio.create_task(self._send_prepare_ping())
         # --- END AI-REPLACED ---
 
     @log_wrap(action='Prepare Room')
@@ -367,16 +423,51 @@ class ScheduledSession:
             self.prepared = True
             self.opened = True
 
-    # --- AI-GENERATED (2026-04-04) ---
-    # Purpose: Send DM reminders to booked members during prepare phase (~15 min before session)
+    # --- AI-MODIFIED (2026-04-06) ---
+    # Purpose: Suppress redundant notifications for consecutive hourly slots + mute support
+    def _has_previous_booking(self, member_id: int) -> bool:
+        """Check if member has a booking in the immediately preceding hourly slot."""
+        cog = self.bot.get_cog('ScheduleCog')
+        if not cog:
+            return False
+        prev_slot = cog.active_slots.get(self.slotid - 3600)
+        if not prev_slot:
+            return False
+        prev_session = prev_slot.sessions.get(self.guildid)
+        if not prev_session:
+            return False
+        return member_id in prev_session.members
+
+    async def _is_schedule_muted(self, user_id: int) -> bool:
+        """Check if a user has muted schedule DM reminders."""
+        try:
+            async with self.bot.db.connection() as conn:
+                async with conn.cursor() as cur:
+                    await cur.execute(
+                        "SELECT schedule_dm_muted FROM user_config WHERE userid = %s",
+                        [user_id]
+                    )
+                    row = await cur.fetchone()
+                    if row:
+                        return bool(row.get('schedule_dm_muted', False))
+        except Exception:
+            logger.warning(f"Failed to check schedule mute for user {user_id}", exc_info=True)
+        return False
+
     @log_wrap(action='Send Reminders')
     async def _send_reminders(self):
-        """Send DM reminders to booked members ~15 min before session starts."""
+        """Send DM reminders to booked members ~15 min before session starts.
+        Skips members who have a booking in the preceding slot (consecutive block)
+        or who have muted schedule reminders."""
         t = self.bot.translator.t
         guild = self.guild
         if not guild or not self.members:
             return
         for mid in self.members:
+            if self._has_previous_booking(mid):
+                continue
+            if await self._is_schedule_muted(mid):
+                continue
             member = guild.get_member(mid)
             if not member and not guild.chunked:
                 self.bot.request_chunking_for(guild)
@@ -401,10 +492,40 @@ class ScheduledSession:
                     )
                 )
                 try:
-                    await member.send(embed=embed)
+                    await member.send(embed=embed, view=ScheduleReminderView())
                 except discord.HTTPException:
                     await asyncio.sleep(1)
-    # --- END AI-GENERATED ---
+
+    @log_wrap(action='Prepare Ping')
+    async def _send_prepare_ping(self):
+        """Send a channel @mention ping to booked members whose block starts this slot."""
+        t = self.bot.translator.t
+        if not self.members:
+            return
+        channel = self.lobby_channel
+        if not channel or not channel.permissions_for(channel.guild.me).send_messages:
+            return
+        first_slot_members = [mid for mid in self.members if not self._has_previous_booking(mid)]
+        if not first_slot_members:
+            return
+        ping = ' '.join(f"<@{mid}>" for mid in first_slot_members)
+        alert_text = t(_p(
+            'session|prepare|ping_alert',
+            "Your scheduled session starts {start}! Get ready to join a voice channel."
+        )).format(start=discord.utils.format_dt(self.starts_at, 'R'))
+        try:
+            message = await channel.send(f"{ping}\n{alert_text}")
+            await asyncio.sleep(5)
+            try:
+                await message.delete()
+            except discord.HTTPException:
+                pass
+        except discord.HTTPException:
+            logger.warning(
+                f"Failed to send prepare ping for session {self!r}",
+                exc_info=True
+            )
+    # --- END AI-MODIFIED ---
 
     # --- AI-REPLACED (2026-04-04) ---
     # Reason: Ghost ping via webhook was unreliable for push notifications
@@ -496,11 +617,13 @@ class ScheduledSession:
 
         missing = [mid for mid, m in self.members.items() if m.total_clock == 0 and m.clock_start is None]
         for mid in missing:
+            if await self._is_schedule_muted(mid):
+                continue
             member = self.guild.get_member(mid)
             if member:
                 args = await self._notify_dm(member)
                 try:
-                    await member.send(**args.send_args)
+                    await member.send(**args.send_args, view=ScheduleReminderView())
                 except discord.HTTPException:
                     await asyncio.sleep(1)
     # --- END AI-REPLACED ---
