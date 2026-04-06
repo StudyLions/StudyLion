@@ -450,8 +450,8 @@ msgid ""
 "Mention the members you want to remove. Also accepts space-separated user "
 "ids."
 msgstr ""
-"Mencione o membro que você quer remover. IDˋs de usuário, separadas por "
-"\"espaço\" também são aceitas."
+"Mencione os membros que deseja remover. Também aceita IDs separados por "
+"espaço."
 
 #, possible-python-brace-format
 msgctxt "cmd:room_kick|error:no_room"

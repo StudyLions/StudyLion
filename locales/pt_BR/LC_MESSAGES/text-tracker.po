@@ -123,7 +123,7 @@ msgstr "Mensagens enviadas nestes canais não irão contar para acumular EXP em 
 #: src/tracking/text/settings.py:111
 msgctxt "guildset:untracked_text_channels|accepts"
 msgid "Comma separated list of untracked text channel names or ids."
-msgstr "Lista de nomes, ou IDˋs, dos canais em que as mensagens são não-contabilizáveis, separados por vírgula."
+msgstr "Lista de nomes ou IDs dos canais não rastreados, separados por vírgula."
 
 #: src/tracking/text/settings.py:115
 msgctxt "guildset:untracked_text_channels|notset"

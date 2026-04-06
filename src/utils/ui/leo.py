@@ -19,10 +19,35 @@ from gui.errors import RenderingException
 from . import logger
 from ..lib import MessageArgs, error_embed
 
-# --- AI-MODIFIED (2026-03-19) ---
-# Purpose: Global vote button injection for all LeoUI-based command UIs.
-# Always shows: gem reward when ready, countdown timer when on cooldown.
-# Skipped for premium guilds and UIs without required attributes.
+# --- AI-REPLACED (2026-04-06) ---
+# Reason: Expanded to also inject a "Report a Bug" feedback link button alongside the vote button
+# What the new code does better: Adds a support-server link button in the same row as the vote
+# button, giving users a one-click path to report bugs or request features from any UI.
+# --- Original code (commented out for rollback) ---
+# async def _maybe_append_vote_button(ui: 'LeoUI') -> None:
+#     if ui._layout is None or len(ui._layout) >= 5:
+#         return
+#     bot = getattr(ui, 'bot', None)
+#     if bot is None:
+#         return
+#     userid = getattr(ui, 'userid', None) or getattr(ui, '_callerid', None) or getattr(ui, '_ownerid', None)
+#     if not userid:
+#         user_obj = getattr(ui, 'user', None) or getattr(ui, 'caller', None)
+#         if user_obj and hasattr(user_obj, 'id'):
+#             userid = user_obj.id
+#     if not userid:
+#         return
+#     try:
+#         voting = bot.get_cog('TopggCog')
+#         if not voting:
+#             return
+#         btn = await voting.vote_button_for_user(userid)
+#         layout = list(ui._layout)
+#         layout.append((btn,))
+#         ui._layout = tuple(layout)
+#     except Exception:
+#         logger.debug("Vote button injection failed silently", exc_info=True)
+# --- End original code ---
 async def _maybe_append_vote_button(ui: 'LeoUI') -> None:
     if ui._layout is None or len(ui._layout) >= 5:
         return
@@ -40,17 +65,28 @@ async def _maybe_append_vote_button(ui: 'LeoUI') -> None:
         return
 
     try:
-        voting = bot.get_cog('TopggCog')
-        if not voting:
-            return
+        row_items = []
 
-        btn = await voting.vote_button_for_user(userid)
-        layout = list(ui._layout)
-        layout.append((btn,))
-        ui._layout = tuple(layout)
+        voting = bot.get_cog('TopggCog')
+        if voting:
+            row_items.append(await voting.vote_button_for_user(userid))
+
+        support_url = getattr(getattr(bot.config, 'bot', None), 'support_guild', None)
+        if support_url:
+            row_items.append(discord.ui.Button(
+                label="Report a Bug",
+                emoji="\U0001F41B",
+                url=str(support_url),
+                style=discord.ButtonStyle.link,
+            ))
+
+        if row_items:
+            layout = list(ui._layout)
+            layout.append(tuple(row_items))
+            ui._layout = tuple(layout)
     except Exception:
-        logger.debug("Vote button injection failed silently", exc_info=True)
-# --- END AI-MODIFIED ---
+        logger.debug("Global button injection failed silently", exc_info=True)
+# --- END AI-REPLACED ---
 
 __all__ = (
     'LeoUI',
@@ -234,10 +270,14 @@ class LeoUI(View):
             except asyncio.CancelledError:
                 pass
             except Exception:
+                # --- AI-MODIFIED (2026-04-02) ---
+                # Purpose: Fix missing format arg -- {self!r} was literal text, not interpolated
                 await logger.exception(
-                    "Unhandled error caught while dispatching timeout for {self!r}.",
+                    "Unhandled error caught while dispatching timeout for %r.",
+                    self,
                     extra={'with_ctx': True, 'action': 'Error'}
                 )
+                # --- END AI-MODIFIED ---
 
             # Check if we still need to timeout
             if self.timeout is None:
@@ -347,6 +387,17 @@ class LeoUI(View):
             )
             embed = interaction.client.tree.rendersplat(e)
             await interaction.client.tree.error_reply(interaction, embed)
+        # --- AI-MODIFIED (2026-04-05) ---
+        # Purpose: Show actionable permission error instead of generic bugsplat for UI interactions
+        except discord.Forbidden as e:
+            logger.warning(
+                f"Forbidden error in UI item {item!r} of LeoUI {self!r}: {interaction.data}",
+                exc_info=True,
+                extra={'with_ctx': True, 'action': 'UIForbidden'}
+            )
+            embed = interaction.client.tree.forbidden_embed(interaction, e)
+            await interaction.client.tree.error_reply(interaction, embed)
+        # --- END AI-MODIFIED ---
         except Exception:
             logger.exception(
                 f"Unhandled interaction exception occurred in item {item!r} of LeoUI {self!r} from interaction: "
@@ -618,6 +669,17 @@ class LeoModal(Modal):
             )
             embed = interaction.client.tree.rendersplat(e)
             await interaction.client.tree.error_reply(interaction, embed)
+        # --- AI-MODIFIED (2026-04-05) ---
+        # Purpose: Show actionable permission error instead of generic bugsplat for modal interactions
+        except discord.Forbidden as e:
+            logger.warning(
+                f"Forbidden error in modal {self!r}: {interaction.data}",
+                exc_info=True,
+                extra={'with_ctx': True, 'action': 'ModalForbidden'}
+            )
+            embed = interaction.client.tree.forbidden_embed(interaction, e)
+            await interaction.client.tree.error_reply(interaction, embed)
+        # --- END AI-MODIFIED ---
         except Exception:
             logger.exception(
                 f"Unhandled interaction exception occurred in {self!r}. Interaction: {interaction.data}",

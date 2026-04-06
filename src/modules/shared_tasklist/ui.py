@@ -3,16 +3,65 @@
 # Created: 2026-03-31
 # Purpose: Discord UI views for shared kanban boards
 # ============================================================
+import json
 import discord
 from utils.lib import utc_now
 from . import logger
 
+# --- AI-MODIFIED (2026-04-01) ---
+# Purpose: Add Babel localization for text branding support
+# LazyStr (from babel._p) is not JSON-serializable; resolve to plain str.
+from . import babel
+def _p(context, message):
+    return str(babel._p(context, message))
+# --- END AI-MODIFIED ---
 
-COLUMN_EMOJIS = {
-    0: "\U0001f4cb",  # clipboard
-    1: "\U0001f504",  # arrows counterclockwise
-    2: "\u2705",      # green check
-}
+
+def _hex_to_discord_color(hex_str):
+    """Convert a hex color string like '#6366f1' to a discord.Color."""
+    if not hex_str:
+        return discord.Color.blurple()
+    try:
+        return discord.Color(int(hex_str.lstrip("#"), 16))
+    except (ValueError, TypeError):
+        return discord.Color.blurple()
+
+
+def _color_to_circle(hex_str):
+    """Map a hex color to the closest colored circle emoji."""
+    if not hex_str:
+        return "\u26aa"
+    try:
+        r, g, b = int(hex_str[1:3], 16), int(hex_str[3:5], 16), int(hex_str[5:7], 16)
+    except (ValueError, IndexError):
+        return "\u26aa"
+    options = [
+        ((239, 68, 68), "\U0001f534"),    # red
+        ((249, 115, 22), "\U0001f7e0"),   # orange
+        ((234, 179, 8), "\U0001f7e1"),    # yellow
+        ((34, 197, 94), "\U0001f7e2"),    # green
+        ((59, 130, 246), "\U0001f535"),   # blue
+        ((168, 85, 247), "\U0001f7e3"),   # purple
+        ((255, 255, 255), "\u26aa"),      # white
+    ]
+    best, best_dist = "\u26aa", float("inf")
+    for (cr, cg, cb), emoji in options:
+        dist = (r - cr) ** 2 + (g - cg) ** 2 + (b - cb) ** 2
+        if dist < best_dist:
+            best, best_dist = emoji, dist
+    return best
+
+
+def _progress_bar(completed, total, length=12):
+    """Render a text-based progress bar."""
+    if total == 0:
+        return "\u2500" * length + " " + _p('ui:board|no_tasks', "*No tasks*")
+    pct = completed / total
+    filled = round(pct * length)
+    bar = "\u2501" * filled + "\u2500" * (length - filled)
+    return _p(
+        'ui:board|progress_bar', "`{bar}` **{completed}**/{total} done ({pct}%)"
+    ).format(bar=bar, completed=completed, total=total, pct=round(pct * 100))
 
 
 class BoardView(discord.ui.View):
@@ -26,6 +75,7 @@ class BoardView(discord.ui.View):
         self.user = user
         self.columns = []
         self.tasks = []
+        self.members = []
         self.message = None
 
     async def send(self, interaction: discord.Interaction):
@@ -50,22 +100,29 @@ class BoardView(discord.ui.View):
             deleted_at=None,
         )
 
+        self.members = await self.data.Member.fetch_where(listid=self.board.listid)
+
     def _build_embed(self):
         total = len(self.tasks)
         completed = sum(1 for t in self.tasks if t.completed_at)
 
-        embed = discord.Embed(
-            title=f"{self.board.name}",
-            description="",
-            color=discord.Color.blurple(),
+        embed_color = _hex_to_discord_color(self.board.color)
+        embed = discord.Embed(color=embed_color)
+
+        embed.set_author(
+            name=self.board.name,
+            icon_url=self.user.avatar.url if self.user.avatar else None,
         )
 
+        desc_lines = []
         if self.board.description:
-            embed.description = f"*{self.board.description}*\n\n"
+            desc_lines.append(f"*{self.board.description}*")
+            desc_lines.append("")
 
-        col_map = {}
-        for col in self.columns:
-            col_map[col.columnid] = col
+        desc_lines.append(_progress_bar(completed, total))
+        desc_lines.append("")
+
+        embed.description = "\n".join(desc_lines)
 
         tasks_by_col = {}
         for t in self.tasks:
@@ -74,29 +131,48 @@ class BoardView(discord.ui.View):
                 tasks_by_col[cid] = []
             tasks_by_col[cid].append(t)
 
-        for i, col in enumerate(self.columns):
-            emoji = COLUMN_EMOJIS.get(i, "\U0001f4cb")
+        for col in self.columns:
+            circle = _color_to_circle(col.color)
             col_tasks = tasks_by_col.get(col.columnid, [])
             col_tasks.sort(key=lambda t: t.position)
 
             if col_tasks:
                 lines = []
-                for t in col_tasks[:15]:
-                    check = "\u2611" if t.completed_at else "\u2610"
-                    lines.append(f"  {check} {t.content}")
-                if len(col_tasks) > 15:
-                    lines.append(f"  *...and {len(col_tasks) - 15} more*")
+                for t in col_tasks[:10]:
+                    if t.completed_at:
+                        lines.append(f"\u2003\u2714\ufe0f ~~{t.content}~~")
+                    else:
+                        lines.append(f"\u2003\u25fb {t.content}")
+                if len(col_tasks) > 10:
+                    lines.append(
+                        _p('ui:board|more_tasks', "\u2003\u22ef *+{count} more*")
+                        .format(count=len(col_tasks) - 10)
+                    )
                 value = "\n".join(lines)
             else:
-                value = "  *No tasks*"
+                value = _p('ui:board|empty_column', "\u2003*\u2014 empty \u2014*")
 
             embed.add_field(
-                name=f"{emoji} {col.name} ({len(col_tasks)})",
+                name=f"{circle} {col.name} \u2014 {len(col_tasks)}",
                 value=value,
                 inline=False,
             )
 
-        embed.set_footer(text=f"{completed}/{total} tasks complete")
+        member_count = len(self.members)
+        # --- AI-MODIFIED (2026-04-01) ---
+        # Purpose: Add Babel localization for text branding support
+        footer_parts = [(
+            _p('ui:board|footer_members_plural', "\U0001f465 {count} members")
+            if member_count != 1
+            else _p('ui:board|footer_members_single', "\U0001f465 {count} member")
+        ).format(count=member_count)]
+        if self.board.updated_at:
+            footer_parts.append(_p('ui:board|footer_updated', "Last updated"))
+        # --- END AI-MODIFIED ---
+        embed.set_footer(text=" \u2022 ".join(footer_parts))
+        if self.board.updated_at:
+            embed.timestamp = self.board.updated_at
+
         return embed
 
     def _add_items(self):
@@ -106,39 +182,43 @@ class BoardView(discord.ui.View):
         if incomplete:
             options = []
             for t in incomplete[:25]:
+                col = next((c for c in self.columns if c.columnid == t.columnid), None)
+                desc = _p('ui:board|task_in_column', "in {column}").format(column=col.name) if col else _p('ui:board|task_unassigned', "Unassigned")
                 options.append(discord.SelectOption(
                     label=t.content[:100],
                     value=f"complete:{t.taskid}",
-                    description="Mark as complete",
-                    emoji="\u2610",
+                    description=desc[:100],
+                    emoji="\u25fb\ufe0f",
                 ))
             select = discord.ui.Select(
-                placeholder="Mark a task as complete...",
+                placeholder=_p('ui:board|mark_complete_placeholder',
+                               "\u2714 Mark complete ({count} remaining)").format(count=len(incomplete)),
                 options=options,
-                custom_id="board_toggle_task",
             )
             select.callback = self._on_toggle
             self.add_item(select)
 
-        if completed_tasks and not incomplete:
+        if completed_tasks:
             options = []
             for t in completed_tasks[:25]:
+                col = next((c for c in self.columns if c.columnid == t.columnid), None)
+                desc = _p('ui:board|task_in_column', "in {column}").format(column=col.name) if col else _p('ui:board|task_unassigned', "Unassigned")
                 options.append(discord.SelectOption(
                     label=t.content[:100],
                     value=f"uncomplete:{t.taskid}",
-                    description="Mark as incomplete",
-                    emoji="\u2611",
+                    description=desc[:100],
+                    emoji="\u2705",
                 ))
             select = discord.ui.Select(
-                placeholder="Reopen a task...",
+                placeholder=_p('ui:board|reopen_placeholder',
+                               "\u21a9 Reopen task ({count} done)").format(count=len(completed_tasks)),
                 options=options,
-                custom_id="board_untoggle_task",
             )
             select.callback = self._on_toggle
             self.add_item(select)
 
         refresh_btn = discord.ui.Button(
-            label="Refresh",
+            label=_p('ui:board|button:refresh', "Refresh"),
             style=discord.ButtonStyle.secondary,
             emoji="\U0001f504",
         )
@@ -147,9 +227,10 @@ class BoardView(discord.ui.View):
 
         website_url = f"https://lionbot-website.vercel.app/dashboard/boards/{self.board.listid}"
         link_btn = discord.ui.Button(
-            label="Open on Website",
+            label=_p('ui:board|button:manage_website', "Manage on Website"),
             style=discord.ButtonStyle.link,
             url=website_url,
+            emoji="\U0001f310",
         )
         self.add_item(link_btn)
 
@@ -160,7 +241,7 @@ class BoardView(discord.ui.View):
 
         task = next((t for t in self.tasks if t.taskid == taskid), None)
         if not task:
-            await interaction.response.send_message("Task not found.", ephemeral=True)
+            await interaction.response.send_message(_p('error:board|task_not_found', "Task not found."), ephemeral=True)
             return
 
         member = await self.data.Member.fetch_where(
@@ -168,23 +249,19 @@ class BoardView(discord.ui.View):
             userid=interaction.user.id,
         )
         if not member or member[0].role == "viewer":
-            await interaction.response.send_message("You need editor access to modify tasks.", ephemeral=True)
+            await interaction.response.send_message(_p('error:board|editor_required', "You need editor access to modify tasks."), ephemeral=True)
             return
 
         now = utc_now()
         if action == "complete":
             await self.data.Task.table.update_where(
                 taskid=taskid,
-                completed_at=now,
-                last_updated_at=now,
-            )
+            ).set(completed_at=now, last_updated_at=now)
             history_action = "task_completed"
         else:
             await self.data.Task.table.update_where(
                 taskid=taskid,
-                completed_at=None,
-                last_updated_at=now,
-            )
+            ).set(completed_at=None, last_updated_at=now)
             history_action = "task_uncompleted"
 
         await self.data.history.insert(
@@ -192,7 +269,7 @@ class BoardView(discord.ui.View):
             taskid=taskid,
             userid=interaction.user.id,
             action=history_action,
-            details=f'{{"content": "{task.content}"}}',
+            details=json.dumps({"content": task.content}),
         )
 
         await self._load_data()

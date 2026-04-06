@@ -4,6 +4,7 @@ from weakref import WeakValueDictionary
 from collections.abc import MutableMapping
 
 from psycopg.rows import DictRow
+import psycopg.errors
 
 from .table import Table
 from .columns import Column
@@ -286,7 +287,20 @@ class RowModel:
             creation_kwargs = kwargs
             if rowid:
                 creation_kwargs.update(cls._dict_from_id(rowid))
-            row = await cls.create(**creation_kwargs)
+            # --- AI-MODIFIED (2026-04-02) ---
+            # Purpose: Handle concurrent INSERT race condition where two tasks
+            # both see "no row" and both try to INSERT the same primary key
+            try:
+                row = await cls.create(**creation_kwargs)
+            except psycopg.errors.UniqueViolation:
+                if rowid:
+                    row = await cls.fetch(*rowid, cached=False)
+                else:
+                    rows = await cls.fetch_where(**kwargs).limit(1)
+                    row = rows[0] if rows else None
+                if row is None:
+                    raise
+            # --- END AI-MODIFIED ---
         return row
 
     async def refresh(self: RowT) -> Optional[RowT]:

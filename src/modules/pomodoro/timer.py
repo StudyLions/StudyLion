@@ -291,13 +291,14 @@ class Timer:
         data = self.data
         return f"{int(data.focus_length // 60)}/{int(data.break_length // 60)}"
 
-    # --- AI-MODIFIED (2026-03-18) ---
-    # Purpose: Premium status check with 30-minute cache and fail-safe to False
+    # --- AI-MODIFIED (2026-04-06) ---
+    # Purpose: Reduced cache TTL from 30 min to 5 min so dashboard setting changes
+    # (like disabling session summaries) take effect much faster.
     async def _check_premium(self) -> bool:
         try:
             now = utc_now()
             if self._premium_cache is not None and self._premium_cache_time is not None:
-                if (now - self._premium_cache_time).total_seconds() < 1800:
+                if (now - self._premium_cache_time).total_seconds() < 300:
                     return self._premium_cache
             premcog = self.bot.get_cog('PremiumCog')
             if premcog is None:
@@ -316,7 +317,7 @@ class Timer:
         try:
             now = utc_now()
             if self._premium_config_cache is not None and self._premium_config_cache_time is not None:
-                if (now - self._premium_config_cache_time).total_seconds() < 1800:
+                if (now - self._premium_config_cache_time).total_seconds() < 300:
                     return self._premium_config_cache
             timercog = self.bot.get_cog('TimerCog')
             if timercog is None:

@@ -15,7 +15,11 @@ from meta.errors import UserInputError
 from utils.ui import AButton, AsComponents
 from wards import low_management_ward
 
-from .translator import ctx_locale, ctx_translator, SOURCE_LOCALE
+# --- AI-MODIFIED (2026-04-01) ---
+# Purpose: Import ctx_guildid and override cache for text branding
+from .translator import ctx_locale, ctx_translator, ctx_guildid, SOURCE_LOCALE
+from .overrides import override_cache
+# --- END AI-MODIFIED ---
 from . import babel
 from .enums import locale_names
 from .settings import LocaleSettings
@@ -86,6 +90,20 @@ class BabelCog(LionCog):
 
         ctx_locale.set(locale)
         ctx_translator.set(self.bot.translator)
+
+        # --- AI-MODIFIED (2026-04-01) ---
+        # Purpose: Set guild context and pre-load text branding overrides
+        if ctx.guild:
+            gid = ctx.guild.id
+            ctx_guildid.set(gid)
+            if override_cache.needs_load(gid):
+                await override_cache.load_overrides(self.bot, gid)
+            if override_cache.needs_premium_check(gid):
+                await override_cache.load_premium_status(self.bot, gid)
+        else:
+            ctx_guildid.set(None)
+        # --- END AI-MODIFIED ---
+
         return True
 
     @LionCog.placeholder_group

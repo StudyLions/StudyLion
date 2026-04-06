@@ -37,6 +37,12 @@ class AsyncLoggingCursor(AsyncCursor):
                 extra={'action': "Query Execute"},
                 stack_info=True
             )
-        else:
-            # TODO: Possibly log execution time
-            pass
+            # --- AI-MODIFIED (2026-04-02) ---
+            # Purpose: Re-raise after logging so the real DB error propagates
+            # instead of being swallowed and surfacing as a misleading
+            # ProgrammingError('no result available') from fetchall()
+            # --- Original code (commented out for rollback) ---
+            # (no raise statement existed here -- exception was silently swallowed)
+            # --- End original code ---
+            raise
+            # --- END AI-MODIFIED ---

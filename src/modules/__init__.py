@@ -50,6 +50,10 @@ active = [
     # Purpose: Shared kanban boards (collaborative task lists)
     '.shared_tasklist',
     # --- END AI-MODIFIED ---
+    # --- AI-MODIFIED (2026-04-06) ---
+    # Purpose: Anti AFK System premium feature (website-only config)
+    '.anti_afk',
+    # --- END AI-MODIFIED ---
 ]
 
 

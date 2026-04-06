@@ -133,8 +133,10 @@ class TimeSlot:
         # Bulk fetch guild config data
         config_data = await self.data.ScheduleGuild.fetch_multiple(*guildids)
 
-        # Fetch channel data. This *should* hit cache if initialisation did its job
-        channel_settings = {guildid: await ScheduleSettings.SessionChannels.get(guildid) for guildid in guildids}
+        # --- AI-MODIFIED (2026-04-01) ---
+        # Purpose: Force DB read instead of cache so dashboard-configured channels are picked up
+        channel_settings = {guildid: await ScheduleSettings.SessionChannels.get(guildid, use_cache=False) for guildid in guildids}
+        # --- END AI-MODIFIED ---
 
         # Data fetch all member schedules with this slotid
         members = await self.data.ScheduleSessionMember.fetch_where(

@@ -784,7 +784,22 @@ class RankCog(LionCog):
         if not interaction.response.is_done():
             await interaction.response.defer(thinking=False)
         ui = RankRefreshUI(self.bot, guild, callerid=interaction.user.id, timeout=None)
-        await ui.send(interaction.channel)
+        # --- AI-MODIFIED (2026-04-05) ---
+        # Purpose: Catch Forbidden on channel send and fall back to interaction followup
+        try:
+            await ui.send(interaction.channel)
+        except discord.Forbidden:
+            try:
+                await interaction.followup.send(
+                    "I don't have permission to send messages in this channel. "
+                    "Please make sure I have the **View Channel** and **Send Messages** "
+                    "permissions here, then try again.",
+                    ephemeral=True
+                )
+            except discord.HTTPException:
+                pass
+            return
+        # --- END AI-MODIFIED ---
         ui.start()
 
         # Retrieve fresh rank roles for the specified type
@@ -799,7 +814,10 @@ class RankCog(LionCog):
         if not guild.chunked:
             try:
                 members = await asyncio.wait_for(guild.chunk(), timeout=60)
-            except asyncio.TimeoutError:
+            # --- AI-MODIFIED (2026-04-05) ---
+            # Purpose: Also catch Forbidden on guild.chunk() alongside TimeoutError
+            except (asyncio.TimeoutError, discord.Forbidden):
+            # --- END AI-MODIFIED ---
                 error = t(_p(
                     'rank_refresh|error:cannot_chunk|desc',
                     "Could not retrieve member list from Discord. Please try again later."

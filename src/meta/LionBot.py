@@ -48,6 +48,7 @@ if TYPE_CHECKING:
     from modules.topgg.cog import TopggCog
     from modules.user_config.cog import UserConfigCog
     from modules.video_channels.cog import VideoCog
+    from modules.screen_channels.cog import ScreenCog
 
 logger = logging.getLogger(__name__)
 
@@ -259,6 +260,10 @@ class LionBot(Bot):
 
     @overload
     def get_cog(self, name: Literal['VideoCog']) -> 'VideoCog':
+        ...
+
+    @overload
+    def get_cog(self, name: Literal['ScreenCog']) -> 'ScreenCog':
         ...
 
     @overload

@@ -29,6 +29,14 @@ from .templates import (
     DISCORD_LIMITS,
 )
 
+# --- AI-MODIFIED (2026-04-01) ---
+# Purpose: Add Babel localization for text branding support
+# LazyStr (from babel._p) is not JSON-serializable; resolve to plain str.
+from . import babel
+def _p(context, message):
+    return str(babel._p(context, message))
+# --- END AI-MODIFIED ---
+
 
 def _now_in_tz(tz_name: Optional[str]) -> dt.datetime:
     """Get current time in a named timezone, falling back to UTC."""
@@ -89,7 +97,9 @@ def _compute_period_bounds(
         )
         end = start + dt.timedelta(days=7)
         end_display = end - dt.timedelta(days=1)
-        period_str = f"{start.strftime('%B %d')} to {end_display.strftime('%B %d, %Y')}"
+        period_str = _p(
+            'ui:period|weekly_range', "{start} to {end}"
+        ).format(start=start.strftime('%B %d'), end=end_display.strftime('%B %d, %Y'))
 
     elif freq == 'monthly':
         start = now.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
@@ -112,18 +122,27 @@ def _compute_period_bounds(
                 end = start.replace(year=now.year + 1, month=1)
             else:
                 end = start.replace(month=q_start_month + 3)
-            quarter_names = {0: 'Q1', 1: 'Q2', 2: 'Q3', 3: 'Q4'}
-            period_str = f"{quarter_names[q]} {now.year}"
+            quarter_names = {
+                0: _p('ui:period|quarter_q1', "Q1"),
+                1: _p('ui:period|quarter_q2', "Q2"),
+                2: _p('ui:period|quarter_q3', "Q3"),
+                3: _p('ui:period|quarter_q4', "Q4"),
+            }
+            period_str = _p(
+                'ui:period|quarter_year', "{quarter} {year}"
+            ).format(quarter=quarter_names[q], year=now.year)
         else:
             if season_start and season_start.tzinfo is None:
                 season_start = season_start.replace(tzinfo=tz)
             start = season_start or dt.datetime(2020, 1, 1, tzinfo=tz)
             end = now
-            period_str = f"Season (from {start.strftime('%B %d, %Y')})"
+            period_str = _p(
+                'ui:period|season_from', "Season (from {date})"
+            ).format(date=start.strftime('%B %d, %Y'))
     else:
         start = dt.datetime(2020, 1, 1, tzinfo=tz)
         end = now
-        period_str = "All Time"
+        period_str = _p('ui:period|all_time', "All Time")
 
     return start, end, period_str
 
@@ -451,7 +470,7 @@ class LeaderboardAutopostCog(LionCog):
             if not await self._is_premium(config.guildid):
                 await action.update(
                     status='failed',
-                    result=json.dumps({'error': 'This feature requires a premium server subscription'}),
+                    result=json.dumps({'error': _p('error:autopost|premium_required', "This feature requires a premium server subscription")}),
                     processed_at=utc_now(),
                 )
                 return
@@ -487,7 +506,9 @@ class LeaderboardAutopostCog(LionCog):
             else:
                 await action.update(
                     status='failed',
-                    result=json.dumps({'error': f'Unknown action: {action.action_type}'}),
+                    result=json.dumps({'error': _p(
+                        'error:autopost|unknown_action', "Unknown action: {action}"
+                    ).format(action=action.action_type)}),
                     processed_at=utc_now(),
                 )
         except Exception as e:
@@ -618,7 +639,7 @@ class LeaderboardAutopostCog(LionCog):
                     configid=config.configid,
                     guildid=config.guildid,
                     status='skipped_empty',
-                    error_message='Same winners as last run',
+                    error_message=_p('ui:autopost|skip_same_winners', "Same winners as last run"),
                 )
                 return
 
@@ -654,7 +675,7 @@ class LeaderboardAutopostCog(LionCog):
                 'rank': i + 1,
                 'value': self._format_value(value, lb_type),
                 'raw_value': value,
-                'name': member.display_name if member else f'User {userid}',
+                'name': member.display_name if member else _p('ui:autopost|fallback_name', "User {userid}").format(userid=userid),
             })
 
         variables = build_variables(
@@ -678,7 +699,7 @@ class LeaderboardAutopostCog(LionCog):
             embed.description = truncate(embed_desc, DISCORD_LIMITS['embed_description'])
         embed_footer = render_template(config.embed_footer, variables)
         if is_test:
-            footer_parts = [embed_footer or '', 'TEST -- no rewards or roles applied']
+            footer_parts = [embed_footer or '', _p('ui:autopost|test_footer', "TEST -- no rewards or roles applied")]
             embed_footer = ' | '.join(p for p in footer_parts if p)
         if embed_footer:
             embed.set_footer(text=truncate(embed_footer, DISCORD_LIMITS['embed_footer']))
@@ -801,12 +822,14 @@ class LeaderboardAutopostCog(LionCog):
             else:
                 if is_test or is_run_now:
                     raise ValueError(
-                        f"Channel not found or bot lacks access to channel {config.post_channel}"
+                        _p('error:autopost|channel_inaccessible',
+                           "Channel not found or bot lacks access to channel {channel}")
+                        .format(channel=config.post_channel)
                     )
                 logger.warning(f"Channel {config.post_channel} not found for config {config.configid}")
                 if not config.continue_on_partial:
                     history_data['status'] = 'failed'
-                    history_data['error_message'] = 'Channel not found'
+                    history_data['error_message'] = _p('error:autopost|channel_not_found', "Channel not found")
                     await self.data.History.create(**history_data)
                     return
         # --- END AI-MODIFIED ---
@@ -864,7 +887,7 @@ class LeaderboardAutopostCog(LionCog):
                             if not should_keep:
                                 try:
                                     await member.remove_roles(
-                                        role, reason="Leaderboard auto-post: removing old holder"
+                                        role, reason=_p('ui:autopost|audit_remove_role', "Leaderboard auto-post: removing old holder")
                                     )
                                     roles_removed += 1
                                 except Exception as e:
@@ -882,7 +905,7 @@ class LeaderboardAutopostCog(LionCog):
                             for role in all_managed_roles:
                                 if role in prev_member.roles:
                                     await prev_member.remove_roles(
-                                        role, reason="Leaderboard auto-post: removing old holder"
+                                        role, reason=_p('ui:autopost|audit_remove_role', "Leaderboard auto-post: removing old holder")
                                     )
                                     roles_removed += 1
                                     removed_any = True
@@ -911,7 +934,8 @@ class LeaderboardAutopostCog(LionCog):
                 for role in roles_to_add:
                     try:
                         await member.add_roles(
-                            role, reason=f"Leaderboard auto-post: rank #{rank}"
+                            role, reason=_p('ui:autopost|audit_add_role',
+                                           "Leaderboard auto-post: rank #{rank}").format(rank=rank)
                         )
                         roles_added += 1
                     except Exception as e:
@@ -988,10 +1012,15 @@ class LeaderboardAutopostCog(LionCog):
                     if dm_body:
                         dm_embed.description = truncate(dm_body, DISCORD_LIMITS['embed_description'])
                     else:
-                        dm_embed.description = (
-                            f"Congratulations! You placed **#{w['rank']}** on the "
-                            f"{variables['frequency']} {variables['type']} leaderboard "
-                            f"in **{server_name}**!"
+                        dm_embed.description = _p(
+                            'dm:autopost|default_body',
+                            "Congratulations! You placed **#{rank}** on the "
+                            "{frequency} {type_label} leaderboard in **{server}**!"
+                        ).format(
+                            rank=w['rank'],
+                            frequency=variables['frequency'],
+                            type_label=variables['type'],
+                            server=server_name,
                         )
                     await user.send(embed=dm_embed)
                     dms_sent += 1
@@ -1017,19 +1046,26 @@ class LeaderboardAutopostCog(LionCog):
             if mod_channel:
                 try:
                     summary_lines = [
-                        f"**Leaderboard Auto-Post Summary** ({config.config_name})",
-                        f"Period: {period_str}",
-                        f"Winners: {len(winners)}",
-                        f"Roles added: {roles_added}, removed: {roles_removed}",
-                        f"LionCoins awarded: {total_coins:,}",
-                        f"DMs sent: {dms_sent}, failed: {dms_failed}",
+                        _p('ui:autopost|modlog_summary',
+                           "**Leaderboard Auto-Post Summary** ({name})").format(name=config.config_name),
+                        _p('ui:autopost|modlog_period',
+                           "Period: {period}").format(period=period_str),
+                        _p('ui:autopost|modlog_winners',
+                           "Winners: {count}").format(count=len(winners)),
+                        _p('ui:autopost|modlog_roles',
+                           "Roles added: {added}, removed: {removed}").format(added=roles_added, removed=roles_removed),
+                        _p('ui:autopost|modlog_coins',
+                           "LionCoins awarded: {coins}").format(coins=f"{total_coins:,}"),
+                        _p('ui:autopost|modlog_dms',
+                           "DMs sent: {sent}, failed: {failed}").format(sent=dms_sent, failed=dms_failed),
                     ]
                     if role_errors:
                         summary_lines.append(
-                            f"Role errors: {'; '.join(role_errors[:5])}"
+                            _p('ui:autopost|modlog_role_errors',
+                               "Role errors: {errors}").format(errors='; '.join(role_errors[:5]))
                         )
                     mod_embed = discord.Embed(
-                        title="Leaderboard Auto-Post Report",
+                        title=_p('ui:autopost|modlog_embed_title', "Leaderboard Auto-Post Report"),
                         description='\n'.join(summary_lines),
                         color=0x2F3136,
                     )
@@ -1136,7 +1172,7 @@ class LeaderboardAutopostCog(LionCog):
                 'userid': userid,
                 'rank': rank,
                 'value': self._format_value(value, lb_type),
-                'name': member.display_name if member else f'User {userid}',
+                'name': member.display_name if member else _p('ui:autopost|fallback_name', "User {userid}").format(userid=userid),
                 'would_get_coins': coins_for_rank,
                 'would_get_role': would_get_role,
             })

@@ -1,4 +1,4 @@
-from data import Registry, RowModel
+from data import Registry, RowModel, Table
 from data.columns import Integer, Timestamp, String
 
 
@@ -56,3 +56,9 @@ class RoomData(Registry):
         channelid = Integer(primary=True)
         userid = Integer(primary=True)
         contribution = Integer()
+
+    # --- AI-MODIFIED (2026-04-01) ---
+    # Purpose: Tables for room rent role gate feature (required roles AND any-of roles)
+    room_rent_required_roles = Table('room_rent_required_roles')
+    room_rent_anyof_roles = Table('room_rent_anyof_roles')
+    # --- END AI-MODIFIED ---

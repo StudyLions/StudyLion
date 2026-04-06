@@ -9,6 +9,10 @@ import gettext
 from discord.app_commands import Translator, locale_str
 from discord.enums import Locale
 
+# --- AI-MODIFIED (2026-04-01) ---
+# Purpose: Import override cache for text branding feature
+from .overrides import override_cache
+# --- END AI-MODIFIED ---
 
 logger = logging.getLogger(__name__)
 
@@ -16,6 +20,10 @@ logger = logging.getLogger(__name__)
 SOURCE_LOCALE = 'en_GB'
 ctx_locale: ContextVar[str] = ContextVar('locale', default=SOURCE_LOCALE)
 ctx_translator: ContextVar['LeoBabel'] = ContextVar('translator', default=None)  # type: ignore
+# --- AI-MODIFIED (2026-04-01) ---
+# Purpose: Guild context for text branding override lookup
+ctx_guildid: ContextVar[Optional[int]] = ContextVar('guildid', default=None)
+# --- END AI-MODIFIED ---
 
 null = gettext.NullTranslations()
 
@@ -91,10 +99,37 @@ class LeoBabel(Translator):
             translator = null
         return translator
 
+    # --- AI-REPLACED (2026-04-01) ---
+    # Reason: Add guild text override lookup for Text Branding premium feature
+    # What the new code does better: Checks per-guild text overrides (from
+    #   guild_text_overrides table) before falling back to locale translations.
+    #   Only applies when the guild has active premium. Override key is the
+    #   gettext context string (first arg to _p).
+    # --- Original code (commented out for rollback) ---
+    # def t(self, lazystr, locale=None):
+    #     domain = lazystr.domain
+    #     translator = self.get_translator(locale or lazystr.locale or ctx_locale.get(), domain)
+    #     return lazystr._translate_with(translator)
+    # --- End original code ---
     def t(self, lazystr, locale=None):
+        guildid = ctx_guildid.get()
+        if guildid and override_cache.is_premium(guildid):
+            if lazystr.method == Method.PGETTEXT:
+                text_key = lazystr.args[0]
+                override = override_cache.get_override(guildid, text_key)
+                if override is not None:
+                    return override
+            elif lazystr.method == Method.NPGETTEXT:
+                text_key = lazystr.args[0]
+                singular, plural = override_cache.get_plural_override(guildid, text_key)
+                if singular is not None:
+                    n = lazystr.args[3]
+                    return singular if n == 1 else (plural or singular)
+
         domain = lazystr.domain
         translator = self.get_translator(locale or lazystr.locale or ctx_locale.get(), domain)
         return lazystr._translate_with(translator)
+    # --- END AI-REPLACED ---
 
     # --- AI-MODIFIED (2026-03-15) ---
     # Purpose: Sanitize command/parameter name translations for Discord.

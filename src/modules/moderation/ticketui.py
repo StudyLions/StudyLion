@@ -254,11 +254,16 @@ class TicketListUI(MessageUI):
         button.disabled = not bool(self.current_page)
 
     # Filter Ticket Type
+    # --- AI-MODIFIED (2026-04-03) ---
+    # Purpose: max_values was 3 but SCREEN_BAN added a 4th option. When no filter
+    # is active all options are marked default=True, and Discord rejects payloads
+    # where default count > max_values (400 Bad Request).
     @select(
         cls=Select,
         placeholder="FILTER_TYPE_MENU_PLACEHOLDER",
-        min_values=1, max_values=3,
+        min_values=1, max_values=4,
     )
+    # --- END AI-MODIFIED ---
     async def filter_type_menu(self, selection: discord.Interaction, selected: Select):
         await selection.response.defer(thinking=True, ephemeral=True)
         self.filters.types = [TicketType[value] for value in selected.values] or None
@@ -278,6 +283,7 @@ class TicketListUI(MessageUI):
             TicketType.NOTE: ('Notes',),
             TicketType.WARNING: ('Warnings',),
             TicketType.STUDY_BAN: ('Video Blacklists',),
+            TicketType.SCREEN_BAN: ('Screen Blacklists',),
         }
         filtered = self.filters.types
         for typ, (name,) in descmap.items():

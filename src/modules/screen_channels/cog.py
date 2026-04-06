@@ -26,6 +26,9 @@ from modules.moderation.cog import ModerationCog
 from modules.moderation.data import TicketType, TicketState
 
 
+from babel.translator import ctx_guildid
+from babel.overrides import override_cache
+
 from . import babel, logger
 from .data import ScreenData
 from .settings import ScreenSettings
@@ -180,7 +183,19 @@ class ScreenCog(LionCog):
         channelids = set(channel_setting.data)
         return (channel.id in channelids) or (channel.category_id and channel.category_id in channelids)
 
+    async def _setup_guild_context(self, guildid: int):
+        """Set guild context so text branding overrides apply in event handlers."""
+        ctx_guildid.set(guildid)
+        if override_cache.needs_load(guildid):
+            await override_cache.load_overrides(self.bot, guildid)
+        if override_cache.needs_premium_check(guildid):
+            await override_cache.load_premium_status(self.bot, guildid)
+
     async def _remove_blacklisted(self, member: discord.Member, channel: discord.VoiceChannel):
+        # --- AI-MODIFIED (2026-04-03) ---
+        # Purpose: Set guild context so text branding overrides apply
+        await self._setup_guild_context(member.guild.id)
+        # --- END AI-MODIFIED ---
         logger.info(
             f"Removing screen blacklisted member <uid:{member.id}> from <cid:{channel.id}> in "
             f"<gid:{member.guild.id}>"
@@ -252,6 +267,10 @@ class ScreenCog(LionCog):
         except asyncio.CancelledError:
             return
 
+        # --- AI-MODIFIED (2026-04-03) ---
+        # Purpose: Set guild context so text branding overrides apply
+        await self._setup_guild_context(member.guild.id)
+        # --- END AI-MODIFIED ---
         t = self.bot.translator.t
         modcog: ModerationCog = self.bot.get_cog('ModerationCog')
         now = utc_now()
@@ -419,6 +438,10 @@ class ScreenCog(LionCog):
         except asyncio.CancelledError:
             return
 
+        # --- AI-MODIFIED (2026-04-03) ---
+        # Purpose: Set guild context so text branding overrides apply
+        await self._setup_guild_context(member.guild.id)
+        # --- END AI-MODIFIED ---
         t = self.bot.translator.t
         logger.info(
             f"Removing member <uid:{member.id}> from screen share channel <cid:{channel.id}> in "

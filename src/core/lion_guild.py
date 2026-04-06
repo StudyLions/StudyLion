@@ -2,6 +2,7 @@ from typing import Optional, TYPE_CHECKING
 from enum import Enum
 import asyncio
 import datetime as dt
+import time
 import pytz
 import discord
 import logging
@@ -114,6 +115,8 @@ class LionGuild(Timezoned):
     No guarantee is made that the client is in the corresponding Guild,
     or that the corresponding Guild even exists.
     """
+    # --- AI-MODIFIED (2026-04-05) ---
+    # Purpose: Added _config_fetched_at slot for TTL-based config cache refresh
     __slots__ = (
         'bot', 'data',
         'guildid',
@@ -122,8 +125,10 @@ class LionGuild(Timezoned):
         'voice_lock',
         '_eventlogger',
         '_tasks',
+        '_config_fetched_at',
         '__weakref__'
     )
+    # --- END AI-MODIFIED ---
 
     Config = GuildConfig
     settings = Config.settings
@@ -150,6 +155,36 @@ class LionGuild(Timezoned):
         # In theory we should ensure these are finished before the lguild is gcd
         # But this is *probably* not an actual problem in practice
         self._tasks = set()
+
+        # --- AI-MODIFIED (2026-04-05) ---
+        # Purpose: Track when guild config was last read from DB so we can
+        # auto-refresh stale data (picks up dashboard changes within ~60s)
+        self._config_fetched_at = time.monotonic()
+        # --- END AI-MODIFIED ---
+
+    # --- AI-MODIFIED (2026-04-05) ---
+    # Purpose: TTL-based config refresh so dashboard DB writes are picked up
+    # automatically without needing a bot restart or bot command
+    CONFIG_REFRESH_TTL = 60.0
+
+    async def ensure_config_fresh(self):
+        """
+        Re-read guild config from the database if the cached copy is stale.
+
+        The dashboard writes settings (season_start, etc.) directly to the DB
+        via Prisma, bypassing the bot's in-memory cache. This method ensures
+        those changes are picked up within CONFIG_REFRESH_TTL seconds.
+        """
+        if time.monotonic() - self._config_fetched_at > self.CONFIG_REFRESH_TTL:
+            try:
+                await self.data.refresh()
+            except Exception:
+                logger.warning(
+                    f"Failed to refresh guild config for <gid: {self.guildid}>",
+                    exc_info=True
+                )
+            self._config_fetched_at = time.monotonic()
+    # --- END AI-MODIFIED ---
 
     @property
     def eventlogger(self) -> Optional[HookedChannel]:

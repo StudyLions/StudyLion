@@ -397,12 +397,30 @@ class InteractiveSetting(BaseSetting[ParentID, SettingData, SettingValue]):
         May be added to external modal for grouped setting editing.
         This property is not persistent, and creates a new field each time.
         """
+        # --- AI-MODIFIED (2026-04-01) ---
+        # Purpose: Truncate label (max 45) and placeholder (max 100) to Discord limits.
+        # Translated strings can exceed these limits and cause 400 Bad Request.
+        # --- Original code (commented out for rollback) ---
+        # return TextInput(
+        #     label=self.display_name,
+        #     placeholder=self.accepts,
+        #     default=self.input_formatted[:4000] if self.input_formatted else None,
+        #     required=self._required
+        # )
+        # --- End original code ---
+        label = self.display_name
+        if label and len(label) > 45:
+            label = label[:42] + '...'
+        placeholder = self.accepts
+        if placeholder and len(placeholder) > 100:
+            placeholder = placeholder[:97] + '...'
         return TextInput(
-            label=self.display_name,
-            placeholder=self.accepts,
+            label=label,
+            placeholder=placeholder,
             default=self.input_formatted[:4000] if self.input_formatted else None,
             required=self._required
         )
+        # --- END AI-MODIFIED ---
 
     @property
     def widget(self):

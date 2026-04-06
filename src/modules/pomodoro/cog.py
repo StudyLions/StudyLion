@@ -429,7 +429,13 @@ class TimerCog(LionCog):
                 await self._apply_focus_bonus(member, timer, session_minutes)
                 await self._apply_liongotchi_bonus(member, timer, session_minutes)
 
-                if config and config.session_summary:
+                # --- AI-MODIFIED (2026-04-06) ---
+                # Purpose: Respect guild-level session_leave_summary as master switch.
+                # If the guild toggle is OFF, skip premium summaries too,
+                # so admins have one clear way to disable all session messages.
+                guild_summaries_enabled = getattr(timer.lguild.data, 'session_leave_summary', True)
+                if config and config.session_summary and guild_summaries_enabled:
+                # --- END AI-MODIFIED ---
                     try:
                         from .summary import generate_individual_summary, send_summary_embed
                         summary = await generate_individual_summary(

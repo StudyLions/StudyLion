@@ -8,6 +8,12 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+# --- AI-MODIFIED (2026-04-01) ---
+# Purpose: Add Babel localization for text branding support
+from babel.translator import LocalBabel
+babel = LocalBabel('sticky_messages')
+# --- END AI-MODIFIED ---
+
 
 async def setup(bot):
     from .cog import StickyMessagesCog

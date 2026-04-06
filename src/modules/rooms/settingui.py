@@ -19,7 +19,10 @@ _p = babel._p
 
 
 class RoomSettingUI(ConfigUI):
-    setting_classes = RoomSettings.model_settings
+    # --- AI-MODIFIED (2026-04-01) ---
+    # Purpose: Include both model_settings and list_settings for the config panel
+    setting_classes = RoomSettings.model_settings + RoomSettings.list_settings
+    # --- END AI-MODIFIED ---
 
     def __init__(self, bot: LionBot, guildid: int, channelid: int, **kwargs):
         self.settings = bot.get_cog('RoomCog').settings
@@ -77,6 +80,47 @@ class RoomSettingUI(ConfigUI):
         ))
     # --- END AI-MODIFIED ---
 
+    # --- AI-MODIFIED (2026-04-01) ---
+    # Purpose: RoleSelect menus for configuring room rent role gate (required + any-of)
+    @select(cls=RoleSelect, min_values=0, max_values=25,
+            placeholder='REQUIRED_ROLES_PLACEHOLDER')
+    async def required_roles_menu(self, selection: discord.Interaction, selected: RoleSelect):
+        await selection.response.defer(thinking=True)
+        setting = next(
+            inst for inst in self.instances
+            if inst.setting_id == RoomSettings.RentRequiredRoles.setting_id
+        )
+        await setting.interaction_check(setting.parent_id, selection)
+        setting.value = selected.values
+        await setting.write()
+        await selection.delete_original_response()
+
+    async def required_roles_menu_refresh(self):
+        self.required_roles_menu.placeholder = self.bot.translator.t(_p(
+            'ui:room_config|menu:required_roles|placeholder',
+            "Select Required Roles (must have ALL)"
+        ))
+
+    @select(cls=RoleSelect, min_values=0, max_values=25,
+            placeholder='ANYOF_ROLES_PLACEHOLDER')
+    async def anyof_roles_menu(self, selection: discord.Interaction, selected: RoleSelect):
+        await selection.response.defer(thinking=True)
+        setting = next(
+            inst for inst in self.instances
+            if inst.setting_id == RoomSettings.RentAnyOfRoles.setting_id
+        )
+        await setting.interaction_check(setting.parent_id, selection)
+        setting.value = selected.values
+        await setting.write()
+        await selection.delete_original_response()
+
+    async def anyof_roles_menu_refresh(self):
+        self.anyof_roles_menu.placeholder = self.bot.translator.t(_p(
+            'ui:room_config|menu:anyof_roles|placeholder',
+            "Select Any-Of Roles (must have at least ONE)"
+        ))
+    # --- END AI-MODIFIED ---
+
     # ----- UI Flow -----
     async def make_message(self) -> MessageArgs:
         t = self.bot.translator.t
@@ -95,15 +139,30 @@ class RoomSettingUI(ConfigUI):
         return args
 
     async def reload(self):
+        # --- AI-MODIFIED (2026-04-01) ---
+        # Purpose: Load both ModelData settings (from guild config) and ListData settings (from their tables)
+        # --- Original code (commented out for rollback) ---
+        # lguild = await self.bot.core.lions.fetch_guild(self.guildid)
+        # self.instances = tuple(
+        #     lguild.config.get(setting.setting_id)
+        #     for setting in self.settings.model_settings
+        # )
+        # --- End original code ---
         lguild = await self.bot.core.lions.fetch_guild(self.guildid)
-        self.instances = tuple(
+        model_instances = [
             lguild.config.get(setting.setting_id)
             for setting in self.settings.model_settings
-        )
+        ]
+        list_instances = [
+            await setting.get(self.guildid)
+            for setting in self.settings.list_settings
+        ]
+        self.instances = tuple(model_instances + list_instances)
+        # --- END AI-MODIFIED ---
 
     async def refresh_components(self):
         # --- AI-MODIFIED (2026-04-01) ---
-        # Purpose: Include role_menu in config panel refresh and layout
+        # Purpose: Include role_menu + role gate menus in config panel refresh and layout
         # --- Original code (commented out for rollback) ---
         # await asyncio.gather(
         #     self.category_menu_refresh(),
@@ -120,6 +179,8 @@ class RoomSettingUI(ConfigUI):
         await asyncio.gather(
             self.category_menu_refresh(),
             self.role_menu_refresh(),
+            self.required_roles_menu_refresh(),
+            self.anyof_roles_menu_refresh(),
             self.visible_button_refresh(),
             self.edit_button_refresh(),
             self.close_button_refresh(),
@@ -128,6 +189,8 @@ class RoomSettingUI(ConfigUI):
         self.set_layout(
             (self.category_menu,),
             (self.role_menu,),
+            (self.required_roles_menu,),
+            (self.anyof_roles_menu,),
             (self.visible_button, self.edit_button, self.reset_button, self.close_button)
         )
         # --- END AI-MODIFIED ---

@@ -36,6 +36,18 @@ class LionTree(CommandTree):
             logger.info(f"Tree interaction failed due to rendering exception: {repr(e)}")
             embed = self.rendersplat(e)
             await self.error_reply(interaction, embed)
+        # --- AI-MODIFIED (2026-04-05) ---
+        # Purpose: Show a specific, actionable embed for permission errors instead of the generic bugsplat
+        except discord.Forbidden as e:
+            logger.warning(
+                f"Forbidden error in interaction: {interaction}",
+                exc_info=True,
+                extra={'action': 'TreeForbidden'}
+            )
+            if interaction.type is not InteractionType.autocomplete:
+                embed = self.forbidden_embed(interaction, e)
+                await self.error_reply(interaction, embed)
+        # --- END AI-MODIFIED ---
         except Exception:
             logger.exception(f"Unhandled exception in interaction: {interaction}", extra={'action': 'TreeError'})
             if interaction.type is not InteractionType.autocomplete:
@@ -63,6 +75,37 @@ class LionTree(CommandTree):
             colour=discord.Colour.dark_red()
         )
         return embed
+
+    # --- AI-MODIFIED (2026-04-05) ---
+    # Purpose: Dedicated embed for discord.Forbidden errors with actionable guidance
+    def forbidden_embed(self, interaction, e):
+        error_embed = discord.Embed(
+            title="Missing Permissions!",
+            colour=discord.Colour.orange()
+        )
+        error_embed.description = (
+            "I don't have the required permissions to complete this action!\n"
+            "Please make sure my role has the necessary permissions in this server and channel.\n\n"
+            "If this error persists, please join our [support server]({link}) so we can help you out!"
+        ).format(link=interaction.client.config.bot.support_guild)
+
+        details = {}
+        details['error'] = f"`{e.text}`"
+        if e.code:
+            details['error_code'] = f"`{e.code}`"
+        if interaction.command:
+            details['cmd'] = f"`{interaction.command.qualified_name}`"
+        if interaction.guild:
+            details['guild'] = f"`{interaction.guild.id}` -- `{interaction.guild.name}`"
+            details['my_guild_perms'] = f"`{interaction.guild.me.guild_permissions.value}`"
+        if interaction.channel and interaction.channel.type is not discord.enums.ChannelType.private:
+            details['my_channel_perms'] = f"`{interaction.channel.permissions_for(interaction.guild.me).value}`"
+        details['shard'] = f"`{interaction.client.shardname}`"
+
+        table = '\n'.join(tabulate(*details.items()))
+        error_embed.add_field(name='Details', value=table)
+        return error_embed
+    # --- END AI-MODIFIED ---
 
     def bugsplat(self, interaction, e):
         error_embed = discord.Embed(title="Something went wrong!", colour=discord.Colour.red())

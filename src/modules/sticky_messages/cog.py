@@ -18,6 +18,14 @@ from utils.lib import utc_now
 from . import logger
 from .data import StickyData
 
+# --- AI-MODIFIED (2026-04-01) ---
+# Purpose: Add Babel localization for text branding support
+# LazyStr (from babel._p) is not JSON-serializable; resolve to plain str.
+from . import babel
+def _p(context, message):
+    return str(babel._p(context, message))
+# --- END AI-MODIFIED ---
+
 MAX_STICKIES_PER_GUILD = 5
 
 
@@ -80,7 +88,10 @@ class StickyMessagesCog(LionCog):
         if sticky.title:
             embed.title = sticky.title
 
-        embed.set_author(name="\U0001F4CC Sticky Message")
+        # --- AI-MODIFIED (2026-04-01) ---
+        # Purpose: Add Babel localization for text branding support
+        embed.set_author(name=_p('ui:sticky|embed:author', "\U0001F4CC Sticky Message"))
+        # --- END AI-MODIFIED ---
 
         if sticky.image_url:
             embed.set_image(url=sticky.image_url)

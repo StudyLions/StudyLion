@@ -253,6 +253,15 @@ class ModerationCog(LionCog):
             return
         if not ctx.interaction:
             return
+        # --- AI-MODIFIED (2026-04-02) ---
+        # Purpose: Reject bot targets to prevent AttributeError on ClientUser.create_dm
+        if target.bot:
+            await ctx.reply(
+                "You cannot warn a bot!",
+                ephemeral=True
+            )
+            return
+        # --- END AI-MODIFIED ---
         t = self.bot.translator.t
 
         # Prompt for warning reason if not given
@@ -523,7 +532,7 @@ class ModerationCog(LionCog):
     @appcmds.choices(
         ticket_type=[
             appcmds.Choice(name=typ.name, value=typ.name)
-            for typ in (TicketType.NOTE, TicketType.WARNING, TicketType.STUDY_BAN)
+            for typ in (TicketType.NOTE, TicketType.WARNING, TicketType.STUDY_BAN, TicketType.SCREEN_BAN)
         ],
         ticket_state=[
             appcmds.Choice(name=state.name, value=state.name)

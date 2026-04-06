@@ -292,12 +292,22 @@ class WebHookHandler(logging.StreamHandler):
         return self.loop
 
     def emit(self, record):
+        # --- AI-MODIFIED (2026-04-01) ---
+        # Purpose: Temporary debug tracing for webhook error handler investigation
+        if record.levelno >= logging.ERROR:
+            print(f"[WEBHOOK-DEBUG] emit() received ERROR+ record: level={record.levelno} msg={record.msg[:80]!r} handler_level={self.level} webhook_id={self.webhook_url.split('/')[-2] if self.webhook_url else 'N/A'}", file=sys.stderr)
+        # --- END AI-MODIFIED ---
         self.format(record)
         self.get_loop().call_soon_threadsafe(self._post, record)
 
     def _post(self, record):
         if self.session is None:
             self.setup()
+        # --- AI-MODIFIED (2026-04-01) ---
+        # Purpose: Temporary debug tracing for webhook error handler investigation
+        if record.levelno >= logging.ERROR:
+            print(f"[WEBHOOK-DEBUG] _post() processing ERROR+ record: level={record.levelno} msg={record.msg[:80]!r} batch={self.batch} batched_len={len(self.batched)}", file=sys.stderr)
+        # --- END AI-MODIFIED ---
         asyncio.create_task(self.post(record))
 
     def setup(self):
@@ -319,6 +329,12 @@ class WebHookHandler(logging.StreamHandler):
             context = f"\n# Context: {record.ctx}" if record.ctx else ""
             message = f"{header}\n{record.msg}{context}"
 
+            # --- AI-MODIFIED (2026-04-01) ---
+            # Purpose: Temporary debug tracing for webhook error handler investigation
+            if record.levelno >= logging.ERROR:
+                print(f"[WEBHOOK-DEBUG] post() formatting: msg_len={len(message)} as_file={len(message) > 1900} batch={self.batch}", file=sys.stderr)
+            # --- END AI-MODIFIED ---
+
             if len(message) > 1900:
                 as_file = True
             else:
@@ -332,6 +348,11 @@ class WebHookHandler(logging.StreamHandler):
                     await self._send(message, as_file=as_file)
                 else:
                     self.batched += message
+                    # --- AI-MODIFIED (2026-04-01) ---
+                    # Purpose: Temporary debug tracing for webhook error handler investigation
+                    if record.levelno >= logging.ERROR:
+                        print(f"[WEBHOOK-DEBUG] post() batched: batched_len={len(self.batched)} check={len(self.batched) + len(message)} > 1500 = {len(self.batched) + len(message) > 1500}", file=sys.stderr)
+                    # --- END AI-MODIFIED ---
                     if len(self.batched) + len(message) > 1500:
                         await self._send_batched_now()
                     else:
@@ -364,14 +385,28 @@ class WebHookHandler(logging.StreamHandler):
         if self.batched:
             batched = self.batched
             self.batched = ""
+            # --- AI-MODIFIED (2026-04-01) ---
+            # Purpose: Temporary debug tracing for webhook error handler investigation
+            if 'ERROR' in batched[:200]:
+                print(f"[WEBHOOK-DEBUG] _send_batched() flushing: len={len(batched)}", file=sys.stderr)
+            # --- END AI-MODIFIED ---
             await self._send(batched)
 
     async def _send(self, message, as_file=False):
+        # --- AI-MODIFIED (2026-04-01) ---
+        # Purpose: Temporary debug tracing for webhook error handler investigation
+        if 'ERROR' in message[:200]:
+            print(f"[WEBHOOK-DEBUG] _send() called: msg_len={len(message)} as_file={as_file} webhook_id={getattr(self.webhook, 'id', 'N/A')}", file=sys.stderr)
+        # --- END AI-MODIFIED ---
         try:
             self.bucket.request()
         except BucketOverFull:
             # Silently ignore
             self.ignored += 1
+            # --- AI-MODIFIED (2026-04-01) ---
+            # Purpose: Temporary debug tracing for webhook error handler investigation
+            print(f"[WEBHOOK-DEBUG] _send() BucketOverFull! ignored={self.ignored}", file=sys.stderr)
+            # --- END AI-MODIFIED ---
             return
         except BucketFull:
             logger.warning(
@@ -410,22 +445,55 @@ handlers = []
 if webhook := conf.logging['general_log']:
     handler = WebHookHandler(webhook, batch=True)
     handlers.append(handler)
+    # --- AI-MODIFIED (2026-04-01) ---
+    # Purpose: Temporary debug tracing for webhook error handler investigation
+    print(f"[WEBHOOK-DEBUG] Created general_log handler: webhook_id={webhook.split('/')[-2]}", file=sys.stderr)
+    # --- END AI-MODIFIED ---
 
 if webhook := conf.logging['warning_log']:
     handler = WebHookHandler(webhook, prefix=conf.logging['warning_prefix'], batch=True)
     handler.addFilter(ExactLevelFilter(logging.WARNING))
     handler.setLevel(logging.WARNING)
     handlers.append(handler)
+    # --- AI-MODIFIED (2026-04-01) ---
+    # Purpose: Temporary debug tracing for webhook error handler investigation
+    print(f"[WEBHOOK-DEBUG] Created warning_log handler: webhook_id={webhook.split('/')[-2]} level={handler.level}", file=sys.stderr)
+    # --- END AI-MODIFIED ---
 
 if webhook := conf.logging['error_log']:
     handler = WebHookHandler(webhook, prefix=conf.logging['error_prefix'], batch=True)
     handler.setLevel(logging.ERROR)
     handlers.append(handler)
+    # --- AI-MODIFIED (2026-04-01) ---
+    # Purpose: Temporary debug tracing for webhook error handler investigation
+    print(f"[WEBHOOK-DEBUG] Created error_log handler: webhook_id={webhook.split('/')[-2]} level={handler.level} prefix={conf.logging['error_prefix']!r}", file=sys.stderr)
+    # --- END AI-MODIFIED ---
+else:
+    # --- AI-MODIFIED (2026-04-01) ---
+    # Purpose: Temporary debug tracing for webhook error handler investigation
+    print(f"[WEBHOOK-DEBUG] ERROR: error_log webhook is EMPTY/FALSY! conf.logging section keys: {list(conf.logging.keys())}", file=sys.stderr)
+    # --- END AI-MODIFIED ---
 
 if webhook := conf.logging['critical_log']:
     handler = WebHookHandler(webhook, prefix=conf.logging['critical_prefix'], batch=False)
     handler.setLevel(logging.CRITICAL)
     handlers.append(handler)
+
+# --- AI-MODIFIED (2026-04-01) ---
+# Purpose: Temporary debug tracing for webhook error handler investigation
+print(f"[WEBHOOK-DEBUG] Total handlers created: {len(handlers)}", file=sys.stderr)
+
+import threading
+def _delayed_error_test():
+    import time
+    time.sleep(10)
+    test_logger = logging.getLogger('webhook_test')
+    test_logger.error("[WEBHOOK-TEST] This is a deliberate ERROR-level test message to verify webhook pipeline")
+    test_logger.warning("[WEBHOOK-TEST] This is a deliberate WARNING-level test message to verify webhook pipeline")
+    print("[WEBHOOK-DEBUG] Deliberate test messages sent (ERROR + WARNING)", file=sys.stderr)
+
+threading.Thread(target=_delayed_error_test, daemon=True).start()
+# --- END AI-MODIFIED ---
 
 
 def make_queue_handler(queue):

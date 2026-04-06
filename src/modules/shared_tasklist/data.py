@@ -4,7 +4,7 @@
 # Purpose: Data registry for shared tasklist (kanban boards)
 # ============================================================
 from data import RowModel, Registry, Table
-from data.columns import Integer, String, Timestamp, Bool
+from data.columns import Integer, String, Timestamp
 
 
 class SharedTasklistData(Registry):

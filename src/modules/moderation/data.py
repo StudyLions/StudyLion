@@ -16,7 +16,8 @@ class TicketType(Enum):
       'STUDY_BAN',
       'MESSAGE_CENSOR',
       'INVITE_CENSOR',
-      'WARNING'
+      'WARNING',
+      'SCREEN_BAN'
     );
     """
     NOTE = 'NOTE',
@@ -24,6 +25,10 @@ class TicketType(Enum):
     MESSAGE_CENSOR = 'MESSAGE_CENSOR',
     INVITE_CENSOR = 'INVITE_CENSOR',
     WARNING = 'WARNING',
+    # --- AI-MODIFIED (2026-03-31) ---
+    # Purpose: Ticket type for screen share blacklists (mirrors STUDY_BAN for video)
+    SCREEN_BAN = 'SCREEN_BAN',
+    # --- END AI-MODIFIED ---
 
 
 class TicketState(Enum):

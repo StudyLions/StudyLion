@@ -25,10 +25,13 @@ _p = babel._p
 
 
 class Room:
-    # --- AI-MODIFIED (2026-03-23) ---
-    # Purpose: Re-added _name_sync_task with safe implementation that only syncs
-    # when name_changed_at is set (i.e., dashboard explicitly renamed the room).
-    __slots__ = ('bot', 'data', 'lguild', 'members', '_tick_wait', '_name_sync_task')
+    # --- AI-MODIFIED (2026-04-03) ---
+    # Purpose: Added _member_sync_task to periodically sync member list from DB
+    # (catches dashboard-initiated leaves that only delete the DB row).
+    # --- Original code (commented out for rollback) ---
+    # __slots__ = ('bot', 'data', 'lguild', 'members', '_tick_wait', '_name_sync_task')
+    # --- End original code ---
+    __slots__ = ('bot', 'data', 'lguild', 'members', '_tick_wait', '_name_sync_task', '_member_sync_task')
     # --- END AI-MODIFIED ---
 
     tick_length = timedelta(days=1)
@@ -45,6 +48,7 @@ class Room:
         # State
         self._tick_wait: Optional[asyncio.Task] = None
         self._name_sync_task: Optional[asyncio.Task] = None
+        self._member_sync_task: Optional[asyncio.Task] = None
 
     @property
     def channel(self) -> Optional[discord.VoiceChannel]:
@@ -187,10 +191,15 @@ class Room:
             fields=self.eventlog_fields()
         )
         if self.channel:
-            try:
-                await self.channel.send(embed=notification)
-            except discord.HTTPException:
-                pass
+            # --- AI-MODIFIED (2026-04-04) ---
+            # Purpose: Only send join notification if rooms_notifications is enabled
+            notify = self.lguild.config.get('rooms_notifications').value
+            if notify is not False:
+                try:
+                    await self.channel.send(embed=notification)
+                except discord.HTTPException:
+                    pass
+            # --- END AI-MODIFIED ---
             guild = self.channel.guild
             members = [guild.get_member(memberid) for memberid in memberids]
             members = [member for member in members if member]
@@ -264,17 +273,22 @@ class Room:
                     overwrite=None,
                     reason="Member left private room voluntarily."
                 )
-            notification = discord.Embed(
-                colour=discord.Colour.orange(),
-                description=t(_p(
-                    'room|notify:member_left|desc',
-                    "<@{member}> has left the room."
-                )).format(member=memberid)
-            )
-            try:
-                await self.channel.send(embed=notification)
-            except discord.HTTPException:
-                pass
+            # --- AI-MODIFIED (2026-04-04) ---
+            # Purpose: Only send leave notification if rooms_notifications is enabled
+            notify = self.lguild.config.get('rooms_notifications').value
+            if notify is not False:
+                notification = discord.Embed(
+                    colour=discord.Colour.orange(),
+                    description=t(_p(
+                        'room|notify:member_left|desc',
+                        "<@{member}> has left the room."
+                    )).format(member=memberid)
+                )
+                try:
+                    await self.channel.send(embed=notification)
+                except discord.HTTPException:
+                    pass
+            # --- END AI-MODIFIED ---
     # --- END AI-MODIFIED ---
 
     async def transfer_ownership(self, new_owner):
@@ -323,6 +337,95 @@ class Room:
                 await self.channel.send(embed=notification)
             except discord.HTTPException:
                 pass
+
+    # --- AI-MODIFIED (2026-04-03) ---
+    # Purpose: Periodically re-read member list from DB and sync Discord permissions
+    # for any changes made externally (e.g. dashboard leave). This fixes the bug where
+    # the dashboard leave.ts only deletes the rented_members row but doesn't update
+    # Discord channel permissions or the bot's in-memory member list.
+    async def _sync_members_from_db(self):
+        member_model = self.bot.get_cog('RoomCog').data.RoomMember
+        db_rows = await member_model.table.select_where(
+            channelid=self.data.channelid
+        )
+        db_member_ids = set(row['userid'] for row in db_rows)
+        current_member_ids = set(self.members)
+
+        removed = current_member_ids - db_member_ids
+        added = db_member_ids - current_member_ids
+
+        if not removed and not added:
+            return
+
+        if self.channel:
+            guild = self.channel.guild
+            t = self.bot.translator.t
+            # --- AI-MODIFIED (2026-04-04) ---
+            # Purpose: Only send leave notification if rooms_notifications is enabled
+            notify = self.lguild.config.get('rooms_notifications').value
+            # --- END AI-MODIFIED ---
+            for mid in removed:
+                member = guild.get_member(mid)
+                if member and member.id != self.data.ownerid and member != guild.me:
+                    try:
+                        await self.channel.set_permissions(
+                            member,
+                            overwrite=None,
+                            reason="Dashboard sync: member left via website"
+                        )
+                    except discord.HTTPException:
+                        pass
+                # --- AI-MODIFIED (2026-04-04) ---
+                # Purpose: Only send leave notification if rooms_notifications is enabled
+                if notify is not False:
+                    notification = discord.Embed(
+                        colour=discord.Colour.orange(),
+                        description=t(_p(
+                            'room|notify:member_left|desc',
+                            "<@{member}> has left the room."
+                        )).format(member=mid)
+                    )
+                    try:
+                        await self.channel.send(embed=notification)
+                    except discord.HTTPException:
+                        pass
+                # --- END AI-MODIFIED ---
+            for mid in added:
+                member = guild.get_member(mid)
+                if member:
+                    try:
+                        await self.channel.set_permissions(
+                            member,
+                            overwrite=member_overwrite,
+                            reason="Dashboard sync: member added via website"
+                        )
+                    except discord.HTTPException:
+                        pass
+
+        self.members = list(db_member_ids)
+        if removed:
+            logger.info(
+                f"Dashboard member sync <cid: {self.data.channelid}>: removed {removed}"
+            )
+        if added:
+            logger.info(
+                f"Dashboard member sync <cid: {self.data.channelid}>: added {added}"
+            )
+
+    async def _member_sync_loop(self):
+        while not self.deleted:
+            try:
+                await asyncio.sleep(300)
+                if self.deleted:
+                    break
+                await self._sync_members_from_db()
+            except asyncio.CancelledError:
+                break
+            except Exception:
+                logger.exception(
+                    f"Error in member sync loop for room <cid: {self.data.channelid}>"
+                )
+    # --- END AI-MODIFIED ---
 
     # --- AI-MODIFIED (2026-03-23) ---
     # Purpose: Safe name sync loop -- ONLY syncs when name_changed_at is set in the DB,
@@ -385,9 +488,14 @@ class Room:
         if self._tick_wait and not self._tick_wait.done():
             self._tick_wait.cancel()
 
-        # --- AI-MODIFIED (2026-03-23) ---
-        # Purpose: Launch safe name sync loop alongside the tick loop
+        # --- AI-MODIFIED (2026-04-03) ---
+        # Purpose: Launch name sync + member sync loops alongside the tick loop.
+        # Member sync catches dashboard-initiated leaves that only delete the DB row.
+        # --- Original code (commented out for rollback) ---
+        # self._name_sync_task = asyncio.create_task(self._name_sync_loop())
+        # --- End original code ---
         self._name_sync_task = asyncio.create_task(self._name_sync_loop())
+        self._member_sync_task = asyncio.create_task(self._member_sync_loop())
         # --- END AI-MODIFIED ---
 
         while not self.deleted:
@@ -404,10 +512,16 @@ class Room:
                     f"Unhandled exception while ticking for room: {self.data!r}"
                 )
 
-        # --- AI-MODIFIED (2026-03-23) ---
-        # Purpose: Cancel name sync task when run loop exits
+        # --- AI-MODIFIED (2026-04-03) ---
+        # Purpose: Cancel sync tasks when run loop exits
+        # --- Original code (commented out for rollback) ---
+        # if self._name_sync_task and not self._name_sync_task.done():
+        #     self._name_sync_task.cancel()
+        # --- End original code ---
         if self._name_sync_task and not self._name_sync_task.done():
             self._name_sync_task.cancel()
+        if self._member_sync_task and not self._member_sync_task.done():
+            self._member_sync_task.cancel()
         # --- END AI-MODIFIED ---
 
     @log_wrap(action="Room Tick")

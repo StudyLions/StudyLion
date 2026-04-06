@@ -16,7 +16,8 @@ class LGGoldTransactionType(Enum):
     CREATE TYPE LGGoldTransactionType AS ENUM (
       'VOICE_ACTIVITY', 'TEXT_ACTIVITY', 'LEVEL_UP',
       'SHOP_PURCHASE', 'FARM_HARVEST', 'ITEM_DROP', 'TRADE', 'ADMIN',
-      'FARM_PLANT', 'FARM_UPROOT', 'MARKETPLACE_SALE', 'MARKETPLACE_PURCHASE'
+      'FARM_PLANT', 'FARM_UPROOT', 'MARKETPLACE_SALE', 'MARKETPLACE_PURCHASE',
+      'GIFT'
     );
     """
     VOICE_ACTIVITY = 'VOICE_ACTIVITY'
@@ -33,6 +34,10 @@ class LGGoldTransactionType(Enum):
     FARM_UPROOT = 'FARM_UPROOT'
     MARKETPLACE_SALE = 'MARKETPLACE_SALE'
     MARKETPLACE_PURCHASE = 'MARKETPLACE_PURCHASE'
+    # --- END AI-MODIFIED ---
+    # --- AI-MODIFIED (2026-04-03) ---
+    # Purpose: Add GIFT type used by website friend gifting (lg_gold_transactions)
+    GIFT = 'GIFT'
     # --- END AI-MODIFIED ---
 
 
@@ -174,7 +179,8 @@ class LionGotchiData(Registry, name='liongotchi'):
           active_room_id INTEGER,
           active_gameboy_skin_id INTEGER,
           created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
-          drop_notif TEXT NOT NULL DEFAULT 'ALL'
+          drop_notif TEXT NOT NULL DEFAULT 'ALL',
+          last_pet_warning TIMESTAMPTZ
         );
         """
         _tablename_ = 'lg_pets'
@@ -196,6 +202,10 @@ class LionGotchiData(Registry, name='liongotchi'):
         # --- AI-MODIFIED (2026-03-16) ---
         # Purpose: User notification preference for material drops (ALL / DM_ONLY / MUTED)
         drop_notif = String()
+        # --- END AI-MODIFIED ---
+        # --- AI-MODIFIED (2026-04-01) ---
+        # Purpose: Persist pet warning cooldown in DB so it survives restarts and works across shards
+        last_pet_warning = Timestamp()
         # --- END AI-MODIFIED ---
 
     class GoldTransaction(RowModel):

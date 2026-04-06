@@ -771,7 +771,7 @@ class Economy(LionCog):
                                     "Everyone in {role_mention} has had their "
                                     "coin balance reset to {coin_emoji}**{amount}**."
                                 )).format(
-                                    mention=target.mention,
+                                    role_mention=target.mention,
                                     coin_emoji=coin_emoji,
                                     amount=starting_balance
                                 )

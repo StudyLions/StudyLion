@@ -6,6 +6,14 @@
 import re
 from typing import Dict, List, Optional, Any
 
+# --- AI-MODIFIED (2026-04-01) ---
+# Purpose: Add Babel localization for text branding support
+# LazyStr (from babel._p) is not JSON-serializable; resolve to plain str.
+from . import babel
+def _p(context, message):
+    return str(babel._p(context, message))
+# --- END AI-MODIFIED ---
+
 DISCORD_LIMITS = {
     'content': 2000,
     'embed_title': 256,
@@ -19,24 +27,33 @@ DISCORD_LIMITS = {
 
 BLOCKED_MENTIONS = re.compile(r'@(everyone|here)', re.IGNORECASE)
 
+# --- AI-MODIFIED (2026-04-01) ---
+# Purpose: Add Babel localization for text branding support
 TYPE_LABELS = {
-    'study': 'Study Time',
-    'messages': 'Messages',
-    'coins': 'LionCoins',
+    'study': _p('labels:type|study', "Study Time"),
+    'messages': _p('labels:type|messages', "Messages"),
+    'coins': _p('labels:type|coins', "LionCoins"),
 }
+# --- END AI-MODIFIED ---
 
+# --- AI-MODIFIED (2026-04-01) ---
+# Purpose: Add Babel localization for text branding support
 TYPE_UNITS = {
-    'study': 'hours',
-    'messages': 'messages',
-    'coins': 'coins',
+    'study': _p('labels:unit|study', "hours"),
+    'messages': _p('labels:unit|messages', "messages"),
+    'coins': _p('labels:unit|coins', "coins"),
 }
+# --- END AI-MODIFIED ---
 
+# --- AI-MODIFIED (2026-04-01) ---
+# Purpose: Add Babel localization for text branding support
 FREQUENCY_LABELS = {
-    'daily': 'Daily',
-    'weekly': 'Weekly',
-    'monthly': 'Monthly',
-    'seasonal': 'Seasonal',
+    'daily': _p('labels:frequency|daily', "Daily"),
+    'weekly': _p('labels:frequency|weekly', "Weekly"),
+    'monthly': _p('labels:frequency|monthly', "Monthly"),
+    'seasonal': _p('labels:frequency|seasonal', "Seasonal"),
 }
+# --- END AI-MODIFIED ---
 
 
 def render_template(template: Optional[str], variables: Dict[str, str]) -> Optional[str]:
@@ -74,14 +91,23 @@ def build_reward_summary(reward_tiers: List[Dict[str, Any]]) -> str:
     if not reward_tiers:
         return ''
     lines = []
+    # --- AI-MODIFIED (2026-04-01) ---
+    # Purpose: Add Babel localization for text branding support
     for tier in sorted(reward_tiers, key=lambda t: t.get('from', 0)):
         fr = tier.get('from', 1)
         to = tier.get('to', fr)
         coins = tier.get('coins', 0)
         if fr == to:
-            lines.append(f"Top {fr} – {coins:,} LionCoins")
+            lines.append(
+                _p('ui:rewards|tier_single', "Top {rank} \u2013 {coins} LionCoins")
+                .format(rank=fr, coins=f"{coins:,}")
+            )
         else:
-            lines.append(f"Top {fr}-{to} – {coins:,} LionCoins")
+            lines.append(
+                _p('ui:rewards|tier_range', "Top {rank_from}-{rank_to} \u2013 {coins} LionCoins")
+                .format(rank_from=fr, rank_to=to, coins=f"{coins:,}")
+            )
+    # --- END AI-MODIFIED ---
     return '\n'.join(lines)
 
 

@@ -45,6 +45,15 @@ class ScheduleSettingUI(ConfigUI):
         self._children = super()._init_children()
         self.page_num = 0
 
+    # --- AI-MODIFIED (2026-04-01) ---
+    # Purpose: Force DB read for SessionChannels so dashboard-configured channels appear correctly
+    async def reload(self):
+        self.instances = tuple([
+            await cls.get(self.guildid, use_cache=(cls is not ScheduleSettings.SessionChannels))
+            for cls in self.setting_classes
+        ])
+    # --- END AI-MODIFIED ---
+
     def get_instance(self, setting):
         return next(instance for instance in self.instances if instance.setting_id == setting.setting_id)
 
@@ -239,6 +248,18 @@ class ScheduleDashboard(DashboardSection):
     )
     configui = ScheduleSettingUI
     setting_classes = ScheduleSettingUI.setting_classes
+
+    # --- AI-MODIFIED (2026-04-01) ---
+    # Purpose: Force DB read for SessionChannels so dashboard-configured channels display correctly
+    async def load(self):
+        instances = []
+        for cls in self.setting_classes:
+            use_cache = cls is not ScheduleSettings.SessionChannels
+            instance = await cls.get(self.guildid, use_cache=use_cache)
+            instances.append(instance)
+        self.instances = instances
+        return self
+    # --- END AI-MODIFIED ---
 
     def apply_to(self, page: discord.Embed):
         t = self.bot.translator.t

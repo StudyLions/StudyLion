@@ -6692,11 +6692,23 @@ class LionGotchiCog(LionCog):
         if pet.data is not None:
             pet.data['food'] = new_food
         # --- END AI-MODIFIED ---
+        # --- AI-MODIFIED (2026-04-03) ---
+        # Purpose: Read fullscreen_mode so care actions restore the correct view mode
+        fullscreen = False
+        try:
+            _fs_rows = await _db_fetch(self.bot,
+                "SELECT fullscreen_mode FROM lg_pets WHERE userid = %s",
+                interaction.user.id)
+            if _fs_rows and _fs_rows[0]['fullscreen_mode']:
+                fullscreen = True
+        except Exception:
+            pass
+        # --- END AI-MODIFIED ---
         self._feed_cooldowns[interaction.user.id] = now
         state = await self._build_pet_state(pet, interaction.guild)
         gif_bytes = await asyncio.to_thread(render_action_frame, state, 'feed')
         file = discord.File(BytesIO(gif_bytes), filename="feed.gif")
-        view = PetView(self, interaction.user.id, interaction.guild_id or 0)
+        view = PetView(self, interaction.user.id, interaction.guild_id or 0, fullscreen=fullscreen)
         await interaction.response.edit_message(
             content=str(_p('pet:action:feed', "\U0001F356 **nom nom nom!**")),
             embed=None, attachments=[file], view=view
@@ -6709,9 +6721,10 @@ class LionGotchiCog(LionCog):
         try:
             pet2 = await self._get_or_create_pet(interaction.user.id)
             state2 = await self._build_pet_state(pet2, interaction.guild)
-            gif2 = await asyncio.to_thread(render_fullscreen_frame, state2)
+            gif2 = await asyncio.to_thread(
+                render_fullscreen_frame if fullscreen else render_gameboy_frame, state2)
             file2 = discord.File(BytesIO(gif2), filename="liongotchi.gif")
-            view2 = PetView(self, interaction.user.id, interaction.guild_id or 0)
+            view2 = PetView(self, interaction.user.id, interaction.guild_id or 0, fullscreen=fullscreen)
             # --- AI-MODIFIED (2026-03-17) ---
             # Purpose: Pass bonus text to _build_stats_text for care action revert
             from .gameplay import calc_all_bonuses, format_bonus_summary
@@ -6758,11 +6771,23 @@ class LionGotchiCog(LionCog):
         if pet.data is not None:
             pet.data['bath'] = new_bath
         # --- END AI-MODIFIED ---
+        # --- AI-MODIFIED (2026-04-03) ---
+        # Purpose: Read fullscreen_mode so care actions restore the correct view mode
+        fullscreen = False
+        try:
+            _fs_rows = await _db_fetch(self.bot,
+                "SELECT fullscreen_mode FROM lg_pets WHERE userid = %s",
+                interaction.user.id)
+            if _fs_rows and _fs_rows[0]['fullscreen_mode']:
+                fullscreen = True
+        except Exception:
+            pass
+        # --- END AI-MODIFIED ---
         self._bathe_cooldowns[interaction.user.id] = now
         state = await self._build_pet_state(pet, interaction.guild)
         gif_bytes = await asyncio.to_thread(render_action_frame, state, 'bathe')
         file = discord.File(BytesIO(gif_bytes), filename="bathe.gif")
-        view = PetView(self, interaction.user.id, interaction.guild_id or 0)
+        view = PetView(self, interaction.user.id, interaction.guild_id or 0, fullscreen=fullscreen)
         await interaction.response.edit_message(
             content=str(_p('pet:action:bathe', "\U0001F9FC **splashhh!**")),
             embed=None, attachments=[file], view=view
@@ -6775,9 +6800,10 @@ class LionGotchiCog(LionCog):
         try:
             pet2 = await self._get_or_create_pet(interaction.user.id)
             state2 = await self._build_pet_state(pet2, interaction.guild)
-            gif2 = await asyncio.to_thread(render_fullscreen_frame, state2)
+            gif2 = await asyncio.to_thread(
+                render_fullscreen_frame if fullscreen else render_gameboy_frame, state2)
             file2 = discord.File(BytesIO(gif2), filename="liongotchi.gif")
-            view2 = PetView(self, interaction.user.id, interaction.guild_id or 0)
+            view2 = PetView(self, interaction.user.id, interaction.guild_id or 0, fullscreen=fullscreen)
             # --- AI-MODIFIED (2026-03-17) ---
             # Purpose: Pass bonus text to _build_stats_text for care action revert
             from .gameplay import calc_all_bonuses, format_bonus_summary
@@ -6838,11 +6864,23 @@ class LionGotchiCog(LionCog):
         if pet.data is not None:
             pet.data['sleep'] = new_sleep
         # --- END AI-MODIFIED ---
+        # --- AI-MODIFIED (2026-04-03) ---
+        # Purpose: Read fullscreen_mode so care actions restore the correct view mode
+        fullscreen = False
+        try:
+            _fs_rows = await _db_fetch(self.bot,
+                "SELECT fullscreen_mode FROM lg_pets WHERE userid = %s",
+                interaction.user.id)
+            if _fs_rows and _fs_rows[0]['fullscreen_mode']:
+                fullscreen = True
+        except Exception:
+            pass
+        # --- END AI-MODIFIED ---
         self._sleep_cooldowns[interaction.user.id] = now
         state = await self._build_pet_state(pet, interaction.guild)
         gif_bytes = await asyncio.to_thread(render_action_frame, state, 'sleep')
         file = discord.File(BytesIO(gif_bytes), filename="sleep.gif")
-        view = PetView(self, interaction.user.id, interaction.guild_id or 0)
+        view = PetView(self, interaction.user.id, interaction.guild_id or 0, fullscreen=fullscreen)
         await interaction.response.edit_message(
             content=str(_p('pet:action:sleep', "\U0001F4A4 **Zzz...**")),
             embed=None, attachments=[file], view=view
@@ -6855,9 +6893,10 @@ class LionGotchiCog(LionCog):
         try:
             pet2 = await self._get_or_create_pet(interaction.user.id)
             state2 = await self._build_pet_state(pet2, interaction.guild)
-            gif2 = await asyncio.to_thread(render_fullscreen_frame, state2)
+            gif2 = await asyncio.to_thread(
+                render_fullscreen_frame if fullscreen else render_gameboy_frame, state2)
             file2 = discord.File(BytesIO(gif2), filename="liongotchi.gif")
-            view2 = PetView(self, interaction.user.id, interaction.guild_id or 0)
+            view2 = PetView(self, interaction.user.id, interaction.guild_id or 0, fullscreen=fullscreen)
             from .gameplay import calc_all_bonuses, format_bonus_summary
             ut, sp = await self._get_premium_context(interaction.user.id, interaction.guild_id)
             b = await calc_all_bonuses(self.bot, interaction.user.id, user_tier=ut, server_premium=sp)

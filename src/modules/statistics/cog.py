@@ -96,6 +96,15 @@ class StatsCog(LionCog):
                 ephemeral=True
             )
             return
+        # --- AI-MODIFIED (2026-04-02) ---
+        # Purpose: Prevent crash when commands execute before core is initialized during startup
+        if self.bot.core is None:
+            await ctx.reply(
+                "The bot is still starting up, please try again in a moment.",
+                ephemeral=True
+            )
+            return
+        # --- END AI-MODIFIED ---
         await ctx.interaction.response.defer(thinking=True)
         # Ensure the lion exists
         await self.bot.core.lions.fetch_member(member.guild.id, member.id, member=member)

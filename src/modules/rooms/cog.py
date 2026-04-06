@@ -102,7 +102,7 @@ class RoomCog(LionCog):
         from datetime import timedelta
         rows = await self.data.Room.table.select_where(
             guildid=guildid, ownerid=userid
-        ).with_no_cache().order_by('deleted_at', ORDER='DESC').limit(1)
+        ).order_by('deleted_at', ORDER='DESC').limit(1)
         if not rows:
             return 0
         last_deleted = rows[0]['deleted_at']
@@ -1462,8 +1462,45 @@ class RoomCog(LionCog):
                 )
                 return
 
+            # --- AI-MODIFIED (2026-04-03) ---
+            # Purpose: Only consider bots actually in the guild (have an
+            # ambient_sounds_config row, auto-created by SoundsBot on join).
+            # Previously iterated 1-5 blindly, assigning bots not in the server.
+            # --- Original code (commented out for rollback) ---
+            # async with conn.cursor() as cur:
+            #     await cur.execute(
+            #         "SELECT DISTINCT bot_number FROM ("
+            #         "  SELECT bot_number FROM ambient_sounds_config "
+            #         "  WHERE guildid = %s AND enabled = true AND channelid IS NOT NULL "
+            #         "  UNION ALL "
+            #         "  SELECT bot_number FROM ambient_sounds_rentals "
+            #         "  WHERE guildid = %s AND ended_at IS NULL AND expires_at > NOW()"
+            #         ") sub",
+            #         [guild_id, guild_id],
+            #     )
+            #     busy_bots = await cur.fetchall()
+            # busy_set = {r['bot_number'] for r in busy_bots}
+            # available = [n for n in range(1, 6) if n not in busy_set]
+            # if not available:
+            #     await ctx.reply(
+            #         embed=error_embed(t(_p(
+            #             'cmd:room_sound|error:no_bots',
+            #             "All 5 sound bots are currently in use in this server. "
+            #             "Try again later when one becomes available."
+            #         ))),
+            #         ephemeral=True,
+            #     )
+            #     return
+            # bot_number = available[0]
+            # --- End original code ---
             async with conn.cursor() as cur:
-                # Find an available bot (not currently configured or rented in this guild)
+                await cur.execute(
+                    "SELECT bot_number FROM ambient_sounds_config "
+                    "WHERE guildid = %s",
+                    [guild_id],
+                )
+                in_guild_rows = await cur.fetchall()
+
                 await cur.execute(
                     "SELECT DISTINCT bot_number FROM ("
                     "  SELECT bot_number FROM ambient_sounds_config "
@@ -1474,23 +1511,35 @@ class RoomCog(LionCog):
                     ") sub",
                     [guild_id, guild_id],
                 )
-                busy_bots = await cur.fetchall()
+                busy_rows = await cur.fetchall()
 
-            busy_set = {r['bot_number'] for r in busy_bots}
-            available = [n for n in range(1, 6) if n not in busy_set]
+            in_guild = {r['bot_number'] for r in in_guild_rows}
+            busy_set = {r['bot_number'] for r in busy_rows}
+            available = sorted(n for n in in_guild if n not in busy_set)
 
             if not available:
-                await ctx.reply(
-                    embed=error_embed(t(_p(
-                        'cmd:room_sound|error:no_bots',
-                        "All 5 sound bots are currently in use in this server. "
-                        "Try again later when one becomes available."
-                    ))),
-                    ephemeral=True,
-                )
+                if not in_guild:
+                    await ctx.reply(
+                        embed=error_embed(t(_p(
+                            'cmd:room_sound|error:no_bots_in_guild',
+                            "No sound bots have been invited to this server. "
+                            "Ask an admin to invite at least one LionBotMusic bot."
+                        ))),
+                        ephemeral=True,
+                    )
+                else:
+                    await ctx.reply(
+                        embed=error_embed(t(_p(
+                            'cmd:room_sound|error:all_bots_busy',
+                            "All {count} sound bot(s) in this server are currently in use. "
+                            "Try again later, or ask an admin to invite more bots."
+                        )).format(count=len(in_guild))),
+                        ephemeral=True,
+                    )
                 return
 
             bot_number = available[0]
+            # --- END AI-MODIFIED ---
             coin_emoji = self.bot.config.emojis.coin
 
             # Confirm with the user
@@ -1698,7 +1747,8 @@ class RoomCog(LionCog):
                                   rooms_name_limit: Optional[Range[int, 1, 100]] = None,
                                   rooms_min_deposit: Optional[Range[int, 0, MAX_COINS]] = None,
                                   rooms_auto_extend: Optional[bool] = None,
-                                  rooms_cooldown: Optional[Range[int, 0, 10080]] = None):
+                                  rooms_cooldown: Optional[Range[int, 0, 10080]] = None,
+                                  rooms_notifications: Optional[bool] = None):
     # --- END AI-MODIFIED ---
         # t = self.bot.translator.t
 
@@ -1725,6 +1775,7 @@ class RoomCog(LionCog):
             'rooms_min_deposit': rooms_min_deposit,
             'rooms_auto_extend': rooms_auto_extend,
             'rooms_cooldown': rooms_cooldown,
+            'rooms_notifications': rooms_notifications,
         }
         # --- END AI-MODIFIED ---
         modified = {(sid, val) for sid, val in provided.items() if val is not None}

@@ -616,8 +616,7 @@ msgctxt "timerset:channel_name|accepts"
 msgid ""
 "Timer channel name, with keys {remaining}, {name}, {pattern}, and {stage}."
 msgstr ""
-"Nome do canal do temporizador. Adicione as chaves {remaining}, {name}, "
-"{pattern}  e {stage} para personalizar."
+"Nome do canal com chaves {remaining}, {name}, {pattern} e {stage}."
 
 #: src/modules/pomodoro/options.py:221
 msgctxt "timerset:channel_name_format|error:too_long"

@@ -22,6 +22,10 @@ from modules.statistics.settings import StatisticsDashboard
 from modules.member_admin.settingui import MemberAdminDashboard
 from modules.moderation.settingui import ModerationDashboard
 from modules.video_channels.settingui import VideoDashboard
+# --- AI-MODIFIED (2026-03-31) ---
+# Purpose: Import screen share dashboard for guild config dashboard
+from modules.screen_channels.settingui import ScreenDashboard
+# --- END AI-MODIFIED ---
 from modules.config.settingui import GeneralDashboard
 
 
@@ -37,7 +41,7 @@ class GuildDashboard(BasePager):
     """
     pages = [
         (MemberAdminDashboard, LocaleDashboard, EconomyDashboard, GeneralDashboard,),
-        (ModerationDashboard, VideoDashboard,),
+        (ModerationDashboard, VideoDashboard, ScreenDashboard,),
         (VoiceTrackerDashboard, TextTrackerDashboard, RankDashboard, StatisticsDashboard,),
         (TasklistDashboard, RoomDashboard, TimerDashboard,),
         (ScheduleDashboard,),

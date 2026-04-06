@@ -85,6 +85,27 @@ class RoomRentalShop(Shop):
     def _get_room_cog(self) -> Optional['RoomCog']:
         return self.bot.get_cog('RoomCog')
 
+    # --- AI-MODIFIED (2026-04-01) ---
+    # Purpose: Async role gate check for the shop purchase path
+    async def _check_role_gate(self) -> tuple:
+        """
+        Returns (allowed: bool, error_message: str | None).
+        """
+        room_cog: 'RoomCog' = self._get_room_cog()
+        if room_cog is None:
+            return True, None
+        guild = self.bot.get_guild(self.customer.guildid)
+        if guild is None:
+            return True, None
+        member = guild.get_member(self.customer.userid)
+        if member is None:
+            try:
+                member = await guild.fetch_member(self.customer.userid)
+            except Exception:
+                return True, None
+        return await room_cog.check_rent_role_gate(guild, member)
+    # --- END AI-MODIFIED ---
+
     def _has_room_category(self) -> bool:
         from modules.rooms.settings import RoomSettings
         guild = self.bot.get_guild(self.customer.guildid)
@@ -109,13 +130,38 @@ class RoomRentalShop(Shop):
         rooms = room_cog.get_rooms(self.customer.guildid, self.customer.userid)
         return bool(rooms)
 
+    # --- AI-MODIFIED (2026-04-01) ---
+    # Purpose: Check room count against max_per_user setting instead of flat boolean
+    def _at_room_limit(self) -> bool:
+        room_cog = self._get_room_cog()
+        if room_cog is None:
+            return False
+        from modules.rooms.settings import RoomSettings
+        guild = self.bot.get_guild(self.customer.guildid)
+        if guild is None:
+            return False
+        lguild = self.bot.core.lions.lion_guilds.get(guild.id)
+        if lguild is None:
+            return self._already_owns_room()
+        max_rooms = lguild.config.get(RoomSettings.MaxPerUser.setting_id).value
+        owned = room_cog.count_owned_rooms(self.customer.guildid, self.customer.userid)
+        return owned >= max_rooms
+    # --- END AI-MODIFIED ---
+
     def purchasable(self):
         """
         Returns room rental items the customer can afford.
-        Also checks: no existing room, room category configured.
+        Also checks: room limit, room category configured.
         """
-        if self._already_owns_room():
+        # --- AI-MODIFIED (2026-04-01) ---
+        # Purpose: Use count-based room limit check instead of flat boolean
+        # --- Original code (commented out for rollback) ---
+        # if self._already_owns_room():
+        #     return []
+        # --- End original code ---
+        if self._at_room_limit():
             return []
+        # --- END AI-MODIFIED ---
         if not self._has_room_category():
             return []
         balance = self.customer.balance
@@ -158,6 +204,15 @@ class RoomRentalShop(Shop):
                         ))
                     )
 
+                # --- AI-MODIFIED (2026-04-01) ---
+                # Purpose: Enforce role gate in shop purchase path
+                room_cog_gate: 'RoomCog' = self._get_room_cog()
+                if room_cog_gate:
+                    allowed, role_error = await room_cog_gate.check_rent_role_gate(guild, member)
+                    if not allowed:
+                        raise SafeCancellation(role_error)
+                # --- END AI-MODIFIED ---
+
                 if self.customer.balance < item['price']:
                     raise SafeCancellation(
                         t(_p(
@@ -170,15 +225,46 @@ class RoomRentalShop(Shop):
                         )
                     )
 
-                if self._already_owns_room():
+                # --- AI-MODIFIED (2026-04-01) ---
+                # Purpose: Use count-based room limit check instead of flat boolean
+                # --- Original code (commented out for rollback) ---
+                # if self._already_owns_room():
+                #     raise SafeCancellation(
+                #         t(_p(
+                #             'shop:room|purchase|error:already_owns',
+                #             "You already own a private room in this server!"
+                #         ))
+                #     )
+                # --- End original code ---
+                if self._at_room_limit():
                     raise SafeCancellation(
                         t(_p(
-                            'shop:room|purchase|error:already_owns',
-                            "You already own a private room in this server!"
+                            'shop:room|purchase|error:at_limit',
+                            "You have reached the maximum number of private rooms allowed!"
                         ))
                     )
+                # --- END AI-MODIFIED ---
 
+                # --- AI-MODIFIED (2026-04-01) ---
+                # Purpose: Enforce creation cooldown in shop purchase path
                 lguild = await self.bot.core.lions.fetch_guild(guild.id)
+                cooldown_minutes = lguild.config.get(RoomSettings.Cooldown.setting_id).value
+                if cooldown_minutes:
+                    room_cog_cd = self._get_room_cog()
+                    if room_cog_cd:
+                        remaining = await room_cog_cd.get_cooldown_remaining(
+                            guild.id, member.id, cooldown_minutes
+                        )
+                        if remaining > 0:
+                            mins_left = remaining // 60
+                            raise SafeCancellation(
+                                t(_p(
+                                    'shop:room|purchase|error:cooldown',
+                                    "You must wait **{minutes}** more minute(s) before renting a new room!"
+                                )).format(minutes=max(1, mins_left))
+                            )
+                # --- END AI-MODIFIED ---
+
                 room_cat = lguild.config.get(RoomSettings.Category.setting_id)
                 if room_cat is None or room_cat.value is None:
                     raise SafeCancellation(
@@ -541,6 +627,18 @@ class RoomRentalStore(Store):
         t = self.shop.bot.translator.t
         selector = self.select_room
 
+        # --- AI-MODIFIED (2026-04-01) ---
+        # Purpose: Check role gate before showing purchasable items
+        role_allowed, role_error = await self.shop._check_role_gate()
+        if not role_allowed:
+            selector.placeholder = t(_p(
+                'ui:roomstore|menu:buyroom|placeholder:role_gate',
+                "You don't have the required roles to rent a room."
+            ))
+            selector.disabled = True
+            return
+        # --- END AI-MODIFIED ---
+
         purchasable = self.shop.purchasable()
         option_map: dict[int, SelectOption] = {}
 
@@ -548,7 +646,13 @@ class RoomRentalStore(Store):
             option_map[item.itemid] = item.select_option_for(self.shop.customer)
 
         if not option_map:
-            if self.shop._already_owns_room():
+            # --- AI-MODIFIED (2026-04-01) ---
+            # Purpose: Use count-based limit check for placeholder text
+            # --- Original code (commented out for rollback) ---
+            # if self.shop._already_owns_room():
+            # --- End original code ---
+            if self.shop._at_room_limit():
+            # --- END AI-MODIFIED ---
                 selector.placeholder = t(_p(
                     'ui:roomstore|menu:buyroom|placeholder:owns_room',
                     "You already own a room in this server!"
@@ -628,7 +732,16 @@ class RoomRentalStore(Store):
             colour=discord.Colour.dark_teal()
         )
 
-        if self.shop._already_owns_room():
+        # --- AI-MODIFIED (2026-04-01) ---
+        # Purpose: Show role gate note + count-based limit check for shop embed note
+        role_allowed, role_error = await self.shop._check_role_gate()
+        if not role_allowed:
+            embed.add_field(
+                name=t(_p('ui:roomstore|embed|field:role_gate|name', "Role Required")),
+                value=role_error
+            )
+        elif self.shop._at_room_limit():
+        # --- END AI-MODIFIED ---
             embed.add_field(
                 name=t(_p('ui:roomstore|embed|field:owns_room|name', "Note")),
                 value=t(_p(

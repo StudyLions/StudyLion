@@ -68,6 +68,9 @@ class Lions(LionCog):
             self.lion_users[userid] = luser
         return luser
 
+    # --- AI-MODIFIED (2026-04-05) ---
+    # Purpose: Call ensure_config_fresh on cached guilds so dashboard DB
+    # changes (season_start, rank_type, etc.) are picked up automatically
     async def fetch_guild(self, guildid, guild: Optional[discord.Guild] = None) -> LionGuild:
         """
         Fetch the given LionGuild, hitting cache if possible.
@@ -78,8 +81,13 @@ class Lions(LionCog):
             data = await self.data.Guild.fetch_or_create(guildid)
             lguild = LionGuild(self.bot, data, guild=guild)
             self.lion_guilds[guildid] = lguild
+        else:
+            await lguild.ensure_config_fresh()
         return lguild
+    # --- END AI-MODIFIED ---
 
+    # --- AI-MODIFIED (2026-04-05) ---
+    # Purpose: Refresh stale cached guild configs (same reason as fetch_guild)
     async def fetch_guilds(self, *guildids) -> dict[int, LionGuild]:
         """
         Fetch (or create) multiple LionGuilds simultaneously, using cache where possible.
@@ -91,6 +99,9 @@ class Lions(LionCog):
             guild_map[guildid] = lguild
             if lguild is None:
                 missing.add(guildid)
+            else:
+                await lguild.ensure_config_fresh()
+    # --- END AI-MODIFIED ---
 
         if missing:
             rows = await self.data.Guild.fetch_where(guildid=list(missing))

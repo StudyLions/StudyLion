@@ -19,6 +19,9 @@ from modules.moderation.cog import ModerationCog
 from modules.moderation.data import TicketType, TicketState
 
 
+from babel.translator import ctx_guildid
+from babel.overrides import override_cache
+
 from . import babel, logger
 from .data import VideoData
 from .settings import VideoSettings
@@ -211,10 +214,22 @@ class VideoCog(LionCog):
         channelids = set(channel_setting.data)
         return (channel.id in channelids) or (channel.category_id and channel.category_id in channelids)
 
+    async def _setup_guild_context(self, guildid: int):
+        """Set guild context so text branding overrides apply in event handlers."""
+        ctx_guildid.set(guildid)
+        if override_cache.needs_load(guildid):
+            await override_cache.load_overrides(self.bot, guildid)
+        if override_cache.needs_premium_check(guildid):
+            await override_cache.load_premium_status(self.bot, guildid)
+
     async def _remove_blacklisted(self, member: discord.Member, channel: discord.VoiceChannel):
         """
         Remove a video blacklisted member from the channel.
         """
+        # --- AI-MODIFIED (2026-04-03) ---
+        # Purpose: Set guild context so text branding overrides apply
+        await self._setup_guild_context(member.guild.id)
+        # --- END AI-MODIFIED ---
         logger.info(
             f"Removing video blacklisted member <uid:{member.id}> from <cid:{channel.id}> in "
             f"<gid:{member.guild.id}>"
@@ -306,6 +321,10 @@ class VideoCog(LionCog):
             # They left the video channel or turned their video on
             return
 
+        # --- AI-MODIFIED (2026-04-03) ---
+        # Purpose: Set guild context so text branding overrides apply
+        await self._setup_guild_context(member.guild.id)
+        # --- END AI-MODIFIED ---
         t = self.bot.translator.t
         modcog: ModerationCog = self.bot.get_cog('ModerationCog')
         now = utc_now()
@@ -512,6 +531,10 @@ class VideoCog(LionCog):
             # Member left the channel or turned on their video
             return
 
+        # --- AI-MODIFIED (2026-04-03) ---
+        # Purpose: Set guild context so text branding overrides apply
+        await self._setup_guild_context(member.guild.id)
+        # --- END AI-MODIFIED ---
         # Member did not turn on their video, actually kick and notify
         t = self.bot.translator.t
         logger.info(

@@ -286,9 +286,7 @@ msgstr ""
 #: src/modules/statistics/settings.py:104
 msgctxt "guildset:season_start|accepts"
 msgid "The season start time in the form YYYY-MM-DD HH:MM"
-msgstr ""
-"Determine o marco temporal a para o começo das estatísticas de atividades. "
-"Use formato AAAA-MM-DD HH:MM"
+msgstr "Início da temporada no formato AAAA-MM-DD HH:MM"
 
 #: src/modules/statistics/settings.py:108
 msgctxt "guildset:season_start|notset"
