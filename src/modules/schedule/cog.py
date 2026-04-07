@@ -1072,6 +1072,8 @@ class ScheduleCog(LionCog):
         """
         pass
 
+    # --- AI-MODIFIED (2026-04-07) ---
+    # Purpose: Added reminder_minutes to schedule config params
     config_params = {
         'session_lobby': ScheduleSettings.SessionLobby,
         'session_room': ScheduleSettings.SessionRoom,
@@ -1081,7 +1083,9 @@ class ScheduleCog(LionCog):
         'min_attendance': ScheduleSettings.MinAttendance,
         'blacklist_role': ScheduleSettings.BlacklistRole,
         'blacklist_after': ScheduleSettings.BlacklistAfter,
+        'reminder_minutes': ScheduleSettings.ReminderMinutes,
     }
+    # --- END AI-MODIFIED ---
 
     @configure_group.command(
         name=_p('cmd:configure_schedule', "schedule"),
@@ -1097,6 +1101,8 @@ class ScheduleCog(LionCog):
         **{param: option._desc for param, option in config_params.items()}
     )
     @high_management_ward
+    # --- AI-MODIFIED (2026-04-07) ---
+    # Purpose: Added reminder_minutes parameter to schedule config command
     async def configure_schedule_command(self, ctx: LionContext,
                                          session_lobby: Optional[discord.TextChannel | discord.VoiceChannel] = None,
                                          session_room: Optional[discord.VoiceChannel] = None,
@@ -1105,8 +1111,10 @@ class ScheduleCog(LionCog):
                                          attendance_bonus: Optional[appcmds.Range[int, 0, MAX_COINS]] = None,
                                          min_attendance: Optional[appcmds.Range[int, 1, 60]] = None,
                                          blacklist_role: Optional[discord.Role] = None,
-                                         blacklist_after: Optional[appcmds.Range[int, 1, 24]] = None
+                                         blacklist_after: Optional[appcmds.Range[int, 1, 24]] = None,
+                                         reminder_minutes: Optional[appcmds.Range[int, 5, 30]] = None
                                          ):
+    # --- END AI-MODIFIED ---
         # Type Guards
         if not ctx.guild:
             return
@@ -1114,6 +1122,8 @@ class ScheduleCog(LionCog):
             return
 
         # Map of parameter names to setting values
+        # --- AI-MODIFIED (2026-04-07) ---
+        # Purpose: Added reminder_minutes to provided params
         provided = {
             'session_lobby': session_lobby,
             'session_room': session_room,
@@ -1123,7 +1133,9 @@ class ScheduleCog(LionCog):
             'min_attendance': min_attendance,
             'blacklist_role': blacklist_role,
             'blacklist_after': blacklist_after,
+            'reminder_minutes': reminder_minutes,
         }
+        # --- END AI-MODIFIED ---
         modified = set(param for param, value in provided.items() if value is not None)
 
         # Make a config instance

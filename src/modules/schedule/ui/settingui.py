@@ -17,6 +17,8 @@ _p = babel._p
 
 
 class ScheduleSettingUI(ConfigUI):
+    # --- AI-MODIFIED (2026-04-07) ---
+    # Purpose: Added ReminderMinutes to page 1 (session rewards/timing settings)
     pages = [
         (
             ScheduleSettings.SessionLobby,
@@ -27,11 +29,13 @@ class ScheduleSettingUI(ConfigUI):
             ScheduleSettings.AttendanceReward,
             ScheduleSettings.AttendanceBonus,
             ScheduleSettings.MinAttendance,
+            ScheduleSettings.ReminderMinutes,
         ), (
             ScheduleSettings.BlacklistRole,
             ScheduleSettings.BlacklistAfter,
         )
     ]
+    # --- END AI-MODIFIED ---
     setting_classes = list(itertools.chain(*pages))
 
     def _init_children(self):
@@ -263,11 +267,14 @@ class ScheduleDashboard(DashboardSection):
 
     def apply_to(self, page: discord.Embed):
         t = self.bot.translator.t
+        # --- AI-MODIFIED (2026-04-07) ---
+        # Purpose: Updated slicing for ReminderMinutes added to page 1 (now 5 settings)
         pages = [
             self.instances[0:3],
-            self.instances[3:7],
-            self.instances[7:]
+            self.instances[3:8],
+            self.instances[8:]
         ]
+        # --- END AI-MODIFIED ---
         # Schedule Channels
         table = self._make_table(pages[0])
         page.add_field(

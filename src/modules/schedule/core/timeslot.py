@@ -527,6 +527,16 @@ class TimeSlot:
         try:
             now = utc_now()
             if now < self.start_at:
+                # --- AI-MODIFIED (2026-04-07) ---
+                # Purpose: Schedule early DM reminders for guilds with reminder_minutes > 15
+                # These fire independently of prepare(), which runs at the fixed 15-min mark.
+                for session in self.sessions.values():
+                    if session.can_run and session.members:
+                        if session.reminder_minutes > 15:
+                            asyncio.create_task(session._send_reminders())
+                            asyncio.create_task(session._send_prepare_ping())
+                            session._early_reminders_sent = True
+                # --- END AI-MODIFIED ---
                 await discord.utils.sleep_until(self.prep_at)
                 self.preparing.set()
                 logger.info(f"Active timeslot preparing. {self!r}")

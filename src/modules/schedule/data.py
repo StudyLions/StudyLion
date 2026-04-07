@@ -120,6 +120,10 @@ class ScheduleData(Registry):
         room_channel = Integer()
         blacklist_after = Integer()
         blacklist_role = Integer()
+        # --- AI-MODIFIED (2026-04-07) ---
+        # Purpose: Per-guild configurable reminder timing for scheduled sessions
+        reminder_minutes = Integer()
+        # --- END AI-MODIFIED ---
 
         @classmethod
         async def fetch_multiple(cls, *guildids, create=True):

@@ -1055,6 +1055,7 @@ CREATE TABLE schedule_guild_config(
   room_channel BIGINT,
   blacklist_after INTEGER,
   blacklist_role BIGINT,
+  reminder_minutes INTEGER DEFAULT 15,
   created_at TIMESTAMPTZ DEFAULT now()
 );
 

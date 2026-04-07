@@ -136,6 +136,10 @@ class ScheduledSession:
         self._updater = None
         self._status_task = None
         self._notify_task = None
+        # --- AI-MODIFIED (2026-04-07) ---
+        # Purpose: Track whether early reminders (> 15 min) were already scheduled by TimeSlot.run()
+        self._early_reminders_sent = False
+        # --- END AI-MODIFIED ---
 
     def __repr__(self):
         return ' '.join((
@@ -181,6 +185,13 @@ class ScheduledSession:
     @property
     def all_attended(self) -> bool:
         return all(member.total_clock >= self.min_attendence for member in self.members.values())
+
+    # --- AI-MODIFIED (2026-04-07) ---
+    # Purpose: Per-guild configurable reminder timing
+    @property
+    def reminder_minutes(self) -> int:
+        return self.config.get(Settings.ReminderMinutes.setting_id).value
+    # --- END AI-MODIFIED ---
 
     @property
     def can_run(self) -> bool:
@@ -282,9 +293,10 @@ class ScheduledSession:
 
     @log_wrap(action='Session Prepare')
     async def prepare(self, **kwargs):
-        # --- AI-REPLACED (2026-04-04) ---
-        # Reason: No pre-session notification existed
-        # What the new code does better: Sends DM reminders ~15 min before session
+        # --- AI-REPLACED (2026-04-07) ---
+        # Reason: Support per-guild configurable reminder timing (5-30 min)
+        # What the new code does better: Sends reminders at the guild's configured time,
+        # skips if early reminders were already scheduled by TimeSlot for >15 min configs
         # --- Original code (commented out for rollback) ---
         # async with self.lock:
         #     await self.prepare_room()
@@ -296,7 +308,7 @@ class ScheduledSession:
             await self.prepare_room()
             await self.update_status(**kwargs)
             self.prepared = True
-            if self.members and first_prepare:
+            if self.members and first_prepare and not self._early_reminders_sent:
                 asyncio.create_task(self._send_reminders())
                 asyncio.create_task(self._send_prepare_ping())
         # --- END AI-REPLACED ---
@@ -456,9 +468,18 @@ class ScheduledSession:
 
     @log_wrap(action='Send Reminders')
     async def _send_reminders(self):
-        """Send DM reminders to booked members ~15 min before session starts.
+        """Send DM reminders to booked members before session starts.
+        Waits until the guild's configured reminder_minutes before start_at.
         Skips members who have a booking in the preceding slot (consecutive block)
         or who have muted schedule reminders."""
+        # --- AI-MODIFIED (2026-04-07) ---
+        # Purpose: Delay sending until the guild's configured reminder time
+        reminder_min = self.reminder_minutes
+        send_at = self.starts_at - dt.timedelta(minutes=reminder_min)
+        now = utc_now()
+        if now < send_at:
+            await discord.utils.sleep_until(send_at)
+        # --- END AI-MODIFIED ---
         t = self.bot.translator.t
         guild = self.guild
         if not guild or not self.members:
@@ -498,7 +519,16 @@ class ScheduledSession:
 
     @log_wrap(action='Prepare Ping')
     async def _send_prepare_ping(self):
-        """Send a channel @mention ping to booked members whose block starts this slot."""
+        """Send a channel @mention ping to booked members whose block starts this slot.
+        Waits until the guild's configured reminder_minutes before start_at."""
+        # --- AI-MODIFIED (2026-04-07) ---
+        # Purpose: Delay channel ping until the guild's configured reminder time
+        reminder_min = self.reminder_minutes
+        send_at = self.starts_at - dt.timedelta(minutes=reminder_min)
+        now = utc_now()
+        if now < send_at:
+            await discord.utils.sleep_until(send_at)
+        # --- END AI-MODIFIED ---
         t = self.bot.translator.t
         if not self.members:
             return

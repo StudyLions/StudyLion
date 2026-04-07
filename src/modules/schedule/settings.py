@@ -58,6 +58,13 @@ class ScheduleConfig(ModelConfig):
     def blacklist_after(self):
         return self.get(ScheduleSettings.BlacklistAfter.setting_id)
 
+    # --- AI-MODIFIED (2026-04-07) ---
+    # Purpose: Per-guild configurable reminder timing for scheduled sessions
+    @property
+    def reminder_minutes(self):
+        return self.get(ScheduleSettings.ReminderMinutes.setting_id)
+    # --- END AI-MODIFIED ---
+
 
 class ScheduleSettings(SettingGroup):
     @ScheduleConfig.register_model_setting
@@ -571,3 +578,74 @@ class ScheduleSettings(SettingGroup):
                     "Blacklist threshold must be a number between `1` and `24`."
                 ))
                 raise UserInputError(error) from None
+
+    # --- AI-MODIFIED (2026-04-07) ---
+    # Purpose: Per-guild configurable reminder timing for scheduled sessions
+    @ScheduleConfig.register_model_setting
+    class ReminderMinutes(ModelData, IntegerSetting):
+        setting_id = 'reminder_minutes'
+        _set_cmd = 'admin config schedule'
+        _write_ward = low_management_iward
+
+        _display_name = _p('guildset:reminder_minutes', "reminder_minutes")
+        _desc = _p(
+            'guildset:reminder_minutes|desc',
+            "How many minutes before a session to send reminders."
+        )
+        _long_desc = _p(
+            'guildset:reminder_minutes|long_desc',
+            "DM reminders and channel pings will be sent this many minutes before each "
+            "scheduled session starts. For example, setting this to `5` means members "
+            "receive their reminder 5 minutes before the session. "
+            "Must be between `5` and `30` minutes."
+        )
+        _accepts = _p(
+            'guildset:reminder_minutes|accepts',
+            "Number of minutes (5-30) before session start to send reminders."
+        )
+        _default = 15
+        _min = 5
+        _max = 30
+
+        _model = ScheduleData.ScheduleGuild
+        _column = ScheduleData.ScheduleGuild.reminder_minutes.name
+
+        @property
+        def update_message(self) -> str:
+            t = ctx_translator.get().t
+            resp = t(_p(
+                'guildset:reminder_minutes|set_response',
+                "Session reminders will now be sent **`{amount}`** minutes before each scheduled session."
+            )).format(amount=self.value)
+            return resp
+
+        @classmethod
+        def _format_data(cls, parent_id, data, **kwargs):
+            if data is not None:
+                t = ctx_translator.get().t
+                formatted = t(_p(
+                    'guildset:reminder_minutes|formatted',
+                    "**`{amount}`** minutes before session"
+                )).format(amount=data)
+                return formatted
+
+        @classmethod
+        async def _parse_string(cls, parent_id, string: str, **kwargs):
+            if not string:
+                return None
+
+            string = string.strip('m ')
+            try:
+                num = int(string)
+            except Exception:
+                num = None
+
+            if num is None or not (5 <= num <= 30):
+                t = ctx_translator.get().t
+                error = t(_p(
+                    'guildset:reminder_minutes|parse|error',
+                    "Reminder minutes must be a number between `5` and `30`."
+                ))
+                raise UserInputError(error)
+            return num
+    # --- END AI-MODIFIED ---
