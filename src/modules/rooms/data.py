@@ -1,5 +1,5 @@
 from data import Registry, RowModel, Table
-from data.columns import Integer, Timestamp, String
+from data.columns import Integer, Timestamp, String, Bool
 
 
 class RoomData(Registry):
@@ -37,6 +37,15 @@ class RoomData(Registry):
         # Purpose: Dashboard rename support -- set to NOW() by dashboard,
         # cleared by bot after syncing to Discord. NULL = no pending rename.
         name_changed_at = Timestamp()
+        # --- END AI-MODIFIED ---
+        # --- AI-MODIFIED (2026-04-06) ---
+        # Purpose: Track last activity for inactivity auto-delete feature
+        last_activity = Timestamp()
+        # --- END AI-MODIFIED ---
+        # --- AI-MODIFIED (2026-04-13) ---
+        # Purpose: Per-room auto-extend preference set by room owner.
+        # NULL = inherit guild default, True = always on, False = owner opted out.
+        owner_auto_extend = Bool()
         # --- END AI-MODIFIED ---
 
     class RoomMember(RowModel):

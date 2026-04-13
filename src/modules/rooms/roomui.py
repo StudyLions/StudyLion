@@ -292,6 +292,65 @@ class RoomUI(MessageUI):
     async def close_button_refresh(self):
         pass
 
+    # --- AI-MODIFIED (2026-04-13) ---
+    # Purpose: Let room owners toggle auto-extend for their specific room
+    @button(label='AUTO_EXTEND_PLACEHOLDER', style=ButtonStyle.grey)
+    async def auto_extend_button(self, press: discord.Interaction, pressed: Button):
+        if not await self.owner_ward(press):
+            return
+
+        guild_auto_extend = self.room.lguild.config.get(RoomSettings.AutoExtend.setting_id).value
+        if not guild_auto_extend:
+            t = self.bot.translator.t
+            await press.response.send_message(
+                embed=discord.Embed(
+                    colour=discord.Colour.brand_red(),
+                    description=t(_p(
+                        'ui:room_status|button:auto_extend|error:guild_disabled',
+                        "Auto-extend is not enabled by the server admins."
+                    ))
+                ),
+                ephemeral=True
+            )
+            return
+
+        current = self.room.data.owner_auto_extend
+        new_value = not (current is not False)
+
+        await self.room.data.update(owner_auto_extend=new_value if new_value is not None else None)
+
+        await press.response.defer(thinking=True, ephemeral=True)
+        await self.refresh(thinking=press)
+
+    async def auto_extend_button_refresh(self):
+        t = self.bot.translator.t
+        guild_auto_extend = self.room.lguild.config.get(RoomSettings.AutoExtend.setting_id).value
+        current = self.room.data.owner_auto_extend
+        is_on = guild_auto_extend and (current is not False)
+
+        if not guild_auto_extend:
+            self.auto_extend_button.label = t(_p(
+                'ui:room_status|button:auto_extend|label:unavailable',
+                "Auto-Extend: N/A"
+            ))
+            self.auto_extend_button.style = ButtonStyle.grey
+            self.auto_extend_button.disabled = True
+        elif is_on:
+            self.auto_extend_button.label = t(_p(
+                'ui:room_status|button:auto_extend|label:on',
+                "Auto-Extend: ON"
+            ))
+            self.auto_extend_button.style = ButtonStyle.green
+            self.auto_extend_button.disabled = False
+        else:
+            self.auto_extend_button.label = t(_p(
+                'ui:room_status|button:auto_extend|label:off',
+                "Auto-Extend: OFF"
+            ))
+            self.auto_extend_button.style = ButtonStyle.grey
+            self.auto_extend_button.disabled = False
+    # --- END AI-MODIFIED ---
+
     # --- AI-MODIFIED (2026-04-01) ---
     # Purpose: Add "Delete Room" button so owners can close their room from the control panel
     @button(label='DELETE_PLACEHOLDER', style=ButtonStyle.red)
@@ -537,6 +596,26 @@ class RoomUI(MessageUI):
             inline=False
         )
 
+        # --- AI-MODIFIED (2026-04-13) ---
+        # Purpose: Show auto-extend status in room control panel
+        guild_auto_extend = self.room.lguild.config.get(RoomSettings.AutoExtend.setting_id).value
+        if guild_auto_extend:
+            owner_pref = self.room.data.owner_auto_extend
+            is_on = owner_pref is not False
+            ae_status = t(_p(
+                'ui:room_status|embed|field:auto_extend|on',
+                "Enabled — coins will be deducted from owner's wallet when room bank is empty"
+            )) if is_on else t(_p(
+                'ui:room_status|embed|field:auto_extend|off',
+                "Disabled — room will expire when balance runs out"
+            ))
+            embed.add_field(
+                name=t(_p('ui:room_status|embed|field:auto_extend|name', "Auto-Extend")),
+                value=ae_status,
+                inline=False
+            )
+        # --- END AI-MODIFIED ---
+
         member_cap = self.room.lguild.config.get('rooms_slots').value
         embed.add_field(
             name=t(_p(
@@ -573,28 +652,43 @@ class RoomUI(MessageUI):
             #     self.kick_menu_refresh()
             # )
             # --- End original code ---
+            # --- AI-MODIFIED (2026-04-13) ---
+            # Purpose: Add auto_extend_button refresh to owner layout
+            # --- Original code (commented out for rollback) ---
+            # await asyncio.gather(
+            #     self.desposit_button_refresh(),
+            #     self.refresh_button_refresh(),
+            #     self.close_button_refresh(),
+            #     self.timer_button_refresh(),
+            #     self.delete_room_button_refresh(),
+            #     self.invite_menu_refresh(),
+            #     self.kick_menu_refresh()
+            # )
+            # --- End original code ---
             await asyncio.gather(
                 self.desposit_button_refresh(),
                 self.refresh_button_refresh(),
                 self.close_button_refresh(),
                 self.timer_button_refresh(),
+                self.auto_extend_button_refresh(),
                 self.delete_room_button_refresh(),
                 self.invite_menu_refresh(),
                 self.kick_menu_refresh()
             )
             # --- END AI-MODIFIED ---
-            # --- AI-MODIFIED (2026-04-01) ---
-            # Purpose: Include delete_room_button and dashboard link in owner layout
+            # --- AI-MODIFIED (2026-04-13) ---
+            # Purpose: Include auto_extend_button in owner layout alongside delete_room_button
             # --- Original code (commented out for rollback) ---
             # self.set_layout(
             #     (self.desposit_button, self.timer_button, dashboard_link, self.refresh_button, self.close_button),
+            #     (self.delete_room_button,),
             #     (self.invite_menu, ),
             #     (self.kick_menu, )
             # )
             # --- End original code ---
             self.set_layout(
                 (self.desposit_button, self.timer_button, dashboard_link, self.refresh_button, self.close_button),
-                (self.delete_room_button,),
+                (self.auto_extend_button, self.delete_room_button,),
                 (self.invite_menu, ),
                 (self.kick_menu, )
             )

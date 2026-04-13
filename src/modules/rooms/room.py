@@ -545,6 +545,14 @@ class Room:
             self.data.frozen_at = fresh.frozen_at
             self.data.frozen_by = fresh.frozen_by
             self.data.name = fresh.name
+            # --- AI-MODIFIED (2026-04-06) ---
+            # Purpose: Sync last_activity from DB so inactivity check uses latest value
+            self.data.last_activity = fresh.last_activity
+            # --- END AI-MODIFIED ---
+            # --- AI-MODIFIED (2026-04-13) ---
+            # Purpose: Sync owner_auto_extend preference from DB (owner may toggle via UI)
+            self.data.owner_auto_extend = fresh.owner_auto_extend
+            # --- END AI-MODIFIED ---
         # --- END AI-MODIFIED ---
 
         if self.deleted:
@@ -566,7 +574,93 @@ class Room:
                 except discord.HTTPException:
                     pass
         # --- END AI-MODIFIED ---
+        # --- AI-MODIFIED (2026-04-06) ---
+        # Purpose: Auto-delete rooms that have been inactive for the configured number of days.
+        # Refunds remaining coin balance to the owner. Frozen rooms are exempt (handled above).
         else:
+            from .settings import RoomSettings
+            from core.data import CoreData
+            inactivity_on = self.lguild.config.get(RoomSettings.InactivityEnabled.setting_id).value
+            inactivity_days = self.lguild.config.get(RoomSettings.InactivityDays.setting_id).value
+            if inactivity_on and inactivity_days:
+                cutoff = utc_now() - timedelta(days=inactivity_days)
+                room_last_activity = self.data.last_activity or self.data.created_at or utc_now()
+                if room_last_activity < cutoff:
+                    refunded = 0
+                    if self.data.coin_balance > 0:
+                        try:
+                            owner_lion = await self.bot.core.lions.fetch_member(
+                                self.data.guildid, self.data.ownerid
+                            )
+                            await owner_lion.data.update(
+                                coins=CoreData.Member.coins + self.data.coin_balance
+                            )
+                            refunded = self.data.coin_balance
+                        except Exception:
+                            logger.exception(
+                                f"Failed to refund balance for inactive room <cid: {self.data.channelid}>"
+                            )
+
+                    if owner := self.bot.get_user(self.data.ownerid):
+                        coin = self.bot.config.emojis.coin
+                        desc_parts = [
+                            t(_p(
+                                'room|embed:inactivity|description',
+                                "Your private room in **{guild}** was deleted due to "
+                                "**{days} days** of inactivity (no voice joins or messages)."
+                            )).format(
+                                guild=self.bot.get_guild(self.data.guildid),
+                                days=inactivity_days
+                            )
+                        ]
+                        if refunded > 0:
+                            desc_parts.append(
+                                t(_p(
+                                    'room|embed:inactivity|refund',
+                                    "Your remaining balance of {coin}**{amount}** has been refunded."
+                                )).format(coin=coin, amount=refunded)
+                            )
+                        embed = discord.Embed(
+                            colour=discord.Colour.greyple(),
+                            title=t(_p(
+                                'room|embed:inactivity|title',
+                                "Private Room Deleted (Inactivity)"
+                            )),
+                            description='\n'.join(desc_parts)
+                        )
+                        link_view = discord.ui.View()
+                        link_view.add_item(discord.ui.Button(
+                            style=discord.ButtonStyle.link,
+                            url=ROOM_DASHBOARD_URL,
+                            label="View All Rooms"
+                        ))
+                        try:
+                            await owner.send(embed=embed, view=link_view)
+                        except discord.HTTPException:
+                            pass
+
+                    self.lguild.log_event(
+                        title=t(_p(
+                            'room|eventlog|event:inactivity|title',
+                            "Private Room Deleted (Inactivity)"
+                        )),
+                        description=t(_p(
+                            'room|eventlog|event:inactivity|desc',
+                            "{owner}'s private room was auto-deleted after {days} days of inactivity."
+                        )).format(
+                            owner="<@{mid}>".format(mid=self.data.ownerid),
+                            days=inactivity_days
+                        ),
+                        fields=self.eventlog_fields()
+                    )
+                    logger.info(
+                        f"Auto-deleting inactive room <cid: {self.data.channelid}> "
+                        f"(last activity: {room_last_activity}, cutoff: {cutoff}, refunded: {refunded})"
+                    )
+                    await self.destroy(reason='Inactivity')
+                    return
+        # --- END AI-MODIFIED ---
+
             # Run tick
             logger.debug(f"Tick running for room: {self.data!r}")
 
@@ -578,11 +672,18 @@ class Room:
 
             # If balance is negative, try auto-extend or expire room
             if self.data.coin_balance < 0:
-                # --- AI-MODIFIED (2026-04-01) ---
-                # Purpose: Auto-extend by charging owner's wallet when room bank is empty
+                # --- AI-MODIFIED (2026-04-13) ---
+                # Purpose: Auto-extend checks both guild setting AND per-room owner preference.
+                # Guild setting is the master switch; if ON, owner can opt out per-room.
+                # --- Original code (commented out for rollback) ---
+                # auto_extend = self.lguild.config.get(RoomSettings.AutoExtend.setting_id).value
+                # --- End original code ---
                 from .settings import RoomSettings
                 from core.data import CoreData
-                auto_extend = self.lguild.config.get(RoomSettings.AutoExtend.setting_id).value
+                guild_auto_extend = self.lguild.config.get(RoomSettings.AutoExtend.setting_id).value
+                owner_pref = self.data.owner_auto_extend
+                auto_extend = guild_auto_extend and (owner_pref is not False)
+                # --- END AI-MODIFIED ---
                 auto_extended = False
                 if auto_extend:
                     try:
