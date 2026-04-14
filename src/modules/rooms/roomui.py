@@ -300,24 +300,14 @@ class RoomUI(MessageUI):
             return
 
         guild_auto_extend = self.room.lguild.config.get(RoomSettings.AutoExtend.setting_id).value
-        if not guild_auto_extend:
-            t = self.bot.translator.t
-            await press.response.send_message(
-                embed=discord.Embed(
-                    colour=discord.Colour.brand_red(),
-                    description=t(_p(
-                        'ui:room_status|button:auto_extend|error:guild_disabled',
-                        "Auto-extend is not enabled by the server admins."
-                    ))
-                ),
-                ephemeral=True
-            )
-            return
-
         current = self.room.data.owner_auto_extend
-        new_value = not (current is not False)
+        if current is not None:
+            is_on = current
+        else:
+            is_on = bool(guild_auto_extend)
 
-        await self.room.data.update(owner_auto_extend=new_value if new_value is not None else None)
+        new_value = not is_on
+        await self.room.data.update(owner_auto_extend=new_value)
 
         await press.response.defer(thinking=True, ephemeral=True)
         await self.refresh(thinking=press)
@@ -326,16 +316,12 @@ class RoomUI(MessageUI):
         t = self.bot.translator.t
         guild_auto_extend = self.room.lguild.config.get(RoomSettings.AutoExtend.setting_id).value
         current = self.room.data.owner_auto_extend
-        is_on = guild_auto_extend and (current is not False)
+        if current is not None:
+            is_on = current
+        else:
+            is_on = bool(guild_auto_extend)
 
-        if not guild_auto_extend:
-            self.auto_extend_button.label = t(_p(
-                'ui:room_status|button:auto_extend|label:unavailable',
-                "Auto-Extend: N/A"
-            ))
-            self.auto_extend_button.style = ButtonStyle.grey
-            self.auto_extend_button.disabled = True
-        elif is_on:
+        if is_on:
             self.auto_extend_button.label = t(_p(
                 'ui:room_status|button:auto_extend|label:on',
                 "Auto-Extend: ON"
@@ -599,31 +585,64 @@ class RoomUI(MessageUI):
         # --- AI-MODIFIED (2026-04-13) ---
         # Purpose: Show auto-extend status in room control panel
         guild_auto_extend = self.room.lguild.config.get(RoomSettings.AutoExtend.setting_id).value
-        if guild_auto_extend:
-            owner_pref = self.room.data.owner_auto_extend
-            is_on = owner_pref is not False
-            ae_status = t(_p(
-                'ui:room_status|embed|field:auto_extend|on',
-                "Enabled — coins will be deducted from owner's wallet when room bank is empty"
-            )) if is_on else t(_p(
-                'ui:room_status|embed|field:auto_extend|off',
-                "Disabled — room will expire when balance runs out"
-            ))
-            embed.add_field(
-                name=t(_p('ui:room_status|embed|field:auto_extend|name', "Auto-Extend")),
-                value=ae_status,
-                inline=False
-            )
+        owner_pref = self.room.data.owner_auto_extend
+        if owner_pref is not None:
+            is_on = owner_pref
+        else:
+            is_on = bool(guild_auto_extend)
+        ae_status = t(_p(
+            'ui:room_status|embed|field:auto_extend|on',
+            "Enabled — coins will be deducted from owner's wallet when room bank is empty"
+        )) if is_on else t(_p(
+            'ui:room_status|embed|field:auto_extend|off',
+            "Disabled — room will expire when balance runs out"
+        ))
+        embed.add_field(
+            name=t(_p('ui:room_status|embed|field:auto_extend|name', "Auto-Extend")),
+            value=ae_status,
+            inline=False
+        )
         # --- END AI-MODIFIED ---
 
         member_cap = self.room.lguild.config.get('rooms_slots').value
+        # --- AI-MODIFIED (2026-04-14) ---
+        # Purpose: Truncate member mention list to fit Discord's 1024-char embed field limit.
+        # With 99 members, the old code produced ~2400 chars and caused the interaction to fail.
+        # --- Original code (commented out for rollback) ---
+        # embed.add_field(
+        #     name=t(_p(
+        #         'ui:room_status|embed|field:members|name',
+        #         "Members ({count}/{cap})"
+        #     )).format(count=len(self.room.members) + 1, cap=member_cap),
+        #     value=', '.join(f"<@{userid}>" for userid in (self.room.data.ownerid, *self.room.members))
+        # )
+        # --- End original code ---
+        all_member_ids = [self.room.data.ownerid, *self.room.members]
+        mentions = []
+        char_count = 0
+        max_chars = 900
+        for uid in all_member_ids:
+            mention = f"<@{uid}>"
+            added_len = len(mention) + (2 if mentions else 0)
+            if char_count + added_len > max_chars:
+                break
+            mentions.append(mention)
+            char_count += added_len
+        remaining = len(all_member_ids) - len(mentions)
+        member_value = ', '.join(mentions)
+        if remaining > 0:
+            member_value += t(_p(
+                'ui:room_status|embed|field:members|overflow',
+                "\n... and **{remaining}** more members"
+            )).format(remaining=remaining)
         embed.add_field(
             name=t(_p(
                 'ui:room_status|embed|field:members|name',
                 "Members ({count}/{cap})"
             )).format(count=len(self.room.members) + 1, cap=member_cap),
-            value=', '.join(f"<@{userid}>" for userid in (self.room.data.ownerid, *self.room.members))
+            value=member_value
         )
+        # --- END AI-MODIFIED ---
 
         return MessageArgs(embed=embed)
 

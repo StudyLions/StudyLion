@@ -50,6 +50,25 @@ class Room:
         self._name_sync_task: Optional[asyncio.Task] = None
         self._member_sync_task: Optional[asyncio.Task] = None
 
+    # --- AI-MODIFIED (2026-04-14) ---
+    # Purpose: Helper to truncate member mentions for embed fields (1024 char limit)
+    def _truncated_member_mentions(self, max_chars: int = 900) -> str:
+        mentions = []
+        char_count = 0
+        for uid in self.members:
+            mention = f"<@{uid}>"
+            added_len = len(mention) + (1 if mentions else 0)
+            if char_count + added_len > max_chars:
+                break
+            mentions.append(mention)
+            char_count += added_len
+        remaining = len(self.members) - len(mentions)
+        result = ','.join(mentions) if mentions else "None"
+        if remaining > 0:
+            result += f"\n... and **{remaining}** more"
+        return result
+    # --- END AI-MODIFIED ---
+
     @property
     def channel(self) -> Optional[discord.VoiceChannel]:
         """
@@ -116,12 +135,23 @@ class Room:
                 discord.utils.format_dt(self.next_tick, 'R'),
                 True
             ),
+            # --- AI-MODIFIED (2026-04-14) ---
+            # Purpose: Truncate member list to fit Discord's 1024-char embed field limit
+            # --- Original code (commented out for rollback) ---
+            # t(_p(
+            #     'room|eventlog|field:members', "Private Room Members"
+            # )): (
+            #     ','.join(f"<@{member}>" for member in self.members),
+            #     False
+            # ),
+            # --- End original code ---
             t(_p(
                 'room|eventlog|field:members', "Private Room Members"
             )): (
-                ','.join(f"<@{member}>" for member in self.members),
+                self._truncated_member_mentions(),
                 False
             ),
+            # --- END AI-MODIFIED ---
         }
         return fields
 
@@ -536,24 +566,28 @@ class Room:
         t = self.bot.translator.t
         ctx_locale.set(self.lguild.config.get('guild_locale').value)
 
-        # --- AI-MODIFIED (2026-03-22) ---
-        # Purpose: Re-read room state from DB to detect dashboard-initiated changes
-        # (e.g., admin force-closed or froze the room via the website)
-        fresh = await RoomData.Room.fetch(self.data.channelid)
-        if fresh:
-            self.data.deleted_at = fresh.deleted_at
-            self.data.frozen_at = fresh.frozen_at
-            self.data.frozen_by = fresh.frozen_by
-            self.data.name = fresh.name
-            # --- AI-MODIFIED (2026-04-06) ---
-            # Purpose: Sync last_activity from DB so inactivity check uses latest value
-            self.data.last_activity = fresh.last_activity
-            # --- END AI-MODIFIED ---
-            # --- AI-MODIFIED (2026-04-13) ---
-            # Purpose: Sync owner_auto_extend preference from DB (owner may toggle via UI)
-            self.data.owner_auto_extend = fresh.owner_auto_extend
-            # --- END AI-MODIFIED ---
-        # --- END AI-MODIFIED ---
+        # --- AI-REPLACED (2026-04-13) ---
+        # Reason: The old code used RoomData.Room.fetch(cached=True) which returned
+        # the cached RowModel without hitting the DB, then manually assigned attributes
+        # like self.data.deleted_at = fresh.deleted_at. Because Column was a non-data
+        # descriptor (no __set__), these assignments created instance attributes that
+        # permanently shadowed the Column descriptors, preventing destroy() from
+        # properly marking the room as deleted. This caused rooms to never expire
+        # (bug reports #0018 and #0019 -- rooms accumulating negative balances).
+        # What the new code does better: Uses refresh() which runs a proper SELECT
+        # query and updates the RowModel's internal data dict directly.
+        # --- Original code (commented out for rollback) ---
+        # fresh = await RoomData.Room.fetch(self.data.channelid)
+        # if fresh:
+        #     self.data.deleted_at = fresh.deleted_at
+        #     self.data.frozen_at = fresh.frozen_at
+        #     self.data.frozen_by = fresh.frozen_by
+        #     self.data.name = fresh.name
+        #     self.data.last_activity = fresh.last_activity
+        #     self.data.owner_auto_extend = fresh.owner_auto_extend
+        # --- End original code ---
+        await self.data.refresh()
+        # --- END AI-REPLACED ---
 
         if self.deleted:
             # Already deleted, nothing to do
@@ -673,8 +707,8 @@ class Room:
             # If balance is negative, try auto-extend or expire room
             if self.data.coin_balance < 0:
                 # --- AI-MODIFIED (2026-04-13) ---
-                # Purpose: Auto-extend checks both guild setting AND per-room owner preference.
-                # Guild setting is the master switch; if ON, owner can opt out per-room.
+                # Purpose: Auto-extend checks per-room owner preference first, falls back to guild default.
+                # Owner explicit choice (True/False) always wins; NULL inherits guild setting.
                 # --- Original code (commented out for rollback) ---
                 # auto_extend = self.lguild.config.get(RoomSettings.AutoExtend.setting_id).value
                 # --- End original code ---
@@ -682,7 +716,10 @@ class Room:
                 from core.data import CoreData
                 guild_auto_extend = self.lguild.config.get(RoomSettings.AutoExtend.setting_id).value
                 owner_pref = self.data.owner_auto_extend
-                auto_extend = guild_auto_extend and (owner_pref is not False)
+                if owner_pref is not None:
+                    auto_extend = owner_pref
+                else:
+                    auto_extend = guild_auto_extend
                 # --- END AI-MODIFIED ---
                 auto_extended = False
                 if auto_extend:
@@ -834,6 +871,11 @@ class Room:
         # Purpose: Cancel name sync task on room destroy
         if self._name_sync_task and not self._name_sync_task.done():
             self._name_sync_task.cancel()
+        # --- END AI-MODIFIED ---
+        # --- AI-MODIFIED (2026-04-13) ---
+        # Purpose: Cancel member sync task on room destroy (was missing, could leak tasks)
+        if self._member_sync_task and not self._member_sync_task.done():
+            self._member_sync_task.cancel()
         # --- END AI-MODIFIED ---
 
         if self.channel:
