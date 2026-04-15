@@ -72,6 +72,12 @@ class AutopostData(Registry, name='leaderboard_autopost'):
         dm_template_title = String()
         dm_template_body = String()
         dm_stagger_seconds = Integer()
+        # --- AI-MODIFIED (2026-04-15) ---
+        # Purpose: Separate Top 1 DM feature - custom DM template for rank #1 winner
+        top1_dm_enabled = Bool()
+        top1_dm_template_title = String()
+        top1_dm_template_body = String()
+        # --- END AI-MODIFIED ---
         notify_mod_log = Bool()
         mod_log_channel = Integer()
 

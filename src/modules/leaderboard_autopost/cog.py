@@ -503,6 +503,20 @@ class LeaderboardAutopostCog(LionCog):
                     result=json.dumps(result, default=str),
                     processed_at=utc_now(),
                 )
+
+            # --- AI-MODIFIED (2026-04-15) ---
+            # Purpose: test_dm action sends a preview DM to the requesting admin
+            elif action.action_type == 'test_dm':
+                result = await self._execute_test_dm(
+                    config, guild_tz, season_start, action.requested_by
+                )
+                await action.update(
+                    status='done',
+                    result=json.dumps(result, default=str),
+                    processed_at=utc_now(),
+                )
+            # --- END AI-MODIFIED ---
+
             else:
                 await action.update(
                     status='failed',
@@ -1005,10 +1019,22 @@ class LeaderboardAutopostCog(LionCog):
                         w['value'], w.get('got_coins', 0),
                     )
                     dm_embed = discord.Embed(color=config.embed_color or 16766720)
-                    dm_title = render_template(config.dm_template_title, dm_vars)
+                    # --- AI-MODIFIED (2026-04-15) ---
+                    # Purpose: Use separate Top 1 DM template for rank #1 when enabled
+                    use_top1 = (
+                        w['rank'] == 1
+                        and config.top1_dm_enabled
+                        and (config.top1_dm_template_title or config.top1_dm_template_body)
+                    )
+                    if use_top1:
+                        dm_title = render_template(config.top1_dm_template_title, dm_vars)
+                        dm_body = render_template(config.top1_dm_template_body, dm_vars)
+                    else:
+                        dm_title = render_template(config.dm_template_title, dm_vars)
+                        dm_body = render_template(config.dm_template_body, dm_vars)
+                    # --- END AI-MODIFIED ---
                     if dm_title:
                         dm_embed.title = truncate(dm_title, DISCORD_LIMITS['embed_title'])
-                    dm_body = render_template(config.dm_template_body, dm_vars)
                     if dm_body:
                         dm_embed.description = truncate(dm_body, DISCORD_LIMITS['embed_description'])
                     else:
@@ -1205,3 +1231,133 @@ class LeaderboardAutopostCog(LionCog):
             'total_coins': total_coins,
             'dms_would_send': dm_count,
         }
+
+    # --- AI-MODIFIED (2026-04-15) ---
+    # Purpose: Send a preview DM to the requesting admin using real leaderboard data
+    async def _execute_test_dm(self, config, guild_tz, season_start, requesting_userid: int) -> dict:
+        """Send a sample DM to the requesting user so they can preview it."""
+        period_start, period_end, period_str = _compute_period_bounds(
+            config, guild_tz, season_start,
+        )
+
+        lb_data = await self._fetch_leaderboard(config, period_start)
+
+        threshold = config.min_threshold or 0
+        if threshold > 0:
+            lb_data = [(uid, val) for uid, val in lb_data if val >= threshold]
+
+        top_count = config.top_count or 10
+        lb_data = lb_data[:top_count]
+
+        guild = self.bot.get_guild(config.guildid)
+        if not guild:
+            try:
+                guild = await self.bot.fetch_guild(config.guildid)
+            except Exception:
+                raise ValueError(
+                    f"Guild {config.guildid} not found - the bot may not be in this server"
+                )
+
+        server_name = guild.name
+        lb_type = config.lb_type or 'study'
+
+        winners = []
+        for i, (userid, value) in enumerate(lb_data):
+            member = guild.get_member(userid)
+            if not member:
+                try:
+                    member = await guild.fetch_member(userid)
+                except Exception:
+                    pass
+            winners.append({
+                'userid': userid,
+                'rank': i + 1,
+                'value': self._format_value(value, lb_type),
+                'name': member.display_name if member else _p(
+                    'ui:autopost|fallback_name', "User {userid}"
+                ).format(userid=userid),
+            })
+
+        variables = build_variables(
+            server_name=server_name,
+            frequency=config.frequency or 'weekly',
+            lb_type=lb_type,
+            top_count=top_count,
+            period_str=period_str,
+            winners=winners,
+            reward_tiers=config.reward_tiers_list,
+            top1_role_ids=config.top1_roles_list,
+            topn_role_ids=config.topn_roles_list,
+        )
+
+        user = self.bot.get_user(requesting_userid)
+        if not user:
+            user = await self.bot.fetch_user(requesting_userid)
+
+        requesting_rank = None
+        requesting_value = None
+        for w in winners:
+            if w['userid'] == requesting_userid:
+                requesting_rank = w['rank']
+                requesting_value = w['value']
+                break
+
+        if requesting_rank is None:
+            requesting_rank = 1
+            requesting_value = winners[0]['value'] if winners else '0'
+
+        dm_vars = build_dm_variables(
+            variables, requesting_userid, requesting_rank,
+            requesting_value, 0,
+        )
+
+        use_top1 = (
+            requesting_rank == 1
+            and config.top1_dm_enabled
+            and (config.top1_dm_template_title or config.top1_dm_template_body)
+        )
+
+        dm_embed = discord.Embed(color=config.embed_color or 16766720)
+        if use_top1:
+            dm_title = render_template(config.top1_dm_template_title, dm_vars)
+            dm_body = render_template(config.top1_dm_template_body, dm_vars)
+        else:
+            dm_title = render_template(config.dm_template_title, dm_vars)
+            dm_body = render_template(config.dm_template_body, dm_vars)
+
+        if dm_title:
+            dm_embed.title = truncate(dm_title, DISCORD_LIMITS['embed_title'])
+        if dm_body:
+            dm_embed.description = truncate(dm_body, DISCORD_LIMITS['embed_description'])
+        else:
+            dm_embed.description = _p(
+                'dm:autopost|default_body',
+                "Congratulations! You placed **#{rank}** on the "
+                "{frequency} {type_label} leaderboard in **{server}**!"
+            ).format(
+                rank=requesting_rank,
+                frequency=variables['frequency'],
+                type_label=variables['type'],
+                server=server_name,
+            )
+
+        test_note = _p(
+            'dm:autopost|test_footer',
+            "TEST DM \u2014 This is a preview, not a real notification"
+        )
+        dm_embed.set_footer(text=test_note)
+
+        try:
+            await user.send(embed=dm_embed)
+        except discord.Forbidden:
+            raise ValueError(
+                _p('error:autopost|dm_forbidden',
+                   "Could not send DM \u2014 you may have DMs disabled for this bot")
+            )
+
+        return {
+            'sent_to': str(requesting_userid),
+            'simulated_rank': requesting_rank,
+            'used_top1_template': use_top1,
+        }
+    # --- END AI-MODIFIED ---
