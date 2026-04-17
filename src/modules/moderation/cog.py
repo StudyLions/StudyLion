@@ -613,6 +613,9 @@ class ModerationCog(LionCog):
         return strfdelta(dt.timedelta(seconds=seconds), short=True).strip()
 
     async def _strikes_fetch_tier_durations(self, guildid: int, table_name: str) -> list[int]:
+        # --- AI-MODIFIED (2026-04-17) ---
+        # Reason: psycopg3's default cursor uses dict_row, so r[0] raises
+        #         KeyError(0). Use the column name instead.
         try:
             async with self.bot.db.connection() as conn:
                 async with conn.cursor() as cur:
@@ -627,7 +630,17 @@ class ModerationCog(LionCog):
                 f"Failed to fetch tier ladder for guild {guildid} from {table_name}"
             )
             return []
-        return [int(r[0]) for r in rows if r and r[0] is not None]
+        result: list[int] = []
+        for r in rows:
+            dur = r['duration'] if isinstance(r, dict) else r[0]
+            if dur is None:
+                continue
+            try:
+                result.append(int(dur))
+            except (TypeError, ValueError):
+                continue
+        return result
+        # --- END AI-MODIFIED ---
 
     @cmds.hybrid_command(
         name=_p('cmd:strikes', "strikes"),
