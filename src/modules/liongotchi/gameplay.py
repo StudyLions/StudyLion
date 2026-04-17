@@ -890,9 +890,13 @@ async def try_item_drop(bot, userid: int, chance: float, rarity_multiplier: floa
                 # --- AI-MODIFIED (2026-03-17) ---
                 # Purpose: Rarity-weighted + drop_weight-weighted item selection
                 # Uses -LN(RANDOM()) / drop_weight for correct weighted sampling
+                # --- AI-MODIFIED (2026-04-07) ---
+                # Purpose: Fetch additional fields (asset_path, description, slot, gold_price)
+                #   for richer drop notifications with item images and wiki info
                 if is_scroll:
                     await cur.execute(
-                        """SELECT itemid, name, rarity, category FROM lg_items
+                        """SELECT itemid, name, rarity, category, asset_path, description, slot, gold_price
+                           FROM lg_items
                            WHERE category = 'SCROLL' AND rarity = %s
                            ORDER BY -LN(1.0 - RANDOM()) / GREATEST(drop_weight, 0.001)
                            LIMIT 1""",
@@ -900,7 +904,8 @@ async def try_item_drop(bot, userid: int, chance: float, rarity_multiplier: floa
                     )
                 else:
                     await cur.execute(
-                        """SELECT itemid, name, rarity, category FROM lg_items
+                        """SELECT itemid, name, rarity, category, asset_path, description, slot, gold_price
+                           FROM lg_items
                            WHERE category IN ('HAT','GLASSES','COSTUME','SHIRT','WINGS','BOOTS')
                              AND rarity = %s
                            ORDER BY -LN(1.0 - RANDOM()) / GREATEST(drop_weight, 0.001)
@@ -911,7 +916,8 @@ async def try_item_drop(bot, userid: int, chance: float, rarity_multiplier: floa
                 rows = await cur.fetchall()
                 if not rows:
                     await cur.execute(
-                        """SELECT itemid, name, rarity, category FROM lg_items
+                        """SELECT itemid, name, rarity, category, asset_path, description, slot, gold_price
+                           FROM lg_items
                            WHERE category IN ('HAT','GLASSES','COSTUME','SHIRT','WINGS','BOOTS','SCROLL')
                            ORDER BY -LN(1.0 - RANDOM()) / GREATEST(drop_weight, 0.001)
                            LIMIT 1"""
@@ -957,12 +963,56 @@ async def try_item_drop(bot, userid: int, chance: float, rarity_multiplier: floa
                 )
                 # --- END AI-MODIFIED ---
 
+            # --- AI-MODIFIED (2026-04-07) ---
+            # Purpose: Include extra item metadata + live stats for rich drop notifications
+            raw_slot = item.get('slot')
+            if raw_slot is None:
+                slot_str = None
+            elif isinstance(raw_slot, str):
+                slot_str = raw_slot
+            elif hasattr(raw_slot, 'value'):
+                slot_str = raw_slot.value
+            else:
+                slot_str = str(raw_slot)
+
+            item_id = item['itemid']
+            owner_count = 0
+            market_low = None
+            try:
+                async with conn.cursor() as stat_cur:
+                    await stat_cur.execute(
+                        "SELECT COUNT(DISTINCT userid) FROM lg_user_inventory WHERE itemid = %s",
+                        [item_id]
+                    )
+                    row = await stat_cur.fetchone()
+                    if row:
+                        owner_count = row[0] if isinstance(row, (list, tuple)) else row.get('count', 0)
+
+                    await stat_cur.execute(
+                        """SELECT MIN(price_per_unit) FROM lg_marketplace_listings
+                           WHERE itemid = %s AND status = 'ACTIVE'
+                             AND quantity_remaining > 0""",
+                        [item_id]
+                    )
+                    row = await stat_cur.fetchone()
+                    if row:
+                        market_low = row[0] if isinstance(row, (list, tuple)) else row.get('min')
+            except Exception:
+                pass
+
             dropped = [{
-                'itemid': item['itemid'],
+                'itemid': item_id,
                 'name': item['name'],
                 'rarity': rarity_str,
                 'category': cat_str,
+                'asset_path': item.get('asset_path'),
+                'description': item.get('description') or '',
+                'slot': slot_str,
+                'gold_price': item.get('gold_price'),
+                'owner_count': owner_count,
+                'market_low': market_low,
             }]
+            # --- END AI-MODIFIED ---
             return dropped
     except Exception:
         logger.exception(f"Failed item drop for {userid}")

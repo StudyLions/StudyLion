@@ -138,6 +138,16 @@ class Column(ColumnExpr, Generic[T]):
         else:
             return obj.data[self.name]
 
+    # --- AI-MODIFIED (2026-04-13) ---
+    # Purpose: Make Column a data descriptor so instance attributes can never shadow it.
+    # Without __set__, Column is a non-data descriptor, and assigning to an instance
+    # (e.g. rowmodel.deleted_at = value) creates a shadow instance attribute that hides
+    # future DB updates from the RowModel. This caused rooms to never expire (bug #0018/#0019).
+    def __set__(self: 'Column[T]', obj: 'RowModel', value: T) -> None:
+        if obj.data is not None:
+            obj.data[self.name] = value
+    # --- END AI-MODIFIED ---
+
 
 class Integer(Column[int]):
     pass

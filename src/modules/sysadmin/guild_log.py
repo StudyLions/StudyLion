@@ -154,9 +154,6 @@ class GuildLog(LionCog):
             boost_str += f" ({guild.premium_subscription_count:,} boost{'s' if guild.premium_subscription_count != 1 else ''})"
         fields.append(("Boost", boost_str, True))
 
-        if guild.preferred_locale:
-            fields.append(("Locale", f"`{guild.preferred_locale}`", True))
-
         notable = sorted(NOTABLE_FEATURES.intersection(guild.features))
         if notable:
             tags = ", ".join(f.replace("_", " ").title() for f in notable)
@@ -197,7 +194,7 @@ class GuildLog(LionCog):
         embed.add_field(name="Owner", value=f"<@{guild.owner_id}>", inline=False)
         embed.add_field(
             name="Members",
-            value=f"{guild.member_count:,}" if guild.member_count else "Unknown",
+            value=f"{guild.member_count:,} members" if guild.member_count else "Unknown",
             inline=True,
         )
 

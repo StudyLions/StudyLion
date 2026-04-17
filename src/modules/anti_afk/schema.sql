@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS anti_afk_config (
     target_channels TEXT NOT NULL DEFAULT '[]',
     exclude_channels TEXT NOT NULL DEFAULT '[]',
     use_dms BOOLEAN NOT NULL DEFAULT FALSE,
+    prompt_channelid BIGINT,
     fallback_channelid BIGINT,
     skip_streaming BOOLEAN NOT NULL DEFAULT TRUE,
     notify_on_action BOOLEAN NOT NULL DEFAULT TRUE,

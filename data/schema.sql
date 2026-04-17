@@ -89,7 +89,8 @@ CREATE TABLE user_config(
   last_seen TIMESTAMPTZ,
   locale_hint TEXT,
   locale TEXT,
-  show_global_stats BOOLEAN
+  show_global_stats BOOLEAN,
+  lg_nudge_sent_at TIMESTAMPTZ
 );
 -- }}}
 

@@ -825,6 +825,14 @@ TEASER_CHANCE = 0
 # --- END AI-MODIFIED ---
 # --- END AI-REPLACED ---
 
+# --- AI-MODIFIED (2026-04-10) ---
+# Purpose: One-time adoption nudge system -- constants for rate-limiting and feature gating
+NUDGE_HOURLY_CAP_PER_SHARD = 10
+NUDGE_COOLDOWN_SECONDS = 5
+_NUDGE_FEATURE_LAUNCH_TS = datetime(2026, 4, 10, 0, 0, 0, tzinfo=timezone.utc)
+_NUDGE_EXCLUDED_COMMANDS = frozenset({'pet', 'liongotchi-announce'})
+# --- END AI-MODIFIED ---
+
 
 # --- AI-REPLACED (2026-03-22) ---
 # Reason: Views were not persistent -- buttons broke after every bot restart ("This interaction failed")
@@ -939,14 +947,37 @@ async def _handle_notif_toggle(interaction: discord.Interaction):
 # --- END AI-REPLACED ---
 
 
+# --- AI-REPLACED (2026-04-07) ---
+# Reason: Add 'View Item' wiki link button and update inventory link
+# What the new code does better: Links directly to the dropped item's wiki page,
+#   and points inventory link to /pet/inventory instead of generic /pet
+# --- Original code (commented out for rollback) ---
+# class DropNotificationView(discord.ui.View):
+#     def __init__(self, cog=None, user_id=0):
+#         super().__init__(timeout=None)
+#         self.add_item(Button(label='View Inventory', url=f"{WEBSITE_URL}/pet", style=ButtonStyle.link))
+#     @button(label='Open Pet', emoji="🐾", style=ButtonStyle.green, custom_id="lg:drop:open_pet")
+#     async def open_pet(self, interaction, button): await _handle_open_pet(interaction)
+#     @button(label='Mute Drops', emoji="🔕", style=ButtonStyle.grey, custom_id="lg:drop:mute_toggle")
+#     async def mute_toggle(self, interaction, button): await _handle_notif_toggle(interaction)
+# --- End original code ---
 class DropNotificationView(discord.ui.View):
     """Persistent buttons attached to item drop DM notifications."""
 
-    def __init__(self, cog: 'LionGotchiCog | None' = None, user_id: int = 0):
+    def __init__(self, cog: 'LionGotchiCog | None' = None, user_id: int = 0,
+                 itemid: int = 0):
         super().__init__(timeout=None)
+        if itemid:
+            self.add_item(discord.ui.Button(
+                label=_p('ui:drop_notif|button:view_item|label', 'View Item'),
+                url=f"{WEBSITE_URL}/pet/wiki/{itemid}",
+                emoji="\U0001F4D6",
+                style=discord.ButtonStyle.link
+            ))
         self.add_item(discord.ui.Button(
             label=_p('ui:drop_notif|button:view_inv|label', 'View Inventory'),
-            url=f"{WEBSITE_URL}/pet",
+            url=f"{WEBSITE_URL}/pet/inventory",
+            emoji="\U0001F4E6",
             style=discord.ButtonStyle.link
         ))
 
@@ -961,6 +992,7 @@ class DropNotificationView(discord.ui.View):
                         custom_id="lg:drop:mute_toggle")
     async def mute_toggle(self, interaction: discord.Interaction, button: discord.ui.Button):
         await _handle_notif_toggle(interaction)
+# --- END AI-REPLACED ---
 
 
 class LevelUpNotificationView(discord.ui.View):
@@ -1052,14 +1084,36 @@ class FirstEncounterView(discord.ui.View):
 #     @discord.ui.button(label="Mute Notifications", emoji="🔕", style=ButtonStyle.grey)
 #     async def mute_toggle(self, interaction, button): ...
 # --- End original code ---
+# --- AI-REPLACED (2026-04-07) ---
+# Reason: Add 'View Item' wiki link and update inventory link for first drop
+# What the new code does better: Links to item wiki page + inventory page
+# --- Original code (commented out for rollback) ---
+# class FirstDropView(discord.ui.View):
+#     def __init__(self, cog=None, user_id=0):
+#         super().__init__(timeout=None)
+#         self.add_item(Button(label="View Inventory", url=f"{WEBSITE_URL}/pet", style=ButtonStyle.link))
+#     @button(label="View Pet", emoji="🐾", style=ButtonStyle.green, custom_id="lg:firstdrop:view_pet")
+#     async def view_pet(...): await _handle_open_pet(interaction)
+#     @button(label="Mute Notifications", emoji="🔕", style=ButtonStyle.grey, custom_id="lg:firstdrop:mute_toggle")
+#     async def mute_toggle(...): await _handle_notif_toggle(interaction)
+# --- End original code ---
 class FirstDropView(discord.ui.View):
     """Persistent buttons shown when a pet owner gets their very first item drop."""
 
-    def __init__(self, cog: 'LionGotchiCog | None' = None, user_id: int = 0):
+    def __init__(self, cog: 'LionGotchiCog | None' = None, user_id: int = 0,
+                 itemid: int = 0):
         super().__init__(timeout=None)
+        if itemid:
+            self.add_item(discord.ui.Button(
+                label="View Item",
+                url=f"{WEBSITE_URL}/pet/wiki/{itemid}",
+                emoji="\U0001F4D6",
+                style=discord.ButtonStyle.link
+            ))
         self.add_item(discord.ui.Button(
             label="View Inventory",
-            url=f"{WEBSITE_URL}/pet",
+            url=f"{WEBSITE_URL}/pet/inventory",
+            emoji="\U0001F4E6",
             style=discord.ButtonStyle.link
         ))
 
@@ -1115,6 +1169,41 @@ class TeaserView(discord.ui.View):
             kwargs['file'] = gif_file
         await interaction.response.send_message(**kwargs)
 # --- END AI-REPLACED ---
+
+# --- AI-MODIFIED (2026-04-10) ---
+# Purpose: Persistent view for one-time adoption nudge DMs -- buttons survive bot restarts
+class AdoptionNudgeView(discord.ui.View):
+    """Buttons for the one-time adoption nudge DM. Persistent via custom_id."""
+
+    def __init__(self):
+        super().__init__(timeout=None)
+        self.add_item(discord.ui.Button(
+            label='Learn More',
+            url=f"{WEBSITE_URL}/pet/tutorial",
+            style=discord.ButtonStyle.link,
+        ))
+
+    @discord.ui.button(
+        label='Adopt Now!',
+        emoji="\U0001F43E",
+        style=discord.ButtonStyle.green,
+        custom_id='lg:nudge:adopt',
+    )
+    async def adopt_now(self, interaction: discord.Interaction, button: discord.ui.Button):
+        cog = interaction.client.get_cog('LionGotchiCog')
+        if not cog:
+            await interaction.response.send_message(
+                'Use `/pet` to adopt your LionGotchi!',
+                ephemeral=True,
+            )
+            return
+        view = OnboardingView(cog, interaction.user.id)
+        embed, gif_file = await view._build_embed_and_file()
+        kwargs = {'embed': embed, 'view': view, 'ephemeral': True}
+        if gif_file:
+            kwargs['file'] = gif_file
+        await interaction.response.send_message(**kwargs)
+# --- END AI-MODIFIED ---
 
 
 # --- AI-REPLACED (2026-03-16) ---
@@ -1935,9 +2024,13 @@ class FarmView(discord.ui.View):
                 'timer_color': timer_color,
                 'rarity': p.get('rarity') or 'COMMON',
             })
+        # --- AI-MODIFIED (2026-04-13) ---
+        # Purpose: Pass the user's active gameboy skin to the farm view so it matches the pet card
         return FarmState(plots=plot_dicts, is_night=is_night,
                           just_watered=just_watered,
+                          gameboy_skin=self._cached_pet_state.gameboy_skin if self._cached_pet_state else "gameboy/frames/gameboy-basic-01.png",
                           pet_state=self._cached_pet_state)
+        # --- END AI-MODIFIED ---
     # --- END AI-REPLACED ---
 
     # --- AI-REPLACED (2026-03-15) ---
@@ -4182,10 +4275,37 @@ class CreateFamilyModal(discord.ui.Modal, title=_p('modal:create_family|title', 
         self.user_id = user_id
         self.guild_id = guild_id
 
+    # --- AI-REPLACED (2026-04-15) ---
+    # Reason: Family creation silently failed -- 8 sequential DB roundtrips ran
+    #   before the first interaction response, exceeding Discord's 3-second timeout.
+    #   No on_error handler meant exceptions were silently swallowed (user saw nothing).
+    #   Gold deduction and family INSERT used separate connections with no transaction,
+    #   so partial failures could lose gold without creating the family.
+    # What the new code does better:
+    #   1. Defers interaction immediately so DB work doesn't race the 3-second timeout
+    #   2. Wraps all mutations in a single DB transaction (atomic gold + family creation)
+    #   3. Adds on_error handler to report failures instead of swallowing them
+    # --- Original code (commented out for rollback) ---
+    # async def on_submit(self, interaction):
+    #     name = self.family_name_input.value.strip()
+    #     # ... validation with interaction.response.send_message (no defer) ...
+    #     gold_rows = await _db_fetch(bot, "SELECT gold FROM user_config WHERE userid = %s", uid)
+    #     # ... gold/name/membership checks ...
+    #     await _db_exec(bot, "UPDATE user_config SET gold = gold - %s ...", cost, uid)      # separate conn
+    #     family_rows = await _db_fetch(bot, "INSERT INTO lg_families ... RETURNING ...", n, uid)  # separate conn
+    #     await _db_exec(bot, "INSERT INTO lg_family_members ...", fid, uid)                 # separate conn
+    #     await _db_exec(bot, "INSERT INTO lg_family_farms ...", fid)                        # separate conn
+    #     await _db_exec(bot, "INSERT INTO lg_family_farm_plots ...", fid)                   # separate conn
+    #     await interaction.response.send_message(success, ephemeral=True)  # first response after 8 DB calls
+    #     hub = FamilyHubView(...); await hub.load_data()
+    #     await interaction.edit_original_response(**kwargs)
+    # --- End original code ---
     async def on_submit(self, interaction: discord.Interaction):
+        await interaction.response.defer(ephemeral=True)
+
         name = self.family_name_input.value.strip()
         if len(name) < FAMILY_NAME_MIN or len(name) > FAMILY_NAME_MAX:
-            await interaction.response.send_message(
+            await interaction.followup.send(
                 str(_p(
                     'error:family|name_length',
                     'Name must be {min}-{max} characters.',
@@ -4197,7 +4317,7 @@ class CreateFamilyModal(discord.ui.Modal, title=_p('modal:create_family|title', 
             "SELECT gold FROM user_config WHERE userid = %s", self.user_id)
         gold = gold_rows[0]['gold'] if gold_rows else 0
         if (gold or 0) < FAMILY_CREATE_COST:
-            await interaction.response.send_message(
+            await interaction.followup.send(
                 str(_p(
                     'error:family|not_enough_gold',
                     'You need **{need}G** to create a family. You have **{have}G**.',
@@ -4208,7 +4328,7 @@ class CreateFamilyModal(discord.ui.Modal, title=_p('modal:create_family|title', 
         existing = await _db_fetch(self.cog.bot,
             "SELECT family_id FROM lg_families WHERE LOWER(name) = LOWER(%s)", name)
         if existing:
-            await interaction.response.send_message(
+            await interaction.followup.send(
                 str(_p(
                     'error:family|name_taken',
                     'A family named **{name}** already exists. Choose a different name.',
@@ -4219,7 +4339,7 @@ class CreateFamilyModal(discord.ui.Modal, title=_p('modal:create_family|title', 
         already_in = await _db_fetch(self.cog.bot,
             "SELECT family_id FROM lg_family_members WHERE userid = %s AND left_at IS NULL", self.user_id)
         if already_in:
-            await interaction.response.send_message(
+            await interaction.followup.send(
                 str(_p(
                     'error:family|already_in_family',
                     "You're already in a family! Leave first before creating a new one.",
@@ -4227,55 +4347,85 @@ class CreateFamilyModal(discord.ui.Modal, title=_p('modal:create_family|title', 
                 ephemeral=True)
             return
 
-        await _db_exec(self.cog.bot,
-            "UPDATE user_config SET gold = gold - %s WHERE userid = %s",
-            FAMILY_CREATE_COST, self.user_id)
+        async with self.cog.bot.db.connection() as conn:
+            async with conn.transaction():
+                async with conn.cursor() as cur:
+                    await cur.execute(
+                        "UPDATE user_config SET gold = gold - %s WHERE userid = %s",
+                        [FAMILY_CREATE_COST, self.user_id])
 
-        # --- AI-MODIFIED (2026-03-24) ---
-        # Purpose: Fix withdraw cap (1000->10000) and add farm+plot rows on create
-        family_rows = await _db_fetch(self.cog.bot,
-            """INSERT INTO lg_families (name, leader_userid, level, xp, gold, max_members, max_farms,
-                                        daily_gold_withdraw_cap, role_permissions, theme)
-               VALUES (%s, %s, 1, 0, 0, 10, 1, 10000, '{}', '{}')
-               RETURNING family_id""",
-            name, self.user_id)
-        family_id = family_rows[0]['family_id']
+                    await cur.execute(
+                        """INSERT INTO lg_families (name, leader_userid, level, xp, gold,
+                                                    max_members, max_farms,
+                                                    daily_gold_withdraw_cap,
+                                                    role_permissions, theme)
+                           VALUES (%s, %s, 1, 0, 0, 10, 1, 10000, '{}', '{}')
+                           RETURNING family_id""",
+                        [name, self.user_id])
+                    family_row = await cur.fetchone()
+                    family_id = family_row['family_id']
 
-        await _db_exec(self.cog.bot,
-            """INSERT INTO lg_family_members (family_id, userid, role, joined_at, contribution_xp)
-               VALUES (%s, %s, 'LEADER', NOW(), 0)""",
-            family_id, self.user_id)
+                    await cur.execute(
+                        """INSERT INTO lg_family_members
+                               (family_id, userid, role, joined_at, contribution_xp)
+                           VALUES (%s, %s, 'LEADER', NOW(), 0)""",
+                        [family_id, self.user_id])
 
-        await _db_exec(self.cog.bot,
-            """INSERT INTO lg_family_farms (family_id, farm_index, unlocked_at)
-               VALUES (%s, 0, NOW())""",
-            family_id)
-        await _db_exec(self.cog.bot,
-            """INSERT INTO lg_family_farm_plots (family_id, farm_index, plot_id)
-               SELECT %s, 0, generate_series(0, 14)""",
-            family_id)
-        # --- END AI-MODIFIED ---
+                    await cur.execute(
+                        """INSERT INTO lg_family_farms (family_id, farm_index, unlocked_at)
+                           VALUES (%s, 0, NOW())""",
+                        [family_id])
 
-        await interaction.response.send_message(
+                    await cur.execute(
+                        """INSERT INTO lg_family_farm_plots
+                               (family_id, farm_index, plot_id)
+                           SELECT %s, 0, generate_series(0, 14)""",
+                        [family_id])
+
+        await interaction.followup.send(
             str(_p(
                 'success:family|created',
                 '\U0001F389 Family **{name}** created! You are the Leader.\nCost: **{cost}G**',
             )).format(name=name, cost=f'{FAMILY_CREATE_COST:,}'),
             ephemeral=True)
 
-        hub = FamilyHubView(self.cog, self.user_id, self.guild_id)
-        await hub.load_data()
-        content, file, embed = hub.make_content_and_file()
-        kwargs = {'view': hub}
-        if file:
-            kwargs['content'] = content
-            kwargs['embed'] = None
-            kwargs['attachments'] = [file]
-        else:
-            kwargs['content'] = None
-            kwargs['embed'] = embed
-            kwargs['attachments'] = []
-        await interaction.edit_original_response(**kwargs)
+        try:
+            hub = FamilyHubView(self.cog, self.user_id, self.guild_id)
+            await hub.load_data()
+            content, file, embed = hub.make_content_and_file()
+            kwargs = {'view': hub}
+            if file:
+                kwargs['content'] = content
+                kwargs['embed'] = None
+                kwargs['attachments'] = [file]
+            else:
+                kwargs['content'] = None
+                kwargs['embed'] = embed
+                kwargs['attachments'] = []
+            await interaction.edit_original_response(**kwargs)
+        except Exception:
+            logger.debug("Failed to refresh family hub after creation", exc_info=True)
+
+    async def on_error(self, interaction: discord.Interaction, error: Exception):
+        logger.exception("Family creation failed for user %s", self.user_id)
+        try:
+            if interaction.response.is_done():
+                await interaction.followup.send(
+                    str(_p(
+                        'error:family|creation_failed',
+                        'Something went wrong creating the family. Please try again.',
+                    )),
+                    ephemeral=True)
+            else:
+                await interaction.response.send_message(
+                    str(_p(
+                        'error:family|creation_failed',
+                        'Something went wrong creating the family. Please try again.',
+                    )),
+                    ephemeral=True)
+        except Exception:
+            pass
+    # --- END AI-REPLACED ---
 
 
 class FamilyInvitesView(discord.ui.View):
@@ -5644,6 +5794,14 @@ class LionGotchiCog(LionCog):
         self._invite_dm_rate: dict[int, list[float]] = {}
         # --- END AI-MODIFIED ---
         # --- END AI-MODIFIED ---
+        # --- AI-MODIFIED (2026-04-10) ---
+        # Purpose: One-time adoption nudge tracking -- skip set, rate-limit deque, stats caches
+        self._nudge_skip_users: set[int] = set()
+        self._nudge_send_times: list[float] = []
+        self._last_nudge_sent: float = 0.0
+        self._cached_item_drop_count: int = 0
+        self._cached_farm_count: int = 0
+        # --- END AI-MODIFIED ---
 
     # --- AI-MODIFIED (2026-03-19) ---
     # Purpose: Vote button helper for raw discord.ui.View pet UIs
@@ -5801,6 +5959,12 @@ class LionGotchiCog(LionCog):
         asyncio.create_task(self._onboarding_gifs.preload_all())
         asyncio.create_task(self._populate_encounter_set())
         self._launch_status_task = asyncio.create_task(self._launch_status_rotation())
+        # --- AI-MODIFIED (2026-04-10) ---
+        # Purpose: Register adoption nudge persistent view + startup tasks
+        self.bot.add_view(AdoptionNudgeView())
+        asyncio.create_task(self._refresh_nudge_stats())
+        asyncio.create_task(self._populate_nudge_skip_set())
+        # --- END AI-MODIFIED ---
         # --- END AI-MODIFIED ---
 
     # --- AI-MODIFIED (2026-03-24) ---
@@ -6004,6 +6168,46 @@ class LionGotchiCog(LionCog):
             except Exception:
                 logger.debug("Failed to refresh pet count for social proof")
             await asyncio.sleep(3600)
+
+    # --- AI-MODIFIED (2026-04-10) ---
+    # Purpose: Hourly stats cache for adoption nudge social proof (items dropped + active farms)
+    async def _refresh_nudge_stats(self):
+        await self.bot.wait_until_ready()
+        while True:
+            try:
+                rows = await _db_fetch(self.bot,
+                    "SELECT COALESCE(SUM(quantity), 0) AS cnt FROM lg_user_inventory WHERE source = 'DROP'"
+                )
+                if rows:
+                    self._cached_item_drop_count = rows[0].get('cnt', 0)
+            except Exception:
+                logger.debug("Failed to refresh item drop count for nudge")
+            try:
+                rows = await _db_fetch(self.bot,
+                    "SELECT COUNT(DISTINCT userid) AS cnt FROM lg_user_farm WHERE seed_id IS NOT NULL"
+                )
+                if rows:
+                    self._cached_farm_count = rows[0].get('cnt', 0)
+            except Exception:
+                logger.debug("Failed to refresh farm count for nudge")
+            await asyncio.sleep(3600)
+
+    async def _populate_nudge_skip_set(self):
+        """Pre-populate skip set with pet owners and already-nudged users on startup."""
+        await self.bot.wait_until_ready()
+        try:
+            rows = await _db_fetch(self.bot, "SELECT userid FROM lg_pets")
+            for row in rows:
+                self._nudge_skip_users.add(row['userid'])
+            rows2 = await _db_fetch(self.bot,
+                "SELECT userid FROM user_config WHERE lg_nudge_sent_at IS NOT NULL"
+            )
+            for row in rows2:
+                self._nudge_skip_users.add(row['userid'])
+            logger.info(f"Populated nudge skip set with {len(self._nudge_skip_users)} users")
+        except Exception:
+            logger.debug("Failed to populate nudge skip set from DB")
+    # --- END AI-MODIFIED ---
 
     async def _populate_encounter_set(self):
         """Pre-populate _first_encounter_sent with existing pet owners on startup.
@@ -7115,11 +7319,24 @@ class LionGotchiCog(LionCog):
                 logger.exception(f"Failed to send first encounter to channel for {userid}")
     # --- END AI-REPLACED ---
 
-    # --- AI-MODIFIED (2026-03-16) ---
-    # Purpose: Updated messaging -- equipment/scrolls instead of materials
+    # --- AI-REPLACED (2026-04-07) ---
+    # Reason: Add drop card image and item wiki link to first drop notification
+    # What the new code does better: Generates a visual card for the first drop,
+    #   passes itemid to FirstDropView for wiki link button
+    # --- Original code (commented out for rollback) ---
+    # async def _send_first_drop(self, userid, drops, guildid, channel):
+    #     embed = discord.Embed(title="Your First Item Drop!", color=0xffd700)
+    #     drop_lines = [f"{r_emoji} **{d['name']}**{cat_label} ({label})" for d in drops]
+    #     embed.description = "Your pet found its very first item!\n\n" + drops + "\n\n..."
+    #     embed.set_footer(text="Tip: ...")
+    #     view = FirstDropView(self, userid)
+    #     user.send(embed=embed, view=view)
+    # --- End original code ---
     async def _send_first_drop(self, userid: int, drops: list[dict],
                                 guildid: int, channel):
         """Send a special celebration for a pet owner's very first item drop."""
+        from .item_renderer import render_drop_card
+
         embed = discord.Embed(
             title=str(_p('embed:first_drop|title', "\U0001F389 Your First Item Drop!")),
             color=0xffd700,
@@ -7134,63 +7351,90 @@ class LionGotchiCog(LionCog):
             cat_label = f" [{cat.title()}]" if cat and cat != 'SCROLL' else (f" {scroll_lbl}" if cat == 'SCROLL' else "")
             drop_lines.append(f"{r_emoji} **{d['name']}**{cat_label} ({label})")
         drops_block = "\n".join(drop_lines)
+
+        first_drop = drops[0] if drops else {}
+        item_desc = first_drop.get('description', '')
+        desc_line = f"\n> *{item_desc[:120]}*\n" if item_desc else "\n"
+
         embed.description = str(_p(
             'embed:first_drop|desc',
-            "Your pet found its very first item!\n\n{drops}\n\n"
+            "Your pet found its very first item!\n\n{drops}{desc_line}\n"
             "\u2694\uFE0F **What now?** Equipment boosts your gold and XP earnings.\n"
             "\U0001F4DC Scrolls can enhance your equipment for even stronger boosts!\n"
             "\U0001F4E6 View your inventory at **{pet_url}**\n"
             "\U0001F4AC Keep chatting and studying to earn more drops!"
-        )).format(drops=drops_block, pet_url=f"{WEBSITE_URL}/pet")
-        # --- AI-MODIFIED (2026-03-22) ---
-        # Purpose: Mention VC Study Streak in first drop footer
+        )).format(drops=drops_block, desc_line=desc_line,
+                  pet_url=f"{WEBSITE_URL}/pet/inventory")
+
         embed.set_footer(text=str(_p(
             'embed:first_drop|footer',
             "Tip: The longer you study in VC each day, the rarer your drops become!"
         )))
-        # --- END AI-MODIFIED ---
-    # --- END AI-MODIFIED ---
-        view = FirstDropView(self, userid)
+
+        card_bytes = None
+        try:
+            card_bytes = render_drop_card(
+                item_name=first_drop.get('name', ''),
+                rarity=_clean_rarity(first_drop.get('rarity', 'COMMON')),
+                category=first_drop.get('category', ''),
+                asset_path=first_drop.get('asset_path'),
+                description=first_drop.get('description', ''),
+                slot=first_drop.get('slot'),
+                gold_price=first_drop.get('gold_price'),
+                owner_count=first_drop.get('owner_count', 0),
+                market_low=first_drop.get('market_low'),
+            )
+        except Exception:
+            logger.debug("Failed to render first drop card for %s", userid)
+
+        if card_bytes:
+            embed.set_image(url="attachment://drop_card.gif")
+
+        first_itemid = first_drop.get('itemid', 0)
+        view = FirstDropView(self, userid, itemid=first_itemid)
 
         try:
             user = self.bot.get_user(userid)
             if user is None:
                 user = await self.bot.fetch_user(userid)
             if user:
-                await user.send(embed=embed, view=view)
+                if card_bytes:
+                    card_file = discord.File(BytesIO(card_bytes), filename="drop_card.gif")
+                    await user.send(embed=embed, view=view, file=card_file)
+                else:
+                    await user.send(embed=embed, view=view)
         except discord.Forbidden:
             pass
         except Exception:
             logger.debug(f"Failed to DM first drop to {userid}")
-
-        # --- AI-MODIFIED (2026-03-21) ---
-        # Purpose: Temporarily disable server-channel first drop messages (users complained about spam)
-        # --- Original channel send (commented out for rollback) ---
-        # drop_ch = await self._get_guild_drop_channel(guildid)
-        # target = drop_ch or channel
-        # if target:
-        #     try:
-        #         await target.send(
-        #             content=f"<@{userid}>",
-        #             embed=embed,
-        #             view=FirstDropView(self, userid)
-        #         )
-        #     except Exception:
-        #         logger.debug(f"Failed to send first drop to channel for {userid}")
-        # --- END AI-MODIFIED ---
+    # --- END AI-REPLACED ---
 
     # --- AI-MODIFIED (2026-03-16) ---
     # Purpose: Drop notification system -- DM + channel with guild drop channel support
 
     # --- AI-MODIFIED (2026-03-17) ---
     # Purpose: Show bonus breakdown in drop notification footer
-    # --- AI-MODIFIED (2026-03-22) ---
-    # Purpose: Show VC Study Streak tier and progress in drop notifications
+    # --- AI-REPLACED (2026-04-07) ---
+    # Reason: Richer drop notification with item image, description, and stats
+    # What the new code does better: Generates a visual drop card image, shows item
+    #   description and equipment slot, and references the item wiki page
+    # --- Original code (commented out for rollback) ---
+    # def _make_drop_embed(self, drops, bonus_footer=None, vc_tier='', vc_daily_min=0, vc_boost=1.0):
+    #     best_rarity = max((_clean_rarity(d.get('rarity','COMMON')) for d in drops), ...)
+    #     embed = discord.Embed(title="Item Drop!", color=color)
+    #     drop_lines = [f"{r_emoji} **{d['name']}**{cat_label} ({label})" for d in drops]
+    #     desc = "\n".join(drop_lines) + "\n" + vc_streak_tip
+    #     embed.description = desc
+    #     embed.set_footer(text=bonus_footer or "Use /pet ...")
+    #     return embed
+    # --- End original code ---
     def _make_drop_embed(self, drops: list[dict], bonus_footer: str = None,
                          vc_tier: str = '', vc_daily_min: int = 0,
-                         vc_boost: float = 1.0) -> discord.Embed:
-        """Build an embed for an item drop notification."""
+                         vc_boost: float = 1.0,
+                         has_card_image: bool = False) -> discord.Embed:
+        """Build an embed for an item drop notification with optional card image."""
         from .gameplay import format_bonus_footer, VC_RARITY_TIERS
+
         best_rarity = max(
             (_clean_rarity(d.get('rarity', 'COMMON')) for d in drops),
             key=lambda r: list(RARITY_EMBED_COLORS.keys()).index(r) if r in RARITY_EMBED_COLORS else 0
@@ -7200,6 +7444,7 @@ class LionGotchiCog(LionCog):
             title=str(_p('embed:drop|title', "\U0001F381 Item Drop!")),
             color=color
         )
+
         scroll_drop_lbl = str(_p('embed:first_drop|label_scroll', "[Scroll]"))
         drop_lines = []
         for d in drops:
@@ -7211,7 +7456,16 @@ class LionGotchiCog(LionCog):
                 f" {scroll_drop_lbl}" if cat == 'SCROLL' else "")
             drop_lines.append(f"{r_emoji} **{d['name']}**{cat_label} ({label})")
 
-        desc = "\n".join(drop_lines) + "\n"
+        desc = "\n".join(drop_lines)
+
+        # Item description (from first drop only, keep it concise)
+        if drops:
+            item_desc = drops[0].get('description', '')
+            if item_desc:
+                truncated = item_desc[:120] + ('...' if len(item_desc) > 120 else '')
+                desc += f"\n> *{truncated}*"
+
+        desc += "\n"
 
         if vc_tier:
             hours = vc_daily_min // 60
@@ -7250,13 +7504,17 @@ class LionGotchiCog(LionCog):
             ))
 
         embed.description = desc
+
+        if has_card_image:
+            embed.set_image(url="attachment://drop_card.gif")
+
         footer_text = bonus_footer or str(_p(
             'embed:drop|footer',
             "Use /pet to view your LionGotchi \u2022 {url}"
         )).format(url=f"{WEBSITE_URL}/pet")
         embed.set_footer(text=footer_text)
         return embed
-    # --- END AI-MODIFIED ---
+    # --- END AI-REPLACED ---
 
     # --- AI-REPLACED (2026-03-20) ---
     # Reason: Rotating hooks for variety, with GIF key for visual teasers
@@ -7383,26 +7641,43 @@ class LionGotchiCog(LionCog):
         bonuses = await calc_all_bonuses(self.bot, userid,
                                           user_tier=user_tier, server_premium=server_premium)
         bonus_footer = format_bonus_footer(bonuses)
+
+        # --- AI-MODIFIED (2026-04-07) ---
+        # Purpose: Generate drop card image and attach it to the notification
+        from .item_renderer import render_drop_card
+
+        card_bytes = None
+        first_drop = drops[0] if drops else {}
+        try:
+            card_bytes = render_drop_card(
+                item_name=first_drop.get('name', ''),
+                rarity=_clean_rarity(first_drop.get('rarity', 'COMMON')),
+                category=first_drop.get('category', ''),
+                asset_path=first_drop.get('asset_path'),
+                description=first_drop.get('description', ''),
+                slot=first_drop.get('slot'),
+                gold_price=first_drop.get('gold_price'),
+                owner_count=first_drop.get('owner_count', 0),
+                market_low=first_drop.get('market_low'),
+            )
+        except Exception:
+            logger.debug("Failed to render drop card for %s", userid)
+
         embed = self._make_drop_embed(drops, bonus_footer=bonus_footer,
                                        vc_tier=vc_tier, vc_daily_min=vc_daily_min,
-                                       vc_boost=vc_boost)
-    # --- END AI-MODIFIED ---
-        # --- AI-MODIFIED (2026-03-20) ---
-        # Purpose: Show daily gold/XP cap progress in drop notification
-        daily_progress = self._format_daily_progress(userid)
-        embed.description += f"\n{daily_progress}"
+                                       vc_boost=vc_boost,
+                                       has_card_image=card_bytes is not None)
         # --- END AI-MODIFIED ---
 
+        daily_progress = self._format_daily_progress(userid)
+        embed.description += f"\n{daily_progress}"
+
         send_dm = pref in ('ALL', 'DM_ONLY')
-        # --- AI-REPLACED (2026-03-22) ---
-        # Reason: Channel notifications were fully disabled (spam complaints).
-        # What the new code does better: Re-enables channel sends ONLY when the admin
-        #   has explicitly configured a drop channel (no fallback to active_channel).
-        # --- Original code (commented out for rollback) ---
-        # send_channel = False  # disabled 2026-03-21
-        # --- End original code ---
         send_channel = pref == 'ALL'
-        # --- END AI-REPLACED ---
+
+        # --- AI-MODIFIED (2026-04-07) ---
+        # Purpose: Pass itemid to views and attach card image to messages
+        first_itemid = first_drop.get('itemid', 0)
 
         if send_dm:
             try:
@@ -7410,8 +7685,12 @@ class LionGotchiCog(LionCog):
                 if user is None:
                     user = await self.bot.fetch_user(userid)
                 if user:
-                    view = DropNotificationView(self, userid)
-                    await user.send(embed=embed, view=view)
+                    view = DropNotificationView(self, userid, itemid=first_itemid)
+                    if card_bytes:
+                        card_file = discord.File(BytesIO(card_bytes), filename="drop_card.gif")
+                        await user.send(embed=embed, view=view, file=card_file)
+                    else:
+                        await user.send(embed=embed, view=view)
             except discord.Forbidden:
                 pass
             except Exception:
@@ -7422,21 +7701,26 @@ class LionGotchiCog(LionCog):
                 lg_conf = await self._get_guild_lg_config(guildid)
                 custom_delete = lg_conf.get('lg_drop_delete_after')
                 target_ch = await self._get_guild_drop_channel(guildid)
-                # --- AI-MODIFIED (2026-03-22) ---
-                # Purpose: Only send to explicitly configured drop channel, NOT to
-                # random active channels (that was the original spam complaint)
                 if target_ch:
-                    await target_ch.send(
-                        content=f"<@{userid}>",
-                        embed=embed,
-                        delete_after=custom_delete
-                    )
-                # --- END AI-MODIFIED ---
+                    if card_bytes:
+                        card_file = discord.File(BytesIO(card_bytes), filename="drop_card.gif")
+                        await target_ch.send(
+                            content=f"<@{userid}>",
+                            embed=embed,
+                            file=card_file,
+                            delete_after=custom_delete
+                        )
+                    else:
+                        await target_ch.send(
+                            content=f"<@{userid}>",
+                            embed=embed,
+                            delete_after=custom_delete
+                        )
             except discord.Forbidden:
                 pass
             except Exception:
                 logger.debug(f"Failed to send channel drop notification for {userid}")
-    # --- END AI-MODIFIED ---
+        # --- END AI-MODIFIED ---
 
     # --- AI-REPLACED (2026-03-20) ---
     # Reason: Visual teasers with GIF previews and interactive Adopt button
@@ -8004,6 +8288,134 @@ class LionGotchiCog(LionCog):
             )
         except Exception:
             await ctx.reply("Failed to send announcement. Check my permissions.", ephemeral=True)
+    # --- END AI-MODIFIED ---
+
+    # --- AI-MODIFIED (2026-04-10) ---
+    # Purpose: One-time adoption nudge -- fires after a successful slash command for users
+    #          without a pet, sends a DM (fallback to drop channel), then never again.
+    #          7 anti-spam layers: feature-launch gate, hourly cap, DB flag, in-memory skip set,
+    #          guild gate, command exclusion, per-send cooldown.
+    @LionCog.listener('on_app_command_completion')
+    async def _on_command_for_nudge(self, interaction: discord.Interaction, command):
+        try:
+            userid = interaction.user.id
+
+            if userid in self._nudge_skip_users:
+                return
+
+            cmd_name = getattr(command, 'name', '') or ''
+            if cmd_name in _NUDGE_EXCLUDED_COMMANDS:
+                return
+
+            if datetime.now(timezone.utc) < _NUDGE_FEATURE_LAUNCH_TS:
+                return
+
+            if not interaction.guild:
+                return
+            guildid = interaction.guild.id
+
+            lg_conf = await self._get_guild_lg_config(guildid)
+            if not lg_conf.get('lg_enabled', True):
+                return
+            if not lg_conf.get('lg_teaser_enabled', True):
+                return
+
+            pet = await self.data.Pet.fetch(userid)
+            if pet is not None:
+                self._nudge_skip_users.add(userid)
+                return
+
+            rows = await _db_fetch(self.bot,
+                "SELECT lg_nudge_sent_at FROM user_config WHERE userid = %s", userid)
+            if rows and rows[0].get('lg_nudge_sent_at') is not None:
+                self._nudge_skip_users.add(userid)
+                return
+
+            now = _time.monotonic()
+            self._nudge_send_times = [t for t in self._nudge_send_times if now - t < 3600]
+            if len(self._nudge_send_times) >= NUDGE_HOURLY_CAP_PER_SHARD:
+                return
+
+            if now - self._last_nudge_sent < NUDGE_COOLDOWN_SECONDS:
+                return
+
+            await self._send_adoption_nudge(userid, guildid)
+        except Exception:
+            logger.debug("Error in adoption nudge check", exc_info=True)
+
+    async def _send_adoption_nudge(self, userid: int, guildid: int):
+        """Send a one-time DM encouraging the user to adopt a pet. Falls back to drop channel."""
+        now_mono = _time.monotonic()
+        self._last_nudge_sent = now_mono
+        self._nudge_send_times.append(now_mono)
+
+        pet_count = getattr(self, '_cached_pet_count', 0) or 0
+        item_count = self._cached_item_drop_count
+        farm_count = self._cached_farm_count
+
+        stats_lines = []
+        if pet_count > 50:
+            stats_lines.append(f"\U0001F43E **{pet_count:,}** students have adopted a LionGotchi")
+        if item_count > 50:
+            stats_lines.append(f"\U0001F392 **{item_count:,}** items dropped to active members")
+        if farm_count > 10:
+            stats_lines.append(f"\U0001F331 **{farm_count:,}** farms growing right now")
+        stats_block = "\n".join(stats_lines) + "\n\n" if stats_lines else ""
+
+        embed = discord.Embed(
+            title="\U0001F981 Your Study Sessions Could Be More Fun!",
+            color=0xffd700,
+            description=(
+                f"Did you know LionBot has a **virtual pet system**?\n\n"
+                f"{stats_block}"
+                f"\U0001F4B0 Earn **Gold** by studying in voice channels and chatting\n"
+                f"\u2694\uFE0F Collect **equipment and scrolls** that drop while you study\n"
+                f"\U0001F33E **Grow a farm** and harvest crops for profit\n"
+                f"\U0001F4CA **Trade on the marketplace** with other users\n\n"
+                f"Use `/pet` to adopt yours for free \u2014 it takes 10 seconds!"
+            ),
+        )
+        embed.set_footer(
+            text=f"The more you study, the more you earn \u2022 {WEBSITE_URL}/pet/tutorial"
+        )
+
+        view = AdoptionNudgeView()
+
+        sent = False
+        try:
+            user = self.bot.get_user(userid)
+            if user is None:
+                user = await self.bot.fetch_user(userid)
+            if user:
+                await user.send(embed=embed, view=view)
+                sent = True
+        except discord.Forbidden:
+            pass
+        except Exception:
+            logger.debug(f"Failed to DM adoption nudge to {userid}", exc_info=True)
+
+        if not sent:
+            try:
+                drop_ch = await self._get_guild_drop_channel(guildid)
+                if drop_ch:
+                    lg_conf = await self._get_guild_lg_config(guildid)
+                    custom_delete = lg_conf.get('lg_drop_delete_after')
+                    del_after = custom_delete if custom_delete else 120
+                    await drop_ch.send(
+                        content=f"<@{userid}>",
+                        embed=embed,
+                        view=AdoptionNudgeView(),
+                        delete_after=del_after,
+                    )
+            except Exception:
+                logger.debug(f"Failed to send adoption nudge to drop channel for {userid}")
+
+        try:
+            await _db_exec(self.bot,
+                "UPDATE user_config SET lg_nudge_sent_at = NOW() WHERE userid = %s", userid)
+        except Exception:
+            logger.debug(f"Failed to mark nudge as sent for {userid}")
+        self._nudge_skip_users.add(userid)
     # --- END AI-MODIFIED ---
 
     # --- END AI-MODIFIED ---

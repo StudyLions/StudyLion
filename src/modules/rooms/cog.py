@@ -15,6 +15,11 @@ from utils.lib import utc_now, error_embed
 from utils.ui import Confirm
 from constants import MAX_COINS
 from core.data import CoreData
+# --- AI-MODIFIED (2026-04-17) ---
+# Purpose: Import ORDER enum to fix room rent cooldown query crash
+# (was using ORDER='DESC' kwarg which doesn't exist on OrderMixin.order_by)
+from data.queries import ORDER
+# --- END AI-MODIFIED ---
 
 from wards import high_management_ward
 
@@ -100,9 +105,15 @@ class RoomCog(LionCog):
         if not cooldown_minutes:
             return 0
         from datetime import timedelta
+        # --- AI-MODIFIED (2026-04-17) ---
+        # Bug fix: order_by was called with ORDER='DESC' kwarg (invalid), which raised
+        # TypeError and crashed /room rent on any server with cooldown enabled.
+        # Use the ORDER.DESC enum value positionally, matching the pattern used in
+        # economy/topgg/schedule/ranks/premium modules.
         rows = await self.data.Room.table.select_where(
             guildid=guildid, ownerid=userid
-        ).order_by('deleted_at', ORDER='DESC').limit(1)
+        ).order_by('deleted_at', ORDER.DESC).limit(1)
+        # --- END AI-MODIFIED ---
         if not rows:
             return 0
         last_deleted = rows[0]['deleted_at']
@@ -372,6 +383,54 @@ class RoomCog(LionCog):
                 )
     # --- END AI-MODIFIED ---
 
+    # --- AI-MODIFIED (2026-04-06) ---
+    # Purpose: Track room activity (messages + voice joins) for inactivity auto-delete.
+    # Throttled to one DB write per room per hour to avoid excessive updates.
+    _activity_cooldowns: dict[int, float] = {}
+
+    async def _touch_room_activity(self, channel_id: int):
+        """Update last_activity for a room, throttled to once per hour."""
+        import time
+        now_mono = time.monotonic()
+        last = self._activity_cooldowns.get(channel_id, 0)
+        if now_mono - last < 3600:
+            return
+        self._activity_cooldowns[channel_id] = now_mono
+        try:
+            await self.data.Room.table.update_where(channelid=channel_id).set(
+                last_activity=utc_now()
+            )
+        except Exception:
+            logger.debug(f"Failed to update last_activity for room {channel_id}", exc_info=True)
+
+    @LionCog.listener('on_message')
+    async def _track_room_message(self, message: discord.Message):
+        if message.author.bot or not message.guild:
+            return
+        gid = message.guild.id
+        cid = message.channel.id
+        if isinstance(message.channel, discord.VoiceChannel):
+            cid = message.channel.id
+        elif isinstance(message.channel, discord.Thread) and isinstance(message.channel.parent, discord.VoiceChannel):
+            cid = message.channel.parent.id
+        else:
+            return
+        if cid in self._room_cache.get(gid, {}):
+            await self._touch_room_activity(cid)
+
+    @LionCog.listener('on_voice_state_update')
+    async def _track_room_voice_join(self, member: discord.Member,
+                                     before: discord.VoiceState,
+                                     after: discord.VoiceState):
+        if member.bot:
+            return
+        if after.channel and after.channel != before.channel:
+            cid = after.channel.id
+            gid = member.guild.id
+            if cid in self._room_cache.get(gid, {}):
+                await self._touch_room_activity(cid)
+    # --- END AI-MODIFIED ---
+
     # ----- Room API -----
     @log_wrap(action="Create Room")
     async def create_private_room(self,
@@ -448,6 +507,19 @@ class RoomCog(LionCog):
         try:
             # Create Room
             now = utc_now()
+            # --- AI-MODIFIED (2026-04-06) ---
+            # Purpose: Set last_activity on creation for inactivity tracking
+            # --- Original code (commented out for rollback) ---
+            # data = await self.data.Room.create(
+            #     channelid=channel.id,
+            #     guildid=guild.id,
+            #     ownerid=owner.id,
+            #     coin_balance=initial_balance,
+            #     name=name,
+            #     created_at=now,
+            #     last_tick=now
+            # )
+            # --- End original code ---
             data = await self.data.Room.create(
                 channelid=channel.id,
                 guildid=guild.id,
@@ -455,8 +527,10 @@ class RoomCog(LionCog):
                 coin_balance=initial_balance,
                 name=name,
                 created_at=now,
-                last_tick=now
+                last_tick=now,
+                last_activity=now
             )
+            # --- END AI-MODIFIED ---
             if members:
                 await self.data.RoomMember.table.insert_many(
                     ('channelid', 'userid'),
@@ -1542,7 +1616,9 @@ class RoomCog(LionCog):
             # --- END AI-MODIFIED ---
             coin_emoji = self.bot.config.emojis.coin
 
-            # Confirm with the user
+            # --- AI-MODIFIED (2026-04-09) ---
+            # Purpose: Fix Confirm usage — first arg must be a string, and
+            # result lives in _result Future, not a .result attribute
             confirm_embed = discord.Embed(
                 colour=discord.Colour.gold(),
                 title="Rent Sound Bot",
@@ -1554,11 +1630,17 @@ class RoomCog(LionCog):
                     f"The bot will join your room and play this sound."
                 ),
             )
-            confirm = Confirm(ctx.author.id)
+            confirm = Confirm("Confirm this rental?", ctx.author.id)
             confirm_msg = await ctx.reply(embed=confirm_embed, view=confirm, ephemeral=True)
             await confirm.wait()
 
-            if not confirm.result:
+            try:
+                confirmed = confirm._result.result()
+            except Exception:
+                confirmed = False
+
+            if not confirmed:
+            # --- END AI-MODIFIED ---
                 try:
                     await confirm_msg.edit(
                         embed=discord.Embed(
@@ -1589,14 +1671,34 @@ class RoomCog(LionCog):
 
             # Create rental row
             try:
+                # --- AI-REPLACED (2026-04-17) ---
+                # Reason: `INTERVAL '%s hours'` puts the %s placeholder *inside* a
+                # SQL string literal. psycopg3 still substitutes it with a `$N`
+                # marker, so Postgres receives e.g. `INTERVAL '$6 hours'` and its
+                # lenient interval parser reads `$6` as the integer 6 — every
+                # rental ended up exactly 6 hours regardless of `hours`.
+                # What the new code does better: `make_interval(hours => %s)` binds
+                # the parameter as a real numeric argument outside any literal, so
+                # the user's chosen duration is honoured.
+                # --- Original code (commented out for rollback) ---
+                # await conn.execute(
+                #     "INSERT INTO ambient_sounds_rentals "
+                #     "(guildid, channelid, userid, bot_number, sound_type, volume, "
+                #     " expires_at, total_cost) "
+                #     "VALUES (%s, %s, %s, %s, %s, 50, NOW() + INTERVAL '%s hours', %s)",
+                #     [guild_id, room.data.channelid, ctx.author.id, bot_number,
+                #      sound.value, hours, total_cost],
+                # )
+                # --- End original code ---
                 await conn.execute(
                     "INSERT INTO ambient_sounds_rentals "
                     "(guildid, channelid, userid, bot_number, sound_type, volume, "
                     " expires_at, total_cost) "
-                    "VALUES (%s, %s, %s, %s, %s, 50, NOW() + INTERVAL '%s hours', %s)",
+                    "VALUES (%s, %s, %s, %s, %s, 50, NOW() + make_interval(hours => %s), %s)",
                     [guild_id, room.data.channelid, ctx.author.id, bot_number,
                      sound.value, hours, total_cost],
                 )
+                # --- END AI-REPLACED ---
             except Exception as exc:
                 # Refund on failure
                 await ctx.alion.data.update(coins=CoreData.Member.coins + total_cost)
@@ -1734,8 +1836,23 @@ class RoomCog(LionCog):
         **{setting.setting_id: setting._desc for setting in RoomSettings.model_settings}
     )
     @high_management_ward
-    # --- AI-MODIFIED (2026-04-01) ---
-    # Purpose: Add all room setting parameters including 6 newly-wired settings
+    # --- AI-MODIFIED (2026-04-06) ---
+    # Purpose: Add all room setting parameters including inactivity auto-delete settings
+    # --- Original code (commented out for rollback) ---
+    # async def configure_rooms_cmd(self, ctx: LionContext,
+    #                               rooms_category: Optional[discord.CategoryChannel] = None,
+    #                               rooms_price: Optional[Range[int, 0, MAX_COINS]] = None,
+    #                               rooms_slots: Optional[Range[int, 1, MAX_COINS]] = None,
+    #                               rooms_visible: Optional[bool] = None,
+    #                               rooms_role: Optional[discord.Role] = None,
+    #                               rooms_sync_perms: Optional[bool] = None,
+    #                               rooms_max_per_user: Optional[Range[int, 1, 100]] = None,
+    #                               rooms_name_limit: Optional[Range[int, 1, 100]] = None,
+    #                               rooms_min_deposit: Optional[Range[int, 0, MAX_COINS]] = None,
+    #                               rooms_auto_extend: Optional[bool] = None,
+    #                               rooms_cooldown: Optional[Range[int, 0, 10080]] = None,
+    #                               rooms_notifications: Optional[bool] = None):
+    # --- End original code ---
     async def configure_rooms_cmd(self, ctx: LionContext,
                                   rooms_category: Optional[discord.CategoryChannel] = None,
                                   rooms_price: Optional[Range[int, 0, MAX_COINS]] = None,
@@ -1748,7 +1865,9 @@ class RoomCog(LionCog):
                                   rooms_min_deposit: Optional[Range[int, 0, MAX_COINS]] = None,
                                   rooms_auto_extend: Optional[bool] = None,
                                   rooms_cooldown: Optional[Range[int, 0, 10080]] = None,
-                                  rooms_notifications: Optional[bool] = None):
+                                  rooms_notifications: Optional[bool] = None,
+                                  rooms_inactivity_enabled: Optional[bool] = None,
+                                  rooms_inactivity_days: Optional[Range[int, 1, 365]] = None):
     # --- END AI-MODIFIED ---
         # t = self.bot.translator.t
 
@@ -1761,8 +1880,24 @@ class RoomCog(LionCog):
         # TODO: Value verification on the category channel for permissions
         await ctx.interaction.response.defer(thinking=True)
 
-        # --- AI-MODIFIED (2026-04-01) ---
-        # Purpose: Include all room settings in the provided dict
+        # --- AI-MODIFIED (2026-04-06) ---
+        # Purpose: Include all room settings including inactivity auto-delete
+        # --- Original code (commented out for rollback) ---
+        # provided = {
+        #     'rooms_category': rooms_category,
+        #     'rooms_price': rooms_price,
+        #     'rooms_slots': rooms_slots,
+        #     'rooms_visible': rooms_visible,
+        #     'rooms_role': rooms_role,
+        #     'rooms_sync_perms': rooms_sync_perms,
+        #     'rooms_max_per_user': rooms_max_per_user,
+        #     'rooms_name_limit': rooms_name_limit,
+        #     'rooms_min_deposit': rooms_min_deposit,
+        #     'rooms_auto_extend': rooms_auto_extend,
+        #     'rooms_cooldown': rooms_cooldown,
+        #     'rooms_notifications': rooms_notifications,
+        # }
+        # --- End original code ---
         provided = {
             'rooms_category': rooms_category,
             'rooms_price': rooms_price,
@@ -1776,6 +1911,8 @@ class RoomCog(LionCog):
             'rooms_auto_extend': rooms_auto_extend,
             'rooms_cooldown': rooms_cooldown,
             'rooms_notifications': rooms_notifications,
+            'rooms_inactivity_enabled': rooms_inactivity_enabled,
+            'rooms_inactivity_days': rooms_inactivity_days,
         }
         # --- END AI-MODIFIED ---
         modified = {(sid, val) for sid, val in provided.items() if val is not None}

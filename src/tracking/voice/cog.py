@@ -45,6 +45,11 @@ class VoiceTrackerCog(LionCog):
         self.tracking_lock = asyncio.Lock()
 
         self.untracked_channels = self.settings.UntrackedChannels._cache
+        # --- AI-MODIFIED (2026-04-07) ---
+        # Purpose: Background task to periodically refresh untracked channels cache
+        # from DB so dashboard changes take effect without bot restart
+        self._untracked_refresh_task = None
+        # --- END AI-MODIFIED ---
 
         self.active_sessions = VoiceSession._active_sessions_
 
@@ -127,6 +132,15 @@ class VoiceTrackerCog(LionCog):
         # Update the tracked voice channel cache
         await self.settings.UntrackedChannels.setup(self.bot)
 
+        # --- AI-MODIFIED (2026-04-07) ---
+        # Purpose: Start periodic refresh of untracked channels cache
+        # so dashboard changes take effect without restarting the bot
+        self._untracked_refresh_task = asyncio.create_task(
+            self._periodic_untracked_refresh(),
+            name='periodic-untracked-refresh'
+        )
+        # --- END AI-MODIFIED ---
+
         configcog = self.bot.get_cog('ConfigCog')
         if configcog is None:
             logger.critical(
@@ -141,7 +155,50 @@ class VoiceTrackerCog(LionCog):
     async def cog_unload(self):
         # TODO: Shutdown task to trigger updates on all ongoing sessions
         # Simultaneously!
-        ...
+        # --- AI-MODIFIED (2026-04-07) ---
+        # Purpose: Cancel periodic untracked refresh on cog unload
+        if self._untracked_refresh_task is not None:
+            self._untracked_refresh_task.cancel()
+            self._untracked_refresh_task = None
+        # --- END AI-MODIFIED ---
+
+    # --- AI-MODIFIED (2026-04-07) ---
+    # Purpose: Periodic background task to refresh the untracked channels cache
+    # from the database, so changes made via the web dashboard take effect
+    # without restarting the bot. When a guild's exclusion list changes,
+    # that guild's voice sessions are refreshed (closing sessions in newly
+    # untracked channels and starting sessions in newly tracked ones).
+    async def _periodic_untracked_refresh(self):
+        await self.initialised.wait()
+        while True:
+            await asyncio.sleep(120)
+            try:
+                old_cache = {gid: set(cids) for gid, cids in self.untracked_channels.items()}
+
+                await self.settings.UntrackedChannels.setup(self.bot)
+
+                new_cache = {gid: set(cids) for gid, cids in self.untracked_channels.items()}
+
+                all_gids = set(old_cache.keys()) | set(new_cache.keys())
+                changed = [
+                    gid for gid in all_gids
+                    if old_cache.get(gid, set()) != new_cache.get(gid, set())
+                ]
+
+                if changed:
+                    logger.info(
+                        f"Periodic untracked refresh detected changes in {len(changed)} guild(s): "
+                        f"{changed}"
+                    )
+                    for gid in changed:
+                        guild = self.bot.get_guild(gid)
+                        if guild is not None:
+                            await self.refresh_guild_sessions(guild)
+            except asyncio.CancelledError:
+                raise
+            except Exception:
+                logger.exception("Error in periodic untracked channels refresh")
+    # --- END AI-MODIFIED ---
 
     # ----- Cog API -----
     def get_session(self, guildid, userid, **kwargs):

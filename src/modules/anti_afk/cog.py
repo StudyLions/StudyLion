@@ -37,7 +37,7 @@ class TrackedUser:
         'guildid', 'userid', 'channelid', 'state',
         'last_check_at', 'last_prompt_sent_at', 'miss_count',
         'dm_fail_count', 'prompt_delivered', 'timeout_task',
-        'lock',
+        'prompt_message', 'lock',
     )
 
     def __init__(self, guildid: int, userid: int, channelid: int):
@@ -51,6 +51,7 @@ class TrackedUser:
         self.dm_fail_count = 0
         self.prompt_delivered = False
         self.timeout_task: Optional[asyncio.Task] = None
+        self.prompt_message: Optional[discord.Message] = None
         self.lock = asyncio.Lock()
 
     def reset_timer(self):
@@ -59,6 +60,7 @@ class TrackedUser:
         self.miss_count = 0
         self.dm_fail_count = 0
         self.prompt_delivered = False
+        self.prompt_message = None
         if self.timeout_task and not self.timeout_task.done():
             self.timeout_task.cancel()
             self.timeout_task = None
@@ -75,6 +77,7 @@ LOOP_TICK_SECONDS = 30
 MAX_MESSAGES_PER_MINUTE = 30
 MAX_PROMPTS_PER_GUILD_PER_TICK = 10
 VALID_ACTIONS = ('kick', 'pause', 'move_afk')
+RECENTLY_ACTED_COOLDOWN = 300  # 5 minutes
 
 
 class AntiAfkCog(LionCog):
@@ -100,6 +103,11 @@ class AntiAfkCog(LionCog):
 
         # Notification cooldowns: {guildid: last_notification_time}
         self._notif_cooldowns: dict[int, float] = {}
+
+        # Recently acted-upon users: {(guildid, userid): monotonic_time}
+        # Prevents re-tracking a user immediately after they were
+        # moved/kicked (on_voice_state_update fires when they join AFK)
+        self._recently_acted: dict[tuple[int, int], float] = {}
 
     # ─── Lifecycle ───────────────────────────────────────────
 
@@ -145,26 +153,61 @@ class AntiAfkCog(LionCog):
             return
 
         userid = interaction.user.id
-        handled = await self.handle_confirm(guildid, userid)
+        handled, prompt_msg = await self.handle_confirm(guildid, userid)
 
+        # --- AI-MODIFIED (2026-04-13) ---
+        # Purpose: Show check_interval in confirmation so users know when the next check will be
         if handled:
+            confirm_desc = (
+                "\u2705 Confirmed! Your check timer has been reset. "
+                "Stay productive!"
+            )
+            config = await self._get_config(guildid)
+            if config and config.check_interval:
+                confirm_desc += (
+                    f"\n\n\u23f0 Next check in approximately "
+                    f"**{config.check_interval} minute{'s' if config.check_interval != 1 else ''}**."
+                )
             embed = discord.Embed(
                 colour=discord.Colour.brand_green(),
-                description=(
-                    "\u2705 Confirmed! Your check timer has been reset. "
-                    "Stay productive!"
-                ),
+                description=confirm_desc,
             )
         else:
             embed = discord.Embed(
                 colour=discord.Colour.greyple(),
-                description="No active check found for you. You're all good!",
+                description=(
+                    "This check has already been resolved. "
+                    "No action needed."
+                ),
             )
+        # --- END AI-MODIFIED ---
 
         try:
             await interaction.response.send_message(embed=embed, ephemeral=True)
         except discord.HTTPException:
             pass
+
+        if handled and prompt_msg:
+            await self._edit_prompt_confirmed(prompt_msg, userid)
+        # --- AI-MODIFIED (2026-04-13) ---
+        # Purpose: Remove the button from stale prompts that were never
+        # edited (e.g. due to bot restart or the old race condition).
+        elif not handled and interaction.message:
+            try:
+                resolved_embed = discord.Embed(
+                    colour=discord.Colour.greyple(),
+                    title="\U0001f6e1\ufe0f Anti AFK Check \u2014 Resolved",
+                    description=f"<@{userid}> \u2014 this check has been resolved.",
+                )
+                await interaction.message.edit(
+                    embed=resolved_embed, view=None,
+                )
+                asyncio.create_task(
+                    self._delete_message_after(interaction.message, 10)
+                )
+            except (discord.NotFound, discord.Forbidden, discord.HTTPException):
+                pass
+        # --- END AI-MODIFIED ---
 
     async def cog_unload(self):
         if self._main_loop_task and not self._main_loop_task.done():
@@ -310,6 +353,15 @@ class AntiAfkCog(LionCog):
     ):
         guildid = member.guild.id
 
+        # Don't re-track users who were just acted upon
+        key = (guildid, member.id)
+        acted_at = self._recently_acted.get(key)
+        if acted_at is not None:
+            if _time.monotonic() - acted_at < RECENTLY_ACTED_COOLDOWN:
+                return
+            else:
+                del self._recently_acted[key]
+
         if not await self._is_premium(guildid):
             return
 
@@ -343,25 +395,91 @@ class AntiAfkCog(LionCog):
 
     # ─── Button Confirm Handler ──────────────────────────────
 
-    async def handle_confirm(self, guildid: int, userid: int) -> bool:
+    async def handle_confirm(
+        self, guildid: int, userid: int,
+    ) -> tuple[bool, Optional[discord.Message]]:
         guild_users = self._tracked.get(guildid)
         if not guild_users:
-            return False
+            return False, None
 
         tu = guild_users.get(userid)
         if not tu:
-            return False
+            return False, None
 
         async with tu.lock:
             if tu.state == CheckState.ACTED:
-                return False
+                return False, None
 
+            if tu.state != CheckState.PENDING:
+                return False, None
+
+            prompt_msg = tu.prompt_message
             tu.reset_timer()
             logger.debug(
                 f"Anti AFK confirm: <uid:{userid}> in <gid:{guildid}> "
                 f"confirmed presence."
             )
-            return True
+            return True, prompt_msg
+
+    # ─── Prompt Message Editing ────────────────────────────────
+
+    # --- AI-MODIFIED (2025-04-07) ---
+    # Purpose: Delete AFK check prompts after a short delay so they don't
+    # stay permanently in channels (user feedback: stale buttons are confusing)
+    async def _delete_message_after(self, message: discord.Message, delay: float):
+        """Delete a message after a delay. Fire-and-forget via create_task."""
+        try:
+            await asyncio.sleep(delay)
+            await message.delete()
+        except (discord.NotFound, discord.Forbidden, discord.HTTPException):
+            pass
+        except asyncio.CancelledError:
+            pass
+    # --- END AI-MODIFIED ---
+
+    async def _edit_prompt_confirmed(
+        self, message: discord.Message, userid: int,
+    ):
+        """Edit the original prompt to show the user confirmed."""
+        embed = discord.Embed(
+            colour=discord.Colour.brand_green(),
+            title="\U0001f6e1\ufe0f Anti AFK Check \u2014 Confirmed",
+            description=f"<@{userid}> confirmed they're still active. \u2705",
+        )
+        try:
+            await message.edit(embed=embed, view=None)
+            # --- AI-MODIFIED (2025-04-07) ---
+            # Purpose: Auto-delete confirmed prompt after 10s so it doesn't linger
+            asyncio.create_task(self._delete_message_after(message, 10))
+            # --- END AI-MODIFIED ---
+        except (discord.NotFound, discord.Forbidden, discord.HTTPException):
+            pass
+
+    async def _edit_prompt_expired(
+        self, message: discord.Message, userid: int, action_label: str,
+    ):
+        """Edit the original prompt to show the check expired and action taken."""
+        embed = discord.Embed(
+            colour=discord.Colour.red(),
+            title="\U0001f6e1\ufe0f Anti AFK Check \u2014 Expired",
+            description=(
+                f"<@{userid}> did not respond in time.\n"
+                f"**Action taken:** {action_label}"
+            ),
+        )
+        try:
+            # --- AI-MODIFIED (2026-04-13) ---
+            # Purpose: Clear the content ping and keep the expired message visible
+            # instead of deleting it. Deleting caused ghost pings -- users saw a
+            # notification badge but no message to explain it.
+            # --- Original code (commented out for rollback) ---
+            # await message.edit(embed=embed, view=None)
+            # asyncio.create_task(self._delete_message_after(message, 15))
+            # --- End original code ---
+            await message.edit(content=None, embed=embed, view=None)
+            # --- END AI-MODIFIED ---
+        except (discord.NotFound, discord.Forbidden, discord.HTTPException):
+            pass
 
     # ─── Main Loop ───────────────────────────────────────────
 
@@ -444,6 +562,15 @@ class AntiAfkCog(LionCog):
     async def _process_tick(self):
         """Process one tick of the main loop."""
         now_mono = _time.monotonic()
+
+        # Clean up expired recently-acted entries
+        expired = [
+            k for k, t in self._recently_acted.items()
+            if now_mono - t > RECENTLY_ACTED_COOLDOWN
+        ]
+        for k in expired:
+            del self._recently_acted[k]
+
         guild_ids = list(self._tracked.keys())
 
         random.shuffle(guild_ids)
@@ -593,7 +720,20 @@ class AntiAfkCog(LionCog):
 
         userids = [tu.userid for tu in users]
 
-        if config.use_dms:
+        # --- AI-MODIFIED (2026-04-07) ---
+        # Purpose: Add custom channel delivery mode. If prompt_channelid
+        # is set, all prompts go to that one text channel with @mentions
+        # instead of each user's VC text chat.
+        prompt_ch = None
+        if getattr(config, 'prompt_channelid', None):
+            prompt_ch = guild.get_channel(config.prompt_channelid)
+
+        if prompt_ch:
+            await self._send_vc_text_prompt(
+                guild, config, prompt_ch, users,
+                grace_period_sec, max_warnings,
+            )
+        elif config.use_dms:
             await self._send_dm_prompts(
                 guild, config, users, grace_period_sec, max_warnings,
             )
@@ -602,6 +742,7 @@ class AntiAfkCog(LionCog):
                 guild, config, channel, users,
                 grace_period_sec, max_warnings,
             )
+        # --- END AI-MODIFIED ---
 
     async def _send_vc_text_prompt(
         self,
@@ -612,57 +753,74 @@ class AntiAfkCog(LionCog):
         grace_period_sec: int,
         max_warnings: int,
     ):
-        mentions = ' '.join(f'<@{tu.userid}>' for tu in users)
         warning_text = config.warning_message or "Are you still studying?"
 
-        description_parts = [
-            f"{mentions}\n\n{warning_text}",
-            f"\nClick the button below within **{config.grace_period} minute{'s' if config.grace_period != 1 else ''}** to confirm.",
-        ]
+        for tu in users:
+            description_parts = [
+                f"<@{tu.userid}>\n\n{warning_text}",
+                f"\nClick the button below within **{config.grace_period} minute{'s' if config.grace_period != 1 else ''}** to confirm.",
+            ]
 
-        if max_warnings > 1:
-            for tu in users:
+            if max_warnings > 1:
                 current = tu.miss_count + 1
                 if current < max_warnings:
                     description_parts.append(
                         f"\n\u26a0\ufe0f This is check {current} of {max_warnings}."
                     )
-                    break
 
-        embed = discord.Embed(
-            colour=discord.Colour.gold(),
-            title="\U0001f6e1\ufe0f Anti AFK Check",
-            description=''.join(description_parts),
-        )
+            # --- AI-MODIFIED (2026-04-13) ---
+            # Purpose: Show check_interval so users know when the next check will be
+            description_parts.append(
+                f"\n\n\u23f0 Next check: **{config.check_interval} minute{'s' if config.check_interval != 1 else ''}** after confirming."
+            )
+            # --- END AI-MODIFIED ---
 
-        view = AntiAfkConfirmView(guild.id)
+            embed = discord.Embed(
+                colour=discord.Colour.gold(),
+                title="\U0001f6e1\ufe0f Anti AFK Check",
+                description=''.join(description_parts),
+            )
 
-        try:
-            await channel.send(embed=embed, view=view)
-            self._record_message_sent()
+            view = AntiAfkConfirmView(guild.id)
 
-            for tu in users:
+            try:
+                # --- AI-MODIFIED (2026-04-07) ---
+                # Purpose: Mention user in content so Discord delivers an actual
+                # ping notification. Mentions inside embeds do not trigger pings.
+                msg = await channel.send(
+                    content=f"<@{tu.userid}>",
+                    embed=embed,
+                    view=view,
+                )
+                # --- END AI-MODIFIED ---
+                self._record_message_sent()
+
                 async with tu.lock:
                     tu.state = CheckState.PENDING
                     tu.last_prompt_sent_at = _time.monotonic()
                     tu.prompt_delivered = True
+                    tu.prompt_message = msg
                     tu.timeout_task = asyncio.create_task(
                         self._handle_timeout(
                             tu, config, guild, grace_period_sec, max_warnings,
                         )
                     )
 
-        except discord.Forbidden:
-            logger.warning(
-                f"Anti AFK: Missing Send Messages permission in "
-                f"<cid:{channel.id}> <gid:{guild.id}>"
-            )
-        except discord.HTTPException:
-            logger.warning(
-                f"Anti AFK: Failed to send VC text prompt in "
-                f"<cid:{channel.id}> <gid:{guild.id}>",
-                exc_info=True,
-            )
+            except discord.Forbidden:
+                logger.warning(
+                    f"Anti AFK: Missing Send Messages permission in "
+                    f"<cid:{channel.id}> <gid:{guild.id}>"
+                )
+                break
+            except discord.HTTPException:
+                logger.warning(
+                    f"Anti AFK: Failed to send VC text prompt in "
+                    f"<cid:{channel.id}> <gid:{guild.id}>",
+                    exc_info=True,
+                )
+
+            if len(users) > 1:
+                await asyncio.sleep(0.5)
 
     async def _send_dm_prompts(
         self,
@@ -695,6 +853,13 @@ class AntiAfkCog(LionCog):
             )
             if max_warnings > 1:
                 desc += f"\n\n\u26a0\ufe0f Warning {current_warning} of {max_warnings}."
+            # --- AI-MODIFIED (2026-04-13) ---
+            # Purpose: Show check_interval so users know when the next check will be
+            desc += (
+                f"\n\n\u23f0 Next check: **{config.check_interval} minute{'s' if config.check_interval != 1 else ''}** "
+                f"after confirming."
+            )
+            # --- END AI-MODIFIED ---
 
             embed = discord.Embed(
                 colour=discord.Colour.gold(),
@@ -706,13 +871,14 @@ class AntiAfkCog(LionCog):
             view = AntiAfkConfirmView(guild.id)
 
             try:
-                await member.send(embed=embed, view=view)
+                msg = await member.send(embed=embed, view=view)
                 self._record_message_sent()
 
                 async with tu.lock:
                     tu.state = CheckState.PENDING
                     tu.last_prompt_sent_at = _time.monotonic()
                     tu.prompt_delivered = True
+                    tu.prompt_message = msg
                     tu.dm_fail_count = 0
                     tu.timeout_task = asyncio.create_task(
                         self._handle_timeout(
@@ -761,40 +927,52 @@ class AntiAfkCog(LionCog):
         if not channel:
             return
 
-        mentions = ' '.join(f'<@{tu.userid}>' for tu in users)
         warning_text = config.warning_message or "Are you still studying?"
 
-        embed = discord.Embed(
-            colour=discord.Colour.gold(),
-            title="\U0001f6e1\ufe0f Anti AFK Check",
-            description=(
-                f"{mentions}\n\n{warning_text}\n\n"
-                f"Click the button below within "
-                f"**{config.grace_period} minutes** to confirm."
-            ),
-        )
+        for tu in users:
+            # --- AI-MODIFIED (2026-04-13) ---
+            # Purpose: Show check_interval so users know when the next check will be
+            embed = discord.Embed(
+                colour=discord.Colour.gold(),
+                title="\U0001f6e1\ufe0f Anti AFK Check",
+                description=(
+                    f"<@{tu.userid}>\n\n{warning_text}\n\n"
+                    f"Click the button below within "
+                    f"**{config.grace_period} minute{'s' if config.grace_period != 1 else ''}** to confirm."
+                    f"\n\n\u23f0 Next check: **{config.check_interval} minute{'s' if config.check_interval != 1 else ''}** after confirming."
+                ),
+            )
+            # --- END AI-MODIFIED ---
 
-        view = AntiAfkConfirmView(guild.id)
+            view = AntiAfkConfirmView(guild.id)
 
-        try:
-            await channel.send(embed=embed, view=view)
-            self._record_message_sent()
+            try:
+                # --- AI-MODIFIED (2026-04-07) ---
+                # Purpose: Mention user in content so Discord delivers an actual
+                # ping notification. Mentions inside embeds do not trigger pings.
+                msg = await channel.send(
+                    content=f"<@{tu.userid}>",
+                    embed=embed,
+                    view=view,
+                )
+                # --- END AI-MODIFIED ---
+                self._record_message_sent()
 
-            for tu in users:
                 async with tu.lock:
                     tu.state = CheckState.PENDING
                     tu.last_prompt_sent_at = _time.monotonic()
                     tu.prompt_delivered = True
+                    tu.prompt_message = msg
                     tu.timeout_task = asyncio.create_task(
                         self._handle_timeout(
                             tu, config, guild, grace_period_sec, max_warnings,
                         )
                     )
-        except (discord.Forbidden, discord.HTTPException):
-            logger.warning(
-                f"Anti AFK: Fallback channel send failed in <gid:{guild.id}>",
-                exc_info=True,
-            )
+            except (discord.Forbidden, discord.HTTPException):
+                logger.warning(
+                    f"Anti AFK: Fallback channel send failed in <gid:{guild.id}>",
+                    exc_info=True,
+                )
 
     # ─── Timeout Handling ────────────────────────────────────
 
@@ -837,6 +1015,16 @@ class AntiAfkCog(LionCog):
                     tu.state = CheckState.IDLE
                     tu.last_check_at = _time.monotonic()
                     tu.prompt_delivered = False
+                    # --- AI-MODIFIED (2025-04-07) ---
+                    # Purpose: Delete the old prompt so the stale button
+                    # doesn't confuse users who come back later
+                    old_prompt = tu.prompt_message
+                    tu.prompt_message = None
+                    if old_prompt:
+                        asyncio.create_task(
+                            self._delete_message_after(old_prompt, 5)
+                        )
+                    # --- END AI-MODIFIED ---
                     logger.debug(
                         f"Anti AFK: <uid:{tu.userid}> missed check "
                         f"{tu.miss_count}/{effective_max} in <gid:{tu.guildid}>"
@@ -870,6 +1058,108 @@ class AntiAfkCog(LionCog):
 
     # ─── Consequence Execution ───────────────────────────────
 
+    # --- AI-REPLACED (2026-04-07) ---
+    # Reason: Race condition -- moving/disconnecting a user fires
+    # on_voice_state_update which calls tu.cancel(), killing the timeout
+    # task before post-action cleanup (edit prompt, notifications) runs.
+    # What the new code does better: Pre-sets _recently_acted so the voice
+    # state handler won't re-track the user, and uses asyncio.create_task
+    # for all post-action Discord API calls so they survive task cancellation.
+    # --- Original code (commented out for rollback) ---
+    # async def _apply_consequence(
+    #     self,
+    #     tu: TrackedUser,
+    #     config,
+    #     guild: discord.Guild,
+    # ):
+    #     member = guild.get_member(tu.userid)
+    #     if not member:
+    #         self._remove_user(tu.guildid, tu.userid)
+    #         return
+    #
+    #     action = config.action if config.action in VALID_ACTIONS else 'kick'
+    #     success = False
+    #
+    #     try:
+    #         if action == 'move_afk':
+    #             afk_channel = guild.afk_channel
+    #             if afk_channel:
+    #                 await member.move_to(
+    #                     afk_channel,
+    #                     reason="Anti AFK: User did not respond to activity check",
+    #                 )
+    #                 success = True
+    #             else:
+    #                 await member.edit(
+    #                     voice_channel=None,
+    #                     reason="Anti AFK: No AFK channel, disconnecting instead",
+    #                 )
+    #                 success = True
+    #         elif action == 'pause':
+    #             await member.edit(
+    #                 voice_channel=None,
+    #                 reason="Anti AFK: Session paused due to inactivity",
+    #             )
+    #             success = True
+    #         else:
+    #             await member.edit(
+    #                 voice_channel=None,
+    #                 reason="Anti AFK: User did not respond to activity check",
+    #             )
+    #             success = True
+    #
+    #     except discord.Forbidden:
+    #         logger.warning(
+    #             f"Anti AFK: Missing Move Members permission in "
+    #             f"<gid:{guild.id}> for <uid:{tu.userid}>"
+    #         )
+    #         await self._notify_permission_error(guild, config, member)
+    #     except discord.HTTPException:
+    #         logger.warning(
+    #             f"Anti AFK: Failed to apply consequence to "
+    #             f"<uid:{tu.userid}> in <gid:{guild.id}>",
+    #             exc_info=True,
+    #         )
+    #
+    #     if success:
+    #         tu.state = CheckState.ACTED
+    #         self._record_action(tu.guildid)
+    #         self._recently_acted[(tu.guildid, tu.userid)] = _time.monotonic()
+    #         logger.info(
+    #             f"Anti AFK: Applied '{action}' to <uid:{tu.userid}> "
+    #             f"in <gid:{guild.id}> after {tu.miss_count} missed checks."
+    #         )
+    #
+    #         action_labels = {
+    #             'kick': 'Disconnected',
+    #             'pause': 'Session paused',
+    #             'move_afk': 'Moved to AFK channel',
+    #         }
+    #         action_label = action_labels.get(action, action)
+    #
+    #         # Edit the original prompt to show what happened
+    #         if tu.prompt_message:
+    #             await self._edit_prompt_expired(
+    #                 tu.prompt_message, tu.userid, action_label,
+    #             )
+    #
+    #         # Notify in the AFK channel's text chat when moved there
+    #         if action == 'move_afk' and guild.afk_channel:
+    #             await self._send_afk_channel_notice(
+    #                 guild, guild.afk_channel, member,
+    #             )
+    #
+    #         await self._send_action_notification(
+    #             guild, config, member, action, tu.miss_count,
+    #         )
+    #         self._remove_user(tu.guildid, tu.userid)
+    # --- End original code ---
+    # --- AI-MODIFIED (2026-04-13) ---
+    # Purpose: Fix race condition where disconnecting the user triggers
+    # on_voice_state_update -> _remove_user -> tu.cancel(), which cancels
+    # THIS running task before the prompt can be edited to "Expired".
+    # Fix: clear tu.timeout_task before the disconnect so tu.cancel() is
+    # a no-op, and mark state as ACTED immediately.
     async def _apply_consequence(
         self,
         tu: TrackedUser,
@@ -883,6 +1173,13 @@ class AntiAfkCog(LionCog):
 
         action = config.action if config.action in VALID_ACTIONS else 'kick'
         success = False
+        prompt_msg = tu.prompt_message
+        miss_count = tu.miss_count
+
+        tu.state = CheckState.ACTED
+        tu.timeout_task = None
+
+        self._recently_acted[(tu.guildid, tu.userid)] = _time.monotonic()
 
         try:
             if action == 'move_afk':
@@ -917,27 +1214,85 @@ class AntiAfkCog(LionCog):
                 f"Anti AFK: Missing Move Members permission in "
                 f"<gid:{guild.id}> for <uid:{tu.userid}>"
             )
-            await self._notify_permission_error(guild, config, member)
+            self._recently_acted.pop((tu.guildid, tu.userid), None)
+            asyncio.create_task(
+                self._notify_permission_error(guild, config, member)
+            )
+            return
         except discord.HTTPException:
             logger.warning(
                 f"Anti AFK: Failed to apply consequence to "
                 f"<uid:{tu.userid}> in <gid:{guild.id}>",
                 exc_info=True,
             )
+            self._recently_acted.pop((tu.guildid, tu.userid), None)
+            return
 
         if success:
-            tu.state = CheckState.ACTED
             self._record_action(tu.guildid)
             logger.info(
                 f"Anti AFK: Applied '{action}' to <uid:{tu.userid}> "
-                f"in <gid:{guild.id}> after {tu.miss_count} missed checks."
+                f"in <gid:{guild.id}> after {miss_count} missed checks."
             )
-            await self._send_action_notification(
-                guild, config, member, action, tu.miss_count,
+
+            action_labels = {
+                'kick': 'Disconnected',
+                'pause': 'Session paused',
+                'move_afk': 'Moved to AFK channel',
+            }
+            action_label = action_labels.get(action, action)
+
+            if prompt_msg:
+                asyncio.create_task(
+                    self._edit_prompt_expired(
+                        prompt_msg, tu.userid, action_label,
+                    )
+                )
+
+            if action == 'move_afk' and guild.afk_channel:
+                asyncio.create_task(
+                    self._send_afk_channel_notice(
+                        guild, guild.afk_channel, member,
+                    )
+                )
+
+            asyncio.create_task(
+                self._send_action_notification(
+                    guild, config, member, action, miss_count,
+                )
             )
             self._remove_user(tu.guildid, tu.userid)
+    # --- END AI-MODIFIED ---
+    # --- END AI-REPLACED ---
 
     # ─── Notifications ───────────────────────────────────────
+
+    async def _send_afk_channel_notice(
+        self,
+        guild: discord.Guild,
+        afk_channel: discord.VoiceChannel,
+        member: discord.Member,
+    ):
+        """Send a notice in the AFK channel's text chat."""
+        embed = discord.Embed(
+            colour=discord.Colour.orange(),
+            description=(
+                f"{member.mention} You were moved to the AFK channel "
+                f"because you didn't respond to the activity check."
+            ),
+        )
+
+        try:
+            # --- AI-MODIFIED (2026-04-13) ---
+            # Purpose: Ping user in content so they get a notification in the AFK
+            # channel. Mentions inside embeds don't trigger Discord pings.
+            # --- Original code (commented out for rollback) ---
+            # await afk_channel.send(embed=embed)
+            # --- End original code ---
+            await afk_channel.send(content=member.mention, embed=embed)
+            # --- END AI-MODIFIED ---
+        except (discord.Forbidden, discord.HTTPException):
+            pass
 
     async def _send_action_notification(
         self,

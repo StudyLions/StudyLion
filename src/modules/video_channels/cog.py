@@ -483,7 +483,11 @@ class VideoCog(LionCog):
                 # # TODO: Add duration
                 # await modcog.send_alert(member, embed=alert, reference=alert_ref)
                 # --- End original code ---
+                # --- AI-MODIFIED (2026-04-17) ---
+                # Purpose: Surface the total tier count alongside the offense
+                #   number so the DM reads "offense #N of M" instead of "#N".
                 violation_number = getattr(ticket, 'violation_number', None) or '?'
+                total_tiers = getattr(ticket, 'total_tiers', None)
                 if ticket and ticket.data.duration:
                     duration_str = strfdelta(dt.timedelta(seconds=ticket.data.duration))
                     expiry_str = discord.utils.format_dt(ticket.data.expiry, 'R')
@@ -496,6 +500,16 @@ class VideoCog(LionCog):
                         'video_watchdog|blacklist|expiry:never',
                         "Never"
                     ))
+                if total_tiers:
+                    offense_phrase = t(_p(
+                        'video_watchdog|blacklist|offense:with_total',
+                        "(offense #{count} of {total})"
+                    )).format(count=violation_number, total=total_tiers)
+                else:
+                    offense_phrase = t(_p(
+                        'video_watchdog|blacklist|offense:plain',
+                        "(offense #{count})"
+                    )).format(count=violation_number)
                 alert = discord.Embed(
                     colour=discord.Colour.brand_red(),
                     title=t(_p(
@@ -503,20 +517,21 @@ class VideoCog(LionCog):
                         "You have been blacklisted!"
                     )),
                     description=t(_p(
-                        'video_watchdog|join_task|kick_after_grace|blacklist|desc',
+                        'video_watchdog|join_task|kick_after_grace|blacklist|desc:tiered',
                         "You have been blacklisted from the video channels in **{server}** "
-                        "(offense #{count}).\n"
+                        "{offense_phrase}.\n"
                         "**Duration:** {duration}\n"
                         "**Expires:** {expiry}"
                     )).format(
                         server=channel.guild.name,
                         channel=channel.mention,
-                        count=violation_number,
+                        offense_phrase=offense_phrase,
                         duration=duration_str,
                         expiry=expiry_str,
                     ),
                     timestamp=utc_now()
                 ).add_field(name='', value=jump_field)
+                # --- END AI-MODIFIED ---
                 await modcog.send_alert(member, embed=alert, reference=alert_ref)
                 # --- END AI-REPLACED ---
             

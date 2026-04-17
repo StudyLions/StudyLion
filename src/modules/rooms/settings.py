@@ -604,6 +604,90 @@ class RoomSettings(SettingGroup):
             return resp
     # --- END AI-MODIFIED ---
 
+    # --- AI-MODIFIED (2026-04-06) ---
+    # Purpose: Admin toggle + days config for auto-deleting inactive private rooms
+    class InactivityEnabled(ModelData, BoolSetting):
+        setting_id = 'rooms_inactivity_enabled'
+        _event = 'guildset_rooms_inactivity_enabled'
+        _set_cmd = 'admin config rooms'
+        _write_ward = high_management_iward
+
+        _display_name = _p('guildset:rooms_inactivity_enabled', "inactivity_auto_delete")
+        _desc = _p(
+            'guildset:rooms_inactivity_enabled|desc',
+            "Automatically delete private rooms after a period of inactivity."
+        )
+        _long_desc = _p(
+            'guildset:rooms_inactivity_enabled|long_desc',
+            "When enabled, private rooms that have had no voice joins and no messages "
+            "for the configured number of days will be automatically deleted. "
+            "Any remaining coin balance is refunded to the room owner. "
+            "Frozen rooms are exempt from inactivity deletion."
+        )
+        _default = False
+        _accepts = _p('guildset:rooms_inactivity_enabled|accepts', "Enabled/Disabled")
+        _outputs = {
+            True: _p('guildset:rooms_inactivity_enabled|output:true', "Enabled"),
+            False: _p('guildset:rooms_inactivity_enabled|output:false', "Disabled"),
+        }
+        _outputs[None] = _outputs[_default]
+        _truthy = _p('guildset:rooms_inactivity_enabled|parse:truthy', "enabled|yes|true|on|1")
+        _falsey = _p('guildset:rooms_inactivity_enabled|parse:falsey', "disabled|no|false|off|0")
+
+        _model = CoreData.Guild
+        _column = CoreData.Guild.renting_inactivity_enabled.name
+
+        @property
+        def update_message(self) -> str:
+            t = ctx_translator.get().t
+            if self.value:
+                return t(_p(
+                    'guildset:rooms_inactivity_enabled|set_response:enabled',
+                    "Inactive private rooms will now be automatically deleted."
+                ))
+            else:
+                return t(_p(
+                    'guildset:rooms_inactivity_enabled|set_response:disabled',
+                    "Private rooms will no longer be automatically deleted for inactivity."
+                ))
+
+    class InactivityDays(ModelData, IntegerSetting):
+        setting_id = 'rooms_inactivity_days'
+        _event = 'guildset_rooms_inactivity_days'
+        _set_cmd = 'admin config rooms'
+        _write_ward = high_management_iward
+
+        _display_name = _p('guildset:rooms_inactivity_days', "inactivity_period")
+        _desc = _p(
+            'guildset:rooms_inactivity_days|desc',
+            "Days of inactivity before a private room is auto-deleted."
+        )
+        _long_desc = _p(
+            'guildset:rooms_inactivity_days|long_desc',
+            "If inactivity auto-delete is enabled, rooms with no voice joins and no messages "
+            "for this many days will be deleted. The remaining balance is refunded to the owner."
+        )
+        _accepts = _p('guildset:rooms_inactivity_days|accepts', "Number of days (integer, minimum 1).")
+        _default = None
+
+        _model = CoreData.Guild
+        _column = CoreData.Guild.renting_inactivity_days.name
+
+        @property
+        def update_message(self) -> str:
+            t = ctx_translator.get().t
+            if self.value:
+                return t(_p(
+                    'guildset:rooms_inactivity_days|set_response:set',
+                    "Private rooms will be auto-deleted after **{days}** day(s) of inactivity."
+                )).format(days=self.value)
+            else:
+                return t(_p(
+                    'guildset:rooms_inactivity_days|set_response:unset',
+                    "No inactivity period has been set. Configure this to enable inactivity auto-delete."
+                ))
+    # --- END AI-MODIFIED ---
+
     # --- AI-MODIFIED (2026-04-04) ---
     # Purpose: Toggle join/leave notification embeds in private room channels
     class Notifications(ModelData, BoolSetting):
@@ -668,6 +752,11 @@ class RoomSettings(SettingGroup):
         # --- AI-MODIFIED (2026-04-04) ---
         # Purpose: Room join/leave notification toggle
         Notifications,
+        # --- END AI-MODIFIED ---
+        # --- AI-MODIFIED (2026-04-06) ---
+        # Purpose: Inactivity auto-delete settings
+        InactivityEnabled,
+        InactivityDays,
         # --- END AI-MODIFIED ---
     )
 

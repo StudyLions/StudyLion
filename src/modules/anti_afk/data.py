@@ -30,6 +30,7 @@ class AntiAfkData(Registry, name='anti_afk'):
             target_channels TEXT NOT NULL DEFAULT '[]',
             exclude_channels TEXT NOT NULL DEFAULT '[]',
             use_dms BOOLEAN NOT NULL DEFAULT FALSE,
+            prompt_channelid BIGINT,
             fallback_channelid BIGINT,
             skip_streaming BOOLEAN NOT NULL DEFAULT TRUE,
             notify_on_action BOOLEAN NOT NULL DEFAULT TRUE,
@@ -51,6 +52,7 @@ class AntiAfkData(Registry, name='anti_afk'):
         target_channels = String()
         exclude_channels = String()
         use_dms = Bool()
+        prompt_channelid = Integer()
         fallback_channelid = Integer()
         skip_streaming = Bool()
         notify_on_action = Bool()

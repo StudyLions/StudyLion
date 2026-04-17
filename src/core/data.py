@@ -226,6 +226,11 @@ class CoreData(Registry, name="core"):
         # Purpose: Toggle for join/leave notification embeds inside private room channels
         renting_notifications = Bool()
         # --- END AI-MODIFIED ---
+        # --- AI-MODIFIED (2026-04-06) ---
+        # Purpose: Auto-delete private rooms after configurable inactivity period
+        renting_inactivity_enabled = Bool()
+        renting_inactivity_days = Integer()
+        # --- END AI-MODIFIED ---
 
         accountability_category = Integer()
         accountability_lobby = Integer()
