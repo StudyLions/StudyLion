@@ -1,6 +1,7 @@
 import logging
 from typing import Optional
 
+import psycopg.errors
 from psycopg import AsyncCursor, sql
 from psycopg.abc import Query, Params
 from psycopg._encodings import pgconn_encoding
@@ -29,6 +30,26 @@ class AsyncLoggingCursor(AsyncCursor):
             )
         try:
             return await super().execute(query, params=params, **kwargs)
+        # --- AI-MODIFIED (2026-04-17) ---
+        # Purpose: UniqueViolation is the expected outcome of the race
+        # inside Row.fetch_or_create() -- two callers SELECT, both miss,
+        # both INSERT, one wins. fetch_or_create() catches the loser and
+        # re-fetches, so the program continues correctly. Logging this
+        # at ERROR with stack_info pollutes the error webhook (Discord
+        # ping spam) and the pm2 error log on every concurrent member
+        # join. Demote to WARNING without a stack trace so the event
+        # is still greppable but not paging anyone. We still re-raise so
+        # callers that DON'T expect the violation surface it normally.
+        except psycopg.errors.UniqueViolation:
+            msg = self.mogrify_query(query)
+            logger.warning(
+                "UniqueViolation on insert (race-handled by caller). "
+                "Query (%s) with parameters %s.",
+                msg, params,
+                extra={'action': "Query Execute"}
+            )
+            raise
+        # --- END AI-MODIFIED ---
         except Exception:
             msg = self.mogrify_query(query)
             logger.exception(

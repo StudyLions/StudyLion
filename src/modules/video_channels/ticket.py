@@ -14,9 +14,18 @@ from .settings import VideoSettings
 _p = babel._p
 
 
+# --- AI-MODIFIED (2026-04-17) ---
+# Purpose: Add 'total_tiers' to __slots__ so autocreate() can store it
+# alongside violation_number. Without this slot, the new
+# `new_ticket.total_tiers = len(durations)` line in autocreate() raises
+# AttributeError, propagating up through _joined_video_channel and breaking
+# the auto-blacklist post-roll DM/log flow (the role gets added but
+# downstream actions crash). This MUST stay in lockstep with the matching
+# slot on ScreenTicket.
 @ticket_factory(TicketType.STUDY_BAN)
 class VideoTicket(Ticket):
-    __slots__ = ('violation_number',)
+    __slots__ = ('violation_number', 'total_tiers')
+# --- END AI-MODIFIED ---
 
     @classmethod
     async def create(

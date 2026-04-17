@@ -180,12 +180,19 @@ class Ticket:
         try:
             async with self.bot.db.connection() as conn:
                 async with conn.cursor() as cur:
+                    # --- AI-MODIFIED (2026-04-17) ---
+                    # The shared connection pool uses psycopg dict_row factory
+                    # (see data/connector.py), so cur.fetchone() returns a
+                    # mapping keyed by column name, not a tuple. Indexing with
+                    # [0] raises KeyError. Alias the COUNT explicitly so the
+                    # code is robust to dict_row.
                     await cur.execute(
-                        f"SELECT COUNT(*) FROM {table_name} WHERE guildid = %s",
+                        f"SELECT COUNT(*) AS tier_count FROM {table_name} WHERE guildid = %s",
                         (self.data.guildid,),
                     )
                     row = await cur.fetchone()
-                    count = int(row[0]) if row and row[0] is not None else 0
+                    count = int(row['tier_count']) if row and row.get('tier_count') is not None else 0
+                    # --- END AI-MODIFIED ---
         except Exception:
             logger.exception(
                 f"Failed to fetch total tiers for ticket {self.data.ticketid}"

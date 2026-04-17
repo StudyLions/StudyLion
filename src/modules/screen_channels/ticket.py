@@ -20,9 +20,15 @@ from .settings import ScreenSettings
 _p = babel._p
 
 
+# --- AI-MODIFIED (2026-04-17) ---
+# Purpose: Add 'total_tiers' to __slots__ so autocreate() can store it
+# alongside violation_number (mirrors the same fix on VideoTicket).
+# Without this slot, the new `new_ticket.total_tiers = len(durations)` line
+# in autocreate() raises AttributeError and breaks the auto-blacklist flow.
 @ticket_factory(TicketType.SCREEN_BAN)
 class ScreenTicket(Ticket):
-    __slots__ = ('violation_number',)
+    __slots__ = ('violation_number', 'total_tiers')
+# --- END AI-MODIFIED ---
 
     @classmethod
     async def create(
