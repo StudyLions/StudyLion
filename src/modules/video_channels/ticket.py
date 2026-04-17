@@ -91,8 +91,9 @@ class VideoTicket(Ticket):
             duration = None
             expiry = None
 
-        # --- AI-MODIFIED (2026-04-03) ---
-        # Purpose: Store violation number on ticket for informative blacklist DM
+        # --- AI-MODIFIED (2026-04-03, updated 2026-04-17) ---
+        # Purpose: Store violation number AND total escalation tiers on the
+        #   ticket so the blacklist DM alert can render "offense #N of M".
         new_ticket = await cls.create(
             bot, target,
             bot.user.id, reason,
@@ -101,8 +102,9 @@ class VideoTicket(Ticket):
         )
         if new_ticket is not None:
             new_ticket.violation_number = count + 1
+            new_ticket.total_tiers = len(durations)
         return new_ticket
-        # --- END AI-MODIFIED ---
+        # --- END AI-MODIFIED --- 
 
     # --- AI-REPLACED (2026-04-03) ---
     # Reason: Add "blacklist lifted" DM notification when blacklist expires/pardoned,

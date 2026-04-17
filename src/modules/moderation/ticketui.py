@@ -459,6 +459,13 @@ class TicketListUI(MessageUI):
         await self.quit()
 
     # ----- UI Flow -----
+    # --- AI-MODIFIED (2026-04-17) ---
+    # Purpose: Append "(offense #N/M)" to STUDY_BAN/SCREEN_BAN ticket lines so
+    #   moderators no longer have to widen filters and manually count to learn
+    #   a target's offense number. Offense info is batch-fetched once per page
+    #   in make_message and cached on each ticket object.
+    _BLACKLIST_TICKET_TYPES = (TicketType.STUDY_BAN, TicketType.SCREEN_BAN)
+
     def _format_ticket(self, ticket) -> str:
         """
         Format a ticket into a single embed line.
@@ -490,9 +497,59 @@ class TicketListUI(MessageUI):
             targetid=data.targetid,
             content=content,
         )
+
+        offense_number = getattr(ticket, '_cached_offense_number', None)
+        total_tiers = getattr(ticket, '_cached_total_tiers', None)
+        if offense_number is not None:
+            if total_tiers:
+                ticketstr = f"{ticketstr} `(offense #{offense_number}/{total_tiers})`"
+            else:
+                ticketstr = f"{ticketstr} `(offense #{offense_number})`"
+
         if data.ticket_state is TicketState.PARDONED:
             ticketstr = f"~~{ticketstr}~~"
         return ticketstr
+
+    async def _hydrate_offense_info(self, tickets):
+        """
+        Batch-populate _cached_offense_number and _cached_total_tiers on
+        STUDY_BAN/SCREEN_BAN tickets in `tickets` (current page only).
+        Memoises total-tier counts per (guildid, ticket_type) so we don't
+        re-query the durations table for each ticket on the same page.
+        """
+        relevant = [
+            t for t in tickets
+            if t.data.ticket_type in self._BLACKLIST_TICKET_TYPES
+            and not hasattr(t, '_cached_offense_number')
+        ]
+        if not relevant:
+            return
+
+        async def _populate(ticket):
+            try:
+                ticket._cached_offense_number = await ticket.get_offense_number()
+            except Exception:
+                logger.exception(
+                    f"Failed to compute offense number for ticket "
+                    f"{ticket.data.ticketid}"
+                )
+                ticket._cached_offense_number = None
+
+        await asyncio.gather(*(_populate(t) for t in relevant))
+
+        tier_cache: dict[tuple[int, TicketType], Optional[int]] = {}
+        for ticket in relevant:
+            key = (ticket.data.guildid, ticket.data.ticket_type)
+            if key not in tier_cache:
+                try:
+                    tier_cache[key] = await ticket.get_total_tiers()
+                except Exception:
+                    logger.exception(
+                        f"Failed to compute total tiers for ticket "
+                        f"{ticket.data.ticketid}"
+                    )
+                    tier_cache[key] = None
+            ticket._cached_total_tiers = tier_cache[key]
 
     async def make_message(self) -> MessageArgs:
         t = self.bot.translator.t
@@ -505,6 +562,7 @@ class TicketListUI(MessageUI):
         )
         tickets = self.current_page
         if tickets:
+            await self._hydrate_offense_info(tickets)
             desc = '\n'.join(self._format_ticket(ticket) for ticket in tickets)
         else:
             desc = t(_p(
@@ -525,6 +583,7 @@ class TicketListUI(MessageUI):
             )
 
         return MessageArgs(embed=embed)
+    # --- END AI-MODIFIED ---
 
     async def refresh_layout(self):
         to_refresh = (

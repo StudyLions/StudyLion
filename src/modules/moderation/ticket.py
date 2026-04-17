@@ -131,6 +131,69 @@ class Ticket:
         else:
             return None
 
+    # --- AI-MODIFIED (2026-04-17) ---
+    # Purpose: Helpers used to surface the "offense N of M" context for
+    #   STUDY_BAN/SCREEN_BAN blacklist tickets in the mod log embed,
+    #   /tickets list, blacklist DM alerts, and dashboard.
+    #   Mirrors the auto-duration count logic in
+    #   VideoTicket.autocreate / ScreenTicket.autocreate (non-pardoned tickets only).
+    _BLACKLIST_DURATION_TABLES = {
+        TicketType.STUDY_BAN: 'studyban_durations',
+        TicketType.SCREEN_BAN: 'screenban_durations',
+    }
+
+    async def get_offense_number(self) -> Optional[int]:
+        """
+        Return the chronological non-pardoned offense number of this ticket
+        among the same target's same-type blacklist tickets in this guild.
+
+        Returns None for non-blacklist ticket types and for pardoned tickets.
+        For a non-pardoned blacklist ticket the value is at least 1.
+        """
+        if self.data.ticket_type not in self._BLACKLIST_DURATION_TABLES:
+            return None
+        if self.data.ticket_state is TicketState.PARDONED:
+            return None
+
+        TicketModel = self.data.__class__
+        row = await TicketModel.table.select_one_where(
+            (TicketModel.ticket_state != TicketState.PARDONED),
+            (TicketModel.ticketid <= self.data.ticketid),
+            guildid=self.data.guildid,
+            targetid=self.data.targetid,
+            ticket_type=self.data.ticket_type,
+        ).with_no_adapter().select(offense_number="COUNT(*)")
+        if not row:
+            return None
+        return int(row[0]['offense_number'] or 0) or None
+
+    async def get_total_tiers(self) -> Optional[int]:
+        """
+        Return the configured number of escalation tiers (durations) for this
+        guild for this blacklist type.
+
+        Returns None for non-blacklist ticket types or if no durations configured.
+        """
+        table_name = self._BLACKLIST_DURATION_TABLES.get(self.data.ticket_type)
+        if not table_name:
+            return None
+        try:
+            async with self.bot.db.connection() as conn:
+                async with conn.cursor() as cur:
+                    await cur.execute(
+                        f"SELECT COUNT(*) FROM {table_name} WHERE guildid = %s",
+                        (self.data.guildid,),
+                    )
+                    row = await cur.fetchone()
+                    count = int(row[0]) if row and row[0] is not None else 0
+        except Exception:
+            logger.exception(
+                f"Failed to fetch total tiers for ticket {self.data.ticketid}"
+            )
+            return None
+        return count or None
+    # --- END AI-MODIFIED ---
+
     async def make_message(self) -> MessageArgs:
         """
         Base form of the ticket message posted to the moderation ticket log.
@@ -177,6 +240,31 @@ class Ticket:
                 name=t(_p('ticket|field:moderator|name', "Moderator")),
                 value=f"<@{data.moderator_id}>"
             )
+        # --- AI-MODIFIED (2026-04-17) ---
+        # Purpose: Surface "Offense #N (Tier N of M)" for STUDY_BAN/SCREEN_BAN
+        #   so mods see the escalation context directly in the ticket log embed.
+        offense_number = await self.get_offense_number()
+        if offense_number is not None:
+            total_tiers = await self.get_total_tiers()
+            if total_tiers:
+                offense_value = t(_p(
+                    'ticket|field:offense|value:with_tiers',
+                    "#{number} (Tier {tier} of {total})"
+                )).format(
+                    number=offense_number,
+                    tier=min(offense_number, total_tiers),
+                    total=total_tiers,
+                )
+            else:
+                offense_value = t(_p(
+                    'ticket|field:offense|value:plain',
+                    "#{number}"
+                )).format(number=offense_number)
+            embed.add_field(
+                name=t(_p('ticket|field:offense|name', "Offense")),
+                value=offense_value,
+            )
+        # --- END AI-MODIFIED ---
         if data.expiry:
             timestamp = discord.utils.format_dt(data.expiry)
             if data.ticket_state is TicketState.EXPIRING:

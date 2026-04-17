@@ -1,6 +1,7 @@
 from typing import Optional
 from collections import defaultdict
 import asyncio
+import datetime as dt
 
 import discord
 from discord.ext import commands as cmds
@@ -12,7 +13,7 @@ from meta.errors import SafeCancellation, UserInputError
 from meta.logger import log_wrap
 from meta.sharding import THIS_SHARD
 from core.data import CoreData
-from utils.lib import utc_now, parse_ranges, parse_time_static
+from utils.lib import utc_now, parse_ranges, parse_time_static, strfdelta
 from utils.ui import input
 
 from wards import low_management_ward, high_management_ward, equippable_role, moderator_ward
@@ -580,6 +581,288 @@ class ModerationCog(LionCog):
         ticketsui = TicketListUI(self.bot, ctx.guild, ctx.author.id, filters=filters)
         await ticketsui.run(ctx.interaction)
         await ticketsui.wait()
+
+    # ============================================================
+    # AI-GENERATED COMMAND BLOCK (2026-04-17)
+    # Purpose: New /strikes <user> command — single-screen disciplinary
+    #   summary for a target showing per-type ticket counts, the configured
+    #   blacklist escalation ladders (with current tier marked), the
+    #   currently-active blacklist (if any), and the most recent offences.
+    #   Designed so mods don't have to manually scroll /tickets to figure out
+    #   "is this a 1st-time offender or a repeat one?".
+    # ============================================================
+    _STRIKES_BLACKLIST_TIER_TABLES = {
+        TicketType.STUDY_BAN: ('studyban_durations', 'Video Blacklist'),
+        TicketType.SCREEN_BAN: ('screenban_durations', 'Screen Blacklist'),
+    }
+    _STRIKES_TYPE_DISPLAY = {
+        TicketType.NOTE: 'Notes',
+        TicketType.WARNING: 'Warnings',
+        TicketType.STUDY_BAN: 'Video Blacklists',
+        TicketType.SCREEN_BAN: 'Screen Blacklists',
+        TicketType.MESSAGE_CENSOR: 'Message Censors',
+        TicketType.INVITE_CENSOR: 'Invite Censors',
+    }
+
+    @staticmethod
+    def _strikes_format_duration(seconds: int) -> str:
+        if seconds is None:
+            return 'Permanent'
+        if seconds <= 0:
+            return '0s'
+        return strfdelta(dt.timedelta(seconds=seconds), short=True).strip()
+
+    async def _strikes_fetch_tier_durations(self, guildid: int, table_name: str) -> list[int]:
+        try:
+            async with self.bot.db.connection() as conn:
+                async with conn.cursor() as cur:
+                    await cur.execute(
+                        f"SELECT duration FROM {table_name} "
+                        f"WHERE guildid = %s ORDER BY rowid",
+                        (guildid,),
+                    )
+                    rows = await cur.fetchall()
+        except Exception:
+            logger.exception(
+                f"Failed to fetch tier ladder for guild {guildid} from {table_name}"
+            )
+            return []
+        return [int(r[0]) for r in rows if r and r[0] is not None]
+
+    @cmds.hybrid_command(
+        name=_p('cmd:strikes', "strikes"),
+        description=_p(
+            'cmd:strikes|desc',
+            "View a member's full strike record: counts, tier ladder, recent offences."
+        )
+    )
+    @appcmds.rename(
+        target=_p('cmd:strikes|param:target', "target"),
+    )
+    @appcmds.describe(
+        target=_p(
+            'cmd:strikes|param:target|desc',
+            "Member or user to look up the strike record for."
+        ),
+    )
+    @appcmds.default_permissions(manage_guild=True)
+    @appcmds.guild_only
+    @moderator_ward
+    async def cmd_strikes(self, ctx: LionContext,
+                          target: discord.Member | discord.User):
+        if not ctx.guild:
+            return
+        if not ctx.interaction:
+            return
+        t = self.bot.translator.t
+
+        await ctx.interaction.response.defer(thinking=True, ephemeral=False)
+
+        all_tickets = await Ticket.fetch_tickets(
+            self.bot,
+            guildid=ctx.guild.id,
+            targetid=target.id,
+        )
+
+        if not all_tickets:
+            embed = discord.Embed(
+                colour=discord.Colour.brand_green(),
+                title=t(_p(
+                    'cmd:strikes|embed:clean|title',
+                    "{user} has a clean record."
+                )).format(user=str(target)),
+                description=t(_p(
+                    'cmd:strikes|embed:clean|desc',
+                    "No moderation tickets have ever been recorded for this member in **{guild}**."
+                )).format(guild=ctx.guild.name),
+            )
+            embed.set_footer(text=f"ID: {target.id}")
+            try:
+                avatar = target.display_avatar.url
+                embed.set_thumbnail(url=avatar)
+            except Exception:
+                pass
+            await ctx.interaction.edit_original_response(embed=embed)
+            return
+
+        counts = defaultdict(lambda: {'total': 0, 'active': 0, 'pardoned': 0})
+        active_expiries: dict[TicketType, Optional[dt.datetime]] = {}
+        active_count_by_type: dict[TicketType, int] = defaultdict(int)
+        for ticket in all_tickets:
+            d = ticket.data
+            counts[d.ticket_type]['total'] += 1
+            if d.ticket_state is TicketState.PARDONED:
+                counts[d.ticket_type]['pardoned'] += 1
+            else:
+                counts[d.ticket_type]['active'] += 1
+
+            if d.ticket_state in (TicketState.OPEN, TicketState.EXPIRING):
+                if d.ticket_type in self._STRIKES_BLACKLIST_TIER_TABLES:
+                    current = active_expiries.get(d.ticket_type)
+                    candidate_expiry = d.expiry
+                    if current is None or (
+                        candidate_expiry is None
+                    ) or (
+                        current is not None and candidate_expiry is not None
+                        and candidate_expiry > current
+                    ):
+                        active_expiries[d.ticket_type] = candidate_expiry
+                    active_count_by_type[d.ticket_type] += 1
+
+        ladders: dict[TicketType, list[int]] = {}
+        for typ, (table, _label) in self._STRIKES_BLACKLIST_TIER_TABLES.items():
+            durations = await self._strikes_fetch_tier_durations(ctx.guild.id, table)
+            if durations:
+                durations.sort()
+            ladders[typ] = durations
+
+        currently_blacklisted = bool(active_expiries)
+        if currently_blacklisted:
+            colour = discord.Colour.dark_red()
+            heading_emoji = '🚫'
+        elif counts.get(TicketType.WARNING, {}).get('active', 0) > 0:
+            colour = discord.Colour.orange()
+            heading_emoji = '⚠️'
+        else:
+            colour = discord.Colour.blurple()
+            heading_emoji = '📋'
+
+        embed = discord.Embed(
+            colour=colour,
+            title=t(_p(
+                'cmd:strikes|embed|title',
+                "{emoji} Strike Record — {user}"
+            )).format(emoji=heading_emoji, user=str(target)),
+            timestamp=utc_now(),
+        )
+        try:
+            embed.set_thumbnail(url=target.display_avatar.url)
+        except Exception:
+            pass
+        embed.set_footer(text=f"ID: {target.id}  ·  {len(all_tickets)} total tickets")
+
+        summary_order = (
+            TicketType.STUDY_BAN,
+            TicketType.SCREEN_BAN,
+            TicketType.WARNING,
+            TicketType.NOTE,
+        )
+        summary_lines = []
+        for typ in summary_order:
+            label = self._STRIKES_TYPE_DISPLAY.get(typ, typ.name)
+            c = counts.get(typ, {'total': 0, 'active': 0, 'pardoned': 0})
+            if c['total'] == 0:
+                summary_lines.append(f"`{label:<18}`  —  none")
+            else:
+                summary_lines.append(
+                    f"`{label:<18}`  —  **{c['active']}** active · {c['pardoned']} pardoned · {c['total']} total"
+                )
+        embed.add_field(
+            name=t(_p('cmd:strikes|field:summary|name', "Summary")),
+            value='\n'.join(summary_lines),
+            inline=False,
+        )
+
+        for typ in (TicketType.STUDY_BAN, TicketType.SCREEN_BAN):
+            label = self._STRIKES_BLACKLIST_TIER_TABLES[typ][1]
+            type_total_active = counts.get(typ, {}).get('active', 0)
+            durations = ladders.get(typ, [])
+            if not durations and type_total_active == 0:
+                continue
+
+            ladder_parts = []
+            for idx, dur in enumerate(durations):
+                fmt = self._strikes_format_duration(dur)
+                if idx == type_total_active and type_total_active < len(durations):
+                    ladder_parts.append(f"**▶ {fmt}**")
+                else:
+                    ladder_parts.append(fmt)
+            ladder_parts.append('Permanent' if type_total_active < len(durations) else '**▶ Permanent**')
+
+            ladder_str = ' → '.join(ladder_parts) if durations else (
+                t(_p('cmd:strikes|field:ladder|value:permanent_only',
+                     "No tier ladder configured — every offence is a permanent blacklist."))
+            )
+
+            if type_total_active >= len(durations) and durations:
+                next_descr = t(_p(
+                    'cmd:strikes|field:ladder|next:permanent',
+                    "Next offence: **Permanent** (escalation ladder exhausted)."
+                ))
+            elif durations:
+                next_dur = durations[type_total_active]
+                next_descr = t(_p(
+                    'cmd:strikes|field:ladder|next:duration',
+                    "Next offence: **{duration}** (tier {tier} of {total})"
+                )).format(
+                    duration=self._strikes_format_duration(next_dur),
+                    tier=type_total_active + 1,
+                    total=len(durations),
+                )
+            else:
+                next_descr = ''
+
+            current_expiry = active_expiries.get(typ)
+            if typ in active_expiries:
+                if current_expiry is not None:
+                    active_line = t(_p(
+                        'cmd:strikes|field:ladder|active:expiring',
+                        "Currently blacklisted — expires {when}."
+                    )).format(when=discord.utils.format_dt(current_expiry, 'R'))
+                else:
+                    active_line = t(_p(
+                        'cmd:strikes|field:ladder|active:permanent',
+                        "Currently blacklisted — **permanent**."
+                    ))
+            else:
+                active_line = ''
+
+            value_lines = []
+            if active_line:
+                value_lines.append(active_line)
+            if ladder_str:
+                value_lines.append(ladder_str)
+            if next_descr:
+                value_lines.append(next_descr)
+
+            embed.add_field(
+                name=t(_p('cmd:strikes|field:ladder|name', "{label} Ladder")).format(label=label),
+                value='\n'.join(value_lines) or 'No data.',
+                inline=False,
+            )
+
+        recent = all_tickets[:5]
+        recent_lines = []
+        for ticket in recent:
+            d = ticket.data
+            content = (d.content or '').strip().replace('\n', ' ')
+            if len(content) > 80:
+                content = content[:77] + '...'
+            elif not content:
+                content = '*no content*'
+            jump = ticket.jump_url
+            ticket_link = f"[#{d.guild_ticketid}]({jump})" if jump else f"#{d.guild_ticketid}"
+            line = (
+                f"• {ticket_link} · {discord.utils.format_dt(d.created_at, 'd')} "
+                f"· `{d.ticket_type.name}[{d.ticket_state.name}]` · {content}"
+            )
+            if d.ticket_state is TicketState.PARDONED:
+                line = f"~~{line}~~"
+            recent_lines.append(line)
+
+        embed.add_field(
+            name=t(_p('cmd:strikes|field:recent|name', "Recent (last {n})")).format(n=len(recent)),
+            value='\n'.join(recent_lines) or t(_p(
+                'cmd:strikes|field:recent|value:empty',
+                "No recent tickets."
+            )),
+            inline=False,
+        )
+
+        await ctx.interaction.edit_original_response(embed=embed)
+    # ============================================================
+    # END AI-GENERATED COMMAND BLOCK
+    # ============================================================
 
     # ----- Configuration -----
     @LionCog.placeholder_group
