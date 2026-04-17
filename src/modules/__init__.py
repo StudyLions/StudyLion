@@ -54,6 +54,11 @@ active = [
     # Purpose: Anti AFK System premium feature (website-only config)
     '.anti_afk',
     # --- END AI-MODIFIED ---
+    # --- AI-MODIFIED (2026-04-17) ---
+    # Purpose: Name sync listeners (on_member_join/update, on_user_update)
+    # so the dashboard members list keeps real names instead of placeholders.
+    '.name_sync',
+    # --- END AI-MODIFIED ---
 ]
 
 
