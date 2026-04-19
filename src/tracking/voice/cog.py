@@ -51,6 +51,16 @@ class VoiceTrackerCog(LionCog):
         self._untracked_refresh_task = None
         # --- END AI-MODIFIED ---
 
+        # --- AI-MODIFIED (2026-04-19) ---
+        # Purpose: Background task to periodically reconcile voice_sessions_ongoing
+        # rows against Discord's authoritative voice state, closing "ghost" sessions
+        # left behind by missed voice_state_update events (gateway resume races).
+        # As of 2026-04-19 there were 1022 stale rows fleet-wide and many users
+        # with simultaneous "ongoing" sessions in two different guilds (impossible
+        # per Discord, so one of them is always wrong).
+        self._ghost_session_task = None
+        # --- END AI-MODIFIED ---
+
         self.active_sessions = VoiceSession._active_sessions_
 
     async def _monitor(self):
@@ -141,6 +151,14 @@ class VoiceTrackerCog(LionCog):
         )
         # --- END AI-MODIFIED ---
 
+        # --- AI-MODIFIED (2026-04-19) ---
+        # Purpose: Start periodic ghost-session reconciler (see __init__ for context).
+        self._ghost_session_task = asyncio.create_task(
+            self._periodic_ghost_session_reconcile(),
+            name='periodic-ghost-session-reconcile'
+        )
+        # --- END AI-MODIFIED ---
+
         configcog = self.bot.get_cog('ConfigCog')
         if configcog is None:
             logger.critical(
@@ -160,6 +178,12 @@ class VoiceTrackerCog(LionCog):
         if self._untracked_refresh_task is not None:
             self._untracked_refresh_task.cancel()
             self._untracked_refresh_task = None
+        # --- END AI-MODIFIED ---
+        # --- AI-MODIFIED (2026-04-19) ---
+        # Purpose: Cancel periodic ghost-session reconciler on cog unload
+        if self._ghost_session_task is not None:
+            self._ghost_session_task.cancel()
+            self._ghost_session_task = None
         # --- END AI-MODIFIED ---
 
     # --- AI-MODIFIED (2026-04-07) ---
@@ -198,6 +222,91 @@ class VoiceTrackerCog(LionCog):
                 raise
             except Exception:
                 logger.exception("Error in periodic untracked channels refresh")
+    # --- END AI-MODIFIED ---
+
+    # --- AI-MODIFIED (2026-04-19) ---
+    # Purpose: Periodic ghost-session reconciler.
+    #
+    # Discord's gateway can drop voice_state_update events during brief
+    # disconnects/resumes, leaving voice_sessions_ongoing rows for users who
+    # actually left their channel a long time ago. The schedule cog used to
+    # treat these as "currently in voice" and incorrectly credited attendance.
+    # Even with the schedule cog now using Discord state directly (see
+    # schedule/cog.py and schedule/core/timeslot.py 2026-04-19), the bloat in
+    # voice_sessions_ongoing causes cap miscalculations, dashboard noise, and
+    # a slow reload at restart.
+    #
+    # Strategy: every 10 minutes, walk this shard's voice_sessions_ongoing
+    # rows. For each row, ask Discord (via guild.get_member().voice) whether
+    # the member is actually in the recorded channel. If not, close the
+    # ongoing session at NOW and cancel the in-memory VoiceSession. We hold
+    # the tracking_lock so this can't race with session_voice_tracker.
+    #
+    # Conservative safety rails:
+    #   - Only close when we are confident the member is NOT in the channel
+    #     (member object found, voice state cached, channel mismatch). If
+    #     guild/member/voice is unknown, we leave the row alone.
+    #   - Skip rows younger than 5 minutes to avoid races with start_task
+    #     which may not yet have written to the DB.
+    #   - Close in batches via close_voice_sessions_at, which the existing
+    #     reconciliation code already uses.
+    async def _periodic_ghost_session_reconcile(self):
+        await self.initialised.wait()
+        while True:
+            await asyncio.sleep(600)
+            try:
+                await self._reconcile_ghost_sessions_once()
+            except asyncio.CancelledError:
+                raise
+            except Exception:
+                logger.exception("Error in periodic ghost-session reconciler")
+
+    async def _reconcile_ghost_sessions_once(self):
+        async with self.tracking_lock:
+            now = utc_now()
+            min_age = dt.timedelta(minutes=5)
+
+            ongoing = await self.data.VoiceSessionsOngoing.fetch_where(THIS_SHARD)
+            if not ongoing:
+                return
+
+            to_close = []  # (guildid, userid, end_at)
+            for row in ongoing:
+                if row.start_time and (now - row.start_time) < min_age:
+                    continue
+                guild = self.bot.get_guild(row.guildid)
+                if guild is None:
+                    continue
+                member = guild.get_member(row.userid)
+                if member is None:
+                    continue
+                # Member exists in this guild's cache. If their voice state
+                # disagrees with the ongoing row, the row is a ghost.
+                voice = member.voice
+                actual_channelid = voice.channel.id if (voice and voice.channel) else None
+                if actual_channelid != row.channelid:
+                    to_close.append((row.guildid, row.userid, now))
+
+            if not to_close:
+                return
+
+            logger.info(
+                f"Ghost-session reconciler closing {len(to_close)} stale "
+                "voice_sessions_ongoing row(s) on this shard."
+            )
+            await self.data.VoiceSessionsOngoing.close_voice_sessions_at(*to_close)
+
+            # Drop matching in-memory active sessions so the next join
+            # doesn't see stale state. We already hold tracking_lock so
+            # session_voice_tracker can't be running concurrently.
+            for gid, uid, _ in to_close:
+                gsessions = self.active_sessions.get(gid)
+                if not gsessions:
+                    continue
+                session = gsessions.get(uid)
+                if session is not None and session.activity is SessionState.ONGOING:
+                    session.cancel()
+                    gsessions.pop(uid, None)
     # --- END AI-MODIFIED ---
 
     # ----- Cog API -----

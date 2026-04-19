@@ -221,15 +221,51 @@ class TimeSlot:
                     for sm in sg.members.values():
                         sm.clock = clocks[(sm.guildid, sm.userid)]
 
-            # Mark current attendance using current voice session
+            # --- AI-REPLACED (2026-04-19) ---
+            # Reason: Original code only checked voice tracker's ONGOING sessions,
+            # which silently fails for two cases:
+            #   1. Cap-blocked: when a member has hit their daily voice cap, their
+            #      voice tracker session is PENDING (scheduled for tomorrow), not
+            #      ONGOING. They get marked as missing even though they're physically
+            #      in the voice channel.
+            #   2. Ghost sessions: voice_sessions_ongoing rows that weren't cleaned
+            #      up (gateway resume races, ~1022 across the fleet on 2026-04-19)
+            #      would falsely credit attendance for members who've already left.
+            # What the new code does better: checks Discord's authoritative voice
+            # state (member.voice.channel) directly, falling back to voice tracker
+            # data only when Discord state is unavailable (e.g. uncached member).
+            # --- Original code (commented out for rollback) ---
+            # for session in sessions:
+            #     for smember in session.members.values():
+            #         voice_session = tracker.get_session(smember.data.guildid, smember.data.userid)
+            #         smember.clock_start = None
+            #         if voice_session is not None and voice_session.activity is SessionState.ONGOING:
+            #             if session.validate_channel(voice_session.data.channelid):
+            #                 smember.clock_start = max(voice_session.data.start_time, self.start_at)
+            #     session.listening = True
+            # --- End original code ---
             for session in sessions:
+                guild = session.guild
                 for smember in session.members.values():
-                    voice_session = tracker.get_session(smember.data.guildid, smember.data.userid)
                     smember.clock_start = None
-                    if voice_session is not None and voice_session.activity is SessionState.ONGOING:
-                        if session.validate_channel(voice_session.data.channelid):
-                            smember.clock_start = max(voice_session.data.start_time, self.start_at)
+                    current_channelid = None
+                    # 1) Authoritative source: Discord's cached voice state
+                    if guild is not None:
+                        mobj = guild.get_member(smember.data.userid)
+                        if mobj is not None and mobj.voice is not None and mobj.voice.channel is not None:
+                            current_channelid = mobj.voice.channel.id
+                    # 2) Fallback: voice tracker's view (only for ONGOING sessions
+                    #    where the member is uncached and Discord state is missing).
+                    #    Skip PENDING (cap-blocked) here - we'd rather mark them
+                    #    missing than falsely credit a ghost session.
+                    if current_channelid is None:
+                        voice_session = tracker.get_session(smember.data.guildid, smember.data.userid)
+                        if voice_session is not None and voice_session.activity is SessionState.ONGOING:
+                            current_channelid = voice_session.data.channelid
+                    if current_channelid is not None and session.validate_channel(current_channelid):
+                        smember.clock_start = self.start_at
                 session.listening = True
+            # --- END AI-REPLACED ---
         finally:
             tracking_lock.release()
             [lock.release() for lock in session_locks]

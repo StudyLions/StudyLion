@@ -742,6 +742,98 @@ class ScheduleCog(LionCog):
                 f"Unexpected exception while clocking off voice sessions {session_data!r}"
             )
 
+    # --- AI-MODIFIED (2026-04-19) ---
+    # Purpose: Track scheduled session attendance directly from voice_state_update
+    # events instead of relying solely on the voice tracker's voice_session_start/end
+    # events, which silently fail in two cases:
+    #
+    #   1. CAP-BLOCKED: when a user has hit their daily_voice_cap, the voice tracker
+    #      schedules their session as PENDING for tomorrow and does NOT dispatch
+    #      voice_session_start when they join a channel. Their scheduled-session
+    #      attendance therefore never gets clocked even though they ARE physically
+    #      present in the voice channel. (Support ticket from amethyst, 2026-04-19,
+    #      user 816661351715569674 marked missing for slots 1776513600 + 1776520800.)
+    #
+    #   2. GHOST SESSIONS: if the bot misses a voice_state_update (e.g. during a
+    #      gateway resume), the user's voice_sessions_ongoing row stays open even
+    #      after they leave. The schedule cog would then keep "crediting" them
+    #      because tracker.get_session() reports an ONGOING state.
+    #
+    # This direct listener uses Discord's authoritative voice state (the
+    # voice_state_update event payload) and is idempotent with the existing
+    # voice_session_start/end based listeners above (clock_on() handles
+    # already-clocked, and the clock_start None-check handles already-clocked-off).
+    @LionCog.listener('on_voice_state_update')
+    @log_wrap(action="Schedule Voice State")
+    async def schedule_voice_state_handler(self, member, before, after):
+        """Direct voice-state-based attendance tracker.
+
+        Fires for every voice_state_update; cheap fast-path exits when the
+        member has no booking in the current slot. Handles channel join,
+        leave, and move atomically under the session lock.
+        """
+        if member.bot:
+            return
+        try:
+            await self.initialised.wait()
+            bchannel = before.channel if before else None
+            achannel = after.channel if after else None
+            # Only care about channel changes (not video/stream toggles)
+            if bchannel == achannel:
+                return
+
+            now = utc_now()
+            nowid = time_to_slotid(now)
+            async with self.slotlock(nowid):
+                slot = self.active_slots.get(nowid, None)
+                if slot is None:
+                    return
+                session = slot.sessions.get(member.guild.id, None)
+                if session is None:
+                    return
+                smember = session.members.get(member.id, None)
+                if smember is None:
+                    return
+
+                async with session.lock:
+                    if not session.listening:
+                        # _reset_clocks hasn't run yet for this session.
+                        # The member's initial state will be captured at open() time,
+                        # so we skip and let that path handle it.
+                        return
+
+                    # Was the member clocked on in a valid channel they just left?
+                    if (
+                        bchannel is not None
+                        and smember.clock_start is not None
+                        and session.validate_channel(bchannel.id)
+                    ):
+                        smember.clock_off(now)
+                        session.update_status_soon()
+                        logger.debug(
+                            f"Schedule voice-state clocked OFF member <uid:{member.id}> "
+                            f"from session {session!r} (left channel <cid:{bchannel.id}>)"
+                        )
+
+                    # Did they join a valid channel and aren't already clocked on?
+                    if (
+                        achannel is not None
+                        and smember.clock_start is None
+                        and session.validate_channel(achannel.id)
+                    ):
+                        smember.clock_on(now)
+                        session.update_status_soon()
+                        logger.debug(
+                            f"Schedule voice-state clocked ON member <uid:{member.id}> "
+                            f"in session {session!r} (joined channel <cid:{achannel.id}>)"
+                        )
+        except Exception:
+            logger.exception(
+                f"Unexpected exception in schedule voice-state handler "
+                f"for member <uid:{member.id}> in <gid:{member.guild.id}>"
+            )
+    # --- END AI-MODIFIED ---
+
     # Schedule commands
     @cmds.hybrid_command(
         name=_p('cmd:schedule', "schedule"),
