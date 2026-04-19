@@ -303,6 +303,32 @@ class AntiAfkCog(LionCog):
             return False
         return True
 
+    # --- AI-MODIFIED (2026-04-19) ---
+    # Purpose: Bug fix -- AFK checks were firing in voice channels under
+    # untracked categories (user-reported). The AFK module had its own
+    # exclude_channels list but ignored the guild-wide untracked_channels
+    # list (which is what users configure in the dashboard's voice tracker
+    # to mark hangout/chat-only categories). Reuse the voice tracker's
+    # is_untracked() method which already handles both individual channel
+    # IDs and category IDs.
+    def _is_guild_untracked(self, channel) -> bool:
+        """Return True if the channel (or its parent category) is in the
+        guild's voice-tracker untracked_channels list.
+
+        This keeps AFK behaviour consistent with study-time tracking: if
+        time isn't tracked in a channel, AFK checks shouldn't fire there
+        either. Falls back to False when the voice tracker cog isn't
+        loaded so we don't accidentally block all checks on bot startup.
+        """
+        voice_cog = self.bot.get_cog('VoiceTrackerCog')
+        if voice_cog is None:
+            return False
+        try:
+            return voice_cog.is_untracked(channel)
+        except (ValueError, AttributeError):
+            return False
+    # --- END AI-MODIFIED ---
+
     def _channel_user_count(self, channel: discord.VoiceChannel) -> int:
         return sum(1 for m in channel.members if not m.bot)
 
@@ -336,6 +362,16 @@ class AntiAfkCog(LionCog):
             existing = guild_users.get(userid)
 
             if existing and existing.channelid != joined_channel.id:
+                # --- AI-MODIFIED (2026-04-19) ---
+                # Purpose: If the user moved into an untracked channel,
+                # stop tracking them entirely instead of just resetting
+                # the timer. Otherwise we'd keep firing checks on someone
+                # in a hangout/chat-only category.
+                if self._is_guild_untracked(joined_channel):
+                    self._remove_user(guildid, userid)
+                    return
+                # --- END AI-MODIFIED ---
+
                 # Channel switch: cancel pending check, reset timer (activity proof)
                 async with existing.lock:
                     existing.cancel()
@@ -371,6 +407,14 @@ class AntiAfkCog(LionCog):
 
         if not self._is_channel_applicable(channel.id, config):
             return
+
+        # --- AI-MODIFIED (2026-04-19) ---
+        # Purpose: Skip AFK tracking for channels in the guild's
+        # untracked_channels list (handles category IDs too). See
+        # _is_guild_untracked() for context.
+        if self._is_guild_untracked(channel):
+            return
+        # --- END AI-MODIFIED ---
 
         if self._is_in_pomodoro(channel.id):
             return
@@ -537,6 +581,12 @@ class AntiAfkCog(LionCog):
             ):
                 if not self._is_channel_applicable(channel.id, config):
                     continue
+                # --- AI-MODIFIED (2026-04-19) ---
+                # Purpose: Skip channels in the guild's untracked_channels
+                # list (incl. category matches). See _is_guild_untracked().
+                if self._is_guild_untracked(channel):
+                    continue
+                # --- END AI-MODIFIED ---
                 if self._is_in_pomodoro(channel.id):
                     continue
 
@@ -649,6 +699,16 @@ class AntiAfkCog(LionCog):
                 ):
                     self._remove_user(guildid, tu.userid)
                     continue
+
+                # --- AI-MODIFIED (2026-04-19) ---
+                # Purpose: Catch the case where the guild added this
+                # channel/category to untracked_channels after the user
+                # was already being tracked. Drop them so we don't keep
+                # firing AFK prompts in a now-untracked channel.
+                if self._is_guild_untracked(channel):
+                    self._remove_user(guildid, tu.userid)
+                    continue
+                # --- END AI-MODIFIED ---
 
                 # Exempt role check
                 if self._has_exempt_role(member, config):
