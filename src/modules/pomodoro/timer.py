@@ -589,34 +589,81 @@ class Timer:
                     logger.warning(f"Timed out while connecting to voice channel in timer {self!r}")
                     return
 
-                with open(alert_file, 'rb') as audio_stream:
-                    finished = asyncio.Event()
-                    # --- AI-REPLACED (2026-03-14) ---
-                    # Reason: get_event_loop() deprecated in async context
-                    # --- Original code ---
-                    # loop = asyncio.get_event_loop()
-                    # --- End original code ---
-                    loop = asyncio.get_running_loop()
-                    # --- END AI-REPLACED ---
+                # --- AI-REPLACED (2026-04-20) ---
+                # Reason: discord.PCMAudio expects RAW PCM 16-bit signed LE at 48kHz stereo,
+                # but our alert files are 44.1kHz WAV files (with RIFF headers).
+                # The old code sent the WAV header bytes as PCM (a click/burst at the start)
+                # then sent 44.1kHz audio as if it were 48kHz, producing garbled / inaudible
+                # output. This is exactly the long-standing "bot joins but no sound plays" bug.
+                # FFmpegPCMAudio launches ffmpeg to decode the WAV file and resample to the
+                # correct 48kHz stereo PCM format Discord requires. This is the same pattern
+                # used by the SoundsBot, which plays audio reliably.
+                # --- Original code (commented out for rollback) ---
+                # with open(alert_file, 'rb') as audio_stream:
+                #     finished = asyncio.Event()
+                #     # --- AI-REPLACED (2026-03-14) ---
+                #     # Reason: get_event_loop() deprecated in async context
+                #     # --- Original code ---
+                #     # loop = asyncio.get_event_loop()
+                #     # --- End original code ---
+                #     loop = asyncio.get_running_loop()
+                #     # --- END AI-REPLACED ---
+                #
+                #     def voice_callback(error):
+                #         if error:
+                #             try:
+                #                 raise error
+                #             except Exception:
+                #                 logger.exception(
+                #                     f"Callback exception occured while playing voice alert for timer {self!r}"
+                #                 )
+                #         loop.call_soon_threadsafe(finished.set)
+                #
+                #     voice_client.play(discord.PCMAudio(audio_stream), after=voice_callback)
+                #
+                #     # Quit when we finish playing or after 10 seconds, whichever comes first
+                #     sleep_task = asyncio.create_task(asyncio.sleep(10))
+                #     wait_task = asyncio.create_task(finished.wait(), name='timer-voice-waiting')
+                #     _, pending = await asyncio.wait([sleep_task, wait_task], return_when=asyncio.FIRST_COMPLETED)
+                #     for task in pending:
+                #         task.cancel()
+                # --- End original code ---
+                finished = asyncio.Event()
+                loop = asyncio.get_running_loop()
 
-                    def voice_callback(error):
-                        if error:
-                            try:
-                                raise error
-                            except Exception:
-                                logger.exception(
-                                    f"Callback exception occured while playing voice alert for timer {self!r}"
-                                )
-                        loop.call_soon_threadsafe(finished.set)
+                def voice_callback(error):
+                    if error:
+                        try:
+                            raise error
+                        except Exception:
+                            logger.exception(
+                                f"Callback exception occured while playing voice alert for timer {self!r}"
+                            )
+                    loop.call_soon_threadsafe(finished.set)
 
-                    voice_client.play(discord.PCMAudio(audio_stream), after=voice_callback)
+                try:
+                    audio_source = discord.FFmpegPCMAudio(alert_file)
+                except Exception:
+                    logger.exception(
+                        f"Failed to create FFmpegPCMAudio source for timer {self!r}"
+                    )
+                    return
 
-                    # Quit when we finish playing or after 10 seconds, whichever comes first
-                    sleep_task = asyncio.create_task(asyncio.sleep(10))
+                voice_client.play(audio_source, after=voice_callback)
+
+                try:
+                    sleep_task = asyncio.create_task(asyncio.sleep(15))
                     wait_task = asyncio.create_task(finished.wait(), name='timer-voice-waiting')
-                    _, pending = await asyncio.wait([sleep_task, wait_task], return_when=asyncio.FIRST_COMPLETED)
+                    _, pending = await asyncio.wait(
+                        [sleep_task, wait_task], return_when=asyncio.FIRST_COMPLETED
+                    )
                     for task in pending:
                         task.cancel()
+                finally:
+                    if voice_client.is_playing():
+                        voice_client.stop()
+                    audio_source.cleanup()
+                # --- END AI-REPLACED ---
             except asyncio.TimeoutError:
                 logger.warning(
                     f"Timed out while sending voice alert for timer {self!r}",
