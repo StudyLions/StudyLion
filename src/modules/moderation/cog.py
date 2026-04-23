@@ -13,7 +13,7 @@ from meta.errors import SafeCancellation, UserInputError
 from meta.logger import log_wrap
 from meta.sharding import THIS_SHARD
 from core.data import CoreData
-from utils.lib import utc_now, parse_ranges, parse_time_static, strfdelta
+from utils.lib import utc_now, parse_ranges, parse_time_static, strfdelta, jumpto
 from utils.ui import input
 
 from wards import low_management_ward, high_management_ward, equippable_role, moderator_ward
@@ -642,6 +642,96 @@ class ModerationCog(LionCog):
         return result
         # --- END AI-MODIFIED ---
 
+    # --- AI-MODIFIED (2026-04-19) ---
+    # Purpose: Ticket #0022 — /strikes was getting stuck on "thinking..." for
+    #   users with many offenses. Root cause: Ticket.fetch_tickets() queries
+    #   the `ticket_info` VIEW which has a row_number() OVER (PARTITION BY
+    #   guildid ORDER BY ticketid) window function. That window has to be
+    #   computed across the entire guild's ticket history before WHERE
+    #   targetid=? can filter (Postgres can't push a non-partition predicate
+    #   past a window). On big servers with thousands of historical tickets
+    #   this is slow, and SELECT * also pulls the file_data BYTEA column
+    #   which can be megabytes per row.
+    #
+    #   Replaces the single fetch_tickets() call with three targeted queries
+    #   against the underlying `tickets` table:
+    #     1) GROUP BY aggregation -> at most ~16 rows of count summary
+    #     2) Active OPEN/EXPIRING blacklist rows -> at most a couple of rows
+    #     3) Recent 5 with explicit column list -> bounded payload, no BYTEA
+    #
+    #   guild_ticketid (per-guild #N display) is dropped from the recent list
+    #   because computing it requires the same expensive window function.
+    #   The jump-to-mod-log link still works since we keep log_msg_id, so mods
+    #   can still click through to the full ticket. The ticket numbering is
+    #   still visible in /tickets and the mod-log embeds, just not in this
+    #   summary screen.
+    async def _strikes_fetch_data(self, guildid: int, targetid: int):
+        """
+        Fast data fetch for /strikes that bypasses the slow ticket_info view.
+
+        Returns a tuple of (counts, active_blacklists, recent_rows):
+          counts            -- list of dict rows {ticket_type, ticket_state, c}
+          active_blacklists -- list of dict rows {ticket_type, expiry}
+                               (only OPEN/EXPIRING STUDY_BAN/SCREEN_BAN tickets)
+          recent_rows       -- list of dict rows for the 5 newest tickets,
+                               ordered ticketid DESC, columns:
+                               ticketid, ticket_type, ticket_state, expiry,
+                               log_msg_id, content, created_at
+        """
+        async with self.bot.db.connection() as conn:
+            async with conn.cursor() as cur:
+                await cur.execute(
+                    "SELECT ticket_type, ticket_state, COUNT(*) AS c "
+                    "FROM tickets WHERE guildid = %s AND targetid = %s "
+                    "GROUP BY ticket_type, ticket_state",
+                    (guildid, targetid),
+                )
+                counts = list(await cur.fetchall())
+
+                await cur.execute(
+                    "SELECT ticket_type, expiry FROM tickets "
+                    "WHERE guildid = %s AND targetid = %s "
+                    "AND ticket_state IN ('OPEN', 'EXPIRING') "
+                    "AND ticket_type IN ('STUDY_BAN', 'SCREEN_BAN')",
+                    (guildid, targetid),
+                )
+                active = list(await cur.fetchall())
+
+                await cur.execute(
+                    "SELECT ticketid, ticket_type, ticket_state, expiry, "
+                    "log_msg_id, content, created_at "
+                    "FROM tickets "
+                    "WHERE guildid = %s AND targetid = %s "
+                    "ORDER BY ticketid DESC LIMIT 5",
+                    (guildid, targetid),
+                )
+                recent = list(await cur.fetchall())
+        return counts, active, recent
+
+    @staticmethod
+    def _strikes_coerce_type(raw) -> Optional[TicketType]:
+        """Convert a raw DB value (string or enum) to a TicketType, or None."""
+        if raw is None:
+            return None
+        if isinstance(raw, TicketType):
+            return raw
+        try:
+            return TicketType[raw] if isinstance(raw, str) else TicketType(raw)
+        except (KeyError, ValueError):
+            return None
+
+    @staticmethod
+    def _strikes_coerce_state(raw) -> Optional[TicketState]:
+        if raw is None:
+            return None
+        if isinstance(raw, TicketState):
+            return raw
+        try:
+            return TicketState[raw] if isinstance(raw, str) else TicketState(raw)
+        except (KeyError, ValueError):
+            return None
+    # --- END AI-MODIFIED ---
+
     @cmds.hybrid_command(
         name=_p('cmd:strikes', "strikes"),
         description=_p(
@@ -671,13 +761,48 @@ class ModerationCog(LionCog):
 
         await ctx.interaction.response.defer(thinking=True, ephemeral=False)
 
-        all_tickets = await Ticket.fetch_tickets(
-            self.bot,
-            guildid=ctx.guild.id,
-            targetid=target.id,
-        )
+        # --- AI-REPLACED (2026-04-19) ---
+        # Reason: Ticket #0022 — for users with many offenses, the original
+        #   call to Ticket.fetch_tickets() hit the `ticket_info` view's
+        #   row_number() OVER (PARTITION BY guildid) window, which has to be
+        #   computed across the entire guild's ticket history before WHERE
+        #   targetid filters. Combined with SELECT * pulling BYTEA file_data,
+        #   the interaction stayed stuck on "thinking..." for high-offense
+        #   users in big servers (reported by amethyst @ StudyWithMe 2026-04-17).
+        # What the new code does better: 3 small targeted queries against the
+        #   `tickets` table (no view, no BYTEA): one GROUP BY for counts, one
+        #   filter for active blacklists, one LIMIT 5 for recent. Bounded
+        #   payload regardless of total ticket count.
+        # --- Original code (commented out for rollback) ---
+        # all_tickets = await Ticket.fetch_tickets(
+        #     self.bot,
+        #     guildid=ctx.guild.id,
+        #     targetid=target.id,
+        # )
+        # --- End original code ---
+        try:
+            count_rows, active_rows, recent_rows = await self._strikes_fetch_data(
+                ctx.guild.id, target.id,
+            )
+        except Exception:
+            logger.exception(
+                f"/strikes data fetch failed for guild={ctx.guild.id} target={target.id}"
+            )
+            await ctx.interaction.edit_original_response(
+                content=t(_p(
+                    'cmd:strikes|error:fetch_failed',
+                    "Sorry, I couldn't load this member's strike record. "
+                    "Please try again in a moment, or check `/tickets` directly."
+                )),
+            )
+            return
+        # --- END AI-REPLACED ---
 
-        if not all_tickets:
+        # --- AI-MODIFIED (2026-04-19) ---
+        # Purpose: Build counts / active_expiries from the lightweight count
+        # and active queries instead of looping through every Ticket object.
+        total_tickets = sum(int(r.get('c', 0) or 0) for r in count_rows)
+        if total_tickets == 0:
             embed = discord.Embed(
                 colour=discord.Colour.brand_green(),
                 title=t(_p(
@@ -701,26 +826,34 @@ class ModerationCog(LionCog):
         counts = defaultdict(lambda: {'total': 0, 'active': 0, 'pardoned': 0})
         active_expiries: dict[TicketType, Optional[dt.datetime]] = {}
         active_count_by_type: dict[TicketType, int] = defaultdict(int)
-        for ticket in all_tickets:
-            d = ticket.data
-            counts[d.ticket_type]['total'] += 1
-            if d.ticket_state is TicketState.PARDONED:
-                counts[d.ticket_type]['pardoned'] += 1
+        for row in count_rows:
+            t_type = self._strikes_coerce_type(row.get('ticket_type'))
+            t_state = self._strikes_coerce_state(row.get('ticket_state'))
+            n = int(row.get('c', 0) or 0)
+            if t_type is None or t_state is None or n <= 0:
+                continue
+            counts[t_type]['total'] += n
+            if t_state is TicketState.PARDONED:
+                counts[t_type]['pardoned'] += n
             else:
-                counts[d.ticket_type]['active'] += 1
+                counts[t_type]['active'] += n
 
-            if d.ticket_state in (TicketState.OPEN, TicketState.EXPIRING):
-                if d.ticket_type in self._STRIKES_BLACKLIST_TIER_TABLES:
-                    current = active_expiries.get(d.ticket_type)
-                    candidate_expiry = d.expiry
-                    if current is None or (
-                        candidate_expiry is None
-                    ) or (
-                        current is not None and candidate_expiry is not None
-                        and candidate_expiry > current
-                    ):
-                        active_expiries[d.ticket_type] = candidate_expiry
-                    active_count_by_type[d.ticket_type] += 1
+        for row in active_rows:
+            t_type = self._strikes_coerce_type(row.get('ticket_type'))
+            if t_type is None or t_type not in self._STRIKES_BLACKLIST_TIER_TABLES:
+                continue
+            candidate_expiry = row.get('expiry')
+            current = active_expiries.get(t_type)
+            # "Permanent" (NULL expiry) wins over any timed expiry; otherwise
+            # keep the latest expiry so the user sees when their ban actually ends.
+            if t_type not in active_expiries:
+                active_expiries[t_type] = candidate_expiry
+            elif candidate_expiry is None:
+                active_expiries[t_type] = None
+            elif current is not None and candidate_expiry > current:
+                active_expiries[t_type] = candidate_expiry
+            active_count_by_type[t_type] += 1
+        # --- END AI-MODIFIED ---
 
         ladders: dict[TicketType, list[int]] = {}
         for typ, (table, _label) in self._STRIKES_BLACKLIST_TIER_TABLES.items():
@@ -752,7 +885,12 @@ class ModerationCog(LionCog):
             embed.set_thumbnail(url=target.display_avatar.url)
         except Exception:
             pass
-        embed.set_footer(text=f"ID: {target.id}  ·  {len(all_tickets)} total tickets")
+        # --- AI-MODIFIED (2026-04-19) ---
+        # Reason: Ticket #0022 — total_tickets now comes from the GROUP BY
+        # count query instead of len(all_tickets) since we no longer fetch
+        # every ticket as a Ticket object.
+        embed.set_footer(text=f"ID: {target.id}  ·  {total_tickets} total tickets")
+        # --- END AI-MODIFIED ---
 
         summary_order = (
             TicketType.STUDY_BAN,
@@ -844,33 +982,76 @@ class ModerationCog(LionCog):
                 inline=False,
             )
 
-        recent = all_tickets[:5]
+        # --- AI-REPLACED (2026-04-19) ---
+        # Reason: Ticket #0022 — recent_rows are now lightweight dict rows
+        #   instead of Ticket objects. The per-guild ticket # display
+        #   (#42 etc.) was dropped from this summary because computing
+        #   guild_ticketid requires the same expensive window function we
+        #   replaced. Mods can still jump to the full ticket via the link
+        #   (built from log_msg_id directly), and the per-guild number is
+        #   still visible in /tickets and the mod-log embeds themselves.
+        # What the new code does better: works for users with thousands of
+        #   offenses without timing out, since recent_rows is bounded to 5.
+        # --- Original code (commented out for rollback) ---
+        # recent = all_tickets[:5]
+        # recent_lines = []
+        # for ticket in recent:
+        #     d = ticket.data
+        #     content = (d.content or '').strip().replace('\n', ' ')
+        #     if len(content) > 80:
+        #         content = content[:77] + '...'
+        #     elif not content:
+        #         content = '*no content*'
+        #     jump = ticket.jump_url
+        #     ticket_link = f"[#{d.guild_ticketid}]({jump})" if jump else f"#{d.guild_ticketid}"
+        #     line = (
+        #         f"• {ticket_link} · {discord.utils.format_dt(d.created_at, 'd')} "
+        #         f"· `{d.ticket_type.name}[{d.ticket_state.name}]` · {content}"
+        #     )
+        #     if d.ticket_state is TicketState.PARDONED:
+        #         line = f"~~{line}~~"
+        #     recent_lines.append(line)
+        # --- End original code ---
+        ticket_log_id = ctx.lguild.config.get(ModerationSettings.TicketLog.setting_id).data
         recent_lines = []
-        for ticket in recent:
-            d = ticket.data
-            content = (d.content or '').strip().replace('\n', ' ')
+        for row in recent_rows:
+            r_type = self._strikes_coerce_type(row.get('ticket_type'))
+            r_state = self._strikes_coerce_state(row.get('ticket_state'))
+            content = (row.get('content') or '').strip().replace('\n', ' ')
             if len(content) > 80:
                 content = content[:77] + '...'
             elif not content:
                 content = '*no content*'
-            jump = ticket.jump_url
-            ticket_link = f"[#{d.guild_ticketid}]({jump})" if jump else f"#{d.guild_ticketid}"
-            line = (
-                f"• {ticket_link} · {discord.utils.format_dt(d.created_at, 'd')} "
-                f"· `{d.ticket_type.name}[{d.ticket_state.name}]` · {content}"
+            log_msg_id = row.get('log_msg_id')
+            if ticket_log_id and log_msg_id:
+                jump = jumpto(ctx.guild.id, ticket_log_id, log_msg_id)
+                ticket_link = f"[Ticket]({jump})"
+            else:
+                ticket_link = "Ticket"
+            type_name = r_type.name if r_type is not None else '?'
+            state_name = r_state.name if r_state is not None else '?'
+            created_at = row.get('created_at')
+            date_part = (
+                discord.utils.format_dt(created_at, 'd')
+                if created_at is not None else '?'
             )
-            if d.ticket_state is TicketState.PARDONED:
+            line = (
+                f"• {ticket_link} · {date_part} "
+                f"· `{type_name}[{state_name}]` · {content}"
+            )
+            if r_state is TicketState.PARDONED:
                 line = f"~~{line}~~"
             recent_lines.append(line)
 
         embed.add_field(
-            name=t(_p('cmd:strikes|field:recent|name', "Recent (last {n})")).format(n=len(recent)),
+            name=t(_p('cmd:strikes|field:recent|name', "Recent (last {n})")).format(n=len(recent_rows)),
             value='\n'.join(recent_lines) or t(_p(
                 'cmd:strikes|field:recent|value:empty',
                 "No recent tickets."
             )),
             inline=False,
         )
+        # --- END AI-REPLACED ---
 
         await ctx.interaction.edit_original_response(embed=embed)
     # ============================================================

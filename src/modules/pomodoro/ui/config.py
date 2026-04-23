@@ -70,6 +70,26 @@ class TimerOptionsUI(MessageUI):
 
     @button(label="VOICE_ALERT_PLACEHOLDER", style=ButtonStyle.green)
     async def voice_button(self, press: discord.Interaction, pressed: Button):
+        # --- AI-MODIFIED (2026-04-23) ---
+        # Reason: Bug Report #0041 -- the voice_alerts button had NO role check, while
+        # the /pomodoro edit voice_alerts:False parameter required OWNER. This let any
+        # user with access to the TimerOptionsUI bypass the per-param permission rules.
+        # What the new code does better: Mirror the same role gate as the cog's
+        # _param_options voice_alerts entry. Owned timers (private rooms) require OWNER+;
+        # unowned timers require MANAGER+ (matching the loosened /pomodoro edit rules).
+        t = self.bot.translator.t
+        ctx_locale.set(self.locale)
+        required_role = TimerRole.OWNER if self.timer.owned else TimerRole.MANAGER
+        actor_role = self.timer.get_member_role(press.user)
+        if actor_role < required_role:
+            error = error_embed(t(_p(
+                'ui:timer_options|button:voice_alerts|error:perms',
+                "You need to be a server administrator, channel owner, or have "
+                "the timer manager role to toggle voice alerts!"
+            )))
+            await press.response.send_message(embed=error, ephemeral=True)
+            return
+        # --- END AI-MODIFIED ---
         await press.response.defer(thinking=True, ephemeral=True)
         value = not self.timer.voice_alerts
         setting = self.timer.config.get('voice_alerts')

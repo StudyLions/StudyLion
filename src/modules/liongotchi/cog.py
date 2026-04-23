@@ -3904,6 +3904,115 @@ def _has_family_permission(role: str, perm_key: str, role_permissions: dict) -> 
 # --- END AI-MODIFIED ---
 
 
+# --- AI-MODIFIED (2026-04-23) ---
+# Purpose: Confirmation view shown when a user clicks Leave/Disband on the
+#   family hub. Prevents accidental leaving (which triggers a 7-day rejoin
+#   cooldown). Pressing Yes performs the action via FamilyHubView's
+#   _do_leave_or_disband helper; Cancel reloads the original family hub.
+class FamilyLeaveConfirmView(discord.ui.View):
+    """Yes/Cancel confirmation for leaving or disbanding a family."""
+
+    def __init__(self, cog: 'LionGotchiCog', user_id: int, guild_id: int,
+                 family: dict, membership: dict):
+        super().__init__(timeout=120)
+        self.cog = cog
+        self.user_id = user_id
+        self.guild_id = guild_id
+        self.family = family
+        self.membership = membership
+        self.is_leader = (family.get('leader_userid') == user_id)
+
+        if self.is_leader:
+            yes_label = str(_p('ui:family|disband|button:yes|label', 'Yes, Disband'))
+        else:
+            yes_label = str(_p('ui:family|leave|button:yes|label', 'Yes, Leave'))
+        yes_btn = discord.ui.Button(
+            label=yes_label, emoji="\U0001F6AA",
+            style=discord.ButtonStyle.red, row=0)
+        yes_btn.callback = self._yes
+        self.add_item(yes_btn)
+
+        cancel_btn = discord.ui.Button(
+            label=str(_p('ui:family|leave|button:cancel|label', 'Cancel')),
+            style=discord.ButtonStyle.grey, row=0)
+        cancel_btn.callback = self._cancel
+        self.add_item(cancel_btn)
+
+    async def interaction_check(self, interaction: discord.Interaction) -> bool:
+        if interaction.user.id != self.user_id:
+            await interaction.response.send_message(
+                str(_p('error:family|use_own_pet', 'Use `/pet` to open your own pet!')),
+                ephemeral=True)
+            return False
+        return True
+
+    def make_embed(self) -> discord.Embed:
+        family_name = self.family.get('name') or str(_p(
+            'display:family|default_name', 'Family'))
+        if self.is_leader:
+            title = str(_p(
+                'embed:family_disband_confirm|title',
+                '\u26A0\uFE0F Disband {name}?',
+            )).format(name=family_name)
+            description = str(_p(
+                'embed:family_disband_confirm|desc',
+                "This will **permanently delete** your family and remove all members.\n\n"
+                "Bank items and treasury gold will be returned to you.\n\n"
+                "**You won't be able to join another family for 7 days.**\n\n"
+                "Are you sure you want to disband this family?",
+            ))
+        else:
+            title = str(_p(
+                'embed:family_leave_confirm|title',
+                '\u26A0\uFE0F Leave {name}?',
+            )).format(name=family_name)
+            description = str(_p(
+                'embed:family_leave_confirm|desc',
+                "**You won't be able to join another family for 7 days.**\n\n"
+                "Are you sure you want to leave this family?",
+            ))
+        return discord.Embed(
+            title=title, description=description, colour=discord.Colour.red())
+
+    async def _yes(self, interaction: discord.Interaction):
+        await interaction.response.defer()
+        hub = FamilyHubView(self.cog, self.user_id, self.guild_id)
+        hub.family = self.family
+        hub.membership = self.membership
+        try:
+            await hub._do_leave_or_disband(interaction)
+        except Exception:
+            logger.exception("Failed to %s family %s for user %s",
+                             'disband' if self.is_leader else 'leave',
+                             self.family.get('family_id'), self.user_id)
+            try:
+                await interaction.followup.send(
+                    str(_p(
+                        'error:family|leave_disband_failed',
+                        "Something went wrong -- please try again in a moment.",
+                    )),
+                    ephemeral=True)
+            except Exception:
+                pass
+
+    async def _cancel(self, interaction: discord.Interaction):
+        await interaction.response.defer()
+        hub = FamilyHubView(self.cog, self.user_id, self.guild_id)
+        await hub.load_data()
+        content, file, embed = hub.make_content_and_file()
+        kwargs = {'view': hub}
+        if file:
+            kwargs['content'] = content
+            kwargs['embed'] = None
+            kwargs['attachments'] = [file]
+        else:
+            kwargs['content'] = None
+            kwargs['embed'] = embed
+            kwargs['attachments'] = []
+        await interaction.edit_original_response(**kwargs)
+# --- END AI-MODIFIED ---
+
+
 class FamilyHubView(discord.ui.View):
     """Main family hub -- shows portrait if in family, or no-family state."""
 
@@ -4175,7 +4284,33 @@ class FamilyHubView(discord.ui.View):
     #     else:
     #         await _db_exec(bot, "UPDATE lg_family_members SET left_at = NOW() WHERE family_id = %s AND userid = %s", fid, uid)
     # --- End original code ---
+    # --- AI-MODIFIED (2026-04-23) ---
+    # Purpose: Add confirmation prompt before leave/disband so members don't
+    #   accidentally leave their family and get stuck on the 7-day rejoin cooldown
+    #   (requested by community member Sky). The Leave/Disband button now swaps
+    #   the family hub message for a Yes/Cancel confirm view, then performs the
+    #   action only after the user confirms.
+    # --- Previous code (commented out for rollback) ---
+    # async def _leave_or_disband(self, interaction: discord.Interaction):
+    #     # Immediate action -- no confirmation. Body now lives in
+    #     # _do_leave_or_disband below.
+    # --- End previous code ---
     async def _leave_or_disband(self, interaction: discord.Interaction):
+        confirm_view = FamilyLeaveConfirmView(
+            self.cog, self.user_id, self.guild_id,
+            self.family, self.membership)
+        embed = confirm_view.make_embed()
+        await interaction.response.edit_message(
+            content=None, embed=embed, attachments=[], view=confirm_view)
+
+    async def _do_leave_or_disband(self, interaction: discord.Interaction):
+        """Perform the actual leave or disband DB ops.
+
+        Called from FamilyLeaveConfirmView after the user confirms. The
+        interaction here is the Yes button press, which has already been
+        deferred so we can use followup.send for the success message and
+        edit_original_response (via _show_pet) to navigate back to the pet.
+        """
         is_leader = (self.family.get('leader_userid') == self.user_id)
         fid = self.family['family_id']
         if is_leader:
@@ -4225,7 +4360,7 @@ class FamilyHubView(discord.ui.View):
                     '**{gold}G** treasury refunded',
                 )).format(gold=f'{family_gold:,}'))
             refund_msg = (" | ".join(refund_parts) + "\n") if refund_parts else ""
-            await interaction.response.send_message(
+            await interaction.followup.send(
                 str(_p(
                     'msg:family|disband|done',
                     '\U0001F6AA Family **{name}** has been disbanded.\n{refund}',
@@ -4235,13 +4370,14 @@ class FamilyHubView(discord.ui.View):
             await _db_exec(self.cog.bot,
                 "UPDATE lg_family_members SET left_at = NOW() WHERE family_id = %s AND userid = %s",
                 fid, self.user_id)
-            await interaction.response.send_message(
+            await interaction.followup.send(
                 str(_p(
                     'msg:family|leave|done',
                     '\U0001F6AA You left **{name}**.',
                 )).format(name=self.family['name']),
                 ephemeral=True)
         await self.cog._show_pet(interaction, edit=True)
+    # --- END AI-MODIFIED ---
     # --- END AI-REPLACED ---
 
     async def _create_family(self, interaction: discord.Interaction):

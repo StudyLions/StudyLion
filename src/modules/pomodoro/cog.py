@@ -1268,6 +1268,22 @@ class TimerCog(LionCog):
         update_args = {}
         for param in modified:
             setting, required = _param_options[param]
+            # --- AI-MODIFIED (2026-04-23) ---
+            # Reason: Bug Report #0041 -- a mod with Manage Channels could create a
+            # pomodoro timer with ANY parameter (focus/break/voice_alerts/name/etc.),
+            # but /pomodoro edit blocked them from changing those same settings later
+            # because most params required OWNER (and OWNER falls back to ADMIN on
+            # unowned guild timers). This caused user-visible asymmetry between
+            # /pomodoro create and /pomodoro edit.
+            # What the new code does better: For UNOWNED timers (regular guild VC
+            # pomodoros where ownerid is NULL) we collapse the requirement down to
+            # MANAGER, matching the only check /pomodoro create performs (channel
+            # Manage Channels permission). Owned timers (private study rooms) keep
+            # the original stricter OWNER/ADMIN requirements so room owners are not
+            # overridden by random mods.
+            if not timer.owned and required > TimerRole.MANAGER:
+                required = TimerRole.MANAGER
+            # --- END AI-MODIFIED ---
             if timer_role < required:
                 if required is TimerRole.OWNER and not timer.owned:
                     required = TimerRole.ADMIN
