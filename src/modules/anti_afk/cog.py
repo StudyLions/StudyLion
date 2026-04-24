@@ -123,9 +123,9 @@ class AntiAfkCog(LionCog):
         """Handle anti-afk confirm button presses via on_interaction.
 
         Uses on_interaction (not bot.add_view) because each button has
-        a dynamic custom_id containing the guild ID. Static persistent
-        views require exact custom_id match and can't handle this.
-        Same pattern as LionGotchi family invites.
+        a dynamic custom_id containing the guild ID and target user ID.
+        Static persistent views require exact custom_id match and can't
+        handle this. Same pattern as LionGotchi family invites.
         """
         if interaction.type != discord.InteractionType.component:
             return
@@ -152,7 +152,34 @@ class AntiAfkCog(LionCog):
             )
             return
 
-        userid = interaction.user.id
+        # --- AI-MODIFIED (2026-04-24) ---
+        # Purpose: Only the target user can confirm their own check.
+        # The custom_id now encodes the target userid as the 4th part
+        # (anti_afk:confirm:{guildid}:{userid}). If someone else
+        # clicks the button, reject them with an ephemeral message.
+        # Backwards-compatible: old buttons without a userid part
+        # still work (fall back to interaction.user.id).
+        target_userid = None
+        if len(parts) >= 4:
+            try:
+                target_userid = int(parts[3])
+            except (ValueError, IndexError):
+                pass
+
+        clicker_id = interaction.user.id
+        if target_userid is not None and clicker_id != target_userid:
+            try:
+                await interaction.response.send_message(
+                    f"This activity check is for <@{target_userid}>. "
+                    f"Only they can confirm it.",
+                    ephemeral=True,
+                )
+            except discord.HTTPException:
+                pass
+            return
+
+        userid = target_userid if target_userid is not None else clicker_id
+        # --- END AI-MODIFIED ---
         handled, prompt_msg = await self.handle_confirm(guildid, userid)
 
         # --- AI-MODIFIED (2026-04-13) ---
@@ -189,9 +216,26 @@ class AntiAfkCog(LionCog):
 
         if handled and prompt_msg:
             await self._edit_prompt_confirmed(prompt_msg, userid)
-        # --- AI-MODIFIED (2026-04-13) ---
-        # Purpose: Remove the button from stale prompts that were never
-        # edited (e.g. due to bot restart or the old race condition).
+        # --- AI-MODIFIED (2026-04-24) ---
+        # Purpose: Remove button from stale prompts but keep the message
+        # visible instead of auto-deleting it.
+        # --- Original code (commented out for rollback) ---
+        # elif not handled and interaction.message:
+        #     try:
+        #         resolved_embed = discord.Embed(
+        #             colour=discord.Colour.greyple(),
+        #             title="\U0001f6e1\ufe0f Anti AFK Check \u2014 Resolved",
+        #             description=f"<@{userid}> \u2014 this check has been resolved.",
+        #         )
+        #         await interaction.message.edit(
+        #             embed=resolved_embed, view=None,
+        #         )
+        #         asyncio.create_task(
+        #             self._delete_message_after(interaction.message, 10)
+        #         )
+        #     except (discord.NotFound, discord.Forbidden, discord.HTTPException):
+        #         pass
+        # --- End original code ---
         elif not handled and interaction.message:
             try:
                 resolved_embed = discord.Embed(
@@ -201,9 +245,6 @@ class AntiAfkCog(LionCog):
                 )
                 await interaction.message.edit(
                     embed=resolved_embed, view=None,
-                )
-                asyncio.create_task(
-                    self._delete_message_after(interaction.message, 10)
                 )
             except (discord.NotFound, discord.Forbidden, discord.HTTPException):
                 pass
@@ -293,15 +334,36 @@ class AntiAfkCog(LionCog):
             return False
         return bool(exempt & {r.id for r in member.roles})
 
-    def _is_channel_applicable(self, channelid: int, config) -> bool:
-        targets = config.target_channels_list
+    # --- AI-MODIFIED (2026-04-24) ---
+    # Purpose: Support category IDs in target_channels and exclude_channels.
+    # If a category ID is in excludes, all voice channels under it are excluded.
+    # If a category ID is in targets, all voice channels under it match.
+    # Accepts either a channel object or a plain channel ID for backwards compat.
+    def _is_channel_applicable(self, channel, config) -> bool:
+        targets = set(config.target_channels_list)
         excludes = set(config.exclude_channels_list)
+
+        if isinstance(channel, int):
+            channelid = channel
+            category_id = None
+        else:
+            channelid = channel.id
+            category_id = getattr(channel, 'category_id', None)
 
         if channelid in excludes:
             return False
-        if targets and channelid not in targets:
+        if category_id and category_id in excludes:
             return False
+
+        if targets:
+            if channelid in targets:
+                return True
+            if category_id and category_id in targets:
+                return True
+            return False
+
         return True
+    # --- END AI-MODIFIED ---
 
     # --- AI-MODIFIED (2026-04-19) ---
     # Purpose: Bug fix -- AFK checks were firing in voice channels under
@@ -405,7 +467,7 @@ class AntiAfkCog(LionCog):
         if not config or not config.enabled:
             return
 
-        if not self._is_channel_applicable(channel.id, config):
+        if not self._is_channel_applicable(channel, config):
             return
 
         # --- AI-MODIFIED (2026-04-19) ---
@@ -491,10 +553,15 @@ class AntiAfkCog(LionCog):
             description=f"<@{userid}> confirmed they're still active. \u2705",
         )
         try:
+            # --- AI-MODIFIED (2026-04-24) ---
+            # Purpose: Keep the confirmed prompt visible (don't auto-delete) so
+            # users and mods have a record that the check happened. The mention
+            # in content is also preserved.
+            # --- Original code (commented out for rollback) ---
+            # await message.edit(embed=embed, view=None)
+            # asyncio.create_task(self._delete_message_after(message, 10))
+            # --- End original code ---
             await message.edit(embed=embed, view=None)
-            # --- AI-MODIFIED (2025-04-07) ---
-            # Purpose: Auto-delete confirmed prompt after 10s so it doesn't linger
-            asyncio.create_task(self._delete_message_after(message, 10))
             # --- END AI-MODIFIED ---
         except (discord.NotFound, discord.Forbidden, discord.HTTPException):
             pass
@@ -512,15 +579,15 @@ class AntiAfkCog(LionCog):
             ),
         )
         try:
-            # --- AI-MODIFIED (2026-04-13) ---
-            # Purpose: Clear the content ping and keep the expired message visible
-            # instead of deleting it. Deleting caused ghost pings -- users saw a
-            # notification badge but no message to explain it.
+            # --- AI-MODIFIED (2026-04-24) ---
+            # Purpose: Keep the @mention content so users can still see who was
+            # pinged. Previously content was cleared to None which lost the ping.
+            # The embed description already contains <@userid> for display, but
+            # the content mention is what users see in their notification history.
             # --- Original code (commented out for rollback) ---
-            # await message.edit(embed=embed, view=None)
-            # asyncio.create_task(self._delete_message_after(message, 15))
+            # await message.edit(content=None, embed=embed, view=None)
             # --- End original code ---
-            await message.edit(content=None, embed=embed, view=None)
+            await message.edit(embed=embed, view=None)
             # --- END AI-MODIFIED ---
         except (discord.NotFound, discord.Forbidden, discord.HTTPException):
             pass
@@ -579,7 +646,7 @@ class AntiAfkCog(LionCog):
             for channel in itertools.chain(
                 guild.voice_channels, guild.stage_channels
             ):
-                if not self._is_channel_applicable(channel.id, config):
+                if not self._is_channel_applicable(channel, config):
                     continue
                 # --- AI-MODIFIED (2026-04-19) ---
                 # Purpose: Skip channels in the guild's untracked_channels
@@ -841,7 +908,10 @@ class AntiAfkCog(LionCog):
                 description=''.join(description_parts),
             )
 
-            view = AntiAfkConfirmView(guild.id)
+            # --- AI-MODIFIED (2026-04-24) ---
+            # Purpose: Pass userid to view so button custom_id encodes the target
+            view = AntiAfkConfirmView(guild.id, tu.userid)
+            # --- END AI-MODIFIED ---
 
             try:
                 # --- AI-MODIFIED (2026-04-07) ---
@@ -928,7 +998,10 @@ class AntiAfkCog(LionCog):
             )
             embed.set_footer(text=f"Server: {guild.name}")
 
-            view = AntiAfkConfirmView(guild.id)
+            # --- AI-MODIFIED (2026-04-24) ---
+            # Purpose: Pass userid to view so button custom_id encodes the target
+            view = AntiAfkConfirmView(guild.id, tu.userid)
+            # --- END AI-MODIFIED ---
 
             try:
                 msg = await member.send(embed=embed, view=view)
@@ -1004,7 +1077,10 @@ class AntiAfkCog(LionCog):
             )
             # --- END AI-MODIFIED ---
 
-            view = AntiAfkConfirmView(guild.id)
+            # --- AI-MODIFIED (2026-04-24) ---
+            # Purpose: Pass userid to view so button custom_id encodes the target
+            view = AntiAfkConfirmView(guild.id, tu.userid)
+            # --- END AI-MODIFIED ---
 
             try:
                 # --- AI-MODIFIED (2026-04-07) ---
@@ -1075,15 +1151,35 @@ class AntiAfkCog(LionCog):
                     tu.state = CheckState.IDLE
                     tu.last_check_at = _time.monotonic()
                     tu.prompt_delivered = False
-                    # --- AI-MODIFIED (2025-04-07) ---
-                    # Purpose: Delete the old prompt so the stale button
-                    # doesn't confuse users who come back later
+                    # --- AI-MODIFIED (2026-04-24) ---
+                    # Purpose: Edit the old prompt to show "Missed" with no
+                    # button, instead of deleting it. Keeps the ping visible
+                    # so the user can see they were checked.
+                    # --- Original code (commented out for rollback) ---
+                    # old_prompt = tu.prompt_message
+                    # tu.prompt_message = None
+                    # if old_prompt:
+                    #     asyncio.create_task(
+                    #         self._delete_message_after(old_prompt, 5)
+                    #     )
+                    # --- End original code ---
                     old_prompt = tu.prompt_message
                     tu.prompt_message = None
                     if old_prompt:
-                        asyncio.create_task(
-                            self._delete_message_after(old_prompt, 5)
+                        missed_embed = discord.Embed(
+                            colour=discord.Colour.orange(),
+                            title="\U0001f6e1\ufe0f Anti AFK Check \u2014 Missed",
+                            description=(
+                                f"<@{tu.userid}> did not respond. "
+                                f"Warning {tu.miss_count} of {effective_max}."
+                            ),
                         )
+                        try:
+                            asyncio.create_task(
+                                old_prompt.edit(embed=missed_embed, view=None)
+                            )
+                        except Exception:
+                            pass
                     # --- END AI-MODIFIED ---
                     logger.debug(
                         f"Anti AFK: <uid:{tu.userid}> missed check "

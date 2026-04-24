@@ -908,11 +908,17 @@ class ModerationCog(LionCog):
                 summary_lines.append(
                     f"`{label:<18}`  —  **{c['active']}** active · {c['pardoned']} pardoned · {c['total']} total"
                 )
+        # --- AI-MODIFIED (2026-04-24) ---
+        # Purpose: Guard against 1024-char Discord embed field limit
+        summary_value = '\n'.join(summary_lines)
+        if len(summary_value) > 1024:
+            summary_value = summary_value[:1021] + '...'
         embed.add_field(
             name=t(_p('cmd:strikes|field:summary|name', "Summary")),
-            value='\n'.join(summary_lines),
+            value=summary_value,
             inline=False,
         )
+        # --- END AI-MODIFIED ---
 
         for typ in (TicketType.STUDY_BAN, TicketType.SCREEN_BAN):
             label = self._STRIKES_BLACKLIST_TIER_TABLES[typ][1]
@@ -968,19 +974,27 @@ class ModerationCog(LionCog):
             else:
                 active_line = ''
 
+            # --- AI-MODIFIED (2026-04-24) ---
+            # Purpose: Truncate field value to 1024 chars (Discord embed limit).
+            # The ladder string can exceed 1024 chars for guilds with many tiers,
+            # which caused a 400 Bad Request leaving /strikes stuck on "thinking".
             value_lines = []
             if active_line:
                 value_lines.append(active_line)
-            if ladder_str:
-                value_lines.append(ladder_str)
             if next_descr:
                 value_lines.append(next_descr)
+            if ladder_str:
+                value_lines.append(ladder_str)
 
+            field_value = '\n'.join(value_lines) or 'No data.'
+            if len(field_value) > 1024:
+                field_value = field_value[:1021] + '...'
             embed.add_field(
                 name=t(_p('cmd:strikes|field:ladder|name', "{label} Ladder")).format(label=label),
-                value='\n'.join(value_lines) or 'No data.',
+                value=field_value,
                 inline=False,
             )
+            # --- END AI-MODIFIED ---
 
         # --- AI-REPLACED (2026-04-19) ---
         # Reason: Ticket #0022 — recent_rows are now lightweight dict rows
@@ -1043,17 +1057,50 @@ class ModerationCog(LionCog):
                 line = f"~~{line}~~"
             recent_lines.append(line)
 
+        # --- AI-MODIFIED (2026-04-24) ---
+        # Purpose: Truncate recent field to 1024 chars + wrap the final
+        # edit_original_response in try/except so Discord 400 errors (embed
+        # too large) show a user-visible error instead of stuck "thinking".
+        recent_value = '\n'.join(recent_lines) or t(_p(
+            'cmd:strikes|field:recent|value:empty',
+            "No recent tickets."
+        ))
+        if len(recent_value) > 1024:
+            recent_value = recent_value[:1021] + '...'
         embed.add_field(
             name=t(_p('cmd:strikes|field:recent|name', "Recent (last {n})")).format(n=len(recent_rows)),
-            value='\n'.join(recent_lines) or t(_p(
-                'cmd:strikes|field:recent|value:empty',
-                "No recent tickets."
-            )),
+            value=recent_value,
             inline=False,
         )
         # --- END AI-REPLACED ---
 
-        await ctx.interaction.edit_original_response(embed=embed)
+        try:
+            await ctx.interaction.edit_original_response(embed=embed)
+        except discord.HTTPException:
+            logger.warning(
+                f"/strikes embed too large for guild={ctx.guild.id} "
+                f"target={target.id}, sending fallback",
+                exc_info=True,
+            )
+            fallback = discord.Embed(
+                colour=discord.Colour.orange(),
+                title=t(_p(
+                    'cmd:strikes|embed|title',
+                    "{emoji} Strike Record — {user}"
+                )).format(emoji=heading_emoji, user=str(target)),
+                description=(
+                    f"This member has **{total_tickets}** total tickets. "
+                    f"The full summary is too large to display.\n\n"
+                    f"Use `/tickets` to browse their full record."
+                ),
+            )
+            fallback.set_footer(text=f"ID: {target.id}")
+            try:
+                fallback.set_thumbnail(url=target.display_avatar.url)
+            except Exception:
+                pass
+            await ctx.interaction.edit_original_response(embed=fallback)
+        # --- END AI-MODIFIED ---
     # ============================================================
     # END AI-GENERATED COMMAND BLOCK
     # ============================================================
