@@ -207,6 +207,14 @@ class LionGotchiData(Registry, name='liongotchi'):
         # Purpose: Persist pet warning cooldown in DB so it survives restarts and works across shards
         last_pet_warning = Timestamp()
         # --- END AI-MODIFIED ---
+        # --- AI-MODIFIED (2026-04-24) ---
+        # Purpose: Per-pet master toggle for the cosmetic overlay layer.
+        # See lg_pet_cosmetics table -- when TRUE the renderer overlays
+        # cosmetic items on top of equipped items; when FALSE cosmetics are
+        # ignored (without being deleted). Default TRUE.
+        # Migration: prisma/migrations/manual_2026_04_24_pet_cosmetics.sql
+        cosmetics_enabled = Bool()
+        # --- END AI-MODIFIED ---
 
     class GoldTransaction(RowModel):
         """
@@ -315,6 +323,33 @@ class LionGotchiData(Registry, name='liongotchi'):
         userid = Integer(primary=True)
         slot: Column[LGEquipmentSlot] = Column(primary=True)
         itemid = Integer()
+
+    # --- AI-GENERATED (2026-04-24) ---
+    # Purpose: Parallel "cosmetic" equipment layer. Mirrors PetEquipment in
+    # shape, but is read ONLY by the renderer (overlay on top of equipment,
+    # per slot). The stats engine (calc_equipment_bonus in gameplay.py)
+    # NEVER joins this table -- bonuses still come exclusively from
+    # lg_pet_equipment + lg_user_inventory + lg_enhancement_slots.
+    # Migration: prisma/migrations/manual_2026_04_24_pet_cosmetics.sql
+    class PetCosmetic(RowModel):
+        """
+        Schema
+        ------
+        CREATE TABLE lg_pet_cosmetics (
+          userid BIGINT NOT NULL REFERENCES lg_pets (userid) ON DELETE CASCADE,
+          slot LGEquipmentSlot NOT NULL,
+          itemid INTEGER NOT NULL REFERENCES lg_items (itemid),
+          set_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+          PRIMARY KEY (userid, slot)
+        );
+        """
+        _tablename_ = 'lg_pet_cosmetics'
+
+        userid = Integer(primary=True)
+        slot: Column[LGEquipmentSlot] = Column(primary=True)
+        itemid = Integer()
+        set_at = Timestamp()
+    # --- END AI-GENERATED ---
 
     class Room(RowModel):
         """

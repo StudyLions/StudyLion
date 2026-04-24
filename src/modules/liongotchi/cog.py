@@ -411,7 +411,7 @@ class InventoryView(discord.ui.View):
             self.items = await _db_fetch(self.cog.bot,
                 """SELECT ui.inventoryid, ui.itemid, ui.quantity, ui.enhancement_level,
                           i.name, i.category, i.rarity, i.slot, i.asset_path,
-                          false AS equipped
+                          false AS equipped, false AS is_cosmetic
                    FROM lg_user_inventory ui
                    JOIN lg_items i ON ui.itemid = i.itemid
                    WHERE ui.userid = %s AND i.category = 'SCROLL' AND ui.quantity > 0
@@ -419,18 +419,25 @@ class InventoryView(discord.ui.View):
                 self.user_id
             ) or []
         else:
+            # --- AI-MODIFIED (2026-04-24) ---
+            # Purpose: Also LEFT JOIN lg_pet_cosmetics so each row knows whether
+            # the item is currently set as a cosmetic. Drives the cosmetic
+            # toggle button label (Set/Remove) on row 2 of the view.
             rows = await _db_fetch(self.cog.bot,
                 """SELECT ui.inventoryid, ui.itemid, ui.quantity, ui.enhancement_level,
                           i.name, i.category, i.rarity, i.slot, i.asset_path,
-                          e.slot IS NOT NULL AS equipped
+                          e.slot IS NOT NULL AS equipped,
+                          c.slot IS NOT NULL AS is_cosmetic
                    FROM lg_user_inventory ui
                    JOIN lg_items i ON ui.itemid = i.itemid
                    LEFT JOIN lg_pet_equipment e ON e.userid = ui.userid AND e.itemid = i.itemid
+                   LEFT JOIN lg_pet_cosmetics c ON c.userid = ui.userid AND c.itemid = i.itemid
                    WHERE ui.userid = %s
                      AND i.category NOT IN ('MATERIAL', 'SCROLL', 'CONSUMABLE')
                    ORDER BY ui.enhancement_level DESC, i.rarity DESC, i.category, i.name""",
                 self.user_id
             ) or []
+            # --- END AI-MODIFIED ---
             seen = set()
             self.items = []
             for r in rows:
@@ -438,6 +445,21 @@ class InventoryView(discord.ui.View):
                 if key not in seen:
                     seen.add(key)
                     self.items.append(r)
+        # --- AI-MODIFIED (2026-04-24) ---
+        # Purpose: Cache the master cosmetics_enabled flag for label decisions
+        # in refresh_buttons. Single fetch, refreshed every load_items call so
+        # toggling stays in sync.
+        try:
+            row = await _db_fetch(self.cog.bot,
+                "SELECT cosmetics_enabled FROM lg_pets WHERE userid = %s",
+                self.user_id)
+            if row and row[0].get('cosmetics_enabled') is not None:
+                self.cosmetics_enabled = bool(row[0]['cosmetics_enabled'])
+            else:
+                self.cosmetics_enabled = True
+        except Exception:
+            self.cosmetics_enabled = True
+        # --- END AI-MODIFIED ---
 
     def make_embed(self) -> discord.Embed:
         filter_labels = {
@@ -471,11 +493,17 @@ class InventoryView(discord.ui.View):
             else:
                 enh = it.get('enhancement_level', 0)
                 equipped = " \U0001F6E1\uFE0F" if it['equipped'] else ""
+                # --- AI-MODIFIED (2026-04-24) ---
+                # Purpose: Sparkle marker indicates an item set as cosmetic
+                # overlay. Rendered alongside the equipped shield so a user
+                # can see at a glance which items contribute stats vs visuals.
+                cos_marker = " \u2728" if it.get('is_cosmetic') else ""
+                # --- END AI-MODIFIED ---
                 name = f"**{it['name']} +{enh}**" if enh > 0 else f"**{it['name']}**"
                 max_enh = MAX_ENHANCEMENT_BY_RARITY.get(rarity, 5)
                 enh_info = f" [{enh}/{max_enh}]" if enh > 0 else ""
                 slot_label = it['slot'] or it['category']
-                lines.append(f"{name} ({rarity}){enh_info}{equipped}\n  {slot_label}")
+                lines.append(f"{name} ({rarity}){enh_info}{equipped}{cos_marker}\n  {slot_label}")
 
         embed.description = "\n".join(lines)
         total_pages = max(1, (len(self.items) + self.page_size - 1) // self.page_size)
@@ -516,7 +544,13 @@ class InventoryView(discord.ui.View):
         if self.active_filter == self.FILTER_EQUIPMENT:
             start = self.page * self.page_size
             page_items = self.items[start:start + self.page_size]
-            for it in page_items[:5]:
+            # --- AI-MODIFIED (2026-04-24) ---
+            # Purpose: Restrict to first 4 items so we still have room for the
+            # parallel cosmetic toggle row (row 2). Discord caps each row at
+            # 5 buttons, so equip + cosmetic for 4 items keeps the layout
+            # readable.
+            for it in page_items[:4]:
+            # --- END AI-MODIFIED ---
                 if it['equipped']:
                     btn = discord.ui.Button(
                         label=str(_p('ui:inventory|button:unequip|label', 'Unequip {name}')).format(
@@ -533,12 +567,54 @@ class InventoryView(discord.ui.View):
                     continue
                 self.add_item(btn)
 
+            # --- AI-GENERATED (2026-04-24) ---
+            # Purpose: Cosmetic toggle row -- one button per visible item.
+            # Lets users mark an item as the "visual override" for its slot
+            # without affecting the stat-bearing equipment row. Items with
+            # no slot (e.g. plain materials) are skipped just like equip.
+            for it in page_items[:4]:
+                if not it.get('slot'):
+                    continue
+                if it.get('is_cosmetic'):
+                    cos_btn = discord.ui.Button(
+                        label=str(_p('ui:inventory|button:cosmetic_remove|label',
+                                     'Hide cosmetic {name}')).format(name=it['name'][:8]),
+                        emoji="\U0001F441",
+                        style=discord.ButtonStyle.red, row=2)
+                    cos_btn.callback = self._make_unset_cosmetic_cb(it)
+                else:
+                    cos_btn = discord.ui.Button(
+                        label=str(_p('ui:inventory|button:cosmetic_set|label',
+                                     'Show {name}')).format(name=it['name'][:10]),
+                        emoji="\u2728",
+                        style=discord.ButtonStyle.blurple, row=2)
+                    cos_btn.callback = self._make_set_cosmetic_cb(it)
+                self.add_item(cos_btn)
+            # --- END AI-GENERATED ---
+
         # Enhance button (row 3)
         if self.active_filter == self.FILTER_EQUIPMENT:
             enhance_btn = discord.ui.Button(label=_p('ui:inventory|button:enhance|label', 'Enhance'), emoji="\u2728",
                                              style=discord.ButtonStyle.blurple, row=3)
             enhance_btn.callback = self._go_enhance
             self.add_item(enhance_btn)
+
+            # --- AI-GENERATED (2026-04-24) ---
+            # Purpose: Master toggle for the cosmetic overlay. When OFF the
+            # renderer ignores all lg_pet_cosmetics rows -- the user sees
+            # their "true equipment view" while keeping their picks saved.
+            cos_enabled = getattr(self, 'cosmetics_enabled', True)
+            toggle_btn = discord.ui.Button(
+                label=str(_p('ui:inventory|button:cosmetics_off|label',
+                             'Cosmetics: ON')) if cos_enabled
+                      else str(_p('ui:inventory|button:cosmetics_on|label',
+                                  'Cosmetics: OFF')),
+                emoji="\U0001F3AD",
+                style=discord.ButtonStyle.green if cos_enabled else discord.ButtonStyle.grey,
+                row=3)
+            toggle_btn.callback = self._toggle_cosmetics_display
+            self.add_item(toggle_btn)
+            # --- END AI-GENERATED ---
 
         # Back button (row 3)
         back_btn = discord.ui.Button(label=_p('ui:inventory|button:back|label', 'Back'), emoji="\u2B05", style=discord.ButtonStyle.grey, row=3)
@@ -591,6 +667,61 @@ class InventoryView(discord.ui.View):
             self.refresh_buttons()
             await interaction.response.edit_message(embed=self.make_embed(), view=self)
         return cb
+
+    # --- AI-GENERATED (2026-04-24) ---
+    # Purpose: Cosmetic overlay write paths. _make_set_cosmetic_cb upserts
+    # an lg_pet_cosmetics row so the renderer overlays the chosen item on
+    # top of whatever is equipped for stats. _make_unset_cosmetic_cb deletes
+    # the row, falling back to whatever (if anything) is in lg_pet_equipment
+    # for that slot. _toggle_cosmetics_display flips the per-pet master
+    # switch without wiping any cosmetic picks.
+    def _make_set_cosmetic_cb(self, item):
+        async def cb(interaction: discord.Interaction):
+            slot = item['slot']
+            if not slot:
+                await interaction.response.send_message(str(_p(
+                    'error:cosmetic|cannot_set',
+                    "This item can't be used as a cosmetic!")), ephemeral=True)
+                return
+            existing = await _db_fetch(self.cog.bot,
+                "SELECT 1 FROM lg_pet_cosmetics WHERE userid = %s AND slot = %s",
+                self.user_id, slot
+            )
+            if existing:
+                await _db_exec(self.cog.bot,
+                    "UPDATE lg_pet_cosmetics SET itemid = %s, set_at = NOW() WHERE userid = %s AND slot = %s",
+                    item['itemid'], self.user_id, slot
+                )
+            else:
+                await _db_exec(self.cog.bot,
+                    "INSERT INTO lg_pet_cosmetics (userid, slot, itemid) VALUES (%s, %s, %s)",
+                    self.user_id, slot, item['itemid']
+                )
+            await self.load_items()
+            self.refresh_buttons()
+            await interaction.response.edit_message(embed=self.make_embed(), view=self)
+        return cb
+
+    def _make_unset_cosmetic_cb(self, item):
+        async def cb(interaction: discord.Interaction):
+            await _db_exec(self.cog.bot,
+                "DELETE FROM lg_pet_cosmetics WHERE userid = %s AND itemid = %s",
+                self.user_id, item['itemid']
+            )
+            await self.load_items()
+            self.refresh_buttons()
+            await interaction.response.edit_message(embed=self.make_embed(), view=self)
+        return cb
+
+    async def _toggle_cosmetics_display(self, interaction: discord.Interaction):
+        await _db_exec(self.cog.bot,
+            "UPDATE lg_pets SET cosmetics_enabled = NOT COALESCE(cosmetics_enabled, TRUE) WHERE userid = %s",
+            self.user_id
+        )
+        await self.load_items()
+        self.refresh_buttons()
+        await interaction.response.edit_message(embed=self.make_embed(), view=self)
+    # --- END AI-GENERATED ---
 
     async def _go_enhance(self, interaction: discord.Interaction):
         view = EnhanceView(self.cog, self.user_id)
@@ -6543,15 +6674,24 @@ class LionGotchiCog(LionCog):
         # skin = await self.data.GameboySkin.fetch(pet.active_gameboy_skin_id) if pet.active_gameboy_skin_id else None
         # gameboy_skin = skin.asset_path if skin else "gameboy/frames/gameboy-basic-01.png"
         # --- End original code ---
+        # --- AI-MODIFIED (2026-04-24) ---
+        # Purpose: Pull cosmetics_enabled in the same fresh-fetch query so the
+        # cosmetic overlay below uses authoritative DB state (the Pet cache
+        # doesn't track this column).
         fresh = await _db_fetch(self.bot,
-            "SELECT active_gameboy_skin_id, active_room_id FROM lg_pets WHERE userid = %s",
+            "SELECT active_gameboy_skin_id, active_room_id, cosmetics_enabled FROM lg_pets WHERE userid = %s",
             pet.userid)
         if fresh:
             active_skin_id = fresh[0]['active_gameboy_skin_id']
             active_room_id = fresh[0]['active_room_id']
+            cosmetics_enabled = fresh[0].get('cosmetics_enabled')
+            if cosmetics_enabled is None:
+                cosmetics_enabled = True
         else:
             active_skin_id = pet.active_gameboy_skin_id
             active_room_id = pet.active_room_id
+            cosmetics_enabled = bool(getattr(pet, 'cosmetics_enabled', True))
+        # --- END AI-MODIFIED ---
 
         room = await self.data.Room.fetch(active_room_id) if active_room_id else None
         room_prefix = room.asset_prefix if room else "rooms/default"
@@ -6649,6 +6789,37 @@ class LionGotchiCog(LionCog):
             logger.info("[EQUIP] Loaded equipment for uid=%s: %s", pet.userid, equipped)
         except Exception:
             logger.exception("Failed to load equipment for uid=%s", pet.userid)
+        # --- END AI-MODIFIED ---
+
+        # --- AI-MODIFIED (2026-04-24) ---
+        # Purpose: Cosmetic overlay layer. After loading the real equipment
+        # (which drives stats), overlay any rows from lg_pet_cosmetics on top
+        # per slot. This is a VISUAL-ONLY swap -- bonuses still come from
+        # lg_pet_equipment via calc_equipment_bonus in gameplay.py.
+        #
+        # Honors the per-pet cosmetics_enabled toggle (loaded above with the
+        # fresh DB read): when FALSE the cosmetics rows are kept in the DB
+        # but ignored here, so the user sees their "true equipment view"
+        # without losing their picks.
+        if cosmetics_enabled:
+            try:
+                cos_rows = await _db_fetch(self.bot,
+                    """SELECT c.slot, i.asset_path FROM lg_pet_cosmetics c
+                       JOIN lg_items i ON c.itemid = i.itemid
+                       WHERE c.userid = %s""",
+                    pet.userid
+                )
+                slot_map_cos = {'HEAD': 'head', 'FACE': 'face', 'BODY': 'body', 'BACK': 'back', 'FEET': 'feet'}
+                for row in (cos_rows or []):
+                    raw_slot = row['slot']
+                    slot_str = raw_slot.value if hasattr(raw_slot, 'value') else str(raw_slot)
+                    s = slot_map_cos.get(slot_str, slot_str.lower())
+                    equipped[s] = f"equipment/{row['asset_path']}"
+                if cos_rows:
+                    logger.info("[COSMETIC] Overlay applied for uid=%s: %s slots overridden",
+                                pet.userid, len(cos_rows))
+            except Exception:
+                logger.exception("Failed to load cosmetics for uid=%s", pet.userid)
         # --- END AI-MODIFIED ---
 
         # --- AI-MODIFIED (2026-03-16) ---

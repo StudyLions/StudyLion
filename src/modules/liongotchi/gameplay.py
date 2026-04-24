@@ -1221,6 +1221,17 @@ async def attempt_enhance(bot, userid: int, inventory_id: int, scroll_itemid: in
                         "DELETE FROM lg_pet_equipment WHERE userid = %s AND itemid = %s",
                         [userid, eq['itemid']]
                     )
+                    # --- AI-MODIFIED (2026-04-24) ---
+                    # Purpose: Cosmetic overlay rows reference lg_items.itemid;
+                    # if the underlying inventory copy is destroyed by a failed
+                    # enhancement, also drop any cosmetic overlay tied to it
+                    # so the renderer doesn't try to load a now-missing item
+                    # the user no longer owns.
+                    await conn.execute(
+                        "DELETE FROM lg_pet_cosmetics WHERE userid = %s AND itemid = %s",
+                        [userid, eq['itemid']]
+                    )
+                    # --- END AI-MODIFIED ---
                     await conn.execute(
                         "DELETE FROM lg_user_inventory WHERE inventoryid = %s",
                         [inventory_id]
