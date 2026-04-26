@@ -100,6 +100,20 @@ class RenderAPI:
         return web.json_response({'success': True, 'guildid': str(guildid), 'skinid': skinid})
     # --- END AI-MODIFIED ---
 
+    # --- AI-MODIFIED (2026-04-25) ---
+    # Purpose: Sniff output magic bytes so we send the correct content-type.
+    #          Animated supporter cards are GIFs but the old code always
+    #          replied with image/png, breaking inline rendering in the
+    #          dashboard preview frame.
+    @staticmethod
+    def _sniff_content_type(payload: bytes) -> str:
+        if payload[:6] in (b'GIF87a', b'GIF89a'):
+            return 'image/gif'
+        if payload[:8] == b'\x89PNG\r\n\x1a\n':
+            return 'image/png'
+        return 'image/png'
+    # --- END AI-MODIFIED ---
+
     async def _handle_render(self, request: web.Request) -> web.Response:
         auth = request.headers.get('Authorization', '')
         try:
@@ -157,11 +171,16 @@ class RenderAPI:
                 )
                 # --- END AI-MODIFIED ---
 
+            # --- AI-MODIFIED (2026-04-25) ---
+            # Purpose: detect GIF vs PNG so animated supporter cards render
+            #          correctly in browsers (was hardcoded to image/png).
+            content_type = self._sniff_content_type(png_bytes)
             return web.Response(
                 body=png_bytes,
-                content_type='image/png',
+                content_type=content_type,
                 headers={'Cache-Control': 'public, max-age=300'},
             )
+            # --- END AI-MODIFIED ---
         except Exception as e:
             logger.warning(f"Render API error: {e}", exc_info=True)
             return web.Response(status=500, text=str(e))

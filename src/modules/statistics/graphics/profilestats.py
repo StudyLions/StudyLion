@@ -12,55 +12,21 @@ from .profile import get_profile_card
 
 card_gap = 10
 
+# --- AI-MODIFIED (2026-04-25) ---
+# Purpose: Phase 2 LionHeart Studio fix — preserve animation when combining
+#          a supporter's animated profile GIF with the static stats card.
+#          Previously the renderer opened the GIF, took only frame 0, and
+#          saved the combined image as a static PNG, throwing the entire
+#          animation away. Discord then served it as a still image because
+#          the cog also hardcoded a `.png` filename.
+DISCORD_DARK_BG = (49, 51, 56)
+GIF_MAGIC = (b'GIF87a', b'GIF89a')
 
-async def get_full_profile(bot: LionBot, userid: int, guildid: int, mode: CardMode) -> BytesIO:
-    """
-    Render both profile and stats for the target member in the given mode.
 
-    Combines the resulting cards into a single image and returns the image data.
-    """
-    # Prepare cards for rendering
-    get_tasks = (
-        asyncio.create_task(get_stats_card(bot, userid, guildid, mode), name='get-stats-for-combined'),
-        asyncio.create_task(get_profile_card(bot, userid, guildid), name='get-profile-for-combined'),
-    )
-    stats_card, profile_card = await asyncio.gather(*get_tasks)
-
-    # Render cards
-    render_tasks = (
-        asyncio.create_task(stats_card.render(), name='render-stats-for-combined'),
-        asyncio.create_task(profile_card.render(), name='render=profile-for-combined'),
-    )
-
-    # Load the card data into images
-    stats_data, profile_data = await asyncio.gather(*render_tasks)
+def _combine_static(profile_data: bytes, stats_data: bytes) -> BytesIO:
+    """Combine non-animated profile + stats PNGs into a single PNG."""
     with BytesIO(stats_data) as stats_stream, BytesIO(profile_data) as profile_stream:
         with Image.open(stats_stream) as stats_image, Image.open(profile_stream) as profile_image:
-            # --- AI-REPLACED (2026-03-19) ---
-            # Reason: Two bugs — (1) getbbox() returns tight content bounds smaller than
-            # the actual image, (2) supporter cards render as GIF (palette mode P) which
-            # is incompatible with alpha_composite (requires RGBA).
-            # What the new code does better: Converts both images to RGBA and uses actual
-            # image dimensions so compositing always succeeds regardless of source format.
-            # --- Original code (commented out for rollback) ---
-            # stats_bbox = stats_image.getbbox(alpha_only=False)
-            # profile_bbox = profile_image.getbbox(alpha_only=False)
-            #
-            # if stats_bbox is None or profile_bbox is None:
-            #     raise ValueError("Could not combine, empty stats or profile image.")
-            #
-            # combined = Image.new(
-            #     'RGBA',
-            #     (
-            #         max(stats_bbox[2], profile_bbox[2]),
-            #         stats_bbox[3] + card_gap + profile_bbox[3]
-            #     ),
-            #     color=None
-            # )
-            # with combined:
-            #     combined.alpha_composite(profile_image)
-            #     combined.alpha_composite(stats_image, (0, profile_bbox[3] + card_gap))
-            # --- End original code ---
             profile_rgba = profile_image.convert('RGBA')
             stats_rgba = stats_image.convert('RGBA')
 
@@ -68,9 +34,9 @@ async def get_full_profile(bot: LionBot, userid: int, guildid: int, mode: CardMo
                 'RGBA',
                 (
                     max(stats_rgba.width, profile_rgba.width),
-                    profile_rgba.height + card_gap + stats_rgba.height
+                    profile_rgba.height + card_gap + stats_rgba.height,
                 ),
-                color=None
+                color=None,
             )
             with combined:
                 combined.alpha_composite(profile_rgba)
@@ -80,4 +46,98 @@ async def get_full_profile(bot: LionBot, userid: int, guildid: int, mode: CardMo
                 combined.save(results, format='PNG', compress_type=3, compress_level=1)
                 results.seek(0)
                 return results
-            # --- END AI-REPLACED ---
+
+
+def _combine_animated(profile_data: bytes, stats_data: bytes) -> BytesIO:
+    """Combine an animated profile GIF with a static stats PNG, preserving
+    the per-frame animation. Returns a BytesIO containing a multi-frame GIF.
+
+    Each profile frame is composited with the same stats card below it, then
+    flattened onto the Discord dark background and palette-quantised so the
+    final GIF stays small and crisp.
+    """
+    profile_gif = Image.open(BytesIO(profile_data))
+    n_frames = getattr(profile_gif, 'n_frames', 1)
+    duration = profile_gif.info.get('duration', 90)
+    loop = profile_gif.info.get('loop', 0)
+
+    stats_image = Image.open(BytesIO(stats_data)).convert('RGBA')
+    profile_w, profile_h = profile_gif.size
+    stats_w, stats_h = stats_image.size
+    combined_w = max(profile_w, stats_w)
+    combined_h = profile_h + card_gap + stats_h
+    stats_y = profile_h + card_gap
+
+    frames_rgb = []
+    for idx in range(n_frames):
+        profile_gif.seek(idx)
+        frame_rgba = profile_gif.convert('RGBA')
+
+        combined = Image.new('RGBA', (combined_w, combined_h), (0, 0, 0, 0))
+        combined.alpha_composite(frame_rgba)
+        combined.alpha_composite(stats_image, (0, stats_y))
+
+        bg = Image.new('RGBA', combined.size, (*DISCORD_DARK_BG, 255))
+        flat = Image.alpha_composite(bg, combined)
+        frames_rgb.append(flat.convert('RGB'))
+
+    profile_gif.close()
+    stats_image.close()
+
+    out = BytesIO()
+    try:
+        quantized = [f.quantize(colors=128) for f in frames_rgb]
+        quantized[0].save(
+            out,
+            format='GIF',
+            save_all=True,
+            append_images=quantized[1:],
+            duration=duration,
+            loop=loop,
+            optimize=True,
+            disposal=2,
+        )
+    except Exception:
+        out.seek(0)
+        out.truncate()
+        frames_rgb[0].save(
+            out,
+            format='GIF',
+            save_all=True,
+            append_images=frames_rgb[1:],
+            duration=duration,
+            loop=loop,
+            optimize=True,
+        )
+
+    out.seek(0)
+    return out
+
+
+async def get_full_profile(bot: LionBot, userid: int, guildid: int, mode: CardMode) -> BytesIO:
+    """
+    Render both profile and stats for the target member in the given mode.
+
+    Combines the resulting cards into a single image and returns the image data.
+    For LionHeart supporters whose profile renders as an animated GIF, the
+    combined output is itself an animated GIF so the animation survives the
+    combine step (see `_combine_animated`).
+    """
+    get_tasks = (
+        asyncio.create_task(get_stats_card(bot, userid, guildid, mode), name='get-stats-for-combined'),
+        asyncio.create_task(get_profile_card(bot, userid, guildid), name='get-profile-for-combined'),
+    )
+    stats_card, profile_card = await asyncio.gather(*get_tasks)
+
+    render_tasks = (
+        asyncio.create_task(stats_card.render(), name='render-stats-for-combined'),
+        asyncio.create_task(profile_card.render(), name='render=profile-for-combined'),
+    )
+
+    stats_data, profile_data = await asyncio.gather(*render_tasks)
+
+    if isinstance(profile_data, (bytes, bytearray)) and profile_data[:6] in GIF_MAGIC:
+        return await asyncio.to_thread(_combine_animated, bytes(profile_data), bytes(stats_data))
+
+    return await asyncio.to_thread(_combine_static, bytes(profile_data), bytes(stats_data))
+# --- END AI-MODIFIED ---

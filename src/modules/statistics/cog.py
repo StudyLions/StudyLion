@@ -114,10 +114,29 @@ class StatsCog(LionCog):
         else:
             mode = CardMode.TEXT
 
+        # --- AI-REPLACED (2026-04-25) ---
+        # Reason: Discord uses the upload filename's extension to decide whether
+        #         to animate an attachment. The hardcoded 'profile.png' meant
+        #         that even when the renderer produced a real animated GIF for
+        #         LionHeart supporters, Discord treated it as a still PNG and
+        #         only ever showed one frame.
+        # What the new code does better: peeks the first bytes of the rendered
+        #         payload and serves it as 'profile.gif' when it's actually a
+        #         GIF. Static PNGs continue to be sent as 'profile.png'.
+        # --- Original code (commented out for rollback) ---
+        # profile_data = await get_full_profile(self.bot, member.id, member.guild.id, mode)
+        # with profile_data:
+        #     file = discord.File(profile_data, 'profile.png')
+        #     await ctx.reply(file=file)
+        # --- End original code ---
         profile_data = await get_full_profile(self.bot, member.id, member.guild.id, mode)
         with profile_data:
-            file = discord.File(profile_data, 'profile.png')
+            head = profile_data.read(6)
+            profile_data.seek(0)
+            ext = 'gif' if head[:6] in (b'GIF87a', b'GIF89a') else 'png'
+            file = discord.File(profile_data, f'profile.{ext}')
             await ctx.reply(file=file)
+        # --- END AI-REPLACED ---
 
         # --- AI-MODIFIED (2026-03-15) ---
         # Purpose: Disabled sponsor prompt (sponsor module removed)
