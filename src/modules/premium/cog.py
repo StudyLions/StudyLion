@@ -98,8 +98,46 @@ class PremiumCog(LionCog):
         premium = (row is not None) and row.premium_until and (row.premium_until > now)
         return premium
 
-    # --- AI-MODIFIED (2026-03-16) ---
-    # Purpose: LionHeart subscription tier checking for user perks
+    # --- AI-MODIFIED (2026-04-26) ---
+    # Purpose: LionHeart subscription tier checking for user perks.
+    #
+    # Cache-bypass fix (2026-04-26): PremiumData.UserSubscription is declared
+    # with `_cache_ = {}` (a plain dict -> strong references, lifetime of the
+    # process). The LionHeart subscription state is written exclusively by the
+    # Next.js Stripe webhook straight into `user_subscriptions` via Prisma --
+    # the bot never mutates its own cached row on tier change. Result: every
+    # shard that cached a user's row BEFORE an upgrade/downgrade/cancellation
+    # keeps returning the stale tier until the shard process restarts.
+    #
+    # Symptoms seen in the wild: user 994057257245483141 upgraded LH+ -> LH++
+    # via the Stripe portal on 2026-04-25, DB row was correctly updated, but
+    # the LionGotchi pet card on whatever shard served his server kept
+    # displaying "+25% Gold (LionHeart+)" / "+40% Drop Rate (LionHeart+ +
+    # Server Premium)" / "+25% Harvest Gold (LionHeart+)" -- i.e. the stale
+    # LIONHEART_PLUS boosts. Gameplay math (voice/text gold, drop rate,
+    # harvest gold, seed discount, uproot refund) was also using the wrong
+    # tier, so the user was being shortchanged by ~25 percentage points of
+    # gold/drops they had paid for.
+    #
+    # Fix: pass cached=False so every call goes to Postgres. This is safe to
+    # do unconditionally because:
+    #   (a) get_user_subscription_tier is called on-demand during user
+    #       interactions (/me, harvest, seed buy, stats card render,
+    #       leaderboard, embed color, topgg reward) -- NOT in any hot loop.
+    #   (b) user_subscriptions.userid is a primary key so the read is a
+    #       sub-millisecond indexed lookup against a table that is orders of
+    #       magnitude smaller than member/guild tables.
+    #   (c) LionHeart subs change rarely (monthly renewals, occasional
+    #       upgrades/cancels) so even the historical cache hit rate was
+    #       high only because the data was static -- not because the cache
+    #       was actually protecting us from load.
+    #
+    # NOTE: PremiumGuild ALSO uses `_cache_ = {}` and ALSO gets external
+    # writes from the Stripe webhook (new server-premium purchases, gem
+    # top-ups, extensions). That produces the same class of stale-cache bug
+    # for `is_premium_guild()`. Not fixed in this change because
+    # `is_premium_guild` is called in hot paths (every voice/text reward)
+    # and bypassing its cache outright would add load. Tracked as a follow-up.
     async def get_user_subscription_tier(self, userid: int) -> str:
         """
         Get the active subscription tier for a user.
@@ -108,7 +146,7 @@ class PremiumCog(LionCog):
         or 'NONE' if no active subscription.
         """
         try:
-            row = await self.data.UserSubscription.fetch(userid)
+            row = await self.data.UserSubscription.fetch(userid, cached=False)
             if row is not None and row.status == 'ACTIVE':
                 return row.tier or 'NONE'
         except Exception:
