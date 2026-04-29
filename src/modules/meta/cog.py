@@ -245,9 +245,13 @@ class MetaCog(LionCog):
                 "please don't remove Leo \u2014 join our server and open a ticket. "
                 "We're here to help personally!\n\n"
                 # --- AI-MODIFIED (2026-04-29) ---
-                # Purpose: Match new button label (was "Quick Setup")
+                # Purpose: Match new button label (was "Quick Setup") + soften
+                # the "in under 2 minutes" claim. The new checklist has 8 tasks
+                # (6 required + 2 optional) and most admins take 4-8 minutes if
+                # they read each task carefully. "A few minutes" is honest
+                # without scaring anyone off.
                 "Use {help_cmd} to explore commands, or click **Setup Checklist** "
-                "below to get started in under 2 minutes."
+                "below to get started in just a few minutes."
                 # --- END AI-MODIFIED ---
             )).format(
                 server_name=guild.name,
@@ -262,7 +266,10 @@ class MetaCog(LionCog):
             )),
             icon_url="https://cdn.discordapp.com/emojis/933610591459872868.webp",
         )
-        embed.set_footer(text=f"Set up in under 2 minutes \u2022 {WEBSITE_URL}")
+        # --- AI-MODIFIED (2026-04-29) ---
+        # Purpose: Match the body copy (which dropped the "2 minutes" claim).
+        embed.set_footer(text=f"Set up in just a few minutes \u2022 {WEBSITE_URL}")
+        # --- END AI-MODIFIED ---
         # --- END AI-REPLACED ---
 
         view = self._build_welcome_view(guild)
@@ -316,9 +323,11 @@ class MetaCog(LionCog):
                     "We're a small family team and we genuinely care about "
                     "every server that uses Leo.\n\n"
                     # --- AI-MODIFIED (2026-04-29) ---
-                    # Purpose: Match new button label (was "Quick Setup")
+                    # Purpose: Match new button label (was "Quick Setup") +
+                    # soften the time-to-setup claim. See body-copy comment
+                    # for the channel embed above for rationale.
                     "Click **Setup Checklist** below to configure your server "
-                    "in under 2 minutes. If you run into any issues, "
+                    "in just a few minutes. If you run into any issues, "
                     # --- END AI-MODIFIED ---
                     "please don't hesitate to reach out \u2014 "
                     "we're always happy to help!"
