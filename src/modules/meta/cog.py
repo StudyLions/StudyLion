@@ -150,14 +150,37 @@ class MetaCog(LionCog):
     #     return view
     # --- End original code ---
     def _build_welcome_view(self, guild: discord.Guild) -> discord.ui.View:
-        setup_url = f"{WEBSITE_URL}/dashboard/servers/{guild.id}/setup"
+        # --- AI-REPLACED (2026-04-29) ---
+        # Reason: Setup Wizard was rebranded as "Setup Checklist" and the
+        #         primary onboarding UI moved from the standalone /setup page
+        #         to a checklist widget on the server overview. Deep-linking
+        #         with ?setup=open auto-opens the checklist for the admin.
+        # What the new code does better: Drops admins straight into the new
+        #         mobile-first checklist UI (progress, jargon tooltips, per-task
+        #         drawers, "configured / skipped / done" pills). Old /setup is
+        #         still reachable as deprecated guided tour but no longer the
+        #         default entry point from the welcome DM/channel message.
+        # --- Original code (commented out for rollback) ---
+        # setup_url = f"{WEBSITE_URL}/dashboard/servers/{guild.id}/setup"
+        # --- End original code ---
+        setup_url = f"{WEBSITE_URL}/dashboard/servers/{guild.id}?setup=open"
+        # --- END AI-REPLACED ---
         tutorials_url = f"{WEBSITE_URL}/tutorials"
         support_url = str(self.bot.config.bot.support_guild)
         donate_url = f"{WEBSITE_URL}/donate"
 
         view = discord.ui.View()
         view.add_item(discord.ui.Button(
-            label="Quick Setup", emoji="\U0001FA84",
+            # --- AI-REPLACED (2026-04-29) ---
+            # Reason: Match the new "Setup Checklist" branding shown in the
+            #         dashboard sidebar + widget heading. Switched the magic-wand
+            #         emoji (\U0001FA84) to a check-mark (\u2705) so the button's
+            #         visual cue matches what the user sees on landing.
+            # --- Original code (commented out for rollback) ---
+            # label="Quick Setup", emoji="\U0001FA84",
+            # --- End original code ---
+            label="Setup Checklist", emoji="\u2705",
+            # --- END AI-REPLACED ---
             url=setup_url, style=discord.ButtonStyle.link,
         ))
         view.add_item(discord.ui.Button(
@@ -221,8 +244,11 @@ class MetaCog(LionCog):
                 "If you run into a bug or need help setting up, "
                 "please don't remove Leo \u2014 join our server and open a ticket. "
                 "We're here to help personally!\n\n"
-                "Use {help_cmd} to explore commands, or click **Quick Setup** "
+                # --- AI-MODIFIED (2026-04-29) ---
+                # Purpose: Match new button label (was "Quick Setup")
+                "Use {help_cmd} to explore commands, or click **Setup Checklist** "
                 "below to get started in under 2 minutes."
+                # --- END AI-MODIFIED ---
             )).format(
                 server_name=guild.name,
                 help_cmd=self.bot.core.mention_cmd('help'),
@@ -289,8 +315,11 @@ class MetaCog(LionCog):
                     "Thanks for adding Leo to **{server_name}**! "
                     "We're a small family team and we genuinely care about "
                     "every server that uses Leo.\n\n"
-                    "Click **Quick Setup** below to configure your server "
+                    # --- AI-MODIFIED (2026-04-29) ---
+                    # Purpose: Match new button label (was "Quick Setup")
+                    "Click **Setup Checklist** below to configure your server "
                     "in under 2 minutes. If you run into any issues, "
+                    # --- END AI-MODIFIED ---
                     "please don't hesitate to reach out \u2014 "
                     "we're always happy to help!"
                 )).format(
