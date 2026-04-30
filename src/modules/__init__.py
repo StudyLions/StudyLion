@@ -59,6 +59,11 @@ active = [
     # so the dashboard members list keeps real names instead of placeholders.
     '.name_sync',
     # --- END AI-MODIFIED ---
+    # --- AI-MODIFIED (2026-04-30) ---
+    # Purpose: "Feature Your Server" website integration. Loads HTTP
+    # listener (invite create + review notify) on shard 0; idle elsewhere.
+    '.serverlisting',
+    # --- END AI-MODIFIED ---
 ]
 
 
