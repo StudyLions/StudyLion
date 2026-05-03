@@ -160,14 +160,41 @@ class StatisticsSettings(SettingGroup):
         _write_ward = high_management_iward
 
         _display_name = _p('guildset:unranked_roles', "unranked_roles")
+        # --- AI-REPLACED (2026-05-03) ---
+        # Reason: Original wording only mentioned the leaderboard, but this
+        # setting also makes the ranks module skip these members entirely
+        # (see modules/ranks/cog.py: on_voice_session_complete and
+        # interactive_rank_refresh both filter on UnrankedRoles).
+        # A real user (kyla in 1488355027406819409) added region/education
+        # self-assigned roles to this list assuming it was leaderboard-only,
+        # which silently locked the entire community out of activity ranks.
+        # What the new code does better: makes the rank-assignment side
+        # effect explicit so admins know what they're agreeing to.
+        # --- Original code (commented out for rollback) ---
+        # _desc = _p(
+        #     'guildset:unranked_roles|desc',
+        #     "Roles to exclude from the leaderboards."
+        # )
+        # _long_desc = _p(
+        #     'guildset:unranked_roles|long_desc',
+        #     "When set, members with *any* of these roles will not appear on the /leaderboard ranking list."
+        # )
+        # --- End original code ---
         _desc = _p(
             'guildset:unranked_roles|desc',
-            "Roles to exclude from the leaderboards."
+            "Roles excluded from the leaderboard *and* from earning activity ranks."
         )
         _long_desc = _p(
             'guildset:unranked_roles|long_desc',
-            "When set, members with *any* of these roles will not appear on the /leaderboard ranking list."
+            "When set, members with *any* of these roles are completely ignored by the activity system: "
+            "they will not appear on the /leaderboard ranking list, "
+            "they will not be assigned activity rank roles when they pass a rank threshold, "
+            "and the **Refresh Member Ranks** button will skip them.\n\n"
+            "**Only put roles here that you genuinely want to exclude from competing for ranks** "
+            "(e.g. `Bots`, `Admin`, `Moderator`). Do *not* add region, education, or other "
+            "self-assigned roles -- members who pick those will silently stop receiving ranks."
         )
+        # --- END AI-REPLACED ---
         _accepts = _p(
             'guildset:unranked_roles|accepts',
             "Comma separated list of unranked role names or ids."
@@ -194,12 +221,30 @@ class StatisticsSettings(SettingGroup):
             t = ctx_translator.get().t
             value = self.value
             if value is not None:
+                # --- AI-REPLACED (2026-05-03) ---
+                # Reason: Original confirmation only mentioned the leaderboard,
+                # which let admins miss the rank-assignment side effect when
+                # they updated the setting. See _desc/_long_desc above for
+                # full context.
+                # What the new code does better: confirms both effects so
+                # the admin sees exactly what they just opted these members
+                # out of.
+                # --- Original code (commented out for rollback) ---
+                # resp = t(_p(
+                #     'guildset:unranked_roles|set_response|set',
+                #     "Members of the following roles will not appear on the leaderboard: {roles}"
+                # )).format(
+                #     roles=self.formatted
+                # )
+                # --- End original code ---
                 resp = t(_p(
                     'guildset:unranked_roles|set_response|set',
-                    "Members of the following roles will not appear on the leaderboard: {roles}"
+                    "Members with any of the following roles will be hidden from the leaderboard "
+                    "**and will not be assigned activity rank roles**: {roles}"
                 )).format(
                     roles=self.formatted
                 )
+                # --- END AI-REPLACED ---
             else:
                 resp = t(_p(
                     'guildset:unranked_roles|set_response|unset',
