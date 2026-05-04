@@ -714,33 +714,104 @@ class ScheduleCog(LionCog):
                 f"Unexpected exception while clocking on voice sessions {session_data!r}"
             )
 
+    # --- AI-REPLACED (2026-05-04) ---
+    # Reason: The original schedule_clockoff unconditionally clocked off any
+    # member whose voice session ended, causing two failures:
+    #   1. CAP-BLOCKED MID-SLOT: When a member's daily_voice_cap expires during
+    #      a scheduled session, voice_session_end fires and clocks them off even
+    #      though they're still physically in the voice channel.  No new
+    #      voice_session_start fires (cap-blocked) and no voice_state_update
+    #      fires (user didn't move), so they stay clocked off for the rest of
+    #      the slot.  (Support ticket 2026-05-04, user 1335280792112336947 in
+    #      guild 770814980194959360 got only 170s/3600s because their 16-hour
+    #      voice session expired 1 second into the slot.)
+    #   2. RACE WITH schedule_voice_state_handler: When a member moves from a
+    #      tracked channel to a valid untracked channel, both schedule_clockoff
+    #      (from voice_session_end) and schedule_voice_state_handler (from
+    #      on_voice_state_update) compete for session.lock.  If the handler
+    #      runs first and clocks on to the new channel, schedule_clockoff then
+    #      undoes that clock-on.
+    # What the new code does better:
+    #   - Timestamp guard: skips clock-off when clock_start >= ended_at,
+    #     meaning schedule_voice_state_handler already handled the move.
+    #   - Re-clock check: after a legitimate clock-off, checks Discord's
+    #     authoritative voice state; if the member is still in a valid channel,
+    #     immediately re-clocks them on (handles cap-blocked mid-slot).
+    # --- Original code (commented out for rollback) ---
+    # @LionCog.listener('on_voice_session_end')
+    # @log_wrap(action="Schedule Clock Off")
+    # async def schedule_clockoff(self, session_data, ended_at):
+    #     try:
+    #         logger.debug(f"Handling clock off parsing for {session_data}")
+    #         now = utc_now()
+    #         nowid = time_to_slotid(now)
+    #         async with self.slotlock(nowid):
+    #             slot = self.active_slots.get(nowid, None)
+    #             if slot is not None:
+    #                 session = slot.sessions.get(session_data.guildid)
+    #                 member = session.members.get(session_data.userid, None) if session else None
+    #                 if member is not None:
+    #                     async with session.lock:
+    #                         if session.listening and member.clock_start is not None:
+    #                             member.clock_off(ended_at)
+    #                             session.update_status_soon()
+    #                             logger.debug(
+    #                                 f"Clocked off member {member.data!r} from session {session!r}"
+    #                             )
+    #     except Exception:
+    #         logger.exception(
+    #             f"Unexpected exception while clocking off voice sessions {session_data!r}"
+    #         )
+    # --- End original code ---
     @LionCog.listener('on_voice_session_end')
     @log_wrap(action="Schedule Clock Off")
     async def schedule_clockoff(self, session_data, ended_at):
         try:
-            # DEBUG
             logger.debug(f"Handling clock off parsing for {session_data}")
-            # Get current slot
             now = utc_now()
             nowid = time_to_slotid(now)
             async with self.slotlock(nowid):
                 slot = self.active_slots.get(nowid, None)
                 if slot is not None:
-                    # Get session in current slot
                     session = slot.sessions.get(session_data.guildid)
                     member = session.members.get(session_data.userid, None) if session else None
                     if member is not None:
                         async with session.lock:
                             if session.listening and member.clock_start is not None:
+                                if member.clock_start >= ended_at:
+                                    logger.debug(
+                                        f"Skipping clock off for {member.data!r}: "
+                                        f"clock_start ({member.clock_start}) >= "
+                                        f"ended_at ({ended_at}), likely already "
+                                        f"re-clocked by voice state handler"
+                                    )
+                                    return
                                 member.clock_off(ended_at)
-                                session.update_status_soon()
                                 logger.debug(
                                     f"Clocked off member {member.data!r} from session {session!r}"
                                 )
+                                guild = session.guild
+                                if guild is not None:
+                                    mobj = guild.get_member(session_data.userid)
+                                    if (
+                                        mobj is not None
+                                        and mobj.voice is not None
+                                        and mobj.voice.channel is not None
+                                        and session.validate_channel(mobj.voice.channel.id)
+                                    ):
+                                        member.clock_on(ended_at)
+                                        logger.info(
+                                            f"Re-clocked on {member.data!r}: still in "
+                                            f"valid channel <cid:{mobj.voice.channel.id}> "
+                                            f"after voice session end (cap-blocked or "
+                                            f"moved to untracked channel)"
+                                        )
+                                session.update_status_soon()
         except Exception:
             logger.exception(
                 f"Unexpected exception while clocking off voice sessions {session_data!r}"
             )
+    # --- END AI-REPLACED ---
 
     # --- AI-MODIFIED (2026-04-19) ---
     # Purpose: Track scheduled session attendance directly from voice_state_update

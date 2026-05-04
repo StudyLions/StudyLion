@@ -262,6 +262,17 @@ class TimeSlot:
                         voice_session = tracker.get_session(smember.data.guildid, smember.data.userid)
                         if voice_session is not None and voice_session.activity is SessionState.ONGOING:
                             current_channelid = voice_session.data.channelid
+                        # --- AI-MODIFIED (2026-05-04) ---
+                        # Purpose: Log when both Discord cache and voice tracker fail to
+                        # detect a booked member's channel, aiding diagnosis of missed attendance.
+                        else:
+                            logger.warning(
+                                f"Could not detect voice channel for booked member "
+                                f"<uid:{smember.data.userid}> in <gid:{smember.data.guildid}> "
+                                f"at slot open. Discord cache miss and voice tracker returned "
+                                f"{'no session' if voice_session is None else voice_session.activity.name}."
+                            )
+                        # --- END AI-MODIFIED ---
                     if current_channelid is not None and session.validate_channel(current_channelid):
                         smember.clock_start = self.start_at
                 session.listening = True
