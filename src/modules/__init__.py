@@ -64,6 +64,12 @@ active = [
     # listener (invite create + review notify) on shard 0; idle elsewhere.
     '.serverlisting',
     # --- END AI-MODIFIED ---
+    # --- AI-MODIFIED (2026-05-15) ---
+    # Purpose: Gift notification poller. Reads pending_notifications
+    # rows written by the website's Stripe gift webhooks and delivers
+    # Discord DMs to recipients / senders / guild admins. Shard 0 only.
+    '.gift_notifications',
+    # --- END AI-MODIFIED ---
 ]
 
 
