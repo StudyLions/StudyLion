@@ -759,8 +759,8 @@ class Timer:
             # Purpose: Include cycle counter, break tip, and web promo in status message
             promoline = t(_p(
                 'timer|status|promoline',
-                "\u2728 *Tap **\U0001F4F1 Focus Mode** below to study on web or phone "
-                "\u2014 ambient sounds, study stats & more!*"
+                "\u2728 *Tap **\U0001F4F1 Focus Mode** below to track time on web or phone "
+                "\u2014 ambient sounds, productivity stats & more!*"
             ))
             content = "\n".join(
                 string for string in (stageline, cycleline, tipline, promoline, warningline, notifyline) if string

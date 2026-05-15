@@ -1,7 +1,7 @@
 
-## LionBot (formerly StudyLion) - Discord Study & Productivity Bot
+## LionBot (formerly StudyLion) - Discord Productivity Bot
 
-LionBot is a Discord bot that tracks members' study and work time while offering members the ability to view their statistics and use productivity tools such as: To-do lists, pomodoro timers, reminders, and much more.
+LionBot is a Discord bot that tracks members' voice and chat activity while offering members the ability to view their statistics and use productivity tools such as: To-do lists, pomodoro timers, reminders, and much more.
 
   
 
@@ -14,11 +14,11 @@ Join the [**support server**](https://discord.gg/the-study-lions-780195610154237
 ### The Idea
 
 
-In the past couple of years, we noticed a new trend on Discord – instead of being a platform designed only for gamers, many students joined it as well, forming communities dedicated to studying and working together.
+In the past couple of years, we noticed a new trend on Discord – instead of being a platform designed only for gamers, many communities joined it as well, dedicated to being productive together.
 
 
 
-This bot was founder by [Ari Horesh](https://www.youtube.com/arihoresh) (@AriHoresh) to support these forming study communities and allow students all over the world to study better.
+This bot was founder by [Ari Horesh](https://www.youtube.com/arihoresh) (@AriHoresh) to support these forming productivity communities and allow members all over the world to be productive together.
 
 ### Self Hosting
 
@@ -35,15 +35,15 @@ We do not offer support for self-hosted bots, the code is provided as is without
 
 ## Features
 
-- **Students Cards and Statistics**
+- **Profile Cards and Statistics**
 
-Allow users to create their own private student profile cards and set customs study field tags by using `!stats` and `!setprofile`
+Allow users to create their own private profile cards and set customs interest tags by using `!stats` and `!setprofile`
 
 ![Discord Study Bot Profile Card](https://i.imgur.com/dEZvawb.png)
 
-- **Camera only study rooms**
+- **Camera only voice rooms**
 
-Set specific channels to force users to use their webcam to study.
+Set specific channels to force users to use their webcam.
 
 ![discord study rooms](https://i.imgur.com/rlsH8a6.png)
 
@@ -61,42 +61,42 @@ Example: `!remindme to drink water every 3h` will send you a reminder every 3 ho
 
 - **Scheduled Sessions**
 
-This feature allows the users to use their coins to schedule a time to study at. Book rooms using `!rooms book`
+This feature allows the users to use their coins to schedule a session. Book rooms using `!rooms book`
 
 Not attending prevents everyone in the room from getting the bonus.
 
 ![scheuduled study rooms discord](https://i.imgur.com/6dMSqDh.png)
 
-- **Study and Work Statistics**
+- **Activity Statistics**
 
-In addition to the profile cards, users can view their daily, weekly, monthly and all-time stats, as well as their study streak. Use `!weekly` and `!monthly` to view your revision statistics in more detail.
+In addition to the profile cards, users can view their daily, weekly, monthly and all-time stats, as well as their activity streak. Use `!weekly` and `!monthly` to view your activity statistics in more detail.
 
 ![weekly and monthly statistics discord study](https://i.imgur.com/i7JutEh.png)
 
 - **Pomodoro Timers**
 
-The bot will show the timer in the title of the study room and play a sound at the start and end of each session. 
+The bot will show the timer in the title of the voice room and play a sound at the start and end of each session. 
 Commands:  `!timer` , `!pomodoro`
 
 ![Pomodoro timer Discord](https://i.imgur.com/UcNXpv3.png)
 
-- **Private Study Rooms**
+- **Private Voice Rooms**
 
-Allows the members to create their own private study rooms and invite their friends to join! 
+Allows the members to create their own private voice rooms and invite their friends to join! 
 Rent a room using `!rent [usernames]`. 
 
 - **Workout Rooms**
 
 Allows the Admins to create workout rooms with a bonus for people who workout.
 
-- **Study Tiers and Achievements**
+- **Activity Tiers and Achievements**
 
-Reward users based on their total study time, allow them to get better ranks, and show off how long they've been working.
+Reward users based on their total voice time, allow them to get better ranks, and show off how long they've been working.
 
 
 - **Full-Scale Economy System**
 
-Reward users for studying, allow them to use the coins to buy private study rooms, schedule accountability rooms, and even change their name's color.
+Reward users for being active, allow them to use the coins to buy private voice rooms, schedule accountability rooms, and even change their name's color.
 
 - **Full-Scale Moderation System**
 

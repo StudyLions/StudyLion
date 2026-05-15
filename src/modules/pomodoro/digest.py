@@ -19,7 +19,7 @@ MAX_DMS_PER_SECOND = 30
 
 class PomodoroDigest:
     """
-    Background task that sends weekly study-report DMs to premium pomodoro users.
+    Background task that sends weekly productivity-report DMs to premium pomodoro users.
     Runs only on shard 0.
     """
 

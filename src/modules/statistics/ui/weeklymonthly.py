@@ -178,11 +178,11 @@ class GoalEditor(FastModal):
         if self.stat_page.stat is StatType.VOICE:
             field.label = t(_p(
                 'modal:goal_editor|field:voice_goal|label',
-                "Study time goal"
+                "Productivity goal"
             ))
             field.placeholder = t(_p(
                 'modal:goal_editor|field:voice_goal|placeholder',
-                "Enter a number of hours of study to aim for."
+                "Enter a number of productive hours to aim for."
             ))
         elif self.stat_page.stat is StatType.TEXT:
             field.label = t(_p(
@@ -213,7 +213,7 @@ class GoalEditor(FastModal):
                 raise UserInputError(
                     t(_p(
                         'modal:goal_editor|field:voice_goal|error:NAN',
-                        "The provided study time goal `{input}` is not a number! Please try again."
+                        "The provided productivity goal `{input}` is not a number! Please try again."
                     )).format(input=string)
                 )
             elif self.stat_page.stat is StatType.TEXT:

@@ -50,32 +50,32 @@ member_study = _p(
 
 
     {stats_emoji} Statistics
-    *Study in voice channels to earn activity ranks and compete on the leaderboard!*
-    {cmd_me}: View your personal study profile and set your profile tags.
-    {cmd_stats}: View study statistics for the current and past weeks or months.
+    *Spend time in voice channels to earn activity ranks and compete on the leaderboard!*
+    {cmd_me}: View your personal profile and set your profile tags.
+    {cmd_stats}: View activity statistics for the current and past weeks or months.
     {cmd_ranks}: See the list of activity ranks.
     {cmd_leaderboard}: Compete with other members on the server leaderboards.
 
 
     {coin} Economy
-    *Earn coins through studying, then spend them on some well deserved rewards!*
+    *Earn coins through voice activity, then spend them on some well deserved rewards!*
     {cmd_send}: Send your {coin} to another member.
     {cmd_shop}: Purchase server roles with your {coin}.
     {cmd_room}: Rent a private voice channel for you and your friends.
 
 
     {utility_emoji} Utilities
-    *Some other utilities to help you stay productive while studying!*
+    *Some other utilities to help you stay productive!*
     {cmd_reminders}: Ask me to remind you about that important task!
     {cmd_tasklist}: Create tasks and feel the satisfaction of checking them off.
     {cmd_timers}: Stay productive using the classic *pomodoro technique*!
-    {cmd_schedule}: Schedule a shared study session and keep yourself accountable!
+    {cmd_schedule}: Schedule a shared session and keep yourself accountable!
 
 
     \U0001F981 LionGotchi
-    *Adopt a virtual pet that grows alongside your study journey!*
+    *Adopt a virtual pet that grows alongside your productivity!*
     {cmd_pet}: Adopt and manage your LionGotchi pet.
-    *Earn equipment drops while you study, grow a farm, customize your room, and trade on the marketplace!*
+    *Earn equipment drops while you're productive, grow a farm, customize your room, and trade on the marketplace!*
     """
 )
 

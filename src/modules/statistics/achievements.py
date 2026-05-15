@@ -171,7 +171,7 @@ class VoiceHours(Achievement):
     )
     _subtext = _p(
         'achievement:voicehours|subtext',
-        "Study a total of 1000 hours"
+        "Be productive for a total of 1000 hours"
     )
 
     threshold = 1000

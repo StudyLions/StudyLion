@@ -29,6 +29,8 @@ _greeting_subkey_desc = {
                        "Server icon url."),
     '{studying_count}': _p('guildset:greeting_message|formatkey:studying_count',
                            "Number of current voice channel members."),
+    '{voice_count}': _p('guildset:greeting_message|formatkey:voice_count',
+                        "Number of current voice channel members."),
     '{member_count}': _p('guildset:greeting_message|formatkey:member_count',
                          "Number of members in the server."),
 }
@@ -177,6 +179,7 @@ class MemberAdminSettings(SettingGroup):
                     '{guild_name}': guild.name,
                     '{guild_icon}': guild.icon.url if guild.icon else member.default_avatar.url,
                     '{studying_count}': str(active),
+                    '{voice_count}': str(active),
                     '{member_count}': guild.member_count,
                 }
 
@@ -302,6 +305,7 @@ class MemberAdminSettings(SettingGroup):
                     '{guild_name}': guild.name,
                     '{guild_icon}': guild.icon.url if guild.icon else member.default_avatar.url,
                     '{studying_count}': str(active),
+                    '{voice_count}': str(active),
                     '{member_count}': str(guild.member_count),
                     '{last_time}': str(last_seen or member.joined_at.timestamp()),
                 }

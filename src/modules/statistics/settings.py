@@ -448,7 +448,7 @@ class StatisticsConfigUI(ConfigUI):
         else:
             voice_label = t(_p(
                 'ui:statistics_config|menu:visible_stats|item:voice|mode:study',
-                "Study Statistics"
+                "Productivity Statistics"
             ))
         voice_option = SelectOption(
             label=voice_label,

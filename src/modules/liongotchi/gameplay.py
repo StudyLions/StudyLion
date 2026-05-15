@@ -185,7 +185,7 @@ VC_RARITY_TIERS = [
     (180, 3.0, _p('vc_tier:legendary_focus', 'Legendary Focus')),
     (120, 2.0, _p('vc_tier:epic_focus', 'Epic Focus')),
     (60,  1.5, _p('vc_tier:rare_focus', 'Rare Focus')),
-    (30,  1.25, _p('vc_tier:study_momentum', 'Study Momentum')),
+    (30,  1.25, _p('vc_tier:study_momentum', 'Productive Momentum')),
 ]
 # --- END AI-REPLACED ---
 

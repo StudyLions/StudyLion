@@ -171,11 +171,11 @@ class VoiceTrackerSettings(SettingGroup):
         """
         _desc = _p(
             'guildset:hourly_reward|mode:study|desc',
-            "LionCoins given per hour of study."
+            "LionCoins given per productive hour."
         )
         _long_desc = _p(
             'guildset:hourly_reward|mode:study|long_desc',
-            "Number of LionCoins given per hour of study, up to the daily hour cap."
+            "Number of LionCoins given per productive hour, up to the daily hour cap."
         )
 
         @property
@@ -183,7 +183,7 @@ class VoiceTrackerSettings(SettingGroup):
             t = ctx_translator.get().t
             return t(_p(
                 'guildset:hourly_reward|mode:study|response',
-                "Members will be given {coin}**{amount}** per hour that they study!"
+                "Members will be given {coin}**{amount}** per productive hour!"
             )).format(
                 coin=conf.emojis.coin,
                 amount=self.data
@@ -435,7 +435,7 @@ class VoiceTrackerConfigUIALT(LeoUI):
         else:
             title = t(_p(
                 'ui:voice_tracker_config|mode:study|embed|title',
-                "Study Tracker Configuration Panel"
+                "Productivity Tracker Configuration Panel"
             ))
         embed = discord.Embed(
             colour=discord.Colour.orange(),
@@ -493,7 +493,7 @@ class VoiceTrackerConfigUI(ConfigUI):
         else:
             title = t(_p(
                 'ui:voice_tracker_config|mode:study|embed|title',
-                "Study Tracker Configuration Panel"
+                "Productivity Tracker Configuration Panel"
             ))
         embed = discord.Embed(
             colour=discord.Colour.orange(),

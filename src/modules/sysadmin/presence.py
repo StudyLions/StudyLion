@@ -199,7 +199,7 @@ class PresenceSettings(SettingGroup):
         _model = PresenceData.AppPresence
         _column = PresenceData.AppPresence.activity_name.name
         _create_row = True
-        _default = "$in_vc students in $voice_channels study rooms!"
+        _default = "$in_vc members in $voice_channels voice rooms!"
 
 
 class PresenceCtrl(LionCog):
@@ -224,7 +224,7 @@ class PresenceCtrl(LionCog):
         # --- END AI-MODIFIED ---
     }
 
-    default_format = "$in_vc students in $voice_channels study rooms!"
+    default_format = "$in_vc members in $voice_channels voice rooms!"
     default_activity = discord.ActivityType.watching
     default_status = discord.Status.online
 

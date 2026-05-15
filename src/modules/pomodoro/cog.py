@@ -363,7 +363,7 @@ class TimerCog(LionCog):
             t = self.bot.translator.t
             description = t(_p(
                 'timer|leave_summary|desc',
-                "Great session, {mention}! You studied for {duration} and completed "
+                "Great session, {mention}! You were productive for {duration} and completed "
                 "**{cycles}** focus cycle(s). Keep it up!"
             )).format(
                 mention=member.mention,
@@ -1336,7 +1336,7 @@ class TimerCog(LionCog):
     # Purpose: Add /pomodoro stats command for personal and server study statistics
     @pomodoro_group.command(
         name=_p('cmd:pomodoro_stats', "stats"),
-        description=_p('cmd:pomodoro_stats|desc', "View your Pomodoro study statistics.")
+        description=_p('cmd:pomodoro_stats|desc', "View your Pomodoro productivity statistics.")
     )
     @appcmds.describe(
         server=_p(
@@ -1423,11 +1423,11 @@ class TimerCog(LionCog):
                     colour=discord.Colour.orange(),
                     title=t(_p(
                         'cmd:pomodoro_stats|server|title',
-                        "Server Study Stats \u2014 Last 30 Days"
+                        "Server Productivity Stats \u2014 Last 30 Days"
                     ))
                 )
                 embed.add_field(
-                    name=t(_p('cmd:pomodoro_stats|server|field:hours', "Total Study Time")),
+                    name=t(_p('cmd:pomodoro_stats|server|field:hours', "Total Productive Time")),
                     value=format_duration(server_row['total_seconds']),
                     inline=True
                 )
@@ -1526,7 +1526,7 @@ class TimerCog(LionCog):
                         colour=discord.Colour.orange(),
                         description=t(_p(
                             'cmd:pomodoro_stats|personal|no_data',
-                            "You haven't studied in this server yet! "
+                            "You haven't been productive in this server yet! "
                             "Join a voice channel or pomodoro timer to start tracking."
                         ))
                     )
@@ -1544,7 +1544,7 @@ class TimerCog(LionCog):
                         inline=True
                     )
                     embed.add_field(
-                        name=t(_p('cmd:pomodoro_stats|personal|field:hours', "Total Study Time")),
+                        name=t(_p('cmd:pomodoro_stats|personal|field:hours', "Total Productive Time")),
                         value=format_duration(stats_row['total_seconds']),
                         inline=True
                     )
@@ -1594,7 +1594,7 @@ class TimerCog(LionCog):
                 colour=discord.Colour.brand_red(),
                 description=t(_p(
                     'cmd:pomodoro_stats|error:query_failed',
-                    "Failed to load study statistics. Please try again later."
+                    "Failed to load productivity statistics. Please try again later."
                 ))
             )
             await ctx.interaction.edit_original_response(embed=embed)

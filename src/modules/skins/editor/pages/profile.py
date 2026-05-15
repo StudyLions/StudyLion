@@ -120,7 +120,7 @@ rank_name_colour = ColourSetting(
     ),
     description=_p(
         'skinsettings|page:profile|set:rank_name_colour|desc',
-        "Colour of the current study rank name."
+        "Colour of the current rank name."
     )
 )
 
@@ -133,7 +133,7 @@ rank_hours_colour = ColourSetting(
     ),
     description=_p(
         'skinsettings|page:profile|set:rank_hours_colour|desc',
-        "Colour of the study rank hour range."
+        "Colour of the rank hour range."
     )
 )
 

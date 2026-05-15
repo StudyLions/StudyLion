@@ -30,7 +30,7 @@ BLOCKED_MENTIONS = re.compile(r'@(everyone|here)', re.IGNORECASE)
 # --- AI-MODIFIED (2026-04-01) ---
 # Purpose: Add Babel localization for text branding support
 TYPE_LABELS = {
-    'study': _p('labels:type|study', "Study Time"),
+    'study': _p('labels:type|study', "Productive Time"),
     'messages': _p('labels:type|messages', "Messages"),
     'coins': _p('labels:type|coins', "LionCoins"),
 }
@@ -195,7 +195,7 @@ PRESETS = {
             '{topn_role} The following LionCoins are awarded to you!\n'
             '{reward_summary}'
         ),
-        'embed_title': 'TOP {top_count} WEEKLY STUDY BUDDIES',
+        'embed_title': 'TOP {top_count} MOST PRODUCTIVE THIS WEEK',
         'embed_description': 'Here are our {topn_role} for the week of **{period}**:',
         'embed_footer': '{server_name}',
         'embed_fields': [

@@ -1124,7 +1124,7 @@ class VoiceTrackerCog(LionCog):
             else:
                 description = t(_p(
                     'cmd:configure_voice_tracking|mode:study|resp:success|desc',
-                    "Members will now be rewarded {coin}**{base}** per hour of study "
+                    "Members will now be rewarded {coin}**{base}** per productive hour "
                     "in this server, with a bonus of {coin}**{bonus}** if they stream of display video, "
                     "up to a total of **{cap}** hours per server day."
                 )).format(

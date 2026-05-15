@@ -25,7 +25,7 @@ class AntiAfkData(Registry, name='anti_afk'):
             action TEXT NOT NULL DEFAULT 'kick',
             max_warnings INTEGER NOT NULL DEFAULT 1,
             min_users INTEGER NOT NULL DEFAULT 1,
-            warning_message TEXT NOT NULL DEFAULT 'Are you still studying?',
+            warning_message TEXT NOT NULL DEFAULT 'Are you still active?',
             exempt_roles TEXT NOT NULL DEFAULT '[]',
             target_channels TEXT NOT NULL DEFAULT '[]',
             exclude_channels TEXT NOT NULL DEFAULT '[]',

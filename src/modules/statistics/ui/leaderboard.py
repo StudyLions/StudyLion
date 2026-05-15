@@ -345,7 +345,7 @@ class LeaderboardUI(StatsUI):
                 SelectOption(
                     label=t(_p(
                         'ui:leaderboard|menu:stats|item:study',
-                        "Study Statistics"
+                        "Productivity Statistics"
                     )),
                     value=str(StatType.VOICE.value),
                     default=(self.stat_type == StatType.VOICE),

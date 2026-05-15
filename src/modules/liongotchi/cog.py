@@ -154,13 +154,13 @@ ONBOARDING_PAGES = [
             'onboard:page1|desc',
             (
                 "**LionGotchi** is your virtual pet that grows alongside "
-                "your study journey!\n\n"
+                "your productivity journey!\n\n"
                 "\U0001F43E **Adopt a pet** \u2014 name it, care for it, watch it level up\n"
-                "\u2694\uFE0F **Earn equipment** \u2014 gear drops while you study and chat\n"
+                "\u2694\uFE0F **Earn equipment** \u2014 gear drops while you're productive\n"
                 "\U0001F331 **Grow a farm** \u2014 plant seeds, harvest rare crops\n"
                 "\U0001F3E0 **Customize a room** \u2014 furniture, themes, and trophies\n"
                 "\U0001F4B0 **Trade with others** \u2014 buy and sell on the marketplace\n\n"
-                "The more you study, the more you earn. Let's show you!"
+                "The more productive you are, the more you earn. Let's show you!"
             ),
         ),
         'footer': _p('onboard:page1|footer', 'Page 1/4'),
@@ -174,8 +174,8 @@ ONBOARDING_PAGES = [
             (
                 "**Care for your pet** \u2014 it has three needs that decay over time:\n"
                 "\U0001F356 Food \u2022 \U0001F9FC Bath \u2022 \U0001F4A4 Sleep\n"
-                "Happy pets earn **more gold and XP** from your study sessions!\n\n"
-                "**Equipment drops** as you chat and study:\n"
+                "Happy pets earn **more gold and XP** from your productive sessions!\n\n"
+                "**Equipment drops** as you're productive:\n"
                 "\u26AA Common \u2022 \U0001F7E2 Uncommon \u2022 \U0001F535 Rare \u2022 "
                 "\U0001F7E3 Epic \u2022 \U0001F7E0 Legendary \u2022 \U0001F534 Mythical\n\n"
                 "\U0001F6E1\uFE0F Equip gear to **head, face, body, back, and feet**\n"
@@ -195,7 +195,7 @@ ONBOARDING_PAGES = [
                 "**Your Farm** \u2014 15 plots to grow crops!\n"
                 "\U0001FAB4 Plant seeds \u2022 \U0001F4A7 Water daily \u2022 "
                 "\U0001F33E Harvest for gold and bonus drops\n"
-                "Your farm grows automatically as you study and chat.\n\n"
+                "Your farm grows automatically as you're productive.\n\n"
                 "**Marketplace** \u2014 trade with the whole community!\n"
                 "List equipment and scrolls for sale, browse rare items, "
                 "and build your collection.\n\n"
@@ -216,13 +216,13 @@ ONBOARDING_PAGES = [
                 "You're ready! Tap **Adopt!** to name your pet and begin.\n\n"
                 "**Quick recap:**\n"
                 "\u2022 `/pet` \u2014 Check on your pet anytime\n"
-                "\u2022 Chat and study \u2014 Equipment drops automatically\n"
+                "\u2022 Stay productive \u2014 Equipment drops automatically\n"
                 f"\u2022 **{WEBSITE_URL}/pet** \u2014 Your hub for farming, "
                 "room design, and the marketplace\n"
                 "\u2022 Vote on **top.gg** \u2014 Free gems every 12 hours\n\n"
                 "Your pet's name can be changed later, so don't worry "
                 "about picking the perfect one right now.\n\n"
-                "Good luck, and happy studying! \U0001F981"
+                "Good luck, and stay productive! \U0001F981"
             ),
         ),
         'footer': _p('onboard:page4|footer', 'Page 4/4'),
@@ -475,7 +475,7 @@ class InventoryView(discord.ui.View):
             if self.active_filter == self.FILTER_SCROLLS:
                 embed.description = str(_p(
                     'embed:inventory|desc:empty_scrolls',
-                    'No scrolls yet! Keep studying to earn scroll drops.'))
+                    'No scrolls yet! Keep being productive to earn scroll drops.'))
             else:
                 embed.description = str(_p(
                     'embed:inventory|desc:empty_equip',
@@ -818,7 +818,7 @@ class InventoryPaginatorView(discord.ui.View):
                 description=str(_p(
                     'embed:backpack|desc:empty',
                     'Your backpack is empty!\n\n'
-                    'Earn items by studying, farming, or buying from the marketplace.')),
+                    'Earn items by being productive, farming, or buying from the marketplace.')),
                 color=0x9e9e9e,
             )
             embed.set_footer(text=str(_p(
@@ -1184,14 +1184,14 @@ class FirstEncounterView(discord.ui.View):
             color=0xffc107,
             description=str(_p(
                 'embed:what_is_lg|desc',
-                "**LionGotchi** is a virtual pet system built into StudyLion!\n\n"
-                "\U0001F43E **Adopt a pet** and raise it as you study\n"
+                "**LionGotchi** is a virtual pet system built into LionBot!\n\n"
+                "\U0001F43E **Adopt a pet** and raise it as you're productive\n"
                 "\u2694\uFE0F **Earn equipment** and scrolls from activity\n"
                 "\U0001F331 **Grow a farm** with seeds and harvest crops\n"
                 "\U0001F3E0 **Decorate a room** with furniture and trophies\n"
                 "\U0001F4B0 **Trade on the marketplace** with other users\n"
                 "\u2B06\uFE0F **Enhance gear** for powerful bonuses\n\n"
-                "The more you study, the more rewards you earn.\n"
+                "The more productive you are, the more rewards you earn.\n"
                 "Type `/pet` to get started!"
             ))
         )
@@ -1452,7 +1452,7 @@ class EnhanceView(discord.ui.View):
         if not self.scroll_items:
             embed.description = str(_p(
                 'embed:enhance|desc:no_scrolls',
-                'You have no scrolls! Keep studying to earn scroll drops.'))
+                'You have no scrolls! Keep being productive to earn scroll drops.'))
             return embed
         # --- AI-MODIFIED (2026-03-17) ---
         # Purpose: Show bonus_value info alongside success/destroy rates
@@ -6508,7 +6508,7 @@ class LionGotchiCog(LionCog):
 
         promo_messages = [
             "NEW: /pet \u2014 Adopt your LionGotchi!",
-            "/pet \u2014 Earn gear while you study!",
+            "/pet \u2014 Earn gear while you're productive!",
             "/pet \u2014 Farm, trade, collect!",
         ]
         idx = 0
@@ -7569,7 +7569,7 @@ class LionGotchiCog(LionCog):
         if pet_count and pet_count > 100:
             social_line = str(_p(
                 'embed:first_encounter|social',
-                "\n\U0001F465 **{count:,} students** already have a LionGotchi!\n"
+                "\n\U0001F465 **{count:,} members** already have a LionGotchi!\n"
             )).format(count=pet_count)
 
         embed = discord.Embed(
@@ -7578,8 +7578,8 @@ class LionGotchiCog(LionCog):
             description=str(_p(
                 'embed:first_encounter|desc',
                 "While you were chatting, something caught your eye...\n\n"
-                "\u2728 **Equipment and scrolls** drop while you study!\n"
-                "Active members earn rare gear just by chatting and studying.\n"
+                "\u2728 **Equipment and scrolls** drop while you're productive!\n"
+                "Active members earn rare gear just by being productive.\n"
                 "{social_line}\n"
                 "\U0001F43E **Adopt a LionGotchi pet** to start collecting!\n"
                 "\u2694\uFE0F Equipment with stat bonuses \u2022 "
@@ -7590,7 +7590,7 @@ class LionGotchiCog(LionCog):
         )
         embed.set_footer(text=str(_p(
             'embed:first_encounter|footer',
-            "The more you study, the more you earn \u2022 {url}"
+            "The more productive you are, the more you earn \u2022 {url}"
         )).format(url=f"{WEBSITE_URL}/pet"))
 
         gif_file = None
@@ -7669,13 +7669,13 @@ class LionGotchiCog(LionCog):
             "\u2694\uFE0F **What now?** Equipment boosts your gold and XP earnings.\n"
             "\U0001F4DC Scrolls can enhance your equipment for even stronger boosts!\n"
             "\U0001F4E6 View your inventory at **{pet_url}**\n"
-            "\U0001F4AC Keep chatting and studying to earn more drops!"
+            "\U0001F4AC Stay productive to earn more drops!"
         )).format(drops=drops_block, desc_line=desc_line,
                   pet_url=f"{WEBSITE_URL}/pet/inventory")
 
         embed.set_footer(text=str(_p(
             'embed:first_drop|footer',
-            "Tip: The longer you study in VC each day, the rarer your drops become!"
+            "Tip: The longer you stay in VC each day, the rarer your drops become!"
         )))
 
         card_bytes = None
@@ -7781,7 +7781,7 @@ class LionGotchiCog(LionCog):
             boost_pct = int((vc_boost - 1.0) * 100)
             desc += str(_p(
                 'embed:drop|tip:vc_streak',
-                "\n\U0001F3AF **VC Study Streak**: {tier} ({time_today}) \u2014 +{boost_pct}% rare item chance"
+                "\n\U0001F3AF **Voice Streak**: {tier} ({time_today}) \u2014 +{boost_pct}% rare item chance"
             )).format(
                 tier=vc_tier,
                 time_today=f"{time_str} today",
@@ -7802,12 +7802,12 @@ class LionGotchiCog(LionCog):
             mins_left = next_threshold - vc_daily_min
             desc += str(_p(
                 'embed:drop|tip:study_momentum',
-                "\n\U0001F4A1 **Tip:** {mins_left} more min in VC today to unlock **Study Momentum** \u2014 better rarity drops!"
+                "\n\U0001F4A1 **Tip:** {mins_left} more min in VC today to unlock **Productive Momentum** \u2014 better rarity drops!"
             )).format(mins_left=mins_left)
         else:
             desc += str(_p(
                 'embed:drop|tip:vc_daily',
-                "\n\U0001F4A1 **Tip:** Study in VC for 30+ min today to unlock rarer item drops!"
+                "\n\U0001F4A1 **Tip:** Spend 30+ min in VC today to unlock rarer item drops!"
             ))
 
         embed.description = desc
@@ -7837,10 +7837,10 @@ class LionGotchiCog(LionCog):
         """Build a teaser embed with rotating hooks. Returns (embed, gif_key)."""
         hooks = [
             {
-                'title': str(_p('embed:teaser:equipment|title', '\u2728 Earn Gear While You Study!')),
+                'title': str(_p('embed:teaser:equipment|title', '\u2728 Earn Gear While You\'re Productive!')),
                 'description': str(_p(
                     'embed:teaser:equipment|desc',
-                    "**Equipment and scrolls** drop while you chat and study!\n\n"
+                    "**Equipment and scrolls** drop while you're productive!\n\n"
                     "\u2694\uFE0F Equip gear for gold and XP bonuses\n"
                     "\U0001F4DC Enhance equipment with scrolls\n\n"
                     "Use `/pet` to adopt your LionGotchi and start collecting!"
@@ -7854,7 +7854,7 @@ class LionGotchiCog(LionCog):
                     "LionGotchi pets come with a **15-plot farm**!\n\n"
                     "\U0001FAB4 Plant seeds \u2022 \U0001F4A7 Water daily \u2022 "
                     "\U0001F33E Harvest for gold\n"
-                    "Your farm grows automatically as you study.\n\n"
+                    "Your farm grows automatically as you're productive.\n\n"
                     "Use `/pet` to get started!"
                 )),
                 'gif_key': 'farm',
@@ -7864,7 +7864,7 @@ class LionGotchiCog(LionCog):
                 'description': str(_p(
                     'embed:teaser:pet|desc',
                     "Adopt a **LionGotchi** \u2014 a virtual pet that grows "
-                    "alongside your study sessions!\n\n"
+                    "alongside your productive sessions!\n\n"
                     "\U0001F43E Care for it \u2022 \u2694\uFE0F Gear it up \u2022 "
                     "\U0001F4B0 Trade with friends\n\n"
                     "Use `/pet` to adopt yours!"
@@ -7881,7 +7881,7 @@ class LionGotchiCog(LionCog):
         )
         embed.set_footer(text=str(_p(
             'embed:first_encounter|footer',
-            "The more you study, the more you earn \u2022 {url}"
+            "The more productive you are, the more you earn \u2022 {url}"
         )).format(url=f"{WEBSITE_URL}/pet"))
         return embed, hook['gif_key']
     # --- END AI-REPLACED ---
@@ -8443,7 +8443,7 @@ class LionGotchiCog(LionCog):
                     'embed:pet_warning|desc',
                     "**Low:** {needs}\n\n"
                     "Mood: **{mood_label}** ({mood_mult:.2f}x Gold & XP)\n\n"
-                    "Start a study session or feed them before they get sad!"
+                    "Start a session or feed them before they get sad!"
                 )).format(
                     needs=needs_text, mood_label=mood_label, mood_mult=mood_mult,
                 ),
@@ -8550,17 +8550,17 @@ class LionGotchiCog(LionCog):
         pet_count = getattr(self, '_cached_pet_count', 0)
         social_line = ""
         if pet_count and pet_count > 100:
-            social_line = f"\n\U0001F465 **{pet_count:,} students** have already adopted their LionGotchi!\n"
+            social_line = f"\n\U0001F465 **{pet_count:,} members** have already adopted their LionGotchi!\n"
 
         embed = discord.Embed(
             title="\U0001F981 LionGotchi Has Arrived!",
             color=0xffd700,
             description=(
                 "**LionGotchi** is a virtual pet system built into LionBot!\n"
-                "Your pet grows alongside your study sessions.\n"
+                "Your pet grows alongside your productive sessions.\n"
                 f"{social_line}\n"
                 "\U0001F43E **Adopt a pet** \u2014 name it, care for it, watch it level up\n"
-                "\u2694\uFE0F **Earn equipment** \u2014 gear drops while you study and chat\n"
+                "\u2694\uFE0F **Earn equipment** \u2014 gear drops while you're productive\n"
                 "\U0001F331 **Grow a farm** \u2014 plant seeds, water daily, harvest for gold\n"
                 "\U0001F3E0 **Customize a room** \u2014 furniture, themes, and trophies\n"
                 "\U0001F4B0 **Trade on the marketplace** \u2014 buy and sell with other users\n"
@@ -8568,7 +8568,7 @@ class LionGotchiCog(LionCog):
                 "Type **`/pet`** to get started! It's free for everyone."
             )
         )
-        embed.set_footer(text=f"The more you study, the more you earn \u2022 {WEBSITE_URL}/pet")
+        embed.set_footer(text=f"The more productive you are, the more you earn \u2022 {WEBSITE_URL}/pet")
 
         gif_file = None
         try:
@@ -8662,7 +8662,7 @@ class LionGotchiCog(LionCog):
 
         stats_lines = []
         if pet_count > 50:
-            stats_lines.append(f"\U0001F43E **{pet_count:,}** students have adopted a LionGotchi")
+            stats_lines.append(f"\U0001F43E **{pet_count:,}** members have adopted a LionGotchi")
         if item_count > 50:
             stats_lines.append(f"\U0001F392 **{item_count:,}** items dropped to active members")
         if farm_count > 10:
@@ -8670,20 +8670,20 @@ class LionGotchiCog(LionCog):
         stats_block = "\n".join(stats_lines) + "\n\n" if stats_lines else ""
 
         embed = discord.Embed(
-            title="\U0001F981 Your Study Sessions Could Be More Fun!",
+            title="\U0001F981 Your Sessions Could Be More Fun!",
             color=0xffd700,
             description=(
                 f"Did you know LionBot has a **virtual pet system**?\n\n"
                 f"{stats_block}"
-                f"\U0001F4B0 Earn **Gold** by studying in voice channels and chatting\n"
-                f"\u2694\uFE0F Collect **equipment and scrolls** that drop while you study\n"
+                f"\U0001F4B0 Earn **Gold** by being productive in voice channels and chatting\n"
+                f"\u2694\uFE0F Collect **equipment and scrolls** that drop while you're productive\n"
                 f"\U0001F33E **Grow a farm** and harvest crops for profit\n"
                 f"\U0001F4CA **Trade on the marketplace** with other users\n\n"
                 f"Use `/pet` to adopt yours for free \u2014 it takes 10 seconds!"
             ),
         )
         embed.set_footer(
-            text=f"The more you study, the more you earn \u2022 {WEBSITE_URL}/pet/tutorial"
+            text=f"The more productive you are, the more you earn \u2022 {WEBSITE_URL}/pet/tutorial"
         )
 
         view = AdoptionNudgeView()
