@@ -626,12 +626,71 @@ class LeaderboardAutopostCog(LionCog):
 
         lb_data = await self._fetch_leaderboard(config, period_start)
 
+        # --- AI-MODIFIED (2026-05-15) ---
+        # Purpose: Move guild fetch earlier so we can apply the unranked /
+        # bot filter before slicing to top_count. Previously the guild fetch
+        # happened ~line 662 and the autopost path skipped the unranked-roles
+        # filter entirely, so admins / bots configured as Unranked Roles
+        # still showed up in the rendered card. Ticket about admin roles in
+        # autopost leaderboard.
+        guild = self.bot.get_guild(config.guildid)
+        guild_cached = guild is not None
+        if not guild:
+            try:
+                guild = await self.bot.fetch_guild(config.guildid)
+            except Exception:
+                raise ValueError(
+                    f"Guild {config.guildid} not found - the bot may not be in this server"
+                )
+
+        unranked_roleids = set()
+        stats_cog = self.bot.get_cog('StatsCog')
+        if stats_cog is not None:
+            try:
+                setting = await stats_cog.settings.UnrankedRoles.get(config.guildid)
+                unranked_roleids = set(setting.data)
+            except Exception:
+                logger.warning("Failed to read UnrankedRoles for autopost", exc_info=True)
+
+        member_cache = {}
+        # --- END AI-MODIFIED ---
+
         threshold = config.min_threshold or 0
         if threshold > 0:
             lb_data = [(uid, val) for uid, val in lb_data if val >= threshold]
 
+        # --- AI-REPLACED (2026-05-15) ---
+        # Reason: Apply UnrankedRoles + bot filter while slicing to top_count,
+        # backfilling filtered slots from lower-ranked users. Mirrors the
+        # slash-command filter at statistics/ui/leaderboard.py:172-189.
+        # Members fetched here are cached in `member_cache` for re-use in the
+        # winners-building loop below so we don't double-fetch.
+        # --- Original code (commented out for rollback) ---
+        # top_count = config.top_count or 10
+        # lb_data = lb_data[:top_count]
+        # --- End original code ---
         top_count = config.top_count or 10
-        lb_data = lb_data[:top_count]
+        filtered_lb = []
+        for uid, val in lb_data:
+            if len(filtered_lb) >= top_count:
+                break
+            member = guild.get_member(uid)
+            if member is None and not guild_cached:
+                try:
+                    member = await guild.fetch_member(uid)
+                except discord.NotFound:
+                    continue
+                except Exception:
+                    pass
+            if member is not None:
+                if member.bot:
+                    continue
+                if unranked_roleids and any(r.id in unranked_roleids for r in member.roles):
+                    continue
+                member_cache[uid] = member
+            filtered_lb.append((uid, val))
+        lb_data = filtered_lb
+        # --- END AI-REPLACED ---
 
         if not lb_data and config.skip_if_empty and not is_test:
             await self.data.History.create(
@@ -657,33 +716,38 @@ class LeaderboardAutopostCog(LionCog):
                 )
                 return
 
-        # --- AI-MODIFIED (2026-03-22) ---
-        # Purpose: Cross-shard guild lookup - fetch via API if not cached on shard 0
-        guild = self.bot.get_guild(config.guildid)
-        guild_cached = guild is not None
-        if not guild:
-            try:
-                guild = await self.bot.fetch_guild(config.guildid)
-            except Exception:
-                raise ValueError(
-                    f"Guild {config.guildid} not found - the bot may not be in this server"
-                )
-        # --- END AI-MODIFIED ---
+        # --- AI-REPLACED (2026-05-15) ---
+        # Reason: Guild fetch was moved earlier in this function (above the
+        # threshold + top-count filter) so the new unranked/bot filter has
+        # access to it. The fallback member-fetch inside the winners loop
+        # now consults `member_cache` populated by that filter to avoid
+        # double-fetching for cross-shard guilds.
+        # --- Original code (commented out for rollback) ---
+        # # --- AI-MODIFIED (2026-03-22) ---
+        # # Purpose: Cross-shard guild lookup - fetch via API if not cached on shard 0
+        # guild = self.bot.get_guild(config.guildid)
+        # guild_cached = guild is not None
+        # if not guild:
+        #     try:
+        #         guild = await self.bot.fetch_guild(config.guildid)
+        #     except Exception:
+        #         raise ValueError(
+        #             f"Guild {config.guildid} not found - the bot may not be in this server"
+        #         )
+        # # --- END AI-MODIFIED ---
+        # --- End original code ---
 
         server_name = guild.name
         lb_type = config.lb_type or 'study'
 
         winners = []
         for i, (userid, value) in enumerate(lb_data):
-            member = guild.get_member(userid)
-            # --- AI-MODIFIED (2026-03-22) ---
-            # Purpose: Fetch member via API for cross-shard display names
+            member = member_cache.get(userid) or guild.get_member(userid)
             if not member and not guild_cached:
                 try:
                     member = await guild.fetch_member(userid)
                 except Exception:
                     pass
-            # --- END AI-MODIFIED ---
             winners.append({
                 'userid': userid,
                 'rank': i + 1,
@@ -691,6 +755,7 @@ class LeaderboardAutopostCog(LionCog):
                 'raw_value': value,
                 'name': member.display_name if member else _p('ui:autopost|fallback_name', "User {userid}").format(userid=userid),
             })
+        # --- END AI-REPLACED ---
 
         variables = build_variables(
             server_name=server_name,
@@ -773,10 +838,24 @@ class LeaderboardAutopostCog(LionCog):
                     (uid, i + 1, val)
                     for i, (uid, val) in enumerate(lb_data)
                 ]
+                # --- AI-MODIFIED (2026-05-15) ---
+                # Purpose: Render the user's `config_name` on the card image
+                # when they have customized it. Default "Leaderboard" falls
+                # through so existing users keep the localized branded header
+                # ("PRODUCTIVITY LEADERBOARD" / "MESSAGE LEADERBOARD" / etc.).
+                # Truncated to 28 chars to stay within the centered header
+                # layout. Ticket #0085.
+                header_override = (
+                    config.config_name
+                    if config.config_name and config.config_name != "Leaderboard"
+                    else None
+                )
                 card = await get_leaderboard_card(
                     self.bot, 0, config.guildid, mode, entry_data,
                     guild=guild,
+                    custom_header=truncate(header_override, 28),
                 )
+                # --- END AI-MODIFIED ---
                 card_bytes = await card.render()
                 card_image = discord.File(
                     io.BytesIO(card_bytes), filename='leaderboard.png'
@@ -887,47 +966,106 @@ class LeaderboardAutopostCog(LionCog):
             winner_ids = {w['userid'] for w in winners}
             top1_uid = winners[0]['userid'] if winners else None
 
+            # --- AI-REPLACED (2026-05-15) ---
+            # Reason: The non-cached branch used `winner_ids` (top N) as the
+            # keep gate, so a previous top-1 winner who slipped to rank 3 (but
+            # stayed in top N) kept the top-1 role indefinitely. Since the
+            # autopost loop runs on shard 0 only (cog.py:376), the non-cached
+            # branch is the production path for ~31/32 of all guilds, including
+            # Kevin's (ticket #0084 -- 4 stale "Yesterday's Study Winner" roles
+            # stacked across 4 days because the same regulars stayed in top 10).
+            # What the new code does better: one unified candidates loop that
+            # considers BOTH role.members (cache view, for the rare on-shard-0
+            # case and any out-of-band role assignments) and
+            # config.last_winner_ids_list (the cross-shard tracking list).
+            # Applies per-role keep rules (top1 vs topn) to each candidate
+            # uniformly, fetching the member from the Discord API when not
+            # cached.
+            # --- Original code (commented out for rollback) ---
+            # if config.auto_remove_roles:
+            #     if guild_cached:
+            #         for role in all_managed_roles:
+            #             is_top1 = role in top1_roles
+            #             is_topn = role in topn_roles
+            #             for member in role.members:
+            #                 should_keep = False
+            #                 if is_top1 and member.id == top1_uid:
+            #                     should_keep = True
+            #                 if is_topn and member.id in winner_ids:
+            #                     should_keep = True
+            #                 if not should_keep:
+            #                     try:
+            #                         await member.remove_roles(
+            #                             role, reason=_p('ui:autopost|audit_remove_role', "Leaderboard auto-post: removing old holder")
+            #                         )
+            #                         roles_removed += 1
+            #                     except Exception as e:
+            #                         known_role_holders.add(member.id)
+            #                         role_errors.append(f"Remove {role.name} from {member}: {e}")
+            #                 else:
+            #                     known_role_holders.add(member.id)
+            #     else:
+            #         prev_holders = set(config.last_winner_ids_list or [])
+            #         to_remove = prev_holders - winner_ids
+            #         for uid in to_remove:
+            #             try:
+            #                 prev_member = await guild.fetch_member(uid)
+            #                 removed_any = False
+            #                 for role in all_managed_roles:
+            #                     if role in prev_member.roles:
+            #                         await prev_member.remove_roles(
+            #                             role, reason=_p('ui:autopost|audit_remove_role', "Leaderboard auto-post: removing old holder")
+            #                         )
+            #                         roles_removed += 1
+            #                         removed_any = True
+            #                 if not removed_any:
+            #                     pass
+            #             except Exception as e:
+            #                 known_role_holders.add(uid)
+            #                 role_errors.append(f"Remove roles from user {uid}: {e}")
+            # --- End original code ---
             if config.auto_remove_roles:
+                top1_role_set = set(top1_roles)
+                topn_role_set = set(topn_roles)
+
+                candidates = set(config.last_winner_ids_list or [])
                 if guild_cached:
                     for role in all_managed_roles:
-                        is_top1 = role in top1_roles
-                        is_topn = role in topn_roles
-                        for member in role.members:
-                            should_keep = False
-                            if is_top1 and member.id == top1_uid:
-                                should_keep = True
-                            if is_topn and member.id in winner_ids:
-                                should_keep = True
-                            if not should_keep:
-                                try:
-                                    await member.remove_roles(
-                                        role, reason=_p('ui:autopost|audit_remove_role', "Leaderboard auto-post: removing old holder")
-                                    )
-                                    roles_removed += 1
-                                except Exception as e:
-                                    known_role_holders.add(member.id)
-                                    role_errors.append(f"Remove {role.name} from {member}: {e}")
-                            else:
-                                known_role_holders.add(member.id)
-                else:
-                    prev_holders = set(config.last_winner_ids_list or [])
-                    to_remove = prev_holders - winner_ids
-                    for uid in to_remove:
+                        for cached_member in role.members:
+                            candidates.add(cached_member.id)
+
+                for uid in candidates:
+                    member = guild.get_member(uid) if guild_cached else None
+                    if member is None:
                         try:
-                            prev_member = await guild.fetch_member(uid)
-                            removed_any = False
-                            for role in all_managed_roles:
-                                if role in prev_member.roles:
-                                    await prev_member.remove_roles(
-                                        role, reason=_p('ui:autopost|audit_remove_role', "Leaderboard auto-post: removing old holder")
-                                    )
-                                    roles_removed += 1
-                                    removed_any = True
-                            if not removed_any:
-                                pass
+                            member = await guild.fetch_member(uid)
+                        except discord.NotFound:
+                            continue
                         except Exception as e:
                             known_role_holders.add(uid)
-                            role_errors.append(f"Remove roles from user {uid}: {e}")
+                            role_errors.append(f"Fetch member {uid}: {e}")
+                            continue
+
+                    member_role_ids = {r.id for r in member.roles}
+                    for role in all_managed_roles:
+                        if role.id not in member_role_ids:
+                            continue
+                        should_keep = (
+                            (role in top1_role_set and uid == top1_uid)
+                            or (role in topn_role_set and uid in winner_ids)
+                        )
+                        if should_keep:
+                            known_role_holders.add(uid)
+                            continue
+                        try:
+                            await member.remove_roles(
+                                role, reason=_p('ui:autopost|audit_remove_role', "Leaderboard auto-post: removing old holder")
+                            )
+                            roles_removed += 1
+                        except Exception as e:
+                            known_role_holders.add(uid)
+                            role_errors.append(f"Remove {role.name} from {member}: {e}")
+            # --- END AI-REPLACED ---
 
             for w in winners:
                 member = guild.get_member(w['userid'])

@@ -12,6 +12,12 @@ async def get_leaderboard_card(
     # Purpose: Accept pre-fetched guild for cross-shard autopost support
     guild=None,
     # --- END AI-MODIFIED ---
+    # --- AI-MODIFIED (2026-05-15) ---
+    # Purpose: Optional user-provided header text (e.g. the autopost config
+    # name "Daily Leaderboard"). Falls through to mode-based defaults when
+    # None or empty. Ticket #0085.
+    custom_header=None,
+    # --- END AI-MODIFIED ---
 ):
     """
     Render a leaderboard card with given parameters.
@@ -100,10 +106,14 @@ async def get_leaderboard_card(
     skin = await bot.get_cog('CustomSkinCog').get_skinargs_for(
         guildid, None, LeaderboardCard.card_id
     )
+    # --- AI-MODIFIED (2026-05-15) ---
+    # Purpose: Thread `custom_header` into the skin so LeaderboardSkin
+    # renders it instead of the mode-based default. Ticket #0085.
     card = LeaderboardCard(
-        skin=skin | {'mode': mode},
+        skin=skin | {'mode': mode, 'custom_header_text': custom_header},
         server_name=guild.name or str(guildid),
         entries=entries,
         highlight=highlight
     )
+    # --- END AI-MODIFIED ---
     return card
