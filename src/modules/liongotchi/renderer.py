@@ -910,8 +910,12 @@ def render_action_frame(state: PetState, action: str) -> bytes:
 
         if action == 'feed':
             y_float = int(300 - frame_idx * 20)
-            _draw_outlined_text(draw, (340, y_float), "+2 Food!", font=font_big,
+            # --- AI-MODIFIED (2026-05-15) ---
+            # Purpose: Care buttons now fill to max in one click (was +2). Text label
+            # updated to match. "Nom nom!" mirrors the response text.
+            _draw_outlined_text(draw, (340, y_float), "Nom nom!", font=font_big,
                                 fill=(255, 220, 50), outline=(80, 60, 0))
+            # --- END AI-MODIFIED ---
             for i, (sx, sy) in enumerate(sparkle_positions[:8]):
                 phase = (frame_idx + i) % ACTION_FRAME_COUNT
                 dy = -phase * 12
