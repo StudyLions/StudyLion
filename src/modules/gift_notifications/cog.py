@@ -306,11 +306,13 @@ class GiftNotificationsCog(LionCog):
     def _build_embed(self, payload: dict[str, Any]) -> discord.Embed:
         title = (payload.get("title") or "LionBot").strip()[:256]
         body = (payload.get("body") or "").strip()[:4000]
-        embed = discord.Embed(
-            title=title,
-            description=body if body else discord.Embed.Empty,
-            color=EMBED_COLOR,
-        )
+        # discord.py 2.0+ removed Embed.Empty -- use Embed kwarg omission via
+        # conditional construction so the description field is just absent
+        # when there's no body.
+        if body:
+            embed = discord.Embed(title=title, description=body, color=EMBED_COLOR)
+        else:
+            embed = discord.Embed(title=title, color=EMBED_COLOR)
         # No author / footer noise -- restraint per the gift UI principles.
         return embed
 
@@ -323,7 +325,11 @@ class GiftNotificationsCog(LionCog):
         label = (payload.get("link_label") or "Open").strip()[:80]
         view = discord.ui.View(timeout=None)
         try:
+            # discord.py 2.0+ raises ValueError (not the old InvalidArgument)
+            # when a Button URL is malformed. InvalidArgument no longer exists
+            # as a class on the discord module, so catching it here would
+            # AttributeError BEFORE the URL check could run on bad input.
             view.add_item(discord.ui.Button(label=label, url=url))
-        except (discord.InvalidArgument, ValueError):
+        except (ValueError, TypeError):
             return None
         return view
