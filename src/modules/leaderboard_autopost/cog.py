@@ -665,17 +665,28 @@ class LeaderboardAutopostCog(LionCog):
         # slash-command filter at statistics/ui/leaderboard.py:172-189.
         # Members fetched here are cached in `member_cache` for re-use in the
         # winners-building loop below so we don't double-fetch.
+        # `fetch_budget` caps the worst-case HTTP fan-out for cross-shard
+        # guilds (autopost runs on shard 0 so non-shard-0 guilds always
+        # hit the API path). Once the budget is exhausted we stop fetching
+        # and include remaining users unfiltered rather than spending the
+        # whole autopost slot iterating a long leaderboard.
         # --- Original code (commented out for rollback) ---
         # top_count = config.top_count or 10
         # lb_data = lb_data[:top_count]
         # --- End original code ---
         top_count = config.top_count or 10
+        fetch_budget = max(top_count * 3, 30) if not guild_cached else None
+        attempts = 0
         filtered_lb = []
         for uid, val in lb_data:
             if len(filtered_lb) >= top_count:
                 break
             member = guild.get_member(uid)
             if member is None and not guild_cached:
+                if fetch_budget is not None and attempts >= fetch_budget:
+                    filtered_lb.append((uid, val))
+                    continue
+                attempts += 1
                 try:
                     member = await guild.fetch_member(uid)
                 except discord.NotFound:
