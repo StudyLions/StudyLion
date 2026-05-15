@@ -68,11 +68,26 @@ logger = logging.getLogger(__name__)
 # NEEDS_DECAY_INTERVAL_HOURS = 4
 # NEEDS_DECAY_AMOUNT = 1
 # --- End original code ---
-FEED_COOLDOWN_SECONDS = 120
-BATHE_COOLDOWN_SECONDS = 120
-SLEEP_COOLDOWN_SECONDS = 120
-NEEDS_DECAY_INTERVAL_HOURS = 6
+# --- AI-REPLACED (2026-05-15) ---
+# Reason: User report -- stats deplete too fast after long absences ("leveled up, all stats gone"),
+#   and 4 clicks per stat to refill is painful. Slow decay to 1/24h (8 days to empty), cap
+#   accumulated decay per wake at 4 to prevent shock drops, drop cooldowns since one click now
+#   fills the stat to max anyway.
+# What the new code does better: forgiving for casual users, no "I came back and everything is 0"
+# --- Original code (commented out for rollback) ---
+# FEED_COOLDOWN_SECONDS = 120
+# BATHE_COOLDOWN_SECONDS = 120
+# SLEEP_COOLDOWN_SECONDS = 120
+# NEEDS_DECAY_INTERVAL_HOURS = 6
+# NEEDS_DECAY_AMOUNT = 1
+# --- End original code ---
+FEED_COOLDOWN_SECONDS = 0
+BATHE_COOLDOWN_SECONDS = 0
+SLEEP_COOLDOWN_SECONDS = 0
+NEEDS_DECAY_INTERVAL_HOURS = 24
 NEEDS_DECAY_AMOUNT = 1
+MAX_DECAY_PER_WAKE = 4
+# --- END AI-REPLACED ---
 # --- AI-MODIFIED (2026-04-01) ---
 # Purpose: Reduce pet warning spam -- once per week instead of every 4 hours
 # --- Original code (commented out for rollback) ---
@@ -6642,6 +6657,12 @@ class LionGotchiCog(LionCog):
             last_decay = last_decay.replace(tzinfo=timezone.utc)
         elapsed_hours = (now - last_decay).total_seconds() / 3600
         decay_ticks = int(elapsed_hours / NEEDS_DECAY_INTERVAL_HOURS)
+        # --- AI-MODIFIED (2026-05-15) ---
+        # Purpose: Cap accumulated decay per wake so long absences (e.g. user gone for a month)
+        # never drop stats by more than MAX_DECAY_PER_WAKE. Prevents the "I leveled up and all
+        # my stats vanished" shock that's actually accumulated decay firing all at once.
+        decay_ticks = min(decay_ticks, MAX_DECAY_PER_WAKE)
+        # --- END AI-MODIFIED ---
         if decay_ticks > 0:
             new_food = max(0, pet.food - decay_ticks * NEEDS_DECAY_AMOUNT)
             new_bath = max(0, pet.bath - decay_ticks * NEEDS_DECAY_AMOUNT)
@@ -7182,26 +7203,46 @@ class LionGotchiCog(LionCog):
     # --- End original code ---
     async def _feed_pet(self, interaction: discord.Interaction):
         now = datetime.now(timezone.utc)
-        last = self._feed_cooldowns.get(interaction.user.id)
-        if last and (now - last).total_seconds() < FEED_COOLDOWN_SECONDS:
-            remaining = FEED_COOLDOWN_SECONDS - int((now - last).total_seconds())
-            await interaction.response.send_message(
-                str(_p(
-                    'error:feed|cooldown',
-                    "Your pet just ate! Try again in {remaining}s."
-                )).format(remaining=remaining),
-                ephemeral=True)
-            return
+        # --- AI-REPLACED (2026-05-15) ---
+        # Reason: One-click fill-to-max. Cooldown removed -- once the stat is at 8, repeat
+        #   clicks within the same day are no-ops anyway. Also apply pending decay first and
+        #   bump last_decay_at so bot and website behave identically across a care action.
+        # What the new code does better: Restores Fainted pets in one click instead of forcing
+        #   users to wait 2 minutes between four clicks per stat.
+        # --- Original code (commented out for rollback) ---
+        # last = self._feed_cooldowns.get(interaction.user.id)
+        # if last and (now - last).total_seconds() < FEED_COOLDOWN_SECONDS:
+        #     remaining = FEED_COOLDOWN_SECONDS - int((now - last).total_seconds())
+        #     await interaction.response.send_message(
+        #         str(_p(
+        #             'error:feed|cooldown',
+        #             "Your pet just ate! Try again in {remaining}s."
+        #         )).format(remaining=remaining),
+        #         ephemeral=True)
+        #     return
+        # pet = await self._get_or_create_pet(interaction.user.id)
+        # new_food = min(8, pet.food + 2)
+        # await _db_exec(self.bot,
+        #     "UPDATE lg_pets SET food = %s, expression = %s WHERE userid = %s",
+        #     new_food, 'EATING', interaction.user.id
+        # )
+        # --- End original code ---
         pet = await self._get_or_create_pet(interaction.user.id)
-        new_food = min(8, pet.food + 2)
+        pet = await self._apply_decay(pet)
+        new_food = 8
         await _db_exec(self.bot,
-            "UPDATE lg_pets SET food = %s, expression = %s WHERE userid = %s",
-            new_food, 'EATING', interaction.user.id
+            "UPDATE lg_pets SET food = %s, expression = %s, last_decay_at = %s WHERE userid = %s",
+            new_food, 'EATING', now, interaction.user.id
         )
+        # --- END AI-REPLACED ---
         # --- AI-MODIFIED (2026-03-26) ---
         # Purpose: Sync in-memory cache after DB update so display reflects the change
         if pet.data is not None:
             pet.data['food'] = new_food
+            # --- AI-MODIFIED (2026-05-15) ---
+            # Purpose: Keep last_decay_at in cache aligned with the DB write above.
+            pet.data['last_decay_at'] = now
+            # --- END AI-MODIFIED ---
         # --- END AI-MODIFIED ---
         # --- AI-MODIFIED (2026-04-03) ---
         # Purpose: Read fullscreen_mode so care actions restore the correct view mode
@@ -7261,26 +7302,42 @@ class LionGotchiCog(LionCog):
     # --- End original code ---
     async def _bathe_pet(self, interaction: discord.Interaction):
         now = datetime.now(timezone.utc)
-        last = self._bathe_cooldowns.get(interaction.user.id)
-        if last and (now - last).total_seconds() < BATHE_COOLDOWN_SECONDS:
-            remaining = BATHE_COOLDOWN_SECONDS - int((now - last).total_seconds())
-            await interaction.response.send_message(
-                str(_p(
-                    'error:bathe|cooldown',
-                    "Your pet is already clean! Try again in {remaining}s."
-                )).format(remaining=remaining),
-                ephemeral=True)
-            return
+        # --- AI-REPLACED (2026-05-15) ---
+        # Reason: One-click fill-to-max + apply pending decay, mirroring _feed_pet.
+        # --- Original code (commented out for rollback) ---
+        # last = self._bathe_cooldowns.get(interaction.user.id)
+        # if last and (now - last).total_seconds() < BATHE_COOLDOWN_SECONDS:
+        #     remaining = BATHE_COOLDOWN_SECONDS - int((now - last).total_seconds())
+        #     await interaction.response.send_message(
+        #         str(_p(
+        #             'error:bathe|cooldown',
+        #             "Your pet is already clean! Try again in {remaining}s."
+        #         )).format(remaining=remaining),
+        #         ephemeral=True)
+        #     return
+        # pet = await self._get_or_create_pet(interaction.user.id)
+        # new_bath = min(8, pet.bath + 2)
+        # await _db_exec(self.bot,
+        #     "UPDATE lg_pets SET bath = %s, expression = %s WHERE userid = %s",
+        #     new_bath, 'HAPPY', interaction.user.id
+        # )
+        # --- End original code ---
         pet = await self._get_or_create_pet(interaction.user.id)
-        new_bath = min(8, pet.bath + 2)
+        pet = await self._apply_decay(pet)
+        new_bath = 8
         await _db_exec(self.bot,
-            "UPDATE lg_pets SET bath = %s, expression = %s WHERE userid = %s",
-            new_bath, 'HAPPY', interaction.user.id
+            "UPDATE lg_pets SET bath = %s, expression = %s, last_decay_at = %s WHERE userid = %s",
+            new_bath, 'HAPPY', now, interaction.user.id
         )
+        # --- END AI-REPLACED ---
         # --- AI-MODIFIED (2026-03-26) ---
         # Purpose: Sync in-memory cache after DB update so display reflects the change
         if pet.data is not None:
             pet.data['bath'] = new_bath
+            # --- AI-MODIFIED (2026-05-15) ---
+            # Purpose: Keep last_decay_at in cache aligned with the DB write above.
+            pet.data['last_decay_at'] = now
+            # --- END AI-MODIFIED ---
         # --- END AI-MODIFIED ---
         # --- AI-MODIFIED (2026-04-03) ---
         # Purpose: Read fullscreen_mode so care actions restore the correct view mode
@@ -7354,26 +7411,42 @@ class LionGotchiCog(LionCog):
     # --- End original code ---
     async def _sleep_pet(self, interaction: discord.Interaction):
         now = datetime.now(timezone.utc)
-        last = self._sleep_cooldowns.get(interaction.user.id)
-        if last and (now - last).total_seconds() < SLEEP_COOLDOWN_SECONDS:
-            remaining = SLEEP_COOLDOWN_SECONDS - int((now - last).total_seconds())
-            await interaction.response.send_message(
-                str(_p(
-                    'error:sleep|cooldown',
-                    "Your pet just rested! Try again in {remaining}s."
-                )).format(remaining=remaining),
-                ephemeral=True)
-            return
+        # --- AI-REPLACED (2026-05-15) ---
+        # Reason: One-click fill-to-max + apply pending decay, mirroring _feed_pet.
+        # --- Original code (commented out for rollback) ---
+        # last = self._sleep_cooldowns.get(interaction.user.id)
+        # if last and (now - last).total_seconds() < SLEEP_COOLDOWN_SECONDS:
+        #     remaining = SLEEP_COOLDOWN_SECONDS - int((now - last).total_seconds())
+        #     await interaction.response.send_message(
+        #         str(_p(
+        #             'error:sleep|cooldown',
+        #             "Your pet just rested! Try again in {remaining}s."
+        #         )).format(remaining=remaining),
+        #         ephemeral=True)
+        #     return
+        # pet = await self._get_or_create_pet(interaction.user.id)
+        # new_sleep = min(8, pet.sleep + 2)
+        # await _db_exec(self.bot,
+        #     "UPDATE lg_pets SET sleep = %s, expression = %s WHERE userid = %s",
+        #     new_sleep, 'SLEEPING', interaction.user.id
+        # )
+        # --- End original code ---
         pet = await self._get_or_create_pet(interaction.user.id)
-        new_sleep = min(8, pet.sleep + 2)
+        pet = await self._apply_decay(pet)
+        new_sleep = 8
         await _db_exec(self.bot,
-            "UPDATE lg_pets SET sleep = %s, expression = %s WHERE userid = %s",
-            new_sleep, 'SLEEPING', interaction.user.id
+            "UPDATE lg_pets SET sleep = %s, expression = %s, last_decay_at = %s WHERE userid = %s",
+            new_sleep, 'SLEEPING', now, interaction.user.id
         )
+        # --- END AI-REPLACED ---
         # --- AI-MODIFIED (2026-03-26) ---
         # Purpose: Sync in-memory cache after DB update so display reflects the change
         if pet.data is not None:
             pet.data['sleep'] = new_sleep
+            # --- AI-MODIFIED (2026-05-15) ---
+            # Purpose: Keep last_decay_at in cache aligned with the DB write above.
+            pet.data['last_decay_at'] = now
+            # --- END AI-MODIFIED ---
         # --- END AI-MODIFIED ---
         # --- AI-MODIFIED (2026-04-03) ---
         # Purpose: Read fullscreen_mode so care actions restore the correct view mode
