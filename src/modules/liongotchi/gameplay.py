@@ -1095,11 +1095,15 @@ async def attempt_enhance(bot, userid: int, inventory_id: int, scroll_itemid: in
         async with bot.db.connection() as conn:
             async with conn.cursor() as cur:
                 await cur.execute(
-                    """SELECT ui.inventoryid, ui.itemid, ui.enhancement_level, ui.quantity,
+                    # --- AI-MODIFIED (2026-05-16) ---
+                    # Purpose: Pull ui.source so a stack split on success can
+                    # preserve the original acquisition source on the new row.
+                    """SELECT ui.inventoryid, ui.itemid, ui.enhancement_level, ui.quantity, ui.source,
                               i.name, i.rarity, i.category, i.slot
                        FROM lg_user_inventory ui
                        JOIN lg_items i ON ui.itemid = i.itemid
                        WHERE ui.inventoryid = %s AND ui.userid = %s""",
+                    # --- END AI-MODIFIED ---
                     [inventory_id, userid]
                 )
                 eq_rows = await cur.fetchall()
@@ -1172,38 +1176,97 @@ async def attempt_enhance(bot, userid: int, inventory_id: int, scroll_itemid: in
             roll = random.random()
             if roll < effective_success:
                 new_level = current_level + 1
-                await conn.execute(
-                    "UPDATE lg_user_inventory SET enhancement_level = %s WHERE inventoryid = %s",
-                    [new_level, inventory_id]
-                )
-                await conn.execute(
-                    """INSERT INTO lg_enhancement_slots
-                       (inventoryid, slot_number, scroll_itemid, scroll_name, bonus_value)
-                       VALUES (%s, %s, %s, %s, %s)
-                       ON CONFLICT (inventoryid, slot_number) DO NOTHING""",
-                    [inventory_id, new_level, scroll_itemid, scroll_inv['name'], bonus_value]
-                )
+                # --- AI-REPLACED (2026-05-16) ---
+                # Reason: When the source inventory row stacks multiple
+                # unenhanced copies (quantity > 1), the old in-place UPDATE
+                # bumped enhancement_level on the whole stack — impossible
+                # to land in the expected "+0 x1, +1 x1" state, and the
+                # user effectively got free enhancements on every other
+                # stacked copy.
+                # What the new code does better: If quantity > 1, decrement
+                # the source stack and INSERT a new row for the enhanced
+                # copy (partial unique index lg_inventory_stack_idx only
+                # fires on enhancement_level = 0, so the new row at
+                # new_level >= 1 is safe). The lg_enhancement_slots entry
+                # is keyed on the new row's inventoryid so the scroll
+                # trace tracks the right copy.
+                # --- Original code (commented out for rollback) ---
+                # await conn.execute(
+                #     "UPDATE lg_user_inventory SET enhancement_level = %s WHERE inventoryid = %s",
+                #     [new_level, inventory_id]
+                # )
+                # await conn.execute(
+                #     """INSERT INTO lg_enhancement_slots
+                #        (inventoryid, slot_number, scroll_itemid, scroll_name, bonus_value)
+                #        VALUES (%s, %s, %s, %s, %s)
+                #        ON CONFLICT (inventoryid, slot_number) DO NOTHING""",
+                #     [inventory_id, new_level, scroll_itemid, scroll_inv['name'], bonus_value]
+                # )
+                # --- End original code ---
+                enhanced_inv_id = inventory_id
+                if eq['quantity'] > 1:
+                    await conn.execute(
+                        "UPDATE lg_user_inventory SET quantity = quantity - 1 WHERE inventoryid = %s",
+                        [inventory_id]
+                    )
+                    async with conn.cursor() as ncur:
+                        await ncur.execute(
+                            """INSERT INTO lg_user_inventory
+                               (userid, itemid, source, quantity, enhancement_level)
+                               VALUES (%s, %s, %s, 1, %s)
+                               RETURNING inventoryid""",
+                            [userid, eq['itemid'], eq['source'], new_level]
+                        )
+                        nrow = await ncur.fetchone()
+                        enhanced_inv_id = nrow['inventoryid']
+                    await conn.execute(
+                        """INSERT INTO lg_enhancement_slots
+                           (inventoryid, slot_number, scroll_itemid, scroll_name, bonus_value)
+                           VALUES (%s, %s, %s, %s, %s)""",
+                        [enhanced_inv_id, new_level, scroll_itemid, scroll_inv['name'], bonus_value]
+                    )
+                else:
+                    await conn.execute(
+                        "UPDATE lg_user_inventory SET enhancement_level = %s WHERE inventoryid = %s",
+                        [new_level, inventory_id]
+                    )
+                    await conn.execute(
+                        """INSERT INTO lg_enhancement_slots
+                           (inventoryid, slot_number, scroll_itemid, scroll_name, bonus_value)
+                           VALUES (%s, %s, %s, %s, %s)
+                           ON CONFLICT (inventoryid, slot_number) DO NOTHING""",
+                        [inventory_id, new_level, scroll_itemid, scroll_inv['name'], bonus_value]
+                    )
+                # --- END AI-REPLACED ---
                 result['success'] = True
                 result['new_level'] = new_level
                 result['bonus_gained'] = bonus_value
 
                 async with conn.cursor() as cur2:
                     await cur2.execute(
+                        # --- AI-MODIFIED (2026-05-16) ---
+                        # Purpose: Sum bonuses on the row that actually holds
+                        # the enhanced copy (new row when splitting, original
+                        # otherwise).
                         "SELECT COALESCE(SUM(bonus_value), 0) AS total FROM lg_enhancement_slots WHERE inventoryid = %s",
-                        [inventory_id]
+                        [enhanced_inv_id]
+                        # --- END AI-MODIFIED ---
                     )
                     srows = await cur2.fetchall()
                     total_bonus = float(srows[0]['total']) if srows else 0.0
                 result['glow_tier'] = calc_glow_tier(new_level, total_bonus)
                 # --- AI-MODIFIED (2026-03-24) ---
                 # Purpose: Log successful enhancement to lg_enhancement_log for audit trail
+                # --- AI-MODIFIED (2026-05-16) ---
+                # Purpose: Reference the row that holds the enhanced copy.
                 await conn.execute(
                     """INSERT INTO lg_enhancement_log
                        (userid, inventoryid, item_name, scroll_name, outcome, from_level, to_level)
                        VALUES (%s, %s, %s, %s, 'SUCCESS', %s, %s)""",
-                    [userid, inventory_id, eq['name'], scroll_inv['name'],
+                    [userid, enhanced_inv_id, eq['name'], scroll_inv['name'],
                      current_level, new_level]
                 )
+                # --- END AI-MODIFIED ---
                 # --- END AI-MODIFIED ---
             else:
                 if random.random() < destroy_rate:
@@ -1217,25 +1280,49 @@ async def attempt_enhance(bot, userid: int, inventory_id: int, scroll_itemid: in
                          current_level, current_level]
                     )
                     # --- END AI-MODIFIED ---
-                    await conn.execute(
-                        "DELETE FROM lg_pet_equipment WHERE userid = %s AND itemid = %s",
-                        [userid, eq['itemid']]
-                    )
-                    # --- AI-MODIFIED (2026-04-24) ---
-                    # Purpose: Cosmetic overlay rows reference lg_items.itemid;
-                    # if the underlying inventory copy is destroyed by a failed
-                    # enhancement, also drop any cosmetic overlay tied to it
-                    # so the renderer doesn't try to load a now-missing item
-                    # the user no longer owns.
-                    await conn.execute(
-                        "DELETE FROM lg_pet_cosmetics WHERE userid = %s AND itemid = %s",
-                        [userid, eq['itemid']]
-                    )
-                    # --- END AI-MODIFIED ---
-                    await conn.execute(
-                        "DELETE FROM lg_user_inventory WHERE inventoryid = %s",
-                        [inventory_id]
-                    )
+                    # --- AI-REPLACED (2026-05-16) ---
+                    # Reason: The old destruction path deleted the entire
+                    # inventory row, which wiped out every stacked copy when
+                    # quantity > 1 (the reported bug — user lost both
+                    # Damper Suits when only one should have been destroyed).
+                    # What the new code does better: If quantity > 1, just
+                    # decrement — the user still owns at least one copy, so
+                    # don't touch lg_pet_equipment / lg_pet_cosmetics either.
+                    # Only when destroying the last copy do we delete the
+                    # row and cascade-clean the equip and cosmetic references.
+                    # --- Original code (commented out for rollback) ---
+                    # await conn.execute(
+                    #     "DELETE FROM lg_pet_equipment WHERE userid = %s AND itemid = %s",
+                    #     [userid, eq['itemid']]
+                    # )
+                    # await conn.execute(
+                    #     "DELETE FROM lg_pet_cosmetics WHERE userid = %s AND itemid = %s",
+                    #     [userid, eq['itemid']]
+                    # )
+                    # await conn.execute(
+                    #     "DELETE FROM lg_user_inventory WHERE inventoryid = %s",
+                    #     [inventory_id]
+                    # )
+                    # --- End original code ---
+                    if eq['quantity'] > 1:
+                        await conn.execute(
+                            "UPDATE lg_user_inventory SET quantity = quantity - 1 WHERE inventoryid = %s",
+                            [inventory_id]
+                        )
+                    else:
+                        await conn.execute(
+                            "DELETE FROM lg_pet_equipment WHERE userid = %s AND itemid = %s",
+                            [userid, eq['itemid']]
+                        )
+                        await conn.execute(
+                            "DELETE FROM lg_pet_cosmetics WHERE userid = %s AND itemid = %s",
+                            [userid, eq['itemid']]
+                        )
+                        await conn.execute(
+                            "DELETE FROM lg_user_inventory WHERE inventoryid = %s",
+                            [inventory_id]
+                        )
+                    # --- END AI-REPLACED ---
                     result['destroyed'] = True
                 else:
                     result['new_level'] = current_level

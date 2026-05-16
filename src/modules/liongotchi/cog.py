@@ -1396,7 +1396,12 @@ class EnhanceView(discord.ui.View):
 
     async def load_data(self):
         self.equipment_items = await _db_fetch(self.cog.bot,
-            """SELECT ui.inventoryid, ui.itemid, ui.enhancement_level,
+            # --- AI-MODIFIED (2026-05-16) ---
+            # Purpose: Surface ui.quantity so the dropdown/embed can show
+            # "× N" for stacked equipment rows. The select/confirm path
+            # already passes one inventoryid per attempt; attempt_enhance()
+            # splits or decrements the stack as appropriate.
+            """SELECT ui.inventoryid, ui.itemid, ui.enhancement_level, ui.quantity,
                       i.name, i.rarity, i.slot, i.category
                FROM lg_user_inventory ui
                JOIN lg_items i ON ui.itemid = i.itemid
@@ -1405,6 +1410,7 @@ class EnhanceView(discord.ui.View):
                                         'GAMEBOY_SKIN', 'FARM_SEED', 'CONSUMABLE')
                  AND i.slot IS NOT NULL
                ORDER BY ui.enhancement_level DESC, i.rarity DESC, i.name""",
+            # --- END AI-MODIFIED ---
             self.user_id
         ) or []
 
@@ -1445,7 +1451,13 @@ class EnhanceView(discord.ui.View):
             rarity = eq['rarity'] if isinstance(eq['rarity'], str) else str(eq['rarity'])
             max_lvl = MAX_ENHANCEMENT_BY_RARITY.get(rarity, 5)
             name = f"**{eq['name']}** +{lvl}" if lvl > 0 else f"**{eq['name']}**"
-            lines.append(f"{name} ({rarity}) [{lvl}/{max_lvl}]")
+            # --- AI-MODIFIED (2026-05-16) ---
+            # Purpose: Show "× N" suffix when the row stacks multiple copies
+            # so users know enhancing one consumes one (not the whole stack).
+            qty = eq.get('quantity') or 1
+            qty_suffix = f" × {qty}" if qty > 1 else ""
+            lines.append(f"{name} ({rarity}) [{lvl}/{max_lvl}]{qty_suffix}")
+            # --- END AI-MODIFIED ---
         embed.description = str(_p(
             'embed:enhance|desc:pick_equip', 'Select an equipment item to enhance:\n\n'
         )) + "\n".join(lines)
@@ -1544,6 +1556,17 @@ class EnhanceView(discord.ui.View):
             embed.description += str(_p(
                 'embed:enhance|desc:no_destroy',
                 '\u2705 This scroll has **0% destroy chance**.'))
+        # --- AI-MODIFIED (2026-05-16) ---
+        # Purpose: Reassure users with stacked copies that only one will be
+        # touched. Stacking is invisible in the dropdown by design (one
+        # inventoryid per row) so this hint makes the behaviour explicit.
+        eq_qty = eq.get('quantity') or 1
+        if eq_qty > 1:
+            embed.description += '\n\n' + str(_p(
+                'embed:enhance|desc:stack_hint',
+                '\U0001F4E6 You have **{qty}** of these \u2014 only **one** copy will be enhanced or destroyed.'
+            )).format(qty=eq_qty)
+        # --- END AI-MODIFIED ---
         embed.set_footer(text=str(_p(
             'embed:enhance|footer:confirm',
             'Bonus value: {bv}x | Higher risk scrolls give more stats per level!'
@@ -1566,7 +1589,16 @@ class EnhanceView(discord.ui.View):
             for eq in self.equipment_items[:25]:
                 lvl = eq['enhancement_level'] or 0
                 rarity = eq['rarity'] if isinstance(eq['rarity'], str) else str(eq['rarity'])
-                label = f"{eq['name']} +{lvl}" if lvl else eq['name']
+                # --- AI-MODIFIED (2026-05-16) ---
+                # Purpose: Append "× N" to dropdown label when row is a
+                # stack — Discord's 25-option cap rules out fanning each
+                # stack into N options, so the label is the practical
+                # surface to show stack size here.
+                qty = eq.get('quantity') or 1
+                qty_suffix = f" × {qty}" if qty > 1 else ""
+                base_label = f"{eq['name']} +{lvl}" if lvl else eq['name']
+                label = f"{base_label}{qty_suffix}"
+                # --- END AI-MODIFIED ---
                 options.append(discord.SelectOption(
                     label=label[:100], value=str(eq['inventoryid']),
                     description=f"{rarity} | {eq['slot']}"
