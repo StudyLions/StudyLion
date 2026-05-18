@@ -95,6 +95,32 @@ class MemberAdminCog(LionCog):
     @LionCog.listener('on_member_join')
     @log_wrap(action="Greetings")
     async def admin_greet_member(self, member: discord.Member):
+        # --- AI-MODIFIED (2026-05-18) ---
+        # Ticket #0090 (Médecins de Demain, guild 1350033431832170557):
+        # For servers using Discord Membership Screening or Onboarding,
+        # member.pending == True when on_member_join fires. Running the
+        # full greet flow at this point causes three problems:
+        #   1. Discord silently drops bot-added roles once the user
+        #      completes screening (the API call succeeds, so logs
+        #      claim "roles given" but they aren't actually applied).
+        #   2. The welcome message reaches a user who hasn't yet
+        #      accepted the rules and may never become a real member.
+        #   3. The "New Member Joined" event log fires for a member
+        #      admins can't see in the channel list yet.
+        # admin_reapply_on_screening_complete (below) re-invokes this
+        # method once pending flips True -> False, so all three steps
+        # run together when the user actually becomes a real member.
+        # For servers without screening, member.pending is always False
+        # and this gate is a no-op.
+        if member.pending:
+            logger.debug(
+                f"Deferring greeting for pending member <uid:{member.id}> "
+                f"in <gid:{member.guild.id}>; on_member_update will "
+                f"retry once screening/onboarding completes."
+            )
+            return
+        # --- END AI-MODIFIED ---
+
         lion = await self.bot.core.lions.fetch_member(member.guild.id, member.id, member=member)
 
         if lion.data.first_joined and lion.data.first_joined > member.joined_at:
@@ -334,6 +360,37 @@ class MemberAdminCog(LionCog):
                 ),
             },
         )
+
+    # --- AI-MODIFIED (2026-05-18) ---
+    # Purpose: Run the deferred greet flow for members who joined while
+    # in Discord Membership Screening / Onboarding (member.pending was
+    # True). When pending flips True -> False, screening has just
+    # completed; re-invoke admin_greet_member with the post-screening
+    # member object so the welcome message, autoroles, and event log
+    # all fire at the moment the user actually becomes a real member.
+    # Ticket #0090.
+    @LionCog.listener('on_member_update')
+    @log_wrap(action="Greetings (Post-Screening)")
+    async def admin_reapply_on_screening_complete(
+        self,
+        before: discord.Member,
+        after: discord.Member,
+    ):
+        # Fast path: ignore the vast majority of on_member_update events
+        # (nickname changes, role changes, timeout updates, avatar
+        # updates, etc.). Two attribute compares short-circuit nearly
+        # every event before any further work.
+        if before.pending == after.pending:
+            return
+        if after.pending:
+            # pending went False -> True (extremely rare: server admin
+            # re-enabled screening with retroactive enforcement). The
+            # user was already greeted on their original join; nothing
+            # to do at the join-flow level.
+            return
+        # pending: True -> False, screening just completed.
+        await self.admin_greet_member(after)
+    # --- END AI-MODIFIED ---
 
     @LionCog.listener('on_guild_join')
     async def admin_init_guild(self, guild: discord.Guild):
