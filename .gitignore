@@ -1,0 +1,32 @@
+# Secrets — NEVER commit
+config.ini
+*.conf
+*.pem
+*.key
+.env
+.env.*
+*secret*
+*.token
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+*.egg-info/
+
+# Audio assets (large; potentially licensed)
+sounds/
+
+# Logs
+*.log
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
