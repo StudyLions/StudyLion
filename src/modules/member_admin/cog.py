@@ -307,24 +307,42 @@ class MemberAdminCog(LionCog):
         lion = await self.bot.core.lions.fetch_member(guildid, userid)
         await lion.data.update(last_left=utc_now())
 
+        # --- AI-MODIFIED (2026-05-19) ---
+        # Purpose: Skip storing roles when the guild has explicitly disabled
+        # role persistence (persist_roles=False). Previously this handler
+        # always stored roles regardless of the setting, accumulating ~423K
+        # dead rows across 100 explicit-False guilds (audited 2026-05-19).
+        # Uses `is not False` so NULL (RolePersistence._default=True per
+        # member_admin/settings.py:405) preserves current storage behavior —
+        # only the 100 explicitly-disabled guilds change behavior.
+        # Ticket #0092 (1201-1600 Blockmates).
+        persistence = lion.lguild.data.persist_roles
+        # --- END AI-MODIFIED ---
+
         # Save member roles
         roles = None
-        async with self.bot.db.connection() as conn:
-            self.bot.db.conn = conn
-            async with conn.transaction():
-                await self.data.past_roles.delete_where(
-                    guildid=guildid,
-                    userid=userid
-                )
-                # Insert current member roles
-                print(type(payload.user))
-                if isinstance(payload.user, discord.Member) and payload.user.roles:
-                    member = payload.user
-                    roles = member.roles
-                    await self.data.past_roles.insert_many(
-                        ('guildid', 'userid', 'roleid'),
-                        *((guildid, userid, role.id) for role in member.roles)
+        # --- AI-MODIFIED (2026-05-19) ---
+        # Storage block gated on persist_roles (see comment above). Event log
+        # and last_left update below still fire regardless; only the DB write
+        # to past_member_roles is skipped for explicit-False guilds.
+        if persistence is not False:
+            async with self.bot.db.connection() as conn:
+                self.bot.db.conn = conn
+                async with conn.transaction():
+                    await self.data.past_roles.delete_where(
+                        guildid=guildid,
+                        userid=userid
                     )
+                    # Insert current member roles
+                    print(type(payload.user))
+                    if isinstance(payload.user, discord.Member) and payload.user.roles:
+                        member = payload.user
+                        roles = member.roles
+                        await self.data.past_roles.insert_many(
+                            ('guildid', 'userid', 'roleid'),
+                            *((guildid, userid, role.id) for role in member.roles)
+                        )
+        # --- END AI-MODIFIED ---
         logger.debug(
             f"Stored persisting roles for member <uid:{userid}> in <gid:{guildid}>."
         )
