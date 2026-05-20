@@ -149,10 +149,37 @@ class TimerCog(LionCog):
         to_delete = []
         to_create = []
         to_unload = []
+        # --- AI-MODIFIED (2026-05-20) ---
+        # Count timers we could not resolve but deliberately did NOT delete (see below).
+        skipped_unresolved = 0
+        # --- END AI-MODIFIED ---
         for row in timer_data:
             channel = self.bot.get_channel(row.channelid)
             if not channel:
-                to_delete.append(row.channelid)
+                # --- AI-REPLACED (2026-05-20) ---
+                # Reason: the original unconditionally queued the timer for PERMANENT deletion
+                #   whenever get_channel() returned None. But get_channel() also returns None for
+                #   channels that STILL EXIST when the channel cache is not yet populated -- e.g.
+                #   during the on_ready race or a gateway reconnect/resume. This silently destroyed
+                #   live timers (confirmed: channel 1170288876024238090 was deleted 2026-05-10 as
+                #   "missing" while it has existed continuously), orphaning the timer's status panel
+                #   so its buttons fail with "interaction failed". ~1123 timers were destroyed this
+                #   way across May 2026.
+                # What the new code does better: only delete when we can POSITIVELY confirm the
+                #   channel is gone -- the guild must be loaded in cache (a cached guild carries all
+                #   its channels) AND the channel genuinely absent. If the guild is not available
+                #   yet (transient/incomplete cache, or the bot is briefly not in the guild), leave
+                #   the row intact and skip loading it this round; it resolves on a later ready once
+                #   the cache is complete.
+                # --- Original code (commented out for rollback) ---
+                # to_delete.append(row.channelid)
+                # --- End original code ---
+                guild = self.bot.get_guild(row.guildid)
+                if guild is not None and guild.get_channel(row.channelid) is None:
+                    to_delete.append(row.channelid)
+                else:
+                    skipped_unresolved += 1
+                # --- END AI-REPLACED ---
             else:
                 guildids.add(row.guildid)
                 to_create.append(row)
@@ -195,6 +222,16 @@ class TimerCog(LionCog):
             logger.info(
                 f"Destroyed {len(to_delete)} timers with missing voice channels: {idstr}"
             )
+        # --- AI-MODIFIED (2026-05-20) ---
+        # Visibility into the transient-miss case the deletion guard now preserves instead of
+        # destroying. A nonzero count right after startup is the signature of the bug this guard
+        # fixes (channels unresolved due to incomplete cache, not truly gone).
+        if skipped_unresolved:
+            logger.warning(
+                f"Preserved {skipped_unresolved} timer(s) whose channel could not be resolved "
+                "during load (guild not in cache yet); skipped deletion to avoid data loss."
+            )
+        # --- END AI-MODIFIED ---
 
         # Re-launch and update running timers
         for timer in to_launch:
