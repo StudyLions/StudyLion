@@ -1,5 +1,9 @@
 from typing import Optional
 import asyncio
+# --- AI-MODIFIED (2026-05-29) ---
+# Purpose: monotonic clock for the is_premium_guild() short-TTL cache
+import time as _time
+# --- END AI-MODIFIED ---
 
 import discord
 from discord.ext import commands as cmds
@@ -38,6 +42,16 @@ class PremiumCog(LionCog):
         self.data: PremiumData = bot.db.load_registry(PremiumData())
 
         self.gem_logger: Optional[discord.Webhook] = None
+
+        # --- AI-MODIFIED (2026-05-29) ---
+        # Purpose: Short-TTL cache for is_premium_guild() so server-premium
+        # renewals written by the website/Stripe webhook are reflected within
+        # _premium_status_ttl seconds, instead of being masked for the lifetime
+        # of the shard process by PremiumGuild's model cache (_cache_={}).
+        # Maps guildid -> (monotonic_timestamp, is_premium).
+        self._premium_status_cache: dict[int, tuple[float, bool]] = {}
+        self._premium_status_ttl: float = 300.0
+        # --- END AI-MODIFIED ---
 
     async def cog_load(self):
         await self.data.init()
@@ -92,11 +106,38 @@ class PremiumCog(LionCog):
         """
         Check whether the given guild currently has premium status.
         """
-        row = await self.data.PremiumGuild.fetch(guildid)
-        now = utc_now()
+        # --- AI-REPLACED (2026-05-29) ---
+        # Reason: PremiumGuild uses a process-lifetime model cache (_cache_={}),
+        # and server-premium is written EXTERNALLY by the Next.js/Stripe webhook
+        # via Prisma -- the bot never mutates its own cached row. So once a shard
+        # cached a guild's row, a later renewal/extension stayed invisible until
+        # the shard restarted. Observed in the wild: guild 1498620321421332541
+        # ("Kevinmathscience") renewed to premium_until=2026-06-28 in the DB, but
+        # shard leo-32-30 (8d uptime) kept treating it as lapsed for >12h,
+        # silently disabling anti_afk, leaderboard_autopost and sticky_messages.
+        # What the new code does better: bypasses the stale model cache
+        # (cached=False) but memoises the resulting boolean for a short TTL, so
+        # renewals are reflected within _premium_status_ttl seconds while the hot
+        # path (every voice/text reward) still avoids a per-call DB round-trip.
+        # --- Original code (commented out for rollback) ---
+        # row = await self.data.PremiumGuild.fetch(guildid)
+        # now = utc_now()
+        #
+        # premium = (row is not None) and row.premium_until and (row.premium_until > now)
+        # return premium
+        # --- End original code ---
+        now_mono = _time.monotonic()
+        cached = self._premium_status_cache.get(guildid)
+        if cached is not None and (now_mono - cached[0]) < self._premium_status_ttl:
+            return cached[1]
 
-        premium = (row is not None) and row.premium_until and (row.premium_until > now)
+        row = await self.data.PremiumGuild.fetch(guildid, cached=False)
+        premium = bool(
+            (row is not None) and row.premium_until and (row.premium_until > utc_now())
+        )
+        self._premium_status_cache[guildid] = (now_mono, premium)
         return premium
+        # --- END AI-REPLACED ---
 
     # --- AI-MODIFIED (2026-04-26) ---
     # Purpose: LionHeart subscription tier checking for user perks.
@@ -134,10 +175,14 @@ class PremiumCog(LionCog):
     #
     # NOTE: PremiumGuild ALSO uses `_cache_ = {}` and ALSO gets external
     # writes from the Stripe webhook (new server-premium purchases, gem
-    # top-ups, extensions). That produces the same class of stale-cache bug
-    # for `is_premium_guild()`. Not fixed in this change because
-    # `is_premium_guild` is called in hot paths (every voice/text reward)
-    # and bypassing its cache outright would add load. Tracked as a follow-up.
+    # top-ups, extensions). That produced the same class of stale-cache bug
+    # for `is_premium_guild()`.
+    # --- AI-MODIFIED (2026-05-29) ---
+    # FIXED (2026-05-29): is_premium_guild() now bypasses the model cache
+    # (cached=False) behind a short per-guild TTL cache (_premium_status_cache /
+    # _premium_status_ttl), so renewals reflect within the TTL while the hot
+    # path still avoids a per-call DB hit. See is_premium_guild() above.
+    # --- END AI-MODIFIED ---
     async def get_user_subscription_tier(self, userid: int) -> str:
         """
         Get the active subscription tier for a user.
