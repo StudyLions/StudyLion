@@ -1,6 +1,7 @@
 from typing import Optional
 import asyncio
 import datetime
+import time
 from weakref import WeakValueDictionary
 
 import discord
@@ -116,6 +117,14 @@ class SeasonRank:
 
 
 class RankCog(LionCog):
+    # --- AI-MODIFIED (2026-05-31) ---
+    # Purpose: TTL (seconds) for the in-memory guild rank-list cache so rank tiers
+    # configured via the website dashboard (which writes the *_ranks tables directly,
+    # bypassing the bot's flush events) are picked up without a bot restart.
+    # Mirrors LionGuild.CONFIG_REFRESH_TTL. See ticket #0102.
+    GUILD_RANKS_TTL = 60.0
+    # --- END AI-MODIFIED ---
+
     def __init__(self, bot: LionBot):
         self.bot = bot
 
@@ -128,6 +137,11 @@ class RankCog(LionCog):
         self._guild_ranks = {}
         # Cached member SeasonRanks: (guildid, rank_type) -> LRUCache(userid -> SeasonRank)
         self._member_ranks = {}
+        # --- END AI-MODIFIED ---
+        # --- AI-MODIFIED (2026-05-31) ---
+        # Purpose: Track when each (guildid, rank_type) rank list was last read from the
+        # DB, for TTL-based refresh (see GUILD_RANKS_TTL / get_guild_ranks). Ticket #0102.
+        self._guild_ranks_fetched_at: dict[tuple[int, RankType], float] = {}
         # --- END AI-MODIFIED ---
 
         # Weakly referenced Locks for each guild to serialise rank actions
@@ -298,10 +312,30 @@ class RankCog(LionCog):
             rank_type = lguild.config.get('rank_type').value
 
         cache_key = (guildid, rank_type)
-        if refresh or (ranks := self._guild_ranks.get(cache_key, None)) is None:
+        # --- AI-REPLACED (2026-05-31) ---
+        # Reason: The website dashboard writes the voice/msg/xp_ranks tables directly and
+        # never flushes this in-memory cache, so a guild that set up ranks via the dashboard
+        # kept serving a stale (often EMPTY) rank list forever. Because `.get()` returns []
+        # (not None) once an empty list is cached, the old condition never refetched, so
+        # next_rank stayed None and members were never promoted (ticket #0102).
+        # What the new code does better: adds a TTL refresh (mirrors LionGuild.ensure_config_fresh,
+        # 60s) so dashboard rank changes are picked up automatically within GUILD_RANKS_TTL,
+        # while still caching between refreshes (no per-call DB hit on the session-complete path).
+        # --- Original code (commented out for rollback) ---
+        # if refresh or (ranks := self._guild_ranks.get(cache_key, None)) is None:
+        #     rank_model = rank_model_from_type(rank_type)
+        #     ranks = await rank_model.fetch_where(guildid=guildid).order_by('required')
+        #     self._guild_ranks[cache_key] = ranks
+        # --- End original code ---
+        ranks = self._guild_ranks.get(cache_key, None)
+        fetched_at = self._guild_ranks_fetched_at.get(cache_key, 0.0)
+        stale = (time.monotonic() - fetched_at) > self.GUILD_RANKS_TTL
+        if refresh or ranks is None or stale:
             rank_model = rank_model_from_type(rank_type)
             ranks = await rank_model.fetch_where(guildid=guildid).order_by('required')
             self._guild_ranks[cache_key] = ranks
+            self._guild_ranks_fetched_at[cache_key] = time.monotonic()
+        # --- END AI-REPLACED ---
         return ranks
 
     def flush_guild_ranks(self, guildid: int):
@@ -311,6 +345,10 @@ class RankCog(LionCog):
         for rt in RankType:
             self._guild_ranks.pop((guildid, rt), None)
             self._member_ranks.pop((guildid, rt), None)
+            # --- AI-MODIFIED (2026-05-31) ---
+            # Purpose: also clear the rank-list fetch timestamp (ticket #0102 TTL cache)
+            self._guild_ranks_fetched_at.pop((guildid, rt), None)
+            # --- END AI-MODIFIED ---
     # --- END AI-MODIFIED ---
 
     # --- AI-MODIFIED (2026-03-25) ---
@@ -355,6 +393,18 @@ class RankCog(LionCog):
                         session_rank.stat += stat_delta
                     else:
                         session_rank = await self.get_member_rank(guildid, userid, rank_type=rtype)
+
+                    # --- AI-MODIFIED (2026-05-31) ---
+                    # Purpose: Recompute next_rank from the (TTL-refreshed) rank list before
+                    # promoting, so a stale cached next_rank=None (e.g. ranks added via the
+                    # dashboard after the member was cached) can't suppress promotion. #0102
+                    ranks = await self.get_guild_ranks(guildid, rank_type=rtype)
+                    crank = session_rank.current_rank
+                    current_required = crank.required if crank is not None else 0
+                    session_rank.next_rank = next(
+                        (r for r in ranks if r.required > current_required), None
+                    )
+                    # --- END AI-MODIFIED ---
 
                     if session_rank.next_rank is not None and session_rank.stat > session_rank.next_rank.required:
                         task = asyncio.create_task(
@@ -755,6 +805,20 @@ class RankCog(LionCog):
                     else:
                         session_rank = await self.get_member_rank(guildid, userid, rank_type=RankType.VOICE)
 
+                    # --- AI-MODIFIED (2026-05-31) ---
+                    # Purpose: Recompute next_rank from the (TTL-refreshed) rank list before
+                    # deciding to promote. A cached SeasonRank can hold a stale next_rank=None
+                    # from when the guild had no ranks (e.g. ranks were later added via the
+                    # dashboard); without this, that stale None suppressed all promotions even
+                    # after the rank list refreshed (ticket #0102).
+                    ranks = await self.get_guild_ranks(guildid, rank_type=RankType.VOICE)
+                    crank = session_rank.current_rank
+                    current_required = crank.required if crank is not None else 0
+                    session_rank.next_rank = next(
+                        (r for r in ranks if r.required > current_required), None
+                    )
+                    # --- END AI-MODIFIED ---
+
                     if session_rank.next_rank is not None and session_rank.stat > session_rank.next_rank.required:
                         task = asyncio.create_task(
                             self.update_rank(session_rank, rank_type=RankType.VOICE), name='voice-rank-update'
@@ -811,21 +875,49 @@ class RankCog(LionCog):
         ui.poke()
 
         # Ensure guild is chunked
-        if not guild.chunked:
-            try:
-                members = await asyncio.wait_for(guild.chunk(), timeout=60)
-            # --- AI-MODIFIED (2026-04-05) ---
-            # Purpose: Also catch Forbidden on guild.chunk() alongside TimeoutError
-            except (asyncio.TimeoutError, discord.Forbidden):
-            # --- END AI-MODIFIED ---
-                error = t(_p(
-                    'rank_refresh|error:cannot_chunk|desc',
-                    "Could not retrieve member list from Discord. Please try again later."
-                ))
-                await ui.set_error(error)
-                return
-        else:
-            members = guild.members
+        # --- AI-REPLACED (2026-05-01) ---
+        # Reason: discord.py 2.4 caches a single ChunkRequest per guild. Once
+        # the gateway drops a GUILD_MEMBERS_CHUNK reply (transient hiccup,
+        # resume mid-request, etc.), every subsequent guild.chunk() returns
+        # the same already-pending future, so the rank refresh hung in this
+        # exact branch until the affected shard was restarted. Reported by a
+        # user whose seasonal rank reset wouldn't run; ~10 guilds across the
+        # bot were silently stuck in this state.
+        # What the new code does better: bot.force_chunk_guild() applies the
+        # 60s timeout per attempt AND on timeout pops the stuck request out
+        # of state._chunk_requests so the second attempt actually issues a
+        # fresh REQUEST_GUILD_MEMBERS over the gateway instead of attaching
+        # to the same dead future. Falls through to the same user-facing
+        # error message if both attempts fail.
+        # --- Original code (commented out for rollback) ---
+        # if not guild.chunked:
+        #     try:
+        #         members = await asyncio.wait_for(guild.chunk(), timeout=60)
+        #     # --- AI-MODIFIED (2026-04-05) ---
+        #     # Purpose: Also catch Forbidden on guild.chunk() alongside TimeoutError
+        #     except (asyncio.TimeoutError, discord.Forbidden):
+        #     # --- END AI-MODIFIED ---
+        #         error = t(_p(
+        #             'rank_refresh|error:cannot_chunk|desc',
+        #             "Could not retrieve member list from Discord. Please try again later."
+        #         ))
+        #         await ui.set_error(error)
+        #         return
+        # else:
+        #     members = guild.members
+        # --- End original code ---
+        try:
+            members = await self.bot.force_chunk_guild(
+                guild, per_attempt_timeout=60.0, max_retries=1
+            )
+        except (asyncio.TimeoutError, discord.Forbidden):
+            error = t(_p(
+                'rank_refresh|error:cannot_chunk|desc',
+                "Could not retrieve member list from Discord. Please try again later."
+            ))
+            await ui.set_error(error)
+            return
+        # --- END AI-REPLACED ---
         ui.stage_members = True
         ui.poke()
 
