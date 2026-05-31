@@ -170,7 +170,7 @@ msgid ""
 "Ask an admin to set up and configure a timer with {create_cmd} first, or rent a private room with {room_cmd} and create one yourself!"
 msgstr ""
 "**Tento server nemá nastavené žádné časovače!**\n"
-"Požádejte admina o nastavení časovače pomocí {cre..."
+"Požádejte admina o nastavení časovače pomocí {create_cmd}, nebo si pronajměte soukromou místnost pomocí {room_cmd} a vytvořte si vlastní!"
 
 #, possible-python-brace-format
 msgctxt "cmd:timer|error:no_channel|desc"

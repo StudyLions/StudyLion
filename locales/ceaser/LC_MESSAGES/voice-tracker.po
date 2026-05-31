@@ -202,7 +202,8 @@ msgid ""
 "up to a total of **{cap}** hours per server day."
 msgstr ""
 "Nfncfst xjmm opx cf sfxbsefe {coin}**{base}** qfs ipvs pg tuvez jo uijt "
-"tfswfs, xjui b cpovt pg {..."
+"tfswfs, xjui b cpovt pg {coin}**{bonus}** jg uifz tusfbn pg ejtqmbz wjefp, "
+"vq up b upubm pg **{cap}** ipvst qfs tfswfs ebz."
 
 #: src/tracking/voice/settings.py:40
 msgctxt "guildset:untracked_channels"

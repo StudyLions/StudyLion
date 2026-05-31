@@ -578,14 +578,13 @@ msgid ""
 "and {stage} keys."
 msgstr ""
 "השם של הערוץ שמתעדכן אוטומטית ביחד עם הטיימר עצמו, השתמשו ב {remaining}, "
-"{name}, {pattern},  {sta..."
+"{name}, {pattern}, {stage}."
 
 #, possible-python-brace-format
 msgctxt "timerset:channel_name|accepts"
 msgid ""
 "Timer channel name, with keys {remaining}, {name}, {pattern}, and {stage}."
-msgstr ""
-"שם ערוץ טיימר עם מפתחות {remaining}, {name}, {pattern}, {stage}."
+msgstr "שם ערוץ טיימר עם מפתחות {remaining}, {name}, {pattern}, {stage}."
 
 #: src/modules/pomodoro/options.py:221
 msgctxt "timerset:channel_name_format|error:too_long"

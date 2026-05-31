@@ -173,7 +173,7 @@ msgid ""
 msgstr ""
 "{actor} רענן/ה את דירוגי הפעילות של החברים.\n"
 "**`{removed}`** תפקידי דירוג לא תקינים הוסרו.\n"
-"**`{add..."
+"**`{added}`** תפקידי דירוג חדשים נוספו."
 
 #: src/modules/ranks/cog.py:884
 msgctxt "cmd:ranks"

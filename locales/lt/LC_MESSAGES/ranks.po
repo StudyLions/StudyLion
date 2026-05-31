@@ -182,7 +182,7 @@ msgid ""
 msgstr ""
 "{actor} atnaujino narių veiklos rangus.\n"
 "**`{removed}`** netinkamų rango vaidmenų pašalinta.\n"
-"**`{a..."
+"**`{added}`** naujų rango vaidmenų pridėta."
 
 #: src/modules/ranks/cog.py:884
 msgctxt "cmd:ranks"

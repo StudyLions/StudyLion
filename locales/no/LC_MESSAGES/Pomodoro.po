@@ -164,7 +164,7 @@ msgid ""
 "Ask an admin to set up and configure a timer with {create_cmd} first, or rent a private room with {room_cmd} and create one yourself!"
 msgstr ""
 "**Denne serveren har ingen timere satt opp!**\n"
-"Be en admin om å sette opp en timer med {create_cmd..."
+"Be en admin om å sette opp en timer med {create_cmd}, eller lei et privat rom med {room_cmd} og lag en selv!"
 
 #, possible-python-brace-format
 msgctxt "cmd:timer|error:no_channel|desc"
@@ -201,7 +201,7 @@ msgid ""
 "Ask an admin to set up a new timer with {create_cmd}, or rent a private room with {room_cmd} and create one yourself!"
 msgstr ""
 "**Det er ingen tilgjengelige pomodoro-timere!**\n"
-"Be en admin om å sette opp en ny timer med {creat..."
+"Be en admin om å sette opp en ny timer med {create_cmd}, eller lei et privat rom med {room_cmd} og lag en selv!"
 
 #, possible-python-brace-format
 msgctxt "cmd:timers|embed:timer_list|title"

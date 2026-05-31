@@ -488,7 +488,7 @@ msgid ""
 "up to a maximum of `{limit}` tasks per 24h."
 msgstr ""
 "Članovi će sada biti nagrađeni s {coin}**{amount}** za svaki dovršeni "
-"zadatak, do maksimalno `{li..."
+"zadatak, do maksimalno `{limit}` zadataka u 24 sata."
 
 #, possible-python-brace-format
 msgctxt "tasklist|parse:multi-range|error:parents_match"

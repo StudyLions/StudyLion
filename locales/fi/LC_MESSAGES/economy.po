@@ -156,7 +156,7 @@ msgid ""
 "{coin_emoji}**{amount}**?"
 msgstr ""
 "Haluatko varmasti asettaa kaikkien {role_mention}-roolilla olevien saldon "
-"arvoon {coin_emoji}**{a..."
+"arvoon {coin_emoji}**{amount}**?"
 
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:success_set|desc"

@@ -168,7 +168,7 @@ msgid ""
 "Ask an admin to set up and configure a timer with {create_cmd} first, or rent a private room with {room_cmd} and create one yourself!"
 msgstr ""
 "**Deze server heeft geen timers ingesteld!**\n"
-"Vraag een admin om een timer in te stellen met {crea..."
+"Vraag een admin om een timer in te stellen met {create_cmd}, of huur een privékamer met {room_cmd} en maak er zelf een aan!"
 
 #, possible-python-brace-format
 msgctxt "cmd:timer|error:no_channel|desc"

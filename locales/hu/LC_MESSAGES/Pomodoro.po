@@ -208,7 +208,7 @@ msgid ""
 "Ask an admin to set up a new timer with {create_cmd}, or rent a private room with {room_cmd} and create one yourself!"
 msgstr ""
 "**Nincsenek elérhető pomodoro időzítők!**\n"
-"Kérd meg egy admint, hogy hozzon létre újat a {create_c..."
+"Kérd meg egy admint, hogy hozzon létre újat a {create_cmd} paranccsal, vagy bérelj egy privát szobát a {room_cmd} paranccsal és hozz létre egyet magad!"
 
 #, possible-python-brace-format
 msgctxt "cmd:timers|embed:timer_list|title"

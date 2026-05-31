@@ -176,7 +176,7 @@ msgid ""
 "No channel selected and you are not in a voice channel! Use {timers_cmd} to list the available timers in this server."
 msgstr ""
 "**Ne znam koji mjerač vam prikazati.**\n"
-"Nije odabran kanal i niste u glasovnom kanalu! Koristite {..."
+"Nije odabran kanal i niste u glasovnom kanalu! Koristite {timers_cmd} za prikaz dostupnih mjerača na ovom poslužitelju."
 
 #, possible-python-brace-format
 msgctxt "cmd:timer|error:no_timer_in_channel"
@@ -589,7 +589,7 @@ msgid ""
 "and {stage} keys."
 msgstr ""
 "Automatski ažurirani naziv glasovnog kanala, prihvaća ključeve {remaining}, "
-"{name}, {pattern} i {..."
+"{name}, {pattern} i {stage}."
 
 #, possible-python-brace-format
 msgctxt "timerset:channel_name|accepts"

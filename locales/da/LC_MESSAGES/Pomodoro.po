@@ -203,7 +203,7 @@ msgid ""
 "Ask an admin to set up a new timer with {create_cmd}, or rent a private room with {room_cmd} and create one yourself!"
 msgstr ""
 "**Der er ingen tilgængelige pomodoro-timere!**\n"
-"Bed en admin om at opsætte en ny timer med {create..."
+"Bed en admin om at opsætte en ny timer med {create_cmd}, eller lej et privat rum med {room_cmd} og lav en selv!"
 
 #, possible-python-brace-format
 msgctxt "cmd:timers|embed:timer_list|title"

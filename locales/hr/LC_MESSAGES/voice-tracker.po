@@ -223,8 +223,9 @@ msgid ""
 "spend (live) in a voice channel, up to a total of **{cap}** hours per server"
 " day."
 msgstr ""
-"Članovi će sada biti nagrađeni s {coin}**{base} (+ {bonus})** po satu u "
-"glasovnom kanalu, do **{c..."
+"Članovi će sada biti nagrađeni s {coin}**{base} (+ {bonus})** po satu "
+"provedenom (uživo) u glasovnom kanalu, do ukupno **{cap}** sati po danu "
+"poslužitelja."
 
 #, possible-python-brace-format
 msgctxt "cmd:configure_voice_tracking|mode:study|resp:success|desc"

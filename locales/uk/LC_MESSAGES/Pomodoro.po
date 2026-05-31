@@ -208,7 +208,7 @@ msgid ""
 "Ask an admin to set up a new timer with {create_cmd}, or rent a private room with {room_cmd} and create one yourself!"
 msgstr ""
 "**Немає доступних таймерів помодоро!**\n"
-"Попросіть адміна створити новий таймер за допомогою {creat..."
+"Попросіть адміна створити новий таймер за допомогою {create_cmd}, або орендуйте приватну кімнату за допомогою {room_cmd} і створіть свій власний!"
 
 #, possible-python-brace-format
 msgctxt "cmd:timers|embed:timer_list|title"

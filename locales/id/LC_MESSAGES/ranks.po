@@ -183,7 +183,7 @@ msgid ""
 msgstr ""
 "{actor} menyegarkan rank aktivitas anggota.\n"
 "**`{removed}`** role rank tidak valid dihapus.\n"
-"**`{ad..."
+"**`{added}`** role rank baru ditambahkan."
 
 #: src/modules/ranks/cog.py:884
 msgctxt "cmd:ranks"

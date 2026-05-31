@@ -184,7 +184,7 @@ msgid ""
 "No channel selected and you are not in a voice channel! Use {timers_cmd} to list the available timers in this server."
 msgstr ""
 "**Nežinau, kokį laikmatį jums rodyti.**\n"
-"Nepasirinktas kanalas ir nesate balso kanale! Naudokite {..."
+"Nepasirinktas kanalas ir nesate balso kanale! Naudokite {timers_cmd}, kad pamatytumėte šiame serveryje prieinamus laikmačius."
 
 #, possible-python-brace-format
 msgctxt "cmd:timer|error:no_timer_in_channel"
@@ -212,7 +212,7 @@ msgid ""
 "Ask an admin to set up a new timer with {create_cmd}, or rent a private room with {room_cmd} and create one yourself!"
 msgstr ""
 "**Nėra prieinamų pomodoro laikmačių!**\n"
-"Paprašykite administratoriaus sukurti naują laikmatį su {c..."
+"Paprašykite administratoriaus sukurti naują laikmatį su {create_cmd}, arba išsinuomokite privatų kambarį su {room_cmd} ir sukurkite jį patys!"
 
 #, possible-python-brace-format
 msgctxt "cmd:timers|embed:timer_list|title"

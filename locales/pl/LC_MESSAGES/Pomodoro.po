@@ -209,7 +209,7 @@ msgid ""
 "Ask an admin to set up a new timer with {create_cmd}, or rent a private room with {room_cmd} and create one yourself!"
 msgstr ""
 "**Brak dostępnych minutników pomodoro!**\n"
-"Poproś admina o stworzenie nowego minutnika za pomocą {c..."
+"Poproś admina o stworzenie nowego minutnika za pomocą {create_cmd}, lub wynajmij prywatny pokój za pomocą {room_cmd} i stwórz własny!"
 
 #, possible-python-brace-format
 msgctxt "cmd:timers|embed:timer_list|title"
@@ -600,7 +600,7 @@ msgid ""
 "and {stage} keys."
 msgstr ""
 "Automatycznie aktualizowana nazwa kanału głosowego z kluczami {remaining}, "
-"{name}, {pattern} i {s..."
+"{name}, {pattern} i {stage}."
 
 #, possible-python-brace-format
 msgctxt "timerset:channel_name|accepts"

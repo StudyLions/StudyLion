@@ -156,7 +156,7 @@ msgid ""
 "{coin_emoji}**{amount}**?"
 msgstr ""
 "Biztosan be akarod állítani a {role_mention} szereppel rendelkezők "
-"egyenlegét {coin_emoji}**{amou..."
+"egyenlegét {coin_emoji}**{amount}**?"
 
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:success_set|desc"

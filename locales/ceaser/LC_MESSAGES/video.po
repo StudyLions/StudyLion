@@ -121,7 +121,7 @@ msgid ""
 "You have been disconnected from the video {channel} for not enabling your camera."
 msgstr ""
 "**Zpv nvtu fobcmf zpvs dbnfsb jo dbnfsb-pomz sppnt.**\n"
-"Zpv ibwf cffo ejtdpoofdufe gspn uif wjefp {..."
+"Zpv ibwf cffo ejtdpoofdufe gspn uif wjefp {channel} gps opu fobcmjoh zpvs dbnfsb."
 
 #: src/modules/video_channels/cog.py:422
 msgctxt "video_watchdog|join_task|kick_after_grace|blacklist|title"

@@ -207,7 +207,7 @@ msgid ""
 "{coin_emoji}**{new_amount}**."
 msgstr ""
 "{user_mention} ha ricevuto {coin_emoji}**{amount}** e ora ha un saldo di "
-"{coin_emoji}**{new_amoun..."
+"{coin_emoji}**{new_amount}**."
 
 #: src/modules/economy/cog.py:380
 msgctxt "eventlog|event:economy_add|title"

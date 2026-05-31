@@ -179,7 +179,7 @@ msgid ""
 "No channel selected and you are not in a voice channel! Use {timers_cmd} to list the available timers in this server."
 msgstr ""
 "**Не знам кой таймер да ви покажа.**\n"
-"Не е избран канал и не сте в гласов канал! Използвайте {time..."
+"Не е избран канал и не сте в гласов канал! Използвайте {timers_cmd}, за да видите наличните таймери на този сървър."
 
 #, possible-python-brace-format
 msgctxt "cmd:timer|error:no_timer_in_channel"

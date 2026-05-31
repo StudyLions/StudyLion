@@ -62,7 +62,7 @@ msgid ""
 "blacklisted from video channels in **{server}**."
 msgstr ""
 "Vous avez été déconnecté du canal vidéo {channel} car vous êtes sur la liste"
-" noire dans **{server..."
+" noire des canaux vidéo dans **{server}**."
 
 #, possible-python-brace-format
 msgctxt "video_watchdog|join_task|jump_field"

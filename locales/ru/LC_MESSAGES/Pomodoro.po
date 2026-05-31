@@ -170,7 +170,7 @@ msgid ""
 "Ask an admin to set up and configure a timer with {create_cmd} first, or rent a private room with {room_cmd} and create one yourself!"
 msgstr ""
 "**На этом сервере нет настроенных таймеров!**\n"
-"Попросите админа настроить таймер с помощью {create..."
+"Попросите админа настроить таймер с помощью {create_cmd} или арендуйте приватную комнату с помощью {room_cmd} и создайте его сами!"
 
 #, possible-python-brace-format
 msgctxt "cmd:timer|error:no_channel|desc"
@@ -179,7 +179,7 @@ msgid ""
 "No channel selected and you are not in a voice channel! Use {timers_cmd} to list the available timers in this server."
 msgstr ""
 "**Не знаю, какой таймер вам показать.**\n"
-"Канал не выбран и вы не в голосовом канале! Используйте {..."
+"Канал не выбран и вы не в голосовом канале! Используйте {timers_cmd}, чтобы увидеть доступные таймеры на этом сервере."
 
 #, possible-python-brace-format
 msgctxt "cmd:timer|error:no_timer_in_channel"

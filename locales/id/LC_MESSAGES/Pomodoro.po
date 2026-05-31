@@ -202,7 +202,7 @@ msgid ""
 "Ask an admin to set up a new timer with {create_cmd}, or rent a private room with {room_cmd} and create one yourself!"
 msgstr ""
 "**Tidak ada timer pomodoro yang tersedia!**\n"
-"Minta admin untuk menyiapkan timer baru dengan {creat..."
+"Minta admin untuk menyiapkan timer baru dengan {create_cmd}, atau sewa ruangan pribadi dengan {room_cmd} dan buat sendiri!"
 
 #, possible-python-brace-format
 msgctxt "cmd:timers|embed:timer_list|title"
@@ -592,7 +592,7 @@ msgid ""
 "and {stage} keys."
 msgstr ""
 "Nama saluran suara yang diperbarui otomatis, menerima kunci {remaining}, "
-"{name}, {pattern}, dan {..."
+"{name}, {pattern}, dan {stage}."
 
 #, possible-python-brace-format
 msgctxt "timerset:channel_name|accepts"

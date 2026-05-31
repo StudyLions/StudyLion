@@ -232,8 +232,9 @@ msgid ""
 "server, with a bonus of {coin}**{bonus}** if they stream of display video, "
 "up to a total of **{cap}** hours per server day."
 msgstr ""
-"सदस्यों को प्रति घंटे अध्ययन पर {coin}**{base}** दिया जाएगा, स्ट्रीमिंग या "
-"वीडियो पर {coin}**{bon..."
+"सदस्यों को इस सर्वर में प्रति घंटे अध्ययन पर {coin}**{base}** दिया जाएगा, और"
+" यदि वे स्ट्रीम या वीडियो दिखाते हैं तो {coin}**{bonus}** का बोनस, प्रति "
+"सर्वर दिन अधिकतम **{cap}** घंटे तक।"
 
 #: src/tracking/voice/settings.py:42
 msgctxt "guildset:untracked_channels"

@@ -607,7 +607,7 @@ msgid ""
 "and {stage} keys."
 msgstr ""
 "Auto-actualización del nombre del canal de voz, aceptando las claves "
-"{remaining}, {name}, {patter..."
+"{remaining}, {name}, {pattern} y {stage}."
 
 #, possible-python-brace-format
 msgctxt "timerset:channel_name|accepts"

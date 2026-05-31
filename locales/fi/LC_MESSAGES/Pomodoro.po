@@ -169,7 +169,7 @@ msgid ""
 "Ask an admin to set up and configure a timer with {create_cmd} first, or rent a private room with {room_cmd} and create one yourself!"
 msgstr ""
 "**Tällä palvelimella ei ole ajastimia!**\n"
-"Pyydä ylläpitäjää asettamaan ajastin komennolla {create_..."
+"Pyydä ylläpitäjää asettamaan ajastin komennolla {create_cmd}, tai vuokraa yksityinen huone komennolla {room_cmd} ja luo sellainen itse!"
 
 #, possible-python-brace-format
 msgctxt "cmd:timer|error:no_channel|desc"
@@ -178,7 +178,7 @@ msgid ""
 "No channel selected and you are not in a voice channel! Use {timers_cmd} to list the available timers in this server."
 msgstr ""
 "**En tiedä mitä ajastinta näyttää.**\n"
-"Ei valittua kanavaa etkä ole äänikanavalla! Käytä {timers_cm..."
+"Ei valittua kanavaa etkä ole äänikanavalla! Käytä {timers_cmd} nähdäksesi tämän palvelimen saatavilla olevat ajastimet."
 
 #, possible-python-brace-format
 msgctxt "cmd:timer|error:no_timer_in_channel"
@@ -206,7 +206,7 @@ msgid ""
 "Ask an admin to set up a new timer with {create_cmd}, or rent a private room with {room_cmd} and create one yourself!"
 msgstr ""
 "**Pomodoro-ajastimia ei ole saatavilla!**\n"
-"Pyydä ylläpitäjää luomaan uusi ajastin komennolla {crea..."
+"Pyydä ylläpitäjää luomaan uusi ajastin komennolla {create_cmd}, tai vuokraa yksityinen huone komennolla {room_cmd} ja luo sellainen itse!"
 
 #, possible-python-brace-format
 msgctxt "cmd:timers|embed:timer_list|title"
@@ -599,7 +599,7 @@ msgid ""
 "and {stage} keys."
 msgstr ""
 "Automaattisesti päivittyvä äänikanavan nimi, hyväksyy avaimet {remaining}, "
-"{name}, {pattern} ja {..."
+"{name}, {pattern} ja {stage}."
 
 #, possible-python-brace-format
 msgctxt "timerset:channel_name|accepts"

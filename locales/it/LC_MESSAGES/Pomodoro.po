@@ -169,7 +169,7 @@ msgid ""
 "Ask an admin to set up and configure a timer with {create_cmd} first, or rent a private room with {room_cmd} and create one yourself!"
 msgstr ""
 "**Questo server non ha timer configurati!**\n"
-"Chiedi a un admin di configurare un timer con {create..."
+"Chiedi a un admin di configurare un timer con {create_cmd}, oppure affitta una stanza privata con {room_cmd} e creane uno tu stesso!"
 
 #, possible-python-brace-format
 msgctxt "cmd:timer|error:no_channel|desc"
@@ -178,7 +178,7 @@ msgid ""
 "No channel selected and you are not in a voice channel! Use {timers_cmd} to list the available timers in this server."
 msgstr ""
 "**Non so quale timer mostrarti.**\n"
-"Nessun canale selezionato e non sei in un canale vocale! Usa {t..."
+"Nessun canale selezionato e non sei in un canale vocale! Usa {timers_cmd} per elencare i timer disponibili in questo server."
 
 #, possible-python-brace-format
 msgctxt "cmd:timer|error:no_timer_in_channel"
@@ -595,8 +595,8 @@ msgid ""
 "Auto-updating voice channel name, accepting {remaining}, {name}, {pattern}, "
 "and {stage} keys."
 msgstr ""
-"Nome canale vocale aggiornato automaticamente, accetta chiavi {remaining}, "
-"{name}, {pattern} e {s..."
+"Nome canale vocale aggiornato automaticamente, accetta le chiavi "
+"{remaining}, {name}, {pattern} e {stage}."
 
 #, possible-python-brace-format
 msgctxt "timerset:channel_name|accepts"

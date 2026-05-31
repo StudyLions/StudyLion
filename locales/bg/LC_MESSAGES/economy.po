@@ -156,7 +156,7 @@ msgid ""
 "{coin_emoji}**{amount}**?"
 msgstr ""
 "Сигурни ли сте, че искате да зададете баланса на всички с {role_mention} на "
-"{coin_emoji}**{amount..."
+"{coin_emoji}**{amount}**?"
 
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:success_set|desc"

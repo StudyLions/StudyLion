@@ -492,7 +492,7 @@ msgid ""
 "up to a maximum of `{limit}` tasks per 24h."
 msgstr ""
 "I membri riceveranno ora {coin}**{amount}** per ogni attività completata, "
-"fino a un massimo di `{..."
+"fino a un massimo di `{limit}` attività ogni 24 ore."
 
 #, possible-python-brace-format
 msgctxt "tasklist|parse:multi-range|error:parents_match"

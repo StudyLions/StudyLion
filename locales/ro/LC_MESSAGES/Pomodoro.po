@@ -209,7 +209,7 @@ msgid ""
 "Ask an admin to set up a new timer with {create_cmd}, or rent a private room with {room_cmd} and create one yourself!"
 msgstr ""
 "**Nu există cronometre pomodoro disponibile!**\n"
-"Cereti unui admin să creeze un nou cronometru cu {..."
+"Cereți unui admin să creeze un nou cronometru cu {create_cmd}, sau închiriați o cameră privată cu {room_cmd} și creați unul singur!"
 
 #, possible-python-brace-format
 msgctxt "cmd:timers|embed:timer_list|title"

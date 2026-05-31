@@ -156,7 +156,7 @@ msgid ""
 "{coin_emoji}**{amount}**?"
 msgstr ""
 "Weet je zeker dat je het saldo van iedereen met {role_mention} wilt "
-"instellen op {coin_emoji}**{a..."
+"instellen op {coin_emoji}**{amount}**?"
 
 #, possible-python-brace-format
 msgctxt "cmd:economy_balance|embed:success_set|desc"
@@ -208,7 +208,7 @@ msgid ""
 "{coin_emoji}**{new_amount}**."
 msgstr ""
 "{user_mention} heeft {coin_emoji}**{amount}** ontvangen en heeft nu een "
-"saldo van {coin_emoji}**{..."
+"saldo van {coin_emoji}**{new_amount}**."
 
 #: src/modules/economy/cog.py:380
 msgctxt "eventlog|event:economy_add|title"

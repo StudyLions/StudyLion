@@ -502,7 +502,7 @@ msgid ""
 "up to a maximum of `{limit}` tasks per 24h."
 msgstr ""
 "Nfncfst xjmm opx cf sfxbsefe {coin}**{amount}** gps fbdi ubtl uifz dpnqmfuf "
-"vq up b nbyjnvn pg `{..."
+"vq up b nbyjnvn pg `{limit}` ubtlt qfs 24i."
 
 #: src/modules/tasklist/tasklist.py:267
 #, possible-python-brace-format

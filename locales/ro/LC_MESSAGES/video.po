@@ -115,7 +115,7 @@ msgid ""
 "You have been disconnected from the video {channel} for not enabling your camera."
 msgstr ""
 "**Trebuie să-ți activezi camera în camerele doar cu cameră.**\n"
-"Ai fost deconectat din video {chann..."
+"Ai fost deconectat din video {channel} pentru că nu ți-ai activat camera."
 
 #: src/modules/video_channels/cog.py:422
 msgctxt "video_watchdog|join_task|kick_after_grace|blacklist|title"

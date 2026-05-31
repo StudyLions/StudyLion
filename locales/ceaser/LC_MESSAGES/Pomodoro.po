@@ -161,7 +161,7 @@ msgid ""
 "Ask an admin to set up and configure a timer with {create_cmd} first, or rent a private room with {room_cmd} and create one yourself!"
 msgstr ""
 "**Uijt tfswfs ibt op ujnfst tfu vq!**\n"
-"Btl bo benjo up tfu vq boe dpogjhvsf b ujnfs xjui {create_c..."
+"Btl bo benjo up tfu vq boe dpogjhvsf b ujnfs xjui {create_cmd} gjstu, ps sfou b qsjwbuf sppn xjui {room_cmd} boe dsfbuf pof zpvstfmg!"
 
 #: src/modules/pomodoro/cog.py:367
 #, possible-python-brace-format

@@ -165,7 +165,7 @@ msgid ""
 "{coin_emoji}**{amount}**?"
 msgstr ""
 "Bsf zpv tvsf zpv xbou up tfu uif cbmbodf pg fwfszpof xjui {role_mention} up "
-"{coin_emoji}**{amount..."
+"{coin_emoji}**{amount}**?"
 
 #: src/modules/economy/cog.py:290
 #, possible-python-brace-format
@@ -213,7 +213,7 @@ msgid ""
 "{coin_emoji}**{new_amount}**."
 msgstr ""
 "{user_mention} xbt hjwfo {coin_emoji}**{amount}**, boe opx ibt b cbmbodf pg "
-"{coin_emoji}**{new_am..."
+"{coin_emoji}**{new_amount}**."
 
 #: src/modules/economy/cog.py:365
 msgctxt "cmd:economy_balance|embed:success|title"

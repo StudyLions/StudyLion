@@ -485,7 +485,7 @@ msgid ""
 "up to a maximum of `{limit}` tasks per 24h."
 msgstr ""
 "A tagok mostantól {coin}**{amount}** jutalmat kapnak minden befejezett "
-"feladatért, legfeljebb `{l..."
+"feladatért, legfeljebb `{limit}` feladatig 24 óránként."
 
 #, possible-python-brace-format
 msgctxt "tasklist|parse:multi-range|error:parents_match"
