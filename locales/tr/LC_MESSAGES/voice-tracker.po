@@ -227,8 +227,9 @@ msgid ""
 "spend (live) in a voice channel, up to a total of **{cap}** hours per server"
 " day."
 msgstr ""
-"Üyeler artık bir ses kanalında geçirdikleri (aktif) saat başına, sunucu günü"
-" başına toplam **{cap..."
+"Üyeler artık bir ses kanalında (aktif olarak) geçirdikleri her saat için "
+"{coin}**{base} (+ {bonus})** kazanacak, sunucu günü başına toplam **{cap}** "
+"saate kadar."
 
 #, possible-python-brace-format
 msgctxt "cmd:configure_voice_tracking|mode:study|resp:success|desc"

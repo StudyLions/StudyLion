@@ -176,7 +176,7 @@ msgid ""
 msgstr ""
 "{actor} üye etkinlik rütbelerini yeniledi.\n"
 "**`{removed}`** geçersiz rütbe rolü kaldırıldı.\n"
-"**`{ad..."
+"**`{added}`** yeni rütbe rolü eklendi."
 
 #: src/modules/ranks/cog.py:884
 msgctxt "cmd:ranks"

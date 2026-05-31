@@ -5,6 +5,7 @@ from collections import defaultdict
 from enum import Enum
 
 import gettext
+import string
 
 from discord.app_commands import Translator, locale_str
 from discord.enums import Locale
@@ -26,6 +27,13 @@ ctx_guildid: ContextVar[Optional[int]] = ContextVar('guildid', default=None)
 # --- END AI-MODIFIED ---
 
 null = gettext.NullTranslations()
+
+# --- AI-MODIFIED (2026-05-31) ---
+# Purpose: Reusable formatter used to validate that a resolved translation is a
+# parseable brace-format string before the caller runs .format() on it.
+# See LeoBabel.t (ticket #0102 follow-up).
+_brace_formatter = string.Formatter()
+# --- END AI-MODIFIED ---
 
 
 class LeoBabel(Translator):
@@ -128,17 +136,43 @@ class LeoBabel(Translator):
 
         domain = lazystr.domain
         translator = self.get_translator(locale or lazystr.locale or ctx_locale.get(), domain)
-        return lazystr._translate_with(translator)
+        # --- AI-MODIFIED (2026-05-31) ---
+        # Purpose: Guard against malformed translations. A bad translation export
+        # truncated placeholders mid-name across ~24 locales / 45 .mo files
+        # (e.g. "...**`{ad..."), and each is a latent str.format() crash
+        # ("expected '}' before end of string") for that locale. If the resolved
+        # translation is not a valid brace-format string, fall back to the source
+        # (English) message so the caller's .format(...) cannot crash the interaction.
+        # Only parses strings containing '{' (skips plain text); the source is
+        # computed only on the rare failure path. Ticket #0102 follow-up.
+        # --- Original code (commented out for rollback) ---
+        # return lazystr._translate_with(translator)
+        # --- End original code ---
+        translated = lazystr._translate_with(translator)
+        if isinstance(translated, str) and '{' in translated:
+            try:
+                for _ in _brace_formatter.parse(translated):
+                    pass
+            except ValueError:
+                logger.warning(
+                    "Malformed translation fell back to source (domain=%s, locale=%s, context=%r): %r",
+                    domain, (locale or lazystr.locale or ctx_locale.get()),
+                    (lazystr.args[0] if lazystr.args else None), translated,
+                )
+                translated = lazystr.message
+        return translated
+        # --- END AI-MODIFIED ---
     # --- END AI-REPLACED ---
 
-    # --- AI-MODIFIED (2026-03-15) ---
+    # --- AI-MODIFIED (2026-05-05) ---
     # Purpose: Sanitize command/parameter name translations for Discord.
-    # Discord requires command/param names to be lowercase, no spaces,
-    # only [-_a-z0-9] for Latin scripts (1-32 chars).
+    # Discord's name_localizations pattern: ^[-_\p{L}\p{N}\p{sc=Deva}\p{sc=Thai}]{1,32}$
+    # Unicode letters (accents, cedillas, CJK, etc.) ARE allowed.
     # Invalid name_localizations in ANY locale cause the ENTIRE sync
     # to fail (HTTP 400), blocking ALL slash commands from registering.
     # Fix: sanitize name translations (lowercase, spaces->underscores,
-    # strip invalid chars). Return None if result is empty.
+    # strip chars not matching Discord's allowed set: Unicode letters,
+    # digits, hyphens, underscores).
     # --- Original code (commented out for rollback) ---
     # async def translate(self, string: locale_str, locale: Locale, context):
     #     loc = locale.value.replace('-', '_')
@@ -155,7 +189,7 @@ class LeoBabel(Translator):
     #         return lazy._translate_with(translator)
     # --- End original code ---
     import re
-    _cmd_name_strip_re = re.compile(r'[^-_a-z0-9]')
+    _cmd_name_strip_re = re.compile(r'[^\w-]', re.UNICODE)
 
     @staticmethod
     def _sanitize_cmd_name(name):
