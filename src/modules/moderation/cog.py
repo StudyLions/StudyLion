@@ -153,7 +153,16 @@ class ModerationCog(LionCog):
             "Contents of the note."
         ),
     )
-    @appcmds.default_permissions(manage_guild=True)
+    # --- AI-MODIFIED (2026-06-01) ---
+    # Removed the Discord-level default_permissions(manage_guild=True). Discord enforces it BEFORE
+    # the interaction reaches the bot, so a configured mod_role that lacks Discord's "Manage Server"
+    # permission was blocked from this command entirely (Discord hid it). The @moderator_ward below
+    # already gates this command to the configured mod_role / Manage Server, so the Discord lock was
+    # redundant and was the cause of support bug #0106 (mod role could not use moderation commands).
+    # Trade-off: command is now visible to all members; non-mods get a clear ward error if they try.
+    # Original line (commented out for rollback):
+    # @appcmds.default_permissions(manage_guild=True)
+    # --- END AI-MODIFIED ---
     @appcmds.guild_only
     @moderator_ward
     async def cmd_modnote(self, ctx: LionContext,
@@ -243,7 +252,16 @@ class ModerationCog(LionCog):
             "The reason why you are warning this member."
         ),
     )
-    @appcmds.default_permissions(manage_guild=True)
+    # --- AI-MODIFIED (2026-06-01) ---
+    # Removed the Discord-level default_permissions(manage_guild=True). Discord enforces it BEFORE
+    # the interaction reaches the bot, so a configured mod_role that lacks Discord's "Manage Server"
+    # permission was blocked from this command entirely (Discord hid it). The @moderator_ward below
+    # already gates this command to the configured mod_role / Manage Server, so the Discord lock was
+    # redundant and was the cause of support bug #0106 (mod role could not use moderation commands).
+    # Trade-off: command is now visible to all members; non-mods get a clear ward error if they try.
+    # Original line (commented out for rollback):
+    # @appcmds.default_permissions(manage_guild=True)
+    # --- END AI-MODIFIED ---
     @appcmds.guild_only
     @moderator_ward
     async def cmd_warning(self, ctx: LionContext,
@@ -391,7 +409,16 @@ class ModerationCog(LionCog):
             "Why these tickets are being pardoned."
         )
     )
-    @appcmds.default_permissions(manage_guild=True)
+    # --- AI-MODIFIED (2026-06-01) ---
+    # Removed the Discord-level default_permissions(manage_guild=True). Discord enforces it BEFORE
+    # the interaction reaches the bot, so a configured mod_role that lacks Discord's "Manage Server"
+    # permission was blocked from this command entirely (Discord hid it). The @moderator_ward below
+    # already gates this command to the configured mod_role / Manage Server, so the Discord lock was
+    # redundant and was the cause of support bug #0106 (mod role could not use moderation commands).
+    # Trade-off: command is now visible to all members; non-mods get a clear ward error if they try.
+    # Original line (commented out for rollback):
+    # @appcmds.default_permissions(manage_guild=True)
+    # --- END AI-MODIFIED ---
     @appcmds.guild_only
     @moderator_ward
     async def cmd_pardon(self, ctx: LionContext,
@@ -542,7 +569,16 @@ class ModerationCog(LionCog):
             )
         ]
     )
-    @appcmds.default_permissions(manage_guild=True)
+    # --- AI-MODIFIED (2026-06-01) ---
+    # Removed the Discord-level default_permissions(manage_guild=True). Discord enforces it BEFORE
+    # the interaction reaches the bot, so a configured mod_role that lacks Discord's "Manage Server"
+    # permission was blocked from this command entirely (Discord hid it). The @moderator_ward below
+    # already gates this command to the configured mod_role / Manage Server, so the Discord lock was
+    # redundant and was the cause of support bug #0106 (mod role could not use moderation commands).
+    # Trade-off: command is now visible to all members; non-mods get a clear ward error if they try.
+    # Original line (commented out for rollback):
+    # @appcmds.default_permissions(manage_guild=True)
+    # --- END AI-MODIFIED ---
     @appcmds.guild_only
     @moderator_ward
     async def tickets_cmd(self, ctx: LionContext,
@@ -748,7 +784,16 @@ class ModerationCog(LionCog):
             "Member or user to look up the strike record for."
         ),
     )
-    @appcmds.default_permissions(manage_guild=True)
+    # --- AI-MODIFIED (2026-06-01) ---
+    # Removed the Discord-level default_permissions(manage_guild=True). Discord enforces it BEFORE
+    # the interaction reaches the bot, so a configured mod_role that lacks Discord's "Manage Server"
+    # permission was blocked from this command entirely (Discord hid it). The @moderator_ward below
+    # already gates this command to the configured mod_role / Manage Server, so the Discord lock was
+    # redundant and was the cause of support bug #0106 (mod role could not use moderation commands).
+    # Trade-off: command is now visible to all members; non-mods get a clear ward error if they try.
+    # Original line (commented out for rollback):
+    # @appcmds.default_permissions(manage_guild=True)
+    # --- END AI-MODIFIED ---
     @appcmds.guild_only
     @moderator_ward
     async def cmd_strikes(self, ctx: LionContext,

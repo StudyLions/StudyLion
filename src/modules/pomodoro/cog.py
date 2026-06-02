@@ -525,15 +525,42 @@ class TimerCog(LionCog):
             bonus = min(bonus, 1000)
 
             if bonus > 0:
-                connector = self.data.Timer.table.connector
-                async with connector.connection() as conn:
-                    async with conn.cursor() as cursor:
-                        await cursor.execute(
-                            "INSERT INTO coin_transactions (guildid, userid, amount, bonus, from_account) "
-                            "VALUES (%s, %s, %s, TRUE, FALSE)",
-                            (timer.data.guildid, member.id, bonus)
-                        )
-                logger.debug(f"Awarded {bonus} pomodoro bonus coins to {member.id}")
+                # --- AI-REPLACED (2026-06-01) ---
+                # Reason: this hand-written INSERT never worked. coin_transactions
+                # has no `userid` column (the recipient is `to_account`), `bonus`
+                # and `from_account` are INTEGER/BIGINT yet were given boolean
+                # literals (TRUE/FALSE), and the NOT NULL `transactiontype` and
+                # `actorid` columns were omitted. Every call raised psycopg
+                # UndefinedColumn -- caught below as "non-critical" but logged at
+                # ERROR by data.cursor, spamming the error webhook ~100x/day since
+                # 2026-05-11, and no coins were ever actually credited.
+                # What the new code does better: routes through the canonical
+                # EconomyData.Transaction.execute_transaction helper (the same path
+                # the ranks and leaderboard rewards use), which writes a valid
+                # ledger row AND atomically credits the member's coin balance.
+                # --- Original code (commented out for rollback) ---
+                # connector = self.data.Timer.table.connector
+                # async with connector.connection() as conn:
+                #     async with conn.cursor() as cursor:
+                #         await cursor.execute(
+                #             "INSERT INTO coin_transactions (guildid, userid, amount, bonus, from_account) "
+                #             "VALUES (%s, %s, %s, TRUE, FALSE)",
+                #             (timer.data.guildid, member.id, bonus)
+                #         )
+                # --- End original code ---
+                from modules.economy.data import TransactionType
+                economy = self.bot.get_cog('Economy')
+                if economy is not None:
+                    await economy.data.Transaction.execute_transaction(
+                        TransactionType.OTHER,
+                        guildid=timer.data.guildid,
+                        actorid=self.bot.user.id,
+                        from_account=None,
+                        to_account=member.id,
+                        amount=bonus,
+                    )
+                    logger.debug(f"Awarded {bonus} pomodoro bonus coins to {member.id}")
+                # --- END AI-REPLACED ---
         except Exception:
             logger.debug(f"Focus bonus failed for {member.id}, non-critical")
 

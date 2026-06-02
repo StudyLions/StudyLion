@@ -199,6 +199,31 @@ class LeoBabel(Translator):
         s = s[:32].strip('-_')
         return s if s else None
 
+    # --- AI-MODIFIED (2026-06-02) ---
+    # Purpose: Guard command/group/parameter DESCRIPTIONS and CHOICE names the
+    # same way names are guarded above. Discord requires these to be 1-100 chars
+    # in length; an empty (or whitespace-only, or >100) translation in ANY locale
+    # makes the ENTIRE global command-tree sync fail with HTTP 400 / code 50035,
+    # so the whole tree (and any new command changes) never registers.
+    # A corrupt translation export left the pomodoro 'channel_name' parameter
+    # description empty in 6 locales (hr/id/fi/it/pl/es-ES), which was blocking
+    # every shard-0 sync. Returning None omits that locale's localization so
+    # Discord falls back to the (valid) source string; truncating to 100 keeps
+    # legitimately-long translations valid.
+    @staticmethod
+    def _sanitize_cmd_description(desc):
+        """Clamp a translated description/choice name to Discord's 1-100 char
+        limit. Returns None (omit the localization -> fall back to the source
+        string) when empty after stripping, so corrupt/empty translation data
+        can't fail the whole command-tree sync."""
+        if desc is None:
+            return None
+        d = desc.strip()
+        if not d:
+            return None
+        return d[:100]
+    # --- END AI-MODIFIED ---
+
     async def translate(self, string: locale_str, locale: Locale, context):
         loc = locale.value.replace('-', '_')
         if loc in self.supported_locales:
@@ -223,8 +248,21 @@ class LeoBabel(Translator):
                     TranslationContextLocation.group_name,
                     TranslationContextLocation.parameter_name,
                 )
+                # --- AI-MODIFIED (2026-06-02) ---
+                # Also clamp descriptions + choice names to Discord's 1-100 length
+                # limit (empty/over-long translations otherwise fail the entire
+                # command sync with code 50035). See _sanitize_cmd_description.
+                desc_locations = (
+                    TranslationContextLocation.command_description,
+                    TranslationContextLocation.group_description,
+                    TranslationContextLocation.parameter_description,
+                    TranslationContextLocation.choice_name,
+                )
                 if context.location in name_locations:
                     result = self._sanitize_cmd_name(result)
+                elif context.location in desc_locations:
+                    result = self._sanitize_cmd_description(result)
+                # --- END AI-MODIFIED ---
 
             return result
     # --- END AI-MODIFIED ---
