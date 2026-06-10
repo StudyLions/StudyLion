@@ -125,6 +125,12 @@ class SoundBot(discord.Client):
         self._last_presence_update: float = 0
         self._lofi_error_counts: dict[int, int] = {}
         self._lofi_blacklists: dict[int, set[str]] = {}
+        # --- AI-MODIFIED (2026-06-10) ---
+        # Purpose: (size, mtime) cache so periodic rescans only re-parse files
+        #   that actually changed, instead of running mutagen over the whole
+        #   library every 5 minutes (see _scan_lofi).
+        self._lofi_stats: dict[str, tuple[int, float]] = {}
+        # --- END AI-MODIFIED ---
         if lofi_dir:
             self._scan_lofi(lofi_dir)
         # --- END AI-MODIFIED ---
@@ -1710,27 +1716,116 @@ class SoundBot(discord.Client):
     # Purpose: LoFi with mutagen metadata, loudnorm, fade, skip, crash recovery,
     #          dedup, sub-moods, blacklists, now-playing embed, presence rate-limiting
 
+    # --- AI-REPLACED (2026-06-10) ---
+    # Reason: Users reported the sound bots "constantly disconnecting". Two
+    #   defects lived here:
+    #   1. The 5-minute reload loop cleared _lofi_meta/_lofi_pools and then this
+    #      method re-parsed EVERY file with mutagen, synchronously, on the shared
+    #      asyncio event loop. With 10 bots in one process the loop stalled for
+    #      a full-library parse roughly every 30 seconds, delaying gateway and
+    #      voice websocket heartbeats (log signature: frequent "RESUMED" and
+    #      voice 1006 reconnects).
+    #   2. Clearing the dicts before rebuilding left a window where _play_lofi
+    #      saw empty pools at a track change and gave up.
+    # What the new code does better: builds into local dicts and atomically
+    #   swaps them in (no empty-pool window), reuses cached metadata for files
+    #   whose (size, mtime) are unchanged so periodic rescans cost ~one stat()
+    #   per file instead of a mutagen parse, and the reload loop now runs the
+    #   scan in a worker thread so the event loop never blocks. The noisy
+    #   per-rescan INFO log only fires when the library actually changed.
+    # --- Original code (commented out for rollback) ---
+    # def _scan_lofi(self, lofi_dir: str):
+    #     """Scan lofi directory tree for songs, read metadata, deduplicate."""
+    #     if not os.path.isdir(lofi_dir):
+    #         return
+    #
+    #     all_songs: list[str] = []
+    #     mood_songs: dict[str, list[str]] = {}
+    #     fingerprints: dict[tuple, str] = {}
+    #
+    #     for root, _dirs, files in os.walk(lofi_dir):
+    #         for f in sorted(files):
+    #             if not f.lower().endswith(('.mp3', '.ogg', '.wav', '.flac')):
+    #                 continue
+    #             path = os.path.join(root, f)
+    #             artist, title, duration = self._read_meta(path)
+    #
+    #             try:
+    #                 fsize = os.path.getsize(path)
+    #             except OSError:
+    #                 continue
+    #             fp = (fsize, round(duration))
+    #             if fp in fingerprints:
+    #                 logger.debug(
+    #                     "Skipping duplicate: %s (matches %s)",
+    #                     f, os.path.basename(fingerprints[fp]),
+    #                 )
+    #                 continue
+    #             fingerprints[fp] = path
+    #
+    #             self._lofi_meta[path] = (artist, title, duration)
+    #             all_songs.append(path)
+    #
+    #             rel = os.path.relpath(root, lofi_dir)
+    #             if rel != '.':
+    #                 mood_key = f'lofi_{rel.replace(os.sep, "_").lower()}'
+    #                 mood_songs.setdefault(mood_key, []).append(path)
+    #
+    #     self._lofi_pools['lofi'] = all_songs
+    #     for mood, songs in mood_songs.items():
+    #         self._lofi_pools[mood] = songs
+    #         if mood not in SOUND_LABELS:
+    #             pretty = mood.split('_', 1)[1].replace('_', ' ').title()
+    #             SOUND_LABELS[mood] = (f'LoFi {pretty}', '\U0001f3b5')
+    #
+    #     logger.info(
+    #         "Bot #%d scanned %d LoFi songs, moods: %s",
+    #         self.bot_number, len(all_songs),
+    #         list(mood_songs.keys()) or ['none'],
+    #     )
+    # --- End original code ---
     def _scan_lofi(self, lofi_dir: str):
-        """Scan lofi directory tree for songs, read metadata, deduplicate."""
+        """Scan lofi directory tree for songs, read metadata, deduplicate.
+
+        Safe to call from a worker thread: builds into local structures and
+        atomically swaps them onto self at the end. Unchanged files (same
+        size + mtime as the previous scan) reuse cached metadata and are not
+        re-parsed with mutagen.
+        """
         if not os.path.isdir(lofi_dir):
             return
 
+        prev_meta = self._lofi_meta
+        prev_stats = self._lofi_stats
+
+        new_meta: dict[str, tuple[str, str, float]] = {}
+        new_stats: dict[str, tuple[int, float]] = {}
         all_songs: list[str] = []
         mood_songs: dict[str, list[str]] = {}
         fingerprints: dict[tuple, str] = {}
+        parsed = 0
+        reused = 0
 
         for root, _dirs, files in os.walk(lofi_dir):
             for f in sorted(files):
                 if not f.lower().endswith(('.mp3', '.ogg', '.wav', '.flac')):
                     continue
                 path = os.path.join(root, f)
-                artist, title, duration = self._read_meta(path)
-
                 try:
-                    fsize = os.path.getsize(path)
+                    st = os.stat(path)
                 except OSError:
                     continue
-                fp = (fsize, round(duration))
+                stat_key = (st.st_size, st.st_mtime)
+
+                cached = prev_meta.get(path)
+                if cached is not None and prev_stats.get(path) == stat_key:
+                    artist, title, duration = cached
+                    reused += 1
+                else:
+                    artist, title, duration = self._read_meta(path)
+                    parsed += 1
+
+                fp = (st.st_size, round(duration))
                 if fp in fingerprints:
                     logger.debug(
                         "Skipping duplicate: %s (matches %s)",
@@ -1739,7 +1834,8 @@ class SoundBot(discord.Client):
                     continue
                 fingerprints[fp] = path
 
-                self._lofi_meta[path] = (artist, title, duration)
+                new_meta[path] = (artist, title, duration)
+                new_stats[path] = stat_key
                 all_songs.append(path)
 
                 rel = os.path.relpath(root, lofi_dir)
@@ -1747,18 +1843,28 @@ class SoundBot(discord.Client):
                     mood_key = f'lofi_{rel.replace(os.sep, "_").lower()}'
                     mood_songs.setdefault(mood_key, []).append(path)
 
-        self._lofi_pools['lofi'] = all_songs
+        new_pools: dict[str, list[str]] = {'lofi': all_songs}
         for mood, songs in mood_songs.items():
-            self._lofi_pools[mood] = songs
+            new_pools[mood] = songs
             if mood not in SOUND_LABELS:
                 pretty = mood.split('_', 1)[1].replace('_', ' ').title()
                 SOUND_LABELS[mood] = (f'LoFi {pretty}', '\U0001f3b5')
 
-        logger.info(
-            "Bot #%d scanned %d LoFi songs, moods: %s",
-            self.bot_number, len(all_songs),
+        changed = set(new_meta) != set(prev_meta)
+
+        # Atomic swap: readers always see either the old or the new library,
+        # never a half-built or empty one.
+        self._lofi_meta = new_meta
+        self._lofi_stats = new_stats
+        self._lofi_pools = new_pools
+
+        log = logger.info if (changed or not reused) else logger.debug
+        log(
+            "Bot #%d scanned %d LoFi songs (%d parsed, %d cached), moods: %s",
+            self.bot_number, len(all_songs), parsed, reused,
             list(mood_songs.keys()) or ['none'],
         )
+    # --- END AI-REPLACED ---
 
     @staticmethod
     def _read_meta(path: str) -> tuple[str, str, float]:
@@ -2053,9 +2159,20 @@ class SoundBot(discord.Client):
                 continue
             try:
                 old_count = len(self._lofi_pools.get('lofi', []))
-                self._lofi_meta.clear()
-                self._lofi_pools.clear()
-                self._scan_lofi(self._lofi_dir)
+                # --- AI-REPLACED (2026-06-10) ---
+                # Reason: clearing the dicts here opened an empty-pool window for
+                #   any track change during the rescan, and running the scan
+                #   inline blocked the shared event loop (heartbeat stalls ->
+                #   gateway RESUMEs / voice 1006 drops; see _scan_lofi).
+                # What the new code does better: _scan_lofi now swaps complete
+                #   structures in atomically, and runs in a worker thread.
+                # --- Original code (commented out for rollback) ---
+                # self._lofi_meta.clear()
+                # self._lofi_pools.clear()
+                # self._scan_lofi(self._lofi_dir)
+                # --- End original code ---
+                await asyncio.to_thread(self._scan_lofi, self._lofi_dir)
+                # --- END AI-REPLACED ---
                 new_count = len(self._lofi_pools.get('lofi', []))
                 if new_count != old_count:
                     logger.info("LoFi reload: %d \u2192 %d songs", old_count, new_count)
