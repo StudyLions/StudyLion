@@ -55,6 +55,17 @@ DISCONNECT_GRACE_S = 60
 # a minute of a typical disconnect.
 # --- Original code (commented out for rollback) ---
 # FORCE_DC_COOLDOWN_S = 300
+# --- AI-MODIFIED (2026-06-10) ---
+# Purpose: total grace window for deciding whether a channel=None voice state
+#   is a transient blip (discord.py auto-reconnect in progress) or a real
+#   force-disconnect. Live logs showed reconnects to far media edges
+#   (japan/hkg/sin) taking well over the old single 5s wait, so the handler
+#   declared "force-disconnected" mid-reconnect and fought discord.py
+#   (overlapping handshakes, "Timed out connecting", 60s cooldowns while
+#   actually connected).
+FORCE_DC_GRACE_TOTAL_S = 30
+FORCE_DC_GRACE_STEP_S = 3
+# --- END AI-MODIFIED ---
 # --- End original code ---
 FORCE_DC_COOLDOWN_S = 60
 # --- END AI-REPLACED ---
@@ -101,6 +112,16 @@ class SoundBot(discord.Client):
         self._connect_tasks: dict[int, asyncio.Task] = {}
         self._cooldowns: dict[int, float] = {}
         self._reconnect_attempts: dict[int, int] = {}
+        # --- AI-MODIFIED (2026-06-10) ---
+        # Purpose: single-flight guards. _grace_pending stops concurrent
+        #   channel=None events from spawning parallel grace checks (logs showed
+        #   "force-disconnected" firing 3x in 3s for one guild); _connect_locks
+        #   stops overlapping _voice_connect runs racing each other and
+        #   discord.py's own reconnect (logs showed two simultaneous voice
+        #   handshakes followed by "Timed out connecting to voice").
+        self._grace_pending: set[int] = set()
+        self._connect_locks: dict[int, asyncio.Lock] = {}
+        # --- END AI-MODIFIED ---
         self._db: Optional[psycopg.AsyncConnection] = None
 
         # --- AI-MODIFIED (2026-03-23) ---
@@ -1638,50 +1659,110 @@ class SoundBot(discord.Client):
 
         if not after.channel:
             if cfg.channelid == before.channel.id:
-                # --- AI-MODIFIED (2026-05-19c) ---
-                # Purpose: discord.py 2.7.x has built-in voice auto-reconnect
-                # via reconnect=True on channel.connect(). On a transient voice
-                # WS close (e.g. close code 1006 abnormal closure), Discord's
-                # gateway emits VOICE_STATE_UPDATE with channel=None, then
-                # another with the channel back once discord.py reconnects.
-                # The previous logic treated the channel=None event as a
-                # definite force-disconnect, racing discord.py's silent
-                # recovery and tearing down our state for what were actually
-                # transient blips. For shims' high-traffic guild this hit
-                # ~213 times in a single day, ~95% of which were false
-                # positives. New behavior: wait a short grace period and
-                # only declare force-disconnect if discord.py also failed
-                # to recover. See discord.py voice_state.py:637-699 for the
-                # auto-reconnect path (_potential_reconnect).
-                await asyncio.sleep(5)
-                guild = before.channel.guild
-                vc = guild.voice_client if guild else None
-                if vc and vc.is_connected():
-                    logger.debug(
-                        "Bot #%d transient voice blip recovered in guild %s — no action needed",
-                        self.bot_number, gid,
-                    )
+                # --- AI-REPLACED (2026-06-10) ---
+                # Reason: the 2026-05-19c grace period (a single 5s sleep +
+                #   is_connected() check) still misfired. discord.py keeps the
+                #   VoiceClient alive while it retries the voice handshake
+                #   (reconnect=True), and live logs showed reconnects to far
+                #   media edges (japan/hkg/sin) taking 20-50s with "connection
+                #   attempt 2" / "Timed out connecting to voice... Retrying".
+                #   After 5s is_connected() was still False, so this handler
+                #   declared "force-disconnected" MID-RECONNECT (3x in 3s for
+                #   one event — every VOICE_STATE_UPDATE spawned its own grace
+                #   sleep), applied the 60s cooldown, stopped the LoFi state,
+                #   and its recovery then fought discord.py's in-flight
+                #   handshake. Users saw the bot drop, go silent, or sit out
+                #   cooldowns while actually connected.
+                # What the new code does better:
+                #   - single-flight: one grace check per guild at a time;
+                #   - polls up to FORCE_DC_GRACE_TOTAL_S, exiting early when
+                #     either recovered (is_connected()) or discord.py gave up
+                #     (guild.voice_client is None — it tears the client down
+                #     when it stops retrying, and on real kicks it does not
+                #     auto-reconnect at all, so kicks are detected within one
+                #     poll step and the anti-rejoin cooldown still applies);
+                #   - on recovery, restarts audio if a concurrent handler had
+                #     already stopped it, instead of leaving a silent bot.
+                # --- Original code (commented out for rollback) ---
+                # await asyncio.sleep(5)
+                # guild = before.channel.guild
+                # vc = guild.voice_client if guild else None
+                # if vc and vc.is_connected():
+                #     logger.debug(
+                #         "Bot #%d transient voice blip recovered in guild %s — no action needed",
+                #         self.bot_number, gid,
+                #     )
+                #     return
+                # logger.warning(
+                #     "Bot #%d force-disconnected in guild %s", self.bot_number, gid,
+                # )
+                # self._cooldowns[gid] = time.monotonic() + FORCE_DC_COOLDOWN_S
+                # await self._update_status(
+                #     gid, 'idle', 'Force-disconnected — will rejoin after cooldown',
+                # )
+                # self._stop_lofi(gid)
+                # --- End original code ---
+                if gid in self._grace_pending:
+                    # A grace check for this guild is already in flight; let it decide.
                     return
-                # --- END AI-MODIFIED ---
-                logger.warning(
-                    "Bot #%d force-disconnected in guild %s", self.bot_number, gid,
-                )
-                self._cooldowns[gid] = time.monotonic() + FORCE_DC_COOLDOWN_S
-                await self._update_status(
-                    gid, 'idle', 'Force-disconnected — will rejoin after cooldown',
-                )
-                # --- AI-MODIFIED (2026-05-19b) ---
-                # Purpose: Clear the stale Now Playing dict so the next panel
-                # render shows the cooldown state instead of the last track.
-                # NOTE: we used to also immediately refresh the panel here, but
-                # that caused a 429 PATCH storm for guilds with frequent
-                # disconnects (the panel was being edited multiple times per
-                # second). The 60s _panel_refresh_loop catches this case with
-                # a one-minute lag, which is acceptable. The _build_control_panel
-                # guard against stale Now Playing already prevents the wrong
-                # info from being shown on the next legitimate refresh.
-                self._stop_lofi(gid)
-                # --- END AI-MODIFIED ---
+                self._grace_pending.add(gid)
+                try:
+                    guild = before.channel.guild
+                    recovered = False
+                    gave_up = False
+                    deadline = time.monotonic() + FORCE_DC_GRACE_TOTAL_S
+                    while time.monotonic() < deadline:
+                        await asyncio.sleep(FORCE_DC_GRACE_STEP_S)
+                        vc = guild.voice_client if guild else None
+                        if vc and vc.is_connected():
+                            recovered = True
+                            break
+                        if vc is None:
+                            gave_up = True
+                            break
+
+                    if recovered:
+                        logger.info(
+                            "Bot #%d transient voice blip recovered in guild %s — no action needed",
+                            self.bot_number, gid,
+                        )
+                        # If a previous (pre-fix) teardown or the blip itself left us
+                        # connected but silent, restart audio for present listeners.
+                        cfg = self._configs.get(gid)
+                        vc = guild.voice_client if guild else None
+                        if (
+                            cfg and cfg.enabled and cfg.sound_type
+                            and vc and vc.is_connected() and not vc.is_playing()
+                            and self._humans(vc.channel) > 0
+                        ):
+                            try:
+                                await self._start_audio(gid, cfg, vc)
+                                await self._update_status(gid, 'active')
+                            except Exception as exc:
+                                logger.warning(
+                                    "Bot #%d failed to resume audio after blip in guild %s: %s",
+                                    self.bot_number, gid, exc,
+                                )
+                        return
+
+                    logger.warning(
+                        "Bot #%d force-disconnected in guild %s (%s)",
+                        self.bot_number, gid,
+                        'voice client torn down' if gave_up else
+                        f'not reconnected after {FORCE_DC_GRACE_TOTAL_S}s',
+                    )
+                    self._cooldowns[gid] = time.monotonic() + FORCE_DC_COOLDOWN_S
+                    await self._update_status(
+                        gid, 'idle', 'Force-disconnected — will rejoin after cooldown',
+                    )
+                    # Clear the stale Now Playing dict so the next panel render
+                    # shows the cooldown state instead of the last track. The 60s
+                    # _panel_refresh_loop picks this up (no immediate refresh here:
+                    # that previously caused a 429 PATCH storm).
+                    self._stop_lofi(gid)
+                finally:
+                    self._grace_pending.discard(gid)
+                # --- END AI-REPLACED ---
     # --- END AI-MODIFIED ---
 
     # ------------------------------------------------------------------
@@ -1977,9 +2058,26 @@ class SoundBot(discord.Client):
             else:
                 self._lofi_error_counts[gid] = 0
             if self._lofi_gen.get(gid) == gen:
-                asyncio.run_coroutine_threadsafe(
+                # --- AI-MODIFIED (2026-06-10) ---
+                # Purpose: the future from run_coroutine_threadsafe was discarded,
+                #   so if scheduling the next track failed the music stopped with
+                #   no log at all (bot sat in the channel silent). Log it.
+                future = asyncio.run_coroutine_threadsafe(
                     self._play_lofi(gid, cfg), self.loop,
                 )
+
+                def _log_next_track_failure(f):
+                    try:
+                        exc = f.exception()
+                    except Exception:
+                        return
+                    if exc is not None:
+                        logger.error(
+                            "Next LoFi track failed to start in guild %s: %r", gid, exc,
+                        )
+
+                future.add_done_callback(_log_next_track_failure)
+                # --- END AI-MODIFIED ---
 
         try:
             if vc.is_playing():
@@ -2361,45 +2459,80 @@ class SoundBot(discord.Client):
                 return
         # --- END AI-MODIFIED ---
 
-        try:
-            if guild.voice_client:
-                await guild.voice_client.disconnect(force=True)
-
-            vc = await channel.connect(timeout=30, reconnect=True)
-
+        # --- AI-MODIFIED (2026-06-10) ---
+        # Purpose: single-flight per guild. Overlapping _voice_connect runs
+        #   (poll loop + reconnect task + grace recovery) raced each other and
+        #   discord.py's own auto-reconnect — live logs showed two simultaneous
+        #   voice handshakes followed by "Timed out connecting to voice" and
+        #   empty "Connect failed" errors (TimeoutError has no message). A
+        #   duplicate attempt now just skips; the 15s poll re-evaluates anyway.
+        lock = self._connect_locks.setdefault(gid, asyncio.Lock())
+        if lock.locked():
+            logger.debug(
+                "Bot #%d connect already in progress for guild %s — skipping duplicate",
+                self.bot_number, gid,
+            )
+            return
+        async with lock:
+        # --- END AI-MODIFIED ---
             try:
-                await guild.me.edit(nick=self._format_nick(cfg))
-            except discord.Forbidden:
-                pass
+                if guild.voice_client:
+                    await guild.voice_client.disconnect(force=True)
+                    # --- AI-MODIFIED (2026-06-10) ---
+                    # Purpose: give discord.py a moment to fully tear down the old
+                    #   VoiceClient before reconnecting; connecting on top of a
+                    #   half-torn-down client raised "Already connected" /
+                    #   handshake timeouts.
+                    for _ in range(10):
+                        if guild.voice_client is None:
+                            break
+                        await asyncio.sleep(0.2)
+                    # --- END AI-MODIFIED ---
+
+                vc = await channel.connect(timeout=30, reconnect=True)
+
+                try:
+                    await guild.me.edit(nick=self._format_nick(cfg))
+                except discord.Forbidden:
+                    pass
+                except Exception as exc:
+                    logger.debug("Nickname change failed in %s: %s", guild.name, exc)
+
+                if self._humans(channel) > 0:
+                    await self._start_audio(gid, cfg, vc)
+                    await self._update_status(gid, 'active')
+                    logger.info(
+                        "Bot #%d ▶ %s in #%s (%s)",
+                        self.bot_number, cfg.sound_type, channel.name, guild.name,
+                    )
+                else:
+                    await self._update_status(gid, 'idle')
+                    logger.info(
+                        "Bot #%d ⏸ waiting in #%s (%s)",
+                        self.bot_number, channel.name, guild.name,
+                    )
+
+                self._reconnect_attempts[gid] = 0
+
+                # --- AI-MODIFIED (2026-03-23) ---
+                # Purpose: Post voting widget in VC text chat if voting is enabled
+                if getattr(cfg, 'voting_enabled', False):
+                    self.loop.create_task(self._post_vote_widget(gid, channel, cfg))
+                # --- END AI-MODIFIED ---
+
             except Exception as exc:
-                logger.debug("Nickname change failed in %s: %s", guild.name, exc)
-
-            if self._humans(channel) > 0:
-                await self._start_audio(gid, cfg, vc)
-                await self._update_status(gid, 'active')
-                logger.info(
-                    "Bot #%d ▶ %s in #%s (%s)",
-                    self.bot_number, cfg.sound_type, channel.name, guild.name,
+                # --- AI-MODIFIED (2026-06-10) ---
+                # Purpose: include the exception type — TimeoutError stringifies to
+                #   an empty message, which produced useless "Connect failed in X: "
+                #   log lines and blank panel errors.
+                logger.error(
+                    "Connect failed in %s: %s: %s", guild.name, type(exc).__name__, exc,
                 )
-            else:
-                await self._update_status(gid, 'idle')
-                logger.info(
-                    "Bot #%d ⏸ waiting in #%s (%s)",
-                    self.bot_number, channel.name, guild.name,
+                await self._update_status(
+                    gid, 'error', f'{type(exc).__name__}: {exc}'[:200],
                 )
-
-            self._reconnect_attempts[gid] = 0
-
-            # --- AI-MODIFIED (2026-03-23) ---
-            # Purpose: Post voting widget in VC text chat if voting is enabled
-            if getattr(cfg, 'voting_enabled', False):
-                self.loop.create_task(self._post_vote_widget(gid, channel, cfg))
-            # --- END AI-MODIFIED ---
-
-        except Exception as exc:
-            logger.error("Connect failed in %s: %s", guild.name, exc)
-            await self._update_status(gid, 'error', str(exc)[:200])
-            self._schedule_reconnect(gid)
+                # --- END AI-MODIFIED ---
+                self._schedule_reconnect(gid)
     # --- END AI-MODIFIED ---
 
     def _schedule_reconnect(self, gid: int):
