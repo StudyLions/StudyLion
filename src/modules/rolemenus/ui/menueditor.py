@@ -17,7 +17,10 @@ from utils.ui import (
 from babel.translator import ctx_locale
 from wards import equippable_role
 
-from .. import babel
+# --- AI-MODIFIED (2026-06-10) ---
+# Purpose: import the module logger for the editor-open menu refresh added below
+from .. import babel, logger
+# --- END AI-MODIFIED ---
 from ..data import MenuType, RoleMenuData
 from ..rolemenu import RoleMenu, RoleMenuRole
 from ..menuoptions import RoleMenuOptions
@@ -121,6 +124,25 @@ class MenuEditor(MessageUI):
         if existing:
             await existing.quit()
         self._listening[self.listen_key] = self
+        # --- AI-MODIFIED (2026-06-10) ---
+        # Purpose: Ticket #0113. The web dashboard writes role_menus / role_menu_roles
+        #   directly to the database, but RoleMenu objects are cached in-process
+        #   indefinitely, so menus and roles edited or added on the dashboard never
+        #   appeared in this editor (or on the posted menu message after an edit).
+        #   Syncing the menu row and its role list from the database once, when the
+        #   editor opens, makes dashboard changes visible everywhere the editor
+        #   touches (preview, role list, and menu message updates on save).
+        #   Best-effort: a failure here just means the editor opens with cached data,
+        #   exactly as before.
+        try:
+            await self.menu.data.refresh()
+            await self.menu.reload_roles()
+        except Exception:
+            logger.warning(
+                f"Failed to refresh menu {self.menu.data.menuid} from data before opening the editor.",
+                exc_info=True
+            )
+        # --- END AI-MODIFIED ---
         await super().run(interaction, **kwargs)
 
     async def quit(self):

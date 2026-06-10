@@ -1197,22 +1197,64 @@ class ColourStore(Store):
         for item in purchasable:
             option_map[item.itemid] = item.select_option_for(self.shop.customer)
 
-        if owned is not None and owned.role is not None:
+        # --- AI-REPLACED (2026-06-10) ---
+        # Reason: Ticket #0114. The owned item's option was appended regardless of
+        #   which page it sits on. With a full page of 25 affordable items plus an
+        #   owned item from another page, the select reached 26 options, and Discord
+        #   rejects the message with 400 50035 ("Must be between 1 and 25 in length").
+        #   MessageUI.redraw swallows the HTTPException, so /shop open hung on the
+        #   deferred "thinking..." state forever.
+        # What the new code does better: only shows the owned option on the page the
+        #   owned item belongs to (matching the embed listing), hard-caps the option
+        #   count at Discord's limit of 25 (preferring to keep the owned option), and
+        #   clears stale options when nothing is selectable so the layout logic in
+        #   refresh_layout correctly drops the select instead of rendering stale rows.
+        # --- Original code (commented out for rollback) ---
+        # if owned is not None and owned.role is not None:
+        #     option_map[owned.itemid] = owned.select_option_for(self.shop.customer, owned=True)
+        #
+        # if not option_map:
+        #     selector.placeholder = t(_p(
+        #         'ui:colourstore|menu:buycolours|placeholder',
+        #         "There are no colour roles available to purchase!"
+        #     ))
+        #     selector.disabled = True
+        # else:
+        #     selector.placeholder = t(_p(
+        #         'ui:colourstore|menu:buycolours|placeholder',
+        #         "Select a colour role to purchase!"
+        #     ))
+        #     selector.disabled = False
+        #     selector.options = list(option_map.values())
+        # --- End original code ---
+        page_itemids = {item.itemid for item in self.this_page}
+        if owned is not None and owned.role is not None and owned.itemid in page_itemids:
             option_map[owned.itemid] = owned.select_option_for(self.shop.customer, owned=True)
 
-        if not option_map:
+        # Discord select menus accept at most 25 options.
+        options = list(option_map.values())
+        if len(options) > 25:
+            owned_itemid = owned.itemid if owned is not None else None
+            owned_option = option_map.get(owned_itemid) if owned_itemid is not None else None
+            options = [option for option in options if option is not owned_option][:24 if owned_option else 25]
+            if owned_option is not None:
+                options.append(owned_option)
+
+        if not options:
             selector.placeholder = t(_p(
                 'ui:colourstore|menu:buycolours|placeholder',
                 "There are no colour roles available to purchase!"
             ))
             selector.disabled = True
+            selector.options = []
         else:
             selector.placeholder = t(_p(
                 'ui:colourstore|menu:buycolours|placeholder',
                 "Select a colour role to purchase!"
             ))
             selector.disabled = False
-            selector.options = list(option_map.values())
+            selector.options = options
+        # --- END AI-REPLACED ---
 
     @button(emoji=conf.emojis.forward)
     async def next_page_button(self, press: discord.Interaction, pressed: Button):

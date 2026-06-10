@@ -281,6 +281,12 @@ class VoiceSession:
             f"and channel <cid:{self.state.channelid}>."
         )
         async with self.lock:
+            # --- AI-MODIFIED (2026-06-10) ---
+            # Purpose: Remember whether this expiry actually ended an ongoing session,
+            #   so we can notify the member below (tickets #0098, #0112: members had no
+            #   idea why their time silently stopped counting until guild midnight).
+            was_ongoing = self.activity is SessionState.ONGOING and self.data is not None
+            # --- END AI-MODIFIED ---
             await self._close()
 
             if self.activity:
@@ -319,6 +325,89 @@ class VoiceSession:
 
             self.start_task = asyncio.create_task(self._start_after(delay, start))
             self.schedule_expiry(expiry)
+
+            # --- AI-MODIFIED (2026-06-10) ---
+            # Purpose: Implement the user-notification TODO above (tickets #0098, #0112).
+            #   When the expiry genuinely capped an ongoing session (the recomputed next
+            #   start is deferred to the next guild day rather than restarting in ~20s),
+            #   DM the member so they know why tracking stopped and when it resumes.
+            #   Fire-and-forget OUTSIDE this lock; every failure is swallowed so the
+            #   expiry/restart flow can never be affected.
+            if was_ongoing and delay > 60:
+                try:
+                    asyncio.create_task(self._notify_cap_reached(start))
+                except Exception:
+                    logger.debug(
+                        "Failed to schedule daily-cap notification "
+                        f"for <uid:{self.userid}> in <gid:{self.guildid}>.",
+                        exc_info=True
+                    )
+            # --- END AI-MODIFIED ---
+
+    # --- AI-MODIFIED (2026-06-10) ---
+    # Purpose: New helper for the daily-cap notification (tickets #0098, #0112).
+    #   Sends a single DM when a member's voice session expires from reaching the
+    #   guild's daily voice cap, including when tracking resumes (as Discord
+    #   timestamps, so the time renders in the member's own timezone).
+    #   Best-effort only: closed DMs and any other failure are silently ignored.
+    async def _notify_cap_reached(self, resume_at: dt.datetime):
+        try:
+            user = self.bot.get_user(self.userid)
+            if user is None:
+                return
+
+            lguild = await self.bot.core.lions.fetch_guild(self.guildid)
+            guild = self.bot.get_guild(self.guildid)
+            t = self.bot.translator.t
+
+            cap_setting = lguild.config.get('daily_voice_cap')
+            try:
+                cap_formatted = cap_setting.formatted
+            except Exception:
+                cap_formatted = None
+            if not cap_formatted:
+                hours = (cap_setting.value or 0) // 3600
+                cap_formatted = t(_p(
+                    'voice_session|cap_notify|cap_fallback',
+                    "{hours} hours"
+                )).format(hours=hours)
+
+            embed = discord.Embed(
+                colour=discord.Colour.orange(),
+                title=t(_p(
+                    'voice_session|cap_notify|title',
+                    "Daily voice limit reached"
+                )),
+                description=t(_p(
+                    'voice_session|cap_notify|desc',
+                    "You have reached the daily voice activity limit of {cap} in **{guild_name}**, "
+                    "so the rest of your voice time there today will not be counted.\n"
+                    "Tracking resumes {resume_relative} (at {resume_time})."
+                )).format(
+                    cap=cap_formatted,
+                    guild_name=guild.name if guild else t(_p(
+                        'voice_session|cap_notify|guild_fallback',
+                        "the server"
+                    )),
+                    resume_relative=discord.utils.format_dt(resume_at, style='R'),
+                    resume_time=discord.utils.format_dt(resume_at, style='t'),
+                )
+            )
+            embed.set_footer(text=t(_p(
+                'voice_session|cap_notify|footer',
+                "This limit is configured by the server admins."
+            )))
+            await user.send(embed=embed)
+        except discord.HTTPException:
+            # DMs closed, or user unreachable. Nothing to do.
+            pass
+        except Exception:
+            logger.debug(
+                f"Unexpected error sending daily-cap notification to <uid:{self.userid}> "
+                f"for guild <gid:{self.guildid}>.",
+                exc_info=True
+            )
+    # --- END AI-MODIFIED ---
 
     async def close(self):
         """

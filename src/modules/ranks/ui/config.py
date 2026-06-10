@@ -236,6 +236,35 @@ class RankConfigUI(ConfigUI):
             self.xp_toggle.disabled = False
     # --- END AI-MODIFIED ---
 
+    # --- AI-MODIFIED (2026-06-10) ---
+    # Purpose: Fix NotNullViolation when pressing Reset on the rank config panel.
+    #   The generic ConfigUI.reset_button writes `data = None` for every setting on
+    #   the page, but voice_ranks_enabled / msg_ranks_enabled / xp_ranks_enabled are
+    #   NOT NULL columns in guild_config, so the UPDATE failed with NotNullViolation
+    #   and the panel errored with "Something went wrong!".
+    #   This override resets those boolean toggles to their setting default (False)
+    #   while still writing NULL for the nullable settings (rank_type, dm_ranks,
+    #   rank_channel), which the settings framework reads back as their defaults.
+    @button(label="RESET_PLACEHOLDER", style=ButtonStyle.red)
+    async def reset_button(self, press: discord.Interaction, pressed: Button):
+        """
+        Reset the controlled settings, respecting NOT NULL toggle columns.
+        """
+        await press.response.defer()
+
+        not_null_toggles = (
+            RankSettings.VoiceRanksEnabled,
+            RankSettings.MsgRanksEnabled,
+            RankSettings.XpRanksEnabled,
+        )
+        for instance in self.page_instances:
+            if isinstance(instance, not_null_toggles):
+                instance.data = False
+            else:
+                instance.data = None
+            await instance.write()
+    # --- END AI-MODIFIED ---
+
     # ----- UI Flow -----
     async def make_message(self) -> MessageArgs:
         t = self.bot.translator.t
