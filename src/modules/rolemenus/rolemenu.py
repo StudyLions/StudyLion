@@ -53,21 +53,35 @@ class RoleMenuRole:
 
     @property
     def as_option(self):
+        # --- AI-MODIFIED (2026-06-11) ---
+        # Purpose: Discord caps select option labels and descriptions at 100
+        #   characters and rejects the WHOLE message with 400 50035 otherwise.
+        #   Role descriptions can exceed that (the dashboard accepts up to 500),
+        #   which broke dropdown menus and the menu editor. Truncate defensively.
+        label = self.config.label.value
+        description = self.config.description.value
         return SelectOption(
             emoji=self.config.emoji.data or None,
-            label=self.config.label.value,
+            label=label[:100] if label else label,
             value=str(self.data.menuroleid),
-            description=self.config.description.value,
+            description=description[:100] if description else description,
         )
+        # --- END AI-MODIFIED ---
 
     @property
     def as_button(self):
+        # --- AI-MODIFIED (2026-06-11) ---
+        # Purpose: Discord caps button labels at 80 characters (stricter than
+        #   the 100 allowed for role labels elsewhere); an over-long label
+        #   rejects the whole menu message with 400 50035. Truncate defensively.
+        _label = self.config.label.value
         @MenuButton(
             emoji=self.config.emoji.data or None,
-            label=self.config.label.value,
+            label=_label[:80] if _label else _label,
             custom_id=self.custom_id,
             style=ButtonStyle.grey
         )
+        # --- END AI-MODIFIED ---
         async def menu_button(press: discord.Interaction, pressed: Button):
             await press.response.defer(thinking=True, ephemeral=True)
             menu = await RoleMenu.fetch(self.bot, self.data.menuid)

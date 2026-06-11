@@ -483,12 +483,19 @@ class MenuEditor(MessageUI):
         ))
 
     def _role_option(self, menurole: RoleMenuRole):
+        # --- AI-MODIFIED (2026-06-11) ---
+        # Purpose: Discord caps select option labels/descriptions at 100 chars
+        #   and rejects the whole editor message with 400 50035 otherwise (hit
+        #   live on 2026-06-11 by roles with >100-char descriptions). Truncate.
+        label = menurole.config.label.value
+        description = menurole.config.description.value
         return SelectOption(
             emoji=menurole.config.emoji.data or None,
-            label=menurole.config.label.value,
+            label=label[:100] if label else label,
             value=str(menurole.data.menuroleid),
-            description=menurole.config.description.value,
+            description=description[:100] if description else description,
         )
+        # --- END AI-MODIFIED ---
 
     # Edit Roles Menu
     @select(cls=Select, placeholder="EDIT_ROLES_MENU_PLACEHOLDER", min_values=1, max_values=1)
