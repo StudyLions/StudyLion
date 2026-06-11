@@ -360,6 +360,19 @@ class LeoUI(View):
         Default LeoUI error handle.
         This may be tail extended by subclasses to preserve the exception stack.
         """
+        # --- AI-MODIFIED (2026-06-11) ---
+        # Purpose: during a shutdown/restart, cogs unload while live UIs still
+        #   dispatch component clicks; handlers then fail on missing internals
+        #   (observed live: bot.core was None mid-restart → AttributeError in
+        #   the leaderboard UI) and the bugsplat reply itself usually fails
+        #   too. Drop these quietly instead of logging an unhandled exception.
+        client = interaction.client
+        if client.is_closed() or getattr(client, 'core', None) is None:
+            logger.debug(
+                f"Ignoring UI interaction error during shutdown/startup in {self!r}: {error!r}"
+            )
+            return
+        # --- END AI-MODIFIED ---
         try:
             raise error
         except SafeCancellation as e:
@@ -661,6 +674,16 @@ class LeoModal(Modal):
         Default LeoModal error handle.
         This may be tail extended by subclasses to preserve the exception stack.
         """
+        # --- AI-MODIFIED (2026-06-11) ---
+        # Purpose: same shutdown guard as LeoUI.on_error — modals submitted
+        #   while cogs are unloading fail on missing internals; drop quietly.
+        client = interaction.client
+        if client.is_closed() or getattr(client, 'core', None) is None:
+            logger.debug(
+                f"Ignoring modal error during shutdown/startup in {self!r}: {error!r}"
+            )
+            return
+        # --- END AI-MODIFIED ---
         try:
             raise error
         except RenderingException as e:

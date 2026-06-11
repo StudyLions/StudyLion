@@ -464,7 +464,15 @@ class VoiceSession:
             self._start_time = None
 
             # Always release strong reference to session (to allow garbage collection)
-            self._active_sessions_[self.guildid].pop(self.userid)
+            # --- AI-MODIFIED (2026-06-11) ---
+            # Purpose: close() is documented as idempotent, but the unconditional
+            #   pop raised KeyError (~2/day live) when a voice event raced an
+            #   expiry/another close and the session was already released.
+            # --- Original code (commented out for rollback) ---
+            # self._active_sessions_[self.guildid].pop(self.userid)
+            # --- End original code ---
+            self._active_sessions_[self.guildid].pop(self.userid, None)
+            # --- END AI-MODIFIED ---
 
     async def _close(self):
         if self.activity is SessionState.ONGOING:

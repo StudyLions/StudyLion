@@ -219,17 +219,51 @@ class Timer:
                                         )
                                         core.data.LionHook._cache_.pop((cid,), None)
                                         hook = await core.data.LionHook.fetch(cid, cached=False)
-                                elif channel.permissions_for(channel.guild.me).send_messages:
+                                # --- AI-REPLACED (2026-06-11) ---
+                                # Reason: permissions_for() can disagree with the API
+                                #   (stale overwrites, hidden channels) — guild
+                                #   1260149988818948146 passed send_messages locally but
+                                #   every send 403'd with "Missing Access", logging a
+                                #   full WARNING traceback on each timer status update.
+                                # What the new code does better: also requires
+                                #   view_channel before attempting the fallback notice,
+                                #   and downgrades permission failures (an expected
+                                #   guild-configuration state) to a single quiet INFO
+                                #   line, keeping the traceback only for genuinely
+                                #   unexpected HTTP errors.
+                                # --- Original code (commented out for rollback) ---
+                                # elif channel.permissions_for(channel.guild.me).send_messages:
+                                #     await channel.send(t(_p(
+                                #         'timer|webhook|error:insufficient_permissions',
+                                #         "I require the `MANAGE_WEBHOOKS` permission to send pomodoro notifications here!"
+                                #     )))
+                            # except discord.HTTPException:
+                            #     logger.warning(
+                            #         "Unexpected Exception caught while creating timer notification webhook "
+                            #         f"for timer: {self!r}",
+                            #         exc_info=True
+                            #     )
+                                # --- End original code ---
+                                elif (
+                                    channel.permissions_for(channel.guild.me).view_channel
+                                    and channel.permissions_for(channel.guild.me).send_messages
+                                ):
                                     await channel.send(t(_p(
                                         'timer|webhook|error:insufficient_permissions',
                                         "I require the `MANAGE_WEBHOOKS` permission to send pomodoro notifications here!"
                                     )))
+                            except discord.Forbidden:
+                                logger.info(
+                                    f"Missing channel permissions to set up the pomodoro notification webhook "
+                                    f"for timer {self!r} — skipping until permissions change."
+                                )
                             except discord.HTTPException:
                                 logger.warning(
                                     "Unexpected Exception caught while creating timer notification webhook "
                                     f"for timer: {self!r}",
                                     exc_info=True
                                 )
+                                # --- END AI-REPLACED ---
                     # --- END AI-MODIFIED ---
             if hook:
                 return hook.as_webhook(client=self.bot)
