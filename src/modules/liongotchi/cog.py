@@ -8326,6 +8326,21 @@ class LionGotchiCog(LionCog):
             # --- END AI-MODIFIED ---
 
             pet = await self.data.Pet.fetch(userid)
+            # --- AI-MODIFIED (2026-07-21) ---
+            # Purpose: RowModel.fetch() caches a permanent negative result on miss
+            # (data/models.py fetch(): `cls._cache_[rowid] = cls(None)`). A user who
+            # was seen by this shard BEFORE adopting their pet (any voice session end
+            # calls this hook) poisons the shard's Pet cache and then earns zero
+            # gold/XP/farm growth forever on this shard, even though the lg_pets row
+            # exists (adopted later, possibly via another guild/shard). Re-fetch
+            # uncached when the cached answer is "no pet"; on a hit the uncached
+            # fetch also heals the poisoned cache entry in place (RowModel.__new__
+            # reuses the cached sentinel object and __init__ fills in its data).
+            # Cost: one extra PK SELECT per session end for genuinely petless users.
+            # Tickets #129 / #140 / #131 (zero gold/XP despite daily VC study).
+            if pet is None:
+                pet = await self.data.Pet.fetch(userid, cached=False)
+            # --- END AI-MODIFIED ---
             if pet is None:
                 # --- AI-MODIFIED (2026-03-20) ---
                 # Purpose: Respect lg_teaser_enabled guild setting
@@ -8405,6 +8420,13 @@ class LionGotchiCog(LionCog):
                 return
 
             pet = await self.data.Pet.fetch(userid)
+            # --- AI-MODIFIED (2026-07-21) ---
+            # Purpose: Same negative-cache bypass as on_voice_end above -- a "no pet"
+            # answer may be a stale poisoned cache entry from before the user adopted.
+            # See the comment in on_voice_end for the full explanation.
+            if pet is None:
+                pet = await self.data.Pet.fetch(userid, cached=False)
+            # --- END AI-MODIFIED ---
             if pet is None:
                 return
 

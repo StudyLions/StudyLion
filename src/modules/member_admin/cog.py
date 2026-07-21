@@ -294,6 +294,20 @@ class MemberAdminCog(LionCog):
                 },
             )
 
+            # --- AI-MODIFIED (2026-07-21) ---
+            # Purpose: last_left is set by admin_member_farewell on every member
+            # remove but was never cleared again on rejoin, so a member who left
+            # and rejoined kept a stale non-null last_left forever. The website
+            # dashboard filters `last_left IS NULL` in every members/leaderboard
+            # query (members.ts, leaderboard.ts, leaderboard-servers.ts, ...), so
+            # such members are tracked by the bot but invisible on the website
+            # (55,853 affected rows measured on live, 2026-07-21). Clear it here,
+            # after the returning-message/event-log above have used it as
+            # "last seen". Tickets #142 / #121.
+            if lion.data.last_left:
+                await lion.data.update(last_left=None)
+            # --- END AI-MODIFIED ---
+
     @LionCog.listener('on_raw_member_remove')
     @log_wrap(action="Farewell")
     async def admin_member_farewell(self, payload: discord.RawMemberRemoveEvent):
