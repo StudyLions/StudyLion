@@ -652,7 +652,16 @@ class RankCog(LionCog):
 
         try:
             await self._notify_rank_update(guildid, userid, new_rank, rank_type=rank_type)
-        except discord.HTTPException:
+        except discord.HTTPException as e:
+            # --- AI-MODIFIED (2026-07-21) ---
+            # Purpose: The real Discord error was reduced to a generic event-log
+            # line, leaving nothing in the server logs to debug "role applied
+            # but no rank message" reports (ticket #128). Log the details.
+            logger.warning(
+                f"Rank-up notification failed for <uid:{userid}> in <gid:{guildid}> "
+                f"(rank role {new_rank.roleid}): {e}"
+            )
+            # --- END AI-MODIFIED ---
             log_errors.append(t(_p(
                 'eventlog|event:new_rank|error:notify_failed',
                 "Could not notify member."
@@ -736,8 +745,28 @@ class RankCog(LionCog):
                 #     text = member.mention
                 #     await destination.send(content=text, embed=embed)
                 # --- End original code ---
+                # --- AI-MODIFIED (2026-07-21) ---
+                # Purpose: A failed rank-channel send (invalid embed, missing
+                # permission, etc.) was swallowed upstream with no log and no
+                # fallback, so admins saw "role given but no message" with
+                # nothing to debug (ticket #128). Log the actual error and retry
+                # once as plain text before giving up.
+                # --- Original code (commented out for rollback) ---
+                # if rank_channel:
+                #     await rank_channel.send(content=member.mention, embed=embed)
+                # --- End original code ---
                 if rank_channel:
-                    await rank_channel.send(content=member.mention, embed=embed)
+                    try:
+                        await rank_channel.send(content=member.mention, embed=embed)
+                    except discord.HTTPException as e:
+                        logger.warning(
+                            f"Rank-up embed send failed in <cid:{rank_channel.id}> of <gid:{guildid}> "
+                            f"for <uid:{userid}> (rank role {new_rank.roleid}): {e}. "
+                            f"Retrying as plain text."
+                        )
+                        await rank_channel.send(
+                            content=f"{member.mention}\n{rank_message}"
+                        )
                 # --- END AI-MODIFIED ---
 
     def get_message_map(self,

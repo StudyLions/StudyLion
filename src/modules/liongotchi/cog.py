@@ -6618,9 +6618,26 @@ class LionGotchiCog(LionCog):
     # ---- Pet creation & decay ----
 
     async def _get_or_create_pet(self, userid: int):
-        pet = self.data.Pet._cache_.get(userid)
+        # --- AI-REPLACED (2026-07-21) ---
+        # Reason: (a) `_cache_.get(userid)` used a bare-int key but the RowModel
+        # cache is keyed by the rowid TUPLE (userid,), so it never hit; (b)
+        # Pet.fetch() can return a poisoned permanent negative-cache entry (see
+        # on_voice_end), which made this function re-run the creation path for
+        # users who ALREADY own a pet -- the INSERTs below are ON CONFLICT DO
+        # NOTHING, but the room/skin UPDATEs run unconditionally and clobbered
+        # the user's setup (likely ticket #132). Re-check uncached before
+        # treating the user as petless.
+        # What the new code does better: creation only runs when the DB truly
+        # has no lg_pets row; the uncached fetch also heals the cache entry.
+        # --- Original code (commented out for rollback) ---
+        # pet = self.data.Pet._cache_.get(userid)
+        # if pet is None:
+        #     pet = await self.data.Pet.fetch(userid)
+        # --- End original code ---
+        pet = await self.data.Pet.fetch(userid)
         if pet is None:
-            pet = await self.data.Pet.fetch(userid)
+            pet = await self.data.Pet.fetch(userid, cached=False)
+        # --- END AI-REPLACED ---
         if pet is None:
             await _db_exec(self.bot,
                 "INSERT INTO user_config (userid) VALUES (%s) ON CONFLICT DO NOTHING",
@@ -7048,6 +7065,13 @@ class LionGotchiCog(LionCog):
         #     return
         # --- End original code ---
         existing = await self.data.Pet.fetch(interaction.user.id)
+        # --- AI-MODIFIED (2026-07-21) ---
+        # Purpose: bypass the poisoned permanent negative cache (see
+        # on_voice_end) so existing pet owners are never shown the adoption
+        # onboarding again on a shard that cached "no pet" before they adopted.
+        if existing is None or getattr(existing, 'data', None) is None:
+            existing = await self.data.Pet.fetch(interaction.user.id, cached=False)
+        # --- END AI-MODIFIED ---
         is_onboarding = existing is None or (existing and getattr(existing, 'data', None) is None)
         # --- AI-MODIFIED (2026-03-24) ---
         # Purpose: Defer interaction to avoid Discord's 3-second timeout on slow DB/render
