@@ -337,7 +337,7 @@ msgstr ""
 #: src/modules/moderation/ticketui.py:62
 msgctxt "ticketfilter|field:after|name"
 msgid "Created After"
-msgstr ""
+msgstr "Được tạo sau"
 
 #: src/modules/moderation/ticketui.py:70
 msgctxt "ticketfilter|field:before|name"
