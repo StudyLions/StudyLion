@@ -49,4 +49,4 @@ msgstr "thiết lập"
 #: src/core/config.py:53
 msgctxt "group:admin_config|desc"
 msgid "View and adjust admin-level configuration."
-msgstr ""
+msgstr "Xem và chỉnh sửa thiết lập của quản trị viên"
