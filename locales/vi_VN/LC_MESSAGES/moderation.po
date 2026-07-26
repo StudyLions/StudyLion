@@ -282,7 +282,7 @@ msgstr ""
 #: src/modules/moderation/cog.py:490
 msgctxt "cmd:tickets|param:after"
 msgid "after"
-msgstr ""
+msgstr "sau"
 
 #: src/modules/moderation/cog.py:491
 msgctxt "cmd:tickets|param:before"
