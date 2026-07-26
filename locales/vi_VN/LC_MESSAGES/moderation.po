@@ -186,7 +186,7 @@ msgstr ""
 #: src/modules/moderation/cog.py:358
 msgctxt "cmd:pardon"
 msgid "pardon"
-msgstr ""
+msgstr "kháng nghị"
 
 #: src/modules/moderation/cog.py:361
 msgctxt "cmd:pardon|desc"
