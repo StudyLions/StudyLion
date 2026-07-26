@@ -24,7 +24,7 @@ msgstr ""
 #: src/core/config.py:28
 msgctxt "group:config"
 msgid "config"
-msgstr ""
+msgstr "thiết lập"
 
 #: src/core/config.py:29
 msgctxt "group:config|desc"
