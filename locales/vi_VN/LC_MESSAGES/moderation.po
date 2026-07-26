@@ -257,12 +257,12 @@ msgstr ""
 #: src/modules/moderation/cog.py:485
 msgctxt "cmd:tickets|param:target"
 msgid "target"
-msgstr ""
+msgstr "mục tiêu"
 
 #: src/modules/moderation/cog.py:486
 msgctxt "cmd:tickets|param:type"
 msgid "type"
-msgstr ""
+msgstr "loại"
 
 #: src/modules/moderation/cog.py:487
 msgctxt "cmd:tickets|param:state"
