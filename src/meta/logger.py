@@ -1,6 +1,10 @@
 import sys
 import logging
 import asyncio
+# --- AI-MODIFIED (2026-09-03) ---
+# Purpose: monotonic clock for the webhook-logger circuit breaker below
+import time
+# --- END AI-MODIFIED ---
 from typing import List, Optional
 from logging.handlers import QueueListener, QueueHandler
 import queue
@@ -267,6 +271,26 @@ class LocalQueueHandler(QueueHandler):
 
 
 class WebHookHandler(logging.StreamHandler):
+    # --- AI-MODIFIED (2026-09-03) ---
+    # Purpose: Process-wide circuit breaker for Discord webhook logging.
+    # During the 2026-09-03 outage (PostgreSQL was OOM-killed) every event errored,
+    # and each webhook handler on all 32 shards kept retrying failed sends. That
+    # flood tripped Discord's Cloudflare IP ban ("blocked from accessing our API")
+    # and then kept it alive for 90+ minutes. Now, when ANY handler in this process
+    # receives a 429, ALL handlers stop sending for a cooldown that doubles per
+    # consecutive 429 (5 min -> 10 -> 20 -> 40 -> capped at 60 min). A successful
+    # send resets the backoff to 5 min. Dropped sends are counted, not queued.
+    # Only 429s WITHOUT a 'Via' header (i.e. from Cloudflare, not Discord's API layer)
+    # open the process-wide breaker; an ordinary per-webhook 429 (Via present, already
+    # retried 5x inside discord.py) only pauses that one handler for 60s.
+    # Sends are serialised per handler (see _send), so at most one send per handler
+    # can be in flight when the breaker opens; its 429 is counted as dropped and does
+    # NOT escalate the backoff again.
+    _circuit_open_until = 0.0
+    _circuit_backoff = 300
+    _circuit_dropped = 0
+    # --- END AI-MODIFIED ---
+
     def __init__(self, webhook_url, prefix="", batch=True, loop=None):
         super().__init__()
         self.webhook_url = webhook_url
@@ -281,6 +305,13 @@ class WebHookHandler(logging.StreamHandler):
 
         self.bucket = Bucket(20, 40)
         self.ignored = 0
+        # --- AI-MODIFIED (2026-09-03) ---
+        # Purpose: per-handler pause used for route-level (Via) 429s, see _send();
+        # _send_lock serialises this handler's sends (created lazily on the loop thread)
+        self._handler_open_until = 0.0
+        self._send_lock = None
+        self._send_waiting = 0
+        # --- END AI-MODIFIED ---
 
         self.session = None
         self.webhook = None
@@ -294,8 +325,9 @@ class WebHookHandler(logging.StreamHandler):
     def emit(self, record):
         # --- AI-MODIFIED (2026-04-01) ---
         # Purpose: Temporary debug tracing for webhook error handler investigation
-        if record.levelno >= logging.ERROR:
-            print(f"[WEBHOOK-DEBUG] emit() received ERROR+ record: level={record.levelno} msg={record.msg[:80]!r} handler_level={self.level} webhook_id={self.webhook_url.split('/')[-2] if self.webhook_url else 'N/A'}", file=sys.stderr)
+        # (2026-09-03: disabled - this per-record print multiplied stderr volume during incidents)
+        # if record.levelno >= logging.ERROR:
+        #     print(f"[WEBHOOK-DEBUG] emit() received ERROR+ record: level={record.levelno} msg={record.msg[:80]!r} handler_level={self.level} webhook_id={self.webhook_url.split('/')[-2] if self.webhook_url else 'N/A'}", file=sys.stderr)
         # --- END AI-MODIFIED ---
         self.format(record)
         self.get_loop().call_soon_threadsafe(self._post, record)
@@ -305,13 +337,22 @@ class WebHookHandler(logging.StreamHandler):
             self.setup()
         # --- AI-MODIFIED (2026-04-01) ---
         # Purpose: Temporary debug tracing for webhook error handler investigation
-        if record.levelno >= logging.ERROR:
-            print(f"[WEBHOOK-DEBUG] _post() processing ERROR+ record: level={record.levelno} msg={record.msg[:80]!r} batch={self.batch} batched_len={len(self.batched)}", file=sys.stderr)
+        # (2026-09-03: disabled - this per-record print multiplied stderr volume during incidents)
+        # if record.levelno >= logging.ERROR:
+        #     print(f"[WEBHOOK-DEBUG] _post() processing ERROR+ record: level={record.levelno} msg={record.msg[:80]!r} batch={self.batch} batched_len={len(self.batched)}", file=sys.stderr)
         # --- END AI-MODIFIED ---
         asyncio.create_task(self.post(record))
 
     def setup(self):
-        self.session = aiohttp.ClientSession()
+        # --- AI-REPLACED (2026-09-03) ---
+        # Reason: aiohttp's default total timeout is 300s; a hung connection would hold
+        #         this handler's send lock (see _send) for five minutes per attempt.
+        # What the new code does better: caps each webhook HTTP call at 30s.
+        # --- Original code (commented out for rollback) ---
+        # self.session = aiohttp.ClientSession()
+        # --- End original code ---
+        self.session = aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(total=30))
+        # --- END AI-REPLACED ---
         self.webhook = Webhook.from_url(self.webhook_url, session=self.session)
 
     async def post(self, record):
@@ -331,8 +372,9 @@ class WebHookHandler(logging.StreamHandler):
 
             # --- AI-MODIFIED (2026-04-01) ---
             # Purpose: Temporary debug tracing for webhook error handler investigation
-            if record.levelno >= logging.ERROR:
-                print(f"[WEBHOOK-DEBUG] post() formatting: msg_len={len(message)} as_file={len(message) > 1900} batch={self.batch}", file=sys.stderr)
+            # (2026-09-03: disabled - per-record debug print)
+            # if record.levelno >= logging.ERROR:
+            #     print(f"[WEBHOOK-DEBUG] post() formatting: msg_len={len(message)} as_file={len(message) > 1900} batch={self.batch}", file=sys.stderr)
             # --- END AI-MODIFIED ---
 
             if len(message) > 1900:
@@ -350,8 +392,9 @@ class WebHookHandler(logging.StreamHandler):
                     self.batched += message
                     # --- AI-MODIFIED (2026-04-01) ---
                     # Purpose: Temporary debug tracing for webhook error handler investigation
-                    if record.levelno >= logging.ERROR:
-                        print(f"[WEBHOOK-DEBUG] post() batched: batched_len={len(self.batched)} check={len(self.batched) + len(message)} > 1500 = {len(self.batched) + len(message) > 1500}", file=sys.stderr)
+                    # (2026-09-03: disabled - per-record debug print)
+                    # if record.levelno >= logging.ERROR:
+                    #     print(f"[WEBHOOK-DEBUG] post() batched: batched_len={len(self.batched)} check={len(self.batched) + len(message)} > 1500 = {len(self.batched) + len(message) > 1500}", file=sys.stderr)
                     # --- END AI-MODIFIED ---
                     if len(self.batched) + len(message) > 1500:
                         await self._send_batched_now()
@@ -387,16 +430,56 @@ class WebHookHandler(logging.StreamHandler):
             self.batched = ""
             # --- AI-MODIFIED (2026-04-01) ---
             # Purpose: Temporary debug tracing for webhook error handler investigation
-            if 'ERROR' in batched[:200]:
-                print(f"[WEBHOOK-DEBUG] _send_batched() flushing: len={len(batched)}", file=sys.stderr)
+            # (2026-09-03: disabled - per-record debug print)
+            # if 'ERROR' in batched[:200]:
+            #     print(f"[WEBHOOK-DEBUG] _send_batched() flushing: len={len(batched)}", file=sys.stderr)
             # --- END AI-MODIFIED ---
             await self._send(batched)
 
+    # --- AI-MODIFIED (2026-09-03) ---
+    # Purpose: Circuit-breaker gate around the original send logic (now _send_inner).
+    # Sends are serialised per handler so that when the send ahead of us gets a 429
+    # and opens the breaker, everything queued behind it is dropped instead of still
+    # going out one by one through discord.py's per-webhook lock.
+    def _breaker_open(self):
+        _now = time.monotonic()
+        return _now < WebHookHandler._circuit_open_until or _now < self._handler_open_until
+
     async def _send(self, message, as_file=False):
+        if self._breaker_open():
+            WebHookHandler._circuit_dropped += 1
+            return
+        if self._send_lock is None:
+            self._send_lock = asyncio.Lock()
+        # Bound the queue on the lock. Before the lock existed, Bucket(20, 40) capped
+        # how many sends could pile up behind a slow webhook call; keep that bound
+        # here so a hung/slow send can never accumulate thousands of parked tasks.
+        # (_send_waiting counts the holder plus waiters; the lock state itself is not
+        #  consulted because locked() is briefly False in the release window.)
+        if self._send_waiting >= 20:
+            WebHookHandler._circuit_dropped += 1
+            return
+        self._send_waiting += 1
+        try:
+            async with self._send_lock:
+                # Re-check after waiting for the lock: the send ahead of us may have
+                # just opened the breaker or paused this handler.
+                if self._breaker_open():
+                    WebHookHandler._circuit_dropped += 1
+                    return
+                await self._send_inner(message, as_file=as_file)
+        finally:
+            self._send_waiting -= 1
+    # --- END AI-MODIFIED ---
+
+    async def _send_inner(self, message, as_file=False):
+        # (2026-09-03: this is the original body of _send, unchanged apart from the
+        #  except/else block below; it is only ever called under _send_lock.)
         # --- AI-MODIFIED (2026-04-01) ---
         # Purpose: Temporary debug tracing for webhook error handler investigation
-        if 'ERROR' in message[:200]:
-            print(f"[WEBHOOK-DEBUG] _send() called: msg_len={len(message)} as_file={as_file} webhook_id={getattr(self.webhook, 'id', 'N/A')}", file=sys.stderr)
+        # (2026-09-03: disabled - per-record debug print)
+        # if 'ERROR' in message[:200]:
+        #     print(f"[WEBHOOK-DEBUG] _send() called: msg_len={len(message)} as_file={as_file} webhook_id={getattr(self.webhook, 'id', 'N/A')}", file=sys.stderr)
         # --- END AI-MODIFIED ---
         try:
             self.bucket.request()
@@ -405,7 +488,8 @@ class WebHookHandler(logging.StreamHandler):
             self.ignored += 1
             # --- AI-MODIFIED (2026-04-01) ---
             # Purpose: Temporary debug tracing for webhook error handler investigation
-            print(f"[WEBHOOK-DEBUG] _send() BucketOverFull! ignored={self.ignored}", file=sys.stderr)
+            # (2026-09-03: disabled - per-record debug print)
+            # print(f"[WEBHOOK-DEBUG] _send() BucketOverFull! ignored={self.ignored}", file=sys.stderr)
             # --- END AI-MODIFIED ---
             return
         except BucketFull:
@@ -434,11 +518,65 @@ class WebHookHandler(logging.StreamHandler):
                     )
             else:
                 await self.webhook.send(self.prefix + '\n' + message, username=log_app.get())
-        except discord.HTTPException:
-            logger.exception(
-                "Live logger errored. Slowing down live logger."
-            )
+        # --- AI-REPLACED (2026-09-03) ---
+        # Reason: a 429 (including Discord's Cloudflare IP ban) must open the process-wide
+        #         circuit breaker; bucket.fill() alone only paused this one handler for ~2s,
+        #         so 32 shards x 3 handlers kept re-triggering the ban on 2026-09-03.
+        # What the new code does better: one 429 silences every webhook handler in this
+        #         process for 5+ min (doubling per consecutive 429, max 60 min) and prints a
+        #         single stderr line instead of a full traceback per attempt. A successful send
+        #         resets the backoff. Non-429 HTTP errors keep the original behaviour.
+        # --- Original code (commented out for rollback) ---
+        # except discord.HTTPException:
+        #     logger.exception(
+        #         "Live logger errored. Slowing down live logger."
+        #     )
+        #     self.bucket.fill()
+        # --- End original code ---
+        except discord.HTTPException as ex:
             self.bucket.fill()
+            if ex.status == 429:
+                cls = WebHookHandler
+                now = time.monotonic()
+                try:
+                    via = ex.response.headers.get('Via')
+                except Exception:
+                    via = None
+                if via:
+                    # Route-level rate limit from Discord itself (discord.py already
+                    # slept/retried 5x). Pause only this handler; the process keeps logging.
+                    self._handler_open_until = now + 60
+                    print(
+                        f"[Webhook Logger] webhook {getattr(self.webhook, 'id', '?')} still rate "
+                        f"limited after retries; pausing this handler for 60s",
+                        file=sys.stderr,
+                    )
+                elif now >= cls._circuit_open_until:
+                    # First IP-level (Cloudflare) 429 of this window: open the breaker.
+                    cooldown = cls._circuit_backoff
+                    cls._circuit_open_until = now + cooldown
+                    cls._circuit_backoff = min(cooldown * 2, 3600)
+                    print(
+                        f"[Webhook Logger] Discord returned 429 ({(ex.text or '')[:120]!r}); "
+                        f"suspending ALL webhook logging in this process for {cooldown}s "
+                        f"(sends dropped so far: {cls._circuit_dropped})",
+                        file=sys.stderr,
+                    )
+                else:
+                    # Straggler: this send was dispatched before the breaker opened.
+                    # The opener already escalated; do not double again.
+                    cls._circuit_dropped += 1
+            else:
+                logger.exception(
+                    "Live logger errored. Slowing down live logger."
+                )
+        else:
+            # Successful send while the breaker is closed: reset the backoff floor.
+            # (A success arriving while it is open is an in-flight straggler; ignore it
+            # so it cannot undo the escalation that just happened.)
+            if time.monotonic() >= WebHookHandler._circuit_open_until:
+                WebHookHandler._circuit_backoff = 300
+        # --- END AI-REPLACED ---
 
 
 handlers = []
