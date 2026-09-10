@@ -1,6 +1,10 @@
 this_package = 'modules'
 
 active = [
+    # --- AI-MODIFIED (2026-09-10) ---
+    # Purpose: Show the community fundraiser on user-requested responses.
+    '.fundraiser',
+    # --- END AI-MODIFIED ---
     '.sysadmin',
     '.config',
     '.user_config',

@@ -577,7 +577,19 @@ class MessageUI(LeoUI):
         await _maybe_append_vote_button(self)
         # --- END AI-MODIFIED ---
         args = await self.make_message()
-        self._message = await channel.send(**args.send_args, view=self)
+        # --- AI-REPLACED (2026-09-10) ---
+        # Reason: User-requested rank, room and skin panels can send through a
+        # channel instead of an interaction, bypassing the response hooks.
+        # Add the same fundraiser notice here without changing channel.send globally.
+        # --- Original code (commented out for rollback) ---
+        # self._message = await channel.send(**args.send_args, view=self)
+        # --- End original code ---
+        send_args = args.send_args
+        fundraiser = getattr(getattr(self, 'bot', None), '_fundraiser_responses', None)
+        if fundraiser is not None:
+            send_args = fundraiser.for_ui(send_args, channel)
+        self._message = await channel.send(**send_args, view=self)
+        # --- END AI-REPLACED ---
 
     async def _redraw(self, args):
         if self._original and not self._original.is_expired():
