@@ -146,6 +146,20 @@ class Timer:
         """
         return self.bot.get_channel(self.data.channelid)
 
+    # --- AI-MODIFIED (2026-09-16) ---
+    # Purpose: distinguish "channel really deleted" from "guild temporarily unavailable"
+    # (Discord outage / gateway re-IDENTIFY) so the run loop never destroys a timer on a
+    # transient cache miss. Counterpart of the load-time guard in TimerCog._load_timers_inner.
+    def channel_confirmed_gone(self) -> bool:
+        """
+        True only when the guild is available in cache and the voice channel is absent.
+        """
+        if self.channel is not None:
+            return False
+        guild = self.guild
+        return guild is not None and not guild.unavailable
+    # --- END AI-MODIFIED ---
+
     @property
     def notification_channel(self) -> Optional[discord.abc.Messageable]:
         """
@@ -1081,10 +1095,32 @@ class Timer:
         if not self.running:
             # Nothing to do
             return
-        if not self.channel:
-            # Underlying Discord objects do not exist, destroy the timer.
-            await self.destroy(reason="Underlying channel no longer exists.")
-            return
+        # --- AI-REPLACED (2026-09-16) ---
+        # Reason: `self.channel` is also None while the guild is unavailable (outage,
+        #   re-IDENTIFY), and destroy() deletes the database row (11 such deletions in the
+        #   Aug-Sep 2026 logs).
+        # What the new code does better: only destroy when the channel is confirmed gone;
+        #   otherwise wait (cancellable, so unload() still works) and re-check.
+        # --- Original code (commented out for rollback) ---
+        # if not self.channel:
+        #     # Underlying Discord objects do not exist, destroy the timer.
+        #     await self.destroy(reason="Underlying channel no longer exists.")
+        #     return
+        # --- End original code ---
+        while not self.channel:
+            if self.channel_confirmed_gone():
+                # Underlying Discord objects do not exist, destroy the timer.
+                await self.destroy(reason="Underlying channel no longer exists.")
+                return
+            logger.warning(
+                f"Channel for timer {self!r} is unresolved while its guild is unavailable; waiting."
+            )
+            self._run_task = asyncio.create_task(asyncio.sleep(60))
+            try:
+                await self._run_task
+            except asyncio.CancelledError:
+                return
+        # --- END AI-REPLACED ---
 
         background_tasks = set()
 
@@ -1130,10 +1166,27 @@ class Timer:
                     f"Closing timer loop because we are no longer running. This should not happen! Timer {self!r}"
                 )
                 break
+            # --- AI-REPLACED (2026-09-16) ---
+            # Reason / what: same transient-miss guard as above (channel_confirmed_gone).
+            # --- Original code (commented out for rollback) ---
+            # if not self.channel:
+            #     # Probably left the guild or the channel was deleted
+            #     await self.destroy(reason="Underlying channel no longer exists")
+            #     break
+            # --- End original code ---
             if not self.channel:
-                # Probably left the guild or the channel was deleted
-                await self.destroy(reason="Underlying channel no longer exists")
-                break
+                if self.channel_confirmed_gone():
+                    # Probably left the guild or the channel was deleted
+                    await self.destroy(reason="Underlying channel no longer exists")
+                    break
+                # Guild unavailable: wait and re-check instead of destroying
+                self._run_task = asyncio.create_task(asyncio.sleep(60))
+                try:
+                    await self._run_task
+                except asyncio.CancelledError:
+                    break
+                continue
+            # --- END AI-REPLACED ---
 
             if current.end < utc_now():
                 self._state = self.current_stage

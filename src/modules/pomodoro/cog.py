@@ -42,6 +42,15 @@ _param_options = {
 
 
 class TimerCog(LionCog):
+    # --- AI-MODIFIED (2026-09-16) ---
+    # Purpose: circuit breaker for _load_timers_inner. Genuine channel deletions trickle in a
+    # few at a time; more than MASS_DELETE_MIN rows AND more than MASS_DELETE_FRACTION of the
+    # rows being loaded in a single pass is the signature of an incomplete cache, not of
+    # deleted channels, so such a batch is kept and re-checked on a later load.
+    MASS_DELETE_MIN = 10
+    MASS_DELETE_FRACTION = 0.05
+    # --- END AI-MODIFIED ---
+
     def __init__(self, bot: LionBot):
         self.bot = bot
         self.data = bot.db.load_registry(TimerData())
@@ -52,6 +61,14 @@ class TimerCog(LionCog):
 
         self.ready = False
         self.timers: dict[int, dict[int, Timer]] = defaultdict(dict)
+        # --- AI-MODIFIED (2026-09-16) ---
+        # Purpose: guilds whose timers could not be loaded because Discord still reported the
+        # guild as unavailable (typical right after a gateway re-IDENTIFY); they are loaded from
+        # on_guild_available. The lock serialises loads triggered from on_ready, on_guild_join
+        # and on_guild_available so the same channel is never loaded twice concurrently.
+        self._pending_guilds: set[int] = set()
+        self._load_lock = asyncio.Lock()
+        # --- END AI-MODIFIED ---
         # --- AI-MODIFIED (2026-03-16) ---
         # Purpose: Track when members join timer channels for session summaries
         self._session_joins: dict[tuple[int, int], 'datetime'] = {}
@@ -141,12 +158,22 @@ class TimerCog(LionCog):
                     f"Unexpected exception while unloading timer {timer!r}"
                 )
 
+    # --- AI-MODIFIED (2026-09-16) ---
+    # Purpose: serialise concurrent loads (on_ready / on_guild_join / on_guild_available).
     async def _load_timers(self, timer_data: list[TimerData.Timer]):
+        async with self._load_lock:
+            await self._load_timers_inner(timer_data)
+    # --- END AI-MODIFIED ---
+
+    async def _load_timers_inner(self, timer_data: list[TimerData.Timer]):
         """
         Factored method to load a list of timers from data rows.
         """
         guildids = set()
         to_delete = []
+        # --- AI-MODIFIED (2026-09-16) ---
+        to_delete_guildids: set[int] = set()  # for the circuit breaker below
+        # --- END AI-MODIFIED ---
         to_create = []
         to_unload = []
         # --- AI-MODIFIED (2026-05-20) ---
@@ -175,10 +202,29 @@ class TimerCog(LionCog):
                 # to_delete.append(row.channelid)
                 # --- End original code ---
                 guild = self.bot.get_guild(row.guildid)
-                if guild is not None and guild.get_channel(row.channelid) is None:
+                # --- AI-REPLACED (2026-09-16) ---
+                # Reason: after a gateway session invalidation discord.py re-adds every guild from
+                #   READY as an *unavailable* stub (no channels) and dispatches `ready` after a 2s
+                #   lull in GUILD_CREATEs. The 2026-05-20 guard only checked `guild is not None`,
+                #   so stub guilds looked like "guild loaded, channel gone" and their timers were
+                #   deleted: 1,572 timers destroyed between 2026-08-18 and 2026-09-16 (607 on
+                #   shard 17 on 08-21 alone, 3 seconds after the gateway reconnected).
+                # What the new code does better: a channel only counts as gone when the guild is
+                #   actually available; unavailable guilds are remembered and loaded from
+                #   on_guild_available once Discord delivers them.
+                # --- Original code (commented out for rollback) ---
+                # if guild is not None and guild.get_channel(row.channelid) is None:
+                #     to_delete.append(row.channelid)
+                # else:
+                #     skipped_unresolved += 1
+                # --- End original code ---
+                if guild is not None and not guild.unavailable and guild.get_channel(row.channelid) is None:
                     to_delete.append(row.channelid)
+                    to_delete_guildids.add(row.guildid)
                 else:
                     skipped_unresolved += 1
+                    self._pending_guilds.add(row.guildid)
+                # --- END AI-REPLACED ---
                 # --- END AI-REPLACED ---
             else:
                 guildids.add(row.guildid)
@@ -216,6 +262,21 @@ class TimerCog(LionCog):
             timer.last_seen = {member.id: now for member in timer.members}
 
         # Delete non-existent timers
+        # --- AI-MODIFIED (2026-09-16) ---
+        # Purpose: circuit breaker, see MASS_DELETE_MIN / MASS_DELETE_FRACTION.
+        if (
+            to_delete
+            and len(to_delete) > self.MASS_DELETE_MIN
+            and len(to_delete) > self.MASS_DELETE_FRACTION * len(timer_data)
+        ):
+            logger.warning(
+                f"Refusing to delete {len(to_delete)} of {len(timer_data)} timers in one load "
+                "(suspiciously many missing channels, cache probably incomplete); "
+                "keeping them for a later re-check."
+            )
+            self._pending_guilds.update(to_delete_guildids)
+            to_delete = []
+        # --- END AI-MODIFIED ---
         if to_delete:
             await self.data.Timer.table.delete_where(channelid=to_delete)
             idstr = ', '.join(map(str, to_delete))
@@ -295,11 +356,24 @@ class TimerCog(LionCog):
         Restore timers.
         """
         self.ready = False
-        self.timers = defaultdict(dict)
+        # --- AI-REPLACED (2026-09-16) ---
+        # Reason: the registry was reset BEFORE the unload check, so the check was always false
+        #   and the old Timer objects kept running as duplicates after every gateway
+        #   re-IDENTIFY (on_ready fires again), next to the freshly loaded ones.
+        # What the new code does better: unload whatever is loaded first, then reset.
+        # --- Original code (commented out for rollback) ---
+        # self.timers = defaultdict(dict)
+        # if self.timers:
+        #     timers = [timer for tguild in self.timers.values() for timer in tguild.values()]
+        #     await self._unload_timers(timers)
+        #     self.timers.clear()
+        # --- End original code ---
         if self.timers:
             timers = [timer for tguild in self.timers.values() for timer in tguild.values()]
             await self._unload_timers(timers)
-            self.timers.clear()
+        self.timers = defaultdict(dict)
+        self._pending_guilds.clear()
+        # --- END AI-REPLACED ---
 
         # Fetch timers in guilds on this shard
         guildids = [guild.id for guild in self.bot.guilds]
@@ -610,6 +684,23 @@ class TimerCog(LionCog):
         timer_data = await self.data.Timer.fetch_where(guildid=guild.id)
         if timer_data:
             await self._load_timers(timer_data)
+
+    # --- AI-MODIFIED (2026-09-16) ---
+    # Purpose: timers skipped at load time because the guild was still unavailable are loaded
+    # once Discord delivers the guild (see _load_timers_inner / _pending_guilds).
+    @LionCog.listener('on_guild_available')
+    @log_wrap(action='Load Available Guild Timers')
+    async def _load_available_guild_timers(self, guild: discord.Guild):
+        if guild.id not in self._pending_guilds:
+            return
+        self._pending_guilds.discard(guild.id)
+        timer_data = await self.data.Timer.fetch_where(guildid=guild.id)
+        if timer_data:
+            await self._load_timers(timer_data)
+            logger.info(
+                f"Loaded {len(timer_data)} timer(s) for guild <gid: {guild.id}> after it became available."
+            )
+    # --- END AI-MODIFIED ---
 
     @LionCog.listener('on_guild_channel_delete')
     @log_wrap(action='Destroy Channel Timer')
