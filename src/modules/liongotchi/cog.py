@@ -2864,6 +2864,74 @@ class FarmView(discord.ui.View):
         equip_drop_bonus = bonuses.get('equip_drop', 0.0)
         # --- END AI-MODIFIED ---
 
+        # --- AI-REPLACED (2026-09-16) ---
+        # Reason: each plot was cleared with its own autocommitted UPDATE and the gold was
+        #   credited only after the loop, so an error mid-loop destroyed already-cleared plants
+        #   without paying for them (same defect as the website's Harvest All, ticket #0155).
+        # What the new code does better: price everything first, then clear all plots, credit
+        #   the gold and write the ledger in ONE transaction with conditional updates (a plot
+        #   must still hold the same crop, otherwise the whole harvest aborts and nothing is
+        #   lost); item drops are rolled only after the commit and can never undo the harvest.
+        # --- Original code (commented out for rollback) ---
+        # for p in self.plots:
+        #     if p['seed_id'] and not p['dead'] and p['growth_stage'] >= 5:
+        #         rarity = p.get('rarity') or 'COMMON'
+        #         base_gold = p['harvest_gold'] or 20
+        #         gold_mult = RARITY_GOLD_MULTIPLIER.get(rarity, 1.0)
+        #         plant_gold = int(base_gold * gold_mult * tier_bonus * equip_gold_mult * vote_boost)
+        #         total_harvest_gold += plant_gold
+        #         total_invested += p.get('gold_invested') or 0
+        #         total_voice_min += p.get('voice_minutes_earned') or 0
+        #         total_messages += p.get('messages_earned') or 0
+        #         harvested += 1
+        # 
+        #         name = p.get('seed_name') or 'Plant'
+        #         r_emoji = RARITY_EMOJI.get(rarity, '')
+        #         if rarity != 'COMMON':
+        #             harvest_details.append(str(_p(
+        #                 'embed:harvest|detail:rare',
+        #                 '{r_emoji} **[{rarity}] {name}** \u2014 {gold}G (x{mult})'
+        #             )).format(
+        #                 r_emoji=r_emoji, rarity=rarity, name=name,
+        #                 gold=plant_gold, mult=gold_mult))
+        #         else:
+        #             harvest_details.append(str(_p(
+        #                 'embed:harvest|detail:common',
+        #                 '{name} \u2014 {gold}G'
+        #             )).format(name=name, gold=plant_gold))
+        # 
+        #         drop_mult = RARITY_DROP_MULTIPLIER.get(rarity, 1.0)
+        #         # --- AI-MODIFIED (2026-03-24) ---
+        #         # Purpose: Pass equipment drop bonus to harvest drop rolls
+        #         drops = await try_item_drop(self.cog.bot, self.user_id, ITEM_DROP_CHANCE_HARVEST,
+        #                                     rarity_multiplier=drop_mult, user_tier=user_tier,
+        #                                     server_premium=server_premium,
+        #                                     quality_boost=vc_boost,
+        #                                     equip_drop_bonus=equip_drop_bonus)
+        #         # --- END AI-MODIFIED ---
+        #         if drops:
+        #             all_drops.extend(drops)
+        # 
+        #         await _db_exec(self.cog.bot,
+        #             """UPDATE lg_user_farm SET seed_id=NULL, planted_at=NULL, last_watered=NULL,
+        #                growth_stage=0, dead=false, growth_points=0, gold_invested=0,
+        #                voice_minutes_earned=0, messages_earned=0, rarity='COMMON'
+        #                WHERE userid=%s AND plot_id=%s""",
+        #             self.user_id, p['plot_id'])
+        # 
+        # if total_harvest_gold > 0:
+        #     await _db_exec(self.cog.bot,
+        #         "UPDATE user_config SET gold=gold+%s WHERE userid=%s", total_harvest_gold, self.user_id)
+        #     await _db_exec(self.cog.bot,
+        #         """INSERT INTO lg_gold_transactions (transaction_type, actorid, to_account, amount, description)
+        #            VALUES (%s,%s,%s,%s,%s)""",
+        #         'FARM_HARVEST', self.user_id, self.user_id, total_harvest_gold, f'Harvested {harvested} plants')
+        # --- End original code ---
+        class _HarvestChanged(Exception):
+            pass
+
+        to_clear: list[tuple[int, int]] = []
+        drop_rolls: list[float] = []
         for p in self.plots:
             if p['seed_id'] and not p['dead'] and p['growth_stage'] >= 5:
                 rarity = p.get('rarity') or 'COMMON'
@@ -2875,7 +2943,6 @@ class FarmView(discord.ui.View):
                 total_voice_min += p.get('voice_minutes_earned') or 0
                 total_messages += p.get('messages_earned') or 0
                 harvested += 1
-
                 name = p.get('seed_name') or 'Plant'
                 r_emoji = RARITY_EMOJI.get(rarity, '')
                 if rarity != 'COMMON':
@@ -2890,33 +2957,56 @@ class FarmView(discord.ui.View):
                         'embed:harvest|detail:common',
                         '{name} \u2014 {gold}G'
                     )).format(name=name, gold=plant_gold))
+                to_clear.append((p['plot_id'], p['seed_id']))
+                drop_rolls.append(RARITY_DROP_MULTIPLIER.get(rarity, 1.0))
 
-                drop_mult = RARITY_DROP_MULTIPLIER.get(rarity, 1.0)
-                # --- AI-MODIFIED (2026-03-24) ---
-                # Purpose: Pass equipment drop bonus to harvest drop rolls
-                drops = await try_item_drop(self.cog.bot, self.user_id, ITEM_DROP_CHANCE_HARVEST,
-                                            rarity_multiplier=drop_mult, user_tier=user_tier,
-                                            server_premium=server_premium,
-                                            quality_boost=vc_boost,
-                                            equip_drop_bonus=equip_drop_bonus)
-                # --- END AI-MODIFIED ---
+        if to_clear:
+            try:
+                async with self.cog.bot.db.connection() as conn:
+                    async with conn.transaction():
+                        async with conn.cursor() as cur:
+                            for plot_id, seed_id in to_clear:
+                                await cur.execute(
+                                    """UPDATE lg_user_farm SET seed_id=NULL, planted_at=NULL, last_watered=NULL,
+                                       growth_stage=0, dead=false, growth_points=0, gold_invested=0,
+                                       voice_minutes_earned=0, messages_earned=0, rarity='COMMON'
+                                       WHERE userid=%s AND plot_id=%s AND seed_id=%s AND dead=false""",
+                                    [self.user_id, plot_id, seed_id])
+                                if cur.rowcount != 1:
+                                    raise _HarvestChanged(plot_id)
+                            if total_harvest_gold > 0:
+                                await cur.execute(
+                                    "UPDATE user_config SET gold=gold+%s WHERE userid=%s",
+                                    [total_harvest_gold, self.user_id])
+                                await cur.execute(
+                                    """INSERT INTO lg_gold_transactions (transaction_type, actorid, to_account, amount, description)
+                                       VALUES (%s,%s,%s,%s,%s)""",
+                                    ['FARM_HARVEST', self.user_id, self.user_id, total_harvest_gold,
+                                     f'Harvested {harvested} plants'])
+            except _HarvestChanged:
+                # Nothing was committed. Refresh and let the user retry.
+                await self.load_farm()
+                await self.show_farm(interaction)
+                await interaction.followup.send(
+                    str(_p(
+                        'error:harvest|farm_changed',
+                        "Your farm changed while harvesting (maybe from the website). Nothing was harvested, please try again."
+                    )),
+                    ephemeral=True)
+                return
+            for drop_mult in drop_rolls:
+                try:
+                    drops = await try_item_drop(self.cog.bot, self.user_id, ITEM_DROP_CHANCE_HARVEST,
+                                                rarity_multiplier=drop_mult, user_tier=user_tier,
+                                                server_premium=server_premium,
+                                                quality_boost=vc_boost,
+                                                equip_drop_bonus=equip_drop_bonus)
+                except Exception:
+                    logger.exception(f"Harvest item drop failed for {self.user_id}; the harvest itself is committed.")
+                    drops = None
                 if drops:
                     all_drops.extend(drops)
-
-                await _db_exec(self.cog.bot,
-                    """UPDATE lg_user_farm SET seed_id=NULL, planted_at=NULL, last_watered=NULL,
-                       growth_stage=0, dead=false, growth_points=0, gold_invested=0,
-                       voice_minutes_earned=0, messages_earned=0, rarity='COMMON'
-                       WHERE userid=%s AND plot_id=%s""",
-                    self.user_id, p['plot_id'])
-
-        if total_harvest_gold > 0:
-            await _db_exec(self.cog.bot,
-                "UPDATE user_config SET gold=gold+%s WHERE userid=%s", total_harvest_gold, self.user_id)
-            await _db_exec(self.cog.bot,
-                """INSERT INTO lg_gold_transactions (transaction_type, actorid, to_account, amount, description)
-                   VALUES (%s,%s,%s,%s,%s)""",
-                'FARM_HARVEST', self.user_id, self.user_id, total_harvest_gold, f'Harvested {harvested} plants')
+        # --- END AI-REPLACED ---
 
         await self.load_farm()
         await self.show_farm(interaction)
